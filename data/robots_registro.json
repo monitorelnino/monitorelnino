@@ -1,6 +1,21 @@
 {
  "_governanca": "Rastro dos acessos feitos contra o pedido do robots.txt (§185, decisão da editoria de 23/09/2026): o Monitor lê documento público com cliente identificado e Crawl-delay respeitado, e registra aqui cada acesso desse tipo. Nunca lido pelo cálculo da nota.",
  "hosts": {
+  "acessoinformacao.org.br": {
+   "status_robots": "proibe",
+   "crawl_delay": null,
+   "primeiro_acesso": "2026-09-28",
+   "total_acessos": 1,
+   "acessos": [
+    {
+     "url": "https://acessoinformacao.org.br/licitacoes/arquivos/download/519738d5b18c9de931797692eae9444c09bb4aaf.pdf",
+     "quando": "2026-09-29T01:20:00Z",
+     "origem": "diagnostico",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    }
+   ],
+   "ultimo_acesso": "2026-09-28"
+  },
   "defesacivil.mt.gov.br": {
    "status_robots": "proibe",
    "crawl_delay": 30.0,
@@ -40,1890 +55,6 @@
     {
      "url": "https://defesacivil.mt.gov.br/",
      "quando": "2026-09-27T02:22:36Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    }
-   ],
-   "ultimo_acesso": "2026-09-26"
-  },
-  "www.defesacivil.mt.gov.br": {
-   "status_robots": "proibe",
-   "crawl_delay": 30.0,
-   "primeiro_acesso": "2026-09-23",
-   "total_acessos": 1,
-   "acessos": [
-    {
-     "url": "http://www.defesacivil.mt.gov.br/sitemap.xml",
-     "quando": "2026-09-23T21:41:51Z",
-     "origem": "§185 releitura MT",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    }
-   ],
-   "ultimo_acesso": "2026-09-23"
-  },
-  "www.in.gov.br": {
-   "status_robots": "proibe",
-   "crawl_delay": null,
-   "primeiro_acesso": "2026-09-24",
-   "total_acessos": 1080,
-   "acessos": [
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.172-de-23-de-setembro-de-2026-733722339",
-     "quando": "2026-09-29T08:15:07Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.171-de-23-de-setembro-de-2026-733730824",
-     "quando": "2026-09-29T08:15:10Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.172-de-23-de-setembro-de-2026-733722339",
-     "quando": "2026-09-29T08:15:10Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.172-de-23-de-setembro-de-2026-733722339",
-     "quando": "2026-09-29T08:15:12Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.175-de-23-de-setembro-de-2026-733736080",
-     "quando": "2026-09-29T08:15:14Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.151-de-21-de-setembro-de-2026-733209089",
-     "quando": "2026-09-29T08:15:20Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.151-de-21-de-setembro-de-2026-733209089",
-     "quando": "2026-09-29T08:15:25Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.147-de-21-de-setembro-de-2026-733231729",
-     "quando": "2026-09-29T08:15:31Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.147-de-21-de-setembro-de-2026-733231729",
-     "quando": "2026-09-29T08:15:35Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.147-de-21-de-setembro-de-2026-733231729",
-     "quando": "2026-09-29T08:15:40Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.150-de-21-de-setembro-de-2026-733225632",
-     "quando": "2026-09-29T08:15:45Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.150-de-21-de-setembro-de-2026-733225632",
-     "quando": "2026-09-29T08:15:50Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.150-de-21-de-setembro-de-2026-733225632",
-     "quando": "2026-09-29T08:15:55Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.150-de-21-de-setembro-de-2026-733225632",
-     "quando": "2026-09-29T08:15:57Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.150-de-21-de-setembro-de-2026-733225632",
-     "quando": "2026-09-29T08:15:59Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.150-de-21-de-setembro-de-2026-733225632",
-     "quando": "2026-09-29T08:16:03Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.147-de-21-de-setembro-de-2026-733231729",
-     "quando": "2026-09-29T08:16:04Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.147-de-21-de-setembro-de-2026-733231729",
-     "quando": "2026-09-29T08:16:06Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.150-de-21-de-setembro-de-2026-733225632",
-     "quando": "2026-09-29T08:16:07Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.151-de-21-de-setembro-de-2026-733209089",
-     "quando": "2026-09-29T08:16:07Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.122-de-18-de-setembro-de-2026-732952594",
-     "quando": "2026-09-29T08:16:13Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.122-de-18-de-setembro-de-2026-732952594",
-     "quando": "2026-09-29T08:16:19Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.121-de-18-de-setembro-de-2026-732965760",
-     "quando": "2026-09-29T08:16:25Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.121-de-18-de-setembro-de-2026-732965760",
-     "quando": "2026-09-29T08:16:31Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.121-de-18-de-setembro-de-2026-732965760",
-     "quando": "2026-09-29T08:16:35Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.122-de-18-de-setembro-de-2026-732952594",
-     "quando": "2026-09-29T08:16:37Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.089-de-16-de-setembro-de-2026-732627596",
-     "quando": "2026-09-29T08:16:42Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.089-de-16-de-setembro-de-2026-732627596",
-     "quando": "2026-09-29T08:16:43Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.092-de-16-de-setembro-de-2026-732626172",
-     "quando": "2026-09-29T08:16:45Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.092-de-16-de-setembro-de-2026-732626172",
-     "quando": "2026-09-29T08:16:47Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.099-de-17-de-setembro-de-2026-732615740",
-     "quando": "2026-09-29T08:16:48Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.099-de-17-de-setembro-de-2026-732615740",
-     "quando": "2026-09-29T08:16:49Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.100-de-17-de-setembro-de-2026-732692809",
-     "quando": "2026-09-29T08:16:51Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.101-de-17-de-setembro-de-2026-732689172",
-     "quando": "2026-09-29T08:16:52Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.101-de-17-de-setembro-de-2026-732689172",
-     "quando": "2026-09-29T08:16:54Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.072-de-16-de-setembro-de-2026-732393483",
-     "quando": "2026-09-29T08:17:00Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.072-de-16-de-setembro-de-2026-732393483",
-     "quando": "2026-09-29T08:17:04Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.073-de-16-de-setembro-de-2026-732413869",
-     "quando": "2026-09-29T08:17:09Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22reconhece%20a%20situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=29-06-2026&publishTo=29-09-2026&delta=50",
-     "quando": "2026-09-29T08:17:12Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22reconhece%20a%20situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=29-06-2026&publishTo=14-08-2026&delta=50",
-     "quando": "2026-09-29T08:17:20Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22reconhece%20a%20situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=29-06-2026&publishTo=22-07-2026&delta=50",
-     "quando": "2026-09-29T08:17:26Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22reconhece%20a%20situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=23-07-2026&publishTo=14-08-2026&delta=50",
-     "quando": "2026-09-29T08:17:32Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22reconhece%20a%20situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=15-08-2026&publishTo=29-09-2026&delta=50",
-     "quando": "2026-09-29T08:17:36Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22reconhece%20a%20situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=15-08-2026&publishTo=06-09-2026&delta=50",
-     "quando": "2026-09-29T08:17:41Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22reconhece%20a%20situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=07-09-2026&publishTo=29-09-2026&delta=50",
-     "quando": "2026-09-29T08:17:46Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.357-de-20-de-julho-de-2026-720546114",
-     "quando": "2026-09-29T08:17:51Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.358-de-20-de-julho-de-2026-720533474",
-     "quando": "2026-09-29T08:17:55Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.342-de-17-de-julho-de-2026-720019750",
-     "quando": "2026-09-29T08:17:58Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.345-de-17-de-julho-de-2026-720018074",
-     "quando": "2026-09-29T08:18:02Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.343-de-17-de-julho-de-2026-720001503",
-     "quando": "2026-09-29T08:18:10Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.303-de-15-de-julho-de-2026-719810584",
-     "quando": "2026-09-29T08:18:13Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.304-de-15-de-julho-de-2026-719783854",
-     "quando": "2026-09-29T08:18:17Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.305-de-15-de-julho-de-2026-719725013",
-     "quando": "2026-09-29T08:18:22Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.267-de-10-de-julho-de-2026-718716536",
-     "quando": "2026-09-29T08:18:25Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.268-de-10-de-julho-de-2026-718709064",
-     "quando": "2026-09-29T08:18:29Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.252-de-8-de-julho-de-2026-717844541",
-     "quando": "2026-09-29T08:18:33Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.247-de-8-de-julho-de-2026-717836463",
-     "quando": "2026-09-29T08:18:36Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.248-de-8-de-julho-de-2026-717831365",
-     "quando": "2026-09-29T08:18:39Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.212-de-6-de-julho-de-2026-717197515",
-     "quando": "2026-09-29T08:18:43Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.210-de-6-de-julho-de-2026-717187201",
-     "quando": "2026-09-29T08:18:48Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.211-de-6-de-julho-de-2026-717183324",
-     "quando": "2026-09-29T08:18:53Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.201-de-3-de-julho-de-2026-716871005",
-     "quando": "2026-09-29T08:18:57Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.200-de-3-de-julho-de-2026-716868342",
-     "quando": "2026-09-29T08:19:04Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.170-de-2-de-julho-de-2026-716695033",
-     "quando": "2026-09-29T08:19:11Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.172-de-2-de-julho-de-2026-716692270",
-     "quando": "2026-09-29T08:19:15Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.171-de-2-de-julho-de-2026-716685750",
-     "quando": "2026-09-29T08:19:18Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.145-de-30-de-junho-de-2026-716352466",
-     "quando": "2026-09-29T08:19:21Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.117-de-30-de-junho-de-2026-716350906",
-     "quando": "2026-09-29T08:19:25Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.140-de-30-de-junho-de-2026-716349756",
-     "quando": "2026-09-29T08:19:29Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.116-de-30-de-junho-de-2026-716335482",
-     "quando": "2026-09-29T08:19:33Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.115-de-30-de-junho-de-2026-716321559",
-     "quando": "2026-09-29T08:19:36Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.584-de-12-de-agosto-de-2026-725016761",
-     "quando": "2026-09-29T08:19:39Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.585-de-12-de-agosto-de-2026-725009950",
-     "quando": "2026-09-29T08:19:43Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.582-de-12-de-agosto-de-2026-725000932",
-     "quando": "2026-09-29T08:19:47Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.583-de-12-de-agosto-de-2026-724994564",
-     "quando": "2026-09-29T08:19:51Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.579-de-11-de-agosto-de-2026-724729920",
-     "quando": "2026-09-29T08:19:55Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.546-de-6-de-agosto-de-2026-724098638",
-     "quando": "2026-09-29T08:19:58Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.553-de-6-de-agosto-de-2026-724092659",
-     "quando": "2026-09-29T08:20:01Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.549-de-6-de-agosto-de-2026-724081916",
-     "quando": "2026-09-29T08:20:05Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.548-de-6-de-agosto-de-2026-724079573",
-     "quando": "2026-09-29T08:20:09Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.564-de-6-de-agosto-de-2026-724079492",
-     "quando": "2026-09-29T08:20:13Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.522-de-5-de-agosto-de-2026-723812937",
-     "quando": "2026-09-29T08:20:16Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.520-de-5-de-agosto-de-2026-723742387",
-     "quando": "2026-09-29T08:20:19Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.521-de-5-de-agosto-de-2026-723721407",
-     "quando": "2026-09-29T08:20:23Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.485-de-3-de-agosto-de-2026-723046710",
-     "quando": "2026-09-29T08:20:26Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.486-de-3-de-agosto-de-2026-723044793",
-     "quando": "2026-09-29T08:20:30Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.484-de-3-de-agosto-de-2026-723039606",
-     "quando": "2026-09-29T08:20:33Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.475-de-31-de-julho-de-2026-722741334",
-     "quando": "2026-09-29T08:20:37Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.476-de-31-de-julho-de-2026-722728218",
-     "quando": "2026-09-29T08:20:41Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.477-de-31-de-julho-de-2026-722723955",
-     "quando": "2026-09-29T08:20:44Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.455-de-29-de-julho-de-2026-722136837",
-     "quando": "2026-09-29T08:20:48Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.454-de-29-de-julho-de-2026-722126908",
-     "quando": "2026-09-29T08:20:52Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.456-de-29-de-julho-de-2026-722124585",
-     "quando": "2026-09-29T08:20:55Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.449-de-29-de-julho-de-2026-722120479",
-     "quando": "2026-09-29T08:20:59Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.419-de-27-de-julho-de-2026-721629309",
-     "quando": "2026-09-29T08:21:02Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.420-de-27-de-julho-de-2026-721627710",
-     "quando": "2026-09-29T08:21:06Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.417-de-27-de-julho-de-2026-721609441",
-     "quando": "2026-09-29T08:21:09Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.393-de-24-de-julho-de-2026-721365065",
-     "quando": "2026-09-29T08:21:13Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.392-de-24-de-julho-de-2026-721363186",
-     "quando": "2026-09-29T08:21:16Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.391-de-24-de-julho-de-2026-721359587",
-     "quando": "2026-09-29T08:21:20Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.382-de-23-de-julho-de-2026-721085741",
-     "quando": "2026-09-29T08:21:23Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.384-de-23-de-julho-de-2026-721084691",
-     "quando": "2026-09-29T08:21:27Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.885-de-3-de-setembro-de-2026-730246944",
-     "quando": "2026-09-29T08:21:30Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.886-de-3-de-setembro-de-2026-730234723",
-     "quando": "2026-09-29T08:21:34Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.884-de-3-de-setembro-de-2026-730216547",
-     "quando": "2026-09-29T08:21:38Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.890-de-3-de-setembro-de-2026-730143671",
-     "quando": "2026-09-29T08:21:41Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.858-de-2-de-setembro-de-2026-729943438",
-     "quando": "2026-09-29T08:21:44Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.853-de-2-de-setembro-de-2026-729942478",
-     "quando": "2026-09-29T08:21:48Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.855-de-2-de-setembro-de-2026-729934800",
-     "quando": "2026-09-29T08:21:51Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.865-de-2-de-setembro-de-2026-729855869",
-     "quando": "2026-09-29T08:21:55Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.819-de-31-de-agosto-de-2026-729410676",
-     "quando": "2026-09-29T08:21:59Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.823-de-31-de-agosto-de-2026-729321350",
-     "quando": "2026-09-29T08:22:02Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.809-de-28-de-agosto-de-2026-729107391",
-     "quando": "2026-09-29T08:22:05Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.808-de-28-de-agosto-de-2026-729106426",
-     "quando": "2026-09-29T08:22:08Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.814-de-28-de-agosto-de-2026-729102103",
-     "quando": "2026-09-29T08:22:12Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2811-de-28-de-agosto-de-2026-729091142",
-     "quando": "2026-09-29T08:22:15Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.810-de-28-de-agosto-de-2026-729003932",
-     "quando": "2026-09-29T08:22:23Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.794-de-27-de-agosto-de-2026-728591204",
-     "quando": "2026-09-29T08:22:26Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.796-de-27-de-agosto-de-2026-728583861",
-     "quando": "2026-09-29T08:22:29Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.793-de-27-de-agosto-de-2026-728569541",
-     "quando": "2026-09-29T08:22:33Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.795-de-27-de-agosto-de-2026-728566397",
-     "quando": "2026-09-29T08:22:38Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.771-de-26-de-agosto-de-2026-728296119",
-     "quando": "2026-09-29T08:22:41Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.772-de-26-de-agosto-de-2026-728294426",
-     "quando": "2026-09-29T08:22:45Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.758-de-25-de-agosto-de-2026-728026835",
-     "quando": "2026-09-29T08:22:49Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.757-de-25-de-agosto-de-2026-728019950",
-     "quando": "2026-09-29T08:22:52Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.759-de-25-de-agosto-de-2026-728018798",
-     "quando": "2026-09-29T08:22:56Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.754-de-25-de-agosto-de-2026-727978015",
-     "quando": "2026-09-29T08:23:00Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.724-de-22-de-agosto-de-2026-727766152",
-     "quando": "2026-09-29T08:23:04Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.727-de-22-de-agosto-de-2026-727764068",
-     "quando": "2026-09-29T08:23:08Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.735-de-24-de-agosto-de-2026-727755582",
-     "quando": "2026-09-29T08:23:11Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.731-de-24-de-agosto-de-2026-727713385",
-     "quando": "2026-09-29T08:23:15Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.704-de-21-de-agosto-de-2026-727310275",
-     "quando": "2026-09-29T08:23:19Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.705-de-21-de-agosto-de-2026-727306637",
-     "quando": "2026-09-29T08:23:23Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.677-de-20-de-agosto-de-2026-727024740",
-     "quando": "2026-09-29T08:23:27Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.678-de-20-de-agosto-de-2026-726975780",
-     "quando": "2026-09-29T08:23:30Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.658-de-19-de-agosto-de-2026-726694057",
-     "quando": "2026-09-29T08:23:37Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.667-de-19-de-agosto-de-2026-726690835",
-     "quando": "2026-09-29T08:23:42Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.645-de-19-de-agosto-de-2026-726687651",
-     "quando": "2026-09-29T08:23:45Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.622-de-17-de-agosto-de-2026-725914376",
-     "quando": "2026-09-29T08:23:49Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.627-de-17-de-agosto-de-2026-725903158",
-     "quando": "2026-09-29T08:23:53Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.609-de-14-de-agosto-de-2026-725627575",
-     "quando": "2026-09-29T08:23:57Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.607-de-14-de-agosto-de-2026-725625721",
-     "quando": "2026-09-29T08:24:00Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.608-de-14-de-agosto-de-2026-725602104",
-     "quando": "2026-09-29T08:24:04Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.606-de-14-de-agosto-de-2026-725599306",
-     "quando": "2026-09-29T08:24:07Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.265-de-28-de-setembro-de-2026-735114233",
-     "quando": "2026-09-29T08:24:09Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.264-de-28-de-setembro-de-2026-735107052",
-     "quando": "2026-09-29T08:24:12Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.263-de-28-de-setembro-de-2026-735103331",
-     "quando": "2026-09-29T08:24:15Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.255-de-25-de-setembro-de-2026-734861313",
-     "quando": "2026-09-29T08:24:17Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.250-de-25-de-setembro-de-2026-734855198",
-     "quando": "2026-09-29T08:24:20Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.256-de-25-de-setembro-de-2026-734835734",
-     "quando": "2026-09-29T08:24:22Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.252-de-25-de-setembro-de-2026-734823773",
-     "quando": "2026-09-29T08:24:25Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.257-de-25-de-setembro-de-2026-734820011",
-     "quando": "2026-09-29T08:24:27Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.251-de-25-de-setembro-de-2026-734811858",
-     "quando": "2026-09-29T08:24:29Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.196-de-24-de-setembro-de-2026-734502074",
-     "quando": "2026-09-29T08:24:32Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.198-de-24-de-setembro-de-2026-734491229",
-     "quando": "2026-09-29T08:24:36Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.197-de-24-de-setembro-de-2026-734433578",
-     "quando": "2026-09-29T08:24:40Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.195-de-24-de-setembro-de-2026-734428895",
-     "quando": "2026-09-29T08:24:43Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.175-de-23-de-setembro-de-2026-733736080",
-     "quando": "2026-09-29T08:24:47Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.171-de-23-de-setembro-de-2026-733730824",
-     "quando": "2026-09-29T08:24:51Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.172-de-23-de-setembro-de-2026-733722339",
-     "quando": "2026-09-29T08:24:53Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.147-de-21-de-setembro-de-2026-733231729",
-     "quando": "2026-09-29T08:24:56Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.150-de-21-de-setembro-de-2026-733225632",
-     "quando": "2026-09-29T08:24:58Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.151-de-21-de-setembro-de-2026-733209089",
-     "quando": "2026-09-29T08:25:00Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.121-de-18-de-setembro-de-2026-732965760",
-     "quando": "2026-09-29T08:25:03Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.122-de-18-de-setembro-de-2026-732952594",
-     "quando": "2026-09-29T08:25:08Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.100-de-17-de-setembro-de-2026-732692809",
-     "quando": "2026-09-29T08:25:10Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.101-de-17-de-setembro-de-2026-732689172",
-     "quando": "2026-09-29T08:25:12Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.089-de-16-de-setembro-de-2026-732627596",
-     "quando": "2026-09-29T08:25:16Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.092-de-16-de-setembro-de-2026-732626172",
-     "quando": "2026-09-29T08:25:23Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.099-de-17-de-setembro-de-2026-732615740",
-     "quando": "2026-09-29T08:25:27Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.073-de-16-de-setembro-de-2026-732413869",
-     "quando": "2026-09-29T08:25:30Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.074-de-16-de-setembro-de-2026-732409465",
-     "quando": "2026-09-29T08:25:33Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.072-de-16-de-setembro-de-2026-732393483",
-     "quando": "2026-09-29T08:25:37Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.084-de-16-de-setembro-de-2026-732322158",
-     "quando": "2026-09-29T08:25:41Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.065-de-15-de-setembro-de-2026-732151213",
-     "quando": "2026-09-29T08:25:44Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.032-de-14-de-setembro-de-2026-731888520",
-     "quando": "2026-09-29T08:25:47Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.034-de-14-de-setembro-de-2026-731812545",
-     "quando": "2026-09-29T08:25:51Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.031-de-14-de-setembro-de-2026-731808884",
-     "quando": "2026-09-29T08:25:54Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.005-de-10-de-setembro-de-2026-731342970",
-     "quando": "2026-09-29T08:25:58Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.003-de-10-de-setembro-de-2026-731278702",
-     "quando": "2026-09-29T08:26:02Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.971-de-9-de-setembro-de-2026-731066103",
-     "quando": "2026-09-29T08:26:06Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.972-de-9-de-setembro-de-2026-731062319",
-     "quando": "2026-09-29T08:26:10Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.970-de-9-de-setembro-de-2026-730978443",
-     "quando": "2026-09-29T08:26:13Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.943-de-8-de-setembro-de-2026-730775565",
-     "quando": "2026-09-29T08:26:17Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.942-de-8-de-setembro-de-2026-730722652",
-     "quando": "2026-09-29T08:26:20Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.907-de-4-de-setembro-de-2026-730283772",
-     "quando": "2026-09-29T08:26:24Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.908-de-4-de-setembro-de-2026-730265021",
-     "quando": "2026-09-29T08:26:28Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.905-de-3-de-setembro-de-2026-730257771",
-     "quando": "2026-09-29T08:26:31Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/leiturajornal?data=13-11-2024&secao=do1",
-     "quando": "2026-09-30T17:30:58Z",
-     "origem": "sonda_mma",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/leiturajornal?data=13-11-2024&secao=do1",
-     "quando": "2026-09-30T17:31:59Z",
-     "origem": "sonda_mma",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-gm/mma-n-1.202-de-11-de-novembro-de-2024-595667200",
-     "quando": "2026-09-30T17:33:00Z",
-     "origem": "sonda_mma",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22munic%C3%ADpios+priorit%C3%A1rios%22+desmatamento&s=do1&exactDate=personalizado&publishFrom=12-11-2024&publishTo=30-09-2026&delta=20",
-     "quando": "2026-09-30T17:33:54Z",
-     "origem": "sonda_mma",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22munic%C3%ADpios+priorit%C3%A1rios%22+desmatamento&s=do1&exactDate=personalizado&publishFrom=12-11-2024&publishTo=30-09-2026&delta=20",
-     "quando": "2026-09-30T17:34:05Z",
-     "origem": "sonda_mma",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22munic%C3%ADpios+priorit%C3%A1rios%22+desmatamento&s=do1&exactDate=personalizado&publishFrom=12-11-2024&publishTo=30-09-2026&delta=20",
-     "quando": "2026-09-30T17:34:15Z",
-     "origem": "sonda_mma",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-gm/mma-n-1.202-de-11-de-novembro-de-2024-595667200",
-     "quando": "2026-09-30T17:34:35Z",
-     "origem": "sonda_mma",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-gm/mma-n-1.202-de-11-de-novembro-de-2024-595667200",
-     "quando": "2026-09-30T17:36:25Z",
-     "origem": "coletar_prioritarios_mma",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-gm/mma-n-1.202-de-11-de-novembro-de-2024-595667200",
-     "quando": "2026-09-30T17:36:35Z",
-     "origem": "sonda",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-gm/mma-n-1.202-de-11-de-novembro-de-2024-595667200",
-     "quando": "2026-09-30T17:36:48Z",
-     "origem": "coletar_prioritarios_mma",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-gm/mma-n-1.202-de-11-de-novembro-de-2024-595667200",
-     "quando": "2026-09-30T17:37:08Z",
-     "origem": "coletar_prioritarios_mma",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-gm/mma-n-1.202-de-11-de-novembro-de-2024-595667200",
-     "quando": "2026-09-30T18:40:22Z",
-     "origem": "coletar_prioritarios_mma",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    }
-   ],
-   "ultimo_acesso": "2026-09-30"
-  },
-  "queridodiario.ok.org.br": {
-   "status_robots": "permite",
-   "crawl_delay": null,
-   "primeiro_acesso": "2026-09-24",
-   "total_acessos": 50,
-   "acessos": [
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2609907&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22&size=50",
-     "quando": "2026-09-24T01:47:47Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4216701&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22&size=50",
-     "quando": "2026-09-24T01:53:01Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4212650&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22&size=50",
-     "quando": "2026-09-24T01:54:18Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=3302056&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22&size=50",
-     "quando": "2026-09-24T07:50:36Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4219309&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22&size=50",
-     "quando": "2026-09-24T07:58:47Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4217303&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22&size=50",
-     "quando": "2026-09-24T08:01:37Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4204004&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-25T11:02:52Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4212270&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-25T11:06:02Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2113009&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-25T11:07:03Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2106706&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-25T11:08:55Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2102606&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-25T11:09:24Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2104099&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-25T11:10:27Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2708808&published_since=2026-06-29&size=1",
-     "quando": "2026-09-25T11:12:04Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2703205&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-25T11:13:30Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2704401&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-25T11:14:03Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4315701&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-25T11:21:09Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4115705&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-25T12:04:51Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4113304&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-25T12:05:34Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4104501&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-25T12:09:20Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4114401&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-25T12:10:14Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4126504&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-25T12:11:34Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4123006&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-25T12:12:00Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4127304&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-25T12:12:48Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4102802&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-25T12:13:48Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4101705&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-25T12:13:52Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4125100&size=1",
-     "quando": "2026-09-25T12:15:38Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2511509&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-25T12:41:05Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2504033&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-25T12:44:04Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=5200506&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-25T12:51:55Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=3303500&published_since=2026-01-01&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-26T11:25:39Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4205407&published_since=2026-01-01&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-26T11:25:56Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2610905&published_since=2026-01-01&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-26T11:26:01Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=1303908&published_since=2026-01-01&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-26T11:26:07Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4202404&published_since=2026-06-29&size=1",
-     "quando": "2026-09-26T11:31:35Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=28&published_since=2026-06-29&size=1",
-     "quando": "2026-09-26T12:42:38Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=32&published_since=2026-06-29&size=1",
-     "quando": "2026-09-26T12:42:39Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=35&published_since=2026-06-29&size=1",
-     "quando": "2026-09-26T12:42:40Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=33&published_since=2026-06-29&size=1",
-     "quando": "2026-09-26T12:42:41Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=31&published_since=2026-06-29&size=1",
-     "quando": "2026-09-26T12:42:41Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=42&published_since=2026-06-29&size=1",
-     "quando": "2026-09-26T12:42:42Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2705309&size=1",
-     "quando": "2026-09-26T13:04:25Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=1301902&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-29T07:11:47Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=1300300&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-29T07:15:33Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=1303569&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-29T07:24:02Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=1303304&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-29T07:25:29Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=1300680&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-29T07:26:57Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=1300060&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
-     "quando": "2026-09-29T07:30:54Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=3557105&querystring=%22plano+de+conting%C3%AAncia%22+OR+plancon+OR+%22plano+municipal+de+prote%C3%A7%C3%A3o+e+defesa+civil%22&published_since=2025-10-01&excerpt_size=500&number_of_excerpts=1&size=4",
-     "quando": "2026-09-30T09:28:54Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4113700&querystring=%22plano+de+conting%C3%AAncia%22+OR+plancon+OR+%22plano+municipal+de+prote%C3%A7%C3%A3o+e+defesa+civil%22&published_since=2025-10-01&excerpt_size=500&number_of_excerpts=1&size=4",
-     "quando": "2026-09-30T13:51:31Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4119152&querystring=%22plano+de+conting%C3%AAncia%22+OR+plancon+OR+%22plano+municipal+de+prote%C3%A7%C3%A3o+e+defesa+civil%22&published_since=2025-10-01&excerpt_size=500&number_of_excerpts=1&size=4",
-     "quando": "2026-09-30T13:53:46Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    }
-   ],
-   "ultimo_acesso": "2026-09-30"
-  },
-  "zenodo.org": {
-   "status_robots": "permite",
-   "crawl_delay": 10.0,
-   "primeiro_acesso": "2026-09-24",
-   "total_acessos": 25,
-   "acessos": [
-    {
-     "url": "https://zenodo.org/api/records/20752238",
-     "quando": "2026-09-24T02:21:34Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://zenodo.org/api/records/20752238/versions/latest",
-     "quando": "2026-09-24T02:21:44Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://zenodo.org/api/records/20752301",
-     "quando": "2026-09-24T02:21:53Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://zenodo.org/api/records/20752301/versions/latest",
-     "quando": "2026-09-24T02:22:04Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://zenodo.org/api/records/20752301/files/sivep_dda_2025_csv.zip/content",
-     "quando": "2026-09-24T02:22:19Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://zenodo.org/api/records/20752301/files/sivep_dda_2026_csv.zip/content",
-     "quando": "2026-09-24T02:22:26Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://zenodo.org/api/records/20752238",
-     "quando": "2026-09-24T08:40:25Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://zenodo.org/api/records/20752238/versions/latest",
-     "quando": "2026-09-24T08:40:36Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://zenodo.org/api/records/20752301",
-     "quando": "2026-09-24T08:40:45Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://zenodo.org/api/records/20752301/versions/latest",
-     "quando": "2026-09-24T08:40:56Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://zenodo.org/api/records/20752301/files/sivep_dda_2025_csv.zip/content",
-     "quando": "2026-09-24T08:41:10Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://zenodo.org/api/records/20752301/files/sivep_dda_2026_csv.zip/content",
-     "quando": "2026-09-24T08:41:20Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://zenodo.org/api/records/20752238",
-     "quando": "2026-09-24T20:17:31Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://zenodo.org/api/records/20752238/versions/latest",
-     "quando": "2026-09-24T20:17:41Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://zenodo.org/api/records/20752301",
-     "quando": "2026-09-24T20:17:50Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://zenodo.org/api/records/20752301/versions/latest",
-     "quando": "2026-09-24T20:18:01Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://zenodo.org/api/records/20752301/files/sivep_dda_2025_csv.zip/content",
-     "quando": "2026-09-24T20:18:28Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://zenodo.org/api/records/20752301/files/sivep_dda_2026_csv.zip/content",
-     "quando": "2026-09-24T20:18:33Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://zenodo.org/api/records/20752238",
-     "quando": "2026-09-25T13:13:19Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://zenodo.org/api/records/20752238/versions/latest",
-     "quando": "2026-09-25T13:13:30Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://zenodo.org/api/records/20752301",
-     "quando": "2026-09-25T13:13:39Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://zenodo.org/api/records/20752301/versions/latest",
-     "quando": "2026-09-25T13:13:50Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://zenodo.org/api/records/20752301/files/sivep_dda_2025_csv.zip/content",
-     "quando": "2026-09-25T13:14:12Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://zenodo.org/api/records/20752301/files/sivep_dda_2026_csv.zip/content",
-     "quando": "2026-09-25T13:14:21Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://zenodo.org/api/records?q=infogripe&size=10",
-     "quando": "2026-09-26T11:53:49Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    }
-   ],
-   "ultimo_acesso": "2026-09-26"
-  },
-  "office365prodam-my.sharepoint.com": {
-   "status_robots": "proibe",
-   "crawl_delay": null,
-   "primeiro_acesso": "2026-09-25",
-   "total_acessos": 2,
-   "acessos": [
-    {
-     "url": "https://office365prodam-my.sharepoint.com/:b:/g/personal/secao_desenvolvimento_defesacivil_am_gov_br/EQSc_ZCsrulFlF4Qx6mHojIBC26bQCfDocECcZCcg62DRw?e=O9ssj3",
-     "quando": "2026-09-25T10:12:12Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://office365prodam-my.sharepoint.com/:b:/g/personal/secao_desenvolvimento_defesacivil_am_gov_br/EQSc_ZCsrulFlF4Qx6mHojIBC26bQCfDocECcZCcg62DRw?e=O9ssj3",
-     "quando": "2026-09-25T10:23:30Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    }
-   ],
-   "ultimo_acesso": "2026-09-25"
-  },
-  "www.diariomunicipal.sc.gov.br": {
-   "status_robots": "proibe",
-   "crawl_delay": 10.0,
-   "primeiro_acesso": "2026-09-26",
-   "total_acessos": 22,
-   "acessos": [
-    {
-     "url": "https://www.diariomunicipal.sc.gov.br/",
-     "quando": "2026-09-26T11:54:02Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.diariomunicipal.sc.gov.br/robots.txt",
-     "quando": "2026-09-26T11:54:12Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=%22plano%20de%20conting%C3%AAncia%22&view=rss",
-     "quando": "2026-09-26T11:54:29Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=%22plano%20de%20conting%C3%AAncia%22",
-     "quando": "2026-09-26T11:54:39Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=%22plano%20de%20conting%C3%AAncia%22",
-     "quando": "2026-09-26T11:55:04Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=%22plano+de+conting%C3%AAncia%22&dataInicial=01%2F01%2F2026&dataFinal=26%2F09%2F2026&view=rss",
-     "quando": "2026-09-26T11:55:46Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=%22plano+de+conting%C3%AAncia%22&dataInicial=01%2F01%2F2026&dataFinal=26%2F09%2F2026&view=rss&AtoASolrDocument_page=3",
-     "quando": "2026-09-26T11:55:56Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=%22plano+de+conting%C3%AAncia%22&dataInicial=01%2F01%2F2026&dataFinal=26%2F09%2F2026",
-     "quando": "2026-09-26T11:56:06Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=%22plano+de+conting%C3%AAncia%22&dataInicial=01%2F09%2F2026&dataFinal=05%2F09%2F2026&view=rss",
-     "quando": "2026-09-26T11:56:25Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22&dataInicial=01%2F01%2F2026&dataFinal=26%2F09%2F2026&view=rss",
-     "quando": "2026-09-26T11:56:35Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=zzqqxxnadaaqui",
-     "quando": "2026-09-26T11:56:51Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&view=rss&q=zzqqxxnadaaqui",
-     "quando": "2026-09-26T11:57:00Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.diariomunicipal.sc.gov.br/",
-     "quando": "2026-09-26T11:57:12Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.diariomunicipal.sc.gov.br/?q=%22plano%20de%20conting%C3%AAncia%22&dataInicial=01/09/2026&dataFinal=05/09/2026&view=rss",
-     "quando": "2026-09-26T11:57:30Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.diariomunicipal.sc.gov.br/?q=%22plano%20de%20conting%C3%AAncia%22&view=rss",
-     "quando": "2026-09-26T11:57:40Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.diariomunicipal.sc.gov.br/?q=%22plano%20de%20conting%C3%AAncia%22&dataInicial=01/01/2026&dataFinal=26/09/2026&view=rss",
-     "quando": "2026-09-26T11:57:50Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.diariomunicipal.sc.gov.br/?q=%22plano%20de%20conting%C3%AAncia%22",
-     "quando": "2026-09-26T11:58:02Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.diariomunicipal.sc.gov.br/?q=%22plano%20de%20conting%C3%AAncia%22&dataInicial=01/09/2026&dataFinal=05/09/2026",
-     "quando": "2026-09-26T11:58:12Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.diariomunicipal.sc.gov.br/?q=%22plano%20de%20conting%C3%AAncia%22&dataInicial=01/09/2026&dataFinal=05/09/2026",
-     "quando": "2026-09-26T11:58:43Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.diariomunicipal.sc.gov.br/?q=%22plano%20de%20conting%C3%AAncia%22&dataInicial=01/09/2026&dataFinal=05/09/2026",
-     "quando": "2026-09-26T11:58:58Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.diariomunicipal.sc.gov.br/atos/8684094",
-     "quando": "2026-09-26T11:59:18Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.diariomunicipal.sc.gov.br/atos/8684094",
-     "quando": "2026-09-26T11:59:43Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    }
-   ],
-   "ultimo_acesso": "2026-09-26"
-  },
-  "validator.w3.org": {
-   "status_robots": "permite",
-   "crawl_delay": null,
-   "primeiro_acesso": "2026-09-26",
-   "total_acessos": 1,
-   "acessos": [
-    {
-     "url": "https://validator.w3.org/nu/?out=json&doc=https%3A%2F%2Fwww.saude.df.gov.br%2Finformes-dengue-chikungunya-zika-febre-amarela",
-     "quando": "2026-09-26T12:45:50Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    }
-   ],
-   "ultimo_acesso": "2026-09-26"
-  },
-  "www.saopaulo.sp.gov.br": {
-   "status_robots": "proibe",
-   "crawl_delay": null,
-   "primeiro_acesso": "2026-09-26",
-   "total_acessos": 1,
-   "acessos": [
-    {
-     "url": "https://www.saopaulo.sp.gov.br/wp-json/wp/v2/media?search=plancon&per_page=100&_fields=source_url,title,date",
-     "quando": "2026-09-26T13:50:47Z",
      "origem": "claude",
      "cliente": "MonitorElNinoBrasil/2.2.4"
     }
@@ -3139,20 +1270,1889 @@
    ],
    "ultimo_acesso": "2026-09-30"
   },
-  "acessoinformacao.org.br": {
+  "office365prodam-my.sharepoint.com": {
    "status_robots": "proibe",
    "crawl_delay": null,
-   "primeiro_acesso": "2026-09-28",
-   "total_acessos": 1,
+   "primeiro_acesso": "2026-09-25",
+   "total_acessos": 2,
    "acessos": [
     {
-     "url": "https://acessoinformacao.org.br/licitacoes/arquivos/download/519738d5b18c9de931797692eae9444c09bb4aaf.pdf",
-     "quando": "2026-09-29T01:20:00Z",
-     "origem": "diagnostico",
+     "url": "https://office365prodam-my.sharepoint.com/:b:/g/personal/secao_desenvolvimento_defesacivil_am_gov_br/EQSc_ZCsrulFlF4Qx6mHojIBC26bQCfDocECcZCcg62DRw?e=O9ssj3",
+     "quando": "2026-09-25T10:12:12Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://office365prodam-my.sharepoint.com/:b:/g/personal/secao_desenvolvimento_defesacivil_am_gov_br/EQSc_ZCsrulFlF4Qx6mHojIBC26bQCfDocECcZCcg62DRw?e=O9ssj3",
+     "quando": "2026-09-25T10:23:30Z",
+     "origem": "claude",
      "cliente": "MonitorElNinoBrasil/2.2.4"
     }
    ],
-   "ultimo_acesso": "2026-09-28"
+   "ultimo_acesso": "2026-09-25"
+  },
+  "queridodiario.ok.org.br": {
+   "status_robots": "permite",
+   "crawl_delay": null,
+   "primeiro_acesso": "2026-09-24",
+   "total_acessos": 50,
+   "acessos": [
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2609907&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22&size=50",
+     "quando": "2026-09-24T01:47:47Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4216701&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22&size=50",
+     "quando": "2026-09-24T01:53:01Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4212650&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22&size=50",
+     "quando": "2026-09-24T01:54:18Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=3302056&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22&size=50",
+     "quando": "2026-09-24T07:50:36Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4219309&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22&size=50",
+     "quando": "2026-09-24T07:58:47Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4217303&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22&size=50",
+     "quando": "2026-09-24T08:01:37Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4204004&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-25T11:02:52Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4212270&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-25T11:06:02Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2113009&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-25T11:07:03Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2106706&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-25T11:08:55Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2102606&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-25T11:09:24Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2104099&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-25T11:10:27Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2708808&published_since=2026-06-29&size=1",
+     "quando": "2026-09-25T11:12:04Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2703205&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-25T11:13:30Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2704401&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-25T11:14:03Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4315701&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-25T11:21:09Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4115705&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-25T12:04:51Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4113304&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-25T12:05:34Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4104501&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-25T12:09:20Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4114401&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-25T12:10:14Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4126504&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-25T12:11:34Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4123006&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-25T12:12:00Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4127304&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-25T12:12:48Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4102802&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-25T12:13:48Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4101705&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-25T12:13:52Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4125100&size=1",
+     "quando": "2026-09-25T12:15:38Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2511509&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-25T12:41:05Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2504033&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-25T12:44:04Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=5200506&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-25T12:51:55Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=3303500&published_since=2026-01-01&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-26T11:25:39Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4205407&published_since=2026-01-01&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-26T11:25:56Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2610905&published_since=2026-01-01&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-26T11:26:01Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=1303908&published_since=2026-01-01&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-26T11:26:07Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4202404&published_since=2026-06-29&size=1",
+     "quando": "2026-09-26T11:31:35Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=28&published_since=2026-06-29&size=1",
+     "quando": "2026-09-26T12:42:38Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=32&published_since=2026-06-29&size=1",
+     "quando": "2026-09-26T12:42:39Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=35&published_since=2026-06-29&size=1",
+     "quando": "2026-09-26T12:42:40Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=33&published_since=2026-06-29&size=1",
+     "quando": "2026-09-26T12:42:41Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=31&published_since=2026-06-29&size=1",
+     "quando": "2026-09-26T12:42:41Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=42&published_since=2026-06-29&size=1",
+     "quando": "2026-09-26T12:42:42Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2705309&size=1",
+     "quando": "2026-09-26T13:04:25Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=1301902&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-29T07:11:47Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=1300300&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-29T07:15:33Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=1303569&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-29T07:24:02Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=1303304&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-29T07:25:29Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=1300680&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-29T07:26:57Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=1300060&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-29T07:30:54Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=3557105&querystring=%22plano+de+conting%C3%AAncia%22+OR+plancon+OR+%22plano+municipal+de+prote%C3%A7%C3%A3o+e+defesa+civil%22&published_since=2025-10-01&excerpt_size=500&number_of_excerpts=1&size=4",
+     "quando": "2026-09-30T09:28:54Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4113700&querystring=%22plano+de+conting%C3%AAncia%22+OR+plancon+OR+%22plano+municipal+de+prote%C3%A7%C3%A3o+e+defesa+civil%22&published_since=2025-10-01&excerpt_size=500&number_of_excerpts=1&size=4",
+     "quando": "2026-09-30T13:51:31Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4119152&querystring=%22plano+de+conting%C3%AAncia%22+OR+plancon+OR+%22plano+municipal+de+prote%C3%A7%C3%A3o+e+defesa+civil%22&published_since=2025-10-01&excerpt_size=500&number_of_excerpts=1&size=4",
+     "quando": "2026-09-30T13:53:46Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    }
+   ],
+   "ultimo_acesso": "2026-09-30"
+  },
+  "validator.w3.org": {
+   "status_robots": "permite",
+   "crawl_delay": null,
+   "primeiro_acesso": "2026-09-26",
+   "total_acessos": 1,
+   "acessos": [
+    {
+     "url": "https://validator.w3.org/nu/?out=json&doc=https%3A%2F%2Fwww.saude.df.gov.br%2Finformes-dengue-chikungunya-zika-febre-amarela",
+     "quando": "2026-09-26T12:45:50Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    }
+   ],
+   "ultimo_acesso": "2026-09-26"
+  },
+  "www.defesacivil.mt.gov.br": {
+   "status_robots": "proibe",
+   "crawl_delay": 30.0,
+   "primeiro_acesso": "2026-09-23",
+   "total_acessos": 1,
+   "acessos": [
+    {
+     "url": "http://www.defesacivil.mt.gov.br/sitemap.xml",
+     "quando": "2026-09-23T21:41:51Z",
+     "origem": "§185 releitura MT",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    }
+   ],
+   "ultimo_acesso": "2026-09-23"
+  },
+  "www.diariomunicipal.sc.gov.br": {
+   "status_robots": "proibe",
+   "crawl_delay": 10.0,
+   "primeiro_acesso": "2026-09-26",
+   "total_acessos": 22,
+   "acessos": [
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/",
+     "quando": "2026-09-26T11:54:02Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/robots.txt",
+     "quando": "2026-09-26T11:54:12Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=%22plano%20de%20conting%C3%AAncia%22&view=rss",
+     "quando": "2026-09-26T11:54:29Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=%22plano%20de%20conting%C3%AAncia%22",
+     "quando": "2026-09-26T11:54:39Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=%22plano%20de%20conting%C3%AAncia%22",
+     "quando": "2026-09-26T11:55:04Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=%22plano+de+conting%C3%AAncia%22&dataInicial=01%2F01%2F2026&dataFinal=26%2F09%2F2026&view=rss",
+     "quando": "2026-09-26T11:55:46Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=%22plano+de+conting%C3%AAncia%22&dataInicial=01%2F01%2F2026&dataFinal=26%2F09%2F2026&view=rss&AtoASolrDocument_page=3",
+     "quando": "2026-09-26T11:55:56Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=%22plano+de+conting%C3%AAncia%22&dataInicial=01%2F01%2F2026&dataFinal=26%2F09%2F2026",
+     "quando": "2026-09-26T11:56:06Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=%22plano+de+conting%C3%AAncia%22&dataInicial=01%2F09%2F2026&dataFinal=05%2F09%2F2026&view=rss",
+     "quando": "2026-09-26T11:56:25Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22&dataInicial=01%2F01%2F2026&dataFinal=26%2F09%2F2026&view=rss",
+     "quando": "2026-09-26T11:56:35Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=zzqqxxnadaaqui",
+     "quando": "2026-09-26T11:56:51Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&view=rss&q=zzqqxxnadaaqui",
+     "quando": "2026-09-26T11:57:00Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/",
+     "quando": "2026-09-26T11:57:12Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?q=%22plano%20de%20conting%C3%AAncia%22&dataInicial=01/09/2026&dataFinal=05/09/2026&view=rss",
+     "quando": "2026-09-26T11:57:30Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?q=%22plano%20de%20conting%C3%AAncia%22&view=rss",
+     "quando": "2026-09-26T11:57:40Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?q=%22plano%20de%20conting%C3%AAncia%22&dataInicial=01/01/2026&dataFinal=26/09/2026&view=rss",
+     "quando": "2026-09-26T11:57:50Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?q=%22plano%20de%20conting%C3%AAncia%22",
+     "quando": "2026-09-26T11:58:02Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?q=%22plano%20de%20conting%C3%AAncia%22&dataInicial=01/09/2026&dataFinal=05/09/2026",
+     "quando": "2026-09-26T11:58:12Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?q=%22plano%20de%20conting%C3%AAncia%22&dataInicial=01/09/2026&dataFinal=05/09/2026",
+     "quando": "2026-09-26T11:58:43Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?q=%22plano%20de%20conting%C3%AAncia%22&dataInicial=01/09/2026&dataFinal=05/09/2026",
+     "quando": "2026-09-26T11:58:58Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/atos/8684094",
+     "quando": "2026-09-26T11:59:18Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/atos/8684094",
+     "quando": "2026-09-26T11:59:43Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    }
+   ],
+   "ultimo_acesso": "2026-09-26"
+  },
+  "www.in.gov.br": {
+   "status_robots": "proibe",
+   "crawl_delay": null,
+   "primeiro_acesso": "2026-09-24",
+   "total_acessos": 1080,
+   "acessos": [
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.172-de-23-de-setembro-de-2026-733722339",
+     "quando": "2026-09-29T08:15:07Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.171-de-23-de-setembro-de-2026-733730824",
+     "quando": "2026-09-29T08:15:10Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.172-de-23-de-setembro-de-2026-733722339",
+     "quando": "2026-09-29T08:15:10Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.172-de-23-de-setembro-de-2026-733722339",
+     "quando": "2026-09-29T08:15:12Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.175-de-23-de-setembro-de-2026-733736080",
+     "quando": "2026-09-29T08:15:14Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.151-de-21-de-setembro-de-2026-733209089",
+     "quando": "2026-09-29T08:15:20Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.151-de-21-de-setembro-de-2026-733209089",
+     "quando": "2026-09-29T08:15:25Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.147-de-21-de-setembro-de-2026-733231729",
+     "quando": "2026-09-29T08:15:31Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.147-de-21-de-setembro-de-2026-733231729",
+     "quando": "2026-09-29T08:15:35Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.147-de-21-de-setembro-de-2026-733231729",
+     "quando": "2026-09-29T08:15:40Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.150-de-21-de-setembro-de-2026-733225632",
+     "quando": "2026-09-29T08:15:45Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.150-de-21-de-setembro-de-2026-733225632",
+     "quando": "2026-09-29T08:15:50Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.150-de-21-de-setembro-de-2026-733225632",
+     "quando": "2026-09-29T08:15:55Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.150-de-21-de-setembro-de-2026-733225632",
+     "quando": "2026-09-29T08:15:57Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.150-de-21-de-setembro-de-2026-733225632",
+     "quando": "2026-09-29T08:15:59Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.150-de-21-de-setembro-de-2026-733225632",
+     "quando": "2026-09-29T08:16:03Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.147-de-21-de-setembro-de-2026-733231729",
+     "quando": "2026-09-29T08:16:04Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.147-de-21-de-setembro-de-2026-733231729",
+     "quando": "2026-09-29T08:16:06Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.150-de-21-de-setembro-de-2026-733225632",
+     "quando": "2026-09-29T08:16:07Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.151-de-21-de-setembro-de-2026-733209089",
+     "quando": "2026-09-29T08:16:07Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.122-de-18-de-setembro-de-2026-732952594",
+     "quando": "2026-09-29T08:16:13Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.122-de-18-de-setembro-de-2026-732952594",
+     "quando": "2026-09-29T08:16:19Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.121-de-18-de-setembro-de-2026-732965760",
+     "quando": "2026-09-29T08:16:25Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.121-de-18-de-setembro-de-2026-732965760",
+     "quando": "2026-09-29T08:16:31Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.121-de-18-de-setembro-de-2026-732965760",
+     "quando": "2026-09-29T08:16:35Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.122-de-18-de-setembro-de-2026-732952594",
+     "quando": "2026-09-29T08:16:37Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.089-de-16-de-setembro-de-2026-732627596",
+     "quando": "2026-09-29T08:16:42Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.089-de-16-de-setembro-de-2026-732627596",
+     "quando": "2026-09-29T08:16:43Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.092-de-16-de-setembro-de-2026-732626172",
+     "quando": "2026-09-29T08:16:45Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.092-de-16-de-setembro-de-2026-732626172",
+     "quando": "2026-09-29T08:16:47Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.099-de-17-de-setembro-de-2026-732615740",
+     "quando": "2026-09-29T08:16:48Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.099-de-17-de-setembro-de-2026-732615740",
+     "quando": "2026-09-29T08:16:49Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.100-de-17-de-setembro-de-2026-732692809",
+     "quando": "2026-09-29T08:16:51Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.101-de-17-de-setembro-de-2026-732689172",
+     "quando": "2026-09-29T08:16:52Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.101-de-17-de-setembro-de-2026-732689172",
+     "quando": "2026-09-29T08:16:54Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.072-de-16-de-setembro-de-2026-732393483",
+     "quando": "2026-09-29T08:17:00Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.072-de-16-de-setembro-de-2026-732393483",
+     "quando": "2026-09-29T08:17:04Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.073-de-16-de-setembro-de-2026-732413869",
+     "quando": "2026-09-29T08:17:09Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22reconhece%20a%20situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=29-06-2026&publishTo=29-09-2026&delta=50",
+     "quando": "2026-09-29T08:17:12Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22reconhece%20a%20situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=29-06-2026&publishTo=14-08-2026&delta=50",
+     "quando": "2026-09-29T08:17:20Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22reconhece%20a%20situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=29-06-2026&publishTo=22-07-2026&delta=50",
+     "quando": "2026-09-29T08:17:26Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22reconhece%20a%20situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=23-07-2026&publishTo=14-08-2026&delta=50",
+     "quando": "2026-09-29T08:17:32Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22reconhece%20a%20situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=15-08-2026&publishTo=29-09-2026&delta=50",
+     "quando": "2026-09-29T08:17:36Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22reconhece%20a%20situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=15-08-2026&publishTo=06-09-2026&delta=50",
+     "quando": "2026-09-29T08:17:41Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22reconhece%20a%20situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=07-09-2026&publishTo=29-09-2026&delta=50",
+     "quando": "2026-09-29T08:17:46Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.357-de-20-de-julho-de-2026-720546114",
+     "quando": "2026-09-29T08:17:51Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.358-de-20-de-julho-de-2026-720533474",
+     "quando": "2026-09-29T08:17:55Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.342-de-17-de-julho-de-2026-720019750",
+     "quando": "2026-09-29T08:17:58Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.345-de-17-de-julho-de-2026-720018074",
+     "quando": "2026-09-29T08:18:02Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.343-de-17-de-julho-de-2026-720001503",
+     "quando": "2026-09-29T08:18:10Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.303-de-15-de-julho-de-2026-719810584",
+     "quando": "2026-09-29T08:18:13Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.304-de-15-de-julho-de-2026-719783854",
+     "quando": "2026-09-29T08:18:17Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.305-de-15-de-julho-de-2026-719725013",
+     "quando": "2026-09-29T08:18:22Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.267-de-10-de-julho-de-2026-718716536",
+     "quando": "2026-09-29T08:18:25Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.268-de-10-de-julho-de-2026-718709064",
+     "quando": "2026-09-29T08:18:29Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.252-de-8-de-julho-de-2026-717844541",
+     "quando": "2026-09-29T08:18:33Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.247-de-8-de-julho-de-2026-717836463",
+     "quando": "2026-09-29T08:18:36Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.248-de-8-de-julho-de-2026-717831365",
+     "quando": "2026-09-29T08:18:39Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.212-de-6-de-julho-de-2026-717197515",
+     "quando": "2026-09-29T08:18:43Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.210-de-6-de-julho-de-2026-717187201",
+     "quando": "2026-09-29T08:18:48Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.211-de-6-de-julho-de-2026-717183324",
+     "quando": "2026-09-29T08:18:53Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.201-de-3-de-julho-de-2026-716871005",
+     "quando": "2026-09-29T08:18:57Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.200-de-3-de-julho-de-2026-716868342",
+     "quando": "2026-09-29T08:19:04Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.170-de-2-de-julho-de-2026-716695033",
+     "quando": "2026-09-29T08:19:11Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.172-de-2-de-julho-de-2026-716692270",
+     "quando": "2026-09-29T08:19:15Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.171-de-2-de-julho-de-2026-716685750",
+     "quando": "2026-09-29T08:19:18Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.145-de-30-de-junho-de-2026-716352466",
+     "quando": "2026-09-29T08:19:21Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.117-de-30-de-junho-de-2026-716350906",
+     "quando": "2026-09-29T08:19:25Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.140-de-30-de-junho-de-2026-716349756",
+     "quando": "2026-09-29T08:19:29Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.116-de-30-de-junho-de-2026-716335482",
+     "quando": "2026-09-29T08:19:33Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.115-de-30-de-junho-de-2026-716321559",
+     "quando": "2026-09-29T08:19:36Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.584-de-12-de-agosto-de-2026-725016761",
+     "quando": "2026-09-29T08:19:39Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.585-de-12-de-agosto-de-2026-725009950",
+     "quando": "2026-09-29T08:19:43Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.582-de-12-de-agosto-de-2026-725000932",
+     "quando": "2026-09-29T08:19:47Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.583-de-12-de-agosto-de-2026-724994564",
+     "quando": "2026-09-29T08:19:51Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.579-de-11-de-agosto-de-2026-724729920",
+     "quando": "2026-09-29T08:19:55Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.546-de-6-de-agosto-de-2026-724098638",
+     "quando": "2026-09-29T08:19:58Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.553-de-6-de-agosto-de-2026-724092659",
+     "quando": "2026-09-29T08:20:01Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.549-de-6-de-agosto-de-2026-724081916",
+     "quando": "2026-09-29T08:20:05Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.548-de-6-de-agosto-de-2026-724079573",
+     "quando": "2026-09-29T08:20:09Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.564-de-6-de-agosto-de-2026-724079492",
+     "quando": "2026-09-29T08:20:13Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.522-de-5-de-agosto-de-2026-723812937",
+     "quando": "2026-09-29T08:20:16Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.520-de-5-de-agosto-de-2026-723742387",
+     "quando": "2026-09-29T08:20:19Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.521-de-5-de-agosto-de-2026-723721407",
+     "quando": "2026-09-29T08:20:23Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.485-de-3-de-agosto-de-2026-723046710",
+     "quando": "2026-09-29T08:20:26Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.486-de-3-de-agosto-de-2026-723044793",
+     "quando": "2026-09-29T08:20:30Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.484-de-3-de-agosto-de-2026-723039606",
+     "quando": "2026-09-29T08:20:33Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.475-de-31-de-julho-de-2026-722741334",
+     "quando": "2026-09-29T08:20:37Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.476-de-31-de-julho-de-2026-722728218",
+     "quando": "2026-09-29T08:20:41Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.477-de-31-de-julho-de-2026-722723955",
+     "quando": "2026-09-29T08:20:44Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.455-de-29-de-julho-de-2026-722136837",
+     "quando": "2026-09-29T08:20:48Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.454-de-29-de-julho-de-2026-722126908",
+     "quando": "2026-09-29T08:20:52Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.456-de-29-de-julho-de-2026-722124585",
+     "quando": "2026-09-29T08:20:55Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.449-de-29-de-julho-de-2026-722120479",
+     "quando": "2026-09-29T08:20:59Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.419-de-27-de-julho-de-2026-721629309",
+     "quando": "2026-09-29T08:21:02Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.420-de-27-de-julho-de-2026-721627710",
+     "quando": "2026-09-29T08:21:06Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.417-de-27-de-julho-de-2026-721609441",
+     "quando": "2026-09-29T08:21:09Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.393-de-24-de-julho-de-2026-721365065",
+     "quando": "2026-09-29T08:21:13Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.392-de-24-de-julho-de-2026-721363186",
+     "quando": "2026-09-29T08:21:16Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.391-de-24-de-julho-de-2026-721359587",
+     "quando": "2026-09-29T08:21:20Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.382-de-23-de-julho-de-2026-721085741",
+     "quando": "2026-09-29T08:21:23Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.384-de-23-de-julho-de-2026-721084691",
+     "quando": "2026-09-29T08:21:27Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.885-de-3-de-setembro-de-2026-730246944",
+     "quando": "2026-09-29T08:21:30Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.886-de-3-de-setembro-de-2026-730234723",
+     "quando": "2026-09-29T08:21:34Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.884-de-3-de-setembro-de-2026-730216547",
+     "quando": "2026-09-29T08:21:38Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.890-de-3-de-setembro-de-2026-730143671",
+     "quando": "2026-09-29T08:21:41Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.858-de-2-de-setembro-de-2026-729943438",
+     "quando": "2026-09-29T08:21:44Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.853-de-2-de-setembro-de-2026-729942478",
+     "quando": "2026-09-29T08:21:48Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.855-de-2-de-setembro-de-2026-729934800",
+     "quando": "2026-09-29T08:21:51Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.865-de-2-de-setembro-de-2026-729855869",
+     "quando": "2026-09-29T08:21:55Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.819-de-31-de-agosto-de-2026-729410676",
+     "quando": "2026-09-29T08:21:59Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.823-de-31-de-agosto-de-2026-729321350",
+     "quando": "2026-09-29T08:22:02Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.809-de-28-de-agosto-de-2026-729107391",
+     "quando": "2026-09-29T08:22:05Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.808-de-28-de-agosto-de-2026-729106426",
+     "quando": "2026-09-29T08:22:08Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.814-de-28-de-agosto-de-2026-729102103",
+     "quando": "2026-09-29T08:22:12Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2811-de-28-de-agosto-de-2026-729091142",
+     "quando": "2026-09-29T08:22:15Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.810-de-28-de-agosto-de-2026-729003932",
+     "quando": "2026-09-29T08:22:23Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.794-de-27-de-agosto-de-2026-728591204",
+     "quando": "2026-09-29T08:22:26Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.796-de-27-de-agosto-de-2026-728583861",
+     "quando": "2026-09-29T08:22:29Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.793-de-27-de-agosto-de-2026-728569541",
+     "quando": "2026-09-29T08:22:33Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.795-de-27-de-agosto-de-2026-728566397",
+     "quando": "2026-09-29T08:22:38Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.771-de-26-de-agosto-de-2026-728296119",
+     "quando": "2026-09-29T08:22:41Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.772-de-26-de-agosto-de-2026-728294426",
+     "quando": "2026-09-29T08:22:45Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.758-de-25-de-agosto-de-2026-728026835",
+     "quando": "2026-09-29T08:22:49Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.757-de-25-de-agosto-de-2026-728019950",
+     "quando": "2026-09-29T08:22:52Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.759-de-25-de-agosto-de-2026-728018798",
+     "quando": "2026-09-29T08:22:56Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.754-de-25-de-agosto-de-2026-727978015",
+     "quando": "2026-09-29T08:23:00Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.724-de-22-de-agosto-de-2026-727766152",
+     "quando": "2026-09-29T08:23:04Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.727-de-22-de-agosto-de-2026-727764068",
+     "quando": "2026-09-29T08:23:08Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.735-de-24-de-agosto-de-2026-727755582",
+     "quando": "2026-09-29T08:23:11Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.731-de-24-de-agosto-de-2026-727713385",
+     "quando": "2026-09-29T08:23:15Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.704-de-21-de-agosto-de-2026-727310275",
+     "quando": "2026-09-29T08:23:19Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.705-de-21-de-agosto-de-2026-727306637",
+     "quando": "2026-09-29T08:23:23Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.677-de-20-de-agosto-de-2026-727024740",
+     "quando": "2026-09-29T08:23:27Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.678-de-20-de-agosto-de-2026-726975780",
+     "quando": "2026-09-29T08:23:30Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.658-de-19-de-agosto-de-2026-726694057",
+     "quando": "2026-09-29T08:23:37Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.667-de-19-de-agosto-de-2026-726690835",
+     "quando": "2026-09-29T08:23:42Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.645-de-19-de-agosto-de-2026-726687651",
+     "quando": "2026-09-29T08:23:45Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.622-de-17-de-agosto-de-2026-725914376",
+     "quando": "2026-09-29T08:23:49Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.627-de-17-de-agosto-de-2026-725903158",
+     "quando": "2026-09-29T08:23:53Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.609-de-14-de-agosto-de-2026-725627575",
+     "quando": "2026-09-29T08:23:57Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.607-de-14-de-agosto-de-2026-725625721",
+     "quando": "2026-09-29T08:24:00Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.608-de-14-de-agosto-de-2026-725602104",
+     "quando": "2026-09-29T08:24:04Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.606-de-14-de-agosto-de-2026-725599306",
+     "quando": "2026-09-29T08:24:07Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.265-de-28-de-setembro-de-2026-735114233",
+     "quando": "2026-09-29T08:24:09Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.264-de-28-de-setembro-de-2026-735107052",
+     "quando": "2026-09-29T08:24:12Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.263-de-28-de-setembro-de-2026-735103331",
+     "quando": "2026-09-29T08:24:15Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.255-de-25-de-setembro-de-2026-734861313",
+     "quando": "2026-09-29T08:24:17Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.250-de-25-de-setembro-de-2026-734855198",
+     "quando": "2026-09-29T08:24:20Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.256-de-25-de-setembro-de-2026-734835734",
+     "quando": "2026-09-29T08:24:22Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.252-de-25-de-setembro-de-2026-734823773",
+     "quando": "2026-09-29T08:24:25Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.257-de-25-de-setembro-de-2026-734820011",
+     "quando": "2026-09-29T08:24:27Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.251-de-25-de-setembro-de-2026-734811858",
+     "quando": "2026-09-29T08:24:29Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.196-de-24-de-setembro-de-2026-734502074",
+     "quando": "2026-09-29T08:24:32Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.198-de-24-de-setembro-de-2026-734491229",
+     "quando": "2026-09-29T08:24:36Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.197-de-24-de-setembro-de-2026-734433578",
+     "quando": "2026-09-29T08:24:40Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.195-de-24-de-setembro-de-2026-734428895",
+     "quando": "2026-09-29T08:24:43Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.175-de-23-de-setembro-de-2026-733736080",
+     "quando": "2026-09-29T08:24:47Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.171-de-23-de-setembro-de-2026-733730824",
+     "quando": "2026-09-29T08:24:51Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.172-de-23-de-setembro-de-2026-733722339",
+     "quando": "2026-09-29T08:24:53Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.147-de-21-de-setembro-de-2026-733231729",
+     "quando": "2026-09-29T08:24:56Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.150-de-21-de-setembro-de-2026-733225632",
+     "quando": "2026-09-29T08:24:58Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.151-de-21-de-setembro-de-2026-733209089",
+     "quando": "2026-09-29T08:25:00Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.121-de-18-de-setembro-de-2026-732965760",
+     "quando": "2026-09-29T08:25:03Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.122-de-18-de-setembro-de-2026-732952594",
+     "quando": "2026-09-29T08:25:08Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.100-de-17-de-setembro-de-2026-732692809",
+     "quando": "2026-09-29T08:25:10Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.101-de-17-de-setembro-de-2026-732689172",
+     "quando": "2026-09-29T08:25:12Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.089-de-16-de-setembro-de-2026-732627596",
+     "quando": "2026-09-29T08:25:16Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.092-de-16-de-setembro-de-2026-732626172",
+     "quando": "2026-09-29T08:25:23Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.099-de-17-de-setembro-de-2026-732615740",
+     "quando": "2026-09-29T08:25:27Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.073-de-16-de-setembro-de-2026-732413869",
+     "quando": "2026-09-29T08:25:30Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.074-de-16-de-setembro-de-2026-732409465",
+     "quando": "2026-09-29T08:25:33Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.072-de-16-de-setembro-de-2026-732393483",
+     "quando": "2026-09-29T08:25:37Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.084-de-16-de-setembro-de-2026-732322158",
+     "quando": "2026-09-29T08:25:41Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.065-de-15-de-setembro-de-2026-732151213",
+     "quando": "2026-09-29T08:25:44Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.032-de-14-de-setembro-de-2026-731888520",
+     "quando": "2026-09-29T08:25:47Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.034-de-14-de-setembro-de-2026-731812545",
+     "quando": "2026-09-29T08:25:51Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.031-de-14-de-setembro-de-2026-731808884",
+     "quando": "2026-09-29T08:25:54Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.005-de-10-de-setembro-de-2026-731342970",
+     "quando": "2026-09-29T08:25:58Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.003-de-10-de-setembro-de-2026-731278702",
+     "quando": "2026-09-29T08:26:02Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.971-de-9-de-setembro-de-2026-731066103",
+     "quando": "2026-09-29T08:26:06Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.972-de-9-de-setembro-de-2026-731062319",
+     "quando": "2026-09-29T08:26:10Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.970-de-9-de-setembro-de-2026-730978443",
+     "quando": "2026-09-29T08:26:13Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.943-de-8-de-setembro-de-2026-730775565",
+     "quando": "2026-09-29T08:26:17Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.942-de-8-de-setembro-de-2026-730722652",
+     "quando": "2026-09-29T08:26:20Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.907-de-4-de-setembro-de-2026-730283772",
+     "quando": "2026-09-29T08:26:24Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.908-de-4-de-setembro-de-2026-730265021",
+     "quando": "2026-09-29T08:26:28Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.905-de-3-de-setembro-de-2026-730257771",
+     "quando": "2026-09-29T08:26:31Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/leiturajornal?data=13-11-2024&secao=do1",
+     "quando": "2026-09-30T17:30:58Z",
+     "origem": "sonda_mma",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/leiturajornal?data=13-11-2024&secao=do1",
+     "quando": "2026-09-30T17:31:59Z",
+     "origem": "sonda_mma",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-gm/mma-n-1.202-de-11-de-novembro-de-2024-595667200",
+     "quando": "2026-09-30T17:33:00Z",
+     "origem": "sonda_mma",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22munic%C3%ADpios+priorit%C3%A1rios%22+desmatamento&s=do1&exactDate=personalizado&publishFrom=12-11-2024&publishTo=30-09-2026&delta=20",
+     "quando": "2026-09-30T17:33:54Z",
+     "origem": "sonda_mma",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22munic%C3%ADpios+priorit%C3%A1rios%22+desmatamento&s=do1&exactDate=personalizado&publishFrom=12-11-2024&publishTo=30-09-2026&delta=20",
+     "quando": "2026-09-30T17:34:05Z",
+     "origem": "sonda_mma",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22munic%C3%ADpios+priorit%C3%A1rios%22+desmatamento&s=do1&exactDate=personalizado&publishFrom=12-11-2024&publishTo=30-09-2026&delta=20",
+     "quando": "2026-09-30T17:34:15Z",
+     "origem": "sonda_mma",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-gm/mma-n-1.202-de-11-de-novembro-de-2024-595667200",
+     "quando": "2026-09-30T17:34:35Z",
+     "origem": "sonda_mma",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-gm/mma-n-1.202-de-11-de-novembro-de-2024-595667200",
+     "quando": "2026-09-30T17:36:25Z",
+     "origem": "coletar_prioritarios_mma",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-gm/mma-n-1.202-de-11-de-novembro-de-2024-595667200",
+     "quando": "2026-09-30T17:36:35Z",
+     "origem": "sonda",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-gm/mma-n-1.202-de-11-de-novembro-de-2024-595667200",
+     "quando": "2026-09-30T17:36:48Z",
+     "origem": "coletar_prioritarios_mma",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-gm/mma-n-1.202-de-11-de-novembro-de-2024-595667200",
+     "quando": "2026-09-30T17:37:08Z",
+     "origem": "coletar_prioritarios_mma",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-gm/mma-n-1.202-de-11-de-novembro-de-2024-595667200",
+     "quando": "2026-09-30T17:49:25Z",
+     "origem": "coletar_prioritarios_mma",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    }
+   ],
+   "ultimo_acesso": "2026-09-30"
+  },
+  "www.saopaulo.sp.gov.br": {
+   "status_robots": "proibe",
+   "crawl_delay": null,
+   "primeiro_acesso": "2026-09-26",
+   "total_acessos": 1,
+   "acessos": [
+    {
+     "url": "https://www.saopaulo.sp.gov.br/wp-json/wp/v2/media?search=plancon&per_page=100&_fields=source_url,title,date",
+     "quando": "2026-09-26T13:50:47Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    }
+   ],
+   "ultimo_acesso": "2026-09-26"
+  },
+  "zenodo.org": {
+   "status_robots": "permite",
+   "crawl_delay": 10.0,
+   "primeiro_acesso": "2026-09-24",
+   "total_acessos": 25,
+   "acessos": [
+    {
+     "url": "https://zenodo.org/api/records/20752238",
+     "quando": "2026-09-24T02:21:34Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://zenodo.org/api/records/20752238/versions/latest",
+     "quando": "2026-09-24T02:21:44Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://zenodo.org/api/records/20752301",
+     "quando": "2026-09-24T02:21:53Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://zenodo.org/api/records/20752301/versions/latest",
+     "quando": "2026-09-24T02:22:04Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://zenodo.org/api/records/20752301/files/sivep_dda_2025_csv.zip/content",
+     "quando": "2026-09-24T02:22:19Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://zenodo.org/api/records/20752301/files/sivep_dda_2026_csv.zip/content",
+     "quando": "2026-09-24T02:22:26Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://zenodo.org/api/records/20752238",
+     "quando": "2026-09-24T08:40:25Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://zenodo.org/api/records/20752238/versions/latest",
+     "quando": "2026-09-24T08:40:36Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://zenodo.org/api/records/20752301",
+     "quando": "2026-09-24T08:40:45Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://zenodo.org/api/records/20752301/versions/latest",
+     "quando": "2026-09-24T08:40:56Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://zenodo.org/api/records/20752301/files/sivep_dda_2025_csv.zip/content",
+     "quando": "2026-09-24T08:41:10Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://zenodo.org/api/records/20752301/files/sivep_dda_2026_csv.zip/content",
+     "quando": "2026-09-24T08:41:20Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://zenodo.org/api/records/20752238",
+     "quando": "2026-09-24T20:17:31Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://zenodo.org/api/records/20752238/versions/latest",
+     "quando": "2026-09-24T20:17:41Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://zenodo.org/api/records/20752301",
+     "quando": "2026-09-24T20:17:50Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://zenodo.org/api/records/20752301/versions/latest",
+     "quando": "2026-09-24T20:18:01Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://zenodo.org/api/records/20752301/files/sivep_dda_2025_csv.zip/content",
+     "quando": "2026-09-24T20:18:28Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://zenodo.org/api/records/20752301/files/sivep_dda_2026_csv.zip/content",
+     "quando": "2026-09-24T20:18:33Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://zenodo.org/api/records/20752238",
+     "quando": "2026-09-25T13:13:19Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://zenodo.org/api/records/20752238/versions/latest",
+     "quando": "2026-09-25T13:13:30Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://zenodo.org/api/records/20752301",
+     "quando": "2026-09-25T13:13:39Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://zenodo.org/api/records/20752301/versions/latest",
+     "quando": "2026-09-25T13:13:50Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://zenodo.org/api/records/20752301/files/sivep_dda_2025_csv.zip/content",
+     "quando": "2026-09-25T13:14:12Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://zenodo.org/api/records/20752301/files/sivep_dda_2026_csv.zip/content",
+     "quando": "2026-09-25T13:14:21Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://zenodo.org/api/records?q=infogripe&size=10",
+     "quando": "2026-09-26T11:53:49Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    }
+   ],
+   "ultimo_acesso": "2026-09-26"
   }
  }
 }
