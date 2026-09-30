@@ -25,6 +25,7 @@ import json
 import os
 import pathlib
 import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -169,7 +170,6 @@ def main() -> int:
     # A indexação não é instantânea, e a submissão pode cair na fila de SPAM em vez da normal — um
     # POST sem JavaScript, sem referer e vindo de um runner tem exatamente a cara que o filtro
     # procura. Olhar só a fila normal, uma vez, dava "não registrou" para envio que registrou.
-    import time
     minhas, subs, onde = [], [], ""
     for tentativa in range(6):
         for estado in ("", "?state=spam"):
@@ -189,15 +189,20 @@ def main() -> int:
         print("  processá-lo como formulário. Conferir no painel se o deploy atual detectou o form.")
         return 1
 
-    apagadas = 0
-    for s in minhas:
-        pedir(f"/submissions/{s['id']}", token, metodo="DELETE")
-        apagadas += 1
-    print(f"OK submissões de teste apagadas: {apagadas}")
-
-    restantes = [x for e in ("", "?state=spam")
-                 for x in pedir(f"/forms/{form['id']}/submissions{e}", token)
-                 if eh_a_submissao_de_teste(x)]
+    # A limpeza varre em rodadas até não sobrar nenhuma. Execuções anteriores podem ter deixado
+    # submissões de teste que só foram indexadas depois — apagar "as que eu vi" deixava resto.
+    apagadas, restantes = 0, []
+    for _ in range(4):
+        restantes = [x for e in ("", "?state=spam")
+                     for x in pedir(f"/forms/{form['id']}/submissions{e}", token)
+                     if eh_a_submissao_de_teste(x)]
+        if not restantes:
+            break
+        for sub in restantes:
+            pedir(f"/submissions/{sub['id']}", token, metodo="DELETE")
+            apagadas += 1
+        time.sleep(5)
+    print(f"submissões de teste apagadas: {apagadas}")
     if restantes:
         print(f"X ainda restam {len(restantes)} submissões de teste — limpe pelo painel.")
         return 1
