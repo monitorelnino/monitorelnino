@@ -24,7 +24,9 @@ const srv = http.createServer((req, res) => { const u = decodeURIComponent(req.u
     if (banner) falhas.push(`${p}: banner de erro de carregamento — ${banner}`);
     const errosReais = erros.filter(e => !/jsPDF|VLibras|fonts/i.test(e));
     if (errosReais.length) falhas.push(`${p}: erro JS — ${errosReais[0].slice(0, 100)}`);
-    await page.screenshot({ path: `/tmp/capturas_390/${p.replace(".html", "")}.png`, fullPage: false });
+    // 30/09/2026 (§318): a captura vai para o workspace, e não para /tmp, porque de lá ela sobe
+    // como artefato do run — as capturas do PR deixam de ser tiradas à mão.
+    await page.screenshot({ path: `capturas-ci/mobile-390/${p.replace(".html", "")}.png`, fullPage: false });
     await page.close();
   }
   await b.close(); srv.close();

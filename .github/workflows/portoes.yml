@@ -197,6 +197,18 @@ jobs:
       # com o git é do publicador, a partir do `main`. O manifesto sela o hash de todo arquivo
       # versionado, então qualquer mudança o deixa obsoleto — cobrar isso aqui custava um segundo
       # ciclo de CI por entrega e criava conflito de manifesto em toda união com o `main`.
+      # 30/09/2026 (§318, item 5 do handover): as capturas do PR deixam de ser tiradas à mão. Os
+      # dois portões de navegador já renderizam as dez páginas nas três larguras; agora salvam o
+      # PNG, e o run os oferece como artefato. `if: always()` de propósito: quando o portão visual
+      # REPROVA é que a captura mais interessa, e é justamente aí que o passo seria pulado.
+      - name: Capturas das páginas (desktop, tablet, mobile)
+        if: always() && steps.diff.outputs.pagina_mudou == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: capturas-${{ github.event.pull_request.number || github.sha }}
+          path: capturas-ci/
+          if-no-files-found: ignore
+          retention-days: 30
       - name: Portão 12 — a cadeia de derivados regenera sem erro
         id: p12
         if: steps.diff.outputs.dado_mudou == 'true'

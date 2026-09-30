@@ -137,6 +137,10 @@ const srv = http.createServer((req, res) => { const u = decodeURIComponent(req.u
       if (largura === LARGURAS[0]) { r.numeros.forEach((n, i) => { const m = n.match(/^Figura (\d+)$/); if (!m || +m[1] !== i + 1) falhas.push(`${p}: numeração de figura fora de sequência (esperado "Figura ${i + 1}", há "${n}")`); });
         r.secoes.forEach((t, i) => { if (!t.startsWith((i + 1) + " · ")) falhas.push(`${p}: numeração de seção fora de sequência (esperado "${i + 1} · …", há "${t.slice(0, 40)}")`); }); }
       if (RELATORIO && largura === LARGURAS[0]) inventario[p] = { figuras: r.figuras.length, creditos: r.creditos.length };
+      // 30/09/2026 (§318): uma captura por largura, no workspace, para subir como artefato do
+      // run. As três larguras deste portão são justamente desktop, tablet e mobile.
+      const rotulo = largura === 1366 ? "desktop-1366" : largura === 900 ? "tablet-900" : `mobile-${largura}`;
+      await page.screenshot({ path: `capturas-ci/${rotulo}/${p.replace(".html", "")}.png`, fullPage: false });
       await page.close();
     }
     for (const [nome, ass] of Object.entries(porFamilia)) { const chaves = Object.keys(ass); if (chaves.length > 1) {
