@@ -27,6 +27,24 @@ Estar no Semiárido é contexto: não pontua e não entra no índice. Cadência 
 quando o hash do arquivo muda ou a última conferência passa de sete dias — para o carimbo de
 consulta não congelar numa data velha.
 
+## §320 · Municípios prioritários do MMA: a lista do Anexo I, pelo DOU · 30/09/2026
+
+Classe **dado de contexto, peso zero**. PR 3 do enquadramento federal de risco.
+
+`coletar_prioritarios_mma.py` lê a Portaria GM/MMA nº 1.202/2024 no Diário Oficial da União e grava
+em `data/enquadramento_federal.json` os 81 municípios do Anexo I (prioritários para prevenção e
+controle do desmatamento, bioma Amazônia) e os 10 do Anexo II (desmatamento monitorado e sob
+controle), em flags separados — os dois anexos dizem coisas opostas e não se somam.
+
+A portaria traz o código IBGE de cada município, então não há casamento por nome: o código é lido e
+conferido contra a base do projeto, e código desconhecido não grava nada. A página do MMA que
+listaria os municípios não serve — `combateaodesmatamento.mma.gov.br` responde 403, que se respeita,
+e a de `gov.br/mma` chega sem o conteúdo.
+
+A lista é atualizada todo ano e cada portaria revoga a anterior. Não há fonte consultável por
+máquina que declare a vigente, então o coletor grava a data de publicação do ato que leu e **avisa**
+quando a janela da atualização anual já passou, em vez de presumir vigência.
+
 ## 2026-09-30 · #475 · Abertura da inicial, data de corte sincronizada e base legal corrigida
 
 Texto de abertura aprovado pela editoria, sem linguagem de dever, com uma data só. O corte avançava
