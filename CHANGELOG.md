@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-09-30 · #480 · Ficha do estado toda branca, risco em destaque
+
+Somem os fundos cinza da janela de detalhe: capital e risco passam a fundo branco, separados por
+espaço e linha fina. Sem o cinza, o risco ganha destaque por filete de família mais grosso (4 → 6 px)
+e rótulo na cor da família. Selos de status não mudam. Nenhum texto muda. Vale também no cartão do
+município, que usa o mesmo componente.
+
 ## 2026-09-30 · #479 · Formulário com a aparência do design C e os textos aprovados
 
 Os campos deixam de ser caixa e viram linha: fundo transparente, só o filete inferior, o que a
