@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 30/09/2026 · 1277 pendente(s) · 4371 decidida(s) · A=139 B=734 C=404
+Gerado em 30/09/2026 · 1323 pendente(s) · 5502 decidida(s) · A=149 B=762 C=412
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -302,6 +302,31 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://esperantinopolis.ma.gov.br/planosmunicipais.php?grupo=plano_municipal_de_educacao
   - trecho: Lista de planos municipais. PLANO MUNICIPAL DE EDUCAÇÃO RELATÓRIO DE GESTÃO MUNICIPAL RELATÓRIO ANUAL DE AÇÕES DESENVOLVIDAS EM 2025 21/05/2026 RELATÓRIO DE GESTÃO DE EDUCAÇÃO 2024 06/02/2025 RELATÓRIO ANUAL DE GESTÃO DA
 
+## Barão de Cocais/MG — 5 pendente(s)
+- `7707f5b8cd` · nível **A** (6 pts) · seguimento_busca_oficial · RESPOSTA · **Decreto Municipal nº 280**, 90.01.0009
+  - título: Diário Do ExECutivo - SEF/MG
+  - url: https://www.fazenda.mg.gov.br/governo/compras_publicas_e_contratos/compras/pregao_eletronico/extrato-de-publicacao-66.pdf
+  - trecho: Nov 28, 2023 ... Soares – ASP – 1 - Barao de Cocais - 9 - 01/11/2023 A 09/11/2023. - 158 ... - o Plano de Contingência Estadual de Minas Gerais para COVID 19.
+  - juiz: portão automático: natureza RESPOSTA — só ex-ante é aplicado sozinho
+- `241806438f` · nível **B** (5 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: MUNICÍPIO DE BARÃO DE COCAIS - ESTADO DE MINAS GERAIS
+  - url: https://www.baraodecocais.mg.gov.br/abrir_arquivo.aspx/Portaria_301_2019?cdLocal=5&arquivo=%7B61025BCB-7CD6-3D28-CD53-EA0BE6E71C3D%7D.pdf
+  - trecho: instrumento, e atribuições do COES estarão previstas no Plano de Contingência do Município de Barão de Cocais. Art. 6º- COES será composto por: Coordenador ...
+- `106613cb27` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
+  - url: https://www.portalcarlossouto.com.br/noticias/barao-de-cocais-ativa-nivel-2-do-plano-de-contingencia-devido-a-chuvas-intensas/
+  - trecho: A Prefeitura de Barão de Cocais, em resposta às chuvas intensas, ativou o nível 2 do plano de contingência, o que implica em ações preventivas e monitoramento intensificado.
+  - juiz: portão automático: fonte não oficial
+- `357e92b474` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · **Decreto nº 47.222**, 26/07/2017
+  - título: governo do estado de minas gerais - SEMAD
+  - url: https://sistemas.meioambiente.mg.gov.br/reunioes/uploads/qJjSUsOciyy1K4_e5E6iIOms7nXl3-sA.pdf
+  - trecho: Brucutu, nos municípios São Gonçalo do Rio Abaixo e Barão de Cocais/MG (processo ... Plano de Contingência e a realização de inúmeros treinamentos ...
+  - juiz: portão automático: ato de 2017 — pode ser edição anterior; decisão humana
+- `485d102b89` · nível **B** (3 pts) · seguimento_busca_oficial · EX_ANTE · **Portaria nº 70.389**, 17/05/2017
+  - título: Programa de Vigilância em Saúde Ambiental Relacionada aos Riscos ...
+  - url: http://vigilancia.saude.mg.gov.br/index.php/programa-de-vigilancia-em-saude-ambiental-relacionada-aos-riscos-decorrentes-dos-desastres-vigidesastres/
+  - trecho: Visando preparar o setor saúde ... o Plano de Contingência para os acidentes com Barragens de Mineração em Minas Gerais em parceria com o Corpo de Bombeiros de Minas Gerias. Em maio desse ano (2023) ocorreu o primeiro se
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+
 ## Coqueiral/MG — 1 pendente(s)
 - `e3edb754f4` · nível **A** (6 pts) · busca_web · DUVIDA · citação não extraída
   - título: Prefeitura Municipal - Plano de Contingência ... - Coqueiral - MG
@@ -341,6 +366,30 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.panoramainconfidentes.com.br/noticia/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico
   - trecho: Por Panorama Inconfidentes Em 24/09/2026 19:34. Especialista resume alertas sobre El Niño e cobra ações urgentes do ... Resumindo: plano de contingência, ...
   - juiz: portão automático: fonte não oficial
+
+## Lambari/MG — 4 pendente(s)
+- `36a3c6f5a6` · nível **A** (6 pts) · seguimento_busca_oficial · DUVIDA · **Lei n.º 14.133**, 01/04/2021
+  - título: aviso de contratação direta (dispensa eletrônica)
+  - url: https://www.saaelambari.mg.gov.br/arquivos/09d0b2fadde749a15e2609a5a168537f.pdf
+  - trecho: Jan 22, 2026 ... das cobranças, com plano de contingência em caso de indisponibilidade superior; ... Lambari/MG fundamenta-se na diretriz constante da Lei nº ...
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `6366db55bf` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: Prevenção antes da emergência! 🛡️ Diante dos efeitos do El Niño ...
+  - url: https://www.facebook.com/prefeituradelambari/videos/preven%C3%A7%C3%A3o-antes-da-emerg%C3%AAncia-%EF%B8%8Fdiante-dos-efeitos-do-el-ni%C3%B1o-no-pa%C3%ADs-e-da-possib/1058494277164913/
+  - trecho: Sep 10, 2026 ... ... Plano de Contingência, reunindo diferentes secretarias para ... Paróquia Nossa Senhora da Saúde - Lambari / MG. Paróquia Nossa Senho ...
+  - juiz: portão automático: fonte não oficial
+- `619fcce10e` · nível **B** (3 pts) · seguimento_busca_oficial · DUVIDA · **Decreto nº 6.017**, 23/05/2025
+  - título: PROCESSO DE LICITAÇÃO DE N° 028/2025 PREGÃO ...
+  - url: https://pncp.gov.br/pncp-api/v1/orgaos/21406451000101/compras/2025/18/arquivos/1
+  - trecho: May 23, 2025 ... Implementação de um plano de contingência ambiental ... Município de Lambari, Estado de Minas Gerais, neste ato representado por de seu.
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `72b504848b` · nível **B** (3 pts) · seguimento_busca_oficial · DUVIDA · data 2025 (do trecho)
+  - título: Nota Informativa nº 16/2025 - CGARB/DEDT/SVSA/MS - Portal Gov.br
+  - url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/f/febre-amarela/notas-tecnicas-e-informativas/nota-informativa-no-16-2025-cgarb-dedt-svsa-ms
+  - trecho: Dec 17, 2025 ... Plano de Contingência para Resposta às Emergências em Saúde Pública ... Lambari. MG. 313900. Machado. MG. 313990. Maria da Fé. MG. 314040.
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Petrolina/PE — 7 pendente(s)
 - `0ae0a524aa` · nível **A** (7 pts) · seguimento_busca_oficial · DUVIDA · **Decreto N.º 037**, 2020
@@ -426,7 +475,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: PLÁSTICO PROFISSIONAL COM TRAVA, LÂMINA DE AÇO CARBONO EXTENSÍVEL INTERNA DE 18MM UNIDADE GATTE 766 R$1,59 R$1.217,94 68 ESTOJO DE PINCEL ATÔMICO COM 12 CORES, PONTA DE POLIÉSTER 4.0 MM, ESCRITA 1.8 MM, TINTA À BASE DE Á
   - juiz: portão automático: ato de 1990 — pode ser edição anterior; decisão humana
 
-## Cascavel/PR — 11 pendente(s)
+## Cascavel/PR — 14 pendente(s)
 - `ec95baef59` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Chuva em Cascavel: Município aciona plano de contingência
   - url: https://oparana.com.br/?p=603515
@@ -457,6 +506,10 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.radiouniaodetoledo.com.br/noticia/6/479691/cascavel-se-prepara-para-efeitos-do-el-nino-e-mapeia-77-pontos-de-atencao
   - trecho: Aug 12, 2026 ... 12 de agosto de 2026 | 14h29. Atualizado há 41 dias. A Defesa Civil de Cascavel atualizou o plano de contingência para preparar o município ...
   - juiz: portão automático: fonte não oficial
+- `1a887fd480` · nível **B** (5 pts) · seguimento_busca_oficial · — · data 2026 (do trecho)
+  - título: Prefeitura de Cascavel/Paraná - GESTÃO DE RISCOS
+  - url: https://prefa.cascavel.pr.gov.br/cidadao/noticia/gestao-de-riscos-prefeitura-de-cascavel-intensifica-plano-integrado-para-reduzir-impactos-do-el-nino-e-reforcar-respostas-a-emergencias
+  - trecho: Jul 7, 2026 ... Entre as medidas adotadas estão a atualização do Plano de Contingência ... Localização RUA PARANA, Nº 5000, CENTRO Cascavel/PR CEP: 85.810-011.
 - `98b212d659` · nível **B** (4 pts) · busca_web · EX_ANTE · **Portaria nº 229**, 2026
   - título: Plano de Contingência para Eventos Climáticos Adversos
   - url: https://www.cascavel.app/plano-de-contingencia
@@ -481,8 +534,19 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.instagram.com/reel/DdCJ3KeTUzj/
   - trecho: Sep 8, 2026 ... renatosilvacascavel on September 8, 2026: "Cascavel se prepara para enfrentar os efeitos do El Niño. 🌧️ Nossa Defesa Civil está em campo ...
   - juiz: portão automático: fonte não oficial
+- `395843fad1` · nível **C** (5 pts) · seguimento_busca_oficial · EX_ANTE · **Decreto Estadual nº 35.402**, 25.04.2023
+  - título: Prefeitura de Cascavel - CE
+  - url: https://cascavel.ce.gov.br/campanha.php?id=1
+  - trecho: DECRETOS · LEIS · PROCESSO SELETIVO · RELAÇÃO NOMINAL DOS TRABALHADORES DA EDUCAÇÃO · RELAÇÃO DE PROFESSORES PARA IMUNIZAÇÃO COVID-19 1ª ETAPA · RECOMENDAÇÕES · PLANO DE CONTINGÊNCIA ·
+  - ⚠ uf_divergente_na_url
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `9edeaef207` · nível **C** (5 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: Plano de Ação para o Enfrentamento de Arboviroses Urbanas no ...
+  - url: https://www.documentador.pr.gov.br/documentador/pub.do?action=d&uuid=%40gtf-escriba-sesa%400846282d-0915-4a8f-ac55-aeffe0403f8a&emPg=true
+  - trecho: Cambé, Cascavel, Maringá e Ponta Grossa em todas as etapas ... O Plano de Contingência prevê a realização de ações de acordo com estágios operacionais.
+  - ⚠ risco_errado_no_titulo
 
-## Curitiba/PR — 10 pendente(s)
+## Curitiba/PR — 12 pendente(s)
 - `0bb73f1765` · nível **A** (6 pts) · seguimento_busca_oficial · — · citação não extraída
   - título: Hospitais privados precisam apresentar plano de contingência - Prefeitura de Curitiba
   - url: https://www.curitiba.pr.gov.br/noticias/hospitais-privados-precisam-apresentar-plano-de-contingencia/58236
@@ -502,6 +566,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: Especialista resume alertas sobre El Niño e cobra ações urgentes ...
   - url: https://diariodecuritiba.com/2026/09/24/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico/
   - trecho: 10 hours ago ... Resumindo: plano de contingência, população das ... EBANX abre inscrições para curso gratuito de tecnologia em Curitiba com bolsa de R$ 800.
+- `5d34a915be` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · **Lei 13.460**, 19.04.2022
+  - título: Planejamento - Secretaria Municipal da Saúde - Prefeitura de Curitiba
+  - url: https://saude.curitiba.pr.gov.br/conteudo/planejamento/1577
+  - trecho: Minha Prefs · Secretaria Municipal da Saúde · Plano de Contingência para resposta às emergências em saúde pública - atualizado 19.04.2022 · Plano de Vacinação de Curitiba contra a COVID-19 - 24.04.2023 (em atualização) P
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `6a630cc284` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
   - título: El Niño deve atingir o Paraná em julho com aumento de chuvas
   - url: https://bandnewsfmcuritiba.com/el-nino-deve-atingir-o-parana-em-julho-com-aumento-de-chuvas/
@@ -512,6 +581,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: social, que compõem o Plano de Contingência para Resposta às Emergências em · Saúde Pública, e evitar prejuízo ao atendimento da população, fica instituído regime de · transição para os seguintes atos destinados ao enfre
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `0d2a82fd93` · nível **C** (5 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: Plano de Contingência Dengue.pdf - Secretaria Municipal da Saúde
+  - url: https://saude.curitiba.pr.gov.br/images/Plano%20de%20Conting%C3%AAncia%20Dengue.pdf
+  - trecho: Plano de Contingência da Saúde de Curitiba para o Enfrentamento da. Dengue e ... O Decreto Municipal que instituiu o Plano Municipal de Enfrentamento da Dengue e ...
+  - ⚠ risco_errado_no_titulo
+  - juiz: portão automático: alerta da triagem de confiança: risco_errado_no_titulo
 - `93f2b30e7a` · nível **C** (2 pts) · seguimento_querido_diario · EX_ANTE · data 2026 (do trecho)
   - título: Diário oficial de 2026-01-22
   - url: https://data.queridodiario.ok.org.br/4106902/2026-01-22/eab7a52d061a5a0fe550b5c54d56b05c77693667.pdf
@@ -3371,29 +3446,55 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Moreira Siketo, Juiz da 009ª Zona Eleitoral; e Mário Celso Lopes, Prefeito do município de Andradina/SP.         PREFEITURA MUNICIPAL DE ANDRADINA                COMISSÃO MUNICIPAL DE DEFESA CIVIL                        
   - juiz: portão automático: data do ato incompleta (2021)
 
-## Atibaia/SP — 2 pendente(s)
+## Atibaia/SP — 5 pendente(s)
 - `bf998ab2f2` · nível **A** (6 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: El Niño em Atibaia: o dobro da chuva prevista para setembro em ...
   - url: https://www.atibaia.sp.gov.br/noticias/defesa-civil/el-nino-em-atibaia-o-dobro-da-chuva-prevista-para-setembro-em-apenas-tres-dias
   - trecho: Sep 12, 2026 ... A Prefeitura de Atibaia conta com equipes preparadas para atender a população, conforme previsto no Plano de Contingência, documento ...
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `165971c9c9` · nível **B** (5 pts) · seguimento_busca_oficial · — · data 2025 (do trecho)
+  - título: PLANO OPERACIONAL - Secretaria de Estado da Saúde
+  - url: https://www.saude.sp.gov.br/resources/cve-centro-de-vigilancia-epidemiologica/areas-de-vigilancia/doencas-de-transmissao-por-vetores-e-zoonoses/doc/famarela/2025/febre_amarela2025_plano_acao_vacinacao_05agosto.pdf
+  - trecho: Sep 8, 2025 ... 350410 ATIBAIA. AFETADA. CAMPINAS. BRAGANÇA. 350710 BOM ... Plano de contingência para resposta às emergências em Saúde Pública: febre amarela.
+  - ⚠ ano_anterior_ao_ciclo
 - `3a5b0ed193` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: El Niño em Atibaia: o dobro da chuva prevista para setembro em ...
   - url: https://www.instagram.com/p/DdMtGm7FpnC/
   - trecho: Sep 12, 2026 ... Photo by Portal Atibaia News on September 12, 2026. May be an image of.
   - juiz: portão automático: fonte não oficial
+- `cc9ddccf09` · nível **B** (3 pts) · seguimento_busca_oficial · DUVIDA · **Decreto n° 67.697**, 04/05/2023
+  - título: Legislação - Categorias Temáticas - Alesp
+  - url: https://www.al.sp.gov.br/alesp/legislacao-temas/?idTema=551&idTipoNorma=3
+  - trecho: Dispõe sobre a implantação e formalização do Plano de Contingência ... Homologa, por 180 dias, o Decreto do Prefeito de ATIBAIA, que declarou Situação de ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `0c0038d79f` · nível **B** (3 pts) · seguimento_busca_oficial · DUVIDA · **Lei nº 12.608**, 10/04/2012
+  - título: TEXTO DE REFERÊNCIA - Prefeitura de São Paulo
+  - url: https://prefeitura.sp.gov.br/cidade/secretarias/upload/chamadas/texto_de_referncia_2_cnpdc_1392662306.pdf
+  - trecho: Plano de Contingência: planejamento realizado para minimizar e controlar os efeitos ... Atibaia. Brasil. 12. Bragança Paulista. Brasil. Campo Limpo Paulista.
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Bauru/SP — 4 pendente(s)
+## Bauru/SP — 8 pendente(s)
 - `cb0ee06c25` · nível **A** (6 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
   - título: Em Audiência Pública, CPFL anuncia plano de contingência em ...
   - url: https://www.bauru.sp.leg.br/imprensa/noticias/em-audiencia-publica-cpfl-anuncia-plano-de-contingencia-em-situacoes-de-temporais-extremos/
   - trecho: Segundo ele, o plano envolve o monitoramento constante da situação meteorológica da cidade e região, a disponibilidade de canais digitais para atendimento visando aliviar a sobrecarga enfrentada pelo central de ligações 
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `d05e385c11` · nível **B** (7 pts) · seguimento_busca_oficial · DUVIDA · **Lei Municipal nº 5.975**, 2023
+  - título: Seção I Gabinete da Prefeita - Prefeitura Municipal de Bauru
+  - url: https://www2.bauru.sp.gov.br/arquivos/sist_diariooficial/2023/11/do_20231118_3770.pdf
+  - trecho: Nov 18, 2023 ... • Supervisionar e manter atualizado o Plano de Contingência do Município, que trata da identificação e ... Decreto nº 8806/00: http://www.bauru.sp ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `cad8df44f3` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · data 2026 (do trecho)
   - título: Resumo da Programação Anual de Saúde - 2026 Município: Bauru - SP
   - url: https://www2.bauru.sp.gov.br/arquivos/arquivos_site/sec_saude/planejamento_saude/PAS/02;PAS%202026%20-%20Metas%20e%20Indicadores.pdf
   - trecho: Ação Nº 1 - Elaborar e atualizar anualmente materiais técnicos sobre manejo clínico, fluxos de encaminhamento de pacientes com arboviroses e plano de contingência.
   - juiz: portão automático: data do ato incompleta (1.1.10)
+- `32c54866eb` · nível **B** (5 pts) · seguimento_busca_oficial · DUVIDA · citação não extraída
+  - título: PREFEITURA MUNICIPAL DE BAURU/SP
+  - url: https://www2.bauru.sp.gov.br/arquivos/sist_licitacoes/2026/10718/10718_Anexo_1.pdf
+  - trecho: emailunidade@bauru.sp.gov.br | bauru.sp.gov.br. B ... periodicamente Plano de Contingência para garantir a continuidade da assistência e o funcionamento da.
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `2bbceca048` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Até quando Bauru vai depender da sorte? ⚠️ O El Niño já está ...
   - url: https://www.instagram.com/p/DbOFlI-T9AE/
@@ -3403,6 +3504,17 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: Especialista resume alertas sobre El Niño e cobra ações urgentes ...
   - url: https://bdbauru.com.br/noticia/67022/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico
   - trecho: 8 hours ago ... Bauru, SP. Dólar. R$ 5,19. Euro. R$ 5,91. Peso Arg. R$ 0,00 · Tecnologia ... Resumindo: plano de contingência, população das áreas de risco ...
+- `3ca34443b9` · nível **B** (3 pts) · seguimento_busca_oficial · DUVIDA · data 27/02/2025 (do trecho)
+  - título: 27 de fevereiro de 2025 - Diário Oficial do Estado de São Paulo
+  - url: https://www.doe.sp.gov.br/executivo/secretaria-de-desenvolvimento-economico/resolucao-n-11-2025-de-27-de-fevereiro-de-2025-2025031311181220946231
+  - trecho: Mar 14, 2025 ... ... plano de contingência para situações emergenciais;. III – administrar ... Bauru. Serviço de Implementação Descentralizada 7, São José do ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `1d8d8eb078` · nível **C** (4 pts) · seguimento_busca_oficial · — · data 2020 (do trecho)
+  - título: plano de contingência distrital para infecção humana pelo novo ...
+  - url: https://www.gov.br/saude/pt-br/composicao/sesai/publicacoes/plano-de-contingencia-nacional-para-covid-19-em-povos-indigenas-dsei-lsul-litoral-sul/@@download/file
+  - trecho: Mar 18, 2020 ... Bauru/SP. 12. 0. 1. 0. Paranaguá/PR. 2. 0. 0. 0. Guarapuava/PR. 73. 4. 49. 1 ... • Plano de Contingência Nacional para Infecção Humana pelo novo ...
+  - ⚠ padrao_lista_de_municipios, municipio_citado_de_passagem
 
 ## Birigui/SP — 1 pendente(s)
 - `bf03df2920` · nível **A** (7 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
@@ -3422,7 +3534,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ texto_falso_positivo_provavel
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Cubatão/SP — 2 pendente(s)
+## Cubatão/SP — 6 pendente(s)
 - `ec41e5cbc0` · nível **A** (8 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: El Niño: Cubatão cria comissão permanente de enfrentamento ao ...
   - url: https://cubatao.sp.gov.br/el-nino-cubatao-cria-comissao-permanente-de-enfrentamento-ao-fenomeno/
@@ -3433,13 +3545,54 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://g1.globo.com/sp/santos-regiao/noticia/2026/07/24/cubatao-cria-comissao-para-enfrentar-efeitos-do-el-nino-apos-cobranca-de-mp-sp.ghtml
   - trecho: Jul 24, 2026 ... Cubatão cria comissão para enfrentar efeitos do El Niño após cobrança de MP-SP ... Plano de Contingência de Proteção e Defesa Civil (PCPDC): ...
   - juiz: portão automático: fonte não oficial
+- `906f8588f4` · nível **B** (5 pts) · seguimento_busca_oficial · DUVIDA · **Decreto nº 62.906**, 31/10/2017
+  - título: Decreto nº 62.906, de 31 de outubro de 2017
+  - url: https://www.al.sp.gov.br/repositorio/legislacao/decreto/2017/decreto-62906-31.10.2017.html
+  - trecho: Artigo 2º - Fica implantado e formalizado o Plano de Contingência para a Serra do Mar na região do Polo Industrial de Cubatão - PCPIC, nos termos deste decreto.
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `008cb28c11` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · data 2015 (do trecho)
+  - título: Comissão Executiva do Plano de Contingência para a Serra do Mar ...
+  - url: https://www.infraestruturameioambiente.sp.gov.br/institutogeologico/2015/01/comissao-executiva-do-plano-de-contingencia-para-a-serra-do-mar-na-regiao-do-polo-industrial-de-cubatao-se-reune-na-nova-sede-do-instituto-geologico/
+  - trecho: Jan 13, 2015 ... Comissão Executiva do Plano de Contingência para a Serra do Mar na região do Polo Industrial de Cubatão se reúne na nova sede do Instituto ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `1ccaaee543` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · data 2021 (do trecho)
+  - título: Caderno Técnico de Gestão Integrada de Riscos e Desastres
+  - url: https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/Caderno_GIRD10__.pdf
+  - trecho: Mar 17, 2021 ... industrial de Cubatão, instalado no sopé das encostas da Serra do Mar (CERRI et ... quais devem estar previstas no Plano de Contingência Municipal ...
+  - juiz: portão automático: data do ato incompleta (2004)
+- `427bf0fe1e` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · data 28/12/2023 (do trecho)
+  - título: Relatório de Diagnóstico Volume 3 - BNDES
+  - url: https://www.bndes.gov.br/arquivos/fep-mobilidade-urbana/relatorios-diagnostico/relatorio-Santos-vol-3.pdf
+  - trecho: Plano de Contingência para Ressacas e Inundações - Santos ... 21 CUBATÃO (SP). Lei Complementar n° 134 de 28 de dezembro de 2023. Institui ...
+  - juiz: portão automático: ato de 2023 — pode ser edição anterior; decisão humana
 
-## Franca/SP — 1 pendente(s)
+## Franca/SP — 5 pendente(s)
+- `8bfdd5f2e7` · nível **A** (7 pts) · seguimento_busca_oficial · RESPOSTA · data 2026 (do trecho)
+  - título: PLANO DE CONTINGÊNCIA DE DEFESA CIVIL - Franca
+  - url: https://www3.franca.sp.gov.br/pdf/20260316140411_69b8380b3cf8d_PLANO_DE_CONTING_NCIA_DE_DEFESA_CIVIL_-_PER_ODOS_CHUVOSOS_.pdf
+  - trecho: Mar 16, 2026 ... O Plano de Contingência de Defesa Civil possui como área de atuação o município de Franca/SP, compreendido no perímetro que engloba a área da ...
+  - juiz: portão automático: natureza RESPOSTA — só ex-ante é aplicado sozinho
 - `a1cf9dfc3c` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: CPFL faz Plano de Contingência em Franca para casos eventuais ...
   - url: https://www.jornaldafranca.com.br/cpfl-apresenta-plano-de-contingencia-para-o-periodo-de-calor-com-el-nino-2026-2027/
   - trecho: Aug 24, 2026 ... CPFL faz Plano de Contingência em Franca para casos eventuais no período de calor · compartilhar no whatsapp · compartilhar no telegram ...
   - juiz: portão automático: fonte não oficial
+- `6fb93e4810` · nível **A** (6 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: plano de contingência da política de assistência social de franca em ...
+  - url: https://www3.franca.sp.gov.br/pdf/Plano_de_contingncia_SEDAS_verso_Comit_FINALIZADO.pdf
+  - trecho: O presente Plano de Contingência da Política de Assistência Social de Franca tem a ... Fonte:www.franca.sp.gov.br/administracao-municipal/administracao ...
+  - juiz: portão automático: data do ato incompleta (2020)
+- `850719eced` · nível **A** (6 pts) · seguimento_busca_oficial · EX_ANTE · data 2021 (do trecho)
+  - título: FRANCA Prefeito Alexandre Augusto Ferreira - TCE SP
+  - url: https://www.tce.sp.gov.br/sites/default/files/rdm/franca.pdf
+  - trecho: Região Administrativa de Franca. Porte (2021). Grande. População (2021) ... - Plano de Contingência municipal - PLANCON de Defesa Civil. Os instrumentos ...
+  - juiz: portão automático: ato de 2014 — pode ser edição anterior; decisão humana
+- `eb186a55d7` · nível **A** (6 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: Plano de Contingência da Assistência Social - Município de Franca
+  - url: https://www4.franca.sp.gov.br/index.php?option=com_phocadownload&view=file&id=1141%3Adecreto-n-7739&Itemid=1944
+  - trecho: Notas Públicas - CMAS · Boletins informativos CMAS periodo pandemia · Plano de Contingência da Assistência Social ... Contato. ouvidoria@franca.sp.gov.br (16)3711 ...
 
 ## Ilhabela/SP — 2 pendente(s)
 - `d214752152` · nível **A** (7 pts) · busca_web · EX_ANTE · citação não extraída
@@ -3468,6 +3621,51 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://data.queridodiario.ok.org.br/3522505/2026-09-22/938293f776124996b98b5853edfc43b023576cc9.pdf
   - trecho: Recomendação  Administrativa expedida pelo Ministério Público referente ao serviço de acolhimento institucional de  crianças e adolescentes nas Casas-Lar, lida pela Sra. Letícia para conhecimento do colegiado, a qual ori
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+
+## Leme/SP — 4 pendente(s)
+- `98dc759dde` · nível **A** (9 pts) · seguimento_busca_oficial · EX_ANTE · data 01/02/2023 (do trecho)
+  - título: Plano de Contingência Municipal de Proteção e Defesa Civil Leme
+  - url: https://www.leme.sp.gov.br/download/paginasadicionaisarquivos/1515
+  - trecho: Plano de contingência do município de Leme - SP. 01/02/2023. Página 3 de 31 ... decreto do Prefeito Municipal, do Governador do Estado ou do Governador ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `3a4ca4936e` · nível **A** (6 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL ...
+  - url: https://www.itapetininga.sp.gov.br/pagina/62/plano-de-contingencia/download/75/
+  - trecho: PLANO DE CONTINGÊNCIA (PLACON) ... Leme – Vila Nova Itapetininga. 3.1.1. Acidentes Naturais (Inundações ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `468c7d518a` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: Plano de contingência: como criar, implementar e testar?
+  - url: https://checklistfacil.com/blog/plano-de-contingencia/
+  - trecho: Feb 10, 2026 ... Aprenda a criar e a implementar um plano de contingência eficiente para garantir continuidade de negócios e reduzir riscos ... Pais Leme, 215 – ...
+  - juiz: portão automático: fonte não oficial
+- `a73ab9fe57` · nível **C** (5 pts) · seguimento_busca_oficial · EX_ANTE · **DECRETO Nº 7.365**, 16/03/2020
+  - título: Enfrentamento COVID-19 - Prefeitura Municipal de Leme
+  - url: https://www.leme.sp.gov.br/pagina/15
+  - trecho: Plano de Contingência ao Coronavírus PDF (752 KB). Instruções Normativas ... E-mail: dpo@leme.sp.gov.br. Tel. (19) 3097-1000. Copyright. Todos os direitos ...
+  - ⚠ risco_errado_no_titulo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+
+## Limeira/SP — 4 pendente(s)
+- `64efa41e1b` · nível **A** (7 pts) · seguimento_busca_oficial · EX_ANTE · **Portaria nº 55**, 25/04/2023
+  - título: Limeira-SP - Legislação Digital
+  - url: https://legislacao.limeira.sp.leg.br/limeira-sp?Pagina=92&Pesquisa=Simples&SituacaoId=3370&Ordernacao=DataCrescente&Export=Pdf
+  - trecho: Limeira-SP. Portaria nº 37/2023. Data: 22 ... Ementa/Assunto: Institui o Plano de Contingência Municipal para a Prevenção e Controle das Arboviroses Urbanas.
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `1b3a30c9b3` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · data 2026 (do trecho)
+  - título: PLANO DE CONTINGÊNCIA “PLANCON”
+  - url: https://taiacu.sp.gov.br/files/pages/147/6a0712ae0cb0e.pdf
+  - trecho: May 14, 2026 ... Campinas, seguindo pela Rodovia Anhanguera (SP-330) até Limeira, a partir de onde se deve seguir ... do plano de contingência referente à ...
+  - juiz: portão automático: data do ato incompleta (2026)
+- `931153e48f` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: PLANO MUNICIPAL DE SANEAMENTO BÁSICO - CEIVAP
+  - url: https://www.ceivap.org.br/mata/Rosario-da-Limeira.pdf
+  - trecho: arranjo institucional e plano de contingência e emergência. ... O município de Rosário da Limeira está inserido no Comitê da Bacia Hidrográfica dos Afluentes Mi-.
+  - juiz: portão automático: fonte não oficial
+- `8db8a4daa6` · nível **C** (2 pts) · seguimento_busca_oficial · EX_ANTE · **Lei Estadual nº 9.034**, 15/07/2020
+  - título: PLANO DE EMERGÊNCIA E CONTINGÊNCIA DOS SERVIÇOS ...
+  - url: https://www.saean.sp.gov.br/plan_emergencia_contingencia.pdf
+  - trecho: Adhemar Pereira de Barros). Possui três estradas vicinais pavimentadas, recém recapeadas, em boas condições de tráfego: Artur Nogueira – Limeira, Artur Nogueira ...
+  - juiz: portão automático: ato de 2020 — pode ser edição anterior; decisão humana
 
 ## Luiziânia/SP — 1 pendente(s)
 - `5138160916` · nível **A** (8 pts) · querido_diario · DUVIDA · **Resolução 02**, 2016
@@ -3542,7 +3740,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Sep 6, 2026 ... ... plano de contingência e previsão orçamentária para enfrentar impactos do El Niño em Vinhedo. 16/06/2026 14:05. Nayla cobra plano de ...
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
-## Votuporanga/SP — 9 pendente(s)
+## Votuporanga/SP — 12 pendente(s)
 - `a9a8b28bac` · nível **A** (8 pts) · seguimento_busca_oficial · EX_ANTE · **DECRETO Nº 204**, 09/06/2026
   - título: Aprova a 6ª Edição do PLANO DE CONTINGÊNCIA DE PROTEÇÃO E ...
   - url: https://www.votuporanga.sp.gov.br/portal/leis_decretos/13164/
@@ -3563,12 +3761,22 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.votuporanga.sp.gov.br/portal/leis_decretos/4360
   - trecho: (Aprova a 4ª Edição do PLANO ... legais; DECRETA: Art. 1º Fica aprovada a 4ª Edição do Plano de Contingência de Proteção e Defesa Civil – PLANCON do Município de Votuporanga....
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `e2da4657cf` · nível **A** (6 pts) · seguimento_busca_oficial · DUVIDA · **Lei 7.341**, 05/12/2025
+  - título: Legislação - Prefeitura de Votuporanga
+  - url: https://www.votuporanga.sp.gov.br/portal/leis_decretos
+  - trecho: Plano de Cargos, Vencimentos e Carreiras dos Servidores Públicos do Município de Votuporanga, Plano de Contingência de Proteção e Defesa Civil - PLANCON ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `ebc84478b1` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2022 (do trecho)
   - título: Votuporanga terá plano de contingenciamento para evitar falta ... - G1
   - url: https://g1.globo.com/sp/sao-jose-do-rio-preto-aracatuba/noticia/2022/09/13/votuporanga-tera-plano-de-contingenciamento-para-evitar-falta-de-agua.ghtml
   - trecho: Sep 13, 2022 ... A empresa responsável pelo abastecimento de água em Votuporanga (SP) ... plano de contingência para evitar a falta de água no município. O ...
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: fonte não oficial
+- `5d3d328fc1` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · **Resolução nº 01**, 02/02/2021
+  - título: Câmara Municipal de Votuporanga
+  - url: https://www.camaravotuporanga.sp.gov.br/agenda/movimentacao/106685/pdf-stream
+  - trecho: Aug 8, 2026 ... ... VOTUPORANGA/SP. CHAVE DE ACESSO: PROTM-106685-5T3F1T-1X6P8Y | Para ... Prosseguindo, explicou a integração entre o PMARC e o Plano de Contingência ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `e2b73559c8` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
   - título: p gestão integrada de plano municipal de
   - url: https://smastr16.blob.core.windows.net/cpla/2017/05/votuporanga.pdf
@@ -3580,6 +3788,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://data.queridodiario.ok.org.br/3557105/2026-02-20/10c9f8a3467bc3a282b035b0964ab8aa6d79d72e.pdf
   - trecho: internacional de educação, em Votuporanga. Informou também que está prevista a realização, pelo Consórcio As sin ad o po r 1 2 pe ss oa s: A LE XA ND RE M IO TT O DA C OS TA , A NT ON IO C AR LO S SA NT AN A DA S IL VA ,
   - juiz: portão automático: data do ato incompleta (2026)
+- `e32f49be8d` · nível **B** (3 pts) · seguimento_busca_oficial · EX_ANTE · **Decreto nº 66.173**, 26/10/2021
+  - título: Estado de São Paulo - Portal Gov.br
+  - url: https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/boas-praticas/Anexo10SoPauloSPProgramaMunicpioResiliente.pdf
+  - trecho: Jun 14, 2023 ... Marapoama ao Plano de Contingência para o Período de Estia- gem da ... Votuporanga. CASA MILITAR. Resolução CMIL/CEPDEC 06-610-2023.
+  - juiz: portão automático: ato de 2021 — pode ser edição anterior; decisão humana
 - `d85304d71b` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · **Lei Municipal nº 5.927**, 02/03/2017
   - título: Diário oficial de 2025-10-27
   - url: https://data.queridodiario.ok.org.br/3557105/2025-10-27/17b7e57b76a1c6d2b3990aab37da8c375afc5198.pdf
@@ -3737,7 +3950,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Formação continuada e  certificação  Sempre que  necessário  Edição 2.794 | Ano 20 27 de agosto de 2026  Página 26  Certificação Digital: YL29CSXL-2O0TPJGV-OV92BOEB-W63ZS1BE Versão eletrônica disponível em: http://www.te
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Valença/BA — 8 pendente(s)
+## Valença/BA — 9 pendente(s)
 - `1914876af4` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Valença fortalece plano de contingência para o El Niño e ...
   - url: https://www.baixosulemalta.com/single-post/valen%C3%A7a-fortalece-plano-de-conting%C3%AAncia-para-o-el-ni%C3%B1o-e-intensifica-a%C3%A7%C3%B5es-de-preven%C3%A7%C3%A3o-%C3%A0s-queimadas
@@ -3758,19 +3971,28 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.baixosulemalta.com/single-post/valen%C3%A7a-fortalece-plano-de-conting%C3%AAncia-para-o-el-ni%C3%B1o-e-intensifica-a%C3%A7%C3%B5es-de-preven%C3%A7%C3%A3o-%C3%A0s-queimadas
   - trecho: A Prefeitura de Valença realizou, ... do Plano de Contingência voltado ao enfrentamento dos impactos do fenômeno climático El Niño no município....
   - juiz: portão automático: fonte não oficial
-- `f04a87c4a4` · nível **B** (3 pts) · seguimento_busca_oficial · — · data 15/11/2021 (do trecho)
+- `f04a87c4a4` · nível **B** (3 pts) · seguimento_busca_oficial · EX_ANTE · **Decreto 9.235**, 17/10/2018
   - título: ministério da educação - Portal Gov.br
   - url: https://www.gov.br/mec/pt-br/cne/pdf/pareceres-do-cne/ces/2023/pces382_23.pdf
   - trecho: May 10, 2023 ... alinhado, não há um plano de contingência para garantia de continuidade de ... Valença-BA, 15 de novembro de 2021. Caroline Moutinho. Procurador ...
   - ⚠ ano_anterior_ao_ciclo
-- `00a855bad6` · nível **B** (3 pts) · seguimento_busca_oficial · — · data 2002 (do trecho)
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `00a855bad6` · nível **B** (3 pts) · seguimento_busca_oficial · DUVIDA · data 2002 (do trecho)
   - título: Ata - Pesquisa textual | Tribunal de Contas da União
   - url: https://pesquisa.apps.tcu.gov.br/#/documento/ata-sessao/37528019987.PROC/%2520/DTRELEVANCIA%2520desc/1/%2520
   - trecho: 1.2.5.3 providencie plano de contingência para ensaios e equipamentos;. 1.2 ... Valença/BA - CEPLAC/CENEX/VALE. Exercício: 2002. 1.1. Determinar ao CEPLAC ...
-- `05899c6fd9` · nível **B** (3 pts) · seguimento_busca_oficial · — · data 2019 (do trecho)
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `05899c6fd9` · nível **B** (3 pts) · seguimento_busca_oficial · DUVIDA · **Lei Nº. 579**, 16/12/2019
   - título: Prefeitura Municipal de Cairu publica:
   - url: https://www.cairu.ba.gov.br/Handler.ashx?f=diario&query=3689&c=131
   - trecho: Dec 16, 2019 ... b) Plano de contingência elaborado exclusivamente para o PLANO SETORIAL, ... Peçanha, Taperoá e Valença. É o único município brasileiro ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `347465a534` · nível **C** (5 pts) · seguimento_busca_oficial · EX_ANTE · **RESOLUÇÃO Nº 016**, 2025
+  - título: RESOLUÇÃO Nº 016/2025 A Diretora - Adagro
+  - url: https://www.adagro.pe.gov.br/images/legislacao/resolucoes/2025/Resolu%C3%A7%C3%A3o_n%C2%BA_16_2025_-_Plano_de_Conting%C3%AAncia_para_Influenza_Avi%C3%A1ria_Altamente_Patog%C3%AAnica_-_IAAP_-_e_Doen%C3%A7a_de_Newcastle_no_Estado_de_Pernambuco.pdf
+  - trecho: May 23, 2025 ... institucional da Associação Avícola de Pernambuco, Eduardo Valença, a produção local foi distribuída em ... Plano de contingência, faz-se ...
+  - ⚠ uf_divergente_na_url, ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo, uf_divergente_na_url
 
 ## Cascavel/CE — 8 pendente(s)
 - `7a83f1ad18` · nível **B** (5 pts) · busca_web · — · citação não extraída
@@ -3830,26 +4052,29 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.instagram.com/reel/Dc4SGOJNAiW/
   - trecho: Sep 4, 2026 ... Fortaleza se prepara para enfrentar os impactos do El Niño ... El Niño e do Plano de Contingência; Ampliação da rede de estações ...
   - juiz: portão automático: fonte não oficial
-- `7d21b2eadc` · nível **B** (4 pts) · seguimento_busca_oficial · — · data 2020 (do trecho)
+- `7d21b2eadc` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · data 2020 (do trecho)
   - título: diário oficial do município - PODER EXECUTIVO
   - url: https://www.sefin.fortaleza.ce.gov.br/anexoCT/25/fwzqvwydy.klv472/pdf/DECRETO%20N%C2%BA%2014
   - trecho: Mar 17, 2020 ... 83, da Lei Orgânica do Município de Fortaleza. CONSI-. DERANDO que a ... da Saúde, Plano de Contingência para conter a emergência de.
   - ⚠ ano_anterior_ao_ciclo
-- `c40273068e` · nível **B** (3 pts) · seguimento_busca_oficial · — · **Lei 12.608**, 2012 (do trecho)
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `c40273068e` · nível **B** (3 pts) · seguimento_busca_oficial · — · **Lei 12.608**, 2012
   - título: PLANO DE AÇÕES - Governo do Estado do Ceará
   - url: https://www.ce.gov.br/seplag/wp-content/uploads/sites/74/2025/03/PLANO-DE-CONTINGENCIA-FALESIAS-digital-1_compressed.pdf
   - trecho: Lei 12.608/2012, o plano de contingência é definido como um “conjunto ... em Fortaleza-CE, Brasil. In: CONGRES-. SO LATINO-AMERICANO DE CIÊNCIA DO. MAR ...
   - ⚠ ano_anterior_ao_ciclo
-- `e3d997fd38` · nível **B** (3 pts) · seguimento_busca_oficial · — · data 17/03/2022 (do trecho)
+- `e3d997fd38` · nível **B** (3 pts) · seguimento_busca_oficial · RESPOSTA · data 17/03/2022 (do trecho)
   - título: DIÁRIO OFICIAL DO ESTADO | SÉRIE 3 | ANO XIV Nº064
   - url: https://www.bombeiros.ce.gov.br/wp-content/uploads/sites/27/2022/03/Decreto-34595_PEPDEC_17-03-2021.pdf
   - trecho: Mar 9, 2022 ... VIII - plano de contingência: conjunto de medidas preestabelecidas ... Fortaleza, em 17 de março de 2022. Camilo Sobreira de Santana.
   - ⚠ ano_anterior_ao_ciclo
-- `d4e4770daf` · nível **C** (4 pts) · seguimento_busca_oficial · — · citação não extraída
+  - juiz: portão automático: natureza RESPOSTA — só ex-ante é aplicado sozinho
+- `d4e4770daf` · nível **C** (4 pts) · seguimento_busca_oficial · DUVIDA · citação não extraída
   - título: Upas que atendem suspeitos de covid-19 são higienizadas
   - url: https://www.cmfor.ce.gov.br/comunicacao/noticias/upas-que-atendem-suspeitos-de-covid-19-sao-higienizadas
   - trecho: A Prefeitura de Fortaleza, atendendo ao plano de contingência, vem pondo em prática um conjunto de ações na prevenção contra o coronavírus. Umas dessas ...
   - ⚠ risco_errado_no_titulo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `f504be1f02` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
   - url: https://www.instagram.com/reel/DdCR-pNhPgT/
   - trecho: Sep 8, 2026 ... ... likes, 0 comments - tvceara on September 8, 2026: "Fortaleza já ... El Niño (COE El Niño) e um Plano de Contingência. O período mais ...
@@ -3917,12 +4142,6 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://infosanbas.org.br/municipio/presidente-sarney-ma/
   - trecho: Seu território é composto 100% pelo bioma Amazonia. O IDHM de Presidente Sarney é 0,56. O município não possui Política Municipal de Saneamento Básico e possui Plano Municipal de Saneamento Básico.
 
-## Barão de Cocais/MG — 1 pendente(s)
-- `106613cb27` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
-  - url: https://www.portalcarlossouto.com.br/noticias/barao-de-cocais-ativa-nivel-2-do-plano-de-contingencia-devido-a-chuvas-intensas/
-  - trecho: A Prefeitura de Barão de Cocais, em resposta às chuvas intensas, ativou o nível 2 do plano de contingência, o que implica em ações preventivas e monitoramento intensificado.
-  - juiz: portão automático: fonte não oficial
-
 ## Chácara/MG — 1 pendente(s)
 - `b9a8774e49` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2013 (do trecho)
   - título: Plano Municipal de Saneamento Básico – Chácara/MG - CEIVAP
@@ -3950,19 +4169,30 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Plano Municipal de Saneamento Básico – Guidoval/MG 101. Plano Municipal de Saneamento Básico – Guidoval/MG. 100. Quadro 19 – Proposições e prazos quanto à ...
   - juiz: portão automático: fonte não oficial
 
-## Lambari/MG — 1 pendente(s)
-- `6366db55bf` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
-  - título: Prevenção antes da emergência! 🛡️ Diante dos efeitos do El Niño ...
-  - url: https://www.facebook.com/prefeituradelambari/videos/preven%C3%A7%C3%A3o-antes-da-emerg%C3%AAncia-%EF%B8%8Fdiante-dos-efeitos-do-el-ni%C3%B1o-no-pa%C3%ADs-e-da-possib/1058494277164913/
-  - trecho: Sep 10, 2026 ... ... Plano de Contingência, reunindo diferentes secretarias para ... Paróquia Nossa Senhora da Saúde - Lambari / MG. Paróquia Nossa Senho ...
-  - juiz: portão automático: fonte não oficial
-
-## Luz/MG — 1 pendente(s)
+## Luz/MG — 4 pendente(s)
+- `82a000ff35` · nível **B** (5 pts) · seguimento_busca_oficial · DUVIDA · data 2020 (do trecho)
+  - título: plano de contingência 2020/2021 - Portal Gov.br
+  - url: https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/capacitacoes/008_boas_praticas_eixo_plancon/001_boaspraticas_plancon_plano_contingencia_enfrentamento_desastres_belo_horizonte_mg.pdf
+  - trecho: o Plano de Contingência Específico da Av. Vilarinho. 2.6.1.2 Protocolo ... objetivando a redução do risco de desastres, conforme adequado à luz deste ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `c072e8920c` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Como o super El Niño previsto para os próximos meses pode deixar ...
   - url: https://www.estadao.com.br/economia/como-o-super-el-nino-pode-pressionar-a-conta-de-luz-em-2027/
   - trecho: Jun 19, 2026 ... ... luz. Para preservar os reservatórios das hidrelétricas, o Operador ... plano de contingência que favoreça a atuação preventiva e ...
   - juiz: portão automático: fonte não oficial
+- `a9f9b9dc91` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: PLANO DE CONTINGÊNCIA OPERATIVO DA MACRORREGIÃO ...
+  - url: https://www.saude.mg.gov.br/wp-content/uploads/2020/06/Oeste-b65.pdf
+  - trecho: Plano de Contingência Operativo para Infecção Humana pelo SARS COV-2 ... Luz. 2144166. Hospital Senhora Aparecida de Luz. Retaguarda não-. COVID média.
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `6ba6669654` · nível **B** (4 pts) · seguimento_busca_oficial · DUVIDA · citação não extraída
+  - título: MANUAL DE PLANEJAMENTO EM DEFESA CIVIL VOLUME II
+  - url: https://www.mg.gov.br/system/files/media/documento_detalhado/2025-03/Microsoft%20Word%20-%20Manual%20PLANEJAMENTO%20-2.rtf_.pdf
+  - trecho: Plano de contingência é o planejamento tático que é elaborado a partir de ... para provocar efeitos de calor, luz, ondas sonoras, gases e fumaças, ou a combinação ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Morro da Garça/MG — 1 pendente(s)
 - `3c6300c5d6` · nível **B** (5 pts) · busca_web · DUVIDA · **Lei nº 11.445**, 2007
@@ -4377,12 +4607,28 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: 07 Descumprimento de   normas de segurança e   legislação vigente   Baixa Alto Médio Cláusulas contratuais específicas e   fiscalização   08 Interrupção do serviço   durante o evento.   Baixa Alto Médio Previsão de equip
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Londrina/PR — 6 pendente(s)
+## Londrina/PR — 9 pendente(s)
+- `b2ad938867` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · data 2025 (do trecho)
+  - título: PLANO DE CONTINGÊNCIA MUNICIPAL SÍNDROME ...
+  - url: https://saude.londrina.pr.gov.br/images/plano_contingencia_sindrome_respiratoria.pdf
+  - trecho: May 28, 2025 ... internação, o Município de Londrina apresenta o Plano de Contingência para as Síndromes Respiratórias. Despacho Administrativo 13078 P ...
+  - juiz: portão automático: data do ato incompleta (2025)
+- `3c9431e42b` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: Prefeitura divulga Plano de Contingenciamento para Síndromes ...
+  - url: https://blog.londrina.pr.gov.br/?p=192603
+  - trecho: A etapa vigente do Plano de Contingenciamento, que é a fase 2, elenca outras medidas que podem ser aplicadas em breve. Dentre elas, a determinação da UPA Sabará como unidade de atendimento exclusivo de Síndromes Gripais;
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `89e500dcd9` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: El Niño é confirmado e Simepar prevê aumento de chuvas até ...
   - url: https://www.folhadelondrina.com.br/geral/el-nino-e-confirmado-e-simepar-preve-aumento-de-chuvas-ate-dezembro-3304815e.html
   - trecho: Jun 11, 2026 ... Entre as iniciativas prioritárias estão o desassoreamento de rios e córregos, atualização do Plano de Contingência ... Londrina, Guaratuba e ...
   - juiz: portão automático: fonte não oficial
+- `07163e5c8d` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: PLANO DE CONTINGÊNCIA PARA INCIDENTES COM PRODUTOS ...
+  - url: https://www.defesacivil.pr.gov.br/sites/defesa-civil/arquivos_restritos/files/documento/2022-12/plano_de_contingencia_pp_ferroviario_versao_final.pdf
+  - trecho: Plano de Contingência para acidentes e emergências envolvendo produtos ... LONDRINA, ALVORADA DO SUL,. APUCARANA, ARAPONGAS, BELA. VISTA DO PARAÍSO, BOM.
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 - `f3513a0ca1` · nível **B** (3 pts) · seguimento_querido_diario · DUVIDA · **Lei Municipal nº 13.935**, 09/04/2025
   - título: Diário oficial de 2026-09-16
   - url: https://data.queridodiario.ok.org.br/4113700/2026-09-16/f81dac043c2295a950fbb7d3381a65f66e67736f.pdf
@@ -5336,11 +5582,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: § 2º O Plano de Contingência é organizado pela definição e carac- terização ... de Major Vieira - Sed. PORtARIA Nº 2325 - 01/09/2021. CONCEDER ...
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
-- `a1eb7503aa` · nível **B** (5 pts) · busca_web · — · data 2022 (do trecho)
+- `a1eb7503aa` · nível **B** (5 pts) · busca_web · DUVIDA · **Portaria 236**, 2019
   - título: PLANO MUNICIPAL DE ASSISTÊNCIA SOCIAL 2022 - 2025
   - url: https://papanduva.sc.gov.br/uploads/sites/306/2022/06/2354533_PLANO_MUNICIPAL_DE_ASSISTENCIA_SOCIAL_2022___2025.pdf
   - trecho: Itaiópolis, Mafra, Major Vieira, Monte Castelo, Rio do Campo, Santa Terezinha, ... https://leismunicipais.com.br/plano-municipal-de-educacao-papanduva-sc.
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `f9da5b32b8` · nível **B** (5 pts) · busca_web · — · **Decreto nº 11.367**, 2023 (do trecho)
   - título: DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO
   - url: https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2026/DMPF-EXTRAJUDICIAL-2026-07-29.pdf?noCache=20260729135540192517
@@ -5371,16 +5618,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://canoinhasonline.com.br/2026/09/dupla-e-presa-em-flagrante-pela-pm-apos-assaltar-conveniencia-major-vieira.html
   - trecho: 2 days ago ... Home Major Vieira Dupla é presa em flagrante pela PM após assaltar conveniência em Major Vieira ... Defesa Civil detalha plano de contingência ...
   - juiz: portão automático: fonte não oficial
-- `94673643db` · nível **B** (4 pts) · busca_web · — · citação não extraída
+- `94673643db` · nível **B** (4 pts) · busca_web · DUVIDA · citação não extraída
   - título: Proposta Curricular da Educação Básica - Prefeitura de Monte Castelo
   - url: https://montecastelo.sc.gov.br/uploads/sites/449/2021/12/2213358_1732258_PROPOSTA_CURRICULAR_AMPLANORTE_COMPLETA_160120.pdf
   - trecho: ... Major Vieira. Page 10. A partir da necessidade de que as discussões e ... plano de ação que possibilite contínuas melhorias, qualitativas e quantitativas ...
   - ⚠ ano_anterior_ao_ciclo
-- `e8cfd5f970` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `e8cfd5f970` · nível **B** (4 pts) · busca_web · EX_ANTE · **Decreto Estadual nº 733**, 24/10/2024
   - título: EDITAL DE CHAMAMENTO PÚBLICO PARA TERMO DE ...
   - url: https://www.cultura.sc.gov.br/downloads/fcc/editais/3362-edital-de-chamamento-publico-para-termo-de-convenio-sc-cultura-boa-165-2025-atualizado-docx/file
   - trecho: Nov 12, 2025 ... Irineópolis, Itaiópolis, Mafra, Major Vieira, ... ajuizamento de ação e/ou apresentação de plano de ação, especialmente no caso de obra com etapa.
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `4edb8c4f5e` · nível **B** (4 pts) · busca_web · — · data 2013 (do trecho)
   - título: PROPOSTA DE PLANO DE AÇÃO - Portal SES/SC
   - url: https://www.saude.sc.gov.br/edocman/areas-de-atuacao/redes-de-atencao-a-saude-ras/planos-de-acao-regionais-ras/Profissionais%20-%20Plano_de%20acao%20estadual.pdf
@@ -5434,14 +5683,16 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: MPSC amplia atuação preventiva contra impactos do El Niño e abre ...
   - url: https://valedoitajainoticias.com.br/mpsc-amplia-atuacao-preventiva-contra-impactos-do-el-nino-e-abre-mais-de-130-procedimentos-em-cidades-de-sc/
   - trecho: 4 days ago ... Já em Passo de Torres, o acompanhamento verificou a atualização do Plano de Contingência ... Major Vieira e Três Barras. 3ª PJ de Porto ...
-- `ab894cf17b` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+- `ab894cf17b` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Sobe para 6 os municípios em situação de emergência após ...
   - url: https://ndmais.com.br/tempo/sobe-para-6-os-municipios-em-situacao-de-emergencia-apos-temporais-castigarem-sc/
   - trecho: Jul 2, 2026 ... ... Major Vieira e Timbó Grande decretaram o alerta vermelho após ... plano de contingência elaborado para a área. De acordo com a Defesa ...
-- `a850a6348d` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `a850a6348d` · nível **B** (3 pts) · busca_web · DUVIDA · **Lei nº. 146**, 01.54.00
   - título: Instrução Normativa Nº 11 Suinocultura
   - url: https://in.ima.sc.gov.br/instrucaoNormativa/downloadPDF/11
   - trecho: solicitar estudos complementares como Plano de Ação Emergencial, bem como outras informações ... Major Vieira. 0,565. 0,272. 0,293. JUL-OUT. Ponte Serrada. 0,873.
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `ab1717172b` · nível **B** (3 pts) · busca_web · — · citação não extraída
   - título: Alarme de Incêndio - NFL Group
   - url: https://www.nflgroup.com.br/alarme-incendio
@@ -5901,12 +6152,27 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Jul 17, 2026 ... 1 likes, 0 comments - portallitoralmais on July 17, 2026: "Sombrio elabora Plano de Contingência para segurança nas unidades de ensino ...
   - juiz: portão automático: fonte não oficial
 
-## Assis/SP — 1 pendente(s)
+## Assis/SP — 4 pendente(s)
+- `074162bb2b` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · **Decreto Estadual nº 61.111**, 03/02/2015
+  - título: PLANO DE CONTINGÊNCIA - SigRH
+  - url: https://sigrh.sp.gov.br/public/uploads/news/1318/planodecontingencia.pdf
+  - trecho: plano de contingência, que contou com a participação de: 1) Secretaria de ... como são os casos de Ourinhos e Assis. O Sistema Produtor Cantareira é ...
+  - juiz: portão automático: ato de 2015 — pode ser edição anterior; decisão humana
+- `de25449944` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: PLANO MUNICIPAL DE CONTINGÊNCIA “PLANCON”
+  - url: https://www.chavantes.sp.gov.br/carta-servico/download/2/
+  - trecho: IMPORTÂNCIA DO PLANO DE CONTINGÊNCIA. O presente Plano de Contingência - PLANCON funciona como um ... mesorregião de Assis. O município está a uma distância ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `c6d3458dae` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: ENERGISA PREPARA PLANO DE CONTINGÊNCIA POR CAUSA ...
   - url: https://www.facebook.com/difusoraassis/videos/energisa-prepara-plano-de-conting%C3%AAncia-por-causa-da-previs%C3%A3o-de-temporais-nos-pr/1589016705934825/
   - trecho: Sep 11, 2026 ... ENERGISA PREPARA PLANO DE CONTINGÊNCIA POR CAUSA DA PREVISÃO DE TEMPORAIS NOS PRÓXIMOS DIAS NA REGIÃO ... No photo description available. SOS PETS ...
   - juiz: portão automático: fonte não oficial
+- `fcaf09f5b9` · nível **C** (2 pts) · seguimento_busca_oficial · EX_ANTE · **PORTARIA 683**, 90.10.08
+  - título: gabinete do prefeito - Imprensa Oficial
+  - url: https://www.imprensaoficial.com.br/Certificacao/GatewayCertificaPDF.aspx?notarizacaoID=008fb8fb-5c74-426e-9ebe-216b3ab88baa
+  - trecho: 5º O Plano de Contingência para Situações de Baixas. Temperaturas a que ... 2014-0.041.292-3 - Museu de Arte de São Paulo – Assis. Chateaubriand - Cessão ...
+  - juiz: portão automático: data do ato incompleta (90.10.08)
 
 ## Bom Jesus dos Perdões/SP — 2 pendente(s)
 - `befac87760` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
@@ -5955,20 +6221,6 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: PLANO MUNICIPAL INTEGRADO DE SANEAMENTO BÁSICO ...
   - url: https://smastr20.blob.core.windows.net/conesan/Lavrinhas_AE_DU_RS_2011.pdf
   - trecho: Plano de Contingência é uma eventual ruptura dos taludes e bermas, resultante da ... Lavrinhas/SP – Outubro/2009. Relatórios anteriormente emitidos, referentes ...
-  - juiz: portão automático: fonte não oficial
-
-## Leme/SP — 1 pendente(s)
-- `468c7d518a` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
-  - título: Plano de contingência: como criar, implementar e testar?
-  - url: https://checklistfacil.com/blog/plano-de-contingencia/
-  - trecho: Feb 10, 2026 ... Aprenda a criar e a implementar um plano de contingência eficiente para garantir continuidade de negócios e reduzir riscos ... Pais Leme, 215 – ...
-  - juiz: portão automático: fonte não oficial
-
-## Limeira/SP — 1 pendente(s)
-- `931153e48f` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
-  - título: PLANO MUNICIPAL DE SANEAMENTO BÁSICO - CEIVAP
-  - url: https://www.ceivap.org.br/mata/Rosario-da-Limeira.pdf
-  - trecho: arranjo institucional e plano de contingência e emergência. ... O município de Rosário da Limeira está inserido no Comitê da Bacia Hidrográfica dos Afluentes Mi-.
   - juiz: portão automático: fonte não oficial
 
 ## Marília/SP — 1 pendente(s)
@@ -6375,7 +6627,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: 
 
 ---
-## Decididas (4371) — registro permanente, nunca apagadas
+## Decididas (5502) — registro permanente, nunca apagadas
 
 - `094c653590` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `5b22b54586` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
@@ -10740,6 +10992,1137 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `071f0cfffb` None/None · pendente_confirmacao_documento · 
 - `8a4b4fbde4` None/None · pendente_confirmacao_documento · 
 - `ad405affea` None/None · pendente_confirmacao_documento · 
+- `cad3d03fe3` None/None · pendente_confirmacao_documento · 
+- `094c653590` None/None · pendente_confirmacao_documento · 
+- `2b0a37c4bd` None/None · pendente_confirmacao_documento · 
+- `5b8e042537` None/None · pendente_confirmacao_documento · 
+- `09952986c0` None/None · pendente_confirmacao_documento · 
+- `161f190bb9` None/None · pendente_confirmacao_documento · 
+- `067822dd6d` None/None · pendente_confirmacao_documento · 
+- `e62f4343ef` None/None · pendente_confirmacao_documento · 
+- `92f7bbbf57` None/None · pendente_confirmacao_documento · 
+- `16c23939b4` None/None · pendente_confirmacao_documento · 
+- `7e1951ab11` None/None · pendente_confirmacao_documento · 
+- `e778f65e81` None/None · pendente_confirmacao_documento · 
+- `18f1a8beea` None/None · pendente_confirmacao_documento · 
+- `e320d480e5` None/None · pendente_confirmacao_documento · 
+- `cb32013128` None/None · pendente_confirmacao_documento · 
+- `9c96d93237` None/None · pendente_confirmacao_documento · 
+- `ceb0b93480` None/None · pendente_confirmacao_documento · 
+- `4ffba770ac` None/None · pendente_confirmacao_documento · 
+- `3e08490e09` None/None · pendente_confirmacao_documento · 
+- `09952986c0` None/None · pendente_confirmacao_documento · 
+- `6fa47e70a1` None/None · pendente_confirmacao_documento · 
+- `480da5d3a8` None/None · pendente_confirmacao_documento · 
+- `09952986c0` None/None · pendente_confirmacao_documento · 
+- `9c96d93237` None/None · pendente_confirmacao_documento · 
+- `7e1951ab11` None/None · pendente_confirmacao_documento · 
+- `9b8478e198` None/None · pendente_confirmacao_documento · 
+- `6fa47e70a1` None/None · pendente_confirmacao_documento · 
+- `09952986c0` None/None · pendente_confirmacao_documento · 
+- `ceb0b93480` None/None · pendente_confirmacao_documento · 
+- `e778f65e81` None/None · pendente_confirmacao_documento · 
+- `462039ce19` None/None · pendente_confirmacao_documento · 
+- `70d230c0cd` None/None · pendente_confirmacao_documento · 
+- `3b17cd4e58` None/None · pendente_confirmacao_documento · 
+- `09952986c0` None/None · pendente_confirmacao_documento · 
+- `ad405affea` None/None · pendente_confirmacao_documento · 
+- `9c96d93237` None/None · pendente_confirmacao_documento · 
+- `579e53003e` None/None · pendente_confirmacao_documento · 
+- `0152bc41d0` None/None · pendente_confirmacao_documento · 
+- `0b9214ec29` None/None · pendente_confirmacao_documento · 
+- `470ebca11f` None/None · pendente_confirmacao_documento · 
+- `594e25b92e` None/None · pendente_confirmacao_documento · 
+- `685288ab89` None/None · pendente_confirmacao_documento · 
+- `8bdbc8e5c4` None/None · pendente_confirmacao_documento · 
+- `b0199749d3` None/None · pendente_confirmacao_documento · 
+- `cad3d03fe3` None/None · pendente_confirmacao_documento · 
+- `e778f65e81` None/None · pendente_confirmacao_documento · 
+- `b0199749d3` None/None · pendente_confirmacao_documento · 
+- `16c23939b4` None/None · pendente_confirmacao_documento · 
+- `e320d480e5` None/None · pendente_confirmacao_documento · 
+- `1cb0decc46` None/None · pendente_confirmacao_documento · 
+- `e778f65e81` None/None · pendente_confirmacao_documento · 
+- `de791dde11` None/None · pendente_confirmacao_documento · 
+- `094c653590` None/None · pendente_confirmacao_documento · 
+- `16c23939b4` None/None · pendente_confirmacao_documento · 
+- `06651fcad0` None/None · pendente_confirmacao_documento · 
+- `cad3d03fe3` None/None · pendente_confirmacao_documento · 
+- `b0199749d3` None/None · pendente_confirmacao_documento · 
+- `33271ca007` None/None · pendente_confirmacao_documento · 
+- `9636052c07` None/None · pendente_confirmacao_documento · 
+- `16c23939b4` None/None · pendente_confirmacao_documento · 
+- `8a4b4fbde4` None/None · pendente_confirmacao_documento · 
+- `cad3d03fe3` None/None · pendente_confirmacao_documento · 
+- `b0199749d3` None/None · pendente_confirmacao_documento · 
+- `e778f65e81` None/None · pendente_confirmacao_documento · 
+- `c409c89475` None/None · pendente_confirmacao_documento · 
+- `c3e3d92f31` None/None · pendente_confirmacao_documento · 
+- `e320d480e5` None/None · pendente_confirmacao_documento · 
+- `b7f335fa6f` None/None · pendente_confirmacao_documento · 
+- `3d44c36783` None/None · pendente_confirmacao_documento · 
+- `5addf84462` None/None · pendente_confirmacao_documento · 
+- `e320d480e5` None/None · pendente_confirmacao_documento · 
+- `faf60507ce` None/None · pendente_confirmacao_documento · 
+- `43acb9573a` None/None · pendente_confirmacao_documento · 
+- `02065b0004` None/None · pendente_confirmacao_documento · 
+- `08da181c6d` None/None · pendente_confirmacao_documento · 
+- `130bde99cb` None/None · pendente_confirmacao_documento · 
+- `e0184e251f` None/None · pendente_confirmacao_documento · 
+- `a30a6bf4d3` None/None · pendente_confirmacao_documento · 
+- `02065b0004` None/None · pendente_confirmacao_documento · 
+- `8633b42599` None/None · pendente_confirmacao_documento · 
+- `e007191bc8` None/None · pendente_confirmacao_documento · 
+- `5ca8171414` None/None · pendente_confirmacao_documento · 
+- `16686f60c8` None/None · pendente_confirmacao_documento · 
+- `02065b0004` None/None · pendente_confirmacao_documento · 
+- `5addf84462` None/None · pendente_confirmacao_documento · 
+- `130bde99cb` None/None · pendente_confirmacao_documento · 
+- `e130f38865` None/None · pendente_confirmacao_documento · 
+- `215a691cf7` None/None · pendente_confirmacao_documento · 
+- `c0c41d9900` None/None · pendente_confirmacao_documento · 
+- `5ca8171414` None/None · pendente_confirmacao_documento · 
+- `70d230c0cd` None/None · pendente_confirmacao_documento · 
+- `5addf84462` None/None · pendente_confirmacao_documento · 
+- `1cb0decc46` None/None · pendente_confirmacao_documento · 
+- `02065b0004` None/None · pendente_confirmacao_documento · 
+- `130bde99cb` None/None · pendente_confirmacao_documento · 
+- `e130f38865` None/None · pendente_confirmacao_documento · 
+- `95e3a547ef` None/None · pendente_confirmacao_documento · 
+- `e130f38865` None/None · pendente_confirmacao_documento · 
+- `51d3da4814` None/None · pendente_confirmacao_documento · 
+- `08da181c6d` None/None · pendente_confirmacao_documento · 
+- `5ca8171414` None/None · pendente_confirmacao_documento · 
+- `6ef186c42b` None/None · pendente_confirmacao_documento · 
+- `d85299ed6d` None/None · pendente_confirmacao_documento · 
+- `5b22b54586` None/None · pendente_confirmacao_documento · 
+- `70d230c0cd` None/None · pendente_confirmacao_documento · 
+- `9c96d93237` None/None · pendente_confirmacao_documento · 
+- `003b39303a` None/None · pendente_confirmacao_documento · 
+- `80883aad9a` None/None · pendente_confirmacao_documento · 
+- `70d230c0cd` None/None · pendente_confirmacao_documento · 
+- `1a3643f27c` None/None · pendente_confirmacao_documento · 
+- `a5f3581f79` None/None · pendente_confirmacao_documento · 
+- `5e22587a2f` None/None · pendente_confirmacao_documento · 
+- `5b8e042537` None/None · pendente_confirmacao_documento · 
+- `2b0a37c4bd` None/None · pendente_confirmacao_documento · 
+- `7e1951ab11` None/None · pendente_confirmacao_documento · 
+- `5b8e042537` None/None · pendente_confirmacao_documento · 
+- `7e1951ab11` None/None · pendente_confirmacao_documento · 
+- `80883aad9a` None/None · pendente_confirmacao_documento · 
+- `2c67a457ce` None/None · pendente_confirmacao_documento · 
+- `bfecd0971f` None/None · pendente_confirmacao_documento · 
+- `c30a77e05b` None/None · pendente_confirmacao_documento · 
+- `3b6ff4d8a4` None/None · pendente_confirmacao_documento · 
+- `f74741b2b4` None/None · pendente_confirmacao_documento · 
+- `4ba26dfe04` None/None · pendente_confirmacao_documento · 
+- `6dda72e930` None/None · pendente_confirmacao_documento · 
+- `510290bd75` None/None · pendente_confirmacao_documento · 
+- `d002ed9976` None/None · pendente_confirmacao_documento · 
+- `2dad83918e` None/None · pendente_confirmacao_documento · 
+- `87e327dedc` None/None · pendente_confirmacao_documento · 
+- `5caeb4864e` None/None · pendente_confirmacao_documento · 
+- `0ad48db0e5` None/None · pendente_confirmacao_documento · 
+- `b8e593ab7c` None/None · pendente_confirmacao_documento · 
+- `ad2edbb231` None/None · pendente_confirmacao_documento · 
+- `e6db19d194` None/None · pendente_confirmacao_documento · 
+- `e5044ff3e5` None/None · pendente_confirmacao_documento · 
+- `5af7d312cc` None/None · pendente_confirmacao_documento · 
+- `4d0477d0ff` None/None · pendente_confirmacao_documento · 
+- `9818c0fb27` None/None · pendente_confirmacao_documento · 
+- `8471467452` None/None · pendente_confirmacao_documento · 
+- `ba019fea3a` None/None · pendente_confirmacao_documento · 
+- `9a94717172` None/None · pendente_confirmacao_documento · 
+- `49c805606a` None/None · pendente_confirmacao_documento · 
+- `3ab2e3b244` None/None · pendente_confirmacao_documento · 
+- `255e5751db` None/None · pendente_confirmacao_documento · 
+- `8f4089f348` None/None · pendente_confirmacao_documento · 
+- `1bba893dcd` None/None · pendente_confirmacao_documento · 
+- `922be4a3dd` None/None · pendente_confirmacao_documento · 
+- `c73c6d3510` None/None · pendente_confirmacao_documento · 
+- `e4396a4215` None/None · pendente_confirmacao_documento · 
+- `026c04d2a0` None/None · pendente_confirmacao_documento · 
+- `b5f705088b` None/None · pendente_confirmacao_documento · 
+- `ecc7f9b972` None/None · pendente_confirmacao_documento · 
+- `0b765ea057` None/None · pendente_confirmacao_documento · 
+- `cc8a6f352b` None/None · pendente_confirmacao_documento · 
+- `fab02f118e` None/None · pendente_confirmacao_documento · 
+- `3c19dc916f` None/None · pendente_confirmacao_documento · 
+- `a75e39e839` None/None · pendente_confirmacao_documento · 
+- `ccbe584002` None/None · pendente_confirmacao_documento · 
+- `9bb24a0df9` None/None · pendente_confirmacao_documento · 
+- `8b63cf605f` None/None · pendente_confirmacao_documento · 
+- `e8742c068c` None/None · pendente_confirmacao_documento · 
+- `f68cb8fa93` None/None · pendente_confirmacao_documento · 
+- `efc6012671` None/None · pendente_confirmacao_documento · 
+- `b7e44cf288` None/None · pendente_confirmacao_documento · 
+- `9505d09aa3` None/None · pendente_confirmacao_documento · 
+- `1f49009acf` None/None · pendente_confirmacao_documento · 
+- `027ede7ea2` None/None · pendente_confirmacao_documento · 
+- `25f1b25eb1` None/None · pendente_confirmacao_documento · 
+- `b5e732642b` None/None · pendente_confirmacao_documento · 
+- `5a4fc3a828` None/None · pendente_confirmacao_documento · 
+- `3900734887` None/None · pendente_confirmacao_documento · 
+- `5d05c6d314` None/None · pendente_confirmacao_documento · 
+- `5f3660633a` None/None · pendente_confirmacao_documento · 
+- `519535b4b6` None/None · pendente_confirmacao_documento · 
+- `04a3c360cf` None/None · pendente_confirmacao_documento · 
+- `f81c877da9` None/None · pendente_confirmacao_documento · 
+- `36e7fdb1be` None/None · pendente_confirmacao_documento · 
+- `d73d8315bd` None/None · pendente_confirmacao_documento · 
+- `d574dfc8eb` None/None · pendente_confirmacao_documento · 
+- `007f4febc7` None/None · pendente_confirmacao_documento · 
+- `f1f1015473` None/None · pendente_confirmacao_documento · 
+- `78cb468b5a` None/None · pendente_confirmacao_documento · 
+- `150230a81a` None/None · pendente_confirmacao_documento · 
+- `83e764177f` None/None · pendente_confirmacao_documento · 
+- `ade0211ac3` None/None · pendente_confirmacao_documento · 
+- `8d1fc3f310` None/None · pendente_confirmacao_documento · 
+- `3260b6f8ad` None/None · pendente_confirmacao_documento · 
+- `9ec183d285` None/None · pendente_confirmacao_documento · 
+- `8e656a6913` None/None · pendente_confirmacao_documento · 
+- `e8b78a084a` None/None · pendente_confirmacao_documento · 
+- `ccc788e91e` None/None · pendente_confirmacao_documento · 
+- `e014e78cc7` None/None · pendente_confirmacao_documento · 
+- `150618eb78` None/None · pendente_confirmacao_documento · 
+- `17f678dcac` None/None · pendente_confirmacao_documento · 
+- `9780f71738` None/None · pendente_confirmacao_documento · 
+- `dd054e2677` None/None · pendente_confirmacao_documento · 
+- `b721d334c4` None/None · pendente_confirmacao_documento · 
+- `5079ccbe10` None/None · pendente_confirmacao_documento · 
+- `94d46f9de6` None/None · pendente_confirmacao_documento · 
+- `c39e27cb71` None/None · pendente_confirmacao_documento · 
+- `05d2f3095e` None/None · pendente_confirmacao_documento · 
+- `923a082479` None/None · pendente_confirmacao_documento · 
+- `0b216fd72a` None/None · pendente_confirmacao_documento · 
+- `c6804b0cd8` None/None · pendente_confirmacao_documento · 
+- `dcf236cee1` None/None · pendente_confirmacao_documento · 
+- `2a797d3c60` None/None · pendente_confirmacao_documento · 
+- `211318225a` None/None · pendente_confirmacao_documento · 
+- `1c5ee60e20` None/None · pendente_confirmacao_documento · 
+- `448c62ea2c` None/None · pendente_confirmacao_documento · 
+- `df5b421ef8` None/None · pendente_confirmacao_documento · 
+- `d686bf2c2c` None/None · pendente_confirmacao_documento · 
+- `a292563fff` None/None · pendente_confirmacao_documento · 
+- `03b248c422` None/None · pendente_confirmacao_documento · 
+- `db794c8be9` None/None · pendente_confirmacao_documento · 
+- `729a2e10bd` None/None · pendente_confirmacao_documento · 
+- `93e0651e0d` None/None · pendente_confirmacao_documento · 
+- `6a59b98d6b` None/None · pendente_confirmacao_documento · 
+- `69dd0b747b` None/None · pendente_confirmacao_documento · 
+- `3533e7bcab` None/None · pendente_confirmacao_documento · 
+- `89cede9dc9` None/None · pendente_confirmacao_documento · 
+- `f99ea035b0` None/None · pendente_confirmacao_documento · 
+- `c515458c84` None/None · pendente_confirmacao_documento · 
+- `188f4514ae` None/None · pendente_confirmacao_documento · 
+- `971e669a36` None/None · pendente_confirmacao_documento · 
+- `b036ca31dd` None/None · pendente_confirmacao_documento · 
+- `1eb0e4e163` None/None · pendente_confirmacao_documento · 
+- `31abfad8ba` None/None · pendente_confirmacao_documento · 
+- `3c4059701b` None/None · pendente_confirmacao_documento · 
+- `70201c7d22` None/None · pendente_confirmacao_documento · 
+- `3ae90d8704` None/None · pendente_confirmacao_documento · 
+- `a17301f2ac` None/None · pendente_confirmacao_documento · 
+- `6d3b129fe8` None/None · pendente_confirmacao_documento · 
+- `ef39f694b6` None/None · pendente_confirmacao_documento · 
+- `8852dee2de` None/None · pendente_confirmacao_documento · 
+- `808549292f` None/None · pendente_confirmacao_documento · 
+- `3d44af0223` None/None · pendente_confirmacao_documento · 
+- `4f3d060b0c` None/None · pendente_confirmacao_documento · 
+- `5dd39ec844` None/None · pendente_confirmacao_documento · 
+- `1dbbeec085` None/None · pendente_confirmacao_documento · 
+- `e38fca9764` None/None · pendente_confirmacao_documento · 
+- `9102390bc7` None/None · pendente_confirmacao_documento · 
+- `23ef64de3d` None/None · pendente_confirmacao_documento · 
+- `de8d3aabf3` None/None · pendente_confirmacao_documento · 
+- `2e74996998` None/None · pendente_confirmacao_documento · 
+- `2b55d81de4` None/None · pendente_confirmacao_documento · 
+- `913019d48b` None/None · pendente_confirmacao_documento · 
+- `3f4f8d8201` None/None · pendente_confirmacao_documento · 
+- `79e6c9edf1` None/None · pendente_confirmacao_documento · 
+- `4d26bdc6d7` None/None · pendente_confirmacao_documento · 
+- `d535bd4f86` None/None · pendente_confirmacao_documento · 
+- `bc9842e621` None/None · pendente_confirmacao_documento · 
+- `8b87797a9a` None/None · pendente_confirmacao_documento · 
+- `b16261bad6` None/None · pendente_confirmacao_documento · 
+- `04df1466aa` None/None · pendente_confirmacao_documento · 
+- `4f3e6d5973` None/None · pendente_confirmacao_documento · 
+- `614749367a` None/None · pendente_confirmacao_documento · 
+- `05876a29fb` None/None · pendente_confirmacao_documento · 
+- `95a726d327` None/None · pendente_confirmacao_documento · 
+- `1c794d0b10` None/None · pendente_confirmacao_documento · 
+- `282f7e35a6` None/None · pendente_confirmacao_documento · 
+- `4675f53e72` None/None · pendente_confirmacao_documento · 
+- `e44388f160` None/None · pendente_confirmacao_documento · 
+- `e689dbc250` None/None · pendente_confirmacao_documento · 
+- `5599e5e4c0` None/None · pendente_confirmacao_documento · 
+- `ae1233e042` None/None · pendente_confirmacao_documento · 
+- `251d33b964` None/None · pendente_confirmacao_documento · 
+- `a91f4731ce` None/None · pendente_confirmacao_documento · 
+- `182fdaab5d` None/None · pendente_confirmacao_documento · 
+- `00c75cf34c` None/None · pendente_confirmacao_documento · 
+- `4add7f311e` None/None · pendente_confirmacao_documento · 
+- `348b9cd530` None/None · pendente_confirmacao_documento · 
+- `35f0cc8b5d` None/None · pendente_confirmacao_documento · 
+- `3422d47bd7` None/None · pendente_confirmacao_documento · 
+- `6a67e582b9` None/None · pendente_confirmacao_documento · 
+- `9c3f7d34af` None/None · pendente_confirmacao_documento · 
+- `84bf20221d` None/None · pendente_confirmacao_documento · 
+- `812593edad` None/None · pendente_confirmacao_documento · 
+- `a3850ad63b` None/None · pendente_confirmacao_documento · 
+- `a65cfa128a` None/None · pendente_confirmacao_documento · 
+- `d38d996ea0` None/None · pendente_confirmacao_documento · 
+- `a22cbcadc8` None/None · pendente_confirmacao_documento · 
+- `a81ee4c9eb` None/None · pendente_confirmacao_documento · 
+- `4eaede8e15` None/None · pendente_confirmacao_documento · 
+- `7562414584` None/None · pendente_confirmacao_documento · 
+- `1ee4c8ab7e` None/None · pendente_confirmacao_documento · 
+- `ebcb3471de` None/None · pendente_confirmacao_documento · 
+- `14003ef925` None/None · pendente_confirmacao_documento · 
+- `19d3ded737` None/None · pendente_confirmacao_documento · 
+- `bbe9c7682b` None/None · pendente_confirmacao_documento · 
+- `563ae73b0d` None/None · pendente_confirmacao_documento · 
+- `3338ea3c6e` None/None · pendente_confirmacao_documento · 
+- `c6fb1829fa` None/None · pendente_confirmacao_documento · 
+- `e211fccb82` None/None · pendente_confirmacao_documento · 
+- `e296ff2d24` None/None · pendente_confirmacao_documento · 
+- `711cbfc94a` None/None · pendente_confirmacao_documento · 
+- `1e8e6c8e24` None/None · pendente_confirmacao_documento · 
+- `12de758eaf` None/None · pendente_confirmacao_documento · 
+- `be08b367e8` None/None · pendente_confirmacao_documento · 
+- `a26feceef0` None/None · pendente_confirmacao_documento · 
+- `5b219092f3` None/None · pendente_confirmacao_documento · 
+- `e19d3024ac` None/None · pendente_confirmacao_documento · 
+- `baf5dbce38` None/None · pendente_confirmacao_documento · 
+- `afe62b4869` None/None · pendente_confirmacao_documento · 
+- `a8ac0828fd` None/None · pendente_confirmacao_documento · 
+- `0396a25a71` None/None · pendente_confirmacao_documento · 
+- `b72b954f9c` None/None · pendente_confirmacao_documento · 
+- `5fb77c7715` None/None · pendente_confirmacao_documento · 
+- `df8dfc536e` None/None · pendente_confirmacao_documento · 
+- `7e5c7361f9` None/None · pendente_confirmacao_documento · 
+- `09bf7b89de` None/None · pendente_confirmacao_documento · 
+- `f290a451a4` None/None · pendente_confirmacao_documento · 
+- `2a5d6e83e2` None/None · pendente_confirmacao_documento · 
+- `0e5655d7a4` None/None · pendente_confirmacao_documento · 
+- `78e0198d67` None/None · pendente_confirmacao_documento · 
+- `bd0300ae55` None/None · pendente_confirmacao_documento · 
+- `603cefddd3` None/None · pendente_confirmacao_documento · 
+- `9b96d9daac` None/None · pendente_confirmacao_documento · 
+- `945b859318` None/None · pendente_confirmacao_documento · 
+- `3975264124` None/None · pendente_confirmacao_documento · 
+- `405d7bc0dc` None/None · pendente_confirmacao_documento · 
+- `3913a92951` None/None · pendente_confirmacao_documento · 
+- `82ba92d42e` None/None · pendente_confirmacao_documento · 
+- `90526744d7` None/None · pendente_confirmacao_documento · 
+- `c1a4632686` None/None · pendente_confirmacao_documento · 
+- `ed527d200a` None/None · pendente_confirmacao_documento · 
+- `3348ff4f20` None/None · pendente_confirmacao_documento · 
+- `bc78ad3e96` None/None · pendente_confirmacao_documento · 
+- `71d513d5a2` None/None · pendente_confirmacao_documento · 
+- `5d5b1ac029` None/None · pendente_confirmacao_documento · 
+- `bf0a6ba351` None/None · pendente_confirmacao_documento · 
+- `21c8d496c3` None/None · pendente_confirmacao_documento · 
+- `ae48b33350` None/None · pendente_confirmacao_documento · 
+- `f20c733e64` None/None · pendente_confirmacao_documento · 
+- `96cc183ca0` None/None · pendente_confirmacao_documento · 
+- `5dfc4880e8` None/None · pendente_confirmacao_documento · 
+- `66feef8416` None/None · pendente_confirmacao_documento · 
+- `78495b5da0` None/None · pendente_confirmacao_documento · 
+- `024a252476` None/None · pendente_confirmacao_documento · 
+- `ebfccf5e90` None/None · pendente_confirmacao_documento · 
+- `252d8eb8e0` None/None · pendente_confirmacao_documento · 
+- `3bdf1bcb10` None/None · pendente_confirmacao_documento · 
+- `bdfcd18121` None/None · pendente_confirmacao_documento · 
+- `5bacdecaa1` None/None · pendente_confirmacao_documento · 
+- `376b348bb6` None/None · pendente_confirmacao_documento · 
+- `e802fa8f86` None/None · pendente_confirmacao_documento · 
+- `5bda1ea7ad` None/None · pendente_confirmacao_documento · 
+- `7876ecb376` None/None · pendente_confirmacao_documento · 
+- `d471b1f75a` None/None · pendente_confirmacao_documento · 
+- `81086aa9a2` None/None · pendente_confirmacao_documento · 
+- `92e5017812` None/None · pendente_confirmacao_documento · 
+- `cf738120af` None/None · pendente_confirmacao_documento · 
+- `3d59f71f6a` None/None · pendente_confirmacao_documento · 
+- `ead65858c2` None/None · pendente_confirmacao_documento · 
+- `2b0cf9e227` None/None · pendente_confirmacao_documento · 
+- `dda069581c` None/None · pendente_confirmacao_documento · 
+- `f3d3b66f56` None/None · pendente_confirmacao_documento · 
+- `0677701be8` None/None · pendente_confirmacao_documento · 
+- `9a01d12e74` None/None · pendente_confirmacao_documento · 
+- `baa26a461b` None/None · pendente_confirmacao_documento · 
+- `2b60c73f2e` None/None · pendente_confirmacao_documento · 
+- `a1580541a4` None/None · pendente_confirmacao_documento · 
+- `582bf2b7e6` None/None · pendente_confirmacao_documento · 
+- `3a30b05031` None/None · pendente_confirmacao_documento · 
+- `152059b0a6` None/None · pendente_confirmacao_documento · 
+- `a74c6d0c4e` None/None · pendente_confirmacao_documento · 
+- `450966240c` None/None · pendente_confirmacao_documento · 
+- `2cf3ebe2d9` None/None · pendente_confirmacao_documento · 
+- `4323af3161` None/None · pendente_confirmacao_documento · 
+- `be0913f792` None/None · pendente_confirmacao_documento · 
+- `14454387a5` None/None · pendente_confirmacao_documento · 
+- `e29e810b5e` None/None · pendente_confirmacao_documento · 
+- `bcfe0b01d1` None/None · pendente_confirmacao_documento · 
+- `5d913a50fb` None/None · pendente_confirmacao_documento · 
+- `53c759f0c7` None/None · pendente_confirmacao_documento · 
+- `107d411e4a` None/None · pendente_confirmacao_documento · 
+- `ca468db2fb` None/None · pendente_confirmacao_documento · 
+- `ddb7688aec` None/None · pendente_confirmacao_documento · 
+- `12a0ac31e1` None/None · pendente_confirmacao_documento · 
+- `c22008af99` None/None · pendente_confirmacao_documento · 
+- `06ef2bde09` None/None · pendente_confirmacao_documento · 
+- `aa7f8dc9ab` None/None · pendente_confirmacao_documento · 
+- `634af62886` None/None · pendente_confirmacao_documento · 
+- `f883115a13` None/None · pendente_confirmacao_documento · 
+- `dab026d0d9` None/None · pendente_confirmacao_documento · 
+- `4a01649c17` None/None · pendente_confirmacao_documento · 
+- `b27a5394f4` None/None · pendente_confirmacao_documento · 
+- `d15235d557` None/None · pendente_confirmacao_documento · 
+- `c86bcb8126` None/None · pendente_confirmacao_documento · 
+- `2c25e452a2` None/None · pendente_confirmacao_documento · 
+- `6260438dfa` None/None · pendente_confirmacao_documento · 
+- `c12fb66c24` None/None · pendente_confirmacao_documento · 
+- `f50dee9e0e` None/None · pendente_confirmacao_documento · 
+- `269e9a5b2c` None/None · pendente_confirmacao_documento · 
+- `b9ae333b41` None/None · pendente_confirmacao_documento · 
+- `2d5fb3c9b6` None/None · pendente_confirmacao_documento · 
+- `9325ecb9e5` None/None · pendente_confirmacao_documento · 
+- `5e6a135e3b` None/None · pendente_confirmacao_documento · 
+- `064ff1ca47` None/None · pendente_confirmacao_documento · 
+- `019a164524` None/None · pendente_confirmacao_documento · 
+- `3dfb41af0c` None/None · pendente_confirmacao_documento · 
+- `6ce07f4b25` None/None · pendente_confirmacao_documento · 
+- `1e8e6c8e24` None/None · pendente_confirmacao_documento · 
+- `52c328f262` None/None · pendente_confirmacao_documento · 
+- `a26feceef0` None/None · pendente_confirmacao_documento · 
+- `711cbfc94a` None/None · pendente_confirmacao_documento · 
+- `d48978c5a8` None/None · pendente_confirmacao_documento · 
+- `9fb1119fb3` None/None · pendente_confirmacao_documento · 
+- `ff4e97d489` None/None · pendente_confirmacao_documento · 
+- `1619f3b6eb` None/None · pendente_confirmacao_documento · 
+- `f43fe36b18` None/None · pendente_confirmacao_documento · 
+- `92bd22e5d7` None/None · pendente_confirmacao_documento · 
+- `d354ba8602` None/None · pendente_confirmacao_documento · 
+- `0a5d76483d` None/None · pendente_confirmacao_documento · 
+- `e8742c068c` None/None · pendente_confirmacao_documento · 
+- `34f7a611d4` None/None · pendente_confirmacao_documento · 
+- `fa4528aac9` None/None · pendente_confirmacao_documento · 
+- `1f49009acf` None/None · pendente_confirmacao_documento · 
+- `2cc59397be` None/None · pendente_confirmacao_documento · 
+- `eaa1fdb432` None/None · pendente_confirmacao_documento · 
+- `a3af6f2284` None/None · pendente_confirmacao_documento · 
+- `87bd7a1a52` None/None · pendente_confirmacao_documento · 
+- `3b70d7ada6` None/None · pendente_confirmacao_documento · 
+- `0db4877fed` None/None · pendente_confirmacao_documento · 
+- `516a635356` None/None · pendente_confirmacao_documento · 
+- `ebe1ed59e7` None/None · pendente_confirmacao_documento · 
+- `be5c9bc27d` None/None · pendente_confirmacao_documento · 
+- `a03cd7bb07` None/None · pendente_confirmacao_documento · 
+- `0160dee983` None/None · pendente_confirmacao_documento · 
+- `0d416fdef5` None/None · pendente_confirmacao_documento · 
+- `a74e399f06` None/None · pendente_confirmacao_documento · 
+- `eec63999be` None/None · pendente_confirmacao_documento · 
+- `dae58a0191` None/None · pendente_confirmacao_documento · 
+- `095075909f` None/None · pendente_confirmacao_documento · 
+- `5fda2348d3` None/None · pendente_confirmacao_documento · 
+- `15d80f63d6` None/None · pendente_confirmacao_documento · 
+- `36ea77f04c` None/None · pendente_confirmacao_documento · 
+- `61bec964d2` None/None · pendente_confirmacao_documento · 
+- `6c79e681b8` None/None · pendente_confirmacao_documento · 
+- `c181d5dfb0` None/None · pendente_confirmacao_documento · 
+- `1099c7ef83` None/None · pendente_confirmacao_documento · 
+- `bc151c3bd0` None/None · pendente_confirmacao_documento · 
+- `a1deefa217` None/None · pendente_confirmacao_documento · 
+- `a73cc424fe` None/None · pendente_confirmacao_documento · 
+- `de95d45aca` None/None · pendente_confirmacao_documento · 
+- `5f5cfb0c92` None/None · pendente_confirmacao_documento · 
+- `62e7a31df8` None/None · pendente_confirmacao_documento · 
+- `d251aeafeb` None/None · pendente_confirmacao_documento · 
+- `fe956ec24b` None/None · pendente_confirmacao_documento · 
+- `b0ababd4e1` None/None · pendente_confirmacao_documento · 
+- `593ee123ed` None/None · pendente_confirmacao_documento · 
+- `40b53dc94c` None/None · pendente_confirmacao_documento · 
+- `3e5cf37416` None/None · pendente_confirmacao_documento · 
+- `487f701a4a` None/None · pendente_confirmacao_documento · 
+- `9e386029d1` None/None · pendente_confirmacao_documento · 
+- `27d74afe5e` None/None · pendente_confirmacao_documento · 
+- `a04543340a` None/None · pendente_confirmacao_documento · 
+- `919c14f1fb` None/None · pendente_confirmacao_documento · 
+- `449909b551` None/None · pendente_confirmacao_documento · 
+- `9f4a4fc520` None/None · pendente_confirmacao_documento · 
+- `75e6a39520` None/None · pendente_confirmacao_documento · 
+- `35ffc3eed9` None/None · pendente_confirmacao_documento · 
+- `2a9e0b7808` None/None · pendente_confirmacao_documento · 
+- `fe24d23800` None/None · pendente_confirmacao_documento · 
+- `8c92e8c876` None/None · pendente_confirmacao_documento · 
+- `57af50b302` None/None · pendente_confirmacao_documento · 
+- `a98c21c117` None/None · pendente_confirmacao_documento · 
+- `1e1e147dea` None/None · pendente_confirmacao_documento · 
+- `4fa6979384` None/None · pendente_confirmacao_documento · 
+- `56a9e9edd8` None/None · pendente_confirmacao_documento · 
+- `ca763807df` None/None · pendente_confirmacao_documento · 
+- `e2e922b1c6` None/None · pendente_confirmacao_documento · 
+- `8fdcea39bf` None/None · pendente_confirmacao_documento · 
+- `4ce3a6dedb` None/None · pendente_confirmacao_documento · 
+- `246a4be1bd` None/None · pendente_confirmacao_documento · 
+- `46a59c8863` None/None · pendente_confirmacao_documento · 
+- `ddb058a000` None/None · pendente_confirmacao_documento · 
+- `f900039430` None/None · pendente_confirmacao_documento · 
+- `bf9ac5a4c7` None/None · pendente_confirmacao_documento · 
+- `506a4b65fe` None/None · pendente_confirmacao_documento · 
+- `112152eec3` None/None · pendente_confirmacao_documento · 
+- `cad4b1dff8` None/None · pendente_confirmacao_documento · 
+- `3908db5875` None/None · pendente_confirmacao_documento · 
+- `98928b61f1` None/None · pendente_confirmacao_documento · 
+- `00a3d8580a` None/None · pendente_confirmacao_documento · 
+- `20bcbe58c4` None/None · pendente_confirmacao_documento · 
+- `dce35ca4e1` None/None · pendente_confirmacao_documento · 
+- `c2e26f2640` None/None · pendente_confirmacao_documento · 
+- `977c00e200` None/None · pendente_confirmacao_documento · 
+- `e6210423fc` None/None · pendente_confirmacao_documento · 
+- `08e6c619b4` None/None · pendente_confirmacao_documento · 
+- `d1ea484ba1` None/None · pendente_confirmacao_documento · 
+- `5fc390b245` None/None · pendente_confirmacao_documento · 
+- `d8cfae551e` None/None · pendente_confirmacao_documento · 
+- `7b66ef4a59` None/None · pendente_confirmacao_documento · 
+- `50eda916f4` None/None · pendente_confirmacao_documento · 
+- `5da7787126` None/None · pendente_confirmacao_documento · 
+- `303301ace0` None/None · pendente_confirmacao_documento · 
+- `36bafe4160` None/None · pendente_confirmacao_documento · 
+- `973d18018e` None/None · pendente_confirmacao_documento · 
+- `62dc1ae55e` None/None · pendente_confirmacao_documento · 
+- `66f0ff1964` None/None · pendente_confirmacao_documento · 
+- `06859cc268` None/None · pendente_confirmacao_documento · 
+- `f336cd7e9b` None/None · pendente_confirmacao_documento · 
+- `5ce26da30e` None/None · pendente_confirmacao_documento · 
+- `04204aabda` None/None · pendente_confirmacao_documento · 
+- `5d728c3429` None/None · pendente_confirmacao_documento · 
+- `fd618b012e` None/None · pendente_confirmacao_documento · 
+- `07ee9eca47` None/None · pendente_confirmacao_documento · 
+- `57a0edc7b3` None/None · pendente_confirmacao_documento · 
+- `0118886838` None/None · pendente_confirmacao_documento · 
+- `f3f70b426c` None/None · pendente_confirmacao_documento · 
+- `7f4b023673` None/None · pendente_confirmacao_documento · 
+- `5051e81b0e` None/None · pendente_confirmacao_documento · 
+- `6446487728` None/None · pendente_confirmacao_documento · 
+- `e689dbc250` None/None · pendente_confirmacao_documento · 
+- `c0a655c075` None/None · pendente_confirmacao_documento · 
+- `7562414584` None/None · pendente_confirmacao_documento · 
+- `78167fad73` None/None · pendente_confirmacao_documento · 
+- `c044d35b27` None/None · pendente_confirmacao_documento · 
+- `261c3a17dc` None/None · pendente_confirmacao_documento · 
+- `3338ea3c6e` None/None · pendente_confirmacao_documento · 
+- `8ec956852e` None/None · pendente_confirmacao_documento · 
+- `bb664665b0` None/None · pendente_confirmacao_documento · 
+- `9b1322c7bf` None/None · pendente_confirmacao_documento · 
+- `cc835c0f36` None/None · pendente_confirmacao_documento · 
+- `3dfb41af0c` None/None · pendente_confirmacao_documento · 
+- `941c07fc96` None/None · pendente_confirmacao_documento · 
+- `eacfa0f7e3` None/None · pendente_confirmacao_documento · 
+- `f92b36ca90` None/None · pendente_confirmacao_documento · 
+- `0ed1048d45` None/None · pendente_confirmacao_documento · 
+- `902994ccd7` None/None · pendente_confirmacao_documento · 
+- `c768e09d1e` None/None · pendente_confirmacao_documento · 
+- `cb6bb85e40` None/None · pendente_confirmacao_documento · 
+- `da1ad054fd` None/None · pendente_confirmacao_documento · 
+- `574e613a20` None/None · pendente_confirmacao_documento · 
+- `b5cfa59b18` None/None · pendente_confirmacao_documento · 
+- `cb5924074d` None/None · pendente_confirmacao_documento · 
+- `25c337140c` None/None · pendente_confirmacao_documento · 
+- `909663320a` None/None · pendente_confirmacao_documento · 
+- `266854f719` None/None · pendente_confirmacao_documento · 
+- `1e8e6c8e24` None/None · pendente_confirmacao_documento · 
+- `d892647dea` None/None · pendente_confirmacao_documento · 
+- `6db3a323a8` None/None · pendente_confirmacao_documento · 
+- `423cdbd787` None/None · pendente_confirmacao_documento · 
+- `3efc8308ab` None/None · pendente_confirmacao_documento · 
+- `711cbfc94a` None/None · pendente_confirmacao_documento · 
+- `12de758eaf` None/None · pendente_confirmacao_documento · 
+- `a26feceef0` None/None · pendente_confirmacao_documento · 
+- `d1ad14ed7c` None/None · pendente_confirmacao_documento · 
+- `e4396a4215` None/None · pendente_confirmacao_documento · 
+- `09bd6ba7f8` None/None · pendente_confirmacao_documento · 
+- `d147a4d241` None/None · pendente_confirmacao_documento · 
+- `cd52b3f318` None/None · pendente_confirmacao_documento · 
+- `b7e44cf288` None/None · pendente_confirmacao_documento · 
+- `bc6a1a17ae` None/None · pendente_confirmacao_documento · 
+- `ebed1a95b6` None/None · pendente_confirmacao_documento · 
+- `cf898d0148` None/None · pendente_confirmacao_documento · 
+- `7be689d70d` None/None · pendente_confirmacao_documento · 
+- `4a8e938c8d` None/None · pendente_confirmacao_documento · 
+- `84153b99b7` None/None · pendente_confirmacao_documento · 
+- `f04a37900c` None/None · pendente_confirmacao_documento · 
+- `f32a5c58a2` None/None · pendente_confirmacao_documento · 
+- `64bddcd86f` None/None · pendente_confirmacao_documento · 
+- `9144ce3e91` None/None · pendente_confirmacao_documento · 
+- `d5f7f4aafa` None/None · pendente_confirmacao_documento · 
+- `1b97137c30` None/None · pendente_confirmacao_documento · 
+- `ea7798b7d9` None/None · pendente_confirmacao_documento · 
+- `aaf34e7d17` None/None · pendente_confirmacao_documento · 
+- `a09abc802c` None/None · pendente_confirmacao_documento · 
+- `e374d05bb6` None/None · pendente_confirmacao_documento · 
+- `2801de435e` None/None · pendente_confirmacao_documento · 
+- `ca3f3b1560` None/None · pendente_confirmacao_documento · 
+- `fc458b6538` None/None · pendente_confirmacao_documento · 
+- `5a7aa19652` None/None · pendente_confirmacao_documento · 
+- `ff5cbac8e7` None/None · pendente_confirmacao_documento · 
+- `a8a80a915b` None/None · pendente_confirmacao_documento · 
+- `434a87ba56` None/None · pendente_confirmacao_documento · 
+- `3ff4165913` None/None · pendente_confirmacao_documento · 
+- `85face6d3e` None/None · pendente_confirmacao_documento · 
+- `66fa329761` None/None · pendente_confirmacao_documento · 
+- `fc0b0604ac` None/None · pendente_confirmacao_documento · 
+- `08c9a14816` None/None · pendente_confirmacao_documento · 
+- `9efbe6820d` None/None · pendente_confirmacao_documento · 
+- `af7e7ff5e3` None/None · pendente_confirmacao_documento · 
+- `7f4c142054` None/None · pendente_confirmacao_documento · 
+- `dd90798fa9` None/None · pendente_confirmacao_documento · 
+- `b115acf5a4` None/None · pendente_confirmacao_documento · 
+- `9fa83dc309` None/None · pendente_confirmacao_documento · 
+- `083203cf73` None/None · pendente_confirmacao_documento · 
+- `e0d05691b9` None/None · pendente_confirmacao_documento · 
+- `4fc5fead4c` None/None · pendente_confirmacao_documento · 
+- `6592f94ffd` None/None · pendente_confirmacao_documento · 
+- `bf7c77116b` None/None · pendente_confirmacao_documento · 
+- `5b0074757c` None/None · pendente_confirmacao_documento · 
+- `36dc8a6980` None/None · pendente_confirmacao_documento · 
+- `8b0edfeaf6` None/None · pendente_confirmacao_documento · 
+- `2679b4e4b0` None/None · pendente_confirmacao_documento · 
+- `a778ff993c` None/None · pendente_confirmacao_documento · 
+- `775836359e` None/None · pendente_confirmacao_documento · 
+- `ed29a3a53c` None/None · pendente_confirmacao_documento · 
+- `e6aee400a9` None/None · pendente_confirmacao_documento · 
+- `69ec25ddd6` None/None · pendente_confirmacao_documento · 
+- `30675d402b` None/None · pendente_confirmacao_documento · 
+- `93b9011414` None/None · pendente_confirmacao_documento · 
+- `3988c744a8` None/None · pendente_confirmacao_documento · 
+- `82608de20a` None/None · pendente_confirmacao_documento · 
+- `addff42ad8` None/None · pendente_confirmacao_documento · 
+- `a8f7866c6e` None/None · pendente_confirmacao_documento · 
+- `20db40e2a0` None/None · pendente_confirmacao_documento · 
+- `d02526968c` None/None · pendente_confirmacao_documento · 
+- `bfecd0971f` None/None · pendente_confirmacao_documento · 
+- `954d3d37b0` None/None · pendente_confirmacao_documento · 
+- `d5ec9579d8` None/None · pendente_confirmacao_documento · 
+- `607016c58c` None/None · pendente_confirmacao_documento · 
+- `d693441b47` None/None · pendente_confirmacao_documento · 
+- `49140c86ef` None/None · pendente_confirmacao_documento · 
+- `57c462e483` None/None · pendente_confirmacao_documento · 
+- `dfdbc1b277` None/None · pendente_confirmacao_documento · 
+- `e7c7cf8f91` None/None · pendente_confirmacao_documento · 
+- `7f30e771b1` None/None · pendente_confirmacao_documento · 
+- `60db5072d9` None/None · pendente_confirmacao_documento · 
+- `98583392a9` None/None · pendente_confirmacao_documento · 
+- `e1c3a0a656` None/None · pendente_confirmacao_documento · 
+- `70513d660a` None/None · pendente_confirmacao_documento · 
+- `5c88568e1b` None/None · pendente_confirmacao_documento · 
+- `5eb97a1d0f` None/None · pendente_confirmacao_documento · 
+- `fd890d7329` None/None · pendente_confirmacao_documento · 
+- `8b91f37cfd` None/None · pendente_confirmacao_documento · 
+- `8a5064dc46` None/None · pendente_confirmacao_documento · 
+- `f743c88414` None/None · pendente_confirmacao_documento · 
+- `dc817853da` None/None · pendente_confirmacao_documento · 
+- `7a61a7ed23` None/None · pendente_confirmacao_documento · 
+- `2dd1593ac3` None/None · pendente_confirmacao_documento · 
+- `d16ea29e9d` None/None · pendente_confirmacao_documento · 
+- `f73d4df37c` None/None · pendente_confirmacao_documento · 
+- `1e8e6c8e24` None/None · pendente_confirmacao_documento · 
+- `57a50bed6f` None/None · pendente_confirmacao_documento · 
+- `711cbfc94a` None/None · pendente_confirmacao_documento · 
+- `a26feceef0` None/None · pendente_confirmacao_documento · 
+- `5b219092f3` None/None · pendente_confirmacao_documento · 
+- `baf5dbce38` None/None · pendente_confirmacao_documento · 
+- `ad2edbb231` None/None · pendente_confirmacao_documento · 
+- `f526e105b2` None/None · pendente_confirmacao_documento · 
+- `fe1e0084b7` None/None · pendente_confirmacao_documento · 
+- `aaf5d192ab` None/None · pendente_confirmacao_documento · 
+- `2cf96cd0e0` None/None · pendente_confirmacao_documento · 
+- `d941e252ca` None/None · pendente_confirmacao_documento · 
+- `fc0b0604ac` None/None · pendente_confirmacao_documento · 
+- `1a82befa10` None/None · pendente_confirmacao_documento · 
+- `a1f2ba0d9c` None/None · pendente_confirmacao_documento · 
+- `34a2dea61c` None/None · pendente_confirmacao_documento · 
+- `f81c877da9` None/None · pendente_confirmacao_documento · 
+- `8b63cf605f` None/None · pendente_confirmacao_documento · 
+- `7abe4779ff` None/None · pendente_confirmacao_documento · 
+- `763c4f1824` None/None · pendente_confirmacao_documento · 
+- `fab02f118e` None/None · pendente_confirmacao_documento · 
+- `d3eae1bbfb` None/None · pendente_confirmacao_documento · 
+- `cd748b6ff0` None/None · pendente_confirmacao_documento · 
+- `8d1fc3f310` None/None · pendente_confirmacao_documento · 
+- `72b2151ba0` None/None · pendente_confirmacao_documento · 
+- `077eab7481` None/None · pendente_confirmacao_documento · 
+- `419ff06206` None/None · pendente_confirmacao_documento · 
+- `0110ab041e` None/None · pendente_confirmacao_documento · 
+- `cb7ae5b67c` None/None · pendente_confirmacao_documento · 
+- `f2fe2aab54` None/None · pendente_confirmacao_documento · 
+- `7fca216c44` None/None · pendente_confirmacao_documento · 
+- `aa134a6a3e` None/None · pendente_confirmacao_documento · 
+- `64eae22f4b` None/None · pendente_confirmacao_documento · 
+- `1a73359cde` None/None · pendente_confirmacao_documento · 
+- `51795c7257` None/None · pendente_confirmacao_documento · 
+- `6d36e13d7f` None/None · pendente_confirmacao_documento · 
+- `47392149b3` None/None · pendente_confirmacao_documento · 
+- `ef781095e5` None/None · pendente_confirmacao_documento · 
+- `9e386029d1` None/None · pendente_confirmacao_documento · 
+- `91a204905b` None/None · pendente_confirmacao_documento · 
+- `41e8689496` None/None · pendente_confirmacao_documento · 
+- `4bd2ee51f9` None/None · pendente_confirmacao_documento · 
+- `51aa5bd470` None/None · pendente_confirmacao_documento · 
+- `549e6d8159` None/None · pendente_confirmacao_documento · 
+- `73c7e6457b` None/None · pendente_confirmacao_documento · 
+- `ca69918b57` None/None · pendente_confirmacao_documento · 
+- `108681feec` None/None · pendente_confirmacao_documento · 
+- `9937d5aece` None/None · pendente_confirmacao_documento · 
+- `3038434c4a` None/None · pendente_confirmacao_documento · 
+- `9f4a4fc520` None/None · pendente_confirmacao_documento · 
+- `ca763807df` None/None · pendente_confirmacao_documento · 
+- `56a9e9edd8` None/None · pendente_confirmacao_documento · 
+- `376920fe98` None/None · pendente_confirmacao_documento · 
+- `657d228425` None/None · pendente_confirmacao_documento · 
+- `eafd5f20b3` None/None · pendente_confirmacao_documento · 
+- `8fdcea39bf` None/None · pendente_confirmacao_documento · 
+- `cad4b1dff8` None/None · pendente_confirmacao_documento · 
+- `7aebba8b47` None/None · pendente_confirmacao_documento · 
+- `ca01601596` None/None · pendente_confirmacao_documento · 
+- `4f83f2ebf2` None/None · pendente_confirmacao_documento · 
+- `3e6fb4641b` None/None · pendente_confirmacao_documento · 
+- `f900039430` None/None · pendente_confirmacao_documento · 
+- `1e191f7b1d` None/None · pendente_confirmacao_documento · 
+- `45bb6e3650` None/None · pendente_confirmacao_documento · 
+- `26683b571c` None/None · pendente_confirmacao_documento · 
+- `c9ad0186a4` None/None · pendente_confirmacao_documento · 
+- `08fcd0efbf` None/None · pendente_confirmacao_documento · 
+- `a2adf5d280` None/None · pendente_confirmacao_documento · 
+- `00a3d8580a` None/None · pendente_confirmacao_documento · 
+- `99e8016843` None/None · pendente_confirmacao_documento · 
+- `aa5e7d39df` None/None · pendente_confirmacao_documento · 
+- `bc5ebb3c3f` None/None · pendente_confirmacao_documento · 
+- `4229565873` None/None · pendente_confirmacao_documento · 
+- `34d43551ef` None/None · pendente_confirmacao_documento · 
+- `c3344612dc` None/None · pendente_confirmacao_documento · 
+- `8ec956852e` None/None · pendente_confirmacao_documento · 
+- `68613f2067` None/None · pendente_confirmacao_documento · 
+- `c3b5c46e5d` None/None · pendente_confirmacao_documento · 
+- `355cace9f5` None/None · pendente_confirmacao_documento · 
+- `9a65baa750` None/None · pendente_confirmacao_documento · 
+- `2064c3622a` None/None · pendente_confirmacao_documento · 
+- `c82d3b8237` None/None · pendente_confirmacao_documento · 
+- `baf359afc9` None/None · pendente_confirmacao_documento · 
+- `692708a2d8` None/None · pendente_confirmacao_documento · 
+- `5ba1bd2cb9` None/None · pendente_confirmacao_documento · 
+- `10f18f41d1` None/None · pendente_confirmacao_documento · 
+- `f5709234de` None/None · pendente_confirmacao_documento · 
+- `31c866c784` None/None · pendente_confirmacao_documento · 
+- `7591d1f3a4` None/None · pendente_confirmacao_documento · 
+- `54698bbdd4` None/None · pendente_confirmacao_documento · 
+- `ca1d70efdf` None/None · pendente_confirmacao_documento · 
+- `6010bb4859` None/None · pendente_confirmacao_documento · 
+- `261ceabf62` None/None · pendente_confirmacao_documento · 
+- `bc02b296b5` None/None · pendente_confirmacao_documento · 
+- `3e6c8335cf` None/None · pendente_confirmacao_documento · 
+- `48146fa83d` None/None · pendente_confirmacao_documento · 
+- `ed36300b1f` None/None · pendente_confirmacao_documento · 
+- `9b4b5d1fdd` None/None · pendente_confirmacao_documento · 
+- `dad2491ab4` None/None · pendente_confirmacao_documento · 
+- `a4b49006e9` None/None · pendente_confirmacao_documento · 
+- `03c75d3d14` None/None · pendente_confirmacao_documento · 
+- `b061bd1eb5` None/None · pendente_confirmacao_documento · 
+- `eb96bdb132` None/None · pendente_confirmacao_documento · 
+- `acb051753a` None/None · pendente_confirmacao_documento · 
+- `0993237e54` None/None · pendente_confirmacao_documento · 
+- `29d0a4edeb` None/None · pendente_confirmacao_documento · 
+- `fd618b012e` None/None · pendente_confirmacao_documento · 
+- `07ee9eca47` None/None · pendente_confirmacao_documento · 
+- `71f2778962` None/None · pendente_confirmacao_documento · 
+- `c2a0136ab9` None/None · pendente_confirmacao_documento · 
+- `73260c47f2` None/None · pendente_confirmacao_documento · 
+- `b6b7fec887` None/None · pendente_confirmacao_documento · 
+- `114b9b9799` None/None · pendente_confirmacao_documento · 
+- `67143dda59` None/None · pendente_confirmacao_documento · 
+- `55d1ce1624` None/None · pendente_confirmacao_documento · 
+- `a33ac904f0` None/None · pendente_confirmacao_documento · 
+- `dfca73104c` None/None · pendente_confirmacao_documento · 
+- `b2f4a56ace` None/None · pendente_confirmacao_documento · 
+- `42a68ad743` None/None · pendente_confirmacao_documento · 
+- `7f4b023673` None/None · pendente_confirmacao_documento · 
+- `ab0add5e25` None/None · pendente_confirmacao_documento · 
+- `e689dbc250` None/None · pendente_confirmacao_documento · 
+- `e48f747ef4` None/None · pendente_confirmacao_documento · 
+- `f79b9b113f` None/None · pendente_confirmacao_documento · 
+- `5b90b11dc8` None/None · pendente_confirmacao_documento · 
+- `b16e015d25` None/None · pendente_confirmacao_documento · 
+- `f396b3846d` None/None · pendente_confirmacao_documento · 
+- `17939c2b8e` None/None · pendente_confirmacao_documento · 
+- `d7cefa2d2d` None/None · pendente_confirmacao_documento · 
+- `57f00d21ff` None/None · pendente_confirmacao_documento · 
+- `e41c083a8b` None/None · pendente_confirmacao_documento · 
+- `07976d1b35` None/None · pendente_confirmacao_documento · 
+- `eb8e1bd6bb` None/None · pendente_confirmacao_documento · 
+- `3338ea3c6e` None/None · pendente_confirmacao_documento · 
+- `3dfb41af0c` None/None · pendente_confirmacao_documento · 
+- `e211fccb82` None/None · pendente_confirmacao_documento · 
+- `6412feb0d3` None/None · pendente_confirmacao_documento · 
+- `5fee107b71` None/None · pendente_confirmacao_documento · 
+- `c6fb1829fa` None/None · pendente_confirmacao_documento · 
+- `1653aa3346` None/None · pendente_confirmacao_documento · 
+- `f52c02dd23` None/None · pendente_confirmacao_documento · 
+- `711cbfc94a` None/None · pendente_confirmacao_documento · 
+- `1e8e6c8e24` None/None · pendente_confirmacao_documento · 
+- `a8c3e207dc` None/None · pendente_confirmacao_documento · 
+- `a26feceef0` None/None · pendente_confirmacao_documento · 
+- `5b233a14ef` None/None · pendente_confirmacao_documento · 
+- `d604397649` None/None · pendente_confirmacao_documento · 
+- `6d6054e16d` None/None · pendente_confirmacao_documento · 
+- `03ee3a32a9` None/None · pendente_confirmacao_documento · 
+- `65fd1404b9` None/None · pendente_confirmacao_documento · 
+- `d4f968185e` None/None · pendente_confirmacao_documento · 
+- `1dde655681` None/None · pendente_confirmacao_documento · 
+- `a7d7035940` None/None · pendente_confirmacao_documento · 
+- `95e4960ee2` None/None · pendente_confirmacao_documento · 
+- `e0a945af8d` None/None · pendente_confirmacao_documento · 
+- `944fd6ce15` None/None · pendente_confirmacao_documento · 
+- `69de2091e5` None/None · pendente_confirmacao_documento · 
+- `b69ff7d348` None/None · pendente_confirmacao_documento · 
+- `dc8906ceb6` None/None · pendente_confirmacao_documento · 
+- `cf2f97a443` None/None · pendente_confirmacao_documento · 
+- `066ef13ba5` None/None · pendente_confirmacao_documento · 
+- `95153c25c4` None/None · pendente_confirmacao_documento · 
+- `b574e18d5f` None/None · pendente_confirmacao_documento · 
+- `216f7f58bc` None/None · pendente_confirmacao_documento · 
+- `9f96d56ea0` None/None · pendente_confirmacao_documento · 
+- `fada3d208f` None/None · pendente_confirmacao_documento · 
+- `17dc8645bd` None/None · pendente_confirmacao_documento · 
+- `e3f0d36631` None/None · pendente_confirmacao_documento · 
+- `4f6bfd7568` None/None · pendente_confirmacao_documento · 
+- `9eae8cc70a` None/None · pendente_confirmacao_documento · 
+- `bde987d37f` None/None · pendente_confirmacao_documento · 
+- `30909c8f48` None/None · pendente_confirmacao_documento · 
+- `4cd9c748b0` None/None · pendente_confirmacao_documento · 
+- `fa6c93fb82` None/None · pendente_confirmacao_documento · 
+- `af63bf480d` None/None · pendente_confirmacao_documento · 
+- `7a14ff7854` None/None · pendente_confirmacao_documento · 
+- `debec9d5df` None/None · pendente_confirmacao_documento · 
+- `770b157469` None/None · pendente_confirmacao_documento · 
+- `5bc7eace4f` None/None · pendente_confirmacao_documento · 
+- `21dd7ed9d7` None/None · pendente_confirmacao_documento · 
+- `b53d0ce8be` None/None · pendente_confirmacao_documento · 
+- `a00d8c7d9e` None/None · pendente_confirmacao_documento · 
+- `0dc6c8d266` None/None · pendente_confirmacao_documento · 
+- `b2606ade6c` None/None · pendente_confirmacao_documento · 
+- `3124fe3763` None/None · pendente_confirmacao_documento · 
+- `9cf88e5f2f` None/None · pendente_confirmacao_documento · 
+- `73b7303dd9` None/None · pendente_confirmacao_documento · 
+- `0bb701975b` None/None · pendente_confirmacao_documento · 
+- `92bc1802e7` None/None · pendente_confirmacao_documento · 
+- `a410de99bf` None/None · pendente_confirmacao_documento · 
+- `dde946dfc9` None/None · pendente_confirmacao_documento · 
+- `3ce4daabb5` None/None · pendente_confirmacao_documento · 
+- `c100d38bff` None/None · pendente_confirmacao_documento · 
+- `11fce44d04` None/None · pendente_confirmacao_documento · 
+- `7c9c110f05` None/None · pendente_confirmacao_documento · 
+- `8fd99fece3` None/None · pendente_confirmacao_documento · 
+- `b7cb8ad882` None/None · pendente_confirmacao_documento · 
+- `b9a974fbaf` None/None · pendente_confirmacao_documento · 
+- `f287506624` None/None · pendente_confirmacao_documento · 
+- `e332682bf4` None/None · pendente_confirmacao_documento · 
+- `a14e73b728` None/None · pendente_confirmacao_documento · 
+- `d65d2c8e9c` None/None · pendente_confirmacao_documento · 
+- `b06a2132b0` None/None · pendente_confirmacao_documento · 
+- `98b37cace7` None/None · pendente_confirmacao_documento · 
+- `1ea29a618e` None/None · pendente_confirmacao_documento · 
+- `090104150f` None/None · pendente_confirmacao_documento · 
+- `48a3633b56` None/None · pendente_confirmacao_documento · 
+- `6e79122951` None/None · pendente_confirmacao_documento · 
+- `c716810fc9` None/None · pendente_confirmacao_documento · 
+- `28786010f2` None/None · pendente_confirmacao_documento · 
+- `01d71df84a` None/None · pendente_confirmacao_documento · 
+- `9102390bc7` None/None · pendente_confirmacao_documento · 
+- `6c1110549d` None/None · pendente_confirmacao_documento · 
+- `0dac43a189` None/None · pendente_confirmacao_documento · 
+- `7e4a9b04f6` None/None · pendente_confirmacao_documento · 
+- `607f63b4a5` None/None · pendente_confirmacao_documento · 
+- `3d3674145b` None/None · pendente_confirmacao_documento · 
+- `370e7e6f84` None/None · pendente_confirmacao_documento · 
+- `9da48b6dea` None/None · pendente_confirmacao_documento · 
+- `5c055bac48` None/None · pendente_confirmacao_documento · 
+- `4013fda90f` None/None · pendente_confirmacao_documento · 
+- `3c4059701b` None/None · pendente_confirmacao_documento · 
+- `9f62d8055d` None/None · pendente_confirmacao_documento · 
+- `dfe91aa70f` None/None · pendente_confirmacao_documento · 
+- `3ae90d8704` None/None · pendente_confirmacao_documento · 
+- `04df1466aa` None/None · pendente_confirmacao_documento · 
+- `d2f6e3911c` None/None · pendente_confirmacao_documento · 
+- `16f879f1e7` None/None · pendente_confirmacao_documento · 
+- `35b76c750e` None/None · pendente_confirmacao_documento · 
+- `d535bd4f86` None/None · pendente_confirmacao_documento · 
+- `d0333a47da` None/None · pendente_confirmacao_documento · 
+- `b20a47c487` None/None · pendente_confirmacao_documento · 
+- `b057324823` None/None · pendente_confirmacao_documento · 
+- `ab7d2f60c9` None/None · pendente_confirmacao_documento · 
+- `8a0b5fb3e8` None/None · pendente_confirmacao_documento · 
+- `8852dee2de` None/None · pendente_confirmacao_documento · 
+- `7134721e74` None/None · pendente_confirmacao_documento · 
+- `38cca5aef2` None/None · pendente_confirmacao_documento · 
+- `71f2778962` None/None · pendente_confirmacao_documento · 
+- `816be8512c` None/None · pendente_confirmacao_documento · 
+- `99db8bec53` None/None · pendente_confirmacao_documento · 
+- `f34a636066` None/None · pendente_confirmacao_documento · 
+- `aa4b99e8b4` None/None · pendente_confirmacao_documento · 
+- `860b11accb` None/None · pendente_confirmacao_documento · 
+- `bb90af6666` None/None · pendente_confirmacao_documento · 
+- `1292cb5eaf` None/None · pendente_confirmacao_documento · 
+- `1e8e6c8e24` None/None · pendente_confirmacao_documento · 
+- `a26feceef0` None/None · pendente_confirmacao_documento · 
+- `711cbfc94a` None/None · pendente_confirmacao_documento · 
+- `a23a253996` None/None · pendente_confirmacao_documento · 
+- `19b815e9fc` None/None · pendente_confirmacao_documento · 
+- `4d8efef737` None/None · pendente_confirmacao_documento · 
+- `24f72118ad` None/None · pendente_confirmacao_documento · 
+- `ee09919680` None/None · pendente_confirmacao_documento · 
+- `0b25e8e88c` None/None · pendente_confirmacao_documento · 
+- `bc0d68ad46` None/None · pendente_confirmacao_documento · 
+- `fc0b0604ac` None/None · pendente_confirmacao_documento · 
+- `bc6a1a17ae` None/None · pendente_confirmacao_documento · 
+- `82fba5ba48` None/None · pendente_confirmacao_documento · 
+- `4d9cd39ae0` None/None · pendente_confirmacao_documento · 
+- `8df38ffa84` None/None · pendente_confirmacao_documento · 
+- `3ea48835e7` None/None · pendente_confirmacao_documento · 
+- `0b216fd72a` None/None · pendente_confirmacao_documento · 
+- `5a4fc3a828` None/None · pendente_confirmacao_documento · 
+- `3b2d8f18d3` None/None · pendente_confirmacao_documento · 
+- `10c8fe3928` None/None · pendente_confirmacao_documento · 
+- `3b9fa467b7` None/None · pendente_confirmacao_documento · 
+- `dcaa1e4ac6` None/None · pendente_confirmacao_documento · 
+- `93b3e4cd5b` None/None · pendente_confirmacao_documento · 
+- `36661a7d7d` None/None · pendente_confirmacao_documento · 
+- `2a36992ed6` None/None · pendente_confirmacao_documento · 
+- `d52d2545a7` None/None · pendente_confirmacao_documento · 
+- `59bd374324` None/None · pendente_confirmacao_documento · 
+- `ed2b38831d` None/None · pendente_confirmacao_documento · 
+- `ce109b078f` None/None · pendente_confirmacao_documento · 
+- `56722ba689` None/None · pendente_confirmacao_documento · 
+- `5689cf3933` None/None · pendente_confirmacao_documento · 
+- `6c8e468e74` None/None · pendente_confirmacao_documento · 
+- `fb8199a5c0` None/None · pendente_confirmacao_documento · 
+- `d4eb5a6f25` None/None · pendente_confirmacao_documento · 
+- `c2bafbeca2` None/None · pendente_confirmacao_documento · 
+- `d4f968185e` None/None · pendente_confirmacao_documento · 
+- `604e87dcd8` None/None · pendente_confirmacao_documento · 
+- `2ab1dc787d` None/None · pendente_confirmacao_documento · 
+- `5224bc4361` None/None · pendente_confirmacao_documento · 
+- `94904865cd` None/None · pendente_confirmacao_documento · 
+- `4b38967a2c` None/None · pendente_confirmacao_documento · 
+- `fa96db8f21` None/None · pendente_confirmacao_documento · 
+- `58fcd051b6` None/None · pendente_confirmacao_documento · 
+- `c0ec1badaa` None/None · pendente_confirmacao_documento · 
+- `434a87ba56` None/None · pendente_confirmacao_documento · 
+- `6f97972e17` None/None · pendente_confirmacao_documento · 
+- `ebfa16a6ec` None/None · pendente_confirmacao_documento · 
+- `1f2cb6539d` None/None · pendente_confirmacao_documento · 
+- `d147a4d241` None/None · pendente_confirmacao_documento · 
+- `449909b551` None/None · pendente_confirmacao_documento · 
+- `4c74a22fd5` None/None · pendente_confirmacao_documento · 
+- `c49851cd67` None/None · pendente_confirmacao_documento · 
+- `f8688edfcd` None/None · pendente_confirmacao_documento · 
+- `35ffc3eed9` None/None · pendente_confirmacao_documento · 
+- `4fac268051` None/None · pendente_confirmacao_documento · 
+- `337755dcb1` None/None · pendente_confirmacao_documento · 
+- `d644019a53` None/None · pendente_confirmacao_documento · 
+- `919c14f1fb` None/None · pendente_confirmacao_documento · 
+- `fbfd29ada6` None/None · pendente_confirmacao_documento · 
+- `5043b90a63` None/None · pendente_confirmacao_documento · 
+- `c6057e64f3` None/None · pendente_confirmacao_documento · 
+- `e389f12881` None/None · pendente_confirmacao_documento · 
+- `9e8b0d7436` None/None · pendente_confirmacao_documento · 
+- `450966240c` None/None · pendente_confirmacao_documento · 
+- `a96a7be27e` None/None · pendente_confirmacao_documento · 
+- `458e8cea45` None/None · pendente_confirmacao_documento · 
+- `7131e17b15` None/None · pendente_confirmacao_documento · 
+- `333f142488` None/None · pendente_confirmacao_documento · 
+- `44294b185c` None/None · pendente_confirmacao_documento · 
+- `c9608122f0` None/None · pendente_confirmacao_documento · 
+- `bd21be638d` None/None · pendente_confirmacao_documento · 
+- `62a7816fde` None/None · pendente_confirmacao_documento · 
+- `e70bc5fc31` None/None · pendente_confirmacao_documento · 
+- `12a0ac31e1` None/None · pendente_confirmacao_documento · 
+- `9c4f1a5bfb` None/None · pendente_confirmacao_documento · 
+- `f4a775299c` None/None · pendente_confirmacao_documento · 
+- `d5f7f4aafa` None/None · pendente_confirmacao_documento · 
+- `d610631a47` None/None · pendente_confirmacao_documento · 
+- `979735d649` None/None · pendente_confirmacao_documento · 
+- `1549a9735d` None/None · pendente_confirmacao_documento · 
+- `0b3ae57834` None/None · pendente_confirmacao_documento · 
+- `7b254274d3` None/None · pendente_confirmacao_documento · 
+- `c4cf38b7d8` None/None · pendente_confirmacao_documento · 
+- `fb0671fe45` None/None · pendente_confirmacao_documento · 
+- `b9fe6745f7` None/None · pendente_confirmacao_documento · 
+- `d4ebe092ec` None/None · pendente_confirmacao_documento · 
+- `0b2e289eb9` None/None · pendente_confirmacao_documento · 
+- `3d968479b7` None/None · pendente_confirmacao_documento · 
+- `0e53e1800a` None/None · pendente_confirmacao_documento · 
+- `1ffd3bb1c0` None/None · pendente_confirmacao_documento · 
+- `fedd6f8749` None/None · pendente_confirmacao_documento · 
+- `6c4664f8a7` None/None · pendente_confirmacao_documento · 
+- `b81d3b7624` None/None · pendente_confirmacao_documento · 
+- `e5cdae9e52` None/None · pendente_confirmacao_documento · 
+- `2838e31bac` None/None · pendente_confirmacao_documento · 
+- `935faa2fd2` None/None · pendente_confirmacao_documento · 
+- `6f468155e9` None/None · pendente_confirmacao_documento · 
+- `9f49af29fa` None/None · pendente_confirmacao_documento · 
+- `68fefd6c5a` None/None · pendente_confirmacao_documento · 
+- `e9acd2835d` None/None · pendente_confirmacao_documento · 
+- `55986f75ac` None/None · pendente_confirmacao_documento · 
+- `83a041f5f2` None/None · pendente_confirmacao_documento · 
+- `a29812a8a2` None/None · pendente_confirmacao_documento · 
+- `d63389a045` None/None · pendente_confirmacao_documento · 
+- `55d1ce1624` None/None · pendente_confirmacao_documento · 
+- `f9e92b9905` None/None · pendente_confirmacao_documento · 
+- `6be5487bde` None/None · pendente_confirmacao_documento · 
+- `b2f4a56ace` None/None · pendente_confirmacao_documento · 
+- `dfca73104c` None/None · pendente_confirmacao_documento · 
+- `de8d3aabf3` None/None · pendente_confirmacao_documento · 
+- `bdf274dc1d` None/None · pendente_confirmacao_documento · 
+- `7837d97afb` None/None · pendente_confirmacao_documento · 
+- `0f97cdabdf` None/None · pendente_confirmacao_documento · 
+- `ead009003b` None/None · pendente_confirmacao_documento · 
+- `819058c3e2` None/None · pendente_confirmacao_documento · 
+- `c15acb4f6e` None/None · pendente_confirmacao_documento · 
+- `699914cb46` None/None · pendente_confirmacao_documento · 
+- `f79b9b113f` None/None · pendente_confirmacao_documento · 
+- `913019d48b` None/None · pendente_confirmacao_documento · 
+- `e48f747ef4` None/None · pendente_confirmacao_documento · 
+- `f294de5876` None/None · pendente_confirmacao_documento · 
+- `f396b3846d` None/None · pendente_confirmacao_documento · 
+- `fafe743f23` None/None · pendente_confirmacao_documento · 
+- `07976d1b35` None/None · pendente_confirmacao_documento · 
+- `c8a0a7bea3` None/None · pendente_confirmacao_documento · 
+- `4efec9e1a4` None/None · pendente_confirmacao_documento · 
+- `57fa5a6cfa` None/None · pendente_confirmacao_documento · 
+- `b3bae0d999` None/None · pendente_confirmacao_documento · 
+- `dad2491ab4` None/None · pendente_confirmacao_documento · 
+- `e08e8c7d30` None/None · pendente_confirmacao_documento · 
+- `4dca6ed653` None/None · pendente_confirmacao_documento · 
+- `e5cedf06eb` None/None · pendente_confirmacao_documento · 
+- `1e8e6c8e24` None/None · pendente_confirmacao_documento · 
+- `711cbfc94a` None/None · pendente_confirmacao_documento · 
+- `a26feceef0` None/None · pendente_confirmacao_documento · 
+- `e19d3024ac` None/None · pendente_confirmacao_documento · 
+- `772dabf236` None/None · pendente_confirmacao_documento · 
+- `6cd3676ba9` None/None · pendente_confirmacao_documento · 
+- `d5f7f4aafa` None/None · pendente_confirmacao_documento · 
+- `35c8682d83` None/None · pendente_confirmacao_documento · 
+- `ca1a8c23d5` None/None · pendente_confirmacao_documento · 
+- `20e92e85eb` None/None · pendente_confirmacao_documento · 
+- `f2aff3351f` None/None · pendente_confirmacao_documento · 
+- `1f20c5a94d` None/None · pendente_confirmacao_documento · 
+- `1125aadf47` None/None · pendente_confirmacao_documento · 
+- `949ac7ca26` None/None · pendente_confirmacao_documento · 
+- `5ec5d873f6` None/None · pendente_confirmacao_documento · 
+- `f06f896c0e` None/None · pendente_confirmacao_documento · 
+- `e496f79eec` None/None · pendente_confirmacao_documento · 
+- `24679fe733` None/None · pendente_confirmacao_documento · 
+- `10d43d451f` None/None · pendente_confirmacao_documento · 
+- `96b310f212` None/None · pendente_confirmacao_documento · 
+- `8fb32d4482` None/None · pendente_confirmacao_documento · 
+- `891aee6f2c` None/None · pendente_confirmacao_documento · 
+- `8f0691b391` None/None · pendente_confirmacao_documento · 
+- `5345adab94` None/None · pendente_confirmacao_documento · 
+- `dadfcd98a7` None/None · pendente_confirmacao_documento · 
+- `0227ad0a2b` None/None · pendente_confirmacao_documento · 
+- `f32ea00f39` None/None · pendente_confirmacao_documento · 
+- `4026aab4f6` None/None · pendente_confirmacao_documento · 
+- `580de80e34` None/None · pendente_confirmacao_documento · 
+- `bf7c77116b` None/None · pendente_confirmacao_documento · 
+- `bb1de1082b` None/None · pendente_confirmacao_documento · 
+- `8c37ed64cb` None/None · pendente_confirmacao_documento · 
+- `7bf5c2f3e0` None/None · pendente_confirmacao_documento · 
+- `c316c6d1b5` None/None · pendente_confirmacao_documento · 
+- `2bbf27a63c` None/None · pendente_confirmacao_documento · 
+- `503f0334e4` None/None · pendente_confirmacao_documento · 
+- `28d5206bc4` None/None · pendente_confirmacao_documento · 
+- `72ff024537` None/None · pendente_confirmacao_documento · 
+- `e19d3024ac` None/None · pendente_confirmacao_documento · 
+- `2ad4e94b0a` None/None · pendente_confirmacao_documento · 
+- `cafb454655` None/None · pendente_confirmacao_documento · 
+- `8e1fd7870e` None/None · pendente_confirmacao_documento · 
+- `c381ec997a` None/None · pendente_confirmacao_documento · 
+- `fcf9aed509` None/None · pendente_confirmacao_documento · 
+- `ce9ddde8e7` None/None · pendente_confirmacao_documento · 
+- `c19ed2531a` None/None · pendente_confirmacao_documento · 
+- `be8a53324a` None/None · pendente_confirmacao_documento · 
+- `027ede7ea2` None/None · pendente_confirmacao_documento · 
+- `3c19dc916f` None/None · pendente_confirmacao_documento · 
+- `8b63cf605f` None/None · pendente_confirmacao_documento · 
+- `c47a79afb0` None/None · pendente_confirmacao_documento · 
+- `e142cff9df` None/None · pendente_confirmacao_documento · 
+- `2b17389238` None/None · pendente_confirmacao_documento · 
+- `935faa2fd2` None/None · pendente_confirmacao_documento · 
+- `e586874147` None/None · pendente_confirmacao_documento · 
+- `34ce38d5de` None/None · pendente_confirmacao_documento · 
+- `f693698385` None/None · pendente_confirmacao_documento · 
+- `3732d77b10` None/None · pendente_confirmacao_documento · 
+- `f122f2878e` None/None · pendente_confirmacao_documento · 
+- `538167ed33` None/None · pendente_confirmacao_documento · 
+- `dc0e896a1e` None/None · pendente_confirmacao_documento · 
+- `791cbc6de3` None/None · pendente_confirmacao_documento · 
+- `ccd4b207be` None/None · pendente_confirmacao_documento · 
+- `b04a559d4d` None/None · pendente_confirmacao_documento · 
+- `e910922e9c` None/None · pendente_confirmacao_documento · 
+- `f99ea035b0` None/None · pendente_confirmacao_documento · 
+- `b80941dc7f` None/None · pendente_confirmacao_documento · 
+- `1cf41a0e53` None/None · pendente_confirmacao_documento · 
+- `d02526968c` None/None · pendente_confirmacao_documento · 
+- `2dbc911417` None/None · pendente_confirmacao_documento · 
+- `2e74996998` None/None · pendente_confirmacao_documento · 
+- `3d44af0223` None/None · pendente_confirmacao_documento · 
+- `0a29a66c73` None/None · pendente_confirmacao_documento · 
+- `e2a0a22d4f` None/None · pendente_confirmacao_documento · 
+- `e9ce62de78` None/None · pendente_confirmacao_documento · 
+- `f12effc5b4` None/None · pendente_confirmacao_documento · 
+- `4180271b7a` None/None · pendente_confirmacao_documento · 
+- `050c4a1420` None/None · pendente_confirmacao_documento · 
+- `2af0325526` None/None · pendente_confirmacao_documento · 
+- `b4a265681b` None/None · pendente_confirmacao_documento · 
+- `9de618906b` None/None · pendente_confirmacao_documento · 
+- `e19d3024ac` None/None · pendente_confirmacao_documento · 
+- `afe62b4869` None/None · pendente_confirmacao_documento · 
+- `3a25560f6a` None/None · pendente_confirmacao_documento · 
+- `854270a63b` None/None · pendente_confirmacao_documento · 
+- `0d94a0a66f` None/None · pendente_confirmacao_documento · 
+- `a75e39e839` None/None · pendente_confirmacao_documento · 
+- `30bd010214` None/None · pendente_confirmacao_documento · 
+- `5bd830202d` None/None · pendente_confirmacao_documento · 
+- `a45f83c04b` None/None · pendente_confirmacao_documento · 
+- `7f46dc4e7c` None/None · pendente_confirmacao_documento · 
+- `10c8fe3928` None/None · pendente_confirmacao_documento · 
+- `2dad83918e` None/None · pendente_confirmacao_documento · 
+- `59460e9247` None/None · pendente_confirmacao_documento · 
+- `027ede7ea2` None/None · pendente_confirmacao_documento · 
+- `4cda539a02` None/None · pendente_confirmacao_documento · 
+- `9bf7c48689` None/None · pendente_confirmacao_documento · 
+- `90a942602b` None/None · pendente_confirmacao_documento · 
+- `cbfea2fc9b` None/None · pendente_confirmacao_documento · 
+- `1a725dacb4` None/None · pendente_confirmacao_documento · 
+- `9be90ae5fb` None/None · pendente_confirmacao_documento · 
+- `52c0805635` None/None · pendente_confirmacao_documento · 
+- `6c65238cb0` None/None · pendente_confirmacao_documento · 
+- `d65d2c8e9c` None/None · pendente_confirmacao_documento · 
+- `44477ec1fc` None/None · pendente_confirmacao_documento · 
+- `eb8e11e6f7` None/None · pendente_confirmacao_documento · 
+- `469e8b42e1` None/None · pendente_confirmacao_documento · 
+- `0798fa75e3` None/None · pendente_confirmacao_documento · 
+- `d309037a08` None/None · pendente_confirmacao_documento · 
+- `fd3ad35189` None/None · pendente_confirmacao_documento · 
+- `9461efcea2` None/None · pendente_confirmacao_documento · 
+- `e95a1bebdf` None/None · pendente_confirmacao_documento · 
+- `f99ea035b0` None/None · pendente_confirmacao_documento · 
+- `ef39f694b6` None/None · pendente_confirmacao_documento · 
+- `0937e2161d` None/None · pendente_confirmacao_documento · 
+- `c489b4759d` None/None · pendente_confirmacao_documento · 
+- `e19d3024ac` None/None · pendente_confirmacao_documento · 
+- `31d934b5fa` None/None · pendente_confirmacao_documento · 
 - `ef69b9d26b` Ouro Branco/AL · aplicada — promovida a registro (plano) em 10/09/2026; revisão consumida · 
 - `c65f37b2cb` Macapá/AP · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
 - `66fdadd299` Feira de Santana/BA · aplicada_automaticamente · 
