@@ -161,7 +161,9 @@ def main() -> int:
                 print("  Outros formulários aparecem, então a detecção está ligada — este ainda não"
                       " foi detectado no último deploy, ou mudou de nome.")
             return 1
-        hooks = pedir(f"/sites/{alvo['id']}/hooks", token)
+        # A leitura dos hooks é `/hooks?site_id=`, não `/sites/{id}/hooks` — esta segunda não
+        # existe na API e devolvia 404, que era lido como "a API recusou".
+        hooks = pedir(f"/hooks?site_id={alvo['id']}", token)
         if ja_existe(hooks, form["id"], destino):
             print(f"OK a notificação para {destino} já existe — nada a fazer.")
             return 0
