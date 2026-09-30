@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-09-30 · #484 · Uma atmosfera por família de risco nos mapas
+
+Cada família ganha fundo, rampa e marca próprios: fogo noturno com brasa em mescla screen, seca em
+papel ressecado, chuva em ardósia pelo maior grau de aviso, calor e ar em fundo claro com o estado
+nunca pintado e anel vazio na capital sem dado. Malha de coordenadas de 5° sutil. Portão novo confere
+contraste e daltonismo das rampas; a brasa mais escura subiu para passar.
+
 ## 2026-09-30 · #483 · Monitor de riscos: duas seções, quatro famílias e os textos aprovados
 
 A página passa a ter "Situação atual" (resumo, três perguntas, gráfico do RONI) e "Os riscos no

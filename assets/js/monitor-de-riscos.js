@@ -87,7 +87,29 @@ function lacuna(alvoId, texto){
 
 
 /* ---------- desenho genérico de mapa coroplético por UF (motor único em assets/mapas.js) ---------- */
-const desenharMapa = (svgId, legendaId, corDe, rotuloDe, itensLegenda) => MonitorMapas.desenharMapa(__ctx(), svgId, legendaId, corDe, rotuloDe, itensLegenda);
+const desenharMapa = (svgId, legendaId, corDe, rotuloDe, itensLegenda, familia) =>
+  MonitorMapas.desenharMapa(__ctx(), svgId, legendaId, corDe, rotuloDe, itensLegenda, familia);
+// 30/09/2026 (item 8): a atmosfera de cada família. As rampas são as aprovadas pela editoria;
+// elas vivem em assets/mapas.js, e aqui só se escolhe qual família o mapa é.
+const ATM = MonitorMapas.PALETA.atmosfera;
+/** Anel vazio na capital sem dado (30/09/2026, item 8). O ponto existe, a cor não — assim a
+ *  ausência se vê, e não se confunde com o degrau mais baixo da rampa. */
+function anelVazio(svgId, ufsSemDado, atm, classe){
+  const ctx = __ctx();
+  const itens = ufsSemDado.map(uf => ({uf, lat: coordCapital[uf].lat, lon: coordCapital[uf].lon}));
+  const svg = d3.select('#' + svgId); svg.selectAll('g.' + classe).remove();
+  const g = svg.append('g').attr('class', classe);
+  g.selectAll('circle').data(itens).join('circle')
+    .attr('cx', d => ctx.projection([d.lon, d.lat])[0])
+    .attr('cy', d => ctx.projection([d.lon, d.lat])[1])
+    .attr('r', 6).attr('fill', 'none')
+    .attr('stroke', atm.contorno).attr('stroke-width', 1.2)
+    .attr('role', 'img')
+    .attr('aria-label', d => d.uf + ': capital sem dado na consulta')
+    .on('mouseenter', (evt, d) => MonitorMapas.showTip(d.uf + ': capital sem dado na consulta', evt))
+    .on('mouseleave', MonitorMapas.hideTip);
+  return g;
+}
 function __ctx(){ if (!window.__ctxCache) window.__ctxCache = MonitorMapas.contexto(BR_GEOJSON, 480, 460); return window.__ctxCache; }
 
 // ---- Mapa 1: tipo de risco projetado (dado coletado) ----
@@ -135,7 +157,7 @@ desenharMapa('mapaRiscoPrevisto', 'legRiscoPrevisto',
    {cor: MonitorMapas.PALETA.familia.chuva, rotulo:'Chuva forte'},
    {cor: MonitorMapas.PALETA.familia.calor, rotulo:'Calor'},
    {cor: COR_VARIOS, rotulo:'Mais de um risco'},
-   {cor: MonitorMapas.PALETA.zero, rotulo:'Sem sinal elevado'}]);
+   {cor: MonitorMapas.PALETA.zero, rotulo:'Sem sinal elevado'}], 'previsto');
 credito('boxRiscoPrevisto', 'painel_el_nino');
 
 (function tabelaRiscoPrevisto(){
@@ -222,7 +244,11 @@ credito('boxRiscoPrevisto', 'painel_el_nino');
 // 15/09/2026: a fonte passou a ser o RPC de dados tabulares da ANA (fração cumulativa da área da UF em cada categoria
 // S0–S4, mapa mensal). O mapa mostra a categoria MEDIANA da área — a mais severa que cobre pelo menos metade da UF
 // ('sem seca' quando a seca não chega à metade); o tooltip traz a distribuição completa. Nunca uma média.
-const SECA_COR = {'sem seca':MonitorMapas.PALETA.zero, S0:MonitorMapas.PALETA.ordinal4[0], S1:MonitorMapas.PALETA.ordinal4[1], S2:MonitorMapas.PALETA.ordinal4[2], S3:MonitorMapas.PALETA.ordinal4[3], S4:MonitorMapas.cor('abissal')};   // ordinal único de intensidade; S4 no tom mais escuro da marca
+// 30/09/2026 (item 8): a rampa aprovada da seca — seis degraus de papel ressecado a terra
+// queimada, no lugar do ordinal genérico do site. Seis categorias pedem seis degraus; o ordinal
+// tinha quatro e obrigava dois deles a dividir tom com o vizinho.
+const SECA_COR = {'sem seca': ATM.seca.rampa[0], S0: ATM.seca.rampa[1], S1: ATM.seca.rampa[2],
+                  S2: ATM.seca.rampa[3], S3: ATM.seca.rampa[4], S4: ATM.seca.rampa[5]};
 const SECA_ROTULO = {'sem seca':'sem seca em metade ou mais da área', S0:'S0 · seca fraca', S1:'S1 · seca moderada', S2:'S2 · seca grave', S3:'S3 · seca extrema', S4:'S4 · seca excepcional'};   // vocabulário do Monitor de Secas
 const seca = uf => (SINAIS.uf[uf] || {}).secas;
 const secaCat = s => s ? (s.categoria_mediana || s.categoria) : null;
@@ -238,7 +264,7 @@ desenharMapa('mapaSecas', 'legSecas',
   [{cor:SECA_COR['sem seca'], rotulo:'Sem seca'}, {cor:SECA_COR.S0, rotulo:'Fraca'},
    {cor:SECA_COR.S1, rotulo:'Moderada'}, {cor:SECA_COR.S2, rotulo:'Grave'},
    {cor:SECA_COR.S3, rotulo:'Extrema'}, {cor:SECA_COR.S4, rotulo:'Excepcional'},
-   {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
+   {cor:NEUTRA, rotulo:'Sem coleta até o corte'}], 'seca');
 credito('boxSecas', 'monitor_secas');
 
 // ---- Mapa 3: temperatura máxima prevista nas capitais (24/09/2026) ----
@@ -260,20 +286,37 @@ const coordCapital = {};
 const tmaxDe = uf => { const t = temp(uf); return t && typeof t.tmax === 'number' ? t.tmax : null; };
 const temps = UFS.map(tmaxDe).filter(v => v != null);
 const tMin = temps.length ? Math.min(...temps) : 0, tMax = temps.length ? Math.max(...temps) : 1;
-const escalaTemp = d3.scaleLinear().domain([tMin, tMax]).range(MonitorMapas.PALETA.rampaPerigo).clamp(true);
+// 30/09/2026 (item 8): a rampa aprovada do calor, em quatro degraus. O ESTADO NUNCA É PINTADO —
+// o dado é da capital, e pintar a UF faria o leitor ler como se valesse para o território inteiro.
+const escalaTemp = d3.scaleLinear()
+  .domain([tMin, tMin + (tMax - tMin) / 3, tMin + 2 * (tMax - tMin) / 3, tMax])
+  .range(ATM.calor.rampa).clamp(true);
 const rotuloTemp = uf => { const t = temp(uf); if (!t) return 'Aguardando a primeira coleta desta fonte';
   return esc(t.capital || uf) + '<br>M\u00e1xima prevista: ' + (t.tmax != null ? t.tmax + ' \u00b0C' : 'sem valor')
     + (t.tmin != null ? '<br>M\u00ednima prevista: ' + t.tmin + ' \u00b0C' : '')
     + (t.resumo ? '<br>' + esc(t.resumo) : '') + '<br>' + esc(t.data || '') + ' \u00b7 ' + esc(t.natureza || ''); };
 // o mapa base fica NEUTRO: ele é só o contorno onde os pontos se apoiam
-desenharMapa('mapaTemperatura', 'legTemperatura', () => NEUTRA, rotuloTemp,
-  [{cor: MonitorMapas.PALETA.rampaPerigo[0], rotulo: temps.length ? tMin.toFixed(0) + ' \u00b0C' : 'menor'},
-   {cor: MonitorMapas.PALETA.rampaPerigo[1], rotulo: temps.length ? tMax.toFixed(0) + ' \u00b0C' : 'maior'},
-   {cor: NEUTRA, rotulo: 'Capital sem coleta at\u00e9 o corte'}]);
+desenharMapa('mapaTemperatura', 'legTemperatura', () => ATM.calor.uf, rotuloTemp,
+  // Nenhum degrau sem rótulo: informação que existe só por cor não existe para quem não a
+  // distingue. Cada degrau recebe a faixa de temperatura que ele cobre, lida do próprio dado.
+  (function(){
+    const t = n => n.toFixed(0) + ' \u00b0C';
+    const passo = (tMax - tMin) / 3;
+    return [
+      {cor: ATM.calor.rampa[0], rotulo: temps.length ? 'até ' + t(tMin + passo) : 'menor'},
+      {cor: ATM.calor.rampa[1], rotulo: temps.length ? t(tMin + passo) + ' a ' + t(tMin + 2 * passo) : 'baixa'},
+      {cor: ATM.calor.rampa[2], rotulo: temps.length ? t(tMin + 2 * passo) + ' a ' + t(tMax) : 'alta'},
+      {cor: ATM.calor.rampa[3], rotulo: temps.length ? t(tMax) + ' ou mais' : 'maior'},
+      {cor: ATM.calor.fundo, rotulo: 'Capital sem dado na consulta'}];
+  })(), 'calor');
 MonitorMapas.pontos(__ctx(), 'mapaTemperatura',
   UFS.filter(uf => coordCapital[uf] && tmaxDe(uf) != null)
      .map(uf => ({uf, lat: coordCapital[uf].lat, lon: coordCapital[uf].lon, v: tmaxDe(uf)})),
   {r: () => 6, cor: d => escalaTemp(d.v), rotulo: d => rotuloTemp(d.uf), classe: 'pontosTemp'});
+// Capital SEM dado: anel vazio no ponto da capital — nunca cor no estado, nunca ponto ausente.
+// Ausência de dado e dado baixo não podem se parecer, e o estado em branco não é "sem calor".
+anelVazio('mapaTemperatura', UFS.filter(uf => coordCapital[uf] && tmaxDe(uf) == null), ATM.calor,
+          'anelTemp');
 credito('boxTemperatura', 'inmet_previsao_capitais');
 // A visão MUNICIPAL da temperatura continua vindo do Open-Meteo (clima_municipios.json): o INMET
 // publica previsão por capital, não pelos 5.571 municípios. São duas fontes para duas granularidades,
@@ -294,20 +337,26 @@ const nomeCapital = (o, uf) => (o && ((o.capital && o.capital.nome) || o.capital
 const iqa = uf => ((ar(uf) || {}).indice || {}).valor;
 const iqaVals = UFS.map(iqa).filter(v => typeof v === 'number');
 const iqaMax = iqaVals.length ? Math.max(...iqaVals) : 1;
-const escalaAr = d3.scaleLinear().domain([0, iqaMax]).range(MonitorMapas.PALETA.rampaPerigo).clamp(true);
+// 30/09/2026 (item 8): as cinco faixas do EAQI, na rampa aprovada. O índice europeu é ordinal e
+// fechado — cinco faixas, não um contínuo —, então a escala é por degrau, e não interpolada.
+const FAIXAS_EAQI = [20, 40, 60, 80];
+const escalaAr = v => ATM.ar.rampa[FAIXAS_EAQI.filter(l => v > l).length];
 const rotuloAr = uf => { const a = ar(uf); if (!a) return 'Aguardando a primeira coleta desta fonte';
   const i = a.indice; if (!i) return esc(nomeCapital(a, uf)) + '<br>\u00cdndice sem publica\u00e7\u00e3o nesta rodada';
   return esc(nomeCapital(a, uf)) + '<br>\u00cdndice ' + esc(i.escala) + ': ' + i.valor
     + '<br>' + esc(i.criterio) + ' (' + esc(String(i.hora).replace('T', ' \u00e0s ')) + ')'
     + '<br>publicado por ' + esc(i.publicado_por); };
-desenharMapa('mapaAr', 'legAr', () => NEUTRA, rotuloAr,
-  [{cor: MonitorMapas.PALETA.rampaPerigo[0], rotulo: '0'},
-   {cor: MonitorMapas.PALETA.rampaPerigo[1], rotulo: iqaVals.length ? String(Math.round(iqaMax)) : 'maior'},
-   {cor: NEUTRA, rotulo: 'Capital sem coleta at\u00e9 o corte'}]);
+desenharMapa('mapaAr', 'legAr', () => ATM.ar.uf, rotuloAr,
+  [{cor: ATM.ar.rampa[0], rotulo: 'Boa'}, {cor: ATM.ar.rampa[1], rotulo: 'Razo\u00e1vel'},
+   {cor: ATM.ar.rampa[2], rotulo: 'Moderada'}, {cor: ATM.ar.rampa[3], rotulo: 'Ruim'},
+   {cor: ATM.ar.rampa[4], rotulo: 'Muito ruim'},
+   {cor: ATM.ar.fundo, rotulo: 'Sem dado'}], 'ar');
 MonitorMapas.pontos(__ctx(), 'mapaAr',
   UFS.filter(uf => coordCapital[uf] && typeof iqa(uf) === 'number')
      .map(uf => ({uf, lat: coordCapital[uf].lat, lon: coordCapital[uf].lon, v: iqa(uf)})),
   {r: () => 6, cor: d => escalaAr(d.v), rotulo: d => rotuloAr(d.uf), classe: 'pontosAr'});
+anelVazio('mapaAr', UFS.filter(uf => coordCapital[uf] && typeof iqa(uf) !== 'number'), ATM.ar,
+          'anelAr');
 credito('boxAr', 'open_meteo_ar');
 
 
@@ -479,27 +528,38 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
   /* O mapa base fica NEUTRO: é só o contorno onde os pontos se apoiam — mesmo padrão dos mapas de
      capital desta página. Sem ele os focos flutuavam sem país, e foi o portão de runtime que pegou:
      ele exige os 27 estados desenhados, e estava certo em exigir. */
-  desenharMapa('mapaFogo', 'legFogo', () => NEUTRA,
+  desenharMapa('mapaFogo', 'legFogo', () => ATM.fogo.uf,
     uf => { const f = fogo(uf); const n = f ? f.focos_24h : null;
             return n == null ? 'Aguardando a primeira coleta desta fonte'
                              : n.toLocaleString('pt-BR') + ' foco(s) nas últimas 24 h'; },
-    []);
+    [], 'fogo');
   const itens = base.map(p => ({lat: p[0], lon: p[1], n: p[2]}));
   const maxCel = Math.max(...itens.map(p => p.n));
   /* Raiz quadrada: a área do círculo fica proporcional à contagem, que é como o olho compara
      círculo. Teto de 4,2 px para a célula mais cheia — acima disso as manchas do arco do
      desmatamento viram um borrão só. */
   const raio = d3.scaleSqrt().domain([1, maxCel]).range([0.9, 4.2]).clamp(true);
+  /* 30/09/2026 (item 8, escolha A da editoria): fundo noturno e brasa. A cor do ponto sobe na
+     rampa com a contagem da célula, e a célula com 30 focos ou mais recebe o núcleo claro — é o
+     degrau que a legenda aprovada nomeia. A mescla `screen` faz células vizinhas somarem luz em
+     vez de se taparem, que é como o fogo se vê de noite; sem ela, o arco do desmatamento vira uma
+     mancha chapada. */
+  const NUCLEO_A_PARTIR_DE = 30;
+  const brasa = d3.scaleSqrt().domain([1, Math.max(2, maxCel)])
+    .range([ATM.fogo.rampa[0], ATM.fogo.rampa[2]]).clamp(true);
   MonitorMapas.pontos(__ctx(), 'mapaFogo', itens, {
     r: d => raio(d.n),
-    cor: () => MonitorMapas.PALETA.risco.fogo,
-    opacidade: .62,
+    cor: d => d.n >= NUCLEO_A_PARTIR_DE ? ATM.fogo.nucleo : brasa(d.n),
+    opacidade: .78,
     classe: 'focos',
     rotulo: d => d.n + ' foco(s) nesta célula de ~11 km · ' + d.lat.toFixed(1) + '°, ' + d.lon.toFixed(1) + '°',
   });
+  d3.select('#mapaFogo').select('g.focos').attr('style', 'mix-blend-mode: screen');
+  d3.select('#mapaFogo').selectAll('g.focos circle').attr('stroke', 'none');
   MonitorMapas.legenda('legFogo', [
-    {cor: MonitorMapas.PALETA.risco.fogo, rotulo: 'Cada ponto: célula de ~11 km com foco detectado'},
-    {cor: MonitorMapas.PALETA.risco.fogo, rotulo: 'Ponto maior: mais focos na célula (até ' + maxCel + ')'},
+    {cor: ATM.fogo.rampa[0], rotulo: 'Poucos focos'},
+    {cor: ATM.fogo.rampa[2], rotulo: 'Muitos focos'},
+    {cor: ATM.fogo.nucleo, rotulo: 'Área com ' + NUCLEO_A_PARTIR_DE + ' focos ou mais'},
   ]);
 })();
 /* "Ver em lista" com a contagem por UF — a via tabular que o handover manda preservar. */
@@ -572,10 +632,12 @@ credito('boxFogo', 'inpe_fogo');
   // `rampaPerigo` tem dois extremos e serve a interpolação contínua — aqui o vocabulário é
   // ordenado e fechado, e escala contínua para vocabulário fechado inventaria tons intermediários
   // que o INMET não emite.
-  const COR_GRAU = {'Perigo Potencial': MonitorMapas.PALETA.ordinal4[1],
-                    'Perigo': MonitorMapas.PALETA.ordinal4[2],
-                    'Grande Perigo': MonitorMapas.PALETA.ordinal4[3]};
-  const SEM_AVISO = MonitorMapas.PALETA.zero;
+  // 30/09/2026 (item 8): a rampa aprovada dos avisos, em ardósia. Os três graus do INMET mais o
+  // "sem aviso", que também é informação e por isso tem tom próprio em vez de ficar sem cor.
+  const COR_GRAU = {'Perigo Potencial': ATM.chuva.rampa[1],
+                    'Perigo': ATM.chuva.rampa[2],
+                    'Grande Perigo': ATM.chuva.rampa[3]};
+  const SEM_AVISO = ATM.chuva.rampa[0];
   const ordena = o => Object.entries(o).sort((a, b) => b[1] - a[1]);
   const legenda = [{cor: SEM_AVISO, rotulo: 'Sem aviso'},
                    {cor: COR_GRAU['Perigo Potencial'], rotulo: 'Perigo potencial'},
@@ -591,7 +653,7 @@ credito('boxFogo', 'inpe_fogo');
     uf => { const a = avisos(uf) || {}; const n = Number(a.total || 0); const g = maiorGrau(uf);
             return n ? '<em>' + esc(g || 'Aviso em vigor') + '</em><br>' + n + ' aviso(s) em vigor'
                      : 'Nenhum aviso em vigor nesta consulta'; },
-    legenda);
+    legenda, 'chuva');
   if (corpo) {
     const linhas = UFS.map(uf => ({uf, a: avisos(uf) || {}}))
       .filter(x => Number(x.a.total || 0) > 0)
