@@ -568,92 +568,84 @@ function popLinha(nome, uf){
   return `<p class="fk">População (Censo 2022)</p>
       <p class="fv">${p.toLocaleString('pt-BR')} habitantes <span class="u-muted">· ${pct.toFixed(1).replace('.', ',')}% do estado</span></p>`;
 }
+// 30/09/2026 (decisão de design da editoria): o cartão do município é MÍNIMO. Quatro coisas, nada
+// mais — se o plano foi encontrado, o risco do estado no mesmo componente da ficha (`riscoBox`), o
+// link do documento quando há, e o convite ao formulário quando não há. Tudo o que havia antes
+// (PDF, contatos, SMS, decreto de emergência, nível de verificação, população, vigência, guias por
+// risco, FGTS, "o que fazer e o que cobrar") saiu por decisão explícita: o cartão respondia a
+// perguntas que ninguém fez ali, e a que importa — "minha cidade tem plano?" — se perdia no meio.
+//
+// O MAPEAMENTO de categoria para "encontrado / não encontrado" é da editoria, confirmado em
+// 30/09/2026, e está declarado aqui em vez de espalhado por condições: quem revisar a regra lê uma
+// tabela, não um emaranhado de `if`.
+const PLANO_ENCONTRADO = ['plano', 'plano_novo', 'plano_readaptado', 'plano_recorrente', 'plano_antigo'];
+// `coberto_estadual` conta como encontrado, com uma palavra a mais: o plano existe e é do estado.
+const PLANO_ESTADUAL = ['coberto_estadual'];
+// `decreto` NÃO é plano: decreto de emergência é resposta, não preparação, e a metodologia nunca os
+// confundiu. `plano_elaboracao` é "ainda não", e `nao_el_nino` é ato de outro risco. Os três, mais
+// `nao_localizado` e `nao_verificado`, levam ao convite para enviar o documento.
+function statusDoPlano(categoria){
+  if (PLANO_ENCONTRADO.includes(categoria)) return 'encontrado';
+  if (PLANO_ESTADUAL.includes(categoria)) return 'estadual';
+  return 'nao_encontrado';
+}
+
 function renderMinha(){
   const card = document.getElementById('meuCard');
   const q = nrm(document.getElementById('cidadeInput').value);
   const uf = selUF.value;
-  if (!q){ card.hidden = true; return; }
-  let matches = q ? TABELA_MUNICIPIOS.filter(m => nrm(m.nome) === q) : [];
-  if (uf && q) matches = matches.filter(m => m.uf === uf);
-  const ufFinal = uf || (matches.length === 1 ? matches[0].uf : '');
-  card.dataset.uf = ufFinal || '';  // usado por gerarPDF() quando o estado foi deduzido pela cidade
-  let html = '';
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  // Sem município não há cartão, com ou sem estado: o painel é do MUNICÍPIO, e o retrato do estado
+  // vive na ficha do estado, logo abaixo nesta mesma página.
+  if (!q){ card.hidden = true; card.innerHTML = ''; return; }
 
-  if (q && matches.length === 1){
-    const m = matches[0];
-    const [lbl, cor] = CAT_LABEL_TBL[m.categoria];
-    const fonte = m.url ? `<a href="${m.url}" target="_blank" rel="noopener">${m.fonte}</a>` : m.fonte;
-    html += `<p class="note"><a href="#" id="trocarMun">← consultar outro município</a></p>
-      <h4>${m.nome} · ${m.uf}</h4>
-      <p class="u-mb-2"><span class="cat-pill" style="background:${cor}">${lbl}</span></p>
-      <p class="fk">Documento verificado</p>
-      <p class="fv">${m.documento}${m.data && m.data !== '—' ? ` <span class="u-muted">· ${m.data}</span>` : ''}</p>
-      <p class="fk">Fonte</p>
-      <p class="fv">${fonte}${CANAL_LABEL[m.canal] ? ' <span class="u-muted">· via ' + CANAL_LABEL[m.canal] + '</span>' : ''}</p>
-      ${emergenciasDoMunicipio(m.nome, m.uf).map(e => `<p class="fk">Decreto de emergência (ato de resposta · não pontua)</p><p class="fv">${e.data} · ${e.causa}${e.decreto ? ' · ' + e.decreto : ''}<span class="u-muted"> · ${e.fonte}</span></p>`).join('')}
-      ${popLinha(m.nome, m.uf)}
-      ${m.vigencia ? `<p class="fk">Vigência (regra automática)</p><p class="fv">${m.vigencia === 'ativo' ? 'Dentro do prazo típico de SE (180 dias)' : m.vigencia === 'prazo_tipico_vencido' ? 'Prazo típico de SE vencido; pode ter sido prorrogado' : 'Data insuficiente para aferir'}</p>` : ''}
-      ${m.marcador_decreto ? `<p class="fk">Conteúdo do decreto (leitura editorial · não altera a nota)</p><p class="fv">${m.marcador_decreto}</p>` : ''}
-      <hr class="card-sep">`;
-  } else if (q && matches.length > 1){
-    html += `<p>Há municípios com esse nome em mais de um estado (${[...new Set(matches.map(m=>m.uf))].join(', ')}); selecione o seu ao lado.</p>`;
-  } else if (q){
-    const naLista = ufFinal && MUN_REF[ufFinal] && MUN_REF[ufFinal].some(n => nrm(n) === q);
-    if (ufFinal && !naLista){
-      html += `<p class="u-muted">Não encontrei esse nome na lista oficial de municípios de ${UF_NOME[ufFinal]}; confira a grafia (a lista completa aparece enquanto você digita).</p>`;
-    } else {
-      const emergsSemReg = ufFinal ? emergenciasDoMunicipio(document.getElementById('cidadeInput').value.trim(), ufFinal) : [];
-      html += emergsSemReg.map(e => `<h4>${document.getElementById('cidadeInput').value.trim()} · ${ufFinal}</h4><p class="fk">Decreto de emergência (ato de resposta · não pontua)</p><p class="fv">${e.data} · ${e.causa}${e.decreto ? ' · ' + e.decreto : ''}<span class="u-muted"> · ${e.fonte}</span></p>`).join('');
-      const _nivCard = ufFinal ? nivelVerificacao(ufFinal, document.getElementById('cidadeInput').value.trim()) : 'nao_verificado';
-      // PR-N0 §1.2 (06/09/2026): rótulo público da cobertura do diário oficial — "verificado em diário oficial" só
-      // para município coberto (coberto_sem_mencao/com_excerto); não indexado diz isso, nunca "nada localizado".
-      const _cob = (typeof VMUN !== 'undefined' && VMUN) ? VMUN[String(MUN_COD[ufFinal + '|' + document.getElementById('cidadeInput').value.trim()] || '').padStart(7, '0')] : undefined;
-      { const _ib = String(MUN_COD[ufFinal + '|' + document.getElementById('cidadeInput').value.trim()] || '').padStart(7, '0');
-        const _r = RESP_MUN && RESP_MUN.municipios && RESP_MUN.municipios[_ib];
-        html += `<p class="u-mb-2"><strong>Decreto no ciclo:</strong> ${_r ? 'sim (' + (_r.primeiro_decreto || 'data a confirmar') + ' · ' + _r.tipos.map(t => ({SE:'SE', ECP:'ECP', reconhecimento_federal:'reconhecido pela União'})[t] || t).join(', ') + ' · evento observado: em classificação)' : 'não consta decreto reconhecido no ciclo (o registro federal é completo; diários estaduais e municipais, parcial)'}</p>`; }
-      if (_cob !== undefined) html += `<p class="fv">${_cob === true ? 'Diário oficial verificado (indexado no Querido Diário).' : _cob === false ? 'Diário oficial não indexado — verificação por outro canal pendente.' : 'Cobertura do diário oficial ainda não testada.'}</p>`;
-      html += `<p><span class="pill-nivel">${NIVEL_ROTULO[_nivCard]}</span> ${naLista ? 'Este município consta da lista oficial do IBGE.' : ''} Ainda não verificamos sua cidade com a bateria completa de fontes — a verificação municipal avança por níveis (nacional → estadual → completa; <a href="METODOLOGIA.pdf">metodologia, §25</a>). Isso <em>não</em> é uma afirmação sobre a existência do plano. Abaixo, o que fazer.</p>
-      <p><strong>Sua prefeitura tem plano ou decreto publicado?</strong> <a href="prefeituras.html?uf=${ufFinal}&tipo=plano&mun=${encodeURIComponent(document.getElementById('cidadeInput').value.trim())}">Envie o documento oficial pelo formulário</a>; a verificação é automática e, aprovado, ele entra na atualização semanal seguinte.</p>
-      ${ufFinal ? '' : '<p class="u-muted">Selecione também o estado para ver contatos, orientações e o relatório em PDF.</p>'}<hr class="card-sep">`;
-    }
+  let matches = TABELA_MUNICIPIOS.filter(m => nrm(m.nome) === q);
+  if (uf) matches = matches.filter(m => m.uf === uf);
+  const m = matches.length === 1 ? matches[0] : null;
+  const ufFinal = uf || (m ? m.uf : '');
+  card.dataset.uf = ufFinal || '';
+  const nomeDigitado = document.getElementById('cidadeInput').value.trim();
+  const linkFormulario = `prefeituras.html?uf=${encodeURIComponent(ufFinal)}&tipo=plano&mun=${encodeURIComponent(nomeDigitado)}`;
+
+  let html = `<p class="note"><a href="#" id="trocarMun">← consultar outro município</a></p>
+    <h4>${esc(nomeDigitado)}${ufFinal ? ' · ' + esc(ufFinal) : ''}</h4>`;
+
+  if (matches.length > 1){
+    // Com o campo de município liberado só depois do estado e a lista já filtrada por UF, este
+    // ramo praticamente não ocorre — mas ocorre se alguém digitar o nome sem usar a lista. Fica
+    // uma frase mínima, sem o resto do cartão.
+    html += `<p>Há municípios com esse nome em mais de um estado (${esc([...new Set(matches.map(x => x.uf))].join(', '))}); selecione o seu ao lado.</p>`;
+    card.innerHTML = html; card.hidden = false; return;
   }
 
-  if (ufFinal){
-    const v = MARE[ufFinal], i = PCT_POR_UF[ufFinal];
-    const decl = (i.declarado_plano||0) + (i.declarado_antigo||0);
-    const acoes = [];
-    if (v.status_estadual === 'LAC') acoes.push('Seu estado ainda não publicou plano estadual nominal para o El Niño; este é o primeiro item a cobrar da Defesa Civil estadual.');
-    if (i.com_ato === 0) acoes.push('Nenhum ato municipal foi localizado no seu estado até o corte; verifique diretamente com a Defesa Civil municipal.');
-    else if (i.n_decreto > i.n_plano) acoes.push('A cobertura municipal do seu estado é majoritariamente reativa (decretos de emergência): pergunte à prefeitura se existe plano preventivo publicado, e onde.');
-    else acoes.push('Predominam planos preventivos no seu estado; verifique se o da sua cidade está atualizado para o ciclo 2026/2027.');
-    if (decl && 100*decl/i.total > 5*i.pct) acoes.push('Muitos municípios declaram ter plano a órgãos de controle, mas poucos documentos estão públicos: peça a publicação do PLANCON no site da prefeitura.');
-
-    // 30/09/2026 (pedido da editoria): o retrato do estado (medidor MARÉ e lista de status —
-    // instrumento operacional, estrutura de coordenação, cobertura documentada) saiu daqui —
-    // duplicava a ficha do estado (dialog#detail), que já mostra os três, e estava
-    // desatualizado por viver em dois lugares. O que segue (contatos, PDF, guias, FGTS,
-    // formulário de correção) não existe na ficha e continua aqui.
-    html += `<h4>O que fazer e o que cobrar</h4>
-      <ul>
-        <li><strong>Emergência:</strong> Defesa Civil: ligue <strong>199</strong> · Corpo de Bombeiros, <strong>193</strong>.</li>
-        <li><strong>Alertas oficiais no celular:</strong> envie seu CEP por SMS para <strong>40199</strong> (cadastro gratuito de alertas da Defesa Civil Nacional).</li>
-        <li><strong>Órgão estadual responsável:</strong> ${EST[ufFinal] ? EST[ufFinal].orgao : 'Defesa Civil estadual'}${EMAILS[ufFinal] ? ` · <a href="mailto:${EMAILS[ufFinal]}">${EMAILS[ufFinal]}</a>` : ''}${DOM_LINKS[ufFinal] ? ` · decretos municipais publicados no <a href="${DOM_LINKS[ufFinal]}" target="_blank" rel="noopener">Diário Oficial dos Municípios</a>` : ''}.</li>
-        ${FIN && FIN[ufFinal] ? `<li><strong>Dinheiro:</strong> por onde o recurso chega ao seu estado — fundo estadual preventivo, rotas federais e o que o decreto destranca — está em <a href="financiamento.html#porestado">Por onde o dinheiro chega</a> (peso zero no índice).</li>` : ''}
-        <li class="note">Contatos estaduais conforme o diretório oficial do MIDR (atualizado pelo ministério em 11/09/2024); confirme no site do órgão antes de demandas formais.</li>
-        ${acoes.map(a => `<li>${a}</li>`).join('')}
-      </ul>
-      <button type="button" id="btnPDF" class="btn-pdf">Baixar relatório em PDF</button>
-      <p class="note">Relatório com os dados desta consulta, contatos e fontes, para guardar, imprimir ou encaminhar.</p>
-      <h4>Como se proteger (${guiasDoEstado(ufFinal).length < 3 ? 'riscos projetados do seu estado' : 'guias gerais'})</h4>
-      ${guiasDoEstado(ufFinal).map(g => htmlGuia(g)).join('')}
-      ${(typeof HAB_SET !== 'undefined' && HAB_SET.has((document.getElementById('cidadeInput').value.trim().toLowerCase()) + '|' + ufFinal))
-        ? `<p class="aviso-direito"><strong>Seu município tem reconhecimento federal vigente.</strong> Quem teve a moradia atingida pode ter direito ao Saque Calamidade do FGTS (até R$ 6.220 por conta, pelo App FGTS, em até 90 dias do reconhecimento). <a href="proteja-se.html">Veja as condições e a fonte oficial</a>.</p>`
-        : ''}
-      <p class="note">Encontrou erro, atualização ou um documento que não temos? <a href="prefeituras.html?uf=${ufFinal}&tipo=correcao&mun=${encodeURIComponent(document.getElementById('cidadeInput').value.trim())}">Use o formulário de envio de documentos</a>; toda entrada passa pela fila de conferência da plataforma.</p>`;
+  const status = m ? statusDoPlano(m.categoria) : 'nao_encontrado';
+  if (status === 'encontrado' || status === 'estadual'){
+    html += `<p class="fv"><strong>Plano de contingência localizado${status === 'estadual' ? ', no âmbito estadual' : ''}.</strong></p>`;
+  } else if (m && m.categoria === 'nao_localizado'){
+    // "Não localizamos" só onde a busca DE FATO ocorreu e não achou. É o teto público de ausência
+    // do projeto: nunca "não existe", e nunca sobre município que ninguém procurou.
+    html += `<p class="fv"><strong>Não localizamos plano de contingência para este município até a data de corte.</strong></p>`;
+  } else {
+    // §6 (v2.2.4), trava de prova: município que ainda não passou pela bateria completa de fontes
+    // — inclusive o que sequer tem registro no banco, que é a maioria dos 5.571 — NÃO pode receber
+    // "não localizamos": isso afirmaria uma busca que não houve. O padrão é o que o dado sustenta.
+    html += `<p class="fv"><strong>Ainda não verificamos este município com todas as fontes.</strong> Isso não é uma afirmação sobre a existência do plano.</p>`;
   }
+
+  html += riscoBox(ufFinal);
+
+  if (status === 'encontrado' || status === 'estadual'){
+    const fonte = m.url
+      ? `<a href="${esc(m.url)}" target="_blank" rel="noopener">${esc(m.fonte)}</a>`
+      : esc(m.fonte);
+    html += `<p class="fk">Onde o documento foi localizado</p><p class="fv">${fonte}</p>`;
+  } else {
+    html += `<p class="note">Tem o documento da sua prefeitura? <a href="${linkFormulario}">Envie pelo formulário</a> — toda entrada passa pela conferência da plataforma.</p>`;
+  }
+
   card.innerHTML = html;
   animarGauges(card);
-  card.hidden = !html;
+  card.hidden = false;
 }
 function popularLista(){
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -663,7 +655,12 @@ function popularLista(){
 }
 document.getElementById('cidadeInput').addEventListener('input', renderMinha);
 selUF.addEventListener('change', () => {
-  document.getElementById('cidadeInput').value = '';
+  const campo = document.getElementById('cidadeInput');
+  campo.value = '';
+  // 30/09/2026: o campo de município nasce desabilitado e só abre quando há estado — mesmo padrão
+  // de `prefeituras.html`. Sem isso, dava para digitar um município antes de escolher o estado e
+  // cair no ramo de nome ambíguo, que o cartão mínimo não quer ter.
+  campo.disabled = !selUF.value;
   popularLista();
   renderMinha();
 });
