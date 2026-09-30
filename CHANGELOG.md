@@ -9,6 +9,29 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §315 · A cobertura do Querido Diário, conferida município a município · 30/09/2026
+
+Classe **método e prova**. Primeira passagem completa da rotina do §312, rodada até o fim.
+
+**5.571 municípios, 4.292 consultados nesta passagem**, os demais já cobertos (que não se
+reconsultam, porque edição indexada não desaparece). **Resultado: nada mudou** — 527 indexados
+antes, 527 depois, nenhum passou a indexado, nenhum deixou de ser. O retrato antigo estava certo; o
+que faltava era **saber que ainda estava**, e agora 4.292 municípios carregam a data da conferência
+em vez de um carimbo de três semanas atrás.
+
+**754 consultas falharam (13,5%)** e, como a rotina manda, **preservaram o valor e o carimbo
+anteriores** em vez de virar ausência. Elas voltam à fila na próxima rodada semanal.
+
+**Os três "indefinidos" acabaram, e por uma razão que vale registrar.** Eram municípios cuja marca
+no log é ilegível; a sondagem do acervo, agora, **sabe** a resposta. Marca de log que ninguém
+consegue ler não é prova de nada — a sondagem é. `recalcular_mare.py` passou a preferir a cobertura
+nesse caso, e **só nesse**: cobertura `true` com log ilegível significa "indexado e não lido", que
+não é `sem_cobertura_qd` e segue indefinido. O contador independente aprendeu a mesma regra **lendo
+a fonte**, não copiando o código do produtor, que é o que mantém a recontagem independente.
+
+Números publicados: 260 com menção · 200 lidos sem menção · 67 sem edição na janela · **5.044 sem
+diário indexado** · **0 indefinidos** · 527 indexados. Nenhum peso, crédito ou régua mudou.
+
 ## §314 · O portão 12 saiu do caminho dos PRs — e passou a cobrar na `main` · 30/09/2026
 
 Classe **processo**. Item 2 do handover de otimização.
