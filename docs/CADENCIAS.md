@@ -39,7 +39,7 @@ O formato de cada linha é fixo e lido por máquina:
 | `julgar_filas.py` | diaria | encadeado | noturno_juiz | filas pendentes do juiz |
 | `aplicar_promocoes_do_juiz.py` | diaria | encadeado | noturno_juiz | aplicação das promoções aprovadas |
 | `revisar_pistas.py` | diaria | encadeado | noturno_juiz | revisão das pistas julgadas |
-| `coletar_sinais_risco.py` | diaria | encadeado | noturno_sinais | focos, avisos, temperatura, ar, seca |
+| `coletar_sinais_risco.py` | diaria | 08:00 UTC (rede de segurança) | noturno_sinais | focos, avisos, temperatura, ar, seca |
 | `monitorar_sinais_federais.py` | diaria | encadeado | noturno_sinais | sinais e boletins federais |
 | `detectar_marcos_federais.py` | diaria | encadeado | noturno_sinais | marcos federais do ciclo |
 | `monitorar_atos_resposta.py` | diaria | encadeado | noturno_sinais | decretos de emergência e calamidade |

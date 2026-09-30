@@ -43,6 +43,13 @@ on:
   workflow_run:
     workflows: ["Noturno — juiz automático"]
     types: [completed]
+  # REDE DE SEGURANÇA (30/09/2026): a corrente roda mesmo quando um elo falha, mas ela não roda se o
+  # PRIMEIRO elo não disparar — e é justamente o cron do primeiro elo que o GitHub atrasa ou
+  # descarta. Os sinais físicos são os mais perecíveis da página (um aviso do INMET com um dia de
+  # atraso já não é aviso), então este elo tem cron próprio, tarde na janela: se a corrente chegou,
+  # ele já rodou e a segunda execução não custa nada; se não chegou, ele roda assim mesmo.
+  schedule:
+    - cron: "0 8 * * *"    # 5h de Brasília, antes do publicador das 06h05
   workflow_dispatch:
 
 permissions:
