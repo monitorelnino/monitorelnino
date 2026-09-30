@@ -70,6 +70,7 @@ Atualizado em 30/09/2026.
 | `coletar_painel_am.py` | — | — | — | não |
 | `coletar_s2id.py` | — | `atos_resposta.json` | — | não |
 | `coletar_saude.py` | — | `saude_federal.json`, `saude_sinais.json`, `saude_uf.json` | — | não |
+| `coletar_semiarido_sudene.py` | — | `enquadramento_federal.json` | — | não |
 | `coletar_siconfi_182.py` | — | `despesa_182.json` | — | não |
 | `coletar_sinais_risco.py` | — | — | — | não |
 | `coletar_srag_gripe.py` | — | `saude_desfechos/infogripe_diagnostico.json` | — | não |
