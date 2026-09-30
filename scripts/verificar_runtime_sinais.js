@@ -142,8 +142,15 @@ setTimeout(() => {
   // 16/09/2026 (handover da voz editorial, §3): as duas ressalvas saíram do subtítulo e do corpo e passaram
   // a morar UMA vez, na nota "O que esta página não diz". Os testes seguem exigindo que ambas estejam na
   // página — só mudou a redação e o lugar.
-  teste("página declara que reproduz os órgãos (não prevê)", /reproduzidos dos órgãos/.test(texto));
-  teste("página declara que os sinais não entram na nota", /não entram na nota/.test(texto));
+  // 30/09/2026 (decisão da editoria): a frase "são sinais reproduzidos dos órgãos, que não entram
+  // na nota" saiu da página — a abertura aprovada não recebe acréscimo. A cobrança de TEXTO cai
+  // junto, porque portão que não tem como ser cumprido vira ruído. A garantia em si não cai: ela é
+  // de método (METODOLOGIA §23, peso zero), e passa a ser conferida onde é FATO e não frase —
+  // nenhuma fonte desta página pode aparecer no índice.
+  const fontesDaPagina = Object.keys(SINAIS.fontes || {});
+  const vazou = fontesDaPagina.filter(f => JSON.stringify(MARE).includes('"' + f + '"'));
+  teste("nenhuma fonte de sinal entra no índice (peso zero, §23)", vazou.length === 0);
+  if (vazou.length) console.log("      vazou para o índice:", vazou.join(", "));
 
 
   // ── padrão único de mapas (03/09/2026): siglas das 27 UFs em todo mapa; legendas canônicas ──
