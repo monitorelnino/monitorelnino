@@ -750,8 +750,11 @@ def main():
     if not _mm or abs(float(_mm.group(1)) - round(media, 1)) > 0.05 or not _mn or _mn.group(1) != f"{media:.1f}".replace(".", ","):
         print(f"✗ MEDIDOR DO HERÓI desatualizado no index.html (fallback ≠ média {media:.1f}; rode --write)"); return 1
     atual = json.load(open(alvo, encoding="utf-8"))
-    campos = ["estado", "cobertura_pop", "antecipacao", "total", "total_geo",
-              "confianca", "status_estadual"]
+    # v3.1 (30/09/2026): os componentes trocaram de nome. `estado` era a média de estrutura e
+    # instrumento; `antecipacao` era a régua temporal, que saiu da nota. Conferir campo que não
+    # existe mais faria o portão quebrar em vez de reprovar — e quebrar não é reprovar.
+    campos = ["instrumento", "estrutura", "cobertura_pop", "total", "total_geo",
+              "confianca", "status_estadual", "degrau_instrumento", "dias_apos_boletim_1"]
     rob_atual = json.load(open(alvo_rob, encoding="utf-8")) if alvo_rob.exists() else None
     if rob_atual != robustez:
         print("✗ ROBUSTEZ NÃO REPRODUZIDA — data/robustez_mc.json diverge do recomputado (rode --write)")
