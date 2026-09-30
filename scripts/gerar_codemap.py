@@ -1,0 +1,267 @@
+#!/usr/bin/env python3
+"""Gera o `CODEMAP.md`: que arquivo afeta que tela, consome que dado, é coberto por que portão.
+
+Item 1 do handover de otimização do ciclo de mudança (editoria, 30/09/2026).
+
+PARA QUE SERVE, E POR QUE É GERADO E NÃO ESCRITO À MÃO
+------------------------------------------------------
+O custo maior de cada pedido não é rodar os portões: é **reexplorar o repositório do zero** para
+descobrir o que a mudança toca. São 99 scripts Python na raiz, 36 portões e dez páginas; achar
+"quem lê `data/municipios.json`" por busca custa minutos, toda vez, e o resultado se perde no fim
+da sessão.
+
+O mapa responde isso de uma vez. E é **gerado do próprio código** — dos `fetch(...)` do JavaScript,
+dos `gravar(...)`/`gravar_em(...)` do Python, das listas de páginas dos portões — porque mapa
+escrito à mão envelhece em silêncio, e mapa que mente é pior que mapa nenhum: manda ler o arquivo
+errado com a confiança de quem conferiu.
+
+O QUE ELE NÃO PROMETE
+---------------------
+Não é análise de dependência completa: não segue `import` transitivo nem chamada dinâmica. É um
+índice de primeira ordem, e diz isso na própria página. Para o uso que tem — "por onde começo a
+ler" — é o suficiente; para "nada mais pode ser afetado", não é, e o portão de runtime continua
+sendo quem responde isso.
+
+USO
+  python3 scripts/gerar_codemap.py            # reescreve CODEMAP.md
+  python3 scripts/gerar_codemap.py --conferir  # falha se o mapa estiver desatualizado
+  python3 scripts/gerar_codemap.py --autoteste
+"""
+import json
+import pathlib
+import re
+import sys
+
+RAIZ = pathlib.Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(RAIZ))
+MAPA = RAIZ / "CODEMAP.md"
+
+RE_FETCH = re.compile(r"""fetch\(\s*['"]([^'"]+)['"]""")
+RE_FETCH_DADO = re.compile(r"""['"]data/([\w./-]+\.json)['"]""")
+RE_GRAVAR = re.compile(r"""gravar(?:_em)?\(\s*(?:[A-Z_]+\s*/\s*)?['"]([\w./-]+\.json)['"]""")
+RE_SAIDA = re.compile(r"""^(?:SAIDA|ARQUIVO|DESTINO)\s*=\s*.*?['"]([\w./-]+\.json)['"]""", re.M)
+# `index.js` não escreve o nome de cada arquivo: monta `fetch('data/' + f + '.json')` sobre uma
+# lista de nomes. Sem ler esse idioma, o mapa dizia "— " justamente na página mais carregada do
+# site, que é o caso em que ele mais precisa acertar. Mapa que mente é pior que mapa nenhum.
+RE_FETCH_MONTADO = re.compile(r"""fetch\(\s*['"]data/['"]\s*\+""")
+RE_LISTA_DE_NOMES = re.compile(r"""\[((?:\s*['"][\w./-]+['"]\s*,){2,}\s*['"][\w./-]+['"]\s*)\]""")
+RE_NOME = re.compile(r"""['"]([\w./-]+)['"]""")
+
+RE_PAGINAS_PORTAO = re.compile(r"""(?:PAGINAS|PADRAO)\s*=\s*\[(.*?)\]""", re.S)
+RE_HTML = re.compile(r"""['"]([\w-]+\.html)['"]""")
+# O `src` leva `?v=hash` de cache-busting, e nem todo script da página vive em `assets/js/` —
+# `acesso.js`, `mapas.js` e `colunas.js` estão em `assets/`. Exigir o caminho exato e o fecho de
+# aspas logo após o `.js` fazia o mapa não achar script nenhum na inicial.
+RE_SCRIPT_HTML = re.compile(r"""<script[^>]+src=['"]assets/(?:js/)?([\w-]+\.js)(?:\?[^'"]*)?['"]""")
+
+TOCA_O_INDICE = ("recalcular_mare.py", "aplicar_promocoes_do_juiz.py", "juiz.py",
+                 "converter_contribuicao.py", "gerar_resposta.py")
+
+
+def dados_de(texto: str) -> set:
+    """Os arquivos de `data/` que este código lê ou escreve. Função pura."""
+    achados = set()
+    for m in RE_FETCH.finditer(texto or ""):
+        alvo = m.group(1)
+        if alvo.startswith("data/"):
+            achados.add(alvo[len("data/"):])
+    achados |= set(RE_FETCH_DADO.findall(texto or ""))
+    achados |= set(RE_GRAVAR.findall(texto or ""))
+    achados |= set(RE_SAIDA.findall(texto or ""))
+    if RE_FETCH_MONTADO.search(texto or ""):
+        for bloco in RE_LISTA_DE_NOMES.findall(texto or ""):
+            for nome in RE_NOME.findall(bloco):
+                if not nome.endswith((".html", ".js", ".css", ".png", ".svg", ".pdf")):
+                    achados.add(nome if nome.endswith(".json") else nome + ".json")
+    # Normaliza o prefixo: o mesmo arquivo aparece como `data/x.json` num padrão e `x.json` noutro,
+    # e duas grafias do mesmo dado fariam o mapa listar duas dependências onde há uma.
+    return {a[len("data/"):] if a.startswith("data/") else a for a in achados if a}
+
+
+def paginas_do_portao(texto: str) -> set:
+    """As páginas que um portão lista. Função pura."""
+    achados = set()
+    for bloco in RE_PAGINAS_PORTAO.findall(texto or ""):
+        achados |= set(RE_HTML.findall(bloco))
+    return achados
+
+
+def js_da_pagina(html: str) -> set:
+    """Os scripts que a página carrega. Função pura."""
+    return set(RE_SCRIPT_HTML.findall(html or ""))
+
+
+def montar(paginas: dict, scripts: dict, pythons: dict, portoes: dict) -> list:
+    """A tabela do mapa, uma linha por arquivo. Função pura — recebe conteúdos, não lê disco."""
+    cobertura = {}
+    for nome, texto in (portoes or {}).items():
+        for pag in paginas_do_portao(texto):
+            cobertura.setdefault(pag, set()).add(nome)
+
+    linhas = []
+    for pag in sorted(paginas or {}):
+        js = js_da_pagina(paginas[pag])
+        dados = dados_de(paginas[pag])
+        for j in js:
+            dados |= dados_de((scripts or {}).get(j, ""))
+        linhas.append({"arquivo": pag, "telas": [pag], "js": sorted(js),
+                       "dados": sorted(dados), "portoes": sorted(cobertura.get(pag, [])),
+                       "indice": "não"})
+    caminho_js = {p.name: (f"assets/js/{p.name}" if p.parent.name == "js" else f"assets/{p.name}")
+                  for p in []}          # preenchido por quem lê o disco; no teste, o padrão serve
+    for j in sorted(scripts or {}):
+        telas = sorted(p for p, h in (paginas or {}).items() if j in js_da_pagina(h))
+        linhas.append({"arquivo": caminho_js.get(j, f"assets/js/{j}"), "telas": telas, "js": [],
+                       "dados": sorted(dados_de(scripts[j])),
+                       "portoes": sorted({g for t in telas for g in cobertura.get(t, [])}),
+                       "indice": "não"})
+    for py in sorted(pythons or {}):
+        dados = sorted(dados_de(pythons[py]))
+        linhas.append({"arquivo": py, "telas": [], "js": [],
+                       "dados": dados, "portoes": [],
+                       "indice": "SIM" if py in TOCA_O_INDICE else "não"})
+    return linhas
+
+
+def como_markdown(linhas: list, gerado_em: str) -> str:
+    L = ["# CODEMAP · o que cada arquivo afeta", "",
+         "**Gerado por `scripts/gerar_codemap.py` — não editar à mão.** O portão de frescor reprova "
+         "se ele estiver desatualizado.", "",
+         "Serve a uma pergunta só: **por onde começar a ler** quando um pedido chega. Antes de "
+         "explorar o repositório, consulte esta tabela e leia apenas o que ela lista para o que a "
+         "tarefa toca.", "",
+         "**O que ele não é:** análise de dependência completa. Não segue `import` transitivo nem "
+         "chamada dinâmica — é um índice de primeira ordem, tirado dos `fetch(...)`, dos "
+         "`gravar(...)` e das listas de páginas dos portões. Para \"por onde começo\", basta; para "
+         "\"nada mais pode ser afetado\", quem responde é o portão de runtime.", "",
+         f"Atualizado em {gerado_em}.", "",
+         "| arquivo | telas que afeta | dados que usa | portões que o cobrem | toca o índice? |",
+         "|---|---|---|---|---|"]
+    for x in linhas:
+        telas = ", ".join(x["telas"]) or "—"
+        dados = ", ".join(f"`{d}`" for d in x["dados"][:6]) or "—"
+        if len(x["dados"]) > 6:
+            dados += f" (+{len(x['dados']) - 6})"
+        portoes = ", ".join(f"`{p}`" for p in x["portoes"]) or "—"
+        L.append(f"| `{x['arquivo']}` | {telas} | {dados} | {portoes} | {x['indice']} |")
+    L.append("")
+    return "\n".join(L)
+
+
+def ler_tudo() -> tuple:
+    paginas = {p.name: p.read_text(encoding="utf-8", errors="replace")
+               for p in sorted(RAIZ.glob("*.html"))}
+    scripts = {p.name: p.read_text(encoding="utf-8", errors="replace")
+               for p in sorted(list((RAIZ / "assets" / "js").glob("*.js"))
+                               + list((RAIZ / "assets").glob("*.js")))}
+    pythons = {p.name: p.read_text(encoding="utf-8", errors="replace")
+               for p in sorted(RAIZ.glob("*.py"))}
+    portoes = {p.name: p.read_text(encoding="utf-8", errors="replace")
+               for p in sorted((RAIZ / "scripts").glob("verificar_*.js"))}
+    return paginas, scripts, pythons, portoes
+
+
+def autoteste() -> int:
+    casos = []
+    casos.append(("lê fetch de data/", dados_de("fetch('data/indice.json')") == {"indice.json"}))
+    casos.append(("fetch fora de data/ não entra", dados_de("fetch('https://x/y.json')") == set()))
+    casos.append(("lê gravar_em com constante",
+                  dados_de('gravar_em(RAIZ / "data/cobertura_qd.json", d)') == {"cobertura_qd.json"}))
+    casos.append(("lê SAIDA montado por partes",
+                  dados_de('SAIDA = RAIZ / "data" / "x.json"') == {"x.json"}))
+    casos.append(("o prefixo data/ é normalizado: uma dependência, não duas",
+                  dados_de('gravar_em(RAIZ / "data/x.json", d)') == {"x.json"}))
+    casos.append(("lê SAIDA em uma string", dados_de('SAIDA = "saude/x.json"') == {"saude/x.json"}))
+    casos.append(("código sem dado devolve vazio", dados_de("const a = 1;") == set()))
+    montado = ("[BR, PCT] = await Promise.all(['geo_uf','percentual_uf','indice']"
+               ".map(f => fetch('data/' + f + '.json')))")
+    casos.append(("lê a lista de nomes do fetch montado",
+                  dados_de(montado) == {"geo_uf.json", "percentual_uf.json", "indice.json"}))
+    casos.append(("lista de nomes SEM o fetch montado não vira dado",
+                  dados_de("const ORDEM = ['a','b','c'];") == set()))
+    casos.append(("nome já com .json não ganha outra extensão",
+                  dados_de("fetch('data/' + f + '.json'); const L=['a.json','b.json','c.json']")
+                  == {"a.json", "b.json", "c.json"}))
+    casos.append(("página, script e folha não entram como dado",
+                  dados_de("fetch('data/' + f + '.json'); const L=['a.html','b.js','c.css']")
+                  == set()))
+    casos.append(("texto nulo não quebra", dados_de(None) == set()))
+
+    casos.append(("lê a lista de páginas de um portão",
+                  paginas_do_portao('const PAGINAS = ["index.html", "saude.html"];')
+                  == {"index.html", "saude.html"}))
+    casos.append(("lê PADRAO também",
+                  paginas_do_portao('const PADRAO = ["a.html"]') == {"a.html"}))
+    casos.append(("portão sem lista devolve vazio", paginas_do_portao("const X = 1;") == set()))
+
+    casos.append(("lê o script da página",
+                  js_da_pagina('<script src="assets/js/index.js"></script>') == {"index.js"}))
+    casos.append(("o cache-busting não esconde o script",
+                  js_da_pagina('<script src="assets/js/index.js?v=138f4495"></script>')
+                  == {"index.js"}))
+    casos.append(("script fora de assets/js também conta",
+                  js_da_pagina('<script src="assets/mapas.js?v=1"></script>') == {"mapas.js"}))
+    casos.append(("script externo não entra",
+                  js_da_pagina('<script src="https://cdn/x.js"></script>') == set()))
+
+    linhas = montar({"index.html": '<script src="assets/js/index.js"></script>'},
+                    {"index.js": "fetch('data/indice.json')"},
+                    {"recalcular_mare.py": 'gravar("indice.json", x)'},
+                    {"verificar_runtime.js": 'const PAGINAS = ["index.html"];'})
+    por_arquivo = {x["arquivo"]: x for x in linhas}
+    casos.append(("a página herda o dado do script dela",
+                  "indice.json" in por_arquivo["index.html"]["dados"]))
+    casos.append(("o script aponta a tela que o carrega",
+                  por_arquivo["assets/js/index.js"]["telas"] == ["index.html"]))
+    casos.append(("o portão que lista a página cobre a página",
+                  "verificar_runtime.js" in por_arquivo["index.html"]["portoes"]))
+    casos.append(("o portão cobre também o script da página",
+                  "verificar_runtime.js" in por_arquivo["assets/js/index.js"]["portoes"]))
+    casos.append(("quem mexe no índice é marcado",
+                  por_arquivo["recalcular_mare.py"]["indice"] == "SIM"))
+    casos.append(("quem não mexe no índice não é marcado",
+                  por_arquivo["index.html"]["indice"] == "não"))
+
+    md = como_markdown(linhas, "2026-09-30")
+    casos.append(("o markdown diz que é gerado", "não editar à mão" in md))
+    casos.append(("e declara o que NÃO é", "análise de dependência completa" in md))
+    casos.append(("uma linha por arquivo", md.count("\n| `") == len(linhas)))
+
+    ruins = [n for n, ok in casos if not ok]
+    for n, ok in casos:
+        print(f"  {'OK  ' if ok else 'FALHA'} {n}")
+    if ruins:
+        print(f"X AUTOTESTE DO CODEMAP: {len(ruins)} caso(s) reprovado(s).")
+        return 1
+    print(f"OK AUTOTESTE — {len(casos)} casos, sem rede e sem escrita.")
+    return 0
+
+
+def main() -> int:
+    if "--autoteste" in sys.argv:
+        return autoteste()
+
+    from coletores_base import hoje_editorial
+    linhas = montar(*ler_tudo())
+    novo = como_markdown(linhas, hoje_editorial().strftime("%d/%m/%Y"))
+
+    if "--conferir" in sys.argv:
+        if not MAPA.exists():
+            print("✗ CODEMAP: o mapa não existe. Rode `python3 scripts/gerar_codemap.py`.")
+            return 1
+        atual = MAPA.read_text(encoding="utf-8")
+        # A data muda todo dia e não é o que importa: compara-se a TABELA.
+        corpo = lambda t: t[t.index("| arquivo |"):] if "| arquivo |" in t else t  # noqa: E731
+        if corpo(atual) != corpo(novo):
+            print("✗ CODEMAP desatualizado — rode `python3 scripts/gerar_codemap.py` e commite.")
+            return 1
+        print(f"✓ CODEMAP OK — {len(linhas)} arquivos mapeados, tabela em dia.")
+        return 0
+
+    MAPA.write_text(novo, encoding="utf-8", newline="\n")
+    print(f"CODEMAP.md regravado · {len(linhas)} arquivos mapeados")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
