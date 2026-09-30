@@ -31,6 +31,13 @@ jobs:
       # afins) direto por HTTP, e decide pela resposta e pelo título. Subir instância aqui seria
       # dependência inventada, que é o erro que eu cometi três vezes nestes dois dias.
       comandos: |
+        # 30/09/2026 (§312, item 6 da fila viva): cobertura do Querido Diário, semanal, acoplada ao
+        # ciclo de atualização. O acervo do Querido Diário CRESCE — cidades entram ao longo do tempo
+        # —, e o retrato antigo era de uma busca com janela de data, que envelhecia sem avisar: em
+        # 30/09 o arquivo ainda trazia 1.859 municípios testados em 09/09. A rotina reconsulta só os
+        # que ainda não têm diário indexado, que é onde a mudança acontece: quem já está coberto não
+        # volta à fila, porque edição indexada não desaparece. Por isso ela fica barata com o tempo.
+        coletar_cobertura_qd.py
         coletar_sinais_risco.py --municipios
         # 29/09/2026 (bloco 4): SRAG pela fonte primária, semanal como o dado. Lê o banco do
         # SIVEP-Gripe em fluxo e guarda só o agregado por UF e semana; os anos congelados

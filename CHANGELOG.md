@@ -9,6 +9,46 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §312 · Cobertura do Querido Diário: a fonte estava errada, e a rotina não existia · 30/09/2026
+
+Classe **método e prova**. Item 6 da fila viva, achado pelo exemplo de Abatiá/PR.
+
+**O retrato envelhecia sem avisar.** `data/cobertura_qd.json` guardava o resultado de uma busca de
+edições **com janela de data**, carimbada no dia do teste: em 30/09 o arquivo ainda trazia 1.859
+municípios testados em 09/09 e 2.362 em 12/09. Isso mistura duas coisas diferentes — município sem
+diário no Querido Diário e município com diário que não publicou naquela janela — e o acervo do
+projeto **cresce**, de modo que o "não" de três semanas atrás pode ser um "sim" hoje.
+
+**Uma ideia foi testada e descartada antes de virar dado publicado.** O diretório oficial
+(`/api/cities/`) traz o nível de cada município e responderia o país inteiro em **uma** requisição.
+A conferência derrubou: dos 17 municípios que o nível rebaixaria, **16 têm edição indexada de fato**
+— Areal/RJ com 3.426 edições em nível 1, Comendador Levy Gasparian/RJ com 3.471 em nível **0**, São
+Paulo com 20 em nível 1. O nível descreve o estágio do projeto de raspagem, não a existência do
+acervo; publicá-lo teria apagado cobertura real de dezesseis municípios. O nível ficou gravado como
+informação (`nivel_qd`) e **não decide nada**.
+
+**O veredito é a pergunta direta ao acervo:** existe alguma edição para este município, **sem janela
+de data**. Uma consulta por município, o que só se faz porque a resposta **não precisa ser refeita
+para quem já está coberto** — edição indexada não desaparece. A rotina semanal reconsulta só os
+`false`, que é onde o acervo cresce, e por isso fica mais barata a cada semana.
+
+**Três travas que a própria execução exigiu.** (a) **Falha não vira ausência**: consulta que erra
+preserva o valor anterior e o carimbo antigo, e registra a falha — API fora do ar não é diário
+inexistente. (b) **Universo curto não escreve**: a primeira execução usou `municipios.json` (os 267
+registros pontuáveis) como se fosse o país, varreu 267 e declarou 5.304 "ausentes do diretório";
+agora o universo vem de `verificacao_municipal.json` e menos de 5.000 códigos levanta erro. (c)
+**Progresso que só existe na memória não é progresso**: a varredura seguinte rodou horas, travou numa
+requisição pendurada e **não escreveu nada** — o trabalho de milhares de consultas evaporou. Passou a
+gravar a cada 100 municípios, e retomar é reler o arquivo.
+
+**Abatiá/PR, conferida nominalmente:** o acervo devolve **zero edições** — o município de fato não
+tem diário indexado. O valor de 09/09 estava certo; o que faltava era **saber que ainda estava**.
+Essa é a diferença que a rotina passa a garantir.
+
+**A primeira passagem completa roda no ciclo semanal**, onde a rede é rápida e o job tem teto
+próprio. Localmente, o ritmo medido (com cerca de um terço de tempos esgotados) daria mais de dez
+horas, e ficou registrado em vez de disfarçado. 45 casos de autoteste.
+
 ## §309 · O calendário saiu de vez do código — as três telas, não uma · 30/09/2026
 
 Classe **página pública**. Decisão da editoria de 30/09/2026 à noite, **mais forte que a anterior**:
