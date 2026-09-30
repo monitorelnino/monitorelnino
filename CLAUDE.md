@@ -154,7 +154,10 @@ para "nada mais pode ser afetado", quem responde continua sendo o portão de run
 1. Partir da `main` atualizada; ramo `edicao/AAAA-MM-DD-tema`.
 2. Editar com verificação de âncora antes de cada substituição.
 3. Rodar os portões locais; nada sobe com portão vermelho.
-4. Registrar no `CHANGELOG.md` (próximo §) e, se cabível, em `METODOLOGIA.md`.
+4. Registrar no `CHANGELOG.md` — **entrada nova: `## AAAA-MM-DD · #PR · título`, no máximo 80
+   palavras** (o quê · por quê numa frase · onde). Fundamentação longa vai para a
+   `METODOLOGIA.md`. Sem `§` sequencial: ele colidia entre ramos abertos no mesmo dia.
+   O histórico fica como está e, se cabível, em `METODOLOGIA.md`.
 5. Regenerar derivados quando dado ou página mudar (`bash scripts/verificar_derivados.sh`
    regenera a cadeia canônica e o manifesto; arquivo derivado não se edita à mão).
 6. Push, conferir que chegou (`git fetch` + `git merge-base --is-ancestor HEAD origin/<ramo>`),
