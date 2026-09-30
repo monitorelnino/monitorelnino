@@ -648,140 +648,16 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-09-30",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-09-30T14:32:18",
+   "duracao_s": 2.3,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
   }
  ],
- "atualizado_em": "2026-09-30T14:28:31",
- "ciclo_de_mudanca": {
-  "medido_em": "2026-09-30",
-  "resumo": {
-   "n": 12,
-   "pagina": {
-    "n": 1,
-    "mediana_min": 53.7,
-    "pior_min": 53.7
-   },
-   "coletor": {
-    "n": 4,
-    "mediana_min": 64.8,
-    "pior_min": 260.5
-   },
-   "misto": {
-    "n": 3,
-    "mediana_min": 86.7,
-    "pior_min": 134.4
-   },
-   "outro": {
-    "n": 4,
-    "mediana_min": 68.3,
-    "pior_min": 287.4
-   },
-   "rodadas_ci": {
-    "mediana": 1,
-    "pior": 1,
-    "com_mais_de_uma": 0
-   }
-  },
-  "fora_da_meta": [
-   "PR de página: mediana 53.7 min, meta 20",
-   "PR de coletor: mediana 64.8 min, meta 15"
-  ],
-  "por_pr": [
-   {
-    "pr": 468,
-    "titulo": "§314 · O portão 12 sai do caminho dos PRs — e passa a cobrar",
-    "tipo": "outro",
-    "arquivos": 3,
-    "minutos": 287.4,
-    "rodadas_ci": 1
-   },
-   {
-    "pr": 467,
-    "titulo": "§313 · CODEMAP: o mapa que evita reexplorar o repositório a ",
-    "tipo": "coletor",
-    "arquivos": 6,
-    "minutos": 260.5,
-    "rodadas_ci": null
-   },
-   {
-    "pr": 466,
-    "titulo": "§311 · Netlify Forms: notificação criada e teste de ponta a ",
-    "tipo": "coletor",
-    "arquivos": 4,
-    "minutos": 27.0,
-    "rodadas_ci": null
-   },
-   {
-    "pr": 465,
-    "titulo": "§311 · O diagnóstico da notificação diz por que o formulário",
-    "tipo": "coletor",
-    "arquivos": 2,
-    "minutos": 67.5,
-    "rodadas_ci": null
-   },
-   {
-    "pr": 464,
-    "titulo": "§312 · Cobertura do Querido Diário: a fonte estava errada, e",
-    "tipo": "outro",
-    "arquivos": 3,
-    "minutos": 53.5,
-    "rodadas_ci": null
-   },
-   {
-    "pr": 463,
-    "titulo": "§311 · Formulário mínimo (design C): o site deixou de coleta",
-    "tipo": "misto",
-    "arquivos": 20,
-    "minutos": 86.7,
-    "rodadas_ci": null
-   },
-   {
-    "pr": 462,
-    "titulo": "§310 · O cartão do município ficou mínimo: quatro coisas, na",
-    "tipo": "pagina",
-    "arquivos": 5,
-    "minutos": 53.7,
-    "rodadas_ci": null
-   },
-   {
-    "pr": 461,
-    "titulo": "Revisão de confirmação do §303, §304 e #451 — e a regra de q",
-    "tipo": "outro",
-    "arquivos": 1,
-    "minutos": 11.8,
-    "rodadas_ci": null
-   },
-   {
-    "pr": 460,
-    "titulo": "§309 · O calendário sai de vez do código — as três telas, nã",
-    "tipo": "misto",
-    "arquivos": 30,
-    "minutos": 42.7,
-    "rodadas_ci": null
-   },
-   {
-    "pr": 459,
-    "titulo": "§305 · Item 4 da fila viva: a frase-resumo de preparação sai",
-    "tipo": "misto",
-    "arquivos": 7,
-    "minutos": 134.4,
-    "rodadas_ci": null
-   },
-   {
-    "pr": 458,
-    "titulo": "CLAUDE.md · Lei permanente: rápido, limpo, eficiente, sem na",
-    "tipo": "outro",
-    "arquivos": 2,
-    "minutos": 83.1,
-    "rodadas_ci": null
-   },
-   {
-    "pr": 457,
-    "titulo": "§306 · Item 1 da fila viva (2b): os sinais físicos tinham vi",
-    "tipo": "coletor",
-    "arquivos": 6,
-    "minutos": 62.1,
-    "rodadas_ci": null
-   }
-  ]
- }
+ "atualizado_em": "2026-09-30T14:32:20"
 }
