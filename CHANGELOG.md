@@ -62,6 +62,14 @@ Estar no Semiárido é contexto: não pontua e não entra no índice. Cadência 
 quando o hash do arquivo muda ou a última conferência passa de sete dias — para o carimbo de
 consulta não congelar numa data velha.
 
+## 2026-09-30 · #475 · Abertura da inicial, data de corte sincronizada e base legal corrigida
+
+Texto de abertura aprovado pela editoria, sem linguagem de dever, com uma data só. O corte avançava
+só quando o arquivo de transferências mudava — congelou 20 dias no período eleitoral enquanto o
+índice recebia planos; passou a ser a data da rodada, com portão. Base legal: o art. 3º-A é da Lei
+12.340, a atualização anual é do plano municipal e a bienal do estadual; o art. 8º trata de
+simulados, não de elaborar plano. `index.html`, `prefeituras.html`, `atualizar.py`, `METODOLOGIA.md`.
+
 ## 2026-09-30 · #474 · Cadastro federal de municípios suscetíveis: a lista nominal, da Casa Civil
 
 A lista dos 2.095 estava pública o tempo todo, noutro endereço: desde o Decreto 12.444/2025 quem

@@ -139,6 +139,12 @@ jobs:
           python3 scripts/verificar_changelog_curto.py
           # assunto: texto rapido
           python3 scripts/verificar_changelog_curto.py --autoteste
+          # 30/09/2026: o corte é a data da rodada. Ele congelou 20 dias com o arquivo de
+          # transferências, e o site dizia "dados até 10/09" com o índice recebendo planos todo dia.
+          # assunto: texto rapido
+          python3 scripts/verificar_corte_sincronizado.py
+          # assunto: texto rapido
+          python3 scripts/verificar_corte_sincronizado.py --autoteste
           # 30/09/2026 (§307): sinal diário não pode cair em cadência semanal. A decisão da
           # editoria de 29/09 valia quando foi escrita e deixou de valer no dia seguinte, por
           # efeito colateral do desacoplamento — sem nada que reprovasse.

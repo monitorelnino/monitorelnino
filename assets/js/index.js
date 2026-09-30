@@ -130,7 +130,9 @@ const kpiUFsLAC = Object.entries(MARE).filter(([uf,v]) => v.status_estadual === 
   const el = id => document.getElementById(id); const n = v => Number(v).toLocaleString('pt-BR');
   const total = (VRESUMO && VRESUMO.total_municipios) || 5571;
   if (el('heroVerifFederal')) el('heroVerifFederal').textContent = n(total);
-  if (el('heroCorte')) el('heroCorte').textContent = (META && META.corte) || '—';
+  // 30/09/2026: o texto de abertura passou a ter UMA data só — a da última checagem. O "Dados até"
+  // (corte) saiu: ele congelava com o arquivo de transferências e dizia ao leitor que o índice
+  // estava parado quando não estava.
 })();
 
 // 30/09/2026: o painel "Calendário" da inicial saiu do código, com as outras duas telas de
