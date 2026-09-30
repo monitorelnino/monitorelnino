@@ -54,8 +54,11 @@ def rodar():
     import statistics
     idx, media, _, _rob = rm.calcular()  # v2.2.3: calcular() passou a devolver também a robustez MC
     ufs = sorted(rm.ESTADOS)
-    X = np.array([[idx[u]["estado"], idx[u]["cobertura_pop"],
-                   idx[u]["antecipacao"]] for u in ufs], float)
+    # v3.1 (30/09/2026): os componentes passaram a ser instrumento operacional, estrutura de
+    # coordenação e cobertura populacional. `estado` e `antecipacao` não existem mais no índice —
+    # o tempo saiu da nota e virou indicador à parte (`dias_apos_boletim_1`).
+    X = np.array([[idx[u]["instrumento"], idx[u]["estrutura"],
+                   idx[u]["cobertura_pop"]] for u in ufs], float)
     pop = json.load(open(RAIZ / "data" / "populacao_censo2022.json", encoding="utf-8"))
     totais, pop_uf, pops_uf, cod_por = {}, {}, {}, {}
     for m in ref:
@@ -121,7 +124,7 @@ def rodar():
                 **_shifts(_ranks(ufs, X @ wp), rank_base, ufs),
                 "spearman": round(_spearman(X.mean(axis=1), X @ wp), 3)}
     R["knockouts"] = {}
-    for k, nome in enumerate(("estado", "cobertura_pop", "antecipacao")):
+    for k, nome in enumerate(("instrumento", "estrutura", "cobertura_pop")):
         w = np.full(3, 1 / 2); w[k] = 0
         R["knockouts"][nome] = _shifts(_ranks(ufs, X @ w), rank_base, ufs)
 

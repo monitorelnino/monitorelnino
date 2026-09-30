@@ -133,6 +133,127 @@ ESTRUTURA = {
  "MA":"VIG","MG":"VIG","MS":"READ","MT":"NOVO","PA":"READ","PB":"LAC","PE":"LAC","PI":"LAC","PR":"READ",
  "RJ":"VIG","RN":"LAC","RO":"VIG","RR":"VIG","RS":"READ","SC":"NOVO","SE":"NOVO","SP":"VIG","TO":"VIG",
 }
+# ---------------------------------------------------------------------------------------------
+# v3.1 (30/09/2026, decisão da editoria) — a régua do INSTRUMENTO, sem componente temporal
+# ---------------------------------------------------------------------------------------------
+# O que muda, e por quê (razões aprovadas pela editoria; entram na METODOLOGIA):
+#
+# 1. O TEMPO SAI DA NOTA. A régua de antecipação (§5.2.1) deixa de ser componente e vira indicador
+#    publicado à parte. Publicar cedo não é atributo do arcabouço — a lei exige plano existente e
+#    atualizado, não antecedência; é atributo de conduta, e como tal se reporta, não se pontua. O
+#    corte de 30 dias e a âncora nacional única eram convenções não sustentáveis (a janela real
+#    difere por região, limitação já registrada em E5d), e a correlação 0,56 entre "estadual" e
+#    "antecipação" (E4) mostrava dupla contagem.
+# 2. TRÊS COMPONENTES, um terço cada, sem sobreposição: instrumento operacional estadual (escala
+#    abaixo), estrutura de coordenação (ESTADO_SCORE, como está) e cobertura populacional (como
+#    está). A estrutura sai de dentro do componente estadual, onde desde 04/09 entrava como metade,
+#    e passa a valer por si.
+# 3. ESCALA DO INSTRUMENTO com espaçamento por razão declarada — não é espaçamento igual nem
+#    elicitação; a editoria escolheu entre as três em 30/09/2026 e declarou a razão de cada degrau.
+#
+# O degrau de um recorrente depende de duas coisas que estão no banco, não de opinião:
+#   • CONSIST (data/consist.json), que diz se o instrumento cobre o risco projetado do ciclo;
+#   • "atualizado", definição operacional: revisão, reedição ou ato de ativação com data em 2026.
+INSTRUMENTO_SCORE_V31 = {
+    "NOVO": 100,          # plano feito para o El Niño — referência
+    "READ": 70,           # readaptado para o ciclo: atualizar é quase equivalente a fazer novo;
+                          # a diferença é de especificidade, não de conduta
+    "VIG_ATUALIZADO": 55, # recorrente que cobre o risco E tem revisão/ativação datada em 2026
+    "VIG": 30,            # recorrente que cobre (ou é neutro), sem revisão datada em 2026 —
+                          # o salto grande é entre plano vivo e plano parado
+    "ELAB": 20,           # anúncio sem instrumento
+    "VIG_NAO_COBRE": 0,   # plano para OUTRO risco não é preparação para este ciclo (caso MG)
+    "LAC": 0,
+}
+
+# "Atualizado" por UF: o documento e a data que sustentam o julgamento, lidos de data/estados.json
+# em 30/09/2026 e registrados aqui porque a régua tem de ser auditável sem reler o banco inteiro.
+# Só entram UFs VIG — nas outras a pergunta não se coloca.
+#
+# Um recorrente sem ato datado em 2026 NÃO é rebaixado por suspeita: ele cai no degrau 30, que é o
+# degrau do "plano parado", e a razão fica escrita. Quando o ato aparecer, sobe.
+VIG_ATUALIZADO_EM_2026 = {
+    "DF": "Decreto nº 48.599/2026, DODF de 15/05/2026 — ativa o PPCIF contra incêndios florestais",
+    "PI": "Antecipação de ações (PAA/PAS/Garantia-Safra), instrumento datado de 2026",
+}
+# Registrado por simetria: as VIG sem ato datado em 2026, com o que o banco traz no lugar.
+VIG_SEM_REVISAO_2026 = {
+    "AP": "PPCDAP com vigência atualizada para 2026–2030, mas sem ato de revisão datado em 2026; "
+          "comitê de estiagem é de 2024",
+    "CE": "Monitoramento + Comitê de Segurança Hídrica, registrados como recorrentes, sem data",
+    "ES": "Plano de verão/chuvas, ciclo anual, sem data",
+    "MG": "Plano de verão/chuvas, ciclo anual, sem data — e CONSIST=DIFERE",
+    "RJ": "Plano de verão/chuvas, ciclo anual, sem data",
+    "RR": "Operação Verão Sem Fogo, ciclo nov–abr, sem data. O Gabinete Integrado noticiado em "
+          "02/09/2026 é pista sem ato localizado, e é de estrutura, não de instrumento",
+    "SP": "Plano de verão/chuvas, ciclo anual, sem data",
+}
+# CONSIST que reprovam um recorrente: o instrumento trata de outro risco.
+CONSIST_NAO_COBRE = ("DIFERE",)
+
+# Boletim nº 1 do ciclo — âncora do INDICADOR de antecedência (não mais do componente).
+BOLETIM_1 = "29/06/2026"
+
+
+def _consist():
+    """{uf: categoria} de data/consist.json. Vazio se o arquivo não existe."""
+    p = RAIZ / "data" / "consist.json"
+    if not p.exists():
+        return {}
+    d = json.load(open(p, encoding="utf-8"))
+    d = d.get("ufs", d)
+    return {u: (v or {}).get("cat") for u, v in d.items() if isinstance(v, dict)}
+
+
+def degrau_do_instrumento(uf: str, status: str, consist: dict) -> str:
+    """O degrau da escala v3.1 para o instrumento operacional da UF. Função pura.
+
+    Só os recorrentes (VIG) dependem de CONSIST e de revisão datada; os outros degraus são o
+    próprio status. Um VIG que não cobre o risco do ciclo vale 0 — decisão da editoria."""
+    if status != "VIG":
+        return status
+    if consist.get(uf) in CONSIST_NAO_COBRE:
+        return "VIG_NAO_COBRE"
+    return "VIG_ATUALIZADO" if uf in VIG_ATUALIZADO_EM_2026 else "VIG"
+
+
+def score_instrumento_v31(uf: str, consist: dict) -> int:
+    """Pontos do instrumento operacional na v3.1. Função pura."""
+    return INSTRUMENTO_SCORE_V31[degrau_do_instrumento(uf, ESTADOS[uf][0], consist)]
+
+
+def dias_apos_boletim_1(data_do_ato: str, boletim: str = BOLETIM_1):
+    """Dias entre o Boletim nº 1 e o primeiro ato datado da UF; negativo se anterior. Função pura.
+
+    Devolve None quando não há data COMPLETA — mês solto ("08/2026"), "Recorrente", intervalo ou
+    travessão não viram número. Lacuna declarada é melhor do que dia inventado: a diferença entre
+    "publicou em agosto" e "publicou em 28/08" é exatamente o que este indicador mede."""
+    import datetime
+    m = re.fullmatch(r"(\d{2})/(\d{2})/(\d{4})", str(data_do_ato or "").strip())
+    if not m:
+        return None
+    b = re.fullmatch(r"(\d{2})/(\d{2})/(\d{4})", boletim)
+    try:
+        ato = datetime.date(int(m.group(3)), int(m.group(2)), int(m.group(1)))
+        ref = datetime.date(int(b.group(3)), int(b.group(2)), int(b.group(1)))
+    except ValueError:
+        return None
+    return (ato - ref).days
+
+
+def _datas_dos_atos():
+    """{uf: data do instrumento operacional} lida de data/estados.json. Vazio se não existir."""
+    p = RAIZ / "data" / "estados.json"
+    if not p.exists():
+        return {}
+    fora = {}
+    for u in json.load(open(p, encoding="utf-8")).get("ufs", []):
+        instr = [i for i in (u.get("instrumentos") or [])
+                 if i.get("tipo") == "instrumento_operacional"]
+        fora[u["uf"]] = (instr[0].get("data") if instr else None) or u.get("data")
+    return fora
+
+
 PESO_ESTRUTURA = 0.5   # v3.0: peso igual entre estrutura e instrumento operacional (padrão da casa; sensibilidade 30/70–50/50 sem troca de faixa, §30)
 
 
@@ -211,9 +332,16 @@ def _declarado_nacional_uf():
             if uf: n[uf] = n.get(uf, 0) + 1
     return n
 
-def calcular():
-    """Motor do índice: lê data/*.json, calcula os três componentes por estado, agrega com elemento geométrico e piso, e devolve o dicionário completo (270 campos) que vira data/indice.json."""
+def calcular(versao="v3.1"):
+    """Motor do índice: lê data/*.json, calcula os três componentes por estado, agrega com elemento
+    geométrico e piso, e devolve o dicionário completo que vira data/indice.json.
+
+    `versao` existe para a v3.0 continuar calculável depois da troca — a comparação v3.0 × v3.1 é
+    registro público, e registro que não se pode refazer não é registro. Ninguém grava v3.0 em
+    `data/`: quem pede v3.0 está comparando."""
     import statistics
+    if versao not in ("v3.0", "v3.1"):
+        raise SystemExit(f"✗ versão desconhecida: {versao}")
     tab = json.load(open(RAIZ / "data" / "municipios.json", encoding="utf-8"))
     pct_arquivo = json.load(open(RAIZ / "data" / "percentual_uf.json", encoding="utf-8"))
     ref = json.load(open(RAIZ / "data" / "municipios_ibge_referencia.json", encoding="utf-8"))
@@ -243,6 +371,8 @@ def calcular():
     pct = derivar_percentual_uf(cnt, totais, pct_arquivo)
 
     ufs = sorted(ESTADOS)
+    consist = _consist()
+    datas_dos_atos = _datas_dos_atos()
     comp = []
     for uf in ufs:
         c = cnt.get(uf, {})
@@ -264,7 +394,13 @@ def calcular():
         if da: w += da * mediana_uf[uf] * (CRED_POP["plano_antigo"] * 0.5)
         cobertura = min(100.0, 100.0 * w / pop_uf[uf])
         st, ant, conf = ESTADOS[uf]
-        comp.append([score_estado(uf), round(cobertura, 1), ant])
+        if versao == "v3.1":
+            # Três componentes sem sobreposição: instrumento, estrutura e cobertura. A estrutura
+            # deixa de ser metade do componente estadual e passa a valer um terço por si.
+            comp.append([score_instrumento_v31(uf, consist), ESTADO_SCORE[ESTRUTURA[uf]],
+                         round(cobertura, 1)])
+        else:
+            comp.append([score_estado(uf), round(cobertura, 1), ant])
 
     X = np.array(comp, float)
     lin = X.mean(axis=1)
@@ -280,16 +416,47 @@ def calcular():
     saida, robustez = {}, {}
     for i, uf in enumerate(ufs):
         st, ant, conf = ESTADOS[uf]
-        saida[uf] = {
-            "estado": round(float(X[i, 0]), 1), "cobertura_pop": round(float(X[i, 1]), 1),
-            "antecipacao": int(ant),
-            "total": round(float(lin[i]), 1), "total_geo": round(float(geo[i]), 1),
-            "confianca": conf, "status_estadual": st,
-            # v3.0: os dois sub-elementos do componente estadual, sempre visíveis
-            "estrutura_status": ESTRUTURA[uf], "estado_estrutura": ESTADO_SCORE[ESTRUTURA[uf]],
-            "operacional_status": st, "estado_operacional": ESTADO_SCORE[st],
-            "metodo": "v3.0 — 3 componentes, pesos iguais (1/3): instrumento estadual = média (1/2, 1/2) de ESTRUTURA DE COORDENAÇÃO e INSTRUMENTO OPERACIONAL (Metodologia §30, decisão de 04/09/2026), cobertura populacional (Censo 2022; crédito por categoria, inclusive `estrutura` 0,45; agregados e declarada via mediana; §5 e §12.4.2-3), antecipação (régua e teste do objeto: §5.2.1); linear + geométrico piso 5. Sem ranking ordinal público (§13); Monte Carlo 10k Dirichlet(1,1,1) seed 42 em data/robustez_mc.json.",
-        }
+        if versao == "v3.1":
+            data_ato = datas_dos_atos.get(uf)
+            saida[uf] = {
+                # Os três componentes da v3.1, nomeados pelo que são. `estado` sai: na v3.0 ele
+                # era a média de estrutura e instrumento, e manter o nome com outro significado
+                # seria pior do que trocá-lo.
+                "instrumento": round(float(X[i, 0]), 1),
+                "estrutura": round(float(X[i, 1]), 1),
+                "cobertura_pop": round(float(X[i, 2]), 1),
+                "total": round(float(lin[i]), 1), "total_geo": round(float(geo[i]), 1),
+                "confianca": conf, "status_estadual": st,
+                "estrutura_status": ESTRUTURA[uf], "estado_estrutura": ESTADO_SCORE[ESTRUTURA[uf]],
+                "operacional_status": st, "estado_operacional": round(float(X[i, 0]), 1),
+                "degrau_instrumento": degrau_do_instrumento(uf, st, consist),
+                "consist": consist.get(uf),
+                # INDICADOR, não componente: não entra na nota. None quando não há data completa —
+                # mês solto e "Recorrente" não viram dia.
+                "dias_apos_boletim_1": dias_apos_boletim_1(data_ato),
+                "data_primeiro_ato": data_ato,
+                "metodo": ("v3.1 — 3 componentes, pesos iguais (1/3), sem sobreposição: INSTRUMENTO "
+                           "OPERACIONAL na escala de razão declarada (NOVO 100 · READ 70 · "
+                           "recorrente que cobre e tem revisão/ativação datada em 2026 55 · "
+                           "recorrente que cobre sem revisão 30 · em elaboração 20 · recorrente que "
+                           "NÃO cobre o risco do ciclo 0 · nada localizado 0), ESTRUTURA DE "
+                           "COORDENAÇÃO (§30) e COBERTURA POPULACIONAL (Censo 2022; §5 e §12.4.2-3). "
+                           "O tempo saiu da nota: a antecedência é indicador à parte "
+                           "(`dias_apos_boletim_1`, contado do Boletim nº 1 de 29/06/2026), porque a "
+                           "lei exige plano existente e atualizado, não antecedência. Linear + "
+                           "geométrico piso 5. Sem ranking ordinal público (§13); Monte Carlo 10k "
+                           "Dirichlet(1,1,1) seed 42 em data/robustez_mc.json."),
+            }
+        else:
+            saida[uf] = {
+                "estado": round(float(X[i, 0]), 1), "cobertura_pop": round(float(X[i, 1]), 1),
+                "antecipacao": int(ant),
+                "total": round(float(lin[i]), 1), "total_geo": round(float(geo[i]), 1),
+                "confianca": conf, "status_estadual": st,
+                "estrutura_status": ESTRUTURA[uf], "estado_estrutura": ESTADO_SCORE[ESTRUTURA[uf]],
+                "operacional_status": st, "estado_operacional": ESTADO_SCORE[st],
+                "metodo": "v3.0 — 3 componentes, pesos iguais (1/3): instrumento estadual = média (1/2, 1/2) de ESTRUTURA DE COORDENAÇÃO e INSTRUMENTO OPERACIONAL (Metodologia §30, decisão de 04/09/2026), cobertura populacional (Censo 2022; crédito por categoria, inclusive `estrutura` 0,45; agregados e declarada via mediana; §5 e §12.4.2-3), antecipação (régua e teste do objeto: §5.2.1); linear + geométrico piso 5. Sem ranking ordinal público (§13); Monte Carlo 10k Dirichlet(1,1,1) seed 42 em data/robustez_mc.json.",
+            }
         # Decisão de 29/08/2026 (Metodologia §13): o rank ordinal deixa de ser
         # produto público por UF — a resolução do instrumento não sustenta
         # comparação ordinal fina (12 pares de UFs a <2 pontos; amplitude

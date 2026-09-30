@@ -89,9 +89,11 @@ for uf, esperado in _pct_esperado.items():
                  f"{campo}={real.get(campo)}, deveria ser {esperado.get(campo)} "
                  f"(rode: python3 recalcular_mare.py --write)")
 
-# 4. Índice v2.2: total = média dos 3 componentes; média nacional vs veredito no HTML
+# 4. Índice v3.1: total = média dos 3 componentes; média nacional vs veredito no HTML.
+# Os componentes mudaram de nome em 30/09/2026: `estado` (média de estrutura e instrumento) e
+# `antecipacao` (régua temporal) saíram; entraram `instrumento`, `estrutura` e `cobertura_pop`.
 for uf, v in indice.items():
-    calc = round((v["estado"]+v["cobertura_pop"]+v["antecipacao"])/3, 1)
+    calc = round((v["instrumento"]+v["estrutura"]+v["cobertura_pop"])/3, 1)
     if abs(calc - v["total"]) > 0.06: erro(f"MARÉ {uf}: total ≠ média dos componentes ({v['total']} vs {calc})")
 media = round(sum(v["total"] for v in indice.values())/27, 1)
 
@@ -410,7 +412,20 @@ try:
             def _bloco(n):
                 _m = _re3.search(r"^%s\s*=\s*(\{.*?\n\}|\{[^\n]*\}|[0-9.]+)" % n, _src, _re3.S | _re3.M)
                 return _m.group(0) if _m else f"{n} AUSENTE"
-            _h = _hl.sha256("\n".join(_bloco(n) for n in ("ESTADO_SCORE", "CRED_POP", "ESTADOS", "ESTRUTURA", "PESO_ESTRUTURA")).encode()).hexdigest()
+            # 30/09/2026 (defeito exposto pela v3.1): a lista congelava as CONSTANTES, não a
+            # FÓRMULA. A v3.1 trocou os três componentes, moveu a média nacional de 46,6 para
+            # 45,3 e mudou nove UFs de faixa sem tocar em nenhum dos cinco nomes acima — e este
+            # portão passou verde. Congelar constante e deixar a fórmula solta é congelar a
+            # fechadura e deixar a porta aberta. Entram na conta a escala da v3.1, o mapa de
+            # recorrentes atualizados e a expressão que monta os componentes em calcular().
+            _comp = _re3.search(r'if versao == "v3\.1":.*?comp\.append\(\[.*?\]\)',
+                                _src, _re3.S)
+            _formula = _comp.group(0) if _comp else "MONTAGEM DOS COMPONENTES AUSENTE"
+            _congeladas = ("ESTADO_SCORE", "CRED_POP", "ESTADOS", "ESTRUTURA",
+                           "PESO_ESTRUTURA", "INSTRUMENTO_SCORE_V31",
+                           "VIG_ATUALIZADO_EM_2026", "CONSIST_NAO_COBRE")
+            _h = _hl.sha256(chr(10).join([_bloco(n) for n in _congeladas]
+                                         + [_formula]).encode()).hexdigest()
             if _h != _cfg["hash_constantes"]:
                 erro(f"congelamento (Errata C25): constantes do motor mudaram dentro do defeso ({_cfg['desde']}–{_cfg['ate']}); exige errata pública")
             # Errata C26 (23/09/2026): a trava do C25 congelava num só hash as REGRAS e a CLASSIFICAÇÃO

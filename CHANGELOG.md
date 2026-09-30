@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-09-30 · #481 · MARÉ Legal v3.1: a régua do instrumento, sem componente temporal
+
+O tempo sai da nota e vira indicador à parte. Três componentes com um terço cada: instrumento
+operacional (escala de razão declarada), estrutura de coordenação e cobertura populacional.
+Recorrente que não cobre o risco do ciclo vale 0. Nacional 46,6 → 45,3; nove UFs mudam de faixa,
+com errata pública C27. Só MARÉ Legal. Corrigida a trava do defeso, que congelava constante e
+deixava a fórmula solta.
+
 ## §321 · Enquadramento federal de risco no cartão do município · 30/09/2026
 
 Classe **contexto, peso zero**. PR 4 do enquadramento federal de risco.

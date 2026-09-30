@@ -1,9 +1,9 @@
 {
- "_governanca": "Errata C25 / §13 (06/09/2026): hash das constantes do motor (ESTADO_SCORE, CRED_POP, ESTADOS, ESTRUTURA, PESO_ESTRUTURA) congeladas de 05/09/2026 a 25/10/2026. verificar_consistencia.py falha se o hash mudar dentro do intervalo. Alterar este arquivo exige errata pública. Errata C26 (23/09/2026): o C6 sempre admitiu correção de DADO que viole regra de prova, com errata e efeito em pontos por UF — o que a trava do C25 tornava impossível, porque ESTADOS e ESTRUTURA (classificação por UF, que é dado) estão no mesmo hash das regras. A partir daqui, mudar o hash exige uma entrada em 'erratas' encadeada ao hash anterior, e o portão confere a corrente. Regra que altera nota (peso, crédito, componente, faixa, régua) segue proibida sem exceção até 25/10/2026.",
+ "_governanca": "Errata C25 / §13 (06/09/2026): hash das constantes do motor (ESTADO_SCORE, CRED_POP, ESTADOS, ESTRUTURA, PESO_ESTRUTURA) congeladas de 05/09/2026 a 25/10/2026. verificar_consistencia.py falha se o hash mudar dentro do intervalo. Alterar este arquivo exige errata pública. Errata C26 (23/09/2026): o C6 sempre admitiu correção de DADO que viole regra de prova, com errata e efeito em pontos por UF — o que a trava do C25 tornava impossível, porque ESTADOS e ESTRUTURA (classificação por UF, que é dado) estão no mesmo hash das regras. A partir daqui, mudar o hash exige uma entrada em 'erratas' encadeada ao hash anterior, e o portão confere a corrente. Regra que altera nota (peso, crédito, componente, faixa, régua) segue proibida sem exceção até 25/10/2026. Errata C27 (30/09/2026): a trava congelava as CONSTANTES e deixava a FÓRMULA solta — a v3.1 mudou a nota de 27 UFs e nove faixas sem tocar em nenhuma das cinco constantes listadas, e o portão passou verde. O hash passa a cobrir também INSTRUMENTO_SCORE_V31, VIG_ATUALIZADO_EM_2026, CONSIST_NAO_COBRE e a expressão que monta os componentes.",
  "desde": "2026-09-05",
  "ate": "2026-10-25",
- "hash_constantes": "97dbcb2da995fa218502f70656ea52d1e3890c194e8c6e13bcdf26b25e83b55f",
- "registrado_em": "2026-09-24",
+ "hash_constantes": "97d5b2ebbbac1ec342aebb568c666d59474a3b5a48b8daf221620817cb441380",
+ "registrado_em": "2026-09-30",
  "hash_original_05_09": "de3b7f4d7c7239d4ab21d7b5ce3197f5fc3bb4a858b531d43c05a07c366be27a",
  "erratas": [
   {
@@ -133,6 +133,392 @@
    ],
    "hash_anterior": "116d5553575e929af7f6c7c97401317f2abacfa3741eaca17d625f224653232f",
    "hash_novo": "97dbcb2da995fa218502f70656ea52d1e3890c194e8c6e13bcdf26b25e83b55f"
+  },
+  {
+   "codigo": "C27",
+   "data": "2026-09-30",
+   "classe": "mudança de REGRA do índice, autorizada pela editoria (não é correção de dado)",
+   "o_que_mudou": "MARÉ Legal v3.0 → v3.1. A régua de antecipação (§5.2.1) deixa de ser componente e passa a indicador publicado à parte (`dias_apos_boletim_1`). Os três componentes passam a ser, com um terço cada e sem serem metades um do outro: instrumento operacional estadual, estrutura de coordenação e cobertura populacional. O instrumento ganha escala de razão declarada (NOVO 100 · READ 70 · recorrente que cobre o risco e tem revisão ou ativação datada em 2026 = 55 · recorrente que cobre sem revisão = 30 · em elaboração = 20 · recorrente que NÃO cobre o risco do ciclo = 0 · nada localizado = 0). Só o MARÉ Legal; o MARÉ Saúde não muda.",
+   "uf": [
+    "AC",
+    "AL",
+    "AM",
+    "AP",
+    "BA",
+    "CE",
+    "DF",
+    "ES",
+    "GO",
+    "MA",
+    "MG",
+    "MS",
+    "MT",
+    "PA",
+    "PB",
+    "PE",
+    "PI",
+    "PR",
+    "RJ",
+    "RN",
+    "RO",
+    "RR",
+    "RS",
+    "SC",
+    "SE",
+    "SP",
+    "TO"
+   ],
+   "motivo": "Decisão da editoria de 30/09/2026, tomada após a revisão da régua de antecipação (casos SE, GO, MA e MG). Publicar cedo não é atributo do arcabouço — a lei exige plano existente e atualizado, não antecedência; é atributo de conduta, e como tal se reporta em vez de pontuar. O corte de 30 dias e a âncora nacional única eram convenções não sustentáveis (a janela real difere por região, limitação já registrada em E5d), e a correlação de 0,56 entre 'estadual' e 'antecipação' indicava dupla contagem. A troca foi autorizada expressamente pela editoria, que é quem decide regra do índice; a errata existe porque autorização dispensa a pergunta, não o registro.",
+   "efeito_nacional": {
+    "media": [
+     46.6,
+     45.3
+    ],
+    "faixa": [
+     "em construção",
+     "em construção"
+    ],
+    "ufs_afetadas": 23,
+    "ufs_que_mudam_de_faixa": [
+     "AC",
+     "AL",
+     "CE",
+     "GO",
+     "MA",
+     "MS",
+     "PR",
+     "RR",
+     "SE"
+    ]
+   },
+   "efeito_por_uf": {
+    "AC": {
+     "total": [
+      56.8,
+      35.1
+     ],
+     "faixa": [
+      "consolidado",
+      "em construção"
+     ],
+     "muda_de_faixa": true,
+     "degrau_instrumento_v3_1": "ELAB"
+    },
+    "AL": {
+     "total": [
+      46.9,
+      54.4
+     ],
+     "faixa": [
+      "em construção",
+      "consolidado"
+     ],
+     "muda_de_faixa": true,
+     "degrau_instrumento_v3_1": "ELAB"
+    },
+    "AM": {
+     "total": [
+      82.7,
+      76.9
+     ],
+     "faixa": [
+      "avançado",
+      "avançado"
+     ],
+     "muda_de_faixa": false,
+     "degrau_instrumento_v3_1": "NOVO"
+    },
+    "AP": {
+     "total": [
+      23.8,
+      13.0
+     ],
+     "faixa": [
+      "estágio inicial",
+      "estágio inicial"
+     ],
+     "muda_de_faixa": false,
+     "degrau_instrumento_v3_1": "VIG"
+    },
+    "BA": {
+     "total": [
+      20.8,
+      15.0
+     ],
+     "faixa": [
+      "estágio inicial",
+      "estágio inicial"
+     ],
+     "muda_de_faixa": false,
+     "degrau_instrumento_v3_1": "ELAB"
+    },
+    "CE": {
+     "total": [
+      31.3,
+      20.5
+     ],
+     "faixa": [
+      "em construção",
+      "estágio inicial"
+     ],
+     "muda_de_faixa": true,
+     "degrau_instrumento_v3_1": "VIG"
+    },
+    "DF": {
+     "total": [
+      58.3,
+      66.7
+     ],
+     "faixa": [
+      "consolidado",
+      "consolidado"
+     ],
+     "muda_de_faixa": false,
+     "degrau_instrumento_v3_1": "VIG_ATUALIZADO"
+    },
+    "ES": {
+     "total": [
+      57.5,
+      57.5
+     ],
+     "faixa": [
+      "consolidado",
+      "consolidado"
+     ],
+     "muda_de_faixa": false,
+     "degrau_instrumento_v3_1": "VIG"
+    },
+    "GO": {
+     "total": [
+      45.8,
+      69.2
+     ],
+     "faixa": [
+      "em construção",
+      "consolidado"
+     ],
+     "muda_de_faixa": true,
+     "degrau_instrumento_v3_1": "NOVO"
+    },
+    "MA": {
+     "total": [
+      58.3,
+      45.0
+     ],
+     "faixa": [
+      "consolidado",
+      "em construção"
+     ],
+     "muda_de_faixa": true,
+     "degrau_instrumento_v3_1": "READ"
+    },
+    "MG": {
+     "total": [
+      24.7,
+      18.0
+     ],
+     "faixa": [
+      "estágio inicial",
+      "estágio inicial"
+     ],
+     "muda_de_faixa": false,
+     "degrau_instrumento_v3_1": "VIG_NAO_COBRE"
+    },
+    "MS": {
+     "total": [
+      56.5,
+      46.5
+     ],
+     "faixa": [
+      "consolidado",
+      "em construção"
+     ],
+     "muda_de_faixa": true,
+     "degrau_instrumento_v3_1": "READ"
+    },
+    "MT": {
+     "total": [
+      69.9,
+      69.9
+     ],
+     "faixa": [
+      "consolidado",
+      "consolidado"
+     ],
+     "muda_de_faixa": false,
+     "degrau_instrumento_v3_1": "NOVO"
+    },
+    "PA": {
+     "total": [
+      33.9,
+      47.3
+     ],
+     "faixa": [
+      "em construção",
+      "em construção"
+     ],
+     "muda_de_faixa": false,
+     "degrau_instrumento_v3_1": "READ"
+    },
+    "PB": {
+     "total": [
+      13.6,
+      10.2
+     ],
+     "faixa": [
+      "estágio inicial",
+      "estágio inicial"
+     ],
+     "muda_de_faixa": false,
+     "degrau_instrumento_v3_1": "LAC"
+    },
+    "PE": {
+     "total": [
+      22.6,
+      16.8
+     ],
+     "faixa": [
+      "estágio inicial",
+      "estágio inicial"
+     ],
+     "muda_de_faixa": false,
+     "degrau_instrumento_v3_1": "ELAB"
+    },
+    "PI": {
+     "total": [
+      30.1,
+      27.6
+     ],
+     "faixa": [
+      "em construção",
+      "em construção"
+     ],
+     "muda_de_faixa": false,
+     "degrau_instrumento_v3_1": "VIG_ATUALIZADO"
+    },
+    "PR": {
+     "total": [
+      73.3,
+      67.4
+     ],
+     "faixa": [
+      "avançado",
+      "consolidado"
+     ],
+     "muda_de_faixa": true,
+     "degrau_instrumento_v3_1": "NOVO"
+    },
+    "RJ": {
+     "total": [
+      47.2,
+      47.2
+     ],
+     "faixa": [
+      "em construção",
+      "em construção"
+     ],
+     "muda_de_faixa": false,
+     "degrau_instrumento_v3_1": "VIG"
+    },
+    "RN": {
+     "total": [
+      11.9,
+      8.6
+     ],
+     "faixa": [
+      "estágio inicial",
+      "estágio inicial"
+     ],
+     "muda_de_faixa": false,
+     "degrau_instrumento_v3_1": "LAC"
+    },
+    "RO": {
+     "total": [
+      54.0,
+      60.7
+     ],
+     "faixa": [
+      "consolidado",
+      "consolidado"
+     ],
+     "muda_de_faixa": false,
+     "degrau_instrumento_v3_1": "READ"
+    },
+    "RR": {
+     "total": [
+      51.4,
+      48.1
+     ],
+     "faixa": [
+      "consolidado",
+      "em construção"
+     ],
+     "muda_de_faixa": true,
+     "degrau_instrumento_v3_1": "VIG"
+    },
+    "RS": {
+     "total": [
+      65.2,
+      55.2
+     ],
+     "faixa": [
+      "consolidado",
+      "consolidado"
+     ],
+     "muda_de_faixa": false,
+     "degrau_instrumento_v3_1": "READ"
+    },
+    "SC": {
+     "total": [
+      77.9,
+      77.9
+     ],
+     "faixa": [
+      "avançado",
+      "avançado"
+     ],
+     "muda_de_faixa": false,
+     "degrau_instrumento_v3_1": "NOVO"
+    },
+    "SE": {
+     "total": [
+      64.4,
+      87.7
+     ],
+     "faixa": [
+      "consolidado",
+      "avançado"
+     ],
+     "muda_de_faixa": true,
+     "degrau_instrumento_v3_1": "NOVO"
+    },
+    "SP": {
+     "total": [
+      39.5,
+      36.1
+     ],
+     "faixa": [
+      "em construção",
+      "em construção"
+     ],
+     "muda_de_faixa": false,
+     "degrau_instrumento_v3_1": "VIG"
+    },
+    "TO": {
+     "total": [
+      39.0,
+      45.7
+     ],
+     "faixa": [
+      "em construção",
+      "em construção"
+     ],
+     "muda_de_faixa": false,
+     "degrau_instrumento_v3_1": "READ"
+    }
+   },
+   "hash_anterior": "97dbcb2da995fa218502f70656ea52d1e3890c194e8c6e13bcdf26b25e83b55f",
+   "hash_novo": "97d5b2ebbbac1ec342aebb568c666d59474a3b5a48b8daf221620817cb441380"
   }
  ]
 }
