@@ -44,6 +44,60 @@
   --chuva: #5E7C93;
   --seca: #C9814B;
   --fogo: #7C4A34;
+
+  /* 30/09/2026 (rodada 2, item 8 — aprovado pela editoria): UMA ATMOSFERA POR FAMÍLIA DE RISCO.
+     Todos os mapas eram iguais — mesmo fundo cinza, mesma UF de borda escura —, e mapa de fogo
+     noturno não se lê como mapa de seca em papel ressecado. Cada família ganha fundo, rampa e
+     marca próprios, na mesma ordem e nas mesmas famílias do resto do site.
+
+     Os valores abaixo são os do handover, literais. Eles vivem aqui porque hexadecimal só entra
+     em tokens.css e mapas.js; o motor único de mapas os lê por nome, e nenhum JS carrega cor solta. */
+
+  /* Fogo — noturno. Pontos por célula, mescla screen, núcleo claro onde há muito foco. */
+  --mapa-fogo-fundo:     #15201A;
+  --mapa-fogo-uf:        #1E2B24;
+  --mapa-fogo-contorno:  #3A4A41;
+  /* 30/09/2026: a brasa mais escura subiu de #8A3B1E para #BC5029. O valor aprovado, como DESENHADO */
+  /*   /* (mescla screen, opacidade .78) sobre o fundo noturno, dava contraste 2,2 — abaixo dos 3:1 de */
+  /*   /* componente gráfico que o próprio item 8 exige das rampas. #BC5029 é o menor passo na mesma */
+  /*   /* matiz que alcança 3:1 no desenho; os degraus seguintes ficam como aprovados. */
+  --mapa-fogo-brasa-1:   #BC5029;
+  --mapa-fogo-brasa-2:   #D8621F;
+  --mapa-fogo-brasa-3:   #F29A38;
+  --mapa-fogo-nucleo:    #FFE3A3;
+
+  /* Seca — papel ressecado. A UF é pintada pela categoria que cobre metade da área. */
+  --mapa-seca-fundo:     #F7F0E2;
+  --mapa-seca-sem:       #EFE6D3;
+  --mapa-seca-s0:        #E7C98E;
+  --mapa-seca-s1:        #D9A05B;
+  --mapa-seca-s2:        #B9702F;
+  --mapa-seca-s3:        #86461F;
+  --mapa-seca-s4:        #4E2812;
+
+  /* Chuva e tempestades — ardósia. A UF é pintada pelo maior grau de aviso em vigor. */
+  --mapa-chuva-fundo:    #1B2630;
+  --mapa-chuva-sem:      #2B3A46;
+  --mapa-chuva-potencial: #4F7A97;
+  --mapa-chuva-perigo:   #7FA6C4;
+  --mapa-chuva-grande:   #C6B8E8;
+
+  /* Calor — branco quente. O ESTADO NUNCA É PINTADO: o dado é da capital. */
+  --mapa-calor-fundo:    #FFFDF9;
+  --mapa-calor-contorno: #E3D7C8;
+  --mapa-calor-1:        #F4D9A8;
+  --mapa-calor-2:        #EDA35A;
+  --mapa-calor-3:        #D8561F;
+  --mapa-calor-4:        #9C1F12;
+
+  /* Fumaça e qualidade do ar — névoa. O ESTADO NUNCA É PINTADO. */
+  --mapa-ar-fundo:       #EEEEF1;
+  --mapa-ar-contorno:    #CFCFD8;
+  --mapa-ar-1:           #C9D6D1;
+  --mapa-ar-2:           #A7A9B8;
+  --mapa-ar-3:           #8A76A6;
+  --mapa-ar-4:           #5B3F7A;
+  --mapa-ar-5:           #2E1B45;
   /* Paleta nomeada: hex só aqui e em assets/mapas.js; páginas usam var(--…). */
   --vazio:#0E0F0D; --abissal:#15201A; --musgo:#2E3D30; --argila:#7C4A34; --ambar:#C9814B;
   --bioluz:#A8C99A; --sintetico:#5E7C93; --mineral:#8FA5A8; --osso-claro:#F0F4F3;

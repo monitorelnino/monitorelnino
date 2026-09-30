@@ -57,11 +57,44 @@
   }
 
   /** Coroplético por UF: corDe(uf) → cor; rotuloDe(uf) → HTML do tooltip. Sempre com siglas. */
+  /** Atmosfera do mapa (30/09/2026, item 8): fundo da área, malha de coordenadas de 5° e contorno
+   *  da UF, pela família. Desenha ANTES das UFs, num grupo próprio que é refeito a cada chamada.
+   *
+   *  A malha é cartográfica de propósito: um mapa com paralelos e meridianos discretos se lê como
+   *  mapa, e não como gráfico de escritório. Ela é decorativa para a leitura do dado — por isso
+   *  `aria-hidden`, para não virar ruído em leitor de tela.
+   *
+   *  `nome` ausente devolve o mapa como sempre foi: sem fundo, sem malha. Nenhuma página quebra
+   *  por não ter atmosfera declarada. */
+  function atmosfera(ctx, svgId, nome) {
+    const a = PALETA.atmosfera[nome];
+    const svg = d3.select('#' + svgId);
+    svg.selectAll('g.atmosfera').remove();
+    svg.classed('mapa-escuro', !!(a && a.claro === false));
+    if (!a) return svg;
+    const vb = (svg.attr('viewBox') || '0 0 480 460').split(/\s+/).map(Number);
+    const g = svg.insert('g', ':first-child').attr('class', 'atmosfera').attr('aria-hidden', 'true');
+    g.append('rect').attr('x', vb[0]).attr('y', vb[1]).attr('width', vb[2]).attr('height', vb[3])
+      .attr('fill', a.fundo);
+    // Malha de 5°: o próprio gerador do d3 projeta os paralelos e meridianos com a projeção do mapa,
+    // então ela acompanha a deformação da projeção em vez de virar uma grade reta por cima dela.
+    if (ctx && ctx.path && d3.geoGraticule) {
+      g.append('path').attr('d', ctx.path(d3.geoGraticule().step([5, 5])()))
+        .attr('fill', 'none').attr('stroke', a.contorno).attr('stroke-width', 0.35)
+        .attr('stroke-opacity', 0.35);
+    }
+    return svg;
+  }
+
   function ufs(ctx, svgId, corDe, rotuloDe) {
     const svg = d3.select('#' + svgId);
     svg.selectAll('g.ufs').remove(); svg.selectAll('g.siglas').remove();
     const g = svg.append('g').attr('class', 'ufs');
+    // 30/09/2026: com atmosfera, o contorno da UF vem dela — o filete escuro padrão desaparece
+    // num fundo noturno e grita num fundo de papel. Sem atmosfera, tudo fica como sempre foi.
+    const atm = PALETA.atmosfera[svg.attr('data-atmosfera')];
     g.selectAll('path').data(ctx.geo.features).join('path').attr('d', ctx.path).attr('class', 'uf-path')
+      .attr('stroke', atm ? atm.contorno : null)
       .attr('fill', d => corDe(d.properties.sigla) || NEUTRA).attr('tabindex', 0).attr('role', 'img')
       .attr('aria-label', d => d.properties.name + ': ' + String(rotuloDe(d.properties.sigla) || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim())
       .on('mouseenter', (evt, d) => showTip('<strong>' + esc(d.properties.name) + '</strong><br>' + rotuloDe(d.properties.sigla), evt))
@@ -120,7 +153,9 @@
   /** Mapa coroplético por UF + legenda, num só passo (consolidado 17/09/2026 — antes
    *  reimplementado à parte em financiamento.js, saude.js e sinais-de-risco.js; nenhuma
    *  página deve mais definir desenharMapa localmente, ver aviso no topo do arquivo). */
-  function desenharMapa(ctx, svgId, legendaId, corDe, rotuloDe, itens) {
+  function desenharMapa(ctx, svgId, legendaId, corDe, rotuloDe, itens, familia) {
+    if (familia) d3.select('#' + svgId).attr('data-atmosfera', familia);
+    atmosfera(ctx, svgId, familia);
     const svg = ufs(ctx, svgId, corDe, rotuloDe);
     legenda(legendaId, itens);
     return svg;
@@ -222,6 +257,25 @@
     // como sintetico/ambar/argila; ganham o nome da família porque é assim que o resto do site
     // as chama, e quem lê um mapa de risco procura 'seca', não 'ambar'.
     familia: {chuva: COR.chuva, seca: COR.seca, fogo: COR.fogo, calor: COR.ambar},
+    // 30/09/2026 (item 8, aprovado pela editoria): uma ATMOSFERA por família de risco. Mesmos
+    // valores de assets/tokens.css; o motor os lê por nome e nenhuma página carrega cor solta.
+    // `fundo` é a área do mapa, `uf`/`contorno` a malha, e a rampa é a marca do dado.
+    atmosfera: {
+      fogo:  {fundo:'#15201A', uf:'#1E2B24', contorno:'#3A4A41',
+              rampa:['#BC5029', '#D8621F', '#F29A38'], nucleo:'#FFE3A3', claro:false},
+      seca:  {fundo:'#F7F0E2', uf:'#EFE6D3', contorno:'#C8B08A',
+              rampa:['#EFE6D3', '#E7C98E', '#D9A05B', '#B9702F', '#86461F', '#4E2812'], claro:true},
+      chuva: {fundo:'#1B2630', uf:'#2B3A46', contorno:'#3A4A57',
+              rampa:['#2B3A46', '#4F7A97', '#7FA6C4', '#C6B8E8'], claro:false},
+      calor: {fundo:'#FFFDF9', uf:'#FFFFFF', contorno:'#E3D7C8',
+              rampa:['#F4D9A8', '#EDA35A', '#D8561F', '#9C1F12'], claro:true},
+      // O mapa nacional do risco PREVISTO: fundo branco, UFs pintadas pela família (as cores
+      // já vêm do próprio dado), contorno discreto. Ele não tem rampa porque não mede
+      // intensidade — mede a qual família o boletim atribui cada estado.
+      previsto: {fundo:'#FFFFFF', uf:'#FFFFFF', contorno:'#C5CFCE', rampa:[], claro:true},
+      ar:    {fundo:'#EEEEF1', uf:'#FFFFFF', contorno:'#CFCFD8',
+              rampa:['#C9D6D1', '#A7A9B8', '#8A76A6', '#5B3F7A', '#2E1B45'], claro:true},
+    },
     // séries por ano (o ano corrente sempre em Argila)
     anos: { '2026': COR.argila, '2025': COR.ambar, '2024': COR.mineral, canal: COR.musgo, p75: COR.ambar, p90: COR.sintetico },
     // rotas do dinheiro (Financiamento): família da chave de acesso — regra em frios, decreto em quentes,
@@ -236,5 +290,5 @@
     neutra: NEUTRA, semDado: COR['sem-dado'], zero: COR.zebra, trilho: COR['gauge-trilho'],   // trilho = fundo das barras do medidor (15/09/2026: arte única)
     serie: [COR.musgo, COR.sintetico, COR.ambar, COR.argila, COR.mineral, COR['areia-escura'], COR.bioluz, COR.muted] };
 
-  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, desenharMapa, credito, dataBR };
+  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, desenharMapa, atmosfera, credito, dataBR };
 })(window);

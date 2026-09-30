@@ -213,6 +213,10 @@ jobs:
           set -e
           # assunto: texto
           node scripts/verificar_vocabulario_publico.js
+          # assunto: cor — as rampas dos mapas passam em contraste e em daltonismo
+          python3 scripts/verificar_rampas_dos_mapas.py
+          # assunto: cor
+          python3 scripts/verificar_rampas_dos_mapas.py --autoteste
           # assunto: texto — as quatro frases do enquadramento federal são literais, aprovadas
           # pela editoria, e nenhuma destas listas cria dever de plano para o município.
           python3 scripts/verificar_textos_enquadramento.py

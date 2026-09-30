@@ -62,14 +62,18 @@ setTimeout(() => {
   // UF: a medida é de um ponto (a capital), então o mapa desenha um ponto. O contorno das 27 UFs
   // continua lá como base, mas a cor agora vive nos círculos.
   for (const id of ["mapaSecas", "mapaFogo"]) {
-    teste(`${id}: 27 estados desenhados`, q(id) && q(id).querySelectorAll("path").length === 27);
+    teste(`${id}: 27 estados desenhados`, q(id) && q(id).querySelectorAll("g.ufs path").length === 27);
     teste(`${id}: legenda preenchida`, q(id.replace("mapa", "leg")) && q(id.replace("mapa", "leg")).children.length >= 2);
   }
   for (const [id, classe] of [["mapaTemperatura", "pontosTemp"], ["mapaAr", "pontosAr"]]) {
-    teste(`${id}: contorno das 27 UFs como base`, q(id) && q(id).querySelectorAll("path").length === 27);
+    teste(`${id}: contorno das 27 UFs como base`, q(id) && q(id).querySelectorAll("g.ufs path").length === 27);
     teste(`${id}: um ponto por capital com dado, e não pintura por UF`, (() => {
       const pts = q(id) && q(id).querySelectorAll(`g.${classe} circle`);
-      const fundos = new Set([...q(id).querySelectorAll("path")].map(x => x.getAttribute("fill")));
+      // O que este teste quer dizer é "todas as UFs têm o MESMO preenchimento" — ou seja, o
+      // estado não é pintado pelo dado. Contar `path` solto passou a incluir a malha de
+      // coordenadas da atmosfera, que é fill="none", e dois valores distintos reprovavam um
+      // mapa que estava certo.
+      const fundos = new Set([...q(id).querySelectorAll("g.ufs path")].map(x => x.getAttribute("fill")));
       return pts && pts.length > 0 && pts.length <= 27 && fundos.size === 1;
     })());
     teste(`${id}: legenda preenchida`, q(id.replace("mapa", "leg")) && q(id.replace("mapa", "leg")).children.length >= 2);
@@ -128,7 +132,11 @@ setTimeout(() => {
   // v3.1 §7: a tabela das oito fontes vive em pesquisadores.html
 
   // --- tooltip funciona no gesto do usuário (lição de 30/08: teste o gesto) ---
-  const alvo = d.querySelector("#mapaSecas path");
+  // 30/09/2026: os mapas ganharam uma ATMOSFERA (fundo e malha de coordenadas), e a malha é um
+  // <path> a mais dentro do SVG. Contar `path` solto passou a contar a decoração junto, e
+  // apontar `path` solto passou a apontar a malha em vez da UF. O alvo correto sempre foi o
+  // grupo das UFs; agora está escrito assim.
+  const alvo = d.querySelector("#mapaSecas g.ufs path");
   alvo.dispatchEvent(new dom.window.MouseEvent("mouseenter", { clientX: 100, clientY: 100, bubbles: true }));
   teste("tooltip de mapa exibe conteúdo no mouseenter",
     q("mapTooltip").style.display === "block" && q("mapTooltip").innerHTML.length > 10);

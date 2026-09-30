@@ -1675,6 +1675,28 @@ Porto Alegre. Capital sem normal publicada fica com anel vazio — nunca estimat
 pintavam mais escuro do que um de grande perigo, e é o grande perigo que precisa ser visto primeiro.
 O número de avisos continua no texto do mouse e na lista.
 
+**Uma atmosfera por família de risco (item 8, aprovado em 30/09/2026).** Todos os mapas eram
+iguais — mesmo fundo cinza, mesma UF de borda escura —, e mapa de fogo noturno não se lê como mapa de
+seca em papel ressecado. Cada família passa a ter fundo, rampa e marca próprios: fogo em noturno com
+brasa em mescla *screen* (células vizinhas somam luz, como o fogo se vê de noite) e núcleo claro a
+partir de 30 focos; seca em papel ressecado, com seis degraus para as seis categorias do Monitor de
+Secas; chuva em ardósia, pintada pelo maior grau de aviso; calor e qualidade do ar em fundo claro,
+com o **estado nunca pintado** — o dado é da capital, e pintar a UF faria o leitor lê-lo como se
+valesse para o território inteiro. Capital sem dado recebe **anel vazio**, nunca cor no estado: a
+ausência precisa se ver, e não pode se confundir com o degrau mais baixo da rampa. Todos os mapas
+recebem uma malha de coordenadas de 5°, discreta, para se lerem como mapa e não como gráfico.
+
+**As rampas passam por portão de acessibilidade, e uma cor aprovada precisou mudar.**
+`verificar_rampas_dos_mapas.py` mede o contraste da marca contra o fundo da família e a distância
+entre degraus vizinhos, em visão comum e em deuteranopia e protanopia. Ele mede a cor **como ela é
+desenhada** — com a mescla e a opacidade da página —, porque medir o hex do arquivo mede o que o
+autor escreveu, não o que chega ao olho. O primeiro degrau de várias famílias é, de propósito, quase
+o fundo ("sem seca", "sem aviso"): ali quem separa a UF do fundo é o contorno, e exigir contraste do
+preenchimento reprovaria um desenho correto. Nessa medição, a brasa mais escura aprovada (#8A3B1E)
+dava contraste 2,2 contra o fundo noturno, abaixo dos 3:1 que o próprio item 8 exige; ela subiu para
+**#BC5029**, o menor passo na mesma matiz que alcança 3:1 no desenho. Os demais degraus ficaram como
+aprovados.
+
 **Três exceções nomeadas no portão de legendas**, cada uma amarrada a um texto aprovado como literal
 em 30/09/2026: a escada oficial do Monitor de Secas da ANA ("Fraca · Moderada · Grave · Extrema ·
 Excepcional" — "grave" ali é o nome da categoria S2, não juízo do MARÉ); "pior hora do dia", que é a
