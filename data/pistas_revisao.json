@@ -1,12 +1,12 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-30",
- "total_pistas": 6825,
+ "total_pistas": 6851,
  "total_municipios": 308,
  "por_nivel": {
-  "A": 151,
-  "B": 1009,
-  "C": 5665
+  "A": 155,
+  "B": 1028,
+  "C": 5668
  },
  "grupos": [
   {
@@ -6918,7 +6918,7 @@
      "titulo": "Super El Niño acende alerta em Itajaí e mobiliza estrutura para ...",
      "trecho": "Adicionar · Planos de contingência estadual e municipal preveem uso de barcos, veículos 4x4 e outros equipamentos em caso de alagamentos 25/08/2026 às 05h20 ... Super El Niño acende alerta em Itajaí e mobiliza estrutura para possíveis ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "b97a664c30",
@@ -6972,7 +6972,7 @@
      "titulo": "Informações EL NIÑO | Porto de Itajaí",
      "trecho": "Plano de Contingência de Saúde · Plano de Gerenciamento de Resíduos - PGRS ... Rua Blumenau, 05 Centro, Itajaí - Santa Catarina Brasil - CEP: 88.305-101 ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "3425f8be32",
@@ -7165,7 +7165,7 @@
      "titulo": "️ Radar El Niño A Defesa Civil de Itajaí está ampliando a rede de ...",
      "trecho": "5 days ago ... Fonte: Defesa Civil de Santa Catarina e Município de Itajaí. ... Photo by Defesa Civil de Itajaí on September 08, 2026. May be an ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "fab00bec3c",
@@ -7466,7 +7466,7 @@
      "titulo": "Saúde de Cabo Frio estrutura plano de contingência para possíveis ...",
      "trecho": "6 days ago ... Saúde de Cabo Frio estrutura plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado, sobre eventos relacionados à ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
     },
     {
      "id": "0610669d73",
@@ -7507,7 +7507,7 @@
      "titulo": "Saúde de Cabo Frio estrutura plano de contingência para possíveis ...",
      "trecho": "Diversos setores da pasta participaram de um encontro realizado nesta semana, com a participação da Defesa Civil. 21/09/2026 09:20. Saúde de Cabo Frio ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "c59ccee271",
@@ -7567,7 +7567,7 @@
      "titulo": "Saúde de Cabo Frio prepara plano de contingência para possíveis ...",
      "trecho": "6 days ago ... Saúde de Cabo Frio prepara plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado, sobre eventos relacionados à ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "a393cf8444",
@@ -7976,6 +7976,277 @@
    ]
   },
   {
+   "ibge": "4106902",
+   "municipio": "Curitiba",
+   "uf": "PR",
+   "melhor_nivel": "A",
+   "n_pistas": 15,
+   "niveis": {
+    "A": 2,
+    "B": 8,
+    "C": 5
+   },
+   "pistas": [
+    {
+     "id": "0bb73f1765",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.curitiba.pr.gov.br/noticias/hospitais-privados-precisam-apresentar-plano-de-contingencia/58236",
+     "titulo": "Hospitais privados precisam apresentar plano de contingência - Prefeitura de Curitiba",
+     "trecho": "Documento estabelece que os hospitais privados devem prever o remanejamento de no mínimo de 50% dos leitos clínicos e cirúrgicos para atendimento exclusivo da covid-19",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "d16feec1b0",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://mid.curitiba.pr.gov.br/2026/00463452.pdf",
+     "titulo": "Plano de Contingência SRAG - Prefeitura Municipal de Curitiba",
+     "trecho": "Fonte: Secretaria Municipal da Saúde de Curitiba. PLANO DE CONTINGÊNCIA MUNICIPAL PARA RESPOSTA ... Publicar, por meio de Decreto em Diário Oficial e em ...",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "d0f22de20c",
+     "nivel_confianca": "B",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "ato_formal"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://mid.curitiba.pr.gov.br/2024/00444371.pdf",
+     "titulo": "PREFEITURA MUNICIPAL DE CURITIBA DECRETO Nº 1868",
+     "trecho": "Poder Executivo poderá indicar a Reserva de Contingência como aporte local, quando · da formulação de convênios a serem assinados com outras esferas de governo. ... Art. 9º Outras instruções para o cumprimento da legislação em vigor serão · expedidas, se necessário, no decorrer da execução orçamentária do exercício de 2014. Art. 10 Este decreto entra em vigor em 1º de janeiro de 2014, revogadas as ... PALÁCIO 29 DE MARÇO, em 30 de dezembro de 2013. ... Operac. Especiais, ... Operac. Especiais, ... Operac. Especiais, ... Operac. Especiais, ... Operac. Especiais, ... Operac. Especiais, ... Opera",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "ad219e719d",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://saude.curitiba.pr.gov.br/noticias/2168-situacao-de-emergencia-e-encerrada-em-curitiba-municipio-segue-com-novo-protocolo.html",
+     "titulo": "Situação de Emergência é encerrada em Curitiba, município ...",
+     "trecho": "O novo decreto prevê regras de transição para esse momento para que seja possível assegurar a continuidade das ações que compõem o plano de contingência contra o coronavírus, com a prorrogação de contratos vigentes, além de instituir um novo Protocolo de Responsabilidade Sanitária ...",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "e28126afbe",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://diariodecuritiba.com/2026/09/24/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico/",
+     "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
+     "trecho": "10 hours ago ... Resumindo: plano de contingência, população das ... EBANX abre inscrições para curso gratuito de tecnologia em Curitiba com bolsa de R$ 800.",
+     "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "5d34a915be",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://saude.curitiba.pr.gov.br/conteudo/planejamento/1577",
+     "titulo": "Planejamento - Secretaria Municipal da Saúde - Prefeitura de Curitiba",
+     "trecho": "Minha Prefs · Secretaria Municipal da Saúde · Plano de Contingência para resposta às emergências em saúde pública - atualizado 19.04.2022 · Plano de Vacinação de Curitiba contra a COVID-19 - 24.04.2023 (em atualização) Protocolo de responsabilidade sanitária e social de Curitiba ·",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "6a630cc284",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://bandnewsfmcuritiba.com/el-nino-deve-atingir-o-parana-em-julho-com-aumento-de-chuvas/",
+     "titulo": "El Niño deve atingir o Paraná em julho com aumento de chuvas",
+     "trecho": "Jun 11, 2026 ... ... Plano de Contingência e a criação de fundos municipais de Defesa Civil. ... Endereço: Rua Afonso Pedri, 65 - Pilarzinho, Curitiba - PR Telefone ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "164be351c2",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://saude.curitiba.pr.gov.br/images/Decreto%20n%C2%BA%20700.2022.pdf",
+     "titulo": "DECRETO - AVISO DE PUBLICAÇÃO Nº 123",
+     "trecho": "social, que compõem o Plano de Contingência para Resposta às Emergências em · Saúde Pública, e evitar prejuízo ao atendimento da população, fica instituído regime de · transição para os seguintes atos destinados ao enfrentamento da emergência de saúde · pública, decorrentes ...",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
+    },
+    {
+     "id": "9405467d2a",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.portosdoparana.pr.gov.br/sites/portos/arquivos_restritos/files/documento/2022-08/plano_de_contingencia_pvpaf-pgua.pdf",
+     "titulo": "Plano de Contingência para Emergências de Saúde Pública dos ...",
+     "trecho": "Equipe da CVPAF-PR responsável pela elaboração do Plano de Contingência para ... localizado a uma distância de 91 km da capital do estado, Curitiba. Cidade ...",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "8f574a1cca",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://celepar7.pr.gov.br/sia/atosnormativos/form_cons_ato1.asp?Codigo=4574",
+     "titulo": "Consulta de Atos Normativos",
+     "trecho": "... para atendimento aos Acidentes Ambientais na Região Metropolitana de Curitiba ... - Considerando a participação ativa do IAT no “Plano de Contingência para ...",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "0d2a82fd93",
+     "nivel_confianca": "C",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://saude.curitiba.pr.gov.br/images/Plano%20de%20Conting%C3%AAncia%20Dengue.pdf",
+     "titulo": "Plano de Contingência Dengue.pdf - Secretaria Municipal da Saúde",
+     "trecho": "Plano de Contingência da Saúde de Curitiba para o Enfrentamento da. Dengue e ... O Decreto Municipal que instituiu o Plano Municipal de Enfrentamento da Dengue e ...",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "93f2b30e7a",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_oficial"
+     ],
+     "alertas": [],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/4106902/2026-01-22/eab7a52d061a5a0fe550b5c54d56b05c77693667.pdf",
+     "titulo": "Diário oficial de 2026-01-22",
+     "trecho": "infantil, armazéns da família, mercados, Marca: Modelo: Valor unitário: R$ 30,0000 Quantidade: 3650,0000 - METRO QUADRADO Protocolo 01-143567/2025 Anexo 192.1 - PE Nº 07_2025 - ATA REGISTRO PREÇOS ASSIN do Trâmite 192 INFORMAÇÃO - IPPUCMAT3 Exp or tad o d o S ist em a Ú nic o d e P ro toc olo s - 01 -1 43 56 7/2 02 5 - po r H UGO L EONARDO D E A LM EID A P IN TO - M atr ícu la 82 04 0 e m 22 /01 /20 26 às 08 :57 :26 DIÁRIO OFICIAL ELETRÔNICO ATOS DO MUNICÍPIO DE",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: executivo_pendente"
+    },
+    {
+     "id": "c2c2f54bb9",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_oficial"
+     ],
+     "alertas": [],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/4106902/2026-02-18/fcc4c7e93b9b30b2c390f9f0c78a1c9cc748beeb.pdf",
+     "titulo": "Diário oficial de 2026-02-18",
+     "trecho": "U R H S U ni da de d e R ec ur so s H um . e S aú de O cu p. U G T U LC U LC P D M U C C Á re a T ar ifá ria C oo rd en ad or ia d e P la ne ja m en to e S up or te a o Ju rí di co E qu ip . d e T ra ns po rt e P ro je to s C om er ci al S up or te e In fr ae st ru tu ra C ar tã o T ra ns po rt e Lo ja s A dm in is tr at iv o A te nd im en to G es tã o de A po io U ni da de d e U ni da",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
+    },
+    {
+     "id": "b1c83eec27",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_oficial"
+     ],
+     "alertas": [],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/4106902/2026-01-28/34769132c312aa234d59d859c86d8f6817e93cba.pdf",
+     "titulo": "Diário oficial de 2026-01-28",
+     "trecho": "QUARTA – DA RATIFICAÇÃO Permanecem em vigor e inalteradas as demais cláusulas e condições da ata de registro de preços originária que não foram modificadas por este termo. E para constar, foi lavrado o presente, que depois de lido e achado conforme, vai or todos assinado, na presença de duas testemunhas, em uma única via, de onde serão extraidas as cópias necessárias. CLÁUSULA QUINTA – DA PUBLICAÇÃO Incumbirá ao CONTRATANTE divulgar o presente instrumento no Portal Nacional de Contratações Públicas (PNCP)",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: autoridade_nao_confirmada"
+    },
+    {
+     "id": "b641fea0e5",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_oficial"
+     ],
+     "alertas": [],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/4106902/2026-02-06/ad8977333887bb17f454d5be3dff627ab08cb8ba.pdf",
+     "titulo": "Diário oficial de 2026-02-06",
+     "trecho": "1.000m2. Marca: Não se aplica. Modelo: Não se aplica. Valor unitário: R$ 1.000,0000 Quantidade: 21,0000 - UNIDADE Protocolo 01-143579/2025 Anexo 188.3 - PE Nº 06_2025 - ATA REGISTRO PREÇOS.PDF do Trâmite 188 INFORMAÇÃO - IPPUCMAT3 Exp or tad o d o S ist em a Ú nic o d e P ro toc olo s - 01 -1 43 57 9/2 02 5 - po r H UGO L EONARDO D E A LM EID A P IN TO - M atr ícu la 82 04 0 e m 04 /02 /20 26 às 15 :14 :04 DIÁRIO OFICIAL ELETRÔNICO ATOS DO MUNICÍPIO DE",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
+    }
+   ]
+  },
+  {
    "ibge": "4104808",
    "municipio": "Cascavel",
    "uf": "PR",
@@ -8268,7 +8539,7 @@
      "titulo": "Balneário Camboriú reforça plano de ação para enfrentar impactos ...",
      "trecho": "Jun 16, 2026 ... Balneário Camboriú reforça plano de ação para enfrentar impactos do El Niño ... Plano de Contingência, validação de abrigos temporários ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "00c8844837",
@@ -8286,7 +8557,7 @@
      "titulo": "Plano de Contingência de Balneário Camboriú entra em consulta ...",
      "trecho": "Sep 15, 2026 ... Plano de Contingência de Balneário Camboriú entra em consulta pública nesta terça-feira ... El Niño, previsto para os próximos meses. Ela ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "97c71884e1",
@@ -8304,7 +8575,7 @@
      "titulo": "Município lança o Plano \"Camboriú em Alerta ao El Niño\" - JM Litoral",
      "trecho": "Jul 31, 2026 ... ... Plano de Contingência para a comunidade em audiência na Câmara de ... A Defesa Civil de Camboriú lançamento o Plano “Camboriú em Alerta ao El Niño ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "09ed714bdc",
@@ -8322,7 +8593,7 @@
      "titulo": "Cartilha El Niño 2026 · Bacia do Rio Camboriú - Página 3",
      "trecho": "El Niño 2026 · Comitê de Bacia do Rio Camboriú ... Sacos de areia ou comportas nos acessos historicamente vulneráveis a alagamento. Plano de contingência.",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "2c82c3db53",
@@ -8429,7 +8700,7 @@
      "titulo": "Prefeitura de Camboriú on Instagram: \"Os efeitos do El Niño exigem ...",
      "trecho": "Jul 27, 2026 ... 8h45 — Cenário climático para Camboriú e prognóstico do El Niño 2026/2027 ... Camboriú-SC. Photo by Linha Popular | Portal de notícias de ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "80a3e7bdcc",
@@ -8516,7 +8787,7 @@
      "titulo": "Aprova a 6ª Edição do PLANO DE CONTINGÊNCIA DE PROTEÇÃO E ...",
      "trecho": "DECRETO Nº 20 472, de 09 de junho de 2026 (Aprova a 6ª Edição do PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL - PLANCON) JORGE AUGUSTO SEBA, Prefeito do Município de Votuporanga, Estado de São Paulo, no uso de suas atribuições ...",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: resposta"
     },
     {
      "id": "d5d0fd8e7d",
@@ -8535,7 +8806,7 @@
      "titulo": "Aprova a 3a Edição do PLANO DE CONTINGÊNCIA DE PROTEÇÃO E ...",
      "trecho": "DECRETO N° 12 464, de 15 de julho de 2020 (Aprova a 3ª Edição do PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL - PLANCON) JOÃO EDUARDO DADO LEITE DE CARVALHO, Prefeito do Município de Votuporanga, Estado de São Paulo, no uso de ...",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
     },
     {
      "id": "84a881d48b",
@@ -8553,7 +8824,7 @@
      "titulo": "Aprova a 5ª Edição do PLANO DE CONTINGÊNCIA DE PROTEÇÃO E ...",
      "trecho": "(Aprova a 5ª Edição do PLANO ... legais; DECRETA: Art. 1º Fica aprovado a 5ª Edição do Plano de Contingência de Proteção e Defesa Civil – PLANCON do Município de Votuporanga....",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: resposta"
     },
     {
      "id": "241d37933f",
@@ -8571,7 +8842,7 @@
      "titulo": "Aprova a 4ª Edição do PLANO DE CONTINGÊNCIA DE PROTEÇÃO E ...",
      "trecho": "(Aprova a 4ª Edição do PLANO ... legais; DECRETA: Art. 1º Fica aprovada a 4ª Edição do Plano de Contingência de Proteção e Defesa Civil – PLANCON do Município de Votuporanga....",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: resposta"
     },
     {
      "id": "e2da4657cf",
@@ -8678,7 +8949,7 @@
      "titulo": "Diário oficial de 2026-02-20",
      "trecho": "internacional de educação, em Votuporanga. Informou também que está prevista a realização, pelo Consórcio As sin ad o po r 1 2 pe ss oa s: A LE XA ND RE M IO TT O DA C OS TA , A NT ON IO C AR LO S SA NT AN A DA S IL VA , J OR GE A UG US TO S EB A, S EB AS TI AO C AR LO S SI LV A, L UI S PA UL O BE DN AR SK I P ED RA SS OL LI , NE LS ON C AR VA LH O GA ZE TA , R EG IN AL DO E LO Y M AR CO M IN I D OS R EI S, E DM IL SO N",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
     },
     {
      "id": "e32f49be8d",
@@ -8712,7 +8983,7 @@
      "titulo": "Diário oficial de 2025-10-27",
      "trecho": "digitalmente) As si na do p or 5 p es so as : W AG N ER H AS H IM O TO , D AN N A SA N TO S D E O LI VE IR A C EZ AR M O R IA L PI G N AT AR I, LU AN V IN IC IU S LA C ER D A PI M EN TA , M AU R IL O P IM EN TA D E M O R AI S e J O SN EI M AR F ER R EI R A D E FR EI TA S Pa ra v er ifi ca r a v al id ad e da s as si na tu ra s, a ce ss e ht tp s: //v ot up or an ga .1 do c. co m .b r/v er ifi",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
     },
     {
      "id": "1edaadc6ce",
@@ -8729,225 +9000,7 @@
      "titulo": "Diário oficial de 2025-11-05",
      "trecho": "RESPONSABILIDADE As si na do p or 5 p es so as : W AG N ER H AS H IM O TO , J O SN EI M AR F ER R EI R A D E FR EI TA S, L U AN V IN IC IU S LA C ER D A PI M EN TA , D AN N A SA N TO S D E O LI VE IR A C EZ AR M O R IA L PI G N AT AR I e M AU R IL O P IM EN TA D E M O R AI S Pa ra v er ifi ca r a v al id ad e da s as si na tu ra s, a ce ss e ht tp s: //v ot up or an ga .1 do c. co m .b r/v er",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "4106902",
-   "municipio": "Curitiba",
-   "uf": "PR",
-   "melhor_nivel": "A",
-   "n_pistas": 12,
-   "niveis": {
-    "A": 1,
-    "B": 6,
-    "C": 5
-   },
-   "pistas": [
-    {
-     "id": "0bb73f1765",
-     "nivel_confianca": "A",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_titulo"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.curitiba.pr.gov.br/noticias/hospitais-privados-precisam-apresentar-plano-de-contingencia/58236",
-     "titulo": "Hospitais privados precisam apresentar plano de contingência - Prefeitura de Curitiba",
-     "trecho": "Documento estabelece que os hospitais privados devem prever o remanejamento de no mínimo de 50% dos leitos clínicos e cirúrgicos para atendimento exclusivo da covid-19",
-     "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "d0f22de20c",
-     "nivel_confianca": "B",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "ato_formal"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://mid.curitiba.pr.gov.br/2024/00444371.pdf",
-     "titulo": "PREFEITURA MUNICIPAL DE CURITIBA DECRETO Nº 1868",
-     "trecho": "Poder Executivo poderá indicar a Reserva de Contingência como aporte local, quando · da formulação de convênios a serem assinados com outras esferas de governo. ... Art. 9º Outras instruções para o cumprimento da legislação em vigor serão · expedidas, se necessário, no decorrer da execução orçamentária do exercício de 2014. Art. 10 Este decreto entra em vigor em 1º de janeiro de 2014, revogadas as ... PALÁCIO 29 DE MARÇO, em 30 de dezembro de 2013. ... Operac. Especiais, ... Operac. Especiais, ... Operac. Especiais, ... Operac. Especiais, ... Operac. Especiais, ... Operac. Especiais, ... Opera",
-     "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "ad219e719d",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_trecho"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://saude.curitiba.pr.gov.br/noticias/2168-situacao-de-emergencia-e-encerrada-em-curitiba-municipio-segue-com-novo-protocolo.html",
-     "titulo": "Situação de Emergência é encerrada em Curitiba, município ...",
-     "trecho": "O novo decreto prevê regras de transição para esse momento para que seja possível assegurar a continuidade das ações que compõem o plano de contingência contra o coronavírus, com a prorrogação de contratos vigentes, além de instituir um novo Protocolo de Responsabilidade Sanitária ...",
-     "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "e28126afbe",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://diariodecuritiba.com/2026/09/24/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico/",
-     "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
-     "trecho": "10 hours ago ... Resumindo: plano de contingência, população das ... EBANX abre inscrições para curso gratuito de tecnologia em Curitiba com bolsa de R$ 800.",
-     "data": "25/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "5d34a915be",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_trecho"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://saude.curitiba.pr.gov.br/conteudo/planejamento/1577",
-     "titulo": "Planejamento - Secretaria Municipal da Saúde - Prefeitura de Curitiba",
-     "trecho": "Minha Prefs · Secretaria Municipal da Saúde · Plano de Contingência para resposta às emergências em saúde pública - atualizado 19.04.2022 · Plano de Vacinação de Curitiba contra a COVID-19 - 24.04.2023 (em atualização) Protocolo de responsabilidade sanitária e social de Curitiba ·",
-     "data": "30/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "6a630cc284",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://bandnewsfmcuritiba.com/el-nino-deve-atingir-o-parana-em-julho-com-aumento-de-chuvas/",
-     "titulo": "El Niño deve atingir o Paraná em julho com aumento de chuvas",
-     "trecho": "Jun 11, 2026 ... ... Plano de Contingência e a criação de fundos municipais de Defesa Civil. ... Endereço: Rua Afonso Pedri, 65 - Pilarzinho, Curitiba - PR Telefone ...",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "164be351c2",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_na_url",
-      "plano_no_trecho"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://saude.curitiba.pr.gov.br/images/Decreto%20n%C2%BA%20700.2022.pdf",
-     "titulo": "DECRETO - AVISO DE PUBLICAÇÃO Nº 123",
-     "trecho": "social, que compõem o Plano de Contingência para Resposta às Emergências em · Saúde Pública, e evitar prejuízo ao atendimento da população, fica instituído regime de · transição para os seguintes atos destinados ao enfrentamento da emergência de saúde · pública, decorrentes ...",
-     "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "0d2a82fd93",
-     "nivel_confianca": "C",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_na_url",
-      "plano_no_titulo"
-     ],
-     "alertas": [
-      "risco_errado_no_titulo"
-     ],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://saude.curitiba.pr.gov.br/images/Plano%20de%20Conting%C3%AAncia%20Dengue.pdf",
-     "titulo": "Plano de Contingência Dengue.pdf - Secretaria Municipal da Saúde",
-     "trecho": "Plano de Contingência da Saúde de Curitiba para o Enfrentamento da. Dengue e ... O Decreto Municipal que instituiu o Plano Municipal de Enfrentamento da Dengue e ...",
-     "data": "30/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "93f2b30e7a",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_oficial"
-     ],
-     "alertas": [],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/4106902/2026-01-22/eab7a52d061a5a0fe550b5c54d56b05c77693667.pdf",
-     "titulo": "Diário oficial de 2026-01-22",
-     "trecho": "infantil, armazéns da família, mercados, Marca: Modelo: Valor unitário: R$ 30,0000 Quantidade: 3650,0000 - METRO QUADRADO Protocolo 01-143567/2025 Anexo 192.1 - PE Nº 07_2025 - ATA REGISTRO PREÇOS ASSIN do Trâmite 192 INFORMAÇÃO - IPPUCMAT3 Exp or tad o d o S ist em a Ú nic o d e P ro toc olo s - 01 -1 43 56 7/2 02 5 - po r H UGO L EONARDO D E A LM EID A P IN TO - M atr ícu la 82 04 0 e m 22 /01 /20 26 às 08 :57 :26 DIÁRIO OFICIAL ELETRÔNICO ATOS DO MUNICÍPIO DE",
-     "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "c2c2f54bb9",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_oficial"
-     ],
-     "alertas": [],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/4106902/2026-02-18/fcc4c7e93b9b30b2c390f9f0c78a1c9cc748beeb.pdf",
-     "titulo": "Diário oficial de 2026-02-18",
-     "trecho": "U R H S U ni da de d e R ec ur so s H um . e S aú de O cu p. U G T U LC U LC P D M U C C Á re a T ar ifá ria C oo rd en ad or ia d e P la ne ja m en to e S up or te a o Ju rí di co E qu ip . d e T ra ns po rt e P ro je to s C om er ci al S up or te e In fr ae st ru tu ra C ar tã o T ra ns po rt e Lo ja s A dm in is tr at iv o A te nd im en to G es tã o de A po io U ni da de d e U ni da",
-     "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "b1c83eec27",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_oficial"
-     ],
-     "alertas": [],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/4106902/2026-01-28/34769132c312aa234d59d859c86d8f6817e93cba.pdf",
-     "titulo": "Diário oficial de 2026-01-28",
-     "trecho": "QUARTA – DA RATIFICAÇÃO Permanecem em vigor e inalteradas as demais cláusulas e condições da ata de registro de preços originária que não foram modificadas por este termo. E para constar, foi lavrado o presente, que depois de lido e achado conforme, vai or todos assinado, na presença de duas testemunhas, em uma única via, de onde serão extraidas as cópias necessárias. CLÁUSULA QUINTA – DA PUBLICAÇÃO Incumbirá ao CONTRATANTE divulgar o presente instrumento no Portal Nacional de Contratações Públicas (PNCP)",
-     "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "b641fea0e5",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_oficial"
-     ],
-     "alertas": [],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/4106902/2026-02-06/ad8977333887bb17f454d5be3dff627ab08cb8ba.pdf",
-     "titulo": "Diário oficial de 2026-02-06",
-     "trecho": "1.000m2. Marca: Não se aplica. Modelo: Não se aplica. Valor unitário: R$ 1.000,0000 Quantidade: 21,0000 - UNIDADE Protocolo 01-143579/2025 Anexo 188.3 - PE Nº 06_2025 - ATA REGISTRO PREÇOS.PDF do Trâmite 188 INFORMAÇÃO - IPPUCMAT3 Exp or tad o d o S ist em a Ú nic o d e P ro toc olo s - 01 -1 43 57 9/2 02 5 - po r H UGO L EONARDO D E A LM EID A P IN TO - M atr ícu la 82 04 0 e m 04 /02 /20 26 às 15 :14 :04 DIÁRIO OFICIAL ELETRÔNICO ATOS DO MUNICÍPIO DE",
-     "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
     }
    ]
   },
@@ -9214,7 +9267,7 @@
      "titulo": "Defesa Civil da Serra elabora Plano de Contingência ...",
      "trecho": "A Defesa Cívil da Serra, em conjunto com as demais secretarias da Prefeitura da Serra, está trabalhando no Plano de Contingência, que tem como objetivo elaborar ações preventivas para os períodos chuvosos e evitar ocorrências indesejadas.",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
     },
     {
      "id": "3f8922a3b6",
@@ -9251,7 +9304,7 @@
      "titulo": "Serra sai na frente e apresenta plano para enfrentar os efeitos ...",
      "trecho": "Com o objetivo de preparar a cidade ... quinta-feira (6), o Plano de Contingência que irá nortear as ações do município para enfrentar situações como chuvas intensas, alagamentos, inundações e períodos de estiagem....",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
     },
     {
      "id": "941cec3cf2",
@@ -9272,7 +9325,7 @@
      "titulo": "decreto nº 6823, de 5 de novembro de 2015",
      "trecho": "Neste sentido, a Defesa Civil do Município, seguindo a orientação da Defesa Civil Nacional/Estadual, elaborou o Plano Municipal de Contingência, importante instrumento de planejamento das ações, com vista à preparação para atuação em situações de eventos adversos (chuvas de grandes proporções, vendavais, incêndios, turfas, entre outros), que possam causar danos e prejuízos à comunidade.",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: resposta"
     },
     {
      "id": "914f69a7da",
@@ -9313,7 +9366,7 @@
      "titulo": "plano de contingência 2020/2021 - Portal Gov.br",
      "trecho": "PLANO DE CONTINGÊNCIA 2020/2021 PARA ENFRENTAMENTO DE DESASTRES EM DE BELO HORIZONTE ... Arrudas\". Em 2003, deslizamentos nos aglomerados do Morro das · Pedras, da Serra e no Taquaril vitimaram 16 pessoas e culminaram com",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: autoridade_nao_confirmada"
     },
     {
      "id": "82f9f02ce6",
@@ -9349,7 +9402,7 @@
      "titulo": "O Super El Niño está confirmado, e a Serra precisa se preparar para ...",
      "trecho": "Aug 28, 2026 ... ... plano de contingência, que prevê até o uso de escolas como abrigo ... O Super El Niño está confirmado, e a Serra precisa se preparar ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "19d201966d",
@@ -9385,7 +9438,7 @@
      "titulo": "Diário oficial de 2026-01-06",
      "trecho": "APLICACOES DIRETAS 33.745.000,003.1.90.00.00 1.500.0000.0000 APL. DIR. DEC. DE OP. ÓRGÃOS, FUNDOS E ENT. DOS OR 2.500.000,003.1.91.00.00 1.500.0000.0000 APLICACOES DIRETAS 28.255.000,003.3.90.00.00 1.500.0000.0000 64.500.000,00 Natureza Despesa 01.031.0022.2.162",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
     }
    ]
   },
@@ -9417,7 +9470,7 @@
      "titulo": "Saúde de Vitória desenvolve Plano de Contingência para situações ...",
      "trecho": "Em Vitória, além da Defesa Civil, a Secretaria Municipal de Saúde de Vitória (Semus) também elaborou um Plano de Contingência voltado para pessoas afetadas por desastres naturais, como deslizamentos, alagamentos e inundações por meio do Programa Vigidesastres.",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
     },
     {
      "id": "d18d64a5a8",
@@ -9436,7 +9489,7 @@
      "titulo": "Diário oficial de 2025-12-01",
      "trecho": "Lorenzo Pazolini Prefeito Municipal Decretos DECRETO Nº 25.944 Atualiza o Plano Municipal de Proteção e Defesa Civil (PMPDC) do Município de Vitória/ES 2025/2026. O Prefeito Municipal de Vitória, Estado do Espírito Santo, no uso de suas atribuições legais conferidas pela Lei Orgânica Municipal, Considerando a vigência do Decreto nº 25.340, de 16 de junho de 2025, que atualiza o Plano Municipal de Proteção e Defesa Civil – PMPDC; Considerando a necessidade de revisão e atualização periódica do PMPDC",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
     },
     {
      "id": "7168e66e84",
@@ -9454,7 +9507,7 @@
      "titulo": "Plano Municipal de Proteção e Defesa Civil – Prefeitura de ...",
      "trecho": "De acordo com o Plano Municipal de Proteção e Defesa Civil - PMPDC, lançado em 2007 e atualizado em 2022 e 2024, são desenvolvidas ações de prevenção, de preparação para emergências e desastres, de resposta aos desastres e de reconstrução, todas com a ampla participação da comunidade.",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
     },
     {
      "id": "938a518d32",
@@ -9472,7 +9525,7 @@
      "titulo": "Defesa Civil – Prefeitura de Vitória",
      "trecho": "Envolvendo a atuação de 14 secretarias municipais, o Plano de Contingência divide o desastre em quatro estados:",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
     },
     {
      "id": "f3c4158eff",
@@ -9490,7 +9543,7 @@
      "titulo": "El Niño coloca municípios em alerta e Prefeitura de Vitória da ...",
      "trecho": "Sep 10, 2026 ... A partir daí, estamos elaborando o plano de contingência específico. ... El Niño em Vitória da Conquista. * O conteúdo de cada comentário é ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "04bfce3cfe",
@@ -9507,7 +9560,7 @@
      "titulo": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL DE VIANA PLANCON ...",
      "trecho": "O plano contempla protocolos detalhados · de prevenção, monitoramento constante e resposta rápida a eventuais incidentes, ... Imagem 14: Estrutura básica do Plano de Ação da Barragem PCH São Pedro.",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: autoridade_nao_confirmada"
     },
     {
      "id": "f63069b16f",
@@ -9525,7 +9578,7 @@
      "titulo": "Diante das previsões relacionadas ao El Niño, União da Vitória tem ...",
      "trecho": "Jun 22, 2026 ... A atuação integrada entre a Defesa Civil e as secretarias municipais, a atualização do Plano de Contingência, a criação do Conselho Municipal de ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "038c548f92",
@@ -9559,7 +9612,7 @@
      "titulo": "Diário oficial de 2026-07-29",
      "trecho": "vagas para os 21 km, 42 km, Desafio 5 + 21 km e Maratoninha Kids já estejam esgotadas. SERVIÇO Maratona de Vitória 2026 29 e 30 de agosto Praça do Papa, Enseada do Suá Inscrições: www.ticketsports.com.br ou www.maratonadevitoria.com.br E sp or te vi x E sportevix 5 Diário Oficial do Município de Vitória - ES 29 de julho de 2026 - Edição nº 2934 PODER EXECUTIVO Editais SECRETARIA DE GESTÃO E PLANEJAMENTO PROCESSO SELETIVO SIMPLIFICADO EDITAL DE CONVOCAÇÃO Nº 195/2026 O Secretário",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: autoridade_nao_confirmada"
     }
    ]
   },
@@ -9610,7 +9663,7 @@
      "titulo": "BRUSQUE: Preparativos para o El Niño e plano de contingência de ...",
      "trecho": "maio 7, 2026. BRUSQUE: Preparativos para o El Niño e plano de contingência de produtos perigosos. Ações preventivas e de resposta foram destaques de ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "2385e529b6",
@@ -9832,7 +9885,7 @@
      "titulo": "Diário oficial de 2026-03-03",
      "trecho": "categoria, a saber: 01 de fevereiro de 2026, conforme tabela abaixo, com fulcro na Cláusula Quarta, §2 do contrato c/c Artigo 65, Inciso II, alínea “d”, da Lei n.º 8.666/93. VALORES ATUAIS ITE M DESCRITI VO QT DE VALOR UNITÁ RIO MÊS VAL OR DIA/D IARIS TAS VALOR MÊS QTDE (MES ES) VALOR TOTAL 01 Servente/C opeiro 40h 16 R$ 3.813,71 R$ 61.019,3 6 12 R$ 732.232,32 02 Servente 40h 14 R$ 3.620,26 R$ 50.683,6 4 12 R$ 608.203,68 03 Servente/C",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
     },
     {
      "id": "a9cedbd19a",
@@ -9881,7 +9934,7 @@
      "titulo": "Diário oficial de 2026-06-30",
      "trecho": "ESTADO DO PARANÁ CNPJ: 76.021.450/0001-22 MEDICAMENTO S LTDA. 34 GLIMEPIRIDA 2MG cod br 273119 Cimed COM 32000 0,0774 2.476,80 INOVAMED HOSPITALAR LTDA 35 HEPARINA 5000 UI/ ML INTRAVENOSA COM 5ML cod br 272796 HIPOLAB OR FRA 50 12,97 648,50 PONTAMED FARMACEUTIC A LTDA. 36 HIPROMELOSE, ASSOCIADA COM DEXTRAN 70 E GLICEROL, DOSAGEM: 3 MG + 1 MG + 2 MG/ML, SOLUÇÃO OFTÁLMICA 15 ML cod br 312390 GEOLAB( F) FRA 180 17,6623 3.179,214 ALTERMED MATERIAL MÉDICO",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
     }
    ]
   },
@@ -10069,7 +10122,7 @@
      "titulo": "Balneário Camboriú reforça plano de ação para enfrentar impactos ...",
      "trecho": "Jun 16, 2026 ... Balneário Camboriú reforça plano de ação para enfrentar impactos do El Niño ... Plano de Contingência, validação de abrigos temporários ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "a3382c4401",
@@ -10087,7 +10140,7 @@
      "titulo": "Plano de Contingência de Balneário Camboriú entra em consulta ...",
      "trecho": "Sep 15, 2026 ... Plano de Contingência de Balneário Camboriú entra em consulta pública nesta terça-feira ... El Niño, previsto para os próximos meses. Ela ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "e716dbe8bf",
@@ -10225,7 +10278,7 @@
      "titulo": "Trabalho preventivo da prefeitura reduz impactos do El Niño em ...",
      "trecho": "... CANOINHAS. Trabalho preventivo da prefeitura reduz impactos do El Niño em Canoinhas. 23/09/2026 10:49. '; Divulgação -. A prevenção de uma enchente não ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "3e3c4c04d1",
@@ -10243,7 +10296,7 @@
      "titulo": "MP abre procedimentos sobre prevenção ao El Niño em Canoinhas ...",
      "trecho": "18 hours ago ... Em Passo de Torres, o acompanhamento verificou a atualização do Plano de Contingência ... Unidade Canoinhas / SC. CNPJ: 62.276.888/0001-47. © ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "cfd075ff62",
@@ -10898,7 +10951,7 @@
      "titulo": "plano municipal de saneamento de petrolina/pe",
      "trecho": "Um Plano de Contingência pode estruturar-se em três grandes capítulos: aspectos ... Petrolina-Pe. Recife, 2010. FONTE, Paulo Gilberto Dantas da. Aspectos ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "8a884d3778",
@@ -10929,6 +10982,147 @@
      "titulo": "Diário oficial de 2026-08-25",
      "trecho": "filhos menores de 6 anos, se houver; CPF dos dependentes; Título de Eleitor e comprovação das obrigações eleitorais (original e cópia); Cartão PIS ou PASEP; Comprovação do nível de escolaridade (original e cópia); Comprovações de As si na do p or 1 p es so a: D O R IA N E S E C C H I M A S C A R E LO P ar a ve rif ic ar a v al id ad e da s as si na tu ra s, a ce ss e ht tp s: //p et ro lin a. 1d oc .c om .b r/ ve rif ic ac ao /5 E 12 -3 76 7-",
      "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4128104",
+   "municipio": "Umuarama",
+   "uf": "PR",
+   "melhor_nivel": "A",
+   "n_pistas": 7,
+   "niveis": {
+    "A": 3,
+    "B": 3,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "93531db81d",
+     "nivel_confianca": "A",
+     "pontos_confianca": 8,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_titulo",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://umuarama.pr.gov.br/files/ArquivoDiversos/arquivo/1786533277.pdf",
+     "titulo": "Plano de Contingência Municipal de Proteção e Defesa Civil ...",
+     "trecho": "Plano de contingência do município de Umuarama - PR. 11/08/2026. Página 2 de 72 ... del.gsmenezes@pc.pr.gov. br. Page 60. Plano de contingência do município ...",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
+    },
+    {
+     "id": "6ce5bdbaeb",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.umuarama.pr.gov.br/decretos",
+     "titulo": "Decretos - Prefeitura de Umuarama",
+     "trecho": "Plano de Contingência - Defesa Civil · Requerimento Padrão. Empresa ... imprensa@umuarama.pr.gov.br. Atendimento das 8h às 12h e das 13h30 às 17h30.",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "f087347cc6",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.umuarama.pr.gov.br/decretos?page=8",
+     "titulo": "Decretos | Prefeitura de Umuarama",
+     "trecho": "Plano de Contingência - Defesa Civil · Requerimento Padrão. Empresa ... imprensa@umuarama.pr.gov.br. Atendimento das 8h às 12h e das 13h30 às 17h30.",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "64a5717321",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://portalumuaramanews.com.br/2026/09/10/francisco-alves-atualiza-plano-de-contingencia-e-reforca-acoes-preventivas-diante-da-intensificacao-do-el-nino/",
+     "titulo": "Francisco Alves atualiza Plano de Contingência e reforça ações ...",
+     "trecho": "Sep 10, 2026 ... ... Umuarama. Francisco Alves atualiza Plano de Contingência e reforça ações preventivas diante da intensificação do El Niño. Defesa Civil ...",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "01c236948c",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://globoplay.globo.com/v/14865940/",
+     "titulo": "Umuarama reforça prevenção para enfrentar El Niño - Globoplay",
+     "trecho": "Aug 13, 2026 ... Detalhes. Meio-Dia Paraná - Noroeste. Umuarama reforça prevenção para enfrentar El Niño ... Município também atualiza plano de contingência da ...",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "1899f95181",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://camaracianorte.pr.gov.br/downloadDocumentos/download/TlRjPU5XTT1OVFE9TlRVPU5UVT0=/correspondencias-recebidas.pdf",
+     "titulo": "sanepar - Câmara Municipal de Cianorte",
+     "trecho": "de 06/12/2017, estabelece diretrizes denominado Plano de Contingência. A ... CEP 87.501-050 - Umuarama/PR - www.sanepar.com.br. MOOSTFOET S ob & JIA ob ...",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "658ffeb419",
+     "nivel_confianca": "C",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho"
+     ],
+     "alertas": [
+      "uf_divergente_na_url"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www2.itanhaem.sp.gov.br/plano-municipal-saneamento/ata-audiencia-publica.pdf",
+     "titulo": "Ata da Audiência Pública - Prefeitura de Itanhaém",
+     "trecho": "implantação de setorização nos bairros Umuarama,Tupi,Gaivota,Campos Elíseos, Ivoty/Oásis. 2014-2017 construção de reservatórios: Umuarama, Tupi, Gaivota e ...",
+     "data": "30/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -11081,7 +11275,7 @@
      "titulo": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL – PLANCON",
      "trecho": "Complementando esse marco legal, o Decreto Municipal nº 3267, de 2022,",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: resposta"
     },
     {
      "id": "2790627bda",
@@ -11101,7 +11295,7 @@
      "titulo": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON ...",
      "trecho": "Rio das Ostras.",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
     },
     {
      "id": "081c850403",
@@ -11137,7 +11331,7 @@
      "titulo": "Rio das Ostras participa de evento sobre os impactos do El Niño",
      "trecho": "Aug 21, 2026 ... Rio das Ostras participa de evento sobre os impactos do El Niño ... Plano de Contingência do Vigidesastres (Programa Nacional de ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "f1c181077f",
@@ -11154,7 +11348,7 @@
      "titulo": "Jornal Oficial Município de Rio das Ostras - Poderes Executivo ...",
      "trecho": "Municipal reuniu todos os setores envolvidos para tomada de decisões imediatas, a partir de um Plano de Contingência.",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
     },
     {
      "id": "64324be146",
@@ -11174,7 +11368,7 @@
      "titulo": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON MARÉS ...",
      "trecho": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E · DEFESA CIVIL PLANCON · MARÉS DE TEMPESTADE OU · RESSACA MARÍTIMA · Degradação severa das Regiões Costeiras · COBRADE: 1.3.1.1.2 · RIO DAS OSTRAS · VERSÃO: 8.0 / 2024 · ÚLTIMA ATUALIZAÇÃO: 20 DE SETEMBRO DE 2024 · EXEMPLAR PERTENCENTE ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
     }
    ]
   },
@@ -11327,7 +11521,7 @@
      "titulo": "Videira intensifica ações para enfrentar o El Niño e reduzir riscos",
      "trecho": "Jun 19, 2026 ... Celesc reforça plano de contingência para enfrentar possíveis impactos do El Niño ... Videira Notícias – 22/09/2026. 15 horas atrás 0.",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "bb82c0a14b",
@@ -11795,7 +11989,7 @@
      "titulo": "Diário oficial de 2026-04-22",
      "trecho": "- Resoluções – Assunto - Nº 20/2025 – 14/03; Sisnor; Plano de Trabalho R$ 600.000,00 - Nº 21/2025 – 14/03; Sisnor; Plano de Trabalho R$ 1.500.000,00 - Nº 22/2025 – 14/03; Apae; Plano de Trabalho R$ 50.615,00 - Nº 23/2025 – 27/03; SESAU; Plano de Contingência para o Enfrentamento da Dengue, Zika e Chikungunya 2024/2025 - Nº 24/2025 – 27/03; SESAU; Relatório Anual de Gestão (RAG) 2024 - Nº 25/2025 – Orgão Oficial Eletrônico - 1926 Campo Mourão - Sexta-Feira - 18/12/2015 45 45 www.campomourao",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
     },
     {
      "id": "a8e48f0ba9",
@@ -11811,7 +12005,7 @@
      "titulo": "Diário oficial de 2026-01-29",
      "trecho": ". 21 2.8 AVALIAÇÃO E ACOMPANHAMENTO DO RETORNO DOS INVESTIMENTOS ....................... 23 2.9. VEDAÇÕES ........................................................................................................................ 23 2.10. PLANO DE CONTINGÊNCIA ............................................................................................. 24 2.11. RESGATE DE FUNDOS DE INVESTIMENTOS COM COTA NEGATIVA ............................... 26 2.12. ACOMPANHAMENTO E REVISÃO DA POLÍTICA DE INVESTIMENTOS",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: autoridade_nao_confirmada"
     },
     {
      "id": "3dbeb8dd50",
@@ -11826,7 +12020,7 @@
      "titulo": "Diário oficial de 2026-02-06",
      "trecho": "Domicílio (organização e funcionamento); SEMA Contrato de Cortes e pode de árvores (critérios e gestão da Demanda). 12. CRONOGRAMA DE EXECUÇÃO Atividades Plano de execução – 2026 Jan Fev Mar Abr Mai Jun Jul Ago Set Out Nov Dez AS SE SS OR AM EN TO E OR IE NT AÇ ÃO Dar apoio, assessoramento e orientação todos os Órgãos e Unidades do município e Prefeito Municipal T T T T T T T T T T T T Trabalhar em conjuntos com órgãos municipais nas normatizações internas T T T T T T T T T T T T",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: autoridade_nao_confirmada"
     },
     {
      "id": "58bb5548e5",
@@ -11841,7 +12035,7 @@
      "titulo": "Diário oficial de 2026-04-23",
      "trecho": "PLÁSTICO PROFISSIONAL COM TRAVA, LÂMINA DE AÇO CARBONO EXTENSÍVEL INTERNA DE 18MM UNIDADE GATTE 766 R$1,59 R$1.217,94 68 ESTOJO DE PINCEL ATÔMICO COM 12 CORES, PONTA DE POLIÉSTER 4.0 MM, ESCRITA 1.8 MM, TINTA À BASE DE ÁGUA. EMBALAGEM COMPACT OR 576 R$18,04 R$10.391,04 76 FICHA PAUTADA BRANCA 6X9 PACOTE COM 100 UNIDADES. PACOTE TILIBRA 33 R$15,47 R$510,51 82 FITA ADESIVA TRANSPARENTE EM POLIPROPILENO, CORTEMANUAL, 12MM X 50M. UNIDADE KORETECH 1.751 R$0,91 R$1.593,41 86 FOLHAS DE PAPEL",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
     }
    ]
   },
@@ -12044,7 +12238,7 @@
      "titulo": "nota técnica orientativa sobre o fenômeno",
      "trecho": "nota técnica orientativa sobre o fenômeno",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: ente_nao_confirmado"
     }
    ]
   },
@@ -12176,7 +12370,7 @@
      "titulo": "Base para revisão PLANCON 23/24.docx",
      "trecho": "PLANO DE CONTINGÊNCIAS · DO ESTADO DO RIO DE JANEIRO · PARA CHUVAS INTENSAS · VERÃO 2023/2024 · (versão 1.0) NÍVEL: TÁTICO-OPERACIONAL · PLANO DE EMERGÊNCIA · Decreto nº 46.935, de 12 de fevereiro de 2020 · Verificar versão atualizada no QR Code a seguir: 3 ·",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: ente_nao_confirmado"
     },
     {
      "id": "dd7ce9f7bc",
@@ -12211,7 +12405,7 @@
      "titulo": "Plano De Contingência 2021-2022",
      "trecho": "requisitos para confecção de Plano de Contingência, no · âmbito do SINPDEC); e) Decreto Rio nº 43.533, de 10 de agosto de 2017 · (Institui · a · rede · municipal · de · operações · e · monitoramento da cidade); f) Portaria MI nº 413/2018 (Define procedimentos sobre ·",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: ente_nao_confirmado"
     },
     {
      "id": "38bcaa7326",
@@ -12227,7 +12421,7 @@
      "titulo": "Estado do Rio apresenta Plano de Contingências para enfrentamento ...",
      "trecho": "O documento contempla desde o ... agilidade na mobilização de recursos e no apoio aos municípios sempre que houver necessidade. ... O Plano de Contingência estabelece seis Níveis de Resposta (NR), classificados do NR 0 ao NR 5, de acordo com a gravidade do cenário ...",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: ente_nao_confirmado"
     },
     {
      "id": "90923bfd42",
@@ -12497,7 +12691,7 @@
      "titulo": "Defesa Civil de Lages participa de encontro nacional sobre El Niño",
      "trecho": "Sep 14, 2026 ... Defesa Civil de Lages participa de encontro nacional sobre El Niño. A ... plano de contingência local. As diretrizes obtidas durante as ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "71d599bde3",
@@ -13057,6 +13251,94 @@
    ]
   },
   {
+   "ibge": "4108304",
+   "municipio": "Foz do Iguaçu",
+   "uf": "PR",
+   "melhor_nivel": "A",
+   "n_pistas": 4,
+   "niveis": {
+    "A": 1,
+    "B": 3,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "00461f6b27",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://portaliguacu.com.br/camara-de-foz-do-iguacu-cobra-plano-de-contingencia-para-efeitos-do-el-nino/",
+     "titulo": "Câmara de Foz do Iguaçu cobra plano de contingência para efeitos ...",
+     "trecho": "Jun 22, 2026 ... Câmara de Foz do Iguaçu cobra plano de contingência para efeitos do El Niño. A Câmara Municipal de Foz do Iguaçu aprovou o Requerimento nº ...",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "a2d2726586",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://sapl.fozdoiguacu.pr.leg.br/media/sapl/public/materialegislativa/2025/49610/oficio_no_10917_-_rel._circunstanciado.pdf",
+     "titulo": "PREFEITURA MUNICIPAL DE FOZ DO IGUAÇU - SAPL",
+     "trecho": "Aug 28, 2025 ... Cidade/ UF: Foz do Iguaçu – PR. Telefone: (45) 3576-8082 - 3576-8043 ... plano de contingência para garantir a continuida- de das ...",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "6ec0fcaa20",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.foz.pr.gov.br/wp-content/uploads/2025/09/Diario%20Oficial%20PSS%20002_2020.pdf",
+     "titulo": "Diário Oficial do Município - Prefeitura de Foz do Iguaçu",
+     "trecho": "8o Este Decreto entra em vigor na data de sua publicação. Gabinete do Prefeito Municipal de Foz do Iguaçu, Estado do Paraná, em 9 de abril de 2020. Francisco ...",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "d482a07916",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.documentador.pr.gov.br/documentador/pub.do?action=d&uuid=%40gtf-escriba-sesa%4061bd690e-81c2-4630-87cf-4e7b25c77a42",
+     "titulo": "RESOLUÇÃO SESA Nº 285/2024 - Documentador",
+     "trecho": "Mar 14, 2024 ... - considerando o Plano de Contingência contemplado no Plano de Ação para o ... Foz do Iguaçu. 257971. 4641. 1,80%. R$. 568.914,66. 9. Itaipulândia.",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4213203",
    "municipio": "Pomerode",
    "uf": "SC",
@@ -13294,7 +13576,7 @@
      "titulo": "Plano de contingência: como criar, implementar e testar?",
      "trecho": "Feb 10, 2026 ... Aprenda a criar e a implementar um plano de contingência eficiente para garantir continuidade de negócios e reduzir riscos ... Pais Leme, 215 – ...",
      "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
     },
     {
      "id": "a73ab9fe57",
@@ -13466,8 +13748,8 @@
    ]
   },
   {
-   "ibge": "4128104",
-   "municipio": "Umuarama",
+   "ibge": "4105805",
+   "municipio": "Colombo",
    "uf": "PR",
    "melhor_nivel": "A",
    "n_pistas": 3,
@@ -13478,44 +13760,25 @@
    },
    "pistas": [
     {
-     "id": "93531db81d",
+     "id": "914b9ec2dc",
      "nivel_confianca": "A",
-     "pontos_confianca": 8,
+     "pontos_confianca": 6,
      "sinais": [
       "fonte_oficial",
-      "municipio_na_url",
-      "plano_no_titulo",
-      "ato_formal",
+      "municipio_no_titulo",
+      "plano_no_trecho",
       "familia_de_risco_do_ciclo"
      ],
      "alertas": [],
-     "origem": "busca_web",
-     "url": "https://umuarama.pr.gov.br/files/ArquivoDiversos/arquivo/1786533277.pdf",
-     "titulo": "Plano de Contingência Municipal de Proteção e Defesa Civil ...",
-     "trecho": "Plano de contingência do município de Umuarama - PR. 11/08/2026. Página 2 de 72 ... del.gsmenezes@pc.pr.gov. br. Page 60. Plano de contingência do município ...",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: citacao_incompleta"
+     "origem": "seguimento_busca_oficial",
+     "url": "https://prefeitura.colombo.pr.gov.br/mapa-do-site/",
+     "titulo": "Mapa do Site – Prefeitura Municipal de Colombo",
+     "trecho": "Reunião com secretarias, Defesa Civil, Guarda Municipal e Polícia Militar alinhou plano de contingência diante da previsão de temporais O prefeito de Colombo ...",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
     },
     {
-     "id": "64a5717321",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://portalumuaramanews.com.br/2026/09/10/francisco-alves-atualiza-plano-de-contingencia-e-reforca-acoes-preventivas-diante-da-intensificacao-do-el-nino/",
-     "titulo": "Francisco Alves atualiza Plano de Contingência e reforça ações ...",
-     "trecho": "Sep 10, 2026 ... ... Umuarama. Francisco Alves atualiza Plano de Contingência e reforça ações preventivas diante da intensificação do El Niño. Defesa Civil ...",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "01c236948c",
+     "id": "f7778f6ca8",
      "nivel_confianca": "B",
      "pontos_confianca": 5,
      "sinais": [
@@ -13526,11 +13789,30 @@
      ],
      "alertas": [],
      "origem": "busca_web",
-     "url": "https://globoplay.globo.com/v/14865940/",
-     "titulo": "Umuarama reforça prevenção para enfrentar El Niño - Globoplay",
-     "trecho": "Aug 13, 2026 ... Detalhes. Meio-Dia Paraná - Noroeste. Umuarama reforça prevenção para enfrentar El Niño ... Município também atualiza plano de contingência da ...",
+     "url": "https://ivandecolombo.com.br/blog/2026/09/16/el-nino-aumenta-risco-de-chuvas-intensas-no-parana-e-colombo-reforca-prevencao/",
+     "titulo": "El Niño aumenta risco de chuvas intensas no Paraná, e Colombo ...",
+     "trecho": "6 days ago ... El Niño aumenta risco de chuvas intensas no Paraná, e Colombo reforça prevenção ... O documento municipal aponta que o Plano de Contingência de ...",
      "data": "22/09/2026",
      "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "cdf39eabaa",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://portal.colombo.pr.gov.br/downloads/saude/Resoluccao-SESA-632_2020.pdf.pdf",
+     "titulo": "RESOLUÇÃO SESA Nº 632/2020",
+     "trecho": "May 5, 2020 ... www.saude.pr.gov.br – gabinete@sesa.pr.gov.br. 1 ... - o Plano de Contingência Estadual para Infecção Humana pela COVID-19, editado pela.",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -13562,7 +13844,7 @@
      "titulo": "Itatiaia avança na construção de plano de ação para eventos ...",
      "trecho": "Itatiaia – A cidade de Itatiaia participa, nesta terça-feira (25) e quarta-feira (26), da Oficina Estadual de Preparação dos Municípios para Respostas aos Eventos Climáticos Extremos em virtude do El Niño 2026/2027.",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "62152476bb",
@@ -13582,7 +13864,7 @@
      "titulo": "plano de contingência da defesa civil itatiaia / rj",
      "trecho": "Plano de Contingência para ITATIAIA/RJ · Atualizado por: Rodrigo de Oliveira Rocha 17 · A PROCURADORIA GERAL DO MUNICÍPIO (PGM):  Apoiar as ações de Defesa Civil, no que se refere à parte jurídica;  Elaborar e providenciar, quando necessário, o decreto declarando Situação Anormal.",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: executivo_pendente"
     },
     {
      "id": "271267c5be",
@@ -13648,7 +13930,7 @@
      "titulo": "Estado de Santa Catarina Município de Bocaina do Sul Centro ...",
      "trecho": "CONSIDERANDO, o Decreto Municipal nº 3.054 de 18 de março de 2020, que declara situação de · emergência em todo o território do Município de Bocaina do Sul - SC, como medida necessária ao",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
     },
     {
      "id": "f55e1e41f1",
@@ -13886,7 +14168,7 @@
      "titulo": "São Mateus do Sul: reunião sobre o Plano de Contingência para o ...",
      "trecho": "Jul 21, 2026 ... São Mateus do Sul: reunião sobre o Plano de Contingência para o El Niño acontece nesta terça (21) ... 21 de julho de 2026. Compartilhe essa ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "0a6f89093a",
@@ -13904,7 +14186,7 @@
      "titulo": "São Mateus do Sul apresenta Plano de Contingência e reforça ...",
      "trecho": "Jul 22, 2026 ... São Mateus do Sul apresenta Plano de Contingência e reforça preparação para possíveis cheias ... O El Niño é um fenômeno climático natural ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -13935,7 +14217,7 @@
      "titulo": "PLANO MUNICIPAL DE SAÚDE DE CAMPINA DA LAGOA 2026-2029 2025",
      "trecho": "Isso aponta para a necessidade de reforçar o acompanhamento pré-natal de alto risco para ... Sinal de Alerta Localizado: Enquanto a 11ª Regional de Saúde de Campo Mourão como um todo manteve um · número de óbitos estável (75 em 2023 e 76 em 2024), Campina da Lagoa experimentou um aumento ...",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
     },
     {
      "id": "069fc8698d",
@@ -14037,7 +14319,7 @@
      "titulo": "São Vicente reforça preparação para o El Niño - Santa Portal",
      "trecho": "Além das intervenções estruturais, São Vicente conta com o Plano de Contingência de Proteção e Defesa Civil (PCPDC), que estabelece protocolos de monitoramento, prevenção e resposta a eventos meteorológicos severos.",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "dfbc75c84b",
@@ -14056,7 +14338,7 @@
      "titulo": "São Vicente reforça drenagem como prevenção ao El Niño - Jornal ...",
      "trecho": "Já São Vicente mantém o Plano de Contingência de Proteção e Defesa Civil, que estabelece protocolos de monitoramento, prevenção e resposta a ocorrências provocadas por chuvas intensas.",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -14523,7 +14805,7 @@
      "titulo": "Vila Velha apresenta plano de contingência com foco no El Niño ...",
      "trecho": "Aug 19, 2026 ... ... 2026. sexta-feira, 11 de setembro de 2026 ... Vila Velha apresenta plano de contingência com foco no El Niño.",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -14650,39 +14932,7 @@
      "titulo": "1 PLANO MUNICIPAL DE EDUCAÇÃO BITURUNA - PR SUMÁRIO",
      "trecho": "PLANO MUNICIPAL DE EDUCAÇÃO · 1 – INTRODUÇÃO .......................................................................................................................... 3",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "4108304",
-   "municipio": "Foz do Iguaçu",
-   "uf": "PR",
-   "melhor_nivel": "A",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 1,
-    "B": 0,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "00461f6b27",
-     "nivel_confianca": "A",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://portaliguacu.com.br/camara-de-foz-do-iguacu-cobra-plano-de-contingencia-para-efeitos-do-el-nino/",
-     "titulo": "Câmara de Foz do Iguaçu cobra plano de contingência para efeitos ...",
-     "trecho": "Jun 22, 2026 ... Câmara de Foz do Iguaçu cobra plano de contingência para efeitos do El Niño. A Câmara Municipal de Foz do Iguaçu aprovou o Requerimento nº ...",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
+     "status": "pista — recusada pelo juiz: autoridade_nao_confirmada"
     }
    ]
   },
@@ -15198,7 +15448,7 @@
      "titulo": "PLANO MUNICIPAL DE - Prefeitura Municipal de Pereiras",
      "trecho": "E-mail: aabínete(õ)pereiras.sp.qnv.hr - PEREIRAS - Estado de São Paulo. LEI ... al^ste^ento de Pereiras, são apresentadas no Quadro 3.1j. / Eng ...",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
     }
    ]
   },
@@ -103684,6 +103934,218 @@
    ]
   },
   {
+   "ibge": "4119152",
+   "municipio": "Pinhais",
+   "uf": "PR",
+   "melhor_nivel": "B",
+   "n_pistas": 11,
+   "niveis": {
+    "A": 0,
+    "B": 11,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "9103511ece",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.bemparana.com.br/publicacao/blogs/metropole/pinhais-adota-medidas-preventivas-para-enfrentar-o-el-nino/",
+     "titulo": "Pinhais adota medidas preventivas para enfrentar o El Niño",
+     "trecho": "Jul 18, 2026 ... ... El Niño 2026/2027. Pinhais contou com a presença da prefeita Rosa Maria e representantes da Defesa Civil do município. PLANO DE CONTINGÊNCIA ...",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "e3bce79e2c",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.bemparana.com.br/noticias/regiao-metropolitana/el-nino-pinhais-reforca-prevencao-contra-chuvas-fortes-e-alagamentos/",
+     "titulo": "El Niño: Pinhais reforça prevenção contra chuvas fortes e ...",
+     "trecho": "Jul 17, 2026 ... ... plano de contingência. El Niño: Pinhais reforça prevenção contra chuvas fortes e alagamentos ... El Niño 2026, que reúne municípios da Região ...",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "7fe6011407",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.gov.br/anvisa/pt-br/composicao/diretoria-colegiada/reunioes-da-diretoria/votos/2023/copy5_of_rop-7.2023/4-5-2-1.pdf",
+     "titulo": "VOTO Nº 70/2023/SEI/DIRE5/ANVISA - Portal Gov.br",
+     "trecho": "May 10, 2023 ... plano de contingência apresentado não encontra-se adequado à ... Pinhais/PR. Deste modo, a Resolução – RE nº 53, de 15/02/2023, deve ...",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "15a9294f0f",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DZ8p_KXAOXD/",
+     "titulo": "Como Pinhais está se preparando para o El Niño? Os dados não ...",
+     "trecho": "Jun 23, 2026 ... Prefeitura de Pinhais e lideranças religiosas integram plano de contingência contra os impactos do El Niño Na manhã desta quinta-feira ...",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "ba7a6554e7",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/Da5PKEiEYKD/",
+     "titulo": "Defesa Civil de Pinhais acompanha evolução do El Niño e adota ...",
+     "trecho": "Jul 17, 2026 ... ... Pinhais - PR on July 17, 2026 ... Prefeitura de Pinhais e lideranças religiosas integram plano de contingência contra os impactos do El Niño",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "db8716315e",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/4119152/2026-08-21/a91636060117d972a85a657f2f0dd53e9eaf10b3.pdf",
+     "titulo": "Diário oficial de 2026-08-21",
+     "trecho": "03.04 - Relatório de vistorias Relatórios referentes a fatores de risco ambientais relacionados às doenças ou a outros agravos à saúde, e relatórios para a instrução de processos administrativos. 06.01.03.05 - Planos de Contingência O Plano de Contingência é o planejamento preventivo e alternativo da Secretaria de Saúde para a atuação durante um evento indesejável que afete a saúde humana, podendo ser acidentes com produtos químicos, enchentes, surtos de doenças, ou outras situações",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
+    },
+    {
+     "id": "0503d77f32",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.tce.pr.gov.br/lumis/portal/file/fileDownload.jsp?fileId=4936B6209D2C5746019D68DD278C30BD&inline=1",
+     "titulo": "DEFESA CIVIL - TCE-PR",
+     "trecho": "D1. Ato normativo municipal (lei, decreto, portaria ou instrução normativa) de instituição do Plano de Contingência de Proteção e Defesa Civil e Plano contendo ...",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "b51ee35761",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.sjp.pr.gov.br/wp-content/uploads/2020/07/decreto-3726.pdf",
+     "titulo": "decreto nº 3.726, de 17 de março de 2020",
+     "trecho": "Mar 17, 2020 ... 1º Estabelece, no âmbito da Administração Pública Direta e Indireta do. Município de São José dos Pinhais, as medidas para enfrentamento da ...",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "cb263f587f",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/4119152/2026-02-03/dd75254fd615b0f9c8dad15963da4dcdb48cc2a8.pdf",
+     "titulo": "Diário oficial de 2026-02-03",
+     "trecho": "1 Risco de Mercado​ 33 2.9.2 Risco De Crédito​ 34 2.9.3 Risco De Liquidez​ 34 2.9.4 Risco De Solvência​ 35 2.9.5 Risco Sistêmico​ 35 2.9.6 Risco Reputacional​ 35 2.10 AVALIAÇÃO E ACOMPANHAMENTO DO RETORNO DOS INVESTIMENTOS​ 36 2.11 PLANO DE CONTINGÊNCIA​ 37 1 2.11.1 Ajustes Estratégicos Baseados em Cenários Macroeconômicos​ 37 2.11.1.1 Cenário Base (Esperado)​ 37 2.11.1.2 Cenário Alternativo I - Atraso no Ciclo de Queda de Juros​ 38 2.11.1.3 Cenário Alternativo II - Reversão",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
+    },
+    {
+     "id": "fa21e3c096",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/4119152/2025-12-11/6bc24ea3ba71c71c168b618d7356ac2e1f67d3c5.pdf",
+     "titulo": "Diário oficial de 2025-12-11",
+     "trecho": "​25​ ​2.9.2 Risco De Crédito​ ​25​ ​2.9.3 Risco De Liquidez​ ​26​ ​2.9.4 Risco De Solvência​ ​26​ ​2.9.5 Risco Sistêmico​ ​27​ ​2.9.6 Risco Reputacional​ ​27​ ​2.10 AVALIAÇÃO E ACOMPANHAMENTO DO RETORNO DOS INVESTIMENTOS​ ​28​ ​1​ ​2.11 PLANO DE CONTINGÊNCIA​ ​28​ ​2.11.1 Ajustes Estratégicos Baseados em Cenários Macroeconômicos​ ​28​ ​2.11.1.1 Cenário Base (Esperado)​ ​28​ ​2.11.1.2 Cenário Alternativo I - Atraso no Ciclo de Queda de Juros​ ​29​ ​2.11.1.3 Cenário Alternativo II - Reversão de",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
+    },
+    {
+     "id": "3ac7871458",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/4119152/2025-10-09/5a5fe77e6cb8f6f6ca45ff238b8771d7e276e6b5.pdf",
+     "titulo": "Diário oficial de 2025-10-09",
+     "trecho": "sensíveis de segurados não devem ser veiculados em grupos abertos ou não institucionais. A gestão dos canais oficiais é de responsabilidade da Diretoria Administrativa (DIAM), que deve manter registro de administradores, diretrizes de uso e plano de contingência Diário Oficial do Município Edição Nº 2061 - Ordinária Pinhais - Paraná, 9 de Outubro de 2025 MUNICÍPIO DE PINHAIS para incidentes de comunicação digital. Casos de uso indevido poderão resultar em sanções administrativas, cíveis ou penais",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
+    }
+   ]
+  },
+  {
    "ibge": "2304400",
    "municipio": "Fortaleza",
    "uf": "CE",
@@ -103730,7 +104192,7 @@
      "titulo": null,
      "trecho": "Aug 28, 2026 ... ... El Niño) e o Plano de Contingência (Plancon El Niño). Para o ... FORTALEZA-CE | CNPJ: 45.114.358/0001-83 (85) 98766-0192 - Rossi ...",
      "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
     },
     {
      "id": "33884f648b",
@@ -103748,7 +104210,7 @@
      "titulo": null,
      "trecho": "Aug 27, 2026 ... ... El Niño) e o Plano de Contingência (Plancon El Niño). De acordo com ... FORTALEZA-CE | CNPJ: 45.114.358/0001-83 (85) 98766-0192 - Rossi ...",
      "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
     },
     {
      "id": "415d03ad94",
@@ -103879,6 +104341,193 @@
      "trecho": "Sep 8, 2026 ... ... likes, 0 comments - tvceara on September 8, 2026: \"Fortaleza já ... El Niño (COE El Niño) e um Plano de Contingência. O período mais ...",
      "data": "22/09/2026",
      "status": "pista — recusada pelo juiz: sem_documento_primario"
+    }
+   ]
+  },
+  {
+   "ibge": "4113700",
+   "municipio": "Londrina",
+   "uf": "PR",
+   "melhor_nivel": "B",
+   "n_pistas": 10,
+   "niveis": {
+    "A": 0,
+    "B": 9,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "b2ad938867",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://saude.londrina.pr.gov.br/images/plano_contingencia_sindrome_respiratoria.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA MUNICIPAL SÍNDROME ...",
+     "trecho": "May 28, 2025 ... internação, o Município de Londrina apresenta o Plano de Contingência para as Síndromes Respiratórias. Despacho Administrativo 13078 P ...",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "3c9431e42b",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://blog.londrina.pr.gov.br/?p=192603",
+     "titulo": "Prefeitura divulga Plano de Contingenciamento para Síndromes ...",
+     "trecho": "A etapa vigente do Plano de Contingenciamento, que é a fase 2, elenca outras medidas que podem ser aplicadas em breve. Dentre elas, a determinação da UPA Sabará como unidade de atendimento exclusivo de Síndromes Gripais; a aquisição de ...",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "91f90a24fa",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.cml.pr.gov.br/proposicoes/Projetos-de-Lei/2026/5/0",
+     "titulo": "Projetos de Lei / 2026 - Câmara Municipal de Londrina/PR",
+     "trecho": "... Plano de Contingência Energética e dá outras providências. Autoria: Emanoel ... Centro Cívico, Londrina/PR. (43) 3374-1300 atendimento telefônico: RAMAL ...",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "89e500dcd9",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.folhadelondrina.com.br/geral/el-nino-e-confirmado-e-simepar-preve-aumento-de-chuvas-ate-dezembro-3304815e.html",
+     "titulo": "El Niño é confirmado e Simepar prevê aumento de chuvas até ...",
+     "trecho": "Jun 11, 2026 ... Entre as iniciativas prioritárias estão o desassoreamento de rios e córregos, atualização do Plano de Contingência ... Londrina, Guaratuba e ...",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "07163e5c8d",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.defesacivil.pr.gov.br/sites/defesa-civil/arquivos_restritos/files/documento/2022-12/plano_de_contingencia_pp_ferroviario_versao_final.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA PARA INCIDENTES COM PRODUTOS ...",
+     "trecho": "Plano de Contingência para acidentes e emergências envolvendo produtos ... LONDRINA, ALVORADA DO SUL,. APUCARANA, ARAPONGAS, BELA. VISTA DO PARAÍSO, BOM.",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "f3513a0ca1",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/4113700/2026-09-16/f81dac043c2295a950fbb7d3381a65f66e67736f.pdf",
+     "titulo": "Diário oficial de 2026-09-16",
+     "trecho": "Parágrafo único. O Plano de Aplicação Anual do FUMPDEC, de que trata o Art. 13, I, desta Lei, será elaborado em consonância e articulação com o Plano Plurianual (PPA), a Lei de Diretrizes Orçamentárias (LDO), a Lei Orçamentária Anual (LOA), o Plano de Contingência Municipal, o Plano Municipal de Redução de Riscos e, quando editado, o Plano Municipal de Adaptação Climática de que trata a Lei Federal nº 14.904/2024. Art. 18. O Poder Executivo regulamentará o funcionamento do FUMPDEC e de seu Conselho",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: resposta"
+    },
+    {
+     "id": "caeeb2386d",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/4113700/2026-09-14/fc977526057018cd7f5437d935955d65047b4864.pdf",
+     "titulo": "Diário oficial de 2026-09-14",
+     "trecho": "disponibilidade e desempenho da plataforma; II - interoperabilidade: integração com sistemas de pagamento, nota fiscal eletrônica e cadastros de fornecedores; III - continuidade e contingência: manutenção de plano de continuidade do serviço e de plano de contingência operacional; IV - auditorias: permissão para realização de auditorias periódicas de segurança, integridade e desempenho; V - avaliação de fornecedores: adoção de mecanismos de avaliação de desempenho e reputação dos fornecedores, com",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
+    },
+    {
+     "id": "ac31393747",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/4113700/2026-05-18/2dc458566aa8e7f65f5740b3d978b0c29e7e43e9.pdf",
+     "titulo": "Diário oficial de 2026-05-18",
+     "trecho": "crianças e adolescentes, com caráter de utilidade pública; III – integrar todos os órgãos municipais para divulgação do ARP aos servidores públicos; IV – instruir as famílias vítimas de desaparecimento para ações e estabelecimento de plano de contingência para essas situações de emergência; V – envolver toda a comunidade londrinense nas ações de divulgação do ARP; VI – integrar organizações governamentais, não governamentais e empresas públicas e privadas nas ações de divulgação do ARP",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
+    },
+    {
+     "id": "b1ff3ee378",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "texto_falso_positivo_provavel"
+     ],
+     "origem": "querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/4113700/2026-09-14/fc977526057018cd7f5437d935955d65047b4864.pdf",
+     "titulo": null,
+     "trecho": "disponibilidade e desempenho da plataforma; \n \nII - interoperabilidade: integração com sistemas de pagamento, nota fiscal eletrônica e cadastros de fornecedores; \n \nIII - continuidade e contingência: manutenção de plano de continuidade do serviço e de plano de contingência operacional; \n \nIV - audit",
+     "data": "14/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "7a6a2babf1",
+     "nivel_confianca": "C",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo"
+     ],
+     "origem": "busca_web",
+     "url": "https://saude.londrina.pr.gov.br/images/downloads/plano_contingencia_dengue_2026.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA MUNICIPAL DENGUE - 2026",
+     "trecho": "Em conclusão, o Plano de Contingência Municipal da Dengue – Londrina 2026 constitui um instrumento estratégico fundamental para organizar e coordenar ações ...",
+     "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -104106,7 +104755,7 @@
      "titulo": "El Niño coloca saúde do Noroeste Paulista no radar do Ministério ...",
      "trecho": "Sep 16, 2026 ... ... El Niño. Por isso que nós estamos organizando junto aos municípios e aos estados um plano de contingência mais robusto”, afirmou. Ads. O ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "78f12d9669",
@@ -104142,7 +104791,7 @@
      "titulo": "EL NIÑO 2026 | Representantes da CPFL Paulista se reuniram na ...",
      "trecho": "7 days ago ... EL NIÑO 2026 | Representantes da CPFL Paulista ... plano de contingência com foco no aumento de ocorrências associadas ao fenômeno El Niño.",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "469f974651",
@@ -104237,176 +104886,6 @@
      "trecho": "Jul 29, 2026 ... Birigui recebe na próxima sexta-feira (31/07) uma reunião de alinhamento do Plano de Contingência – El Niño 2026, iniciativa da CPFL Paulista ...",
      "data": "21/09/2026",
      "status": "pista — recusada pelo juiz: sem_documento_primario"
-    }
-   ]
-  },
-  {
-   "ibge": "4113700",
-   "municipio": "Londrina",
-   "uf": "PR",
-   "melhor_nivel": "B",
-   "n_pistas": 9,
-   "niveis": {
-    "A": 0,
-    "B": 8,
-    "C": 1
-   },
-   "pistas": [
-    {
-     "id": "b2ad938867",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_na_url",
-      "plano_no_titulo"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://saude.londrina.pr.gov.br/images/plano_contingencia_sindrome_respiratoria.pdf",
-     "titulo": "PLANO DE CONTINGÊNCIA MUNICIPAL SÍNDROME ...",
-     "trecho": "May 28, 2025 ... internação, o Município de Londrina apresenta o Plano de Contingência para as Síndromes Respiratórias. Despacho Administrativo 13078 P ...",
-     "data": "30/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "3c9431e42b",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_na_url",
-      "plano_no_titulo"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://blog.londrina.pr.gov.br/?p=192603",
-     "titulo": "Prefeitura divulga Plano de Contingenciamento para Síndromes ...",
-     "trecho": "A etapa vigente do Plano de Contingenciamento, que é a fase 2, elenca outras medidas que podem ser aplicadas em breve. Dentre elas, a determinação da UPA Sabará como unidade de atendimento exclusivo de Síndromes Gripais; a aquisição de ...",
-     "data": "30/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "89e500dcd9",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.folhadelondrina.com.br/geral/el-nino-e-confirmado-e-simepar-preve-aumento-de-chuvas-ate-dezembro-3304815e.html",
-     "titulo": "El Niño é confirmado e Simepar prevê aumento de chuvas até ...",
-     "trecho": "Jun 11, 2026 ... Entre as iniciativas prioritárias estão o desassoreamento de rios e córregos, atualização do Plano de Contingência ... Londrina, Guaratuba e ...",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "07163e5c8d",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_so_no_trecho",
-      "plano_no_titulo"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.defesacivil.pr.gov.br/sites/defesa-civil/arquivos_restritos/files/documento/2022-12/plano_de_contingencia_pp_ferroviario_versao_final.pdf",
-     "titulo": "PLANO DE CONTINGÊNCIA PARA INCIDENTES COM PRODUTOS ...",
-     "trecho": "Plano de Contingência para acidentes e emergências envolvendo produtos ... LONDRINA, ALVORADA DO SUL,. APUCARANA, ARAPONGAS, BELA. VISTA DO PARAÍSO, BOM.",
-     "data": "30/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "f3513a0ca1",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_oficial",
-      "plano_no_trecho"
-     ],
-     "alertas": [],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/4113700/2026-09-16/f81dac043c2295a950fbb7d3381a65f66e67736f.pdf",
-     "titulo": "Diário oficial de 2026-09-16",
-     "trecho": "Parágrafo único. O Plano de Aplicação Anual do FUMPDEC, de que trata o Art. 13, I, desta Lei, será elaborado em consonância e articulação com o Plano Plurianual (PPA), a Lei de Diretrizes Orçamentárias (LDO), a Lei Orçamentária Anual (LOA), o Plano de Contingência Municipal, o Plano Municipal de Redução de Riscos e, quando editado, o Plano Municipal de Adaptação Climática de que trata a Lei Federal nº 14.904/2024. Art. 18. O Poder Executivo regulamentará o funcionamento do FUMPDEC e de seu Conselho",
-     "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "caeeb2386d",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_oficial",
-      "plano_no_trecho"
-     ],
-     "alertas": [],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/4113700/2026-09-14/fc977526057018cd7f5437d935955d65047b4864.pdf",
-     "titulo": "Diário oficial de 2026-09-14",
-     "trecho": "disponibilidade e desempenho da plataforma; II - interoperabilidade: integração com sistemas de pagamento, nota fiscal eletrônica e cadastros de fornecedores; III - continuidade e contingência: manutenção de plano de continuidade do serviço e de plano de contingência operacional; IV - auditorias: permissão para realização de auditorias periódicas de segurança, integridade e desempenho; V - avaliação de fornecedores: adoção de mecanismos de avaliação de desempenho e reputação dos fornecedores, com",
-     "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "ac31393747",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_oficial",
-      "plano_no_trecho"
-     ],
-     "alertas": [],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/4113700/2026-05-18/2dc458566aa8e7f65f5740b3d978b0c29e7e43e9.pdf",
-     "titulo": "Diário oficial de 2026-05-18",
-     "trecho": "crianças e adolescentes, com caráter de utilidade pública; III – integrar todos os órgãos municipais para divulgação do ARP aos servidores públicos; IV – instruir as famílias vítimas de desaparecimento para ações e estabelecimento de plano de contingência para essas situações de emergência; V – envolver toda a comunidade londrinense nas ações de divulgação do ARP; VI – integrar organizações governamentais, não governamentais e empresas públicas e privadas nas ações de divulgação do ARP",
-     "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "b1ff3ee378",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_oficial",
-      "plano_no_trecho"
-     ],
-     "alertas": [
-      "texto_falso_positivo_provavel"
-     ],
-     "origem": "querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/4113700/2026-09-14/fc977526057018cd7f5437d935955d65047b4864.pdf",
-     "titulo": null,
-     "trecho": "disponibilidade e desempenho da plataforma; \n \nII - interoperabilidade: integração com sistemas de pagamento, nota fiscal eletrônica e cadastros de fornecedores; \n \nIII - continuidade e contingência: manutenção de plano de continuidade do serviço e de plano de contingência operacional; \n \nIV - audit",
-     "data": "14/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "7a6a2babf1",
-     "nivel_confianca": "C",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_na_url",
-      "plano_no_titulo"
-     ],
-     "alertas": [
-      "risco_errado_no_titulo"
-     ],
-     "origem": "busca_web",
-     "url": "https://saude.londrina.pr.gov.br/images/downloads/plano_contingencia_dengue_2026.pdf",
-     "titulo": "PLANO DE CONTINGÊNCIA MUNICIPAL DENGUE - 2026",
-     "trecho": "Em conclusão, o Plano de Contingência Municipal da Dengue – Londrina 2026 constitui um instrumento estratégico fundamental para organizar e coordenar ações ...",
-     "data": "25/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -104569,162 +105048,6 @@
    ]
   },
   {
-   "ibge": "4119152",
-   "municipio": "Pinhais",
-   "uf": "PR",
-   "melhor_nivel": "B",
-   "n_pistas": 8,
-   "niveis": {
-    "A": 0,
-    "B": 8,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "9103511ece",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.bemparana.com.br/publicacao/blogs/metropole/pinhais-adota-medidas-preventivas-para-enfrentar-o-el-nino/",
-     "titulo": "Pinhais adota medidas preventivas para enfrentar o El Niño",
-     "trecho": "Jul 18, 2026 ... ... El Niño 2026/2027. Pinhais contou com a presença da prefeita Rosa Maria e representantes da Defesa Civil do município. PLANO DE CONTINGÊNCIA ...",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "e3bce79e2c",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.bemparana.com.br/noticias/regiao-metropolitana/el-nino-pinhais-reforca-prevencao-contra-chuvas-fortes-e-alagamentos/",
-     "titulo": "El Niño: Pinhais reforça prevenção contra chuvas fortes e ...",
-     "trecho": "Jul 17, 2026 ... ... plano de contingência. El Niño: Pinhais reforça prevenção contra chuvas fortes e alagamentos ... El Niño 2026, que reúne municípios da Região ...",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "15a9294f0f",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DZ8p_KXAOXD/",
-     "titulo": "Como Pinhais está se preparando para o El Niño? Os dados não ...",
-     "trecho": "Jun 23, 2026 ... Prefeitura de Pinhais e lideranças religiosas integram plano de contingência contra os impactos do El Niño Na manhã desta quinta-feira ...",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "ba7a6554e7",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/Da5PKEiEYKD/",
-     "titulo": "Defesa Civil de Pinhais acompanha evolução do El Niño e adota ...",
-     "trecho": "Jul 17, 2026 ... ... Pinhais - PR on July 17, 2026 ... Prefeitura de Pinhais e lideranças religiosas integram plano de contingência contra os impactos do El Niño",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "db8716315e",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_oficial",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/4119152/2026-08-21/a91636060117d972a85a657f2f0dd53e9eaf10b3.pdf",
-     "titulo": "Diário oficial de 2026-08-21",
-     "trecho": "03.04 - Relatório de vistorias Relatórios referentes a fatores de risco ambientais relacionados às doenças ou a outros agravos à saúde, e relatórios para a instrução de processos administrativos. 06.01.03.05 - Planos de Contingência O Plano de Contingência é o planejamento preventivo e alternativo da Secretaria de Saúde para a atuação durante um evento indesejável que afete a saúde humana, podendo ser acidentes com produtos químicos, enchentes, surtos de doenças, ou outras situações",
-     "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "cb263f587f",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_oficial",
-      "plano_no_trecho"
-     ],
-     "alertas": [],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/4119152/2026-02-03/dd75254fd615b0f9c8dad15963da4dcdb48cc2a8.pdf",
-     "titulo": "Diário oficial de 2026-02-03",
-     "trecho": "1 Risco de Mercado​ 33 2.9.2 Risco De Crédito​ 34 2.9.3 Risco De Liquidez​ 34 2.9.4 Risco De Solvência​ 35 2.9.5 Risco Sistêmico​ 35 2.9.6 Risco Reputacional​ 35 2.10 AVALIAÇÃO E ACOMPANHAMENTO DO RETORNO DOS INVESTIMENTOS​ 36 2.11 PLANO DE CONTINGÊNCIA​ 37 1 2.11.1 Ajustes Estratégicos Baseados em Cenários Macroeconômicos​ 37 2.11.1.1 Cenário Base (Esperado)​ 37 2.11.1.2 Cenário Alternativo I - Atraso no Ciclo de Queda de Juros​ 38 2.11.1.3 Cenário Alternativo II - Reversão",
-     "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "fa21e3c096",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_oficial",
-      "plano_no_trecho"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/4119152/2025-12-11/6bc24ea3ba71c71c168b618d7356ac2e1f67d3c5.pdf",
-     "titulo": "Diário oficial de 2025-12-11",
-     "trecho": "​25​ ​2.9.2 Risco De Crédito​ ​25​ ​2.9.3 Risco De Liquidez​ ​26​ ​2.9.4 Risco De Solvência​ ​26​ ​2.9.5 Risco Sistêmico​ ​27​ ​2.9.6 Risco Reputacional​ ​27​ ​2.10 AVALIAÇÃO E ACOMPANHAMENTO DO RETORNO DOS INVESTIMENTOS​ ​28​ ​1​ ​2.11 PLANO DE CONTINGÊNCIA​ ​28​ ​2.11.1 Ajustes Estratégicos Baseados em Cenários Macroeconômicos​ ​28​ ​2.11.1.1 Cenário Base (Esperado)​ ​28​ ​2.11.1.2 Cenário Alternativo I - Atraso no Ciclo de Queda de Juros​ ​29​ ​2.11.1.3 Cenário Alternativo II - Reversão de",
-     "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "3ac7871458",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_so_no_trecho",
-      "plano_no_trecho"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/4119152/2025-10-09/5a5fe77e6cb8f6f6ca45ff238b8771d7e276e6b5.pdf",
-     "titulo": "Diário oficial de 2025-10-09",
-     "trecho": "sensíveis de segurados não devem ser veiculados em grupos abertos ou não institucionais. A gestão dos canais oficiais é de responsabilidade da Diretoria Administrativa (DIAM), que deve manter registro de administradores, diretrizes de uso e plano de contingência Diário Oficial do Município Edição Nº 2061 - Ordinária Pinhais - Paraná, 9 de Outubro de 2025 MUNICÍPIO DE PINHAIS para incidentes de comunicação digital. Casos de uso indevido poderão resultar em sanções administrativas, cíveis ou penais",
-     "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
    "ibge": "4314902",
    "municipio": "Porto Alegre",
    "uf": "RS",
@@ -104879,6 +105202,149 @@
      "titulo": "Diário oficial de 2025-10-01",
      "trecho": "(cento e setenta e sete R$ 177.359,77 mil trezentos e cinquenta e nove reais e setenta e sete centavos) referente ao acréscimo qualitativo. O valor de (cento e quarenta e seis mil duzentos e quarenta e três reais) referente ao acréscimo quantitativo. OR$ 146.243,00 percentual de acréscimo acumulado é de % em relação ao valor inicial do Contrato atualizado, conforme itens 12,90 identificados na planilha de custos constante no Documento SEI nº 33212449. A contar da assinatura do presente Termo Aditivo",
      "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
+    }
+   ]
+  },
+  {
+   "ibge": "4109401",
+   "municipio": "Guarapuava",
+   "uf": "PR",
+   "melhor_nivel": "B",
+   "n_pistas": 7,
+   "niveis": {
+    "A": 0,
+    "B": 5,
+    "C": 2
+   },
+   "pistas": [
+    {
+     "id": "c5e2e5d0d1",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://paranacentral.com.br/el-nino-guarapuava-monta-operacao-para-reduzir-danos-das-chuvas-no-2semestre",
+     "titulo": "El Niño: Guarapuava monta operação para reduzir danos das ...",
+     "trecho": "Jun 17, 2026 ... El Niño: Guarapuava monta operação para reduzir danos ... Entre as medidas em execução estão a atualização do Plano de Contingência 2026 ...",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "e8111187e2",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://guarapuava.pr.gov.br/wp-content/uploads/2025/12/Plano-Municipal-de-Saude-2026-2029.pdf",
+     "titulo": "plano municipal de saúde 2026/2029",
+     "trecho": "Guarapuava/PR (Residentes), 2019-2023 ... Guarapuava 2026-2029. DIRETRIZ 1: Fortalecer a Atenção Primária à Saúde (APS) como coordenadora do cuidado ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "666c1279c7",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://paranacentral.com.br/el-nino-guarapuava-monta-operacao-para-reduzir-danos-das-chuvas-no-2semestre",
+     "titulo": "El Niño: Guarapuava monta operação para reduzir danos das ...",
+     "trecho": "Jun 17, 2026 ... Entre as medidas em execução estão a atualização do Plano de Contingência 2026 ... Guarapuava receberá reconhecimento do TCE-PR por ...",
+     "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "add8051d23",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DZr7Dbes3ju/",
+     "titulo": "GUARAPUAVA se prepara para o El Niño e reforça ações para ...",
+     "trecho": "Jun 17, 2026 ... Photo by Gmais Notícias | Guarapuava on June 17, 2026. 2 ... Entre as medidas adotadas estão a atualização do Plano de Contingência 2026 ...",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "3b2caf80a0",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.gazetaguarapuava.com.br/noticia/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico",
+     "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
+     "trecho": "9 hours ago ... Resumindo: plano de contingência, população das áreas de risco ... 2026 Gazeta Guarapuava - Todos os direitos reservados. / Gazeta ...",
+     "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "d801e86f44",
+     "nivel_confianca": "C",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo",
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://guarapuava.pr.gov.br/wp-content/uploads/2025/10/Resolucao-CMS-020.2025.pdf",
+     "titulo": "Plano de Contingência Municipal para Dengue, Chikungunya e Zika",
+     "trecho": "Considerando o Plano de Contingência para Resposta às Emergências em Saúde Pública por Dengue ... cms@guarapuava.pr.gov.br Fone (42) 3142 - 1506.",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "40fef53bc8",
+     "nivel_confianca": "C",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo",
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://reserva.pr.gov.br/wp-content/uploads/2025/11/Plano-de-Contingencia-RESERVA-2025-.pdf",
+     "titulo": "Dengue, Chikungunya e Zika 2025 - Prefeitura municipal de Reserva",
+     "trecho": "unidades em Ponta Grossa, Curitiba, Guarapuava e Laranjeiras do Sul. Na ... O Plano de Contingência é composto por dois níveis de resposta, cada qual com um.",
+     "data": "30/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -105011,6 +105477,142 @@
      "trecho": "o Municipal de Saúde acompanhará, no âmbito de \nsuas atribuições, a execução das ações previstas no Plano Municipal \nde Contingência. \nArt. 6º Esta Resolução entra em vigor na data de sua aprovação. \n  \nSapopema – Paraná, 11 de setembro de 2026 \n  \nERALDO ROQUE BRIZOLA \nPresidente do Conselh",
      "data": "2026-09-15",
      "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4127700",
+   "municipio": "Toledo",
+   "uf": "PR",
+   "melhor_nivel": "B",
+   "n_pistas": 7,
+   "niveis": {
+    "A": 0,
+    "B": 7,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "9efaaf6098",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.toledo.pr.gov.br/noticias/assistencia-social/assistencia-social-apresenta-plano-de-contingencia-para-emergencias",
+     "titulo": "Assistência Social apresenta plano de contingência para ...",
+     "trecho": "7 days ago ... ... plano de contingência para emergências climáticas previstas para ... toledo@toledo.pr.gov.br · Rua: Raimundo Leonardi, 1586. Centro - CEP ...",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
+    },
+    {
+     "id": "38f473712f",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.toledo.pr.gov.br/noticias/assistencia-social/assistencia-social-apresenta-plano-de-contingencia-para-emergencias",
+     "titulo": "Assistência Social apresenta plano de contingência para ...",
+     "trecho": "Sep 15, 2026 ... ... plano de contingência para emergências climáticas previstas para ... toledo@toledo.pr.gov.br · Rua: Raimundo Leonardi, 1586. Centro - CEP ...",
+     "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "3292b12b0d",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://vivertoledo.com.br/noticia/defesa-civil-de-toledo-promove-palestra-sobre-o-el-nino-no-ceu-das-artes-home",
+     "titulo": "Defesa Civil de Toledo promove palestra sobre o El Niño no CEU ...",
+     "trecho": "20 hours ago ... Toledo, PRqua, 23 de set. --°C. Viver Toledo Logo. Anuncie. Início ... Assistência Social apresenta plano de contingência para emergências ...",
+     "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "34d2789282",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.toledo.pr.gov.br/sites/default/files/paginabasica-2026-01/plano_de_contingencia_para_enfrentamento_das_arboviroses_2026.pdf",
+     "titulo": "SECRETARIA DA SAÚDE DE TOLEDO",
+     "trecho": "o Plano de Contingência calcule a capacidade de leitos (observação e UTI) e a ... http://equiplanoweb.toledo.pr.gov.br/tramitacaoProcesso/#/consulta-anexo ...",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "0670e58642",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.radiouniaodetoledo.com.br/noticia/6/482130/el-nino-pode-ser-o-mais-forte-desde-1950-aponta-nova-projecao",
+     "titulo": "El Niño pode ser o mais forte desde 1950, aponta nova projeção",
+     "trecho": "Sep 10, 2026 ... Toledo cria núcleo de prevenção para enfrentar possíveis efeitos do El Niño ... Defesa Civil atualiza plano de contingência e articula ...",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "011ccafbb2",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.toledo.pr.gov.br/sites/default/files/paginabasica-2026-09/24-09-2026_instrucao_normativa_no_17-2026_smed_plano_de_contingencia_da_rede_publica_municipal_de_ensino_para_eventos_climaticos_adversos.pdf",
+     "titulo": "ATOS DO PODER EXECUTIVO",
+     "trecho": "6 days ago ... 1º Fica instituído, no âmbito da Rede Pública Municipal de Ensino de Toledo –. PR, o Plano de Contingência para Eventos Climáticos Adversos , ...",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "544ec10453",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.toledo.pr.gov.br/sites/default/files/paginabasica-2022-12/portaria_001_2020_coe.pdf",
+     "titulo": "PREFEITURA DO MUNICÍPIO DE TOLEDO",
+     "trecho": "Toledo/PR, no uso de suas atribuições que lhe confere o art. 4º da Lei Estadual nº 19.848, de 03 de maio de 2019, a Lei Estadual nº 13.331, de 23 de ...",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -105210,7 +105812,7 @@
      "titulo": "Diário oficial de 2026-07-11",
      "trecho": "consolidação do Projeto de Lei Or- çamentária Anual para 2027, de que tata esta lei, e determinará: I – O calendário das atividades para a elaboração dos orçamentos; II – A elaboração e a distribuição do material que compõe as propostas parciais do Orçamento Anual dos Poderes Legislativo e Executivo do Município, seus órgãos, autar- quias, fundações, fundos e sociedades de economia mista. III – As instruções para o devido preenchimento das propostas parciais dos or- çamentos, de que trata esta",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
     },
     {
      "id": "178475fe7e",
@@ -105227,7 +105829,7 @@
      "titulo": "Diário oficial de 2025-12-04",
      "trecho": "ST R O P la ne ja m en to e O rç am en to R ec ei ta s do P P A p or A no - A gr up ad o po r C on ta D ed uç ão A no P P A : 2 02 6 - 2 02 9 G ra u a lis ta r: 10 P ág 1 / 37 IP M S is te m as L td a A te nd e. N et - W P L v: 20 13 .0 1 Id en tif ic ad or : W P L1 22 11 01 -0 09 -Z TX TX M Q N Q X U V E -5 - E m iti do p or : D U LC IL E IA A N A D O S R E IS 29 /0 8/ 20 25 1 1: 05 :0 3 -0",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
     },
     {
      "id": "d55d2bbd62",
@@ -105242,7 +105844,7 @@
      "titulo": "Diário oficial de 2026-01-29",
      "trecho": "id ad e: C on so lid ad o P ág 1 / 2 IP M S is te m as L td a A te nd e. N et - W P R v :2 01 3. 01 Id en tif ic ad or : W P R 16 11 10 1- 97 37 -R A Y LH V K N S C Y R -3 - E m iti do p or : A LI N E P E TR O S K I M O C E LI N 21 /0 1/ 20 26 1 1: 23 :5 4 -0 3: 00 In st ru çã o N or m at iv a TC E /P R n ° 36 /2 00 9 D E TA LH A M E N TO D A D E S P E S A D ot aç ão In ic ia l ( a) C ré di to s A",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
     },
     {
      "id": "399b7a1ad5",
@@ -105257,7 +105859,7 @@
      "titulo": "Diário oficial de 2026-05-29",
      "trecho": ": E xe cu tiv o P er ío do d e R ef er ên ci a: 0 5/ 20 25 a 0 4/ 20 26 P ág 1 / 2 IP M S is te m as L td a A te nd e. N et - W P R v :2 01 3. 01 Id en tif ic ad or : W P R 48 41 10 1- 97 37 -E A LD P G B V E O Q N -9 - E m iti do p or : A LI N E P E TR O S K I M O C E LI N 19 /0 5/ 20 26 1 1: 12 :2 0 -0 3: 00 R G F - A N EX O 1 (L R F, a rt . 5 5, in ci so I, a lín ea \" a\" ) R $ 1, 00 D ES PE",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
     }
    ]
   },
@@ -105766,7 +106368,7 @@
      "titulo": "Super El Niño: o que Chapecó fez para prevenir emergências",
      "trecho": "Esse treinamento também faz parte do Plano de Contingência do município. Escolas passaram por treinamentos para reagir a emergências Foto: Prefeitura de Chapecó, Divulgação ... AnteriorAnteriorJorge Bornhausen nega jantares anti-Jorginho e diz que as críticas ‘se restringem às suas ações administrativas’ · Super El Niño: o que Chapecó fez para prevenir e combater emergências",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "4e8a5affda",
@@ -106169,8 +106771,8 @@
    ]
   },
   {
-   "ibge": "4109401",
-   "municipio": "Guarapuava",
+   "ibge": "4107652",
+   "municipio": "Fazenda Rio Grande",
    "uf": "PR",
    "melhor_nivel": "B",
    "n_pistas": 5,
@@ -106181,60 +106783,27 @@
    },
    "pistas": [
     {
-     "id": "c5e2e5d0d1",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://paranacentral.com.br/el-nino-guarapuava-monta-operacao-para-reduzir-danos-das-chuvas-no-2semestre",
-     "titulo": "El Niño: Guarapuava monta operação para reduzir danos das ...",
-     "trecho": "Jun 17, 2026 ... El Niño: Guarapuava monta operação para reduzir danos ... Entre as medidas em execução estão a atualização do Plano de Contingência 2026 ...",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "e8111187e2",
+     "id": "34bee04024",
      "nivel_confianca": "B",
      "pontos_confianca": 5,
      "sinais": [
       "fonte_oficial",
-      "municipio_na_url",
-      "plano_no_titulo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://guarapuava.pr.gov.br/wp-content/uploads/2025/12/Plano-Municipal-de-Saude-2026-2029.pdf",
-     "titulo": "plano municipal de saúde 2026/2029",
-     "trecho": "Guarapuava/PR (Residentes), 2019-2023 ... Guarapuava 2026-2029. DIRETRIZ 1: Fortalecer a Atenção Primária à Saúde (APS) como coordenadora do cuidado ...",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "666c1279c7",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
+      "municipio_so_no_trecho",
       "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
+      "ato_formal"
      ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://paranacentral.com.br/el-nino-guarapuava-monta-operacao-para-reduzir-danos-das-chuvas-no-2semestre",
-     "titulo": "El Niño: Guarapuava monta operação para reduzir danos das ...",
-     "trecho": "Jun 17, 2026 ... Entre as medidas em execução estão a atualização do Plano de Contingência 2026 ... Guarapuava receberá reconhecimento do TCE-PR por ...",
-     "data": "25/09/2026",
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://fazendariogrande.pr.gov.br/wp-content/uploads/2019/02/SMMA-LICEN%C3%87A-PR%C3%89VIA-N%C2%B0007_2018-.pdf",
+     "titulo": "Licença Prévia nº 007-2018 Validade: 24/08/2019 Protocolo: 8.825 ...",
+     "trecho": "Com Rua Macauã, 17, Bairro Gralha Azul,. Município de Fazenda Rio Grande – PR. ... 19)Plano de Contingência – PC;. 20)Apresentar o projeto arquitetônico ...",
+     "data": "30/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     },
     {
-     "id": "add8051d23",
+     "id": "da6fbe3938",
      "nivel_confianca": "B",
      "pontos_confianca": 4,
      "sinais": [
@@ -106245,28 +106814,66 @@
      ],
      "alertas": [],
      "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DZr7Dbes3ju/",
-     "titulo": "GUARAPUAVA se prepara para o El Niño e reforça ações para ...",
-     "trecho": "Jun 17, 2026 ... Photo by Gmais Notícias | Guarapuava on June 17, 2026. 2 ... Entre as medidas adotadas estão a atualização do Plano de Contingência 2026 ...",
+     "url": "https://www.facebook.com/NoticiaFazenda/posts/el-ni%C3%B1o-coloca-fazenda-rio-grande-em-aten%C3%A7%C3%A3o-para-per%C3%ADodo-de-chuvas-intensasa-co/1519122706319589/",
+     "titulo": "El Niño coloca Fazenda Rio Grande em atenção para período de ...",
+     "trecho": "Jun 15, 2026 ... El Niño coloca Fazenda Rio Grande em atenção para período de chuvas intensas. A confirmação ... Plano de Contingência para eventos como enchentes, ...",
      "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
+     "status": "pista — recusada pelo juiz: ente_nao_confirmado"
     },
     {
-     "id": "3b2caf80a0",
+     "id": "fc1be0320a",
      "nivel_confianca": "B",
      "pontos_confianca": 4,
      "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
+      "fonte_desconhecida",
+      "municipio_no_titulo",
       "plano_no_trecho",
       "familia_de_risco_do_ciclo"
      ],
      "alertas": [],
      "origem": "busca_web",
-     "url": "https://www.gazetaguarapuava.com.br/noticia/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico",
-     "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
-     "trecho": "9 hours ago ... Resumindo: plano de contingência, população das áreas de risco ... 2026 Gazeta Guarapuava - Todos os direitos reservados. / Gazeta ...",
-     "data": "25/09/2026",
+     "url": "https://www.instagram.com/p/DZfGtwfkYSt/",
+     "titulo": "El Niño preocupa autoridades e coloca Fazenda Rio Grande em ...",
+     "trecho": "Jun 12, 2026 ... ... Fazenda Rio Grande conta com mecanismos de preparação para situações climáticas extremas. A Defesa Civil municipal possui Plano de Contingência ...",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: ente_nao_confirmado"
+    },
+    {
+     "id": "581838a3d2",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.ceas.pr.gov.br/sites/ceas/arquivos_restritos/files/documento/2023-10/dioe_-_ata_-_ordinaria_abril.pdf",
+     "titulo": "DIOE - Ata - Ordinária Abril - Ceas-PR",
+     "trecho": "contato com o Município de Fazenda Rio Grande ... Saúde em caráter emergencial conforme Plano de contingência, mas em 2022 voltou a atender ao público-alvo.",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "351eab4cce",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.justica.pr.gov.br/sites/default/arquivos_restritos/files/documento/2022-10/portaria_n._32.2022_-_dispoe_de_mecanismos_de_prevencao_ao_covid-19.pdf",
+     "titulo": "SEJUF - Secretaria da Justiça e Cidadania",
+     "trecho": "adota e providências como o Plano de Contingência de Prevenção ao ... em atendimento nos CENSE's de Campo Mourão, Fazenda Rio Grande, Paranavaí, Pato.",
+     "data": "30/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -107114,6 +107721,96 @@
    ]
   },
   {
+   "ibge": "4101804",
+   "municipio": "Araucária",
+   "uf": "PR",
+   "melhor_nivel": "B",
+   "n_pistas": 4,
+   "niveis": {
+    "A": 0,
+    "B": 4,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "c78b640537",
+     "nivel_confianca": "B",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://sapl.araucaria.pr.leg.br/media/sapl/public/materialegislativa/2017/2429/2429_texto_integral.pdf",
+     "titulo": "PROJETO DE LEI Nº 2.020/2017 Ementa: “Dispõe sobre a criação ...",
+     "trecho": "elaborar o Plano de Contingência e Emergência de Araucária, e submetê-lo à aprovação do Conselho Proteção e Defesa Civil de Araucária;. VI. submeter ao ...",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "508df0e165",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://g1.globo.com/pr/parana/especial-publicitario/municipio-de-araucaria/araucaria-noticias/noticia/2026/08/11/araucaria-comeca-a-se-preparar-para-super-el-nino.ghtml",
+     "titulo": "Araucária começa a se preparar para Super El Niño - G1 - Globo",
+     "trecho": "Aug 11, 2026 ... Araucária começa a se preparar para Super El Niño. Defesa Civil expõe ... Entre as iniciativas estão a atualização do Plano de Contingência ...",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "4ad53c9087",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.araucariatemtudo.com.br/blog/araucaria-comeca-a-se-preparar-para-super-el-nino",
+     "titulo": "Araucária começa a se preparar para Super El Niño",
+     "trecho": "Jun 29, 2026 ... Araucária - PR. Menu Araucária Tem Tudo Quem somosMelhores do Ano ... Entre as iniciativas estão a atualização do Plano de Contingência ...",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "2facea976e",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.fappr.pr.gov.br/sites/fundacao-araucaria/arquivos_restritos/files/documento/2020-07/2020_cp09_coronavirus_4acomplementarbolsistas_aditivo1.pdf",
+     "titulo": "Chamada Pública da Fundação Araucária",
+     "trecho": "Jul 24, 2020 ... ... Plano de Contingência Nacional ... 4.4 Os recursos serão providos pela Fundação Araucária, nos termos da Lei Estadual nº 12.020/1998, alterada ...",
+     "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4121307",
    "municipio": "RANCHO ALEGRE",
    "uf": "PR",
@@ -107194,90 +107891,6 @@
    ]
   },
   {
-   "ibge": "4127700",
-   "municipio": "Toledo",
-   "uf": "PR",
-   "melhor_nivel": "B",
-   "n_pistas": 4,
-   "niveis": {
-    "A": 0,
-    "B": 4,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "9efaaf6098",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_na_url",
-      "plano_no_titulo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.toledo.pr.gov.br/noticias/assistencia-social/assistencia-social-apresenta-plano-de-contingencia-para-emergencias",
-     "titulo": "Assistência Social apresenta plano de contingência para ...",
-     "trecho": "7 days ago ... ... plano de contingência para emergências climáticas previstas para ... toledo@toledo.pr.gov.br · Rua: Raimundo Leonardi, 1586. Centro - CEP ...",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: citacao_incompleta"
-    },
-    {
-     "id": "38f473712f",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_na_url",
-      "plano_no_titulo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.toledo.pr.gov.br/noticias/assistencia-social/assistencia-social-apresenta-plano-de-contingencia-para-emergencias",
-     "titulo": "Assistência Social apresenta plano de contingência para ...",
-     "trecho": "Sep 15, 2026 ... ... plano de contingência para emergências climáticas previstas para ... toledo@toledo.pr.gov.br · Rua: Raimundo Leonardi, 1586. Centro - CEP ...",
-     "data": "25/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "3292b12b0d",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://vivertoledo.com.br/noticia/defesa-civil-de-toledo-promove-palestra-sobre-o-el-nino-no-ceu-das-artes-home",
-     "titulo": "Defesa Civil de Toledo promove palestra sobre o El Niño no CEU ...",
-     "trecho": "20 hours ago ... Toledo, PRqua, 23 de set. --°C. Viver Toledo Logo. Anuncie. Início ... Assistência Social apresenta plano de contingência para emergências ...",
-     "data": "25/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "0670e58642",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.radiouniaodetoledo.com.br/noticia/6/482130/el-nino-pode-ser-o-mais-forte-desde-1950-aponta-nova-projecao",
-     "titulo": "El Niño pode ser o mais forte desde 1950, aponta nova projeção",
-     "trecho": "Sep 10, 2026 ... Toledo cria núcleo de prevenção para enfrentar possíveis efeitos do El Niño ... Defesa Civil atualiza plano de contingência e articula ...",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    }
-   ]
-  },
-  {
    "ibge": "3304128",
    "municipio": "Quatis",
    "uf": "RJ",
@@ -107320,7 +107933,7 @@
      "titulo": "Saúde RJ - Controladoria Geral da SES - Legislação",
      "trecho": "Deliberação Conjunta CIB/COSEMS-RJ nº 91 de 08 de abril de 2021 · Pactua “ad referendum” a alteração do anexo do plano de contingência da Secretaria de Estado de Saúde do Rio de Janeiro para enfrentamento da infecção pelo novo coronavírus (covid-19).",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: ente_nao_confirmado"
     },
     {
      "id": "def55639fb",
@@ -107336,7 +107949,7 @@
      "titulo": "Aos trinta dias do mês de abril do ano de dois mil e quinze, ...",
      "trecho": "Quatis, Resende, Rio Claro, Rio das Flores e Volta Redonda e sem representação de secretários de saúde ... os municípios de, Itatiaia, Pinheiral, Porto Real e Valença. Sra. Sonia iniciou a reunião, cumprimentando ... a todos e justificou a ausência da Sra. Rosemary. Prosseguindo, explicou que é aguardado a publicação ... do decreto Estadual definindo um “feriadão”, a partir de vinte e seis de março até quatro de abril, com o",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
     },
     {
      "id": "c930576b25",
@@ -107354,7 +107967,7 @@
      "titulo": "PREFEITURA DE QUATIS DECRETA MEDIDAS DE COMBATE AO CORONAVÍRUS ...",
      "trecho": "QUATIS O prefeito Bruno de Souza (MDB) assinou no final da tarde de terça-feira, dia 17, um decreto instituindo a Situação de Atenção na Saúde Pública do Município pelo prazo de 180 dias.",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: autoridade_nao_confirmada"
     }
    ]
   },
@@ -107861,7 +108474,7 @@
      "titulo": "Super El Niño impõe riscos de incêndios florestais na Amazônia",
      "trecho": "Jul 23, 2026 ... “Mas precisamos dizer com clareza: o El Niño não coloca fogo na floresta. O fogo tem responsáveis. Ele começa com o desmatamento, a grilagem ...",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "37a9499afc",
@@ -107879,7 +108492,7 @@
      "titulo": "um plano de contingência para os territórios indígenas",
      "trecho": "um plano de contingência para os territórios indígenas",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
     }
    ]
   },
@@ -107996,7 +108609,7 @@
      "titulo": "El Niño: Prefeitura e Defesa Civil de Rio Negro se preparam para ...",
      "trecho": "Além do Plano de Contingência, Rio Negro também terá este plano que garantirá ações mais efetivas em diferentes situações. No último dia 12 outra reunião ...",
      "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "a9c11337f7",
@@ -108047,7 +108660,7 @@
      "titulo": "Bom Jesus do Itabapoana apresenta plano de contingência para ...",
      "trecho": "Nov 4, 2025 ... Bom Jesus do Itabapoana apresenta plano de contingência para enfrentar chuvas fortes ... Com El Niño muito forte, Sul deve ter chuva ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "7aea6e5b4b",
@@ -108393,7 +109006,7 @@
      "titulo": "Diário Oficial do Município - Santo Antônio de Posse",
      "trecho": "CONSIDERANDO a edição do Decreto Municipal n. 2.802, de 15 de março de 2012, que institui e · regulamenta, no âmbito do Município de Santo Antônio de Posse, o sistema municipal de Defesa Civil ... Art. 1º Fica instituído o Plano de Contingência da Defesa Civil do Município de Santo ...",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
     },
     {
      "id": "5edede613c",
@@ -108413,7 +109026,7 @@
      "titulo": "plano de contingência da política de assistência social ...",
      "trecho": "O Município de Santo Antônio de Posse através da lei municipal nº 2657 de",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
     },
     {
      "id": "7c938d57b7",
@@ -108430,7 +109043,7 @@
      "titulo": "Santo Antônio de Posse define diretrizes do Plano de Contingência ...",
      "trecho": "Feb 3, 2026 ... Santo Antônio de Posse define diretrizes do. Plano de Contingência contra a dengue em. 2026. Jaguariúna divulga lista de pré-selecionados do.",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -108461,7 +109074,7 @@
      "titulo": "Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura ...",
      "trecho": "6 days ago ... 46 likes, 0 comments - prefcachoeirinhars on September 17, 2026: \" Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura, por ...",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "4de3abf82b",
@@ -108479,7 +109092,7 @@
      "titulo": "Cachoeirinha é contemplada no Prepara RS - El Niño e vai receber ...",
      "trecho": "Jun 18, 2026 ... Cachoeirinha - Cachoeirinha é um dos municípios contemplados no ... plano de contingência municipal atualizado e a conclusão do ...",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "28af31ddc8",
@@ -108694,56 +109307,6 @@
    ]
   },
   {
-   "ibge": "4101804",
-   "municipio": "Araucária",
-   "uf": "PR",
-   "melhor_nivel": "B",
-   "n_pistas": 2,
-   "niveis": {
-    "A": 0,
-    "B": 2,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "508df0e165",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://g1.globo.com/pr/parana/especial-publicitario/municipio-de-araucaria/araucaria-noticias/noticia/2026/08/11/araucaria-comeca-a-se-preparar-para-super-el-nino.ghtml",
-     "titulo": "Araucária começa a se preparar para Super El Niño - G1 - Globo",
-     "trecho": "Aug 11, 2026 ... Araucária começa a se preparar para Super El Niño. Defesa Civil expõe ... Entre as iniciativas estão a atualização do Plano de Contingência ...",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "4ad53c9087",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.araucariatemtudo.com.br/blog/araucaria-comeca-a-se-preparar-para-super-el-nino",
-     "titulo": "Araucária começa a se preparar para Super El Niño",
-     "trecho": "Jun 29, 2026 ... Araucária - PR. Menu Araucária Tem Tudo Quem somosMelhores do Ano ... Entre as iniciativas estão a atualização do Plano de Contingência ...",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    }
-   ]
-  },
-  {
    "ibge": "4108452",
    "municipio": "FOZ DO JORDÃO",
    "uf": "PR",
@@ -108789,56 +109352,6 @@
      "trecho": "entual deve ser efetivada para \nindivíduos, famílias, e grupos, independentemente da existência de \nPlano de Contingência Local ou da decretação de situação de \nemergência ou estado de calamidade pública pelo Estado, Município \nou Distrito Federal. \n  \n§ 2º Compete à gestão local firmar protocolos interi nstitucionais com \na finalidade de definir atribuições e fluxos para a atuação da Defesa \nCivil, da A",
      "data": "2026-09-25",
      "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "4107652",
-   "municipio": "Fazenda Rio Grande",
-   "uf": "PR",
-   "melhor_nivel": "B",
-   "n_pistas": 2,
-   "niveis": {
-    "A": 0,
-    "B": 2,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "da6fbe3938",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.facebook.com/NoticiaFazenda/posts/el-ni%C3%B1o-coloca-fazenda-rio-grande-em-aten%C3%A7%C3%A3o-para-per%C3%ADodo-de-chuvas-intensasa-co/1519122706319589/",
-     "titulo": "El Niño coloca Fazenda Rio Grande em atenção para período de ...",
-     "trecho": "Jun 15, 2026 ... El Niño coloca Fazenda Rio Grande em atenção para período de chuvas intensas. A confirmação ... Plano de Contingência para eventos como enchentes, ...",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: ente_nao_confirmado"
-    },
-    {
-     "id": "fc1be0320a",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DZfGtwfkYSt/",
-     "titulo": "El Niño preocupa autoridades e coloca Fazenda Rio Grande em ...",
-     "trecho": "Jun 12, 2026 ... ... Fazenda Rio Grande conta com mecanismos de preparação para situações climáticas extremas. A Defesa Civil municipal possui Plano de Contingência ...",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: ente_nao_confirmado"
     }
    ]
   },
@@ -109209,7 +109722,7 @@
      "titulo": "Como Nova Friburgo será atingida pelo super El Niño? Segundo ...",
      "trecho": "Jun 10, 2026 ... Como Nova Friburgo será atingida pelo super El Niño? Segundo ... plano de contingência para respostas rápidas à emergências. A ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "7fe1c44b7c",
@@ -109227,7 +109740,7 @@
      "titulo": "Diário oficial de 2025-10-23",
      "trecho": "Aberto e fechado Objeto da compra: REGISTRO DE PREÇOS para futura e eventual CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA O FORNECIMENTO DE CESTAS BÁSICAS, em atendimento às necessidades das famílias de risco alto e risco muito alto do Plano de Contingência do Município, at ingidas por situações de emergência e calamidade, provenientes de intempéries climáticas, pelo período de 01 (um) ano. • Aceito e Habilitado para a empresa Z E S COMERCIAL LTDA, CNPJ 47.496.710/ 0001-18, pelo melhor",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
     }
    ]
   },
@@ -109259,7 +109772,7 @@
      "titulo": "El Niño pode provocar tempestades severas no Paraná - G1 - Globo",
      "trecho": "Devido à previsão, Defesa Civil começou a revisar Plano de Contingência e a orientar prefeituras sobre prevenção a desastres. Por Millena Sartori, g1 PR. 14 ...",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "2236b63f59",
@@ -109456,7 +109969,7 @@
      "titulo": "Plano de Contingência de Papanduva chega às escolas",
      "trecho": "Sep 16, 2026 ... Plano de Contingência de Papanduva chega às escolas. Encontros acontecem ao longo desta semana. Da Redação.",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "a2b34dcdc9",
@@ -109474,7 +109987,7 @@
      "titulo": "Papanduva prepara abrigo animal por causa do “El Niño”",
      "trecho": "Sep 11, 2026 ... Plantão das Farmácias - Papanduva SC. Voltar para o início. Papanduva ... O documento também relaciona a medida ao Plano de Contingência ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -109505,7 +110018,7 @@
      "titulo": "BOM JESUS DOS PERDÕES PLANO MUNICIPAL DE ... - Bacias PCJ",
      "trecho": "Os estudos realizados em Bom Jesus dos Perdões/SP tiveram o objetivo de determinar as características físicas ... O Plano de Contingência é um documento ...",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
      "id": "e762e0e502",
@@ -109524,7 +110037,7 @@
      "titulo": "Notícia - PLANO DE CONTINGÊNCIA AO CORONAVÍRUS. - Prefeitura ...",
      "trecho": "Fica declarada situação de emergência em todo o Município de Bom Jesus dos Perdões.",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
     }
    ]
   },
@@ -110245,7 +110758,7 @@
      "titulo": "Plano Municipal de Saneamento Básico – Chácara/MG - CEIVAP",
      "trecho": "Identificação de possíveis fontes de financiamento, arranjo institucional e plano de contingência e emergência. CHÁCARA – MG. 2013. Page 2. Plano Municipal de ...",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -110309,7 +110822,7 @@
      "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO - Saae Fervedouro",
      "trecho": "Identificação de possíveis fontes de financiamento, arranjo institucional e plano de contingência e emergência. FERVEDOURO – MG. 2013. Page 2. Plano Municipal ...",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -110340,7 +110853,7 @@
      "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO - CEIVAP",
      "trecho": "Plano Municipal de Saneamento Básico – Guidoval/MG 101. Plano Municipal de Saneamento Básico – Guidoval/MG. 100. Quadro 19 – Proposições e prazos quanto à ...",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -110373,7 +110886,7 @@
      "titulo": "Plano Municipal de Saneamento Básico de Morro da Garça - coresab",
      "trecho": "Morro da Garça, foi aprovado e instituído na reunião ordinária do CBH ... Além dos programas e ações apresentados, o Plano de Contingência e Emergências.",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -110404,7 +110917,7 @@
      "titulo": "O El Niño já começou a influenciar o clima no Piauí e deve provocar ...",
      "trecho": "Jun 15, 2026 ... Photo by Defesa Civil Piau on August 11, 2026. May be a cartoon ... 🌦️ EL NIÑO: ATENÇÃO E PREVENÇÃO EM PIAU – MG 🌦️ A Defesa Civil ...",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -110760,38 +111273,6 @@
    ]
   },
   {
-   "ibge": "4105805",
-   "municipio": "Colombo",
-   "uf": "PR",
-   "melhor_nivel": "B",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "f7778f6ca8",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://ivandecolombo.com.br/blog/2026/09/16/el-nino-aumenta-risco-de-chuvas-intensas-no-parana-e-colombo-reforca-prevencao/",
-     "titulo": "El Niño aumenta risco de chuvas intensas no Paraná, e Colombo ...",
-     "trecho": "6 days ago ... El Niño aumenta risco de chuvas intensas no Paraná, e Colombo reforça prevenção ... O documento municipal aponta que o Plano de Contingência de ...",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    }
-   ]
-  },
-  {
    "ibge": "4111902",
    "municipio": "JAGUAPITÃ",
    "uf": "PR",
@@ -110943,7 +111424,7 @@
      "titulo": "MERCEDES ACTIVA EL COMITE DE EMERGENCIA FRENTE A \"EL NIÑO\" - Dato ...",
      "trecho": "Con el objetivo de anticiparse ... formalizó la medida a través del Decreto N.º 1874/2026, que declara la Emergencia Climatológica Preventiva hasta el próximo 31 de diciembre....",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -111135,7 +111616,7 @@
      "titulo": "Enfrentamento ao El Niño é priorizado em São João da Barra - O Dia",
      "trecho": "Jul 23, 2026 ... Enfrentamento ao El Niño é priorizado em São João ... Está definido que que cada secretaria operacional irá elaborar seu plano de contingência ...",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -111422,7 +111903,7 @@
      "titulo": "EL NIÑO: Alvorada D'Oeste planeja racionamento de água diante ...",
      "trecho": "Apr 7, 2026 ... EL NIÑO: Alvorada D'Oeste planeja racionamento de água diante de alerta de seca ... plano de contingência e aguarda retorno. Sugestão de Pauta",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -111801,7 +112282,7 @@
      "titulo": "Sombrio elabora Plano de Contingência para segurança nas ...",
      "trecho": "Jul 17, 2026 ... 1 likes, 0 comments - portallitoralmais on July 17, 2026: \"Sombrio elabora Plano de Contingência para segurança nas unidades de ensino ...",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -111958,7 +112439,7 @@
      "titulo": "PLANO MUNICIPAL INTEGRADO DE SANEAMENTO BÁSICO ...",
      "trecho": "Plano de Contingência é uma eventual ruptura dos taludes e bermas, resultante da ... Lavrinhas/SP – Outubro/2009. Relatórios anteriormente emitidos, referentes ...",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -112021,7 +112502,7 @@
      "titulo": "MUNICÍPIO DE MONTE ALEGRE DO SUL PLANO MUNICIPAL DE ...",
      "trecho": "... Plano de Contingência para o Sistema de Esgotamento Sanitário. 351. 6.4. Prognóstico do Sistema de Drenagem Pluvial do Município de Monte Alegre do Sul. 353.",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -112146,7 +112627,7 @@
      "titulo": "plano municipal de gestão integrada de resíduos sólidos queluz - sp",
      "trecho": "Queluz / SP. Disponível em: http://atlasdigital.mdr.gov.br/paginas ... 9842020-DISPE-SOBRE-O-PLANO-DE-CONTINGENCIA.pdf. Acesso em: 11 fev. 2024 ...",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
     }
    ]
   },
