@@ -41,3 +41,7 @@ diagnostico_sinais.json
 # caminho que preserva, e com o `verificar_evidencias.py` sabendo aceitar "está no lote do mês" como
 # cópia preservada. Enquanto isso, `scripts/empacotar_evidencias.py`, o portão do binário novo e o job
 # de publicação do lote continuam no lugar, sem a trava que os tornava perigosos.
+
+# 30/09/2026 (§318): capturas geradas pelos portões de navegador. Sobem como artefato do
+# run, nunca como arquivo do repositório — são 2,8 MB por execução.
+capturas-ci/

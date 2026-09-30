@@ -9,6 +9,19 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §318 · As capturas do PR deixam de ser tiradas à mão · 30/09/2026
+
+Classe **processo**. Item 5 do handover de otimização.
+
+Os dois portões de navegador já renderizavam as dez páginas nas três larguras (1366, 900, 390) — e
+jogavam fora. Agora salvam o PNG em `capturas-ci/` e o run os oferece como **artefato**: 30 imagens,
+2,8 MB, uma por página e largura.
+
+`if: always()` de propósito: quando o portão visual **reprova** é que a captura mais interessa, e é
+exatamente aí que um passo condicionado ao sucesso seria pulado.
+
+As capturas ficam no `.gitignore`: são artefato do run, nunca arquivo do repositório.
+
 ## §319 · Regras do ciclo no CLAUDE.md, e a medição que dirá se elas funcionaram · 30/09/2026
 
 Classe **processo**. Itens 6, 7 e 8 do handover de otimização.
