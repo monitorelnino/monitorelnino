@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-09-28 a 2026-09-30 (64 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-09-28 a 2026-09-30 (69 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -19,7 +19,7 @@ Janela: 2026-09-28 a 2026-09-30 (64 execução(ões) registrada(s), 7 dias de hi
 
 | script | papel | última execução | duração | itens | status | erro |
 |---|---|---|---|---:|---|---|
-| `recalcular_mare.py` | essencial | 2026-09-30 09:38 | 2 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-09-30 11:39 | 3 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-09-29 12:19 | 0 s | — | ok | — |
 | `coletar_diarios_consorciados.py` | coletor | 2026-09-29 07:39 | 1987 s | 2 | ok | — |
 | `coletar_diarios_municipais.py` | coletor | 2026-09-29 07:09 | 1809 s | 140 | ok | — |
@@ -36,10 +36,10 @@ Janela: 2026-09-28 a 2026-09-30 (64 execução(ões) registrada(s), 7 dias de hi
 | `monitorar_politica_por_inteiro.py` | coletor | 2026-09-30 09:11 | 1 s | 1285 | ok | — |
 | `monitorar_redes_oficiais.py` | coletor | 2026-09-30 09:27 | 0 s | — | **erro** (2 seguidas) | AttributeError: 'list' object has no attribute 'get' |
 | `monitorar_sinais_federais.py` | coletor | 2026-09-30 09:11 | 4 s | 10 | ok | — |
-| `preservar_evidencias.py` | coletor | 2026-09-29 11:37 | 0 s | — | ok | — |
+| `preservar_evidencias.py` | coletor | 2026-09-30 11:35 | 0 s | — | ok | — |
 | `revisar_pistas.py` | coletor | 2026-09-29 11:42 | 541 s | — | ok | — |
 | `scripts/amostra_auditoria_semanal.py` | coletor | 2026-09-29 12:19 | 1 s | — | ok | — |
-| `scripts/preservar_textos_integrais.py` | coletor | 2026-09-29 11:37 | 114 s | — | ok | — |
+| `scripts/preservar_textos_integrais.py` | coletor | 2026-09-30 11:35 | 1 s | — | ok | — |
 | `seguir_pistas.py` | coletor | 2026-09-30 09:27 | 306 s | — | ok | — |
 | `triar_confianca_pistas.py` | coletor | 2026-09-30 09:32 | 2 s | — | ok | — |
 | `verificar_pista_imprensa.py` | coletor | 2026-09-30 09:32 | 238 s | — | ok | — |
