@@ -13,7 +13,70 @@
    "brutos_plancon": 1480,
    "brutos_periodo_ou_seca": 1460,
    "brutos_siglas_e_variantes": 1482
+  },
+  "descobrir_planos": {
+   "alvos_consultados": 20,
+   "achados_novos": 0,
+   "fila_acumulada": 41
   }
  },
- "atualizado_em": "2026-09-30T06:46:03"
+ "atualizado_em": "2026-09-30T09:27:09",
+ "verificador_imprensa": {
+  "na_fila": 6820,
+  "lidas": 43,
+  "exibiveis": 0,
+  "inacessiveis": 1,
+  "nao_lidas_por_orcamento": 0,
+  "resolucoes": 20,
+  "nao_resolvidas_por_orcamento": 4146,
+  "por_motivo": {
+   "inacessivel": 1,
+   "recusada_pelo_juiz": 2,
+   "ente_nao_confirmado": 12,
+   "genero_nao_noticia": 3,
+   "natureza_duvidosa": 3,
+   "fora_do_ciclo": 22,
+   "resposta_a_desastre": 1,
+   "veiculo_nao_listado": 2596,
+   "sem_https": 14,
+   "redirecionamento_nao_resolvido": 20
+  },
+  "crescimento_da_lista": {
+   "candidatos": 174,
+   "avaliados_por_noite": 15,
+   "entraram": [
+    "agenciabrasil.ebc.com.br",
+    "correiobraziliense.com.br",
+    "ac24horas.com",
+    "brasil61.com"
+   ],
+   "recusas": {
+    "sem_pagina_de_expediente": 4,
+    "sem_https": 2,
+    "expediente_sem_nome_nem_cnpj": 2,
+    "expediente_sem_identidade_jornalistica": 3
+   },
+   "institucionais": []
+  },
+  "orcamento": {
+   "paginas_lidas": 44,
+   "por_host": {
+    "horacampinas.com.br": 1,
+    "vale360news.com.br": 2,
+    "plantaoguaruja.com.br": 1,
+    "abcdoabc.com.br": 1,
+    "upiara.com.br": 3,
+    "ndmais.com.br": 11,
+    "canoinhasonline.com.br": 22,
+    "nsctotal.com.br": 3
+   },
+   "recusas_por_host": {
+    "horacampinas.com.br": 1
+   },
+   "hosts_desligados": [],
+   "teto_por_host": 40,
+   "teto_global": 600
+  },
+  "versao": "1.0 (29/09/2026)"
+ }
 }
