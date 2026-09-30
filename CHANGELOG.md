@@ -27,6 +27,21 @@ A lista é atualizada todo ano e cada portaria revoga a anterior. Não há fonte
 máquina que declare a vigente, então o coletor grava a data de publicação do ato que leu e **avisa**
 quando a janela da atualização anual já passou, em vez de presumir vigência.
 
+## 2026-09-30 · #475 · Abertura da inicial, data de corte sincronizada e base legal corrigida
+
+Texto de abertura aprovado pela editoria, sem linguagem de dever, com uma data só. O corte avançava
+só quando o arquivo de transferências mudava — congelou 20 dias no período eleitoral enquanto o
+índice recebia planos; passou a ser a data da rodada, com portão. Base legal: o art. 3º-A é da Lei
+12.340, a atualização anual é do plano municipal e a bienal do estadual; o art. 8º trata de
+simulados, não de elaborar plano. `index.html`, `prefeituras.html`, `atualizar.py`, `METODOLOGIA.md`.
+
+## 2026-09-30 · #474 · Cadastro federal de municípios suscetíveis: a lista nominal, da Casa Civil
+
+A lista dos 2.095 estava pública o tempo todo, noutro endereço: desde o Decreto 12.444/2025 quem
+publica é a SEPAC/Casa Civil, não a SEDEC. O coletor lê os três PDFs, preserva cada um e grava
+2.086 no cadastro + 9 só de deslizamento = 2.095, com tipo de risco e flags separados. Peso zero.
+**Não é** o Cadastro Nacional do art. 3º-A: aquele gera dever de plano, e a LAI por ele continua.
+
 ## §318 · As capturas do PR deixam de ser tiradas à mão · 30/09/2026
 
 Classe **processo**. Item 5 do handover de otimização.
