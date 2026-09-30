@@ -1652,7 +1652,13 @@ Decisões da editoria de 30/09/2026, registradas junto com a reorganização da 
 Niño 3.4 em relação à média dos oceanos tropicais, e é medida oficial da NOAA desde fevereiro de
 2026. É ele que sustenta as palavras "há El Niño" e "forte" na página. O **ONI** e a **anomalia
 mensal** continuam coletados e passam a ser **apoio técnico**: saíram da página pública e vivem
-aqui. A razão é de leitura, não de método — três gráficos do mesmo fenômeno lado a lado pediam do
+aqui. São quatro as fontes nessa condição, e ficam nomeadas para que nenhuma delas vire fonte órfã —
+coletada, sem aparecer em lugar nenhum:
+
+- **Oceanic Niño Index (ONI)** — NOAA/CPC
+- **Anomalia mensal da temperatura do mar, região Niño 3.4** — NOAA/CPC
+- **Discussão diagnóstica do ENOS** — CPC/NCEP/NWS (NOAA)
+- **Prognóstico climático trimestral** — INMET/CPTEC-INPE A razão é de leitura, não de método — três gráficos do mesmo fenômeno lado a lado pediam do
 leitor uma comparação técnica que não é a pergunta da página.
 
 **Organização por família de risco.** A página passa a ter duas seções: a situação do fenômeno e os

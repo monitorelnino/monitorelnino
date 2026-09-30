@@ -3,11 +3,28 @@
 # Item 1 do handover de desacoplamento e cadência do item 1b. Descoberta é o que mais depende de
 # fonte externa lenta, e é justamente o que não pode derrubar a coleta de diário nem a publicação.
 # Nenhum destes scripts promove registro: todos produzem pista (§3.2, R7 revisada no §262).
+# 30/09/2026 (item 7 da rodada 2 — certificação dos coletores). O cron do GitHub é de MELHOR
+# ESFORÇO: atrasa sob carga e descarta. Medido em 30/09: `noturno_diarios`, com cron de 01:30 UTC,
+# começou às 06:59 (5h30 de atraso) e morreu no teto; a busca web, com cinco crons por noite, rodou
+# duas vezes por dia, uma delas às 13:22 UTC — dentro do horário de trabalho da editoria, que é
+# justamente o que a janela noturna existe para evitar.
+#
+# A noite passa a ser UMA CORRENTE: um disparo cedo (00:05 UTC) e cada elo acionado quando o
+# anterior TERMINA. Cinco horários independentes davam cinco oportunidades de atrasar; um disparo e
+# uma corrente dão uma. A ordem é:
+#
+#   diários → descoberta → busca web → evidências → juiz → sinais
+#
+# RECUPERAÇÃO, de propósito: o gatilho NÃO filtra por conclusão. Se o elo anterior falhou ou foi
+# cancelado, o seguinte roda assim mesmo — cada coletor processa a fila pendente independentemente
+# do horário, e uma noite perdida não pode levar a seguinte junto. `workflow_dispatch` continua em
+# todos, para rodar à mão quando preciso.
 name: Noturno — descoberta
 
 on:
-  schedule:
-    - cron: "30 2 * * *"   # 23h30 de Brasília
+  workflow_run:
+    workflows: ["Noturno — diários oficiais"]
+    types: [completed]
   workflow_dispatch:
 
 permissions:
