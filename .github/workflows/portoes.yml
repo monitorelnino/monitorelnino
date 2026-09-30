@@ -44,6 +44,7 @@ jobs:
           if [ -z "$BASE" ]; then
             echo "sem contexto de PR (disparo manual) — suíte completa por segurança"
             echo "dado_mudou=true" >> "$GITHUB_OUTPUT"
+            echo "pagina_mudou=true" >> "$GITHUB_OUTPUT"
           else
             ARQUIVOS=$(git diff --name-only "$BASE" "${{ github.sha }}")
             echo "arquivos alterados:"; echo "$ARQUIVOS"
@@ -51,6 +52,17 @@ jobs:
               echo "dado_mudou=true" >> "$GITHUB_OUTPUT"; echo "→ dado/coleta mudou: suíte completa"
             else
               echo "dado_mudou=false" >> "$GITHUB_OUTPUT"; echo "→ só página/estrutura: pulando portões de dado"
+            fi
+            # 30/09/2026 (§316, item 3 do handover de otimização): a segunda pergunta. Os portões de
+            # TEXTO (legendas, vocabulário, voz, fichas, figuras) e os dois de navegador custam ~4
+            # min juntos e só podem ser afetados por página, folha de estilo, script de página ou
+            # ficha semântica. Um PR que só toca `.py` de coletor não abre navegador nem varre
+            # legenda. O padrão é amplo de propósito: falso positivo custa tempo, falso negativo
+            # custa um defeito no ar.
+            if echo "$ARQUIVOS" | grep -qE '\.html$|^assets/|^docs/fichas_semanticas\.json$|^scripts/verificar_(legendas|vocabulario_publico|voz_editorial|fichas_semanticas|figuras|movel|consistencia_visual)\.js$'; then
+              echo "pagina_mudou=true" >> "$GITHUB_OUTPUT"; echo "→ página/estilo mudou: portões de texto e de navegador entram"
+            else
+              echo "pagina_mudou=false" >> "$GITHUB_OUTPUT"; echo "→ nenhuma página tocada: pulando portões de texto e de navegador"
             fi
           fi
       - name: Portões — página e estrutura (sempre)
@@ -82,22 +94,12 @@ jobs:
           node scripts/verificar_runtime_saude.js
           # assunto: cor rapido
           node scripts/verificar_acessibilidade.js
-          # assunto: texto
-          node scripts/verificar_vocabulario_publico.js
-          # assunto: texto
-          node scripts/verificar_voz_editorial.js
           # assunto: cor texto
           node scripts/verificar_runtime_financiamento.js
-          # assunto: cor
-          node scripts/verificar_figuras.js
-          # assunto: texto
-          node scripts/verificar_fichas_semanticas.js
           # assunto: cor texto rapido
           python3 classificar_planos_municipais.py --autoteste
           # assunto: texto rapido
           python3 scripts/verificar_ausencia_declarada.py
-          # assunto: texto
-          node scripts/verificar_legendas.js
           # §281 (28/09/2026): canal de DESCOBERTA exibido como canal de registro. "imprensa"
           # serve para achar o documento, nunca para provar o ato (§5.2.1), e treze registros
           # traziam "via imprensa" ao lado de fonte descrita como oficial.
@@ -130,11 +132,8 @@ jobs:
           python3 scripts/gerar_codemap.py --conferir
           # assunto: texto rapido
           python3 scripts/gerar_codemap.py --autoteste
-          # 30/09/2026 (§317): entrada nova de CHANGELOG é curta e tem chave por data e PR.
           # assunto: texto rapido
-          python3 scripts/verificar_changelog_curto.py
-          # assunto: texto rapido
-          python3 scripts/verificar_changelog_curto.py --autoteste
+          python3 scripts/quais_portoes.py --autoteste
           # 30/09/2026 (§307): sinal diário não pode cair em cadência semanal. A decisão da
           # editoria de 29/09 valia quando foi escrita e deixou de valer no dia seguinte, por
           # efeito colateral do desacoplamento — sem nada que reprovasse.
@@ -189,12 +188,39 @@ jobs:
           python3 coletar_obitos_registro_civil.py --autoteste
           python3 verificar_pista_imprensa.py --autoteste
           python3 scripts/busca_dirigida_do_ato.py --autoteste
+      # 30/09/2026 (§316): os cinco portões de TEXTO saíram do bloco "sempre". Eles leem páginas,
+      # folhas e fichas — um PR que só toca `.py` de coletor não tem como afetá-los, e eles custam
+      # cerca de 100 s. Continuam bloqueantes onde podem falhar.
+      - name: Portões de texto (só se página, estilo ou ficha mudaram)
+        if: steps.diff.outputs.pagina_mudou == 'true'
+        run: |
+          set -e
+          # assunto: texto
+          node scripts/verificar_vocabulario_publico.js
+          # assunto: texto
+          node scripts/verificar_voz_editorial.js
+          # assunto: cor
+          node scripts/verificar_figuras.js
+          # assunto: texto
+          node scripts/verificar_fichas_semanticas.js
+          # assunto: texto
+          node scripts/verificar_legendas.js
+      # O navegador do Playwright era baixado a cada execução. O cache o guarda por versão.
+      - name: Cache do navegador (Playwright)
+        if: steps.diff.outputs.pagina_mudou == 'true'
+        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684  # v4.2.3
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json', 'package.json') }}
+          restore-keys: playwright-${{ runner.os }}-
       - name: Portão móvel (390 px, Chromium real — v3.1 §14.3)
+        if: steps.diff.outputs.pagina_mudou == 'true'
         run: |
           npx playwright install --with-deps chromium >/dev/null 2>&1 || npx playwright install chromium
           # assunto: cor
           node scripts/verificar_movel.js
       - name: Portão 18 — consistência visual (1366 · 900 · 390 px, Chromium real — v3.1.1)
+        if: steps.diff.outputs.pagina_mudou == 'true'
         run: |
           # assunto: cor
           node scripts/verificar_consistencia_visual.js
