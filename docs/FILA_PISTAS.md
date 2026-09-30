@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 29/09/2026 · 1239 pendente(s) · 3966 decidida(s) · A=135 B=704 C=400
+Gerado em 30/09/2026 · 1277 pendente(s) · 4371 decidida(s) · A=139 B=734 C=404
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -258,6 +258,43 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://data.queridodiario.ok.org.br/5208707/2026-08-12/92a375a415f1751fe37c697e62d361237cffda2f.pdf
   - trecho: competências das unidades administrativas e dos colegiados envolvidos, em conformidade com a Resolução CMN nº 5.272/2025 e a Portaria MTP nº 1.467/2022. Destacou, ainda, como recomendação para futura revisão do procedime
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+
+## Caxias/MA — 7 pendente(s)
+- `4db23a71a9` · nível **A** (6 pts) · seguimento_busca_oficial · EX_ANTE · **DECRETO MUNICIPAL Nº 057**, 29/03/2021
+  - título: Publicações | Prefeitura Municipal de Caxias – MA - Transparência
+  - url: https://transparencia.caxias.ma.gov.br/transparencia/publicacoes
+  - trecho: DECRETO MUNICIPAL Nº 057 -- REGULAMENTA A LEI FEDERAL Nº 14.129, DE 29 DE MARÇO DE 2021, NO ÂMBITO DO MUNICÍPIO DE CAXIAS - MA. 02/06/2026.
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `9ce9c4e70f` · nível **B** (6 pts) · seguimento_busca_oficial · DUVIDA · **LEI Nº 236**, 09/11/2017
+  - título: caxias.ma.gov.br-3417.pdf
+  - url: https://caxias.ma.gov.br/wp-content/uploads/2017/11/caxias.ma.gov.br-3417.pdf
+  - trecho: Nov 10, 2017 ... PLANCON - Plano de Contingência de Proteção e Defesa Civil. PLANSAB ... disponível na Sede da Prefeitura de Caxias (MA) e no site www.caxias.ma.
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `7e83fdc810` · nível **B** (5 pts) · busca_web · EX_ANTE · data 26/04/2026 (do trecho)
+  - url: https://gauchazh.clicrbs.com.br/pioneiro/geral/noticia/2026/04/possibilidade-de-el-nino-reacende-alerta-para-chuvas-intensas-em-caxias-do-sul-onde-mais-de-5-mil-pessoas-vivem-em-areas-de-risco-cmoekgnpv02bt015b7ep38go2.html
+  - trecho: 26/04/2026 - 08h00min. Compartilhar. Adicione GZH como fonte preferencial no Google ... Atualmente, a Defesa Civil trabalha na elaboração do Plano de ...
+  - juiz: portão automático: fonte não oficial
+- `3a338ed5ea` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · **Lei nº 14.129**, 2021
+  - título: Publicações | Prefeitura Municipal de Caxias – MA - Transparência
+  - url: https://transparencia.caxias.ma.gov.br/transparencia/publicacoes?tipo=p22
+  - trecho: Plano de Contingência, Plano de Contratações Anual (PCA), Precatórios do ... Serviço de Informação Municipal Email: ascom@caxias.ma.gov.brTelefone: (99) 99107- ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `dc078080d6` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: Possibilidade de El Niño reacende alerta para chuvas intensas em ...
+  - url: https://gauchazh.clicrbs.com.br/pioneiro/geral/noticia/2026/04/possibilidade-de-el-nino-reacende-alerta-para-chuvas-intensas-em-caxias-do-sul-onde-mais-de-5-mil-pessoas-vivem-em-areas-de-risco-cmoekgnpv02bt015b7ep38go2.html
+  - trecho: Apr 26, 2026 ... Atualmente, a Defesa Civil trabalha na elaboração do Plano de Contingência de Caxias do Sul. O documento irá guiar as ações antes, durante e ...
+  - juiz: portão automático: fonte não oficial
+- `29ccf48d74` · nível **C** (5 pts) · seguimento_busca_oficial · DUVIDA · data 2023 (do trecho)
+  - título: Prefeito assina criação do Plano Municipal de Contingência de ...
+  - url: https://caxias.rs.gov.br/noticias/2023/04/sancionada-lei-do-plano-municipal-de-contingencia-de-protecao-e-defesa-civil-de-caxias-do-sul
+  - trecho: Apr 18, 2023 ... O prefeito Adiló Didomenico assinou na manhã desta quinta-feira (06/04) o decreto ... Plano de Contingência de Caxias do Sul. “Agora estamos ...
+  - ⚠ uf_divergente_na_url, ano_anterior_ao_ciclo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `5f1a2834eb` · nível **C** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - url: https://caxias.rs.gov.br/noticias/2026/04/prefeitura-promove-palestra-sobre-el-nino-e-reforca-acoes-de-prevencao-em-caxias-do-sul
+  - trecho: Apr 29, 2026 ... ... Plano de Contingência de Caxias do Sul. Muitas ações já estão sendo ... © 2026 Prefeitura de Caxias do Sul. Ícones por Freepik · Sobre o ...
+  - ⚠ uf_divergente_na_url
 
 ## Esperantinópolis/MA — 1 pendente(s)
 - `b30d5823c6` · nível **A** (7 pts) · busca_web · — · data 21/05/2026 (do trecho)
@@ -751,7 +788,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: urbana do município de Aperibé/RJ, ao longo do período de planejamento do PMSB. ... O município de Aperibé possui o Plano de Contingência de Proteção e Defesa ...
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Cabo Frio/RJ — 17 pendente(s)
+## Cabo Frio/RJ — 18 pendente(s)
 - `17218417dd` · nível **A** (6 pts) · busca_web · EX_ANTE · data 18/09/2026 (do trecho)
   - url: https://lagosinforma.com.br/cidades/cabofrio/cabo-frio-prepara-plano-de-contingencia-na-saude-para-possiveis-impactos-do-el-nino/
   - trecho: Cabo Frio prepara plano de contingência na Saúde para possíveis impactos do El Niño. Foto de Redação Por Redação; • 18/09/2026; - 15:31.
@@ -829,6 +866,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: Prefeitura de Cabo Frio intensifica combate ao trabalho infantil com ...
   - url: https://cabofrio.rj.gov.br/prefeitura-de-cabo-frio-intensifica-combate-ao-trabalho-infantil-com-acao-de-sensibilizacao-no-shopping-park-lagos/
   - trecho: Jan 25, 2024 ... ... Plano de Contingência Verão 2024: Criança não trabalha, Infância é para ... Cabo Frio – RJ, 28906-290. Atendimento do Protocolo Geral da ...
+  - ⚠ risco_errado_no_titulo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `61af7c2a23` · nível **C** (5 pts) · seguimento_busca_oficial · DUVIDA · data 2026 (do trecho)
+  - título: contra o coronavírus (covid-19) - Secretaria de Saúde de Cabo Frio
+  - url: https://portalsaude.cabofrio.rj.gov.br/campanha.php
+  - trecho: PLANO DE CONTINGÊNCIA PARA PREVENÇÃO E CONTROLE DA COVID-19 DO ... CABO FRIO - RJ. HORÁRIO DE ATENDIMENTO. 08H ÀS 17H. © 2026 NPI Brasil. Todos os ...
   - ⚠ risco_errado_no_titulo
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
@@ -1221,7 +1264,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.jmlitoral.com.br/2026/06/22/camboriu-fortalece-plano-de-prevencao-ao-el-nino-e-cria-gabinete-de-crise-para-proteger-a-populacao/
   - trecho: Jun 22, 2026 ... Na última sexta-feira (19), o prefeito de Camboriú, Leonel Pavan, reuniu no Auditório Ulisses Guimarães, no Paço Municipal, ...
 
-## Canoinhas/SC — 4 pendente(s)
+## Canoinhas/SC — 8 pendente(s)
 - `4276ecbded` · nível **A** (6 pts) · busca_web · RESPOSTA · data 23/09/2026 (do trecho)
   - título: Trabalho preventivo da prefeitura reduz impactos do El Niño em ...
   - url: https://diariodoplanalto.com.br/geral/trabalho-preventivo-da-prefeitura-reduz-impactos-do-el-nino-em-canoinhas.15484817
@@ -1237,10 +1280,31 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://canoinhas.portaldacidade.com/noticias/regiao/mp-abre-procedimentos-sobre-prevencao-ao-el-nino-em-canoinhas-e-mais-134-cidades-5720
   - trecho: 4 days ago ... Em Passo de Torres, o acompanhamento verificou a atualização do Plano de Contingência ... Unidade Canoinhas / SC. CNPJ: 62.276.888/0001-47. © ...
   - juiz: portão automático: fonte não oficial
+- `d86168a88f` · nível **B** (5 pts) · seguimento_busca_oficial · DUVIDA · citação não extraída
+  - título: Matérias em Tramitação - Câmara Municipal de Canoinhas/SC
+  - url: https://www.canoinhas.sc.leg.br/tramitacoes
+  - trecho: ... Plano de Contingência do Município de Canoinhas para prevenção, preparação e resposta aos possíveis eventos climáticos extremos associados ao atual cenário ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `446cb04b13` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - url: https://rwtv.com.br/planaltonorte/canoinhas-se-prepara-para-possivel-impacto-do-el-nino-e-reforca-acoes-preventivas/
   - trecho: May 12, 2026 ... Canoinhas se prepara para possível impacto do El Niño ... Zenilda ressaltou que o município trabalha com plano de contingência e definição clara ...
   - juiz: portão automático: fonte não oficial
+- `ad1c5d900c` · nível **B** (4 pts) · seguimento_busca_oficial · DUVIDA · data 2025 (do trecho)
+  - título: Assistência Social e Defesa Civil entregam selo de homologação de ...
+  - url: https://www.sas.sc.gov.br/index.php/noticias/2607-assistencia-social-e-defesa-civil-entregam-selo-de-homologacao-de-planos-de-contingencia-da-assistencia-social-para-19-municipios
+  - trecho: Jun 25, 2025 ... ... Plano de Contingencia da Assistência Social e já é referência ... Canoinhas Imaruí Irani Itá Jardinópolis Joinville Lages Lindóia Do ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `624d60e5a4` · nível **B** (4 pts) · seguimento_busca_oficial · DUVIDA · **Lei n° 8.080**, 1990
+  - título: plano municipal de preparação e resposta a emergências
+  - url: https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/408-regional-de-saude-de-videira.html?download=1317%3Appr-esp-arroio-trinta&Itemid=109
+  - trecho: Sep 5, 2023 ... Está em consonância com o Plano de Contingência da Secretaria Executiva de Proteção e ... Canoinhas,. RH6 - Baixada Norte, RH7 - Vale do ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `8bc3056bd0` · nível **B** (3 pts) · seguimento_busca_oficial · DUVIDA · **decreto nº 879**, 2012
+  - título: estado de santa catarina - DOE/SC
+  - url: https://portal.doe.sea.sc.gov.br/repositorio/2025/20250430/Jornal/22502.pdf
+  - trecho: Apr 30, 2025 ... Vi – cópia do plano de contingência atualizado ou em elaboração. ... sego - canoinHas/sc - cEp: 89462262. para ciência do infrator, é ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Criciúma/SC — 6 pendente(s)
 - `f220e24e26` · nível **A** (6 pts) · seguimento_busca_oficial · EX_ANTE · **PORTARIA Nº 157**, 13/11/2020
@@ -1853,14 +1917,27 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://procarnivoros.org.br/projeto/gatos-do-mato-brasil/
   - trecho: Plano de Ação Nacional dos Pequenos Felinos;; Subsídios para manejo de ... maracajá-verdadeiro), ditaria o aumento ou a diminuição dos números ...
 
-## Ouro/SC — 2 pendente(s)
+## Ouro/SC — 5 pendente(s)
 - `39cae9c286` · nível **A** (6 pts) · busca_web · EX_ANTE · data 23/06/2026 (do trecho)
   - url: https://capinzalfm.com.br/noticia/ouro-apresenta-plano-de-contingencia-da-defesa-civil-e-reforca-preparacao-para-eventos-climaticos
   - trecho: Ouro apresenta Plano de Contingência da Defesa Civil e reforça preparação para eventos climáticos. Jardel Martinazzo; 23/06/2026 21:40.
   - juiz: portão automático: fonte não oficial
+- `cc51ac2925` · nível **A** (6 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: Defesa Civil - Município de Ouro-SC -
+  - url: https://ouro.sc.gov.br/pagina-36602/
+  - trecho: Defesa Civil – Município de Ouro-SC. A atual coordenadoria de Proteção e ... – coordenar a elaboração do plano de contingência municipal;. – mobilizar ...
+- `f85d6481a7` · nível **A** (6 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: Carta de Serviços - - Ouro – SC
+  - url: https://ouro.sc.gov.br/carta-servico/
+  - trecho: - coordenar a elaboração do plano de contingência municipal;. - mobilizar ... Defesa Civil – Município de OURO SC · Atividades ON-LINE · Aplicação Recursos ...
 - `9c0fd223ae` · nível **B** (5 pts) · busca_web · — · citação não extraída
   - url: https://ouro.sc.gov.br/audiencia-publica-plano-de-contingencia-defesa-civil/
   - trecho: Audiência Pública – Plano de Contingência Defesa Civil. A Prefeitura de Ouro e o Conselho Municipal de Proteção e Defesa Civil realizam no próximo dia 23 de ...
+- `162c54869d` · nível **B** (4 pts) · seguimento_busca_oficial · DUVIDA · citação não extraída
+  - título: PLANO DE CONTINGÊNCIA: - Portal Gov.br
+  - url: https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/capacitacoes/008_boas_praticas_eixo_plancon/008_boaspraticas_plancon_plano_contingencia_enfrentamento_riscos_desastres_natal_rn.pdf
+  - trecho: Inclui sumário. 1. Plano de Contingência. ... 04 - LAGOA DO PAJUÇARA 2 (OU VISCONDE DE OURO PRETO). LOCALIZAÇÃO. BAIRRO: Pajuçara I. ENDEREÇO: Rua Visconde de ...
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Painel/SC — 2 pendente(s)
 - `1a33729bcf` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
@@ -2096,10 +2173,41 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: PT elaborou o seu "Plano de Ação de Governo", a partir do qual a Co ... de Palma Sola/SC - em 16 Set 89 e. Arvoredo - município de Ronda. Alta/RS - em ...
   - ⚠ ano_anterior_ao_ciclo
 
-## Pedras Grandes/SC — 1 pendente(s)
+## Pedras Grandes/SC — 3 pendente(s)
 - `2a96d9194b` · nível **A** (6 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - url: https://folharegionalwebtv.com/cotidiano/com-alerta-de-el-nino-pedras-grandes-amplia-obras-de-desassoreamento-de-rios-e-corregos-93671
   - trecho: Jul 30, 2026 ... Pedras Grandes tem um Plano de Contingência de Proteção e Defesa Civil que estabelece os protocolos para monitorar, alertar e responder a ...
+  - juiz: portão automático: fonte não oficial
+- `2bc919c780` · nível **B** (5 pts) · seguimento_busca_oficial · DUVIDA · citação não extraída
+  - título: Câmara Municipal de Pedras Grandes/SC
+  - url: https://www.camarapedrasgrandes.sc.gov.br/tramitacoes/1/1332/0
+  - trecho: ... Plano de Contingência Multirriscos para Unidades Educativas (PlanCon Edu-MR/SC). O PREFEITO DO MUNICÍPIO DE PEDRAS GRANDES, ESTADO DE SANTA CATARINA, Faço ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `7a56e4a3ea` · nível **B** (4 pts) · seguimento_busca_oficial · DUVIDA · data 2026 (do trecho)
+  - título: PLANO MUNICIPAL DE ASSISTÊNCIA SOCIAL Vigência 2026 a 2029
+  - url: https://pedrasgrandes.sc.gov.br/uploads/sites/344/2025/12/Plano-Municipal-de-Assistencia-Social-2026-a-2029.pdf
+  - trecho: Dec 5, 2025 ... Fortalecer a Proteção Social Brasileira no município de Pedras Grandes/SC, por meio da consolidação de uma gestão descentralizada e ...
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+
+## Pomerode/SC — 4 pendente(s)
+- `2871712dd9` · nível **A** (6 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: secretariadesaúde de pomerode - Vigilância Sanitária
+  - url: https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/401-regional-de-saude-de-blumenau.html?download=1253%3Appr-esp-pomerode&Itemid=109
+  - trecho: m o Plano de Contingência de Proteção e Defesa Civil ... mesotérmico úmido. nicípio de Pomerode, a média pluviométrica do município é de 1.70 atempo.com.br/ ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `9df60a76ba` · nível **B** (5 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: 01_Plano de Contingêancia de Desastres em Hospitais_revisão
+  - url: https://defesacivil.blumenau.sc.gov.br/static/app/defesa-civil/PCDH_2024.pdf
+  - trecho: O Plano de Contingência para Desastres em Hospitais será acionado sempre que forem ... vermelha livres (Timbó, Gaspar, Indaial, Pomerode);. ⇨ Conduzir ...
+- `666648a668` · nível **B** (5 pts) · seguimento_busca_oficial · DUVIDA · citação não extraída
+  - título: Plano Municipal de Contingência Inundações e Deslizamentos
+  - url: https://riodoscedros.sc.gov.br/uploads/sites/444/2021/12/2056430_plano_de_contingencia_versao_107.pdf
+  - trecho: O Plano de Contingência para inundações e ... O município interliga-se com Timbó e Pomerode pela Rodovia SC 416, denominada Rodovia RALF KNAESEL, com.
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `b16e877d25` · nível **B** (3 pts) · busca_web · RESPOSTA · **Decreto Estadual nº 1.530**, 18/05/2026
+  - url: https://www.jornaldepomerode.com.br/como-se-preparar-para-o-el-nino-nova-pagina-da-defesa-civil-reune-informacoes-alertas-e-medidas-de-autoprotecao/
+  - trecho: Jun 17, 2026 ... Outro destaque é a área “Planos de Preparação”, que disponibiliza o Plano de Contingência ... >>> Siga o canal do Jornal de Pomerode no WhatsApp.
   - juiz: portão automático: fonte não oficial
 
 ## Rio do Oeste/SC — 51 pendente(s)
@@ -2928,57 +3036,49 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: ... plano de ação e acompanhamento da implantação do plano de ação para diversos projetos. ... Timbó Grande; Três Barras; Treviso; Treze de Maio; Treze Tílias ...
 
 ## Treze de Maio/SC — 63 pendente(s)
-- `872cd83aab` · nível **A** (8 pts) · busca_web · DUVIDA · **Lei nº 860**, 04/02/1880
+- `872cd83aab` · nível **A** (8 pts) · busca_web · — · data 2014 (do trecho)
   - título: plano municipal de preparação e resposta a emergências
   - url: https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/401-regional-de-saude-de-blumenau.html?download=1248%3Appr-esp-blumenau&Itemid=109
   - trecho: Grande do Treze de Maio;. ✓ Córregos: Córrego Fundo Kilan. 5.6 PEDOLOGIA ... Plano de contingência de proteção e defesa civil. 2014. UNIFESP. Gestão de ...
-  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
-- `d00818759b` · nível **B** (6 pts) · busca_web · EX_ANTE · data 29/06/2017 (do trecho)
+- `d00818759b` · nível **B** (6 pts) · busca_web · — · data 29/06/2017 (do trecho)
   - título: [29/06/2017] Relatório Final - Prefeitura de Imaruí
   - url: https://imarui.sc.gov.br/uploads/sites/130/2021/12/1005072_Relatorio_Final.pdf
   - trecho: ... Treze de Maio e Tubarão. O Consórcio CATARINA é uma possibilidade dos ... Plano de Contingência é um plano elaborado para orientar as ações de.
   - ⚠ ano_anterior_ao_ciclo
-  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
-- `0fc5941aeb` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
+- `0fc5941aeb` · nível **B** (5 pts) · busca_web · — · citação não extraída
   - título: plano municipal de preparação e resposta às emergências em ...
   - url: https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/402-regional-de-saude-de-tubarao.html?download=1260%3A3-plano-treze-de-maio&Itemid=109
   - trecho: Neste sentido, em Treze de Maio / SC existem diversas iniciativas do ... Também elaborou plano de contingência acerca da emergência em saúde pública, bem ...
-  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
-- `a516b01da7` · nível **B** (5 pts) · busca_web · RESPOSTA · citação não extraída
+- `a516b01da7` · nível **B** (5 pts) · busca_web · — · citação não extraída
   - título: PLANO MUNICIPAL DE CONTINGÊNCIA
   - url: https://pedrasgrandes.sc.gov.br/uploads/sites/344/2025/11/PLANO-DE-CONTINGENCIA-PG-25_RV_01.pdf
   - trecho: • Cidades Próximas: São Ludgero, Tubarão, Treze de Maio, Cocal do Sul, Urussanga, Orleans ... O Plano de Contingência Municipal - PLANCON Municipal será ativado ...
   - ⚠ ano_anterior_ao_ciclo
-  - juiz: portão automático: natureza RESPOSTA — só ex-ante é aplicado sozinho
-- `b38879014a` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
+- `b38879014a` · nível **B** (5 pts) · busca_web · — · citação não extraída
   - título: Treze de Maio promove baile da Melhor Idade com música ...
   - url: https://diarioomunicipio.com.br/geral/treze-de-maio-promove-baile-da-melhor-idade-com-musica-diversao-e-confraternizacao-130172
   - trecho: 3 days ago ... Treze de Maio promove baile da Melhor Idade com música ... Grac Municipal é instituído e plano de contingência é atualizado em Jaguaruna.
-  - juiz: portão automático: fonte não oficial
 - `9186ca417f` · nível **B** (5 pts) · busca_web · — · data 2020 (do trecho)
   - título: PLANO DE AÇÃO REGIONAL DA REDE DE ATENÇÃO ÀS ...
   - url: https://www.saude.sc.gov.br/index.php/pt/redes-de-atencao-a-saude/rede-de-urgencia-e-emergencia-rue/planos-de-acao/documentos-planos-de-acao-regionais/par-macrorregiao-do-sul/download
   - trecho: Nov 4, 2020 ... Martinho, Treze de Maio, Tubarão, Balneário Rincão, Cocal do Sul ... 4 PROPOSTA DE INCLUSÃO NO PLANO DE AÇÃO REGIONAL ...
-- `8d3c92eadb` · nível **B** (4 pts) · busca_web · DUVIDA · citação não extraída
+- `8d3c92eadb` · nível **B** (4 pts) · busca_web · — · citação não extraída
   - título: SC - Prefeitura de Tubarão
   - url: https://tubarao.sc.gov.br/uploads/sites/265/2025/04/Plano-de-Contingencia-APROVADO-1-2024.pdf
   - trecho: com o município de Jaguaruna, a Sudoeste com Treze de Maio, e a Sudeste com Laguna. ... plano de contingência. Nível de. Mobilização. Limiares Críticos. Ações ...
   - ⚠ ano_anterior_ao_ciclo
-  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `51488ee4f9` · nível **B** (4 pts) · busca_web · — · data 2024 (do trecho)
   - título: plano de - contingência - Defesa Civil de Blumenau
   - url: https://defesacivil.blumenau.sc.gov.br/static/app/defesa-civil/Plano_de_conting%C3%AAncia_2024.pdf
   - trecho: Aug 6, 2024 ... Plano de Contingência – Inundações e Movimentos de Massa - Anexo ... Treze de Maio. Localidade Treze de Maio. 8411-0169 (falar com. Kleine).
-- `e7a4e4f96f` · nível **B** (4 pts) · busca_web · DUVIDA · citação não extraída
+- `e7a4e4f96f` · nível **B** (4 pts) · busca_web · — · citação não extraída
   - título: Ex-prefeito Edenilson da Costa apoia Dr. Elói à Câmara Federal ...
   - url: https://diarioomunicipio.com.br/geral/ex-prefeito-edenilson-da-costa-apoia-dr-eloi-a-camara-federal-reforcando-compromisso-com-jaguaruna-130071
   - trecho: 4 days ago ... Treze de Maio promove baile da Melhor Idade com música, diversão e confraternização ... Grac Municipal é instituído e plano de contingência ...
-  - juiz: portão automático: fonte não oficial
-- `d14edb32fb` · nível **B** (4 pts) · busca_web · DUVIDA · citação não extraída
+- `d14edb32fb` · nível **B** (4 pts) · busca_web · — · citação não extraída
   - título: Tempo segue firme, com predomínio de sol, poucas nuvens e ...
   - url: https://diarioomunicipio.com.br/tempo/tempo-segue-firme-com-predominio-de-sol-poucas-nuvens-e-temperaturas-em-elevacao-em-santa-catarina-130238
   - trecho: 2 days ago ... Treze de Maio promove baile da Melhor Idade com música, diversão e confraternização ... Grac Municipal é instituído e plano de contingência ...
-  - juiz: portão automático: fonte não oficial
 - `1c3e37bc42` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
   - título: Decreto - Prefeitura Municipal de Criciúma
   - url: https://apoio.criciuma.sc.gov.br/files/68f93fa032a0c22102025.pdf
@@ -3004,52 +3104,44 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://tubarao.sc.gov.br/uploads/sites/265/2022/11/1853591_Curriculo_Base_da_Educacao_Infantil_e_Fundamental_do_Territorio_Catarinense.pdf
   - trecho: ... Treze de Maio; Caldas do Cubatão – Santo Amaro da Imperatriz; Aldeia ... Plano de ação para satisfazer as necessidades básicas de aprendizagem. Jomtien ...
   - ⚠ ano_anterior_ao_ciclo
-- `71392208fc` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
+- `71392208fc` · nível **B** (3 pts) · busca_web · — · citação não extraída
   - título: Editor Comitê Tubarão e Complexo Lagunar - Aguas SC
   - url: https://www.aguas.sc.gov.br/servicos/noticias/itemlist/user/199-editorcomitetubaraoecomplexolagunar
   - trecho: ... plano de contingência com o intuito de enfrentar os momentos de crise. ... Treze de Maio. Publicado em Notícias. Tagged sob. Comitê Tubarão e Complexo ...
-  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
-- `0ea2fd9a54` · nível **B** (3 pts) · busca_web · DUVIDA · data 2022 (do trecho)
+- `0ea2fd9a54` · nível **B** (3 pts) · busca_web · — · data 2022 (do trecho)
   - título: Publicações Epagri
   - url: https://sistemas.epagri.sc.gov.br/semob/consulta.action?subFuncao=consultaPublicacoes
   - trecho: ... Plano de contingência da Epagri diante da pandemia da Covid-19 2022 ... Treze de Maio, SC. 2014 - Publicação seriada (Boletim Didático) Livre download ...
-  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
-- `eab9a1876f` · nível **B** (3 pts) · busca_web · EX_ANTE · **lei n. 6.745**, 29.11.2024
+- `eab9a1876f` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
   - título: estado de santa catarina - DOE SC
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2024/20241202/Jornal/22407.pdf
   - trecho: Dec 2, 2024 ... Continuidade de negócio (plano de contingência, de recuperação de ... ção da agência de Treze de maio. oriGEm: Dl nº 79/2024 Valor: r ...
   - ⚠ ano_anterior_ao_ciclo
-  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
-- `69523f26ef` · nível **B** (3 pts) · busca_web · DUVIDA · data 2022 (do trecho)
+- `69523f26ef` · nível **B** (3 pts) · busca_web · — · data 2022 (do trecho)
   - título: Publicações-Livres - Epagri
   - url: https://www.epagri.sc.gov.br/solucoes/publicacoes/publicacoes-livres/
   - trecho: Plano de contingência da Epagri diante da pandemia da Covid-19 2022 ... Treze de Maio, SC. 2014 - Publicação seriada (Boletim Didático) Livre ...
-  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
-- `3117895f56` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
+- `3117895f56` · nível **B** (3 pts) · busca_web · — · citação não extraída
   - título: Plano de contingência e emergência ambiental - Cristal - Consultoria
   - url: https://www.cristalconsult.com.br/plano-contingencia-emergencia-ambiental
   - trecho: Plano de contingência e emergência ambiental da sua empresa esteja alinhado ... Treze de Maio; Timbó Grande; Trombudo Central; Campo Belo do Sul; Itá; Ouro ...
-  - juiz: portão automático: fonte não oficial
-- `a90af4340a` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+- `a90af4340a` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
   - título: Coopercocal apresenta Plano de Contingência para atuação em ...
   - url: https://www.ligadonosul.com.br/geral/coopercocal-apresenta-plano-de-contingencia-para-atuacao-em-periodos-de-alertas-climaticos/
   - trecho: Sep 1, 2026 ... A Coopercocal apresentou aos colaboradores, na manhã desta segunda-feira, dia 31, o Plano de Contingência ... Treze de Maio em Destaque. Jailson ...
-  - juiz: portão automático: fonte não oficial
 - `93c498b2a2` · nível **B** (3 pts) · busca_web · — · citação não extraída
   - título: Treze de maio: 707 imagens, fotos e ilustrações stock livres de direitos
   - url: https://www.shutterstock.com/pt/search/treze-de-maio
   - trecho: ... Treze de Maio, state of Santa Catarina. TREZE DE MAIO, BRAZIL - CIRCA APRIL ... No entanto, o governo regional implementou um plano de contingência ...
-- `73c4015e23` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
+- `73c4015e23` · nível **B** (3 pts) · busca_web · — · citação não extraída
   - título: regulamento/plano de operação da promoção - Cresol
   - url: https://cresol.com.br/wp-content/uploads/2026/02/Regulamento-Aprovado-Cooperar-e-Ganhar-Cresol-Geral-SPA-04.047374-2026.pdf
   - trecho: Bairro: CENTRO Município: TREZE DE MAIO UF: SC CEP:88710-000. CNPJ/MF nº ... plano de contingência específico para solução dos possíveis problemas e ...
-  - juiz: portão automático: fonte não oficial
-- `baa9e60ba6` · nível **B** (3 pts) · busca_web · DUVIDA · **PORTARIA Nº 09**, 24.11.2025
+- `baa9e60ba6` · nível **B** (3 pts) · busca_web · — · data 2025 (do trecho)
   - título: estado de santa catarina - DOE/SC
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2025/20251125/Jornal/22647.pdf
   - trecho: Nov 25, 2025 ... de plano de contingência para doação de itens de assistência hu- ... de TrEZE dE maio/sc, para o exercício da atividade de vistoria de ...
   - ⚠ ano_anterior_ao_ciclo
-  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `914c191325` · nível **B** (3 pts) · busca_web · — · data 14/10/2020 (do trecho)
   - título: FLORIANÓPOLIS, quARtA-FeIRA, 14 de OutubRO de 2020 ANO ...
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2020/20201014/Jornal/2499.pdf
@@ -3645,7 +3737,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Formação continuada e  certificação  Sempre que  necessário  Edição 2.794 | Ano 20 27 de agosto de 2026  Página 26  Certificação Digital: YL29CSXL-2O0TPJGV-OV92BOEB-W63ZS1BE Versão eletrônica disponível em: http://www.te
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Valença/BA — 5 pendente(s)
+## Valença/BA — 8 pendente(s)
 - `1914876af4` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Valença fortalece plano de contingência para o El Niño e ...
   - url: https://www.baixosulemalta.com/single-post/valen%C3%A7a-fortalece-plano-de-conting%C3%AAncia-para-o-el-ni%C3%B1o-e-intensifica-a%C3%A7%C3%B5es-de-preven%C3%A7%C3%A3o-%C3%A0s-queimadas
@@ -3666,6 +3758,19 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.baixosulemalta.com/single-post/valen%C3%A7a-fortalece-plano-de-conting%C3%AAncia-para-o-el-ni%C3%B1o-e-intensifica-a%C3%A7%C3%B5es-de-preven%C3%A7%C3%A3o-%C3%A0s-queimadas
   - trecho: A Prefeitura de Valença realizou, ... do Plano de Contingência voltado ao enfrentamento dos impactos do fenômeno climático El Niño no município....
   - juiz: portão automático: fonte não oficial
+- `f04a87c4a4` · nível **B** (3 pts) · seguimento_busca_oficial · — · data 15/11/2021 (do trecho)
+  - título: ministério da educação - Portal Gov.br
+  - url: https://www.gov.br/mec/pt-br/cne/pdf/pareceres-do-cne/ces/2023/pces382_23.pdf
+  - trecho: May 10, 2023 ... alinhado, não há um plano de contingência para garantia de continuidade de ... Valença-BA, 15 de novembro de 2021. Caroline Moutinho. Procurador ...
+  - ⚠ ano_anterior_ao_ciclo
+- `00a855bad6` · nível **B** (3 pts) · seguimento_busca_oficial · — · data 2002 (do trecho)
+  - título: Ata - Pesquisa textual | Tribunal de Contas da União
+  - url: https://pesquisa.apps.tcu.gov.br/#/documento/ata-sessao/37528019987.PROC/%2520/DTRELEVANCIA%2520desc/1/%2520
+  - trecho: 1.2.5.3 providencie plano de contingência para ensaios e equipamentos;. 1.2 ... Valença/BA - CEPLAC/CENEX/VALE. Exercício: 2002. 1.1. Determinar ao CEPLAC ...
+- `05899c6fd9` · nível **B** (3 pts) · seguimento_busca_oficial · — · data 2019 (do trecho)
+  - título: Prefeitura Municipal de Cairu publica:
+  - url: https://www.cairu.ba.gov.br/Handler.ashx?f=diario&query=3689&c=131
+  - trecho: Dec 16, 2019 ... b) Plano de contingência elaborado exclusivamente para o PLANO SETORIAL, ... Peçanha, Taperoá e Valença. É o único município brasileiro ...
 
 ## Cascavel/CE — 8 pendente(s)
 - `7a83f1ad18` · nível **B** (5 pts) · busca_web · — · citação não extraída
@@ -3704,7 +3809,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: IPC CASCAVEL DO FUTURO | IPC convoca comunidade para audiência pública do Plano de Ação e Investimentos
   - ⚠ uf_divergente_na_url
 
-## Fortaleza/CE — 5 pendente(s)
+## Fortaleza/CE — 10 pendente(s)
+- `af1877047a` · nível **B** (5 pts) · seguimento_busca_oficial · — · data 16/03/2020 (do trecho)
+  - título: Fortaleza, 16 de março de 2020 | ANO XII Nº053 | Preço: R$ 17,96
+  - url: https://www.ce.gov.br/cge/wp-content/uploads/sites/71/2020/03/Decreto-n%C2%BA.-33.510-de-16-de-mar%C3%A7o-de-2020.-Decreta-situa%C3%A7%C3%A3o-de-Emerg%C3%AAncia-em-sa%C3%BAde-e-disp%C3%B5e-sobre-medidas-de-enfrentamento-e-conten%C3%A7%C3%A3o-da-infecc%C3%A7%C3%A3o-humana-pelo-novo-coronavirus.pdf
+  - trecho: Mar 16, 2020 ... Fortaleza ... A Secretaria da Saúde do Estado deverá manter atualizado. Plano de Contingência no âmbito do Estado do Ceará para conter a ...
+  - ⚠ ano_anterior_ao_ciclo
 - `0a8db47e79` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
   - url: https://www.opiniaoce.com.br/fortaleza/2026/08/28/calor-extremo-e-el-nino-mobilizam-orgaos-municipais-para-acoes-preventivas/
   - trecho: Aug 28, 2026 ... ... El Niño) e o Plano de Contingência (Plancon El Niño). Para o ... FORTALEZA-CE | CNPJ: 45.114.358/0001-83 (85) 98766-0192 - Rossi ...
@@ -3720,6 +3830,26 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.instagram.com/reel/Dc4SGOJNAiW/
   - trecho: Sep 4, 2026 ... Fortaleza se prepara para enfrentar os impactos do El Niño ... El Niño e do Plano de Contingência; Ampliação da rede de estações ...
   - juiz: portão automático: fonte não oficial
+- `7d21b2eadc` · nível **B** (4 pts) · seguimento_busca_oficial · — · data 2020 (do trecho)
+  - título: diário oficial do município - PODER EXECUTIVO
+  - url: https://www.sefin.fortaleza.ce.gov.br/anexoCT/25/fwzqvwydy.klv472/pdf/DECRETO%20N%C2%BA%2014
+  - trecho: Mar 17, 2020 ... 83, da Lei Orgânica do Município de Fortaleza. CONSI-. DERANDO que a ... da Saúde, Plano de Contingência para conter a emergência de.
+  - ⚠ ano_anterior_ao_ciclo
+- `c40273068e` · nível **B** (3 pts) · seguimento_busca_oficial · — · **Lei 12.608**, 2012 (do trecho)
+  - título: PLANO DE AÇÕES - Governo do Estado do Ceará
+  - url: https://www.ce.gov.br/seplag/wp-content/uploads/sites/74/2025/03/PLANO-DE-CONTINGENCIA-FALESIAS-digital-1_compressed.pdf
+  - trecho: Lei 12.608/2012, o plano de contingência é definido como um “conjunto ... em Fortaleza-CE, Brasil. In: CONGRES-. SO LATINO-AMERICANO DE CIÊNCIA DO. MAR ...
+  - ⚠ ano_anterior_ao_ciclo
+- `e3d997fd38` · nível **B** (3 pts) · seguimento_busca_oficial · — · data 17/03/2022 (do trecho)
+  - título: DIÁRIO OFICIAL DO ESTADO | SÉRIE 3 | ANO XIV Nº064
+  - url: https://www.bombeiros.ce.gov.br/wp-content/uploads/sites/27/2022/03/Decreto-34595_PEPDEC_17-03-2021.pdf
+  - trecho: Mar 9, 2022 ... VIII - plano de contingência: conjunto de medidas preestabelecidas ... Fortaleza, em 17 de março de 2022. Camilo Sobreira de Santana.
+  - ⚠ ano_anterior_ao_ciclo
+- `d4e4770daf` · nível **C** (4 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: Upas que atendem suspeitos de covid-19 são higienizadas
+  - url: https://www.cmfor.ce.gov.br/comunicacao/noticias/upas-que-atendem-suspeitos-de-covid-19-sao-higienizadas
+  - trecho: A Prefeitura de Fortaleza, atendendo ao plano de contingência, vem pondo em prática um conjunto de ações na prevenção contra o coronavírus. Umas dessas ...
+  - ⚠ risco_errado_no_titulo
 - `f504be1f02` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
   - url: https://www.instagram.com/reel/DdCR-pNhPgT/
   - trecho: Sep 8, 2026 ... ... likes, 0 comments - tvceara on September 8, 2026: "Fortaleza já ... El Niño (COE El Niño) e um Plano de Contingência. O período mais ...
@@ -3763,21 +3893,6 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: Apicum-Açu - MA - Infosanbas
   - url: https://infosanbas.org.br/municipio/apicum-acu-ma/
   - trecho: Seu território é composto 100% pelo bioma Amazonia. O IDHM de Apicum-Açu é 0,57. O município possui Política Municipal de Saneamento Básico e possui Plano Municipal de Saneamento Básico.
-
-## Caxias/MA — 3 pendente(s)
-- `7e83fdc810` · nível **B** (5 pts) · busca_web · EX_ANTE · data 26/04/2026 (do trecho)
-  - url: https://gauchazh.clicrbs.com.br/pioneiro/geral/noticia/2026/04/possibilidade-de-el-nino-reacende-alerta-para-chuvas-intensas-em-caxias-do-sul-onde-mais-de-5-mil-pessoas-vivem-em-areas-de-risco-cmoekgnpv02bt015b7ep38go2.html
-  - trecho: 26/04/2026 - 08h00min. Compartilhar. Adicione GZH como fonte preferencial no Google ... Atualmente, a Defesa Civil trabalha na elaboração do Plano de ...
-  - juiz: portão automático: fonte não oficial
-- `dc078080d6` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
-  - título: Possibilidade de El Niño reacende alerta para chuvas intensas em ...
-  - url: https://gauchazh.clicrbs.com.br/pioneiro/geral/noticia/2026/04/possibilidade-de-el-nino-reacende-alerta-para-chuvas-intensas-em-caxias-do-sul-onde-mais-de-5-mil-pessoas-vivem-em-areas-de-risco-cmoekgnpv02bt015b7ep38go2.html
-  - trecho: Apr 26, 2026 ... Atualmente, a Defesa Civil trabalha na elaboração do Plano de Contingência de Caxias do Sul. O documento irá guiar as ações antes, durante e ...
-  - juiz: portão automático: fonte não oficial
-- `5f1a2834eb` · nível **C** (4 pts) · busca_web · — · data 2026 (do trecho)
-  - url: https://caxias.rs.gov.br/noticias/2026/04/prefeitura-promove-palestra-sobre-el-nino-e-reforca-acoes-de-prevencao-em-caxias-do-sul
-  - trecho: Apr 29, 2026 ... ... Plano de Contingência de Caxias do Sul. Muitas ações já estão sendo ... © 2026 Prefeitura de Caxias do Sul. Ícones por Freepik · Sobre o ...
-  - ⚠ uf_divergente_na_url
 
 ## Imperatriz/MA — 2 pendente(s)
 - `acc5082fbd` · nível **B** (4 pts) · busca_web · EX_ANTE · **Lei nº 8.080**, 1990
@@ -4909,17 +5024,39 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: 
   - juiz: portão automático: fonte não oficial
 
-## Bom Jesus/RS — 2 pendente(s)
+## Bom Jesus/RS — 6 pendente(s)
 - `57ed7351c7` · nível **B** (6 pts) · busca_web · EX_ANTE · data 2025 (do trecho)
   - título: Bom Jesus do Itabapoana apresenta plano de contingência para ...
   - url: https://g1.globo.com/rj/norte-fluminense/noticia/2025/11/04/bom-jesus-do-itabapoana-apresenta-plano-de-contingencia-para-enfrentar-chuvas-fortes.ghtml
   - trecho: Nov 4, 2025 ... Bom Jesus do Itabapoana apresenta plano de contingência para enfrentar chuvas fortes ... Com El Niño muito forte, Sul deve ter chuva ...
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: fonte não oficial
+- `e7f153ec77` · nível **B** (4 pts) · seguimento_busca_oficial · — · data 2026 (do trecho)
+  - título: PLANO DE CONTINGÊNCIA CAXIAS DO SUL/RS 2026
+  - url: https://gcpstorage.caxias.rs.gov.br/documents/2026/05/971f44db-bc1d-42a1-bb76-f7c1990a74e8.pdf
+  - trecho: PLANO DE CONTINGÊNCIA: é o planejamento tático elaborado com antecipação, ... LOCALIZAÇÃO: Capela São Francisco, Bom Jesus - RS, Rio das Antas. Coordenadas ...
+- `94a1fab7b1` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · **Lei Nº 6.575**, 05/07/1973
+  - título: governo do estado do rio grande do sul
+  - url: https://saude.rs.gov.br/upload/arquivos/202109/30163323-2-rdqa-2021-30-09-2021.pdf
+  - trecho: Sep 30, 2021 ... ... Bom Jesus, Encantado,. Jaquirana, Marques de Souza ... Pactua a atualização do Plano de Contingência da Secretaria de Estado do Rio.
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `3c339def2d` · nível **B** (4 pts) · seguimento_busca_oficial · DUVIDA · data 2022 (do trecho)
+  - título: Diário Oficial Eletrônico do Estado do Rio Grande do Sul
+  - url: https://pge.rs.gov.br/upload/arquivos/202201/31085206-doe-2022-01-31.pdf
+  - trecho: Jan 31, 2022 ... MUNICÍPIO DE BOM JESUS ... seguintes documentos: Plano de Contingência da COVID-19; Programa de Gerenciamento de Riscos – PGR; Programa de.
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `ee931a5f66` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2015 (do trecho)
   - url: https://agencia.baciaspcj.org.br/docs/pmsb-pmgirs/p7-bom-jesus-perdoes-vol2.pdf
   - trecho: VOLUME II. Bom Jesus dos Perdões, 2015. ... O Plano de Contingência é um documento onde estão definidas as responsabilidades estabelecidas em uma.
   - juiz: portão automático: fonte não oficial
+- `864e8a1507` · nível **C** (4 pts) · seguimento_busca_oficial · EX_ANTE · **DECRETO Nº 162**, 22.07.2026
+  - título: Assinado digitalmente pelo DIO - Diário Oficial
+  - url: https://ioes.dio.es.gov.br/portal/edicoes/download/11323
+  - trecho: Jul 23, 2026 ... Atualizar o Plano de Contingência Vigidesastres, conforme portaria ... Bom Jesus do Norte 1.991. 7. 0,35%. 21. Itapemirim. 6.549. 23. 0,35%. 22.
+  - ⚠ uf_divergente_na_url
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Bozano/RS — 1 pendente(s)
 - `ec5a28b7aa` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
@@ -4940,7 +5077,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.novohamburgo.rs.gov.br/noticia/novo-hamburgo-debate-possiveis-impactos-el-nino-2o-seminario-resiliencia-climatica
   - trecho: Jul 6, 2026 ... Novo Hamburgo debate possíveis impactos do El Niño no 2º Seminário de Resiliência Climática ... Plano de Contingência, como a integração entre as ...
 
-## Porto Alegre/RS — 4 pendente(s)
+## Porto Alegre/RS — 8 pendente(s)
+- `9610100eb2` · nível **B** (6 pts) · seguimento_busca_oficial · EX_ANTE · **PORTARIA Nº 708**, 2011
+  - título: portaria nº 708, doe 106, de 31 de maio de 2011
+  - url: https://saude.rs.gov.br/upload/arquivos/202012/07173724-708-11.pdf
+  - trecho: elaborar o Plano de Contingência Estadual da Saúde Para os Desastres, formalizando a estrutura ... Porto Alegre, 26 de abril de 2011. Codigo: 825199. RESOLUÇÕES.
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 - `0c4848ddc3` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - url: https://gauchazh.clicrbs.com.br/porto-alegre/noticia/2026/04/porto-alegre-prepara-plano-de-contingencia-para-possiveis-impactos-do-el-nino-no-segundo-semestre-deste-ano-cmo3jqfyp02fv017498040kw4.html
   - trecho: Apr 17, 2026 ... Porto Alegre prepara plano de contingência para possíveis impactos do El Niño no segundo semestre deste ano. Apesar das previsões, consultor ...
@@ -4953,6 +5096,21 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: Diário oficial de 2025-10-07
   - url: https://data.queridodiario.ok.org.br/4314902/2025-10-07/fba7a235177e4cb8f6415a813fb689f048b2d77e.pdf
   - trecho: reais e noventa e sete centavos). Para R$ 159,97 o período de a essas alterações acarretarão uma repercussão financeira no valor total de 31/10/2024 30/10/2025, (dez mil cento e vinte e dois reais e quatorze centavos). A
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `751d0bbd32` · nível **B** (4 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: Plano de Contingência de Encantado.
+  - url: https://encantado.rs.gov.br/noticia/visualizar/id/6891/?plano-de-contingencia-de-encantado.html
+  - trecho: Plano de Contingência de Encantado. Plano de Contingência de Encantado ... Porto Alegre, às margens do Rio Taquari. Faz divisa com os municípios de ...
+- `00ecf13f8d` · nível **B** (3 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: Acesso Mais Seguro | Biblioteca Virtual da Atenção Primária à Saúde
+  - url: http://bvaps.portoalegre.rs.gov.br/acesso-mais-seguro
+  - trecho: ... Plano de Contingência (Plano AMS). O plano AMS, organiza e estabelece ... Porto Alegre/RS CEP 90040-000. (51) 3289-2899. repositorio.sms@portoalegre.rs ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `9846884719` · nível **B** (3 pts) · seguimento_busca_oficial · DUVIDA · data 27/12/2024 (do trecho)
+  - título: 30150926-lei-complementar-n-16-263-de-27-de-dezembro-de ...
+  - url: https://www.defesacivil.rs.gov.br/upload/arquivos/202412/30150926-lei-complementar-n-16-263-de-27-de-dezembro-de-2024.pdf
+  - trecho: Dec 27, 2024 ... IX - plano de contingência: conjunto de procedimentos e de ações ... PALÁCIO PIRATINI , em Porto Alegre, 27 de dezembro de 2024.
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `22583b25d3` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · **Portaria 861**, 29/09/2025
@@ -5024,12 +5182,24 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Jun 2, 2026 ... 1 like. fallaregiao. Bom Jesus do Itabapoana Estrutura Plano de Contingência para Emergências Climáticas A Secretaria Municipal de Assistência ...
   - juiz: portão automático: fonte não oficial
 
-## Capinzal/SC — 2 pendente(s)
+## Capinzal/SC — 4 pendente(s)
+- `722d809daa` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: PLANO MUNICIPAL DE CONTINGÊNCIA - Prefeitura de Piratuba
+  - url: https://piratuba.sc.gov.br/uploads/sites/453/2022/04/1968074_Plano_de_Contingencia_para_a_Educacao_Municipal__de_Piratuba.pdf
+  - trecho: e Capinzal, através de frota terceirizada. Nas escolas, todos têm água ... demonstrem necessários, para manter o plano de contingência atualizado. O ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 - `ffefa000e0` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Ouro inicia ações preventivas contra impactos do El Niño e promove ...
   - url: https://capinzalfm.com.br/noticia/ouro-inicia-acoes-preventivas-contra-impactos-do-el-nino-e-promove-mutirao-de-cadastramento-neste-sabado
   - trecho: Jun 20, 2026 ... Rádio Capinzal. Início; Notícias ... As medidas fazem parte de um plano de contingência elaborado após ...
   - juiz: portão automático: fonte não oficial
+- `5eae720baf` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · **Decreto nº 51**, 15/04/2020
+  - título: Centro Municipal de Educação Infantil Pinguinho de Gent
+  - url: https://capinzal.sc.gov.br/uploads/sites/200/2024/11/Plano-de-Gestao-CMEI-Pinguinho-de-Gente-25-28.pdf
+  - trecho: Em 2021 o atendimento presencial foi retomado de forma escalonada, respeitando o Plano de Contingência para Covid- ... Capinzal/SC, 2023.
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 - `d915e221c3` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - url: https://capinzalfm.com.br/noticia/ouro-apresenta-plano-de-contingencia-da-defesa-civil-e-reforca-preparacao-para-eventos-climaticos
   - trecho: Jun 23, 2026 ... ... Plano de Contingência do município. O encontro ocorreu na Sala do ... Capinzal e região), 3º Sargento BM David Azevedo de Souza, que ...
@@ -5085,7 +5255,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Ituporanga/SC — 2 pendente(s)
+## Ituporanga/SC — 3 pendente(s)
+- `ec2d6a37f8` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · **LEI Nº 18.646**, 06/06/2023
+  - título: LEI Nº 18.646, de 5 de junho de 2023 - Legislação SC
+  - url: https://leis.alesc.sc.gov.br/ato-normativo/22014
+  - trecho: IV – coordenar a elaboração do plano de contingência estadual e fomentar a elaboração dos planos de contingência municipais;. V – mobilizar recursos para ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `8fdf540c39` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - url: https://www.gcd.com.br/ituporanga/pedido-de-informacao-na-camara-cobra-preparo-de-ituporanga-para-o-el-nino/
   - trecho: May 5, 2026 ... Pedido de informação na Câmara cobra preparo de Ituporanga para o El Niño ... Os parlamentares também querem saber se há plano de contingência ...
@@ -5121,7 +5297,17 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Mafra/SC — 1 pendente(s)
+## Mafra/SC — 3 pendente(s)
+- `0a4ed46b62` · nível **B** (6 pts) · seguimento_busca_oficial · — · data 2021 (do trecho)
+  - título: Lei Ordinária 4543/2021 - Prefeitura de Mafra
+  - url: https://mafra.sc.gov.br/legislacao/norma-523933/
+  - trecho: XII – Identificar e mapear as áreas de risco de desastres, bem como elaborar o Plano de contingência do Município de Mafra; ... Eleitores: 42.233 (TRE-SC/2024).
+  - ⚠ ano_anterior_ao_ciclo
+- `44686636c2` · nível **B** (6 pts) · seguimento_busca_oficial · — · data 16/07/2020 (do trecho)
+  - título: Lei Complementar 70/2020 - Prefeitura de Mafra
+  - url: https://mafra.sc.gov.br/legislacao/norma-473018/
+  - trecho: II – Elaboração de um Plano de Contingência para a Defesa Civil.” Art. 19 A Lei ... Mafra/SC, 16 de julho de 2020. WELLINGTON ROBERTO BIELECKI. Prefeito ...
+  - ⚠ ano_anterior_ao_ciclo
 - `9083d2246b` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - url: https://www.riomaframix.com.br/noticia/defesa-civil-de-mafra-apresenta-plano-de-contingencia-para-enchentes-e-alagamentos/119270
   - trecho: Jun 1, 2026 ... Defesa Civil de Mafra apresenta plano de contingência para enchentes e alagamentos ... El Niño. Durante o encontro, o prefeito Carlos Nitz ...
@@ -5150,23 +5336,20 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: § 2º O Plano de Contingência é organizado pela definição e carac- terização ... de Major Vieira - Sed. PORtARIA Nº 2325 - 01/09/2021. CONCEDER ...
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
-- `a1eb7503aa` · nível **B** (5 pts) · busca_web · DUVIDA · **Portaria 236**, 2019
+- `a1eb7503aa` · nível **B** (5 pts) · busca_web · — · data 2022 (do trecho)
   - título: PLANO MUNICIPAL DE ASSISTÊNCIA SOCIAL 2022 - 2025
   - url: https://papanduva.sc.gov.br/uploads/sites/306/2022/06/2354533_PLANO_MUNICIPAL_DE_ASSISTENCIA_SOCIAL_2022___2025.pdf
   - trecho: Itaiópolis, Mafra, Major Vieira, Monte Castelo, Rio do Campo, Santa Terezinha, ... https://leismunicipais.com.br/plano-municipal-de-educacao-papanduva-sc.
   - ⚠ ano_anterior_ao_ciclo
-  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
-- `f9da5b32b8` · nível **B** (5 pts) · busca_web · EX_ANTE · **PORTARIA 2**, 27/07/2026
+- `f9da5b32b8` · nível **B** (5 pts) · busca_web · — · **Decreto nº 11.367**, 2023 (do trecho)
   - título: DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO
   - url: https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2026/DMPF-EXTRAJUDICIAL-2026-07-29.pdf?noCache=20260729135540192517
   - trecho: Jul 29, 2026 ... - Que, ademais, por força do Decreto nº 11.367/2023, seria elaborado o Plano de Ação Para Prevenção e Controle do ... Major Vieira/SC; d) nome e ...
-  - juiz: portão automático: fonte não oficial
-- `4f70a8ec85` · nível **B** (5 pts) · busca_web · DUVIDA · data 2013 (do trecho)
+- `4f70a8ec85` · nível **B** (5 pts) · busca_web · — · data 2013 (do trecho)
   - título: PLANO MUNICIPAL DE SAÚDE
   - url: https://timbogrande.sc.gov.br/uploads/sites/352/2025/05/plano-de-saude.pdf
   - trecho: ... Major Vieira,. Ireneópolis, Lebon Régis, estas famílias buscam ... Plano de Enfrentamento das. DCNT's. Segundo o Plano de Ação da OMS (2013-2020) ...
   - ⚠ ano_anterior_ao_ciclo
-  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `7c8fd9e086` · nível **B** (4 pts) · busca_web · EX_ANTE · **lei n. 6.745**, 29.11.2024
   - título: estado de santa catarina - DOE SC
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2024/20241202/Jornal/22407.pdf
@@ -5188,34 +5371,29 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://canoinhasonline.com.br/2026/09/dupla-e-presa-em-flagrante-pela-pm-apos-assaltar-conveniencia-major-vieira.html
   - trecho: 2 days ago ... Home Major Vieira Dupla é presa em flagrante pela PM após assaltar conveniência em Major Vieira ... Defesa Civil detalha plano de contingência ...
   - juiz: portão automático: fonte não oficial
-- `94673643db` · nível **B** (4 pts) · busca_web · DUVIDA · citação não extraída
+- `94673643db` · nível **B** (4 pts) · busca_web · — · citação não extraída
   - título: Proposta Curricular da Educação Básica - Prefeitura de Monte Castelo
   - url: https://montecastelo.sc.gov.br/uploads/sites/449/2021/12/2213358_1732258_PROPOSTA_CURRICULAR_AMPLANORTE_COMPLETA_160120.pdf
   - trecho: ... Major Vieira. Page 10. A partir da necessidade de que as discussões e ... plano de ação que possibilite contínuas melhorias, qualitativas e quantitativas ...
   - ⚠ ano_anterior_ao_ciclo
-  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
-- `e8cfd5f970` · nível **B** (4 pts) · busca_web · EX_ANTE · **Decreto Estadual nº 733**, 24/10/2024
+- `e8cfd5f970` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
   - título: EDITAL DE CHAMAMENTO PÚBLICO PARA TERMO DE ...
   - url: https://www.cultura.sc.gov.br/downloads/fcc/editais/3362-edital-de-chamamento-publico-para-termo-de-convenio-sc-cultura-boa-165-2025-atualizado-docx/file
   - trecho: Nov 12, 2025 ... Irineópolis, Itaiópolis, Mafra, Major Vieira, ... ajuizamento de ação e/ou apresentação de plano de ação, especialmente no caso de obra com etapa.
   - ⚠ ano_anterior_ao_ciclo
-  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
-- `4edb8c4f5e` · nível **B** (4 pts) · busca_web · EX_ANTE · **Decreto nº 5.296**, 05/06/2002
+- `4edb8c4f5e` · nível **B** (4 pts) · busca_web · — · data 2013 (do trecho)
   - título: PROPOSTA DE PLANO DE AÇÃO - Portal SES/SC
   - url: https://www.saude.sc.gov.br/edocman/areas-de-atuacao/redes-de-atencao-a-saude-ras/planos-de-acao-regionais-ras/Profissionais%20-%20Plano_de%20acao%20estadual.pdf
   - trecho: estruturação da Rede e Plano de Ação Regional, em agosto de 2013. ... Major Vieira. 7.523. Monte Castelo. 8.346. Papanduva. 18.013. Porto União. 33.619.
-  - juiz: portão automático: ato de 2002 — pode ser edição anterior; decisão humana
-- `1ba1743c16` · nível **B** (4 pts) · busca_web · DUVIDA · **lei nº 18.316**, 29/12/2021
+- `1ba1743c16` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
   - título: estado de santa catarina - DOE/SC
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2025/20250829/Jornal/22587.pdf
   - trecho: Aug 29, 2025 ... Município de Major Vieira. OBJETO: aquisição de uma escavadeira ... plano de ação 09032024-068012/2024 deputada Julia Zanatta, conforme ...
   - ⚠ ano_anterior_ao_ciclo
-  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
-- `a6e5bba104` · nível **B** (4 pts) · busca_web · DUVIDA · **Lei nº 14.133**, 30/03/2026
+- `a6e5bba104` · nível **B** (4 pts) · busca_web · — · citação não extraída
   - título: prefeitura municipal de agrolândia
   - url: https://agrolandia.sc.gov.br/uploads/sites/307/2026/05/ORCAMENTOS-ESTIMADOS.pdf
   - trecho: ... MAJOR VIEIRA / 05 - FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL. DE MAJOR VIEIRA ... PLANO DE AÇÃO ELABORADO PARA. ATENDIMENTO À POPULAÇÃO IMIGRANTE, COM ...
-  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `a79b07a162` · nível **B** (3 pts) · busca_web · DUVIDA · **Lei 13.024**, 2014
   - título: DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO
   - url: https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2025/DMPF-EXTRAJUDICIAL-2025-10-01.pdf
@@ -5256,16 +5434,14 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: MPSC amplia atuação preventiva contra impactos do El Niño e abre ...
   - url: https://valedoitajainoticias.com.br/mpsc-amplia-atuacao-preventiva-contra-impactos-do-el-nino-e-abre-mais-de-130-procedimentos-em-cidades-de-sc/
   - trecho: 4 days ago ... Já em Passo de Torres, o acompanhamento verificou a atualização do Plano de Contingência ... Major Vieira e Três Barras. 3ª PJ de Porto ...
-- `ab894cf17b` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+- `ab894cf17b` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
   - título: Sobe para 6 os municípios em situação de emergência após ...
   - url: https://ndmais.com.br/tempo/sobe-para-6-os-municipios-em-situacao-de-emergencia-apos-temporais-castigarem-sc/
   - trecho: Jul 2, 2026 ... ... Major Vieira e Timbó Grande decretaram o alerta vermelho após ... plano de contingência elaborado para a área. De acordo com a Defesa ...
-  - juiz: portão automático: fonte não oficial
-- `a850a6348d` · nível **B** (3 pts) · busca_web · DUVIDA · **Lei nº. 146**, 01.54.00
+- `a850a6348d` · nível **B** (3 pts) · busca_web · — · citação não extraída
   - título: Instrução Normativa Nº 11 Suinocultura
   - url: https://in.ima.sc.gov.br/instrucaoNormativa/downloadPDF/11
   - trecho: solicitar estudos complementares como Plano de Ação Emergencial, bem como outras informações ... Major Vieira. 0,565. 0,272. 0,293. JUL-OUT. Ponte Serrada. 0,873.
-  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `ab1717172b` · nível **B** (3 pts) · busca_web · — · citação não extraída
   - título: Alarme de Incêndio - NFL Group
   - url: https://www.nflgroup.com.br/alarme-incendio
@@ -5716,12 +5892,6 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: Papanduva prepara abrigo animal por causa do “El Niño”
   - url: https://www.liberdadesbs.com.br/noticia/papanduva-prepara-abrigo-animal-por-causa-do-el-nino
   - trecho: Sep 11, 2026 ... Plantão das Farmácias - Papanduva SC. Voltar para o início. Papanduva ... O documento também relaciona a medida ao Plano de Contingência ...
-  - juiz: portão automático: fonte não oficial
-
-## Pomerode/SC — 1 pendente(s)
-- `b16e877d25` · nível **B** (3 pts) · busca_web · RESPOSTA · **Decreto Estadual nº 1.530**, 18/05/2026
-  - url: https://www.jornaldepomerode.com.br/como-se-preparar-para-o-el-nino-nova-pagina-da-defesa-civil-reune-informacoes-alertas-e-medidas-de-autoprotecao/
-  - trecho: Jun 17, 2026 ... Outro destaque é a área “Planos de Preparação”, que disponibiliza o Plano de Contingência ... >>> Siga o canal do Jornal de Pomerode no WhatsApp.
   - juiz: portão automático: fonte não oficial
 
 ## Sombrio/SC — 1 pendente(s)
@@ -6205,7 +6375,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: 
 
 ---
-## Decididas (3966) — registro permanente, nunca apagadas
+## Decididas (4371) — registro permanente, nunca apagadas
 
 - `094c653590` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `5b22b54586` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
@@ -10165,6 +10335,411 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `711cbfc94a` None/None · pendente_confirmacao_documento · 
 - `be08b367e8` None/None · pendente_confirmacao_documento · 
 - `a26feceef0` None/None · pendente_confirmacao_documento · 
+- `571b92ada8` None/None · pendente_confirmacao_documento · 
+- `7ef8afe485` None/None · pendente_confirmacao_documento · 
+- `ebcbeeb69a` None/None · pendente_confirmacao_documento · 
+- `565dd125f8` None/None · pendente_confirmacao_documento · 
+- `3b5a65daf0` None/None · pendente_confirmacao_documento · 
+- `fffe30ad47` None/None · pendente_confirmacao_documento · 
+- `fc5bb394d2` None/None · pendente_confirmacao_documento · 
+- `0846bc3f2a` None/None · pendente_confirmacao_documento · 
+- `2d386a9e4a` None/None · pendente_confirmacao_documento · 
+- `57c1bdf3ab` None/None · pendente_confirmacao_documento · 
+- `3e7aaddb92` None/None · pendente_confirmacao_documento · 
+- `5ba35f429d` None/None · pendente_confirmacao_documento · 
+- `6d96ddc5e6` None/None · pendente_confirmacao_documento · 
+- `06a29b53c9` None/None · pendente_confirmacao_documento · 
+- `1ebdf27de9` None/None · pendente_confirmacao_documento · 
+- `b277e4dcc0` None/None · pendente_confirmacao_documento · 
+- `dc85464647` None/None · pendente_confirmacao_documento · 
+- `4eecea36ea` None/None · pendente_confirmacao_documento · 
+- `0e4e8f479b` None/None · pendente_confirmacao_documento · 
+- `e07a02045e` None/None · pendente_confirmacao_documento · 
+- `48407527ea` None/None · pendente_confirmacao_documento · 
+- `f0da56aae2` None/None · pendente_confirmacao_documento · 
+- `417ec5a857` None/None · pendente_confirmacao_documento · 
+- `8032f452b3` None/None · pendente_confirmacao_documento · 
+- `013024fd79` None/None · pendente_confirmacao_documento · 
+- `e6cfbb3e06` None/None · pendente_confirmacao_documento · 
+- `3f3086629e` None/None · pendente_confirmacao_documento · 
+- `e778f65e81` None/None · pendente_confirmacao_documento · 
+- `ba7e54a74c` None/None · pendente_confirmacao_documento · 
+- `8979c61046` None/None · pendente_confirmacao_documento · 
+- `6617ba8317` None/None · pendente_confirmacao_documento · 
+- `35f5447204` None/None · pendente_confirmacao_documento · 
+- `55d3a924a3` None/None · pendente_confirmacao_documento · 
+- `aff0464eb7` None/None · pendente_confirmacao_documento · 
+- `25e14bd65e` None/None · pendente_confirmacao_documento · 
+- `da47dc2ea9` None/None · pendente_confirmacao_documento · 
+- `1ecdce527c` None/None · pendente_confirmacao_documento · 
+- `0a8937ec2e` None/None · pendente_confirmacao_documento · 
+- `7431f9636a` None/None · pendente_confirmacao_documento · 
+- `0c6b0b4801` None/None · pendente_confirmacao_documento · 
+- `bb5595da44` None/None · pendente_confirmacao_documento · 
+- `ead14158a7` None/None · pendente_confirmacao_documento · 
+- `b1c5bacbc9` None/None · pendente_confirmacao_documento · 
+- `9178e1673f` None/None · pendente_confirmacao_documento · 
+- `1a21d4a683` None/None · pendente_confirmacao_documento · 
+- `5142125c12` None/None · pendente_confirmacao_documento · 
+- `83b59603bf` None/None · pendente_confirmacao_documento · 
+- `c6bade1e63` None/None · pendente_confirmacao_documento · 
+- `1f44cd451c` None/None · pendente_confirmacao_documento · 
+- `024f06bdf1` None/None · pendente_confirmacao_documento · 
+- `717a10e08e` None/None · pendente_confirmacao_documento · 
+- `8095afeb2e` None/None · pendente_confirmacao_documento · 
+- `88848017b3` None/None · pendente_confirmacao_documento · 
+- `d10844fbdd` None/None · pendente_confirmacao_documento · 
+- `bc203fd440` None/None · pendente_confirmacao_documento · 
+- `7a63127f14` None/None · pendente_confirmacao_documento · 
+- `13f676f447` None/None · pendente_confirmacao_documento · 
+- `0618171477` None/None · pendente_confirmacao_documento · 
+- `118deb852e` None/None · pendente_confirmacao_documento · 
+- `9cebfba361` None/None · pendente_confirmacao_documento · 
+- `e1751b4116` None/None · pendente_confirmacao_documento · 
+- `c2fee079fa` None/None · pendente_confirmacao_documento · 
+- `6b32f40a4c` None/None · pendente_confirmacao_documento · 
+- `d02571e38b` None/None · pendente_confirmacao_documento · 
+- `554dda63e9` None/None · pendente_confirmacao_documento · 
+- `d3f861a4eb` None/None · pendente_confirmacao_documento · 
+- `cc87ea5f3a` None/None · pendente_confirmacao_documento · 
+- `7321f8fd39` None/None · pendente_confirmacao_documento · 
+- `faee30f99a` None/None · pendente_confirmacao_documento · 
+- `5b8e042537` None/None · pendente_confirmacao_documento · 
+- `2b0a37c4bd` None/None · pendente_confirmacao_documento · 
+- `5c5b9879ff` None/None · pendente_confirmacao_documento · 
+- `e1894cb02d` None/None · pendente_confirmacao_documento · 
+- `850b8a69f5` None/None · pendente_confirmacao_documento · 
+- `722b5cafcd` None/None · pendente_confirmacao_documento · 
+- `2bcfc6e2e5` None/None · pendente_confirmacao_documento · 
+- `3df14c9aa4` None/None · pendente_confirmacao_documento · 
+- `abec8237e8` None/None · pendente_confirmacao_documento · 
+- `ec6ef8ef1e` None/None · pendente_confirmacao_documento · 
+- `0ec2bba5ad` None/None · pendente_confirmacao_documento · 
+- `1895b1edda` None/None · pendente_confirmacao_documento · 
+- `e238518ab4` None/None · pendente_confirmacao_documento · 
+- `b5e0c67679` None/None · pendente_confirmacao_documento · 
+- `0f642b36d5` None/None · pendente_confirmacao_documento · 
+- `c5c6cdfe6e` None/None · pendente_confirmacao_documento · 
+- `53d207e661` None/None · pendente_confirmacao_documento · 
+- `2d1b4b613e` None/None · pendente_confirmacao_documento · 
+- `7dc768aa3f` None/None · pendente_confirmacao_documento · 
+- `a6ec5ed1fc` None/None · pendente_confirmacao_documento · 
+- `fa30deabe1` None/None · pendente_confirmacao_documento · 
+- `6a936ff1b9` None/None · pendente_confirmacao_documento · 
+- `db741048a4` None/None · pendente_confirmacao_documento · 
+- `09fbcbc78c` None/None · pendente_confirmacao_documento · 
+- `d09ef8d8fd` None/None · pendente_confirmacao_documento · 
+- `62c86ab9ff` None/None · pendente_confirmacao_documento · 
+- `d0c4fa88d9` None/None · pendente_confirmacao_documento · 
+- `ebd9b26c86` None/None · pendente_confirmacao_documento · 
+- `5addf84462` None/None · pendente_confirmacao_documento · 
+- `6b62448db8` None/None · pendente_confirmacao_documento · 
+- `5ca8171414` None/None · pendente_confirmacao_documento · 
+- `8edcb61355` None/None · pendente_confirmacao_documento · 
+- `96fc3b1a96` None/None · pendente_confirmacao_documento · 
+- `eab3523619` None/None · pendente_confirmacao_documento · 
+- `8686f14b37` None/None · pendente_confirmacao_documento · 
+- `19625b82fd` None/None · pendente_confirmacao_documento · 
+- `864b90b082` None/None · pendente_confirmacao_documento · 
+- `72c612c8ee` None/None · pendente_confirmacao_documento · 
+- `b8306b15f0` None/None · pendente_confirmacao_documento · 
+- `8420621e89` None/None · pendente_confirmacao_documento · 
+- `f23e2ba5ff` None/None · pendente_confirmacao_documento · 
+- `d6d6531f3f` None/None · pendente_confirmacao_documento · 
+- `5aadd85370` None/None · pendente_confirmacao_documento · 
+- `0b45fcec63` None/None · pendente_confirmacao_documento · 
+- `b60b04d6e3` None/None · pendente_confirmacao_documento · 
+- `82aa9fc4b8` None/None · pendente_confirmacao_documento · 
+- `33a2474368` None/None · pendente_confirmacao_documento · 
+- `cf6dc71486` None/None · pendente_confirmacao_documento · 
+- `02065b0004` None/None · pendente_confirmacao_documento · 
+- `198bb90db2` None/None · pendente_confirmacao_documento · 
+- `8949a10745` None/None · pendente_confirmacao_documento · 
+- `37a7df1301` None/None · pendente_confirmacao_documento · 
+- `6ab7ef6ba3` None/None · pendente_confirmacao_documento · 
+- `a14cf7eebc` None/None · pendente_confirmacao_documento · 
+- `e9fcc896c2` None/None · pendente_confirmacao_documento · 
+- `3a57d1012f` None/None · pendente_confirmacao_documento · 
+- `22d46d19be` None/None · pendente_confirmacao_documento · 
+- `22cfd46051` None/None · pendente_confirmacao_documento · 
+- `3150aac79c` None/None · pendente_confirmacao_documento · 
+- `c5c6cdfe6e` None/None · pendente_confirmacao_documento · 
+- `d88fd900a2` None/None · pendente_confirmacao_documento · 
+- `3468c409c4` None/None · pendente_confirmacao_documento · 
+- `57b871a9a5` None/None · pendente_confirmacao_documento · 
+- `08da181c6d` None/None · pendente_confirmacao_documento · 
+- `5e31f41712` None/None · pendente_confirmacao_documento · 
+- `a431f79493` None/None · pendente_confirmacao_documento · 
+- `bec62dc0fc` None/None · pendente_confirmacao_documento · 
+- `d63c10b055` None/None · pendente_confirmacao_documento · 
+- `0aa8dc98f3` None/None · pendente_confirmacao_documento · 
+- `bb5595da44` None/None · pendente_confirmacao_documento · 
+- `4001f567fc` None/None · pendente_confirmacao_documento · 
+- `e4ceec5cc2` None/None · pendente_confirmacao_documento · 
+- `16686f60c8` None/None · pendente_confirmacao_documento · 
+- `13536db102` None/None · pendente_confirmacao_documento · 
+- `bdcf0f58dc` None/None · pendente_confirmacao_documento · 
+- `480ca5f824` None/None · pendente_confirmacao_documento · 
+- `23e090490c` None/None · pendente_confirmacao_documento · 
+- `e78c6f4818` None/None · pendente_confirmacao_documento · 
+- `b83c850378` None/None · pendente_confirmacao_documento · 
+- `13104afa38` None/None · pendente_confirmacao_documento · 
+- `480ca5f824` None/None · pendente_confirmacao_documento · 
+- `6d404a7562` None/None · pendente_confirmacao_documento · 
+- `b4a1f53684` None/None · pendente_confirmacao_documento · 
+- `e3a8d76800` None/None · pendente_confirmacao_documento · 
+- `457bdd6581` None/None · pendente_confirmacao_documento · 
+- `ae4994629d` None/None · pendente_confirmacao_documento · 
+- `e78c6f4818` None/None · pendente_confirmacao_documento · 
+- `d24ad18704` None/None · pendente_confirmacao_documento · 
+- `bdcf0f58dc` None/None · pendente_confirmacao_documento · 
+- `13104afa38` None/None · pendente_confirmacao_documento · 
+- `afe1926183` None/None · pendente_confirmacao_documento · 
+- `d47e880900` None/None · pendente_confirmacao_documento · 
+- `4cc01630a5` None/None · pendente_confirmacao_documento · 
+- `e1c310d85d` None/None · pendente_confirmacao_documento · 
+- `480ca5f824` None/None · pendente_confirmacao_documento · 
+- `b7f335fa6f` None/None · pendente_confirmacao_documento · 
+- `b4a1f53684` None/None · pendente_confirmacao_documento · 
+- `13104afa38` None/None · pendente_confirmacao_documento · 
+- `9dc438c55d` None/None · pendente_confirmacao_documento · 
+- `bdcf0f58dc` None/None · pendente_confirmacao_documento · 
+- `480ca5f824` None/None · pendente_confirmacao_documento · 
+- `b7f335fa6f` None/None · pendente_confirmacao_documento · 
+- `15439069ab` None/None · pendente_confirmacao_documento · 
+- `b7b8c652a3` None/None · pendente_confirmacao_documento · 
+- `2954c07f56` None/None · pendente_confirmacao_documento · 
+- `0755787549` None/None · pendente_confirmacao_documento · 
+- `600c0259e1` None/None · pendente_confirmacao_documento · 
+- `2d1891710c` None/None · pendente_confirmacao_documento · 
+- `e78c6f4818` None/None · pendente_confirmacao_documento · 
+- `b4a1f53684` None/None · pendente_confirmacao_documento · 
+- `6d404a7562` None/None · pendente_confirmacao_documento · 
+- `b4daaf3fca` None/None · pendente_confirmacao_documento · 
+- `6c3005fd09` None/None · pendente_confirmacao_documento · 
+- `c7ad3b9e41` None/None · pendente_confirmacao_documento · 
+- `446b2b67aa` None/None · pendente_confirmacao_documento · 
+- `f7103b8e7c` None/None · pendente_confirmacao_documento · 
+- `ae4994629d` None/None · pendente_confirmacao_documento · 
+- `2de57036e7` None/None · pendente_confirmacao_documento · 
+- `5ad0ceb678` None/None · pendente_confirmacao_documento · 
+- `8a4b4fbde4` None/None · pendente_confirmacao_documento · 
+- `07172f7c61` None/None · pendente_confirmacao_documento · 
+- `78829c729b` None/None · pendente_confirmacao_documento · 
+- `811e665685` None/None · pendente_confirmacao_documento · 
+- `765610d5b7` None/None · pendente_confirmacao_documento · 
+- `457bdd6581` None/None · pendente_confirmacao_documento · 
+- `e3a8d76800` None/None · pendente_confirmacao_documento · 
+- `c53337e2f5` None/None · pendente_confirmacao_documento · 
+- `13104afa38` None/None · pendente_confirmacao_documento · 
+- `d569296870` None/None · pendente_confirmacao_documento · 
+- `b83c850378` None/None · pendente_confirmacao_documento · 
+- `804c627381` None/None · pendente_confirmacao_documento · 
+- `71dacf5045` None/None · pendente_confirmacao_documento · 
+- `afe1926183` None/None · pendente_confirmacao_documento · 
+- `28f0dc60da` None/None · pendente_confirmacao_documento · 
+- `5515491eb3` None/None · pendente_confirmacao_documento · 
+- `e1c310d85d` None/None · pendente_confirmacao_documento · 
+- `9dc438c55d` None/None · pendente_confirmacao_documento · 
+- `b7f335fa6f` None/None · pendente_confirmacao_documento · 
+- `bdcf0f58dc` None/None · pendente_confirmacao_documento · 
+- `480ca5f824` None/None · pendente_confirmacao_documento · 
+- `480ca5f824` None/None · pendente_confirmacao_documento · 
+- `b7f335fa6f` None/None · pendente_confirmacao_documento · 
+- `811e665685` None/None · pendente_confirmacao_documento · 
+- `13104afa38` None/None · pendente_confirmacao_documento · 
+- `4cc01630a5` None/None · pendente_confirmacao_documento · 
+- `e1c310d85d` None/None · pendente_confirmacao_documento · 
+- `480ca5f824` None/None · pendente_confirmacao_documento · 
+- `2954c07f56` None/None · pendente_confirmacao_documento · 
+- `6f868d30e9` None/None · pendente_confirmacao_documento · 
+- `765610d5b7` None/None · pendente_confirmacao_documento · 
+- `9dc438c55d` None/None · pendente_confirmacao_documento · 
+- `bdcf0f58dc` None/None · pendente_confirmacao_documento · 
+- `b7f335fa6f` None/None · pendente_confirmacao_documento · 
+- `13104afa38` None/None · pendente_confirmacao_documento · 
+- `bdcf0f58dc` None/None · pendente_confirmacao_documento · 
+- `480ca5f824` None/None · pendente_confirmacao_documento · 
+- `86dd090266` None/None · pendente_confirmacao_documento · 
+- `446b2b67aa` None/None · pendente_confirmacao_documento · 
+- `8a4b4fbde4` None/None · pendente_confirmacao_documento · 
+- `e3a8d76800` None/None · pendente_confirmacao_documento · 
+- `f7103b8e7c` None/None · pendente_confirmacao_documento · 
+- `13104afa38` None/None · pendente_confirmacao_documento · 
+- `9dc438c55d` None/None · pendente_confirmacao_documento · 
+- `bdcf0f58dc` None/None · pendente_confirmacao_documento · 
+- `b7f335fa6f` None/None · pendente_confirmacao_documento · 
+- `480ca5f824` None/None · pendente_confirmacao_documento · 
+- `446b2b67aa` None/None · pendente_confirmacao_documento · 
+- `07172f7c61` None/None · pendente_confirmacao_documento · 
+- `4279caa08c` None/None · pendente_confirmacao_documento · 
+- `2d1891710c` None/None · pendente_confirmacao_documento · 
+- `7e6a006da3` None/None · pendente_confirmacao_documento · 
+- `8be6e2cb37` None/None · pendente_confirmacao_documento · 
+- `13104afa38` None/None · pendente_confirmacao_documento · 
+- `b4daaf3fca` None/None · pendente_confirmacao_documento · 
+- `480ca5f824` None/None · pendente_confirmacao_documento · 
+- `13104afa38` None/None · pendente_confirmacao_documento · 
+- `afe1926183` None/None · pendente_confirmacao_documento · 
+- `bdcf0f58dc` None/None · pendente_confirmacao_documento · 
+- `480ca5f824` None/None · pendente_confirmacao_documento · 
+- `b7f335fa6f` None/None · pendente_confirmacao_documento · 
+- `13104afa38` None/None · pendente_confirmacao_documento · 
+- `23e090490c` None/None · pendente_confirmacao_documento · 
+- `480ca5f824` None/None · pendente_confirmacao_documento · 
+- `8a4b4fbde4` None/None · pendente_confirmacao_documento · 
+- `b5ca51b6b9` None/None · pendente_confirmacao_documento · 
+- `13104afa38` None/None · pendente_confirmacao_documento · 
+- `bdcf0f58dc` None/None · pendente_confirmacao_documento · 
+- `480ca5f824` None/None · pendente_confirmacao_documento · 
+- `b7f335fa6f` None/None · pendente_confirmacao_documento · 
+- `13104afa38` None/None · pendente_confirmacao_documento · 
+- `07172f7c61` None/None · pendente_confirmacao_documento · 
+- `480ca5f824` None/None · pendente_confirmacao_documento · 
+- `bdcf0f58dc` None/None · pendente_confirmacao_documento · 
+- `480ca5f824` None/None · pendente_confirmacao_documento · 
+- `23e090490c` None/None · pendente_confirmacao_documento · 
+- `13104afa38` None/None · pendente_confirmacao_documento · 
+- `bdcf0f58dc` None/None · pendente_confirmacao_documento · 
+- `480ca5f824` None/None · pendente_confirmacao_documento · 
+- `b7f335fa6f` None/None · pendente_confirmacao_documento · 
+- `d569296870` None/None · pendente_confirmacao_documento · 
+- `e3a8d76800` None/None · pendente_confirmacao_documento · 
+- `23e090490c` None/None · pendente_confirmacao_documento · 
+- `13104afa38` None/None · pendente_confirmacao_documento · 
+- `ded5b7c446` None/None · pendente_confirmacao_documento · 
+- `bdcf0f58dc` None/None · pendente_confirmacao_documento · 
+- `480ca5f824` None/None · pendente_confirmacao_documento · 
+- `5798cea8e4` None/None · pendente_confirmacao_documento · 
+- `8a4b4fbde4` None/None · pendente_confirmacao_documento · 
+- `a6f2e34948` None/None · pendente_confirmacao_documento · 
+- `927e318aa2` None/None · pendente_confirmacao_documento · 
+- `6c3005fd09` None/None · pendente_confirmacao_documento · 
+- `5ad0ceb678` None/None · pendente_confirmacao_documento · 
+- `94f0b40042` None/None · pendente_confirmacao_documento · 
+- `23e090490c` None/None · pendente_confirmacao_documento · 
+- `07172f7c61` None/None · pendente_confirmacao_documento · 
+- `8da85c2dc0` None/None · pendente_confirmacao_documento · 
+- `81a7df9557` None/None · pendente_confirmacao_documento · 
+- `7878b8cb2f` None/None · pendente_confirmacao_documento · 
+- `dd29bac02d` None/None · pendente_confirmacao_documento · 
+- `f197d842f8` None/None · pendente_confirmacao_documento · 
+- `bdcf0f58dc` None/None · pendente_confirmacao_documento · 
+- `480ca5f824` None/None · pendente_confirmacao_documento · 
+- `5ad0ceb678` None/None · pendente_confirmacao_documento · 
+- `8a4b4fbde4` None/None · pendente_confirmacao_documento · 
+- `927e318aa2` None/None · pendente_confirmacao_documento · 
+- `6c3005fd09` None/None · pendente_confirmacao_documento · 
+- `23e090490c` None/None · pendente_confirmacao_documento · 
+- `94f0b40042` None/None · pendente_confirmacao_documento · 
+- `15439069ab` None/None · pendente_confirmacao_documento · 
+- `8da85c2dc0` None/None · pendente_confirmacao_documento · 
+- `81a7df9557` None/None · pendente_confirmacao_documento · 
+- `7878b8cb2f` None/None · pendente_confirmacao_documento · 
+- `5798cea8e4` None/None · pendente_confirmacao_documento · 
+- `dd29bac02d` None/None · pendente_confirmacao_documento · 
+- `f197d842f8` None/None · pendente_confirmacao_documento · 
+- `480ca5f824` None/None · pendente_confirmacao_documento · 
+- `600c0259e1` None/None · pendente_confirmacao_documento · 
+- `8daeea31e7` None/None · pendente_confirmacao_documento · 
+- `8a4b4fbde4` None/None · pendente_confirmacao_documento · 
+- `89475d4f0b` None/None · pendente_confirmacao_documento · 
+- `13104afa38` None/None · pendente_confirmacao_documento · 
+- `7ad8e95f35` None/None · pendente_confirmacao_documento · 
+- `5515491eb3` None/None · pendente_confirmacao_documento · 
+- `bdcf0f58dc` None/None · pendente_confirmacao_documento · 
+- `a6bca90e68` None/None · pendente_confirmacao_documento · 
+- `480ca5f824` None/None · pendente_confirmacao_documento · 
+- `23e090490c` None/None · pendente_confirmacao_documento · 
+- `bda96f94af` None/None · pendente_confirmacao_documento · 
+- `e78c6f4818` None/None · pendente_confirmacao_documento · 
+- `40f5a2979e` None/None · pendente_confirmacao_documento · 
+- `13104afa38` None/None · pendente_confirmacao_documento · 
+- `bdcf0f58dc` None/None · pendente_confirmacao_documento · 
+- `480ca5f824` None/None · pendente_confirmacao_documento · 
+- `8a4b4fbde4` None/None · pendente_confirmacao_documento · 
+- `f7103b8e7c` None/None · pendente_confirmacao_documento · 
+- `2de57036e7` None/None · pendente_confirmacao_documento · 
+- `b4a1f53684` None/None · pendente_confirmacao_documento · 
+- `8be6e2cb37` None/None · pendente_confirmacao_documento · 
+- `2d1891710c` None/None · pendente_confirmacao_documento · 
+- `13104afa38` None/None · pendente_confirmacao_documento · 
+- `94f0b40042` None/None · pendente_confirmacao_documento · 
+- `23e090490c` None/None · pendente_confirmacao_documento · 
+- `7ad8e95f35` None/None · pendente_confirmacao_documento · 
+- `07172f7c61` None/None · pendente_confirmacao_documento · 
+- `927e318aa2` None/None · pendente_confirmacao_documento · 
+- `88f10a0e64` None/None · pendente_confirmacao_documento · 
+- `e78c6f4818` None/None · pendente_confirmacao_documento · 
+- `fcf310f4e7` None/None · pendente_confirmacao_documento · 
+- `9b8478e198` None/None · pendente_confirmacao_documento · 
+- `480ca5f824` None/None · pendente_confirmacao_documento · 
+- `bdcf0f58dc` None/None · pendente_confirmacao_documento · 
+- `3315395e78` None/None · pendente_confirmacao_documento · 
+- `8a4b4fbde4` None/None · pendente_confirmacao_documento · 
+- `07172f7c61` None/None · pendente_confirmacao_documento · 
+- `a6f2e34948` None/None · pendente_confirmacao_documento · 
+- `d016a3252f` None/None · pendente_confirmacao_documento · 
+- `e78c6f4818` None/None · pendente_confirmacao_documento · 
+- `003b39303a` None/None · pendente_confirmacao_documento · 
+- `8ac0dee6f3` None/None · pendente_confirmacao_documento · 
+- `b83c850378` None/None · pendente_confirmacao_documento · 
+- `1bbdecc041` None/None · pendente_confirmacao_documento · 
+- `94f0b40042` None/None · pendente_confirmacao_documento · 
+- `23e090490c` None/None · pendente_confirmacao_documento · 
+- `f7103b8e7c` None/None · pendente_confirmacao_documento · 
+- `b7b8c652a3` None/None · pendente_confirmacao_documento · 
+- `4e7345226b` None/None · pendente_confirmacao_documento · 
+- `8be6e2cb37` None/None · pendente_confirmacao_documento · 
+- `a85dbc16aa` None/None · pendente_confirmacao_documento · 
+- `c53337e2f5` None/None · pendente_confirmacao_documento · 
+- `16ee4b8b1f` None/None · pendente_confirmacao_documento · 
+- `6c3005fd09` None/None · pendente_confirmacao_documento · 
+- `804c627381` None/None · pendente_confirmacao_documento · 
+- `4cc01630a5` None/None · pendente_confirmacao_documento · 
+- `9dc438c55d` None/None · pendente_confirmacao_documento · 
+- `bdcf0f58dc` None/None · pendente_confirmacao_documento · 
+- `480ca5f824` None/None · pendente_confirmacao_documento · 
+- `b7f335fa6f` None/None · pendente_confirmacao_documento · 
+- `8e80d4d52b` None/None · pendente_confirmacao_documento · 
+- `8a4b4fbde4` None/None · pendente_confirmacao_documento · 
+- `e78c6f4818` None/None · pendente_confirmacao_documento · 
+- `13104afa38` None/None · pendente_confirmacao_documento · 
+- `927e318aa2` None/None · pendente_confirmacao_documento · 
+- `c53337e2f5` None/None · pendente_confirmacao_documento · 
+- `804c627381` None/None · pendente_confirmacao_documento · 
+- `9dc438c55d` None/None · pendente_confirmacao_documento · 
+- `bdcf0f58dc` None/None · pendente_confirmacao_documento · 
+- `480ca5f824` None/None · pendente_confirmacao_documento · 
+- `1bbdecc041` None/None · pendente_confirmacao_documento · 
+- `94f0b40042` None/None · pendente_confirmacao_documento · 
+- `8a4b4fbde4` None/None · pendente_confirmacao_documento · 
+- `f7103b8e7c` None/None · pendente_confirmacao_documento · 
+- `07172f7c61` None/None · pendente_confirmacao_documento · 
+- `88f10a0e64` None/None · pendente_confirmacao_documento · 
+- `b7f335fa6f` None/None · pendente_confirmacao_documento · 
+- `003b39303a` None/None · pendente_confirmacao_documento · 
+- `8be6e2cb37` None/None · pendente_confirmacao_documento · 
+- `13104afa38` None/None · pendente_confirmacao_documento · 
+- `e224a02605` None/None · pendente_confirmacao_documento · 
+- `b83c850378` None/None · pendente_confirmacao_documento · 
+- `bdcf0f58dc` None/None · pendente_confirmacao_documento · 
+- `23e090490c` None/None · pendente_confirmacao_documento · 
+- `480ca5f824` None/None · pendente_confirmacao_documento · 
+- `f7103b8e7c` None/None · pendente_confirmacao_documento · 
+- `02065b0004` None/None · pendente_confirmacao_documento · 
+- `8a4b4fbde4` None/None · pendente_confirmacao_documento · 
+- `13104afa38` None/None · pendente_confirmacao_documento · 
+- `5280954f35` None/None · pendente_confirmacao_documento · 
+- `48083a6152` None/None · pendente_confirmacao_documento · 
+- `a854d13de8` None/None · pendente_confirmacao_documento · 
+- `256853c2ee` None/None · pendente_confirmacao_documento · 
+- `5280954f35` None/None · pendente_confirmacao_documento · 
+- `0fce55c328` None/None · pendente_confirmacao_documento · 
+- `594e25b92e` None/None · pendente_confirmacao_documento · 
+- `071f0cfffb` None/None · pendente_confirmacao_documento · 
+- `8a4b4fbde4` None/None · pendente_confirmacao_documento · 
+- `ad405affea` None/None · pendente_confirmacao_documento · 
 - `ef69b9d26b` Ouro Branco/AL · aplicada — promovida a registro (plano) em 10/09/2026; revisão consumida · 
 - `c65f37b2cb` Macapá/AP · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
 - `66fdadd299` Feira de Santana/BA · aplicada_automaticamente · 
