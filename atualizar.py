@@ -351,9 +351,17 @@ def main():
     meta_p = RAIZ / "data" / "meta.json"
     meta = json.load(open(meta_p, encoding="utf-8"))
     meta["atualizado_em"] = hoje
+    # 30/09/2026: o corte avançava SÓ quando o arquivo de transferências mudava de hash. Com as
+    # transferências voluntárias bloqueadas pelo período eleitoral, esse arquivo parou em 10/09 — e
+    # o site passou a dizer "dados até 10/09" enquanto o índice recebia planos todo dia, pelo juiz.
+    # O corte nunca esteve ligado aos planos: media outra coisa e era lido como se medisse o índice.
+    #
+    # Regra nova: o corte é a data da última rodada de coleta que alimentou o índice — e a rodada
+    # acabou de acontecer. Se nada mudou, o corte também é hoje: a coleta rodou e não achou nada
+    # novo, que é o que a editoria quer que o leitor entenda.
+    meta["corte"] = hoje
     if hash_arquivo(transf) != antes:
-        meta["corte"] = hoje
-        print(f"\nTransferências alteradas → corte dos dados atualizado para {hoje}.")
+        print("\nTransferências alteradas nesta rodada.")
     gravar_em(meta_p, meta)
     # 10/09/2026 (causa-raiz do portão 12 vermelho na main após cada rodada): os três geradores
     # abaixo carimbam `gerado_em` com o `atualizado_em` de data/meta.json (data determinística),

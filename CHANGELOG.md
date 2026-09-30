@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-09-30 · #475 · Abertura da inicial, data de corte sincronizada e base legal corrigida
+
+Texto de abertura aprovado pela editoria, sem linguagem de dever, com uma data só. O corte avançava
+só quando o arquivo de transferências mudava — congelou 20 dias no período eleitoral enquanto o
+índice recebia planos; passou a ser a data da rodada, com portão. Base legal: o art. 3º-A é da Lei
+12.340, a atualização anual é do plano municipal e a bienal do estadual; o art. 8º trata de
+simulados, não de elaborar plano. `index.html`, `prefeituras.html`, `atualizar.py`, `METODOLOGIA.md`.
+
 ## §319 · Regras do ciclo no CLAUDE.md, e a medição que dirá se elas funcionaram · 30/09/2026
 
 Classe **processo**. Itens 6, 7 e 8 do handover de otimização.

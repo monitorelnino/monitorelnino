@@ -229,10 +229,15 @@ setTimeout(() => {
   // 16/09/2026 (handover de identidade, §4.2): a abertura virou dois parágrafos .site-sub (o texto
   // "27 estados e os municípios" ficou no segundo); "Dados até" saiu do site-sub e foi para o .meta,
   // ao lado de "Última verificação". O teste passa a olhar o masthead inteiro, não só o primeiro nó.
-  teste("home: herói sem h2 e sem botão de consulta; abertura com municípios e corte", (() => {
+  // 30/09/2026: a abertura passou a ter UMA data — a da última checagem. O "Dados até" (corte) saiu
+  // do texto público porque congelava com o arquivo de transferências e dizia ao leitor que o
+  // índice estava parado quando não estava. O portão acompanha: cobra a frase nova e a ausência
+  // do corte, em vez de exigir o que a editoria mandou tirar.
+  teste("home: herói sem h2 e sem botão de consulta; abertura nova, com uma data só", (() => {
     const mast = d.querySelector(".mast-body"); const txt = mast ? mast.textContent : "";
     return !d.querySelector(".hero h2") && !d.querySelector('.hero a[href="#minhacidade"]')
-      && /27 estados e (os|dos) [\d.]+ municípios/.test(txt) && /Dados até \d{2}\/\d{2}\/\d{4}\./.test(txt);
+      && /27 estados e em todos os [\d.]+ municípios/.test(txt)
+      && /Última checagem em/.test(txt) && !/Dados até/.test(txt);
   })());
   // 15/09/2026: a linha de interpretação do medidor (contagens por categoria) saiu da inicial (pedido da editoria).
   // 17/09/2026 (pedido da editoria): o parágrafo de interpretação da resposta e o contador de tempo saíram do
@@ -303,11 +308,11 @@ setTimeout(() => {
   // as três páginas com medidor/corte no cabeçalho.
   {
     const IDS_DADO = {
-      "index.html": ["heroVerifFederal", "metaUltimaVerif", "respNum", "heroCorte", "metaAtualizado", "corteDados"],
+      "index.html": ["heroVerifFederal", "metaUltimaVerif", "respNum", "metaAtualizado", "corteDados"],
       "saude.html": ["corteSaude", "gaugeSaudeNum", "gaugeSaudeN", "gaugeSaudeNV", "gaugeSaudeCorte", "rsNum", "rsCorte", "ctSemanaSaude", "ctNovoSaude"],
       "financiamento.html": ["corteFin", "notaFogoCorte"],
     };
-    const CORTES_IGUAIS = { "index.html": [["heroCorte", "corteDados"], ["metaUltimaVerif", "metaAtualizado"]] };
+    const CORTES_IGUAIS = { "index.html": [["metaUltimaVerif", "metaAtualizado"]] };
     for (const [pagina, ids] of Object.entries(IDS_DADO)) {
       const bruto = fs.readFileSync(path.join(raiz, pagina), "utf-8");
       const valorDe = (id) => {

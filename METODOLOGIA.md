@@ -530,6 +530,31 @@ Regras 2 e 3 abaixo não alteram a nota antes de 26/10/2026 (§24). A regra 1 (c
 
 1. **Camada declarada nacional (MUNIC/ICM) — decisão C5.** Construída em 02/09/2026; simulada (`recalcular_mare.py --simular-declarado-nacional`) até 21/09/2026, quando foi **ativada na nota pública**, por decisão editorial explícita, com o desconto de 50% já vigente para a camada declarada (§3.4 da transferência conceitual: declarar ≠ publicar) — a antecipação de 26/10/2026 para 21/09/2026 está documentada no CHANGELOG. Conservadora: não se soma à declaração ao tribunal de contas; vale o maior dos dois contadores.
 
+   > **Correção de base legal (30/09/2026, conferida no texto compilado das Leis 12.340/2010 e
+   > 12.608/2012, Planalto).** O art. 3º-A está na **Lei 12.340/2010** (incluído pela 12.608), não na
+   > 12.608. Na redação da Lei 14.750/2023, o § 6º manda elaborar o plano em **1 ano** da inclusão no
+   > cadastro, com avaliação e prestação de contas **anuais** em audiência pública e atualização
+   > **anual** — o prazo **bienal é do plano ESTADUAL** (Lei 12.608, art. 7º, § 2º, IV, na redação da
+   > 14.750), não do municipal.
+   >
+   > **Fora do cadastro — seca, fogo e calor.** Não há comando específico equivalente. Vale a Lei
+   > 12.608 como lei geral: art. 2º (dever de todos os entes; § 2º, a incerteza não isenta), art. 5º
+   > (monitorar e produzir alertas) e art. 8º (mapear áreas de risco, integrar a defesa civil ao
+   > planejamento, realizar simulados **conforme** o plano de contingência) — **sem prazo para plano
+   > formal**. Para fogo, soma-se a Lei 14.944/2024 (PNMIF), cujo art. 50 altera o art. 39 do Código
+   > Florestal: o dever de plano de manejo integrado do fogo é **do gestor da área**, pública ou
+   > privada, e não é plano de contingência municipal. As normas complementares com prazo citadas na
+   > imprensa jurídica **não foram conferidas em fonte primária** e por isso não são reproduzidas.
+   >
+   > **O art. 8º não contém dever de elaborar o plano** — o inciso XI trata de **simulados** conforme
+   > ele. A elaboração vem do art. 3º-A da Lei 12.340 (municípios do cadastro) e do art. 3º-B (onde
+   > há ocupações em áreas suscetíveis). **Não existe em lei federal comando de "adaptar o plano ao
+   > boletim"**: a expectativa decorre do art. 1º, VII, e do art. 2º, § 2º — é expectativa razoável,
+   > não obrigação datada, e por isso o texto público não diz "devem adaptar".
+   >
+   > É isto que sustenta a regra editorial de que ausência é **"não localizado"**, nunca "não
+   > cumpriu".
+
    **1a. Por que "declarar" pesa menos que um documento primário — base legal (pesquisa de 21/09/2026).** A Lei nº 12.608/2012 tem duas camadas de obrigação, não uma só. Todo Município tem o dever geral de adotar medidas de redução de risco e as competências gerais do art. 8º (vistoriar áreas de risco, manter União/Estado informados sobre desastres, integrar o SINPDEC). A obrigação **específica** de elaborar o documento formal "Plano de Contingência de Proteção e Defesa Civil" (art. 3º-A, §2º, II, redação dada pela MP nº 547/2011 e pela Lei nº 12.608/2012) vale só para os municípios **inscritos no Cadastro Nacional de Municípios com Áreas Suscetíveis** (Decreto nº 10.692/2021) — inscrição de iniciativa do próprio município ou de outro ente, condicionada a comprovação de área de risco. Esse mesmo Decreto (art. 5º, III) exige o plano em até um ano da inscrição; a Lei nº 14.750/2023 fixou atualização a cada 2 anos, com avaliação e prestação de contas em audiência pública anual (art. 3º-A, §6º da Lei 12.608/2012). Um "sim" no censo MUNIC ou ICM não confirma nenhuma dessas três coisas — nem que o plano existe de fato, nem que passou pela audiência pública exigida, nem que está dentro do ciclo de atualização. O desconto de 50% é a proteção contra essa lacuna geral (não é calibrado especificamente para "adaptado ao El Niño" — cobre também plano inexistente apesar do "sim", plano de outro risco, ou plano nunca submetido à prestação de contas exigida por lei).
 
    **1b. Quantos municípios têm a obrigação específica — o que sabemos e o que não sabemos.** O Cadastro Nacional em si (quem de fato se inscreveu) não tem consulta pública localizada até 21/09/2026 — a ferramenta do MDR (servicos.mdr.gov.br) é de autoinscrição, não de consulta. Na ausência desse dado primário, o MARÉ usa como proxy os **2.095 municípios "prioritários"** já publicados pelo Cemaden como suscetíveis a desastres geo-hidrológicos (mesma base da coluna "Municípios Prioritários" do ICM) — população de risco equivalente, mas não uma confirmação de quem completou a inscrição formal. Pedido de LAI com esse teor gerado em 21/09/2026 (texto pronto, envio humano via Fala.BR — exige pessoa física identificada, mesma regra de todo pedido de LAI do projeto — ainda pendente); registro público do pedido em `data/lai_pedidos.json` assim que enviado. Resultado, quando vier, corrige este proxy.
