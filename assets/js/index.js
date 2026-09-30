@@ -992,6 +992,11 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
   async function preencherMunicipios(){
     const uf = document.getElementById('cUF').value;
     const dl = document.getElementById('listaMunEnvio');
+    // 30/09/2026 (§311): o campo de município nasce desabilitado e abre com o estado — mesmo
+    // padrão do cartão da cidade e de `prefeituras.html`. Digitar município sem estado enviava
+    // um nome que a lista não podia validar.
+    const campo = document.getElementById('cMunicipio');
+    if (campo) campo.disabled = !uf;
     if (!uf){ dl.innerHTML = ''; return; }
     try {
       if (!__refMun){
@@ -1005,6 +1010,9 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
   }
   document.getElementById('cUF').addEventListener('change', preencherMunicipios);
   preencherMunicipios();
+  // Quando a URL traz `?uf=...&mun=...` (o convite do cartão do município), o campo precisa estar
+  // aberto antes de receber o valor.
+  if (p.get('uf')) { const c = document.getElementById('cMunicipio'); if (c) c.disabled = false; }
   set('cMunicipio', p.get('mun') || '');
   set('cTipo', p.get('tipo') || '');
   // Produção = domínio final OU o subdomínio temporário *.netlify.app (útil para testar

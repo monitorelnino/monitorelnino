@@ -1,8 +1,19 @@
 # Proteção de Dados Pessoais (LGPD) · Monitor El Niño Brasil
 
-Este documento descreve, para fins de auditoria, o único ponto do sistema
-onde dado pessoal é coletado, seu fluxo completo até o descarte ou a
-transformação em fato público, e as escolhas de desenho que minimizam a
+> **Atualização de 30/09/2026 (§311): o site deixou de coletar dado pessoal.**
+> O campo `email_contato`, único dado pessoal que existia, **foi removido do
+> formulário** por decisão da editoria. O formulário passou a pedir apenas
+> informações sobre o documento — nenhum nome, nenhum contato, nenhum
+> identificador de quem envia. Este documento **não foi apagado**: ele continua
+> valendo como registro de auditoria do que existiu, de como o dado fluía e de
+> como foi descartado, e agora registra também que a coleta cessou. O que está
+> descrito abaixo vale para as submissões **anteriores** a esta data, que ainda
+> podem estar na fila do Netlify até expirarem pela política de retenção da
+> plataforma.
+
+Este documento descreve, para fins de auditoria, o ponto do sistema onde dado
+pessoal **era** coletado até 30/09/2026, seu fluxo completo até o descarte ou a
+transformação em fato público, e as escolhas de desenho que minimizavam a
 exposição desse dado. Não é parecer jurídico: descreve o comportamento
 verificado do código, não uma análise de conformidade legal, para a qual
 se recomenda consulta a profissional habilitado.
@@ -20,12 +31,18 @@ formulário `contribuicao`, entregue via Netlify Forms). Seus campos:
 | `link_oficial` | URL da fonte oficial | sim |
 | `observacoes` | texto livre sobre o ato | não |
 | `contribuicao` | descrição livre da contribuição | não |
-| `email_contato` | **dado pessoal** — e-mail de quem envia | não (campo opcional) |
+| ~~`email_contato`~~ | **removido em 30/09/2026** — era o único dado pessoal | não existe mais |
 | `bot-field` | honeypot antispam (Netlify), nunca exibido a humanos | — |
 
-O único dado pessoal identificável é `email_contato`, campo opcional cujo
-propósito declarado na interface é permitir que a editoria peça
-esclarecimento sobre a contribuição, quando necessário.
+**O formulário não coleta nenhum dado pessoal desde 30/09/2026.** Até essa data,
+o único dado pessoal identificável era `email_contato`, campo opcional cujo
+propósito declarado na interface era permitir que a editoria pedisse
+esclarecimento sobre a contribuição. Ele foi removido, e a interface passou a
+dizer isso ao leitor, com estas palavras: *"Não pedimos seu nome nem contato, só
+as informações sobre o documento. A conferência é feita pela nossa equipe."*
+A consequência prática é que não há mais dado pessoal a reter, a descartar ou a
+pedir de volta — o fluxo descrito abaixo se aplica apenas ao que foi enviado
+antes.
 
 ## 2. Fluxo completo do dado, do envio ao descarte
 

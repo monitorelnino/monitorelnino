@@ -61,7 +61,10 @@ def main() -> int:
             "numero_data": d.get("numero_data", ""),
             "link": d.get("link_oficial", ""),
             "observacoes": d.get("observacoes", ""),
-            "email_contato": d.get("email_contato", ""),
+            # 30/09/2026 (§311): o formulário deixou de pedir e-mail. Submissões ANTIGAS ainda o
+            # têm, e o campo segue sendo lido delas para que a fila não perca o que já existe —
+            # nas novas, chega vazio e é isso que se espera. Deixar de ler quebraria o histórico.
+            "email_contato": d.get("email_contato", ""),   # sempre vazio nas submissões novas
         }
         checks = {
             "campos_obrigatorios": bool(item["municipio"] and item["uf"] and item["link"]),

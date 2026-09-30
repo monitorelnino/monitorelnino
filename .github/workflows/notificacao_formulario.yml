@@ -1,0 +1,44 @@
+# Notificação por e-mail a cada envio do formulário "contribuicao" — 30/09/2026 (§311).
+#
+# POR QUE ISTO É UM WORKFLOW, E NÃO UM SCRIPT LOCAL
+# =================================================
+# A configuração vive na conta do Netlify, não no repositório: é uma "form notification" do site.
+# A API do Netlify a expõe, mas exige o `NETLIFY_AUTH_TOKEN`, que **só existe como segredo do
+# GitHub** — não está na máquina de quem escreve o código, e não deve estar. Então a tentativa roda
+# aqui, onde o segredo existe, por botão, uma vez.
+#
+# O QUE ELE FAZ, E O QUE ELE NÃO FAZ
+# ----------------------------------
+# Confere se já existe notificação de e-mail para o formulário `contribuicao`. Se existir, não
+# duplica — diz que já está lá e sai. Se não existir, cria uma para `monitorelnino@gmail.com`
+# (endereço confirmado pela editoria em 30/09/2026; **nenhuma outra grafia**). Se a API recusar,
+# o job **falha com o erro exato no log**, para a editoria fazer a configuração manual sabendo o
+# porquê — em vez de descobrir semanas depois que nunca chegou e-mail nenhum.
+#
+# O assunto do e-mail vem do campo oculto `subject` do próprio formulário, para chegar
+# identificável em vez do padrão do Netlify.
+name: Notificação do formulário (por botão)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  configurar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5.0.0
+      - name: Conferir e, se faltar, criar a notificação
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          DESTINO: monitorelnino@gmail.com
+        run: |
+          set -o pipefail
+          if [ -z "$NETLIFY_AUTH_TOKEN" ]; then
+            echo "::error::NETLIFY_AUTH_TOKEN ausente — a configuração é manual, no painel do Netlify."
+            exit 1
+          fi
+          python3 scripts/configurar_notificacao_formulario.py
