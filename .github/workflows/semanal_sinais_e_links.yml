@@ -42,6 +42,10 @@ jobs:
         # que ainda não têm diário indexado, que é onde a mudança acontece: quem já está coberto não
         # volta à fila, porque edição indexada não desaparece. Por isso ela fica barata com o tempo.
         coletar_cobertura_qd.py
+        # 30/09/2026 (PR 3 do enquadramento federal de risco): municípios prioritários do MMA.
+        # Semanal porque a portaria é anual; o coletor só preserva evidência quando o TEXTO do ato
+        # muda, e avisa em voz alta quando a janela da atualização anual passou sem mudança.
+        coletar_prioritarios_mma.py
         coletar_sinais_risco.py --municipios
         # 29/09/2026 (bloco 4): SRAG pela fonte primária, semanal como o dado. Lê o banco do
         # SIVEP-Gripe em fluxo e guarda só o agregado por UF e semana; os anos congelados
