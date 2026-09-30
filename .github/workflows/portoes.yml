@@ -124,6 +124,12 @@ jobs:
           python3 scripts/verificar_pagina_arquivada.py
           # assunto: texto rapido
           python3 scripts/verificar_pagina_arquivada.py --autoteste
+          # 30/09/2026: o CODEMAP é gerado do código e reprova quando envelhece — mapa que
+          # mente manda ler o arquivo errado com a confiança de quem conferiu.
+          # assunto: texto rapido
+          python3 scripts/gerar_codemap.py --conferir
+          # assunto: texto rapido
+          python3 scripts/gerar_codemap.py --autoteste
           # 30/09/2026 (§307): sinal diário não pode cair em cadência semanal. A decisão da
           # editoria de 29/09 valia quando foi escrita e deixou de valer no dia seguinte, por
           # efeito colateral do desacoplamento — sem nada que reprovasse.

@@ -139,6 +139,16 @@ toda publicação passam exclusivamente pelo Code, a partir de handover; a centr
 e mais nada. A regra nasceu de três mudanças publicadas fora do fluxo (#451, #452, #453) — que
 ficam como estão, revisadas e confirmadas, e não se repetem.
 
+## Antes de explorar: o CODEMAP (30/09/2026)
+
+`CODEMAP.md`, na raiz, diz **que arquivo afeta que tela, consome que dado e é coberto por que
+portão**. Consultar antes de qualquer tarefa e **ler só o que ele lista** para o que a tarefa toca —
+não reexplorar o repositório quando o mapa já responde. Ele é gerado por
+`scripts/gerar_codemap.py`, nunca editado à mão, e um portão reprova quando envelhece.
+
+O mapa é índice de primeira ordem, não análise de dependência: para "por onde começo a ler", basta;
+para "nada mais pode ser afetado", quem responde continua sendo o portão de runtime.
+
 ## Fluxo de mudança (PROTOCOLO §3.1)
 
 1. Partir da `main` atualizada; ramo `edicao/AAAA-MM-DD-tema`.

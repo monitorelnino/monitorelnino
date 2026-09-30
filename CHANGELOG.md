@@ -27,6 +27,32 @@ tirar a cobrança do PR a tiraria do projeto inteiro — o que **não** é o que
 trocar um custo por um buraco. Derivado obsoleto continua sendo bloqueio; o que mudou é **onde** se
 cobra, não **se** se cobra.
 
+## §313 · CODEMAP: o mapa que evita reexplorar o repositório a cada pedido · 30/09/2026
+
+Classe **processo**. Item 1 do handover de otimização do ciclo de mudança.
+
+O custo maior de cada pedido não é rodar portão: é **descobrir de novo o que a mudança toca**. São
+99 scripts Python na raiz, 36 portões e dez páginas; achar "quem lê `data/municipios.json`" por
+busca custa minutos, toda vez, e o achado se perde no fim da sessão.
+
+`CODEMAP.md` responde de uma vez: **123 arquivos**, cada um com as telas que afeta, os dados que
+usa, os portões que o cobrem e se toca o índice. É **gerado do próprio código** — dos `fetch(...)`,
+dos `gravar(...)` e das listas de páginas dos portões — porque mapa escrito à mão envelhece em
+silêncio, e **mapa que mente é pior que mapa nenhum**: manda ler o arquivo errado com a confiança de
+quem conferiu. Um portão reprova quando ele envelhece; a suíte vai a **125**.
+
+**Três coisas que o gerador só acertou depois de medir contra o repositório real.** (a) `index.js`
+não escreve o nome de cada arquivo: monta `fetch('data/' + f + '.json')` sobre uma lista — sem ler
+esse idioma, o mapa dizia "—" justamente na página mais carregada do site. (b) O `src` dos scripts
+leva `?v=hash` de cache-busting, e exigir o fecho de aspas logo após o `.js` fazia o mapa não achar
+script nenhum. (c) Nem todo script da página vive em `assets/js/` — `acesso.js`, `mapas.js` e
+`colunas.js` estão em `assets/`. Agora a linha de `index.html` lista os **30** dados que ele consome.
+
+**O que o mapa não promete**, e está escrito nele: não é análise de dependência: não segue `import`
+transitivo nem chamada dinâmica. Para "por onde começo a ler", basta; para "nada mais pode ser
+afetado", quem responde é o portão de runtime. A regra de consultar antes de explorar entrou no
+`CLAUDE.md`. 28 casos de autoteste.
+
 ## §311 · Formulário mínimo: o site deixou de coletar dado pessoal · 30/09/2026
 
 Classe **página pública** e **privacidade**. Design "C" escolhido pela editoria.
