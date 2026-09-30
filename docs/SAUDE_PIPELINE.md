@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-09-28 a 2026-09-30 (71 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-09-28 a 2026-09-30 (73 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -19,12 +19,13 @@ Janela: 2026-09-28 a 2026-09-30 (71 execução(ões) registrada(s), 7 dias de hi
 
 | script | papel | última execução | duração | itens | status | erro |
 |---|---|---|---|---:|---|---|
-| `recalcular_mare.py` | essencial | 2026-09-30 14:00 | 2 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-09-30 14:32 | 2 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-09-30 11:56 | 0 s | — | ok | — |
 | `coletar_diarios_consorciados.py` | coletor | 2026-09-29 07:39 | 1987 s | 2 | ok | — |
 | `coletar_diarios_municipais.py` | coletor | 2026-09-29 07:09 | 1809 s | 140 | ok | — |
 | `coletar_doe.py` | coletor | 2026-09-29 08:13 | 61 s | — | ok | — |
 | `coletar_s2id.py` | coletor | 2026-09-29 08:14 | 746 s | — | ok | — |
+| `coletar_sinais_risco.py` | coletor | 2026-09-30 14:27 | 62 s | — | ok | — |
 | `consultar_querido_diario.py` | coletor | 2026-09-29 07:09 | 1 s | — | **erro** | urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)> |
 | `descobrir_planos.py` | coletor | 2026-09-30 09:11 | 910 s | 41 | ok | — |
 | `detectar_marcos_federais.py` | coletor | 2026-09-30 09:11 | 2 s | 0 | ok | — |
