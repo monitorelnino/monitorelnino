@@ -134,8 +134,21 @@ def main() -> int:
         formularios = pedir(f"/sites/{alvo['id']}/forms", token)
         form = next((f for f in formularios if f.get("name") == FORMULARIO), None)
         if not form:
-            print(f"X formulário {FORMULARIO!r} não existe ainda no Netlify — ele só aparece depois "
-                  f"do primeiro envio. Configure depois, ou pelo painel.")
+            # Diagnóstico, não palpite. A primeira execução parou aqui dizendo "não existe ainda",
+            # e isso não diz POR QUE. O Netlify detecta formulários no DEPLOY, lendo o HTML
+            # publicado; se a detecção estiver desligada nas configurações do site, nenhum
+            # formulário aparece, e a causa não é a falta de envio. Os dois casos pedem ações
+            # diferentes da editoria, então o log diz qual é.
+            nomes = [f.get("name") for f in formularios]
+            print(f"X formulário {FORMULARIO!r} não está na lista do Netlify.")
+            print(f"  Formulários detectados no site ({len(formularios)}): {nomes or 'nenhum'}")
+            if not formularios:
+                print("  NENHUM formulário detectado, embora o HTML publicado tenha um marcado com"
+                      " `data-netlify`. Isso aponta para a detecção DESLIGADA em Site configuration"
+                      " → Forms → Form detection. Ligue, refaça o deploy e rode este botão de novo.")
+            else:
+                print("  Outros formulários aparecem, então a detecção está ligada — este ainda não"
+                      " foi detectado no último deploy, ou mudou de nome.")
             return 1
         hooks = pedir(f"/sites/{alvo['id']}/hooks", token)
         if ja_existe(hooks, form["id"], destino):
