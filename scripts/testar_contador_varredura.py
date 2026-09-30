@@ -237,11 +237,23 @@ def main() -> int:
     fc = json.loads(FONTES.read_text(encoding="utf-8"))
     fc = fc.get("municipios") or fc
     recontado, com_mencao, vistos_no_log = {}, set(), set()
+    cob = {}
+    if COBERTURA.exists():
+        cob = (json.loads(COBERTURA.read_text(encoding="utf-8")) or {}).get("municipios") or {}
     for cod, m in fc.items():
         fs = [f for f in (m.get("fontes") or []) if f.get("fonte") == FQD]
         if not fs:
             continue
         e = estado([str(f.get("resultado", "")) for f in fs])
+        # 30/09/2026: marca de log ILEGÍVEL não vence a sondagem do acervo. Quando o log não diz
+        # nada legível e a cobertura sabe que não há diário, o município é `sem_cobertura_qd`. A
+        # regra é a mesma do produtor, mas lida da FONTE (o arquivo de cobertura), não copiada do
+        # código dele — é isso que mantém esta recontagem independente.
+        if e == "cobertura_indefinida":
+            r = cob.get(str(cod).zfill(7)) if cob else None
+            val = r.get("cobertura_qd") if isinstance(r, dict) else r
+            if val is False:
+                e = "sem_cobertura_qd"
         recontado[e] = recontado.get(e, 0) + 1
         vistos_no_log.add(str(cod).zfill(7))
         if e == "com_mencao":

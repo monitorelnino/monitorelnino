@@ -469,8 +469,17 @@ def _resumo_verificacao(out):
         _p_cob = RAIZ / "data" / "cobertura_qd.json"
         if _p_cob.exists():
             _cob_qd = (json.loads(_p_cob.read_text(encoding="utf-8")) or {}).get("municipios") or {}
+        # 30/09/2026: quando o log é ILEGÍVEL (`cobertura_indefinida`) e a cobertura SABE a
+        # resposta, vale a cobertura. Marca de log que ninguém consegue ler não é prova de nada;
+        # a sondagem do acervo é. O caminho inverso não vale: cobertura `true` com log ilegível
+        # significa "indexado e não lido", que não é `sem_cobertura_qd` e segue indefinido.
         for _v in out:
             _c = str(_v["ibge"]).zfill(7)
+            if _estado.get(_c) == "cobertura_indefinida":
+                _r = _cob_qd.get(_c)
+                _val = _r.get("cobertura_qd") if isinstance(_r, dict) else _r
+                if _val is False:
+                    _estado[_c] = "sem_cobertura_qd"
             if _c in _estado:
                 continue
             _r = _cob_qd.get(_c)
