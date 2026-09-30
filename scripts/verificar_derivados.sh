@@ -8,6 +8,15 @@ cd "$(dirname "$0")/.."
 # Modo --idempotencia (usado DENTRO da rotina, onde a árvore está suja com dados novos
 # ainda não comitados): não compara com o git; regenera a cadeia e exige que uma
 # SEGUNDA regeneração não mude nada (derivados são função pura dos dados desta rodada).
+# Modo --pode-regenerar (30/09/2026, §314, item 2 do handover de otimização): usado NO PR. Ele
+# regenera a cadeia inteira e falha só se um GERADOR quebrar — não compara com o git.
+#
+# Por quê: o manifesto sela o hash de todo arquivo versionado, então qualquer mudança o deixa
+# obsoleto. Cobrar isso dentro do PR forçava "regenerar + commitar + esperar a CI de novo" em quase
+# toda entrega, e o manifesto commitado no ramo conflitava com o do `main` a cada união.
+#
+# O que NÃO se afrouxa: a checagem estrita (`git`) continua rodando onde o dado é selado — no push
+# para a `main`. Derivado obsoleto continua sendo bloqueio; mudou ONDE se cobra, não SE se cobra.
 MODO="${1:-git}"
 export SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-$(python3 -c "import json,datetime;d=json.load(open('data/meta.json'))['corte'];dd,mm,aa=d.split('/');print(int(datetime.datetime(int(aa),int(mm),int(dd),tzinfo=datetime.timezone.utc).timestamp()))")}"
 python3 recalcular_mare.py --write >/dev/null
@@ -38,6 +47,11 @@ if [ "$MODO" = "--idempotencia" ]; then
   DEPOIS="$(git ls-files -z | xargs -0 sha256sum 2>/dev/null | sha256sum)"
   if [ "$ANTES" = "$DEPOIS" ]; then echo "✓ DERIVADOS OK — cadeia canônica idempotente nesta rodada (segunda regeneração não alterou nada)."; exit 0
   else echo "✗ DERIVADOS: a segunda regeneração alterou arquivos — derivado não determinístico ou ordem errada no pipeline."; exit 1; fi
+fi
+if [ "$MODO" = "--pode-regenerar" ]; then
+  echo "✓ DERIVADOS OK — a cadeia canônica inteira regenerou sem erro. A comparação com o git é do"
+  echo "  push para a \`main\`, que é onde o derivado obsoleto importa (§314)."
+  exit 0
 fi
 if git diff --quiet --exit-code -- . ':!data/snapshot_feed.json'; then
   echo "✓ DERIVADOS OK — cadeia canônica regenerada em árvore limpa sem diferença (índice, selos, feeds, dados abertos, PDFs, manifesto)."
