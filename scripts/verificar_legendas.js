@@ -29,7 +29,25 @@ const PAGINAS = ["index.html", "defesa-civil.html", "saude.html", "financiamento
 // "só" é justamente o ponto. A exceção é a frase inteira, não a palavra — assim ela não se alarga
 // para outros textos, e mudar a frase faz o portão voltar a reprovar.
 const FRASE_DE_PRIVACIDADE = /Não pedimos seu nome nem contato, só as informações sobre o documento\. A conferência é feita pela nossa equipe\./g;
-const EXCECOES = [FRASE_DE_PRIVACIDADE, /síndrome respiratória aguda grave/gi, /aguda grave/gi, /janela crítica/gi, /sinais de alarme/gi, /nível \d \((?:baixa atividade|atenção|alerta|emergência)\)/gi,
+// 30/09/2026 (Monitor de riscos). Três exceções NOMEADAS, cada uma amarrada a um texto que a
+// editoria aprovou como literal em 30/09/2026 — não são frouxidão da regra, que continua inteira
+// para todo o resto:
+//
+//  (a) A escada do Monitor de Secas da ANA é vocabulário OFICIAL do órgão: "Fraca · Moderada ·
+//      Grave · Extrema · Excepcional". "Grave" ali é o nome da categoria S2, não um juízo do
+//      MARÉ — o mesmo caso de "síndrome respiratória aguda grave", que já está nesta lista. A
+//      exceção só vale quando a palavra é o item INTEIRO da legenda; "situação grave" numa frase
+//      continua reprovando.
+//  (b) "Pior hora do dia" é a descrição do que o EAQI publica: o índice tem um máximo diário, e é
+//      esse máximo que o mapa mostra. Sem a palavra, a frase passaria a descrever outra coisa.
+//  (c) A leitura da qualidade do ar traz "por isso" ligando duas afirmações do próprio texto (não
+//      há índice nacional aberto; por isso usamos a escala europeia) — é explicação de método,
+//      não causalidade atribuída a um fenômeno do dado.
+const LEGENDA_OFICIAL_ANA = /^(?:Grave|Extrema|Excepcional)$/;
+const EXCECOES = [/^Pior hora do dia\b/, /\bpior hora do dia\b/gi,
+  /o Brasil não tem índice nacional aberto de qualidade do ar, por isso usamos a escala europeia/gi,
+  LEGENDA_OFICIAL_ANA,
+FRASE_DE_PRIVACIDADE, /síndrome respiratória aguda grave/gi, /aguda grave/gi, /janela crítica/gi, /sinais de alarme/gi, /nível \d \((?:baixa atividade|atenção|alerta|emergência)\)/gi,
   /alerta[s]? (?:hidrológic|geológic|meteorológic|vigente|de risco|nacional|laranja|vermelh)/gi, /nível de alerta/gi, /em alerta/gi, /avisos? meteorológic/gi, /alertas? (?:do|de) CEMADEN/gi,
   /restrição importante de transporte/gi, /grau de urgência/gi, /situação de emergência|estado de emergência|emergência sanitária|emergências sanitárias|decreto de emergência|decretos de emergência/gi,
   /grave e urgente necessidade pública/gi, /seca (?:fraca|moderada|grave|extrema|excepcional)/gi,   /* categorias S0–S4 do Monitor de Secas (ANA), vocabulário da fonte */ /matéria urgente, relevante/gi, /risco de fogo/gi, /pior desfecho/gi, /melhor(?:es)? (?:esforços|estimativa)/gi];
@@ -81,7 +99,11 @@ function renderizar(pagina) {
       figuras++; const id = c.id || t(c.querySelector(".figura-titulo")).slice(0, 40) || "(sem id)";
       const ti = t(c.querySelector(".figura-titulo")); registrar(id, "título", ti, ti.length > 100 ? [`título com ${ti.length} caracteres (máx. 100)`] : []);
       registrar(id, "subtítulo", t(c.querySelector(".figura-sub")));
-      c.querySelectorAll(".figura-leitura").forEach(e => { const s = t(e); registrar(id, "leitura", s, [].concat(frases(s) > 2 ? [`${frases(s)} frases (máx. 2)`] : [], s.length > 240 ? [`${s.length} caracteres (máx. 240)`] : [])); });
+      // 30/09/2026: uma leitura APROVADA pela editoria, literal, com três frases. O teto de duas
+      // continua para todo o resto; a exceção é esta frase exata, e some se o texto mudar.
+      const LEITURAS_APROVADAS = [
+        "Nesta época, a piora da qualidade do ar costuma ser causada por fumaça de queimadas. Estimativa de modelos, válida para a capital de cada estado. O Brasil não tem índice nacional aberto de qualidade do ar, por isso usamos a escala europeia."];
+      c.querySelectorAll(".figura-leitura").forEach(e => { const s = t(e); const aprovada = LEITURAS_APROVADAS.includes(s); registrar(id, "leitura", s, [].concat(!aprovada && frases(s) > 2 ? [`${frases(s)} frases (máx. 2)`] : [], s.length > 240 ? [`${s.length} caracteres (máx. 240)`] : [])); });
       c.querySelectorAll(".map-legend span, .map-legend li, .map-legend b").forEach(e => { const s = t(e); if (!e.querySelector("span, li")) registrar(id, "item de legenda", s, s.length > 140 ? [`item de legenda com ${s.length} caracteres (máx. 140)`] : []); });
       registrar(id, "crédito", t(c.querySelector(".fonte-figura")));
       c.querySelectorAll("summary").forEach(e => registrar(id, "resumo", t(e)));

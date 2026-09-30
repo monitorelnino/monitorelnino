@@ -19,7 +19,13 @@
                 sintetico:'#5E7C93', mineral:'#8FA5A8', areia:'#D6C4AC', 'osso-claro':'#F0F4F3', linha:'#C5CFCE',
                 'cinza-quente':'#66736F', 'sem-dado':'#DCE3E2', branco:'#FFFFFF', 'areia-escura':'#7A6A4F', zebra:'#E9EEEC',
                 muted:'#55645B', 'gauge-trilho':'#E7DECD', 'gauge-borda':'#CDBB9F', 'gauge-osso':'#F5F1E8', 'gauge-cinza':'#DDDED9',
-                'ambar-escuro':'#A87A50', 'sintetico-escuro':'#2A4457', preto:'#000000' };
+                'ambar-escuro':'#A87A50', 'sintetico-escuro':'#2A4457', preto:'#000000',
+                // 30/09/2026 (Monitor de riscos): as três FAMÍLIAS de risco do site, com os
+                // mesmos valores de assets/tokens.css (--chuva, --seca, --fogo). Elas já
+                // existiam como sintetico/ambar/argila; ganham o nome da família porque é
+                // assim que o resto do site as chama, e quem lê o código de um mapa de risco
+                // procura 'seca', não 'ambar'. Mesmo hex, um nome a mais.
+                chuva:'#5E7C93', seca:'#C9814B', fogo:'#7C4A34' };
   function cor(nome) { return COR[nome] || nome; }
   /** Relógio de prazo (07/09/2026): anel que esvazia de data_base a vencimento. resta ∈ [0,1]; dias < 0 = vencido.
    *  Devolve o SVG (string). Cor: Âmbar > 30 % restante; Argila abaixo de 30 %; Mineral apagado quando vencido. */
@@ -211,6 +217,11 @@
     rampaPerigo: [COR['osso-claro'], COR.argila], rampaPreparo: [COR.zebra, COR.musgo],
     // ordinal de 4 degraus para intensidade (dengue 1–4, calor 1–3+, quartis de valor pago): do mais brando ao mais grave
     ordinal4: [COR.mineral, COR.ambar, COR['ambar-escuro'], COR.argila],
+    // 30/09/2026 (Monitor de riscos): as três FAMÍLIAS de risco do site, com os mesmos valores
+    // de assets/tokens.css (--chuva, --seca, --fogo) mais o âmbar do calor. Elas já existiam
+    // como sintetico/ambar/argila; ganham o nome da família porque é assim que o resto do site
+    // as chama, e quem lê um mapa de risco procura 'seca', não 'ambar'.
+    familia: {chuva: COR.chuva, seca: COR.seca, fogo: COR.fogo, calor: COR.ambar},
     // séries por ano (o ano corrente sempre em Argila)
     anos: { '2026': COR.argila, '2025': COR.ambar, '2024': COR.mineral, canal: COR.musgo, p75: COR.ambar, p90: COR.sintetico },
     // rotas do dinheiro (Financiamento): família da chave de acesso — regra em frios, decreto em quentes,
