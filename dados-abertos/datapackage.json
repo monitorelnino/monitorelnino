@@ -27,7 +27,7 @@
    "format": "csv",
    "mediatype": "text/csv",
    "encoding": "utf-8",
-   "description": "Índice MARÉ por unidade da federação: nota 0–100, faixa interpretativa e componentes.",
+   "description": "Índice MARÉ Legal v3.1 por unidade da federação: nota 0–100, faixa interpretativa, os três componentes (instrumento operacional, estrutura de coordenação, cobertura populacional) e o indicador de antecedência, que é publicado à parte e NÃO entra na nota.",
    "schema": {
     "fields": [
      {
@@ -47,7 +47,11 @@
       "type": "string"
      },
      {
-      "name": "componente_estadual",
+      "name": "componente_instrumento_operacional",
+      "type": "number"
+     },
+     {
+      "name": "componente_estrutura_coordenacao",
       "type": "number"
      },
      {
@@ -55,11 +59,19 @@
       "type": "number"
      },
      {
-      "name": "componente_antecipacao",
-      "type": "number"
+      "name": "status_estadual",
+      "type": "string"
      },
      {
-      "name": "status_estadual",
+      "name": "degrau_instrumento",
+      "type": "string"
+     },
+     {
+      "name": "indicador_dias_apos_boletim_1",
+      "type": "string"
+     },
+     {
+      "name": "data_primeiro_ato",
       "type": "string"
      }
     ]
@@ -224,7 +236,7 @@
      }
     ]
    },
-   "rowCount": 1806
+   "rowCount": 1829
   },
   {
    "name": "verificacao_municipal",

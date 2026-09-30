@@ -405,7 +405,23 @@ function selectUF(uf, tileEl){
     })()}
     ${d.adpf743 ? '<div class="field"><div class="k">ADPF 743 (STF)</div><div class="v"><span class="pill-nivel">' + ({homologado:'plano homologado', ajustes_exigidos:'ajustes exigidos em 30 dias', ajustes_exigidos_car:'ajustes exigidos (CAR)', apresentado:'plano apresentado'}[d.adpf743.status] || d.adpf743.status) + '</span> intimado em ' + d.adpf743.intimado_em + ' · decisão de ' + d.adpf743.decisao + (d.adpf743.status !== 'homologado' ? ' · resultado após 25/07 não localizado' : '') + '</div></div>' : ''}
     ${barraResposta(d.uf)}
-    ${typeof MARE !== 'undefined' && MARE[d.uf] && MARE[d.uf].estado_estrutura !== undefined ? '<div class="field"><div class="k">Componente estadual</div><div class="v">estrutura ' + MARE[d.uf].estado_estrutura + ' · instrumento ' + MARE[d.uf].estado_operacional + ' → média ' + MARE[d.uf].estado + ' (pesos iguais)</div></div>' : ''}
+    ${(function(){ // v3.1 (30/09/2026): três componentes com um terço cada, nomeados pelo que são.
+      // Na v3.0 estrutura e instrumento eram metades de um componente só; agora cada um vale por si,
+      // e a régua temporal saiu da nota. Descrição do que se vê — variável, unidade e valor —, sem
+      // juízo: a leitura vive no texto narrativo, não no cartão (portão 19).
+      const m = (typeof MARE !== 'undefined' && MARE[d.uf]) || null;
+      if (!m || m.instrumento === undefined) return '';
+      return `<div class="field"><div class="k">Componentes (um terço cada)</div><div class="v">instrumento operacional ${m.instrumento} · estrutura de coordenação ${m.estrutura} · cobertura populacional ${m.cobertura_pop}</div></div>`;
+    })()}
+    ${(function(){ // INDICADOR, não componente: não entra na nota. Vazio quando não há data completa
+      // do primeiro ato — mês solto e "Recorrente" não viram dia, e lacuna declarada é melhor do
+      // que dia inventado.
+      const m = (typeof MARE !== 'undefined' && MARE[d.uf]) || null;
+      if (!m || m.dias_apos_boletim_1 === null || m.dias_apos_boletim_1 === undefined) return '';
+      const n = m.dias_apos_boletim_1;
+      const quando = n < 0 ? `${Math.abs(n)} dias antes` : `${n} dias depois`;
+      return `<div class="field"><div class="k">Antecedência do primeiro ato datado</div><div class="v">${quando} do Boletim nº 1 (29/06/2026) · ato de ${esc(m.data_primeiro_ato)} · não entra na nota</div></div>`;
+    })()}
     ${(function(){ // C12: instrumento publicado dentro da janela do defeso (04/07–25/10/2026) — fato datado, sem juízo
         const m = String(d.data || '').match(/(\d{2})\/(\d{2})\/(\d{4})/); if (!m) return '';
         const dt = new Date(+m[3], +m[2]-1, +m[1]); const ini = new Date(2026,6,4), fim = new Date(2026,9,25);

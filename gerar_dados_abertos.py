@@ -47,8 +47,14 @@ def tabelas(dados):
     """Devolve {nome: (linhas, campos, descrição)} a partir dos JSON do banco."""
     est = {u["uf"]: u for u in dados["estados"]["ufs"]}
     indice = [{"uf": uf, "estado": est[uf]["nome"], "mare_total": v["total"], "faixa": faixa(v["total"]),
-               "componente_estadual": v.get("estado"), "componente_cobertura_populacional": v.get("cobertura_pop"),
-               "componente_antecipacao": v.get("antecipacao"), "status_estadual": v.get("status_estadual")}
+               # v3.1 (30/09/2026): três componentes sem o temporal. A antecedência continua
+               # publicada, como INDICADOR, em coluna própria — não somada à nota.
+               "componente_instrumento_operacional": v.get("instrumento"),
+               "componente_estrutura_coordenacao": v.get("estrutura"),
+               "componente_cobertura_populacional": v.get("cobertura_pop"),
+               "status_estadual": v.get("status_estadual"), "degrau_instrumento": v.get("degrau_instrumento"),
+               "indicador_dias_apos_boletim_1": v.get("dias_apos_boletim_1"),
+               "data_primeiro_ato": v.get("data_primeiro_ato")}
               for uf, v in sorted(dados["indice"].items())]
     estados = [{"uf": u["uf"], "estado": u["nome"], "status": u.get("status"), "natureza_doc": u.get("natureza_doc"),
                 "documento": u.get("doc"), "data": u.get("data"), "orgao": u.get("orgao"), "url": u.get("url", "")}
@@ -76,8 +82,8 @@ def tabelas(dados):
               "data_verificacao": u.get("data_verificacao") or "", "url": u.get("url") or ""}
              for uf, u in sorted(dados.get("saude_uf", {}).get("uf", {}).items())]
     return {
-        "indice": (indice, ["uf", "estado", "mare_total", "faixa", "componente_estadual", "componente_cobertura_populacional", "componente_antecipacao", "status_estadual"],
-                   "Índice MARÉ por unidade da federação: nota 0–100, faixa interpretativa e componentes."),
+        "indice": (indice, ["uf", "estado", "mare_total", "faixa", "componente_instrumento_operacional", "componente_estrutura_coordenacao", "componente_cobertura_populacional", "status_estadual", "degrau_instrumento", "indicador_dias_apos_boletim_1", "data_primeiro_ato"],
+                   "Índice MARÉ Legal v3.1 por unidade da federação: nota 0–100, faixa interpretativa, os três componentes (instrumento operacional, estrutura de coordenação, cobertura populacional) e o indicador de antecedência, que é publicado à parte e NÃO entra na nota."),
         "estados": (estados, ["uf", "estado", "status", "natureza_doc", "documento", "data", "orgao", "url"],
                     "Instrumento estadual localizado por UF (status NOVO/READ/VIG/ELAB/LAC), documento, data e órgão."),
         "municipios": (municipios, ["uf", "municipio", "categoria", "documento", "data", "fonte", "url"],
@@ -169,7 +175,7 @@ def gerar():
 
 def self_test():
     """Contagens, faixas, determinismo, CSV parseável, sem DOI inventado."""
-    fix = {"indice": {"SC": {"total": 78.6, "estado": 100, "cobertura_pop": 90, "antecipacao": 60, "status_estadual": "NOVO"}},
+    fix = {"indice": {"SC": {"total": 78.6, "instrumento": 100, "estrutura": 100, "cobertura_pop": 90, "status_estadual": "NOVO", "degrau_instrumento": "NOVO", "dias_apos_boletim_1": 52, "data_primeiro_ato": "20/08/2026"}},
            "estados": {"ufs": [{"uf": "SC", "nome": "Santa Catarina", "status": "NOVO", "doc": "Plano, \"aspas\"", "data": "01/06/2026"}]},
            "municipios": [{"nome": "Blumenau", "uf": "SC", "categoria": "plano", "documento": "PLANCON", "data": "10/06/2026", "fonte": "Prefeitura"}],
            "atos_resposta": {"eventos": []}}

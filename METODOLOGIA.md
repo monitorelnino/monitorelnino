@@ -1448,3 +1448,197 @@ Duas notas de método que vieram junto:
 
 **Medição de desempenho se repete antes de virar decisão.** A primeira página medida numa bateria sempre aparece mais lenta, porque paga o custo do começo. Duas leituras de 9 e 10 segundos sumiram ao repetir com o cache aquecido. Número que não se repetiu não é medida.
 
+## 51. MARÉ Legal v3.1 — a régua do instrumento, sem componente temporal (30/09/2026)
+
+Decisão da editoria de 30/09/2026, tomada depois da revisão da régua de antecipação nos casos de
+SE, GO, MA e MG. Vale **só para o MARÉ Legal**; o MARÉ Saúde não muda nesta versão.
+
+### 51.1 O tempo sai da nota e vira indicador
+
+A régua de antecipação do §5.2.1 — 100/60/30 pela data do ato em relação ao Boletim nº 1, 40/30/20
+para recorrentes — **deixa de ser componente**. A antecedência passa a ser indicador publicado à
+parte: dias entre o Boletim nº 1 (29/06/2026) e o primeiro ato estadual datado do ciclo, contínuo,
+sem faixas, negativo quando o ato é anterior.
+
+Três razões, todas declaradas:
+
+1. **Publicar cedo não é atributo do arcabouço.** A lei exige plano existente e atualizado, não
+   antecedência. Antecedência é atributo de conduta, e como tal se reporta — não se pontua.
+2. **O corte de 30 dias e a âncora nacional única eram convenções não sustentáveis.** A janela real
+   entre aviso e impacto difere por região, limitação que esta metodologia já havia registrado em
+   E5d. Coughlan de Perez et al. (2015) é a referência da janela aviso–impacto que sustenta o
+   indicador; ela não sustenta um corte nacional único.
+3. **Havia dupla contagem.** A correlação entre o componente estadual e o de antecipação era de
+   **0,56** na v3.0 (E4) — os dois mediam, em parte, a mesma coisa.
+
+**Onde o indicador tem lacuna, ela é declarada.** Só 10 das 27 UFs têm data completa do primeiro
+ato; as demais trazem mês solto ("08/2026"), "Recorrente" ou intervalo. Nessas, o indicador fica
+vazio. Dia inventado seria pior do que lacuna — a diferença entre "publicou em agosto" e "publicou
+em 28/08" é exatamente o que este indicador mede.
+
+### 51.2 Três componentes, um terço cada
+
+(a) **instrumento operacional estadual**, na escala do §51.3; (b) **estrutura de coordenação**, na
+escala do §30 (NOVO 100 · READ 65 · VIG 45 · ELAB 35 · LAC 0), que desde 04/09/2026 entrava como
+metade do componente estadual e passa a valer por si; (c) **cobertura populacional**, como está
+(§5.3).
+
+**O que foi medido sobre a sobreposição, e o que não se pode afirmar.** A decisão foi tomada, entre
+outras razões, para separar componentes que se sobrepunham. A medida refeita sobre a v3.1 diz o
+seguinte: instrumento × cobertura populacional = −0,00; estrutura × cobertura populacional = 0,08;
+**instrumento × estrutura = 0,66**. Isto é, a maior correlação entre componentes da v3.1 é maior do
+que a maior da v3.0 (0,56). A razão é aritmética e não contradiz a mudança: na v3.0 estrutura e
+instrumento estavam **dentro de um mesmo componente**, e a relação entre eles não aparecia na conta;
+separá-los em dois terços independentes expõe essa relação e lhe dá mais peso. Registrar isto aqui é
+obrigação desta metodologia: **não se afirma que os três componentes são independentes** — afirma-se
+que o componente temporal saiu, que estrutura e instrumento passaram a ser mensuráveis
+separadamente, e que a correlação entre eles é de 0,66.
+
+### 51.3 Escala do instrumento — espaçamento com razão declarada
+
+A editoria escolheu entre três desenhos possíveis (espaçamento igual, razão declarada, elicitação) e
+adotou o segundo. Os valores e as razões são dela, e entram aqui como aprovados:
+
+| Degrau | Pontos | Razão declarada |
+|---|---|---|
+| Plano feito para o El Niño (NOVO) | 100 | referência |
+| Plano existente readaptado para o ciclo (READ) | 70 | atualizar um plano para o risco do ciclo é quase equivalente a fazê-lo novo; a diferença é de especificidade, não de conduta |
+| Recorrente **atualizado** que **cobre** o risco projetado | 55 | instrumento em vigor, revisado e pertinente — cumpre o papel, sem tratar o ciclo nominalmente |
+| Recorrente que cobre o risco, **sem** revisão datada em 2026 | 30 | o salto grande é entre plano vivo e plano parado |
+| Em elaboração (ELAB) | 20 | anúncio sem instrumento |
+| Recorrente que **não cobre** o risco projetado | 0 | um plano para outro risco não é preparação para este ciclo |
+| Nada localizado (LAC) | 0 | |
+
+O degrau 0 para "não cobre" é decisão expressa da editoria e tem um caso vigente: **MG**, com plano
+de chuvas diante de risco projetado de seca (CONSIST = DIFERE). Ele **não** se estende por analogia
+aos municípios: a cobertura populacional continua creditando cada município pela categoria do seu
+plano (§5.3), e qualquer extensão é decisão futura.
+
+**"Atualizado", definição operacional, verificável no documento:** revisão, reedição ou ato de
+ativação do plano recorrente com data em 2026 **e** CONSIST = COBRE. Sem data de 2026, o degrau é o
+de "sem revisão". Pelos dois critérios, na leitura de 30/09/2026, apenas **DF** (Decreto nº
+48.599/2026, DODF de 15/05/2026, que ativa o PPCIF) e **PI** (antecipação de ações PAA/PAS/
+Garantia-Safra, datada de 2026) estão no degrau 55; AP, CE, ES, RJ, RR e SP ficam em 30. O documento
+e a data que sustentam cada julgamento estão registrados no próprio motor
+(`VIG_ATUALIZADO_EM_2026` e `VIG_SEM_REVISAO_2026` em `recalcular_mare.py`).
+
+### 51.4 Sensibilidade dos degraus (E5)
+
+Cada degrau deslocado em ±15 pontos, um de cada vez: o pior caso é READ +15, com **4** UFs mudando
+de faixa; VIG +15 move 3; os demais movem uma ou nenhuma. A média nacional varia entre 44,2 e 46,5 —
+sempre na mesma faixa. A leitura: a escala é estável onde importa, que é a **ordem** dos degraus, e
+não os valores exatos.
+
+### 51.5 Efeito da troca
+
+Média nacional **46,6 → 45,3**, na mesma faixa ("em construção"). Sobem 7 UFs, caem 16, quatro ficam
+iguais. **Nove mudam de faixa:** AC, CE, MA, MS, PR e RR descem; AL, GO e SE sobem. Os maiores
+movimentos vêm de onde a régua temporal mais pesava — AC tinha antecipação 100 com instrumento em
+elaboração; GO e SE tinham plano novo e antecipação 30, e agora o instrumento vale por si. A errata
+pública, com o efeito UF a UF, é a **C27**, em `data/congelamento_defeso.json`.
+
+---
+
+## 52. A trava do defeso congelava a constante e deixava a fórmula solta (30/09/2026)
+
+Defeito real, exposto pela própria v3.1 e corrigido junto com ela.
+
+Desde a Errata C25, `verificar_consistencia.py` compara um hash das constantes do motor
+(ESTADO_SCORE, CRED_POP, ESTADOS, ESTRUTURA, PESO_ESTRUTURA) e reprova se elas mudarem dentro do
+período eleitoral. A v3.1 trocou os três componentes do índice, moveu a média nacional de 46,6 para
+45,3 e mudou nove UFs de faixa **sem tocar em nenhuma dessas cinco constantes** — e o portão passou
+verde.
+
+Congelar a constante e deixar a fórmula solta é congelar a fechadura e deixar a porta aberta. O hash
+passa a cobrir também a escala da v3.1 (`INSTRUMENTO_SCORE_V31`), o mapa de recorrentes atualizados
+(`VIG_ATUALIZADO_EM_2026`), a lista de CONSIST que reprovam (`CONSIST_NAO_COBRE`) e **a expressão que
+monta os componentes** dentro de `calcular()`. Com a correção aplicada, a própria v3.1 passou a
+reprovar o portão — como devia — e só entrou com a errata C27 registrada e encadeada.
+
+---
+
+## 53. Capital: reafirmação de que conta pela fração demográfica (30/09/2026)
+
+A editoria reafirmou em 30/09/2026 o desenho já vigente: **a capital não tem componente próprio**.
+Ela conta pela sua fração populacional real, como qualquer município (§12.4.2), e recebe **destaque
+apenas editorial** na ficha do estado — o cartão da capital, que mostra o status verificado.
+
+Duas razões, declaradas: dar-lhe bloco próprio **contaria a mesma população duas vezes**, uma na
+cobertura populacional e outra no componente de capital; e o peso demográfico da capital varia muito
+entre UFs, de modo que um componente de tamanho fixo pesaria coisas diferentes em estados diferentes.
+
+---
+
+## 54. Base legal: o que cada norma exige, e o que ela não exige (30/09/2026)
+
+Registro do que foi conferido em 29–30/09/2026. Serve de limite ao que o site pode afirmar.
+
+- **Lei 12.608/2012** é a lei geral da Política Nacional de Proteção e Defesa Civil. Ela organiza o
+  sistema e distribui competências; **não** fixa prazo nem periodicidade de plano de contingência
+  municipal para um ciclo climático.
+- **Art. 3º-A da Lei 12.340/2010** cria o **Cadastro Nacional de Municípios com Áreas Suscetíveis**,
+  de inscrição voluntária, e é dele que decorre o **dever de plano de contingência** e a obrigação de
+  atualização anual, para o município cadastrado.
+- **São dois cadastros distintos.** O do art. 3º-A não se confunde com o cadastro de municípios
+  suscetíveis a **enxurradas e inundações** do Decreto 12.444/2025, que regulamenta o art. 50 da Lei
+  11.445/2007 (saneamento) e serve a condicionantes de recursos de drenagem. O próprio decreto
+  ressalva que o outro "permanece disciplinado por regulamento próprio". O do art. 3º-A não tem
+  fonte pública consultável, e foi pedido por Lei de Acesso à Informação ao MIDR/SEDEC.
+- **Seca e fogo não têm comando específico** de plano municipal equivalente ao do art. 3º-A.
+- **PNMIF** (Política Nacional de Manejo Integrado do Fogo, Lei 14.944/2024) organiza o manejo do
+  fogo; não cria dever de plano de contingência municipal para o ciclo.
+- **ADPF 743 (STF)** alcança estados da Amazônia Legal e do Pantanal quanto a planos de prevenção e
+  combate a incêndios; é decisão judicial com destinatários nomeados, não norma geral.
+- **Boletim do Painel El Niño não tem força legal.** Ele é insumo técnico e âncora do indicador de
+  antecedência; não cria obrigação para ente nenhum.
+
+As correções de citação já apontadas nesta metodologia permanecem valendo; onde o texto público
+divergir do que está aqui, vale o que está aqui.
+
+---
+
+## 55. Enquadramento federal de risco por município: contexto de peso zero (30/09/2026)
+
+A ficha de cada município passa a mostrar se ele consta de uma lista federal de risco e por qual
+instrumento. São três listas, de três famílias, criadas por normas diferentes e com critérios que
+não se comunicam. **Nenhuma entra na nota.** Constar de lista federal não é preparação; não constar
+não é falta de preparação.
+
+- **Chuva, inundação e enxurrada** — cadastro da SEPAC/Casa Civil (Decreto 12.444/2025): 2.086
+  municípios no cadastro publicado, de 2.095 prioritários geo-hidrológicos; os 9 restantes têm risco
+  apenas de deslizamento, fora do escopo da Lei 11.445. Não é o cadastro do art. 3º-A (§54).
+- **Seca e estiagem** — delimitação do Semiárido (Resolução Condel/Sudene nº 150/2021, oficializada
+  pela nº 176/2024): 1.477 municípios em onze estados. A delimitação é da Sudene; a **tabela
+  nominal** lida é a publicada pelo IBGE na estrutura territorial (situação 2022), porque a página
+  da Sudene está sem conteúdo. O site declara as duas coisas.
+- **Fogo e desmatamento** — Portaria GM/MMA nº 1.202/2024: 81 municípios do bioma Amazônia
+  prioritários para prevenção e controle do desmatamento, mais 10 com desmatamento monitorado e sob
+  controle, em marca separada. É lista de desmatamento, **não** de risco de incêndio.
+- **Calor não tem lista federal por município.** Por isso não há linha de calor: ausência de lista é
+  ausência de lista, e não se preenche com outra coisa.
+
+A lista do MMA é anual e cada portaria revoga a anterior; não há fonte consultável por máquina que
+declare a vigente, então o projeto grava a data de publicação do ato que leu e avisa quando a janela
+da atualização anual passa sem mudança.
+
+---
+
+## 56. Calendário eleitoral removido do código; datas-chave preservadas como texto (30/09/2026)
+
+O calendário foi retirado do código do site por decisão da editoria. As **datas-chave** do período
+eleitoral continuam registradas como texto — inclusive a janela do defeso (04/07–25/10/2026) e o que
+ela implica para transferências voluntárias e publicidade institucional. O que saiu foi o
+componente; o que a leitora precisa saber continua escrito.
+
+---
+
+## 57. Frescor: o corte é a data da última coleta (30/09/2026)
+
+`meta["corte"]` passa a ser a data da rodada, sempre, tenha ela encontrado algo novo ou não. Antes
+ele só avançava quando o hash do arquivo de transferências federais mudava — e como as transferências
+voluntárias ficam bloqueadas no período eleitoral, o arquivo parou em 10/09 e o site passou a dizer
+"dados até 10/09" enquanto o índice recebia planos todos os dias. O número estava certo sobre o
+arquivo e **errado sobre o que a leitora entendia**: que a coleta tinha parado.
+
+"Rodou e não achou nada novo" é informação, e é diferente de "parou de rodar". Um portão
+(`verificar_corte_sincronizado.py`) reprova quando `corte` e `atualizado_em` divergem.
