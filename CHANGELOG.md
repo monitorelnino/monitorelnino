@@ -9,6 +9,49 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §310 · O cartão do município ficou mínimo: quatro coisas, nada mais · 30/09/2026
+
+Classe **página pública**. Decisão de design da editoria — redesenho do conteúdo, não outro ajuste
+incremental sobre o §304.
+
+**O que o cartão mostra agora, e só isto:** se o plano foi localizado; o **risco do estado**, no
+mesmo componente da ficha (`riscoBox()`, reaproveitado, não duplicado); o **link do documento**
+quando há; e o **convite ao formulário** quando não há.
+
+**O que saiu:** botão de PDF, contatos de emergência, alerta por SMS, órgão estadual e e-mail, link
+de financiamento, diretório do MIDR, decreto de emergência do município, nível de verificação,
+status do diário oficial, população, vigência, conteúdo do decreto, canal da fonte, guias de
+proteção por risco, aviso do FGTS, formulário de correção e todo o bloco "o que fazer e o que
+cobrar". O cartão respondia a perguntas que ninguém fez ali, e a que importa — *minha cidade tem
+plano?* — se perdia no meio.
+
+**O mapeamento de categoria está declarado, não espalhado.** Encontrado: `plano`, `plano_novo`,
+`plano_readaptado`, `plano_recorrente`, `plano_antigo`; `coberto_estadual` entra como encontrado,
+com uma palavra a mais dizendo que o plano é do estado. Não encontrado: `nao_localizado`,
+`nao_verificado`, `plano_elaboracao`, `nao_el_nino` e **`decreto`** — decreto de emergência é
+resposta, não preparação, e a metodologia nunca os confundiu. Quem revisar a regra lê duas listas,
+não um emaranhado de condições.
+
+**Uma trava de prova venceu o desenho, e está certo que tenha vencido.** A primeira versão dizia "não
+localizamos" para todo município sem plano — inclusive para os que **ninguém procurou**, que são a
+maioria dos 5.571. O portão de linguagem (§6, v2.2.4) reprovou, e com razão: afirmar busca que não
+houve é exatamente o que o teto público de ausência proíbe. Agora "não localizamos até o corte" sai
+só onde a busca ocorreu (`nao_localizado`); o padrão é "ainda não verificamos com todas as fontes".
+
+**O campo de município nasce desabilitado** e só abre quando há estado — mesmo padrão de
+`prefeituras.html`. Com isso, o ramo de nome ambíguo em mais de um estado deixa de ocorrer pelo
+caminho normal; ficou uma frase mínima para quem digitar sem usar a lista.
+
+**Título e texto do painel acompanharam o corte:** prometiam decreto, nível de verificação e "o que
+fazer", que saíram. Promessa que o cartão não cumpre é defeito, mesmo quando o cartão está certo.
+
+**O gerador do relatório não foi tocado** — sumiu a chamada a ele neste cartão, e um portão novo
+cobra as duas coisas: que o botão não volte e que `gerarRelatorioCidadao()` continue no código.
+Três verificações que cobravam contatos, PDF e decreto no cartão passaram a cobrar a ausência deles
+e a presença do cartão novo.
+
+Nenhum peso, crédito, régua ou categoria do índice mudou.
+
 ## §309 · O calendário saiu de vez do código — as três telas, não uma · 30/09/2026
 
 Classe **página pública**. Decisão da editoria de 30/09/2026 à noite, **mais forte que a anterior**:

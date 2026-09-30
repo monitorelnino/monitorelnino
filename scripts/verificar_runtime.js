@@ -76,7 +76,15 @@ setTimeout(() => {
     q("cidadeInput").value = "Blumenau";
     q("cidadeInput").dispatchEvent(new dom.window.Event("input"));
     const card = q("meuCard");
-    teste("consulta municipal: card visível com contatos", !card.hidden && card.innerHTML.includes("199") && card.innerHTML.includes("mailto:"));
+    // 30/09/2026 (§310): o cartão do município é MÍNIMO — status do plano, risco do estado, link do
+    // documento ou convite ao formulário. Contatos, SMS, decreto, PDF e o resto saíram por decisão
+    // da editoria; o portão passou a cobrar o cartão novo, e a AUSÊNCIA do que foi removido.
+    teste("consulta municipal: cartão mínimo visível, com status do plano",
+          !card.hidden && /Plano de contingência localizado|Não localizamos|Ainda não verificamos/.test(card.innerHTML));
+    teste("cartão mínimo: sem contatos, sem SMS, sem PDF",
+          !/199|40199|mailto:|btnPDF/.test(card.innerHTML));
+    teste("cartão mínimo: traz o risco do estado no mesmo componente da ficha",
+          /risco-box|RISCO PROJETADO|risco projetado/i.test(card.innerHTML));
     teste("datalist com municípios de SC", q("listaMun").children.length === 295);
   } catch (e) { teste("fluxo da consulta municipal", false); }
 
@@ -143,9 +151,11 @@ setTimeout(() => {
   // cartão da cidade, que não foi tocado — e o clique nele continua sendo exercido aqui.
   const errosAntesPDF = erros.length;
   d.defaultView.alert = () => {};
-  try { q("btnPDF").click(); } catch (e) { erros.push("clique btnPDF: " + e.message); }
-  teste("botão de PDF do município é alcançável pelo clique, sem erro",
-    erros.length === errosAntesPDF);
+  // 30/09/2026 (§310): o botão de PDF saiu do cartão do município. O GERADOR continua existindo e
+  // não foi tocado — o que sumiu é a chamada a ele neste cartão.
+  teste("o cartão do município não oferece mais PDF", !q("btnPDF"));
+  teste("mas o gerador do relatório continua no código",
+        /function gerarRelatorioCidadao/.test(fs.readFileSync(path.join(raiz, "assets", "js", "index.js"), "utf-8")));
   // O botão do estado tem de estar AUSENTE: sem esta checagem, ele voltaria em silêncio.
   teste("detalhe do estado não oferece mais PDF",
     !q("detail").querySelector("#btnPDFEstado, .btn-pdf"));
@@ -193,7 +203,11 @@ setTimeout(() => {
   try {
     q("ufSelect").value = "SC"; q("ufSelect").dispatchEvent(new dom.window.Event("change"));
     q("cidadeInput").value = "Biguaçu"; q("cidadeInput").dispatchEvent(new dom.window.Event("input"));
-    teste("cartão de Biguaçu mostra o decreto de emergência de 30/08/2026", q("meuCard").innerHTML.includes("30/08/2026") && q("meuCard").innerHTML.includes("granizo"));
+    // 30/09/2026 (§310): o decreto de emergência saiu do cartão do município, por decisão da
+    // editoria — o cartão responde "tem plano?", e decreto é resposta, não preparação. O dado
+    // continua no banco e no PDF; o que mudou é o que o cartão mostra.
+    teste("o cartão do município não mostra mais decreto de emergência",
+          !/Decreto de emergência/.test(q("meuCard").innerHTML));
   } catch (e) { teste("cartão de Biguaçu (emergência)", false); }
   // 30/09/2026: as verificações do painel "Calendário" da inicial saíram — o painel saiu do
   // código, com as outras duas telas de calendário (decisão da editoria). Não foram afrouxadas:
