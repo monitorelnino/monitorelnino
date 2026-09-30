@@ -56,6 +56,7 @@ Atualizado em 30/09/2026.
 | `coletar_boletim_ms_dengue.py` | — | `saude_desfechos/ses_ms_dengue.json` | — | não |
 | `coletar_boletim_pb_arboviroses.py` | — | `saude_desfechos/ses_pb_arboviroses.json` | — | não |
 | `coletar_boletim_pe_arboviroses.py` | — | `saude_desfechos/ses_pe_arboviroses.json` | — | não |
+| `coletar_cadastro_prioritarios.py` | — | `cadastro_prioritarios_federal.json` | — | não |
 | `coletar_cobertura_qd.py` | — | `cobertura_qd.json` | — | não |
 | `coletar_dda.py` | — | `saude_desfechos/dda_serie.json` | — | não |
 | `coletar_declarado_nacional.py` | — | `declarado_nacional.json`, `fontes_consultadas.json`, `fontes_declarado.json` | — | não |
