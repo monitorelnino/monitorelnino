@@ -530,6 +530,31 @@ Regras 2 e 3 abaixo não alteram a nota antes de 26/10/2026 (§24). A regra 1 (c
 
 1. **Camada declarada nacional (MUNIC/ICM) — decisão C5.** Construída em 02/09/2026; simulada (`recalcular_mare.py --simular-declarado-nacional`) até 21/09/2026, quando foi **ativada na nota pública**, por decisão editorial explícita, com o desconto de 50% já vigente para a camada declarada (§3.4 da transferência conceitual: declarar ≠ publicar) — a antecipação de 26/10/2026 para 21/09/2026 está documentada no CHANGELOG. Conservadora: não se soma à declaração ao tribunal de contas; vale o maior dos dois contadores.
 
+   > **Correção de base legal (30/09/2026, conferida no texto compilado das Leis 12.340/2010 e
+   > 12.608/2012, Planalto).** O art. 3º-A está na **Lei 12.340/2010** (incluído pela 12.608), não na
+   > 12.608. Na redação da Lei 14.750/2023, o § 6º manda elaborar o plano em **1 ano** da inclusão no
+   > cadastro, com avaliação e prestação de contas **anuais** em audiência pública e atualização
+   > **anual** — o prazo **bienal é do plano ESTADUAL** (Lei 12.608, art. 7º, § 2º, IV, na redação da
+   > 14.750), não do municipal.
+   >
+   > **Fora do cadastro — seca, fogo e calor.** Não há comando específico equivalente. Vale a Lei
+   > 12.608 como lei geral: art. 2º (dever de todos os entes; § 2º, a incerteza não isenta), art. 5º
+   > (monitorar e produzir alertas) e art. 8º (mapear áreas de risco, integrar a defesa civil ao
+   > planejamento, realizar simulados **conforme** o plano de contingência) — **sem prazo para plano
+   > formal**. Para fogo, soma-se a Lei 14.944/2024 (PNMIF), cujo art. 50 altera o art. 39 do Código
+   > Florestal: o dever de plano de manejo integrado do fogo é **do gestor da área**, pública ou
+   > privada, e não é plano de contingência municipal. As normas complementares com prazo citadas na
+   > imprensa jurídica **não foram conferidas em fonte primária** e por isso não são reproduzidas.
+   >
+   > **O art. 8º não contém dever de elaborar o plano** — o inciso XI trata de **simulados** conforme
+   > ele. A elaboração vem do art. 3º-A da Lei 12.340 (municípios do cadastro) e do art. 3º-B (onde
+   > há ocupações em áreas suscetíveis). **Não existe em lei federal comando de "adaptar o plano ao
+   > boletim"**: a expectativa decorre do art. 1º, VII, e do art. 2º, § 2º — é expectativa razoável,
+   > não obrigação datada, e por isso o texto público não diz "devem adaptar".
+   >
+   > É isto que sustenta a regra editorial de que ausência é **"não localizado"**, nunca "não
+   > cumpriu".
+
    **1a. Por que "declarar" pesa menos que um documento primário — base legal (pesquisa de 21/09/2026).** A Lei nº 12.608/2012 tem duas camadas de obrigação, não uma só. Todo Município tem o dever geral de adotar medidas de redução de risco e as competências gerais do art. 8º (vistoriar áreas de risco, manter União/Estado informados sobre desastres, integrar o SINPDEC). A obrigação **específica** de elaborar o documento formal "Plano de Contingência de Proteção e Defesa Civil" (art. 3º-A, §2º, II, redação dada pela MP nº 547/2011 e pela Lei nº 12.608/2012) vale só para os municípios **inscritos no Cadastro Nacional de Municípios com Áreas Suscetíveis** (Decreto nº 10.692/2021) — inscrição de iniciativa do próprio município ou de outro ente, condicionada a comprovação de área de risco. Esse mesmo Decreto (art. 5º, III) exige o plano em até um ano da inscrição; a Lei nº 14.750/2023 fixou atualização a cada 2 anos, com avaliação e prestação de contas em audiência pública anual (art. 3º-A, §6º da Lei 12.608/2012). Um "sim" no censo MUNIC ou ICM não confirma nenhuma dessas três coisas — nem que o plano existe de fato, nem que passou pela audiência pública exigida, nem que está dentro do ciclo de atualização. O desconto de 50% é a proteção contra essa lacuna geral (não é calibrado especificamente para "adaptado ao El Niño" — cobre também plano inexistente apesar do "sim", plano de outro risco, ou plano nunca submetido à prestação de contas exigida por lei).
 
    **1b. Quantos municípios têm a obrigação específica — o que sabemos e o que não sabemos.** O Cadastro Nacional em si (quem de fato se inscreveu) não tem consulta pública localizada até 21/09/2026 — a ferramenta do MDR (servicos.mdr.gov.br) é de autoinscrição, não de consulta. Na ausência desse dado primário, o MARÉ usa como proxy os **2.095 municípios "prioritários"** já publicados pelo Cemaden como suscetíveis a desastres geo-hidrológicos (mesma base da coluna "Municípios Prioritários" do ICM) — população de risco equivalente, mas não uma confirmação de quem completou a inscrição formal. Pedido de LAI com esse teor gerado em 21/09/2026 (texto pronto, envio humano via Fala.BR — exige pessoa física identificada, mesma regra de todo pedido de LAI do projeto — ainda pendente); registro público do pedido em `data/lai_pedidos.json` assim que enviado. Resultado, quando vier, corrige este proxy.
@@ -658,6 +683,30 @@ A "edição narrativa" muda como o site conta o que o índice mede — não o qu
 **Origem.** Patricia pediu, depois de conferir que o Cadastro Nacional de Municípios Suscetíveis existe mas está atrás de login: (i) buscar e implementar no índice as cidades prioritárias que já publicaram algum instrumento; (ii) um novo mapa mostrando, entre as prioritárias, quem já publicou e quem não, no final da página inicial, antes do rodapé.
 
 **Seis municípios novos, verificados individualmente.** Guarulhos, Campinas, São Gonçalo, São Bernardo do Campo, Duque de Caxias e Nova Iguaçu — juntos, mais de 5 milhões de habitantes — entraram no banco nominal com instrumentos ex-ante reais e datados (Campinas: pacote de ações contra o "Super El Niño", 17/06/2026; São Gonçalo: PLAMCON 2025/2026; Nova Iguaçu: PLANCON-NI v8.0, PDF publicado; Duque de Caxias: dois planos apresentados à Câmara em 27/08/2026). Jaboatão dos Guararapes foi buscado e **descartado**: só localizado ato de resposta (Decreto nº 130/2026, chuvas de maio), sem instrumento ex-ante nomeado — registro de disciplina, não de sucesso. Cobertura nominal: 254 → 260 municípios. Média nacional: 46,9 → **47,0**.
+
+<!-- PROPOSTA DE CORREÇÃO (Code, 30/09/2026) — NÃO PUBLICADA: a redação final é da editoria.
+
+O parágrafo abaixo está factualmente SUPERADO desde 29/04/2025 e a varredura de 30/09/2026 provou
+isso: a lista nominal NÃO exige autenticação. O Decreto 12.444/2025 passou a competência à
+SEPAC/Casa Civil, que publica os três documentos em página aberta, sem login. O que a varredura de
+02/09 encontrou fechado foi a pasta da SEDEC no MIDR — endereço antigo. Foi lacuna de CANAL, não de
+publicação: o dado estava público o tempo todo, noutro lugar.
+
+Consequência prática: o "proxy" por população deixou de ser necessário. O coletor
+`coletar_cadastro_prioritarios.py` lê a lista nominal, com código IBGE, e grava em
+`data/cadastro_prioritarios_federal.json` — 2.095 municípios, dos quais 2.086 no cadastro publicado
+e 9 fora dele por serem só de deslizamento.
+
+E um cuidado de nome, da conferência jurídica da central: esta lista NÃO é o "Cadastro Nacional de
+Municípios com Áreas Suscetíveis" do art. 3º-A da Lei 12.340 — aquele é de inscrição voluntária,
+inclui deslizamentos e gera o DEVER DE PLANO DE CONTINGÊNCIA. Este é o cadastro de municípios
+suscetíveis a enxurradas e inundações, do art. 50 da Lei 11.445 (saneamento), e não cria esse dever.
+Chamá-lo de "Cadastro Nacional" no site afirmaria obrigação legal que ele não estabelece.
+
+Redação sugerida para a primeira frase: "A lista nominal dos 2.095 municípios suscetíveis a risco
+geo-hidrológico é publicada pela Casa Civil da Presidência (Decreto 12.444/2025), em página aberta,
+com código IBGE por município."
+-->
 
 **O proxy de municípios prioritários — limitação declarada e solução transparente.** A lista NOMINAL dos 2.095 municípios do Cadastro Nacional de Municípios Suscetíveis a Enxurradas e Inundações (Nota Técnica nº 1/2025/SADJ-VI/SEPAC/CC/PR, Casa Civil da Presidência) exige autenticação no portal do MDR (servicos.mdr.gov.br, CPF e senha) e não é acessível por busca pública nem por download direto — verificado em 31/08/2026, cinco tentativas de acesso ao PDF anexo, todas retornando "Conteúdo Restrito". O que É público, na própria nota técnica (Tabela 2), são as **contagens por UF**: quantos municípios de cada estado entraram no cadastro. `data/cadastro_prioritarios.json` registra essas contagens com a fonte e a limitação declaradas.
 
@@ -844,6 +893,13 @@ Cláusula de neutralidade (padrão do §5.2.1): o que segue explica escolhas de 
 **Tamanho e alocação.** 12 por UF; capitais fora da cota; dentro da UF, por porte proporcional ao universo (mínimo 1 por classe existente), mínimo 2 no marcador dominante disponível e 1 no controle. **Exceção declarada:** o DF tem um único município, que é a capital — entra fora da regra; o painel tem **313 = 12 × 26 + 1**, não os 324 do documento de redesenho. Sorteio determinístico com **semente 20260902**; lista publicada em 02/09/2026 com **hash `12603c06d8161bf73c26dce9529909e615724adfb874244aa63deed4e24469b1`** (`data/painel/lista.json`; `dados-abertos/painel_amostral.csv`). Troca posterior só por errata. Ponte Serrada/SC (4213401), sorteado em 02/09 sobre os 1.942 com a mesma semente, integra o painel por decisão registrada.
 
 **Ficha e cadência.** Mesmas colunas para os 313: nível de verificação, instrumento localizado e natureza, decreto reconhecido/homologado, plano declarado (MUNIC/ICM), data do ato × data de localização, as sete rotas em R$ (2025 e 2026) mais a estadual, programas permanentes, marcadores vigentes — cada campo com fonte; nulo = não coletado. Reverificação toda semana, no domingo desde 20/09/2026 (segunda-feira até 19/09/2026) — é o instrumento de medida da variação e da recontagem pós-defeso, §29; a série permanece semanal e comparável, o deslocamento do dia não altera o intervalo entre observações. Leitura honesta: **região × porte × risco**, não UF isolada. Portão `verificar_painel.py`: lista imutável (hash), 313, sem capitais, fichas com fonte e data, marcadores arquivados, nada lido pelo motor, agregados em paridade.
+
+<!-- PROPOSTA DE CORREÇÃO (Code, 30/09/2026) — NÃO PUBLICADA: redação final da editoria.
+O achado abaixo ficou incompleto. A pasta da SEDEC no MIDR de fato responde "conteúdo restrito",
+mas a lista oficial NÃO está só em espelho do Cemaden Educação: desde o Decreto 12.444/2025 ela é
+publicada pela Casa Civil, em página aberta e com código IBGE. A varredura de 02/09 olhou o
+endereço certo do órgão errado — lacuna de canal, não de publicação.
+-->
 
 **Achados registrados.** A pasta de publicações da SEDEC no MIDR responde "conteúdo restrito — é necessário autenticar" (a lista oficial só foi localizada em espelho do Cemaden Educação); o cadastro federal é exclusivamente geo-hidrológico; a própria NT 1/2025 admite que a ausência de pessoas mapeadas em BA, GO, MA, MS, PR, RJ e RN decorre da falta de mapeamento estadual, não da ausência de risco.
 
