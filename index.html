@@ -36,7 +36,7 @@
 
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=e8733166">
-<link rel="stylesheet" href="assets/base.css?v=c7ac810a">
+<link rel="stylesheet" href="assets/base.css?v=c4c1ad9d">
 <script src="assets/mapas.js?v=412fe5b7"></script>
 </head>
 <body>
@@ -151,8 +151,8 @@
   </dialog>
 
   <div class="panel" id="formulario">
-    <h2>Indique um documento publicado</h2>
-    <p class="hint">Um plano, decreto ou outro ato oficial que ainda não está no Monitor.</p>
+    <h2>Você encontrou um plano ou decreto que ainda não está no MARÉ Legal?</h2>
+    <p class="hint">Leva menos de um minuto. Nada entra no Monitor sem conferência da nossa equipe.</p>
     <form name="contribuicao" method="POST" action="/obrigado.html" data-netlify="true" netlify-honeypot="bot-field" id="formContrib">
       <input type="hidden" name="form-name" value="contribuicao">
       <input type="hidden" name="subject" value="Novo documento indicado — %{formName} (%{submissionId})">
@@ -162,7 +162,7 @@
           <option value="AC">Acre (AC)</option><option value="AL">Alagoas (AL)</option><option value="AP">Amapá (AP)</option><option value="AM">Amazonas (AM)</option><option value="BA">Bahia (BA)</option><option value="CE">Ceará (CE)</option><option value="DF">Distrito Federal (DF)</option><option value="ES">Espírito Santo (ES)</option><option value="GO">Goiás (GO)</option><option value="MA">Maranhão (MA)</option><option value="MT">Mato Grosso (MT)</option><option value="MS">Mato Grosso do Sul (MS)</option><option value="MG">Minas Gerais (MG)</option><option value="PR">Paraná (PR)</option><option value="PB">Paraíba (PB)</option><option value="PA">Pará (PA)</option><option value="PE">Pernambuco (PE)</option><option value="PI">Piauí (PI)</option><option value="RN">Rio Grande do Norte (RN)</option><option value="RS">Rio Grande do Sul (RS)</option><option value="RJ">Rio de Janeiro (RJ)</option><option value="RO">Rondônia (RO)</option><option value="RR">Roraima (RR)</option><option value="SC">Santa Catarina (SC)</option><option value="SE">Sergipe (SE)</option><option value="SP">São Paulo (SP)</option><option value="TO">Tocantins (TO)</option>
         </select></label>
         <label class="fld">Município<input type="text" name="municipio" id="cMunicipio" list="listaMunEnvio" required autocomplete="off" placeholder="Selecione o estado para ver a lista" disabled></label><datalist id="listaMunEnvio"></datalist>
-        <label class="fld">O que você está enviando<select name="tipo" id="cTipo" required>
+        <label class="fld">O que é<select name="tipo" id="cTipo" required>
           <option value="plano">Plano de contingência publicado (deste ciclo)</option>
           <option value="plano_elaboracao">Plano em elaboração (anúncio ou minuta oficial)</option>
           <option value="plano_antigo">Plano vigente, de ciclo anterior</option>
@@ -172,7 +172,7 @@
           <option value="outro_ato">Portaria, levantamento oficial ou outro ato</option>
           <option value="correcao">Correção de um dado já publicado</option>
         </select></label>
-        <label class="fld">Link do documento em fonte oficial<input type="url" name="link_oficial" required placeholder="https://…"></label>
+        <label class="fld">Onde ele está publicado<input type="url" name="link_oficial" required placeholder="Cole o link do documento"></label>
       </div>
       <details class="contrib-opcional">
         <summary>Número do ato ou alguma observação sobre o documento (opcional)</summary>
@@ -180,7 +180,7 @@
         <label class="fld">Observações<textarea name="observacoes" rows="3"></textarea></label>
       </details>
       <p class="note">Não pedimos seu nome nem contato, só as informações sobre o documento. A conferência é feita pela nossa equipe.</p>
-      <button type="submit" class="btn">Enviar para a fila de verificação</button>
+      <button type="submit" class="btn">Enviar</button>
       <p class="note u-mt-2 u-mb-0" id="contribOffline"></p>
     </form>
   </div>
