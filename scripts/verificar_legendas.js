@@ -17,7 +17,9 @@
 const fs = require("fs"), path = require("path");
 const { JSDOM, VirtualConsole } = require("jsdom"); const { inlinePageJs } = require("./_inline_js");
 const RAIZ = path.join(__dirname, ".."); const listar = process.argv.includes("--listar");
-const PAGINAS = ["index.html", "defesa-civil.html", "saude.html", "financiamento.html", "monitor-de-riscos.html", "calendario-eleitoral.html",
+  // 30/09/2026 (§309): "calendario-eleitoral.html" saiu desta lista — a página foi apagada do
+  // código, com as outras duas telas de calendário (decisão da editoria).
+const PAGINAS = ["index.html", "defesa-civil.html", "saude.html", "financiamento.html", "monitor-de-riscos.html", 
   "imprensa.html", "prefeituras.html", "proteja-se.html", "obrigado.html", "blog.html"].filter(p => fs.existsSync(path.join(RAIZ, p)));
 
 // Exceções: colocações técnicas ou oficiais que contêm uma palavra da lista, mas não são juízo.
@@ -102,7 +104,7 @@ function renderizar(pagina) {
   //   data-voz="lei"   — blocos cujo conteúdo É a lei (FAQ da Imprensa, blocos legais do Calendário).
   {
     const PAGINAS_PROSA = ["index.html", "monitor-de-riscos.html", "defesa-civil.html", "saude.html",
-      "financiamento.html", "calendario-eleitoral.html", "imprensa.html", "proteja-se.html"].filter(p => fs.existsSync(path.join(RAIZ, p)));
+      "financiamento.html", "imprensa.html", "proteja-se.html"].filter(p => fs.existsSync(path.join(RAIZ, p)));
     // "\bsó\b" não funciona: "ó" não é \w em regex JS sem a flag Unicode, então a fronteira de palavra depois
     // de "só" não fecha — nunca teria pego o próprio caso ("Só — dos 27 estados…") que motivou esta checagem.
     const ENFASE = /(?:^|[^a-zà-ÿ])(só|apenas|única|único|nunca|sempre)(?:[^a-zà-ÿ]|$)/i;

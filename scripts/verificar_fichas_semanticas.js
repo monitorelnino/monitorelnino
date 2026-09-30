@@ -19,7 +19,9 @@
 const { JSDOM, VirtualConsole } = require("jsdom"); const { inlinePageJs } = require("./_inline_js");
 const fs = require("fs"), path = require("path");
 const raiz = path.join(__dirname, "..");
-const PAGINAS = ["index.html", "calendario-eleitoral.html", "defesa-civil.html",
+  // 30/09/2026 (§309): "calendario-eleitoral.html" saiu desta lista — a página foi apagada do
+  // código, com as outras duas telas de calendário (decisão da editoria).
+const PAGINAS = ["index.html", "defesa-civil.html",
                  "monitor-de-riscos.html", "saude.html", "financiamento.html", "proteja-se.html",
                  "imprensa.html", "blog.html", "prefeituras.html"];
 const falhas = [];
