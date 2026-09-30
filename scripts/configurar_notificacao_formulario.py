@@ -171,7 +171,9 @@ def main() -> int:
         print(f"OK notificação criada: e-mail para {destino} a cada envio de {FORMULARIO!r}.")
         return 0
     except urllib.error.HTTPError as e:
-        print(f"X a API do Netlify recusou: HTTP {e.code} — {e.read()[:300]!r}")
+        # `e.reason` carrega o método e o caminho (posto em `pedir`); `e.read()` vem vazio quando o
+        # erro foi relançado, então imprimir só o corpo escondia justamente o que interessa.
+        print(f"X a API do Netlify recusou: HTTP {e.code} — {e.reason}")
         print("  Caminho manual: Site settings → Forms → Form notifications → Add notification → "
               f"Email notification → {DESTINO_CONFIRMADO}, marcado para o formulário {FORMULARIO!r}.")
         return 1
