@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-09-30 · #474 · Cadastro federal de municípios suscetíveis: a lista nominal, da Casa Civil
+
+A lista dos 2.095 estava pública o tempo todo, noutro endereço: desde o Decreto 12.444/2025 quem
+publica é a SEPAC/Casa Civil, não a SEDEC. O coletor lê os três PDFs, preserva cada um e grava
+2.086 no cadastro + 9 só de deslizamento = 2.095, com tipo de risco e flags separados. Peso zero.
+**Não é** o Cadastro Nacional do art. 3º-A: aquele gera dever de plano, e a LAI por ele continua.
+
 ## §318 · As capturas do PR deixam de ser tiradas à mão · 30/09/2026
 
 Classe **processo**. Item 5 do handover de otimização.
