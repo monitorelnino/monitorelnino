@@ -97,6 +97,127 @@ const TIPO_CURTO = SINAIS._formato.tipos_de_risco_curto;
 // 27/09/2026 (pedido da editoria): o mapa do tipo de risco projetado saiu daqui. O dado não
 // foi descartado — ele passou para o cartão de cada estado na página inicial, que é onde o
 // leitor procura o seu próprio estado. Ver assets/js/index.js.
+// ---- R6: o mapa nacional do risco PREVISTO (30/09/2026, volta à página por decisão da editoria)
+// Previsão, não observação — e a legenda diz isso em cada degrau. O detalhe de cada estado continua
+// na ficha, na inicial; aqui é o retrato nacional de uma vez só.
+//
+// As cores são as FAMÍLIAS do site (--seca, --fogo, --chuva, e âmbar para calor), as mesmas do
+// resto das páginas: quem leu "seca" na ficha do estado encontra a mesma cor aqui. "Mais de um
+// risco" não inventa cor nova — recebe o cinza-quente neutro e diz quais são no texto do mouse,
+// porque uma cor de mistura sugeriria um risco intermediário que não existe.
+const RISCO_FAMILIA_COR = {
+  estiagem: MonitorMapas.PALETA.familia.seca, seca: MonitorMapas.PALETA.familia.seca,
+  incendios: MonitorMapas.PALETA.familia.fogo, fogo: MonitorMapas.PALETA.familia.fogo,
+  chuvas: MonitorMapas.PALETA.familia.chuva, chuva: MonitorMapas.PALETA.familia.chuva,
+  calor: MonitorMapas.PALETA.familia.calor,
+};
+const RISCO_FAMILIA_ROTULO = {estiagem:'Seca', seca:'Seca', incendios:'Fogo', fogo:'Fogo',
+                              chuvas:'Chuva forte', chuva:'Chuva forte', calor:'Calor'};
+const COR_VARIOS = MonitorMapas.cor('cinza-quente');
+const riscoDe = uf => (SINAIS.uf[uf] || {}).risco_projetado || null;
+const componentesDe = uf => {
+  const r = riscoDe(uf); if (!r) return [];
+  const c = (r.componentes && r.componentes.length ? r.componentes : [r.tipo]).filter(Boolean);
+  return c.filter(x => x !== 'sem_sinal');
+};
+desenharMapa('mapaRiscoPrevisto', 'legRiscoPrevisto',
+  uf => { const c = componentesDe(uf);
+    if (!c.length) return MonitorMapas.PALETA.zero;
+    if (c.length > 1) return COR_VARIOS;
+    return RISCO_FAMILIA_COR[c[0]] || MonitorMapas.PALETA.zero; },
+  uf => { const r = riscoDe(uf); if (!r) return 'Sem sinal elevado para este estado no boletim';
+    const c = componentesDe(uf);
+    const nomes = c.map(x => RISCO_FAMILIA_ROTULO[x] || x).join(' e ');
+    return '<em>' + esc(nomes || 'Sem sinal elevado') + '</em>'
+      + (r.texto ? '<br>' + esc(r.texto) : ''); },
+  [{cor: MonitorMapas.PALETA.familia.seca, rotulo:'Seca'},
+   {cor: MonitorMapas.PALETA.familia.fogo, rotulo:'Fogo'},
+   {cor: MonitorMapas.PALETA.familia.chuva, rotulo:'Chuva forte'},
+   {cor: MonitorMapas.PALETA.familia.calor, rotulo:'Calor'},
+   {cor: COR_VARIOS, rotulo:'Mais de um risco'},
+   {cor: MonitorMapas.PALETA.zero, rotulo:'Sem sinal elevado'}]);
+credito('boxRiscoPrevisto', 'painel_el_nino');
+
+(function tabelaRiscoPrevisto(){
+  const tb = document.querySelector('#tblRiscoPrevisto tbody'); if (!tb) return;
+  tb.innerHTML = Object.keys(SINAIS.uf).sort().map(uf => {
+    const c = componentesDe(uf);
+    const nomes = c.map(x => RISCO_FAMILIA_ROTULO[x] || x).join(' e ') || 'Sem sinal elevado';
+    return '<tr><td>' + esc(uf) + '</td><td>' + esc(nomes) + '</td></tr>';
+  }).join('');
+})();
+
+// ---- Subtítulos das figuras, gerados do dado (30/09/2026). O HTML traz só a parte fixa da frase;
+// a data, a contagem e o documento vêm daqui, para nenhum número viver escrito na página.
+(function subtitulos(){
+  const fonte = k => (SINAIS.fontes || {})[k] || {};
+  const põe = (id, texto) => { const el = document.getElementById(id); if (el && texto) el.textContent = texto; };
+  const dia = v => MonitorMapas.dataBR(v) || null;
+
+  // R4 — o ano final da série do RONI.
+  const roni = SINAIS.enos.roni, sr = (roni && roni.serie) || [];
+  if (sr.length) põe('roniSub', 'Temperatura do Pacífico acima ou abaixo do normal · média de três '
+    + 'meses · °C · 1950 a ' + sr[sr.length - 1].ano);
+
+  // R6 — o boletim que sustenta a previsão.
+  const pe = fonte('painel_el_nino');
+  põe('riscoPrevistoSub', 'Risco previsto até março de 2027 · por estado'
+    + (pe.documento ? ' · ' + pe.documento : '')
+    + (pe.consultado_em ? ', ' + pe.consultado_em : ''));
+
+  // R7 — o mês do mapa de seca.
+  const algumaSeca = Object.keys(SINAIS.uf).map(uf => (SINAIS.uf[uf].secas || {}).mapa).find(Boolean);
+  // O mês vem do dado com inicial maiúscula ('Agosto de 2026'); no meio da frase ele é minúscula.
+  const semCaixaAlta = t => String(t || '').charAt(0).toLowerCase() + String(t || '').slice(1);
+  if (algumaSeca) põe('secasSub', 'Mapa de ' + semCaixaAlta(algumaSeca)
+    + ' · categoria de seca em pelo menos metade da área do estado');
+
+  // R8 — a hora do corte e o total de focos.
+  const totalFocos = Object.keys(SINAIS.uf)
+    .reduce((soma, uf) => soma + (((SINAIS.uf[uf] || {}).fogo || {}).focos_24h || 0), 0);
+  const fFogo = fonte('inpe_fogo');
+  if (totalFocos) põe('fogoSub', 'Últimas 24 horas, até ' + (fFogo.consultado_em || dia(SINAIS.gerado_em) || '')
+    + ' · ' + totalFocos.toLocaleString('pt-BR') + ' focos · cada ponto reúne os focos de uma área de cerca de 11 km');
+
+  // R9 — o dia da pior hora.
+  const fAr = fonte('open_meteo_ar');
+  põe('arSub', 'Pior hora do dia ' + (fAr.consultado_em || dia(SINAIS.gerado_em) || '')
+    + ' · uma capital por estado · estimativa por modelo');
+
+  // R10 — o dia da previsão.
+  const fTemp = fonte('inmet_previsao_capitais');
+  põe('temperaturaSub', 'Previsão para ' + (fTemp.consultado_em || dia(SINAIS.gerado_em) || '')
+    + ' · máxima prevista e diferença para a média histórica do mês · °C · uma capital por estado');
+
+  // R11 — a hora da consulta dos avisos.
+  const fAvisos = fonte('inmet_avisos');
+  // O texto aprovado é "Avisos em vigor na consulta, {dd/mm hh:mm}" e fica inteiro; o segundo
+  // segmento existe porque o formato de subtítulo do site separa por "·", e ele acrescenta
+  // informação (a unidade do mapa) em vez de repetir a primeira parte.
+  põe('avisosSub', 'Avisos em vigor na consulta, ' + (fAvisos.consultado_em || dia(SINAIS.gerado_em) || '')
+    + ' · por estado');
+})();
+
+// ---- Linha de cada bloco de família (R7, R8, R10, R11): quantos estados e quais.
+// Gerada do boletim, nunca escrita à mão. Quando nenhum estado tem a família, a linha some em vez
+// de dizer "0 estados" — zero estados não é informação útil aqui, e a frase aprovada pressupõe a
+// lista.
+(function linhasDasFamilias(){
+  const ufsCom = fam => Object.keys(SINAIS.uf).sort()
+    .filter(uf => componentesDe(uf).some(c => (RISCO_FAMILIA_ROTULO[c] || '') === fam));
+  const escreve = (id, fam, frase) => {
+    const el = document.getElementById(id); if (!el) return;
+    const lista = ufsCom(fam);
+    if (!lista.length) { el.hidden = true; return; }
+    el.textContent = frase.replace('{n}', lista.length).replace('{lista}', lista.join(', ')) + '.';
+  };
+  escreve('linhaSeca', 'Seca', 'O boletim prevê seca para {n} estados: {lista}');
+  escreve('linhaFogo', 'Fogo', 'O boletim prevê risco de fogo para {n} estados: {lista}');
+  escreve('linhaCalor', 'Calor', 'O boletim prevê calor acima do normal para {n} estados: {lista}');
+  escreve('linhaChuva', 'Chuva forte',
+          'O boletim prevê chuva acima do normal para {n} estados: {lista}');
+})();
+
 // ---- Mapa 2: seca observada ----
 // 15/09/2026: a fonte passou a ser o RPC de dados tabulares da ANA (fração cumulativa da área da UF em cada categoria
 // S0–S4, mapa mensal). O mapa mostra a categoria MEDIANA da área — a mais severa que cobre pelo menos metade da UF
@@ -112,7 +233,12 @@ desenharMapa('mapaSecas', 'legSecas',
     const c = secaCat(s); const cob = s.cobertura_pct || {};
     const dist = ['sem seca','S0','S1','S2','S3','S4'].filter(k => (cob[k] || 0) >= 0.05).map(k => esc(k) + ' ' + pct1(cob[k])).join(' · ');
     return '<em>' + esc(SECA_ROTULO[c] || c) + '</em>' + (s.mapa ? '<br>mapa ' + esc(s.mapa) : '') + (dist ? '<br>área da UF: ' + dist : ''); },
-  ['sem seca','S0','S1','S2','S3','S4'].map(c => ({cor:SECA_COR[c], rotulo:SECA_ROTULO[c]})).concat([{cor:NEUTRA, rotulo:'Sem coleta até o corte'}]));
+  // R7 (30/09/2026): a legenda aprovada é em português corrente — "Fraca" em vez de "S0". O código
+  // do Monitor de Secas continua no texto do mouse, para quem for conferir na fonte.
+  [{cor:SECA_COR['sem seca'], rotulo:'Sem seca'}, {cor:SECA_COR.S0, rotulo:'Fraca'},
+   {cor:SECA_COR.S1, rotulo:'Moderada'}, {cor:SECA_COR.S2, rotulo:'Grave'},
+   {cor:SECA_COR.S3, rotulo:'Extrema'}, {cor:SECA_COR.S4, rotulo:'Excepcional'},
+   {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
 credito('boxSecas', 'monitor_secas');
 
 // ---- Mapa 3: temperatura máxima prevista nas capitais (24/09/2026) ----
@@ -422,23 +548,49 @@ credito('boxFogo', 'inpe_fogo');
     (a.exemplos || []).forEach(f => { fenomenos[f] = (fenomenos[f] || 0) + 1; });
   });
 
-  const maxAviso = Math.max(1, ...UFS.map(uf => Number((avisos(uf) || {}).total || 0)));
-  const escalaAviso = d3.scaleSqrt().domain([0, maxAviso]).range(MonitorMapas.PALETA.rampaPerigo);
+  /* 30/09/2026 (R11 do handover): o estado passa a ser pintado pelo MAIOR GRAU de aviso em vigor,
+     não pela CONTAGEM. Contagem media outra coisa — dez avisos de perigo potencial pintavam mais
+     escuro do que um de grande perigo, e é o grande perigo que a leitora precisa ver primeiro. O
+     número de avisos continua no texto do mouse e na lista.
+
+     A ordem dos graus é a do próprio INMET, e a comparação é por posição nessa ordem: nada de
+     inventar escala numérica para um vocabulário que já é ordenado. */
+  const ORDEM_GRAU = ['Perigo Potencial', 'Perigo', 'Grande Perigo'];
+  const normGrau = g => {
+    const t = String(g || '').toLowerCase();
+    if (t.includes('grande')) return 'Grande Perigo';
+    if (t.includes('potencial')) return 'Perigo Potencial';
+    if (t.includes('perigo')) return 'Perigo';
+    return null;
+  };
+  const maiorGrau = uf => {
+    const g = Object.keys((avisos(uf) || {}).graus || {}).map(normGrau).filter(Boolean);
+    if (!g.length) return null;
+    return g.reduce((a, b) => ORDEM_GRAU.indexOf(b) > ORDEM_GRAU.indexOf(a) ? b : a);
+  };
+  // Três graus, três degraus da escala ordinal do site (a mesma da seca), na ordem do INMET.
+  // `rampaPerigo` tem dois extremos e serve a interpolação contínua — aqui o vocabulário é
+  // ordenado e fechado, e escala contínua para vocabulário fechado inventaria tons intermediários
+  // que o INMET não emite.
+  const COR_GRAU = {'Perigo Potencial': MonitorMapas.PALETA.ordinal4[1],
+                    'Perigo': MonitorMapas.PALETA.ordinal4[2],
+                    'Grande Perigo': MonitorMapas.PALETA.ordinal4[3]};
+  const SEM_AVISO = MonitorMapas.PALETA.zero;
   const ordena = o => Object.entries(o).sort((a, b) => b[1] - a[1]);
-  /* O resumo por grau e por fenômeno entra na LEGENDA, não num segundo subtítulo: o portão de
-     figuras admite um subtítulo por cartão, e tem razão — dois viram parágrafo, e cartão não é
-     texto corrido. Foi a CI que pegou, em 29/09. */
-  const legenda = total
-    ? ordena(graus).map(([g, n]) => ({cor: escalaAviso(n), rotulo: g + ': ' + n}))
-        .concat(Object.keys(fenomenos).length
-          ? [{cor: NEUTRA, rotulo: 'Fenômenos: ' + ordena(fenomenos).map(([f]) => f).join(', ')}]
-          : [])
-    : [{cor: MonitorMapas.PALETA.rampaPerigo[0],
-        rotulo: 'Nenhum aviso em vigor nesta consulta — a fonte respondeu, a lista é que está vazia'}];
+  const legenda = [{cor: SEM_AVISO, rotulo: 'Sem aviso'},
+                   {cor: COR_GRAU['Perigo Potencial'], rotulo: 'Perigo potencial'},
+                   {cor: COR_GRAU['Perigo'], rotulo: 'Perigo'},
+                   {cor: COR_GRAU['Grande Perigo'], rotulo: 'Grande perigo'}]
+    .concat(total && Object.keys(fenomenos).length
+      ? [{cor: NEUTRA, rotulo: 'Fenômenos: ' + ordena(fenomenos).map(([f]) => f).join(', ')}]
+      : [])
+    .concat(total ? [] : [{cor: SEM_AVISO,
+      rotulo: 'Nenhum aviso em vigor nesta consulta — a fonte respondeu, a lista é que está vazia'}]);
   desenharMapa('mapaAvisos', 'legAvisos',
-    uf => { const n = Number((avisos(uf) || {}).total || 0); return n ? escalaAviso(n) : MonitorMapas.PALETA.rampaPerigo[0]; },
-    uf => { const a = avisos(uf) || {}; const n = Number(a.total || 0);
-            return n ? n + ' aviso(s) em vigor · ' + Object.keys(a.graus || {}).join(', ') : 'Nenhum aviso em vigor nesta consulta'; },
+    uf => COR_GRAU[maiorGrau(uf)] || SEM_AVISO,
+    uf => { const a = avisos(uf) || {}; const n = Number(a.total || 0); const g = maiorGrau(uf);
+            return n ? '<em>' + esc(g || 'Aviso em vigor') + '</em><br>' + n + ' aviso(s) em vigor'
+                     : 'Nenhum aviso em vigor nesta consulta'; },
     legenda);
   if (corpo) {
     const linhas = UFS.map(uf => ({uf, a: avisos(uf) || {}}))
@@ -456,59 +608,81 @@ credito('boxFogo', 'inpe_fogo');
 const oni = SINAIS.enos.oni, prob = SINAIS.enos.probabilidades;
 const ultimoOni = oni && oni.serie && oni.serie.length ? oni.serie[oni.serie.length - 1] : null;
 const ultimaProb = prob && prob.trimestres && prob.trimestres.length ? prob.trimestres[0] : null;
-// ===== Situação atual (nível 1 — revisão de UX de 07/09/2026): tudo dos dados; observação, interpretação e projeção separadas =====
+// ===== R2 e R3 (30/09/2026, handover do Monitor de riscos): o resumo e as três perguntas =====
+// O índice de referência passa a ser o RONI, oficial da NOAA desde fevereiro de 2026 — ele mede o
+// afastamento do Niño 3.4 em relação aos oceanos tropicais, e é ele que sustenta a palavra "forte".
+// O ONI e a anomalia mensal saíram da página: são apoio técnico e vivem na METODOLOGIA.
+//
+// Nenhum número fixo: tudo o que aparece vem da série. Onde o dado não sustenta a frase, a frase
+// não é escrita — a oração sobre a alta só entra se a variação de seis meses for positiva.
 (function situacaoAtual(){
-  const el = id => document.getElementById(id); if (!el('stEstado')) return;
-  const serie = (oni && oni.serie) || []; const u = serie[serie.length - 1]; const pg = SINAIS.enos.prognostico;
-  const cls = v => v >= 2.0 ? 'muito forte' : v >= 1.5 ? 'forte' : v >= 1.0 ? 'moderado' : v >= 0.5 ? 'fraco' : 'abaixo do limiar';
-  const estado = u ? (u.anomalia >= 0.5 ? 'El Niño' : u.anomalia <= -0.5 ? 'La Niña' : 'Neutro') : '—';
-  // 27/09/2026: o estado do ENOS passa a vir da Discussão Diagnóstica do CPC, coletada a cada
-  // rodada, e carrega a DATA DE EMISSÃO do documento. Antes vinha de um campo semeado à mão que
-  // nada renovava, e a página o exibia como leitura corrente.
-  el('stEstado').innerHTML = esc(estado) + (pg && pg.emitido_em
-    ? ' <small>' + esc(pg.estado || '') + ' · CPC/NOAA, emitido em ' + esc(pg.emitido_em) + '</small>'
-    : (u ? ' <small>confirmado pelo Painel em 29/06/2026</small>' : ''));
-  el('stIntensidade').innerHTML = u ? esc(cls(u.anomalia)) + ' <small>pelo ONI observado; projeção: muito forte</small>' : '—';
-  let d = null;
-  if (serie.length >= 3) { d = serie[serie.length - 1].anomalia - serie[serie.length - 3].anomalia; el('stTendencia').innerHTML = esc(d > 0.15 ? 'fortalecendo' : d < -0.15 ? 'enfraquecendo' : 'estável') + ' <small>' + (d >= 0 ? '+' : '') + esc(d.toFixed(2).replace('.', ',')) + ' °C em dois trimestres</small>'; }
-  el('stOni').innerHTML = u ? esc((u.anomalia >= 0 ? '+' : '') + u.anomalia.toFixed(1).replace('.', ',')) + ' °C <small>' + esc(u.trimestre + '/' + u.ano) + ' · média móvel trimestral</small>' : '—';
-  el('stProb').innerHTML = ultimaProb ? esc(ultimaProb.el_nino.toFixed(0)) + '% <small>' + esc(ultimaProb.trimestre) + ' (IRI/CPC)</small>' : (pg && pg.enso ? '> 90% <small>SON/2026 · CPC/NOAA, ago/2026</small>' : '—');
-  // 17/09/2026 (pedido da editoria): "Situação atual" virava justaposição de fragmentos ("· · ·"), não
-  // frase — trocado por prosa corrida, priorizando a leitura já escrita e coerente que o próprio
-  // prognóstico traz (SINAIS.enos.prognostico.enso.leitura), com a tendência do ONI observado ao final.
-  if (el('stDestaque')) {
-    const destaque = [];
-    if (pg && pg.enso && pg.enso.leitura) destaque.push(esc(pg.enso.leitura) + '.');
-    else if (u) destaque.push('<strong>' + esc(estado) + '</strong> confirmado pelo Painel em 29/06/2026, ' + esc(cls(u.anomalia)) + ' pelo ONI observado.');
-    if (d !== null) destaque.push('Tendência ' + esc(d > 0.15 ? 'de fortalecimento' : d < -0.15 ? 'de enfraquecimento' : 'estável') + ': ' + (d >= 0 ? '+' : '') + esc(d.toFixed(2).replace('.', ',')) + ' °C em dois trimestres, pelo ONI observado.');
-    el('stDestaque').innerHTML = destaque.join(' ') || '—';
+  const el = id => document.getElementById(id); if (!el('stResumo')) return;
+  const roni = SINAIS.enos.roni;
+  const serie = (roni && roni.serie) || [];
+  const u = serie[serie.length - 1];
+  const cls = v => v >= 2.0 ? 'muito forte' : v >= 1.5 ? 'forte' : v >= 1.0 ? 'moderado'
+                 : v >= 0.5 ? 'fraco' : 'abaixo do limiar';
+  const num = (v, casas) => (v >= 0 ? '+' : '') + v.toFixed(casas == null ? 2 : casas).replace('.', ',');
+  // O trimestre vem da NOAA como três iniciais em inglês (JJA, SON, DJF…). Traduzir a sigla para
+  // um intervalo de meses em português é o que a leitora precisa — "jul–set" se lê, "JJA" não. A
+  // sigla que não casar com o calendário volta como veio, em vez de virar intervalo inventado.
+  const INICIAIS = 'JFMAMJJASOND';
+  const MES_ABREV = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+  const periodoDoTrimestre = t => {
+    const sigla = String(t || '').toUpperCase();
+    if (sigla.length !== 3) return String(t || '');
+    // A sequência das iniciais dos doze meses, repetida, localiza o trimestre sem ambiguidade.
+    const ciclo = INICIAIS + INICIAIS;
+    const i = ciclo.indexOf(sigla);
+    if (i < 0) return String(t || '');
+    return MES_ABREV[i % 12] + '–' + MES_ABREV[(i + 2) % 12];
+  };
+
+  // R2 — resumo. "há El Niño" é fato datado do Painel (29/06/2026); a força e a variação vêm do RONI.
+  if (u) {
+    // Seis meses = dois trimestres para trás na série trimestral móvel.
+    const antes = serie.length >= 3 ? serie[serie.length - 3] : null;
+    const delta = antes ? u.anomalia - antes.anomalia : null;
+    let txt = 'O El Niño foi declarado pelos órgãos federais em 29 de junho de 2026 e hoje é considerado '
+            + esc(cls(u.anomalia)) + '. A temperatura do Pacífico, que define o fenômeno, ';
+    if (delta !== null && delta > 0) {
+      txt += 'subiu ' + esc(num(delta).replace('+', '')) + ' °C nos últimos seis meses';
+      txt += (serie.length >= 2 && u.anomalia > serie[serie.length - 2].anomalia)
+        ? ', e segue em alta.' : '.';
+    } else if (delta !== null) {
+      // O dado não sustenta "subiu": diz-se o que ele diz, e a oração sobre a alta não aparece.
+      txt += 'variou ' + esc(num(delta)) + ' °C nos últimos seis meses.';
+    } else {
+      txt += 'está em ' + esc(num(u.anomalia, 1)) + ' °C.';
+    }
+    el('stResumo').innerHTML = txt;
   }
-  const partes = [];
-  if (u) partes.push('<strong>Observação:</strong> o ONI está em ' + esc((u.anomalia >= 0 ? '+' : '') + u.anomalia.toFixed(1).replace('.', ',')) + ' °C (' + esc(u.trimestre + '/' + u.ano) + '), ' + esc(cls(u.anomalia)) + ' pela escala do CPC.');
-  if (serie.length >= 3) { const d = serie[serie.length - 1].anomalia - serie[serie.length - 3].anomalia; partes.push('<strong>Interpretação:</strong> a anomalia ' + (d > 0.15 ? 'vem subindo' : d < -0.15 ? 'vem caindo' : 'está estável') + ' nos últimos trimestres; o fenômeno ' + (d > 0.15 ? 'se fortalece' : d < -0.15 ? 'perde força' : 'persiste sem mudança de intensidade') + '.'); }
-  // A frase em inglês do CPC NÃO é traduzida: tradução de máquina sem fonte é texto inventado.
-  // A página compõe em português a partir dos fatos declarados — status, probabilidade, data.
-  if (pg && pg.probabilidade != null) partes.push('<strong>CPC/NOAA (' + esc(pg.emitido_em || '') +
-    '):</strong> chance ' + esc(pg.limiar || 'de') + ' ' + esc(String(pg.probabilidade)) +
-    '% de evento muito forte.');
-  if (pg && pg.__antigo) partes.push('<strong>Projeção para SON/2026:</strong> chuva abaixo da normal no Norte, Nordeste e centro-norte; acima no Sul; temperatura acima da normal em quase todo o País. Permanência do El Niño até o início de 2027 com alta probabilidade.');
-  el('stDiagnostico').innerHTML = partes.join(' ') || 'sem coleta até o corte';
-  // 13/09/2026 (pedido de Patricia: unificar com 'Estado do ciclo'): citação combinada das fontes
-  // que alimentam este painel — antes, cada uma tinha um cartão próprio em outra seção. A fonte da
-  // Probabilidade é dinâmica (mesma condicional da linha acima): 'iri_plume' quando coletado, senão
-  // 'cptec_prognostico' (o prognóstico já usado no Boletim) — a citação segue a mesma fonte no ar.
-  // 17/09/2026 (achado, pedido da editoria): "NOAA/CPC — Índice ONI" saiu daqui — a Figura 1 (o ONI)
-  // já credita a mesma fonte logo abaixo; citar duas vezes na mesma tela era redundância, não reforço.
-  // 27/09/2026: o estado do ENOS passou a vir da Discussão Diagnóstica do CPC, coletada a cada
-  // rodada. O crédito acompanha o dado — antes citava o prognóstico do CPTEC, que era campo
-  // semeado à mão e sem caminho de atualização.
-  const fontesSituacao = [];
-  if (pg && pg.fonte === 'cpc_ensodisc') fontesSituacao.push('CPC/NOAA — discussão diagnóstica do ENOS');
-  fontesSituacao.push(ultimaProb ? 'IRI/CPC — probabilidades trimestrais' : 'CPTEC/INPE — prognóstico trimestral');
-  MonitorMapas.credito('situacao', {fontes: fontesSituacao, data: SINAIS.gerado_em});
-  const __situacaoFonte = document.querySelector('#situacao .fonte-figura');
-  if (__situacaoFonte) __situacaoFonte.dataset.credito =
-    (pg && pg.fonte === 'cpc_ensodisc') ? 'cpc_ensodisc' : (ultimaProb ? 'iri_plume' : 'cptec_prognostico');
+
+  // R3 — três cartões.
+  const prob = SINAIS.enos.probabilidades;
+  const pg = SINAIS.enos.prognostico;
+  if (u) {
+    const ha = u.anomalia >= 0.5;
+    el('stHaElNino').textContent = ha ? 'Sim, desde junho de 2026' : 'Não';
+    el('stForca').textContent = cls(u.anomalia).charAt(0).toUpperCase() + cls(u.anomalia).slice(1);
+    el('stForcaNota').textContent = num(u.anomalia, 1) + ' °C acima do normal no Pacífico, '
+      + periodoDoTrimestre(u.trimestre) + ' (RONI)';
+  }
+  // A chance de continuar é a do trimestre do verão (DJF), quando existe na série de probabilidades;
+  // sem ela, o cartão não inventa número — fica com o travessão que já está no HTML.
+  const trims = (prob && prob.trimestres) || [];
+  const verao = trims.find(t => /DJF|NDJ/.test(String(t.trimestre || ''))) || trims[0] || null;
+  if (verao && verao.el_nino != null) {
+    el('stChance').textContent = verao.el_nino.toFixed(0) + '%';
+    el('stChanceNota').textContent = 'chance de El Niño em dezembro–fevereiro, segundo IRI/NOAA';
+  } else if (pg && pg.probabilidade != null) {
+    el('stChance').textContent = String(pg.probabilidade) + '%';
+    el('stChanceNota').textContent = 'chance de El Niño no trimestre publicado, segundo CPC/NOAA';
+  }
+
+  // O crédito do painel inteiro SAIU (30/09/2026): o gráfico do RONI já traz a sua linha de fonte,
+  // e cada cartão diz de onde vem o seu número na linha pequena. Três créditos para as mesmas duas
+  // fontes, na mesma tela, é redundância — e a regra do site é fonte POR FIGURA, não por painel.
 })();
 
 // 13/09/2026: cartoesCiclo/cartaoCiclo1-4 removidos — três dos quatro cartões duplicavam valores já
@@ -524,47 +698,24 @@ function canvasEm(wrapId, canvasId){
   const c = document.createElement('canvas'); c.id = canvasId; w.appendChild(c); return c;
 }
 
-// ---- Gráfico 1: série ONI ----
-// 17/09/2026 (pedido da editoria): padrão dos sites oficiais — fundo preto (CSS, classe .grafico-preto,
-// compartilhada pelos três wrappers deste bloco, não mais um id só), barras
-// vermelhas acima da média e azuis abaixo, com transparência que cresce com a intensidade da anomalia
-// (mesma lógica de transição contínua dos medidores do MARÉ, adaptada a uma série histórica: aqui a
-// "transição" é a opacidade de cada barra, não a largura de uma barra só). Movimento: animação ligada
-// (as demais figuras da página não animam, SEM_ANIM; esta é a exceção deliberada). Mesma paleta e
-// opções compartilhadas com os gráficos de RONI e anomalia mensal logo abaixo (mesma linguagem visual).
+// 30/09/2026 (handover do Monitor de riscos): os gráficos do ONI e da anomalia mensal
+// SAÍRAM da página. Eles medem a mesma coisa que o RONI com outra referência, e três
+// gráficos do mesmo fenômeno lado a lado pediam do leitor uma comparação técnica que
+// não é a pergunta desta página. Os dois continuam coletados e vivem na METODOLOGIA,
+// como apoio técnico.
+
+// Paleta e opções do gráfico de anomalia. Vinham do bloco do ONI, que saiu da página em
+// 30/09/2026; ficam aqui porque o gráfico do RONI é quem as usa agora. Vermelho acima da média,
+// azul abaixo, opacidade crescendo com a intensidade — a mesma transição contínua dos medidores
+// do MARÉ, aplicada a uma série histórica.
 const ANOM_VERMELHO = [220, 38, 38], ANOM_AZUL = [37, 99, 235];
 const alphaAnom = v => Math.min(.92, .28 + .64 * Math.min(1, Math.abs(v) / 2.0));
 const corAnom = v => { const [r,g,b] = v >= 0 ? ANOM_VERMELHO : ANOM_AZUL; return `rgba(${r},${g},${b},${alphaAnom(v).toFixed(2)})`; };
-const corOni = corAnom;   // nome antigo mantido no resto do bloco do ONI, mesma função
 const opcoesGraficoAnom = (rotuloEixoY) => ({responsive:true, maintainAspectRatio:false, animation:{duration:900, easing:'easeOutCubic'},
   plugins:{legend:{display:false}, tooltip:{backgroundColor:'#000', titleColor:'#fff', bodyColor:'#fff', borderColor:'rgba(255,255,255,.25)', borderWidth:1}},
   scales:{
     x:{ticks:{maxTicksLimit:12, color:'rgba(255,255,255,.75)'}, grid:{color:'rgba(255,255,255,.10)'}, border:{color:'rgba(255,255,255,.25)'}},
     y:{title:{display:true, text: rotuloEixoY, color:'rgba(255,255,255,.75)'}, ticks:{color:'rgba(255,255,255,.75)'}, grid:{color:ctx => ctx.tick.value === 0 ? 'rgba(255,255,255,.45)' : 'rgba(255,255,255,.10)'}, border:{color:'rgba(255,255,255,.25)'}}}});
-if(oni && oni.serie && oni.serie.length){
-  new Chart(canvasEm('wrapOni', 'cOni'), {type:'bar', data:{
-      labels: oni.serie.map(p => p.trimestre + '/' + String(p.ano).slice(2)),
-      datasets:[{label:'ONI (°C)', data: oni.serie.map(p => p.anomalia),
-                 backgroundColor: ctx => corOni(ctx.raw), borderWidth:0, borderRadius:2,
-                 categoryPercentage:.9, barPercentage:.95}]},
-    options:{responsive:true, maintainAspectRatio:false, animation:{duration:900, easing:'easeOutCubic'},
-      plugins:{legend:{display:false}, tooltip:{backgroundColor:'#000', titleColor:'#fff', bodyColor:'#fff', borderColor:'rgba(255,255,255,.25)', borderWidth:1}},
-      scales:{
-        x:{ticks:{maxTicksLimit:12, color:'rgba(255,255,255,.75)'}, grid:{color:'rgba(255,255,255,.10)'}, border:{color:'rgba(255,255,255,.25)'}},
-        y:{title:{display:true, text:'°C', color:'rgba(255,255,255,.75)'}, ticks:{color:'rgba(255,255,255,.75)'}, grid:{color:ctx => ctx.tick.value === 0 ? 'rgba(255,255,255,.45)' : 'rgba(255,255,255,.10)'}, border:{color:'rgba(255,255,255,.25)'}}}}});
-  (function leituraOni(){   // 15/09/2026: a observação vive junto do gráfico; interpretação e projeção ficam no parágrafo abaixo da figura (portão 19)
-    const el = document.getElementById('oniLeitura'); const s = oni.serie; const u = s[s.length - 1]; if (!el || !u) return;
-    const cls = v => v >= 2.0 ? 'muito forte' : v >= 1.5 ? 'forte' : v >= 1.0 ? 'moderado' : v >= 0.5 ? 'fraco' : 'abaixo do limiar';
-    const fmt = v => (v >= 0 ? '+' : '') + v.toFixed(1).replace('.', ',');
-    // 17/09/2026 (pedido da editoria): a observação precisa dizer o que o leitor está vendo e o que o
-    // ONI mede, não só o número do trimestre corrente — a frase fixa vem antes dos números do dado.
-    let txt = 'Índice que define El Niño e La Niña: afastamento da temperatura do mar na região Niño 3.4 em relação à média histórica, em janelas de três meses. ';
-    txt += 'ONI em ' + fmt(u.anomalia) + ' °C (' + u.trimestre + '/' + u.ano + '), ' + cls(u.anomalia) + ' na escala do CPC';
-    if (s.length >= 3) { const d = u.anomalia - s[s.length - 3].anomalia; txt += '; ' + (d >= 0 ? '+' : '') + d.toFixed(2).replace('.', ',') + ' °C em dois trimestres'; }
-    el.textContent = txt + '.'; el.hidden = false;
-  })();
-} else { lacuna('wrapOni', 'A série do ONI aparece aqui assim que a rotina semanal registrar a primeira coleta no CPC/NOAA. Até lá, ela pode ser consultada na origem, no link abaixo.'); }
-credito('boxOni', 'noaa_oni');
 
 // ---- Gráfico 1b: série RONI (17/09/2026, achado ao checar o valor do ONI atual, pedido da editoria) ----
 // Mesmo padrão visual do ONI (fundo preto, vermelho/azul, transição por opacidade, animação ligada) —
@@ -591,30 +742,6 @@ if (roni && roni.serie && roni.serie.length) {
   })();
 } else { lacuna('wrapRoni', 'A série do RONI aparece aqui assim que a rotina semanal registrar a primeira coleta no CPC/NOAA. Até lá, ela pode ser consultada na origem, no link abaixo.'); }
 credito('boxRoni', 'noaa_roni');
-
-// ---- Gráfico 1c: anomalia mensal (sem suavização), mesmo pedido de 17/09/2026 ----
-const nino34Mensal = SINAIS.enos.nino34_mensal;
-const MES_CURTO = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
-if (nino34Mensal && nino34Mensal.serie && nino34Mensal.serie.length) {
-  new Chart(canvasEm('wrapAnomalia', 'cAnomalia'), {type:'bar', data:{
-      labels: nino34Mensal.serie.map(p => MES_CURTO[p.mes - 1] + '/' + String(p.ano).slice(2)),
-      datasets:[{label:'Anomalia mensal (°C)', data: nino34Mensal.serie.map(p => p.anomalia),
-                 backgroundColor: ctx => corAnom(ctx.raw), borderWidth:0, borderRadius:2,
-                 categoryPercentage:.9, barPercentage:.95}]},
-    options: opcoesGraficoAnom('°C')});
-  (function leituraAnomalia(){
-    const el = document.getElementById('anomaliaLeitura'); const s = nino34Mensal.serie; const u = s[s.length - 1]; if (!el || !u) return;
-    const fmt = v => (v >= 0 ? '+' : '') + v.toFixed(2).replace('.', ',');
-    // 17/09/2026 (pedido da editoria): mesmo padrão das outras duas notas — explica o que o gráfico
-    // mede antes do número, sem depender de o leitor ter lido as notas do ONI ou do RONI antes.
-    // 23/09/2026 (governança editorial §18): "Este gráfico mostra" é metadiscurso — a lista do §18 o
-    // traz nominalmente. O conteúdo e a autossuficiência pedidos pela editoria em 17/09 ficam; o
-    // sujeito passa a ser a medida, como já era nas notas do ONI e do RONI, e não o gráfico.
-    el.textContent = 'Afastamento da temperatura do mar na região Niño 3.4 em relação à média de cada mês, sem janela de três meses. Anomalia de ' + fmt(u.anomalia) + ' °C em ' + MES_CURTO[u.mes - 1] + '/' + u.ano + '.';
-    el.hidden = false;
-  })();
-} else { lacuna('wrapAnomalia', 'A anomalia mensal aparece aqui assim que a rotina semanal registrar a primeira coleta no CPC/NOAA. Até lá, ela pode ser consultada na origem, no link abaixo.'); }
-credito('boxAnomalia', 'noaa_nino34_mensal');
 
 // ---- Gráfico 2: probabilidades ENOS ----
 // 13/09/2026: figura "Probabilidade por trimestre" retirada do HTML (ver comentário em

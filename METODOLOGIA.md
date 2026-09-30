@@ -1642,3 +1642,35 @@ arquivo e **errado sobre o que a leitora entendia**: que a coleta tinha parado.
 
 "Rodou e não achou nada novo" é informação, e é diferente de "parou de rodar". Um portão
 (`verificar_corte_sincronizado.py`) reprova quando `corte` e `atualizado_em` divergem.
+
+
+## 58. Monitor de riscos: RONI como índice de referência e organização por família (30/09/2026)
+
+Decisões da editoria de 30/09/2026, registradas junto com a reorganização da página.
+
+**O RONI é o índice de referência público.** Ele mede o afastamento da temperatura do mar na região
+Niño 3.4 em relação à média dos oceanos tropicais, e é medida oficial da NOAA desde fevereiro de
+2026. É ele que sustenta as palavras "há El Niño" e "forte" na página. O **ONI** e a **anomalia
+mensal** continuam coletados e passam a ser **apoio técnico**: saíram da página pública e vivem
+aqui. A razão é de leitura, não de método — três gráficos do mesmo fenômeno lado a lado pediam do
+leitor uma comparação técnica que não é a pergunta da página.
+
+**Organização por família de risco.** A página passa a ter duas seções: a situação do fenômeno e os
+riscos no Brasil. A segunda se organiza pelas quatro famílias do ciclo — seca, fogo e fumaça, calor,
+chuva e tempestades —, na mesma ordem e com as mesmas cores do resto do site. Cada bloco abre com a
+contagem de estados que o boletim coloca naquela família, gerada do próprio boletim.
+
+**Calor é desvio da normal, não temperatura absoluta.** O mapa de calor mostra a máxima prevista ao
+lado da capital e, na cor, quanto ela está acima da média histórica daquele mês na normal
+climatológica de 1991–2020 do Inmet. A razão é que 35 °C não significa a mesma coisa em Cuiabá e em
+Porto Alegre. Capital sem normal publicada fica com anel vazio — nunca estimativa.
+
+**Aviso meteorológico se pinta pelo maior grau, não pela contagem.** Dez avisos de perigo potencial
+pintavam mais escuro do que um de grande perigo, e é o grande perigo que precisa ser visto primeiro.
+O número de avisos continua no texto do mouse e na lista.
+
+**Três exceções nomeadas no portão de legendas**, cada uma amarrada a um texto aprovado como literal
+em 30/09/2026: a escada oficial do Monitor de Secas da ANA ("Fraca · Moderada · Grave · Extrema ·
+Excepcional" — "grave" ali é o nome da categoria S2, não juízo do MARÉ); "pior hora do dia", que é a
+descrição do que o índice europeu publica; e a leitura da qualidade do ar, de três frases, que
+explica por que a escala é europeia. As exceções são das frases exatas, e somem se o texto mudar.

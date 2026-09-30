@@ -84,12 +84,15 @@ setTimeout(() => {
   teste("gráfico de estados por tipo de risco também saiu", !graficos.some(g => g.ctx && g.ctx.id === "cTipos"));
   // 15/09/2026: o cruzamento risco × estágio (cCruz) mudou para o fim da página inicial — testado em verificar_runtime.js.
   teste("cruzamento risco × estágio não fica mais nesta página (mora na inicial)", !q("cCruz") && !graficos.some(g => g.ctx && g.ctx.id === "cCruz"));
-  // 15/09/2026: o ONI vem logo abaixo de "Situação atual", com leitura descritiva junto do gráfico e o diagnóstico abaixo da figura
-  teste("ONI: figura dentro do painel 'Situação atual', antes do diagnóstico", (() => { const s = q("situacao"); return s && s.querySelector("#boxOni") && q("stDiagnostico") && !!(s.querySelector("#boxOni").compareDocumentPosition(q("stDiagnostico")) & 4); })());
-  teste("ONI: leitura da figura com valor, trimestre e escala do CPC", q("oniLeitura") && !q("oniLeitura").hidden && /ONI em [+\-]?\d,\d °C \([A-Z]{3}\/\d{4}\)/.test(q("oniLeitura").textContent));
+  // 30/09/2026: a figura do Pacífico neste painel passa a ser o RONI — o ONI e a anomalia mensal
+  // saíram da página por decisão da editoria e vivem na METODOLOGIA. A cobrança não some: muda
+  // de alvo junto com a página, e continua exigindo a figura dentro do painel e o resumo cheio.
+  teste("RONI: figura dentro do painel 'Situação atual'", (() => { const s = q("situacao"); return !!(s && s.querySelector("#boxRoni")); })());
+  teste("resumo da situação preenchido com o dado", q("stResumo") && /El Niño foi declarado/.test(q("stResumo").textContent));
+  teste("os três cartões respondem com o dado", ["stHaElNino", "stForca", "stChance"].every(id => q(id) && q(id).textContent.trim() && q(id).textContent.trim() !== "—"));
 
   // wrapPlume/iri_plume retirado do loop em 13/09/2026 (auditoria de visualizações) — figura sem cobertura, trocada por cartão compacto fora do componente .figura
-  for (const [wrap, fonte] of [["wrapOni", "noaa_oni"]]) {
+  for (const [wrap, fonte] of [["wrapRoni", "noaa_roni"]]) {
     const coletada = SINAIS.fontes[fonte].status === "coletado";
     const temCanvas = q(wrap) && q(wrap).querySelector("canvas");
     const temLacuna = q(wrap) && q(wrap).querySelector(".lacuna");
@@ -103,7 +106,7 @@ setTimeout(() => {
 
   // --- PROVENIÊNCIA VISÍVEL: regra própria desta página ---
   const creditos = [...d.querySelectorAll("[data-credito]")];
-  const figuras = ["boxSecas", "boxTemperatura", "boxAr", "boxFogo", "boxOni", "situacao"]   // 24/09/2026: boxAvisos e boxCemaden foram para defesa-civil.html; entraram boxTemperatura e boxAr   // boxTipos fundido em boxTipoRisco (figura dupla) em 15/09/2026;   // boxCruz foi para a página inicial em 15/09/2026   // ids a partir de 1 (auditoria 07/09/2026); boxPlume retirado em 13/09/2026 (sem cobertura); cartaoCiclo1-4 retirados em 13/09/2026 (unificados em 'situacao')
+  const figuras = ["boxSecas", "boxTemperatura", "boxAr", "boxFogo", "boxRoni", "boxRiscoPrevisto", "boxAvisos"]   // 24/09/2026: boxAvisos e boxCemaden foram para defesa-civil.html; entraram boxTemperatura e boxAr   // boxTipos fundido em boxTipoRisco (figura dupla) em 15/09/2026;   // boxCruz foi para a página inicial em 15/09/2026   // ids a partir de 1 (auditoria 07/09/2026); boxPlume retirado em 13/09/2026 (sem cobertura); cartaoCiclo1-4 retirados em 13/09/2026 (unificados em 'situacao')
   const semCredito = figuras.filter(id => !q(id) || !q(id).querySelector("[data-credito]"));
   teste(`toda figura tem crédito de fonte (${creditos.length} créditos)`, semCredito.length === 0);
   if (semCredito.length) console.log("      sem crédito:", semCredito.join(", "));

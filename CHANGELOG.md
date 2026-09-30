@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-09-30 · #483 · Monitor de riscos: duas seções, quatro famílias e os textos aprovados
+
+A página passa a ter "Situação atual" (resumo, três perguntas, gráfico do RONI) e "Os riscos no
+Brasil" (mapa nacional do risco previsto e um bloco por família: seca, fogo e fumaça, calor, chuva).
+Saem o sobretítulo, os cinco quadrinhos e os gráficos de ONI e anomalia mensal, que vão para a
+METODOLOGIA. O mapa de avisos passa a pintar pelo maior grau em vigor, não pela contagem.
+
 ## 2026-09-30 · #481 · MARÉ Legal v3.1: a régua do instrumento, sem componente temporal
 
 O tempo sai da nota e vira indicador à parte. Três componentes com um terço cada: instrumento
