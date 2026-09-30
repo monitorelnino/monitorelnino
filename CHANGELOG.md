@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-09-30 · #479 · Formulário com a aparência do design C e os textos aprovados
+
+Os campos deixam de ser caixa e viram linha: fundo transparente, só o filete inferior, o que a
+pessoa digita na fonte de título em peso leve; botão em pílula. Tudo escopado em `#formContrib`, sem
+tocar a `.fld` global — a leitura anterior manteve o estilo de caixa, e não era a intenção. Título,
+subtítulo, três rótulos e o texto do botão passam a ser os aprovados pela editoria em 30/09.
+
 ## §321 · Enquadramento federal de risco no cartão do município · 30/09/2026
 
 Classe **contexto, peso zero**. PR 4 do enquadramento federal de risco.
