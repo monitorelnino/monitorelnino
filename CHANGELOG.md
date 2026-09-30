@@ -9,6 +9,24 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §314 · O portão 12 saiu do caminho dos PRs — e passou a cobrar na `main` · 30/09/2026
+
+Classe **processo**. Item 2 do handover de otimização.
+
+O manifesto sela o hash de **todo** arquivo versionado, então qualquer mudança o deixa obsoleto.
+Cobrar isso dentro do PR forçava "regenerar + commitar + esperar a CI de novo" em quase toda
+entrega, e o manifesto commitado no ramo conflitava com o do `main` a cada união — aconteceu em
+praticamente todos os PRs de 29 e 30/09.
+
+**No PR**, o portão 12 passa a conferir que a cadeia inteira **regenera sem erro** (`--pode-regenerar`):
+falha se um gerador quebrar, que é o defeito que o PR pode introduzir. **Na `main`**, ele roda como
+sempre rodou, com comparação estrita contra o git.
+
+Para isso a suíte passou a rodar também **no push para a `main`**, e não só em PR. Sem essa linha,
+tirar a cobrança do PR a tiraria do projeto inteiro — o que **não** é o que o item 2 pede, e seria
+trocar um custo por um buraco. Derivado obsoleto continua sendo bloqueio; o que mudou é **onde** se
+cobra, não **se** se cobra.
+
 ## §311 · Formulário mínimo: o site deixou de coletar dado pessoal · 30/09/2026
 
 Classe **página pública** e **privacidade**. Design "C" escolhido pela editoria.
