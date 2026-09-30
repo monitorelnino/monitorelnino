@@ -166,11 +166,27 @@ def main() -> int:
         print("X o envio não passou. Sem credencial da cortina, o sítio responde 401.")
         return 1
 
-    subs = pedir(f"/forms/{form['id']}/submissions", token)
-    minhas = [s for s in subs if eh_a_submissao_de_teste(s)]
-    print(f"submissões no formulário: {len(subs)} · de teste: {len(minhas)}")
+    # A indexação não é instantânea, e a submissão pode cair na fila de SPAM em vez da normal — um
+    # POST sem JavaScript, sem referer e vindo de um runner tem exatamente a cara que o filtro
+    # procura. Olhar só a fila normal, uma vez, dava "não registrou" para envio que registrou.
+    import time
+    minhas, subs, onde = [], [], ""
+    for tentativa in range(6):
+        for estado in ("", "?state=spam"):
+            subs = pedir(f"/forms/{form['id']}/submissions{estado}", token)
+            achadas = [x for x in subs if eh_a_submissao_de_teste(x)]
+            if achadas:
+                minhas, onde = achadas, ("spam" if estado else "normal")
+                break
+        if minhas:
+            break
+        print(f"  ainda não indexada (tentativa {tentativa + 1}/6); esperando 10 s", flush=True)
+        time.sleep(10)
+    print(f"submissões de teste encontradas: {len(minhas)} · fila: {onde or '—'}")
     if not minhas:
-        print("X a submissão não apareceu na API. O envio passou, mas o Netlify não registrou.")
+        print("X a submissão não apareceu na API, nem na fila normal nem na de spam.")
+        print("  O envio devolveu 200, então o sítio aceitou o POST — o que falta é o Netlify")
+        print("  processá-lo como formulário. Conferir no painel se o deploy atual detectou o form.")
         return 1
 
     apagadas = 0
@@ -179,7 +195,8 @@ def main() -> int:
         apagadas += 1
     print(f"OK submissões de teste apagadas: {apagadas}")
 
-    restantes = [x for x in pedir(f"/forms/{form['id']}/submissions", token)
+    restantes = [x for e in ("", "?state=spam")
+                 for x in pedir(f"/forms/{form['id']}/submissions{e}", token)
                  if eh_a_submissao_de_teste(x)]
     if restantes:
         print(f"X ainda restam {len(restantes)} submissões de teste — limpe pelo painel.")
