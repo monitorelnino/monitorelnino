@@ -47,7 +47,7 @@ function barraResposta(uf){
     <strong>${n}</strong> de ${r.total_municipios} municípios · <strong>${Math.round(100 * r.fracao_populacao)}%</strong> da população${r.primeiro_decreto ? ' · primeiro decreto em ' + r.primeiro_decreto : ''}<br>
     <span class="fv u-muted">${rec} reconhecido(s) pela União · ${dec} decretado(s) sem reconhecimento · evento observado: em classificação</span></div></div>`;
 }
-let BR_GEOJSON, PCT_POR_UF, MAP_POINTS, TABELA_MUNICIPIOS, MARE, DATA, TRANSFERENCIAS, MUN_REF, META, POP_CENSO, RECURSOS, FIN, CONSIST, ATOS_RESPOSTA, PRAZOS, VRESUMO, MUN_COD = {}, POP_UF = {}, MUN_LATLON = {};
+let BR_GEOJSON, PCT_POR_UF, MAP_POINTS, TABELA_MUNICIPIOS, MARE, DATA, TRANSFERENCIAS, MUN_REF, META, POP_CENSO, RECURSOS, FIN, CONSIST, ATOS_RESPOSTA, VRESUMO, MUN_COD = {}, POP_UF = {}, MUN_LATLON = {};
 function nivelVerificacao(uf, nome){
   // v2.2.4 (§2.2): padrão é "não verificado"; níveis acima vêm do resumo derivado.
   const cod = MUN_COD[uf + '|' + nome];
@@ -73,8 +73,8 @@ function renderContadorResposta(){
 }
 async function __load(){
   let __ref;
-  [BR_GEOJSON, PCT_POR_UF, MAP_POINTS, TABELA_MUNICIPIOS, MARE, DATA, TRANSFERENCIAS, __ref, META, POP_CENSO, RECURSOS, FIN, CONSIST, ATOS_RESPOSTA, PRAZOS, VRESUMO] = await Promise.all(
-    ['geo_uf','percentual_uf','pontos_mapa','municipios','indice','estados','transferencias','municipios_ibge_referencia','meta','populacao_censo2022','recursos_uf','financiamento_uf','consist','atos_resposta','prazos_uf', 'verificacao_resumo']
+  [BR_GEOJSON, PCT_POR_UF, MAP_POINTS, TABELA_MUNICIPIOS, MARE, DATA, TRANSFERENCIAS, __ref, META, POP_CENSO, RECURSOS, FIN, CONSIST, ATOS_RESPOSTA, VRESUMO] = await Promise.all(
+    ['geo_uf','percentual_uf','pontos_mapa','municipios','indice','estados','transferencias','municipios_ibge_referencia','meta','populacao_censo2022','recursos_uf','financiamento_uf','consist','atos_resposta', 'verificacao_resumo']
       .map(f => fetch('data/' + f + '.json').then(r => {
         if(!r.ok) throw new Error('Falha ao carregar data/' + f + '.json');
         return r.json();
@@ -94,7 +94,7 @@ async function __load(){
       }
       return o;
     };
-    [TABELA_MUNICIPIOS, MAP_POINTS, DATA, ATOS_RESPOSTA, TRANSFERENCIAS, RECURSOS, FIN, PRAZOS, CONSIST].forEach(x => walk(x, ''));
+    [TABELA_MUNICIPIOS, MAP_POINTS, DATA, ATOS_RESPOSTA, TRANSFERENCIAS, RECURSOS, FIN, CONSIST].forEach(x => walk(x, ''));
   })();
   MUN_REF = {};
   __ref.forEach(m => (MUN_REF[m.uf] = MUN_REF[m.uf] || []).push(m.nome));
@@ -133,93 +133,10 @@ const kpiUFsLAC = Object.entries(MARE).filter(([uf,v]) => v.status_estadual === 
   if (el('heroCorte')) el('heroCorte').textContent = (META && META.corte) || '—';
 })();
 
-// ---- Calendário (15/09/2026, pedido da editoria: "O que vem" condensado em colunas): marcos fixos do ciclo
-//      (data/marcos_ciclo.json, só os que ainda não passaram) e prazos legais em curso (data/prazos_uf.json, vencendo
-//      daqui para a frente ou vencidos há até 60 dias), numa só grade data · marco · fonte, em ordem de data.
-(function calendario(){
-  const box = document.getElementById('marcosCiclo'); if (!box) return;
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const MS = 86400000;
-  const dBR = t => { const [d,m,a] = String(t).split('/').map(Number); return new Date(a, m-1, d); };
-  const fmt = d => String(d.getDate()).padStart(2,'0') + '/' + String(d.getMonth()+1).padStart(2,'0') + '/' + d.getFullYear();
-  const MES = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
-  const rotulo = d => MES[d.getMonth()] + ' ' + String(d.getFullYear()).slice(2);
-  const dias = n => n + ' dia' + (n === 1 ? '' : 's');
-  const hoje = new Date(); hoje.setHours(0,0,0,0);
-
-  // 26/09/2026 (pedido da editoria: "é preciso criar alguma forma gráfica para representar o que
-  // significa cada uma dessas datas, como se elas já tivessem passado, como se tivessem ainda
-  // correndo"). A tabela anterior não transmitia tempo: "em 15 dias" era texto no meio de uma
-  // frase, e a janela de seis meses do El Niño era só dois números separados por travessão.
-  // O dado já sustentava a resposta — prazo tem data_base E vencimento, ou seja, é INTERVALO.
-  // Agora há um eixo de tempo único, compartilhado por todas as faixas (por isso as durações são
-  // comparáveis entre si), com uma linha de HOJE atravessando todas na mesma posição. É ela que
-  // faz "já passou" e "ainda corre" serem visíveis sem ler texto.
-  // O degradê das barras do índice NÃO é usado aqui de propósito: naquela arte ele significa
-  // "valor de 0 a 100", e reaproveitá-lo para tempo criaria ambiguidade.
-  fetch('data/marcos_ciclo.json').then(r => r.ok ? r.json() : null).catch(() => null).then(M => {
-    const itens = [];
-    ((M && M.marcos) || []).filter(m => dBR(m.ate || m.data) >= hoje).forEach(m => itens.push({
-      ini: dBR(m.data), fim: m.ate ? dBR(m.ate) : null, titulo: m.titulo, fonte: m.fonte, url: m.url, classe: 'marco'}));
-    ((PRAZOS && PRAZOS.marcos) || []).filter(m => m.vencimento && m.data_base && m.titulo_curto).forEach(m => {
-      const fim = dBR(m.vencimento), resta = Math.round((fim - hoje) / MS); if (resta < -60) return;
-      const f0 = (m.fontes && m.fontes[0]) || null;
-      itens.push({ini: dBR(m.data_base), fim, titulo: m.titulo_curto, fonte: m.classe + ' · desde ' + m.data_base,
-        url: f0 && f0.url, classe: resta < 0 ? 'prazo vencido' : 'prazo'});
-    });
-    if (!itens.length) {
-      box.innerHTML = '<div class="cal-linha" role="row"><span class="cal-texto" role="cell">Marcos do ciclo não carregados.</span><span class="cal-faixa" role="cell"></span><span class="cal-fonte" role="cell"></span></div>';
-      return;
-    }
-    itens.sort((a, b) => (a.fim || a.ini) - (b.fim || b.ini));
-    const t0 = new Date(Math.min(...itens.map(i => +i.ini), +hoje));
-    const t1 = new Date(Math.max(...itens.map(i => +(i.fim || i.ini)), +hoje));
-    const vao = (t1 - t0) || 1;
-    const pos = d => ((d - t0) / vao * 100).toFixed(2) + '%';
-    const meio = new Date((+t0 + +t1) / 2);
-
-    let html = '<div class="cal-eixo" role="row"><span role="columnheader">Marco</span>' +
-      '<span class="cal-regua" role="columnheader">' +
-      '<span>' + rotulo(t0) + '</span>' +
-      '<span class="meio" style="left:50%">' + rotulo(meio) + '</span>' +
-      '<span class="hoje" style="left:' + pos(hoje) + '">hoje</span>' +
-      '<span class="fim">' + rotulo(t1) + '</span></span>' +
-      '<span role="columnheader">Fonte</span></div>';
-
-    itens.forEach(it => {
-      const pontual = !it.fim || +it.fim === +it.ini;
-      const futuro = it.ini > hoje;
-      let selo, faixa;
-      if (pontual) {
-        const d = Math.round((it.ini - hoje) / MS);
-        selo = d < 0 ? 'há ' + dias(-d) : d === 0 ? 'hoje' : 'em ' + dias(d);
-        faixa = '<span class="cal-ponto" style="--x0:' + pos(it.ini) + '"></span>';
-      } else {
-        const total = Math.max(1, Math.round((it.fim - it.ini) / MS));
-        const corrido = Math.min(total, Math.max(0, Math.round((hoje - it.ini) / MS)));
-        const resta = Math.round((it.fim - hoje) / MS);
-        const aComecar = Math.round((it.ini - hoje) / MS);
-        // Três estados, não dois: o que ainda não começou não tem "dias decorridos".
-        selo = resta < 0 ? 'transcorrido'
-             : aComecar > 0 ? 'começa em ' + dias(aComecar) + ' · dura ' + dias(total)
-             : resta === 0 ? 'vence hoje'
-             : corrido + ' de ' + dias(total);
-        faixa = '<span class="cal-barra" style="--x0:' + pos(it.ini) + '; --w:' +
-          ((it.fim - it.ini) / vao * 100).toFixed(2) + '%"><i style="--decorrido:' +
-          (corrido / total * 100).toFixed(1) + '%"></i></span>';
-      }
-      const quando = fmt(it.ini) + (pontual ? '' : ' – ' + fmt(it.fim));
-      html += '<div class="cal-linha ' + it.classe + (futuro ? ' futuro' : '') + '" role="row">' +
-        '<span class="cal-texto" role="cell"><span class="cal-data">' + esc(quando) + ' · ' + esc(selo) + '</span>' +
-        '<span class="cal-marco">' + esc(it.titulo) + '</span></span>' +
-        '<span class="cal-faixa" role="cell" style="--hoje:' + pos(hoje) + '">' + faixa + '</span>' +
-        '<span class="cal-fonte" role="cell">' +
-        (it.url ? '<a href="' + esc(it.url) + '" target="_blank" rel="noopener">' + esc(it.fonte) + '</a>' : esc(it.fonte)) +
-        '</span></div>';
-    });
-    box.innerHTML = html;
-  });
-})();
+// 30/09/2026: o painel "Calendário" da inicial saiu do código, com as outras duas telas de
+// calendário (decisão da editoria). O que ele sabia — os marcos do ciclo e os dispositivos da
+// Lei 9.504 — passou para a METODOLOGIA, como texto fixo e datado. O motor do defeso, que sabe
+// quando o período eleitoral acaba e libera a coleta, é outra coisa e não foi tocado.
 
 // Metadados do cabeçalho e do rodapé: nunca mais texto fixo (achado de Patricia,
 // 31/08/2026 — "Fonte: BD_El_Nino_2026_2027_Brasil.xlsx" era um nome de arquivo
@@ -492,7 +409,7 @@ const CAT_LABEL_TBL = {
   nao_verificado:['Ainda não verificado',MonitorMapas.PALETA.categorias.nao_verificado],
 };
 // 15/09/2026: os relógios de prazo (renderPrazos) e a nota do período eleitoral saíram da página inicial; os prazos
-// vivem no Calendário acima e o período eleitoral na página calendario-eleitoral.html (bloco pós-defeso incluído).
+// vivem na METODOLOGIA desde 30/09/2026, quando as três telas de calendário saíram do código.
 MonitorMapas.credito('prazosFonte', {fontes: ['registro de marcos do Monitor (Lei 12.608, ADPF 743, MPs 1.367 e 1.384, calendário do TSE, boletins do Painel El Niño)'], data: (typeof META !== 'undefined' && META && (META.atualizado_em || META.corte)) || null});
 (function(){ const c = document.getElementById('citacaoCorte'); if (c && META && META.corte) c.textContent = META.corte; })();
 // Link direto para um estado (#SC): usado pelos selos embutidos em outros sites (31/08/2026).

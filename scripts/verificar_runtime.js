@@ -190,36 +190,9 @@ setTimeout(() => {
     q("cidadeInput").value = "Biguaçu"; q("cidadeInput").dispatchEvent(new dom.window.Event("input"));
     teste("cartão de Biguaçu mostra o decreto de emergência de 30/08/2026", q("meuCard").innerHTML.includes("30/08/2026") && q("meuCard").innerHTML.includes("granizo"));
   } catch (e) { teste("cartão de Biguaçu (emergência)", false); }
-  // Caixa "Prazos em curso" (31/08/2026): itens = marcos com vencimento e título curto,
-  // vencendo daqui para a frente ou vencidos há até 60 dias — mesma regra da página.
-  const prazos = JSON.parse(fs.readFileSync(path.join(raiz, "data", "prazos_uf.json"), "utf-8")).marcos;
-  const _d = s => { const [dd, mm, aa] = s.split("/").map(Number); return new Date(aa, mm - 1, dd); };
-  const _hoje = new Date(); _hoje.setHours(0, 0, 0, 0);
-  const esperados = prazos.filter(m => m.vencimento && m.data_base && m.titulo_curto && Math.round((_d(m.vencimento) - _hoje) / 86400000) >= -60).length;   // 05/09/2026: barra exige data_base
-  // 15/09/2026: os relógios saíram; os prazos em curso entram no Calendário em colunas, junto dos marcos do ciclo
-  const marcosCiclo = JSON.parse(fs.readFileSync(path.join(raiz, "data", "marcos_ciclo.json"), "utf-8")).marcos.filter(m => _d(m.ate || m.data) >= _hoje).length;
-  const linhasCal = [...q("marcosCiclo").querySelectorAll(".cal-linha:not(.cal-cabecalho)")];
-  teste(`calendário: ${esperados} prazo(s) + ${marcosCiclo} marco(s) do ciclo em linhas data · marco · fonte`, linhasCal.length === esperados + marcosCiclo && linhasCal.every(l => l.querySelectorAll(".cal-data, .cal-marco, .cal-fonte").length === 3));
-  // 26/09/2026: o calendário virou linha do tempo e o rótulo do prazo mudou junto — era "em 15
-  // dias", agora é "44 de 59 dias", que diz quanto já correu e não só quanto falta. A checagem
-  // acompanha a mudança em vez de ser afrouxada: continua exigindo leitura temporal em TODO prazo.
-  teste("calendário: prazos em curso marcados e com leitura temporal", linhasCal.filter(l => l.classList.contains("prazo")).length === esperados && linhasCal.filter(l => l.classList.contains("prazo")).every(l => /\d+ de \d+ dias?|vence hoje|transcorrido|começa em \d+ dias?/.test(l.textContent)));
-  // O que a forma nova promete: intervalo vira barra com parte decorrida, data única vira ponto,
-  // e a linha de HOJE fica na MESMA posição em todas as faixas — sem isso a escala não é comum e
-  // as durações deixam de ser comparáveis entre si, que é a razão de existir do eixo único.
-  teste("calendário: cada linha tem barra (intervalo) ou ponto (data única)", linhasCal.every(l => l.querySelectorAll(".cal-barra, .cal-ponto").length === 1));
-  teste("calendário: a linha de hoje está na mesma posição em todas as faixas", (() => {
-    const hs = linhasCal.map(l => { const f = l.querySelector(".cal-faixa"); return f && f.style.getPropertyValue("--hoje"); });
-    return hs.length > 1 && hs.every(h => h && h === hs[0]);
-  })());
-  teste("calendário: toda barra declara quanto do prazo já correu", [...q("marcosCiclo").querySelectorAll(".cal-barra")].every(b => {
-    const i = b.querySelector("i"); if (!i) return false;
-    const v = parseFloat(i.style.getPropertyValue("--decorrido")); return v >= 0 && v <= 100;
-  }));
-  // 26/09/2026: a ordenação passou a ser pelo VENCIMENTO, não pelo início — numa linha do tempo o
-  // que interessa é o que vence primeiro. A célula mostra "início – fim", então a chave é a
-  // ÚLTIMA data do texto, não a primeira.
-  teste("calendário: linhas em ordem de vencimento", (() => { const ds = linhasCal.map(l => { const m = [...l.querySelector(".cal-data").textContent.matchAll(/(\d{2})\/(\d{2})\/(\d{4})/g)].pop(); return m ? +m[3] * 10000 + +m[2] * 100 + +m[1] : 0; }); return ds.every((v, i) => i === 0 || v >= ds[i - 1]); })());
+  // 30/09/2026: as verificações do painel "Calendário" da inicial saíram — o painel saiu do
+  // código, com as outras duas telas de calendário (decisão da editoria). Não foram afrouxadas:
+  // deixaram de existir junto com o que mediam.
   // 13/09/2026 (pedido de Patricia): gerador de pedido de LAI pronto (31/08/2026–13/09/2026)
   // retirado da parte visível do site — pedidos de LAI passam a ser feitos por e-mail, de forma
   // privada. Testes correspondentes (cartão da cidade e detalhe do estado) removidos junto.
@@ -252,9 +225,15 @@ setTimeout(() => {
   // "Depois" — os dois glabels dos medidores também saíram; o corte passa a aparecer uma única vez, no cabeçalho.
   teste("home sem os três cartões, sem a nota do período eleitoral e sem o bloco 'escondeu' (15/09/2026)", !q("tres") && !q("notaDefeso") && !q("blocoPosDefeso") && !q("n1Anunciado"));
   // 17/09/2026 (pedido da editoria): Calendário passa para o fim da main, trocando de lugar com "Indique um documento".
-  teste("ordem da home: medidores → sua cidade → estados → indique um documento → calendário", (() => { const ids = [...d.querySelectorAll("main > .panel, main > .mare-duas, main > .hero")].map(e => e.id); const pos = k => ids.indexOf(k); return pos("hero") < pos("cidade") && pos("cidade") < pos("formulario") && pos("formulario") < pos("prazos") && pos("prazos") === ids.length - 1; })());
-  teste("calendário nunca vazio (marcos do ciclo)", q("marcosCiclo").querySelectorAll(".cal-linha:not(.cal-cabecalho)").length >= 1 && !/Nenhum prazo em curso até o corte/.test(d.body.textContent));
-  teste("porta para o calendário eleitoral segue na inicial (seção Calendário)", d.querySelectorAll('a[href="calendario-eleitoral.html"]').length >= 1);
+  // 30/09/2026: o painel "prazos" (o Calendário) saiu da home; a ordem passa a terminar no
+  // formulário, e o portão cobra isso em vez do painel que não existe mais.
+  teste("ordem da home: medidores → sua cidade → estados → indique um documento", (() => { const ids = [...d.querySelectorAll("main > .panel, main > .mare-duas, main > .hero")].map(e => e.id); const pos = k => ids.indexOf(k); return pos("hero") < pos("cidade") && pos("cidade") < pos("formulario") && pos("formulario") === ids.length - 1; })());
+  // O calendário saiu de vez do código (decisão da editoria, 30/09/2026): nenhuma das três telas
+  // volta, e nenhum link para a página apagada pode reaparecer. Sem esta trava, um `git revert`
+  // distraído devolveria um link morto ao ar sem ninguém ver.
+  teste("nenhuma tela de calendário voltou à home", !q("marcosCiclo") && !q("prazosLista"));
+  teste("nenhum link para a página apagada do calendário eleitoral",
+        d.querySelectorAll('a[href="calendario-eleitoral.html"]').length === 0);
   teste("cruzamento risco × estágio (#cCruz/#boxCruz) não existe mais na inicial (17/09/2026, pedido da editoria)", !q("cCruz") && !q("boxCruz") && !q("cruzamento"));
   teste("todas as barras usam a arte única do medidor (nenhum .resp-fill / .tile-fill2 / .barra-resp)", !d.querySelector(".resp-fill, .tile-fill2, .barra-resp") && d.querySelectorAll("#hero .gauge-fill").length === 2 && !!d.querySelector("#hero .gauge-fill--resposta"));
   // 26/09/2026: a célula da grade territorial não comporta os três campos de texto, que passaram

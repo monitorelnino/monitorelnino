@@ -102,8 +102,6 @@ jobs:
           python3 scripts/verificar_rotulo_canal_descoberta.py
           # assunto: cor texto
           node scripts/verificar_runtime_resposta.js
-          # assunto: cor texto
-          node scripts/verificar_calendario.js
           # assunto: texto rapido
           node scripts/verificar_palavras.js
           # assunto: cor rapido

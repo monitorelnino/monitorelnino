@@ -273,14 +273,11 @@ jobs:
         # regressão trava o job e nada é publicado.
 
       # §15 (29/08/2026): vigia de sinais federais novos (DOU, ADPF 743) —
-      # descoberta para triagem humana, nunca classificação; e checagem de
-      # prazos federais contra o banco — marcador editorial, nunca pontuação.
+      # descoberta para triagem humana, nunca classificação.
+      # 30/09/2026: a checagem de prazos federais saiu junto com o calendário (decisão da editoria).
       - name: Vigiar sinais federais novos (descoberta; informativa)
         continue-on-error: true
         run: python3 monitorar_sinais_federais.py
-      - name: Checar prazos federais contra o banco (marcador editorial)
-        continue-on-error: true
-        run: python3 verificar_prazos_legais.py
 
       # §137 (21/09/2026): busca web aberta (camada 4) — complemento ao Querido Diário e ao
       # SIGPub, bloqueado de forma definitiva (Storage Access API, mecanismo de segurança do

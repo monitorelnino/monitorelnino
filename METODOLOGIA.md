@@ -724,6 +724,29 @@ Na edição de 01/09/2026, **uma das oito fontes está coletada** — a camada d
 
 ## 24. Período eleitoral (defeso) e seus efeitos sobre recall, antecipação e financiamento (02/09/2026)
 
+> **Os quatro marcos do ciclo, fixados aqui em 30/09/2026.** Eles viviam em `data/marcos_ciclo.json`
+> e alimentavam o painel "Calendário" do site, que **saiu do código** por decisão da editoria de
+> 30/09/2026 (§309 do CHANGELOG). A informação não se perde: passa a ser texto fixo e datado nesta
+> metodologia, com a fonte de cada linha.
+>
+> | data | marco | fonte |
+> |---|---|---|
+> | **04/10/2026** | Primeiro turno das eleições gerais (presidente, governadores, senadores e deputados) | TSE, calendário eleitoral 2026 — `tse.jus.br/eleicoes/eleicoes-2026/calendario-eleitoral-2026` |
+> | **25/10/2026** | Fim do período eleitoral (segundo turno, onde houver) | Lei 9.504/1997, art. 73, VI; TSE — `planalto.gov.br/ccivil_03/leis/l9504.htm` |
+> | **26/10/2026** | O Monitor publica o que o período eleitoral escondeu: páginas que voltaram ao ar, planos localizados com data anterior, transferências represadas que saíram | esta metodologia |
+> | **01/10/2026 – 31/03/2027** | Janela crítica do El Niño no Brasil | Ministério da Saúde, Boletim El Niño nº 1 (29/06/2026) |
+>
+> **A tabela de dispositivos da Lei 9.504 não foi duplicada aqui**, e isso foi conferido antes: o
+> que ela dizia — o que o defeso veda, o que ele não veda e com que exceção — já está nesta mesma
+> seção, nos parágrafos abaixo, com trecho e fonte. Repetir a mesma norma em dois lugares do mesmo
+> documento cria duas versões que envelhecem em ritmos diferentes.
+>
+> **O que saiu foi a tela, não o motor.** A lógica que sabe quando o período eleitoral termina e
+> libera a coleta do que estava bloqueado — `DEFESO` em `gerar_resposta.py`, os lotes de
+> `atualizar.py`, `PADROES_DEFESO` em `coletores_base.py` — continua exatamente como estava. Ela
+> nunca foi "calendário": é o que faz o §24 funcionar.
+
+
 > **A pergunta que a editoria quer responder ao fim do ciclo (registrada em 07/09/2026): "o período eleitoral prejudicou a resposta do Brasil ao El Niño?"** A página Calendário sai da barra de navegação (decisão de 07/09: a informação do defeso vive onde é relevante — nas figuras que só se desenham depois de 25/10, no contador de resposta e no financiamento), mas **nada do que responde a pergunta é apagado**: `data/calendario/dispositivos.json` (o que a lei suspende, com trecho e data), `data/calendario/fontes_suspensas.json` (cada sítio que respondeu com página de defeso, com primeira e última detecção), o `log_buscas.json` (toda busca com `fonte_suspensa_defeso`), a série semanal de decretos com a faixa 04/07–25/10, as barras de prazo das MPs (deliberação até 11–12/10) e os registros com `origem_temporal = reabertura` a partir de 26/10. A resposta será dada pela recontagem pré-registrada da §29 e pelas medidas do bloco 3 do Calendário (invisível pela lei × invisível pelo alcance do Monitor), nunca por contrafactual. A página continua publicada e alcançável por links (inicial, Gestores, Pesquisadores).
 
 > **O que o defeso veda, e o que ele não veda — conferido na norma em 23/09/2026 (§183).** A distinção decide como o Monitor lê um sítio que sai do ar: a **Lei 9.504/97, art. 73, VI, "b"** veda *autorizar publicidade institucional* de atos, programas, obras, serviços e campanhas nos três meses anteriores ao pleito, ressalvados produtos e serviços com concorrência no mercado e a grave e urgente necessidade pública reconhecida **previamente** pela Justiça Eleitoral. Ela **não** suspende o dever de transparência: a **Resolução TSE nº 23.735/2024, art. 15, §§ 2º, 3º e 4º** diz expressamente que manter páginas na internet para cumprir os deveres do **art. 48-A da LC 101/2000**, dos **arts. 8º e 10 da Lei 12.527/2011** (LAI) e do **art. 29, § 2º, da Lei 14.129/2021** **não configura publicidade institucional vedada** — o que se exige é *adequar* a página, retirando nome, símbolo, slogan e elemento de enaltecimento pessoal ou governamental. A jurisprudência acompanha: TSE, AgR-REspe nº 18241 (26/09/2017), conteúdo antigo e meramente informativo no sítio oficial não é conduta vedada; AgR-RO nº 187415 (29/05/2018, rel. Rosa Weber), o exame é caso a caso, nunca em abstrato. **A norma manda tirar a propaganda, não o dado.**
