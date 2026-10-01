@@ -4,56 +4,56 @@
   "efeito_no_indice": "NENHUM — peso zero, como todo sinal de risco.",
   "escrito_por": "coletar_sinais_risco.py"
  },
- "gerado_em": "01/10/2026 12:54",
+ "gerado_em": "01/10/2026 18:39",
  "consultas": [
   {
    "fonte": "inmet_avisos",
    "url": "https://apiprevmet3.inmet.gov.br/avisos/ativos",
-   "consultado_em": "01/10/2026 12:54",
-   "bytes": 629491,
-   "sha256": "30e4e4706718b33afa210416fcfa9cf2af476b08086c172d6f122b68151fac92"
+   "consultado_em": "01/10/2026 18:38",
+   "bytes": 618212,
+   "sha256": "0f386383421137cc3f44cfa7342fe9c70061b6ee3577f51a51efd8d60829d812"
   },
   {
    "fonte": "cemaden_alertas",
    "url": "https://gsc.cemaden.gov.br/geoserver/cemaden_dev/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=cemaden_dev:alertas_vigentes_siaden&outputFormat=application/json&count=3000",
-   "consultado_em": "01/10/2026 12:54",
-   "bytes": 566914,
-   "sha256": "b2857cef68db15b8346f2e0954f914f0bc8466847fe26380a69c3ecebbbbacfe"
+   "consultado_em": "01/10/2026 18:38",
+   "bytes": 1043908,
+   "sha256": "19ad4c812e2ee0469ae0e459579b60397647e602eda75e18dfb88e48cc66adb8"
   },
   {
    "fonte": "open_meteo_tempo",
    "url": "https://api.open-meteo.com/v1/forecast?latitude=-9.9750,-9.6660,-3.1187,0.0349,-12.9718,-3.7166,-15.7795,-20.3155,-16.6864,-2.5387,-19.9102,-20.4486,-15.6010,-1.4554,-7.1151,-8.0467,-5.0919,-25.4195,-22.9129,-5.7936,-8.7608,2.8238,-30.0318,-27.5945,-10.9091,-23.5329,-10.2400&longitude=-67.8243,-35.7350,-60.0212,-51.0694,-38.5011,-38.5423,-47.9297,-40.3128,-49.2643,-44.2825,-43.9266,-54.6295,-56.0974,-48.4898,-34.8641,-34.8771,-42.8034,-49.2646,-43.2003,-35.1986,-63.8999,-60.6753,-51.2065,-48.5477,-37.0677,-46.6395,-48.3558&daily=temperature_2m_max,temperature_2m_min,apparent_temperature_max&timezone=America%2FSao_Paulo&past_days=1&forecast_days=4",
-   "consultado_em": "01/10/2026 12:54",
-   "bytes": 15120,
-   "sha256": "72a3fd0a0666021533403094d24b5fdb0f2a3fd717e78f54dfda7052042c2f4f"
+   "consultado_em": "01/10/2026 18:39",
+   "bytes": 15117,
+   "sha256": "e2645b433db6aa43229a8adc1a4d1a034da5cd7e50d475397d9ea2a2e43214b3"
   },
   {
    "fonte": "inmet_previsao_capitais",
    "url": "https://apiprevmet3.inmet.gov.br/previsao/capitais",
-   "consultado_em": "01/10/2026 12:54",
-   "bytes": 6725732,
-   "sha256": "749c3005cbca9dea15ecd571e7b8ab71057383be53d1789af7451c0b38311c3a"
+   "consultado_em": "01/10/2026 18:39",
+   "bytes": 6726780,
+   "sha256": "a0c401020f86f60adbf010eeaab24a291fac56534dd3cc3131cfd57d52e6ab6b"
   },
   {
    "fonte": "open_meteo_ar",
    "url": "https://air-quality-api.open-meteo.com/v1/air-quality?latitude=-9.9750,-9.6660,-3.1187,0.0349,-12.9718,-3.7166,-15.7795,-20.3155,-16.6864,-2.5387,-19.9102,-20.4486,-15.6010,-1.4554,-7.1151,-8.0467,-5.0919,-25.4195,-22.9129,-5.7936,-8.7608,2.8238,-30.0318,-27.5945,-10.9091,-23.5329,-10.2400&longitude=-67.8243,-35.7350,-60.0212,-51.0694,-38.5011,-38.5423,-47.9297,-40.3128,-49.2643,-44.2825,-43.9266,-54.6295,-56.0974,-48.4898,-34.8641,-34.8771,-42.8034,-49.2646,-43.2003,-35.1986,-63.8999,-60.6753,-51.2065,-48.5477,-37.0677,-46.6395,-48.3558&hourly=pm2_5,pm10,ozone,nitrogen_dioxide,carbon_monoxide,european_aqi&timezone=America%2FSao_Paulo&forecast_days=1&domains=cams_global",
-   "consultado_em": "01/10/2026 12:54",
+   "consultado_em": "01/10/2026 18:39",
    "bytes": 42732,
-   "sha256": "9d0b1149181fa35dccb07e2e1be19a30ac56ea1192cba42da37fcaf531650547"
+   "sha256": "c7ae8115dcd736708cd59df3e8b409062d9338d108ed5a86ac8ab35ae0734872"
   },
   {
    "fonte": "inmet_estacoes",
    "url": "https://apitempo.inmet.gov.br/estacoes/T",
-   "consultado_em": "01/10/2026 12:54",
-   "bytes": 262528,
-   "sha256": "8d07872bb3f6f87617659e5ccc8539e7c8f4bc33a67b6f1864789b638ad6c735"
+   "consultado_em": "01/10/2026 18:39",
+   "bytes": 262532,
+   "sha256": "886d08dd1914ea3c635fe3e0b8695fd09586ec14f56c5ec36cf5cedc24f58793"
   },
   {
    "fonte": "inmet_estacoes",
    "url": "https://apitempo.inmet.gov.br/condicao/capitais/2026-10-01",
-   "consultado_em": "01/10/2026 12:54",
-   "bytes": 2342,
-   "sha256": "9856dc2ad181bfd0170a6f2345b43cfac59dad484ee2c2c50e36286a33a74d84"
+   "consultado_em": "01/10/2026 18:39",
+   "bytes": 2327,
+   "sha256": "b4393ccf0ce1f8e026fe2990d62ca8363e4e749ca30f930d8a38da459aa1f3d5"
   }
  ]
 }
