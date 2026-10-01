@@ -25,7 +25,10 @@
                 // existiam como sintetico/ambar/argila; ganham o nome da família porque é
                 // assim que o resto do site as chama, e quem lê o código de um mapa de risco
                 // procura 'seca', não 'ambar'. Mesmo hex, um nome a mais.
-                chuva:'#5E7C93', seca:'#C9814B', fogo:'#7C4A34' };
+                chuva:'#5E7C93', seca:'#C9814B', fogo:'#7C4A34',
+                // 01/10/2026: o calor ganha cor própria, distinta do ocre da seca. Mesmo
+                // valor de --calor em tokens.css: o site tem uma cor só de calor.
+                calor:'#A3271F' };
   function cor(nome) { return COR[nome] || nome; }
   /** Relógio de prazo (07/09/2026): anel que esvazia de data_base a vencimento. resta ∈ [0,1]; dias < 0 = vencido.
    *  Devolve o SVG (string). Cor: Âmbar > 30 % restante; Argila abaixo de 30 %; Mineral apagado quando vencido. */
@@ -153,6 +156,27 @@
   /** Mapa coroplético por UF + legenda, num só passo (consolidado 17/09/2026 — antes
    *  reimplementado à parte em financiamento.js, saude.js e sinais-de-risco.js; nenhuma
    *  página deve mais definir desenharMapa localmente, ver aviso no topo do arquivo). */
+  /** Hachura diagonal de DUAS cores, registrada como `pattern` no próprio SVG (01/10/2026).
+   *
+   *  Serve a "mais de um risco": um estado que o boletim coloca em duas famílias não tem uma cor
+   *  intermediária — ele tem as duas. Cinza liso dizia "nenhuma das duas", e era a categoria mais
+   *  frequente do mapa virando mancha sem informação.
+   *
+   *  Devolve `url(#id)`, pronto para `fill`. O mesmo par de cores reusa o mesmo padrão. */
+  function hachura(svgId, corA, corB) {
+    const svg = d3.select('#' + svgId);
+    const id = 'hachura-' + svgId + '-' + (corA + corB).replace(/[^a-z0-9]/gi, '');
+    if (!document.getElementById(id)) {
+      let defs = svg.select('defs');
+      if (defs.empty()) defs = svg.append('defs');
+      const p = defs.append('pattern').attr('id', id).attr('width', 8).attr('height', 8)
+        .attr('patternUnits', 'userSpaceOnUse').attr('patternTransform', 'rotate(45)');
+      p.append('rect').attr('width', 8).attr('height', 8).attr('fill', corA);
+      p.append('rect').attr('width', 4).attr('height', 8).attr('fill', corB);
+    }
+    return 'url(#' + id + ')';
+  }
+
   function desenharMapa(ctx, svgId, legendaId, corDe, rotuloDe, itens, familia) {
     if (familia) d3.select('#' + svgId).attr('data-atmosfera', familia);
     atmosfera(ctx, svgId, familia);
@@ -256,7 +280,7 @@
     // de assets/tokens.css (--chuva, --seca, --fogo) mais o âmbar do calor. Elas já existiam
     // como sintetico/ambar/argila; ganham o nome da família porque é assim que o resto do site
     // as chama, e quem lê um mapa de risco procura 'seca', não 'ambar'.
-    familia: {chuva: COR.chuva, seca: COR.seca, fogo: COR.fogo, calor: COR.ambar},
+    familia: {chuva: COR.chuva, seca: COR.seca, fogo: COR.fogo, calor: COR.calor},
     // 30/09/2026 (item 8, aprovado pela editoria): uma ATMOSFERA por família de risco. Mesmos
     // valores de assets/tokens.css; o motor os lê por nome e nenhuma página carrega cor solta.
     // `fundo` é a área do mapa, `uf`/`contorno` a malha, e a rampa é a marca do dado.
@@ -290,5 +314,5 @@
     neutra: NEUTRA, semDado: COR['sem-dado'], zero: COR.zebra, trilho: COR['gauge-trilho'],   // trilho = fundo das barras do medidor (15/09/2026: arte única)
     serie: [COR.musgo, COR.sintetico, COR.ambar, COR.argila, COR.mineral, COR['areia-escura'], COR.bioluz, COR.muted] };
 
-  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, desenharMapa, atmosfera, credito, dataBR };
+  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, desenharMapa, atmosfera, hachura, credito, dataBR };
 })(window);

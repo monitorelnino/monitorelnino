@@ -6,7 +6,7 @@ Serve a uma pergunta só: **por onde começar a ler** quando um pedido chega. An
 
 **O que ele não é:** análise de dependência completa. Não segue `import` transitivo nem chamada dinâmica — é um índice de primeira ordem, tirado dos `fetch(...)`, dos `gravar(...)` e das listas de páginas dos portões. Para "por onde começo", basta; para "nada mais pode ser afetado", quem responde é o portão de runtime.
 
-Atualizado em 30/09/2026.
+Atualizado em 01/10/2026.
 
 | arquivo | telas que afeta | dados que usa | portões que o cobrem | toca o índice? |
 |---|---|---|---|---|

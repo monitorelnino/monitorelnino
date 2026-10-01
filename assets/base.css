@@ -939,3 +939,51 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
   .emerg-numero{font-size:var(--fs-h1);}
   .levar-botoes .btn-pilula{width:100%; justify-content:center;}
 }
+
+/* ============ Cartão de mapa: UM componente, seis vezes (01/10/2026, pedido da editoria) ========
+   O que estava errado: o nome da família e a linha do boletim viviam FORA do cartão, com alturas
+   diferentes, e as molduras desalinhavam; um dos mapas ocupava a largura toda e os outros cinco
+   ficavam pequenos embaixo; dois cartões tinham seletor dentro e os outros não.
+
+   A ordem interna é fixa nos seis — faixa de família, sobretítulo, linha do boletim, título,
+   subtítulo, mapa, legenda, recolhidos, fonte — porque seis cartões com a mesma ordem se comparam
+   e seis com ordens diferentes se leem um a um. As alturas das partes de texto são RESERVADAS: sem
+   isso, uma linha de boletim mais curta sobe o mapa daquele cartão e a grade perde o alinhamento,
+   que é exatamente o defeito que este componente existe para corrigir. */
+.grade-mapas{align-items:stretch;}
+/* O cartão ocupa a altura inteira da célula da grade: sem isto ele cresce só até o seu
+   conteúdo, e um cartão com legenda de sete itens fica mais alto que o de quatro. A legenda
+   tem altura reservada para DUAS linhas e o resto da folga vai para o pé, depois da fonte. */
+.grade-mapas > .cartao-mapa{height:100%;}
+.cartao-mapa .map-legend{align-content:flex-start;}
+/* O cartão NÃO redefine caixa: ele é uma `.figura` com filete de família em cima. Padding,
+   fundo, raio e sombra vêm do componente de figura — inclusive o padding menor que a media query
+   aplica no celular, que uma regra própria aqui venceria por especificidade e quebraria. O portão
+   de consistência visual cobrou isso quatro vezes seguidas, e das quatro estava certo: cada
+   propriedade que eu redefinia criava um segundo estilo para a mesma família. */
+.cartao-mapa{border-top:4px solid var(--line);}
+.cartao-mapa.r-previsto{border-top-color:var(--ink);}
+.cartao-mapa.r-seca{border-top-color:var(--seca);}
+.cartao-mapa.r-fogo{border-top-color:var(--fogo);}
+.cartao-mapa.r-calor{border-top-color:var(--calor);}
+.cartao-mapa.r-chuva{border-top-color:var(--chuva);}
+.cartao-mapa-familia{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption);
+  text-transform:uppercase; letter-spacing:var(--ls-caps); color:var(--muted); margin:0 0 var(--sp-1);}
+.cartao-mapa-boletim{font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);
+  margin:0 0 var(--sp-2); min-height:calc(2 * var(--fs-caption) * var(--lh-caption));}
+.cartao-mapa .figura-titulo{min-height:calc(2 * var(--fs-h4) * var(--lh-h4));}
+.cartao-mapa .figura-sub{min-height:calc(3 * var(--fs-caption) * var(--lh-caption));}
+.cartao-mapa .map-legend{min-height:calc(2 * var(--fs-caption) * var(--lh-caption));}
+.cartao-mapa .figura-midia{margin-bottom:0;}
+.cartao-mapa-rodape{display:flex; flex-wrap:wrap; gap:var(--sp-3); margin-top:var(--sp-2);}
+.cartao-mapa-rodape > details > summary{font-size:var(--fs-caption); line-height:var(--lh-caption);
+  color:var(--link); cursor:pointer;}
+.cartao-mapa-rodape > details[open]{flex:1 1 100%;}
+.cartao-mapa-rodape .figura-leitura{font-size:var(--fs-caption); line-height:var(--lh-caption);
+  margin:var(--sp-2) 0 0;}
+/* A fonte fica colada no pé do cartão, para os seis terminarem na mesma linha. */
+.cartao-mapa > .fonte-figura{margin-top:auto; padding-top:var(--sp-3);}
+/* "FIGURA n" sai destes cartões: seis numerações numa grade viram ruído, e a figura já se nomeia
+   pelo título. A numeração automática continua nas outras páginas. */
+.cartao-mapa{counter-increment:none;}
+.cartao-mapa .figura-numero, .cartao-mapa::before{content:none; display:none;}

@@ -1779,3 +1779,36 @@ meses com valor.
 O mês usado é o da **previsão**, não o do dia da consulta — a previsão pode cair no primeiro dia do
 mês seguinte. Capital sem máxima prevista **ou** sem normal publicada fica sem desvio: os dois casos
 são ausência, e a legenda os nomeia juntos.
+
+
+## 62. O cartão de mapa é um componente único, e isso é regra da página (01/10/2026)
+
+Decisão da editoria de 01/10/2026, depois de ver a seção 2 renderizada.
+
+**Os seis mapas usam um único componente, com a mesma ordem interna:** faixa fina na cor da família,
+sobretítulo com o nome da família, linha do que o boletim prevê, título, subtítulo com o tempo, mapa,
+legenda, "Ver em lista" e "Como ler" recolhidos, e a fonte no pé. Seis cartões com a mesma ordem se
+comparam; seis com ordens diferentes se leem um a um, e o leitor perde a comparação, que é a razão de
+estarem lado a lado.
+
+**O mapa de risco previsto é o primeiro e tem o mesmo tamanho dos outros.** Ele ocupava a largura
+inteira, o que o fazia parecer de outra natureza — e ele é previsão entre observações, não um
+cabeçalho.
+
+**As alturas de texto são reservadas, não naturais.** Sem isso, uma linha de boletim mais curta sobe
+o mapa daquele cartão e a grade desalinha — que foi exatamente o defeito corrigido aqui.
+
+**A legenda diz apenas o que o mapa é: as categorias.** Saíram da legenda a contagem de pontos de
+medição, o estado da coleta da fonte e a lista de fenômenos dos avisos. Nenhum dos três é degrau de
+escala: são informação sobre a camada ou sobre a coleta, e cada um continua onde pertence — no texto
+do mouse, na lista, ou no crédito da figura, que é onde a procedência mora.
+
+**"Mais de um risco" é hachura das duas cores, nunca cinza.** O cinza liso dizia "nenhuma das duas",
+e essa era a categoria mais frequente do mapa nacional — a mancha maior era a que menos informava.
+
+**O calor tem cor própria.** Ele saía no mesmo laranja da seca, e duas famílias indistinguíveis lado
+a lado não são duas famílias. O token `--calor` passa a vermelho, e é um só para o site inteiro.
+
+**Sem controles dentro dos cartões.** Os seletores de camada existiam em dois dos seis mapas e em
+nenhum dos outros quatro. A camada exibida é a padrão; o que a outra camada tinha de valor vive no
+"Ver em lista" do próprio cartão.
