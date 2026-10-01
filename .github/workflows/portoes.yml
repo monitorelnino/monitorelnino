@@ -216,6 +216,11 @@ jobs:
           # terço de zero afirmaria ausência de sala de situação por ausência de busca — e a trava
           # estrutural de que este gerador não escreve no índice nem no arquivo que a página lê.
           python3 gerar_monitor_saude_v04.py --autoteste
+          # O juiz da saúde (01/10/2026). O autoteste cobra a classificação do que o ato
+          # institui, o degrau de coordenação — ato de 2026 que NÃO nomeia o ciclo é permanente,
+          # não criado para ele — e que o degrau nunca conclua ausência: este juiz só vê
+          # documentos que existem, e marcar ausência exige bateria completa, que é outro passo.
+          python3 julgar_saude.py --autoteste
           python3 coletar_normais_inmet.py --autoteste
           python3 scripts/gerar_enquadramento_card.py --autoteste
           python3 scripts/verificar_cadencia_coletores.py --autoteste

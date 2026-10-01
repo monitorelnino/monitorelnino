@@ -107,6 +107,7 @@ Atualizado em 01/10/2026.
 | `juiz.py` | — | — | — | SIM |
 | `julgar_e_aplicar_descobertas.py` | — | — | — | não |
 | `julgar_filas.py` | — | — | — | não |
+| `julgar_saude.py` | — | — | — | não |
 | `migrar_saude_instrumentos.py` | — | — | — | não |
 | `migrar_v224_verificacao.py` | — | `citacao_incompleta.json`, `erratas_v224.json`, `log_buscas.json`, `municipios.json`, `pontos_mapa.json` | — | não |
 | `monitorar_atos_resposta.py` | — | — | — | não |

@@ -9,6 +9,21 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-01 · #496 · Defesa civil com o desenho padrão do site
+
+Os seis números do topo no cartão de destaque do site, em duas linhas de três; os cinco mapas e o
+gráfico no cartão de mapa único, em grade de três, com a mesma figura nos seis. Duas atmosferas
+claras entram na paleta: base branca com contorno fino, nunca cinza. Dois defeitos corrigidos:
+`grade-mapas` sem a classe base não era grade, e uma constante autorreferente matava a página em
+silêncio. METODOLOGIA §70.
+
+## 2026-10-01 · #495 · Juiz da saúde: a bateria dos 27 rodou e as 27 pistas foram recusadas
+
+`julgar_saude.py` roda o juiz sobre a fila de saúde e escreve na camada estadual — o runner do Legal
+não a lê. A bateria passou pelas 27 UFs sem motor doente (78–80 resultados por UF, 73 pistas, 27
+oficiais). O juiz recusou as 27: 14 por `autoridade_nao_confirmada`, porque o plano estadual de saúde
+é documento técnico e a etapa de autoridade foi escrita para o MARÉ Legal. METODOLOGIA §69.
+
 ## 2026-10-01 · #494 · MARÉ Saúde v0.4 calculada em paralelo, e MT verificada
 
 A v0.4 ganha a escala de razão do Legal, o componente de coordenação em saúde e o tempo fora da
