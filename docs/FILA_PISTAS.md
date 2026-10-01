@@ -5,26 +5,30 @@ Gerado em 01/10/2026 · 1803 pendente(s) · 5843 decidida(s) · A=159 B=824 C=82
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
 ## Arapiraca/AL — 7 pendente(s)
-- `fbc2da7491` · nível **A** (6 pts) · busca_web · — · citação não extraída
+- `fbc2da7491` · nível **A** (6 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Arquivos Plano de Contingência - Prefeitura de Arapiraca
   - url: https://web.arapiraca.al.gov.br/tipo-de-arquivo/plano-de-contingencia/
   - trecho: Rua Samaritana, 1185, Bairro Santa Edwiges – CEP 57310-245 Arapiraca-AL ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `560a85f834` · nível **A** (6 pts) · busca_web · — · citação não extraída
   - título: Plano Municipal de Saúde - staging-transparencia.integra.arapiraca.al ...
   - url: https://staging-transparencia.integra.arapiraca.al.gov.br/documentos_gerenciais_saude
   - trecho: Consulta pública do Plano Municipal de Saúde. Consulte os planos, avaliações e documentos vinculados ao planejamento municipal de saúde.
-- `f80aecae01` · nível **B** (5 pts) · busca_web · — · citação não extraída
+- `f80aecae01` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
   - título: ARAPIRACA: PREFEITURA MONTA AÇÕES PARA CASO DE DESASTRES NATURAIS
   - url: https://www.gazetadealagoas.com.br/politica/411071/arapiraca-prefeitura-monta-acoes-para-caso-de-desastres-naturais
   - trecho: A prefeitura de Arapiraca está montando um Plano de Contingência para não ser surpreendida em casos de desastres naturais. Neste momento, o plano foca em áreas próximas ao epicentro dos tremores de terra que assustam a m
-- `b70f5cde79` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `b70f5cde79` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
   - título: AL TV 2ª Edição. Defesa Civil de Arapiraca vai fazer plano de ...
   - url: https://globoplay.globo.com/v/11926309/
   - trecho: AL TV 2ª Edição. Defesa Civil de Arapiraca vai fazer plano de contingência por causa dos tremores na região
-- `c137b07b8b` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `c137b07b8b` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Plano de Contingência Funcional - UFAL - campus Arapiraca
   - url: https://arapiraca.ufal.br/institucional/informes/plano-de-contingencia-funcional-ufal-campus-arapiraca
   - trecho: A direção do campus Arapiraca torna público o plano de contingenciamento funcional do campus Arapiraca e unidades educacionais de Penedo e Palmeira dos Índios. Clique aqui para acessar o documento.
+  - juiz: portão automático: fonte não oficial
 - `89e192563b` · nível **C** (5 pts) · busca_web · — · citação não extraída
   - título: Plano de Contingência para Infecção Humana pelo Coronavírus
   - url: https://web.arapiraca.al.gov.br/arquivos/plano-de-contingencia/
@@ -96,15 +100,17 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ ano_anterior_ao_ciclo
 
 ## Pacajus/CE — 2 pendente(s)
-- `0f13e405fb` · nível **A** (7 pts) · busca_web · — · **Lei nº 403**, 24/06/2015 (do trecho)
+- `0f13e405fb` · nível **A** (7 pts) · busca_web · DUVIDA · **Lei nº 403**, 24/06/2015
   - título: Governo de Pacajus - pacajus.ce.gov.br
   - url: https://pacajus.ce.gov.br/planosmunicipais.php
   - trecho: O Plano Municipal de Educação (PME) de Pacajus, instituído pela Lei nº 403, de 24 de junho de 2015, estabelece as diretrizes, metas e estratégias para a política educacional do município, com vigência de 10 (dez) anos. O
-- `2de5881f83` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `2de5881f83` · nível **B** (3 pts) · busca_web · DUVIDA · citação não extraída
   - título: Plano Municipal da Primeira Infância CE
   - url: https://pt.scribd.com/document/950996085/PLANO-MUNICIPAL-PELA-PRIMEIRA-INFA-NCIA-DE-PACAJUS-2022-1
   - trecho: A Comissão do Comitê Municipal da Primeira Infância de Pacajus-CE, dialogou de forma intersetorial, identificando a partir destes dados coletados, quais as reais problemáticas, os desafios,
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: fonte não oficial
 
 ## Sobral/CE — 1 pendente(s)
 - `f2688a9eeb` · nível **A** (6 pts) · querido_diario · DUVIDA · **Decreto Municipal Nº 196**, 22/11/2017
@@ -327,10 +333,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ uf_divergente_na_url
 
 ## Esperantinópolis/MA — 1 pendente(s)
-- `b30d5823c6` · nível **A** (7 pts) · busca_web · — · data 21/05/2026 (do trecho)
+- `b30d5823c6` · nível **A** (7 pts) · busca_web · DUVIDA · data 21/05/2026 (do trecho)
   - título: Prefeitura de Esperantinópolis - esperantinopolis.ma.gov.br
   - url: https://esperantinopolis.ma.gov.br/planosmunicipais.php?grupo=plano_municipal_de_educacao
   - trecho: Lista de planos municipais. PLANO MUNICIPAL DE EDUCAÇÃO RELATÓRIO DE GESTÃO MUNICIPAL RELATÓRIO ANUAL DE AÇÕES DESENVOLVIDAS EM 2025 21/05/2026 RELATÓRIO DE GESTÃO DE EDUCAÇÃO 2024 06/02/2025 RELATÓRIO ANUAL DE GESTÃO DA
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Barão de Cocais/MG — 5 pendente(s)
 - `7707f5b8cd` · nível **A** (6 pts) · seguimento_busca_oficial · RESPOSTA · **Decreto Municipal nº 280**, 90.01.0009
@@ -512,12 +519,14 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## CHOPINZINHO/PR — 3 pendente(s)
-- `c1c40d270f` · nível **A** (6 pts) · diario_consorciado · — · **RESOLUÇÃO Nº 27**, 2026 (do trecho)
+- `c1c40d270f` · nível **A** (6 pts) · diario_consorciado · DUVIDA · **RESOLUÇÃO Nº 27**, 29/09/2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118194_2026-09-29_1ea425e35d6af02ebe55c6eb04c2656a.pdf
   - trecho: RIA MUNICIPAL DE SAÚDE  RESOLUÇÃO Nº 27/2026 - CMS    RESOLUÇÃO Nº 27/2026     Súmula: Aprovação do Plano de Contingência para  ARBOVIROSES 2026/2027.     O Plenário do Conselho Municipal de Saúde de Chopinzinh o, Ad  Re
-- `18ee6e60d5` · nível **A** (6 pts) · diario_consorciado · — · **Decreto nº 249**, 03/08/2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `18ee6e60d5` · nível **A** (6 pts) · diario_consorciado · DUVIDA · **Decreto nº 249**, 29/09/2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118194_2026-09-29_1ea425e35d6af02ebe55c6eb04c2656a.pdf
   - trecho: 18 de  13 de julho  de 2026 e Decreto nº 249 de 03 de agosto de 2026;     Resolve:     1. Aprovar o Plano de Contingência para Arboviroses 2026/2027 do  Município de Chopinzinho, previamente encaminhado aos  Conselheiros
+  - juiz: portão automático: fonte não oficial
 - `1602d39b14` · nível **C** (2 pts) · diario_consorciado · — · citação não extraída
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118174_2026-08-31_c197a5934df29bc5df0d143b4f4eedbd.pdf
   - trecho: adas durante a vigência do Comitê.  Art. 5º As ações e deliberações do Comitê serão orientadas pelo Plano  de Contingência do evento climático, que estabelecerá as diretrizes  para o planejamento, coordenação e execução 
@@ -1370,27 +1379,32 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Sep 11, 2026 ... Relvado apresenta estudo socioambiental e Plano de Contingência em audiência pública ... El Niño e sua relação com eventos climáticos.
 
 ## Santa Maria/RS — 5 pendente(s)
-- `20fa85ef94` · nível **A** (7 pts) · busca_web · — · citação não extraída
+- `20fa85ef94` · nível **A** (7 pts) · busca_web · EX_ANTE · citação não extraída
   - título: PLANO DE CONTINGÊNCIA DE SANTA MARIA (RS)
   - url: https://www.santamaria.rs.gov.br/arquivos/baixar-arquivo/conteudo/D24-3863.pdf
   - trecho: Com esse programa, buscamos benefícios tangíveis para a população de Santa Maria, como a redução de danos ao fortalecer a infraestrutura e melhorar as práticas de resposta, o programa visa reduzir significativamente os d
-- `f750f8d480` · nível **A** (6 pts) · busca_web · — · data 20/12/2024 (do trecho)
+  - juiz: portão automático: data do ato incompleta (2024)
+- `f750f8d480` · nível **A** (6 pts) · busca_web · EX_ANTE · data 20/12/2024 (do trecho)
   - título: PMSM - SMRCRC - Plano de Contingência - santamaria.rs.gov.br
   - url: https://www.santamaria.rs.gov.br/smrcrc/1626-plano-de-contingencia
   - trecho: O Município de Santa Maria realizou, em 20 de dezembro de 2024, a revisão de seu Plano de Contingência, com foco na resposta a desastres de origem natural e tecnológica. A atualização contempla os aprendizados adquiridos
-- `fb5709e16a` · nível **A** (6 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `fb5709e16a` · nível **A** (6 pts) · busca_web · EX_ANTE · citação não extraída
   - título: PMSM - Prefeitura assina novo Plano Municipal de Contingência para ...
   - url: https://www.santamaria.rs.gov.br/noticias/28011-prefeitura-assina-novo-plano-municipal-de-contingencia-para-nortear-acoes-em-casos-desastres
   - trecho: A Prefeitura de Santa Maria, por meio da Defesa Civil do Município, assinou na manhã desta terça-feira (19), a atualização do Plano Municipal de Contingência, documento que norteará as ações tomadas pelo Poder Público e 
-- `c86e72057b` · nível **B** (4 pts) · busca_web · — · data 10/03/2024 (do trecho)
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `c86e72057b` · nível **B** (4 pts) · busca_web · EX_ANTE · **decreto Nº 57**, 27/05/2024
   - título: Plano Municipal de Redução de Riscos (PMRR – Santa Maria/RS) - LAGEOLAM
   - url: https://www.ufsm.br/laboratorios/lageolam/2024/05/27/plano-municipal-de-reducao-de-riscos-pmrr-santa-maria-rs
   - trecho: Pesquisadores do Laboratório de Geologia Ambiental iniciaram, no dia 10 de março de 2024, suas pesquisas para a elaboração do Plano Municipal de Redução de Riscos de Santa Maria/RS. Desde que o convite foi feito pelas Se
   - ⚠ ano_anterior_ao_ciclo
-- `60ea06e1cf` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `60ea06e1cf` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
   - título: PMSM - SMRCRC - Plano de Rotina Operacional - PRO
   - url: https://www.santamaria.rs.gov.br/smrcrc/1686-plano-de-rotina-operacional--pro
   - trecho: O Plano de Rotina Operacional, PRO, é um orientador de procedimentos a serem adotados pela Prefeitura Municipal de Santa Maria, através da Secretaria Municipal de Resiliência Climática e Relações Comunitárias a qual defi
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## São Sebastião do Caí/RS — 1 pendente(s)
 - `bb280bb962` · nível **A** (6 pts) · busca_web · EX_ANTE · data 21/07/2026 (do trecho)
@@ -3082,15 +3096,16 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: data do ato incompleta (2026)
 
 ## Timbó Grande/SC — 61 pendente(s)
-- `f822b5cffa` · nível **A** (6 pts) · busca_web · — · **Lei n. 13.005**, 2014 (do trecho)
+- `f822b5cffa` · nível **A** (6 pts) · busca_web · — · **Lei n. 13.005**, 2014
   - título: Diário Oficial Eletrônico - TCE/SC
   - url: https://consulta.tce.sc.gov.br/Diario/dotc-e2025-07-29.pdf
   - trecho: Jul 29, 2025 ... Timbó Grande ... o cumprimento do Plano Nacional de Educação – PNE (Lei n. 13.005/2014) e das Metas 18 e 19 do Plano Municipal de Educação.
-- `8ab6a8ac23` · nível **B** (6 pts) · busca_web · — · **DECRETO Nº 051**, 17/05/2023 (do trecho)
+- `8ab6a8ac23` · nível **B** (6 pts) · busca_web · DUVIDA · **DECRETO Nº 051**, 17/05/2023
   - título: DECRETO Nº 051 DE 17 DE MAIO DE 2023 “HOMOLOGA A ...
   - url: https://tangara.sc.gov.br/uploads/sites/450/2023/05/DECRETO-No-051-Aprova-Resolucao-Conselho.pdf
   - trecho: May 17, 2023 ... Cleonice Ribeiro Pontes Flor (Timbó Grande). Cristiane Turmina (Lebon ... O professor deve contemplar, em seu plano de ação, atividades que.
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `35485c3aeb` · nível **B** (5 pts) · busca_web · EX_ANTE · **Lei nº 6.745**, 10/09/2020
   - título: FLORIANÓPOLIS, quARtA-FeIRA, 30 de SetembRO de 2020 ANO ...
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2020/20200930/Jornal/2490.pdf
@@ -3102,19 +3117,22 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://canoinhasonline.com.br/2026/09/princesa-de-timbo-grande-morre-atropelada-por-motorista-embriagado-em-cacador.html
   - trecho: Sep 5, 2026 ... Home Santa Catarina Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador ... Defesa Civil detalha plano de contingência ...
   - juiz: portão automático: fonte não oficial
-- `855977129d` · nível **B** (5 pts) · busca_web · — · citação não extraída
+- `855977129d` · nível **B** (5 pts) · busca_web · RESPOSTA · **Lei n. 12.608**, 2012
   - título: COMPILADO DE ENUNCIADOS APROVADOS - MPSC
   - url: https://www.mpsc.mp.br/documents/d/guest/compilacao-de-enunciados-aprovados-gedclima-mpsc
   - trecho: SC Timbó Grande. 7.342. 130. Deslizamento,Enxurrada. Inundação. SC Três Barras ... Além disso, o Plano de Contingência da Assistência Social deve ser.
-- `c974a5cd81` · nível **B** (5 pts) · busca_web · — · data 2021 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `c974a5cd81` · nível **B** (5 pts) · busca_web · DUVIDA · **PORTARIA Nº 184**, 10/11/2021
   - título: DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO
   - url: https://biblioteca.mpf.mp.br/server/api/core/bitstreams/28b48a6b-ad87-4d4d-be07-d4a9c4250cf4/content
   - trecho: Nov 16, 2021 ... normas de proteção ambiental, em Timbó Grande/SC, tendo em vista que ... Plano de Contingência da Barragem de Santana pela Defesa Civil ...
-- `202d759caf` · nível **B** (5 pts) · busca_web · — · data 2010 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `202d759caf` · nível **B** (5 pts) · busca_web · EX_ANTE · **LEI...............................................................169**, 5.1.10
   - título: PLANO MUNICIPAL DE SANEAMENTO BÁSICO CALMON
   - url: https://calmon.sc.gov.br/uploads/sites/273/2025/05/PMSB-VOLUME-I-CONSOLDACAO-DO-PLANO-MUNICIPAL-DE-SANEAMENTO-BASICO.pdf
   - trecho: ... Timbó Grande, Matos Costa,. Lebon Régis e General Carneiro. Page 30. 29. Figura 2 – Acesso ao Município de Calmon. Fonte: SANTA CATARINA / CIASC, 2010. A seguir ...
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 - `494759142a` · nível **B** (4 pts) · busca_web · RESPOSTA · data 2025 (do trecho)
   - título: Chuvas em Santa Catarina provocam 'caos' em diversas regiões
   - url: https://ndmais.com.br/tempo/chuvas-em-santa-catarina-provocam-alagamentos-falta-de-energia-e-caos-no-transito/
@@ -3147,36 +3165,42 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2025/20250929/Jornal/22608.pdf
   - trecho: Sep 29, 2025 ... nicípio de timbó Grande. OBJETO: aquisição de uma motoniveladora ... iV – possuir plano de contingência municipal vigente;. V – ter ato ...
   - ⚠ ano_anterior_ao_ciclo
-- `ad7982d183` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+- `ad7982d183` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Videira intensifica ações para enfrentar o El Niño e reduzir riscos
   - url: https://portalrbv.com.br/noticias/seguranca/videira-intensifica-acoes-para-enfrentar-o-el-nino-e-reduzir-riscos-de-enchentes-ej/
   - trecho: Jun 19, 2026 ... Timbó Grande · Treze Tílias · Videira. Sobre nós. A RBV ... Celesc reforça plano de contingência para enfrentar possíveis impactos do El Niño.
-- `96d876c78c` · nível **B** (4 pts) · busca_web · — · data 2022 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `96d876c78c` · nível **B** (4 pts) · busca_web · DUVIDA · data 2022 (do trecho)
   - título: PLANO MUNICIPAL DE SAUDE 2022 a 2025 CALMON / SC
   - url: https://calmon.sc.gov.br/uploads/sites/273/2024/05/PLANO-MUNICIPAL-DE-SAUDE-2022-2025.pdf
   - trecho: O Plano Municipal de Saúde está de acordo com o Plano Plurianual de. Saúde 2022 ... Lebon Régis, Matos Costa, Timbó Grande e Arroio Trinta; e à Secretaria.
   - ⚠ ano_anterior_ao_ciclo
-- `a54b6b1eab` · nível **B** (4 pts) · busca_web · — · data 2013 (do trecho)
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `a54b6b1eab` · nível **B** (4 pts) · busca_web · EX_ANTE · **Decreto nº 5.296**, 05/06/2002
   - título: PROPOSTA DE PLANO DE AÇÃO - Portal SES/SC
   - url: https://www.saude.sc.gov.br/edocman/areas-de-atuacao/redes-de-atencao-a-saude-ras/planos-de-acao-regionais-ras/Profissionais%20-%20Plano_de%20acao%20estadual.pdf
   - trecho: estruturação da Rede e Plano de Ação Regional, em agosto de 2013. ... Timbó Grande e Videira. População de Referência da Macrorregião: Municípios.
-- `d627170233` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
+  - juiz: portão automático: ato de 2002 — pode ser edição anterior; decisão humana
+- `d627170233` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2025 (do trecho)
   - título: Diário Oficial - DOE/SC
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2025/20251107/Jornal/22637.pdf
   - trecho: Nov 7, 2025 ... ... Timbó Grande. 7,03. sCC. 00004071/2024 r$188 311,40 seara. 7,00. sCC ... plano de ação e aplicação do. Fundo Estadual do idoso (FEi-sC) ...
   - ⚠ ano_anterior_ao_ciclo
-- `d574a712b9` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `d574a712b9` · nível **B** (4 pts) · busca_web · EX_ANTE · **Lei nº 14.113**, 2020
   - título: MINISTÉRIO PÚBLICO FEDERAL PROCURADORIA GERAL DA ...
   - url: https://www.mpf.mp.br/atuacao/ccr1/atos-e-publicacoes/atas-das-sessoes/atas-de-revisao/docs/ata-da-15a-sessao-ordinaria-da-1a-camara
   - trecho: Timbó Grande/SC. 2. Oficiado, o Município de Timbó Grande confirmou que a ... e implementação de um plano de ação para mitigar esses riscos; b) a recomendação da.
+  - juiz: portão automático: fonte não oficial
 - `9bfa3f5960` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
   - título: Diário Oficial Eletrônico - TCE/SC
   - url: https://consulta.tce.sc.gov.br/Diario/dotc-e2025-12-15.pdf
   - trecho: Dec 15, 2025 ... Timbó Grande ... sobre a necessidade de plano de ação, se for o caso, observando os apontamentos constantes no item 2.19.8 do Relatório DLC.
-- `2077921e4b` · nível **B** (4 pts) · busca_web · — · data 2021 (do trecho)
+- `2077921e4b` · nível **B** (4 pts) · busca_web · DUVIDA · data 2021 (do trecho)
   - título: sef/sc - contexto socioeconômico
   - url: https://www.sef.sc.gov.br/arquivos_portal/relatorios/46/PPA___2020_2023_Contexto_Socioeconomico.pdf
   - trecho: Timbó Grande. Calmon. Lebon Régis. Rio das Antas. Videira. Fraiburgo. Macieira. Salto ... plano de ação por equipe. A partir de. 2021 inicia-se a avaliação do ...
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `1791908ac6` · nível **B** (4 pts) · busca_web · — · citação não extraída
   - título: ROI: Radiologia Intervencionista - Pesquisa - Anvisa
   - url: https://pesquisa.anvisa.gov.br/index.php/616471?lang=pt-BR
@@ -3292,14 +3316,16 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://radiomirador.com.br/defesa-civil-inicia-entrega-de-mais-de-mil-cestas-basicas-a-indigenas-isolados-em-jose-boiteux/
   - trecho: Jul 3, 2026 ... Plano de contingência foi acionado após aldeias permanecerem ... Timbó Grande. As entregas incluíram cestas básicas, kits de limpeza ...
   - juiz: portão automático: fonte não oficial
-- `503aab739a` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+- `503aab739a` · nível **B** (3 pts) · busca_web · DUVIDA · **Resolução nº 1.031**, 08/09/2026
   - título: Balanço do feriadão aponta 66 mortes e quase mil motoristas ...
   - url: https://canoinhasonline.com.br/2026/09/balanco-do-feriadao-aponta-66-mortes-e-quase-mil-motoristas-autuados-por-embriaguez-nas-rodovias-federais.html
   - trecho: Sep 8, 2026 ... Defesa Civil detalha plano de contingência contra enchentes na Câmara de Canoinhas ... Princesa de Timbó Grande morre atropelada por ...
-- `16a7122a03` · nível **B** (3 pts) · busca_web · — · data 2010 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `16a7122a03` · nível **B** (3 pts) · busca_web · DUVIDA · data 2010 (do trecho)
   - título: Ata - Pesquisa textual | Tribunal de Contas da União - TCU
   - url: https://pesquisa.apps.tcu.gov.br/#//documento/ata-sessao/*/NUMEROATA%3A18%20ANOATA%3A2011%20COLEGIADO%3A%222%C2%AA%20C%C3%A2mara%22/DTRELEVANCIA%20desc/0/%20
   - trecho: ... plano de ação de que trata o item 1.4.4 do Acórdão 7.312/2010 - TCU ... Anoldo Ferreira de Castilho, ex‑Prefeito do Município de Timbó Grande/SC, em ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `c99d32aadb` · nível **B** (3 pts) · busca_web · — · citação não extraída
   - título: Alarme de Incêndio - NFL Group
   - url: https://www.nflgroup.com.br/alarme-incendio
@@ -4296,14 +4322,16 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo, uf_divergente_na_url
 
 ## Cascavel/CE — 8 pendente(s)
-- `7a83f1ad18` · nível **B** (5 pts) · busca_web · — · citação não extraída
+- `7a83f1ad18` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Prefeitura de Cascavel detalha plano contra efeitos do El Niño
   - url: https://oparana.com.br/clima/el-nino-coloca-cascavel-em-alerta-e-municipio-reforca-acoes-preventivas/
   - trecho: Prefeitura de Cascavel adota Plano de Ação e Contingência para enfrentar condições climáticas extremas do El Niño.
-- `d19c23e8b4` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `d19c23e8b4` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Prefeitura de Cascavel lança plano para enfrentar efeitos do El ...
   - url: https://www.opresente.com.br/municipios/prefeitura-de-cascavel-lanca-plano-para-enfrentar-efeitos-do-el-nino/
   - trecho: A Prefeitura de Cascavel estruturou um Plano de Ação integrado para o enfrentamento dos possíveis efeitos do El Niño.
+  - juiz: portão automático: fonte não oficial
 - `76376a0214` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Cascavel está preparada para enfrentar um “Super El Niño”? A ...
   - url: https://www.instagram.com/reel/DZxKeajCt-W/
@@ -4317,10 +4345,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: Prefeitura reforça plano de ação para enfrentar impactos do ...
   - url: https://cgn.inf.br/noticia/2169350/prefeitura-reforca-plano-de-acao-para-enfrentar-impactos-do-el-nino-em-cascavel
   - trecho: “É importante dizer à sociedade ... do super El Niño”. A declaração é do prefeito Renato Silva durante reunião do Plano de Ação e Contingência para o enfrentamento do El Niño, realizada na manhã desta quarta-feira ...
-- `e583b7f2c7` · nível **B** (3 pts) · busca_web · — · citação não extraída
+- `e583b7f2c7` · nível **B** (3 pts) · busca_web · DUVIDA · citação não extraída
   - título: Audiência pública apresenta planejamento de Cascavel para os ...
   - url: https://sot.inf.br/noticia/59998/audiencia-publica-apresenta-planejamento-de-cascavel-para-os-proximos-cinco-anos-nesta-segunda-feira-28
   - trecho: Encontro será realizado hoje, às 18h, na Câmara de Vereadores, e vai apresentar 438 ações previstas no Plano de Ação e Investimentos
+  - juiz: portão automático: fonte não oficial
 - `723512b134` · nível **C** (5 pts) · busca_web · — · citação não extraída
   - título: IPC – Instituto de Planejamento de Cascavel
   - url: https://ipc.cascavel.pr.gov.br/
@@ -4390,16 +4419,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho:  de risco;  III – realizar levantamentos preventivos;  IV – auxiliar na elaboração e atualização do Plano Municipal de  Contingência;  V – elaborar planos, projetos e programas destinados à prevenção e  redução de riscos
 
 ## Massapê/CE — 1 pendente(s)
-- `aba2890c38` · nível **B** (5 pts) · busca_web · — · citação não extraída
+- `aba2890c38` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
   - título: Prefeitura de Massapê - massape.ce.gov.br
   - url: https://massape.ce.gov.br/planosmunicipais.php
   - trecho: Lista de planos municipais. Lista de planos municipais Início Planos municipais Opções de filtro Escolha o campo para a pesquisa e clique no botão pesquisar Período Descrição Grupo Selecione um grupo Plano Diretor Plano 
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Parambu/CE — 1 pendente(s)
-- `de1be370ba` · nível **B** (5 pts) · busca_web · — · citação não extraída
+- `de1be370ba` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Alterações no Plano Anual de Aplicação de Recursos (PAAR) de Parambu
   - url: https://parambu.ce.gov.br/cultura/622-alteracoes-no-plano-anual-de-aplicacao-paar-de-parambu
   - trecho: Alterações no Plano Anual de Aplicações de Recursos (PAAR) de Parambu Considerando que a Política Nacional Aldir Blanc (PNAB) é uma política pública de aplicação anual e estava previsto possíveis alterações no decorrer d
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## None/GO — 1 pendente(s)
 - `d7b81c79ef` · nível **B** (4 pts) · imprensa · EX_ANTE · citação não extraída
@@ -4408,10 +4439,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: fonte não oficial
 
 ## Apicum-Açu/MA — 1 pendente(s)
-- `a9ba25426a` · nível **B** (3 pts) · busca_web · — · citação não extraída
+- `a9ba25426a` · nível **B** (3 pts) · busca_web · DUVIDA · citação não extraída
   - título: Apicum-Açu - MA - Infosanbas
   - url: https://infosanbas.org.br/municipio/apicum-acu-ma/
   - trecho: Seu território é composto 100% pelo bioma Amazonia. O IDHM de Apicum-Açu é 0,57. O município possui Política Municipal de Saneamento Básico e possui Plano Municipal de Saneamento Básico.
+  - juiz: portão automático: fonte não oficial
 
 ## Imperatriz/MA — 2 pendente(s)
 - `acc5082fbd` · nível **B** (4 pts) · busca_web · EX_ANTE · **Lei nº 8.080**, 1990
@@ -4425,16 +4457,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: fonte não oficial
 
 ## Peritoró/MA — 1 pendente(s)
-- `11aa114104` · nível **B** (3 pts) · busca_web · — · citação não extraída
+- `11aa114104` · nível **B** (3 pts) · busca_web · DUVIDA · citação não extraída
   - título: Peritoró - MA - Infosanbas
   - url: https://infosanbas.org.br/municipio/peritoro-ma/
   - trecho: Seu território é composto 100% pelo bioma Cerrado. O IDHM de Peritoró é 0,56. O município não possui Política Municipal de Saneamento Básico e possui Plano Municipal de Saneamento Básico.
+  - juiz: portão automático: fonte não oficial
 
 ## Presidente Sarney/MA — 1 pendente(s)
-- `f809a9822f` · nível **B** (3 pts) · busca_web · — · citação não extraída
+- `f809a9822f` · nível **B** (3 pts) · busca_web · DUVIDA · citação não extraída
   - título: Presidente Sarney - MA - Infosanbas
   - url: https://infosanbas.org.br/municipio/presidente-sarney-ma/
   - trecho: Seu território é composto 100% pelo bioma Amazonia. O IDHM de Presidente Sarney é 0,56. O município não possui Política Municipal de Saneamento Básico e possui Plano Municipal de Saneamento Básico.
+  - juiz: portão automático: fonte não oficial
 
 ## Chácara/MG — 1 pendente(s)
 - `b9a8774e49` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2013 (do trecho)
@@ -4497,9 +4531,10 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: fonte não oficial
 
 ## PITANGUI/MG — 1 pendente(s)
-- `3c8b67c9ee` · nível **B** (5 pts) · diario_consorciado · — · data 22/09/2026 (do trecho)
+- `3c8b67c9ee` · nível **B** (5 pts) · diario_consorciado · EX_ANTE · **Resolução nº 001**, 2022
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118447_2026-09-28_1398a4ce5951e30fd0479c900b8ecbb0.pdf
   - trecho:    OBJETO: Contratação de empresa especializada ou profissional  especializado para a elaboração do Plano de Contingência de Proteção  e Defesa Civil do Município de Pitangui-MG (PLANCON)  ÓRGÃO GERENCIADOR: Município de
+  - juiz: portão automático: fonte não oficial
 
 ## POUSO ALEGRE/MG — 4 pendente(s)
 - `94440592e5` · nível **B** (3 pts) · diario_consorciado · EX_ANTE · **Lei nº 14.133**, 2021
@@ -4553,39 +4588,45 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: fonte não oficial
 
 ## São Gabriel do Oeste/MS — 1 pendente(s)
-- `4bca90fe09` · nível **B** (5 pts) · busca_web · — · citação não extraída
+- `4bca90fe09` · nível **B** (5 pts) · busca_web · DUVIDA · **Lei n° 12.527**, 1.2.01
   - título: São Gabriel do Oeste — Controladoria-Geral da União
   - url: https://www.gov.br/cgu/pt-br/governo-aberto/time-brasil-antiga/planos-de-acao/planos/mato-grosso-do-sul/sao-gabriel-do-oeste
   - trecho: Nesta página, você pode navegar pelo plano de ação de São Gabriel do Oeste. Aqui, é possível verificar as ações, o andamento delas, bem como documentos de adesão.
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Chapada dos Guimarães/MT — 5 pendente(s)
-- `af71d1c3f1` · nível **B** (5 pts) · busca_web · — · citação não extraída
+- `af71d1c3f1` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
   - título: CMA quer ouvir empresa que levou concessão da Chapada dos Guimarães ...
   - url: https://www12.senado.leg.br/noticias/materias/2024/04/25/cma-quer-ouvir-empresa-que-levou-concessao-da-chapada-dos-guimaraes
   - trecho: A Parques Fundos de Investimento em Participações em Infraestrutura (Parques FIP) deve apresentar à Comissão de Meio Ambiente (CMA) um plano de ação de como investirá, em cinco anos, os R$ 18 milhões dos serviços de apoi
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `f257e6db38` · nível **B** (4 pts) · busca_web · — · citação não extraída
   - título: MidiaNews | TCE-MT e Chapada dos Guimarães firmam parceria para ...
   - url: https://www.midianews.com.br/judiciario/tce-mt-e-chapada-dos-guimaraes-firmam-parceria-para-projeto-piloto-contra-hanseniase/514727
   - trecho: Plano de ação será lançado em 30 dias e poderá ser replicado nos 142 municípios do Estado. O Tribunal de Contas de Mato Grosso (TCE-MT) e a Prefeitura de Chapada dos Guimarães estão desenvolvendo, de forma conjunta, um p
-- `4a829a266e` · nível **B** (4 pts) · busca_web · — · citação não extraída
+- `4a829a266e` · nível **B** (4 pts) · busca_web · DUVIDA · citação não extraída
   - título: TCE-MT e Chapada dos Guimarães firmam parceria para projeto-piloto ...
   - url: https://odocumento.com.br/tce-mt-e-chapada-dos-guimaraes-firmam-parceria-para-projeto-piloto-contra-a-doenca/
   - trecho: Plano de ação será lançado ... O Tribunal de Contas de Mato Grosso (TCE-MT) e a Prefeitura de Chapada dos Guimarães estão desenvolvendo, de forma conjunta, um projeto-piloto de enfrentamento à hanseníase...
-- `f82c2495b1` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `f82c2495b1` · nível **B** (4 pts) · busca_web · DUVIDA · citação não extraída
   - título: TCE-MT e Chapada dos Guimarães firmam parceria para projeto-piloto ...
   - url: https://www.ignews.com.br/2026/02/25/tce-mt-e-chapada-dos-guimaraes-firmam-parceria-para-projeto-piloto-contra-hanseniase/
   - trecho: Plano de ação será lançado em 30 dias e poderá ser replicado nos 142 municípios…
-- `cb789ae4f6` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `cb789ae4f6` · nível **B** (4 pts) · busca_web · DUVIDA · citação não extraída
   - título: TCE-MT e Chapada dos Guimarães firmam parceria para projeto-piloto ...
   - url: https://www.estadaomatogrosso.com.br/geral/tce-mt-e-chapada-dos-guimaraes-firmam-parceria-para-projeto-piloto-contra-a-hanseniase/132759
   - trecho: Plano de ação será lançado em 30 dias e poderá ser replicado nos 142 municípios do Estado
+  - juiz: portão automático: fonte não oficial
 
 ## Diamantino/MT — 1 pendente(s)
-- `86bdd63001` · nível **B** (4 pts) · busca_web · — · citação não extraída
+- `86bdd63001` · nível **B** (4 pts) · busca_web · DUVIDA · **Decreto nº 11.556**, 12/06/2023
   - título: PLANO DE AÇÃO DE COMUNICAÇÃO INTERNA E EXTERNA DAS AÇÕES PARA GARANTIA ...
   - url: https://amm.diariomunicipal.org/publicacao/1884982/
   - trecho: O sucesso do Plano de Comunicação Municipal para a Alfabetização na Idade Certaem Diamantino – MT depende diretamente da sinergia entre a Secretaria Municipal de Educação, a assessoria de comunicação da prefeitura e as e
+  - juiz: portão automático: fonte não oficial
 
 ## Almeirim/PA — 2 pendente(s)
 - `ddb47cb55c` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
@@ -4668,12 +4709,14 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: data do ato incompleta (2026)
 
 ## AMAPORÃ/PR — 2 pendente(s)
-- `a36e95c2b2` · nível **B** (5 pts) · diario_consorciado · — · **RESOLUÇÃO 009**, 2026 (do trecho)
+- `a36e95c2b2` · nível **B** (5 pts) · diario_consorciado · EX_ANTE · **LEI Nº 840**, 14/10/2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118194_2026-09-29_1ea425e35d6af02ebe55c6eb04c2656a.pdf
   - trecho:  PARANÁ  PREFEITURA MUNICIPAL DE AMAPORÃ    CONTABILIDADE MUNICIPAL  RESOLUÇÃO 009/2026    APROVA O PLANO MUNICIPAL DE  CONTINGÊNCIA DA DENGUE, CHIKUNGUNYA  E ZYKA VÍRUS – 2026/2028 DO MUNICÍPIO DE  AMAPORÃ.     O Pleno 
-- `f1ba6d1b4c` · nível **B** (4 pts) · diario_consorciado · — · data 19/09/2006 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `f1ba6d1b4c` · nível **B** (4 pts) · diario_consorciado · EX_ANTE · **LEI Nº 840**, 14/10/2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118194_2026-09-29_1ea425e35d6af02ebe55c6eb04c2656a.pdf
   - trecho: 69/2006 de  19 de setembro de 2006, após analisar o plano apresentado,  RESOLVE  Art. 1º  Aprovar o Plano Municipal de Contingência da Dengue,  Chikungunya e Zyka vírus - 2026/2028 do município de  Amaporã/Pr.  Art. 2º. 
+  - juiz: portão automático: fonte não oficial
 
 ## Antônio Olinto/PR — 1 pendente(s)
 - `76fe18969e` · nível **B** (4 pts) · querido_diario · RESPOSTA · citação não extraída
@@ -4921,9 +4964,10 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: fonte não oficial
 
 ## JAGUAPITÃ/PR — 1 pendente(s)
-- `11beeb21e9` · nível **B** (3 pts) · diario_consorciado · — · citação não extraída
+- `11beeb21e9` · nível **B** (3 pts) · diario_consorciado · EX_ANTE · **PORTARIA Nº 188**, 28/09/2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118193_2026-09-28_67d5192f3e8629f7f55eeeeed511823d.pdf
   - trecho: ou de  seus agentes;  V - prestar informação falsa ou omitir informação relevante;  VI - descumprir plano de contingência ou medida de proteção e defesa  civil regularmente estabelecida;  VII - provocar ou agravar situaç
+  - juiz: portão automático: fonte não oficial
 
 ## Jaboti/PR — 2 pendente(s)
 - `c27bf03033` · nível **B** (3 pts) · querido_diario · EX_ANTE · **DECRETO Nº78**, 23/07/2026
@@ -5176,9 +5220,10 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118189_2026-09-22_110f0ffad8cdcc74d4429f5ac27c5b39.pdf
   - trecho: ador:063FD1D0    ESTADO DO PARANÁ  PREFEITURA MUNICIPAL DE RANCHO ALEGRE D' OESTE    ADMINISTRAÇÃO  PLANO DE CONTINGÊNCIA MUNICIPAL DE DEFESA  CIVIL    1 – APRESENTAÇÃO  O presente Plano de Contingência tem por finalidad
   - juiz: portão automático: fonte não oficial
-- `5ce6b00004` · nível **B** (3 pts) · diario_consorciado · — · citação não extraída
+- `5ce6b00004` · nível **B** (3 pts) · diario_consorciado · EX_ANTE · **Lei Estadual nº 20.394**, 2020
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118189_2026-09-22_110f0ffad8cdcc74d4429f5ac27c5b39.pdf
   - trecho: ador:063FD1D0    ESTADO DO PARANÁ  PREFEITURA MUNICIPAL DE RANCHO ALEGRE D' OESTE    ADMINISTRAÇÃO  PLANO DE CONTINGÊNCIA MUNICIPAL DE DEFESA  CIVIL    1 – APRESENTAÇÃO  O presente Plano de Contingência tem por finalidad
+  - juiz: portão automático: fonte não oficial
 - `7ff5898b6b` · nível **C** (2 pts) · diario_consorciado · — · citação não extraída
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118189_2026-09-22_110f0ffad8cdcc74d4429f5ac27c5b39.pdf
   - trecho: paço recreativo 8h até 11h e 14h até 17h  12 – ATIVAÇÃO DO PLANO     12.1 Autoridade de Ativação  O Plano de Contingência poderá ser ativado pelas seguinres  autoridades  Responsável: Almir Rogério Domingos – Coordenador
@@ -5214,15 +5259,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: fonte não oficial
 
 ## ROLÂNDIA/PR — 8 pendente(s)
-- `06e58fa43d` · nível **B** (5 pts) · diario_consorciado · — · citação não extraída
+- `06e58fa43d` · nível **B** (5 pts) · diario_consorciado · EX_ANTE · **LEI Nº 840**, 14/10/2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118194_2026-09-29_1ea425e35d6af02ebe55c6eb04c2656a.pdf
   - trecho: ES PRELIMINARES     Art. 1º  Fica instituído, no âmbito da Rede Municipal de Ensino de  Rolândia, o Plano de Contingência para Eventos Climáticos Adversos  – El Niño, com a finalidade de estabelecer medidas de prevenção,
-- `f6518c4016` · nível **B** (3 pts) · diario_consorciado · — · data 30/09/2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `f6518c4016` · nível **B** (3 pts) · diario_consorciado · EX_ANTE · **LEI Nº 840**, 14/10/2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118194_2026-09-29_1ea425e35d6af02ebe55c6eb04c2656a.pdf
   - trecho: dor:1959A5C2    SECRETARIA GERAL  INSTRUÇÃO NORMATIVA SME-IN- 05    Dispõe sobre a implementação do Plano de  Contingência da Rede Pública Municipal de  Ensino de Rolândia para prevenção, preparação,  resposta e recupera
-- `3a3e45ee43` · nível **B** (3 pts) · diario_consorciado · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `3a3e45ee43` · nível **B** (3 pts) · diario_consorciado · EX_ANTE · **LEI Nº 840**, 14/10/2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118194_2026-09-29_1ea425e35d6af02ebe55c6eb04c2656a.pdf
   - trecho: L  DE EDUCAÇÃO     Art. 5º Compete à Secretaria Municipal de Educação:  I – coordenar a execução do Plano de Contingência;  II – acompanhar informações e alertas emitidos pelos órgãos oficiais;  III – manter articulação 
+  - juiz: portão automático: fonte não oficial
 - `12b89d0381` · nível **B** (3 pts) · diario_consorciado · — · citação não extraída
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118194_2026-09-29_1ea425e35d6af02ebe55c6eb04c2656a.pdf
   - trecho: ão manter atualizadas as  informações necessárias à execução desta Instrução Normativa.  Art. 32. O Plano de Contingência poderá ser atualizado sempre que:  I – houver alteração relevante no cenário climático;  II – fore
@@ -5299,9 +5347,10 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: o Municipal de Saúde acompanhará, no âmbito de  suas atribuições, a execução das ações previstas no Plano Municipal  de Contingência.  Art. 6º Esta Resolução entra em vigor na data de sua aprovação.     Sapopema – Paraná
 
 ## SAUDADE DO IGUAÇU/PR — 1 pendente(s)
-- `3650394c8b` · nível **B** (3 pts) · diario_consorciado · — · citação não extraída
+- `3650394c8b` · nível **B** (3 pts) · diario_consorciado · EX_ANTE · **RESOLUÇÃO Nº 002**, 2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118192_2026-09-25_c0ee2d58944c8d50ae19df60cfab4ef2.pdf
   - trecho: identificar e acompanhar as áreas sujeitas a riscos;  IV – elaborar, manter atualizado e executar o Plano Municipal de  Contingência – PLANCON;  V – promover campanhas, orientações e ações educativas voltadas à  prevençã
+  - juiz: portão automático: fonte não oficial
 
 ## SULINA/PR — 2 pendente(s)
 - `7af8bb29e3` · nível **B** (3 pts) · diario_consorciado · DUVIDA · **lei n° 14.133**, 02/09/2026
@@ -5795,14 +5844,16 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Santa Rosa/RS — 7 pendente(s)
-- `4eebce38c0` · nível **B** (5 pts) · busca_web · — · citação não extraída
+- `4eebce38c0` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Prefeitura de Santa Rosa alinha estratégias e atualiza Plano de ...
   - url: https://prefeitura.santarosa.rs.gov.br/?p=17126
   - trecho: A Prefeitura de Santa Rosa realizou uma importante reunião de trabalho nesta quarta-feira (10), para fortalecer as ações de prevenção e resposta a eventos climáticos adversos. O encontro teve como objetivo principal deba
-- `51c8807b98` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `51c8807b98` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Portal do Cidadão - MUNICIPIO DE SANTA ROSA/RS - Prefeitura de Santa ...
   - url: https://santarosa.atende.net/cidadao/noticia/prefeitura-de-santa-rosa-alinha-estrategias-e-atualiza-plano-de-contingencia-com-forcas-de-seguranca
   - trecho: Portal do Cidadão - MUNICIPIO DE SANTA ROSA/RS - Prefeitura de Santa Rosa alinha estratégias e atualiza Plano de Contingência com forças de segurança
+  - juiz: portão automático: fonte não oficial
 - `7c33c584b2` · nível **C** (4 pts) · busca_web · — · citação não extraída
   - url: https://novasantarosa.pr.gov.br/nova-santa-rosa-conta-com-plano-municipal-de-contingencia-para-situacoes-de-emergencia-e-calamidade-publica/
   - trecho: Ferramentas de Acessibilidade · O Município de Nova Santa Rosa conta agora com um Plano Municipal de Contingência para Situações de Emergência e Calamidade Pública. O documento estabelece diretrizes, procedimentos, respo
