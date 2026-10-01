@@ -226,11 +226,17 @@ culpa, confira com `/e-da-main`: carimbo obsoleto já deixou a `main` vermelha s
 | `data/log_buscas.json` | ~14 MB |
 | `data/fontes_consultadas.json` | ~12 MB |
 | `data/verificacao_municipal.json` | ~2 MB |
+| `data/financiamento/municipios/transferencias_uniao.json` | ~5 MB, e cresce todo mês |
 | `evidencias/` | ~380 MB |
 
 Consulte sempre agregando (`python3 -c "import json,collections; ..."`), nunca com `Read`.
 Um Read nos dois primeiros estoura a sessão sozinho. Há hook que bloqueia acima de 1 MB em
 `data/`, `dados-abertos/` e `evidencias/`.
+
+O de transferências entrou em 01/10/2026, a pedido da editoria: ele guarda nove meses de 2026 para
+os 5.569 municípios, e **acumula um mês por mês, indefinidamente**. Entra aqui por trajetória, não
+por tamanho de hoje — é o único da tabela que cresce por rotina, e esperar que ele incomode seria
+descobri-lo numa sessão estourada.
 
 ## Log append-only: merge pela base comum
 
