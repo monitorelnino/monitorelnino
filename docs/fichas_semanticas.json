@@ -451,6 +451,30 @@
    "funcao_narrativa": "fluxo observado, depois do mecanismo",
    "acao_relacionada": null
   },
+  "monitor-de-riscos.html#boxAnomalia": {
+   "tipo": "gráfico",
+   "pergunta_que_responde": "Como a temperatura do Pacífico na região Niño 3.4 variou mês a mês em relação ao normal?",
+   "dimensao_da_preparacao": null,
+   "universo": "série mensal da região Niño 3.4",
+   "unidade_de_analise": "mês",
+   "territorio": "oceano Pacífico equatorial, região Niño 3.4",
+   "periodo": "série mensal publicada pela NOAA",
+   "variavel_principal": "anomalia mensal da temperatura da superfície do mar (°C)",
+   "denominador": "média histórica do mesmo mês",
+   "fonte": "NOAA/CPC — anomalia mensal da temperatura do mar, região Niño 3.4",
+   "metodologia": "diferença entre a média mensal medida e a média histórica daquele mês, sem janela móvel de três meses",
+   "conclusoes_permitidas": [
+    "como a anomalia mensal variou ao longo da série",
+    "em que meses a anomalia passou de +0,5 °C"
+   ],
+   "conclusoes_nao_permitidas": [
+    "declarar El Niño a partir de um único mês",
+    "atribuir evento climático no Brasil a um valor desta série",
+    "comparar diretamente com o RONI, que usa outra referência"
+   ],
+   "funcao_narrativa": "o fenômeno mês a mês: o número que a imprensa divulga",
+   "acao_relacionada": null
+  },
   "monitor-de-riscos.html#boxAr": {
    "tipo": "mapa com seletor de camada e lista",
    "pergunta_que_responde": "Qual a concentração estimada de material particulado fino — na capital de cada estado, ou em cada município?",

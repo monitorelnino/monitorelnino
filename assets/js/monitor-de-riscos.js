@@ -176,10 +176,20 @@ credito('boxRiscoPrevisto', 'painel_el_nino');
   const põe = (id, texto) => { const el = document.getElementById(id); if (el && texto) el.textContent = texto; };
   const dia = v => MonitorMapas.dataBR(v) || null;
 
-  // R4 — o ano final da série do RONI.
+  // R4 — o subtítulo aprovado em 30/09, com o ano final gerado do dado. Antes ele saía "1950 a —"
+  // porque a parte fixa vivia no HTML e a variável nunca era preenchida.
   const roni = SINAIS.enos.roni, sr = (roni && roni.serie) || [];
-  if (sr.length) põe('roniSub', 'Temperatura do Pacífico acima ou abaixo do normal · média de três '
-    + 'meses · °C · 1950 a ' + sr[sr.length - 1].ano);
+  if (sr.length) põe('roniSub', 'Índice RONI, da NOAA · temperatura do Pacífico acima ou abaixo do '
+    + 'normal · média de três meses · °C · 1950 a ' + sr[sr.length - 1].ano);
+
+  // F.3 — a janela da série mensal, dos dois extremos do próprio dado.
+  const an = SINAIS.enos.nino34_mensal, sa = (an && an.serie) || [];
+  if (sa.length) {
+    const mes = p => ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'][p.mes - 1]
+      + '/' + p.ano;
+    põe('anomaliaSub', 'Região Niño 3.4 · diferença em relação ao normal · média mensal · °C · '
+      + mes(sa[0]) + ' a ' + mes(sa[sa.length - 1]));
+  }
 
   // R6 — o boletim que sustenta a previsão.
   const pe = fonte('painel_el_nino');
@@ -312,6 +322,10 @@ desenharMapa('mapaTemperatura', 'legTemperatura', () => ATM.calor.uf, rotuloTemp
 MonitorMapas.pontos(__ctx(), 'mapaTemperatura',
   UFS.filter(uf => coordCapital[uf] && tmaxDe(uf) != null)
      .map(uf => ({uf, lat: coordCapital[uf].lat, lon: coordCapital[uf].lon, v: tmaxDe(uf)})),
+  // F.5 (editoria, 30/09): UM ponto por capital, do mesmo tamanho para todas. O halo translúcido
+  // proporcional ao desvio aparecia como "duplo círculo", com distâncias diferentes de uma capital
+  // para outra — dois círculos com raios distintos leem-se como duas medidas, e é uma só. A cor diz
+  // o desvio; o número ao lado diz a máxima prevista.
   {r: () => 6, cor: d => escalaTemp(d.v), rotulo: d => rotuloTemp(d.uf), classe: 'pontosTemp'});
 // Capital SEM dado: anel vazio no ponto da capital — nunca cor no estado, nunca ponto ausente.
 // Ausência de dado e dado baixo não podem se parecer, e o estado em branco não é "sem calor".
@@ -804,6 +818,21 @@ if (roni && roni.serie && roni.serie.length) {
   })();
 } else { lacuna('wrapRoni', 'A série do RONI aparece aqui assim que a rotina semanal registrar a primeira coleta no CPC/NOAA. Até lá, ela pode ser consultada na origem, no link abaixo.'); }
 credito('boxRoni', 'noaa_roni');
+
+// ---- F.1/F.3 (30/09/2026): a anomalia mensal da região Niño 3.4 VOLTA à página.
+// Ela saiu em 30/09 junto com o ONI, e a editoria a trouxe de volta por uma razão de leitura, não
+// de método: é o número que a imprensa divulga. O ONI continua fora, como apoio técnico.
+const nino34Mensal = SINAIS.enos.nino34_mensal;
+const MES_CURTO = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+if (nino34Mensal && nino34Mensal.serie && nino34Mensal.serie.length) {
+  new Chart(canvasEm('wrapAnomalia', 'cAnomalia'), {type:'bar', data:{
+      labels: nino34Mensal.serie.map(p => MES_CURTO[p.mes - 1] + '/' + String(p.ano).slice(2)),
+      datasets:[{label:'Anomalia mensal (°C)', data: nino34Mensal.serie.map(p => p.anomalia),
+                 backgroundColor: ctx => corAnom(ctx.raw), borderWidth:0, borderRadius:2,
+                 categoryPercentage:.9, barPercentage:.95}]},
+    options: opcoesGraficoAnom('°C')});
+} else { lacuna('wrapAnomalia', 'A anomalia mensal aparece aqui assim que a rotina semanal registrar a primeira coleta no CPC/NOAA. Até lá, ela pode ser consultada na origem, no link abaixo.'); }
+credito('boxAnomalia', 'noaa_nino34_mensal');
 
 // ---- Gráfico 2: probabilidades ENOS ----
 // 13/09/2026: figura "Probabilidade por trimestre" retirada do HTML (ver comentário em

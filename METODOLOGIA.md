@@ -1704,6 +1704,31 @@ descrição do que o índice europeu publica; e a leitura da qualidade do ar, de
 explica por que a escala é europeia. As exceções são das frases exatas, e somem se o texto mudar.
 
 
+## 60. Monitor de riscos: grade de três, Niño 3.4 de volta, RONI como referência (01/10/2026)
+
+Três registros da editoria, de 30/09/2026, que fecham o desenho da página.
+
+**A grade de três é regra da página.** Os mapas de família ficam em cartões pequenos, três por linha,
+com o mapa nacional do risco previsto em largura total acima deles. A reorganização por família de
+30/09 havia perdido essa regra, decidida em 29/09, e a página virou uma coluna de mapas grandes —
+mais rolagem e nenhuma comparação possível entre famílias. No celular, um por vez.
+
+**O Niño 3.4 volta como apoio de leitura pública.** A anomalia mensal da região Niño 3.4 havia saído
+junto com o ONI, como apoio técnico. Ela volta à página por uma razão de leitura, e não de método:
+**é o número que a imprensa divulga**, e quem chega aqui depois de lê-lo precisa encontrá-lo. O
+**ONI** continua fora, na metodologia.
+
+**O RONI é a referência, e os dois gráficos dizem qual é qual.** O subtítulo do gráfico do RONI passa
+a nomear o índice — ele mostrava a série sem dizer de que índice era, e saía com o ano final vazio
+porque a parte fixa vivia no HTML e a variável nunca era preenchida. Os dois gráficos ficam lado a
+lado, em fundo de oceano noturno, para se lerem como duas medidas da mesma coisa, com referências
+diferentes, e não como duas figuras independentes.
+
+**O mapa de calor tem um ponto só por capital.** O halo translúcido proporcional ao desvio aparecia
+como duplo círculo, com distâncias diferentes de uma capital para outra — e dois círculos de raios
+distintos leem-se como duas medidas, quando é uma só. Todas as capitais passam a ter um círculo
+sólido do mesmo tamanho: a **cor** diz o desvio e o **número** ao lado diz a máxima prevista.
+Capital sem dado continua com anel vazio.
 ## 59. Ficha de calor extremo: a fonte (01/10/2026)
 
 O Proteja-se passou a ter ficha própria de **calor extremo**, separada da de estiagem — até aqui as
