@@ -46,3 +46,10 @@ diagnostico_sinais.json
 # run, nunca como arquivo do repositório — são 2,8 MB por execução.
 capturas-ci/
 wt-*/
+
+# Capturas dos portões de navegador: saída de execução, não derivado de dado.
+# Elas dependem do renderizador (fonte, DPI, versão do navegador) e por isso nunca coincidem
+# entre a máquina de quem edita e o runner — a `main` ficou vermelha o dia inteiro de 01/10/2026
+# no portão 12 por isso, com as 30 imagens divergindo em toda rodada. O `portoes.yml` já as sobe
+# como artefato do run, que é o que o CLAUDE.md diz que elas são.
+capturas-ci/
