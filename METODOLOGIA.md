@@ -2495,3 +2495,46 @@ recoletar um arquivo que o Portal republicou. A cadência é **mensal**, declara
 `docs/CADENCIAS.md`: o Portal publica por mês, e semanal seria baixar nove ZIPs para reencontrar o
 mesmo número. Peso zero: nunca lido por `recalcular_mare.py` nem por `gerar_monitor_saude.py`.
 
+## 76. MARÉ Saúde: a bateria pelos quatro canais, e o que cada canal pode afirmar (01/10/2026)
+
+A editoria exigiu, no handover de 01/10/2026, que nenhuma UF seja marcada como "não localizado" —
+plano ou coordenação — antes de quatro canais terem rodado sem motor doente. Os dois primeiros já
+existiam; os dois outros nasceram aqui.
+
+**Canal 1 · busca aberta.** `coletar_saude_estadual.py --bateria`, oito consultas por UF contra a
+instância efêmera de SearXNG que a Action sobe no próprio job. Zero resultado bruto é
+`motor_sem_resposta`, e a UF continua **não verificada** — nunca "sem instrumento".
+
+**Canal 2 · diário oficial do estado, com os termos da saúde.** `--doe` reaproveita o adaptador de
+busca que o `coletar_doe.py` confirmou host a host contra produção (§231) e troca os termos: os da
+defesa civil procuram homologação de decreto municipal e não casariam com instrumento de saúde. Os
+quatro termos são "plano de contingência", "emergência em saúde pública", "sala de situação" e
+"centro de operações de emergência", e a peneira continua cobrando termo de RISCO, porque "plano de
+contingência" sozinho casa plano de greve. UF cujo diário não tem rota de busca confirmada sai como
+`canal_nao_disponivel`, que no log é **erro** — lacuna declarada, e não estado sem plano. Medido na
+janela 29/06→01/10/2026: cinco UFs com rota (AP, ES, GO, MT, PR) e 22 sem; 85 acertos, 12 pistas.
+
+**Canal 3 · CIEVS, sala de situação e COE.** `--canais` lê a página raiz da secretaria estadual de
+saúde e segue **os links que ela própria declara** cujo texto ou endereço casa termo de canal.
+Caminho de arquivo nunca se adivinha: tentar `/cievs` porque o nome é plausível produziria 404 com
+cara de busca feita, e o nome do arquivo já não garantiu a edição na PB em 11/09/2026. O endereço
+raiz de cada UF vive em `data/saude_desfechos/fontes_uf.json`, campo `canais_instrumento`, e cada um
+foi **sondado** em 01/10/2026 com o cliente do projeto: 21 responderam com corpo que nomeia a
+secretaria de saúde do estado, e os seis demais ficaram `null` com o motivo medido — AM (HTTP 404),
+AP (certificado TLS), PB (muro de robô servido com 200, que é recusa pelo §186 e se respeita), RJ
+(interstício que declara `www.rj.gov.br/saude`, e esse responde 503), RN (conexão derrubada) e RO
+(sem resolução no DNS). Primeira varredura: 168 links de canal em 21 UFs.
+
+**Canal 4 · juiz.** `julgar_saude.py --aplicar --rejulgar` sobre a fila inteira depois dos três
+primeiros canais: 213 pistas julgadas, **zero promoção**. A recusa dominante é `citacao_incompleta`
+(123), que é o resultado esperado de um canal cuja matéria-prima é link de navegação, e não
+documento com citação; seguem-se `autoridade_nao_confirmada` (23), `fora_do_objeto` (18) e
+`natureza_duvidosa` (17). Os canais rodaram e isso está medido; o que eles entregam é fila de
+leitura, não registro.
+
+**O que isto autoriza, e o que não autoriza.** A decisão de cada canal entra no vocabulário fechado
+do log v2 separada da dos outros: `doe_sem_pista` e `canais_sem_pista` são "consultado sem achado";
+`canal_nao_disponivel`, `canal_nao_declarado` e `canal_fora_do_ar` são **erro**. A distinção é a
+trava: uma UF só pode ser marcada "não localizado" onde os quatro canais tenham rodado sem erro, e
+hoje seis UFs têm o canal 3 bloqueado e 22 têm o canal 2 indisponível. Por isso a troca para a v0.4
+continua esperando, e nenhuma UF foi marcada "não localizado" nesta rodada.

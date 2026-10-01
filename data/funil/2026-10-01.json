@@ -1,72 +1,72 @@
 {
- "data": "2026-10-01",
- "formato_versao": 1,
- "etapas": {
-  "diario_municipal": {
-   "consultados": 132,
-   "lacunas": 18,
-   "decretos_novos": 0,
-   "pistas": 0
+  "atualizado_em": "2026-10-01T16:59:20",
+  "data": "2026-10-01",
+  "etapas": {
+    "busca_web": {
+      "brutos_periodo_ou_seca": 7328,
+      "brutos_plancon": 7330,
+      "brutos_siglas_e_variantes": 7319,
+      "coberto_sem_mencao": 0,
+      "com_resultado_bruto": 750,
+      "consultas": 750,
+      "lacunas": 0,
+      "motor_sem_resposta": 0,
+      "nao_localizado_ate_o_momento": 749,
+      "pistas": 7
+    },
+    "descobrir_planos": {
+      "achados_novos": 0,
+      "alvos_consultados": 20,
+      "fila_acumulada": 41
+    },
+    "diario_consorciado": {
+      "bloqueadas": 0,
+      "decretos_novos": 17,
+      "fontes": 16,
+      "fora_do_ar": 0,
+      "pistas": 22
+    },
+    "diario_municipal": {
+      "consultados": 132,
+      "decretos_novos": 0,
+      "lacunas": 18,
+      "pistas": 0
+    },
+    "doe": {
+      "ufs_com_resultado": 27,
+      "ufs_consultadas": 27
+    },
+    "funil_saude_estadual": {
+      "com_resultado_bruto": 81,
+      "consultas": 479,
+      "pistas": 268
+    },
+    "juiz": {
+      "com_documento": 37,
+      "pistas_recebidas": 150,
+      "promovidas": 0,
+      "recusa_autoridade_nao_confirmada": 5,
+      "recusa_citacao_incompleta": 15,
+      "recusa_documento_inacessivel": 15,
+      "recusa_ente_nao_confirmado": 4,
+      "recusa_executivo_pendente": 1,
+      "recusa_natureza_duvidosa": 10,
+      "recusa_resposta": 2,
+      "recusa_sem_documento_primario": 93,
+      "recusa_texto_nao_extraivel": 5
+    },
+    "rede_social": {
+      "entes_consultados": 20,
+      "lacunas": 4,
+      "perfis_confirmados": 37,
+      "pistas": 394,
+      "sem_perfil": 4
+    },
+    "transferencias_municipais": {
+      "com_resultado_bruto": 20,
+      "consultas": 20,
+      "municipios": 111360
+    }
   },
-  "diario_consorciado": {
-   "fontes": 16,
-   "pistas": 22,
-   "decretos_novos": 17,
-   "bloqueadas": 0,
-   "fora_do_ar": 0
-  },
-  "doe": {
-   "ufs_consultadas": 27,
-   "ufs_com_resultado": 27
-  },
-  "descobrir_planos": {
-   "alvos_consultados": 20,
-   "achados_novos": 0,
-   "fila_acumulada": 41
-  },
-  "rede_social": {
-   "entes_consultados": 20,
-   "perfis_confirmados": 37,
-   "pistas": 394,
-   "sem_perfil": 4,
-   "lacunas": 4
-  },
-  "busca_web": {
-   "consultas": 750,
-   "com_resultado_bruto": 750,
-   "motor_sem_resposta": 0,
-   "pistas": 7,
-   "coberto_sem_mencao": 0,
-   "nao_localizado_ate_o_momento": 749,
-   "lacunas": 0,
-   "brutos_plancon": 7330,
-   "brutos_periodo_ou_seca": 7328,
-   "brutos_siglas_e_variantes": 7319
-  },
-  "funil_saude_estadual": {
-   "consultas": 438,
-   "com_resultado_bruto": 55,
-   "pistas": 78
-  },
-  "juiz": {
-   "pistas_recebidas": 150,
-   "com_documento": 37,
-   "promovidas": 0,
-   "recusa_sem_documento_primario": 93,
-   "recusa_documento_inacessivel": 15,
-   "recusa_texto_nao_extraivel": 5,
-   "recusa_ente_nao_confirmado": 4,
-   "recusa_citacao_incompleta": 15,
-   "recusa_executivo_pendente": 1,
-   "recusa_autoridade_nao_confirmada": 5,
-   "recusa_natureza_duvidosa": 10,
-   "recusa_resposta": 2
-  },
-  "transferencias_municipais": {
-   "consultas": 20,
-   "com_resultado_bruto": 20,
-   "municipios": 111360
-  }
- },
- "atualizado_em": "2026-10-01T20:06:13"
+  "formato_versao": 1
 }

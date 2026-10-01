@@ -1,0 +1,2326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta name="robots"
+        content="noindex, nofollow">
+
+    <meta name="description"
+        content="Comunicado institucional - Secretaria de Estado da Saúde do Maranhão">
+
+    <title>
+        Comunicado | Secretaria de Estado da Saúde do Maranhão
+    </title>
+
+    <!-- =========================================================
+         TAILWIND CSS
+         ========================================================= -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ses: {
+                            blue: '#003B71',
+                            dark: '#002B52',
+                            red: '#C8102E',
+                            light: '#EAF3FA'
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- =========================================================
+         ESTILOS
+         ========================================================= -->
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(0, 91, 172, 0.10),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at bottom right,
+                    rgba(200, 16, 46, 0.07),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    #f8fafc 0%,
+                    #eff6ff 50%,
+                    #e0f2fe 100%
+                );
+
+            font-family:
+                Inter,
+                ui-sans-serif,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            color: #1e293b;
+        }
+
+        /* =====================================================
+           CONTAINER
+           ===================================================== */
+
+        .main-container {
+            width: 100%;
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* =====================================================
+           LOGO
+           ===================================================== */
+
+        .ses-logo {
+            max-width: 330px;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* =====================================================
+           CARD PRINCIPAL
+           ===================================================== */
+
+        .main-card {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+
+            border: 1px solid rgba(148, 163, 184, 0.25);
+
+            box-shadow:
+                0 25px 60px rgba(15, 23, 42, 0.10),
+                0 8px 20px rgba(15, 23, 42, 0.05);
+
+            border-radius: 28px;
+        }
+
+        /* =====================================================
+           ÍCONE INFORMATIVO
+           ===================================================== */
+
+        .info-icon {
+            width: 78px;
+            height: 78px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin: 0 auto;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #e0efff,
+                    #f1f7ff
+                );
+
+            color: #003B71;
+
+            box-shadow:
+                inset 0 0 0 1px rgba(0, 59, 113, 0.08);
+        }
+
+        /* =====================================================
+           BARRA DE LINKS
+           ===================================================== */
+
+        .link-bar__item {
+
+            min-height: 118px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 18px;
+
+            border-radius: 18px;
+
+            background: linear-gradient(
+                145deg,
+                #ffffff,
+                #f8fbff
+            );
+
+            border: 1px solid #dbe5ef;
+
+            color: #0f172a;
+
+            text-decoration: none;
+
+            box-shadow:
+                0 8px 20px rgba(15, 23, 42, 0.05);
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease,
+                border-color .25s ease,
+                background .25s ease;
+        }
+
+        .link-bar__item:hover {
+
+            transform: translateY(-4px);
+
+            border-color: #9fc4e5;
+
+            background: #ffffff;
+
+            box-shadow:
+                0 16px 30px rgba(15, 23, 42, 0.10);
+        }
+
+        .link-bar__icon {
+
+            flex: 0 0 48px;
+
+            width: 48px;
+            height: 48px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background: #eaf3fa;
+
+            color: #003B71;
+
+            transition:
+                background .25s ease,
+                color .25s ease;
+        }
+
+        .link-bar__item:hover .link-bar__icon {
+
+            background: #003B71;
+
+            color: #ffffff;
+        }
+
+        .link-bar__icon svg {
+
+            width: 25px;
+            height: 25px;
+        }
+
+        .link-bar__title {
+
+            margin: 0;
+
+            font-size: 14px;
+
+            line-height: 1.35;
+
+            font-weight: 800;
+
+            color: #0f3b63;
+        }
+
+        .link-bar__badge {
+
+            display: inline-block;
+
+            margin-top: 7px;
+
+            font-size: 10px;
+
+            line-height: 1;
+
+            font-weight: 800;
+
+            letter-spacing: .04em;
+
+            color: #64748b;
+        }
+
+        /* =====================================================
+           ACCORDION
+           ===================================================== */
+
+        .accordion {
+
+            overflow: hidden;
+
+            border:
+                1px solid #dbe5ef;
+
+            border-radius: 18px;
+
+            background: #ffffff;
+
+            box-shadow:
+                0 8px 20px rgba(15, 23, 42, 0.04);
+
+            transition:
+                border-color .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .accordion:hover {
+
+            border-color: #b8d0e5;
+        }
+
+        .accordion-header {
+
+            width: 100%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            padding: 20px 22px;
+
+            border: 0;
+
+            background: transparent;
+
+            cursor: pointer;
+
+            text-align: left;
+
+            color: #003B71;
+
+            font-weight: 800;
+
+            font-size: 16px;
+        }
+
+        .accordion-header:hover {
+
+            background: #f8fbff;
+        }
+
+        .accordion-left {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+        }
+
+        .accordion-number {
+
+            width: 38px;
+            height: 38px;
+
+            flex: 0 0 38px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 12px;
+
+            background: #eaf3fa;
+
+            color: #003B71;
+
+            font-size: 13px;
+
+            font-weight: 900;
+        }
+
+        .accordion-icon {
+
+            width: 22px;
+            height: 22px;
+
+            flex: 0 0 22px;
+
+            transition:
+                transform .3s ease;
+        }
+
+        .accordion.active .accordion-icon {
+
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+
+            max-height: 0;
+
+            overflow: hidden;
+
+            opacity: 0;
+
+            transition:
+                max-height .45s ease,
+                opacity .3s ease;
+        }
+
+        .accordion.active .accordion-content {
+
+            max-height: 5000px;
+
+            opacity: 1;
+        }
+
+        .accordion-inner {
+
+            padding:
+                0 22px 24px 22px;
+        }
+
+        /* =====================================================
+           LINKS DOS DOCUMENTOS
+           ===================================================== */
+
+        .document-link {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 12px 14px;
+
+            margin-top: 8px;
+
+            border-radius: 10px;
+
+            background: #f8fafc;
+
+            border: 1px solid #edf2f7;
+
+            color: #334155;
+
+            font-size: 14px;
+
+            line-height: 1.45;
+
+            text-decoration: none;
+
+            transition:
+                background .2s ease,
+                color .2s ease,
+                transform .2s ease,
+                border-color .2s ease;
+        }
+
+        .document-link:hover {
+
+            background: #eff6ff;
+
+            color: #003B71;
+
+            border-color: #c7ddef;
+
+            transform: translateX(3px);
+        }
+
+        .document-icon {
+
+            flex: 0 0 32px;
+
+            width: 32px;
+            height: 32px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 8px;
+
+            background: #ffffff;
+
+            color: #003B71;
+
+            border: 1px solid #dbe5ef;
+        }
+
+        .document-icon svg {
+
+            width: 17px;
+            height: 17px;
+        }
+
+        /* =====================================================
+           DIVISOR
+           ===================================================== */
+
+        .section-divider {
+
+            height: 1px;
+
+            background:
+                linear-gradient(
+                    to right,
+                    transparent,
+                    #dbe5ef,
+                    transparent
+                );
+        }
+
+        /* =====================================================
+           BOTÃO TOPO
+           ===================================================== */
+
+        #backToTop {
+
+            position: fixed;
+
+            right: 22px;
+            bottom: 22px;
+
+            width: 44px;
+            height: 44px;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            border: 0;
+
+            border-radius: 50%;
+
+            background: #003B71;
+
+            color: white;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 25px rgba(0, 59, 113, 0.25);
+
+            z-index: 100;
+
+            transition:
+                transform .2s ease,
+                background .2s ease;
+        }
+
+        #backToTop:hover {
+
+            transform: translateY(-3px);
+
+            background: #002B52;
+        }
+
+        /* =====================================================
+           RESPONSIVO
+           ===================================================== */
+
+        @media (max-width: 640px) {
+
+            body {
+                padding: 12px;
+            }
+
+            .main-card {
+                border-radius: 22px;
+            }
+
+            .ses-logo {
+                max-width: 270px;
+            }
+
+            .link-bar__item {
+                min-height: 100px;
+            }
+
+            .accordion-header {
+                padding: 17px;
+            }
+
+            .accordion-inner {
+                padding:
+                    0 14px 18px 14px;
+            }
+
+            .document-link {
+                font-size: 13px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body class="min-h-screen">
+
+    <!-- =========================================================
+         CONTEÚDO PRINCIPAL
+         ========================================================= -->
+
+    <main class="main-container px-4 sm:px-6 py-8 sm:py-12">
+
+        <!-- =====================================================
+             CABEÇALHO
+             ===================================================== -->
+
+        <header class="text-center mb-8">
+
+            <img
+                src="https://www.saude.ma.gov.br/wp-content/uploads/2026/07/HORIZONTAL-3_SES-scaled.png"
+                class="ses-logo mx-auto mb-7"
+                alt="Secretaria de Estado da Saúde do Maranhão">
+
+            <div class="inline-flex items-center gap-2
+                        px-4 py-2 rounded-full
+                        bg-blue-50 border border-blue-100
+                        text-blue-800 text-xs font-bold uppercase tracking-wide">
+
+                <span class="w-2 h-2 rounded-full bg-blue-700"></span>
+
+                Comunicado institucional
+
+            </div>
+
+            <h1 class="
+                text-4xl
+                sm:text-5xl
+                font-black
+                tracking-tight
+                text-blue-950
+                mt-5
+            ">
+                COMUNICADO
+            </h1>
+
+            <p class="
+                text-slate-600
+                mt-3
+                text-base
+                sm:text-lg
+            ">
+                Secretaria de Estado da Saúde do Maranhão
+            </p>
+
+        </header>
+
+
+        <!-- =====================================================
+             CARD PRINCIPAL
+             ===================================================== -->
+
+        <section class="main-card p-5 sm:p-8 lg:p-10">
+
+            <!-- Ícone -->
+
+            <div class="info-icon mb-8">
+
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    class="w-10 h-10">
+
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M13 16h-1v-4h-1m1-4h.01M12 21a9 9 0 100-18 9 9 0 000 18z" />
+
+                </svg>
+
+            </div>
+
+
+            <!-- =================================================
+                 TEXTO DO COMUNICADO
+                 ================================================= -->
+
+            <div class="
+                space-y-7
+                text-slate-700
+                leading-8
+                text-base
+                sm:text-lg
+            ">
+
+                <p>
+                    Em cumprimento às restrições previstas para o
+                    período que antecede o pleito eleitoral de
+                    <strong>2026</strong> e em conformidade com a
+                    <strong>Lei Federal nº 9.504/1997</strong>,
+                    este portal terá suas atividades suspensas
+                    temporariamente
+                    <strong>a partir de 4 de julho</strong>.
+                </p>
+
+
+                <div class="
+                    bg-blue-50
+                    border-l-4
+                    border-blue-700
+                    p-5 sm:p-6
+                    rounded-r-xl
+                ">
+
+                    <strong class="
+                        text-blue-950
+                        block
+                        mb-2
+                    ">
+                        Durante o período de vedação eleitoral
+                    </strong>
+
+                    <span>
+                        Os conteúdos publicados serão temporariamente
+                        arquivados e não haverá novas publicações
+                        nesta página.
+                    </span>
+
+                </div>
+
+
+                <p>
+                    Após o encerramento desse prazo, o portal retomará
+                    normalmente suas atividades e todos os conteúdos
+                    serão restabelecidos.
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 ACESSOS RÁPIDOS
+                 ================================================= -->
+
+            <div class="mt-10">
+
+                <div class="section-divider mb-8"></div>
+
+                <div class="text-center mb-6">
+
+                    <h2 class="
+                        text-2xl
+                        font-black
+                        text-blue-950
+                    ">
+                        Acessos rápidos
+                    </h2>
+
+                    <p class="
+                        text-sm
+                        text-slate-500
+                        mt-2
+                    ">
+                        Consulte os principais sistemas,
+                        serviços e documentos institucionais.
+                    </p>
+
+                </div>
+
+
+                <div class="
+                    grid
+                    grid-cols-1
+                    sm:grid-cols-2
+                    lg:grid-cols-4
+                    gap-4
+                ">
+
+
+                    <!-- PORTAL DA TRANSPARÊNCIA -->
+
+                    <a
+                        href="https://filadigital.saude.ma.gov.br/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="link-bar__item">
+
+                        <div class="link-bar__icon">
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor">
+
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M3 21h18M4 21V9l8-6 8 6v12M9 21v-6h6v6M9 9h.01M15 9h.01">
+                                </path>
+
+                            </svg>
+
+                        </div>
+
+                        <div>
+
+                            <p class="link-bar__title">
+                                Portal da<br>
+                                Transparência
+                            </p>
+
+                            <span class="link-bar__badge">
+                                ACESSAR →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- CSL -->
+
+                    <a
+                        href="https://csl.saude.ma.gov.br/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="link-bar__item">
+
+                        <div class="link-bar__icon">
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor">
+
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9 12h6m-6 4h6M9 8h6M6 4h12a1 1 0 011 1v14a1 1 0 01-1 1H6a1 1 0 01-1-1V5a1 1 0 011-1z">
+                                </path>
+
+                            </svg>
+
+                        </div>
+
+                        <div>
+
+                            <p class="link-bar__title">
+                                Comissão Setorial<br>
+                                de Licitação
+                            </p>
+
+                            <span class="link-bar__badge">
+                                ACESSAR →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- EPISUS -->
+
+                    <a
+                        href="https://www.saude.ma.gov.br/wp-content/uploads/2026/07/LISTA_FINAL_DE_CLASSIFICADOS_DO_CURSO__PROGRAMA_DE_TREINAMENTO_EM_EPIDEMIOLOGIA_APLICADA_AOS_SERVICOS_DO_SISTEMA_UNICO_DE_SAUDE_NO_ESTADO_DO_MARANHAO___EPISUS_FUNDAMENTAL_.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="link-bar__item">
+
+                        <div class="link-bar__icon">
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor">
+
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9 12h6m-6 4h6M9 8h6M6 4h12a1 1 0 011 1v14a1 1 0 01-1 1H6a1 1 0 01-1-1V5a1 1 0 011-1z">
+                                </path>
+
+                            </svg>
+
+                        </div>
+
+                        <div>
+
+                            <p class="link-bar__title">
+                                Relação final<br>
+                                dos candidatos
+                            </p>
+
+                            <span class="link-bar__badge">
+                                Aprovados EpiSUS →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- REGULAÇÃO -->
+
+                    <a
+                        href="https://regulacao.saude.ma.gov.br/nova/auth/login"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="link-bar__item">
+
+                        <div class="link-bar__icon">
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor">
+
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9 12h6m-6 4h6M9 8h6M6 4h12a1 1 0 011 1v14a1 1 0 01-1 1H6a1 1 0 01-1-1V5a1 1 0 011-1z">
+                                </path>
+
+                            </svg>
+
+                        </div>
+
+                        <div>
+
+                            <p class="link-bar__title">
+                                Sistema Estadual<br>
+                                de REGULAÇÃO
+                            </p>
+
+                            <span class="link-bar__badge">
+                                ACESSAR →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- FEME -->
+
+                    <a
+                        href="https://www.saude.ma.gov.br/unidades-de-saude/unidade-farmacia-de-medicamentos-especializados-feme/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="link-bar__item">
+
+                        <div class="link-bar__icon">
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor">
+
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9 12h6m-6 4h6M9 8h6M6 4h12a1 1 0 011 1v14a1 1 0 01-1 1H6a1 1 0 01-1-1V5a1 1 0 011-1z">
+                                </path>
+
+                            </svg>
+
+                        </div>
+
+                        <div>
+
+                            <p class="link-bar__title">
+                                FEME<br>
+                                <span class="text-xs font-normal">
+                                    Farmácia Estadual de Medicamentos Especializados
+                                </span>
+                            </p>
+
+                            <span class="link-bar__badge">
+                                ACESSAR →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- PES -->
+
+                    <a
+                        href="https://www.saude.ma.gov.br/plano-estadual-de-saude-pes/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="link-bar__item">
+
+                        <div class="link-bar__icon">
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor">
+
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9 12h6m-6 4h6M9 8h6M6 4h12a1 1 0 011 1v14a1 1 0 01-1 1H6a1 1 0 01-1-1V5a1 1 0 011-1z">
+                                </path>
+
+                            </svg>
+
+                        </div>
+
+                        <div>
+
+                            <p class="link-bar__title">
+                                PES<br>
+                                <span class="text-xs font-normal">
+                                    Plano Estadual de Saúde
+                                </span>
+                            </p>
+
+                            <span class="link-bar__badge">
+                                ACESSAR →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- PAS -->
+
+                    <a
+                        href="https://www.saude.ma.gov.br/programacao-anual-de-saude/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="link-bar__item">
+
+                        <div class="link-bar__icon">
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor">
+
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9 12h6m-6 4h6M9 8h6M6 4h12a1 1 0 011 1v14a1 1 0 01-1 1H6a1 1 0 01-1-1V5a1 1 0 011-1z">
+                                </path>
+
+                            </svg>
+
+                        </div>
+
+                        <div>
+
+                            <p class="link-bar__title">
+                                PAS<br>
+                                <span class="text-xs font-normal">
+                                    Programação Anual de Saúde
+                                </span>
+                            </p>
+
+                            <span class="link-bar__badge">
+                                ACESSAR →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- RAG -->
+
+                    <a
+                        href="https://www.saude.ma.gov.br/relatorio-anual-de-gestao/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="link-bar__item">
+
+                        <div class="link-bar__icon">
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor">
+
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9 12h6m-6 4h6M9 8h6M6 4h12a1 1 0 011 1v14a1 1 0 01-1 1H6a1 1 0 01-1-1V5a1 1 0 011-1z">
+                                </path>
+
+                            </svg>
+
+                        </div>
+
+                        <div>
+
+                            <p class="link-bar__title">
+                                RAG<br>
+                                <span class="text-xs font-normal">
+                                    Relatório Anual de Gestão
+                                </span>
+                            </p>
+
+                            <span class="link-bar__badge">
+                                ACESSAR →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 DOCUMENTOS / ACCORDIONS
+                 ================================================= -->
+
+            <div class="mt-12">
+
+                <div class="section-divider mb-8"></div>
+
+                <div class="text-center mb-7">
+
+                    <h2 class="
+                        text-2xl
+                        font-black
+                        text-blue-950
+                    ">
+                        Documentos e informações
+                    </h2>
+
+                    <p class="
+                        text-sm
+                        text-slate-500
+                        mt-2
+                    ">
+                        Acesse os documentos institucionais
+                        disponibilizados pela SES-MA.
+                    </p>
+
+                </div>
+
+
+                <div class="space-y-4">
+
+
+                    <!-- =================================================
+                         ACCORDION 01
+                         ================================================= -->
+
+                    <div class="accordion">
+
+                        <button
+                            type="button"
+                            class="accordion-header"
+                            aria-expanded="false">
+
+                            <div class="accordion-left">
+
+                                <span class="accordion-number">
+                                    01
+                                </span>
+
+                                <span>
+                                    Notas Técnicas — 2026, 2025 e 2023
+                                </span>
+
+                            </div>
+
+                            <svg
+                                class="accordion-icon"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor">
+
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="m19 9-7 7-7-7" />
+
+                            </svg>
+
+                        </button>
+
+
+                        <div class="accordion-content">
+
+                            <div class="accordion-inner">
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-no-08-2026-coordvdt-gerepcd-sapapvs-ses/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 08/2026 — CoordVDT/GEREPCD/SAPAPVS/SES
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-no-07-2026-coordvdt-gerepcd-sapapvs-ses/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 07/2026 — CoordVDT/GEREPCD/SAPAPVS/SES
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-no-01-2026-coordimuni-gerepcd-sapapvs-ses/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 01/2026 — CoordImuni/GEREPCD/SAPAPVS/SES
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-no-03-2026-coordimuni-gerepcd-sapapvs-ses/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 03/2026 — CoordImuni/GEREPCD/SAPAPVS/SES
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-no-01-2026-coordimuni-gerepcd-sapapvs/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 01/2026 — CoordImuni/GEREPCD/SAPAPVS
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-no-02-2026-coordimuni-gerepcd-sapapvs/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 02/2026 — CoordImuni/GEREPCD/SAPAPVS
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-conjunta-no-02-2025-coordesp-gerepecd-sapapvs/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica Conjunta nº 02/2025
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-conjunta-no-01-2025-coordesp-gerepecd-sapapvs/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica Conjunta nº 01/2025
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-informativa-n-o-01-2025-ses/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Informativa nº 01/2025 — SES
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/informativo-5-da-sala-de-situacao-no-site-da-ses/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Informativo nº 05 — Sala de Situação
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-n-05-2023-pvrs-de-secd-sapapvs-ioc-lacen-ses-ma/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 05/2023 — PVRS
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-n-04-2023-pvrs-de-secd-sapapvs-ioc-lacen-ses-ma/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 04/2023 — PVRS
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-n-01-2023-pvrs-de-secd-sapapvs-ses-ma/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 01/2023 — PVRS
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-no-01-2025-gerepcd-sapapvs/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 01/2025 — GEREPCD/SAPAPVS
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/informativo-vigilancia-do-obito-estadual-edicao-n-1/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Informativo Vigilância do Óbito Estadual — Edição nº 1
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-informativa-no-1-2578852-sobre-a-situacao-epidemiologica-e-orientacoes-de-vigilancia-sobre-oropouche-no-maranhao/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Informativa nº 01 — Situação Epidemiológica da Oropouche
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         ACCORDION 02
+                         ================================================= -->
+
+                    <div class="accordion">
+
+                        <button
+                            type="button"
+                            class="accordion-header"
+                            aria-expanded="false">
+
+                            <div class="accordion-left">
+
+                                <span class="accordion-number">
+                                    02
+                                </span>
+
+                                <span>
+                                    Documentos de Vigilância em Saúde
+                                </span>
+
+                            </div>
+
+                            <svg
+                                class="accordion-icon"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor">
+
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="m19 9-7 7-7-7" />
+
+                            </svg>
+
+                        </button>
+
+
+                        <div class="accordion-content">
+
+                            <div class="accordion-inner">
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-no01-imunopreveniveis/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 01 — Imunopreveníveis
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/alerta-de-risco-n01-cievs-secd-sapapvs-2021/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Alerta de Risco nº 01 — CIEVS/SECD/SAPAPVS
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-informativa-n01-2020-dcz-secd-sapapvs-ses-ma/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Informativa nº 01/2020 — DCZ
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-n01-2021-pecarb-de-secd-sapapvs-ses-ma/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 01/2021 — PECARB
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-n01-2021-pvrs-de-secd-sapapvs-ses-ma/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 01/2021 — PVRS
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-no-02_cievs_secd_sapapvs_2021-2/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 02 — CIEVS/SECD/SAPAPVS
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-no-06_2021-dcdi_secd_ses-2/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 06/2021 — DCDI/SECD/SES
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-no-01-2021-demas-secd-sapavs-ses-ma/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 01/2021 — DEMAS
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-no-13-2021-dcdi-secd-sapapvs-ses/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 13/2021 — DCDI
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-no-18-2021-dcdi-secd-sapapvs-ses/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 18/2021 — DCDI
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-no-14-2021-dcdi-secd-sapapvs-ses/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 14/2021 — DCDI
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-no-03-2021-influenza-sec-sapapvs/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 03/2021 — Influenza
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-conjunta-no-6-doenca-de-haff-2/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica Conjunta nº 06 — Doença de Haff
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-no02_2021-dcdi_secd_ses-2/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 02/2021 — DCDI
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-no-03_2021_dcdi_secd_ses-2/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 03/2021 — DCDI
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-no-04_-2021_dcdi_secd_ses_/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 04/2021 — DCDI
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-no-05_2021_dcdi_secd_ses_/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 05/2021 — DCDI
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-conjunta-no-1-2021-sifilis/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica Conjunta nº 01/2021 — Sífilis
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/orientacao-sobre-sim-p-e-sim-a/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Orientações sobre SIM-P e SIM-A
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/fluxograma-raiva-humana-e-animal/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Fluxograma — Raiva Humana e Animal
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/investigacao-obitos-materno-infantil-e-fetal/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Investigação de Óbitos Materno, Infantil e Fetal
+
+                                </a>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         ACCORDION 03
+                         ================================================= -->
+
+                    <div class="accordion">
+
+                        <button
+                            type="button"
+                            class="accordion-header"
+                            aria-expanded="false">
+
+                            <div class="accordion-left">
+
+                                <span class="accordion-number">
+                                    03
+                                </span>
+
+                                <span>
+                                    COVID-19, Imunização e Doenças Respiratórias
+                                </span>
+
+                            </div>
+
+                            <svg
+                                class="accordion-icon"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor">
+
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="m19 9-7 7-7-7" />
+
+                            </svg>
+
+                        </button>
+
+
+                        <div class="accordion-content">
+
+                            <div class="accordion-inner">
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-sobre-doses-excedentes-de-vacinas/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica — Doses Excedentes de Vacinas
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/informe-tecnico-campanha-nacional-de-vacinacao-contra-covid-19-2/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Informe Técnico — Campanha Nacional de Vacinação contra COVID-19
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-no09-vacinacao-dos-trabalhadores-da-saude/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 09 — Vacinação dos Trabalhadores da Saúde
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-no06-sistema-de-informacao-2/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 06 — Sistema de Informação
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-n-01-definicao-trabalhadores-da-saude-2/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 01 — Definição de Trabalhadores da Saúde
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-no-19-flexibilizacao-temporaria-seringas-para-vacina-comirnaty/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 19 — Flexibilização Temporária de Seringas para Comirnaty
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-no07-erros-de-imunizacao-2/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 07 — Erros de Imunização
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-no11-continuidade-da-vacinacao-nos-grupos-prioritarios-elegiveis-para-d2/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 11 — Continuidade da Vacinação nos Grupos Prioritários
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-no15-flexibilizacao-das-doses-da-coronavac/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 15 — Flexibilização das Doses da CoronaVac
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-no-17-vacinacao-da-populacao-privada-de-liberdade/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica nº 17 — Vacinação da População Privada de Liberdade
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-de-alerta-doencas-respiratorias/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota de Alerta — Doenças Respiratórias
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-influenza-a-h3n2/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica — Influenza A (H3N2)
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/orientacoes-da-vacinacao-pediatrica/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Orientações da Vacinação Pediátrica
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-tecnica-influenza/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Técnica — Influenza
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/fluxo-de-colaboradores-com-suspeita-de-covid-19/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Fluxo de Colaboradores com Suspeita de COVID-19
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/vacinacao-entre-6-e-9-anos/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Vacinação entre 6 e 9 anos
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/atualizacao-vacinas-contra-covid-19/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Atualização — Vacinas contra COVID-19
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/vigilancia-dos-obitos-por-covid-19/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Vigilância dos Óbitos por COVID-19
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/vigilancia-e-monitoramento-de-variantes-sars-cov-2/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Vigilância e Monitoramento de Variantes SARS-CoV-2
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/vigilancia-e-monitoramento-de-variantes/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Vigilância e Monitoramento de Variantes
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/vigilancia-monkeypox/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Vigilância — Monkeypox
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/vigilancia-monkeypox-2/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Vigilância — Monkeypox — Documento complementar
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/covid-19-vigilancia-epidemiologica-e-conduta-para-isolamento/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    COVID-19 — Vigilância Epidemiológica e Conduta para Isolamento
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/vigilancia-e-manejo-de-surtos-por-covid-19/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Vigilância e Manejo de Surtos por COVID-19
+
+                                </a>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         ACCORDION 04
+                         ================================================= -->
+
+                    <div class="accordion">
+
+                        <button
+                            type="button"
+                            class="accordion-header"
+                            aria-expanded="false">
+
+                            <div class="accordion-left">
+
+                                <span class="accordion-number">
+                                    04
+                                </span>
+
+                                <span>
+                                    Alertas e Orientações
+                                </span>
+
+                            </div>
+
+                            <svg
+                                class="accordion-icon"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor">
+
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="m19 9-7 7-7-7" />
+
+                            </svg>
+
+                        </button>
+
+
+                        <div class="accordion-content">
+
+                            <div class="accordion-inner">
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/alerta-gripe-aviaria-3/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Alerta — Gripe Aviária
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/alerta-gripe-avaria/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Alerta — Gripe Aviária
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/alertas/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Central de Alertas
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/alerta-de-sarampo-01-2024/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Alerta de Sarampo nº 01/2024
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/alerta-perigo-potencial-n-01/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Alerta de Perigo Potencial nº 01
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/alerta-no-06-risco-de-dengue-em-criancas/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Alerta nº 06 — Risco de Dengue em Crianças
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/alerta-no-07-de-doencas-e-agravos-de-notificacao-compulsoria-no-periodo-das-chuvas-e-pos-chuvas-no-maranhao/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Alerta nº 07 — Doenças e Agravos de Notificação Compulsória
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/alerta-do-programa-de-vigilancia-e-controle-das-leishmanoises/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Alerta — Programa de Vigilância e Controle das Leishmanioses
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/nota-informativa-controle-de-acidente-por-animais-peconhentos/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Nota Informativa — Acidentes por Animais Peçonhentos
+
+                                </a>
+
+
+                                <a
+                                    href="https://www.saude.ma.gov.br/docs/orientecoes-e-recomendacoes-sobre-uso-de-pomada-para-trancar-modelar-e-fixar-cabelos/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="document-link">
+
+                                    Orientações e Recomendações — Pomadas para Cabelos
+
+                                </a>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+                 RODAPÉ
+                 ===================================================== -->
+
+            <footer class="mt-12 pt-7 border-t border-slate-200 text-center">
+
+                <p class="text-sm text-slate-500">
+                    Agradecemos a compreensão.
+                </p>
+
+                <p class="
+                    font-bold
+                    text-blue-950
+                    mt-2
+                ">
+                    Secretaria de Estado da Saúde do Maranhão
+                </p>
+
+                <p class="
+                    text-xs
+                    text-slate-400
+                    mt-3
+                ">
+                    Governo do Estado do Maranhão
+                </p>
+
+            </footer>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================================
+         BOTÃO VOLTAR AO TOPO
+         ========================================================= -->
+
+    <button
+        id="backToTop"
+        type="button"
+        aria-label="Voltar ao topo">
+
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            class="w-5 h-5">
+
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 15l7-7 7 7" />
+
+        </svg>
+
+    </button>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+         ========================================================= -->
+
+    <script>
+
+        /* =====================================================
+           ACCORDIONS
+           ===================================================== */
+
+        document
+            .querySelectorAll('.accordion-header')
+            .forEach(function (button) {
+
+                button.addEventListener('click', function () {
+
+                    const accordion =
+                        button.closest('.accordion');
+
+                    const isActive =
+                        accordion.classList.contains('active');
+
+                    /*
+                     * Fecha todos os demais accordions.
+                     */
+
+                    document
+                        .querySelectorAll('.accordion')
+                        .forEach(function (item) {
+
+                            item.classList.remove('active');
+
+                            const header =
+                                item.querySelector('.accordion-header');
+
+                            if (header) {
+                                header.setAttribute(
+                                    'aria-expanded',
+                                    'false'
+                                );
+                            }
+
+                        });
+
+                    /*
+                     * Abre o selecionado,
+                     * caso ele estivesse fechado.
+                     */
+
+                    if (!isActive) {
+
+                        accordion.classList.add('active');
+
+                        button.setAttribute(
+                            'aria-expanded',
+                            'true'
+                        );
+
+                    }
+
+                });
+
+            });
+
+
+        /* =====================================================
+           BOTÃO VOLTAR AO TOPO
+           ===================================================== */
+
+        const backToTop =
+            document.getElementById('backToTop');
+
+
+        window.addEventListener('scroll', function () {
+
+            if (window.scrollY > 450) {
+
+                backToTop.style.display = 'flex';
+
+            } else {
+
+                backToTop.style.display = 'none';
+
+            }
+
+        });
+
+
+        backToTop.addEventListener('click', function () {
+
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+
+        });
+
+
+        /* =====================================================
+           PREVENÇÃO DE ERRO EM LINKS
+           ===================================================== */
+
+        document
+            .querySelectorAll('a[target="_blank"]')
+            .forEach(function (link) {
+
+                link.setAttribute(
+                    'rel',
+                    'noopener noreferrer'
+                );
+
+            });
+
+    </script>
+
+
+</body>
+
+</html>

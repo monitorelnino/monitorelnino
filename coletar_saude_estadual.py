@@ -42,6 +42,16 @@ USO
   python coletar_saude_estadual.py --fontes --uf MT
   python coletar_saude_estadual.py --bateria           # busca aberta (precisa de SearXNG)
   python coletar_saude_estadual.py --bateria --uf RR
+  python coletar_saude_estadual.py --doe --desde 2026-06-29    # canal 2: diário oficial do estado
+  python coletar_saude_estadual.py --canais                    # canal 3: CIEVS, sala de situação, COE
+
+OS QUATRO CANAIS
+----------------
+A editoria exige quatro canais antes de qualquer "não localizado" (handover de 01/10/2026):
+busca aberta (`--bateria`), diário oficial do estado com os termos da SAÚDE (`--doe`), páginas do
+CIEVS e da sala de situação/COE de cada secretaria (`--canais`) e o juiz (`julgar_saude.py`). Um
+canal que não rodou não é um canal que não achou: a UF segue não verificada por ele, e é por isso
+que cada modo registra a sua própria decisão no log.
 """
 import json
 import pathlib
@@ -99,6 +109,24 @@ TERMOS_RISCO = ("el niño", "el nino", "arbovirose", "dengue", "chikungunya", "c
 # notícia continua entrando na fila — com `oficial: false`, para que a triagem veja a diferença.
 SUFIXOS_OFICIAIS = (".gov.br", ".leg.br", ".jus.br")
 
+# CANAL 2 — os termos da SAÚDE no diário oficial do estado. Os da defesa civil (coletar_doe.py)
+# procuram homologação de decreto municipal e não casariam com instrumento de saúde; estes quatro
+# são os nomes com que o ato de saúde aparece no diário. "plano de contingência" sozinho casaria
+# plano de greve, e é por isso que a peneira `relevante` continua cobrando termo de risco.
+TERMOS_DOE_SAUDE = ("plano de contingência", "emergência em saúde pública",
+                    "sala de situação", "centro de operações de emergência")
+
+# CANAL 3 — o que faz um link da página da secretaria valer como candidato.
+TERMOS_CANAL = ("cievs", "sala de situação", "centro de operações de emergência", "coes",
+                "plano de contingência", "plano estadual")
+
+# O endereço RAIZ da secretaria de cada UF vive no arquivo de fontes, não aqui: é dado, e dado
+# sondado um a um. `null` naquele arquivo é lacuna declarada e impede "não localizado" por este
+# canal.
+ARQUIVO_CANAIS = "saude_desfechos/fontes_uf.json"
+RE_LINK = re.compile(r"""<a\b[^>]*href=["']([^"'#]+)["'][^>]*>(.*?)</a>""", re.I | re.S)
+RE_TAG = re.compile(r"<[^>]+>")
+
 # Fontes declaradas por UF, lidas direto no modo `--fontes`. `null` é LACUNA DECLARADA: endereço
 # não confirmado, e por isso nada se afirma sobre a UF por esta rota. A lista cresce com o que for
 # confirmado sítio a sítio; inventar endereço aqui produziria 404 com cara de busca feita.
@@ -155,7 +183,32 @@ DECISAO_NO_LOG = {"pista": "pista",
                   "motor_sem_resposta": "erro",
                   "fontes_lidas": "consultado sem achado",
                   "fonte_fora_do_ar": "erro",
-                  "fonte_nao_declarada": "erro"}
+                  "fonte_nao_declarada": "erro",
+                  "doe_sem_pista": "consultado sem achado",
+                  "canais_sem_pista": "consultado sem achado",
+                  "canal_nao_disponivel": "erro",
+                  "canal_nao_declarado": "erro",
+                  "canal_fora_do_ar": "erro"}
+
+
+def links_de_interesse(corpo: str, base: str) -> list:
+    """Os links que o PRÓPRIO sítio declara e cujo texto ou endereço casa termo de canal. Pura.
+
+    A regra que esta função existe para manter: caminho de arquivo nunca se adivinha. O coletor lê a
+    página raiz da secretaria e segue o que ela aponta — tentar `/cievs` porque o nome é plausível
+    produziria 404 com cara de busca feita, que é o defeito nomeado no §231 e pago pela PB em
+    11/09/2026, quando o nome do arquivo não garantiu a edição."""
+    saida, vistos = [], set()
+    for href, bruto in RE_LINK.findall(corpo or ""):
+        alvo = urllib.parse.urljoin(base, href.strip())
+        if not alvo.lower().startswith(("http://", "https://")) or alvo in vistos:
+            continue
+        texto = re.sub(r"\s+", " ", RE_TAG.sub(" ", bruto)).strip()
+        if not any(t in (texto + " " + alvo).lower() for t in TERMOS_CANAL):
+            continue
+        vistos.add(alvo)
+        saida.append((texto, alvo))
+    return saida
 
 
 def chave_da_pista(p: dict) -> tuple:
@@ -250,6 +303,97 @@ def bateria(uf: str) -> dict:
     return {"uf": uf, "brutos": brutos, "pistas": len(achadas), "novas": entraram, "decisao": decisao}
 
 
+def doe_saude(uf: str, desde: str) -> dict:
+    """CANAL 2: os termos da saúde na busca do diário oficial do estado.
+
+    Reaproveita o adaptador que o `coletar_doe.py` já confirmou host a host contra produção — e só
+    ele: UF cujo diário não tem rota de busca confirmada sai como `canal_nao_disponivel`, que é
+    lacuna declarada, e não como estado sem instrumento."""
+    import coletar_doe
+    base = coletar_doe.HOSTS_APIFRONT.get(uf)
+    if not base:
+        registrar_lacuna(f"funil_saude/{uf}", "diário estadual sem rota de busca confirmada",
+                         canal="repositorio_estadual", camada=1, uf=uf, nivel="estadual")
+        log_busca("repositorio_estadual", 1, list(TERMOS_DOE_SAUDE),
+                  DECISAO_NO_LOG["canal_nao_disponivel"], uf=uf, nivel="estadual", n_resultados=0,
+                  resultados=f"funil_saude/{uf}: diário estadual sem rota de busca confirmada")
+        return {"uf": uf, "brutos": 0, "pistas": 0, "novas": 0, "decisao": "canal_nao_disponivel"}
+    ate = hoje_editorial().isoformat()
+    brutos, achadas = 0, []
+    for termo in TERMOS_DOE_SAUDE:
+        try:
+            _total, acertos = coletar_doe.varrer_busca_apifront(base, termo, desde, ate)
+        except Exception as e:  # noqa: BLE001
+            registrar_lacuna(f"funil_saude/{uf}", f"{termo}: {type(e).__name__}: {e}",
+                             canal="repositorio_estadual", camada=1, uf=uf, nivel="estadual",
+                             strings=[termo])
+            continue
+        brutos += len(acertos)
+        for a in acertos:
+            r = {"title": f"DOE-{uf} {a['data']} p.{a['pagina']}",
+                 "url": coletar_doe.PDF_APIFRONT.format(base=base.rstrip("/"),
+                                                        diario_id=a["diario_id"]),
+                 "content": (a.get("conteudo") or "")[:400]}
+            if relevante(r, uf):
+                achadas.append(pista_de(r, uf, f"doe:{termo}", termo))
+    decisao = "pista" if achadas else ("doe_sem_pista" if brutos else "motor_sem_resposta")
+    fila, entraram = fundir_pistas(ler(PISTAS) or {}, achadas)
+    if entraram:
+        gravar(PISTAS, fila)
+    log_busca("repositorio_estadual", 1, list(TERMOS_DOE_SAUDE), DECISAO_NO_LOG[decisao],
+              uf=uf, nivel="estadual", n_resultados=brutos,
+              resultados=(f"funil_saude/{uf}: DOE de {desde} a {ate}, {brutos} acerto(s), "
+                          f"{len(achadas)} pista(s), {entraram} nova(s) · decisão: {decisao}"))
+    funil.registrar("funil_saude_estadual", consultas=len(TERMOS_DOE_SAUDE),
+                    com_resultado_bruto=1 if brutos else 0, pistas=len(achadas))
+    return {"uf": uf, "brutos": brutos, "pistas": len(achadas), "novas": entraram,
+            "decisao": decisao}
+
+
+def canais_ses(uf: str) -> dict:
+    """CANAL 3: a página da secretaria estadual, e os links de CIEVS, sala de situação e COE que ela
+    declara. Não precisa de SearXNG."""
+    cfg = ((ler(ARQUIVO_CANAIS) or {}).get("uf") or {}).get(uf) or {}
+    raiz = cfg.get("canais_instrumento")
+    if not raiz:
+        motivo = cfg.get("canais_instrumento_lacuna") or "endereço da secretaria não confirmado"
+        registrar_lacuna(f"funil_saude/{uf}", motivo, canal="orgao_estadual", camada=1, uf=uf,
+                         nivel="estadual")
+        log_busca("orgao_estadual", 1, [ARQUIVO_CANAIS], DECISAO_NO_LOG["canal_nao_declarado"],
+                  uf=uf, nivel="estadual", n_resultados=0,
+                  resultados=f"funil_saude/{uf}: {motivo}")
+        return {"uf": uf, "links": 0, "pistas": 0, "novas": 0, "decisao": "canal_nao_declarado"}
+    try:
+        corpo = buscar(raiz, timeout=120, origem=ORIGEM)
+    except Exception as e:  # noqa: BLE001
+        registrar_lacuna(f"funil_saude/{uf}", f"{raiz}: {type(e).__name__}: {e}",
+                         canal="orgao_estadual", camada=1, uf=uf, nivel="estadual", strings=[raiz])
+        log_busca("orgao_estadual", 1, [raiz], DECISAO_NO_LOG["canal_fora_do_ar"], uf=uf,
+                  nivel="estadual", n_resultados=0,
+                  resultados=f"funil_saude/{uf}: {type(e).__name__}: {e}")
+        return {"uf": uf, "links": 0, "pistas": 0, "novas": 0, "decisao": "canal_fora_do_ar"}
+    # A evidência é o CORPO como a fonte o serviu — bytes. O texto decodificado serve para ler os
+    # links, e só: preservar o decodificado mudaria o hash do que se afirma ter lido.
+    preservar_evidencia(corpo if isinstance(corpo, bytes) else corpo.encode("utf-8"),
+                        raiz, "html", ORIGEM)
+    texto = corpo if isinstance(corpo, str) else corpo.decode("utf-8", "replace")
+    achados = links_de_interesse(texto, raiz)
+    achadas = [pista_de({"title": t or u, "url": u, "content": f"link declarado em {raiz}: {t}"},
+                        uf, "canal_ses", raiz) for t, u in achados]
+    decisao = "pista" if achadas else "canais_sem_pista"
+    fila, entraram = fundir_pistas(ler(PISTAS) or {}, achadas)
+    if entraram:
+        gravar(PISTAS, fila)
+    log_busca("orgao_estadual", 1, [raiz], DECISAO_NO_LOG[decisao], uf=uf, nivel="estadual",
+              n_resultados=len(achados),
+              resultados=(f"funil_saude/{uf}: {len(achados)} link(s) de canal em {raiz}, "
+                          f"{entraram} nova(s) na fila · decisão: {decisao}"))
+    funil.registrar("funil_saude_estadual", consultas=1, com_resultado_bruto=1,
+                    pistas=len(achadas))
+    return {"uf": uf, "links": len(achados), "pistas": len(achadas), "novas": entraram,
+            "decisao": decisao}
+
+
 def ler_fontes(uf: str) -> dict:
     """Lê as fontes declaradas de uma UF, preservando evidência. Não precisa de SearXNG."""
     enderecos = FONTES_SAUDE.get(uf) or []
@@ -309,6 +453,14 @@ def autoteste() -> int:
     fila_uma, n_uma = fundir_pistas({"pistas": [p1]}, [p2, p3])
     fila_duas, n_duas = fundir_pistas(fila_uma, [p1, p2, p3])
 
+    pagina = ("<html><body>"
+              "<a href='/cievs'>CIEVS - Centro de Informações Estratégicas</a>"
+              "<a href=\"https://saude.ac.gov.br/plano-de-contingencia.pdf\">Plano de contingência</a>"
+              "<a href='/cievs'>CIEVS de novo</a>"
+              "<a href='/transparencia'>Transparência</a>"
+              "<a href='mailto:sala@y'>sala de situação</a>"
+              "</body></html>")
+    achados = links_de_interesse(pagina, "https://saude.ac.gov.br/")
     casos = {
         "domínio oficial reconhecido":
             lambda: oficial("https://www.saude.mt.gov.br/x.pdf") and oficial("https://doe.pb.gov.br/a"),
@@ -369,6 +521,34 @@ def autoteste() -> int:
                             for destino in ('gravar("saude_uf', 'gravar("monitor_saude',
                                             'gravar("indice', 'gravar("estados',
                                             'gravar("municipios')),
+        # CANAL 3: o coletor segue o que o sítio declara, e não um caminho plausível.
+        "link declarado pelo sítio é seguido, com endereço absoluto":
+            lambda: ("https://saude.ac.gov.br/cievs" in [u for _, u in achados]
+                     and "https://saude.ac.gov.br/plano-de-contingencia.pdf"
+                     in [u for _, u in achados]),
+        "link fora dos termos de canal não entra":
+            lambda: all("transparencia" not in u for _, u in achados),
+        "link repetido entra uma vez":
+            lambda: len([u for _, u in achados if u.endswith("/cievs")]) == 1,
+        "esquema que não é http não entra":
+            lambda: all(u.lower().startswith("http") for _, u in achados),
+        "página vazia não produz link, e não quebra":
+            lambda: links_de_interesse("", "https://saude.ac.gov.br/") == []
+                    and links_de_interesse(None, "https://saude.ac.gov.br/") == [],
+        # CANAL 2: a trava é a mesma do canal 1 — zero acerto nunca é ausência de instrumento.
+        "termo de saúde no DOE é outro conjunto, não o da defesa civil":
+            lambda: "homologa situação de emergência" not in TERMOS_DOE_SAUDE
+                    and "plano de contingência" in TERMOS_DOE_SAUDE,
+        "todo canal novo tem tradução no vocabulário do log":
+            lambda: set(DECISAO_NO_LOG) >= {"doe_sem_pista", "canais_sem_pista",
+                                            "canal_nao_disponivel", "canal_nao_declarado",
+                                            "canal_fora_do_ar"},
+        # Canal que não rodou não pode virar "consultado sem achado": é erro, e a UF segue
+        # não verificada por ele.
+        "canal indisponível, não declarado ou fora do ar é erro, nunca 'consultado sem achado'":
+            lambda: all(DECISAO_NO_LOG[d] == "erro" for d in ("canal_nao_disponivel",
+                                                              "canal_nao_declarado",
+                                                              "canal_fora_do_ar")),
         "o fonte grava só na fila de pistas":
             lambda: sorted(set(re.findall(r'gravar\((PISTAS|"[^"]+")', fonte_do_coletor()))) == ["PISTAS"],
     }
@@ -384,6 +564,15 @@ def main() -> int:
         alvo = args[args.index("--uf") + 1].upper()
     ufs = [alvo] if alvo else list(UFS)
 
+    if "--canais" in args:
+        for uf in ufs:
+            print(canais_ses(uf))
+        return 0
+    if "--doe" in args:
+        desde = args[args.index("--desde") + 1] if "--desde" in args else "2026-06-29"
+        for uf in ufs:
+            print(doe_saude(uf, desde))
+        return 0
     if "--fontes" in args:
         for uf in ufs:
             print(ler_fontes(uf))
