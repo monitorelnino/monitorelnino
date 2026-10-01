@@ -988,6 +988,34 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
 .cartao-mapa{counter-increment:none;}
 .cartao-mapa .figura-numero, .cartao-mapa::before{content:none; display:none;}
 
+/* ===== Defesa civil (01/10/2026): alertas e emergências, fundo branco ======================
+   A página era uma pilha de `.panel` cinza com mapas de preparação e material de auditoria. Agora
+   são quatro seções sem moldura, no mesmo desenho do Proteja-se e do Monitor de riscos: o que
+   separa seção é espaço e título.
+
+   Nada aqui redefine caixa de componente existente. Os contadores reusam `.cartao-numero` e
+   `.grade-numeros` da Imprensa, e o que se acrescenta é uma VARIANTE de três colunas e o rótulo do
+   período — não um segundo estilo para a mesma família, que é o defeito que o portão de
+   consistência visual cobrou quatro vezes no cartão de mapa. */
+.dc-topo{margin:var(--sp-5) 0 var(--sp-6);}
+.dc-topo-periodo{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption);
+  text-transform:uppercase; letter-spacing:var(--ls-caps); color:var(--muted); margin:0;}
+.grade-numeros--3{grid-template-columns:repeat(3, minmax(0,1fr));}
+
+/* Busca por município dentro do "Ver em lista": o mapa responde "onde", o campo responde "e a
+   minha cidade?". O rótulo é visível de propósito — quem abriu a lista precisa saber o que o campo
+   faz, e um campo de busca sem rótulo visível obriga a adivinhar pelo placeholder, que desaparece
+   ao digitar. */
+.busca-mun{display:flex; flex-wrap:wrap; align-items:baseline; gap:var(--sp-2); margin:var(--sp-3) 0;}
+.busca-mun label{font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);}
+.busca-mun input{flex:1 1 220px; min-width:0; font:inherit; font-size:var(--fs-small);
+  padding:var(--sp-2); border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); color:var(--ink);}
+.busca-mun-conta{flex:1 1 100%; font-family:var(--font-dado); font-size:var(--fs-caption);
+  line-height:var(--lh-caption); color:var(--muted); margin:0;}
+
+@media (max-width: 1020px){ .grade-numeros--3{grid-template-columns:repeat(2, minmax(0,1fr));} }
+@media (max-width: 640px){ .grade-numeros--3{grid-template-columns:1fr;} }
+
 /* ===== Imprensa (01/10/2026): fundo branco, sem caixas, coluna de leitura ==================
    A página era uma pilha de `.panel` cinza; o pedido é a mesma linguagem do Proteja-se e do
    Monitor de riscos — o que separa seções é espaço e título, não moldura. */

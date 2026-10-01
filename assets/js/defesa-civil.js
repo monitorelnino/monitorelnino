@@ -1,634 +1,457 @@
-// ===== defesa-civil.html · bloco 1 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
-let RESP, RESP_SERIE, RESP_Q;
-let BR_GEOJSON, PCT_POR_UF, MAP_POINTS, MARE, DATA, TRANSFERENCIAS, CONSIST, ATOS_RESPOSTA, MUN_REF, POP_CENSO, VRESUMO, ALERTAS, SINAIS,
-    MUN_COD = {}, MUN_LATLON = {}, POP_UF = {};
+/* ===== defesa-civil.html · alertas e emergências =========================================
+ *
+ * A página foi refeita em 01/10/2026 por decisão da editoria: ela é só sobre **alertas** e
+ * **emergências**. O que saiu e para onde foi:
+ *
+ *   - os dois mapas de PREPARAÇÃO (verificação municipal com seletor de 12 categorias; cobertura
+ *     e natureza dos atos por UF) — o plano mora no MARÉ Legal, na página inicial, e mostrá-lo
+ *     aqui era a mesma pergunta respondida duas vezes, com duas réguas;
+ *   - todo o material de AUDITORIA (log de verificação e cobertura, log por estado/canal/nível,
+ *     a parede de fontes e registros, a tabela dos municípios verificados um a um, o painel
+ *     amostral) — vai para `dados-abertos/` e para a METODOLOGIA, que é onde pesquisador procura.
+ *     Nada foi apagado do repositório: deixou de ter página própria.
+ *
+ * Duas decisões de dado que mudam o que o leitor vê, e por quê:
+ *
+ *   (1) **O mapa principal de alerta é o do CEMADEN.** O aviso do INMET é emitido por ÁREA, não
+ *       por município: 3.479 municípios sob aviso contra 17 sob alerta, na consulta de 30/09.
+ *       Desenhados juntos, o Cemaden desaparece sob o Inmet e o mapa do país fica uniforme — um
+ *       mapa que não distingue nada. O Inmet continua no contador do topo e no gráfico por tipo,
+ *       onde a informação é a CONTAGEM e a geografia não acrescenta.
+ *   (2) **O cadastro é o da Casa Civil, nominal.** O mapa usava `municipios_prioritarios.json`,
+ *       que era uma APROXIMAÇÃO POPULACIONAL — para cada UF, os N municípios mais populosos, com
+ *       N vindo da contagem pública. Agora usa `cadastro_prioritarios_federal.json`, a lista nome
+ *       a nome dos 2.095 do cadastro federal de municípios suscetíveis a enxurradas e inundações
+ *       (SEPAC/Casa Civil, Decreto 12.444/2025). O nome "Cadastro Nacional" sai da página: aquele
+ *       é outro cadastro, o do art. 3º-A da Lei 12.340, de inscrição voluntária, que inclui
+ *       deslizamento e não tem fonte pública — confundir os dois era afirmar dever que esta lista
+ *       não cria.
+ *
+ * Todo cartão de mapa traz "Ver em lista" com busca por município: o mapa responde "onde", a
+ * lista responde "e a minha cidade?", que é a pergunta que traz a pessoa aqui.
+ */
+let BR_GEOJSON, MAP_POINTS, RESP, DECRETADOS, ALERTAS, SINAIS, CADASTRO,
+    MUN_COD = {}, LATLON_POR_CODIGO = {};
+
 async function __load(){
-  try { const __m = (await fetch('data/meta.json').then(r => r.ok ? r.json() : null) || {}); window.__metaCorte = __m.corte; window.__metaAtualizado = __m.atualizado_em || __m.corte; } catch(e) {}
-  let __ref;
-  [BR_GEOJSON, PCT_POR_UF, MAP_POINTS, MARE, DATA, TRANSFERENCIAS, CONSIST, ATOS_RESPOSTA, __ref, POP_CENSO, VRESUMO] = await Promise.all(
-    ['geo_uf','percentual_uf','pontos_mapa','indice','estados','transferencias','consist','atos_resposta','municipios_ibge_referencia','populacao_censo2022','verificacao_resumo']
+  try {
+    const m = (await fetch('data/meta.json').then(r => r.ok ? r.json() : null)) || {};
+    window.__metaCorte = m.corte; window.__metaAtualizado = m.atualizado_em || m.corte;
+  } catch (e) {}
+  let ref;
+  [BR_GEOJSON, MAP_POINTS, ref] = await Promise.all(
+    ['geo_uf', 'pontos_mapa', 'municipios_ibge_referencia']
       .map(f => fetch('data/' + f + '.json').then(r => {
-        if(!r.ok) throw new Error('Falha ao carregar data/' + f + '.json');
+        if (!r.ok) throw new Error('Falha ao carregar data/' + f + '.json');
         return r.json();
       }))
   );
-  // v3.1 §3: contador de resposta (arquivos próprios; peso zero)
-  try { [RESP, RESP_SERIE, RESP_Q] = await Promise.all(['data/resposta/por_uf.json','data/resposta/serie_semanal.json','data/resposta/quadrantes.json'].map(f => fetch(f).then(r => r.ok ? r.json() : null))); } catch(e) { RESP = RESP_SERIE = RESP_Q = null; }
-  /* Alertas em vigor (24/09/2026): arquivo próprio, por município, peso zero. Ausência não derruba
-     a página — a seção passa a declarar a lacuna, nunca a mostrar zero município como se fosse calma. */
-  try { [ALERTAS, SINAIS] = await Promise.all(['data/alertas/vigentes.json','data/sinais_risco.json'].map(f => fetch(f).then(r => r.ok ? r.json() : null))); } catch(e) { ALERTAS = SINAIS = null; }
-  MUN_REF = {};
-  window.REF_MUNICIPIOS = __ref; // v2.2.4: usado pelo mapa de nível de verificação
-  __ref.forEach(m => (MUN_REF[m.uf] = MUN_REF[m.uf] || []).push(m.nome));
-  __ref.forEach(m => {
+  /* Os quatro opcionais não derrubam a página: cada seção que depende deles DECLARA a lacuna.
+     Zero município sob alerta e arquivo ausente são coisas diferentes, e a página não pode fazer
+     uma passar pela outra (regra editorial da ausência declarada). */
+  [RESP, DECRETADOS, ALERTAS, SINAIS, CADASTRO] = await Promise.all(
+    ['data/resposta/por_uf.json', 'data/resposta/municipios_decretados.json',
+     'data/alertas/vigentes.json', 'data/sinais_risco.json',
+     'data/cadastro_prioritarios_federal.json']
+      .map(f => fetch(f).then(r => r.ok ? r.json() : null).catch(() => null))
+  );
+  /* Coordenada e nome pelo CÓDIGO IBGE, nunca pelo nome: o arquivo de alertas é indexado por
+     código, e as fontes escrevem o nome de formas diferentes (o Cemaden sempre em caixa alta, o
+     Inmet às vezes). Casar por nome já deixou os municípios do Cemaden fora do mapa em silêncio. */
+  ref.forEach(m => {
     const c = String(m.codigo_ibge).padStart(7, '0');
     MUN_COD[m.uf + '|' + m.nome] = c;
-    MUN_LATLON[m.uf + '|' + m.nome] = [m.lon, m.lat];
-    POP_UF[m.uf] = (POP_UF[m.uf] || 0) + (POP_CENSO[c] || 0);
+    LATLON_POR_CODIGO[c] = [m.lon, m.lat];
   });
   __init();
 }
-function __init(){
-// =========================================================
-// ANÁLISES — gráficos derivados do mesmo objeto DATA
-// =========================================================
-MonitorMapas.padraoGraficos(window.Chart);
-
-// ---- 1. (donut nacional removido da página em 21/09/2026 — pedido editorial: consolidar mapas, ver seção "Ver mais" removida) ----
-
-// ---- 3. Financiamento federal por área (R$ reais, calculados a partir de Registro_Federal) ----
-// (gráfico 3 — financiamento federal por área — migrou para financiamento.html, E9)
-
-// ---- 4. (status das 27 capitais removido da página em 21/09/2026 — mesmo pedido do item 1 acima) ----
-
-// ---- 5. Timeline de reatividade (dias em relação ao Boletim nº1, 29/06/2026) ----
-
 
 // =========================================================
-// MAPAS GEOGRÁFICOS (D3 — projeção real das 27 UFs)
+// Lista buscável — o mesmo componente em todos os cartões
 // =========================================================
-const showTip = MonitorMapas.showTip, hideTip = MonitorMapas.hideTip;
-
-const projection = d3.geoMercator().fitSize([480,460], BR_GEOJSON);
-const pathGen = d3.geoPath().projection(projection);
-
-// ---- Mapa 1: pontos por categoria de ato (Fase 1 + Fase 2) ----
-const CAT_STYLE = {
-  plano:            {cor:MonitorMapas.PALETA.categorias.plano, r:5.5, label:'Plano publicado'},
-  plano_antigo:     {cor:MonitorMapas.PALETA.categorias.plano_antigo, r:5,   label:'Plano vigente, de ciclo anterior'},
-  plano_novo: {cor:MonitorMapas.PALETA.categorias.plano_novo, r:5,   label:'Plano novo, dedicado ao ciclo'},
-  plano_readaptado: {cor:MonitorMapas.PALETA.categorias.plano_readaptado, r:5,   label:'Plano readaptado para o ciclo'},
-  plano_recorrente: {cor:MonitorMapas.PALETA.categorias.plano_recorrente, r:5,   label:'Plano recorrente, sazonal'},
-  plano_elaboracao: {cor:MonitorMapas.PALETA.categorias.plano_elaboracao, r:5,   label:'Plano em elaboração'},
-  estrutura:        {cor:MonitorMapas.PALETA.categorias.estrutura, r:5,   label:'Estrutura de coordenação'},
-  decreto:          {cor:MonitorMapas.PALETA.categorias.decreto, r:4.5, label:'Decreto de emergência'},
-  coberto_estadual: {cor:MonitorMapas.PALETA.categorias.coberto_estadual, r:4.5, label:'Coberto pelo estado'},
-  nao_el_nino:      {cor:MonitorMapas.PALETA.categorias.nao_el_nino, r:4,   label:'Não é El Niño'},
-  nao_localizado:   {cor:MonitorMapas.PALETA.categorias.nao_localizado, r:4.5, label:'Nenhum ato localizado'},
-  nao_verificado:   {cor:MonitorMapas.PALETA.categorias.nao_verificado, r:4.5, label:'Ainda não verificado'},
-};
-
-// 13/09/2026 (auditoria de visualizações, consolidação): quatro mapas municipais viram dois pares
-// com seletor de camada — renderiza as duas camadas do par uma vez (sem custo extra de redesenho a
-// cada troca; mapNiveis em especial é caro, 5.571 pontos) e alterna a visibilidade por [hidden].
-function ligarSeletorDeCamada(selId, pares){
-  const sel = document.getElementById(selId);
-  if (!sel) return;
-  /* 24/09/2026 (§208): era `svg.hidden = !ativo`, e em elemento SVG isso NÃO FUNCIONA. `hidden`
-     é propriedade de HTMLElement; num SVGElement a atribuição cria uma propriedade JS comum e
-     não reflete no atributo — e o que esconde é o atributo, pela regra `[hidden]` da folha do
-     navegador. Medido: depois do change, `svg.hidden` era false e o atributo continuava lá, com
-     display:none. Consequência: os dois seletores desta página nunca trocaram de camada, e
-     "Nível de verificação · todos os 5.571 municípios" e "Natureza · decreto × plano" jamais
-     chegaram ao leitor. `toggleAttribute` mexe no atributo e serve para SVG e para HTML. */
-  function mostrar(el, ativo){ if (el) el.toggleAttribute('hidden', !ativo); }
-  function aplicar(){
-    pares.forEach(p => {
-      const ativo = p.valor === sel.value;
-      mostrar(document.getElementById(p.svg), ativo);
-      mostrar(document.getElementById(p.legenda), ativo);
-    });
-  }
-  sel.addEventListener('change', aplicar);
-  aplicar();
-}
-
-const svgPoints = d3.select('#mapPoints');
-svgPoints.append('g').selectAll('path')
-  .data(BR_GEOJSON.features).join('path')
-  .attr('d', pathGen).attr('fill', MonitorMapas.cor('zebra')).attr('class', 'uf-path')
-  .on('mouseenter', (evt,d)=> showTip(`<strong>${d.properties.name}</strong>`, evt))
-  .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
-  .on('mouseleave', hideTip);
-
-const contaveis = MAP_POINTS.filter(p => p.categoria==='plano' || p.categoria==='plano_antigo' || p.categoria==='decreto').length;
-(document.getElementById('countComAto')||{}).textContent = contaveis;
-
-// ordenar para desenhar "plano" por cima de "decreto" por cima de "não localizado"
-const drawOrder = ['nao_verificado','nao_localizado','nao_el_nino','coberto_estadual','plano_elaboracao','estrutura','decreto','plano_antigo','plano','plano_novo','plano_readaptado','plano_recorrente'];
-const sortedPoints = [...MAP_POINTS].sort((a,b)=> drawOrder.indexOf(a.categoria) - drawOrder.indexOf(b.categoria));
-
-svgPoints.append('g').selectAll('circle')
-  .data(sortedPoints).join('circle')
-  .attr('cx', d=>projection([d.lon,d.lat])[0])
-  .attr('cy', d=>projection([d.lon,d.lat])[1])
-  .attr('r', d=>CAT_STYLE[d.categoria].r)
-  .attr('fill', d=>CAT_STYLE[d.categoria].cor)
-  .attr('stroke', d=>d.categoria==='plano' ? MonitorMapas.cor('branco') : MonitorMapas.cor('branco'))
-  .attr('stroke-width', d=>d.categoria==='plano' ? 1.6 : 1)
-  .attr('stroke-dasharray', d=>(d.categoria==='nao_localizado'||d.categoria==='nao_verificado') ? '2,1.5' : null)
-  // 22/09/2026 (§155): tag de prioritário no tooltip — conjunto vem de data/municipios_prioritarios.json (carregado abaixo, no mapa de prioritários)
-  .on('mouseenter', (evt,d)=> showTip(`<strong>${d.nome} (${d.uf})</strong>${(window.__PRIOR_SET && window.__PRIOR_SET.has(d.nome+'|'+d.uf)) ? ' <span class="tag tag--prior">prioritário</span>' : ''}<br>${CAT_STYLE[d.categoria].label}${d.fase===2?' · Fase 2':''}`, evt))
-  .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
-  .on('mouseleave', hideTip);
-
-MonitorMapas.legenda('pointsLegend', Object.values(CAT_STYLE).map(v => ({cor: v.cor, rotulo: v.label})));
-ligarSeletorDeCamada('selVerificacao', [{valor:'pontos', svg:'mapPoints', legenda:'pointsLegend'}, {valor:'niveis', svg:'mapNiveis', legenda:'legNiveis'}]);
-// tabela acessível (equivalente aos dois mapas do seletor acima) — soma por UF, sem esperar o setTimeout do mapa de níveis
-(function(){
-  const tb = document.querySelector('#tblVerificacao tbody');
-  if (!tb) return;
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const contAto = {};
-  MAP_POINTS.forEach(p => { if (['plano','plano_antigo','decreto'].includes(p.categoria)) contAto[p.uf] = (contAto[p.uf]||0) + 1; });
-  const ufsOrdenadas = DATA.ufs.map(u => u.uf).sort();
-  tb.innerHTML = ufsOrdenadas.map(uf => {
-    const niv = (VRESUMO && VRESUMO.por_uf && VRESUMO.por_uf[uf]) || {};
-    return '<tr><td><strong>' + esc(uf) + '</strong></td><td>' + esc(contAto[uf] || 0) + '</td><td>' + esc(niv.municipal_completo || 0) + '</td><td>' + esc(niv.estadual || 0) + '</td><td>' + esc(niv.nacional || 0) + '</td><td>' + esc(niv.nao_verificado || 0) + '</td></tr>';
-  }).join('');
-})();
-
-// ---- 1b. Nível de verificação municipal (v2.2.4, §7.3/C8) ----
-// Desenho adiado (setTimeout 0) e camada padrão em UM único <path>: 5.571 nós
-// individuais tornavam a página lenta e atrasavam os mapas seguintes (pego pelo
-// portão de runtime em 02/09/2026).
-setTimeout(function(){
-  const NIV_STYLE = {
-    nao_verificado:     {cor:MonitorMapas.PALETA.verificacao.nao_verificado, label:'Ainda não verificado'},
-    nacional:           {cor:MonitorMapas.PALETA.verificacao.nacional, label:'Verificado em fontes nacionais'},
-    estadual:           {cor:MonitorMapas.PALETA.verificacao.estadual, label:'Fontes nacionais e estaduais'},
-    municipal_completo: {cor:MonitorMapas.PALETA.verificacao.municipal_completo, label:'Verificação completa'},
-    fonte_suspensa:     {cor:MonitorMapas.PALETA.verificacao.fonte_suspensa, label:'Fonte suspensa (defeso)'},
-  };
-  const acima = (VRESUMO && VRESUMO.niveis_acima_do_padrao) || {};
-  const susp  = new Set((VRESUMO && VRESUMO.fontes_suspensas_municipios) || []);
-  const __ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460);
-  const svg = MonitorMapas.ufs(__ctx, 'mapNiveis', uf => 'var(--surface-2, var(--osso-claro))', uf => { const p = (VRESUMO && VRESUMO.por_uf && VRESUMO.por_uf[uf]) || {}; return Object.entries(p).map(([k, v]) => v + ' ' + (NIV_STYLE[k] ? NIV_STYLE[k].label.toLowerCase() : k)).join(' · ') || 'sem dados'; });
-  const pts = (window.REF_MUNICIPIOS || []).map(r => {
-    const cod = String(r.codigo_ibge).padStart(7,'0');
-    const niv = susp.has(cod) ? 'fonte_suspensa' : (acima[cod] || acima[String(r.codigo_ibge)] || 'nao_verificado');
-    return {lat:r.lat, lon:r.lon, niv};
-  }).filter(p => p.lat && p.lon);
-  // camada padrão (não verificados): um único <path> de pontos — barato de renderizar
-  MonitorMapas.pontosDensos(__ctx, 'mapNiveis', pts.filter(p=>p.niv==='nao_verificado'), NIV_STYLE.nao_verificado.cor, 1.4, .55);
-  MonitorMapas.pontos(__ctx, 'mapNiveis', pts.filter(p=>p.niv!=='nao_verificado'), {r: () => 2.6, cor: d => NIV_STYLE[d.niv].cor, classe: 'acima'});
-  MonitorMapas.legenda('legNiveis', Object.values(NIV_STYLE).map(v => ({cor: v.cor, rotulo: v.label})));
-  // 13/09/2026: crédito único de boxVerificacao já sai de creditosAntecipacao() (mesmas fontes) —
-  // chamada redundante removida daqui (era 'nivelverificacao', figura própria antes da consolidação).
-}, 0);
-
-// ---- Mapa dos municípios prioritários (Cadastro Nacional) — publicados vs sem nada ----
-// 15/09/2026: fonte única é data/municipios_prioritarios.json (gerar_prioritarios.py) — a mesma
-// aproximação populacional (documentada no arquivo) que alimenta a busca "Descubra se seu
-// município é prioritário" em prefeituras.html; nunca mais recomputada em dois lugares.
-const svgPrior = d3.select('#mapPrioritarios');
-fetch('data/municipios_prioritarios.json').then(r => r.ok ? r.json() : null).then(PRIOR => {
-  if (!PRIOR) return;
-  window.__PRIOR_SET = new Set(PRIOR.municipios.map(m => m.nome + '|' + m.uf));   // §155: tag no tooltip do mapa de verificação
-  svgPrior.append('g').selectAll('path')
-    .data(BR_GEOJSON.features).join('path')
-    .attr('d', pathGen).attr('fill', MonitorMapas.cor('zebra')).attr('class', 'uf-path')
-    .on('mouseenter', (evt,d)=> showTip(`<strong>${d.properties.name}</strong>`, evt))
-    .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
-    .on('mouseleave', hideTip);
-  addSiglas(svgPrior);
-  const prioridadeOrdenada = [...PRIOR.municipios].sort((a,b) => (a.publicado?1:0) - (b.publicado?1:0)); // não-publicados desenhados por baixo
-  svgPrior.append('g').selectAll('circle')
-    .data(prioridadeOrdenada).join('circle')
-    .attr('cx', d => projection([d.lon, d.lat])[0])
-    .attr('cy', d => projection([d.lon, d.lat])[1])
-    .attr('r', d => d.publicado ? 4 : 3)
-    .attr('fill', d => d.publicado ? MonitorMapas.PALETA.preparacao : MonitorMapas.PALETA.zero)
-    .attr('stroke', d => d.publicado ? MonitorMapas.cor('branco') : MonitorMapas.PALETA.resposta)
-    .attr('stroke-width', d => d.publicado ? 1.6 : 1)
-    .attr('stroke-dasharray', d => d.publicado ? null : '1.5,1.2')
-    .on('mouseenter', (evt,d)=> showTip(`<strong>${d.nome} (${d.uf})</strong><br>Município prioritário (aproximação populacional) — `
-      + (d.publicado ? 'instrumento localizado' : 'nenhum instrumento localizado até o corte'), evt))
-    .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
-    .on('mouseleave', hideTip);
-  document.getElementById('legPrioritarios').innerHTML =
-    `<span><i style="background:var(--musgo)"></i>Com instrumento</span>`
-    + `<span><i style="background:repeating-linear-gradient(45deg,var(--osso-claro),var(--osso-claro) 3px,var(--argila) 3px,var(--argila) 4px)"></i>Sem instrumento localizado</span>`;
-});
-
-// ===========================================================
-// Mapa de atos de resposta (decretos de emergência) — NUNCA pontuam no
-// índice (Correção B). Junta duas fontes: municipios.json (categoria
-// 'decreto', registros históricos, majoritariamente PB) e o arquivo dedicado
-// data/atos_resposta.json (eventos novos, com causa/danos/fonte por registro
-// — pedido de Patricia, 31/08/2026, motivado pelo temporal de granizo em SC).
-const eventosAntigos = MAP_POINTS.filter(p => p.categoria === 'decreto').map(p => ({
-  nome: p.nome, uf: p.uf, lat: p.lat, lon: p.lon, data: null, causa: null,
-}));
-const eventosNovos = (ATOS_RESPOSTA.eventos || []).map(e => ({
-  nome: e.nome, uf: e.uf, lat: e.lat, lon: e.lon, data: e.data, causa: e.causa,
-  danos: e.danos, decreto: e.decreto, fonte: e.fonte,
-}));
-const TODOS_ATOS_RESPOSTA = [...eventosAntigos, ...eventosNovos];
-(document.getElementById('countAtosResposta')||{}).textContent = TODOS_ATOS_RESPOSTA.length;
-
-const svgResp = d3.select('#mapAtosResposta');
-(function(){ const ev = ATOS_RESPOSTA.eventos || []; const datas = ev.map(e => e.data).filter(Boolean).map(d => d.split('/').reverse().join('-')).sort(); const ult = datas.length ? datas[datas.length - 1].split('-').reverse().join('/') : '—';
-  const el = document.getElementById('carimboAtos'); if (el) el.textContent = 'Registro: ' + ev.length + ' evento(s), último em ' + ult + '. Coleta automática (DOU/S2iD e diários oficiais) a partir de 06/09/2026: diária na semana intensiva, semanal depois; até lá, os eventos vêm da verificação manual.'; })();
-svgResp.append('g').selectAll('path')
-  .data(BR_GEOJSON.features).join('path')
-  .attr('d', pathGen).attr('fill', MonitorMapas.cor('zebra')).attr('class', 'uf-path')
-  .on('mouseenter', (evt,d)=> showTip(`<strong>${d.properties.name}</strong>`, evt))
-  .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
-  .on('mouseleave', hideTip);
-svgResp.append('g').selectAll('circle')
-  .data(TODOS_ATOS_RESPOSTA).join('circle')
-  .attr('cx', d => projection([d.lon, d.lat])[0])
-  .attr('cy', d => projection([d.lon, d.lat])[1])
-  .attr('r', 4)
-  .attr('fill', MonitorMapas.PALETA.resposta)
-  .attr('stroke', MonitorMapas.cor('branco'))
-  .attr('stroke-width', 1.6)
-  .on('mouseenter', (evt,d)=> showTip(
-    `<strong>${d.nome} (${d.uf})</strong><br>Decreto de emergência — ato de resposta, não pontua`
-    + (d.data ? `<br>Data: ${d.data}` : '')
-    + (d.causa ? `<br>Causa: ${d.causa}` : ''), evt))
-  .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
-  .on('mouseleave', hideTip);
-document.getElementById('legAtosResposta').innerHTML =
-  `<span><i style="background:var(--argila)"></i>Decreto de emergência</span>`;
-
-// =========================================================
-// ALERTAS EM VIGOR (24/09/2026) — avisos do INMET e alertas do CEMADEN, por município.
-// Vieram do Monitor de riscos, onde eram só contagem por UF. Peso zero, como todo sinal.
-// A severidade e o nível são os do ÓRGÃO: o projeto não cria escala de dano própria, e o
-// mapa de grau → cor mora na paleta semântica, nunca no hexadecimal que o INMET devolve.
-// =========================================================
-/* Crédito de figura de SINAL: nome, endereço e data saem do catálogo de data/sinais_risco.json,
-   não de texto escrito aqui — é o que mantém a proveniência igual em todas as páginas e o que os
-   portões conferem (verificar_sinais.py exige que toda fonte catalogada apareça creditada). */
-function creditoSinal(caixaId, chaves, data){
-  const fontes = (SINAIS && SINAIS.fontes) || {};
-  const nomes = chaves.map(k => (fontes[k] || {}).nome || k);
-  const url = (fontes[chaves[0]] || {}).url_publica;
-  MonitorMapas.credito(caixaId, {fontes: nomes, url: url, data: data});
-  const d = document.querySelector('#' + caixaId + ' .fonte-figura');
-  if (d) d.dataset.credito = chaves.join(' ');
-}
-/* Coordenada pelo CÓDIGO IBGE, não pelo nome. O arquivo de alertas é indexado por código, e as duas
-   fontes escrevem o nome de formas diferentes (o CEMADEN sempre em caixa alta, o INMET às vezes);
-   casar por nome deixou os 12 municípios do CEMADEN fora do mapa na primeira rodada, em silêncio.
-   Código é a chave canônica e não tem grafia. */
-const LATLON_POR_CODIGO = {};
-(window.REF_MUNICIPIOS || []).forEach(m => {
-  LATLON_POR_CODIGO[String(m.codigo_ibge).padStart(7, '0')] = [m.lon, m.lat];
-});
-(function alertasEmVigor(){
-  const box = document.getElementById('boxAlertas');
-  if(!box) return;
-  /* `esc` do módulo único, e não uma cópia local: o `esc` declarado mais acima neste arquivo vive
-     DENTRO de outra função e não alcança aqui. Chamá-lo lançava ReferenceError e o resto do bloco
-     morria em silêncio — a tabela e o cruzamento ficavam vazios sem nenhuma mensagem de erro, que
-     é a forma mais perigosa de defeito: some conteúdo e nada avisa. Só apareceu ao renderizar. */
+/* Uma função e não cinco blocos de HTML: os cinco cartões fazem a mesma promessa ao leitor
+   ("digite a sua cidade"), e cinco cópias divergem na primeira correção. O campo tem rótulo
+   VISÍVEL (não `sr-only`: quem vê a lista precisa saber o que o campo faz) e a contagem do
+   resultado é anunciada por leitor de tela, porque filtrar sem anunciar deixa quem não vê a
+   tabela sem saber que algo mudou. */
+let __seqBusca = 0;
+function listaBuscavel(figuraId, opts){
+  const alvo = document.querySelector('#' + figuraId + ' [data-busca]');
+  if (!alvo) return;
   const esc = MonitorMapas.esc;
-  const resumoEl = document.getElementById('alertasResumo');
+  const id = 'busca' + (++__seqBusca);
+  const linhas = opts.linhas || [];
+  const cols = opts.colunas;
+
+  alvo.insertAdjacentHTML('afterbegin',
+    '<details class="cartao-mapa-dados"><summary>Ver em lista</summary>'
+    + '<div class="busca-mun">'
+    + '<label for="' + id + '">' + esc(opts.rotulo || 'Buscar município') + '</label>'
+    + '<input id="' + id + '" type="search" autocomplete="off" spellcheck="false" '
+    + 'placeholder="Digite o nome da cidade ou a sigla do estado">'
+    + '<p class="busca-mun-conta" role="status" aria-live="polite"></p>'
+    + '</div>'
+    + '<div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente">'
+    + '<table class="mun-table"><thead><tr>'
+    + cols.map(c => '<th>' + esc(c) + '</th>').join('')
+    + '</tr></thead><tbody></tbody></table></div></details>');
+
+  const corpo = alvo.querySelector('tbody');
+  const campo = alvo.querySelector('#' + id);
+  const conta = alvo.querySelector('.busca-mun-conta');
+  /* O teto existe porque o cadastro tem 2.095 linhas e os decretos 902: montar tudo de uma vez
+     custa segundos no celular. Quem digita vê a sua cidade; quem não digita vê o começo da lista
+     e a contagem diz quantas existem — teto silencioso seria dizer que a lista é menor. */
+  const TETO = 200;
+
+  function pinta(){
+    const q = (campo.value || '').trim().toLowerCase();
+    const achadas = q ? linhas.filter(l => (l.busca || '').toLowerCase().indexOf(q) >= 0) : linhas;
+    corpo.innerHTML = achadas.slice(0, TETO).map(l =>
+      '<tr>' + l.celulas.map(c => '<td>' + c + '</td>').join('') + '</tr>').join('')
+      || '<tr><td colspan="' + cols.length + '">nenhum município encontrado com esse texto</td></tr>';
+    const unidade = opts.unidade || 'município';
+    conta.textContent = achadas.length === 1
+      ? '1 ' + unidade + (q ? ' encontrado' : '')
+      : achadas.length.toLocaleString('pt-BR') + ' ' + unidade + 's'
+        + (q ? ' encontrados' : '')
+        + (achadas.length > TETO ? ' · mostrando os ' + TETO + ' primeiros; refine a busca' : '');
+  }
+  campo.addEventListener('input', pinta);
+  pinta();
+}
+
+function __init(){
+  MonitorMapas.padraoGraficos(window.Chart);
+  const esc = MonitorMapas.esc;
+  const showTip = MonitorMapas.showTip, hideTip = MonitorMapas.hideTip;
+  const n = v => Number(v || 0).toLocaleString('pt-BR');
+  const projection = d3.geoMercator().fitSize([480, 460], BR_GEOJSON);
+  const pathGen = d3.geoPath().projection(projection);
   const CINZA = MonitorMapas.cor('zebra');
+  const addSiglas = svg => MonitorMapas.siglas(MonitorMapas.contexto(BR_GEOJSON, 480, 460), svg);
+  const texto = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
 
-  /* Sem arquivo, a seção DECLARA a lacuna. Zero município sob alerta e arquivo ausente são coisas
-     diferentes, e a página não pode fazer uma passar pela outra. */
-  if(!ALERTAS || !ALERTAS.municipios){
-    if(resumoEl) resumoEl.textContent = 'Avisos do INMET e alertas do CEMADEN: sem coleta até o corte.';
-    ['legAlertas','legAlertasTipo','legAlertaDecreto'].forEach(id => MonitorMapas.legenda(id, [{cor:MonitorMapas.cor('sem-dado'), rotulo:'sem coleta até o corte'}]));
-    ['boxAlertas','boxAlertasTipo','boxAlertaDecreto'].forEach(id => creditoSinal(id, ['inmet_avisos','cemaden_alertas'], null));
-    return;
-  }
-
-  const muns = ALERTAS.municipios, r = ALERTAS.resumo || {};
-  const carimbo = ALERTAS.gerado_em;
-
-  // Grau do INMET e nível do CEMADEN vêm da paleta semântica única (MonitorMapas.PALETA.grauAviso):
-  // a mesma severidade tem a mesma cor aqui e no Proteja-se. Grau novo do órgão cai em `outro` e a
-  // legenda o nomeia pelo nome que ele deu, em vez de ser enquadrado num grau vizinho.
-  const GRAU = MonitorMapas.PALETA.grauAviso;
-  const corDoGrau = g => GRAU[g] || GRAU.outro;
-  const COR_CEMADEN = GRAU.cemaden;
-
-  const lista = Object.entries(muns).map(function(par){
-    const cod = par[0], v = par[1];
-    const ll = LATLON_POR_CODIGO[cod];
-    return {cod: cod, nome: v.nome, uf: v.uf, inmet: v.inmet, cemaden: v.cemaden,
-            ll: ll, grauPior: (v.inmet[0] || {}).severidade || null};
-  });
-  const comCoord = lista.filter(m => m.ll);
-  const semCoord = lista.length - comCoord.length;
-
-  // ---- mapa de pontos ----
-  const svgA = d3.select('#mapAlertas');
-  svgA.append('g').selectAll('path').data(BR_GEOJSON.features).join('path')
-    .attr('d', pathGen).attr('fill', CINZA).attr('class', 'uf-path')
-    .on('mouseenter', (evt, d) => showTip('<strong>' + esc(d.properties.name) + '</strong>', evt))
-    .on('mousemove', (evt) => showTip(tooltip.innerHTML, evt))
-    .on('mouseleave', hideTip);
-  svgA.append('g').selectAll('circle').data(comCoord).join('circle')
-    .attr('cx', m => projection(m.ll)[0]).attr('cy', m => projection(m.ll)[1])
-    .attr('r', 3.2)
-    .attr('fill', m => m.inmet.length ? corDoGrau(m.grauPior) : COR_CEMADEN)
-    .attr('stroke', MonitorMapas.cor('branco')).attr('stroke-width', 0.8)
-    .on('mouseenter', (evt, m) => showTip(
-      '<strong>' + esc(m.nome) + ' (' + esc(m.uf) + ')</strong>'
-      + m.inmet.map(a => '<br>INMET · ' + esc(a.tipo) + ' · ' + esc(a.severidade)
-          + (a.inicio ? ' · de ' + esc(a.inicio) : '') + (a.fim ? ' a ' + esc(a.fim) : '')).join('')
-      + m.cemaden.map(a => '<br>CEMADEN · ' + esc(a.tipo || 'tipo não declarado') + ' · ' + esc(a.nivel)).join(''), evt))
-    .on('mousemove', (evt) => showTip(tooltip.innerHTML, evt))
-    .on('mouseleave', hideTip);
-  addSiglas(svgA);
-
-  const grausPresentes = [...new Set(lista.reduce((ac, m) => ac.concat(m.inmet.map(a => a.severidade)), []))];
-  MonitorMapas.legenda('legAlertas',
-    grausPresentes.map(g => ({cor: corDoGrau(g), rotulo: 'INMET · ' + g}))
-      .concat(lista.some(m => m.cemaden.length && !m.inmet.length) ? [{cor: COR_CEMADEN, rotulo: 'CEMADEN · alerta em vigor'}] : [])
-      .concat([{cor: CINZA, rotulo: 'sem aviso nem alerta em vigor'}]));
-  creditoSinal('boxAlertas', ['inmet_avisos', 'cemaden_alertas'], carimbo);
-
-  // ---- título-fato da seção ----
-  if(resumoEl) resumoEl.textContent =
-    r.municipios_inmet + ' município(s) sob aviso do INMET e ' + r.municipios_cemaden
-    + ' sob alerta do CEMADEN, na consulta de ' + (carimbo || '') + '.'
-    + (semCoord ? ' ' + semCoord + ' município(s) sem coordenada no arquivo de referência ficam fora do mapa e entram na lista.' : '');
-
-  // ---- gráfico por tipo (um município sob dois tipos conta nos dois) ----
-  const porTipo = {};
-  lista.forEach(function(m){
-    new Set(m.inmet.map(a => 'INMET · ' + a.tipo)).forEach(t => porTipo[t] = (porTipo[t] || 0) + 1);
-    new Set(m.cemaden.map(a => 'CEMADEN · ' + (a.tipo || 'tipo não declarado'))).forEach(t => porTipo[t] = (porTipo[t] || 0) + 1);
-  });
-  const tipos = Object.entries(porTipo).sort((a, b) => b[1] - a[1]);
-  const cv = document.getElementById('cAlertasTipo');
-  if(cv && window.Chart && tipos.length){
-    new Chart(cv, {type: 'bar',
-      data: {labels: tipos.map(t => t[0]),
-             datasets: [{data: tipos.map(t => t[1]), backgroundColor: MonitorMapas.PALETA.faixas.construcao}]},
-      options: {indexAxis: 'y', plugins: {legend: {display: false}}, scales: {x: {beginAtZero: true}}}});
-  }
-  MonitorMapas.legenda('legAlertasTipo', [{cor: MonitorMapas.PALETA.faixas.construcao, rotulo: 'municípios sob o tipo'}]);
-  creditoSinal('boxAlertasTipo', ['inmet_avisos', 'cemaden_alertas'], carimbo);
-
-  // ---- lista por UF ----
-  const corpoA = document.querySelector('#tblAlertas tbody');
-  if(corpoA){
-    const porUf = {};
-    lista.forEach(function(m){
-      const d = porUf[m.uf] = porUf[m.uf] || {inmet: 0, cemaden: 0, tipos: new Set()};
-      if(m.inmet.length) d.inmet++;
-      if(m.cemaden.length) d.cemaden++;
-      m.inmet.forEach(a => d.tipos.add(a.tipo));
-      m.cemaden.forEach(a => d.tipos.add(a.tipo || 'tipo não declarado'));
+  /* Crédito de figura de SINAL: nome, endereço e data saem do catálogo de `sinais_risco.json`,
+     não de texto escrito aqui — é o que mantém a proveniência igual em todas as páginas, e o que
+     `verificar_sinais.py` confere. */
+  function creditoSinal(caixaId, chaves, data){
+    const fontes = (SINAIS && SINAIS.fontes) || {};
+    MonitorMapas.credito(caixaId, {
+      fontes: chaves.map(k => (fontes[k] || {}).nome || k),
+      url: (fontes[chaves[0]] || {}).url_publica, data: data,
     });
-    corpoA.innerHTML = Object.keys(porUf).sort().map(function(uf){
-      const d = porUf[uf];
-      return '<tr><td><strong>' + esc(uf) + '</strong></td><td>' + d.inmet + '</td><td>' + d.cemaden
-           + '</td><td>' + esc([...d.tipos].sort().join(' · ')) + '</td></tr>';
-    }).join('') || '<tr><td colspan="4">nenhum município sob aviso ou alerta na consulta</td></tr>';
+    const d = document.querySelector('#' + caixaId + ' .fonte-figura');
+    if (d) d.dataset.credito = chaves.join(' ');
+  }
+  function fundo(svg){
+    svg.append('g').selectAll('path').data(BR_GEOJSON.features).join('path')
+      .attr('d', pathGen).attr('fill', CINZA).attr('class', 'uf-path')
+      .on('mouseenter', (evt, d) => showTip('<strong>' + esc(d.properties.name) + '</strong>', evt))
+      .on('mousemove', (evt) => showTip(tooltip.innerHTML, evt))
+      .on('mouseleave', hideTip);
+    return svg;
   }
 
-  // ---- cruzamento: decreto no ciclo × aviso ou alerta agora ----
-  const codsAlerta = new Set(Object.keys(muns));
-  /* TODOS_ATOS_RESPOSTA é uma lista de EVENTOS, e um município pode ter mais de um decreto no
-     ciclo: contar eventos e chamar de município inflaria o cruzamento (193 eventos sobre 149
-     municípios, medido em 24/09/2026). Um ponto e uma contagem por MUNICÍPIO. */
-  const porCodigo = {};
-  (TODOS_ATOS_RESPOSTA || []).forEach(function(d){
-    const cod = MUN_COD[d.uf + '|' + d.nome];
-    if(!cod || !codsAlerta.has(cod)) return;
-    const atual = porCodigo[cod];
-    if(!atual) { porCodigo[cod] = Object.assign({}, d, {cod: cod, decretos: 1}); return; }
-    atual.decretos++;
+  // =========================================================
+  // 1. Alertas e avisos em vigor
+  // =========================================================
+  const muns = (ALERTAS && ALERTAS.municipios) || null;
+  const rAl = (ALERTAS && ALERTAS.resumo) || {};
+  const carimbo = ALERTAS && ALERTAS.gerado_em;
+  const GRAU = MonitorMapas.PALETA.grauAviso;
+  const COR_CEMADEN = GRAU.cemaden;
+  const corDoGrau = g => GRAU[g] || GRAU.outro;
+
+  const lista = muns ? Object.entries(muns).map(([cod, v]) => ({
+    cod: cod, nome: v.nome, uf: v.uf, inmet: v.inmet || [], cemaden: v.cemaden || [],
+    ll: LATLON_POR_CODIGO[cod],
+  })) : [];
+  const comCemaden = lista.filter(m => m.cemaden.length);
+
+  texto('linhaAlertas', carimbo ? 'Consulta de ' + carimbo : 'Sem consulta até o corte');
+  texto('linhaAlertasTipo', carimbo ? 'Consulta de ' + carimbo : 'Sem consulta até o corte');
+
+  if (!muns){
+    texto('alertasResumo', 'Alertas do Cemaden e avisos do Inmet: sem coleta até o corte.');
+    ['legAlertas', 'legAlertasTipo'].forEach(id =>
+      MonitorMapas.legenda(id, [{cor: MonitorMapas.cor('sem-dado'), rotulo: 'sem coleta até o corte'}]));
+    ['boxAlertas', 'boxAlertasTipo'].forEach(id => creditoSinal(id, ['cemaden_alertas', 'inmet_avisos'], null));
+  } else {
+    const svgA = fundo(d3.select('#mapAlertas'));
+    const semCoord = comCemaden.filter(m => !m.ll).length;
+    svgA.append('g').selectAll('circle').data(comCemaden.filter(m => m.ll)).join('circle')
+      .attr('cx', m => projection(m.ll)[0]).attr('cy', m => projection(m.ll)[1])
+      .attr('r', 5).attr('fill', COR_CEMADEN)
+      .attr('stroke', MonitorMapas.cor('branco')).attr('stroke-width', 1.4)
+      .on('mouseenter', (evt, m) => showTip(
+        '<strong>' + esc(m.nome) + ' (' + esc(m.uf) + ')</strong>'
+        + m.cemaden.map(a => '<br>Cemaden · ' + esc(a.tipo || 'tipo não declarado') + ' · ' + esc(a.nivel)
+            + (a.desde ? ' · desde ' + esc(a.desde) : '')).join(''), evt))
+      .on('mousemove', (evt) => showTip(tooltip.innerHTML, evt))
+      .on('mouseleave', hideTip);
+    addSiglas(svgA);
+
+    const niveis = [...new Set(comCemaden.reduce((ac, m) => ac.concat(m.cemaden.map(a => a.nivel)), []))].filter(Boolean);
+    MonitorMapas.legenda('legAlertas',
+      (niveis.length ? niveis.map(x => ({cor: COR_CEMADEN, rotulo: 'Cemaden · ' + x}))
+                     : [{cor: COR_CEMADEN, rotulo: 'Cemaden · alerta em vigor'}])
+      .concat([{cor: CINZA, rotulo: 'sem alerta do Cemaden em vigor'}])
+      .concat(semCoord ? [{cor: MonitorMapas.cor('sem-dado'), rotulo: 'sem coordenada (' + semCoord + ')'}] : []));
+    creditoSinal('boxAlertas', ['cemaden_alertas'], carimbo);
+
+    texto('alertasResumo',
+      n(rAl.municipios_cemaden) + ' município(s) sob alerta do Cemaden e ' + n(rAl.municipios_inmet)
+      + ' sob aviso do Inmet, na consulta de ' + (carimbo || '—') + '. O aviso do Inmet é emitido por '
+      + 'área, não por município; o mapa mostra o alerta do Cemaden.');
+
+    listaBuscavel('boxAlertas', {
+      colunas: ['Município', 'UF', 'Alerta do Cemaden', 'Aviso do Inmet'],
+      rotulo: 'Buscar município sob alerta ou aviso',
+      linhas: lista.sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR')).map(m => ({
+        busca: m.nome + ' ' + m.uf,
+        celulas: ['<strong>' + esc(m.nome) + '</strong>', esc(m.uf),
+          m.cemaden.map(a => esc((a.tipo || 'tipo não declarado') + ' · ' + a.nivel)).join('<br>') || '—',
+          m.inmet.map(a => esc(a.tipo + ' · ' + a.severidade)).join('<br>') || '—'],
+      })),
+    });
+
+    // ---- gráfico por tipo (um município sob dois tipos conta nos dois) ----
+    const porTipo = {};
+    lista.forEach(m => {
+      new Set(m.inmet.map(a => 'Inmet · ' + a.tipo)).forEach(t => porTipo[t] = (porTipo[t] || 0) + 1);
+      new Set(m.cemaden.map(a => 'Cemaden · ' + (a.tipo || 'tipo não declarado'))).forEach(t => porTipo[t] = (porTipo[t] || 0) + 1);
+    });
+    const tipos = Object.entries(porTipo).sort((a, b) => b[1] - a[1]);
+    const cv = document.getElementById('cAlertasTipo');
+    if (cv && window.Chart && tipos.length){
+      new Chart(cv, {type: 'bar',
+        data: {labels: tipos.map(t => t[0]),
+               datasets: [{data: tipos.map(t => t[1]), backgroundColor: MonitorMapas.PALETA.faixas.construcao}]},
+        options: {indexAxis: 'y', plugins: {legend: {display: false}}, scales: {x: {beginAtZero: true}}}});
+    }
+    MonitorMapas.legenda('legAlertasTipo', [{cor: MonitorMapas.PALETA.faixas.construcao, rotulo: 'municípios sob o tipo'}]);
+    creditoSinal('boxAlertasTipo', ['inmet_avisos', 'cemaden_alertas'], carimbo);
+    listaBuscavel('boxAlertasTipo', {
+      colunas: ['Tipo em vigor', 'Municípios'], rotulo: 'Buscar tipo de aviso ou alerta', unidade: 'tipo',
+      linhas: tipos.map(t => ({busca: t[0], celulas: [esc(t[0]), n(t[1])]})),
+    });
+  }
+
+  // =========================================================
+  // 2. Emergências no ciclo
+  // =========================================================
+  /* UMA fonte para os três mapas e para os três contadores: `data/resposta/municipios_decretados.json`,
+     que é o arquivo que `gerar_resposta.py` consolida e do qual sai o número publicado em
+     `resposta/por_uf.json`.
+
+     Isto foi defeito medido, não precaução. A primeira versão desta página montava o conjunto aqui,
+     unindo os registros `decreto` de `municipios.json` aos eventos de `atos_resposta.json` e casando
+     por NOME: dava 770 municípios, enquanto o contador do topo, lendo o arquivo consolidado, dizia
+     734. Dois números para a mesma pergunta na mesma página — exatamente o que a regra 0 da página de
+     imprensa existe para barrar. O consolidado casa por CÓDIGO IBGE e é quem decide; recontar aqui
+     seria manter uma segunda definição de "município que decretou". */
+  const decretados = DECRETADOS && DECRETADOS.municipios
+    ? Object.values(DECRETADOS.municipios).filter(m => m.decreto).map(m => {
+        const ll = LATLON_POR_CODIGO[m.ibge];
+        const f = (m.fontes || [])[0] || {};
+        return {cod: m.ibge, nome: m.nome, uf: m.uf, ll: ll,
+                data: m.primeiro_decreto, tipos: m.tipos || [], eventos: m.n_eventos || 1,
+                reconhecida: !!m.reconhecido, documento: f.decreto || null, url: f.url || null};
+      })
+    : [];
+  const reconhecidos = decretados.filter(m => m.reconhecida);
+  const semReconhecimento = decretados.length - reconhecidos.length;
+  const semCoordDec = decretados.filter(m => !m.ll).length;
+  const carimboCiclo = (DECRETADOS && DECRETADOS.gerado_em) || window.__metaAtualizado || null;
+  /* Tipo no vocabulário do arquivo, traduzido para o do leitor sem acrescentar juízo: o arquivo
+     distingue o decreto do município do reconhecimento federal, e são coisas diferentes. */
+  const TIPO_ROTULO = {decreto_municipal: 'decreto do município',
+                       decreto_estadual: 'decreto estadual',
+                       reconhecimento_federal: 'reconhecimento federal',
+                       em_classificacao: 'em classificação'};
+  const tipoTexto = m => (m.tipos.map(t => TIPO_ROTULO[t] || t).join(', ') || '—');
+
+  function pontos(svgSel, dados, raio, aoEntrar){
+    const svg = fundo(d3.select(svgSel));
+    svg.append('g').selectAll('circle').data(dados.filter(m => m.ll)).join('circle')
+      .attr('cx', m => projection(m.ll)[0]).attr('cy', m => projection(m.ll)[1])
+      .attr('r', raio).attr('fill', MonitorMapas.PALETA.resposta)
+      .attr('stroke', MonitorMapas.cor('branco')).attr('stroke-width', 1.4)
+      .on('mouseenter', (evt, m) => showTip(aoEntrar(m), evt))
+      .on('mousemove', (evt) => showTip(tooltip.innerHTML, evt))
+      .on('mouseleave', hideTip);
+    addSiglas(svg);
+    return svg;
+  }
+  const semCoordItem = q => q ? [{cor: MonitorMapas.cor('sem-dado'), rotulo: 'sem coordenada (' + q + ')'}] : [];
+
+  // ---- 2a. quem decretou ----
+  texto('linhaAtos', carimboCiclo ? 'Registro de ' + carimboCiclo : 'Sem registro até o corte');
+  pontos('#mapAtosResposta', decretados, 4, m =>
+    '<strong>' + esc(m.nome) + ' (' + esc(m.uf) + ')</strong><br>'
+    + (m.eventos > 1 ? m.eventos + ' atos no ciclo' : 'Decreto de emergência')
+    + (m.data ? ' · primeiro em ' + esc(m.data) : '')
+    + '<br>' + esc(tipoTexto(m)));
+  MonitorMapas.legenda('legAtosResposta', [
+    {cor: MonitorMapas.PALETA.resposta, rotulo: 'decreto de emergência no ciclo'},
+    {cor: CINZA, rotulo: 'demais municípios'}].concat(semCoordItem(semCoordDec)));
+  MonitorMapas.credito('boxAtosResposta', {fontes: ['DOU/SEDEC (S2iD)', 'diários oficiais'], data: window.__metaAtualizado});
+  listaBuscavel('boxAtosResposta', {
+    colunas: ['Município', 'UF', 'Primeiro decreto', 'Tipo', 'Documento'],
+    rotulo: 'Buscar município que decretou emergência',
+    linhas: decretados.slice().sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR')).map(m => ({
+      busca: m.nome + ' ' + m.uf,
+      celulas: ['<strong>' + esc(m.nome) + '</strong>', esc(m.uf), esc(m.data || '—'), esc(tipoTexto(m)),
+        m.url ? '<a href="' + esc(m.url) + '" target="_blank" rel="noopener">' + esc(m.documento || 'documento') + '</a>'
+              : esc(m.documento || '—')],
+    })),
   });
-  const comDecreto = Object.values(porCodigo);
-  /* Quantos decretos NÃO resolveram código: sem isto, um cruzamento subestimado passaria por
-     cruzamento pequeno. É lacuna de casamento, não ausência de coincidência. */
-  const decretoSemCodigo = (TODOS_ATOS_RESPOSTA || []).filter(d => !MUN_COD[d.uf + '|' + d.nome]).length;
-  const svgX = d3.select('#mapAlertaDecreto');
-  svgX.append('g').selectAll('path').data(BR_GEOJSON.features).join('path')
-    .attr('d', pathGen).attr('fill', CINZA).attr('class', 'uf-path')
-    .on('mouseenter', (evt, d) => showTip('<strong>' + esc(d.properties.name) + '</strong>', evt))
-    .on('mousemove', (evt) => showTip(tooltip.innerHTML, evt))
-    .on('mouseleave', hideTip);
-  svgX.append('g').selectAll('circle')
-    .data(comDecreto.filter(d => d.lon != null && d.lat != null)).join('circle')
-    .attr('cx', d => projection([d.lon, d.lat])[0]).attr('cy', d => projection([d.lon, d.lat])[1])
-    .attr('r', 4.5).attr('fill', MonitorMapas.PALETA.resposta)
-    .attr('stroke', MonitorMapas.cor('branco')).attr('stroke-width', 1.4)
-    .on('mouseenter', function(evt, d){
-      const v = muns[d.cod] || {inmet: [], cemaden: []};
-      showTip('<strong>' + esc(d.nome) + ' (' + esc(d.uf) + ')</strong><br>'
-        + (d.decretos > 1 ? d.decretos + ' decretos de emergência no ciclo' : 'Decreto de emergência')
-        + (d.data ? ' em ' + esc(d.data) : '')
-        + v.inmet.map(a => '<br>INMET · ' + esc(a.tipo) + ' · ' + esc(a.severidade)).join('')
-        + v.cemaden.map(a => '<br>CEMADEN · ' + esc(a.tipo || 'tipo não declarado') + ' · ' + esc(a.nivel)).join(''), evt);
-    })
-    .on('mousemove', (evt) => showTip(tooltip.innerHTML, evt))
-    .on('mouseleave', hideTip);
-  addSiglas(svgX);
+
+  // ---- 2b. decreto no ciclo × alerta agora ----
+  texto('linhaCruzamento', carimbo ? 'Consulta de ' + carimbo : 'Sem consulta até o corte');
+  const codsAlerta = new Set(muns ? Object.keys(muns) : []);
+  const cruzados = decretados.filter(m => codsAlerta.has(m.cod));
+  pontos('#mapAlertaDecreto', cruzados, 4.5, m => {
+    const v = (muns && muns[m.cod]) || {inmet: [], cemaden: []};
+    return '<strong>' + esc(m.nome) + ' (' + esc(m.uf) + ')</strong><br>'
+      + (m.eventos > 1 ? m.eventos + ' atos no ciclo' : 'Decreto de emergência')
+      + (m.data ? ' · primeiro em ' + esc(m.data) : '')
+      + (v.cemaden || []).map(a => '<br>Cemaden · ' + esc(a.tipo || 'tipo não declarado') + ' · ' + esc(a.nivel)).join('')
+      + (v.inmet || []).map(a => '<br>Inmet · ' + esc(a.tipo) + ' · ' + esc(a.severidade)).join('');
+  });
   MonitorMapas.legenda('legAlertaDecreto', [
     // Rótulo de legenda é nome de categoria, não frase: até 40 caracteres (portão de
-    // harmonização). A contagem e a ressalva vivem no título-fato e no texto do mouse.
-    {cor: MonitorMapas.PALETA.resposta, rotulo: 'decreto no ciclo e alerta agora (' + comDecreto.length + ')'},
+    // harmonização). A contagem vive no cartão do topo e no texto do mouse.
+    {cor: MonitorMapas.PALETA.resposta, rotulo: 'decreto no ciclo e alerta agora'},
     {cor: CINZA, rotulo: 'demais municípios'}]
-    .concat(decretoSemCodigo ? [{cor: MonitorMapas.cor('sem-dado'), rotulo: 'sem código IBGE (' + decretoSemCodigo + ')'}] : []));
-  creditoSinal('boxAlertaDecreto', ['inmet_avisos', 'cemaden_alertas'], carimbo);
-})();
-
-// ---- Mapa 2a: COBERTURA (uma pergunta: quantos municípios têm algum ato?) ----
-const corCobertura = (info) => {
-  if (!info.com_ato) return MonitorMapas.cor('zebra');
-  const k = Math.pow(Math.min(info.pct, 100)/100, 0.5);
-  return d3.interpolateHcl(MonitorMapas.PALETA.rampaPreparo[0], MonitorMapas.PALETA.rampaPreparo[1])(0.15 + 0.85*k);
-};
-// ---- Mapa 2b: NATUREZA — 5 classes divergentes (centro neutro oliva; sem gradiente contínuo) ----
-// Degradê contínuo terracota→areia→azul (mesmo eixo cromático do site inteiro),
-// interpolado por d3 em vez de 5 faixas de cor fixas — a proporção real
-// plano/decreto de cada estado agora tem uma cor própria na escala, não um
-// "degrau" compartilhado com estados de proporção bem diferente.
-const ESCALA_NATUREZA = d3.scaleLinear()
-  .domain([0, 0.05, 0.35, 0.65, 0.95, 1])
-  .range([MonitorMapas.PALETA.resposta, MonitorMapas.PALETA.resposta, MonitorMapas.PALETA.status.ELAB, MonitorMapas.PALETA.semDado, MonitorMapas.PALETA.status.VIG, MonitorMapas.PALETA.preparacao])
-  .clamp(true);
-const corNatureza = (info) => {
-  const atos = (info.n_plano||0) + (info.n_decreto||0);
-  if (!atos) return 'url(#hatchSemAtos)';
-  return ESCALA_NATUREZA(info.n_plano / atos);
-};
-
-function mapaUF(sel, cor, tipTexto){
-  const svg = d3.select(sel);
-  svg.append('g').selectAll('path')
-    .data(BR_GEOJSON.features).join('path')
-    .attr('d', pathGen)
-    .attr('class', 'uf-path')
-    .attr('fill', d => cor(PCT_POR_UF[d.properties.sigla] || {}))
-    .attr('tabindex', 0)
-    .attr('role', 'img').attr('aria-label', d => tipTexto(PCT_POR_UF[d.properties.sigla], d.properties.name).replace(/<[^>]+>/g, ' '))
-    .on('mouseenter', (evt,d)=> showTip(tipTexto(PCT_POR_UF[d.properties.sigla], d.properties.name), evt))
-    .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
-    .on('mouseleave', hideTip)
-    .on('focus', function(evt,d){
-      const b = this.getBoundingClientRect();
-      showTip(tipTexto(PCT_POR_UF[d.properties.sigla], d.properties.name), {clientX: b.x + b.width/2, clientY: b.y});
-    })
-    .on('blur', hideTip);
-  return svg;
-}
-
-const svgCob = mapaUF('#mapCobertura', corCobertura, (i, nome) => {
-  const decl = (i.declarado_plano||0)+(i.declarado_antigo||0);
-  const l = decl ? `<br>Declarada (TCE/sistema estadual): ${(100*decl/i.total).toFixed(1)}%` : '';
-  return `<strong>${nome}</strong><br>${i.com_ato} de ${i.total} municípios com ato (${i.pct}%)${l}`;
-});
-const svgNat = mapaUF('#mapNatureza', corNatureza, (i, nome) => {
-  const atos = (i.n_plano||0)+(i.n_decreto||0);
-  if (!atos) return `<strong>${nome}</strong><br>Nenhum ato identificado`;
-  return `<strong>${nome}</strong><br>${i.n_plano} plano(s) preventivo(s) · ${i.n_decreto} decreto(s) reativo(s)<br>${Math.round(100*i.n_plano/atos)}% preventivo`;
-});
-const __defsNat = svgNat.append('defs');
-const __pat = __defsNat.append('pattern').attr('id','hatchSemAtos')
-  .attr('width', 6).attr('height', 6)
-  .attr('patternUnits','userSpaceOnUse').attr('patternTransform','rotate(45)');
-__pat.append('rect').attr('width', 6).attr('height', 6).attr('fill', MonitorMapas.cor('osso-claro'));
-__pat.append('line').attr('x1', 0).attr('y1', 0).attr('x2', 0).attr('y2', 6)
-  .attr('stroke', MonitorMapas.cor('areia')).attr('stroke-width', 1.4);
-
-document.getElementById('legCobertura').innerHTML =
-  `<span><i style="background:linear-gradient(90deg,var(--zebra),var(--musgo)); width:44px;"></i>0% → 100% dos municípios com ato</span>`;
-MonitorMapas.legendaContinua('legNatureza', 'linear-gradient(90deg, var(--argila) 0%, var(--ambar) 20%, var(--sem-dado) 50%, var(--mineral) 80%, var(--musgo) 100%)', 'só decretos reativos', 'só planos preventivos', [{cor: 'repeating-linear-gradient(45deg,var(--osso-claro),var(--osso-claro) 3px,var(--areia) 3px,var(--areia) 4px)', rotulo: 'sem atos identificados'}]);
-ligarSeletorDeCamada('selCoberturaNatureza', [{valor:'cobertura', svg:'mapCobertura', legenda:'legCobertura'}, {valor:'natureza', svg:'mapNatureza', legenda:'legNatureza'}]);
-// tabela acessível (equivalente aos dois mapas do seletor acima)
-(function(){
-  const tb = document.querySelector('#tblCoberturaNatureza tbody');
-  if (!tb) return;
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const ufsOrdenadas = DATA.ufs.map(u => u.uf).sort();
-  tb.innerHTML = ufsOrdenadas.map(uf => {
-    const i = PCT_POR_UF[uf] || {};
-    const atos = (i.n_plano || 0) + (i.n_decreto || 0);
-    const pctPrev = atos ? Math.round(100 * i.n_plano / atos) + '%' : '—';
-    return '<tr><td><strong>' + esc(uf) + '</strong></td><td>' + esc((i.com_ato ?? 0) + ' de ' + (i.total ?? '—')) + '</td><td>' + esc((i.pct ?? 0) + '%') + '</td><td>' + esc(i.n_plano ?? 0) + '</td><td>' + esc(i.n_decreto ?? 0) + '</td><td>' + esc(pctPrev) + '</td></tr>';
-  }).join('');
-})();
-
-// ---- Mapa: risco projetado × instrumento estadual ----
-const CONSIST_ROTULO = {COBRE:'Cobre o risco projetado', PARCIAL:'Cobre parte do risco', DIFERE:'Risco difere do instrumento', SEM:'Instrumento estadual não localizado', NEUTRO:'Sem sinal elevado no trimestre'};
-const CONSIST_COR = {COBRE:MonitorMapas.PALETA.consistencia.COBRE, PARCIAL:MonitorMapas.PALETA.consistencia.PARCIAL, DIFERE:MonitorMapas.PALETA.consistencia.DIFERE, SEM:'url(#hatchSemInstr)', NEUTRO:MonitorMapas.PALETA.consistencia.NEUTRO};
-// Cor de borda plana para a TABELA (SEM usa padrão de hachura no mapa SVG, que não
-// é uma cor CSS válida para border — aqui precisa de um tom sólido equivalente).
-const CONSIST_COR_TABELA = MonitorMapas.PALETA.consistencia;
-
-// Tabela "risco × instrumento" gerada DIRETO de CONSIST — antes disso era uma cópia
-// digitada à mão, que chegou a divergir de verdade do CONSIST real (PE aparecia
-// duas vezes, em categorias diferentes; achado ao investigar a automação estadual,
-// 31/08/2026). Gerar aqui elimina a cópia — só existe uma fonte de verdade agora.
-function renderTabelaConsistencia(){
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const corpo = document.getElementById('tblConsistencia');
-  if (!corpo) return;
-  const porCategoria = {};
-  Object.entries(CONSIST).forEach(([uf, v]) => {
-    (porCategoria[v.cat] = porCategoria[v.cat] || []).push([uf, v]);
+    .concat(semCoordItem(cruzados.filter(m => !m.ll).length)));
+  creditoSinal('boxAlertaDecreto', ['cemaden_alertas', 'inmet_avisos'], carimbo);
+  listaBuscavel('boxAlertaDecreto', {
+    colunas: ['Município', 'UF', 'Primeiro decreto', 'Em vigor agora'],
+    rotulo: 'Buscar município com decreto e alerta',
+    linhas: cruzados.slice().sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR')).map(m => {
+      const v = (muns && muns[m.cod]) || {inmet: [], cemaden: []};
+      return {busca: m.nome + ' ' + m.uf,
+        celulas: ['<strong>' + esc(m.nome) + '</strong>', esc(m.uf), esc(m.data || '—'),
+          (v.cemaden || []).map(a => esc('Cemaden · ' + (a.tipo || 'tipo não declarado') + ' · ' + a.nivel))
+            .concat((v.inmet || []).map(a => esc('Inmet · ' + a.tipo + ' · ' + a.severidade))).join('<br>') || '—'],
+      };
+    }),
   });
-  let html = '';
-  Object.keys(CONSIST_ROTULO).forEach(cat => {
-    const linhas = (porCategoria[cat] || []).sort((a, b) => a[0].localeCompare(b[0]));
-    if (!linhas.length) return;
-    html += `<tr class="grupo"><td colspan="3" style="border-bottom-color:${CONSIST_COR_TABELA[cat]};">${CONSIST_ROTULO[cat]} · ${linhas.length} estado(s)</td></tr>`;
-    linhas.forEach(([uf, v]) => {
-      html += `<tr><td class="nowrap"><strong>${esc(uf)}</strong></td><td>${esc(v.risco)}</td><td>${esc(v.instr)}</td></tr>`;
+
+  // ---- 2c. reconhecidos pelo governo federal ----
+  texto('linhaReconhecidos', carimboCiclo ? 'Registro de ' + carimboCiclo : 'Sem registro até o corte');
+  pontos('#mapReconhecidos', reconhecidos, 4, m =>
+    '<strong>' + esc(m.nome) + ' (' + esc(m.uf) + ')</strong><br>Emergência reconhecida pelo governo federal'
+    + (m.documento ? '<br>' + esc(m.documento) : ''));
+  /* A diferença entre decretar e ser reconhecido é o que este mapa distingue, e por isso está na
+     legenda. Ausência de portaria até o corte NÃO é pedido negado — a ficha semântica da figura
+     declara essa fronteira, e o rótulo aqui diz "sem reconhecimento", não "negado". */
+  MonitorMapas.legenda('legReconhecidos', [
+    {cor: MonitorMapas.PALETA.resposta, rotulo: 'emergência reconhecida'},
+    {cor: CINZA, rotulo: 'sem reconhecimento (' + semReconhecimento + ')'}]
+    .concat(semCoordItem(reconhecidos.filter(m => !m.ll).length)));
+  MonitorMapas.credito('boxReconhecidos', {fontes: ['Portarias SEDEC/MIDR (DOU)'], data: window.__metaAtualizado});
+  listaBuscavel('boxReconhecidos', {
+    colunas: ['Município', 'UF', 'Primeiro decreto', 'Documento do reconhecimento'],
+    rotulo: 'Buscar município com emergência reconhecida',
+    linhas: reconhecidos.slice().sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR')).map(m => ({
+      busca: m.nome + ' ' + m.uf,
+      celulas: ['<strong>' + esc(m.nome) + '</strong>', esc(m.uf), esc(m.data || '—'),
+        m.url ? '<a href="' + esc(m.url) + '" target="_blank" rel="noopener">' + esc(m.documento || 'documento') + '</a>'
+              : esc(m.documento || '—')],
+    })),
+  });
+
+  // =========================================================
+  // 3. Cadastro federal de suscetíveis a enxurradas e inundações (Casa Civil)
+  // =========================================================
+  const svgPrior = fundo(d3.select('#mapPrioritarios'));
+  /* As duas cores saem da paleta semântica de categorias: "com instrumento" é a mesma cor de
+     `plano` e "sem instrumento" a mesma de `nao_localizado`, nas outras páginas. Hexadecimal ou
+     token de cor escolhido aqui criaria uma segunda convenção para a mesma distinção. */
+  const COR_COM_PLANO = MonitorMapas.PALETA.categorias.plano;
+  const COR_SEM_PLANO = MonitorMapas.PALETA.categorias.nao_localizado;
+  const CAT_COM_PLANO = new Set(['plano', 'plano_novo', 'plano_readaptado', 'plano_recorrente',
+                                 'plano_antigo', 'plano_elaboracao', 'estrutura', 'coberto_estadual']);
+  const comPlano = new Set(MAP_POINTS.filter(p => CAT_COM_PLANO.has(p.categoria))
+    .map(p => MUN_COD[p.uf + '|' + p.nome]).filter(Boolean));
+
+  if (!CADASTRO || !CADASTRO.municipios){
+    texto('linhaPrioritarios', 'Sem coleta do cadastro até o corte');
+    MonitorMapas.legenda('legPrioritarios', [{cor: MonitorMapas.cor('sem-dado'), rotulo: 'sem coleta até o corte'}]);
+    MonitorMapas.credito('boxPrioritarios', {fontes: ['SEPAC/Casa Civil'], data: null});
+  } else {
+    const cad = Object.entries(CADASTRO.municipios).map(([cod, v]) => ({
+      cod: cod, nome: v.municipio, uf: v.uf, tipos: v.tipos_de_risco || [],
+      ll: LATLON_POR_CODIGO[cod], plano: comPlano.has(cod),
+    }));
+    const semCoordCad = cad.filter(m => !m.ll).length;
+    texto('linhaPrioritarios', 'Cadastro de ' + (CADASTRO.coletado_em || '—').split('-').reverse().join('/')
+      + ' · ' + n(cad.length) + ' municípios');
+    svgPrior.append('g').selectAll('circle').data(cad.filter(m => m.ll)).join('circle')
+      .attr('cx', m => projection(m.ll)[0]).attr('cy', m => projection(m.ll)[1])
+      .attr('r', 2.6)
+      .attr('fill', m => m.plano ? COR_COM_PLANO : COR_SEM_PLANO)
+      .attr('fill-opacity', 0.85)
+      .on('mouseenter', (evt, m) => showTip(
+        '<strong>' + esc(m.nome) + ' (' + esc(m.uf) + ')</strong><br>'
+        + (m.plano ? 'Instrumento localizado pelo MARÉ' : 'Nenhum instrumento localizado até o corte')
+        + (m.tipos.length ? '<br>Risco no cadastro: ' + esc(m.tipos.join(', ')) : ''), evt))
+      .on('mousemove', (evt) => showTip(tooltip.innerHTML, evt))
+      .on('mouseleave', hideTip);
+    addSiglas(svgPrior);
+    MonitorMapas.legenda('legPrioritarios', [
+      {cor: COR_COM_PLANO, rotulo: 'com instrumento localizado (' + n(cad.filter(m => m.plano).length) + ')'},
+      {cor: COR_SEM_PLANO, rotulo: 'sem instrumento localizado (' + n(cad.filter(m => !m.plano).length) + ')'}]
+      .concat(semCoordCad ? [{cor: MonitorMapas.cor('sem-dado'), rotulo: 'sem coordenada (' + semCoordCad + ')'}] : []));
+    MonitorMapas.credito('boxPrioritarios', {
+      fontes: ['Cadastro federal de municípios suscetíveis a enxurradas e inundações (SEPAC/Casa Civil)',
+               'MARÉ (verificação própria)'],
+      url: CADASTRO.fonte, data: (CADASTRO.coletado_em || '').split('-').reverse().join('/') || null});
+    listaBuscavel('boxPrioritarios', {
+      colunas: ['Município', 'UF', 'Risco no cadastro', 'Instrumento localizado'],
+      rotulo: 'Buscar município do cadastro',
+      linhas: cad.slice().sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR')).map(m => ({
+        busca: m.nome + ' ' + m.uf,
+        celulas: ['<strong>' + esc(m.nome) + '</strong>', esc(m.uf), esc(m.tipos.join(', ') || '—'),
+          m.plano ? 'sim' : 'não localizado até o corte'],
+      })),
     });
-  });
-  corpo.innerHTML = html;
+  }
+
+  // =========================================================
+  // 4. Números do topo — os mesmos que os mapas, nunca uma segunda conta
+  // =========================================================
+  /* Cada contador lê o MESMO objeto que alimentou o mapa logo abaixo. Recontar aqui seria abrir a
+     porta a dois números diferentes para a mesma pergunta na mesma página — defeito que a página
+     de imprensa já pagou e que o portão da regra 0 existe para barrar. */
+  const N = (RESP && RESP.nacional) || {};
+  const fonteAgora = carimbo ? 'Consulta de ' + carimbo : 'sem consulta até o corte';
+  texto('topoCemaden', muns ? n(rAl.municipios_cemaden) : '—');
+  texto('topoCemadenFonte', 'Cemaden · ' + fonteAgora);
+  texto('topoInmet', muns ? n(rAl.municipios_inmet) : '—');
+  texto('topoInmetFonte', 'Inmet · ' + fonteAgora);
+  texto('topoCruzamento', muns ? n(cruzados.length) : '—');
+  texto('topoCruzamentoFonte', 'MARÉ · ' + fonteAgora);
+  texto('topoDecretaram', decretados.length ? n(decretados.length) : (N.n_municipios != null ? n(N.n_municipios) : '—'));
+  texto('topoDecretaramFonte', 'DOU/SEDEC e diários oficiais · desde ' + (RESP ? RESP.inicio_ciclo : '29/06/2026'));
+  texto('topoPopulacao', N.pop_sob_decreto != null ? n(N.pop_sob_decreto) : '—');
+  texto('topoPopulacaoFonte', 'Censo 2022/IBGE · municípios sob decreto no ciclo');
+  texto('topoReconhecidos', decretados.length ? n(reconhecidos.length) : (N.reconhecidos != null ? n(N.reconhecidos) : '—'));
+  texto('topoReconhecidosFonte', 'Portarias SEDEC/MIDR (DOU) · desde ' + (RESP ? RESP.inicio_ciclo : '29/06/2026'));
 }
-const svgConsist = d3.select('#mapConsistencia');
-if (document.getElementById('mapConsistencia')) {
-  const __defsC = svgConsist.append('defs');
-  const __patC = __defsC.append('pattern').attr('id','hatchSemInstr')
-    .attr('width', 6).attr('height', 6)
-    .attr('patternUnits','userSpaceOnUse').attr('patternTransform','rotate(45)');
-  __patC.append('rect').attr('width', 6).attr('height', 6).attr('fill', MonitorMapas.cor('osso-claro'));
-  __patC.append('line').attr('x1', 0).attr('y1', 0).attr('x2', 0).attr('y2', 6)
-    .attr('stroke', MonitorMapas.PALETA.resposta).attr('stroke-width', 1.4).attr('stroke-opacity', .55);
-  svgConsist.append('g').selectAll('path')
-    .data(BR_GEOJSON.features).join('path')
-    .attr('d', pathGen)
-    .attr('class', 'uf-path')
-    .attr('fill', d => CONSIST_COR[CONSIST[d.properties.sigla].cat])
-    .attr('tabindex', 0)
-    .attr('role', 'img').attr('aria-label', d => { const c = CONSIST[d.properties.sigla]; return `${d.properties.name}: ${CONSIST_ROTULO[c.cat]}. Risco projetado: ${c.risco}. Instrumento: ${c.instr}`; })
-    .on('mouseenter', (evt,d) => { const c = CONSIST[d.properties.sigla];
-      showTip(`<strong>${d.properties.name}</strong><br><em>${CONSIST_ROTULO[c.cat]}</em><br>Risco projetado: ${c.risco}<br>Instrumento estadual: ${c.instr}`, evt); })
-    .on('mousemove', (evt) => showTip(tooltip.innerHTML, evt))
-    .on('mouseleave', hideTip)
-    .on('focus', function(evt,d) { const b = this.getBoundingClientRect(); const c = CONSIST[d.properties.sigla];
-      showTip(`<strong>${d.properties.name}</strong><br><em>${CONSIST_ROTULO[c.cat]}</em><br>Risco: ${c.risco}<br>Instrumento: ${c.instr}`, {clientX: b.x + b.width/2, clientY: b.y}); })
-    .on('blur', hideTip);
-  addSiglas(svgConsist);
-  const __contC = {};
-  Object.values(CONSIST).forEach(c => __contC[c.cat] = (__contC[c.cat]||0) + 1);
-  const __legConsist = document.getElementById('legConsist');
-  if (__legConsist) __legConsist.innerHTML =
-    ['COBRE','PARCIAL','DIFERE','SEM','NEUTRO'].map(k =>
-      `<span><i style="background:${k==='SEM' ? 'repeating-linear-gradient(45deg,var(--osso-claro),var(--osso-claro) 3px,var(--argila) 3px,var(--argila) 4px)' : CONSIST_COR[k]}"></i>${CONSIST_ROTULO[k]} (${__contC[k]})</span>`).join('');
-  renderTabelaConsistencia();
-}
-// 17/09/2026: resumo compacto removido — o cruzamento que ele resumia saiu da inicial (pedido da editoria).
 
-// =========================================================
-// MARE — ranking com componentes ponderados
-// =========================================================
-
-
-// (financiamento e transferências — mapa do dinheiro e fontes de monitoramento — migraram para financiamento.html, E9)
-
-// ---- Siglas das UFs sobre os três mapas ----
-function addSiglas(svg){ MonitorMapas.siglas(MonitorMapas.contexto(BR_GEOJSON, 480, 460), svg); }
-addSiglas(svgPoints); addSiglas(svgCob); addSiglas(svgNat); addSiglas(svgResp);   // svgPrior: siglas desenhadas dentro do .then() acima
-
-
-
-
-  renderResposta();
-  titulosFato();
-}
-// Auditoria de 07/09/2026: toda figura tem crédito no formato único; as de antecipação são verificação própria do Monitor.
-function creditosAntecipacao(){
-  const d = window.__metaAtualizado;
-  [['boxVerificacao', ['MARÉ (verificação própria)', 'malha IBGE']], ['boxCoberturaNatureza', ['MARÉ (verificação própria)']],
-   ['boxPrioritarios', ['MARÉ', 'Cadastro Nacional (SEDEC), aproximação por população']], ['boxAtosResposta', ['DOU/SEDEC (S2iD)', 'diários oficiais']],
-   ].forEach(([id, fontes]) => MonitorMapas.credito(id, {fontes, data: d}));
-}
-function renderResposta(){
-  creditosAntecipacao();
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const fF = id => (typeof fonteFigura === 'function' ? fonteFigura : (cid, t) => MonitorMapas.credito(cid, t));
-  const N = RESP && RESP.nacional;
-  const c18 = (RESP && RESP.frase_c18) || '';
-  if (!N) return;
-}
 __load().catch(err => {
   document.body.insertAdjacentHTML('afterbegin',
-    '<div id="errBanner" class="erro-carga">' +
-    'Erro ao carregar os dados: ' + err.message +
-    '. Sirva a pasta via HTTP (ex.: <code>npx serve</code>) — abrir o arquivo diretamente bloqueia o fetch.</div>');
+    '<div id="errBanner" class="erro-carga">'
+    + 'Erro ao carregar os dados: ' + err.message
+    + '. Sirva a pasta via HTTP (ex.: <code>npx serve</code>) — abrir o arquivo diretamente bloqueia o fetch.</div>');
 });
 
-// ===== defesa-civil.html · bloco 2 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
-window.addEventListener('load', function(){ if (window.VLibras && window.VLibras.Widget) { try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {} } });
-
-// 15/09/2026 (auditoria editorial §2.9): títulos-fato das figuras e interpretações fora das figuras (portão 19), todos
-// calculados dos dados já carregados nesta página — nunca digitados. Falta de dado = título original mantido.
-// 15/09/2026 (correção): antes era uma IIFE executada no carregamento do script, ANTES dos dados chegarem — os títulos ficavam
-// sempre no texto original (e o portão que os checava nunca bloqueava, por outro bug, corrigido junto). Agora é chamada ao fim de __init().
-function titulosFato(){
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const n = v => Number(v || 0).toLocaleString('pt-BR');
-  const titulo = (box, txt) => { const h = document.querySelector('#' + box + ' .figura-titulo'); if (h && txt) h.textContent = txt; };
-  // 18/09/2026 (pedido da editoria): o resumo "N estados com plano para o ciclo..." e "Por região: X
-  // concentra..." saiu daqui — mora como contador na home, abaixo do índice MARÉ Legal (mesmo cálculo,
-  // mesma fonte data/estados.json, ver assets/js/index.js).
-  // (b) 'declarado × documentado' (boxDeclarado) saiu da página em 15/09/2026 (§59) — bloco removido.
-  try {   // (c) verificação: registro federal (todos), diário oficial (varredura), planos municipais localizados
-    // 15/09/2026 (correção): a contagem vinha de CONSIST (risco estadual), que não tem n_plano — sempre somava 0. A contagem
-    // correta é PCT_POR_UF.n_plano (percentual_uf.json), a mesma fonte do índice (recalcular_mare.py), nunca divergente dela.
-    const vd = (VRESUMO && VRESUMO.varredura_diarios) || {}; const nDiario = vd.consultados || vd.municipios_consultados || null;
-    const nPlanos = Object.values(PCT_POR_UF || {}).reduce((a, i) => a + (i.n_plano || 0), 0);
-    titulo('boxVerificacao', `5.571 municípios no registro federal${nDiario != null ? `; ${n(nDiario)} no diário oficial` : ''}; ${n(nPlanos)} planos municipais localizados`);
-  } catch (e) {}
-  try {   // (f) mapa dos decretos — 16/09/2026: título-fato não nomeia mais o estado com a maior fração
-    // (revelava posição/comparação entre estados; ver pedido da editoria)
-    const N = RESP && RESP.nacional;
-    if (N) titulo('boxAtosResposta', `Decretos: ${n(N.n_municipios)} municípios`);
-  } catch (e) {}
-}
+window.addEventListener('load', function(){
+  if (window.VLibras && window.VLibras.Widget){
+    try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {}
+  }
+});
