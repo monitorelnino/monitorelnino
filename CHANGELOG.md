@@ -11,11 +11,11 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-01 · #491 · Defesa civil refeita: só alertas e emergências
 
-A página passa a tratar de uma coisa. Saem os mapas de preparação (o plano mora no MARÉ Legal) e
-todo o material de auditoria, que vai para `dados-abertos/` e para a METODOLOGIA. Seis contadores no
-topo; o mapa principal de alerta é o do Cemaden, porque o aviso do Inmet é por área e satura o país;
-três mapas de emergência, incluindo o reconhecimento federal; o cadastro passa a ser a lista nominal
-da Casa Civil, e o nome "Cadastro Nacional" sai do site. Todo cartão tem busca por município.
+Saem os mapas de preparação (o plano mora no MARÉ Legal) e o material de auditoria, com destino em
+`dados-abertos/` e METODOLOGIA §65. Seis contadores no topo; o mapa principal de alerta é o do
+Cemaden, porque o aviso do Inmet é por área; três mapas de emergência, com o reconhecimento
+federal; o cadastro passa a ser a lista nominal da Casa Civil, e "Cadastro Nacional" sai do site.
+Busca por município em todo cartão.
 
 ## 2026-10-01 · #490 · Imprensa descobre, nunca registra: Curitiba corrigida, errata C29
 
