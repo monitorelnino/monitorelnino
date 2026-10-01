@@ -16,6 +16,13 @@ e a anomalia mensal da região Niño 3.4, que volta por ser o número divulgado 
 2 volta à grade de três: o mapa nacional em largura total e os cinco mapas pequenos, três por linha.
 O mapa de calor perde o halo: um ponto por capital.
 
+## 2026-10-01 · #485 · Proteja-se: textos aprovados e página mais curta
+
+Telefones em quatro cartões no topo, "Leve com você" com botões de verdade, e as fichas viram abas:
+uma por vez, com teclado, e todas empilhadas quando não há JS. O calor ganha ficha própria, com
+orientação do Ministério da Saúde, fonte e data; a de seca fica só com estiagem. Saem o sobretítulo
+e dois textos que prometiam o que a página não entrega mais.
+
 ## 2026-09-30 · #484 · Uma atmosfera por família de risco nos mapas
 
 Cada família ganha fundo, rampa e marca próprios: fogo noturno com brasa em mescla screen, seca em
