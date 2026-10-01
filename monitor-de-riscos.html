@@ -29,9 +29,9 @@
 <script src="assets/vendor/chart.umd.min.js?v=ecc3cd1e"></script>
 <script src="assets/vendor/d3.min.js?v=f2094bbf"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
-<link rel="stylesheet" href="assets/tokens.css?v=1af5d03e">
-<link rel="stylesheet" href="assets/base.css?v=0e4c0d17">
-<script src="assets/mapas.js?v=c21cab93"></script>
+<link rel="stylesheet" href="assets/tokens.css?v=e3a38231">
+<link rel="stylesheet" href="assets/base.css?v=464592de">
+<script src="assets/mapas.js?v=48c3b55a"></script>
 </head>
 <body class="pagina-dados">
 <div class="map-tooltip" id="mapTooltip"></div>
@@ -111,114 +111,111 @@
     <h2>Os riscos no Brasil</h2>
     <p class="hint">Os quatro riscos que o boletim prevê para este El Niño. Cada mapa diz de quando é o dado.</p>
 
-    <!-- R6: o mapa nacional do risco previsto volta à página por decisão da editoria; o detalhe de
-         cada estado continua na ficha, na inicial. -->
-    <figure class="figura figura--mapa" id="boxRiscoPrevisto">
-      <h3 class="figura-titulo">O que o boletim prevê para cada estado</h3>
-      <p class="figura-sub" id="riscoPrevistoSub">Risco previsto até março de 2027 · por estado</p>
-      <div class="figura-midia"><svg id="mapaRiscoPrevisto" role="img" aria-label="Mapa do Brasil com o risco previsto pelo boletim do Painel El Niño para cada estado" viewBox="0 0 480 460"></svg></div>
-      <div class="map-legend" id="legRiscoPrevisto"></div>
-      <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
-        <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblRiscoPrevisto"><thead><tr><th>UF</th><th>Risco previsto</th></tr></thead><tbody></tbody></table></div>
-      </details>
-      <p class="figura-leitura">Trata-se de previsão, não de dados observados. O detalhe de cada estado está na ficha, na página inicial.</p>
-    </figure>
+    <!-- 01/10/2026 (pedido da editoria): UM COMPONENTE DE CARTÃO DE MAPA, SEIS VEZES.
+         O que estava errado: o mapa de risco previsto ocupava a largura toda e os outros cinco
+         ficavam pequenos embaixo; o nome da família e a linha do boletim viviam FORA do cartão,
+         com alturas diferentes, e por isso as molduras desalinhavam; as legendas tinham estilos
+         diferentes e itens que não são categoria do mapa; dois cartões tinham seletor dentro e
+         os outros não.
 
-    <!-- F.4 (30/09/2026): os cinco mapas pequenos, três por linha. A reorganização por família
-         (#483) perdeu a grade de três decidida em 29/09, e a página passou a ser uma coluna de
-         mapas grandes — mais rolagem e nenhuma comparação possível entre famílias. Cada cartão
-         traz a faixa fina da cor da família, a linha do boletim, o tempo no subtítulo e a fonte;
-         o "como ler" fica recolhido para caber. No celular, um por vez. -->
-    <div class="grade-figuras grade-figuras--3 blocos-familia">
-    <section class="bloco-familia" id="familiaSeca">
-      <h3 class="bloco-familia-titulo">Seca</h3>
-      <p class="hint" id="linhaSeca">—</p>
-      <figure class="figura figura--mapa" id="boxSecas">
-        <h4 class="figura-titulo">Onde está faltando chuva</h4>
+         Agora os seis têm a mesma estrutura, na mesma ordem, com o mesmo tamanho de mapa. Os
+         seletores de camada saíram da grade: a camada exibida é a padrão, e o que a outra camada
+         tinha de valor vai para o "Ver em lista" do próprio cartão. "Como ler" e "Ver em lista"
+         ficam recolhidos, no mesmo estilo de link pequeno. -->
+    <div class="grade-figuras grade-figuras--3 grade-mapas">
+      <figure class="figura figura--mapa cartao-mapa r-previsto" id="boxRiscoPrevisto">
+        <p class="cartao-mapa-familia">Risco previsto</p>
+        <p class="cartao-mapa-boletim" id="linhaRiscoPrevisto">—</p>
+        <h3 class="figura-titulo">O que o boletim prevê para cada estado</h3>
+        <p class="figura-sub" id="riscoPrevistoSub">Risco previsto até março de 2027 · por estado</p>
+        <div class="figura-midia"><svg id="mapaRiscoPrevisto" role="img" aria-label="Mapa do Brasil com o risco previsto pelo boletim do Painel El Niño para cada estado" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legRiscoPrevisto"></div>
+        <div class="cartao-mapa-rodape">
+        <details class="cartao-mapa-dados"><summary>Ver em lista</summary>
+          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblRiscoPrevisto"><thead><tr><th>UF</th><th>Risco previsto</th></tr></thead><tbody></tbody></table></div>
+        </details>
+        <details class="cartao-mapa-leitura"><summary>Como ler</summary>
+          <p class="figura-leitura">Trata-se de previsão, não de dados observados. O detalhe de cada estado está na ficha, na página inicial.</p>
+        </details>
+        </div>
+      </figure>
+      <figure class="figura figura--mapa cartao-mapa r-seca" id="boxSecas">
+        <p class="cartao-mapa-familia">Seca</p>
+        <p class="cartao-mapa-boletim" id="linhaSecas">—</p>
+        <h3 class="figura-titulo">Onde está faltando chuva</h3>
         <p class="figura-sub" id="secasSub">Categoria de seca em pelo menos metade da área do estado</p>
         <div class="figura-midia"><svg id="mapaSecas" role="img" aria-label="Mapa do Brasil pela categoria de seca observada no Monitor de Secas" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legSecas"></div>
-        <p class="figura-leitura">O mapa é mensal e sai com algumas semanas de atraso. Um estado aparece na categoria que cobre pelo menos metade do seu território.</p>
-      </figure>
-    </section>
-
-    <section class="bloco-familia" id="familiaFogo">
-      <h3 class="bloco-familia-titulo">Fogo e fumaça</h3>
-      <p class="hint" id="linhaFogo">—</p>
-        <figure class="figura figura--mapa" id="boxFogo">
-          <h4 class="figura-titulo">Onde o monitoramento viu fogo</h4>
-          <p class="figura-sub" id="fogoSub">Últimas 24 horas · cada ponto reúne os focos de uma área de cerca de 11 km</p>
-          <div class="figura-midia"><svg id="mapaFogo" role="img" aria-label="Mapa do Brasil com os focos de calor das últimas 24 horas na posição em que foram detectados, agrupados em células de cerca de 11 quilômetros, segundo o INPE" viewBox="0 0 480 460"></svg></div>
-          <div class="map-legend" id="legFogo"></div>
-          <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
-            <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblFogo"><thead><tr><th>UF</th><th>Focos em 24 h</th></tr></thead><tbody></tbody></table></div>
-          </details>
-          <p class="figura-leitura">Foco não significa incêndio: um incêndio grande gera muitos focos, e queimadas controladas também entram.</p>
-        </figure>
-    </section>
-
-    <section class="bloco-familia" id="familiaAr">
-      <h3 class="bloco-familia-titulo">Fogo e fumaça</h3>
-      <p class="hint" id="linhaAr">Qualidade do ar nas capitais.</p>
-        <figure class="figura figura--mapa" id="boxAr">
-          <h4 class="figura-titulo">Como está o ar nas capitais</h4>
-          <p class="figura-sub" id="arSub">Uma capital por estado · estimativa por modelo</p>
-          <div class="figura-midia">
-            <svg id="mapaAr" role="img" aria-label="Mapa do Brasil pelo índice de qualidade do ar estimado na capital de cada estado" viewBox="0 0 480 460"></svg>
-            <svg id="mapaArMun" role="img" aria-label="Mapa do Brasil com a média diária estimada de material particulado fino em cada município" viewBox="0 0 480 460" hidden></svg>
-          </div>
-          <div class="map-legend" id="legAr"></div>
-          <div class="map-legend" id="legArMun" hidden></div>
-          <label class="sr-only" for="selAr">Camada</label>
-          <select id="selAr" class="seletor u-mt-2" aria-label="Escolher a camada do mapa">
-            <option value="capitais">Capitais · com os demais poluentes</option>
-            <option value="municipios">Todos os municípios · PM2,5</option>
-          </select>
-          <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
-            <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblAr"><thead><tr><th>UF</th><th>Capital</th><th>Índice (EAQI)</th><th>PM2,5</th><th>PM10</th><th>Ozônio</th></tr></thead><tbody></tbody></table></div>
-          </details>
-          <p class="figura-leitura">Nesta época, a piora da qualidade do ar costuma ser causada por fumaça de queimadas. Estimativa de modelos, válida para a capital de cada estado. O Brasil não tem índice nacional aberto de qualidade do ar, por isso usamos a escala europeia.</p>
-        </figure>
-    </section>
-
-    <section class="bloco-familia" id="familiaCalor">
-      <h3 class="bloco-familia-titulo">Calor</h3>
-      <p class="hint" id="linhaCalor">—</p>
-      <figure class="figura figura--mapa" id="boxTemperatura">
-        <h4 class="figura-titulo">Temperatura nas capitais, e quanto ela está acima do normal</h4>
-        <p class="figura-sub" id="temperaturaSub">Máxima prevista e diferença para a média histórica do mês · °C · uma capital por estado</p>
-        <div class="figura-midia">
-          <svg id="mapaTemperatura" role="img" aria-label="Mapa do Brasil com a temperatura máxima prevista na capital de cada estado e quanto ela está acima da média histórica do mês" viewBox="0 0 480 460"></svg>
-          <svg id="mapaTemperaturaMun" role="img" aria-label="Mapa do Brasil com a temperatura máxima prevista para o dia seguinte em cada município" viewBox="0 0 480 460" hidden></svg>
+        <div class="cartao-mapa-rodape">
+        <details class="cartao-mapa-leitura"><summary>Como ler</summary>
+          <p class="figura-leitura">O mapa é mensal e sai com algumas semanas de atraso. Um estado aparece na categoria que cobre pelo menos metade do seu território.</p>
+        </details>
         </div>
+      </figure>
+      <figure class="figura figura--mapa cartao-mapa r-fogo" id="boxFogo">
+        <p class="cartao-mapa-familia">Fogo e fumaça</p>
+        <p class="cartao-mapa-boletim" id="linhaFogo">—</p>
+        <h3 class="figura-titulo">Onde o monitoramento viu fogo</h3>
+        <p class="figura-sub" id="fogoSub">Últimas 24 horas · cada ponto reúne os focos de uma área de cerca de 11 km</p>
+        <div class="figura-midia"><svg id="mapaFogo" role="img" aria-label="Mapa do Brasil com os focos de calor das últimas 24 horas na posição em que foram detectados, agrupados em células de cerca de 11 quilômetros, segundo o INPE" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legFogo"></div>
+        <div class="cartao-mapa-rodape">
+        <details class="cartao-mapa-dados"><summary>Ver em lista</summary>
+          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblFogo"><thead><tr><th>UF</th><th>Focos em 24 h</th></tr></thead><tbody></tbody></table></div>
+        </details>
+        <details class="cartao-mapa-leitura"><summary>Como ler</summary>
+          <p class="figura-leitura">Foco não significa incêndio: um incêndio grande gera muitos focos, e queimadas controladas também entram.</p>
+        </details>
+        </div>
+      </figure>
+      <figure class="figura figura--mapa cartao-mapa r-fogo" id="boxAr">
+        <p class="cartao-mapa-familia">Fogo e fumaça</p>
+        <p class="cartao-mapa-boletim" id="linhaAr">—</p>
+        <h3 class="figura-titulo">Como está o ar nas capitais</h3>
+        <p class="figura-sub" id="arSub">Uma capital por estado · estimativa por modelo</p>
+        <div class="figura-midia"><svg id="mapaAr" role="img" aria-label="Mapa do Brasil pelo índice de qualidade do ar estimado na capital de cada estado" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legAr"></div>
+        <div class="cartao-mapa-rodape">
+        <details class="cartao-mapa-dados"><summary>Ver em lista</summary>
+          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblAr"><thead><tr><th>UF</th><th>Capital</th><th>Índice (EAQI)</th><th>PM2,5</th><th>PM10</th><th>Ozônio</th></tr></thead><tbody></tbody></table></div>
+        </details>
+        <details class="cartao-mapa-leitura"><summary>Como ler</summary>
+          <p class="figura-leitura">Nesta época, a piora da qualidade do ar costuma ser causada por fumaça de queimadas. Estimativa de modelos, válida para a capital de cada estado. O Brasil não tem índice nacional aberto de qualidade do ar, por isso usamos a escala europeia.</p>
+        </details>
+        </div>
+      </figure>
+      <figure class="figura figura--mapa cartao-mapa r-calor" id="boxTemperatura">
+        <p class="cartao-mapa-familia">Calor</p>
+        <p class="cartao-mapa-boletim" id="linhaTemperatura">—</p>
+        <h3 class="figura-titulo">Temperatura nas capitais, e quanto ela está acima do normal</h3>
+        <p class="figura-sub" id="temperaturaSub">Máxima prevista e diferença para a média histórica do mês · °C · uma capital por estado</p>
+        <div class="figura-midia"><svg id="mapaTemperatura" role="img" aria-label="Mapa do Brasil com a temperatura máxima prevista na capital de cada estado e quanto ela está acima da média histórica do mês" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legTemperatura"></div>
-        <div class="map-legend" id="legTemperaturaMun" hidden></div>
-        <label class="sr-only" for="selTemperatura">Camada</label>
-        <select id="selTemperatura" class="seletor u-mt-2" aria-label="Escolher a camada do mapa">
-          <option value="capitais">Capitais · com a série de dias</option>
-          <option value="municipios">Todos os municípios · máxima prevista</option>
-        </select>
-        <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
+        <div class="cartao-mapa-rodape">
+        <details class="cartao-mapa-dados"><summary>Ver em lista</summary>
           <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblTemperatura"><thead><tr><th>UF</th><th>Capital</th><th>Máxima de ontem</th><th>Máxima prevista para amanhã</th><th>Mínima prevista</th></tr></thead><tbody></tbody></table></div>
         </details>
-        <p class="figura-leitura">O número ao lado de cada capital é a temperatura máxima prevista; a cor mostra quanto ela está acima da média histórica daquele mês. 35 °C é normal em Cuiabá e muito quente em Porto Alegre.</p>
+        <details class="cartao-mapa-leitura"><summary>Como ler</summary>
+          <p class="figura-leitura">O número ao lado de cada capital é a temperatura máxima prevista; a cor mostra quanto ela está acima da média histórica daquele mês. 35 °C é normal em Cuiabá e muito quente em Porto Alegre.</p>
+        </details>
+        </div>
       </figure>
-    </section>
-
-    <section class="bloco-familia" id="familiaChuva">
-      <h3 class="bloco-familia-titulo">Chuva e tempestades</h3>
-      <p class="hint" id="linhaChuva">—</p>
-      <figure class="figura figura--mapa" id="boxAvisos">
-        <h4 class="figura-titulo">Onde há aviso de tempo severo agora</h4>
+      <figure class="figura figura--mapa cartao-mapa r-chuva" id="boxAvisos">
+        <p class="cartao-mapa-familia">Chuva e tempestades</p>
+        <p class="cartao-mapa-boletim" id="linhaAvisos">—</p>
+        <h3 class="figura-titulo">Onde há aviso de tempo severo agora</h3>
         <p class="figura-sub" id="avisosSub">Avisos em vigor na consulta</p>
         <div class="figura-midia"><svg id="mapaAvisos" role="img" aria-label="Mapa do Brasil pelo maior grau de aviso meteorológico do INMET em vigor em cada estado" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legAvisos"></div>
-        <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
+        <div class="cartao-mapa-rodape">
+        <details class="cartao-mapa-dados"><summary>Ver em lista</summary>
           <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblAvisos"><thead><tr><th>UF</th><th>Avisos</th><th>Grau</th><th>Fenômeno</th></tr></thead><tbody></tbody></table></div>
         </details>
-        <p class="figura-leitura">O Inmet emite o aviso por área, e um aviso pode alcançar mais de um estado. Os avisos por município estão em <a href="defesa-civil.html">Defesa civil</a>.</p>
+        <details class="cartao-mapa-leitura"><summary>Como ler</summary>
+          <p class="figura-leitura">O Inmet emite o aviso por área, e um aviso pode alcançar mais de um estado. Os avisos por município estão em <a href="defesa-civil.html">Defesa civil</a>.</p>
+        </details>
+        </div>
       </figure>
-    </section>
     </div>
   </div>
 
@@ -237,7 +234,7 @@
 </div>
 
 <script src="assets/colunas.js?v=c7f1719a" defer></script>
-<script src="assets/js/monitor-de-riscos.js?v=f3f880f4" defer></script><script src="assets/js/proveniencia.js?v=656e2dad" defer></script>
+<script src="assets/js/monitor-de-riscos.js?v=93a527c8" defer></script><script src="assets/js/proveniencia.js?v=656e2dad" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

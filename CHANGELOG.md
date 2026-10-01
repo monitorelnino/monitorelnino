@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-01 · #488 · Monitor de riscos: um componente de cartão de mapa, seis vezes
+
+Os seis mapas da seção 2 passam a ter a mesma moldura, a mesma ordem interna e o mesmo tamanho, com
+o risco previsto em primeiro e pequeno como os outros. Família e linha do boletim entram no cartão,
+com altura reservada. Legendas só com categorias. "Mais de um risco" vira hachura das duas cores, e
+o calor deixa de colidir com a seca. Seletores de camada saem da grade.
+
 ## 2026-10-01 · #487 · Calor: a cor passa a ser o desvio contra a normal 1991–2020
 
 `coletar_normais_inmet.py` lê a normal climatológica do Inmet uma vez e guarda a média das máximas

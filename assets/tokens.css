@@ -50,7 +50,10 @@
   /* 30/09/2026 (Proteja-se, item 10.4): o calor ganha ficha própria e precisa de cor própria.
      Ele ficava com o mesmo token da seca, e duas famílias com a mesma cor não são duas
      famílias. Laranja queimado entre --seca e --fogo, conferido em contraste. */
-  --calor: #B4532A;
+  /* 01/10/2026: o calor era laranja queimado e saía quase igual ao ocre da seca no mapa
+     nacional — duas famílias indistinguíveis lado a lado. Passa a vermelho, que é a cor
+     que o site já associa a calor extremo, e o token é um só para o site inteiro. */
+  --calor: #A3271F;
 
   /* 30/09/2026 (rodada 2, item 8 — aprovado pela editoria): UMA ATMOSFERA POR FAMÍLIA DE RISCO.
      Todos os mapas eram iguais — mesmo fundo cinza, mesma UF de borda escura —, e mapa de fogo

@@ -146,8 +146,13 @@ const componentesDe = uf => {
 desenharMapa('mapaRiscoPrevisto', 'legRiscoPrevisto',
   uf => { const c = componentesDe(uf);
     if (!c.length) return MonitorMapas.PALETA.zero;
-    if (c.length > 1) return COR_VARIOS;
-    return RISCO_FAMILIA_COR[c[0]] || MonitorMapas.PALETA.zero; },
+    if (c.length === 1) return RISCO_FAMILIA_COR[c[0]] || MonitorMapas.PALETA.zero;
+    // 01/10/2026: duas famílias, as DUAS cores em hachura. O cinza liso de antes dizia "nenhuma
+    // das duas" — e era a categoria mais frequente do mapa virando mancha sem informação.
+    const cores = c.map(x => RISCO_FAMILIA_COR[x]).filter(Boolean);
+    return cores.length >= 2
+      ? MonitorMapas.hachura('mapaRiscoPrevisto', cores[0], cores[1])
+      : (cores[0] || MonitorMapas.PALETA.zero); },
   uf => { const r = riscoDe(uf); if (!r) return 'Sem sinal elevado para este estado no boletim';
     const c = componentesDe(uf);
     const nomes = c.map(x => RISCO_FAMILIA_ROTULO[x] || x).join(' e ');
@@ -157,7 +162,7 @@ desenharMapa('mapaRiscoPrevisto', 'legRiscoPrevisto',
    {cor: MonitorMapas.PALETA.familia.fogo, rotulo:'Fogo'},
    {cor: MonitorMapas.PALETA.familia.chuva, rotulo:'Chuva forte'},
    {cor: MonitorMapas.PALETA.familia.calor, rotulo:'Calor'},
-   {cor: COR_VARIOS, rotulo:'Mais de um risco'},
+   {cor: COR_VARIOS, rotulo:'Mais de um risco', hachura:true},
    {cor: MonitorMapas.PALETA.zero, rotulo:'Sem sinal elevado'}], 'previsto');
 credito('boxRiscoPrevisto', 'painel_el_nino');
 
@@ -168,6 +173,43 @@ credito('boxRiscoPrevisto', 'painel_el_nino');
     const nomes = c.map(x => RISCO_FAMILIA_ROTULO[x] || x).join(' e ') || 'Sem sinal elevado';
     return '<tr><td>' + esc(uf) + '</td><td>' + esc(nomes) + '</td></tr>';
   }).join('');
+})();
+
+/* Alinhamento da grade de cartões (01/10/2026).
+   O `min-height` em CSS reserva um PISO, não um teto: numa coluna estreita a linha do boletim da
+   seca quebra em três linhas e empurra título, subtítulo e mapa daquele cartão para baixo — foi o
+   que o portão de consistência visual pegou, com razão.
+
+   Reservar um número fixo de linhas resolveria o alinhamento ao custo de cortar texto aprovado
+   numa largura e deixar faixa branca em outra. Aqui a reserva é MEDIDA: cada bloco de texto recebe
+   a altura do mais alto entre os seis, depois do desenho e a cada mudança de largura. Ninguém é
+   cortado, e os seis começam o mapa na mesma linha em qualquer tela. */
+(function alinharCartoes(){
+  const BLOCOS = ['.cartao-mapa-boletim', '.figura-titulo', '.figura-sub'];
+  function alinhar(){
+    const cartoes = [...document.querySelectorAll('.grade-mapas > .cartao-mapa')];
+    if (cartoes.length < 2) return;
+    // Numa coluna só (celular) não há com que alinhar, e a reserva viraria espaço vazio.
+    const umaColuna = cartoes.length > 1
+      && Math.abs(cartoes[0].getBoundingClientRect().top - cartoes[1].getBoundingClientRect().top) > 4;
+    for (const seletor of BLOCOS) {
+      const alvos = cartoes.map(c => c.querySelector(seletor)).filter(Boolean);
+      alvos.forEach(e => { e.style.minHeight = ''; });
+      if (umaColuna) continue;
+      const alto = Math.max(...alvos.map(e => e.getBoundingClientRect().height));
+      alvos.forEach(e => { e.style.minHeight = alto + 'px'; });
+    }
+  }
+  // Guardas: o portão de runtime roda a página num DOM sem requestAnimationFrame nem document.fonts,
+  // e sem elas o alinhamento derrubava a página inteira — uma melhoria de layout não pode custar o
+  // carregamento. Sem RAF, alinha direto; sem `fonts`, alinha com a fonte que houver.
+  const temRAF = typeof requestAnimationFrame === 'function';
+  const quando = () => temRAF
+    ? requestAnimationFrame(() => requestAnimationFrame(alinhar))
+    : alinhar();
+  try { quando(); } catch (e) { /* layout é melhoria: nunca derruba a página */ }
+  try { if (document.fonts && document.fonts.ready) document.fonts.ready.then(quando); } catch (e) {}
+  try { addEventListener('resize', quando); } catch (e) {}
 })();
 
 // ---- Subtítulos das figuras, gerados do dado (30/09/2026). O HTML traz só a parte fixa da frase;
@@ -194,6 +236,7 @@ credito('boxRiscoPrevisto', 'painel_el_nino');
 
   // R6 — o boletim que sustenta a previsão.
   const pe = fonte('painel_el_nino');
+  põe('linhaRiscoPrevisto', 'O que os órgãos federais projetam para o ciclo, estado a estado.');
   põe('riscoPrevistoSub', 'Risco previsto até março de 2027 · por estado'
     + (pe.documento ? ' · ' + pe.documento : '')
     + (pe.consultado_em ? ', ' + pe.consultado_em : ''));
@@ -241,13 +284,21 @@ credito('boxRiscoPrevisto', 'painel_el_nino');
   const escreve = (id, fam, frase) => {
     const el = document.getElementById(id); if (!el) return;
     const lista = ufsCom(fam);
-    if (!lista.length) { el.hidden = true; return; }
+    // Sem estados naquela família, a linha fica VAZIA, não escondida: esconder encurta o cartão
+    // e desalinha a grade, que é o defeito que o componente único existe para corrigir.
+    if (!lista.length) { el.textContent = ''; return; }
     el.textContent = frase.replace('{n}', lista.length).replace('{lista}', lista.join(', ')) + '.';
   };
-  escreve('linhaSeca', 'Seca', 'O boletim prevê seca para {n} estados: {lista}');
+  // 01/10/2026: a linha do boletim passou para DENTRO de cada cartão, e os ids acompanham o do
+  // cartão. O de qualidade do ar é da mesma família do fogo e repete a linha dela — é o boletim que
+  // fala da família, não do mapa. No cartão de risco previsto a linha é o próprio subtítulo da
+  // previsão, escrito em `subtitulos()`.
+  escreve('linhaSecas', 'Seca', 'O boletim prevê seca para {n} estados: {lista}');
   escreve('linhaFogo', 'Fogo', 'O boletim prevê risco de fogo para {n} estados: {lista}');
-  escreve('linhaCalor', 'Calor', 'O boletim prevê calor acima do normal para {n} estados: {lista}');
-  escreve('linhaChuva', 'Chuva forte',
+  escreve('linhaAr', 'Fogo', 'O boletim prevê risco de fogo para {n} estados: {lista}');
+  escreve('linhaTemperatura', 'Calor',
+          'O boletim prevê calor acima do normal para {n} estados: {lista}');
+  escreve('linhaAvisos', 'Chuva forte',
           'O boletim prevê chuva acima do normal para {n} estados: {lista}');
 })();
 
@@ -511,14 +562,10 @@ credito('boxAr', 'open_meteo_ar');
     const pontos = UFS.map(uf => [uf, (SINAIS.uf[uf] || {})[caso.campo]]).filter(par => par[1]);
     const leg = document.getElementById(caso.legenda);
     if (!leg) return;
-    if (!pontos.length) {
-      const motivo = f.status === 'aguardando_credencial'
-        ? 'medição: aguardando credencial da fonte'
-        : 'medição: sem coleta até o corte';
-      leg.insertAdjacentHTML('beforeend',
-        '<span><i style="background:' + MonitorMapas.cor('sem-dado') + '"></i>' + esc(motivo) + '</span>');
-      return;
-    }
+    // 01/10/2026: sem pontos de medição, a legenda NÃO ganha linha. O estado da coleta não é
+    // categoria do mapa, e a legenda diz apenas o que o mapa é. A ausência continua declarada no
+    // crédito da figura, que é onde a procedência mora.
+    if (!pontos.length) return;
     const svg = d3.select('#' + caso.svg);
     svg.append('g').selectAll('circle').data(pontos).join('circle')
       .attr('cx', par => projection([par[1].coordenada.lon, par[1].coordenada.lat])[0])
@@ -531,9 +578,8 @@ credito('boxAr', 'open_meteo_ar');
         + (par[1].rede_de_origem ? '<br>rede: ' + esc(par[1].rede_de_origem) : ''), evt))
       .on('mousemove', (evt) => showTip(document.getElementById('mapTooltip').innerHTML, evt))
       .on('mouseleave', hideTip);
-    leg.insertAdjacentHTML('beforeend',
-      '<span><i style="background:' + MonitorMapas.cor('branco') + ';border:1.4px solid '
-      + MonitorMapas.cor('abissal') + '"></i>' + pontos.length + ' ponto(s) de medição</span>');
+    // A contagem de pontos saiu da legenda pela mesma razão: ela é sobre a camada, não uma
+    // categoria do mapa. Cada ponto continua se explicando no texto do mouse.
   });
 })();
 
@@ -600,6 +646,7 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
   });
   d3.select('#mapaFogo').select('g.focos').attr('style', 'mix-blend-mode: screen');
   d3.select('#mapaFogo').selectAll('g.focos circle').attr('stroke', 'none');
+  // Os três degraus da marca, que são as categorias do mapa e os rótulos aprovados do R8.
   MonitorMapas.legenda('legFogo', [
     {cor: ATM.fogo.rampa[0], rotulo: 'Poucos focos'},
     {cor: ATM.fogo.rampa[2], rotulo: 'Muitos focos'},
@@ -687,11 +734,10 @@ credito('boxFogo', 'inpe_fogo');
                    {cor: COR_GRAU['Perigo Potencial'], rotulo: 'Perigo potencial'},
                    {cor: COR_GRAU['Perigo'], rotulo: 'Perigo'},
                    {cor: COR_GRAU['Grande Perigo'], rotulo: 'Grande perigo'}]
-    .concat(total && Object.keys(fenomenos).length
-      ? [{cor: NEUTRA, rotulo: 'Fenômenos: ' + ordena(fenomenos).map(([f]) => f).join(', ')}]
-      : [])
     .concat(total ? [] : [{cor: SEM_AVISO,
-      rotulo: 'Nenhum aviso em vigor nesta consulta — a fonte respondeu, a lista é que está vazia'}]);
+      rotulo: 'Nenhum aviso em vigor nesta consulta'}]);
+  // 01/10/2026: a lista de fenômenos saiu da legenda — ela não é categoria do mapa, que pinta por
+  // GRAU. O fenômeno de cada estado continua no texto do mouse e na lista.
   desenharMapa('mapaAvisos', 'legAvisos',
     uf => COR_GRAU[maiorGrau(uf)] || SEM_AVISO,
     uf => { const a = avisos(uf) || {}; const n = Number(a.total || 0); const g = maiorGrau(uf);

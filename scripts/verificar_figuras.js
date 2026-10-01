@@ -48,7 +48,15 @@ function renderizar(pagina) {
       const ruins = Array.from(c.querySelectorAll(PROIBIDOS)).filter(e => {
         const det = e.tagName === "DETAILS" ? e : e.closest("details");
         if (det && (det.querySelector("table") || det.dataset.alternativa === "dados")) return false;
-        if (e.classList.contains("figura-sub") || e.classList.contains("figura-cat") || e.classList.contains("figura-leitura")) return false;   // partes do componente
+        // 01/10/2026: o cartão de mapa do Monitor ganhou duas partes declaradas pela editoria
+        // — o sobretítulo da FAMÍLIA e a LINHA DO BOLETIM, as duas dentro do cartão, com
+        // altura reservada para a grade alinhar. E o "Como ler" passou a vir recolhido num
+        // <details> sem tabela, que a regra de cima não alcançava. São partes do componente,
+        // não explicação avulsa: entram na lista pelo mesmo motivo que `figura-sub` entrou.
+        if (["figura-sub", "figura-cat", "figura-leitura", "cartao-mapa-familia",
+             "cartao-mapa-boletim", "cartao-mapa-leitura", "cartao-mapa-dados",
+             "cartao-mapa-rodape"].some(c => e.classList.contains(c))) return false;
+        if (e.closest(".cartao-mapa-leitura") || e.closest(".cartao-mapa-rodape")) return false;
         return true;
       });
       if (ruins.length) {
