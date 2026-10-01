@@ -1,0 +1,1002 @@
+{
+ "_governanca": "MARÉ Saúde v0.4, calculado EM PARALELO e NÃO publicado (01/10/2026). A página lê data/monitor_saude.json, que é a v0.3. A v0.4 foi aprovada pela editoria e a troca foi autorizada; ela espera a verificação do componente de COORDENAÇÃO EM SAÚDE, que nasceu nesta versão e não existe em nenhum dos 27 estados. Trocar antes disso exigiria somar um terço de zero — afirmar que o estado não tem sala de situação porque ninguém procurou — ou apagar o índice da página. Peso zero no MARÉ: nunca lido por recalcular_mare.py nem por gerar_monitor_saude.py.",
+ "versao": "0.4",
+ "gerado_em": "30/09/2026",
+ "corte": "05/09/2026",
+ "metodo": {
+  "pesos": {
+   "instrumento": 0.3333333333333333,
+   "coordenacao": 0.3333333333333333,
+   "cobertura": 0.3333333333333333
+  },
+  "instrumento": {
+   "NOVO": 100,
+   "READ": 70,
+   "VIG_REVISADO": 55,
+   "VIG": 30,
+   "ELAB": 20,
+   "VIG_OUTRO_RISCO": 0,
+   "LAC": 0
+  },
+  "coordenacao": {
+   "CRIADO_CICLO": 100,
+   "REATIVADO_CICLO": 65,
+   "PERMANENTE": 45,
+   "ANUNCIADO": 35,
+   "LAC": 0
+  },
+  "cobertura": "igual à v0.3: população em município cujo plano localizado trata a saúde",
+  "tempo": "fora do índice; publicado à parte como `dias_apos_boletim_1`, negativo quando o ato é anterior ao Boletim nº 1",
+  "faixas": {
+   "estágio inicial": "0–25",
+   "em construção": "25–50",
+   "consolidado": "50–70",
+   "avançado": "70–100"
+  }
+ },
+ "uf": {
+  "AC": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "coordenacao": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 0
+   },
+   "dias_apos_boletim_1": null,
+   "sem_numero_porque": [
+    "instrumento estadual não verificado",
+    "coordenação em saúde não verificada"
+   ]
+  },
+  "AL": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "VIG_REVISADO",
+    "pontos": null,
+    "doc": "Plano de Enfrentamento das Arboviroses 2026",
+    "data": "10/02/2026",
+    "url": "https://www.saude.al.gov.br/secretaria-de-estado-da-saude-lanca-plano-de-enfrentamento-das-arboviroses-para-2026/"
+   },
+   "coordenacao": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.1,
+    "planos_lidos": 1,
+    "planos_sem_leitura": 1
+   },
+   "dias_apos_boletim_1": -139,
+   "sem_numero_porque": [
+    "coordenação em saúde não verificada"
+   ]
+  },
+  "AM": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "NOVO",
+    "pontos": null,
+    "doc": "Plano de Contingência para Emergências em Saúde Pública Relacionadas a Eventos Climáticos Sazonais de Seca e Estiagem (publicado em 08/06/2026; cinco estágios operacionais: normalidade, mobilização, alerta, situação de emergência e crise)",
+    "data": "08/06/2026",
+    "url": "https://www.fvs.am.gov.br"
+   },
+   "coordenacao": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 52.4,
+    "planos_lidos": 1,
+    "planos_sem_leitura": 0
+   },
+   "dias_apos_boletim_1": -21,
+   "sem_numero_porque": [
+    "coordenação em saúde não verificada"
+   ]
+  },
+  "AP": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "coordenacao": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 0
+   },
+   "dias_apos_boletim_1": null,
+   "sem_numero_porque": [
+    "instrumento estadual não verificado",
+    "coordenação em saúde não verificada"
+   ]
+  },
+  "BA": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "VIG",
+    "pontos": null,
+    "doc": "Plano Estadual de Contingência das Arboviroses Urbanas — atualização 2025-2026 (reedição para o biênio, em conformidade com as Diretrizes Nacionais)",
+    "data": "05/2025",
+    "url": "https://www.saude.ba.gov.br/wp-content/uploads/2025/05/Atualizacao-Plano-de-Contingencia-veesao-2025_20261.pdf"
+   },
+   "coordenacao": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 4.4,
+    "planos_lidos": 1,
+    "planos_sem_leitura": 1
+   },
+   "dias_apos_boletim_1": null,
+   "sem_numero_porque": [
+    "coordenação em saúde não verificada"
+   ]
+  },
+  "CE": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "VIG",
+    "pontos": null,
+    "doc": "Plano Estadual de Enfrentamento das Arboviroses 2025/2026 (apresentado em 01/07/2025 na oficina de emergências com o MS)",
+    "data": "01/07/2025",
+    "url": "https://www.saude.ce.gov.br/wp-content/uploads/sites/9/2022/02/2025_PLANO-ESTADUAL_ENFRENTAMENTO-ARBOVIROSES.pptx.pdf"
+   },
+   "coordenacao": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 1
+   },
+   "dias_apos_boletim_1": -363,
+   "sem_numero_porque": [
+    "coordenação em saúde não verificada"
+   ]
+  },
+  "DF": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "VIG",
+    "pontos": null,
+    "doc": "Plano de Enfrentamento das Arboviroses do Distrito Federal (PDF no portal oficial, versão de 22/12/2023 — edição mais recente localizada)",
+    "data": "22/12/2023",
+    "url": "https://www.saude.df.gov.br/documents/37101/0/Plano-de-enfrentamento-arboviroses_231222_161225+(1).pdf/3061d8c1-7d45-cb9b-7584-5f49f9f73aff?t=1703339749606"
+   },
+   "coordenacao": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 0
+   },
+   "dias_apos_boletim_1": -920,
+   "sem_numero_porque": [
+    "coordenação em saúde não verificada"
+   ]
+  },
+  "ES": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "VIG",
+    "pontos": null,
+    "doc": "Plano de Contingência Estadual das Arboviroses — Dengue, Zika e Chikungunya (PDF no portal oficial 'mosquito.saude.es.gov.br'; sem data de edição no documento localizado)",
+    "data": null,
+    "url": "https://mosquito.saude.es.gov.br/Media/dengue/Notas-Tecnicas-Alertas-Epidemiologicos/Plano%20Conting%C3%AAncia%20Arboviroses.pdf"
+   },
+   "coordenacao": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 53.8,
+    "planos_lidos": 72,
+    "planos_sem_leitura": 0
+   },
+   "dias_apos_boletim_1": null,
+   "sem_numero_porque": [
+    "coordenação em saúde não verificada"
+   ]
+  },
+  "GO": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "NOVO",
+    "pontos": null,
+    "doc": "Plano de Emergências em Saúde Pública de Goiás — cenários do El Niño 2026-2027 (calor extremo, baixa umidade, fumaça de queimadas, arboviroses), apresentado em 27/08/2026, com a Nota Informativa nº 1/2026 – SES/SUVISA/SUVEPI/GESP/V-21845 encaminhada aos 246 municípios",
+    "data": "27/08/2026",
+    "url": "https://www.saude.go.gov.br/unidades-de-saude/outras-unidades"
+   },
+   "coordenacao": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 0
+   },
+   "dias_apos_boletim_1": 59,
+   "sem_numero_porque": [
+    "coordenação em saúde não verificada"
+   ]
+  },
+  "MA": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "coordenacao": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 1
+   },
+   "dias_apos_boletim_1": null,
+   "sem_numero_porque": [
+    "instrumento estadual não verificado",
+    "coordenação em saúde não verificada"
+   ]
+  },
+  "MG": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "NOVO",
+    "pontos": null,
+    "doc": "Plano de Enfrentamento ao El Niño do Estado de Minas Gerais: Preparação, Monitoramento e Resposta do Setor Saúde",
+    "data": "08/09/2026",
+    "url": "https://www.saude.mg.gov.br/wp-content/uploads/2026/08/Plano-de-Enfrentamento-ao-El-Nino-correcao.pdf"
+   },
+   "coordenacao": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 0
+   },
+   "dias_apos_boletim_1": 71,
+   "sem_numero_porque": [
+    "coordenação em saúde não verificada"
+   ]
+  },
+  "MS": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "VIG",
+    "pontos": null,
+    "doc": "Plano de Contingência Estadual Arboviroses 2025-2026 (guias e manuais da SES)",
+    "data": "08/10/2025",
+    "url": "https://www.saude.ms.gov.br/informativos/guias-e-manuais/plano-de-contingencia-estadual-arboviroses-2025-2026/"
+   },
+   "coordenacao": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 0
+   },
+   "dias_apos_boletim_1": -264,
+   "sem_numero_porque": [
+    "coordenação em saúde não verificada"
+   ]
+  },
+  "MT": {
+   "prontidao": 21.7,
+   "faixa": "estágio inicial",
+   "instrumento": {
+    "degrau": "ELAB",
+    "pontos": 20,
+    "doc": "Portaria nº 0195/2026/GBSES — institui o processo de elaboração, implantação progressiva, governança e operacionalização do Plano Estadual de Preparação e Resposta a Emergências em Saúde Pública (PPResp/MT), com prazos de implantação",
+    "data": "30/03/2026",
+    "url": "https://www.saude.mt.gov.br/storage/files/MmMbtQx9n43VPO23mMookK6LdUyD6h4QfMOvqx44.pdf"
+   },
+   "coordenacao": {
+    "degrau": "PERMANENTE",
+    "pontos": 45,
+    "doc": "Portaria nº 0666/2024/GBSES — institui a Sala de Situação em Saúde para o enfrentamento das Mudanças Climáticas, com composição e atribuições; mantida e ampliada pela Portaria nº 0195/2026/GBSES, que prevê sala de situação permanente e centro de operações de emergência temporário",
+    "data": "03/10/2024",
+    "url": "https://www.saude.mt.gov.br/storage/files/RDtdQBfGbCiRYiJ1BIRtq6KUg32oNI4cKBWaQaiS.pdf"
+   },
+   "cobertura": {
+    "pontos": 0.0,
+    "cobertura_pct": 0.0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 1
+   },
+   "dias_apos_boletim_1": -91,
+   "sem_numero_porque": null
+  },
+  "PA": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "VIG",
+    "pontos": null,
+    "doc": "Plano de Contingência Estadual de Dengue, Chikungunya e Zika vírus — em execução contínua, com salas de situação das arboviroses implantadas (notícia oficial da SESPA, 02/2025); edição e data do documento não indicadas",
+    "data": "02/2025",
+    "url": "http://www.saude.pa.gov.br/casos-de-dengue-caem-quase-60-no-para-em-janeiro-de-2025/"
+   },
+   "coordenacao": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 0
+   },
+   "dias_apos_boletim_1": null,
+   "sem_numero_porque": [
+    "coordenação em saúde não verificada"
+   ]
+  },
+  "PB": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "VIG",
+    "pontos": null,
+    "doc": "Plano Estadual de Contingência para Controle das Arboviroses (PDF no portal oficial, 15/02/2024)",
+    "data": "15/02/2024",
+    "url": "https://paraiba.pb.gov.br/diretas/saude/arquivos-1/vigilancia-em-saude/plano_contingencia_arboviroses_15_02_2024.pdf"
+   },
+   "coordenacao": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 2
+   },
+   "dias_apos_boletim_1": -865,
+   "sem_numero_porque": [
+    "coordenação em saúde não verificada"
+   ]
+  },
+  "PE": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "VIG",
+    "pontos": null,
+    "doc": "Plano de Enfrentamento das Arboviroses 2025/2026 (divulgado em 22/01/2025; capítulo específico de Oropouche)",
+    "data": "22/01/2025",
+    "url": "https://portal.saude.pe.gov.br/pernambuco-divulga-plano-de-enfrentamento-das-arboviroses-2025-2026/"
+   },
+   "coordenacao": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 9.9,
+    "planos_lidos": 1,
+    "planos_sem_leitura": 0
+   },
+   "dias_apos_boletim_1": -523,
+   "sem_numero_porque": [
+    "coordenação em saúde não verificada"
+   ]
+  },
+  "PI": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "ELAB",
+    "pontos": null,
+    "doc": "Plano de contingência para o enfrentamento do El Niño (coordenado com o ADAPTASUS-PI — Plano Estadual de Adaptação do Setor Saúde às Alterações Climáticas), em fase final de elaboração",
+    "data": null,
+    "url": "https://piauihoje.com/noticias/saude/piaui-prepara-sus-para-possiveis-impactos-do-el-nino-na-saude-da-populacao-464649.html"
+   },
+   "coordenacao": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 1
+   },
+   "dias_apos_boletim_1": null,
+   "sem_numero_porque": [
+    "coordenação em saúde não verificada"
+   ]
+  },
+  "PR": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "VIG",
+    "pontos": null,
+    "doc": "Plano de ação e contingência de arboviroses para a sazonalidade 2024/2025, apresentado ao Comitê Intersetorial de Controle da Dengue (22/11/2024); página oficial de dengue da SESA está 'indisponível devido ao período eleitoral' (fonte suspensa no defeso)",
+    "data": "22/11/2024",
+    "url": "https://www.saude.pr.gov.br/Noticia/Parana-intensifica-combate-dengue-com-Comite-Intersetorial-e-acoes-integradas"
+   },
+   "coordenacao": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 10
+   },
+   "dias_apos_boletim_1": -584,
+   "sem_numero_porque": [
+    "coordenação em saúde não verificada"
+   ]
+  },
+  "RJ": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "ELAB",
+    "pontos": null,
+    "doc": "Plano de Contingência para Enfrentamento às Arboviroses — em atualização: a SES-RJ anunciou em 01/2025 a preparação do plano para 2025 e, em ata da Assessoria de Regionalização (12/2025), o grupo técnico 'se encontra em fase de atualização do plano'; a última edição publicada localizada é 2018/2019",
+    "data": "12/2025",
+    "url": "https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=NzY0ODg,"
+   },
+   "coordenacao": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 8.8,
+    "planos_lidos": 3,
+    "planos_sem_leitura": 3
+   },
+   "dias_apos_boletim_1": null,
+   "sem_numero_porque": [
+    "coordenação em saúde não verificada"
+   ]
+  },
+  "RN": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "coordenacao": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 1
+   },
+   "dias_apos_boletim_1": null,
+   "sem_numero_porque": [
+    "instrumento estadual não verificado",
+    "coordenação em saúde não verificada"
+   ]
+  },
+  "RO": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "ELAB",
+    "pontos": null,
+    "doc": "Plano Operacional Integrado de Contingência Climática em Saúde",
+    "data": null,
+    "url": "https://www.rondoniagora.com/geral/sesau-cria-plano-para-enfrentar-impactos-das-mudancas-climaticas-na-saude-em-rondonia"
+   },
+   "coordenacao": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 1
+   },
+   "dias_apos_boletim_1": null,
+   "sem_numero_porque": [
+    "coordenação em saúde não verificada"
+   ]
+  },
+  "RR": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "coordenacao": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 2
+   },
+   "dias_apos_boletim_1": null,
+   "sem_numero_porque": [
+    "instrumento estadual não verificado",
+    "coordenação em saúde não verificada"
+   ]
+  },
+  "RS": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "VIG",
+    "pontos": null,
+    "doc": "Plano de Contingência Dengue 2024-2025, 2ª versão (fevereiro/2025); plano para o verão 2025/2026 apresentado às coordenadorias em 29-31/10/2025, edição ainda não listada na página oficial",
+    "data": "10/02/2025",
+    "url": "https://saude.rs.gov.br/plano-de-contingencia"
+   },
+   "coordenacao": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 2
+   },
+   "dias_apos_boletim_1": -504,
+   "sem_numero_porque": [
+    "coordenação em saúde não verificada"
+   ]
+  },
+  "SC": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "VIG",
+    "pontos": null,
+    "doc": "Plano de Contingência para o enfrentamento da dengue, zika e chikungunya — temporada 2025/2026 (cenário de preparação + três níveis de alerta)",
+    "data": "08/09/2025",
+    "url": null
+   },
+   "coordenacao": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "planos_lidos": 1,
+    "planos_sem_leitura": 4
+   },
+   "dias_apos_boletim_1": -294,
+   "sem_numero_porque": [
+    "coordenação em saúde não verificada"
+   ]
+  },
+  "SE": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "VIG",
+    "pontos": null,
+    "doc": "Plano de Contingência para Enfrentamento e Controle de Epidemias por Arboviroses no Estado de Sergipe (publicado na página oficial de arboviroses da SES; sem data de edição na página)",
+    "data": null,
+    "url": "https://saude.se.gov.br/arboviroses-dengue-chikungunya-e-zika/"
+   },
+   "coordenacao": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "planos_lidos": 1,
+    "planos_sem_leitura": 18
+   },
+   "dias_apos_boletim_1": null,
+   "sem_numero_porque": [
+    "coordenação em saúde não verificada"
+   ]
+  },
+  "SP": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "NOVO",
+    "pontos": null,
+    "doc": "Plano Estadual de Preparação e Resposta em Saúde para o Fenômeno El Niño",
+    "data": "31/08/2026",
+    "url": "https://portal.saude.sp.gov.br/resources/cve-centro-de-vigilancia-epidemiologica/areas-de-vigilancia/central/planoestadualdepreparacaaoerespostaemsauudeparaofenoemenoelninao.pdf"
+   },
+   "coordenacao": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.2,
+    "planos_lidos": 1,
+    "planos_sem_leitura": 2
+   },
+   "dias_apos_boletim_1": 63,
+   "sem_numero_porque": [
+    "coordenação em saúde não verificada"
+   ]
+  },
+  "TO": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "coordenacao": {
+    "degrau": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "url": null
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 1
+   },
+   "dias_apos_boletim_1": null,
+   "sem_numero_porque": [
+    "instrumento estadual não verificado",
+    "coordenação em saúde não verificada"
+   ]
+  }
+ },
+ "comparacao_v03_v04": {
+  "ufs_com_instrumento_verificado": 21,
+  "ufs_que_mudam_de_pontuacao_do_instrumento": 17,
+  "media_do_componente_instrumento": {
+   "v0_3": 53.6,
+   "v0_4": 42.6
+  },
+  "por_uf": [
+   {
+    "uf": "AL",
+    "status_v03": "VIG",
+    "pontos_v03": 45,
+    "degrau_v04": "VIG_REVISADO",
+    "pontos_v04": 55
+   },
+   {
+    "uf": "BA",
+    "status_v03": "VIG",
+    "pontos_v03": 45,
+    "degrau_v04": "VIG",
+    "pontos_v04": 30
+   },
+   {
+    "uf": "CE",
+    "status_v03": "VIG",
+    "pontos_v03": 45,
+    "degrau_v04": "VIG",
+    "pontos_v04": 30
+   },
+   {
+    "uf": "DF",
+    "status_v03": "VIG",
+    "pontos_v03": 45,
+    "degrau_v04": "VIG",
+    "pontos_v04": 30
+   },
+   {
+    "uf": "ES",
+    "status_v03": "VIG",
+    "pontos_v03": 45,
+    "degrau_v04": "VIG",
+    "pontos_v04": 30
+   },
+   {
+    "uf": "MS",
+    "status_v03": "VIG",
+    "pontos_v03": 45,
+    "degrau_v04": "VIG",
+    "pontos_v04": 30
+   },
+   {
+    "uf": "MT",
+    "status_v03": "ELAB",
+    "pontos_v03": 35,
+    "degrau_v04": "ELAB",
+    "pontos_v04": 20
+   },
+   {
+    "uf": "PA",
+    "status_v03": "VIG",
+    "pontos_v03": 45,
+    "degrau_v04": "VIG",
+    "pontos_v04": 30
+   },
+   {
+    "uf": "PB",
+    "status_v03": "VIG",
+    "pontos_v03": 45,
+    "degrau_v04": "VIG",
+    "pontos_v04": 30
+   },
+   {
+    "uf": "PE",
+    "status_v03": "VIG",
+    "pontos_v03": 45,
+    "degrau_v04": "VIG",
+    "pontos_v04": 30
+   },
+   {
+    "uf": "PI",
+    "status_v03": "ELAB",
+    "pontos_v03": 35,
+    "degrau_v04": "ELAB",
+    "pontos_v04": 20
+   },
+   {
+    "uf": "PR",
+    "status_v03": "VIG",
+    "pontos_v03": 45,
+    "degrau_v04": "VIG",
+    "pontos_v04": 30
+   },
+   {
+    "uf": "RJ",
+    "status_v03": "ELAB",
+    "pontos_v03": 35,
+    "degrau_v04": "ELAB",
+    "pontos_v04": 20
+   },
+   {
+    "uf": "RO",
+    "status_v03": "ELAB",
+    "pontos_v03": 35,
+    "degrau_v04": "ELAB",
+    "pontos_v04": 20
+   },
+   {
+    "uf": "RS",
+    "status_v03": "VIG",
+    "pontos_v03": 45,
+    "degrau_v04": "VIG",
+    "pontos_v04": 30
+   },
+   {
+    "uf": "SC",
+    "status_v03": "VIG",
+    "pontos_v03": 45,
+    "degrau_v04": "VIG",
+    "pontos_v04": 30
+   },
+   {
+    "uf": "SE",
+    "status_v03": "VIG",
+    "pontos_v03": 45,
+    "degrau_v04": "VIG",
+    "pontos_v04": 30
+   }
+  ],
+  "indice_inteiro": "não comparável hoje: a v0.4 não produz número em nenhuma UF, porque a coordenação em saúde nasceu nesta versão e ainda não foi verificada em nenhum estado",
+  "ufs_com_numero_na_v04": 1,
+  "ufs_com_coordenacao_verificada": 1
+ },
+ "robustez": {
+  "ufs_com_numero": 1,
+  "monte_carlo": {
+   "MT": {
+    "mediana": 21.3,
+    "p05": 6.7,
+    "p95": 37.5
+   }
+  },
+  "sensibilidade": {
+   "NOVO-15": {
+    "ufs_que_mudam_de_faixa": [],
+    "n": 0
+   },
+   "NOVO+15": {
+    "ufs_que_mudam_de_faixa": [],
+    "n": 0
+   },
+   "READ-15": {
+    "ufs_que_mudam_de_faixa": [],
+    "n": 0
+   },
+   "READ+15": {
+    "ufs_que_mudam_de_faixa": [],
+    "n": 0
+   },
+   "VIG_REVISADO-15": {
+    "ufs_que_mudam_de_faixa": [],
+    "n": 0
+   },
+   "VIG_REVISADO+15": {
+    "ufs_que_mudam_de_faixa": [],
+    "n": 0
+   },
+   "VIG-15": {
+    "ufs_que_mudam_de_faixa": [],
+    "n": 0
+   },
+   "VIG+15": {
+    "ufs_que_mudam_de_faixa": [],
+    "n": 0
+   },
+   "ELAB-15": {
+    "ufs_que_mudam_de_faixa": [],
+    "n": 0
+   },
+   "ELAB+15": {
+    "ufs_que_mudam_de_faixa": [
+     "MT"
+    ],
+    "n": 1
+   },
+   "VIG_OUTRO_RISCO-15": {
+    "ufs_que_mudam_de_faixa": [],
+    "n": 0
+   },
+   "VIG_OUTRO_RISCO+15": {
+    "ufs_que_mudam_de_faixa": [],
+    "n": 0
+   },
+   "LAC-15": {
+    "ufs_que_mudam_de_faixa": [],
+    "n": 0
+   },
+   "LAC+15": {
+    "ufs_que_mudam_de_faixa": [],
+    "n": 0
+   }
+  },
+  "metodo": "Monte Carlo 10000 sorteios Dirichlet(1,1,1) semente 42 — a mesma do índice principal, para que as duas auditorias sejam comparáveis; sensibilidade de ±15 pontos por degrau do instrumento"
+ }
+}
