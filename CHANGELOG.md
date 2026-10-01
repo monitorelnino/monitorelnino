@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-01 · #489 · Imprensa refeita: nada escrito à mão que dependa do dado
+
+Topo com os dois índices e quatro contadores, todos do banco; "O que é o MARÉ", "Como os índices são
+calculados" e "O que cada página mostra" com os textos aprovados; "Como citar" com direitos e
+licença. Saem o sobretítulo, o kit que prometia PDFs inexistentes, o resto do calendário eleitoral e
+duas perguntas com base legal errada. Portão novo confere versão, data e números contra o banco.
+
 ## 2026-10-01 · #488 · Monitor de riscos: um componente de cartão de mapa, seis vezes
 
 Os seis mapas da seção 2 passam a ter a mesma moldura, a mesma ordem interna e o mesmo tamanho, com

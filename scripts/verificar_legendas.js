@@ -44,7 +44,12 @@ const FRASE_DE_PRIVACIDADE = /Não pedimos seu nome nem contato, só as informa�
 //      há índice nacional aberto; por isso usamos a escala europeia) — é explicação de método,
 //      não causalidade atribuída a um fenômeno do dado.
 const LEGENDA_OFICIAL_ANA = /^(?:Grave|Extrema|Excepcional)$/;
-const EXCECOES = [/^Pior hora do dia\b/, /\bpior hora do dia\b/gi,
+// 01/10/2026 (imprensa): "nunca entram nos índices" é texto aprovado e é GARANTIA DE MÉTODO —
+// a frase existe para fechar a porta a decreto de emergência virar preparação. Ela cai no mesmo
+// lexema de ênfase que a regra proíbe na prosa, e por isso entra aqui, pela frase exata.
+const GARANTIA_DECRETO = /nunca entram nos índices/gi;
+const EXCECOES = [GARANTIA_DECRETO,
+/^Pior hora do dia\b/, /\bpior hora do dia\b/gi,
   /o Brasil não tem índice nacional aberto de qualidade do ar, por isso usamos a escala europeia/gi,
   LEGENDA_OFICIAL_ANA,
 FRASE_DE_PRIVACIDADE, /síndrome respiratória aguda grave/gi, /aguda grave/gi, /janela crítica/gi, /sinais de alarme/gi, /nível \d \((?:baixa atividade|atenção|alerta|emergência)\)/gi,
@@ -158,15 +163,21 @@ function renderizar(pagina) {
         // ali o texto nomeia o artefato e descreve o método. Vale para as checagens de CONTEÚDO. A
         // checagem de estilo de frase (travessão) continua valendo, porque ela é testada antes desta
         // guarda — regra geral de escrita não tem exceção por bloco.
+        // 01/10/2026: quarta exceção declarada, data-voz="citacao" — a REFERÊNCIA BIBLIOGRÁFICA.
+        // "FUTURA EVIDENCE LAB" em caixa alta e o travessão dentro do título são o formato ABNT de
+        // uma referência, não ênfase tipográfica nem pontuação de frase. Diferente das outras três,
+        // esta precisa valer também para a checagem de ESTILO: numa referência o travessão é parte
+        // do título da obra, e reescrevê-lo com vírgula produziria uma citação errada.
         const dentroFichaOuLei = e.closest('[data-voz="ficha"]') || e.closest('[data-voz="lei"]')
-          || e.closest('[data-proveniencia="1"]');
+          || e.closest('[data-proveniencia="1"]') || e.closest('[data-voz="citacao"]');
+        const ehCitacao = !!e.closest('[data-voz="citacao"]');
         if (e.closest(".figura")) return;                                                // já coberto acima
         if (e.querySelector("p, li")) return;                                            // só as folhas
         const s = t(e); if (!s || s.length < 12) return; elementos++;
         const a = [];
         // 16/09/2026: o travessão-como-pontuação é regra geral de escrita, vale mesmo dentro de ficha/bloco
         // legal (que só ficam de fora das checagens de conteúdo, não das de estilo de frase).
-        if (TRAVESSAO_PONTUACAO.test(s)) a.push('travessão como pontuação de frase (reescreva com vírgula, ponto, ou duas frases)');
+        if (!ehCitacao && TRAVESSAO_PONTUACAO.test(s)) a.push('travessão como pontuação de frase (reescreva com vírgula, ponto, ou duas frases)');
         if (!dentroFichaOuLei) {
           a.push(...classificar(s));
           // 30/09/2026: a checagem de ênfase passa pelas MESMAS exceções declaradas que o

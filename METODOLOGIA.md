@@ -1812,3 +1812,38 @@ a lado não são duas famílias. O token `--calor` passa a vermelho, e é um só
 **Sem controles dentro dos cartões.** Os seletores de camada existiam em dois dos seis mapas e em
 nenhum dos outros quatro. A camada exibida é a padrão; o que a outra camada tinha de valor vive no
 "Ver em lista" do próprio cartão.
+
+
+## 63. A página de imprensa não escreve à mão o que depende do dado (01/10/2026)
+
+Regra da página, decidida pela editoria em 01/10/2026 e verificada por portão
+(`verificar_imprensa_do_dado.js`).
+
+**Tudo o que muda quando o site se atualiza sai do banco a cada publicação:** os dois índices, a data
+da edição, os quatro contadores do topo, os cartões da semana, os números do release e as **versões**
+do MARÉ Legal e do MARÉ Saúde. A versão publicada é a do motor que calculou o número — ela é lida do
+campo `metodo` do próprio índice, e não de uma string paralela que alguém atualiza à mão.
+
+O portão renderiza a página com o banco de verdade e reprova se algum desses campos ficar em "—", se
+uma versão ou data divergir de `data/indice.json`, `data/monitor_saude.json` ou `data/meta.json`, ou
+se o mesmo número aparecer com duas contas diferentes na mesma página. Ele existe porque os dois
+defeitos que corrige já aconteceram: um release com "contagens refeitas a partir de 26 de outubro" —
+data vencida — e a palavra "antecipação" depois de a v3.1 ter tirado o componente temporal do índice.
+Número escrito à mão não envelhece com aviso; envelhece em silêncio.
+
+**"Última semana" são os 7 dias até a data da edição, contados pela DATA DO ATO** — a data em que o
+plano saiu no diário, ou em que o decreto foi assinado —, e não pela data em que o MARÉ o localizou.
+As duas podem distar semanas, e a segunda mede o nosso trabalho, não o do ente.
+
+**Direitos e licença.** Os índices MARÉ Legal e MARÉ Saúde, seu método e sua marca são propriedade
+intelectual da Futura Evidence Lab. A metodologia completa é pública; o código que calcula os índices
+não é distribuído. Dados, mapas e gráficos podem ser reproduzidos, inclusive para fins comerciais,
+com o crédito "MARÉ / Futura Evidence Lab" e a fonte primária de cada figura, sob Creative Commons
+CC BY 4.0. A linha anterior da página, que dizia "Código: MIT", saiu: ela contradizia esta decisão.
+
+**Duas exceções nomeadas no portão de legendas**, pelos textos aprovados desta página: a **referência
+bibliográfica** ganhou `data-voz="citacao"`, porque o autor em caixa alta e o travessão no título são
+o formato ABNT de uma referência, não ênfase nem pontuação de frase — e aqui a exceção vale também
+para o estilo, já que reescrever o travessão produziria uma citação errada; e a frase "os decretos de
+emergência (…) **nunca** entram nos índices", que é garantia de método e não ênfase retórica — ela
+existe para fechar a porta a decreto virar preparação.

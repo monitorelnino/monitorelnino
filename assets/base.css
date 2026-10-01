@@ -987,3 +987,38 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
    pelo título. A numeração automática continua nas outras páginas. */
 .cartao-mapa{counter-increment:none;}
 .cartao-mapa .figura-numero, .cartao-mapa::before{content:none; display:none;}
+
+/* ===== Imprensa (01/10/2026): fundo branco, sem caixas, coluna de leitura ==================
+   A página era uma pilha de `.panel` cinza; o pedido é a mesma linguagem do Proteja-se e do
+   Monitor de riscos — o que separa seções é espaço e título, não moldura. */
+#conteudo > section{margin:var(--sp-6) 0;}
+.imprensa-topo{margin:var(--sp-5) 0 var(--sp-6);}
+.imprensa-manchete{font-family:var(--font-titulo); font-weight:var(--peso-display);
+  font-size:var(--fs-h2); line-height:var(--lh-h2); margin:0;}
+.imprensa-contadores{display:grid; grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:var(--sp-3) var(--sp-5); margin:var(--sp-4) 0 var(--sp-2); max-width:760px;}
+.imprensa-contador{display:flex; align-items:baseline; gap:var(--sp-2); margin:0;}
+.imprensa-contador b{font-family:var(--font-titulo); font-weight:var(--peso-display);
+  font-size:var(--fs-h1); line-height:1;}
+.imprensa-contador span{font-size:var(--fs-small); line-height:var(--lh-small); color:var(--muted);}
+
+/* Cartões da semana: desenho do Proteja-se — borda fina, sem bloco escuro, o número em destaque
+   e UMA linha de fonte. O botão é link pequeno, não botão cheio. */
+.grade-numeros{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:var(--sp-3);
+  margin:var(--sp-4) 0;}
+.cartao-numero{display:flex; flex-direction:column; gap:var(--sp-1);
+  border:1px solid var(--line); border-radius:12px; padding:var(--sp-3);}
+.cartao-numero-rotulo{font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); margin:0;}
+.cartao-numero-valor{font-family:var(--font-titulo); font-weight:var(--peso-display);
+  font-size:var(--fs-h2); line-height:1; margin:0;}
+.cartao-numero-fonte{font-family:var(--font-dado); font-size:var(--fs-caption);
+  line-height:var(--lh-caption); color:var(--muted); margin:auto 0 0;}
+.link-pequeno{background:none; border:0; padding:0; color:var(--link); cursor:pointer;
+  font-size:var(--fs-caption); line-height:var(--lh-caption); text-align:left;}
+.link-pequeno:hover{text-decoration:underline;}
+
+@media (max-width: 1020px){ .grade-numeros{grid-template-columns:repeat(2, minmax(0,1fr));} }
+@media (max-width: 640px){
+  .grade-numeros{grid-template-columns:1fr;}
+  .imprensa-contadores{grid-template-columns:1fr;}
+}
