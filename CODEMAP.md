@@ -73,6 +73,7 @@ Atualizado em 01/10/2026.
 | `coletar_prioritarios_mma.py` | — | `enquadramento_federal.json` | — | não |
 | `coletar_s2id.py` | — | `atos_resposta.json` | — | não |
 | `coletar_saude.py` | — | `saude_federal.json`, `saude_sinais.json`, `saude_uf.json` | — | não |
+| `coletar_saude_estadual.py` | — | — | — | não |
 | `coletar_semiarido_sudene.py` | — | `enquadramento_federal.json` | — | não |
 | `coletar_siconfi_182.py` | — | `despesa_182.json` | — | não |
 | `coletar_sinais_risco.py` | — | — | — | não |

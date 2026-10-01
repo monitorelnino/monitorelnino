@@ -1,0 +1,39 @@
+# Funil de saúde estadual — elo da corrente noturna, depois da busca web.
+#
+# Bloco A do handover do MARÉ Saúde (editoria, 01/10/2026): verificar os 27 estados e manter
+# verificado, com as fontes e os termos da SAÚDE. Roda aqui, e não na máquina de quem edita, porque
+# a busca aberta precisa da instância efêmera de SearXNG que o `_coletor.yml` sobe no próprio job.
+#
+# Ele produz PISTA e nada mais: a promoção a registro é do `juiz.py`, com documento primário lido,
+# e o elo do juiz vem depois na mesma corrente. A ordem da noite é
+#
+#   diários → descoberta → busca web → **saúde estadual** → evidências → juiz → sinais
+#
+# e o gatilho NÃO filtra por conclusão, de propósito: se o elo anterior falhou, este roda assim
+# mesmo. Cada coletor processa a fila pendente independentemente do horário, e uma noite perdida
+# não pode levar a seguinte junto.
+name: Noturno — funil de saúde estadual
+
+on:
+  workflow_run:
+    workflows: ["Busca web — cadência automática"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  saude-estadual:
+    uses: ./.github/workflows/_coletor.yml
+    with:
+      nome: saude-estadual
+      # Escreve em data/pistas_imprensa_saude.json — grupo compartilhado da noite.
+      grupo_de_concorrencia: noturno
+      timeout_minutos: 45
+      precisa_searxng: true
+      comandos: |
+        coletar_saude_estadual.py --bateria
+        coletar_saude_estadual.py --fontes
+    secrets:
+      ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
