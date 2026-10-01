@@ -855,8 +855,14 @@ def enviar_uma_vez(url: str, dados: dict, timeout: int = 40, origem: str = None)
     marca = detectar_muro_de_robo(corpo)
     if marca:
         raise MuroDeRobo(url, marca)
-    if _dominio_publico(url) and ("html" in ct or "text" in ct):
-        pad = detectar_defeso(corpo[:200000].decode("utf-8", "replace"))
+    # A MESMA condição do GET, incluindo o reconhecimento por corpo e a reserva pelo endereço:
+    # a trava prometida no docstring tem de ser a trava escrita, e uma versão mais fraca aqui
+    # deixaria passar aviso de defeso servido sem Content-Type de texto.
+    if _dominio_publico(url) and ("html" in ct or "text" in ct
+                                 or corpo[:200].lstrip().lower().startswith(b"<!doctype")
+                                 or b"<html" in corpo[:2000].lower()):
+        pad = (detectar_defeso(corpo[:200000].decode("utf-8", "replace"))
+               or ("defeso" if "defeso" in url.lower() else None))
         if pad:
             _SUSPENSAS_SESSAO[url] = pad
             try:

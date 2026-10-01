@@ -19,7 +19,7 @@ USO
   python coletar_doe.py --regiao NE            # lote por região (§13: NE, N, CO, SE, S)
   python coletar_doe.py --uf SC --desde 2026-06-29
 """
-import json, re, sys, time, urllib.parse
+import json, pathlib, re, sys, time, urllib.parse
 from datetime import date
 import funil
 from coletores_base import (buscar, enviar, preservar_evidencia, preservar_texto_integral, log_busca, registrar_lacuna,
@@ -347,16 +347,24 @@ def item_do_dodf(m: dict, uf: str) -> dict:
             "trechos": [f"{cabeca}: {resumo}".strip(": ")], "territorio": uf}
 
 
-def itens_dodf(uf: str, desde: str, ate: str, enviar_fn=None, termos=None) -> tuple:
+def itens_dodf(uf: str, desde: str, ate: str, enviar_fn=None, termos=None,
+               pausa: float = RITMO_APIFRONT_S, dormir=None) -> tuple:
     """(itens, totais por termo) na busca própria do DODF. Pagina até esgotar o que ela declara.
 
     `termos` existe para o funil de SAÚDE, que pergunta ao mesmo diário com outras palavras: a rota
     é a mesma, os termos não."""
     _enviar = enviar_fn or enviar
+    _dormir = dormir or time.sleep
     itens, totais, vistos = [], {}, set()
+    primeira = True
     for termo in (termos or TERMOS_APIFRONT):
         pagina, total = 1, None
         while pagina <= TETO_PAGINAS_DODF:
+            # O ritmo de 2 s por domínio é de quem chama (o `_respeitar_ritmo` só honra o
+            # `Crawl-delay` que o robots declara, e este host não declara nenhum).
+            if not primeira:
+                _dormir(pausa)
+            primeira = False
             bruto = _enviar(DODF_LISTAR, {"termo": termo, "tpBusca": "exata", "pagina": pagina,
                                           "dtInicial": desde, "dtFinal": ate,
                                           "tpPlatform": "desktop"},
@@ -413,11 +421,17 @@ def paginas_com_termo(pdf: bytes, termo: str, extrair_fn=None) -> list:
     return saida
 
 
-def itens_busca_to(uf: str, desde: str, ate: str, buscar_fn=None, termos=None) -> tuple:
+def itens_busca_to(uf: str, desde: str, ate: str, buscar_fn=None, termos=None,
+                   pausa: float = RITMO_APIFRONT_S, dormir=None) -> tuple:
     """(itens, totais por termo) na busca do DOE-TO, descendo ao PDF só das edições apontadas."""
     _buscar = buscar_fn or buscar
+    _dormir = dormir or time.sleep
     itens, totais = [], {}
+    primeira = True
     for termo in (termos or TERMOS_APIFRONT):
+        if not primeira:
+            _dormir(pausa)
+        primeira = False
         url = BUSCA_TO + "?" + urllib.parse.urlencode(
             {"por": "texto", "texto": termo, "data-inicial": desde, "data-final": ate})
         bruto = _buscar(url, timeout=120, origem="coletar_doe")
@@ -425,6 +439,7 @@ def itens_busca_to(uf: str, desde: str, ate: str, buscar_fn=None, termos=None) -
         edicoes = parse_busca_to(html)
         totais[termo] = len(edicoes)
         for e in edicoes[:TETO_EDICOES_TO]:
+            _dormir(pausa)
             try:
                 pdf = _buscar(e["url"], timeout=240, origem="coletar_doe")
             except Exception:  # noqa: BLE001 — edição que não baixa é lacuna de uma edição, não da UF
@@ -638,6 +653,22 @@ FIXTURE_APIFRONT_VAZIO = json.dumps({"hits": {"total": 0, "hits": []}}, ensure_a
 FIXTURE_APIFRONT_TOTAL_SEM_LISTA = json.dumps({"hits": {"total": 7, "hits": []}}, ensure_ascii=False).encode("utf-8")
 
 
+def fonte_do_coletor() -> str:
+    """O código OPERACIONAL deste arquivo, como texto — tudo o que vem antes do autoteste.
+
+    Mesma trava estrutural do coletor de saúde, e pela mesma razão: o portão tem de perceber se
+    uma edição futura ganhar escrita em arquivo do banco. O corte no `def autoteste` evita que o
+    teste se encontre a si mesmo nos nomes que procura."""
+    texto = pathlib.Path(__file__).read_text(encoding="utf-8")
+    corte = texto.find("def autoteste")
+    return texto[:corte] if corte > 0 else texto
+
+
+# A lista canônica do projeto, num só lugar: trava que cobre três dos cinco arquivos não é trava.
+BANCO_PROIBIDO = ("estados.json", "saude_uf.json", "municipios.json", "indice.json",
+                  "monitor_saude.json")
+
+
 def _levanta(fn, excecao) -> bool:
     """True quando `fn` levanta `excecao`. Existe para o caso negativo não virar try/except solto
     dentro de um lambda, onde ele não cabe."""
@@ -814,6 +845,13 @@ def autoteste() -> int:
                 (2, "SITUAÇÃO DE EMERGÊNCIA aqui")],
         "DOE-TO: PDF sem o termo não produz página":
             lambda: paginas_com_termo(b"x", "emergência", extrair_fn=lambda _: ["a", "b"]) == [],
+        # TRAVA ESTRUTURAL: este coletor escreve em atos_resposta, pistas_doe e fontes_doe, e em
+        # nada mais. O teste confere o que ele PODE fazer, não só o que ele fez nesta versão.
+        "o fonte não grava em nenhum arquivo do banco":
+            lambda: not any(f'gravar("{nome}' in fonte_do_coletor() for nome in BANCO_PROIBIDO),
+        "a lista proibida é a canônica do projeto, com os cinco arquivos":
+            lambda: set(BANCO_PROIBIDO) == {"estados.json", "saude_uf.json", "municipios.json",
+                                            "indice.json", "monitor_saude.json"},
         "§231 UF sem rota de busca não se registra como apifront": t12})
 
 
