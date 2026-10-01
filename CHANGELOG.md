@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-02 · #507 · O carimbo do publicador escreve o corte
+
+O §79 corrigiu a ordem e a publicação seguiu falhando: faltava a colisão de regras. O carimbo do
+publicador escrevia só `atualizado_em` e declarava que `corte` nunca era tocado — regra revogada em
+30/09, quando o corte passou a ser a data da rodada. Agora escreve as duas, do mesmo valor, por
+ordem da editoria. A data continua vindo do dado, nunca do relógio. Em `METODOLOGIA.md` §81.
+
 ## 2026-10-01 · #505 · Publicação destravada: o carimbo antes dos portões
 
 `Publicar dados` falhou nas quatro execuções do dia e o site ficou sem dado novo. O portão do corte

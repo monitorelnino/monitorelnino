@@ -2637,3 +2637,24 @@ como "portão vermelho" longe da causa — foi assim que esta noite se perdeu. O
 a ordem correta — foi o que a primeira versão do portão fez, e há um caso de teste para isso.
 
 A suíte passa de 149 para 151 comandos.
+
+## 81. O carimbo do publicador passa a escrever o corte (01/10/2026)
+
+O §79 corrigiu a ordem dentro do `atualizar.py` e a publicação continuou falhando, pela mesma linha
+de log. A causa restante era uma **colisão de regras**, não de ordem.
+
+`scripts/frescor.py --carimbar`, que é o passo de carimbo do `publicar_dados.yml`, escrevia
+`atualizado_em = <data do último dado>` e declarava — em docstring e em caso de teste — que `corte`
+**nunca** era tocado, "porque é decisão editorial sobre até quando o dado vale". Essa leitura foi
+revogada em 30/09, quando o corte ficou vinte dias congelado atrás do arquivo de transferências: o
+corte passou a ser a data da rodada, e o portão `verificar_corte_sincronizado.py` passou a exigir
+que as duas datas coincidam. As duas regras não podiam valer juntas, e a publicação parou quatro
+vezes em 01/10 exatamente nessa contradição — o carimbo avançava uma data, o portão cobrava as duas.
+
+A editoria decidiu qual vale, no bloco das 23h UTC: *"gravar corte e atualizado_em da rodada e só
+então verificar"*. `gravar_carimbo` passa a escrever as duas, do **mesmo** carimbo.
+
+O que não muda: a data continua vindo do **dado**, nunca do relógio — quem a calcula é `carimbar`,
+a partir do commit mais recente que tocou `data/`, e rodada sem dado novo não carimba nada. Os três
+casos novos do autoteste cobram isto: as duas datas escritas, do mesmo valor, e nenhuma chamada de
+relógio no corpo. O caso antigo, que cobrava o oposto, fica registrado como revogado.
