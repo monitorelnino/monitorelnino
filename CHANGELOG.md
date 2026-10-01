@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-01 · #505 · Publicação destravada: o carimbo antes dos portões
+
+`Publicar dados` falhou nas quatro execuções do dia e o site ficou sem dado novo. O portão do corte
+sincronizado estava certo em parar: os coletores gravam `atualizado_em = hoje` durante a rodada e o
+`corte` só era escrito depois da bateria, então no meio do caminho as duas datas divergiam. O
+carimbo passa a vir antes dos derivados e dos portões, e um portão novo lê o `atualizar.py` e
+reprova se a ordem voltar a inverter. Em `METODOLOGIA.md` §79.
+
 ## 2026-10-01 · #504 · Capturas de tela fora do índice
 
 A `main` reprovou o portão 12 em todas as rodadas do dia, de 15h52 a 22h15 UTC, pelas 30 imagens de

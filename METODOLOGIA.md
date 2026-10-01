@@ -2610,3 +2610,30 @@ estrito, como já excluía o `data/snapshot_feed.json`. Nada de verificação se
 que a página mostra são os portões de navegador que as produzem (`verificar_consistencia_visual.js`
 e `verificar_movel.js`, que reprovam por medida, não por comparação de imagem), e o `portoes.yml` já
 as sobe como artefato do run — que é o que o CLAUDE.md sempre disse que elas eram.
+
+## 79. A publicação parada por ordem, não por dado (01/10/2026)
+
+`Publicar dados` falhou em todas as quatro execuções de 01/10/2026 e o site ficou um dia sem dado
+novo, com `meta.atualizado_em` em 30/09. A linha decisiva do log é esta:
+
+> `corte` (30/09/2026) ≠ `atualizado_em` (01/10/2026) — o corte é a data da rodada, e a rodada
+> aconteceu.
+
+Ou seja: o portão do §74-bis fez exatamente o que foi escrito para fazer. O defeito era de **ordem**.
+Os coletores gravam `atualizado_em = hoje` ao longo da rodada; o `atualizar.py` só escrevia o
+`corte` **depois** de rodar a bateria inteira. No meio do caminho, portanto, `meta.json` ficava com
+`atualizado_em` de hoje e `corte` de ontem — o estado que o portão existe para barrar. Ele barrou.
+
+**A correção.** O carimbo da rodada passa a ser escrito logo depois dos coletores e **antes** dos
+derivados e dos portões, que então conferem o carimbo desta rodada e não o da anterior. Efeito
+colateral desejado: o relógio fixado para os derivados (`SOURCE_DATE_EPOCH`) passa a ser o do corte
+de hoje, que é o que eles devem carimbar.
+
+**O portão que impede a volta.** `scripts/verificar_ordem_do_carimbo.py` lê o próprio
+`atualizar.py` e reprova quando a escrita de `meta["corte"]` aparece depois da primeira verificação.
+Sem ele, mover o carimbo numa edição futura voltaria a parar a publicação, e o sintoma apareceria
+como "portão vermelho" longe da causa — foi assim que esta noite se perdeu. O recorte do padrão não
+é cosmético: `verificar_vigencia.py` é **coletor**, roda antes do carimbo, e casar com ele reprovaria
+a ordem correta — foi o que a primeira versão do portão fez, e há um caso de teste para isso.
+
+A suíte passa de 149 para 151 comandos.
