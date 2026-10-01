@@ -175,7 +175,16 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     const res = sa.resumo || {};
     if (res.media_das_verificadas != null) {
       põe('topoSaude', Number(res.media_das_verificadas).toLocaleString('pt-BR', {minimumFractionDigits: 1}));
-      if (res.verificadas != null) põe('topoSaudeNota', 'média de ' + res.verificadas + ' estados verificados');
+      /* 01/10/2026 (decisão da editoria): o número só vira MANCHETE NACIONAL quando os 27 estados
+         estiverem verificados. Antes disso ele sai com o rótulo que diz de quantos é a média — e o
+         rótulo é a diferença entre publicar uma média parcial e publicar um índice nacional que
+         ainda não existe. O corte é o próprio dado: 27 verificadas, não uma data. */
+      const TODAS = 27;
+      if (res.verificadas != null) {
+        põe('topoSaudeNota', res.verificadas >= TODAS
+          ? 'os ' + TODAS + ' estados verificados'
+          : 'média dos ' + res.verificadas + ' estados verificados');
+      }
     }
     if (sa.versao != null) põe('citarVersaoSaude', String(sa.versao));
   }).catch(() => {});

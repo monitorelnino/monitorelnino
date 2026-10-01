@@ -116,16 +116,16 @@
   },
   "defesa-civil.html#boxPrioritarios": {
    "tipo": "mapa de pontos",
-   "pergunta_que_responde": "Os municípios do cadastro federal de suscetíveis a enxurradas e inundações têm instrumento localizado?",
+   "pergunta_que_responde": "Onde o risco de enchente é conhecido oficialmente, e nesses municípios há plano localizado?",
    "dimensao_da_preparacao": "planos de contingência",
    "universo": "os 2.095 municípios do cadastro federal de municípios suscetíveis a enxurradas e inundações (SEPAC/Casa Civil)",
    "unidade_de_analise": "município",
    "territorio": "Brasil",
    "periodo": "corte da edição",
-   "variavel_principal": "presença de ato localizado no município prioritário",
+   "variavel_principal": "presença de plano localizado no município do cadastro federal",
    "denominador": "municípios do cadastro federal (Casa Civil)",
    "fonte": "Cadastro federal de municípios suscetíveis a enxurradas e inundações (SEPAC/Casa Civil, Decreto 12.444/2025) e banco de registros do Monitor",
-   "metodologia": "Até 01/10/2026 o mapa usava uma APROXIMAÇÃO POPULACIONAL: para cada UF, os N municípios mais populosos, com N vindo de uma contagem pública por UF. Passa a usar a lista NOMINAL do cadastro da Casa Civil. Este cadastro NÃO é o 'Cadastro Nacional de Municípios com Áreas Suscetíveis' do art. 3º-A da Lei 12.340 — aquele é de inscrição voluntária, inclui deslizamento e gera o dever de plano de contingência, e não tem fonte pública. Chamar um pelo nome do outro afirmaria dever que esta lista não cria.",
+   "metodologia": "Até 01/10/2026 o mapa usava uma APROXIMAÇÃO POPULACIONAL: para cada UF, os N municípios mais populosos, com N vindo de uma contagem pública por UF. Passa a usar a lista NOMINAL do cadastro da Casa Civil. Este cadastro NÃO é o 'Cadastro Nacional de Municípios com Áreas Suscetíveis' do art. 3º-A da Lei 12.340 — aquele é de inscrição voluntária, inclui deslizamento e gera o dever de plano de contingência, e não tem fonte pública. Chamar um pelo nome do outro afirmaria dever que esta lista não cria. Título, subtítulo e legenda definitivos aprovados pela editoria em 01/10/2026. \"Com plano localizado\" é o conjunto das categorias de PLANO (plano, plano_novo, plano_readaptado, plano_recorrente, plano_antigo); ficam fora plano_elaboracao (plano que ainda não existe), estrutura (comitê, não plano) e coberto_estadual (cobertura do estado, não plano do município). \"Fora do cadastro\" é o fundo do mapa.",
    "conclusoes_permitidas": [
     "cobertura dentro do cadastro federal de enxurradas e inundações",
     "quais municípios do cadastro têm, e quais não têm, instrumento localizado até o corte"
@@ -134,7 +134,8 @@
     "ausência localizada como ausência de plano",
     "risco do município",
     "dever legal de plano de contingência: este cadastro não é o do art. 3º-A da Lei 12.340",
-    "que o município fora do cadastro não tem risco de enchente"
+    "que o município fora do cadastro não tem risco de enchente",
+    "que estrutura de coordenação ou cobertura estadual contem como plano do município"
    ],
    "funcao_narrativa": "diagnóstico: cruza prioridade declarada pela União com evidência publicada",
    "acao_relacionada": null

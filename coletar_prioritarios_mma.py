@@ -53,26 +53,54 @@ import sys
 RAIZ = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(RAIZ))
 
+# 01/10/2026 (conferência pedida pela editoria): a 1.202/2024 FOI REVOGADA. A Portaria MMA nº
+# 1.717, de 19/06/2026 — publicada na edição extra do DOU de 23/06/2026 — declara as duas listas
+# novas e revoga a 1.202 no art. 2º. Ela se apoia nos critérios da Portaria MMA/GM nº 1.716, do
+# mesmo dia, que por sua vez revogou a 833/2023.
+#
+# Como o ato foi encontrado, e por que isto está escrito aqui: a busca do DOU é montada por
+# JavaScript e não se lê por máquina, mas a EDIÇÃO do dia se lê — `in.gov.br/leiturajornal` traz
+# um `<script id="params">` com a lista de atos daquela seção. Varrendo as edições de junho e
+# julho de 2026, seção 1 e seção 1 extra, os atos apareceram na extra de 23/06. A notícia
+# regional que levou à conferência dizia "89 municípios"; o ato diz **80**. Pista é pista.
 FONTE = ("https://www.in.gov.br/web/dou/-/"
-         "portaria-gm/mma-n-1.202-de-11-de-novembro-de-2024-595667200")
-INSTRUMENTO = ("Portaria GM/MMA nº 1.202, de 11 de novembro de 2024, publicada no Diário Oficial "
-               "da União de 13/11/2024, seção 1, página 121 (revoga a Portaria MMA nº 834/2023)")
-PUBLICADA_EM = datetime.date(2024, 11, 13)
+         "portaria-mma-n-1.717-de-19-de-junho-de-2026-714110982")
+INSTRUMENTO = ("Portaria MMA nº 1.717, de 19 de junho de 2026, publicada no Diário Oficial da "
+               "União de 23/06/2026, edição extra, seção 1 (revoga a Portaria GM/MMA nº "
+               "1.202/2024; critérios na Portaria MMA/GM nº 1.716/2026)")
+PUBLICADA_EM = datetime.date(2026, 6, 23)
 SAIDA = RAIZ / "data" / "enquadramento_federal.json"
 MUNICIPIOS = RAIZ / "data" / "verificacao_municipal.json"
 
-TOTAL_ANEXO_I = 81
-TOTAL_ANEXO_II = 10
+TOTAL_ANEXO_I = 80
+TOTAL_ANEXO_II = 17
 # Amazônia Legal: os nove estados. UF fora daqui significa que a leitura pegou linha de outra
 # tabela da mesma página.
 UFS_ESPERADAS = {"AC", "AM", "AP", "MA", "MT", "PA", "RO", "RR", "TO"}
-# Distribuição MEDIDA no Anexo I em 30/09/2026, e ela soma 81. Trava contra leitura
-# parcial: o total pode fechar por acidente, seis contagens não. Escrevi a primeira
-# versão destes números de cabeça e a validação reprovou, com razão — é para isso que
-# ela serve, e é por isso que os números aqui são lidos, não lembrados.
-POR_UF_ANEXO_I_ESPERADO = {"AC": 5, "AM": 10, "MT": 30, "PA": 28, "RO": 6, "RR": 2}
+# Distribuição MEDIDA no Anexo I da 1.717/2026, e ela soma 80. Trava contra leitura parcial: o
+# total pode fechar por acidente, sete contagens não. Estes números são lidos do ato, nunca
+# lembrados — escrevi uma versão de cabeça no coletor do Semiárido e a validação reprovou, com
+# razão. O MA entra nesta lista pela primeira vez; o AC cai de 5 para 4 e o RO de 6 para 3.
+POR_UF_ANEXO_I_ESPERADO = {"AC": 4, "AM": 10, "MA": 1, "MT": 30, "PA": 30, "RO": 3, "RR": 2}
 
-RE_LINHA = re.compile(r"(\d{7})\s+(.+?)\s+([A-Z]{2})(?=\s+\d{7}|\s*$|\s+ANEXO)")
+# A 1.202/2024 trazia `Código · Município · UF`; a 1.717/2026 traz `Nº · Código · UF · Município`,
+# com as colunas "Desmatamento" e "Degradação" marcadas por X. São dois formatos de tabela para o
+# mesmo tipo de ato, e o coletor lê os dois: tentar só o formato novo quebraria a releitura de um
+# ato antigo preservado, e tentar só o antigo é o que faria este coletor ler zero linha hoje.
+#
+# A ordem importa na escolha: o formato NOVO é tentado primeiro, e o antigo só se o novo não
+# devolver nada. O inverso daria casamento parcial — `(\d{7})\s+(.+?)\s+([A-Z]{2})` encontra, numa
+# linha do formato novo, o código seguido do nome e de uma sigla que é a da LINHA SEGUINTE.
+RE_LINHA_NOVA = re.compile(r"\d{1,3}\s+(\d{7})\s+([A-Z]{2})\s+(.+?)(?=(?:\s+X)+|\s+\d{1,3}\s+\d{7}|\s*$|\s+ANEXO)")
+RE_LINHA_ANTIGA = re.compile(r"(\d{7})\s+(.+?)\s+([A-Z]{2})(?=\s+\d{7}|\s*$|\s+ANEXO)")
+
+
+def linhas_de(trecho: str) -> list:
+    """[(codigo, nome, uf)] de um trecho de anexo, nos dois formatos de tabela. Função pura."""
+    novas = [(cod, nome.strip(), uf) for cod, uf, nome in RE_LINHA_NOVA.findall(trecho)]
+    if novas:
+        return novas
+    return [(cod, nome.strip(), uf) for cod, nome, uf in RE_LINHA_ANTIGA.findall(trecho)]
 
 
 def texto_do_ato(corpo: bytes) -> str:
@@ -98,7 +126,7 @@ def anexos(texto: str) -> tuple:
     i1, i2 = t.find("ANEXO I"), t.find("ANEXO II")
     if i1 < 0 or i2 < 0 or i2 <= i1:
         return [], []
-    return RE_LINHA.findall(t[i1:i2]), RE_LINHA.findall(t[i2:])
+    return linhas_de(t[i1:i2]), linhas_de(t[i2:])
 
 
 def registros_de(anexo_i: list, anexo_ii: list, base: dict) -> list:
@@ -158,11 +186,15 @@ def problemas(anexo_i: list, anexo_ii: list, registros: list, base: dict) -> lis
 def atualizacao_anual_pendente(hoje, publicada_em=PUBLICADA_EM) -> bool:
     """True quando a janela da atualização anual já passou. Função pura.
 
-    As portarias de 2023 e 2024 saíram em 9 e 11 de novembro. Passado 1º de dezembro de um ano
-    posterior ao do ato que este coletor conhece, é provável que exista portaria nova — e provável
-    não é sabido, por isso o coletor avisa em vez de decidir. Aviso não bloqueia: a lista lida
-    continua sendo a que se leu, e o site diz qual ato ela é."""
-    return (hoje.year, hoje.month) >= (publicada_em.year + 1, 12)
+    As portarias de 2023 e 2024 saíram em novembro; a de 2026 saiu em junho. O mês do ato, portanto,
+    não é régua — a régua é o ANO: passado um ano da publicação do ato que este coletor conhece, é
+    provável que exista portaria nova, e provável não é sabido, por isso o coletor avisa em vez de
+    decidir. Aviso não bloqueia: a lista lida continua sendo a que se leu, e o site diz qual ato ela é.
+
+    01/10/2026: a régua anterior era "1º de dezembro do ano seguinte", desenhada para atos de
+    novembro. Com a 1.717 publicada em junho de 2026, ela só avisaria em dezembro de 2027 — dezoito
+    meses de silêncio. O aniversário da publicação não tem esse buraco."""
+    return hoje >= datetime.date(publicada_em.year + 1, publicada_em.month, publicada_em.day)
 
 
 def fundir(anterior: dict, registros: list) -> dict:
@@ -255,14 +287,23 @@ def autoteste() -> int:
                   any("sem nome" in p for p in problemas(
                       a1, a2, [{"codigo_ibge": "1500602", "uf": "PA", "municipio": ""}], base))))
 
-    casos.append(("no ano do ato não avisa",
-                  not atualizacao_anual_pendente(datetime.date(2024, 12, 20))))
-    casos.append(("antes de dezembro do ano seguinte não avisa",
-                  not atualizacao_anual_pendente(datetime.date(2025, 11, 30))))
-    casos.append(("em dezembro do ano seguinte avisa",
-                  atualizacao_anual_pendente(datetime.date(2025, 12, 1))))
-    casos.append(("no ano seguinte ao seguinte avisa",
-                  atualizacao_anual_pendente(datetime.date(2026, 9, 30))))
+    # A data do ato entra EXPLÍCITA: estes casos testam a função, não a portaria da vez. Antes eles
+    # usavam o padrão, e quando a 1.717/2026 substituiu a 1.202/2024 dois deles reprovaram sozinhos
+    # — o teste media o calendário em vez da regra.
+    _nov = datetime.date(2024, 11, 13)
+    casos.append(("no mesmo ano do ato não avisa",
+                  not atualizacao_anual_pendente(datetime.date(2024, 12, 20), _nov)))
+    casos.append(("um dia antes do aniversário não avisa",
+                  not atualizacao_anual_pendente(datetime.date(2025, 11, 12), _nov)))
+    casos.append(("no aniversário da publicação avisa",
+                  atualizacao_anual_pendente(datetime.date(2025, 11, 13), _nov)))
+    casos.append(("depois do aniversário avisa",
+                  atualizacao_anual_pendente(datetime.date(2026, 9, 30), _nov)))
+    # Ato de junho: a régua antiga ("dezembro do ano seguinte") só avisaria 18 meses depois.
+    _jun = datetime.date(2026, 6, 23)
+    casos.append(("ato de junho: avisa no aniversário, não em dezembro",
+                  atualizacao_anual_pendente(datetime.date(2027, 6, 23), _jun)
+                  and not atualizacao_anual_pendente(datetime.date(2027, 6, 22), _jun)))
 
     velho = {"municipios": {"2900207": {"codigo_ibge": "2900207", "semiarido": True},
                             "1500800": {"codigo_ibge": "1500800", "uf": "PA",

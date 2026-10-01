@@ -373,8 +373,12 @@ function __init(){
      token de cor escolhido aqui criaria uma segunda convenção para a mesma distinção. */
   const COR_COM_PLANO = MonitorMapas.PALETA.categorias.plano;
   const COR_SEM_PLANO = MonitorMapas.PALETA.categorias.nao_localizado;
+  /* "Com plano localizado" é o rótulo aprovado pela editoria, e o conjunto tem de ser o que o
+     rótulo diz: PLANO localizado. Ficam fora `plano_elaboracao` (plano que ainda não existe),
+     `estrutura` (comitê ou gabinete, não plano) e `coberto_estadual` (cobertura do estado, não
+     plano do município). Incluí-los faria o mapa contar como plano o que não é plano. */
   const CAT_COM_PLANO = new Set(['plano', 'plano_novo', 'plano_readaptado', 'plano_recorrente',
-                                 'plano_antigo', 'plano_elaboracao', 'estrutura', 'coberto_estadual']);
+                                 'plano_antigo']);
   const comPlano = new Set(MAP_POINTS.filter(p => CAT_COM_PLANO.has(p.categoria))
     .map(p => MUN_COD[p.uf + '|' + p.nome]).filter(Boolean));
 
@@ -402,16 +406,18 @@ function __init(){
       .on('mousemove', (evt) => showTip(tooltip.innerHTML, evt))
       .on('mouseleave', hideTip);
     addSiglas(svgPrior);
+    /* Legenda aprovada pela editoria em 01/10/2026: três categorias, e a terceira é o fundo do
+       mapa — município fora do cadastro federal, que não é o mesmo que município sem risco. */
     MonitorMapas.legenda('legPrioritarios', [
-      {cor: COR_COM_PLANO, rotulo: 'com instrumento localizado (' + n(cad.filter(m => m.plano).length) + ')'},
-      {cor: COR_SEM_PLANO, rotulo: 'sem instrumento localizado (' + n(cad.filter(m => !m.plano).length) + ')'}]
+      {cor: COR_COM_PLANO, rotulo: 'Com plano localizado (' + n(cad.filter(m => m.plano).length) + ')'},
+      {cor: COR_SEM_PLANO, rotulo: 'Sem plano localizado (' + n(cad.filter(m => !m.plano).length) + ')'},
+      {cor: CINZA, rotulo: 'Fora do cadastro'}]
       .concat(semCoordCad ? [{cor: MonitorMapas.cor('sem-dado'), rotulo: 'sem coordenada (' + semCoordCad + ')'}] : []));
     MonitorMapas.credito('boxPrioritarios', {
-      fontes: ['Cadastro federal de municípios suscetíveis a enxurradas e inundações (SEPAC/Casa Civil)',
-               'MARÉ (verificação própria)'],
+      fontes: ['Casa Civil, Nota Técnica nº 2/2025', 'MARÉ (verificação própria)'],
       url: CADASTRO.fonte, data: (CADASTRO.coletado_em || '').split('-').reverse().join('/') || null});
     listaBuscavel('boxPrioritarios', {
-      colunas: ['Município', 'UF', 'Risco no cadastro', 'Instrumento localizado'],
+      colunas: ['Município', 'UF', 'Risco no cadastro', 'Plano localizado'],
       rotulo: 'Buscar município do cadastro',
       linhas: cad.slice().sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR')).map(m => ({
         busca: m.nome + ' ' + m.uf,
