@@ -249,7 +249,12 @@ function __init(){
       new Chart(cv, {type: 'bar',
         data: {labels: tipos.map(t => t[0]),
                datasets: [{data: tipos.map(t => t[1]), backgroundColor: MonitorMapas.PALETA.faixas.construcao}]},
-        options: {indexAxis: 'y', plugins: {legend: {display: false}}, scales: {x: {beginAtZero: true}}}});
+        /* `maintainAspectRatio: false` para o gráfico obedecer à altura do contêiner: a proporção
+           do cartão é a do mapa (480×460), definida em `.canvas-wrap--mapa`, e sem isto o Chart
+           impõe a sua própria razão e o cartão do gráfico fica 54 px mais baixo que os de mapa na
+           mesma linha da grade — medido no navegador. */
+        options: {indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+                  plugins: {legend: {display: false}}, scales: {x: {beginAtZero: true}}}});
     }
     MonitorMapas.legenda('legAlertasTipo', [{cor: MonitorMapas.PALETA.faixas.construcao, rotulo: 'municípios sob o tipo'}]);
     creditoSinal('boxAlertasTipo', ['inmet_avisos', 'cemaden_alertas'], carimbo);
@@ -295,13 +300,13 @@ function __init(){
 
   /* A cor do ponto de resposta vive numa constante: a amostra da legenda tem de ser a mesma cor do
      ponto no mapa, e três legendas lendo a paleta por caminhos diferentes é como elas divergem. */
-  const COR_RESPOSTA = COR_RESPOSTA;
+  const COR_RESPOSTA = (ATM.resposta.rampa || [])[0] || MonitorMapas.PALETA.resposta;
 
   function pontos(svgSel, dados, raio, aoEntrar){
     const svg = fundo(svgSel, 'resposta');
     svg.append('g').selectAll('circle').data(dados.filter(m => m.ll)).join('circle')
       .attr('cx', m => projection(m.ll)[0]).attr('cy', m => projection(m.ll)[1])
-      .attr('r', raio).attr('fill', (ATM.resposta.rampa || [])[0] || MonitorMapas.PALETA.resposta)
+      .attr('r', raio).attr('fill', COR_RESPOSTA)
       .attr('stroke', MonitorMapas.cor('branco')).attr('stroke-width', 1.4)
       .on('mouseenter', (evt, m) => showTip(aoEntrar(m), evt))
       .on('mousemove', (evt) => showTip(tooltip.innerHTML, evt))

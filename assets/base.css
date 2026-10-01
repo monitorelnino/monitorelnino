@@ -977,9 +977,20 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
 .cartao-mapa .figura-midia{margin-bottom:0;}
 /* O gráfico dentro da grade de mapas tem a proporção do mapa (480×460 do viewBox): sem isto, o
    cartão do gráfico ficava 260 px mais baixo que o do mapa ao lado, medido no navegador. */
-.canvas-wrap--mapa{aspect-ratio:480 / 460;}
-.canvas-wrap--mapa > canvas{width:100% !important; height:100% !important;}
+/* Dentro do cartão de mapa, o gráfico segue a proporção do MAPA (480×460 do viewBox), para os
+   três cartões da linha terminarem juntos. A altura fixa de `.figura--grafico` vence `aspect-ratio`
+   por ser altura explícita, e por isso ela é desligada aqui — só aqui, dentro do cartão de mapa:
+   nas outras páginas o gráfico continua com a altura padrão. */
+.cartao-mapa.figura--grafico .figura-midia, .cartao-mapa.figura--grafico .canvas-wrap{height:auto;}
+.canvas-wrap--mapa{aspect-ratio:480 / 460; position:relative;}
+.canvas-wrap--mapa > canvas{position:absolute; inset:0;}
 .cartao-mapa-rodape{display:flex; flex-wrap:wrap; gap:var(--sp-3); margin-top:var(--sp-2);}
+/* Item de flex não encolhe abaixo do seu conteúdo sem `min-width:0`, e a tabela de "Ver em lista"
+   tem largura de conteúdo bem maior que o cartão: a 390 px isso empurrava a página inteira
+   (scrollWidth 419 > 390, medido). A rolagem da tabela é do `.tbl-wrap`, que já a tem — o que
+   faltava era deixar o contêiner encolher para que ela acontecesse lá dentro. */
+.cartao-mapa-rodape > details{min-width:0; max-width:100%;}
+.cartao-mapa-rodape .tbl-wrap{max-width:100%;}
 .cartao-mapa-rodape > details > summary{font-size:var(--fs-caption); line-height:var(--lh-caption);
   color:var(--link); cursor:pointer;}
 .cartao-mapa-rodape > details[open]{flex:1 1 100%;}
@@ -1004,21 +1015,16 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
 .dc-topo{margin:var(--sp-5) 0 var(--sp-6);}
 .dc-topo-periodo{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption);
   text-transform:uppercase; letter-spacing:var(--ls-caps); color:var(--muted); margin:0;}
-.grade-numeros--3{grid-template-columns:repeat(3, minmax(0,1fr));}
-
 /* Busca por município dentro do "Ver em lista": o mapa responde "onde", o campo responde "e a
    minha cidade?". O rótulo é visível de propósito — quem abriu a lista precisa saber o que o campo
    faz, e um campo de busca sem rótulo visível obriga a adivinhar pelo placeholder, que desaparece
    ao digitar. */
 .busca-mun{display:flex; flex-wrap:wrap; align-items:baseline; gap:var(--sp-2); margin:var(--sp-3) 0;}
 .busca-mun label{font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);}
-.busca-mun input{flex:1 1 220px; min-width:0; font:inherit; font-size:var(--fs-small);
+.busca-mun input{flex:1 1 180px; min-width:0; max-width:100%; font:inherit; font-size:var(--fs-small);
   padding:var(--sp-2); border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); color:var(--ink);}
 .busca-mun-conta{flex:1 1 100%; font-family:var(--font-dado); font-size:var(--fs-caption);
   line-height:var(--lh-caption); color:var(--muted); margin:0;}
-
-@media (max-width: 1020px){ .grade-numeros--3{grid-template-columns:repeat(2, minmax(0,1fr));} }
-@media (max-width: 640px){ .grade-numeros--3{grid-template-columns:1fr;} }
 
 /* ===== Imprensa (01/10/2026): fundo branco, sem caixas, coluna de leitura ==================
    A página era uma pilha de `.panel` cinza; o pedido é a mesma linguagem do Proteja-se e do
@@ -1038,6 +1044,11 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
    e UMA linha de fonte. O botão é link pequeno, não botão cheio. */
 .grade-numeros{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:var(--sp-3);
   margin:var(--sp-4) 0;}
+/* Variante de TRÊS por linha (Defesa civil, 01/10/2026). Ela vive aqui, junto da regra base, e não
+   no bloco da própria página: mesma especificidade, e quem vem depois no arquivo vence — a primeira
+   versão ficava antes da base e era vencida por ela, medido no navegador (4 colunas em vez de 3).
+   No celular são 2×2, como a editoria pediu, e não uma coluna. */
+.grade-numeros--3{grid-template-columns:repeat(3, minmax(0,1fr));}
 /* 01/10/2026 (correção de desenho na Defesa civil): o cartão de número ganha a MESMA anatomia do
    cartão de destaque do Proteja-se — borda fina, faixa superior de 4 px na cor da família e o
    número no tamanho de display, em Fraunces leve. Não é componente novo: é a mesma família de
@@ -1059,8 +1070,13 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
   font-size:var(--fs-caption); line-height:var(--lh-caption); text-align:left;}
 .link-pequeno:hover{text-decoration:underline;}
 
-@media (max-width: 1020px){ .grade-numeros{grid-template-columns:repeat(2, minmax(0,1fr));} }
+@media (max-width: 1020px){ .grade-numeros, .grade-numeros--3{grid-template-columns:repeat(2, minmax(0,1fr));} }
 @media (max-width: 640px){
   .grade-numeros{grid-template-columns:1fr;}
+  .grade-numeros--3{grid-template-columns:repeat(2, minmax(0,1fr));}
+  /* A 390 px, em duas colunas, o número de 48 px não cabe: "21.211.617" media 201 px numa coluna
+     de 139 px e empurrava a página (scrollWidth 419 > 390). Desce um degrau da escala, como o
+     `.emerg-numero` já faz no celular — a escala tipográfica é fixa, então é degrau, não `clamp`. */
+  .cartao-numero-valor{font-size:var(--fs-h2);}
   .imprensa-contadores{grid-template-columns:1fr;}
 }
