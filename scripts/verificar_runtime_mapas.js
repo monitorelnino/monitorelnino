@@ -1,24 +1,66 @@
 #!/usr/bin/env node
-/* Verificador de runtime da página Defesa civil (defesa-civil.html; ex-mapas e gráficos),
- * separada de index.html em 31/08/2026. Mesmo padrão de scripts/verificar_runtime.js
- * (jsdom + d3 reais, Chart simulado, fetch local), cobrindo os 7 mapas, a tabela
- * risco×instrumento e os totais que migraram para cá.
+/* Verificador de runtime da página Defesa civil (defesa-civil.html).
+ *
+ * Renderiza a página com jsdom, d3 real, Chart simulado e `fetch` servindo `data/` do disco, e
+ * confere o RESULTADO — não o código que o produz. Mesmo padrão de `scripts/verificar_runtime.js`.
+ *
+ * REESCRITO EM 01/10/2026, com a página. O portão anterior cobria sete mapas que não existem mais
+ * (verificação municipal em doze categorias, cobertura e natureza por UF, risco × instrumento) e
+ * testava títulos-fato que saíram. Um portão que cobra a página de ontem não protege a de hoje: ele
+ * reprovava por ausência de figura removida de propósito, e não dizia nada sobre as que entraram.
+ *
+ * O QUE ELE EXISTE PARA BARRAR
+ * ----------------------------
+ *   (a) **Dois números para a mesma pergunta.** Aconteceu nesta página, hoje: o conjunto dos
+ *       municípios que decretaram era montado no script da página, casando por NOME, e dava 770,
+ *       enquanto o contador do topo, lendo o consolidado `resposta/municipios_decretados.json`,
+ *       dizia 734. Os testes abaixo exigem que cada contador do topo seja IGUAL à contagem do mapa
+ *       que está logo embaixo dele, e que as duas saiam do mesmo arquivo.
+ *   (b) **Mapa vazio em silêncio.** Casar alerta por nome em vez de código IBGE já deixou os
+ *       municípios do Cemaden fora do mapa sem nenhuma mensagem de erro. Cada mapa tem a sua
+ *       contagem esperada calculada aqui, do dado, nunca escrita à mão.
+ *   (c) **A volta do que a editoria mandou sair.** Os blocos de auditoria e os mapas de preparação
+ *       foram para `dados-abertos/` e para a METODOLOGIA; "Cadastro Nacional" saiu do site porque é
+ *       o nome de outro cadastro, que cria dever que a lista da Casa Civil não cria.
+ *
  * Uso: node scripts/verificar_runtime_mapas.js
  */
-const N_PONTOS = require("../data/pontos_mapa.json").length;
-const CONSIST = require("../data/consist.json");
-const ATOS_RESPOSTA = require("../data/atos_resposta.json");
-const MUNICIPIOS = require("../data/municipios.json");
-const { JSDOM, VirtualConsole } = require("jsdom"); const { inlinePageJs } = require("./_inline_js");
 const fs = require("fs");
 const path = require("path");
+const { JSDOM, VirtualConsole } = require("jsdom");
+const { inlinePageJs } = require("./_inline_js");
 
 const raiz = path.join(__dirname, "..");
-const html = inlinePageJs(fs.readFileSync(path.join(raiz, "defesa-civil.html"), "utf-8"), raiz);
+const ler = p => JSON.parse(fs.readFileSync(path.join(raiz, p), "utf-8"));
+
+const ALERTAS = ler("data/alertas/vigentes.json");
+const DECRETADOS = ler("data/resposta/municipios_decretados.json");
+const CADASTRO = ler("data/cadastro_prioritarios_federal.json");
+const REF = ler("data/municipios_ibge_referencia.json");
+
+/* As contagens ESPERADAS saem do dado, e com a mesma regra que a página usa: ponto só existe onde
+   há coordenada no arquivo de referência. Escrever o número à mão aqui seria trocar um portão por
+   um carimbo. */
+const TEM_COORD = new Set(REF.map(m => String(m.codigo_ibge).padStart(7, "0")));
+const codsAlerta = Object.keys(ALERTAS.municipios || {});
+const comCemaden = codsAlerta.filter(c => (ALERTAS.municipios[c].cemaden || []).length);
+const decretados = Object.values(DECRETADOS.municipios || {}).filter(m => m.decreto);
+const reconhecidos = decretados.filter(m => m.reconhecido);
+const cruzados = decretados.filter(m => codsAlerta.indexOf(m.ibge) >= 0);
+const comCoord = l => l.filter(m => TEM_COORD.has(m.ibge || m)).length;
+const N = {
+  cemaden: comCoord(comCemaden),
+  decretados: comCoord(decretados),
+  reconhecidos: comCoord(reconhecidos),
+  cruzados: comCoord(cruzados),
+  cadastro: comCoord(Object.keys(CADASTRO.municipios || {})),
+};
+
 const erros = [];
 const vc = new VirtualConsole();
 vc.on("jsdomError", e => erros.push(e.detail && e.detail.stack ? e.detail.stack.split("\n")[0] : e.message));
 
+const html = inlinePageJs(fs.readFileSync(path.join(raiz, "defesa-civil.html"), "utf-8"), raiz);
 const dom = new JSDOM(html, {
   url: "https://localhost/", runScripts: "dangerously", virtualConsole: vc,
   beforeParse(w) {
@@ -29,9 +71,8 @@ const dom = new JSDOM(html, {
     class Chart { constructor() {} } Chart.defaults = { font: {}, color: "" };
     w.Chart = Chart;
     w.fetch = (rel) => {
-      const p = path.join(raiz, rel);
       try {
-        const txt = fs.readFileSync(p, "utf-8");
+        const txt = fs.readFileSync(path.join(raiz, rel.split("?")[0]), "utf-8");
         return Promise.resolve({ ok: true, json: () => Promise.resolve(JSON.parse(txt)) });
       } catch (e) { return Promise.resolve({ ok: false }); }
     };
@@ -45,105 +86,119 @@ setTimeout(() => {
   const d = dom.window.document, q = id => d.getElementById(id);
   const falhas = [];
   const teste = (nome, cond) => { console.log((cond ? "  ✓ " : "  ✗ ") + nome); if (!cond) falhas.push(nome); };
+  const circulos = id => (q(id) ? q(id).querySelectorAll("circle").length : -1);
+  const txt = id => ((q(id) || {}).textContent || "").trim();
+  const numero = id => Number(txt(id).replace(/\./g, "").replace(/[^\d-]/g, ""));
 
   teste("zero erros de runtime", erros.length === 0);
   erros.slice(0, 4).forEach(e => console.log("     ", e));
 
-  teste(`mapa fase 1: ${N_PONTOS} pontos`, q("mapPoints") && q("mapPoints").querySelectorAll("circle").length === N_PONTOS);
-  teste("mapa cobertura: 27 estados", q("mapCobertura") && q("mapCobertura").querySelectorAll("path").length === 27);
-  teste("mapa natureza: 27 estados", q("mapNatureza") && q("mapNatureza").querySelectorAll("path").length === 27);
-  // mapConsistencia/tblConsistencia retirados de defesa-civil.html em 13/09/2026 (auditoria de
-  // visualizações, consolidação) — versão principal do cruzamento risco×instrumento fica em
-  // monitor-de-riscos.html (boxCruz); aqui sobrou um resumo compacto com link, testado abaixo.
-  // (financiamento — mapa do dinheiro, totais e fontes — migrou para financiamento.html, E9; testado em verificar_runtime_financiamento.js)
-  teste("mapa de municípios prioritários: 2.095 pontos", q("mapPrioritarios") && q("mapPrioritarios").querySelectorAll("circle").length === 2095);
+  // ── cada mapa com a contagem que o dado tem ────────────────────────────────────────────────
+  teste(`alertas do Cemaden: ${N.cemaden} pontos`, circulos("mapAlertas") === N.cemaden);
+  teste(`decretos no ciclo: ${N.decretados} pontos`, circulos("mapAtosResposta") === N.decretados);
+  teste(`decreto × alerta agora: ${N.cruzados} pontos`, circulos("mapAlertaDecreto") === N.cruzados);
+  teste(`reconhecidos pela União: ${N.reconhecidos} pontos`, circulos("mapReconhecidos") === N.reconhecidos);
+  teste(`cadastro da Casa Civil: ${N.cadastro} pontos`, circulos("mapPrioritarios") === N.cadastro);
 
-  const hover = d.querySelector("#mapCobertura path");
-  hover.dispatchEvent(new dom.window.MouseEvent("mouseenter", { clientX: 100, clientY: 100, bubbles: true }));
-  teste("tooltip de mapa exibe conteúdo", q("mapTooltip").style.display === "block" && q("mapTooltip").innerHTML.length > 10);
+  /* O aviso do Inmet NÃO entra neste mapa (decisão de 01/10/2026: é emitido por área e satura o
+     país). Se um dia voltar a ser desenhado, o número de pontos do mapa passa dos municípios com
+     alerta do Cemaden para os milhares com aviso — e este teste cai. */
+  teste("o aviso do Inmet não é desenhado no mapa de alertas (é por área)",
+    circulos("mapAlertas") < codsAlerta.length);
 
-  // Tabela "risco × instrumento" (tblConsistencia) retirada de defesa-civil.html em 13/09/2026 —
-  // ver comentário acima. O resumo compacto (#riscoinstrumentoResumo) e o cruzamento completo que
-  // ele linkava (index.html#boxCruz) saíram do site em 17/09/2026 (pedido da editoria).
-  teste("Defesa Civil sem o resumo risco×instrumento (removido junto com o cruzamento)", !q("riscoinstrumentoResumo"));
+  // ── um número, uma fonte: o topo é igual ao mapa de baixo ──────────────────────────────────
+  teste("contador do Cemaden = pontos do mapa de alertas",
+    numero("topoCemaden") === (ALERTAS.resumo || {}).municipios_cemaden);
+  teste("contador do Inmet = resumo do arquivo de alertas",
+    numero("topoInmet") === (ALERTAS.resumo || {}).municipios_inmet);
+  teste("contador do cruzamento = pontos do mapa de cruzamento",
+    numero("topoCruzamento") === cruzados.length);
+  teste("contador de quem decretou = municípios com decreto no consolidado",
+    numero("topoDecretaram") === decretados.length);
+  teste("contador de reconhecidos = municípios reconhecidos no consolidado",
+    numero("topoReconhecidos") === reconhecidos.length);
+  teste("contador de população = soma do consolidado por UF",
+    numero("topoPopulacao") === ler("data/resposta/por_uf.json").nacional.pop_sob_decreto);
+  teste("nenhum contador do topo ficou em travessão",
+    ["topoCemaden", "topoInmet", "topoCruzamento", "topoDecretaram", "topoPopulacao", "topoReconhecidos"]
+      .every(i => txt(i) && txt(i) !== "—"));
 
-  // Mapa de atos de resposta (decretos de emergência) — pedido de Patricia, 31/08/2026,
-  // motivado pelo temporal de granizo em SC.
-  const decretosMun = MUNICIPIOS.filter(m => m.categoria === "decreto").length;
-  const totalEsperado = decretosMun + ATOS_RESPOSTA.eventos.length;
-  // 04/09/2026: o contador em texto saiu do cartão (figuras só com título, legenda e crédito);
-  // a contagem passa a ser conferida direto no mapa, abaixo.
-  const pontosNoMapa = d.querySelectorAll("#mapAtosResposta circle").length;
-  teste("mapa de atos de resposta: um círculo por evento, nenhum a mais nem a menos",
-    pontosNoMapa === totalEsperado);
-  const nomesSC = new Set(ATOS_RESPOSTA.eventos.filter(e => e.uf === "SC").map(e => e.nome));
-  const esperados5 = ["Biguaçu", "Bom Jesus", "Florianópolis", "Ipuaçu", "Quilombo"];
-  teste("mapa de atos de resposta: os 5 municípios de SC do temporal de 30/08 estão presentes",
-    esperados5.every(n => nomesSC.has(n)));
+  // ── tooltip ────────────────────────────────────────────────────────────────────────────────
+  const hover = d.querySelector("#mapAtosResposta path");
+  if (!hover) { teste("mapa de decretos tem o fundo das UFs para o tooltip", false); }
+  else {
+    hover.dispatchEvent(new dom.window.MouseEvent("mouseenter", { clientX: 100, clientY: 100, bubbles: true }));
+    teste("tooltip de mapa exibe conteúdo",
+      q("mapTooltip").style.display === "block" && q("mapTooltip").innerHTML.length > 10);
+  }
 
-  // Financiamento: totais derivados de transferencias.json, nunca texto fixo.
+  // ── busca por município em todo cartão (pedido da editoria, 01/10/2026) ────────────────────
+  const campos = [...d.querySelectorAll(".busca-mun input")];
+  const cartoes = [...d.querySelectorAll("#conteudo .cartao-mapa")];
+  teste(`busca por município em todos os ${cartoes.length} cartões`, campos.length === cartoes.length);
+  teste("todo campo de busca tem rótulo associado e visível",
+    campos.every(i => {
+      const l = d.querySelector('label[for="' + i.id + '"]');
+      return l && l.textContent.trim().length > 0 && !l.classList.contains("sr-only");
+    }));
+  teste("toda contagem de resultado é anunciada a leitor de tela",
+    [...d.querySelectorAll(".busca-mun-conta")].every(p => p.getAttribute("aria-live") === "polite")
+    && d.querySelectorAll(".busca-mun-conta").length === campos.length);
+  /* Filtrar tem de FILTRAR: um campo que não liga em nada é pior que campo nenhum, porque promete
+     resposta e devolve a lista inteira. */
+  const cartaoDec = d.querySelector("#boxAtosResposta details.cartao-mapa-dados");
+  const antes = cartaoDec.querySelectorAll("tbody tr").length;
+  const campoDec = cartaoDec.querySelector("input");
+  campoDec.value = "zzzzzz-nao-existe";
+  campoDec.dispatchEvent(new dom.window.Event("input"));
+  const depois = cartaoDec.querySelectorAll("tbody tr").length;
+  teste("digitar no campo filtra a lista", antes > 1 && depois === 1
+    && /nenhum município/.test(cartaoDec.querySelector("tbody").textContent));
 
-  // Harmonização visual entre os 7 mapas (achado de Patricia, 31/08/2026: os mapas
-  // 5, 6 e 7 — municípios prioritários, atos de resposta, transferências — tinham
-  // legendas fora do padrão dos mapas 1-4: sem siglas de UF, opacidade reduzida nos
-  // pontos, legenda centralizada em vez de alinhada à esquerda). Todo mapa categórico
-  // precisa ter as 27 siglas, e nenhuma legenda pode sobrescrever o alinhamento padrão.
-  const MAPAS_COM_SIGLA = ["mapPoints", "mapCobertura", "mapNatureza",
-    "mapPrioritarios", "mapAtosResposta"];   // mapConsistencia retirado em 13/09/2026 (auditoria de visualizações)
-  const semSiglaCompleta = MAPAS_COM_SIGLA.filter(id => q(id).querySelectorAll("text").length !== 27);
-  teste("harmonização: todos os 6 mapas têm as 27 siglas de UF", semSiglaCompleta.length === 0);
-  const legendasDesalinhadas = [...d.querySelectorAll(".map-legend")]
-    .filter(el => el.getAttribute("style") && /justify-content/.test(el.getAttribute("style")));
-  teste("harmonização: nenhuma legenda de mapa sobrescreve o alinhamento padrão", legendasDesalinhadas.length === 0);
-
-  // Achado de Patricia, 31/08/2026 (segunda rodada): o ícone de cor da legenda do
-  // mapa 5 tinha preenchimento quase invisível (#E4DBC6, quase a cor de fundo do
-  // cartão) com borda tracejada — visualmente quebrado, mesmo com o resto da
-  // legenda já corrigido. O padrão certo, já estabelecido nos mapas 3 e 4, é
-  // hachura de listras diagonais (repeating-linear-gradient) para "sem dado" —
-  // nunca borda tracejada sobre preenchimento quase invisível.
-  const iconesQuebrados = [...d.querySelectorAll(".map-legend i")]
-    .filter(el => /dashed/.test(el.getAttribute("style") || ""));
-  teste("harmonização: nenhum ícone de legenda usa borda tracejada sobre preenchimento (use hachura)",
-    iconesQuebrados.length === 0);
-
-  // Achado de Patricia, 31/08/2026 (terceira rodada): itens de legenda muito longos
-  // (até 63 caracteres, contra 5-22 nas legendas mais compactas da página) faziam
-  // cada item ocupar sua própria linha em vez de várias legendas cabendo lado a lado
-  // — rótulos precisam ser nomes de categoria diretos, não frases descritivas com
-  // parênteses explicativos (esses vão no tooltip, que já tem espaço de sobra).
-  const itensLongos = [...d.querySelectorAll(".map-legend > span:not(.escala)")]
-    .filter(s => s.textContent.length > 40);
-  teste("harmonização: nenhum item de legenda passa de 40 caracteres",
-    itensLongos.length === 0);
-
-  // Decisão editorial de 04/09/2026: figuras trazem SÓ título, legenda e crédito de uma linha.
-  // Nenhum parágrafo/nota dentro de cartão (o portão scripts/verificar_figuras.js cobre as 5 páginas;
-  // aqui fica a guarda local desta página).
-  const cartoesComParagrafo = [...d.querySelectorAll(".figura")]
-    .filter(c => [...c.querySelectorAll(".note, .hint, p")].some(e => !e.closest("details") && !e.classList.contains("figura-titulo") && !e.classList.contains("figura-sub") && !e.classList.contains("figura-leitura")));
-  teste("figuras: nenhum parágrafo ou nota dentro de cartão de mapa/gráfico", cartoesComParagrafo.length === 0);
-
-
-  // ── padrão único de mapas (03/09/2026): siglas das 27 UFs em todo mapa; legendas canônicas ──
-  const mapasSvg = [...d.querySelectorAll('svg[id^="map"], svg[id^="mapa"]')].filter(s => s.querySelector("path.uf-path") || s.querySelector("path"));
-  teste(`padrão de mapas: ${mapasSvg.length} mapa(s) com siglas das 27 UFs`, mapasSvg.length > 0 && mapasSvg.every(s => s.querySelectorAll("g.siglas text").length === 27));
+  // ── harmonização dos mapas (padrão único) ─────────────────────────────────────────────────
+  const mapasSvg = [...d.querySelectorAll('#conteudo svg[id^="map"]')].filter(s => s.querySelector("path"));
+  teste(`padrão de mapas: ${mapasSvg.length} mapa(s) com as 27 siglas de UF`,
+    mapasSvg.length === 5 && mapasSvg.every(s => s.querySelectorAll("g.siglas text").length === 27));
   const legendas = [...d.querySelectorAll(".map-legend")].filter(l => l.children.length);
-  teste(`padrão de legendas: ${legendas.length} legenda(s) no formato <span><i></i>rótulo</span>`, legendas.every(l => [...l.children].every(c => c.tagName === "SPAN" && (c.classList.contains("escala") || (c.firstElementChild && c.firstElementChild.tagName === "I")) && /background:/.test(c.firstElementChild.getAttribute("style") || "") && c.textContent.trim().length > 0)));
-  // 18/09/2026 (pedido da editoria): "N estados com plano para o ciclo" e "Por região: ..." saíram de
-  // defesa-civil.html (boxRegion/interpAntes removidos) — moraram na home (#resumoPreparacao), mesmo
-  // dado (data/estados.json). Teste equivalente agora em verificar_runtime.js (index.html).
-  try {
-    const RESP = JSON.parse(fs.readFileSync(path.join(raiz, "data", "resposta", "por_uf.json"), "utf8"));
-    teste("defesa civil (c): verificação com 5.571 e planos municipais localizados", /^5\.571 municípios no registro federal.*[1-9]\d* planos municipais localizados$/.test(d.querySelector("#boxVerificacao .figura-titulo").textContent));
-    teste("defesa civil (f): mapa com nº de municípios do dado", new RegExp("^Decretos: " + String(RESP.nacional.n_municipios).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " municípios").test(d.querySelector("#boxAtosResposta .figura-titulo").textContent));
-    // 15/09/2026: a figura da série semanal saiu da página — o fato (primeiro decreto e contagem no período eleitoral) migrou para interpDepois
-    // 21/09/2026 (pedido editorial): interpDepois saiu da página por completo — teste (g) removido.
-  } catch (e) { teste("defesa civil: títulos-fato (" + e.message + ")", false); }
-  // 15/09/2026: correção do portão — o teste que checava `falhas` rodava ANTES destes testes de
-  // Defesa civil (bug pré-existente, §2.9): quaisquer falhas aqui nunca bloqueavam a publicação.
-  // A checagem final agora cobre TODOS os testes acima, não só os anteriores a esta seção.
+  teste(`padrão de legendas: ${legendas.length} legenda(s) no formato <span><i></i>rótulo</span>`,
+    legendas.every(l => [...l.children].every(c => c.tagName === "SPAN"
+      && (c.classList.contains("escala") || (c.firstElementChild && c.firstElementChild.tagName === "I"))
+      && /background:/.test((c.firstElementChild || {}).getAttribute && c.firstElementChild.getAttribute("style") || "")
+      && c.textContent.trim().length > 0)));
+  teste("nenhuma legenda sobrescreve o alinhamento padrão",
+    [...d.querySelectorAll(".map-legend")].every(el => !/justify-content/.test(el.getAttribute("style") || "")));
+  teste("nenhum ícone de legenda usa borda tracejada (use hachura)",
+    [...d.querySelectorAll(".map-legend i")].every(el => !/dashed/.test(el.getAttribute("style") || "")));
+  teste("nenhum item de legenda passa de 40 caracteres",
+    [...d.querySelectorAll(".map-legend > span:not(.escala)")].every(s => s.textContent.length <= 40));
+
+  // ── decisão editorial de 04/09/2026: figura só com título, legenda e crédito ───────────────
+  teste("nenhum parágrafo ou nota dentro de cartão de mapa",
+    [...d.querySelectorAll("#conteudo .figura")].every(c =>
+      ![...c.querySelectorAll(".note, .hint, p")].some(e => !e.closest("details")
+        && !e.classList.contains("figura-titulo") && !e.classList.contains("figura-sub")
+        && !e.classList.contains("figura-leitura") && !e.classList.contains("cartao-mapa-familia")
+        && !e.classList.contains("cartao-mapa-boletim"))));
+  teste("toda figura tem crédito de fonte",
+    d.querySelectorAll("#conteudo .figura").length === d.querySelectorAll("#conteudo .fonte-figura").length);
+
+  // ── o que a editoria mandou sair não volta ─────────────────────────────────────────────────
+  const foiEmbora = ["log", "fontes", "painel-amostral", "boxVerificacao", "boxCoberturaNatureza",
+                     "mapPoints", "mapNiveis", "mapCobertura", "mapNatureza", "tblBody"];
+  const voltou = foiEmbora.filter(id => q(id));
+  teste("material de auditoria e mapas de preparação continuam fora da página (01/10/2026)",
+    voltou.length === 0);
+  if (voltou.length) console.log("      voltaram:", voltou.join(", "));
+  /* "Cadastro Nacional" é o nome do cadastro do art. 3º-A da Lei 12.340 — voluntário, com
+     deslizamento, e que GERA O DEVER de plano de contingência. A lista desta página é a da Casa
+     Civil, que não cria esse dever. Usar um nome pelo outro afirma obrigação inexistente. */
+  const visivel = d.getElementById("conteudo").textContent;
+  teste('o nome "Cadastro Nacional" não aparece na página (é outro cadastro)',
+    !/Cadastro Nacional/i.test(visivel));
+  teste("o cadastro é nomeado pela fonte certa (Casa Civil)",
+    /suscet[íi]veis a enxurradas e inunda[çc][õo]es/i.test(visivel) && /Casa Civil/i.test(visivel));
+
   if (falhas.length) { console.error(`\n✗ ${falhas.length} verificação(ões) falharam.`); process.exit(1); }
-  console.log("\n✓ RUNTIME (mapas e gráficos) OK — todas as verificações passaram.");
+  console.log("\n✓ RUNTIME (Defesa civil) OK — todas as verificações passaram.");
   process.exit(0);
-}, 600);
+}, 900);
