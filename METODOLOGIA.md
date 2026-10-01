@@ -1883,6 +1883,12 @@ encadeada **C29** em `data/congelamento_defeso.json`, com `hash_anterior` igual 
 nenhuma constante nem a fórmula do motor foi tocada, e a entrada existe pelo C6, que manda declarar
 em pontos por UF toda correção de dado no período.
 
+**Por que o C10 automático não pegou.** `aplicar_c10_imprensa.py` existe desde 02/09/2026 e
+rebaixa registro pontuável apoiado em imprensa — mas decide pelo campo `canal`, e o registro de
+Curitiba declarava `site_municipal`. A trava lia a etiqueta que o próprio registro errado havia
+escrito. O portão novo lê o **domínio da URL**, que é fato e não autodeclaração; os dois ficam, um
+não substitui o outro.
+
 Para que a regra deixe de depender de quem está olhando, `scripts/verificar_imprensa_nao_registra.py`
 passa a reprovar registro de categoria que credita cujo domínio de URL não seja oficial — `*.gov.br`,
 `*.leg.br`, `*.jus.br`, agregador de diário oficial, Querido Diário ou um dos poucos domínios
