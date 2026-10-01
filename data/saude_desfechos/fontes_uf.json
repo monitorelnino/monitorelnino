@@ -11,7 +11,8 @@
    "cievs": null,
    "periodicidade": null,
    "status": "a localizar",
-   "defeso": null
+   "defeso": null,
+   "canais_instrumento": "https://saude.ac.gov.br/"
   },
   "AL": {
    "orgao": null,
@@ -22,7 +23,8 @@
    "cievs": null,
    "periodicidade": null,
    "status": "a localizar",
-   "defeso": null
+   "defeso": null,
+   "canais_instrumento": "https://www.saude.al.gov.br/"
   },
   "AM": {
    "orgao": "SES-AM / FVS-RCP",
@@ -33,7 +35,9 @@
    "cievs": null,
    "periodicidade": null,
    "status": "a localizar",
-   "defeso": null
+   "defeso": null,
+   "canais_instrumento": null,
+   "canais_instrumento_lacuna": "01/10/2026: saude.am.gov.br e www.saude.am.gov.br respondem HTTP 404"
   },
   "AP": {
    "orgao": null,
@@ -44,7 +48,9 @@
    "cievs": null,
    "periodicidade": null,
    "status": "a localizar",
-   "defeso": null
+   "defeso": null,
+   "canais_instrumento": null,
+   "canais_instrumento_lacuna": "01/10/2026: saude.ap.gov.br e www.saude.ap.gov.br falham na verificacao do certificado TLS"
   },
   "BA": {
    "orgao": "SESAB/SUVISA/DIVEP",
@@ -55,7 +61,8 @@
    "cievs": null,
    "periodicidade": "SEM SÉRIE ATIVA — repositório de boletins de arboviroses parado em 2021 (mais recente: SE 24/2021); DTHA é anual (nº 01, ago/2025)",
    "status": "SEM FONTE COLETÁVEL (verificado em 10/09/2026) — o Observatório de arboviroses da SESAB lista ~140 boletins, o último de 2021; os números de 2026 circulam só por notícias da assessoria (SE 18, maio/2026), sem documento periódico. O boletim de DTHA é anual, não série. Não escrever coletor: não há o que coletar. Reavaliar se a SESAB retomar publicação periódica.",
-   "defeso": false
+   "defeso": false,
+   "canais_instrumento": "https://saude.ba.gov.br/"
   },
   "CE": {
    "orgao": "SESA-CE / SEVIR",
@@ -66,7 +73,8 @@
    "cievs": null,
    "periodicidade": "SEM SÉRIE ATIVA de desfecho — repositório central com boletins esparsos por agravo; o mais recente de arboviroses (25/02/2026) é ENTOMOLÓGICO (vetor, não desfecho); DDA/DTHA de 2018 e 2022",
    "status": "SEM FONTE COLETÁVEL DE DESFECHO (verificado em 10/09/2026) — o repositório saude.ce.gov.br/download/boletins é central e ativo, mas sem série epidemiológica regular de arboviroses; o item recente é vigilância entomológica. Não escrever coletor de desfecho por ora.",
-   "defeso": false
+   "defeso": false,
+   "canais_instrumento": "https://www.saude.ce.gov.br/"
   },
   "DF": {
    "orgao": "SES-DF",
@@ -77,7 +85,8 @@
    "cievs": null,
    "periodicidade": "semanal (informativo epidemiológico Nº 1 a Nº 34 de 2026 até 03/09/2026; o texto 'uma vez por mês' na página é resíduo de 2022)",
    "status": "COLETOR ATIVO — informativo semanal de arboviroses por Região de Saúde (coletar_boletim_df_arboviroses.py), lido em 10/09/2026 na íntegra (Nº 34, SE 34/2026: dengue 3.264 prováveis / 195 confirmados, chikungunya 240 prováveis, Zika 12 notif., febre amarela 4 notif.; 7 Regiões de Saúde + Ignorado, somas conferidas); série própria do Monitor acumulando a partir de agora. Correção de 10/09/2026: a fonte é SEMANAL, não mensal como registrado em 09/09. BLOQUEIO MEDIDO (11/09/2026): o portal não completa handshake TLS com o runner do Actions (_ssl.c:993, ~45s, igual com UA do Monitor e de navegador), enquanto outras fontes respondem 200 do mesmo runner. Do navegador no Brasil abre normalmente. Nenhum ajuste de parser resolve.",
-   "defeso": false
+   "defeso": false,
+   "canais_instrumento": "https://saude.df.gov.br/"
   },
   "ES": {
    "orgao": "SESA-ES",
@@ -88,7 +97,8 @@
    "cievs": null,
    "periodicidade": null,
    "status": "a localizar",
-   "defeso": null
+   "defeso": null,
+   "canais_instrumento": "https://saude.es.gov.br/"
   },
   "GO": {
    "orgao": "SES-GO / SUVISA",
@@ -99,7 +109,8 @@
    "cievs": null,
    "periodicidade": null,
    "status": "a localizar",
-   "defeso": null
+   "defeso": null,
+   "canais_instrumento": "https://saude.go.gov.br/"
   },
   "MA": {
    "orgao": null,
@@ -110,7 +121,8 @@
    "cievs": null,
    "periodicidade": null,
    "status": "a localizar",
-   "defeso": null
+   "defeso": null,
+   "canais_instrumento": "https://www.saude.ma.gov.br/"
   },
   "MG": {
    "orgao": "SES-MG",
@@ -121,7 +133,8 @@
    "cievs": null,
    "periodicidade": null,
    "status": "painel indisponível (edição eleitoral) — verificação humana de 07/09/2026",
-   "defeso": true
+   "defeso": true,
+   "canais_instrumento": "https://saude.mg.gov.br/"
   },
   "MS": {
    "orgao": "SES-MS",
@@ -132,7 +145,8 @@
    "cievs": null,
    "periodicidade": "semanal",
    "status": "COLETOR ATIVO, MAS FONTE INTERROMPIDA (verificado no runner em 11/09/2026) — a listagem da SES-MS responde normalmente e o padrão de permalink está correto, porém o último boletim semanal de dengue publicado é o da SE 25 (10/07/2026): a secretaria parou a série há ~10 semanas. O coletor passa a recuar até 14 semanas e a DECLARAR a defasagem quando o boletim mais recente for antigo. Interrupção da fonte é achado do §36. CORREÇÃO (11/09/2026): a série NÃO está interrompida — a SE 34/2026 está publicada; o coletor procurava permalink de post em vez da listagem, onde os PDFs estão expostos direto.",
-   "defeso": false
+   "defeso": false,
+   "canais_instrumento": "https://www.saude.ms.gov.br/"
   },
   "MT": {
    "orgao": null,
@@ -143,7 +157,8 @@
    "cievs": null,
    "periodicidade": null,
    "status": "Sala de Situação em Saúde e Clima (SES-MT, DOE 13/08/2026); publicações da sala a localizar",
-   "defeso": null
+   "defeso": null,
+   "canais_instrumento": "https://saude.mt.gov.br/"
   },
   "PA": {
    "orgao": "SESPA / Coordenação Estadual de Arboviroses",
@@ -154,7 +169,8 @@
    "cievs": null,
    "periodicidade": null,
    "status": "a localizar",
-   "defeso": null
+   "defeso": null,
+   "canais_instrumento": "https://www.saude.pa.gov.br/"
   },
   "PB": {
    "orgao": "SES-PB / Vigilância em Saúde",
@@ -165,7 +181,9 @@
    "cievs": null,
    "periodicidade": "irregular — boletins NUMERADOS (nº 02 ≈ SE 05, nº 03 = SE 08); a numeração não acompanha a SE",
    "status": "COLETOR ATIVO — boletim de arboviroses por Região de Saúde (coletar_boletim_pb_arboviroses.py), lido em 10/09/2026 na íntegra (nº 03/2026, SE 08: Quadro 01 com as 16 Regiões de Saúde, população, prováveis de dengue/chik/zika/Oropouche e 5 incidências; Fluxograma por agravo). Melhor formato depois de MS: tabela em texto, somas fecham. Correção de registro: o padrão real de URL não é 'no_01_2026.pdf' como suposto em 09/09. · 11/09/2026 (1ª rodada real): o portal responde HTTP 200 com text/html — página intermediária do Plone — em vez do PDF. O coletor passa a seguir o destino declarado nessa página (meta refresh, window.location ou link .pdf), sem jamais adivinhar URL de arquivo. ATENÇÃO (11/09/2026): o acesso público passa por interstício HTML (cookie) e a URL 'no-03_2026.pdf' chegou a servir o boletim 'Nº 05 — 20.04.2023' — o nome do arquivo NÃO garante a edição. O coletor recusa documento cujo ano interno difira do ano corrente.",
-   "defeso": false
+   "defeso": false,
+   "canais_instrumento": null,
+   "canais_instrumento_lacuna": "01/10/2026: saude.pb.gov.br redireciona para paraiba.pb.gov.br/diretas/saude/, que serve muro de robo (desafio no corpo, HTTP 200) - recusa, e se respeita"
   },
   "PE": {
    "orgao": "SES-PE",
@@ -176,7 +194,8 @@
    "cievs": null,
    "periodicidade": "semanal (informe acumulado 'SE 01 a NN'; nº 34 publicado 03/09/2026, nº 35 noticiado em 09/09)",
    "status": "COLETOR ATIVO (TOTAIS ESTADUAIS) — informe semanal de arboviroses do CIEVS-PE (coletar_boletim_pe_arboviroses.py), lido em 10/09/2026 na íntegra (SE 01 a 34/2026: dengue 22.281 prováveis / 10.848 confirmados / 649 graves, chik 2.187, zika 104; 3 óbitos confirmados por arboviroses). LIMITAÇÃO: é PDF-infográfico e a Tabela 1 (por município) é IMAGEM — não lida por máquina; granularidade municipal só no painel Power BI (não automatizável). Série própria do Monitor a partir de agora. · 11/09/2026 (1ª rodada real): a listagem anuncia a edição nova ANTES de publicar o arquivo (SE 35 anunciada, PDF ausente; o da SE 34 baixa normalmente do runner). O coletor passa a tentar as 4 edições mais recentes em ordem decrescente e registra as anunciadas sem arquivo. CORREÇÃO (11/09/2026): a listagem anuncia edição (SE 35) antes de publicar o arquivo; o coletor passa a descer até a edição mais recente que responda com PDF.",
-   "defeso": false
+   "defeso": false,
+   "canais_instrumento": "https://www.saude.pe.gov.br/"
   },
   "PI": {
    "orgao": null,
@@ -187,7 +206,8 @@
    "cievs": null,
    "periodicidade": null,
    "status": "a localizar",
-   "defeso": null
+   "defeso": null,
+   "canais_instrumento": "https://saude.pi.gov.br/"
   },
   "PR": {
    "orgao": "SESA-PR",
@@ -198,7 +218,8 @@
    "cievs": null,
    "periodicidade": null,
    "status": "a localizar",
-   "defeso": null
+   "defeso": null,
+   "canais_instrumento": "https://saude.pr.gov.br/"
   },
   "RJ": {
    "orgao": "SES-RJ",
@@ -209,7 +230,9 @@
    "cievs": null,
    "periodicidade": null,
    "status": "a localizar",
-   "defeso": null
+   "defeso": null,
+   "canais_instrumento": null,
+   "canais_instrumento_lacuna": "01/10/2026: saude.rj.gov.br e www.saude.rj.gov.br servem intersticio que declara www.rj.gov.br/saude, e esse responde HTTP 503"
   },
   "RN": {
    "orgao": null,
@@ -220,7 +243,9 @@
    "cievs": null,
    "periodicidade": null,
    "status": "a localizar",
-   "defeso": null
+   "defeso": null,
+   "canais_instrumento": null,
+   "canais_instrumento_lacuna": "01/10/2026: saude.rn.gov.br e www.saude.rn.gov.br derrubam a conexao (WinError 10054)"
   },
   "RO": {
    "orgao": null,
@@ -231,7 +256,9 @@
    "cievs": null,
    "periodicidade": null,
    "status": "a localizar",
-   "defeso": null
+   "defeso": null,
+   "canais_instrumento": null,
+   "canais_instrumento_lacuna": "01/10/2026: saude.ro.gov.br e www.saude.ro.gov.br nao resolvem no DNS"
   },
   "RR": {
    "orgao": null,
@@ -242,7 +269,8 @@
    "cievs": null,
    "periodicidade": null,
    "status": "a localizar",
-   "defeso": null
+   "defeso": null,
+   "canais_instrumento": "https://saude.rr.gov.br/"
   },
   "RS": {
    "orgao": "SES-RS / CEVS",
@@ -253,7 +281,8 @@
    "cievs": null,
    "periodicidade": null,
    "status": "a localizar",
-   "defeso": null
+   "defeso": null,
+   "canais_instrumento": "https://saude.rs.gov.br/"
   },
   "SC": {
    "orgao": "SES-SC / DIVE",
@@ -264,7 +293,8 @@
    "cievs": null,
    "periodicidade": null,
    "status": "a localizar",
-   "defeso": null
+   "defeso": null,
+   "canais_instrumento": "https://saude.sc.gov.br/"
   },
   "SE": {
    "orgao": "SES-SE",
@@ -275,7 +305,8 @@
    "cievs": null,
    "periodicidade": null,
    "status": "a localizar",
-   "defeso": null
+   "defeso": null,
+   "canais_instrumento": "https://saude.se.gov.br/"
   },
   "SP": {
    "orgao": "SES-SP / CVE",
@@ -286,7 +317,8 @@
    "cievs": null,
    "periodicidade": "semanal",
    "status": "Boletim semanal de arboviroses ativo (dengue.saude.sp.gov.br). INSTRUMENTO DE GOVERNANÇA DO CICLO LOCALIZADO E LIDO (plano estadual de El Niño, 31/08/2026). Coletor de desfecho ainda não escrito: os dados abertos por município/SE do CVE estavam marcados 'atualizados em abril/2026' na verificação de 10/09, defasados frente ao boletim semanal — conferir a fonte corrente antes de codar. Cautela: um recurso do portal do CVE devolveu 'Blocked country: [Brazil]' em acesso automatizado.",
-   "defeso": false
+   "defeso": false,
+   "canais_instrumento": "https://saude.sp.gov.br/"
   },
   "TO": {
    "orgao": null,
@@ -297,7 +329,9 @@
    "cievs": null,
    "periodicidade": null,
    "status": "a localizar",
-   "defeso": null
+   "defeso": null,
+   "canais_instrumento": "https://saude.to.gov.br/"
   }
- }
+ },
+ "_governanca_canais_instrumento": "Canal 3 da bateria de saude (CIEVS, sala de situacao, COE): o endereco RAIZ da Secretaria Estadual de Saude de cada UF, de onde coletar_saude_estadual.py --canais segue os LINKS QUE O PROPRIO SITIO DECLARA. Nenhum endereco foi suposto: os 21 confirmados responderam em 01/10/2026 ao cliente do projeto, com corpo que nomeia a secretaria de saude do estado; os 6 demais ficam `null` com o motivo medido, que e lacuna declarada e impede marcar a UF como 'nao localizado' por este canal. Caminho de arquivo NUNCA se adivinha - o sitio diz onde esta."
 }
