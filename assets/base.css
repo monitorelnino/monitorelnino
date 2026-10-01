@@ -861,3 +861,17 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
   .panel, .figura, .cartao, .ficha, .emerg-bar, .contato{border-color:var(--mineral); break-inside:avoid; box-shadow:none;}
   a[href^="http"]::after{content:" (" attr(href) ")"; font-size:var(--fs-caption); color:var(--muted);}
 }
+
+/* 01/10/2026 (seção F): os cartões de família numa linha têm de ter a MESMA ALTURA. O portão de
+   consistência visual cobra isso, e com razão: figuras lado a lado em alturas diferentes leem-se
+   como figuras de pesos diferentes, quando o que muda é só o conteúdo interno (uma tem "ver em
+   lista", outra não).
+
+   A igualdade vem do layout, não de conteúdo inventado para encher: cada bloco é uma coluna que
+   ocupa a altura da linha, e a figura dentro dele também. O que sobra de espaço fica no fim do
+   cartão, depois da fonte — nunca espremendo o mapa. */
+.blocos-familia{align-items:stretch;}
+.blocos-familia > .bloco-familia{display:flex; flex-direction:column;}
+.blocos-familia > .bloco-familia > .figura{flex:1 1 auto; display:flex; flex-direction:column;}
+.blocos-familia > .bloco-familia > .figura > .figura-fonte,
+.blocos-familia > .bloco-familia > .figura > .fonte-figura{margin-top:auto;}
