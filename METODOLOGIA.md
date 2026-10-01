@@ -2592,3 +2592,21 @@ publicou nada.
 o que o limitava a cinco UFs; agora despacha pelo `fontes_doe.json`, que é onde a cobertura está
 declarada. Cobertura do canal 2: de 5 para 7 UFs. Medido no mesmo dia: 8 acertos no DF e 3 no TO
 para os termos da saúde, nenhum qualificando pista.
+
+## 78. As capturas dos portões de navegador saem do índice: a `main` vermelha do dia inteiro (01/10/2026)
+
+A `main` reprovou o portão 12 em **todas** as rodadas de 01/10/2026, de 15h52 a 22h15 UTC, e a causa
+não era derivado obsoleto: eram as 30 imagens de `capturas-ci/`, que divergiam inteiras em cada
+regeneração. O relatório do próprio portão mostrou o diff — 30 arquivos, zero linha de texto, só
+`Binary files differ`, com as versões do runner sistematicamente maiores que as versionadas.
+
+Captura de tela não é derivado de dado: é saída de execução, e depende do renderizador (fonte, DPI,
+versão do navegador). A do runner Linux nunca vai coincidir com a da máquina de quem edita, e um
+portão que exige coincidência entre as duas reprova para sempre — o que é pior do que não ter o
+portão, porque vermelho permanente deixa de informar.
+
+As imagens saem do índice (`.gitignore`) e o `verificar_derivados.sh` passa a excluí-las do diff
+estrito, como já excluía o `data/snapshot_feed.json`. Nada de verificação se perde: quem **prova** o
+que a página mostra são os portões de navegador que as produzem (`verificar_consistencia_visual.js`
+e `verificar_movel.js`, que reprovam por medida, não por comparação de imagem), e o `portoes.yml` já
+as sobe como artefato do run — que é o que o CLAUDE.md sempre disse que elas eram.

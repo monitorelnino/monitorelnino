@@ -54,8 +54,8 @@ if [ "$MODO" = "--pode-regenerar" ]; then
   echo "  push para a \`main\`, que é onde o derivado obsoleto importa (§314)."
   exit 0
 fi
-if git diff --quiet --exit-code -- . ':!data/snapshot_feed.json'; then
+if git diff --quiet --exit-code -- . ':!data/snapshot_feed.json' ':!capturas-ci'; then
   echo "✓ DERIVADOS OK — cadeia canônica regenerada em árvore limpa sem diferença (índice, selos, feeds, dados abertos, PDFs, manifesto)."
 else
-  echo "✗ DERIVADOS: a regeneração alterou arquivos versionados — havia derivado obsoleto:"; git diff --stat -- . ':!data/snapshot_feed.json' | tail -8; exit 1
+  echo "✗ DERIVADOS: a regeneração alterou arquivos versionados — havia derivado obsoleto:"; git diff --stat -- . ':!data/snapshot_feed.json' ':!capturas-ci' | tail -8; exit 1
 fi

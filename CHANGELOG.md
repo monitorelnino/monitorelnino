@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-01 · #504 · Capturas de tela fora do índice
+
+A `main` reprovou o portão 12 em todas as rodadas do dia, de 15h52 a 22h15 UTC, pelas 30 imagens de
+`capturas-ci/`: captura de tela depende do renderizador, e a do runner nunca coincide com a de quem
+edita. Elas saem do índice e do diff estrito. Quem prova a página continua sendo o portão de
+navegador que as produz, e o `portoes.yml` já as sobe como artefato do run. Em `METODOLOGIA.md` §78.
+
 ## 2026-10-01 · #503 · Adaptadores diretos de diário estadual
 
 Dois novos, medidos contra produção: `dodf` (API própria do DODF, 7 matérias na janela do ciclo) e
