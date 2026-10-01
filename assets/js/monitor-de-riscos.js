@@ -175,6 +175,43 @@ credito('boxRiscoPrevisto', 'painel_el_nino');
   }).join('');
 })();
 
+/* Alinhamento da grade de cartões (01/10/2026).
+   O `min-height` em CSS reserva um PISO, não um teto: numa coluna estreita a linha do boletim da
+   seca quebra em três linhas e empurra título, subtítulo e mapa daquele cartão para baixo — foi o
+   que o portão de consistência visual pegou, com razão.
+
+   Reservar um número fixo de linhas resolveria o alinhamento ao custo de cortar texto aprovado
+   numa largura e deixar faixa branca em outra. Aqui a reserva é MEDIDA: cada bloco de texto recebe
+   a altura do mais alto entre os seis, depois do desenho e a cada mudança de largura. Ninguém é
+   cortado, e os seis começam o mapa na mesma linha em qualquer tela. */
+(function alinharCartoes(){
+  const BLOCOS = ['.cartao-mapa-boletim', '.figura-titulo', '.figura-sub'];
+  function alinhar(){
+    const cartoes = [...document.querySelectorAll('.grade-mapas > .cartao-mapa')];
+    if (cartoes.length < 2) return;
+    // Numa coluna só (celular) não há com que alinhar, e a reserva viraria espaço vazio.
+    const umaColuna = cartoes.length > 1
+      && Math.abs(cartoes[0].getBoundingClientRect().top - cartoes[1].getBoundingClientRect().top) > 4;
+    for (const seletor of BLOCOS) {
+      const alvos = cartoes.map(c => c.querySelector(seletor)).filter(Boolean);
+      alvos.forEach(e => { e.style.minHeight = ''; });
+      if (umaColuna) continue;
+      const alto = Math.max(...alvos.map(e => e.getBoundingClientRect().height));
+      alvos.forEach(e => { e.style.minHeight = alto + 'px'; });
+    }
+  }
+  // Guardas: o portão de runtime roda a página num DOM sem requestAnimationFrame nem document.fonts,
+  // e sem elas o alinhamento derrubava a página inteira — uma melhoria de layout não pode custar o
+  // carregamento. Sem RAF, alinha direto; sem `fonts`, alinha com a fonte que houver.
+  const temRAF = typeof requestAnimationFrame === 'function';
+  const quando = () => temRAF
+    ? requestAnimationFrame(() => requestAnimationFrame(alinhar))
+    : alinhar();
+  try { quando(); } catch (e) { /* layout é melhoria: nunca derruba a página */ }
+  try { if (document.fonts && document.fonts.ready) document.fonts.ready.then(quando); } catch (e) {}
+  try { addEventListener('resize', quando); } catch (e) {}
+})();
+
 // ---- Subtítulos das figuras, gerados do dado (30/09/2026). O HTML traz só a parte fixa da frase;
 // a data, a contagem e o documento vêm daqui, para nenhum número viver escrito na página.
 (function subtitulos(){
