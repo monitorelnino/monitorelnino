@@ -826,6 +826,63 @@ def esperas_para(codigo: int) -> tuple:
     return ()
 
 
+def enviar_uma_vez(url: str, dados: dict, timeout: int = 40, origem: str = None) -> bytes:
+    """POST de formulário, com as MESMAS travas do GET, UMA tentativa (ver `enviar`).
+
+    Existe porque três diários estaduais só entregam busca por POST — o DODF por uma rota JSON que
+    o seu próprio JS chama. Não é atalho: repete, linha a linha, o que o `buscar_uma_vez` faz, e
+    pela mesma razão. Cliente identificado (§ do CLAUDE.md: nunca disfarçar), `Crawl-delay` do
+    robots respeitado, acesso contra robots registrado, muro de robô servido com 200 levantado
+    antes de qualquer preservação (§186) e padrão de defeso registrado."""
+    host = (urllib.parse.urlparse(url).netloc or "").lower()
+    robots = robots_de(host) if host else {"status": "indeterminado", "crawl_delay": None, "rp": None}
+    _respeitar_ritmo(host, robots.get("crawl_delay"))
+    corpo_enviado = urllib.parse.urlencode(dados or {}).encode("utf-8")
+    req = urllib.request.Request(
+        url_ascii(url), data=corpo_enviado, method="POST",
+        headers={"User-Agent": UA, "Accept": "*/*",
+                 "Content-Type": "application/x-www-form-urlencoded",
+                 "X-Requested-With": "XMLHttpRequest"})
+    with urllib.request.urlopen(req, timeout=timeout, context=contexto_tls()) as r:
+        corpo = r.read()
+        ct = (r.headers.get("Content-Type") or "").lower()
+        corpo = descomprimir(corpo, r.headers.get("Content-Encoding"))
+    if robots.get("rp") is not None and not robots["rp"].can_fetch(UA, url_ascii(url)):
+        try:
+            registrar_acesso_contra_robots(host, url, origem)
+        except Exception:  # noqa: BLE001 — o rastro nunca derruba a coleta
+            pass
+    marca = detectar_muro_de_robo(corpo)
+    if marca:
+        raise MuroDeRobo(url, marca)
+    # A MESMA condição do GET, incluindo o reconhecimento por corpo e a reserva pelo endereço:
+    # a trava prometida no docstring tem de ser a trava escrita, e uma versão mais fraca aqui
+    # deixaria passar aviso de defeso servido sem Content-Type de texto.
+    if _dominio_publico(url) and ("html" in ct or "text" in ct
+                                 or corpo[:200].lstrip().lower().startswith(b"<!doctype")
+                                 or b"<html" in corpo[:2000].lower()):
+        pad = (detectar_defeso(corpo[:200000].decode("utf-8", "replace"))
+               or ("defeso" if "defeso" in url.lower() else None))
+        if pad:
+            _SUSPENSAS_SESSAO[url] = pad
+            try:
+                registrar_fonte_suspensa(url, corpo, pad)
+            except Exception:  # noqa: BLE001
+                pass
+    return corpo
+
+
+def enviar(url: str, dados: dict, timeout: int = 40, origem: str = None, enviar_fn=None,
+           dormir=None) -> bytes:
+    """`enviar_uma_vez` com a espera do §226 — a mesma do `buscar`, pela mesma função."""
+    def uma_vez():
+        if enviar_fn is not None:
+            return enviar_fn(url, dados, timeout=timeout)
+        return enviar_uma_vez(url, dados, timeout=timeout, origem=origem)
+
+    return com_espera(uma_vez, dormir=dormir)
+
+
 def buscar(url: str, timeout: int = 40, origem: str = None, buscar_fn=None, dormir=None) -> bytes:
     """`buscar_uma_vez` com a espera do §226: repete quando a fonte pede tempo (429 e 5xx) ou
     quando a conexão nem virou conversa HTTP (reset, TLS, DNS, timeout), e sobe na hora quando
@@ -837,13 +894,22 @@ def buscar(url: str, timeout: int = 40, origem: str = None, buscar_fn=None, dorm
 
     `buscar_fn` e `dormir` existem para o autoteste, que precisa provar a espera sem rede e sem
     esperar de verdade."""
-    _dormir = dormir or time.sleep
-
     def uma_vez():
         if buscar_fn is not None:
             return buscar_fn(url, timeout=timeout)
         return buscar_uma_vez(url, timeout=timeout, origem=origem)
 
+    return com_espera(uma_vez, dormir=dormir)
+
+
+def com_espera(uma_vez, dormir=None):
+    """A espera do §226 em volta de UMA tentativa qualquer. Função de ordem superior.
+
+    Saiu de dentro do `buscar` quando o POST passou a existir (`enviar`): a regra de quando
+    repetir — 429 e 5xx e conexão que nem virou conversa HTTP sim; 4xx e muro de robô não — é da
+    ESPERA, não do método HTTP. Duas cópias dela divergiriam, e a que divergisse repetiria uma
+    recusa."""
+    _dormir = dormir or time.sleep
     restantes = None
     while True:
         try:

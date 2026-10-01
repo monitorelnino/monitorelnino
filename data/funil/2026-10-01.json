@@ -1,132 +1,131 @@
 {
-  "atualizado_em": "2026-10-01T16:59:20",
-  "data": "2026-10-01",
-  "etapas": {
-    "busca_web": {
-      "brutos_periodo_ou_seca": 7328,
-      "brutos_plancon": 7330,
-      "brutos_siglas_e_variantes": 7319,
-      "coberto_sem_mencao": 0,
-      "com_resultado_bruto": 750,
-      "consultas": 750,
-      "lacunas": 0,
-      "motor_sem_resposta": 0,
-      "nao_localizado_ate_o_momento": 749,
-      "pistas": 7
-    },
-    "descobrir_planos": {
-      "achados_novos": 0,
-      "alvos_consultados": 20,
-      "fila_acumulada": 41
-    },
-    "diario_consorciado": {
-      "bloqueadas": 0,
-      "decretos_novos": 17,
-      "fontes": 16,
-      "fora_do_ar": 0,
-      "pistas": 22
-    },
-    "diario_municipal": {
-      "consultados": 132,
-      "decretos_novos": 0,
-      "lacunas": 18,
-      "pistas": 0
-    },
-    "doe": {
-      "ufs_com_resultado": 27,
-      "ufs_consultadas": 27
-    },
-    "funil_saude_estadual": {
-      "com_resultado_bruto": 81,
-      "consultas": 479,
-      "pistas": 268
-    },
-    "juiz": {
-      "com_documento": 37,
-      "pistas_recebidas": 150,
-      "promovidas": 0,
-      "recusa_autoridade_nao_confirmada": 5,
-      "recusa_citacao_incompleta": 15,
-      "recusa_documento_inacessivel": 15,
-      "recusa_ente_nao_confirmado": 4,
-      "recusa_executivo_pendente": 1,
-      "recusa_natureza_duvidosa": 10,
-      "recusa_resposta": 2,
-      "recusa_sem_documento_primario": 93,
-      "recusa_texto_nao_extraivel": 5
-    },
-    "rede_social": {
-      "entes_consultados": 20,
-      "lacunas": 4,
-      "perfis_confirmados": 37,
-      "pistas": 394,
-      "sem_perfil": 4
-    },
-    "transferencias_municipais": {
-      "com_resultado_bruto": 20,
-      "consultas": 20,
-      "municipios": 111360
-    }
-  },
+ "diario_consorciado": {
+  "decretos_novos": 17,
+  "fora_do_ar": 0,
+  "bloqueadas": 0,
+  "fontes": 16,
+  "pistas": 22
+ },
+ "funil_saude_estadual": {
+  "consultas": 438,
+  "com_resultado_bruto": 55,
+  "pistas": 78
+ },
+ "rede_social": {
+  "perfis_confirmados": 37,
+  "entes_consultados": 20,
+  "lacunas": 4,
+  "sem_perfil": 4,
+  "pistas": 394
+ },
+ "formato_versao": 1,
+ "busca_web": {
+  "motor_sem_resposta": 0,
+  "brutos_periodo_ou_seca": 7328,
+  "brutos_siglas_e_variantes": 7319,
+  "brutos_plancon": 7330,
+  "coberto_sem_mencao": 0,
+  "nao_localizado_ate_o_momento": 749,
+  "consultas": 750,
+  "com_resultado_bruto": 750,
+  "lacunas": 0,
+  "pistas": 7
+ },
+ "transferencias_municipais": {
+  "consultas": 20,
+  "municipios": 111360,
+  "com_resultado_bruto": 20
+ },
+ "etapas": {
   "diario_consorciado": {
-   "fontes": 16,
-   "pistas": 22,
-   "decretos_novos": 17,
+   "fora_do_ar": 0,
    "bloqueadas": 0,
-   "fora_do_ar": 0
-  },
-  "doe": {
-   "ufs_consultadas": 27,
-   "ufs_com_resultado": 27
-  },
-  "descobrir_planos": {
-   "alvos_consultados": 20,
-   "achados_novos": 0,
-   "fila_acumulada": 41
-  },
-  "rede_social": {
-   "entes_consultados": 20,
-   "perfis_confirmados": 37,
-   "pistas": 394,
-   "sem_perfil": 4,
-   "lacunas": 4
-  },
-  "busca_web": {
-   "consultas": 750,
-   "com_resultado_bruto": 750,
-   "motor_sem_resposta": 0,
-   "pistas": 7,
-   "coberto_sem_mencao": 0,
-   "nao_localizado_ate_o_momento": 749,
-   "lacunas": 0,
-   "brutos_plancon": 7330,
-   "brutos_periodo_ou_seca": 7328,
-   "brutos_siglas_e_variantes": 7319
+   "decretos_novos": 17,
+   "fontes": 16,
+   "pistas": 22
   },
   "funil_saude_estadual": {
-   "consultas": 438,
-   "com_resultado_bruto": 55,
-   "pistas": 78
+   "consultas": 487,
+   "com_resultado_bruto": 83,
+   "pistas": 268
   },
-  "juiz": {
-   "pistas_recebidas": 300,
-   "com_documento": 60,
-   "promovidas": 0,
-   "recusa_sem_documento_primario": 212,
-   "recusa_documento_inacessivel": 22,
-   "recusa_texto_nao_extraivel": 6,
-   "recusa_ente_nao_confirmado": 6,
-   "recusa_citacao_incompleta": 25,
-   "recusa_executivo_pendente": 1,
-   "recusa_autoridade_nao_confirmada": 7,
-   "recusa_natureza_duvidosa": 19,
-   "recusa_resposta": 2
+  "rede_social": {
+   "sem_perfil": 4,
+   "entes_consultados": 20,
+   "perfis_confirmados": 37,
+   "lacunas": 4,
+   "pistas": 394
+  },
+  "diario_municipal": {
+   "consultados": 132,
+   "decretos_novos": 0,
+   "lacunas": 18,
+   "pistas": 0
+  },
+  "busca_web": {
+   "brutos_periodo_ou_seca": 7328,
+   "brutos_siglas_e_variantes": 7319,
+   "brutos_plancon": 7330,
+   "coberto_sem_mencao": 0,
+   "consultas": 750,
+   "com_resultado_bruto": 750,
+   "lacunas": 0,
+   "motor_sem_resposta": 0,
+   "nao_localizado_ate_o_momento": 749,
+   "pistas": 7
   },
   "transferencias_municipais": {
    "consultas": 20,
-   "com_resultado_bruto": 20,
-   "municipios": 111360
+   "municipios": 111360,
+   "com_resultado_bruto": 20
+  },
+  "descobrir_planos": {
+   "fila_acumulada": 41,
+   "alvos_consultados": 20,
+   "achados_novos": 0
+  },
+  "doe": {
+   "ufs_com_resultado": 29,
+   "ufs_consultadas": 29
+  },
+  "juiz": {
+   "com_documento": 37,
+   "promovidas": 0,
+   "recusa_ente_nao_confirmado": 4,
+   "recusa_sem_documento_primario": 93,
+   "pistas_recebidas": 150,
+   "recusa_documento_inacessivel": 15,
+   "recusa_resposta": 2,
+   "recusa_executivo_pendente": 1,
+   "recusa_citacao_incompleta": 15,
+   "recusa_natureza_duvidosa": 10,
+   "recusa_autoridade_nao_confirmada": 5,
+   "recusa_texto_nao_extraivel": 5
   }
  },
- "atualizado_em": "2026-10-01T21:35:54"
+ "atualizado_em": "2026-10-01T18:27:48",
+ "descobrir_planos": {
+  "fila_acumulada": 41,
+  "achados_novos": 0,
+  "alvos_consultados": 20
+ },
+ "data": "2026-10-01",
+ "doe": {
+  "ufs_com_resultado": 27,
+  "ufs_consultadas": 27
+ },
+ "juiz": {
+  "recusa_autoridade_nao_confirmada": 7,
+  "pistas_recebidas": 300,
+  "com_documento": 60,
+  "recusa_documento_inacessivel": 22,
+  "recusa_resposta": 2,
+  "recusa_executivo_pendente": 1,
+  "recusa_citacao_incompleta": 25,
+  "recusa_natureza_duvidosa": 19,
+  "promovidas": 0,
+  "recusa_sem_documento_primario": 212,
+  "recusa_ente_nao_confirmado": 6,
+  "recusa_texto_nao_extraivel": 6
+ }
 }

@@ -19,10 +19,10 @@ USO
   python coletar_doe.py --regiao NE            # lote por região (§13: NE, N, CO, SE, S)
   python coletar_doe.py --uf SC --desde 2026-06-29
 """
-import json, re, sys, time, urllib.parse
+import json, pathlib, re, sys, time, urllib.parse
 from datetime import date
 import funil
-from coletores_base import (buscar, preservar_evidencia, preservar_texto_integral, log_busca, registrar_lacuna,
+from coletores_base import (buscar, enviar, preservar_evidencia, preservar_texto_integral, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, marcar_fato_municipal, referencia_ibge,
                             abrir_lote_log, fechar_lote_log, abrir_lote_livro, fechar_lote_livro,
                             ler, gravar, rodar_autoteste, eh_suspensao_defeso, hoje_editorial)
@@ -71,6 +71,32 @@ HOSTS_APIFRONT = {
 # e é outro: varrer as edições por data pela rota (a) e ler o PDF de cada uma pela rota (c), o que
 # custa download de edição inteira em vez de busca por termo. Fica declarado como trabalho a fazer,
 # e não como fonte bloqueada — a distinção é a do §231.
+# =============================================================================================
+# DF — o DODF tem API de busca PRÓPRIA, e ela é a rota que o próprio JS do sítio chama
+# =============================================================================================
+# Medido em 01/10/2026: a página de busca (`/dodf/materia/busca`) não traz resultado no HTML — o
+# contador nasce em zero e é preenchido por `$.post("/dodf/materia/listar", ...)`, lido em
+# `/js/modules/dodf/controllers/MateriaController.js`. Os nomes dos campos e os valores aceitos
+# são os do formulário e da validação da própria rota: `tpBusca` só aceita `exata` ou `contexto`
+# (a primeira tentativa, com "contextual", foi recusada com `notInArray`), e as datas vão em ISO,
+# porque os campos são `type="date"`. Nada aqui foi suposto.
+DODF_LISTAR = "https://www.dodf.df.gov.br/dodf/materia/listar"
+# O endereço da matéria é o que o JS monta, letra por letra (`linkMateria`).
+DODF_MATERIA = ("https://www.dodf.df.gov.br/dodf/materia/visualizar"
+                "?co_data={co}&p={slug}&busca=exata")
+TETO_PAGINAS_DODF = 20
+
+# =============================================================================================
+# TO — a busca do DOE-TO entrega, no HTML, as EDIÇÕES que contêm o termo
+# =============================================================================================
+# Medido em 01/10/2026: `GET /busca?por=texto&texto=…&data-inicial=…&data-final=…` (datas em ISO,
+# campos `type="date"`) devolve a tabela "Resultados da busca" com número da edição, data e o link
+# de download do PDF. Ela não devolve o trecho — e é exatamente por isso que o adaptador desce ao
+# PDF **só das edições que a busca apontou**: é a diferença entre ler 2 edições e ler as 65 da
+# janela.
+BUSCA_TO = "https://diariooficial.to.gov.br/busca"
+TETO_EDICOES_TO = 12
+
 APIFRONT_SEM_BUSCA = {
     "AM": {"url": "https://diario.imprensaoficial.am.gov.br",
            "medido": "26/09/2026: /apifront e /portal/edicoes/download respondem; "
@@ -291,6 +317,147 @@ def homologacoes_no_texto(texto: str) -> list:
     return list(por_municipio.values())
 
 
+def parse_dodf(bruto: bytes) -> tuple:
+    """(total declarado, [matéria]) da resposta da rota de listagem do DODF. Função pura.
+
+    Levanta `FormatoDaBuscaMudou` quando a rota declara matérias e a lista vem vazia: é mudança de
+    contrato, não ausência de resultado, e confundir os dois é o §210."""
+    dados = json.loads(bruto.decode("utf-8", "replace") if isinstance(bruto, bytes) else bruto)
+    total = int(dados.get("totalMaterias") or 0)
+    lista = dados.get("listaMaterias") or []
+    if total > 0 and not lista:
+        raise FormatoDaBuscaMudou(f"a fonte declara {total} matéria(s) e a lista veio vazia")
+    return total, lista
+
+
+def item_do_dodf(m: dict, uf: str) -> dict:
+    """Uma matéria do DODF no formato comum do coletor. Função pura.
+
+    O resumo vem com o termo marcado em `<strong>`; a marcação sai, e o que fica é o texto que a
+    fonte serviu. `pagina` não existe nesta fonte — o DODF indexa por MATÉRIA, não por página do
+    PDF —, e inventar um número seria pior do que não ter: quem confere abre a matéria."""
+    resumo = re.sub(r"<[^>]+>", "", m.get("tx_resumo") or "")
+    titulo = (m.get("ds_titulo") or "").strip()
+    orgao = (m.get("ds_nome") or "").strip()
+    secao = (m.get("ds_secao") or "").strip()
+    cabeca = " · ".join(x for x in (titulo, orgao, secao) if x)
+    return {"data": (m.get("dt_previsao_publicacao") or "")[:10],
+            "pagina": None, "paginas": None,
+            "url": DODF_MATERIA.format(co=m.get("co_materia"), slug=m.get("slug") or ""),
+            "trechos": [f"{cabeca}: {resumo}".strip(": ")], "territorio": uf}
+
+
+def itens_dodf(uf: str, desde: str, ate: str, enviar_fn=None, termos=None,
+               pausa: float = RITMO_APIFRONT_S, dormir=None) -> tuple:
+    """(itens, totais por termo) na busca própria do DODF. Pagina até esgotar o que ela declara.
+
+    `termos` existe para o funil de SAÚDE, que pergunta ao mesmo diário com outras palavras: a rota
+    é a mesma, os termos não."""
+    _enviar = enviar_fn or enviar
+    _dormir = dormir or time.sleep
+    itens, totais, vistos = [], {}, set()
+    primeira = True
+    for termo in (termos or TERMOS_APIFRONT):
+        pagina, total = 1, None
+        while pagina <= TETO_PAGINAS_DODF:
+            # O ritmo de 2 s por domínio é de quem chama (o `_respeitar_ritmo` só honra o
+            # `Crawl-delay` que o robots declara, e este host não declara nenhum).
+            if not primeira:
+                _dormir(pausa)
+            primeira = False
+            bruto = _enviar(DODF_LISTAR, {"termo": termo, "tpBusca": "exata", "pagina": pagina,
+                                          "dtInicial": desde, "dtFinal": ate,
+                                          "tpPlatform": "desktop"},
+                            timeout=120, origem="coletar_doe")
+            t, lista = parse_dodf(bruto)
+            if total is None:
+                total = t
+                totais[termo] = t
+            if not lista:
+                break
+            for m in lista:
+                if m.get("co_materia") in vistos:
+                    continue
+                vistos.add(m.get("co_materia"))
+                itens.append(item_do_dodf(m, uf))
+            if len(vistos) >= (total or 0):
+                break
+            pagina += 1
+    return itens, totais
+
+
+def parse_busca_to(html: str) -> list:
+    """[{edicao, data, url}] da tabela de resultado do DOE-TO. Função pura.
+
+    Lê só a tabela que vem depois de "Resultados da busca": o resto da página tem as edições do
+    dia, que não casaram com o termo nenhum."""
+    m = re.search(r"Resultados da busca.*?</table>", html or "", re.S | re.I)
+    if not m:
+        return []
+    saida = []
+    for linha in re.findall(r"<tr\b.*?</tr>", m.group(0), re.S | re.I):
+        num = re.search(r"N[ºo°]\s*(\d+)", linha)
+        data = re.search(r"(\d{2})/(\d{2})/(\d{4})", linha)
+        href = re.search(r'href=["\']([^"\']+)["\']', linha)
+        if not (num and data and href):
+            continue
+        saida.append({"edicao": num.group(1),
+                      "data": f"{data.group(3)}-{data.group(2)}-{data.group(1)}",
+                      "url": href.group(1)})
+    return saida
+
+
+def paginas_com_termo(pdf: bytes, termo: str, extrair_fn=None) -> list:
+    """[(página, texto)] do PDF em que o termo aparece. Função pura dado o extrator.
+
+    O PDF da edição tem mais de cem páginas; guardar as que não casaram seria guardar a edição
+    inteira para provar duas linhas."""
+    if extrair_fn is None:
+        from preservar_evidencias import extrair_texto_por_pagina as extrair_fn
+    saida = []
+    for i, texto in enumerate(extrair_fn(pdf) or [], start=1):
+        if termo.lower() in (texto or "").lower():
+            saida.append((i, texto))
+    return saida
+
+
+def itens_busca_to(uf: str, desde: str, ate: str, buscar_fn=None, termos=None,
+                   pausa: float = RITMO_APIFRONT_S, dormir=None) -> tuple:
+    """(itens, totais por termo) na busca do DOE-TO, descendo ao PDF só das edições apontadas."""
+    _buscar = buscar_fn or buscar
+    _dormir = dormir or time.sleep
+    itens, totais = [], {}
+    primeira = True
+    for termo in (termos or TERMOS_APIFRONT):
+        if not primeira:
+            _dormir(pausa)
+        primeira = False
+        url = BUSCA_TO + "?" + urllib.parse.urlencode(
+            {"por": "texto", "texto": termo, "data-inicial": desde, "data-final": ate})
+        bruto = _buscar(url, timeout=120, origem="coletar_doe")
+        html = bruto.decode("utf-8", "replace") if isinstance(bruto, bytes) else bruto
+        edicoes = parse_busca_to(html)
+        totais[termo] = len(edicoes)
+        for e in edicoes[:TETO_EDICOES_TO]:
+            _dormir(pausa)
+            try:
+                pdf = _buscar(e["url"], timeout=240, origem="coletar_doe")
+            except Exception:  # noqa: BLE001 — edição que não baixa é lacuna de uma edição, não da UF
+                continue
+            achadas = paginas_com_termo(pdf if isinstance(pdf, bytes) else pdf.encode("utf-8"), termo)
+            for pag, texto in achadas:
+                itens.append({"data": e["data"], "pagina": pag, "paginas": None, "url": e["url"],
+                              "trechos": [texto[:20000]], "territorio": uf})
+            if not achadas:
+                # A busca aponta a edição e o PDF não confirma o termo: isso é divergência da
+                # fonte, e entra como o que é — edição apontada, trecho não localizado nela.
+                itens.append({"data": e["data"], "pagina": None, "paginas": None, "url": e["url"],
+                              "trechos": [f"edição nº {e['edicao']} apontada pela busca para "
+                                          f"\"{termo}\"; o termo não foi localizado no PDF"],
+                              "territorio": uf})
+    return itens, totais
+
+
 def itens_apifront(uf: str, base: str, desde: str, ate: str, buscar_fn=None, pausa: float = RITMO_APIFRONT_S) -> tuple:
     """(itens no formato comum do coletor, total declarado por termo). Não grava nada."""
     itens, totais = [], {}
@@ -326,7 +493,31 @@ def coletar_uf(uf: str, desde: str, cfg: dict) -> str:
             registrar_lacuna(f"DOE/{uf}", "adaptador não confirmado (a_verificar)", canal="repositorio_estadual",
                              camada=1, uf=uf)
         f["status"] = "a_verificar"; return "lacuna"
-    if f["adaptador"] == "apifront":
+    if f["adaptador"] in ("dodf", "busca_to"):
+        # Mesma forma do apifront: a evidência é o conjunto de trechos como a BUSCA OFICIAL os
+        # serviu, com o endereço citável de cada um.
+        try:
+            if f["adaptador"] == "dodf":
+                itens, totais = itens_dodf(uf, desde, hoje)
+            else:
+                itens, totais = itens_busca_to(uf, desde, hoje)
+        except FormatoDaBuscaMudou as e:
+            registrar_lacuna(f"DOE/{uf}", f"formato da busca mudou: {e}", canal="repositorio_estadual",
+                             camada=1, uf=uf, strings=[f["url"]])
+            f["status"] = "erro: formato"; return "erro"
+        except Exception as e:  # noqa: BLE001
+            registrar_lacuna(f"DOE/{uf}", f"{type(e).__name__}: {e}", canal="repositorio_estadual",
+                             camada=1, uf=uf, strings=[f["url"]])
+            f["status"] = f"erro: {type(e).__name__}"; return "erro"
+        url = f["url"]
+        corpo = json.dumps({"fonte": url, "janela": [desde, hoje], "totais_por_termo": totais,
+                            "paginas": itens}, ensure_ascii=False, indent=1).encode("utf-8")
+        h = preservar_evidencia(corpo, url, "json", "coletar_doe")
+        if any(eh_suspensao_defeso(t) for it in itens for t in it["trechos"]):
+            registrar_lacuna(f"DOE/{uf}", "aviso de período eleitoral na fonte", canal="repositorio_estadual",
+                             camada=1, uf=uf, strings=[url], suspensa=True, hash_evidencia=h)
+            f["status"] = "fonte suspensa (defeso)"; return "suspensa"
+    elif f["adaptador"] == "apifront":
         # §231: a plataforma comum a seis UFs. A janela vai de `desde` até hoje, e a busca entrega
         # o TEXTO INTEGRAL da página que casou — por isso não há teto de 20 kB aqui e não se baixa
         # um PDF de dez megabytes por acerto para depois procurar dentro dele.
@@ -419,6 +610,27 @@ FIXTURE_QD = {"total_gazettes": 1, "gazettes": [{"territory_id": "42", "date": "
               "excerpts": ["DECRETO Nº 5.000 — Homologa o Decreto Municipal nº 123/2026 que declara situação de emergência no Município de Blumenau - SC."]}]}
 
 
+# Recorte REAL da rota de listagem do DODF, 01/10/2026 (um dos 7 acertos de "situação de
+# emergência" na janela 29/06→01/10; resumo encurtado, estrutura como veio).
+FIXTURE_DODF = json.dumps({
+    "type": "success", "totalMaterias": 7, "totalPaginas": 1, "pagina": 1,
+    "listaMaterias": [{
+        "co_materia": 627377, "ds_titulo": "EXTRATO CONTRATUAL", "ds_nome": "Secretaria de Estado de Saúde",
+        "ds_materia_tipo": "Extrato", "ds_secao": "Seção III", "nu_jornal": 169,
+        "dt_previsao_publicacao": "2026-09-11T05:30:00Z", "slug": "extrato-contratual",
+        "tx_resumo": "...A vigência contratual está vinculada à permanência da <strong>situação</strong> "
+                     "<strong>de</strong> <strong>emergência</strong>, devendo o contrato ser rescindido..."}],
+}, ensure_ascii=False).encode("utf-8")
+
+# Recorte REAL da tabela de resultado do DOE-TO, 01/10/2026.
+FIXTURE_BUSCA_TO = """<h5 class="center-align">Resultados da busca</h5> <table class="responsive-table">
+ <thead><tr><th>Edição</th><th>Publicado em</th><th>Páginas</th></tr></thead><tbody>
+ <tr><td>Nº 7154</td><td>30/09/2026</td><td>71 pág.</td>
+     <td><a href="https://doe.to.gov.br/diario/5793/download">Baixar</a></td></tr>
+ <tr><td>Nº 7153</td><td>29/09/2026</td><td>112 pág.</td>
+     <td><a href="https://doe.to.gov.br/diario/5792/download">Baixar</a></td></tr>
+ </tbody></table>"""
+
 # Recorte REAL da resposta da busca do DOE-PR, 26/09/2026 (texto encurtado; a estrutura é a que veio).
 FIXTURE_APIFRONT = json.dumps({
     "took": 63, "timed_out": False, "_shards": {"total": 1, "successful": 1},
@@ -439,6 +651,34 @@ FIXTURE_APIFRONT = json.dumps({
 FIXTURE_APIFRONT_VAZIO = json.dumps({"hits": {"total": 0, "hits": []}}, ensure_ascii=False).encode("utf-8")
 # O caso que enganou a primeira sonda: total declarado, página vazia.
 FIXTURE_APIFRONT_TOTAL_SEM_LISTA = json.dumps({"hits": {"total": 7, "hits": []}}, ensure_ascii=False).encode("utf-8")
+
+
+def fonte_do_coletor() -> str:
+    """O código OPERACIONAL deste arquivo, como texto — tudo o que vem antes do autoteste.
+
+    Mesma trava estrutural do coletor de saúde, e pela mesma razão: o portão tem de perceber se
+    uma edição futura ganhar escrita em arquivo do banco. O corte no `def autoteste` evita que o
+    teste se encontre a si mesmo nos nomes que procura."""
+    texto = pathlib.Path(__file__).read_text(encoding="utf-8")
+    corte = texto.find("def autoteste")
+    return texto[:corte] if corte > 0 else texto
+
+
+# A lista canônica do projeto, num só lugar: trava que cobre três dos cinco arquivos não é trava.
+BANCO_PROIBIDO = ("estados.json", "saude_uf.json", "municipios.json", "indice.json",
+                  "monitor_saude.json")
+
+
+def _levanta(fn, excecao) -> bool:
+    """True quando `fn` levanta `excecao`. Existe para o caso negativo não virar try/except solto
+    dentro de um lambda, onde ele não cabe."""
+    try:
+        fn()
+    except excecao:
+        return True
+    except Exception:  # noqa: BLE001
+        return False
+    return False
 
 
 def autoteste() -> int:
@@ -566,7 +806,53 @@ def autoteste() -> int:
                             "§231 negativo: estrutura ausente levanta em toda forma": t9,
                             "§231 as seis UFs nascem com adaptador e host": t10,
                             "§231 o termo não volta a ter o artigo a mais": t11,
-                            "§231 UF sem rota de busca não se registra como apifront": t12})
+                            # DF — a API própria do DODF, lida da rota que o JS do sítio chama.
+        "DODF: total e lista saem da resposta real":
+            lambda: parse_dodf(FIXTURE_DODF)[0] == 7 and len(parse_dodf(FIXTURE_DODF)[1]) == 1,
+        "DODF: total declarado com lista vazia LEVANTA (§210)":
+            lambda: _levanta(lambda: parse_dodf(
+                json.dumps({"totalMaterias": 5, "listaMaterias": []}).encode("utf-8")),
+                FormatoDaBuscaMudou),
+        "DODF: zero declarado com lista vazia é zero, e não erro":
+            lambda: parse_dodf(json.dumps({"totalMaterias": 0, "listaMaterias": []}).encode("utf-8")) == (0, []),
+        "DODF: a marcação do termo sai do trecho, e o texto fica":
+            lambda: ("<strong>" not in item_do_dodf(parse_dodf(FIXTURE_DODF)[1][0], "DF")["trechos"][0]
+                     and "situação de emergência" in item_do_dodf(
+                         parse_dodf(FIXTURE_DODF)[1][0], "DF")["trechos"][0]),
+        "DODF: o item traz data, endereço citável da matéria e o órgão":
+            lambda: (item_do_dodf(parse_dodf(FIXTURE_DODF)[1][0], "DF")["data"] == "2026-09-11"
+                     and "co_data=627377" in item_do_dodf(parse_dodf(FIXTURE_DODF)[1][0], "DF")["url"]
+                     and "Secretaria de Estado de Saúde" in item_do_dodf(
+                         parse_dodf(FIXTURE_DODF)[1][0], "DF")["trechos"][0]),
+        # Página inventada é pior do que página ausente: o DODF indexa por matéria.
+        "DODF: não inventa número de página":
+            lambda: item_do_dodf(parse_dodf(FIXTURE_DODF)[1][0], "DF")["pagina"] is None,
+        # TO — a busca aponta a edição; o trecho vem do PDF dela.
+        "DOE-TO: a tabela entrega edição, data em ISO e endereço do PDF":
+            lambda: parse_busca_to(FIXTURE_BUSCA_TO) == [
+                {"edicao": "7154", "data": "2026-09-30",
+                 "url": "https://doe.to.gov.br/diario/5793/download"},
+                {"edicao": "7153", "data": "2026-09-29",
+                 "url": "https://doe.to.gov.br/diario/5792/download"}],
+        "DOE-TO: cabeçalho da tabela não vira resultado":
+            lambda: all(r["edicao"] for r in parse_busca_to(FIXTURE_BUSCA_TO)),
+        "DOE-TO: página sem a tabela não produz resultado, e não quebra":
+            lambda: parse_busca_to("<html>nada aqui</html>") == [] and parse_busca_to("") == [],
+        "DOE-TO: só as páginas do PDF em que o termo aparece entram":
+            lambda: paginas_com_termo(b"x", "emergência",
+                                      extrair_fn=lambda _: ["nada", "SITUAÇÃO DE EMERGÊNCIA aqui",
+                                                            "outra coisa"]) == [
+                (2, "SITUAÇÃO DE EMERGÊNCIA aqui")],
+        "DOE-TO: PDF sem o termo não produz página":
+            lambda: paginas_com_termo(b"x", "emergência", extrair_fn=lambda _: ["a", "b"]) == [],
+        # TRAVA ESTRUTURAL: este coletor escreve em atos_resposta, pistas_doe e fontes_doe, e em
+        # nada mais. O teste confere o que ele PODE fazer, não só o que ele fez nesta versão.
+        "o fonte não grava em nenhum arquivo do banco":
+            lambda: not any(f'gravar("{nome}' in fonte_do_coletor() for nome in BANCO_PROIBIDO),
+        "a lista proibida é a canônica do projeto, com os cinco arquivos":
+            lambda: set(BANCO_PROIBIDO) == {"estados.json", "saude_uf.json", "municipios.json",
+                                            "indice.json", "monitor_saude.json"},
+        "§231 UF sem rota de busca não se registra como apifront": t12})
 
 
 if __name__ == "__main__":

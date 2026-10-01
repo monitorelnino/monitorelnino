@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-01 · #503 · Adaptadores diretos de diário estadual
+
+Dois novos, medidos contra produção: `dodf` (API própria do DODF, 7 matérias na janela do ciclo) e
+`busca_to` (a busca aponta a edição; o trecho vem do PDF só dela). As outras vinte UFs deixam de ser
+`a_verificar` em branco e declaram host e motivo — não responde, sem busca por termo, busca do
+portal e não do diário, exige formulário ou JavaScript. O POST novo tem as travas do GET. Em
+`METODOLOGIA.md` §77.
+
 ## 2026-10-01 · #502 · Bateria de saúde pelos quatro canais
 
 Os dois canais que faltavam ao MARÉ Saúde: `--doe` lê o diário oficial do estado com os termos da
