@@ -2484,6 +2484,12 @@ municípios. É a mesma categoria de `log_buscas.json` e `fontes_consultadas.jso
 mecanicamente; se a editoria quiser, ele entra também na tabela de arquivos que nunca entram em
 contexto, no `CLAUDE.md` — essa linha é dela, não minha.
 
+**E o `select` da consulta nascia fora da escala.** O campo de estado herdava o tamanho padrão do
+navegador — **13,3333 px**, medido nas três larguras —, e a escala tipográfica do projeto é fixa
+(12 · 14 · 16 · 18 · 22 · 28 · 36 · 48). Eu havia estilizado o `input` e não o `select`; o portão de
+consistência visual reprovou nas três larguras, e estava certo: dois campos lado a lado com tamanhos
+diferentes são duas famílias. Os dois passam a dividir a mesma regra.
+
 **Idempotência e cadência.** Reler um mês **substitui** aquele mês em vez de acumular, o que permite
 recoletar um arquivo que o Portal republicou. A cadência é **mensal**, declarada em
 `docs/CADENCIAS.md`: o Portal publica por mês, e semanal seria baixar nove ZIPs para reencontrar o
