@@ -137,7 +137,10 @@ function __init(){
     MonitorMapas.legenda('legRede', [{cor: MonitorMapas.PALETA.chaves.regra, rotulo: 'contínuo: regra'}, {cor: MonitorMapas.PALETA.chaves.decreto, rotulo: 'tracejado: decreto (resposta)'}, {cor: MonitorMapas.PALETA.chaves.discricionaria, rotulo: 'pontilhado: discricionária'}, {cor: MonitorMapas.PALETA.chaves.direta, rotulo: 'duplo: execução direta'}]);
     fonteFigura('boxRede', {fontes: ['MARÉ', 'base legal citada por rota'], data: ROTAS.corte});
   })();
-  document.getElementById('rotasCards').innerHTML = ROTAS.rotas.map(r => '<div class="cartao" style="border-left:4px solid '+r.cor+'"><h3 class="figura-titulo">'+r.n+' · '+esc(r.nome)+' <span class="sub">— chave: <em>'+esc(r.chave)+'</em>'+(r.ex_ante ? '' : ' · resposta')+'</span></h3>'
+  /* 01/10/2026: os cartões das oito rotas saíram da página (bloco B). Guarda explícita para o
+     bloco inteiro não escrever no vazio. */
+  const _alvoRotas = document.getElementById('rotasCards');
+  if (_alvoRotas) _alvoRotas.innerHTML = ROTAS.rotas.map(r => '<div class="cartao" style="border-left:4px solid '+r.cor+'"><h3 class="figura-titulo">'+r.n+' · '+esc(r.nome)+' <span class="sub">— chave: <em>'+esc(r.chave)+'</em>'+(r.ex_ante ? '' : ' · resposta')+'</span></h3>'
     + '</div>').join('');
   // 13/09/2026 (proposta de enxugamento, Manus AI): agrupamento legível das 8 rotas em 4 famílias,
   // acima do diagrama — não substitui as distinções jurídicas (nome e chave seguem por rota, nunca
@@ -215,7 +218,9 @@ function __init(){
     {nome: 'CISC · Centros Integrados de Saúde e Clima', base: 'Ministério da Saúde', regra: '8 cidades-piloto em 5 regiões', lista: 'relação nominal das cidades não localizada até o corte'},
     {nome: 'Monitoramento do Cemaden', base: 'MCTI/Cemaden', regra: '1.037 municípios monitorados', lista: 'lista: em coleta'},
   ];
-  document.getElementById('programasLista').innerHTML = PROG.map(p => '<li><strong>' + esc(p.nome) + ':</strong> ' + esc(p.base) + '. ' + esc(p.regra) + ' <span class="u-muted">· ' + esc(p.lista) + '</span></li>').join('');
+  // 01/10/2026: a lista de programas de exemplo saiu da página (bloco B).
+  const _alvoProg = document.getElementById('programasLista');
+  if (_alvoProg) _alvoProg.innerHTML = PROG.map(p => '<li><strong>' + esc(p.nome) + ':</strong> ' + esc(p.base) + '. ' + esc(p.regra) + ' <span class="u-muted">· ' + esc(p.lista) + '</span></li>').join('');
   fonteFigura('boxSemDecretar', {fontes: 'as bases legais citadas em cada item', data: ROTAS.corte});
   // 13/09/2026 (proposta de enxugamento, Manus AI): 'Compromissos federais' (tabela + gráfico por
   // área) migrou para pesquisadores.html — apêndice metodológico, não narrativa principal de rotas.
@@ -346,10 +351,14 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
 
 // 15/09/2026: ficha "Como ler as rotas" em popup (mesmo <dialog> da inicial); chaves, termos, cartões das rotas e a rota do fogo
 (function(){
+  // 01/10/2026: as fichas "Como ler" saíram da página (bloco B), e com elas o diálogo.
   const link = document.getElementById('linkComoLerRotas'), fonte = document.getElementById('comolerRotas'), dlg = document.getElementById('detailFin');
   if (!link || !fonte || !dlg) return;
+  if (!link || !fonte || !dlg) return;
   const fechar = () => { if (typeof dlg.close === 'function') dlg.close(); else dlg.open = false; };
-  link.addEventListener('click', e => { e.preventDefault(); document.getElementById('detailFinConteudo').innerHTML = fonte.innerHTML; if (!dlg.open) { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.open = true; } });
+  const _destinoRotas = document.getElementById('detailFinConteudo');
+  if (!_destinoRotas) return;
+  link.addEventListener('click', e => { e.preventDefault(); _destinoRotas.innerHTML = fonte.innerHTML; if (!dlg.open) { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.open = true; } });
   const bt = document.getElementById('detailFinFechar'); if (bt) bt.addEventListener('click', fechar); dlg.addEventListener('click', evt => { if (evt.target === dlg) fechar(); });
 })();
 
@@ -429,7 +438,8 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     if (h) h.textContent = 'Saúde: ' + n('saude').filter(r => r.destino === 'mun').length + ' rotas ao município · Fogo: ' + n('fogo').length + ', uma por risco e plano · Seca: ' + n('seca').length + ', nenhuma por plano ou risco';
     fonteFigura('boxPreventivoSetor', {fontes: ['MARÉ', 'base legal citada por rota'], data: P.corte});
     const link = document.getElementById('linkComoLerPreventivo'), fonte = document.getElementById('comolerPreventivo'), dlg = document.getElementById('detailFin');
-    if (link && fonte && dlg) link.addEventListener('click', e => { e.preventDefault(); document.getElementById('detailFinConteudo').innerHTML = fonte.innerHTML; if (!dlg.open) { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.open = true; } });
+    const destino = document.getElementById('detailFinConteudo');
+    if (link && fonte && dlg && destino) link.addEventListener('click', e => { e.preventDefault(); destino.innerHTML = fonte.innerHTML; if (!dlg.open) { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.open = true; } });
   }).catch(() => { MonitorMapas.legenda('legPreventivoSetor', [{cor: MonitorMapas.NEUTRA, rotulo: 'dado não carregado'}]); fonteFigura('boxPreventivoSetor', {fontes: 'MARÉ', data: null}); });
 })();
 
@@ -663,4 +673,50 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     MonitorMapas.legenda('legDespesa182', [{cor: MonitorMapas.cor('sem-dado'), rotulo: 'sem coleta até o corte'}]);
     fonteFigura('boxDespesa182', {fontes: ['SICONFI (Tesouro Nacional)', 'IBGE — Censo 2022'], data: null});
   });
+})();
+
+/* ===== Os três números do topo (bloco B do handover, 01/10/2026) =========================
+ *
+ * Cada um sai do dado, e cada um declara a sua fonte dentro do cartão. O que não foi coletado
+ * aparece como lacuna declarada — não como zero, e não como travessão sem explicação.
+ *
+ * "Anunciado pela União" é o total do plano federal, e não a soma dos compromissos da lista: as
+ * duas medidas provisórias estão DENTRO do plano (METODOLOGIA §73), e somá-las ao plano contaria o
+ * mesmo dinheiro duas vezes. O Prepara RS e o Fecap ficam fora deste número porque são estaduais —
+ * o rótulo diz "pela União".
+ */
+(async function numerosDoTopo(){
+  const põe = (id, txt) => { const e = document.getElementById(id); if (e) e.textContent = txt; };
+  const reais = v => 'R$ ' + (v / 1e9 >= 1
+    ? (v / 1e9).toLocaleString('pt-BR', {maximumFractionDigits: 3}) + ' bi'
+    : (v / 1e6).toLocaleString('pt-BR', {maximumFractionDigits: 1}) + ' mi');
+  try {
+    const C = await fetch('data/financiamento/compromissos_federais.json').then(r => r.ok ? r.json() : null);
+    if (C && C.itens) {
+      const federais = C.itens.filter(i => /^Federal/.test(i.esfera || ''));
+      const plano = federais.find(i => /execução direta/i.test(i.esfera || ''));
+      const anunciado = plano && plano.valor_total;
+      põe('topoAnunciado', anunciado ? reais(anunciado) : '—');
+      põe('topoAnunciadoFonte', anunciado
+        ? 'Plano federal do ciclo, no ato que o anunciou · corte de ' + (C.corte || '—')
+        : 'sem valor anunciado verificado até o corte');
+      /* `pago` vem da execução no Portal da Transparência. Enquanto a coleta não existir, o cartão
+         DIZ que não existe: um "R$ 0" aqui afirmaria que nada foi pago, que é outra coisa. */
+      const pagos = federais.map(i => i.pago).filter(v => typeof v === 'number');
+      const soma = pagos.reduce((a, b) => a + b, 0);
+      põe('topoPago', pagos.length ? reais(soma) : 'sem coleta');
+      põe('topoPagoFonte', pagos.length
+        ? 'Portal da Transparência · execução até o corte de ' + (C.corte || '—')
+        : 'execução no Portal da Transparência ainda não coletada');
+    }
+  } catch (e) { /* lacuna: o cartão permanece em travessão, com a fonte dizendo o que falta */ }
+  try {
+    const D = await fetch('data/financiamento/municipios/despesa_182.json').then(r => r.ok ? r.json() : null);
+    const r = D && D.resumo;
+    if (r && typeof r.mediana_rs_hab === 'number') {
+      põe('topoMediana', 'R$ ' + r.mediana_rs_hab.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2}));
+      põe('topoMedianaFonte', 'SICONFI e Censo 2022 · mediana de ' + (r.com_rs_hab || 0).toLocaleString('pt-BR')
+        + ' municípios com lançamento na rubrica, exercício ' + (D.exercicio || '—'));
+    }
+  } catch (e) { /* idem */ }
 })();

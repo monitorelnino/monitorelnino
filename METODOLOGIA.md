@@ -2298,3 +2298,55 @@ se chama de "transferido" ou "chegou" o que é só anunciado ou empenhado. E **"
 unidade gestora não é "chegou ao estado"**: a unidade gestora pode ser nacional, e a página diz isso
 onde mostra o mapa.
 
+## 74. Financiamento: a página em seis blocos, e três números que o banco tinha errado (01/10/2026)
+
+Bloco B do handover, depois do bloco A (§73). Layout e textos aprovados pela editoria.
+
+**A ordem passa a ser seis blocos:** o topo com três números · *O dinheiro do El Niño* · *O que
+chegou a cada estado e município* · *O que o município gasta do próprio bolso* · *Como o dinheiro
+chega a uma cidade* · *Dois casos*.
+
+**Sai da página:** a figura das oito rotas — o código e o dado ficam no repositório, não foram
+apagados · as duas fichas "Como ler" e o diálogo que as abria · a seção "antes, agora e depois" do
+período eleitoral · os cinco cartões da rota do fogo, resumidos no caso · a seção "Fontes e
+consultas", que vai para os dados abertos · e as seções 1 e 10, que diziam a mesma coisa duas vezes
+e se fundem na segunda. Com as seções saiu o código que as alimentava, com guarda explícita onde o
+bloco inteiro deixou de ter destino: código que escreve em `id` inexistente é o que o portão de
+estrutura reprova, e com razão — ele não distingue "removido de propósito" de "quebrado".
+
+**Nove figuras, um componente, uma proporção.** Todas passam ao cartão de mapa padrão, em grade de
+três. Isso exigiu uma regra nova, e ela é geral: dentro do cartão de mapa, **qualquer** mídia toma a
+proporção do mapa (480×460) — gráfico, diagrama de rede e série temporal inclusive. Sem ela, os nove
+cartões mediam de **65 px a 821 px** de altura e a grade de três virava uma escada, medido no
+navegador.
+
+**Os três números do topo saem do dado, e o que não foi coletado diz que não foi.** "Anunciado pela
+União" é o total do plano federal, **não** a soma dos compromissos da lista: as duas medidas
+provisórias estão dentro do plano (§73), e somá-las contaria o mesmo dinheiro duas vezes; o Prepara
+RS e o Fecap ficam fora porque são estaduais, e o rótulo diz "pela União". "Pago" aparece como **sem
+coleta** enquanto a execução no Portal da Transparência não for coletada — um "R$ 0" ali afirmaria
+que nada foi pago, que é outra coisa. A mediana do gasto próprio é de **R$ 8,50 por habitante**,
+sobre os 1.490 municípios com lançamento na rubrica em 2025.
+
+**Três números que o BANCO tinha errado, e que a auditoria pegou.**
+
+1. **MP 1.384: R$ 925.000.000 arredondado.** O ato diz **R$ 924.985.960,00**. O gráfico da página
+   desenhava o arredondamento.
+2. **MP 1.384: data de publicação igual à do ato.** O registro trazia 12/08/2026 nas duas, e a
+   publicação foi em **13/08/2026** — conferido na varredura das edições do DOU. É o mesmo engano da
+   página, do lado do banco.
+3. **Faltava a data do ATO.** O registro só tinha `publicada_em`, e foi daí que a página datou uma MP
+   pelo ato e a outra pela publicação. Nasce `assinada_em`, e as duas datas passam a existir
+   separadas, com `conferido_em` e a fonte do ato.
+
+**A consulta por cidade não foi publicada, e o motivo está na página.** O cartão "Quanto chegou à sua
+cidade" que o handover pede depende da coleta **por município** no Portal da Transparência, que não
+existe: `transferencias.json` tem programas e a lista nominal do Prepara RS, não transferência por
+município. Publicar uma busca que não encontra nada seria pior do que não ter busca, e inventar o
+número é proibido. A página diz, no lugar, que a série semanal acima é por rota, para o país.
+
+**Sincronia com "Para gestores" (bloco C).** As âncoras definitivas são `#antes`, `#depois` e
+`#setores`, e os três ponteiros de `prefeituras.html` passam a elas — as que eu havia criado em
+`#antes-do-desastre` e `#depois-do-desastre` saíram, porque duas convenções para a mesma âncora é
+como um dos dois lados envelhece. O portão `verificar_ancoras_internas.py` (§71) confere.
+
