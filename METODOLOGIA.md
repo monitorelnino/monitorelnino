@@ -1847,3 +1847,45 @@ o formato ABNT de uma referência, não ênfase nem pontuação de frase — e a
 para o estilo, já que reescrever o travessão produziria uma citação errada; e a frase "os decretos de
 emergência (…) **nunca** entram nos índices", que é garantia de método e não ênfase retórica — ela
 existe para fechar a porta a decreto virar preparação.
+
+## 64. Imprensa descobre, nunca registra (01/10/2026)
+
+A regra sempre existiu em prosa: uma reportagem pode levar o Monitor até o ato, e não pode ser o
+ato. O que não existia era verificação, e por isso ela falhou em silêncio.
+
+A conferência pedida pela editoria em 01/10/2026 — item 0 do handover da página de Defesa civil,
+motivada pela lista de fontes verificadas mostrar veículos de notícia com "1 registro" — varreu
+`data/municipios.json` e `data/estados.json` em busca de registro pontuável com fonte de imprensa.
+Encontrou exatamente um: **Curitiba (PR)**, categoria `plano`, documento declarado como "Plano
+Estratégico de Enfrentamento ao El Niño 2026/2027" de 16/06/2026, URL em `agoraparana.com.br`,
+fonte declarada como release da Secom "via imprensa regional". Os outros três domínios de notícia
+da lista — São Bernardo do Campo, Jacareí e Mauá — são pistas em `nao_verificado`, crédito zero,
+e portanto não movem ponto; `prefeitura.poa.br` é domínio institucional da Prefeitura de Porto
+Alegre, não imprensa.
+
+A busca pelo documento primário não confirmou o plano noticiado. O sítio da prefeitura respondeu
+`403` à busca de notícias — recusa de acesso real, respeitada (§185). No Querido Diário, território
+4106902, desde 01/04/2026: `"El Niño"` devolveu **uma** edição, a de 17/07/2026, que traz o
+**Decreto nº 1.141 — "Institui o Comitê Gestor Especial de Enfrentamento aos Impactos do Fenômeno
+El Niño no Município de Curitiba"**; `"Plano Estratégico de Enfrentamento"` e `"enfrentamento ao
+El Niño"` devolveram zero.
+
+Há, portanto, ato oficial do ciclo em Curitiba — e ele é **estrutura de coordenação**, não plano.
+O registro passa a apontar para o decreto, com categoria `estrutura`, data 17/07/2026, fonte e URL
+do Diário Oficial Eletrônico do Município nº 131 e evidência preservada. Não é punição ao
+município: Curitiba recebe o que a escada municipal (§C28) dá a uma estrutura. Era o `plano` que
+não tinha prova. O plano noticiado fica como **lacuna declarada**: não localizamos até o corte —
+nunca "não existe".
+
+Efeito medido: **PR 67,4 → 64,6** (cobertura populacional 37,3 → 28,8); **nacional 45,3 → 45,2**;
+nenhuma UF muda de faixa. Por ser correção de dado dentro do defeso, foi publicada como errata
+encadeada **C29** em `data/congelamento_defeso.json`, com `hash_anterior` igual a `hash_novo`:
+nenhuma constante nem a fórmula do motor foi tocada, e a entrada existe pelo C6, que manda declarar
+em pontos por UF toda correção de dado no período.
+
+Para que a regra deixe de depender de quem está olhando, `scripts/verificar_imprensa_nao_registra.py`
+passa a reprovar registro de categoria que credita cujo domínio de URL não seja oficial — `*.gov.br`,
+`*.leg.br`, `*.jus.br`, agregador de diário oficial, Querido Diário ou um dos poucos domínios
+institucionais nomeados à mão no próprio portão. URL ausente não reprova: é outro defeito, de outra
+regra, e juntar os dois faria o portão reprovar por motivo que não é o seu.
+

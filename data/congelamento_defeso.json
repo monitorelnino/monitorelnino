@@ -519,6 +519,64 @@
    },
    "hash_anterior": "97dbcb2da995fa218502f70656ea52d1e3890c194e8c6e13bcdf26b25e83b55f",
    "hash_novo": "97d5b2ebbbac1ec342aebb568c666d59474a3b5a48b8daf221620817cb441380"
+  },
+  {
+   "codigo": "C29",
+   "data": "2026-10-01",
+   "classe": "correção de DADO que violava regra de prova (C6/C10) — nenhuma regra, peso ou constante mudou",
+   "o_que_mudou": "Um registro pontuável do MARÉ Legal estava apoiado só em notícia: Curitiba (PR), categoria `plano`, documento \"Plano Estratégico de Enfrentamento ao El Niño 2026/2027\" de 16/06/2026, com URL em agoraparana.com.br e fonte declarada como release da Secom \"via imprensa regional\". A regra do site é que imprensa descobre e nunca registra. A busca pelo documento primário encontrou, no Diário Oficial Eletrônico do Município de Curitiba nº 131, de 17/07/2026, o Decreto nº 1.141, que institui o Comitê Gestor Especial de Enfrentamento aos Impactos do Fenômeno El Niño no Município de Curitiba — ato oficial real, porém de ESTRUTURA de coordenação, não plano. O plano noticiado não foi localizado em fonte primária. O registro passa a ser o decreto encontrado, com categoria `estrutura`, data 17/07/2026, fonte e URL do diário e evidência preservada.",
+   "uf": [
+    "PR"
+   ],
+   "motivo": "Achado do item 0 do handover de 01/10/2026, pedido pela editoria depois de a lista de fontes verificadas mostrar veículos de notícia com registro próprio. A auditoria dos municípios e dos estados encontrou exatamente um registro pontuável com fonte de imprensa, este. Os outros três domínios de notícia na lista (São Bernardo do Campo, Jacareí e Mauá) são pistas em `nao_verificado`, crédito zero, e por isso não movem ponto; prefeitura.poa.br é domínio municipal oficial. O rebaixamento não é punição ao município: Curitiba tem ato oficial do ciclo, e ele vale o que a escada municipal dá a uma estrutura de coordenação. Era o `plano` que não tinha prova.",
+   "efeito_por_uf": {
+    "PR": {
+     "total": [
+      67.4,
+      64.6
+     ],
+     "cobertura_pop": [
+      37.3,
+      28.8
+     ],
+     "faixa": [
+      "consolidado",
+      "consolidado"
+     ],
+     "muda_de_faixa": false
+    }
+   },
+   "efeito_nacional": {
+    "media": [
+     45.3,
+     45.2
+    ],
+    "faixa": [
+     "em construção",
+     "em construção"
+    ],
+    "ufs_afetadas": 1,
+    "ufs_que_mudam_de_faixa": []
+   },
+   "prova": [
+    {
+     "documento": "Decreto nº 1.141, de 17/07/2026 — institui o Comitê Gestor Especial de Enfrentamento aos Impactos do Fenômeno El Niño no Município de Curitiba",
+     "fonte": "Diário Oficial Eletrônico do Município de Curitiba nº 131, de 17/07/2026",
+     "url": "https://data.queridodiario.ok.org.br/4106902/2026-07-17/55d7ac48034157b70f34541280b650493219a414.pdf",
+     "hash_evidencia": "2bf3ac9da148f995"
+    },
+    {
+     "busca": "Querido Diário, território 4106902, desde 01/04/2026",
+     "resultado": "\"El Niño\": 1 edição (17/07/2026). \"Plano Estratégico de Enfrentamento\": 0. \"enfrentamento ao El Niño\": 0."
+    },
+    {
+     "busca": "curitiba.pr.gov.br, busca de notícias",
+     "resultado": "403 — recusa de acesso real, respeitada (§185)"
+    }
+   ],
+   "hash_anterior": "97d5b2ebbbac1ec342aebb568c666d59474a3b5a48b8daf221620817cb441380",
+   "hash_novo": "97d5b2ebbbac1ec342aebb568c666d59474a3b5a48b8daf221620817cb441380",
+   "nota_da_corrente": "hash_anterior e hash_novo são iguais porque esta errata corrige DADO, não regra: nenhuma constante nem a fórmula do motor foi tocada. A entrada existe pelo C6 — correção de dado dentro do defeso se publica com efeito em pontos por UF — e fica na mesma corrente para que o histórico seja um só."
   }
  ]
 }
