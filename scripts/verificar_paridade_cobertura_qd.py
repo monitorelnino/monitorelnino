@@ -57,10 +57,24 @@ def problemas(cobertura: dict, resumo: dict) -> list[str]:
     if not v:
         return ["data/verificacao_resumo.json sem o bloco varredura_diarios"]
 
-    # A paridade que dá nome ao portão.
-    if v.get("indexados") is not None and c["indexados"] != v["indexados"]:
-        p.append(f"indexados divergem: cobertura_qd.json conta {c['indexados']} e "
-                 f"verificacao_resumo.json declara {v['indexados']}")
+    # A paridade que dá nome ao portão — corrigida em 01/10/2026 para comparar a MESMA pergunta.
+    #
+    # `cobertura_qd.json` conta quem o Querido Diário INDEXA: fato do acervo. O `indexados` do
+    # resumo conta quem foi indexado E LIDO — é a soma declarada de com_menção, coberto_sem_menção
+    # e sem_edição, e `testar_contador_varredura.py` cobra essa identidade. Entre as duas sobram
+    # os indexados cujo LOG ficou ilegível: o acervo os tem, a leitura não, e eles vivem em
+    # `cobertura_indefinida`.
+    #
+    # O portão comparava 527 contra 524 e chamava de divergência o que era diferença de DEFINIÇÃO
+    # — e reprovava a `main` por isso. Agora compara acervo com acervo: lidos mais
+    # indexados-sem-leitura. Se a soma não fechar, aí sim há município perdido entre os dois
+    # arquivos, que é o defeito que este portão nasceu para pegar.
+    _lidos = v.get("indexados")
+    _sem_leitura = v.get("cobertura_indefinida") or 0
+    if _lidos is not None and c["indexados"] != _lidos + _sem_leitura:
+        p.append(f"indexados divergem: cobertura_qd.json conta {c['indexados']} e o resumo "
+                 f"declara {_lidos} lido(s) mais {_sem_leitura} indexado(s) sem leitura, que "
+                 f"somam {_lidos + _sem_leitura}")
 
     # As três classes têm de somar o total — senão uma delas está sendo perdida na contagem.
     soma = c["indexados"] + c["nao_indexados"] + c["indefinidos"]
