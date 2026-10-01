@@ -2403,6 +2403,14 @@ existe: `transferencias.json` tem programas e a lista nominal do Prepara RS, nã
 município. Publicar uma busca que não encontra nada seria pior do que não ter busca, e inventar o
 número é proibido. A página diz, no lugar, que a série semanal acima é por rota, para o país.
 
+**O caso de teste do portão de âncoras envelheceu em silêncio, e reprovou sozinho.** Ele trazia os
+três nomes **escritos à mão** — `antes-do-desastre`, `depois-do-desastre`, `preventivo`. O bloco C
+renomeou as âncoras; a página e o `prefeituras.html` acompanharam, e o caso de teste não. O resultado
+foi o pior possível de ler: a **varredura passava** (as âncoras citadas existem de verdade) e o
+**autoteste reprovava**, cobrando três nomes que ninguém mais usa. Agora ele **lê do
+`prefeituras.html`** quais âncoras de financiamento são citadas e confere que existem lá — renomear
+nos dois lugares passa, renomear num só reprova, que é a única coisa que ele precisa saber.
+
 **Sincronia com "Para gestores" (bloco C).** As âncoras definitivas são `#antes`, `#depois` e
 `#setores`, e os três ponteiros de `prefeituras.html` passam a elas — as que eu havia criado em
 `#antes-do-desastre` e `#depois-do-desastre` saíram, porque duas convenções para a mesma âncora é
