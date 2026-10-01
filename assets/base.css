@@ -269,6 +269,10 @@ details.acc.r-fogo .acc-icone{color:var(--fogo);}
 /* 17/09/2026 (pedido da editoria): gráfico do ONI no padrão dos sites oficiais — fundo preto,
    vermelho acima da média, azul abaixo, com transparência. Escopado só a essa figura. */
 .grafico-preto{background:#000; border-radius:var(--radius); padding:var(--sp-3);}
+/* 30/09/2026 (F.1): os dois gráficos do Pacífico em fundo de OCEANO NOTURNO — mesma família de
+   fundo escuro do mapa de fogo, não o preto puro de antes. Preto puro com barra vermelha é o
+   padrão dos sites de agência; aqui o escuro pertence à mesma paleta do resto da página. */
+.grafico-oceano{background:var(--grafico-oceano); border-radius:var(--radius); padding:var(--sp-2);}
 .figura-midia{width:100%; min-width:0; position:relative;}
 .figura--mapa .figura-midia{aspect-ratio:var(--mapa-proporcao);}
 .figura--mapa .figura-midia > svg{width:100%; height:100%; display:block;}
@@ -858,6 +862,19 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
   a[href^="http"]::after{content:" (" attr(href) ")"; font-size:var(--fs-caption); color:var(--muted);}
 }
 
+/* 01/10/2026 (seção F): os cartões de família numa linha têm de ter a MESMA ALTURA. O portão de
+   consistência visual cobra isso, e com razão: figuras lado a lado em alturas diferentes leem-se
+   como figuras de pesos diferentes, quando o que muda é só o conteúdo interno (uma tem "ver em
+   lista", outra não).
+
+   A igualdade vem do layout, não de conteúdo inventado para encher: cada bloco é uma coluna que
+   ocupa a altura da linha, e a figura dentro dele também. O que sobra de espaço fica no fim do
+   cartão, depois da fonte — nunca espremendo o mapa. */
+.blocos-familia{align-items:stretch;}
+.blocos-familia > .bloco-familia{display:flex; flex-direction:column;}
+.blocos-familia > .bloco-familia > .figura{flex:1 1 auto; display:flex; flex-direction:column;}
+.blocos-familia > .bloco-familia > .figura > .figura-fonte,
+.blocos-familia > .bloco-familia > .figura > .fonte-figura{margin-top:auto;}
 /* ===================== Proteja-se — desenho de 30/09/2026 (itens 9 e 10) =====================
    Princípio da editoria: mais minimalista e mais curta, fundo branco em toda a página, sem caixas
    cinza. O que separa os blocos é espaço e, no máximo, uma linha fina. */

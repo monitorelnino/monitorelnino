@@ -1746,6 +1746,23 @@ como duplo círculo, com distâncias diferentes de uma capital para outra — e 
 distintos leem-se como duas medidas, quando é uma só. Todas as capitais passam a ter um círculo
 sólido do mesmo tamanho: a **cor** diz o desvio e o **número** ao lado diz a máxima prevista.
 Capital sem dado continua com anel vazio.
+## 59. Ficha de calor extremo: a fonte (01/10/2026)
+
+O Proteja-se passou a ter ficha própria de **calor extremo**, separada da de estiagem — até aqui as
+duas dividiam um cartão, e dividir cartão é dizer que são o mesmo risco.
+
+O conteúdo da ficha **não foi escrito por este projeto**: é reprodução das orientações da página
+"Ondas de Calor" do **Ministério da Saúde**
+(`gov.br/saude/pt-br/assuntos/saude-de-a-a-z/o/ondas-de-calor`), consultada e preservada como
+evidência em 01/10/2026. Dela vêm as três colunas: manter ambiente fresco e ajustar medicação sob
+orientação médica; beber água mesmo sem sede, evitar álcool e cafeína, roupas leves e claras,
+atividade ao ar livre nos horários frescos, alimentação leve; e os sinais de alerta — transpiração
+excessiva, fraqueza, tontura, náusea, dor de cabeça, cãibras e diarreia, com confusão, convulsão ou
+perda de consciência como emergência médica. Os grupos de atenção redobrada são os que o próprio
+Ministério nomeia.
+
+A regra que vale aqui é a de sempre nesta página: **o MARÉ reproduz o órgão, com fonte e data, e não
+redige orientação de saúde.** Onde a orientação oficial mudar, a ficha muda com ela.
 
 
 ## 61. Calor como desvio da normal 1991–2020, e as três capitais sem normal (01/10/2026)
