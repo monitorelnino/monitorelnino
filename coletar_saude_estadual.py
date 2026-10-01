@@ -51,8 +51,8 @@ import urllib.request
 
 import funil
 import motores_busca
-from coletores_base import (buscar, gravar, hoje_editorial, ler, log_busca, marcar_fonte_consultada,
-                            preservar_evidencia, registrar_lacuna, rodar_autoteste, ua_de)
+from coletores_base import (buscar, gravar, hoje_editorial, ler, log_busca, preservar_evidencia,
+                            registrar_lacuna, rodar_autoteste, ua_de)
 
 UFS = ("AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO").split()
 UF_NOME = {
@@ -145,6 +145,18 @@ def decidir(n_brutos: int, n_pistas: int) -> str:
     return "bateria_sem_pista"
 
 
+# A decisão interna → o vocabulário fechado do log v2. "nada localizado" NÃO entra aqui: aquele
+# valor é da bateria municipal completa, lido por `recalcular_mare.py` para elevar o nível de
+# verificação, e `verificar_consistencia.py` reprova se ele aparecer sem `nivel="municipal_completo"`.
+# A bateria estadual que consultou e não achou é "consultado sem achado" (§184).
+DECISAO_NO_LOG = {"pista": "pista",
+                  "bateria_sem_pista": "consultado sem achado",
+                  "motor_sem_resposta": "erro",
+                  "fontes_lidas": "consultado sem achado",
+                  "fonte_fora_do_ar": "erro",
+                  "fonte_nao_declarada": "erro"}
+
+
 def chave_da_pista(p: dict) -> tuple:
     """Dedup por (uf, url, trecho) — mesmo padrão dos outros coletores de pista. Função pura."""
     return (p.get("uf"), p.get("url"), (p.get("trecho") or "")[:160])
@@ -206,7 +218,8 @@ def bateria(uf: str) -> dict:
             dados = buscar_searxng(query, motores=ativos or None)
         except Exception as e:
             registrar_lacuna(f"funil_saude/{uf}", f"{type(e).__name__}: {e}",
-                             canal="orgao_estadual", nivel="estadual")
+                             canal="orgao_estadual", camada=4, uf=uf, nivel="estadual",
+                             strings=[query])
             continue
         resultados = dados.get("results") or []
         brutos += len(resultados)
@@ -217,10 +230,10 @@ def bateria(uf: str) -> dict:
     fila, entraram = fundir_pistas(ler(PISTAS) or {}, achadas)
     if entraram:
         gravar(PISTAS, fila)
-    log_busca(fonte=f"funil_saude/{uf}", canal="orgao_estadual", nivel="estadual",
-              string=f"{len(CONSULTAS)} consultas de saúde", decisao=decisao,
-              resultados={"brutos": brutos, "pistas": len(achadas), "novas": entraram},
-              executor=ORIGEM)
+    log_busca("orgao_estadual", 4, [q for _, q in consultas_de(uf)], DECISAO_NO_LOG[decisao],
+              uf=uf, nivel="estadual", n_resultados=brutos,
+              resultados=(f"funil_saude/{uf}: {brutos} resultado(s) bruto(s), {len(achadas)} pista(s), "
+                          f"{entraram} nova(s) na fila · decisão interna: {decisao}"))
     funil.registrar("funil_saude_estadual", consultas=len(CONSULTAS),
                     com_resultado_bruto=1 if brutos else 0, pistas=len(achadas))
     return {"uf": uf, "brutos": brutos, "pistas": len(achadas), "novas": entraram, "decisao": decisao}
@@ -231,26 +244,23 @@ def ler_fontes(uf: str) -> dict:
     enderecos = FONTES_SAUDE.get(uf) or []
     if not enderecos:
         registrar_lacuna(f"funil_saude/{uf}", "nenhuma fonte de saúde declarada para a UF",
-                         canal="orgao_estadual", nivel="estadual")
-        log_busca(fonte=f"funil_saude/{uf}", canal="orgao_estadual", nivel="estadual",
-                  string="fontes declaradas", decisao="fonte_nao_declarada",
-                  resultados={"enderecos": 0}, executor=ORIGEM)
+                         canal="orgao_estadual", camada=1, uf=uf, nivel="estadual")
         return {"uf": uf, "lidos": 0, "falhas": 0, "decisao": "fonte_nao_declarada"}
     lidos, falhas = 0, 0
     for u in enderecos:
         try:
             corpo = buscar(u, timeout=150, origem=ORIGEM)
             preservar_evidencia(corpo, u, "pdf" if u.lower().endswith(".pdf") else "html", ORIGEM)
-            marcar_fonte_consultada(u, canal="orgao_estadual", nivel="estadual")
             lidos += 1
         except Exception as e:
             falhas += 1
             registrar_lacuna(f"funil_saude/{uf}", f"{u}: {type(e).__name__}: {e}",
-                             canal="orgao_estadual", nivel="estadual")
+                             canal="orgao_estadual", camada=1, uf=uf, nivel="estadual",
+                             strings=[u])
     decisao = "fontes_lidas" if lidos else "fonte_fora_do_ar"
-    log_busca(fonte=f"funil_saude/{uf}", canal="orgao_estadual", nivel="estadual",
-              string="fontes declaradas", decisao=decisao,
-              resultados={"lidos": lidos, "falhas": falhas}, executor=ORIGEM)
+    log_busca("orgao_estadual", 1, enderecos, DECISAO_NO_LOG[decisao], uf=uf, nivel="estadual",
+              n_resultados=lidos,
+              resultados=f"funil_saude/{uf}: {lidos} fonte(s) lida(s), {falhas} falha(s)")
     funil.registrar("funil_saude_estadual", consultas=len(enderecos),
                     com_resultado_bruto=1 if lidos else 0)
     return {"uf": uf, "lidos": lidos, "falhas": falhas, "decisao": decisao}
@@ -313,6 +323,13 @@ def autoteste() -> int:
             lambda: all(UF_NOME["MT"] in q for _, q in consultas_de("MT")),
         "fonte declarada só existe onde foi confirmada":
             lambda: all(isinstance(v, list) and v for v in FONTES_SAUDE.values()),
+        # Decisão fora do vocabulário fechado do log faz o portão de consistência reprovar a
+        # rodada inteira, e "nada localizado" em particular tem dono: a bateria MUNICIPAL.
+        "toda decisão interna tem tradução no vocabulário do log":
+            lambda: set(DECISAO_NO_LOG) >= {"pista", "bateria_sem_pista", "motor_sem_resposta",
+                                            "fontes_lidas", "fonte_fora_do_ar", "fonte_nao_declarada"},
+        "nenhuma decisão vira 'nada localizado', que é da bateria municipal":
+            lambda: "nada localizado" not in DECISAO_NO_LOG.values(),
     }
     return rodar_autoteste(casos)
 

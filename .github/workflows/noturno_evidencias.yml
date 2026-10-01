@@ -23,7 +23,7 @@ name: Noturno — evidências e OCR
 
 on:
   workflow_run:
-    workflows: ["Busca web — cadência automática"]
+    workflows: ["Noturno — funil de saúde estadual"]
     types: [completed]
   workflow_dispatch:
 

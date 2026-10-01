@@ -207,6 +207,10 @@ jobs:
           python3 coletar_cadastro_prioritarios.py --autoteste
           python3 scripts/busca_dirigida_do_ato.py --autoteste
           python3 coletar_prioritarios_mma.py --autoteste
+          # Bloco A do MARÉ Saúde (01/10/2026): o funil dos planos de saúde estaduais. O
+          # autoteste é offline e puro; a trava que ele cobra é a que importa aqui — zero
+          # resultado de motor NUNCA pode produzir a decisão que autoriza "não localizado".
+          python3 coletar_saude_estadual.py --autoteste
           python3 coletar_normais_inmet.py --autoteste
           python3 scripts/gerar_enquadramento_card.py --autoteste
           python3 scripts/verificar_cadencia_coletores.py --autoteste

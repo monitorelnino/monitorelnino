@@ -1301,7 +1301,7 @@
    "status_robots": "permite",
    "crawl_delay": null,
    "primeiro_acesso": "2026-09-24",
-   "total_acessos": 65,
+   "total_acessos": 67,
    "acessos": [
     {
      "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2609907&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22&size=50",
@@ -1691,6 +1691,18 @@
      "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4125605&querystring=%22plano+de+conting%C3%AAncia%22+OR+plancon+OR+%22plano+municipal+de+prote%C3%A7%C3%A3o+e+defesa+civil%22&published_since=2025-10-01&excerpt_size=500&number_of_excerpts=1&size=4",
      "quando": "2026-10-01T08:36:27Z",
      "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=1400100&querystring=%22El%20Ni%C3%B1o%22&published_since=2026-08-01&size=5",
+     "quando": "2026-10-01T13:48:04Z",
+     "origem": "auditoria_saude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=1400100&querystring=%22plano%20de%20a%C3%A7%C3%A3o%22&published_since=2026-08-01&size=5",
+     "quando": "2026-10-01T13:48:09Z",
+     "origem": "auditoria_saude",
      "cliente": "MonitorElNinoBrasil/2.2.4"
     }
    ],
