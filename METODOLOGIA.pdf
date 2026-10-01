@@ -15220,7 +15220,7 @@ endstream
 endobj
 199 0 obj
 <<
-/Length 4660
+/Length 8169
 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -15363,6 +15363,113 @@ q
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (A su\355te passa de 149 para 151 comandos.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 425.9354 cm
+q
+.101961 .054902 .031373 rg
+BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (## 81. O carimbo do publicador passa a escrever o corte \(01/10/2026\)) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 408.3354 cm
+q
+.101961 .054902 .031373 rg
+BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (O \24779 corrigiu a ordem dentro do atualizar.py e a publica\347\343o continuou falhando, pela mesma linha) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 390.7354 cm
+q
+BT 1 0 0 1 0 3.3 Tm 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (de log. A causa restante era uma ) Tj /F2 9.3 Tf (colis\343o de regras) Tj /F1 9.3 Tf (, n\343o de ordem.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 373.1354 cm
+q
+.101961 .054902 .031373 rg
+BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (scripts/frescor.py --carimbar, que \351 o passo de carimbo do publicar_dados.yml, escrevia) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 355.5354 cm
+q
+BT 1 0 0 1 0 3.3 Tm 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (atualizado_em = <) Tj (data do \372ltimo dado) Tj (> e declarava \227 em docstring e em caso de teste \227 que corte) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 337.9354 cm
+q
+BT 1 0 0 1 0 3.3 Tm 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (nunca) Tj /F1 9.3 Tf ( era tocado, "porque \351 decis\343o editorial sobre at\351 quando o dado vale". Essa leitura foi) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 320.3354 cm
+q
+.101961 .054902 .031373 rg
+BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (revogada em 30/09, quando o corte ficou vinte dias congelado atr\341s do arquivo de transfer\352ncias: o) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 302.7354 cm
+q
+.101961 .054902 .031373 rg
+BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (corte passou a ser a data da rodada, e o port\343o verificar_corte_sincronizado.py passou a exigir) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 285.1354 cm
+q
+.101961 .054902 .031373 rg
+BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (que as duas datas coincidam. As duas regras n\343o podiam valer juntas, e a publica\347\343o parou quatro) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 267.5354 cm
+q
+.101961 .054902 .031373 rg
+BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (vezes em 01/10 exatamente nessa contradi\347\343o \227 o carimbo avan\347ava uma data, o port\343o cobrava as duas.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 249.9354 cm
+q
+.101961 .054902 .031373 rg
+BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (A editoria decidiu qual vale, no bloco das 23h UTC: *"gravar corte e atualizado_em da rodada e s\363) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 232.3354 cm
+q
+BT 1 0 0 1 0 3.3 Tm 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (ent\343o verificar"*. gravar_carimbo passa a escrever as duas, do ) Tj /F2 9.3 Tf (mesmo) Tj /F1 9.3 Tf ( carimbo.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 214.7354 cm
+q
+BT 1 0 0 1 0 3.3 Tm 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (O que n\343o muda: a data continua vindo do ) Tj /F2 9.3 Tf (dado) Tj /F1 9.3 Tf (, nunca do rel\363gio \227 quem a calcula \351 carimbar,) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 197.1354 cm
+q
+.101961 .054902 .031373 rg
+BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (a partir do commit mais recente que tocou data/, e rodada sem dado novo n\343o carimba nada. Os tr\352s) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 179.5354 cm
+q
+.101961 .054902 .031373 rg
+BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (casos novos do autoteste cobram isto: as duas datas escritas, do mesmo valor, e nenhuma chamada de) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 161.9354 cm
+q
+.101961 .054902 .031373 rg
+BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (rel\363gio no corpo. O caso antigo, que cobrava o oposto, fica registrado como revogado.) Tj T* ET
 Q
 Q
  
@@ -15581,5 +15688,5 @@ trailer
 /Size 200
 >>
 startxref
-899543
+903052
 %%EOF
