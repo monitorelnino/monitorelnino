@@ -2,12 +2,12 @@ const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt
 // ===== imprensa.html · bloco 1 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
 (function(){
   fetch('data/indice.json').then(r=>r.json()).then(idx=>{ const ufs=Object.keys(idx).filter(k=>k.length===2); const tot=ufs.map(u=>idx[u].total); const media=Math.round(tot.reduce((a,b)=>a+b,0)/27*10)/10; const txt=media.toLocaleString('pt-BR',{minimumFractionDigits:1});
-    document.getElementById('relMedia').textContent=txt; document.getElementById('relMedia2').textContent=txt;
     const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = String(v); };
+    set('relMedia', txt);
     // 16/09/2026 (pedido da editoria): o site não ranqueia nem compara estados entre si — o release não
     // nomeia mais os dois primeiros e os dois últimos por nota (removido: ord/relTopo/relBase).
     fetch('data/resposta/por_uf.json').then(r => r.ok ? r.json() : null).then(R => { if (!R) return; const N = R.nacional;
-      ['relDecretados', 'relDecretados2'].forEach(i => set(i, N.n_municipios.toLocaleString('pt-BR'))); set('relReconhecidos', (N.reconhecidos ?? '—').toLocaleString('pt-BR')); set('relPrimeiroDecreto', N.primeiro_decreto || '—');
+      set('relDecretados', N.n_municipios.toLocaleString('pt-BR')); set('relReconhecidos', (N.reconhecidos ?? '—').toLocaleString('pt-BR')); set('relPrimeiroDecreto', N.primeiro_decreto || '—');
       set('relPopMilhoes', ((N.pop_sob_decreto || 0) / 1e6).toFixed(1).replace('.', ','));
       // 16/09/2026 (handover): relQ1/relQ3 são CONTAGENS de estados num cruzamento antecipação × resposta — nunca
       // nomeiam qual estado (a editoria vetou nomear/ordenar estados por posição em 16/09, §73); computado ao vivo
@@ -24,13 +24,13 @@ const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt
       set('relSuspensas', Object.values(F.fontes || {}).filter(f => f.suspensa).length);
     }).catch(() => {});
     // 15/09/2026: mais números do release lidos do dado — planos municipais (percentual_uf.n_plano), estados com plano do ciclo (estados.json)
-    fetch('data/percentual_uf.json').then(r => r.ok ? r.json() : null).then(P => { if (!P) return; const n = Object.values(P).reduce((a, i) => a + (i.n_plano || 0), 0).toLocaleString('pt-BR'); ['relPlanosMun', 'relPlanosMun2'].forEach(i => set(i, n)); }).catch(() => {});
+    fetch('data/percentual_uf.json').then(r => r.ok ? r.json() : null).then(P => { if (!P) return; const n = Object.values(P).reduce((a, i) => a + (i.n_plano || 0), 0).toLocaleString('pt-BR'); set('relPlanosMun', n); }).catch(() => {});
     fetch('data/estados.json').then(r => r.ok ? r.json() : null).then(E => { if (!E) return; const c = k => (E.ufs || []).filter(u => k.includes(u.status)); const ufsDe = k => c(k).map(u => u.uf).sort().join(', ');
       ['relNovo', 'relNovo2'].forEach(i => set(i, c(['NOVO']).length)); set('relNovoUFs', ufsDe(['NOVO'])); set('relTodoAno', c(['VIG']).length); set('relElab', c(['ELAB']).length); set('relLacUFs', ufsDe(['LAC']) || 'nenhum'); }).catch(() => {});
   }).catch(()=>{});
   // 16/09/2026 (pedido da editoria): "O que mudou" (feed + relDataAnterior) saiu da página — bloco removido.
   fetch('data/meta.json').then(r=>r.json()).then(m=>{ (document.getElementById('relCorte')||{}).textContent=m.corte||'—'; document.getElementById('relData').textContent=(m.atualizado_em||m.corte||'');
-    (document.getElementById('relCorte2')||{}).textContent=m.corte||'—'; (document.getElementById('relData2')||{}).textContent=(m.atualizado_em||m.corte||'');
+     (document.getElementById('relData2')||{}).textContent=(m.atualizado_em||m.corte||'');
   }).catch(()=>{});
 })();
 
@@ -92,14 +92,14 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
         // do dado trazem travessão ("INMET — avisos ativos..."). Troca na APRESENTAÇÃO, por
         // vírgula; o dado fica como a fonte o entregou.
         const semTravessao = t => String(t).replace(/\s+—\s+/g, ', ').replace(/—/g, ',');
+        // 01/10/2026: UMA linha, "Fonte · data", e nada mais. Saíram "primeira medição", a nota
+        // de critério e o nome do arquivo: são bastidor da coleta, não o que a redação precisa ler
+        // para citar o número. O período continua visível onde ele importa — no rótulo do cartão e
+        // no texto pronto abaixo da grade.
         const partes = [];
-        if (c.periodo && c.periodo.ini && c.periodo.fim) {
-          partes.push('de ' + dia(c.periodo.ini) + ' a ' + dia(c.periodo.fim));
-        }
-        if (c.fonte) partes.push(c.fonte);
-        if (c.consultado_em) partes.push('consultado em ' + c.consultado_em);
-        if (c.primeira_medicao) partes.push('primeira medição');
-        if (c.nota) partes.push(c.nota);
+        if (c.fonte) partes.push(String(c.fonte).split(/\s*[—(]/)[0].trim());
+        const quando = c.consultado_em || (c.periodo && c.periodo.fim && dia(c.periodo.fim));
+        if (quando) partes.push(String(quando).replace('T', ' '));
         meta.textContent = partes.map(semTravessao).join(' · ') || 'sem dado';
       }
 
@@ -140,4 +140,87 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
         + S.nao_calculaveis.map(x => x.rotulo).join(' · ') + '.';
     }
   }).catch(() => {});
+})();
+
+/* ===== Os seis números do topo (01/10/2026) =====
+   Regra 0 da página: nada escrito à mão que dependa do dado. Os dois índices, os quatro contadores,
+   as duas versões e as datas vêm todos do banco, a cada publicação.
+
+   "Última semana" são os 7 dias até a data da edição, contados PELA DATA DO ATO — a data em que o
+   plano saiu no diário, ou em que o decreto foi assinado —, e não pela data em que o MARÉ o
+   localizou. As duas podem distar semanas, e a segunda mede o nosso trabalho, não o do ente. */
+(function numerosDoTopo(){
+  const põe = (id, v) => { const e = document.getElementById(id); if (e && v != null && v !== '') e.textContent = v; };
+  const n = v => Number(v).toLocaleString('pt-BR');
+
+  fetch('data/indice.json').then(r => r.ok ? r.json() : null).then(idx => {
+    if (!idx) return;
+    const ufs = Object.keys(idx).filter(k => k.length === 2);
+    if (!ufs.length) return;
+    const media = Math.round(ufs.reduce((a, u) => a + idx[u].total, 0) / ufs.length * 10) / 10;
+    põe('topoLegal', media.toLocaleString('pt-BR', {minimumFractionDigits: 1}));
+    // A versão sai do próprio campo `metodo` do índice: ele começa por "v3.1 — …". Assim a versão
+    // publicada é a do motor que calculou o número, e não uma string paralela que alguém atualiza.
+    const m = String((idx[ufs[0]] || {}).metodo || '').match(/^v(\d+(?:\.\d+)*)/);
+    if (m) põe('citarVersaoLegal', m[1]);
+  }).catch(() => {});
+
+  fetch('data/monitor_saude.json').then(r => r.ok ? r.json() : null).then(sa => {
+    if (!sa) return;
+    // O MARÉ Saúde NÃO tem número nacional hoje, e o próprio dado diz isso: o campo é
+    // `media_das_verificadas`, e a nota que vem com ele é "a média cobre só as UFs verificadas e
+    // não é um número nacional". A página de Saúde já publica esse número com o qualificador ao
+    // lado, e aqui ele vai igual — sem o qualificador, uma média parcial viraria índice nacional,
+    // que é exatamente o que a metodologia proíbe afirmar.
+    const res = sa.resumo || {};
+    if (res.media_das_verificadas != null) {
+      põe('topoSaude', Number(res.media_das_verificadas).toLocaleString('pt-BR', {minimumFractionDigits: 1}));
+      if (res.verificadas != null) põe('topoSaudeNota', 'média de ' + res.verificadas + ' estados verificados');
+    }
+    if (sa.versao != null) põe('citarVersaoSaude', String(sa.versao));
+  }).catch(() => {});
+
+  fetch('data/percentual_uf.json').then(r => r.ok ? r.json() : null).then(P => {
+    if (!P) return;
+    põe('topoPlanos', n(Object.values(P).reduce((a, i) => a + (i.n_plano || 0), 0)));
+  }).catch(() => {});
+
+  fetch('data/resposta/por_uf.json').then(r => r.ok ? r.json() : null).then(R => {
+    if (R && R.nacional) põe('topoDecretos', n(R.nacional.n_municipios));
+  }).catch(() => {});
+
+  // Os dois contadores semanais são os mesmos cartões de "Esta semana em números": mesma janela,
+  // mesma fonte, mesmo critério. Dois números iguais na mesma página com contas diferentes seria
+  // o defeito que a regra 0 existe para impedir.
+  fetch('data/imprensa/semana.json').then(r => r.ok ? r.json() : null).then(S => {
+    if (!S || !S.cartoes) return;
+    const de = id => (S.cartoes.find(c => c.id === id) || {}).valor;
+    const planos = de('planos_no_periodo'), decretos = de('decretos_no_periodo');
+    if (planos != null) põe('topoPlanosSemana', n(planos));
+    if (decretos != null) põe('topoDecretosSemana', n(decretos));
+  }).catch(() => {});
+
+  fetch('data/meta.json').then(r => r.ok ? r.json() : null).then(M => {
+    if (!M) return;
+    ['relData', 'relData2'].forEach(i => põe(i, M.atualizado_em || M.corte));
+  }).catch(() => {});
+
+  // "Acesso em" é a data de HOJE, de quem está lendo — é isso que uma referência pede.
+  const hoje = new Date();
+  põe('citarAcesso', String(hoje.getDate()).padStart(2, '0') + '/'
+    + String(hoje.getMonth() + 1).padStart(2, '0') + '/' + hoje.getFullYear());
+})();
+
+/* Copiar o release: o texto que a redação leva é o que está na tela, já com os números do dia. */
+(function copiarRelease(){
+  const b = document.getElementById('copiarRelease'), alvo = document.getElementById('releaseTexto');
+  if (!b || !alvo || !navigator.clipboard) return;
+  b.addEventListener('click', () => {
+    const txt = alvo.textContent.replace(/\s+/g, ' ').trim();
+    navigator.clipboard.writeText(txt).then(() => {
+      const antes = b.textContent;
+      b.textContent = 'Texto copiado';
+      setTimeout(() => { b.textContent = antes; }, 2000);
+    }).catch(() => {});
+  });
 })();
