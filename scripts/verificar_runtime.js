@@ -173,7 +173,20 @@ setTimeout(() => {
       w.fetch = (rel) => { try { const txt = fs.readFileSync(path.join(raiz, rel), "utf-8"); return Promise.resolve({ ok: true, json: () => Promise.resolve(JSON.parse(txt)) }); } catch (e) { return Promise.resolve({ ok: false }); } }; } });
     setTimeout(() => {
       const dP = domP.window.document, qP = id => dP.getElementById(id);
-      teste("proteja-se: guias em acordeões fechados por padrão", ["acc-guia-chuvas","acc-guia-fogo","acc-guia-seca"].every(id => qP(id) && !qP(id).open));
+      // 30/09/2026 (item 10.3): os acordeões viraram ABAS — uma ficha por vez, escolhida por
+      // pílula. A cobrança não some, muda de alvo: as quatro abas existem, exatamente um
+      // painel está visível, e o que está visível é o da aba selecionada. É mais forte do que
+      // a de antes, que só olhava se os acordeões estavam fechados.
+      const abasP = [...dP.querySelectorAll('#riscoEscolha [role="tab"]')];
+      const paineisP = ["guia-chuvas","guia-fogo","guia-seca","guia-calor"].map(qP);
+      teste("proteja-se: quatro fichas de risco, uma por aba",
+        abasP.length === 4 && paineisP.every(Boolean));
+      teste("proteja-se: exatamente uma ficha aberta por vez",
+        paineisP.filter(x => x && !x.hidden).length === 1);
+      teste("proteja-se: a ficha aberta é a da aba selecionada", (() => {
+        const sel = abasP.find(a => a.getAttribute("aria-selected") === "true");
+        return !!sel && !qP(sel.getAttribute("aria-controls")).hidden;
+      })());
       // 17/09/2026 (pedido da editoria): "Qual é o risco projetado no seu estado" saiu da página — o mesmo
       // mapa já mora em monitor-de-riscos.html; nada a fazer aqui além de conferir que a seção sumiu.
       teste("proteja-se: seção de risco por estado não existe mais (mora em monitor-de-riscos.html)", !qP("selUFProteja") && !qP("riscoDoEstado"));
@@ -185,7 +198,12 @@ setTimeout(() => {
       const selContato = qP("selUFContato"); const primeiraUf = Object.keys(C.uf).sort()[0];
       if (selContato) { selContato.value = primeiraUf; selContato.dispatchEvent(new domP.window.Event("change", { bubbles: true }));
         teste("proteja-se: escolher um estado em 'Defesa Civil do seu estado' preenche o destaque", !qP("contatoDestaque").hidden && qP("contatoDestaque").textContent.includes(C.uf[primeiraUf].nome)); }
-      teste("proteja-se: barra de emergência com 190 · 192 · 193 · 199 e 40199, tocáveis", ["190","192","193","199","40199"].every(n => [...dP.querySelectorAll("#emergNums a")].some(a => a.textContent.includes(n))));
+      // 30/09/2026: o texto aprovado traz QUATRO números e não traz mais o 40199 — o SMS saiu
+      // da barra e a frase passou a apontar o alerta que não pede cadastro. O 40199 continua
+      // dentro da ficha de chuva, que é conteúdo reproduzido do órgão e não mudou.
+      teste("proteja-se: quatro telefones de emergência, tocáveis",
+        ["199","193","192","190"].every(n => [...dP.querySelectorAll(".emerg-cartao")]
+          .some(a => a.textContent.includes(n) && a.getAttribute("href") === "tel:" + n)));
       fim();
     }, 400);
   } catch (e) { teste("proteja-se: seletor/acordeões (" + e.message + ")", false); fim(); }

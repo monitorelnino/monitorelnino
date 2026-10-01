@@ -269,10 +269,6 @@ details.acc.r-fogo .acc-icone{color:var(--fogo);}
 /* 17/09/2026 (pedido da editoria): gráfico do ONI no padrão dos sites oficiais — fundo preto,
    vermelho acima da média, azul abaixo, com transparência. Escopado só a essa figura. */
 .grafico-preto{background:#000; border-radius:var(--radius); padding:var(--sp-3);}
-/* 30/09/2026 (F.1): os dois gráficos do Pacífico em fundo de OCEANO NOTURNO — mesma família de
-   fundo escuro do mapa de fogo, não o preto puro de antes. Preto puro com barra vermelha é o
-   padrão dos sites de agência; aqui o escuro pertence à mesma paleta do resto da página. */
-.grafico-oceano{background:var(--grafico-oceano); border-radius:var(--radius); padding:var(--sp-2);}
 .figura-midia{width:100%; min-width:0; position:relative;}
 .figura--mapa .figura-midia{aspect-ratio:var(--mapa-proporcao);}
 .figura--mapa .figura-midia > svg{width:100%; height:100%; display:block;}
@@ -862,16 +858,67 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
   a[href^="http"]::after{content:" (" attr(href) ")"; font-size:var(--fs-caption); color:var(--muted);}
 }
 
-/* 01/10/2026 (seção F): os cartões de família numa linha têm de ter a MESMA ALTURA. O portão de
-   consistência visual cobra isso, e com razão: figuras lado a lado em alturas diferentes leem-se
-   como figuras de pesos diferentes, quando o que muda é só o conteúdo interno (uma tem "ver em
-   lista", outra não).
+/* ===================== Proteja-se — desenho de 30/09/2026 (itens 9 e 10) =====================
+   Princípio da editoria: mais minimalista e mais curta, fundo branco em toda a página, sem caixas
+   cinza. O que separa os blocos é espaço e, no máximo, uma linha fina. */
 
-   A igualdade vem do layout, não de conteúdo inventado para encher: cada bloco é uma coluna que
-   ocupa a altura da linha, e a figura dentro dele também. O que sobra de espaço fica no fim do
-   cartão, depois da fonte — nunca espremendo o mapa. */
-.blocos-familia{align-items:stretch;}
-.blocos-familia > .bloco-familia{display:flex; flex-direction:column;}
-.blocos-familia > .bloco-familia > .figura{flex:1 1 auto; display:flex; flex-direction:column;}
-.blocos-familia > .bloco-familia > .figura > .figura-fonte,
-.blocos-familia > .bloco-familia > .figura > .fonte-figura{margin-top:auto;}
+/* Telefones: quatro cartões, faixa de 4 px na cor da família no topo. O NÚMERO é a informação —
+   é ele que ocupa o tamanho, em Fraunces leve, como os números do resto do site. */
+.emerg{margin:var(--sp-5) 0;}
+.emerg-cartoes{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:var(--sp-3); margin:var(--sp-3) 0;}
+.emerg-cartao{display:flex; flex-direction:column; align-items:flex-start; gap:var(--sp-1);
+  padding:var(--sp-3) var(--sp-4); border:1px solid var(--line); border-radius:12px;
+  border-top:4px solid var(--line); text-decoration:none; color:var(--ink); background:var(--branco);}
+.emerg-cartao:hover, .emerg-cartao:focus-visible{border-color:var(--ink);}
+.emerg-cartao--defesa{border-top-color:var(--chuva);}
+.emerg-cartao--fogo{border-top-color:var(--fogo);}
+.emerg-cartao--samu{border-top-color:var(--rust);}
+.emerg-cartao--policia{border-top-color:var(--ink);}
+.emerg-icone{color:var(--muted);}
+.emerg-numero{font-family:var(--font-titulo); font-weight:var(--peso-display); font-size:var(--fs-display); line-height:var(--lh-display);}
+.emerg-rotulo{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); text-transform:uppercase; letter-spacing:var(--ls-caps); color:var(--muted);}
+
+/* "Leve com você": cartão de borda fina e dois botões de verdade. */
+.levar{border:1px solid var(--line); border-radius:14px; padding:var(--sp-4) var(--sp-5); margin:var(--sp-5) 0;}
+.levar-botoes{display:flex; flex-wrap:wrap; gap:var(--sp-3); margin-top:var(--sp-3);}
+.btn-pilula{display:inline-flex; align-items:center; gap:var(--sp-2); min-height:var(--alvo-toque);
+  padding:0 var(--sp-5); border-radius:999px; font-family:var(--font-corpo); font-size:var(--fs-small);
+  font-weight:var(--peso-semibold); cursor:pointer; border:1px solid var(--ink);}
+.btn-pilula--primario{background:var(--ink); color:var(--branco);}
+.btn-pilula--primario:hover{background:var(--green);}
+.btn-pilula--contorno{background:transparent; color:var(--ink);}
+.btn-pilula--contorno:hover{background:var(--osso-claro);}
+
+/* Escolha do risco: pílulas com selo colorido; a aberta ganha a cor da família. */
+.risco-escolha{display:flex; flex-wrap:wrap; gap:var(--sp-2); margin:var(--sp-5) 0 var(--sp-4);}
+.risco-pilula{display:inline-flex; align-items:center; gap:var(--sp-2); min-height:var(--alvo-toque);
+  padding:0 var(--sp-4); border-radius:999px; border:1px solid var(--line); background:var(--branco);
+  color:var(--ink); font-family:var(--font-corpo); font-size:var(--fs-small); cursor:pointer;}
+.risco-pilula .risco-selo{display:inline-flex; align-items:center; justify-content:center;
+  width:26px; height:26px; border-radius:50%; background:var(--osso-claro); color:var(--ink);}
+.risco-pilula.r-chuva .risco-selo{color:var(--chuva);}
+.risco-pilula.r-fogo .risco-selo{color:var(--fogo);}
+.risco-pilula.r-seca .risco-selo{color:var(--seca);}
+.risco-pilula.r-calor .risco-selo{color:var(--calor);}
+.risco-pilula[aria-selected="true"]{border-color:var(--ink); font-weight:var(--peso-semibold);}
+.risco-pilula[aria-selected="true"].r-chuva{border-color:var(--chuva);}
+.risco-pilula[aria-selected="true"].r-fogo{border-color:var(--fogo);}
+.risco-pilula[aria-selected="true"].r-seca{border-color:var(--seca);}
+.risco-pilula[aria-selected="true"].r-calor{border-color:var(--calor);}
+
+/* A ficha aberta: sem caixa, só a linha de 3 px da família em cima. */
+.ficha{background:var(--branco); border:none; border-top:3px solid var(--line); border-radius:0;
+  padding:var(--sp-4) 0 var(--sp-5); margin:0 0 var(--sp-4);}
+.ficha.r-chuva{border-top-color:var(--chuva);}
+.ficha.r-fogo{border-top-color:var(--fogo);}
+.ficha.r-seca{border-top-color:var(--seca);}
+.ficha.r-calor{border-top-color:var(--calor);}
+.ficha .ficha-alerta{background:transparent; border-left:3px solid var(--rust); border-radius:0;}
+
+/* O site tem dois pontos de quebra, 640 e 1020, e o portão de estrutura cobra isso: ponto de
+   quebra avulso faz uma página responder em largura que nenhuma outra responde. */
+@media (max-width: 640px){
+  .emerg-cartoes{grid-template-columns:repeat(2, minmax(0,1fr));}
+  .emerg-numero{font-size:var(--fs-h1);}
+  .levar-botoes .btn-pilula{width:100%; justify-content:center;}
+}
