@@ -30,10 +30,15 @@ jobs:
       nome: saude-estadual
       # Escreve em data/pistas_imprensa_saude.json — grupo compartilhado da noite.
       grupo_de_concorrencia: noturno
-      timeout_minutos: 45
+      timeout_minutos: 90
       precisa_searxng: true
+      # Os quatro canais da bateria (handover de 01/10/2026). Nenhum "não localizado" se afirma com
+      # menos do que isto, e cada canal registra a sua própria decisão: canal que não rodou é erro
+      # no log, nunca "consultado sem achado".
       comandos: |
         coletar_saude_estadual.py --bateria
         coletar_saude_estadual.py --fontes
+        coletar_saude_estadual.py --canais
+        coletar_saude_estadual.py --doe --desde 2026-06-29
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}

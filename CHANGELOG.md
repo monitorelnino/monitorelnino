@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-01 · #502 · Bateria de saúde pelos quatro canais
+
+Os dois canais que faltavam ao MARÉ Saúde: `--doe` lê o diário oficial do estado com os termos da
+saúde (cinco UFs com rota confirmada, 22 declaradas indisponíveis) e `--canais` segue os links que
+a página da secretaria declara para CIEVS, sala de situação e COE (21 endereços sondados, 6 com
+lacuna medida). O juiz julgou 213 pistas e não promoveu nenhuma. Canal que não rodou entra no log como
+erro, nunca como "consultado sem achado". Em `METODOLOGIA.md` §76.
+
 ## 2026-10-01 · #500 · Transferências da União por município, e a consulta por cidade
 
 O coletor que faltava, pelo download de dados abertos do Portal — sem chave, porque a API exige uma e
