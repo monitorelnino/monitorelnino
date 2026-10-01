@@ -9,21 +9,19 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-<<<<<<< HEAD
 ## 2026-10-01 · #499 · Financiamento refeito: seis blocos, nove cartões e a auditoria do bloco A
 
 Cada base legal lida no texto oficial: sete correções, entre elas a condição do FNMA (errada em cinco
 lugares) e as três condições do Prepara RS. A página passa a seis blocos, com nove figuras no cartão
 padrão e a mesma proporção. Três números estavam errados no banco, incluindo o valor arredondado da
 MP 1.384. A consulta por cidade espera coleta por município. METODOLOGIA §73 e §74.
-=======
+
 ## 2026-10-01 · #498 · Exceção de autoridade na saúde, e o plano de sarampo que ela deixou passar
 
 Decisão da editoria: plano de saúde em portal de SES, sem ato de aprovação, vale como documento
 primário, com três condições e observação no registro. As recusas por autoridade caíram de 14 para 7,
 todas corretas. A exceção deixou passar um plano de sarampo de 2019 como instrumento e coordenação de
 MG; o risco do ciclo passa a ser exigido no título, e só risco explícito. METODOLOGIA §72.
->>>>>>> origin/main
 
 ## 2026-10-01 · #497 · Para gestores refeita, e o § 7º tem oito incisos
 

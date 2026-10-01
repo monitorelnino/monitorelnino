@@ -2228,7 +2228,64 @@ portões de página escritos em Python, que antes ele ignorava.
 chegam", e a pergunta de fato que prometia o modelo de LAI perdeu a promessa — não o modelo, que já
 não existia.
 
-<<<<<<< HEAD
+## 72. A exceção de autoridade da camada de saúde, e o plano de sarampo que ela deixou passar (01/10/2026)
+
+**Decisão da editoria, 01/10/2026, 16h UTC.** O plano de contingência de saúde publicado no portal
+oficial da secretaria estadual, **sem ato de aprovação no texto**, vale como documento primário para
+o MARÉ Saúde, com três condições: (1) domínio oficial da SES ou do governo do estado; (2) o
+documento identifica **órgão, título e ano ou ciclo**; (3) o registro traz a observação **"sem ato de
+aprovação localizado"**, substituída pelo ato quando ele aparecer. A exceção vale **só para a camada
+de saúde** (peso zero) e fica registrada por UF.
+
+`juiz.etapa3_autoridade` **não foi tocada**: ela é a régua do MARÉ Legal, e foi por ser dela que
+recusou 14 dos 27 planos estaduais de saúde. O que passa a existir é a régua da camada de saúde,
+declarada em `julgar_saude.autoridade_de_saude`. Ela tenta primeiro a régua normal — ato com fórmula
+de promulgação passa por ela e nem consulta a exceção — e só então aplica a exceção. Aprovação por
+colegiado (`executivo_pendente`) **não** entra: ali existe um ato, e ele é de outro órgão; a exceção
+é para a ausência de ato, não para o ato errado. Domínio **municipal** também não entra: a camada é
+estadual, e `saude.goiania.go.gov.br` é de Goiânia.
+
+**O efeito, medido.** As recusas por autoridade caíram de **14 para 7**, e as sete restantes são
+corretas: três de `fortaleza.ce.gov.br`, uma de `saude.goiania.go.gov.br` e uma de
+`cdn.campogrande.ms.gov.br` são municipais; uma é uma página de curso em
+`administracao.pr.gov.br`; uma é uma página de ajuda em `ajudasaf.saude.mg.gov.br`. Nenhuma é plano
+publicado por secretaria estadual.
+
+**E a exceção deixou passar um erro, que o conserto do título expôs no mesmo dia.** Com a autoridade
+destravada, o juiz promoveu um **plano de contingência do sarampo de 2019**, do portal da SES-MG,
+como instrumento de saúde de Minas Gerais para este ciclo — e, pior, como a sua **coordenação**,
+porque o documento descreve níveis de ativação por dentro. Sarampo não é risco deste ciclo.
+
+O erro só ficou visível porque, na mesma rodada, o título do registro passou a sair do **documento** e
+não do resultado de busca. Antes, o título gravado era "GOVERNO DO ESTADO DE MINAS GERAIS -
+saude.mg.gov.br" — o host, que não é nome de nada —, e o engano ficava escondido atrás dele. Título de
+documento é afirmação sobre o documento: ele agora vem do nome do plano no próprio texto, e o host
+sai do que vier da pista.
+
+**A etapa que nasceu disso, em duas tentativas.** A primeira exigia um risco do ciclo em **qualquer
+lugar** do texto, e não funcionou — a medição mostrou por quê: em 77 mil caracteres, o plano de
+sarampo casou "dengue" numa frase de diagnóstico diferencial ("suspeita de dengue, mas com clínica
+compatível com sarampo") e "emergências em saúde pública" no próprio título, porque esse é o
+arcabouço genérico que o plano de **qualquer** doença usa. Palavra solta em documento longo não é
+assunto do documento.
+
+A regra em vigor: o risco do ciclo tem de estar no **título**, e tem de ser **risco explícito** —
+El Niño, arboviroses, dengue, chikungunya, zika, estiagem, seca, escassez hídrica, onda ou excesso de
+calor, queimada, fumaça, incêndio florestal, qualidade do ar, leptospirose, diarreicas, hepatite A,
+qualidade da água, eventos ou mudanças climáticas. O **arcabouço genérico de emergências em saúde
+pública não conta sozinho**: ele cabe em sarampo, em cólera e em acidente radiológico com a mesma
+naturalidade. Um instrumento genérico pode valer — o PPResp/MT é um —, mas vai para **verificação
+humana, com o ato lido**, que foi exatamente como MT entrou (§68). Na dúvida, o classificador não
+classifica.
+
+**O resultado do rejulgamento das 27:** **0 promovidas**. As recusas, por motivo: 7
+`autoridade_nao_confirmada` (as sete corretas acima) · 6 `natureza_duvidosa` · 6 não baixados, dos
+quais **quatro são endereços malformados** que o metabuscador devolveu · 4 `resposta` · 2
+`citacao_incompleta` · 1 `executivo_pendente` · 1 `risco_fora_do_ciclo` (o plano de sarampo). A
+decisão da editoria foi aplicada e funcionou onde devia; o que sobra não é a régua de autoridade.
+Verificados: **21 de 27** no plano, **1 de 27** na coordenação (MT). A troca para a v0.4 continua
+esperando coordenação verificada, e "não localizado" continua exigindo os quatro canais.
+
 ## 73. Financiamento: a auditoria de exatidão, e o vocabulário dos estados do dinheiro (01/10/2026)
 
 Bloco A do handover do Financiamento, que a editoria pôs como **bloqueante**: nenhuma afirmação
@@ -2350,63 +2407,4 @@ número é proibido. A página diz, no lugar, que a série semanal acima é por 
 `#setores`, e os três ponteiros de `prefeituras.html` passam a elas — as que eu havia criado em
 `#antes-do-desastre` e `#depois-do-desastre` saíram, porque duas convenções para a mesma âncora é
 como um dos dois lados envelhece. O portão `verificar_ancoras_internas.py` (§71) confere.
-=======
-## 72. A exceção de autoridade da camada de saúde, e o plano de sarampo que ela deixou passar (01/10/2026)
-
-**Decisão da editoria, 01/10/2026, 16h UTC.** O plano de contingência de saúde publicado no portal
-oficial da secretaria estadual, **sem ato de aprovação no texto**, vale como documento primário para
-o MARÉ Saúde, com três condições: (1) domínio oficial da SES ou do governo do estado; (2) o
-documento identifica **órgão, título e ano ou ciclo**; (3) o registro traz a observação **"sem ato de
-aprovação localizado"**, substituída pelo ato quando ele aparecer. A exceção vale **só para a camada
-de saúde** (peso zero) e fica registrada por UF.
-
-`juiz.etapa3_autoridade` **não foi tocada**: ela é a régua do MARÉ Legal, e foi por ser dela que
-recusou 14 dos 27 planos estaduais de saúde. O que passa a existir é a régua da camada de saúde,
-declarada em `julgar_saude.autoridade_de_saude`. Ela tenta primeiro a régua normal — ato com fórmula
-de promulgação passa por ela e nem consulta a exceção — e só então aplica a exceção. Aprovação por
-colegiado (`executivo_pendente`) **não** entra: ali existe um ato, e ele é de outro órgão; a exceção
-é para a ausência de ato, não para o ato errado. Domínio **municipal** também não entra: a camada é
-estadual, e `saude.goiania.go.gov.br` é de Goiânia.
-
-**O efeito, medido.** As recusas por autoridade caíram de **14 para 7**, e as sete restantes são
-corretas: três de `fortaleza.ce.gov.br`, uma de `saude.goiania.go.gov.br` e uma de
-`cdn.campogrande.ms.gov.br` são municipais; uma é uma página de curso em
-`administracao.pr.gov.br`; uma é uma página de ajuda em `ajudasaf.saude.mg.gov.br`. Nenhuma é plano
-publicado por secretaria estadual.
-
-**E a exceção deixou passar um erro, que o conserto do título expôs no mesmo dia.** Com a autoridade
-destravada, o juiz promoveu um **plano de contingência do sarampo de 2019**, do portal da SES-MG,
-como instrumento de saúde de Minas Gerais para este ciclo — e, pior, como a sua **coordenação**,
-porque o documento descreve níveis de ativação por dentro. Sarampo não é risco deste ciclo.
-
-O erro só ficou visível porque, na mesma rodada, o título do registro passou a sair do **documento** e
-não do resultado de busca. Antes, o título gravado era "GOVERNO DO ESTADO DE MINAS GERAIS -
-saude.mg.gov.br" — o host, que não é nome de nada —, e o engano ficava escondido atrás dele. Título de
-documento é afirmação sobre o documento: ele agora vem do nome do plano no próprio texto, e o host
-sai do que vier da pista.
-
-**A etapa que nasceu disso, em duas tentativas.** A primeira exigia um risco do ciclo em **qualquer
-lugar** do texto, e não funcionou — a medição mostrou por quê: em 77 mil caracteres, o plano de
-sarampo casou "dengue" numa frase de diagnóstico diferencial ("suspeita de dengue, mas com clínica
-compatível com sarampo") e "emergências em saúde pública" no próprio título, porque esse é o
-arcabouço genérico que o plano de **qualquer** doença usa. Palavra solta em documento longo não é
-assunto do documento.
-
-A regra em vigor: o risco do ciclo tem de estar no **título**, e tem de ser **risco explícito** —
-El Niño, arboviroses, dengue, chikungunya, zika, estiagem, seca, escassez hídrica, onda ou excesso de
-calor, queimada, fumaça, incêndio florestal, qualidade do ar, leptospirose, diarreicas, hepatite A,
-qualidade da água, eventos ou mudanças climáticas. O **arcabouço genérico de emergências em saúde
-pública não conta sozinho**: ele cabe em sarampo, em cólera e em acidente radiológico com a mesma
-naturalidade. Um instrumento genérico pode valer — o PPResp/MT é um —, mas vai para **verificação
-humana, com o ato lido**, que foi exatamente como MT entrou (§68). Na dúvida, o classificador não
-classifica.
-
-**O resultado do rejulgamento das 27:** **0 promovidas**. As recusas, por motivo: 7
-`autoridade_nao_confirmada` (as sete corretas acima) · 6 `natureza_duvidosa` · 6 não baixados, dos
-quais **quatro são endereços malformados** que o metabuscador devolveu · 4 `resposta` · 2
-`citacao_incompleta` · 1 `executivo_pendente` · 1 `risco_fora_do_ciclo` (o plano de sarampo). A
-decisão da editoria foi aplicada e funcionou onde devia; o que sobra não é a régua de autoridade.
-Verificados: **21 de 27** no plano, **1 de 27** na coordenação (MT). A troca para a v0.4 continua
-esperando coordenação verificada, e "não localizado" continua exigindo os quatro canais.
->>>>>>> origin/main
 

@@ -328,7 +328,8 @@ setTimeout(() => {
     const IDS_DADO = {
       "index.html": ["heroVerifFederal", "metaUltimaVerif", "respNum", "metaAtualizado", "corteDados"],
       "saude.html": ["corteSaude", "gaugeSaudeNum", "gaugeSaudeN", "gaugeSaudeNV", "gaugeSaudeCorte", "rsNum", "rsCorte", "ctSemanaSaude", "ctNovoSaude"],
-      "financiamento.html": ["corteFin", "notaFogoCorte"],
+      // `notaFogoCorte` saiu com o painel da rota do fogo (bloco B, 01/10/2026).
+      "financiamento.html": ["corteFin"],
     };
     const CORTES_IGUAIS = { "index.html": [["metaUltimaVerif", "metaAtualizado"]] };
     for (const [pagina, ids] of Object.entries(IDS_DADO)) {
