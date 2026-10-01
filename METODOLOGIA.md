@@ -291,7 +291,7 @@ A régua é revisada obrigatoriamente a cada novo boletim do Painel El Niño ---
 
 O caminho legal do recurso federal de resposta (Lei nº 12.340/2010): decreto municipal de SE/ECP → registro no S2iD → reconhecimento federal por portaria SEDEC no DOU (gatilho do recurso) → solicitação com plano de trabalho → crédito no Cartão de Pagamento de Defesa Civil (CPDC), sem convênio → prestação de contas. Reconstrução e prevenção seguem via Transferegov.
 
-**Distinção central:** o plano federal de R\$ 1,335 bilhão (anunciado em 29/07/2026; inclui R\$ 337 milhões da MP nº 1.367/2026 e, identificado em 31/08/2026, R\$ 925 milhões da MP nº 1.384/2026, de 12/08, para estoques, cestas e PAA — a parte de alimentos do plano) é majoritariamente execução direta da União --- R\$ 850 milhões em estoques via CONAB, cestas de alimentos, ForSUS --- e não constitui transferência municipal. O rastreável por município são as transferências obrigatórias de defesa civil e os repasses estaduais fundo a fundo.
+**Distinção central:** o plano federal de R\$ 1,335 bilhão (anunciado em 29/07/2026; inclui R\$ 337,5 milhões da MP nº 1.367/2026, **de 12/06/2026** --- valor exato R\$ 337.483.432,00, ao Ministério do Meio Ambiente e Mudança do Clima, conferido no texto publicado no DOU de 15/06/2026 --- e, identificado em 31/08/2026, R\$ 925 milhões da MP nº 1.384/2026, **de 12/08/2026** (valor exato R\$ 924.985.960,00, aos Ministérios do Desenvolvimento Agrário e Agricultura Familiar e do Desenvolvimento e Assistência Social, DOU de 13/08/2026), para estoques, cestas e PAA — a parte de alimentos do plano) é majoritariamente execução direta da União --- R\$ 850 milhões em estoques via CONAB, cestas de alimentos, ForSUS --- e não constitui transferência municipal. O rastreável por município são as transferências obrigatórias de defesa civil e os repasses estaduais fundo a fundo.
 
 Primeiro dataset nominal de transferências da plataforma: Prepara RS (Resolução nº 008/FUNDEC/2026; autorização de 09/07/2026) --- R\$ 32,3 milhões a 138 municípios em três faixas (28 × R\$ 300 mil; 38 × R\$ 250 mil; 72 × R\$ 200 mil), condicionados a plano de contingência atualizado. Ressalva de fonte: a lista oficial traz "Charqueadas" duplicado; o número real de municípios distintos pode ser 137. Atualização contínua: script de consulta à API do Portal da Transparência (chave gratuita), que por desenho nunca escreve na base final --- gera arquivo de revisão para aprovação humana.
 
@@ -2227,4 +2227,74 @@ portões de página escritos em Python, que antes ele ignorava.
 **Na imprensa**, a linha do I4 passa a "como preparar e publicar um plano, e como os recursos
 chegam", e a pergunta de fato que prometia o modelo de LAI perdeu a promessa — não o modelo, que já
 não existia.
+
+## 73. Financiamento: a auditoria de exatidão, e o vocabulário dos estados do dinheiro (01/10/2026)
+
+Bloco A do handover do Financiamento, que a editoria pôs como **bloqueante**: nenhuma afirmação
+legal, financeira ou de fonte da página pode estar incorreta, desatualizada ou apoiada em fonte não
+oficial. Cada base legal foi lida no **texto oficial** — Planalto, DOU, portal do estado —, não em
+resumo de terceiros. A tabela completa, com URL e data de acesso, vive em `notas/ESTADO_ATUAL.md` e
+nos dados abertos; **na página, a fonte aparece só na linha de cada figura e de cada número**.
+
+**Sete correções, todas de fato.**
+
+1. **FNMA — a condição estava errada, em cinco lugares.** A página dizia "área que o MMA declara de
+   risco". O art. 3º-A da Lei 7.797/1989, § 3º (incluído pela Lei 15.143/2025), exige três coisas:
+   requerimento do ente; **declaração, pelo Ministro do Meio Ambiente e Mudança do Clima, de
+   situação de emergência ambiental na região sob risco de incêndio florestal**; e **aprovação de
+   plano operativo para a região declarada**. "Área de risco" e "emergência ambiental declarada" não
+   são a mesma coisa, e a diferença é quem declara o quê.
+2. **O regulamento é o Decreto nº 13.013, de 10 de junho de 2026** — a página dizia "decreto de
+   11/06/2026", sem nomeá-lo.
+3. **LRF art. 25: confirmado, e o "a confirmar" saiu.** A LC 101/2000 define transferência
+   voluntária como a que não decorre de determinação constitucional ou legal **nem se destina ao
+   SUS**. A vedação dos três meses anteriores ao pleito é de outra lei — Lei 9.504/1997, art. 73,
+   VI, alínea "a" —, e a frase passa a atribuir cada coisa à sua.
+4. **As duas medidas provisórias estavam datadas por réguas diferentes na mesma frase.** Pelo DOU:
+   **MP nº 1.367, de 12/06/2026** (publicada em 15/06), R$ **337.483.432,00** ao Ministério do Meio
+   Ambiente e Mudança do Clima; **MP nº 1.384, de 12/08/2026** (publicada em 13/08), R$
+   **924.985.960,00** aos Ministérios do Desenvolvimento Agrário e Agricultura Familiar e do
+   Desenvolvimento e Assistência Social. A página datava a primeira pela publicação e a segunda pelo
+   ato.
+5. **Portaria GM/MS nº 2.298 — é de 11/12/2023, e não é o que a página dizia.** Ela **autoriza um
+   repasse em parcela única**, de R$ 256.000.305,60, para "ações contingenciais de vigilância e
+   prevenção de endemias com ênfase em arboviroses". A página a chamava de "incentivo sazonal" que
+   "financia planos de contingência de arboviroses": o ato **não menciona plano de contingência** e
+   não é sazonal.
+6. **Portaria GM/MS nº 6.495 — é de 31/12/2024, e cobre preparação E resposta.** Ela regulamenta o
+   incremento de custeio para **preparação e resposta** a emergências em saúde pública, exigindo
+   declaração do ente e **Plano de Ação**. A página dizia "o emergencial, que é de resposta".
+7. **Prepara RS — a condição não é uma, são três.** Pelo portal do estado, a **Resolução da Fundec/RS
+   nº 008/2026** repassa R$ 32,3 milhões a 138 municípios, em três faixas por população, e exige:
+   homologação de estado de calamidade pública por evento adverso súbito em 2023 e/ou 2024; área de
+   risco oficialmente mapeada pelo Serviço Geológico do Brasil; e requisitos técnicos e
+   administrativos, entre eles plano municipal de contingência atualizado e coordenador designado.
+   A página reduzia tudo a "condição = plano de contingência atualizado", o que subestima o que o
+   município precisa ter. A data "12/06/2026" da resolução **não se confirmou** e saiu.
+
+**Uma remoção por falta de fonte.** O "edital de 2025 (31 municípios)" perdeu o número: a página do
+Fundo Nacional do Meio Ambiente **exige autenticação** (recusa de acesso, respeitada), e o resultado
+por município não foi localizado em fonte oficial consultável. Fica o que se confirma — o edital de
+R$ 32 milhões para planos operativos municipais na Amazônia e no Pantanal, com o link oficial — e a
+lacuna declarada ao lado. É a regra do bloco A: **o que não se confirma em fonte oficial sai da
+página.**
+
+**Duas correções no próprio banco, não só na página.** O `caveat` de `transferencias.json` dizia que
+o número real de municípios do Prepara RS "pode ser 137", por um duplicado de Charqueadas — e a
+lista nominal no próprio arquivo tem hoje **138 municípios distintos somando exatamente R$
+32.300.000**, igual ao valor e ao número do portal do estado. Caveat que descreve defeito já
+corrigido é afirmação falsa, e saiu. E a `condicionalidade` do Prepara RS em
+`financiamento/compromissos_federais.json` estava incompleta do mesmo jeito que a página: passou a
+trazer as três condições.
+
+**Confirmados sem correção:** Lei 14.944/2024 (31/07/2024, institui a PNMIF) · Decreto 11.219/2022
+(05/10/2022, transferências obrigatórias da Lei 12.340) · Lei 8.142/1990 (28/12/1990) · LC 141/2012
+(13/01/2012).
+
+**O vocabulário dos estados do dinheiro, fixo e verificável**, aplicado a toda a página:
+**anunciado** (valor no ato: MP, portaria, plano) · **empenhado** e **pago** (execução orçamentária,
+por unidade gestora e UF) · **transferido ao município** (com registro por município e data). Nunca
+se chama de "transferido" ou "chegou" o que é só anunciado ou empenhado. E **"pago" por UF da
+unidade gestora não é "chegou ao estado"**: a unidade gestora pode ser nacional, e a página diz isso
+onde mostra o mapa.
 
