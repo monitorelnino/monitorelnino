@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-01 · #500 · Transferências da União por município, e a consulta por cidade
+
+O coletor que faltava, pelo download de dados abertos do Portal — sem chave, porque a API exige uma e
+chave é proibida aqui. Nove meses de 2026, 5.569 de 5.569 municípios casados depois de duas regras e
+17 equivalências. Setembro vem marcado parcial pela medição. O cartão "Quanto chegou à sua cidade"
+entra na página, e diz o que não sabe. METODOLOGIA §75.
+
 ## 2026-10-01 · #499 · Financiamento refeito: seis blocos, nove cartões e a auditoria do bloco A
 
 Cada base legal lida no texto oficial: sete correções, entre elas a condição do FNMA (errada em cinco

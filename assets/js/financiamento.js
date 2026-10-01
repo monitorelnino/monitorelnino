@@ -720,3 +720,102 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     }
   } catch (e) { /* idem */ }
 })();
+
+/* ===== "Quanto chegou à sua cidade" (01/10/2026) ==========================================
+ *
+ * O cartão que o bloco B não pôde publicar, porque faltava a coleta por município. Ele existe
+ * agora: `coletar_transferencias_municipais.py` lê o download de dados abertos do Portal da
+ * Transparência — sem chave de API — e agrega por município, mês e rota.
+ *
+ * Três coisas que este bloco NÃO faz, e que são a diferença entre uma consulta e uma vitrine:
+ *
+ *   - não soma mês marcado como `parcial` no total sem dizer que é parcial. O Portal publica o
+ *     arquivo do mês e continua enchendo; setembro de 2026 veio com um décimo das linhas dos outros
+ *     meses, e um total que engolisse isso mostraria uma queda do arquivo como queda do dinheiro.
+ *   - não mostra "R$ 0" para cidade sem registro: diz que não há registro no período, que é outra
+ *     afirmação.
+ *   - não inventa a rota "emenda parlamentar": ela não é identificável nesta fonte, e a nota do
+ *     cartão declara isso em vez de deixar o leitor supor que o resto é emenda.
+ */
+(async function consultaPorCidade(){
+  const sel = document.getElementById('cidadeUF');
+  const entrada = document.getElementById('cidadeNome');
+  const lista = document.getElementById('cidadeLista');
+  const conta = document.getElementById('cidadeConta');
+  const saida = document.getElementById('cidadeResultado');
+  if (!sel || !entrada || !lista || !saida) return;
+  const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const reais = v => 'R$ ' + Number(v || 0).toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  const ROTULO = {constitucional: 'constitucional (FPM, cotas e royalties)', saude: 'saúde',
+                  assistencia_social: 'assistência social', defesa_civil: 'defesa civil',
+                  outras: 'outras legais, voluntárias e específicas'};
+
+  let T, REF;
+  try {
+    [T, REF] = await Promise.all([
+      fetch('data/financiamento/municipios/transferencias_uniao.json').then(r => r.ok ? r.json() : null),
+      fetch('data/municipios_ibge_referencia.json').then(r => r.ok ? r.json() : null),
+    ]);
+  } catch (e) { T = REF = null; }
+  if (!T || !T.municipios || !REF) {
+    if (conta) conta.textContent = 'Transferências por município: sem coleta até o corte.';
+    return;
+  }
+  const parciais = Object.entries(T.meses_lidos || {}).filter(([, v]) => v.parcial).map(([m]) => m);
+  const porUF = {};
+  const codigo = {};
+  REF.forEach(m => {
+    const c = String(m.codigo_ibge).padStart(7, '0');
+    (porUF[m.uf] = porUF[m.uf] || []).push(m.nome);
+    codigo[m.uf + '|' + m.nome.toLowerCase()] = c;
+  });
+  Object.keys(porUF).sort().forEach(uf => sel.insertAdjacentHTML('beforeend', `<option value="${uf}">${uf}</option>`));
+  const meses = Object.keys(T.meses_lidos || {}).sort();
+  if (conta) {
+    conta.textContent = `${Object.keys(T.municipios).length.toLocaleString('pt-BR')} municípios com registro, `
+      + `${meses.length} mês(es) lido(s)` + (parciais.length ? ` · ${parciais.length} marcado(s) como parcial` : '')
+      + ` · atualizado em ${T.atualizado_em || '—'}`;
+  }
+
+  sel.addEventListener('change', () => {
+    const nomes = porUF[sel.value] || [];
+    lista.innerHTML = nomes.slice().sort((a, b) => a.localeCompare(b, 'pt-BR'))
+      .map(n => `<option value="${esc(n)}"></option>`).join('');
+    entrada.disabled = !sel.value;
+    entrada.value = '';
+    saida.hidden = true;
+  });
+
+  function mostrar(){
+    const c = codigo[sel.value + '|' + (entrada.value || '').trim().toLowerCase()];
+    if (!c) { saida.hidden = true; return; }
+    const reg = T.municipios[c];
+    saida.hidden = false;
+    if (!reg) {
+      /* Sem registro NÃO é zero: é ausência de registro no período lido, e o cartão diz isso. */
+      saida.innerHTML = `<p class="u-mb-0"><strong>${esc(entrada.value)} (${esc(sel.value)})</strong>: `
+        + `nenhuma transferência da União registrada nos ${meses.length} mês(es) lidos.</p>`;
+      return;
+    }
+    const rotas = Object.entries(reg.por_rota || {}).sort((a, b) => b[1] - a[1]);
+    const ultimos = Object.entries(reg.meses || {}).sort().slice(-3).reverse();
+    const temParcial = ultimos.some(([m]) => parciais.includes(m));
+    saida.innerHTML =
+      `<p class="u-mb-2"><strong>${esc(entrada.value)} (${esc(sel.value)})</strong> recebeu `
+      + `<strong>${reais(reg.total)}</strong> da União nos ${meses.length} mês(es) lidos de 2026.</p>`
+      + '<p class="u-mb-1">Por caminho:</p><ul class="u-mb-2">'
+      + rotas.map(([r, v]) => `<li>${esc(ROTULO[r] || r)}: ${reais(v)}</li>`).join('')
+      + '</ul><p class="u-mb-1">Últimos meses:</p><ul class="u-mb-2">'
+      + ultimos.map(([m, rr]) => {
+          const soma = Object.values(rr).reduce((a, b) => a + b, 0);
+          const mes = m.slice(4) + '/' + m.slice(0, 4);
+          return `<li>${mes}: ${reais(soma)}${parciais.includes(m) ? ' <em>(mês parcial no Portal)</em>' : ''}</li>`;
+        }).join('')
+      + '</ul>'
+      + (temParcial ? '<p class="note u-mb-1">Mês marcado como parcial: o Portal publica o arquivo do mês e continua preenchendo.</p>' : '')
+      + '<p class="note u-mb-0">Emenda parlamentar não é identificável nesta fonte e por isso não aparece como caminho. '
+      + '<a href="https://portaldatransparencia.gov.br/download-de-dados/transferencias/" target="_blank" rel="noopener">Dados abertos do Portal da Transparência</a>.</p>';
+  }
+  entrada.addEventListener('change', mostrar);
+  entrada.addEventListener('input', () => { if ((entrada.value || '').length > 2) mostrar(); });
+})();

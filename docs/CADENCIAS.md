@@ -33,6 +33,7 @@ O formato de cada linha é fixo e lido por máquina:
 | `descobrir_planos.py` | diaria | encadeado | noturno_descoberta | busca web por planos municipais |
 | `seguir_pistas.py` | diaria | encadeado | noturno_descoberta | pistas até o documento |
 | `coletar_saude_estadual.py` | diaria | encadeado | noturno_saude_estadual | planos de saúde dos 27 estados: busca aberta e fontes declaradas |
+| `coletar_transferencias_municipais.py` | mensal | 05 do mês, 03:00 UTC | semanal_sinais_e_links | transferências da União a cada município, por mês e por rota |
 | `triar_confianca_pistas.py` | diaria | encadeado | noturno_descoberta | confiança de cada pista |
 | `preservar_evidencias.py` | diaria | encadeado | noturno_evidencias | cópia e hash dos documentos |
 | `scripts/preservar_textos_integrais.py` | diaria | encadeado | noturno_evidencias | texto integral dos atos |

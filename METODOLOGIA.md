@@ -2416,3 +2416,82 @@ nos dois lugares passa, renomear num só reprova, que é a única coisa que ele 
 `#antes-do-desastre` e `#depois-do-desastre` saíram, porque duas convenções para a mesma âncora é
 como um dos dois lados envelhece. O portão `verificar_ancoras_internas.py` (§71) confere.
 
+## 75. Transferências da União por município: o coletor, e a porta sem chave (01/10/2026)
+
+Era o único item do handover do Financiamento que ficou em aberto: o cartão "Quanto chegou à sua
+cidade" dependia de coleta **por município**, que não existia. Existe agora.
+
+**A porta sem chave, e por que ela.** O Portal da Transparência tem duas portas para o mesmo dado. A
+**API** (`api.portaldatransparencia.gov.br`) exige, desde 2023, o cabeçalho `chave-api-dados`;
+medido em 01/10/2026, responde **403** sem ele. A chave é gratuita e ainda assim está **proibida
+aqui**: o repositório é público e vai ser aberto, e a regra é "nenhuma API ou produto pago
+dependurado no código, nem atrás de chave configurável". A outra porta é o **download de dados
+abertos** (`/download-de-dados/transferencias/AAAAMM`), que devolve um ZIP com CSV sem chave e sem
+cadastro — medido, **200**, 2,4 MB para janeiro. É a segunda. Não é contorno: é a publicação oficial
+em dados abertos do mesmo órgão, e não depende de credencial que um fork não teria.
+
+**O que entra na conta.** Só `TIPO FAVORECIDO = "Administração Pública Municipal"` — 43.987 das
+122.527 linhas de janeiro. As outras são transferência a estado, a entidade sem fins lucrativos, a
+empresa: dinheiro que não chega à prefeitura, e somá-lo inflaria o número da cidade.
+
+**A rota, derivada do que o arquivo traz.** `TIPO TRANSFERÊNCIA` tem dois valores só, grosso demais
+para "por qual caminho". A rota sai de uma derivação **declarada**, pelos códigos de função e
+subfunção, que são fato no arquivo: **constitucional** (FPM, cotas, royalties) · **saúde** (função
+10) · **assistência social** (função 08) · **defesa civil** (subfunção 182) · **outras**. A ordem das
+regras importa: defesa civil é subfunção DENTRO de outras funções, e uma transferência de defesa
+civil na função Saúde é defesa civil, não SUS. **Emenda parlamentar não é identificável nesta
+fonte**, e por isso não existe como rota — a lacuna é declarada no arquivo e no cartão, não
+preenchida por aproximação. Nenhum nome de autor entra: a regra do projeto proíbe, e esta fonte não
+os traz.
+
+**A chave é SIAFI, o site é IBGE, e o casamento foi medido.** O arquivo identifica a cidade pelo
+código SIAFI (quatro dígitos) e o resto do site é indexado por IBGE (sete), sem relação aritmética
+entre os dois. A primeira coleta casou **5.549 de 5.569** e deixou **20** de fora, com R$ 133,4
+milhões — 0,37% do mês. Nenhum era erro de dado: eram grafias que as duas fontes não compartilham
+("ITAPAGE" × "Itapajé", "PARATI" × "Paraty") ou municípios renomeados. Resolvidos em dois níveis,
+para não virar tabela sem fim: **duas regras gerais** — o SIAFI conserva o nome antigo num sufixo
+"(EX …)", que sai antes de comparar; e a referência do IBGE às vezes traz o nome alternativo entre
+parênteses ("Januário Cicco (Boa Saúde)"), de modo que cada município passa a ser indexado por todos
+os seus nomes — e **uma tabela de 17 equivalências**, conferida município a município. Depois delas:
+**5.569 de 5.569, zero não casados**, nos nove meses.
+
+**Duas coisas que a primeira coleta real revelou, e que viraram regra.**
+
+1. **Há linha municipal sem município identificado na fonte** — R$ 24,3 milhões em nove meses. Não é
+   falha de casamento: é a fonte que não diz qual cidade. Vive em `sem_municipio_na_fonte`, por UF,
+   **separada** de `nao_casados`: "não foi dito" e "não consegui ler" são coisas diferentes, e
+   juntá-las apagaria a diferença.
+2. **O mês mais recente publicado pode estar incompleto.** Setembro de 2026 veio com 19.307 linhas e
+   R$ 3,11 bi, contra 43 mil a 58 mil linhas e R$ 25 bi a 37 bi nos outros oito: o Portal publica o
+   arquivo do mês e continua enchendo. Excluir só o mês em curso não bastava. O mês muito abaixo da
+   **mediana de linhas dos demais** passa a ser marcado `parcial`, com o motivo escrito — régua
+   medida, não arbitrada, e nada é marcado com menos de três meses lidos, porque aí não há mediana
+   que signifique algo.
+
+**O cartão diz o que não sabe.** Cidade sem registro não vira "R$ 0" — ele diz que não há
+transferência registrada nos meses lidos, que é outra afirmação. Mês parcial aparece marcado. E a
+ausência da rota de emenda está escrita, para o leitor não supor que o resto é emenda.
+
+**Duas coisas que a revisão de travas apontou.** A trava estrutural — o autoteste que lê o próprio
+fonte e reprova se aparecer escrita no banco — cobria **três** dos cinco arquivos proibidos; passou a
+cobrir os cinco, pela mesma lista que `descobrir_planos.py` usa, e um caso novo confere a lista. Não
+havia violação real, e isso não torna a trava boa: trava que esquece dois nomes não pegaria a escrita
+de amanhã.
+
+E o arquivo de saída **nasce com 4,7 MB e só cresce** — ele acumula mês a mês, por até 5.569
+municípios. É a mesma categoria de `log_buscas.json` e `fontes_consultadas.json`: consulta-se
+**agregando**, nunca lendo inteiro. O hook que bloqueia leitura acima de 1 MB em `data/` já o protege
+mecanicamente; se a editoria quiser, ele entra também na tabela de arquivos que nunca entram em
+contexto, no `CLAUDE.md` — essa linha é dela, não minha.
+
+**E o `select` da consulta nascia fora da escala.** O campo de estado herdava o tamanho padrão do
+navegador — **13,3333 px**, medido nas três larguras —, e a escala tipográfica do projeto é fixa
+(12 · 14 · 16 · 18 · 22 · 28 · 36 · 48). Eu havia estilizado o `input` e não o `select`; o portão de
+consistência visual reprovou nas três larguras, e estava certo: dois campos lado a lado com tamanhos
+diferentes são duas famílias. Os dois passam a dividir a mesma regra.
+
+**Idempotência e cadência.** Reler um mês **substitui** aquele mês em vez de acumular, o que permite
+recoletar um arquivo que o Portal republicou. A cadência é **mensal**, declarada em
+`docs/CADENCIAS.md`: o Portal publica por mês, e semanal seria baixar nove ZIPs para reencontrar o
+mesmo número. Peso zero: nunca lido por `recalcular_mare.py` nem por `gerar_monitor_saude.py`.
+

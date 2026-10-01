@@ -1029,8 +1029,13 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
    ao digitar. */
 .busca-mun{display:flex; flex-wrap:wrap; align-items:baseline; gap:var(--sp-2); margin:var(--sp-3) 0;}
 .busca-mun label{font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);}
-.busca-mun input{flex:1 1 180px; min-width:0; max-width:100%; font:inherit; font-size:var(--fs-small);
-  padding:var(--sp-2); border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); color:var(--ink);}
+/* O `select` entra na MESMA regra do `input`, e não por simetria: sem ela ele herda o tamanho
+   padrão do navegador — 13,3333 px, medido —, que está fora da escala tipográfica fixa do projeto
+   (12 · 14 · 16 · 18 · 22 · 28 · 36 · 48). O portão de consistência visual reprovou nas três
+   larguras, e estava certo: dois campos lado a lado com tamanhos diferentes são duas famílias. */
+.busca-mun input, .busca-mun select{flex:1 1 180px; min-width:0; max-width:100%; font:inherit;
+  font-size:var(--fs-small); padding:var(--sp-2); border:1px solid var(--line);
+  border-radius:var(--radius); background:var(--surface); color:var(--ink);}
 .busca-mun-conta{flex:1 1 100%; font-family:var(--font-dado); font-size:var(--fs-caption);
   line-height:var(--lh-caption); color:var(--muted); margin:0;}
 

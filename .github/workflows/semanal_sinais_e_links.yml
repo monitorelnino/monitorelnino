@@ -42,6 +42,12 @@ jobs:
         # que ainda não têm diário indexado, que é onde a mudança acontece: quem já está coberto não
         # volta à fila, porque edição indexada não desaparece. Por isso ela fica barata com o tempo.
         coletar_cobertura_qd.py
+        # 01/10/2026: transferências da União a cada município, do download de DADOS ABERTOS do
+        # Portal da Transparência — sem chave de API, porque a API exige `chave-api-dados` e chave
+        # está proibida neste repositório. O arquivo é MENSAL e fechado: a rotina semanal reconsulta
+        # os meses do ano, e reler um mês é idempotente (substitui aquele mês, não acumula). É o
+        # dado que faltava para a consulta por cidade na página de Financiamento.
+        coletar_transferencias_municipais.py --ano 2026
         # 30/09/2026 (PR 3 do enquadramento federal de risco): municípios prioritários do MMA.
         # Semanal porque a portaria é anual; o coletor só preserva evidência quando o TEXTO do ato
         # muda, e avisa em voz alta quando a janela da atualização anual passou sem mudança.
