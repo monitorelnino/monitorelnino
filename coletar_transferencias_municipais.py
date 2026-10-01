@@ -86,6 +86,12 @@ FUNCAO_ASSISTENCIA = "08"
 SUBFUNCAO_DEFESA_CIVIL = "182"
 ROTAS = ("constitucional", "saude", "assistencia_social", "defesa_civil", "outras")
 
+# Os cinco arquivos do banco, na mesma lista que `descobrir_planos.py` usa. Nenhum coletor de
+# camada de contexto pode escrever neles, e o autoteste confere que este não ganhou essa
+# escrita numa edição futura.
+BANCO_PROIBIDO = ("estados.json", "saude_uf.json", "municipios.json", "indice.json",
+                  "monitor_saude.json")
+
 
 def normalizar(nome: str) -> str:
     """Nome de município comparável: sem acento, sem pontuação, maiúsculas. Função pura.
@@ -487,9 +493,16 @@ def autoteste() -> int:
         "ano passado vai até dezembro":
             lambda: meses_do_ano(2025, datetime.date(2026, 10, 1))[-1] == "202512",
         # TRAVA ESTRUTURAL: este coletor não pode ganhar escrita no índice.
+        # A lista dos proibidos é a MESMA do resto do projeto (`descobrir_planos.py`): os cinco
+        # arquivos do banco. A primeira versão desta trava cobria três, e o revisor de travas acusou
+        # — com razão: trava que esquece dois nomes não pegaria uma escrita futura em `saude_uf.json`
+        # nem em `monitor_saude.json`. Frouxa por omissão continua frouxa.
         "o fonte grava só no arquivo de transferências":
             lambda: ("grav" + "ar_em(SAIDA") in fonte
-                     and not any(grava_em(n) for n in ("indice.json", "municipios.json", "estados.json")),
+                     and not any(grava_em(n) for n in BANCO_PROIBIDO),
+        "a lista de proibidos é a do projeto, com os cinco arquivos do banco":
+            lambda: set(BANCO_PROIBIDO) == {"estados.json", "saude_uf.json", "municipios.json",
+                                            "indice.json", "monitor_saude.json"},
         "a saída é o arquivo por município, de peso zero":
             lambda: SAIDA.name == "transferencias_uniao.json" and "PESO ZERO" in fonte,
     }

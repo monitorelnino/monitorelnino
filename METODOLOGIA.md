@@ -2472,6 +2472,18 @@ os seus nomes — e **uma tabela de 17 equivalências**, conferida município a 
 transferência registrada nos meses lidos, que é outra afirmação. Mês parcial aparece marcado. E a
 ausência da rota de emenda está escrita, para o leitor não supor que o resto é emenda.
 
+**Duas coisas que a revisão de travas apontou.** A trava estrutural — o autoteste que lê o próprio
+fonte e reprova se aparecer escrita no banco — cobria **três** dos cinco arquivos proibidos; passou a
+cobrir os cinco, pela mesma lista que `descobrir_planos.py` usa, e um caso novo confere a lista. Não
+havia violação real, e isso não torna a trava boa: trava que esquece dois nomes não pegaria a escrita
+de amanhã.
+
+E o arquivo de saída **nasce com 4,7 MB e só cresce** — ele acumula mês a mês, por até 5.569
+municípios. É a mesma categoria de `log_buscas.json` e `fontes_consultadas.json`: consulta-se
+**agregando**, nunca lendo inteiro. O hook que bloqueia leitura acima de 1 MB em `data/` já o protege
+mecanicamente; se a editoria quiser, ele entra também na tabela de arquivos que nunca entram em
+contexto, no `CLAUDE.md` — essa linha é dela, não minha.
+
 **Idempotência e cadência.** Reler um mês **substitui** aquele mês em vez de acumular, o que permite
 recoletar um arquivo que o Portal republicou. A cadência é **mensal**, declarada em
 `docs/CADENCIAS.md`: o Portal publica por mês, e semanal seria baixar nove ZIPs para reencontrar o
