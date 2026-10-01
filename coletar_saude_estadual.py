@@ -44,6 +44,7 @@ USO
   python coletar_saude_estadual.py --bateria --uf RR
 """
 import json
+import pathlib
 import re
 import sys
 import urllib.parse
@@ -200,12 +201,22 @@ def buscar_searxng(query: str, timeout: int = 25, motores: list = None) -> dict:
 
 
 def pista_de(resultado: dict, uf: str, ident: str, query: str) -> dict:
+    """A pista como ela NASCE: não confirmada, não promovível. Função pura.
+
+    Os três últimos campos são a TRAVA DE NASCENÇA da fila, e não enfeite.
+    `data/pistas_imprensa_saude.json` é compartilhado com `monitorar_imprensa_saude.py`, e quem
+    tria lê `documento_oficial_confirmado` para decidir — `scripts/preparar_fila_revisao.py` faz
+    exatamente isso. Pista sem os campos passa pela triagem por AUSÊNCIA de chave (`dict.get`
+    devolve `None` de qualquer jeito), o que é passar por acidente em vez de por regra. Eles
+    existem para que a trava seja declarada e testável, não presumida."""
     return {"alvo": f"funil-saude/{uf}", "uf": uf, "consulta": ident, "query": query,
             "titulo": resultado.get("title"), "url": resultado.get("url"),
             "trecho": (resultado.get("content") or "")[:400],
             "oficial": oficial(resultado.get("url")),
             "origem": ORIGEM, "registrado_em": hoje_editorial().strftime("%d/%m/%Y"),
-            "status": "pista — promoção exige documento primário lido pelo juiz (§3.2)"}
+            "documento_oficial_confirmado": None,
+            "promovivel": False,
+            "status": "pendente_confirmacao_documento"}
 
 
 def bateria(uf: str) -> dict:
@@ -269,7 +280,21 @@ def ler_fontes(uf: str) -> dict:
 # =============================================================================================
 # Autoteste — offline, sem rede e sem escrever em data/
 # =============================================================================================
+def fonte_do_coletor() -> str:
+    """O código OPERACIONAL deste arquivo, como texto — tudo o que vem antes do autoteste.
+
+    É o que permite ao autoteste cobrar a trava estrutural: conferir o que o coletor PODE fazer,
+    não só o que ele fez nesta versão. O corte no `def autoteste` não é detalhe: sem ele, os nomes
+    de arquivo proibidos que o próprio teste procura aparecem no texto procurado, e o teste reprova
+    por se encontrar — foi o que aconteceu na primeira versão desta trava."""
+    texto = pathlib.Path(__file__).read_text(encoding="utf-8")
+    corte = texto.find("def autoteste")
+    return texto[:corte] if corte > 0 else texto
+
+
 def autoteste() -> int:
+    nascida = pista_de({"title": "t", "url": "https://saude.ac.gov.br/p.pdf", "content": "c"},
+                       "AC", "plancon_elnino", "q")
     r_ok = {"title": "Plano de Contingência para Arboviroses - Secretaria de Saúde do Acre",
             "url": "https://saude.ac.gov.br/plano.pdf", "content": "dengue e chikungunya"}
     r_greve = {"title": "Plano de contingência de greve", "url": "https://saude.ac.gov.br/g",
@@ -330,6 +355,22 @@ def autoteste() -> int:
                                             "fontes_lidas", "fonte_fora_do_ar", "fonte_nao_declarada"},
         "nenhuma decisão vira 'nada localizado', que é da bateria municipal":
             lambda: "nada localizado" not in DECISAO_NO_LOG.values(),
+        # TRAVA DE NASCENÇA, no mesmo formato que o outro coletor da mesma fila cobra por assert.
+        "pista nasce não confirmada":
+            lambda: nascida["documento_oficial_confirmado"] is None,
+        "pista nasce não promovível":
+            lambda: nascida["promovivel"] is False,
+        "pista nasce pendente de confirmação":
+            lambda: nascida["status"] == "pendente_confirmacao_documento",
+        # TRAVA ESTRUTURAL, conferida no próprio fonte: este coletor não pode ganhar, numa edição
+        # futura, uma escrita no banco. Não basta "hoje não escrevo" — o portão tem de perceber.
+        "o fonte não grava em nenhum arquivo do banco":
+            lambda: not any(destino in fonte_do_coletor()
+                            for destino in ('gravar("saude_uf', 'gravar("monitor_saude',
+                                            'gravar("indice', 'gravar("estados',
+                                            'gravar("municipios')),
+        "o fonte grava só na fila de pistas":
+            lambda: sorted(set(re.findall(r'gravar\((PISTAS|"[^"]+")', fonte_do_coletor()))) == ["PISTAS"],
     }
     return rodar_autoteste(casos)
 
