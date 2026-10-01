@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-01 · #497 · Para gestores refeita, e o § 7º tem oito incisos
+
+Página em cinco blocos, tom de convite: saem o período eleitoral, as chaves de rota e o seletor de
+município (a consulta vive na inicial). A conferência do § 7º no texto oficial achou um inciso novo —
+a Lei 15.355/2026 acrescentou o da **fauna** —, e a lista aprovada recebe o oitavo elemento. A seção
+de recursos é só ponteiro, com âncoras estáveis e portão que reprova âncora morta. METODOLOGIA §71.
+
 ## 2026-10-01 · #496 · Defesa civil com o desenho padrão do site
 
 Os seis números do topo no cartão de destaque do site, em duas linhas de três; os cinco mapas e o

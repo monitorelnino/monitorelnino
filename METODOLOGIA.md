@@ -2181,3 +2181,50 @@ fazia: a escala tipográfica é fixa, então é degrau, não `clamp`.
 atmosfera o primeiro `path` é a malha de 5° — que não tem, nem deve ter, ouvinte de mouse. Ele passa
 a apontar `path.uf-path`: quem carrega o tooltip é o território.
 
+## 71. "Para gestores": convite, não cobrança — e o § 7º tem oito incisos (01/10/2026)
+
+Textos aprovados pela editoria em 01/10/2026. Tom declarado: convite. Saem "dever", "obrigação" e
+"devem"; o gestor é estimulado, não cobrado.
+
+**A conferência que o handover exigiu antes de publicar, e o que ela achou.** O § 7º do art. 3º-A da
+Lei nº 12.340/2010 foi lido no texto compilado oficial do Planalto. Ele tem **oito** incisos, não
+sete: a **Lei nº 15.355, de 11/03/2026**, acrescentou o **VIII — "organização do sistema de resgate e
+atendimento emergencial à fauna impactada, bem como dos pontos de abrigo após a ocorrência de
+desastre"**. A lista aprovada tinha sete elementos; ela recebe o oitavo, que é o que a regra do
+handover manda ("ajustar a lista aos incisos, sem acrescentar nem tirar elemento"). Conferidos também
+os dois incisos que o handover pediu por nome: o **IV** fala de rotas de deslocamento, pontos seguros
+no momento do desastre e pontos de abrigo depois; o **VII**, dos centros de recebimento e da
+estratégia de distribuição de doações e suprimentos. A citação na página leva ao texto oficial.
+
+**O que sai da página.** A seção do período eleitoral — a lista vinha vazia e apontava para um
+calendário já apagado do site — e toda menção a ele; a frase "Publicar atos é dever legal, não
+publicidade"; os rótulos de chave (REGRA, PLANO, PNMIF, ESTADUAL, DIRETA) e a frase que os
+explicava; e o **seletor de município**, porque a mesma consulta existe na página inicial e duas
+buscas para a mesma pergunta divergem na primeira correção — a desta página era a segunda. Com as
+duas seções, saiu o código que as alimentava: código morto escrevendo em `id` que não existe é o que
+o portão de estrutura reprova, com razão, porque ele não distingue "removido de propósito" de
+"quebrado".
+
+**Nenhuma classe nova.** `.passos` já é grade de três, `.cartao` já é a moldura leve e `.hint` já é a
+linha discreta do site. As três classes que eu havia inventado — `passos--tres`, `cartao--contorno`,
+`linha-links` — seriam três famílias para o que já tem uma.
+
+**A regra de sincronia com o Financiamento, permanente.** A seção "Como os recursos chegam" é **só
+ponteiro**: nenhum conteúdo de financiamento é repetido aqui. Foram criadas duas âncoras estáveis em
+`financiamento.html` — `#antes-do-desastre` e `#depois-do-desastre`, nos cartões que já tratavam
+exatamente disso — e a terceira, `#preventivo`, já existia.
+
+Ponteiro é mais barato que cópia e não divergir dela; o que ele tem de pior é **quebrar em
+silêncio**. Link para arquivo inexistente o navegador acusa; **âncora para `id` inexistente, não** —
+a página abre no topo e ninguém percebe. Já aconteceu duas vezes aqui, nas duas direções: a seção do
+período eleitoral apontando para o calendário apagado, e a página de imprensa prometendo "o modelo de
+pedido de acesso à informação" em "Para gestores" depois de o gerador ter saído do site em
+13/09/2026. Daí o portão **`scripts/verificar_ancoras_internas.py`**, que confere toda âncora citada
+nas dez páginas publicadas. O par protegido está declarado nele (`PADRAO`) para que o **CODEMAP**
+mostre a cobertura nas duas páginas — e, para isso, o gerador do CODEMAP passou a ler também os
+portões de página escritos em Python, que antes ele ignorava.
+
+**Na imprensa**, a linha do I4 passa a "como preparar e publicar um plano, e como os recursos
+chegam", e a pergunta de fato que prometia o modelo de LAI perdeu a promessa — não o modelo, que já
+não existia.
+

@@ -157,7 +157,13 @@ def ler_tudo() -> tuple:
     pythons = {p.name: p.read_text(encoding="utf-8", errors="replace")
                for p in sorted(RAIZ.glob("*.py"))}
     portoes = {p.name: p.read_text(encoding="utf-8", errors="replace")
-               for p in sorted((RAIZ / "scripts").glob("verificar_*.js"))}
+               for p in sorted(list((RAIZ / "scripts").glob("verificar_*.js"))
+                               # 01/10/2026: os portões de página em PYTHON também entram. Sem
+                               # isto, o portão de âncoras internas — que é o que faz valer a regra
+                               # de sincronia entre "Para gestores" e "Financiamento" — não
+                               # aparecia na coluna de cobertura de nenhuma das duas páginas, e o
+                               # mapa dizia que a regra não existia.
+                               + list((RAIZ / "scripts").glob("verificar_*.py")))}
     return paginas, scripts, pythons, portoes
 
 
