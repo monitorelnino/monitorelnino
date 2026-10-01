@@ -1,12 +1,12 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-10-01",
- "total_pistas": 7626,
- "total_municipios": 329,
+ "total_pistas": 7646,
+ "total_municipios": 330,
  "por_nivel": {
-  "A": 159,
-  "B": 1069,
-  "C": 6398
+  "A": 161,
+  "B": 1084,
+  "C": 6401
  },
  "grupos": [
   {
@@ -9992,6 +9992,169 @@
    ]
   },
   {
+   "ibge": "1506104",
+   "municipio": "Primavera",
+   "uf": "PA",
+   "melhor_nivel": "A",
+   "n_pistas": 8,
+   "niveis": {
+    "A": 1,
+    "B": 5,
+    "C": 2
+   },
+   "pistas": [
+    {
+     "id": "07e8f9702d",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/svsa/vigilancia-ambiental/plano-de-contingencia-seca-e-estiagem.pdf",
+     "titulo": "plano de contingência para emergências em saúde pública por seca",
+     "trecho": "Desde a primavera de 2023, o déficit de chuvas em uma área tão extensa do ... Este Plano de Contingência para Seca e Estiagem no âmbito da saúde estabelece ...",
+     "data": "01/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "33c5c4e2e4",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://correiopetropolitano.com.br/2026/09/21/primavera-comeca-nesta-terca-feira-22-9-com-influencia-do-el-nino-2/",
+     "titulo": "Primavera começa nesta terça-feira (22/9) com influência do El Niño",
+     "trecho": "1 day ago ... A primavera começa nesta terça-feira, dia 22 de setembro, às ... Elaboração do Plano de Contingência para Chuvas Intensas Verão 2026/2027.",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "2ba4c41a5c",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://sul21.com.br/noticias/geral/2026/04/el-nino-deve-intensificar-chuvas-da-primavera-mas-ainda-e-cedo-para-prever-eventos-extremos/",
+     "titulo": "El Niño deve intensificar chuvas da primavera, mas ainda é cedo ...",
+     "trecho": "Apr 9, 2026 ... El Niño deve intensificar chuvas da primavera, mas ainda é cedo para prever eventos extremos ... plano de contingência bem estruturado. As ...",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "a691974354",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DdkM97SOz_M/",
+     "titulo": "A primavera começa nesta terça — e o El Niño pode mudar o ...",
+     "trecho": "7 hours ago ... Primavera 2026: 🌡️ Temperaturas podem ficar acima da ... Entre as medidas de preparação estão a elaboração do plano de contingência para ...",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "b92d75059e",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/reel/DdjcfUDOx9f/",
+     "titulo": "A primavera começa nesta terça-feira (22) com influência do El Niño ...",
+     "trecho": "1 day ago ... ... likes, 12 comments - defesacivil_petropolis on September 21, 2026: \"A primavera ... Entre as ações estão a elaboração do Plano de Contingência ...",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "f2c6baef92",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/reel/DdjcfUDOx9f/",
+     "titulo": "A primavera começa nesta terça-feira (22) com influência do El Niño ...",
+     "trecho": "4 days ago ... ... likes, 15 comments - defesacivil_petropolis on September 21, 2026: \"A primavera ... Entre as ações estão a elaboração do Plano de Contingência ...",
+     "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "56800fb421",
+     "nivel_confianca": "C",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "uf_divergente_na_url",
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://acaoinverno.recife.pe.gov.br/wp-content/uploads/2024/04/002-PLANO-DE-CONTINGE%CC%82NCIA-2024.pdf",
+     "titulo": "Plano de Contingência de 2024 - Ação Inverno - Conecta Recife",
+     "trecho": "CÓRREGO JARDIM PRIMAVERA. GUABIRABA. 4. CÓRREGO JENIPAPO. GUABIRABA. 2. VILA ... no Plano de Contingência para ações de resposta a desastres e situações emer ...",
+     "data": "01/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "bb4964b867",
+     "nivel_confianca": "C",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "uf_divergente_na_url"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://saude.es.gov.br/media/plano-de-contingencia-calor-extremo-sesa-2026-2.pdf",
+     "titulo": "plano de contingência da secretaria de estado da saúde - SESA",
+     "trecho": "O Plano de Contingência para o Calor extremo foi elaborado a partir de dados e ... muito forte entre a primavera e o início do verão no Hemisfério Sul subiu para.",
+     "data": "01/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3301702",
    "municipio": "Duque de Caxias",
    "uf": "RJ",
@@ -10144,6 +10307,159 @@
      "trecho": "Jul 9, 2026 ... ... Plano de Contingência para nos preparar. Fique de olho nas ... Duque de Caxias - RJ.",
      "data": "21/09/2026",
      "status": "pista — recusada pelo juiz: sem_documento_primario"
+    }
+   ]
+  },
+  {
+   "ibge": "3304508",
+   "municipio": "Rio das Flores",
+   "uf": "RJ",
+   "melhor_nivel": "A",
+   "n_pistas": 8,
+   "niveis": {
+    "A": 1,
+    "B": 7,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "717dc075f0",
+     "nivel_confianca": "A",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_titulo",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.defesacivil.rj.gov.br/images/sedec-arquivos/PLANCON_23_24__Versao_1_0.pdf",
+     "titulo": "Base para revisão PLANCON 23/24.docx",
+     "trecho": "PLANO DE CONTINGÊNCIAS · DO ESTADO DO RIO DE JANEIRO · PARA CHUVAS INTENSAS · VERÃO 2023/2024 · (versão 1.0) NÍVEL: TÁTICO-OPERACIONAL · PLANO DE EMERGÊNCIA · Decreto nº 46.935, de 12 de fevereiro de 2020 · Verificar versão atualizada no QR Code a seguir: 3 ·",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: ente_nao_confirmado"
+    },
+    {
+     "id": "755af763db",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://resende.rj.gov.br/images/Produto%208.pdf",
+     "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO Resende - RJ",
+     "trecho": "... Rio das Flores, Valença e Vassouras. Os serviços contratados foram divididos ... Plano de Contingência e Proteção. (PLACONP), com sua última versão ...",
+     "data": "01/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "dd7ce9f7bc",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-rio-das-flores.pdf",
+     "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO RIO DAS FLORES",
+     "trecho": "Jan 18, 2012 ... Plano Municipal de Saneamento Básico – Rio das Flores/RJ. 8 ... Portanto, enquanto o plano de contingência aborda ações programadas de.",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "7207bc00aa",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "http://www.rio.rj.gov.br/dlstatic/10112/7502221/4349502/PLANODECONTINGENCIA20212022.pdf",
+     "titulo": "Plano De Contingência 2021-2022",
+     "trecho": "requisitos para confecção de Plano de Contingência, no · âmbito do SINPDEC); e) Decreto Rio nº 43.533, de 10 de agosto de 2017 · (Institui · a · rede · municipal · de · operações · e · monitoramento da cidade); f) Portaria MI nº 413/2018 (Define procedimentos sobre ·",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: ente_nao_confirmado"
+    },
+    {
+     "id": "38bcaa7326",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.cbmerj.rj.gov.br/estado-do-rio-apresenta-plano-de-contingencias-para-enfrentamento-da-seca-estiagem-e-incendio-florestal/",
+     "titulo": "Estado do Rio apresenta Plano de Contingências para enfrentamento ...",
+     "trecho": "O documento contempla desde o ... agilidade na mobilização de recursos e no apoio aos municípios sempre que houver necessidade. ... O Plano de Contingência estabelece seis Níveis de Resposta (NR), classificados do NR 0 ao NR 5, de acordo com a gravidade do cenário ...",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: ente_nao_confirmado"
+    },
+    {
+     "id": "90923bfd42",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://riodasflores.rj.gov.br/ws/media-library/ea77f2a010b29ebe3e7aaeb4be170c7a/decreto-0402026.pdf",
+     "titulo": "decreto 40/2026",
+     "trecho": "Os interessados (grupos formais, ... Cel. Eurico de Castro, nº 14, Centro, Rio das Flôres/RJ. ... O Prefeito Rodrigo Santana de Almeida assinou o Decreto nº 247/2025, que organiza o funcionamento das farmácias em regime de plantão para todo o ano de 2026....",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "22e2dde1f3",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.rj.gov.br/agenersa/sites/default/files/arquivos_paginas_basicas/DELIBERACAO4275.pdf",
+     "titulo": "SEI/ERJ - 20181557 - Governo do Estado do Rio de Janeiro",
+     "trecho": "Oct 8, 2021 ... Esbama, Resende, Rio das Flores: “· Reduzir o consumo ao máximo ... Plano de Contingência Naturgy Interior 2021 – 2022, foram avaliados ...",
+     "data": "01/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "3ea66a6622",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://pncp.gov.br/pncp-api/v1/orgaos/42498600000171/compras/2025/6001/arquivos/2",
+     "titulo": "TERMO DE REFERÊNCIA",
+     "trecho": "Rio das Flores. 5º ano Ensino. Fundamental. SIM. 9º ano ... - Apresentação do Plano de Contingência para prevenção de eventualidades nos dias da aplicação das.",
+     "data": "01/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -12302,6 +12618,109 @@
    ]
   },
   {
+   "ibge": "5208004",
+   "municipio": "Formosa",
+   "uf": "GO",
+   "melhor_nivel": "A",
+   "n_pistas": 5,
+   "niveis": {
+    "A": 1,
+    "B": 4,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "cb8119033e",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.bombeiros.go.gov.br/legislacao-aplicavel",
+     "titulo": "Legislação Aplicável - Corpo de Bombeiros Militar do Estado de Goiás",
+     "trecho": "... Formosa. 8/4/2021, https://www.bombeiros.go.gov.br/wp-content/uploads/2023/05 ... Plano de Contingência para adoção de medidas protetivas com objetivo ...",
+     "data": "01/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "af55f73484",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://agroempresario.com/publicacion/120391/gildo-insfran-anticipa-a-formosa-a-el-nino-con-un-plan-especial/",
+     "titulo": "Gildo Insfrán anticipa a Formosa a El Niño con un plan especial ...",
+     "trecho": "Formosa presentó un plan de contingencia ante el posible impacto del fenómeno El Niño, con medidas preventivas para responder a lluvias intensas y eventuales crecidas de los ríos Pilcomayo, Bermejo y Paraguay.",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "0438fb6f59",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://sapl.formosa.go.leg.br/norma/3314",
+     "titulo": "Lei Ordinária nº 442, de 20 de novembro de 2017",
+     "trecho": "Institui o Código Municipal de Meio Ambiente do município de Formosa/GO e dá outras providências. O PREFEITO MUNICIPAL DE FORMOSA – GOIÁS, no uso da atribuição ...",
+     "data": "01/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "7a379f8654",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://sapl.formosa.go.leg.br/ta/234/text",
+     "titulo": "Lei Complementar nº 11, de 18 de dezembro de 2012",
+     "trecho": "Art. 11-F. ... A Ouvidoria da Guarda Municipal de Formosa é um órgão permanente e independente, com autonomia administrativa e funcional, vinculada à Corregedoria ...",
+     "data": "01/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "98f7c33c3f",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.policiapenal.go.gov.br/atos-normativos/portarias/portria-no-273-2018-gab-dgap.html",
+     "titulo": "Portria nº 273/2018-GAB/DGAP - Polícia Penal",
+     "trecho": "Jul 15, 2025 ... se justifique para a solução da crise, com autorização expressa do responsável pela segurança seguido o plano de contingência interno da Unidade ...",
+     "data": "01/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3105400",
    "municipio": "Barão de Cocais",
    "uf": "MG",
@@ -12597,106 +13016,6 @@
      "trecho": " de recursos humanos, materiais e logísticos e a \narticulação intersetorial necessária. \nArt. 4º  O Plano Municipal de Contingência poderá ser atualizado \nsempre que necessário, especialmente diante de alterações na s \nnormativas, na estrutura da Rede Socioassistencial ou nas \ncaracterísticas e necessidades do território municipal. \nArt. 5º Aprovar o Termo de Aceite para adesão à Força de Proteção \ndo Sistema Único de Assistência Social – ForSUAS,",
      "data": "2026-09-25",
      "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "3304508",
-   "municipio": "Rio das Flores",
-   "uf": "RJ",
-   "melhor_nivel": "A",
-   "n_pistas": 5,
-   "niveis": {
-    "A": 1,
-    "B": 4,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "717dc075f0",
-     "nivel_confianca": "A",
-     "pontos_confianca": 7,
-     "sinais": [
-      "fonte_oficial",
-      "plano_no_titulo",
-      "ato_formal",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.defesacivil.rj.gov.br/images/sedec-arquivos/PLANCON_23_24__Versao_1_0.pdf",
-     "titulo": "Base para revisão PLANCON 23/24.docx",
-     "trecho": "PLANO DE CONTINGÊNCIAS · DO ESTADO DO RIO DE JANEIRO · PARA CHUVAS INTENSAS · VERÃO 2023/2024 · (versão 1.0) NÍVEL: TÁTICO-OPERACIONAL · PLANO DE EMERGÊNCIA · Decreto nº 46.935, de 12 de fevereiro de 2020 · Verificar versão atualizada no QR Code a seguir: 3 ·",
-     "data": "23/09/2026",
-     "status": "pista — recusada pelo juiz: ente_nao_confirmado"
-    },
-    {
-     "id": "dd7ce9f7bc",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_titulo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-rio-das-flores.pdf",
-     "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO RIO DAS FLORES",
-     "trecho": "Jan 18, 2012 ... Plano Municipal de Saneamento Básico – Rio das Flores/RJ. 8 ... Portanto, enquanto o plano de contingência aborda ações programadas de.",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "7207bc00aa",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_oficial",
-      "plano_no_titulo"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_busca_oficial",
-     "url": "http://www.rio.rj.gov.br/dlstatic/10112/7502221/4349502/PLANODECONTINGENCIA20212022.pdf",
-     "titulo": "Plano De Contingência 2021-2022",
-     "trecho": "requisitos para confecção de Plano de Contingência, no · âmbito do SINPDEC); e) Decreto Rio nº 43.533, de 10 de agosto de 2017 · (Institui · a · rede · municipal · de · operações · e · monitoramento da cidade); f) Portaria MI nº 413/2018 (Define procedimentos sobre ·",
-     "data": "23/09/2026",
-     "status": "pista — recusada pelo juiz: ente_nao_confirmado"
-    },
-    {
-     "id": "38bcaa7326",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_oficial",
-      "plano_no_titulo"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.cbmerj.rj.gov.br/estado-do-rio-apresenta-plano-de-contingencias-para-enfrentamento-da-seca-estiagem-e-incendio-florestal/",
-     "titulo": "Estado do Rio apresenta Plano de Contingências para enfrentamento ...",
-     "trecho": "O documento contempla desde o ... agilidade na mobilização de recursos e no apoio aos municípios sempre que houver necessidade. ... O Plano de Contingência estabelece seis Níveis de Resposta (NR), classificados do NR 0 ao NR 5, de acordo com a gravidade do cenário ...",
-     "data": "23/09/2026",
-     "status": "pista — recusada pelo juiz: ente_nao_confirmado"
-    },
-    {
-     "id": "90923bfd42",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_so_no_trecho",
-      "ato_formal"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://riodasflores.rj.gov.br/ws/media-library/ea77f2a010b29ebe3e7aaeb4be170c7a/decreto-0402026.pdf",
-     "titulo": "decreto 40/2026",
-     "trecho": "Os interessados (grupos formais, ... Cel. Eurico de Castro, nº 14, Centro, Rio das Flôres/RJ. ... O Prefeito Rodrigo Santana de Almeida assinou o Decreto nº 247/2025, que organiza o funcionamento das farmácias em regime de plantão para todo o ano de 2026....",
-     "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -111775,6 +112094,143 @@
    ]
   },
   {
+   "ibge": "3557006",
+   "municipio": "Votorantim",
+   "uf": "SP",
+   "melhor_nivel": "B",
+   "n_pistas": 7,
+   "niveis": {
+    "A": 0,
+    "B": 6,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "82f66483aa",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.votorantim.sp.gov.br/portal/noticias/0/3/15830/prefeitura-de-votorantim-prorroga-medidas-de-contingenciamento/",
+     "titulo": "Prefeitura de Votorantim prorroga medidas de contingenciamento",
+     "trecho": "A Prefeitura de Votorantim prorrogou o plano de contingência administrativa com o objetivo de reduzir custos operacionais e otimizar …",
+     "data": "01/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "bb8407c0a9",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://news.radiocidadesorocaba.com.br/prefeitura-de-votorantim-mantem-plano-de-contingencia-ate-junho-para-reduzir-gastos-publicos/",
+     "titulo": "Prefeitura de Votorantim mantém plano de contingência até junho …",
+     "trecho": "Jan 4, 2026 · A administração municipal de Votorantim decidiu estender o plano de contingenciamento administrativo até o dia 30 …",
+     "data": "01/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "e91c2d1b7e",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.votoprev.sp.gov.br/portal/noticias/0/3/10/plano-de-contingencia-altera-horario-de-atendimento-na-prefeitura-de-votorantim",
+     "titulo": "Plano de contingência altera horário de... - votoprev.sp.gov.br",
+     "trecho": "A Fundação da Seguridade Social dos Funcionários Públicos do Município de Votorantim – VOTOPREV, em conformidade com o …",
+     "data": "01/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "cb976be906",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://g1.globo.com/sp/sorocaba-jundiai/videos-tem-noticias-1-edicao/video/prefeitura-de-votorantim-divulga-plano-de-contingencia-para-coronavirus-8362029.ghtml",
+     "titulo": "Prefeitura de Votorantim divulga Plano de Contingência para ... - G1",
+     "trecho": "Feb 29, 2020 · A Prefeitura de Votorantim (SP) divulgou nesta sexta-feira (28) um Plano de Contingência para a situação do …",
+     "data": "01/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "c887410520",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.tvsmais.com.br/prefeitura-de-votorantim-prorroga-medidas-de-contingenciamento/",
+     "titulo": "Prefeitura de Votorantim prorroga medidas de contingenciamento",
+     "trecho": "Prefeitura de Votorantim prorrogou o plano de contingência administrativa com o objetivo de reduzir custos operacionais.",
+     "data": "01/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "f9d262715c",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "busca_web",
+     "url": "https://www.jornalcruzeiro.com.br/sorocaba/regiao/2025/09/752488-plano-de-contingencia-de-votorantim-comeca-na-segunda-feira-29.html",
+     "titulo": "Plano de contingência começa na segunda-feira (29) …",
+     "trecho": "A Prefeitura de Votorantim confirmou que o plano de contingência administrativa entra em vigor na …",
+     "data": "01/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "7d086fd4e2",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_so_no_trecho",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "busca_web",
+     "url": "https://cidadaovotorantinensesa.blogspot.com/2025/09/plano-de-contingencia-altera-horario-de.html",
+     "titulo": "CIDADÃO VOTORANTINENSE SA: Plano de contingência altera …",
+     "trecho": "Plano de contingência altera horário de atendimento na Prefeitura de Votorantim A Prefeitura de Votorantim implantará um plano de …",
+     "data": "01/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4109302",
    "municipio": "Guaraniaçu",
    "uf": "PR",
@@ -112578,110 +113034,6 @@
    ]
   },
   {
-   "ibge": "1506104",
-   "municipio": "Primavera",
-   "uf": "PA",
-   "melhor_nivel": "B",
-   "n_pistas": 5,
-   "niveis": {
-    "A": 0,
-    "B": 5,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "33c5c4e2e4",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://correiopetropolitano.com.br/2026/09/21/primavera-comeca-nesta-terca-feira-22-9-com-influencia-do-el-nino-2/",
-     "titulo": "Primavera começa nesta terça-feira (22/9) com influência do El Niño",
-     "trecho": "1 day ago ... A primavera começa nesta terça-feira, dia 22 de setembro, às ... Elaboração do Plano de Contingência para Chuvas Intensas Verão 2026/2027.",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "2ba4c41a5c",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://sul21.com.br/noticias/geral/2026/04/el-nino-deve-intensificar-chuvas-da-primavera-mas-ainda-e-cedo-para-prever-eventos-extremos/",
-     "titulo": "El Niño deve intensificar chuvas da primavera, mas ainda é cedo ...",
-     "trecho": "Apr 9, 2026 ... El Niño deve intensificar chuvas da primavera, mas ainda é cedo para prever eventos extremos ... plano de contingência bem estruturado. As ...",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "a691974354",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DdkM97SOz_M/",
-     "titulo": "A primavera começa nesta terça — e o El Niño pode mudar o ...",
-     "trecho": "7 hours ago ... Primavera 2026: 🌡️ Temperaturas podem ficar acima da ... Entre as medidas de preparação estão a elaboração do plano de contingência para ...",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "b92d75059e",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/reel/DdjcfUDOx9f/",
-     "titulo": "A primavera começa nesta terça-feira (22) com influência do El Niño ...",
-     "trecho": "1 day ago ... ... likes, 12 comments - defesacivil_petropolis on September 21, 2026: \"A primavera ... Entre as ações estão a elaboração do Plano de Contingência ...",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "f2c6baef92",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/reel/DdjcfUDOx9f/",
-     "titulo": "A primavera começa nesta terça-feira (22) com influência do El Niño ...",
-     "trecho": "4 days ago ... ... likes, 15 comments - defesacivil_petropolis on September 21, 2026: \"A primavera ... Entre as ações estão a elaboração do Plano de Contingência ...",
-     "data": "25/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
    "ibge": "4107652",
    "municipio": "Fazenda Rio Grande",
    "uf": "PR",
@@ -112882,6 +113234,110 @@
      "trecho": "(44) 99700 0353 \n  \n13.3 Procedimentos para desmobilização \nApós a decisão formal de desmobilizar o Plano de Contingência, as \nseguintes medidas serão desencadeadas: \n- Os órgãos mobilizados ativarão os pr otocolos intarnos definidos de \nacordo com o nível da desmobilização ( total ou retorno a uma \nsituação anterior) \n  \n14 – RECURSOS DISPONÍVEIS \nMáquinas e Equipamentos: \nResponsável: ALMIR ROGÉRIO DOMINGOS – Cel: (44) 99700 \n0353 \n- R",
      "data": "2026-09-23",
      "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4122305",
+   "municipio": "Rio Negro",
+   "uf": "PR",
+   "melhor_nivel": "B",
+   "n_pistas": 5,
+   "niveis": {
+    "A": 0,
+    "B": 5,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "63d91b34fd",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.clickriomafra.com.br/noticias/rio-negro/el-nino-nova-reuniao-e-realizada-em-rio-negro-com-foco-no-planejamento/",
+     "titulo": "El Niño: nova reunião é realizada em Rio Negro com foco no ...",
+     "trecho": "El Niño: nova reunião é realizada em Rio Negro com foco no planejamento. Há 3 meses ... plano de contingência das ações do Grupo de Ações Coordenadas. O ...",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "228cf24014",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.clickriomafra.com.br/noticias/rio-negro/el-nino-prefeitura-e-defesa-civil-de-rio-negro-se-preparam-para-eventuais-efeitos/",
+     "titulo": "El Niño: Prefeitura e Defesa Civil de Rio Negro se preparam para ...",
+     "trecho": "Além do Plano de Contingência, Rio Negro também terá este plano que garantirá ações mais efetivas em diferentes situações. No último dia 12 outra reunião ...",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "7b27f89539",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.gov.br/saude/pt-br/composicao/sesai/publicacoes/plano-de-contingencia-nacional-para-covid-19-em-povos-indigenas-dsei-arn-alto-do-rio-negro/@@download/file",
+     "titulo": "DSEI Alto Rio Negro - Portal Gov.br",
+     "trecho": "2. OBJETIVOS. O presente Plano de Contingência tem como objetivo orientar e capacitar os profissionais de saúde do DSEI Alto Rio Negro e instituições dos ...",
+     "data": "01/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "3559e0113e",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.ceped.pr.gov.br/sites/ceped/arquivos_restritos/files/documento/2023-04/AnuariodeDefesaCivilCompleto2013revisado2.pdf",
+     "titulo": "ANUÁRIO ESTATÍSTICO DEFESA CIVIL DO PARANÁ - Ceped/PR",
+     "trecho": "Rio Negro. 96. 96. 35. Santa Cecilia do Pavão. Santa Cruz de Monte. Castelo. 41 ... O exercício teve como objetivo validar o Plano de Contingência Online, bem ...",
+     "data": "01/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "a9c11337f7",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://oregionalpr.com.br/rio-negro-se-prepara-para-eventuais-efeitos-do-el-nino/",
+     "titulo": "Rio Negro se prepara para eventuais efeitos do El Niño - Jornal ...",
+     "trecho": "Nesta terça-feira (26), mais uma ... finalização do Plano de Resposta Imediata (PRI), abordou sobre o planejamento estratégico para prevenir e se necessário enfrentar as situações que exigem respostas rápidas....",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -113181,6 +113637,104 @@
      "trecho": "Jun 22, 2026 ... ... Plano de Contingência para Chuvas Intensas Verão 2025/2026, que segue vigente. ... Tags:el niño, inverno, petrópolis, previsão, rio, super ...",
      "data": "21/09/2026",
      "status": "pista — recusada pelo juiz: sem_documento_primario"
+    }
+   ]
+  },
+  {
+   "ibge": "3304128",
+   "municipio": "Quatis",
+   "uf": "RJ",
+   "melhor_nivel": "B",
+   "n_pistas": 5,
+   "niveis": {
+    "A": 0,
+    "B": 4,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "5364ca024c",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-quatis.pdf",
+     "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO QUATIS - RJ",
+     "trecho": "Centro CEP: 27.410-170- Quatis / RJ. EXECUÇÃO. Vallenge ... enquanto o plano de contingência aborda ações programadas de interrupção dos serviços, o.",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "55526c44cb",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.saude.rj.gov.br/controladoria-geral-da-ses/legislacao",
+     "titulo": "Saúde RJ - Controladoria Geral da SES - Legislação",
+     "trecho": "Deliberação Conjunta CIB/COSEMS-RJ nº 91 de 08 de abril de 2021 · Pactua “ad referendum” a alteração do anexo do plano de contingência da Secretaria de Estado de Saúde do Rio de Janeiro para enfrentamento da infecção pelo novo coronavírus (covid-19).",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: ente_nao_confirmado"
+    },
+    {
+     "id": "def55639fb",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=NDE2NDg%2C",
+     "titulo": "Aos trinta dias do mês de abril do ano de dois mil e quinze, ...",
+     "trecho": "Quatis, Resende, Rio Claro, Rio das Flores e Volta Redonda e sem representação de secretários de saúde ... os municípios de, Itatiaia, Pinheiral, Porto Real e Valença. Sra. Sonia iniciou a reunião, cumprimentando ... a todos e justificou a ausência da Sra. Rosemary. Prosseguindo, explicou que é aguardado a publicação ... do decreto Estadual definindo um “feriadão”, a partir de vinte e seis de março até quatro de abril, com o",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
+    },
+    {
+     "id": "92180b807e",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://resende.rj.gov.br/conteudo/boletim_oficial/2026/Boletim_6ab6f3b7d8c7c.pdf",
+     "titulo": "ano x - nº 088 - resende, 25 de setembro de 2026.",
+     "trecho": "6 days ago ... • Aprovar o Plano de Contingência Municipal para. Enfrentamento às ... Itatiaia, Porto Real e Quatis. 2.2 A participação ocorrerá ...",
+     "data": "01/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "c930576b25",
+     "nivel_confianca": "C",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://quatis.rj.gov.br/prefeitura-de-quatis-decreta-medidas-de-combate-ao-coronavirus/",
+     "titulo": "PREFEITURA DE QUATIS DECRETA MEDIDAS DE COMBATE AO CORONAVÍRUS ...",
+     "trecho": "QUATIS O prefeito Bruno de Souza (MDB) assinou no final da tarde de terça-feira, dia 17, um decreto instituindo a Situação de Atenção na Saúde Pública do Município pelo prazo de 180 dias.",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: autoridade_nao_confirmada"
     }
    ]
   },
@@ -113802,87 +114356,6 @@
    ]
   },
   {
-   "ibge": "3304128",
-   "municipio": "Quatis",
-   "uf": "RJ",
-   "melhor_nivel": "B",
-   "n_pistas": 4,
-   "niveis": {
-    "A": 0,
-    "B": 3,
-    "C": 1
-   },
-   "pistas": [
-    {
-     "id": "5364ca024c",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_titulo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-quatis.pdf",
-     "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO QUATIS - RJ",
-     "trecho": "Centro CEP: 27.410-170- Quatis / RJ. EXECUÇÃO. Vallenge ... enquanto o plano de contingência aborda ações programadas de interrupção dos serviços, o.",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "55526c44cb",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_oficial",
-      "plano_no_trecho"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.saude.rj.gov.br/controladoria-geral-da-ses/legislacao",
-     "titulo": "Saúde RJ - Controladoria Geral da SES - Legislação",
-     "trecho": "Deliberação Conjunta CIB/COSEMS-RJ nº 91 de 08 de abril de 2021 · Pactua “ad referendum” a alteração do anexo do plano de contingência da Secretaria de Estado de Saúde do Rio de Janeiro para enfrentamento da infecção pelo novo coronavírus (covid-19).",
-     "data": "23/09/2026",
-     "status": "pista — recusada pelo juiz: ente_nao_confirmado"
-    },
-    {
-     "id": "def55639fb",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_inicio_do_trecho"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=NDE2NDg%2C",
-     "titulo": "Aos trinta dias do mês de abril do ano de dois mil e quinze, ...",
-     "trecho": "Quatis, Resende, Rio Claro, Rio das Flores e Volta Redonda e sem representação de secretários de saúde ... os municípios de, Itatiaia, Pinheiral, Porto Real e Valença. Sra. Sonia iniciou a reunião, cumprimentando ... a todos e justificou a ausência da Sra. Rosemary. Prosseguindo, explicou que é aguardado a publicação ... do decreto Estadual definindo um “feriadão”, a partir de vinte e seis de março até quatro de abril, com o",
-     "data": "23/09/2026",
-     "status": "pista — recusada pelo juiz: citacao_incompleta"
-    },
-    {
-     "id": "c930576b25",
-     "nivel_confianca": "C",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo"
-     ],
-     "alertas": [
-      "risco_errado_no_titulo"
-     ],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://quatis.rj.gov.br/prefeitura-de-quatis-decreta-medidas-de-combate-ao-coronavirus/",
-     "titulo": "PREFEITURA DE QUATIS DECRETA MEDIDAS DE COMBATE AO CORONAVÍRUS ...",
-     "trecho": "QUATIS O prefeito Bruno de Souza (MDB) assinou no final da tarde de terça-feira, dia 17, um decreto instituindo a Situação de Atenção na Saúde Pública do Município pelo prazo de 180 dias.",
-     "data": "23/09/2026",
-     "status": "pista — recusada pelo juiz: autoridade_nao_confirmada"
-    }
-   ]
-  },
-  {
    "ibge": "4203907",
    "municipio": "Capinzal",
    "uf": "SC",
@@ -114471,73 +114944,6 @@
      "trecho": "ública relacionadas às arboviroses e à Febre \nAmarela; \nCONSIDERANDO a apresentação e apreciação do Plano Municipal \nde Contingência e do Plano Municipal de Ação para Enfrentamento da \nDengue, do Zika Vírus, da Febre Chikungunya e da Febre Amarela, \npela Secretaria Municipal de Saúde de Itambé – Pr; \nCONSIDERANDO a deliberação  e aprovação dos conselheiros \npresentes na Reunião Ordinária do Conselho Municipal de Saúde \nrealizada em 28 de agosto de ",
      "data": "2026-09-10",
      "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "4122305",
-   "municipio": "Rio Negro",
-   "uf": "PR",
-   "melhor_nivel": "B",
-   "n_pistas": 3,
-   "niveis": {
-    "A": 0,
-    "B": 3,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "63d91b34fd",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.clickriomafra.com.br/noticias/rio-negro/el-nino-nova-reuniao-e-realizada-em-rio-negro-com-foco-no-planejamento/",
-     "titulo": "El Niño: nova reunião é realizada em Rio Negro com foco no ...",
-     "trecho": "El Niño: nova reunião é realizada em Rio Negro com foco no planejamento. Há 3 meses ... plano de contingência das ações do Grupo de Ações Coordenadas. O ...",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "228cf24014",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.clickriomafra.com.br/noticias/rio-negro/el-nino-prefeitura-e-defesa-civil-de-rio-negro-se-preparam-para-eventuais-efeitos/",
-     "titulo": "El Niño: Prefeitura e Defesa Civil de Rio Negro se preparam para ...",
-     "trecho": "Além do Plano de Contingência, Rio Negro também terá este plano que garantirá ações mais efetivas em diferentes situações. No último dia 12 outra reunião ...",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "a9c11337f7",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://oregionalpr.com.br/rio-negro-se-prepara-para-eventuais-efeitos-do-el-nino/",
-     "titulo": "Rio Negro se prepara para eventuais efeitos do El Niño - Jornal ...",
-     "trecho": "Nesta terça-feira (26), mais uma ... finalização do Plano de Resposta Imediata (PRI), abordou sobre o planejamento estratégico para prevenir e se necessário enfrentar as situações que exigem respostas rápidas....",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -116678,37 +117084,6 @@
      "titulo": null,
      "trecho": null,
      "data": "27/08/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    }
-   ]
-  },
-  {
-   "ibge": "5208004",
-   "municipio": "Formosa",
-   "uf": "GO",
-   "melhor_nivel": "B",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "af55f73484",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://agroempresario.com/publicacion/120391/gildo-insfran-anticipa-a-formosa-a-el-nino-con-un-plan-especial/",
-     "titulo": "Gildo Insfrán anticipa a Formosa a El Niño con un plan especial ...",
-     "trecho": "Formosa presentó un plan de contingencia ante el posible impacto del fenómeno El Niño, con medidas preventivas para responder a lluvias intensas y eventuales crecidas de los ríos Pilcomayo, Bermejo y Paraguay.",
-     "data": "22/09/2026",
      "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
