@@ -97,6 +97,7 @@ Atualizado em 01/10/2026.
 | `gerar_imprensa_semana.py` | — | `semana.json` | — | não |
 | `gerar_lai.py` | — | — | — | não |
 | `gerar_monitor_saude.py` | — | `monitor_saude.json` | — | não |
+| `gerar_monitor_saude_v04.py` | — | `monitor_saude_v04.json` | — | não |
 | `gerar_painel.py` | — | `atos_resposta.json`, `municipios.json`, `verificacao_municipal.json` | — | não |
 | `gerar_pdf_indice.py` | — | — | — | não |
 | `gerar_pdf_metodologia.py` | — | — | — | não |

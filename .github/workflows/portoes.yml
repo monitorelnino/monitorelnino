@@ -211,6 +211,11 @@ jobs:
           # autoteste é offline e puro; a trava que ele cobra é a que importa aqui — zero
           # resultado de motor NUNCA pode produzir a decisão que autoriza "não localizado".
           python3 coletar_saude_estadual.py --autoteste
+          # Bloco B do MARÉ Saúde (01/10/2026): a v0.4, calculada em paralelo. O autoteste cobra
+          # a trava central — sem coordenação verificada a UF NÃO recebe número, porque somar um
+          # terço de zero afirmaria ausência de sala de situação por ausência de busca — e a trava
+          # estrutural de que este gerador não escreve no índice nem no arquivo que a página lê.
+          python3 gerar_monitor_saude_v04.py --autoteste
           python3 coletar_normais_inmet.py --autoteste
           python3 scripts/gerar_enquadramento_card.py --autoteste
           python3 scripts/verificar_cadencia_coletores.py --autoteste

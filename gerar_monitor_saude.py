@@ -59,6 +59,25 @@ BOLETIM_1_MAIS_30 = "29/07/2026"
 # conta — assimetria probatória), e a contagem de "planos sem leitura" é publicada ao lado. Pesos iguais (1/3).
 VERSAO = "0.3"
 PESOS = {"instrumento": 1 / 3, "cobertura": 1 / 3, "antecipacao": 1 / 3}
+
+# ── v0.4 (01/10/2026, aprovada pela editoria; alinhada à v3.1 do MARÉ Legal) ──────────────────
+# Três mudanças, e nenhuma delas é de peso: (1) o instrumento ganha a MESMA escala de razão
+# declarada do Legal, em que cada degrau é uma afirmação sobre o documento, não um lugar numa fila;
+# (2) nasce o componente de COORDENAÇÃO NA SAÚDE — sala de situação ou centro de operações de
+# emergência —, que é o que de fato opera a resposta e não existia no índice; (3) o TEMPO sai da
+# nota e passa a indicador publicado à parte, pela mesma razão do §C27: publicar cedo é atributo de
+# conduta, não do arcabouço, e a lei exige plano existente e atualizado, não antecedência.
+VERSAO_V04 = "0.4"
+PESOS_V04 = {"instrumento": 1 / 3, "coordenacao": 1 / 3, "cobertura": 1 / 3}
+# Escala de razão declarada do instrumento. "VIG_REVISADO" é o recorrente que cobre o risco do
+# ciclo E tem revisão ou ativação datada em 2026; "VIG" é o recorrente que cobre sem revisão;
+# "VIG_OUTRO_RISCO" é o plano de outro risco, que vale zero — não por punição, mas porque não
+# responde à pergunta do índice.
+INSTRUMENTO_SCORE_V04 = {"NOVO": 100, "READ": 70, "VIG_REVISADO": 55, "VIG": 30,
+                         "ELAB": 20, "VIG_OUTRO_RISCO": 0, "LAC": 0}
+# Coordenação: o ato que cria, reativa ou mantém a sala de situação / centro de operações.
+COORDENACAO_SCORE_V04 = {"CRIADO_CICLO": 100, "REATIVADO_CICLO": 65, "PERMANENTE": 45,
+                         "ANUNCIADO": 35, "LAC": 0}
 CATEGORIAS_MUNICIPAIS = ("plano", "plano_antigo", "plano_elaboracao", "estrutura")   # as que recebem crédito de cobertura no MARÉ
 
 
@@ -133,6 +152,67 @@ def prontidao_v03(status: str, doc: str, data: str, cobertura, camada: str = "ci
     if status not in PONTOS_STATUS or camada == "adaptacao": return None, None, None, None
     pi = PONTOS_STATUS[status]; pa = pontos_antecipacao(status, doc, data, camada); pc = round(float(cobertura or 0.0), 1)
     return round(PESOS["instrumento"] * pi + PESOS["cobertura"] * pc + PESOS["antecipacao"] * pa, 1), pi, pc, pa
+
+
+def instrumento_v04(status: str, doc: str, data: str, consist: str) -> str:
+    """O degrau da v0.4 a partir do que já foi verificado. Função pura, derivação DECLARADA.
+
+    NOVO, READ, ELAB e LAC passam direto: a v0.4 não mudou o que eles afirmam. O que a v0.4 divide
+    é o VIG, porque "plano de todo ano" dizia três coisas diferentes com a mesma palavra:
+
+      VIG_OUTRO_RISCO  o plano recorrente trata de risco que NÃO é o projetado para o ciclo
+                       (`consist` = DIFERE). Vale zero, e não por punição: ele não responde à
+                       pergunta do índice. É o mesmo degrau que a v3.1 do Legal criou para MG.
+      VIG_REVISADO     cobre o risco e tem edição ou ato datado em 2026 — revisão ou ativação
+                       para o ciclo corrente, ainda que sem mencioná-lo pelo nome.
+      VIG              cobre o risco e não tem revisão datada em 2026.
+
+    `consist` NEUTRO (sem sinal elevado projetado para o trimestre) não rebaixa: sem risco
+    projetado não há risco descoberto, e tratar ausência de sinal como descobertura puniria o
+    estado pelo clima."""
+    if status in ("NOVO", "READ", "ELAB", "LAC"):
+        return status
+    if status != "VIG":
+        return "NAO_VERIFICADO"
+    if (consist or "").upper() == "DIFERE":
+        return "VIG_OUTRO_RISCO"
+    temp = temporada_da_edicao(doc or "", data or "")
+    revisado = temp == "2026/2027" or bool(re.search(r"/2026$|^2026$", (data or "").strip()))
+    return "VIG_REVISADO" if revisado else "VIG"
+
+
+def prontidao_v04(instrumento: str, coordenacao: str, cobertura, camada: str = "ciclo"):
+    """v0.4: (prontidão, instrumento, coordenação, cobertura) com um terço cada. Função pura.
+
+    Devolve (None, …) quando QUALQUER um dos dois componentes verificáveis por documento não foi
+    verificado. Isto não é excesso de zelo: com a coordenação em branco, somar um terço de zero
+    seria afirmar que o estado não tem sala de situação porque ninguém procurou — a diferença entre
+    lacuna e zero é a primeira regra editorial do projeto. O terceiro componente, a cobertura, é
+    contagem sobre planos municipais lidos e já declara o que não foi lido ao lado."""
+    if camada == "adaptacao":
+        return None, None, None, None
+    if instrumento not in INSTRUMENTO_SCORE_V04 or coordenacao not in COORDENACAO_SCORE_V04:
+        return None, None, None, None
+    pi = INSTRUMENTO_SCORE_V04[instrumento]
+    pk = COORDENACAO_SCORE_V04[coordenacao]
+    pc = round(float(cobertura or 0.0), 1)
+    total = (PESOS_V04["instrumento"] * pi + PESOS_V04["coordenacao"] * pk
+             + PESOS_V04["cobertura"] * pc)
+    return round(total, 1), pi, pk, pc
+
+
+def dias_apos_boletim_1(data: str) -> int:
+    """Indicador publicado à parte na v0.4: dias entre o Boletim nº 1 e o ato. Função pura.
+
+    Negativo = antes do boletim. `None` quando a data não fecha em dia — mês solto não vira dia, e
+    lacuna declarada é melhor do que dia inventado (mesma regra do indicador do MARÉ Legal)."""
+    o = _data_ordinal(data)
+    if o is None:
+        return None
+    import re as _re
+    if not _re.match(r"^\d{2}/\d{2}/\d{4}$", (data or "").strip()):
+        return None
+    return o - _data_ordinal(BOLETIM_1)
 
 
 def cobertura_sanitaria(municipios: list, referencia: list, populacao: dict, auto: dict, confirmadas: list, cred_pop: dict) -> dict:

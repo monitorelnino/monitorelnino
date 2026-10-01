@@ -2025,3 +2025,64 @@ para atos de novembro; com um ato de junho ela só avisaria dezoito meses depois
 ato explícita: antes usavam o padrão, e dois deles reprovaram sozinhos quando a portaria mudou — o
 teste media o calendário em vez da regra.
 
+## 68. MARÉ Saúde v0.4: a escala do instrumento, a coordenação e o tempo fora da nota (01/10/2026)
+
+Aprovada pela editoria em 01/10/2026, alinhada à v3.1 do MARÉ Legal. Três mudanças, e nenhuma é de
+peso:
+
+1. **Instrumento na escala de razão declarada**, a mesma do Legal: feito para o El Niño **100** ·
+   readaptado para o ciclo **70** · recorrente que cobre o risco e tem revisão ou ativação datada em
+   2026 **55** · recorrente que cobre o risco, sem revisão **30** · em elaboração **20** · plano de
+   outro risco **0** · nada localizado **0**. Cada degrau é uma afirmação sobre o documento, não um
+   lugar numa fila.
+2. **Coordenação em saúde** passa a ser componente: sala de situação ou centro de operações de
+   emergência criado para o ciclo **100** · reativado para o ciclo **65** · permanente, sem ato do
+   ciclo **45** · anunciado **35** · nada **0**. É o que de fato opera a resposta, e não estava no
+   índice.
+3. **O tempo sai da nota** e passa a indicador publicado à parte (`dias_apos_boletim_1`, negativo
+   quando o ato antecede o Boletim nº 1), pela mesma razão do C27: publicar cedo é atributo de
+   conduta, não do arcabouço.
+
+Um terço para cada um dos três. A cobertura não muda.
+
+**A derivação do degrau do VIG é declarada, não inferida.** NOVO, READ, ELAB e LAC passam direto. O
+que a v0.4 divide é o `VIG`, porque "plano de todo ano" dizia três coisas com a mesma palavra:
+`consist = DIFERE` (o plano recorrente trata de risco que não é o projetado) → **VIG_OUTRO_RISCO**;
+edição 2026/2027 ou ato datado em 2026 → **VIG_REVISADO**; o resto → **VIG**. `consist = NEUTRO`
+(sem sinal elevado no trimestre) **não** rebaixa: sem risco projetado não há risco descoberto, e
+tratar ausência de sinal como descobertura puniria o estado pelo clima.
+
+**A troca foi autorizada e não foi feita hoje, por um fato.** A v0.4 exige a coordenação, e a
+coordenação **não tinha verificação em nenhum dos 27 estados** — o componente nasceu nesta versão.
+Trocar agora deixaria duas saídas, e as duas são proibidas: somar um terço de zero, que é afirmar
+que o estado não tem sala de situação porque ninguém procurou, ou publicar a página sem número, que
+é apagar o índice que existe. Vence a prova. A v0.3 segue no ar e a v0.4 é calculada **em paralelo**,
+em `data/monitor_saude_v04.json`, que a página não lê. A troca passa a ser ajuste de leitura quando
+a coordenação estiver verificada — e quem a verifica é a bateria de `coletar_saude_estadual.py`,
+cujas oito consultas incluem `sala de situação` e `centro de operações de emergência`.
+
+**Comparação medida (01/10/2026).** Das 21 UFs com instrumento verificado, **16 mudam de pontuação
+do componente**; a média do componente instrumento cai de **53,6** para **42,6**. A queda tem uma
+causa só: o `VIG` valia 45 na v0.3 e vale 30 na v0.4, e doze estados estão nele — planos de
+arboviroses recorrentes, sem revisão datada em 2026. Um sobe (AL, 45 → 55, `VIG_REVISADO`) e três
+descem de ELAB (35 → 20). O **índice inteiro não se compara hoje**, porque a v0.4 só produz número
+onde há coordenação verificada: **1 UF** (MT).
+
+**MT, verificada hoje, prova a cadeia inteira.** Dois atos oficiais lidos na íntegra, do domínio da
+secretaria estadual, com evidência preservada por hash: **Portaria nº 0195/2026/GBSES** (30/03/2026,
+Diário Oficial de MT, páginas 144 a 149), que institui o **processo de elaboração** do Plano Estadual
+de Preparação e Resposta a Emergências em Saúde Pública — processo, não plano pronto, e por isso
+`ELAB` e não `NOVO`; e **Portaria nº 0666/2024/GBSES** (03/10/2024), que institui a Sala de Situação
+em Saúde para mudanças climáticas, mantida e ampliada pela 0195/2026. **Nenhum dos dois menciona o
+El Niño 2026/2027**, conferido no texto — e por isso a coordenação é `PERMANENTE` (45), não
+`CRIADO_CICLO` nem `REATIVADO_CICLO`: afirmar criação ou reativação para o ciclo exigiria ato que o
+diga. MT entra na v0.3 com **18,3** e tem **21,7** na v0.4, em "estágio inicial" nas duas. Com MT, a
+média publicada da v0.3 vai de **32,5 para 31,8**, e as verificadas de 20 para 21.
+
+**Robustez.** Monte Carlo de 10 mil sorteios Dirichlet(1,1,1) com **semente 42** — a mesma do índice
+principal, para que as duas auditorias sejam comparáveis — e sensibilidade de ±15 pontos por degrau
+da escala do instrumento, um degrau por vez. Com uma UF só, a auditoria tem o alcance de uma UF, e
+isso está escrito no arquivo: sobre conjunto vazio ela declara a lacuna em vez de devolver zeros.
+Medido em MT: mediana 21,3 · p05 6,7 · p95 37,5; e o único degrau cuja alteração move a faixa é
+`ELAB+15`.
+

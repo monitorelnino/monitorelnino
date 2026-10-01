@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-01 · #494 · MARÉ Saúde v0.4 calculada em paralelo, e MT verificada
+
+A v0.4 ganha a escala de razão do Legal, o componente de coordenação em saúde e o tempo fora da
+nota. Fica em `monitor_saude_v04.json`, que a página não lê: a troca autorizada espera a verificação
+da coordenação, que nasceu nesta versão e não existia em estado nenhum — somar um terço de zero
+afirmaria ausência de sala de situação por ausência de busca. MT verificada por dois atos lidos:
+média publicada 32,5 → 31,8. METODOLOGIA §68.
+
 ## 2026-10-01 · #492 · Pendências resolvidas pela editoria, e a portaria do MMA estava revogada
 
 Título, subtítulo e legenda definitivos do mapa do cadastro; manchete do MARÉ Saúde só com os 27

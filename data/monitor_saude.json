@@ -71,17 +71,17 @@
   "nota": "índice de resposta sanitária = parcela da população em estado com emergência sanitária declarada no ciclo; contagem de emergências ao lado; nunca somado à antecipação"
  },
  "resumo": {
-  "verificadas": 20,
-  "nao_verificadas": 7,
+  "verificadas": 21,
+  "nao_verificadas": 6,
   "por_faixa": {
    "em construção": 9,
    "avançado": 1,
-   "estágio inicial": 7,
+   "estágio inicial": 8,
    "consolidado": 3
   },
   "planos_municipais_lidos": 82,
   "planos_municipais_sem_leitura": 52,
-  "media_das_verificadas": 32.5,
+  "media_das_verificadas": 31.8,
   "nota": "a média cobre só as UFs verificadas e não é um número nacional"
  },
  "ufs": {
@@ -566,27 +566,27 @@
    ]
   },
   "MT": {
-   "verificado": false,
-   "prontidao": null,
-   "faixa": "não verificado",
+   "verificado": true,
+   "prontidao": 18.3,
+   "faixa": "estágio inicial",
    "instrumento": {
-    "status": "NAO_VERIFICADO",
-    "pontos": null,
-    "doc": null,
-    "data": null,
-    "orgao": null,
-    "url": null,
-    "temporada": null
+    "status": "ELAB",
+    "pontos": 35,
+    "doc": "Portaria nº 0195/2026/GBSES — institui o processo de elaboração, implantação progressiva, governança e operacionalização do Plano Estadual de Preparação e Resposta a Emergências em Saúde Pública (PPResp/MT), com prazos de implantação",
+    "data": "30/03/2026",
+    "orgao": "SES-MT / Gabinete do Secretário",
+    "url": "https://www.saude.mt.gov.br/storage/files/MmMbtQx9n43VPO23mMookK6LdUyD6h4QfMOvqx44.pdf",
+    "temporada": "2026/2027"
    },
    "cobertura": {
-    "pontos": null,
+    "pontos": 0.0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
     "planos_sem_leitura": 1
    },
    "antecipacao": {
-    "pontos": null,
+    "pontos": 20,
     "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
