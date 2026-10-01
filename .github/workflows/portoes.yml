@@ -221,6 +221,13 @@ jobs:
           # não criado para ele — e que o degrau nunca conclua ausência: este juiz só vê
           # documentos que existem, e marcar ausência exige bateria completa, que é outro passo.
           python3 julgar_saude.py --autoteste
+          # Regra de sincronia do "Para gestores" (01/10/2026): a seção de recursos é só
+          # ponteiro para o Financiamento, e ponteiro quebra em SILÊNCIO — link para arquivo
+          # inexistente o navegador acusa, âncora para `id` inexistente não. Já aconteceu duas
+          # vezes: a seção do período eleitoral apontando para um calendário apagado, e a imprensa
+          # prometendo um modelo de LAI que saiu do site.
+          python3 scripts/verificar_ancoras_internas.py
+          python3 scripts/verificar_ancoras_internas.py --autoteste
           python3 coletar_normais_inmet.py --autoteste
           python3 scripts/gerar_enquadramento_card.py --autoteste
           python3 scripts/verificar_cadencia_coletores.py --autoteste
