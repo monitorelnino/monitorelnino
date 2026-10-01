@@ -310,8 +310,12 @@ def doe_saude(uf: str, desde: str) -> dict:
     ele: UF cujo diário não tem rota de busca confirmada sai como `canal_nao_disponivel`, que é
     lacuna declarada, e não como estado sem instrumento."""
     import coletar_doe
-    base = coletar_doe.HOSTS_APIFRONT.get(uf)
-    if not base:
+    # Todo adaptador DIRETO do diário serve a este canal, não só o da plataforma comum: quem decide
+    # é o `fontes_doe.json`, que é onde a cobertura de diário está declarada e medida.
+    cfg = ((ler("fontes_doe.json") or {}).get("ufs") or {}).get(uf) or {}
+    adaptador = cfg.get("adaptador")
+    base = cfg.get("url") or coletar_doe.HOSTS_APIFRONT.get(uf)
+    if adaptador not in ("apifront", "dodf", "busca_to") or not base:
         registrar_lacuna(f"funil_saude/{uf}", "diário estadual sem rota de busca confirmada",
                          canal="repositorio_estadual", camada=1, uf=uf, nivel="estadual")
         log_busca("repositorio_estadual", 1, list(TERMOS_DOE_SAUDE),
@@ -320,22 +324,42 @@ def doe_saude(uf: str, desde: str) -> dict:
         return {"uf": uf, "brutos": 0, "pistas": 0, "novas": 0, "decisao": "canal_nao_disponivel"}
     ate = hoje_editorial().isoformat()
     brutos, achadas = 0, []
-    for termo in TERMOS_DOE_SAUDE:
+    if adaptador in ("dodf", "busca_to"):
         try:
-            _total, acertos = coletar_doe.varrer_busca_apifront(base, termo, desde, ate)
+            if adaptador == "dodf":
+                itens, _totais = coletar_doe.itens_dodf(uf, desde, ate,
+                                                        termos=TERMOS_DOE_SAUDE)
+            else:
+                itens, _totais = coletar_doe.itens_busca_to(uf, desde, ate,
+                                                            termos=TERMOS_DOE_SAUDE)
         except Exception as e:  # noqa: BLE001
-            registrar_lacuna(f"funil_saude/{uf}", f"{termo}: {type(e).__name__}: {e}",
+            registrar_lacuna(f"funil_saude/{uf}", f"{type(e).__name__}: {e}",
                              canal="repositorio_estadual", camada=1, uf=uf, nivel="estadual",
-                             strings=[termo])
-            continue
-        brutos += len(acertos)
-        for a in acertos:
-            r = {"title": f"DOE-{uf} {a['data']} p.{a['pagina']}",
-                 "url": coletar_doe.PDF_APIFRONT.format(base=base.rstrip("/"),
-                                                        diario_id=a["diario_id"]),
-                 "content": (a.get("conteudo") or "")[:400]}
+                             strings=[base])
+            itens = []
+        brutos += len(itens)
+        for it in itens:
+            r = {"title": f"DOE-{uf} {it.get('data')}", "url": it.get("url"),
+                 "content": (it.get("trechos") or [""])[0][:400]}
             if relevante(r, uf):
-                achadas.append(pista_de(r, uf, f"doe:{termo}", termo))
+                achadas.append(pista_de(r, uf, f"doe:{adaptador}", base))
+    else:
+        for termo in TERMOS_DOE_SAUDE:
+            try:
+                _total, acertos = coletar_doe.varrer_busca_apifront(base, termo, desde, ate)
+            except Exception as e:  # noqa: BLE001
+                registrar_lacuna(f"funil_saude/{uf}", f"{termo}: {type(e).__name__}: {e}",
+                                 canal="repositorio_estadual", camada=1, uf=uf, nivel="estadual",
+                                 strings=[termo])
+                continue
+            brutos += len(acertos)
+            for a in acertos:
+                r = {"title": f"DOE-{uf} {a['data']} p.{a['pagina']}",
+                     "url": coletar_doe.PDF_APIFRONT.format(base=base.rstrip("/"),
+                                                            diario_id=a["diario_id"]),
+                     "content": (a.get("conteudo") or "")[:400]}
+                if relevante(r, uf):
+                    achadas.append(pista_de(r, uf, f"doe:{termo}", termo))
     decisao = "pista" if achadas else ("doe_sem_pista" if brutos else "motor_sem_resposta")
     fila, entraram = fundir_pistas(ler(PISTAS) or {}, achadas)
     if entraram:
@@ -539,6 +563,11 @@ def autoteste() -> int:
         "termo de saúde no DOE é outro conjunto, não o da defesa civil":
             lambda: "homologa situação de emergência" not in TERMOS_DOE_SAUDE
                     and "plano de contingência" in TERMOS_DOE_SAUDE,
+        # O canal 2 reconhece TODO adaptador direto declarado, e não só o da plataforma comum:
+        # foi o que limitou a primeira varredura a cinco UFs.
+        "o canal 2 reconhece os três adaptadores diretos do diário":
+            lambda: all(f'"{a}"' in fonte_do_coletor()
+                        for a in ("apifront", "dodf", "busca_to")),
         "todo canal novo tem tradução no vocabulário do log":
             lambda: set(DECISAO_NO_LOG) >= {"doe_sem_pista", "canais_sem_pista",
                                             "canal_nao_disponivel", "canal_nao_declarado",

@@ -3,14 +3,14 @@
  "ufs": {
   "AC": {
    "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
+   "url": "https://diario.ac.gov.br",
+   "status": "a_verificar: sítio responde; busca é por edição (download.php com nome de arquivo codificado), sem rota de busca por termo — a verificar outra rota",
    "ultima_tentativa": "2026-10-01"
   },
   "AM": {
    "adaptador": null,
    "url": "https://diario.imprensaoficial.am.gov.br",
-   "status": "a_verificar",
+   "status": "a_verificar: plataforma comum (apifront) responde para EDIÇÕES, mas a busca é outro aplicativo: POST /busca devolve a própria home. §231 — caminho a fazer: edições por data mais leitura do PDF de cada uma",
    "ultima_tentativa": "2026-10-01"
   },
   "AP": {
@@ -21,86 +21,86 @@
   },
   "PA": {
    "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
+   "url": "https://www.ioepa.com.br",
+   "status": "a_verificar: ASP.NET com postback por __VIEWSTATE: a busca exige reproduzir estado de formulário, e o host não é .gov.br — a verificar",
    "ultima_tentativa": "2026-10-01"
   },
   "RO": {
    "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
+   "url": "https://diof.ro.gov.br",
+   "status": "a_verificar: a busca do sítio (?s=) é busca de notícias do portal, não do texto do diário: devolveu \"Nenhum resultado encontrado\" para \"decreto\". Sem busca por termo nas edições — a verificar",
    "ultima_tentativa": "2026-10-01"
   },
   "RR": {
    "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
+   "url": "https://www.imprensaoficial.rr.gov.br",
+   "status": "a_verificar: responde 362 bytes, sem conteúdo de diário — endereço corrente a localizar",
    "ultima_tentativa": "2026-10-01"
   },
   "TO": {
-   "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
+   "adaptador": "busca_to",
+   "url": "https://diariooficial.to.gov.br",
+   "status": "ok",
    "ultima_tentativa": "2026-10-01"
   },
   "AL": {
    "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
+   "url": "https://imprensaoficial.al.gov.br",
+   "status": "a_verificar: sítio responde e aponta diario.imprensaoficial.al.gov.br; nenhuma rota de busca por termo declarada na página — a verificar",
    "ultima_tentativa": "2026-10-01"
   },
   "BA": {
    "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
+   "url": "https://www.egba.ba.gov.br",
+   "status": "a_verificar: busca Solr do portal (/egba/busca-solr-multisite) devolveu HTTP 404 ao cliente em 01/10/2026; a verificar a rota corrente",
    "ultima_tentativa": "2026-10-01"
   },
   "CE": {
    "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
+   "url": "https://www.saude.ce.gov.br",
+   "status": "a_verificar: doe.seplag.ce.gov.br não resolve no DNS em 01/10/2026 — endereço do diário a localizar",
    "ultima_tentativa": "2026-10-01"
   },
   "MA": {
    "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
+   "url": "https://diariooficial.ma.gov.br",
+   "status": "a_verificar: sítio responde e tem /busca/, que não devolveu resultado para termo com a rota GET tentada; a verificar método e campos",
    "ultima_tentativa": "2026-10-01"
   },
   "PB": {
    "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
+   "url": "https://auniao.pb.gov.br",
+   "status": "a_verificar: Plone com @@busca (SearchableText) no sítio do jornal; a busca cobre o portal, não o texto do diário — a verificar",
    "ultima_tentativa": "2026-10-01"
   },
   "PE": {
    "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
+   "url": "https://diariooficial.cepe.com.br",
+   "status": "a_verificar: aplicação de página única (rota com #/), sem rota de busca legível por cliente sem JavaScript — a verificar",
    "ultima_tentativa": "2026-10-01"
   },
   "PI": {
    "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
+   "url": "https://www.diariooficial.pi.gov.br",
+   "status": "a_verificar: TLS encerra a conexão antes do fim (UNEXPECTED_EOF) em 01/10/2026 — fonte indisponível ao cliente, não ausência de ato",
    "ultima_tentativa": "2026-10-01"
   },
   "RN": {
    "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
+   "url": "https://www.diariooficial.rn.gov.br",
+   "status": "a_verificar: responde 235 bytes, sem conteúdo de diário; o host sem www falha na verificação do certificado TLS — a verificar",
    "ultima_tentativa": "2026-10-01"
   },
   "SE": {
    "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
+   "url": "",
+   "status": "a_verificar: segrase.se.gov.br e www.diariooficial.se.gov.br não resolvem no DNS em 01/10/2026 — endereço do diário a localizar",
    "ultima_tentativa": "2026-10-01"
   },
   "DF": {
-   "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
+   "adaptador": "dodf",
+   "url": "https://www.dodf.df.gov.br",
+   "status": "ok",
    "ultima_tentativa": "2026-10-01"
   },
   "GO": {
@@ -111,8 +111,8 @@
   },
   "MS": {
    "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
+   "url": "https://www.spdo.ms.gov.br",
+   "status": "a_verificar: sítio responde sem formulário nem rota de busca na página; a verificar",
    "ultima_tentativa": "2026-10-01"
   },
   "MT": {
@@ -129,20 +129,20 @@
   },
   "MG": {
    "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
+   "url": "https://www.jornalminasgerais.mg.gov.br",
+   "status": "a_verificar: sítio responde sem rota de busca declarada na página; a verificar",
    "ultima_tentativa": "2026-10-01"
   },
   "RJ": {
    "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
+   "url": "https://www.ioerj.com.br",
+   "status": "a_verificar: sítio responde (WordPress) sem rota de busca no texto do diário; a verificar",
    "ultima_tentativa": "2026-10-01"
   },
   "SP": {
    "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
+   "url": "https://doe.sp.gov.br",
+   "status": "a_verificar: sítio responde sem rota de busca declarada na página; a verificar",
    "ultima_tentativa": "2026-10-01"
   },
   "PR": {
@@ -153,15 +153,16 @@
   },
   "RS": {
    "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
+   "url": "https://www.diariooficial.rs.gov.br",
+   "status": "a_verificar: sítio responde em 2,6 kB (carga por JavaScript), sem rota de busca legível — a verificar",
    "ultima_tentativa": "2026-10-01"
   },
   "SC": {
    "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
+   "url": "https://doe.sea.sc.gov.br",
+   "status": "a_verificar: sítio responde em 2,4 kB (carga por JavaScript), sem rota de busca legível — a verificar",
    "ultima_tentativa": "2026-10-01"
   }
- }
+ },
+ "_medicao_01_10_2026": "Varredura dos 22 diários sem adaptador: cada host foi sondado com o cliente do projeto, e o status de cada UF passou a dizer o que respondeu e o que falta. DF e TO ganharam adaptador direto. Host que não responde, busca que não existe e busca que cobre o portal em vez do diário são coisas diferentes, e agora estão nomeadas separadamente — nenhuma delas é ausência de ato."
 }

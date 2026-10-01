@@ -2538,3 +2538,57 @@ do log v2 separada da dos outros: `doe_sem_pista` e `canais_sem_pista` são "con
 trava: uma UF só pode ser marcada "não localizado" onde os quatro canais tenham rodado sem erro, e
 hoje seis UFs têm o canal 3 bloqueado e 22 têm o canal 2 indisponível. Por isso a troca para a v0.4
 continua esperando, e nenhuma UF foi marcada "não localizado" nesta rodada.
+
+## 77. Adaptadores diretos de diário estadual: dois novos, e os vinte restantes nomeados um a um (01/10/2026)
+
+O §231 deixou a cobertura de diário estadual em seis UFs: as cinco da plataforma comum mais o AM
+fora dela. As outras 21 nasciam `a_verificar` **em branco** — sem host, sem plataforma, sem motivo.
+Em branco não é lacuna declarada: é lacuna não examinada, e a diferença importa porque o canal 2 da
+bateria de saúde e a varredura de homologações dependem dela.
+
+**O método, e por que ele não adivinha.** Cada UF teve candidatos de host sondados com o cliente do
+projeto em 01/10/2026; o que respondeu teve a **própria página lida** para extrair os formulários
+(`action`, método, nomes dos campos) e os links de busca que ela declara. Nenhuma rota foi
+construída por analogia. Duas tentativas minhas falharam por isso mesmo e ficam registradas: mandei
+data em `dd/mm/aaaa` a campos `type="date"` (o DODF devolveu 400, o DOE-TO devolveu 500) e inventei
+um valor `contextual` onde a validação da própria rota só aceita `exata` ou `contexto`. O erro foi
+meu, não da fonte, e foi a fonte que o disse.
+
+**DF — adaptador `dodf`.** A página de busca do DODF não traz resultado no HTML: o contador nasce em
+zero e é preenchido por `$.post("/dodf/materia/listar", …)`, lido no
+`MateriaController.js` do próprio sítio. É uma API de verdade — termo, janela de data em ISO,
+paginação — e devolve matéria com título, órgão, seção, data, resumo com o termo marcado e `slug`. O
+endereço citável de cada matéria é o que o JS monta (`/dodf/materia/visualizar?co_data=…&p=…`).
+Medido: 7 matérias para "situação de emergência" e 1 para "estado de calamidade pública" na janela
+29/06→01/10/2026. O adaptador **não inventa número de página**: o DODF indexa por matéria, não por
+página de PDF, e número inventado é pior do que número ausente.
+
+**TO — adaptador `busca_to`.** `GET /busca?por=texto&texto=…&data-inicial=…&data-final=…` devolve,
+no HTML, a tabela das **edições** que contêm o termo, com número, data e o endereço do PDF. Ela não
+devolve o trecho — e por isso o adaptador desce ao PDF **só das edições que a busca apontou**, lendo
+apenas as páginas em que o termo aparece. É a diferença entre ler 2 edições e ler as 65 da janela.
+Quando a busca aponta uma edição e o PDF não confirma o termo, isso entra como o que é: edição
+apontada, trecho não localizado nela — divergência da fonte, nunca silêncio.
+
+**O POST, com as mesmas travas do GET.** Os dois adaptadores exigiram `coletores_base.enviar`, que
+repete linha a linha o que o `buscar_uma_vez` faz: cliente identificado, `Crawl-delay` do robots
+respeitado, acesso contra robots registrado, muro de robô servido com 200 levantado **antes** de
+qualquer preservação (§186) e padrão de defeso registrado. A espera do §226 saiu de dentro do
+`buscar` para a função `com_espera`, usada pelos dois: quando repetir — 429, 5xx e conexão que nem
+virou conversa HTTP sim; 4xx e muro de robô não — é regra da espera, não do método HTTP, e duas
+cópias dela divergiriam.
+
+**Os vinte restantes, nomeados.** Cada um passou a declarar o host que responde e o que falta, e as
+categorias são distintas de propósito: host que **não responde** (PI, com TLS encerrado antes do
+fim; SE e CE, sem resolução no DNS; RN e RR, respondendo poucas centenas de bytes sem conteúdo de
+diário), sítio que responde **sem rota de busca por termo** (AC, AL, MG, MS, RJ, RS, SC, SP), busca
+que existe mas **cobre o portal e não o texto do diário** (RO, cuja `?s=` é busca de notícias, e PB,
+cujo `@@busca` do Plone é do sítio do jornal), plataforma que **exige estado de formulário** (PA,
+ASP.NET com `__VIEWSTATE`) ou **JavaScript** (PE, aplicação de página única), e rota de busca que
+respondeu **404** (BA). Nenhuma delas é ausência de ato, e nenhuma autoriza afirmar que o estado não
+publicou nada.
+
+**O canal 2 da saúde passou a enxergar os adaptadores novos.** Ele perguntava só à plataforma comum,
+o que o limitava a cinco UFs; agora despacha pelo `fontes_doe.json`, que é onde a cobertura está
+declarada. Cobertura do canal 2: de 5 para 7 UFs. Medido no mesmo dia: 8 acertos no DF e 3 no TO
+para os termos da saúde, nenhum qualificando pista.
