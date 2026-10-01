@@ -58,17 +58,17 @@
     <h2 id="dcTopoTitulo" class="sr-only">Números do topo</h2>
     <p class="dc-topo-periodo">Agora</p>
     <div class="grade-numeros grade-numeros--3">
-      <div class="cartao-numero">
+      <div class="cartao-numero cartao-numero--chuva">
         <p class="cartao-numero-rotulo">Municípios sob alerta do Cemaden</p>
         <p class="cartao-numero-valor" id="topoCemaden">—</p>
         <p class="cartao-numero-fonte" id="topoCemadenFonte">—</p>
       </div>
-      <div class="cartao-numero">
+      <div class="cartao-numero cartao-numero--chuva">
         <p class="cartao-numero-rotulo">Municípios sob aviso do Inmet</p>
         <p class="cartao-numero-valor" id="topoInmet">—</p>
         <p class="cartao-numero-fonte" id="topoInmetFonte">—</p>
       </div>
-      <div class="cartao-numero">
+      <div class="cartao-numero cartao-numero--resposta">
         <p class="cartao-numero-rotulo">Municípios com decreto de emergência e alerta ao mesmo tempo</p>
         <p class="cartao-numero-valor" id="topoCruzamento">—</p>
         <p class="cartao-numero-fonte" id="topoCruzamentoFonte">—</p>
@@ -76,17 +76,17 @@
     </div>
     <p class="dc-topo-periodo">Desde o início do ciclo, 29 de junho</p>
     <div class="grade-numeros grade-numeros--3">
-      <div class="cartao-numero">
+      <div class="cartao-numero cartao-numero--resposta">
         <p class="cartao-numero-rotulo">Municípios que decretaram emergência ou calamidade</p>
         <p class="cartao-numero-valor" id="topoDecretaram">—</p>
         <p class="cartao-numero-fonte" id="topoDecretaramFonte">—</p>
       </div>
-      <div class="cartao-numero">
+      <div class="cartao-numero cartao-numero--resposta">
         <p class="cartao-numero-rotulo">Pessoas que vivem nesses municípios</p>
         <p class="cartao-numero-valor" id="topoPopulacao">—</p>
         <p class="cartao-numero-fonte" id="topoPopulacaoFonte">—</p>
       </div>
-      <div class="cartao-numero">
+      <div class="cartao-numero cartao-numero--resposta">
         <p class="cartao-numero-rotulo">Municípios com a emergência reconhecida pelo governo federal</p>
         <p class="cartao-numero-valor" id="topoReconhecidos">—</p>
         <p class="cartao-numero-fonte" id="topoReconhecidosFonte">—</p>
@@ -100,7 +100,7 @@
     <!-- O aviso do Inmet é emitido por ÁREA, não por município: ele satura o mapa do país e sai do
          desenho, por decisão da editoria em 01/10/2026. Continua no contador do topo e no gráfico
          por tipo, onde a contagem é a informação e a geografia não é. -->
-    <div class="grade-mapas grade-figuras">
+    <div class="grade-figuras grade-figuras--3 grade-mapas">
       <figure class="figura figura--mapa cartao-mapa r-chuva" id="boxAlertas">
         <p class="cartao-mapa-familia">Alerta</p>
         <p class="cartao-mapa-boletim" id="linhaAlertas">—</p>
@@ -115,7 +115,7 @@
         <p class="cartao-mapa-boletim" id="linhaAlertasTipo">—</p>
         <h3 class="figura-titulo">Municípios por tipo de aviso ou alerta em vigor</h3>
         <p class="figura-sub">Consulta mais recente · tipo nomeado pelo Inmet e pelo Cemaden · nº de municípios</p>
-        <div class="figura-midia canvas-wrap" id="wrapAlertasTipo"><canvas id="cAlertasTipo" aria-label="Número de municípios sob cada tipo de aviso ou alerta em vigor"></canvas></div>
+        <div class="figura-midia canvas-wrap canvas-wrap--mapa" id="wrapAlertasTipo"><canvas id="cAlertasTipo" aria-label="Número de municípios sob cada tipo de aviso ou alerta em vigor"></canvas></div>
         <div class="map-legend" id="legAlertasTipo"></div>
         <div class="cartao-mapa-rodape" data-busca="tipos"></div>
       </figure>
@@ -126,7 +126,7 @@
   <section id="decretos" aria-labelledby="tituloDecretos">
     <h2 id="tituloDecretos">Emergências no ciclo</h2>
     <p class="hint">Municípios que decretaram situação de emergência ou calamidade pública desde 29/06/2026.</p>
-    <div class="grade-mapas grade-figuras--3">
+    <div class="grade-figuras grade-figuras--3 grade-mapas">
       <figure class="figura figura--mapa cartao-mapa r-chuva" id="boxAtosResposta">
         <p class="cartao-mapa-familia">Emergência</p>
         <p class="cartao-mapa-boletim" id="linhaAtos">—</p>
@@ -166,7 +166,7 @@
        família de cabeçalho. O portão de consistência visual cobrou isso, e estava certo — é o
        mesmo erro que o cartão de mapa já custou quatro vezes em 01/10. -->
   <section id="cadastro" aria-labelledby="tituloCadastro">
-    <div class="grade-mapas grade-figuras--1">
+    <div class="grade-figuras grade-figuras--3 grade-mapas">
       <figure class="figura figura--mapa cartao-mapa r-chuva" id="boxPrioritarios">
         <p class="cartao-mapa-familia">Risco conhecido</p>
         <p class="cartao-mapa-boletim" id="linhaPrioritarios">—</p>

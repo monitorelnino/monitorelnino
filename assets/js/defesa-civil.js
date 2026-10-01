@@ -128,8 +128,13 @@ function __init(){
   const n = v => Number(v || 0).toLocaleString('pt-BR');
   const projection = d3.geoMercator().fitSize([480, 460], BR_GEOJSON);
   const pathGen = d3.geoPath().projection(projection);
+  /* 01/10/2026 (desenho, decisão da editoria): a base dos mapas é BRANCA com contorno fino, nunca
+     cinza. O cinza de zebra sai do território e fica só onde é rótulo de legenda — "demais
+     municípios" é categoria, e categoria precisa de uma amostra de cor. */
+  const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460);
+  const ATM = MonitorMapas.PALETA.atmosfera;
   const CINZA = MonitorMapas.cor('zebra');
-  const addSiglas = svg => MonitorMapas.siglas(MonitorMapas.contexto(BR_GEOJSON, 480, 460), svg);
+  const addSiglas = svg => MonitorMapas.siglas(ctx, svg);
   const texto = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
 
   /* Crédito de figura de SINAL: nome, endereço e data saem do catálogo de `sinais_risco.json`,
@@ -144,9 +149,16 @@ function __init(){
     const d = document.querySelector('#' + caixaId + ' .fonte-figura');
     if (d) d.dataset.credito = chaves.join(' ');
   }
-  function fundo(svg){
+  /* A atmosfera entra ANTES do território, porque ela é o fundo: `atmosfera` insere o retângulo e a
+     malha de 5° como primeiro filho do SVG. O contorno da UF vem da própria atmosfera, para que
+     base e contorno nunca discordem — é o mesmo contrato do Monitor de riscos. */
+  function fundo(svgId, familia){
+    const a = ATM[familia];
+    const svg = d3.select(svgId).attr('data-atmosfera', familia);
+    MonitorMapas.atmosfera(ctx, svgId.replace('#', ''), familia);
     svg.append('g').selectAll('path').data(BR_GEOJSON.features).join('path')
-      .attr('d', pathGen).attr('fill', CINZA).attr('class', 'uf-path')
+      .attr('d', pathGen).attr('fill', a ? a.uf : CINZA).attr('class', 'uf-path')
+      .attr('stroke', a ? a.contorno : null)
       .on('mouseenter', (evt, d) => showTip('<strong>' + esc(d.properties.name) + '</strong>', evt))
       .on('mousemove', (evt) => showTip(tooltip.innerHTML, evt))
       .on('mouseleave', hideTip);
@@ -162,6 +174,15 @@ function __init(){
   const GRAU = MonitorMapas.PALETA.grauAviso;
   const COR_CEMADEN = GRAU.cemaden;
   const corDoGrau = g => GRAU[g] || GRAU.outro;
+  /* O nível do alerta do Cemaden na rampa da atmosfera clara (azul → violeta), que é a ordem que a
+     editoria aprovou para esta página. A ordem dos níveis é a do ÓRGÃO, não uma escala do projeto;
+     nível que o Cemaden criar amanhã cai no último tom e a legenda o nomeia pelo nome dele. */
+  const NIVEIS_CEMADEN = ['Observação', 'Moderado', 'Alto', 'Muito Alto'];
+  const RAMPA_CEMADEN = (ATM.chuva_claro || {}).rampa || [COR_CEMADEN];
+  const corDoNivel = n => {
+    const i = NIVEIS_CEMADEN.findIndex(x => x.toLowerCase() === String(n || '').toLowerCase());
+    return RAMPA_CEMADEN[i >= 0 ? Math.min(i, RAMPA_CEMADEN.length - 1) : RAMPA_CEMADEN.length - 1];
+  };
 
   const lista = muns ? Object.entries(muns).map(([cod, v]) => ({
     cod: cod, nome: v.nome, uf: v.uf, inmet: v.inmet || [], cemaden: v.cemaden || [],
@@ -178,11 +199,11 @@ function __init(){
       MonitorMapas.legenda(id, [{cor: MonitorMapas.cor('sem-dado'), rotulo: 'sem coleta até o corte'}]));
     ['boxAlertas', 'boxAlertasTipo'].forEach(id => creditoSinal(id, ['cemaden_alertas', 'inmet_avisos'], null));
   } else {
-    const svgA = fundo(d3.select('#mapAlertas'));
+    const svgA = fundo('#mapAlertas', 'chuva_claro');
     const semCoord = comCemaden.filter(m => !m.ll).length;
     svgA.append('g').selectAll('circle').data(comCemaden.filter(m => m.ll)).join('circle')
       .attr('cx', m => projection(m.ll)[0]).attr('cy', m => projection(m.ll)[1])
-      .attr('r', 5).attr('fill', COR_CEMADEN)
+      .attr('r', 5).attr('fill', m => corDoNivel((m.cemaden[0] || {}).nivel))
       .attr('stroke', MonitorMapas.cor('branco')).attr('stroke-width', 1.4)
       .on('mouseenter', (evt, m) => showTip(
         '<strong>' + esc(m.nome) + ' (' + esc(m.uf) + ')</strong>'
@@ -194,8 +215,8 @@ function __init(){
 
     const niveis = [...new Set(comCemaden.reduce((ac, m) => ac.concat(m.cemaden.map(a => a.nivel)), []))].filter(Boolean);
     MonitorMapas.legenda('legAlertas',
-      (niveis.length ? niveis.map(x => ({cor: COR_CEMADEN, rotulo: 'Cemaden · ' + x}))
-                     : [{cor: COR_CEMADEN, rotulo: 'Cemaden · alerta em vigor'}])
+      (niveis.length ? niveis.map(x => ({cor: corDoNivel(x), rotulo: 'Cemaden · ' + x}))
+                     : [{cor: corDoNivel(null), rotulo: 'Cemaden · alerta em vigor'}])
       .concat([{cor: CINZA, rotulo: 'sem alerta do Cemaden em vigor'}])
       .concat(semCoord ? [{cor: MonitorMapas.cor('sem-dado'), rotulo: 'sem coordenada (' + semCoord + ')'}] : []));
     creditoSinal('boxAlertas', ['cemaden_alertas'], carimbo);
@@ -272,11 +293,15 @@ function __init(){
                        em_classificacao: 'em classificação'};
   const tipoTexto = m => (m.tipos.map(t => TIPO_ROTULO[t] || t).join(', ') || '—');
 
+  /* A cor do ponto de resposta vive numa constante: a amostra da legenda tem de ser a mesma cor do
+     ponto no mapa, e três legendas lendo a paleta por caminhos diferentes é como elas divergem. */
+  const COR_RESPOSTA = COR_RESPOSTA;
+
   function pontos(svgSel, dados, raio, aoEntrar){
-    const svg = fundo(d3.select(svgSel));
+    const svg = fundo(svgSel, 'resposta');
     svg.append('g').selectAll('circle').data(dados.filter(m => m.ll)).join('circle')
       .attr('cx', m => projection(m.ll)[0]).attr('cy', m => projection(m.ll)[1])
-      .attr('r', raio).attr('fill', MonitorMapas.PALETA.resposta)
+      .attr('r', raio).attr('fill', (ATM.resposta.rampa || [])[0] || MonitorMapas.PALETA.resposta)
       .attr('stroke', MonitorMapas.cor('branco')).attr('stroke-width', 1.4)
       .on('mouseenter', (evt, m) => showTip(aoEntrar(m), evt))
       .on('mousemove', (evt) => showTip(tooltip.innerHTML, evt))
@@ -294,7 +319,7 @@ function __init(){
     + (m.data ? ' · primeiro em ' + esc(m.data) : '')
     + '<br>' + esc(tipoTexto(m)));
   MonitorMapas.legenda('legAtosResposta', [
-    {cor: MonitorMapas.PALETA.resposta, rotulo: 'decreto de emergência no ciclo'},
+    {cor: COR_RESPOSTA, rotulo: 'decreto de emergência no ciclo'},
     {cor: CINZA, rotulo: 'demais municípios'}].concat(semCoordItem(semCoordDec)));
   MonitorMapas.credito('boxAtosResposta', {fontes: ['DOU/SEDEC (S2iD)', 'diários oficiais'], data: window.__metaAtualizado});
   listaBuscavel('boxAtosResposta', {
@@ -323,7 +348,7 @@ function __init(){
   MonitorMapas.legenda('legAlertaDecreto', [
     // Rótulo de legenda é nome de categoria, não frase: até 40 caracteres (portão de
     // harmonização). A contagem vive no cartão do topo e no texto do mouse.
-    {cor: MonitorMapas.PALETA.resposta, rotulo: 'decreto no ciclo e alerta agora'},
+    {cor: COR_RESPOSTA, rotulo: 'decreto no ciclo e alerta agora'},
     {cor: CINZA, rotulo: 'demais municípios'}]
     .concat(semCoordItem(cruzados.filter(m => !m.ll).length)));
   creditoSinal('boxAlertaDecreto', ['cemaden_alertas', 'inmet_avisos'], carimbo);
@@ -349,7 +374,7 @@ function __init(){
      legenda. Ausência de portaria até o corte NÃO é pedido negado — a ficha semântica da figura
      declara essa fronteira, e o rótulo aqui diz "sem reconhecimento", não "negado". */
   MonitorMapas.legenda('legReconhecidos', [
-    {cor: MonitorMapas.PALETA.resposta, rotulo: 'emergência reconhecida'},
+    {cor: COR_RESPOSTA, rotulo: 'emergência reconhecida'},
     {cor: CINZA, rotulo: 'sem reconhecimento (' + semReconhecimento + ')'}]
     .concat(semCoordItem(reconhecidos.filter(m => !m.ll).length)));
   MonitorMapas.credito('boxReconhecidos', {fontes: ['Portarias SEDEC/MIDR (DOU)'], data: window.__metaAtualizado});
@@ -367,7 +392,7 @@ function __init(){
   // =========================================================
   // 3. Cadastro federal de suscetíveis a enxurradas e inundações (Casa Civil)
   // =========================================================
-  const svgPrior = fundo(d3.select('#mapPrioritarios'));
+  const svgPrior = fundo('#mapPrioritarios', 'chuva_claro');
   /* As duas cores saem da paleta semântica de categorias: "com instrumento" é a mesma cor de
      `plano` e "sem instrumento" a mesma de `nao_localizado`, nas outras páginas. Hexadecimal ou
      token de cor escolhido aqui criaria uma segunda convenção para a mesma distinção. */
