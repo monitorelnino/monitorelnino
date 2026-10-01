@@ -162,29 +162,6 @@
    "funcao_narrativa": "abre a dimensão de financiamento com o que é verificável",
    "acao_relacionada": null
   },
-  "financiamento.html#boxConsultas": {
-   "tipo": "tabela",
-   "pergunta_que_responde": "Que consultas o Monitor fez, quando, com que parâmetros e com que resposta?",
-   "dimensao_da_preparacao": "disponibilidade de informação pública",
-   "universo": "rodadas do robô",
-   "unidade_de_analise": "consulta",
-   "territorio": "Brasil",
-   "periodo": "rodadas registradas",
-   "variavel_principal": "endpoint, parâmetros, data, itens e hash da resposta",
-   "denominador": null,
-   "fonte": "log de execução do próprio Monitor",
-   "metodologia": "uma linha por consulta, com hash da resposta",
-   "conclusoes_permitidas": [
-    "o que foi consultado e quando",
-    "reprodutibilidade da coleta"
-   ],
-   "conclusoes_nao_permitidas": [
-    "completude da fonte consultada",
-    "ausência de resultado como ausência do fenômeno"
-   ],
-   "funcao_narrativa": "metodológico: expõe o rastro da coleta para auditoria externa",
-   "acao_relacionada": "replicar a consulta"
-  },
   "financiamento.html#boxDespesa182": {
    "tipo": "mapa de pontos com seletor de camada e lista",
    "pergunta_que_responde": "Quanto cada município declarou de despesa em defesa civil por habitante, e quais declararam ter previsão de recursos na lei orçamentária?",
@@ -279,28 +256,6 @@
    "funcao_narrativa": "metodológico: explica por que o mapa por UF não é mapa de destino",
    "acao_relacionada": null
   },
-  "financiamento.html#boxMpsUf": {
-   "tipo": "mapa",
-   "pergunta_que_responde": "Quanto foi pago das MPs por UF da unidade gestora?",
-   "dimensao_da_preparacao": "financiamento",
-   "universo": "ações reforçadas pelas MPs 1.367 e 1.384",
-   "unidade_de_analise": "UF da unidade gestora",
-   "territorio": "Brasil",
-   "periodo": "execução mensal 06–09/2026",
-   "variavel_principal": "valor pago (R$)",
-   "denominador": null,
-   "fonte": "Portal da Transparência",
-   "metodologia": "UF da unidade gestora, não do beneficiário final",
-   "conclusoes_permitidas": [
-    "distribuição do pagamento por UF da unidade gestora"
-   ],
-   "conclusoes_nao_permitidas": [
-    "território onde o recurso foi aplicado",
-    "benefício recebido pela população da UF"
-   ],
-   "funcao_narrativa": "metodológico: a mesma leitura do financiamento, aberta para auditoria",
-   "acao_relacionada": null
-  },
   "financiamento.html#boxPreventivoSetor": {
    "tipo": "diagrama de estrutura",
    "pergunta_que_responde": "Quantas rotas preventivas existem por setor, e quais dependem de plano ou risco declarado?",
@@ -343,28 +298,6 @@
    ],
    "funcao_narrativa": "caso único com dataset nominal, declarado como exceção",
    "acao_relacionada": null
-  },
-  "financiamento.html#boxRede": {
-   "tipo": "diagrama de estrutura",
-   "pergunta_que_responde": "Por quais rotas o dinheiro público chega ao município, e o que abre cada uma?",
-   "dimensao_da_preparacao": "financiamento",
-   "universo": "rotas verificadas até o corte",
-   "unidade_de_analise": "rota",
-   "territorio": "Brasil",
-   "periodo": "corte da edição",
-   "variavel_principal": "rota, origem e chave de acesso",
-   "denominador": null,
-   "fonte": "legislação e atos citados em cada rota",
-   "metodologia": "estrutura, não série temporal",
-   "conclusoes_permitidas": [
-    "quais rotas existem e que condição abre cada uma"
-   ],
-   "conclusoes_nao_permitidas": [
-    "volume de recurso por rota",
-    "probabilidade de o município receber"
-   ],
-   "funcao_narrativa": "explica o mecanismo antes de mostrar o fluxo",
-   "acao_relacionada": "identificar a rota aplicável ao próprio município"
   },
   "financiamento.html#boxRotaMPs": {
    "tipo": "gráfico de barras",

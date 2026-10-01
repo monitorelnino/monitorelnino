@@ -82,10 +82,26 @@ def conferir() -> list:
 def autoteste() -> int:
     from coletores_base import rodar_autoteste
     casos = {
-        # O portão tem de achar as âncoras que ele mesmo protege: as três do "Para gestores" para a
-        # página de financiamento. Se uma delas sair de lá, este caso cai junto com o portão.
-        "as três âncoras do Para gestores existem em financiamento.html":
-            lambda: {"antes-do-desastre", "depois-do-desastre", "preventivo"} <= ids_de(RAIZ / "financiamento.html"),
+        # O portão tem de achar as âncoras que ele mesmo protege: as do "Para gestores" para a
+        # página de financiamento.
+        #
+        # 01/10/2026: este caso trazia os nomes ESCRITOS À MÃO — `antes-do-desastre`,
+        # `depois-do-desastre`, `preventivo`. O bloco C do handover renomeou as âncoras para
+        # `antes`, `depois` e `setores`; a página e o `prefeituras.html` acompanharam, e o caso de
+        # teste não. Resultado: a varredura passava (as âncoras citadas existem de verdade) e o
+        # autoteste reprovava, cobrando três nomes que ninguém mais usa. Teste com nome fixo
+        # envelhece em silêncio e depois reprova sozinho.
+        #
+        # Agora ele LÊ do `prefeituras.html` quais âncoras de financiamento são citadas e confere
+        # que existem lá. Renomear uma âncora nos dois lugares continua passando; renomear num só
+        # continua reprovando — que é a única coisa que este caso precisa saber.
+        "as âncoras que o Para gestores cita existem em financiamento.html":
+            lambda: (lambda citadas: bool(citadas) and citadas <= ids_de(RAIZ / "financiamento.html"))(
+                {a for arq, a in RE_LINK.findall((RAIZ / "prefeituras.html").read_text(encoding="utf-8"))
+                 if arq == "financiamento.html"}),
+        "o Para gestores cita as três âncoras que o handover nomeou":
+            lambda: {a for arq, a in RE_LINK.findall((RAIZ / "prefeituras.html").read_text(encoding="utf-8"))
+                     if arq == "financiamento.html"} == {"antes", "depois", "setores"},
         "o portão lê links com âncora":
             lambda: RE_LINK.findall('href="financiamento.html#preventivo"') == [("financiamento.html", "preventivo")],
         "o portão lê âncora da própria página":

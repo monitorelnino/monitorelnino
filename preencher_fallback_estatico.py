@@ -187,7 +187,8 @@ def preencher_financiamento():
     rotas = ler("financiamento/rotas_preventivas.json", {}) or {}
     corte = rotas.get("corte") or "—"
     h = sub_id(h, "corteFin", corte, n)
-    h = sub_id(h, "notaFogoCorte", corte, n)
+    # `notaFogoCorte` saiu com o painel da rota do fogo (bloco B, 01/10/2026): o caso do fogo
+    # virou texto, sem mapa por município e sem carimbo próprio.
     if h != h0:
         p.write_text(h, encoding="utf-8", newline="\n")
     print(f"financiamento.html: {n[0]} campo(s) de fallback estático regravado(s)")
