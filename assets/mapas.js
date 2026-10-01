@@ -299,6 +299,20 @@
       previsto: {fundo:'#FFFFFF', uf:'#FFFFFF', contorno:'#C5CFCE', rampa:[], claro:true},
       ar:    {fundo:'#EEEEF1', uf:'#FFFFFF', contorno:'#CFCFD8',
               rampa:['#C9D6D1', '#A7A9B8', '#8A76A6', '#5B3F7A', '#2E1B45'], claro:true},
+      // 01/10/2026 (desenho da Defesa civil, decisão da editoria): duas atmosferas CLARAS, para a
+      // página de alertas e emergências. A `chuva` existente é noturna e vive no Monitor de riscos;
+      // trocá-la mudaria aquela página, e a regra da direção de arte é não maquiar componente por
+      // componente. Estas duas reusam o mesmo mecanismo de atmosfera, com a base branca e o
+      // contorno fino que a editoria pediu — "nunca cinza".
+      //
+      // `chuva_claro`: a rampa é a da chuva lida de trás para frente, azul → violeta, que é a
+      // ordem de nível do alerta do Cemaden.
+      chuva_claro: {fundo:'#FFFFFF', uf:'#FFFFFF', contorno:'#C3D2DD',
+                    rampa:['#7FA6C4', '#4F7A97', '#8A76A6', '#5B3F7A'], claro:true},
+      // `resposta`: o decreto de emergência é marca de resposta, e a cor dela no site é a argila.
+      // Um tom só, porque o mapa não mede intensidade — mede se a cidade decretou.
+      resposta:    {fundo:'#FFFFFF', uf:'#FFFFFF', contorno:'#D8CDBE',
+                    rampa:['#7C4A34'], claro:true},
     },
     // séries por ano (o ano corrente sempre em Argila)
     anos: { '2026': COR.argila, '2025': COR.ambar, '2024': COR.mineral, canal: COR.musgo, p75: COR.ambar, p90: COR.sintetico },

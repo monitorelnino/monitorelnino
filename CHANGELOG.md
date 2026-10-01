@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-01 · #496 · Defesa civil com o desenho padrão do site
+
+Os seis números do topo no cartão de destaque do site, em duas linhas de três; os cinco mapas e o
+gráfico no cartão de mapa único, em grade de três, com a mesma figura nos seis. Duas atmosferas
+claras entram na paleta: base branca com contorno fino, nunca cinza. Dois defeitos corrigidos:
+`grade-mapas` sem a classe base não era grade, e uma constante autorreferente matava a página em
+silêncio. METODOLOGIA §70.
+
 ## 2026-10-01 · #495 · Juiz da saúde: a bateria dos 27 rodou e as 27 pistas foram recusadas
 
 `julgar_saude.py` roda o juiz sobre a fila de saúde e escreve na camada estadual — o runner do Legal

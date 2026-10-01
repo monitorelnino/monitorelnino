@@ -124,8 +124,11 @@ setTimeout(() => {
       .every(i => txt(i) && txt(i) !== "—"));
 
   // ── tooltip ────────────────────────────────────────────────────────────────────────────────
-  const hover = d.querySelector("#mapAtosResposta path");
-  if (!hover) { teste("mapa de decretos tem o fundo das UFs para o tooltip", false); }
+  // `path.uf-path`, não `path`: com a atmosfera, o PRIMEIRO path do SVG é a malha de 5° que ela
+  // insere como primeiro filho, e essa malha não tem — nem deve ter — ouvinte de mouse. Quem
+  // carrega o tooltip é o território.
+  const hover = d.querySelector("#mapAtosResposta path.uf-path");
+  if (!hover) { teste("mapa de decretos tem o território das UFs para o tooltip", false); }
   else {
     hover.dispatchEvent(new dom.window.MouseEvent("mouseenter", { clientX: 100, clientY: 100, bubbles: true }));
     teste("tooltip de mapa exibe conteúdo",

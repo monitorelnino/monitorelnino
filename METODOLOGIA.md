@@ -2139,3 +2139,45 @@ estados, que é afirmar ausência de sala de situação por ausência de prova. 
 do MARÉ Saúde segue com o rótulo "média dos {n} estados verificados", que é o que a regra de 01/10
 manda enquanto não houver 27 — hoje são **21**.
 
+## 70. Defesa civil: o desenho padrão do site, e dois defeitos que só a medição mostrou (01/10/2026)
+
+Correção pedida pela editoria depois do #491: a estrutura estava certa, o desenho não era o do site.
+Nenhum texto mudou.
+
+**O que estava errado, e por quê.** Dois defeitos meus, nenhum visível no código:
+
+1. **`grade-mapas` não é grade.** Ela só alinha os cartões e lhes dá altura; quem cria as colunas é
+   `.grade-figuras`. Eu escrevi `class="grade-mapas grade-figuras--3"`, e sem a classe base o `--3`
+   não tinha onde se aplicar: os cartões ficaram com **1.098 px** cada, um por linha. A marcação
+   correta é a do Monitor de riscos, `grade-figuras grade-figuras--3 grade-mapas`, e depois dela cada
+   cartão mede **327 px**.
+2. **`const COR_RESPOSTA = COR_RESPOSTA`.** Ao extrair a cor do ponto de resposta para uma constante,
+   a substituição automática trocou a primeira ocorrência — que era a da própria declaração. A página
+   morria em silêncio depois da seção de alertas: os seis contadores voltavam a travessão e quatro
+   mapas ficavam vazios, **sem nenhum erro no console**, porque o `catch` do carregamento transforma
+   a exceção num banner que ninguém olha num teste de contagem. Só apareceu ao perguntar pelo banner.
+
+**O que o desenho passa a ser.** Os componentes já padronizados, sem nada novo: os seis números do
+topo no cartão de destaque do site — borda fina, faixa superior de 4 px na cor da família, número em
+Fraunces leve, rótulo em versalete —, em duas linhas de três; todos os cinco mapas e o gráfico no
+cartão de mapa único do #488, em grade de três, com a **mesma figura de 327×314** nos seis.
+
+**Duas atmosferas claras entram na paleta.** A `chuva` existente é noturna e vive no Monitor de
+riscos; trocá-la mudaria aquela página, e a direção de arte proíbe maquiar componente por componente.
+Entram `chuva_claro` (base branca, contorno fino, rampa azul → violeta, que é a ordem de nível do
+alerta do Cemaden) e `resposta` (base branca, ponto em argila, um tom só, porque o mapa não mede
+intensidade — mede se a cidade decretou). A base dos mapas passa a ser **branca com contorno fino,
+nunca cinza**: o cinza fica só na amostra de legenda, onde é nome de categoria.
+
+**Três ajustes que a medição pediu.** (a) A variante `.grade-numeros--3` vivia **antes** da regra
+base e perdia por ordem de arquivo — quatro colunas em vez de três; passou a viver junto da base.
+(b) O gráfico tinha altura fixa de `.figura--grafico`, que vence `aspect-ratio`: dentro do cartão de
+mapa ela é desligada, e o gráfico segue a proporção 480×460 do mapa. (c) A 390 px, em duas colunas, o
+número de 48 px não cabia — "21.211.617" media 201 px numa coluna de 139 px e empurrava a página
+(scrollWidth 419 > 390). O valor desce **um degrau da escala** no celular, como o `.emerg-numero` já
+fazia: a escala tipográfica é fixa, então é degrau, não `clamp`.
+
+**O portão 7 acompanhou.** O teste do tooltip apontava para o primeiro `path` do SVG, e com a
+atmosfera o primeiro `path` é a malha de 5° — que não tem, nem deve ter, ouvinte de mouse. Ele passa
+a apontar `path.uf-path`: quem carrega o tooltip é o território.
+
