@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-01 · #492 · Pendências resolvidas pela editoria, e a portaria do MMA estava revogada
+
+Título, subtítulo e legenda definitivos do mapa do cadastro; manchete do MARÉ Saúde só com os 27
+estados; os dois cadastros federais distintos na METODOLOGIA §66; linha aprovada para o plano
+estadual que trata de outro risco (MG). A conferência da portaria do MMA achou ato novo: a
+**1.717/2026** revogou a 1.202/2024 — Anexo I 81 → 80, Anexo II 10 → 17, com MA entrando. §67.
+
 ## 2026-10-01 · #491 · Defesa civil refeita: só alertas e emergências
 
 Saem os mapas de preparação (o plano mora no MARÉ Legal) e o material de auditoria, com destino em

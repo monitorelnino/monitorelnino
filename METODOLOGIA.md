@@ -1948,3 +1948,80 @@ ficha semântica. A diferença entre decretar e ser reconhecido é informação 
 reconhecimento até o corte — e a ficha proíbe a leitura de que ausência de portaria seja pedido
 negado.
 
+## 66. Os dois cadastros federais de municípios suscetíveis, que não são o mesmo (01/10/2026)
+
+Registrado a pedido da editoria, pela regra de 30/09: registrar direto, sem revisão prévia, com
+conferência integral depois.
+
+Existem **dois** cadastros federais de municípios suscetíveis a desastre, com fundamentos legais
+diferentes, conteúdos diferentes e consequências jurídicas diferentes. Tratá-los como um só já
+produziu, na página de Defesa civil, a afirmação de um dever que a lista usada não cria.
+
+**(1) Cadastro Nacional de Municípios com Áreas Suscetíveis** — art. 3º-A da Lei nº 12.340/2010
+(incluído pela Lei nº 12.608/2012). Inscrição **voluntária** do município. Abrange deslizamentos de
+grande impacto, inundações bruscas e processos geológicos ou hidrológicos correlatos. A inscrição é
+que **gera deveres**, entre eles o plano de contingência de proteção e defesa civil. A **lista
+nominal não tem fonte pública**: depende de acesso autenticado ao portal do MIDR, e o pedido de LAI
+ao MIDR/SEDEC continua de pé. O MARÉ **não publica** esta lista, porque não a tem.
+
+**(2) Cadastro federal de municípios suscetíveis a enxurradas e inundações** — Decreto nº
+12.444/2025, que regulamenta o art. 50 da Lei nº 11.445/2007 (saneamento), pela SEPAC/Casa Civil.
+Lista **nominal pública**, com código IBGE. É esta que o site usa, no mapa "Onde o risco de enchente
+é conhecido oficialmente". Ela **não cria** dever de plano de contingência.
+
+**Os números do cadastro (2), medidos no arquivo coletado em 30/09/2026:** **2.095** municípios
+prioritários, dos quais **2.086** constam do cadastro da Casa Civil e **9** aparecem apenas por
+deslizamento — 2.086 + 9 = 2.095. Fonte: Casa Civil, Nota Técnica nº 2/2025, em
+`https://www.gov.br/casacivil/pt-br/assuntos/cadastro-de-municipios-suscetiveis-a-eventos-de-enxurradas-e-inundacoes/`,
+com as evidências das Notas Técnicas nº 1/2023, nº 1/2025 e nº 2/2025 preservadas por hash em
+`data/cadastro_prioritarios_federal.json`.
+
+**Consequência redacional, vinculante:** o nome **"Cadastro Nacional" não aparece no site** quando o
+que está na tela é o cadastro (2). O portão `scripts/verificar_runtime_mapas.js` reprova a página se
+ele reaparecer. Camada de contexto, **peso zero**: nenhum dos dois pontua nem entra no índice.
+
+**O que o mapa chama de "plano localizado".** A legenda aprovada pela editoria é "Com plano
+localizado · Sem plano localizado · Fora do cadastro", e o conjunto é o que o rótulo diz: as
+categorias de **plano** (`plano`, `plano_novo`, `plano_readaptado`, `plano_recorrente`,
+`plano_antigo`). Ficam fora `plano_elaboracao` (plano que ainda não existe), `estrutura` (comitê ou
+gabinete, não plano) e `coberto_estadual` (cobertura do estado, não plano do município). "Fora do
+cadastro" é o fundo do mapa, e município fora do cadastro **não** é município sem risco.
+
+## 67. A lista de municípios prioritários do MMA mudou: a 1.202/2024 foi revogada (01/10/2026)
+
+Conferência técnica pedida pela editoria. A resposta é sim: **existe lista mais recente, e a que o
+site usava estava revogada.**
+
+**A Portaria MMA nº 1.717, de 19/06/2026**, publicada na **edição extra do DOU de 23/06/2026**,
+seção 1, declara as duas listas novas e, no art. 2º, **revoga a Portaria GM/MMA nº 1.202, de
+11/11/2024**. Ela se apoia nos critérios da **Portaria MMA/GM nº 1.716/2026**, do mesmo dia, que por
+sua vez revogou a 833/2023. Os critérios são de área desmatada medida pelo Prodes/Inpe; a lista é a
+do bioma Amazônia, para ações de prevenção, controle e redução do desmatamento e da degradação
+florestal — **não** é lista de risco de incêndio, e continua sendo camada de contexto, **peso zero**.
+
+**O que mudou na lista.** Anexo I (prioritários): **81 → 80**. Anexo II (desmatamento monitorado e
+sob controle): **10 → 17**. Por UF no Anexo I, medido no ato: AC 4 (era 5) · AM 10 · **MA 1 (entra
+pela primeira vez)** · MT 30 · PA 30 (era 28) · RO 3 (era 6) · RR 2.
+
+**Como o ato foi encontrado, e por que isso é método.** A busca do DOU é montada por JavaScript e
+não se lê por máquina — limitação já registrada quando este coletor nasceu. Mas a **edição** do dia
+se lê: `in.gov.br/leiturajornal?secao=do1&data=dd-mm-aaaa` traz um `<script id="params">` com a
+lista de atos da seção. Varrendo as edições de junho e julho de 2026, seção 1 **e seção 1 extra**, os
+dois atos apareceram na extra de 23/06. A primeira varredura não os achou porque pedi só a seção 1 —
+e ato de MMA sai em edição extra com frequência.
+
+**A pista não era o registro.** A conferência começou por uma notícia regional de 03/07/2026 que
+citava a portaria nova e dizia **"89 municípios"**. O ato diz **80**. A notícia acertou que existia
+lista nova e errou o número; se o número dela tivesse entrado no site, teria entrado errado. É a
+mesma regra do §64, no mesmo dia: imprensa descobre, nunca registra.
+
+**Duas correções no coletor.** (1) O formato da tabela mudou: a 1.202/2024 trazia `Código ·
+Município · UF` e a 1.717/2026 traz `Nº · Código · UF · Município`, com as colunas "Desmatamento" e
+"Degradação" marcadas por X. `coletar_prioritarios_mma.py` passa a ler os **dois** formatos, tentando
+o novo primeiro — na ordem inversa, a expressão antiga casaria o nome de uma linha com a sigla da
+linha seguinte. (2) O aviso de atualização anual era "1º de dezembro do ano seguinte", régua desenhada
+para atos de novembro; com um ato de junho ela só avisaria dezoito meses depois. Passa a ser o
+**aniversário da publicação**. Os casos de teste da janela foram reescritos para receber a data do
+ato explícita: antes usavam o padrão, e dois deles reprovaram sozinhos quando a portaria mudou — o
+teste media o calendário em vez da regra.
+

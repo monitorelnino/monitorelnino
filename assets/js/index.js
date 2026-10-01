@@ -395,6 +395,25 @@ function selectUF(uf, tileEl){
     ${riscoBox(d.uf)}
     <div class="field"><div class="k">Estrutura de coordenação</div><div class="v">${d.estrutura ? '<span class="pill-nivel">' + (STATUS_LABEL[d.estrutura.status] || d.estrutura.status) + '</span> ' + esc(d.estrutura.doc) + (d.estrutura.data && d.estrutura.data !== '—' ? ' (' + d.estrutura.data + ')' : '') : '—'}</div></div>
     <div class="field"><div class="k">Instrumento operacional</div><div class="v"><span class="pill-nivel">${STATUS_LABEL[d.status]}</span> ${esc(d.doc)}${d.data ? ' (' + d.data + ')' : ''}</div></div>
+    ${(function(){ // 01/10/2026, texto aprovado pela editoria. A v3.1 dá zero ao instrumento
+      // recorrente que NÃO cobre o risco previsto para o ciclo (degrau VIG_NAO_COBRE), e até aqui a
+      // interface não dizia isso em lugar nenhum: o cartão mostrava "vigente-recorrente" e o leitor
+      // não tinha como saber que o plano trata de outro risco. Os dois riscos vêm do dado
+      // (data/consist.json: `instr` e `risco`), nunca escritos à mão, e a frase não diz "não
+      // pontua" — a nota é o que a nota é, e a razão dela vive na metodologia.
+      const m = (typeof MARE !== 'undefined' && MARE[d.uf]) || null;
+      if (!m || m.degrau_instrumento !== 'VIG_NAO_COBRE') return '';
+      const c = (typeof CONSIST !== 'undefined' && CONSIST[d.uf]) || null;
+      if (!c) return '';
+      const familia = t => /chuva|enchent|hidrol|inunda/i.test(t) ? 'chuvas'
+                         : /seca|estiagem|h[íi]dric|IIS/i.test(t) ? 'seca'
+                         : /inc[êe]ndi|fogo|queimad/i.test(t) ? 'fogo' : null;
+      const doInstrumento = familia(String(c.instr || '')), doCiclo = familia(String(c.risco || ''));
+      /* Sem conseguir nomear os dois riscos pelo dado, a linha não sai: lacuna declarada é melhor
+         do que risco inventado para preencher a frase. */
+      if (!doInstrumento || !doCiclo || doInstrumento === doCiclo) return '';
+      return `<div class="card-note">O plano estadual em vigor trata de outro risco (${doInstrumento}), não do previsto para este ciclo (${doCiclo}).</div>`;
+    })()}
     <div class="field"><div class="k">Órgão responsável</div><div class="v">${esc(d.orgao)}</div></div>
     ${(function(){ // 26/09/2026: a face da célula não comporta este campo, e ele NÃO existia no
       // detalhe — sem isto, o alcance da varredura sumiria da interface inteira.
