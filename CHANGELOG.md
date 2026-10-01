@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-01 · #491 · Defesa civil refeita: só alertas e emergências
+
+Saem os mapas de preparação (o plano mora no MARÉ Legal) e o material de auditoria, com destino em
+`dados-abertos/` e METODOLOGIA §65. Seis contadores no topo; o mapa principal de alerta é o do
+Cemaden, porque o aviso do Inmet é por área; três mapas de emergência, com o reconhecimento
+federal; o cadastro passa a ser a lista nominal da Casa Civil, e "Cadastro Nacional" sai do site.
+Busca por município em todo cartão.
+
 ## 2026-10-01 · #490 · Imprensa descobre, nunca registra: Curitiba corrigida, errata C29
 
 A auditoria pedida pela editoria encontrou um registro pontuável apoiado só em notícia —

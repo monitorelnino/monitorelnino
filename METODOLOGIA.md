@@ -1895,3 +1895,56 @@ passa a reprovar registro de categoria que credita cujo domínio de URL não sej
 institucionais nomeados à mão no próprio portão. URL ausente não reprova: é outro defeito, de outra
 regra, e juntar os dois faria o portão reprovar por motivo que não é o seu.
 
+## 65. Defesa civil: uma página sobre alertas e emergências (01/10/2026)
+
+Decisão da editoria de 01/10/2026. A página reunia três coisas que não se leem juntas: preparação
+publicada, alertas em vigor e decretos de emergência, mais quatro blocos de auditoria. Passa a tratar
+de **alertas e emergências**, e só.
+
+**Onde foi o que saiu.** Os dois mapas de preparação — verificação municipal com seletor de doze
+categorias e cobertura/natureza dos atos por UF — saem porque o plano mora no **MARÉ Legal**, na
+página inicial: mostrá-lo aqui era a mesma pergunta respondida duas vezes, com duas réguas. O
+material de auditoria — log de verificação e cobertura, log por estado/canal/nível, a parede de
+fontes e registros, a tabela dos municípios verificados um a um e o painel amostral — tem destino
+declarado: **`dados-abertos/`** (`municipios.csv` traz uf, município, categoria, documento, data,
+fonte e url, que é a promessa que a parede de links fazia) e esta metodologia. **Nada foi apagado do
+repositório**: deixou de ter página própria. O único ponteiro externo que apontava para a parede, na
+página inicial, passa a apontar para `dados-abertos/municipios.csv`.
+
+**O mapa principal de alerta é o do Cemaden.** O aviso do Inmet é emitido por **área**, não por
+município: na consulta de 30/09/2026 ele cobria 3.479 municípios contra 17 do Cemaden. Desenhados
+juntos, o alerta do Cemaden desaparece sob o aviso do Inmet e o mapa do país fica uniforme — um mapa
+que não distingue nada. O Inmet permanece onde a informação é a **contagem** e a geografia não
+acrescenta: no contador do topo, no gráfico por tipo e na lista do cartão. A ficha semântica da
+figura declara a fronteira: município fora do mapa não é município sem aviso do Inmet.
+
+**O cadastro é o da Casa Civil, nominal.** O mapa de municípios prioritários usava
+`municipios_prioritarios.json`, uma **aproximação populacional** — para cada UF, os N municípios mais
+populosos, com N vindo de uma contagem pública por UF — e a página o chamava de "lista de prioritários
+do Painel/SEDEC" e "Cadastro Nacional (SEDEC), aproximação". Passa a usar
+`cadastro_prioritarios_federal.json`, a lista **nome a nome** dos 2.095 municípios do **cadastro
+federal de municípios suscetíveis a enxurradas e inundações (SEPAC/Casa Civil, Decreto 12.444/2025)**.
+O nome **"Cadastro Nacional" sai do site**: aquele é outro cadastro, o do art. 3º-A da Lei 12.340, de
+inscrição voluntária, que inclui deslizamento e **gera o dever de plano de contingência** — e não tem
+fonte pública. Chamar um pelo nome do outro afirmava dever que esta lista não cria. Medido com a lista
+real: 113 dos 2.095 têm instrumento localizado até o corte.
+
+**Um número, uma fonte.** A primeira versão desta página montava o conjunto dos que decretaram no
+próprio script, unindo os registros `decreto` de `municipios.json` aos eventos de `atos_resposta.json`
+e casando por **nome**: dava 770 municípios, enquanto o contador do topo, lendo o arquivo consolidado,
+dizia **734**. Dois números para a mesma pergunta na mesma página — o defeito que a regra 0 da página
+de imprensa (§63) existe para barrar. Os três mapas de emergência e os três contadores do ciclo passam
+a ler **`data/resposta/municipios_decretados.json`**, que é o que `gerar_resposta.py` consolida por
+código IBGE e de onde sai o número publicado. Medido depois: 734 no mapa e no contador, 656
+reconhecidos nos dois, 404 no cruzamento com alerta nos dois.
+
+**Busca por município em todo cartão.** O mapa responde "onde"; a pessoa que chega quer saber "e a
+minha cidade?". Cada cartão traz "Ver em lista" com campo de busca de rótulo visível e contagem do
+resultado anunciada a leitor de tela. A lista mostra até 200 linhas e **declara** quantas existem:
+teto silencioso diria que a lista é menor do que é.
+
+**Mapa novo.** "Municípios com emergência reconhecida pelo governo federal" ganha figura própria e
+ficha semântica. A diferença entre decretar e ser reconhecido é informação — 78 decretaram sem
+reconhecimento até o corte — e a ficha proíbe a leitura de que ausência de portaria seja pedido
+negado.
+

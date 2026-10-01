@@ -46,27 +46,28 @@
   },
   "defesa-civil.html#boxAlertas": {
    "tipo": "mapa de pontos",
-   "pergunta_que_responde": "Quais municípios estão sob aviso meteorológico ou alerta de risco em vigor agora?",
+   "pergunta_que_responde": "Quais municípios estão sob alerta de risco do Cemaden em vigor agora?",
    "dimensao_da_preparacao": "alertas",
-   "universo": "municípios sob aviso do INMET ou alerta do CEMADEN na consulta",
+   "universo": "municípios sob alerta do Cemaden na consulta",
    "unidade_de_analise": "município",
    "territorio": "Brasil",
    "periodo": "consulta mais recente, com hora",
-   "variavel_principal": "grau do aviso (INMET) e nível do alerta (CEMADEN), no vocabulário do órgão",
+   "variavel_principal": "nível do alerta do Cemaden, no vocabulário do órgão",
    "denominador": null,
-   "fonte": "INMET e CEMADEN",
-   "metodologia": "Um município pode estar sob mais de um aviso ao mesmo tempo e aparece com todos; encerramento do CEMADEN (nível 'Cessar') não conta como alerta em vigor. Coordenada casada por código IBGE, nunca por nome.",
+   "fonte": "Cemaden",
+   "metodologia": "O aviso do Inmet NÃO entra neste mapa: ele é emitido por área e não por município, e na consulta de 30/09/2026 cobria 3.479 municípios contra 17 do Cemaden — desenhados juntos, o alerta do Cemaden desaparecia sob o aviso do Inmet e o mapa do país ficava uniforme. O Inmet permanece no contador do topo, no gráfico por tipo e na lista deste cartão. Um município pode estar sob mais de um alerta ao mesmo tempo e aparece com todos; encerramento do Cemaden (nível 'Cessar') não conta como alerta em vigor. Coordenada casada por código IBGE, nunca por nome.",
    "conclusoes_permitidas": [
-    "quais municípios estão sob aviso ou alerta no momento da consulta",
-    "de que tipo é o aviso e por quanto tempo vale, conforme o órgão declarou"
+    "quais municípios estão sob alerta do Cemaden no momento da consulta",
+    "de que tipo é o alerta e em que nível, conforme o órgão declarou"
    ],
    "conclusoes_nao_permitidas": [
     "eficácia do sistema de alerta",
-    "ausência de aviso como ausência de risco",
-    "gravidade comparada entre tipos diferentes de aviso"
+    "ausência de alerta como ausência de risco",
+    "gravidade comparada entre tipos diferentes de alerta",
+    "que o município fora do mapa não tem aviso do Inmet — o aviso do Inmet não é desenhado aqui"
    ],
    "funcao_narrativa": "evidência do agora",
-   "acao_relacionada": "consultar o aviso no INMET ou o alerta no CEMADEN"
+   "acao_relacionada": "consultar o alerta no Cemaden"
   },
   "defesa-civil.html#boxAlertasTipo": {
    "tipo": "gráfico de barras",
@@ -113,73 +114,30 @@
    "funcao_narrativa": "contraponto: resposta é a outra metade, e não se mistura com antecipação",
    "acao_relacionada": null
   },
-  "defesa-civil.html#boxCoberturaNatureza": {
-   "tipo": "mapa com seletor",
-   "pergunta_que_responde": "Que fração dos municípios de cada estado tem ato, e de que natureza ele é?",
-   "dimensao_da_preparacao": "planos de contingência",
-   "universo": "27 UFs",
-   "unidade_de_analise": "UF",
-   "territorio": "Brasil",
-   "periodo": "corte da edição",
-   "variavel_principal": "% de municípios com ato, ou natureza predominante do ato",
-   "denominador": "municípios da UF",
-   "fonte": "banco de registros do Monitor",
-   "metodologia": "natureza distingue decreto reativo de plano preventivo",
-   "conclusoes_permitidas": [
-    "cobertura relativa por UF",
-    "predominância de ato reativo ou preventivo"
-   ],
-   "conclusoes_nao_permitidas": [
-    "qualidade do plano",
-    "capacidade de resposta efetiva"
-   ],
-   "funcao_narrativa": "dimensão territorial da mesma evidência, um nível acima do município",
-   "acao_relacionada": null
-  },
   "defesa-civil.html#boxPrioritarios": {
    "tipo": "mapa de pontos",
-   "pergunta_que_responde": "Os municípios que a União classifica como prioritários têm instrumento localizado?",
+   "pergunta_que_responde": "Os municípios do cadastro federal de suscetíveis a enxurradas e inundações têm instrumento localizado?",
    "dimensao_da_preparacao": "planos de contingência",
-   "universo": "lista de prioritários do Painel/SEDEC",
+   "universo": "os 2.095 municípios do cadastro federal de municípios suscetíveis a enxurradas e inundações (SEPAC/Casa Civil)",
    "unidade_de_analise": "município",
    "territorio": "Brasil",
    "periodo": "corte da edição",
    "variavel_principal": "presença de ato localizado no município prioritário",
-   "denominador": "municípios da lista de prioritários",
-   "fonte": "Painel/SEDEC e banco de registros do Monitor",
-   "metodologia": null,
+   "denominador": "municípios do cadastro federal (Casa Civil)",
+   "fonte": "Cadastro federal de municípios suscetíveis a enxurradas e inundações (SEPAC/Casa Civil, Decreto 12.444/2025) e banco de registros do Monitor",
+   "metodologia": "Até 01/10/2026 o mapa usava uma APROXIMAÇÃO POPULACIONAL: para cada UF, os N municípios mais populosos, com N vindo de uma contagem pública por UF. Passa a usar a lista NOMINAL do cadastro da Casa Civil. Este cadastro NÃO é o 'Cadastro Nacional de Municípios com Áreas Suscetíveis' do art. 3º-A da Lei 12.340 — aquele é de inscrição voluntária, inclui deslizamento e gera o dever de plano de contingência, e não tem fonte pública. Chamar um pelo nome do outro afirmaria dever que esta lista não cria.",
    "conclusoes_permitidas": [
-    "cobertura dentro do recorte oficial de prioridade"
+    "cobertura dentro do cadastro federal de enxurradas e inundações",
+    "quais municípios do cadastro têm, e quais não têm, instrumento localizado até o corte"
    ],
    "conclusoes_nao_permitidas": [
     "ausência localizada como ausência de plano",
-    "risco do município"
+    "risco do município",
+    "dever legal de plano de contingência: este cadastro não é o do art. 3º-A da Lei 12.340",
+    "que o município fora do cadastro não tem risco de enchente"
    ],
    "funcao_narrativa": "diagnóstico: cruza prioridade declarada pela União com evidência publicada",
    "acao_relacionada": null
-  },
-  "defesa-civil.html#boxVerificacao": {
-   "tipo": "mapa de pontos com seletor",
-   "pergunta_que_responde": "Onde há ato de defesa civil localizado, e até onde a verificação do Monitor chegou?",
-   "dimensao_da_preparacao": "planos de contingência e declarações de emergência",
-   "universo": "5.571 municípios",
-   "unidade_de_analise": "município",
-   "territorio": "Brasil",
-   "periodo": "corte da edição",
-   "variavel_principal": "ato localizado (plano ou decreto) ou nível de verificação atingido",
-   "denominador": "5.571 municípios",
-   "fonte": "registro federal, diários oficiais municipais e sítios oficiais",
-   "metodologia": "duas visões no seletor: atos localizados e nível de verificação",
-   "conclusoes_permitidas": [
-    "onde o Monitor localizou ato até o corte",
-    "até que camada a verificação chegou em cada município"
-   ],
-   "conclusoes_nao_permitidas": [
-    "ausência de ato localizado como ausência de planejamento",
-    "município sem ponto como município sem plano"
-   ],
-   "funcao_narrativa": "evidência central da preparação municipal, com o alcance da verificação à vista",
-   "acao_relacionada": "conferir o próprio município e indicar documento que falte"
   },
   "financiamento.html#boxCompromissosGrafico": {
    "tipo": "gráfico de barras",
@@ -983,6 +941,28 @@
    ],
    "funcao_narrativa": "decompõe o componente de instrumento que entra na prontidão",
    "acao_relacionada": null
+  },
+  "defesa-civil.html#boxReconhecidos": {
+   "tipo": "mapa de pontos",
+   "pergunta_que_responde": "Quais municípios tiveram a situação de emergência do ciclo reconhecida pelo governo federal?",
+   "dimensao_da_preparacao": "emergências",
+   "universo": "municípios com decreto de emergência ou calamidade registrado no ciclo",
+   "unidade_de_analise": "município",
+   "territorio": "Brasil",
+   "periodo": "desde 29/06/2026",
+   "variavel_principal": "existência de portaria de reconhecimento federal para o decreto do município",
+   "denominador": "municípios que decretaram no ciclo",
+   "fonte": "Portarias de reconhecimento da SEDEC/MIDR publicadas no Diário Oficial da União, registradas em data/atos_resposta.json",
+   "conclusoes_permitidas": [
+    "quantos e quais municípios que decretaram tiveram o reconhecimento federal publicado até o corte",
+    "a diferença entre decretar e ser reconhecido, em número de municípios"
+   ],
+   "conclusoes_nao_permitidas": [
+    "que o município sem reconhecimento teve o pedido negado — ausência de portaria até o corte não é negativa",
+    "que o reconhecimento mede preparação: ele é ato de resposta e nunca entra no índice",
+    "que o reconhecimento implica recurso recebido, executado ou suficiente"
+   ],
+   "funcao_narrativa": "mostrar onde a emergência declarada pelo município foi aceita pela União, ao lado de quem declarou"
   }
  }
 }
