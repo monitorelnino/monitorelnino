@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-01 · #499 · Financiamento: auditoria de exatidão, sete correções e uma remoção
+
+Cada base legal lida no texto oficial. O FNMA não abre com "área de risco declarada pelo MMA" e sim
+com emergência ambiental declarada pelo Ministro e plano operativo para a região; o regulamento é o
+Decreto 13.013, de 10/06/2026. Datas e valores exatos das duas MPs, das duas portarias do MS e das
+três condições do Prepara RS. O número do edital de 2025 sai por falta de fonte. METODOLOGIA §73.
+
 ## 2026-10-01 · #497 · Para gestores refeita, e o § 7º tem oito incisos
 
 Página em cinco blocos, tom de convite: saem o período eleitoral, as chaves de rota e o seletor de
