@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-02 · #506 · Coletor de síndrome gripal (e-SUS Notifica)
+
+A síndrome gripal não tinha coletor em rotina nenhuma. Agora tem — e ele mediu que as duas rotas
+que o portal declara recusam acesso automatizado (API 401, CSV 403) e que o conjunto por ano vai de
+2020 a 2024, sem o ano do ciclo. Nada de série inventada: ele declara a lacuna com o código de cada
+recusa, e agrega sem troca de rota quando a fonte abrir. Semanal, junto do SRAG. Em
+`METODOLOGIA.md` §80.
+
 ## 2026-10-01 · #505 · Publicação destravada: o carimbo antes dos portões
 
 `Publicar dados` falhou nas quatro execuções do dia e o site ficou sem dado novo. O portão do corte
