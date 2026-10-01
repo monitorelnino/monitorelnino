@@ -138,7 +138,16 @@
           <div class="map-legend" id="legSerie"></div>
         </figure>
     </div>
-    <p class="note u-mb-0">A consulta por cidade, com quanto chegou, por qual caminho e quando, depende da coleta por município no Portal da Transparência, que ainda não foi feita. Até ela existir, não publicamos o número por cidade: a série semanal acima é por rota, para o país.</p>
+    <div class="busca-mun" id="buscaCidade">
+      <label for="cidadeUF">Estado</label>
+      <select id="cidadeUF"><option value="">Escolha o estado…</option></select>
+      <label for="cidadeNome">Município</label>
+      <input id="cidadeNome" type="text" list="cidadeLista" autocomplete="off" spellcheck="false"
+             placeholder="Digite o nome da cidade" disabled>
+      <datalist id="cidadeLista"></datalist>
+      <p class="busca-mun-conta" role="status" aria-live="polite" id="cidadeConta"></p>
+    </div>
+    <div id="cidadeResultado" class="card-note" hidden></div>
   </section>
 
   <section id="dinheiroProprio" aria-labelledby="f4Titulo">
@@ -245,7 +254,7 @@
 </div>
 
 <script src="assets/colunas.js?v=c7f1719a" defer></script>
-<script src="assets/js/financiamento.js?v=367c3b90" defer></script><script src="assets/js/proveniencia.js?v=656e2dad" defer></script>
+<script src="assets/js/financiamento.js?v=76df4f8e" defer></script><script src="assets/js/proveniencia.js?v=656e2dad" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

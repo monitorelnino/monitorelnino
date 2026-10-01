@@ -100,6 +100,32 @@ setTimeout(() => {
   teste("preventivo por setor: nó de ausência da seca sem aresta",
     q("preventivoSetor").querySelectorAll(".aresta.d0").length === 0);
 
+  // ── a consulta por cidade (01/10/2026): existe porque a coleta por município passou a existir ─
+  const T = JSON.parse(fs.readFileSync(path.join(raiz, "data", "financiamento", "municipios", "transferencias_uniao.json"), "utf-8"));
+  teste("a consulta por cidade está na página, com rótulo e resultado anunciado",
+    q("cidadeUF") && q("cidadeNome") && q("cidadeResultado")
+    && d.querySelector('label[for="cidadeUF"]') && d.querySelector('label[for="cidadeNome"]')
+    && q("cidadeConta").getAttribute("aria-live") === "polite");
+  teste("a contagem traz os municípios com registro e os meses lidos, do dado",
+    txt("cidadeConta").includes(Object.keys(T.municipios).length.toLocaleString("pt-BR"))
+    && txt("cidadeConta").includes(String(Object.keys(T.meses_lidos).length)));
+  /* As três travas do cartão, e cada uma existe por uma razão medida:
+     - mês parcial é DITO, porque o Portal continua preenchendo o arquivo do mês;
+     - cidade sem registro não vira "R$ 0", que afirmaria que nada chegou;
+     - emenda parlamentar não é inventada como rota: ela não existe nesta fonte. */
+  const parciais = Object.entries(T.meses_lidos).filter(([, v]) => v.parcial).map(([m]) => m);
+  teste("o mês parcial é marcado no dado, não escondido",
+    parciais.length === 0 || parciais.every(m => T.meses_lidos[m].parcial_porque));
+  const fonteJs = fs.readFileSync(path.join(raiz, "assets", "js", "financiamento.js"), "utf-8");
+  teste("cidade sem registro não vira R$ 0",
+    /nenhuma transferência da União registrada/.test(fonteJs));
+  teste("emenda parlamentar não é inventada como caminho",
+    !/emenda/i.test(JSON.stringify(T.rotas)) && /não é identificável nesta fonte/.test(fonteJs));
+  teste("as rotas do arquivo são as cinco declaradas",
+    JSON.stringify(T.rotas) === JSON.stringify(["constitucional", "saude", "assistencia_social", "defesa_civil", "outras"]));
+  teste("nenhum município ficou sem casar na coleta publicada",
+    Object.keys(T.nao_casados || {}).length === 0);
+
   // ── as duas listas e as três âncoras que o Para gestores aponta (bloco C) ──────────────────
   teste("as duas listas de 'Como o dinheiro chega', com as âncoras que o Para gestores usa",
     q("antes") && q("depois") && q("setores")

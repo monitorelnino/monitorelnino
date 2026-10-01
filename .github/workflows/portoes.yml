@@ -221,6 +221,12 @@ jobs:
           # não criado para ele — e que o degrau nunca conclua ausência: este juiz só vê
           # documentos que existem, e marcar ausência exige bateria completa, que é outro passo.
           python3 julgar_saude.py --autoteste
+          # O coletor de transferências por município (01/10/2026). O autoteste cobra as
+          # travas que importam: só linha de administração MUNICIPAL entra (as outras inflariam o
+          # número da cidade), valor ilegível levanta em vez de virar zero, município que não casa
+          # fica declarado com o valor, reler o mesmo mês é idempotente, e o mês em curso não é
+          # coletado — o Portal publica o arquivo fechado.
+          python3 coletar_transferencias_municipais.py --autoteste
           # Regra de sincronia do "Para gestores" (01/10/2026): a seção de recursos é só
           # ponteiro para o Financiamento, e ponteiro quebra em SILÊNCIO — link para arquivo
           # inexistente o navegador acusa, âncora para `id` inexistente não. Já aconteceu duas
