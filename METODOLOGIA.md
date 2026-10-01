@@ -1729,3 +1729,38 @@ como duplo círculo, com distâncias diferentes de uma capital para outra — e 
 distintos leem-se como duas medidas, quando é uma só. Todas as capitais passam a ter um círculo
 sólido do mesmo tamanho: a **cor** diz o desvio e o **número** ao lado diz a máxima prevista.
 Capital sem dado continua com anel vazio.
+
+
+## 61. Calor como desvio da normal 1991–2020, e as três capitais sem normal (01/10/2026)
+
+O mapa de calor do Monitor de riscos mostra, no número ao lado da capital, a **máxima prevista**; e,
+na cor, **quanto ela está acima da média histórica daquele mês** na normal climatológica 1991–2020
+do Inmet, para a estação daquela capital.
+
+**Por que desvio e não temperatura.** 35 °C é normal em Cuiabá e muito quente em Porto Alegre.
+Pintar pela temperatura absoluta fazia o mapa dizer "está quente no Centro-Oeste" todos os dias do
+ano — o que é geografia, não notícia. O desvio contra a normal da própria capital responde à
+pergunta que importa: está mais quente do que o normal **ali**?
+
+**A fonte e a cadência.** Normal Climatológica do Brasil 1991–2020, temperatura máxima mensal
+(Inmet), coletada **uma vez** e preservada com resumo criptográfico. A cadência é por documento: só
+reprocessa quando o arquivo muda, porque uma normal só muda quando o órgão publica outra.
+
+**O casamento entre estação e capital é declarado, não adivinhado.** A planilha traz o nome da
+*estação*, que nem sempre é o do município. Três capitais entram por equivalência escrita no código,
+porque a estação é a da capital e traz o bairro no nome: Salvador (Ondina), Recife (Curado) e São
+Paulo (Mirante de Santana). Onde mais de uma estação casa com a mesma capital, fica a que tem mais
+meses com valor.
+
+**Três capitais ficam sem normal, e isso é lacuna declarada, não falha.** Elas aparecem no mapa como
+**anel vazio**, nunca como estimativa:
+
+- **Campo Grande (MS)** — a planilha traz apenas Paranaíba no estado.
+- **Porto Velho (RO)** — não há estação de Rondônia na planilha.
+- **Rio de Janeiro (RJ)** — há "Alto da Boa Vista", que fica dentro do município, mas é estação de
+  floresta de montanha, acima de 300 m: a normal dela não é a da cidade, e usá-la como se fosse
+  produziria um desvio errado todos os dias. Preferimos a lacuna ao número bonito.
+
+O mês usado é o da **previsão**, não o do dia da consulta — a previsão pode cair no primeiro dia do
+mês seguinte. Capital sem máxima prevista **ou** sem normal publicada fica sem desvio: os dois casos
+são ausência, e a legenda os nomeia juntos.

@@ -78,6 +78,7 @@ O formato de cada linha é fixo e lido por máquina:
 | coletor | cadência | janela | onde roda | o que ele responde |
 |---|---|---|---|---|
 | `coletar_cadastro_prioritarios.py` | por_documento | dom 07:30 UTC | semanal_sinais_e_links | cadastro da Casa Civil, por nota técnica |
+| `coletar_normais_inmet.py` | por_documento | dom 07:30 UTC | semanal_sinais_e_links | normal climatológica 1991–2020 das capitais |
 
 ## Sob demanda — nunca ficam atrasados
 

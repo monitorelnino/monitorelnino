@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-01 · #487 · Calor: a cor passa a ser o desvio contra a normal 1991–2020
+
+`coletar_normais_inmet.py` lê a normal climatológica do Inmet uma vez e guarda a média das máximas
+de cada mês por capital. O mapa de calor passa a pintar pelo desvio, não pela temperatura: 35 °C é
+normal em Cuiabá e muito quente em Porto Alegre. Vinte e quatro capitais têm normal; MS, RJ e RO
+ficam com anel vazio, com a razão escrita.
+
 ## 2026-10-01 · #486 · Monitor de riscos: a grade de três volta e o Niño 3.4 com ela
 
 A seção 1 passa a ter os dois gráficos do Pacífico lado a lado, em fundo de oceano noturno: o RONI

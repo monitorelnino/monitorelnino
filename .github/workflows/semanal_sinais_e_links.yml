@@ -46,6 +46,10 @@ jobs:
         # Semanal porque a portaria é anual; o coletor só preserva evidência quando o TEXTO do ato
         # muda, e avisa em voz alta quando a janela da atualização anual passou sem mudança.
         coletar_prioritarios_mma.py
+        # 01/10/2026 (R10): normais climatológicas 1991–2020 do Inmet, para o desvio do mapa
+        # de calor. Por documento: a normal só muda quando o Inmet publica outra, e o
+        # coletor não grava nada quando o hash do arquivo é o mesmo.
+        coletar_normais_inmet.py
         # 30/09/2026 (PR 2 do enquadramento federal de risco): delimitação do Semiárido. Semanal
         # porque a delimitação muda por resolução, não por dia; o próprio script pula a gravação
         # quando o hash do arquivo do IBGE não mudou e a última conferência tem menos de 7 dias.
