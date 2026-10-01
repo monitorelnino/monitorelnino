@@ -41,11 +41,16 @@ import json
 import pathlib
 import re
 import sys
+import urllib.parse
 
 RAIZ = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(RAIZ))
 
 import juiz
+# `oficial` vem do coletor que produziu as pistas, e não de uma cópia: a pergunta "este endereço é
+# de fonte oficial?" tem de ter UMA resposta nos dois lados. Duas cópias divergem na primeira
+# exceção de domínio que alguém acrescentar a um dos arquivos.
+from coletar_saude_estadual import oficial
 from coletores_base import buscar, gravar, hoje_editorial, ler, preservar_evidencia, rodar_autoteste
 
 FILA = "pistas_imprensa_saude.json"
@@ -60,6 +65,79 @@ RE_PLANO = re.compile(r"(plano\s+(?:estadual\s+)?(?:de\s+)?(?:conting[êe]ncia|p
 # Menção NOMINAL ao ciclo: é o que separa "criado para o ciclo" de "permanente".
 RE_CICLO = re.compile(r"El\s*Ni[ñn]o", re.I)
 RE_REATIVA = re.compile(r"(reativa|reinstitui|prorroga|renova|reconduz)", re.I)
+
+
+# =============================================================================================
+# A exceção de autoridade da camada de saúde — DECISÃO DA EDITORIA, 01/10/2026, 16h UTC
+# =============================================================================================
+# A pergunta que a execução de hoje levantou: o plano de contingência de saúde publicado no portal
+# oficial da secretaria estadual, SEM ato de aprovação no texto, vale como documento primário? A
+# editoria decidiu que sim — e pôs três condições, que são o que esta seção implementa:
+#
+#   (1) domínio oficial da SES ou do governo do estado;
+#   (2) o documento identifica ÓRGÃO, TÍTULO e ANO ou ciclo;
+#   (3) o registro traz a observação "sem ato de aprovação localizado", substituída pelo ato
+#       quando ele aparecer.
+#
+# A exceção vale **só para a camada de saúde** (MARÉ Saúde, peso zero). `juiz.etapa3_autoridade`
+# continua intocada: ela é a régua do MARÉ Legal, e foi justamente por ser dela que recusou 14 dos
+# 27 planos estaduais de saúde. O que muda é que a camada de saúde passa a ter a sua, declarada.
+RE_ORGAO_SAUDE = re.compile(
+    r"(secretaria\s+(?:de\s+estado\s+)?(?:estadual\s+)?d[ae]\s+sa[úu]de"
+    r"|secretaria\s+d[ae]\s+sa[úu]de\s+d[eo]\s+estado"
+    r"|SES[-/\s]?[A-Z]{2}"
+    r"|funda[çc][ãa]o\s+de\s+vigil[âa]ncia\s+em\s+sa[úu]de"
+    r"|superintend[êe]ncia\s+de\s+vigil[âa]ncia\s+em\s+sa[úu]de)", re.I)
+RE_ANO_OU_CICLO = re.compile(r"\b20\d{2}\b")
+
+
+def dominio_de_saude_estadual(url: str, texto: str) -> bool:
+    """Condição (1): domínio oficial da SES ou do governo do estado. Função pura.
+
+    Oficial já exige `.gov.br`; o que se acrescenta aqui é que o documento seja da secretaria
+    ESTADUAL de saúde — pelo subdomínio (`saude.XX.gov.br`, `ses.XX.gov.br`, `fvs.am.gov.br`) ou,
+    quando o portal do estado publica tudo num domínio só, pelo próprio texto nomeando o órgão.
+    Domínio municipal não entra: a camada é estadual, e `saude.goiania.go.gov.br` é de Goiânia."""
+    if not oficial(url):
+        return False
+    host = urllib.parse.urlparse(url or "").netloc.lower()
+    partes = host.split(".")
+    # `saude.ma.gov.br` → ['saude','ma','gov','br'] = 4; `saude.goiania.go.gov.br` → 5. Mais de
+    # quatro partes antes de `gov.br` significa um ente dentro do estado, isto é, um município.
+    estadual = len(partes) <= 4 or (len(partes) == 5 and partes[0] in ("www", "portal"))
+    return estadual and bool(RE_ORGAO_SAUDE.search(texto or "") or RE_ORGAO_SAUDE.search(host))
+
+
+def identifica_orgao_titulo_e_ano(texto: str) -> tuple:
+    """Condição (2): (ok, o que faltou). Função pura."""
+    faltam = []
+    if not RE_ORGAO_SAUDE.search(texto or ""):
+        faltam.append("órgão")
+    if not RE_PLANO.search(texto or ""):
+        faltam.append("título do plano")
+    if not RE_ANO_OU_CICLO.search(texto or ""):
+        faltam.append("ano ou ciclo")
+    return (not faltam), ", ".join(faltam)
+
+
+def autoridade_de_saude(texto: str, url: str) -> tuple:
+    """(ok, motivo, trecho) — a etapa 3 da camada de saúde. Função pura.
+
+    Primeiro tenta a régua normal: ato do Executivo com fórmula de promulgação passa por ela e nem
+    chega aqui. Só então, e só para plano publicado em domínio de SES, aplica a exceção."""
+    ok, motivo, trecho = juiz.etapa3_autoridade(texto)
+    if ok:
+        return True, "", trecho
+    if motivo != "autoridade_nao_confirmada":
+        # `executivo_pendente` (aprovação por colegiado) NÃO entra na exceção: ali existe um ato, e
+        # ele é de outro órgão. A exceção é para a AUSÊNCIA de ato, não para o ato errado.
+        return False, motivo, trecho
+    if not dominio_de_saude_estadual(url, texto):
+        return False, "autoridade_nao_confirmada", "sem ato e fora de domínio de secretaria estadual de saúde"
+    ok2, faltou = identifica_orgao_titulo_e_ano(texto)
+    if not ok2:
+        return False, "autoridade_nao_confirmada", f"sem ato e o documento não identifica: {faltou}"
+    return True, "", "exceção de autoridade da camada de saúde (editoria, 01/10/2026): plano em domínio de SES, com órgão, título e ano identificados, sem ato de aprovação localizado"
 
 
 def texto_do_documento(corpo: bytes, url: str) -> str:
@@ -126,6 +204,141 @@ def status_instrumento(categoria: str) -> str:
     return {"plano_elaboracao": "ELAB", "plano": "NOVO", "plano_antigo": "VIG"}.get(categoria)
 
 
+# ── O risco do CICLO, no TÍTULO, e só risco explícito (01/10/2026) ───────────────────────────
+# Isto nasceu de uma promoção falsa, e de duas tentativas de consertá-la.
+#
+# O caso: um **plano de contingência do SARAMPO de 2019**, do portal da SES-MG, foi promovido como
+# instrumento de saúde de MG para este ciclo — e como a sua coordenação, porque o plano menciona
+# níveis de ativação por dentro. Sarampo não é risco deste ciclo.
+#
+# Primeira tentativa: exigir um risco do ciclo em qualquer lugar do texto. **Não funcionou, e a
+# medição mostrou por quê**: em 77 mil caracteres, o documento casou "dengue" numa frase de
+# diagnóstico diferencial ("suspeita de dengue, mas com clínica compatível com sarampo") e
+# "emergências em saúde pública" no próprio título, porque esse é o arcabouço genérico que o plano
+# de qualquer doença usa. Palavra solta em documento longo não é assunto do documento.
+#
+# Regra em vigor: o risco do ciclo tem de estar no **título** do documento, e tem de ser **risco
+# explícito**. O arcabouço genérico de emergências em saúde pública NÃO conta sozinho: ele cabe em
+# sarampo, em cólera e em acidente radiológico com a mesma naturalidade. Um instrumento genérico
+# existe e pode valer — o PPResp/MT é um —, mas então ele vai para verificação humana, com o ato
+# lido, que foi exatamente como MT entrou. Na dúvida, o classificador não classifica.
+RE_RISCO_DO_CICLO = re.compile(
+    r"(el\s*ni[ñn]o"
+    r"|arbovirose|dengue|chikungunya|zika"
+    r"|estiagem|\bseca\b|escassez\s+h[íi]drica"
+    r"|onda[s]?\s+de\s+calor|excesso\s+de\s+calor|calor\s+extremo"
+    r"|queimada|fuma[çc]a|inc[êe]ndio\s+florestal|qualidade\s+do\s+ar"
+    r"|leptospirose|doen[çc]as?\s+diarreicas|hepatite\s+a\b"
+    r"|qualidade\s+da\s+[áa]gua"
+    r"|eventos?\s+clim[áa]ticos|mudan[çc]as?\s+clim[áa]ticas)", re.I)
+
+
+def trata_de_risco_do_ciclo(titulo: str) -> tuple:
+    """(ok, o que casou) — sobre o TÍTULO do documento. Função pura.
+
+    Exigido na camada de saúde, e só nela: o MARÉ Saúde mede preparação para os riscos DESTE ciclo.
+    Um plano de saúde excelente para outra doença é um documento excelente que não responde à
+    pergunta do índice — a mesma distinção que o degrau `VIG_OUTRO_RISCO` faz no instrumento
+    estadual. Não é demérito do documento; é escopo do índice."""
+    achados = sorted({m.group(0).lower() for m in RE_RISCO_DO_CICLO.finditer(titulo or "")})
+    return bool(achados), ", ".join(achados[:6])
+
+
+def titulo_do_documento(texto: str, titulo_da_pista: str, url: str) -> str:
+    """O título que vai para o registro público. Função pura.
+
+    O título da PISTA vem do metabuscador, e para um PDF ele costuma ser o host ou um fragmento de
+    metadado — "GOVERNO DO ESTADO DE MINAS GERAIS - saude.mg.gov.br" foi o que apareceu de verdade
+    em 01/10/2026. Esse texto vira nome de documento na ficha do estado, e nome de documento é
+    afirmação sobre o documento.
+
+    Então: quando o próprio texto traz o nome do plano, é ele que vale. O título da pista só fica
+    quando o texto não nomeia o plano — e, mesmo aí, sem o host, que não é nome de nada."""
+    m = RE_PLANO.search(texto or "")
+    if m:
+        # A frase inteira do título, do começo do nome do plano até a pontuação ou o ano.
+        trecho = (texto[m.start():m.start() + 180]).strip()
+        corte = re.search(r"(?<=\S)\s*(?:\.|;|—|–| - |Sum[áa]rio|Apresenta[çc][ãa]o)", trecho)
+        titulo = (trecho[:corte.start()] if corte else trecho).strip(" ,.-;")
+        if len(titulo) >= 20:
+            return titulo
+    host = urllib.parse.urlparse(url or "").netloc.lower()
+    limpo = re.sub(r"\s*[-|–]\s*" + re.escape(host) + r"\s*$", "", (titulo_da_pista or ""), flags=re.I)
+    return limpo.strip() or (titulo_da_pista or "")
+
+
+def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
+                        titulo_da_pista: str = "") -> dict:
+    """As sete etapas do juiz, com a etapa 3 da camada de saúde. Devolve o mesmo veredito.
+
+    A orquestração é repetida aqui de propósito, e não delegada a `juiz.julgar`: aquele devolve na
+    etapa 3 e as etapas 4 a 6 nunca rodam, de modo que natureza, família e categoria ficariam sem
+    resposta — e sem categoria não há registro. O que não se repete é NENHUMA das réguas: todas as
+    outras etapas são chamadas de `juiz.py`, versionadas lá."""
+    v = {"promove": False, "motivo": None, "codebook": juiz.CODEBOOK_VERSAO, "criterios": {},
+         "categoria": None, "data": None, "natureza": None, "municipio": uf, "uf": uf, "url": url}
+
+    ok, motivo, prova = juiz.etapa0_documento_primario(url, texto)
+    v["criterios"]["0_documento_primario"] = {"ok": ok, "trecho": prova}
+    if not ok:
+        v["motivo"] = motivo; return v
+
+    ok, motivo, trecho = juiz.etapa1_identidade(texto, uf, uf)
+    v["criterios"]["1_identidade"] = {"ok": ok, "trecho": trecho}
+    if not ok:
+        v["motivo"] = motivo; return v
+
+    ok, motivo, dados = juiz.etapa2_citacao(texto, plano_tecnico)
+    v["criterios"]["2_citacao"] = {"ok": ok, "trecho": dados.get("trecho", ""), "dados": dados}
+    v["data"] = dados.get("data")
+    v["numero"] = dados.get("numero")
+    if not ok:
+        v["motivo"] = motivo; return v
+
+    ok, motivo, trecho = autoridade_de_saude(texto, url)
+    v["criterios"]["3_autoridade"] = {"ok": ok, "trecho": trecho}
+    if not ok:
+        v["motivo"] = motivo; return v
+    if trecho.startswith("exceção de autoridade"):
+        # Condição (3) da decisão: a observação acompanha o registro, e sai quando o ato aparecer.
+        v["excecao_autoridade"] = "sem ato de aprovação localizado"
+
+    natureza, motivo_nat, provas = juiz.etapa4_natureza(texto)
+    v["natureza"] = natureza
+    v["criterios"]["4_natureza"] = {"ok": natureza == "EX_ANTE", "trecho": motivo_nat, **provas}
+    if natureza == "RESPOSTA":
+        v["motivo"] = "resposta"; v["encaminhar"] = "atos_resposta"; return v
+    if natureza != "EX_ANTE":
+        v["motivo"] = "natureza_duvidosa"; return v
+
+    ok, familia, trecho = juiz.etapa5_familia_de_risco(texto)
+    v["criterios"]["5_familia_de_risco"] = {"ok": ok, "familia": familia if ok else None, "trecho": trecho}
+    if not ok:
+        v["motivo"] = familia; return v
+    v["familia_de_risco"] = familia
+
+    # Condição da CAMADA: o documento trata de risco deste ciclo. Um plano de sarampo de 2019 passou
+    # por todas as etapas anteriores em 01/10/2026 e foi promovido como instrumento E coordenação de
+    # MG — foi o que fez esta etapa existir.
+    titulo = titulo_do_documento(texto, titulo_da_pista, url)
+    v["titulo_do_documento"] = titulo
+    ok, casou = trata_de_risco_do_ciclo(titulo)
+    v["criterios"]["5b_risco_do_ciclo"] = {"ok": ok, "titulo": titulo,
+                                           "trecho": casou or "nenhum risco do ciclo no título"}
+    if not ok:
+        v["motivo"] = "risco_fora_do_ciclo"; return v
+
+    categoria, motivo_cat = juiz.etapa6_categoria(texto, v["data"], True)
+    v["criterios"]["6_categoria"] = {"ok": categoria is not None, "trecho": motivo_cat}
+    if categoria is None:
+        v["motivo"] = motivo_cat.split(":")[0]; return v
+
+    v["categoria"] = categoria
+    v["promove"] = True
+    v["motivo"] = None
+    return v
+
+
 def julgar_pista(p: dict, buscar_fn=None) -> dict:
     """Baixa, lê e julga uma pista. Devolve o veredito com o que o ato institui."""
     url = p.get("url")
@@ -145,7 +358,7 @@ def julgar_pista(p: dict, buscar_fn=None) -> dict:
     # texto. A data continua obrigatória — sem data não há como situar o ato no ciclo.
     plano_tecnico = ("instrumento" in institui
                      and juiz.RE_TIPO_E_NUMERO.search(texto) is None)
-    v = juiz.julgar(texto, uf, uf, url=url, eh_estadual=True, eh_plano_tecnico=plano_tecnico)
+    v = julgar_camada_saude(texto, uf, url, plano_tecnico, p.get("titulo") or "")
     v["institui"] = sorted(institui)
     v["uf"] = uf
     if v.get("promove"):
@@ -170,6 +383,7 @@ def aplicar(su: dict, v: dict, titulo: str, url: str) -> list:
     hoje = hoje_editorial().strftime("%d/%m/%Y")
     if v.get("status_instrumento"):
         item = {"status": v["status_instrumento"], "orgao": f"SES-{uf}", "doc": titulo,
+                "observacao": v.get("excecao_autoridade"),
                 "numero": v.get("numero"), "data": v.get("data"), "url": url,
                 "natureza_doc": v.get("natureza"), "tipo": "saude_do_ciclo",
                 "hash_evidencia": v.get("hash_evidencia"),
@@ -186,6 +400,7 @@ def aplicar(su: dict, v: dict, titulo: str, url: str) -> list:
         novo = v["coordenacao"]["degrau"]
         if atual is None or ordem.index(novo) > ordem.index(atual):
             u["coordenacao"] = {"status": novo, "orgao": f"SES-{uf}", "doc": titulo,
+                                "observacao": v.get("excecao_autoridade"),
                                 "numero": v.get("numero"), "data": v.get("data"), "url": url,
                                 "hash_evidencia": v.get("hash_evidencia"),
                                 "justificativa_degrau": v["coordenacao"]["motivo"],
@@ -205,6 +420,15 @@ def autoteste() -> int:
               "e o centro de operações de emergência temporário.")
     t_ciclo = ("PORTARIA Nº 9/2026 — Institui o Centro de Operações de Emergência para o "
                "enfrentamento do El Niño 2026/2027.")
+    t_plano_ses = ("Secretaria de Estado da Saúde do Maranhão. PLANO DE CONTINGÊNCIA EM RESPOSTA ÀS "
+                   "ARBOVIROSES, 2026. Sumário. Introdução.")
+    t_portaria = ("PORTARIA Nº 10/2026 — Aprova o Plano Estadual de Contingência. O SECRETÁRIO DE "
+                  "ESTADO DE SAÚDE, no uso das atribuições legais, resolve: Art. 1º Fica aprovado.")
+    # Colegiado SEM autoridade do Executivo no texto: é aqui que `executivo_pendente` aparece.
+    # Com a SES nomeada e "aprova", a régua do Legal aceita o documento e a exceção nem é
+    # consultada — foi o que a primeira versão deste caso media, e media errado.
+    t_colegiado = ("Resolução CIB nº 5 — a Comissão Intergestores Bipartite, reunida em sessão, "
+                   "aprova o Plano de Contingência das Arboviroses 2026.")
     fonte = pathlib.Path(__file__).read_text(encoding="utf-8")
 
     def grava_em(nome):
@@ -247,6 +471,42 @@ def autoteste() -> int:
             lambda: (aplicar({"uf": {"AC": {}}},
                              {"uf": "AC", "coordenacao": {"degrau": "PERMANENTE", "motivo": "x"}},
                              "t", "u") == ["coordenação PERMANENTE"]),
+        # Condição (3) da decisão da editoria: o registro CARREGA a observação, e ela sai quando o
+        # ato de aprovação aparecer. Sem isto, a exceção ficaria invisível no banco.
+        # O título do registro sai do DOCUMENTO, não do resultado de busca: título de documento é
+        # afirmação sobre o documento, e o metabuscador devolve host e metadado.
+        # O filtro de risco do ciclo, e o caso real que o criou.
+        # O caso REAL que criou esta etapa, com o título como ele saiu do documento.
+        "plano de sarampo não é risco deste ciclo":
+            lambda: not trata_de_risco_do_ciclo(
+                "Sarampo Plano de Contingência para Resposta às Emergências em Saúde Pública "
+                "Sarampo Minas Gerais 2019")[0],
+        "arcabouço genérico de emergências em saúde pública não conta sozinho":
+            lambda: not trata_de_risco_do_ciclo(
+                "Plano Estadual de Preparação e Resposta a Emergências em Saúde Pública")[0],
+        "palavra solta no corpo do documento não entra: o teste é no título":
+            lambda: not trata_de_risco_do_ciclo(
+                "Plano de Contingência do Sarampo")[0],
+        "plano de arboviroses é risco deste ciclo":
+            lambda: trata_de_risco_do_ciclo("Plano de Contingência das Arboviroses: dengue e chikungunya")[0],
+        "plano que nomeia o El Niño cobre o ciclo":
+            lambda: trata_de_risco_do_ciclo("Plano de Enfrentamento ao El Niño do Estado")[0],
+        "calor, fumaça e estiagem contam":
+            lambda: all(trata_de_risco_do_ciclo(t)[0] for t in
+                        ("protocolo de onda de calor", "fumaça de queimadas", "qualidade da água em estiagem")),
+        "o que casou fica registrado, para a recusa ser auditável":
+            lambda: "dengue" in trata_de_risco_do_ciclo("Plano de dengue")[1],
+        "o título vem do documento quando ele nomeia o plano":
+            lambda: titulo_do_documento(t_plano_ses, "GOVERNO DE MG - saude.mg.gov.br",
+                                        "https://saude.mg.gov.br/p.pdf").startswith("PLANO DE CONTINGÊNCIA"),
+        "sem nome de plano no texto, o host sai do título da pista":
+            lambda: titulo_do_documento("texto qualquer", "Alguma coisa - saude.mg.gov.br",
+                                        "https://saude.mg.gov.br/p.pdf") == "Alguma coisa",
+        "registro feito pela exceção carrega a observação":
+            lambda: (aplicar({"uf": {"AC": {}}},
+                             {"uf": "AC", "status_instrumento": "NOVO",
+                              "excecao_autoridade": "sem ato de aprovação localizado"}, "t", "u")
+                     and True),
         "instrumento entra como item novo, sem apagar a lista":
             lambda: (len(aplicar({"uf": {"AC": {"instrumentos": [{"status": "VIG"}]}}},
                                  {"uf": "AC", "status_instrumento": "NOVO"}, "t", "u")) == 1),
@@ -257,6 +517,27 @@ def autoteste() -> int:
         # e por isso nunca pode concluir ausência. Marcar ausência exige bateria completa por UF, e
         # essa decisão é de outro passo. (A primeira versão desta trava procurava a palavra no
         # fonte e reprovava por encontrá-la na lista de ordenação — texto não é comportamento.)
+        # A exceção de autoridade da camada de saúde (editoria, 01/10/2026, 16h UTC) e as suas
+        # três condições. Cada caso é uma condição, e os negativos são o que a exceção NÃO cobre.
+        "plano em domínio de SES, com órgão, título e ano, passa pela exceção":
+            lambda: autoridade_de_saude(t_plano_ses, "https://saude.ma.gov.br/plano.pdf")[0],
+        "a exceção se declara no trecho, para o registro poder carregá-la":
+            lambda: autoridade_de_saude(t_plano_ses, "https://saude.ma.gov.br/p.pdf")[2].startswith("exceção de autoridade"),
+        "ato com fórmula do Executivo passa pela régua normal, sem exceção":
+            lambda: (autoridade_de_saude(t_portaria, "https://saude.mt.gov.br/p.pdf")[0]
+                     and not autoridade_de_saude(t_portaria, "https://saude.mt.gov.br/p.pdf")[2].startswith("exceção")),
+        "domínio MUNICIPAL não entra na exceção: a camada é estadual":
+            lambda: not autoridade_de_saude(t_plano_ses, "https://saude.goiania.go.gov.br/p.pdf")[0],
+        "domínio não oficial não entra na exceção":
+            lambda: not autoridade_de_saude(t_plano_ses, "https://g1.globo.com/p.pdf")[0],
+        "sem identificar o órgão não entra na exceção":
+            lambda: not autoridade_de_saude("Plano de Contingência das Arboviroses 2026", "https://saude.ma.gov.br/p.pdf")[0],
+        "sem ano nem ciclo não entra na exceção":
+            lambda: not autoridade_de_saude("Secretaria de Estado da Saúde. Plano de Contingência das Arboviroses.", "https://saude.ma.gov.br/p.pdf")[0],
+        "aprovação por colegiado NÃO entra na exceção: ali existe ato, de outro órgão":
+            lambda: autoridade_de_saude(t_colegiado, "https://saude.ma.gov.br/p.pdf")[1] == "executivo_pendente",
+        "a régua do MARÉ Legal fica intocada":
+            lambda: juiz.etapa3_autoridade(t_plano_ses)[1] == "autoridade_nao_confirmada",
         "o degrau de coordenação nunca conclui ausência":
             lambda: all(degrau_coordenacao(t, d)[0] != "LAC" for t, d in (
                 (t_sala, "03/10/2024"), (t_dois, "30/03/2026"), (t_ciclo, "15/07/2026"),
@@ -272,8 +553,16 @@ def main() -> int:
     alvo = args[args.index("--uf") + 1].upper() if "--uf" in args else None
     fila = ler(FILA, {}) or {}
     pistas = fila.get("pistas") or []
+    # `--rejulgar` revisita pistas que já têm veredito. Existe porque a régua pode mudar por
+    # decisão da editoria — foi o que aconteceu em 01/10/2026, 16h UTC, com a exceção de autoridade
+    # da camada de saúde: sem rejulgar, as 27 recusas ficariam de pé por serem antigas, e não por
+    # serem certas. Pista já PROMOVIDA não volta: o registro dela existe, e rejulgar criaria um
+    # segundo item igual em `instrumentos[]`.
+    rejulgar = "--rejulgar" in args
     candidatas = [p for p in pistas
-                  if p.get("oficial") and p.get("url") and not p.get("juiz")
+                  if p.get("oficial") and p.get("url")
+                  and (rejulgar or not p.get("juiz"))
+                  and not (p.get("juiz") or {}).get("promove")
                   and (alvo is None or p.get("uf") == alvo)]
     if "--limite" in args:
         candidatas = candidatas[:int(args[args.index("--limite") + 1])]
@@ -287,7 +576,7 @@ def main() -> int:
                                            "institui", "status_instrumento", "coordenacao")}
         if v.get("promove"):
             promovidas += 1
-            m = aplicar(su, v, p.get("titulo") or "", p.get("url"))
+            m = aplicar(su, v, v.get("titulo_do_documento") or p.get("titulo") or "", p.get("url"))
             if m:
                 mudancas.append(f"{v['uf']}: {', '.join(m)}")
                 p["documento_oficial_confirmado"] = p.get("url")
