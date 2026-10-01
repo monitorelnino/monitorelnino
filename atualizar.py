@@ -334,7 +334,32 @@ def main():
     # ANTES dos portões — índice, percentuais, robustez, selos, verificação municipal e resumo,
     # fallback do medidor (recalcular --write); depois as fichas do painel (dependem da
     # verificação), feeds e dados abertos. Relógio fixado no corte (determinismo dos PDFs).
-    corte = json.load(open(RAIZ / "data" / "meta.json", encoding="utf-8")).get("corte", "")
+    # 01/10/2026: o carimbo era gravado DEPOIS da bateria de portões, e isso parou a publicação
+    # duas vezes na noite de 01/10. Os coletores gravam `atualizado_em = hoje` ao longo da rodada;
+    # o `corte` só era escrito no fim. No meio do caminho, portanto, `meta.json` ficava com
+    # `atualizado_em` de hoje e `corte` de ontem — exatamente o que o portão
+    # `verificar_corte_sincronizado.py` existe para barrar. Ele estava certo em parar: quem estava
+    # errado era a ORDEM. O carimbo da rodada é a primeira coisa que se sabe depois da coleta, e
+    # por isso passa a ser escrito aqui, antes dos derivados e dos portões — que então conferem o
+    # carimbo desta rodada, e não o da anterior.
+    #
+    # Efeito colateral desejado: o relógio fixado abaixo (SOURCE_DATE_EPOCH) passa a ser o do corte
+    # de HOJE, que é o que os derivados desta rodada devem carimbar.
+    meta_p = RAIZ / "data" / "meta.json"
+    meta = json.load(open(meta_p, encoding="utf-8"))
+    meta["atualizado_em"] = hoje
+    # 30/09/2026: o corte avançava SÓ quando o arquivo de transferências mudava de hash. Com as
+    # transferências voluntárias bloqueadas pelo período eleitoral, esse arquivo parou em 10/09 — e
+    # o site passou a dizer "dados até 10/09" enquanto o índice recebia planos todo dia, pelo juiz.
+    # O corte nunca esteve ligado aos planos: media outra coisa e era lido como se medisse o índice.
+    #
+    # Regra: o corte é a data da última rodada de coleta que alimentou o índice — e a rodada
+    # acabou de acontecer. Se nada mudou, o corte também é hoje: a coleta rodou e não achou nada
+    # novo, que é o que a editoria quer que o leitor entenda.
+    meta["corte"] = hoje
+    gravar_em(meta_p, meta)
+
+    corte = meta["corte"]
     try:
         dd, mm, aa = corte.split("/"); epoch = str(int(datetime.datetime(int(aa), int(mm), int(dd), tzinfo=datetime.timezone.utc).timestamp()))
     except Exception:
@@ -366,21 +391,8 @@ def main():
     rodar(["node", "scripts/verificar_vocabulario_publico.js"], obrigatorio=True)  # 03/09: sem jargão interno no texto visível
     rodar(["bash", "scripts/verificar_derivados.sh", "--idempotencia"], obrigatorio=True)         # AUD-04: derivados reproduzíveis em árvore limpa
 
-    meta_p = RAIZ / "data" / "meta.json"
-    meta = json.load(open(meta_p, encoding="utf-8"))
-    meta["atualizado_em"] = hoje
-    # 30/09/2026: o corte avançava SÓ quando o arquivo de transferências mudava de hash. Com as
-    # transferências voluntárias bloqueadas pelo período eleitoral, esse arquivo parou em 10/09 — e
-    # o site passou a dizer "dados até 10/09" enquanto o índice recebia planos todo dia, pelo juiz.
-    # O corte nunca esteve ligado aos planos: media outra coisa e era lido como se medisse o índice.
-    #
-    # Regra nova: o corte é a data da última rodada de coleta que alimentou o índice — e a rodada
-    # acabou de acontecer. Se nada mudou, o corte também é hoje: a coleta rodou e não achou nada
-    # novo, que é o que a editoria quer que o leitor entenda.
-    meta["corte"] = hoje
     if hash_arquivo(transf) != antes:
         print("\nTransferências alteradas nesta rodada.")
-    gravar_em(meta_p, meta)
     # 10/09/2026 (causa-raiz do portão 12 vermelho na main após cada rodada): os três geradores
     # abaixo carimbam `gerado_em` com o `atualizado_em` de data/meta.json (data determinística),
     # mas rodaram ANTES deste carimbo e ficavam um dia atrás. Reexecutá-los aqui é idempotente

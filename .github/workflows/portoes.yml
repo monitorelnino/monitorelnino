@@ -145,6 +145,10 @@ jobs:
           python3 scripts/verificar_corte_sincronizado.py
           # assunto: texto rapido
           python3 scripts/verificar_corte_sincronizado.py --autoteste
+          # assunto: texto rapido
+          python3 scripts/verificar_ordem_do_carimbo.py
+          # assunto: texto rapido
+          python3 scripts/verificar_ordem_do_carimbo.py --autoteste
           # 30/09/2026 (§307): sinal diário não pode cair em cadência semanal. A decisão da
           # editoria de 29/09 valia quando foi escrita e deixou de valer no dia seguinte, por
           # efeito colateral do desacoplamento — sem nada que reprovasse.
