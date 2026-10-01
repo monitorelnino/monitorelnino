@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-01 · #486 · Monitor de riscos: a grade de três volta e o Niño 3.4 com ela
+
+A seção 1 passa a ter os dois gráficos do Pacífico lado a lado, em fundo de oceano noturno: o RONI
+e a anomalia mensal da região Niño 3.4, que volta por ser o número divulgado pela imprensa. A seção
+2 volta à grade de três: o mapa nacional em largura total e os cinco mapas pequenos, três por linha.
+O mapa de calor perde o halo: um ponto por capital.
+
 ## 2026-09-30 · #484 · Uma atmosfera por família de risco nos mapas
 
 Cada família ganha fundo, rampa e marca próprios: fogo noturno com brasa em mescla screen, seca em

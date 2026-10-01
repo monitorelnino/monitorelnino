@@ -269,6 +269,10 @@ details.acc.r-fogo .acc-icone{color:var(--fogo);}
 /* 17/09/2026 (pedido da editoria): gráfico do ONI no padrão dos sites oficiais — fundo preto,
    vermelho acima da média, azul abaixo, com transparência. Escopado só a essa figura. */
 .grafico-preto{background:#000; border-radius:var(--radius); padding:var(--sp-3);}
+/* 30/09/2026 (F.1): os dois gráficos do Pacífico em fundo de OCEANO NOTURNO — mesma família de
+   fundo escuro do mapa de fogo, não o preto puro de antes. Preto puro com barra vermelha é o
+   padrão dos sites de agência; aqui o escuro pertence à mesma paleta do resto da página. */
+.grafico-oceano{background:var(--grafico-oceano); border-radius:var(--radius); padding:var(--sp-2);}
 .figura-midia{width:100%; min-width:0; position:relative;}
 .figura--mapa .figura-midia{aspect-ratio:var(--mapa-proporcao);}
 .figura--mapa .figura-midia > svg{width:100%; height:100%; display:block;}
