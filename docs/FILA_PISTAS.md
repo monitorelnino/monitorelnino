@@ -452,11 +452,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.instagram.com/reel/DdjcfUDOx9f/
   - trecho: 4 days ago ... ... likes, 15 comments - defesacivil_petropolis on September 21, 2026: "A primavera ... Entre as ações estão a elaboração do Plano de Contingência ...
   - juiz: portão automático: fonte não oficial
-- `56800fb421` · nível **C** (6 pts) · seguimento_busca_oficial · — · data 2024 (do trecho)
+- `56800fb421` · nível **C** (6 pts) · seguimento_busca_oficial · DUVIDA · data 2024 (do trecho)
   - título: Plano de Contingência de 2024 - Ação Inverno - Conecta Recife
   - url: https://acaoinverno.recife.pe.gov.br/wp-content/uploads/2024/04/002-PLANO-DE-CONTINGE%CC%82NCIA-2024.pdf
   - trecho: CÓRREGO JARDIM PRIMAVERA. GUABIRABA. 4. CÓRREGO JENIPAPO. GUABIRABA. 2. VILA ... no Plano de Contingência para ações de resposta a desastres e situações emer ...
   - ⚠ uf_divergente_na_url, ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `bb4964b867` · nível **C** (5 pts) · seguimento_busca_oficial · RESPOSTA · citação não extraída
   - título: plano de contingência da secretaria de estado da saúde - SESA
   - url: https://saude.es.gov.br/media/plano-de-contingencia-calor-extremo-sesa-2026-2.pdf
@@ -3090,15 +3091,17 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://tangara.sc.gov.br/uploads/sites/450/2023/05/DECRETO-No-051-Aprova-Resolucao-Conselho.pdf
   - trecho: May 17, 2023 ... Cleonice Ribeiro Pontes Flor (Timbó Grande). Cristiane Turmina (Lebon ... O professor deve contemplar, em seu plano de ação, atividades que.
   - ⚠ ano_anterior_ao_ciclo
-- `35485c3aeb` · nível **B** (5 pts) · busca_web · — · data 30/09/2020 (do trecho)
+- `35485c3aeb` · nível **B** (5 pts) · busca_web · EX_ANTE · **Lei nº 6.745**, 10/09/2020
   - título: FLORIANÓPOLIS, quARtA-FeIRA, 30 de SetembRO de 2020 ANO ...
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2020/20200930/Jornal/2490.pdf
   - trecho: Sep 30, 2020 ... III - Ato da PMSC nº 434/2020 que aprova o plano de contingência ... Costa, Rio das Antas e Timbó Grande,pertencentes à Secretaria de ...
   - ⚠ ano_anterior_ao_ciclo
-- `1f30ee6cce` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `1f30ee6cce` · nível **B** (5 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Princesa de Timbó Grande morre atropelada por motorista ...
   - url: https://canoinhasonline.com.br/2026/09/princesa-de-timbo-grande-morre-atropelada-por-motorista-embriagado-em-cacador.html
   - trecho: Sep 5, 2026 ... Home Santa Catarina Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador ... Defesa Civil detalha plano de contingência ...
+  - juiz: portão automático: fonte não oficial
 - `855977129d` · nível **B** (5 pts) · busca_web · — · citação não extraída
   - título: COMPILADO DE ENUNCIADOS APROVADOS - MPSC
   - url: https://www.mpsc.mp.br/documents/d/guest/compilacao-de-enunciados-aprovados-gedclima-mpsc
@@ -3112,28 +3115,33 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://calmon.sc.gov.br/uploads/sites/273/2025/05/PMSB-VOLUME-I-CONSOLDACAO-DO-PLANO-MUNICIPAL-DE-SANEAMENTO-BASICO.pdf
   - trecho: ... Timbó Grande, Matos Costa,. Lebon Régis e General Carneiro. Page 30. 29. Figura 2 – Acesso ao Município de Calmon. Fonte: SANTA CATARINA / CIASC, 2010. A seguir ...
   - ⚠ ano_anterior_ao_ciclo
-- `494759142a` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
+- `494759142a` · nível **B** (4 pts) · busca_web · RESPOSTA · data 2025 (do trecho)
   - título: Chuvas em Santa Catarina provocam 'caos' em diversas regiões
   - url: https://ndmais.com.br/tempo/chuvas-em-santa-catarina-provocam-alagamentos-falta-de-energia-e-caos-no-transito/
   - trecho: Dec 29, 2025 ... ... Timbó Grande ficou destelhada em decorrência das fortes chuvas que ... O município elevou o Plano de Contingência para o nível Laranja no fim da ...
-- `434dadc57b` · nível **B** (4 pts) · busca_web · — · data 27/09/2021 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `434dadc57b` · nível **B** (4 pts) · busca_web · DUVIDA · **decreto 1**, 31/12/2022
   - título: FLORIANÓPOLIS, SeguNdA-FeIRA, 27 de SeteMbRO de 2021 ANO ...
   - url: https://www.sea.sc.gov.br/wp-content/uploads/2022/10/Jornal_2021_09_27_21614.pdf
   - trecho: tIMbÓ gRANde: 15mx5m, Localidade: Antinha; SgP-e SdC. 3940/2018. Cod. Mat ... § 2º O Plano de Contingência é organizado pela definição e carac-.
   - ⚠ ano_anterior_ao_ciclo
-- `61580b8a72` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `61580b8a72` · nível **B** (4 pts) · busca_web · DUVIDA · citação não extraída
   - título: PLANO MUNICIPAL DE SAÚDE
   - url: https://timbogrande.sc.gov.br/uploads/sites/352/2025/05/plano-de-saude.pdf
   - trecho: Plano de Contingência para que assim possamos dar assistência assegurada a toda a população ... TIMBÓ GRANDE/SC. APRESENTAÇÃO DAS METAS A SEREM DESENVOLVIDAS NO ...
   - ⚠ ano_anterior_ao_ciclo
-- `24956de1a2` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `24956de1a2` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Seis municípios decretam emergência após temporais em Santa ...
   - url: https://www.santacatarinaempauta.com.br/2026/07/02/seis-municipios-decretam-emergencia-apos-temporais-em-santa-catarina-defesa-civil-inicia-entrega-de-assistencia/
   - trecho: Jul 2, 2026 ... ... Timbó Grande. Conforme a Defesa Civil estadual, essas cidades ... A distribuição faz parte do plano de contingência previsto para a ...
-- `bce37ccd31` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `bce37ccd31` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Plano de contingência em escolas de SC terá medidas ... - ND Mais
   - url: https://ndmais.com.br/educacao/plano-de-contingencia-em-escolas-de-sc-tera-medidas-preventivas-em-situacao-de-risco/
   - trecho: Jan 22, 2026 ... ... plano de contingência em escolas de SC que abrange desde creches à universidades. ... Timbó GrandeFoto: Reprodução/Defesa Civil/ND Mais. Para ...
+  - juiz: portão automático: fonte não oficial
 - `b0523a0d9b` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
   - título: estado de santa catarina - DOE/SC
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2025/20250929/Jornal/22608.pdf
@@ -3173,98 +3181,117 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: ROI: Radiologia Intervencionista - Pesquisa - Anvisa
   - url: https://pesquisa.anvisa.gov.br/index.php/616471?lang=pt-BR
   - trecho: Timbó Grande, Três Barras, Treviso, Treze ... Mesma situação anterior e realiza avaliação anual dos registros das manutenções com elaboração de plano de ação.
-- `c6f7645962` · nível **B** (3 pts) · busca_web · — · data 2025 (do trecho)
+- `c6f7645962` · nível **B** (3 pts) · busca_web · RESPOSTA · data 2025 (do trecho)
   - título: Forno a céu aberto: Cidades catarinenses registram 55ºC de ...
   - url: https://canoinhasonline.com.br/2025/03/forno-a-ceu-aberto-cidades-catarinenses-registram-55oc-de-sensacao-termica.html
   - trecho: Mar 3, 2025 ... Defesa Civil detalha plano de contingência contra ... Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador.
   - ⚠ ano_anterior_ao_ciclo
-- `fa47db9dbc` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `fa47db9dbc` · nível **B** (3 pts) · busca_web · RESPOSTA · data 2024 (do trecho)
   - título: PL de Jorginho Mello foi o que mais elegeu prefeitos em SC
   - url: https://canoinhasonline.com.br/2024/10/pl-de-jorginho-mello-foi-o-que-mais-elegeu-prefeitos-em-sc.html
   - trecho: Oct 7, 2024 ... Defesa Civil detalha plano de contingência contra ... Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador.
   - ⚠ ano_anterior_ao_ciclo
-- `ff834d1488` · nível **B** (3 pts) · busca_web · — · data 2022 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `ff834d1488` · nível **B** (3 pts) · busca_web · RESPOSTA · data 2022 (do trecho)
   - título: cidades de SC decretam situação de emergência após ciclone
   - url: https://canoinhasonline.com.br/2022/08/estragos-sem-precedentes-cidades-de-sc-decretam-situacao-de-emergencia-apos-ciclone.html
   - trecho: Aug 11, 2022 ... Defesa Civil detalha plano de contingência contra ... Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador.
   - ⚠ ano_anterior_ao_ciclo
-- `55448d3a64` · nível **B** (3 pts) · busca_web · — · data 2025 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `55448d3a64` · nível **B** (3 pts) · busca_web · RESPOSTA · data 2025 (do trecho)
   - título: Frente fria provoca temporais e ventos fortes neste fim de semana
   - url: https://canoinhasonline.com.br/2025/06/frente-fria-provoca-temporais-e-ventos-fortes-neste-fim-de-semana.html
   - trecho: Jun 13, 2025 ... Defesa Civil detalha plano de contingência contra ... Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador.
   - ⚠ ano_anterior_ao_ciclo
-- `af13ab9474` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `af13ab9474` · nível **B** (3 pts) · busca_web · RESPOSTA · data 2024 (do trecho)
   - título: Verão será marcado por temperaturas acima da média em Santa ...
   - url: https://canoinhasonline.com.br/2024/10/verao-sera-marcado-por-temperaturas-acima-da-media-em-santa-catarina.html
   - trecho: Oct 27, 2024 ... Defesa Civil detalha plano de contingência contra ... Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador.
   - ⚠ ano_anterior_ao_ciclo
-- `aa09f507d0` · nível **B** (3 pts) · busca_web · — · data 2025 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `aa09f507d0` · nível **B** (3 pts) · busca_web · RESPOSTA · data 2025 (do trecho)
   - título: Justiça tenta solução pacífica para discutir ocupação indígena no ...
   - url: https://canoinhasonline.com.br/2025/07/justica-tenta-solucao-pacifica-para-discutir-ocupacao-indigena-no-colegio-agricola-de-mafra.html
   - trecho: Jul 2, 2025 ... Defesa Civil detalha plano de contingência contra ... Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador.
   - ⚠ ano_anterior_ao_ciclo
-- `f1829ca1ac` · nível **B** (3 pts) · busca_web · — · data 2025 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `f1829ca1ac` · nível **B** (3 pts) · busca_web · RESPOSTA · data 2025 (do trecho)
   - título: Capotamento na SC-135 deixa dois mortos e um ferido em Caçador
   - url: https://canoinhasonline.com.br/2025/07/capotamento-na-sc-135-deixa-dois-mortos-e-um-ferido-em-cacador.html
   - trecho: Jul 20, 2025 ... Defesa Civil detalha plano de contingência contra ... Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador.
   - ⚠ ano_anterior_ao_ciclo
-- `c0524a9c88` · nível **B** (3 pts) · busca_web · — · data 2021 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `c0524a9c88` · nível **B** (3 pts) · busca_web · RESPOSTA · data 2021 (do trecho)
   - título: O balão do vovô, uma história de luto e de amor - Canoinhas Online
   - url: https://canoinhasonline.com.br/2021/10/o-balao-do-vovo-uma-historia-de-luto-e-de-amor.html
   - trecho: Oct 12, 2021 ... Defesa Civil detalha plano de contingência contra ... Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador.
   - ⚠ ano_anterior_ao_ciclo
-- `d205041018` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `d205041018` · nível **B** (3 pts) · busca_web · RESPOSTA · data 2024 (do trecho)
   - título: Tombamentos de caminhões são registrados na SC-135 em dois ...
   - url: https://canoinhasonline.com.br/2024/12/tombamentos-de-caminhoes-sao-registrados-na-sc-135-em-dois-dias-consecutivos.html
   - trecho: Dec 19, 2024 ... Defesa Civil detalha plano de contingência contra ... Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador.
   - ⚠ ano_anterior_ao_ciclo
-- `fbe93b2753` · nível **B** (3 pts) · busca_web · — · data 2025 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `fbe93b2753` · nível **B** (3 pts) · busca_web · RESPOSTA · data 2025 (do trecho)
   - título: Irmãos que morreram afogados no Rio Irani são identificados
   - url: https://canoinhasonline.com.br/2025/01/irmaos-que-morreram-afogados-no-rio-irani-sao-identificados.html
   - trecho: Jan 20, 2025 ... Defesa Civil detalha plano de contingência contra ... Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador.
   - ⚠ ano_anterior_ao_ciclo
-- `ea3ad4ceb8` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `ea3ad4ceb8` · nível **B** (3 pts) · busca_web · RESPOSTA · data 2024 (do trecho)
   - título: Acidente entre carros na SC-418 deixa duas mulheres encarceradas
   - url: https://canoinhasonline.com.br/2024/07/acidente-entre-carros-na-sc-418-deixa-duas-mulheres-encarceradas.html
   - trecho: Jul 23, 2024 ... Defesa Civil detalha plano de contingência contra ... Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador.
   - ⚠ ano_anterior_ao_ciclo
-- `75c887a2c1` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `75c887a2c1` · nível **B** (3 pts) · busca_web · RESPOSTA · data 2024 (do trecho)
   - título: Abandono e fome: crianças são encontradas sozinhas em casa e ...
   - url: https://canoinhasonline.com.br/2024/07/abandono-e-fome-criancas-sao-encontradas-sozinhas-em-casa-e-mae-e-presa-em-balneario-camboriu.html
   - trecho: Jul 16, 2024 ... Defesa Civil detalha plano de contingência contra ... Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador.
   - ⚠ ano_anterior_ao_ciclo
-- `33aed66392` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `33aed66392` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Sobe para seis o número de municípios catarinenses que ...
   - url: https://www.correiodopovo.com.br/not%C3%ADcias/cidades/sobe-para-seis-o-numero-de-municipios-catarinenses-que-decretaram-situacao-de-emergencia-apos-temporais-1.1727397
   - trecho: Jul 2, 2026 ... Já em Timbó Grande, os temporais atingiram 40 habitações nas ... A ação faz parte do Plano de Contingência específico para as ...
-- `af957396a2` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `af957396a2` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Seis municípios de SC decretam situação de emergência após ...
   - url: https://radiomirador.com.br/seis-municipios-de-sc-decretam-situacao-de-emergencia-apos-temporais-alto-vale-segue-em-monitoramento/
   - trecho: Jul 2, 2026 ... ... Timbó Grande oficializaram os decretos e solicitaram apoio do Estado ... A entrega faz parte do plano de contingência elaborado pelo ...
-- `6f9f9a1bef` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `6f9f9a1bef` · nível **B** (3 pts) · busca_web · DUVIDA · citação não extraída
   - título: Situação em Timbé do Sul - Instagram
   - url: https://www.instagram.com/reel/Ddj3MWyPEJz/
   - trecho: 6 days ago ... ⚠️ Timbó Grande está na área de alerta da Defesa Civil para ... As ações foram embasadas no Plano de contingência municipal.
-- `e4a345ae23` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `e4a345ae23` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Plano de contingência e emergência ambiental - Cristal - Consultoria
   - url: https://www.cristalconsult.com.br/plano-contingencia-emergencia-ambiental
   - trecho: Plano de contingência e emergência ambiental da sua empresa esteja alinhado ... Timbó Grande; Trombudo Central; Campo Belo do Sul; Itá; Ouro; Meleiro; Aurora ...
-- `191f4cba92` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `191f4cba92` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Sobe para 6 os municípios em situação de emergência após ...
   - url: https://ndmais.com.br/tempo/sobe-para-6-os-municipios-em-situacao-de-emergencia-apos-temporais-castigarem-sc/
   - trecho: Jul 2, 2026 ... ... Timbó Grande decretaram o alerta vermelho após registrarem danos ... plano de contingência elaborado para a área. De acordo com a ...
-- `5fdd20342a` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `5fdd20342a` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Defesa Civil | O número de municípios em situação de emergência ...
   - url: https://www.instagram.com/p/DaTUCJTFAHH/
   - trecho: Jul 2, 2026 ... ... Timbó Grande. Segundo a Defesa Civil, as cidades solicitaram itens ... Plano de contingência A partir desta sexta, a Defesa Civil ...
+  - juiz: portão automático: fonte não oficial
 - `f760d3e486` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
   - título: Diário Oficial Eletrônico - TCE/SC
   - url: https://consulta.tce.sc.gov.br/Diario/dotc-e2024-05-22.pdf
   - trecho: May 22, 2024 ... do Plano de Contingência para o enfrentamento ... INTERESSADOS:Prefeitura Municipal de Timbó Grande, Prefeitura Municipal de Timbó Grande.
-- `448a956181` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+- `448a956181` · nível **B** (3 pts) · busca_web · RESPOSTA · data 2026 (do trecho)
   - título: Defesa Civil inicia entrega de mais de mil cestas básicas a ...
   - url: https://radiomirador.com.br/defesa-civil-inicia-entrega-de-mais-de-mil-cestas-basicas-a-indigenas-isolados-em-jose-boiteux/
   - trecho: Jul 3, 2026 ... Plano de contingência foi acionado após aldeias permanecerem ... Timbó Grande. As entregas incluíram cestas básicas, kits de limpeza ...
+  - juiz: portão automático: fonte não oficial
 - `503aab739a` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
   - título: Balanço do feriadão aponta 66 mortes e quase mil motoristas ...
   - url: https://canoinhasonline.com.br/2026/09/balanco-do-feriadao-aponta-66-mortes-e-quase-mil-motoristas-autuados-por-embriaguez-nas-rodovias-federais.html
@@ -3351,107 +3378,129 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: ... plano de ação e acompanhamento da implantação do plano de ação para diversos projetos. ... Timbó Grande; Três Barras; Treviso; Treze de Maio; Treze Tílias ...
 
 ## Treze de Maio/SC — 63 pendente(s)
-- `872cd83aab` · nível **A** (8 pts) · busca_web · — · data 2014 (do trecho)
+- `872cd83aab` · nível **A** (8 pts) · busca_web · DUVIDA · **Lei nº 860**, 04/02/1880
   - título: plano municipal de preparação e resposta a emergências
   - url: https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/401-regional-de-saude-de-blumenau.html?download=1248%3Appr-esp-blumenau&Itemid=109
   - trecho: Grande do Treze de Maio;. ✓ Córregos: Córrego Fundo Kilan. 5.6 PEDOLOGIA ... Plano de contingência de proteção e defesa civil. 2014. UNIFESP. Gestão de ...
-- `d00818759b` · nível **B** (6 pts) · busca_web · — · data 29/06/2017 (do trecho)
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `d00818759b` · nível **B** (6 pts) · busca_web · EX_ANTE · data 29/06/2017 (do trecho)
   - título: [29/06/2017] Relatório Final - Prefeitura de Imaruí
   - url: https://imarui.sc.gov.br/uploads/sites/130/2021/12/1005072_Relatorio_Final.pdf
   - trecho: ... Treze de Maio e Tubarão. O Consórcio CATARINA é uma possibilidade dos ... Plano de Contingência é um plano elaborado para orientar as ações de.
   - ⚠ ano_anterior_ao_ciclo
-- `0fc5941aeb` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `0fc5941aeb` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
   - título: plano municipal de preparação e resposta às emergências em ...
   - url: https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/402-regional-de-saude-de-tubarao.html?download=1260%3A3-plano-treze-de-maio&Itemid=109
   - trecho: Neste sentido, em Treze de Maio / SC existem diversas iniciativas do ... Também elaborou plano de contingência acerca da emergência em saúde pública, bem ...
-- `a516b01da7` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `a516b01da7` · nível **B** (5 pts) · busca_web · RESPOSTA · citação não extraída
   - título: PLANO MUNICIPAL DE CONTINGÊNCIA
   - url: https://pedrasgrandes.sc.gov.br/uploads/sites/344/2025/11/PLANO-DE-CONTINGENCIA-PG-25_RV_01.pdf
   - trecho: • Cidades Próximas: São Ludgero, Tubarão, Treze de Maio, Cocal do Sul, Urussanga, Orleans ... O Plano de Contingência Municipal - PLANCON Municipal será ativado ...
   - ⚠ ano_anterior_ao_ciclo
-- `b38879014a` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: natureza RESPOSTA — só ex-ante é aplicado sozinho
+- `b38879014a` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
   - título: Treze de Maio promove baile da Melhor Idade com música ...
   - url: https://diarioomunicipio.com.br/geral/treze-de-maio-promove-baile-da-melhor-idade-com-musica-diversao-e-confraternizacao-130172
   - trecho: 3 days ago ... Treze de Maio promove baile da Melhor Idade com música ... Grac Municipal é instituído e plano de contingência é atualizado em Jaguaruna.
-- `9186ca417f` · nível **B** (5 pts) · busca_web · — · data 2020 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `9186ca417f` · nível **B** (5 pts) · busca_web · DUVIDA · data 2020 (do trecho)
   - título: PLANO DE AÇÃO REGIONAL DA REDE DE ATENÇÃO ÀS ...
   - url: https://www.saude.sc.gov.br/index.php/pt/redes-de-atencao-a-saude/rede-de-urgencia-e-emergencia-rue/planos-de-acao/documentos-planos-de-acao-regionais/par-macrorregiao-do-sul/download
   - trecho: Nov 4, 2020 ... Martinho, Treze de Maio, Tubarão, Balneário Rincão, Cocal do Sul ... 4 PROPOSTA DE INCLUSÃO NO PLANO DE AÇÃO REGIONAL ...
-- `8d3c92eadb` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `8d3c92eadb` · nível **B** (4 pts) · busca_web · DUVIDA · citação não extraída
   - título: SC - Prefeitura de Tubarão
   - url: https://tubarao.sc.gov.br/uploads/sites/265/2025/04/Plano-de-Contingencia-APROVADO-1-2024.pdf
   - trecho: com o município de Jaguaruna, a Sudoeste com Treze de Maio, e a Sudeste com Laguna. ... plano de contingência. Nível de. Mobilização. Limiares Críticos. Ações ...
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `51488ee4f9` · nível **B** (4 pts) · busca_web · — · data 2024 (do trecho)
   - título: plano de - contingência - Defesa Civil de Blumenau
   - url: https://defesacivil.blumenau.sc.gov.br/static/app/defesa-civil/Plano_de_conting%C3%AAncia_2024.pdf
   - trecho: Aug 6, 2024 ... Plano de Contingência – Inundações e Movimentos de Massa - Anexo ... Treze de Maio. Localidade Treze de Maio. 8411-0169 (falar com. Kleine).
-- `e7a4e4f96f` · nível **B** (4 pts) · busca_web · — · citação não extraída
+- `e7a4e4f96f` · nível **B** (4 pts) · busca_web · DUVIDA · citação não extraída
   - título: Ex-prefeito Edenilson da Costa apoia Dr. Elói à Câmara Federal ...
   - url: https://diarioomunicipio.com.br/geral/ex-prefeito-edenilson-da-costa-apoia-dr-eloi-a-camara-federal-reforcando-compromisso-com-jaguaruna-130071
   - trecho: 4 days ago ... Treze de Maio promove baile da Melhor Idade com música, diversão e confraternização ... Grac Municipal é instituído e plano de contingência ...
-- `d14edb32fb` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `d14edb32fb` · nível **B** (4 pts) · busca_web · DUVIDA · citação não extraída
   - título: Tempo segue firme, com predomínio de sol, poucas nuvens e ...
   - url: https://diarioomunicipio.com.br/tempo/tempo-segue-firme-com-predominio-de-sol-poucas-nuvens-e-temperaturas-em-elevacao-em-santa-catarina-130238
   - trecho: 2 days ago ... Treze de Maio promove baile da Melhor Idade com música, diversão e confraternização ... Grac Municipal é instituído e plano de contingência ...
-- `1c3e37bc42` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `1c3e37bc42` · nível **B** (4 pts) · busca_web · EX_ANTE · **Decreto....................................................................................................................................................................1**, 22/10/2025
   - título: Decreto - Prefeitura Municipal de Criciúma
   - url: https://apoio.criciuma.sc.gov.br/files/68f93fa032a0c22102025.pdf
   - trecho: Oct 22, 2025 ... O Plano de Contingência para alagamento, deslizamento, vendavais e ... Treze de Maio 25.7 km,. Page 17. Nº 3834– Ano 16 quarta-feira, 22 ...
-- `559e0b2606` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: ato de 2025 — pode ser edição anterior; decisão humana
+- `559e0b2606` · nível **B** (4 pts) · busca_web · EX_ANTE · **Lei nº 12.187**, 29/12/2009
   - título: Plano de Ação para Prevenção e Controle do Desmatamento e das ...
   - url: https://www.gov.br/casacivil/pt-br/.arquivos/101116%20-%20PPCerrado_Vfinal.pdf
   - trecho: Durante o período chuvoso, é comum a ocorrência de veranicos, ou seja ... PA Treze de Maio. MG. 3,84. 0,09. 0,04%. PA Trombetas. PI. 16,08. 2,71. 1,15%. PA ...
-- `e6c562566c` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: ato de 2009 — pode ser edição anterior; decisão humana
+- `e6c562566c` · nível **B** (4 pts) · busca_web · DUVIDA · **Lei nº 14.133**, 30/03/2026
   - título: prefeitura municipal de agrolândia
   - url: https://agrolandia.sc.gov.br/uploads/sites/307/2026/05/ORCAMENTOS-ESTIMADOS.pdf
   - trecho: ... TREZE DE MAIO / 1 -. FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL DE TREZE DE MAIO ... PLANO DE AÇÃO ELABORADO PARA. ATENDIMENTO À POPULAÇÃO IMIGRANTE, COM ...
-- `d4333df511` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `d4333df511` · nível **B** (4 pts) · busca_web · DUVIDA · citação não extraída
   - título: ESTADOBE SANTA - Arquivo Público do Estado de Santa Catarina
   - url: https://acervo.arquivopublico.sc.gov.br/uploads/r/arquivo-publico-do-estado-de-santa-catarina-apesc/3/4/0/340526054f6edc94d6608999a63b78a92df888e853ec7c7f8d1eee4a179b096e/dfc32411-412a-4b3c-b1bf-804b3865605f-32048-DOE_7903_16_09_1965_28F_DJ_1899_04F.pdf
   - trecho: nicípio de Treze de Maio,. |. Benta Ghisi Barbosa, Regente de. 800 40. -18 das ... bem orientado plano de ação repressiva do Govêrno. E, já agora, podem-se ...
-- `91c9b257ad` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `91c9b257ad` · nível **B** (4 pts) · busca_web · EX_ANTE · **LEI Nº 19.876**, 03/06/2026
   - título: Diário Oficial - DOE/SC
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2026/20260608/Jornal/22769.pdf
   - trecho: Jun 8, 2026 ... ... Treze de Maio OBJETO: auxilio financeiro para custeio e manutenção ... plano de ação, pro- por uma solução técnica e elaborar o termo ...
-- `645710216a` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: número extraído parece lei citada, não o ato instituinte (LEI Nº 19.876)
+- `645710216a` · nível **B** (4 pts) · busca_web · DUVIDA · citação não extraída
   - título: Currículo base da educação infantil e do ensino fundamental do ...
   - url: https://tubarao.sc.gov.br/uploads/sites/265/2022/11/1853591_Curriculo_Base_da_Educacao_Infantil_e_Fundamental_do_Territorio_Catarinense.pdf
   - trecho: ... Treze de Maio; Caldas do Cubatão – Santo Amaro da Imperatriz; Aldeia ... Plano de ação para satisfazer as necessidades básicas de aprendizagem. Jomtien ...
   - ⚠ ano_anterior_ao_ciclo
-- `71392208fc` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `71392208fc` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Editor Comitê Tubarão e Complexo Lagunar - Aguas SC
   - url: https://www.aguas.sc.gov.br/servicos/noticias/itemlist/user/199-editorcomitetubaraoecomplexolagunar
   - trecho: ... plano de contingência com o intuito de enfrentar os momentos de crise. ... Treze de Maio. Publicado em Notícias. Tagged sob. Comitê Tubarão e Complexo ...
-- `0ea2fd9a54` · nível **B** (3 pts) · busca_web · — · data 2022 (do trecho)
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `0ea2fd9a54` · nível **B** (3 pts) · busca_web · DUVIDA · data 2022 (do trecho)
   - título: Publicações Epagri
   - url: https://sistemas.epagri.sc.gov.br/semob/consulta.action?subFuncao=consultaPublicacoes
   - trecho: ... Plano de contingência da Epagri diante da pandemia da Covid-19 2022 ... Treze de Maio, SC. 2014 - Publicação seriada (Boletim Didático) Livre download ...
-- `eab9a1876f` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `eab9a1876f` · nível **B** (3 pts) · busca_web · EX_ANTE · **lei n. 6.745**, 29.11.2024
   - título: estado de santa catarina - DOE SC
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2024/20241202/Jornal/22407.pdf
   - trecho: Dec 2, 2024 ... Continuidade de negócio (plano de contingência, de recuperação de ... ção da agência de Treze de maio. oriGEm: Dl nº 79/2024 Valor: r ...
   - ⚠ ano_anterior_ao_ciclo
-- `69523f26ef` · nível **B** (3 pts) · busca_web · — · data 2022 (do trecho)
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `69523f26ef` · nível **B** (3 pts) · busca_web · DUVIDA · data 2022 (do trecho)
   - título: Publicações-Livres - Epagri
   - url: https://www.epagri.sc.gov.br/solucoes/publicacoes/publicacoes-livres/
   - trecho: Plano de contingência da Epagri diante da pandemia da Covid-19 2022 ... Treze de Maio, SC. 2014 - Publicação seriada (Boletim Didático) Livre ...
-- `3117895f56` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `3117895f56` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Plano de contingência e emergência ambiental - Cristal - Consultoria
   - url: https://www.cristalconsult.com.br/plano-contingencia-emergencia-ambiental
   - trecho: Plano de contingência e emergência ambiental da sua empresa esteja alinhado ... Treze de Maio; Timbó Grande; Trombudo Central; Campo Belo do Sul; Itá; Ouro ...
-- `a90af4340a` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `a90af4340a` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Coopercocal apresenta Plano de Contingência para atuação em ...
   - url: https://www.ligadonosul.com.br/geral/coopercocal-apresenta-plano-de-contingencia-para-atuacao-em-periodos-de-alertas-climaticos/
   - trecho: Sep 1, 2026 ... A Coopercocal apresentou aos colaboradores, na manhã desta segunda-feira, dia 31, o Plano de Contingência ... Treze de Maio em Destaque. Jailson ...
+  - juiz: portão automático: fonte não oficial
 - `93c498b2a2` · nível **B** (3 pts) · busca_web · — · citação não extraída
   - título: Treze de maio: 707 imagens, fotos e ilustrações stock livres de direitos
   - url: https://www.shutterstock.com/pt/search/treze-de-maio
   - trecho: ... Treze de Maio, state of Santa Catarina. TREZE DE MAIO, BRAZIL - CIRCA APRIL ... No entanto, o governo regional implementou um plano de contingência ...
-- `73c4015e23` · nível **B** (3 pts) · busca_web · — · citação não extraída
+- `73c4015e23` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
   - título: regulamento/plano de operação da promoção - Cresol
   - url: https://cresol.com.br/wp-content/uploads/2026/02/Regulamento-Aprovado-Cooperar-e-Ganhar-Cresol-Geral-SPA-04.047374-2026.pdf
   - trecho: Bairro: CENTRO Município: TREZE DE MAIO UF: SC CEP:88710-000. CNPJ/MF nº ... plano de contingência específico para solução dos possíveis problemas e ...
+  - juiz: portão automático: fonte não oficial
 - `baa9e60ba6` · nível **B** (3 pts) · busca_web · — · data 2025 (do trecho)
   - título: estado de santa catarina - DOE/SC
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2025/20251125/Jornal/22647.pdf
@@ -3462,20 +3511,23 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2020/20201014/Jornal/2499.pdf
   - trecho: Oct 14, 2020 ... NO PLANO DE CONTINGÊNCIA - PLANCon- EDU. data: _____/_____/_____ ... MUNICÍPIO DE TREZE DE MAIO / SC. PROCESSO DE LICITAÇÃO Nº 035/2020.
   - ⚠ ano_anterior_ao_ciclo
-- `882d3693b7` · nível **B** (3 pts) · busca_web · — · citação não extraída
+- `882d3693b7` · nível **B** (3 pts) · busca_web · DUVIDA · citação não extraída
   - título: estado de santa catarina - AMREC
   - url: https://amrec.com.br/uploads/sites/550/2022/12/2467540_025_anexo_PLANO_DE_ACAO_REGIONAL___MACROSUL_2021.pdf
   - trecho: Martinho, Treze de Maio, Tubarão ... Intergestores Bipartite do Estado de Santa Catarina - CIB/SC, que aprova o primeiro aditivo do Plano de Ação Regional.
   - ⚠ ano_anterior_ao_ciclo
-- `877c7eb3c9` · nível **B** (3 pts) · busca_web · — · data 16/09/2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `877c7eb3c9` · nível **B** (3 pts) · busca_web · EX_ANTE · **LEI Nº 839**, 15/09/2026
   - título: Paraná , 16 de Setembro de 2026 • Diário Oficial dos Municípios do ...
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118184_2026-09-15_73e5003f6ec967b8a272135117a4ec83.pdf
   - trecho: Sep 15, 2026 ... ... Treze de Maio, nº 906, Centro, Cruzeiro do. Iguaçu/PR, neste ato ... Plano de Ação e do. Plano de Trabalho referente a Deliberação nº 13 ...
-- `87310f1d2d` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `87310f1d2d` · nível **B** (3 pts) · busca_web · DUVIDA · citação não extraída
   - título: Ata - Pesquisa textual | Tribunal de Contas da União
   - url: https://pesquisa.apps.tcu.gov.br/#/doc/ata-sessao/6/2022/p/publica
   - trecho: ... plano de ação para implemento das recomendações, bem como justificativa para ... Treze de Maio, 139 - Fátima - Fortaleza/CE, na verdade funciona uma ...
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `53156f516d` · nível **C** (7 pts) · busca_web · — · data 2054 (do trecho)
   - título: PLANO DE CONTINGÊNCIA - Prefeitura Municipal de Monte Sião
   - url: https://montesiao.mg.gov.br/public/admin/globalarq/uploads/files/PLANO_DE_CONTINGENCIA%20-%20Divulga%C3%A7%C3%A3o%20popula%C3%A7%C3%A3o.pdf
@@ -5969,11 +6021,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2026/DMPF-EXTRAJUDICIAL-2026-07-29.pdf?noCache=20260729135540192517
   - trecho: Jul 29, 2026 ... - Que, ademais, por força do Decreto nº 11.367/2023, seria elaborado o Plano de Ação Para Prevenção e Controle do ... Major Vieira/SC; d) nome e ...
   - juiz: portão automático: fonte não oficial
-- `4f70a8ec85` · nível **B** (5 pts) · busca_web · — · data 2013 (do trecho)
+- `4f70a8ec85` · nível **B** (5 pts) · busca_web · DUVIDA · data 2013 (do trecho)
   - título: PLANO MUNICIPAL DE SAÚDE
   - url: https://timbogrande.sc.gov.br/uploads/sites/352/2025/05/plano-de-saude.pdf
   - trecho: ... Major Vieira,. Ireneópolis, Lebon Régis, estas famílias buscam ... Plano de Enfrentamento das. DCNT's. Segundo o Plano de Ação da OMS (2013-2020) ...
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `7c8fd9e086` · nível **B** (4 pts) · busca_web · EX_ANTE · **lei n. 6.745**, 29.11.2024
   - título: estado de santa catarina - DOE SC
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2024/20241202/Jornal/22407.pdf
