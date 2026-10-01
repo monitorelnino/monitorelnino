@@ -1,0 +1,443 @@
+{
+ "_governanca": "Normal climatológica 1991–2020 do Inmet, temperatura máxima mensal, por capital. Serve ao DESVIO do mapa de calor do Monitor de riscos: camada de contexto, PESO ZERO, não entra na nota do MARÉ. Capital ausente aqui é lacuna declarada — o mapa mostra anel vazio, nunca estimativa.",
+ "fonte": {
+  "instrumento": "Normal Climatológica do Brasil 1991–2020, temperatura máxima mensal e anual (°C) — Instituto Nacional de Meteorologia (Inmet)",
+  "url": "https://portal.inmet.gov.br/uploads/normais/Normal-Climatologica-TMAX.xlsx",
+  "consultado_em": "2026-09-30",
+  "hash": "26437f439a2074e530db1ea03d637829b14d1cea26107e1d38136b48b43886a0"
+ },
+ "meses": [
+  "Janeiro",
+  "Fevereiro",
+  "Março",
+  "Abril",
+  "Maio",
+  "Junho",
+  "Julho",
+  "Agosto",
+  "Setembro",
+  "Outubro",
+  "Novembro",
+  "Dezembro"
+ ],
+ "capitais_sem_normal": [
+  "MS",
+  "RJ",
+  "RO"
+ ],
+ "por_que_sem_normal": {
+  "MS": "só Paranaíba no estado",
+  "RJ": "só Alto da Boa Vista, estação de montanha, não representativa da cidade",
+  "RO": "nenhuma estação de Rondônia na planilha"
+ },
+ "capitais": {
+  "AC": {
+   "estacao": "RIO BRANCO",
+   "tmax": [
+    30.9,
+    30.8,
+    31.0,
+    31.2,
+    30.6,
+    30.7,
+    31.8,
+    33.3,
+    33.7,
+    33.1,
+    32.1,
+    31.2
+   ]
+  },
+  "AL": {
+   "estacao": "MACEIO",
+   "tmax": [
+    31.0,
+    31.3,
+    31.5,
+    30.7,
+    29.5,
+    28.4,
+    27.6,
+    27.8,
+    28.6,
+    29.9,
+    30.8,
+    31.3
+   ]
+  },
+  "AM": {
+   "estacao": "MANAUS",
+   "tmax": [
+    31.3,
+    31.1,
+    31.2,
+    31.3,
+    31.5,
+    31.9,
+    32.5,
+    33.6,
+    34.1,
+    34.0,
+    33.0,
+    32.0
+   ]
+  },
+  "AP": {
+   "estacao": "MACAPA",
+   "tmax": [
+    30.9,
+    30.2,
+    30.4,
+    30.7,
+    31.3,
+    31.8,
+    32.1,
+    32.8,
+    33.4,
+    33.8,
+    33.4,
+    32.4
+   ]
+  },
+  "BA": {
+   "estacao": "SALVADOR (ONDINA)",
+   "tmax": [
+    31.0,
+    31.1,
+    30.9,
+    29.6,
+    28.1,
+    27.1,
+    26.6,
+    26.7,
+    27.7,
+    29.1,
+    29.8,
+    30.6
+   ]
+  },
+  "CE": {
+   "estacao": "FORTALEZA",
+   "tmax": [
+    31.2,
+    31.1,
+    30.8,
+    30.6,
+    30.8,
+    30.5,
+    30.6,
+    31.1,
+    31.4,
+    31.6,
+    31.7,
+    31.7
+   ]
+  },
+  "DF": {
+   "estacao": "BRASILIA",
+   "tmax": [
+    26.9,
+    27.2,
+    27.0,
+    26.8,
+    26.0,
+    25.3,
+    25.6,
+    27.4,
+    29.1,
+    29.0,
+    27.0,
+    26.8
+   ]
+  },
+  "ES": {
+   "estacao": "VITORIA",
+   "tmax": [
+    31.4,
+    32.0,
+    31.4,
+    30.1,
+    28.2,
+    27.4,
+    26.7,
+    26.9,
+    27.4,
+    28.3,
+    28.7,
+    30.3
+   ]
+  },
+  "GO": {
+   "estacao": "GOIANIA",
+   "tmax": [
+    30.6,
+    31.0,
+    30.9,
+    31.2,
+    30.3,
+    30.0,
+    30.6,
+    32.7,
+    34.0,
+    33.2,
+    31.1,
+    30.6
+   ]
+  },
+  "MA": {
+   "estacao": "SAO LUIS",
+   "tmax": [
+    31.1,
+    30.6,
+    30.3,
+    30.6,
+    31.3,
+    31.5,
+    31.5,
+    32.0,
+    32.3,
+    32.5,
+    32.5,
+    32.2
+   ]
+  },
+  "MG": {
+   "estacao": "BELO HORIZONTE",
+   "tmax": [
+    28.7,
+    29.1,
+    28.4,
+    27.6,
+    25.7,
+    24.9,
+    24.9,
+    26.3,
+    27.9,
+    28.7,
+    27.7,
+    28.2
+   ]
+  },
+  "MT": {
+   "estacao": "CUIABA",
+   "tmax": [
+    33.0,
+    32.8,
+    33.2,
+    33.1,
+    31.6,
+    31.8,
+    32.2,
+    34.7,
+    35.6,
+    35.1,
+    34.0,
+    33.3
+   ]
+  },
+  "PA": {
+   "estacao": "BELEM",
+   "tmax": [
+    31.4,
+    31.0,
+    31.1,
+    31.5,
+    32.2,
+    32.5,
+    32.6,
+    33.0,
+    33.2,
+    33.1,
+    33.1,
+    32.5
+   ]
+  },
+  "PB": {
+   "estacao": "JOAO PESSOA",
+   "tmax": [
+    30.9,
+    31.1,
+    31.2,
+    30.8,
+    30.3,
+    29.2,
+    28.7,
+    28.9,
+    29.4,
+    30.1,
+    30.6,
+    30.9
+   ]
+  },
+  "PE": {
+   "estacao": "RECIFE (CURADO)",
+   "tmax": [
+    30.8,
+    31.0,
+    30.9,
+    30.4,
+    29.6,
+    28.5,
+    27.9,
+    27.9,
+    28.6,
+    29.6,
+    30.4,
+    30.8
+   ]
+  },
+  "PI": {
+   "estacao": "TERESINA",
+   "tmax": [
+    null,
+    32.2,
+    32.0,
+    31.9,
+    32.3,
+    32.7,
+    33.7,
+    35.5,
+    36.9,
+    37.4,
+    36.4,
+    35.0
+   ]
+  },
+  "PR": {
+   "estacao": "CURITIBA",
+   "tmax": [
+    27.1,
+    27.2,
+    26.1,
+    24.4,
+    21.1,
+    20.3,
+    20.1,
+    21.9,
+    22.3,
+    23.7,
+    25.0,
+    26.7
+   ]
+  },
+  "RN": {
+   "estacao": "NATAL",
+   "tmax": [
+    30.4,
+    30.7,
+    30.7,
+    30.3,
+    29.8,
+    28.8,
+    28.4,
+    28.6,
+    29.0,
+    29.7,
+    30.0,
+    30.4
+   ]
+  },
+  "RR": {
+   "estacao": "BOA VISTA",
+   "tmax": [
+    null,
+    34.1,
+    34.7,
+    34.1,
+    32.4,
+    32.0,
+    32.1,
+    33.3,
+    34.9,
+    35.7,
+    35.3,
+    34.1
+   ]
+  },
+  "RS": {
+   "estacao": "PORTO ALEGRE",
+   "tmax": [
+    31.0,
+    30.5,
+    29.2,
+    26.4,
+    22.6,
+    20.3,
+    19.7,
+    21.8,
+    22.8,
+    25.2,
+    27.7,
+    30.0
+   ]
+  },
+  "SC": {
+   "estacao": "FLORIANOPOLIS",
+   "tmax": [
+    29.4,
+    29.5,
+    28.7,
+    26.9,
+    24.0,
+    21.9,
+    21.1,
+    21.8,
+    22.4,
+    24.2,
+    26.1,
+    28.3
+   ]
+  },
+  "SE": {
+   "estacao": "ARACAJU",
+   "tmax": [
+    30.6,
+    30.8,
+    30.9,
+    30.4,
+    29.6,
+    28.6,
+    27.9,
+    27.9,
+    28.4,
+    29.2,
+    29.8,
+    30.2
+   ]
+  },
+  "SP": {
+   "estacao": "SAO PAULO(MIR.de SANTANA)",
+   "tmax": [
+    28.6,
+    29.0,
+    28.0,
+    26.6,
+    23.4,
+    22.9,
+    22.9,
+    24.5,
+    25.2,
+    26.5,
+    26.9,
+    28.3
+   ]
+  },
+  "TO": {
+   "estacao": "PALMAS",
+   "tmax": [
+    31.8,
+    31.6,
+    31.8,
+    32.8,
+    33.8,
+    34.5,
+    35.2,
+    36.8,
+    37.3,
+    35.1,
+    33.0,
+    32.3
+   ]
+  }
+ }
+}

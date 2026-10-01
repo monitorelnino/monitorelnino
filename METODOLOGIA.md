@@ -1704,6 +1704,23 @@ descrição do que o índice europeu publica; e a leitura da qualidade do ar, de
 explica por que a escala é europeia. As exceções são das frases exatas, e somem se o texto mudar.
 
 
+## 59. Ficha de calor extremo: a fonte (01/10/2026)
+
+O Proteja-se passou a ter ficha própria de **calor extremo**, separada da de estiagem — até aqui as
+duas dividiam um cartão, e dividir cartão é dizer que são o mesmo risco.
+
+O conteúdo da ficha **não foi escrito por este projeto**: é reprodução das orientações da página
+"Ondas de Calor" do **Ministério da Saúde**
+(`gov.br/saude/pt-br/assuntos/saude-de-a-a-z/o/ondas-de-calor`), consultada e preservada como
+evidência em 01/10/2026. Dela vêm as três colunas: manter ambiente fresco e ajustar medicação sob
+orientação médica; beber água mesmo sem sede, evitar álcool e cafeína, roupas leves e claras,
+atividade ao ar livre nos horários frescos, alimentação leve; e os sinais de alerta — transpiração
+excessiva, fraqueza, tontura, náusea, dor de cabeça, cãibras e diarreia, com confusão, convulsão ou
+perda de consciência como emergência médica. Os grupos de atenção redobrada são os que o próprio
+Ministério nomeia.
+
+A regra que vale aqui é a de sempre nesta página: **o MARÉ reproduz o órgão, com fonte e data, e não
+redige orientação de saúde.** Onde a orientação oficial mudar, a ficha muda com ela.
 ## 60. Monitor de riscos: grade de três, Niño 3.4 de volta, RONI como referência (01/10/2026)
 
 Três registros da editoria, de 30/09/2026, que fecham o desenho da página.
@@ -1729,20 +1746,36 @@ como duplo círculo, com distâncias diferentes de uma capital para outra — e 
 distintos leem-se como duas medidas, quando é uma só. Todas as capitais passam a ter um círculo
 sólido do mesmo tamanho: a **cor** diz o desvio e o **número** ao lado diz a máxima prevista.
 Capital sem dado continua com anel vazio.
-## 59. Ficha de calor extremo: a fonte (01/10/2026)
+## 61. Calor como desvio da normal 1991–2020, e as três capitais sem normal (01/10/2026)
 
-O Proteja-se passou a ter ficha própria de **calor extremo**, separada da de estiagem — até aqui as
-duas dividiam um cartão, e dividir cartão é dizer que são o mesmo risco.
+O mapa de calor do Monitor de riscos mostra, no número ao lado da capital, a **máxima prevista**; e,
+na cor, **quanto ela está acima da média histórica daquele mês** na normal climatológica 1991–2020
+do Inmet, para a estação daquela capital.
 
-O conteúdo da ficha **não foi escrito por este projeto**: é reprodução das orientações da página
-"Ondas de Calor" do **Ministério da Saúde**
-(`gov.br/saude/pt-br/assuntos/saude-de-a-a-z/o/ondas-de-calor`), consultada e preservada como
-evidência em 01/10/2026. Dela vêm as três colunas: manter ambiente fresco e ajustar medicação sob
-orientação médica; beber água mesmo sem sede, evitar álcool e cafeína, roupas leves e claras,
-atividade ao ar livre nos horários frescos, alimentação leve; e os sinais de alerta — transpiração
-excessiva, fraqueza, tontura, náusea, dor de cabeça, cãibras e diarreia, com confusão, convulsão ou
-perda de consciência como emergência médica. Os grupos de atenção redobrada são os que o próprio
-Ministério nomeia.
+**Por que desvio e não temperatura.** 35 °C é normal em Cuiabá e muito quente em Porto Alegre.
+Pintar pela temperatura absoluta fazia o mapa dizer "está quente no Centro-Oeste" todos os dias do
+ano — o que é geografia, não notícia. O desvio contra a normal da própria capital responde à
+pergunta que importa: está mais quente do que o normal **ali**?
 
-A regra que vale aqui é a de sempre nesta página: **o MARÉ reproduz o órgão, com fonte e data, e não
-redige orientação de saúde.** Onde a orientação oficial mudar, a ficha muda com ela.
+**A fonte e a cadência.** Normal Climatológica do Brasil 1991–2020, temperatura máxima mensal
+(Inmet), coletada **uma vez** e preservada com resumo criptográfico. A cadência é por documento: só
+reprocessa quando o arquivo muda, porque uma normal só muda quando o órgão publica outra.
+
+**O casamento entre estação e capital é declarado, não adivinhado.** A planilha traz o nome da
+*estação*, que nem sempre é o do município. Três capitais entram por equivalência escrita no código,
+porque a estação é a da capital e traz o bairro no nome: Salvador (Ondina), Recife (Curado) e São
+Paulo (Mirante de Santana). Onde mais de uma estação casa com a mesma capital, fica a que tem mais
+meses com valor.
+
+**Três capitais ficam sem normal, e isso é lacuna declarada, não falha.** Elas aparecem no mapa como
+**anel vazio**, nunca como estimativa:
+
+- **Campo Grande (MS)** — a planilha traz apenas Paranaíba no estado.
+- **Porto Velho (RO)** — não há estação de Rondônia na planilha.
+- **Rio de Janeiro (RJ)** — há "Alto da Boa Vista", que fica dentro do município, mas é estação de
+  floresta de montanha, acima de 300 m: a normal dela não é a da cidade, e usá-la como se fosse
+  produziria um desvio errado todos os dias. Preferimos a lacuna ao número bonito.
+
+O mês usado é o da **previsão**, não o do dia da consulta — a previsão pode cair no primeiro dia do
+mês seguinte. Capital sem máxima prevista **ou** sem normal publicada fica sem desvio: os dois casos
+são ausência, e a legenda os nomeia juntos.

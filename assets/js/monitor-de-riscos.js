@@ -3,7 +3,7 @@
    Regra desta página: nenhum valor é calculado aqui. Tudo vem de
    data/sinais_risco.json, escrito por coletar_sinais_risco.py, com fonte,
    documento e data. Fonte não coletada vira lacuna declarada na tela. */
-let BR_GEOJSON, SINAIS, MARE, ALERTAS, CLIMA, FOCOS;
+let BR_GEOJSON, SINAIS, MARE, ALERTAS, CLIMA, FOCOS, NORMAIS;   // NORMAIS: normais do Inmet, para o DESVIO do mapa de calor
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
 const NEUTRA = MonitorMapas.cor('sem-dado');           // estado sem dado coletado
 const TIPO_COR = {estiagem:MonitorMapas.PALETA.risco.seca, chuvas:MonitorMapas.PALETA.risco.chuvas, incendios:MonitorMapas.PALETA.risco.fogo, misto:MonitorMapas.PALETA.risco.multi, sem_sinal:MonitorMapas.PALETA.risco.sem_sinal};   // paleta semântica única
@@ -31,6 +31,7 @@ async function __load(){
   /* 29/09/2026: focos do INPE agregados em grade, em arquivo próprio — são milhares de células
      e não cabem no arquivo de sinais, que toda página da seção carrega inteiro. Ausente, o mapa
      diz que não houve coleta; nunca desenha zero. */
+  NORMAIS = await fetch('data/normais_capitais.json').then(r => r.ok ? r.json() : null).catch(() => null);
   FOCOS = await fetch('data/focos_pontos.json').then(r => r.ok ? r.json() : null).catch(() => null);
   window.__refMunicipios = await fetch('data/municipios_ibge_referencia.json').then(r => r.ok ? r.json() : []).catch(() => []);
   __init();
@@ -298,38 +299,67 @@ const temps = UFS.map(tmaxDe).filter(v => v != null);
 const tMin = temps.length ? Math.min(...temps) : 0, tMax = temps.length ? Math.max(...temps) : 1;
 // 30/09/2026 (item 8): a rampa aprovada do calor, em quatro degraus. O ESTADO NUNCA É PINTADO —
 // o dado é da capital, e pintar a UF faria o leitor ler como se valesse para o território inteiro.
-const escalaTemp = d3.scaleLinear()
-  .domain([tMin, tMin + (tMax - tMin) / 3, tMin + 2 * (tMax - tMin) / 3, tMax])
-  .range(ATM.calor.rampa).clamp(true);
+/* 01/10/2026 (R10): a cor passa a ser o DESVIO contra a normal 1991–2020 do Inmet, e não a
+   temperatura absoluta. 35 °C é normal em Cuiabá e muito quente em Porto Alegre; pintar pela
+   temperatura fazia o mapa dizer "está quente no Centro-Oeste" todo dia do ano, que é geografia e
+   não notícia. Os degraus são os da legenda aprovada: normal · até 2 · 2 a 4 · mais de 4.
+
+   Capital sem normal publicada fica SEM desvio — anel vazio, nunca estimativa. É por isso que
+   `desvioDe` devolve null em vez de zero: zero significaria "está na média", que é uma afirmação,
+   e nós não a temos. */
+const normalDe = uf => {
+  const c = (NORMAIS && NORMAIS.capitais) ? NORMAIS.capitais[uf] : null;
+  if (!c || !Array.isArray(c.tmax)) return null;
+  // O mês da PREVISÃO, não o de hoje: a previsão pode ser do primeiro dia do mês seguinte.
+  const d = ((temp(uf) || {}).data || '').match(/(\d{2})\/(\d{2})/);
+  const mes = d ? Number(d[2]) : (new Date()).getMonth() + 1;
+  const v = c.tmax[mes - 1];
+  return typeof v === 'number' ? v : null;
+};
+const desvioDe = uf => {
+  const t = tmaxDe(uf), n = normalDe(uf);
+  return (t == null || n == null) ? null : Math.round((t - n) * 10) / 10;
+};
+const DEGRAUS_DESVIO = [0, 2, 4];
+const escalaTemp = d => {
+  const v = desvioDe(d && d.uf ? d.uf : d);
+  if (v == null) return ATM.calor.fundo;
+  return ATM.calor.rampa[DEGRAUS_DESVIO.filter(l => v > l).length];
+};
 const rotuloTemp = uf => { const t = temp(uf); if (!t) return 'Aguardando a primeira coleta desta fonte';
+  const dv = desvioDe(uf), nm = normalDe(uf);
+  const linhaDesvio = dv == null
+    ? '<br>Sem normal publicada para esta capital: o desvio não é calculado'
+    : '<br>' + (dv >= 0 ? '+' : '') + String(dv).replace('.', ',') + ' °C em relação à média de '
+      + String(nm).replace('.', ',') + ' °C do mês (normal 1991–2020, Inmet)';
   return esc(t.capital || uf) + '<br>M\u00e1xima prevista: ' + (t.tmax != null ? t.tmax + ' \u00b0C' : 'sem valor')
+    + linhaDesvio
     + (t.tmin != null ? '<br>M\u00ednima prevista: ' + t.tmin + ' \u00b0C' : '')
     + (t.resumo ? '<br>' + esc(t.resumo) : '') + '<br>' + esc(t.data || '') + ' \u00b7 ' + esc(t.natureza || ''); };
 // o mapa base fica NEUTRO: ele é só o contorno onde os pontos se apoiam
 desenharMapa('mapaTemperatura', 'legTemperatura', () => ATM.calor.uf, rotuloTemp,
   // Nenhum degrau sem rótulo: informação que existe só por cor não existe para quem não a
   // distingue. Cada degrau recebe a faixa de temperatura que ele cobre, lida do próprio dado.
-  (function(){
-    const t = n => n.toFixed(0) + ' \u00b0C';
-    const passo = (tMax - tMin) / 3;
-    return [
-      {cor: ATM.calor.rampa[0], rotulo: temps.length ? 'até ' + t(tMin + passo) : 'menor'},
-      {cor: ATM.calor.rampa[1], rotulo: temps.length ? t(tMin + passo) + ' a ' + t(tMin + 2 * passo) : 'baixa'},
-      {cor: ATM.calor.rampa[2], rotulo: temps.length ? t(tMin + 2 * passo) + ' a ' + t(tMax) : 'alta'},
-      {cor: ATM.calor.rampa[3], rotulo: temps.length ? t(tMax) + ' ou mais' : 'maior'},
-      {cor: ATM.calor.fundo, rotulo: 'Capital sem dado na consulta'}];
-  })(), 'calor');
+  // Legenda aprovada do R10: ela nomeia o DESVIO, não a temperatura.
+  [{cor: ATM.calor.rampa[0], rotulo: 'Normal'},
+   {cor: ATM.calor.rampa[1], rotulo: 'Até 2 °C acima'},
+   {cor: ATM.calor.rampa[2], rotulo: '2 a 4 °C acima'},
+   {cor: ATM.calor.rampa[3], rotulo: 'Mais de 4 °C acima'},
+   {cor: ATM.calor.fundo, rotulo: 'Sem dado'}], 'calor');
 MonitorMapas.pontos(__ctx(), 'mapaTemperatura',
-  UFS.filter(uf => coordCapital[uf] && tmaxDe(uf) != null)
+  UFS.filter(uf => coordCapital[uf] && desvioDe(uf) != null)
      .map(uf => ({uf, lat: coordCapital[uf].lat, lon: coordCapital[uf].lon, v: tmaxDe(uf)})),
   // F.5 (editoria, 30/09): UM ponto por capital, do mesmo tamanho para todas. O halo translúcido
   // proporcional ao desvio aparecia como "duplo círculo", com distâncias diferentes de uma capital
   // para outra — dois círculos com raios distintos leem-se como duas medidas, e é uma só. A cor diz
   // o desvio; o número ao lado diz a máxima prevista.
-  {r: () => 6, cor: d => escalaTemp(d.v), rotulo: d => rotuloTemp(d.uf), classe: 'pontosTemp'});
+  {r: () => 6, cor: d => escalaTemp(d), rotulo: d => rotuloTemp(d.uf), classe: 'pontosTemp'});
 // Capital SEM dado: anel vazio no ponto da capital — nunca cor no estado, nunca ponto ausente.
 // Ausência de dado e dado baixo não podem se parecer, e o estado em branco não é "sem calor".
-anelVazio('mapaTemperatura', UFS.filter(uf => coordCapital[uf] && tmaxDe(uf) == null), ATM.calor,
+// Sem máxima prevista OU sem normal publicada: anel vazio. Os dois casos são ausência, e a
+// legenda os nomeia junto — a leitora não precisa saber qual dos dois faltou para entender que
+// aquela capital não tem desvio.
+anelVazio('mapaTemperatura', UFS.filter(uf => coordCapital[uf] && desvioDe(uf) == null), ATM.calor,
           'anelTemp');
 credito('boxTemperatura', 'inmet_previsao_capitais');
 // A visão MUNICIPAL da temperatura continua vindo do Open-Meteo (clima_municipios.json): o INMET
