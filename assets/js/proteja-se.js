@@ -313,3 +313,40 @@ function gerarImagemGuia(){
 }
 { const b = document.getElementById('btnImagemGuia'); if (b) b.addEventListener('click', gerarImagemGuia); }
 
+/* ===== Escolha do risco: uma ficha por vez (30/09/2026, item 10.3) =====
+   A página chega do servidor com as QUATRO fichas visíveis — quem não executa script lê tudo,
+   empilhado, sem perder nada. É este bloco que esconde três delas e liga as abas; se ele não
+   rodar, a página continua inteira, que é o contrário de uma aba quebrada que esconde conteúdo.
+
+   Acessibilidade: `tablist`/`tab`/`tabpanel` com `aria-selected`, setas para andar entre as abas,
+   Home e End para as pontas, e o foco acompanha a seleção. */
+(function abasDeRisco(){
+  const lista = document.getElementById('riscoEscolha');
+  if (!lista) return;
+  const abas = [...lista.querySelectorAll('[role="tab"]')];
+  const painelDe = aba => document.getElementById(aba.getAttribute('aria-controls'));
+  if (!abas.length || abas.some(a => !painelDe(a))) return;   // marcação incompleta: não mexe
+
+  function mostrar(aba, mover){
+    abas.forEach(a => {
+      const sel = a === aba;
+      a.setAttribute('aria-selected', sel ? 'true' : 'false');
+      a.tabIndex = sel ? 0 : -1;
+      painelDe(a).hidden = !sel;
+    });
+    if (mover) aba.focus();
+  }
+
+  abas.forEach(aba => {
+    aba.addEventListener('click', () => mostrar(aba, false));
+    aba.addEventListener('keydown', ev => {
+      const i = abas.indexOf(aba);
+      const destino = ev.key === 'ArrowRight' || ev.key === 'ArrowDown' ? abas[(i + 1) % abas.length]
+                    : ev.key === 'ArrowLeft' || ev.key === 'ArrowUp' ? abas[(i - 1 + abas.length) % abas.length]
+                    : ev.key === 'Home' ? abas[0]
+                    : ev.key === 'End' ? abas[abas.length - 1] : null;
+      if (destino) { ev.preventDefault(); mostrar(destino, true); }
+    });
+  });
+  mostrar(abas.find(a => a.getAttribute('aria-selected') === 'true') || abas[0], false);
+})();

@@ -1702,3 +1702,22 @@ em 30/09/2026: a escada oficial do Monitor de Secas da ANA ("Fraca · Moderada �
 Excepcional" — "grave" ali é o nome da categoria S2, não juízo do MARÉ); "pior hora do dia", que é a
 descrição do que o índice europeu publica; e a leitura da qualidade do ar, de três frases, que
 explica por que a escala é europeia. As exceções são das frases exatas, e somem se o texto mudar.
+
+
+## 59. Ficha de calor extremo: a fonte (01/10/2026)
+
+O Proteja-se passou a ter ficha própria de **calor extremo**, separada da de estiagem — até aqui as
+duas dividiam um cartão, e dividir cartão é dizer que são o mesmo risco.
+
+O conteúdo da ficha **não foi escrito por este projeto**: é reprodução das orientações da página
+"Ondas de Calor" do **Ministério da Saúde**
+(`gov.br/saude/pt-br/assuntos/saude-de-a-a-z/o/ondas-de-calor`), consultada e preservada como
+evidência em 01/10/2026. Dela vêm as três colunas: manter ambiente fresco e ajustar medicação sob
+orientação médica; beber água mesmo sem sede, evitar álcool e cafeína, roupas leves e claras,
+atividade ao ar livre nos horários frescos, alimentação leve; e os sinais de alerta — transpiração
+excessiva, fraqueza, tontura, náusea, dor de cabeça, cãibras e diarreia, com confusão, convulsão ou
+perda de consciência como emergência médica. Os grupos de atenção redobrada são os que o próprio
+Ministério nomeia.
+
+A regra que vale aqui é a de sempre nesta página: **o MARÉ reproduz o órgão, com fonte e data, e não
+redige orientação de saúde.** Onde a orientação oficial mudar, a ficha muda com ela.
