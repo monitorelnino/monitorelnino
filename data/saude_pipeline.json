@@ -999,7 +999,43 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-01",
+   "script": "preservar_evidencias.py",
+   "inicio": "2026-10-01T20:08:03",
+   "duracao_s": 4.1,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-01",
+   "script": "preservar_evidencias.py",
+   "inicio": "2026-10-01T20:08:07",
+   "duracao_s": 5.0,
+   "itens": null,
+   "status": "erro",
+   "erro": "AttributeError: module 'datetime' has no attribute 'hoje_editorial'"
+  },
+  {
+   "data": "2026-10-01",
+   "script": "preservar_evidencias.py",
+   "inicio": "2026-10-01T20:08:12",
+   "duracao_s": 0.4,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-01",
+   "script": "scripts/preservar_textos_integrais.py",
+   "inicio": "2026-10-01T20:08:12",
+   "duracao_s": 1.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
   }
  ],
- "atualizado_em": "2026-10-01T20:06:13"
+ "atualizado_em": "2026-10-01T20:08:13"
 }
