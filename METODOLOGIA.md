@@ -2086,3 +2086,56 @@ isso está escrito no arquivo: sobre conjunto vazio ela declara a lacuna em vez 
 Medido em MT: mediana 21,3 · p05 6,7 · p95 37,5; e o único degrau cuja alteração move a faixa é
 `ELAB+15`.
 
+## 69. A bateria dos 27 rodou, e o juiz recusou os 27 — por uma regra escrita para outro índice (01/10/2026)
+
+Pedido da editoria de 01/10, tarde: fechar os 27 estados do MARÉ Saúde e trocar para a v0.4 no
+mesmo dia. O que foi executado, e onde parou.
+
+**A bateria rodou, e rodou inteira.** `coletar_saude_estadual.py` passou pelas 27 UFs na Action, com
+o SearXNG do job no ar: **78 a 80 resultados brutos por UF, nenhum `motor_sem_resposta`**. Motor
+saudável nas 27 — a condição que o handover pôs para prosseguir. Saíram **73 pistas**, das quais
+**27 em domínio oficial**. As consultas que mais produziram foram `arbovirose` (37) e
+`plancon_elnino` (16); `sala_situacao` devolveu 4 e `coe` nenhuma.
+
+**O juiz recusou as 27, e o motivo é um só.** `julgar_saude.py` baixou cada documento, extraiu o
+texto (PDF ou HTML) e aplicou as sete etapas de `juiz.py` com `eh_estadual=True`:
+
+| motivo da recusa | n |
+|---|---|
+| `autoridade_nao_confirmada` | **14** |
+| documento não baixado (404, 503, leitura incompleta) | 6 |
+| `resposta` (o ato não é ex-ante) | 3 |
+| `citacao_incompleta` | 2 |
+| `executivo_pendente` (aprovação por colegiado) | 1 |
+| `natureza_duvidosa` | 1 |
+
+Dos 6 que não baixaram, **quatro são endereços malformados que o metabuscador devolveu**
+(`gov.br/saude./…`, `gov.br/saude-/…`, `gov.br/saude-de-a-a-z-1/…`): não são documentos, são ruído
+de busca. Dois são indisponibilidade real da fonte (503 da Agência Minas, 404 numa notícia da
+SES-MG).
+
+**A recusa dominante não é defeito do coletor nem dos documentos.** `etapa3_autoridade` exige
+autoridade do Executivo **e** fórmula de promulgação ou texto articulado. O plano de contingência
+estadual de saúde, na maioria dos estados, é um **documento técnico**: capa, órgão, ano, sumário —
+e o ato que o aprova é outro papel, quando existe. A etapa 2 já tem exceção declarada para isso
+(`eh_plano_tecnico`), e este juiz a liga por regra: plano sem tipo e número de ato no texto. A etapa
+3 **não tem** exceção equivalente, e a razão está escrita nela própria: ela diz que instrumento do
+SUS aprovado em colegiado "vive na camada observada de saúde — e não pontua no MARÉ Legal". É uma
+regra do **MARÉ Legal**, aplicada aqui a um índice que a própria metodologia declara separado e de
+peso zero.
+
+**O ponto que isto expõe.** Os **20 estados verificados em setembro** repousam exatamente nesse tipo
+de documento — planos de arboviroses em portal de SES, lidos e classificados à mão, com
+`natureza_doc` e justificativa registradas. Ou seja: a prática aceita o documento técnico quando uma
+pessoa o lê, e o juiz automático não o aceita. As duas coisas não podem continuar valendo ao mesmo
+tempo sem que fique escrito qual é a régua. **Decidir isso é da editoria** (§12: mudança de regra,
+régua ou categoria do índice), e por isso nada foi afrouxado aqui: as 27 pistas ficaram na fila com
+o veredito e o motivo gravados, à vista.
+
+**O que não foi feito, e por quê.** (a) Marcar "não localizado" exigiria os quatro canais do
+handover rodados por UF; rodou um — a busca aberta. (b) A troca para a v0.4 exige a coordenação, e a
+coordenação segue verificada em **1 de 27** (MT, §68): trocar hoje somaria um terço de zero em 26
+estados, que é afirmar ausência de sala de situação por ausência de prova. (c) Na imprensa, o número
+do MARÉ Saúde segue com o rótulo "média dos {n} estados verificados", que é o que a regra de 01/10
+manda enquanto não houver 27 — hoje são **21**.
+
