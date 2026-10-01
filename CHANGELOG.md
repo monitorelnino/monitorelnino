@@ -9,6 +9,15 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-01 · #490 · Imprensa descobre, nunca registra: Curitiba corrigida, errata C29
+
+A auditoria pedida pela editoria encontrou um registro pontuável apoiado só em notícia —
+Curitiba (PR) como `plano`, com URL de jornal. O documento primário é outro: Decreto nº 1.141,
+de 17/07/2026, que institui comitê, não plano. O registro passa a `estrutura`, com o diário
+municipal como fonte. PR 67,4 → 64,6; nacional 45,3 → 45,2; nenhuma UF muda de faixa. Errata
+pública C29 em `data/congelamento_defeso.json` e portão novo
+(`scripts/verificar_imprensa_nao_registra.py`).
+
 ## 2026-10-01 · #489 · Paridade do Querido Diário: o portão comparava duas perguntas
 
 O portão media 527 contra 524 e chamava de divergência uma diferença de definição: um arquivo conta

@@ -187,6 +187,12 @@ jobs:
           # de coleta, não um fato.
           python3 scripts/verificar_paridade_cobertura_qd.py
           python3 scripts/verificar_paridade_cobertura_qd.py --autoteste
+          # Errata C29 (01/10/2026): imprensa DESCOBRE, nunca REGISTRA. A auditoria pedida
+          # pela editoria encontrou Curitiba pontuando como `plano` com URL de jornal e fonte
+          # "via imprensa regional" — 2,8 pontos de PR apoiados em notícia, desfeitos por errata
+          # pública. A pista de notícia é legítima; o registro que pontua tem de apontar para o
+          # documento primário.
+          python3 scripts/verificar_imprensa_nao_registra.py
           # §283 (28/09/2026): frescor — compara o que foi coletado com o que foi publicado.
           # O autoteste é offline e puro; o vigia com rede vive em verificar_publicado.yml.
           python3 scripts/frescor.py --autoteste
