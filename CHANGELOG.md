@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-02 · #524 · Recuperação do canal 2 desde 29/06, e contexto por termo
+
+Edições do ciclo baixadas e indexadas: 52 na Paraíba e 68 no Mato Grosso do Sul, de 70 dias úteis. Termo genérico passou a exigir contexto do ciclo — "plano de contingência do sistema E-TFD" não é pista de preparação ao El Niño. O índice de ocorrências ficou com cinco datas reais, e o registro por edição espelha o índice. Em `coletar_edicoes_doe.py`, `data/doe_edicoes/`.
+
 ## 2026-10-02 · #523 · Localizador: do mais novo para o mais velho
 
 Onde o nome do arquivo pede o número da edição, o localizador percorre as datas do mais novo para o mais velho: a âncora de cada data passa a ser a vizinha, e a deriva por passo é de uma ou duas edições. Da outra ordem, a janela não alcançava dois meses de deriva e o Mato Grosso do Sul dava 404 em todas as datas. Em `coletar_edicoes_doe.py`.
