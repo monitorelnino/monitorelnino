@@ -466,7 +466,11 @@ const INDICADORES_RESP = {
   // Saúde, sem estimativa de dados recentes — por isso também sai o "nowcasting".
   srag: {rotulo: 'síndrome respiratória grave', eixo: 'casos · Brasil',
          fonte: ['SIVEP-Gripe (Ministério da Saúde)'], dados: () => SRAG,
-         motivo: 'A série do SIVEP-Gripe ainda não foi coletada até o corte.'},
+         motivo: 'A série do SIVEP-Gripe ainda não foi coletada até o corte.',
+         // A fonte primária NÃO publica nowcasting: as últimas semanas são parciais (valor
+         // bruto, atraso de notificação), e é isso que a segunda barra diz — mesmo tratamento
+         // da série de diarreicas, pela mesma razão.
+         segunda: 'parciais (últimas semanas — sem estimativa)', chaveSegunda: 'parcial'},
   // 01/10/2026: a fonte da síndrome gripal passa a ser a PRIMÁRIA (e-SUS Notifica). O motivo
   // da lacuna diz o que foi medido em 01/10: as duas rotas que o portal publica recusam
   // acesso automatizado, e o conjunto por ano vai de 2020 a 2024 — sem o ano do ciclo.
@@ -509,7 +513,13 @@ function renderSerieNacional(cfg, ids){
       {type: 'line', label: 'mediana 2019–2025', data: labels.map(w => (canal[w] || {}).mediana ?? null), borderColor: MonitorMapas.PALETA.anos.canal, borderWidth: 2, pointRadius: 0, order: 1},
       {type: 'line', label: 'p90', data: labels.map(w => (canal[w] || {}).p90 ?? null), borderColor: MonitorMapas.PALETA.anos.p90, borderWidth: 1.5, pointRadius: 0, order: 1}]},
     options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {x: {ticks: {maxTicksLimit: 13}}, y: {beginAtZero: true, title: {display: true, text: cfg.eixo}}}}});
-  MonitorMapas.legenda(ids.leg, [{cor: MonitorMapas.PALETA.anos['2026'] || MonitorMapas.PALETA.anos.canal, rotulo: 'consolidado'}, {cor: MonitorMapas.PALETA.anos['2024'], rotulo: cfg.segunda}, {cor: MonitorMapas.PALETA.anos.canal, rotulo: 'mediana 2019–2025'}, {cor: MonitorMapas.PALETA.anos.p90, rotulo: 'p90'}]);
+  // Entrada de legenda sem rótulo é quadradinho de cor sem nome: a legenda deixa de explicar e
+  // passa a decorar. Indicador sem segunda barra simplesmente não a declara.
+  MonitorMapas.legenda(ids.leg, [
+    {cor: MonitorMapas.PALETA.anos['2026'] || MonitorMapas.PALETA.anos.canal, rotulo: 'consolidado'},
+    ...(cfg.segunda ? [{cor: MonitorMapas.PALETA.anos['2024'], rotulo: cfg.segunda}] : []),
+    {cor: MonitorMapas.PALETA.anos.canal, rotulo: 'mediana 2019–2025'},
+    {cor: MonitorMapas.PALETA.anos.p90, rotulo: 'p90'}]);
   ids.credito({fontes: cfg.fonte, data: D.gerado_em, url: D.fonte});
 }
 function renderSRAG(ind){
