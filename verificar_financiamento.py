@@ -106,7 +106,9 @@ def _com_populacao_errada(despesa: dict) -> dict:
 def checar(html, rotas, serie, poruf, motor, arquivos_fin: dict, despesa=None, censo=None) -> list:
     e = []
     if CHAVE.search(html) or CHAVE.search(motor) or any(CHAVE.search(t) for t in arquivos_fin.values()): e.append("(a) chave de API em código ou dados")
-    for cid in ["boxRede", "boxPreventivoSetor", "boxRSGrafico"]:   # 15/09/2026: figuras vivas na página (Fundo estadual, contadores, dinheiro e resposta saíram a pedido da editoria)   # boxFontesMonit/boxConsultas vivem em pesquisadores.html (07/09/2026); boxPorHab retirado do HTML em 13/09/2026 (auditoria de visualizações) — sem cobertura mínima (1/8 rotas), JS mantido desativado; boxPainel, boxCompromissos, boxFinance, boxSerie, boxRotaMPs, boxMpsBrUf, boxMpsUf e boxMpsUfBarras migraram para pesquisadores.html em 13/09/2026 (proposta de enxugamento, Manus AI)
+    # 02/10/2026 (contrato de layout): o diagrama das rotas por setor saiu da pagina, e com ele
+    # #boxPreventivoSetor. As figuras vivas que este portao cobra sao as que continuam na tela.
+    for cid in ["boxRede", "boxRSGrafico"]:
         if f"fonteFigura('{cid}'" not in html: e.append(f"(b) figura sem crédito: #{cid}")
     ids = [r["id"] for r in rotas["rotas"]]
     for s in serie.get("semanas", []):
@@ -186,7 +188,7 @@ def checar(html, rotas, serie, poruf, motor, arquivos_fin: dict, despesa=None, c
     if any(not em_bloco_de_prova(m.start()) for m in re.finditer(r"<table\b", html_sem_js)):
         e.append("(j) financiamento.html contém <table> fora de bloco de prova — a prosa da página "
                  "não tem tabelas (decisão editorial de 15/09/2026)")
-    if 'id="dlPreventivoSetor"' not in html: e.append("(k) figura do dinheiro preventivo sem alternativa <dl>")
+    # (k) a alternativa em lista do diagrama saiu com o diagrama (contrato de layout, 02/10/2026).
     if "preventivo_setores" in motor: e.append("(m) motor do índice lê preventivo_setores.json")
     d = serie.get("defeso", {})
     if not (d.get("inicio") == "2026-07-04" and d.get("fim") == "2026-10-25" and "73" in str(d.get("base", ""))): e.append("(g) faixa do defeso ausente ou incompleta na série")
