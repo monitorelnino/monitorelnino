@@ -91,7 +91,7 @@ PADROES = {
     "MS": {"padrao": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/{ano}/{mm}/{dd}/DO{edicao}_{dd}_{mm}_{ano}.pdf",
            "listagem": "https://www.spdo.ms.gov.br/diariodoe/",
            "ancoras": {"2026-09-03": 12270, "2026-10-02": 12293},
-           "janela": 8,
+           "janela": 12,
            "nota": "nome do arquivo pelo número da edição; âncoras conferidas em 02/10/2026"},
     # PDF baixável, visto pela central. O portal serve por data.
     # MEDIDO em 02/10/2026 e RETIRADO: o endereço por data respondia 200 em todas as 70 datas,
@@ -358,6 +358,11 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
         if achado and (item or {}).get("decisao") == "lida":
             ancoras_vivas[data_lida] = int(achado.group(1))
     datas = [d for d in datas_do_periodo(desde, ate) if d not in edicoes][:TETO_EDICOES]
+    # Quando o nome do arquivo pede o NÚMERO da edição, percorre-se do mais novo para o mais velho:
+    # a âncora de cada data passa a ser a vizinha, e a deriva por passo é de uma ou duas edições.
+    # Da outra ordem, a janela de oito não alcançava dois meses de deriva e tudo dava 404.
+    if "{edicao}" in p["padrao"]:
+        datas = sorted(datas, reverse=True)
     lidas = com_termo = 0
     vistos = {e.get("impressao") for e in edicoes.values()
               if isinstance(e, dict) and e.get("impressao")}
@@ -462,6 +467,8 @@ def _autoteste() -> int:
     d = datas_do_periodo("2026-06-29", "2026-07-05")
     ok("o período é por dia útil", d == ["2026-06-29", "2026-06-30", "2026-07-01",
                                              "2026-07-02", "2026-07-03"])
+    ok("o período sai em ordem crescente, e quem precisa do número inverte no laço",
+       datas_do_periodo("2026-09-28", "2026-10-02")[0] == "2026-09-28")
     ok("período de um dia útil devolve um dia", datas_do_periodo("2026-06-29", "2026-06-29") == ["2026-06-29"])
     ok("sábado sozinho devolve vazio", datas_do_periodo("2026-07-04", "2026-07-04") == [])
 
@@ -538,7 +545,7 @@ def _autoteste() -> int:
        "aplicar" not in nomes and "julgar_saude" not in nomes)
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
-          else "✓ AUTOTESTE OK — 31 casos, sem rede e sem escrita.")
+          else "✓ AUTOTESTE OK — 32 casos, sem rede e sem escrita.")
     return 1 if falhas else 0
 
 

@@ -3227,6 +3227,19 @@ viraria "consultado sem achado" em 70 datas. Prova falsa do pior tipo, porque pa
 feito. A régua é: menos de 20 KB, menos de duas páginas, ou o **mesmo arquivo em outra data** (por
 hash) não é edição. O padrão do AP foi retirado, com o motivo gravado.
 
+### 94.1b A ordem de varredura, onde o nome do arquivo pede o número da edição
+
+O arquivo do diário do Mato Grosso do Sul é nomeado pelo **número da edição**, não pela data, e o
+número vive numa listagem que mostra apenas as últimas. Para o período inteiro, o número é
+estimado por dia útil a partir de âncoras conferidas e **confirmado pela própria fonte**: o nome
+do arquivo carrega a data, então número errado dá 404.
+
+A primeira execução deu 404 em todas as datas de junho e julho, e o motivo é de método: o estado
+publica edição extra, e a deriva acumulada em dois meses saiu da janela de tentativas. A correção
+é percorrer as datas **do mais novo para o mais velho** — assim a âncora de cada data é a
+vizinha, e a deriva por passo é de uma ou duas edições. Com isso, a primeira tentativa acerta na
+maioria das datas.
+
 ### 94.2 Sigla curta exige contexto
 
 A extração de texto do diário da Paraíba parte palavras na ligadura: "SOLUÇÕES" sai como "SOLU
