@@ -3192,3 +3192,97 @@ inflaria o número com estados que ninguém havia medido ainda.
 
 Enquanto a série tiver uma edição só, o cartão continua declarando — com o motivo certo, que agora
 é "a comparação começa na próxima edição", e não "a série está vazia".
+
+## 94. O canal 2 é baixar a edição, não buscar no diário (02/10/2026)
+
+Diretriz da central, e troca de método. O canal 2 do MARÉ Saúde era "busca no diário oficial do
+estado", e dois terços dos estados não oferecem busca — o §92 mediu isso unidade por unidade. Mas
+um diário pode não ter busca e publicar **todas as suas edições em PDF, por data**. Quem tem a
+edição tem o texto. Então o canal 2 passa a ser:
+
+> padrão de endereço por data → baixa o PDF da edição → extrai o texto → indexa no nosso lado
+
+e a campanha "imprensa → documento oficial" consome esse índice: a notícia cita a data, e o
+localizador entrega a edição daquela data. Sondar rota de busca está **encerrado**.
+
+Quem faz é `coletar_edicoes_doe.py`. Ele guarda, por unidade, o resumo de cada edição em
+`data/doe_edicoes/<UF>.json` e as ocorrências dos termos de saúde — com **trecho e página** — em
+`data/doe_ocorrencias.json`. Ele **não promove nada a registro**: promoção continua sendo do juiz,
+com documento primário lido.
+
+### 94.1 O vocabulário fechado de uma edição
+
+| decisão | o que significa |
+|---|---|
+| `lida` | edição baixada, com texto extraído |
+| `sem_edicao_na_data` | a fonte respondeu 404 naquela data (dia sem edição) |
+| `sem_texto_extraivel` | PDF digitalizado como imagem — **não** é "edição sem o termo" |
+| `nao_e_edicao` | arquivo servido com 200 que não é um diário |
+| `recusa` | 401, 403, 429, 451 — respeitada |
+
+**`nao_e_edicao` nasceu de uma medição.** No Amapá, o endereço por data respondeu 200 nas **70**
+datas do ciclo, sempre com o mesmo arquivo de 2.016 bytes e uma página: uma página de erro servida
+como PDF. Sem a régua, o localizador registraria 70 "edições lidas" e nenhuma com o termo — e isso
+viraria "consultado sem achado" em 70 datas. Prova falsa do pior tipo, porque parece trabalho
+feito. A régua é: menos de 20 KB, menos de duas páginas, ou o **mesmo arquivo em outra data** (por
+hash) não é edição. O padrão do AP foi retirado, com o motivo gravado.
+
+### 94.2 Sigla curta exige contexto
+
+A extração de texto do diário da Paraíba parte palavras na ligadura: "SOLUÇÕES" sai como "SOLU
+COES", "CONSTRUÇÕES" como "CONSTRU COES". Com isso, a sigla **COES** virava palavra solta no meio
+de tabelas de licitação, e o índice do ciclo saiu com 14 datas "com termo de saúde" das quais 12
+eram pregões. Fronteira de palavra não resolve; **contexto** resolve: sigla de duas a quatro letras
+só conta com saúde, emergência, situação, epidemia ou vigilância a menos de 200 caracteres. Depois
+da régua, a Paraíba tem **duas** datas reais no ciclo: 05/08 (abertura da Sala de Situação das
+Arboviroses) e 09/09 (a Portaria 764/2026).
+
+### 94.3 "Quatro canais consultados": definição fechada
+
+| canal | o que conta |
+|---|---|
+| 1 · busca aberta | motor saudável, consulta executada |
+| 2 · diário do estado | edições do período lidas pelo localizador **ou** verificação humana registrada com motivo técnico |
+| 3 · páginas SES/CIEVS/COE | páginas abertas (ou acesso humano registrado) |
+| 4 · fontes declaradas | cadastradas e visitadas |
+
+**Nenhuma unidade da federação fica "não verificada" por limitação técnica de terceiro
+documentada.** É a regra da Paraíba, generalizada: quando a edição não pode ser baixada por 401,
+403, captcha ou muro de robô, o localizador grava `canal2.modo = "verificacao_humana"` com o
+motivo medido, e aquele canal conta como consultado. O que não se faz é o contrário: contar como
+consultado o canal que ninguém rodou.
+
+### 94.4 O que o registro dos documentos já lidos provou sobre o juiz
+
+A central já havia localizado e lido quatro documentos, e a diretriz mandou registrá-los sem
+esperar a bateria. "Sem esperar a bateria" não é "digitar o resultado":
+`registrar_saude_central.py` **relê** o documento no endereço oficial e roda nele os
+classificadores do juiz. O que a central forneceu foi a **localização** — endereço, data, página.
+
+Isso expôs dois defeitos reais, corrigidos:
+
+1. **"grupo condutor" não estava no reconhecedor de estrutura de coordenação do juiz** — e é o
+   primeiro termo que a editoria lista. A Portaria 764/2026 da Paraíba, que cria o GC El Niño/PB
+   no âmbito da SES-PB, passava pelo juiz sem ser reconhecida: o degrau saía vazio com o ato na
+   mão.
+2. **Classificar sobre a página inteira herda o verbo do ato vizinho.** No diário do Mato Grosso
+   do Sul, a página da Resolução 1041/2026 trazia também uma resolução de recursos com a palavra
+   "prorrogado", e F1 saía "reativado" por causa de um ato que não era o medido. A regra passou a
+   ser: classifica-se no **recorte do ato**, e o sinal que o recorte não tem cai para a página
+   citada — com a base de cada degrau escrita na justificativa. (O caso oposto também foi medido:
+   no diário da Paraíba, de duas colunas, o texto extraído interleava as colunas e o recorte
+   cortava fora a competência de elaborar o plano.)
+
+Com isso, **PB e MS entraram com F1 = criado para o ciclo e F2 = secretaria nomeada com
+atribuição**, cada função com documento, data, página citada e hash da evidência — e a leitura da
+máquina coincidiu com a da central nos dois. PA e MT ficaram sem registro: o endereço do
+documento não foi localizado em fonte oficial consultável, e inventar endereço para fechar número
+é o que este projeto não faz.
+
+### 94.5 A coordenação exige as duas funções, e o gerador passou a exigir
+
+Na primeira execução com as duas funções, o Mato Grosso recebeu número com F1 permanente e F2
+nunca procurada — porque o gerador caía para a forma antiga quando F2 faltava. Isso publicaria um
+terço do índice medido pela metade do componente, contra o §91. Corrigido: sem as duas funções, a
+coordenação é **não verificada** e a unidade não recebe número, e a falta diz **qual** função
+falta. A v0.4 tem hoje duas unidades com número (PB e MS), e segue não publicada.

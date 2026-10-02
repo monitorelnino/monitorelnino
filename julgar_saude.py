@@ -57,8 +57,13 @@ FILA = "pistas_imprensa_saude.json"
 ALVO = "saude_uf.json"
 
 # A classificação do que o ato INSTITUI. Literal, lida no texto do próprio ato.
+# 02/10/2026: "grupo condutor" FALTAVA aqui, e e o primeiro termo que a editoria lista — foi o
+# que fez a Portaria 764/2026 da Paraiba, que cria o GC El Nino/PB no ambito da SES-PB, passar
+# pelo juiz sem ser reconhecida como estrutura de coordenacao. O defeito apareceu ao registrar o
+# documento que a central ja havia lido: o degrau saia vazio com o ato na mao.
 RE_COORDENACAO = re.compile(
     r"(sala\s+de\s+situa[çc][ãa]o|centro\s+de\s+opera[çc][õo]es\s+de\s+emerg[êe]ncia|\bCOES?\b"
+    r"|grupo\s+condutor|\bGC\s+El\s*Ni[ñn]o"
     r"|gabinete\s+de\s+crise|comit[êe]\s+(?:gestor|de\s+crise|de\s+enfrentamento))", re.I)
 RE_PLANO = re.compile(r"(plano\s+(?:estadual\s+)?(?:de\s+)?(?:conting[êe]ncia|prepara[çc][ãa]o|"
                       r"a[çc][ãa]o|enfrentamento|resposta))", re.I)
@@ -575,6 +580,16 @@ def autoteste() -> int:
         "F2: estrutura da própria saúde que integra a defesa civil cumpre a função":
             lambda: degrau_f2("Institui a Sala de Situação da SES, que será coordenada pela "
                               "secretaria e integrará a Defesa Civil estadual.")[0]
+                    == "NOMEADA_COM_ATRIBUICAO",
+        # O termo que faltava, com o ato real da Paraíba.
+        "grupo condutor é estrutura de coordenação":
+            lambda: o_que_institui("Fica criado o Grupo Condutor El Niño/PB") == {"coordenacao"},
+        "F1 do ato da Paraíba: criado para o ciclo":
+            lambda: degrau_coordenacao("Fica criado, no âmbito da Secretaria de Estado da Saúde, "
+                                       "o Grupo Condutor El Niño/PB", "03/09/2026")[0] == "CRIADO_CICLO",
+        "F2 do ato da Paraíba: a saúde integra a defesa civil, com atribuição":
+            lambda: degrau_f2("Grupo Condutor El Niño/PB. Art. 2º Compete coordenar. Art. 5º "
+                              "Composto por: Defesa Civil Estadual; AESA.")[0]
                     == "NOMEADA_COM_ATRIBUICAO",
         "F2: comitê que não nomeia a saúde não cumpre a função":
             lambda: degrau_f2("Institui o Comitê Intersetorial, composto por Casa Civil e "

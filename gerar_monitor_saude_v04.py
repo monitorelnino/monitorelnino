@@ -74,24 +74,56 @@ def componentes_por_uf(su: dict, cob: dict) -> dict:
         camada = u.get("camada") or "ciclo"
         degrau = v03.instrumento_v04(melhor.get("status"), melhor.get("doc") or "",
                                      melhor.get("data") or "", u.get("consist"))
-        coord = (u.get("coordenacao") or {}).get("status") or "NAO_VERIFICADO"
+        # 02/10/2026 (METODOLOGIA §91): a coordenação é construto formativo de DUAS funções —
+        # F1 comando interno da saúde, F2 ligação com a coordenação do estado —, com pesos iguais e
+        # média aritmética. Enquanto uma UF não tiver as duas classificadas, a coordenação dela
+        # fica NÃO VERIFICADA: somar metade de zero afirmaria que a secretaria não está na
+        # coordenação do estado porque ninguém procurou. A forma antiga (um status só) continua
+        # aceita para quem ainda não foi reclassificado.
+        co = u.get("coordenacao") or {}
+        f1 = (co.get("f1") or {}).get("status") or co.get("status") or "NAO_VERIFICADO"
+        f2 = (co.get("f2") or {}).get("status") or "NAO_VERIFICADO"
+        pontos_coord, p_f1, p_f2 = v03.coordenacao_v04(f1, f2)
+        # Sem as DUAS funções, a coordenação é NÃO VERIFICADA e a UF não recebe número. Cair para
+        # F1 sozinho publicaria um terço do índice medido pela metade do componente — e foi o que a
+        # primeira execução fez com o Mato Grosso, que tem F1 permanente e F2 nunca procurada.
+        coord = pontos_coord if pontos_coord is not None else "NAO_VERIFICADO"
         cobertura = (cob.get(uf) or {}).get("cobertura", 0.0)
         total, pi, pk, pc = v03.prontidao_v04(degrau, coord, cobertura, camada)
         faltam = []
         if degrau not in v03.INSTRUMENTO_SCORE_V04:
             faltam.append("instrumento estadual não verificado")
-        if coord not in v03.COORDENACAO_SCORE_V04:
-            faltam.append("coordenação em saúde não verificada")
+        if pontos_coord is None:
+            # Diz QUAL função falta: "coordenação não verificada" sem dizer qual manda procurar
+            # duas vezes a mesma coisa.
+            if f1 not in v03.F1_SCORE:
+                faltam.append("coordenação na saúde não verificada")
+            if f2 not in v03.F2_SCORE:
+                faltam.append("ligação com o governo do estado não verificada")
         if camada == "adaptacao":
             faltam.append("instrumento é plano de adaptação decenal, que não é do ciclo")
         saida[uf] = {
             "prontidao": total, "faixa": v03.faixa(total),
             "instrumento": {"degrau": degrau, "pontos": pi, "doc": melhor.get("doc"),
                             "data": melhor.get("data"), "url": melhor.get("url")},
-            "coordenacao": {"degrau": coord, "pontos": pk,
-                            "doc": (u.get("coordenacao") or {}).get("doc"),
-                            "data": (u.get("coordenacao") or {}).get("data"),
-                            "url": (u.get("coordenacao") or {}).get("url")},
+            "coordenacao": {
+                "pontos": pk, "agregacao": "média aritmética de pesos iguais",
+                # Cada função com o seu documento: é o que a ficha do estado mostra em duas linhas.
+                "f1": {"status": f1, "pontos": p_f1,
+                       "doc": ((co.get("f1") or co).get("doc")),
+                       "data": ((co.get("f1") or co).get("data")),
+                       "url": ((co.get("f1") or co).get("url")),
+                       "pagina_citada": ((co.get("f1") or co).get("pagina_citada"))},
+                "f2": {"status": f2, "pontos": p_f2,
+                       "doc": (co.get("f2") or {}).get("doc"),
+                       "data": (co.get("f2") or {}).get("data"),
+                       "url": (co.get("f2") or {}).get("url"),
+                       "atribuicao_citada": (co.get("f2") or {}).get("atribuicao_citada")},
+                # O campo antigo permanece, porque a página e o portão ainda o leem.
+                "degrau": f1,
+                "doc": ((co.get("f1") or co).get("doc")),
+                "data": ((co.get("f1") or co).get("data")),
+                "url": ((co.get("f1") or co).get("url"))},
             "cobertura": {"pontos": pc, "cobertura_pct": cobertura,
                           "planos_lidos": (cob.get(uf) or {}).get("planos_lidos"),
                           "planos_sem_leitura": (cob.get(uf) or {}).get("planos_sem_leitura")},

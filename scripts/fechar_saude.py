@@ -42,10 +42,19 @@ UFS = ("AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC 
 # vocabulário é o que os coletores escrevem — não se adivinha aqui.
 CANAIS = {
     "aberta": ("resultado(s) bruto(s)",),
-    "doe": ("DOE de", "rota de busca confirmada"),
+    # 02/10/2026 (diretriz da central): o canal 2 NÃO é "busca no diário" — é "baixar a edição".
+    # O localizador (`coletar_edicoes_doe.py`) escreve "canal 2 em <UF>: n edição(ões) lida(s)", e
+    # a busca no sítio, onde existir, continua valendo. Sondar rota de busca está encerrado.
+    "doe": ("DOE de", "rota de busca confirmada", "canal 2 em"),
     "canais": ("link(s) de canal", "fontes_uf.json", "secretaria"),
     "fontes": ("fonte(s) lida(s)", "nenhuma fonte"),
 }
+# Canal 2 por VERIFICAÇÃO HUMANA: quando a edição não pode ser baixada por limitação técnica de
+# terceiro documentada (401, 403, captcha, muro de robô), o localizador grava
+# `canal2.modo = "verificacao_humana"` com o motivo, e isso CONTA como canal consultado. É a regra
+# da Paraíba, generalizada pela editoria em 02/10/2026: nenhuma unidade da federação fica "não
+# verificada" para sempre por causa de uma limitação que não é nossa e que está escrita.
+MODOS_DE_CANAL2_QUE_CONTAM = ("padrao_por_data", "listagem", "verificacao_humana")
 # Decisões que contam como "o canal rodou e a fonte respondeu". `erro` nunca conta: é motor doente,
 # fonte fora do ar ou canal indisponível, e nenhuma das três autoriza falar de ausência.
 DECISOES_SAUDAVEIS = ("consultado sem achado", "pista", "registro")
@@ -84,6 +93,32 @@ def canais_por_uf(linhas) -> dict:
     return saida
 
 
+def canal2_do_localizador(registros: dict) -> dict:
+    """{uf: decisão do canal 2} a partir dos registros do localizador de edições. Função pura.
+
+    `registros` é {uf: conteúdo de data/doe_edicoes/<UF>.json}. Uma UF entra como consultada
+    quando o localizador leu edição no período **ou** quando gravou verificação humana com motivo.
+    Edição baixada e sem o termo é "consultado sem achado" — que é consulta, e não ausência de
+    documento.
+    """
+    fora = {}
+    for uf, r in (registros or {}).items():
+        if not isinstance(r, dict):
+            continue
+        c2 = r.get("canal2") or {}
+        modo = c2.get("modo")
+        if modo == "verificacao_humana" and c2.get("motivo"):
+            fora[uf] = "consultado sem achado"
+            continue
+        edicoes = (r.get("edicoes") or {}).values()
+        lidas = [e for e in edicoes if isinstance(e, dict) and e.get("decisao") == "lida"]
+        if not lidas:
+            continue
+        com_termo = any(e.get("termos_achados") for e in lidas)
+        fora[uf] = "registro" if com_termo else "consultado sem achado"
+    return fora
+
+
 def pode_dizer_nao_localizado(canais: dict) -> bool:
     """A UF pode ser marcada "não localizado"? Função pura.
 
@@ -92,6 +127,21 @@ def pode_dizer_nao_localizado(canais: dict) -> bool:
     if not canais:
         return False
     return all(canais.get(c) in DECISOES_SAUDAVEIS for c in CANAIS)
+
+
+def unir_canais(do_log: dict, do_localizador: dict) -> dict:
+    """Une o que o log diz com o que o localizador diz, para o canal 2. Função pura.
+
+    A união é por UF e **não rebaixa**: canal 2 com registro no localizador vale mesmo que a linha
+    do log daquela noite tenha ficado em `erro` — o que importa é se a edição foi lida, e ela foi.
+    """
+    ordem = {"erro": 0, "consultado sem achado": 1, "pista": 2, "registro": 3}
+    fora = {uf: dict(v) for uf, v in (do_log or {}).items()}
+    for uf, decisao in (do_localizador or {}).items():
+        atual = (fora.setdefault(uf, {})).get("doe")
+        if ordem.get(decisao, 0) >= ordem.get(atual, -1):
+            fora[uf]["doe"] = decisao
+    return fora
 
 
 def estado_das_ufs(monitor: dict, v04: dict, canais: dict) -> dict:
@@ -165,7 +215,13 @@ def main() -> int:
     sys.path.insert(0, str(RAIZ))
     from coletores_base import hoje_editorial  # noqa: PLC0415 — data editorial, não UTC
     hoje = hoje_editorial()
-    canais = canais_por_uf(linhas_do_log(mes_do_log(hoje)))
+    # O canal 2 tem duas fontes de verdade: a linha do log da bateria e o registro do localizador
+    # de edições. A segunda é a que vale desde 02/10/2026, e as duas se unem sem rebaixar.
+    registros = {}
+    for f in sorted((DATA / "doe_edicoes").glob("*.json")) if (DATA / "doe_edicoes").exists() else []:
+        registros[f.stem] = ler(f, {}) or {}
+    canais = unir_canais(canais_por_uf(linhas_do_log(mes_do_log(hoje))),
+                         canal2_do_localizador(registros))
     quadro = estado_das_ufs(monitor, v04, canais)
     for linha in relatorio(quadro):
         print(linha)

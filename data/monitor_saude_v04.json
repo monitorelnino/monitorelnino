@@ -1,8 +1,8 @@
 {
  "_governanca": "MARÉ Saúde v0.4, calculado EM PARALELO e NÃO publicado (01/10/2026). A página lê data/monitor_saude.json, que é a v0.3. A v0.4 foi aprovada pela editoria e a troca foi autorizada; ela espera a verificação do componente de COORDENAÇÃO EM SAÚDE, que nasceu nesta versão e não existe em nenhum dos 27 estados. Trocar antes disso exigiria somar um terço de zero — afirmar que o estado não tem sala de situação porque ninguém procurou — ou apagar o índice da página. Peso zero no MARÉ: nunca lido por recalcular_mare.py nem por gerar_monitor_saude.py.",
  "versao": "0.4",
- "gerado_em": "30/09/2026",
- "corte": "05/09/2026",
+ "gerado_em": "02/10/2026",
+ "corte": "02/10/2026",
  "metodo": {
   "pesos": {
    "instrumento": 0.3333333333333333,
@@ -46,8 +46,25 @@
     "url": null
    },
    "coordenacao": {
-    "degrau": "NAO_VERIFICADO",
     "pontos": null,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "atribuicao_citada": null
+    },
+    "degrau": "NAO_VERIFICADO",
     "doc": null,
     "data": null,
     "url": null
@@ -61,7 +78,8 @@
    "dias_apos_boletim_1": null,
    "sem_numero_porque": [
     "instrumento estadual não verificado",
-    "coordenação em saúde não verificada"
+    "coordenação na saúde não verificada",
+    "ligação com o governo do estado não verificada"
    ]
   },
   "AL": {
@@ -75,8 +93,25 @@
     "url": "https://www.saude.al.gov.br/secretaria-de-estado-da-saude-lanca-plano-de-enfrentamento-das-arboviroses-para-2026/"
    },
    "coordenacao": {
-    "degrau": "NAO_VERIFICADO",
     "pontos": null,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "atribuicao_citada": null
+    },
+    "degrau": "NAO_VERIFICADO",
     "doc": null,
     "data": null,
     "url": null
@@ -89,7 +124,8 @@
    },
    "dias_apos_boletim_1": -139,
    "sem_numero_porque": [
-    "coordenação em saúde não verificada"
+    "coordenação na saúde não verificada",
+    "ligação com o governo do estado não verificada"
    ]
   },
   "AM": {
@@ -103,8 +139,25 @@
     "url": "https://www.fvs.am.gov.br"
    },
    "coordenacao": {
-    "degrau": "NAO_VERIFICADO",
     "pontos": null,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "atribuicao_citada": null
+    },
+    "degrau": "NAO_VERIFICADO",
     "doc": null,
     "data": null,
     "url": null
@@ -117,7 +170,8 @@
    },
    "dias_apos_boletim_1": -21,
    "sem_numero_porque": [
-    "coordenação em saúde não verificada"
+    "coordenação na saúde não verificada",
+    "ligação com o governo do estado não verificada"
    ]
   },
   "AP": {
@@ -131,8 +185,25 @@
     "url": null
    },
    "coordenacao": {
-    "degrau": "NAO_VERIFICADO",
     "pontos": null,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "atribuicao_citada": null
+    },
+    "degrau": "NAO_VERIFICADO",
     "doc": null,
     "data": null,
     "url": null
@@ -146,7 +217,8 @@
    "dias_apos_boletim_1": null,
    "sem_numero_porque": [
     "instrumento estadual não verificado",
-    "coordenação em saúde não verificada"
+    "coordenação na saúde não verificada",
+    "ligação com o governo do estado não verificada"
    ]
   },
   "BA": {
@@ -160,8 +232,25 @@
     "url": "https://www.saude.ba.gov.br/wp-content/uploads/2025/05/Atualizacao-Plano-de-Contingencia-veesao-2025_20261.pdf"
    },
    "coordenacao": {
-    "degrau": "NAO_VERIFICADO",
     "pontos": null,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "atribuicao_citada": null
+    },
+    "degrau": "NAO_VERIFICADO",
     "doc": null,
     "data": null,
     "url": null
@@ -174,7 +263,8 @@
    },
    "dias_apos_boletim_1": null,
    "sem_numero_porque": [
-    "coordenação em saúde não verificada"
+    "coordenação na saúde não verificada",
+    "ligação com o governo do estado não verificada"
    ]
   },
   "CE": {
@@ -188,8 +278,25 @@
     "url": "https://www.saude.ce.gov.br/wp-content/uploads/sites/9/2022/02/2025_PLANO-ESTADUAL_ENFRENTAMENTO-ARBOVIROSES.pptx.pdf"
    },
    "coordenacao": {
-    "degrau": "NAO_VERIFICADO",
     "pontos": null,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "atribuicao_citada": null
+    },
+    "degrau": "NAO_VERIFICADO",
     "doc": null,
     "data": null,
     "url": null
@@ -202,7 +309,8 @@
    },
    "dias_apos_boletim_1": -363,
    "sem_numero_porque": [
-    "coordenação em saúde não verificada"
+    "coordenação na saúde não verificada",
+    "ligação com o governo do estado não verificada"
    ]
   },
   "DF": {
@@ -216,8 +324,25 @@
     "url": "https://www.saude.df.gov.br/documents/37101/0/Plano-de-enfrentamento-arboviroses_231222_161225+(1).pdf/3061d8c1-7d45-cb9b-7584-5f49f9f73aff?t=1703339749606"
    },
    "coordenacao": {
-    "degrau": "NAO_VERIFICADO",
     "pontos": null,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "atribuicao_citada": null
+    },
+    "degrau": "NAO_VERIFICADO",
     "doc": null,
     "data": null,
     "url": null
@@ -230,7 +355,8 @@
    },
    "dias_apos_boletim_1": -920,
    "sem_numero_porque": [
-    "coordenação em saúde não verificada"
+    "coordenação na saúde não verificada",
+    "ligação com o governo do estado não verificada"
    ]
   },
   "ES": {
@@ -244,8 +370,25 @@
     "url": "https://mosquito.saude.es.gov.br/Media/dengue/Notas-Tecnicas-Alertas-Epidemiologicos/Plano%20Conting%C3%AAncia%20Arboviroses.pdf"
    },
    "coordenacao": {
-    "degrau": "NAO_VERIFICADO",
     "pontos": null,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "atribuicao_citada": null
+    },
+    "degrau": "NAO_VERIFICADO",
     "doc": null,
     "data": null,
     "url": null
@@ -258,7 +401,8 @@
    },
    "dias_apos_boletim_1": null,
    "sem_numero_porque": [
-    "coordenação em saúde não verificada"
+    "coordenação na saúde não verificada",
+    "ligação com o governo do estado não verificada"
    ]
   },
   "GO": {
@@ -272,8 +416,25 @@
     "url": "https://www.saude.go.gov.br/unidades-de-saude/outras-unidades"
    },
    "coordenacao": {
-    "degrau": "NAO_VERIFICADO",
     "pontos": null,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "atribuicao_citada": null
+    },
+    "degrau": "NAO_VERIFICADO",
     "doc": null,
     "data": null,
     "url": null
@@ -286,7 +447,8 @@
    },
    "dias_apos_boletim_1": 59,
    "sem_numero_porque": [
-    "coordenação em saúde não verificada"
+    "coordenação na saúde não verificada",
+    "ligação com o governo do estado não verificada"
    ]
   },
   "MA": {
@@ -300,8 +462,25 @@
     "url": null
    },
    "coordenacao": {
-    "degrau": "NAO_VERIFICADO",
     "pontos": null,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "atribuicao_citada": null
+    },
+    "degrau": "NAO_VERIFICADO",
     "doc": null,
     "data": null,
     "url": null
@@ -315,7 +494,8 @@
    "dias_apos_boletim_1": null,
    "sem_numero_porque": [
     "instrumento estadual não verificado",
-    "coordenação em saúde não verificada"
+    "coordenação na saúde não verificada",
+    "ligação com o governo do estado não verificada"
    ]
   },
   "MG": {
@@ -329,8 +509,25 @@
     "url": "https://www.saude.mg.gov.br/wp-content/uploads/2026/08/Plano-de-Enfrentamento-ao-El-Nino-correcao.pdf"
    },
    "coordenacao": {
-    "degrau": "NAO_VERIFICADO",
     "pontos": null,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "atribuicao_citada": null
+    },
+    "degrau": "NAO_VERIFICADO",
     "doc": null,
     "data": null,
     "url": null
@@ -343,62 +540,97 @@
    },
    "dias_apos_boletim_1": 71,
    "sem_numero_porque": [
-    "coordenação em saúde não verificada"
+    "coordenação na saúde não verificada",
+    "ligação com o governo do estado não verificada"
    ]
   },
   "MS": {
-   "prontidao": null,
-   "faixa": "não verificado",
+   "prontidao": 43.3,
+   "faixa": "em construção",
    "instrumento": {
     "degrau": "VIG",
-    "pontos": null,
+    "pontos": 30,
     "doc": "Plano de Contingência Estadual Arboviroses 2025-2026 (guias e manuais da SES)",
     "data": "08/10/2025",
     "url": "https://www.saude.ms.gov.br/informativos/guias-e-manuais/plano-de-contingencia-estadual-arboviroses-2025-2026/"
    },
    "coordenacao": {
-    "degrau": "NAO_VERIFICADO",
-    "pontos": null,
-    "doc": null,
-    "data": null,
-    "url": null
-   },
-   "cobertura": {
-    "pontos": null,
-    "cobertura_pct": 0.0,
-    "planos_lidos": 0,
-    "planos_sem_leitura": 0
-   },
-   "dias_apos_boletim_1": -264,
-   "sem_numero_porque": [
-    "coordenação em saúde não verificada"
-   ]
-  },
-  "MT": {
-   "prontidao": 21.7,
-   "faixa": "estágio inicial",
-   "instrumento": {
-    "degrau": "ELAB",
-    "pontos": 20,
-    "doc": "Portaria nº 0195/2026/GBSES — institui o processo de elaboração, implantação progressiva, governança e operacionalização do Plano Estadual de Preparação e Resposta a Emergências em Saúde Pública (PPResp/MT), com prazos de implantação",
-    "data": "30/03/2026",
-    "url": "https://www.saude.mt.gov.br/storage/files/MmMbtQx9n43VPO23mMookK6LdUyD6h4QfMOvqx44.pdf"
-   },
-   "coordenacao": {
-    "degrau": "PERMANENTE",
-    "pontos": 45,
-    "doc": "Portaria nº 0666/2024/GBSES — institui a Sala de Situação em Saúde para o enfrentamento das Mudanças Climáticas, com composição e atribuições; mantida e ampliada pela Portaria nº 0195/2026/GBSES, que prevê sala de situação permanente e centro de operações de emergência temporário",
-    "data": "03/10/2024",
-    "url": "https://www.saude.mt.gov.br/storage/files/RDtdQBfGbCiRYiJ1BIRtq6KUg32oNI4cKBWaQaiS.pdf"
+    "pontos": 100.0,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "CRIADO_CICLO",
+     "pontos": 100,
+     "doc": "Resolução SES/MS nº 1041/2026",
+     "data": "03/09/2026",
+     "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/09/03/DO12270_03_09_2026.pdf",
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NOMEADA_COM_ATRIBUICAO",
+     "pontos": 100,
+     "doc": "Resolução SES/MS nº 1041/2026",
+     "data": "03/09/2026",
+     "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/09/03/DO12270_03_09_2026.pdf",
+     "atribuicao_citada": "aúde de Mato Grosso do Sul, e dá outras providências. O SECRETÁRIO DE ESTADO DE SAÚDE DE MATO GROSSO DO SUL, no uso das atribuições legais e, Considerando que as mudanças climáticas representam crescente desafio à saúde pública, com potenci"
+    },
+    "degrau": "CRIADO_CICLO",
+    "doc": "Resolução SES/MS nº 1041/2026",
+    "data": "03/09/2026",
+    "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/09/03/DO12270_03_09_2026.pdf"
    },
    "cobertura": {
     "pontos": 0.0,
     "cobertura_pct": 0.0,
     "planos_lidos": 0,
+    "planos_sem_leitura": 0
+   },
+   "dias_apos_boletim_1": -264,
+   "sem_numero_porque": null
+  },
+  "MT": {
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "degrau": "ELAB",
+    "pontos": null,
+    "doc": "Portaria nº 0195/2026/GBSES — institui o processo de elaboração, implantação progressiva, governança e operacionalização do Plano Estadual de Preparação e Resposta a Emergências em Saúde Pública (PPResp/MT), com prazos de implantação",
+    "data": "30/03/2026",
+    "url": "https://www.saude.mt.gov.br/storage/files/MmMbtQx9n43VPO23mMookK6LdUyD6h4QfMOvqx44.pdf"
+   },
+   "coordenacao": {
+    "pontos": null,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "PERMANENTE",
+     "pontos": null,
+     "doc": "Portaria nº 0666/2024/GBSES — institui a Sala de Situação em Saúde para o enfrentamento das Mudanças Climáticas, com composição e atribuições; mantida e ampliada pela Portaria nº 0195/2026/GBSES, que prevê sala de situação permanente e centro de operações de emergência temporário",
+     "data": "03/10/2024",
+     "url": "https://www.saude.mt.gov.br/storage/files/RDtdQBfGbCiRYiJ1BIRtq6KUg32oNI4cKBWaQaiS.pdf",
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "atribuicao_citada": null
+    },
+    "degrau": "PERMANENTE",
+    "doc": "Portaria nº 0666/2024/GBSES — institui a Sala de Situação em Saúde para o enfrentamento das Mudanças Climáticas, com composição e atribuições; mantida e ampliada pela Portaria nº 0195/2026/GBSES, que prevê sala de situação permanente e centro de operações de emergência temporário",
+    "data": "03/10/2024",
+    "url": "https://www.saude.mt.gov.br/storage/files/RDtdQBfGbCiRYiJ1BIRtq6KUg32oNI4cKBWaQaiS.pdf"
+   },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "planos_lidos": 0,
     "planos_sem_leitura": 1
    },
    "dias_apos_boletim_1": -91,
-   "sem_numero_porque": null
+   "sem_numero_porque": [
+    "ligação com o governo do estado não verificada"
+   ]
   },
   "PA": {
    "prontidao": null,
@@ -411,8 +643,25 @@
     "url": "http://www.saude.pa.gov.br/casos-de-dengue-caem-quase-60-no-para-em-janeiro-de-2025/"
    },
    "coordenacao": {
-    "degrau": "NAO_VERIFICADO",
     "pontos": null,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "atribuicao_citada": null
+    },
+    "degrau": "NAO_VERIFICADO",
     "doc": null,
     "data": null,
     "url": null
@@ -425,36 +674,52 @@
    },
    "dias_apos_boletim_1": null,
    "sem_numero_porque": [
-    "coordenação em saúde não verificada"
+    "coordenação na saúde não verificada",
+    "ligação com o governo do estado não verificada"
    ]
   },
   "PB": {
-   "prontidao": null,
-   "faixa": "não verificado",
+   "prontidao": 43.3,
+   "faixa": "em construção",
    "instrumento": {
     "degrau": "VIG",
-    "pontos": null,
+    "pontos": 30,
     "doc": "Plano Estadual de Contingência para Controle das Arboviroses (PDF no portal oficial, 15/02/2024)",
     "data": "15/02/2024",
     "url": "https://paraiba.pb.gov.br/diretas/saude/arquivos-1/vigilancia-em-saude/plano_contingencia_arboviroses_15_02_2024.pdf"
    },
    "coordenacao": {
-    "degrau": "NAO_VERIFICADO",
-    "pontos": null,
-    "doc": null,
-    "data": null,
-    "url": null
+    "pontos": 100.0,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "CRIADO_CICLO",
+     "pontos": 100,
+     "doc": "Portaria nº 764/2026 – GS/SES/PB",
+     "data": "03/09/2026",
+     "url": "https://auniao.pb.gov.br/servicos/doe/2026/setembro/diario-oficial-09-09-2026-portal.pdf",
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NOMEADA_COM_ATRIBUICAO",
+     "pontos": 100,
+     "doc": "Portaria nº 764/2026 – GS/SES/PB",
+     "data": "03/09/2026",
+     "url": "https://auniao.pb.gov.br/servicos/doe/2026/setembro/diario-oficial-09-09-2026-portal.pdf",
+     "atribuicao_citada": "planos de contingên- cia relacionados aos impactos do fenômeno El Niño; O SECRETÁRIO DE ESTADO DA SAÚDE, no uso de suas atribuições legais, IX – promover o compartilhamento oportuno de informações entre os setores envolvidos; CONSIDERANDO a"
+    },
+    "degrau": "CRIADO_CICLO",
+    "doc": "Portaria nº 764/2026 – GS/SES/PB",
+    "data": "03/09/2026",
+    "url": "https://auniao.pb.gov.br/servicos/doe/2026/setembro/diario-oficial-09-09-2026-portal.pdf"
    },
    "cobertura": {
-    "pontos": null,
+    "pontos": 0.0,
     "cobertura_pct": 0.0,
     "planos_lidos": 0,
     "planos_sem_leitura": 2
    },
    "dias_apos_boletim_1": -865,
-   "sem_numero_porque": [
-    "coordenação em saúde não verificada"
-   ]
+   "sem_numero_porque": null
   },
   "PE": {
    "prontidao": null,
@@ -467,8 +732,25 @@
     "url": "https://portal.saude.pe.gov.br/pernambuco-divulga-plano-de-enfrentamento-das-arboviroses-2025-2026/"
    },
    "coordenacao": {
-    "degrau": "NAO_VERIFICADO",
     "pontos": null,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "atribuicao_citada": null
+    },
+    "degrau": "NAO_VERIFICADO",
     "doc": null,
     "data": null,
     "url": null
@@ -481,7 +763,8 @@
    },
    "dias_apos_boletim_1": -523,
    "sem_numero_porque": [
-    "coordenação em saúde não verificada"
+    "coordenação na saúde não verificada",
+    "ligação com o governo do estado não verificada"
    ]
   },
   "PI": {
@@ -495,8 +778,25 @@
     "url": "https://piauihoje.com/noticias/saude/piaui-prepara-sus-para-possiveis-impactos-do-el-nino-na-saude-da-populacao-464649.html"
    },
    "coordenacao": {
-    "degrau": "NAO_VERIFICADO",
     "pontos": null,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "atribuicao_citada": null
+    },
+    "degrau": "NAO_VERIFICADO",
     "doc": null,
     "data": null,
     "url": null
@@ -509,7 +809,8 @@
    },
    "dias_apos_boletim_1": null,
    "sem_numero_porque": [
-    "coordenação em saúde não verificada"
+    "coordenação na saúde não verificada",
+    "ligação com o governo do estado não verificada"
    ]
   },
   "PR": {
@@ -523,8 +824,25 @@
     "url": "https://www.saude.pr.gov.br/Noticia/Parana-intensifica-combate-dengue-com-Comite-Intersetorial-e-acoes-integradas"
    },
    "coordenacao": {
-    "degrau": "NAO_VERIFICADO",
     "pontos": null,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "atribuicao_citada": null
+    },
+    "degrau": "NAO_VERIFICADO",
     "doc": null,
     "data": null,
     "url": null
@@ -537,7 +855,8 @@
    },
    "dias_apos_boletim_1": -584,
    "sem_numero_porque": [
-    "coordenação em saúde não verificada"
+    "coordenação na saúde não verificada",
+    "ligação com o governo do estado não verificada"
    ]
   },
   "RJ": {
@@ -551,8 +870,25 @@
     "url": "https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=NzY0ODg,"
    },
    "coordenacao": {
-    "degrau": "NAO_VERIFICADO",
     "pontos": null,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "atribuicao_citada": null
+    },
+    "degrau": "NAO_VERIFICADO",
     "doc": null,
     "data": null,
     "url": null
@@ -565,7 +901,8 @@
    },
    "dias_apos_boletim_1": null,
    "sem_numero_porque": [
-    "coordenação em saúde não verificada"
+    "coordenação na saúde não verificada",
+    "ligação com o governo do estado não verificada"
    ]
   },
   "RN": {
@@ -579,8 +916,25 @@
     "url": null
    },
    "coordenacao": {
-    "degrau": "NAO_VERIFICADO",
     "pontos": null,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "atribuicao_citada": null
+    },
+    "degrau": "NAO_VERIFICADO",
     "doc": null,
     "data": null,
     "url": null
@@ -594,7 +948,8 @@
    "dias_apos_boletim_1": null,
    "sem_numero_porque": [
     "instrumento estadual não verificado",
-    "coordenação em saúde não verificada"
+    "coordenação na saúde não verificada",
+    "ligação com o governo do estado não verificada"
    ]
   },
   "RO": {
@@ -608,8 +963,25 @@
     "url": "https://www.rondoniagora.com/geral/sesau-cria-plano-para-enfrentar-impactos-das-mudancas-climaticas-na-saude-em-rondonia"
    },
    "coordenacao": {
-    "degrau": "NAO_VERIFICADO",
     "pontos": null,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "atribuicao_citada": null
+    },
+    "degrau": "NAO_VERIFICADO",
     "doc": null,
     "data": null,
     "url": null
@@ -622,7 +994,8 @@
    },
    "dias_apos_boletim_1": null,
    "sem_numero_porque": [
-    "coordenação em saúde não verificada"
+    "coordenação na saúde não verificada",
+    "ligação com o governo do estado não verificada"
    ]
   },
   "RR": {
@@ -636,8 +1009,25 @@
     "url": null
    },
    "coordenacao": {
-    "degrau": "NAO_VERIFICADO",
     "pontos": null,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "atribuicao_citada": null
+    },
+    "degrau": "NAO_VERIFICADO",
     "doc": null,
     "data": null,
     "url": null
@@ -651,7 +1041,8 @@
    "dias_apos_boletim_1": null,
    "sem_numero_porque": [
     "instrumento estadual não verificado",
-    "coordenação em saúde não verificada"
+    "coordenação na saúde não verificada",
+    "ligação com o governo do estado não verificada"
    ]
   },
   "RS": {
@@ -665,8 +1056,25 @@
     "url": "https://saude.rs.gov.br/plano-de-contingencia"
    },
    "coordenacao": {
-    "degrau": "NAO_VERIFICADO",
     "pontos": null,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "atribuicao_citada": null
+    },
+    "degrau": "NAO_VERIFICADO",
     "doc": null,
     "data": null,
     "url": null
@@ -679,7 +1087,8 @@
    },
    "dias_apos_boletim_1": -504,
    "sem_numero_porque": [
-    "coordenação em saúde não verificada"
+    "coordenação na saúde não verificada",
+    "ligação com o governo do estado não verificada"
    ]
   },
   "SC": {
@@ -693,8 +1102,25 @@
     "url": null
    },
    "coordenacao": {
-    "degrau": "NAO_VERIFICADO",
     "pontos": null,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "atribuicao_citada": null
+    },
+    "degrau": "NAO_VERIFICADO",
     "doc": null,
     "data": null,
     "url": null
@@ -707,7 +1133,8 @@
    },
    "dias_apos_boletim_1": -294,
    "sem_numero_porque": [
-    "coordenação em saúde não verificada"
+    "coordenação na saúde não verificada",
+    "ligação com o governo do estado não verificada"
    ]
   },
   "SE": {
@@ -721,8 +1148,25 @@
     "url": "https://saude.se.gov.br/arboviroses-dengue-chikungunya-e-zika/"
    },
    "coordenacao": {
-    "degrau": "NAO_VERIFICADO",
     "pontos": null,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "atribuicao_citada": null
+    },
+    "degrau": "NAO_VERIFICADO",
     "doc": null,
     "data": null,
     "url": null
@@ -735,7 +1179,8 @@
    },
    "dias_apos_boletim_1": null,
    "sem_numero_porque": [
-    "coordenação em saúde não verificada"
+    "coordenação na saúde não verificada",
+    "ligação com o governo do estado não verificada"
    ]
   },
   "SP": {
@@ -749,8 +1194,25 @@
     "url": "https://portal.saude.sp.gov.br/resources/cve-centro-de-vigilancia-epidemiologica/areas-de-vigilancia/central/planoestadualdepreparacaaoerespostaemsauudeparaofenoemenoelninao.pdf"
    },
    "coordenacao": {
-    "degrau": "NAO_VERIFICADO",
     "pontos": null,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "atribuicao_citada": null
+    },
+    "degrau": "NAO_VERIFICADO",
     "doc": null,
     "data": null,
     "url": null
@@ -763,7 +1225,8 @@
    },
    "dias_apos_boletim_1": 63,
    "sem_numero_porque": [
-    "coordenação em saúde não verificada"
+    "coordenação na saúde não verificada",
+    "ligação com o governo do estado não verificada"
    ]
   },
   "TO": {
@@ -777,8 +1240,25 @@
     "url": null
    },
    "coordenacao": {
-    "degrau": "NAO_VERIFICADO",
     "pontos": null,
+    "agregacao": "média aritmética de pesos iguais",
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "pagina_citada": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "atribuicao_citada": null
+    },
+    "degrau": "NAO_VERIFICADO",
     "doc": null,
     "data": null,
     "url": null
@@ -792,7 +1272,8 @@
    "dias_apos_boletim_1": null,
    "sem_numero_porque": [
     "instrumento estadual não verificado",
-    "coordenação em saúde não verificada"
+    "coordenação na saúde não verificada",
+    "ligação com o governo do estado não verificada"
    ]
   }
  },
@@ -925,16 +1406,21 @@
    }
   ],
   "indice_inteiro": "não comparável hoje: a v0.4 não produz número em nenhuma UF, porque a coordenação em saúde nasceu nesta versão e ainda não foi verificada em nenhum estado",
-  "ufs_com_numero_na_v04": 1,
-  "ufs_com_coordenacao_verificada": 1
+  "ufs_com_numero_na_v04": 2,
+  "ufs_com_coordenacao_verificada": 3
  },
  "robustez": {
-  "ufs_com_numero": 1,
+  "ufs_com_numero": 2,
   "monte_carlo": {
-   "MT": {
-    "mediana": 21.3,
-    "p05": 6.7,
-    "p95": 37.5
+   "MS": {
+    "mediana": 40.6,
+    "p05": 12.2,
+    "p95": 81.4
+   },
+   "PB": {
+    "mediana": 40.6,
+    "p05": 12.2,
+    "p95": 81.4
    }
   },
   "sensibilidade": {
@@ -975,10 +1461,8 @@
     "n": 0
    },
    "ELAB+15": {
-    "ufs_que_mudam_de_faixa": [
-     "MT"
-    ],
-    "n": 1
+    "ufs_que_mudam_de_faixa": [],
+    "n": 0
    },
    "VIG_OUTRO_RISCO-15": {
     "ufs_que_mudam_de_faixa": [],

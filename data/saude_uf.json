@@ -15,7 +15,7 @@
   "SEM",
   "NEUTRO"
  ],
- "corte": "05/09/2026",
+ "corte": "02/10/2026",
  "uf": {
   "AC": {
    "risco_sanitario_projetado": [
@@ -436,8 +436,8 @@
     "continuidade de serviços (diálise, oxigênio, rede de frio)"
    ],
    "consist": "NEUTRO",
-   "data_verificacao": "05/09/2026",
-   "log_ref": "bateria_saude_2026-09-05",
+   "data_verificacao": "02/10/2026",
+   "log_ref": "julgar_saude_02-10-2026",
    "instrumentos": [
     {
      "status": "VIG",
@@ -450,6 +450,19 @@
      "justificativa_ex_ante": "plano sazonal recorrente, publicado no portal oficial da SES",
      "tipo": "recorrente_arboviroses",
      "hash_pagina_citada": "b19b1dd1ffd431345dddbed3f7d2010902bf2cd40eb29ae3329b99d583349b26"
+    },
+    {
+     "status": "ELAB",
+     "orgao": "SES-MS",
+     "doc": "Resolução SES/MS nº 1041/2026",
+     "observacao": null,
+     "numero": "1041/2026",
+     "data": "03/09/2026",
+     "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/09/03/DO12270_03_09_2026.pdf",
+     "natureza_doc": null,
+     "tipo": "saude_do_ciclo",
+     "hash_evidencia": "24a6aa61e80b0fc905c963ac0ff5af290eb06945d281e253616d4e78c0a1d7aa",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 02/10/2026, codebook None: documento primário baixado e lido, sete etapas aprovadas"
     }
    ],
    "status": "VIG",
@@ -463,7 +476,42 @@
    "preservado_em": "2026-09-26",
    "hash_pagina_citada": "b19b1dd1ffd431345dddbed3f7d2010902bf2cd40eb29ae3329b99d583349b26",
    "evidencia_e": "a página que cita o documento, em HTML — o documento em si não foi obtido",
-   "procedencia_da_pagina": "fonte direta"
+   "procedencia_da_pagina": "fonte direta",
+   "coordenacao": {
+    "status": "CRIADO_CICLO",
+    "orgao": "SES-MS",
+    "doc": "Resolução SES/MS nº 1041/2026",
+    "observacao": null,
+    "numero": "1041/2026",
+    "data": "03/09/2026",
+    "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/09/03/DO12270_03_09_2026.pdf",
+    "hash_evidencia": "24a6aa61e80b0fc905c963ac0ff5af290eb06945d281e253616d4e78c0a1d7aa",
+    "justificativa_degrau": "ato de 2026 que institui a estrutura e nomeia o ciclo (lido no recorte do ato)",
+    "data_verificacao": "02/10/2026",
+    "log_ref": "julgar_saude_02-10-2026",
+    "f1": {
+     "status": "CRIADO_CICLO",
+     "doc": "Resolução SES/MS nº 1041/2026",
+     "numero": "1041/2026",
+     "data": "03/09/2026",
+     "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/09/03/DO12270_03_09_2026.pdf",
+     "hash_evidencia": "24a6aa61e80b0fc905c963ac0ff5af290eb06945d281e253616d4e78c0a1d7aa",
+     "justificativa_degrau": "ato de 2026 que institui a estrutura e nomeia o ciclo (lido no recorte do ato)",
+     "data_verificacao": "02/10/2026"
+    },
+    "f2": {
+     "status": "NOMEADA_COM_ATRIBUICAO",
+     "doc": "Resolução SES/MS nº 1041/2026",
+     "numero": "1041/2026",
+     "data": "03/09/2026",
+     "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/09/03/DO12270_03_09_2026.pdf",
+     "hash_evidencia": "24a6aa61e80b0fc905c963ac0ff5af290eb06945d281e253616d4e78c0a1d7aa",
+     "justificativa_degrau": "estrutura da saúde que integra a defesa civil, com atribuição escrita no ato (lido no recorte do ato)",
+     "atribuicao_citada": "aúde de Mato Grosso do Sul, e dá outras providências. O SECRETÁRIO DE ESTADO DE SAÚDE DE MATO GROSSO DO SUL, no uso das atribuições legais e, Considerando que as mudanças climáticas representam crescente desafio à saúde pública, com potenci",
+     "data_verificacao": "02/10/2026",
+     "log_ref": "julgar_saude_02-10-2026"
+    }
+   }
   },
   "MT": {
    "risco_sanitario_projetado": [
@@ -556,8 +604,8 @@
     "qualidade da água em estiagem"
    ],
    "consist": "NEUTRO",
-   "data_verificacao": "05/09/2026",
-   "log_ref": "bateria_saude_2026-09-05",
+   "data_verificacao": "02/10/2026",
+   "log_ref": "julgar_saude_02-10-2026",
    "instrumentos": [
     {
      "status": "VIG",
@@ -570,6 +618,19 @@
      "natureza_doc": "ex-ante",
      "justificativa_ex_ante": "plano recorrente; edição localizada é de 02/2024 — 2025/2026 não localizada",
      "tipo": "recorrente_arboviroses"
+    },
+    {
+     "status": "ELAB",
+     "orgao": "SES-PB",
+     "doc": "Portaria nº 764/2026 – GS/SES/PB",
+     "observacao": null,
+     "numero": "764/2026",
+     "data": "03/09/2026",
+     "url": "https://auniao.pb.gov.br/servicos/doe/2026/setembro/diario-oficial-09-09-2026-portal.pdf",
+     "natureza_doc": null,
+     "tipo": "saude_do_ciclo",
+     "hash_evidencia": "1436a4935c6e572f252533ff9dccc3f6a3eac44a27763633939fe7c5638a9f27",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 02/10/2026, codebook None: documento primário baixado e lido, sete etapas aprovadas"
     }
    ],
    "status": "VIG",
@@ -582,7 +643,42 @@
    "natureza_doc": "ex-ante",
    "justificativa_ex_ante": "plano recorrente; edição localizada é de 02/2024 — 2025/2026 não localizada",
    "preservacao_recusada_em": "2026-09-26",
-   "preservacao_recusada_motivo": "bloqueio de acesso do host: muro de robô em https://paraiba.pb.gov.br/diretas/saude/arquivos-1/vigilancia-em-saude/plano_contingencia_arboviroses_15_02_2024.pdf: 'desafio de robô no código da página (window[\"bobcmn\"])' — recusa com HTTP 200 (§186); não se contorna"
+   "preservacao_recusada_motivo": "bloqueio de acesso do host: muro de robô em https://paraiba.pb.gov.br/diretas/saude/arquivos-1/vigilancia-em-saude/plano_contingencia_arboviroses_15_02_2024.pdf: 'desafio de robô no código da página (window[\"bobcmn\"])' — recusa com HTTP 200 (§186); não se contorna",
+   "coordenacao": {
+    "status": "CRIADO_CICLO",
+    "orgao": "SES-PB",
+    "doc": "Portaria nº 764/2026 – GS/SES/PB",
+    "observacao": null,
+    "numero": "764/2026",
+    "data": "03/09/2026",
+    "url": "https://auniao.pb.gov.br/servicos/doe/2026/setembro/diario-oficial-09-09-2026-portal.pdf",
+    "hash_evidencia": "1436a4935c6e572f252533ff9dccc3f6a3eac44a27763633939fe7c5638a9f27",
+    "justificativa_degrau": "ato de 2026 que institui a estrutura e nomeia o ciclo (lido no recorte do ato)",
+    "data_verificacao": "02/10/2026",
+    "log_ref": "julgar_saude_02-10-2026",
+    "f1": {
+     "status": "CRIADO_CICLO",
+     "doc": "Portaria nº 764/2026 – GS/SES/PB",
+     "numero": "764/2026",
+     "data": "03/09/2026",
+     "url": "https://auniao.pb.gov.br/servicos/doe/2026/setembro/diario-oficial-09-09-2026-portal.pdf",
+     "hash_evidencia": "1436a4935c6e572f252533ff9dccc3f6a3eac44a27763633939fe7c5638a9f27",
+     "justificativa_degrau": "ato de 2026 que institui a estrutura e nomeia o ciclo (lido no recorte do ato)",
+     "data_verificacao": "02/10/2026"
+    },
+    "f2": {
+     "status": "NOMEADA_COM_ATRIBUICAO",
+     "doc": "Portaria nº 764/2026 – GS/SES/PB",
+     "numero": "764/2026",
+     "data": "03/09/2026",
+     "url": "https://auniao.pb.gov.br/servicos/doe/2026/setembro/diario-oficial-09-09-2026-portal.pdf",
+     "hash_evidencia": "1436a4935c6e572f252533ff9dccc3f6a3eac44a27763633939fe7c5638a9f27",
+     "justificativa_degrau": "estrutura da saúde que integra a defesa civil, com atribuição escrita no ato (lido no recorte do ato)",
+     "atribuicao_citada": "planos de contingên- cia relacionados aos impactos do fenômeno El Niño; O SECRETÁRIO DE ESTADO DA SAÚDE, no uso de suas atribuições legais, IX – promover o compartilhamento oportuno de informações entre os setores envolvidos; CONSIDERANDO a",
+     "data_verificacao": "02/10/2026",
+     "log_ref": "julgar_saude_02-10-2026"
+    }
+   }
   },
   "PE": {
    "risco_sanitario_projetado": [
