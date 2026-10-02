@@ -558,144 +558,6 @@
    "funcao_narrativa": "evidência do agora",
    "acao_relacionada": "consultar o painel do Ministério da Saúde"
   },
-  "saude.html#boxChikMapa": {
-   "tipo": "mapa de pontos",
-   "pergunta_que_responde": "Em quais municípios acompanhados o alerta de chikungunya está alto na última semana consolidada?",
-   "dimensao_da_preparacao": null,
-   "universo": "313 municípios acompanhados",
-   "unidade_de_analise": "município",
-   "territorio": "Brasil (painel amostral)",
-   "periodo": "última semana epidemiológica consolidada",
-   "variavel_principal": "nível de alerta InfoDengue (1 a 4)",
-   "denominador": null,
-   "fonte": "InfoDengue (Fiocruz/FGV), a partir de notificações do Sinan",
-   "metodologia": "as quatro últimas semanas epidemiológicas ficam fora da série consolidada; nowcasting nas semanas recentes",
-   "conclusoes_permitidas": [
-    "nível de alerta por município acompanhado na semana consolidada"
-   ],
-   "conclusoes_nao_permitidas": [
-    "atribuição dos casos ao El Niño",
-    "generalizar o painel amostral para o país",
-    "incidência real do município"
-   ],
-   "funcao_narrativa": "camada observada: peso zero no índice, contexto do risco sanitário",
-   "acao_relacionada": null
-  },
-  "saude.html#boxChikSerie": {
-   "tipo": "série temporal com seletor",
-   "pergunta_que_responde": "Como os casos notificados de chikungunya evoluem frente à faixa esperada para a época?",
-   "dimensao_da_preparacao": null,
-   "universo": "313 municípios acompanhados",
-   "unidade_de_analise": "semana epidemiológica",
-   "territorio": "Brasil (painel amostral)",
-   "periodo": "semanas de 2026",
-   "variavel_principal": "nº de casos notificados",
-   "denominador": "canal endêmico (mediana, p75 e p90 das mesmas semanas de 2019–2025, com 2024 à parte)",
-   "fonte": "InfoDengue (Fiocruz/FGV), a partir de notificações do Sinan",
-   "metodologia": "a visualização escolhida no seletor define o recorte: semanal sobre a faixa esperada, acumulado anual ou capitais",
-   "conclusoes_permitidas": [
-    "posição da série frente à faixa esperada para a época"
-   ],
-   "conclusoes_nao_permitidas": [
-    "atribuição dos casos ao El Niño",
-    "generalizar o painel amostral para o país",
-    "casos como medida de gravidade"
-   ],
-   "funcao_narrativa": "camada observada: peso zero, sem faixa e sem nota",
-   "acao_relacionada": null
-  },
-  "saude.html#boxDDA": {
-   "tipo": "série temporal",
-   "pergunta_que_responde": "Como doenças diarreicas agudas (MDDA) evolui frente à faixa esperada para a época?",
-   "dimensao_da_preparacao": null,
-   "universo": "Brasil",
-   "unidade_de_analise": "semana epidemiológica",
-   "territorio": "Brasil",
-   "periodo": "semanas de 2026",
-   "variavel_principal": "nº de atendimentos",
-   "denominador": "faixa esperada para a época, das mesmas semanas em anos anteriores",
-   "fonte": "Ministério da Saúde",
-   "metodologia": "atendimentos em unidades sentinela; as quatro últimas semanas são parciais",
-   "conclusoes_permitidas": [
-    "posição da série frente à faixa esperada"
-   ],
-   "conclusoes_nao_permitidas": [
-    "atribuição ao El Niño",
-    "semanas recentes como tendência consolidada",
-    "gravidade dos casos"
-   ],
-   "funcao_narrativa": "camada observada: peso zero no índice",
-   "acao_relacionada": null
-  },
-  "saude.html#boxDengue": {
-   "tipo": "mapa de pontos",
-   "pergunta_que_responde": "Qual o nível de alerta de dengue em cada capital?",
-   "dimensao_da_preparacao": null,
-   "universo": "27 capitais",
-   "unidade_de_analise": "capital",
-   "territorio": "Brasil",
-   "periodo": "última semana disponível em cada capital",
-   "variavel_principal": "nível de alerta InfoDengue (1 a 4)",
-   "denominador": null,
-   "fonte": "registro de capitais do Monitor (saude_sinais), a partir do InfoDengue",
-   "metodologia": "fonte distinta da série municipal: cada capital carrega a própria semana, que pode não ser a consolidada",
-   "conclusoes_permitidas": [
-    "nível de alerta na capital, na semana que o registro traz"
-   ],
-   "conclusoes_nao_permitidas": [
-    "atribuição dos casos ao El Niño",
-    "estender o sinal da capital ao estado inteiro",
-    "comparar diretamente com o mapa municipal, que usa a semana consolidada"
-   ],
-   "funcao_narrativa": "camada observada, no recorte que existe para as 27 UFs",
-   "acao_relacionada": null
-  },
-  "saude.html#boxDesfAcum": {
-   "tipo": "série temporal com seletor",
-   "pergunta_que_responde": "Como os casos notificados de dengue evoluem frente à faixa esperada para a época?",
-   "dimensao_da_preparacao": null,
-   "universo": "313 municípios acompanhados e 27 capitais",
-   "unidade_de_analise": "semana epidemiológica",
-   "territorio": "Brasil (painel amostral)",
-   "periodo": "semanas de 2026",
-   "variavel_principal": "nº de casos notificados",
-   "denominador": "canal endêmico (mediana, p75 e p90 das mesmas semanas de 2019–2025, com 2024 à parte)",
-   "fonte": "InfoDengue (Fiocruz/FGV), a partir de notificações do Sinan",
-   "metodologia": "a visualização escolhida no seletor define o recorte: semanal sobre a faixa esperada, acumulado anual ou capitais",
-   "conclusoes_permitidas": [
-    "posição da série frente à faixa esperada para a época"
-   ],
-   "conclusoes_nao_permitidas": [
-    "atribuição dos casos ao El Niño",
-    "generalizar o painel amostral para o país",
-    "casos como medida de gravidade"
-   ],
-   "funcao_narrativa": "camada observada: peso zero, sem faixa e sem nota",
-   "acao_relacionada": null
-  },
-  "saude.html#boxDesfMapa": {
-   "tipo": "mapa de pontos",
-   "pergunta_que_responde": "Em quais municípios acompanhados o alerta de dengue está alto na última semana consolidada?",
-   "dimensao_da_preparacao": null,
-   "universo": "313 municípios acompanhados",
-   "unidade_de_analise": "município",
-   "territorio": "Brasil (painel amostral)",
-   "periodo": "última semana epidemiológica consolidada",
-   "variavel_principal": "nível de alerta InfoDengue (1 a 4)",
-   "denominador": null,
-   "fonte": "InfoDengue (Fiocruz/FGV), a partir de notificações do Sinan",
-   "metodologia": "as quatro últimas semanas epidemiológicas ficam fora da série consolidada; nowcasting nas semanas recentes",
-   "conclusoes_permitidas": [
-    "nível de alerta por município acompanhado na semana consolidada"
-   ],
-   "conclusoes_nao_permitidas": [
-    "atribuição dos casos ao El Niño",
-    "generalizar o painel amostral para o país",
-    "incidência real do município"
-   ],
-   "funcao_narrativa": "camada observada: peso zero no índice, contexto do risco sanitário",
-   "acao_relacionada": null
-  },
   "saude.html#boxMonitor": {
    "tipo": "mapa",
    "pergunta_que_responde": "Qual a prontidão sanitária de cada estado para o ciclo?",
@@ -717,29 +579,6 @@
     "UF cinza como UF sem plano"
    ],
    "funcao_narrativa": "síntese da dimensão de saúde, depois da camada observada",
-   "acao_relacionada": null
-  },
-  "saude.html#boxRiscoSan": {
-   "tipo": "mapa",
-   "pergunta_que_responde": "Que famílias de risco sanitário os boletins projetam para cada estado?",
-   "dimensao_da_preparacao": "risco projetado (insumo, não componente do índice)",
-   "universo": "27 UFs",
-   "unidade_de_analise": "UF",
-   "territorio": "Brasil",
-   "periodo": "ciclo 2026/2027",
-   "variavel_principal": "família de risco sanitário projetada",
-   "denominador": null,
-   "fonte": "boletins do Painel El Niño",
-   "metodologia": "derivado das famílias de risco dos boletins, sem projeção própria do Monitor",
-   "conclusoes_permitidas": [
-    "que risco sanitário o poder público federal projetou para cada UF"
-   ],
-   "conclusoes_nao_permitidas": [
-    "risco observado",
-    "incidência esperada",
-    "atribuição de doença ao El Niño"
-   ],
-   "funcao_narrativa": "fecha a dimensão ligando o instrumento publicado ao risco que ele deveria responder",
    "acao_relacionada": null
   },
   "saude.html#boxSG": {
@@ -788,28 +627,6 @@
    "funcao_narrativa": "camada observada: peso zero no índice",
    "acao_relacionada": null
   },
-  "saude.html#boxStatus": {
-   "tipo": "mapa",
-   "pergunta_que_responde": "Em que categoria está o instrumento estadual de saúde de cada UF?",
-   "dimensao_da_preparacao": "instrumento estadual de saúde",
-   "universo": "27 UFs",
-   "unidade_de_analise": "UF",
-   "territorio": "Brasil",
-   "periodo": "corte da edição",
-   "variavel_principal": "categoria do instrumento (novo do ciclo, readaptado, vigente-recorrente, em elaboração, não localizado, não verificado)",
-   "denominador": null,
-   "fonte": "banco de registros do Monitor",
-   "metodologia": "categoria julgada pela função do ato, não pelo nome; não verificado não é não localizado",
-   "conclusoes_permitidas": [
-    "categoria do instrumento em cada UF verificada"
-   ],
-   "conclusoes_nao_permitidas": [
-    "não localizado como inexistente",
-    "qualidade ou adequação do plano"
-   ],
-   "funcao_narrativa": "decompõe o componente de instrumento que entra na prontidão",
-   "acao_relacionada": null
-  },
   "defesa-civil.html#boxReconhecidos": {
    "tipo": "mapa de pontos",
    "pergunta_que_responde": "Quais municípios tiveram a situação de emergência do ciclo reconhecida pelo governo federal?",
@@ -831,6 +648,74 @@
     "que o reconhecimento implica recurso recebido, executado ou suficiente"
    ],
    "funcao_narrativa": "mostrar onde a emergência declarada pelo município foi aceita pela União, ao lado de quem declarou"
+  },
+  "saude.html#boxDengueSemana": {
+   "tipo": "série semanal com faixa esperada para a época",
+   "pergunta_que_responde": "Quantas notificações de dengue foram registradas em cada semana de 2026, e como isso se compara às mesmas semanas de 2019 a 2025?",
+   "dimensao_da_preparacao": "o que os órgãos de saúde registram",
+   "universo": "Brasil; notificações no SINAN",
+   "unidade_de_analise": "dengue",
+   "territorio": "Brasil",
+   "periodo": "semanas epidemiológicas de 2026",
+   "variavel_principal": "notificações de dengue por semana epidemiológica de primeiros sintomas",
+   "denominador": "nenhum: é contagem",
+   "fonte": "SINAN (Ministério da Saúde); IBGE — Censo 2022",
+   "metodologia": "Mediana e p90 das semanas equivalentes de 2019 a 2025, calculados da própria série. Semana sem valor fica sem barra: ausência de notificação registrada não é zero caso.",
+   "conclusoes_permitidas": "comparar a semana com a faixa das mesmas semanas dos anos anteriores",
+   "conclusoes_nao_permitidas": "atribuir os casos ao El Niño; tratar notificação como caso confirmado; ler as últimas semanas como queda, porque elas ainda recebem notificação",
+   "funcao_narrativa": "mostra o que é registrado, sem ligar ao El Niño",
+   "acao_relacionada": "a lista por município, no fim da seção"
+  },
+  "saude.html#boxDengueUF": {
+   "tipo": "mapa coroplético por unidade da federação, com lista",
+   "pergunta_que_responde": "Quantas notificações de dengue por 100 mil habitantes cada estado registrou em 2026?",
+   "dimensao_da_preparacao": "o que os órgãos de saúde registram",
+   "universo": "Brasil; notificações no SINAN",
+   "unidade_de_analise": "dengue",
+   "territorio": "Brasil",
+   "periodo": "semanas epidemiológicas de 2026",
+   "variavel_principal": "notificações de dengue acumuladas no ano, por 100 mil habitantes",
+   "denominador": "população do Censo 2022, por estado",
+   "fonte": "SINAN (Ministério da Saúde); IBGE — Censo 2022",
+   "metodologia": "Acumulado do ano até a última semana fechada, dividido pela população do estado. Por 100 mil habitantes porque o total bruto só ordena os estados por tamanho.",
+   "conclusoes_permitidas": "comparar a taxa entre estados no período acumulado",
+   "conclusoes_nao_permitidas": "atribuir os casos ao El Niño; tratar notificação como caso confirmado; ler as últimas semanas como queda, porque elas ainda recebem notificação",
+   "funcao_narrativa": "mostra o que é registrado, sem ligar ao El Niño",
+   "acao_relacionada": "a lista por município, no fim da seção"
+  },
+  "saude.html#boxChikSemana": {
+   "tipo": "série semanal com faixa esperada para a época",
+   "pergunta_que_responde": "Quantas notificações de chikungunya foram registradas em cada semana de 2026, e como isso se compara às mesmas semanas de 2019 a 2025?",
+   "dimensao_da_preparacao": "o que os órgãos de saúde registram",
+   "universo": "Brasil; notificações no SINAN",
+   "unidade_de_analise": "chikungunya",
+   "territorio": "Brasil",
+   "periodo": "semanas epidemiológicas de 2026",
+   "variavel_principal": "notificações de chikungunya por semana epidemiológica de primeiros sintomas",
+   "denominador": "nenhum: é contagem",
+   "fonte": "SINAN (Ministério da Saúde); IBGE — Censo 2022",
+   "metodologia": "Mediana e p90 das semanas equivalentes de 2019 a 2025, calculados da própria série. Semana sem valor fica sem barra: ausência de notificação registrada não é zero caso.",
+   "conclusoes_permitidas": "comparar a semana com a faixa das mesmas semanas dos anos anteriores",
+   "conclusoes_nao_permitidas": "atribuir os casos ao El Niño; tratar notificação como caso confirmado; ler as últimas semanas como queda, porque elas ainda recebem notificação",
+   "funcao_narrativa": "mostra o que é registrado, sem ligar ao El Niño",
+   "acao_relacionada": "a lista por município, no fim da seção"
+  },
+  "saude.html#boxChikUF": {
+   "tipo": "mapa coroplético por unidade da federação, com lista",
+   "pergunta_que_responde": "Quantas notificações de chikungunya por 100 mil habitantes cada estado registrou em 2026?",
+   "dimensao_da_preparacao": "o que os órgãos de saúde registram",
+   "universo": "Brasil; notificações no SINAN",
+   "unidade_de_analise": "chikungunya",
+   "territorio": "Brasil",
+   "periodo": "semanas epidemiológicas de 2026",
+   "variavel_principal": "notificações de chikungunya acumuladas no ano, por 100 mil habitantes",
+   "denominador": "população do Censo 2022, por estado",
+   "fonte": "SINAN (Ministério da Saúde); IBGE — Censo 2022",
+   "metodologia": "Acumulado do ano até a última semana fechada, dividido pela população do estado. Por 100 mil habitantes porque o total bruto só ordena os estados por tamanho.",
+   "conclusoes_permitidas": "comparar a taxa entre estados no período acumulado",
+   "conclusoes_nao_permitidas": "atribuir os casos ao El Niño; tratar notificação como caso confirmado; ler as últimas semanas como queda, porque elas ainda recebem notificação",
+   "funcao_narrativa": "mostra o que é registrado, sem ligar ao El Niño",
+   "acao_relacionada": "a lista por município, no fim da seção"
   }
  }
 }

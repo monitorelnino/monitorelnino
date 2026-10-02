@@ -140,11 +140,36 @@ def preencher_saude():
     ufs_saude = mon.get("ufs") or {}
     com_plano = sum(1 for v in ufs_saude.values()
                     if isinstance(v, dict) and (v.get("instrumento") or {}).get("doc"))
-    h = sub_id(h, "nPlanoSaude", f"{com_plano} de 27", n)
-    v04 = ler("monitor_saude_v04.json", {}) or {}
-    com_coord = sum(1 for v in (v04.get("uf") or {}).values()
-                    if isinstance(v, dict) and (v.get("coordenacao") or {}).get("doc"))
-    h = sub_id(h, "nCoordSaude", f"{com_coord} de 27", n)
+    # 02/10/2026 (bloco A): os cartões do topo passaram a ser os cinco indicadores dinâmicos. O
+    # fallback escreve o que o JavaScript escreveria, para que a página sem JS não mostre "—".
+    den = ler("saude_desfechos/dengue_sinan_serie.json", {}) or {}
+    br = ((den.get("serie") or {}).get("BR") or {})
+    ano = str(den.get("ano_corrente") or "")
+    fechadas = sorted(k for k, v in br.items() if k.startswith(ano) and v is not None)
+    if fechadas:
+        h = sub_id(h, "nDengueSE", f"{br[fechadas[-1]]:,}".replace(",", "."), n)
+    srag = ler("saude_desfechos/srag_serie.json", {}) or {}
+    serie = srag.get("serie") or {}
+    ano_s = str(srag.get("ano_corrente") or "")
+    total = {}
+    for por_se in serie.values():
+        if isinstance(por_se, dict):
+            for se, v in por_se.items():
+                if se.startswith(ano_s) and isinstance(v, (int, float)):
+                    total[se] = total.get(se, 0) + v
+    if total:
+        ult = sorted(total)[-1]
+        h = sub_id(h, "nSragSE", f"{int(total[ult]):,}".replace(",", "."), n)
+    painel = ler("saude_desfechos/serie_painel.json", {}) or {}
+    ufs_alerta = {m.get("uf") for m in (painel.get("municipios") or {}).values()
+                  if (m.get("nivel_ultima_se") or 0) >= 3 and m.get("uf")}
+    if painel:
+        h = sub_id(h, "nUFsAlerta", f"{len(ufs_alerta)} de 27", n)
+    sinais = ler("saude_sinais.json", {}) or {}
+    resumo_calor = ((sinais.get("calor_excesso") or {}).get("resumo") or {})
+    if resumo_calor:
+        acima = int(resumo_calor.get("severo") or 0) + int(resumo_calor.get("extremo") or 0)
+        h = sub_id(h, "nCalorMun", f"{acima:,}".replace(",", "."), n)
     h = sub_id(h, "nEmergSaude", str((mon.get("resposta") or {}).get("emergencias") or 0), n)
 
     res = mon.get("resumo") or {}

@@ -2818,3 +2818,52 @@ com os dois valores e que `primeira_medicao` seja o espelho exato da ausência d
 proibido é o mesmo: variação sem par.
 
 A suíte vai de 152 para 154 comandos.
+
+## 87. MARÉ Saúde reorganizado pela pergunta do leitor (02/10/2026)
+
+Bloco A do handover. A página abria pelo medidor do índice e por três mapas de estado; passa a abrir
+pelo que os órgãos de saúde registraram esta semana, depois a situação de cada estado, depois cada
+doença, e o governo federal no fim.
+
+**Cinco cartões, todos dinâmicos, todos da fonte primária.** Notificações de dengue e internações
+por síndrome respiratória grave na última semana epidemiológica **fechada**, estados com dengue em
+nível de alerta, municípios em classe severa ou extrema de excesso de calor e emergências em saúde
+pública declaradas. "Última semana fechada" é a última **com valor** na série, não a última do
+calendário: as semanas recentes existem no arquivo com valor nulo, e tratar nulo como zero
+publicaria uma queda que é só atraso de notificação. Os dois cartões de casos trazem, no próprio
+cartão, a ressalva de parcialidade e a frase que a editoria fixou — estes números não indicam
+relação com o El Niño.
+
+**Dengue e chikungunya passam a ser contadas pelo SINAN**, para o país e por estado, em
+**notificações** — e o cartão diz isso, porque notificação não é caso confirmado. O InfoDengue
+continua, e só, no **nível de alerta**, que é interpretação da série e não existe no banco primário.
+A amostra de 313 municípios saiu do mapa: ela virou a lista por município, com busca, declarada como
+complemento do InfoDengue.
+
+**Cada doença tem a frase do dado.** "{n} notificações de dengue na semana epidemiológica {SE} de
+2026, dentro / acima da faixa esperada para a época" — a faixa é a mediana e o p90 das semanas
+equivalentes de 2019 a 2025, calculadas da própria série. É comparação com o passado medido, não
+juízo.
+
+**O mapa por estado é em notificações por 100 mil habitantes**, porque o total bruto só ordena os
+estados por tamanho.
+
+**Um mapa só por estado.** Os três do topo (prontidão, status do plano, risco projetado) viraram um:
+a prontidão. O status do plano e o risco previsto passam para a **ficha** de cada estado, onde o
+leitor os encontra junto do que importa para a comparação.
+
+**O bloco das diarreicas não aparece** até a fonte primária chegar, como o handover manda. O
+medidor de "antecipação" saiu do topo, e com ele a linha "Dados até 05/09".
+
+**Quatro armadilhas de remoção, registradas porque a lição é geral.** Apagar linha por nome de id
+deixou um medidor sem a linha que declarava o seu elemento: o `ReferenceError` derrubou o
+carregamento inteiro e levou consigo o mapa de calor, a grade dos 27 e os títulos-fato — tudo
+silenciosamente, porque o erro caía num `catch` vazio. Duas chamadas de `desenharMapa` sobre mapas
+removidos levantaram no d3 pela mesma via. Uma chamada órfã a um renderizador apagado fez o mesmo. E
+o cartão de calor nasceu lendo um caminho que o arquivo nunca teve, dizendo "sem coleta" com o dado
+em disco — o pior jeito de errar numa figura de risco. Nos quatro casos o sintoma apareceu longe da
+causa; o que os achou foi o portão de runtime, figura por figura.
+
+**O crédito de fonte vai com o id literal**, não com variável: `verificar_saude.py` confere a
+presença do crédito lendo o fonte do JavaScript, e um id em variável é invisível para ele. Perder a
+conferência para economizar quatro linhas seria trocar prova por elegância.

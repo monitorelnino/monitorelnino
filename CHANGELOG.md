@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-02 · #517 · MARÉ Saúde reorganizado pela pergunta do leitor
+
+Cinco cartões dinâmicos no topo, da fonte primária; a situação de cada estado com um mapa só e a
+ficha; cada doença com a frase do dado, a série contra a faixa esperada e o mapa por estado em casos
+por 100 mil habitantes. Dengue e chikungunya passam ao SINAN; o InfoDengue fica só no nível de
+alerta. Saem o medidor de antecipação, dois mapas de estado, a amostra no mapa e a série duplicada.
+Em `METODOLOGIA.md` §87.
+
 ## 2026-10-02 · #514 · O publicador passa a commitar o que ele mesmo regenera
 
 Terceira vez da mesma família: a cadeia canônica regenera `CITATION.cff` (o `date-released` sai de
