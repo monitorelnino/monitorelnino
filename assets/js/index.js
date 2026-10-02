@@ -187,16 +187,10 @@ const kpiUFsLAC = Object.entries(MARE).filter(([uf,v]) => v.status_estadual === 
 // posição aproximada dele no país, e a contagem desigual deixa de existir como problema.
 // A grade é a `br_states_grid1` do pacote geofacet (hafen/grid-designer), publicada e conferida
 // contra a fonte — não é posição estimada aqui.
-const GRADE_BR = {
-  RR:[1,2], AP:[1,3],
-  AM:[2,2], PA:[2,3], MA:[2,4], CE:[2,5],
-  AC:[3,1], RO:[3,2], TO:[3,3], PI:[3,4], PB:[3,5], RN:[3,6],
-  MT:[4,2], GO:[4,3], BA:[4,4], PE:[4,5], AL:[4,6],
-  MS:[5,2], DF:[5,3], MG:[5,4], SE:[5,5],
-  SP:[6,3], RJ:[6,4], ES:[6,5],
-  PR:[7,3], SC:[7,4],
-  RS:[8,3],
-};
+// 02/10/2026 (item 7): a posição geográfica de cada estado passou a viver no componente
+// compartilhado, `assets/js/grade-estados.js`, que a inicial e o MARÉ Saúde usam. Duas
+// tabelas de posição divergiriam na primeira correção.
+const GRADE_BR = (window.GradeEstados && window.GradeEstados.GRADE_BR) || {};
 // 27/09/2026 (pedido da editoria): o risco projetado entrou no cartão de cada estado.
 // 30/09/2026 (pedido da editoria): sai da frente do cartão — fica só na ficha (janela de
 // detalhe), destacado. Carregado à parte para não atrasar o índice: se falhar, a ficha fica
@@ -290,8 +284,8 @@ ufsOrdenadas.forEach(item=>{
   const tile = document.createElement('div');
   tile.className = `tile st-${item.status}`;
   tile.dataset.uf = item.uf;
-  tile.style.background = MonitorMapas.cor('branco');
-  tile.style.color = 'var(--ink)';
+  /* 02/10/2026 (item 3.1): a cor do cartão passou a vir do componente, em assets/base.css. Corrigir
+   * inline aqui era o que escondia o defeito: a página que esquecesse publicaria texto invisível. */
   const v = (typeof MARE !== 'undefined' && MARE[item.uf]) ? MARE[item.uf].total : null;
   tile.title = `${item.uf} · MARÉ ${v == null ? 'sem dado' : String(v).replace('.', ',')} / 100`;
   const pos = GRADE_BR[item.uf];

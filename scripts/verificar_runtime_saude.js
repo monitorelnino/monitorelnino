@@ -32,6 +32,9 @@ const dom = new JSDOM(html, {
     w.d3 = require("d3");
     // módulo único de mapas (o <script src> externo não é carregado pelo jsdom sem resources)
     w.eval(fs.readFileSync(path.join(raiz, "assets", "mapas.js"), "utf-8"));
+    // 02/10/2026 (item 7): a grade dos 27 passou a ser um componente compartilhado, e o jsdom não
+    // carrega <script src> externo sem `resources`. Como `mapas.js`, ele entra aqui.
+    w.eval(fs.readFileSync(path.join(raiz, "assets", "js", "grade-estados.js"), "utf-8"));
     class Chart { constructor(ctx, cfg) { graficos.push({ ctx, cfg }); } }
     Chart.defaults = { font: {}, color: "" };
     w.Chart = Chart;

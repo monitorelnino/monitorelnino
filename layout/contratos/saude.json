@@ -17,12 +17,42 @@
       "grade": ".grade-numeros--3",
       "linhas": 2,
       "cartoes": [
-        {"id": "dengue_casos_se", "tipo": "numero", "chave": "dengue_sinan_serie.json", "valor_el": "nDengueSE"},
-        {"id": "srag_internacoes_se", "tipo": "numero", "chave": "srag_serie.json", "valor_el": "nSragSE"},
-        {"id": "uf_dengue_alerta", "tipo": "numero", "chave": "serie_painel.json", "valor_el": "nUFsAlerta"},
-        {"id": "calor_municipios_severo", "tipo": "numero", "chave": "saude_sinais.json", "valor_el": "nCalorMun"},
-        {"id": "emergencias_saude_ciclo", "tipo": "numero", "chave": "monitor_saude.json", "valor_el": "nEmergSaude"},
-        {"id": "mare_saude_indice", "tipo": "numero", "chave": "monitor_saude.json", "valor_el": "nIndiceSaude"}
+        {
+          "id": "dengue_casos_se",
+          "tipo": "numero",
+          "chave": "dengue_sinan_serie.json",
+          "valor_el": "nDengueSE"
+        },
+        {
+          "id": "srag_internacoes_se",
+          "tipo": "numero",
+          "chave": "srag_serie.json",
+          "valor_el": "nSragSE"
+        },
+        {
+          "id": "uf_dengue_alerta",
+          "tipo": "numero",
+          "chave": "serie_painel.json",
+          "valor_el": "nUFsAlerta"
+        },
+        {
+          "id": "calor_municipios_severo",
+          "tipo": "numero",
+          "chave": "saude_sinais.json",
+          "valor_el": "nCalorMun"
+        },
+        {
+          "id": "emergencias_saude_ciclo",
+          "tipo": "numero",
+          "chave": "monitor_saude.json",
+          "valor_el": "nEmergSaude"
+        },
+        {
+          "id": "mare_saude_indice",
+          "tipo": "numero",
+          "chave": "monitor_saude.json",
+          "valor_el": "nIndiceSaude"
+        }
       ],
       "exige_texto": [
         "são parciais e sobem com as notificações atrasadas",
@@ -35,52 +65,120 @@
       "tipo": "figuras_mais_estados",
       "grade": ".grade-figuras--3",
       "cartoes": [
-        {"id": "mapa_indice_uf", "tipo": "mapa", "el": "boxMonitor"},
-        {"id": "lista_estados_verificacao", "tipo": "lista", "el": "boxVerificacaoUF"},
-        {"id": "risco_previsto_uf", "tipo": "mapa", "el": "boxRiscoSan"}
+        {
+          "id": "mapa_indice_uf",
+          "tipo": "mapa",
+          "el": "boxMonitor"
+        },
+        {
+          "id": "lista_estados_verificacao",
+          "tipo": "lista",
+          "el": "boxVerificacaoUF"
+        },
+        {
+          "id": "risco_previsto_uf",
+          "tipo": "mapa",
+          "el": "boxRiscoSan"
+        }
       ],
-      "estados": {"grade": "#regionsSaude", "cartoes": 27, "largura": "total"}
+      "estados": {
+        "grade": "#regionsSaude",
+        "cartoes": 27,
+        "largura": "total",
+        "componente": "mapa_cartoes_uf",
+        "_nota": "Item 7 do handover de 02/10/2026: os 27 estados no MESMO componente da inicial — o mapa de cartoes de assets/js/grade-estados.js, cada estado na sua posicao geografica, com as duas barras e a mesma ficha ao clicar. Sai a disposicao em colunas por regiao."
+      }
     },
     {
       "id": "observado",
       "h2": "O que os órgãos de saúde registram",
       "tipo": "doencas",
-      "exige_texto": ["Esta página não relaciona casos ao El Niño."],
+      "exige_texto": [
+        "Esta página não relaciona casos ao El Niño."
+      ],
       "doencas": [
         {
           "h3": "Dengue",
           "grade": ".grade-figuras--3",
           "cartoes": [
-            {"id": "serie_semana_vs_faixa", "tipo": "grafico", "el": "boxDengueSemana"},
-            {"id": "mapa_uf_por_100mil", "tipo": "mapa", "el": "boxDengueUF"},
-            {"id": "lista_municipios_busca", "tipo": "lista", "el": "boxDengueMunicipios"}
+            {
+              "id": "serie_semana_vs_faixa",
+              "tipo": "grafico",
+              "el": "boxDengueSemana"
+            },
+            {
+              "id": "mapa_uf_por_100mil",
+              "tipo": "mapa",
+              "el": "boxDengueUF"
+            },
+            {
+              "id": "lista_municipios_busca",
+              "tipo": "lista",
+              "el": "boxDengueMunicipios"
+            }
           ]
         },
         {
           "h3": "Chikungunya",
           "grade": ".grade-figuras--3",
           "cartoes": [
-            {"id": "serie_semana_vs_faixa", "tipo": "grafico", "el": "boxChikSemana"},
-            {"id": "mapa_uf_por_100mil", "tipo": "mapa", "el": "boxChikUF"},
-            {"id": "lista_municipios_busca", "tipo": "lista", "el": "boxChikMunicipios"}
+            {
+              "id": "serie_semana_vs_faixa",
+              "tipo": "grafico",
+              "el": "boxChikSemana"
+            },
+            {
+              "id": "mapa_uf_por_100mil",
+              "tipo": "mapa",
+              "el": "boxChikUF"
+            },
+            {
+              "id": "lista_municipios_busca",
+              "tipo": "lista",
+              "el": "boxChikMunicipios"
+            }
           ]
         },
         {
           "h3": "Respiratórias",
           "grade": ".grade-figuras--3",
           "cartoes": [
-            {"id": "serie_semana_vs_faixa", "tipo": "grafico", "el": "boxSRAG"},
-            {"id": "mapa_uf_por_100mil", "tipo": "mapa", "el": "boxSragUF"},
-            {"id": "sg_esus", "tipo": "grafico", "el": "boxSG"}
+            {
+              "id": "serie_semana_vs_faixa",
+              "tipo": "grafico",
+              "el": "boxSRAG"
+            },
+            {
+              "id": "mapa_uf_por_100mil",
+              "tipo": "mapa",
+              "el": "boxSragUF"
+            },
+            {
+              "id": "sg_esus",
+              "tipo": "grafico",
+              "el": "boxSG"
+            }
           ]
         },
         {
           "h3": "Calor",
           "grade": ".grade-figuras--3",
           "cartoes": [
-            {"id": "serie_semana_vs_faixa", "tipo": "grafico", "el": "boxCalorSerie"},
-            {"id": "mapa_uf_por_100mil", "tipo": "mapa", "el": "boxCalor"},
-            {"id": "lista_municipios_calor", "tipo": "lista", "el": "boxCalorMunicipios"}
+            {
+              "id": "serie_semana_vs_faixa",
+              "tipo": "grafico",
+              "el": "boxCalorSerie"
+            },
+            {
+              "id": "mapa_uf_por_100mil",
+              "tipo": "mapa",
+              "el": "boxCalor"
+            },
+            {
+              "id": "lista_municipios_calor",
+              "tipo": "lista",
+              "el": "boxCalorMunicipios"
+            }
           ]
         }
       ]
@@ -91,6 +189,12 @@
       "tipo": "lista_simples"
     }
   ],
-  "texto_proibido": ["FIGURA", "Corte da edição", "corte de", "antecipação", "Backlog"],
+  "texto_proibido": [
+    "FIGURA",
+    "Corte da edição",
+    "corte de",
+    "antecipação",
+    "Backlog"
+  ],
   "_nota_texto_proibido": "A lista do handover inclui 'nota', 'defeso' e 'rota'. Elas ficam fora da verificação desta página por medida: 'nota' aparece em 'notas' e 'notificação' no texto aprovado das doenças, 'defeso' não ocorre aqui, e 'rota' não é vocabulário desta página. O portão confere a lista acima, que é a que pode morder sem falso positivo; a mesma decisão está registrada no contrato do Financiamento, com a lista própria dele."
 }

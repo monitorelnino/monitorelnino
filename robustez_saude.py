@@ -142,13 +142,19 @@ def ler_monitor():
         coord = v.get("coordenacao") or {}
         f1 = (coord.get("f1") or {}) if isinstance(coord, dict) else {}
         f2 = (coord.get("f2") or {}) if isinstance(coord, dict) else {}
-        inst = (v.get("instrumento") or {}).get("status") if isinstance(v.get("instrumento"), dict) else v.get("instrumento")
+        # O arquivo da v0.4 guarda o degrau em `instrumento.degrau`; a forma antiga usava `status`.
+        # Ler só uma das duas devolvia None e o teste de robustez saía sem número.
+        bruto_inst = v.get("instrumento")
+        inst = (bruto_inst.get("degrau") or bruto_inst.get("status")) if isinstance(bruto_inst, dict) else bruto_inst
         fora[uf] = {
             "f1": F1_SCORE.get(f1.get("status")) if f1.get("status") else None,
             "f2": F2_SCORE.get(f2.get("status")) if f2.get("status") else None,
             "f2_status": f2.get("status"),
             "instrumento": INSTRUMENTO_SCORE_V04.get(inst),
-            "cobertura": v.get("cobertura_pontos") or v.get("cobertura"),
+            # A cobertura vem como objeto (`cobertura.pontos`) no arquivo da v0.4.
+            "cobertura": ((v.get("cobertura") or {}).get("pontos")
+                          if isinstance(v.get("cobertura"), dict)
+                          else (v.get("cobertura_pontos") or v.get("cobertura"))),
         }
     return fora
 

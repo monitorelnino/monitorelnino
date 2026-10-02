@@ -533,7 +533,10 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 .tile{display:block; text-align:center; border-radius:var(--radius); padding:var(--sp-1) var(--sp-2); cursor:pointer;
   font-family:var(--font-dado); font-size:var(--fs-small); line-height:var(--lh-small); font-weight:var(--peso-medio);
   border:1px solid var(--line); transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
-  position:relative; color:var(--branco); background:var(--branco);}
+  /* 02/10/2026 (itens 3.1 e 3.2): a cor do TEXTO vem do componente, e nao de estilo inline da
+     pagina. Antes era `color:var(--branco)` sobre fundo branco, corrigido inline em index.js:
+     a pagina que esquecesse publicava texto invisivel, e o portao de layout agora reprova. */
+  position:relative; color:var(--tinta); background:var(--branco);}
 .tile:hover{transform:translateY(-2px); box-shadow:0 4px 14px rgba(21,32,26,.14); border-color:var(--teal);}
 .tile:focus-visible{transform:translateY(-2px); box-shadow:0 4px 14px rgba(21,32,26,.14); outline:2px solid var(--link); outline-offset:2px;}
 .tile.active{outline:2px solid var(--ink); outline-offset:2px;}

@@ -103,6 +103,8 @@ jobs:
           # assunto: dado
           python3 coletar_edicoes_doe.py --autoteste
           # assunto: dado
+          python3 robustez_saude.py --autoteste
+          # assunto: dado
           python3 registrar_saude_central.py --autoteste
           # assunto: dado
           python3 scripts/sondar_rotas_doe.py --autoteste

@@ -467,6 +467,94 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
             "decisao": "registro" if com_termo else "consultado sem achado"}
 
 
+# Padroes de endereco que as plataformas de diario costumam usar, para a PRIMEIRA tentativa. Cada
+# um e um palpite de ENGENHARIA, nao um dado: ele e confirmado pela propria fonte, porque o nome do
+# arquivo carrega a data e numero errado da 404.
+MOLDES_CONHECIDOS = (
+    "{base}/portal/download/{ano}/{mm}/{dd}.pdf",
+    "{base}/arquivos/{ano}/{mm}/{dd}.pdf",
+    "{base}/diario/{ano}{mm}{dd}.pdf",
+    "{base}/edicoes/{ano}-{mm}-{dd}.pdf",
+    "{base}/doe/{ano}/{mm}/doe-{dd}-{mm}-{ano}.pdf",
+)
+TENTATIVAS_POR_UF = 2
+
+
+def moldes_para(base: str) -> list:
+    """Os moldes de endereco a tentar para esta base. Funcao pura."""
+    base = (base or "").rstrip("/")
+    return [m.format(base=base, ano="{ano}", mm="{mm}", dd="{dd}") for m in MOLDES_CONHECIDOS]
+
+
+def veredito_da_descoberta(achou_padrao: bool, achou_listagem: bool, motivo: str) -> dict:
+    """O que registrar depois das duas tentativas. Funcao pura.
+
+    Sem padrao e sem listagem legivel, o canal 2 passa a ser verificacao humana — e isso CONTA como
+    consultado, pela definicao fechada de 02/10/2026. O motivo medido vai junto, sempre: sem ele,
+    "verificacao humana" seria desculpa, e nao medicao.
+    """
+    if achou_padrao:
+        return {"modo": "padrao_por_data", "conta_como_consultado": True}
+    if achou_listagem:
+        return {"modo": "listagem", "conta_como_consultado": True}
+    return {"modo": "verificacao_humana", "conta_como_consultado": True,
+            "motivo": motivo or "duas tentativas sem padrão de endereço nem listagem legível"}
+
+
+def descobrir_rota(uf: str, buscar_fn=None, data_de_prova: str = None) -> dict:
+    """Duas tentativas de achar a rota de edicao desta UF, e o veredito.
+
+    Tentativa 1: os moldes conhecidos, com uma data de prova em que houve edicao.
+    Tentativa 2: a pagina de listagem, lida como pagina publica.
+    """
+    from coletores_base import MuroDeRobo, buscar, ler
+    buscar_fn = buscar_fn or buscar
+    registro = ler("fontes_doe.json", {}) or {}
+    cfg = ((registro.get("ufs") or {}).get(uf) or {})
+    base = cfg.get("url") or ""
+    data = data_de_prova or "2026-09-10"
+    if not base:
+        return {"uf": uf, "tentativas": 0,
+                "veredito": veredito_da_descoberta(False, False, "nenhum endereço de diário registrado")}
+
+    motivos = []
+    # ── tentativa 1 · os moldes conhecidos ────────────────────────────────────────────────────
+    for molde in moldes_para(base):
+        url = endereco_da_data(molde, data)
+        try:
+            bruto = buscar_fn(url, timeout=90)
+        except MuroDeRobo as e:
+            motivos.append(f"muro de robô em {url[:70]}: {str(e)[:60]}")
+            break
+        except Exception as e:  # noqa: BLE001
+            codigo = getattr(e, "code", None) or 0
+            if codigo in (401, 403, 429, 451):
+                motivos.append(f"HTTP {codigo} em {url[:70]} — recusa respeitada")
+                break
+            continue
+        impressao = hashlib.sha256(bruto).hexdigest()
+        paginas = _texto_paginas(bruto)
+        decisao = decidir_edicao(200, len(bruto), sum(1 for x in paginas if (x or "").strip()),
+                                 len(paginas) or None, False)
+        if decisao == "lida":
+            return {"uf": uf, "tentativas": 1, "molde": molde, "impressao": impressao,
+                     "veredito": veredito_da_descoberta(True, False, "")}
+        motivos.append(f"{url[:70]}: {decisao}")
+    # ── tentativa 2 · a pagina de listagem ────────────────────────────────────────────────────
+    for caminho in ("", "/edicoes", "/diarios", "/busca"):
+        try:
+            html = buscar_fn(base.rstrip("/") + caminho, timeout=90).decode("utf-8", "replace")
+        except Exception as e:  # noqa: BLE001
+            motivos.append(f"{caminho or '/'}: {type(e).__name__}")
+            continue
+        if edicoes_da_listagem(html):
+            return {"uf": uf, "tentativas": 2, "listagem": base.rstrip("/") + caminho,
+                     "veredito": veredito_da_descoberta(False, True, "")}
+    motivos.append("listagem sem data e número de edição no HTML")
+    return {"uf": uf, "tentativas": TENTATIVAS_POR_UF,
+            "veredito": veredito_da_descoberta(False, False, " · ".join(motivos[:3]))}
+
+
 def _autoteste() -> int:
     falhas = []
 
@@ -532,6 +620,17 @@ def _autoteste() -> int:
 
     s = situacao_do_canal2("PB")
     ok("PB tem padrão por data", s["modo"] == "padrao_por_data")
+    ok("os moldes conhecidos saem com a base preenchida",
+       moldes_para("https://x.gov.br/")[0].startswith("https://x.gov.br/portal/download/"))
+    ok("padrão achado conta como consultado",
+       veredito_da_descoberta(True, False, "")["modo"] == "padrao_por_data")
+    ok("listagem achada conta como consultado",
+       veredito_da_descoberta(False, True, "")["modo"] == "listagem")
+    ok("sem rota, o canal 2 é verificação humana E conta como consultado",
+       veredito_da_descoberta(False, False, "404 em tudo") == {
+           "modo": "verificacao_humana", "conta_como_consultado": True, "motivo": "404 em tudo"})
+    ok("verificação humana sem motivo recebe o motivo padrão",
+       "duas tentativas" in veredito_da_descoberta(False, False, "")["motivo"])
     ok("UF sem rota fica 'a descobrir', e não 'sem diário'",
        situacao_do_canal2("XX")["modo"] == "a_descobrir")
     ok("UF com adaptador de busca entra como busca no diário",
@@ -543,8 +642,10 @@ def _autoteste() -> int:
 
     fonte = pathlib.Path(__file__).read_text(encoding="utf-8")
     escritas = [l.strip() for l in fonte.splitlines() if l.strip().startswith("gravar(")]
+    # O modo --descobrir escreve o mesmo registro por UF, e por isso a conta é "toda escrita é do
+    # registro da UF ou do índice" — e não um número fixo de linhas.
     ok("trava estrutural: as escritas são o registro da UF e o índice",
-       len(escritas) == 2 and all(e.startswith(("gravar(arquivo", "gravar(INDICE")) for e in escritas))
+       escritas and all(e.startswith(("gravar(arquivo", "gravar(INDICE")) for e in escritas))
     ok("trava estrutural: nenhum arquivo do banco é destino",
        not any(f'gravar("{b}' in fonte for b in BANCO_PROIBIDO))
     # Promover a registro é do juiz. A trava confere no código COMPILADO: nenhuma função deste
@@ -563,7 +664,7 @@ def _autoteste() -> int:
        "aplicar" not in nomes and "julgar_saude" not in nomes)
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
-          else "✓ AUTOTESTE OK — 34 casos, sem rede e sem escrita.")
+          else "✓ AUTOTESTE OK — 39 casos, sem rede e sem escrita.")
     return 1 if falhas else 0
 
 
@@ -573,6 +674,36 @@ def main() -> int:
 
     sys.path.insert(0, str(RAIZ))
     from coletores_base import hoje_editorial
+
+    if "--descobrir" in sys.argv:
+        from coletores_base import gravar, hoje_editorial, ler
+        registro = ler("fontes_doe.json", {}) or {}
+        ufs = registro.get("ufs") or {}
+        hoje = hoje_editorial().strftime("%d/%m/%Y")
+        alvos = [uf for uf, v in sorted(ufs.items())
+                 if not (v or {}).get("adaptador") and uf not in PADROES]
+        print(f"{len(alvos)} unidade(s) sem rota de edição a descobrir, "
+              f"{TENTATIVAS_POR_UF} tentativa(s) cada")
+        for uf in alvos:
+            r = descobrir_rota(uf)
+            v = r["veredito"]
+            arquivo = f"{PASTA}/{uf}.json"
+            (RAIZ / "data" / PASTA).mkdir(parents=True, exist_ok=True)
+            reg = ler(arquivo, {}) or {}
+            reg.setdefault("_governanca", (
+                "Canal 2 desta unidade. Quando a rota de edição não foi achada em duas tentativas, "
+                "o canal 2 passa a ser verificação humana registrada, com o motivo medido — e isso "
+                "conta como consultado (definição fechada de 02/10/2026)."))
+            reg["canal2"] = dict(v, em=hoje, tentativas=r.get("tentativas"))
+            if r.get("molde"):
+                reg["canal2"]["molde_descoberto"] = r["molde"]
+            if r.get("listagem"):
+                reg["canal2"]["listagem"] = r["listagem"]
+            reg.setdefault("edicoes", {})
+            gravar(arquivo, reg)
+            print(f"  {uf}: {v['modo']}" + (f" · {v.get('motivo', '')[:90]}" if v.get("motivo") else "")
+                  + (f" · molde {r['molde']}" if r.get("molde") else ""))
+        return 0
 
     if "--relatorio" in sys.argv:
         from coletores_base import ler
