@@ -858,3 +858,281 @@ const AREAS = [
     });
   }).catch(() => {});
 })();
+
+
+/* ===== Cartões e figuras criados pelo contrato de layout (02/10/2026) =====
+ * Um só lugar para o que o contrato acrescentou: o número do índice no topo, a lista do que foi
+ * localizado em cada estado, o mapa do risco previsto, o mapa de síndrome respiratória grave por
+ * estado, a distribuição do calor por classe e as três buscas por município.
+ */
+(function cartoesDoContrato(){
+  const el = id => document.getElementById(id);
+  const n = v => Number(v || 0).toLocaleString('pt-BR');
+  const umaCasa = v => Number(v || 0).toLocaleString('pt-BR', {minimumFractionDigits: 1, maximumFractionDigits: 1});
+  const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const UFS = ('AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO').split(' ');
+
+  /* 1 · O número do MARÉ Saúde no topo. Enquanto não forem 27 verificadas, o rótulo diz de quantas
+   * é a média — a diferença entre publicar uma média parcial e publicar um índice nacional. */
+  fetch('data/monitor_saude.json').then(r => r.ok ? r.json() : null).then(MS => {
+    const res = ((MS || {}).resumo) || {};
+    if (res.media_das_verificadas == null) {
+      if (el('nIndiceSaude')) el('nIndiceSaude').textContent = 'sem coleta';
+      return;
+    }
+    if (el('nIndiceSaude')) {
+      el('nIndiceSaude').textContent = Number(res.media_das_verificadas)
+        .toLocaleString('pt-BR', {minimumFractionDigits: 1, maximumFractionDigits: 1});
+    }
+    if (el('rotuloIndiceSaude')) {
+      el('rotuloIndiceSaude').textContent = res.verificadas >= 27
+        ? 'de 100, na preparação publicada em saúde'
+        : 'de 100, média dos ' + res.verificadas + ' estados verificados';
+    }
+    if (el('fonteIndiceSaude')) {
+      el('fonteIndiceSaude').textContent = 'MARÉ, sobre documentos oficiais lidos · '
+        + (res.verificadas || 0) + ' de 27 estados verificados';
+    }
+  }).catch(() => {});
+
+  /* 2 · O que foi localizado em cada estado: plano, coordenação na saúde e ligação com o governo
+   * do estado. Em linguagem de leitor — o leitor não precisa saber que internamente são F1 e F2. */
+  Promise.all([
+    fetch('data/saude_uf.json').then(r => r.ok ? r.json() : null),
+    fetch('data/monitor_saude_v04.json').then(r => r.ok ? r.json() : null),
+  ]).then(([SUFd, V04]) => {
+    const alvo = el('dlVerificacaoUF');
+    if (!alvo || !SUFd) return;
+    const uf04 = (V04 || {}).uf || {};
+    const doc = o => (o && o.doc) ? esc(o.doc) + (o.data ? ' · ' + esc(o.data) : '') : null;
+    alvo.innerHTML = UFS.map(uf => {
+      const u = (SUFd.uf || {})[uf] || {};
+      const inst = ((u.instrumentos || [])[0]) || {};
+      const c = uf04[uf] || {};
+      const linhas = [
+        ['Plano de saúde', doc(inst)],
+        ['Coordenação na saúde', doc((c.coordenacao || {}).f1 || c.coordenacao)],
+        ['Ligação com o governo do estado', doc((c.coordenacao || {}).f2)],
+      ].map(([rot, v]) => rot + ': ' + (v || 'não localizado até o corte'));
+      return '<dt>' + esc(uf) + '</dt><dd>' + linhas.join('<br>') + '</dd>';
+    }).join('');
+    const linha = el('linhaVerificacaoUF');
+    if (linha) {
+      const comPlano = UFS.filter(uf => (((SUFd.uf || {})[uf] || {}).instrumentos || [{}])[0].doc).length;
+      linha.textContent = comPlano + ' de 27 com plano localizado · atualizado em ' + (SUFd.corte || '—');
+    }
+    const leg = el('legVerificacaoUF');
+    if (leg) leg.innerHTML = '<span class="escala">Documento oficial lido em cada estado; o que não foi localizado aparece como tal.</span>';
+    if (window.MonitorMapas) {
+      MonitorMapas.credito('boxVerificacaoUF', {fontes: ['MARÉ, sobre diários oficiais e portais das secretarias'], data: SUFd.corte});
+    }
+  }).catch(() => {});
+
+  /* 3 · Risco previsto por estado — famílias derivadas dos boletins do Painel El Niño. */
+  Promise.all([
+    fetch('data/geo_uf.json').then(r => r.ok ? r.json() : null),
+    fetch('data/saude_uf.json').then(r => r.ok ? r.json() : null),
+  ]).then(([GEO, SUFd]) => {
+    if (!el('mapaRiscoSan') || !GEO || !SUFd || !window.MonitorMapas) return;
+    const FAM = {seca: ['Seca, calor e fogo', MonitorMapas.PALETA.risco.seca],
+                 chuvas: ['Chuvas extremas', MonitorMapas.PALETA.risco.chuvas],
+                 multi: ['As duas famílias', MonitorMapas.PALETA.risco.multi]};
+    const fam = uf => {
+      const r = (((SUFd.uf || {})[uf] || {}).risco_sanitario_projetado || []).join(' ').toLowerCase();
+      const s = /calor|queimad|arbovir|estiagem|seca/.test(r), c = /leptospir|diarre|hepatite|chuva/.test(r);
+      return s && c ? 'multi' : s ? 'seca' : c ? 'chuvas' : null;
+    };
+    const ctx = MonitorMapas.contexto(GEO, 480, 460);
+    MonitorMapas.fundo && MonitorMapas.fundo('mapaRiscoSan', 'chuva_claro');
+    MonitorMapas.ufs(ctx, 'mapaRiscoSan',
+      uf => fam(uf) ? FAM[fam(uf)][1] : MonitorMapas.NEUTRA,
+      uf => { const r = ((SUFd.uf || {})[uf] || {}).risco_sanitario_projetado || [];
+              return r.length ? esc(r.join('<br>')) : 'sem risco previsto registrado'; });
+    MonitorMapas.legenda('legRiscoSan', Object.values(FAM).map(v => ({cor: v[1], rotulo: v[0]}))
+      .concat([{cor: MonitorMapas.NEUTRA, rotulo: 'sem risco previsto registrado'}]));
+    const dl = el('dlRiscoSan');
+    if (dl) {
+      dl.innerHTML = UFS.map(uf => '<dt>' + esc(uf) + '</dt><dd>'
+        + esc((((SUFd.uf || {})[uf] || {}).risco_sanitario_projetado || ['sem risco previsto registrado']).join('; '))
+        + '</dd>').join('');
+    }
+    if (el('linhaRiscoSan')) el('linhaRiscoSan').textContent = 'boletins nº 1 a 3 do Painel El Niño';
+    MonitorMapas.credito('boxRiscoSan', {fontes: ['Painel El Niño 2026-2027 (CEMADEN/INPE)', 'boletins nº 1 a 3'], data: SUFd.corte});
+  }).catch(() => {});
+
+  /* 4 · Síndrome respiratória grave por estado, por 100 mil habitantes. */
+  Promise.all([
+    fetch('data/geo_uf.json').then(r => r.ok ? r.json() : null),
+    fetch('data/saude_desfechos/srag_serie.json').then(r => r.ok ? r.json() : null),
+    fetch('data/populacao_censo2022.json').then(r => r.ok ? r.json() : null),
+    fetch('data/municipios_ibge_referencia.json').then(r => r.ok ? r.json() : null),
+  ]).then(([GEO, S, POP, REF]) => {
+    const leg = el('legSragUF');
+    if (!S || !S.serie) {
+      if (leg) leg.innerHTML = '<span class="escala">Série de síndrome respiratória grave ainda não coletada — lacuna declarada.</span>';
+      return;
+    }
+    const popUF = {};
+    if (POP && REF) {
+      (Array.isArray(REF) ? REF : Object.values(REF)).forEach(m => {
+        popUF[m.uf] = (popUF[m.uf] || 0) + Number(POP[String(m.codigo_ibge).padStart(7, '0')] || 0);
+      });
+    }
+    const ano = String(S.ano_corrente || new Date().getFullYear());
+    const acum = {}, taxa = {};
+    Object.entries(S.serie).forEach(([uf, porSE]) => {
+      if (!porSE || typeof porSE !== 'object' || uf === 'BR') return;
+      acum[uf] = Object.entries(porSE).filter(([k, v]) => k.startsWith(ano) && typeof v === 'number')
+        .reduce((a, [, v]) => a + v, 0);
+      if (popUF[uf]) taxa[uf] = acum[uf] / popUF[uf] * 1e5;
+    });
+    if (el('mapaSragUF') && GEO && window.MonitorMapas) {
+      const ctx = MonitorMapas.contexto(GEO, 480, 460);
+      const rampa = MonitorMapas.PALETA.atmosfera.chuva_claro.rampa;
+      const max = Math.max(1, ...Object.values(taxa));
+      MonitorMapas.fundo && MonitorMapas.fundo('mapaSragUF', 'chuva_claro');
+      MonitorMapas.ufs(ctx, 'mapaSragUF',
+        uf => taxa[uf] == null ? MonitorMapas.NEUTRA : rampa[Math.min(rampa.length - 1, Math.floor(taxa[uf] / max * rampa.length))],
+        uf => taxa[uf] == null ? uf + ': sem coleta'
+          : uf + ': ' + umaCasa(taxa[uf]) + ' por 100 mil habitantes (' + n(acum[uf]) + ' internações)');
+      MonitorMapas.legenda('legSragUF', [
+        ...rampa.map((c, i) => ({cor: c, rotulo: i === 0 ? 'menor' : (i === rampa.length - 1 ? 'maior' : '·')})),
+        {cor: MonitorMapas.NEUTRA, rotulo: 'sem coleta'}]);
+      MonitorMapas.credito('boxSragUF', {fontes: ['SIVEP-Gripe (Ministério da Saúde)', 'Censo 2022 (IBGE)'], data: S.gerado_em});
+    }
+    if (el('dlSragUF')) {
+      el('dlSragUF').innerHTML = Object.keys(taxa).sort((a, b) => taxa[b] - taxa[a]).map(uf =>
+        '<dt>' + esc(uf) + '</dt><dd>' + umaCasa(taxa[uf]) + ' por 100 mil habitantes · ' + n(acum[uf]) + ' internações</dd>').join('');
+    }
+    if (el('linhaSragUF')) el('linhaSragUF').textContent = 'acumulado de ' + ano + ' · ' + Object.keys(taxa).length + ' estados com dado';
+  }).catch(() => {});
+
+  /* 5 · Calor: a distribuição por classe. O Painel do MS publica FOTOGRAFIA por município, não
+   * série — e o cartão mostra o que a fonte tem, em vez de fingir uma série semanal. */
+  fetch('data/saude_sinais.json').then(r => r.ok ? r.json() : null).then(SS => {
+    const C = ((SS || {}).calor_excesso) || null;
+    const r = (C || {}).resumo || null;
+    const leg = el('legCalorSerie');
+    if (!r) {
+      if (leg) leg.innerHTML = '<span class="escala">Painel de excesso de calor sem coleta até o corte.</span>';
+      return;
+    }
+    const classes = [['Normal', r.normal || 0], ['Baixo', r.baixo || 0], ['Severo', r.severo || 0],
+                     ['Extremo', r.extremo || 0]];
+    const cv = el('cCalorSerie');
+    if (cv && typeof Chart !== 'undefined' && window.MonitorMapas) {
+      MonitorMapas.padraoGraficos(window.Chart);
+      new Chart(cv, {type: 'bar', data: {labels: classes.map(c => c[0]),
+        datasets: [{label: 'municípios', data: classes.map(c => c[1]),
+                    backgroundColor: MonitorMapas.PALETA.ordinal4}]},
+        options: {animation: false, responsive: true, maintainAspectRatio: false,
+          plugins: {legend: {display: false}},
+          scales: {y: {beginAtZero: true, title: {display: true, text: 'municípios'}}}}});
+      MonitorMapas.legenda('legCalorSerie', classes.map((c, i) => ({cor: MonitorMapas.PALETA.ordinal4[i], rotulo: c[0].toLowerCase()})));
+      MonitorMapas.credito('boxCalorSerie', {fontes: ['Painel Nacional de Excesso de Calor (Ministério da Saúde)'], data: C.data});
+    }
+    if (el('linhaCalorSerie')) {
+      el('linhaCalorSerie').textContent = n(C.municipios_lidos || 0) + ' município(s) lido(s)'
+        + (C.data ? ' · consulta de ' + C.data : '');
+    }
+    if (el('fraseCalor')) {
+      el('fraseCalor').textContent = n((r.severo || 0) + (r.extremo || 0))
+        + ' município(s) em classe severa ou extrema de excesso de calor na consulta mais recente, '
+        + 'de ' + n(C.municipios_lidos || 0) + ' lidos. O vocabulário das classes é o do Ministério '
+        + 'da Saúde.';
+    }
+  }).catch(() => {});
+
+  /* 6 · As três buscas por município. Mesma trava nas três: cidade fora do que a fonte cobre
+   * aparece como NÃO ACOMPANHADA, nunca como zero — e a lista oferecida é a do IBGE inteira, para
+   * que a busca possa dizer que a cidade existe e não é coberta. */
+  function buscaPorMunicipio(sufixo, carregar, responder, contar, fontes) {
+    const sel = el('uf' + sufixo), ent = el('nome' + sufixo), lista = el('lista' + sufixo),
+          conta = el('conta' + sufixo), saida = el('resultado' + sufixo);
+    if (!sel || !ent || !lista || !saida) return;
+    Promise.all([
+      fetch('data/municipios_ibge_referencia.json').then(r => r.ok ? r.json() : null),
+      carregar(),
+    ]).then(([REF, base]) => {
+      if (!REF) { conta.textContent = 'Lista de municípios sem coleta até o corte.'; return; }
+      const ref = Array.isArray(REF) ? REF : Object.values(REF);
+      const porUF = {}, codigo = {};
+      ref.forEach(m => {
+        const c = String(m.codigo_ibge).padStart(7, '0');
+        (porUF[m.uf] = porUF[m.uf] || []).push(m.nome);
+        codigo[m.uf + '|' + m.nome.toLowerCase()] = c;
+      });
+      Object.keys(porUF).sort().forEach(uf => sel.insertAdjacentHTML('beforeend', '<option value="' + uf + '">' + uf + '</option>'));
+      conta.textContent = contar(base, ref);
+      if (window.MonitorMapas && fontes) {
+        MonitorMapas.credito('box' + sufixo, {fontes: fontes, data: (base && (base.gerado_em || base.data)) || null});
+      }
+      sel.addEventListener('change', () => {
+        lista.innerHTML = (porUF[sel.value] || []).slice().sort((a, b) => a.localeCompare(b, 'pt-BR'))
+          .map(x => '<option value="' + esc(x) + '"></option>').join('');
+        ent.disabled = !sel.value;
+        ent.value = '';
+        saida.hidden = true;
+      });
+      const mostrar = () => {
+        const cod = codigo[sel.value + '|' + (ent.value || '').trim().toLowerCase()];
+        if (!cod) { saida.hidden = true; return; }
+        saida.hidden = false;
+        saida.innerHTML = '<p class="u-mb-0"><strong>' + esc(ent.value) + ' (' + esc(sel.value) + ')</strong></p>'
+          + responder(base, cod);
+      };
+      ent.addEventListener('change', mostrar);
+      ent.addEventListener('input', () => { if ((ent.value || '').length > 2) mostrar(); });
+    }).catch(() => {});
+  }
+
+  const NIVEL = {1: 'nível 1 (baixa atividade)', 2: 'nível 2 (atenção)', 3: 'nível 3 (alerta)',
+                 4: 'nível 4 (emergência)'};
+  const respostaAlerta = (base, cod) => {
+    const m = base && base.municipios && base.municipios[cod];
+    if (!m) return '<p class="u-mb-0">Município não acompanhado nesta série.</p>';
+    if (m.nivel_ultima_se == null) return '<p class="u-mb-0">Sem semana consolidada até o corte.</p>';
+    return '<p class="u-mb-0">' + esc(NIVEL[m.nivel_ultima_se] || ('nível ' + m.nivel_ultima_se))
+      + ' na semana ' + esc(m.ultima_se || '—') + '.</p>';
+  };
+  const contarAlerta = (base, ref) => ((base && base.municipios)
+    ? Object.keys(base.municipios).length.toLocaleString('pt-BR') + ' municípios acompanhados de '
+      + ref.length.toLocaleString('pt-BR') + ' no país'
+    : 'Série sem coleta até o corte.');
+
+  buscaPorMunicipio('DengueMunicipios',
+    () => fetch('data/saude_desfechos/serie_painel.json').then(r => r.ok ? r.json() : null),
+    respostaAlerta, contarAlerta, ['InfoDengue (Fiocruz/FGV)']);
+  buscaPorMunicipio('ChikMunicipios',
+    () => fetch('data/saude_desfechos/chik_serie_painel.json').then(r => r.ok ? r.json() : null),
+    respostaAlerta, contarAlerta, ['InfoDengue (Fiocruz/FGV)']);
+  buscaPorMunicipio('CalorMunicipios',
+    () => fetch('data/saude_sinais.json').then(r => r.ok ? r.json() : null).then(SS => (SS || {}).calor_excesso || null),
+    (base, cod) => {
+      const m = base && base.municipios && base.municipios[cod];
+      if (!m) return '<p class="u-mb-0">Município não lido na consulta mais recente.</p>';
+      const classe = m.classe || m.nivel || m;
+      return '<p class="u-mb-0">Classe ' + esc(String(classe)) + ' na consulta de ' + esc(base.data || '—') + '.</p>';
+    },
+    (base, ref) => (base && base.municipios)
+      ? Object.keys(base.municipios).length.toLocaleString('pt-BR') + ' municípios lidos na consulta mais recente'
+      : 'Painel sem coleta até o corte.',
+    ['Painel Nacional de Excesso de Calor (Ministério da Saúde)']);
+
+  /* 7 · A lista do governo federal, sem cartão (o contrato pede lista simples). */
+  fetch('data/saude_federal.json').then(r => r.ok ? r.json() : null).then(F => {
+    const alvo = el('listaFederalSaude');
+    if (!alvo) return;
+    const itens = (F && (F.itens || F.documentos)) || [];
+    if (!itens.length) {
+      alvo.innerHTML = '<li>Nenhum documento federal localizado até o corte.</li>';
+      return;
+    }
+    alvo.innerHTML = itens.map(x => {
+      const nome = esc(x.nome || x.titulo || x.documento || 'documento');
+      const meta = [x.orgao, x.data].filter(Boolean).map(esc).join(' · ');
+      const alvoTxt = x.url ? '<a href="' + esc(x.url) + '" target="_blank" rel="noopener">' + nome + '</a>' : nome;
+      return '<li>' + alvoTxt + (meta ? ' <span class="u-muted">(' + meta + ')</span>' : '') + '</li>';
+    }).join('');
+  }).catch(() => {});
+})();

@@ -72,14 +72,18 @@ for (const id of ["mapaMonitor", "mapaDengueUF", "mapaChikUF", "mapaCalor"]) {
   // ele faz mais abaixo, no teste da prontidão.
   const nNV = Object.values(SUF.uf).filter(u => u.status === "NAO_VERIFICADO").length;
   // ── a página reorganizada pela pergunta do leitor (bloco A, 02/10/2026) ───────────────────
-  const ordem = [...d.querySelectorAll("main > .panel")].map(e => e.id);
+  // 02/10/2026 (contrato de layout): as secoes da pagina sao <section>, nao .panel — o contrato
+  // tirou a caixa cinza. A ordem cobrada continua a mesma.
+  const ordem = [...d.querySelectorAll("main > section, main > .panel")].map(e => e.id);
   teste("ordem: números, situação por estado, o que os órgãos registram, governo federal",
     ordem.indexOf("numerosSaude") < ordem.indexOf("estadual")
     && ordem.indexOf("estadual") < ordem.indexOf("observado")
     && ordem.indexOf("observado") < ordem.indexOf("saude-federal-painel"));
-  teste("saiu da página: os medidores de antecipação, os outros dois mapas de estado e a amostra no mapa",
-    !q("heroSaude") && !q("mapaStatus") && !q("mapaRiscoSan") && !q("mapaDesf") && !q("mapaChik")
-    && !q("boxDDA"));
+  // O mapa do risco previsto VOLTOU pelo contrato de layout (secao "estadual", terceiro cartao):
+  // ele responde a que o preparo de cada estado deveria responder. O que continua fora sao os
+  // medidores, o mapa de status e a amostra no mapa.
+  teste("saiu da página: os medidores de antecipação, o mapa de status e a amostra no mapa",
+    !q("heroSaude") && !q("mapaStatus") && !q("mapaDesf") && !q("mapaChik") && !q("boxDDA"));
 
   // Os cinco cartões do topo, cada um do seu arquivo primário.
   const DEN = JSON.parse(fs.readFileSync(path.join(raiz, "data", "saude_desfechos", "dengue_sinan_serie.json"), "utf8"));
@@ -109,8 +113,11 @@ for (const id of ["mapaMonitor", "mapaDengueUF", "mapaChikUF", "mapaCalor"]) {
     txt("nEmergSaude") === String(MSd2.resposta.emergencias));
 
   // Um mapa só por estado, e a grade com ficha.
-  teste("um mapa de estado, e ele é a prontidão",
-    d.querySelectorAll("#estadual .figura").length === 1 && !!q("mapaMonitor"));
+  // Tres cartoes na secao do estado, pelo contrato: prontidao, o que foi localizado em cada um e
+  // o risco previsto. A prontidao continua sendo o mapa.
+  teste("três cartões de estado, com a prontidão no mapa",
+    d.querySelectorAll("#estadual .figura").length === 3 && !!q("mapaMonitor")
+    && !!q("boxVerificacaoUF") && !!q("boxRiscoSan"));
   teste("grade dos 27 com ficha ao clicar", (() => {
     const tiles = [...d.querySelectorAll("#regionsSaude .tile")];
     if (tiles.length !== 27) return false;

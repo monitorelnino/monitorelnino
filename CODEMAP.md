@@ -6,6 +6,8 @@ Serve a uma pergunta só: **por onde começar a ler** quando um pedido chega. An
 
 **O que ele não é:** análise de dependência completa. Não segue `import` transitivo nem chamada dinâmica — é um índice de primeira ordem, tirado dos `fetch(...)`, dos `gravar(...)` e das listas de páginas dos portões. Para "por onde começo", basta; para "nada mais pode ser afetado", quem responde é o portão de runtime.
 
+**Regra de página: contrato + componentes** (editoria, 02/10/2026). A forma de uma página não vive no HTML: vive em `layout/contratos/<pagina>.json`, que declara seções, ordem, cartões, grades e texto proibido. O HTML e o JavaScript se conformam ao contrato, e `scripts/verificar_layout.py` reprova a divergência — nenhum PR de página com contrato é mesclado com ele vermelho. Cartão de número é `.cartao-numero` em `.grade-numeros--3`; figura é `.cartao-mapa` em `.grade-figuras--3`; nada de ajuste de pixel por cartão.
+
 Atualizado em 02/10/2026.
 
 | arquivo | telas que afeta | dados que usa | portões que o cobrem | toca o índice? |
@@ -33,7 +35,7 @@ Atualizado em 02/10/2026.
 | `assets/js/prefeituras.js` | prefeituras.html | — | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_legendas.js`, `verificar_publicado_navegador.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | não |
 | `assets/js/proteja-se.js` | proteja-se.html | `alertas/vigentes.json`, `contatos_uf.json`, `saude_sinais.json`, `sinais_risco.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | não |
 | `assets/js/proveniencia.js` | financiamento.html, monitor-de-riscos.html, saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+36) | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_publicado_navegador.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | não |
-| `assets/js/saude.js` | saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+46) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_publicado_navegador.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | não |
+| `assets/js/saude.js` | saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+47) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_publicado_navegador.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | não |
 | `analisar_decretos.py` | — | — | — | não |
 | `analise_sensibilidade.py` | — | — | — | não |
 | `aplicar_c10_imprensa.py` | — | — | — | não |

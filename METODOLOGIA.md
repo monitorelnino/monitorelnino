@@ -2942,3 +2942,38 @@ causa; o que os achou foi o portão de runtime, figura por figura.
 **O crédito de fonte vai com o id literal**, não com variável: `verificar_saude.py` confere a
 presença do crédito lendo o fonte do JavaScript, e um id em variável é invisível para ele. Perder a
 conferência para economizar quatro linhas seria trocar prova por elegância.
+
+## 88. Contrato de layout: a forma da página deixa de ser hábito (02/10/2026)
+
+A editoria apontou, três rodadas seguidas, o mesmo tipo de defeito nas páginas de Saúde e
+Financiamento: cartão dentro de caixa cinza, mapa sozinho ocupando um terço da largura,
+grade de três colunas com dois cartões, rótulo "FIGURA n" repetido, texto interno vazado
+para o leitor. Cada aponte virava um ajuste pontual, e o defeito voltava no cartão seguinte —
+porque a forma da página só existia como hábito espalhado pelo HTML.
+
+A partir desta edição, a forma é **declarada**. Cada página com contrato tem um arquivo
+`layout/contratos/<pagina>.json` que diz: as seções e sua ordem, o `h2` de cada uma, os
+cartões de cada seção com o identificador do elemento que os contém, a grade esperada, a
+grade dos 27 estados onde houver, e a lista de texto proibido. O contrato é a verdade; o HTML
+e o JavaScript se conformam a ele.
+
+Quem verifica é `scripts/verificar_layout.py`, portão bloqueante. Ele não lê o HTML: lê o
+**despejo da página renderizada**, produzido por `scripts/_layout_dump.js` em 1280 e 390 px de
+largura, com o JavaScript já executado. A divisão é de propósito — a regra é texto
+legível, a medição é navegador, e o julgamento é uma função pura com autoteste offline
+de 16 casos. O portão reprova: ordem de seção fora do contrato, cartão contratado ausente ou
+em travessão, figura de dado fora do componente `.cartao-mapa`, grade de três colunas com
+coluna vazia que não seja a última linha, cartão com menos de 60% da largura dos vizinhos,
+texto proibido visível, série existente anunciada como "sem dado", erro de JavaScript e
+rolagem horizontal.
+
+Duas consequências de método. Primeira: o rótulo "FIGURA n" sai do cartão de mapa — a
+numeração sequencial continua valendo para a figura avulsa, e `verificar_consistencia_visual.js`
+foi estreitado a ela. Segunda: onde o contrato e um portão de runtime antigo divergiam (o
+`.panel` que virou `<section>`, o mapa de risco previsto que voltou à seção do estado), vence o
+contrato, porque ele é a decisão da editoria escrita; o portão foi atualizado, nunca
+contornado.
+
+Isto não muda nenhum número do índice. É regra de forma, subordinada à prova
+(`METODOLOGIA.md`) e à narrativa (`AI_EDITORIAL_NARRATIVE_GOVERNANCE.md`), e serve ao §25 da
+direção de arte: não se maquia componente por componente.

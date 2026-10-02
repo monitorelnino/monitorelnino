@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-02 · #518 · Contrato de layout: a forma da página sai do HTML
+
+A forma de cada página passa a viver em `layout/contratos/<pagina>.json` — seções, ordem, cartões, grades e texto proibido — e um portão novo mede a página renderizada em 1280 e 390 px, reprovando a divergência. A editoria apontava o mesmo defeito cartão a cartão; a regra agora está num lugar só. Saúde reconstruída ao contrato. Em `layout/`, `scripts/`, `saude.html`, `assets/js/saude.js`, `CODEMAP.md`.
+
 ## 2026-10-02 · #515 · Recursos federais de defesa civil por município
 
 Coletor novo: lê das portarias da SEDEC no DOU quanto a União autorizou transferir a cada município,

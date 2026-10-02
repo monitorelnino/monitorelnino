@@ -52,42 +52,49 @@
 
   
 
-  <div class="panel" id="numerosSaude">
+  <section id="numerosSaude">
+    <h2 class="sr-only">Os números desta edição</h2>
     <div class="grade-numeros grade-numeros--3">
       <div class="cartao-numero">
         <p class="cartao-numero-familia">Dengue</p>
-        <p class="cartao-numero-valor" id="nDengueSE">8.146</p>
+        <p class="cartao-numero-valor"><span id="nDengueSE">8.146</span></p>
         <p class="cartao-numero-rotulo" id="rotuloDengueSE">notificações de dengue na última semana epidemiológica fechada</p>
         <p class="cartao-numero-fonte" id="fonteDengueSE">—</p>
         <p class="cartao-numero-fonte">As últimas semanas são parciais e sobem com as notificações atrasadas. Este número não indica relação com o El Niño.</p>
       </div>
       <div class="cartao-numero">
         <p class="cartao-numero-familia">Respiratórias</p>
-        <p class="cartao-numero-valor" id="nSragSE">8.534</p>
+        <p class="cartao-numero-valor"><span id="nSragSE">8.534</span></p>
         <p class="cartao-numero-rotulo" id="rotuloSragSE">internações por síndrome respiratória grave na última semana epidemiológica fechada</p>
         <p class="cartao-numero-fonte" id="fonteSragSE">—</p>
         <p class="cartao-numero-fonte">As últimas semanas são parciais e sobem com as notificações atrasadas. Este número não indica relação com o El Niño.</p>
       </div>
       <div class="cartao-numero">
         <p class="cartao-numero-familia">Alerta</p>
-        <p class="cartao-numero-valor" id="nUFsAlerta">3 de 27</p>
+        <p class="cartao-numero-valor"><span id="nUFsAlerta">3 de 27</span></p>
         <p class="cartao-numero-rotulo">estados com dengue em nível de alerta</p>
         <p class="cartao-numero-fonte" id="fonteUFsAlerta">—</p>
       </div>
       <div class="cartao-numero">
         <p class="cartao-numero-familia">Calor</p>
-        <p class="cartao-numero-valor" id="nCalorMun">26</p>
+        <p class="cartao-numero-valor"><span id="nCalorMun">26</span></p>
         <p class="cartao-numero-rotulo">municípios em classe severa ou extrema de excesso de calor</p>
         <p class="cartao-numero-fonte" id="fonteCalorMun">—</p>
       </div>
       <div class="cartao-numero">
         <p class="cartao-numero-familia">Resposta</p>
-        <p class="cartao-numero-valor" id="nEmergSaude">0</p>
+        <p class="cartao-numero-valor"><span id="nEmergSaude">0</span></p>
         <p class="cartao-numero-rotulo">emergências em saúde pública declaradas no ciclo</p>
         <p class="cartao-numero-fonte" id="fonteEmergSaude">—</p>
       </div>
+      <div class="cartao-numero">
+        <p class="cartao-numero-familia">MARÉ Saúde</p>
+        <p class="cartao-numero-valor"><span id="nIndiceSaude">31,8</span></p>
+        <p class="cartao-numero-rotulo" id="rotuloIndiceSaude">de 100, média dos 21 estados verificados</p>
+        <p class="cartao-numero-fonte" id="fonteIndiceSaude">MARÉ, sobre documentos oficiais lidos · 21 de 27 estados verificados</p>
+      </div>
     </div>
-  </div>
+  </section>
 
 <div class="panel panel--destaque" id="comoler-saude-painel" hidden>
     <div id="comolerSaude" hidden data-voz="ficha">
@@ -105,45 +112,64 @@
     <button type="button" class="detail-fechar" id="detailSaudeFechar" aria-label="Fechar">×</button>
     <div id="detailSaudeConteudo"></div>
   </dialog>
-  <div class="panel" id="estadual">
+  <section id="estadual">
     <h2>A situação de cada estado</h2>
     <p class="hint">O MARÉ Saúde de cada estado e a faixa em que ele está. Na ficha: o plano de
-      saúde publicado, quem coordena a resposta e o risco previsto nos boletins do Painel El Niño.
-      Estado sem número ainda não foi verificado.</p>
+      saúde publicado, quem coordena na saúde, a ligação com o governo do estado e o risco previsto
+      nos boletins do Painel El Niño. Estado sem número ainda não foi verificado.</p>
     <div class="grade-figuras grade-figuras--3 grade-mapas">
-<figure class="figura figura--mapa" id="boxMonitor">
+<figure class="figura figura--mapa cartao-mapa r-chuva" id="boxMonitor">
+        <p class="cartao-mapa-familia">MARÉ Saúde</p>
+        <p class="cartao-mapa-boletim" id="linhaMonitor">—</p>
         <h3 class="figura-titulo">Prontidão sanitária por estado</h3>
-        <p class="figura-sub">Corte da edição · 0 a 100 por UF verificada · média de instrumento, cobertura populacional e antecipação </p>
+        <p class="figura-sub">0 a 100 por UF verificada · média de instrumento, cobertura populacional e tempo de publicação </p>
         <div class="figura-midia"><svg id="mapaMonitor" role="img" aria-label="Mapa do Brasil com a prontidão sanitária por estado" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legMonitor"></div>
         <details class="figura-dados" data-alternativa="dados"><summary>Ver em tabela</summary>
           <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblMonitor"><thead><tr><th>UF</th><th>Prontidão</th><th>Faixa</th><th>Instrumento</th><th>Cobertura sanitária</th><th>Antecipação</th><th>Dengue na capital</th><th>Risco projetado</th></tr></thead><tbody></tbody></table></div>
         </details>
+      </figure>      <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxVerificacaoUF">
+        <p class="cartao-mapa-familia">Verificação</p>
+        <p class="cartao-mapa-boletim" id="linhaVerificacaoUF">—</p>
+        <h3 class="figura-titulo">O que foi localizado em cada estado</h3>
+        <p class="figura-sub">27 estados · plano de saúde, coordenação na saúde e ligação com o governo do estado · documento e data de cada um</p>
+        <div class="figura-midia"><dl class="dl-dados" id="dlVerificacaoUF"></dl></div>
+        <div class="map-legend" id="legVerificacaoUF"></div>
       </figure>
+      <figure class="figura figura--mapa cartao-mapa r-chuva" id="boxRiscoSan">
+        <p class="cartao-mapa-familia">Risco previsto</p>
+        <p class="cartao-mapa-boletim" id="linhaRiscoSan">—</p>
+        <h3 class="figura-titulo">Risco previsto para cada estado</h3>
+        <p class="figura-sub">Ciclo 2026/2027 · famílias de risco derivadas dos boletins do Painel El Niño, sem projeção própria</p>
+        <div class="figura-midia"><svg id="mapaRiscoSan" role="img" aria-label="Mapa do Brasil com a família de risco sanitário previsto por estado" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legRiscoSan"></div>
+        <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
+          <dl class="dl-dados" id="dlRiscoSan"></dl>
+        </details>
+      </figure>
+
     </div>
-    <p class="hint">Índice de antecipação e de resposta de cada estado; na face do cartão, plano de saúde para o ciclo, cobertura sanitária e dengue na capital. O detalhe abre em uma janela.</p>
     <div class="regions" id="regionsSaude"></div>
-    <p class="note u-mt-3 u-mb-0">Estado sem número ainda não foi verificado.</p>
-  </div>
+    <p class="note u-mb-0">Estado sem número ainda não foi verificado. O detalhe de cada um
+      abre em uma janela.</p>
+  </section>
 
-  <div class="panel" id="observado">
+  <section id="observado">
     <h2>O que os órgãos de saúde registram</h2>
-    <p class="hint">Esta página não relaciona casos ao El Niño. Cada bloco tem a frase do dado, a
-      série da semana contra a faixa esperada para a época e o mapa por estado em casos por 100 mil
-      habitantes. As últimas semanas são parciais.</p>
-
+    <p class="hint">Esta página não relaciona casos ao El Niño. Cada doença tem a frase do dado, a
+      série da semana contra a faixa esperada para a época e o mapa por estado. As últimas semanas
+      são parciais.</p>
     <h3 class="u-mt-4">Dengue</h3>
     <p class="note" id="fraseDengue">—</p>
     <div class="grade-figuras grade-figuras--3 grade-mapas">
-      <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxDengueSemana">
+<figure class="figura figura--grafico cartao-mapa r-chuva cartao-mapa r-chuva" id="boxDengueSemana">
         <p class="cartao-mapa-familia">Dengue</p>
         <p class="cartao-mapa-boletim" id="linhaDengueSemana">—</p>
         <h3 class="figura-titulo">Notificações de dengue por semana, no país</h3>
         <p class="figura-sub">Semanas de 2026 · notificações no SINAN · faixa esperada de 2019 a 2025 · últimas semanas parciais</p>
         <div class="figura-midia canvas-wrap"><canvas id="cDengueSemana" aria-label="Notificações de dengue por semana epidemiológica no Brasil, sobre a faixa esperada para a época"></canvas></div>
         <div class="map-legend" id="legDengueSemana"></div>
-      </figure>
-      <figure class="figura figura--mapa cartao-mapa r-chuva" id="boxDengueUF">
+      </figure><figure class="figura figura--mapa cartao-mapa r-chuva cartao-mapa r-chuva" id="boxDengueUF">
         <p class="cartao-mapa-familia">Dengue</p>
         <p class="cartao-mapa-boletim" id="linhaDengueUF">—</p>
         <h3 class="figura-titulo">Notificações de dengue por estado, por 100 mil habitantes</h3>
@@ -153,22 +179,37 @@
         <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
           <dl class="dl-dados" id="dlDengueUF"></dl>
         </details>
+      </figure>      <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxDengueMunicipios">
+        <p class="cartao-mapa-familia">Dengue</p>
+        <p class="cartao-mapa-boletim" id="linhaDengueMunicipios">—</p>
+        <h3 class="figura-titulo">Dengue na sua cidade</h3>
+        <p class="figura-sub">Nível de alerta do InfoDengue na última semana consolidada · cidade fora dos municípios acompanhados aparece como não acompanhada</p>
+        <div class="figura-midia">
+          <div class="busca-mun" id="buscaDengueMunicipios">
+            <label for="ufDengueMunicipios">Estado</label>
+            <select id="ufDengueMunicipios"><option value="">Escolha o estado…</option></select>
+            <label for="nomeDengueMunicipios">Município</label>
+            <input id="nomeDengueMunicipios" type="text" list="listaDengueMunicipios" autocomplete="off"
+                   spellcheck="false" placeholder="Digite o nome da cidade" disabled>
+            <datalist id="listaDengueMunicipios"></datalist>
+            <p class="busca-mun-conta" role="status" aria-live="polite" id="contaDengueMunicipios"></p>
+          </div>
+          <div id="resultadoDengueMunicipios" class="card-note" hidden></div>
+        </div>
+        <div class="map-legend" id="legDengueMunicipios"></div>
       </figure>
-
     </div>
-
     <h3 class="u-mt-4">Chikungunya</h3>
     <p class="note" id="fraseChik">—</p>
     <div class="grade-figuras grade-figuras--3 grade-mapas">
-      <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxChikSemana">
+<figure class="figura figura--grafico cartao-mapa r-chuva cartao-mapa r-chuva" id="boxChikSemana">
         <p class="cartao-mapa-familia">Chikungunya</p>
         <p class="cartao-mapa-boletim" id="linhaChikSemana">—</p>
         <h3 class="figura-titulo">Notificações de chikungunya por semana, no país</h3>
         <p class="figura-sub">Semanas de 2026 · notificações no SINAN · faixa esperada de 2019 a 2025 · últimas semanas parciais</p>
         <div class="figura-midia canvas-wrap"><canvas id="cChikSemana" aria-label="Notificações de chikungunya por semana epidemiológica no Brasil, sobre a faixa esperada para a época"></canvas></div>
         <div class="map-legend" id="legChikSemana"></div>
-      </figure>
-      <figure class="figura figura--mapa cartao-mapa r-chuva" id="boxChikUF">
+      </figure><figure class="figura figura--mapa cartao-mapa r-chuva cartao-mapa r-chuva" id="boxChikUF">
         <p class="cartao-mapa-familia">Chikungunya</p>
         <p class="cartao-mapa-boletim" id="linhaChikUF">—</p>
         <h3 class="figura-titulo">Notificações de chikungunya por estado, por 100 mil habitantes</h3>
@@ -178,29 +219,69 @@
         <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
           <dl class="dl-dados" id="dlChikUF"></dl>
         </details>
+      </figure>      <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxChikMunicipios">
+        <p class="cartao-mapa-familia">Chikungunya</p>
+        <p class="cartao-mapa-boletim" id="linhaChikMunicipios">—</p>
+        <h3 class="figura-titulo">Chikungunya na sua cidade</h3>
+        <p class="figura-sub">Nível de alerta do InfoDengue na última semana consolidada · cidade fora dos municípios acompanhados aparece como não acompanhada</p>
+        <div class="figura-midia">
+          <div class="busca-mun" id="buscaChikMunicipios">
+            <label for="ufChikMunicipios">Estado</label>
+            <select id="ufChikMunicipios"><option value="">Escolha o estado…</option></select>
+            <label for="nomeChikMunicipios">Município</label>
+            <input id="nomeChikMunicipios" type="text" list="listaChikMunicipios" autocomplete="off"
+                   spellcheck="false" placeholder="Digite o nome da cidade" disabled>
+            <datalist id="listaChikMunicipios"></datalist>
+            <p class="busca-mun-conta" role="status" aria-live="polite" id="contaChikMunicipios"></p>
+          </div>
+          <div id="resultadoChikMunicipios" class="card-note" hidden></div>
+        </div>
+        <div class="map-legend" id="legChikMunicipios"></div>
       </figure>
-
     </div>
-
-    <h3 class="u-mt-4">Doenças respiratórias</h3>
+    <h3 class="u-mt-4">Respiratórias</h3>
     <p class="note" id="fraseResp">—</p>
-    <div class="grade-figuras grade-figuras--3">
-<figure class="figura figura--grafico" id="boxSRAG">
-        <h3 class="figura-titulo">Síndrome respiratória grave por semana · Brasil, sobre a faixa esperada para a época</h3>
+    <div class="grade-figuras grade-figuras--3 grade-mapas">
+<figure class="figura figura--grafico cartao-mapa r-chuva" id="boxSRAG">
+        <p class="cartao-mapa-familia">Respiratória grave</p>
+        <p class="cartao-mapa-boletim" id="linhaSRAG">—</p>
+        <h3 class="figura-titulo">Internações respiratórias por semana, no país</h3>
         <p class="figura-sub">Semanas de 2026 (últimas 4 excluídas do consolidado) · síndrome respiratória grave · Brasil · nº de casos</p>
         <div class="figura-midia canvas-wrap"><canvas id="cSRAG" aria-label="Casos de síndrome respiratória grave por semana epidemiológica no Brasil, com a faixa esperada para a época (2019–2025)"></canvas><svg id="svgSRAGLacuna" viewBox="0 0 900 220" role="img" aria-label="Série ainda não coletada — lacuna declarada" hidden><text id="txtSRAGLacuna1" x="450" y="100" text-anchor="middle" font-size="15"></text><text id="txtSRAGLacuna2" x="450" y="126" text-anchor="middle" font-size="12.5"></text></svg></div>
         <div class="map-legend" id="legSRAG"></div>
-      </figure><figure class="figura figura--grafico" id="boxSG">
+      </figure>      <figure class="figura figura--mapa cartao-mapa r-chuva" id="boxSragUF">
+        <p class="cartao-mapa-familia">Respiratória grave</p>
+        <p class="cartao-mapa-boletim" id="linhaSragUF">—</p>
+        <h3 class="figura-titulo">Internações por síndrome respiratória grave por estado, por 100 mil habitantes</h3>
+        <p class="figura-sub">Acumulado de 2026 até a última semana fechada · SIVEP-Gripe · Censo 2022</p>
+        <div class="figura-midia"><svg id="mapaSragUF" role="img" aria-label="Mapa do Brasil com as internações por síndrome respiratória grave por 100 mil habitantes, por estado" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legSragUF"></div>
+        <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
+          <dl class="dl-dados" id="dlSragUF"></dl>
+        </details>
+      </figure>
+<figure class="figura figura--grafico cartao-mapa r-chuva" id="boxSG">
+        <p class="cartao-mapa-familia">Síndrome gripal</p>
+        <p class="cartao-mapa-boletim" id="linhaSG">—</p>
         <h3 class="figura-titulo">Síndrome gripal por semana · Brasil, sobre a faixa esperada para a época</h3>
         <p class="figura-sub">Semanas de 2026, sem as 4 últimas ainda não consolidadas · nº de casos</p>
         <div class="figura-midia canvas-wrap"><canvas id="cSG" aria-label="Casos de síndrome gripal por semana epidemiológica no Brasil, com a faixa esperada para a época (2019–2025)"></canvas><svg id="svgSGLacuna" viewBox="0 0 900 220" role="img" aria-label="Série ainda não coletada — lacuna declarada" hidden><text id="txtSGLacuna1" x="450" y="100" text-anchor="middle" font-size="15"></text><text id="txtSGLacuna2" x="450" y="126" text-anchor="middle" font-size="12.5"></text></svg></div>
         <div class="map-legend" id="legSG"></div>
-      </figure>
-    </div>
-
+      </figure>    </div>
     <h3 class="u-mt-4">Calor</h3>
+    <p class="note" id="fraseCalor">—</p>
     <div class="grade-figuras grade-figuras--3 grade-mapas">
-<figure class="figura figura--mapa" id="boxCalor">
+      <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxCalorSerie">
+        <p class="cartao-mapa-familia">Calor</p>
+        <p class="cartao-mapa-boletim" id="linhaCalorSerie">—</p>
+        <h3 class="figura-titulo">Municípios por classe de excesso de calor</h3>
+        <p class="figura-sub">Consulta mais recente · municípios em cada classe · Painel do MS · contagem</p>
+        <div class="figura-midia canvas-wrap"><canvas id="cCalorSerie" aria-label="Barras com o número de municípios em cada classe de excesso de calor"></canvas></div>
+        <div class="map-legend" id="legCalorSerie"></div>
+      </figure>
+<figure class="figura figura--mapa cartao-mapa r-chuva" id="boxCalor">
+        <p class="cartao-mapa-familia">Calor</p>
+        <p class="cartao-mapa-boletim" id="linhaCalor">—</p>
         <h3 class="figura-titulo">Municípios em excesso de calor</h3>
         <p class="figura-sub">Consulta mais recente · classe severa ou extrema · Painel do MS · contagem por UF</p>
         <div class="figura-midia"><svg id="mapaCalor" role="img" aria-label="Mapa do Brasil pelo número de municípios em classe severa ou extrema de excesso de calor segundo o Painel Nacional de Excesso de Calor do Ministério da Saúde" viewBox="0 0 480 460"></svg></div>
@@ -208,33 +289,38 @@
         <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
           <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblCalor"><thead><tr><th>UF</th><th>Normal</th><th>Baixo</th><th>Severo</th><th>Extremo</th><th>Lidos</th></tr></thead><tbody></tbody></table></div>
         </details>
+      </figure>      <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxCalorMunicipios">
+        <p class="cartao-mapa-familia">Calor</p>
+        <p class="cartao-mapa-boletim" id="linhaCalorMunicipios">—</p>
+        <h3 class="figura-titulo">Calor na sua cidade</h3>
+        <p class="figura-sub">Classe de excesso de calor do município na consulta mais recente · cidade não lida aparece como não lida</p>
+        <div class="figura-midia">
+          <div class="busca-mun" id="buscaCalorMunicipios">
+            <label for="ufCalorMunicipios">Estado</label>
+            <select id="ufCalorMunicipios"><option value="">Escolha o estado…</option></select>
+            <label for="nomeCalorMunicipios">Município</label>
+            <input id="nomeCalorMunicipios" type="text" list="listaCalorMunicipios" autocomplete="off"
+                   spellcheck="false" placeholder="Digite o nome da cidade" disabled>
+            <datalist id="listaCalorMunicipios"></datalist>
+            <p class="busca-mun-conta" role="status" aria-live="polite" id="contaCalorMunicipios"></p>
+          </div>
+          <div id="resultadoCalorMunicipios" class="card-note" hidden></div>
+        </div>
+        <div class="map-legend" id="legCalorMunicipios"></div>
       </figure>
     </div>
-
-    <h3 class="u-mt-4">Ver em lista: por município</h3>
-    <p class="hint">Nível de alerta de dengue e de chikungunya na cidade escolhida, na última semana
-      consolidada, pelo InfoDengue. Cidade fora dos municípios acompanhados aparece como não
-      acompanhada, e não como zero.</p>
-<div class="busca-mun" id="buscaMunSaude">
-        <label for="munUFSaude">Estado</label>
-        <select id="munUFSaude"><option value="">Escolha o estado…</option></select>
-        <label for="munNomeSaude">Município</label>
-        <input id="munNomeSaude" type="text" list="munListaSaude" autocomplete="off"
-               spellcheck="false" placeholder="Digite o nome da cidade" disabled>
-        <datalist id="munListaSaude"></datalist>
-        <p class="busca-mun-conta" role="status" aria-live="polite" id="munContaSaude"></p>
-      </div>
-    <div id="munResultadoSaude" class="card-note" hidden></div>
     <p class="note u-mb-0" id="interpObservado">Nível de alerta: estimativa do InfoDengue
       (Fiocruz/FGV); as últimas semanas ainda recebem notificações.</p>
     <p class="note u-mb-0"><span id="carimboSaude"></span></p>
-  </div>
+  </section>
 
-<div class="panel" id="saude-federal-painel" data-proveniencia="1">
-      <h2 id="saude-federal-h2">O que o governo federal publicou</h2>
-      <p class="hint">Cartões reproduzem documentos oficiais; o que foi anunciado mas não localizado até o corte aparece como linha própria, não como cartão. Documentos de referência, não sinal de saúde observado na população.</p>
-      <div class="grade-cartoes" id="cartoesFederalSaude"></div>
-    </div>
+  <section id="saude-federal-painel" data-proveniencia="1">
+    <h2 id="saude-federal-h2">O que o governo federal publicou</h2>
+    <p class="hint">Documentos oficiais do governo federal para o ciclo, com link. O que foi
+      anunciado e não localizamos até o corte aparece como linha própria.</p>
+    <ul class="fontes-list" id="listaFederalSaude"></ul>
+  </section>
+
 </main>
   <footer class="site-footer">
     <div class="grad-line"></div>
@@ -244,8 +330,8 @@
   </footer>
 </div>
 
-<script src="assets/colunas.js?v=c7f1719a" defer></script>
-<script src="assets/js/saude.js?v=6ba8558a" defer></script><script src="assets/js/proveniencia.js?v=50e1ec93" defer></script>
+<script src="assets/colunas.js?v=4c6dfa5b" defer></script>
+<script src="assets/js/saude.js?v=41ba4c01" defer></script><script src="assets/js/proveniencia.js?v=50e1ec93" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
