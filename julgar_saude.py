@@ -89,24 +89,64 @@ RE_F2_ATRIBUICAO = re.compile(
     r"|respons[áa]vel\s+por|incumbe|exercer[áa]\s+a\s+coordena)", re.I)
 
 
-def degrau_f2(texto: str) -> tuple:
-    """(degrau, motivo) de F2, na escala de tres degraus. Funcao pura.
+# Onde termina o preâmbulo do ato. O "considerando" cita normas, sistemas e órgãos que o ato NÃO
+# integra: medido no MT, onde a única menção à Defesa Civil estava num considerando sobre o S2iD
+# nacional, e isso dava F2 = 100 a uma sala de situação composta só por áreas da própria secretaria.
+RE_DISPOSITIVO = re.compile(r"\b(RESOLVE|DECRETA|RESOLVEM|DETERMINA)\b\s*:?", re.I)
+# A composição é onde a integração formal acontece.
+RE_COMPOSICAO = re.compile(
+    r"(ser[áa]\s+compost[oa]|composi[çc][ãa]o|composto\s+por|integrad[oa]\s+por|integrar[áa]"
+    r"|ser[áa]\s+integrad[oa]|membros\s+(?:natos|titulares))", re.I)
+# Convidado não é membro: "poderá participar, na condição de convidado" é menção sem atribuição.
+RE_CONVIDADO = re.compile(
+    r"(convidad[oa]s?|poder[ãa]o?\s+participar|a\s+crit[ée]rio\s+do|quando\s+necess[áa]rio)", re.I)
+JANELA_DE_COMPOSICAO = 1200
 
-    NOMEADA_COM_ATRIBUICAO exige as duas coisas no mesmo ato: a saude citada numa estrutura
-    intersetorial (ou a estrutura da saude citando a defesa civil e os demais orgaos) **e** uma
-    atribuicao escrita — competencia, coordenacao, responsabilidade. Sem a atribuicao, o que se
-    pode afirmar e que a saude esta listada, e o degrau e 50. Nada disso, LAC: lacuna, nao zero.
+
+def corpo_do_ato(texto: str) -> str:
+    """O texto a partir do dispositivo, sem o preâmbulo. Função pura.
+
+    Sem dispositivo identificado, devolve o texto como veio — cortar pelo que não se achou seria
+    pior do que ler o preâmbulo junto.
+    """
+    m = RE_DISPOSITIVO.search(texto or "")
+    return (texto or "")[m.end():] if m else (texto or "")
+
+
+def degrau_f2(texto: str) -> tuple:
+    """(degrau, motivo) de F2, na escala de três degraus do §91.3. Função pura.
+
+    `NOMEADA_COM_ATRIBUICAO` exige as duas coisas **no corpo do ato** (sem o preâmbulo): a saúde
+    citada numa estrutura intersetorial do estado, ou a estrutura da saúde integrando formalmente a
+    defesa civil **na composição** — e uma atribuição escrita. Órgão citado apenas como convidado,
+    ou apenas num "considerando", é menção sem integração: degrau do meio. Nada disso, LAC — que é
+    lacuna, não zero de estrutura.
     """
     t = texto or ""
-    tem_atribuicao = bool(RE_F2_ATRIBUICAO.search(t))
-    # direcao 1: estrutura intersetorial do estado que cita a saude
-    de_fora = bool(RE_F2_ESTRUTURA_INTERSETORIAL.search(t) and RE_F2_SAUDE_CITADA.search(t))
-    # direcao 2: estrutura da propria saude que integra formalmente a defesa civil
-    de_dentro = bool(RE_COORDENACAO.search(t) and RE_F2_DEFESA_CIVIL.search(t))
+    corpo = corpo_do_ato(t)
+    tem_atribuicao = bool(RE_F2_ATRIBUICAO.search(corpo))
+    # direção 1: estrutura intersetorial do estado que cita a saúde
+    de_fora = bool(RE_F2_ESTRUTURA_INTERSETORIAL.search(corpo) and RE_F2_SAUDE_CITADA.search(corpo))
+    # direção 2: estrutura da própria saúde que integra a defesa civil NA COMPOSIÇÃO. A proximidade
+    # importa: a palavra solta no meio do ato não diz que o órgão é membro.
+    de_dentro = False
+    convidado = False
+    if RE_COORDENACAO.search(corpo):
+        for m in RE_F2_DEFESA_CIVIL.finditer(corpo):
+            perto = corpo[max(0, m.start() - JANELA_DE_COMPOSICAO):m.end() + JANELA_DE_COMPOSICAO]
+            if RE_CONVIDADO.search(corpo[max(0, m.start() - 300):m.end() + 120]):
+                convidado = True
+                continue
+            if RE_COMPOSICAO.search(perto):
+                de_dentro = True
+                break
     if not (de_fora or de_dentro):
+        if convidado:
+            return ("LISTADA_SEM_ATRIBUICAO",
+                    "o ato cita a defesa civil como convidada, sem integrá-la à composição")
         return "LAC", "o ato não liga o setor saúde à coordenação do estado"
     onde = ("estrutura intersetorial do estado com a saúde citada" if de_fora
-            else "estrutura da saúde que integra a defesa civil")
+            else "estrutura da saúde que integra a defesa civil na composição")
     if tem_atribuicao:
         return "NOMEADA_COM_ATRIBUICAO", f"{onde}, com atribuição escrita no ato"
     return "LISTADA_SEM_ATRIBUICAO", f"{onde}, sem atribuição escrita"
@@ -591,6 +631,29 @@ def autoteste() -> int:
             lambda: degrau_f2("Grupo Condutor El Niño/PB. Art. 2º Compete coordenar. Art. 5º "
                               "Composto por: Defesa Civil Estadual; AESA.")[0]
                     == "NOMEADA_COM_ATRIBUICAO",
+        # MEDIDO em 02/10/2026 nos dois atos: menção no considerando e menção como convidado não
+        # são integração formal, e davam F2 = 100 a estruturas compostas só por áreas internas.
+        "F2: defesa civil citada no considerando não integra o ato (MT 0666/2024)":
+            lambda: degrau_f2("CONSIDERANDO que o S2iD da Secretaria Nacional de Proteção e "
+                              "Defesa Civil registrou 148 eventos; RESOLVE: Art. 1º Instituir a "
+                              "Sala de Situação, composta pelos seguintes setores: I - Vigilância "
+                              "em Saúde; II - Coordenadoria de Vigilância Epidemiológica. Compete "
+                              "coordenar.")[0] == "LAC",
+        "F2: defesa civil como convidada vale o degrau do meio (MS 1041/2026)":
+            lambda: degrau_f2("RESOLVE: Art. 1º Instituir o Grupo Condutor. Art. 6º Será composto "
+                              "por: I - Superintendência de Vigilância em Saúde. §2º Poderão "
+                              "participar, na condição de convidados, representantes da Defesa "
+                              "Civil. Compete coordenar.")[0] == "LISTADA_SEM_ATRIBUICAO",
+        "F2: defesa civil na composição, com atribuição, é o degrau cheio (PB 764/2026)":
+            lambda: degrau_f2("RESOLVE: Art. 1º Fica criado o Grupo Condutor. Art. 2º Compete-lhe "
+                              "coordenar. Art. 5º Será "
+                              "composto por: XIX - Defesa Civil Estadual; XX - AESA.")[0]
+                    == "NOMEADA_COM_ATRIBUICAO",
+        "o preâmbulo fica de fora da leitura do dispositivo":
+            lambda: "Instituir" in corpo_do_ato("CONSIDERANDO x; RESOLVE: Art. 1º Instituir")
+                    and "CONSIDERANDO" not in corpo_do_ato("CONSIDERANDO x; RESOLVE: Art. 1º Instituir"),
+        "ato sem dispositivo identificado é lido inteiro":
+            lambda: corpo_do_ato("texto sem verbo de dispositivo") == "texto sem verbo de dispositivo",
         "F2: comitê que não nomeia a saúde não cumpre a função":
             lambda: degrau_f2("Institui o Comitê Intersetorial, composto por Casa Civil e "
                               "Defesa Civil, a quem compete coordenar.")[0] == "LAC",

@@ -67,11 +67,21 @@ def ler(p, padrao=None):
         return padrao
 
 
+# O coletor DIZ o canal na linha, desde 02/10/2026: "canal 3 · ..." e "canal 4 · ...". A marca por
+# palavra fica como reserva, para as linhas antigas do mês — e ela errava: "raiz da secretaria por
+# verificação humana", escrita pelo canal 4, casava com a marca "secretaria" do canal 3, e a
+# Paraíba aparecia com o canal 4 em erro tendo sido consultada.
+ETIQUETAS = {"canal 1 ·": "aberta", "canal 2 ·": "doe", "canal 3 ·": "canais", "canal 4 ·": "fontes"}
+
+
 def canal_do_texto(resultados: str):
     """Qual canal escreveu esta linha do log. Função pura; None quando não é da bateria."""
     t = str(resultados or "")
-    if "funil_saude/" not in t:
+    if "funil_saude/" not in t and "canal 2 em" not in t:
         return None
+    for etiqueta, canal in ETIQUETAS.items():
+        if etiqueta in t:
+            return canal
     for canal, marcas in CANAIS.items():
         if any(m in t for m in marcas):
             return canal

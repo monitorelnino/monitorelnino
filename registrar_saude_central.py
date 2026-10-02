@@ -44,16 +44,25 @@ DOCUMENTOS = [
      "edicao": {"uf": "MS", "data": "2026-09-03"}, "paginas": (14, 19),
      "esperado": {"f1": "CRIADO_CICLO", "f2": None, "plano": None},
      "nota": "DOE-MS de 03/09/2026, edição 12.270, pp. 14–19; Grupo Condutor Estadual, de 01/09/2026"},
+    # Endereços conferidos pela central em fonte oficial e passados pela editoria em 02/10/2026.
     {"uf": "PA", "doc": "Plano de emergências da SESPA",
-     "data": "01/02/2026", "numero": None,
-     "url": "https://www.saude.pa.gov.br/", "paginas": None,
+     "data": "26/02/2026", "numero": None,
+     "url": "https://www.saude.pa.gov.br/wp-content/uploads/2026/02/plano-emergencias-_26.02.pdf",
+     "paginas": None,
      "esperado": {"f1": None, "f2": None, "plano": "NOVO"},
-     "nota": "portal oficial da SESPA, fevereiro de 2026 — endereço do documento a confirmar"},
+     "nota": "domínio oficial da SESPA; verificação humana da central, relido aqui"},
     {"uf": "MT", "doc": "Portaria nº 0195/2026/GBSES",
      "data": "01/01/2026", "numero": "0195/2026",
-     "url": None, "paginas": None,
+     "url": "https://www.saude.mt.gov.br/storage/files/MmMbtQx9n43VPO23mMookK6LdUyD6h4QfMOvqx44.pdf",
+     "paginas": None,
      "esperado": {"f1": "PERMANENTE", "f2": None, "plano": None},
-     "nota": "estrutura permanente; a portaria de 13/08/2026 pode confirmar ato do ciclo"},
+     "nota": "domínio oficial da SES-MT; a portaria de 13/08/2026 fica para o localizador"},
+    {"uf": "MT", "doc": "Portaria nº 0666/2024/GBSES",
+     "data": "01/01/2024", "numero": "0666/2024",
+     "url": "https://www.saude.mt.gov.br/storage/files/RDtdQBfGbCiRYiJ1BIRtq6KUg32oNI4cKBWaQaiS.pdf",
+     "paginas": None,
+     "esperado": {"f1": None, "f2": None, "plano": None},
+     "nota": "domínio oficial da SES-MT; ato anterior, entra para o degrau não rebaixar"},
 ]
 
 
@@ -108,25 +117,59 @@ def recorte_do_ato(texto: str, numero: str) -> str:
     return (texto or "")[ini:m.start() + 12000]
 
 
-def classificar(texto: str, data: str):
-    """(f1, f2, plano) pelos classificadores do juiz. Devolve degraus, não pontos."""
-    from julgar_saude import (RE_COORDENACAO, RE_PLANO, atribuicao_citada, degrau_coordenacao,
-                              degrau_f2)
+RE_ATO_COM_DISPOSITIVO = re.compile(
+    r"(\b(?:RESOLVE|DECRETA|RESOLVEM)\b\s*:?|Art\.?\s*1[º°o]?\s)", re.I)
+RE_TIPO_DE_ATO = re.compile(r"\b(Portaria|Resolução|Decreto|Instrução\s+Normativa)\b", re.I)
+
+
+def e_ato(texto: str) -> bool:
+    """O documento é um ato com dispositivo, ou é plano/relatório? Função pura.
+
+    As duas coisas juntas: o tipo do ato nomeado **e** o dispositivo. Plano de contigência cita
+    portarias no texto, e ato sem artigo não institui nada.
+    """
+    t = texto or ""
+    return bool(RE_TIPO_DE_ATO.search(t) and RE_ATO_COM_DISPOSITIVO.search(t))
+
+
+def status_do_plano(doc: str, data: str, texto: str):
+    """O degrau do instrumento. Função pura.
+
+    Quando o documento **é** o plano, o degrau sai da régua de temporada do projeto: plano publicado
+    a partir do Boletim nº 1 é plano do ciclo; antes dele, é plano vigente anterior. Quando o
+    documento é um ato que manda elaborar o plano, o degrau é "em elaboração". E quando o texto não
+    fala de plano, não há degrau: a ausência fica como ausência.
+    """
+    from gerar_monitor_saude import BOLETIM_1, _data_ordinal
+    from julgar_saude import RE_PLANO
+    nome = (doc or "").strip().lower()
+    if nome.startswith("plano"):
+        o, b = _data_ordinal(data or ""), _data_ordinal(BOLETIM_1)
+        if o is None:
+            return "VIG"
+        return "NOVO" if o >= b else "VIG"
+    if not RE_PLANO.search(texto or ""):
+        return None
+    if RE_PLANO_A_ELABORAR.search(texto or ""):
+        return "ELAB"
+    return "NOVO"
+
+
+def classificar(texto: str, data: str, doc: str = ""):
+    """(f1, f2, plano, atribuição) pelos classificadores do juiz. Devolve degraus, não pontos.
+
+    F1 e F2 só saem de **ato com dispositivo**: plano que descreve as próprias ações cita sala de
+    situação e gabinete de crise sem instituir nem integrar nada, e lido como ato dava os dois
+    degraus de graça (medido no plano do Pará, de 81 páginas).
+    """
+    from julgar_saude import RE_COORDENACAO, atribuicao_citada, degrau_coordenacao, degrau_f2
+    plano = status_do_plano(doc, data, texto)
+    if not e_ato(texto):
+        return ((None, "o documento não é ato com dispositivo: não institui estrutura"),
+                ("LAC", "o documento não é ato com dispositivo: não integra a saúde à "
+                        "coordenação do estado"), plano, None)
     f1 = degrau_coordenacao(texto, data) if RE_COORDENACAO.search(texto or "") else (None, None)
     f2 = degrau_f2(texto)
-    plano = None
-    if RE_PLANO.search(texto or ""):
-        # "elaborar e propor o Plano" é plano EM ELABORAÇÃO; plano aprovado traz o ato de
-        # aprovação. A distinção é a mesma do MARÉ Legal, e não se inventa aqui.
-        # Competência de ELABORAR o plano não é plano publicado. A lista de verbos vem com vírgulas
-        # no diário do MS ("elaborar, atualizar, implementar e monitorar o Plano Estadual"), e por
-        # isso se aceita qualquer sequência curta entre o verbo e a palavra Plano. Plano aprovado
-        # traz o ato de aprovação, e aí o degrau é NOVO.
-        # Competência de ELABORAR o plano não é plano publicado. A lista de verbos vem com
-        # vírgulas no diário do MS ("elaborar, atualizar, implementar e monitorar o Plano
-        # Estadual"), e por isso se aceita qualquer sequência curta entre o verbo e a palavra
-        # Plano. Plano aprovado traz o ato de aprovação, e aí o degrau é NOVO.
-        plano = "ELAB" if re.search(RE_PLANO_A_ELABORAR, texto or "") else "NOVO"
     return f1, f2, plano, atribuicao_citada(texto)
 
 
@@ -153,18 +196,21 @@ def _autoteste() -> int:
        recorte_do_ato("texto qualquer", "999/2026") == "texto qualquer")
     ok("sem número devolve o texto como veio", recorte_do_ato("texto", None) == "texto")
 
-    texto_pb = ("Fica criado, no âmbito da Secretaria de Estado da Saúde, o Grupo Condutor "
-                "El Niño/PB. Art. 2º O GC tem por finalidade coordenar, integrar e fortalecer as "
-                "ações. Art. 5º Será composto por: Defesa Civil Estadual; AESA; COSEMS/PB. "
-                "Compete ao GC: I – elaborar e propor o Plano Estadual de Preparação.")
-    f1, f2, plano, atrib = classificar(texto_pb, "03/09/2026")
+    # O texto do caso traz o TIPO do ato e o dispositivo, porque é o que distingue ato de plano.
+    texto_pb = ("PORTARIA Nº 764/2026 – GS/SES/PB. RESOLVE: Art. 1º Fica criado, no âmbito da "
+                "Secretaria de Estado da Saúde, o Grupo Condutor El Niño/PB. Art. 2º O Grupo "
+                "Condutor tem por finalidade coordenar, integrar e fortalecer as ações. "
+                "Art. 5º Será composto por: Defesa Civil Estadual; AESA; COSEMS/PB. "
+                "Compete ao Grupo Condutor: I – elaborar e propor o Plano Estadual de Preparação.")
+    f1, f2, plano, atrib = classificar(texto_pb, "03/09/2026", "Portaria nº 764/2026")
     ok("F1 sai do próprio classificador do juiz", f1[0] == "CRIADO_CICLO")
     ok("F2 vê a estrutura da saúde que integra a defesa civil, com atribuição",
        f2[0] == "NOMEADA_COM_ATRIBUICAO")
     ok("plano a elaborar é ELAB, não NOVO", plano == "ELAB")
     ok("guarda o trecho da atribuição", bool(atrib))
 
-    f1b, f2b, planob, _ = classificar("Portaria de nomeação de servidor.", "01/01/2026")
+    f1b, f2b, planob, _ = classificar("PORTARIA Nº 9/2026. RESOLVE: Art. 1º Nomear servidor.",
+                                      "01/01/2026", "Portaria nº 9/2026")
     ok("texto sem estrutura não inventa F1", f1b == (None, None))
     ok("texto sem ligação não inventa F2", f2b[0] == "LAC")
     ok("texto sem plano não inventa plano", planob is None)
@@ -174,17 +220,38 @@ def _autoteste() -> int:
     # que não era o medido. Por isso a base primeira é o recorte do ato.
     pagina_com_dois_atos = (
         "Resolução nº 900/2026 trata de recursos, podendo ser prorrogado uma vez. "
-        "Resolução SES/MS nº 1041 Institui o Grupo Condutor Estadual de Preparação e Resposta "
-        "aos Eventos Climáticos associados ao El Niño. Compete coordenar. Composto por: "
-        "Defesa Civil.")
-    f1_pagina = classificar(pagina_com_dois_atos, "03/09/2026")[0]
-    f1_recorte = classificar(recorte_do_ato(pagina_com_dois_atos, "1041/2026"), "03/09/2026")[0]
+        "Resolução SES/MS nº 1041. RESOLVE: Art. 1º Institui o Grupo Condutor Estadual de "
+        "Preparação e Resposta aos Eventos Climáticos associados ao El Niño. Compete "
+        "coordenar. Art. 6º Será composto por: Defesa Civil Estadual.")
+    f1_pagina = classificar(pagina_com_dois_atos, "03/09/2026", "Resolução 1041")[0]
+    f1_recorte = classificar(recorte_do_ato(pagina_com_dois_atos, "1041/2026"),
+                             "03/09/2026", "Resolução 1041")[0]
     ok("na página com dois atos, o verbo do outro ato contamina o degrau",
        f1_pagina[0] == "REATIVADO_CICLO")
     ok("no recorte do ato medido, o degrau é o do ato", f1_recorte[0] == "CRIADO_CICLO")
 
-    ok("os quatro documentos da central estão declarados",
-       [d["uf"] for d in DOCUMENTOS] == ["PB", "MS", "PA", "MT"])
+    ok("plano de 81 páginas não é ato: não dá F1 nem F2",
+       classificar("Plano de emergências. Consolidar informações para o Gabinete de Crise. "
+                   "Manter sala de situação ativa.", "26/02/2026", "Plano de emergências")[:2]
+       == ((None, "o documento não é ato com dispositivo: não institui estrutura"),
+           ("LAC", "o documento não é ato com dispositivo: não integra a saúde à "
+                   "coordenação do estado")))
+    ok("o plano publicado antes do Boletim nº 1 é plano vigente anterior",
+       status_do_plano("Plano de emergências da SESPA", "26/02/2026", "") == "VIG")
+    ok("o plano publicado no ciclo é plano do ciclo",
+       status_do_plano("Plano estadual de preparação", "01/09/2026", "") == "NOVO")
+    ok("ato que manda elaborar o plano é em elaboração",
+       status_do_plano("Portaria 764/2026", "03/09/2026",
+                       "Compete elaborar e propor o Plano Estadual de Preparação") == "ELAB")
+    ok("texto sem plano não inventa degrau",
+       status_do_plano("Portaria 1/2026", "01/09/2026", "nomeia servidor") is None)
+    ok("ato com tipo e dispositivo é ato",
+       e_ato("PORTARIA Nº 764/2026. RESOLVE: Art. 1º Fica criado") is True)
+    ok("plano que cita portaria no texto não vira ato",
+       e_ato("Plano de contigência, conforme a Portaria 100/2025 do Ministério") is False)
+
+    ok("os documentos da central estão declarados",
+       [d["uf"] for d in DOCUMENTOS] == ["PB", "MS", "PA", "MT", "MT"])
     ok("o esperado da central não é usado como dado",
        all("esperado" in d for d in DOCUMENTOS))
 
@@ -195,7 +262,7 @@ def _autoteste() -> int:
        "gravar(\"saude_uf.json\"" in fonte)
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
-          else "✓ AUTOTESTE OK — 20 casos, sem rede e sem escrita.")
+          else "✓ AUTOTESTE OK — 27 casos, sem rede e sem escrita.")
     return 1 if falhas else 0
 
 
@@ -256,10 +323,10 @@ def main() -> int:
         # página citada, e a base de cada degrau fica escrita na justificativa.
         trecho = trecho_das_paginas(paginas, d.get("paginas"))
         recorte = recorte_do_ato(trecho, d.get("numero"))
-        f1, f2, plano, atrib = classificar(recorte, d["data"])
+        f1, f2, plano, atrib = classificar(recorte, d["data"], d.get("doc"))
         base = {"f1": "recorte do ato", "f2": "recorte do ato", "plano": "recorte do ato"}
         if trecho != recorte:
-            f1b, f2b, planob, atribb = classificar(trecho, d["data"])
+            f1b, f2b, planob, atribb = classificar(trecho, d["data"], d.get("doc"))
             if not f1[0] and f1b[0]:
                 f1, base["f1"] = f1b, "página citada"
             if f2[0] in (None, "LAC") and f2b[0] not in (None, "LAC"):
