@@ -87,8 +87,9 @@
    "comprometimento": "ar",
    "sistema": "e-SUS Notifica",
    "periodicidade": "semanal",
-   "fonte_aberta": "e-SUS Notifica: os bancos de síndrome gripal leve param em 2024 e a API OpenSearch responde 401 (conferido em 29/09/2026). InfoGripe, a fonte anterior, exige login desde 09/2026. Sem fonte aberta com dado corrente.",
-   "status_coleta": "fonte_desatualizada"
+   "fonte_aberta": "e-SUS Notifica / Portal de Dados Abertos do SUS — as duas rotas que o portal declara recusam acesso automatizado (API OpenSearch 401, CSV 403) e o conjunto por ano vai de 2020 a 2024, sem o ano do ciclo (medido em 01/10/2026)",
+   "status_coleta": "nao_coletado",
+   "arquivo": "sindrome_gripal_serie.json"
   },
   {
    "id": "srag",
@@ -97,8 +98,9 @@
    "sistema": "Sivep-Gripe",
    "periodicidade": "semanal",
    "fonte_aberta": "SIVEP-Gripe / Portal de Dados Abertos do SUS — banco por ano epidemiológico, atualização semanal (fonte primária; substitui o InfoGripe, cujo repositório passou a exigir login em 09/2026)",
-   "status_coleta": "nao_coletado",
-   "arquivo": "srag_serie.json"
+   "status_coleta": "coletado",
+   "arquivo": "srag_serie.json",
+   "coletado_em": "02/10/2026"
   },
   {
    "id": "ira",
