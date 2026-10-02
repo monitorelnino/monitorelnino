@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-02 · #510 · MARÉ Saúde: fechar os 27 sem nova instrução
+
+O juiz passa a rodar logo depois dos quatro canais, toda noite, e o fechamento mede, pelo log, em
+quais UFs os quatro rodaram sem motor doente — só nessas cabe "não localizado". Medido: 0 de 27
+hoje. A troca para a v0.4 acontece sozinha quando as 27 tiverem plano e coordenação, com errata
+encadeada; sem a condição, nada muda. O publicador imprime quantas faltam e por quê. Em
+`METODOLOGIA.md` §84.
+
 ## 2026-10-02 · #509 · Imprensa dinâmica: grade do dado, por grupo, com variação
 
 16 cartões em cinco grupos, cada um com fonte, período e variação sobre a semana anterior —

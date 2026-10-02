@@ -475,25 +475,44 @@ def cartao_dengue_semana():
 
 
 def cartao_srag_semana():
-    """Saúde · internações por síndrome respiratória grave na última semana epidemiológica."""
+    """Saúde · internações por síndrome respiratória grave na última semana epidemiológica.
+
+    A forma do arquivo é `serie: {UF: {"2026-37": n}}` — foi assim que o SIVEP-Gripe chegou em
+    02/10/2026, e não como a lista que eu havia suposto antes de ele existir. O cartão soma o país
+    por semana, usa a última semana do ano corrente e compara com a anterior.
+
+    As últimas semanas são PARCIAIS, e quantas são é o próprio arquivo que diz (`se_incompletas`):
+    notificação e resultado laboratorial chegam depois. A nota declara isso — sem ela, a queda do
+    fim da série seria lida como melhora."""
     srag = ler("saude_desfechos/srag_serie.json", None)
     rotulo = "Internações por síndrome respiratória grave na semana epidemiológica"
-    if not srag:
+    if not srag or not srag.get("serie"):
         return sem_dado("srag_internacoes_se", rotulo, "saude",
                         "a série do SIVEP-Gripe ainda não foi coletada até o corte",
                         fonte="SIVEP-Gripe (Ministério da Saúde)")
-    serie = srag.get("serie") or []
-    if not serie:
+    ano = str(srag.get("ano_corrente") or hoje_editorial().year)
+    total = {}
+    for semanas in srag["serie"].values():
+        if not isinstance(semanas, dict):
+            continue
+        for se, n in semanas.items():
+            if str(se).startswith(ano) and isinstance(n, (int, float)):
+                total[se] = total.get(se, 0) + n
+    if not total:
         return sem_dado("srag_internacoes_se", rotulo, "saude",
-                        "a série foi coletada e veio vazia nesta edição",
+                        f"a série não traz semanas de {ano} até o corte",
                         fonte="SIVEP-Gripe (Ministério da Saúde)")
-    ult, ant = serie[-1], (serie[-2] if len(serie) > 1 else None)
-    return cartao("srag_internacoes_se",
-                  f"{rotulo} {str(ult.get('se') or '').split('-')[-1]}".strip(),
-                  ult.get("valor"), "SIVEP-Gripe (Ministério da Saúde)", srag.get("gerado_em"),
-                  grupo="saude", anterior=(ant or {}).get("valor"),
-                  nota=("as últimas semanas são parciais e sobem com as notificações atrasadas; "
-                        "este número não indica relação com o El Niño"))
+    semanas = sorted(total)
+    ultima = semanas[-1]
+    anterior = total[semanas[-2]] if len(semanas) > 1 else None
+    incompletas = srag.get("se_incompletas")
+    nota = ("as últimas semanas são parciais e sobem com as notificações atrasadas"
+            + (f" (a fonte declara {incompletas} semana(s) incompleta(s))" if incompletas else "")
+            + "; este número não indica relação com o El Niño")
+    return cartao("srag_internacoes_se", f"{rotulo} {ultima.split('-')[-1]}",
+                  int(total[ultima]), "SIVEP-Gripe (Ministério da Saúde)", srag.get("gerado_em"),
+                  grupo="saude", url_fonte=srag.get("fonte"),
+                  anterior=None if anterior is None else int(anterior), nota=nota)
 
 
 def cartao_ufs_dengue_alerta():

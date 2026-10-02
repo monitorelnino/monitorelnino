@@ -40,5 +40,10 @@ jobs:
         coletar_saude_estadual.py --fontes
         coletar_saude_estadual.py --canais
         coletar_saude_estadual.py --doe --desde 2026-06-29
+        # 01/10/2026 (bloco das 23h10): o juiz roda LOGO DEPOIS dos quatro canais, toda
+        # noite, e o fechamento mede quantas UFs podem ser marcadas "nao localizado" —
+        # so onde os quatro canais rodaram sem motor doente. Nada disso espera instrucao.
+        julgar_saude.py --aplicar
+        scripts/fechar_saude.py --aplicar
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
