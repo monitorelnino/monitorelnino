@@ -1,0 +1,32 @@
+{
+  "_governanca": "Contrato de layout do Proteja-se. Nasceu pequeno e com um propósito só (item 7.3 do handover da Defesa civil, 02/10/2026): o cartão do SMS 40199 saiu da barra de telefones numa reforma de desenho em 30/09 e o número sobreviveu só dentro de uma ficha. Contrato existe para isso — o que o leitor precisa encontrar numa emergência não depende de quem desenha a página na próxima rodada. Quem verifica é scripts/verificar_layout.py, portão bloqueante.",
+  "pagina": "proteja-se.html",
+  "componentes": {
+    "numeros": ".cartao-numero",
+    "grade_numeros": ".grade-numeros--3",
+    "figura": ".cartao-mapa",
+    "grade_figuras": ".grade-figuras--3"
+  },
+  "secoes": [
+    {
+      "id": "emergencia",
+      "h2": "Em uma emergência, ligue",
+      "tipo": "lista_simples",
+      "exige_texto": [
+        "199",
+        "192",
+        "190",
+        "40199",
+        "Envie o CEP da sua região para 40199 e receba os avisos da Defesa Civil.",
+        "Para cancelar, envie SAIR e o CEP.",
+        "a Defesa Civil avisa sem cadastro"
+      ],
+      "_nota": "Os quatro números que o handover exige (192, 199, 190, 40199) mais o 193 dos Bombeiros, que já estava na barra e que o handover não mandou tirar — tirar número de socorro de uma página de emergência por causa de uma lista ilustrativa seria a leitura menos conservadora. Divergência declarada."
+    }
+  ],
+  "texto_proibido": [
+    "FIGURA",
+    "Corte da edição"
+  ],
+  "_nota_escopo": "O contrato cobre SÓ a barra de emergência. As outras seções do Proteja-se vêm em caixa (`.panel`, `.ficha`), que é o desenho aprovado desta página; a regra 'seção sem caixa' é das páginas redesenhadas em 01 e 02/10, e redesenhar o Proteja-se não foi pedido. Contratar as outras seções agora reprovaria desenho vigente e aprovado — contrato que reprova o aprovado deixa de ser portão e passa a ser ruído."
+}

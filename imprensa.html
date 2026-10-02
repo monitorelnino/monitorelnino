@@ -28,7 +28,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=e3a38231">
-<link rel="stylesheet" href="assets/base.css?v=e42b498a">
+<link rel="stylesheet" href="assets/base.css?v=fe332865">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -48,9 +48,9 @@
        reprova se a página publicada mostrar "—" onde deveria haver número, ou se uma versão ou data
        divergir do banco. -->
   <h1>Imprensa</h1>
-  <p class="hint">Os números da edição, como ler os índices, o que cada página mostra e como citar. Edição de <span id="relData">—</span>. Contato: <a href="mailto:imprensa@futuraevidencelab.com.br">imprensa@futuraevidencelab.com.br</a></p>
+  <p class="hint">Os números da semana, o texto pronto para copiar, como citar e como ler os índices. Edição de <span id="relData">—</span>. Contato: <a href="mailto:imprensa@futuraevidencelab.com.br">imprensa@futuraevidencelab.com.br</a></p>
 
-  <section class="imprensa-topo" aria-labelledby="topoTitulo">
+  <section class="imprensa-topo" id="topo" aria-labelledby="topoTitulo">
     <h2 id="topoTitulo" class="sr-only">Os números da edição</h2>
     <p class="imprensa-manchete"><strong>MARÉ Legal</strong> <span id="topoLegal">—</span> de 100 · <strong>MARÉ Saúde</strong> <span id="topoSaude">—</span> de 100</p>
     <p class="spec" id="topoSaudeNota">—</p>
@@ -62,6 +62,7 @@
       anterior. Nenhum deles entra no cálculo dos índices.</p>
     <div id="gradeSemana"></div>
     <p class="spec" id="semanaNaoCalculaveis" hidden>—</p>
+    <p class="u-mb-0"><a class="link-pequeno" id="baixarNumeros" href="dados-abertos/imprensa/" download>Baixar os números desta edição (planilha)</a></p>
   </section>
 
 <dialog class="detail" id="detalheSemana" aria-label="Lista do cartão">
@@ -72,20 +73,12 @@
 
   <section id="release" aria-labelledby="releaseTitulo">
     <h2 id="releaseTitulo">Release da edição</h2>
-    <div class="release" id="releaseTexto">
-      <p>Edição de <span id="relDataRelease">—</span>. O MARÉ Legal, índice que acompanha a preparação
-        publicada por estados e municípios para o El Niño 2026/2027, está em
-        <strong><span id="relLegal">—</span> de 100</strong>; o MARÉ Saúde, em
-        <strong><span id="relSaude">—</span> de 100</strong><span id="relSaudeRessalva"></span>.
-        Na semana, <span id="relPlanosSemana">—</span> municípios publicaram plano para o ciclo e
-        <span id="relDecretosSemana">—</span> decretaram situação de emergência ou calamidade;
-        <span id="relPopSemana">—</span> pessoas vivem nos municípios que decretaram.
-        <span id="relFaixaSemana">—</span></p>
-      <p>Desde o início do ciclo, em 29 de junho, <span id="relPlanosTotal">—</span> municípios têm
-        plano localizado e <span id="relDecretosTotal">—</span> decretaram emergência ou
-        calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O
-        MARÉ é uma criação da Futura Evidence Lab.</p>
-    </div>
+    <!-- 02/10/2026: o release deixa de ser gabarito com vãos no HTML e passa a ser o texto que
+         `gerar_imprensa_semana.py` escreve. Razão: as regras do texto são de redação — frase sem
+         dado é omitida, a concordância segue o número, a população vem arredondada — e regra de
+         redação espalhada por vinte `<span>` é regra que ninguém consegue conferir. Agora o texto
+         tem um autor só, e ele tem autoteste. -->
+    <div class="release" id="releaseTexto"></div>
     <button type="button" class="btn" id="copiarRelease">Copiar texto</button>
   </section>
 
@@ -114,9 +107,9 @@
     <ul class="fontes-list">
       <li><a href="index.html"><strong>MARÉ Legal</strong></a>, na página inicial: o índice de cada estado, a ficha de cada um e a busca por cidade.</li>
       <li><a href="monitor-de-riscos.html"><strong>Monitor de riscos</strong></a>: o que os órgãos de clima medem e preveem, do Pacífico à seca, ao fogo, ao calor e à chuva.</li>
-      <li><a href="defesa-civil.html"><strong>Defesa civil</strong></a>: decretos de emergência, alertas por município e os municípios prioritários do governo federal.</li>
+      <li><a href="defesa-civil.html"><strong>Defesa civil</strong></a>: avisos e alertas em vigor, as emergências declaradas no ciclo, o que o governo federal reconheceu e as listas federais de risco.</li>
       <li><a href="saude.html"><strong>MARÉ Saúde</strong></a>: o índice do setor de saúde e o que os órgãos de saúde registram, como dengue e doenças respiratórias.</li>
-      <li><a href="financiamento.html"><strong>Financiamento</strong></a>: o dinheiro público para prevenção e resposta, estado por estado.</li>
+      <li><a href="financiamento.html"><strong>Financiamento</strong></a>: os recursos do El Niño, de onde vêm, como estão sendo aplicados e o que a defesa civil federal autorizou, estado a estado e município a município.</li>
       <li><a href="proteja-se.html"><strong>Proteja-se</strong></a>: o que a população deve fazer antes, durante e depois de cada risco.</li>
       <li><a href="prefeituras.html"><strong>Para gestores</strong></a>: como preparar e publicar um plano, e como os recursos chegam.</li>
     </ul>
@@ -164,7 +157,7 @@
 </div>
 
 <script src="assets/colunas.js?v=4c6dfa5b" defer></script>
-<script src="assets/js/imprensa.js?v=99fd4bfa" defer></script>
+<script src="assets/js/imprensa.js?v=855afd4e" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

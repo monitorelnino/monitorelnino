@@ -1,0 +1,64 @@
+{
+ "_governanca": "INSTANTÂNEO dos cartões do topo do MARÉ Saúde, para a Imprensa ler em vez de recalcular (handover de 02/10/2026, item 1). Não é fonte de nada: nasce das mesmas séries que a página lê. 'Semana epidemiológica fechada' é a última com valor na série — nunca a última do calendário, porque semana recente existe no arquivo com valor nulo e tratar nulo como zero publicaria uma queda que é só atraso de notificação.",
+ "gerado_em": "02/10/2026",
+ "cartoes": [
+  {
+   "id": "dengue_casos_se",
+   "valor": 8146,
+   "referencia": "2026-33",
+   "rotulo": "notificações de dengue na semana epidemiológica 33",
+   "fonte": "Ministério da Saúde (Sinan)",
+   "sem_coleta": false,
+   "nota": "notificações, não casos confirmados; as últimas semanas são parciais e sobem com as notificações atrasadas"
+  },
+  {
+   "id": "srag_internacoes_se",
+   "valor": 4267,
+   "referencia": "2026-35",
+   "rotulo": "internações por síndrome respiratória grave na semana epidemiológica 35",
+   "fonte": "Ministério da Saúde (SIVEP-Gripe)",
+   "sem_coleta": false,
+   "nota": "as últimas semanas são parciais e sobem com as notificações atrasadas"
+  },
+  {
+   "id": "uf_dengue_alerta",
+   "valor": 3,
+   "referencia": "nível atual",
+   "rotulo": "estados com dengue em nível de alerta",
+   "fonte": "InfoDengue (Fiocruz e FGV)",
+   "sem_coleta": false,
+   "lista": [
+    "CE",
+    "PB",
+    "PE"
+   ],
+   "nota": "nível calculado pelo InfoDengue; o estado entra quando ao menos um município acompanhado está em nível 3 ou 4"
+  },
+  {
+   "id": "calor_municipios_severo",
+   "valor": 26,
+   "referencia": "2026-09-25",
+   "rotulo": "municípios em nível severo ou extremo de calor",
+   "fonte": "Ministério da Saúde (Painel Nacional de Excesso de Calor)",
+   "sem_coleta": false
+  },
+  {
+   "id": "emergencias_saude_ciclo",
+   "valor": 0,
+   "referencia": "29/06/2026",
+   "rotulo": "emergências em saúde declaradas no ciclo",
+   "fonte": "atos federais e estaduais lidos pelo MARÉ",
+   "sem_coleta": false
+  },
+  {
+   "id": "mare_saude_indice",
+   "valor": 31.8,
+   "referencia": "02/10/2026",
+   "rotulo": "MARÉ Saúde",
+   "unidades_verificadas": 21,
+   "fonte": "MARÉ (verificação própria)",
+   "sem_coleta": false,
+   "nota": "média dos 21 estados verificados"
+  }
+ ]
+}

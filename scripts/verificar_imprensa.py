@@ -95,8 +95,12 @@ def problemas() -> list[str]:
             p.append(f"{ident}: tem valor_semana_anterior e não diz a variação")
         if bool(c.get("primeira_medicao")) == tem_par:
             p.append(f"{ident}: primeira_medicao não espelha a existência do par comparável")
+        # O par pode faltar: cartão com variação e sem par já reprovou três linhas acima, com a
+        # mensagem certa ("variação inventada"). Aqui a conta só se faz com os dois valores — antes
+        # ela estourava com TypeError e derrubava o portão inteiro, escondendo o resto.
         if (c.get("variacao") is not None
                 and c.get("valor") is not None
+                and c.get("valor_semana_anterior") is not None
                 and c["variacao"] != c["valor"] - c["valor_semana_anterior"]):
             p.append(f"{ident}: a variação não fecha com os dois valores do cartão")
         # Todo cartão declara o grupo em que aparece na página: sem grupo, ele não tem lugar.

@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-02 · #528 · Defesa civil: a cadeia do aviso ao recurso, e a Imprensa lendo as páginas
+
+Emergências por estado, com a cidade na lista e as três marcas da cadeia; série do decreto ao recurso; tipo de evento do ato; as três listas federais de risco juntas; alerta com portão de 24 horas. A Imprensa passa a LER o instantâneo de cada página, com portão que compara no navegador. Corrigidos: país somado duas vezes nas respiratórias (8.534 → 4.267) e autoteste que gravava no banco. O 40199 volta ao Proteja-se. METODOLOGIA §99.
+
 ## 2026-10-02 · #527 · MARÉ Saúde: quatro canais nas 27, e os 27 no componente da inicial
 
 Canal 2 fechado com duas tentativas por unidade e verificação humana registrada na falta; canal 3 com o domínio atual de AM, AP, RN e RO, e o 503 do RJ agendado para a terceira medição. Quatro canais: de 8 para **27 de 27**. O plano do Pará entra como revisado em 2026; o MS confirmado em 50. Os 27 estados passam ao componente da inicial. METODOLOGIA §98.

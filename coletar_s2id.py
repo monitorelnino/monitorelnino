@@ -23,7 +23,7 @@ USO
 """
 import html as _html, json, re, sys, time, urllib.parse
 from datetime import date
-from coletores_base import (buscar, preservar_evidencia, log_busca, registrar_lacuna,
+from coletores_base import (carimbar_atos, buscar, preservar_evidencia, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, marcar_fato_municipal, referencia_ibge,
                             ler, gravar, rodar_autoteste, eh_suspensao_defeso, sha256,
                             parse_busca_dou, varrer_busca_dou, FormatoDoDOUMudou, RAIZ,
@@ -326,7 +326,7 @@ def _coletar(desde: str, ate: str) -> int:
     por_cod, por_nome = referencia_ibge()
     atos = ler("atos_resposta.json"); vistos = {(e["nome"], e["uf"], e["data"], e.get("causa")) for e in atos["eventos"]}
     novos_midr, lidos_midr, rss_ok = coletar_midr(por_cod, por_nome, atos, vistos, True)
-    gravar("atos_resposta.json", atos)
+    gravar("atos_resposta.json", carimbar_atos(atos))
     if rss_ok:
         marcar_fonte_consultada(list(por_cod), "DOU/SEDEC reconhecimentos (via MIDR)", "nacional", resultado=f"{lidos_midr} município(s) reconhecido(s) lidos nas notícias do MIDR")
         print(f"MIDR/DOU: {lidos_midr} reconhecimentos lidos, {novos_midr} novos em atos_resposta.json")
@@ -421,7 +421,7 @@ def _coletar(desde: str, ate: str) -> int:
         atos["eventos"].append(ev)
         marcar_fato_municipal(cod, "decreto_reconhecido", True)
         vistos.add(chave); novos += 1
-    gravar("atos_resposta.json", atos)
+    gravar("atos_resposta.json", carimbar_atos(atos))
     # (03/09/2026) a consulta textual do DOU é COMPLEMENTAR: não confere nível — o nível nacional vem do RSS do MIDR lido
     log_busca("DOU", 1, [url], "registro" if (novos or enriquecidos) else "pista",
               resultados=f"{len(itens)} itens, {novos} novos, {len(enriquecidos)} com decreto municipal acrescentado",

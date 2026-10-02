@@ -886,6 +886,14 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
    é ele que ocupa o tamanho, em Fraunces leve, como os números do resto do site. */
 .emerg{margin:var(--sp-5) 0;}
 .emerg-cartoes{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:var(--sp-3); margin:var(--sp-3) 0;}
+/* 02/10/2026: cinco cartoes na barra — os quatro telefones e o SMS 40199, que voltou (item 7 do
+   handover da Defesa civil). O do SMS leva uma linha de instrucao, porque cadastrar-se exige
+   saber o que enviar; os de telefone nao levam, porque discar nao exige instrucao. */
+.emerg-cartoes--cinco{grid-template-columns:repeat(5, minmax(0,1fr));}
+.emerg-cartao--sms{border-top-color:var(--musgo);}
+.emerg-cartao--sms .emerg-numero{font-size:var(--fs-h1); line-height:var(--lh-h1);}
+.emerg-cartao small{font-family:var(--font-corpo); font-size:var(--fs-caption);
+  line-height:var(--lh-caption); color:var(--muted);}
 .emerg-cartao{display:flex; flex-direction:column; align-items:flex-start; gap:var(--sp-1);
   padding:var(--sp-3) var(--sp-4); border:1px solid var(--line); border-radius:12px;
   border-top:4px solid var(--line); text-decoration:none; color:var(--ink); background:var(--branco);}
@@ -939,6 +947,8 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
    quebra avulso faz uma página responder em largura que nenhuma outra responde. */
 @media (max-width: 640px){
   .emerg-cartoes{grid-template-columns:repeat(2, minmax(0,1fr));}
+  .emerg-cartoes--cinco{grid-template-columns:repeat(2, minmax(0,1fr));}
+  .emerg-cartao--sms{grid-column:1 / -1;}
   .emerg-numero{font-size:var(--fs-h1);}
   .levar-botoes .btn-pilula{width:100%; justify-content:center;}
 }
@@ -1087,6 +1097,14 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
   border:1px solid var(--line); border-radius:12px; padding:var(--sp-3) var(--sp-4);
   border-top:4px solid var(--line); background:var(--branco);}
 .cartao-numero--chuva{border-top-color:var(--chuva);}
+/* 02/10/2026 (redesenho da Imprensa): faixa superior de cor por GRUPO de cartao. A cor nomeia o
+   grupo — preparacao, emergencias, risco agora, dinheiro, saude —, e nao julga o numero: nenhuma
+   delas e verde de bom nem vermelha de ruim, e a variacao ao lado do numero continua sem cor. */
+.cartao-numero--preparacao{border-top-color:var(--green);}
+.cartao-numero--emergencias{border-top-color:var(--rust);}
+.cartao-numero--risco_agora{border-top-color:var(--chuva);}
+.cartao-numero--dinheiro{border-top-color:var(--amber);}
+.cartao-numero--saude{border-top-color:var(--slate);}
 .cartao-numero--resposta{border-top-color:var(--rust);}
 .cartao-numero-rotulo{font-family:var(--font-dado); font-size:var(--fs-caption);
   line-height:var(--lh-caption); text-transform:uppercase; letter-spacing:var(--ls-caps);

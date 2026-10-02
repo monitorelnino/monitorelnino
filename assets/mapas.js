@@ -311,8 +311,18 @@
                     rampa:['#7FA6C4', '#4F7A97', '#8A76A6', '#5B3F7A'], claro:true},
       // `resposta`: o decreto de emergência é marca de resposta, e a cor dela no site é a argila.
       // Um tom só, porque o mapa não mede intensidade — mede se a cidade decretou.
+      // 02/10/2026 (Defesa civil, a cadeia do aviso ao recurso): `resposta` ganhou rampa de quatro
+      // tons de argila, do mais claro ao mais escuro. O mapa das emergências deixou de ser ponto
+      // por município e passou a ser a PARCELA dos municípios do estado com decreto no ciclo —
+      // parcela é intensidade, e intensidade pede rampa. O tom cheio de argila continua sendo o
+      // último, de modo que nenhuma figura antiga muda de cor.
       resposta:    {fundo:'#FFFFFF', uf:'#FFFFFF', contorno:'#D8CDBE',
-                    rampa:['#7C4A34'], claro:true},
+                    rampa:['#E6D3C6', '#C79B80', '#A06A4C', '#7C4A34'], claro:true},
+      // `fogo_claro`: a família do fogo sobre fundo branco, para a lista federal dos prioritários
+      // do controle do desmatamento. A `fogo` existente é noturna e vive no Monitor de riscos;
+      // trocá-la mudaria aquela página — é o mesmo motivo que criou `chuva_claro` em 01/10.
+      fogo_claro:  {fundo:'#FFFFFF', uf:'#FFFFFF', contorno:'#DCCBBD',
+                    rampa:['#F2CDAE', '#E09A63', '#C86B33', '#9C4A1E'], claro:true},
     },
     // séries por ano (o ano corrente sempre em Argila)
     anos: { '2026': COR.argila, '2025': COR.ambar, '2024': COR.mineral, canal: COR.musgo, p75: COR.ambar, p90: COR.sintetico },

@@ -4,50 +4,16 @@ const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt
 // os MESMOS cartões da grade acima: mesma janela, mesma fonte, mesmo critério. Dois números iguais
 // na mesma página com contas diferentes é o defeito que a regra 0 existe para impedir.
 (function releaseDaEdicao(){
-  const põe = (id, v) => { const e = document.getElementById(id); if (e && v != null && v !== '') e.textContent = String(v); };
-  const n = v => Number(v).toLocaleString('pt-BR');
-
-  fetch('data/indice.json').then(r => r.ok ? r.json() : null).then(idx => {
-    if (!idx) return;
-    const ufs = Object.keys(idx).filter(k => k.length === 2);
-    if (!ufs.length) return;
-    const media = Math.round(ufs.reduce((a, u) => a + idx[u].total, 0) / ufs.length * 10) / 10;
-    põe('relLegal', media.toLocaleString('pt-BR', {minimumFractionDigits: 1}));
-  }).catch(() => {});
-
-  fetch('data/monitor_saude.json').then(r => r.ok ? r.json() : null).then(sa => {
-    const res = (sa || {}).resumo || {};
-    if (res.media_das_verificadas == null) return;
-    põe('relSaude', Number(res.media_das_verificadas).toLocaleString('pt-BR', {minimumFractionDigits: 1}));
-    // Enquanto não forem 27, a ressalva anda junto do número — no release também, e não só no topo.
-    const e = document.getElementById('relSaudeRessalva');
-    if (e && res.verificadas != null && res.verificadas < 27) {
-      e.textContent = ', média dos ' + res.verificadas + ' estados verificados';
-    }
-  }).catch(() => {});
-
+  /* O release VEM PRONTO de data/imprensa/semana.json (`texto_pronto`). A versao anterior montava
+     a frase no HTML, com um `<span>` por numero, e as regras de redacao do handover — frase sem
+     dado omitida, concordancia com o numero, populacao arredondada — ficavam espalhadas entre o
+     HTML e tres blocos de JS. Agora ha um autor so, com autoteste: o motor. */
+  const alvo = document.getElementById('releaseTexto');
+  if (!alvo) return;
   fetch('data/imprensa/semana.json').then(r => r.ok ? r.json() : null).then(S => {
-    if (!S || !S.cartoes) return;
-    const c = id => S.cartoes.find(x => x.id === id) || {};
-    const val = id => { const x = c(id); return x.sem_coleta ? null : x.valor; };
-    const planos = val('planos_no_periodo'), decretos = val('decretos_no_periodo');
-    const pop = val('populacao_decretos_no_periodo');
-    põe('relPlanosSemana', planos == null ? 'nenhum' : (planos === 0 ? 'nenhum' : n(planos)));
-    põe('relDecretosSemana', decretos == null ? 'nenhum' : (decretos === 0 ? 'nenhum' : n(decretos)));
-    põe('relPopSemana', pop == null ? 'sem dado nesta edição' : n(pop));
-    const faixa = c('ufs_mudaram_faixa');
-    põe('relFaixaSemana', faixa.sem_coleta
-      ? 'Mudança de faixa entre estados: sem dado nesta edição.'
-      : (faixa.valor === 0 ? 'Nenhum estado mudou de faixa.'
-         : n(faixa.valor) + ' estados mudaram de faixa.'));
-  }).catch(() => {});
-
-  fetch('data/percentual_uf.json').then(r => r.ok ? r.json() : null).then(P => {
-    if (P) põe('relPlanosTotal', n(Object.values(P).reduce((a, i) => a + (i.n_plano || 0), 0)));
-  }).catch(() => {});
-
-  fetch('data/resposta/por_uf.json').then(r => r.ok ? r.json() : null).then(R => {
-    if (R && R.nacional) põe('relDecretosTotal', n(R.nacional.n_municipios));
+    const texto = (S || {}).texto_pronto;
+    if (!texto) { alvo.innerHTML = '<p class="u-muted">Release não carregado nesta edição.</p>'; return; }
+    alvo.innerHTML = texto.split(/\n\s*\n/).map(p => '<p>' + esc(p) + '</p>').join('');
   }).catch(() => {});
 })();
 
@@ -86,6 +52,43 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
 (function gradeDaSemana(){
   const alvo = document.getElementById('gradeSemana');
   if (!alvo) return;
+  /* Como cada numero e escrito, e por que:
+     - DINHEIRO em reais, abreviado como no Financiamento ("R$ 150,9 mi"): o valor ao centavo num
+       cartao de topo ocupa a largura toda e nao se le de relance;
+     - POPULACAO arredondada em milhao, com uma casa — foi o que a editoria pediu, e o inteiro daria
+       precisao que o recorte nao tem;
+     - ZERO por extenso ("nenhum ato", "nenhum plano"): "0 planos publicados" se le como falha de
+       sistema, e "nenhum plano publicado" se le como o fato que e. R$ 0 fica R$ 0, porque ali o
+       zero e de dinheiro e se le sem tropeco. */
+  const ZERO_POR_EXTENSO = {
+    planos_na_semana: 'nenhum plano', atos_federais_semana: 'nenhum ato',
+    mudaram_faixa: 'nenhum estado', decretos_na_semana: 'nenhum município',
+    reconhecimentos_na_semana: 'nenhum município', populacao_decretos_na_semana: 'ninguém',
+    municipios_alerta_cemaden: 'nenhum município', municipios_aviso_inmet: 'nenhum município',
+    decreto_e_alerta_ao_mesmo_tempo: 'nenhum município', focos_24h: 'nenhum foco',
+    capitais_ar_ruim_ou_pior: 'nenhuma capital', ufs_dengue_alerta: 'nenhum estado',
+  };
+  const reais = v => {
+    const abs = Math.abs(v);
+    if (abs >= 1e9) return 'R$ ' + (v / 1e9).toFixed(1).replace('.', ',') + ' bi';
+    if (abs >= 1e6) return 'R$ ' + (v / 1e6).toFixed(1).replace('.', ',') + ' mi';
+    if (abs >= 1e3) return 'R$ ' + (v / 1e3).toFixed(1).replace('.', ',') + ' mil';
+    return 'R$ ' + v.toLocaleString('pt-BR', {maximumFractionDigits: 0});
+  };
+  const milhoes = v => v >= 1e6
+    ? (v / 1e6).toFixed(1).replace('.', ',') + (v < 2e6 ? ' milhão' : ' milhões')
+    : v.toLocaleString('pt-BR');
+  const fmtCartao = c => {
+    const v = c.sem_coleta ? null : c.valor;
+    if (v === null || v === undefined) return 'sem dado nesta edição';
+    if (v === 0 && ZERO_POR_EXTENSO[c.id]) return ZERO_POR_EXTENSO[c.id];
+    if (c.unidade === 'reais') return reais(Number(v));
+    if (c.unidade === 'pessoas') return milhoes(Number(v));
+    if (c.unidade === '°C') return (v > 0 ? '+' : '') + String(v).replace('.', ',') + ' °C';
+    if (typeof v === 'number' && !Number.isInteger(v)) return v.toFixed(1).replace('.', ',');
+    if (typeof v === 'number') return v.toLocaleString('pt-BR');
+    return String(v);
+  };
   const fmt = v => {
     if (v === null || v === undefined) return 'sem dado nesta edição';
     if (typeof v === 'number' && !Number.isInteger(v)) return v.toFixed(1).replace('.', ',');
@@ -125,7 +128,11 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     };
 
     GRUPOS.forEach(([chave, titulo]) => {
-      const cartoes = S.cartoes.filter(c => c.grupo === chave);
+      /* Cartao sem dado SAI da grade (handover de 02/10): um cartao que diz "sem dado nesta edicao"
+         e explica a razao tecnica ocupa um terco da linha para nao informar nada. O rotulo dele vai
+         para a linha unica abaixo dos grupos, que e onde a lacuna fica legivel sem roubar o lugar
+         de um numero. */
+      const cartoes = S.cartoes.filter(c => c.grupo === chave && !c.sem_coleta);
       if (!cartoes.length) return;
       const bloco = document.createElement('div');
       bloco.className = 'imprensa-grupo';
@@ -134,19 +141,13 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       const grade = bloco.querySelector('.grade-numeros');
       cartoes.forEach(c => {
         const cartao = document.createElement('div');
-        cartao.className = 'cartao-numero';
+        cartao.className = 'cartao-numero cartao-numero--' + chave;
         cartao.dataset.cartao = c.id;
         cartao.innerHTML =
-          '<p class="cartao-numero-valor">' + esc(fmt(c.sem_coleta ? null : c.valor)) + '</p>'
+          '<p class="cartao-numero-valor">' + esc(fmtCartao(c)) + '</p>'
           + variacao(c)
           + '<p class="cartao-numero-rotulo">' + esc(c.rotulo || c.id) + '</p>'
           + '<p class="cartao-numero-fonte">' + esc(linhaDeFonte(c) || (c.nota || '')) + '</p>';
-        if (c.sem_coleta && c.nota) {
-          const porque = document.createElement('p');
-          porque.className = 'cartao-numero-fonte';
-          porque.textContent = c.nota;
-          cartao.appendChild(porque);
-        }
         if (c.lista && c.lista.length && dlg) {
           const b = document.createElement('button');
           b.type = 'button';
@@ -181,6 +182,8 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     // impressão de que nada falta.
     const faltam = document.getElementById('semanaNaoCalculaveis');
     const sem = S.cartoes.filter(c => c.sem_coleta);
+    const baixar = document.getElementById('baixarNumeros');
+    if (baixar && S.gerado_em) baixar.href = 'dados-abertos/imprensa/numeros-' + S.gerado_em + '.csv';
     if (faltam && sem.length) {
       faltam.hidden = false;
       faltam.textContent = 'Sem dado nesta edição: ' + sem.map(c => c.rotulo).join(' · ') + '.';

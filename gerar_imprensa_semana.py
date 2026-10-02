@@ -607,112 +607,385 @@ def cartoes_do_dinheiro(corte):
     return tres
 
 
-def texto_pronto(cartoes: list[dict]) -> str:
-    """Uma frase por cartão com valor. Cláusula de valor zero ou sem coleta é OMITIDA."""
-    por_id = {c["id"]: c for c in cartoes}
-    partes = []
+# -- cartoes IMPORTADOS das paginas de origem (handover de 02/10/2026, item 1) ----------------
+# A Imprensa nao recalcula mais nada que outra pagina ja publica. Cada numero abaixo e LIDO do
+# instantaneo que o gerador da pagina de origem escreve:
+#
+#   data/financiamento/semana.json        · Financiamento   (gerar_financiamento_semana.py)
+#   data/saude_desfechos/topo_saude.json  · MARE Saude      (scripts/gerar_topo_das_paginas.py)
+#   data/resposta/topo_defesa_civil.json  · Defesa civil    (idem)
+#   data/topo_monitor_riscos.json          · Monitor de riscos (idem)
+#
+# Por que: em 02/10/2026 a Imprensa dizia "sem dado" no dinheiro com dado publicado no
+# Financiamento, e 482 casos de dengue na semana 37 (InfoDengue) onde o MARE Saude dizia 8.146 na
+# semana 33 (Sinan). Duas definicoes do mesmo numero, uma em cada pagina, e nada obrigando as duas
+# a concordarem. Agora ha uma definicao e um lugar; a Imprensa le.
+
+FONTE_LEITOR = {
+    "Portal da Transparência, Execução da Despesa (arquivos mensais abertos)": "Portal da Transparência",
+    "Portal da Transparência, Transferências de Recursos (dados abertos)": "Portal da Transparência",
+    "Portarias da SEDEC no Diário Oficial da União": "Defesa Civil nacional, no Diário Oficial da União",
+    "Atos federais lidos pelo MARÉ": "atos federais lidos pelo MARÉ",
+}
+
+
+def _reais(v):
+    """R$ com separador de milhar brasileiro. Funcao pura."""
+    if v is None:
+        return None
+    inteiro = f"{round(float(v)):,}".replace(",", ".")
+    return "R$ " + inteiro
+
+
+def importado(ident, rotulo, fonte_card, *, grupo, valor=None, referencia=None, variacao=None,
+              fonte=None, url_fonte=None, nota=None, unidade=None, origem=None):
+    """Um cartao cujo valor veio pronto da pagina de origem. Funcao pura.
+
+    `fonte_card` e o cartao do instantaneo; `origem` e a pagina que o publica — ela entra no
+    registro porque o portao de coerencia confere numero contra pagina, e sem dizer qual pagina
+    o portao nao sabe onde conferir.
+    """
+    c = fonte_card or {}
+    sem = bool(c.get("sem_coleta")) if valor is None else False
+    v = c.get("valor") if valor is None else valor
+    if v is None:
+        sem = True
+    var = variacao if valor is None else None
+    if variacao is not None:
+        var = variacao
+    if valor is not None and variacao is None:
+        var = None
+    elif valor is None and variacao is None:
+        var = c.get("variacao")
+    return {
+        "id": ident, "grupo": grupo, "rotulo": rotulo,
+        "valor": None if sem else v,
+        "unidade": unidade,
+        "sem_coleta": sem,
+        "periodo": None,
+        "referencia": referencia if referencia is not None else c.get("referencia"),
+        "fonte": fonte or FONTE_LEITOR.get(c.get("fonte"), c.get("fonte")) or "—",
+        "url_fonte": url_fonte or c.get("url_fonte"),
+        "consultado_em": c.get("referencia"),
+        # `valor` passado é OVERRIDE: nesse caso o cartão publica outro recorte do mesmo cartão de
+        # origem (a contagem da SEMANA, e não o acumulado do ciclo), e a variação do instantâneo
+        # NÃO se aplica a ele — ela é a variação do acumulado, que aqui já é o próprio valor.
+        # Publicar a mesma conta como valor e como variação diria duas vezes a mesma coisa, e o
+        # portão da imprensa cobra que variação feche com o par — que aqui não existe.
+        "primeira_medicao": var is None,
+        "valor_semana_anterior": None,
+        "variacao": var,
+        "nota": nota if nota is not None else c.get("nota"),
+        "secundaria": None,
+        "lista": c.get("lista") or [],
+        "pagina_de_origem": origem,
+    }
+
+
+def por_id(instantaneo):
+    """{id: cartao} do instantaneo. Funcao pura."""
+    return {c.get("id"): c for c in (instantaneo or {}).get("cartoes") or []}
+
+
+def cartoes_das_emergencias(dc):
+    """Emergencias: tres cartoes da SEMANA, lidos do instantaneo da Defesa civil."""
+    d = por_id(dc)
+    dec = d.get("municipios_decretaram") or {}
+    pop = d.get("populacao_sob_decreto") or {}
+    rec = d.get("reconhecidos_pelo_governo_federal") or {}
+    return [
+        importado("decretos_na_semana",
+                  "Municípios que decretaram emergência ou calamidade na semana", dec,
+                  grupo="emergencias", valor=dec.get("variacao"), referencia="últimos 7 dias",
+                  nota="pela data do decreto", origem="defesa-civil.html"),
+        importado("populacao_decretos_na_semana",
+                  "Pessoas que vivem nos municípios que decretaram na semana", pop,
+                  grupo="emergencias", valor=pop.get("variacao"), referencia="últimos 7 dias",
+                  unidade="pessoas", nota="Censo 2022, pelos municípios que entraram na semana",
+                  origem="defesa-civil.html"),
+        importado("reconhecimentos_na_semana",
+                  "Municípios que tiveram a emergência reconhecida pelo governo federal na semana",
+                  rec, grupo="emergencias", valor=rec.get("variacao"), referencia="últimos 7 dias",
+                  nota="pela data da portaria", origem="defesa-civil.html"),
+    ]
+
+
+def cartoes_do_risco_agora(dc, riscos, sinais):
+    """Risco agora: seis cartoes. Tres da Defesa civil, dois do Monitor de riscos, um do fogo."""
+    d, r = por_id(dc), por_id(riscos)
+    cartoes = [
+        importado("municipios_alerta_cemaden", "Municípios sob alerta do Cemaden",
+                  d.get("municipios_alerta_cemaden"), grupo="risco_agora",
+                  url_fonte="https://www.gov.br/cemaden/pt-br", origem="defesa-civil.html"),
+        importado("municipios_aviso_inmet", "Municípios sob aviso do Inmet",
+                  d.get("municipios_aviso_inmet"), grupo="risco_agora",
+                  url_fonte="https://portal.inmet.gov.br/", origem="defesa-civil.html"),
+        importado("decreto_e_alerta_ao_mesmo_tempo",
+                  "Municípios com decreto de emergência e alerta ao mesmo tempo",
+                  d.get("decreto_e_alerta_ao_mesmo_tempo"), grupo="risco_agora",
+                  origem="defesa-civil.html"),
+        cartao_focos(sinais),
+        importado("temperatura_desvio_capital",
+                  "A maior diferença de temperatura máxima em relação ao normal, em grau Celsius",
+                  r.get("temperatura_desvio_capital"), grupo="risco_agora", unidade="°C",
+                  origem="monitor-de-riscos.html"),
+        importado("capitais_ar_ruim_ou_pior", "Capitais com o ar na faixa ruim ou acima dela",
+                  r.get("capitais_ar_ruim_ou_pior"), grupo="risco_agora",
+                  origem="monitor-de-riscos.html"),
+    ]
+    return cartoes
+
+
+def cartoes_do_dinheiro_importados(fin, recursos):
+    """Dinheiro: tres cartoes, lidos do instantaneo do Financiamento.
+
+    O recorte e o que a FONTE permite, e o instantaneo ja o traz: mes fechado onde a fonte publica
+    por mes, sete dias onde o ato tem data. A Imprensa nao reaperta o recorte — apertar aqui seria
+    publicar um numero que a pagina de origem nao publica.
+    """
+    f = por_id(fin)
+    pago = f.get("pago_periodo_mp") or {}
+    resp = f.get("resposta_liberado_semana") or {}
+    atos = f.get("atos_federais_semana") or {}
+    n_mun = (recursos or {}).get("municipios_com_ato")
+    janela = ((recursos or {}).get("janela_lida") or {})
+    return [
+        importado("desembolsado_no_mes",
+                  "Em recursos oriundos das medidas federais do El Niño, desembolsados no "
+                  + (pago.get("periodo") or "mês fechado"), pago, grupo="dinheiro",
+                  unidade="reais", referencia=pago.get("periodo"), origem="financiamento.html"),
+        importado("resposta_autorizado_semana",
+                  "Autorizados pela defesa civil federal nos últimos 7 dias", resp,
+                  grupo="dinheiro", unidade="reais", referencia="últimos 7 dias",
+                  nota=(f"para {n_mun} município(s) com ato no ciclo" if n_mun else None)
+                       or resp.get("detalhe"),
+                  origem="financiamento.html"),
+        importado("atos_federais_semana",
+                  "Atos federais de financiamento publicados nos últimos 7 dias", atos,
+                  grupo="dinheiro", unidade="atos", referencia="últimos 7 dias",
+                  origem="financiamento.html"),
+    ]
+
+
+def cartoes_da_saude_importados(saude):
+    """Saude: tres cartoes, lidos do instantaneo do MARE Saude.
+
+    A semana epidemiologica fechada e a do gerador da saude — uma definicao so, como o handover
+    exige. Era aqui que a Imprensa publicava a semana 37 do InfoDengue enquanto a pagina publicava
+    a semana 33 do Sinan.
+    """
+    s_ = por_id(saude)
+    den = s_.get("dengue_casos_se") or {}
+    srag = s_.get("srag_internacoes_se") or {}
+    ufs = s_.get("uf_dengue_alerta") or {}
+    se = lambda c: (str(c.get("referencia") or "").split("-")[-1] or "—")
+    return [
+        importado("dengue_casos_se",
+                  f"Casos prováveis de dengue na semana epidemiológica {se(den)}", den,
+                  grupo="saude", origem="saude.html"),
+        importado("srag_internacoes_se",
+                  "Internações por síndrome respiratória grave na semana epidemiológica "
+                  + se(srag), srag, grupo="saude", origem="saude.html"),
+        importado("ufs_dengue_alerta", "Estados com dengue em nível de alerta", ufs,
+                  grupo="saude", origem="saude.html"),
+    ]
+
+
+def texto_pronto(cartoes: list[dict], indices: dict = None) -> str:
+    """O release da edicao, no texto aprovado em 02/10/2026.
+
+    Tres regras, e as tres sao do handover: **frase sem dado e omitida**; a concordancia segue o
+    numero (0 vira "nenhum municipio publicou", 1 vira singular); populacao vem arredondada. Zero
+    escrito por extenso existe porque "0 municipios publicaram plano" se le como falha de sistema,
+    e "nenhum municipio publicou plano" se le como o fato que e.
+    """
+    d = {c["id"]: c for c in cartoes}
+    I = indices or {}
 
     def v(ident):
-        c = por_id.get(ident)
-        if not c or c["sem_coleta"] or not c["valor"]:
+        c = d.get(ident)
+        if not c or c.get("sem_coleta") or c.get("valor") is None:
             return None
-        return c
+        return c["valor"]
 
-    c = v("decretos_no_periodo")
-    if c:
-        ufs = sorted({x["uf"] for x in c["lista"]})[:3]
-        ini = datetime.fromisoformat(c["periodo"]["ini"]).strftime("%d/%m")
-        fim = datetime.fromisoformat(c["periodo"]["fim"]).strftime("%d/%m")
-        partes.append(f"Entre {ini} e {fim}, {c['valor']} municípios decretaram emergência ou "
-                      f"calamidade ({', '.join(ufs)})")
-    c = v("reconhecimentos_no_periodo")
-    if c:
-        partes.append(f"{c['valor']} municípios foram reconhecidos pelo governo federal")
-    c = v("planos_no_periodo")
-    if c:
-        partes.append(f"{c['valor']} planos municipais têm ato no período")
-    c = v("focos_24h")
-    if c:
-        top = c["lista"][0]["uf"] if c["lista"] else None
-        partes.append(f"o INPE detectou {c['valor']} focos de calor nas últimas 24 horas"
-                      + (f" ({top})" if top else ""))
-    c = v("avisos_inmet")
-    if c:
-        partes.append(f"{c['valor']} avisos meteorológicos do INMET estão em vigor")
-    c = v("alertas_cemaden")
-    if c:
-        partes.append(f"{c['valor']} alertas do CEMADEN estão em vigor")
-    c = v("temperatura_maxima")
-    if c and c["lista"]:
-        # Vírgula decimal: o texto é público e em português. "39.0 °C" é erro de idioma.
-        graus = f"{c['valor']:.1f}".replace(".", ",")
-        partes.append(f"a maior máxima prevista entre as capitais é de {graus} °C em "
-                      f"{c['lista'][0]['capital']}")
-    c = v("qualidade_ar_indice")
-    if c:
-        partes.append(f"{c['valor']} capitais estão com índice de qualidade do ar acima de "
-                      f"{EAQI_LIMIAR}")
-    return ("; ".join(partes) + ".") if partes else ""
+    def milhoes(n):
+        if n is None:
+            return None
+        if n >= 1e6:
+            x = round(n / 1e6, 1)
+            return f"{x:.1f}".replace(".", ",") + (" milhão" if x < 2 else " milhões")
+        return f"{int(n):,}".replace(",", ".")
+
+    def mun(n, verbo_sing, verbo_plur):
+        if n == 0:
+            return "nenhum município " + verbo_sing
+        if n == 1:
+            return "1 município " + verbo_sing
+        return f"{n} municípios " + verbo_plur
+
+    # As frases do release são as do texto aprovado, e a pontuação é a dele: o parágrafo do ciclo
+    # começa com "Desde o início do ciclo". Juntar tudo com ponto e vírgula produzia "…verificadas;
+    # Na semana", com maiúscula depois de ponto e vírgula — erro de idioma num texto que sai em
+    # release de imprensa.
+    frases = []
+    edicao = I.get("edicao")
+    legal, saude_i = I.get("mare_legal"), I.get("mare_saude")
+    verificadas = I.get("saude_verificadas")
+    if edicao:
+        frases.append(f"Edição de {edicao}.")
+    if legal is not None and saude_i is not None:
+        media = ("" if (verificadas or 0) >= 27 or not verificadas
+                 else f", média dos {verificadas} estados verificados")
+        frases.append(
+            "O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios "
+            f"para o El Niño 2026/2027, está em {str(legal).replace('.', ',')} de 100; o MARÉ "
+            f"Saúde, em {str(saude_i).replace('.', ',')} de 100{media}.")
+    planos, decretos = v("planos_na_semana"), v("decretos_na_semana")
+    pop = v("populacao_decretos_na_semana")
+    if planos is not None and decretos is not None:
+        frase = ("Na semana, " + mun(planos, "publicou plano para o ciclo",
+                                     "publicaram plano para o ciclo")
+                 + " e " + mun(decretos, "decretou situação de emergência ou calamidade",
+                               "decretaram situação de emergência ou calamidade"))
+        if pop:
+            frase += f"; {milhoes(pop)} de pessoas vivem nos municípios que decretaram"
+        frases.append(frase + ".")
+    faixas = v("mudaram_faixa")
+    if faixas is not None:
+        frases.append(("Nenhum estado mudou de faixa." if faixas == 0
+                       else ("1 estado mudou de faixa." if faixas == 1
+                             else f"{faixas} estados mudaram de faixa.")))
+    primeiro = " ".join(frases)
+
+    segundo = []
+    capitais = v("capitais_com_plano")
+    ciclo = I.get("decretaram_no_ciclo")
+    if capitais is not None and ciclo is not None:
+        segundo.append(f"Desde o início do ciclo, em 29 de junho, {capitais} de 27 capitais têm "
+                       "plano localizado e " + mun(ciclo, "decretou emergência ou calamidade",
+                                                   "decretaram emergência ou calamidade") + ".")
+    segundo.append("Cada registro, com documento, data e fonte, está em monitorelnino.com.br. "
+                   "O MARÉ é uma criação da Futura Evidence Lab.")
+    return (primeiro + chr(10)*2 + " ".join(segundo)).strip()
 
 
 def montar(corte: date) -> dict:
-    atos = ler_atos()
+    """Os cinco grupos aprovados, na ordem aprovada.
+
+    Quase todo cartao e IMPORTADO da pagina de origem (item 1 do handover de 02/10/2026). Os que a
+    Imprensa ainda calcula sao os tres da PREPARACAO, porque eles nao existem no topo de nenhuma
+    pagina: "planos publicados na semana" e janela de sete dias sobre o banco municipal, "estados
+    que mudaram de faixa" sai do historico de faixas, e "capitais com plano" e um recorte proprio
+    da Imprensa. Nenhum deles duplica numero publicado em outro lugar.
+    """
     municipios = ler("municipios.json", []) or []
     sinais = ler("sinais_risco.json", {}) or {}
+    fin = ler("financiamento/semana.json", {}) or {}
+    dc = ler("resposta/topo_defesa_civil.json", {}) or {}
+    saude = ler("saude_desfechos/topo_saude.json", {}) or {}
+    riscos = ler("topo_monitor_riscos.json", {}) or {}
+    recursos = ler("resposta/recursos_liberados.json", {}) or {}
+    mare = ler("indice.json", {}) or {}
+    monitor_saude = ler("monitor_saude.json", {}) or {}
+    por_uf = ler("resposta/por_uf.json", {}) or {}
 
-    # A ordem é a dos grupos aprovados em 01/10/2026: preparação, emergências, risco agora,
-    # dinheiro, saúde. Cada cartão carrega o seu grupo, e a página não reordena nada.
-    #
-    # Saem daqui dois cartões antigos: "avisos meteorológicos em vigor" (contava AVISOS onde a
-    # Defesa civil conta MUNICÍPIOS — item 0 do handover) e "alertas do CEMADEN em vigor", pela
-    # mesma razão. No lugar entra `cartao_municipios_sob_alerta`, que lê o arquivo que ela lê.
-    cartoes = [
-        cartao_planos(municipios, corte),
-        cartao_mudaram_faixa(),
-        cartao_capitais_com_plano(municipios),
-        cartao_decretos(atos, corte),
-        cartao_populacao_decretos(atos, municipios, corte),
-        cartao_reconhecimentos(atos, corte),
-        cartao_municipios_sob_alerta(),
-        cartao_focos(sinais),
-        cartao_temperatura(sinais),
-        cartao_qualidade_ar(sinais),
-        *cartoes_do_dinheiro(corte),
-        cartao_dengue_semana(),
-        cartao_srag_semana(),
-        cartao_ufs_dengue_alerta(),
-    ]
-    # Grupo e endereço da fonte dos cartões que já existiam. Entram por mapa, e não por argumento
-    # na chamada: `cartao()` é posicional, e um `grupo=` no meio quebraria as cinco de uma vez.
-    GRUPO_DOS_ANTIGOS = {"planos_no_periodo": "preparacao",
-                         "decretos_no_periodo": "emergencias",
-                         "reconhecimentos_no_periodo": "emergencias",
-                         "focos_24h": "risco_agora",
-                         "temperatura_maxima": "risco_agora",
-                         "qualidade_ar_indice": "risco_agora"}
-    URL_DOS_ANTIGOS = {"focos_24h": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
-                       "reconhecimentos_no_periodo": "https://www.gov.br/mdr/pt-br"}
+    planos = cartao_planos(municipios, corte)
+    planos["id"] = "planos_na_semana"
+    planos["rotulo"] = "Planos publicados na semana, pela data do ato"
+    faixas = cartao_mudaram_faixa()
+    faixas["id"] = "mudaram_faixa"
+    faixas["rotulo"] = "Estados que mudaram de faixa no MARÉ Legal ou no MARÉ Saúde"
+    capitais = cartao_capitais_com_plano(municipios)
+    capitais["id"] = "capitais_com_plano"
+    capitais["rotulo"] = "Capitais com plano localizado"
+
+    cartoes = [planos, faixas, capitais]
+    cartoes += cartoes_das_emergencias(dc)
+    cartoes += cartoes_do_risco_agora(dc, riscos, sinais)
+    cartoes += cartoes_do_dinheiro_importados(fin, recursos)
+    cartoes += cartoes_da_saude_importados(saude)
+
+    GRUPO_DOS_PROPRIOS = {"planos_na_semana": "preparacao", "mudaram_faixa": "preparacao",
+                          "capitais_com_plano": "preparacao", "focos_24h": "risco_agora"}
+    URL_DOS_PROPRIOS = {"focos_24h": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/"}
     for c in cartoes:
         if c.get("grupo") is None:
-            c["grupo"] = GRUPO_DOS_ANTIGOS.get(c["id"])
+            c["grupo"] = GRUPO_DOS_PROPRIOS.get(c["id"])
         if c.get("url_fonte") is None:
-            c["url_fonte"] = URL_DOS_ANTIGOS.get(c["id"])
+            c["url_fonte"] = URL_DOS_PROPRIOS.get(c["id"])
+        c.setdefault("pagina_de_origem", None)
+        c.setdefault("referencia", None)
+        c.setdefault("unidade", None)
     assert all(c.get("grupo") for c in cartoes), "cartão sem grupo não tem onde aparecer na página"
+
+    resumo = (monitor_saude.get("resumo") or {})
+    indices = {
+        "edicao": corte.strftime("%d/%m/%Y"),
+        # O MARÉ Legal nacional é a MÉDIA DAS 27 UFs do `total` de `indice.json` — a mesma conta
+        # que a barra da página inicial faz (assets/js/index.js). Ele não existe como campo no
+        # arquivo: a inicial o calcula na hora, e a Imprensa passa a usar a mesma régua.
+        "mare_legal": (round(sum((v or {}).get("total") or 0 for v in mare.values()) / 27, 1)
+                       if isinstance(mare, dict) and len(mare) >= 27 else None),
+        "mare_saude": resumo.get("media_das_verificadas"),
+        "saude_verificadas": resumo.get("verificadas"),
+        "decretaram_no_ciclo": (por_uf.get("nacional") or {}).get("n_municipios"),
+    }
+    sem_dado = [c["rotulo"] for c in cartoes if c["sem_coleta"]]
     return {
         "_governanca":
-            "Cartões 'Esta semana em números' da página Imprensa (handover da editoria de "
-            "27/09/2026, §253). Peso ZERO nos índices: nada aqui é lido por recalcular_mare.py "
-            "nem por gerar_monitor_saude.py. Todo número vem do dado; texto fixo nunca contém "
-            "número. Zero só quando a coleta rodou — sem coleta é `sem_coleta: true`, e ausência "
-            "não é zero. Sem fotografia da edição anterior, `primeira_medicao: true` e "
-            "`variacao: null`: variação sem par seria inventada. Derivado de "
+            "Cartões 'Esta semana em números' da página Imprensa. Peso ZERO nos índices. "
+            "02/10/2026 (handover do redesenho): a Imprensa NÃO recalcula número que outra página "
+            "publica — ela lê o instantâneo do topo de cada página (Financiamento, MARÉ Saúde, "
+            "Defesa civil, Monitor de riscos), e cada cartão declara a sua `pagina_de_origem`. "
+            "Zero só quando a coleta rodou; sem coleta é `sem_coleta: true`, o cartão SAI da grade "
+            "e o rótulo entra na linha 'Sem dado nesta edição'. Derivado de "
             "gerar_imprensa_semana.py — não se edita à mão.",
         "gerado_em": corte.isoformat(),
         "janela_dias": JANELA,
+        "indices": indices,
         "cartoes": cartoes,
+        "sem_dado_nesta_edicao": sem_dado,
         "nao_calculaveis": NAO_CALCULAVEIS,
-        "texto_pronto": texto_pronto(cartoes),
+        "texto_pronto": texto_pronto(cartoes, indices),
     }
+
+
+COLUNAS_CSV = ("grupo", "rótulo", "valor", "variação", "referência", "fonte", "URL da fonte",
+               "data da consulta")
+
+
+def linhas_da_planilha(semana: dict) -> list:
+    """As linhas da planilha da edição. Função pura.
+
+    Cartão sem dado entra na planilha com valor vazio e a razão na coluna da referência: quem baixa
+    a planilha precisa ver a lacuna, e não uma linha que simplesmente não existe.
+    """
+    linhas = []
+    for c in (semana or {}).get("cartoes") or []:
+        linhas.append({
+            "grupo": c.get("grupo"),
+            "rótulo": c.get("rotulo"),
+            "valor": "" if c.get("sem_coleta") else c.get("valor"),
+            "variação": "" if c.get("variacao") is None else c.get("variacao"),
+            "referência": c.get("referencia") or ("sem dado nesta edição" if c.get("sem_coleta") else ""),
+            "fonte": c.get("fonte"),
+            "URL da fonte": c.get("url_fonte") or "",
+            "data da consulta": c.get("consultado_em") or "",
+        })
+    return linhas
+
+
+def escrever_planilha(semana: dict, destino: pathlib.Path) -> int:
+    """Grava a planilha da edição e devolve o número de linhas."""
+    linhas = linhas_da_planilha(semana)
+    destino.parent.mkdir(parents=True, exist_ok=True)
+    buf = io.StringIO()
+    w = csv.DictWriter(buf, fieldnames=list(COLUNAS_CSV), lineterminator="\n")
+    w.writeheader()
+    for linha in linhas:
+        w.writerow(linha)
+    destino.write_text(buf.getvalue(), encoding="utf-8", newline="")
+    return len(linhas)
 
 
 # ── autoteste ───────────────────────────────────────────────────────────────────────────────
@@ -741,66 +1014,110 @@ def autoteste() -> int:
     checar("coleta que rodou e deu zero é ZERO, não sem coleta",
            c["sem_coleta"] is False and c["valor"] == 0)
 
-    # O cartão de decretos tem de ver o ato em ISO — era o defeito de 27/09.
-    atos = [{"uf": "MG", "municipio": "Teófilo Otoni", "data": "2026-09-25",
-             "causa": "situação de emergência", "decreto": "Decreto nº 79", "url": "u"},
-            # 22/09, não 20/09: a janela de 7 dias até 27/09 cobre 21 a 27, e 20 é o limite
-            # exclusivo. A primeira montagem deste teste usou 20/09 e reprovou — o código estava
-            # certo, a fixture estava errada.
-            {"uf": "SP", "municipio": "X", "data": "22/09/2026",
-             "causa": "situação de emergência", "decreto": "d", "url": "u"},
-            {"uf": "BA", "municipio": "Y", "data": "24/09/2026",
-             "causa": "reconhecimento federal", "decreto": "p", "url": "u"}]
-    c = cartao_decretos(atos, corte)
-    checar("decreto em ISO entra na contagem", c["valor"] == 2)
-    checar("reconhecimento NÃO entra no cartão de decretos",
-           all("reconhecimento" not in (x["causa"] or "").lower() for x in c["lista"]))
-    r = cartao_reconhecimentos(atos, corte)
-    checar("reconhecimento entra no cartão dele", r["valor"] == 1)
+    # ── o que o handover de 02/10 exige: importar, nunca recalcular ──────────────────────────
+    DC = {"cartoes": [
+        {"id": "municipios_decretaram", "valor": 749, "variacao": 69,
+         "fonte": "Defesa Civil nacional, no Diário Oficial da União"},
+        {"id": "populacao_sob_decreto", "valor": 21547599, "variacao": 1500000},
+        {"id": "reconhecidos_pelo_governo_federal", "valor": 670, "variacao": 58},
+        {"id": "municipios_alerta_cemaden", "valor": 14, "referencia": "02/10/2026 11:22"},
+        {"id": "municipios_aviso_inmet", "valor": 2876},
+        {"id": "decreto_e_alerta_ao_mesmo_tempo", "valor": 333}]}
+    SAU = {"cartoes": [
+        {"id": "dengue_casos_se", "valor": 8146, "referencia": "2026-33",
+         "fonte": "Ministério da Saúde (Sinan)"},
+        {"id": "srag_internacoes_se", "valor": 4267, "referencia": "2026-35"},
+        {"id": "uf_dengue_alerta", "valor": 3}]}
+    FIN = {"cartoes": [
+        {"id": "pago_periodo_mp", "valor": 150887172.93, "periodo": "mês de setembro de 2026",
+         "fonte": "Portal da Transparência, Execução da Despesa (arquivos mensais abertos)"},
+        {"id": "resposta_liberado_semana", "valor": 0, "periodo": "últimos 7 dias",
+         "detalhe": "nenhuma portaria de resposta publicada nos últimos 7 dias"},
+        {"id": "atos_federais_semana", "valor": 0, "periodo": "últimos 7 dias"}]}
+    RIS = {"cartoes": [{"id": "temperatura_desvio_capital", "valor": 2.9, "capital": "Belém"},
+                       {"id": "capitais_ar_ruim_ou_pior", "valor": 11}]}
 
-    # Variação inventada é proibida enquanto não houver edição anterior.
+    emerg = cartoes_das_emergencias(DC)
+    checar("emergências publicam a SEMANA, não o acumulado do ciclo",
+           [c["valor"] for c in emerg] == [69, 1500000, 58])
+    checar("todo cartão importado declara a página de origem",
+           all(c["pagina_de_origem"] == "defesa-civil.html" for c in emerg))
+    risco = cartoes_do_risco_agora(DC, RIS, {"uf": {"PA": {"fogo": {"focos_24h": 9, "consultado_em": "x"}}}})
+    checar("risco agora tem seis cartões", len(risco) == 6)
+    checar("o calor da imprensa é o DESVIO, e vem do Monitor de riscos",
+           risco[4]["valor"] == 2.9 and risco[4]["pagina_de_origem"] == "monitor-de-riscos.html")
+    din = cartoes_do_dinheiro_importados(FIN, {"municipios_com_ato": 68})
+    checar("o dinheiro deixa de ser 'sem dado': ele vem do Financiamento",
+           din[0]["valor"] == 150887172.93 and not din[0]["sem_coleta"])
+    checar("o recorte do dinheiro é o da fonte, dito no cartão",
+           "setembro" in (din[0]["referencia"] or ""))
+    checar("zero autorizado na semana é ZERO, não sem dado",
+           din[1]["valor"] == 0 and din[1]["sem_coleta"] is False)
+    sau = cartoes_da_saude_importados(SAU)
+    checar("a dengue da imprensa é a do MARÉ Saúde, na mesma semana",
+           sau[0]["valor"] == 8146 and "33" in sau[0]["rotulo"])
+    checar("as respiratórias não vêm dobradas", sau[1]["valor"] == 4267)
+    checar("cartão sem valor no instantâneo vira sem_coleta, nunca zero",
+           cartoes_da_saude_importados({"cartoes": [{"id": "dengue_casos_se", "sem_coleta": True}]})[0]["sem_coleta"] is True)
+    checar("fonte em linguagem de leitor",
+           din[0]["fonte"] == "Portal da Transparência"
+           and sau[0]["fonte"] == "Ministério da Saúde (Sinan)")
+
+    # ── a edição montada ────────────────────────────────────────────────────────────────────
     CARTOES_DO_TESTE = montar(corte)["cartoes"]
-    # 01/10/2026 (handover da imprensa dinâmica): o caso anterior cobrava que NENHUM cartão
-    # tivesse variação — regra de 27/09, quando não havia fotografia da edição anterior. Agora a
-    # variação é exigida onde há par comparável, e proibida onde não há. Os dois casos abaixo
-    # cobram as duas metades dessa regra.
-    checar("cartão com par comparável traz valor da semana anterior e variação",
-           all((c["valor_semana_anterior"] is not None) == (c["variacao"] is not None)
-               for c in CARTOES_DO_TESTE))
-    checar("cartão sem par não inventa variação",
-           all(c["variacao"] is None for c in CARTOES_DO_TESTE if c["primeira_medicao"]))
-    checar("variação é diferença absoluta, e confere com os dois valores",
-           all(c["variacao"] == c["valor"] - c["valor_semana_anterior"]
-               for c in CARTOES_DO_TESTE if c["variacao"] is not None))
     checar("todo cartão declara o grupo em que aparece na página",
            all(c.get("grupo") in ("preparacao", "emergencias", "risco_agora", "dinheiro",
                                   "saude") for c in CARTOES_DO_TESTE))
+    checar("os cinco grupos existem na edição",
+           {c["grupo"] for c in CARTOES_DO_TESTE} == {"preparacao", "emergencias", "risco_agora",
+                                                      "dinheiro", "saude"})
+    for grupo, quantos in (("preparacao", 3), ("emergencias", 3), ("risco_agora", 6),
+                           ("dinheiro", 3), ("saude", 3)):
+        checar(f"o grupo '{grupo}' tem {quantos} cartões",
+               sum(1 for c in CARTOES_DO_TESTE if c["grupo"] == grupo) == quantos)
+    checar("cartão sem par não inventa variação",
+           all(c["variacao"] is None for c in CARTOES_DO_TESTE if c["primeira_medicao"]))
+    checar("a edição lista o que ficou sem dado",
+           isinstance(montar(corte)["sem_dado_nesta_edicao"], list))
 
-    # Período em todo cartão de janela.
-    for ident in ("decretos_no_periodo", "reconhecimentos_no_periodo", "planos_no_periodo"):
-        cc = next(x for x in montar(corte)["cartoes"] if x["id"] == ident)
-        if not cc["periodo"]:
-            falhas.append(f"{ident} sem período")
-    checar("cartão de janela tem período", not any("sem período" in f for f in falhas))
+    # ── o release ───────────────────────────────────────────────────────────────────────────
+    cs = [{"id": "planos_na_semana", "valor": 0, "sem_coleta": False, "variacao": None},
+          {"id": "decretos_na_semana", "valor": 1, "sem_coleta": False, "variacao": None},
+          {"id": "populacao_decretos_na_semana", "valor": 1500000, "sem_coleta": False, "variacao": None},
+          {"id": "mudaram_faixa", "valor": 2, "sem_coleta": False, "variacao": None},
+          {"id": "capitais_com_plano", "valor": 17, "sem_coleta": False, "variacao": None}]
+    rel = texto_pronto(cs, {"edicao": "02/10/2026", "mare_legal": 24.4, "mare_saude": 31.8,
+                            "saude_verificadas": 21, "decretaram_no_ciclo": 749})
+    checar("o release escreve zero por extenso", "nenhum município publicou plano" in rel)
+    checar("o release concorda no singular", "1 município decretou" in rel)
+    checar("o release arredonda a população", "1,5 milhão" in rel)
+    checar("o release diz quantos estados a média da saúde cobre",
+           "média dos 21 estados verificados" in rel)
+    checar("o release traz a assinatura da Futura", "Futura Evidence Lab" in rel)
+    rel_vazio = texto_pronto([{"id": "planos_na_semana", "valor": None, "sem_coleta": True}], {})
+    checar("frase sem dado é omitida", "plano" not in rel_vazio)
 
-    # A frase pronta omite cláusula de valor zero — nunca "0 planos foram publicados".
-    frase = texto_pronto([cartao("planos_no_periodo", "r", 0, "f", None, per=periodo(corte)),
-                          cartao("focos_24h", "r", 5, "f", "x", lista=[{"uf": "PA", "valor": 5}])])
-    checar("frase pronta omite cláusula de valor zero", "planos" not in frase and "5 focos" in frase)
-    frase2 = texto_pronto([cartao("focos_24h", "r", None, "f", None, sem_coleta=True)])
-    checar("frase pronta omite cartão sem coleta", frase2 == "")
+    # ── a planilha da edição ────────────────────────────────────────────────────────────────
+    linhas = linhas_da_planilha({"cartoes": [
+        {"id": "x", "grupo": "dinheiro", "rotulo": "R", "valor": 10, "variacao": 2,
+         "referencia": "mês de setembro de 2026", "fonte": "F", "url_fonte": "u",
+         "consultado_em": "02/10/2026", "sem_coleta": False},
+        {"id": "y", "grupo": "saude", "rotulo": "S", "valor": None, "sem_coleta": True,
+         "variacao": None, "fonte": "G"}]})
+    checar("a planilha tem as oito colunas do handover", list(linhas[0]) == list(COLUNAS_CSV))
+    checar("a planilha traz valor e variação", linhas[0]["valor"] == 10 and linhas[0]["variação"] == 2)
+    checar("a planilha mostra a lacuna, em vez de omitir a linha",
+           linhas[1]["valor"] == "" and linhas[1]["referência"] == "sem dado nesta edição")
 
     # Os não calculáveis precisam DIZER por quê — senão viram silêncio.
     checar("todo não calculável declara o motivo",
            all(x.get("por_que_nao") for x in NAO_CALCULAVEIS))
-    checar("dengue está entre os não calculáveis, contra o que o handover supõe",
-           any(x["id"] == "dengue_no_periodo" for x in NAO_CALCULAVEIS))
 
     if falhas:
         print(f"\n✗ IMPRENSA SEMANA: {len(falhas)} falha(s).")
         return 1
-    print("\n✓ IMPRENSA SEMANA OK — dois formatos de data, zero ≠ sem coleta, "
-          "sem variação inventada, cláusula zero omitida.")
+    print("\n✓ IMPRENSA SEMANA OK — números importados das páginas de origem, cinco grupos "
+          "completos, release com concordância e planilha com a lacuna declarada.")
     return 0
 
 
@@ -818,7 +1135,10 @@ def main() -> int:
     # 26/09 achou trinta e três escritas fora dela — entre elas o log de 24 MB e o banco municipal
     # — e o portão 29 reprova quem repetir. Eu repeti, e o CI do PR #403 me pegou.
     gravar_em(SAIDA, r)
+    planilha = RAIZ / "dados-abertos" / "imprensa" / f"numeros-{corte.isoformat()}.csv"
+    n_linhas = escrever_planilha(r, planilha)
     com_valor = sum(1 for c in r["cartoes"] if not c["sem_coleta"])
+    print(f"→ {planilha.relative_to(RAIZ)} gravado · {n_linhas} linha(s).")
     print(f"→ {SAIDA.relative_to(RAIZ)} gravado · {len(r['cartoes'])} cartão(ões), "
           f"{com_valor} com coleta, {len(r['nao_calculaveis'])} não calculável(is) declarado(s).")
     return 0
