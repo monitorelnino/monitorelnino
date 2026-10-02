@@ -534,28 +534,6 @@
    "funcao_narrativa": "evidência do agora",
    "acao_relacionada": null
   },
-  "saude.html#boxAreas": {
-   "tipo": "gráfico de barras",
-   "pergunta_que_responde": "Que áreas temáticas os planos estaduais citam?",
-   "dimensao_da_preparacao": "planejamento",
-   "universo": "planos estaduais localizados",
-   "unidade_de_analise": "área temática",
-   "territorio": "Brasil",
-   "periodo": "corte da edição",
-   "variavel_principal": "nº de UFs por área",
-   "denominador": "UFs com plano localizado",
-   "fonte": "leitura dos planos estaduais pelo Monitor",
-   "metodologia": "classificação COBRADE aplicada ao texto do plano",
-   "conclusoes_permitidas": [
-    "quais riscos os planos nomeiam, e em quantas UFs"
-   ],
-   "conclusoes_nao_permitidas": [
-    "qualidade do tratamento dado ao risco",
-    "adequação do plano ao risco projetado"
-   ],
-   "funcao_narrativa": "metodológico: mostra o conteúdo por trás da classificação de instrumento",
-   "acao_relacionada": null
-  },
   "saude.html#boxCalor": {
    "tipo": "mapa e lista",
    "pergunta_que_responde": "Quantos municípios de cada estado estão em classe severa ou extrema de excesso de calor?",
@@ -579,28 +557,6 @@
    ],
    "funcao_narrativa": "evidência do agora",
    "acao_relacionada": "consultar o painel do Ministério da Saúde"
-  },
-  "saude.html#boxCatalogo": {
-   "tipo": "tabela",
-   "pergunta_que_responde": "Dos 20 desfechos previstos no Quadro 2 do plano de contingência, quais o Monitor coleta?",
-   "dimensao_da_preparacao": "disponibilidade de informação pública",
-   "universo": "os 20 desfechos do Quadro 2",
-   "unidade_de_analise": "desfecho",
-   "territorio": "Brasil",
-   "periodo": "corte da edição",
-   "variavel_principal": "estado da coleta: coletado, candidato ou sem fonte",
-   "denominador": "20 desfechos",
-   "fonte": "Quadro 2 do plano de contingência e sistemas oficiais de origem",
-   "metodologia": "cada desfecho com sistema oficial de origem e fonte aberta correspondente",
-   "conclusoes_permitidas": [
-    "cobertura do Monitor sobre o que o próprio plano previu medir"
-   ],
-   "conclusoes_nao_permitidas": [
-    "desfecho sem fonte como desfecho inexistente",
-    "desempenho do sistema de saúde"
-   ],
-   "funcao_narrativa": "metodológico: declara a lacuna de cobertura à vista, em vez de escondê-la",
-   "acao_relacionada": null
   },
   "saude.html#boxChikMapa": {
    "tipo": "mapa de pontos",
@@ -738,28 +694,6 @@
     "incidência real do município"
    ],
    "funcao_narrativa": "camada observada: peso zero no índice, contexto do risco sanitário",
-   "acao_relacionada": null
-  },
-  "saude.html#boxGatilhos": {
-   "tipo": "tabela",
-   "pergunta_que_responde": "Dos gatilhos do Quadro 5, quais o Monitor já computa e em que valor estão?",
-   "dimensao_da_preparacao": "planejamento",
-   "universo": "gatilhos do Quadro 5 do plano",
-   "unidade_de_analise": "gatilho",
-   "territorio": "Brasil",
-   "periodo": "corte da edição",
-   "variavel_principal": "valor atual no Monitor e limiar previsto no plano",
-   "denominador": null,
-   "fonte": "Quadro 5 do plano de contingência e séries do próprio Monitor",
-   "metodologia": "o Monitor não emite semáforo próprio: exibe valor e limiar, sem classificar estágio",
-   "conclusoes_permitidas": [
-    "distância entre o valor corrente e o limiar escrito no plano"
-   ],
-   "conclusoes_nao_permitidas": [
-    "acionamento do estágio",
-    "juízo sobre a resposta do poder público"
-   ],
-   "funcao_narrativa": "metodológico: liga a medida do Monitor ao que o plano previu, sem decidir por ele",
    "acao_relacionada": null
   },
   "saude.html#boxMonitor": {
