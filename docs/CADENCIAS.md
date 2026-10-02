@@ -30,6 +30,7 @@ O formato de cada linha é fixo e lido por máquina:
 | `coletar_diarios_consorciados.py` | diaria | 00:05 UTC | noturno_diarios | diários de consórcio intermunicipal |
 | `coletar_doe.py` | diaria | 00:05 UTC | noturno_diarios | diários oficiais dos estados |
 | `coletar_s2id.py` | diaria | 00:05 UTC | noturno_diarios | reconhecimentos federais no S2iD |
+| `coletar_recursos_resposta.py` | diaria | encadeado | noturno_diarios | recursos federais de defesa civil autorizados por município (portarias da SEDEC no DOU); resposta e recuperação separadas |
 | `descobrir_planos.py` | diaria | encadeado | noturno_descoberta | busca web por planos municipais |
 | `seguir_pistas.py` | diaria | encadeado | noturno_descoberta | pistas até o documento |
 | `coletar_saude_estadual.py` | diaria | encadeado | noturno_saude_estadual | planos de saúde dos 27 estados pelos quatro canais: busca aberta, fontes declaradas, páginas de CIEVS/sala de situação/COE e diário oficial do estado com os termos da saúde |
