@@ -66,6 +66,7 @@ Atualizado em 02/10/2026.
 | `coletar_diarios_consorciados.py` | — | `atos_resposta.json`, `pistas_imprensa.json` | — | não |
 | `coletar_diarios_municipais.py` | — | `atos_resposta.json`, `cobertura_qd.json`, `pistas_imprensa.json`, `verificacao_municipal.json` | — | não |
 | `coletar_doe.py` | — | `atos_resposta.json`, `fontes_doe.json`, `pistas_doe.json` | — | não |
+| `coletar_edicoes_doe.py` | — | — | — | não |
 | `coletar_espin.py` | — | `espin_revisar.json`, `saude_sinais.json` | — | não |
 | `coletar_execucao_mps.py` | — | `financiamento/mps_2026.json` | — | não |
 | `coletar_financiamento.py` | — | `financiamento_uf.json`, `recursos_uf.json` | — | não |
@@ -129,6 +130,7 @@ Atualizado em 02/10/2026.
 | `preservar_evidencias.py` | — | `evidencias.json`, `municipios.json` | — | não |
 | `processar_contribuicoes.py` | — | — | — | não |
 | `recalcular_mare.py` | — | — | — | SIM |
+| `registrar_saude_central.py` | — | `saude_uf.json` | — | não |
 | `revisar_pistas.py` | — | `pistas_imprensa.json` | — | não |
 | `robustez_saude.py` | — | — | — | não |
 | `saude_opendatasus.py` | — | — | — | não |

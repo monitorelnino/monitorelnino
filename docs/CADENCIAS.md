@@ -34,6 +34,7 @@ O formato de cada linha é fixo e lido por máquina:
 | `descobrir_planos.py` | diaria | encadeado | noturno_descoberta | busca web por planos municipais |
 | `seguir_pistas.py` | diaria | encadeado | noturno_descoberta | pistas até o documento |
 | `coletar_saude_estadual.py` | quinzenal | dias 1 e 15, 03:40 UTC | noturno_saude_estadual | planos de saúde dos 27 estados pelos quatro canais: busca aberta, fontes declaradas, páginas de CIEVS/sala de situação/COE e diário oficial do estado com os termos da saúde |
+| `coletar_edicoes_doe.py` | quinzenal | dias 1 e 15, encadeado | noturno_saude_estadual | canal 2 do MARE Saude: baixa a edicao do diario oficial do estado por data, extrai o texto e indexa as ocorrencias dos termos de saude |
 | `julgar_saude.py` | quinzenal | dias 1 e 15, encadeado | noturno_saude_estadual | promove pista de saude a registro, com documento primario lido; classifica as duas funcoes da coordenacao |
 | `scripts/fechar_saude.py` | quinzenal | dias 1 e 15, encadeado | noturno_saude_estadual | mede quantas UFs podem ser marcadas "nao localizado", so onde os quatro canais rodaram |
 | `coletar_transferencias_municipais.py` | mensal | 05 do mês, 03:00 UTC | semanal_sinais_e_links | transferências da União a cada município, por mês e por rota |

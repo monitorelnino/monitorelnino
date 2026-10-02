@@ -45,6 +45,9 @@ jobs:
         coletar_saude_estadual.py --fontes
         coletar_saude_estadual.py --canais
         coletar_saude_estadual.py --doe --desde 2026-06-29
+        # 02/10/2026 (diretriz da central): o canal 2 e BAIXAR A EDICAO. O localizador roda
+        # antes do juiz, porque e dele que sai o indice de ocorrencias que a campanha consome.
+        coletar_edicoes_doe.py --recuperacao --desde 2026-06-29
         # 01/10/2026 (bloco das 23h10): o juiz roda LOGO DEPOIS dos quatro canais, toda
         # noite, e o fechamento mede quantas UFs podem ser marcadas "nao localizado" —
         # so onde os quatro canais rodaram sem motor doente. Nada disso espera instrucao.

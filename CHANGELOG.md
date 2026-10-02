@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-02 · #522 · Canal 2: baixar a edição do diário, não buscar nele
+
+`coletar_edicoes_doe.py` baixa a edição por data, extrai o texto e indexa as ocorrências com trecho e página; a campanha consome o índice. Arquivo servido com 200 que não é diário e sigla sem contexto de saúde não contam. PB e MS registrados pelo documento relido, com F1 e F2. A coordenação passa a exigir as duas funções. METODOLOGIA §94.
+
 ## 2026-10-02 · #521b · Imprensa: capitais com plano e a série de faixas
 
 O cartão "capitais com plano" deixa de ser lacuna: a referência das 27 capitais por código IBGE já existia no repositório, e o número é 17 de 27. `scripts/registrar_faixas.py` passa a escrever a faixa de cada estado por edição, e o cartão "mudaram de faixa" lê de lá — a comparação começa na próxima edição. Em `gerar_imprensa_semana.py`, `scripts/`, `.github/workflows/`.
