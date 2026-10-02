@@ -197,6 +197,43 @@ def preencher_financiamento():
     rotas = ler("financiamento/rotas_preventivas.json", {}) or {}
     corte = rotas.get("corte") or "—"
     h = sub_id(h, "corteFin", corte, n)
+
+    # 02/10/2026 (contrato de layout): os três cartões do topo, com o recorte que a fonte permite.
+    # Quem calcula é gerar_financiamento_semana.py; aqui só se escreve o que o JavaScript
+    # escreveria, para que a página sem JS não mostre travessão.
+    sem = ler("financiamento/semana.json", {}) or {}
+    cartoes = {c.get("id"): c for c in (sem.get("cartoes") or [])}
+
+    def curto(v):
+        v = float(v or 0)
+        if v >= 1e9:
+            return "R$ " + f"{v / 1e9:,.1f}".replace(",", "X").replace(".", ",").replace("X", ".") + " bi"
+        if v >= 1e6:
+            return "R$ " + f"{v / 1e6:,.1f}".replace(",", "X").replace(".", ",").replace("X", ".") + " mi"
+        if v >= 1e3:
+            return "R$ " + f"{v / 1e3:,.0f}".replace(",", ".") + " mil"
+        return "R$ " + f"{v:,.0f}".replace(",", ".")
+
+    for ident, idv, idr, idf, rotulo in [
+            ("pago_periodo_mp", "topoPagoMes", "topoPagoMesRotulo", "topoPagoMesFonte",
+             "pago pelas ações reforçadas pelas medidas provisórias"),
+            ("transferido_municipios_periodo", "topoTransfMes", "topoTransfMesRotulo",
+             "topoTransfMesFonte", "transferido pela União aos municípios"),
+            ("resposta_liberado_semana", "topoRespostaSemana", None, "topoRespostaFonte", None)]:
+        c = cartoes.get(ident)
+        if not c:
+            continue
+        if c.get("sem_coleta"):
+            h = sub_id(h, idv, "sem coleta", n)
+            h = sub_id(h, idf, c.get("detalhe") or "", n)
+            continue
+        h = sub_id(h, idv, curto(c.get("valor")), n)
+        if idr and rotulo:
+            h = sub_id(h, idr, f"{rotulo}, no {c.get('periodo')}", n)
+        exato = "R$ " + f"{round(float(c.get('valor') or 0)):,}".replace(",", ".") + " · " \
+            if c.get("unidade") == "reais" else ""
+        h = sub_id(h, idf, exato + (c.get("fonte") or "")
+                   + (" · " + c["detalhe"] if c.get("detalhe") else ""), n)
     # `notaFogoCorte` saiu com o painel da rota do fogo (bloco B, 01/10/2026): o caso do fogo
     # virou texto, sem mapa por município e sem carimbo próprio.
     if h != h0:

@@ -62,6 +62,10 @@ const COLETA = () => {
     classes: [...s.classList],
     h2: ((s.querySelector("h2") || {}).textContent || "").trim(),
     h3: [...s.querySelectorAll("h3")].map(h => (h.textContent || "").trim()).filter(t => t && t.length < 60),
+    // Cartao de texto (`.cartao` com id, como as duas listas de "Como o dinheiro chega") nao e
+    // <figure> e nao aparece no despejo de figuras. O contrato precisa poder cobrar a presenca
+    // dele, e por isso cada secao leva os ids que tem dentro.
+    ids: [...s.querySelectorAll("[id]")].map(e => e.id).filter(Boolean),
     borda: (() => { const cs = getComputedStyle(s); return cs.borderStyle !== "none" && parseFloat(cs.borderTopWidth || "0") > 0; })(),
     fundo: getComputedStyle(s).backgroundColor,
   }));

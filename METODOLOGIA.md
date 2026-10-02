@@ -2977,3 +2977,39 @@ contornado.
 Isto não muda nenhum número do índice. É regra de forma, subordinada à prova
 (`METODOLOGIA.md`) e à narrativa (`AI_EDITORIAL_NARRATIVE_GOVERNANCE.md`), e serve ao §25 da
 direção de arte: não se maquia componente por componente.
+
+## 89. O recorte de cada cartão é o da fonte (02/10/2026)
+
+Os cartões do topo do Financiamento diziam "na semana" para dado que a fonte publica por mês, e
+por isso dois deles viviam escritos como "sem dado nesta edição" — com a série-base em disco.
+A editoria chamou isso pelo nome: lacuna declarada existe para ausência de dado, não para
+desencontro de janela.
+
+A regra passa a ser: **cada cartão publica no recorte que a fonte permite**, e o recorte aparece
+no próprio cartão. O Portal da Transparência publica execução e transferência a município por
+mês; esses dois cartões falam do último mês **fechado**. Portaria e ato federal têm data,
+e aí o recorte de sete dias é real.
+
+Quem calcula é `gerar_financiamento_semana.py`, num arquivo só (`data/financiamento/semana.json`),
+e a página apenas mostra. Três decisões de método ficam registradas:
+
+1. **Mês parcial não vira cartão.** O coletor de transferências marca como `parcial` o mês cujo
+   arquivo o Portal ainda está preenchendo. Publicar esse mês mostraria uma queda que é da
+   planilha, e não do dinheiro.
+2. **Zero é zero; ausência é ausência.** Nenhuma portaria de resposta em sete dias é **zero**,
+   com a janela dita. Arquivo não coletado é **lacuna declarada**, com o motivo. O portão
+   `verificar_financiamento_coerencia.py` reprova cartão sem coleta que traga número, cartão com
+   número sem período ou sem fonte, e número que divirja da edição da imprensa onde a janela é
+   a mesma — duas contas do mesmo dado com valores diferentes é o que o leitor encontra antes
+   de nós.
+3. **A quebra por mês passou a ser guardada.** `coletar_execucao_mps.py` acumulava a execução do
+   ciclo e descartava o mês; agora grava `execucao.por_mes`. Enquanto a quebra não existir para
+   um compromisso, o cartão publica o acumulado e diz quais meses leu — dado com a janela certa,
+   nunca ausência.
+
+Na página, o mesmo contrato do §88 removeu o diagrama das rotas (seu dado fica no repositório e
+nos dados abertos), os dois mapas da parcela executada fora de Brasília e o mapa municipal da
+despesa própria — que virou mapa por estado, com a média entre os municípios **com lançamento**
+na subfunção 182, mais lista por município. Município sem lançamento não entra na média: ele
+lançou em outra rubrica, e não gastou zero. A grade de estados passou a mostrar os 27 sempre:
+a versão anterior listava só quem tinha mês lido e entregava 26 células, sem dizer qual faltava.

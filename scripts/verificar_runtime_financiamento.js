@@ -70,14 +70,30 @@ setTimeout(() => {
 
   // ── os cartões da semana: só indicador dinâmico, e o que a fonte não dá é declarado ────────
   const C = JSON.parse(fs.readFileSync(path.join(raiz, "data", "financiamento", "compromissos_federais.json"), "utf-8"));
-  /* A trava central deste bloco: "pago na semana" e "transferido na semana" NÃO existem na fonte —
-     as medidas federais publicam agregado sem data de pagamento e o Portal entrega o mês. Eles têm
-     de dizer isso, com o motivo, e nunca mostrar R$ 0 nem um número inventado. A página Imprensa
-     declara a mesma falta: um número aqui e a falta lá seriam duas contas para a mesma coisa. */
-  for (const [valor, fonte] of [["topoPagoSemana", "topoPagoSemanaFonte"],
-                                ["topoTransfSemana", "topoTransfSemanaFonte"]]) {
-    teste(`${valor}: sem dado nesta edição, com o motivo medido`,
-      txt(valor) === "sem dado nesta edição" && /sem data de pagamento|por mês/.test(txt(fonte)));
+  /* 02/10/2026 (contrato de layout): "pago na semana" e "transferido na semana" nao existem na
+     fonte — as medidas federais publicam agregado sem data de pagamento e o Portal entrega o MES.
+     A pagina deixou de pedir a semana e passou a dizer o mes: os dois cartoes vem de
+     data/financiamento/semana.json, escrito por gerar_financiamento_semana.py, e o portao confere
+     que o numero da tela e o do arquivo — e que cada um declara a que periodo se refere. Uma conta
+     so, num lugar so: o portao de coerencia cuida da paridade com a imprensa. */
+  const SEM = JSON.parse(fs.readFileSync(path.join(raiz, "data", "financiamento", "semana.json"), "utf-8"));
+  const cartaoDe = id => (SEM.cartoes || []).find(c => c.id === id) || null;
+  for (const [ident, valor, fonte] of [["pago_periodo_mp", "topoPagoMes", "topoPagoMesFonte"],
+                                       ["transferido_municipios_periodo", "topoTransfMes", "topoTransfMesFonte"]]) {
+    const c = cartaoDe(ident);
+    teste(`${valor}: existe no arquivo do gerador`, !!c);
+    if (!c) continue;
+    if (c.sem_coleta) {
+      teste(`${valor}: lacuna declarada, com o motivo`,
+        txt(valor) === "sem coleta" && txt(fonte).length > 10);
+    } else {
+      // o cartao mostra a forma CURTA (R$ 32,3 bi); a linha de fonte traz o valor exato
+      const exato = Math.round(Number(c.valor)).toLocaleString("pt-BR");
+      teste(`${valor}: o valor exato aparece na linha de fonte`, txt(fonte).includes(exato));
+      teste(`${valor}: o cartao nao fica em travessao`, txt(valor) !== "—" && txt(valor).length > 2);
+      teste(`${valor}: o periodo do dado aparece na tela`,
+        txt(fonte).length > 10 && /m\u00eas de|meses de|7 dias/.test(c.periodo));
+    }
   }
   let R = null;
   try { R = JSON.parse(fs.readFileSync(path.join(raiz, "data", "resposta", "recursos_liberados.json"), "utf-8")); } catch (e) { R = null; }
@@ -91,16 +107,34 @@ setTimeout(() => {
         esperado += Number(a.valor_autorizado || 0); muns.add(cod);
       }
     }));
-    const mostrado = Number(txt("topoRespostaSemana").replace(/[^\d]/g, "")) || 0;
-    teste("recursos de resposta na semana: o valor é o do dado, só da finalidade resposta",
-      Math.abs(mostrado - Math.round(esperado)) <= 1);
+    const c = cartaoDe("resposta_liberado_semana");
+    teste("recursos de resposta na semana: o gerador conta só a finalidade resposta",
+      !!c && !c.sem_coleta && Math.abs(Number(c.valor) - esperado) <= 1);
+    teste("recursos de resposta na semana: a tela mostra o que o gerador contou",
+      !!c && (Math.round(Number(c.valor)) === 0
+              ? /R\$ 0/.test(txt("topoRespostaSemana"))
+              : txt("topoRespostaFonte").includes(Math.round(Number(c.valor)).toLocaleString("pt-BR"))));
     teste("recursos de resposta: o cartão diz quantos municípios receberam",
       new RegExp(`\\b${muns.size}\\b`).test(txt("topoRespostaMunicipios")) || muns.size === 0);
-    teste("recursos de resposta: o cartão diz 'liberado', e nunca 'pago'",
-      /liberado/.test(txt("topoRespostaFonte")) && !/\bpago\b/.test(txt("topoRespostaFonte")));
+    // "liberado" e a palavra do ato: a portaria AUTORIZA, e a saida do dinheiro e outro registro.
+    // O rotulo do cartao passou a dizer "autorizado em portarias de resposta", que e a mesma
+    // distincao com a palavra do ato — e e o que o portao cobra.
+    teste("recursos de resposta: o cartão diz 'autorizado', e nunca 'pago'",
+      /autorizado/.test(txt("topoRespostaMunicipios") + " " + txt("topoRespostaFonte"))
+      && !/\bpago\b/.test(txt("topoRespostaFonte")));
   }
-  teste("atos federais na semana: número do dado e fonte declarada",
-    /^\d+$/.test(txt("topoAtosSemana")) && txt("topoAtosSemanaFonte").length > 5);
+  /* Pelo contrato, o cartao de atos novos SO entra na grade quando e maior que zero: grade de tres
+     com um quarto cartao dizendo "0" e pior que grade de tres. */
+  {
+    const c = cartaoDe("atos_federais_semana");
+    const visivel = !!q("cartaoAtosSemana") && !q("cartaoAtosSemana").hidden;
+    const esperaVisivel = !!c && !c.sem_coleta && Number(c.valor) > 0;
+    teste("atos federais na semana: o cartão aparece só quando há ato novo", visivel === esperaVisivel);
+    if (esperaVisivel) {
+      teste("atos federais na semana: número do dado e fonte declarada",
+        txt("topoAtosSemana") === String(c.valor) && txt("topoAtosSemanaFonte").length > 5);
+    }
+  }
   /* O anunciado saiu dos cartões e virou contexto: ele não muda a cada coleta. */
   const anunciado = (C.itens || []).reduce((a, x) => a + Number(x.valor_total || 0), 0);
   teste("o valor anunciado virou linha de contexto, fora dos cartões",
@@ -132,12 +166,12 @@ setTimeout(() => {
     /%/.test(txt("mpsBrPct")) && q("boxMpsBrUf") !== null);
   teste("RS: gráfico com os números do dado na legenda",
     graficos.some(g => g.ctx && g.ctx.id === "cRS") && /138 municípios/.test(txt("legRS")));
-  const PS = JSON.parse(fs.readFileSync(path.join(raiz, "data", "financiamento", "preventivo_setores.json"), "utf8"));
-  const nRotas = PS.setores.reduce((a, s) => a + s.rotas.length, 0);
-  teste("preventivo por setor: um nó por rota mais o nó de ausência",
-    q("preventivoSetor").querySelectorAll("g.nos g[role=img]").length === nRotas + 1);
-  teste("preventivo por setor: nó de ausência da seca sem aresta",
-    q("preventivoSetor").querySelectorAll(".aresta.d0").length === 0);
+  // 02/10/2026 (contrato de layout): o diagrama das rotas por setor saiu da pagina — o contrato
+  // pede duas listas de texto no lugar dele, e o dado do diagrama fica no repositorio. O que o
+  // portao cobra agora e que as duas listas estejam na tela.
+  teste("como o dinheiro chega: as duas listas, antes e depois do desastre",
+    !!q("antes") && !!q("depois") && q("antes").querySelectorAll("li").length >= 4
+    && q("depois").querySelectorAll("li").length >= 4 && !q("preventivoSetor"));
 
   // ── a consulta por cidade (01/10/2026): existe porque a coleta por município passou a existir ─
   const T = JSON.parse(fs.readFileSync(path.join(raiz, "data", "financiamento", "municipios", "transferencias_uniao.json"), "utf-8"));
@@ -176,9 +210,10 @@ setTimeout(() => {
 
   // ── o componente de cartão de mapa, com UMA proporção nos nove ─────────────────────────────
   const cartoes = [...d.querySelectorAll("#conteudo .cartao-mapa")];
-  // A contagem muda quando a página muda: três cartões de mapa saíram (os dois da parcela de
-  // 4% e o diagrama das rotas) e um entrou (transferido por habitante).
-  teste(`sete figuras no cartão de mapa padrão (${cartoes.length})`, cartoes.length === 7);
+  // A contagem muda quando a página muda, e desde 02/10/2026 ela é a do contrato de layout:
+  // catorze cartões, três por seção nas cinco seções de figura, menos a última linha incompleta
+  // de "Dois casos". Quem define a lista é layout/contratos/financiamento.json.
+  teste(`catorze figuras no cartão de mapa padrão (${cartoes.length})`, cartoes.length === 14);
   teste("todo cartão de mapa tem faixa de família e sobretítulo do componente",
     cartoes.every(c => c.querySelector(".cartao-mapa-familia") && c.querySelector(".cartao-mapa-boletim")));
   teste("toda figura tem crédito de fonte",

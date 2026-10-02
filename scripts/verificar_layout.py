@@ -133,6 +133,9 @@ def problemas_do_despejo(contrato: dict, despejo: dict) -> list:
                 continue
             f = figuras.get(el)
             if f is None:
+                # Cartão de texto não é figura: a presença se confere pelos ids da seção.
+                if el in (vista.get("ids") or []):
+                    continue
                 p.append(f"seção '{sid}': cartão '{c['id']}' ({el}) não existe na página")
                 continue
             if not f.get("cartao_mapa"):
