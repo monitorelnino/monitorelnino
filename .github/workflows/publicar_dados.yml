@@ -134,6 +134,14 @@ jobs:
         timeout-minutes: 5
         run: python3 gerar_imprensa_semana.py
 
+      # 02/10/2026 (item 4 do contrato de layout): os cartões do topo do Financiamento vêm de um
+      # arquivo gerado, e por isso ele é regerado a cada publicação — logo depois da imprensa,
+      # porque o portão de coerência compara os dois. Sem este passo a página mostraria o mês
+      # fechado da edição anterior, que é o mesmo defeito que a imprensa teve no item 0.
+      - name: Gerar os cartões do Financiamento
+        timeout-minutes: 5
+        run: python3 gerar_financiamento_semana.py
+
       - name: Regenerar a cadeia canônica de derivados
         timeout-minutes: 8
         run: bash scripts/verificar_derivados.sh --idempotencia
