@@ -162,7 +162,9 @@ def main() -> int:
         return autoteste()
     monitor = ler(DATA / "monitor_saude.json", {}) or {}
     v04 = ler(DATA / "monitor_saude_v04.json", {}) or {}
-    hoje = datetime.date.today()
+    sys.path.insert(0, str(RAIZ))
+    from coletores_base import hoje_editorial  # noqa: PLC0415 — data editorial, não UTC
+    hoje = hoje_editorial()
     canais = canais_por_uf(linhas_do_log(mes_do_log(hoje)))
     quadro = estado_das_ufs(monitor, v04, canais)
     for linha in relatorio(quadro):
@@ -182,7 +184,6 @@ def main() -> int:
             "com_quatro_canais": sum(1 for v in quadro.values() if v["canais_ok"]),
             "pendencias": {uf: v["falta"] for uf, v in sorted(quadro.items()) if v["falta"]},
         }
-        sys.path.insert(0, str(RAIZ))
         from coletores_base import gravar_em  # noqa: PLC0415 — §229: escrita atômica
         gravar_em(SAIDA, pedido)
         print(f"→ {SAIDA.relative_to(RAIZ)} gravado · trocar={trocar}")

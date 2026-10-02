@@ -163,12 +163,14 @@ def main() -> int:
         print("(ensaio: nada foi gravado)")
         return 0
     sys.path.insert(0, str(RAIZ))
-    from coletores_base import gravar_em  # noqa: PLC0415 — §229
+    # A data é a EDITORIAL do projeto, não a do relógio do runner (que é UTC): o portão de
+    # regressão cobra isso, e com razão — uma errata datada de UTC pode cair no dia seguinte.
+    from coletores_base import gravar_em, hoje_editorial  # noqa: PLC0415 — §229
     novo_monitor = aplicar_v04(monitor, v04)
     novo_monitor["comparacao_da_troca"] = comp
     gravar_em(MONITOR, novo_monitor)
     gravar_em(CONGELAMENTO, encadear(ler(CONGELAMENTO, {}) or {},
-                                     texto_da_errata(comp, datetime.date.today())))
+                                     texto_da_errata(comp, hoje_editorial())))
     print("→ data/monitor_saude.json na v0.4 e errata C30 publicada.")
     return 0
 
