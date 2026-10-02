@@ -3131,3 +3131,64 @@ troca automática da v0.3 para a v0.4 passa a exigir F1 **e** F2 verificadas nas
 
 Nada disso é escondido: o relatório sai junto com o número, e a escolha publicada — aritmética,
 pesos iguais, degrau em 50 — aparece ao lado do que as alternativas fariam.
+
+## 92. Por que a campanha dos 27 está travada, medido e registrado (02/10/2026)
+
+A coordenação em duas funções (§91) depende de ato oficial lido, e o ato estadual vive no diário
+oficial do estado. Em 02/10/2026, **20 das 27 unidades não têm adaptador de busca** no diário — e
+o diagnóstico disso vinha sendo refeito à mão a cada rodada, o que não acumula: a sondagem de hoje
+não sabia o que a de ontem havia medido.
+
+`scripts/sondar_rotas_doe.py` passa a medir e a **escrever** o diagnóstico em
+`data/fontes_doe.json`, por unidade, com data e motivo. Ele não executa JavaScript, não adivinha
+rota por tentativa cega e não promove nada: o que ele produz é pista de engenharia. A medição de
+02/10/2026, sobre as 20 sem adaptador:
+
+| veredito | unidades |
+|---|---|
+| pista de rota (há por onde começar) | AC, AM, BA, MA, PB, RO |
+| sem busca na página inicial | AL, CE, MG, MS, PA, PE, RJ, RN, RR, RS, SC, SP |
+| não respondeu | PI (falha de TLS na consulta) |
+| sem endereço registrado | SE |
+
+**"Pista de rota" não é rota.** Das seis, nenhuma entregou resultado de busca legível sem
+navegador na consulta de hoje: AC devolve o próprio formulário com o termo ecoado; AM e MA montam
+a busca por JavaScript, e a rota de dados não estava nos caminhos sondados; BA responde 404 na
+rota de índice; PB oferece busca **do sítio**, não do texto do diário; RO responde **401** na rota
+de busca — e recusa se respeita (§186). Isso fica escrito para que a próxima rodada comece de onde
+esta parou, e para que nenhuma delas seja chamada de "sem diário": o que foi medido é ausência de
+**rota legível por máquina**, não ausência de diário nem ausência de ato.
+
+Consequência direta no índice: **nenhuma unidade pode ser marcada "não localizado"** em plano ou
+em qualquer das duas funções, porque a regra exige campanha completa pelos quatro canais, e a
+campanha não fecha sem o canal do diário. A ausência continua **lacuna declarada**, com o log dos
+canais — e é por isso que a troca da v0.3 para a v0.4 não aconteceu.
+
+## 93. Dois cartões da imprensa que deixaram de ser lacuna (02/10/2026)
+
+A edição para a imprensa tinha quatro cartões declarados como "sem dado nesta edição". Dois eram
+lacuna de fonte, e seguem sendo: o pago e o transferido por semana não existem na fonte, que
+publica por mês (§89). Os outros dois eram **lacuna de nós**, e foram fechados:
+
+**Capitais com plano localizado.** O cartão dizia que a única lista de capitais do repositório
+cobria 24 das 27. A referência das 27 **já existia**: `CAPITAL_IBGE`, por código IBGE, em
+`coletar_siconfi_182.py`, com uma segunda cópia em `coletar_sinais_risco.py` que o autoteste
+daquele coletor compara com a primeira. Usar as duas cópias que se conferem vale mais do que criar
+uma terceira. O número é **17 de 27**, e a ligação com o banco de municípios é pelo código, via
+arquivo de referência do IBGE — nenhum nome de capital digitado no gerador.
+
+**Estados que mudaram de faixa.** A lacuna era real e era de série: sem faixa por data, não há como
+dizer quem mudou **nem** dizer que ninguém mudou. Faltava quem escrevesse a série, e agora existe:
+`scripts/registrar_faixas.py` roda a cada publicação, antes do gerador da imprensa, e acrescenta em
+`data/historico_faixas.json` uma linha por **edição** com a faixa de cada unidade nos dois índices.
+O arquivo é append-only por edição: duas execuções no mesmo dia atualizam a linha do dia, e edição
+já escrita nunca é reescrita.
+
+Duas decisões de método ficam registradas. A faixa do MARÉ Legal é derivada do `total` publicado
+pela **régua canônica** do projeto (`gerar_monitor_saude.faixa`), e não por uma régua copiada no
+script — duas réguas é como uma delas envelhece sem ninguém ver. E **entrar ou sair de "não
+verificado" não conta como mudança de faixa**: isso é mudança de cobertura, e somar as duas coisas
+inflaria o número com estados que ninguém havia medido ainda.
+
+Enquanto a série tiver uma edição só, o cartão continua declarando — com o motivo certo, que agora
+é "a comparação começa na próxima edição", e não "a série está vazia".

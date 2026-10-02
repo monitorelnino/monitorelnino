@@ -393,38 +393,74 @@ def cartao_populacao_decretos(atos, municipios, corte):
 
 
 def cartao_capitais_com_plano(municipios):
-    """Preparação · capitais com plano localizado. A lista de capitais é a do banco, não digitada."""
-    # MEDIDO em 01/10/2026: `municipios.json` não marca capital, e a única lista de capitais do
-    # repositório (`normais_capitais.json`, do Inmet) cobre 24 das 27 — faltam MS, RJ e RO, que não
-    # têm normal climatológica publicada. Com denominador 24 o cartão diria "x de 24" onde o texto
-    # aprovado diz "de 27"; com denominador 27 e numerador de 24, erraria para baixo sem avisar.
-    # Fica declarado até existir referência das 27.
-    capitais = [m for m in municipios if m.get("capital")]
-    if not capitais:
+    """Preparação · capitais com plano localizado, de 27. Nenhum nome digitado aqui.
+
+    02/10/2026: este cartão era lacuna declarada porque `municipios.json` não marca capital e a
+    única lista que se tinha achado (`normais_capitais.json`, do Inmet) cobre 24 das 27 — faltam
+    MS, RJ e RO, que não têm normal climatológica publicada. A referência das 27 **já existia no
+    repositório**: `CAPITAL_IBGE`, pelo código IBGE, em `coletar_siconfi_182.py`, com uma segunda
+    cópia em `coletar_sinais_risco.py` que o autoteste daquele coletor compara com esta — duas
+    cópias que se conferem valem mais do que uma cópia nova aqui. O nome do município continua
+    vindo do arquivo de referência do IBGE, e o código é a chave.
+    """
+    try:
+        from coletar_siconfi_182 import CAPITAL_IBGE
+    except Exception:  # noqa: BLE001
         return sem_dado("capitais_com_plano", "Capitais com plano localizado", "preparacao",
-                        "o banco de municípios não marca quais são capitais, e a lista disponível "
-                        "no repositório cobre 24 das 27 (faltam MS, RJ e RO): o cartão espera "
-                        "uma referência das 27 capitais")
-    com = [m for m in capitais if m.get("categoria") == "plano"]
+                        "a referência das 27 capitais por código IBGE não pôde ser lida")
+    ref = ler("municipios_ibge_referencia.json", []) or []
+    ref = ref if isinstance(ref, list) else list(ref.values())
+    nome_do_codigo, codigo_do_nome = {}, {}
+    for r in ref:
+        cod = str(r.get("codigo_ibge") or "").zfill(7)
+        nome_do_codigo[cod] = (r.get("uf"), r.get("nome"))
+        codigo_do_nome[(r.get("uf"), str(r.get("nome") or "").strip().lower())] = cod
+    capitais = {c for c in (str(x).zfill(7) for x in CAPITAL_IBGE) if c in nome_do_codigo}
+    if len(capitais) != 27:
+        return sem_dado("capitais_com_plano", "Capitais com plano localizado", "preparacao",
+                        f"a referência do IBGE casou {len(capitais)} das 27 capitais: o cartão "
+                        "não publica denominador que não seja 27")
+    # O banco de municípios é por (UF, nome): a chave de ligação é o código, pela referência.
+    com = []
+    for m in municipios:
+        if m.get("categoria") != "plano":
+            continue
+        cod = codigo_do_nome.get((m.get("uf"), str(m.get("nome") or "").strip().lower()))
+        if cod in capitais:
+            com.append(m)
     return cartao("capitais_com_plano", "Capitais com plano localizado", len(com),
                   "Diários oficiais municipais e sítios das prefeituras (via MARÉ)", None,
-                  grupo="preparacao", nota=f"de {len(capitais)} capitais",
+                  grupo="preparacao", nota="de 27 capitais",
                   lista=[{"uf": m["uf"], "municipio": m["nome"], "documento": m.get("documento"),
                           "url": m.get("url")} for m in sorted(com, key=lambda x: x["uf"])])
 
 
 def cartao_mudaram_faixa():
-    """Preparação · estados que mudaram de faixa no período.
+    """Preparação · estados que mudaram de faixa entre a edição anterior e esta.
 
-    MEDIDO em 01/10/2026: `data/historico_mudancas.json` está vazio, e sem série de faixa por data
-    não há como dizer quem mudou — nem como dizer que ninguém mudou."""
-    hist = ler("historico_mudancas.json", {}) or {}
-    itens = hist if isinstance(hist, list) else (hist.get("itens") or hist.get("mudancas") or [])
-    motivo = ("a série de mudanças de faixa por data está vazia nesta edição: sem ela, 'nenhum "
-              "estado mudou' seria afirmação sem lastro" if not itens else
-              "a série de mudanças existe, mas a faixa ainda não é registrada por data")
-    return sem_dado("ufs_mudaram_faixa", "Estados que mudaram de faixa no período", "preparacao",
-                    motivo)
+    02/10/2026: o cartão era lacuna porque faltava a série — `historico_mudancas.json` está vazio,
+    e sem faixa por data não há como dizer quem mudou **nem** dizer que ninguém mudou. Agora
+    `scripts/registrar_faixas.py` escreve `data/historico_faixas.json` a cada edição, e o cartão lê
+    de lá. Enquanto a série tiver uma edição só, ele continua declarando — com o motivo certo.
+
+    Entrar ou sair de "não verificado" não conta: isso é mudança de COBERTURA, não de faixa, e
+    somar as duas coisas inflaria o número com estados que ninguém tinha medido ainda.
+    """
+    from scripts.registrar_faixas import mudaram
+    hist = ler("historico_faixas.json", {}) or {}
+    m = mudaram(hist, "legal")
+    ms = mudaram(hist, "saude")
+    if m["mudaram"] is None:
+        n_edicoes = len((hist.get("edicoes") or []))
+        return sem_dado("ufs_mudaram_faixa", "Estados que mudaram de faixa no período", "preparacao",
+                        f"a série de faixas por edição tem {n_edicoes} edição(ões), e a comparação "
+                        "pede duas: ela começa na próxima edição")
+    lista = list(m["mudaram"]) + [x for x in (ms["mudaram"] or []) if x not in m["mudaram"]]
+    de, ate = m["de_ate"]
+    return cartao("ufs_mudaram_faixa", "Estados que mudaram de faixa no período", len(lista),
+                  "MARÉ, sobre os documentos lidos em cada estado", None, grupo="preparacao",
+                  nota=f"entre as edições de {de} e {ate}, nos dois índices",
+                  lista=[{"uf": x["uf"], "de": x["de"], "para": x["para"]} for x in lista])
 
 
 def cartao_municipios_sob_alerta():

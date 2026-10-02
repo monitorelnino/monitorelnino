@@ -5,13 +5,46 @@
    "adaptador": null,
    "url": "https://diario.ac.gov.br",
    "status": "a_verificar",
-   "ultima_tentativa": "2026-10-02"
+   "ultima_tentativa": "2026-10-02",
+   "sondagem": {
+    "plataforma": null,
+    "formularios_de_busca": [
+     {
+      "acao": "",
+      "metodo": "post",
+      "campos": [
+       "paginaIni",
+       "palavraTipo",
+       "ano_palavra",
+       "palavra"
+      ]
+     }
+    ],
+    "links_de_busca": [],
+    "veredito": "pista_de_rota",
+    "sondado_em": "02/10/2026"
+   }
   },
   "AM": {
    "adaptador": null,
    "url": "https://diario.imprensaoficial.am.gov.br",
    "status": "a_verificar",
-   "ultima_tentativa": "2026-10-02"
+   "ultima_tentativa": "2026-10-02",
+   "sondagem": {
+    "plataforma": null,
+    "formularios_de_busca": [
+     {
+      "acao": "/busca",
+      "metodo": "post",
+      "campos": []
+     }
+    ],
+    "links_de_busca": [
+     "/theme/a_m/manuais/guia_para_pesquisa_doe_v1.pdf"
+    ],
+    "veredito": "pista_de_rota",
+    "sondado_em": "02/10/2026"
+   }
   },
   "AP": {
    "adaptador": "apifront",
@@ -23,19 +56,66 @@
    "adaptador": null,
    "url": "https://www.ioepa.com.br",
    "status": "a_verificar",
-   "ultima_tentativa": "2026-10-02"
+   "ultima_tentativa": "2026-10-02",
+   "sondagem": {
+    "plataforma": null,
+    "formularios_de_busca": [],
+    "links_de_busca": [],
+    "veredito": "sem_rota_na_pagina_inicial",
+    "sondado_em": "02/10/2026"
+   }
   },
   "RO": {
    "adaptador": null,
    "url": "https://diof.ro.gov.br",
    "status": "a_verificar",
-   "ultima_tentativa": "2026-10-02"
+   "ultima_tentativa": "2026-10-02",
+   "sondagem": {
+    "plataforma": null,
+    "formularios_de_busca": [
+     {
+      "acao": "http://www.google.com/search",
+      "metodo": "get",
+      "campos": [
+       "q",
+       "sitesearch"
+      ]
+     },
+     {
+      "acao": "https://diof.ro.gov.br/busca",
+      "metodo": "get",
+      "campos": [
+       "diarios"
+      ]
+     },
+     {
+      "acao": "http://www.google.com/search",
+      "metodo": "get",
+      "campos": [
+       "q",
+       "sitesearch"
+      ]
+     }
+    ],
+    "links_de_busca": [
+     "https://portaldocidadao.ro.gov.br/css/home/buscar-servico_v1.0.css"
+    ],
+    "veredito": "pista_de_rota",
+    "sondado_em": "02/10/2026"
+   }
   },
   "RR": {
    "adaptador": null,
    "url": "https://www.imprensaoficial.rr.gov.br",
    "status": "a_verificar",
-   "ultima_tentativa": "2026-10-02"
+   "ultima_tentativa": "2026-10-02",
+   "sondagem": {
+    "plataforma": null,
+    "formularios_de_busca": [],
+    "links_de_busca": [],
+    "veredito": "sem_rota_na_pagina_inicial",
+    "sondado_em": "02/10/2026"
+   }
   },
   "TO": {
    "adaptador": "busca_to",
@@ -47,55 +127,144 @@
    "adaptador": null,
    "url": "https://imprensaoficial.al.gov.br",
    "status": "a_verificar",
-   "ultima_tentativa": "2026-10-02"
+   "ultima_tentativa": "2026-10-02",
+   "sondagem": {
+    "plataforma": null,
+    "formularios_de_busca": [],
+    "links_de_busca": [],
+    "veredito": "sem_rota_na_pagina_inicial",
+    "sondado_em": "02/10/2026"
+   }
   },
   "BA": {
    "adaptador": null,
    "url": "https://www.egba.ba.gov.br",
    "status": "a_verificar",
-   "ultima_tentativa": "2026-10-02"
+   "ultima_tentativa": "2026-10-02",
+   "sondagem": {
+    "plataforma": null,
+    "formularios_de_busca": [
+     {
+      "acao": "/egba/busca-solr-multisite",
+      "metodo": "get",
+      "campos": [
+       "search_api_fulltext"
+      ]
+     }
+    ],
+    "links_de_busca": [
+     "https://www.ba.gov.br/pesquisa-satisfacao-plataforma"
+    ],
+    "veredito": "pista_de_rota",
+    "sondado_em": "02/10/2026"
+   }
   },
   "CE": {
    "adaptador": null,
    "url": "https://www.saude.ce.gov.br",
    "status": "a_verificar",
-   "ultima_tentativa": "2026-10-02"
+   "ultima_tentativa": "2026-10-02",
+   "sondagem": {
+    "plataforma": "wordpress",
+    "formularios_de_busca": [],
+    "links_de_busca": [],
+    "veredito": "sem_rota_na_pagina_inicial",
+    "sondado_em": "02/10/2026"
+   }
   },
   "MA": {
    "adaptador": null,
    "url": "https://diariooficial.ma.gov.br",
    "status": "a_verificar",
-   "ultima_tentativa": "2026-10-02"
+   "ultima_tentativa": "2026-10-02",
+   "sondagem": {
+    "plataforma": null,
+    "formularios_de_busca": [],
+    "links_de_busca": [
+     "/busca/"
+    ],
+    "veredito": "pista_de_rota",
+    "sondado_em": "02/10/2026"
+   }
   },
   "PB": {
    "adaptador": null,
    "url": "https://auniao.pb.gov.br",
    "status": "a_verificar",
-   "ultima_tentativa": "2026-10-02"
+   "ultima_tentativa": "2026-10-02",
+   "sondagem": {
+    "plataforma": "plone",
+    "formularios_de_busca": [
+     {
+      "acao": "https://auniao.pb.gov.br/@@busca",
+      "metodo": "get",
+      "campos": [
+       "SearchableText"
+      ]
+     },
+     {
+      "acao": "https://auniao.pb.gov.br/@@busca",
+      "metodo": "get",
+      "campos": [
+       "SearchableText"
+      ]
+     }
+    ],
+    "links_de_busca": [
+     "http://transparencia.pb.gov.br/despesas/consulta-despesa/",
+     "http://transparencia.pb.gov.br/receitas/consulta-receita/"
+    ],
+    "veredito": "pista_de_rota",
+    "sondado_em": "02/10/2026"
+   }
   },
   "PE": {
    "adaptador": null,
    "url": "https://diariooficial.cepe.com.br",
    "status": "a_verificar",
-   "ultima_tentativa": "2026-10-02"
+   "ultima_tentativa": "2026-10-02",
+   "sondagem": {
+    "plataforma": null,
+    "formularios_de_busca": [],
+    "links_de_busca": [],
+    "veredito": "sem_rota_na_pagina_inicial",
+    "sondado_em": "02/10/2026"
+   }
   },
   "PI": {
    "adaptador": null,
    "url": "https://www.diariooficial.pi.gov.br",
    "status": "a_verificar",
-   "ultima_tentativa": "2026-10-02"
+   "ultima_tentativa": "2026-10-02",
+   "sondagem": {
+    "veredito": "nao_respondeu",
+    "motivo": "URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>",
+    "sondado_em": "02/10/2026"
+   }
   },
   "RN": {
    "adaptador": null,
    "url": "https://www.diariooficial.rn.gov.br",
    "status": "a_verificar",
-   "ultima_tentativa": "2026-10-02"
+   "ultima_tentativa": "2026-10-02",
+   "sondagem": {
+    "plataforma": null,
+    "formularios_de_busca": [],
+    "links_de_busca": [],
+    "veredito": "sem_rota_na_pagina_inicial",
+    "sondado_em": "02/10/2026"
+   }
   },
   "SE": {
    "adaptador": null,
    "url": "",
    "status": "a_verificar",
-   "ultima_tentativa": "2026-10-02"
+   "ultima_tentativa": "2026-10-02",
+   "sondagem": {
+    "veredito": "sem_endereco",
+    "motivo": "nenhum endereço de diário registrado; os hosts conhecidos do diário de Sergipe (segrase.se.gov.br, doe.se.gov.br, diariooficial.se.gov.br) não resolvem na consulta de 02/10/2026. O portal do estado (www.se.gov.br) responde, mas portal de governo não é diário oficial e não entra como fonte.",
+    "sondado_em": "02/10/2026"
+   }
   },
   "DF": {
    "adaptador": "dodf",
@@ -113,7 +282,14 @@
    "adaptador": null,
    "url": "https://www.spdo.ms.gov.br",
    "status": "a_verificar",
-   "ultima_tentativa": "2026-10-02"
+   "ultima_tentativa": "2026-10-02",
+   "sondagem": {
+    "plataforma": null,
+    "formularios_de_busca": [],
+    "links_de_busca": [],
+    "veredito": "sem_rota_na_pagina_inicial",
+    "sondado_em": "02/10/2026"
+   }
   },
   "MT": {
    "adaptador": "apifront",
@@ -131,19 +307,40 @@
    "adaptador": null,
    "url": "https://www.jornalminasgerais.mg.gov.br",
    "status": "a_verificar",
-   "ultima_tentativa": "2026-10-02"
+   "ultima_tentativa": "2026-10-02",
+   "sondagem": {
+    "plataforma": "angular",
+    "formularios_de_busca": [],
+    "links_de_busca": [],
+    "veredito": "sem_rota_na_pagina_inicial",
+    "sondado_em": "02/10/2026"
+   }
   },
   "RJ": {
    "adaptador": null,
    "url": "https://www.ioerj.com.br",
    "status": "a_verificar",
-   "ultima_tentativa": "2026-10-02"
+   "ultima_tentativa": "2026-10-02",
+   "sondagem": {
+    "plataforma": "wordpress",
+    "formularios_de_busca": [],
+    "links_de_busca": [],
+    "veredito": "sem_rota_na_pagina_inicial",
+    "sondado_em": "02/10/2026"
+   }
   },
   "SP": {
    "adaptador": null,
    "url": "https://doe.sp.gov.br",
    "status": "a_verificar",
-   "ultima_tentativa": "2026-10-02"
+   "ultima_tentativa": "2026-10-02",
+   "sondagem": {
+    "plataforma": null,
+    "formularios_de_busca": [],
+    "links_de_busca": [],
+    "veredito": "sem_rota_na_pagina_inicial",
+    "sondado_em": "02/10/2026"
+   }
   },
   "PR": {
    "adaptador": "apifront",
@@ -155,14 +352,30 @@
    "adaptador": null,
    "url": "https://www.diariooficial.rs.gov.br",
    "status": "a_verificar",
-   "ultima_tentativa": "2026-10-02"
+   "ultima_tentativa": "2026-10-02",
+   "sondagem": {
+    "plataforma": "angular",
+    "formularios_de_busca": [],
+    "links_de_busca": [],
+    "veredito": "sem_rota_na_pagina_inicial",
+    "sondado_em": "02/10/2026"
+   }
   },
   "SC": {
    "adaptador": null,
    "url": "https://doe.sea.sc.gov.br",
    "status": "a_verificar",
-   "ultima_tentativa": "2026-10-02"
+   "ultima_tentativa": "2026-10-02",
+   "sondagem": {
+    "plataforma": null,
+    "formularios_de_busca": [],
+    "links_de_busca": [],
+    "veredito": "sem_rota_na_pagina_inicial",
+    "sondado_em": "02/10/2026"
+   }
   }
  },
- "_medicao_01_10_2026": "Varredura dos 22 diários sem adaptador: cada host foi sondado com o cliente do projeto, e o status de cada UF passou a dizer o que respondeu e o que falta. DF e TO ganharam adaptador direto. Host que não responde, busca que não existe e busca que cobre o portal em vez do diário são coisas diferentes, e agora estão nomeadas separadamente — nenhuma delas é ausência de ato."
+ "_medicao_01_10_2026": "Varredura dos 22 diários sem adaptador: cada host foi sondado com o cliente do projeto, e o status de cada UF passou a dizer o que respondeu e o que falta. DF e TO ganharam adaptador direto. Host que não responde, busca que não existe e busca que cobre o portal em vez do diário são coisas diferentes, e agora estão nomeadas separadamente — nenhuma delas é ausência de ato.",
+ "sondagem_de_rotas_em": "02/10/2026",
+ "_nota_sondagem": "Diagnóstico por unidade da federação sem adaptador de busca, escrito por scripts/sondar_rotas_doe.py. 'pista_de_rota' quer dizer que há por onde começar a escrever o adaptador, e não que a busca funcione; 'sem_rota_na_pagina_inicial' é medição da página inicial, não afirmação de que o diário não tem busca. Recusa da fonte é registrada pelo nome certo (§186, §187)."
 }

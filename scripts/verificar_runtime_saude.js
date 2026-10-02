@@ -124,6 +124,18 @@ for (const id of ["mapaMonitor", "mapaDengueUF", "mapaChikUF", "mapaCalor"]) {
     tiles.find(t => t.dataset.uf === "GO").click();
     return q("detailSaudeConteudo").textContent.length > 40;
   })());
+  /* Bloco B.3 do handover de 02/10/2026: a coordenação aparece na ficha em DUAS linhas, em
+     linguagem de leitor, e a palavra interna "antecipação" não aparece. Função não procurada diz
+     "ainda não verificada" — nunca ausência de estrutura. */
+  teste("ficha do estado: coordenação em duas linhas, sem jargão", (() => {
+    const tiles = [...d.querySelectorAll("#regionsSaude .tile")];
+    const alvo = tiles.find(t => t.dataset.uf === "GO");
+    if (!alvo) return false;
+    alvo.click();
+    const t = q("detailSaudeConteudo").textContent;
+    return /Coordenação na saúde/.test(t) && /Ligação com o governo do estado/.test(t)
+      && !/antecipação/i.test(t);
+  })());
 
   // As séries do SINAN: frase do dado, gráfico contra a faixa e mapa por 100 mil.
   for (const [frase, mapa, dl] of [["fraseDengue", "mapaDengueUF", "dlDengueUF"],
