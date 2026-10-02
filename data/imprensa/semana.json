@@ -775,7 +775,7 @@
    "periodo": null,
    "fonte": "Cemaden (alertas vigentes)",
    "url_fonte": "https://www.gov.br/cemaden/pt-br",
-   "consultado_em": "01/10/2026 18:39",
+   "consultado_em": "02/10/2026 11:22",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -787,116 +787,92 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 18652,
+   "valor": 8642,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
    "url_fonte": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
-   "consultado_em": "01/10/2026",
+   "consultado_em": "02/10/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "Focos do dia — focos_diario_br_20261001.csv",
+   "nota": "Focos do dia — focos_diario_br_20261002.csv",
    "secundaria": null,
    "lista": [
     {
      "uf": "PA",
-     "valor": 5753
+     "valor": 4187
     },
     {
      "uf": "BA",
-     "valor": 3625
-    },
-    {
-     "uf": "MT",
-     "valor": 1813
+     "valor": 2290
     },
     {
      "uf": "PI",
-     "valor": 1663
+     "valor": 476
     },
     {
-     "uf": "TO",
-     "valor": 1384
+     "uf": "MT",
+     "valor": 453
     },
     {
      "uf": "MA",
-     "valor": 1325
+     "valor": 376
+    },
+    {
+     "uf": "TO",
+     "valor": 273
     },
     {
      "uf": "MG",
-     "valor": 1264
+     "valor": 210
     },
     {
      "uf": "AM",
-     "valor": 617
-    },
-    {
-     "uf": "GO",
-     "valor": 342
+     "valor": 204
     },
     {
      "uf": "AP",
-     "valor": 181
-    },
-    {
-     "uf": "RO",
-     "valor": 112
-    },
-    {
-     "uf": "ES",
-     "valor": 107
-    },
-    {
-     "uf": "PE",
-     "valor": 104
-    },
-    {
-     "uf": "CE",
-     "valor": 90
-    },
-    {
-     "uf": "SP",
-     "valor": 80
+     "valor": 69
     },
     {
      "uf": "RR",
-     "valor": 59
+     "valor": 23
     },
     {
-     "uf": "PB",
-     "valor": 48
+     "uf": "GO",
+     "valor": 22
     },
     {
-     "uf": "AL",
-     "valor": 40
-    },
-    {
-     "uf": "SE",
+     "uf": "CE",
      "valor": 15
     },
     {
-     "uf": "RN",
-     "valor": 14
-    },
-    {
-     "uf": "MS",
-     "valor": 5
-    },
-    {
-     "uf": "DF",
-     "valor": 4
-    },
-    {
-     "uf": "RJ",
-     "valor": 3
+     "uf": "PE",
+     "valor": 11
     },
     {
      "uf": "AC",
+     "valor": 10
+    },
+    {
+     "uf": "ES",
+     "valor": 10
+    },
+    {
+     "uf": "RN",
+     "valor": 5
+    },
+    {
+     "uf": "AL",
+     "valor": 4
+    },
+    {
+     "uf": "MS",
      "valor": 2
     },
     {
-     "uf": "RS",
+     "uf": "RO",
      "valor": 2
     }
    ]
@@ -910,42 +886,42 @@
    "periodo": null,
    "fonte": "INMET — previsão para as capitais",
    "url_fonte": null,
-   "consultado_em": "01/10/2026",
+   "consultado_em": "02/10/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "Palmas (TO), previsão para 01/10/2026; critério: maior máxima e menor mínima entre manhã, tarde e noite",
+   "nota": "Teresina (PI), previsão para 02/10/2026; critério: maior máxima e menor mínima entre manhã, tarde e noite",
    "secundaria": null,
    "lista": [
     {
-     "uf": "TO",
-     "capital": "Palmas",
-     "valor": 39.0,
-     "data": "01/10/2026"
-    },
-    {
      "uf": "PI",
      "capital": "Teresina",
-     "valor": 38.0,
-     "data": "01/10/2026"
-    },
-    {
-     "uf": "AM",
-     "capital": "Manaus",
-     "valor": 37.0,
-     "data": "01/10/2026"
-    },
-    {
-     "uf": "GO",
-     "capital": "Goiânia",
-     "valor": 37.0,
-     "data": "01/10/2026"
+     "valor": 39.0,
+     "data": "02/10/2026"
     },
     {
      "uf": "RR",
      "capital": "Boa Vista",
      "valor": 37.0,
-     "data": "01/10/2026"
+     "data": "02/10/2026"
+    },
+    {
+     "uf": "AM",
+     "capital": "Manaus",
+     "valor": 36.0,
+     "data": "02/10/2026"
+    },
+    {
+     "uf": "PA",
+     "capital": "Belém",
+     "valor": 36.0,
+     "data": "02/10/2026"
+    },
+    {
+     "uf": "TO",
+     "capital": "Palmas",
+     "valor": 36.0,
+     "data": "02/10/2026"
     }
    ]
   },
@@ -953,12 +929,12 @@
    "id": "qualidade_ar_indice",
    "grupo": "risco_agora",
    "rotulo": "Capitais com índice EAQI acima de 40",
-   "valor": 13,
+   "valor": 12,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Open-Meteo (Copernicus CAMS)",
    "url_fonte": null,
-   "consultado_em": "2026-10-01T00:00",
+   "consultado_em": "2026-10-02T00:00",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -966,69 +942,64 @@
    "secundaria": null,
    "lista": [
     {
-     "uf": "RJ",
-     "valor": 191,
-     "hora": "2026-10-01T12:00"
-    },
-    {
-     "uf": "SP",
-     "valor": 131,
-     "hora": "2026-10-01T10:00"
+     "uf": "MG",
+     "valor": 70,
+     "hora": "2026-10-02T12:00"
     },
     {
      "uf": "DF",
-     "valor": 68,
-     "hora": "2026-10-01T13:00"
+     "valor": 66,
+     "hora": "2026-10-02T12:00"
     },
     {
-     "uf": "GO",
-     "valor": 68,
-     "hora": "2026-10-01T14:00"
-    },
-    {
-     "uf": "MG",
-     "valor": 68,
-     "hora": "2026-10-01T10:00"
-    },
-    {
-     "uf": "AM",
-     "valor": 61,
-     "hora": "2026-10-01T14:00"
-    },
-    {
-     "uf": "MT",
-     "valor": 54,
-     "hora": "2026-10-01T12:00"
+     "uf": "RJ",
+     "valor": 66,
+     "hora": "2026-10-02T10:00"
     },
     {
      "uf": "ES",
-     "valor": 52,
-     "hora": "2026-10-01T13:00"
+     "valor": 61,
+     "hora": "2026-10-02T01:00"
     },
     {
-     "uf": "RS",
-     "valor": 52,
-     "hora": "2026-10-01T23:00"
+     "uf": "SP",
+     "valor": 56,
+     "hora": "2026-10-02T00:00"
     },
     {
      "uf": "TO",
-     "valor": 50,
-     "hora": "2026-10-01T10:00"
+     "valor": 55,
+     "hora": "2026-10-02T15:00"
+    },
+    {
+     "uf": "AM",
+     "valor": 49,
+     "hora": "2026-10-02T00:00"
+    },
+    {
+     "uf": "MT",
+     "valor": 47,
+     "hora": "2026-10-02T23:00"
+    },
+    {
+     "uf": "GO",
+     "valor": 45,
+     "hora": "2026-10-02T15:00"
     },
     {
      "uf": "RO",
-     "valor": 48,
-     "hora": "2026-10-01T21:00"
+     "valor": 45,
+     "hora": "2026-10-02T20:00"
     },
     {
      "uf": "PR",
-     "valor": 47,
-     "hora": "2026-10-01T18:00"
+     "valor": 44,
+     "hora": "2026-10-02T00:00"
     },
     {
-     "uf": "MS",
+     "uf": "AC",
      "valor": 42,
-     "hora": "2026-10-01T14:00"
+     "hora": "2026-10-02T00:00"
     }
    ]
   },
@@ -1170,5 +1141,5 @@
    "por_que_nao": "depende do campo `escopo` em data/calendario/fontes_suspensas.json, que hoje é nulo nos 38 registros (bloco E do pedido de 27/09, não executado)."
   }
  ],
- "texto_pronto": "Entre 25/09 e 02/10, 30 municípios decretaram emergência ou calamidade (AM, PA, PB); 43 municípios foram reconhecidos pelo governo federal; o INPE detectou 18652 focos de calor nas últimas 24 horas (PA); a maior máxima prevista entre as capitais é de 39,0 °C em Palmas; 13 capitais estão com índice de qualidade do ar acima de 40."
+ "texto_pronto": "Entre 25/09 e 02/10, 30 municípios decretaram emergência ou calamidade (AM, PA, PB); 43 municípios foram reconhecidos pelo governo federal; o INPE detectou 8642 focos de calor nas últimas 24 horas (PA); a maior máxima prevista entre as capitais é de 39,0 °C em Teresina; 12 capitais estão com índice de qualidade do ar acima de 40."
 }
