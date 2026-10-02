@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-02 · #526 · Coletores do Financiamento rodados, e o frescor por arquivo
+
+Todos os coletores da página rodaram hoje. `coletar_siconfi_182.py` estava morrendo com `TypeError` desde a migração do §229 — uma função local `gravar` sombreava a importada. A execução passou a coletar a modalidade de aplicação. Portão novo mede coletor pelo relógio (9 dias) e curadoria por declaração. METODOLOGIA §96.
+
 ## 2026-10-02 · #525 · Canais 3 e 4 nos 27, e F2 pela composição do ato
 
 Regra mínima do canal 4 — raiz da secretaria mais diário do estado — vale para as 27, e o canal passou a ser dito na linha do log em vez de adivinhado. PA e MT registrados pelos endereços da editoria. F1 e F2 só saem de ato com dispositivo, e F2 exige o órgão na composição. Quatro canais: de 1 para 8 de 27. METODOLOGIA §95.

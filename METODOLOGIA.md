@@ -3392,3 +3392,63 @@ rebaixar".
 O que falta agora é canal 2 em 18 unidades (rota de edição a descobrir) e canal 3 em cinco (AM, AP,
 RJ, RN, RO), cujas raízes não respondem — e aí a falta **não é de cadastro**, é de fonte, medida em
 01/10/2026 e escrita no arquivo.
+
+## 96. Os coletores do Financiamento, e por que quatro arquivos pareciam parados (02/10/2026)
+
+Item 4 do handover do Financiamento minimalista: rodar todos os coletores da página e corrigir **na
+raiz** os arquivos parados. A raiz era diferente em cada caso, e dois dos achados são de método.
+
+### 96.1 Um defeito que fazia o coletor morrer todo dia
+
+`coletar_siconfi_182.py` — a despesa própria dos municípios em defesa civil — estava parado em
+24/09, e **não era a fonte**: o módulo definia uma função local `gravar(registro)` que
+**sombreava** a `gravar(nome, obj)` importada de `coletores_base`. A chamada de dentro dela caía
+nela mesma, com dois argumentos, e o coletor terminava com `TypeError` a cada execução. A função
+local passou a chamar-se `gravar_registro`, e a escrita voltou à porta atômica do §229. O arquivo
+foi de 24/09 para 02/10 na primeira execução depois da correção.
+
+### 96.2 Curadoria não se mede por relógio
+
+Quatro arquivos apareciam "parados em 06/09": `rotas`, `emendas`, `preventivo_setores` e
+`compromissos_federais` (e `rotas_preventivas`, em 14/09). Nenhum deles tem coletor — **por
+decisão de método**: são modelos e listas escritos a partir de documento lido, revisados quando o
+documento muda. Medi-los pelo relógio produz vermelho permanente que ninguém consegue apagar, e
+vermelho que não se apaga deixa de ser sinal.
+
+Eles passaram a **declarar** o que são: `curadoria: true` e `revisado_em`. O portão novo
+`scripts/verificar_frescor_financiamento.py` mede **saída de coletor pelo relógio** (limite de 9
+dias, vermelho bloqueia a publicação) e **curadoria por declaração**. A distinção é o que torna o
+atraso dos outros legível: antes dela, nove arquivos de coletor e cinco de curadoria apareciam na
+mesma lista, e a lista não dizia nada.
+
+### 96.3 Modalidade de aplicação: a quem o dinheiro foi
+
+A execução das medidas passou a coletar a **modalidade de aplicação** — o campo do orçamento
+federal que diz **a quem** o recurso foi: aplicado diretamente pela União, transferido a estados,
+a municípios, a entidades sem fins lucrativos. Ela substitui, no cartão do dinheiro, a leitura por
+**sede da unidade gestora**, que dizia apenas onde o pagamento foi *registrado* — e por isso
+pintava o país com a parcela executada fora de Brasília como se fosse destino do dinheiro.
+
+A coluna do Portal se chama "Código Modalidade da Despesa": a primeira implementação procurou
+"Modalidade de Aplicação", não achou, e classificou **tudo** como "outras formas" — falha
+silenciosa que o próprio valor denunciou (100% numa categoria residual). Os nomes alternativos
+ficam como reserva, pela mesma razão do §219: a grafia do Portal já mudou antes.
+
+Medido em 02/10/2026, sobre o desembolsado: MP 1.367 — R$ 278,1 mi aplicados diretamente pela
+União e R$ 1,8 mi a entidades sem fins lucrativos; MP 1.384 — R$ 71,3 mi diretamente, R$ 23,8 mi
+transferidos aos estados e R$ 1,5 mi ao exterior.
+
+### 96.4 O que a rodada de hoje mudou nos números
+
+| arquivo | antes | depois |
+|---|---|---|
+| execução das medidas (`mps_2026`) | 24/09 | **02/10** |
+| série nacional e por UF | 24/09 | **02/10** |
+| programas fundo a fundo | 24/09 | **02/10** |
+| despesa própria (`despesa_182`) | 24/09 | **02/10** |
+| recursos de resposta | 02/10 | **02/10** |
+
+Com a quebra por mês, o cartão do topo passou a publicar o **mês fechado** de verdade: R$ 150,9
+milhões desembolsados em setembro, no lugar do acumulado do ciclo que a versão anterior mostrava
+por falta da quebra. O desembolsado total subiu de R$ 263,4 mi para R$ 279,9 mi na MP 1.367 e
+entrou com R$ 96,6 mi na MP 1.384.
