@@ -20,6 +20,9 @@ jobs:
     uses: ./.github/workflows/_coletor.yml
     with:
       nome: sinais-e-links
+      # 02/10/2026: os dois coletores de respiratórias saíram para `semanal_respiratorias.yml`.
+      # A primeira execução real desta rotina bateu no teto de 150 min e foi cancelada, sem
+      # chegar ao fim da fila — fila longa não é cadência.
       timeout_minutos: 150
       # §279 (item 5 da decisão da editoria, 28/09/2026): os três scripts que só rodavam na CI entram
       # aqui. Eles produzem dado que a rodada USA — `dominios_oficiais.json` alimenta
@@ -61,16 +64,6 @@ jobs:
         # quando o hash do arquivo do IBGE não mudou e a última conferência tem menos de 7 dias.
         coletar_semiarido_sudene.py
         coletar_sinais_risco.py --municipios
-        # 29/09/2026 (bloco 4): SRAG pela fonte primária, semanal como o dado. Lê o banco do
-        # SIVEP-Gripe em fluxo e guarda só o agregado por UF e semana; os anos congelados
-        # (2019–2024) saem do cache e não são rebaixados da rede toda semana.
-        coletar_srag_sivep.py
-        # 01/10/2026 (bloco das 23h20): sindrome gripal (e-SUS Notifica), semanal como a
-        # SRAG. Hoje ele mede e declara a lacuna — as duas rotas que o portal publica
-        # recusam acesso automatizado (API 401, CSV 403) e o conjunto por ano para a
-        # gripal vai de 2020 a 2024, sem o ano do ciclo. Roda toda semana porque e a
-        # propria rodada que descobre quando a fonte abrir.
-        coletar_sg_esus.py
         # 29/09/2026 (item 2): contagem de dengue e chikungunya pela fonte primária (SINAN).
         # O InfoDengue continua rodando na rodada semanal para o NÍVEL DE ALERTA, que é
         # interpretação da série e não existe no banco primário.

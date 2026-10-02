@@ -2688,6 +2688,50 @@ a partir do commit mais recente que tocou `data/`, e rodada sem dado novo não c
 casos novos do autoteste cobram isto: as duas datas escritas, do mesmo valor, e nenhuma chamada de
 relógio no corpo. O caso antigo, que cobrava o oposto, fica registrado como revogado.
 
+## 82. MARÉ Saúde: a página em quatro blocos, e o que saiu dela (01/10/2026)
+
+Os blocos C, D e E do handover de 01/10/2026 — organização, textos e desenho — não tinham sido
+executados: a página ainda abria pelas doenças, trazia o "Backlog de fontes" e falava por siglas.
+
+**A ordem inverteu.** Primeiro os números (três contadores), depois **o que cada estado publicou**,
+depois **o que os órgãos de saúde registram**, e por fim o que o governo federal publicou. A razão é
+a mesma que vale no MARÉ Legal: a página é sobre preparação publicada, e o que a população registra
+é observação de contexto — abrir pelas doenças invertia o assunto.
+
+**Os três contadores contam documento lido, não categoria.** "Estados com plano" é a UF cujo
+instrumento tem documento no banco (21 de 27); "estados com sala de situação ou centro de operações
+de emergência" é a UF cujo degrau de coordenação tem documento (1 de 27, lido do arquivo da v0.4);
+"emergências em saúde pública declaradas" vem do agregado de resposta (0 desde 29/06). A distinção
+importa porque categoria muda de régua — foi o que a v0.4 fez — e documento lido não muda. Enquanto
+as 27 não estiverem verificadas, a linha de fonte do primeiro cartão diz quantas faltam, em vez de
+deixar 21 ser lido como o país.
+
+**Uma seção, não cinco.** Dengue, chikungunya, calor, síndrome respiratória grave, síndrome gripal e
+diarreicas viraram cartões de uma seção só, em grade de três, aberta pela frase que a editoria
+manteve: *"Esta página não relaciona casos ao El Niño."* A busca por município entra aí, com três
+travas: cidade fora dos municípios acompanhados aparece como **não acompanhada** (e não como nível 1
+nem como zero); cidade sem semana consolidada aparece sem nível, com a semana declarada; e a lista
+oferecida é a do IBGE inteira, de propósito — só assim a busca pode dizer que a cidade existe e não
+é acompanhada.
+
+**O que saiu:** o "Backlog de fontes", o catálogo dos 20 desfechos, os gatilhos do Quadro 5 e as
+áreas COBRADE. São roteiro metodológico, e o lugar deles é a metodologia e os dados abertos. Saiu
+também o "Semana 10 desde o primeiro boletim" do topo.
+
+**Siglas traduzidas (bloco D).** CIEVS passa a "centro de vigilância", COE/COES a "centro de
+operações de emergência", SRAG a "síndrome respiratória grave", ESPIN a "emergência em saúde pública
+de importância nacional" e MDDA a "vigilância das diarreicas". Duas consequências que valem
+registro: o nome da doença entrou na lista de exceções do portão de legendas, porque "grave" ali é
+**nome**, não juízo; e a tradução dos rótulos que vêm do arquivo de sinais acontece na LEITURA, não
+no dado — o banco continua como o coletor o escreveu, e o leitor não recebe sigla para decodificar.
+
+**A fonte da série respiratória deixou de ser o InfoGripe** (bloco das 23h20): a de síndrome
+respiratória grave vem do SIVEP-Gripe, e a de síndrome gripal, do e-SUS Notifica — com a lacuna
+declarada enquanto a fonte recusa acesso (§80).
+
+O portão de runtime da página foi reescrito para a página que existe: ordem nova, saída do backlog,
+siglas, contadores do dado, grade de três e as três travas da busca por município.
+
 ## 84. Fechar os 27 do MARÉ Saúde sem depender de nova instrução (01/10/2026)
 
 O bloco das 23h10 pediu que o que hoje depende de alguém mandar passe a acontecer sozinho. São

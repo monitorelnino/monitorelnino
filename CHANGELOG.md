@@ -32,6 +32,14 @@ publicador escrevia só `atualizado_em` e declarava que `corte` nunca era tocado
 30/09, quando o corte passou a ser a data da rodada. Agora escreve as duas, do mesmo valor, por
 ordem da editoria. A data continua vindo do dado, nunca do relógio. Em `METODOLOGIA.md` §81.
 
+## 2026-10-02 · #508 · MARÉ Saúde: a página refeita (blocos C, D e E)
+
+A ordem inverteu: números, o que cada estado publicou, o que os órgãos de saúde registram e o que o
+governo federal publicou. As seis doenças viraram uma seção em grade de três, com busca por
+município que diz "não acompanhada" em vez de zero. Saem o backlog de fontes, o catálogo de
+desfechos, os gatilhos e as áreas COBRADE. Siglas traduzidas no texto visível. Em `METODOLOGIA.md`
+§82.
+
 ## 2026-10-01 · #505 · Publicação destravada: o carimbo antes dos portões
 
 `Publicar dados` falhou nas quatro execuções do dia e o site ficou sem dado novo. O portão do corte

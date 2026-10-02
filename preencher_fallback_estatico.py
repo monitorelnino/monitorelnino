@@ -134,17 +134,18 @@ def preencher_saude():
 
     h = sub_id(h, "corteSaude", corte_saude, n)
 
-    # §4.5 (paridade com a home, 17/09/2026): contador de tempo da Saúde
-    import datetime
-    try:
-        dd, mm, aa = [int(x) for x in (mon.get("corte") or corte_saude).split("/")]
-        semana = (datetime.date(aa, mm, dd) - datetime.date(2026, 6, 29)).days // 7 + 1
-        h = sub_id(h, "ctSemanaSaude", str(max(1, semana)), n)
-    except Exception:
-        pass
+    # 01/10/2026 (bloco C.1): o contador de semanas saiu do topo e no lugar entraram os três
+    # contadores. Eles contam DOCUMENTO LIDO, não categoria — e o fallback estático reproduz
+    # exatamente o que o JavaScript escreveria, para que a página sem JS não mostre "—".
     ufs_saude = mon.get("ufs") or {}
-    n_novo_saude = sum(1 for v in ufs_saude.values() if isinstance(v, dict) and (v.get("instrumento") or {}).get("status") == "NOVO")
-    h = sub_id(h, "ctNovoSaude", str(n_novo_saude), n)
+    com_plano = sum(1 for v in ufs_saude.values()
+                    if isinstance(v, dict) and (v.get("instrumento") or {}).get("doc"))
+    h = sub_id(h, "nPlanoSaude", f"{com_plano} de 27", n)
+    v04 = ler("monitor_saude_v04.json", {}) or {}
+    com_coord = sum(1 for v in (v04.get("uf") or {}).values()
+                    if isinstance(v, dict) and (v.get("coordenacao") or {}).get("doc"))
+    h = sub_id(h, "nCoordSaude", f"{com_coord} de 27", n)
+    h = sub_id(h, "nEmergSaude", str((mon.get("resposta") or {}).get("emergencias") or 0), n)
 
     res = mon.get("resumo") or {}
     media = res.get("media_das_verificadas")

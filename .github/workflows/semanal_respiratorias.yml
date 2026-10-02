@@ -1,0 +1,42 @@
+# Doenças respiratórias — rotina própria, semanal.
+#
+# POR QUE ELA EXISTE (02/10/2026)
+# Os dois coletores de respiratórias estavam na rotina `semanal_sinais_e_links.yml`, que tem teto de
+# 150 minutos e quinze comandos — entre eles os sinais climáticos por município, que são o passo
+# mais longo do projeto. Na primeira execução real, de 01/10/2026 (run 36940396433), o job BATEU NO
+# TETO e foi cancelado em 2h30: nenhum dos coletores do fim da fila rodou, e o de SRAG é um deles.
+# Fila longa não é cadência: o que está no fim nunca roda.
+#
+# Separar custa um job e resolve três coisas: SRAG e síndrome gripal passam a ter cadência própria e
+# declarada, a rotina de sinais encurta, e a falha de um não arrasta o outro.
+name: Semanal — doenças respiratórias
+
+on:
+  schedule:
+    # Domingo, 5h30 de Brasília — depois da rotina de sinais (4h30) e antes da publicação da manhã.
+    - cron: "30 8 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  respiratorias:
+    uses: ./.github/workflows/_coletor.yml
+    with:
+      nome: respiratorias
+      # Escreve em data/saude_desfechos/ — grupo compartilhado da noite.
+      grupo_de_concorrencia: noturno
+      # O banco do SIVEP-Gripe tem centenas de megabytes por ano epidemiológico e é lido em fluxo;
+      # 60 minutos é o que a primeira leitura real pediu, com folga para a rede da fonte.
+      timeout_minutos: 60
+      comandos: |
+        # SRAG hospitalizada pela fonte primária (SIVEP-Gripe). Anos congelados saem do cache.
+        coletar_srag_sivep.py
+        # Síndrome gripal (e-SUS Notifica). Hoje mede e declara a lacuna: as duas rotas que o
+        # portal publica recusam acesso automatizado (API 401, CSV 403) e o conjunto por ano vai
+        # de 2020 a 2024, sem o ano do ciclo. Roda toda semana porque é a rodada que descobre
+        # quando a fonte abrir.
+        coletar_sg_esus.py
+    secrets:
+      ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}

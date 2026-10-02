@@ -32,6 +32,47 @@ async function __load(){
   renderDesfechos('dengue', IDS_DENGUE);
   renderDesfechos('chikungunya', IDS_CHIK);
   try { titulosFatoSaude(); } catch (e) {}   // 15/09/2026 (§2.10): depois de tudo carregado
+
+    /* Contadores do topo (bloco C.1 do handover de 01/10/2026).
+     *
+     * Cada um conta DOCUMENTO LIDO, não categoria: "plano localizado" é a UF cujo instrumento tem
+     * documento no banco, e "coordenação" é a UF cujo degrau de coordenação tem documento. A
+     * diferença importa porque categoria muda de régua (foi o que a v0.4 fez) e documento lido não.
+     * Enquanto as 27 não estiverem verificadas, a linha de fonte diz quantas faltam — em vez de
+     * deixar o leitor ler 21 como se fosse o país inteiro. */
+  (function contadoresDoTopo(){
+      const el = id => document.getElementById(id);
+      const n = v => Number(v || 0).toLocaleString('pt-BR');
+      const ufs = (MSAUDE && MSAUDE.ufs) || {};
+      const comPlano = Object.values(ufs).filter(u => u && u.instrumento && u.instrumento.doc).length;
+      const verificadas = (MSAUDE && MSAUDE.resumo && MSAUDE.resumo.verificadas) || 0;
+      const faltam = 27 - verificadas;
+      if (el('nPlanoSaude')) {
+        el('nPlanoSaude').textContent = n(comPlano) + ' de 27';
+        el('fontePlanoSaude').textContent = 'Documento oficial lido em cada estado · '
+          + (faltam > 0 ? faltam + ' estado(s) ainda não verificado(s)' : 'as 27 verificadas');
+      }
+      if (el('nCoordSaude')) {
+        /* A coordenação vive no arquivo da v0.4, que é quem a mede. Sem ele, o cartão diz que não
+         * há coleta — nunca zero. */
+        fetch('data/monitor_saude_v04.json').then(r => r.ok ? r.json() : null).then(V => {
+          const u = (V && V.uf) || null;
+          if (!u) { el('nCoordSaude').textContent = '—';
+                    el('fonteCoordSaude').textContent = 'Sem coleta até o corte.'; return; }
+          const comCoord = Object.values(u).filter(x => x && x.coordenacao && x.coordenacao.doc).length;
+          el('nCoordSaude').textContent = n(comCoord) + ' de 27';
+          el('fonteCoordSaude').textContent = 'Ato de criação ou de ativação lido em cada estado · '
+            + 'sala de situação ou centro de operações de emergência';
+        }).catch(() => {});
+      }
+      if (el('nEmergSaude')) {
+        const r = (MSAUDE && MSAUDE.resposta) || {};
+        el('nEmergSaude').textContent = n(r.emergencias);
+        el('fonteEmergSaude').textContent = 'Desde ' + (r.desde || '—')
+          + ' · emergência em saúde pública de importância nacional e decretos estaduais';
+      }
+    })();
+
   renderSRAG('srag');
   renderSG();
   renderDDA();
@@ -130,18 +171,10 @@ function __init(){
       el('rsBadge').innerHTML = '<span class="gfaixa-pill">' + esc(String(RS.emergencias || 0)) + ' emergência' + ((RS.emergencias || 0) === 1 ? '' : 's') + ' sanitária' + ((RS.emergencias || 0) === 1 ? '' : 's') + ' declarada' + ((RS.emergencias || 0) === 1 ? '' : 's') + '</span>';
       el('rsCorte').textContent = (MSAUDE && MSAUDE.corte) || '—';
       const fill = el('rsFill'); fill.dataset.alvo = String(Math.max(ir, RS.emergencias ? 0.6 : 0)); fill.style.setProperty('--galvo', String(Math.max(ir, 0.1))); fill.style.width = fill.dataset.alvo + '%';
-      el('interpRespostaSaude').innerHTML = '<strong>' + esc(String(RS.emergencias || 0)) + '</strong> emergência(s) sanitária(s) declarada(s) desde ' + esc(RS.desde || '29/06/2026') + ' (ESPIN federal e decretos estaduais), <strong>' + esc(((RS.pop_sob_emergencia || 0) / 1e6).toFixed(1).replace('.', ',')) + '</strong> milhões de pessoas nos estados que as declararam' + (RS.ufs && RS.ufs.length ? ' (' + RS.ufs.join(', ') + ')' : '') + '. Antecipação mede preparo; resposta mede o que foi declarado depois, mostrados em separado.';
+      el('interpRespostaSaude').innerHTML = '<strong>' + esc(String(RS.emergencias || 0)) + '</strong> emergência(s) sanitária(s) declarada(s) desde ' + esc(RS.desde || '29/06/2026') + ' (emergência em saúde pública de importância nacional e decretos estaduais), <strong>' + esc(((RS.pop_sob_emergencia || 0) / 1e6).toFixed(1).replace('.', ',')) + '</strong> milhões de pessoas nos estados que as declararam' + (RS.ufs && RS.ufs.length ? ' (' + RS.ufs.join(', ') + ')' : '') + '. Antecipação mede preparo; resposta mede o que foi declarado depois, mostrados em separado.';
     })();
     // 17/09/2026 (paridade com a home, handover de identidade §4.5): contador de tempo, semana desde
     // o primeiro boletim (29/06/2026) — mesmo cálculo, mesma variante Leve da home.
-    (function contadorTempoSaude(){
-      const el = id => document.getElementById(id); if (!el('ctSemanaSaude') || !MSAUDE || !MSAUDE.corte) return;
-      const [dd, mm, aa] = MSAUDE.corte.split('/').map(Number); const corte = new Date(aa, mm - 1, dd);
-      const boletim1 = new Date(2026, 5, 29);
-      el('ctSemanaSaude').textContent = String(Math.max(1, Math.floor((corte - boletim1) / 86400000 / 7) + 1));
-      const novo = Object.values(MSAUDE.ufs || {}).filter(v => v.instrumento && v.instrumento.status === 'NOVO').length;
-      el('ctNovoSaude').textContent = String(novo);
-    })();
   })();
 
   // 13/09/2026 (proposta de enxugamento, Manus AI): 'O que a União publicou' (8 cartões federais)
@@ -229,7 +262,16 @@ function __init(){
     el.textContent = 'Classe de excesso de calor por município: sem coleta até o corte.'
       + (fCalor.ultima_tentativa_falhou ? ' Última tentativa em ' + fCalor.ultima_tentativa_falhou + '.' : '');
   })();
-  (function(){ const f = SSIN.fontes || {}; const c = Object.entries(f).map(([k, v]) => (v.nome || k) + ': ' + (v.consultado_em ? 'consultado em ' + v.consultado_em : (v.status === 'reuso' ? 'reuso da página de sinais' : 'ainda não consultado')));
+  /* 01/10/2026 (bloco D): sigla traduzida no texto visível. O rótulo vem do arquivo de sinais, que
+   * é escrito pelo coletor no vocabulário interno; traduzir na LEITURA, e não no dado, mantém o
+   * banco do jeito que o coletor o escreveu e o leitor sem sigla para decodificar. */
+  const PUBLICO = [[/\bESPIN\b/g, 'emergência em saúde pública de importância nacional'],
+                   [/\bCIEVS\b/g, 'centro de vigilância'],
+                   [/\bCOES?\b/g, 'centro de operações de emergência'],
+                   [/\bSRAG\b/g, 'síndrome respiratória grave'],
+                   [/\bMDDA\b/g, 'vigilância das diarreicas']];
+  const semSigla = t => PUBLICO.reduce((x, [re, por]) => String(x).replace(re, por), t || '');
+  (function(){ const f = SSIN.fontes || {}; const c = Object.entries(f).map(([k, v]) => semSigla(v.nome || k) + ': ' + (v.consultado_em ? 'consultado em ' + v.consultado_em : (v.status === 'reuso' ? 'reuso da página de sinais' : 'ainda não consultado')));
     const el = document.getElementById('carimboSaude'); if (el) el.textContent = 'Estado das fontes: ' + c.join(' · ') + '.'; })();
 
   // 13/09/2026 (proposta de enxugamento, Manus AI): quadrante 'Defesa civil × saúde' retirado —
@@ -418,14 +460,26 @@ function renderDesfechos(doenca, ids){
 // 14/09/2026: parametrizada por indicador (SRAG | SG) — mesmo CSV do InfoGripe, mesmo desenho; sem arquivo = lacuna declarada
 const __serieCharts = {};
 const INDICADORES_RESP = {
-  srag: {rotulo: 'SRAG', eixo: 'casos SRAG · Brasil', fonte: ['InfoGripe (Fiocruz/FGV), Sivep-Gripe'], dados: () => SRAG, motivo: 'A fonte (InfoGripe/Fiocruz) não respondeu nas últimas tentativas de coleta.', segunda: 'nowcasting (últimas 4 semanas)', chaveSegunda: 'nowcasting'},
-  sg:   {rotulo: 'síndrome gripal', eixo: 'casos de síndrome gripal · Brasil', fonte: ['InfoGripe (Fiocruz/FGV)'], dados: () => SG, motivo: 'A fonte (InfoGripe/Fiocruz) não respondeu nas últimas tentativas de coleta.', segunda: 'nowcasting (últimas 4 semanas)', chaveSegunda: 'nowcasting'}
+  // 01/10/2026: rótulo, eixo e fonte no vocabulário público — sigla traduzida (bloco D) e a fonte
+  // é a PRIMÁRIA. O InfoGripe deixou de ser a origem da série em 29/09 (§ do coletor): as duas URLs
+  // dele exigem login desde setembro, e quem entrega a série é o SIVEP-Gripe, do Ministério da
+  // Saúde, sem estimativa de dados recentes — por isso também sai o "nowcasting".
+  srag: {rotulo: 'síndrome respiratória grave', eixo: 'casos · Brasil',
+         fonte: ['SIVEP-Gripe (Ministério da Saúde)'], dados: () => SRAG,
+         motivo: 'A série do SIVEP-Gripe ainda não foi coletada até o corte.'},
+  // 01/10/2026: a fonte da síndrome gripal passa a ser a PRIMÁRIA (e-SUS Notifica). O motivo
+  // da lacuna diz o que foi medido em 01/10: as duas rotas que o portal publica recusam
+  // acesso automatizado, e o conjunto por ano vai de 2020 a 2024 — sem o ano do ciclo.
+  sg:   {rotulo: 'síndrome gripal', eixo: 'casos · Brasil',
+         fonte: ['e-SUS Notifica (Ministério da Saúde)'], dados: () => SG,
+         motivo: 'A fonte recusa acesso automatizado e não publica o ano do ciclo: lacuna declarada.'},
 };
 // 14/09/2026: DDA usa o MESMO componente e o mesmo renderizador da figura respiratória (série nacional sobre o canal
 // endêmico); só mudam os textos e a segunda barra — a fonte não publica nowcasting, então as últimas 4 semanas são
 // mostradas como 'parciais' (valor bruto, atraso de digitação), nunca como estimativa.
-const INDICADOR_DDA = {rotulo: 'DDA', eixo: 'atendimentos de DDA em unidades sentinela · Brasil', fonte: ['Sivep-DDA (Ministério da Saúde) via LAI, depósito Zenodo (Saldanha/Fiocruz)'], dados: () => DDA,
-  motivo: 'A fonte (Sivep-DDA via LAI, depósito Zenodo) não pôde ser lida nas últimas tentativas de coleta.', segunda: 'parciais (últimas 4 semanas — sem estimativa)', chaveSegunda: 'parcial'};
+const INDICADOR_DDA = {rotulo: 'diarreicas agudas',
+  eixo: 'atendimentos em unidades sentinela · Brasil', fonte: ['Sivep-DDA (Ministério da Saúde) via LAI, depósito Zenodo (Saldanha/Fiocruz)'], dados: () => DDA,
+  motivo: 'A série da vigilância das diarreicas não pôde ser lida nas últimas tentativas de coleta.', segunda: 'parciais (últimas 4 semanas — sem estimativa)', chaveSegunda: 'parcial'};
 function renderSerieNacional(cfg, ids){
   const D = cfg.dados();
   const cv = document.getElementById(ids.canvas), svg = document.getElementById(ids.svg);
@@ -504,9 +558,7 @@ function titulosFatoSaude(){
 }
 
 // ===== tabela COBRADE (§258, 27/09/2026) =====
-// Migrada de assets/js/pesquisadores.js, que foi arquivado com a página. A tabela é
-// renderizada em #tblAreas, que hoje vive no bloco de backlog desta página.
-// verificar_consistencia.py leu AREAS de pesquisadores.js desde 14/09 (§1.4 da auditoria
+// Migrada de assets/js/pesquisadores.js, que foi arquivado com a página. A tabela é// verificar_consistencia.py leu AREAS de pesquisadores.js desde 14/09 (§1.4 da auditoria
 // editorial); passa a ler daqui, e o portão foi atualizado no mesmo commit.
 (function(){
   const tb = document.getElementById('tblAreas'); if (!tb) return;
@@ -519,4 +571,72 @@ const AREAS = [
 ];
   tb.querySelector('tbody').innerHTML = AREAS.map(a => `<tr><td>${esc(a.label)}</td><td>${a.ufs.length}</td><td>${esc(a.ufs.join(', '))}</td></tr>`).join('');
   MonitorMapas.credito('boxAreas', {fontes: ['MARÉ', 'classificação COBRADE'], data: (typeof META !== 'undefined' && META && (META.atualizado_em || META.corte)) || null});
+})();
+
+
+/* Busca por município no nível de alerta (bloco C.3 do handover de 01/10/2026).
+ *
+ * Três travas, e as três existem porque a alternativa de cada uma seria afirmar o que não se sabe:
+ *   - cidade FORA dos municípios acompanhados não aparece como nível 1 nem como zero: aparece como
+ *     não acompanhada, que é ausência de observação e não ausência de casos;
+ *   - cidade sem semana consolidada aparece sem nível, com a semana declarada;
+ *   - a lista de cidades é a do IBGE inteira, de propósito: só assim a busca pode DIZER que a
+ *     cidade existe e não é acompanhada. Listar apenas as acompanhadas esconderia a lacuna.
+ */
+(async function buscaMunicipalSaude(){
+  const el = id => document.getElementById(id);
+  const sel = el('munUFSaude'), entrada = el('munNomeSaude'), lista = el('munListaSaude'),
+        conta = el('munContaSaude'), saida = el('munResultadoSaude');
+  if (!sel || !entrada || !lista || !saida) return;
+  const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const NIVEL = {1: 'nível 1 (baixa atividade)', 2: 'nível 2 (atenção)',
+                 3: 'nível 3 (alerta)', 4: 'nível 4 (emergência)'};
+  let REF, DEN, CHI;
+  try {
+    [REF, DEN, CHI] = await Promise.all([
+      fetch('data/municipios_ibge_referencia.json').then(r => r.ok ? r.json() : null),
+      fetch('data/saude_desfechos/serie_painel.json').then(r => r.ok ? r.json() : null),
+      fetch('data/saude_desfechos/chik_serie_painel.json').then(r => r.ok ? r.json() : null),
+    ]);
+  } catch (e) { REF = DEN = CHI = null; }
+  if (!REF) { conta.textContent = 'Lista de municípios sem coleta até o corte.'; return; }
+  const ref = Array.isArray(REF) ? REF : Object.values(REF);
+  const porUF = {}, codigo = {};
+  ref.forEach(m => {
+    const c = String(m.codigo_ibge).padStart(7, '0');
+    (porUF[m.uf] = porUF[m.uf] || []).push(m.nome);
+    codigo[m.uf + '|' + m.nome.toLowerCase()] = c;
+  });
+  Object.keys(porUF).sort().forEach(uf => sel.insertAdjacentHTML('beforeend', `<option value="${uf}">${uf}</option>`));
+  const acompanhados = new Set([...Object.keys((DEN && DEN.municipios) || {}),
+                                ...Object.keys((CHI && CHI.municipios) || {})]);
+  conta.textContent = `${acompanhados.size.toLocaleString('pt-BR')} municípios acompanhados de `
+    + `${ref.length.toLocaleString('pt-BR')} no país`;
+
+  sel.addEventListener('change', () => {
+    const nomes = porUF[sel.value] || [];
+    lista.innerHTML = nomes.slice().sort((a, b) => a.localeCompare(b, 'pt-BR'))
+      .map(x => `<option value="${esc(x)}"></option>`).join('');
+    entrada.disabled = !sel.value;
+    entrada.value = '';
+    saida.hidden = true;
+  });
+
+  function linha(rotulo, base, cod){
+    const m = base && base.municipios && base.municipios[cod];
+    if (!m) return `<li>${rotulo}: município não acompanhado nesta série</li>`;
+    const nv = m.nivel_ultima_se;
+    if (nv == null) return `<li>${rotulo}: sem semana consolidada até o corte</li>`;
+    return `<li>${rotulo}: ${esc(NIVEL[nv] || ('nível ' + nv))} na semana ${esc(m.ultima_se || '—')}</li>`;
+  }
+
+  function mostrar(){
+    const cod = codigo[sel.value + '|' + (entrada.value || '').trim().toLowerCase()];
+    if (!cod) { saida.hidden = true; return; }
+    saida.hidden = false;
+    saida.innerHTML = `<p class="u-mb-0"><strong>${esc(entrada.value)} (${esc(sel.value)})</strong></p>`
+      + `<ul class="u-mb-0">${linha('Dengue', DEN, cod)}${linha('Chikungunya', CHI, cod)}</ul>`;
+  }
+  entrada.addEventListener('change', mostrar);
+  entrada.addEventListener('input', () => { if ((entrada.value || '').length > 2) mostrar(); });
 })();
