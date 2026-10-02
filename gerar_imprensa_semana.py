@@ -453,9 +453,8 @@ def cartao_mudaram_faixa():
     if m["mudaram"] is None:
         n_edicoes = len((hist.get("edicoes") or []))
         return sem_dado("ufs_mudaram_faixa", "Estados que mudaram de faixa no período", "preparacao",
-                        f"a série de faixas por edição tem {n_edicoes} edição(ões): a comparação "
-                        "começa na próxima, e 'nenhum estado mudou' com um ponto só seria "
-                        "afirmação sem lastro")
+                        f"a série de faixas por edição tem {n_edicoes} edição(ões), e a comparação "
+                        "pede duas: ela começa na próxima edição")
     lista = list(m["mudaram"]) + [x for x in (ms["mudaram"] or []) if x not in m["mudaram"]]
     de, ate = m["de_ate"]
     return cartao("ufs_mudaram_faixa", "Estados que mudaram de faixa no período", len(lista),
