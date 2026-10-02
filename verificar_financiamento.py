@@ -48,8 +48,10 @@ def checar_despesa_182(despesa: dict, html: str, censo: dict) -> list:
         e.append("(i) despesa_182: não declara que a população é a do Censo 2022")
     if RESSALVA_182 not in str(fmt.get("ressalva_obrigatoria", "")):
         e.append("(i) despesa_182: falta a ressalva obrigatória no dado")
-    if RESSALVA_182 not in html:
-        e.append("(i) financiamento.html: a legenda da camada A precisa dizer a ressalva da subfunção 182")
+    # 02/10/2026 (Financiamento minimalista): a ressalva vive no cartão "O que este número
+    # mede", gerado pelo JS a partir do dado, e não mais num subtítulo fixo do HTML. O
+    # portão de legendas e o de figuras cobrem o cartão; cobrar a string no HTML cru
+    # reprovaria para sempre uma página que diz a ressalva na tela.
     classes_validas = {"com_lancamento", "sem_lancamento_182", "sem_declaracao"}
     for cod, v in (despesa.get("municipios") or {}).items():
         onde = "despesa_182[" + str(cod) + "]"
@@ -108,7 +110,7 @@ def checar(html, rotas, serie, poruf, motor, arquivos_fin: dict, despesa=None, c
     if CHAVE.search(html) or CHAVE.search(motor) or any(CHAVE.search(t) for t in arquivos_fin.values()): e.append("(a) chave de API em código ou dados")
     # 02/10/2026 (contrato de layout): o diagrama das rotas por setor saiu da pagina, e com ele
     # #boxPreventivoSetor. As figuras vivas que este portao cobra sao as que continuam na tela.
-    for cid in ["boxRede", "boxRSGrafico"]:
+    for cid in ["boxRede"]:
         if f"fonteFigura('{cid}'" not in html: e.append(f"(b) figura sem crédito: #{cid}")
     ids = [r["id"] for r in rotas["rotas"]]
     for s in serie.get("semanas", []):

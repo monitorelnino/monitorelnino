@@ -30,7 +30,7 @@
 <script src="assets/vendor/d3.min.js?v=f2094bbf"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=e3a38231">
-<link rel="stylesheet" href="assets/base.css?v=66d59867">
+<link rel="stylesheet" href="assets/base.css?v=72f88180">
 <script src="assets/mapas.js?v=993294c9"></script>
 </head>
 <body class="pagina-dados">
@@ -47,7 +47,7 @@
   </header>
 <main id="conteudo">
   <h1>Por onde o dinheiro chega</h1>
-  <p class="hint">Quanto a União anunciou e pagou para o El Niño, quanto chegou a cada estado e município, o que as prefeituras gastam do próprio bolso e por quais caminhos o dinheiro público chega até uma cidade, antes e depois de um desastre.</p>
+  <p class="hint">O dinheiro público para o El Niño: de onde vêm os recursos, quanto já foi desembolsado, como está sendo aplicado e quanto a defesa civil federal autorizou para prevenção e resposta, estado a estado e município a município.</p>
 
   <!-- 01/10/2026 (bloco B do handover): a página passa a ter seis blocos. Saem a figura das oito
        rotas (código e dado ficam no repositório, não apagados), as duas fichas "Como ler", a seção
@@ -57,249 +57,213 @@
   <section class="dc-topo" id="dc-topo" aria-labelledby="finTopoTitulo">
     <h2 id="finTopoTitulo" class="sr-only">Os números do financiamento</h2>
     <div class="grade-numeros grade-numeros--3">
-      <div class="cartao-numero cartao-numero--resposta" data-cartao="pago_periodo_mp">
+      <div class="cartao-numero cartao-numero--resposta" data-cartao="desembolsado_mp_mes">
         <p class="cartao-numero-familia">Medidas federais</p>
         <p class="cartao-numero-valor"><span id="topoPagoMes">R$ 150,9 mi</span></p>
         <p class="cartao-numero-rotulo" id="topoPagoMesRotulo">pago pelas ações reforçadas pelas medidas provisórias, no mês de setembro de 2026</p>
+        <p class="cartao-numero-variacao" id="topoPagoMesVariacao"></p>
         <p class="cartao-numero-fonte" id="topoPagoMesFonte">R$ 150.887.173 · Portal da Transparência, Execução da Despesa (arquivos mensais abertos) · execução das ações reforçadas pelas medidas provisórias do ciclo. O valor inclui a dotação ordinária da ação. É teto, não a execução do crédito</p>
       </div>
-      <div class="cartao-numero cartao-numero--resposta" data-cartao="transferido_municipios_periodo">
-        <p class="cartao-numero-familia">União aos municípios</p>
-        <p class="cartao-numero-valor"><span id="topoTransfMes">R$ 32,3 bi</span></p>
-        <p class="cartao-numero-rotulo" id="topoTransfMesRotulo">transferido pela União aos municípios, no mês de agosto de 2026</p>
-        <p class="cartao-numero-fonte" id="topoTransfMesFonte">R$ 32.308.480.526 · Portal da Transparência, Transferências de Recursos (dados abertos) · 5569 municípios com transferência no mês</p>
-      </div>
-      <div class="cartao-numero cartao-numero--resposta" data-cartao="resposta_liberado_semana">
-        <p class="cartao-numero-familia">Defesa civil</p>
+      <div class="cartao-numero cartao-numero--resposta" data-cartao="resposta_autorizado_semana">
+        <p class="cartao-numero-familia">Defesa civil federal</p>
         <p class="cartao-numero-valor"><span id="topoRespostaSemana">R$ 0</span></p>
-        <p class="cartao-numero-rotulo" id="topoRespostaMunicipios">autorizado em portarias de resposta nos últimos sete dias</p>
+        <p class="cartao-numero-rotulo" id="topoRespostaMunicipios">autorizados pela defesa civil federal nos últimos sete dias</p>
+        <p class="cartao-numero-variacao" id="topoRespostaVariacao"></p>
         <p class="cartao-numero-fonte" id="topoRespostaFonte">R$ 0 · Portarias da SEDEC no Diário Oficial da União · nenhuma portaria de resposta publicada nos últimos 7 dias</p>
       </div>
-      <div class="cartao-numero cartao-numero--chuva" data-cartao="atos_federais_semana" id="cartaoAtosSemana" hidden>
+      <div class="cartao-numero cartao-numero--chuva" data-cartao="atos_federais_semana">
         <p class="cartao-numero-familia">Atos novos</p>
         <p class="cartao-numero-valor"><span id="topoAtosSemana">—</span></p>
-        <p class="cartao-numero-rotulo">atos federais de financiamento publicados nos últimos sete dias</p>
+        <p class="cartao-numero-rotulo" id="topoAtosRotulo">atos federais de financiamento publicados nos últimos sete dias</p>
+        <p class="cartao-numero-variacao" id="topoAtosVariacao"></p>
         <p class="cartao-numero-fonte" id="topoAtosSemanaFonte">—</p>
       </div>
     </div>
     <p class="note u-mb-0" id="finContexto">—</p>
   </section>
 
-  <section id="porEstado" aria-labelledby="fEstadoTitulo">
-    <h2 id="fEstadoTitulo">Quanto chegou a cada estado</h2>
-    <p class="hint">Transferências da União aos municípios de cada estado em 2026, por habitante,
-      para que estados de tamanhos diferentes possam ser lidos na mesma escala. O detalhe de cada
-      estado abre em uma janela.</p>
-    <div class="grade-figuras grade-figuras--3 grade-mapas">
-      <figure class="figura figura--mapa cartao-mapa r-chuva" id="boxTransfUF">
-        <p class="cartao-mapa-familia">Transferido no ano</p>
-        <p class="cartao-mapa-boletim" id="linhaTransfUF">—</p>
-        <h3 class="figura-titulo">Transferido aos municípios, por habitante</h3>
-        <p class="figura-sub">Meses lidos de 2026 · R$ por habitante · população do Censo 2022</p>
-        <div class="figura-midia"><svg id="mapaTransfUF" role="img" aria-label="Mapa do Brasil com o valor transferido pela União aos municípios por habitante, por estado" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legTransfUF"></div>
-        <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
-          <dl class="dl-dados" id="dlTransfUF"></dl>
-        </details>
-      </figure>
-      <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxListaEstadosFin">
-        <p class="cartao-mapa-familia">Estado a estado</p>
-        <p class="cartao-mapa-boletim" id="linhaListaEstadosFin">—</p>
-        <h3 class="figura-titulo">Os 27 estados, do maior ao menor por habitante</h3>
-        <p class="figura-sub">Meses lidos de 2026 · R$ por habitante e total do estado · população do Censo 2022</p>
-        <div class="figura-midia"><dl class="dl-dados" id="dlListaEstadosFin"></dl></div>
-        <div class="map-legend" id="legListaEstadosFin"></div>
-      </figure>
-      <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxSerie">
-        <p class="cartao-mapa-familia">Mês a mês</p>
-        <p class="cartao-mapa-boletim" id="linhaSerie">—</p>
-        <h3 class="figura-titulo">Transferido aos municípios, mês a mês</h3>
-        <p class="figura-sub">Meses lidos de 2026 · R$ milhões no país · mês ainda sendo preenchido aparece declarado</p>
-        <div class="figura-midia canvas-wrap"><canvas id="cSerieFin" aria-label="Transferências da União a municípios, mês a mês, em 2026"></canvas></div>
-        <div class="map-legend" id="legSerie"></div>
-      </figure>
-    </div>
-    <div class="regions" id="regionsFin"></div>
-    <p class="note u-mb-0">Estado sem número não teve mês lido até a última coleta.</p>
-  </section>
-  <dialog class="detail" id="detailFin" aria-label="Detalhe do estado">
-    <button type="button" class="detail-fechar" id="detailFinFechar" aria-label="Fechar">×</button>
-    <div id="detailFinConteudo"></div>
-  </dialog>
-
   <section id="dinheiroElNino" aria-labelledby="f2Titulo">
     <h2 id="f2Titulo">O dinheiro do El Niño</h2>
-    <p class="hint">Primeiro quanto do pagamento ficou em unidades nacionais, em Brasília, e quanto
-      foi executado por unidades nos estados; depois, o que cada compromisso federal anunciou,
-      empenhou e pagou.</p>
+    <p class="hint">De onde vêm os recursos do ciclo, como estão sendo aplicados e quanto de cada um
+      já foi empenhado e desembolsado.</p>
     <div class="grade-figuras grade-figuras--3 grade-mapas">
-      <figure class="figura figura--indicador cartao-mapa r-chuva" id="boxMpsBrUf">
-        <p class="cartao-mapa-familia">Onde o pagamento foi feito</p>
-        <p class="cartao-mapa-boletim" id="linhaMpsBrUf">—</p>
-        <h3 class="figura-titulo">Pagamento em sedes nacionais e nos estados</h3>
-        <p class="figura-sub">Execução mensal de 2026 · fração paga por unidade gestora em Brasília e nas unidades da federação · %</p>
-        <div class="figura-midia"><div class="gauge-head"><span class="gnum u-rust" id="mpsBrPct">—</span><span class="gden" id="mpsBrDen">do pago vai para sedes nacionais; o resto se distribui pelos estados com execução</span></div></div>
-        <div class="map-legend" id="legMpsBrUf"></div>
-      </figure>
-      <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxCompromissosGrafico">
-        <p class="cartao-mapa-familia">Anunciado, empenhado e pago</p>
-        <p class="cartao-mapa-boletim" id="linhaCompromissos">—</p>
-        <h3 class="figura-titulo">Compromissos federais para o ciclo</h3>
-        <p class="figura-sub">Ciclo 2026/2027 · duas medidas provisórias e cinco compromissos verificados · R$ milhões</p>
-        <div class="figura-midia canvas-wrap"><canvas id="cCompromissos" aria-label="Barras por compromisso federal: valor anunciado, empenhado e pago em reais"></canvas></div>
-        <div class="map-legend" id="legCompromissos"></div>
-      </figure>
-      <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxListaCompromissos">
-        <p class="cartao-mapa-familia">Um a um</p>
-        <p class="cartao-mapa-boletim" id="linhaListaCompromissos">—</p>
-        <h3 class="figura-titulo">Cada compromisso, com o ato que o criou</h3>
-        <p class="figura-sub">Ciclo 2026/2027 · valor anunciado, empenhado e pago · documento e data de cada um</p>
-        <div class="figura-midia"><dl class="dl-dados" id="dlListaCompromissos"></dl></div>
-        <div class="map-legend" id="legListaCompromissos"></div>
-      </figure>
-    </div>
-  </section>
-
-  <section id="suaCidade" aria-labelledby="fCidadeTitulo">
-    <h2 id="fCidadeTitulo">A sua cidade</h2>
-    <p class="hint">Transferências da União ao município em 2026 e recursos de defesa civil
-      liberados por portaria federal. Cidade sem registro aparece como sem registro no período
-      lido, e não como R$ 0.</p>
-    <div class="grade-figuras grade-figuras--3 grade-mapas">
-      <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxBuscaCidade">
-        <p class="cartao-mapa-familia">Busca</p>
-        <p class="cartao-mapa-boletim" id="linhaBuscaCidade">—</p>
-        <h3 class="figura-titulo">Quanto chegou à sua cidade</h3>
-        <p class="figura-sub">Meses lidos de 2026 · R$ recebidos pelo município · cidade sem registro aparece como tal</p>
-        <div class="figura-midia">
-          <div class="busca-mun" id="buscaCidade">
-            <label for="cidadeUF">Estado</label>
-            <select id="cidadeUF"><option value="">Escolha o estado…</option></select>
-            <label for="cidadeNome">Município</label>
-            <input id="cidadeNome" type="text" list="cidadeLista" autocomplete="off" spellcheck="false"
-                   placeholder="Digite o nome da cidade" disabled>
-            <datalist id="cidadeLista"></datalist>
-            <p class="busca-mun-conta" role="status" aria-live="polite" id="cidadeConta"></p>
-          </div>
-          <div id="cidadeResultado" class="card-note" hidden></div>
-        </div>
-        <div class="map-legend" id="legBuscaCidade"></div>
-      </figure>
-      <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxRespostaMunicipios">
-        <p class="cartao-mapa-familia">Defesa civil</p>
-        <p class="cartao-mapa-boletim" id="linhaRespostaMunicipios">—</p>
-        <h3 class="figura-titulo">Municípios com recursos autorizados por portaria</h3>
-        <p class="figura-sub">Ciclo 2026/2027 · R$ autorizados por município · portaria, data e ação de cada um</p>
-        <div class="figura-midia"><dl class="dl-dados" id="dlRespostaMunicipios"></dl></div>
-        <div class="map-legend" id="legRespostaMunicipios"></div>
-      </figure>
-      <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxTransfRecentes">
-        <p class="cartao-mapa-familia">Último mês fechado</p>
-        <p class="cartao-mapa-boletim" id="linhaTransfRecentes">—</p>
-        <h3 class="figura-titulo">Os municípios que mais receberam no último mês</h3>
-        <p class="figura-sub">Último mês fechado de 2026 · R$ recebidos e R$ por habitante · população do Censo 2022</p>
-        <div class="figura-midia"><dl class="dl-dados" id="dlTransfRecentes"></dl></div>
-        <div class="map-legend" id="legTransfRecentes"></div>
-      </figure>
-    </div>
-  </section>
-
-  <section id="dinheiroProprio" aria-labelledby="f4Titulo">
-    <h2 id="f4Titulo">O que o município gasta do próprio bolso</h2>
-    <p class="hint">Quanto as prefeituras declararam ter gasto em defesa civil, por habitante.
-      Prefeitura que lança a defesa civil em outra rubrica aparece como sem lançamento, não como
-      zero.</p>
-    <div class="grade-figuras grade-figuras--3 grade-mapas">
-      <figure class="figura figura--mapa cartao-mapa r-chuva" id="boxDespesaUF">
-        <p class="cartao-mapa-familia">Dinheiro próprio</p>
-        <p class="cartao-mapa-boletim" id="linhaDespesaUF">—</p>
-        <h3 class="figura-titulo">Despesa própria em defesa civil, por habitante</h3>
-        <p class="figura-sub">Exercício 2025 · R$ por habitante · média dos municípios consultados em cada estado</p>
-        <div class="figura-midia"><svg id="mapaDespesaUF" role="img" aria-label="Mapa do Brasil com a despesa municipal em defesa civil por habitante, por estado" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legDespesaUF"></div>
+      <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxFormaAplicacao">
+        <p class="cartao-mapa-familia">Como os recursos são aplicados</p>
+        <p class="cartao-mapa-boletim" id="linhaFormaAplicacao">—</p>
+        <h3 class="figura-titulo">Como os recursos das medidas do El Niño estão sendo aplicados</h3>
+        <p class="figura-sub">Ciclo 2026/2027 · modalidade de aplicação registrada no orçamento federal · % do valor desembolsado</p>
+        <div class="figura-midia canvas-wrap"><canvas id="cFormaAplicacao" aria-label="Distribuição do valor desembolsado pelas medidas federais do El Niño por modalidade de aplicação"></canvas></div>
+        <div class="map-legend" id="legFormaAplicacao"></div>
         <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
-          <dl class="dl-dados" id="dlDespesaUF"></dl>
+          <dl class="dl-dados" id="dlFormaAplicacao"></dl>
         </details>
       </figure>
-      <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxDespesaMunicipios">
-        <p class="cartao-mapa-familia">Município a município</p>
-        <p class="cartao-mapa-boletim" id="linhaDespesaMunicipios">—</p>
-        <h3 class="figura-titulo">Os municípios que mais gastaram do próprio bolso</h3>
-        <p class="figura-sub">Exercício 2025 · R$ por habitante · despesa liquidada na subfunção 182</p>
-        <div class="figura-midia"><dl class="dl-dados" id="dlDespesaMunicipios"></dl></div>
-        <div class="map-legend" id="legDespesaMunicipios"></div>
+      <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxOrigens">
+        <p class="cartao-mapa-familia">Por origem</p>
+        <p class="cartao-mapa-boletim" id="linhaOrigens">—</p>
+        <h3 class="figura-titulo">Anunciado, empenhado e desembolsado por origem</h3>
+        <p class="figura-sub">Ciclo 2026/2027 · R$ milhões por origem dos recursos · e o desembolsado mês a mês desde junho</p>
+        <div class="figura-midia canvas-wrap"><canvas id="cOrigens" aria-label="Valores anunciado, empenhado e desembolsado por origem dos recursos do ciclo"></canvas></div>
+        <div class="map-legend" id="legOrigens"></div>
+        <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
+          <dl class="dl-dados" id="dlOrigensMes"></dl>
+        </details>
       </figure>
-      <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxComoLerDespesa">
-        <p class="cartao-mapa-familia">Como ler</p>
-        <p class="cartao-mapa-boletim" id="linhaComoLerDespesa">—</p>
-        <h3 class="figura-titulo">O que este número mede</h3>
-        <p class="figura-sub">Exercício 2025 · despesa liquidada na subfunção 182 · R$ por habitante</p>
-        <div class="figura-midia"><ul class="checklist" id="listaComoLerDespesa">
-          <li>A subfunção 182 é a rubrica de defesa civil no orçamento municipal: o número inclui preparação e resposta, sem separar as duas.</li>
-          <li>Prefeitura que lança a defesa civil em outra rubrica aparece como sem lançamento. Sem lançamento não é gasto zero.</li>
-          <li>O valor é por habitante, pela população do Censo 2022, para que municípios de tamanhos diferentes possam ser lidos na mesma escala.</li>
-        </ul></div>
-        <div class="map-legend" id="legComoLerDespesa"></div>
+      <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxListaOrigens">
+        <p class="cartao-mapa-familia">Uma a uma</p>
+        <p class="cartao-mapa-boletim" id="linhaListaOrigens">—</p>
+        <h3 class="figura-titulo">Cada origem, com o ato que a criou</h3>
+        <p class="figura-sub">Ciclo 2026/2027 · ato, data e os três valores de cada origem · anunciado, empenhado e desembolsado</p>
+        <div class="figura-midia"><dl class="dl-dados" id="dlListaOrigens"></dl></div>
+        <div class="map-legend" id="legListaOrigens"></div>
       </figure>
     </div>
-    <p class="note u-mb-0" id="proprioResumo">—</p>
   </section>
 
-<section id="caminho" aria-labelledby="f5Titulo" data-voz="lei">
-    <h2 id="f5Titulo">Como o dinheiro chega a uma cidade</h2>
-    <p class="hint">Oito caminhos, sete federais e um estadual. Alguns chegam todo mês, por regra; outros abrem depois de um decreto de emergência; outros dependem de decisão do governo ou de uma emenda; e alguns chegam direto às pessoas e às obras, sem passar pela prefeitura.</p>
-    <div class="grade-cartoes">
-      <div class="cartao" id="antes">
-        <h3 class="figura-titulo">Antes de um desastre</h3>
-        <ul class="checklist">
-          <li>Todo mês, por regra: o Fundo de Participação dos Municípios e os repasses do SUS e da assistência social</li>
-          <li>Para obras de prevenção: projetos da defesa civil para municípios com área de risco mapeada, sem decreto</li>
-          <li>Para o fogo: o Fundo Nacional do Meio Ambiente, para municípios em região declarada em situação de emergência ambiental, com plano operativo aprovado</li>
-          <li>Por decisão do governo ou emenda: transferências voluntárias e especiais</li>
-          <li>Direto às pessoas: Garantia-Safra, cisternas, brigadas federais</li>
-          <li>Do estado: onde existe, como o Prepara RS</li>
-        </ul>
-      </div>
-      <div class="cartao" id="depois">
-        <h3 class="figura-titulo">Depois de um desastre</h3>
-        <ul class="checklist">
-          <li>O decreto municipal de situação de emergência ou calamidade</li>
-          <li>O registro no S2iD, o sistema da defesa civil nacional</li>
-          <li>O reconhecimento federal, publicado no Diário Oficial da União</li>
-          <li>O pedido de recursos de resposta pelo S2iD</li>
-          <li>A liberação, sem convênio, com prestação de contas depois</li>
-          <li>Na saúde: a emergência em saúde pública, declarada pelo município ou pelo estado</li>
-        </ul>
-      </div>
-    </div>
-    <p class="note u-mb-0" id="setores">Os oito caminhos e seus dados estão nos dados abertos do MARÉ.</p>
-  </section>
-
-  <section id="casos" aria-labelledby="f6Titulo">
-    <h2 id="f6Titulo">Dois casos</h2>
+  <section id="defesaCivil" aria-labelledby="f3Titulo">
+    <h2 id="f3Titulo">Defesa civil no ciclo: prevenção e resposta</h2>
+    <p class="hint">O que a defesa civil federal autorizou, por portaria, desde 29 de junho.
+      Município sem registro aparece como sem registro, não como R$ 0.</p>
     <div class="grade-figuras grade-figuras--3 grade-mapas">
-      <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxCasoFogo">
-        <p class="cartao-mapa-familia">O caminho do fogo</p>
-        <p class="cartao-mapa-boletim" id="linhaCasoFogo">—</p>
-        <h3 class="figura-titulo">Dinheiro federal para o fogo, sem convênio</h3>
-        <p class="figura-sub">2025 e 2026 · R$ destinados a planos operativos municipais · Lei 15.143/2025 e Decreto 13.013/2026</p>
-        <div class="figura-midia"><ul class="checklist" id="listaCasoFogo">
-          <li>Em 2025, um edital do Fundo Nacional do Meio Ambiente destinou <a href="https://www.gov.br/mj/pt-br/assuntos/noticias/governo-federal-destina-r-32-milhoes-para-combater-incendios-na-amazonia-e-no-pantanal" target="_blank" rel="noopener">R$ 32 milhões a planos operativos municipais na Amazônia e no Pantanal</a>.</li>
-          <li>Não localizamos até o corte, em fonte oficial consultável, o resultado por município: a página do fundo exige autenticação.</li>
-          <li>Desde 2025, a lei permite a transferência direta, sem convênio, a estados e municípios em região declarada em situação de emergência ambiental, com plano operativo aprovado (Lei 15.143/2025, que inclui o art. 3º-A na Lei 7.797/1989; regulamento no Decreto 13.013, de 10/06/2026).</li>
-        </ul></div>
-        <div class="map-legend" id="legCasoFogo"></div>
+      <figure class="figura figura--mapa cartao-mapa r-chuva" id="boxRespostaUF">
+        <p class="cartao-mapa-familia">Autorizado por estado</p>
+        <p class="cartao-mapa-boletim" id="linhaRespostaUF">—</p>
+        <h3 class="figura-titulo">Autorizado por portaria, por estado</h3>
+        <p class="figura-sub">Desde 29/06/2026 · R$ autorizados em portarias da defesa civil federal · por estado</p>
+        <div class="figura-midia"><svg id="mapaRespostaUF" role="img" aria-label="Mapa do Brasil com o valor autorizado em portarias da defesa civil federal, por estado" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legRespostaUF"></div>
+        <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
+          <div class="busca-mun" id="buscaRespostaMun">
+            <label for="ufRespostaMun">Estado</label>
+            <select id="ufRespostaMun"><option value="">Escolha o estado…</option></select>
+            <label for="nomeRespostaMun">Município</label>
+            <input id="nomeRespostaMun" type="text" list="listaRespostaMun" autocomplete="off"
+                   spellcheck="false" placeholder="Digite o nome da cidade" disabled>
+            <datalist id="listaRespostaMun"></datalist>
+            <p class="busca-mun-conta" role="status" aria-live="polite" id="contaRespostaMun"></p>
+          </div>
+          <div id="resultadoRespostaMun" class="card-note" hidden></div>
+          <dl class="dl-dados" id="dlRespostaUF"></dl>
+        </details>
       </figure>
-      <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxRSGrafico">
-        <p class="cartao-mapa-familia">Rio Grande do Sul</p>
-        <p class="cartao-mapa-boletim" id="linhaRS">—</p>
-        <h3 class="figura-titulo">Repasse preventivo e resposta por decreto</h3>
-        <p class="figura-sub">Ciclo 2026/2027 · municípios do RS no Prepara RS, sob decreto e reconhecidos pela União · contagem</p>
-        <div class="figura-midia canvas-wrap"><canvas id="cRS" aria-label="Barras: municípios do Rio Grande do Sul com repasse preventivo, sob decreto de emergência e reconhecidos pela União"></canvas></div>
-        <div class="map-legend" id="legRS"></div>
+      <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxSerieSemanal">
+        <p class="cartao-mapa-familia">Semana a semana</p>
+        <p class="cartao-mapa-boletim" id="linhaSerieSemanal">—</p>
+        <h3 class="figura-titulo">Autorizado por semana, desde 29 de junho</h3>
+        <p class="figura-sub">Semanas desde 29/06/2026 · R$ autorizados por portaria · resposta e recuperação em séries separadas</p>
+        <div class="figura-midia canvas-wrap"><canvas id="cSerieSemanal" aria-label="Valor autorizado por semana em portarias da defesa civil federal, por finalidade"></canvas></div>
+        <div class="map-legend" id="legSerieSemanal"></div>
+      </figure>
+      <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxPortariasRecentes">
+        <p class="cartao-mapa-familia">Portarias recentes</p>
+        <p class="cartao-mapa-boletim" id="linhaPortariasRecentes">—</p>
+        <h3 class="figura-titulo">As portarias publicadas mais recentemente</h3>
+        <p class="figura-sub">Desde 29/06/2026 · portaria, data, município, finalidade e valor autorizado</p>
+        <div class="figura-midia"><dl class="dl-dados" id="dlPortariasRecentes"></dl></div>
+        <div class="map-legend" id="legPortariasRecentes"></div>
       </figure>
     </div>
-    <p class="note u-mb-0" id="notaRS">—</p>
+  </section>
+
+  <section id="gastoProprio" aria-labelledby="f4Titulo">
+    <h2 id="f4Titulo">Contexto: o que os municípios gastam por conta própria</h2>
+    <p class="hint">Quanto as prefeituras declararam ter gasto em defesa civil em 2025, antes do
+      ciclo. O número soma preparação e resposta.</p>
+    <div class="grade-figuras grade-figuras--3 grade-mapas">
+      <figure class="figura figura--mapa cartao-mapa r-chuva" id="boxGastoProprioUF">
+        <p class="cartao-mapa-familia">Dinheiro próprio</p>
+        <p class="cartao-mapa-boletim" id="linhaGastoProprioUF">—</p>
+        <h3 class="figura-titulo">Gasto próprio em defesa civil, por habitante</h3>
+        <p class="figura-sub">Exercício 2025 · R$ por habitante · soma da despesa dividida pela população dos municípios com lançamento</p>
+        <div class="figura-midia"><svg id="mapaGastoProprioUF" role="img" aria-label="Mapa do Brasil com o gasto municipal próprio em defesa civil por habitante, por estado" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legGastoProprioUF"></div>
+        <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
+          <div class="busca-mun" id="buscaGastoMun">
+            <label for="ufGastoMun">Estado</label>
+            <select id="ufGastoMun"><option value="">Escolha o estado…</option></select>
+            <label for="nomeGastoMun">Município</label>
+            <input id="nomeGastoMun" type="text" list="listaGastoMun" autocomplete="off"
+                   spellcheck="false" placeholder="Digite o nome da cidade" disabled>
+            <datalist id="listaGastoMun"></datalist>
+            <p class="busca-mun-conta" role="status" aria-live="polite" id="contaGastoMun"></p>
+          </div>
+          <div id="resultadoGastoMun" class="card-note" hidden></div>
+          <dl class="dl-dados" id="dlGastoProprioUF"></dl>
+        </details>
+      </figure>
+      <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxComoLerGasto">
+        <p class="cartao-mapa-familia">Como ler</p>
+        <p class="cartao-mapa-boletim" id="linhaComoLerGasto">—</p>
+        <h3 class="figura-titulo">O que este número mede</h3>
+        <p class="figura-sub">Exercício 2025 · despesa declarada em defesa civil · R$ por habitante</p>
+        <div class="figura-midia"><ul class="checklist" id="listaComoLerGasto">
+          <li id="comoLerGastoContagem">—</li>
+          <li>Prefeitura que registra a defesa civil em outra rubrica aparece como sem lançamento, o que não significa gasto zero.</li>
+          <li>O valor é por habitante, pela população do Censo 2022, para que municípios de tamanhos diferentes sejam lidos na mesma escala.</li>
+        </ul></div>
+        <div class="map-legend" id="legComoLerGasto"></div>
+      </figure>
+    </div>
+  </section>
+
+  <section id="caminhosSecao" aria-labelledby="f5Titulo" data-voz="lei">
+    <h2 id="f5Titulo" class="sr-only">Como o dinheiro público chega a estados e municípios</h2>
+    <details id="caminhos">
+      <summary>Como o dinheiro público chega a estados e municípios</summary>
+      <div class="grade-figuras grade-figuras--3 grade-mapas" id="setores">
+        <figure class="figura figura--diagrama cartao-mapa r-chuva" id="boxCaminhos">
+          <p class="cartao-mapa-familia">Os caminhos</p>
+          <p class="cartao-mapa-boletim" id="linhaCaminhos">—</p>
+          <h3 class="figura-titulo">Por onde o dinheiro público chega</h3>
+          <p class="figura-sub">Estrutura, não série · oito vias · o que cada uma exige para ser acessada</p>
+          <div class="figura-midia"><svg id="svgCaminhos" viewBox="0 0 960 420" role="img" aria-label="Diagrama das vias pelas quais o dinheiro público chega a estados e municípios, com o que cada uma exige"></svg></div>
+          <div class="map-legend" id="legCaminhos"></div>
+          <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
+            <dl class="lista-definicao" id="dlCaminhos"></dl>
+          </details>
+        </figure>
+      </div>
+      <div class="grade-cartoes">
+        <div class="cartao" id="antes">
+          <h3 class="figura-titulo">Antes da emergência</h3>
+          <ul class="checklist">
+            <li>Todo mês, por regra: o Fundo de Participação dos Municípios e os repasses do SUS e da assistência social</li>
+            <li>Para obras de prevenção: projetos da defesa civil para municípios com área de risco mapeada, sem decreto</li>
+            <li>Para o fogo: o Fundo Nacional do Meio Ambiente, para municípios em região declarada em situação de emergência ambiental, com plano operativo aprovado</li>
+            <li>Por decisão do governo ou emenda: transferências voluntárias e especiais</li>
+            <li>Direto às pessoas: Garantia-Safra, cisternas, brigadas federais</li>
+            <li>Do estado: onde existe, como o Prepara RS</li>
+          </ul>
+        </div>
+        <div class="cartao" id="depois">
+          <h3 class="figura-titulo">Depois do decreto de emergência</h3>
+          <ul class="checklist">
+            <li>O decreto municipal de situação de emergência ou calamidade</li>
+            <li>O registro no S2iD, o sistema da defesa civil nacional</li>
+            <li>O reconhecimento federal, publicado no Diário Oficial da União</li>
+            <li>O pedido de recursos de resposta pelo S2iD</li>
+            <li>A liberação, sem convênio, com prestação de contas depois</li>
+            <li>Na saúde: a emergência em saúde pública, declarada pelo município ou pelo estado</li>
+          </ul>
+        </div>
+      </div>
+      <p class="hint"><strong>Dois exemplos de dinheiro que chega antes da emergência, e em que o
+        acesso depende de um plano:</strong> um federal, para o fogo, que exige plano operativo
+        aprovado; e um estadual, no Rio Grande do Sul, que exige plano de contingência atualizado.</p>
+      <div class="grade-cartoes">
+        <div class="cartao" data-voz="lei">
+          <h3 class="figura-titulo">O caminho do fogo</h3>
+          <p class="card-body">Em 2025, um edital do Fundo Nacional do Meio Ambiente destinou <a href="https://www.gov.br/mj/pt-br/assuntos/noticias/governo-federal-destina-r-32-milhoes-para-combater-incendios-na-amazonia-e-no-pantanal" target="_blank" rel="noopener">R$ 32 milhões a planos operativos municipais na Amazônia e no Pantanal</a>. Não localizamos até o corte, em fonte oficial consultável, o resultado por município: a página do fundo exige autenticação. Desde 2025, a lei permite a transferência direta, sem convênio, a estados e municípios em região declarada em situação de emergência ambiental, com plano operativo aprovado (Lei 15.143/2025, que inclui o art. 3º-A na Lei 7.797/1989; regulamento no Decreto 13.013, de 10/06/2026).</p>
+        </div>
+        <div class="cartao" data-voz="lei">
+          <h3 class="figura-titulo">Rio Grande do Sul: dinheiro antes da emergência</h3>
+          <p class="card-body" id="textoRS">—</p>
+        </div>
+      </div>
+      <p class="note u-mb-0">Além desses caminhos, a União transfere todo mês aos municípios os
+        repasses obrigatórios, como o Fundo de Participação dos Municípios e os do SUS e da
+        assistência social; eles não são específicos do El Niño e não aparecem nesta página.</p>
+    </details>
   </section>
 </main>
   <footer class="site-footer">
@@ -311,7 +275,7 @@
 </div>
 
 <script src="assets/colunas.js?v=4c6dfa5b" defer></script>
-<script src="assets/js/financiamento.js?v=5ed5ac54" defer></script><script src="assets/js/proveniencia.js?v=50e1ec93" defer></script>
+<script src="assets/js/financiamento.js?v=fa87dfce" defer></script><script src="assets/js/proveniencia.js?v=50e1ec93" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

@@ -190,6 +190,25 @@ def problemas_do_despejo(contrato: dict, despejo: dict) -> list:
         if (f.get("tem_midia") or f.get("tem_lista")) and f.get("visivel") and not f.get("cartao_mapa"):
             p.append(f"figura '{f.get('id')}' com mídia fora de .cartao-mapa")
 
+    # (j) TEXTO EXISTENTE E INVISÍVEL (item 3.2 do handover de 02/10/2026). Texto que não se lê
+    # é pior do que texto ausente: ele passa no portão que conta palavras e não chega ao leitor.
+    # O despejo mede cor igual ao fundo, opacidade, `visibility` e altura útil menor que 12 px.
+    for x in (d1280.get("invisiveis") or []):
+        p.append(f"texto invisível ({x.get('motivo')}): <{x.get('tag')}"
+                 + (f" id={x.get('id')}" if x.get("id") else "")
+                 + f"> {x.get('texto')!r}")
+    # (k) DUAS FIGURAS COM A MESMA CHAVE DE DADO na mesma seção dizem a mesma coisa duas vezes.
+    vistas = {}
+    for f in (d1280.get("figuras") or []):
+        chave = (f.get("chave_de_dado") or "").strip()
+        if not chave or not f.get("visivel"):
+            continue
+        onde = (f.get("secao") or "", chave)
+        if onde in vistas:
+            p.append(f"seção '{onde[0]}': duas figuras com a mesma chave de dado "
+                     f"({chave}): {vistas[onde]} e {f.get('id')}")
+        else:
+            vistas[onde] = f.get("id")
     # (f) texto proibido
     for proibido in contrato.get("texto_proibido") or []:
         if proibido in texto:
@@ -280,6 +299,19 @@ def autoteste() -> int:
              contrato, com(lambda d: d.update(rolagem_horizontal=True))))),
         ("despejo sem 1280 reprova com mensagem própria",
          problemas_do_despejo(contrato, {"larguras": {}}) == ["despejo sem a largura de 1280 px"]),
+        # Item 3.2 do handover (02/10/2026): texto que existe e não se lê, e duas figuras dizendo
+        # a mesma coisa na mesma seção.
+        ("texto existente e invisível reprova",
+         any("texto invisível" in x for x in problemas_do_despejo(
+             contrato, com(lambda d: d.update(invisiveis=[
+                 {"tag": "p", "id": "x", "texto": "sumiu", "motivo": "opacidade 0"}]))))),
+        ("duas figuras com a mesma chave de dado na seção reprovam",
+         any("mesma chave de dado" in x for x in problemas_do_despejo(
+             contrato, com(lambda d: d.update(figuras=[
+                 {"id": "a", "secao": "s", "chave_de_dado": "x.json", "visivel": True,
+                  "cartao_mapa": True, "tem_midia": True, "largura": 300},
+                 {"id": "b", "secao": "s", "chave_de_dado": "x.json", "visivel": True,
+                  "cartao_mapa": True, "tem_midia": True, "largura": 300}]))))),
         ("os contratos do repositório são JSON válido e nomeiam a página",
          all(json.loads(c.read_text(encoding="utf-8")).get("pagina") for c in contratos())),
     ]

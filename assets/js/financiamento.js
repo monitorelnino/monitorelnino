@@ -591,334 +591,536 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
  * Mapa por habitante, grade dos 27 e ficha ao clicar — o desenho da inicial. Por habitante porque
  * o total bruto só diz que São Paulo é grande: a pergunta do leitor é quanto chegou onde ele mora.
  */
-(async function porEstado(){
-  const svg = document.getElementById('mapaTransfUF');
-  const grade = document.getElementById('regionsFin');
-  if (!svg && !grade) return;
-  const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const reais = v => 'R$ ' + Number(v || 0).toLocaleString('pt-BR', {maximumFractionDigits: 0});
-  const umaCasa = v => Number(v || 0).toLocaleString('pt-BR', {minimumFractionDigits: 1, maximumFractionDigits: 1});
-  let T, REF, POP, GEO;
-  try {
-    [T, REF, POP, GEO] = await Promise.all([
-      fetch('data/financiamento/municipios/transferencias_uniao.json').then(r => r.ok ? r.json() : null),
-      fetch('data/municipios_ibge_referencia.json').then(r => r.ok ? r.json() : null),
-      fetch('data/populacao_censo2022.json').then(r => r.ok ? r.json() : null),
-      fetch('data/geo_uf.json').then(r => r.ok ? r.json() : null),
-    ]);
-  } catch (e) { T = null; }
-  const leg = document.getElementById('legTransfUF');
-  if (!T || !T.municipios || !REF || !POP) {
-    if (leg) leg.innerHTML = '<span class="escala">Transferências por município: sem coleta até o corte.</span>';
-    return;
-  }
-  const ref = Array.isArray(REF) ? REF : Object.values(REF);
-  const ufDe = {};
-  ref.forEach(m => { ufDe[String(m.codigo_ibge).padStart(7, '0')] = m.uf; });
-  const porUF = {}, popUF = {};
-  Object.entries(T.municipios).forEach(([cod, m]) => {
-    const uf = ufDe[cod]; if (!uf) return;
-    porUF[uf] = (porUF[uf] || 0) + Number(m.total || Object.values(m.por_rota || {}).reduce((a, b) => a + Number(b || 0), 0));
-    popUF[uf] = (popUF[uf] || 0) + Number(POP[cod] || 0);
-  });
-  const porHab = {};
-  Object.keys(porUF).forEach(uf => { if (popUF[uf]) porHab[uf] = porUF[uf] / popUF[uf]; });
-  const valores = Object.values(porHab);
-  const max = valores.length ? Math.max(...valores) : 0;
-  if (svg && GEO && window.MonitorMapas) {
-    const ctx = MonitorMapas.contexto(GEO, 480, 460);
-    const rampa = MonitorMapas.PALETA.atmosfera.chuva_claro.rampa;
-    const cor = uf => {
-      const v = porHab[uf];
-      if (v == null || !max) return MonitorMapas.NEUTRA;
-      return rampa[Math.min(rampa.length - 1, Math.floor(v / max * rampa.length))];
-    };
-    MonitorMapas.fundo && MonitorMapas.fundo('mapaTransfUF', 'chuva_claro');
-    MonitorMapas.ufs(ctx, 'mapaTransfUF', cor, uf => porHab[uf] == null
-      ? uf + ': sem mês lido'
-      : uf + ': ' + reais(porHab[uf]) + ' por habitante');
-    MonitorMapas.credito('boxTransfUF', {
-      fontes: ['Portal da Transparência (transferências a municípios)', 'Censo 2022 (IBGE)'],
-      data: T.atualizado_em});
-    MonitorMapas.legenda('legTransfUF', [
-      ...rampa.map((c, i) => ({cor: c, rotulo: i === 0 ? 'menor' : (i === rampa.length - 1 ? 'maior' : '·')})),
-      {cor: MonitorMapas.NEUTRA, rotulo: 'sem mês lido'}]);
-  }
-  const linha = document.getElementById('linhaTransfUF');
-  if (linha) {
-    const meses = Object.keys(T.meses_lidos || {}).sort();
-    linha.textContent = meses.length + ' mês(es) lido(s) de 2026 · atualizado em ' + (T.atualizado_em || '—');
-  }
-  /* A lista dos 27, cartao proprio pelo contrato: o mapa ordena pela cor, a lista ordena pelo
-   * numero — e quem procura o seu estado procura numa lista. */
-  const dlLista = document.getElementById('dlListaEstadosFin');
-  if (dlLista) {
-    const UFS27 = ('AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO').split(' ');
-    const ordem = UFS27.slice().sort((a, b) => (porHab[b] || -1) - (porHab[a] || -1));
-    dlLista.innerHTML = ordem.map(uf => '<dt>' + esc(uf) + '</dt><dd>' + (porHab[uf] == null
-      ? 'sem mês lido até o corte'
-      : reais(porHab[uf]) + ' por habitante · ' + reais(porUF[uf]) + ' no total') + '</dd>').join('');
-    const comDado = UFS27.filter(uf => porHab[uf] != null).length;
-    const lin = document.getElementById('linhaListaEstadosFin');
-    if (lin) lin.textContent = comDado + ' de 27 estados com mês lido';
-    if (window.MonitorMapas) {
-      MonitorMapas.legenda('legListaEstadosFin', [{cor: MonitorMapas.NEUTRA, rotulo: 'estado sem mês lido aparece como tal, nunca como R$ 0'}]);
-      MonitorMapas.credito('boxListaEstadosFin', {
-        fontes: ['Portal da Transparência (transferências a municípios)', 'Censo 2022 (IBGE)'],
-        data: T.atualizado_em});
-    }
-  }
-  const dl = document.getElementById('dlTransfUF');
-  if (dl) {
-    dl.innerHTML = Object.keys(porHab).sort((a, b) => porHab[b] - porHab[a]).map(uf =>
-      '<dt>' + esc(uf) + '</dt><dd>' + reais(porHab[uf]) + ' por habitante · ' + reais(porUF[uf]) + ' no total</dd>').join('');
-  }
-  if (grade) {
-    /* Os 27, SEMPRE. A versao anterior listava Object.keys(porHab) e entregava 26 celulas quando
-     * um estado nao tinha mes lido: o leitor via 26 estados e nao tinha como saber qual faltava.
-     * Estado sem mes lido aparece, e aparece dizendo que nao tem mes lido. */
-    const UFS27 = ('AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO').split(' ');
-    grade.innerHTML = UFS27.map(uf =>
-      '<button type="button" class="tile" data-uf="' + esc(uf) + '">'
-      + '<span class="tile-uf">' + esc(uf) + '</span>'
-      + '<span class="tile-face">' + (porHab[uf] == null
-          ? '<span>sem mês lido</span><span>&nbsp;</span>'
-          : '<span>' + reais(porHab[uf]) + ' por hab.</span>'
-            + '<span>' + reais(porUF[uf]) + ' no total</span>')
-      + '</span></button>').join('');
-    const dlg = document.getElementById('detailFin');
-    const corpo = document.getElementById('detailFinConteudo');
-    const fechar = document.getElementById('detailFinFechar');
-    if (fechar && dlg) fechar.addEventListener('click', () => dlg.close());
-    grade.addEventListener('click', ev => {
-      const b = ev.target.closest('.tile'); if (!b || !dlg) return;
-      const uf = b.dataset.uf;
-      if (porHab[uf] == null) {
-        corpo.innerHTML = '<h3>' + esc(uf) + '</h3><p>Nenhum mês de transferência lido para este '
-          + 'estado até o corte. Sem mês lido não é R$ 0.</p>';
-        dlg.showModal();
-        return;
-      }
-      corpo.innerHTML = '<h3>' + esc(uf) + '</h3>'
-        + '<p>Transferido pela União aos municípios nos meses lidos de 2026: <strong>'
-        + reais(porUF[uf]) + '</strong>, ou <strong>' + reais(porHab[uf])
-        + '</strong> por habitante (Censo 2022: ' + Number(popUF[uf]).toLocaleString('pt-BR')
-        + ' habitantes).</p>'
-        + '<p class="note">Soma das rotas constitucional, saúde, assistência social, defesa civil e '
-        + 'outras. Transferido não é gasto: o que a prefeitura fez com o dinheiro é outro registro.</p>';
-      dlg.showModal();
-    });
-  }
-})();
 
 
 /* ===== Cartoes criados pelo contrato de layout (02/10/2026) =====
  * Cada lista responde a uma pergunta que o mapa nao responde: qual e o meu, quanto foi, por que
  * ato. Em todas, ausencia aparece como ausencia — nunca como R$ 0.
  */
-(function cartoesDoContratoFin(){
+
+
+/* ===== Financiamento minimalista (handover de 02/10/2026, rev. 2) =====
+ * Só dinheiro do ciclo. Vocabulário fixo: anunciado · empenhado · desembolsado · transferido ·
+ * autorizado, e a origem sempre como "recursos oriundos de". "Sem registro" nunca vira R$ 0.
+ */
+(function financiamentoMinimalista(){
   const el = id => document.getElementById(id);
   const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const reais = v => 'R$ ' + Number(v || 0).toLocaleString('pt-BR', {maximumFractionDigits: 0});
-  const umaCasa = v => Number(v || 0).toLocaleString('pt-BR', {minimumFractionDigits: 1, maximumFractionDigits: 1});
-  const UFS27 = ('AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO').split(' ');
-  const MES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto',
-               'setembro', 'outubro', 'novembro', 'dezembro'];
+  const curto = v => {
+    const x = Number(v || 0);
+    if (x >= 1e9) return 'R$ ' + (x / 1e9).toLocaleString('pt-BR', {maximumFractionDigits: 1}) + ' bi';
+    if (x >= 1e6) return 'R$ ' + (x / 1e6).toLocaleString('pt-BR', {maximumFractionDigits: 1}) + ' mi';
+    if (x >= 1e3) return 'R$ ' + (x / 1e3).toLocaleString('pt-BR', {maximumFractionDigits: 0}) + ' mil';
+    return 'R$ ' + x.toLocaleString('pt-BR', {maximumFractionDigits: 0});
+  };
+  const n = v => Number(v || 0).toLocaleString('pt-BR');
+  const MES = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
   const mesLegivel = k => (/^\d{6}$/.test(String(k)) ? MES[+String(k).slice(4) - 1] + ' de ' + String(k).slice(0, 4) : String(k));
+  const UFS = ('AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO').split(' ');
 
-  /* 1 · Cada compromisso federal, com o ato que o criou. */
-  Promise.all([
-    fetch('data/financiamento/compromissos_federais.json').then(r => r.ok ? r.json() : null),
-    fetch('data/financiamento/mps_2026.json').then(r => r.ok ? r.json() : null),
-  ]).then(([C, MPS]) => {
-    const dl = el('dlListaCompromissos');
-    if (!dl) return;
-    const linhas = ((MPS || {}).mps || []).map(m => ({
-      nome: m.numero + ' · ' + (m.tema || ''), url: (m.fontes || [])[0],
-      anunciado: m.valor, pago: (m.execucao || {}).pago, data: m.publicada_em,
-    })).concat(((C || {}).itens || []).map(c => ({
-      nome: c.nome, url: c.url, anunciado: c.valor_total, pago: (c.execucao || {}).pago,
-      data: c.data || c.instrumento,
-    })));
-    if (!linhas.length) {
-      dl.innerHTML = '<dt>Sem coleta</dt><dd>Nenhum compromisso federal lido até o corte.</dd>';
-      return;
+  /* 1 · Os três cartões do topo, do arquivo do gerador. */
+  fetch('data/financiamento/semana.json').then(r => r.ok ? r.json() : null).then(S => {
+    const por = {};
+    ((S || {}).cartoes || []).forEach(c => { por[c.id] = c; });
+    const pago = por['pago_periodo_mp'];
+    if (pago && !pago.sem_coleta) {
+      if (el('topoPagoMes')) el('topoPagoMes').textContent = curto(pago.valor);
+      if (el('topoPagoMesRotulo')) {
+        el('topoPagoMesRotulo').textContent = 'em recursos oriundos das medidas federais do El Niño, '
+          + 'desembolsados no ' + pago.periodo;
+      }
+      if (el('topoPagoMesFonte')) {
+        el('topoPagoMesFonte').textContent = reais(pago.valor) + ' · ' + pago.fonte;
+      }
+    } else if (el('topoPagoMes')) {
+      el('topoPagoMes').textContent = 'sem coleta';
+      if (el('topoPagoMesFonte')) el('topoPagoMesFonte').textContent = (pago || {}).detalhe || '';
     }
-    dl.innerHTML = linhas.map(l => {
-      const nome = l.url ? '<a href="' + esc(l.url) + '" target="_blank" rel="noopener">' + esc(l.nome) + '</a>' : esc(l.nome);
-      const pago = l.pago == null ? 'pago: sem coleta até o corte' : 'pago: ' + reais(l.pago);
-      return '<dt>' + nome + '</dt><dd>anunciado: ' + reais(l.anunciado) + ' · ' + pago
-        + (l.data ? ' · ' + esc(l.data) : '') + '</dd>';
-    }).join('');
-    if (el('linhaListaCompromissos')) el('linhaListaCompromissos').textContent = linhas.length + ' compromisso(s) lido(s)';
-    if (window.MonitorMapas) {
-      MonitorMapas.legenda('legListaCompromissos', [{cor: MonitorMapas.PALETA.semDado, rotulo: 'compromisso sem execução coletada aparece como tal'}]);
-      MonitorMapas.credito('boxListaCompromissos', {fontes: ['as citadas em cada compromisso', 'Portal da Transparência (execução)'],
-                                                    data: (C || {}).corte || (MPS || {}).gerado_em});
+
+    const resp = por['resposta_liberado_semana'];
+    if (resp && !resp.sem_coleta) {
+      if (el('topoRespostaSemana')) el('topoRespostaSemana').textContent = curto(resp.valor);
+      if (el('topoRespostaFonte')) el('topoRespostaFonte').textContent = reais(resp.valor) + ' · ' + resp.fonte;
+    } else if (el('topoRespostaSemana')) {
+      el('topoRespostaSemana').textContent = 'sem coleta';
+    }
+
+    const atos = por['atos_federais_semana'];
+    if (atos && !atos.sem_coleta) {
+      /* Zero é ZERO, com a janela dita — o handover proíbe travessão aqui. */
+      if (el('topoAtosSemana')) el('topoAtosSemana').textContent = n(atos.valor);
+      if (el('topoAtosRotulo')) {
+        el('topoAtosRotulo').textContent = Number(atos.valor) === 0
+          ? 'nenhum ato federal de financiamento publicado nos últimos sete dias'
+          : 'atos federais de financiamento publicados nos últimos sete dias';
+      }
+      if (el('topoAtosSemanaFonte')) el('topoAtosSemanaFonte').textContent = atos.fonte;
+    } else if (el('topoAtosSemana')) {
+      el('topoAtosSemana').textContent = 'sem coleta';
     }
   }).catch(() => {});
 
-  /* 2 · Municipios com recursos autorizados por portaria, do maior ao menor. */
+  /* O número de municípios com recursos autorizados: do dado, no rótulo e desde 29 de junho. */
   fetch('data/resposta/recursos_liberados.json').then(r => r.ok ? r.json() : null).then(R => {
-    const dl = el('dlRespostaMunicipios');
-    if (!dl) return;
     const muns = Object.values((R || {}).municipios || {});
-    if (!muns.length) {
-      dl.innerHTML = '<dt>Sem coleta</dt><dd>Nenhuma portaria de recursos lida até o corte.</dd>';
-      if (el('linhaRespostaMunicipios')) el('linhaRespostaMunicipios').textContent = 'sem coleta até o corte';
-      return;
-    }
-    const ordem = muns.slice().sort((a, b) => Number(b.total_autorizado || 0) - Number(a.total_autorizado || 0));
-    dl.innerHTML = ordem.map(m => {
-      const acoes = Object.entries(m.por_acao || {}).map(([k, v]) => esc(k) + ': ' + reais(v)).join(' · ');
-      const atos = (m.atos || []).map(a => a.url
-        ? '<a href="' + esc(a.url) + '" target="_blank" rel="noopener">Portaria ' + esc(a.portaria) + '</a>'
-        : 'Portaria ' + esc(a.portaria)).join(', ');
-      return '<dt>' + esc(m.nome) + ' (' + esc(m.uf) + ')</dt><dd>' + reais(m.total_autorizado)
-        + (acoes ? ' · ' + acoes : '') + (atos ? ' · ' + atos : '') + '</dd>';
-    }).join('');
-    if (el('linhaRespostaMunicipios')) {
-      el('linhaRespostaMunicipios').textContent = ordem.length + ' município(s) com portaria no ciclo';
-    }
-    if (window.MonitorMapas) {
-      MonitorMapas.legenda('legRespostaMunicipios', [{cor: MonitorMapas.NEUTRA, rotulo: 'autorizado por portaria; a saída do dinheiro é outro registro'}]);
-      MonitorMapas.credito('boxRespostaMunicipios', {fontes: ['Portarias da Defesa Civil nacional no Diário Oficial da União'],
-                                                     data: (R || {}).atualizado_em});
+    if (!muns.length || !el('topoRespostaMunicipios')) return;
+    const limite = Date.now() - 7 * 86400000;
+    const naSemana = new Set();
+    muns.forEach(m => (m.atos || []).forEach(a => {
+      if (a.data && new Date(a.data + 'T00:00:00').getTime() >= limite) naSemana.add(m.nome + '/' + m.uf);
+    }));
+    el('topoRespostaMunicipios').textContent = naSemana.size
+      ? 'autorizados pela defesa civil federal nos últimos sete dias, para ' + n(naSemana.size)
+        + ' município(s) · ' + n(muns.length) + ' municípios com recursos autorizados desde 29 de junho'
+      : 'nenhuma portaria nos últimos sete dias · ' + n(muns.length)
+        + ' municípios com recursos autorizados desde 29 de junho';
+  }).catch(() => {});
+
+  /* O contexto do anunciado, com as duas frases do handover. */
+  fetch('data/financiamento/compromissos_federais.json').then(r => r.ok ? r.json() : null).then(C => {
+    const itens = (C || {}).itens || [];
+    const anunciado = itens.reduce((a, x) => a + Number(x.valor_total || 0), 0);
+    if (el('finContexto') && anunciado) {
+      el('finContexto').textContent = 'Os atos federais do ciclo anunciam ' + reais(anunciado)
+        + '. O valor anunciado é o que consta nos atos; o desembolsado é o que já saiu do caixa.';
     }
   }).catch(() => {});
 
-  /* 3 · Os municipios que mais receberam no ultimo mes FECHADO. Mes parcial nao entra: ele
-   * ordenaria a lista pelo que a planilha ainda nao preencheu. */
+  /* 2 · Como os recursos estão sendo aplicados: pela modalidade do orçamento federal. */
+  fetch('data/financiamento/mps_2026.json').then(r => r.ok ? r.json() : null).then(M => {
+    const mps = (M || {}).mps || [];
+    const soma = {};
+    mps.forEach(m => {
+      const f = ((m.forma_de_aplicacao || {}).por_modalidade) || {};
+      Object.entries(f).forEach(([k, v]) => { soma[k] = (soma[k] || 0) + Number(v || 0); });
+    });
+    const total = Object.values(soma).reduce((a, b) => a + b, 0);
+    const leg = el('legFormaAplicacao');
+    if (!total) {
+      if (leg) leg.innerHTML = '<span class="escala">Modalidade de aplicação sem coleta até o corte.</span>';
+      return;
+    }
+    const ordem = Object.keys(soma).sort((a, b) => soma[b] - soma[a]);
+    /* Cor só da paleta do projeto: hex cru em JS é reprovado pelo portão de estrutura, e com
+     * razão — duas fontes de cor divergem na primeira troca de tema. */
+    const cores = (window.MonitorMapas && MonitorMapas.PALETA.ordinal4) || [];
+    const cv = el('cFormaAplicacao');
+    if (cv && typeof Chart !== 'undefined' && window.MonitorMapas) {
+      MonitorMapas.padraoGraficos(window.Chart);
+      new Chart(cv, {type: 'bar', data: {labels: ordem.map(k => k),
+        datasets: [{data: ordem.map(k => +(soma[k] / total * 100).toFixed(1)),
+                    backgroundColor: ordem.map((_, i) => cores[i % cores.length])}]},
+        options: {indexAxis: 'y', animation: false, responsive: true, maintainAspectRatio: false,
+          plugins: {legend: {display: false}},
+          scales: {x: {beginAtZero: true, max: 100, title: {display: true, text: '% do desembolsado'}}}}});
+      MonitorMapas.legenda('legFormaAplicacao', ordem.map((k, i) => ({cor: cores[i % cores.length], rotulo: k})));
+      MonitorMapas.credito('boxFormaAplicacao', {
+        fontes: ['Portal da Transparência, Execução da Despesa (modalidade de aplicação)'],
+        data: (M || {}).gerado_em});
+    }
+    if (el('dlFormaAplicacao')) {
+      el('dlFormaAplicacao').innerHTML = ordem.map(k => '<dt>' + esc(k) + '</dt><dd>'
+        + reais(soma[k]) + ' · ' + (soma[k] / total * 100).toFixed(1).replace('.', ',') + '%</dd>').join('');
+    }
+    const direto = soma['aplicados diretamente pela União'] || 0;
+    const transf = (soma['transferidos aos estados'] || 0) + (soma['transferidos aos municípios'] || 0);
+    if (el('linhaFormaAplicacao')) {
+      el('linhaFormaAplicacao').textContent = 'Do valor já desembolsado, '
+        + (direto / total * 100).toFixed(0) + '% foi aplicado diretamente pela União e '
+        + (transf / total * 100).toFixed(0) + '% transferido a estados e municípios.';
+    }
+  }).catch(() => {});
+
+  /* 3 · Anunciado, empenhado e desembolsado por origem; e o desembolsado mês a mês. */
   Promise.all([
-    fetch('data/financiamento/municipios/transferencias_uniao.json').then(r => r.ok ? r.json() : null),
-    fetch('data/populacao_censo2022.json').then(r => r.ok ? r.json() : null),
-    fetch('data/municipios_ibge_referencia.json').then(r => r.ok ? r.json() : null),
-  ]).then(([T, POP, REF]) => {
-    const dl = el('dlTransfRecentes');
-    if (!dl) return;
-    const meses = (T || {}).meses_lidos || {};
-    const fechados = Object.keys(meses).filter(k => !(meses[k] || {}).parcial).sort();
-    if (!fechados.length || !T.municipios || !REF) {
-      dl.innerHTML = '<dt>Sem coleta</dt><dd>Nenhum mês fechado de transferências lido até o corte.</dd>';
-      return;
+    fetch('data/financiamento/mps_2026.json').then(r => r.ok ? r.json() : null),
+    fetch('data/financiamento/compromissos_federais.json').then(r => r.ok ? r.json() : null),
+  ]).then(([M, C]) => {
+    const origens = [];
+    ((M || {}).mps || []).forEach(m => origens.push({
+      rotulo: 'recursos oriundos da ' + (m.numero || '').replace('MP ', 'MP ') + ' ('
+        + String(m.tema || '').toLowerCase().split(' e ')[0] + ')',
+      anunciado: m.valor, empenhado: (m.execucao || {}).empenhado,
+      desembolsado: (m.execucao || {}).pago, por_mes: (m.execucao || {}).por_mes || {},
+      ato: m.numero, data: m.publicada_em, url: (m.fontes || [])[0],
+    }));
+    ((C || {}).itens || []).forEach(c => origens.push({
+      rotulo: 'recursos oriundos de ' + (c.nome || ''),
+      anunciado: c.valor_total, empenhado: (c.execucao || {}).empenhado,
+      desembolsado: (c.execucao || {}).pago, por_mes: {},
+      ato: c.instrumento, data: c.data, url: c.url,
+    }));
+    if (!origens.length) return;
+    const mi = v => v == null ? null : +(Number(v) / 1e6).toFixed(1);
+    const cores = (window.MonitorMapas && MonitorMapas.PALETA.serie) || [];
+    const cv = el('cOrigens');
+    if (cv && typeof Chart !== 'undefined' && window.MonitorMapas) {
+      MonitorMapas.padraoGraficos(window.Chart);
+      const curtoRotulo = r => r.length > 38 ? r.slice(0, 36) + '…' : r;
+      new Chart(cv, {type: 'bar', data: {labels: origens.map(o => curtoRotulo(o.rotulo)), datasets: [
+          {label: 'anunciado', data: origens.map(o => mi(o.anunciado)), backgroundColor: cores[4] || cores[0]},
+          {label: 'empenhado', data: origens.map(o => mi(o.empenhado)), backgroundColor: cores[2] || cores[1]},
+          {label: 'desembolsado', data: origens.map(o => mi(o.desembolsado)), backgroundColor: cores[0]}]},
+        options: {indexAxis: 'y', animation: false, responsive: true, maintainAspectRatio: false,
+          plugins: {legend: {display: false}},
+          scales: {x: {beginAtZero: true, title: {display: true, text: 'R$ milhões'}},
+                   y: {ticks: {font: {size: 11}}}}}});
+      MonitorMapas.legenda('legOrigens', [
+        {cor: cores[4] || cores[0], rotulo: 'anunciado'},
+        {cor: cores[2] || cores[1], rotulo: 'empenhado'},
+        {cor: cores[0], rotulo: 'desembolsado'},
+        {cor: MonitorMapas.PALETA.semDado, rotulo: 'origem sem execução coletada'}]);
+      MonitorMapas.credito('boxOrigens', {
+        fontes: ['os atos citados em cada origem', 'Portal da Transparência (execução)'],
+        data: (M || {}).gerado_em || (C || {}).revisado_em});
     }
-    const mes = fechados[fechados.length - 1];
-    const nome = {};
-    (Array.isArray(REF) ? REF : Object.values(REF)).forEach(m => {
-      nome[String(m.codigo_ibge).padStart(7, '0')] = m.nome + ' (' + m.uf + ')';
-    });
-    const linhas = [];
-    Object.entries(T.municipios).forEach(([cod, m]) => {
-      const doMes = (m.meses || {})[mes];
-      if (!doMes) return;
-      const total = Object.values(doMes).reduce((a, b) => a + Number(b || 0), 0);
-      if (!total) return;
-      const pop = Number((POP || {})[cod] || 0);
-      linhas.push({cod: cod, total: total, hab: pop ? total / pop : null});
-    });
-    linhas.sort((a, b) => b.total - a.total);
-    dl.innerHTML = linhas.slice(0, 30).map(l => '<dt>' + esc(nome[l.cod] || l.cod) + '</dt><dd>'
-      + reais(l.total) + (l.hab == null ? '' : ' · ' + reais(l.hab) + ' por habitante') + '</dd>').join('');
-    if (el('linhaTransfRecentes')) {
-      el('linhaTransfRecentes').textContent = 'mês de ' + mesLegivel(mes) + ' · '
-        + linhas.length.toLocaleString('pt-BR') + ' municípios com transferência';
+    /* O desembolsado mês a mês, somando as origens que têm quebra por mês. */
+    const porMes = {};
+    origens.forEach(o => Object.entries(o.por_mes).forEach(([k, v]) => {
+      porMes[k] = (porMes[k] || 0) + Number((v || {}).pago || 0);
+    }));
+    if (el('dlOrigensMes')) {
+      const meses = Object.keys(porMes).sort();
+      el('dlOrigensMes').innerHTML = meses.map(k => '<dt>' + esc(mesLegivel(k)) + '</dt><dd>'
+        + reais(porMes[k]) + ' desembolsados</dd>').join('')
+        + origens.map(o => '<dt>' + esc(o.rotulo) + '</dt><dd>anunciado ' + reais(o.anunciado)
+          + ' · empenhado ' + (o.empenhado == null ? 'sem execução coletada' : reais(o.empenhado))
+          + ' · desembolsado ' + (o.desembolsado == null ? 'sem execução coletada' : reais(o.desembolsado))
+          + '</dd>').join('');
     }
-    if (window.MonitorMapas) {
-      MonitorMapas.legenda('legTransfRecentes', [{cor: MonitorMapas.NEUTRA, rotulo: 'os 30 maiores do mês; a lista completa está nos dados abertos'}]);
-      MonitorMapas.credito('boxTransfRecentes', {fontes: ['Portal da Transparência (transferências a municípios)', 'Censo 2022 (IBGE)'],
-                                                 data: (T || {}).atualizado_em});
+    if (el('linhaOrigens')) el('linhaOrigens').textContent = origens.length + ' origem(ns) no ciclo';
+
+    /* 4 · A lista das origens, com o ato de cada uma. */
+    if (el('dlListaOrigens')) {
+      el('dlListaOrigens').innerHTML = origens.map(o => {
+        const nome = o.url ? '<a href="' + esc(o.url) + '" target="_blank" rel="noopener">' + esc(o.rotulo) + '</a>' : esc(o.rotulo);
+        return '<dt>' + nome + '</dt><dd>' + esc(o.ato || 'ato não declarado')
+          + (o.data ? ' · ' + esc(o.data) : '') + '<br>anunciado ' + reais(o.anunciado)
+          + ' · empenhado ' + (o.empenhado == null ? 'sem execução coletada' : reais(o.empenhado))
+          + ' · desembolsado ' + (o.desembolsado == null ? 'sem execução coletada' : reais(o.desembolsado))
+          + '</dd>';
+      }).join('');
+      if (el('linhaListaOrigens')) el('linhaListaOrigens').textContent = origens.length + ' origem(ns) com ato declarado';
+      if (window.MonitorMapas) {
+        MonitorMapas.legenda('legListaOrigens', [{cor: MonitorMapas.PALETA.semDado, rotulo: 'origem sem execução coletada aparece como tal'}]);
+        MonitorMapas.credito('boxListaOrigens', {fontes: ['os atos citados em cada origem'],
+                                                 data: (C || {}).revisado_em || (M || {}).gerado_em});
+      }
     }
   }).catch(() => {});
 
-  /* 4 · O que o municipio gasta do proprio bolso: mapa POR ESTADO (media dos municipios com
-   * lancamento), lista por municipio e o cartao de como ler. Municipio sem lancamento na
-   * subfuncao 182 nao entra na media: ele nao gastou zero, ele lancou em outro lugar. */
+  /* 5 · Defesa civil: mapa por estado, série por semana e as portarias recentes. */
+  Promise.all([
+    fetch('data/resposta/recursos_liberados.json').then(r => r.ok ? r.json() : null),
+    fetch('data/geo_uf.json').then(r => r.ok ? r.json() : null),
+    fetch('data/municipios_ibge_referencia.json').then(r => r.ok ? r.json() : null),
+  ]).then(([R, GEO, REF]) => {
+    const muns = Object.entries((R || {}).municipios || {});
+    if (!muns.length) {
+      if (el('legRespostaUF')) el('legRespostaUF').innerHTML = '<span class="escala">Portarias da defesa civil federal sem coleta até o corte.</span>';
+      return;
+    }
+    const porUF = {}, atos = [];
+    muns.forEach(([cod, m]) => {
+      porUF[m.uf] = (porUF[m.uf] || 0) + Number(m.total_autorizado || 0);
+      (m.atos || []).forEach(a => atos.push(Object.assign({cod: cod}, a)));
+    });
+    if (el('mapaRespostaUF') && GEO && window.MonitorMapas) {
+      const ctx = MonitorMapas.contexto(GEO, 480, 460);
+      const rampa = MonitorMapas.PALETA.rampaPreparo;
+      const max = Math.max(1, ...Object.values(porUF));
+      const faixa = v => rampa[Math.min(rampa.length - 1, Math.floor(v / max * rampa.length))];
+      MonitorMapas.ufs(ctx, 'mapaRespostaUF',
+        uf => porUF[uf] ? faixa(porUF[uf]) : MonitorMapas.NEUTRA,
+        uf => porUF[uf] ? uf + ': ' + reais(porUF[uf]) + ' autorizados' : uf + ': sem registro');
+      MonitorMapas.legenda('legRespostaUF', [
+        {cor: rampa[0], rotulo: 'menor valor autorizado'},
+        {cor: rampa[rampa.length - 1], rotulo: 'até ' + curto(max)},
+        {cor: MonitorMapas.NEUTRA, rotulo: 'sem registro'}]);
+      MonitorMapas.credito('boxRespostaUF', {fontes: ['Portarias da defesa civil federal no Diário Oficial da União'], data: (R || {}).atualizado_em});
+    }
+    if (el('dlRespostaUF')) {
+      el('dlRespostaUF').innerHTML = UFS.map(uf => '<dt>' + esc(uf) + '</dt><dd>'
+        + (porUF[uf] ? reais(porUF[uf]) + ' autorizados' : 'sem registro') + '</dd>').join('');
+    }
+    if (el('linhaRespostaUF')) {
+      el('linhaRespostaUF').textContent = Object.keys(porUF).length + ' estado(s) com registro · '
+        + muns.length + ' município(s)';
+    }
+
+    /* A série por semana, pelas finalidades que a fonte tem. */
+    const semana = d => {
+      const x = new Date(d + 'T00:00:00');
+      const inicio = new Date('2026-06-29T00:00:00');
+      return Math.max(0, Math.floor((x - inicio) / (7 * 86400000)));
+    };
+    const serie = {};
+    atos.forEach(a => {
+      if (!a.data) return;
+      const k = semana(a.data), f = a.acao || 'outra';
+      serie[k] = serie[k] || {};
+      serie[k][f] = (serie[k][f] || 0) + Number(a.valor_autorizado || 0);
+    });
+    const semanas = Object.keys(serie).map(Number).sort((a, b) => a - b);
+    const cv = el('cSerieSemanal');
+    if (cv && typeof Chart !== 'undefined' && window.MonitorMapas && semanas.length) {
+      const finalidades = [...new Set(atos.map(a => a.acao || 'outra'))];
+      const cores = MonitorMapas.PALETA.serie;
+      MonitorMapas.padraoGraficos(window.Chart);
+      new Chart(cv, {type: 'bar', data: {
+          labels: semanas.map(k => 'semana ' + (k + 1)),
+          datasets: finalidades.map((f, i) => ({label: f,
+            data: semanas.map(k => +(((serie[k] || {})[f] || 0) / 1e6).toFixed(2)),
+            backgroundColor: cores[i % cores.length]}))},
+        options: {animation: false, responsive: true, maintainAspectRatio: false,
+          plugins: {legend: {display: false}},
+          scales: {x: {stacked: true}, y: {stacked: true, beginAtZero: true,
+                   title: {display: true, text: 'R$ milhões autorizados'}}}}});
+      MonitorMapas.legenda('legSerieSemanal', finalidades.map((f, i) => ({cor: cores[i % cores.length], rotulo: f})));
+      MonitorMapas.credito('boxSerieSemanal', {fontes: ['Portarias da defesa civil federal no Diário Oficial da União'], data: (R || {}).atualizado_em});
+      if (el('linhaSerieSemanal')) {
+        el('linhaSerieSemanal').textContent = semanas.length + ' semana(s) com portaria desde 29/06/2026';
+      }
+    }
+
+    /* As portarias mais recentes. */
+    if (el('dlPortariasRecentes')) {
+      const nome = {};
+      (Array.isArray(REF) ? REF : Object.values(REF || {})).forEach(m => {
+        nome[String(m.codigo_ibge).padStart(7, '0')] = m.nome + ' (' + m.uf + ')';
+      });
+      const recentes = atos.slice().sort((a, b) => String(b.data || '').localeCompare(String(a.data || ''))).slice(0, 25);
+      el('dlPortariasRecentes').innerHTML = recentes.map(a => {
+        const rot = 'Portaria ' + esc(a.portaria || '—');
+        const link = a.url ? '<a href="' + esc(a.url) + '" target="_blank" rel="noopener">' + rot + '</a>' : rot;
+        return '<dt>' + link + '</dt><dd>' + esc(nome[a.cod] || a.municipio || '') + ' · '
+          + esc(a.data || '') + ' · ' + esc(a.acao || '') + ' · ' + reais(a.valor_autorizado) + '</dd>';
+      }).join('');
+      if (el('linhaPortariasRecentes')) {
+        el('linhaPortariasRecentes').textContent = atos.length + ' portaria(s) desde 29/06/2026';
+      }
+      if (window.MonitorMapas) {
+        MonitorMapas.legenda('legPortariasRecentes', [{cor: MonitorMapas.NEUTRA, rotulo: 'autorizado por portaria; a saída do dinheiro é outro registro'}]);
+        MonitorMapas.credito('boxPortariasRecentes', {fontes: ['Portarias da defesa civil federal no Diário Oficial da União'], data: (R || {}).atualizado_em});
+      }
+    }
+
+    /* A busca por município, dentro do cartão do mapa. */
+    const sel = el('ufRespostaMun'), ent = el('nomeRespostaMun'), lista = el('listaRespostaMun'),
+          conta = el('contaRespostaMun'), saida = el('resultadoRespostaMun');
+    if (sel && ent && REF) {
+      const ref = Array.isArray(REF) ? REF : Object.values(REF);
+      const porNome = {}, dados = {};
+      ref.forEach(m => {
+        const cod = String(m.codigo_ibge).padStart(7, '0');
+        (porNome[m.uf] = porNome[m.uf] || []).push(m.nome);
+        dados[m.uf + '|' + m.nome.toLowerCase()] = cod;
+      });
+      Object.keys(porNome).sort().forEach(uf => sel.insertAdjacentHTML('beforeend', '<option value="' + uf + '">' + uf + '</option>'));
+      conta.textContent = muns.length.toLocaleString('pt-BR') + ' municípios com recursos autorizados desde 29 de junho';
+      sel.addEventListener('change', () => {
+        lista.innerHTML = (porNome[sel.value] || []).slice().sort((a, b) => a.localeCompare(b, 'pt-BR'))
+          .map(x => '<option value="' + esc(x) + '"></option>').join('');
+        ent.disabled = !sel.value; ent.value = ''; saida.hidden = true;
+      });
+      const mostrar = () => {
+        const cod = dados[sel.value + '|' + (ent.value || '').trim().toLowerCase()];
+        if (!cod) { saida.hidden = true; return; }
+        const m = ((R || {}).municipios || {})[cod];
+        saida.hidden = false;
+        if (!m) {
+          saida.innerHTML = '<p class="u-mb-0"><strong>' + esc(ent.value) + '</strong>: sem registro de portaria no ciclo.</p>';
+          return;
+        }
+        saida.innerHTML = '<p class="u-mb-0"><strong>' + esc(m.nome) + ' (' + esc(m.uf) + ')</strong>: '
+          + reais(m.total_autorizado) + ' autorizados</p><ul class="u-mb-0">'
+          + (m.atos || []).map(a => '<li>' + (a.url
+              ? '<a href="' + esc(a.url) + '" target="_blank" rel="noopener">Portaria ' + esc(a.portaria) + '</a>'
+              : 'Portaria ' + esc(a.portaria)) + ' · ' + esc(a.data || '') + ' · ' + esc(a.acao || '')
+              + ' · ' + reais(a.valor_autorizado) + '</li>').join('') + '</ul>';
+      };
+      ent.addEventListener('change', mostrar);
+      ent.addEventListener('input', () => { if ((ent.value || '').length > 2) mostrar(); });
+    }
+  }).catch(() => {});
+
+  /* 6 · O gasto próprio: mapa por estado e a busca por município. */
   Promise.all([
     fetch('data/financiamento/municipios/despesa_182.json').then(r => r.ok ? r.json() : null),
     fetch('data/geo_uf.json').then(r => r.ok ? r.json() : null),
-  ]).then(([D, GEO]) => {
-    const muns = Object.values((D || {}).municipios || {});
-    const comValor = muns.filter(m => m.rs_hab != null);
-    if (!comValor.length) {
-      if (el('legDespesaUF')) el('legDespesaUF').innerHTML = '<span class="escala">Despesa própria em defesa civil: sem coleta até o corte.</span>';
+    fetch('data/populacao_censo2022.json').then(r => r.ok ? r.json() : null),
+  ]).then(([D, GEO, POP]) => {
+    const todos = Object.values((D || {}).municipios || {});
+    const comLancamento = todos.filter(m => m.rs_hab != null);
+    if (!comLancamento.length) {
+      if (el('legGastoProprioUF')) el('legGastoProprioUF').innerHTML = '<span class="escala">Gasto próprio sem coleta até o corte.</span>';
       return;
     }
-    const soma = {}, conta = {};
-    comValor.forEach(m => {
-      soma[m.uf] = (soma[m.uf] || 0) + Number(m.rs_hab);
-      conta[m.uf] = (conta[m.uf] || 0) + 1;
+    /* R$ por habitante do estado = soma da despesa ÷ população DOS MUNICÍPIOS COM LANÇAMENTO.
+     * É a conta que o handover fixou: dividir pela população inteira do estado diluiria o gasto
+     * de quem lançou entre quem não lançou. */
+    const despesa = {}, pop = {};
+    comLancamento.forEach(m => {
+      const cod = String(m.cod_ibge || m.codigo_ibge || '').padStart(7, '0');
+      const habitantes = Number((POP || {})[cod] || m.populacao_censo2022 || 0);
+      const valor = Number(m.rs_hab) * habitantes;
+      if (!habitantes) return;
+      despesa[m.uf] = (despesa[m.uf] || 0) + valor;
+      pop[m.uf] = (pop[m.uf] || 0) + habitantes;
     });
-    const media = {};
-    Object.keys(soma).forEach(uf => { media[uf] = soma[uf] / conta[uf]; });
-    if (el('mapaDespesaUF') && GEO && window.MonitorMapas) {
+    const porHab = {};
+    Object.keys(despesa).forEach(uf => { if (pop[uf]) porHab[uf] = despesa[uf] / pop[uf]; });
+    if (el('mapaGastoProprioUF') && GEO && window.MonitorMapas) {
       const ctx = MonitorMapas.contexto(GEO, 480, 460);
       const rampa = MonitorMapas.PALETA.rampaPreparo;
-      const max = Math.max(...Object.values(media));
-      MonitorMapas.ufs(ctx, 'mapaDespesaUF',
-        uf => media[uf] == null ? MonitorMapas.NEUTRA : rampa[Math.min(rampa.length - 1, Math.floor(media[uf] / max * rampa.length))],
-        uf => media[uf] == null
-          ? uf + ': nenhum município com lançamento na subfunção 182'
-          : uf + ': ' + reais(media[uf]) + ' por habitante, média de ' + conta[uf] + ' município(s) com lançamento');
-      MonitorMapas.legenda('legDespesaUF', [
-        ...rampa.map((c, i) => ({cor: c, rotulo: i === 0 ? 'menor' : (i === rampa.length - 1 ? 'maior' : '·')})),
-        {cor: MonitorMapas.NEUTRA, rotulo: 'sem município com lançamento'}]);
-      MonitorMapas.credito('boxDespesaUF', {fontes: ['Siconfi — Declaração de Contas Anuais (Anexo I-E)', 'Censo 2022 (IBGE)'],
-                                            data: (D || {}).gerado_em});
+      const max = Math.max(...Object.values(porHab), 1);
+      MonitorMapas.ufs(ctx, 'mapaGastoProprioUF',
+        uf => porHab[uf] == null ? MonitorMapas.NEUTRA
+          : rampa[Math.min(rampa.length - 1, Math.floor(porHab[uf] / max * rampa.length))],
+        uf => porHab[uf] == null ? uf + ': nenhum município com lançamento'
+          : uf + ': ' + reais(porHab[uf]) + ' por habitante');
+      MonitorMapas.legenda('legGastoProprioUF', [
+        {cor: rampa[0], rotulo: 'menor valor por habitante'},
+        {cor: rampa[rampa.length - 1], rotulo: 'até ' + reais(max) + ' por habitante'},
+        {cor: MonitorMapas.NEUTRA, rotulo: 'sem lançamento'}]);
+      MonitorMapas.credito('boxGastoProprioUF', {
+        fontes: ['Siconfi, Declaração de Contas Anuais (Anexo I-E)', 'Censo 2022 (IBGE)'],
+        data: (D || {}).gerado_em});
     }
-    if (el('dlDespesaUF')) {
-      el('dlDespesaUF').innerHTML = UFS27.map(uf => '<dt>' + esc(uf) + '</dt><dd>' + (media[uf] == null
-        ? 'nenhum município com lançamento na subfunção 182'
-        : reais(media[uf]) + ' por habitante · ' + conta[uf] + ' município(s) com lançamento') + '</dd>').join('');
+    if (el('dlGastoProprioUF')) {
+      el('dlGastoProprioUF').innerHTML = UFS.map(uf => '<dt>' + esc(uf) + '</dt><dd>'
+        + (porHab[uf] == null ? 'nenhum município com lançamento'
+           : reais(porHab[uf]) + ' por habitante') + '</dd>').join('');
     }
-    if (el('linhaDespesaUF')) {
-      el('linhaDespesaUF').textContent = comValor.length.toLocaleString('pt-BR') + ' de '
-        + muns.length.toLocaleString('pt-BR') + ' municípios com lançamento · exercício '
-        + ((D || {}).exercicio || '—');
+    if (el('linhaGastoProprioUF')) {
+      el('linhaGastoProprioUF').textContent = comLancamento.length.toLocaleString('pt-BR')
+        + ' município(s) com lançamento · exercício ' + ((D || {}).exercicio || '');
     }
-    const dlM = el('dlDespesaMunicipios');
-    if (dlM) {
-      const ordem = comValor.slice().sort((a, b) => Number(b.rs_hab) - Number(a.rs_hab)).slice(0, 30);
-      dlM.innerHTML = ordem.map(m => '<dt>' + esc(m.nome) + ' (' + esc(m.uf) + ')</dt><dd>'
-        + reais(m.rs_hab) + ' por habitante</dd>').join('');
-      if (el('linhaDespesaMunicipios')) {
-        el('linhaDespesaMunicipios').textContent = 'os 30 maiores por habitante · exercício '
-          + ((D || {}).exercicio || '—');
-      }
-      if (window.MonitorMapas) {
-        MonitorMapas.legenda('legDespesaMunicipios', [{cor: MonitorMapas.NEUTRA, rotulo: 'município sem lançamento na subfunção 182 não aparece como zero'}]);
-        MonitorMapas.credito('boxDespesaMunicipios', {fontes: ['Siconfi — Declaração de Contas Anuais (Anexo I-E)', 'Censo 2022 (IBGE)'],
-                                                      data: (D || {}).gerado_em});
-      }
+    if (el('comoLerGastoContagem')) {
+      el('comoLerGastoContagem').textContent = comLancamento.length.toLocaleString('pt-BR')
+        + ' de ' + todos.length.toLocaleString('pt-BR')
+        + ' municípios lançaram despesa nessa rubrica em ' + ((D || {}).exercicio || '2025') + '.';
     }
-    if (el('linhaComoLerDespesa')) el('linhaComoLerDespesa').textContent = 'exercício ' + ((D || {}).exercicio || '—');
     if (window.MonitorMapas) {
-      MonitorMapas.legenda('legComoLerDespesa', [{cor: MonitorMapas.NEUTRA, rotulo: 'sem lançamento não é gasto zero'}]);
-      MonitorMapas.credito('boxComoLerDespesa', {fontes: ['Siconfi — Declaração de Contas Anuais (Anexo I-E)'], data: (D || {}).gerado_em});
+      if (el('linhaComoLerGasto')) el('linhaComoLerGasto').textContent = 'exercício ' + ((D || {}).exercicio || '');
+      MonitorMapas.legenda('legComoLerGasto', [{cor: MonitorMapas.NEUTRA, rotulo: 'sem lançamento não é gasto zero'}]);
+      MonitorMapas.credito('boxComoLerGasto', {fontes: ['Siconfi, Declaração de Contas Anuais (Anexo I-E)'], data: (D || {}).gerado_em});
     }
-    const resumo = el('proprioResumo');
-    if (resumo) {
-      resumo.textContent = comValor.length.toLocaleString('pt-BR') + ' de '
-        + muns.length.toLocaleString('pt-BR') + ' municípios declararam despesa na subfunção 182 '
-        + 'no exercício ' + ((D || {}).exercicio || '—') + '. Os demais lançaram a defesa civil em '
-        + 'outra rubrica ou não declararam: não localizamos lançamento até o corte.';
+    /* A busca por município do gasto próprio. */
+    const sel = el('ufGastoMun'), ent = el('nomeGastoMun'), lista = el('listaGastoMun'),
+          conta = el('contaGastoMun'), saida = el('resultadoGastoMun');
+    if (sel && ent) {
+      const porUFnome = {}, porChave = {};
+      todos.forEach(m => {
+        (porUFnome[m.uf] = porUFnome[m.uf] || []).push(m.nome);
+        porChave[m.uf + '|' + String(m.nome || '').toLowerCase()] = m;
+      });
+      Object.keys(porUFnome).sort().forEach(uf => sel.insertAdjacentHTML('beforeend', '<option value="' + uf + '">' + uf + '</option>'));
+      conta.textContent = comLancamento.length.toLocaleString('pt-BR') + ' de '
+        + todos.length.toLocaleString('pt-BR') + ' municípios com lançamento';
+      sel.addEventListener('change', () => {
+        lista.innerHTML = (porUFnome[sel.value] || []).slice().sort((a, b) => a.localeCompare(b, 'pt-BR'))
+          .map(x => '<option value="' + esc(x) + '"></option>').join('');
+        ent.disabled = !sel.value; ent.value = ''; saida.hidden = true;
+      });
+      const mostrar = () => {
+        const m = porChave[sel.value + '|' + (ent.value || '').trim().toLowerCase()];
+        if (!m) { saida.hidden = true; return; }
+        saida.hidden = false;
+        saida.innerHTML = '<p class="u-mb-0"><strong>' + esc(m.nome) + ' (' + esc(m.uf) + ')</strong>: '
+          + (m.rs_hab == null ? 'sem lançamento nessa rubrica em ' + ((D || {}).exercicio || '2025')
+             : reais(m.rs_hab) + ' por habitante') + '</p>';
+      };
+      ent.addEventListener('change', mostrar);
+      ent.addEventListener('input', () => { if ((ent.value || '').length > 2) mostrar(); });
     }
   }).catch(() => {});
 
-  /* 5 · O credito do cartao de busca: ele tem figura e precisa dizer de onde vem. */
-  fetch('data/financiamento/municipios/transferencias_uniao.json').then(r => r.ok ? r.json() : null).then(T => {
-    if (!window.MonitorMapas) return;
-    const meses = Object.keys((T || {}).meses_lidos || {}).length;
-    if (el('linhaBuscaCidade')) el('linhaBuscaCidade').textContent = meses + ' mês(es) lido(s) de 2026';
-    MonitorMapas.legenda('legBuscaCidade', [{cor: MonitorMapas.NEUTRA, rotulo: 'cidade sem registro no período lido aparece como tal, nunca como R$ 0'}]);
-    MonitorMapas.credito('boxBuscaCidade', {fontes: ['Portal da Transparência (transferências a municípios)', 'Portarias da Defesa Civil nacional no DOU'],
-                                            data: (T || {}).atualizado_em});
+  /* 7 · O texto do Rio Grande do Sul, com os números do dado. */
+  Promise.all([
+    fetch('data/financiamento/por_uf.json').then(r => r.ok ? r.json() : null),
+    fetch('data/financiamento/contadores_uf.json').then(r => r.ok ? r.json() : null),
+    fetch('data/atos_resposta.json').then(r => r.ok ? r.json() : null),
+  ]).then(([PORUF, CONT, ATOS]) => {
+    const alvo = el('textoRS');
+    if (!alvo) return;
+    const rs = (((PORUF || {}).uf || {}).RS || {}).fundo_a_fundo_preventivo || {};
+    const resp = ((ATOS || {}).uf || {}).RS || {};
+    if (!rs.repasses) {
+      alvo.textContent = 'O repasse preventivo do Rio Grande do Sul não foi coletado até o corte.';
+      return;
+    }
+    const sob = resp.n_municipios, rec = (resp.tons || {}).reconhecido;
+    alvo.textContent = 'O estado criou um repasse preventivo, o Prepara RS: ' + reais(rs.valor_total)
+      + ' para ' + n(rs.repasses) + ' municípios com plano de contingência atualizado e coordenador '
+      + 'designado.'
+      + (sob != null ? ' No mesmo ciclo, ' + n(sob) + ' municípios gaúchos decretaram emergência e '
+         + n(rec || 0) + ' foram reconhecidos pela União.' : '')
+      + ' Até ' + ((PORUF || {}).corte || 'o corte') + ', a lista nominal dos ' + n(rs.repasses)
+      + ' municípios não havia sido publicada pelo estado.';
   }).catch(() => {});
 
-  /* 6 · O credito do caso do fogo: texto com fonte, como qualquer figura. */
-  if (window.MonitorMapas && el('boxCasoFogo')) {
-    if (el('linhaCasoFogo')) el('linhaCasoFogo').textContent = 'edital de 2025 e Decreto 13.013/2026';
-    MonitorMapas.legenda('legCasoFogo', [{cor: MonitorMapas.NEUTRA, rotulo: 'resultado por município não localizado até o corte'}]);
-    MonitorMapas.credito('boxCasoFogo', {fontes: ['Fundo Nacional do Meio Ambiente (edital de 2025)', 'Lei 15.143/2025 e Decreto 13.013/2026'],
-                                         data: 'sem coleta até o corte'});
-  }
+  /* 7b · O diagrama dos caminhos: estrutura, não série. Cada grupo é uma coluna de rótulo de
+   * leitor, e cada via um retângulo com o que ela exige. Sem valor nenhum no desenho: valor por
+   * via não existe no dado, e desenhar largura por valor inventaria o que não foi medido. */
+  fetch('data/financiamento/caminhos.json').then(r => r.ok ? r.json() : null).then(C => {
+    const svg = el('svgCaminhos');
+    if (!svg || !C || !window.MonitorMapas) return;
+    const vias = C.vias || [];
+    const grupos = C.grupos || [];
+    if (!vias.length) {
+      MonitorMapas.legenda('legCaminhos', [{cor: MonitorMapas.NEUTRA, rotulo: 'vias sem coleta até o corte'}]);
+      return;
+    }
+    const cores = MonitorMapas.PALETA.ordinal4 || [];
+    const corDoGrupo = g => cores[Math.max(0, grupos.indexOf(g)) % Math.max(1, cores.length)]
+      || MonitorMapas.NEUTRA;
+    const L = 960, alturaLinha = 34, margem = {t: 30, l: 14, r: 14};
+    let y = margem.t;
+    const partes = [];
+    grupos.forEach(g => {
+      const doGrupo = vias.filter(v => v.grupo === g);
+      if (!doGrupo.length) return;
+      partes.push('<text x="' + margem.l + '" y="' + y + '" class="diag-grupo">' + esc(g) + '</text>');
+      y += 10;
+      doGrupo.forEach(v => {
+        partes.push('<rect x="' + margem.l + '" y="' + y + '" width="' + (L - margem.l - margem.r)
+          + '" height="' + (alturaLinha - 8) + '" rx="4" fill="' + corDoGrupo(g) + '" fill-opacity="0.18"'
+          + ' stroke="' + corDoGrupo(g) + '"></rect>');
+        partes.push('<text x="' + (margem.l + 10) + '" y="' + (y + 17) + '" class="diag-via">'
+          + esc(v.nome) + (v.exige ? ' — exige ' + esc(v.exige) : '') + '</text>');
+        y += alturaLinha;
+      });
+      y += 8;
+    });
+    svg.setAttribute('viewBox', '0 0 ' + L + ' ' + (y + 10));
+    svg.innerHTML = partes.join('');
+    MonitorMapas.legenda('legCaminhos', grupos.map(g => ({cor: corDoGrupo(g), rotulo: g})));
+    MonitorMapas.credito('boxCaminhos', {fontes: ['leis e atos citados em cada via (via MARÉ)'],
+                                         data: C.revisado_em});
+    if (el('linhaCaminhos')) el('linhaCaminhos').textContent = vias.length + ' vias declaradas';
+    if (el('dlCaminhos')) {
+      el('dlCaminhos').innerHTML = vias.map(v => '<dt>' + esc(v.nome) + '</dt><dd>' + esc(v.grupo)
+        + (v.exige ? ' · exige ' + esc(v.exige) : '')
+        + (v.base_legal ? ' · ' + esc(v.base_legal) : '') + '</dd>').join('');
+    }
+  }).catch(() => {});
+
+  /* 8 · As âncoras abrem o bloco recolhido e rolam até o ponto. */
+  (function ancoras(){
+    const bloco = el('caminhos');
+    if (!bloco) return;
+    const abrir = () => {
+      const alvo = (location.hash || '').replace('#', '');
+      if (!alvo) return;
+      if (['antes', 'depois', 'setores', 'caminhos'].includes(alvo)) {
+        bloco.open = true;
+        const ponto = el(alvo);
+        if (ponto) setTimeout(() => ponto.scrollIntoView({block: 'start'}), 60);
+      }
+    };
+    abrir();
+    window.addEventListener('hashchange', abrir);
+  })();
 })();

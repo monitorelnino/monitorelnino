@@ -3452,3 +3452,53 @@ Com a quebra por mês, o cartão do topo passou a publicar o **mês fechado** de
 milhões desembolsados em setembro, no lugar do acumulado do ciclo que a versão anterior mostrava
 por falta da quebra. O desembolsado total subiu de R$ 263,4 mi para R$ 279,9 mi na MP 1.367 e
 entrou com R$ 96,6 mi na MP 1.384.
+
+## 97. Financiamento minimalista: escopo, vocabulário e as duas contas (02/10/2026)
+
+Decisão da editoria, rev. 2 do handover. A página do Financiamento passa a mostrar **só dinheiro
+do ciclo**: medidas federais do El Niño e recursos da defesa civil federal. Transferências gerais
+de todo mês — Fundo de Participação, SUS, assistência social — saem da página e ficam como frase
+no rodapé recolhido: elas existem, não são do ciclo, e misturar as duas coisas fazia a página
+publicar R$ 32 bilhões ao lado de R$ 150 milhões como se fossem comensuráveis.
+
+### 97.1 Vocabulário do dinheiro, fixo nas três páginas
+
+| palavra | o que é |
+|---|---|
+| **anunciado** | o valor que consta no ato |
+| **empenhado** | etapa do orçamento: o compromisso assumido |
+| **desembolsado** | o dinheiro que saiu do caixa (corresponde à etapa "pago") |
+| **transferido** | o que foi a estados ou municípios |
+| **autorizado** | o que a portaria da defesa civil autorizou |
+
+A origem aparece sempre como "**recursos oriundos de** {ato}". O termo técnico "pago" fica dentro
+de "Ver em lista" e aqui na METODOLOGIA, e não em título nem em texto corrido: "pago" e
+"desembolsado" são a mesma etapa, e a escolha é de leitura, não de contabilidade. O portão de
+runtime confere que nenhum cartão do topo diz "pago" ao leitor.
+
+### 97.2 As duas contas que a página faz, e por que são assim
+
+**Como os recursos são aplicados** sai da **modalidade de aplicação** do orçamento federal (§96.3),
+e substitui o cartão "sede em Brasília × unidades nos estados". A diferença é de objeto: a sede da
+unidade gestora diz **onde o pagamento foi registrado**; a modalidade diz **a quem o dinheiro foi**.
+
+**Gasto próprio por habitante** é a soma da despesa dos municípios **com lançamento** dividida pela
+população **desses mesmos municípios**. Dividir pela população inteira do estado diluiria o gasto de
+quem lançou entre quem não lançou, e produziria um número menor que o de qualquer município real.
+
+### 97.3 Prevenção e resposta: o que a fonte separa
+
+O handover previu um mapa da **prevenção** por estado, e previu a alternativa para o caso de a
+fonte não separar. As portarias da defesa civil federal separam `resposta`, `recuperacao` e
+`outra`: **prevenção não existe nessa fonte**. Escolha registrada: o terceiro cartão é a lista das
+portarias recentes, e a série semanal mostra as finalidades que existem. Recuperação é obra depois
+do dano, e não entra como prevenção nem se soma à resposta.
+
+### 97.4 Texto que existe e não se lê
+
+O portão de layout passou a reprovar **texto invisível**: cor igual ao fundo, opacidade abaixo de
+0,15, `visibility: hidden`, altura útil menor que 12 px. A razão é de método: texto que não se lê
+passa no portão que conta palavras, passa no que cobra legenda, e não chega ao leitor — é pior do
+que texto ausente, porque ninguém procura o que parece estar lá. Ele também reprova **duas figuras
+com a mesma chave de dado na mesma seção**: dizer a mesma coisa duas vezes ocupa a grade e divide
+a atenção sem acrescentar fato.

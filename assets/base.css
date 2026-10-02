@@ -1095,3 +1095,9 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
      `.emerg-numero` já faz no celular — a escala tipográfica é fixa, então é degrau, não `clamp`. */
   .cartao-numero-valor{font-size:var(--fs-h2);}
 }
+
+/* Diagrama dos caminhos do dinheiro (Financiamento, 02/10/2026). Tipografia da escala e
+   cor pelos tokens: o desenho nao traz cor propria. */
+.diag-grupo{font-family:var(--font-dado); font-size:var(--fs-caption);
+  letter-spacing:.12em; text-transform:uppercase; fill:var(--muted);}
+.diag-via{font-family:var(--font-texto); font-size:var(--fs-small); fill:var(--tinta);}

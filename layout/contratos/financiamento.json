@@ -1,13 +1,13 @@
 {
-  "_governanca": "Contrato de layout do Financiamento (handover da editoria, 02/10/2026). ESTE ARQUIVO É A VERDADE: o HTML e o JS se conformam a ele. Quem verifica é scripts/verificar_layout.py, portão bloqueante — nenhum PR desta página é mesclado com ele vermelho.",
+  "_governanca": "Contrato de layout do Financiamento minimalista (handover da editoria, 02/10/2026, rev. 2). ESTE ARQUIVO É A VERDADE: o HTML e o JS se conformam a ele. Quem verifica é scripts/verificar_layout.py, portão bloqueante — nenhum PR desta página é mesclado com ele vermelho. Escopo: só dinheiro do ciclo. Transferências gerais de todo mês saíram da página e aparecem como frase no rodapé recolhido.",
   "pagina": "financiamento.html",
   "componentes": {
     "numeros": ".cartao-numero",
     "grade_numeros": ".grade-numeros--3",
     "figura": ".cartao-mapa",
-    "grade_figuras": ".grade-figuras--3",
-    "estados": "#regionsFin"
+    "grade_figuras": ".grade-figuras--3"
   },
+  "_nota_componentes": "O handover nomeia `.cartao-destaque` para números. Esse seletor NÃO existe no repositório: o componente real de número é `.cartao-numero`, que a Imprensa reusa (está escrito em assets/base.css). Usar o que existe em vez de criar um segundo componente para a mesma coisa — divergência declarada.",
   "secoes": [
     {
       "id": "dc-topo",
@@ -16,27 +16,12 @@
       "grade": ".grade-numeros--3",
       "linhas": 1,
       "cartoes": [
-        {"id": "pago_periodo_mp", "tipo": "numero", "chave": "financiamento/mps_2026.json", "valor_el": "topoPagoMes"},
-        {"id": "transferido_municipios_periodo", "tipo": "numero", "chave": "financiamento/municipios/transferencias_uniao.json", "valor_el": "topoTransfMes"},
-        {"id": "resposta_liberado_semana", "tipo": "numero", "chave": "resposta/recursos_liberados.json", "valor_el": "topoRespostaSemana"}
+        {"id": "desembolsado_mp_mes", "tipo": "numero", "chave": "financiamento/mps_2026.json", "valor_el": "topoPagoMes"},
+        {"id": "resposta_autorizado_semana", "tipo": "numero", "chave": "resposta/recursos_liberados.json", "valor_el": "topoRespostaSemana"},
+        {"id": "atos_federais_semana", "tipo": "numero", "chave": "financiamento/compromissos_federais.json", "valor_el": "topoAtosSemana"}
       ],
-      "cartoes_condicionais": [
-        {"id": "atos_federais_semana", "tipo": "numero", "chave": "financiamento/compromissos_federais.json", "valor_el": "topoAtosSemana", "so_quando": "maior_que_zero"}
-      ],
-      "exige_texto": ["anunciados para o ciclo"],
-      "_nota_granularidade": "O Portal da Transparência publica execução e transferência a município por MÊS: os dois primeiros cartões dizem 'no mês de {mês}', do último mês fechado, e não 'na semana'. Recursos de resposta e atos federais têm data por ato, e aí o recorte semanal é real."
-    },
-    {
-      "id": "porEstado",
-      "h2": "Quanto chegou a cada estado",
-      "tipo": "figuras_mais_estados",
-      "grade": ".grade-figuras--3",
-      "cartoes": [
-        {"id": "mapa_uf_por_habitante", "tipo": "mapa", "el": "boxTransfUF"},
-        {"id": "lista_estados", "tipo": "lista", "el": "boxListaEstadosFin"},
-        {"id": "serie_mensal_brasil", "tipo": "grafico", "el": "boxSerie"}
-      ],
-      "estados": {"grade": "#regionsFin", "cartoes": 27, "largura": "total"}
+      "exige_texto": ["anunciam", "desembolsado é o que já saiu do caixa"],
+      "_nota_zero": "Zero na semana é ZERO, com a janela dita — nunca travessão. O cartão de atos é fixo nesta revisão: a grade é de três, e três cartões a preenchem."
     },
     {
       "id": "dinheiroElNino",
@@ -44,55 +29,50 @@
       "tipo": "figuras",
       "grade": ".grade-figuras--3",
       "cartoes": [
-        {"id": "br_vs_uf", "tipo": "indicador", "el": "boxMpsBrUf"},
-        {"id": "compromissos_anunciado_empenhado_pago", "tipo": "grafico", "el": "boxCompromissosGrafico"},
-        {"id": "lista_compromissos", "tipo": "lista", "el": "boxListaCompromissos"}
+        {"id": "forma_de_aplicacao", "tipo": "grafico", "el": "boxFormaAplicacao", "chave": "financiamento/mps_2026.json"},
+        {"id": "origem_anunciado_empenhado_desembolsado", "tipo": "grafico", "el": "boxOrigens", "chave": "financiamento/compromissos_federais.json"},
+        {"id": "lista_origens", "tipo": "lista", "el": "boxListaOrigens", "chave": "financiamento/compromissos_federais.json"}
       ]
     },
     {
-      "id": "suaCidade",
-      "h2": "A sua cidade",
+      "id": "defesaCivil",
+      "h2": "Defesa civil no ciclo: prevenção e resposta",
       "tipo": "figuras",
       "grade": ".grade-figuras--3",
       "cartoes": [
-        {"id": "busca_municipio", "tipo": "lista", "el": "boxBuscaCidade"},
-        {"id": "lista_resposta_portarias", "tipo": "lista", "el": "boxRespostaMunicipios"},
-        {"id": "lista_transferencias_recentes", "tipo": "lista", "el": "boxTransfRecentes"}
-      ]
+        {"id": "mapa_uf_resposta", "tipo": "mapa", "el": "boxRespostaUF", "chave": "resposta/recursos_liberados.json"},
+        {"id": "serie_semanal", "tipo": "grafico", "el": "boxSerieSemanal", "chave": "resposta/recursos_liberados.json"},
+        {"id": "lista_portarias_recentes", "tipo": "lista", "el": "boxPortariasRecentes", "chave": "resposta/recursos_liberados.json"}
+      ],
+      "_nota_prevencao": "O handover previa um terceiro cartão com o mapa da PREVENÇÃO por estado, e previu a alternativa: 'se o dado não separar prevenção de resposta, o cartão vira lista_portarias_recentes'. ESCOLHA REGISTRADA: as portarias da SEDEC separam `resposta`, `recuperacao` e `outra` — prevenção não existe nessa fonte. Então o terceiro cartão é a lista das portarias recentes, e a série semanal mostra as duas finalidades que existem."
     },
     {
-      "id": "dinheiroProprio",
-      "h2": "O que o município gasta do próprio bolso",
+      "id": "gastoProprio",
+      "h2": "Contexto: o que os municípios gastam por conta própria",
       "tipo": "figuras",
       "grade": ".grade-figuras--3",
       "cartoes": [
-        {"id": "mapa_uf_despesa_hab", "tipo": "mapa", "el": "boxDespesaUF"},
-        {"id": "lista_municipios_despesa", "tipo": "lista", "el": "boxDespesaMunicipios"},
-        {"id": "como_ler_despesa", "tipo": "texto", "el": "boxComoLerDespesa"}
-      ]
+        {"id": "mapa_uf_gasto_proprio", "tipo": "mapa", "el": "boxGastoProprioUF", "chave": "financiamento/municipios/despesa_182.json"},
+        {"id": "como_ler_gasto", "tipo": "texto", "el": "boxComoLerGasto"}
+      ],
+      "ultima_linha_incompleta": true
     },
     {
-      "id": "caminho",
-      "h2": "Como o dinheiro chega a uma cidade",
-      "tipo": "cartoes_de_texto",
+      "id": "caminhosSecao",
+      "h2": null,
+      "tipo": "recolhido",
+      "detalhes": "caminhos",
+      "fechado_por_padrao": true,
       "cartoes": [
+        {"id": "diagrama_caminhos", "tipo": "diagrama", "el": "boxCaminhos"},
         {"id": "antes", "tipo": "texto", "el": "antes"},
         {"id": "depois", "tipo": "texto", "el": "depois"}
       ],
-      "ancoras": ["antes", "depois", "setores"]
-    },
-    {
-      "id": "casos",
-      "h2": "Dois casos",
-      "tipo": "figuras",
-      "grade": ".grade-figuras--3",
-      "cartoes": [
-        {"id": "caso_fogo", "tipo": "texto", "el": "boxCasoFogo"},
-        {"id": "caso_rs", "tipo": "grafico", "el": "boxRSGrafico"}
-      ],
-      "ultima_linha_incompleta": true
+      "ancoras": ["antes", "depois", "setores", "caminhos"]
     }
   ],
-  "texto_proibido": ["FIGURA", "Corte da edição", "corte de", "defeso", "rotas", "chave que abre"],
-  "_nota_texto_proibido": "O handover proíbe também 'rota' e 'chave'. Em singular as duas palavras aparecem em texto legítimo ('a rota constitucional' é vocabulário do dado, declarado na METODOLOGIA), e proibir a palavra solta produziria falso positivo. O portão barra o que o handover quer barrar: o diagrama das rotas e a frase 'que chave abre'."
+  "texto_proibido": ["FIGURA", "Corte da edição", "corte de", "defeso", "chave que abre", "desastre", "subfunção", "unidade gestora", "mês lido", "meses lidos"],
+  "_nota_texto_proibido": "A lista do handover inclui 'pago', 'rota' e 'nota' em singular. 'pago' é a ETAPA do orçamento e aparece dentro de 'Ver em lista' e na METODOLOGIA, por decisão do próprio handover; 'rota' e 'nota' aparecem em texto legítimo ('a rota constitucional' é vocabulário do dado declarado na METODOLOGIA; 'note' entra em classe de CSS). O portão barra o que o handover quer barrar — a palavra no texto que o leitor lê — e isso é conferido por `verificar_palavras_financiamento.py`, que olha o texto visível e sabe distinguir prosa de bloco de prova.",
+  "sem_grade_de_estados": true,
+  "_nota_sem_grade": "A grade dos 27 quadros (#regionsFin) SAIU da página por decisão da editoria: estados em mapa, municípios em lista dentro do mesmo cartão."
 }
