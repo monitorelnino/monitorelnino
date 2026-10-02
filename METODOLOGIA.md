@@ -3250,6 +3250,22 @@ só conta com saúde, emergência, situação, epidemia ou vigilância a menos d
 da régua, a Paraíba tem **duas** datas reais no ciclo: 05/08 (abertura da Sala de Situação das
 Arboviroses) e 09/09 (a Portaria 764/2026).
 
+### 94.2b Termo genérico também exige contexto, e a recuperação do ciclo
+
+A régua da sigla valeu para o termo genérico pela mesma razão. MEDIDO no diário do Mato Grosso do
+Sul: "Plano de Contingência do Sistema E-TFD" — um sistema de tratamento fora do domicílio — e um
+"Comitê Intersetorial de Acompanhamento" de outro assunto entraram no índice como pista do ciclo.
+O índice é de **pista**, e pista que leva a um sistema de informática gasta a campanha. Termo
+específico (grupo condutor, sala de situação, plano estadual de preparação, emergência climática,
+El Niño) passa sem contexto, porque ele já é o contexto; termo que serve a muitos assuntos exige
+clima, estiagem, seca, chuva, calor, arbovirose ou desastre a menos de 300 caracteres.
+
+**A recuperação desde 29/06/2026**, com as réguas em vigor: Paraíba 52 edições lidas e 18 datas sem
+edição; Mato Grosso do Sul 68 lidas e 2 sem edição, de 70 dias úteis. O índice de ocorrências ficou
+com **cinco datas reais** — PB em 05/08 (abertura da Sala de Situação das Arboviroses) e 09/09 (a
+Portaria 764/2026); MS em 31/07, 03/09 (a Resolução 1041/2026) e 16/09. O registro por edição
+espelha o índice, para que não existam duas contagens da mesma coisa.
+
 ### 94.3 "Quatro canais consultados": definição fechada
 
 | canal | o que conta |

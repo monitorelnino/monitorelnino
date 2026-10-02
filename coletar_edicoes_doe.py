@@ -68,11 +68,22 @@ TERMOS = ("grupo condutor", "sala de situação", "centro de operações", "COES
 # "CONSTRUCOES", que saem partidas ("SOLU COES"), e ai a sigla vira palavra solta no meio de uma
 # tabela de licitacao. Fronteira de palavra nao resolve; contexto resolve, e sem inventar nada:
 # um centro de operacoes de emergencia em saude e citado ao lado de saude, emergencia ou situacao.
-CONTEXTO_DE_SIGLA = {
-    "COES": re.compile(r"(sa[úu]de|emerg[êe]ncia|situa[çc][ãa]o|epidemi|vigil[âa]ncia)", re.I),
-    "COE estadual": re.compile(r"(sa[úu]de|emerg[êe]ncia|situa[çc][ãa]o)", re.I),
+# Termo que serve a muitos assuntos exige CONTEXTO, pela mesma razão da sigla. MEDIDO em
+# 02/10/2026 no diário do Mato Grosso do Sul: "Plano de Contingência do Sistema E-TFD" (um sistema
+# de tratamento fora do domicílio) e "Comitê Intersetorial de Acompanhamento" de outro assunto
+# entraram no índice como pista do ciclo. O índice é de PISTA, e pista que leva a um sistema de
+# informática gasta a campanha. Termo específico — grupo condutor, sala de situação, plano estadual
+# de preparação, emergência climática, El Niño — passa sem contexto, porque ele já é o contexto.
+CONTEXTO_POR_TERMO = {
+    "COES": r"(sa[úu]de|emerg[êe]ncia|situa[çc][ãa]o|epidemi|vigil[âa]ncia)",
+    "COE estadual": r"(sa[úu]de|emerg[êe]ncia|situa[çc][ãa]o)",
+    "centro de operações": r"(sa[úu]de|emerg[êe]ncia|clim|desastre)",
+    "plano de contingência": r"(El\s*Ni[ñn]o|clim|estiagem|seca|chuva|arbovir|dengue|calor|desastre|sa[úu]de p[úu]blica)",
+    "comitê intersetorial": r"(El\s*Ni[ñn]o|clim|estiagem|seca|chuva|desastre|emerg[êe]ncia)",
+    "vigilância em saúde ambiental": r"(El\s*Ni[ñn]o|clim|estiagem|seca|chuva|calor|desastre)",
 }
-JANELA_DE_CONTEXTO = 200
+CONTEXTO_DE_SIGLA = {t: re.compile(r, re.I) for t, r in CONTEXTO_POR_TERMO.items()}
+JANELA_DE_CONTEXTO = 300
 
 # ── Padrões de endereço por data ───────────────────────────────────────────────────────────────
 # Cada padrão foi CONFERIDO contra uma edição real antes de entrar aqui; a conferência está na
@@ -491,6 +502,13 @@ def _autoteste() -> int:
        [x["termo"] for x in ocorrencias_no_texto(
            "Institui o COES, centro de operações de emergência em saúde, para o ciclo")]
        == ["centro de operações", "COES"])
+    ok("plano de contingência de um sistema de informática não é pista do ciclo",
+       ocorrencias_no_texto("será adotado o Plano de Contingência do Sistema E-TFD, "
+                            "para tramitação de processos administrativos") == [])
+    ok("plano de contingência com o risco do ciclo é pista",
+       [x["termo"] for x in ocorrencias_no_texto(
+           "Aprova o Plano de Contingência para a estiagem e as ondas de calor")]
+       == ["plano de contingência"])
     ok("sigla solta por artefato de extração, sem contexto de saúde, não conta",
        ocorrencias_no_texto("SOLU COES EM LICITA- Conforme Parecer nº 366 da Assessoria") == [])
     ok("texto vazio não quebra", ocorrencias_no_texto("") == [] and ocorrencias_no_texto(None) == [])
@@ -545,7 +563,7 @@ def _autoteste() -> int:
        "aplicar" not in nomes and "julgar_saude" not in nomes)
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
-          else "✓ AUTOTESTE OK — 32 casos, sem rede e sem escrita.")
+          else "✓ AUTOTESTE OK — 34 casos, sem rede e sem escrita.")
     return 1 if falhas else 0
 
 
