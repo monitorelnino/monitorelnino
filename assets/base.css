@@ -977,7 +977,11 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
      portão de consistência visual reprovava as três posições — foi o que aconteceu com "Como os
      recursos são aplicados" a 1366 px. A reserva é do componente: o cartão alinha sozinho, qualquer
      que seja o rótulo. */
-  min-height:calc(1 * var(--fs-caption) * var(--lh-caption)); overflow:hidden;}
+  min-height:calc(1 * var(--fs-caption) * var(--lh-caption));
+  /* UMA linha, sempre: a altura minima nao impede o rotulo de crescer, e no runner da CI, com
+     a fonte de reserva, "Como os recursos sao aplicados" quebrava em duas e desalinhava o
+     primeiro cartao da grade. O slot e curto por desenho. */
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 .cartao-mapa-boletim{font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);
   margin:0 0 var(--sp-2); min-height:calc(2 * var(--fs-caption) * var(--lh-caption));}
 .cartao-mapa .figura-titulo{min-height:calc(2 * var(--fs-h4) * var(--lh-h4));}
