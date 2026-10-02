@@ -137,8 +137,13 @@ def autoteste() -> int:
         ("lê a cadência de cada um", d["a.py"] == "diaria" and d["b.py"] == "semanal"),
         ("cabeçalho não vira coletor", "coletor" not in d),
         ("separador não vira coletor", "---" not in d),
+        # 02/10/2026: "quinzenal" passou a ser cadência conhecida (bateria de saúde estadual nos
+        # dias 1 e 15). O caso continua, com uma palavra que de fato não é cadência.
         ("cadência desconhecida é ignorada",
-         cadencias_declaradas("| `x.py` | quinzenal | a | b | c |") == {}),
+         cadencias_declaradas("| `x.py` | quando_der | a | b | c |") == {}),
+        ("quinzenal é cadência conhecida, de 15 dias",
+         cadencias_declaradas("| `x.py` | quinzenal | a | b | c |") == {"x.py": "quinzenal"}
+         and HORAS["quinzenal"] == 24 * 15),
         ("texto vazio não quebra", cadencias_declaradas("") == {}),
         ("texto nulo não quebra", cadencias_declaradas(None) == {}),
     ]
