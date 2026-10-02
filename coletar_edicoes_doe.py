@@ -141,15 +141,20 @@ def edicoes_da_listagem(html: str) -> dict:
 
 
 def estimar_edicao(data: str, ancoras: dict) -> int:
-    """O numero provavel da edicao naquela data, por dia util entre as ancoras. Funcao pura.
+    """O número provável da edição naquela data, por dia útil desde a âncora mais PRÓXIMA.
 
-    Devolve `None` sem ancoras. A estimativa nao e a resposta: ela e o centro da janela de
-    tentativas, e a fonte confirma ou nega pelo nome do arquivo.
+    Função pura. Devolve `None` sem âncoras. A estimativa não é a resposta: ela é o centro da
+    janela de tentativas, e a fonte confirma ou nega pelo nome do arquivo, que carrega a data.
+
+    A âncora mais próxima importa porque o erro cresce com a distância: edição extra e feriado
+    deslocam a numeração, e contar dia útil desde setembro para estimar junho acumula o deslocamento
+    de três meses. Com a âncora vizinha, a janela fecha em uma ou duas tentativas.
     """
     if not ancoras:
         return None
-    base_data, base_num = sorted(ancoras.items())[0]
     alvo = dt.date.fromisoformat(data)
+    base_data, base_num = min(ancoras.items(),
+                              key=lambda kv: abs((dt.date.fromisoformat(kv[0]) - alvo).days))
     base = dt.date.fromisoformat(base_data)
     passo = 1 if alvo >= base else -1
     dias, d = 0, base
@@ -345,6 +350,13 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
         except Exception as e:  # noqa: BLE001
             print(f"  {uf}: listagem não lida ({type(e).__name__}) — segue pelas âncoras")
 
+    # As âncoras começam nas conferidas e crescem a cada acerto: a data seguinte estima a partir da
+    # vizinha, e não a partir de setembro.
+    ancoras_vivas = dict(p.get("ancoras") or {})
+    for data_lida, item in (edicoes or {}).items():
+        achado = re.search(r"DO(\d{4,6})_", str((item or {}).get("url") or ""))
+        if achado and (item or {}).get("decisao") == "lida":
+            ancoras_vivas[data_lida] = int(achado.group(1))
     datas = [d for d in datas_do_periodo(desde, ate) if d not in edicoes][:TETO_EDICOES]
     lidas = com_termo = 0
     vistos = {e.get("impressao") for e in edicoes.values()
@@ -352,9 +364,8 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
     hoje = hoje_editorial().strftime("%d/%m/%Y")
     for data in datas:
         if "{edicao}" in p["padrao"]:
-            tentativas = [endereco_da_data(p["padrao"], data, str(n))
-                          for n in numeros_a_tentar(data, listagem, p.get("ancoras") or {},
-                                                    p.get("janela", 8))]
+            numeros = numeros_a_tentar(data, listagem, ancoras_vivas, p.get("janela", 8))
+            tentativas = [endereco_da_data(p["padrao"], data, str(n)) for n in numeros]
         else:
             tentativas = [endereco_da_data(p["padrao"], data)]
         if not tentativas:
@@ -422,6 +433,9 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
             item["termos_achados"] = [a["termo"] for a in achados]
             lidas += 1
         edicoes[data] = item
+        achado = re.search(r"DO(\d{4,6})_", url or "")
+        if achado and decisao == "lida":
+            ancoras_vivas[data] = int(achado.group(1))
 
     registro.setdefault("canal2", {"modo": "padrao_por_data", "em": hoje,
                                    "conta_como_consultado": True})
@@ -451,6 +465,8 @@ def _autoteste() -> int:
     ok("período de um dia útil devolve um dia", datas_do_periodo("2026-06-29", "2026-06-29") == ["2026-06-29"])
     ok("sábado sozinho devolve vazio", datas_do_periodo("2026-07-04", "2026-07-04") == [])
 
+    ok("a estimativa usa a âncora mais próxima",
+       estimar_edicao("2026-10-01", {"2026-09-03": 12270, "2026-10-02": 12293}) == 12292)
     ok("o padrão da PB é preenchido com mês por nome",
        endereco_da_data(PADROES["PB"]["padrao"], "2026-09-09")
        == "https://auniao.pb.gov.br/servicos/doe/2026/setembro/diario-oficial-09-09-2026-portal.pdf")
@@ -522,7 +538,7 @@ def _autoteste() -> int:
        "aplicar" not in nomes and "julgar_saude" not in nomes)
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
-          else "✓ AUTOTESTE OK — 30 casos, sem rede e sem escrita.")
+          else "✓ AUTOTESTE OK — 31 casos, sem rede e sem escrita.")
     return 1 if falhas else 0
 
 
