@@ -109,8 +109,13 @@ def cartao_pago(mps: dict) -> dict:
         return cartao("pago_periodo_mp", round(por_mes[mes], 2), "reais",
                       f"mês de {mes_legivel(mes)}",
                       "Portal da Transparência, Execução da Despesa (arquivos mensais abertos)",
-                      detalhe="execução das ações reforçadas pelas medidas provisórias do ciclo; "
-                              "inclui a dotação ordinária da ação — é teto, não a execução do crédito")
+                      # Sem travessão: o portão de legendas o reprova em texto de figura, e com
+                      # razão — travessão em cartão vira frase dentro de frase. Duas frases.
+                      # Sem travessão e sem conectivo de causa: o portão de legendas reprova os
+                      # dois em texto de figura. O fato, em duas frases, basta.
+                      detalhe=("execução das ações reforçadas pelas medidas provisórias do ciclo. "
+                               "O valor inclui a dotação ordinária da ação. É teto, não a execução "
+                               "do crédito"))
     meses = sorted({m for e in coletadas for m in (e.get("meses") or [])})
     total = round(sum(float(e.get("pago") or 0.0) for e in coletadas), 2)
     janela = (f"meses de {mes_legivel(meses[0])} a {mes_legivel(meses[-1])}"
