@@ -130,6 +130,13 @@ jobs:
       # 01/10/2026 (handover da imprensa dinâmica): os números da semana são gerados A CADA
       # publicação, depois do recálculo e antes dos derivados — a página Imprensa não pode mostrar
       # a semana da edição anterior, que foi o defeito do item 0 do handover.
+      # 02/10/2026: a faixa de cada unidade é registrada ANTES de a imprensa ser gerada, porque o
+      # cartão "estados que mudaram de faixa" compara a edição anterior com esta — e a edição de
+      # hoje tem de estar na série antes de a comparação ser feita.
+      - name: Registrar a faixa de cada estado nesta edição
+        timeout-minutes: 3
+        run: python3 scripts/registrar_faixas.py
+
       - name: Gerar os números da semana (Imprensa)
         timeout-minutes: 5
         run: python3 gerar_imprensa_semana.py

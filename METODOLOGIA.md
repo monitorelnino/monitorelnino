@@ -3163,3 +3163,32 @@ Consequência direta no índice: **nenhuma unidade pode ser marcada "não locali
 em qualquer das duas funções, porque a regra exige campanha completa pelos quatro canais, e a
 campanha não fecha sem o canal do diário. A ausência continua **lacuna declarada**, com o log dos
 canais — e é por isso que a troca da v0.3 para a v0.4 não aconteceu.
+
+## 93. Dois cartões da imprensa que deixaram de ser lacuna (02/10/2026)
+
+A edição para a imprensa tinha quatro cartões declarados como "sem dado nesta edição". Dois eram
+lacuna de fonte, e seguem sendo: o pago e o transferido por semana não existem na fonte, que
+publica por mês (§89). Os outros dois eram **lacuna de nós**, e foram fechados:
+
+**Capitais com plano localizado.** O cartão dizia que a única lista de capitais do repositório
+cobria 24 das 27. A referência das 27 **já existia**: `CAPITAL_IBGE`, por código IBGE, em
+`coletar_siconfi_182.py`, com uma segunda cópia em `coletar_sinais_risco.py` que o autoteste
+daquele coletor compara com a primeira. Usar as duas cópias que se conferem vale mais do que criar
+uma terceira. O número é **17 de 27**, e a ligação com o banco de municípios é pelo código, via
+arquivo de referência do IBGE — nenhum nome de capital digitado no gerador.
+
+**Estados que mudaram de faixa.** A lacuna era real e era de série: sem faixa por data, não há como
+dizer quem mudou **nem** dizer que ninguém mudou. Faltava quem escrevesse a série, e agora existe:
+`scripts/registrar_faixas.py` roda a cada publicação, antes do gerador da imprensa, e acrescenta em
+`data/historico_faixas.json` uma linha por **edição** com a faixa de cada unidade nos dois índices.
+O arquivo é append-only por edição: duas execuções no mesmo dia atualizam a linha do dia, e edição
+já escrita nunca é reescrita.
+
+Duas decisões de método ficam registradas. A faixa do MARÉ Legal é derivada do `total` publicado
+pela **régua canônica** do projeto (`gerar_monitor_saude.faixa`), e não por uma régua copiada no
+script — duas réguas é como uma delas envelhece sem ninguém ver. E **entrar ou sair de "não
+verificado" não conta como mudança de faixa**: isso é mudança de cobertura, e somar as duas coisas
+inflaria o número com estados que ninguém havia medido ainda.
+
+Enquanto a série tiver uma edição só, o cartão continua declarando — com o motivo certo, que agora
+é "a comparação começa na próxima edição", e não "a série está vazia".

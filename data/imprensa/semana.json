@@ -36,7 +36,7 @@
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "a série de mudanças de faixa por data está vazia nesta edição: sem ela, 'nenhum estado mudou' seria afirmação sem lastro",
+   "nota": "a série de faixas por edição tem 1 edição(ões): a comparação começa na próxima, e 'nenhum estado mudou' com um ponto só seria afirmação sem lastro",
    "secundaria": null,
    "lista": []
   },
@@ -44,18 +44,121 @@
    "id": "capitais_com_plano",
    "grupo": "preparacao",
    "rotulo": "Capitais com plano localizado",
-   "valor": null,
-   "sem_coleta": true,
+   "valor": 17,
+   "sem_coleta": false,
    "periodo": null,
-   "fonte": "—",
+   "fonte": "Diários oficiais municipais e sítios das prefeituras (via MARÉ)",
    "url_fonte": null,
    "consultado_em": null,
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "o banco de municípios não marca quais são capitais, e a lista disponível no repositório cobre 24 das 27 (faltam MS, RJ e RO): o cartão espera uma referência das 27 capitais",
+   "nota": "de 27 capitais",
    "secundaria": null,
-   "lista": []
+   "lista": [
+    {
+     "uf": "AL",
+     "municipio": "Maceió",
+     "documento": "Previne Maceió (5º ano)",
+     "url": "https://maceio.al.gov.br/noticias/defesa-civil/defesa-civil-intensifica-acoes-preventivas-para-o-periodo-chuvoso-em-maceio"
+    },
+    {
+     "uf": "AM",
+     "municipio": "Manaus",
+     "documento": "Plano Operacional de Enfrentamento à Estiagem 2026",
+     "url": "https://www.manaus.am.gov.br/wp-content/uploads/2025/03/PLANO-DE-CONTINGENCIA-OFICIAL-2024-UNIFICADO.pdf"
+    },
+    {
+     "uf": "BA",
+     "municipio": "Salvador",
+     "documento": "Operação Chuva 2026 / PPDC (Codesal)",
+     "url": "https://codesal.salvador.ba.gov.br/noticias/"
+    },
+    {
+     "uf": "CE",
+     "municipio": "Fortaleza",
+     "documento": "Operação Quadra Chuvosa 2026",
+     "url": "https://www.fortaleza.ce.gov.br/noticias/prefeitura-de-fortaleza-anuncia-acoes-da-operacao-quadra-chuvosa-de-2026"
+    },
+    {
+     "uf": "ES",
+     "municipio": "Vitória",
+     "documento": "PMPDC — Verão 2025/2026 (2ª atualização)",
+     "url": "https://defesacivil.es.gov.br/Media/DefesaCivil/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/VIT%C3%93RIA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202024-2025.pdf"
+    },
+    {
+     "uf": "MA",
+     "municipio": "São Luís",
+     "documento": "Plano de Contingência (2024) + mapeamento 2026",
+     "url": "https://www.saoluis.ma.gov.br/portal/noticias/0/3/2902/defesa-civil-de-sao-luis-conclui-mapeamento-de-areas-com-riscos-de-alagamentos"
+    },
+    {
+     "uf": "PB",
+     "municipio": "João Pessoa",
+     "documento": "Plano de Contingência (período chuvoso)",
+     "url": null
+    },
+    {
+     "uf": "PE",
+     "municipio": "Recife",
+     "documento": "Ação Inverno 2026 / Plano de Contingência Recife",
+     "url": "https://acaoinverno.recife.pe.gov.br/wp-content/uploads/2026/04/PLANO-DE-CONTINGENCIA-RECIFE-2026__final.pdf"
+    },
+    {
+     "uf": "PI",
+     "municipio": "Teresina",
+     "documento": "Planos de ação 2026 (chuvas + estiagem + incêndios)",
+     "url": null
+    },
+    {
+     "uf": "RJ",
+     "municipio": "Rio de Janeiro",
+     "documento": "Plano de Contingência para Chuvas Intensas",
+     "url": "https://www.defesacivil.rj.gov.br/index.php/para-municipios/plano-de-contingencias-dc"
+    },
+    {
+     "uf": "RN",
+     "municipio": "Natal",
+     "documento": "Plano de Contingência — chuvas",
+     "url": null
+    },
+    {
+     "uf": "RO",
+     "municipio": "Porto Velho",
+     "documento": "Força-tarefa integrada + Programa 10 Passos",
+     "url": null
+    },
+    {
+     "uf": "RR",
+     "municipio": "Boa Vista",
+     "documento": "Plano de Estiagem + fiscalização de terrenos",
+     "url": null
+    },
+    {
+     "uf": "RS",
+     "municipio": "Porto Alegre",
+     "documento": "PLACON 2025 (Decreto nº 23.434, 01/09/2025) + plano específico El Niño em elaboração",
+     "url": "https://prefeitura.poa.br/defesa-civil/plano-de-contingencias-de-protecao-e-defesa-civil"
+    },
+    {
+     "uf": "SE",
+     "municipio": "Aracaju",
+     "documento": "Plano de Contingenciamento (ed. 2024)",
+     "url": null
+    },
+    {
+     "uf": "SP",
+     "municipio": "São Paulo",
+     "documento": "Plano Preventivo de Chuvas de Verão (PPCV)",
+     "url": "https://prefeitura.sp.gov.br/web/secretaria_executiva_de_mudancas_climaticas/participacao_social/conselhos_e_orgaos_colegiados/plano_preventivo_de_chuva_de_verao"
+    },
+    {
+     "uf": "TO",
+     "municipio": "Palmas",
+     "documento": "Comitê PrevIncêndio (permanente)",
+     "url": null
+    }
+   ]
   },
   {
    "id": "decretos_no_periodo",
