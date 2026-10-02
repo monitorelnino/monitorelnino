@@ -786,6 +786,137 @@ def buscar_em_fluxo(url: str, timeout: int = 120, origem: str = None, pedaco: in
             yield bloco
 
 
+
+
+PAINEL_COLETORES = "saude_desfechos/coletores_painel.json"
+
+
+def registrar_tentativa_coletor(coletor: str, dados: dict, arquivo: str = PAINEL_COLETORES,
+                                agora: str = None, escrever: bool = True) -> dict:
+    """Acrescenta ao painel de saude dos coletores o resultado desta tentativa.
+
+    02/10/2026 (item 5 do contrato de layout): a coleta de desfecho em saude falhava e ninguem
+    via — a serie ficava parada e a pagina continuava igual, o que e pior do que a falha, porque
+    nao se distingue de dado que nao mudou. O painel e append-only: uma linha por tentativa, com
+    o que foi lido, o que foi republicado do ultimo agregado bom e o motivo de cada falha.
+
+    `escrever=False` existe para autoteste: ele confere o conteudo da linha sem tocar `data/`.
+    """
+    caminho = DATA / arquivo
+    atual = {}
+    if caminho.exists():
+        try:
+            atual = json.loads(caminho.read_text(encoding="utf-8"))
+        except ValueError:
+            atual = {}
+    atual.setdefault("_governanca", (
+        "Painel de saúde dos coletores de desfecho em saúde. Append-only: uma linha por tentativa, "
+        "com o que foi lido, o que foi republicado do último agregado bom e o motivo de cada "
+        "falha. Serve para que falha de coleta apareça, em vez de virar série parada."))
+    linhas = atual.setdefault("tentativas", [])
+    linha = {"coletor": coletor, "em": agora or hoje_editorial().isoformat()}
+    linha.update(dados or {})
+    linhas.append(linha)
+    atual["tentativas"] = linhas[-500:]
+    if escrever:
+        gravar_em(caminho, atual)
+    return atual
+
+
+class FluxoIncompleto(Exception):
+    """O corpo chegou menor do que a fonte declarou em Content-Length.
+
+    02/10/2026 (item 5 do contrato de layout): o banco anual do SIVEP-Gripe tem centenas de
+    megabytes, e conexao cortada no meio entregava um CSV truncado que o agregador lia sem
+    reclamar — meia serie publicada como serie inteira. Arquivo incompleto e falha, nao dado.
+    """
+
+
+def buscar_em_fluxo_confiavel(url: str, timeout: int = 180, origem: str = None,
+                              pedaco: int = 1 << 20, tentativas: int = 3,
+                              dormir=None, abrir=None):
+    """`buscar_em_fluxo` com retomada por Range, espera crescente e integridade no fim.
+
+    Tres mudancas estruturais sobre o fluxo simples, cada uma por uma falha medida:
+
+    1. **Retomada.** Quando a conexao cai no meio, pede-se o RESTO com `Range: bytes=N-`, em vez
+       de baixar os 247 MB outra vez. Fonte que nao aceita Range responde 200 com o arquivo
+       inteiro: nesse caso o que ja foi entregue ao chamador e inutil, e a funcao levanta em vez
+       de emendar pedaco velho com arquivo novo.
+    2. **Espera crescente.** Entre tentativas, 5 s, 15 s, 45 s. Indisponibilidade temporaria e a
+       fonte dizendo "tente mais tarde".
+    3. **Integridade.** Se a fonte declarou `Content-Length`, confere-se o total recebido ao fim e
+       levanta-se `FluxoIncompleto` quando falta byte. Bloqueio de acesso real (401/403/429/451)
+       e muro de robo NAO se repetem: recusa se respeita.
+
+    Os parametros `dormir` e `abrir` existem para o autoteste: ele troca a espera e a abertura de
+    conexao por funcoes suas, e assim prova a retomada sem rede.
+    """
+    abrir = abrir or _abrir_fluxo
+    dormir = dormir or time.sleep
+    recebidos, total_declarado, ultimo_erro = 0, None, None
+    for tentativa in range(tentativas):
+        try:
+            with abrir(url, timeout, origem, recebidos) as r:
+                cabecas = getattr(r, "headers", {}) or {}
+                decl = cabecas.get("Content-Length")
+                faixa = cabecas.get("Content-Range")
+                codigo = getattr(r, "status", 200) or 200
+                if recebidos and codigo != 206 and not faixa:
+                    # a fonte ignorou o Range: emendar seria inventar arquivo
+                    raise FluxoIncompleto(
+                        f"{url}: retomada pedida de {recebidos} bytes e a fonte respondeu o arquivo "
+                        "inteiro; o que já foi lido não pode ser emendado")
+                if decl is not None:
+                    try:
+                        total_declarado = int(decl) + (recebidos if (codigo == 206 or faixa) else 0)
+                    except (TypeError, ValueError):
+                        total_declarado = None
+                primeiro = recebidos == 0
+                while True:
+                    bloco = r.read(pedaco)
+                    if not bloco:
+                        break
+                    if primeiro:
+                        marca = detectar_muro_de_robo(bloco)
+                        if marca:
+                            raise MuroDeRobo(url, marca)
+                        primeiro = False
+                    recebidos += len(bloco)
+                    yield bloco
+            if total_declarado is not None and recebidos < total_declarado:
+                raise FluxoIncompleto(f"{url}: {recebidos} de {total_declarado} bytes")
+            return
+        except MuroDeRobo:
+            raise
+        except urllib.error.HTTPError as e:
+            if e.code in (401, 403, 429, 451):
+                raise
+            ultimo_erro = e
+        except Exception as e:  # noqa: BLE001
+            ultimo_erro = e
+        if tentativa < tentativas - 1:
+            dormir(5 * (3 ** tentativa))
+    raise ultimo_erro if ultimo_erro else FluxoIncompleto(url)
+
+
+def _abrir_fluxo(url: str, timeout: int, origem, desde: int = 0):
+    """Abre a conexao com as travas do projeto, pedindo o RESTO quando `desde` > 0."""
+    host = (urllib.parse.urlparse(url).netloc or "").lower()
+    robots = robots_de(host) if host else {"status": "indeterminado", "crawl_delay": None, "rp": None}
+    _respeitar_ritmo(host, robots.get("crawl_delay"))
+    cabecas = {"User-Agent": UA, "Accept": "*/*"}
+    if desde:
+        cabecas["Range"] = f"bytes={desde}-"
+    req = urllib.request.Request(url_ascii(url), headers=cabecas)
+    if robots.get("rp") is not None and not robots["rp"].can_fetch(UA, url_ascii(url)):
+        try:
+            registrar_acesso_contra_robots(host, url, origem)
+        except Exception:  # noqa: BLE001
+            pass
+    return urllib.request.urlopen(req, timeout=timeout, context=contexto_tls())
+
+
 # Quanto esperar antes de repetir, por status HTTP. Nasceu local em coletar_diarios_municipais.py
 # em 25/09/2026, depois de uma medição na varredura nacional: **63 dos 505 primeiros municípios**
 # viraram lacuna por `HTTP 503 Service Unavailable` — 12 %, e nenhum deles bloqueio de acesso.

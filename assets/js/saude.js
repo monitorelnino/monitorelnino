@@ -1064,8 +1064,14 @@ const AREAS = [
       });
       Object.keys(porUF).sort().forEach(uf => sel.insertAdjacentHTML('beforeend', '<option value="' + uf + '">' + uf + '</option>'));
       conta.textContent = contar(base, ref);
+      /* O crédito vai com o id LITERAL: o portão de saúde confere a existência do crédito lendo
+       * o código-fonte, e id montado por concatenação é invisível para ele — com razão, porque é
+       * invisível para quem lê o código também. */
       if (window.MonitorMapas && fontes) {
-        MonitorMapas.credito('box' + sufixo, {fontes: fontes, data: (base && (base.gerado_em || base.data)) || null});
+        const quando = (base && (base.gerado_em || base.data)) || null;
+        if (sufixo === 'DengueMunicipios') MonitorMapas.credito('boxDengueMunicipios', {fontes: fontes, data: quando});
+        if (sufixo === 'ChikMunicipios') MonitorMapas.credito('boxChikMunicipios', {fontes: fontes, data: quando});
+        if (sufixo === 'CalorMunicipios') MonitorMapas.credito('boxCalorMunicipios', {fontes: fontes, data: quando});
       }
       sel.addEventListener('change', () => {
         lista.innerHTML = (porUF[sel.value] || []).slice().sort((a, b) => a.localeCompare(b, 'pt-BR'))

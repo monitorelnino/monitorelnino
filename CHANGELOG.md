@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-02 · #518 · Coleta de doença respiratória confiável
+
+O banco anual do SIVEP-Gripe passa a ser baixado com retomada por `Range`, três tentativas com espera crescente e conferência do tamanho declarado — conexão cortada entregava CSV truncado lido como série inteira. Ano que falha é republicado do último agregado bom, com a lacuna declarada; cada tentativa entra num painel de saúde dos coletores. Autoteste simula falha de rede. Em `coletores_base.py`, `coletar_srag_sivep.py`, `coletar_sg_esus.py`.
+
 ## 2026-10-02 · #518 · Financiamento ao contrato, com o recorte que a fonte permite
 
 Página reconstruída ao contrato: três cartões por seção, listas no lugar do diagrama das rotas e dos mapas municipais, grade com os 27 estados. Os cartões do topo passam a vir de `gerar_financiamento_semana.py`: mês fechado onde o Portal publica por mês, sete dias onde o ato tem data — nada de "sem dado" com série em disco. Portão novo confere a coerência com a imprensa. Em `financiamento.html`, `assets/js/financiamento.js`, `scripts/`.

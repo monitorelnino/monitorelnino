@@ -3013,3 +3013,34 @@ despesa própria — que virou mapa por estado, com a média entre os município
 na subfunção 182, mais lista por município. Município sem lançamento não entra na média: ele
 lançou em outra rubrica, e não gastou zero. A grade de estados passou a mostrar os 27 sempre:
 a versão anterior listava só quem tinha mês lido e entregava 26 células, sem dizer qual faltava.
+
+## 90. Coleta grande que falha: retomada, último dado bom e falha visível (02/10/2026)
+
+O banco do SIVEP-Gripe tem centenas de megabytes por ano epidemiológico, e são oito anos. A
+coleta falhava com frequência, e falhava **em silêncio**: a série ficava parada e a página
+continuava igual — o que é pior do que a falha, porque série parada por falha e série parada
+porque o dado não mudou são indistinguíveis na tela. Três correções estruturais, cada uma
+por um modo de falha medido:
+
+1. **Retomada, não repetição.** `buscar_em_fluxo_confiavel` pede o resto com `Range: bytes=N-`
+   quando a conexão cai, em vez de baixar o arquivo inteiro outra vez; tenta três vezes, com
+   espera de 5 s, 15 s e 45 s. Fonte que ignora o `Range` responde o arquivo inteiro: emendar
+   pedaço velho com arquivo novo seria inventar dado, e a função levanta.
+2. **Integridade antes de processar.** Quando a fonte declara `Content-Length`, confere-se o
+   total recebido. Arquivo truncado levanta `FluxoIncompleto` — antes, meia série era agregada
+   e publicada como série inteira, sem nenhum sinal. Bloqueio de acesso real (401, 403, 429,
+   451) e muro de robô **não** se repetem: recusa se respeita (§186).
+3. **O último dado bom permanece, e a falha aparece.** O cache por ano já guardava o agregado;
+   agora, ano que falha é republicado de lá, e o arquivo publicado leva
+   `anos_republicados_por_falha`, `lacunas_por_ano` e `ultimo_dado_valido_em`. A seção nunca
+   desaparece e nunca mostra zero: as duas coisas afirmariam o que não se mediu.
+
+Além disso, `data/saude_desfechos/coletores_painel.json` passa a registrar **cada tentativa**,
+append-only, com os anos lidos, os republicados e o motivo de cada falha. O coletor de síndrome
+gripal usa a mesma porta: lá não há arquivo grande para retomar, porque a fonte recusa com 401
+e 403, mas a linha do painel distingue lacuna medida hoje de lacuna publicada em junho.
+
+O autoteste dos dois coletores exercita isso **sem rede**: ele troca a abertura da conexão por
+uma função própria e prova a retomada por `Range`, a recusa de emendar quando a fonte ignora o
+`Range`, a falha por tamanho menor que o declarado, a espera crescente e o conteúdo da linha do
+painel — sem escrever em `data/`.
