@@ -71,6 +71,7 @@ Atualizado em 02/10/2026.
 | `coletar_obitos_registro_civil.py` | — | `saude_desfechos/obitos_registro_civil.json` | — | não |
 | `coletar_painel_am.py` | — | — | — | não |
 | `coletar_prioritarios_mma.py` | — | `enquadramento_federal.json` | — | não |
+| `coletar_recursos_resposta.py` | — | `resposta/recursos_liberados.json` | — | não |
 | `coletar_s2id.py` | — | `atos_resposta.json` | — | não |
 | `coletar_saude.py` | — | `saude_federal.json`, `saude_sinais.json`, `saude_uf.json` | — | não |
 | `coletar_saude_estadual.py` | — | — | — | não |
