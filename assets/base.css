@@ -971,7 +971,13 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
 .cartao-mapa.r-calor{border-top-color:var(--calor);}
 .cartao-mapa.r-chuva{border-top-color:var(--chuva);}
 .cartao-mapa-familia{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption);
-  text-transform:uppercase; letter-spacing:var(--ls-caps); color:var(--muted); margin:0 0 var(--sp-1);}
+  text-transform:uppercase; letter-spacing:var(--ls-caps); color:var(--muted); margin:0 0 var(--sp-1);
+  /* 02/10/2026: ALTURA RESERVADA de uma linha, como o boletim logo abaixo já fazia. Sobretítulo que
+     quebrava em duas linhas empurrava título, subtítulo e mídia do primeiro cartão para baixo, e o
+     portão de consistência visual reprovava as três posições — foi o que aconteceu com "Como os
+     recursos são aplicados" a 1366 px. A reserva é do componente: o cartão alinha sozinho, qualquer
+     que seja o rótulo. */
+  min-height:calc(1 * var(--fs-caption) * var(--lh-caption)); overflow:hidden;}
 .cartao-mapa-boletim{font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);
   margin:0 0 var(--sp-2); min-height:calc(2 * var(--fs-caption) * var(--lh-caption));}
 .cartao-mapa .figura-titulo{min-height:calc(2 * var(--fs-h4) * var(--lh-h4));}
