@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-02 · #515 · Recursos federais de defesa civil por município
+
+Coletor novo: lê das portarias da SEDEC no DOU quanto a União autorizou transferir a cada município,
+com data, finalidade e valor. "Liberado" não é "pago" e resposta não é recuperação — o arquivo
+guarda as duas separadas, com o rótulo do próprio ato. Primeira carga: R$ 7,02 mi em resposta e
+R$ 191,3 mi em recuperação, 68 municípios. Prorrogação de prazo é recusada pelo nome. Em
+`METODOLOGIA.md` §85.
+
 ## 2026-10-02 · #517 · MARÉ Saúde reorganizado pela pergunta do leitor
 
 Cinco cartões dinâmicos no topo, da fonte primária; a situação de cada estado com um mapa só e a

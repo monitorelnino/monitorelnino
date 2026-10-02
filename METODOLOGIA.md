@@ -2819,6 +2819,44 @@ proibido é o mesmo: variação sem par.
 
 A suíte vai de 152 para 154 comandos.
 
+## 85. Recursos federais de defesa civil por município: o elo que faltava (02/10/2026)
+
+O MARÉ registrava o **reconhecimento** federal de emergência e as transferências **pagas** pelo
+Portal da Transparência. Faltava o meio: quanto a União **autorizou** transferir a cada município, e
+quando. É o item 7 do handover de 02/10/2026, e `coletar_recursos_resposta.py` o lê das portarias da
+Secretaria Nacional de Proteção e Defesa Civil no DOU.
+
+**A consulta e o que ela devolve, medido.** `"Autoriza a transferência de recursos"` na busca do DOU
+devolveu 65 atos entre 25/09 e 02/10/2026. Cada ato traz, no texto integral, o órgão, o número e a
+data da portaria, o município com a UF (`Joaíma/MG`), a finalidade, o valor e o processo no S2iD.
+
+**Duas distinções que o arquivo mantém separadas, e por quê.**
+
+*Liberado não é pago.* A portaria **autoriza**; a saída do dinheiro é outro fato, e quem o registra
+é o Portal da Transparência. O campo é `valor_autorizado`, a página diz "liberado", e a governança
+do arquivo proíbe a palavra "pago".
+
+*Resposta não é recuperação.* A mesma rota autoriza as duas, e o art. 1º diz qual é. Resposta é o
+socorro imediato; recuperação é a obra depois. Somá-las num cartão de "recursos de resposta" infla o
+número com dinheiro de outra finalidade — por isso `por_acao` guarda cada uma com o rótulo que o
+próprio ato usou. Medido na primeira carga: **R$ 7,02 milhões** em resposta e **R$ 191,3 milhões** em
+recuperação, em 68 municípios.
+
+**Dois achados que mudaram o coletor no meio do caminho.** O primeiro: o ato diz "ações de" duas
+vezes — a ementa usa o rótulo guarda-chuva da rota ("Proteção e Defesa Civil") e o art. 1º diz a
+finalidade real. Ler a primeira ocorrência classificava **todo** ato como "outra". O segundo: 35 dos
+65 atos são **prorrogações de prazo**, que alteram o prazo de uma portaria anterior e não autorizam
+dinheiro nenhum. Eles não têm valor porque não há valor, e chamá-los de "sem valor declarado"
+convidaria alguém, depois, a "consertar" o regex e somar dinheiro que o ato não autorizou. Agora a
+recusa tem o nome certo, `prorrogacao_de_prazo`.
+
+**A primeira carga lê 30 dias, não o ciclo inteiro.** Cada ato exige abrir o texto integral com o
+ritmo de 2 s por domínio: a janela do ciclo custaria horas de rede para um arquivo que a rodada
+diária preenche sozinha. A janela lida fica **declarada** em `janela_lida`, e a cadência diária
+estende a cobertura para frente — recorte declarado nunca é apresentado como varredura.
+
+Cadência diária, encadeada ao noturno dos diários, que já lê o mesmo DOU.
+
 ## 87. MARÉ Saúde reorganizado pela pergunta do leitor (02/10/2026)
 
 Bloco A do handover. A página abria pelo medidor do índice e por três mapas de estado; passa a abrir
