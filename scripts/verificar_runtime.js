@@ -327,7 +327,7 @@ setTimeout(() => {
   {
     const IDS_DADO = {
       "index.html": ["heroVerifFederal", "metaUltimaVerif", "respNum", "metaAtualizado", "corteDados"],
-      "saude.html": ["corteSaude", "gaugeSaudeNum", "gaugeSaudeN", "gaugeSaudeNV", "gaugeSaudeCorte", "rsNum", "rsCorte", "ctSemanaSaude", "ctNovoSaude"],
+      "saude.html": ["corteSaude", "gaugeSaudeNum", "gaugeSaudeN", "gaugeSaudeNV", "gaugeSaudeCorte", "rsNum", "rsCorte", "nPlanoSaude", "nCoordSaude", "nEmergSaude"],
       // `notaFogoCorte` saiu com o painel da rota do fogo (bloco B, 01/10/2026).
       "financiamento.html": ["corteFin"],
     };
