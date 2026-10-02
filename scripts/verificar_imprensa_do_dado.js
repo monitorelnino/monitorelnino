@@ -32,11 +32,14 @@ const PAGINA = "imprensa.html";
 // Os campos que NÃO podem ficar em "—" depois de a página carregar. Cada um é um número ou uma
 // data que o banco tem: se aparecer travessão aqui, a leitura falhou ou o id mudou de nome, e nos
 // dois casos a página publicada mente por omissão.
+// 01/10/2026: a lista acompanha a página reorganizada. Saíram os quatro contadores do topo e os
+// ids do release antigo (`relMedia`, `relDecretados`, `relPlanosMun`, `relQ1`, `relQ3`), que não
+// existem mais; entraram os do release aprovado.
 const OBRIGATORIOS = [
-  "relData", "relData2", "topoLegal", "topoSaude",
-  "topoPlanos", "topoPlanosSemana", "topoDecretos", "topoDecretosSemana",
+  "relData", "topoLegal", "topoSaude",
   "citarVersaoLegal", "citarVersaoSaude", "citarAcesso",
-  "relMedia", "relDecretados", "relPlanosMun",
+  "relLegal", "relSaude", "relPlanosSemana", "relDecretosSemana", "relPopSemana",
+  "relPlanosTotal", "relDecretosTotal",
 ];
 
 const falhas = [];
@@ -91,11 +94,16 @@ const ler = p => JSON.parse(fs.readFileSync(path.join(RAIZ, p), "utf-8"));
   try {
     const semana = ler("data/imprensa/semana.json");
     const de = id => (semana.cartoes.find(c => c.id === id) || {}).valor;
-    const pares = [["topoPlanosSemana", "planos_no_periodo"], ["topoDecretosSemana", "decretos_no_periodo"]];
+    // O número da semana aparece duas vezes na página: no cartão e no release. É aí que a conta
+    // dupla pode nascer, e é aí que o portão olha. "nenhum" é a forma aprovada do zero no release.
+    const pares = [["relPlanosSemana", "planos_no_periodo"],
+                   ["relDecretosSemana", "decretos_no_periodo"],
+                   ["relPopSemana", "populacao_decretos_no_periodo"]];
     for (const [id, cartao] of pares) {
       const naPagina = txt(id).replace(/\./g, "");
       const noDado = de(cartao);
-      if (noDado != null && naPagina !== String(noDado)) {
+      const esperado = noDado === 0 ? "nenhum" : String(noDado);
+      if (noDado != null && naPagina !== esperado) {
         falhas.push(`${PAGINA}: '${id}' mostra ${naPagina} e o cartão '${cartao}' tem ${noDado} — o mesmo número com duas contas`);
       }
     }

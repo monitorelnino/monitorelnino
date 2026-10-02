@@ -2666,3 +2666,52 @@ duas rotas é `fonte_bloqueada` e entra no log como **erro**; ano do ciclo ausen
 `consultado sem achado`; só rota aberta **e** ano presente autorizam agregar.
 
 Cadência semanal, na mesma rotina do SRAG, porque é a rodada que descobre quando a fonte abrir.
+
+## 83. A Imprensa dinâmica: a grade desenhada do dado, por grupo, com variação (01/10/2026)
+
+O handover da imprensa dinâmica abre pelo defeito, e ele era real: os cartões da semana liam um
+arquivo parado em 03–10/09, "13 avisos" convivia com "3.479 municípios sob aviso" na Defesa civil
+— dois números para a mesma coisa, em unidades diferentes —, e o topo repetia em contador o que a
+grade já dizia.
+
+**O motor.** `gerar_imprensa_semana.py` passa a produzir **16 cartões em cinco grupos**
+(preparação, emergências, risco agora, dinheiro, saúde), cada um com `grupo`, `url_fonte`,
+`valor_semana_anterior` e `variacao`. A variação é **calculada do mesmo dado**, deslocando a janela
+em sete dias **pela data do ato** — e não guardada de uma edição para a outra. É medição, não
+memória: audita-se a qualquer momento. Ela é diferença absoluta, nunca percentual, porque com base
+pequena o percentual engana ("de 1 para 2" não é "+100% de risco").
+
+**A unidade virou a mesma.** Saíram os cartões de "avisos do INMET em vigor" e "alertas do CEMADEN
+em vigor", que contavam AVISOS; entrou "municípios sob alerta do Cemaden", que lê
+`data/alertas/vigentes.json` — o arquivo que a Defesa civil lê. É a correção do item 0.
+
+**Três cartões não são calculáveis, e dizem por quê.** "Pago no período pelas medidas federais":
+as medidas publicam empenhado e pago em agregados **sem data de pagamento**. "Transferido pela
+União a municípios no período": o Portal da Transparência entrega o **mês**, não a semana.
+"Estados que mudaram de faixa": `data/historico_mudancas.json` está vazio, e sem série de faixa por
+data não se pode dizer quem mudou — nem que ninguém mudou. "Capitais com plano localizado" espera
+uma referência das 27: a única lista do repositório (normais do Inmet) cobre 24, sem MS, RJ e RO.
+Nenhum deles aparece como zero: zero diria que não houve pagamento, que ninguém mudou de faixa ou
+que nenhuma capital tem plano.
+
+**A página.** A ordem passa a ser topo → **Esta semana em números** → release → como citar → o que
+é o MARÉ → como os índices são calculados → o que cada página mostra → perguntas de fato. Saíram os
+quatro contadores do topo, o "pela data do ato" solto e o parágrafo-resumo. A grade **não existe no
+HTML**: ela é desenhada a partir do JSON, pelo grupo que cada cartão declara — e é assim que a
+regra 0 da página ("nada escrito à mão que dependa do dado") deixa de depender de vigilância e
+passa a ser estrutural, porque não há onde escrever.
+
+**O portão de coerência** (`scripts/verificar_imprensa_coerencia.py`) cobra três coisas: o mesmo
+número recomputado da mesma fonte que a outra página lê; período que não termine mais de oito dias
+antes da edição (a saúde é exceção declarada, porque usa a última semana epidemiológica completa); e
+nenhum dígito escrito à mão nos blocos que o dado preenche — com uma lista curta e declarada de
+constantes do texto aprovado ("de 100", "El Niño 2026/2027", "29 de junho", "de 27"), para que
+qualquer número **novo** continue reprovando.
+
+**A regra da variação mudou de forma, não de princípio.** O portão de 27/09 exigia
+`data/edicao_anterior/` para aceitar qualquer variação, e protegia de comparar com uma edição que
+não se guardou. Agora ele exige que o cartão traga o valor com que se comparou, que `variacao` feche
+com os dois valores e que `primeira_medicao` seja o espelho exato da ausência de par. O que continua
+proibido é o mesmo: variação sem par.
+
+A suíte vai de 152 para 154 comandos.

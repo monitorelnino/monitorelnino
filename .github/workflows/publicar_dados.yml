@@ -117,6 +117,13 @@ jobs:
       # regeneração não altere nada, que é a propriedade de verdade (derivado é função pura do dado
       # desta rodada). O portão 12 no modo `git` continua valendo onde ele faz sentido — na suíte,
       # abaixo, DEPOIS do commit local, quando a árvore está limpa de novo.
+      # 01/10/2026 (handover da imprensa dinâmica): os números da semana são gerados A CADA
+      # publicação, depois do recálculo e antes dos derivados — a página Imprensa não pode mostrar
+      # a semana da edição anterior, que foi o defeito do item 0 do handover.
+      - name: Gerar os números da semana (Imprensa)
+        timeout-minutes: 5
+        run: python3 gerar_imprensa_semana.py
+
       - name: Regenerar a cadeia canônica de derivados
         timeout-minutes: 8
         run: bash scripts/verificar_derivados.sh --idempotencia

@@ -84,11 +84,24 @@ def problemas() -> list[str]:
                 p.append(f"{ident}: cartão de janela sem período declarado")
 
         # (d) variação sem edição anterior é invenção
-        se_ha_anterior = (RAIZ / "data" / "edicao_anterior").exists()
-        if c.get("variacao") is not None and not se_ha_anterior:
-            p.append(f"{ident}: tem variacao sem data/edicao_anterior/ — variação inventada")
-        if not se_ha_anterior and not c.get("primeira_medicao"):
-            p.append(f"{ident}: sem edição anterior e sem primeira_medicao")
+        # (d) 01/10/2026: a variação é CALCULADA do mesmo dado, deslocando a janela em sete dias
+        # pela data do ato — medição, não memória. Por isso ela não depende mais de
+        # `data/edicao_anterior/`; depende de o cartão trazer o valor com que se comparou. O que
+        # continua proibido é o que a regra de 27/09 protegia: variação sem par.
+        tem_par = c.get("valor_semana_anterior") is not None
+        if c.get("variacao") is not None and not tem_par:
+            p.append(f"{ident}: tem variacao sem valor_semana_anterior — variação inventada")
+        if tem_par and c.get("variacao") is None:
+            p.append(f"{ident}: tem valor_semana_anterior e não diz a variação")
+        if bool(c.get("primeira_medicao")) == tem_par:
+            p.append(f"{ident}: primeira_medicao não espelha a existência do par comparável")
+        if (c.get("variacao") is not None
+                and c.get("valor") is not None
+                and c["variacao"] != c["valor"] - c["valor_semana_anterior"]):
+            p.append(f"{ident}: a variação não fecha com os dois valores do cartão")
+        # Todo cartão declara o grupo em que aparece na página: sem grupo, ele não tem lugar.
+        if c.get("grupo") not in ("preparacao", "emergencias", "risco_agora", "dinheiro", "saude"):
+            p.append(f"{ident}: grupo ausente ou fora dos cinco aprovados")
 
         # (e) estimativa de modelo declarada
         if ident in DE_MODELO and not c.get("sem_coleta"):
@@ -173,8 +186,22 @@ def autoteste() -> int:
     # negativo: variação sem edição anterior
     c = g.cartao("x", "r", 5, "f", "h")
     c["variacao"] = 3
-    checar("cartão com variacao e sem edicao_anterior seria reprovado",
-           c["variacao"] is not None and not (RAIZ / "data" / "edicao_anterior").exists())
+    # Os cartões do arquivo real: as travas abaixo valem sobre o que a edição publicou.
+    cartoes = (json.loads((RAIZ / "data" / "imprensa" / "semana.json").read_text(encoding="utf-8")) or {}).get("cartoes") or []
+    # As três travas da variação, exercitadas no arquivo real: o cartão que tem par declara a
+    # variação, o que não tem não a inventa, e `primeira_medicao` é o espelho exato do par.
+    checar("todo cartão com variação traz o valor com que se comparou",
+           all((x.get("valor_semana_anterior") is not None) == (x.get("variacao") is not None)
+               for x in cartoes))
+    checar("primeira_medicao espelha a ausência de par",
+           all(bool(x.get("primeira_medicao")) != (x.get("valor_semana_anterior") is not None)
+               for x in cartoes))
+    checar("a variação fecha com os dois valores do cartão",
+           all(x["variacao"] == x["valor"] - x["valor_semana_anterior"]
+               for x in cartoes if x.get("variacao") is not None))
+    checar("todo cartão declara o grupo em que aparece na página",
+           all(x.get("grupo") in ("preparacao", "emergencias", "risco_agora", "dinheiro", "saude")
+               for x in cartoes))
 
     # negativo: sem_coleta com valor
     c2 = g.cartao("y", "r", None, "f", None, sem_coleta=True)

@@ -54,37 +54,62 @@
     <h2 id="topoTitulo" class="sr-only">Os números da edição</h2>
     <p class="imprensa-manchete"><strong>MARÉ Legal</strong> <span id="topoLegal">—</span> de 100 · <strong>MARÉ Saúde</strong> <span id="topoSaude">—</span> de 100</p>
     <p class="spec" id="topoSaudeNota">—</p>
-    <div class="imprensa-contadores">
-      <p class="imprensa-contador"><b id="topoPlanos">—</b><span>municípios com plano localizado</span></p>
-      <p class="imprensa-contador"><b id="topoPlanosSemana">—</b><span>municípios publicaram plano na última semana</span></p>
-      <p class="imprensa-contador"><b id="topoDecretos">—</b><span>municípios sob decreto de emergência</span></p>
-      <p class="imprensa-contador"><b id="topoDecretosSemana">—</b><span>municípios decretaram emergência na última semana</span></p>
-    </div>
-    <p class="spec">pela data do ato</p>
   </section>
+
+  <section id="semana-em-numeros" aria-labelledby="semanaTitulo">
+    <h2 id="semanaTitulo">Esta semana em números</h2>
+    <p class="hint">Cada número traz a fonte e a data da consulta, e a variação em relação à semana
+      anterior. Nenhum deles entra no cálculo dos índices.</p>
+    <div id="gradeSemana"></div>
+    <p class="spec" id="semanaNaoCalculaveis" hidden>—</p>
+  </section>
+
+<dialog class="detail" id="detalheSemana" aria-label="Lista do cartão">
+    <h3 id="detalheSemanaTitulo">—</h3>
+    <dl id="detalheSemanaCorpo"></dl>
+    <button type="button" class="btn" id="detalheSemanaFechar">Fechar</button>
+  </dialog>
 
   <section id="release" aria-labelledby="releaseTitulo">
     <h2 id="releaseTitulo">Release da edição</h2>
     <div class="release" id="releaseTexto">
-      <p>Nesta semana, a preparação publicada está em <strong><span id="relMedia">—</span> de 100</strong>: <span id="relNovo">—</span> estados publicaram plano feito para este El Niño (<span id="relNovoUFs">—</span>), <span id="relTodoAno">—</span> mantêm o plano de todo ano, <span id="relElab">—</span> estão com plano em elaboração e em <span id="relLacUFs">—</span> não há plano localizado. <span id="relPlanosMun">—</span> planos municipais estão localizados. <span id="relDecretados">—</span> municípios, <span id="relPopMilhoes">—</span> milhões de pessoas, estão sob decreto de emergência; <span id="relReconhecidos">—</span> já foram reconhecidos pelo governo federal. O primeiro decreto do ciclo é de <span id="relPrimeiroDecreto">—</span>.</p>
-      <p>Em <span id="relQ1">—</span> estados, o plano foi publicado antes e o decreto veio depois. Em <span id="relQ3">—</span>, o decreto veio sem plano localizado.</p>
+      <p>Edição de <span id="relDataRelease">—</span>. O MARÉ Legal, índice que acompanha a preparação
+        publicada por estados e municípios para o El Niño 2026/2027, está em
+        <strong><span id="relLegal">—</span> de 100</strong>; o MARÉ Saúde, em
+        <strong><span id="relSaude">—</span> de 100</strong><span id="relSaudeRessalva"></span>.
+        Na semana, <span id="relPlanosSemana">—</span> municípios publicaram plano para o ciclo e
+        <span id="relDecretosSemana">—</span> decretaram situação de emergência ou calamidade;
+        <span id="relPopSemana">—</span> pessoas vivem nos municípios que decretaram.
+        <span id="relFaixaSemana">—</span></p>
+      <p>Desde o início do ciclo, em 29 de junho, <span id="relPlanosTotal">—</span> municípios têm
+        plano localizado e <span id="relDecretosTotal">—</span> decretaram emergência ou
+        calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O
+        MARÉ é uma criação da Futura Evidence Lab.</p>
     </div>
     <button type="button" class="btn" id="copiarRelease">Copiar texto</button>
   </section>
 
-  <section id="o-que-e" aria-labelledby="oQueETitulo">
+<section id="citar" aria-labelledby="citarTitulo">
+    <h2 id="citarTitulo">Como citar</h2>
+    <p><strong>Na reportagem:</strong> Fonte: MARÉ / Futura Evidence Lab.</p>
+    <p data-voz="citacao"><strong>Referência completa:</strong> FUTURA EVIDENCE LAB. <em>MARÉ — Monitor de Antecipação e Resposta ao El Niño</em>. MARÉ Legal, versão <span id="citarVersaoLegal">—</span>; MARÉ Saúde, versão <span id="citarVersaoSaude">—</span>. Edição de <span id="relData2">—</span>. Disponível em: monitorelnino.com.br. Acesso em: <span id="citarAcesso">—</span>.</p>
+    <p><strong>Direitos.</strong> Os índices MARÉ Legal e MARÉ Saúde, seu método e sua marca são propriedade intelectual da Futura Evidence Lab. A <a href="METODOLOGIA.pdf">metodologia completa</a> é pública; o código que calcula os índices não é distribuído. Dados, mapas e gráficos podem ser reproduzidos, inclusive para fins comerciais, com o crédito "MARÉ / Futura Evidence Lab" e a fonte primária de cada figura (licença Creative Commons CC BY 4.0).</p>
+    <p><strong>Pesquisadores e redações:</strong> dúvidas sobre o método, gráficos ou mapas sob encomenda e recortes dos dados podem ser pedidos em <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a>.</p>
+  </section>
+
+<section id="o-que-e" aria-labelledby="oQueETitulo">
     <h2 id="oQueETitulo">O que é o MARÉ</h2>
     <p>O MARÉ, Monitor de Antecipação e Resposta ao El Niño, é uma criação da <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener">Futura Evidence Lab</a>. Ele acompanha como o Brasil se prepara e responde ao El Niño 2026/2027 por meio de dois índices compostos, construídos com metodologia própria e publicada: o <strong>MARÉ Legal</strong>, que mede a preparação publicada por estados e municípios em proteção e defesa civil, e o <strong>MARÉ Saúde</strong>, que mede a preparação do setor de saúde. Os dois seguem o método de construção de índices compostos da OCDE e do Centro Comum de Investigação da Comissão Europeia, com testes de robustez publicados. Ao lado dos índices, o site reúne sinais oficiais do clima, os decretos de emergência, o dinheiro público e orientações à população.</p>
   </section>
 
-  <section id="como-calculados" aria-labelledby="comoCalcTitulo">
+<section id="como-calculados" aria-labelledby="comoCalcTitulo">
     <h2 id="comoCalcTitulo">Como os índices são calculados</h2>
     <p><strong>MARÉ Legal.</strong> Um índice de 0 a 100 para cada estado, feito de três partes com o mesmo peso: o plano do estado, avaliado numa escala que vai do plano preparado especificamente para este El Niño até zero, quando não localizamos plano para o risco do ciclo; quem coordena a resposta, como comitês e gabinetes criados ou reativados para o ciclo; e quanta gente está coberta por planos municipais localizados. A data em que o plano saiu não entra no índice; aparece à parte. O índice do Brasil é a média dos estados.</p>
     <p><strong>MARÉ Saúde.</strong> A mesma lógica, para o setor de saúde: o plano de contingência de saúde do estado, a população em municípios cujo plano trata da saúde, e quando o plano foi publicado.</p>
     <p><strong>O que os índices não dizem.</strong> Se há dinheiro, equipamento ou pessoal, se o plano é bom ou se está sendo cumprido. Eles medem o que foi publicado e pode ser conferido. Os decretos de emergência são contados à parte e nunca entram nos índices.</p>
   </section>
 
-  <section id="o-que-mostra" aria-labelledby="oQueMostraTitulo">
+<section id="o-que-mostra" aria-labelledby="oQueMostraTitulo">
     <h2 id="oQueMostraTitulo">O que cada página mostra</h2>
     <ul class="fontes-list">
       <li><a href="index.html"><strong>MARÉ Legal</strong></a>, na página inicial: o índice de cada estado, a ficha de cada um e a busca por cidade.</li>
@@ -97,86 +122,38 @@
     </ul>
   </section>
 
-  <section id="semana-em-numeros" aria-labelledby="semanaTitulo">
-    <h2 id="semanaTitulo">Esta semana em números</h2>
-    <p class="hint">Cada cartão traz a fonte e a data da consulta. Nada aqui entra no cálculo dos índices.</p>
-    <div class="grade-numeros" id="gradeSemana">
-      <div class="cartao-numero" data-cartao="decretos_no_periodo">
-        <p class="cartao-numero-rotulo">Municípios que decretaram emergência ou calamidade</p>
-        <p class="cartao-numero-valor"><span data-imprensa="decretos_no_periodo">20</span></p>
-        <p class="cartao-numero-fonte" data-imprensa-meta="decretos_no_periodo">—</p>
-        <button type="button" class="link-pequeno" data-imprensa-lista="decretos_no_periodo" hidden>Ver quais</button>
-      </div>
-      <div class="cartao-numero" data-cartao="reconhecimentos_no_periodo">
-        <p class="cartao-numero-rotulo">Municípios reconhecidos pelo governo federal</p>
-        <p class="cartao-numero-valor"><span data-imprensa="reconhecimentos_no_periodo">55</span></p>
-        <p class="cartao-numero-fonte" data-imprensa-meta="reconhecimentos_no_periodo">—</p>
-        <button type="button" class="link-pequeno" data-imprensa-lista="reconhecimentos_no_periodo" hidden>Ver quais</button>
-      </div>
-      <div class="cartao-numero" data-cartao="planos_no_periodo">
-        <p class="cartao-numero-rotulo">Planos municipais publicados</p>
-        <p class="cartao-numero-valor"><span data-imprensa="planos_no_periodo">0</span></p>
-        <p class="cartao-numero-fonte" data-imprensa-meta="planos_no_periodo">—</p>
-        <button type="button" class="link-pequeno" data-imprensa-lista="planos_no_periodo" hidden>Ver quais</button>
-      </div>
-      <div class="cartao-numero" data-cartao="focos_24h">
-        <p class="cartao-numero-rotulo">Focos de calor detectados</p>
-        <p class="cartao-numero-valor"><span data-imprensa="focos_24h">112</span></p>
-        <p class="cartao-numero-fonte" data-imprensa-meta="focos_24h">—</p>
-        <button type="button" class="link-pequeno" data-imprensa-lista="focos_24h" hidden>Ver por estado</button>
-      </div>
-      <div class="cartao-numero" data-cartao="avisos_inmet">
-        <p class="cartao-numero-rotulo">Avisos meteorológicos em vigor</p>
-        <p class="cartao-numero-valor"><span data-imprensa="avisos_inmet">13</span></p>
-        <p class="cartao-numero-fonte" data-imprensa-meta="avisos_inmet">—</p>
-        <button type="button" class="link-pequeno" data-imprensa-lista="avisos_inmet" hidden>Ver por estado</button>
-      </div>
-      <div class="cartao-numero" data-cartao="alertas_cemaden">
-        <p class="cartao-numero-rotulo">Alertas do CEMADEN em vigor</p>
-        <p class="cartao-numero-valor"><span data-imprensa="alertas_cemaden">2</span></p>
-        <p class="cartao-numero-fonte" data-imprensa-meta="alertas_cemaden">—</p>
-        <button type="button" class="link-pequeno" data-imprensa-lista="alertas_cemaden" hidden>Ver por estado</button>
-      </div>
-      <div class="cartao-numero" data-cartao="temperatura_maxima">
-        <p class="cartao-numero-rotulo">Maior máxima prevista entre as capitais, em grau Celsius</p>
-        <p class="cartao-numero-valor"><span data-imprensa="temperatura_maxima">39,0</span></p>
-        <p class="cartao-numero-fonte" data-imprensa-meta="temperatura_maxima">—</p>
-        <button type="button" class="link-pequeno" data-imprensa-lista="temperatura_maxima" hidden>Ver as cinco maiores</button>
-      </div>
-      <div class="cartao-numero" data-cartao="qualidade_ar_indice">
-        <p class="cartao-numero-rotulo" data-imprensa-titulo="qualidade_ar_indice">Capitais com índice de qualidade do ar acima da faixa razoável</p>
-        <p class="cartao-numero-valor"><span data-imprensa="qualidade_ar_indice">19</span></p>
-        <p class="cartao-numero-fonte" data-imprensa-meta="qualidade_ar_indice">—</p>
-        <button type="button" class="link-pequeno" data-imprensa-lista="qualidade_ar_indice" hidden>Ver quais</button>
-      </div>
-    </div>
-    <p class="hint" id="semanaTextoPronto">Entre 03/09 e 10/09, 20 municípios decretaram emergência ou calamidade (AL, AM, PB); 55 municípios foram reconhecidos pelo governo federal; o INPE detectou 112 focos de calor nas últimas 24 horas (PA); 13 avisos meteorológicos do INMET estão em vigor; 2 alertas do CEMADEN estão em vigor; a maior máxima prevista entre as capitais é de 39,0 °C em Teresina; 19 capitais estão com índice de qualidade do ar acima de 40.</p>
-    <p class="spec" id="semanaNaoCalculaveis" hidden>—</p>
-  </section>
-
-  <dialog class="detail" id="detalheSemana" aria-label="Lista do cartão">
-    <h3 id="detalheSemanaTitulo">—</h3>
-    <dl id="detalheSemanaCorpo"></dl>
-    <button type="button" class="btn" id="detalheSemanaFechar">Fechar</button>
-  </dialog>
-
   <section id="faq" data-voz="lei" aria-labelledby="faqTitulo">
     <h2 id="faqTitulo">Perguntas de fato</h2>
     <ul class="fontes-list">
-      <li><strong>Decretar emergência conta como preparação?</strong> O MARÉ conta decretos de emergência separadamente do índice. Decreto de alerta ou de mobilização, sem pedido de reconhecimento federal, conta como preparação.</li>
-      <li><strong>Qual a diferença entre "plano feito para este ciclo" e "plano de todo ano"?</strong> O primeiro cita o primeiro boletim, de 29 de junho, o período 2026/27 ou o risco previsto para o estado, inclusive quando é o oposto do habitual (Santa Catarina incluiu estiagem e incêndio); o segundo repete a temporada anterior. Um plano recorrente de seca no semiárido conta; vale mais quando reeditado com menção ao ciclo, e mais ainda quando feito para ele; um plano de chuvas num estado com previsão de seca trata de outro risco. Os pontos de cada caso estão na metodologia.</li>
-      <li><strong>O que o STF pediu aos estados?</strong> ADPF 743, 25/05/2026: União e dez estados da Amazônia Legal e do Pantanal informam, em dez dias úteis, as providências de preparação para os incêndios do segundo semestre.</li>
-      <li><strong>Como pedir o plano da minha cidade?</strong> Lei de Acesso à Informação (12.527): resposta em 20 dias.</li>
+      <li><strong>O que conta como plano para o MARÉ?</strong> Um documento oficial, publicado por
+        governo estadual ou municipal, que trate da preparação para os riscos do El Niño ou do
+        ciclo 2026/2027, com fonte e data. Notícia não conta como registro; serve só como pista
+        para a busca.</li>
+      <li><strong>Decretar emergência conta como preparação?</strong> Não. O decreto de situação de
+        emergência ou de calamidade é resposta a um dano, e é contado à parte, fora dos índices. Um
+        decreto de alerta ou de mobilização, sem pedido de reconhecimento federal, conta como
+        estrutura de coordenação.</li>
+      <li><strong>Qual a diferença entre plano para o ciclo e plano de todo ano?</strong> O plano
+        para o ciclo cita o El Niño 2026/2027, o primeiro boletim, de 29 de junho, ou o risco
+        previsto para o estado. O plano de todo ano se repete a cada temporada; ele conta quando
+        trata do risco previsto, e conta mais quando foi revisado em 2026. Um plano para outro
+        risco não conta.</li>
+      <li><strong>Por que um município aparece como "não localizado"?</strong> Porque procuramos
+        nas fontes oficiais e não encontramos. Não quer dizer que o plano não exista. "Ainda não
+        verificado" quer dizer que a busca completa ainda não foi feita.</li>
+      <li><strong>O que o Supremo determinou?</strong> Na ADPF 743, em 25 de maio de 2026, o
+        Supremo Tribunal Federal determinou que a União e dez estados da Amazônia Legal e do
+        Pantanal informassem, em dez dias úteis, as providências de preparação para os incêndios do
+        segundo semestre.</li>
+      <li><strong>De onde vem a previsão do El Niño?</strong> Do boletim do Painel El Niño
+        2026–2027, publicado pelos órgãos federais de clima e defesa civil: Inmet, Cemaden, Inpe,
+        Agência Nacional de Águas, Serviço Geológico do Brasil e Defesa Civil nacional.</li>
+      <li><strong>Como pedir o plano de uma cidade?</strong> Pela Lei de Acesso à Informação, a Lei
+        12.527/2011, no serviço de informação ao cidadão da prefeitura. O prazo de resposta é de 20
+        dias, prorrogáveis por mais 10.</li>
     </ul>
   </section>
 
-  <section id="citar" aria-labelledby="citarTitulo">
-    <h2 id="citarTitulo">Como citar</h2>
-    <p><strong>Na reportagem:</strong> Fonte: MARÉ / Futura Evidence Lab.</p>
-    <p data-voz="citacao"><strong>Referência completa:</strong> FUTURA EVIDENCE LAB. <em>MARÉ — Monitor de Antecipação e Resposta ao El Niño</em>. MARÉ Legal, versão <span id="citarVersaoLegal">—</span>; MARÉ Saúde, versão <span id="citarVersaoSaude">—</span>. Edição de <span id="relData2">—</span>. Disponível em: monitorelnino.com.br. Acesso em: <span id="citarAcesso">—</span>.</p>
-    <p><strong>Direitos.</strong> Os índices MARÉ Legal e MARÉ Saúde, seu método e sua marca são propriedade intelectual da Futura Evidence Lab. A <a href="METODOLOGIA.pdf">metodologia completa</a> é pública; o código que calcula os índices não é distribuído. Dados, mapas e gráficos podem ser reproduzidos, inclusive para fins comerciais, com o crédito "MARÉ / Futura Evidence Lab" e a fonte primária de cada figura (licença Creative Commons CC BY 4.0).</p>
-    <p><strong>Pesquisadores e redações:</strong> dúvidas sobre o método, gráficos ou mapas sob encomenda e recortes dos dados podem ser pedidos em <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a>.</p>
-  </section>
 </main>
   <footer class="site-footer">
     <div class="grad-line"></div>

@@ -181,6 +181,10 @@ jobs:
           # quase virou lacuna falsa no CHANGELOG.
           python3 scripts/verificar_imprensa.py
           python3 scripts/verificar_imprensa.py --autoteste
+          # assunto: texto rapido
+          python3 scripts/verificar_imprensa_coerencia.py
+          # assunto: texto rapido
+          python3 scripts/verificar_imprensa_coerencia.py --autoteste
           python3 gerar_imprensa_semana.py --autoteste
           # §256 (27/09/2026): paridade entre data/cobertura_qd.json e o bloco
           # varredura_diarios de data/verificacao_resumo.json. Os dois contam a MESMA coisa —

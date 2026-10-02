@@ -52,7 +52,11 @@ const EXCECOES = [GARANTIA_DECRETO,
 /^Pior hora do dia\b/, /\bpior hora do dia\b/gi,
   /o Brasil não tem índice nacional aberto de qualidade do ar, por isso usamos a escala europeia/gi,
   LEGENDA_OFICIAL_ANA,
-FRASE_DE_PRIVACIDADE, /síndrome respiratória aguda grave/gi, /aguda grave/gi, /janela crítica/gi, /sinais de alarme/gi, /nível \d \((?:baixa atividade|atenção|alerta|emergência)\)/gi,
+FRASE_DE_PRIVACIDADE, /síndrome respiratória aguda grave/gi, /aguda grave/gi,
+/* 01/10/2026 (bloco D do handover de saúde): a sigla SRAG passou a ser escrita por extenso no
+   texto público, e o nome da doença é "síndrome respiratória grave". É NOME DE DOENÇA, não
+   juízo sobre o dado — a forma com "aguda" já estava aqui pela mesma razão. */
+/síndrome respiratória grave/gi, /janela crítica/gi, /sinais de alarme/gi, /nível \d \((?:baixa atividade|atenção|alerta|emergência)\)/gi,
   /alerta[s]? (?:hidrológic|geológic|meteorológic|vigente|de risco|nacional|laranja|vermelh)/gi, /nível de alerta/gi, /em alerta/gi, /avisos? meteorológic/gi, /alertas? (?:do|de) CEMADEN/gi,
   /restrição importante de transporte/gi, /grau de urgência/gi, /situação de emergência|estado de emergência|emergência sanitária|emergências sanitárias|decreto de emergência|decretos de emergência/gi,
   /grave e urgente necessidade pública/gi, /seca (?:fraca|moderada|grave|extrema|excepcional)/gi,   /* categorias S0–S4 do Monitor de Secas (ANA), vocabulário da fonte */ /matéria urgente, relevante/gi, /risco de fogo/gi, /pior desfecho/gi, /melhor(?:es)? (?:esforços|estimativa)/gi];
