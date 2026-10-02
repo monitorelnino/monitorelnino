@@ -123,8 +123,6 @@ jobs:
           # assunto: dado
           python3 scripts/gerar_topo_das_paginas.py --autoteste
           # assunto: dado
-          python3 scripts/verificar_imprensa_coerencia.py --autoteste
-          # assunto: dado
           python3 scripts/verificar_autoteste_nao_escreve.py --autoteste
           # assunto: dado
           python3 scripts/verificar_autoteste_nao_escreve.py
@@ -215,9 +213,9 @@ jobs:
           # quase virou lacuna falsa no CHANGELOG.
           python3 scripts/verificar_imprensa.py
           python3 scripts/verificar_imprensa.py --autoteste
-          # assunto: texto rapido
-          python3 scripts/verificar_imprensa_coerencia.py
-          # assunto: texto rapido
+          # O portão de COERÊNCIA da imprensa precisa de navegador (ele compara o número da
+          # imprensa com o número renderizado na página de origem), e por isso vive no portão de
+          # layout, depois da instalação do Chromium. Aqui fica só o autoteste dele, que é offline.
           python3 scripts/verificar_imprensa_coerencia.py --autoteste
           python3 gerar_imprensa_semana.py --autoteste
           # §256 (27/09/2026): paridade entre data/cobertura_qd.json e o bloco
