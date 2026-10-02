@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-02 · #523 · Localizador: do mais novo para o mais velho
+
+Onde o nome do arquivo pede o número da edição, o localizador percorre as datas do mais novo para o mais velho: a âncora de cada data passa a ser a vizinha, e a deriva por passo é de uma ou duas edições. Da outra ordem, a janela não alcançava dois meses de deriva e o Mato Grosso do Sul dava 404 em todas as datas. Em `coletar_edicoes_doe.py`.
+
 ## 2026-10-02 · #522 · Canal 2: baixar a edição do diário, não buscar nele
 
 `coletar_edicoes_doe.py` baixa a edição por data, extrai o texto e indexa as ocorrências com trecho e página; a campanha consome o índice. Arquivo servido com 200 que não é diário e sigla sem contexto de saúde não contam. PB e MS registrados pelo documento relido, com F1 e F2. A coordenação passa a exigir as duas funções. METODOLOGIA §94.
