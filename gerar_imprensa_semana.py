@@ -650,6 +650,13 @@ def importado(ident, rotulo, fonte_card, *, grupo, valor=None, referencia=None, 
     v = c.get("valor") if valor is None else valor
     if v is None:
         sem = True
+    var = variacao if valor is None else None
+    if variacao is not None:
+        var = variacao
+    if valor is not None and variacao is None:
+        var = None
+    elif valor is None and variacao is None:
+        var = c.get("variacao")
     return {
         "id": ident, "grupo": grupo, "rotulo": rotulo,
         "valor": None if sem else v,
@@ -660,9 +667,14 @@ def importado(ident, rotulo, fonte_card, *, grupo, valor=None, referencia=None, 
         "fonte": fonte or FONTE_LEITOR.get(c.get("fonte"), c.get("fonte")) or "—",
         "url_fonte": url_fonte or c.get("url_fonte"),
         "consultado_em": c.get("referencia"),
-        "primeira_medicao": (variacao if variacao is not None else c.get("variacao")) is None,
+        # `valor` passado é OVERRIDE: nesse caso o cartão publica outro recorte do mesmo cartão de
+        # origem (a contagem da SEMANA, e não o acumulado do ciclo), e a variação do instantâneo
+        # NÃO se aplica a ele — ela é a variação do acumulado, que aqui já é o próprio valor.
+        # Publicar a mesma conta como valor e como variação diria duas vezes a mesma coisa, e o
+        # portão da imprensa cobra que variação feche com o par — que aqui não existe.
+        "primeira_medicao": var is None,
         "valor_semana_anterior": None,
-        "variacao": variacao if variacao is not None else c.get("variacao"),
+        "variacao": var,
         "nota": nota if nota is not None else c.get("nota"),
         "secundaria": None,
         "lista": c.get("lista") or [],
