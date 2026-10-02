@@ -4101,14 +4101,25 @@
    "ibge": "2401008",
    "nome": "Apodi",
    "uf": "RN",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Norte (FEMURN))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117688_2026-10-01_97b8c3f18c372f20fc7378258f968c0a.pdf",
+     "data": "2026-10-02",
+     "decreto": "Decreto nº 280",
+     "hash": "2432e1e290ed9f3573944944630a59aa77fb0684f721f7fef85d31e3da8b413c"
+    }
+   ],
+   "n_eventos": 1
   },
   "2901908": {
    "ibge": "2901908",
@@ -5059,14 +5070,25 @@
    "ibge": "4101705",
    "nome": "Araruna",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "tipos": [],
+   "decreto": true,
+   "primeiro_decreto": "30/09/2026",
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17334",
+     "data": "30/09/2026",
+     "decreto": "Decreto municipal nº 2.691",
+     "hash": "68c1da318ff111114b55efc844cba7e70eb424d6a075ced021d9d2eb930f9024"
+    }
+   ],
+   "n_eventos": 1
   },
   "2501005": {
    "ibge": "2501005",
@@ -9485,9 +9507,17 @@
      "data": "2026-09-23",
      "decreto": "Decreto nº 102",
      "hash": "acf208b43c4eb7369607d20bf5e2af17d8a0a96a6cc3a521e1891e1be3b19b62"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118958_2026-10-01_7fc9fe12893c2105eb14a29edc135c77.pdf",
+     "data": "2026-10-02",
+     "decreto": "Decreto nº 031/2026",
+     "hash": "dc56f9f0e3b167349bdd2fa91f010dd8016b9d1166bc54a82c81bf45ae34ed43"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "4302253": {
    "ibge": "4302253",
@@ -19134,7 +19164,7 @@
    "nome": "Clevelândia",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": null,
+   "primeiro_decreto": "30/09/2026",
    "tipos": [
     "SE"
    ],
@@ -19157,9 +19187,17 @@
      "data": "2026-09-29",
      "decreto": "Decreto nº 234/2026",
      "hash": "6c676aca2d458b9c1c3df8b8f79a9b50b58d97d1f95f4d76bb7ccd047ee7e0e5"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17334",
+     "data": "30/09/2026",
+     "decreto": "Decreto municipal nº 235",
+     "hash": "68c1da318ff111114b55efc844cba7e70eb424d6a075ced021d9d2eb930f9024"
     }
    ],
-   "n_eventos": 2
+   "n_eventos": 3
   },
   "2908002": {
    "ibge": "2908002",
@@ -29990,9 +30028,17 @@
      "data": "2026-09-03",
      "decreto": "Decreto nº 3.404",
      "hash": "f222d6f1a610a1cbf60645e753e980920d56f3baa8ca18c27c828ae508ef1ed2"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Sul (FAMURS))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117942_2026-10-01_7715a5d13f59dad3fe0f1e0383773e49.pdf",
+     "data": "2026-10-02",
+     "decreto": "Decreto nº 3.434",
+     "hash": "e7085df3b291f234c872412d66be3806da786d63a355a39c3b39bf779329ca8f"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "5209408": {
    "ibge": "5209408",
