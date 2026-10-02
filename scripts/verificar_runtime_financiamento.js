@@ -57,40 +57,79 @@ setTimeout(() => {
   teste("zero erros de runtime", erros.length === 0);
   erros.slice(0, 4).forEach(e => console.log("     ", e));
 
-  // ── a página em seis blocos (bloco B do handover, 01/10/2026) ──────────────────────────────
+  // ── a ordem da página (bloco B do handover, 02/10/2026) ───────────────────────────────────
+  // A pergunta do leitor manda: primeiro os números da semana, depois quanto chegou ao estado
+  // dele, depois o dinheiro do ciclo, depois a cidade dele. Cobrar a ordem antiga guardaria uma
+  // página que não existe mais.
   const secoes = [...d.querySelectorAll("#conteudo section")].map(x => x.id);
-  teste("seis blocos, na ordem do handover",
-    JSON.stringify(secoes) === JSON.stringify(["dc-topo-ou-numeros", "dinheiroElNino", "prometeu",
-                                                "dinheiroProprio", "caminho", "casos"].slice(1))
-    || JSON.stringify(secoes.slice(1)) === JSON.stringify(["dinheiroElNino", "prometeu",
-                                                            "dinheiroProprio", "caminho", "casos"]));
+  teste("ordem da página: semana, estado, ciclo, cidade, dinheiro próprio, caminho, casos",
+    JSON.stringify(secoes.slice(1)) === JSON.stringify(["porEstado", "dinheiroElNino", "suaCidade",
+                                                        "dinheiroProprio", "caminho", "casos"]));
+  teste("saíram da página: os dois mapas da parcela de 4%, o diagrama das rotas e a mediana",
+    !q("mapaMPsUF") && !q("mapaMP1384UF") && !q("boxRotaMPs") && !q("topoMediana"));
 
-  // ── os três números do topo saem do DADO, e o que não foi coletado diz que não foi ─────────
+  // ── os cartões da semana: só indicador dinâmico, e o que a fonte não dá é declarado ────────
   const C = JSON.parse(fs.readFileSync(path.join(raiz, "data", "financiamento", "compromissos_federais.json"), "utf-8"));
-  const D = JSON.parse(fs.readFileSync(path.join(raiz, "data", "financiamento", "municipios", "despesa_182.json"), "utf-8"));
-  const plano = (C.itens || []).find(i => /execução direta/i.test(i.esfera || ""));
-  teste("topo: anunciado é o total do plano federal, não a soma dos compromissos",
-    plano ? txt("topoAnunciado").includes(String(Math.round(plano.valor_total / 1e9))) : txt("topoAnunciado") === "—");
-  /* A trava que importa aqui: "pago" sem coleta NÃO pode aparecer como R$ 0 — isso afirmaria que
-     nada foi pago, que é outra coisa. */
-  const pagos = (C.itens || []).filter(i => typeof i.pago === "number");
-  teste("topo: pago sem coleta não vira R$ 0",
-    pagos.length ? /R\$/.test(txt("topoPago")) : txt("topoPago") === "sem coleta");
-  teste("topo: a mediana é a do resumo do SICONFI",
-    txt("topoMediana").includes(D.resumo.mediana_rs_hab.toFixed(2).replace(".", ",")));
-  teste("topo: cada cartão declara a sua fonte",
-    ["topoAnunciadoFonte", "topoPagoFonte", "topoMedianaFonte"].every(i => txt(i) && txt(i) !== "—"));
-  teste("topo: o corte aparece no HTML estático, para quem não tem JavaScript",
-    /id="corteFin"[^>]*>\s*\d{2}\/\d{2}\/\d{4}/.test(fs.readFileSync(path.join(raiz, "financiamento.html"), "utf-8")));
+  /* A trava central deste bloco: "pago na semana" e "transferido na semana" NÃO existem na fonte —
+     as medidas federais publicam agregado sem data de pagamento e o Portal entrega o mês. Eles têm
+     de dizer isso, com o motivo, e nunca mostrar R$ 0 nem um número inventado. A página Imprensa
+     declara a mesma falta: um número aqui e a falta lá seriam duas contas para a mesma coisa. */
+  for (const [valor, fonte] of [["topoPagoSemana", "topoPagoSemanaFonte"],
+                                ["topoTransfSemana", "topoTransfSemanaFonte"]]) {
+    teste(`${valor}: sem dado nesta edição, com o motivo medido`,
+      txt(valor) === "sem dado nesta edição" && /sem data de pagamento|por mês/.test(txt(fonte)));
+  }
+  let R = null;
+  try { R = JSON.parse(fs.readFileSync(path.join(raiz, "data", "resposta", "recursos_liberados.json"), "utf-8")); } catch (e) { R = null; }
+  if (R && R.municipios) {
+    /* Recursos de resposta: aqui existe data por ato, então o recorte semanal é real. Conta-se SÓ
+       a finalidade "resposta" — recuperação é obra depois do dano. */
+    const limite = Date.now() - 7 * 86400000;
+    let esperado = 0; const muns = new Set();
+    Object.entries(R.municipios).forEach(([cod, m]) => (m.atos || []).forEach(a => {
+      if (a.acao === "resposta" && a.data && new Date(a.data + "T00:00:00").getTime() >= limite) {
+        esperado += Number(a.valor_autorizado || 0); muns.add(cod);
+      }
+    }));
+    const mostrado = Number(txt("topoRespostaSemana").replace(/[^\d]/g, "")) || 0;
+    teste("recursos de resposta na semana: o valor é o do dado, só da finalidade resposta",
+      Math.abs(mostrado - Math.round(esperado)) <= 1);
+    teste("recursos de resposta: o cartão diz quantos municípios receberam",
+      new RegExp(`\\b${muns.size}\\b`).test(txt("topoRespostaMunicipios")) || muns.size === 0);
+    teste("recursos de resposta: o cartão diz 'liberado', e nunca 'pago'",
+      /liberado/.test(txt("topoRespostaFonte")) && !/\bpago\b/.test(txt("topoRespostaFonte")));
+  }
+  teste("atos federais na semana: número do dado e fonte declarada",
+    /^\d+$/.test(txt("topoAtosSemana")) && txt("topoAtosSemanaFonte").length > 5);
+  /* O anunciado saiu dos cartões e virou contexto: ele não muda a cada coleta. */
+  const anunciado = (C.itens || []).reduce((a, x) => a + Number(x.valor_total || 0), 0);
+  teste("o valor anunciado virou linha de contexto, fora dos cartões",
+    !q("topoAnunciado") && (anunciado === 0 || /anunciados para o ciclo/.test(txt("finContexto"))));
+
+  // ── quanto chegou a cada estado: mapa por habitante, grade e ficha ────────────────────────
+  teste("mapa por estado: 27 unidades desenhadas",
+    q("mapaTransfUF").querySelectorAll("path").length === 27);
+  teste("mapa por estado: a legenda declara quem não teve mês lido",
+    /sem mês lido/.test(txt("legTransfUF")));
+  teste("mapa por estado: a linha do cartão diz quantos meses foram lidos",
+    new RegExp(`${Object.keys(JSON.parse(fs.readFileSync(path.join(raiz, "data", "financiamento", "municipios", "transferencias_uniao.json"), "utf-8")).meses_lidos || {}).length} mês`).test(txt("linhaTransfUF")));
+  teste("grade por estado: um cartão por UF com número, e ficha ao clicar", (() => {
+    const tiles = [...d.querySelectorAll("#regionsFin .tile")];
+    if (!tiles.length) return false;
+    tiles[0].click();
+    return tiles.length >= 26 && /por habitante/.test(txt("detailFinConteudo"));
+  })());
+  teste("a ficha do estado distingue transferido de gasto",
+    /Transferido não é gasto/.test(txt("detailFinConteudo")));
 
   // ── as figuras que ficaram ─────────────────────────────────────────────────────────────────
   teste("compromissos: gráfico anunciado × empenhado × pago com legenda e crédito",
     q("legCompromissos").children.length === 4 && graficos.some(g => g.ctx && g.ctx.id === "cCompromissos")
     && /Fonte:/.test(q("boxCompromissosGrafico").textContent));
-  for (const id of ["mapaMPsUF", "mapaMP1384UF"]) {
-    teste(`${id}: 27 estados, legenda com a unidade nacional à parte`,
-      q(id).querySelectorAll("path").length === 27 && /unidade nacional/.test(txt(id.replace("mapa", "leg"))));
-  }
+  // 02/10/2026: os dois mapas "onde o pagamento chegou" saíram — pintavam o país com a parcela de
+  // 4% executada fora de Brasília, e a leitura honesta dessa divisão é a figura BR × UFs, que fica.
+  teste("a divisão entre unidades nacionais e estados está na página, com número do dado",
+    /%/.test(txt("mpsBrPct")) && q("boxMpsBrUf") !== null);
   teste("RS: gráfico com os números do dado na legenda",
     graficos.some(g => g.ctx && g.ctx.id === "cRS") && /138 municípios/.test(txt("legRS")));
   const PS = JSON.parse(fs.readFileSync(path.join(raiz, "data", "financiamento", "preventivo_setores.json"), "utf8"));
@@ -137,7 +176,9 @@ setTimeout(() => {
 
   // ── o componente de cartão de mapa, com UMA proporção nos nove ─────────────────────────────
   const cartoes = [...d.querySelectorAll("#conteudo .cartao-mapa")];
-  teste(`nove figuras no cartão de mapa padrão (${cartoes.length})`, cartoes.length === 9);
+  // A contagem muda quando a página muda: três cartões de mapa saíram (os dois da parcela de
+  // 4% e o diagrama das rotas) e um entrou (transferido por habitante).
+  teste(`sete figuras no cartão de mapa padrão (${cartoes.length})`, cartoes.length === 7);
   teste("todo cartão de mapa tem faixa de família e sobretítulo do componente",
     cartoes.every(c => c.querySelector(".cartao-mapa-familia") && c.querySelector(".cartao-mapa-boletim")));
   teste("toda figura tem crédito de fonte",
@@ -159,7 +200,9 @@ setTimeout(() => {
 
   // ── gesto e travas que não mudam ──────────────────────────────────────────────────────────
   try {
-    const alvo = q("mapaMPsUF").querySelector("path");
+    // O mapa do gesto passa a ser o que existe: transferido por habitante, que é o mapa
+    // principal da página desde 02/10/2026.
+    const alvo = q("mapaTransfUF").querySelector("path");
     alvo.dispatchEvent(new dom.window.MouseEvent("mouseenter", { clientX: 100, clientY: 100, bubbles: true }));
     teste("gesto: tooltip", q("mapTooltip").style.display === "block" && q("mapTooltip").innerHTML.length > 5);
   } catch (e) { teste("gesto: tooltip (" + e.message + ")", false); }

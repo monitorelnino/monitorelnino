@@ -47,7 +47,6 @@
   </header>
 <main id="conteudo">
   <h1>Por onde o dinheiro chega</h1>
-  <p class="hint spec" id="corteFin">14/09/2026</p>
   <p class="hint">Quanto a União anunciou e pagou para o El Niño, quanto chegou a cada estado e município, o que as prefeituras gastam do próprio bolso e por quais caminhos o dinheiro público chega até uma cidade, antes e depois de um desastre.</p>
 
   <!-- 01/10/2026 (bloco B do handover): a página passa a ter seis blocos. Saem a figura das oito
@@ -56,64 +55,66 @@
        caso), a seção "Fontes e consultas" (vai para os dados abertos) e as seções 1 e 10, que
        diziam a mesma coisa duas vezes e se fundem aqui. -->
   <section class="dc-topo" aria-labelledby="finTopoTitulo">
-    <h2 id="finTopoTitulo" class="sr-only">Números do topo</h2>
+    <h2 id="finTopoTitulo" class="sr-only">Números da semana</h2>
     <div class="grade-numeros grade-numeros--3">
       <div class="cartao-numero cartao-numero--resposta">
-        <p class="cartao-numero-rotulo">Anunciado pela União para o El Niño</p>
-        <p class="cartao-numero-valor" id="topoAnunciado">—</p>
-        <p class="cartao-numero-fonte" id="topoAnunciadoFonte">—</p>
+        <p class="cartao-numero-rotulo">Pago na semana pelas medidas federais para o El Niño</p>
+        <p class="cartao-numero-valor" id="topoPagoSemana">—</p>
+        <p class="cartao-numero-fonte" id="topoPagoSemanaFonte">—</p>
       </div>
       <div class="cartao-numero cartao-numero--resposta">
-        <p class="cartao-numero-rotulo">Pago até agora</p>
-        <p class="cartao-numero-valor" id="topoPago">—</p>
-        <p class="cartao-numero-fonte" id="topoPagoFonte">—</p>
+        <p class="cartao-numero-rotulo">Transferido pela União a municípios na semana</p>
+        <p class="cartao-numero-valor" id="topoTransfSemana">—</p>
+        <p class="cartao-numero-fonte" id="topoTransfSemanaFonte">—</p>
+      </div>
+      <div class="cartao-numero cartao-numero--resposta">
+        <p class="cartao-numero-rotulo">Recursos de resposta liberados na semana</p>
+        <p class="cartao-numero-valor" id="topoRespostaSemana">—</p>
+        <p class="cartao-numero-rotulo" id="topoRespostaMunicipios">—</p>
+        <p class="cartao-numero-fonte" id="topoRespostaFonte">—</p>
       </div>
       <div class="cartao-numero cartao-numero--chuva">
-        <p class="cartao-numero-rotulo">O que o município mediano gasta em defesa civil, por habitante</p>
-        <p class="cartao-numero-valor" id="topoMediana">—</p>
-        <p class="cartao-numero-fonte" id="topoMedianaFonte">—</p>
+        <p class="cartao-numero-rotulo">Novos atos federais de financiamento na semana</p>
+        <p class="cartao-numero-valor" id="topoAtosSemana">—</p>
+        <p class="cartao-numero-fonte" id="topoAtosSemanaFonte">—</p>
+        <div id="topoAtosLista"></div>
       </div>
     </div>
+    <p class="note u-mb-0" id="finContexto">—</p>
   </section>
+
+  <section id="porEstado" aria-labelledby="fEstadoTitulo">
+    <h2 id="fEstadoTitulo">Quanto chegou a cada estado</h2>
+    <p class="hint">Transferências da União aos municípios de cada estado em 2026, por habitante, para
+      que estados de tamanhos diferentes possam ser lidos na mesma escala. O detalhe de cada estado
+      abre em uma janela.</p>
+    <div class="grade-figuras grade-figuras--3 grade-mapas">
+      <figure class="figura figura--mapa cartao-mapa r-chuva" id="boxTransfUF">
+        <p class="cartao-mapa-familia">Transferido no ano</p>
+        <p class="cartao-mapa-boletim" id="linhaTransfUF">—</p>
+        <h3 class="figura-titulo">Transferido pela União aos municípios, por habitante</h3>
+        <p class="figura-sub">Meses lidos de 2026 · R$ por habitante · Censo 2022 · soma das rotas constitucional, saúde, assistência social, defesa civil e outras</p>
+        <div class="figura-midia"><svg id="mapaTransfUF" role="img" aria-label="Mapa do Brasil com o valor transferido pela União aos municípios por habitante, por estado" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legTransfUF"></div>
+        <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
+          <dl class="dl-dados" id="dlTransfUF"></dl>
+        </details>
+      </figure>
+    </div>
+    <div class="regions" id="regionsFin"></div>
+    <p class="note u-mb-0">Estado sem número não teve mês lido até a última coleta.</p>
+  </section>
+  <dialog class="detail" id="detailFin" aria-label="Detalhe do estado">
+    <button type="button" class="detail-fechar" id="detailFinFechar" aria-label="Fechar">×</button>
+    <div id="detailFinConteudo"></div>
+  </dialog>
 
   <section id="dinheiroElNino" aria-labelledby="f2Titulo">
     <h2 id="f2Titulo">O dinheiro do El Niño</h2>
-    <p class="hint">O que o governo federal anunciou para o ciclo, o que já empenhou e o que já pagou. Duas medidas provisórias, para incêndios e para estoques de alimentos, e os demais compromissos verificados.</p>
+    <p class="hint">Primeiro quanto do pagamento ficou em unidades nacionais, em Brasília, e quanto
+      foi executado por unidades nos estados; depois, o que cada compromisso federal anunciou,
+      empenhou e pagou.</p>
     <div class="grade-figuras grade-figuras--3 grade-mapas">
-<figure class="figura figura--grafico cartao-mapa r-chuva" id="boxCompromissosGrafico">
-        <p class="cartao-mapa-familia">Anunciado, empenhado e pago</p>
-        <p class="cartao-mapa-boletim" id="linhaCompromissos">—</p>
-        <h3 class="figura-titulo">Compromissos federais para o ciclo</h3>
-        <p class="figura-sub">Ciclo 2026/2027 · duas MPs e cinco compromissos verificados · R$ milhões anunciados, empenhados e pagos (Portal)</p>
-        <div class="figura-midia canvas-wrap"><canvas id="cCompromissos" aria-label="Barras por compromisso federal: valor anunciado, empenhado e pago em reais"></canvas></div>
-        <div class="map-legend" id="legCompromissos"></div>
-      </figure>
-<figure class="figura figura--mapa cartao-mapa r-fogo" id="boxMPsUF">
-        <p class="cartao-mapa-familia">Incêndios</p>
-        <p class="cartao-mapa-boletim" id="linhaMPsUF">—</p>
-        <h3 class="figura-titulo">MP 1.367 (incêndios): onde o pagamento chegou</h3>
-        <p class="figura-sub">Desde jun/2026 · valor pago por UF da unidade gestora (Ibama, ICMBio) · R$; unidade nacional à parte</p>
-        <div class="figura-midia"><svg id="mapaMPsUF" role="img" aria-label="Mapa do Brasil com o valor pago da MP 1.367 por UF da unidade gestora" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legMPsUF"></div>
-      </figure>
-<figure class="figura figura--mapa cartao-mapa r-seca" id="boxMP1384UF">
-        <p class="cartao-mapa-familia">Alimentos</p>
-        <p class="cartao-mapa-boletim" id="linhaMP1384UF">—</p>
-        <h3 class="figura-titulo">MP 1.384 (alimentos): onde o pagamento chegou</h3>
-        <p class="figura-sub">Desde jun/2026 · valor pago por UF da unidade gestora (MDA/Conab, MDS) · R$; unidade nacional à parte</p>
-        <div class="figura-midia"><svg id="mapaMP1384UF" role="img" aria-label="Mapa do Brasil com o valor pago da MP 1.384 por UF da unidade gestora" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legMP1384UF"></div>
-      </figure>
-    </div>
-    <div class="grade-figuras grade-figuras--3 grade-mapas">
-<figure class="figura figura--diagrama cartao-mapa r-chuva" id="boxRotaMPs">
-        <p class="cartao-mapa-familia">Crédito extraordinário</p>
-        <p class="cartao-mapa-boletim" id="linhaRotaMPs">—</p>
-          <h3 class="figura-titulo">Créditos extraordinários de 2026: MP 1.367 (incêndios) e MP 1.384 (alimentos)</h3>
-          <p class="figura-sub">MPs de 12/06 e 12/08/2026 · dotação por órgão e uso; parcela paga · R$ (milhões)</p>
-          <div class="figura-midia"><div class="prazos-barras u-mb-4" id="mpsPrazos"></div><div id="rotaMPs" class="diagrama-mps"></div></div>
-          <div class="map-legend" id="legRotaMPs"></div>
-        </figure>
 <figure class="figura figura--indicador cartao-mapa r-chuva" id="boxMpsBrUf">
         <p class="cartao-mapa-familia">Onde o pagamento foi feito</p>
         <p class="cartao-mapa-boletim" id="linhaMpsBrUf">—</p>
@@ -121,23 +122,22 @@
           <p class="figura-sub">Execução mensal 06–09/2026 · fração paga por unidade gestora sediada em Brasília (BR) vs. nas UFs · %</p>
           <div class="figura-midia"><div class="gauge-head"><span class="gnum u-rust" id="mpsBrPct">—</span><span class="gden" id="mpsBrDen">do pago vai para sedes nacionais (BR); o resto se distribui pelas UFs com execução</span></div></div>
           <div class="map-legend" id="legMpsBrUf"></div>
-        </figure>
+        </figure><figure class="figura figura--grafico cartao-mapa r-chuva" id="boxCompromissosGrafico">
+        <p class="cartao-mapa-familia">Anunciado, empenhado e pago</p>
+        <p class="cartao-mapa-boletim" id="linhaCompromissos">—</p>
+        <h3 class="figura-titulo">Compromissos federais para o ciclo</h3>
+        <p class="figura-sub">Ciclo 2026/2027 · duas MPs e cinco compromissos verificados · R$ milhões anunciados, empenhados e pagos (Portal)</p>
+        <div class="figura-midia canvas-wrap"><canvas id="cCompromissos" aria-label="Barras por compromisso federal: valor anunciado, empenhado e pago em reais"></canvas></div>
+        <div class="map-legend" id="legCompromissos"></div>
+      </figure>
     </div>
   </section>
 
-  <section id="prometeu" aria-labelledby="f3Titulo">
-    <h2 id="f3Titulo">O que chegou a cada estado e município</h2>
-    <p class="hint" id="prometeuTitulo">Transferências da União a municípios em 2026, semana a semana.</p>
-    <div class="grade-figuras grade-figuras--3 grade-mapas">
-<figure class="figura figura--diagrama cartao-mapa r-chuva" id="boxSerie">
-        <p class="cartao-mapa-familia">Semana a semana</p>
-        <p class="cartao-mapa-boletim" id="linhaSerie">—</p>
-          <h3 class="figura-titulo">Transferências da União a municípios, por semana e por rota</h3>
-          <p class="figura-sub">Semanas de 2026 · R$ milhões · faixa do período eleitoral marcada no eixo</p>
-          <div class="figura-midia"><svg id="svgSerie" role="img" aria-label="Série semanal de transferências da União a municípios em 2026, por rota, com a faixa do período eleitoral" viewBox="0 0 900 180"></svg></div>
-          <div class="map-legend" id="legSerie"></div>
-        </figure>
-    </div>
+  <section id="suaCidade" aria-labelledby="fCidadeTitulo">
+    <h2 id="fCidadeTitulo">A sua cidade</h2>
+    <p class="hint">Transferências da União ao município em 2026, por rota, e recursos de defesa
+      civil liberados por portaria federal. Cidade sem registro aparece como sem registro no período
+      lido, e não como R$ 0.</p>
     <div class="busca-mun" id="buscaCidade">
       <label for="cidadeUF">Estado</label>
       <select id="cidadeUF"><option value="">Escolha o estado…</option></select>
@@ -148,9 +148,19 @@
       <p class="busca-mun-conta" role="status" aria-live="polite" id="cidadeConta"></p>
     </div>
     <div id="cidadeResultado" class="card-note" hidden></div>
+    <div class="grade-figuras grade-figuras--3 grade-mapas u-mt-4">
+<figure class="figura figura--diagrama cartao-mapa r-chuva" id="boxSerie">
+        <p class="cartao-mapa-familia">Semana a semana</p>
+        <p class="cartao-mapa-boletim" id="linhaSerie">—</p>
+          <h3 class="figura-titulo">Transferências da União a municípios, por semana e por rota</h3>
+          <p class="figura-sub">Semanas de 2026 · R$ milhões · por rota</p>
+          <div class="figura-midia"><svg id="svgSerie" role="img" aria-label="Série semanal de transferências da União a municípios em 2026, por rota" viewBox="0 0 900 180"></svg></div>
+          <div class="map-legend" id="legSerie"></div>
+        </figure>
+    </div>
   </section>
 
-  <section id="dinheiroProprio" aria-labelledby="f4Titulo">
+<section id="dinheiroProprio" aria-labelledby="f4Titulo">
     <h2 id="f4Titulo">O que o município gasta do próprio bolso</h2>
     <p class="hint">Quanto cada prefeitura declarou ter gasto em defesa civil, por habitante. Prefeituras que lançam a defesa civil em outra rubrica aparecem como "sem lançamento", não como zero.</p>
     <div class="grade-figuras grade-figuras--3 grade-mapas">
@@ -177,8 +187,7 @@
     </div>
     <p class="note u-mb-0" id="proprioResumo">—</p>
   </section>
-
-  <section id="caminho" aria-labelledby="f5Titulo" data-voz="lei">
+<section id="caminho" aria-labelledby="f5Titulo" data-voz="lei">
     <h2 id="f5Titulo">Como o dinheiro chega a uma cidade</h2>
     <p class="hint">Oito caminhos, sete federais e um estadual. Alguns chegam todo mês, por regra; outros abrem depois de um decreto de emergência; outros dependem de decisão do governo ou de uma emenda; e alguns chegam direto às pessoas e às obras, sem passar pela prefeitura.</p>
     <div class="grade-cartoes">
@@ -219,8 +228,7 @@
       </figure>
     </div>
   </section>
-
-  <section id="casos" aria-labelledby="f6Titulo">
+<section id="casos" aria-labelledby="f6Titulo">
     <h2 id="f6Titulo">Dois casos</h2>
     <div class="grade-cartoes">
       <div class="cartao" data-voz="lei">
@@ -254,7 +262,7 @@
 </div>
 
 <script src="assets/colunas.js?v=c7f1719a" defer></script>
-<script src="assets/js/financiamento.js?v=76df4f8e" defer></script><script src="assets/js/proveniencia.js?v=656e2dad" defer></script>
+<script src="assets/js/financiamento.js?v=2eef1b91" defer></script><script src="assets/js/proveniencia.js?v=50e1ec93" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

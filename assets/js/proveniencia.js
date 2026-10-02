@@ -245,10 +245,14 @@ function renderTable(){
   // de BR_GEOJSON (mapa geográfico) e MPS, independente de financiamento.js.
   try {
     const [BR_GEOJSON_MPS, MPS_DADOS] = await Promise.all(['data/geo_uf.json', 'data/financiamento/mps_2026.json'].map(f => fetch(f).then(r => r.ok ? r.json() : null)));
-    if (BR_GEOJSON_MPS && MPS_DADOS && document.getElementById('boxRotaMPs')) {
+    // 02/10/2026: a guarda era o diagrama das rotas (`boxRotaMPs`), que saiu da página de
+    // Financiamento — e com ele parava de encher o indicador BR × UFs, que FICOU. A guarda
+    // passa a ser qualquer uma das duas figuras que este bloco desenha.
+    if (BR_GEOJSON_MPS && MPS_DADOS && (document.getElementById('boxRotaMPs')
+        || document.getElementById('boxMpsBrUf'))) {
       MPS = MPS_DADOS;   // renderMpsUf/renderRotaMPs (copiadas de financiamento.js) leem a MPS do módulo
       const ctx = MonitorMapas.contexto(BR_GEOJSON_MPS, 480, 460);
-      renderRotaMPs();
+      if (document.getElementById('boxRotaMPs')) renderRotaMPs();
       renderMpsUf(ctx);
     }
   } catch(e) {}
