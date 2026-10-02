@@ -35,11 +35,14 @@ const PAGINA = "imprensa.html";
 // 01/10/2026: a lista acompanha a página reorganizada. Saíram os quatro contadores do topo e os
 // ids do release antigo (`relMedia`, `relDecretados`, `relPlanosMun`, `relQ1`, `relQ3`), que não
 // existem mais; entraram os do release aprovado.
+// 02/10/2026 (redesenho da imprensa): o release deixou de ser gabarito com um `<span>` por número
+// e passou a ser o TEXTO GERADO por gerar_imprensa_semana.py. Saíram da lista os ids daquele
+// gabarito (`relLegal`, `relSaude`, `relPlanosSemana`, `relDecretosSemana`, `relPopSemana`,
+// `relPlanosTotal`, `relDecretosTotal`), que não existem mais. A garantia não enfraquece: o texto
+// do release é conferido abaixo contra o próprio arquivo que o gerou, e o motor tem autoteste.
 const OBRIGATORIOS = [
   "relData", "topoLegal", "topoSaude",
   "citarVersaoLegal", "citarVersaoSaude", "citarAcesso",
-  "relLegal", "relSaude", "relPlanosSemana", "relDecretosSemana", "relPopSemana",
-  "relPlanosTotal", "relDecretosTotal",
 ];
 
 const falhas = [];
@@ -89,22 +92,30 @@ const ler = p => JSON.parse(fs.readFileSync(path.join(RAIZ, p), "utf-8"));
     falhas.push(`${PAGINA}: data da edição na página ("${txt("relData")}") ≠ data/meta.json ("${esperada}")`);
   }
 
-  // Os dois contadores semanais são os MESMOS cartões da seção da semana: dois números iguais na
-  // mesma página com contas diferentes é o defeito que a regra 0 existe para impedir.
+  /* O release é o texto que o motor escreveu: ele não pode estar vazio na página, e tem de ser o
+     MESMO texto do arquivo. É aqui que a conta dupla poderia nascer — a página montando a frase de
+     novo, com outra régua —, e é aqui que o portão olha. */
   try {
     const semana = ler("data/imprensa/semana.json");
-    const de = id => (semana.cartoes.find(c => c.id === id) || {}).valor;
-    // O número da semana aparece duas vezes na página: no cartão e no release. É aí que a conta
-    // dupla pode nascer, e é aí que o portão olha. "nenhum" é a forma aprovada do zero no release.
-    const pares = [["relPlanosSemana", "planos_no_periodo"],
-                   ["relDecretosSemana", "decretos_no_periodo"],
-                   ["relPopSemana", "populacao_decretos_no_periodo"]];
-    for (const [id, cartao] of pares) {
-      const naPagina = txt(id).replace(/\./g, "");
-      const noDado = de(cartao);
-      const esperado = noDado === 0 ? "nenhum" : String(noDado);
-      if (noDado != null && naPagina !== esperado) {
-        falhas.push(`${PAGINA}: '${id}' mostra ${naPagina} e o cartão '${cartao}' tem ${noDado} — o mesmo número com duas contas`);
+    /* Compara sem espaço nenhum: na página o release são dois `<p>`, e `textContent` cola os dois
+       sem separador — a diferença seria só de pontuação de parágrafo, e não de conteúdo. */
+    const sóTexto = t => String(t || "").replace(/\s+/g, "").trim();
+    const naPagina = sóTexto(txt("releaseTexto"));
+    const noDado = sóTexto(semana.texto_pronto);
+    if (!noDado) {
+      falhas.push(`${PAGINA}: data/imprensa/semana.json não traz o release gerado`);
+    } else if (!naPagina) {
+      falhas.push(`${PAGINA}: o release não foi escrito na página`);
+    } else if (naPagina !== noDado) {
+      falhas.push(`${PAGINA}: o release da página difere do gerado — a página não pode remontar a frase`);
+    }
+    /* Todo cartão publicado traz valor; cartão sem dado SAI da grade e o rótulo vai para a linha
+       única. Zero é zero, e nunca "sem dado". */
+    const sem = (semana.cartoes || []).filter(c => c.sem_coleta);
+    const linha = txt("semanaNaoCalculaveis");
+    for (const c of sem) {
+      if (!linha.includes(c.rotulo)) {
+        falhas.push(`${PAGINA}: '${c.id}' está sem dado e não aparece na linha 'Sem dado nesta edição'`);
       }
     }
   } catch (e) { falhas.push(`${PAGINA}: data/imprensa/semana.json ilegível: ${e.message}`); }
