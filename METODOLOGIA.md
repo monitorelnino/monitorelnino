@@ -3131,3 +3131,35 @@ troca automática da v0.3 para a v0.4 passa a exigir F1 **e** F2 verificadas nas
 
 Nada disso é escondido: o relatório sai junto com o número, e a escolha publicada — aritmética,
 pesos iguais, degrau em 50 — aparece ao lado do que as alternativas fariam.
+
+## 92. Por que a campanha dos 27 está travada, medido e registrado (02/10/2026)
+
+A coordenação em duas funções (§91) depende de ato oficial lido, e o ato estadual vive no diário
+oficial do estado. Em 02/10/2026, **20 das 27 unidades não têm adaptador de busca** no diário — e
+o diagnóstico disso vinha sendo refeito à mão a cada rodada, o que não acumula: a sondagem de hoje
+não sabia o que a de ontem havia medido.
+
+`scripts/sondar_rotas_doe.py` passa a medir e a **escrever** o diagnóstico em
+`data/fontes_doe.json`, por unidade, com data e motivo. Ele não executa JavaScript, não adivinha
+rota por tentativa cega e não promove nada: o que ele produz é pista de engenharia. A medição de
+02/10/2026, sobre as 20 sem adaptador:
+
+| veredito | unidades |
+|---|---|
+| pista de rota (há por onde começar) | AC, AM, BA, MA, PB, RO |
+| sem busca na página inicial | AL, CE, MG, MS, PA, PE, RJ, RN, RR, RS, SC, SP |
+| não respondeu | PI (falha de TLS na consulta) |
+| sem endereço registrado | SE |
+
+**"Pista de rota" não é rota.** Das seis, nenhuma entregou resultado de busca legível sem
+navegador na consulta de hoje: AC devolve o próprio formulário com o termo ecoado; AM e MA montam
+a busca por JavaScript, e a rota de dados não estava nos caminhos sondados; BA responde 404 na
+rota de índice; PB oferece busca **do sítio**, não do texto do diário; RO responde **401** na rota
+de busca — e recusa se respeita (§186). Isso fica escrito para que a próxima rodada comece de onde
+esta parou, e para que nenhuma delas seja chamada de "sem diário": o que foi medido é ausência de
+**rota legível por máquina**, não ausência de diário nem ausência de ato.
+
+Consequência direta no índice: **nenhuma unidade pode ser marcada "não localizado"** em plano ou
+em qualquer das duas funções, porque a regra exige campanha completa pelos quatro canais, e a
+campanha não fecha sem o canal do diário. A ausência continua **lacuna declarada**, com o log dos
+canais — e é por isso que a troca da v0.3 para a v0.4 não aconteceu.

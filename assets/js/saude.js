@@ -298,6 +298,16 @@ function cartoesEstadosSaude(){
       t.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); t.click(); } });
       const col = document.getElementById('tilesSaude-' + REG[uf]); if (col) col.appendChild(t);
     });
+    /* Os degraus das duas funções da coordenação, em linguagem de leitor (METODOLOGIA §91.3). */
+    const ST_COORD = {
+      CRIADO_CICLO: 'criada para o ciclo',
+      REATIVADO_CICLO: 'reativada para o ciclo',
+      PERMANENTE: 'estrutura permanente',
+      ANUNCIADO: 'anunciada, sem ato publicado',
+      NOMEADA_COM_ATRIBUICAO: 'secretaria de saúde nomeada, com atribuição',
+      LISTADA_SEM_ATRIBUICAO: 'secretaria de saúde listada, sem atribuição',
+      LAC: 'não localizada até o corte',
+    };
     function abrirDetalheSaude(uf){
       const m = M[uf] || {}; const i = m.instrumento || {}; const c = m.cobertura || {}; const a = m.antecipacao || {}; const dc = m.risco_atual || {}; const u = (SUF.uf || {})[uf] || {};
       const linha = (k, v) => '<div class="field"><div class="k">' + k + '</div><div class="v">' + v + '</div></div>';
@@ -305,7 +315,29 @@ function cartoesEstadosSaude(){
         + (m.verificado ? '<div class="gauge-mini gauge-zone"><div class="gauge-head"><span class="gnum">' + String(m.prontidao).replace('.', ',') + '</span><span class="gden">/ 100 · ' + esc(m.faixa) + '</span></div><div class="gauge-track"><div class="gauge-fill" style="--galvo:' + Math.max(m.prontidao, 0.1) + '; width:' + m.prontidao + '%"></div></div></div>' : '<p class="placeholder">Ainda não verificado nesta camada: a bateria de busca de saúde não foi executada para o estado — não é ausência de documento.</p>')
         + '<div class="uf-region">' + esc(REG[uf] || '') + '</div>'
         + linha('Instrumento estadual de saúde', '<span class="pill-nivel">' + esc(ST_H[i.status] || i.status || 'ainda não verificado') + '</span> ' + esc(i.doc || u.doc || '—') + (i.data ? ' (' + esc(i.data) + ')' : '') + (i.orgao || u.orgao ? ' · ' + esc(i.orgao || u.orgao) : '') + (i.url ? ' · <a href="' + esc(i.url) + '" target="_blank" rel="noopener">fonte oficial →</a>' : ''))
-        + (m.verificado ? linha('Componentes', 'instrumento ' + esc(i.pontos) + ' · cobertura sanitária ' + esc(c.pontos ?? '—') + ' (' + esc(c.planos_lidos ?? 0) + ' plano(s) municipal(is) lido(s), ' + esc(c.planos_sem_leitura ?? 0) + ' sem leitura) · antecipação ' + esc(a.pontos) + ' → média ' + String(m.prontidao).replace('.', ',') + ' (pesos iguais)') : '')
+        /* Bloco B.3 do handover de 02/10/2026: a coordenação aparece em DUAS linhas, em linguagem
+         * de leitor. O leitor não precisa saber que internamente são F1 e F2; precisa saber que
+         * são duas coisas diferentes, e qual documento sustenta cada uma. Função não procurada
+         * aparece como não verificada, nunca como ausência de estrutura. */
+        + (() => {
+            const co = u.coordenacao || {};
+            const descreve = (o, rotulo_vazio) => {
+              if (!o || !o.doc) return rotulo_vazio;
+              return '<span class="pill-nivel">' + esc(ST_COORD[o.status] || o.status || '—') + '</span> '
+                + esc(o.doc) + (o.data ? ' (' + esc(o.data) + ')' : '')
+                + (o.url ? ' · <a href="' + esc(o.url) + '" target="_blank" rel="noopener">fonte oficial →</a>' : '');
+            };
+            const f1 = co.f1 || (co.status ? co : null);
+            return linha('Coordenação na saúde', descreve(f1, 'ainda não verificada'))
+              + linha('Ligação com o governo do estado', descreve(co.f2, 'ainda não verificada'));
+          })()
+        /* O handover de 02/10/2026 tirou a palavra "antecipação" da ficha: ela é nome interno de
+         * componente, e o que o número mede é quando o ato saiu em relação ao primeiro boletim. */
+        + (m.verificado ? linha('Como o número é formado', 'documento estadual ' + esc(i.pontos)
+            + ' · cobertura sanitária ' + esc(c.pontos ?? '—') + ' (' + esc(c.planos_lidos ?? 0)
+            + ' plano(s) municipal(is) lido(s), ' + esc(c.planos_sem_leitura ?? 0) + ' sem leitura)'
+            + ' · quando o ato saiu em relação ao primeiro boletim ' + esc(a.pontos)
+            + ' → média ' + String(m.prontidao).replace('.', ',') + ' (pesos iguais)') : '')
         + (m.camada === 'adaptacao' ? linha('Plano decenal de adaptação', 'registrado como estrutura; não pontua') : '')
         + linha('Resposta sanitária', ((MSAUDE.resposta || {}).ufs || []).includes(uf) ? 'emergência sanitária declarada no ciclo' : 'nenhuma emergência sanitária declarada localizada desde 29/06/2026')
         + linha('Risco sanitário projetado', (m.risco_projetado || []).length ? (m.risco_projetado || []).map(esc).join('; ') : 'sem registro')

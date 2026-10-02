@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-02 · #521 · Ficha do estado com as duas linhas, e a sondagem das rotas de diário
+
+A ficha de cada estado passa a mostrar a coordenação em duas linhas — na saúde e com o governo do estado —, com documento e data, e perde a palavra interna "antecipação". `scripts/sondar_rotas_doe.py` mede e registra por que a campanha dos 27 está travada: das 20 unidades sem adaptador, 6 têm pista de rota, 12 sem busca na página inicial, 1 não responde, 1 sem endereço. Em `assets/js/saude.js`, `scripts/`.
+
 ## 2026-10-02 · #520 · Os cartões do Financiamento entram na rodada
 
 `gerar_financiamento_semana.py` passa a rodar a cada publicação, logo depois dos números da imprensa, e o portão de coerência entre os dois entra na suíte. Sem isso a página mostraria o mês fechado da edição anterior. Em `.github/workflows/`.
