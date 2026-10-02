@@ -225,6 +225,13 @@ def fundir(anterior: dict, registros: list, nao_casados: dict, janela: dict,
             tot[acao] = round(tot.get(acao, 0.0) + v, 2)
     saida["total_por_acao"] = tot
     saida["municipios_com_ato"] = len(mun)
+    # A frase C18 viaja com TODO arquivo de `data/resposta/` — é regra do projeto, e
+    # `verificar_resposta.py` reprova sua ausência. Ela existe porque o fato que ela guarda (no
+    # período eleitoral as transferências voluntárias param e as abertas por decreto continuam) é o
+    # que explica a forma da série de resposta. A frase é importada de quem a define, não copiada:
+    # duas cópias divergiriam na primeira edição do texto.
+    from gerar_resposta import FRASE_C18  # noqa: PLC0415 — constante, sem efeito colateral
+    saida["frase_c18"] = FRASE_C18
     saida["_governanca"] = (
         "Recursos federais de defesa civil AUTORIZADOS por município, lidos das portarias da "
         "Secretaria Nacional de Proteção e Defesa Civil no DOU (consulta "
@@ -377,6 +384,8 @@ def autoteste() -> int:
         "a governança diz 'liberado', e nunca 'pago'":
             lambda: ("'liberado', nunca 'pago'" in um["_governanca"]
                      and "valor_autorizado" in um["_governanca"]),
+        "a frase C18 viaja com o arquivo, como em todo arquivo de resposta":
+            lambda: "art. 73, VI, a" in um.get("frase_c18", ""),
         # TRAVA ESTRUTURAL: nenhuma escrita no banco, nem numa edição futura.
         "o fonte não grava em nenhum arquivo do banco":
             lambda: not any(f'gravar("{nome}' in fonte_do_coletor() for nome in BANCO_PROIBIDO),
