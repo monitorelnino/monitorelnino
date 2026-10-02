@@ -209,8 +209,8 @@ function __init(){
     if(!corpo) return;
     corpo.innerHTML = UFS.map(function(uf){
       const c = calorUf(uf);
-      if(!c) return '<tr><td><strong>' + uf + '</strong></td><td colspan="5">sem coleta até o corte</td></tr>';
-      return '<tr><td><strong>' + uf + '</strong></td><td>' + (c.normal || 0) + '</td><td>' + (c.baixo || 0)
+      if(!c) return '<tr><td><strong>' + esc(uf) + '</strong></td><td colspan="5">sem coleta até o corte</td></tr>';
+      return '<tr><td><strong>' + esc(uf) + '</strong></td><td>' + (c.normal || 0) + '</td><td>' + (c.baixo || 0)
            + '</td><td>' + (c.severo || 0) + '</td><td>' + (c.extremo || 0) + '</td><td>' + (c.total || 0) + '</td></tr>';
     }).join('');
   })();
@@ -850,8 +850,9 @@ const AREAS = [
             + (ultima ? ultima.split('-')[1] : '—');
         }
         if (el(cfg.dl)) {
+          const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
           el(cfg.dl).innerHTML = Object.keys(taxa).sort((a, b) => taxa[b] - taxa[a]).map(uf =>
-            '<dt>' + uf + '</dt><dd>' + umaCasa(taxa[uf]) + ' por 100 mil habitantes · ' + n(acum[uf]) + ' notificações</dd>').join('');
+            '<dt>' + esc(uf) + '</dt><dd>' + umaCasa(taxa[uf]) + ' por 100 mil habitantes · ' + n(acum[uf]) + ' notificações</dd>').join('');
         }
       }).catch(() => {});
     });
