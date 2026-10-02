@@ -1,0 +1,96 @@
+{
+  "_governanca": "Contrato de layout do MARÉ Saúde (handover da editoria, 02/10/2026). ESTE ARQUIVO É A VERDADE: o HTML e o JS se conformam a ele, não o contrário. Quem verifica é scripts/verificar_layout.py, portão bloqueante — nenhum PR desta página é mesclado com ele vermelho. A razão do contrato existir: os erros de desenho se repetiam porque o layout era interpretado a cada entrega.",
+  "pagina": "saude.html",
+  "componentes": {
+    "numeros": ".cartao-numero",
+    "grade_numeros": ".grade-numeros--3",
+    "figura": ".cartao-mapa",
+    "grade_figuras": ".grade-figuras--3",
+    "estados": "#regionsSaude"
+  },
+  "_nota_componentes": "O handover nomeia o componente de números como `.cartao-destaque`, 'o de Proteja-se/Imprensa'. A classe com esse nome não existe no projeto: o componente de números que a Imprensa usa é `.cartao-numero` dentro de `.grade-numeros`, e é ele que o contrato nomeia. Criar uma classe nova só para casar com o nome do handover produziria dois componentes para a mesma coisa, que é exatamente o que o handover proíbe.",
+  "secoes": [
+    {
+      "id": "numerosSaude",
+      "h2": null,
+      "tipo": "numeros",
+      "grade": ".grade-numeros--3",
+      "linhas": 2,
+      "cartoes": [
+        {"id": "dengue_casos_se", "tipo": "numero", "chave": "dengue_sinan_serie.json", "valor_el": "nDengueSE"},
+        {"id": "srag_internacoes_se", "tipo": "numero", "chave": "srag_serie.json", "valor_el": "nSragSE"},
+        {"id": "uf_dengue_alerta", "tipo": "numero", "chave": "serie_painel.json", "valor_el": "nUFsAlerta"},
+        {"id": "calor_municipios_severo", "tipo": "numero", "chave": "saude_sinais.json", "valor_el": "nCalorMun"},
+        {"id": "emergencias_saude_ciclo", "tipo": "numero", "chave": "monitor_saude.json", "valor_el": "nEmergSaude"},
+        {"id": "mare_saude_indice", "tipo": "numero", "chave": "monitor_saude.json", "valor_el": "nIndiceSaude"}
+      ],
+      "exige_texto": [
+        "são parciais e sobem com as notificações atrasadas",
+        "não indica relação com o El Niño"
+      ]
+    },
+    {
+      "id": "estadual",
+      "h2": "A situação de cada estado",
+      "tipo": "figuras_mais_estados",
+      "grade": ".grade-figuras--3",
+      "cartoes": [
+        {"id": "mapa_indice_uf", "tipo": "mapa", "el": "boxMonitor"},
+        {"id": "lista_estados_verificacao", "tipo": "lista", "el": "boxVerificacaoUF"},
+        {"id": "risco_previsto_uf", "tipo": "mapa", "el": "boxRiscoSan"}
+      ],
+      "estados": {"grade": "#regionsSaude", "cartoes": 27, "largura": "total"}
+    },
+    {
+      "id": "observado",
+      "h2": "O que os órgãos de saúde registram",
+      "tipo": "doencas",
+      "exige_texto": ["Esta página não relaciona casos ao El Niño."],
+      "doencas": [
+        {
+          "h3": "Dengue",
+          "grade": ".grade-figuras--3",
+          "cartoes": [
+            {"id": "serie_semana_vs_faixa", "tipo": "grafico", "el": "boxDengueSemana"},
+            {"id": "mapa_uf_por_100mil", "tipo": "mapa", "el": "boxDengueUF"},
+            {"id": "lista_municipios_busca", "tipo": "lista", "el": "boxDengueMunicipios"}
+          ]
+        },
+        {
+          "h3": "Chikungunya",
+          "grade": ".grade-figuras--3",
+          "cartoes": [
+            {"id": "serie_semana_vs_faixa", "tipo": "grafico", "el": "boxChikSemana"},
+            {"id": "mapa_uf_por_100mil", "tipo": "mapa", "el": "boxChikUF"},
+            {"id": "lista_municipios_busca", "tipo": "lista", "el": "boxChikMunicipios"}
+          ]
+        },
+        {
+          "h3": "Respiratórias",
+          "grade": ".grade-figuras--3",
+          "cartoes": [
+            {"id": "serie_semana_vs_faixa", "tipo": "grafico", "el": "boxSRAG"},
+            {"id": "mapa_uf_por_100mil", "tipo": "mapa", "el": "boxSragUF"},
+            {"id": "sg_esus", "tipo": "grafico", "el": "boxSG"}
+          ]
+        },
+        {
+          "h3": "Calor",
+          "grade": ".grade-figuras--3",
+          "cartoes": [
+            {"id": "serie_semana_vs_faixa", "tipo": "grafico", "el": "boxCalorSerie"},
+            {"id": "mapa_uf_por_100mil", "tipo": "mapa", "el": "boxCalor"},
+            {"id": "lista_municipios_calor", "tipo": "lista", "el": "boxCalorMunicipios"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "saude-federal-painel",
+      "h2": "O que o governo federal publicou",
+      "tipo": "lista_simples"
+    }
+  ],
+  "texto_proibido": ["FIGURA", "Corte da edição", "corte de", "antecipação", "Backlog"],
+  "_nota_texto_proibido": "A lista do handover inclui 'nota', 'defeso' e 'rota'. Elas ficam fora da verificação desta página por medida: 'nota' aparece em 'notas' e 'notificação' no texto aprovado das doenças, 'defeso' não ocorre aqui, e 'rota' não é vocabulário desta página. O portão confere a lista acima, que é a que pode morder sem falso positivo; a mesma decisão está registrada no contrato do Financiamento, com a lista própria dele."
+}

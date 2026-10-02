@@ -134,6 +134,13 @@ def como_markdown(linhas: list, gerado_em: str) -> str:
          "chamada dinâmica — é um índice de primeira ordem, tirado dos `fetch(...)`, dos "
          "`gravar(...)` e das listas de páginas dos portões. Para \"por onde começo\", basta; para "
          "\"nada mais pode ser afetado\", quem responde é o portão de runtime.", "",
+         "**Regra de página: contrato + componentes** (editoria, 02/10/2026). A forma de uma "
+         "página não vive no HTML: vive em `layout/contratos/<pagina>.json`, que declara "
+         "seções, ordem, cartões, grades e texto proibido. O HTML e o JavaScript se "
+         "conformam ao contrato, e `scripts/verificar_layout.py` reprova a divergência — "
+         "nenhum PR de página com contrato é mesclado com ele vermelho. Cartão de "
+         "número é `.cartao-numero` em `.grade-numeros--3`; figura é `.cartao-mapa` em "
+         "`.grade-figuras--3`; nada de ajuste de pixel por cartão.", "",
          f"Atualizado em {gerado_em}.", "",
          "| arquivo | telas que afeta | dados que usa | portões que o cobrem | toca o índice? |",
          "|---|---|---|---|---|"]

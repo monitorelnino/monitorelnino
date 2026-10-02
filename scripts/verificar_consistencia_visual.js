@@ -75,7 +75,9 @@ const srv = http.createServer((req, res) => { const u = decodeURIComponent(req.u
         document.querySelectorAll(".figura").forEach(f => { if (!vis(f)) return; const r = f.getBoundingClientRect(); const top = r.top + scrollY; const rel = s => { const e = f.querySelector(s); if (!e || !vis(e)) return null; return Math.round(e.getBoundingClientRect().top + scrollY - top); };
           out.figuras.push({ id: f.id || (f.querySelector(".figura-titulo") || {}).textContent, top: Math.round(top), left: Math.round(r.left), w: Math.round(r.width), h: Math.round(r.height), titulo: rel(".figura-titulo"), sub: rel(".figura-sub"), midia: rel(".figura-midia"), largo: f.classList.contains("figura--largo") }); });
         document.querySelectorAll(".fonte-figura").forEach(c => { if (vis(c)) out.creditos.push((c.textContent || "").trim().replace(/\s+/g, " ")); });
-        document.querySelectorAll(".figura").forEach(f => { if (!vis(f)) return; const n = f.querySelector(".figura-num"); out.numeros.push(n ? n.textContent.trim() : "(sem número)"); });
+        // 02/10/2026 (contrato de layout): o cartao de mapa nao e numerado. A editoria mandou tirar
+        // o rotulo "FIGURA n" dos cartoes, e a sequencia passa a valer so para a figura avulsa.
+        document.querySelectorAll(".figura:not(.cartao-mapa)").forEach(f => { if (!vis(f)) return; const n = f.querySelector(".figura-num"); out.numeros.push(n ? n.textContent.trim() : "(sem número)"); });
         out.secoes = document.body.classList.contains("pagina-dados") ? [...document.querySelectorAll("main > .panel > h2:first-child")].map(h => h.textContent.trim()) : [];
         return out;
       }, { FAMILIAS, PROPS, SO_TIPOGRAFIA: [...SO_TIPOGRAFIA], PROPS_TIPO });

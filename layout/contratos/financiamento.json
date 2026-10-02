@@ -1,0 +1,98 @@
+{
+  "_governanca": "Contrato de layout do Financiamento (handover da editoria, 02/10/2026). ESTE ARQUIVO É A VERDADE: o HTML e o JS se conformam a ele. Quem verifica é scripts/verificar_layout.py, portão bloqueante — nenhum PR desta página é mesclado com ele vermelho.",
+  "pagina": "financiamento.html",
+  "componentes": {
+    "numeros": ".cartao-numero",
+    "grade_numeros": ".grade-numeros--3",
+    "figura": ".cartao-mapa",
+    "grade_figuras": ".grade-figuras--3",
+    "estados": "#regionsFin"
+  },
+  "secoes": [
+    {
+      "id": "dc-topo",
+      "h2": null,
+      "tipo": "numeros",
+      "grade": ".grade-numeros--3",
+      "linhas": 1,
+      "cartoes": [
+        {"id": "pago_periodo_mp", "tipo": "numero", "chave": "financiamento/mps_2026.json", "valor_el": "topoPagoMes"},
+        {"id": "transferido_municipios_periodo", "tipo": "numero", "chave": "financiamento/municipios/transferencias_uniao.json", "valor_el": "topoTransfMes"},
+        {"id": "resposta_liberado_semana", "tipo": "numero", "chave": "resposta/recursos_liberados.json", "valor_el": "topoRespostaSemana"}
+      ],
+      "cartoes_condicionais": [
+        {"id": "atos_federais_semana", "tipo": "numero", "chave": "financiamento/compromissos_federais.json", "valor_el": "topoAtosSemana", "so_quando": "maior_que_zero"}
+      ],
+      "exige_texto": ["anunciados para o ciclo"],
+      "_nota_granularidade": "O Portal da Transparência publica execução e transferência a município por MÊS: os dois primeiros cartões dizem 'no mês de {mês}', do último mês fechado, e não 'na semana'. Recursos de resposta e atos federais têm data por ato, e aí o recorte semanal é real."
+    },
+    {
+      "id": "porEstado",
+      "h2": "Quanto chegou a cada estado",
+      "tipo": "figuras_mais_estados",
+      "grade": ".grade-figuras--3",
+      "cartoes": [
+        {"id": "mapa_uf_por_habitante", "tipo": "mapa", "el": "boxTransfUF"},
+        {"id": "lista_estados", "tipo": "lista", "el": "boxListaEstadosFin"},
+        {"id": "serie_mensal_brasil", "tipo": "grafico", "el": "boxSerie"}
+      ],
+      "estados": {"grade": "#regionsFin", "cartoes": 27, "largura": "total"}
+    },
+    {
+      "id": "dinheiroElNino",
+      "h2": "O dinheiro do El Niño",
+      "tipo": "figuras",
+      "grade": ".grade-figuras--3",
+      "cartoes": [
+        {"id": "br_vs_uf", "tipo": "indicador", "el": "boxMpsBrUf"},
+        {"id": "compromissos_anunciado_empenhado_pago", "tipo": "grafico", "el": "boxCompromissosGrafico"},
+        {"id": "lista_compromissos", "tipo": "lista", "el": "boxListaCompromissos"}
+      ]
+    },
+    {
+      "id": "suaCidade",
+      "h2": "A sua cidade",
+      "tipo": "figuras",
+      "grade": ".grade-figuras--3",
+      "cartoes": [
+        {"id": "busca_municipio", "tipo": "lista", "el": "boxBuscaCidade"},
+        {"id": "lista_resposta_portarias", "tipo": "lista", "el": "boxRespostaMunicipios"},
+        {"id": "lista_transferencias_recentes", "tipo": "lista", "el": "boxTransfRecentes"}
+      ]
+    },
+    {
+      "id": "dinheiroProprio",
+      "h2": "O que o município gasta do próprio bolso",
+      "tipo": "figuras",
+      "grade": ".grade-figuras--3",
+      "cartoes": [
+        {"id": "mapa_uf_despesa_hab", "tipo": "mapa", "el": "boxDespesaUF"},
+        {"id": "lista_municipios_despesa", "tipo": "lista", "el": "boxDespesaMunicipios"},
+        {"id": "como_ler_despesa", "tipo": "texto", "el": "boxComoLerDespesa"}
+      ]
+    },
+    {
+      "id": "caminho",
+      "h2": "Como o dinheiro chega a uma cidade",
+      "tipo": "cartoes_de_texto",
+      "cartoes": [
+        {"id": "antes", "tipo": "texto", "el": "antes"},
+        {"id": "depois", "tipo": "texto", "el": "depois"}
+      ],
+      "ancoras": ["antes", "depois", "setores"]
+    },
+    {
+      "id": "casos",
+      "h2": "Dois casos",
+      "tipo": "figuras",
+      "grade": ".grade-figuras--3",
+      "cartoes": [
+        {"id": "caso_fogo", "tipo": "texto", "el": "boxCasoFogo"},
+        {"id": "caso_rs", "tipo": "grafico", "el": "boxRSGrafico"}
+      ],
+      "ultima_linha_incompleta": true
+    }
+  ],
+  "texto_proibido": ["FIGURA", "Corte da edição", "corte de", "defeso", "rotas", "chave que abre"],
+  "_nota_texto_proibido": "O handover proíbe também 'rota' e 'chave'. Em singular as duas palavras aparecem em texto legítimo ('a rota constitucional' é vocabulário do dado, declarado na METODOLOGIA), e proibir a palavra solta produziria falso positivo. O portão barra o que o handover quer barrar: o diagrama das rotas e a frase 'que chave abre'."
+}

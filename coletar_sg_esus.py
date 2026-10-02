@@ -191,6 +191,17 @@ def sondar(buscar_fn=None) -> dict:
     return estado
 
 
+def registrar_tentativa_sg(dados: dict, agora: str = None, escrever: bool = True) -> dict:
+    """Mesma porta do SRAG (item 5, 02/10/2026): cada tentativa aparece no painel.
+
+    Aqui nao ha arquivo grande para retomar — a fonte recusa com 401 e 403, e recusa se respeita.
+    O que o painel resolve e o outro lado do mesmo problema: lacuna publicada em junho e lacuna
+    medida hoje sao indistinguiveis na pagina, e a linha do painel diz qual e qual.
+    """
+    from coletores_base import registrar_tentativa_coletor
+    return registrar_tentativa_coletor("coletar_sg_esus", dados, agora=agora, escrever=escrever)
+
+
 def coletar() -> dict:
     estado = sondar()
     anos = {a: a for a in estado["anos_oferecidos"]}
@@ -212,6 +223,7 @@ def coletar() -> dict:
                                      f"ciclo ({ano_do_ciclo})"),
             "formato_da_fonte_mudou": "a busca do portal não devolveu nenhum conjunto por ano",
         }[decisao]
+        registrar_tentativa_sg({"resultado": "lacuna", "motivo": motivo[:180]})
         registrar_lacuna("sindrome_gripal", motivo, canal="repositorio_nacional", camada=1,
                          nivel="nacional", strings=[BUSCA], hash_evidencia=h)
         # A lacuna é PUBLICÁVEL: a página precisa dizer ao leitor que procuramos e não obtivemos.
@@ -321,6 +333,14 @@ def autoteste() -> int:
             lambda: "não atribui casos ao El Niño" in RESSALVA,
         "a ressalva distingue gripal de grave":
             lambda: "SRAG" in RESSALVA and "leve" in RESSALVA,
+        # Item 5 do contrato de layout: cada tentativa aparece no painel, com o motivo — lacuna
+        # publicada em junho e lacuna medida hoje são indistinguíveis na página sem isto.
+        "a tentativa entra no painel de saúde dos coletores, com o motivo":
+            lambda: (registrar_tentativa_sg({"resultado": "lacuna", "motivo": "API 401"},
+                                            agora="2026-10-02", escrever=False)
+                     ["tentativas"][-1]["motivo"] == "API 401"),
+        "o painel sabe não escrever, e é por isso que o autoteste pode exercitá-lo":
+            lambda: "escrever" in __import__("inspect").signature(registrar_tentativa_sg).parameters,
     }
     return rodar_autoteste(casos)
 

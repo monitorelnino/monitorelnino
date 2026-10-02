@@ -2942,3 +2942,192 @@ causa; o que os achou foi o portão de runtime, figura por figura.
 **O crédito de fonte vai com o id literal**, não com variável: `verificar_saude.py` confere a
 presença do crédito lendo o fonte do JavaScript, e um id em variável é invisível para ele. Perder a
 conferência para economizar quatro linhas seria trocar prova por elegância.
+
+## 88. Contrato de layout: a forma da página deixa de ser hábito (02/10/2026)
+
+A editoria apontou, três rodadas seguidas, o mesmo tipo de defeito nas páginas de Saúde e
+Financiamento: cartão dentro de caixa cinza, mapa sozinho ocupando um terço da largura,
+grade de três colunas com dois cartões, rótulo "FIGURA n" repetido, texto interno vazado
+para o leitor. Cada aponte virava um ajuste pontual, e o defeito voltava no cartão seguinte —
+porque a forma da página só existia como hábito espalhado pelo HTML.
+
+A partir desta edição, a forma é **declarada**. Cada página com contrato tem um arquivo
+`layout/contratos/<pagina>.json` que diz: as seções e sua ordem, o `h2` de cada uma, os
+cartões de cada seção com o identificador do elemento que os contém, a grade esperada, a
+grade dos 27 estados onde houver, e a lista de texto proibido. O contrato é a verdade; o HTML
+e o JavaScript se conformam a ele.
+
+Quem verifica é `scripts/verificar_layout.py`, portão bloqueante. Ele não lê o HTML: lê o
+**despejo da página renderizada**, produzido por `scripts/_layout_dump.js` em 1280 e 390 px de
+largura, com o JavaScript já executado. A divisão é de propósito — a regra é texto
+legível, a medição é navegador, e o julgamento é uma função pura com autoteste offline
+de 16 casos. O portão reprova: ordem de seção fora do contrato, cartão contratado ausente ou
+em travessão, figura de dado fora do componente `.cartao-mapa`, grade de três colunas com
+coluna vazia que não seja a última linha, cartão com menos de 60% da largura dos vizinhos,
+texto proibido visível, série existente anunciada como "sem dado", erro de JavaScript e
+rolagem horizontal.
+
+Duas consequências de método. Primeira: o rótulo "FIGURA n" sai do cartão de mapa — a
+numeração sequencial continua valendo para a figura avulsa, e `verificar_consistencia_visual.js`
+foi estreitado a ela. Segunda: onde o contrato e um portão de runtime antigo divergiam (o
+`.panel` que virou `<section>`, o mapa de risco previsto que voltou à seção do estado), vence o
+contrato, porque ele é a decisão da editoria escrita; o portão foi atualizado, nunca
+contornado.
+
+Isto não muda nenhum número do índice. É regra de forma, subordinada à prova
+(`METODOLOGIA.md`) e à narrativa (`AI_EDITORIAL_NARRATIVE_GOVERNANCE.md`), e serve ao §25 da
+direção de arte: não se maquia componente por componente.
+
+## 89. O recorte de cada cartão é o da fonte (02/10/2026)
+
+Os cartões do topo do Financiamento diziam "na semana" para dado que a fonte publica por mês, e
+por isso dois deles viviam escritos como "sem dado nesta edição" — com a série-base em disco.
+A editoria chamou isso pelo nome: lacuna declarada existe para ausência de dado, não para
+desencontro de janela.
+
+A regra passa a ser: **cada cartão publica no recorte que a fonte permite**, e o recorte aparece
+no próprio cartão. O Portal da Transparência publica execução e transferência a município por
+mês; esses dois cartões falam do último mês **fechado**. Portaria e ato federal têm data,
+e aí o recorte de sete dias é real.
+
+Quem calcula é `gerar_financiamento_semana.py`, num arquivo só (`data/financiamento/semana.json`),
+e a página apenas mostra. Três decisões de método ficam registradas:
+
+1. **Mês parcial não vira cartão.** O coletor de transferências marca como `parcial` o mês cujo
+   arquivo o Portal ainda está preenchendo. Publicar esse mês mostraria uma queda que é da
+   planilha, e não do dinheiro.
+2. **Zero é zero; ausência é ausência.** Nenhuma portaria de resposta em sete dias é **zero**,
+   com a janela dita. Arquivo não coletado é **lacuna declarada**, com o motivo. O portão
+   `verificar_financiamento_coerencia.py` reprova cartão sem coleta que traga número, cartão com
+   número sem período ou sem fonte, e número que divirja da edição da imprensa onde a janela é
+   a mesma — duas contas do mesmo dado com valores diferentes é o que o leitor encontra antes
+   de nós.
+3. **A quebra por mês passou a ser guardada.** `coletar_execucao_mps.py` acumulava a execução do
+   ciclo e descartava o mês; agora grava `execucao.por_mes`. Enquanto a quebra não existir para
+   um compromisso, o cartão publica o acumulado e diz quais meses leu — dado com a janela certa,
+   nunca ausência.
+
+Na página, o mesmo contrato do §88 removeu o diagrama das rotas (seu dado fica no repositório e
+nos dados abertos), os dois mapas da parcela executada fora de Brasília e o mapa municipal da
+despesa própria — que virou mapa por estado, com a média entre os municípios **com lançamento**
+na subfunção 182, mais lista por município. Município sem lançamento não entra na média: ele
+lançou em outra rubrica, e não gastou zero. A grade de estados passou a mostrar os 27 sempre:
+a versão anterior listava só quem tinha mês lido e entregava 26 células, sem dizer qual faltava.
+
+## 90. Coleta grande que falha: retomada, último dado bom e falha visível (02/10/2026)
+
+O banco do SIVEP-Gripe tem centenas de megabytes por ano epidemiológico, e são oito anos. A
+coleta falhava com frequência, e falhava **em silêncio**: a série ficava parada e a página
+continuava igual — o que é pior do que a falha, porque série parada por falha e série parada
+porque o dado não mudou são indistinguíveis na tela. Três correções estruturais, cada uma
+por um modo de falha medido:
+
+1. **Retomada, não repetição.** `buscar_em_fluxo_confiavel` pede o resto com `Range: bytes=N-`
+   quando a conexão cai, em vez de baixar o arquivo inteiro outra vez; tenta três vezes, com
+   espera de 5 s, 15 s e 45 s. Fonte que ignora o `Range` responde o arquivo inteiro: emendar
+   pedaço velho com arquivo novo seria inventar dado, e a função levanta.
+2. **Integridade antes de processar.** Quando a fonte declara `Content-Length`, confere-se o
+   total recebido. Arquivo truncado levanta `FluxoIncompleto` — antes, meia série era agregada
+   e publicada como série inteira, sem nenhum sinal. Bloqueio de acesso real (401, 403, 429,
+   451) e muro de robô **não** se repetem: recusa se respeita (§186).
+3. **O último dado bom permanece, e a falha aparece.** O cache por ano já guardava o agregado;
+   agora, ano que falha é republicado de lá, e o arquivo publicado leva
+   `anos_republicados_por_falha`, `lacunas_por_ano` e `ultimo_dado_valido_em`. A seção nunca
+   desaparece e nunca mostra zero: as duas coisas afirmariam o que não se mediu.
+
+Além disso, `data/saude_desfechos/coletores_painel.json` passa a registrar **cada tentativa**,
+append-only, com os anos lidos, os republicados e o motivo de cada falha. O coletor de síndrome
+gripal usa a mesma porta: lá não há arquivo grande para retomar, porque a fonte recusa com 401
+e 403, mas a linha do painel distingue lacuna medida hoje de lacuna publicada em junho.
+
+O autoteste dos dois coletores exercita isso **sem rede**: ele troca a abertura da conexão por
+uma função própria e prova a retomada por `Range`, a recusa de emendar quando a fonte ignora o
+`Range`, a falha por tamanho menor que o declarado, a espera crescente e o conteúdo da linha do
+painel — sem escrever em `data/`.
+
+## 91. Coordenação em duas funções: construção do componente (02/10/2026)
+
+Decidido pela editoria em 02/10/2026, depois de discussão de método. A ordem desta seção é a do
+manual de índices compostos da OCDE e do JRC: quadro conceitual, regra de medida, escalas,
+agregação e pesos, robustez. Ela foi escrita **antes** de o componente ser calculado.
+
+### 91.1 Quadro conceitual
+
+A coordenação da preparação em saúde é um construto **formativo**: ele não é uma coisa só
+medida por indicadores intermáveis, e sim a soma de **duas capacidades distintas**, cada uma com
+base legal própria. Construto formativo não admite a troca de uma função por outra: um estado com
+sala de situação própria e nenhuma ligação com o governo não está "igualmente coordenado" a um
+estado que participa do comitê do governo sem estrutura própria. As duas funções:
+
+- **F1 — comando interno do setor saúde.** A secretaria estadual de saúde coordena, por
+  estrutura própria (grupo condutor, sala de situação, centro de operações de emergência em
+  saúde), a preparação e a resposta aos riscos do ciclo. Base legal: Lei 8.080/1990, art. 17,
+  IV, "a", e V.
+- **F2 — ligação do setor saúde com a coordenação do estado.** A secretaria de saúde está
+  formalmente integrada à coordenação intersetorial do estado (comitê ou sala de governo), ou a
+  sua estrutura própria integra formalmente a defesa civil e os demais órgãos. Base legal: Lei
+  12.608/2012, art. 3º, parágrafo único, art. 7º e art. 2º, IX (redação da Lei 14.750/2023), e
+  Lei 8.080/1990, art. 17, V.
+
+As duas funções correspondem a capacidades que os quadros de referência da área tratam como
+distintas — o quadro da Organização Mundial da Saúde para gestão de risco de emergências e
+desastres em saúde separa o comando do setor da articulação multissetorial, e as capacidades
+avaliadas no âmbito do Regulamento Sanitário Internacional fazem a mesma separação. **Lacuna
+declarada:** a citação das edições e dos documentos exatos desses dois quadros, e da norma federal
+vigente da Rede CIEVS/COE e da composição do SINPDEC no Decreto 10.593/2020, entra nesta seção
+após conferência documento por documento. Enquanto não estiver conferida, o texto público não
+atribui a nenhum organismo uma redação que não foi lida.
+
+### 91.2 Regra de medida: mede-se a função, não o órgão
+
+Um ato que cumpre as duas funções pontua nas duas; dois atos que cumprem uma função cada pontuam
+o mesmo. A evidência exigida é sempre **ato oficial publicado** — diário oficial do estado ou
+portal oficial da secretaria ou do governo —, para o ciclo 2026/2027 ou para eventos climáticos
+extremos, **com atribuição definida** (coordenação, competência, eixo). Comitê de governo que não
+nomeia a saúde não cumpre F2; ele pode contar no MARÉ Legal como estrutura do estado, e a
+**sobreposição fica declarada**: são dois índices medindo fatos diferentes sobre o mesmo ato.
+
+### 91.3 Escalas
+
+| função | degrau | pontos |
+|---|---|---|
+| F1 | criado para o ciclo | 100 |
+| F1 | reativado ou ampliado para o ciclo | 65 |
+| F1 | permanente, sem ato do ciclo | 45 |
+| F1 | anunciado sem ato | 35 |
+| F1 | nada localizado até o corte | 0 |
+| F2 | saúde nomeada com atribuição definida | 100 |
+| F2 | saúde apenas listada, sem atribuição | 50 |
+| F2 | nada localizado até o corte | 0 |
+
+F2 tem três degraus, e não cinco: entre "nomeada com atribuição" e "nada" a única distinção que o
+documento sustenta é "apenas listada". Degrau intermeário inventado seria precisão que a prova
+não tem.
+
+### 91.4 Agregação e pesos
+
+**Pesos iguais** entre F1 e F2 — não há base teórica nem empírica para desigualar, e essa
+ausência de base é declarada em vez de resolvida por arbítrio. **Média aritmética** como regra:
+a falta de uma função **reduz, não zera**. O componente "coordenação" continua valendo um terço
+do MARÉ Saúde v0.4.
+
+Como no resto do índice, **função não verificada não é zero**: com F2 em branco, somar metade de
+zero afirmaria que a secretaria não está na coordenação do estado porque ninguém procurou. A
+coordenação fica **não verificada** até que as duas funções tenham sido procuradas — com
+registro, com "consultado sem achado" ou com "nada localizado" após campanha completa. A regra de
+troca automática da v0.3 para a v0.4 passa a exigir F1 **e** F2 verificadas nas 27 unidades.
+
+### 91.5 Robustez
+
+`robustez_saude.py` roda quatro testes sobre as mesmas 27 unidades e publica o resultado:
+
+1. **média geométrica** entre F1 e F2 como agregação alternativa — ela zera o componente quando
+   uma função é zero, e o relatório diz quantas unidades mudam de faixa por causa disso;
+2. **pesos 0,4/0,6 e 0,6/0,4** entre as duas funções;
+3. **sensibilidade ao degrau intermeário** de F2: "listada sem atribuição" valendo 35 e 65 no
+   lugar de 50;
+4. **incerteza por degrau**: Monte Carlo com ±15 pontos em cada função, semente fixa para que
+   duas edições sejam comparáveis.
+
+Nada disso é escondido: o relatório sai junto com o número, e a escolha publicada — aritmética,
+pesos iguais, degrau em 50 — aparece ao lado do que as alternativas fariam.

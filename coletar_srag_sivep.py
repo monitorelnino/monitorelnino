@@ -101,6 +101,97 @@ def autoteste() -> int:
     casos.append(("os anos congelados declarados são os que o portal declara",
                   list(ANOS_CONGELADOS) == list(range(2019, 2025))))
 
+    # ── falha de rede simulada (item 5 do contrato de layout, 02/10/2026) ────────────────────
+    # Sem rede e sem escrita: o autoteste troca a abertura de conexão por uma função própria e
+    # prova as três garantias que o handover pediu — retomada, integridade e fallback.
+    from coletores_base import FluxoIncompleto, buscar_em_fluxo_confiavel
+
+    class _Resposta:
+        def __init__(self, corpo, headers, status=200, corta=None):
+            self._corpo, self.headers, self.status = corpo, headers, status
+            self._corta, self._lido = corta, 0
+
+        def read(self, n=None):
+            if self._corta is not None and self._lido >= self._corta:
+                raise ConnectionResetError("conexão cortada pela fonte")
+            bloco = self._corpo[self._lido:self._lido + (n or len(self._corpo))]
+            self._lido += len(bloco)
+            return bloco
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+    CORPO = b"x" * 300
+    esperas = []
+
+    def abrir_que_corta(url, timeout, origem, desde=0):
+        """Primeira tentativa cai na metade; a segunda entrega o resto, como 206."""
+        if desde == 0:
+            return _Resposta(CORPO, {"Content-Length": "300"}, 200, corta=150)
+        return _Resposta(CORPO[desde:], {"Content-Length": str(300 - desde),
+                                         "Content-Range": f"bytes {desde}-299/300"}, 206)
+
+    lido = b"".join(buscar_em_fluxo_confiavel("https://exemplo.invalido/a.csv", tentativas=3,
+                                              dormir=esperas.append, abrir=abrir_que_corta))
+    casos.append(("conexão cortada no meio: o resto é pedido por Range e o arquivo fecha inteiro",
+                  lido == CORPO and len(esperas) == 1))
+
+    def abrir_curto(url, timeout, origem, desde=0):
+        """Entrega menos do que declarou, sempre: arquivo truncado é falha, não dado."""
+        return _Resposta(CORPO[:100], {"Content-Length": "300"}, 200)
+
+    try:
+        b"".join(buscar_em_fluxo_confiavel("https://exemplo.invalido/b.csv", tentativas=2,
+                                           dormir=lambda s: None, abrir=abrir_curto))
+        truncado_levanta = False
+    except FluxoIncompleto:
+        truncado_levanta = True
+    casos.append(("arquivo menor do que a fonte declarou levanta, em vez de virar meia série",
+                  truncado_levanta))
+
+    def abrir_sem_range(url, timeout, origem, desde=0):
+        """Fonte que ignora o Range: emendar pedaço velho com arquivo novo seria inventar."""
+        if desde == 0:
+            return _Resposta(CORPO, {"Content-Length": "300"}, 200, corta=150)
+        return _Resposta(CORPO, {"Content-Length": "300"}, 200)
+
+    try:
+        b"".join(buscar_em_fluxo_confiavel("https://exemplo.invalido/c.csv", tentativas=2,
+                                           dormir=lambda s: None, abrir=abrir_sem_range))
+        sem_range_levanta = False
+    except FluxoIncompleto:
+        sem_range_levanta = True
+    casos.append(("fonte que ignora o Range não é emendada: levanta", sem_range_levanta))
+
+    tempos = []
+
+    def abrir_que_falha(url, timeout, origem, desde=0):
+        raise TimeoutError("sem resposta")
+
+    try:
+        b"".join(buscar_em_fluxo_confiavel("https://exemplo.invalido/d.csv", tentativas=3,
+                                           dormir=tempos.append, abrir=abrir_que_falha))
+        falhou = False
+    except TimeoutError:
+        falhou = True
+    casos.append(("tentativas com espera crescente, e no fim a falha aparece",
+                  falhou and tempos == [5, 15]))
+
+    # O fallback: ano que falha é republicado do último agregado bom, com a lacuna declarada.
+    cache_falso = {"anos": {"2026": {"arquivo": "INFLUD26-01-09-2026.csv",
+                                     "serie": {"BR": {"2026-30": 7}}, "lido_em": "2026-09-01"}}}
+    guardado = (cache_falso.get("anos") or {}).get("2026") or {}
+    casos.append(("o cache guarda agregado por ano, que é o que o fallback republica",
+                  bool(guardado.get("serie")) and guardado["lido_em"] == "2026-09-01"))
+    painel = registrar_tentativa([2025], [2019], [2026], {2026: "FluxoIncompleto"},
+                                 agora="2026-10-02", escrever=False)
+    casos.append(("o painel registra a tentativa com o motivo da falha",
+                  painel["tentativas"][-1]["anos_republicados_por_falha"] == [2026]
+                  and painel["tentativas"][-1]["falhas"]["2026"] == "FluxoIncompleto"))
+
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
         print(f"  {'OK  ' if ok else 'FALHA'} {n}")
@@ -111,13 +202,23 @@ def autoteste() -> int:
     return 0
 
 
+def registrar_tentativa(lidos, reusados, por_falha, falhas, agora=None, escrever=True):
+    """Passa ao painel de saude dos coletores o resultado desta tentativa de SRAG."""
+    from coletores_base import registrar_tentativa_coletor
+    return registrar_tentativa_coletor("coletar_srag_sivep", {
+        "anos_lidos": list(lidos), "anos_reusados_do_cache": list(reusados),
+        "anos_republicados_por_falha": list(por_falha),
+        "falhas": {str(k): v for k, v in sorted(falhas.items())},
+    }, agora=agora, escrever=escrever)
+
+
 def main() -> int:
     if "--autoteste" in sys.argv:
         return autoteste()
 
     from coletar_srag_gripe import ANOS_CANAL, SE_INCOMPLETAS, canal_endemico, vazar_incompletas
-    from coletores_base import (DATA, buscar, buscar_em_fluxo, gravar_em, hoje_editorial,
-                                log_busca, registrar_lacuna)
+    from coletores_base import (DATA, buscar, buscar_em_fluxo_confiavel, gravar_em,
+                                hoje_editorial, log_busca, registrar_lacuna)
     from saude_opendatasus import (agregar_por_uf_semana, juntar, linhas_do_fluxo, precisa_reler,
                                    recursos_por_ano)
 
@@ -145,6 +246,7 @@ def main() -> int:
     cache.setdefault("anos", {})
 
     agregados, lidos, reusados, falhas = [], [], [], {}
+    reusados_por_falha = []
     for ano in sorted(recursos):
         arquivo = recursos[ano]["arquivo"]
         congelado = ano in ANOS_CONGELADOS
@@ -154,14 +256,24 @@ def main() -> int:
             continue
         try:
             serie = agregar_por_uf_semana(
-                linhas_do_fluxo(buscar_em_fluxo(recursos[ano]["url"], timeout=180,
-                                                origem="coletar_srag_sivep")),
+                linhas_do_fluxo(buscar_em_fluxo_confiavel(recursos[ano]["url"], timeout=180,
+                                                          origem="coletar_srag_sivep")),
                 ano, COL_UF, COL_SEMANA)
         except Exception as e:  # noqa: BLE001
             falhas[ano] = f"{type(e).__name__}"
-            continue
-        if not serie:
+            serie = None
+        if serie is not None and not serie:
             falhas[ano] = "arquivo lido sem nenhuma linha utilizável"
+            serie = None
+        if serie is None:
+            # 02/10/2026 (item 5): coleta que falha NÃO derruba a seção nem mostra zero. Se há
+            # agregado bom do mesmo ano no cache, ele é republicado com a data do último dado
+            # válido, e a falha fica declarada em `lacunas_por_ano`. Nunca sumir a série, nunca
+            # publicar zero: as duas coisas afirmariam o que não se mediu.
+            guardado = (cache.get("anos") or {}).get(str(ano)) or {}
+            if guardado.get("serie"):
+                agregados.append(guardado["serie"])
+                reusados_por_falha.append(ano)
             continue
         agregados.append(serie)
         lidos.append(ano)
@@ -199,8 +311,16 @@ def main() -> int:
         "indicador": "srag", "ano_corrente": ano_corrente, "anos_canal": ANOS_CANAL,
         "se_incompletas": SE_INCOMPLETAS, "anos_lidos": sorted(lidos + reusados),
         "anos_reusados_do_cache": sorted(reusados),
+        # Ano que falhou nesta rodada e foi republicado do último agregado bom, com o motivo: o
+        # leitor tem de poder ver que aquela parte da série não foi atualizada hoje.
+        "anos_republicados_por_falha": sorted(reusados_por_falha),
+        "lacunas_por_ano": {str(a): m for a, m in sorted(falhas.items())},
+        "ultimo_dado_valido_em": max(
+            [(((cache.get("anos") or {}).get(str(a)) or {}).get("lido_em") or "")
+             for a in sorted(lidos + reusados + reusados_por_falha)] or [""]) or None,
         "serie": consolidada, "nowcasting": nowcasting, "canal_endemico": canal})
 
+    registrar_tentativa(sorted(lidos), sorted(reusados), sorted(reusados_por_falha), falhas)
     log_busca("DOU", 1, [PAGINA], "registro", nivel="nacional", n_resultados=len(serie),
               resultados=(f"SRAG/SIVEP-Gripe: {len(serie)} localidade(s); anos lidos {sorted(lidos)}; "
                           f"reusados do cache {sorted(reusados)}"))

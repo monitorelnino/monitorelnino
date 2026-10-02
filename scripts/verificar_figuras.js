@@ -53,7 +53,10 @@ function renderizar(pagina) {
         // altura reservada para a grade alinhar. E o "Como ler" passou a vir recolhido num
         // <details> sem tabela, que a regra de cima não alcançava. São partes do componente,
         // não explicação avulsa: entram na lista pelo mesmo motivo que `figura-sub` entrou.
-        if (["figura-sub", "figura-cat", "figura-leitura", "cartao-mapa-familia",
+        // 02/10/2026 (contrato de layout): `busca-mun-conta` é a linha de cobertura da busca por
+        // município — quantos municípios a fonte acompanha. Entra na lista pelo mesmo motivo que
+        // `figura-sub`: é parte declarada do componente, não explicação avulsa.
+        if (["figura-sub", "figura-cat", "figura-leitura", "busca-mun-conta", "cartao-mapa-familia",
              "cartao-mapa-boletim", "cartao-mapa-leitura", "cartao-mapa-dados",
              "cartao-mapa-rodape"].some(c => e.classList.contains(c))) return false;
         if (e.closest(".cartao-mapa-leitura") || e.closest(".cartao-mapa-rodape")) return false;

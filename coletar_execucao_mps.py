@@ -98,7 +98,11 @@ def coletar() -> int:
     if not mps.get("mps"):
         print("execucao_mps: sem mps_2026.json — nada a fazer"); return 0
     primeiro = min(a["primeiro_mes"] for a in ALVOS.values())
+    # 02/10/2026 (item 4 do contrato de layout): alem do acumulado, guarda-se a quebra POR MES.
+    # O Portal publica execucao por mes, e o cartao do topo do Financiamento diz "no mes de X":
+    # sem esta quebra o gerador so teria o acumulado do ciclo e o cartao ficaria sem dado.
     acumulado = {mp: {"orgaos": {c: {"empenhado": 0.0, "liquidado": 0.0, "pago": 0.0} for c in a["orgaos"]}, "por_uf_pago": defaultdict(float),
+                      "por_mes": {},
                       "empenhado": 0.0, "liquidado": 0.0, "pago": 0.0} for mp, a in ALVOS.items()}
     meses_lidos, hashes = [], {}
     for mes in meses_ate_hoje(primeiro):
@@ -114,6 +118,8 @@ def coletar() -> int:
             if mes < a["primeiro_mes"]:
                 continue
             for k in ("empenhado", "liquidado", "pago"): acumulado[mp][k] += parcial[mp][k]
+            acumulado[mp]["por_mes"][mes] = {k: round(parcial[mp][k], 2)
+                                             for k in ("empenhado", "liquidado", "pago")}
             for c, o in parcial[mp]["orgaos"].items():
                 for k in o: acumulado[mp]["orgaos"][c][k] += o[k]
             for uf, v in parcial[mp]["por_uf_pago"].items(): acumulado[mp]["por_uf_pago"][uf] += v
@@ -137,6 +143,7 @@ def coletar() -> int:
         mp["execucao"] = {"status": "coletado", "fonte": "Portal da Transparência — Execução da Despesa (arquivos mensais abertos)",
                           "empenhado": round(a["empenhado"], 2), "liquidado": round(a["liquidado"], 2), "pago": round(a["pago"], 2),
                           "meses": [m for m in meses_lidos if m >= ALVOS[mp["id"]]["primeiro_mes"]], "atualizado_em": hoje,
+                          "por_mes": dict(sorted(a["por_mes"].items())),
                           "limite": "execução das AÇÕES reforçadas pela MP desde o mês de publicação — inclui a dotação ordinária da ação; teto, não a execução do crédito"}
         for org in mp["orgaos"]:
             cod = next((c for c, s in ALVOS[mp["id"]]["orgaos"].items() if s["nome"] == org["nome"]), None)

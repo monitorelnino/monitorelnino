@@ -172,35 +172,19 @@ def preencher_saude():
         h = sub_id(h, "nCalorMun", f"{acima:,}".replace(",", "."), n)
     h = sub_id(h, "nEmergSaude", str((mon.get("resposta") or {}).get("emergencias") or 0), n)
 
+    # 02/10/2026 (contrato de layout): o sexto cartao e o proprio numero do MARE Saude, com o
+    # rotulo dizendo de quantos estados e a media enquanto nao forem 27 - a mesma frase que o
+    # JavaScript escreve, para que a pagina sem JS nao diga menos nem mais.
     res = mon.get("resumo") or {}
     media = res.get("media_das_verificadas")
     if media is not None:
-        h = sub_id(h, "gaugeSaudeNum", fmt(media), n)
-        h = sub_id(h, "gaugeSaudeN", str(res.get("verificadas", "—")), n)
-        h = sub_id(h, "gaugeSaudeNV", str(res.get("nao_verificadas", "—")), n)
-        h = sub_id(h, "gaugeSaudeCorte", mon.get("corte") or meta.get("corte") or "—", n)
-        h = re.sub(r'(id="gaugeSaudeFill" data-alvo=")[\d.]+(" style="--galvo:)[\d.]+(;")', rf'\g<1>{media}\g<2>{max(media, 0.1)}\g<3>', h, count=1)
-        rotulo_verif = res.get("verificadas", "—")
-        h = re.sub(r'aria-label="Barra de progresso: MARÉ · Saúde[^"]*"',
-                    f'aria-label="Barra de progresso: MARÉ · Saúde em {fmt(media)} de 100 (média de {rotulo_verif} estados verificados)"', h, count=1)
-        n[0] += 1
-
-    resposta = mon.get("resposta") or {}
-    ir = resposta.get("indice")
-    if ir is not None:
-        emerg = resposta.get("emergencias") or 0
-        plural = "" if emerg == 1 else "s"
-        h = sub_id(h, "rsNum", fmt(ir), n)
-        h = sub_id(h, "rsCorte", mon.get("corte") or "—", n)
-        badge = f'<span class="gfaixa-pill">{emerg} emergência{plural} sanitária{plural} declarada{plural}</span>'
-        h = re.sub(r'(<span class="gfaixa-badge" id="rsBadge">)[^<]*(</span>)', lambda m: m.group(1) + badge + m.group(2), h, count=1)
-        alvo = max(ir, 0.6 if emerg else 0)
-        h = re.sub(r'(id="rsFill" data-alvo=")[\d.]+(" style="--galvo:)[\d.]+(;")', rf'\g<1>{alvo}\g<2>{max(ir, 0.1)}\g<3>', h, count=1)
-        interp = (f'<strong>{emerg}</strong> emergência{plural} sanitária{plural} declarada{plural} desde {resposta.get("desde", "29/06/2026")} '
-                  f'(ESPIN federal e decretos estaduais), <strong>{fmt((resposta.get("pop_sob_emergencia") or 0) / 1e6)}</strong> '
-                  f'milhões de pessoas nos estados que as declararam. Antecipação mede preparo; resposta mede o que foi declarado depois, mostrados em separado.')
-        h = re.sub(r'(<p class="note"[^>]*id="interpRespostaSaude"[^>]*>)[^<]*(</p>)', lambda m: m.group(1) + interp + m.group(2), h, count=1)
-        n[0] += 1
+        verificadas = res.get("verificadas") or 0
+        h = sub_id(h, "nIndiceSaude", fmt(media), n)
+        h = sub_id(h, "rotuloIndiceSaude",
+                   "de 100, na prepara\u00e7\u00e3o publicada em sa\u00fade" if verificadas >= 27
+                   else f"de 100, m\u00e9dia dos {verificadas} estados verificados", n)
+        h = sub_id(h, "fonteIndiceSaude",
+                   f"MAR\u00c9, sobre documentos oficiais lidos \u00b7 {verificadas} de 27 estados verificados", n)
 
     if h != h0:
         p.write_text(h, encoding="utf-8", newline="\n")
@@ -213,6 +197,43 @@ def preencher_financiamento():
     rotas = ler("financiamento/rotas_preventivas.json", {}) or {}
     corte = rotas.get("corte") or "—"
     h = sub_id(h, "corteFin", corte, n)
+
+    # 02/10/2026 (contrato de layout): os três cartões do topo, com o recorte que a fonte permite.
+    # Quem calcula é gerar_financiamento_semana.py; aqui só se escreve o que o JavaScript
+    # escreveria, para que a página sem JS não mostre travessão.
+    sem = ler("financiamento/semana.json", {}) or {}
+    cartoes = {c.get("id"): c for c in (sem.get("cartoes") or [])}
+
+    def curto(v):
+        v = float(v or 0)
+        if v >= 1e9:
+            return "R$ " + f"{v / 1e9:,.1f}".replace(",", "X").replace(".", ",").replace("X", ".") + " bi"
+        if v >= 1e6:
+            return "R$ " + f"{v / 1e6:,.1f}".replace(",", "X").replace(".", ",").replace("X", ".") + " mi"
+        if v >= 1e3:
+            return "R$ " + f"{v / 1e3:,.0f}".replace(",", ".") + " mil"
+        return "R$ " + f"{v:,.0f}".replace(",", ".")
+
+    for ident, idv, idr, idf, rotulo in [
+            ("pago_periodo_mp", "topoPagoMes", "topoPagoMesRotulo", "topoPagoMesFonte",
+             "pago pelas ações reforçadas pelas medidas provisórias"),
+            ("transferido_municipios_periodo", "topoTransfMes", "topoTransfMesRotulo",
+             "topoTransfMesFonte", "transferido pela União aos municípios"),
+            ("resposta_liberado_semana", "topoRespostaSemana", None, "topoRespostaFonte", None)]:
+        c = cartoes.get(ident)
+        if not c:
+            continue
+        if c.get("sem_coleta"):
+            h = sub_id(h, idv, "sem coleta", n)
+            h = sub_id(h, idf, c.get("detalhe") or "", n)
+            continue
+        h = sub_id(h, idv, curto(c.get("valor")), n)
+        if idr and rotulo:
+            h = sub_id(h, idr, f"{rotulo}, no {c.get('periodo')}", n)
+        exato = "R$ " + f"{round(float(c.get('valor') or 0)):,}".replace(",", ".") + " · " \
+            if c.get("unidade") == "reais" else ""
+        h = sub_id(h, idf, exato + (c.get("fonte") or "")
+                   + (" · " + c["detalhe"] if c.get("detalhe") else ""), n)
     # `notaFogoCorte` saiu com o painel da rota do fogo (bloco B, 01/10/2026): o caso do fogo
     # virou texto, sem mapa por município e sem carimbo próprio.
     if h != h0:

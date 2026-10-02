@@ -1,4 +1,4 @@
-# Funil de saúde estadual — elo da corrente noturna, depois da busca web.
+# Funil de saúde estadual — campanha QUINZENAL (dias 1 e 15), não mais elo da corrente noturna.
 #
 # Bloco A do handover do MARÉ Saúde (editoria, 01/10/2026): verificar os 27 estados e manter
 # verificado, com as fontes e os termos da SAÚDE. Roda aqui, e não na máquina de quem edita, porque
@@ -7,17 +7,22 @@
 # Ele produz PISTA e nada mais: a promoção a registro é do `juiz.py`, com documento primário lido,
 # e o elo do juiz vem depois na mesma corrente. A ordem da noite é
 #
-#   diários → descoberta → busca web → **saúde estadual** → evidências → juiz → sinais
+#   diários → descoberta → busca web → evidências → juiz → sinais
 #
-# e o gatilho NÃO filtra por conclusão, de propósito: se o elo anterior falhou, este roda assim
-# mesmo. Cada coletor processa a fila pendente independentemente do horário, e uma noite perdida
-# não pode levar a seguinte junto.
-name: Noturno — funil de saúde estadual
+# Ele saiu dessa corrente em 02/10/2026: roda por calendário próprio, nos dias 1 e 15, e processa
+# a fila pendente independentemente do que aconteceu na noite anterior — rodada perdida não leva a
+# seguinte junto.
+name: Quinzenal — funil de saúde estadual
 
 on:
-  workflow_run:
-    workflows: ["Busca web — cadência automática"]
-    types: [completed]
+  # 02/10/2026 (bloco C.3 do handover de coordenação): a cadência passa a ser QUINZENAL, e o
+  # gatilho noturno sai. A razão é do objeto: ato estadual é publicado uma vez, e varrer todas as
+  # noites o que já foi localizado gasta a instância de busca sem produzir informação nova. A
+  # campanha única dos 27 e as atualizações (ato novo, plano publicado, prazo vencido) cabem numa
+  # rodada a cada duas semanas. O `workflow_dispatch` fica, para rodar à mão quando a editoria
+  # pedir.
+  schedule:
+    - cron: "40 3 1,15 * *"
   workflow_dispatch:
 
 permissions:

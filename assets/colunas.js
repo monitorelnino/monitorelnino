@@ -19,8 +19,16 @@
     var todas = document.querySelectorAll('.figura:not([hidden])');   // 13/09/2026: figura oculta (ex.: sem cobertura mínima) não consome número nem aparece como "Figura N"
     // 14/09/2026 (auditoria editorial, expandidos "ver mais"): figura dentro de um <details> fechado não consome número;
     // ao abrir, tudo é renumerado na ordem do documento (ver o ouvinte de "toggle" abaixo).
+    /* 02/10/2026: figura no componente `.cartao-mapa` NÃO é numerada. A regra já estava
+       escrita na folha de estilo desde 30/09 ('FIGURA n sai destes cartões'), mas ela
+       escondia `.figura-numero` e `::before`, e quem escreve o rótulo aqui é `.figura-num` —
+       classe diferente, regra que nunca casou. O contrato de layout proíbe o texto, e é mais
+       honesto não escrevê-lo do que escondê-lo. */
     var figs = [];
-    for (var k = 0; k < todas.length; k++) { var dt = todas[k].closest('details'); if (!dt || dt.open) figs.push(todas[k]); }
+    for (var k = 0; k < todas.length; k++) {
+      if (todas[k].classList.contains('cartao-mapa')) continue;
+      var dt = todas[k].closest('details'); if (!dt || dt.open) figs.push(todas[k]);
+    }
     for (var i = 0; i < figs.length; i++) {
       var f = figs[i], pe = f.querySelector(':scope > .figura-pe');
       if (!pe) { pe = document.createElement('div'); pe.className = 'figura-pe'; f.appendChild(pe); }
