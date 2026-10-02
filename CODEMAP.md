@@ -130,6 +130,7 @@ Atualizado em 01/10/2026.
 | `seguir_pistas.py` | — | `pistas_imprensa.json` | — | não |
 | `sondar_paineis.py` | — | — | — | não |
 | `triar_confianca_pistas.py` | — | `pistas_imprensa.json`, `pistas_revisao.json` | — | não |
+| `trocar_para_v04.py` | — | — | — | não |
 | `verificar_consistencia.py` | — | — | — | não |
 | `verificar_contribuicoes.py` | — | — | — | não |
 | `verificar_evidencias.py` | — | — | — | não |
