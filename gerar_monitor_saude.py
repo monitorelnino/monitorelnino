@@ -76,8 +76,45 @@ PESOS_V04 = {"instrumento": 1 / 3, "coordenacao": 1 / 3, "cobertura": 1 / 3}
 INSTRUMENTO_SCORE_V04 = {"NOVO": 100, "READ": 70, "VIG_REVISADO": 55, "VIG": 30,
                          "ELAB": 20, "VIG_OUTRO_RISCO": 0, "LAC": 0}
 # Coordenação: o ato que cria, reativa ou mantém a sala de situação / centro de operações.
+# A coordenacao da preparacao em saude e um construto FORMATIVO de duas capacidades distintas
+# (METODOLOGIA §91, decisao da editoria de 02/10/2026):
+#   F1 — comando interno do setor saude: a secretaria estadual coordena a preparacao por estrutura
+#        propria (grupo condutor, sala de situacao, centro de operacoes em saude).
+#   F2 — ligacao do setor saude com a coordenacao do estado: a secretaria esta formalmente
+#        integrada a coordenacao intersetorial, ou a estrutura propria integra a defesa civil.
+# Mede-se a FUNCAO, nao o orgao: um ato que cumpre as duas pontua nas duas.
 COORDENACAO_SCORE_V04 = {"CRIADO_CICLO": 100, "REATIVADO_CICLO": 65, "PERMANENTE": 45,
                          "ANUNCIADO": 35, "LAC": 0}
+# F1 usa a mesma escala de cinco degraus da coordenacao v0.4 (ela foi desenhada para esta funcao).
+F1_SCORE = dict(COORDENACAO_SCORE_V04)
+# F2 tem tres degraus, e nao cinco: entre "nomeada com atribuicao" e "nada" a unica distincao que
+# o documento sustenta e "apenas listada, sem atribuicao". Inventar degrau intermediario seria
+# precisao que a prova nao tem.
+F2_SCORE = {"NOMEADA_COM_ATRIBUICAO": 100, "LISTADA_SEM_ATRIBUICAO": 50, "LAC": 0}
+# Pesos iguais entre F1 e F2: nao ha base teorica nem empirica para desigualar, e a declaracao de
+# que sao iguais POR FALTA de base e parte do metodo. A robustez testa 0,4/0,6 e 0,6/0,4.
+PESOS_COORDENACAO = {"f1": 0.5, "f2": 0.5}
+
+
+def coordenacao_v04(f1: str, f2: str, agregacao: str = "aritmetica", pesos=None):
+    """(pontos, p_f1, p_f2) da coordenacao, pela media das duas funcoes. Funcao pura.
+
+    Devolve (None, None, None) quando QUALQUER uma das duas funcoes nao foi verificada: com F2 em
+    branco, somar metade de zero afirmaria que a secretaria nao esta na coordenacao do estado
+    porque ninguem procurou — lacuna nao e zero, e e a primeira regra editorial do projeto.
+
+    A regra e MEDIA ARITMETICA: a falta de uma funcao reduz, nao zera. `agregacao="geometrica"`
+    existe para o teste de robustez (METODOLOGIA §91.5), nao para publicar.
+    """
+    if f1 not in F1_SCORE or f2 not in F2_SCORE:
+        return None, None, None
+    p1, p2 = F1_SCORE[f1], F2_SCORE[f2]
+    w = pesos or PESOS_COORDENACAO
+    if agregacao == "geometrica":
+        total = (p1 ** w["f1"]) * (p2 ** w["f2"])
+    else:
+        total = w["f1"] * p1 + w["f2"] * p2
+    return round(total, 1), p1, p2
 CATEGORIAS_MUNICIPAIS = ("plano", "plano_antigo", "plano_elaboracao", "estrutura")   # as que recebem crédito de cobertura no MARÉ
 
 
@@ -191,10 +228,20 @@ def prontidao_v04(instrumento: str, coordenacao: str, cobertura, camada: str = "
     contagem sobre planos municipais lidos e já declara o que não foi lido ao lado."""
     if camada == "adaptacao":
         return None, None, None, None
-    if instrumento not in INSTRUMENTO_SCORE_V04 or coordenacao not in COORDENACAO_SCORE_V04:
+    # 02/10/2026: a coordenacao pode chegar como DEGRAU (forma antiga, um status so) ou como
+    # PONTOS ja agregados das duas funcoes, por `coordenacao_v04`. As duas formas valem: a troca
+    # para duas funcoes acontece conforme o juiz passa a classificar F1 e F2, estado por estado, e
+    # quebrar a forma antiga no meio da travessia apagaria a coordenacao de quem ainda nao foi
+    # reclassificado.
+    if isinstance(coordenacao, (int, float)):
+        pk = round(float(coordenacao), 1)
+    elif coordenacao in COORDENACAO_SCORE_V04:
+        pk = COORDENACAO_SCORE_V04[coordenacao]
+    else:
+        return None, None, None, None
+    if instrumento not in INSTRUMENTO_SCORE_V04:
         return None, None, None, None
     pi = INSTRUMENTO_SCORE_V04[instrumento]
-    pk = COORDENACAO_SCORE_V04[coordenacao]
     pc = round(float(cobertura or 0.0), 1)
     total = (PESOS_V04["instrumento"] * pi + PESOS_V04["coordenacao"] * pk
              + PESOS_V04["cobertura"] * pc)

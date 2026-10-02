@@ -66,6 +66,62 @@ RE_PLANO = re.compile(r"(plano\s+(?:estadual\s+)?(?:de\s+)?(?:conting[êe]ncia|p
 RE_CICLO = re.compile(r"El\s*Ni[ñn]o", re.I)
 RE_REATIVA = re.compile(r"(reativa|reinstitui|prorroga|renova|reconduz)", re.I)
 
+# ── F2: a ligacao do setor saude com a coordenacao do estado ──────────────────────────────────
+# Mede-se a FUNCAO, nao o orgao (METODOLOGIA §91): o ato pode ser do governo nomeando a saude no
+# comite intersetorial, ou da propria saude integrando a defesa civil e os demais orgaos. Os dois
+# cumprem F2, e e por isso que a busca e por DUAS direcoes no mesmo texto.
+RE_F2_ESTRUTURA_INTERSETORIAL = re.compile(
+    r"(comit[êe]\s+(?:intersetorial|interinstitucional|estadual|gestor)"
+    r"|sala\s+de\s+governo|gabinete\s+(?:de\s+crise|integrado)"
+    r"|grupo\s+de\s+trabalho\s+intersetorial|c[âa]mara\s+t[ée]cnica)", re.I)
+RE_F2_SAUDE_CITADA = re.compile(
+    r"(secretaria\s+(?:de\s+estado\s+)?d[ae]\s+sa[úu]de|SES(?:-[A-Z]{2})?\b|setor\s+sa[úu]de)", re.I)
+RE_F2_DEFESA_CIVIL = re.compile(
+    r"(defesa\s+civil|prote[çc][ãa]o\s+e\s+defesa\s+civil|coordenadoria\s+estadual\s+de\s+defesa)", re.I)
+# A atribuicao DEFINIDA e o que separa 100 de 50: nome numa lista de composicao nao e funcao.
+RE_F2_ATRIBUICAO = re.compile(
+    r"(compete|caber[áa]|atribui[çc][õo]es|coordena(?:r|d[ao]|[çc][ãa]o\s+d[eo])"
+    r"|respons[áa]vel\s+por|incumbe|exercer[áa]\s+a\s+coordena)", re.I)
+
+
+def degrau_f2(texto: str) -> tuple:
+    """(degrau, motivo) de F2, na escala de tres degraus. Funcao pura.
+
+    NOMEADA_COM_ATRIBUICAO exige as duas coisas no mesmo ato: a saude citada numa estrutura
+    intersetorial (ou a estrutura da saude citando a defesa civil e os demais orgaos) **e** uma
+    atribuicao escrita — competencia, coordenacao, responsabilidade. Sem a atribuicao, o que se
+    pode afirmar e que a saude esta listada, e o degrau e 50. Nada disso, LAC: lacuna, nao zero.
+    """
+    t = texto or ""
+    tem_atribuicao = bool(RE_F2_ATRIBUICAO.search(t))
+    # direcao 1: estrutura intersetorial do estado que cita a saude
+    de_fora = bool(RE_F2_ESTRUTURA_INTERSETORIAL.search(t) and RE_F2_SAUDE_CITADA.search(t))
+    # direcao 2: estrutura da propria saude que integra formalmente a defesa civil
+    de_dentro = bool(RE_COORDENACAO.search(t) and RE_F2_DEFESA_CIVIL.search(t))
+    if not (de_fora or de_dentro):
+        return "LAC", "o ato não liga o setor saúde à coordenação do estado"
+    onde = ("estrutura intersetorial do estado com a saúde citada" if de_fora
+            else "estrutura da saúde que integra a defesa civil")
+    if tem_atribuicao:
+        return "NOMEADA_COM_ATRIBUICAO", f"{onde}, com atribuição escrita no ato"
+    return "LISTADA_SEM_ATRIBUICAO", f"{onde}, sem atribuição escrita"
+
+
+def atribuicao_citada(texto: str) -> str:
+    """O trecho do ato que fundamenta F2 — artigo, inciso ou a frase da atribuicao. Funcao pura.
+
+    Guardar o trecho e exigencia do handover: a classificacao tem de poder ser conferida sem
+    reabrir o documento.
+    """
+    t = texto or ""
+    m = RE_F2_ATRIBUICAO.search(t)
+    if not m:
+        return None
+    ini = max(0, m.start() - 120)
+    pedaco = re.sub(r"\s+", " ", t[ini:m.end() + 180]).strip()
+    art = re.search(r"(art\.?\s*\d+[ºo]?(?:[,\s]*(?:inciso\s*)?[IVXLC]+)?)", pedaco, re.I)
+    return (art.group(1) + " — " if art else "") + pedaco[:240]
+
 
 # =============================================================================================
 # A exceção de autoridade da camada de saúde — DECISÃO DA EDITORIA, 01/10/2026, 16h UTC
@@ -364,8 +420,17 @@ def julgar_pista(p: dict, buscar_fn=None) -> dict:
     if v.get("promove"):
         v["hash_evidencia"] = preservar_evidencia(
             corpo, url, "pdf" if (url or "").lower().endswith(".pdf") else "html", "julgar_saude")
+        # As duas funcoes da coordenacao, cada uma classificada por conta propria: um ato que
+        # cumpre as duas pontua nas duas, e dois atos que cumprem uma cada pontuam o mesmo.
+        # F2 nao depende de o ato instituir estrutura de saude — um decreto do governo que nomeia
+        # a SES no comite intersetorial cumpre F2 sem instituir nada na saude.
+        f2, motivo_f2 = degrau_f2(texto)
+        if f2 != "LAC":
+            v["coordenacao_f2"] = {"degrau": f2, "motivo": motivo_f2,
+                                   "atribuicao_citada": atribuicao_citada(texto)}
         if "coordenacao" in v["institui"]:
             v["coordenacao"] = dict(zip(("degrau", "motivo"), degrau_coordenacao(texto, v.get("data"))))
+            v["coordenacao_f1"] = dict(v["coordenacao"])
         if "instrumento" in v["institui"]:
             v["status_instrumento"] = status_instrumento(v.get("categoria"))
     return v
@@ -394,11 +459,29 @@ def aplicar(su: dict, v: dict, titulo: str, url: str) -> list:
         u["data_verificacao"] = hoje
         u["log_ref"] = f"julgar_saude_{hoje.replace('/', '-')}"
         mudou.append(f"instrumento {v['status_instrumento']}")
+    # 02/10/2026: a coordenacao passa a ter duas funcoes, cada uma com o seu documento. O campo
+    # `coordenacao.status` continua existindo e continua sendo F1 — e o que o motor antigo le, e
+    # apagar isso no meio da travessia deixaria a coordenacao em branco em quem ja foi lido.
+    if v.get("coordenacao_f2"):
+        ordem_f2 = ["LAC", "LISTADA_SEM_ATRIBUICAO", "NOMEADA_COM_ATRIBUICAO"]
+        coord = u.setdefault("coordenacao", {})
+        atual_f2 = (coord.get("f2") or {}).get("status")
+        novo_f2 = v["coordenacao_f2"]["degrau"]
+        if atual_f2 is None or ordem_f2.index(novo_f2) > ordem_f2.index(atual_f2):
+            coord["f2"] = {"status": novo_f2, "doc": titulo, "numero": v.get("numero"),
+                           "data": v.get("data"), "url": url,
+                           "hash_evidencia": v.get("hash_evidencia"),
+                           "justificativa_degrau": v["coordenacao_f2"]["motivo"],
+                           "atribuicao_citada": v["coordenacao_f2"].get("atribuicao_citada"),
+                           "data_verificacao": hoje,
+                           "log_ref": f"julgar_saude_{hoje.replace('/', '-')}"}
+            mudou.append(f"coordenação F2 {novo_f2}")
     if v.get("coordenacao"):
         ordem = ["LAC", "ANUNCIADO", "PERMANENTE", "REATIVADO_CICLO", "CRIADO_CICLO"]
         atual = (u.get("coordenacao") or {}).get("status")
         novo = v["coordenacao"]["degrau"]
         if atual is None or ordem.index(novo) > ordem.index(atual):
+            guardado_f2 = (u.get("coordenacao") or {}).get("f2")
             u["coordenacao"] = {"status": novo, "orgao": f"SES-{uf}", "doc": titulo,
                                 "observacao": v.get("excecao_autoridade"),
                                 "numero": v.get("numero"), "data": v.get("data"), "url": url,
@@ -406,7 +489,15 @@ def aplicar(su: dict, v: dict, titulo: str, url: str) -> list:
                                 "justificativa_degrau": v["coordenacao"]["motivo"],
                                 "data_verificacao": hoje,
                                 "log_ref": f"julgar_saude_{hoje.replace('/', '-')}"}
-            mudou.append(f"coordenação {novo}")
+            # F1 e a mesma classificacao, guardada tambem com o nome da funcao; F2 que ja existia
+            # nao se perde quando F1 melhora.
+            u["coordenacao"]["f1"] = {
+                "status": novo, "doc": titulo, "numero": v.get("numero"), "data": v.get("data"),
+                "url": url, "hash_evidencia": v.get("hash_evidencia"),
+                "justificativa_degrau": v["coordenacao"]["motivo"], "data_verificacao": hoje}
+            if guardado_f2:
+                u["coordenacao"]["f2"] = guardado_f2
+            mudou.append(f"coordenação F1 {novo}")
     return mudou
 
 
@@ -467,10 +558,33 @@ def autoteste() -> int:
             lambda: (aplicar({"uf": {"AC": {"coordenacao": {"status": "CRIADO_CICLO"}}}},
                              {"uf": "AC", "coordenacao": {"degrau": "PERMANENTE", "motivo": "x"}},
                              "t", "u") == []),
-        "coordenação ausente é escrita":
+        # 02/10/2026: a coordenação passou a ter duas funções, e o que se escreve diz qual.
+        "coordenação ausente é escrita, dizendo a função":
             lambda: (aplicar({"uf": {"AC": {}}},
                              {"uf": "AC", "coordenacao": {"degrau": "PERMANENTE", "motivo": "x"}},
-                             "t", "u") == ["coordenação PERMANENTE"]),
+                             "t", "u") == ["coordenação F1 PERMANENTE"]),
+        # F2 é classificada por conta própria, e a atribuição escrita é o que separa 100 de 50.
+        "F2: saúde nomeada no comitê intersetorial COM atribuição":
+            lambda: degrau_f2("Institui o Comitê Intersetorial de Enfrentamento. "
+                              "À Secretaria de Estado da Saúde compete coordenar o eixo "
+                              "sanitário.")[0] == "NOMEADA_COM_ATRIBUICAO",
+        "F2: saúde apenas listada na composição vale menos, e não zero":
+            lambda: degrau_f2("Institui o Comitê Intersetorial, composto por: Casa Civil, "
+                              "Secretaria de Estado da Saúde, Defesa Civil.")[0]
+                    == "LISTADA_SEM_ATRIBUICAO",
+        "F2: estrutura da própria saúde que integra a defesa civil cumpre a função":
+            lambda: degrau_f2("Institui a Sala de Situação da SES, que será coordenada pela "
+                              "secretaria e integrará a Defesa Civil estadual.")[0]
+                    == "NOMEADA_COM_ATRIBUICAO",
+        "F2: comitê que não nomeia a saúde não cumpre a função":
+            lambda: degrau_f2("Institui o Comitê Intersetorial, composto por Casa Civil e "
+                              "Defesa Civil, a quem compete coordenar.")[0] == "LAC",
+        "F2 nunca conclui ausência de estrutura, só ausência de prova":
+            lambda: "o ato não liga" in degrau_f2("texto qualquer")[1],
+        "F2 guarda o trecho que fundamenta a classificação":
+            lambda: "art. 3" in (atribuicao_citada(
+                "Art. 3º Compete à Secretaria de Estado da Saúde coordenar o eixo sanitário.")
+                or "").lower(),
         # Condição (3) da decisão da editoria: o registro CARREGA a observação, e ela sai quando o
         # ato de aprovação aparecer. Sem isto, a exceção ficaria invisível no banco.
         # O título do registro sai do DOCUMENTO, não do resultado de busca: título de documento é

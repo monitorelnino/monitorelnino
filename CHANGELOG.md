@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-02 · #519 · Coordenação do MARÉ Saúde em duas funções
+
+O componente "coordenação" passa a ser construto formativo de duas capacidades: comando interno da saúde (F1) e ligação com a coordenação do estado (F2), pesos iguais e média aritmética — falta de uma função reduz, não zera. Mede-se a função, não o órgão: um ato pode pontuar nas duas. O juiz classifica as duas e guarda o trecho que fundamenta cada uma. `robustez_saude.py` testa agregação, pesos e degrau. METODOLOGIA §91.
+
 ## 2026-10-02 · #518 · Coleta de doença respiratória confiável
 
 O banco anual do SIVEP-Gripe passa a ser baixado com retomada por `Range`, três tentativas com espera crescente e conferência do tamanho declarado — conexão cortada entregava CSV truncado lido como série inteira. Ano que falha é republicado do último agregado bom, com a lacuna declarada; cada tentativa entra num painel de saúde dos coletores. Autoteste simula falha de rede. Em `coletores_base.py`, `coletar_srag_sivep.py`, `coletar_sg_esus.py`.

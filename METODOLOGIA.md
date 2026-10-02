@@ -3044,3 +3044,90 @@ O autoteste dos dois coletores exercita isso **sem rede**: ele troca a abertura 
 uma função própria e prova a retomada por `Range`, a recusa de emendar quando a fonte ignora o
 `Range`, a falha por tamanho menor que o declarado, a espera crescente e o conteúdo da linha do
 painel — sem escrever em `data/`.
+
+## 91. Coordenação em duas funções: construção do componente (02/10/2026)
+
+Decidido pela editoria em 02/10/2026, depois de discussão de método. A ordem desta seção é a do
+manual de índices compostos da OCDE e do JRC: quadro conceitual, regra de medida, escalas,
+agregação e pesos, robustez. Ela foi escrita **antes** de o componente ser calculado.
+
+### 91.1 Quadro conceitual
+
+A coordenação da preparação em saúde é um construto **formativo**: ele não é uma coisa só
+medida por indicadores intermáveis, e sim a soma de **duas capacidades distintas**, cada uma com
+base legal própria. Construto formativo não admite a troca de uma função por outra: um estado com
+sala de situação própria e nenhuma ligação com o governo não está "igualmente coordenado" a um
+estado que participa do comitê do governo sem estrutura própria. As duas funções:
+
+- **F1 — comando interno do setor saúde.** A secretaria estadual de saúde coordena, por
+  estrutura própria (grupo condutor, sala de situação, centro de operações de emergência em
+  saúde), a preparação e a resposta aos riscos do ciclo. Base legal: Lei 8.080/1990, art. 17,
+  IV, "a", e V.
+- **F2 — ligação do setor saúde com a coordenação do estado.** A secretaria de saúde está
+  formalmente integrada à coordenação intersetorial do estado (comitê ou sala de governo), ou a
+  sua estrutura própria integra formalmente a defesa civil e os demais órgãos. Base legal: Lei
+  12.608/2012, art. 3º, parágrafo único, art. 7º e art. 2º, IX (redação da Lei 14.750/2023), e
+  Lei 8.080/1990, art. 17, V.
+
+As duas funções correspondem a capacidades que os quadros de referência da área tratam como
+distintas — o quadro da Organização Mundial da Saúde para gestão de risco de emergências e
+desastres em saúde separa o comando do setor da articulação multissetorial, e as capacidades
+avaliadas no âmbito do Regulamento Sanitário Internacional fazem a mesma separação. **Lacuna
+declarada:** a citação das edições e dos documentos exatos desses dois quadros, e da norma federal
+vigente da Rede CIEVS/COE e da composição do SINPDEC no Decreto 10.593/2020, entra nesta seção
+após conferência documento por documento. Enquanto não estiver conferida, o texto público não
+atribui a nenhum organismo uma redação que não foi lida.
+
+### 91.2 Regra de medida: mede-se a função, não o órgão
+
+Um ato que cumpre as duas funções pontua nas duas; dois atos que cumprem uma função cada pontuam
+o mesmo. A evidência exigida é sempre **ato oficial publicado** — diário oficial do estado ou
+portal oficial da secretaria ou do governo —, para o ciclo 2026/2027 ou para eventos climáticos
+extremos, **com atribuição definida** (coordenação, competência, eixo). Comitê de governo que não
+nomeia a saúde não cumpre F2; ele pode contar no MARÉ Legal como estrutura do estado, e a
+**sobreposição fica declarada**: são dois índices medindo fatos diferentes sobre o mesmo ato.
+
+### 91.3 Escalas
+
+| função | degrau | pontos |
+|---|---|---|
+| F1 | criado para o ciclo | 100 |
+| F1 | reativado ou ampliado para o ciclo | 65 |
+| F1 | permanente, sem ato do ciclo | 45 |
+| F1 | anunciado sem ato | 35 |
+| F1 | nada localizado até o corte | 0 |
+| F2 | saúde nomeada com atribuição definida | 100 |
+| F2 | saúde apenas listada, sem atribuição | 50 |
+| F2 | nada localizado até o corte | 0 |
+
+F2 tem três degraus, e não cinco: entre "nomeada com atribuição" e "nada" a única distinção que o
+documento sustenta é "apenas listada". Degrau intermeário inventado seria precisão que a prova
+não tem.
+
+### 91.4 Agregação e pesos
+
+**Pesos iguais** entre F1 e F2 — não há base teórica nem empírica para desigualar, e essa
+ausência de base é declarada em vez de resolvida por arbítrio. **Média aritmética** como regra:
+a falta de uma função **reduz, não zera**. O componente "coordenação" continua valendo um terço
+do MARÉ Saúde v0.4.
+
+Como no resto do índice, **função não verificada não é zero**: com F2 em branco, somar metade de
+zero afirmaria que a secretaria não está na coordenação do estado porque ninguém procurou. A
+coordenação fica **não verificada** até que as duas funções tenham sido procuradas — com
+registro, com "consultado sem achado" ou com "nada localizado" após campanha completa. A regra de
+troca automática da v0.3 para a v0.4 passa a exigir F1 **e** F2 verificadas nas 27 unidades.
+
+### 91.5 Robustez
+
+`robustez_saude.py` roda quatro testes sobre as mesmas 27 unidades e publica o resultado:
+
+1. **média geométrica** entre F1 e F2 como agregação alternativa — ela zera o componente quando
+   uma função é zero, e o relatório diz quantas unidades mudam de faixa por causa disso;
+2. **pesos 0,4/0,6 e 0,6/0,4** entre as duas funções;
+3. **sensibilidade ao degrau intermeário** de F2: "listada sem atribuição" valendo 35 e 65 no
+   lugar de 50;
+4. **incerteza por degrau**: Monte Carlo com ±15 pontos em cada função, semente fixa para que
+   duas edições sejam comparáveis.
+
+Nada disso é escondido: o relatório sai junto com o número, e a escolha publicada — aritmética,
+pesos iguais, degrau em 50 — aparece ao lado do que as alternativas fariam.

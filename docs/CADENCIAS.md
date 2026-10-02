@@ -33,7 +33,9 @@ O formato de cada linha é fixo e lido por máquina:
 | `coletar_recursos_resposta.py` | diaria | encadeado | noturno_diarios | recursos federais de defesa civil autorizados por município (portarias da SEDEC no DOU); resposta e recuperação separadas |
 | `descobrir_planos.py` | diaria | encadeado | noturno_descoberta | busca web por planos municipais |
 | `seguir_pistas.py` | diaria | encadeado | noturno_descoberta | pistas até o documento |
-| `coletar_saude_estadual.py` | diaria | encadeado | noturno_saude_estadual | planos de saúde dos 27 estados pelos quatro canais: busca aberta, fontes declaradas, páginas de CIEVS/sala de situação/COE e diário oficial do estado com os termos da saúde |
+| `coletar_saude_estadual.py` | quinzenal | dias 1 e 15, 03:40 UTC | noturno_saude_estadual | planos de saúde dos 27 estados pelos quatro canais: busca aberta, fontes declaradas, páginas de CIEVS/sala de situação/COE e diário oficial do estado com os termos da saúde |
+| `julgar_saude.py` | quinzenal | dias 1 e 15, encadeado | noturno_saude_estadual | promove pista de saude a registro, com documento primario lido; classifica as duas funcoes da coordenacao |
+| `scripts/fechar_saude.py` | quinzenal | dias 1 e 15, encadeado | noturno_saude_estadual | mede quantas UFs podem ser marcadas "nao localizado", so onde os quatro canais rodaram |
 | `coletar_transferencias_municipais.py` | mensal | 05 do mês, 03:00 UTC | semanal_sinais_e_links | transferências da União a cada município, por mês e por rota |
 | `triar_confianca_pistas.py` | diaria | encadeado | noturno_descoberta | confiança de cada pista |
 | `preservar_evidencias.py` | diaria | encadeado | noturno_evidencias | cópia e hash dos documentos |

@@ -130,6 +130,7 @@ Atualizado em 02/10/2026.
 | `processar_contribuicoes.py` | — | — | — | não |
 | `recalcular_mare.py` | — | — | — | SIM |
 | `revisar_pistas.py` | — | `pistas_imprensa.json` | — | não |
+| `robustez_saude.py` | — | — | — | não |
 | `saude_opendatasus.py` | — | — | — | não |
 | `seguir_pistas.py` | — | `pistas_imprensa.json` | — | não |
 | `sondar_paineis.py` | — | — | — | não |
