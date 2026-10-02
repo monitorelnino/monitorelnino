@@ -67,7 +67,40 @@ setTimeout(() => {
   teste("mapas do painel (dengue e chikungunya): 27 estados e legenda", ["mapaDesf", "mapaChik"].every(id => q(id).querySelectorAll("path").length === 27) && q("legDesfMapa").children.length >= 1 && q("legChikMapa").children.length >= 1);
   teste("dengue nas capitais: 27 pontos dentro do mapa (coordenadas pela malha IBGE)", (() => { const c = [...d.querySelectorAll("#mapaDengue circle")]; return c.length === 27 && c.every(x => +x.getAttribute("cx") > 0 && +x.getAttribute("cx") < 480 && +x.getAttribute("cy") > 0 && +x.getAttribute("cy") < 460); })());
   teste("sem acordeão escondendo desfecho, sem seletor de doença", !q("outrosDesfechos") && !q("selDoencaDesf") && !q("boxEmerg") && !q("boxRespostaSanitaria"));
-  teste("seções próprias: dengue, chikungunya, calor, respiratórias, diarreicas, na ordem, antes dos estados", (() => { const ids = [...d.querySelectorAll("main > .panel, main > .hero")].map(e => e.id); const pos = k => ids.indexOf(k); return pos("heroSaude") < pos("dengue") && pos("dengue") < pos("chikungunya") && pos("chikungunya") < pos("calor") && pos("calor") < pos("respiratorias") && pos("respiratorias") < pos("diarreicas") && pos("diarreicas") < pos("estadual") && pos("estadual") < pos("estados"); })());
+  // 01/10/2026 (bloco C do handover): a ordem da página inverteu. Os números vêm primeiro, depois
+  // o que cada estado publicou, e só então o que os órgãos de saúde registram — que agora é UMA
+  // seção, e não cinco. O portão cobra a ordem nova; cobrar a antiga seria guardar a página que
+  // não existe mais.
+  teste("ordem da página: números, estados e só então o que os órgãos registram", (() => {
+    const ids = [...d.querySelectorAll("main > .panel, main > .hero")].map(e => e.id);
+    const pos = k => ids.indexOf(k);
+    return pos("heroSaude") < pos("numerosSaude") && pos("numerosSaude") < pos("estadual")
+      && pos("estadual") < pos("estados") && pos("estados") < pos("observado")
+      && pos("observado") < pos("saude-federal-painel");
+  })());
+  teste("saiu da página: backlog de fontes, catálogo de desfechos, gatilhos e áreas COBRADE",
+    !d.getElementById("saude-backlog-painel") && !d.getElementById("tblCatalogo")
+    && !d.getElementById("tblGatilhos") && !d.getElementById("tblAreas"));
+  // Bloco D: sigla sem tradução é jargão, e o leitor não tem de decodificar.
+  teste("textos: siglas traduzidas no texto visível", (() => {
+    const t = d.querySelector("main").textContent;
+    return !/\bCIEVS\b/.test(t) && !/\bMDDA\b/.test(t) && !/\bESPIN\b/.test(t)
+      && !/\bSRAG\b/.test(t);
+  })());
+  teste("textos: a frase do El Niño abre a seção do que é registrado",
+    /Esta página não relaciona casos ao El Niño/.test(d.getElementById("observado").textContent));
+  // Os três contadores do topo vêm do DADO, e dizem quantos estados faltam.
+  teste("contadores do topo: os três existem e saem do dado", (() => {
+    const plano = q("nPlanoSaude"), coord = q("nCoordSaude"), emerg = q("nEmergSaude");
+    if (!plano || !coord || !emerg) return false;
+    // Lê o agregado do DISCO: o `MSAUDE` do portão só é declarado mais abaixo, e usá-lo aqui
+    // quebrava por ordem de declaração — não por falta de dado.
+    const MS = JSON.parse(fs.readFileSync(path.join(raiz, "data", "monitor_saude.json"), "utf8"));
+    const comPlano = Object.values(MS.ufs).filter(u => u.instrumento && u.instrumento.doc).length;
+    return plano.textContent === `${comPlano} de 27`
+      && emerg.textContent === String(MS.resposta.emergencias)
+      && /não verificado|as 27 verificadas/.test(q("fontePlanoSaude").textContent);
+  })());
   // 23/09/2026 (§191): a decisão editorial registrada é "cada desfecho em seção própria, ANTES
   // dos estados", e ela continua asserida acima. O que mudou é a ordem interna dos dois painéis
   // de estado, que nunca foi decisão registrada — o portão só fixava a ordem que existia. Os dois
@@ -121,14 +154,37 @@ setTimeout(() => {
     const temSRAG = fs.existsSync(path.join(raiz, "data", "saude_desfechos", "srag_serie.json"));
     const temSG = fs.existsSync(path.join(raiz, "data", "saude_desfechos", "sg_serie.json"));
     const e0 = {svg: !q("svgSRAGLacuna").hidden, cv: !q("cSRAG").hidden, txt: q("svgSRAGLacuna").textContent};
-    teste("SRAG: " + (temSRAG ? "canvas visível com dado" : "lacuna declarada visível"), temSRAG ? (e0.cv && !e0.svg) : (e0.svg && !e0.cv && /SRAG.*lacuna declarada/.test(e0.txt)));
+    teste("SRAG: " + (temSRAG ? "canvas visível com dado" : "lacuna declarada visível"), temSRAG ? (e0.cv && !e0.svg) : (e0.svg && !e0.cv && /síndrome respiratória grave.*lacuna declarada/.test(e0.txt)));
     const e1 = {svg: !q("svgSGLacuna").hidden, cv: !q("cSG").hidden, txt: q("svgSGLacuna").textContent};
     teste("SG: " + (temSG ? "canvas visível com dado" : "lacuna declarada visível"), temSG ? (e1.cv && !e1.svg) : (e1.svg && !e1.cv && /síndrome gripal.*lacuna declarada/.test(e1.txt)));
-    teste("lado a lado: dengue com três figuras numa linha; item 'O que cada estado publicou' com três mapas numa linha", d.querySelectorAll("#dengue .grade-figuras--3 > .figura").length === 3 && d.querySelectorAll("#estadual .grade-figuras--3 > .figura").length === 3);
+    teste("lado a lado: três cartões por linha no que é registrado e em 'O que cada estado publicou'",
+      d.querySelectorAll("#observado .grade-figuras--3 > .figura").length >= 3
+      && d.querySelectorAll("#estadual .grade-figuras--3 > .figura").length === 3);
+    // Busca por município: as três travas do bloco C.3, exercitadas no DOM.
+    const sel = q("munUFSaude"), ent = q("munNomeSaude"), res = q("munResultadoSaude");
+    teste("busca por município: estado e cidade existem, cidade começa desabilitada",
+      !!sel && !!ent && !!res && sel.options.length > 1);
+    if (sel && ent && res) {
+      const REFd = JSON.parse(fs.readFileSync(path.join(raiz, "data", "municipios_ibge_referencia.json"), "utf8"));
+      const ref = Array.isArray(REFd) ? REFd : Object.values(REFd);
+      const DESFd = JSON.parse(fs.readFileSync(path.join(raiz, "data", "saude_desfechos", "serie_painel.json"), "utf8"));
+      const acomp = Object.keys(DESFd.municipios);
+      const umAcompanhado = DESFd.municipios[acomp[0]];
+      const foraDoPainel = ref.find(m => !DESFd.municipios[String(m.codigo_ibge).padStart(7, "0")]);
+      const escolher = (uf, nome) => { sel.value = uf; sel.dispatchEvent(new dom.window.Event("change")); ent.value = nome; ent.dispatchEvent(new dom.window.Event("change")); };
+      escolher(umAcompanhado.uf, umAcompanhado.nome);
+      teste("busca por município: cidade acompanhada mostra o nível e a semana",
+        /nível \d|sem semana consolidada/.test(res.textContent) && !res.hidden);
+      escolher(foraDoPainel.uf, foraDoPainel.nome);
+      teste("busca por município: cidade fora do painel é 'não acompanhada', nunca nível 1 nem zero",
+        /não acompanhado nesta série/.test(res.textContent) && !/nível 1/.test(res.textContent));
+      ent.value = "Cidade Que Nao Existe"; ent.dispatchEvent(new dom.window.Event("change"));
+      teste("busca por município: nome que não existe não inventa resultado", res.hidden === true);
+    }
     // 14/09/2026: figura de DDA — mesmo componente e renderizador da respiratória; sem dda_serie.json, lacuna declarada visível
     const temDDA = fs.existsSync(path.join(raiz, "data", "saude_desfechos", "dda_serie.json"));
     const eD = {svg: !q("svgDDALacuna").hidden, cv: !q("cDDA").hidden, txt: q("svgDDALacuna").textContent};
-    teste("DDA: " + (temDDA ? "canvas visível com dado" : "lacuna declarada visível"), temDDA ? (eD.cv && !eD.svg) : (eD.svg && !eD.cv && /DDA.*lacuna declarada/.test(eD.txt)));
+    teste("DDA: " + (temDDA ? "canvas visível com dado" : "lacuna declarada visível"), temDDA ? (eD.cv && !eD.svg) : (eD.svg && !eD.cv && /diarreicas.*lacuna declarada/.test(eD.txt)));
     teste("DDA: legenda nunca fala em nowcasting (a fonte não estima)", !/nowcasting/.test(q("legDDA").textContent));
   } catch (e) { teste("seletor respiratório", false); console.log("     ", e && e.message); }
   // 13/09/2026 (proposta de enxugamento, Manus AI): quadrante 'Defesa civil × saúde' retirado —
@@ -188,6 +244,10 @@ setTimeout(() => {
     const alto = Object.values(M).filter(m => m.ultima_se === se && (m.nivel_ultima_se === 3 || m.nivel_ultima_se === 4)).length;
     teste("saúde: dengue — municípios em alerta laranja/vermelho na última semana, do dado", new RegExp(`^Dengue: ${alto} ${alto === 1 ? "município" : "municípios"} em alerta laranja ou vermelho na semana SE ${se.split("-")[1]} de 2026`).test(q("boxDesfMapa").querySelector(".figura-titulo").textContent));
     teste("saúde: interpretação fixa do InfoDengue fora da figura", /InfoDengue/.test(q("interpObservado").textContent));
+    // Bloco das 23h20: a série respiratória não cita mais o InfoGripe como fonte dela.
+    teste("respiratórias: a fonte declarada é o SIVEP-Gripe, não o InfoGripe",
+      (() => { const t = d.getElementById("observado").textContent;
+               return /SIVEP-Gripe/.test(t) && !/InfoGripe/.test(t); })());
   } catch (e) { teste("saúde: títulos-fato (" + e.message + ")", false); }
   console.log(falhas.length ? `\n✗ ${falhas.length} verificação(ões) falharam.` : "\n✓ RUNTIME (saúde) OK — mapas, cartões, tooltip, créditos e lacunas declaradas.");
   process.exit(falhas.length ? 1 : 0);
