@@ -52,11 +52,54 @@ def uf_da_linha(row: dict) -> str:
     return m.group(1) if m and m.group(1) in UFS else "BR"
 
 
+# Modalidade de aplicação, pelos códigos do orçamento federal. A fonte traz o código e, em alguns
+# arquivos, o nome; o código é a chave, porque o nome varia de grafia entre meses. Agrupa-se em
+# quatro categorias de leitor, e o que não casar entra como "outras formas" — nunca é descartado,
+# porque a soma das categorias tem de fechar com o desembolsado.
+MODALIDADES = {
+    "90": "aplicados diretamente pela União",
+    "91": "aplicados diretamente pela União",
+    "99": "aplicados diretamente pela União",
+    "30": "transferidos aos estados",
+    "31": "transferidos aos estados",
+    "32": "transferidos aos estados",
+    "35": "transferidos aos estados",
+    "40": "transferidos aos municípios",
+    "41": "transferidos aos municípios",
+    "42": "transferidos aos municípios",
+    "45": "transferidos aos municípios",
+    "50": "transferidos a entidades sem fins lucrativos",
+    "80": "transferidos ao exterior",
+}
+OUTRAS_FORMAS = "outras formas de aplicação"
+
+
+def modalidade_da_linha(row: dict) -> str:
+    """A categoria de aplicação desta linha. Função pura.
+
+    Lê o CÓDIGO da modalidade; sem código legível, devolve "outras formas de aplicação" — e não
+    uma categoria inventada, porque a soma tem de fechar com o desembolsado.
+    """
+    bruto = ""
+    # MEDIDO em 02/10/2026 no arquivo mensal do Portal: a coluna se chama "Código Modalidade da
+    # Despesa" (e "Modalidade da Despesa" para o nome). Os outros nomes ficam como reserva, porque
+    # a grafia do Portal já mudou antes e o §219 nasceu exatamente disso.
+    for chave in ("Código Modalidade da Despesa", "Modalidade da Despesa",
+                  "Código Modalidade de Aplicação", "Codigo Modalidade de Aplicacao",
+                  "Código Modalidade Aplicação", "Modalidade de Aplicação"):
+        if row.get(chave):
+            bruto = str(row[chave]).strip()
+            break
+    m = re.match(r"(\d{2})", bruto)
+    return MODALIDADES.get(m.group(1), OUTRAS_FORMAS) if m else OUTRAS_FORMAS
+
+
 def agregar(linhas, alvos: dict = ALVOS) -> dict:
     """{mp: {'orgaos': {codigo: {empenhado, liquidado, pago}}, 'por_uf_pago': {UF: v}, 'empenhado','liquidado','pago'}}
     Só linhas cujo (órgão, ação) está nos alvos. Função pura, testável."""
     out = {mp: {"orgaos": {c: {"empenhado": 0.0, "liquidado": 0.0, "pago": 0.0} for c in a["orgaos"]},
-                "por_uf_pago": defaultdict(float), "empenhado": 0.0, "liquidado": 0.0, "pago": 0.0} for mp, a in alvos.items()}
+                "por_uf_pago": defaultdict(float), "por_modalidade_pago": defaultdict(float),
+                "empenhado": 0.0, "liquidado": 0.0, "pago": 0.0} for mp, a in alvos.items()}
     for row in linhas:
         cod_sub = (row.get("Código Órgão Subordinado") or "").strip(); cod_sup = (row.get("Código Órgão Superior") or "").strip()
         acao = (row.get("Código Ação") or "").strip()
@@ -68,8 +111,11 @@ def agregar(linhas, alvos: dict = ALVOS) -> dict:
                     out[mp]["empenhado"] += e; out[mp]["liquidado"] += l; out[mp]["pago"] += p
                     if p:   # só o que foi pago entra no destino (estornos e empenhos sem pagamento não desenham mapa)
                         out[mp]["por_uf_pago"][uf_da_linha(row)] += p
+                        out[mp]["por_modalidade_pago"][modalidade_da_linha(row)] += p
     for mp in out:
         out[mp]["por_uf_pago"] = {k: round(v, 2) for k, v in out[mp]["por_uf_pago"].items()}
+        out[mp]["por_modalidade_pago"] = {k: round(v, 2)
+                                          for k, v in out[mp]["por_modalidade_pago"].items()}
         for k in ("empenhado", "liquidado", "pago"): out[mp][k] = round(out[mp][k], 2)
         for o in out[mp]["orgaos"].values():
             for k in o: o[k] = round(o[k], 2)
@@ -102,7 +148,7 @@ def coletar() -> int:
     # O Portal publica execucao por mes, e o cartao do topo do Financiamento diz "no mes de X":
     # sem esta quebra o gerador so teria o acumulado do ciclo e o cartao ficaria sem dado.
     acumulado = {mp: {"orgaos": {c: {"empenhado": 0.0, "liquidado": 0.0, "pago": 0.0} for c in a["orgaos"]}, "por_uf_pago": defaultdict(float),
-                      "por_mes": {},
+                      "por_mes": {}, "por_modalidade_pago": defaultdict(float),
                       "empenhado": 0.0, "liquidado": 0.0, "pago": 0.0} for mp, a in ALVOS.items()}
     meses_lidos, hashes = [], {}
     for mes in meses_ate_hoje(primeiro):
@@ -123,6 +169,8 @@ def coletar() -> int:
             for c, o in parcial[mp]["orgaos"].items():
                 for k in o: acumulado[mp]["orgaos"][c][k] += o[k]
             for uf, v in parcial[mp]["por_uf_pago"].items(): acumulado[mp]["por_uf_pago"][uf] += v
+            for m_, v in parcial[mp]["por_modalidade_pago"].items():
+                acumulado[mp]["por_modalidade_pago"][m_] += v
     if not meses_lidos:
         print("execucao_mps: nenhum arquivo mensal lido — lacuna declarada, nada alterado"); return 0
     # 25/09/2026 (§219): o filtro depende dos NOMES das colunas do Portal ("Código Órgão
@@ -150,6 +198,15 @@ def coletar() -> int:
             if cod:
                 org["execucao_empenhado"] = round(a["orgaos"][cod]["empenhado"], 2); org["execucao_pago"] = round(a["orgaos"][cod]["pago"], 2)
                 org["acoes"] = sorted(ALVOS[mp["id"]]["orgaos"][cod]["acoes"])
+        # A forma de aplicação é o que o cartão "Como os recursos estão sendo aplicados" lê. Ela
+        # responde "a quem o dinheiro foi", e é diferente de `destino`, que diz onde o pagamento foi
+        # REGISTRADO (sede da unidade gestora) — a distinção está na METODOLOGIA.
+        mp["forma_de_aplicacao"] = {
+            "status": "coletado",
+            "medida": "valor desembolsado por modalidade de aplicação do orçamento federal",
+            "por_modalidade": {k: round(v, 2) for k, v in
+                               sorted(a["por_modalidade_pago"].items(), key=lambda x: -x[1])},
+            "atualizado_em": hoje}
         mp["destino"] = {"status": "coletado", "medida": "valor pago por UF da unidade gestora (BR = unidade nacional)",
                          "por_uf_pago": {k: round(v, 2) for k, v in sorted(a["por_uf_pago"].items(), key=lambda x: -x[1])}, "atualizado_em": hoje}
     mps["gerado_em"] = hoje; mps["hashes_arquivos_mensais"] = hashes
@@ -173,10 +230,26 @@ def autoteste() -> int:
     def t3(): return r["mp1384"]["orgaos"]["55000"]["pago"] == 10.0 and r["mp1384"]["orgaos"]["22211"]["empenhado"] == 5.0
     def t4(): return "9999" not in str(r) and r["mp1367"]["empenhado"] != 2099.5   # ação fora dos alvos ignorada
     def t5(): return uf_da_linha({"UF": "xx", "Nome Unidade Gestora": "IBAMA - SUP. DO ACRE/AC"}) == "AC" and uf_da_linha({"UF": "", "Nome Unidade Gestora": "IBAMA SEDE"}) == "BR"
+    def t7(): return (modalidade_da_linha({"Código Modalidade de Aplicação": "90"})
+                      == "aplicados diretamente pela União"
+                      and modalidade_da_linha({"Código Modalidade de Aplicação": "41 - Transf"})
+                      == "transferidos aos municípios")
+    def t8(): return (modalidade_da_linha({"Modalidade de Aplicação": "sem código"}) == OUTRAS_FORMAS
+                      and modalidade_da_linha({}) == OUTRAS_FORMAS)
+    def t9():
+        # As linhas do caso nao trazem o campo: o agregado guarda "outras formas", e a soma
+        # fecha com o desembolsado. Com o campo, a categoria aparece pelo codigo.
+        sem = r["mp1367"]["por_modalidade_pago"]
+        com = agregar([dict(L[0], **{"Código Modalidade de Aplicação": "41"})])["mp1367"]
+        return (round(sum(sem.values()), 2) == r["mp1367"]["pago"]
+                and "transferidos aos municípios" in com["por_modalidade_pago"])
     def t6(): return meses_ate_hoje("202606")[0] == "202606" and all(len(m) == 6 for m in meses_ate_hoje("202606")) and numero("abc") == 0.0
     return rodar_autoteste({"agrega por MP e órgão (empenhado/pago)": t1, "destino por UF (nome da UG ou coluna)": t2,
                             "MP 1.384: MDS por órgão superior, Conab por subordinado": t3, "negativo: ação fora dos alvos ignorada": t4,
-                            "UF: sufixo '/UF' e fallback BR": t5, "meses e números malformados": t6})
+                            "UF: sufixo '/UF' e fallback BR": t5, "meses e números malformados": t6,
+                            "modalidade pelo código do orçamento": t7,
+                            "modalidade ilegível não inventa categoria": t8,
+                            "o agregado guarda o desembolsado por modalidade": t9})
 
 
 if __name__ == "__main__":

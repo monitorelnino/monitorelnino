@@ -212,7 +212,14 @@ def calcular_resumo(registro: dict) -> dict:
     }
 
 
-def gravar(registro: dict) -> None:
+def gravar_registro(registro: dict) -> None:
+    """Escreve o registro pela porta atômica do projeto (§229).
+
+    02/10/2026: esta função chamava-se `gravar` e SOMBREAVA a `gravar(nome, obj)` importada de
+    `coletores_base` — então a chamada de dentro dela caía nela mesma, com dois argumentos, e o
+    coletor morria com TypeError a cada execução. É por isso que `despesa_182.json` estava parado
+    em 24/09: ele não falhava na fonte, falhava aqui.
+    """
     registro["gerado_em"] = hoje()
     registro["resumo"] = calcular_resumo(registro)
     DESTINO.parent.mkdir(parents=True, exist_ok=True)
@@ -257,7 +264,7 @@ def coletar(args) -> int:
             if falhas > 200 and falhas > ok:
                 # A fonte caiu de vez: parar e declarar, em vez de varrer 5 mil erros.
                 piscina.shutdown(wait=False, cancel_futures=True)
-                fechar_lote_log(); gravar(registro)
+                fechar_lote_log(); gravar_registro(registro)
                 print(f"[aviso] SICONFI: {falhas} falhas de rede contra {ok} leituras — rodada interrompida.")
                 return 0
             continue
@@ -303,11 +310,11 @@ def coletar(args) -> int:
                   hash_evidencia=sha256(bruto))
         if i % 200 == 0:
             descarregar_lote_log()
-            gravar(registro)      # salva parcial: 5.570 chamadas não podem depender de terminar
+            gravar_registro(registro)      # salva parcial: 5.570 chamadas não podem depender de terminar
             print(f"  … {i}/{len(pendentes)}", flush=True)
     piscina.shutdown(wait=True)
     fechar_lote_log()
-    gravar(registro)
+    gravar_registro(registro)
     print(f"  com lançamento nesta rodada: {ok} · sem declaração: {sem_decl} · falhas de rede: {falhas}")
     return 0
 

@@ -1,6 +1,6 @@
 {
  "_governanca": "Rota do dinheiro das MPs do ciclo 2026/2027 (créditos extraordinários). Dotações por órgão/ação vêm das notas oficiais (Agência Gov, Câmara, Conab) e do texto das MPs no Congresso; execução (empenhado/liquidado/pago) vem do Portal da Transparência (despesas) quando coletada — 'sem coleta' declarado até lá. Crédito extraordinário é executado por órgão federal: não é transferência a município; o 'destino' é onde a execução chega (brigadas, estoques, cestas). Peso zero.",
- "gerado_em": "24/09/2026",
+ "gerado_em": "02/10/2026",
  "mps": [
   {
    "id": "mp1367",
@@ -36,8 +36,8 @@
        "valor": 45000000
       }
      ],
-     "execucao_empenhado": 208076511.32,
-     "execucao_pago": 137522321.78,
+     "execucao_empenhado": 208290083.49,
+     "execucao_pago": 151679191.61,
      "acoes": [
       "214M",
       "214N"
@@ -53,8 +53,8 @@
        "detalhe": "capacitação e estruturação de equipes, contratação, equipamentos, sistemas de monitoramento"
       }
      ],
-     "execucao_empenhado": 153415633.39,
-     "execucao_pago": 125853638.08,
+     "execucao_empenhado": 153669233.35,
+     "execucao_pago": 128269077.17,
      "acoes": [
       "214P"
      ]
@@ -63,55 +63,86 @@
    "execucao": {
     "status": "coletado",
     "fonte": "Portal da Transparência — Execução da Despesa (arquivos mensais abertos)",
-    "empenhado": 361492144.71,
-    "liquidado": 260959945.01,
-    "pago": 263375959.86,
+    "empenhado": 361959316.84,
+    "liquidado": 290884019.24,
+    "pago": 279948268.78,
     "meses": [
      "202606",
      "202607",
      "202608",
      "202609"
     ],
-    "atualizado_em": "24/09/2026",
+    "atualizado_em": "02/10/2026",
+    "por_mes": {
+     "202606": {
+      "empenhado": 207202279.38,
+      "liquidado": 59375696.55,
+      "pago": 54178686.23
+     },
+     "202607": {
+      "empenhado": 68534840.82,
+      "liquidado": 62693176.24,
+      "pago": 62940991.27
+     },
+     "202608": {
+      "empenhado": 78766727.19,
+      "liquidado": 84151573.54,
+      "pago": 72859280.03
+     },
+     "202609": {
+      "empenhado": 7455469.45,
+      "liquidado": 84663572.91,
+      "pago": 89969311.25
+     }
+    },
     "limite": "execução das AÇÕES reforçadas pela MP desde o mês de publicação — inclui a dotação ordinária da ação; teto, não a execução do crédito"
    },
    "destino": {
     "status": "coletado",
     "medida": "valor pago por UF da unidade gestora (BR = unidade nacional)",
     "por_uf_pago": {
-     "BR": 249584371.17,
-     "PA": 2192473.16,
-     "RO": 1544438.02,
-     "MT": 1326196.78,
-     "MA": 1039319.86,
-     "AM": 983815.08,
-     "TO": 885397.48,
-     "GO": 621038.81,
-     "CE": 618332.04,
-     "MS": 504364.66,
-     "AC": 498740.83,
-     "PE": 462756.54,
-     "RR": 450383.38,
-     "RJ": 427478.22,
-     "BA": 384019.04,
-     "PR": 324224.36,
-     "PI": 213861.23,
-     "SP": 213685.16,
-     "AP": 171856.48,
-     "PB": 160460.22,
-     "SC": 156532.11,
-     "MG": 139358.2,
-     "RN": 123574.52,
-     "AL": 116344.18,
-     "RS": 100545.25,
-     "ES": 84750.56,
-     "SE": 47642.52
+     "BR": 264958243.7,
+     "PA": 2336656.12,
+     "RO": 1729243.32,
+     "MT": 1439054.81,
+     "MA": 1154952.52,
+     "AM": 1038891.73,
+     "TO": 991621.46,
+     "GO": 742587.11,
+     "CE": 740428.08,
+     "PE": 535872.68,
+     "MS": 529530.81,
+     "AC": 503664.45,
+     "RR": 483916.92,
+     "RJ": 436444.62,
+     "BA": 388248.8,
+     "PR": 332309.0,
+     "PI": 222054.23,
+     "SP": 214251.76,
+     "AP": 178586.24,
+     "SC": 164850.15,
+     "PB": 164170.02,
+     "MG": 157932.24,
+     "RN": 139956.38,
+     "AL": 118817.38,
+     "RS": 102175.99,
+     "ES": 90485.24,
+     "SE": 53323.02
     },
-    "atualizado_em": "24/09/2026"
+    "atualizado_em": "02/10/2026"
    },
    "assinada_em": "12/06/2026",
    "conferido_em": "01/10/2026",
-   "fonte_do_ato": "texto publicado no Diário Oficial da União"
+   "fonte_do_ato": "texto publicado no Diário Oficial da União",
+   "forma_de_aplicacao": {
+    "status": "coletado",
+    "medida": "valor desembolsado por modalidade de aplicação do orçamento federal",
+    "por_modalidade": {
+     "aplicados diretamente pela União": 278128166.27,
+     "transferidos a entidades sem fins lucrativos": 1820102.51
+    },
+    "atualizado_em": "02/10/2026"
+   }
   },
   {
    "id": "mp1384",
@@ -142,8 +173,8 @@
        "detalhe": "arroz: +106% sobre o estoque atual (~20 dias de consumo); milho para a estiagem prevista no Nordeste"
       }
      ],
-     "execucao_empenhado": 29579376.82,
-     "execucao_pago": 50604018.47,
+     "execucao_empenhado": 168845938.04,
+     "execucao_pago": 53830834.97,
      "acoes": [
       "2130"
      ]
@@ -158,8 +189,8 @@
        "detalhe": "valor por diferença (925 − 849); a confirmar no anexo da MP"
       }
      ],
-     "execucao_empenhado": 13301953.47,
-     "execucao_pago": 17288665.52,
+     "execucao_empenhado": 23987378.55,
+     "execucao_pago": 42795810.93,
      "acoes": [
       "2792",
       "2798"
@@ -169,37 +200,59 @@
    "execucao": {
     "status": "coletado",
     "fonte": "Portal da Transparência — Execução da Despesa (arquivos mensais abertos)",
-    "empenhado": 42881330.29,
-    "liquidado": 54601269.01,
-    "pago": 67892683.99,
+    "empenhado": 192833316.59,
+    "liquidado": 83452495.04,
+    "pago": 96626645.9,
     "meses": [
      "202608",
      "202609"
     ],
-    "atualizado_em": "24/09/2026",
+    "atualizado_em": "02/10/2026",
+    "por_mes": {
+     "202608": {
+      "empenhado": 22667749.84,
+      "liquidado": 25687601.82,
+      "pago": 35708784.22
+     },
+     "202609": {
+      "empenhado": 170165566.75,
+      "liquidado": 57764893.22,
+      "pago": 60917861.68
+     }
+    },
     "limite": "execução das AÇÕES reforçadas pela MP desde o mês de publicação — inclui a dotação ordinária da ação; teto, não a execução do crédito"
    },
    "destino": {
     "status": "coletado",
     "medida": "valor pago por UF da unidade gestora (BR = unidade nacional)",
     "por_uf_pago": {
-     "BR": 67085487.85,
+     "BR": 95763295.92,
      "MG": 345024.02,
      "PA": 246957.1,
-     "GO": 165779.12,
+     "GO": 221932.96,
      "SP": 49435.9
     },
-    "atualizado_em": "24/09/2026"
+    "atualizado_em": "02/10/2026"
    },
    "assinada_em": "12/08/2026",
    "conferido_em": "01/10/2026",
-   "fonte_do_ato": "texto publicado no Diário Oficial da União"
+   "fonte_do_ato": "texto publicado no Diário Oficial da União",
+   "forma_de_aplicacao": {
+    "status": "coletado",
+    "medida": "valor desembolsado por modalidade de aplicação do orçamento federal",
+    "por_modalidade": {
+     "aplicados diretamente pela União": 71329030.9,
+     "transferidos aos estados": 23800000.0,
+     "transferidos ao exterior": 1497615.0
+    },
+    "atualizado_em": "02/10/2026"
+   }
   }
  ],
  "hashes_arquivos_mensais": {
   "202606": "8dc362f0faeb02e408d6b7297497761a72a03f520dae8d6b45c4524434cd30ee",
   "202607": "df90f945215e3080d54f8c5bfa18c75d3ab6ea2ca5f7239e11a0a26bd5806e0e",
   "202608": "2229bd249a0abc333c63b65e679df9a315d992e2c941e2daca5a60c49ff328fa",
-  "202609": "60cbd8afacc96f98382d05aed42280384a9f798dc1477350c9d0367cfdbf69a8"
+  "202609": "4de0a67ee506169dbba28ad43024930b190e390f0d8b6c73615c6727e1ff05a1"
  }
 }

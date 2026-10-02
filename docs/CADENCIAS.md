@@ -77,6 +77,10 @@ O formato de cada linha é fixo e lido por máquina:
 | `coletar_painel_am.py` | semanal | dom 07:30 UTC | semanal_sinais_e_links | painel amostral |
 | `scripts/amostra_auditoria_semanal.py` | semanal | dom 03:10 UTC | atualizar | amostra de auditoria humana |
 | `coletar_financiamento.py` | semanal | dom 03:10 UTC | atualizar | transferências e execução orçamentária |
+| `coletar_execucao_mps.py` | semanal | dom 03:10 UTC | atualizar | execucao das medidas provisorias do ciclo no Portal da Transparencia, com quebra por mes e por modalidade de aplicacao |
+| `coletar_transferegov.py` | semanal | dom 03:10 UTC | atualizar | propostas e transferencias do TransfereGov; serie nacional e por UF |
+| `coletar_siconfi_182.py` | semanal | dom 03:10 UTC | atualizar | despesa propria dos municipios em defesa civil (subfuncao 182), pelo Siconfi |
+| `coletar_transferencias_municipais.py` | mensal | dia 2, 04:00 UTC | atualizar | transferencias da Uniao a municipios, por mes, do Portal da Transparencia |
 | `saude_opendatasus.py` | semanal | dom 03:10 UTC | atualizar | dengue, SRAG e DDA pelo OpenDataSUS |
 | `verificar_prazos_legais.py` | semanal | dom 03:10 UTC | atualizar | prazos legais do ciclo |
 
