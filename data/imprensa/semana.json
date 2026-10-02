@@ -61,7 +61,7 @@
    "id": "decretos_no_periodo",
    "grupo": "emergencias",
    "rotulo": "Municípios que decretaram emergência ou calamidade no período",
-   "valor": 25,
+   "valor": 30,
    "sem_coleta": false,
    "periodo": {
     "ini": "2026-09-25",
@@ -76,9 +76,33 @@
    "nota": null,
    "secundaria": {
     "rotulo": "em 14 dias",
-    "valor": 61
+    "valor": 66
    },
    "lista": [
+    {
+     "uf": "RS",
+     "municipio": "Guarani das Missões",
+     "data": "2026-10-02",
+     "causa": "situação de emergência",
+     "documento": "Decreto nº 3.434",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117942_2026-10-01_7715a5d13f59dad3fe0f1e0383773e49.pdf"
+    },
+    {
+     "uf": "RN",
+     "municipio": "Apodi",
+     "data": "2026-10-02",
+     "causa": "situação de emergência",
+     "documento": "Decreto nº 280",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117688_2026-10-01_97b8c3f18c372f20fc7378258f968c0a.pdf"
+    },
+    {
+     "uf": "AM",
+     "municipio": "Boa Vista do Ramos",
+     "data": "2026-10-02",
+     "causa": "situação de emergência",
+     "documento": "Decreto nº 031/2026",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118958_2026-10-01_7fc9fe12893c2105eb14a29edc135c77.pdf"
+    },
     {
      "uf": "RS",
      "municipio": "Sentinela do Sul",
@@ -134,6 +158,22 @@
      "causa": "situação de emergência",
      "documento": "Decreto nº 429",
      "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117940_2026-09-29_555585b47bfd9d71a1c0e206df9f8e05.pdf"
+    },
+    {
+     "uf": "PR",
+     "municipio": "Clevelândia",
+     "data": "2026-09-30",
+     "causa": "homologação estadual",
+     "documento": "Decreto municipal nº 235",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17334"
+    },
+    {
+     "uf": "PR",
+     "municipio": "Araruna",
+     "data": "2026-09-30",
+     "causa": "homologação estadual",
+     "documento": "Decreto municipal nº 2.691",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17334"
     },
     {
      "uf": "PR",
@@ -285,7 +325,7 @@
    "id": "populacao_decretos_no_periodo",
    "grupo": "emergencias",
    "rotulo": "Pessoas que vivem nos municípios que decretaram no período",
-   "valor": 1369142,
+   "valor": 1465991,
    "sem_coleta": false,
    "periodo": {
     "ini": "2026-09-25",
@@ -296,7 +336,7 @@
    "consultado_em": null,
    "primeira_medicao": false,
    "valor_semana_anterior": 1189670,
-   "variacao": 179472,
+   "variacao": 276321,
    "nota": null,
    "secundaria": null,
    "lista": []
@@ -1027,5 +1067,5 @@
    "por_que_nao": "depende do campo `escopo` em data/calendario/fontes_suspensas.json, que hoje é nulo nos 38 registros (bloco E do pedido de 27/09, não executado)."
   }
  ],
- "texto_pronto": "Entre 25/09 e 02/10, 25 municípios decretaram emergência ou calamidade (AM, PA, PB); 43 municípios foram reconhecidos pelo governo federal; o INPE detectou 18652 focos de calor nas últimas 24 horas (PA); a maior máxima prevista entre as capitais é de 39,0 °C em Palmas; 13 capitais estão com índice de qualidade do ar acima de 40."
+ "texto_pronto": "Entre 25/09 e 02/10, 30 municípios decretaram emergência ou calamidade (AM, PA, PB); 43 municípios foram reconhecidos pelo governo federal; o INPE detectou 18652 focos de calor nas últimas 24 horas (PA); a maior máxima prevista entre as capitais é de 39,0 °C em Palmas; 13 capitais estão com índice de qualidade do ar acima de 40."
 }
