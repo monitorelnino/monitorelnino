@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-02 · #512 · A legenda da série respiratória sem entrada vazia
+
+Com a troca para a fonte primária, o indicador de síndrome respiratória grave perdeu os campos que
+descreviam o nowcasting do InfoGripe — e a legenda passou a emitir uma entrada sem rótulo:
+quadradinho de cor sem nome. O portão de runtime pegou, e só na CI, porque lá a série já existia. A
+SRAG volta a ter segunda barra, agora como "parciais, sem estimativa", e o renderizador deixa de
+emitir entrada sem rótulo para qualquer indicador. Em `METODOLOGIA.md` §82.
+
 ## 2026-10-02 · #510 · MARÉ Saúde: fechar os 27 sem nova instrução
 
 O juiz passa a rodar logo depois dos quatro canais, toda noite, e o fechamento mede, pelo log, em
