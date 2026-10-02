@@ -33,6 +33,14 @@ hoje. A troca para a v0.4 acontece sozinha quando as 27 tiverem plano e coordena
 encadeada; sem a condição, nada muda. O publicador imprime quantas faltam e por quê. Em
 `METODOLOGIA.md` §84.
 
+## 2026-10-02 · #509 · Imprensa dinâmica: grade do dado, por grupo, com variação
+
+16 cartões em cinco grupos, cada um com fonte, período e variação sobre a semana anterior —
+calculada do mesmo dado, deslocando a janela pela data do ato. "Avisos" vira "municípios sob
+alerta", na unidade da Defesa civil. A grade sai do HTML e passa a ser desenhada do JSON. Quatro
+indicadores declaram por que não são calculáveis, em vez de mostrar zero. Portão de coerência novo.
+Em `METODOLOGIA.md` §83.
+
 ## 2026-10-02 · #506 · Coletor de síndrome gripal (e-SUS Notifica)
 
 A síndrome gripal não tinha coletor em rotina nenhuma. Agora tem — e ele mediu que as duas rotas

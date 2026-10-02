@@ -1046,12 +1046,15 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
 .imprensa-topo{margin:var(--sp-5) 0 var(--sp-6);}
 .imprensa-manchete{font-family:var(--font-titulo); font-weight:var(--peso-display);
   font-size:var(--fs-h2); line-height:var(--lh-h2); margin:0;}
-.imprensa-contadores{display:grid; grid-template-columns:repeat(2, minmax(0,1fr));
-  gap:var(--sp-3) var(--sp-5); margin:var(--sp-4) 0 var(--sp-2); max-width:760px;}
-.imprensa-contador{display:flex; align-items:baseline; gap:var(--sp-2); margin:0;}
-.imprensa-contador b{font-family:var(--font-titulo); font-weight:var(--peso-display);
-  font-size:var(--fs-h1); line-height:1;}
-.imprensa-contador span{font-size:var(--fs-small); line-height:var(--lh-small); color:var(--muted);}
+/* 01/10/2026: os quatro contadores do topo saíram da página (handover da imprensa dinâmica), e
+   com eles as regras `.imprensa-contadores`/`.imprensa-contador`. No lugar entram o sobretítulo de
+   cada grupo e a variação ao lado do número — sem cor de bom/ruim, por decisão editorial: a página
+   não diz ao leitor se subir é bom. */
+.imprensa-grupo{margin:var(--sp-5) 0;}
+.imprensa-grupo > .selo{margin-bottom:var(--sp-3);}
+.cartao-numero-variacao{display:block; font-family:var(--font-spec); font-size:var(--fs-small);
+  line-height:var(--lh-small); letter-spacing:.06em; color:var(--muted);
+  font-variant-numeric:tabular-nums; margin:0 0 var(--sp-1);}
 
 /* Cartões da semana: desenho do Proteja-se — borda fina, sem bloco escuro, o número em destaque
    e UMA linha de fonte. O botão é link pequeno, não botão cheio. */
@@ -1091,5 +1094,4 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
      de 139 px e empurrava a página (scrollWidth 419 > 390). Desce um degrau da escala, como o
      `.emerg-numero` já faz no celular — a escala tipográfica é fixa, então é degrau, não `clamp`. */
   .cartao-numero-valor{font-size:var(--fs-h2);}
-  .imprensa-contadores{grid-template-columns:1fr;}
 }

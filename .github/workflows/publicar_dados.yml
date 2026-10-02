@@ -127,6 +127,13 @@ jobs:
           python3 scripts/fechar_saude.py --aplicar | tee -a "$GITHUB_STEP_SUMMARY"
           python3 trocar_para_v04.py | tee -a "$GITHUB_STEP_SUMMARY"
 
+      # 01/10/2026 (handover da imprensa dinâmica): os números da semana são gerados A CADA
+      # publicação, depois do recálculo e antes dos derivados — a página Imprensa não pode mostrar
+      # a semana da edição anterior, que foi o defeito do item 0 do handover.
+      - name: Gerar os números da semana (Imprensa)
+        timeout-minutes: 5
+        run: python3 gerar_imprensa_semana.py
+
       - name: Regenerar a cadeia canônica de derivados
         timeout-minutes: 8
         run: bash scripts/verificar_derivados.sh --idempotencia
