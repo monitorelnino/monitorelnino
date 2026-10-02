@@ -93,32 +93,52 @@ setTimeout(() => {
   teste("zero erros de runtime", erros.length === 0);
   erros.slice(0, 4).forEach(e => console.log("     ", e));
 
-  // ── cada mapa com a contagem que o dado tem ────────────────────────────────────────────────
-  teste(`alertas do Cemaden: ${N.cemaden} pontos`, circulos("mapAlertas") === N.cemaden);
-  teste(`decretos no ciclo: ${N.decretados} pontos`, circulos("mapAtosResposta") === N.decretados);
-  teste(`decreto × alerta agora: ${N.cruzados} pontos`, circulos("mapAlertaDecreto") === N.cruzados);
-  teste(`reconhecidos pela União: ${N.reconhecidos} pontos`, circulos("mapReconhecidos") === N.reconhecidos);
-  teste(`cadastro da Casa Civil: ${N.cadastro} pontos`, circulos("mapPrioritarios") === N.cadastro);
+  // ── cada mapa com os 27 territórios, e cada lista com a contagem que o dado tem ───────────
+  /* 02/10/2026 (handover "a cadeia do aviso ao recurso"): a página deixou de desenhar PONTO por
+     município — ponto satura o país e não responde "e a minha cidade?". Os mapas passaram a ser por
+     ESTADO, e a resposta municipal passou para a lista embutida com busca. Os testes acompanham: no
+     lugar de contar círculos, eles contam territórios no mapa e conferem a CONTAGEM QUE A LISTA
+     DECLARA ao leitor — que é o número que ele lê. */
+  const territorios = id => (q(id) ? q(id).querySelectorAll("path.uf-path").length : -1);
+  const MAPAS = ["mapAlertas", "mapCemaden", "mapDecretosUF", "mapRiscoEnchente",
+                 "mapRiscoSemiarido", "mapRiscoFogo"];
+  teste(`os ${MAPAS.length} mapas têm os 27 territórios`,
+    MAPAS.every(id => territorios(id) === 27));
+  teste("nenhum mapa desta página desenha ponto por município",
+    MAPAS.every(id => circulos(id) === 0));
 
-  /* O aviso do Inmet NÃO entra neste mapa (decisão de 01/10/2026: é emitido por área e satura o
-     país). Se um dia voltar a ser desenhado, o número de pontos do mapa passa dos municípios com
-     alerta do Cemaden para os milhares com aviso — e este teste cai. */
-  teste("o aviso do Inmet não é desenhado no mapa de alertas (é por área)",
-    circulos("mapAlertas") < codsAlerta.length);
+  /* A contagem declarada na lista embutida: é o texto que o leitor lê depois de abrir "Ver em
+     lista", e tem de ser o número do dado — não o teto de linhas que a tabela monta. */
+  const contaDaLista = caixa => {
+    const el = d.querySelector("#" + caixa + " .busca-mun-conta");
+    if (!el) return -1;
+    const m = (el.textContent || "").replace(/\./g, "").match(/(\d+)/);
+    return m ? Number(m[1]) : -1;
+  };
+  teste(`lista dos decretos declara ${N.decretados} municípios`,
+    contaDaLista("boxDecretosUF") === N.decretados);
+  teste(`lista do Cemaden declara ${N.cemaden} municípios`,
+    contaDaLista("boxCemaden") === N.cemaden);
+  teste(`lista do cadastro da Casa Civil declara ${N.cadastro} municípios`,
+    contaDaLista("boxRiscoEnchente") === N.cadastro);
 
   // ── um número, uma fonte: o topo é igual ao mapa de baixo ──────────────────────────────────
-  teste("contador do Cemaden = pontos do mapa de alertas",
+  teste("contador do Cemaden = resumo do arquivo de alertas",
     numero("topoCemaden") === (ALERTAS.resumo || {}).municipios_cemaden);
   teste("contador do Inmet = resumo do arquivo de alertas",
     numero("topoInmet") === (ALERTAS.resumo || {}).municipios_inmet);
-  teste("contador do cruzamento = pontos do mapa de cruzamento",
+  teste("contador do cruzamento = decreto no ciclo e alerta agora",
     numero("topoCruzamento") === cruzados.length);
   teste("contador de quem decretou = municípios com decreto no consolidado",
     numero("topoDecretaram") === decretados.length);
   teste("contador de reconhecidos = municípios reconhecidos no consolidado",
     numero("topoReconhecidos") === reconhecidos.length);
-  teste("contador de população = soma do consolidado por UF",
-    numero("topoPopulacao") === ler("data/resposta/por_uf.json").nacional.pop_sob_decreto);
+  /* A população vem ARREDONDADA em milhões, por decisão da editoria ("nunca o número inteiro"):
+     o teste confere o arredondamento, e não a igualdade ao habitante. */
+  const popConsolidado = ler("data/resposta/por_uf.json").nacional.pop_sob_decreto;
+  const popNaTela = Number((txt("topoPopulacao").match(/([\d,]+)/) || [])[1].replace(",", "."));
+  teste("contador de população = consolidado arredondado em milhões",
+    Math.abs(popNaTela - popConsolidado / 1e6) <= 0.05);
   teste("nenhum contador do topo ficou em travessão",
     ["topoCemaden", "topoInmet", "topoCruzamento", "topoDecretaram", "topoPopulacao", "topoReconhecidos"]
       .every(i => txt(i) && txt(i) !== "—"));
@@ -127,7 +147,7 @@ setTimeout(() => {
   // `path.uf-path`, não `path`: com a atmosfera, o PRIMEIRO path do SVG é a malha de 5° que ela
   // insere como primeiro filho, e essa malha não tem — nem deve ter — ouvinte de mouse. Quem
   // carrega o tooltip é o território.
-  const hover = d.querySelector("#mapAtosResposta path.uf-path");
+  const hover = d.querySelector("#mapDecretosUF path.uf-path");
   if (!hover) { teste("mapa de decretos tem o território das UFs para o tooltip", false); }
   else {
     hover.dispatchEvent(new dom.window.MouseEvent("mouseenter", { clientX: 100, clientY: 100, bubbles: true }));
@@ -149,19 +169,27 @@ setTimeout(() => {
     && d.querySelectorAll(".busca-mun-conta").length === campos.length);
   /* Filtrar tem de FILTRAR: um campo que não liga em nada é pior que campo nenhum, porque promete
      resposta e devolve a lista inteira. */
-  const cartaoDec = d.querySelector("#boxAtosResposta details.cartao-mapa-dados");
-  const antes = cartaoDec.querySelectorAll("tbody tr").length;
-  const campoDec = cartaoDec.querySelector("input");
-  campoDec.value = "zzzzzz-nao-existe";
-  campoDec.dispatchEvent(new dom.window.Event("input"));
-  const depois = cartaoDec.querySelectorAll("tbody tr").length;
-  teste("digitar no campo filtra a lista", antes > 1 && depois === 1
-    && /nenhum município/.test(cartaoDec.querySelector("tbody").textContent));
+  /* 02/10/2026: o cartão dos decretos passou a ser `#boxDecretosUF` — o mapa por estado com a lista
+     municipal embutida —, no lugar dos três mapas de pontos. E o teste passa a FALHAR em vez de
+     estourar quando o cartão não existe: `querySelector` devolve `null`, e chamar método em `null`
+     derrubava o portão inteiro com TypeError, escondendo todas as verificações seguintes. */
+  const cartaoDec = d.querySelector("#boxDecretosUF details.cartao-mapa-dados");
+  if (!cartaoDec) {
+    teste("digitar no campo filtra a lista", false);
+  } else {
+    const antes = cartaoDec.querySelectorAll("tbody tr").length;
+    const campoDec = cartaoDec.querySelector("input");
+    campoDec.value = "zzzzzz-nao-existe";
+    campoDec.dispatchEvent(new dom.window.Event("input"));
+    const depois = cartaoDec.querySelectorAll("tbody tr").length;
+    teste("digitar no campo filtra a lista", antes > 1 && depois === 1
+      && /nenhum município/.test(cartaoDec.querySelector("tbody").textContent));
+  }
 
   // ── harmonização dos mapas (padrão único) ─────────────────────────────────────────────────
   const mapasSvg = [...d.querySelectorAll('#conteudo svg[id^="map"]')].filter(s => s.querySelector("path"));
   teste(`padrão de mapas: ${mapasSvg.length} mapa(s) com as 27 siglas de UF`,
-    mapasSvg.length === 5 && mapasSvg.every(s => s.querySelectorAll("g.siglas text").length === 27));
+    mapasSvg.length === 6 && mapasSvg.every(s => s.querySelectorAll("g.siglas text").length === 27));
   const legendas = [...d.querySelectorAll(".map-legend")].filter(l => l.children.length);
   teste(`padrão de legendas: ${legendas.length} legenda(s) no formato <span><i></i>rótulo</span>`,
     legendas.every(l => [...l.children].every(c => c.tagName === "SPAN"
