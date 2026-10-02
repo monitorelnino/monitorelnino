@@ -400,8 +400,13 @@ def main() -> int:
         ler("resposta/municipios_decretados.json", {}) or {},
         ler("resposta/por_uf.json", {}) or {},
         hoje.isoformat(), ler("populacao_censo2022.json", {}) or {})
+    # Todo arquivo de `data/resposta/` carrega a frase do C18 (§32): é o portão da resposta que a
+    # cobra, e com razão — quem abre um arquivo daquela pasta tem de ler, ali, o que o período
+    # eleitoral deixa aberto. Ela vem do arquivo de origem, nunca escrita aqui.
+    por_uf_arq = ler("resposta/por_uf.json", {}) or {}
     gravar("resposta/topo_defesa_civil.json",
-           {"_governanca": GOV_DC, "gerado_em": hoje.strftime("%d/%m/%Y"), "cartoes": dc})
+           {"_governanca": GOV_DC, "gerado_em": hoje.strftime("%d/%m/%Y"),
+            "frase_c18": por_uf_arq.get("frase_c18"), "cartoes": dc})
     riscos = cartoes_do_monitor_de_riscos(
         ler("sinais_risco.json", {}) or {}, ler("normais_capitais.json", {}) or {})
     gravar("topo_monitor_riscos.json",
