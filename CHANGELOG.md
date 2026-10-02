@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-02 · #527 · MARÉ Saúde: quatro canais nas 27, e os 27 no componente da inicial
+
+Canal 2 fechado com duas tentativas por unidade e verificação humana registrada na falta; canal 3 com o domínio atual de AM, AP, RN e RO, e o 503 do RJ agendado para a terceira medição. Quatro canais: de 8 para **27 de 27**. O plano do Pará entra como revisado em 2026; o MS confirmado em 50. Os 27 estados passam ao componente da inicial. METODOLOGIA §98.
+
+## 2026-10-02 · #527 · Financiamento minimalista: só o dinheiro do ciclo
+
+A página passa a mostrar só dinheiro do ciclo: medidas federais e defesa civil federal. Saem as transferências gerais, a grade dos 27 quadros e a seção de casos; entram a forma de aplicação, as origens com os três valores e a defesa civil por estado, com município em lista dentro do cartão. Vocabulário fixo: desembolsado, não pago. METODOLOGIA §97.
+
 ## 2026-10-02 · #526 · Coletores do Financiamento rodados, e o frescor por arquivo
 
 Todos os coletores da página rodaram hoje. `coletar_siconfi_182.py` estava morrendo com `TypeError` desde a migração do §229 — uma função local `gravar` sombreava a importada. A execução passou a coletar a modalidade de aplicação. Portão novo mede coletor pelo relógio (9 dias) e curadoria por declaração. METODOLOGIA §96.

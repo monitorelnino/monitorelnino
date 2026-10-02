@@ -36,8 +36,9 @@
    "periodicidade": null,
    "status": "a localizar",
    "defeso": null,
-   "canais_instrumento": null,
-   "canais_instrumento_lacuna": "01/10/2026: saude.am.gov.br e www.saude.am.gov.br respondem HTTP 404"
+   "canais_instrumento": "https://www.fvs.am.gov.br/",
+   "canais_instrumento_lacuna": null,
+   "canais_instrumento_nota": "02/10/2026: saude.am.gov.br responde 404 em 02/10/2026; a Fundacao de Vigilancia em Saude do Amazonas (FVS-RCP) e o orgao de vigilancia do estado e responde ao cliente do projeto"
   },
   "AP": {
    "orgao": null,
@@ -49,8 +50,9 @@
    "periodicidade": null,
    "status": "a localizar",
    "defeso": null,
-   "canais_instrumento": null,
-   "canais_instrumento_lacuna": "01/10/2026: saude.ap.gov.br e www.saude.ap.gov.br falham na verificacao do certificado TLS"
+   "canais_instrumento": "https://saude.portal.ap.gov.br/",
+   "canais_instrumento_lacuna": null,
+   "canais_instrumento_nota": "02/10/2026: saude.ap.gov.br falha na verificacao de certificado TLS; o endereco da secretaria dentro do portal do estado responde"
   },
   "BA": {
    "orgao": "SESAB/SUVISA/DIVEP",
@@ -253,7 +255,17 @@
    "status": "a localizar",
    "defeso": null,
    "canais_instrumento": null,
-   "canais_instrumento_lacuna": "01/10/2026: saude.rj.gov.br e www.saude.rj.gov.br servem intersticio que declara www.rj.gov.br/saude, e esse responde HTTP 503"
+   "canais_instrumento_lacuna": "02/10/2026: saude.rj.gov.br serve um intersticio de 935 bytes (so imagem e estilo, sem link navegavel) e www.rj.gov.br/saude responde HTTP 503. Pela regra da editoria, 503 pode ser transitorio: repetir em TRES DIAS DISTINTOS antes de concluir. Medicoes: 01/10 (503), 02/10 (503).",
+   "canais_instrumento_humano": {
+    "url": "https://www.rj.gov.br/saude",
+    "modo_acesso": "humano",
+    "motivo": "HTTP 503 em 01/10 e 02/10/2026; terceira medicao pendente, e ate ela o canal 3 e verificacao humana",
+    "em": "02/10/2026",
+    "medicoes": [
+     "01/10/2026: 503",
+     "02/10/2026: 503"
+    ]
+   }
   },
   "RN": {
    "orgao": null,
@@ -265,8 +277,9 @@
    "periodicidade": null,
    "status": "a localizar",
    "defeso": null,
-   "canais_instrumento": null,
-   "canais_instrumento_lacuna": "01/10/2026: saude.rn.gov.br e www.saude.rn.gov.br derrubam a conexao (WinError 10054)"
+   "canais_instrumento": "https://www.rn.gov.br/secretarias/saude",
+   "canais_instrumento_lacuna": null,
+   "canais_instrumento_nota": "02/10/2026: saude.rn.gov.br derruba a conexao; a pagina da secretaria DENTRO do portal do governo do estado responde — e a alternativa que a editoria autorizou"
   },
   "RO": {
    "orgao": null,
@@ -278,8 +291,9 @@
    "periodicidade": null,
    "status": "a localizar",
    "defeso": null,
-   "canais_instrumento": null,
-   "canais_instrumento_lacuna": "01/10/2026: saude.ro.gov.br e www.saude.ro.gov.br nao resolvem no DNS"
+   "canais_instrumento": "https://rondonia.ro.gov.br/sesau/",
+   "canais_instrumento_lacuna": null,
+   "canais_instrumento_nota": "02/10/2026: saude.ro.gov.br nao resolve no DNS; a pagina da Sesau dentro do portal do estado responde"
   },
   "RR": {
    "orgao": null,

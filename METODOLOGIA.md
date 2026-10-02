@@ -3452,3 +3452,132 @@ Com a quebra por mês, o cartão do topo passou a publicar o **mês fechado** de
 milhões desembolsados em setembro, no lugar do acumulado do ciclo que a versão anterior mostrava
 por falta da quebra. O desembolsado total subiu de R$ 263,4 mi para R$ 279,9 mi na MP 1.367 e
 entrou com R$ 96,6 mi na MP 1.384.
+
+## 97. Financiamento minimalista: escopo, vocabulário e as duas contas (02/10/2026)
+
+Decisão da editoria, rev. 2 do handover. A página do Financiamento passa a mostrar **só dinheiro
+do ciclo**: medidas federais do El Niño e recursos da defesa civil federal. Transferências gerais
+de todo mês — Fundo de Participação, SUS, assistência social — saem da página e ficam como frase
+no rodapé recolhido: elas existem, não são do ciclo, e misturar as duas coisas fazia a página
+publicar R$ 32 bilhões ao lado de R$ 150 milhões como se fossem comensuráveis.
+
+### 97.1 Vocabulário do dinheiro, fixo nas três páginas
+
+| palavra | o que é |
+|---|---|
+| **anunciado** | o valor que consta no ato |
+| **empenhado** | etapa do orçamento: o compromisso assumido |
+| **desembolsado** | o dinheiro que saiu do caixa (corresponde à etapa "pago") |
+| **transferido** | o que foi a estados ou municípios |
+| **autorizado** | o que a portaria da defesa civil autorizou |
+
+A origem aparece sempre como "**recursos oriundos de** {ato}". O termo técnico "pago" fica dentro
+de "Ver em lista" e aqui na METODOLOGIA, e não em título nem em texto corrido: "pago" e
+"desembolsado" são a mesma etapa, e a escolha é de leitura, não de contabilidade. O portão de
+runtime confere que nenhum cartão do topo diz "pago" ao leitor.
+
+### 97.2 As duas contas que a página faz, e por que são assim
+
+**Como os recursos são aplicados** sai da **modalidade de aplicação** do orçamento federal (§96.3),
+e substitui o cartão "sede em Brasília × unidades nos estados". A diferença é de objeto: a sede da
+unidade gestora diz **onde o pagamento foi registrado**; a modalidade diz **a quem o dinheiro foi**.
+
+**Gasto próprio por habitante** é a soma da despesa dos municípios **com lançamento** dividida pela
+população **desses mesmos municípios**. Dividir pela população inteira do estado diluiria o gasto de
+quem lançou entre quem não lançou, e produziria um número menor que o de qualquer município real.
+
+### 97.3 Prevenção e resposta: o que a fonte separa
+
+O handover previu um mapa da **prevenção** por estado, e previu a alternativa para o caso de a
+fonte não separar. As portarias da defesa civil federal separam `resposta`, `recuperacao` e
+`outra`: **prevenção não existe nessa fonte**. Escolha registrada: o terceiro cartão é a lista das
+portarias recentes, e a série semanal mostra as finalidades que existem. Recuperação é obra depois
+do dano, e não entra como prevenção nem se soma à resposta.
+
+### 97.4 Texto que existe e não se lê
+
+O portão de layout passou a reprovar **texto invisível**: cor igual ao fundo, opacidade abaixo de
+0,15, `visibility: hidden`, altura útil menor que 12 px. A razão é de método: texto que não se lê
+passa no portão que conta palavras, passa no que cobra legenda, e não chega ao leitor — é pior do
+que texto ausente, porque ninguém procura o que parece estar lá. Ele também reprova **duas figuras
+com a mesma chave de dado na mesma seção**: dizer a mesma coisa duas vezes ocupa a grade e divide
+a atenção sem acrescentar fato.
+
+## 98. Os quatro canais fechados nas 27, e os 27 no mesmo componente (02/10/2026)
+
+Itens 6 e 7 do handover do Financiamento minimalista — que tratam do MARÉ Saúde, e foram
+executados na mesma entrega.
+
+### 98.1 Canal 2: a descoberta tem limite, e a falta tem nome
+
+Dezoito unidades estavam sem rota de edição. A editoria fixou o limite: **duas tentativas por
+unidade** — primeiro os moldes de endereço conhecidos das plataformas de diário, depois a página
+de listagem — e, na falta, **canal 2 por verificação humana registrada**, com o motivo medido. Pela
+definição fechada de 02/10 (§94.3), isso **conta como consultado**: nenhuma unidade fica "não
+verificada" por falta de rota.
+
+O modo `--descobrir` do localizador fez as duas tentativas nas dezoito. Nenhuma entregou rota, e o
+motivo de cada uma ficou escrito — 404 em todos os moldes, listagem sem data e número no HTML,
+`403` no Pernambuco (recusa respeitada), falha de TLS no Piauí, e Sergipe sem endereço de diário
+que resolva. São dezoito linhas de medição, e não dezoito desculpas: cada uma diz o que foi
+tentado e o que a fonte respondeu.
+
+### 98.2 Canal 3: o endereço certo, e o 503 que precisa de três dias
+
+Cinco unidades tinham raiz que não responde. Quatro foram resolvidas com o **domínio oficial
+atual**, medido:
+
+| unidade | o que havia | o que responde |
+|---|---|---|
+| AM | `saude.am.gov.br` dá 404 | `www.fvs.am.gov.br` — a Fundação de Vigilância em Saúde |
+| AP | falha de TLS | `saude.portal.ap.gov.br` |
+| RN | conexão derrubada | `www.rn.gov.br/secretarias/saude`, a página da secretaria no portal |
+| RO | não resolve no DNS | `rondonia.ro.gov.br/sesau` |
+
+RN e RO usam a **página da secretaria dentro do portal do governo do estado** — a alternativa que a
+editoria autorizou quando não há domínio próprio que responda.
+
+O **Rio de Janeiro** fica em aberto, com a regra escrita: `saude.rj.gov.br` serve um interstiço de
+935 bytes, sem link navegável, e `www.rj.gov.br/saude` responde **503** — medido em 01/10 e em
+02/10. Como 503 pode ser transitório, a editoria mandou **repetir em três dias distintos** antes de
+concluir. As duas medições estão gravadas no cadastro, a terceira está pendente, e até ela o canal
+3 do estado é verificação humana registrada — que conta como consultado.
+
+**Resultado:** os quatro canais passaram de **8 de 27** para **27 de 27**. Com isso o fechamento
+pode, pela primeira vez, dizer "não localizado" onde é o caso — e não "não verificado".
+
+### 98.3 O plano do Pará, pela régua que já existia
+
+Decisão da central: o plano que **cita** o El Niño ou o ciclo é plano feito para o El Niño (100); o
+que não cita, é de 2026 e cobre o risco previsto para a unidade é **plano de todo ano revisado em
+2026**, e não "vigente anterior". O plano da SESPA, de 26/02/2026, não cita o fenômeno e cobre
+estiagem, seca, incêndio florestal e onda de calor — exatamente o risco previsto para o Pará. Ele
+entra no degrau **VIG_REVISADO**, que vale 55 e **já existia na escala**: a decisão da editoria não
+criou régua nova, nomeou qual régua se aplica. A data anterior ao Boletim nº 1 não rebaixa um
+plano de 2026 que cobre o risco do ciclo: rebaixar por data seria medir o calendário, não o plano.
+
+### 98.4 O Mato Grosso do Sul, confirmado em 50
+
+A defesa civil aparece na Resolução 1041/2026 como **convidada** que "poderá participar" (§2º do
+art. 6º) — nomeada, sem atribuição. F2 fica em **LISTADA_SEM_ATRIBUICAO (50)**, e F1 permanece
+criado para o ciclo (100). O artigo que diz "convidados" está guardado no registro, junto do
+degrau.
+
+### 98.5 Um componente para os 27, nas duas páginas
+
+A inicial mostrava os estados num **mapa de cartões** — cada um na sua posição geográfica — e o
+MARÉ Saúde mostrava os mesmos 27 em colunas por região, com outro desenho. Dois componentes para
+a mesma coisa divergem na primeira correção: um recebe o ajuste, o outro fica.
+
+Agora é um só, `assets/js/grade-estados.js`, parametrizado pelo índice: a posição geográfica, o
+desenho do cartão, as duas barras, o teclado e a chamada da ficha vivem nele; a página diz qual
+índice quer ver e o que fazer no clique. Barra de cima: o índice (MARÉ Legal ou MARÉ Saúde); barra
+de baixo: resposta 0–100. Estado não verificado ocupa o mesmo lugar, sem número, com "não
+verificado" e barras vazias — nunca zero.
+
+**O item 3.1 e o 3.2 se encontraram aqui.** A cor do texto do cartão estava em `color:var(--branco)`
+no CSS, e **cada página a corrigia inline**. O componente novo não repetiu a correção, e o portão
+de layout recém-criado reprovou com "texto invisível (cor igual ao fundo)" em seis cartões — na
+primeira vez que ele rodou depois de existir. A correção foi no componente: a cor passou a ser
+dele, e o estilo inline saiu das duas páginas. É o caso exemplar da regra: estilo que a página
+precisa lembrar de aplicar é estilo que uma página vai esquecer.

@@ -533,7 +533,10 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 .tile{display:block; text-align:center; border-radius:var(--radius); padding:var(--sp-1) var(--sp-2); cursor:pointer;
   font-family:var(--font-dado); font-size:var(--fs-small); line-height:var(--lh-small); font-weight:var(--peso-medio);
   border:1px solid var(--line); transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
-  position:relative; color:var(--branco); background:var(--branco);}
+  /* 02/10/2026 (itens 3.1 e 3.2): a cor do TEXTO vem do componente, e nao de estilo inline da
+     pagina. Antes era `color:var(--branco)` sobre fundo branco, corrigido inline em index.js:
+     a pagina que esquecesse publicava texto invisivel, e o portao de layout agora reprova. */
+  position:relative; color:var(--tinta); background:var(--branco);}
 .tile:hover{transform:translateY(-2px); box-shadow:0 4px 14px rgba(21,32,26,.14); border-color:var(--teal);}
 .tile:focus-visible{transform:translateY(-2px); box-shadow:0 4px 14px rgba(21,32,26,.14); outline:2px solid var(--link); outline-offset:2px;}
 .tile.active{outline:2px solid var(--ink); outline-offset:2px;}
@@ -968,7 +971,17 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
 .cartao-mapa.r-calor{border-top-color:var(--calor);}
 .cartao-mapa.r-chuva{border-top-color:var(--chuva);}
 .cartao-mapa-familia{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption);
-  text-transform:uppercase; letter-spacing:var(--ls-caps); color:var(--muted); margin:0 0 var(--sp-1);}
+  text-transform:uppercase; letter-spacing:var(--ls-caps); color:var(--muted); margin:0 0 var(--sp-1);
+  /* 02/10/2026: ALTURA RESERVADA de uma linha, como o boletim logo abaixo já fazia. Sobretítulo que
+     quebrava em duas linhas empurrava título, subtítulo e mídia do primeiro cartão para baixo, e o
+     portão de consistência visual reprovava as três posições — foi o que aconteceu com "Como os
+     recursos são aplicados" a 1366 px. A reserva é do componente: o cartão alinha sozinho, qualquer
+     que seja o rótulo. */
+  min-height:calc(1 * var(--fs-caption) * var(--lh-caption));
+  /* UMA linha, sempre: a altura minima nao impede o rotulo de crescer, e no runner da CI, com
+     a fonte de reserva, "Como os recursos sao aplicados" quebrava em duas e desalinhava o
+     primeiro cartao da grade. O slot e curto por desenho. */
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 .cartao-mapa-boletim{font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);
   margin:0 0 var(--sp-2); min-height:calc(2 * var(--fs-caption) * var(--lh-caption));}
 .cartao-mapa .figura-titulo{min-height:calc(2 * var(--fs-h4) * var(--lh-h4));}
@@ -1095,3 +1108,9 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
      `.emerg-numero` já faz no celular — a escala tipográfica é fixa, então é degrau, não `clamp`. */
   .cartao-numero-valor{font-size:var(--fs-h2);}
 }
+
+/* Diagrama dos caminhos do dinheiro (Financiamento, 02/10/2026). Tipografia da escala e
+   cor pelos tokens: o desenho nao traz cor propria. */
+.diag-grupo{font-family:var(--font-dado); font-size:var(--fs-caption);
+  letter-spacing:.12em; text-transform:uppercase; fill:var(--muted);}
+.diag-via{font-family:var(--font-texto); font-size:var(--fs-small); fill:var(--tinta);}

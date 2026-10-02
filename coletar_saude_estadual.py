@@ -149,6 +149,12 @@ ACRESCIMOS_DE_CANAL4 = {
 # acesso fica declarado: `humano` quer dizer que o sítio serve muro de robô ao cliente do projeto, e
 # que a verificação daquela rota é humana — não que o endereço seja secreto.
 RAIZ_ALTERNATIVA = {
+    # 02/10/2026 (item 6.2): o endereço da secretaria do Rio de Janeiro responde 503 em duas
+    # medições (01/10 e 02/10). A editoria mandou repetir em TRÊS dias distintos antes de concluir;
+    # até a terceira medição, o canal 3 é verificação humana — e conta como consultado.
+    "RJ": {"url": "https://www.rj.gov.br/saude", "modo_acesso": "humano",
+           "motivo": "HTTP 503 em 01/10 e 02/10/2026; terceira medição pendente, pela regra da "
+                     "editoria de repetir em três dias distintos antes de concluir"},
     "PB": {"url": "https://paraiba.pb.gov.br/diretas/saude", "modo_acesso": "humano",
            "motivo": "saude.pb.gov.br redireciona para este endereço, que serve muro de robô ao "
                      "cliente do projeto (desafio no corpo, HTTP 200) — recusa respeitada"},

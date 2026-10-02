@@ -579,7 +579,8 @@ def cartoes_do_dinheiro(corte):
     Portal da Transparência publica transferência a município por MÊS — medido em 01/10/2026."""
     atos = (ler("financiamento/compromissos_federais.json", {}) or {}).get("itens") or []
     tres = [
-        sem_dado("pago_na_semana", "Pago no período pelas medidas federais para o El Niño",
+        sem_dado("pago_na_semana",
+                 "Desembolsado no período em recursos oriundos das medidas federais do El Niño",
                  "dinheiro",
                  "as medidas federais publicam empenhado e pago em agregados sem data de "
                  "pagamento: não há como recortar sete dias sem inventar a data",

@@ -1,0 +1,2604 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <script>
+        document.documentElement.classList.add('cegovbr-icons-loading');
+
+        // Força HTTPS em ambiente de desenvolvimento se não estiver usando
+        if (location.protocol === 'http:' && location.hostname.endsWith('.test')) {
+            location.replace(window.location.href.replace('http:', 'https:'));
+        }
+        // Silencia erros de extensões que tentam acessar o body antes do tempo
+        window.addEventListener('error', function(e) {
+            if (e.message.indexOf('childNodes') > -1 && !document.body) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        }, true);
+    </script>
+    <!-- Material Symbols Outlined -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home - Secretaria da Saúde do Ceará</title>
+
+
+    <link rel="shortcut icon" href="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/favicon.ico" type="image/x-png" />
+        <link rel="shortcut icon" href="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/favicon.ico" type="image/x-icon">
+    <link rel="preload" href="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/fonts/kanit/kanit-normal-400.ttf" as="font" type="font/ttf" crossorigin><link rel="preload" href="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/fonts/kanit/kanit-normal-700.ttf" as="font" type="font/ttf" crossorigin><link rel="preload" href="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/fonts/material-icons/MaterialIcons-Regular.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/fonts/material-symbols/MaterialSymbolsOutlined-Regular.ttf" as="font" type="font/ttf" crossorigin><link rel="preload" href="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/fonts/material-icons-outlined/MaterialIconsOutlined-Regular.otf" as="font" type="font/otf" crossorigin>    <style id="cegovbr-critical-icon-fonts">
+        @font-face {
+            font-family: 'Material Icons';
+            font-style: normal;
+            font-weight: 400;
+            font-display: block;
+            src: url('https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/fonts/material-icons/MaterialIcons-Regular.woff2') format('woff2');
+        }
+
+        @font-face {
+            font-family: 'Material Icons Outlined';
+            font-style: normal;
+            font-weight: 400;
+            font-display: block;
+            src: url('https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/fonts/material-icons-outlined/MaterialIconsOutlined-Regular.otf') format('opentype');
+        }
+
+        @font-face {
+            font-family: 'Material Symbols Outlined';
+            font-style: normal;
+            font-weight: 400;
+            font-display: block;
+            src: url('https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/fonts/material-symbols/MaterialSymbolsOutlined-Regular.ttf') format('truetype');
+        }
+
+        .material-icons,
+        .material-icons-outlined,
+        .material-symbols-outlined {
+            font-weight: normal;
+            font-style: normal;
+            font-size: 1.5rem;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            width: 1em;
+            min-width: 1em;
+            height: 1em;
+            overflow: hidden;
+            flex: 0 0 auto;
+            vertical-align: middle;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            font-feature-settings: 'liga';
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .material-icons {
+            font-family: 'Material Icons';
+        }
+
+        .material-icons-outlined {
+            font-family: 'Material Icons Outlined';
+        }
+
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+        }
+
+        html.cegovbr-icons-loading .material-icons,
+        html.cegovbr-icons-loading .material-icons-outlined,
+        html.cegovbr-icons-loading .material-symbols-outlined {
+            color: transparent !important;
+        }
+    </style>
+    <style>
+        /* Estilos críticos do Bootstrap para estrutura base */
+        .d-flex {
+            display: flex;
+        }
+
+        .flex-column {
+            flex-direction: column;
+        }
+
+        .flex-column-reverse {
+            flex-direction: column-reverse;
+        }
+
+        .flex-row {
+            flex-direction: row;
+        }
+
+        .flex-grow-1 {
+            flex-grow: 1;
+        }
+
+        .bg-primary {
+            background-color: #0d6b4a;
+        }
+
+        .min-vh-100 {
+            min-height: 100vh;
+        }
+
+        .position-relative {
+            position: relative;
+        }
+
+        .position-sticky {
+            position: sticky;
+        }
+
+        .position-absolute {
+            position: absolute;
+        }
+
+        .top-0 {
+            top: 0;
+        }
+
+        .d-none {
+            display: none;
+        }
+
+        .gap-5 {
+            gap: 3rem;
+        }
+
+        .gap-3 {
+            gap: 1rem;
+        }
+
+        .px-0 {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .h-75 {
+            height: 75%;
+        }
+
+        @media (min-width: 75rem) {
+            .d-xl-flex {
+                display: flex;
+            }
+
+            .d-xl-none {
+                display: none;
+            }
+
+            .flex-xl-row {
+                flex-direction: row;
+            }
+
+            .flex-xl-grow-1 {
+                flex-grow: 1;
+            }
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script>
+        (function() {
+            function markIconsReady() {
+                document.documentElement.classList.remove('cegovbr-icons-loading');
+                document.documentElement.classList.add('cegovbr-icons-ready');
+            }
+
+            if (document.fonts && document.fonts.load) {
+                Promise.all([
+                    document.fonts.load('24px "Material Icons"'),
+                    document.fonts.load('24px "Material Icons Outlined"'),
+                    document.fonts.load('24px "Material Symbols Outlined"')
+                ]).then(markIconsReady);
+            } else {
+                markIconsReady();
+            }
+        })();
+    </script>
+    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KYFQHXSTC4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KYFQHXSTC4');
+</script>
+	<!-- This site is optimized with the Yoast SEO plugin v28.6 - https://yoast.com/product/yoast-seo-wordpress/ -->
+	<meta name="description" content="Site oficial da Secretaria da Saúde do Ceará. Acesse e confira todas as notícias e informações da saúde do Estado." />
+	<link rel="canonical" href="https://www.ce.gov.br/saude/" />
+	<meta property="og:locale" content="pt_BR" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Home - Secretaria da Saúde do Ceará" />
+	<meta property="og:description" content="Site oficial da Secretaria da Saúde do Ceará. Acesse e confira todas as notícias e informações da saúde do Estado." />
+	<meta property="og:url" content="https://www.ce.gov.br/saude/" />
+	<meta property="og:site_name" content="Secretaria da Saúde do Ceará" />
+	<meta property="article:modified_time" content="2026-03-05T17:09:54+00:00" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"WebPage","@id":"https:\/\/www.ce.gov.br\/saude\/","url":"https:\/\/www.ce.gov.br\/saude\/","name":"Home - Secretaria da Saúde do Ceará","isPartOf":{"@id":"https:\/\/www.ce.gov.br\/saude\/#website"},"about":{"@id":"https:\/\/www.ce.gov.br\/saude\/#organization"},"datePublished":"2017-11-20T15:57:39+00:00","dateModified":"2026-03-05T17:09:54+00:00","description":"Site oficial da Secretaria da Saúde do Ceará. Acesse e confira todas as notícias e informações da saúde do Estado.","breadcrumb":{"@id":"https:\/\/www.ce.gov.br\/saude\/#breadcrumb"},"inLanguage":"pt-BR","potentialAction":[{"@type":"ReadAction","target":["https:\/\/www.ce.gov.br\/saude\/"]}]},{"@type":"BreadcrumbList","@id":"https:\/\/www.ce.gov.br\/saude\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Início"}]},{"@type":"WebSite","@id":"https:\/\/www.ce.gov.br\/saude\/#website","url":"https:\/\/www.ce.gov.br\/saude\/","name":"Secretaria da Saúde","description":"Secretaria da Saúde do Ceará","publisher":{"@id":"https:\/\/www.ce.gov.br\/saude\/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https:\/\/www.ce.gov.br\/saude\/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"pt-BR"},{"@type":"Organization","@id":"https:\/\/www.ce.gov.br\/saude\/#organization","name":"Secretaria da Saúde","url":"https:\/\/www.ce.gov.br\/saude\/","logo":{"@type":"ImageObject","inLanguage":"pt-BR","@id":"https:\/\/www.ce.gov.br\/saude\/#\/schema\/logo\/image\/","url":"https:\/\/www.ce.gov.br\/saude\/wp-content\/uploads\/sites\/9\/2017\/11\/clara.png","contentUrl":"https:\/\/www.ce.gov.br\/saude\/wp-content\/uploads\/sites\/9\/2017\/11\/clara.png","width":559,"height":106,"caption":"Secretaria da Saúde"},"image":{"@id":"https:\/\/www.ce.gov.br\/saude\/#\/schema\/logo\/image\/"}}]}</script>
+	<meta name="msvalidate.01" content="FAB7E5D27CE91284C3566A77EBBF19C9" />
+	<meta name="google-site-verification" content="W-4g71iYyr-8jygCOy78_2BK2rGR-6OPYgkvZliG_44" />
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//cdn.jsdelivr.net' />
+
+<style id="cegovbr-critical-home-css">
+/* Critical CSS (home) — inlined via wp_head */
+
+:root {
+  --font-primary: 'Kanit', sans-serif;
+
+  --color-white: #ffffff;
+  --color-semiwhite: #fefefe;
+  --color-gray-100: #f9f9f9;
+  --color-gray-300: #c5c5c5;
+  --color-gray-600: #757575;
+  --color-gray-700: #465564;
+  --color-black: #26323f;
+
+  --color-primary: #007F6D;
+  --color-primary-dark: #006557;
+  --color-primary-25: #fafffa;
+  --color-primary-50: #e9f6eb;
+  --color-primary-100: #bce4c1;
+  --color-primary-200: #9bd7a3;
+  --color-primary-300: #6ec479;
+  --color-primary-400: #51b95f;
+  --color-primary-500: #26a737;
+  --color-primary-600: #239832;
+  --color-primary-700: #1b7727;
+  --color-primary-800: #155c1e;
+  --color-primary-900: #104617;
+
+  --color-secondary: #EF6000;
+  --color-leaf: #E7FFEB;
+
+  --color-primary-hover: #009883;
+  --color-primary-active: #006557;
+  --color-primary-focus: #545FFF;
+}
+
+body { background-color: #F9F9F9; }
+
+@media (min-width: 75rem) {
+  .container { max-width: 67.5rem !important; }
+}
+
+.hero {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 2.5rem;
+  line-height: 1.03em;
+  letter-spacing: 0;
+}
+
+.titulo {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1em;
+  letter-spacing: 0;
+}
+
+.subtitulo {
+  font-family: var(--font-primary);
+  font-weight: 300;
+  font-size: 1.25rem;
+  line-height: 1em;
+  letter-spacing: 0;
+}
+
+.destaque {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1em;
+  letter-spacing: 0;
+}
+
+/* Header / Search */
+header#main-header {
+  background: linear-gradient(90deg, #007F6D 0%, #139352 74.04%, #26A737 100%);
+  position: relative;
+  z-index: 1001;
+}
+
+header .search-form .input-group {
+  border: 0.125rem solid transparent;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(to right, rgba(31, 166, 55, 1), rgba(90, 193, 212, 1)) border-box;
+  background-clip: padding-box, border-box;
+  border-radius: 2rem !important;
+}
+
+header .search-form .input-group .input-group-text:first-child {
+  border-radius: 2rem 0 0 2rem !important;
+}
+
+header .search-form .input-group .input-group-text:last-child {
+  border-radius: 0 2rem 2rem 0 !important;
+}
+
+header .search-form .input-group .form-control { border-radius: 0 !important; }
+
+header .search-form .input-group .input-group-text {
+  color: var(--color-gray-700) !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+header .search-form .form-control {
+  font-family: var(--font-primary);
+  font-weight: 400 !important;
+  font-size: 0.9375rem;
+  line-height: 1em;
+  box-shadow: none;
+}
+
+.cc-logo {
+  width: 100%;
+  max-height: 1.875rem;
+  margin-top: 0.125rem;
+}
+
+@media (min-width: 75rem) {
+  .cc-logo {
+    height: 2.4375rem;
+    max-height: 2.4375rem;
+  }
+}
+
+.btn-outline-cc {
+  line-height: 1em;
+  font-size: 1.25rem;
+  font-family: var(--font-primary);
+  font-weight: 400 !important;
+  color: var(--color-semiwhite);
+  border: 0.0625rem solid var(--color-primary-300);
+  border-radius: 0.9375rem;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.btn-icon-cc {
+  line-height: 1em;
+  font-size: 1.25rem;
+  font-family: var(--font-primary);
+  font-weight: 400 !important;
+  color: var(--color-semiwhite);
+  border: 0.0625rem solid transparent;
+  border-radius: 0.25rem;
+  padding: 0 0.0625rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Main menu */
+header #main-menu {
+  background-color: var(--color-primary-dark);
+  border-bottom-right-radius: 0.5rem;
+  transition: all 0.25s ease;
+  min-height: 3.1875rem; /* Evita colapso antes do menu carregar (Desktop) */
+}
+
+@media (max-width: 74.9375rem) {
+  header #main-menu { min-height: 0; }
+}
+
+header #main-menu a {
+  font-size: 1.25rem;
+  color: var(--color-semiwhite);
+  font-family: var(--font-primary);
+  font-weight: 400 !important;
+  line-height: 1em;
+  transition: all 0.25s ease;
+  border-radius: 0.5rem;
+  border: 0.125rem solid transparent;
+}
+
+header #main-menu .dropdown-toggle.no-caret::after { display: none !important; }
+
+header #main-menu .dropdown-menu {
+  padding: 0;
+  background-color: var(--color-semiwhite);
+  border: 0.0625rem solid var(--color-gray-300);
+  border-radius: 0.5rem;
+
+  display: block;
+  opacity: 0;
+  transform: translateY(0.625rem);
+  visibility: hidden;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+header #main-menu .dropdown .dropdown-menu.show {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+header #main-menu .dropdown-menu li a {
+  font-size: 1rem;
+  font-family: var(--font-primary);
+  font-weight: 500 !important;
+  line-height: 1em;
+  color: var(--color-gray-600);
+  text-align: left;
+  padding: 0.5rem 1.5rem;
+  background-color: transparent !important;
+  text-decoration: none;
+  border-radius: 0.5rem;
+}
+
+/* Home featured banner */
+.brasao-vertical {
+  min-width: 3.25rem;
+  border-right: 0.25rem solid var(--color-semiwhite);
+}
+
+/* Home featured services */
+#cc-home-featured-services {
+  min-height: 20rem; /* Evita CLS na home ao carregar serviços via JS */
+}
+
+#services-swiper { --gap: 1rem; padding: 0.25rem 0.25rem 0; }
+#services-swiper .swiper-wrapper { align-items: stretch; }
+#services-swiper .swiper-slide { height: auto; }
+
+.service-card {
+  outline: 0.0625rem solid var(--color-gray-300);
+  border-radius: 1rem;
+  text-decoration: none;
+  height: 12.25rem !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Removido !important para permitir que as classes .hfs-hidden e .loading funcionem */
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.service-icon {
+  width: 5.5rem;
+  height: 5.5rem;
+  margin-bottom: 0 !important;
+}
+
+.service-title {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  line-height: 1.3rem;
+  color: var(--color-gray-700);
+  font-weight: 500;
+  text-align: center;
+}
+
+.ver-mais-link {
+  color: #1B7727;
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.ver-mais-link .destaque { text-decoration: underline !important; }
+.ver-mais-link i.material-icons {
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
+}
+
+</style>
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://www.ce.gov.br/saude/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.ce.gov.br%2Fsaude%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://www.ce.gov.br/saude/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.ce.gov.br%2Fsaude%2F&#038;format=xml" />
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<link rel='stylesheet' id='local-fonts-css' href='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/css/local-fonts.css?ver=1790796760' media='all' />
+<link rel='stylesheet' id='bootstrap-css-css' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css?ver=5.3.7' media='all' />
+<link rel='stylesheet' id='bootstrap-icons-css' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css?ver=1.11.3' media='all' />
+<link rel='stylesheet' id='meu-tema-style-css' href='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/style.css?ver=1790796762' media='all' />
+<style id="meu-tema-style-inline-css">
+.is-style-justified { text-align: justify !important; }
+/*# sourceURL=meu-tema-style-inline-css */
+</style>
+<link rel='stylesheet' id='gutenberg-blocks-css' href='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/css/gutenberg-blocks.css?ver=1790796760' media='all' />
+<link rel='stylesheet' id='breadcrumb-style-css' href='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/css/breadcrumb.css?ver=1790796760' media='all' />
+<link rel='stylesheet' id='index-style-css' href='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/css/index.css?ver=1790796760' media='all' />
+<link rel='stylesheet' id='swiper-css-css' href='https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?ver=11.0.0' media='all' />
+<link rel='stylesheet' id='cegov-abas-verticais-css' href='https://www.ce.gov.br/saude/wp-content/plugins/cegovbr-abas-verticais/assets/css/abas_verticais.css?ver=1790796765' media='all' />
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-break:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style^=border-color],[style*=";border-color"],[style*="; border-color"]){border-style:solid}html :where([style^=border-top-color],[style*=";border-top-color"],[style*="; border-top-color"]){border-top-style:solid}html :where([style^=border-right-color],[style*=";border-right-color"],[style*="; border-right-color"]){border-right-style:solid}html :where([style^=border-bottom-color],[style*=";border-bottom-color"],[style*="; border-bottom-color"]){border-bottom-style:solid}html :where([style^=border-left-color],[style*=";border-left-color"],[style*="; border-left-color"]){border-left-style:solid}html :where([style^=border-width],[style*=";border-width"],[style*="; border-width"]){border-style:solid}html :where([style^=border-top-width],[style*=";border-top-width"],[style*="; border-top-width"]){border-top-style:solid}html :where([style^=border-right-width],[style*=";border-right-width"],[style*="; border-right-width"]){border-right-style:solid}html :where([style^=border-bottom-width],[style*=";border-bottom-width"],[style*="; border-bottom-width"]){border-bottom-style:solid}html :where([style^=border-left-width],[style*=";border-left-width"],[style*="; border-left-width"]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=/wp-includes/css/dist/block-library/common.min.css */
+</style>
+
+<link rel='stylesheet' id='blocos-cegovbr-frontend-style-css' href='https://www.ce.gov.br/saude/wp-content/plugins/blocos-cegovbr/assets/css/style.css?ver=1790796765' media='all' />
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}.wp-block-button{--wp--preset--dimension--25: 25%;--wp--preset--dimension--50: 50%;--wp--preset--dimension--75: 75%;--wp--preset--dimension--100: 100%;}:root { --wp--style--global--content-size: 1140px;--wp--style--global--wide-size: 1320px; }:where(body) { margin: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link rel='stylesheet' id='cegovbr-agenda-styles-css' href='https://www.ce.gov.br/saude/wp-content/plugins/cegovbr-agenda/assets/css/cegovbr-agenda.css?ver=1.0' media='all' />
+<link rel='stylesheet' id='cegov-barra-lateral-style-css' href='https://www.ce.gov.br/saude/wp-content/plugins/cegovbr-barra-lateral/assets/cegov-barra-lateral.css?ver=1.0.0' media='all' />
+<link rel='stylesheet' id='cegovbr-accessibility-css-css' href='https://www.ce.gov.br/saude/wp-content/plugins/cegovbr-funcoes-acessibilidade/assets/css/accessibility.css?ver=1790796766' media='all' />
+<style id="cegovbr-mural-materiais-card-mer-style-inline-css">
+.ckc-card-mer-front{margin:1.25rem 0;max-width:100%}.ckc-card-mer-container{background:#fefefe;border:.0625rem solid #c5c5c5;border-radius:1rem;display:flex;flex-direction:column;gap:.25rem;padding:1.5rem}.ckc-card-mer-icon{align-items:center;display:flex;justify-content:center;margin-bottom:.75rem}.ckc-card-mer-icon .material-symbols-outlined{color:#1b7727;font-size:3rem;font-weight:300}.ckc-card-mer-date{color:#3c4650;font-size:.875rem;font-weight:300}.ckc-card-mer-date,.ckc-card-mer-title{font-family:Kanit,sans-serif;letter-spacing:0;line-height:100%;margin:0;padding:.125rem}.ckc-card-mer-title{color:#465564;font-size:1.25rem;font-weight:400;vertical-align:middle}.ckc-card-mer-folders{display:flex;flex-direction:column;gap:0;margin-top:.5rem}.ckc-mer-folder-item{display:flex;flex-direction:column;gap:.5rem}.ckc-mer-folder-toggle,.ckc-mer-subfolder-toggle{align-items:center;background:none;border:none;color:#239832;cursor:pointer;display:flex;font-family:Kanit,sans-serif;font-size:.875rem;font-weight:600;gap:0;letter-spacing:.0312rem;line-height:100%;padding:0;text-align:left;text-transform:uppercase;transition:all .2s ease;-webkit-user-select:none;-moz-user-select:none;user-select:none}.ckc-mer-folder-toggle:hover,.ckc-mer-subfolder-toggle:hover{opacity:.8}.ckc-mer-folder-toggle:focus,.ckc-mer-subfolder-toggle:focus{outline:none}.ckc-mer-folder-toggle .ckc-mer-toggle-icon,.ckc-mer-subfolder-toggle .ckc-mer-toggle-icon{align-items:center;color:#239832;display:inline-flex;flex-shrink:0;font-size:1.5rem;height:1.5rem;justify-content:center;transition:transform .2s ease;width:1.5rem}.ckc-mer-folder-toggle .ckc-mer-folder-icon,.ckc-mer-subfolder-toggle .ckc-mer-folder-icon{align-items:center;color:#239832;display:inline-flex;flex-shrink:0;font-size:1.25rem;font-variation-settings:"FILL" 1;height:1.25rem;justify-content:center;margin-right:.25rem;width:1.25rem}.ckc-mer-folder-toggle .ckc-mer-folder-name,.ckc-mer-folder-toggle .ckc-mer-subfolder-name,.ckc-mer-subfolder-toggle .ckc-mer-folder-name,.ckc-mer-subfolder-toggle .ckc-mer-subfolder-name{color:#239832;flex:1;font-family:Kanit,sans-serif;font-size:.875rem;font-weight:600;letter-spacing:.0312rem;line-height:100%;margin:0;padding:0;text-transform:uppercase}.ckc-mer-folder-content,.ckc-mer-subfolder-content{display:none;flex-direction:column;gap:.75rem;margin-top:0;max-height:0;overflow:hidden;padding-left:1.25rem;transition:max-height .3s ease}.ckc-mer-folder-content.ckc-mer-open,.ckc-mer-subfolder-content.ckc-mer-open{display:flex;max-height:312.5rem}.ckc-mer-subfolder-item{display:flex;flex-direction:column;gap:.5rem}.ckc-mer-file-item a{align-items:center;background:none;border:none;color:#239832;display:flex;font-family:Kanit,sans-serif;font-size:.875rem;font-weight:500;gap:.25rem;letter-spacing:0;line-height:100%;margin-left:1.5625rem;padding:0;text-decoration:none;transition:all .2s ease}.ckc-mer-file-item a:hover{opacity:.8;text-decoration:underline}.ckc-mer-file-item a .ckc-mer-file-icon{align-items:center;color:#239832;display:inline-flex;flex-shrink:0;font-size:1rem;height:1rem;justify-content:center;width:1rem}.ckc-mer-file-item a .ckc-mer-file-name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}@media(max-width:48rem){.ckc-card-mer-container{border-radius:.75rem;padding:1rem}.ckc-card-mer-date{font-size:.8125rem}.ckc-card-mer-title{font-size:1.125rem}.ckc-mer-file-item a,.ckc-mer-folder-name,.ckc-mer-subfolder-name{font-size:.8125rem}.ckc-mer-folder-content,.ckc-mer-subfolder-content{padding-left:1rem}}@media(max-width:30rem){.ckc-card-mer-container{border-radius:.625rem;padding:.75rem}.ckc-card-mer-date{font-size:.75rem}.ckc-card-mer-title{font-size:1rem}.ckc-mer-file-item a,.ckc-mer-folder-name,.ckc-mer-subfolder-name{font-size:.75rem}.ckc-mer-folder-content,.ckc-mer-subfolder-content{gap:.125rem;padding-left:.75rem}}body.body-contraste .ckc-card-mer-container{background-color:#000!important;border-color:#fff!important}body.body-contraste .ckc-card-mer-date,body.body-contraste .ckc-card-mer-icon .material-symbols-outlined,body.body-contraste .ckc-card-mer-title,body.body-contraste .ckc-mer-folder-toggle,body.body-contraste .ckc-mer-folder-toggle .ckc-mer-folder-icon,body.body-contraste .ckc-mer-folder-toggle .ckc-mer-folder-name,body.body-contraste .ckc-mer-folder-toggle .ckc-mer-subfolder-name,body.body-contraste .ckc-mer-folder-toggle .ckc-mer-toggle-icon,body.body-contraste .ckc-mer-subfolder-toggle,body.body-contraste .ckc-mer-subfolder-toggle .ckc-mer-folder-icon,body.body-contraste .ckc-mer-subfolder-toggle .ckc-mer-folder-name,body.body-contraste .ckc-mer-subfolder-toggle .ckc-mer-subfolder-name,body.body-contraste .ckc-mer-subfolder-toggle .ckc-mer-toggle-icon{color:#fff!important}body.body-contraste .ckc-mer-folder-toggle:hover,body.body-contraste .ckc-mer-subfolder-toggle:hover{opacity:1}body.body-contraste .ckc-mer-folder-toggle:hover .ckc-mer-folder-name,body.body-contraste .ckc-mer-folder-toggle:hover .ckc-mer-subfolder-name,body.body-contraste .ckc-mer-subfolder-toggle:hover .ckc-mer-folder-name,body.body-contraste .ckc-mer-subfolder-toggle:hover .ckc-mer-subfolder-name{text-decoration:underline}body.body-contraste .ckc-mer-file-item a{color:#fff!important;text-decoration:underline!important}body.body-contraste .ckc-mer-file-item a .ckc-mer-file-icon{color:#fff!important}body.body-contraste .ckc-mer-file-item a:hover{color:#fff!important;text-decoration:underline}body.body-contraste .ckc-mer-file-item a:hover .ckc-mer-file-icon{color:#fff!important}
+
+/*# sourceURL=https://www.ce.gov.br/saude/wp-content/plugins/cegovbr-materiais-e-releases/build/card-mer/style-index.css */
+</style>
+<link rel='stylesheet' id='cegovbr-mural-materiais-card-arquivo-style-css' href='https://www.ce.gov.br/saude/wp-content/plugins/cegovbr-materiais-e-releases/build/card-arquivo/style-index.css?ver=1.0.1' media='all' />
+<link rel='stylesheet' id='cegovbr-mural-materiais-card-arquivos-multiplos-style-css' href='https://www.ce.gov.br/saude/wp-content/plugins/cegovbr-materiais-e-releases/build/card-arquivos-multiplos/style-index.css?ver=1.0.1' media='all' />
+<link rel='stylesheet' id='nc_style-css' href='https://www.ce.gov.br/saude/wp-content/plugins/cegovbr-nucleo-comunicacao/style.css?ver=1790796766' media='all' />
+<link rel='stylesheet' id='contact-form-7-css' href='https://www.ce.gov.br/saude/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=6.1.7' media='all' />
+<link rel='stylesheet' id='previo-blocos-personalizados-css' href='https://www.ce.gov.br/saude/wp-content/plugins/previo-blocos-personalizados/assets/previo-blocos.css?ver=1.2.0' media='all' />
+<link rel='stylesheet' id='username-changer-css' href='https://www.ce.gov.br/saude/wp-content/plugins/username-changer/assets/css/frontend.css?ver=3.3.1' media='all' />
+<link rel="preload" as="style" href="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/css/cookie-consent.css?ver=1790796760" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/css/cookie-consent.css?ver=1790796760"></noscript><link rel='stylesheet' id='tablepress-default-css' href='https://www.ce.gov.br/saude/wp-content/plugins/tablepress/css/build/default.css?ver=3.4' media='all' />
+<link rel='stylesheet' id='dashicons-css' href='https://www.ce.gov.br/saude/wp-includes/css/dashicons.min.css?ver=7.1.2' media='all' />
+<link rel='stylesheet' id='thickbox-css' href='https://www.ce.gov.br/saude/wp-includes/js/thickbox/thickbox.css?ver=7.1.2' media='all' />
+<link rel='stylesheet' id='header_css-css' href='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/css/header.css?1790796760&#038;ver=1790796760' media='all' />
+<link rel='stylesheet' id='sitefilho_css-css' href='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/css/sitefilho.css?1790796760&#038;ver=1790796760' media='all' />
+<link rel='stylesheet' id='menu_mobile_css-css' href='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/css/menu-mobile.css?1790796760&#038;ver=1790796760' media='all' />
+<link rel='stylesheet' id='selection_toolbar_css-css' href='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/css/selection-toolbar.css?1790796760&#038;ver=1790796760' media='all' />
+<link rel='stylesheet' id='home-news-css-css' href='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/css/home-news.css?ver=1790796760' media='all' />
+<link rel='stylesheet' id='cegovbr-home-featured-banner-css' href='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/css/home-featured-banner.css?ver=1790796760' media='all' />
+<link rel='stylesheet' id='cegovbr-home-featured-services-css' href='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/css/home-featured-services.css?ver=1790796760' media='all' />
+<link rel='stylesheet' id='cegovbr-home-slider-css' href='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/css/home-slider.css?ver=1790796760' media='all' />
+<link rel='stylesheet' id='election-period-css-css' href='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/css/election-period.css?ver=1790796760' media='all' />
+<link rel="preload" as="style" href="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/css/most-read.css?ver=1790796760" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/css/most-read.css?ver=1790796760"></noscript><link rel="preload" as="style" href="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/css/services-highlighted.css?ver=1790796760" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/css/services-highlighted.css?ver=1790796760"></noscript><link rel='stylesheet' id='cegovbr-home-for-you-css' href='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/css/home-for-you.css?ver=1790796760' media='all' />
+<link rel='stylesheet' id='cegovbr-home-for-you-anim-css' href='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/css/home-for-you-anim.css?ver=1790796760' media='all' />
+<link rel='stylesheet' id='home-for-you-col-opportunity-and-materials-specials-css' href='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/css/home-for-you-col-opportunity-and-materials-specials.css?ver=1790796760' media='all' />
+<script id="jquery-core-js" src="https://www.ce.gov.br/saude/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"></script>
+<script id="jquery-migrate-js-before">
+jQuery.migrateMute = true;
+//# sourceURL=jquery-migrate-js-before
+</script>
+<script id="jquery-migrate-js" src="https://www.ce.gov.br/saude/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1"></script>
+<script id="cc-views-js-extra">
+var CCVARS = {"post_id":"28","rest_url":"https://www.ce.gov.br/saude/wp-json/cc-views/v1/hit","ajax_url":"https://www.ce.gov.br/saude/wp-admin/admin-ajax.php","pixel":"https://www.ce.gov.br/saude/cc-views.gif"};
+//# sourceURL=cc-views-js-extra
+</script>
+<script id="cc-views-js" src="https://www.ce.gov.br/saude/wp-content/plugins/cegovbr-contagem-views-por-post/assets/cc-views.js?ver=1.3.1"></script>
+<script id="cegovbr-faq-frontend-js-extra">
+var CEGOVBR_FAQ_FRONT = {"rest_url":"https://www.ce.gov.br/saude/wp-json/cegovbr-faq/v1"};
+//# sourceURL=cegovbr-faq-frontend-js-extra
+</script>
+<script id="cegovbr-faq-frontend-js" src="https://www.ce.gov.br/saude/wp-content/plugins/cegovbr-perguntas-frequentes/assets/frontend.js?ver=1790796766"></script>
+<link rel="https://api.w.org/" href="https://www.ce.gov.br/saude/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://www.ce.gov.br/saude/wp-json/wp/v2/pages/28" /><link rel='shortlink' href='https://www.ce.gov.br/saude/' />
+        <script>
+        (function () {
+            if (window.cegovbrActivateDeferredInjects) {
+                return;
+            }
+
+            function getConsent() {
+                try {
+                    return window.localStorage.getItem('cegovbr_cookie_consent');
+                } catch (e) {
+                    return null;
+                }
+            }
+
+            function activateTemplate(template) {
+                if (!template || template.dataset.applied === '1') {
+                    return;
+                }
+
+                var target = template.dataset.cegovbrDeferredInject === 'body' ? document.body : document.head;
+                if (!target) {
+                    return;
+                }
+
+                var fragment = document.createRange().createContextualFragment(template.innerHTML);
+                fragment.querySelectorAll('script').forEach(function (oldScript) {
+                    var newScript = document.createElement('script');
+                    Array.from(oldScript.attributes).forEach(function (attr) {
+                        newScript.setAttribute(attr.name, attr.value);
+                    });
+                    newScript.text = oldScript.text || oldScript.textContent || '';
+                    oldScript.parentNode.replaceChild(newScript, oldScript);
+                });
+
+                target.appendChild(fragment);
+                template.dataset.applied = '1';
+            }
+
+            window.cegovbrActivateDeferredInjects = function () {
+                if (getConsent() !== 'accepted') {
+                    return;
+                }
+
+                document.querySelectorAll('template[data-cegovbr-deferred-inject]').forEach(activateTemplate);
+            };
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', window.cegovbrActivateDeferredInjects);
+            } else {
+                window.cegovbrActivateDeferredInjects();
+            }
+
+            window.addEventListener('cegovbr:cookie-consent', function (event) {
+                if (event.detail && event.detail.value === 'accepted') {
+                    window.cegovbrActivateDeferredInjects();
+                }
+            });
+        })();
+    </script>
+</head>
+
+<body data-rsssl=1 data-ajaxurl="https://www.ce.gov.br/saude/wp-admin/admin-ajax.php" data-rest-url="https://www.ce.gov.br/saude/wp-json/cegovbr/v1/">
+        <style>
+        .cc-skip-link {
+            position: absolute !important;
+            top: -100px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            width: auto !important;
+            height: auto !important;
+            clip: auto !important;
+            overflow: visible !important;
+            background: #1B7727 !important;
+            color: #fff !important;
+            padding: 10px 20px !important;
+            z-index: 10000 !important;
+            text-decoration: none !important;
+            font-family: sans-serif !important;
+            font-weight: bold !important;
+            border-radius: 0 0 10px 10px !important;
+            transition: top 0.3s !important;
+            opacity: 0;
+        }
+        .cc-skip-link:focus {
+            top: 0 !important;
+            opacity: 1 !important;
+            outline: 3px solid #FFBD00 !important;
+        }
+    </style>
+    <a class="cc-skip-link" href="#main-content">Pular para o conteúdo principal</a>
+    <h1 class="visually-hidden">Secretaria da Saúde do Ceará</h1>
+        <!-- No Script -->
+    <noscript>
+        <p>
+            Estimado usuário, identificamos que o seu navegador não conseguiu abrir todos os componentes necessários
+            para o completo funcionamento do sistema. Recomentamos que atualize o seu navegador.
+        </p>
+    </noscript>
+
+    <div class="d-flex flex-column flex-xl-row">
+        <aside class="d-none d-xl-flex flex-column bg-primary min-vh-100 position-relative"
+        style="min-width: 4.5rem;">
+        <div class="position-sticky top-0 h-100">
+            <div class="d-flex flex-column justify-content-between gap-5 position-sticky h-100" style="top: 0.625rem;">
+
+                <!-- Links -->
+                <div class="d-flex flex-column gap-4">
+                    <div>
+                        <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="right"
+                            data-bs-title="Expandir menu" data-bs-trigger="hover"
+                            data-bs-custom-class="aside-tooltip">
+                            <button id="cc-toggle-aside" class="btn btn-link">
+                                <span class="material-symbols-outlined notranslate opened">arrow_menu_open</span>
+                                <span class="material-symbols-outlined notranslate closed">arrow_menu_close</span>
+                                <span class="text-button">Esconder menu</span>
+                            </button>
+                        </div>
+                        <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="right"
+                            data-bs-title="Ouvidoria Estadual" data-bs-trigger="hover"
+                            data-bs-custom-class="aside-tooltip">
+                            <a href="https://cearatransparente.ce.gov.br/portal-da-transparencia/ouvidoria?locale=pt-BR"
+                                class="btn btn-link" target="_blank">
+                                <span class="material-symbols-outlined notranslate">support_agent</span>
+                                <span class="text-button">Ouvidoria Estadual</span>
+                            </a>
+                        </div>
+                        <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="right"
+                            data-bs-title="Ceará Transparente" data-bs-trigger="hover"
+                            data-bs-custom-class="aside-tooltip">
+                            <a href="https://cearatransparente.ce.gov.br/" class="btn btn-link" target="_blank">
+                                <span class="material-symbols-outlined notranslate">transition_dissolve</span>
+                                <span class="text-button">Ceará Transparente</span>
+                            </a>
+                        </div>
+                        <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="right"
+                            data-bs-title="Acesso à Informação" data-bs-trigger="hover"
+                            data-bs-custom-class="aside-tooltip">
+                            <a href="https://www.ce.gov.br/saude/acesso-a-informacao/" class="btn btn-link">
+                                <span class="material-symbols-outlined notranslate">info</span>
+                                <span class="text-button">Acesso à Informação</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="right"
+                            data-bs-title="Ir para ce.gov.br" data-bs-trigger="hover"
+                            data-bs-custom-class="aside-tooltip">
+                            <a href="https://www.ce.gov.br" class="btn btn-link">
+                                <span class="material-symbols-outlined notranslate">home</span>
+                                <span class="text-button">ce.gov.br</span>
+                            </a>
+                        </div>
+
+                                                        <div class="position-relative">
+                                    <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="right"
+                                        data-bs-title="Rede Sesa" data-bs-trigger="hover"
+                                        data-bs-custom-class="aside-tooltip">
+                                        <button class="btn btn-link" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#cc-menu-14"
+                                            aria-expanded="false"
+                                            aria-controls="cc-menu-14">
+                                            <span class="material-symbols-outlined notranslate">language</span>
+                                            <span class="text-button">Rede Sesa</span>
+                                            <span class="material-symbols-outlined notranslate arrow arrow-up">keyboard_arrow_up</span>
+                                            <span class="material-symbols-outlined notranslate arrow arrow-down">keyboard_arrow_down</span>
+                                        </button>
+                                    </div>
+                                    <div id="cc-menu-14" class="collapse cc-mais-sites">
+                                        <div class="header-menu">Rede Sesa</div>
+                                        <ul class="d-flex flex-column mb-0 p-0">
+                                                                                            <li class="nav-item">
+                                                    <a class="nav-link" href="https://www.ce.gov.br/cidh/"
+                                                         target="_blank"                                                         rel="noopener noreferrer">
+                                                        CIDH                                                    </a>
+                                                </li>
+                                                                                            <li class="nav-item">
+                                                    <a class="nav-link" href="https://www.ce.gov.br/saude/donalibania/"
+                                                         target="_blank"                                                         rel="noopener noreferrer">
+                                                        Centro de Dermatologia Dona Libânia                                                    </a>
+                                                </li>
+                                                                                            <li class="nav-item">
+                                                    <a class="nav-link" href="https://www.esp.ce.gov.br"
+                                                         target="_blank"                                                         rel="noopener noreferrer">
+                                                        ESP/CE                                                    </a>
+                                                </li>
+                                                                                            <li class="nav-item">
+                                                    <a class="nav-link" href="https://www.hemoce.ce.gov.br/"
+                                                                                                                >
+                                                        Hemoce                                                    </a>
+                                                </li>
+                                                                                            <li class="nav-item">
+                                                    <a class="nav-link" href="http://www.hias.ce.gov.br/#"
+                                                         target="_blank"                                                         rel="noopener noreferrer">
+                                                        Hias                                                    </a>
+                                                </li>
+                                                                                            <li class="nav-item">
+                                                    <a class="nav-link" href="http://www.ce.gov.br/hgf"
+                                                         target="_blank"                                                         rel="noopener noreferrer">
+                                                        HGF                                                    </a>
+                                                </li>
+                                                                                            <li class="nav-item">
+                                                    <a class="nav-link" href="http://www.ce.gov.br/hm"
+                                                         target="_blank"                                                         rel="noopener noreferrer">
+                                                        HM                                                    </a>
+                                                </li>
+                                                                                            <li class="nav-item">
+                                                    <a class="nav-link" href="http://www.ce.gov.br/hsm"
+                                                         target="_blank"                                                         rel="noopener noreferrer">
+                                                        HSM                                                    </a>
+                                                </li>
+                                                                                            <li class="nav-item">
+                                                    <a class="nav-link" href="http://www.ce.gov.br/hsj"
+                                                         target="_blank"                                                         rel="noopener noreferrer">
+                                                        HSJ                                                    </a>
+                                                </li>
+                                                                                            <li class="nav-item">
+                                                    <a class="nav-link" href="https://www.ce.gov.br/lacen/"
+                                                                                                                >
+                                                        Lacen/CE                                                    </a>
+                                                </li>
+                                                                                            <li class="nav-item">
+                                                    <a class="nav-link" href="https://www.ce.gov.br/saude/ipc/"
+                                                         target="_blank"                                                         rel="noopener noreferrer">
+                                                        IPC                                                    </a>
+                                                </li>
+                                                                                            <li class="nav-item">
+                                                    <a class="nav-link" href="https://www.samu.ce.gov.br/"
+                                                                                                                >
+                                                        Samu 192 Ceará                                                    </a>
+                                                </li>
+                                                                                            <li class="nav-item">
+                                                    <a class="nav-link" href="https://www.ce.gov.br/saude/svo/"
+                                                         target="_blank"                                                         rel="noopener noreferrer">
+                                                        SVO                                                    </a>
+                                                </li>
+                                                                                    </ul>
+                                    </div>
+                                </div>
+                        
+                                                <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="right"
+                            data-bs-title="Diário Oficial" data-bs-trigger="hover"
+                            data-bs-custom-class="aside-tooltip">
+                            <a href="https://www.ce.gov.br/diario-oficial/" class="btn btn-link" target="_blank" rel="noopener noreferrer">
+                                <span class="material-symbols-outlined notranslate">menu_book</span>
+                                <span class="text-button">Diário Oficial</span>
+                            </a>
+                        </div>
+                                                <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="right"
+                            data-bs-title="Código de Ética dos Servidores Públicos" data-bs-trigger="hover"
+                            data-bs-custom-class="aside-tooltip">
+                            <a href="https://www.cge.ce.gov.br/wp-content/uploads/sites/71/2018/04/Decreto-N.-31.198.pdf"
+                                class="btn btn-link" target="_blank">
+                                <span class="material-symbols-outlined notranslate">patient_list</span>
+                                <span class="text-button">Código de Ética dos Servidores Públicos</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Links -->
+
+                <!-- GTranslate (rodapé do aside) -->
+                                <div id="cc-gtranslate">
+                    <div class="position-relative">
+                        <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="right"
+                            data-bs-title="PT-BR" data-bs-trigger="hover" data-bs-custom-class="aside-tooltip">
+                            <button class="btn btn-link d-flex align-items-center gap-2" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#cc-gtranslate-target"
+                                aria-expanded="false" aria-controls="cc-gtranslate-target"
+                                    id="cc-gtranslate-toggle" title="Alterar idioma (atual: Português)">
+                                <img id="cc-lang-flag" width="28" height="20"
+                                    src="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/images/flags/pt-br.svg"
+                                    alt="Bandeira do Brasil, idioma português brasileiro">
+                                <span class="text-button" id="cc-lang-label">PT</span>
+                                <span class="material-symbols-outlined notranslate arrow arrow-up">keyboard_arrow_up</span>
+                                <span class="material-symbols-outlined notranslate arrow arrow-down">keyboard_arrow_down</span>
+                            </button>
+                        </div>
+                        <div id="cc-gtranslate-target" class="collapse cc-mais-sites">
+                            <div class="header-menu" id="cc-lang-header">PT</div>
+                            <?xml encoding="utf-8" ?><div class="gtranslate_wrapper" id="gt-wrapper-71358002"></div>
+                        </div>
+                    </div>
+                </div>
+                                <!-- /GTranslate -->
+
+            </div>
+        </div>
+    </aside>
+        <div class="d-flex flex-column flex-xl-grow-1" id="main-content">
+            <header id="main-header" class="container-fluid px-0 rounded-4 rounded-top-0 rounded-xl-end-0">
+                <div class="container">
+                    <div class="cc-header-top d-flex flex-column flex-xl-row justify-content-between align-items-center py-3 gap-3">
+                        <div class="cc-header-left d-flex flex-row justify-content-between align-items-center w-xl-auto w-100 gap-2">
+                            <div class="cc-header-brand d-flex flex-row align-items-center gap-1">
+                                <button id="offset-main-menu" class="btn btn-icon-cc p-2 d-xl-none" type="button"
+                                    data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
+                                    aria-controls="offcanvasScrolling" aria-label="Abrir menu lateral">
+                                    <span class="material-symbols-outlined notranslate p-1" aria-hidden="true">dehaze</span>
+                                </button>
+                                                                <a href="https://www.ce.gov.br/saude">
+                                    <img class="cc-logo" src="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/images/brasao-do-ceara.png"                                         alt="Logotipo do Governo do Ceará - CEGOVBR">
+                                </a>
+                                                                        <span class="cc-subsite-sigla">
+                                            SESA                                        </span>
+                                                            </div>
+                            <!-- Template mobile para usuário logado atualmente comentado, pois não foi necessário -->
+                                                       <a id="login-button-mobile" class="btn btn-outline-cc d-xl-none"
+                                href="https://acesso.cearadigital.ce.gov.br/login/?app-key=2635e197177591df6014b843c9b85373&origin=https%3A%2F%2Fservicos.ce.gov.br%2F">
+                                <span class="material-symbols-outlined notranslate"
+                                    aria-hidden="true">account_circle</span>
+                                Entrar
+                            </a>
+                                                    </div>
+                        <div class="cc-header-search d-flex w-100 flex-grow-1">
+                            <form role="search" method="get" class="search-form w-100"
+                                action="https://www.ce.gov.br/saude/busca/">
+                                <div class="input-group rounded-pill" style="position:relative;">
+                                    <button type="submit" class="input-group-text rounded-start-pill py-2 border-0 bg-transparent" aria-label="Pesquisar search">
+                                        <span class="material-symbols-outlined notranslate" aria-hidden="true">search</span>
+                                    </button>
+                                    <input id="input-search" name="s" type="text"
+                                        class="form-control border-0 py-2 ps-0"
+                                        placeholder="O que você precisa?" autocomplete="off" aria-label="Pesquisar no site">
+                                    <span id="voice-search-button" class="input-group-text rounded-end-pill py-2">
+                                        <span class="material-symbols-outlined notranslate">mic</span>
+                                    </span>
+                                    <!-- Container para sugestões de busca (dentro do input-group para posicionamento correto) -->
+                                    <div id="search-suggestions" class="search-suggestions-container"
+                                        style="display:none;"></div>
+                                    <!-- Reaproveitamento de template: inclui o partial usado na página de busca para evitar duplicação
+                                         O conteúdo é mantido escondido e o JS irá clonar/reaproveitar quando necessário. -->
+                                    <!-- <div id="pgbusca-avise-template" style="display:none;">
+                                        
+<div class="pgbusca-avise-container pgbusca-container container mx-auto py-3">
+    <button class="pgbusca-avise-btn" id="pgbusca-avise-btn" aria-label="Não encontrou o que procurava? Avise pra gente!">
+        <span class="material-symbols-outlined">maps_ugc</span>
+        <span class="pgbusca-avise-text">Não encontrou o que precisava? Avisa pra gente!</span>
+    </button>
+</div>
+
+                                    </div>-->
+                                </div>
+                            </form>
+                        </div>
+                        <div class="cc-header-actions d-none d-xl-flex flex-row gap-3">
+                            <div class="d-flex flex-row gap-3 align-items-center">
+                                <button class="btn btn-icon-cc menu-accessibility__link--decrease" aria-label="Diminuir tamanho do texto text_decrease">
+                                    <span class="material-symbols-outlined notranslate" aria-hidden="true">text_decrease</span>
+                                </button>
+                                <button class="btn btn-icon-cc menu-accessibility__link--increase" aria-label="Aumentar tamanho do texto text_increase">
+                                    <span class="material-symbols-outlined notranslate" aria-hidden="true">text_increase</span>
+                                </button>
+                                <button class="btn btn-icon-cc menu-accessibility__link--normal" aria-label="Tamanho de texto normal rotate_auto">
+                                    <span class="material-symbols-outlined notranslate" aria-hidden="true">rotate_auto</span>
+                                </button>
+                                <button class="btn btn-icon-cc menu-accessibility__link--contraste" aria-label="Alternar alto contraste contrast">
+                                    <span class="material-symbols-outlined notranslate" aria-hidden="true">contrast</span>
+                                </button>
+                                <a href="https://www.ce.gov.br/acessibilidade/"
+                                    class="btn btn-icon-cc accessibility-icon-link d-flex align-items-center justify-content-center mm-accessibility-link-header"
+                                    aria-label="Ir para a página de Acessibilidade accessibility">
+                                    <span
+                                        class="material-symbols-outlined notranslate mm-accessibility-icon-small" aria-hidden="true">accessibility</span>
+                                </a>
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                                                <a id="login-button-desktop" class="btn btn-outline-cc border-2"
+                                    aria-label="Entrar na área restrita"
+                                    href="https://acesso.cearadigital.ce.gov.br/login/?app-key=2635e197177591df6014b843c9b85373&origin=https%3A%2F%2Fservicos.ce.gov.br%2F">
+                                    Entrar
+                                </a>                            </div>
+                        </div>
+                    </div>
+                </div>
+                                    <div id="main-menu" class="container-fluid px-0 d-none d-xl-flex">
+                        <div class="container">
+                            <nav class="navbar navbar-expand-lg navbar-light justify-content-end">
+                                <ul id="menu-menu-principal" class="navbar-nav flex-row ms-auto gap-3"><li class="nav-item fixed-menu-item"><a class="nav-link" href="https://www.ce.gov.br/saude/">Início</a></li><li class="nav-item fixed-menu-item"><a class="nav-link" href="https://servicos.ce.gov.br/"><span></span>Serviços</a></li><li id="menu-item-9" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item dropdown menu-item-9"><a href="#" data-bs-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle no-caret me-0">Institucional <span class="material-icons notranslate" style="font-size:1rem; vertical-align:middle;">keyboard_arrow_down</span></a>
+<ul class="dropdown-menu">
+	<li id="menu-item-150786" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-150786"><a href="https://www.ce.gov.br/saude/a-secretaria/" class="dropdown-item">A Secretaria</a></li>
+	<li id="menu-item-106488" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-106488"><a href="https://www.ce.gov.br/saude/institucional/secretarias-executiva/" class="dropdown-item">Secretarias Executivas</a></li>
+	<li id="menu-item-151403" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-151403"><a href="https://www.ce.gov.br/saude/secretarios-2/" class="dropdown-item">Secretários</a></li>
+	<li id="menu-item-106507" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-106507"><a href="https://www.ce.gov.br/saude/institucional/regionalizacao/" class="dropdown-item">Regionalização</a></li>
+	<li id="menu-item-150862" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-150862"><a href="https://www.ce.gov.br/saude/rede-sesa/" class="dropdown-item">Rede Sesa</a></li>
+	<li id="menu-item-107645" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107645"><a href="https://www.ce.gov.br/saude/institucional/ouvidoria/" class="dropdown-item">Ouvidoria</a></li>
+	<li id="menu-item-76229" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-76229"><a href="https://www.ce.gov.br/saude/institucional/assessoria-de-comunicacao/" class="dropdown-item">Comunicação</a></li>
+	<li id="menu-item-151473" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-151473"><a href="https://www.cesau.ce.gov.br/" class="dropdown-item">Cesau/CE</a></li>
+	<li id="menu-item-151474" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-151474"><a href="https://www.ce.gov.br/saude/institucional/cesaucecib/cib/" class="dropdown-item">CIB</a></li>
+	<li id="menu-item-92548" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-92548"><a href="https://www.ce.gov.br/saude/planejamento/" class="dropdown-item">Planejamento</a></li>
+	<li id="menu-item-127481" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-127481"><a href="https://www.ce.gov.br/saude/institucional/comissao-de-etica-da-secretaria-da-saude-do-ceara/" class="dropdown-item">Comissão de Ética</a></li>
+	<li id="menu-item-145029" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-145029"><a href="https://www.ce.gov.br/saude/agenda" class="dropdown-item">Agenda</a></li>
+</ul>
+</li>
+<li id="menu-item-92133" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item dropdown menu-item-92133"><a href="#" data-bs-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle no-caret me-0">Transparência <span class="material-icons notranslate" style="font-size:1rem; vertical-align:middle;">keyboard_arrow_down</span></a>
+<ul class="dropdown-menu">
+	<li id="menu-item-111349" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-111349"><a href="https://www.ce.gov.br/saude/aguascomalvarasanitario/" class="dropdown-item">Águas com alvará</a></li>
+	<li id="menu-item-113901" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-113901"><a href="https://www.ce.gov.br/saude/concursados/" class="dropdown-item">Concursados</a></li>
+	<li id="menu-item-136776" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-136776"><a href="https://www.ce.gov.br/saude/contratos/" class="dropdown-item">Contratos</a></li>
+	<li id="menu-item-148235" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-148235"><a href="https://www.ce.gov.br/saude/consorcios-publicos/" class="dropdown-item">Consórcios Públicos</a></li>
+	<li id="menu-item-108419" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-108419"><a href="https://www.ce.gov.br/saude/assistenciafarmaceutica/fiquepordentro/medicamentosimportados/" class="dropdown-item">Medicamentos Importados</a></li>
+	<li id="menu-item-155016" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-155016"><a href="https://www.ce.gov.br/saude/nomeacoes-para-nova-estrutura/" class="dropdown-item">Nomeações de cargos comissionados</a></li>
+	<li id="menu-item-92134" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-92134"><a href="https://www.ce.gov.br/saude/tabnet-ceara/" class="dropdown-item">Tabnet – Ceará</a></li>
+</ul>
+</li>
+<li id="menu-item-106150" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item dropdown menu-item-106150"><a href="https://www.ce.gov.br/saude/downloads/" data-bs-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle no-caret me-0">Publicações <span class="material-icons notranslate" style="font-size:1rem; vertical-align:middle;">keyboard_arrow_down</span></a>
+<ul class="dropdown-menu">
+	<li id="menu-item-108750" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-108750"><a href="https://www.ce.gov.br/saude/download/boletins/" class="dropdown-item">Boletins</a></li>
+	<li id="menu-item-109232" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-109232"><a target="_blank" rel="noopener noreferrer" href="https://www.ce.gov.br/saude/download/imunizacao-vacinacao/" class="dropdown-item">Imunização</a></li>
+	<li id="menu-item-108751" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-108751"><a href="https://www.ce.gov.br/saude/download/notas-tecnicas/" class="dropdown-item">Notas técnicas</a></li>
+	<li id="menu-item-140903" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-140903"><a href="https://www.ce.gov.br/saude/politicas-estaduais-de-saude/" class="dropdown-item">Políticas Estaduais de Saúde</a></li>
+	<li id="menu-item-92135" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-92135"><a href="https://www.ce.gov.br/saude/download/planilha-de-notificacao-semanal-pns/" class="dropdown-item">PNS</a></li>
+	<li id="menu-item-108754" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-108754"><a href="https://www.ce.gov.br/saude/downloads/" class="dropdown-item">Outros documentos</a></li>
+</ul>
+</li>
+<li id="menu-item-150863" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item dropdown menu-item-150863"><a href="#" data-bs-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle no-caret me-0">Mais <span class="material-icons notranslate" style="font-size:1rem; vertical-align:middle;">keyboard_arrow_down</span></a>
+<ul class="dropdown-menu">
+	<li id="menu-item-150866" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-150866"><a href="https://www.ce.gov.br/saude/assistencia-farmaceutica/" class="dropdown-item">Assistência Farmacêutica</a></li>
+	<li id="menu-item-150869" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-150869"><a href="https://www.ce.gov.br/saude/cadastro-cirurgias-eletivas/" class="dropdown-item">Cirurgias Eletivas</a></li>
+	<li id="menu-item-150864" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-150864"><a href="https://www.ce.gov.br/saude/doeleitehumano/" class="dropdown-item">Doe leite humano</a></li>
+	<li id="menu-item-150868" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-150868"><a href="https://integrasus.saude.ce.gov.br/#/home" class="dropdown-item">IntegraSUS</a></li>
+	<li id="menu-item-311284" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-311284"><a href="https://www.ce.gov.br/saude/laboratorio-de-vetores/" class="dropdown-item">Laboratório Dr. Thomaz Corrêa Aragão</a></li>
+	<li id="menu-item-106540" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-106540"><a target="_blank" rel="noopener noreferrer" href="https://digital.saude.ce.gov.br/pessoas-com-deficiencia/#/inicio" class="dropdown-item">Pessoa com deficiência</a></li>
+	<li id="menu-item-150865" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-150865"><a href="https://www.ce.gov.br/saude/rede-ponto-de-luz/" class="dropdown-item">Rede Pontos de Luz</a></li>
+	<li id="menu-item-111395" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-111395"><a target="_blank" rel="noopener noreferrer" href="https://www.ce.gov.br/saude/saudemental/" class="dropdown-item">Saúde Mental</a></li>
+	<li id="menu-item-150867" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-150867"><a href="https://digital.saude.ce.gov.br/auth/#/signIn" class="dropdown-item">Saúde Digital</a></li>
+	<li id="menu-item-98775" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-98775"><a href="https://www.ce.gov.br/saude/selecoes/" class="dropdown-item">Seleções/ Chamamentos Públicos</a></li>
+	<li id="menu-item-154815" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-154815"><a href="https://www.ce.gov.br/saude/treinamento-desenvolvimento/" class="dropdown-item">Treinamento e Desenvolvimento</a></li>
+	<li id="menu-item-154816" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-154816"><a href="https://www.ce.gov.br/saude/vigilanciasanitaria/" class="dropdown-item">Vigilância Sanitária</a></li>
+</ul>
+</li>
+</ul>                            </nav>
+                        </div>
+                    </div>
+                
+                <!-- Offcanvas Menu Lateral Mobile Bootstrap -->
+                
+                <!-- Offcanvas Menu Lateral Mobile Bootstrap -->
+                <div class="menu-mobile offcanvas offcanvas-start d-xl-none" data-bs-backdrop="false" tabindex="-1"
+                    id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel" style="max-width:18.06rem;">
+                    <div class="offcanvas-header align-items-center">
+                        <div class="mm-close-container">
+                            <button type="button" class="btn p-0 me-2" data-bs-dismiss="offcanvas"
+                                aria-label="Fechar menu">
+                                <span class="material-symbols-outlined menu-mobile-close-icon notranslate" aria-hidden="true">close</span>
+                            </button>
+                            <span class="mm-close-text">Fechar menu</span>
+                        </div>
+                    </div>
+                    <!-- Icones de acessibilidade -->
+                    <div class="menu-mobile-settings d-flex align-items-center justify-content-between">
+                        <button class="btn btn-icon-cc menu-accessibility__link--decrease"
+                            aria-label="Diminuir fonte text_decrease"><span
+                                class="material-symbols-outlined notranslate mm-accessibility-icon" aria-hidden="true">text_decrease</span></button>
+                        <button class="btn btn-icon-cc menu-accessibility__link--increase"
+                            aria-label="Aumentar fonte text_increase"><span
+                                class="material-symbols-outlined notranslate mm-accessibility-icon" aria-hidden="true">text_increase</span></button>
+                        <button class="btn btn-icon-cc menu-accessibility__link--normal"
+                            aria-label="Redefinir fonte rotate_auto"><span
+                                class="material-symbols-outlined notranslate mm-accessibility-icon" aria-hidden="true">rotate_auto</span></button>
+                        <button class="btn btn-icon-cc menu-accessibility__link--contraste" aria-label="Contraste contrast"><span
+                                class="material-symbols-outlined notranslate mm-accessibility-icon" aria-hidden="true">contrast</span></button>
+                        <a href="https://www.ce.gov.br/saude/acessibilidade"
+                            class="btn btn-icon-cc accessibility-icon-link d-flex align-items-center justify-content-center mm-accessibility-link"
+                            aria-label="Acessibilidade accessibility">
+                            <span
+                                class="material-symbols-outlined notranslate mm-accessibility-icon-small" aria-hidden="true">accessibility</span>
+                        </a>
+                    </div>
+
+                    <!-- Corpo do menu mobile -->
+                    <div class="offcanvas-body menu-mobile-offcanvas-body" style="padding-top:0;">
+                        <hr class="my-2">
+                        <nav aria-label="Menu principal">
+                            <ul class="mobile-accordion-menu">
+                                <li class="mobile-menu-item fixed-menu-item">
+                                    <a class="mobile-menu-link" href="https://www.ce.gov.br/saude/"><span></span>
+                                        <span class="mobile-menu-link-text">Início</span>
+                                    </a>
+                                </li>
+                                <li class="mobile-menu-item fixed-menu-item">
+                                    <a class="mobile-menu-link" href="https://servicos.ce.gov.br/"><span></span>
+                                        <span class="mobile-menu-link-text">Serviços</span>
+                                    </a>
+                                </li>
+                                                                                                            <li id="mobile-menu-item-9"
+                                            class="mobile-menu-item mobile-menu-has-submenu">
+                                                                                            <button type="button" class="mobile-menu-link" aria-expanded="false"
+                                                    aria-controls="menu-mobile-submenu-9">
+                                                    <span>Institucional</span>
+                                                    <span class="material-icons mobile-menu-icon notranslate"
+                                                        aria-hidden="true">keyboard_arrow_down</span>
+                                                </button>
+                                                <ul id="menu-mobile-submenu-9"
+                                                    class="mobile-menu-submenu" role="menu"
+                                                    aria-label="Institucional">
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/a-secretaria/" >
+                                                                A Secretaria</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/institucional/secretarias-executiva/" >
+                                                                Secretarias Executivas</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/secretarios-2/" >
+                                                                Secretários</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/institucional/regionalizacao/" >
+                                                                Regionalização</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/rede-sesa/" >
+                                                                Rede Sesa</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/institucional/ouvidoria/" >
+                                                                Ouvidoria</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/institucional/assessoria-de-comunicacao/" >
+                                                                Comunicação</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.cesau.ce.gov.br/" >
+                                                                Cesau/CE</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/institucional/cesaucecib/cib/" >
+                                                                CIB</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/planejamento/" >
+                                                                Planejamento</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/institucional/comissao-de-etica-da-secretaria-da-saude-do-ceara/" >
+                                                                Comissão de Ética</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/agenda" >
+                                                                Agenda</a></li>
+                                                                                                    </ul>
+                                                                                    </li>
+                                                                            <li id="mobile-menu-item-92133"
+                                            class="mobile-menu-item mobile-menu-has-submenu">
+                                                                                            <button type="button" class="mobile-menu-link" aria-expanded="false"
+                                                    aria-controls="menu-mobile-submenu-92133">
+                                                    <span>Transparência</span>
+                                                    <span class="material-icons mobile-menu-icon notranslate"
+                                                        aria-hidden="true">keyboard_arrow_down</span>
+                                                </button>
+                                                <ul id="menu-mobile-submenu-92133"
+                                                    class="mobile-menu-submenu" role="menu"
+                                                    aria-label="Transparência">
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/aguascomalvarasanitario/" >
+                                                                Águas com alvará</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/concursados/" >
+                                                                Concursados</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/contratos/" >
+                                                                Contratos</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/consorcios-publicos/" >
+                                                                Consórcios Públicos</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/assistenciafarmaceutica/fiquepordentro/medicamentosimportados/" >
+                                                                Medicamentos Importados</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/nomeacoes-para-nova-estrutura/" >
+                                                                Nomeações de cargos comissionados</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/tabnet-ceara/" >
+                                                                Tabnet – Ceará</a></li>
+                                                                                                    </ul>
+                                                                                    </li>
+                                                                            <li id="mobile-menu-item-106150"
+                                            class="mobile-menu-item mobile-menu-has-submenu">
+                                                                                            <button type="button" class="mobile-menu-link" aria-expanded="false"
+                                                    aria-controls="menu-mobile-submenu-106150">
+                                                    <span>Publicações</span>
+                                                    <span class="material-icons mobile-menu-icon notranslate"
+                                                        aria-hidden="true">keyboard_arrow_down</span>
+                                                </button>
+                                                <ul id="menu-mobile-submenu-106150"
+                                                    class="mobile-menu-submenu" role="menu"
+                                                    aria-label="Publicações">
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/download/boletins/" >
+                                                                Boletins</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/download/imunizacao-vacinacao/"  target="_blank" rel="noopener noreferrer">
+                                                                Imunização</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/download/notas-tecnicas/" >
+                                                                Notas técnicas</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/politicas-estaduais-de-saude/" >
+                                                                Políticas Estaduais de Saúde</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/download/planilha-de-notificacao-semanal-pns/" >
+                                                                PNS</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/downloads/" >
+                                                                Outros documentos</a></li>
+                                                                                                    </ul>
+                                                                                    </li>
+                                                                            <li id="mobile-menu-item-150863"
+                                            class="mobile-menu-item mobile-menu-has-submenu">
+                                                                                            <button type="button" class="mobile-menu-link" aria-expanded="false"
+                                                    aria-controls="menu-mobile-submenu-150863">
+                                                    <span>Mais</span>
+                                                    <span class="material-icons mobile-menu-icon notranslate"
+                                                        aria-hidden="true">keyboard_arrow_down</span>
+                                                </button>
+                                                <ul id="menu-mobile-submenu-150863"
+                                                    class="mobile-menu-submenu" role="menu"
+                                                    aria-label="Mais">
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/assistencia-farmaceutica/" >
+                                                                Assistência Farmacêutica</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/cadastro-cirurgias-eletivas/" >
+                                                                Cirurgias Eletivas</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/doeleitehumano/" >
+                                                                Doe leite humano</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://integrasus.saude.ce.gov.br/#/home" >
+                                                                IntegraSUS</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/laboratorio-de-vetores/" >
+                                                                Laboratório Dr. Thomaz Corrêa Aragão</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://digital.saude.ce.gov.br/pessoas-com-deficiencia/#/inicio"  target="_blank" rel="noopener noreferrer">
+                                                                Pessoa com deficiência</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/rede-ponto-de-luz/" >
+                                                                Rede Pontos de Luz</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/saudemental/"  target="_blank" rel="noopener noreferrer">
+                                                                Saúde Mental</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://digital.saude.ce.gov.br/auth/#/signIn" >
+                                                                Saúde Digital</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/selecoes/" >
+                                                                Seleções/ Chamamentos Públicos</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/treinamento-desenvolvimento/" >
+                                                                Treinamento e Desenvolvimento</a></li>
+                                                                                                            <li role="none"><a class="mobile-menu-subitem"
+                                                                href="https://www.ce.gov.br/saude/vigilanciasanitaria/" >
+                                                                Vigilância Sanitária</a></li>
+                                                                                                    </ul>
+                                                                                    </li>
+                                                                                                </ul>
+                        </nav>
+                        <hr class="my-2">
+                        <ul class="mobile-menu-secundario">
+                            <li class="mobile-menu-secundario-item">
+                                <span class="material-symbols-outlined notranslate">support_agent</span>
+                                <a class="mobile-menu-secundario-link"
+                                    href="https://cearatransparente.ce.gov.br/portal-da-transparencia/ouvidoria?locale=pt-BR">Ouvidoria
+                                    Estadual</a>
+                            </li>
+                            <li class="mobile-menu-secundario-item">
+                                <span class="material-symbols-outlined notranslate">transition_dissolve</span>
+                                <a class="mobile-menu-secundario-link" href="https://cearatransparente.ce.gov.br/">Ceará
+                                    Transparente</a>
+                            </li>
+                            <li class="mobile-menu-secundario-item">
+                                <span class="material-symbols-outlined notranslate">info</span>
+                                <a class="mobile-menu-secundario-link" href="https://www.ce.gov.br/saude/acesso-a-informacao/">Acesso à
+                                    Informação</a>
+                            </li>
+                            <li class="mobile-menu-secundario-item">
+                                <span class="material-symbols-outlined notranslate">home</span>
+                                <a class="mobile-menu-secundario-link" href="https://www.ceara.gov.br/">ce.gov.br</a>
+                            </li>
+                                                                <li class="mobile-menu-secundario-item mobile-menu-secundario-item--has-submenu"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        <button type="button" class="mobile-menu-secundario-link"
+                                            aria-controls="menu-mobile-14" aria-expanded="false">
+                                            <span class="material-symbols-outlined notranslate">language</span>
+                                            <span>Rede Sesa</span>
+                                            <span
+                                                class="material-icons mobile-menu-secundario-icon notranslate">keyboard_arrow_down</span>
+                                        </button>
+                                        <ul id="menu-mobile-14" class="mobile-menu-secundario-submenu" role="menu"
+                                            aria-label="Rede Sesa" tabindex="-1">
+                                                                                            <li role="none">
+                                                    <a class="mobile-menu-secundario-subitem" role="menuitem"
+                                                        href="https://www.ce.gov.br/cidh/"  target="_blank" rel="noopener noreferrer">
+                                                        CIDH</a>
+                                                </li>
+                                                                                            <li role="none">
+                                                    <a class="mobile-menu-secundario-subitem" role="menuitem"
+                                                        href="https://www.ce.gov.br/saude/donalibania/"  target="_blank" rel="noopener noreferrer">
+                                                        Centro de Dermatologia Dona Libânia</a>
+                                                </li>
+                                                                                            <li role="none">
+                                                    <a class="mobile-menu-secundario-subitem" role="menuitem"
+                                                        href="https://www.esp.ce.gov.br"  target="_blank" rel="noopener noreferrer">
+                                                        ESP/CE</a>
+                                                </li>
+                                                                                            <li role="none">
+                                                    <a class="mobile-menu-secundario-subitem" role="menuitem"
+                                                        href="https://www.hemoce.ce.gov.br/" >
+                                                        Hemoce</a>
+                                                </li>
+                                                                                            <li role="none">
+                                                    <a class="mobile-menu-secundario-subitem" role="menuitem"
+                                                        href="http://www.hias.ce.gov.br/#"  target="_blank" rel="noopener noreferrer">
+                                                        Hias</a>
+                                                </li>
+                                                                                            <li role="none">
+                                                    <a class="mobile-menu-secundario-subitem" role="menuitem"
+                                                        href="http://www.ce.gov.br/hgf"  target="_blank" rel="noopener noreferrer">
+                                                        HGF</a>
+                                                </li>
+                                                                                            <li role="none">
+                                                    <a class="mobile-menu-secundario-subitem" role="menuitem"
+                                                        href="http://www.ce.gov.br/hm"  target="_blank" rel="noopener noreferrer">
+                                                        HM</a>
+                                                </li>
+                                                                                            <li role="none">
+                                                    <a class="mobile-menu-secundario-subitem" role="menuitem"
+                                                        href="http://www.ce.gov.br/hsm"  target="_blank" rel="noopener noreferrer">
+                                                        HSM</a>
+                                                </li>
+                                                                                            <li role="none">
+                                                    <a class="mobile-menu-secundario-subitem" role="menuitem"
+                                                        href="http://www.ce.gov.br/hsj"  target="_blank" rel="noopener noreferrer">
+                                                        HSJ</a>
+                                                </li>
+                                                                                            <li role="none">
+                                                    <a class="mobile-menu-secundario-subitem" role="menuitem"
+                                                        href="https://www.ce.gov.br/lacen/" >
+                                                        Lacen/CE</a>
+                                                </li>
+                                                                                            <li role="none">
+                                                    <a class="mobile-menu-secundario-subitem" role="menuitem"
+                                                        href="https://www.ce.gov.br/saude/ipc/"  target="_blank" rel="noopener noreferrer">
+                                                        IPC</a>
+                                                </li>
+                                                                                            <li role="none">
+                                                    <a class="mobile-menu-secundario-subitem" role="menuitem"
+                                                        href="https://www.samu.ce.gov.br/" >
+                                                        Samu 192 Ceará</a>
+                                                </li>
+                                                                                            <li role="none">
+                                                    <a class="mobile-menu-secundario-subitem" role="menuitem"
+                                                        href="https://www.ce.gov.br/saude/svo/"  target="_blank" rel="noopener noreferrer">
+                                                        SVO</a>
+                                                </li>
+                                                                                    </ul>
+                                    </li>
+                                                                                        <li class="mobile-menu-secundario-item">
+                                <span class="material-symbols-outlined notranslate">menu_book</span>
+                                <a class="mobile-menu-secundario-link"
+                                    href="https://www.ce.gov.br/diario-oficial/" target="_blank" rel="noopener noreferrer">Diário oficial</a>
+                            </li>
+                                                        <li class="mobile-menu-secundario-item">
+                                <span class="material-symbols-outlined notranslate">patient_list</span>
+                                <a class="mobile-menu-secundario-link"
+                                    href="https://www.casacivil.ce.gov.br/wp-content/uploads/sites/3/2021/08/Co%CC%81digo-de-E%CC%81tica-Final-ASSINADO.pdf" target="_blank">Código de Ética dos Servidores Públicos</a>
+                            </li>
+                                                        <li class="mobile-menu-secundario-item mobile-menu-secundario-item--has-submenu">
+                                <div id="mobile-gtranslate" class="w-100">
+                                    <button class="btn btn-link d-flex align-items-center gap-2 mobile-gtranslate-toggle" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#mobile-gtranslate-target"
+                                        aria-expanded="false" aria-controls="mobile-gtranslate-target"
+                                        id="mobile-gtranslate-toggle" aria-label="PT-BR keyboard_arrow_down" title="Alterar idioma (atual: Português)">
+                                        <img id="mobile-lang-flag" width="28" height="20"
+                                            src="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/images/flags/pt-br.svg"
+                                            alt="Bandeira do Brasil, idioma português brasileiro">
+                                        <span class="text-button" id="mobile-lang-label">PT</span>
+                                        <span
+                                            class="material-symbols-outlined notranslate arrow arrow-up" aria-hidden="true">keyboard_arrow_up</span>
+                                        <span
+                                            class="material-symbols-outlined notranslate arrow arrow-down" aria-hidden="true">keyboard_arrow_down</span>
+                                    </button>
+
+                                    <div id="mobile-gtranslate-target" class="collapse cc-mais-sites">
+                                        <?xml encoding="utf-8" ?><div class="gtranslate_wrapper" id="gt-wrapper-56507183"></div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    </ul>
+                    </div>
+                </div>
+
+            </header>
+<main id="conteudo" class="container-fluid px-0" role="main" aria-label="Conteúdo principal">
+    <div class="container">
+        
+
+
+<div class="election-period card shadow-sm mb-4">
+    <div class="card-body d-flex align-items-center w-100 election-period-content" style="gap: 0.5rem; padding-top: 2rem; padding-bottom: 2rem;">
+        <div class="election-period-img-container" style="height: 100%; width: 28.8987rem; min-width: 28.8987rem; max-width: 28.8987rem; display: flex; align-items: stretch;">
+            <img src="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/images/img-mulher-eleicao.png" alt="Mulher votando" style="width: 100%; height: 100%; border-radius: 0.75rem; object-fit: cover; object-position: right center; display: block;" loading="lazy">
+        </div>
+        <div class="flex-grow-1 d-flex flex-column justify-content-center" style="gap: 0.5rem;">
+            <div class="election-period-title" style="font-family: 'Kanit', sans-serif; font-weight: 600; font-size: 2.5rem; line-height: 103%; color: #DA5700;">
+                <span class="election-period-title-line">Estamos no</span> <span class="election-period-title-line">Per&iacute;odo Eleitoral</span>
+            </div>
+            <div style="font-family: 'Kanit', sans-serif; font-weight: 400; font-size: 1.25rem; line-height: 140%; color: #26323F;">
+                → Por isso, <span style="color: #DA5700;">estão suspensas notícias e redes sociais</span>, incluindo qualquer publicidade e comunicação institucional, em cumprimento à legislação eleitoral (Lei nº 9.504/1997). As publicações serão retomadas após o período eleitoral.
+            </div>
+            <div style="font-family: 'Kanit', sans-serif; font-weight: 300; font-size: 1rem; line-height: 132%; color: #26323F; margin-top: 0.5rem;">
+                →  Os Serviços do Governo à população e a Ouvidoria permanecem disponíveis, conforme previsto na legislação.            </div>
+            <!-- <div style="font-family: 'Kanit', sans-serif; font-weight: 300; font-size: 1rem; line-height: 132%; color: #26323F; margin-top: 0.5rem;">
+                Base legal: Decreto nº &lt;número-decreto&gt;, de &lt;dia&gt; de &lt;mês&gt; de 2026.            </div> -->
+        </div>
+    </div>
+</div>
+
+<!-- Efeito de carregamento: shimmer nos cards até o Swiper iniciar -->
+<style>
+  #cc-home-featured-services.hfs-hidden .service-card,
+  #cc-home-featured-services.loading .service-card {
+    opacity: 1 !important;
+    visibility: visible !important;
+    background: linear-gradient(90deg, #f0f0f0 25%, #f8f8f8 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: cc-shimmer-inline 1.5s infinite;
+    border-color: #eee;
+    pointer-events: none;
+  }
+  #cc-home-featured-services.hfs-hidden .service-card *,
+  #cc-home-featured-services.loading .service-card * {
+    visibility: hidden !important;
+  }
+  @keyframes cc-shimmer-inline {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+</style>
+
+<!-- Seção principal dos serviços em destaque -->
+<section id="cc-home-featured-services" class="home-featured-services container-fluid px-0 mt-4 mb-1 hfs-hidden" aria-label="Serviços do Governo">
+  <div class="home-featured-services-cegovbr-wrapper">
+
+    <!-- Cabeçalho da seção -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2 class="mb-0 d-flex align-items-center gap-2 text-gray-700 titulo fw-500">
+      <!-- Ícone do Material Design -->
+      <span class="material-icons" aria-hidden="true" style="font-size:1.75rem;">supervised_user_circle</span>
+        Serviços em destaque          </h2>
+    </div>
+
+    <!-- Container do Swiper (carrossel de serviços) -->
+    <div class="container my-4 px-0">
+      <div class="swiper" id="services-swiper">
+        <div class="swiper-wrapper">
+                                    <!-- Slide individual do Swiper com um card de serviço -->
+              <div class="swiper-slide">
+                                <a href="https://servicos.ce.gov.br/catalogo-de-servicos/1269" class="card service-card h-100 text-center fade-seq">
+                  <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                                        <!-- Imagem do ícone do serviço -->
+                    <img
+                      src="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-1269.png?ver=1784663275"
+                      data-default-icon="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-1269.png?ver=1784663275"
+                      data-contrast-icon="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-1269-contrast.png?ver=1778785339"
+                      data-fallback-icon="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/images/services/icone-servico.svg"
+                      alt=""
+                      aria-hidden="true"
+                      class="service-icon mb-2"
+                      loading="lazy"
+                      onerror="this.onerror=null;this.src='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/images/services/icone-servico.svg';"
+                      referrerpolicy="no-referrer"
+                      width="58" height="58"
+                    >
+                    <!-- Título do serviço -->
+                    <div class="service-title">SAMU 192</div>
+                  </div>
+                </a>
+              </div>
+                          <!-- Slide individual do Swiper com um card de serviço -->
+              <div class="swiper-slide">
+                                <a href="https://servicos.ce.gov.br/catalogo-de-servicos/2584" class="card service-card h-100 text-center fade-seq">
+                  <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                                        <!-- Imagem do ícone do serviço -->
+                    <img
+                      src="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-2584.png?ver=1784663275"
+                      data-default-icon="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-2584.png?ver=1784663275"
+                      data-contrast-icon="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-2584-contrast.png?ver=1777311453"
+                      data-fallback-icon="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/images/services/icone-servico.svg"
+                      alt=""
+                      aria-hidden="true"
+                      class="service-icon mb-2"
+                      loading="lazy"
+                      onerror="this.onerror=null;this.src='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/images/services/icone-servico.svg';"
+                      referrerpolicy="no-referrer"
+                      width="58" height="58"
+                    >
+                    <!-- Título do serviço -->
+                    <div class="service-title">Orientação e fluxo para acesso a medicamentos</div>
+                  </div>
+                </a>
+              </div>
+                          <!-- Slide individual do Swiper com um card de serviço -->
+              <div class="swiper-slide">
+                                <a href="https://servicos.ce.gov.br/catalogo-de-servicos/3129" class="card service-card h-100 text-center fade-seq">
+                  <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                                        <!-- Imagem do ícone do serviço -->
+                    <img
+                      src="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-3129.png?ver=1784663275"
+                      data-default-icon="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-3129.png?ver=1784663275"
+                      data-contrast-icon="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-3129-contrast.png?ver=1777311455"
+                      data-fallback-icon="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/images/services/icone-servico.svg"
+                      alt=""
+                      aria-hidden="true"
+                      class="service-icon mb-2"
+                      loading="lazy"
+                      onerror="this.onerror=null;this.src='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/images/services/icone-servico.svg';"
+                      referrerpolicy="no-referrer"
+                      width="58" height="58"
+                    >
+                    <!-- Título do serviço -->
+                    <div class="service-title">PrEP / PEP - App Acesso Saúde CE</div>
+                  </div>
+                </a>
+              </div>
+                          <!-- Slide individual do Swiper com um card de serviço -->
+              <div class="swiper-slide">
+                                <a href="https://servicos.ce.gov.br/catalogo-de-servicos/1250" class="card service-card h-100 text-center fade-seq">
+                  <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                                        <!-- Imagem do ícone do serviço -->
+                    <img
+                      src="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-1250.png?ver=1784663275"
+                      data-default-icon="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-1250.png?ver=1784663275"
+                      data-contrast-icon="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-1250-contrast.png?ver=1777311459"
+                      data-fallback-icon="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/images/services/icone-servico.svg"
+                      alt=""
+                      aria-hidden="true"
+                      class="service-icon mb-2"
+                      loading="lazy"
+                      onerror="this.onerror=null;this.src='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/images/services/icone-servico.svg';"
+                      referrerpolicy="no-referrer"
+                      width="58" height="58"
+                    >
+                    <!-- Título do serviço -->
+                    <div class="service-title">Licença Sanitária</div>
+                  </div>
+                </a>
+              </div>
+                          <!-- Slide individual do Swiper com um card de serviço -->
+              <div class="swiper-slide">
+                                <a href="https://servicos.ce.gov.br/catalogo-de-servicos/1277" class="card service-card h-100 text-center fade-seq">
+                  <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                                        <!-- Imagem do ícone do serviço -->
+                    <img
+                      src="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-1277.png?ver=1784663275"
+                      data-default-icon="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-1277.png?ver=1784663275"
+                      data-contrast-icon="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-1277-contrast.png?ver=1779133109"
+                      data-fallback-icon="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/images/services/icone-servico.svg"
+                      alt=""
+                      aria-hidden="true"
+                      class="service-icon mb-2"
+                      loading="lazy"
+                      onerror="this.onerror=null;this.src='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/images/services/icone-servico.svg';"
+                      referrerpolicy="no-referrer"
+                      width="58" height="58"
+                    >
+                    <!-- Título do serviço -->
+                    <div class="service-title">Atendimento de Urgência e Emergência - UPA</div>
+                  </div>
+                </a>
+              </div>
+                          <!-- Slide individual do Swiper com um card de serviço -->
+              <div class="swiper-slide">
+                                <a href="https://servicos.ce.gov.br/catalogo-de-servicos/3104" class="card service-card h-100 text-center fade-seq">
+                  <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                                        <!-- Imagem do ícone do serviço -->
+                    <img
+                      src="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-3104.png?ver=1779133109"
+                      data-default-icon="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-3104.png?ver=1779133109"
+                      data-contrast-icon="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-3104-contrast.png?ver=1779133109"
+                      data-fallback-icon="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/images/services/icone-servico.svg"
+                      alt=""
+                      aria-hidden="true"
+                      class="service-icon mb-2"
+                      loading="lazy"
+                      onerror="this.onerror=null;this.src='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/images/services/icone-servico.svg';"
+                      referrerpolicy="no-referrer"
+                      width="58" height="58"
+                    >
+                    <!-- Título do serviço -->
+                    <div class="service-title">Exame em Mamografia</div>
+                  </div>
+                </a>
+              </div>
+                          <!-- Slide individual do Swiper com um card de serviço -->
+              <div class="swiper-slide">
+                                <a href="https://servicos.ce.gov.br/catalogo-de-servicos/1374" class="card service-card h-100 text-center fade-seq">
+                  <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                                        <!-- Imagem do ícone do serviço -->
+                    <img
+                      src="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-1374.png?ver=1779133775"
+                      data-default-icon="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-1374.png?ver=1779133775"
+                      data-contrast-icon="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-1374-contrast.png?ver=1779133775"
+                      data-fallback-icon="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/images/services/icone-servico.svg"
+                      alt=""
+                      aria-hidden="true"
+                      class="service-icon mb-2"
+                      loading="lazy"
+                      onerror="this.onerror=null;this.src='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/images/services/icone-servico.svg';"
+                      referrerpolicy="no-referrer"
+                      width="58" height="58"
+                    >
+                    <!-- Título do serviço -->
+                    <div class="service-title">Cadastro de Medula Óssea</div>
+                  </div>
+                </a>
+              </div>
+                          <!-- Slide individual do Swiper com um card de serviço -->
+              <div class="swiper-slide">
+                                <a href="https://servicos.ce.gov.br/catalogo-de-servicos/966" class="card service-card h-100 text-center fade-seq">
+                  <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                                        <!-- Imagem do ícone do serviço -->
+                    <img
+                      src="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-966.png?ver=1779133775"
+                      data-default-icon="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-966.png?ver=1779133775"
+                      data-contrast-icon="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-966-contrast.png?ver=1779133776"
+                      data-fallback-icon="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/images/services/icone-servico.svg"
+                      alt=""
+                      aria-hidden="true"
+                      class="service-icon mb-2"
+                      loading="lazy"
+                      onerror="this.onerror=null;this.src='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/images/services/icone-servico.svg';"
+                      referrerpolicy="no-referrer"
+                      width="58" height="58"
+                    >
+                    <!-- Título do serviço -->
+                    <div class="service-title">Doação de Sangue</div>
+                  </div>
+                </a>
+              </div>
+                          <!-- Slide individual do Swiper com um card de serviço -->
+              <div class="swiper-slide">
+                                <a href="https://servicos.ce.gov.br/catalogo-de-servicos/1342" class="card service-card h-100 text-center fade-seq">
+                  <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                                        <!-- Imagem do ícone do serviço -->
+                    <img
+                      src="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-1342.png?ver=1784663275"
+                      data-default-icon="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-1342.png?ver=1784663275"
+                      data-contrast-icon="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-1342-contrast.png?ver=1779133956"
+                      data-fallback-icon="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/images/services/icone-servico.svg"
+                      alt=""
+                      aria-hidden="true"
+                      class="service-icon mb-2"
+                      loading="lazy"
+                      onerror="this.onerror=null;this.src='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/images/services/icone-servico.svg';"
+                      referrerpolicy="no-referrer"
+                      width="58" height="58"
+                    >
+                    <!-- Título do serviço -->
+                    <div class="service-title">Declaração de Óbito</div>
+                  </div>
+                </a>
+              </div>
+                          <!-- Slide individual do Swiper com um card de serviço -->
+              <div class="swiper-slide">
+                                <a href="https://servicos.ce.gov.br/catalogo-de-servicos/1888" class="card service-card h-100 text-center fade-seq">
+                  <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                                        <!-- Imagem do ícone do serviço -->
+                    <img
+                      src="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-1888.png?ver=1784663275"
+                      data-default-icon="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-1888.png?ver=1784663275"
+                      data-contrast-icon="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/cegovbr/featured-services/servico-1888-contrast.png?ver=1779134128"
+                      data-fallback-icon="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/images/services/icone-servico.svg"
+                      alt=""
+                      aria-hidden="true"
+                      class="service-icon mb-2"
+                      loading="lazy"
+                      onerror="this.onerror=null;this.src='https://www.ce.gov.br/saude/wp-content/themes/cegovbr/images/services/icone-servico.svg';"
+                      referrerpolicy="no-referrer"
+                      width="58" height="58"
+                    >
+                    <!-- Título do serviço -->
+                    <div class="service-title">Urgência e Emergência Odontológica</div>
+                  </div>
+                </a>
+              </div>
+                              </div>
+      </div>
+
+      <!-- Link direciona para a pagina de serviços da SEPLAG -->
+      <div class="d-flex justify-content-center mt-3" style="background:#BCE4C1;color:#26323F;border-radius:1rem;padding:0.75rem;width:100%;height: 2.5rem;">
+        <a href="https://servicos.ce.gov.br/" class="ver-mais-link d-inline-flex align-items-center" style="color:inherit;text-decoration:none;">
+          <span class="destaque fw-500" style="color:inherit;">Ver mais serviços</span>
+          <i class="material-icons" style="color:inherit;margin-left:0.375rem;">arrow_forward</i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+    </div>
+</main>
+
+
+        
+        <footer class="text-white">
+            <div class="container-fluid divider"></div>
+            <div class="container-fluid bg-primary-700 py-4">
+                <div class="container container-middle">
+                    <div class="row align-items-center justify-content-between gy-0 footer-contact-row">
+                        <div class="col-auto d-flex flex-column gap-3 col-left">
+                            <div class="flex-shrink-0">
+                                                                    <img class="img-fluid logo-footer" src="https://www.ce.gov.br/saude/wp-content/uploads/sites/64/2026/01/Secretaria-da-Saude-INVERTIDA-WEB-branca.png" alt="Logotipo do rodapé">
+                                                            </div>
+
+                            <div class="d-flex flex-column gap-2">
+                                <h2 class="h6 titulo text-white mb-1">Quer entrar em contato?</h2>
+                                <p class="d-flex align-items-center gap-2 mb-2">
+                                    <i class="material-icons-outlined" aria-hidden="true">chat</i>
+                                    <a href="https://cearatransparente.ce.gov.br/portal-da-transparencia/ouvidoria?locale=pt-BR" class="destaque footer-ouvidoria-link text-white text-decoration-none">Ouvidoria</a>
+                                </p>
+                                <div class="d-flex align-items-center gap-4"><a href="https://www.instagram.com/saudeceara/" class="text-white" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram fs-5"></i></a><a href="https://www.facebook.com/saudeceara" class="text-white" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook fs-5"></i></a><a href="https://www.linkedin.com/company/saudeceara/" class="text-white" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin fs-5"></i></a><a href="https://www.youtube.com/saudeceara" class="text-white" target="_blank" rel="noopener" aria-label="YouTube"><i class="bi bi-youtube fs-5"></i></a><a href="https://x.com/governodoceara" class="text-white" target="_blank" rel="noopener" aria-label="X (Twitter)"><i class="bi bi-twitter-x fs-5"></i></a><a href="https://www.tiktok.com/@saudeceara" class="text-white" target="_blank" rel="noopener" aria-label="TikTok"><i class="bi bi-tiktok fs-5"></i></a><a href="https://t.me/governodoceara" class="text-white" target="_blank" rel="noopener" aria-label="Telegram"><i class="bi bi-telegram fs-5"></i></a><a href="https://whatsapp.com/channel/0029Va9dxyTGE56mbgGHjj3C" class="text-white" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp fs-5"></i></a></div>                            </div>
+                        </div>
+
+                        <div class="col-auto text-md-start col-right">
+                            <p class="destaque fw-400 mb-1">Secretaria da Saúde do Estado do Ceará</p><p class="destaque fw-200">Av. Almirante Barroso, 600, Praia de Iracema<br>
+  Fortaleza, CE<br>
+  CEP: 60060-440</p><p class="destaque fw-400 mb-1">Horário de Atendimento</p><p class="destaque fw-200">8 às 12h e 13 às 17h</p><p class="destaque fw-400 mb-1">Contato</p><p class="destaque fw-200">(85) 2018-7470</p>                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid bg-gradient-primary py-3">
+                <div class="row">
+                    <p class="fw-200 text-center mb-0">
+                        © 2017 - 2026 – Governo do Estado do Ceará todos os direitos reservados
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        </div>
+
+        </div>
+  
+
+<!-- Modais globais para busca (Nenhum resultado / Erro) -->
+<div id="global-no-results-modal" class="global-modal" aria-hidden="true" role="dialog" aria-labelledby="no-results-title" style="display:none;">
+    <div class="global-modal-overlay" data-modal-close></div>
+    <div class="modal-card" role="document">
+        <button class="modal-close" data-modal-close aria-label="Fechar modal">×</button>
+        <div id="no-suggestions-modal">
+            <span class="material-symbols-outlined" aria-hidden="true">sentiment_dissatisfied</span>
+            <div id="no-results-title">Nenhum resultado encontrado.</div>
+            <div>Por favor, tente outro termo.</div>
+            <button id="no-suggestions-action" class="btn btn-link">
+                <span class="material-symbols-outlined">maps_ugc</span>
+                <span>Não encontrou o que precisava? Avise pra gente!</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="global-error-modal" class="global-modal" aria-hidden="true" role="dialog" aria-labelledby="error-title" style="display:none;">
+    <div class="global-modal-overlay" data-modal-close></div>
+    <div class="modal-card" role="document">
+        <button class="modal-close" data-modal-close aria-label="Fechar modal">×</button>
+        <div id="error-suggestions-modal">
+            <span class="material-symbols-outlined" aria-hidden="true">search_off</span>
+            <div class="error-title" id="error-title">Não conseguimos mostrar a busca agora.</div>
+            <div class="error-sub">Por favor, tente novamente mais tarde.</div>
+        </div>
+    </div>
+</div>
+
+<!-- enqueued scripts: bootstrap-js,swiper-js,lazy-assets-loader,cegov-abas-verticais,acesso-cidadao-oauth2,cegovbr-destaques-carousel,cegovbr-agenda-tooltip,cc-views,cegovbr-accessibility-js,nc_modal_js,cegovbr-organograma-custom-select-arrow,cegovbr-faq-frontend,contact-form-7,cegovbr-header-notification,cegovbr-cookie-consent,contaclique,jquery,thickbox,slick_js,tippy,js-cookie,scripts_js,mobile-menu,accessibility,header-search-voice,header-search-suggestions,aside-delay,selection-toolbar,home-news-js,cegovbr-home-featured-services,cegovbr-home-slider,most-read-js,home-most-read-js,services-highlighted-script,cegovbr-home-for-you-anim,services-banner-onde-encontrar-js,gt_widget_script_71358002,gt_widget_script_56507183 --><!-- enqueued styles: wp-img-auto-sizes-contain,local-fonts,bootstrap-css,bootstrap-icons,meu-tema-style,gutenberg-blocks,breadcrumb-style,index-style,swiper-css,cegov-abas-verticais,wp-emoji-styles,wp-block-library,wp-block-styles-placeholder,blocos-cegovbr-frontend-style,wp-global-styles-placeholder,cegovbr-agenda-styles,cegov-barra-lateral-style,cegovbr-accessibility-css,cegovbr-mural-materiais-card-mer-style,cegovbr-mural-materiais-card-arquivo-style,cegovbr-mural-materiais-card-arquivos-multiplos-style,nc_style,contact-form-7,previo-blocos-personalizados,username-changer,cegovbr-cookie-consent-style,tablepress-default,thickbox,header_css,sitefilho_css,menu_mobile_css,selection_toolbar_css,home-news-css,cegovbr-home-featured-banner,cegovbr-home-featured-services,cegovbr-home-slider,election-period-css,most-read-css,services-highlighted-style,cegovbr-home-for-you,cegovbr-home-for-you-anim,home-for-you-col-opportunity-and-materials-specials --><!-- Global modal for "Avise pra gente" (busca feedback). Placed in footer so it's available site-wide -->
+<div class="pgbusca-modal-overlay" id="pgbusca-modal-overlay" aria-hidden="true" style="display:none;">
+    <div class="pgbusca-modal" role="dialog" aria-labelledby="pgbusca-modal-title" aria-modal="true">
+        <button class="pgbusca-modal-close" id="pgbusca-modal-close" aria-label="Fechar modal">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+
+        <div class="pgbusca-modal-header">
+            <h2 id="pgbusca-modal-title">O que você não encontrou?</h2>
+            <p class="pgbusca-modal-subtitle">Descreva no campo a seguir o que você procurou e não encontrou no nosso site.</p>
+        </div>
+
+        <div class="pgbusca-modal-body">
+            <form id="pgbusca-feedback-form" class="pgbusca-feedback-form">
+                <div class="pgbusca-form-group">
+                    <textarea 
+                        id="pgbusca-feedback-textarea"
+                        name="feedback"
+                        class="pgbusca-feedback-textarea"
+                        placeholder="Digite sua descrição"
+                        maxlength="500"
+                        minlength="8"
+                        required
+                    ></textarea>
+                    <div class="pgbusca-textarea-counter">
+                        <span id="pgbusca-char-count">0</span>/500
+                    </div>
+                </div>
+
+                <div class="pgbusca-form-row">
+                    <div class="pgbusca-form-group">
+                        <label class="pgbusca-form-label" for="pgbusca-feedback-name">Nome</label>
+                        <input
+                            type="text"
+                            id="pgbusca-feedback-name"
+                            name="name"
+                            class="pgbusca-feedback-input"
+                            placeholder="Digite seu nome"
+                            maxlength="120"
+                        >
+                    </div>
+
+                    <div class="pgbusca-form-group">
+                        <label class="pgbusca-form-label" for="pgbusca-feedback-email">E-mail <span aria-hidden="true">*</span></label>
+                        <input
+                            type="email"
+                            id="pgbusca-feedback-email"
+                            name="email"
+                            class="pgbusca-feedback-input"
+                            placeholder="Digite seu e-mail"
+                            maxlength="160"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;">
+                    <label for="pgbusca-feedback-website">Site</label>
+                    <input type="text" id="pgbusca-feedback-website" name="website" tabindex="-1" autocomplete="off">
+                </div>
+
+                <div class="pgbusca-form-actions">
+                    <button type="submit" class="pgbusca-btn-enviar" aria-label="Enviar feedback">
+                        Enviar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Sucesso -->
+<div class="pgbusca-modal-overlay" id="pgbusca-success-overlay" aria-hidden="true" style="display:none;">
+    <div class="pgbusca-modal pgbusca-modal-success" role="dialog" aria-labelledby="pgbusca-success-title" aria-modal="true">
+        <div class="pgbusca-modal-header pgbusca-modal-header-success">
+            <button class="pgbusca-modal-close" id="pgbusca-success-close" aria-label="Fechar modal">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+
+        <div class="pgbusca-modal-body pgbusca-modal-body-success">
+            <div class="pgbusca-success-icon">
+                <span class="material-symbols-outlined">check_circle</span>
+            </div>
+
+            <h2 id="pgbusca-success-title" class="pgbusca-success-title">Recebemos sua mensagem!</h2>
+
+            <p class="pgbusca-success-text">Sua sugestão nos ajuda a tornar o ce.gov.br ainda melhor, e vamos usá-la para aprimorar nossos serviços.</p>
+
+            <button type="button" class="pgbusca-btn-entendi" id="pgbusca-btn-entendi" aria-label="Fechar modal de sucesso">
+                Entendi
+            </button>
+        </div>
+    </div>
+</div>
+
+    <script type="text/javascript">
+        var cegovbrFeedback = {
+            ajaxurl: 'https://www.ce.gov.br/saude/wp-admin/admin-ajax.php',
+            nonce: '5fbeb5a600'
+        };
+    </script>
+    <div id="cegovbr-cookie-consent" class="cegovbr-cookie-consent" aria-live="polite" hidden>
+    <div class="cegovbr-cookie-consent__inner">
+        <div class="cegovbr-cookie-consent__textwrap">
+            <span class="cegovbr-cookie-icon-wrap" aria-hidden="true"><span
+                    class="material-symbols-outlined cegovbr-cookie-icon">cookie</span></span>
+            <p class="cegovbr-cookie-consent__text">Este site utiliza cookies para melhorar sua experiência e coletar
+                estatísticas de uso. Ao continuar navegando, você concorda com nossa <a href="/termos-de-uso-e-aviso-de-privacidade"
+                    class="cegovbr-cookie-consent__link">Política de Privacidade →</a>.</p>
+        </div>
+        <div class="cegovbr-cookie-consent__actions">
+            <button id="cegovbr-cookie-accept" class="cegovbr-cookie-accept">Entendi</button>
+        </div>
+    </div>
+</div><script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/saude/*"},{"not":{"href_matches":["/saude/wp-*.php","/saude/wp-admin/*","/saude/wp-content/uploads/sites/64/*","/saude/wp-content/*","/saude/wp-content/plugins/*","/saude/wp-content/themes/cegovbr/*","/saude/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="bootstrap-js-js" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js?ver=5.3.7"></script>
+<script id="swiper-js-js" src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js?ver=11.0.0"></script>
+<script id="lazy-assets-loader-js" src="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/js/lazy-assets-loader.js?ver=1790796760"></script>
+<script id="cegov-abas-verticais-js" src="https://www.ce.gov.br/saude/wp-content/plugins/cegovbr-abas-verticais/assets/js/abas-verticais.js?ver=1790796765"></script>
+<script id="acesso-cidadao-oauth2-js-extra">
+var acOAuth2Config = {"appName":"Portal Governo Cear\u00e1","appVersion":"1.0.0","appKey":"","loginUrl":"https://acessocidadao-h.ce.gov.br/auth","apiBaseUrl":"https://api-h.acessocidadao.ce.gov.br","ajaxUrl":"https://www.ce.gov.br/saude/wp-admin/admin-ajax.php","nonce":"baef7f1ae3","isLoggedIn":""};
+//# sourceURL=acesso-cidadao-oauth2-js-extra
+</script>
+<script id="acesso-cidadao-oauth2-js" src="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/js/acesso-cidadao-oauth2.js?ver=1.0.0"></script>
+<script id="cegovbr-destaques-carousel-js" src="https://www.ce.gov.br/saude/wp-content/plugins/blocos-cegovbr/assets/js/destaques.js?ver=1790796765"></script>
+<script id="cegovbr-agenda-tooltip-js" src="https://www.ce.gov.br/saude/wp-content/plugins/cegovbr-agenda/assets/js/cegovbr-agenda-tooltip.js?ver=1.0"></script>
+<script id="cegovbr-accessibility-js-js-extra">
+var CEGOVBR_ACCESSIBILITY_OPTIONS = {"minScale":"0.9","maxScale":"1.1","step":"0.05","contrastClass":"cegovbr-contrast","storage":{"scale":"cegovbr_font_scale","contrast":"cegovbr_contrast"},"selectors":{"decrease":".menu-accessibility__link--decrease","increase":".menu-accessibility__link--increase","reset":".menu-accessibility__link--normal","contrast":"#site-contrast"},"defaultScale":"1"};
+//# sourceURL=cegovbr-accessibility-js-js-extra
+</script>
+<script id="cegovbr-accessibility-js-js" src="https://www.ce.gov.br/saude/wp-content/plugins/cegovbr-funcoes-acessibilidade/assets/js/accessibility.js?ver=1790796766"></script>
+<script id="nc_modal_js-js" src="https://www.ce.gov.br/saude/wp-content/plugins/cegovbr-nucleo-comunicacao/inc/modal.js?ver=1790796766"></script>
+<script id="cegovbr-organograma-custom-select-arrow-js" src="https://www.ce.gov.br/saude/wp-content/plugins/cegovbr-organograma-estadual/assets/js/custom-select-arrow.js?ver=1.0.0"></script>
+<script id="wp-hooks-js" src="https://www.ce.gov.br/saude/wp-includes/js/dist/hooks.min.js?ver=f0f188028580e8dc1255"></script>
+<script id="wp-i18n-js" src="https://www.ce.gov.br/saude/wp-includes/js/dist/i18n.min.js?ver=1dfe7db3940c23ea9216"></script>
+<script id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+//# sourceURL=wp-i18n-js-after
+</script>
+<script id="swv-js" src="https://www.ce.gov.br/saude/wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=6.1.7"></script>
+<script id="contact-form-7-js-translations">
+( function( domain, translations ) {
+	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+	localeData[""].domain = domain;
+	wp.i18n.setLocaleData( localeData, domain );
+} )( "contact-form-7", {"translation-revision-date":"2025-05-19 13:41:20+0000","generator":"GlotPress\/4.0.3","domain":"messages","locale_data":{"messages":{"":{"domain":"messages","plural-forms":"nplurals=2; plural=n > 1;","lang":"pt_BR"},"Error:":["Erro:"]}},"comment":{"reference":"includes\/js\/index.js"}} );
+//# sourceURL=contact-form-7-js-translations
+</script>
+<script id="contact-form-7-js-before">
+var wpcf7 = {
+    "api": {
+        "root": "https:\/\/www.ce.gov.br\/saude\/wp-json\/",
+        "namespace": "contact-form-7\/v1"
+    }
+};
+//# sourceURL=contact-form-7-js-before
+</script>
+<script id="contact-form-7-js" src="https://www.ce.gov.br/saude/wp-content/plugins/contact-form-7/includes/js/index.js?ver=6.1.7"></script>
+<script id="cegovbr-header-notification-js" src="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/js/header-notification.js"></script>
+<script id="cegovbr-cookie-consent-js" src="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/js/cookie-consent.js?ver=1790796760"></script>
+<script id="contaclique-js" src="https://www.ce.gov.br/saude/wp-content/plugins/conta-clique/contador.php?post-id=28&#038;ver=9505"></script>
+<script id="thickbox-js-extra">
+var thickboxL10n = {"next":"Pr\u00f3ximo \u00bb","prev":"\u00ab Anterior","image":"Imagem","of":"de","close":"Fechar","noiframes":"Este recurso necessita frames embutidos. Voc\u00ea desativou iframes ou seu navegador n\u00e3o os suporta.","loadingAnimation":"https://www.ce.gov.br/saude/wp-includes/js/thickbox/loadingAnimation.gif"};
+//# sourceURL=thickbox-js-extra
+</script>
+<script id="thickbox-js" src="https://www.ce.gov.br/saude/wp-includes/js/thickbox/thickbox.js?ver=3.1-20121105"></script>
+<script id="slick_js-js" src="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/js/slick.min.js?1790796760&#038;ver=1790796760"></script>
+<script id="tippy-js" src="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/libs/tippy/tippy.all.min.js?1790796762&#038;ver=1790796762"></script>
+<script id="js-cookie-js" src="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/libs/js-cookie/js.cookie.min.js?1790796762&#038;ver=1790796762"></script>
+<script id="scripts_js-js" src="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/js/scripts.js?1790796760&#038;ver=1790796760"></script>
+<script id="mobile-menu-js" src="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/js/mobile-menu.js?1790796760&#038;ver=1790796760"></script>
+<script id="accessibility-js" src="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/js/accessibility.js?1790796760&#038;ver=1790796760"></script>
+<script id="header-search-voice-js" src="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/js/header-search-voice.js?1790796760&#038;ver=1790796760"></script>
+<script id="header-search-suggestions-js" src="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/js/header-search-suggestions.js?1790796760&#038;ver=1790796760"></script>
+<script id="aside-delay-js" src="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/js/aside-delay.js?1790796760&#038;ver=1790796760"></script>
+<script id="selection-toolbar-js" src="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/js/selection-toolbar.js?1790796760&#038;ver=1790796760"></script>
+<script id="home-news-js-js" src="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/js/home-news.js?ver=1790796760"></script>
+<script id="cegovbr-home-featured-services-js" src="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/js/home-featured-services.js?ver=1790796761"></script>
+<script id="cegovbr-home-slider-js" src="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/js/home-slider.js?ver=1790796761"></script>
+<script id="most-read-js-js" src="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/js/most-read.js?ver=1790796760"></script>
+<script id="home-most-read-js-js" src="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/js/home-most-read.js?ver=1790796760"></script>
+<script id="services-highlighted-script-js" src="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/js/services-highlighted.js?ver=1790796760"></script>
+<script id="cegovbr-home-for-you-anim-js" src="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/js/home-for-you-anim.js?ver=1790796760"></script>
+<script id="services-banner-onde-encontrar-js-js-extra">
+var cegovbr_banner_data = {"palavras":["hospitais?","cl\u00ednicas?","Hemoce?","leite materno?"]};
+//# sourceURL=services-banner-onde-encontrar-js-js-extra
+</script>
+<script id="services-banner-onde-encontrar-js-js" src="https://www.ce.gov.br/saude/wp-content/themes/cegovbr/assets/js/services-banner-onde-encontrar.js?ver=1790796760"></script>
+<script id="gt_widget_script_71358002-js-before">
+window.gtranslateSettings = /* document.write */ window.gtranslateSettings || {};window.gtranslateSettings['71358002'] = {"default_language":"pt","languages":["pt","en","es"],"url_structure":"none","flag_style":"2d","flag_size":24,"wrapper_selector":"#gt-wrapper-71358002","alt_flags":{"en":"usa","pt":"brazil"},"horizontal_position":"inline","flags_location":"\/saude\/wp-content\/plugins\/gtranslate\/flags\/"};
+//# sourceURL=gt_widget_script_71358002-js-before
+</script><script src="https://www.ce.gov.br/saude/wp-content/plugins/gtranslate/js/fc.js?ver=5.0.1" data-no-optimize="1" data-no-minify="1" data-gt-orig-url="/saude/" data-gt-orig-domain="www.ce.gov.br" data-gt-widget-id="71358002" defer></script><script id="gt_widget_script_56507183-js-before">
+window.gtranslateSettings = /* document.write */ window.gtranslateSettings || {};window.gtranslateSettings['56507183'] = {"default_language":"pt","languages":["pt","en","es"],"url_structure":"none","flag_style":"2d","flag_size":24,"wrapper_selector":"#gt-wrapper-56507183","alt_flags":{"en":"usa","pt":"brazil"},"horizontal_position":"inline","flags_location":"\/saude\/wp-content\/plugins\/gtranslate\/flags\/"};
+//# sourceURL=gt_widget_script_56507183-js-before
+</script><script src="https://www.ce.gov.br/saude/wp-content/plugins/gtranslate/js/fc.js?ver=5.0.1" data-no-optimize="1" data-no-minify="1" data-gt-orig-url="/saude/" data-gt-orig-domain="www.ce.gov.br" data-gt-widget-id="56507183" defer></script><script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://www.ce.gov.br/saude/wp-includes/js/wp-emoji-release.min.js?ver=7.1.2"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof HTMLScriptElement))throw new Error("Element missing: "+e);const r=JSON.parse(t.text),s=(window._wpemojiSettings=r,"wpEmojiSettingsSupports"),o=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(s,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const r=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===r[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,r){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!r(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,r){let a;const s=(a="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),o=(s.textBaseline="top",s.font="600 32px Arial",{});return e.forEach(e=>{o[e]=t(s,e,n,r)}),o}function a(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}r.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(s));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(o),u.toString(),c.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"});const a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=e=>{i(n=e.data),a.terminate(),t(n)})}catch(e){}i(n=f(o,u,c,p))}t(n)}).then(e=>{for(const n in e)r.supports[n]=e[n],r.supports.everything=r.supports.everything&&r.supports[n],"flag"!==n&&(r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&r.supports[n]);var t;r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&!r.supports.flag,r.supports.everything||((t=r.source||{}).concatemoji?a(t.concatemoji):t.wpemoji&&t.twemoji&&(a(t.twemoji),a(t.wpemoji)))});
+//# sourceURL=https://www.ce.gov.br/saude/wp-includes/js/wp-emoji-loader.min.js
+</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var logosFooter = document.querySelectorAll('img.logo-footer');
+            var brasaoUrl = "https:\/\/www.ce.gov.br\/saude\/wp-content\/themes\/cegovbr\/assets\/images\/brasao%201.png";
+            var brasaoAlt = "Bras\u00e3o do Governo do Estado do Cear\u00e1";
+
+            logosFooter.forEach(function (logo) {
+                logo.setAttribute('src', brasaoUrl);
+                logo.setAttribute('alt', brasaoAlt);
+                logo.removeAttribute('srcset');
+                logo.removeAttribute('sizes');
+            });
+        });
+    </script>
+    
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                new Swiper(".acessoSwiper", {
+                    slidesPerView: 1.5,
+                    spaceBetween: 16,
+                    breakpoints: {
+                        576: {
+                            slidesPerView: 2.5
+                        },
+                        768: {
+                            slidesPerView: 3
+                        },
+                        992: {
+                            slidesPerView: 4
+                        }
+                    },
+                    navigation: {
+                        nextEl: ".acesso.swiper-button-next-custom",
+                        prevEl: ".acesso.swiper-button-prev-custom",
+                    }
+                });
+            });
+        </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const toggleBtn = document.getElementById("cc-toggle-aside");
+                const aside = document.querySelector("aside");
+                let tooltipInstances = [];
+
+                // Função para definir cookie
+                function setCookie(name, value, days) {
+                    const date = new Date();
+                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                    document.cookie = `${name}=${value};expires=${date.toUTCString()};path=/`;
+                }
+
+                // Função para obter cookie
+                function getCookie(name) {
+                    const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
+                    return match ? match[2] : null;
+                }
+
+                // Função para ativar tooltips
+                function enableTooltips() {
+                    const triggersAside = document.querySelectorAll('aside [data-bs-toggle="tooltip"]');
+                    tooltipInstances = [...triggersAside].map(el => new bootstrap.Tooltip(el));
+                }
+
+                // Função para desativar tooltips
+                function disableTooltips() {
+                    tooltipInstances.forEach(instance => instance.dispose());
+                    tooltipInstances = [];
+                }
+
+                // Estado inicial: sempre aberto ao carregar a página
+                aside.classList.remove("toggled");
+                disableTooltips();
+
+                // Ao clicar, alterna o estado e salva no cookie
+                toggleBtn.addEventListener("click", function() {
+                    aside.classList.toggle("toggled");
+
+                    if (aside.classList.contains("toggled")) {
+                        enableTooltips();
+                        setCookie("asideState", "toggled", 30);
+                    } else {
+                        disableTooltips();
+                        setCookie("asideState", "not-toggled", 30);
+                    }
+                });
+
+                // Posiciona submenus com position:fixed quando o aside está fechado (toggled)
+                document.addEventListener('show.bs.collapse', function(e) {
+                    var submenu = e.target;
+                    if (!submenu.classList.contains('cc-mais-sites')) return;
+
+                    if (aside.classList.contains('toggled')) {
+                        // aside fechado: abre à direita via position:fixed (CSS) — ajusta top
+                        var trigger = document.querySelector('[data-bs-target="#' + CSS.escape(submenu.id) + '"]');
+                        if (!trigger) return;
+                        var rect = trigger.getBoundingClientRect();
+                        submenu.style.top = rect.top + 'px';
+                    } else if (submenu.id === 'cc-gtranslate-target') {
+                        // aside aberto: acompanha a expansão do Bootstrap quadro a quadro via rAF
+                        // e rola o container para manter o fundo do submenu visível em tempo real
+                        var scrollContainer = aside.querySelector('.position-sticky.h-75');
+                        if (!scrollContainer) return;
+                        scrollContainer.dataset.savedScroll = scrollContainer.scrollTop;
+                        var expanded = false;
+                        submenu.addEventListener('shown.bs.collapse', function onShown() {
+                            submenu.removeEventListener('shown.bs.collapse', onShown);
+                            expanded = true;
+                        });
+                        (function trackExpand() {
+                            if (expanded) return;
+                            var cBottom = scrollContainer.getBoundingClientRect().bottom;
+                            var sBottom = submenu.getBoundingClientRect().bottom;
+                            if (sBottom > cBottom) {
+                                scrollContainer.scrollTop += sBottom - cBottom;
+                            }
+                            requestAnimationFrame(trackExpand);
+                        })();
+                    }
+                });
+
+                // Limpa estilos inline ao fechar e restaura posição de scroll do gtranslate
+                document.addEventListener('hide.bs.collapse', function(e) {
+                    if (!e.target.classList.contains('cc-mais-sites')) return;
+                    e.target.style.top = '';
+                    if (!aside.classList.contains('toggled') && e.target.id === 'cc-gtranslate-target') {
+                        var scrollContainer = aside.querySelector('.position-sticky.h-75');
+                        if (scrollContainer && scrollContainer.dataset.savedScroll !== undefined) {
+                            scrollContainer.scrollTo({ top: parseInt(scrollContainer.dataset.savedScroll, 10), behavior: 'smooth' });
+                            delete scrollContainer.dataset.savedScroll;
+                        }
+                    }
+                });
+            });
+        </script>
+
+        <!-- gtranslate swapflags -->
+                <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var FLAG_BASE = "https://www.ce.gov.br/saude/wp-content/themes/cegovbr/images/flags";
+
+                // Mapa para sincronizar o seu botão/header
+                var uiMap = {
+                    "pt": {
+                        label: "PT-BR",
+                        flag: FLAG_BASE + "/pt-br.svg",
+                        name: "Português"
+                    },
+                    "pt-br": {
+                        label: "PT-BR",
+                        flag: FLAG_BASE + "/pt-br.svg",
+                        name: "Português"
+                    },
+                    "en": {
+                        label: "EN",
+                        flag: FLAG_BASE + "/en.svg",
+                        name: "Inglês"
+                    },
+                    "en-us": {
+                        label: "EN",
+                        flag: FLAG_BASE + "/en.svg",
+                        name: "Inglês"
+                    },
+                    "es": {
+                        label: "ES",
+                        flag: FLAG_BASE + "/es.svg",
+                        name: "Espanhol"
+                    }
+                };
+
+                // Mapa para substituir as flags dentro do shortcode
+                var replaceFlagMap = {
+                    "pt": FLAG_BASE + "/pt-br.svg",
+                    "pt-br": FLAG_BASE + "/pt-br.svg",
+                    "en": FLAG_BASE + "/en.svg",
+                    "en-us": FLAG_BASE + "/en.svg",
+                    "es": FLAG_BASE + "/es.svg"
+                };
+
+                // Mapa para trocar os labels dos anchors do shortcode (PT -> PT-BR)
+                var replaceLabelMap = {
+                    "pt": "PT-BR",
+                    "pt-br": "PT-BR",
+                    "en": "EN",
+                    "en-us": "EN",
+                    "es": "ES"
+                };
+
+                function norm(code) {
+                    return (code || "").toLowerCase();
+                }
+
+                function normalizeGTranslateMarkup(ctx) {
+                    var scope = ctx || document;
+                    var wrappers = scope.querySelectorAll(".gtranslate_wrapper");
+
+                    wrappers.forEach(function(wrapper) {
+                        var firstByLang = new Map();
+                        var anchors = Array.from(wrapper.querySelectorAll("a.glink[data-gt-lang]"));
+
+                        anchors.forEach(function(anchor) {
+                            var lang = norm(anchor.getAttribute("data-gt-lang"));
+                            if (!lang) return;
+
+                            if (!firstByLang.has(lang)) {
+                                firstByLang.set(lang, anchor);
+                                return;
+                            }
+
+                            var primary = firstByLang.get(lang);
+                            if (!primary || primary === anchor) return;
+
+                            if (!primary.querySelector("img")) {
+                                var imgFromDuplicate = anchor.querySelector("img");
+                                if (imgFromDuplicate) {
+                                    primary.insertBefore(imgFromDuplicate.cloneNode(true), primary.firstChild);
+                                }
+                            }
+
+                            if (!primary.querySelector("span")) {
+                                var spanFromDuplicate = anchor.querySelector("span");
+                                if (spanFromDuplicate) {
+                                    primary.appendChild(spanFromDuplicate.cloneNode(true));
+                                }
+                            }
+
+                            var hasPrimaryText = (primary.textContent || "").trim().length > 0;
+                            var duplicateText = (anchor.textContent || "").trim();
+                            if (!hasPrimaryText && duplicateText) {
+                                primary.appendChild(document.createTextNode(" " + duplicateText));
+                            }
+
+                            anchor.remove();
+                        });
+                    });
+
+                    var duplicateTranslateIds = document.querySelectorAll("#google_translate_element2");
+                    duplicateTranslateIds.forEach(function(el, index) {
+                        if (index > 0) {
+                            el.id = "google_translate_element2_" + index;
+                        }
+                    });
+                }
+
+                // Atualiza o tooltip do botão (Bootstrap 5)
+                function updateTooltipTitle(newTitle) {
+                    var tipEl = document.querySelector('#cc-gtranslate [data-bs-toggle="tooltip"]');
+                    if (!tipEl) return;
+                    tipEl.setAttribute('data-bs-title', newTitle);
+                    tipEl.setAttribute('title', newTitle);
+                    if (typeof bootstrap !== 'undefined' && bootstrap.Tooltip) {
+                        var instance = bootstrap.Tooltip.getInstance(tipEl);
+                        if (instance && typeof instance.setContent === 'function') {
+                            instance.setContent({
+                                '.tooltip-inner': newTitle
+                            });
+                        } else {
+                            if (instance) instance.dispose();
+                            new bootstrap.Tooltip(tipEl);
+                        }
+                    }
+                }
+
+                // Sincroniza UI do botão/header
+                function setUI(langCode) {
+                    var info = uiMap[norm(langCode)];
+                    if (!info) return;
+                    var img = document.getElementById("cc-lang-flag");
+                    var label = document.getElementById("cc-lang-label");
+                    var header = document.getElementById("cc-lang-header");
+                    if (img) {
+                        img.src = info.flag;
+                        img.alt = "Idioma " + info.label;
+                    }
+                    if (label) {
+                        label.textContent = info.label;
+                    }
+                    var toggle = document.getElementById("cc-gtranslate-toggle");
+                    if (toggle) {
+                        toggle.removeAttribute("aria-label");
+                        toggle.setAttribute("title", "Alterar idioma (atual: " + info.name + ")");
+                    }
+                    if (header) {
+                        header.textContent = info.label;
+                    }
+                    updateTooltipTitle(info.label);
+                }
+
+                // Substitui flags e labels dentro do shortcode
+                function swapFlagsAndLabels(ctx) {
+                    normalizeGTranslateMarkup(ctx);
+                    var anchors = (ctx || document).querySelectorAll(".gtranslate_wrapper a.glink[data-gt-lang]");
+                    anchors.forEach(function(a) {
+                        var code = norm(a.getAttribute("data-gt-lang"));
+                        var img = a.querySelector("img");
+                        var txt = a.querySelector("span");
+
+                        var newFlag = replaceFlagMap[code];
+                        var newLabel = replaceLabelMap[code];
+
+                        if (code) {
+                            a.setAttribute("href", "#googtrans-" + code);
+                        }
+                        if (newLabel) {
+                            a.setAttribute("aria-label", "Selecionar idioma " + newLabel);
+                        }
+
+                        if (img && newFlag) {
+                            img.src = newFlag;
+                            img.removeAttribute("srcset");
+                            img.loading = "eager";
+                            img.width = 24;
+                            img.height = 16;
+                            img.alt = "";
+                            img.setAttribute("aria-hidden", "true");
+                        }
+                        if (txt && newLabel) {
+                            txt.textContent = newLabel;
+                        }
+                    });
+                }
+
+                // 1) Troca flags/labels já renderizadas
+                swapFlagsAndLabels();
+
+                // 2) Observa mudanças no wrapper (GTranslate pode re-renderizar)
+                var mo = new MutationObserver(function(muts) {
+                    var doSwap = false,
+                        gtLangChanged = false,
+                        currentLang = null;
+                    muts.forEach(function(m) {
+                        if (m.type === "childList" && (m.addedNodes && m.addedNodes.length)) {
+                            for (var i = 0; i < m.addedNodes.length; i++) {
+                                var n = m.addedNodes[i];
+                                if (n.nodeType === 1 && (n.matches?.(".gtranslate_wrapper") || n.querySelector?.(".gtranslate_wrapper"))) {
+                                    doSwap = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if (m.type === "attributes" && m.attributeName === "class" && m.target.matches?.(".gtranslate_wrapper a.glink[data-gt-lang]")) {
+                            if (m.target.classList.contains("gt-current-lang")) {
+                                gtLangChanged = true;
+                                currentLang = m.target.getAttribute("data-gt-lang");
+                            }
+                        }
+                    });
+                    if (doSwap) swapFlagsAndLabels();
+                    if (gtLangChanged && currentLang) setUI(currentLang);
+                });
+                mo.observe(document.body, {
+                    childList: true,
+                    subtree: true,
+                    attributes: true,
+                    attributeFilter: ["class"]
+                });
+
+                // 3) Clique nos itens do shortcode: atualiza UI e fecha o collapse
+                document.addEventListener("click", function(e) {
+                    var a = e.target.closest(".gtranslate_wrapper a.glink[data-gt-lang]");
+                    if (!a) return;
+                    var lang = a.getAttribute("data-gt-lang");
+                    // pequeno delay para o plugin marcar gt-current-lang e (se necessário) re-renderizar
+                    setTimeout(function() {
+                        setUI(lang);
+                        try {
+                            var el = document.getElementById("cc-gtranslate-target");
+                            if (el && typeof bootstrap !== "undefined" && bootstrap.Collapse) {
+                                var c = bootstrap.Collapse.getOrCreateInstance(el);
+                                c.hide();
+                            }
+                        } catch (_) {}
+                    }, 100);
+                });
+
+                // 4) Estado inicial: pega o que o GTranslate marcou como atual
+                var current = document.querySelector(".gtranslate_wrapper a.glink.gt-current-lang[data-gt-lang]");
+                if (current) {
+                    setUI(current.getAttribute("data-gt-lang"));
+                } else {
+                    setUI("pt");
+                }
+
+                // Garante que todos os ícones de material não sejam traduzidos
+                document.querySelectorAll(".material-icons, .material-symbols-outlined").forEach(function(el) {
+                    el.classList.add("notranslate");
+                });
+            });
+        </script>
+
+        <!-- Mobile GTranslate -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var FLAG_BASE = "https://www.ce.gov.br/saude/wp-content/themes/cegovbr/images/flags";
+
+                var uiMap = {
+                    "pt": { label: "PT-BR", flag: FLAG_BASE + "/pt-br.svg", name: "Português" },
+                    "pt-br": { label: "PT-BR", flag: FLAG_BASE + "/pt-br.svg", name: "Português" },
+                    "en": { label: "EN", flag: FLAG_BASE + "/en.svg", name: "Inglês" },
+                    "en-us": { label: "EN", flag: FLAG_BASE + "/en.svg", name: "Inglês" },
+                    "es": { label: "ES", flag: FLAG_BASE + "/es.svg", name: "Espanhol" }
+                };
+
+                var replaceFlagMap = {
+                    "pt": FLAG_BASE + "/pt-br.svg",
+                    "pt-br": FLAG_BASE + "/pt-br.svg",
+                    "en": FLAG_BASE + "/en.svg",
+                    "en-us": FLAG_BASE + "/en.svg",
+                    "es": FLAG_BASE + "/es.svg"
+                };
+
+                var replaceLabelMap = {
+                    "pt": "PT-BR",
+                    "pt-br": "PT-BR",
+                    "en": "EN",
+                    "en-us": "EN",
+                    "es": "ES"
+                };
+
+                function norm(code) { return (code || "").toLowerCase(); }
+
+                function normalizeGTranslateMarkupMobile(ctx) {
+                    var scope = ctx || document;
+                    var wrapper = scope.querySelector("#mobile-gtranslate-target .gtranslate_wrapper");
+                    if (!wrapper) return;
+
+                    var firstByLang = new Map();
+                    var anchors = Array.from(wrapper.querySelectorAll("a.glink[data-gt-lang]"));
+
+                    anchors.forEach(function(anchor) {
+                        var lang = norm(anchor.getAttribute("data-gt-lang"));
+                        if (!lang) return;
+
+                        if (!firstByLang.has(lang)) {
+                            firstByLang.set(lang, anchor);
+                            return;
+                        }
+
+                        var primary = firstByLang.get(lang);
+                        if (!primary || primary === anchor) return;
+
+                        if (!primary.querySelector("img")) {
+                            var imgFromDuplicate = anchor.querySelector("img");
+                            if (imgFromDuplicate) {
+                                primary.insertBefore(imgFromDuplicate.cloneNode(true), primary.firstChild);
+                            }
+                        }
+
+                        if (!primary.querySelector("span")) {
+                            var spanFromDuplicate = anchor.querySelector("span");
+                            if (spanFromDuplicate) {
+                                primary.appendChild(spanFromDuplicate.cloneNode(true));
+                            }
+                        }
+
+                        anchor.remove();
+                    });
+                }
+
+                function setUIMobile(langCode) {
+                    var info = uiMap[norm(langCode)];
+                    if (!info) return;
+                    var img = document.getElementById("mobile-lang-flag");
+                    var label = document.getElementById("mobile-lang-label");
+                    var header = document.getElementById("mobile-lang-header");
+                    if (img) {
+                        img.src = info.flag;
+                        img.alt = "Idioma " + info.label;
+                    }
+                    if (label) label.textContent = info.label;
+                    var toggle = document.getElementById("mobile-gtranslate-toggle");
+                    if (toggle) {
+                        toggle.setAttribute("aria-label", info.label + " keyboard_arrow_down");
+                        toggle.setAttribute("title", "Alterar idioma (atual: " + info.name + ")");
+                    }
+                    if (header) header.textContent = info.label;
+                }
+
+                function swapFlagsAndLabelsMobile(ctx) {
+                    normalizeGTranslateMarkupMobile(ctx);
+                    var anchors = (ctx || document).querySelectorAll("#mobile-gtranslate-target .gtranslate_wrapper a.glink[data-gt-lang]");
+                    anchors.forEach(function(a) {
+                        var code = norm(a.getAttribute("data-gt-lang"));
+                        var img = a.querySelector("img");
+                        var txt = a.querySelector("span");
+                        var newFlag = replaceFlagMap[code];
+                        var newLabel = replaceLabelMap[code];
+                        if (code) {
+                            a.setAttribute("href", "#googtrans-" + code);
+                        }
+                        if (newLabel) {
+                            a.setAttribute("aria-label", "Selecionar idioma " + newLabel);
+                        }
+                        if (img && newFlag) {
+                            img.src = newFlag;
+                            img.removeAttribute("srcset");
+                            img.loading = "eager";
+                            img.width = 24;
+                            img.height = 16;
+                            img.alt = "";
+                            img.setAttribute("aria-hidden", "true");
+                        }
+                        if (txt && newLabel) txt.textContent = newLabel;
+                    });
+                }
+
+                swapFlagsAndLabelsMobile();
+
+                var moMobile = new MutationObserver(function(muts) {
+                    var doSwap = false, gtLangChanged = false, currentLang = null;
+                    muts.forEach(function(m) {
+                        if (m.type === "childList" && m.addedNodes && m.addedNodes.length) {
+                            for (var i = 0; i < m.addedNodes.length; i++) {
+                                var n = m.addedNodes[i];
+                                if (n.nodeType === 1 && (n.matches?.(".gtranslate_wrapper") || n.querySelector?.(".gtranslate_wrapper"))) {
+                                    doSwap = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if (m.type === "attributes" && m.attributeName === "class" && m.target.matches?.("#mobile-gtranslate-target .gtranslate_wrapper a.glink[data-gt-lang]")) {
+                            if (m.target.classList.contains("gt-current-lang")) {
+                                gtLangChanged = true;
+                                currentLang = m.target.getAttribute("data-gt-lang");
+                            }
+                        }
+                    });
+                    if (doSwap) swapFlagsAndLabelsMobile();
+                    if (gtLangChanged && currentLang) setUIMobile(currentLang);
+                });
+                moMobile.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ["class"] });
+
+                document.addEventListener("click", function(e) {
+                    var a = e.target.closest("#mobile-gtranslate-target .gtranslate_wrapper a.glink[data-gt-lang]");
+                    if (!a) return;
+                    var lang = a.getAttribute("data-gt-lang");
+                    setTimeout(function() {
+                        setUIMobile(lang);
+                        try {
+                            var el = document.getElementById("mobile-gtranslate-target");
+                            if (el && typeof bootstrap !== "undefined" && bootstrap.Collapse) {
+                                var c = bootstrap.Collapse.getOrCreateInstance(el);
+                                c.hide();
+                            }
+                        } catch (_) {}
+                    }, 100);
+                });
+
+                var currentMobile = document.querySelector("#mobile-gtranslate-target .gtranslate_wrapper a.glink.gt-current-lang[data-gt-lang]");
+                if (currentMobile) {
+                    setUIMobile(currentMobile.getAttribute("data-gt-lang"));
+                } else {
+                    setUIMobile("pt");
+                }
+            });
+        </script>
+
+
+        
+        <!-- Botão flutuante Voltar ao Topo - Bootstrap 5 + Material Symbols -->
+<button id="backToTop" type="button" class="btn align-items-center justify-content-center"
+  aria-label="Voltar ao topo"
+  style="
+    position: fixed;
+    bottom: 1.875rem;
+    right: 0.625rem;
+    width: 3.75rem;
+    height: 3.75rem;
+    gap: 0.9375rem;
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+    box-shadow: 0 0 0.75rem 0 #00000040;
+    background: #1B7727;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.4s cubic-bezier(.4,0,.2,1), visibility 0.4s;
+  ">
+  <span class="material-symbols-outlined" style="font-size: 1.5rem; color: #FEFEFE; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
+    arrow_upward
+  </span>
+</button>
+
+<script>
+  const btn = document.getElementById('backToTop');
+  let visible = false;
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 200) {
+      if (!visible) {
+        btn.style.visibility = 'visible';
+        btn.style.pointerEvents = 'auto';
+        btn.style.opacity = '1';
+        visible = true;
+      }
+    } else {
+      if (visible) {
+        btn.style.opacity = '0';
+        btn.style.pointerEvents = 'none';
+        setTimeout(function(){
+          btn.style.visibility = 'hidden';
+        }, 400);
+        visible = false;
+      }
+    }
+  });
+  // Rola suavemente para o topo ao clicar
+  btn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+<style>
+  /* Exibe o botão também no mobile */
+</style>
+
+        <!-- VLibras Acessibilidade -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+
+
+
+</body>
+
+</html>

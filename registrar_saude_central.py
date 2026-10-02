@@ -49,7 +49,9 @@ DOCUMENTOS = [
      "data": "26/02/2026", "numero": None,
      "url": "https://www.saude.pa.gov.br/wp-content/uploads/2026/02/plano-emergencias-_26.02.pdf",
      "paginas": None,
-     "esperado": {"f1": None, "f2": None, "plano": "NOVO"},
+     # Decisão da central em 02/10/2026 (item 6.3): o plano não cita o El Niño nem o ciclo, é de
+     # 2026 e cobre o risco previsto para o Pará — degrau de plano revisado, 55.
+     "esperado": {"f1": None, "f2": None, "plano": "VIG_REVISADO"},
      "nota": "domínio oficial da SESPA; verificação humana da central, relido aqui"},
     {"uf": "MT", "doc": "Portaria nº 0195/2026/GBSES",
      "data": "01/01/2026", "numero": "0195/2026",
@@ -66,6 +68,10 @@ DOCUMENTOS = [
 ]
 
 
+# Os riscos do ciclo, pelo vocabulário dos boletins: um plano que os cobre vale o degrau de plano
+# revisado, mesmo sem citar o fenômeno pelo nome.
+RE_RISCO_DO_CICLO = re.compile(
+    r"(estiagem|seca|incêndio|incêndio|fogo|onda de calor|temperatura[s]? extrema|chuva[s]? intensa|enxurrada|inundaç)", re.I)
 RE_PLANO_A_ELABORAR = re.compile(
     r"(elaborar|propor|elaboração|construir|construção)\b[^.;]{0,80}?\bPlano", re.I)
 RE_CABECALHO_DE_ATO = re.compile(r"(?:Portaria|Resolução|Decreto)\s*n?º?\s*[\d.]+", re.I)
@@ -144,10 +150,20 @@ def status_do_plano(doc: str, data: str, texto: str):
     from julgar_saude import RE_PLANO
     nome = (doc or "").strip().lower()
     if nome.startswith("plano"):
-        o, b = _data_ordinal(data or ""), _data_ordinal(BOLETIM_1)
+        # Decisão da central (02/10/2026, item 6.3): o plano que CITA o El Niño ou o ciclo é plano
+        # feito para o El Niño (100). O que não cita, mas é de 2026 e cobre o risco previsto para a
+        # unidade — seca, estiagem, fogo, calor, chuva extrema —, é plano de todo ano REVISADO em
+        # 2026, degrau VIG_REVISADO (55). A data anterior ao Boletim nº 1 não rebaixa um plano de
+        # 2026 que cobre o risco do ciclo: rebaixar por data seria medir o calendário, não o plano.
+        if re.search(r"El\s*Ni[ñn]o|2026\s*[/-]\s*2027", texto or "", re.I):
+            return "NOVO"
+        o = _data_ordinal(data or "")
+        ano = (data or "")[-4:]
+        if ano == "2026" and RE_RISCO_DO_CICLO.search(texto or ""):
+            return "VIG_REVISADO"
         if o is None:
             return "VIG"
-        return "NOVO" if o >= b else "VIG"
+        return "NOVO" if o >= _data_ordinal(BOLETIM_1) else "VIG"
     if not RE_PLANO.search(texto or ""):
         return None
     if RE_PLANO_A_ELABORAR.search(texto or ""):

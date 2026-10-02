@@ -270,86 +270,98 @@ function __init(){
 }
 // 15/09/2026 (MARÉ Saúde espelha o MARÉ Legal): "Como ler" em ficha popup; um cartão por estado (mesma anatomia da inicial:
 // micro-barra do índice no degradê único, segunda barra de resposta, face com plano · data · dengue na capital); clique abre o detalhe.
+const REG = {}, NOMES = {};
+// A ficha do estado: era aninhada em `cartoesEstadosSaude`, e o item 7 reescreveu aquela
+// função para usar o componente compartilhado. Ela passa a ser função irmã — o clique do
+// cartão a chama pelo nome, e o componente não precisa saber o que ela faz.
+// O vocabulário do degrau do instrumento, em linguagem de leitor, no nível do módulo: a ficha e o
+// cartão leem a mesma tabela.
+const ST_H = {NOVO: 'plano do ciclo', READ: 'readaptado', VIG_REVISADO: 'plano revisado em 2026',
+              VIG: 'plano de todo ano', ELAB: 'em elaboração', LAC: 'não localizado',
+              NAO_VERIFICADO: 'ainda não verificado'};
+
+
+function abrirDetalheSaude(uf){
+  /* A ficha busca o que precisa: ela deixou de viver dentro da função que montava a grade, e por
+   * isso não herda mais o escopo daquela função. */
+  const M = (MSAUDE && MSAUDE.ufs) || {};
+  const RS = (MSAUDE && MSAUDE.resposta) || {ufs: []};
+  const m = M[uf] || {}; const i = m.instrumento || {}; const c = m.cobertura || {}; const a = m.antecipacao || {}; const dc = m.risco_atual || {}; const u = (SUF.uf || {})[uf] || {};
+  const linha = (k, v) => '<div class="field"><div class="k">' + k + '</div><div class="v">' + v + '</div></div>';
+  document.getElementById('detailSaudeConteudo').innerHTML = '<div class="uf-name">' + esc(NOMES[uf] || uf) + ' <span class="sub">(' + uf + ')</span></div>'
+    + (m.verificado ? '<div class="gauge-mini gauge-zone"><div class="gauge-head"><span class="gnum">' + String(m.prontidao).replace('.', ',') + '</span><span class="gden">/ 100 · ' + esc(m.faixa) + '</span></div><div class="gauge-track"><div class="gauge-fill" style="--galvo:' + Math.max(m.prontidao, 0.1) + '; width:' + m.prontidao + '%"></div></div></div>' : '<p class="placeholder">Ainda não verificado nesta camada: a bateria de busca de saúde não foi executada para o estado — não é ausência de documento.</p>')
+    + '<div class="uf-region">' + esc(REG[uf] || '') + '</div>'
+    + linha('Instrumento estadual de saúde', '<span class="pill-nivel">' + esc(ST_H[i.status] || i.status || 'ainda não verificado') + '</span> ' + esc(i.doc || u.doc || '—') + (i.data ? ' (' + esc(i.data) + ')' : '') + (i.orgao || u.orgao ? ' · ' + esc(i.orgao || u.orgao) : '') + (i.url ? ' · <a href="' + esc(i.url) + '" target="_blank" rel="noopener">fonte oficial →</a>' : ''))
+    /* Bloco B.3 do handover de 02/10/2026: a coordenação aparece em DUAS linhas, em linguagem
+     * de leitor. O leitor não precisa saber que internamente são F1 e F2; precisa saber que
+     * são duas coisas diferentes, e qual documento sustenta cada uma. Função não procurada
+     * aparece como não verificada, nunca como ausência de estrutura. */
+    + (() => {
+        const co = u.coordenacao || {};
+        const descreve = (o, rotulo_vazio) => {
+          if (!o || !o.doc) return rotulo_vazio;
+          return '<span class="pill-nivel">' + esc(ST_COORD[o.status] || o.status || '—') + '</span> '
+            + esc(o.doc) + (o.data ? ' (' + esc(o.data) + ')' : '')
+            + (o.url ? ' · <a href="' + esc(o.url) + '" target="_blank" rel="noopener">fonte oficial →</a>' : '');
+        };
+        const f1 = co.f1 || (co.status ? co : null);
+        return linha('Coordenação na saúde', descreve(f1, 'ainda não verificada'))
+          + linha('Ligação com o governo do estado', descreve(co.f2, 'ainda não verificada'));
+      })()
+    /* O handover de 02/10/2026 tirou a palavra "antecipação" da ficha: ela é nome interno de
+     * componente, e o que o número mede é quando o ato saiu em relação ao primeiro boletim. */
+    + (m.verificado ? linha('Como o número é formado', 'documento estadual ' + esc(i.pontos)
+        + ' · cobertura sanitária ' + esc(c.pontos ?? '—') + ' (' + esc(c.planos_lidos ?? 0)
+        + ' plano(s) municipal(is) lido(s), ' + esc(c.planos_sem_leitura ?? 0) + ' sem leitura)'
+        + ' · quando o ato saiu em relação ao primeiro boletim ' + esc(a.pontos)
+        + ' → média ' + String(m.prontidao).replace('.', ',') + ' (pesos iguais)') : '')
+    + (m.camada === 'adaptacao' ? linha('Plano decenal de adaptação', 'registrado como estrutura; não pontua') : '')
+    + linha('Resposta sanitária', ((RS || {}).ufs || []).includes(uf) ? 'emergência sanitária declarada no ciclo' : 'nenhuma emergência sanitária declarada localizada desde 29/06/2026')
+    + linha('Risco sanitário projetado', (m.risco_projetado || []).length ? (m.risco_projetado || []).map(esc).join('; ') : 'sem registro')
+    + linha('Dengue na capital', dc.dengue_capital_nivel != null ? 'nível ' + esc(dc.dengue_capital_nivel) + ' (InfoDengue), ' + esc(dc.dengue_capital || '') + ', SE ' + esc(String(dc.dengue_se || '—')) : 'sem coleta')
+    + (u.data_verificacao ? '<p class="note">Bateria estadual executada em ' + esc(u.data_verificacao) + '.</p>' : '');
+  const dlg = document.getElementById('detailSaude');
+  if (!dlg) return;
+  dlg.setAttribute('aria-label', 'Detalhe do estado');
+  if (!dlg.open) { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.open = true; }
+}
+
 function cartoesEstadosSaude(){
-  const wrap = document.getElementById('regionsSaude'), dlg = document.getElementById('detailSaude'); if (!wrap || !dlg) return;
-  const M = (MSAUDE && MSAUDE.ufs) || {}; const REG = {}; const NOMES = {};
+  /* Item 7 do handover de 02/10/2026: os 27 estados no MESMO componente da inicial — o mapa de
+   * cartões, cada estado na sua posição geográfica, com sigla, nome, número e as duas barras. Antes
+   * eram colunas por região, com outro desenho: dois componentes para a mesma coisa divergem na
+   * primeira correção. A disposição, o teclado e o estilo vivem em assets/js/grade-estados.js.
+   */
+  const wrap = document.getElementById('regionsSaude'), dlg = document.getElementById('detailSaude');
+  if (!wrap || !dlg || !window.GradeEstados) return;
+  const M = (MSAUDE && MSAUDE.ufs) || {};
+  const RS = (MSAUDE && MSAUDE.resposta) || {ufs: []};
+  const ST_H = {NOVO: 'plano do ciclo', READ: 'readaptado', VIG_REVISADO: 'plano revisado em 2026',
+                VIG: 'plano de todo ano', ELAB: 'em elaboração', LAC: 'não localizado',
+                NAO_VERIFICADO: 'ainda não verificado'};
   fetch('data/estados.json').then(r => r.ok ? r.json() : null).then(E => {
-    const regions = (E && E.regions) || ['Norte','Nordeste','Centro-Oeste','Sudeste','Sul']; (E && E.ufs || []).forEach(u => { REG[u.uf] = u.regiao; NOMES[u.uf] = u.nome; });
-    const ST_H = {NOVO:'plano do ciclo', READ:'readaptado', VIG:'plano de todo ano', ELAB:'em elaboração', LAC:'não localizado', NAO_VERIFICADO:'ainda não verificado'};
-    const RS = (MSAUDE && MSAUDE.resposta) || {ufs: []};
-    wrap.innerHTML = regions.map(r => '<div class="region-col"><h3>' + esc(r) + '</h3><div class="tiles" id="tilesSaude-' + esc(r) + '"></div></div>').join('');
-    UFS.filter(uf => REG[uf]).forEach(uf => {
-      const m = M[uf] || {}; const i = m.instrumento || {}; const dc = m.risco_atual || {}; const v = m.verificado ? m.prontidao : null;
-      const resp = (RS.ufs || []).includes(uf) ? 100 : 0;
-      const t = document.createElement('div'); t.className = 'tile'; t.dataset.uf = uf; t.style.background = MonitorMapas.cor('branco'); t.style.color = 'var(--ink)';
-      t.title = uf + ' · MARÉ Saúde ' + (v == null ? 'sem número (não verificado)' : String(v).replace('.', ',') + ' / 100');
-      t.innerHTML = '<span class="tile-uf">' + uf + '</span>' + (v == null ? '<span class="tile-score">·</span>' : '<span class="tile-score">' + String(v).replace('.', ',') + '</span><div class="tile-bar"><div class="tile-fill" style="--galvo:' + Math.max(v, 0.1) + '; width:' + v + '%"></div></div>')
-        + '<div class="tile-bar tile-bar--resposta" title="Resposta sanitária ' + resp + ' / 100"><div class="tile-fill tile-fill--resposta" style="--galvo:' + Math.max(resp, 0.1) + '; width:' + resp + '%"></div></div>'
-        + '<div class="tile-face"><span>' + esc(ST_H[i.status] || i.status || 'ainda não verificado') + (i.data ? ' · ' + esc(i.data) : '') + '</span><span>' + (m.camada === 'adaptacao' ? 'plano decenal: estrutura' : 'cobertura sanitária ' + esc((m.cobertura || {}).pontos ?? '—')) + '</span><span>' + (dc.dengue_capital_nivel != null ? 'dengue na capital: nível ' + esc(dc.dengue_capital_nivel) : 'dengue na capital: sem coleta') + '</span></div>';
-      // 26/09/2026: a linha do estado abre o detalhe e sempre foi uma caixa genérica com ouvinte de clique —
-      // sem papel e sem índice de tabulação, quem navega por teclado não alcançava nenhum estado. O
-      // defeito é anterior à troca de cartão por linha; a troca só o deixou visível. `role` e `tabindex`
-      // tornam o alvo alcançável, Enter e Espaço o acionam como qualquer botão, e o rótulo vem do
-      // mesmo texto do title, para o leitor de tela não ouvir a linha inteira campo a campo.
-      t.setAttribute('role', 'button');
-      t.tabIndex = 0;
-      t.setAttribute('aria-label', 'Detalhe de ' + t.title);
-      t.addEventListener('click', () => abrirDetalheSaude(uf));
-      t.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); t.click(); } });
-      const col = document.getElementById('tilesSaude-' + REG[uf]); if (col) col.appendChild(t);
+    const lista = ((E && E.ufs) || []).map(u => ({uf: u.uf, nome: u.nome, status: u.status}));
+    (E && E.ufs || []).forEach(u => { NOMES[u.uf] = u.nome; REG[u.uf] = u.regiao; });
+    GradeEstados.montar({
+      alvo: wrap, ufs: lista, rotulo: 'MARÉ Saúde',
+      indice: uf => { const m = M[uf] || {}; return m.verificado ? m.prontidao : null; },
+      /* A barra de baixo é a mesma da inicial: resposta 0–100. Em saúde, a resposta registrada é a
+       * emergência em saúde pública declarada no ciclo — e onde não houve declaração o valor é
+       * ZERO medido, não ausência. */
+      resposta: uf => ((RS.ufs || []).includes(uf) ? 100 : 0),
+      extra: uf => {
+        const m = M[uf] || {}; const i = m.instrumento || {}; const dc = m.risco_atual || {};
+        return '<div class="tile-face"><span>'
+          + esc(ST_H[i.status] || i.status || 'ainda não verificado')
+          + (i.data ? ' · ' + esc(i.data) : '') + '</span><span>'
+          + (m.camada === 'adaptacao' ? 'plano decenal: estrutura'
+             : 'cobertura sanitária ' + esc((m.cobertura || {}).pontos ?? '—'))
+          + '</span></div>';
+      },
+      aoClicar: uf => abrirDetalheSaude(uf),
     });
-    /* Os degraus das duas funções da coordenação, em linguagem de leitor (METODOLOGIA §91.3). */
-    const ST_COORD = {
-      CRIADO_CICLO: 'criada para o ciclo',
-      REATIVADO_CICLO: 'reativada para o ciclo',
-      PERMANENTE: 'estrutura permanente',
-      ANUNCIADO: 'anunciada, sem ato publicado',
-      NOMEADA_COM_ATRIBUICAO: 'secretaria de saúde nomeada, com atribuição',
-      LISTADA_SEM_ATRIBUICAO: 'secretaria de saúde listada, sem atribuição',
-      LAC: 'não localizada até o corte',
-    };
-    function abrirDetalheSaude(uf){
-      const m = M[uf] || {}; const i = m.instrumento || {}; const c = m.cobertura || {}; const a = m.antecipacao || {}; const dc = m.risco_atual || {}; const u = (SUF.uf || {})[uf] || {};
-      const linha = (k, v) => '<div class="field"><div class="k">' + k + '</div><div class="v">' + v + '</div></div>';
-      document.getElementById('detailSaudeConteudo').innerHTML = '<div class="uf-name">' + esc(NOMES[uf] || uf) + ' <span class="sub">(' + uf + ')</span></div>'
-        + (m.verificado ? '<div class="gauge-mini gauge-zone"><div class="gauge-head"><span class="gnum">' + String(m.prontidao).replace('.', ',') + '</span><span class="gden">/ 100 · ' + esc(m.faixa) + '</span></div><div class="gauge-track"><div class="gauge-fill" style="--galvo:' + Math.max(m.prontidao, 0.1) + '; width:' + m.prontidao + '%"></div></div></div>' : '<p class="placeholder">Ainda não verificado nesta camada: a bateria de busca de saúde não foi executada para o estado — não é ausência de documento.</p>')
-        + '<div class="uf-region">' + esc(REG[uf] || '') + '</div>'
-        + linha('Instrumento estadual de saúde', '<span class="pill-nivel">' + esc(ST_H[i.status] || i.status || 'ainda não verificado') + '</span> ' + esc(i.doc || u.doc || '—') + (i.data ? ' (' + esc(i.data) + ')' : '') + (i.orgao || u.orgao ? ' · ' + esc(i.orgao || u.orgao) : '') + (i.url ? ' · <a href="' + esc(i.url) + '" target="_blank" rel="noopener">fonte oficial →</a>' : ''))
-        /* Bloco B.3 do handover de 02/10/2026: a coordenação aparece em DUAS linhas, em linguagem
-         * de leitor. O leitor não precisa saber que internamente são F1 e F2; precisa saber que
-         * são duas coisas diferentes, e qual documento sustenta cada uma. Função não procurada
-         * aparece como não verificada, nunca como ausência de estrutura. */
-        + (() => {
-            const co = u.coordenacao || {};
-            const descreve = (o, rotulo_vazio) => {
-              if (!o || !o.doc) return rotulo_vazio;
-              return '<span class="pill-nivel">' + esc(ST_COORD[o.status] || o.status || '—') + '</span> '
-                + esc(o.doc) + (o.data ? ' (' + esc(o.data) + ')' : '')
-                + (o.url ? ' · <a href="' + esc(o.url) + '" target="_blank" rel="noopener">fonte oficial →</a>' : '');
-            };
-            const f1 = co.f1 || (co.status ? co : null);
-            return linha('Coordenação na saúde', descreve(f1, 'ainda não verificada'))
-              + linha('Ligação com o governo do estado', descreve(co.f2, 'ainda não verificada'));
-          })()
-        /* O handover de 02/10/2026 tirou a palavra "antecipação" da ficha: ela é nome interno de
-         * componente, e o que o número mede é quando o ato saiu em relação ao primeiro boletim. */
-        + (m.verificado ? linha('Como o número é formado', 'documento estadual ' + esc(i.pontos)
-            + ' · cobertura sanitária ' + esc(c.pontos ?? '—') + ' (' + esc(c.planos_lidos ?? 0)
-            + ' plano(s) municipal(is) lido(s), ' + esc(c.planos_sem_leitura ?? 0) + ' sem leitura)'
-            + ' · quando o ato saiu em relação ao primeiro boletim ' + esc(a.pontos)
-            + ' → média ' + String(m.prontidao).replace('.', ',') + ' (pesos iguais)') : '')
-        + (m.camada === 'adaptacao' ? linha('Plano decenal de adaptação', 'registrado como estrutura; não pontua') : '')
-        + linha('Resposta sanitária', ((MSAUDE.resposta || {}).ufs || []).includes(uf) ? 'emergência sanitária declarada no ciclo' : 'nenhuma emergência sanitária declarada localizada desde 29/06/2026')
-        + linha('Risco sanitário projetado', (m.risco_projetado || []).length ? (m.risco_projetado || []).map(esc).join('; ') : 'sem registro')
-        + linha('Dengue na capital', dc.dengue_capital_nivel != null ? 'nível ' + esc(dc.dengue_capital_nivel) + ' (InfoDengue), ' + esc(dc.dengue_capital || '') + ', SE ' + esc(String(dc.dengue_se || '—')) : 'sem coleta')
-        + (u.data_verificacao ? '<p class="note">Bateria estadual executada em ' + esc(u.data_verificacao) + '.</p>' : '');
-      dlg.setAttribute('aria-label', 'Detalhe do estado');
-      if (!dlg.open) { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.open = true; }
-    }
-    if (link && fonte) link.addEventListener('click', e => { e.preventDefault(); document.getElementById('detailSaudeConteudo').innerHTML = fonte.innerHTML; dlg.setAttribute('aria-label', 'Como ler o MARÉ Saúde'); if (!dlg.open) { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.open = true; } });
-    const fechar = () => { if (typeof dlg.close === 'function') dlg.close(); else dlg.open = false; };
-    const bt = document.getElementById('detailSaudeFechar'); if (bt) bt.addEventListener('click', fechar); dlg.addEventListener('click', evt => { if (evt.target === dlg) fechar(); });
-    const h = (location.hash || '').replace('#', '').toUpperCase(); if (/^[A-Z]{2}$/.test(h) && M[h]) abrirDetalheSaude(h);
+    GradeEstados.legendaDasBarras('legendaRegionsSaude', 'MARÉ Saúde');
+    if (window.MonitorMapas && MonitorMapas.animarGauges) MonitorMapas.animarGauges(wrap);
   }).catch(() => {});
 }
 __load().then(cartoesEstadosSaude).catch(err => { const m = document.getElementById('subSaude'); if (m) m.insertAdjacentHTML('afterend', '<p class="note u-rust">Erro ao carregar os dados: '+esc(err.message)+'</p>'); });

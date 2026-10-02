@@ -99,9 +99,12 @@ def autoteste() -> int:
             lambda: (lambda citadas: bool(citadas) and citadas <= ids_de(RAIZ / "financiamento.html"))(
                 {a for arq, a in RE_LINK.findall((RAIZ / "prefeituras.html").read_text(encoding="utf-8"))
                  if arq == "financiamento.html"}),
+        # 02/10/2026 (item 2 do Financiamento minimalista): a editoria trocou a terceira âncora.
+        # Era "#setores" (por setor), e passou a ser "#caminhos" — "os caminhos do dinheiro" —, que
+        # é o bloco recolhido inteiro. O caso cobra as três que o handover novo nomeou.
         "o Para gestores cita as três âncoras que o handover nomeou":
             lambda: {a for arq, a in RE_LINK.findall((RAIZ / "prefeituras.html").read_text(encoding="utf-8"))
-                     if arq == "financiamento.html"} == {"antes", "depois", "setores"},
+                     if arq == "financiamento.html"} == {"antes", "depois", "caminhos"},
         "o portão lê links com âncora":
             lambda: RE_LINK.findall('href="financiamento.html#preventivo"') == [("financiamento.html", "preventivo")],
         "o portão lê âncora da própria página":

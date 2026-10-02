@@ -30,6 +30,45 @@ const COLETA = () => {
     const cs = getComputedStyle(el);
     return r.width > 1 && r.height > 1 && cs.display !== "none" && cs.visibility !== "hidden";
   };
+  // Item 3.2 do handover (02/10/2026): TEXTO EXISTENTE E INVISÍVEL. Um texto pode estar no DOM e
+  // não ser lido — cor igual ao fundo, opacidade zero, `visibility: hidden`, altura útil menor que
+  // doze pixels. O despejo mede e o portão reprova, porque texto que não se lê é pior do que texto
+  // ausente: ele passa no portão que conta palavras e não chega ao leitor.
+  const corLegivel = (frente, fundo) => {
+    const n = c => (String(c).match(/[\d.]+/g) || [0, 0, 0]).slice(0, 3).map(Number);
+    const [r1, g1, b1] = n(frente), [r2, g2, b2] = n(fundo);
+    return Math.abs(r1 - r2) + Math.abs(g1 - g2) + Math.abs(b1 - b2) > 24;
+  };
+  const fundoDe = el => {
+    let e = el;
+    while (e) {
+      const c = getComputedStyle(e).backgroundColor;
+      if (c && !/rgba\(0, 0, 0, 0\)|transparent/.test(c)) return c;
+      e = e.parentElement;
+    }
+    return "rgb(255, 255, 255)";
+  };
+  const invisiveis = [...document.querySelectorAll("main p, main li, main dt, main dd, main h2, main h3, main span")]
+    .filter(el => (el.textContent || "").trim().length > 2)
+    .filter(el => {
+      if (el.closest("details:not([open])") || el.closest("[hidden]") || el.closest(".sr-only")) return false;
+      const cs = getComputedStyle(el);
+      const r = el.getBoundingClientRect();
+      if (cs.display === "none" || cs.visibility === "hidden") return true;
+      if (parseFloat(cs.opacity || "1") < 0.15) return true;
+      if (r.height > 0 && r.height < 12) return true;
+      return !corLegivel(cs.color, fundoDe(el));
+    })
+    .map(el => ({ tag: el.tagName.toLowerCase(), id: el.id || "",
+                  texto: (el.textContent || "").trim().replace(/\s+/g, " ").slice(0, 60),
+                  motivo: (() => {
+                    const cs = getComputedStyle(el), r = el.getBoundingClientRect();
+                    if (cs.display === "none" || cs.visibility === "hidden") return "escondido";
+                    if (parseFloat(cs.opacity || "1") < 0.15) return "opacidade " + cs.opacity;
+                    if (r.height > 0 && r.height < 12) return "altura útil " + Math.round(r.height) + "px";
+                    return "cor igual ao fundo";
+                  })() }))
+    .slice(0, 8);
   const figuras = [...document.querySelectorAll("figure")].map(f => ({
     id: f.id,
     classes: [...f.classList],
@@ -39,6 +78,10 @@ const COLETA = () => {
     largura: Math.round(f.getBoundingClientRect().width),
     visivel: vis(f),
     pai_grade: (f.parentElement && [...f.parentElement.classList].join(" ")) || "",
+    // A chave de dado declarada no próprio elemento: duas figuras com a mesma chave na mesma seção
+    // dizem a mesma coisa duas vezes, e é o que o item 3.2 manda reprovar.
+    chave_de_dado: f.dataset.chave || "",
+    secao: (() => { let e = f.parentElement; while (e && !e.id) e = e.parentElement; return e ? e.id : ""; })(),
   }));
   const grades = [...document.querySelectorAll(".grade-figuras, .grade-numeros")].map(g => ({
     classes: [...g.classList],
@@ -73,7 +116,7 @@ const COLETA = () => {
     titulo: document.title,
     largura_main: Math.round((document.querySelector("main") || document.body).getBoundingClientRect().width),
     h2: [...document.querySelectorAll("main h2")].map(h => (h.textContent || "").trim()).filter(Boolean),
-    secoes, grades, figuras, numeros,
+    secoes, grades, figuras, numeros, invisiveis,
     estados: [...document.querySelectorAll("#regionsSaude .tile, #regionsFin .tile")].map(t => ({
       uf: t.dataset.uf || "", texto: (t.textContent || "").trim().slice(0, 40),
       largura: Math.round(t.getBoundingClientRect().width),
