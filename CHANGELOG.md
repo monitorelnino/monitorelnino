@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-02 · #514 · O publicador passa a commitar o que ele mesmo regenera
+
+Terceira vez da mesma família: a cadeia canônica regenera `CITATION.cff` (o `date-released` sai de
+meta.json) e o `git add` do publicador não o alcançava — nem `blog/`, nem `assets/`. Desde que o
+carimbo do corte passou a andar todo dia, o arquivo muda em toda publicação, ficava regenerado e não
+commitado, e o portão de derivados reprovava a própria rodada. Em `METODOLOGIA.md` §79.
+
 ## 2026-10-02 · #513 · Catálogo de desfechos: série e lacuna são coisas diferentes
 
 A SRAG passou a ser coletada (28 UFs por semana, do SIVEP-Gripe) e o catálogo ainda dizia
