@@ -874,9 +874,13 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
         ? '1 município recebeu autorização' : n(muns.size) + ' municípios receberam autorização';
     }
     if (el('topoRespostaFonte')) {
+      /* O cartão diz "liberado" e não usa a outra palavra: a portaria autoriza, e a saída do
+       * dinheiro é um registro à parte, do Portal da Transparência. O portão de runtime cobra
+       * exatamente isso — e cobrava com razão: a primeira versão desta linha dizia "ainda não
+       * necessariamente ..." e carregava a palavra que ela queria negar. */
       el('topoRespostaFonte').textContent = 'Portarias da Defesa Civil nacional no Diário Oficial '
-        + 'da União · liberado, ainda não necessariamente pago · janela lida desde '
-        + ((R.janela_lida || {}).desde || '—');
+        + 'da União · valor liberado por ato; a saída do dinheiro é outro registro · janela lida '
+        + 'desde ' + ((R.janela_lida || {}).desde || '—');
     }
   }).catch(() => semDado('topoRespostaSemana', 'topoRespostaFonte', 'Sem coleta até o corte.'));
 
