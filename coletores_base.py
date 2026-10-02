@@ -139,6 +139,29 @@ def gravar(nome, obj, compacto: bool = False):
     return gravar_em(DATA / nome, obj, compacto)
 
 
+def carimbar_atos(atos: dict) -> dict:
+    """Devolve `atos_resposta.json` com o carimbo do dia. PURA: não escreve nada.
+
+    02/10/2026 — dois achados numa tacada:
+
+    (1) o portao de frescor da Defesa civil reprovou `atos_resposta.json` na primeira vez que
+        rodou: ele e escrito por sete pontos de quatro coletores e nenhum deles punha data. Sem
+        carimbo, nao se distingue coleta de ontem de coleta de tres semanas atras.
+    (2) a primeira correcao foi um ajudante que CARIMBAVA E GRAVAVA, daqui. Isso furou o
+        isolamento do autoteste: `coletar_diarios_consorciados.py --autoteste` troca o `gravar` do
+        proprio modulo por um falso, e um ajudante que chama o `gravar` deste modulo passa por
+        fora da troca. O autoteste gravou a fixture no arquivo real e levou 907 eventos a 1 — mais
+        de 790 atos do ciclo apagados sem aviso. A mesma troca tambem cegou a trava estrutural dos
+        coletores, que procura a literal `gravar("atos_resposta.json"` no proprio fonte.
+
+    Dai a forma desta funcao: ela so carimba, e cada coletor continua chamando o SEU `gravar`.
+    Carimbo numa definicao so; escrita onde o teste consegue interceptar.
+    """
+    atos = dict(atos or {})
+    atos["atualizado_em"] = hoje_editorial().strftime("%d/%m/%Y")
+    return atos
+
+
 def gravar_em(p, obj, compacto: bool = False):
     """Como `gravar`, mas recebe o CAMINHO já montado.
 

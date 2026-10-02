@@ -1,0 +1,39 @@
+{
+ "_governanca": "INSTANTÂNEO dos dois números do Monitor de riscos que a Imprensa publica, para ela ler em vez de recalcular (handover de 02/10/2026, item 1). Não é fonte de nada. O de temperatura é o maior DESVIO em relação à normal 1991–2020 do Inmet, e não a máxima absoluta: 35 °C é normal em Cuiabá e muito quente em Porto Alegre, e publicar a máxima absoluta era publicar geografia como se fosse notícia — mesma régua do mapa de calor da página.",
+ "gerado_em": "02/10/2026",
+ "cartoes": [
+  {
+   "id": "temperatura_desvio_capital",
+   "valor": 2.9,
+   "referencia": "02/10/2026",
+   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Belém",
+   "capital": "Belém",
+   "uf": "PA",
+   "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
+   "sem_coleta": false,
+   "nota": "máxima prevista de 36.0 °C contra a média de 33.1 °C do mês; 24 capital(is) com normal publicada"
+  },
+  {
+   "id": "capitais_ar_ruim_ou_pior",
+   "valor": 11,
+   "referencia": "leitura mais recente",
+   "rotulo": "capitais com o ar na faixa ruim ou acima dela",
+   "fonte": "Copernicus (CAMS), via Open-Meteo",
+   "sem_coleta": false,
+   "lista": [
+    "AC",
+    "AM",
+    "DF",
+    "ES",
+    "MG",
+    "MS",
+    "PR",
+    "RJ",
+    "RO",
+    "SP",
+    "TO"
+   ],
+   "nota": "faixa da própria escala europeia, acima de 40; 27 capital(is) com leitura"
+  }
+ ]
+}

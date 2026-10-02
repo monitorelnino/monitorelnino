@@ -1,0 +1,79 @@
+{
+  "_governanca": "Contrato de layout da Imprensa (handover 'Imprensa — redesenho definitivo', 02/10/2026). ESTE ARQUIVO É A VERDADE: o HTML e o JS se conformam a ele. Quem verifica é scripts/verificar_layout.py; a coerência de cada número com a página de origem é do portão scripts/verificar_imprensa_coerencia.py, que compara o número da Imprensa com o número RENDERIZADO no topo da página de onde ele vem.",
+  "pagina": "imprensa.html",
+  "componentes": {
+    "numeros": ".cartao-numero",
+    "grade_numeros": ".grade-numeros--3",
+    "figura": ".cartao-mapa",
+    "grade_figuras": ".grade-figuras--3"
+  },
+  "_nota_componentes": "O handover nomeia `.cartao-destaque` e pede cada grupo em `.grade-figuras--3`. Duas divergências declaradas, pelas mesmas razões dos outros contratos: (1) `.cartao-destaque` não existe no repositório — o componente de número é `.cartao-numero`; (2) número não mora na grade de FIGURAS: a regra (i) do portão de layout cobra que cartão de número esteja dentro do componente de números, e `.grade-numeros--3` dá exatamente o mesmo ritmo de três colunas que o handover quer. Grupo de seis preenche duas linhas de três.",
+  "secoes": [
+    {
+      "id": "topo",
+      "h2": null,
+      "tipo": "lista_simples",
+      "exige_texto": [
+        "Os números da semana, o texto pronto para copiar, como citar e como ler os índices.",
+        "MARÉ Legal",
+        "MARÉ Saúde"
+      ]
+    },
+    {
+      "id": "semana-em-numeros",
+      "h2": "Esta semana em números",
+      "tipo": "lista_simples",
+      "exige_texto": [
+        "Cada número traz a fonte e a data da consulta",
+        "Nenhum deles entra no cálculo dos índices",
+        "Baixar os números desta edição (planilha)"
+      ],
+      "grupos": [
+        {"chave": "preparacao", "titulo": "Preparação", "cartoes": 3},
+        {"chave": "emergencias", "titulo": "Emergências", "cartoes": 3},
+        {"chave": "risco_agora", "titulo": "Risco agora", "cartoes": 6},
+        {"chave": "dinheiro", "titulo": "Dinheiro", "cartoes": 3},
+        {"chave": "saude", "titulo": "Saúde", "cartoes": 3}
+      ],
+      "_nota_grupos": "Os grupos são desenhados pelo JS a partir de data/imprensa/semana.json, e o número de cartões é o do handover. Cartão sem dado SAI da grade, e o seu rótulo entra na linha única 'Sem dado nesta edição' — por isso o portão de layout não cobra a contagem por grupo: a contagem varia com a lacuna, e cobrar número fixo reprovaria a edição honesta. Quem cobra o conteúdo é o portão de coerência."
+    },
+    {
+      "id": "release",
+      "h2": "Release da edição",
+      "tipo": "lista_simples",
+      "exige_texto": ["Copiar texto", "O MARÉ é uma criação da Futura Evidence Lab."]
+    },
+    {
+      "id": "citar",
+      "h2": "Como citar",
+      "tipo": "lista_simples",
+      "exige_texto": ["FUTURA EVIDENCE LAB"]
+    },
+    {
+      "id": "o-que-e",
+      "h2": "O que é o MARÉ",
+      "tipo": "lista_simples"
+    },
+    {
+      "id": "como-calculados",
+      "h2": "Como os índices são calculados",
+      "tipo": "lista_simples"
+    },
+    {
+      "id": "o-que-mostra",
+      "h2": "O que cada página mostra",
+      "tipo": "lista_simples",
+      "exige_texto": [
+        "avisos e alertas em vigor, as emergências declaradas no ciclo, o que o governo federal reconheceu e as listas federais de risco",
+        "os recursos do El Niño, de onde vêm, como estão sendo aplicados e o que a defesa civil federal autorizou"
+      ]
+    },
+    {
+      "id": "faq",
+      "h2": "Perguntas de fato",
+      "tipo": "lista_simples"
+    }
+  ],
+  "texto_proibido": ["FIGURA", "Corte da edição", "corte de", "desastre", "no período", "Backlog"],
+  "_nota_texto_proibido": "O handover barra 'pago', 'nota' e 'período' (o recorte se diz 'semana'). 'pago' não ocorre nesta página depois do redesenho e 'nota' aparece em 'notificações' no texto aprovado da saúde, por isso o portão barra a locução 'no período', que era o vício real dos rótulos antigos ('decretos no período', 'planos no período'). O vocabulário do dinheiro é conferido por verificar_palavras_financiamento.py, que lê o texto visível das três páginas."
+}

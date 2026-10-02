@@ -1,0 +1,57 @@
+{
+ "_governanca": "INSTANTÂNEO dos cartões do topo da Defesa civil, para a Imprensa ler em vez de recalcular (handover de 02/10/2026, item 1). Não é fonte de nada: nasce dos mesmos arquivos que a página lê. Os três cartões de AGORA trazem a hora da consulta; os três do ciclo trazem a contagem desde 29/06 e quantos entraram nos últimos sete dias.",
+ "gerado_em": "02/10/2026",
+ "cartoes": [
+  {
+   "id": "municipios_alerta_cemaden",
+   "valor": 14,
+   "referencia": "02/10/2026 19:15",
+   "rotulo": "municípios sob alerta do Cemaden",
+   "fonte": "Cemaden",
+   "sem_coleta": false
+  },
+  {
+   "id": "municipios_aviso_inmet",
+   "valor": 2876,
+   "referencia": "02/10/2026 19:15",
+   "rotulo": "municípios sob aviso do Inmet",
+   "fonte": "Inmet",
+   "sem_coleta": false
+  },
+  {
+   "id": "decreto_e_alerta_ao_mesmo_tempo",
+   "valor": 333,
+   "referencia": "02/10/2026 19:15",
+   "rotulo": "municípios com decreto de emergência e alerta ao mesmo tempo",
+   "fonte": "MARÉ (cruzamento das duas consultas)",
+   "sem_coleta": false
+  },
+  {
+   "id": "municipios_decretaram",
+   "valor": 749,
+   "referencia": "desde 29/06/2026",
+   "variacao": 69,
+   "rotulo": "municípios que decretaram emergência ou calamidade",
+   "fonte": "Defesa Civil nacional, no Diário Oficial da União",
+   "sem_coleta": false
+  },
+  {
+   "id": "populacao_sob_decreto",
+   "valor": 21547599,
+   "referencia": "desde 29/06/2026",
+   "variacao": 1134670,
+   "rotulo": "pessoas que vivem nos municípios que decretaram",
+   "fonte": "Censo 2022, do IBGE",
+   "sem_coleta": false
+  },
+  {
+   "id": "reconhecidos_pelo_governo_federal",
+   "valor": 670,
+   "referencia": "desde 29/06/2026",
+   "variacao": 58,
+   "rotulo": "municípios com a emergência reconhecida pelo governo federal",
+   "fonte": "Defesa Civil nacional, no Diário Oficial da União",
+   "sem_coleta": false
+  }
+ ]
+}

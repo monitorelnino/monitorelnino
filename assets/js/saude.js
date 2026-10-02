@@ -694,15 +694,21 @@ const AREAS = [
   fetch('data/saude_desfechos/srag_serie.json').then(r => r.ok ? r.json() : null).then(S => {
     const serie = (S || {}).serie;
     if (!serie) { if (el('nSragSE')) el('nSragSE').textContent = 'sem coleta'; return; }
-    /* O arquivo é {UF: {SE: n}}: o país é a soma das UFs, semana a semana. */
+    /* O arquivo é {UF: {SE: n}} — e traz a linha `BR` JUNTO das 27 UFs.
+       02/10/2026, defeito medido: somar `serie.values()` somava o país duas vezes, porque a linha
+       do país entrava na soma das UFs. O cartão publicava 8.534 internações onde a fonte diz 4.267.
+       Quando existe a linha `BR`, ela É o país; só na falta dela o país é a soma das UFs. A mesma
+       regra está em `scripts/gerar_topo_das_paginas.py`, que é quem a Imprensa lê. */
     const ano = String(S.ano_corrente || new Date().getFullYear());
     const total = {};
-    Object.values(serie).forEach(porSE => {
+    const somar = porSE => {
       if (!porSE || typeof porSE !== 'object') return;
       Object.entries(porSE).forEach(([se, v]) => {
         if (se.startsWith(ano) && typeof v === 'number') total[se] = (total[se] || 0) + v;
       });
-    });
+    };
+    if (serie.BR && typeof serie.BR === 'object') somar(serie.BR);
+    else Object.entries(serie).forEach(([uf, porSE]) => { if (uf !== 'BR') somar(porSE); });
     const u = ultimaFechada(total);
     if (!u) { if (el('nSragSE')) el('nSragSE').textContent = 'sem coleta'; return; }
     if (el('nSragSE')) el('nSragSE').textContent = n(u.valor);

@@ -3581,3 +3581,107 @@ de layout recém-criado reprovou com "texto invisível (cor igual ao fundo)" em 
 primeira vez que ele rodou depois de existir. A correção foi no componente: a cor passou a ser
 dele, e o estilo inline saiu das duas páginas. É o caso exemplar da regra: estilo que a página
 precisa lembrar de aplicar é estilo que uma página vai esquecer.
+
+## 99. A cadeia do aviso ao recurso, e a Imprensa lendo as páginas (02/10/2026)
+
+Dois handovers da editoria na mesma entrega: a **Defesa civil** passa a contar uma cadeia, e a
+**Imprensa** deixa de recalcular o que as outras páginas publicam.
+
+### 99.1 Por estado, com a cidade na lista — e não ponto no mapa
+
+Os três mapas de PONTOS das emergências saíram. Ponto por município satura o país e não responde
+à pergunta que traz a pessoa à página ("e a minha cidade?"). No lugar, um mapa **por estado** —
+cor = parcela dos municípios do estado com decreto no ciclo — e a **lista municipal embutida com
+busca**, em que cada município ocupa uma linha com as três marcas da cadeia: decretou ·
+reconhecido · alerta agora. Clicar no estado filtra a lista.
+
+A cor é a **parcela**, e não a contagem: estado grande apareceria sempre mais escuro só por ser
+grande, o que é geografia e não notícia — a mesma razão que levou o mapa de calor ao desvio
+contra a normal (§R10).
+
+### 99.2 O tipo de evento vem do ato, e o conjunto vem do consolidado
+
+O tipo de evento declarado no decreto (estiagem, chuvas intensas, seca, granizo, vendaval,
+inundações, incêndio florestal) **não existe** no arquivo consolidado dos decretos: ele vive em
+`atos_resposta.json`, por município. A página usa os dois, com papéis separados e declarados: o
+**conjunto** de quem decretou é sempre o do consolidado; `atos_resposta.json` entra apenas como
+**atributo** (tipo e datas), casado por código IBGE. Recontar o conjunto a partir dos atos abriria
+uma segunda definição de "município que decretou" — defeito que esta página já pagou uma vez,
+com 770 contra 734 na mesma tela. Tipo com menos de dez municípios entra em "outros tipos
+declarados" na barra, e a lista embutida mostra todos; município sem tipo declarado é **nomeado**,
+nunca somado a outro tipo.
+
+### 99.3 A regra das 24 horas: alerta velho não se publica como vigente
+
+Decisão da central, por segurança, aprovada pela editoria no item 6.3 do handover. Aviso e alerta
+são informação de **agora**, que a população pode usar para se proteger; um retrato de dias atrás
+mostrado como "em vigor" é engano, e aqui engano pode machucar. Logo:
+
+- a coleta de avisos e alertas mantém a cadência **a cada publicação**, e não a semanal;
+- o portão de frescor dela é de **24 horas** (`scripts/verificar_frescor_defesa_civil.py`);
+- passando disso, a página **não desenha alerta nenhum**: ela declara "Sem atualização desde
+  {data e hora}" nos três cartões de agora, nos três mapas e na legenda.
+
+Zero alerta em vigor e coleta parada são coisas diferentes, e a página não pode fazer uma passar
+pela outra. O resto da página — decretos, reconhecimentos, listas federais — tem cadência semanal
+e portão de 9 dias.
+
+### 99.4 As três listas federais de risco, juntas
+
+Enxurradas e inundações (Casa Civil, 2.095 municípios), Semiárido (Sudene, 1.477) e prioritários do
+controle do desmatamento e do fogo na Amazônia (Ministério do Meio Ambiente, 80) respondem à mesma
+pergunta: **onde o risco já é reconhecido pelo governo federal**. O texto da seção diz o que elas
+não são: constar de uma lista não é decretar emergência. Cada mapa traz a parcela com plano
+localizado no detalhe do estado e a coluna "Plano localizado" na lista municipal — a legenda do
+mapa é a faixa de municípios listados, porque num mapa por estado as duas categorias convivem no
+mesmo território e pintá-lo por elas diria o que o mapa não mostra (divergência declarada no
+contrato).
+
+### 99.5 A Imprensa lê as páginas, e o portão confere no navegador
+
+Medido em 02/10/2026: a Imprensa dizia "sem dado" no dinheiro com dado publicado no Financiamento;
+dizia **482** casos de dengue na semana 37 (InfoDengue) onde o MARÉ Saúde dizia **8.146** na semana
+33 (Sinan); e publicava a máxima **absoluta** prevista onde o recorte aprovado é o maior **desvio
+em relação ao normal**. A raiz era uma: cada número existia duas vezes, com duas definições, e nada
+obrigava as duas a concordarem.
+
+Correção em duas partes. **Primeira:** cada página passa a escrever um instantâneo dos seus
+cartões de topo (`scripts/gerar_topo_das_paginas.py`, mais o `financiamento/semana.json` que já
+existia), e a Imprensa **lê** — nunca recalcula. Cada cartão da Imprensa declara a sua
+`pagina_de_origem`. **Segunda:** um portão compara o número da Imprensa com o número
+**renderizado** no topo da página de origem, no navegador
+(`scripts/verificar_imprensa_coerencia.py`), na precisão em que a página o publica, mais a semana
+ou o mês de referência e a variação. Comparar arquivo com arquivo provaria menos: o que o leitor
+compara é página com página.
+
+### 99.6 Dois defeitos de conta que apareceram no caminho
+
+**(a) O país somado duas vezes.** O arquivo do SIVEP-Gripe traz a linha `BR` **junto** das 27 UFs, e
+somar todas as linhas somava o país de novo: o cartão do MARÉ Saúde publicava 8.534 internações
+onde a fonte diz **4.267**. Regra, agora nos dois lados: existindo a linha `BR`, ela é o país; só
+na falta dela o país é a soma das UFs.
+
+**(b) Autoteste que escrevia no banco.** `atos_resposta.json` não tinha carimbo de data — sete
+pontos de escrita em quatro coletores, nenhum com data —, e o portão de frescor novo o reprovou na
+primeira vez que rodou. A primeira correção foi um ajudante que **carimbava e gravava**, em
+`coletores_base`. Isso furou o isolamento do autoteste: `coletar_diarios_consorciados.py
+--autoteste` isola a escrita **trocando o `gravar` do próprio módulo**, e um ajudante que chama o
+`gravar` de outro módulo passa por fora da troca. O autoteste gravou a sua fixture no arquivo real:
+**907 atos do ciclo viraram 1**, e a página publicou 657 municípios com decreto em vez de 749. O
+arquivo foi reposto por **união pela base comum** (907 do HEAD mais os 17 novos da rodada = 924).
+
+Duas correções de fundo: `carimbar_atos()` passou a ser **pura** — ela só carimba, e cada coletor
+continua chamando o seu próprio `gravar`, que é o que o teste consegue interceptar — e nasceu o
+portão `scripts/verificar_autoteste_nao_escreve.py`, que guarda o resumo dos arquivos de banco,
+roda os autotestes e exige que nenhum tenha mudado. A lição não é sobre aquele ajudante: é que o
+isolamento do autoteste **não era verificado**.
+
+### 99.7 O 40199 volta, e passa a ser contrato
+
+O cartão do SMS 40199 saiu da barra de telefones do Proteja-se numa reforma de desenho em 30/09 e
+o número sobreviveu só dentro de uma ficha — deixou de estar onde quem chega com pressa olha. Ele
+volta à barra, com a instrução de cadastro e de cancelamento, e a Defesa civil repete a chamada na
+seção dos alertas. O serviço foi conferido pela central em 02/10/2026. Para não sair de novo, o
+Proteja-se ganhou **contrato de layout** que exige os quatro números (192, 199, 190, 40199) — um
+contrato pequeno, de propósito: ele cobre a barra de emergência e mais nada, porque redesenhar o
+Proteja-se não foi pedido.

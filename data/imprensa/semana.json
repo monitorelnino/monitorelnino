@@ -1,12 +1,19 @@
 {
- "_governanca": "Cartões 'Esta semana em números' da página Imprensa (handover da editoria de 27/09/2026, §253). Peso ZERO nos índices: nada aqui é lido por recalcular_mare.py nem por gerar_monitor_saude.py. Todo número vem do dado; texto fixo nunca contém número. Zero só quando a coleta rodou — sem coleta é `sem_coleta: true`, e ausência não é zero. Sem fotografia da edição anterior, `primeira_medicao: true` e `variacao: null`: variação sem par seria inventada. Derivado de gerar_imprensa_semana.py — não se edita à mão.",
+ "_governanca": "Cartões 'Esta semana em números' da página Imprensa. Peso ZERO nos índices. 02/10/2026 (handover do redesenho): a Imprensa NÃO recalcula número que outra página publica — ela lê o instantâneo do topo de cada página (Financiamento, MARÉ Saúde, Defesa civil, Monitor de riscos), e cada cartão declara a sua `pagina_de_origem`. Zero só quando a coleta rodou; sem coleta é `sem_coleta: true`, o cartão SAI da grade e o rótulo entra na linha 'Sem dado nesta edição'. Derivado de gerar_imprensa_semana.py — não se edita à mão.",
  "gerado_em": "2026-10-02",
  "janela_dias": 7,
+ "indices": {
+  "edicao": "02/10/2026",
+  "mare_legal": 45.2,
+  "mare_saude": 31.8,
+  "saude_verificadas": 21,
+  "decretaram_no_ciclo": 749
+ },
  "cartoes": [
   {
-   "id": "planos_no_periodo",
+   "id": "planos_na_semana",
    "grupo": "preparacao",
-   "rotulo": "Planos municipais com data de ato no período",
+   "rotulo": "Planos publicados na semana, pela data do ato",
    "valor": 0,
    "sem_coleta": false,
    "periodo": {
@@ -21,12 +28,15 @@
    "variacao": null,
    "nota": "a data é a do ato, não a da localização pelo MARÉ; plano antigo localizado agora não aparece aqui",
    "secundaria": null,
-   "lista": []
+   "lista": [],
+   "pagina_de_origem": null,
+   "referencia": null,
+   "unidade": null
   },
   {
-   "id": "ufs_mudaram_faixa",
+   "id": "mudaram_faixa",
    "grupo": "preparacao",
-   "rotulo": "Estados que mudaram de faixa no período",
+   "rotulo": "Estados que mudaram de faixa no MARÉ Legal ou no MARÉ Saúde",
    "valor": null,
    "sem_coleta": true,
    "periodo": null,
@@ -38,7 +48,10 @@
    "variacao": null,
    "nota": "a série de faixas por edição tem 1 edição(ões), e a comparação pede duas: ela começa na próxima edição",
    "secundaria": null,
-   "lista": []
+   "lista": [],
+   "pagina_de_origem": null,
+   "referencia": null,
+   "unidade": null
   },
   {
    "id": "capitais_com_plano",
@@ -158,636 +171,136 @@
      "documento": "Comitê PrevIncêndio (permanente)",
      "url": null
     }
-   ]
+   ],
+   "pagina_de_origem": null,
+   "referencia": null,
+   "unidade": null
   },
   {
-   "id": "decretos_no_periodo",
+   "id": "decretos_na_semana",
    "grupo": "emergencias",
-   "rotulo": "Municípios que decretaram emergência ou calamidade no período",
-   "valor": 30,
-   "sem_coleta": false,
-   "periodo": {
-    "ini": "2026-09-25",
-    "fim": "2026-10-02"
-   },
-   "fonte": "Diários oficiais e diários consorciados (via MARÉ)",
-   "url_fonte": null,
-   "consultado_em": null,
-   "primeira_medicao": true,
-   "valor_semana_anterior": null,
-   "variacao": null,
-   "nota": null,
-   "secundaria": {
-    "rotulo": "em 14 dias",
-    "valor": 66
-   },
-   "lista": [
-    {
-     "uf": "RS",
-     "municipio": "Guarani das Missões",
-     "data": "2026-10-02",
-     "causa": "situação de emergência",
-     "documento": "Decreto nº 3.434",
-     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117942_2026-10-01_7715a5d13f59dad3fe0f1e0383773e49.pdf"
-    },
-    {
-     "uf": "RN",
-     "municipio": "Apodi",
-     "data": "2026-10-02",
-     "causa": "situação de emergência",
-     "documento": "Decreto nº 280",
-     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117688_2026-10-01_97b8c3f18c372f20fc7378258f968c0a.pdf"
-    },
-    {
-     "uf": "AM",
-     "municipio": "Boa Vista do Ramos",
-     "data": "2026-10-02",
-     "causa": "situação de emergência",
-     "documento": "Decreto nº 031/2026",
-     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118958_2026-10-01_7fc9fe12893c2105eb14a29edc135c77.pdf"
-    },
-    {
-     "uf": "RS",
-     "municipio": "Sentinela do Sul",
-     "data": "2026-10-01",
-     "causa": "situação de emergência",
-     "documento": "Decreto nº 1345/2026",
-     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117941_2026-09-30_9171bd728f680cd8d4c7e5edd5699fa6.pdf"
-    },
-    {
-     "uf": "RS",
-     "municipio": "Bom Jesus",
-     "data": "2026-10-01",
-     "causa": "estado de calamidade publica",
-     "documento": "Decreto nº 9.100",
-     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117941_2026-09-30_9171bd728f680cd8d4c7e5edd5699fa6.pdf"
-    },
-    {
-     "uf": "RN",
-     "municipio": "São Tomé",
-     "data": "2026-10-01",
-     "causa": "situação de emergência",
-     "documento": "Decreto nº 1257",
-     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117687_2026-09-30_bde1a098647ec2e6ca5fd384cad8d196.pdf"
-    },
-    {
-     "uf": "RN",
-     "municipio": "Alexandria",
-     "data": "2026-10-01",
-     "causa": "situação de emergência",
-     "documento": "Decreto nº 017",
-     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117687_2026-09-30_bde1a098647ec2e6ca5fd384cad8d196.pdf"
-    },
-    {
-     "uf": "PA",
-     "municipio": "Abel Figueiredo",
-     "data": "2026-10-01",
-     "causa": "situação de emergência",
-     "documento": "Decreto nº 034/2026",
-     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=329&i=publicado_117179_2026-09-30_60aa62b631c688e8799d3131fe2a538b.pdf"
-    },
-    {
-     "uf": "RS",
-     "municipio": "São Leopoldo",
-     "data": "2026-09-30",
-     "causa": "situação de emergência",
-     "documento": "Decreto nº 11460/2026",
-     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117940_2026-09-29_555585b47bfd9d71a1c0e206df9f8e05.pdf"
-    },
-    {
-     "uf": "RS",
-     "municipio": "Cacequi",
-     "data": "2026-09-30",
-     "causa": "situação de emergência",
-     "documento": "Decreto nº 429",
-     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117940_2026-09-29_555585b47bfd9d71a1c0e206df9f8e05.pdf"
-    },
-    {
-     "uf": "PR",
-     "municipio": "Clevelândia",
-     "data": "2026-09-30",
-     "causa": "homologação estadual",
-     "documento": "Decreto municipal nº 235",
-     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17334"
-    },
-    {
-     "uf": "PR",
-     "municipio": "Araruna",
-     "data": "2026-09-30",
-     "causa": "homologação estadual",
-     "documento": "Decreto municipal nº 2.691",
-     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17334"
-    },
-    {
-     "uf": "PR",
-     "municipio": "Almirante Tamandaré",
-     "data": "2026-09-30",
-     "causa": "situação de emergência",
-     "documento": "Decreto nº 351",
-     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118194_2026-09-29_1ea425e35d6af02ebe55c6eb04c2656a.pdf"
-    },
-    {
-     "uf": "AM",
-     "municipio": "Anori",
-     "data": "2026-09-30",
-     "causa": "situação de emergência",
-     "documento": "Decreto nº 043",
-     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118956_2026-09-29_9c850d343b9ae72172ce119a258b1258.pdf"
-    },
-    {
-     "uf": "RS",
-     "municipio": "São Leopoldo",
-     "data": "2026-09-29",
-     "causa": "situação de emergência",
-     "documento": "Decreto nº 11.460/2026",
-     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117939_2026-09-28_96e235152b4323deddc24c1d9fdfadfa.pdf"
-    },
-    {
-     "uf": "RS",
-     "municipio": "Capão do Leão",
-     "data": "2026-09-29",
-     "causa": "situação de emergência",
-     "documento": "Decreto nº 133/2026",
-     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117939_2026-09-28_96e235152b4323deddc24c1d9fdfadfa.pdf"
-    },
-    {
-     "uf": "RS",
-     "municipio": "Capitão",
-     "data": "2026-09-29",
-     "causa": "situação de emergência",
-     "documento": "Decreto nº 074/2026",
-     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117939_2026-09-28_96e235152b4323deddc24c1d9fdfadfa.pdf"
-    },
-    {
-     "uf": "RS",
-     "municipio": "Benjamin Constant do Sul",
-     "data": "2026-09-29",
-     "causa": "situação de emergência",
-     "documento": "Decreto nº 2.813/2026",
-     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_121359_2026-09-29_943fe043aed71ac07d67add1797a9cb3.pdf"
-    },
-    {
-     "uf": "RN",
-     "municipio": "São Pedro",
-     "data": "2026-09-29",
-     "causa": "situação de emergência",
-     "documento": "Decreto nº 020/2026",
-     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_121357_2026-09-29_9e12cbe3ef2cf674ceecd37c82857c13.pdf"
-    },
-    {
-     "uf": "PR",
-     "municipio": "Tamarana",
-     "data": "2026-09-29",
-     "causa": "homologação estadual",
-     "documento": "Decreto municipal nº 232",
-     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17331"
-    },
-    {
-     "uf": "PR",
-     "municipio": "Clevelândia",
-     "data": "2026-09-29",
-     "causa": "situação de emergência",
-     "documento": "Decreto nº 234/2026",
-     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118193_2026-09-28_67d5192f3e8629f7f55eeeeed511823d.pdf"
-    },
-    {
-     "uf": "PR",
-     "municipio": "Bocaiúva do Sul",
-     "data": "2026-09-29",
-     "causa": "situação de emergência",
-     "documento": "Decreto nº 784",
-     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118193_2026-09-28_67d5192f3e8629f7f55eeeeed511823d.pdf"
-    },
-    {
-     "uf": "RS",
-     "municipio": "Santa Cruz do Sul",
-     "data": "2026-09-28",
-     "causa": "situação de emergência",
-     "documento": "Decreto nº 12.973",
-     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117938_2026-09-25_aecb01b5771a14137866edab3b63e04d.pdf"
-    },
-    {
-     "uf": "RS",
-     "municipio": "Capão do Cipó",
-     "data": "2026-09-28",
-     "causa": "situação de emergência",
-     "documento": "Decreto nº 43",
-     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_121352_2026-09-28_de32cef2cebc0c3c16c13de444dd92a7.pdf"
-    },
-    {
-     "uf": "PR",
-     "municipio": "Califórnia",
-     "data": "2026-09-28",
-     "causa": "homologação estadual",
-     "documento": "Decreto municipal nº 253",
-     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17326"
-    },
-    {
-     "uf": "PR",
-     "municipio": "Almirante Tamandaré",
-     "data": "2026-09-28",
-     "causa": "homologação estadual",
-     "documento": "Decreto municipal nº 146",
-     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17326"
-    },
-    {
-     "uf": "PE",
-     "municipio": "Tamandaré",
-     "data": "2026-09-28",
-     "causa": "situação de emergência",
-     "documento": "Decreto nº 031/2026/",
-     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=365&i=publicado_115906_2026-09-25_4e8e4456351e18900c1975a38867f4e0.pdf"
-    },
-    {
-     "uf": "PB",
-     "municipio": "Montadas",
-     "data": "2026-09-28",
-     "causa": "situação de emergência",
-     "documento": "Decreto nº 229",
-     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=334&i=publicado_121347_2026-09-28_a25060d57d8f894a304252af91941dd0.pdf"
-    },
-    {
-     "uf": "PA",
-     "municipio": "Marabá",
-     "data": "2026-09-28",
-     "causa": "situação de emergência",
-     "documento": "Decreto nº 480/2026",
-     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=329&i=publicado_117176_2026-09-25_e9454f0809b25e1d3c4f57eb9b735e77.pdf"
-    },
-    {
-     "uf": "AM",
-     "municipio": "Manacapuru",
-     "data": "2026-09-28",
-     "causa": "situação de emergência",
-     "documento": "Decreto nº 633",
-     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118954_2026-09-25_46dcde32689469fffe31d51821e6d167.pdf"
-    }
-   ]
-  },
-  {
-   "id": "populacao_decretos_no_periodo",
-   "grupo": "emergencias",
-   "rotulo": "Pessoas que vivem nos municípios que decretaram no período",
-   "valor": 1465991,
-   "sem_coleta": false,
-   "periodo": {
-    "ini": "2026-09-25",
-    "fim": "2026-10-02"
-   },
-   "fonte": "Censo 2022 (IBGE) sobre os decretos lidos pelo MARÉ",
-   "url_fonte": "https://censo2022.ibge.gov.br/",
-   "consultado_em": null,
-   "primeira_medicao": false,
-   "valor_semana_anterior": 1189670,
-   "variacao": 276321,
-   "nota": null,
-   "secundaria": null,
-   "lista": []
-  },
-  {
-   "id": "reconhecimentos_no_periodo",
-   "grupo": "emergencias",
-   "rotulo": "Municípios reconhecidos pelo governo federal no período",
-   "valor": 43,
-   "sem_coleta": false,
-   "periodo": {
-    "ini": "2026-09-25",
-    "fim": "2026-10-02"
-   },
-   "fonte": "Portarias SEDEC/MIDR publicadas no DOU",
-   "url_fonte": "https://www.gov.br/mdr/pt-br",
-   "consultado_em": null,
-   "primeira_medicao": true,
-   "valor_semana_anterior": null,
-   "variacao": null,
-   "nota": null,
-   "secundaria": null,
-   "lista": [
-    {
-     "uf": "SC",
-     "municipio": "Guatambú",
-     "data": "2026-09-30",
-     "documento": "Portaria SEDEC/MIDR nº 3.331",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.331-de-30-de-setembro-de-2026-735714582"
-    },
-    {
-     "uf": "SC",
-     "municipio": "Ipumirim",
-     "data": "2026-09-30",
-     "documento": "Portaria SEDEC/MIDR nº 3.331",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.331-de-30-de-setembro-de-2026-735714582"
-    },
-    {
-     "uf": "SC",
-     "municipio": "Timbé do Sul",
-     "data": "2026-09-30",
-     "documento": "Portaria SEDEC/MIDR nº 3.331",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.331-de-30-de-setembro-de-2026-735714582"
-    },
-    {
-     "uf": "SC",
-     "municipio": "Três Barras",
-     "data": "2026-09-30",
-     "documento": "Portaria SEDEC/MIDR nº 3.331",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.331-de-30-de-setembro-de-2026-735714582"
-    },
-    {
-     "uf": "RS",
-     "municipio": "Capão do Leão",
-     "data": "2026-09-30",
-     "documento": "Portaria SEDEC/MIDR nº 3.331",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.331-de-30-de-setembro-de-2026-735714582"
-    },
-    {
-     "uf": "RS",
-     "municipio": "Morro Redondo",
-     "data": "2026-09-30",
-     "documento": "Portaria SEDEC/MIDR nº 3.331",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.331-de-30-de-setembro-de-2026-735714582"
-    },
-    {
-     "uf": "RS",
-     "municipio": "Nova Bassano",
-     "data": "2026-09-30",
-     "documento": "Portaria SEDEC/MIDR nº 3.331",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.331-de-30-de-setembro-de-2026-735714582"
-    },
-    {
-     "uf": "RS",
-     "municipio": "Piratini",
-     "data": "2026-09-30",
-     "documento": "Portaria SEDEC/MIDR nº 3.331",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.331-de-30-de-setembro-de-2026-735714582"
-    },
-    {
-     "uf": "RS",
-     "municipio": "Santa Bárbara do Sul",
-     "data": "2026-09-30",
-     "documento": "Portaria SEDEC/MIDR nº 3.331",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.331-de-30-de-setembro-de-2026-735714582"
-    },
-    {
-     "uf": "RS",
-     "municipio": "Santiago",
-     "data": "2026-09-30",
-     "documento": "Portaria SEDEC/MIDR nº 3.331",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.331-de-30-de-setembro-de-2026-735714582"
-    },
-    {
-     "uf": "RS",
-     "municipio": "São José do Norte",
-     "data": "2026-09-30",
-     "documento": "Portaria SEDEC/MIDR nº 3.331",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.331-de-30-de-setembro-de-2026-735714582"
-    },
-    {
-     "uf": "RS",
-     "municipio": "São Lourenço do Sul",
-     "data": "2026-09-30",
-     "documento": "Portaria SEDEC/MIDR nº 3.331",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.331-de-30-de-setembro-de-2026-735714582"
-    },
-    {
-     "uf": "PR",
-     "municipio": "Cafezal do Sul",
-     "data": "2026-09-30",
-     "documento": "Portaria SEDEC/MIDR nº 3.331",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.331-de-30-de-setembro-de-2026-735714582"
-    },
-    {
-     "uf": "PI",
-     "municipio": "Sebastião Barros",
-     "data": "2026-09-30",
-     "documento": "Portaria SEDEC/MIDR nº 3.326",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.326-de-30-de-setembro-de-2026-735719208"
-    },
-    {
-     "uf": "PI",
-     "municipio": "São Luis do Piauí",
-     "data": "2026-09-30",
-     "documento": "Portaria SEDEC/MIDR nº 3.326",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.326-de-30-de-setembro-de-2026-735719208"
-    },
-    {
-     "uf": "PE",
-     "municipio": "Sanharó",
-     "data": "2026-09-30",
-     "documento": "Portaria SEDEC/MIDR nº 3.326",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.326-de-30-de-setembro-de-2026-735719208"
-    },
-    {
-     "uf": "PB",
-     "municipio": "Barra de Santana",
-     "data": "2026-09-30",
-     "documento": "Portaria SEDEC/MIDR nº 3.326",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.326-de-30-de-setembro-de-2026-735719208"
-    },
-    {
-     "uf": "MG",
-     "municipio": "Espinosa",
-     "data": "2026-09-30",
-     "documento": "Portaria SEDEC/MIDR nº 3.329",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.329-de-30-de-setembro-de-2026-735704693"
-    },
-    {
-     "uf": "BA",
-     "municipio": "Pedro Alexandre",
-     "data": "2026-09-30",
-     "documento": "Portaria SEDEC/MIDR nº 3.326",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.326-de-30-de-setembro-de-2026-735719208"
-    },
-    {
-     "uf": "BA",
-     "municipio": "Wagner",
-     "data": "2026-09-30",
-     "documento": "Portaria SEDEC/MIDR nº 3.326",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.326-de-30-de-setembro-de-2026-735719208"
-    },
-    {
-     "uf": "AP",
-     "municipio": "Cutias",
-     "data": "2026-09-30",
-     "documento": "Portaria SEDEC/MIDR nº 3.336",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.336-de-30-de-setembro-de-2026-735711176"
-    },
-    {
-     "uf": "SE",
-     "municipio": "Nossa Senhora da Glória",
-     "data": "2026-09-29",
-     "documento": "Portaria SEDEC/MIDR nº 3.299",
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.299-de-29-de-setembro-de-2026-735402625"
-    },
-    {
-     "uf": "SE",
-     "municipio": "São Miguel do Aleixo",
-     "data": "2026-09-29",
-     "documento": "Portaria SEDEC/MIDR nº 3.299",
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.299-de-29-de-setembro-de-2026-735402625"
-    },
-    {
-     "uf": "SC",
-     "municipio": "Canelinha",
-     "data": "2026-09-29",
-     "documento": "Portaria SEDEC/MIDR nº 3.298",
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.298-de-29-de-setembro-de-2026-735357538"
-    },
-    {
-     "uf": "SC",
-     "municipio": "Ermo",
-     "data": "2026-09-29",
-     "documento": "Portaria SEDEC/MIDR nº 3.298",
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.298-de-29-de-setembro-de-2026-735357538"
-    },
-    {
-     "uf": "SC",
-     "municipio": "Ibicaré",
-     "data": "2026-09-29",
-     "documento": "Portaria SEDEC/MIDR nº 3.298",
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.298-de-29-de-setembro-de-2026-735357538"
-    },
-    {
-     "uf": "SC",
-     "municipio": "Irineópolis",
-     "data": "2026-09-29",
-     "documento": "Portaria SEDEC/MIDR nº 3.298",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.298-de-29-de-setembro-de-2026-735357538"
-    },
-    {
-     "uf": "RS",
-     "municipio": "Cerrito",
-     "data": "2026-09-29",
-     "documento": "Portaria SEDEC/MIDR nº 3.298",
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.298-de-29-de-setembro-de-2026-735357538"
-    },
-    {
-     "uf": "RS",
-     "municipio": "Nova Santa Rita",
-     "data": "2026-09-29",
-     "documento": "Portaria SEDEC/MIDR nº 3.298",
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.298-de-29-de-setembro-de-2026-735357538"
-    },
-    {
-     "uf": "RS",
-     "municipio": "Rio Grande",
-     "data": "2026-09-29",
-     "documento": "Portaria SEDEC/MIDR nº 3.298",
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.298-de-29-de-setembro-de-2026-735357538"
-    },
-    {
-     "uf": "RS",
-     "municipio": "São Francisco de Paula",
-     "data": "2026-09-29",
-     "documento": "Portaria SEDEC/MIDR nº 3.298",
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.298-de-29-de-setembro-de-2026-735357538"
-    },
-    {
-     "uf": "PB",
-     "municipio": "Cacimba de Dentro",
-     "data": "2026-09-29",
-     "documento": "Portaria SEDEC/MIDR nº 3.299",
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.299-de-29-de-setembro-de-2026-735402625"
-    },
-    {
-     "uf": "PB",
-     "municipio": "Santana dos Garrotes",
-     "data": "2026-09-29",
-     "documento": "Portaria SEDEC/MIDR nº 3.299",
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.299-de-29-de-setembro-de-2026-735402625"
-    },
-    {
-     "uf": "BA",
-     "municipio": "Bom Jesus da Lapa",
-     "data": "2026-09-29",
-     "documento": "Portaria SEDEC/MIDR nº 3.299",
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.299-de-29-de-setembro-de-2026-735402625"
-    },
-    {
-     "uf": "SP",
-     "municipio": "Ribeira",
-     "data": "2026-09-28",
-     "documento": "Portaria SEDEC/MIDR nº 3.265",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.265-de-28-de-setembro-de-2026-735114233"
-    },
-    {
-     "uf": "SC",
-     "municipio": "Turvo",
-     "data": "2026-09-28",
-     "documento": "Portaria SEDEC/MIDR nº 3.263",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.263-de-28-de-setembro-de-2026-735103331"
-    },
-    {
-     "uf": "RS",
-     "municipio": "Braga",
-     "data": "2026-09-28",
-     "documento": "Portaria SEDEC/MIDR nº 3.263",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.263-de-28-de-setembro-de-2026-735103331"
-    },
-    {
-     "uf": "RS",
-     "municipio": "Vista Alegre",
-     "data": "2026-09-28",
-     "documento": "Portaria SEDEC/MIDR nº 3.263",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.263-de-28-de-setembro-de-2026-735103331"
-    },
-    {
-     "uf": "RN",
-     "municipio": "Caraúbas",
-     "data": "2026-09-28",
-     "documento": "Portaria SEDEC/MIDR nº 3.264",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.264-de-28-de-setembro-de-2026-735107052"
-    },
-    {
-     "uf": "RN",
-     "municipio": "Coronel Ezequiel",
-     "data": "2026-09-28",
-     "documento": "Portaria SEDEC/MIDR nº 3.264",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.264-de-28-de-setembro-de-2026-735107052"
-    },
-    {
-     "uf": "PR",
-     "municipio": "Ivaiporã",
-     "data": "2026-09-28",
-     "documento": "Portaria SEDEC/MIDR nº 3.263",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.263-de-28-de-setembro-de-2026-735103331"
-    },
-    {
-     "uf": "BA",
-     "municipio": "Cordeiros",
-     "data": "2026-09-28",
-     "documento": "Portaria SEDEC/MIDR nº 3.264",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.264-de-28-de-setembro-de-2026-735107052"
-    },
-    {
-     "uf": "AL",
-     "municipio": "Batalha",
-     "data": "2026-09-28",
-     "documento": "Portaria SEDEC/MIDR nº 3.264",
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.264-de-28-de-setembro-de-2026-735107052"
-    }
-   ]
-  },
-  {
-   "id": "municipios_sob_alerta_cemaden",
-   "grupo": "risco_agora",
-   "rotulo": "Municípios sob alerta do Cemaden",
-   "valor": 13,
+   "rotulo": "Municípios que decretaram emergência ou calamidade na semana",
+   "valor": 69,
+   "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "fonte": "Cemaden (alertas vigentes)",
+   "referencia": "últimos 7 dias",
+   "fonte": "Defesa Civil nacional, no Diário Oficial da União",
+   "url_fonte": null,
+   "consultado_em": "desde 29/06/2026",
+   "primeira_medicao": false,
+   "valor_semana_anterior": null,
+   "variacao": 69,
+   "nota": "pela data do decreto",
+   "secundaria": null,
+   "lista": [],
+   "pagina_de_origem": "defesa-civil.html"
+  },
+  {
+   "id": "populacao_decretos_na_semana",
+   "grupo": "emergencias",
+   "rotulo": "Pessoas que vivem nos municípios que decretaram na semana",
+   "valor": 1134670,
+   "unidade": "pessoas",
+   "sem_coleta": false,
+   "periodo": null,
+   "referencia": "últimos 7 dias",
+   "fonte": "Censo 2022, do IBGE",
+   "url_fonte": null,
+   "consultado_em": "desde 29/06/2026",
+   "primeira_medicao": false,
+   "valor_semana_anterior": null,
+   "variacao": 1134670,
+   "nota": "Censo 2022, pelos municípios que entraram na semana",
+   "secundaria": null,
+   "lista": [],
+   "pagina_de_origem": "defesa-civil.html"
+  },
+  {
+   "id": "reconhecimentos_na_semana",
+   "grupo": "emergencias",
+   "rotulo": "Municípios que tiveram a emergência reconhecida pelo governo federal na semana",
+   "valor": 58,
+   "unidade": null,
+   "sem_coleta": false,
+   "periodo": null,
+   "referencia": "últimos 7 dias",
+   "fonte": "Defesa Civil nacional, no Diário Oficial da União",
+   "url_fonte": null,
+   "consultado_em": "desde 29/06/2026",
+   "primeira_medicao": false,
+   "valor_semana_anterior": null,
+   "variacao": 58,
+   "nota": "pela data da portaria",
+   "secundaria": null,
+   "lista": [],
+   "pagina_de_origem": "defesa-civil.html"
+  },
+  {
+   "id": "municipios_alerta_cemaden",
+   "grupo": "risco_agora",
+   "rotulo": "Municípios sob alerta do Cemaden",
+   "valor": 14,
+   "unidade": null,
+   "sem_coleta": false,
+   "periodo": null,
+   "referencia": "02/10/2026 19:15",
+   "fonte": "Cemaden",
    "url_fonte": "https://www.gov.br/cemaden/pt-br",
-   "consultado_em": "02/10/2026 11:22",
+   "consultado_em": "02/10/2026 19:15",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "mesma consulta e mesma unidade da página Defesa civil",
+   "nota": null,
    "secundaria": null,
-   "lista": []
+   "lista": [],
+   "pagina_de_origem": "defesa-civil.html"
+  },
+  {
+   "id": "municipios_aviso_inmet",
+   "grupo": "risco_agora",
+   "rotulo": "Municípios sob aviso do Inmet",
+   "valor": 2876,
+   "unidade": null,
+   "sem_coleta": false,
+   "periodo": null,
+   "referencia": "02/10/2026 19:15",
+   "fonte": "Inmet",
+   "url_fonte": "https://portal.inmet.gov.br/",
+   "consultado_em": "02/10/2026 19:15",
+   "primeira_medicao": true,
+   "valor_semana_anterior": null,
+   "variacao": null,
+   "nota": null,
+   "secundaria": null,
+   "lista": [],
+   "pagina_de_origem": "defesa-civil.html"
+  },
+  {
+   "id": "decreto_e_alerta_ao_mesmo_tempo",
+   "grupo": "risco_agora",
+   "rotulo": "Municípios com decreto de emergência e alerta ao mesmo tempo",
+   "valor": 333,
+   "unidade": null,
+   "sem_coleta": false,
+   "periodo": null,
+   "referencia": "02/10/2026 19:15",
+   "fonte": "MARÉ (cruzamento das duas consultas)",
+   "url_fonte": null,
+   "consultado_em": "02/10/2026 19:15",
+   "primeira_medicao": true,
+   "valor_semana_anterior": null,
+   "variacao": null,
+   "nota": null,
+   "secundaria": null,
+   "lista": [],
+   "pagina_de_origem": "defesa-civil.html"
   },
   {
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 8642,
+   "valor": 18756,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
@@ -801,323 +314,284 @@
    "lista": [
     {
      "uf": "PA",
-     "valor": 4187
+     "valor": 6786
     },
     {
      "uf": "BA",
-     "valor": 2290
-    },
-    {
-     "uf": "PI",
-     "valor": 476
-    },
-    {
-     "uf": "MT",
-     "valor": 453
+     "valor": 5272
     },
     {
      "uf": "MA",
-     "valor": 376
-    },
-    {
-     "uf": "TO",
-     "valor": 273
-    },
-    {
-     "uf": "MG",
-     "valor": 210
+     "valor": 1257
     },
     {
      "uf": "AM",
-     "valor": 204
+     "valor": 1200
+    },
+    {
+     "uf": "MG",
+     "valor": 987
+    },
+    {
+     "uf": "PI",
+     "valor": 892
+    },
+    {
+     "uf": "MT",
+     "valor": 506
     },
     {
      "uf": "AP",
-     "valor": 69
+     "valor": 397
     },
     {
-     "uf": "RR",
-     "valor": 23
-    },
-    {
-     "uf": "GO",
-     "valor": 22
-    },
-    {
-     "uf": "CE",
-     "valor": 15
-    },
-    {
-     "uf": "PE",
-     "valor": 11
+     "uf": "TO",
+     "valor": 339
     },
     {
      "uf": "AC",
-     "valor": 10
+     "valor": 251
+    },
+    {
+     "uf": "RO",
+     "valor": 228
+    },
+    {
+     "uf": "RR",
+     "valor": 216
+    },
+    {
+     "uf": "CE",
+     "valor": 112
+    },
+    {
+     "uf": "PE",
+     "valor": 101
+    },
+    {
+     "uf": "RS",
+     "valor": 39
+    },
+    {
+     "uf": "AL",
+     "valor": 33
+    },
+    {
+     "uf": "RN",
+     "valor": 33
+    },
+    {
+     "uf": "GO",
+     "valor": 32
+    },
+    {
+     "uf": "PB",
+     "valor": 30
+    },
+    {
+     "uf": "SE",
+     "valor": 18
     },
     {
      "uf": "ES",
      "valor": 10
     },
     {
-     "uf": "RN",
-     "valor": 5
-    },
-    {
-     "uf": "AL",
-     "valor": 4
-    },
-    {
      "uf": "MS",
-     "valor": 2
+     "valor": 9
     },
     {
-     "uf": "RO",
-     "valor": 2
+     "uf": "SC",
+     "valor": 7
+    },
+    {
+     "uf": "PR",
+     "valor": 1
     }
-   ]
+   ],
+   "pagina_de_origem": null,
+   "referencia": null,
+   "unidade": null
   },
   {
-   "id": "temperatura_maxima",
+   "id": "temperatura_desvio_capital",
    "grupo": "risco_agora",
-   "rotulo": "Maior máxima prevista entre as capitais, em grau Celsius",
-   "valor": 39.0,
+   "rotulo": "A maior diferença de temperatura máxima em relação ao normal, em grau Celsius",
+   "valor": 2.9,
+   "unidade": "°C",
    "sem_coleta": false,
    "periodo": null,
-   "fonte": "INMET — previsão para as capitais",
+   "referencia": "02/10/2026",
+   "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "url_fonte": null,
    "consultado_em": "02/10/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "Teresina (PI), previsão para 02/10/2026; critério: maior máxima e menor mínima entre manhã, tarde e noite",
+   "nota": "máxima prevista de 36.0 °C contra a média de 33.1 °C do mês; 24 capital(is) com normal publicada",
    "secundaria": null,
-   "lista": [
-    {
-     "uf": "PI",
-     "capital": "Teresina",
-     "valor": 39.0,
-     "data": "02/10/2026"
-    },
-    {
-     "uf": "RR",
-     "capital": "Boa Vista",
-     "valor": 37.0,
-     "data": "02/10/2026"
-    },
-    {
-     "uf": "AM",
-     "capital": "Manaus",
-     "valor": 36.0,
-     "data": "02/10/2026"
-    },
-    {
-     "uf": "PA",
-     "capital": "Belém",
-     "valor": 36.0,
-     "data": "02/10/2026"
-    },
-    {
-     "uf": "TO",
-     "capital": "Palmas",
-     "valor": 36.0,
-     "data": "02/10/2026"
-    }
-   ]
+   "lista": [],
+   "pagina_de_origem": "monitor-de-riscos.html"
   },
   {
-   "id": "qualidade_ar_indice",
+   "id": "capitais_ar_ruim_ou_pior",
    "grupo": "risco_agora",
-   "rotulo": "Capitais com índice EAQI acima de 40",
-   "valor": 12,
+   "rotulo": "Capitais com o ar na faixa ruim ou acima dela",
+   "valor": 11,
+   "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "fonte": "Open-Meteo (Copernicus CAMS)",
+   "referencia": "leitura mais recente",
+   "fonte": "Copernicus (CAMS), via Open-Meteo",
    "url_fonte": null,
-   "consultado_em": "2026-10-02T00:00",
+   "consultado_em": "leitura mais recente",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "escala EAQI, faixas da própria fonte; 27 capital(is) com leitura; critério: maior valor horário do dia",
+   "nota": "faixa da própria escala europeia, acima de 40; 27 capital(is) com leitura",
    "secundaria": null,
    "lista": [
-    {
-     "uf": "MG",
-     "valor": 70,
-     "hora": "2026-10-02T12:00"
-    },
-    {
-     "uf": "DF",
-     "valor": 66,
-     "hora": "2026-10-02T12:00"
-    },
-    {
-     "uf": "RJ",
-     "valor": 66,
-     "hora": "2026-10-02T10:00"
-    },
-    {
-     "uf": "ES",
-     "valor": 61,
-     "hora": "2026-10-02T01:00"
-    },
-    {
-     "uf": "SP",
-     "valor": 56,
-     "hora": "2026-10-02T00:00"
-    },
-    {
-     "uf": "TO",
-     "valor": 55,
-     "hora": "2026-10-02T15:00"
-    },
-    {
-     "uf": "AM",
-     "valor": 49,
-     "hora": "2026-10-02T00:00"
-    },
-    {
-     "uf": "MT",
-     "valor": 47,
-     "hora": "2026-10-02T23:00"
-    },
-    {
-     "uf": "GO",
-     "valor": 45,
-     "hora": "2026-10-02T15:00"
-    },
-    {
-     "uf": "RO",
-     "valor": 45,
-     "hora": "2026-10-02T20:00"
-    },
-    {
-     "uf": "PR",
-     "valor": 44,
-     "hora": "2026-10-02T00:00"
-    },
-    {
-     "uf": "AC",
-     "valor": 42,
-     "hora": "2026-10-02T00:00"
-    }
-   ]
+    "AC",
+    "AM",
+    "DF",
+    "ES",
+    "MG",
+    "MS",
+    "PR",
+    "RJ",
+    "RO",
+    "SP",
+    "TO"
+   ],
+   "pagina_de_origem": "monitor-de-riscos.html"
   },
   {
-   "id": "pago_na_semana",
+   "id": "desembolsado_no_mes",
    "grupo": "dinheiro",
-   "rotulo": "Desembolsado no período em recursos oriundos das medidas federais do El Niño",
-   "valor": null,
-   "sem_coleta": true,
-   "periodo": null,
-   "fonte": "Portal da Transparência e atos federais",
-   "url_fonte": null,
-   "consultado_em": null,
-   "primeira_medicao": true,
-   "valor_semana_anterior": null,
-   "variacao": null,
-   "nota": "as medidas federais publicam empenhado e pago em agregados sem data de pagamento: não há como recortar sete dias sem inventar a data",
-   "secundaria": null,
-   "lista": []
-  },
-  {
-   "id": "transferido_na_semana",
-   "grupo": "dinheiro",
-   "rotulo": "Transferido pela União a municípios no período",
-   "valor": null,
-   "sem_coleta": true,
-   "periodo": null,
-   "fonte": "Portal da Transparência (transferências)",
-   "url_fonte": null,
-   "consultado_em": null,
-   "primeira_medicao": true,
-   "valor_semana_anterior": null,
-   "variacao": null,
-   "nota": "o Portal da Transparência publica a transferência a município por MÊS: a fonte entrega o mês, e não a semana",
-   "secundaria": null,
-   "lista": []
-  },
-  {
-   "id": "atos_federais_no_periodo",
-   "grupo": "dinheiro",
-   "rotulo": "Novos atos federais de financiamento no período",
-   "valor": 0,
+   "rotulo": "Em recursos oriundos das medidas federais do El Niño, desembolsados no mês de setembro de 2026",
+   "valor": 150887172.93,
+   "unidade": "reais",
    "sem_coleta": false,
-   "periodo": {
-    "ini": "2026-09-25",
-    "fim": "2026-10-02"
-   },
-   "fonte": "Atos federais lidos pelo MARÉ",
+   "periodo": null,
+   "referencia": "mês de setembro de 2026",
+   "fonte": "Portal da Transparência",
    "url_fonte": null,
    "consultado_em": null,
-   "primeira_medicao": false,
-   "valor_semana_anterior": 0,
-   "variacao": 0,
+   "primeira_medicao": true,
+   "valor_semana_anterior": null,
+   "variacao": null,
    "nota": null,
    "secundaria": null,
-   "lista": []
+   "lista": [],
+   "pagina_de_origem": "financiamento.html"
+  },
+  {
+   "id": "resposta_autorizado_semana",
+   "grupo": "dinheiro",
+   "rotulo": "Autorizados pela defesa civil federal nos últimos 7 dias",
+   "valor": 0,
+   "unidade": "reais",
+   "sem_coleta": false,
+   "periodo": null,
+   "referencia": "últimos 7 dias",
+   "fonte": "Defesa Civil nacional, no Diário Oficial da União",
+   "url_fonte": null,
+   "consultado_em": null,
+   "primeira_medicao": true,
+   "valor_semana_anterior": null,
+   "variacao": null,
+   "nota": "para 68 município(s) com ato no ciclo",
+   "secundaria": null,
+   "lista": [],
+   "pagina_de_origem": "financiamento.html"
+  },
+  {
+   "id": "atos_federais_semana",
+   "grupo": "dinheiro",
+   "rotulo": "Atos federais de financiamento publicados nos últimos 7 dias",
+   "valor": 0,
+   "unidade": "atos",
+   "sem_coleta": false,
+   "periodo": null,
+   "referencia": "últimos 7 dias",
+   "fonte": "atos federais lidos pelo MARÉ",
+   "url_fonte": null,
+   "consultado_em": null,
+   "primeira_medicao": true,
+   "valor_semana_anterior": null,
+   "variacao": null,
+   "nota": null,
+   "secundaria": null,
+   "lista": [],
+   "pagina_de_origem": "financiamento.html"
   },
   {
    "id": "dengue_casos_se",
    "grupo": "saude",
-   "rotulo": "Casos de dengue notificados na semana epidemiológica 37",
-   "valor": 482,
+   "rotulo": "Casos prováveis de dengue na semana epidemiológica 33",
+   "valor": 8146,
+   "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "fonte": "InfoDengue (Fiocruz/FGV), municípios acompanhados pelo MARÉ",
-   "url_fonte": "https://info.dengue.mat.br/",
-   "consultado_em": "24/09/2026",
-   "primeira_medicao": false,
-   "valor_semana_anterior": 1094,
-   "variacao": -612,
-   "nota": "as últimas semanas são parciais e sobem com as notificações atrasadas; este número não indica relação com o El Niño",
+   "referencia": "2026-33",
+   "fonte": "Ministério da Saúde (Sinan)",
+   "url_fonte": null,
+   "consultado_em": "2026-33",
+   "primeira_medicao": true,
+   "valor_semana_anterior": null,
+   "variacao": null,
+   "nota": "notificações, não casos confirmados; as últimas semanas são parciais e sobem com as notificações atrasadas",
    "secundaria": null,
-   "lista": []
+   "lista": [],
+   "pagina_de_origem": "saude.html"
   },
   {
    "id": "srag_internacoes_se",
    "grupo": "saude",
    "rotulo": "Internações por síndrome respiratória grave na semana epidemiológica 35",
-   "valor": 8534,
+   "valor": 4267,
+   "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "fonte": "SIVEP-Gripe (Ministério da Saúde)",
-   "url_fonte": "https://dadosabertos.saude.gov.br/dataset/srag-2019-a-2026",
-   "consultado_em": "01/10/2026",
-   "primeira_medicao": false,
-   "valor_semana_anterior": 9238,
-   "variacao": -704,
-   "nota": "as últimas semanas são parciais e sobem com as notificações atrasadas (a fonte declara 4 semana(s) incompleta(s)); este número não indica relação com o El Niño",
+   "referencia": "2026-35",
+   "fonte": "Ministério da Saúde (SIVEP-Gripe)",
+   "url_fonte": null,
+   "consultado_em": "2026-35",
+   "primeira_medicao": true,
+   "valor_semana_anterior": null,
+   "variacao": null,
+   "nota": "as últimas semanas são parciais e sobem com as notificações atrasadas",
    "secundaria": null,
-   "lista": []
+   "lista": [],
+   "pagina_de_origem": "saude.html"
   },
   {
    "id": "ufs_dengue_alerta",
    "grupo": "saude",
    "rotulo": "Estados com dengue em nível de alerta",
    "valor": 3,
+   "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "fonte": "InfoDengue (Fiocruz/FGV)",
-   "url_fonte": "https://info.dengue.mat.br/",
-   "consultado_em": "24/09/2026",
+   "referencia": "nível atual",
+   "fonte": "InfoDengue (Fiocruz e FGV)",
+   "url_fonte": null,
+   "consultado_em": "nível atual",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "nível de alerta calculado pelo InfoDengue a partir das notificações; o estado entra quando ao menos um município acompanhado está em nível 3 ou 4",
+   "nota": "nível calculado pelo InfoDengue; o estado entra quando ao menos um município acompanhado está em nível 3 ou 4",
    "secundaria": null,
    "lista": [
-    {
-     "uf": "CE"
-    },
-    {
-     "uf": "PB"
-    },
-    {
-     "uf": "PE"
-    }
-   ]
+    "CE",
+    "PB",
+    "PE"
+   ],
+   "pagina_de_origem": "saude.html"
   }
+ ],
+ "sem_dado_nesta_edicao": [
+  "Estados que mudaram de faixa no MARÉ Legal ou no MARÉ Saúde"
  ],
  "nao_calculaveis": [
   {
@@ -1141,5 +615,5 @@
    "por_que_nao": "depende do campo `escopo` em data/calendario/fontes_suspensas.json, que hoje é nulo nos 38 registros (bloco E do pedido de 27/09, não executado)."
   }
  ],
- "texto_pronto": "Entre 25/09 e 02/10, 30 municípios decretaram emergência ou calamidade (AM, PA, PB); 43 municípios foram reconhecidos pelo governo federal; o INPE detectou 8642 focos de calor nas últimas 24 horas (PA); a maior máxima prevista entre as capitais é de 39,0 °C em Teresina; 12 capitais estão com índice de qualidade do ar acima de 40."
+ "texto_pronto": "Edição de 02/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 45,2 de 100; o MARÉ Saúde, em 31,8 de 100, média dos 21 estados verificados. Na semana, nenhum município publicou plano para o ciclo e 69 municípios decretaram situação de emergência ou calamidade; 1,1 milhão de pessoas vivem nos municípios que decretaram.\n\nDesde o início do ciclo, em 29 de junho, 17 de 27 capitais têm plano localizado e 749 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação da Futura Evidence Lab."
 }

@@ -24,7 +24,7 @@ USO
 import json, math, re, sys, time, urllib.parse, urllib.error
 from datetime import date
 import funil
-from coletores_base import (buscar, preservar_evidencia, preservar_texto_integral, log_busca,
+from coletores_base import (carimbar_atos, buscar, preservar_evidencia, preservar_texto_integral, log_busca,
                             registrar_lacuna, marcar_fonte_consultada, referencia_ibge, ler, gravar,
                             DECISOES_LOG,
                             abrir_lote_log, fechar_lote_log, descarregar_lote_log,
@@ -296,7 +296,7 @@ def coletar_lote(lote: int, tamanho: int, desde: str, pendentes_desde: str = "",
     finally:
         fechar_lote_log()
         fechar_lote_livro()
-    gravar("atos_resposta.json", atos); gravar("pistas_imprensa.json", pistas)
+    gravar("atos_resposta.json", carimbar_atos(atos)); gravar("pistas_imprensa.json", pistas)
     # Item B do handover da auditoria do funil (27/09/2026): a rodada conta por etapa, para que
     # "está encontrando?" se responda sem abrir o código. Contagem não decide nada.
     funil.registrar("diario_municipal", consultados=n_ok, lacunas=n_lac,
@@ -381,7 +381,7 @@ def _varrer(alvo, por_cod, desde, atos, pistas, vistos, vistos_pistas):
             # Salvamento parcial: descarrega os lotes e grava o banco. Uma varredura nacional não
             # pode depender de terminar para que o que já foi lido conte.
             descarregar_lote_log(); descarregar_lote_livro()
-            gravar("atos_resposta.json", atos); gravar("pistas_imprensa.json", pistas)
+            gravar("atos_resposta.json", carimbar_atos(atos)); gravar("pistas_imprensa.json", pistas)
             print(f"  … {n_ok} consultados, {n_lac} lacunas, {novos} decretos, {npist} pistas", flush=True)
     return n_ok, n_lac, novos, npist
 

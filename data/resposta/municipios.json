@@ -779,9 +779,10 @@
    "decreto": true,
    "primeiro_decreto": "16/09/2026",
    "tipos": [
-    "SE"
+    "SE",
+    "reconhecimento_federal"
    ],
-   "reconhecido": false,
+   "reconhecido": true,
    "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
@@ -800,9 +801,17 @@
      "data": "2026-09-16",
      "decreto": "Decreto nº 705",
      "hash": "6fee2282bb47483457911c67f1254babb15c9920b7082da3a3870d0776fd2da3"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.350-de-1-de-outubro-de-2026-736019180",
+     "data": "01/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.350",
+     "hash": "f2d33fdc67f2a72edaaa4aea3e3b46c925f256ff34e34ee093d402b85d2a44d5"
     }
    ],
-   "n_eventos": 2
+   "n_eventos": 3
   },
   "5000203": {
    "ibge": "5000203",
@@ -1950,14 +1959,25 @@
    "ibge": "1100015",
    "nome": "Alta Floresta D'Oeste",
    "uf": "RO",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "tipos": [],
+   "decreto": true,
+   "primeiro_decreto": "30/08/2026",
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM",
+     "fonte": "Diário oficial municipal (via Querido Diário)",
+     "url": "https://x/d.pdf",
+     "data": "30/08/2026",
+     "decreto": "Decreto municipal nº 987/2026",
+     "hash": "hashfalso"
+    }
+   ],
+   "n_eventos": 1
   },
   "3500907": {
    "ibge": "3500907",
@@ -5990,14 +6010,25 @@
    "ibge": "3104601",
    "nome": "Astolfo Dutra",
    "uf": "MG",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "01/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.349-de-1-de-outubro-de-2026-736039714",
+     "data": "01/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.349",
+     "hash": "187a499ad451b797f255977c3af80fa9760c6f1defc7f4fda174c855a9bc4df6"
+    }
+   ],
+   "n_eventos": 1
   },
   "4102109": {
    "ibge": "4102109",
@@ -15340,27 +15371,49 @@
    "ibge": "4203808",
    "nome": "Canoinhas",
    "uf": "SC",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "01/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.353-de-1-de-outubro-de-2026-736035614",
+     "data": "01/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.353",
+     "hash": "2efab37028f1456a6c01cf628f6396dd116de46140eb96f9dcd8bbff2a8fda49"
+    }
+   ],
+   "n_eventos": 1
   },
   "2906808": {
    "ibge": "2906808",
    "nome": "Cansanção",
    "uf": "BA",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "01/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.350-de-1-de-outubro-de-2026-736019180",
+     "data": "01/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.350",
+     "hash": "f2d33fdc67f2a72edaaa4aea3e3b46c925f256ff34e34ee093d402b85d2a44d5"
+    }
+   ],
+   "n_eventos": 1
   },
   "1400175": {
    "ibge": "1400175",
@@ -17752,14 +17805,25 @@
    "ibge": "3115458",
    "nome": "Catuji",
    "uf": "MG",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "01/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.349-de-1-de-outubro-de-2026-736039714",
+     "data": "01/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.349",
+     "hash": "187a499ad451b797f255977c3af80fa9760c6f1defc7f4fda174c855a9bc4df6"
+    }
+   ],
+   "n_eventos": 1
   },
   "2303659": {
    "ibge": "2303659",
@@ -21366,9 +21430,17 @@
      "data": "11/08/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.579",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.353-de-1-de-outubro-de-2026-736035614",
+     "data": "01/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.353",
+     "hash": "2efab37028f1456a6c01cf628f6396dd116de46140eb96f9dcd8bbff2a8fda49"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "5103379": {
    "ibge": "5103379",
@@ -24882,11 +24954,12 @@
    "nome": "Envira",
    "uf": "AM",
    "decreto": true,
-   "primeiro_decreto": null,
+   "primeiro_decreto": "01/10/2026",
    "tipos": [
-    "SE"
+    "SE",
+    "reconhecimento_federal"
    ],
-   "reconhecido": false,
+   "reconhecido": true,
    "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
@@ -24897,9 +24970,17 @@
      "data": "2026-09-17",
      "decreto": "Decreto nº 0240/2026",
      "hash": "ad548220c6dac1c49b2226c32520c55f924375363ad8cc69856f2197fae5b027"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.350-de-1-de-outubro-de-2026-736019180",
+     "data": "01/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.350",
+     "hash": "f2d33fdc67f2a72edaaa4aea3e3b46c925f256ff34e34ee093d402b85d2a44d5"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "1200252": {
    "ibge": "1200252",
@@ -31543,14 +31624,25 @@
    "ibge": "2913002",
    "nome": "Ibitiara",
    "uf": "BA",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "01/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.350-de-1-de-outubro-de-2026-736019180",
+     "data": "01/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.350",
+     "hash": "f2d33fdc67f2a72edaaa4aea3e3b46c925f256ff34e34ee093d402b85d2a44d5"
+    }
+   ],
+   "n_eventos": 1
   },
   "3519600": {
    "ibge": "3519600",
@@ -37592,14 +37684,25 @@
    "ibge": "2703700",
    "nome": "Jaramataia",
    "uf": "AL",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "01/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.350-de-1-de-outubro-de-2026-736019180",
+     "data": "01/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.350",
+     "hash": "f2d33fdc67f2a72edaaa4aea3e3b46c925f256ff34e34ee093d402b85d2a44d5"
+    }
+   ],
+   "n_eventos": 1
   },
   "2307106": {
    "ibge": "2307106",
@@ -41967,14 +42070,25 @@
    "ibge": "2919900",
    "nome": "Macururé",
    "uf": "BA",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "01/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.350-de-1-de-outubro-de-2026-736019180",
+     "data": "01/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.350",
+     "hash": "f2d33fdc67f2a72edaaa4aea3e3b46c925f256ff34e34ee093d402b85d2a44d5"
+    }
+   ],
+   "n_eventos": 1
   },
   "2307635": {
    "ibge": "2307635",
@@ -48806,14 +48920,25 @@
    "ibge": "5214838",
    "nome": "Nova Crixás",
    "uf": "GO",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "01/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.358-de-1-de-outubro-de-2026-736043392",
+     "data": "01/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.358",
+     "hash": "cba94404b8acbf6be94fff6cac0fbb6ba3d6291da8a86d0bb05c0b22a6fad4d3"
+    }
+   ],
+   "n_eventos": 1
   },
   "2408300": {
    "ibge": "2408300",
@@ -50791,14 +50916,25 @@
    "ibge": "2706000",
    "nome": "Olivença",
    "uf": "AL",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "01/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.350-de-1-de-outubro-de-2026-736019180",
+     "data": "01/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.350",
+     "hash": "f2d33fdc67f2a72edaaa4aea3e3b46c925f256ff34e34ee093d402b85d2a44d5"
+    }
+   ],
+   "n_eventos": 1
   },
   "3145802": {
    "ibge": "3145802",
@@ -56525,14 +56661,25 @@
    "ibge": "2707107",
    "nome": "Piranhas",
    "uf": "AL",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "01/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.350-de-1-de-outubro-de-2026-736019180",
+     "data": "01/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.350",
+     "hash": "f2d33fdc67f2a72edaaa4aea3e3b46c925f256ff34e34ee093d402b85d2a44d5"
+    }
+   ],
+   "n_eventos": 1
   },
   "5217203": {
    "ibge": "5217203",
@@ -59102,14 +59249,25 @@
    "ibge": "4213906",
    "nome": "Presidente Castello Branco",
    "uf": "SC",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "01/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.353-de-1-de-outubro-de-2026-736035614",
+     "data": "01/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.353",
+     "hash": "2efab37028f1456a6c01cf628f6396dd116de46140eb96f9dcd8bbff2a8fda49"
+    }
+   ],
+   "n_eventos": 1
   },
   "4120408": {
    "ibge": "4120408",
@@ -66040,9 +66198,17 @@
      "data": "05/08/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.520",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.353-de-1-de-outubro-de-2026-736035614",
+     "data": "01/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.353",
+     "hash": "2efab37028f1456a6c01cf628f6396dd116de46140eb96f9dcd8bbff2a8fda49"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "5219605": {
    "ibge": "5219605",
@@ -77695,14 +77861,25 @@
    "ibge": "3169307",
    "nome": "Três Corações",
    "uf": "MG",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "01/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.349-de-1-de-outubro-de-2026-736039714",
+     "data": "01/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.349",
+     "hash": "187a499ad451b797f255977c3af80fa9760c6f1defc7f4fda174c855a9bc4df6"
+    }
+   ],
+   "n_eventos": 1
   },
   "4321709": {
    "ibge": "4321709",

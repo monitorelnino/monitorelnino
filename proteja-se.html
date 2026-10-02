@@ -29,8 +29,8 @@
 <script src="assets/vendor/jspdf.umd.min.js?v=98ccf17a"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=e3a38231">
-<link rel="stylesheet" href="assets/base.css?v=e42b498a">
-<script src="assets/mapas.js?v=993294c9"></script>
+<link rel="stylesheet" href="assets/base.css?v=fe332865">
+<script src="assets/mapas.js?v=d03e0aca"></script>
 </head>
 <body>
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -49,11 +49,16 @@
 
   <!-- P2 (item 10.1): os telefones em quatro cartões, no topo, em destaque. A faixa superior de
        4 px dá a cor da família a cada número; o número é a informação, e por isso é ele que ocupa
-       o tamanho. A barra antiga trazia um quinto cartão (SMS 40199) e uma linha de explicação por
-       número — saiu com o texto aprovado, que é mais curto de propósito. -->
+       o tamanho.
+       02/10/2026 (item 7 do handover da Defesa civil): o cartão do SMS 40199 VOLTA à barra. Ele
+       saiu em 30/09 com o texto mais curto, e o número sobreviveu só dentro da ficha de chuvas —
+       ou seja, deixou de estar onde quem chega com pressa olha. O serviço foi conferido pela
+       central em 02/10/2026: ativo, cadastro por SMS com o CEP, cancelamento com SAIR e o CEP.
+       O contrato de layout passa a exigir os quatro números (192, 199, 190, 40199), para o cartão
+       não sair de novo numa reforma de desenho. -->
   <section class="emerg" id="emergencia" aria-labelledby="emergTitulo">
     <h2 id="emergTitulo">Em uma emergência, ligue</h2>
-    <div class="emerg-cartoes">
+    <div class="emerg-cartoes emerg-cartoes--cinco">
       <a class="emerg-cartao emerg-cartao--defesa" href="tel:199">
         <span class="emerg-icone" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5L17 13l4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4 7.2 2 2 0 0 1 6.5 3Z"/></svg></span>
         <b class="emerg-numero">199</b><span class="emerg-rotulo">Defesa Civil</span></a>
@@ -66,6 +71,10 @@
       <a class="emerg-cartao emerg-cartao--policia" href="tel:190">
         <span class="emerg-icone" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5L17 13l4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4 7.2 2 2 0 0 1 6.5 3Z"/></svg></span>
         <b class="emerg-numero">190</b><span class="emerg-rotulo">Polícia</span></a>
+      <div class="emerg-cartao emerg-cartao--sms">
+        <span class="emerg-icone" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg></span>
+        <b class="emerg-numero">40199</b><span class="emerg-rotulo">Alertas por SMS</span>
+        <small>Envie o CEP da sua região para 40199 e receba os avisos da Defesa Civil. Para cancelar, envie SAIR e o CEP.</small></div>
     </div>
     <p class="hint">Ligações gratuitas, 24 horas, de qualquer telefone. Deixe os alertas de emergência ativados no celular: a Defesa Civil avisa sem cadastro.</p>
   </section>

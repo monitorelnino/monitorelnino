@@ -1,0 +1,84 @@
+{
+  "_governanca": "Contrato de layout da Defesa civil (handover da editoria, 02/10/2026 — 'a cadeia do aviso ao recurso'). ESTE ARQUIVO É A VERDADE: o HTML e o JS se conformam a ele. Quem verifica é scripts/verificar_layout.py, portão bloqueante — nenhum PR desta página é mesclado com ele vermelho. A página conta UMA cadeia: aviso → alerta → decreto → reconhecimento → recurso.",
+  "pagina": "defesa-civil.html",
+  "componentes": {
+    "numeros": ".cartao-numero",
+    "grade_numeros": ".grade-numeros--3",
+    "figura": ".cartao-mapa",
+    "grade_figuras": ".grade-figuras--3"
+  },
+  "_nota_componentes": "O handover nomeia `.cartao-destaque` para os números do topo. Esse seletor não existe no repositório: o componente real é `.cartao-numero` dentro de `.grade-numeros`, o mesmo da Imprensa e do Financiamento. Divergência declarada, igual à dos contratos de saude.json e financiamento.json.",
+  "secoes": [
+    {
+      "id": "dc-topo",
+      "h2": null,
+      "tipo": "numeros",
+      "grade": ".grade-numeros--3",
+      "linhas": 2,
+      "cartoes": [
+        {"id": "municipios_alerta_cemaden", "tipo": "numero", "chave": "alertas/vigentes.json", "valor_el": "topoCemaden"},
+        {"id": "municipios_aviso_inmet", "tipo": "numero", "chave": "alertas/vigentes.json", "valor_el": "topoInmet"},
+        {"id": "decreto_e_alerta_ao_mesmo_tempo", "tipo": "numero", "chave": "resposta/municipios_decretados.json", "valor_el": "topoCruzamento"},
+        {"id": "municipios_decretaram", "tipo": "numero", "chave": "resposta/municipios_decretados.json", "valor_el": "topoDecretaram"},
+        {"id": "populacao_sob_decreto", "tipo": "numero", "chave": "resposta/por_uf.json", "valor_el": "topoPopulacao"},
+        {"id": "reconhecidos_pelo_governo_federal", "tipo": "numero", "chave": "resposta/municipios_decretados.json", "valor_el": "topoReconhecidos"}
+      ],
+      "exige_texto": ["Defesa Civil nacional, no Diário Oficial da União"],
+      "_nota_variacao": "A variação em relação à semana anterior aparece nos três cartões do CICLO, calculada pela data do próprio ato (decreto, reconhecimento). Os três cartões de AGORA não trazem variação: a página não guarda retrato do que estava em vigor há sete dias, e inventar a comparação seria afirmar o que não foi medido. Seta e valor sem cor de bom/ruim, no componente `.cartao-numero-variacao` que a Imprensa já usa."
+    },
+    {
+      "id": "alertas",
+      "h2": "Alertas agora",
+      "tipo": "figuras",
+      "grade": ".grade-figuras--3",
+      "cartoes": [
+        {"id": "mapa_uf_avisos_alertas", "tipo": "mapa", "el": "boxAlertas", "chave": "alertas/vigentes.json#aviso_ou_alerta"},
+        {"id": "alertas_cemaden", "tipo": "mapa", "el": "boxCemaden", "chave": "alertas/vigentes.json#cemaden"},
+        {"id": "tipos_aviso_alerta", "tipo": "grafico", "el": "boxAlertasTipo", "chave": "alertas/vigentes.json#tipos"}
+      ],
+      "exige_texto": [
+        "Os avisos do Inmet são emitidos por área; os alertas do Cemaden, por município.",
+        "envie o CEP para 40199 por SMS"
+      ]
+    },
+    {
+      "id": "decretos",
+      "h2": "Emergências no ciclo",
+      "tipo": "figuras",
+      "grade": ".grade-figuras--3",
+      "cartoes": [
+        {"id": "mapa_uf_decretos", "tipo": "mapa", "el": "boxDecretosUF", "chave": "resposta/municipios_decretados.json#por_uf"},
+        {"id": "etapas_semana_a_semana", "tipo": "grafico", "el": "boxEtapas", "chave": "resposta/municipios_decretados.json#semanas"},
+        {"id": "decretos_por_tipo", "tipo": "grafico", "el": "boxDecretosTipo", "chave": "atos_resposta.json#tipo_de_evento"}
+      ],
+      "exige_texto": ["Do decreto ao recurso, semana a semana"]
+    },
+    {
+      "id": "cadastro",
+      "h2": "Onde os riscos são conhecidos oficialmente",
+      "tipo": "figuras",
+      "grade": ".grade-figuras--3",
+      "cartoes": [
+        {"id": "risco_enchente", "tipo": "mapa", "el": "boxRiscoEnchente", "chave": "cadastro_prioritarios_federal.json"},
+        {"id": "risco_semiarido", "tipo": "mapa", "el": "boxRiscoSemiarido", "chave": "enquadramento_card.json#semiarido"},
+        {"id": "risco_fogo", "tipo": "mapa", "el": "boxRiscoFogo", "chave": "enquadramento_card.json#fogo"}
+      ],
+      "exige_texto": ["Constar de uma lista não é decretar emergência"],
+      "_nota_legenda": "O handover pede a legenda 'com plano localizado · sem plano localizado'. Num mapa POR ESTADO as duas categorias convivem no mesmo território, e pintar o estado por elas diria o que o mapa não mostra. A legenda do mapa é a faixa de municípios listados; as duas categorias do handover são a coluna 'Plano localizado' da lista municipal embutida, onde elas se aplicam a um município de cada vez. Divergência declarada."
+    },
+    {
+      "id": "cadeiaSecao",
+      "h2": null,
+      "tipo": "recolhido",
+      "detalhes": "cadeia",
+      "fechado_por_padrao": true,
+      "cartoes": [
+        {"id": "do_aviso_ao_recurso", "tipo": "texto", "el": "cadeia"}
+      ],
+      "exige_texto": ["Do aviso ao recurso"]
+    }
+  ],
+  "texto_proibido": ["FIGURA", "Corte da edição", "corte de", "desastre", "pontos por município", "SEDEC/MIDR (DOU)", "S2iD"],
+  "_nota_texto_proibido": "O handover barra 'desastre' e 'pontos' como unidade, e sigla sem tradução no título. 'pontos' em singular aparece em texto legítimo ('um ponto por município' saiu da página, mas 'pontos' entra em classe e em outro contexto), por isso o portão barra a locução 'pontos por município'. As siglas dos órgãos entram no crédito da figura, onde o nome por extenso vem antes; o que o portão barra é a sigla crua no texto que o leitor lê ('SEDEC/MIDR (DOU)', 'S2iD').",
+  "sem_grade_de_estados": true
+}
