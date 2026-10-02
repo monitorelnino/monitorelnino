@@ -1,6 +1,6 @@
 {
  "_governanca": "Onde cada Secretaria Estadual de Saúde publica os desfechos do ciclo (boletim/painel/informe Cievs), com URL, periodicidade e status (máquina/leitura humana/defeso). Semeado em 09/09/2026 com os instrumentos já verificados na bateria estadual; cada linha a confirmar uma a uma. Peso zero. Varredura de 10/09/2026: 8 UFs com fonte confirmada e ativa (SP, MG[defeso], CE, BA, DF, PB, PE, MS); MS é a mais forte — boletim semanal por município, estruturado, atualizado até a SE corrente.",
- "registrado_em": "10/09/2026",
+ "registrado_em": "02/10/2026",
  "uf": {
   "AC": {
    "orgao": null,
@@ -146,7 +146,11 @@
    "periodicidade": "semanal",
    "status": "COLETOR ATIVO, MAS FONTE INTERROMPIDA (verificado no runner em 11/09/2026) — a listagem da SES-MS responde normalmente e o padrão de permalink está correto, porém o último boletim semanal de dengue publicado é o da SE 25 (10/07/2026): a secretaria parou a série há ~10 semanas. O coletor passa a recuar até 14 semanas e a DECLARAR a defasagem quando o boletim mais recente for antigo. Interrupção da fonte é achado do §36. CORREÇÃO (11/09/2026): a série NÃO está interrompida — a SE 34/2026 está publicada; o coletor procurava permalink de post em vez da listagem, onde os PDFs estão expostos direto.",
    "defeso": false,
-   "canais_instrumento": "https://www.saude.ms.gov.br/"
+   "canais_instrumento": "https://www.saude.ms.gov.br/",
+   "guias_e_manuais": "https://www.saude.ms.gov.br/informativos/guias-e-manuais",
+   "canal4_declarado": [
+    "DOE-MS pelo localizador de edicoes (numero da edicao pela listagem)"
+   ]
   },
   "MT": {
    "orgao": null,
@@ -158,7 +162,11 @@
    "periodicidade": null,
    "status": "Sala de Situação em Saúde e Clima (SES-MT, DOE 13/08/2026); publicações da sala a localizar",
    "defeso": null,
-   "canais_instrumento": "https://saude.mt.gov.br/"
+   "canais_instrumento": "https://saude.mt.gov.br/",
+   "canal4_declarado": [
+    "https://www.saude.mt.gov.br/",
+    "DOE-MT pela busca do diario (adaptador apifront)"
+   ]
   },
   "PA": {
    "orgao": "SESPA / Coordenação Estadual de Arboviroses",
@@ -170,7 +178,11 @@
    "periodicidade": null,
    "status": "a localizar",
    "defeso": null,
-   "canais_instrumento": "https://www.saude.pa.gov.br/"
+   "canais_instrumento": "https://www.saude.pa.gov.br/",
+   "canal4_declarado": [
+    "https://www.saude.pa.gov.br/",
+    "DOE-PA pelo localizador (rota a descobrir)"
+   ]
   },
   "PB": {
    "orgao": "SES-PB / Vigilância em Saúde",
@@ -183,7 +195,16 @@
    "status": "COLETOR ATIVO — boletim de arboviroses por Região de Saúde (coletar_boletim_pb_arboviroses.py), lido em 10/09/2026 na íntegra (nº 03/2026, SE 08: Quadro 01 com as 16 Regiões de Saúde, população, prováveis de dengue/chik/zika/Oropouche e 5 incidências; Fluxograma por agravo). Melhor formato depois de MS: tabela em texto, somas fecham. Correção de registro: o padrão real de URL não é 'no_01_2026.pdf' como suposto em 09/09. · 11/09/2026 (1ª rodada real): o portal responde HTTP 200 com text/html — página intermediária do Plone — em vez do PDF. O coletor passa a seguir o destino declarado nessa página (meta refresh, window.location ou link .pdf), sem jamais adivinhar URL de arquivo. ATENÇÃO (11/09/2026): o acesso público passa por interstício HTML (cookie) e a URL 'no-03_2026.pdf' chegou a servir o boletim 'Nº 05 — 20.04.2023' — o nome do arquivo NÃO garante a edição. O coletor recusa documento cujo ano interno difira do ano corrente.",
    "defeso": false,
    "canais_instrumento": null,
-   "canais_instrumento_lacuna": "01/10/2026: saude.pb.gov.br redireciona para paraiba.pb.gov.br/diretas/saude/, que serve muro de robo (desafio no corpo, HTTP 200) - recusa, e se respeita"
+   "canais_instrumento_lacuna": "01/10/2026: saude.pb.gov.br redireciona para paraiba.pb.gov.br/diretas/saude/, que serve muro de robo (desafio no corpo, HTTP 200) - recusa, e se respeita",
+   "canais_instrumento_humano": {
+    "url": "https://paraiba.pb.gov.br/diretas/saude",
+    "modo_acesso": "humano",
+    "motivo": "saude.pb.gov.br redireciona para este endereco, que serve muro de robo ao cliente do projeto (desafio no corpo, HTTP 200) — recusa respeitada; a verificacao desta rota e humana, e conta como canal consultado",
+    "em": "02/10/2026"
+   },
+   "canal4_declarado": [
+    "DOE-PB pelo localizador de edicoes (padrao por data, conferido)"
+   ]
   },
   "PE": {
    "orgao": "SES-PE",
@@ -333,5 +354,6 @@
    "canais_instrumento": "https://saude.to.gov.br/"
   }
  },
- "_governanca_canais_instrumento": "Canal 3 da bateria de saude (CIEVS, sala de situacao, COE): o endereco RAIZ da Secretaria Estadual de Saude de cada UF, de onde coletar_saude_estadual.py --canais segue os LINKS QUE O PROPRIO SITIO DECLARA. Nenhum endereco foi suposto: os 21 confirmados responderam em 01/10/2026 ao cliente do projeto, com corpo que nomeia a secretaria de saude do estado; os 6 demais ficam `null` com o motivo medido, que e lacuna declarada e impede marcar a UF como 'nao localizado' por este canal. Caminho de arquivo NUNCA se adivinha - o sitio diz onde esta."
+ "_governanca_canais_instrumento": "Canal 3 da bateria de saude (CIEVS, sala de situacao, COE): o endereco RAIZ da Secretaria Estadual de Saude de cada UF, de onde coletar_saude_estadual.py --canais segue os LINKS QUE O PROPRIO SITIO DECLARA. Nenhum endereco foi suposto: os 21 confirmados responderam em 01/10/2026 ao cliente do projeto, com corpo que nomeia a secretaria de saude do estado; os 6 demais ficam `null` com o motivo medido, que e lacuna declarada e impede marcar a UF como 'nao localizado' por este canal. Caminho de arquivo NUNCA se adivinha - o sitio diz onde esta.",
+ "_governanca_canal4": "Regra minima do canal 4, fechada pela editoria em 02/10/2026 e valida para os 27: a lista de fontes declaradas de cada unidade contem, no minimo, (a) a raiz do dominio oficial da secretaria estadual de saude e (b) o diario oficial do estado, pelo localizador de edicoes. Pagina especifica (plano, CIEVS, guias) e acrescimo. `canais_instrumento_humano` existe para a raiz que serve muro de robo ao cliente do projeto: a rota fica declarada, a verificacao e humana, e isso conta como canal consultado — regra da Paraiba."
 }

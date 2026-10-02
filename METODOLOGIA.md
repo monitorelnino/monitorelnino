@@ -3315,3 +3315,80 @@ nunca procurada — porque o gerador caía para a forma antiga quando F2 faltava
 terço do índice medido pela metade do componente, contra o §91. Corrigido: sem as duas funções, a
 coordenação é **não verificada** e a unidade não recebe número, e a falta diz **qual** função
 falta. A v0.4 tem hoje duas unidades com número (PB e MS), e segue não publicada.
+
+## 95. Canais 3 e 4: regra mínima para os 27, e o que o cadastro ensinou (02/10/2026)
+
+Decisão da editoria. Com o canal 2 resolvido pelo localizador (§94), o que travava os quatro
+canais passou a ser o **cadastro**: sem endereço, o canal 4 de 26 unidades ficava em erro, e
+"quatro canais rodados" vivia em 1 de 27.
+
+### 95.1 Regra mínima do canal 4
+
+A lista de fontes declaradas de cada unidade contém, no mínimo, **(a) a raiz do domínio oficial da
+secretaria estadual de saúde** — de onde o coletor segue os links de planos, vigilância,
+emergências e CIEVS que o próprio sítio declara — e **(b) o diário oficial do estado**, pelo
+localizador de edições. Com isso o canal 4 existe para as 27 desde já, e página específica (plano,
+CIEVS, guias) é acréscimo, não requisito.
+
+A raiz **não é digitada** no coletor: ela vem de `canais_instrumento`, em
+`data/saude_desfechos/fontes_uf.json`, onde cada endereço foi confirmado respondendo ao cliente do
+projeto. Unidade cuja raiz não respondeu entra com a lacuna medida daquele arquivo, e o diário
+sustenta o canal 4 sozinho — o que é a regra, e não uma concessão.
+
+### 95.2 Regra do canal 3
+
+A página do CIEVS, da sala de situação ou do COE quando existir. Quando a secretaria não declara
+página própria desses órgãos, o canal 3 é cumprido pela **visita à raiz com os termos**, e o log
+diz "a secretaria não declara página própria" — em vez de o canal parecer não executado. E quando
+a raiz serve muro de robô ao cliente do projeto, com a editoria indicando o endereço, o canal conta
+como **consultado por verificação humana**, com o motivo técnico gravado: é a regra da Paraíba.
+
+### 95.3 O canal passou a ser dito, não adivinhado
+
+O fechamento reconhecia o canal de cada linha do log por **palavra-marca** no texto. A linha boa do
+canal 4 da Paraíba dizia "raiz da secretaria por verificação humana", e "secretaria" era marca do
+canal 3: a linha do canal 4 era contada como canal 3, e a Paraíba aparecia com o canal 4 em erro
+**tendo sido consultada**. Adivinhar canal por palavra é frágil por construção; o coletor sabe qual
+canal rodou, e agora escreve `canal 3 ·` e `canal 4 ·` na linha. A marca por palavra fica como
+reserva, para as linhas antigas do mês.
+
+### 95.4 Plano não é ato, e ato não é plano
+
+Com os endereços de PA e MT em mão, o registrador leu o plano de emergências da SESPA — 81
+páginas — **como se fosse um ato**, e deu a ele F1 permanente (porque a expressão "sala de
+situação" aparece no texto) e F2 nomeada com atribuição (porque um marcador de lista cita
+"Gabinete de Crise"). Nenhum dos dois: um plano que descreve as próprias ações não institui
+estrutura nem integra a saúde à coordenação do estado.
+
+A regra passou a ser: **F1 e F2 só saem de ato com dispositivo** — tipo do ato nomeado e artigo. E
+o degrau do instrumento, quando o documento **é** o plano, sai da régua de temporada do projeto:
+plano publicado a partir do Boletim nº 1 é plano do ciclo; antes dele, plano vigente anterior.
+**Divergência declarada:** a central leu o plano do Pará como plano do ciclo; pela régua, um plano
+de 26/02/2026 é anterior ao primeiro boletim, e entra como vigente anterior.
+
+### 95.5 F2 exige o órgão na composição
+
+Dois atos reais mostraram que "defesa civil mencionada no ato" não é integração formal:
+
+- **MT, Portaria 0666/2024:** a Sala de Situação é composta só por áreas da própria secretaria; a
+  única menção à defesa civil está num *considerando* que cita o S2iD nacional. F2 = **LAC**.
+- **MS, Resolução 1041/2026:** a defesa civil aparece num *considerando* sobre articulação e como
+  **convidada** que "poderá participar". Nomeada, sim; com atribuição, não. F2 =
+  **LISTADA_SEM_ATRIBUICAO** (50), e não 100 como a primeira leitura deu.
+
+Por isso F2 passou a exigir o órgão **na composição**, lida no corpo do ato (sem o preâmbulo), e
+convidado vale o degrau do meio. A correção rebaixou o MS de 100 para 50 — régua corrigida, não
+dado novo, e por isso o degrau anterior foi apagado e relido em vez de mantido pelo "nunca
+rebaixar".
+
+### 95.6 O que o recálculo deu
+
+| medida | antes | depois |
+|---|---|---|
+| plano localizado | 21 de 27 | 21 de 27 |
+| coordenação (F1) | 3 de 27 | 3 de 27 |
+| **quatro canais rodados** | **1 de 27** | **8 de 27** |
+
+O que falta agora é canal 2 em 18 unidades (rota de edição a descobrir) e canal 3 em cinco (AM, AP,
+RJ, RN, RO), cujas raízes não respondem — e aí a falta **não é de cadastro**, é de fonte, medida em
+01/10/2026 e escrita no arquivo.

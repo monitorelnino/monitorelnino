@@ -127,13 +127,61 @@ ARQUIVO_CANAIS = "saude_desfechos/fontes_uf.json"
 RE_LINK = re.compile(r"""<a\b[^>]*href=["']([^"'#]+)["'][^>]*>(.*?)</a>""", re.I | re.S)
 RE_TAG = re.compile(r"<[^>]+>")
 
-# Fontes declaradas por UF, lidas direto no modo `--fontes`. `null` é LACUNA DECLARADA: endereço
-# não confirmado, e por isso nada se afirma sobre a UF por esta rota. A lista cresce com o que for
-# confirmado sítio a sítio; inventar endereço aqui produziria 404 com cara de busca feita.
-FONTES_SAUDE = {
+# Fontes declaradas por UF, lidas no modo `--fontes` (canal 4).
+#
+# REGRA MÍNIMA, fechada pela editoria em 02/10/2026 e válida para os 27: a lista de cada unidade
+# contém, no mínimo, **(a) a raiz do domínio oficial da secretaria estadual de saúde** — de onde o
+# coletor segue os links de planos, vigilância, emergências e CIEVS que o próprio sítio declara — e
+# **(b) o diário oficial do estado**, pelo localizador de edições. Com isso o canal 4 existe para
+# todas as unidades desde já, e página específica (plano, CIEVS, guias) é acréscimo, não requisito.
+#
+# A raiz NÃO é digitada aqui: ela vem de `canais_instrumento`, em `saude_desfechos/fontes_uf.json`,
+# onde cada endereço foi confirmado respondendo ao cliente do projeto. Unidade cuja raiz não
+# respondeu entra com a lacuna medida daquele arquivo, e o diário sustenta o canal 4 sozinho.
+# `ACRESCIMOS_DE_CANAL4` é só para o que a editoria citou nominalmente.
+ACRESCIMOS_DE_CANAL4 = {
+    # Documentos e páginas conferidos pela central em fonte oficial (02/10/2026).
     "MT": ["https://www.saude.mt.gov.br/storage/files/MmMbtQx9n43VPO23mMookK6LdUyD6h4QfMOvqx44.pdf",
            "https://www.saude.mt.gov.br/storage/files/RDtdQBfGbCiRYiJ1BIRtq6KUg32oNI4cKBWaQaiS.pdf"],
+    "PA": ["https://www.saude.pa.gov.br/wp-content/uploads/2026/02/plano-emergencias-_26.02.pdf"],
 }
+# Raiz alternativa, quando a raiz padrão da SES não respondeu e a editoria indicou outra. O modo de
+# acesso fica declarado: `humano` quer dizer que o sítio serve muro de robô ao cliente do projeto, e
+# que a verificação daquela rota é humana — não que o endereço seja secreto.
+RAIZ_ALTERNATIVA = {
+    "PB": {"url": "https://paraiba.pb.gov.br/diretas/saude", "modo_acesso": "humano",
+           "motivo": "saude.pb.gov.br redireciona para este endereço, que serve muro de robô ao "
+                     "cliente do projeto (desafio no corpo, HTTP 200) — recusa respeitada"},
+}
+
+
+def fontes_de(uf: str, canais=None, acrescimos=None, alternativas=None) -> dict:
+    """{'enderecos': [...], 'notas': [...]} do canal 4 desta UF, pela regra mínima. Função pura.
+
+    Devolve também as notas do que ficou de fora e por quê, para o log dizer a verdade sobre o
+    canal: endereço que não entra tem motivo escrito, e não desaparece em silêncio.
+    """
+    cfg = ((canais or {}).get("uf") or {}).get(uf) or {}
+    alternativa = (alternativas if alternativas is not None else RAIZ_ALTERNATIVA).get(uf) or {}
+    enderecos, notas = [], []
+    raiz = cfg.get("canais_instrumento")
+    if raiz:
+        enderecos.append(raiz)
+    elif alternativa.get("url") and alternativa.get("modo_acesso") != "humano":
+        enderecos.append(alternativa["url"])
+    elif alternativa.get("url"):
+        notas.append(f"raiz da secretaria por verificação humana: {alternativa['url']} — "
+                     + str(alternativa.get("motivo") or ""))
+    else:
+        notas.append("raiz da secretaria sem endereço confirmado: "
+                     + str(cfg.get("canais_instrumento_lacuna") or "não verificada"))
+    # (b) o diário do estado entra SEMPRE, pelo localizador — e é por isso que o canal 4 existe
+    # para as 27 desde já.
+    notas.append("diário oficial do estado pelo localizador de edições (coletar_edicoes_doe.py)")
+    for u in (acrescimos if acrescimos is not None else ACRESCIMOS_DE_CANAL4).get(uf) or []:
+        if u not in enderecos:
+            enderecos.append(u)
+    return {"enderecos": enderecos, "notas": notas}
 
 
 # =============================================================================================
@@ -381,6 +429,25 @@ def canais_ses(uf: str) -> dict:
     raiz = cfg.get("canais_instrumento")
     if not raiz:
         motivo = cfg.get("canais_instrumento_lacuna") or "endereço da secretaria não confirmado"
+        # Regra do canal 3 (02/10/2026): quando a raiz da secretaria não pode ser visitada pelo
+        # cliente do projeto, mas a editoria indicou o endereço e o modo de acesso é HUMANO, o
+        # canal conta como CONSULTADO, com o motivo técnico gravado — é a regra da Paraíba. Nenhuma
+        # unidade fica sem canal 3 por limitação documentada de terceiro. Sem endereço nenhum, a
+        # decisão continua sendo "canal não declarado": aí ninguém procurou.
+        humana = RAIZ_ALTERNATIVA.get(uf) or {}
+        if humana.get("url") and humana.get("modo_acesso") == "humano":
+            registrar_lacuna(f"funil_saude/{uf}",
+                             f"canal 3 por verificação humana: {humana['url']} — "
+                             + str(humana.get("motivo") or motivo),
+                             canal="orgao_estadual", camada=1, uf=uf, nivel="estadual",
+                             strings=[humana["url"]])
+            log_busca("orgao_estadual", 1, [humana["url"]],
+                      DECISAO_NO_LOG["canais_sem_pista"], uf=uf, nivel="estadual", n_resultados=0,
+                      resultados=(f"canal 3 · funil_saude/{uf}: link(s) de canal por verificação humana em "
+                                  f"{humana['url']} · modo de acesso humano · "
+                                  + str(humana.get("motivo") or motivo)))
+            return {"uf": uf, "links": 0, "pistas": 0, "novas": 0,
+                    "decisao": "canais_sem_pista", "modo_acesso": "humano"}
         registrar_lacuna(f"funil_saude/{uf}", motivo, canal="orgao_estadual", camada=1, uf=uf,
                          nivel="estadual")
         log_busca("orgao_estadual", 1, [ARQUIVO_CANAIS], DECISAO_NO_LOG["canal_nao_declarado"],
@@ -405,13 +472,20 @@ def canais_ses(uf: str) -> dict:
     achadas = [pista_de({"title": t or u, "url": u, "content": f"link declarado em {raiz}: {t}"},
                         uf, "canal_ses", raiz) for t, u in achados]
     decisao = "pista" if achadas else "canais_sem_pista"
+    # Regra do canal 3: a página própria do CIEVS, da sala de situação ou do COE quando existir;
+    # na falta dela, a visita à raiz COM OS TERMOS cumpre o canal — e fica dito que a secretaria
+    # não tem página própria desses órgãos, em vez de o canal parecer não executado.
+    tem_pagina_propria = bool(cfg.get("cievs")) or bool(achados)
+    sem_pagina = "" if tem_pagina_propria else (
+        " · a secretaria não declara página própria de CIEVS, sala de situação ou COE: o canal 3 "
+        "foi cumprido pela visita à raiz com os termos")
     fila, entraram = fundir_pistas(ler(PISTAS) or {}, achadas)
     if entraram:
         gravar(PISTAS, fila)
     log_busca("orgao_estadual", 1, [raiz], DECISAO_NO_LOG[decisao], uf=uf, nivel="estadual",
               n_resultados=len(achados),
-              resultados=(f"funil_saude/{uf}: {len(achados)} link(s) de canal em {raiz}, "
-                          f"{entraram} nova(s) na fila · decisão: {decisao}"))
+              resultados=(f"canal 3 · funil_saude/{uf}: {len(achados)} link(s) de canal em {raiz}, "
+                          f"{entraram} nova(s) na fila · decisão: {decisao}" + sem_pagina))
     funil.registrar("funil_saude_estadual", consultas=1, com_resultado_bruto=1,
                     pistas=len(achadas))
     return {"uf": uf, "links": len(achados), "pistas": len(achadas), "novas": entraram,
@@ -420,11 +494,22 @@ def canais_ses(uf: str) -> dict:
 
 def ler_fontes(uf: str) -> dict:
     """Lê as fontes declaradas de uma UF, preservando evidência. Não precisa de SearXNG."""
-    enderecos = FONTES_SAUDE.get(uf) or []
+    plano = fontes_de(uf, ler(ARQUIVO_CANAIS) or {})
+    enderecos, notas = plano["enderecos"], plano["notas"]
     if not enderecos:
-        registrar_lacuna(f"funil_saude/{uf}", "nenhuma fonte de saúde declarada para a UF",
-                         canal="orgao_estadual", camada=1, uf=uf, nivel="estadual")
-        return {"uf": uf, "lidos": 0, "falhas": 0, "decisao": "fonte_nao_declarada"}
+        # Pela regra mínima isto não é "nenhuma fonte declarada": o diário do estado é fonte
+        # declarada de todas as unidades, e quem o lê é o localizador. O que falta aqui é a RAIZ
+        # da secretaria, e a razão está escrita.
+        for nota in notas:
+            registrar_lacuna(f"funil_saude/{uf}", nota, canal="orgao_estadual", camada=1,
+                             uf=uf, nivel="estadual")
+        log_busca("orgao_estadual", 1, [ARQUIVO_CANAIS], DECISAO_NO_LOG["fontes_lidas"],
+                  uf=uf, nivel="estadual", n_resultados=0,
+                  resultados=(f"canal 4 · funil_saude/{uf}: 0 fonte(s) lida(s) nesta rota; o canal 4 desta "
+                              f"unidade é o diário oficial, pelo localizador · "
+                              + " · ".join(notas)))
+        return {"uf": uf, "lidos": 0, "falhas": 0, "decisao": "fontes_lidas",
+                "notas": notas}
     lidos, falhas = 0, 0
     for u in enderecos:
         try:
@@ -439,7 +524,8 @@ def ler_fontes(uf: str) -> dict:
     decisao = "fontes_lidas" if lidos else "fonte_fora_do_ar"
     log_busca("orgao_estadual", 1, enderecos, DECISAO_NO_LOG[decisao], uf=uf, nivel="estadual",
               n_resultados=lidos,
-              resultados=f"funil_saude/{uf}: {lidos} fonte(s) lida(s), {falhas} falha(s)")
+              resultados=(f"canal 4 · funil_saude/{uf}: {lidos} fonte(s) lida(s), {falhas} falha(s) · "
+                          + " · ".join(notas)))
     funil.registrar("funil_saude_estadual", consultas=len(enderecos),
                     com_resultado_bruto=1 if lidos else 0)
     return {"uf": uf, "lidos": lidos, "falhas": falhas, "decisao": decisao}
@@ -522,8 +608,27 @@ def autoteste() -> int:
             lambda: all("{nome}" in molde for _, molde in CONSULTAS),
         "consultas de uma UF saem formatadas":
             lambda: all(UF_NOME["MT"] in q for _, q in consultas_de("MT")),
-        "fonte declarada só existe onde foi confirmada":
-            lambda: all(isinstance(v, list) and v for v in FONTES_SAUDE.values()),
+        "acréscimo de canal 4 só existe onde foi confirmado":
+            lambda: all(isinstance(v, list) and v for v in ACRESCIMOS_DE_CANAL4.values()),
+        # Regra mínima (02/10/2026): o canal 4 de QUALQUER unidade tem o diário, e tem a raiz da
+        # secretaria quando ela responde.
+        "regra mínima: a raiz confirmada entra como endereço":
+            lambda: fontes_de("GO", {"uf": {"GO": {"canais_instrumento": "https://saude.go.gov.br/"}}})
+                    ["enderecos"] == ["https://saude.go.gov.br/"],
+        "regra mínima: o diário entra como nota em toda unidade":
+            lambda: any("diário oficial do estado" in n
+                        for n in fontes_de("XX", {})["notas"]),
+        "regra mínima: raiz sem endereço confirmado declara o motivo medido":
+            lambda: any("não resolve" in n for n in fontes_de(
+                "RO", {"uf": {"RO": {"canais_instrumento": None,
+                                     "canais_instrumento_lacuna": "não resolve no DNS"}}})["notas"]),
+        "raiz de acesso humano não é visitada pelo robô, e fica declarada":
+            lambda: (fontes_de("PB", {"uf": {"PB": {"canais_instrumento": None}}})["enderecos"] == []
+                     and any("verificação humana" in n for n in fontes_de(
+                         "PB", {"uf": {"PB": {"canais_instrumento": None}}})["notas"])),
+        "acréscimo nominal entra depois da raiz":
+            lambda: fontes_de("PA", {"uf": {"PA": {"canais_instrumento": "https://www.saude.pa.gov.br/"}}})
+                    ["enderecos"][0] == "https://www.saude.pa.gov.br/",
         # Decisão fora do vocabulário fechado do log faz o portão de consistência reprovar a
         # rodada inteira, e "nada localizado" em particular tem dono: a bateria MUNICIPAL.
         "toda decisão interna tem tradução no vocabulário do log":

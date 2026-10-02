@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-02 · #525 · Canais 3 e 4 nos 27, e F2 pela composição do ato
+
+Regra mínima do canal 4 — raiz da secretaria mais diário do estado — vale para as 27, e o canal passou a ser dito na linha do log em vez de adivinhado por palavra. PA e MT registrados pelos endereços da editoria. F1 e F2 só saem de ato com dispositivo, e F2 exige o órgão na composição: menção em considerando ou como convidado não é integração. Quatro canais: de 1 para 8 de 27. METODOLOGIA §95.
+
 ## 2026-10-02 · #524 · Recuperação do canal 2 desde 29/06, e contexto por termo
 
 Edições do ciclo baixadas e indexadas: 52 na Paraíba e 68 no Mato Grosso do Sul, de 70 dias úteis. Termo genérico passou a exigir contexto do ciclo — "plano de contingência do sistema E-TFD" não é pista de preparação ao El Niño. O índice de ocorrências ficou com cinco datas reais, e o registro por edição espelha o índice. Em `coletar_edicoes_doe.py`, `data/doe_edicoes/`.
