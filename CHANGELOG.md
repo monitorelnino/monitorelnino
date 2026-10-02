@@ -11,7 +11,7 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-02 · #525 · Canais 3 e 4 nos 27, e F2 pela composição do ato
 
-Regra mínima do canal 4 — raiz da secretaria mais diário do estado — vale para as 27, e o canal passou a ser dito na linha do log em vez de adivinhado por palavra. PA e MT registrados pelos endereços da editoria. F1 e F2 só saem de ato com dispositivo, e F2 exige o órgão na composição: menção em considerando ou como convidado não é integração. Quatro canais: de 1 para 8 de 27. METODOLOGIA §95.
+Regra mínima do canal 4 — raiz da secretaria mais diário do estado — vale para as 27, e o canal passou a ser dito na linha do log em vez de adivinhado. PA e MT registrados pelos endereços da editoria. F1 e F2 só saem de ato com dispositivo, e F2 exige o órgão na composição. Quatro canais: de 1 para 8 de 27. METODOLOGIA §95.
 
 ## 2026-10-02 · #524 · Recuperação do canal 2 desde 29/06, e contexto por termo
 
