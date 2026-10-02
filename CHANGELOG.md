@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-02 · #513 · Catálogo de desfechos: série e lacuna são coisas diferentes
+
+A SRAG passou a ser coletada (28 UFs por semana, do SIVEP-Gripe) e o catálogo ainda dizia
+`nao_coletado` — o portão de saúde reprovou, com razão. Ao corrigir, apareceu o caso oposto: o
+arquivo de síndrome gripal existe em disco e guarda **lacuna declarada**, não série. O portão passa
+a olhar o conteúdo: arquivo com série e status diferente de `coletado` reprova; arquivo de lacuna
+com status `coletado` também. Em `METODOLOGIA.md` §80.
+
 ## 2026-10-02 · #512 · A legenda da série respiratória sem entrada vazia
 
 Com a troca para a fonte primária, o indicador de síndrome respiratória grave perdeu os campos que
