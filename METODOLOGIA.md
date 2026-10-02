@@ -2667,6 +2667,71 @@ duas rotas é `fonte_bloqueada` e entra no log como **erro**; ano do ciclo ausen
 
 Cadência semanal, na mesma rotina do SRAG, porque é a rodada que descobre quando a fonte abrir.
 
+## 81. O carimbo do publicador passa a escrever o corte (01/10/2026)
+
+O §79 corrigiu a ordem dentro do `atualizar.py` e a publicação continuou falhando, pela mesma linha
+de log. A causa restante era uma **colisão de regras**, não de ordem.
+
+`scripts/frescor.py --carimbar`, que é o passo de carimbo do `publicar_dados.yml`, escrevia
+`atualizado_em = <data do último dado>` e declarava — em docstring e em caso de teste — que `corte`
+**nunca** era tocado, "porque é decisão editorial sobre até quando o dado vale". Essa leitura foi
+revogada em 30/09, quando o corte ficou vinte dias congelado atrás do arquivo de transferências: o
+corte passou a ser a data da rodada, e o portão `verificar_corte_sincronizado.py` passou a exigir
+que as duas datas coincidam. As duas regras não podiam valer juntas, e a publicação parou quatro
+vezes em 01/10 exatamente nessa contradição — o carimbo avançava uma data, o portão cobrava as duas.
+
+A editoria decidiu qual vale, no bloco das 23h UTC: *"gravar corte e atualizado_em da rodada e só
+então verificar"*. `gravar_carimbo` passa a escrever as duas, do **mesmo** carimbo.
+
+O que não muda: a data continua vindo do **dado**, nunca do relógio — quem a calcula é `carimbar`,
+a partir do commit mais recente que tocou `data/`, e rodada sem dado novo não carimba nada. Os três
+casos novos do autoteste cobram isto: as duas datas escritas, do mesmo valor, e nenhuma chamada de
+relógio no corpo. O caso antigo, que cobrava o oposto, fica registrado como revogado.
+
+## 82. MARÉ Saúde: a página em quatro blocos, e o que saiu dela (01/10/2026)
+
+Os blocos C, D e E do handover de 01/10/2026 — organização, textos e desenho — não tinham sido
+executados: a página ainda abria pelas doenças, trazia o "Backlog de fontes" e falava por siglas.
+
+**A ordem inverteu.** Primeiro os números (três contadores), depois **o que cada estado publicou**,
+depois **o que os órgãos de saúde registram**, e por fim o que o governo federal publicou. A razão é
+a mesma que vale no MARÉ Legal: a página é sobre preparação publicada, e o que a população registra
+é observação de contexto — abrir pelas doenças invertia o assunto.
+
+**Os três contadores contam documento lido, não categoria.** "Estados com plano" é a UF cujo
+instrumento tem documento no banco (21 de 27); "estados com sala de situação ou centro de operações
+de emergência" é a UF cujo degrau de coordenação tem documento (1 de 27, lido do arquivo da v0.4);
+"emergências em saúde pública declaradas" vem do agregado de resposta (0 desde 29/06). A distinção
+importa porque categoria muda de régua — foi o que a v0.4 fez — e documento lido não muda. Enquanto
+as 27 não estiverem verificadas, a linha de fonte do primeiro cartão diz quantas faltam, em vez de
+deixar 21 ser lido como o país.
+
+**Uma seção, não cinco.** Dengue, chikungunya, calor, síndrome respiratória grave, síndrome gripal e
+diarreicas viraram cartões de uma seção só, em grade de três, aberta pela frase que a editoria
+manteve: *"Esta página não relaciona casos ao El Niño."* A busca por município entra aí, com três
+travas: cidade fora dos municípios acompanhados aparece como **não acompanhada** (e não como nível 1
+nem como zero); cidade sem semana consolidada aparece sem nível, com a semana declarada; e a lista
+oferecida é a do IBGE inteira, de propósito — só assim a busca pode dizer que a cidade existe e não
+é acompanhada.
+
+**O que saiu:** o "Backlog de fontes", o catálogo dos 20 desfechos, os gatilhos do Quadro 5 e as
+áreas COBRADE. São roteiro metodológico, e o lugar deles é a metodologia e os dados abertos. Saiu
+também o "Semana 10 desde o primeiro boletim" do topo.
+
+**Siglas traduzidas (bloco D).** CIEVS passa a "centro de vigilância", COE/COES a "centro de
+operações de emergência", SRAG a "síndrome respiratória grave", ESPIN a "emergência em saúde pública
+de importância nacional" e MDDA a "vigilância das diarreicas". Duas consequências que valem
+registro: o nome da doença entrou na lista de exceções do portão de legendas, porque "grave" ali é
+**nome**, não juízo; e a tradução dos rótulos que vêm do arquivo de sinais acontece na LEITURA, não
+no dado — o banco continua como o coletor o escreveu, e o leitor não recebe sigla para decodificar.
+
+**A fonte da série respiratória deixou de ser o InfoGripe** (bloco das 23h20): a de síndrome
+respiratória grave vem do SIVEP-Gripe, e a de síndrome gripal, do e-SUS Notifica — com a lacuna
+declarada enquanto a fonte recusa acesso (§80).
+
+O portão de runtime da página foi reescrito para a página que existe: ordem nova, saída do backlog,
+siglas, contadores do dado, grade de três e as três travas da busca por município.
+
 ## 83. A Imprensa dinâmica: a grade desenhada do dado, por grupo, com variação (01/10/2026)
 
 O handover da imprensa dinâmica abre pelo defeito, e ele era real: os cartões da semana liam um

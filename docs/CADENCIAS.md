@@ -64,8 +64,8 @@ O formato de cada linha é fixo e lido por máquina:
 | `coletar_cobertura_qd.py` | semanal | dom 07:30 UTC | semanal_sinais_e_links | cobertura do acervo do Querido Diário |
 | `coletar_semiarido_sudene.py` | semanal | dom 07:30 UTC | semanal_sinais_e_links | delimitação do Semiárido |
 | `coletar_prioritarios_mma.py` | semanal | dom 07:30 UTC | semanal_sinais_e_links | prioritários do MMA |
-| `coletar_srag_sivep.py` | semanal | dom 07:30 UTC | semanal_sinais_e_links | SRAG pelo SIVEP-Gripe |
-| `coletar_sg_esus.py` | semanal | domingo, 07:30 UTC | semanal_sinais_e_links | síndrome gripal (e-SUS Notifica): hoje mede e declara a lacuna — API 401, CSV 403 |
+| `coletar_srag_sivep.py` | semanal | domingo, 08:30 UTC | semanal_respiratorias | SRAG pelo SIVEP-Gripe |
+| `coletar_sg_esus.py` | semanal | domingo, 08:30 UTC | semanal_respiratorias | síndrome gripal (e-SUS Notifica): hoje mede e declara a lacuna — API 401, CSV 403 |
 | `coletar_arboviroses_sinan.py` | semanal | dom 07:30 UTC | semanal_sinais_e_links | dengue e chikungunya pelo SINAN |
 | `coletar_obitos_registro_civil.py` | semanal | dom 07:30 UTC | semanal_sinais_e_links | óbitos em cartório por UF e mês |
 | `scripts/sondar_boletim_infogripe.py` | semanal | dom 07:30 UTC | semanal_sinais_e_links | acesso ao InfoGripe voltou? |

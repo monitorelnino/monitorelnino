@@ -16,7 +16,8 @@ correção; defeito silencioso custa três dias de dado.
 
 GRANULARIDADE, DITA EM VOZ ALTA
 -------------------------------
-`data/meta.json` guarda `atualizado_em` como **data**, não instante (`28/09/2026`). Então o
+`data/meta.json` guarda `atualizado_em` e `corte` como **data**, não instante (`28/09/2026`), e desde 01/10/2026 as duas são a MESMA data da rodada — ver
+`gravar_carimbo`. Então o
 limite de "24 h" da decisão é aplicado na granularidade que existe: reprova quando a diferença
 passa de **um dia**. Um dia de diferença pode ser uma hora ou quarenta e sete, e por isso não
 reprova — reprovar ali daria alarme falso toda manhã seguinte a uma noite que commitou tarde.
@@ -164,12 +165,28 @@ def carimbar(publicado, coletado):
 
 
 def gravar_carimbo(nova_data) -> bool:
-    """Escreve `atualizado_em` em data/meta.json. `corte` NUNCA é tocado: ele é decisão editorial
-    sobre até quando o dado vale, e não tem relação com quando a rodada publicou."""
+    """Escreve `atualizado_em` **e `corte`** em data/meta.json, na mesma data.
+
+    01/10/2026 — mudança de regra, por ordem da editoria (bloco das 23h UTC). Até aqui esta função
+    declarava que `corte` nunca era tocado, por ser "decisão editorial sobre até quando o dado
+    vale". Essa leitura foi revogada em 30/09, quando o corte ficou vinte dias congelado atrás do
+    arquivo de transferências e o site passou a dizer "dados até 10/09" enquanto o índice recebia
+    plano todo dia: o corte é a data da RODADA, e o portão `verificar_corte_sincronizado.py` passou
+    a exigir que as duas datas coincidam.
+
+    As duas regras não podiam valer juntas, e foi essa colisão que parou a publicação quatro vezes
+    em 01/10: este carimbo escrevia `atualizado_em = hoje`, o `corte` ficava em ontem, e o portão
+    barrava — com razão, porque o estado era mesmo incoerente. A editoria decidiu qual regra vale:
+    "gravar corte e atualizado_em da rodada e só então verificar".
+
+    A data continua vindo do DADO, nunca do relógio: quem a calcula é `carimbar`, a partir do
+    commit mais recente que tocou `data/`. Rodada sem dado novo não carimba nada."""
     sys.path.insert(0, str(RAIZ))
     from coletores_base import gravar_em   # §229: escrita atômica de data/
     doc = json.loads(META.read_text(encoding="utf-8"))
-    doc["atualizado_em"] = nova_data.strftime("%d/%m/%Y")
+    carimbo = nova_data.strftime("%d/%m/%Y")
+    doc["atualizado_em"] = carimbo
+    doc["corte"] = carimbo
     gravar_em(META, doc)
     return True
 
@@ -210,8 +227,17 @@ def autoteste() -> int:
     casos.append(("carimbo: a data vem do dado, não de hoje",
                   carimbar(None, d(2026, 9, 26)) == d(2026, 9, 26)))
     import inspect as _insp
-    casos.append(("o carimbo nunca toca o corte dos dados",
-                  "corte" not in _insp.getsource(gravar_carimbo).split('"""')[2]))
+    # 01/10/2026: o caso ANTERIOR cobrava o oposto ("o carimbo nunca toca o corte"). Ele vigorou
+    # até a regra de 30/09 e foi revogado pela editoria no bloco das 23h UTC: as duas datas são a
+    # mesma, e é o portão do corte sincronizado que cobra isso. Fica registrado que a troca é de
+    # regra, não de implementação.
+    _corpo = _insp.getsource(gravar_carimbo).split('"""')[2]
+    casos.append(("o carimbo escreve as duas datas, corte e atualizado_em",
+                  '["atualizado_em"] = carimbo' in _corpo and '["corte"] = carimbo' in _corpo))
+    casos.append(("as duas datas saem do MESMO carimbo, e não de dois cálculos",
+                  _corpo.count("carimbo = nova_data.strftime") == 1))
+    casos.append(("a data continua vindo do dado: o relógio não aparece no corpo",
+                  "today()" not in _corpo and "now()" not in _corpo))
 
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
