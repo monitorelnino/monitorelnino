@@ -191,50 +191,6 @@
    "funcao_narrativa": "evidência do dinheiro próprio",
    "acao_relacionada": "consultar a declaração do município no SICONFI"
   },
-  "financiamento.html#boxMP1384UF": {
-   "tipo": "mapa",
-   "pergunta_que_responde": "Onde chegou o pagamento da MP 1.384 (alimentos)?",
-   "dimensao_da_preparacao": "financiamento",
-   "universo": "execução da MP 1.384 (alimentos)",
-   "unidade_de_analise": "UF da unidade gestora",
-   "territorio": "Brasil",
-   "periodo": "desde jun/2026",
-   "variavel_principal": "valor pago (R$)",
-   "denominador": null,
-   "fonte": "Portal da Transparência",
-   "metodologia": "UF da unidade gestora (MDA/Conab, MDS), não do beneficiário final; unidade nacional contabilizada à parte",
-   "conclusoes_permitidas": [
-    "distribuição do pagamento por UF da unidade gestora"
-   ],
-   "conclusoes_nao_permitidas": [
-    "território onde o recurso foi aplicado",
-    "benefício recebido pela população da UF"
-   ],
-   "funcao_narrativa": "detalhamento territorial do compromisso federal",
-   "acao_relacionada": null
-  },
-  "financiamento.html#boxMPsUF": {
-   "tipo": "mapa",
-   "pergunta_que_responde": "Onde chegou o pagamento da MP 1.367 (incêndios)?",
-   "dimensao_da_preparacao": "financiamento",
-   "universo": "execução da MP 1.367 (incêndios)",
-   "unidade_de_analise": "UF da unidade gestora",
-   "territorio": "Brasil",
-   "periodo": "desde jun/2026",
-   "variavel_principal": "valor pago (R$)",
-   "denominador": null,
-   "fonte": "Portal da Transparência",
-   "metodologia": "UF da unidade gestora (Ibama, ICMBio), não do beneficiário final; unidade nacional contabilizada à parte",
-   "conclusoes_permitidas": [
-    "distribuição do pagamento por UF da unidade gestora"
-   ],
-   "conclusoes_nao_permitidas": [
-    "território onde o recurso foi aplicado",
-    "benefício recebido pela população da UF"
-   ],
-   "funcao_narrativa": "detalhamento territorial do compromisso federal",
-   "acao_relacionada": null
-  },
   "financiamento.html#boxMpsBrUf": {
    "tipo": "gráfico comparativo",
    "pergunta_que_responde": "Quanto do pagamento das MPs saiu por unidade gestora de Brasília e quanto por unidade nas UFs?",
@@ -297,28 +253,6 @@
     "eficácia do repasse"
    ],
    "funcao_narrativa": "caso único com dataset nominal, declarado como exceção",
-   "acao_relacionada": null
-  },
-  "financiamento.html#boxRotaMPs": {
-   "tipo": "gráfico de barras",
-   "pergunta_que_responde": "Quanto as duas MPs de 2026 dotaram por órgão, e quanto foi pago?",
-   "dimensao_da_preparacao": "financiamento",
-   "universo": "MP 1.367 e MP 1.384",
-   "unidade_de_analise": "órgão e uso",
-   "territorio": "Brasil",
-   "periodo": "MPs de 15/06 e 12/08/2026",
-   "variavel_principal": "dotação e parcela paga (R$ milhões)",
-   "denominador": "dotação",
-   "fonte": "atos das MPs e Portal da Transparência",
-   "metodologia": null,
-   "conclusoes_permitidas": [
-    "dotação por órgão e fração executada"
-   ],
-   "conclusoes_nao_permitidas": [
-    "destino territorial do recurso",
-    "efeito da despesa"
-   ],
-   "funcao_narrativa": "metodológico: detalha a fonte que a página de financiamento resume",
    "acao_relacionada": null
   },
   "financiamento.html#boxSerie": {
@@ -648,6 +582,23 @@
     "que o reconhecimento implica recurso recebido, executado ou suficiente"
    ],
    "funcao_narrativa": "mostrar onde a emergência declarada pelo município foi aceita pela União, ao lado de quem declarou"
+  },
+  "financiamento.html#boxTransfUF": {
+   "tipo": "mapa coroplético por unidade da federação, com lista",
+   "pergunta_que_responde": "Quanto a União transferiu aos municípios de cada estado em 2026, por habitante?",
+   "dimensao_da_preparacao": "dinheiro que chega ao município",
+   "universo": "os 5.569 municípios com registro no arquivo de transferências, agregados por estado",
+   "unidade_de_analise": "unidade da federação",
+   "territorio": "Brasil",
+   "periodo": "meses de 2026 lidos até a última coleta; o mês em preenchimento é marcado parcial",
+   "variavel_principal": "soma das transferências da União aos municípios do estado, dividida pela população, em R$ por habitante",
+   "denominador": "população do Censo 2022, somada dos municípios com registro",
+   "fonte": "Portal da Transparência (transferências a municípios); IBGE — Censo 2022",
+   "metodologia": "Soma das rotas constitucional, saúde, assistência social, defesa civil e outras, por município, agregada por estado e dividida pela população. Por habitante porque o total bruto só ordena os estados por tamanho. Estado sem mês lido aparece sem número, nunca como zero: ausência de leitura não é ausência de transferência.",
+   "conclusoes_permitidas": "comparar quanto chegou por habitante entre estados, no período lido; ler o total do estado na lista",
+   "conclusoes_nao_permitidas": "concluir o que a prefeitura fez com o dinheiro — transferido não é gasto; atribuir a diferença entre estados a mérito ou a desempenho da preparação; somar com o dinheiro próprio do município, que é outra figura e outra fonte",
+   "funcao_narrativa": "responde à pergunta do leitor sobre o próprio estado, logo depois dos números da semana",
+   "acao_relacionada": "a consulta por cidade, na seção seguinte"
   },
   "saude.html#boxDengueSemana": {
    "tipo": "série semanal com faixa esperada para a época",

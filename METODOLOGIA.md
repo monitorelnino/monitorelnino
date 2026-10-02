@@ -2857,6 +2857,43 @@ estende a cobertura para frente — recorte declarado nunca é apresentado como 
 
 Cadência diária, encadeada ao noturno dos diários, que já lê o mesmo DOU.
 
+## 86. Financiamento reorganizado pela pergunta do leitor (02/10/2026)
+
+Bloco B do handover. A página respondia na ordem do orçamento — anunciado, compromissos, rotas — e
+passa a responder na ordem de quem lê: o que mudou esta semana, quanto chegou ao meu estado, de onde
+vem o dinheiro do ciclo, quanto chegou à minha cidade.
+
+**Cartões do topo: só indicador que muda a cada coleta.** O valor anunciado saiu dos cartões e virou
+linha de contexto — cartão que não muda vira moldura. Entraram quatro: pago na semana, transferido
+na semana, **recursos de resposta liberados na semana com o número de municípios que receberam** e
+novos atos federais na semana, com link.
+
+**Dois deles dizem "sem dado nesta edição", com o motivo medido**, e isso é deliberado: as medidas
+federais publicam empenhado e pago em agregados **sem data de pagamento**, e o Portal da
+Transparência entrega a transferência a município por **mês**. A página Imprensa declara a mesma
+falta (§83); mostrar um número aqui e a falta lá seria o mesmo número com duas contas — exatamente o
+que o portão de coerência existe para impedir.
+
+**O cartão de resposta existe porque agora há data por ato** (§85), e conta **só** a finalidade
+resposta: recuperação é obra depois do dano, e somá-las inflaria o número com dinheiro de outra
+finalidade. O cartão diz "liberado", nunca "pago".
+
+**Quanto chegou a cada estado, por habitante.** Mapa, grade dos 27 e ficha ao clicar, no desenho da
+inicial. Por habitante porque o total bruto só diz que São Paulo é grande; a pergunta do leitor é
+quanto chegou onde ele mora. Estado sem mês lido aparece sem número, e a ficha diz o que o número
+não é: transferido não é gasto.
+
+**Saíram os dois mapas "onde o pagamento chegou".** Eles pintavam o país com a parcela de 4% que foi
+executada por unidades nos estados — o mapa sugeria distribuição onde havia concentração. A leitura
+honesta dessa divisão é a figura BR × UFs, que fica, e vem primeiro. Saiu também o diagrama das oito
+rotas, a data sob o título, o cartão "pago até agora" (que dizia "sem coleta" ao lado de dados
+coletados), a mediana por município e a faixa do período eleitoral no gráfico semanal.
+
+**Três guardas de JavaScript estavam amarradas a elementos removidos**, e isso derrubou figuras que
+deviam ficar: o bloco dos compromissos era guardado pelo id da seção `prometeu`, e o indicador
+BR × UFs pelo diagrama das rotas. Guarda tem de ser o que o bloco desenha, não a vizinhança onde ele
+morava — as três passaram a ser isso, e o portão de runtime cobra cada figura.
+
 ## 87. MARÉ Saúde reorganizado pela pergunta do leitor (02/10/2026)
 
 Bloco A do handover. A página abria pelo medidor do índice e por três mapas de estado; passa a abrir

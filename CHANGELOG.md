@@ -17,6 +17,14 @@ guarda as duas separadas, com o rótulo do próprio ato. Primeira carga: R$ 7,02
 R$ 191,3 mi em recuperação, 68 municípios. Prorrogação de prazo é recusada pelo nome. Em
 `METODOLOGIA.md` §85.
 
+## 2026-10-02 · #516 · Financiamento reorganizado pela pergunta do leitor
+
+A ordem passa a ser: o que mudou na semana, quanto chegou ao meu estado (mapa e grade por
+habitante, com ficha), de onde vem o dinheiro do ciclo, quanto chegou à minha cidade. Entra o cartão
+de recursos de resposta liberados na semana, com o número de municípios. Saem os dois mapas que
+pintavam o país com a parcela de 4%, o diagrama das rotas, a mediana e a faixa eleitoral. Em
+`METODOLOGIA.md` §86.
+
 ## 2026-10-02 · #517 · MARÉ Saúde reorganizado pela pergunta do leitor
 
 Cinco cartões dinâmicos no topo, da fonte primária; a situação de cada estado com um mapa só e a

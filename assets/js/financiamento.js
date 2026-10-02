@@ -73,7 +73,9 @@ async function __load(){
 }
 function __init(){
   MonitorMapas.padraoGraficos(window.Chart);
-  document.getElementById('corteFin').textContent = ROTAS.corte || '—';
+  // `corteFin` saiu da página em 02/10/2026: a data da página é a da última coleta e vive nos
+  // cartões. A guarda fica porque o JS é o mesmo para quem ainda tiver o elemento.
+  { const e = document.getElementById('corteFin'); if (e) e.textContent = ROTAS.corte || '—'; }
   // 16/09/2026 (handover da voz, D3): o mapa por município do fogo ainda não tem coleta — a frase diz
   // "sem coleta até {corte}" com a data real, em vez de um traço solto no meio do texto.
   { const e = document.getElementById('notaFogoCorte'); if (e) e.textContent = ROTAS.corte || 'o corte'; }
@@ -269,7 +271,12 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
 // 15/09/2026 (auditoria editorial §1.7 e §1.6, quarta porta): "O que a União prometeu — e o que pagou" volta para cá.
 // Compromissos verificados (tabela) + série semanal por rota (miniatura, com a faixa do período eleitoral). Título-fato do dado.
 (async function prometeuEPagou(){
-  if (!document.getElementById('prometeu')) return;
+  // 02/10/2026: a guarda era o id da seção `prometeu`, que deixou de existir quando a página foi
+  // reorganizada pela pergunta do leitor — e com ela TODO este bloco deixava de desenhar: o
+  // gráfico dos compromissos, a série semanal e o caso do RS ficavam com a moldura vazia. A guarda
+  // passa a ser o que o bloco realmente precisa: existir ao menos uma das figuras que ele desenha.
+  if (!document.getElementById('cCompromissos') && !document.getElementById('svgSerie')
+      && !document.getElementById('cRS')) return;
   try { await window.__finPronto; } catch (e) {}   // 15/09/2026: os gráficos abaixo usam MPS, PORUF, RESP_FIN e a malha — esperam a carga principal
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   try {
@@ -345,7 +352,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     const n = (COMP && COMP.itens || []).length; const sem = (SERIE && SERIE.semanas || []);
     const total = sem.reduce((a, s) => a + Object.keys(s).filter(k => /^r/.test(k)).reduce((b, k) => b + (+s[k] || 0), 0), 0);
     const ate = sem.length ? sem[sem.length - 1].semana : null;
-    document.getElementById('prometeuTitulo').innerHTML = '<strong>' + n + '</strong> compromissos federais verificados, com dinheiro e prazo' + (sem.length ? '; <strong>R$ ' + (total / 1e6).toLocaleString('pt-BR', {maximumFractionDigits: 0}) + ' mi</strong> transferidos a municípios em 2026 até a semana de ' + esc(ate) : '; série semanal ainda não coletada') + '.';
+    { const _t = document.getElementById('prometeuTitulo'); if (_t) _t.innerHTML = '<strong>' + n + '</strong> compromissos federais verificados, com dinheiro e prazo' + (sem.length ? '; <strong>R$ ' + (total / 1e6).toLocaleString('pt-BR', {maximumFractionDigits: 0}) + ' mi</strong> transferidos a municípios em 2026 até a semana de ' + esc(ate) : '; série semanal ainda não coletada') + '.'; }
   } catch(e) { const t = document.getElementById('prometeuTitulo'); if (t) t.textContent = 'Compromissos e série: dados não carregados.'; }
 })();
 
@@ -696,7 +703,6 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       const federais = C.itens.filter(i => /^Federal/.test(i.esfera || ''));
       const plano = federais.find(i => /execução direta/i.test(i.esfera || ''));
       const anunciado = plano && plano.valor_total;
-      põe('topoAnunciado', anunciado ? reais(anunciado) : '—');
       põe('topoAnunciadoFonte', anunciado
         ? 'Plano federal do ciclo, no ato que o anunciou · corte de ' + (C.corte || '—')
         : 'sem valor anunciado verificado até o corte');
@@ -704,7 +710,6 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
          DIZ que não existe: um "R$ 0" aqui afirmaria que nada foi pago, que é outra coisa. */
       const pagos = federais.map(i => i.pago).filter(v => typeof v === 'number');
       const soma = pagos.reduce((a, b) => a + b, 0);
-      põe('topoPago', pagos.length ? reais(soma) : 'sem coleta');
       põe('topoPagoFonte', pagos.length
         ? 'Portal da Transparência · execução até o corte de ' + (C.corte || '—')
         : 'execução no Portal da Transparência ainda não coletada');
@@ -714,7 +719,6 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     const D = await fetch('data/financiamento/municipios/despesa_182.json').then(r => r.ok ? r.json() : null);
     const r = D && D.resumo;
     if (r && typeof r.mediana_rs_hab === 'number') {
-      põe('topoMediana', 'R$ ' + r.mediana_rs_hab.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2}));
       põe('topoMedianaFonte', 'SICONFI e Censo 2022 · mediana de ' + (r.com_rs_hab || 0).toLocaleString('pt-BR')
         + ' municípios com lançamento na rubrica, exercício ' + (D.exercicio || '—'));
     }
@@ -818,4 +822,193 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
   }
   entrada.addEventListener('change', mostrar);
   entrada.addEventListener('input', () => { if ((entrada.value || '').length > 2) mostrar(); });
+})();
+
+
+/* ===== Cartões da semana (bloco B.1 do handover de 02/10/2026) =====
+ * Só indicador DINÂMICO entra aqui, com fonte e data. O valor anunciado saiu dos cartões e virou
+ * linha de contexto, porque ele não muda a cada coleta — e cartão que não muda vira moldura.
+ *
+ * Os dois primeiros dizem "sem dado nesta edição", com o motivo medido. É a mesma afirmação que a
+ * página Imprensa faz (#509): as medidas federais publicam empenhado e pago em agregados SEM data
+ * de pagamento, e o Portal da Transparência entrega a transferência a município por MÊS. Inventar
+ * um recorte semanal aqui e declarar a falta lá seria o mesmo número com duas contas.
+ */
+(function cartoesDaSemana(){
+  const el = id => document.getElementById(id);
+  const reais = v => 'R$ ' + Number(v || 0).toLocaleString('pt-BR', {maximumFractionDigits: 0});
+  const n = v => Number(v || 0).toLocaleString('pt-BR');
+  const semDado = (idValor, idFonte, motivo) => {
+    if (el(idValor)) el(idValor).textContent = 'sem dado nesta edição';
+    if (el(idFonte)) el(idFonte).textContent = motivo;
+  };
+
+  semDado('topoPagoSemana', 'topoPagoSemanaFonte',
+    'As medidas federais publicam empenhado e pago em agregados sem data de pagamento: não há '
+    + 'recorte de sete dias na fonte.');
+  semDado('topoTransfSemana', 'topoTransfSemanaFonte',
+    'O Portal da Transparência publica a transferência a município por mês; a fonte entrega o mês, '
+    + 'e não a semana.');
+
+  /* Recursos de resposta: aqui há data por ato, e por isso o recorte semanal existe de verdade.
+   * Conta-se SÓ a finalidade "resposta": recuperação é obra depois do dano, e somar as duas num
+   * cartão de resposta inflaria o número com dinheiro de outra finalidade. */
+  fetch('data/resposta/recursos_liberados.json').then(r => r.ok ? r.json() : null).then(R => {
+    if (!R || !R.municipios) {
+      semDado('topoRespostaSemana', 'topoRespostaFonte', 'Sem coleta até o corte.');
+      return;
+    }
+    const hoje = new Date(), limite = new Date(hoje.getTime() - 7 * 86400000);
+    let total = 0; const muns = new Set();
+    Object.entries(R.municipios).forEach(([cod, m]) => {
+      (m.atos || []).forEach(a => {
+        if (a.acao !== 'resposta' || !a.data) return;
+        if (new Date(a.data + 'T00:00:00') < limite) return;
+        total += Number(a.valor_autorizado || 0);
+        muns.add(cod);
+      });
+    });
+    if (el('topoRespostaSemana')) el('topoRespostaSemana').textContent = reais(total);
+    if (el('topoRespostaMunicipios')) {
+      el('topoRespostaMunicipios').textContent = muns.size === 1
+        ? '1 município recebeu autorização' : n(muns.size) + ' municípios receberam autorização';
+    }
+    if (el('topoRespostaFonte')) {
+      /* O cartão diz "liberado" e não usa a outra palavra: a portaria autoriza, e a saída do
+       * dinheiro é um registro à parte, do Portal da Transparência. O portão de runtime cobra
+       * exatamente isso — e cobrava com razão: a primeira versão desta linha dizia "ainda não
+       * necessariamente ..." e carregava a palavra que ela queria negar. */
+      el('topoRespostaFonte').textContent = 'Portarias da Defesa Civil nacional no Diário Oficial '
+        + 'da União · valor liberado por ato; a saída do dinheiro é outro registro · janela lida '
+        + 'desde ' + ((R.janela_lida || {}).desde || '—');
+    }
+  }).catch(() => semDado('topoRespostaSemana', 'topoRespostaFonte', 'Sem coleta até o corte.'));
+
+  /* Atos federais de financiamento na semana, pela data do ato, com o link de cada um. */
+  fetch('data/financiamento/compromissos_federais.json').then(r => r.ok ? r.json() : null).then(C => {
+    const itens = (C || {}).itens || [];
+    if (!itens.length) { semDado('topoAtosSemana', 'topoAtosSemanaFonte', 'Sem coleta até o corte.'); return; }
+    const limite = new Date(Date.now() - 7 * 86400000);
+    const dataDe = x => {
+      const m = String(x.data || x.instrumento || '').match(/(\d{2})\/(\d{2})\/(\d{4})/);
+      return m ? new Date(`${m[3]}-${m[2]}-${m[1]}T00:00:00`) : null;
+    };
+    const novos = itens.filter(x => { const d = dataDe(x); return d && d >= limite; });
+    if (el('topoAtosSemana')) el('topoAtosSemana').textContent = n(novos.length);
+    if (el('topoAtosSemanaFonte')) {
+      el('topoAtosSemanaFonte').textContent = 'Atos federais lidos pelo MARÉ · pela data do ato'
+        + (C.corte ? ' · corte ' + C.corte : '');
+    }
+    const lista = el('topoAtosLista');
+    if (lista && novos.length) {
+      /* Nome e endereço vêm de arquivo de dado, e dado entra na página escapado — a regra do
+       * portão de segurança, e ela vale mesmo quando a fonte é nossa: o arquivo é escrito por
+       * coletor, e coletor lê o que a fonte publicou. */
+      const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+      lista.innerHTML = '<ul class="u-mb-0">' + novos.map(x => {
+        const nome = esc(x.nome || x.instrumento || 'ato');
+        return '<li>' + (x.url ? '<a href="' + esc(x.url) + '" target="_blank" rel="noopener">' + nome + '</a>' : nome) + '</li>';
+      }).join('') + '</ul>';
+    }
+    /* O anunciado vira CONTEXTO, não cartão: ele não muda a cada coleta. */
+    const anunciado = itens.reduce((a, x) => a + Number(x.valor_total || 0), 0);
+    const ctx = el('finContexto');
+    if (ctx && anunciado) {
+      ctx.textContent = 'Contexto: os atos federais lidos até agora somam ' + reais(anunciado)
+        + ' anunciados para o ciclo. Anúncio não é pagamento. O valor anunciado não muda a cada '
+        + 'coleta, e fica fora dos números da semana.';
+    }
+  }).catch(() => semDado('topoAtosSemana', 'topoAtosSemanaFonte', 'Sem coleta até o corte.'));
+})();
+
+/* ===== Quanto chegou a cada estado (bloco B.2) =====
+ * Mapa por habitante, grade dos 27 e ficha ao clicar — o desenho da inicial. Por habitante porque
+ * o total bruto só diz que São Paulo é grande: a pergunta do leitor é quanto chegou onde ele mora.
+ */
+(async function porEstado(){
+  const svg = document.getElementById('mapaTransfUF');
+  const grade = document.getElementById('regionsFin');
+  if (!svg && !grade) return;
+  const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const reais = v => 'R$ ' + Number(v || 0).toLocaleString('pt-BR', {maximumFractionDigits: 0});
+  const umaCasa = v => Number(v || 0).toLocaleString('pt-BR', {minimumFractionDigits: 1, maximumFractionDigits: 1});
+  let T, REF, POP, GEO;
+  try {
+    [T, REF, POP, GEO] = await Promise.all([
+      fetch('data/financiamento/municipios/transferencias_uniao.json').then(r => r.ok ? r.json() : null),
+      fetch('data/municipios_ibge_referencia.json').then(r => r.ok ? r.json() : null),
+      fetch('data/populacao_censo2022.json').then(r => r.ok ? r.json() : null),
+      fetch('data/geo_uf.json').then(r => r.ok ? r.json() : null),
+    ]);
+  } catch (e) { T = null; }
+  const leg = document.getElementById('legTransfUF');
+  if (!T || !T.municipios || !REF || !POP) {
+    if (leg) leg.innerHTML = '<span class="escala">Transferências por município: sem coleta até o corte.</span>';
+    return;
+  }
+  const ref = Array.isArray(REF) ? REF : Object.values(REF);
+  const ufDe = {};
+  ref.forEach(m => { ufDe[String(m.codigo_ibge).padStart(7, '0')] = m.uf; });
+  const porUF = {}, popUF = {};
+  Object.entries(T.municipios).forEach(([cod, m]) => {
+    const uf = ufDe[cod]; if (!uf) return;
+    porUF[uf] = (porUF[uf] || 0) + Number(m.total || Object.values(m.por_rota || {}).reduce((a, b) => a + Number(b || 0), 0));
+    popUF[uf] = (popUF[uf] || 0) + Number(POP[cod] || 0);
+  });
+  const porHab = {};
+  Object.keys(porUF).forEach(uf => { if (popUF[uf]) porHab[uf] = porUF[uf] / popUF[uf]; });
+  const valores = Object.values(porHab);
+  const max = valores.length ? Math.max(...valores) : 0;
+  if (svg && GEO && window.MonitorMapas) {
+    const ctx = MonitorMapas.contexto(GEO, 480, 460);
+    const rampa = MonitorMapas.PALETA.atmosfera.chuva_claro.rampa;
+    const cor = uf => {
+      const v = porHab[uf];
+      if (v == null || !max) return MonitorMapas.NEUTRA;
+      return rampa[Math.min(rampa.length - 1, Math.floor(v / max * rampa.length))];
+    };
+    MonitorMapas.fundo && MonitorMapas.fundo('mapaTransfUF', 'chuva_claro');
+    MonitorMapas.ufs(ctx, 'mapaTransfUF', cor, uf => porHab[uf] == null
+      ? uf + ': sem mês lido'
+      : uf + ': ' + reais(porHab[uf]) + ' por habitante');
+    MonitorMapas.credito('boxTransfUF', {
+      fontes: ['Portal da Transparência (transferências a municípios)', 'Censo 2022 (IBGE)'],
+      data: T.atualizado_em});
+    MonitorMapas.legenda('legTransfUF', [
+      ...rampa.map((c, i) => ({cor: c, rotulo: i === 0 ? 'menor' : (i === rampa.length - 1 ? 'maior' : '·')})),
+      {cor: MonitorMapas.NEUTRA, rotulo: 'sem mês lido'}]);
+  }
+  const linha = document.getElementById('linhaTransfUF');
+  if (linha) {
+    const meses = Object.keys(T.meses_lidos || {}).sort();
+    linha.textContent = meses.length + ' mês(es) lido(s) de 2026 · atualizado em ' + (T.atualizado_em || '—');
+  }
+  const dl = document.getElementById('dlTransfUF');
+  if (dl) {
+    dl.innerHTML = Object.keys(porHab).sort((a, b) => porHab[b] - porHab[a]).map(uf =>
+      '<dt>' + esc(uf) + '</dt><dd>' + reais(porHab[uf]) + ' por habitante · ' + reais(porUF[uf]) + ' no total</dd>').join('');
+  }
+  if (grade) {
+    grade.innerHTML = Object.keys(porHab).sort().map(uf =>
+      '<button type="button" class="tile" data-uf="' + esc(uf) + '">'
+      + '<span class="tile-uf">' + esc(uf) + '</span>'
+      + '<span class="tile-face"><span>' + reais(porHab[uf]) + ' por hab.</span>'
+      + '<span>' + reais(porUF[uf]) + ' no total</span></span></button>').join('');
+    const dlg = document.getElementById('detailFin');
+    const corpo = document.getElementById('detailFinConteudo');
+    const fechar = document.getElementById('detailFinFechar');
+    if (fechar && dlg) fechar.addEventListener('click', () => dlg.close());
+    grade.addEventListener('click', ev => {
+      const b = ev.target.closest('.tile'); if (!b || !dlg) return;
+      const uf = b.dataset.uf;
+      corpo.innerHTML = '<h3>' + esc(uf) + '</h3>'
+        + '<p>Transferido pela União aos municípios nos meses lidos de 2026: <strong>'
+        + reais(porUF[uf]) + '</strong>, ou <strong>' + reais(porHab[uf])
+        + '</strong> por habitante (Censo 2022: ' + Number(popUF[uf]).toLocaleString('pt-BR')
+        + ' habitantes).</p>'
+        + '<p class="note">Soma das rotas constitucional, saúde, assistência social, defesa civil e '
+        + 'outras. Transferido não é gasto: o que a prefeitura fez com o dinheiro é outro registro.</p>';
+      dlg.showModal();
+    });
+  }
 })();
