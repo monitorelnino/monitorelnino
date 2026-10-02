@@ -327,7 +327,8 @@ setTimeout(() => {
   {
     const IDS_DADO = {
       "index.html": ["heroVerifFederal", "metaUltimaVerif", "respNum", "metaAtualizado", "corteDados"],
-      "saude.html": ["corteSaude", "gaugeSaudeNum", "gaugeSaudeN", "gaugeSaudeNV", "gaugeSaudeCorte", "rsNum", "rsCorte", "nPlanoSaude", "nCoordSaude", "nEmergSaude"],
+      // 02/10/2026 (bloco A): os medidores e o corte saíram do topo; os cartões do topo são outros.
+      "saude.html": ["nDengueSE", "nSragSE", "nUFsAlerta", "nCalorMun", "nEmergSaude"],
       // `notaFogoCorte` saiu com o painel da rota do fogo (bloco B, 01/10/2026).
       // 02/10/2026: `corteFin` saiu da página (a data da página é a da última coleta e vive
       // nos cartões da semana). Campo que o portão cobra e a página não tem reprova para sempre.
