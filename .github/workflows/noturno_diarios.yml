@@ -63,5 +63,10 @@ jobs:
         coletar_diarios_consorciados.py --desde-dias 8
         coletar_doe.py
         coletar_s2id.py
+        # 02/10/2026 (item 7 do handover): recursos federais de defesa civil AUTORIZADOS por
+        # municipio, das portarias da SEDEC no mesmo DOU que o coletor acima le. Diario porque
+        # o ato sai todo dia util; a janela e incremental e relê sete dias para pegar ato
+        # publicado com atraso ou retificado.
+        coletar_recursos_resposta.py
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
