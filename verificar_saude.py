@@ -107,11 +107,29 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
                 # caído (o repositório do InfoGripe passou a exigir login) e a declaração ficou para
                 # trás. Estado de coleta que não olha o dado é promessa, não registro.
                 if d.get("arquivo"):
-                    _existe = (_sd / d["arquivo"]).exists()
+                    _alvo = _sd / d["arquivo"]
+                    _existe = _alvo.exists()
+                    # 02/10/2026: arquivo em disco pode guardar SÉRIE ou LACUNA DECLARADA. O de
+                    # síndrome gripal guarda lacuna (`serie: []` com o motivo medido: API 401,
+                    # CSV 403), e chamá-lo de "coletado" diria que temos a série — temos a prova
+                    # de que a fonte recusou, que é outra coisa. O portão passa a olhar o
+                    # conteúdo, e continua cobrando as duas direções.
+                    _so_lacuna = False
+                    if _existe:
+                        try:
+                            _conteudo = json.loads(_alvo.read_text(encoding="utf-8"))
+                            _serie = _conteudo.get("serie")
+                            _so_lacuna = bool(_conteudo.get("lacuna")) and not _serie
+                        except Exception:  # noqa: BLE001 — arquivo ilegível cai no caso de sempre
+                            _so_lacuna = False
                     if d.get("status_coleta") == "coletado" and not _existe:
                         erros.append(f"(o) catálogo: {d.get('id')} diz 'coletado' e "
                                      f"data/saude_desfechos/{d['arquivo']} não existe")
-                    if d.get("status_coleta") != "coletado" and _existe:
+                    if d.get("status_coleta") == "coletado" and _so_lacuna:
+                        erros.append(f"(o) catálogo: {d.get('id')} diz 'coletado' e "
+                                     f"data/saude_desfechos/{d['arquivo']} guarda lacuna "
+                                     f"declarada, não série")
+                    if d.get("status_coleta") != "coletado" and _existe and not _so_lacuna:
                         erros.append(f"(o) catálogo: {d.get('id')} tem "
                                      f"data/saude_desfechos/{d['arquivo']} em disco e não diz 'coletado'")
         if (_sd / "instrumentos.json").exists():
