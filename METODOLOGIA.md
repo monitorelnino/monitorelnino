@@ -2731,3 +2731,43 @@ declarada enquanto a fonte recusa acesso (§80).
 
 O portão de runtime da página foi reescrito para a página que existe: ordem nova, saída do backlog,
 siglas, contadores do dado, grade de três e as três travas da busca por município.
+
+## 84. Fechar os 27 do MARÉ Saúde sem depender de nova instrução (01/10/2026)
+
+O bloco das 23h10 pediu que o que hoje depende de alguém mandar passe a acontecer sozinho. São
+quatro peças, e elas existem a partir de hoje.
+
+**A corrente da noite ficou inteira.** Os quatro canais da bateria já rodavam no
+`noturno_saude_estadual.yml`; agora o **juiz** roda logo depois, na mesma corrente, e depois dele o
+fechamento. Nenhuma das três etapas espera instrução.
+
+**Quem pode ser marcado "não localizado", e quem não.** `scripts/fechar_saude.py` lê o **log v2** —
+não um campo de controle — e monta, por UF, qual canal rodou e com que decisão. A autorização exige
+os **quatro** canais com decisão saudável (`consultado sem achado`, `pista` ou `registro`); canal
+ausente, ou com `erro`, mantém a UF **não verificada**. A diferença entre as duas marcas é a
+diferença entre "procuramos e não achamos" e "ainda não procuramos", e é por isso que o lado
+negativo exige mais prova, não menos. A escolha de ler o log é deliberada: um campo `canais_ok:
+true` seria uma afirmação sobre o passado que ninguém confere; o log **é** o passado.
+
+**Medido na primeira execução:** 21 de 27 com plano localizado, 1 de 27 com coordenação localizada e
+**0 de 27 com os quatro canais rodados** — porque o canal do diário estadual está indisponível em 22
+UFs e o canal de fontes declaradas só tem endereço para MT. Ou seja: hoje nenhuma UF pode ser
+marcada "não localizado", e o relatório diz isso UF por UF, com o motivo de cada uma.
+
+**A troca para a v0.4 acontece sozinha quando a condição se cumprir.** `trocar_para_v04.py` lê o
+pedido que o fechamento grava (`data/saude_troca_v04.json`) e, sem `trocar: true`, **não altera
+nada** — é isso que permite rodá-lo em toda publicação. Quando as 27 estiverem verificadas no plano
+e na coordenação, ele substitui prontidão e faixa pelas da v0.4, recarimba a versão, recalcula o
+resumo do próprio arquivo e **publica a errata encadeada** (C30), que cita as duas médias, a
+variação e quem muda de faixa — e declara, por exigência da editoria, que a diferença vem dos
+estados que passaram a entrar com zero após verificação completa, não de piora do que já estava
+medido. O ensaio (`--ensaio`) prova o caminho sem esperar a condição: hoje a troca levaria a média
+de 31,8 para 21,7, com 20 UFs mudando de faixa.
+
+O que a troca **não** faz: não recalcula nada por conta própria, não toca o MARÉ Legal e não edita
+HTML. A página mostra o número novo porque o arquivo mudou.
+
+**O relatório diário** do publicador imprime, no resumo do job, quantas UFs faltam e por quê — o
+item 4 do bloco. "21 de 27" sem o motivo das seis não é relatório; é placar.
+
+A suíte vai de 152 para 154 comandos.

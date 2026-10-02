@@ -117,6 +117,16 @@ jobs:
       # regeneração não altere nada, que é a propriedade de verdade (derivado é função pura do dado
       # desta rodada). O portão 12 no modo `git` continua valendo onde ele faz sentido — na suíte,
       # abaixo, DEPOIS do commit local, quando a árvore está limpa de novo.
+      # 01/10/2026 (bloco das 23h10, itens 3 e 4): o publicador mede o fechamento do MARÉ Saúde,
+      # imprime quantas UFs faltam e por quê, e TROCA para a v0.4 sozinho quando as 27 estiverem
+      # verificadas no plano e na coordenação. Sem a condição cumprida, `trocar_para_v04.py` não
+      # altera nada — e é por isso que ele pode rodar em toda publicação.
+      - name: Fechamento do MARÉ Saúde e troca para a v0.4
+        timeout-minutes: 6
+        run: |
+          python3 scripts/fechar_saude.py --aplicar | tee -a "$GITHUB_STEP_SUMMARY"
+          python3 trocar_para_v04.py | tee -a "$GITHUB_STEP_SUMMARY"
+
       - name: Regenerar a cadeia canônica de derivados
         timeout-minutes: 8
         run: bash scripts/verificar_derivados.sh --idempotencia
