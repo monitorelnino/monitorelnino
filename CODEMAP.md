@@ -75,6 +75,7 @@ Atualizado em 01/10/2026.
 | `coletar_saude.py` | — | `saude_federal.json`, `saude_sinais.json`, `saude_uf.json` | — | não |
 | `coletar_saude_estadual.py` | — | — | — | não |
 | `coletar_semiarido_sudene.py` | — | `enquadramento_federal.json` | — | não |
+| `coletar_sg_esus.py` | — | `saude_desfechos/sindrome_gripal_serie.json` | — | não |
 | `coletar_siconfi_182.py` | — | `despesa_182.json` | — | não |
 | `coletar_sinais_risco.py` | — | — | — | não |
 | `coletar_srag_gripe.py` | — | `saude_desfechos/infogripe_diagnostico.json` | — | não |

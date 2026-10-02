@@ -2638,6 +2638,56 @@ a ordem correta — foi o que a primeira versão do portão fez, e há um caso d
 
 A suíte passa de 149 para 151 comandos.
 
+## 80. Síndrome gripal: o coletor existe, e a fonte recusa (01/10/2026)
+
+O bloco das 23h20 cobrou coletor para a síndrome gripal, que não existia em nenhuma rotina.
+`coletar_sg_esus.py` existe a partir de hoje, e o que ele mediu é o seguinte: o Portal de Dados
+Abertos do SUS declara duas rotas para o e-SUS Notifica, e **as duas recusam acesso automatizado**.
+A API OpenSearch (`notifica-prd-es.saude.gov.br/desc-esus-notifica-estado-*/_search`) devolve
+**HTTP 401**; os CSV por UF e lote, cujos endereços o próprio portal publica na descrição de cada
+recurso, devolvem **HTTP 403**. Recusa de acesso se respeita, sempre — e credencial publicada em
+documento não entra num repositório público.
+
+Há um segundo fato, independente do acesso: o conjunto por ano da síndrome gripal vai de **2020 a
+2024**. Não existe conjunto de 2025 nem de 2026. Mesmo com o acesso aberto, o ciclo 2026/2027 não
+tem série nesta fonte até o corte.
+
+**O que o coletor faz, então.** Consulta, mede e **declara a lacuna**, com o código de cada recusa
+e a lista de anos que a fonte oferece, em `data/saude_desfechos/sindrome_gripal_serie.json` com
+`serie: []`. A lacuna é publicável de propósito: a página precisa dizer ao leitor que procuramos e
+não obtivemos, que é diferente de não ter procurado. Quando a fonte abrir, o mesmo coletor agrega
+sem troca de rota — a descoberta dos conjuntos e dos arquivos já está escrita e testada, inclusive
+o detalhe de que o campo `url` do recurso vem vazio e o endereço do CSV vive no `description`, em
+markdown, e que a UF vem do **caminho** do arquivo (`/uf=AC/`) e não do nome do recurso, que é
+texto livre.
+
+A trava central do autoteste: nenhuma combinação de estados produz série sem leitura. Recusa nas
+duas rotas é `fonte_bloqueada` e entra no log como **erro**; ano do ciclo ausente com rota aberta é
+`consultado sem achado`; só rota aberta **e** ano presente autorizam agregar.
+
+Cadência semanal, na mesma rotina do SRAG, porque é a rodada que descobre quando a fonte abrir.
+
+## 81. O carimbo do publicador passa a escrever o corte (01/10/2026)
+
+O §79 corrigiu a ordem dentro do `atualizar.py` e a publicação continuou falhando, pela mesma linha
+de log. A causa restante era uma **colisão de regras**, não de ordem.
+
+`scripts/frescor.py --carimbar`, que é o passo de carimbo do `publicar_dados.yml`, escrevia
+`atualizado_em = <data do último dado>` e declarava — em docstring e em caso de teste — que `corte`
+**nunca** era tocado, "porque é decisão editorial sobre até quando o dado vale". Essa leitura foi
+revogada em 30/09, quando o corte ficou vinte dias congelado atrás do arquivo de transferências: o
+corte passou a ser a data da rodada, e o portão `verificar_corte_sincronizado.py` passou a exigir
+que as duas datas coincidam. As duas regras não podiam valer juntas, e a publicação parou quatro
+vezes em 01/10 exatamente nessa contradição — o carimbo avançava uma data, o portão cobrava as duas.
+
+A editoria decidiu qual vale, no bloco das 23h UTC: *"gravar corte e atualizado_em da rodada e só
+então verificar"*. `gravar_carimbo` passa a escrever as duas, do **mesmo** carimbo.
+
+O que não muda: a data continua vindo do **dado**, nunca do relógio — quem a calcula é `carimbar`,
+a partir do commit mais recente que tocou `data/`, e rodada sem dado novo não carimba nada. Os três
+casos novos do autoteste cobram isto: as duas datas escritas, do mesmo valor, e nenhuma chamada de
+relógio no corpo. O caso antigo, que cobrava o oposto, fica registrado como revogado.
+
 ## 82. MARÉ Saúde: a página em quatro blocos, e o que saiu dela (01/10/2026)
 
 Os blocos C, D e E do handover de 01/10/2026 — organização, textos e desenho — não tinham sido

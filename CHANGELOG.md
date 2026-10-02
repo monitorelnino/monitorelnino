@@ -9,6 +9,21 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-02 · #506 · Coletor de síndrome gripal (e-SUS Notifica)
+
+A síndrome gripal não tinha coletor em rotina nenhuma. Agora tem — e ele mediu que as duas rotas
+que o portal declara recusam acesso automatizado (API 401, CSV 403) e que o conjunto por ano vai de
+2020 a 2024, sem o ano do ciclo. Nada de série inventada: ele declara a lacuna com o código de cada
+recusa, e agrega sem troca de rota quando a fonte abrir. Semanal, junto do SRAG. Em
+`METODOLOGIA.md` §80.
+
+## 2026-10-02 · #507 · O carimbo do publicador escreve o corte
+
+O §79 corrigiu a ordem e a publicação seguiu falhando: faltava a colisão de regras. O carimbo do
+publicador escrevia só `atualizado_em` e declarava que `corte` nunca era tocado — regra revogada em
+30/09, quando o corte passou a ser a data da rodada. Agora escreve as duas, do mesmo valor, por
+ordem da editoria. A data continua vindo do dado, nunca do relógio. Em `METODOLOGIA.md` §81.
+
 ## 2026-10-02 · #508 · MARÉ Saúde: a página refeita (blocos C, D e E)
 
 A ordem inverteu: números, o que cada estado publicou, o que os órgãos de saúde registram e o que o

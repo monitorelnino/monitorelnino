@@ -65,6 +65,12 @@ jobs:
         # SIVEP-Gripe em fluxo e guarda só o agregado por UF e semana; os anos congelados
         # (2019–2024) saem do cache e não são rebaixados da rede toda semana.
         coletar_srag_sivep.py
+        # 01/10/2026 (bloco das 23h20): sindrome gripal (e-SUS Notifica), semanal como a
+        # SRAG. Hoje ele mede e declara a lacuna — as duas rotas que o portal publica
+        # recusam acesso automatizado (API 401, CSV 403) e o conjunto por ano para a
+        # gripal vai de 2020 a 2024, sem o ano do ciclo. Roda toda semana porque e a
+        # propria rodada que descobre quando a fonte abrir.
+        coletar_sg_esus.py
         # 29/09/2026 (item 2): contagem de dengue e chikungunya pela fonte primária (SINAN).
         # O InfoDengue continua rodando na rodada semanal para o NÍVEL DE ALERTA, que é
         # interpretação da série e não existe no banco primário.
