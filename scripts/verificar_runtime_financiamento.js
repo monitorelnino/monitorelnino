@@ -106,8 +106,9 @@ setTimeout(() => {
                           txt("topoAtosRotulo"), txt("finContexto")].join(" ")));
   teste("a linha de contexto traz o anunciado e a distinção do desembolsado",
     /anunciam/.test(txt("finContexto")) && /saiu do caixa/.test(txt("finContexto")));
+  // A frase gerada é da SEÇÃO (acima da grade), e não do slot de altura fixa do cartão.
   teste("a forma de aplicação está na página, com a frase gerada do dado",
-    !!q("boxFormaAplicacao") && /aplicado diretamente pela União/.test(txt("linhaFormaAplicacao")));
+    !!q("boxFormaAplicacao") && /aplicado diretamente pela União/.test(txt("fraseFormaAplicacao")));
   teste("defesa civil: mapa por estado e a busca por município no mesmo cartão",
     !!q("mapaRespostaUF") && !!q("buscaRespostaMun")
     && q("contaRespostaMun").getAttribute("aria-live") === "polite");

@@ -725,10 +725,17 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     }
     const direto = soma['aplicados diretamente pela União'] || 0;
     const transf = (soma['transferidos aos estados'] || 0) + (soma['transferidos aos municípios'] || 0);
-    if (el('linhaFormaAplicacao')) {
-      el('linhaFormaAplicacao').textContent = 'Do valor já desembolsado, '
+    /* A frase gerada é da SEÇÃO, acima da grade — e não do slot do cartão, que tem altura fixa de
+     * duas linhas: uma frase de três linhas ali empurrava título, subtítulo e mídia do primeiro
+     * cartão para baixo, e o portão de consistência visual reprovava (medido no runner da CI, a
+     * 1366 px). No slot fica a janela do dado, curta. */
+    if (el('fraseFormaAplicacao')) {
+      el('fraseFormaAplicacao').textContent = 'Do valor já desembolsado, '
         + (direto / total * 100).toFixed(0) + '% foi aplicado diretamente pela União e '
         + (transf / total * 100).toFixed(0) + '% transferido a estados e municípios.';
+    }
+    if (el('linhaFormaAplicacao')) {
+      el('linhaFormaAplicacao').textContent = 'ciclo 2026/2027 · ' + reais(total) + ' desembolsados';
     }
   }).catch(() => {});
 
