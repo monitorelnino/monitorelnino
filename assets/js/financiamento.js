@@ -897,9 +897,14 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     }
     const lista = el('topoAtosLista');
     if (lista && novos.length) {
-      lista.innerHTML = '<ul class="u-mb-0">' + novos.map(x =>
-        '<li>' + (x.url ? '<a href="' + x.url + '" target="_blank" rel="noopener">' + (x.nome || x.instrumento || 'ato') + '</a>'
-                        : (x.nome || x.instrumento || 'ato')) + '</li>').join('') + '</ul>';
+      /* Nome e endereço vêm de arquivo de dado, e dado entra na página escapado — a regra do
+       * portão de segurança, e ela vale mesmo quando a fonte é nossa: o arquivo é escrito por
+       * coletor, e coletor lê o que a fonte publicou. */
+      const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+      lista.innerHTML = '<ul class="u-mb-0">' + novos.map(x => {
+        const nome = esc(x.nome || x.instrumento || 'ato');
+        return '<li>' + (x.url ? '<a href="' + esc(x.url) + '" target="_blank" rel="noopener">' + nome + '</a>' : nome) + '</li>';
+      }).join('') + '</ul>';
     }
     /* O anunciado vira CONTEXTO, não cartão: ele não muda a cada coleta. */
     const anunciado = itens.reduce((a, x) => a + Number(x.valor_total || 0), 0);
