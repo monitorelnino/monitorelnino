@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-03 · #541 · Credencial de terceiro não fica na cópia preservada
+
+Alerta do GitHub de 01/10: 18 páginas salvas como prova traziam chave de API de terceiro (Flickr e
+Google Maps) e eram servidas pelo nosso domínio, porque o deploy publica a raiz. A redação passa a
+ser na porta de preservação, antes do hash; o passado foi redigido e rechaveado, com o hash anterior
+registrado; um portão barra a volta. Em `coletores_base.py`, `scripts/remediar_segredos_evidencias.py`
+e `scripts/verificar_evidencia_sem_segredo.py`.
+
 ## 2026-10-03 · #535 · Dizemos o que disponibilizamos; o blog conta o ciclo
 
 Duas regras para todo o site: nenhuma frase sobre código, base de dados ou licença de dados, e o blog só sobre acontecimentos do ciclo, em prosa escrita por pessoa. Saem a pasta de dados abertos, a planilha da edição e o release gerado; nasce `mudancas.html`, com as 57 entradas do CHANGELOG. Blog com boletim congelado por edição e aprovação obrigatória; imprensa só com o estável. METODOLOGIA §103.
