@@ -71,6 +71,19 @@ def corpo_em_html(entradas: list) -> str:
     return "\n".join(linhas)
 
 
+TITULO_DO_MODELO = "Blog do MARÉ: os textos da editoria sobre o ciclo"
+TITULO = "Mudanças no MARÉ: o registro técnico do método e das correções"
+DESCRICAO = ("O registro técnico do que mudou no Monitor El Niño: método, verificação, portões e "
+             "correções.")
+LD = ('<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebPage", '
+      '"name": "Mudanças no MARÉ", "description": "O registro técnico do que mudou no Monitor El '
+      'Niño: método, verificação, portões e correções.", "url": '
+      '"https://monitorelnino.com.br/mudancas.html", "inLanguage": "pt-BR", "isPartOf": '
+      '{"@type": "WebSite", "name": "MARÉ · Monitor de Antecipação e Resposta ao El Niño", "url": '
+      '"https://monitorelnino.com.br/", "publisher": {"@type": "Organization", "name": "Futura '
+      'Evidence Lab", "url": "https://www.futuraevidencelab.com.br/"}}}]</script>')
+
+
 def montar(modelo: str, changelog: str) -> str:
     """A página inteira, no esqueleto do site. Função pura."""
     entradas = entradas_do_changelog(changelog)
@@ -80,9 +93,17 @@ def montar(modelo: str, changelog: str) -> str:
     fim = modelo.index("</main>", inicio) + len("</main>")
     pagina = modelo[:inicio] + corpo_em_html(entradas) + modelo[fim:]
     pagina = pagina.replace("<title>Blog do MARÉ", "<title>Mudanças no MARÉ")
+    pagina = pagina.replace(TITULO_DO_MODELO, TITULO)
     pagina = re.sub(r'<meta name="description" content="[^"]*"',
-                    '<meta name="description" content="O registro técnico do que mudou no Monitor '
-                    'El Niño: método, verificação, portões e correções."', pagina, count=1)
+                    f'<meta name="description" content="{DESCRICAO}"', pagina, count=1)
+    # 03/10/2026: a página nasce do modelo do blog e herdava o cabeçalho dele — canônica, og:url e
+    # o JSON-LD apontando para blog.html. Duas páginas com a mesma canônica é uma só para quem
+    # indexa, e o portão de SEO reprova com razão. Aqui o endereço passa a ser o desta página.
+    pagina = pagina.replace("https://monitorelnino.com.br/blog.html",
+                            "https://monitorelnino.com.br/mudancas.html")
+    pagina = re.sub(r'(<meta (?:property="og:description"|name="twitter:description") '
+                    r'content=")[^"]*(")', lambda m: m.group(1) + DESCRICAO + m.group(2), pagina)
+    pagina = re.sub(r'<script type="application/ld\+json">[\s\S]*?</script>', LD, pagina, count=1)
     # A página não entra no menu: a decisão foi explícita. O item ativo do menu some com ela.
     pagina = pagina.replace('<span class="ativa" aria-current="page">Blog do MARÉ</span>',
                             '<a href="blog.html">Blog do MARÉ</a>')
@@ -124,8 +145,23 @@ def _autoteste() -> int:
        'aria-current="page">Blog do MARÉ' not in pagina)
     ok("o rodapé do modelo é preservado", "<footer>f</footer>" in pagina)
 
+    modelo_cab = ('<title>Blog do MARÉ</title><meta name="description" content="x">'
+                  '<link rel="canonical" href="https://monitorelnino.com.br/blog.html">'
+                  '<meta property="og:description" content="velha">'
+                  '<script type="application/ld+json">[{"url": '
+                  '"https://monitorelnino.com.br/blog.html"}]</script>'
+                  '<main id="conteudo">velho</main>')
+    cab = montar(modelo_cab, cl)
+    ok("a canônica é a desta página",
+       'canonical" href="https://monitorelnino.com.br/mudancas.html"' in cab)
+    ok("nenhum endereço do blog sobra no cabeçalho",
+       "monitorelnino.com.br/blog.html" not in cab)
+    ok("o JSON-LD é o desta página", '"@type": "WebPage"' in cab and '"name": "Mudanças' in cab)
+    ok("a descrição social acompanha a da página",
+       'og:description" content="' + DESCRICAO + '"' in cab)
+
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
-          else "✓ AUTOTESTE OK — 14 casos, sem rede.")
+          else "✓ AUTOTESTE OK — 18 casos, sem rede.")
     return 1 if falhas else 0
 
 
