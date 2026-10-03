@@ -157,6 +157,16 @@ jobs:
       # arquivo gerado, e por isso ele é regerado a cada publicação — logo depois da imprensa,
       # porque o portão de coerência compara os dois. Sem este passo a página mostraria o mês
       # fechado da edição anterior, que é o mesmo defeito que a imprensa teve no item 0.
+      # 03/10/2026 (handover do blog e da imprensa): o boletim da semana é CONGELADO por edição, e
+      # a página de mudanças nasce do CHANGELOG. Os dois depois da imprensa, porque leem dela.
+      - name: Congelar o boletim da semana
+        timeout-minutes: 3
+        run: python3 scripts/gerar_boletim.py
+
+      - name: Gerar a página de mudanças
+        timeout-minutes: 3
+        run: python3 scripts/gerar_mudancas.py
+
       - name: Gerar os cartões do Financiamento
         timeout-minutes: 5
         run: python3 gerar_financiamento_semana.py

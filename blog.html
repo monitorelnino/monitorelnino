@@ -45,61 +45,27 @@
   </header>
 <main id="conteudo">
   <h1>Blog do MARÉ</h1>
-  <p class="hint">Textos da editoria e, acima deles, a situação do monitoramento em quatro quadros lidos dos mesmos dados das demais páginas. Cada quadro traz a data da própria atualização.</p>
-  <div class="panel" id="situacao">
-    <h2>Situação do monitoramento</h2>
-    <div class="grade-cartoes grade-cartoes--4" id="statusGrade">
-    <div class="cartao cartao--status cartao--acento-musgo-topo" id="cardLegal">
-      <p class="cartao-k">MARÉ Legal · antecipação</p>
-      <div class="gauge-head"><span class="gnum" id="stLegalMedia">—</span><span class="gden">de 100</span></div>
-      <span class="cartao-s">média dos 27 estados · preparação publicada antes do ciclo</span>
-      <dl class="status-dl">
-      <div><dt>Estados com plano feito para este El Niño</dt><dd id="stLegalNovo">—</dd></div>
-      <div><dt>Estados com plano recorrente (vigente ou readaptado)</dt><dd id="stLegalRecorrente">—</dd></div>
-      <div><dt>Planos municipais localizados</dt><dd id="stLegalMun">—</dd></div>
-      </dl>
-      <a class="cartao-a" href="index.html">MARÉ Legal</a>
+  <p class="hint">Textos da editoria do MARÉ sobre o que está acontecendo no ciclo do El Niño: as emergências declaradas, os alertas, o que os órgãos de saúde registram, o que estados e municípios publicaram, o dinheiro que chega. Cada texto diz onde, quando e com que fonte. Os números vivos estão nas páginas do Monitor.</p>
+
+  <!-- 03/10/2026 (handover do blog e da imprensa): saíram os quatro quadros "Situação do
+       monitoramento" — eles usavam o vocabulário antigo ("antecipação", "prontidão") e repetiam,
+       com outra régua, o que as páginas do Monitor publicam. No lugar entra UM cartão: o boletim
+       mais recente, com três números da semana congelados na edição. É o único cartão do blog,
+       por decisão explícita: no corpo dos textos não entra cartão nenhum. -->
+  <section id="boletim" aria-labelledby="boletimTitulo">
+    <h2 id="boletimTitulo">Boletim mais recente</h2>
+    <div class="cartao cartao--status cartao--acento-musgo-topo" id="cartaoBoletim">
+      <p class="cartao-k" id="boletimData">—</p>
+      <div class="grade-numeros grade-numeros--3" id="boletimNumeros"></div>
+      <a class="cartao-a" id="boletimLink" href="blog.html">ler o boletim</a>
     </div>
-    <div class="cartao cartao--status cartao--acento-sintetico-topo" id="cardSaude">
-      <p class="cartao-k">MARÉ Saúde · prontidão sanitária</p>
-      <div class="gauge-head"><span class="gnum" id="stSaudeMedia">—</span><span class="gden">de 100</span></div>
-      <span class="cartao-s">média das UFs verificadas · não é um número nacional</span>
-      <dl class="status-dl">
-      <div><dt>UFs verificadas</dt><dd id="stSaudeUfs">—</dd></div>
-      <div><dt>Planos municipais lidos para saúde</dt><dd id="stSaudePlanos">—</dd></div>
-      <div><dt>Emergências sanitárias declaradas no ciclo</dt><dd id="stSaudeEmerg">—</dd></div>
-      </dl>
-      <a class="cartao-a" href="saude.html">MARÉ Saúde</a>
-    </div>
-    <div class="cartao cartao--status cartao--acento-argila-topo" id="cardDefesa">
-      <p class="cartao-k">Defesa civil · resposta</p>
-      <div class="gauge-head"><span class="gnum" id="stRespIndice">—</span><span class="gden">de 100</span></div>
-      <span class="cartao-s">população em município sob decreto de emergência desde 29/06/2026</span>
-      <dl class="status-dl">
-      <div><dt>Municípios sob decreto</dt><dd id="stRespMun">—</dd></div>
-      <div><dt>Decretos com reconhecimento federal</dt><dd id="stRespRec">—</dd></div>
-      <div><dt>Alertas CEMADEN e avisos INMET vigentes</dt><dd id="stRespAlertas">—</dd></div>
-      </dl>
-      <a class="cartao-a" href="defesa-civil.html">Defesa civil</a>
-    </div>
-    <div class="cartao cartao--status cartao--acento-seca" id="cardFisico">
-      <p class="cartao-k">Sinais físicos · observado</p>
-      <div class="gauge-head"><span class="gnum" id="stOni">—</span><span class="gden">°C · ONI</span></div>
-      <span class="cartao-s">anomalia do Pacífico equatorial (Niño 3.4) · trimestre <span id="stOniTri">—</span></span>
-      <dl class="status-dl">
-      <div><dt>Focos de calor nas últimas 24 h</dt><dd id="stFocos">—</dd></div>
-      <div><dt>UFs com seca S2 ou mais forte em parte do território</dt><dd id="stSeca">—</dd></div>
-      <div><dt>Prognóstico de chuva SON/2026</dt><dd id="stProg">—</dd></div>
-      </dl>
-      <a class="cartao-a" href="monitor-de-riscos.html">Monitor de riscos</a>
-    </div>
-    </div>
-  </div>
-  <div class="panel" id="textos">
-    <h2>Textos</h2>
+  </section>
+
+  <section id="textos" aria-labelledby="textosTitulo">
+    <h2 id="textosTitulo">Textos</h2>
     <p class="hint">Do mais recente ao mais antigo. Também em <a href="feeds/blog.xml">feed Atom</a>.</p>
     <ol class="blog-lista" id="blogLista"></ol>
-  </div>
+  </section>
 </main>
   <footer class="site-footer">
     <div class="grad-line"></div>
@@ -110,7 +76,7 @@
 </div>
 
 <script src="assets/colunas.js?v=3669e58d" defer></script>
-<script src="assets/js/blog.js?v=2c3e5f0d" defer></script>
+<script src="assets/js/blog.js?v=fb82955b" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

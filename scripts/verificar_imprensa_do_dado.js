@@ -40,9 +40,15 @@ const PAGINA = "imprensa.html";
 // gabarito (`relLegal`, `relSaude`, `relPlanosSemana`, `relDecretosSemana`, `relPopSemana`,
 // `relPlanosTotal`, `relDecretosTotal`), que não existem mais. A garantia não enfraquece: o texto
 // do release é conferido abaixo contra o próprio arquivo que o gerou, e o motor tem autoteste.
+// 03/10/2026 (handover do blog e da imprensa): a página passa a ter só o ESTÁVEL. `relData` saiu
+// com a frase de abertura que trazia a data da edição — a data agora vive no cartão do boletim,
+// que é o único elemento dinâmico, e no bloco "Como citar". Os ids que restam são os que a regra 0
+// sempre quis proteger: índice, versão e data de acesso vindos do banco, nunca escritos à mão.
 const OBRIGATORIOS = [
-  "relData", "topoLegal", "topoSaude",
+  "topoLegal", "topoSaude",
   "citarVersaoLegal", "citarVersaoSaude", "citarAcesso",
+  // o ponteiro do boletim: data da edição e os três números, preenchidos do arquivo congelado
+  "boletimData",
 ];
 
 const falhas = [];
@@ -86,39 +92,34 @@ const ler = p => JSON.parse(fs.readFileSync(path.join(RAIZ, p), "utf-8"));
   }
 
   // A data da edição é a do banco.
-  const meta = ler("data/meta.json");
-  const esperada = meta.atualizado_em || meta.corte;
-  if (esperada && txt("relData") !== esperada) {
-    falhas.push(`${PAGINA}: data da edição na página ("${txt("relData")}") ≠ data/meta.json ("${esperada}")`);
-  }
-
-  /* O release é o texto que o motor escreveu: ele não pode estar vazio na página, e tem de ser o
-     MESMO texto do arquivo. É aqui que a conta dupla poderia nascer — a página montando a frase de
-     novo, com outra régua —, e é aqui que o portão olha. */
+  // A data da edição é a do BOLETIM congelado, e não a do corte: o ponteiro aponta para a edição
+  // que existe, que pode ser de ontem se a de hoje ainda não foi escrita pela editoria.
   try {
-    const semana = ler("data/imprensa/semana.json");
-    /* Compara sem espaço nenhum: na página o release são dois `<p>`, e `textContent` cola os dois
-       sem separador — a diferença seria só de pontuação de parágrafo, e não de conteúdo. */
-    const sóTexto = t => String(t || "").replace(/\s+/g, "").trim();
-    const naPagina = sóTexto(txt("releaseTexto"));
-    const noDado = sóTexto(semana.texto_pronto);
-    if (!noDado) {
-      falhas.push(`${PAGINA}: data/imprensa/semana.json não traz o release gerado`);
-    } else if (!naPagina) {
-      falhas.push(`${PAGINA}: o release não foi escrito na página`);
-    } else if (naPagina !== noDado) {
-      falhas.push(`${PAGINA}: o release da página difere do gerado — a página não pode remontar a frase`);
+    const boletim = ler("data/blog/boletim_mais_recente.json");
+    const naPagina = txt("boletimData");
+    if (boletim && boletim.edicao && !naPagina.includes(boletim.edicao)) {
+      falhas.push(`${PAGINA}: o cartão do boletim diz "${naPagina}" e a edição congelada é `
+                  + `"${boletim.edicao}"`);
     }
-    /* Todo cartão publicado traz valor; cartão sem dado SAI da grade e o rótulo vai para a linha
-       única. Zero é zero, e nunca "sem dado". */
-    const sem = (semana.cartoes || []).filter(c => c.sem_coleta);
-    const linha = txt("semanaNaoCalculaveis");
-    for (const c of sem) {
-      if (!linha.includes(c.rotulo)) {
-        falhas.push(`${PAGINA}: '${c.id}' está sem dado e não aparece na linha 'Sem dado nesta edição'`);
+  } catch (e) { falhas.push(`${PAGINA}: boletim_mais_recente.json ilegível: ${e.message}`); }
+
+  /* O release gerado SAIU da Imprensa (03/10/2026): o que muda toda semana vive no boletim do
+     blog, escrito pela editoria e aprovado por ela. O que se confere aqui é o PONTEIRO — os três
+     números do cartão são os do arquivo congelado, e não uma segunda conta. */
+  try {
+    const boletim = ler("data/blog/boletim_mais_recente.json");
+    const numeros = (boletim && boletim.numeros) || [];
+    const naPagina = d.querySelectorAll("#boletimNumeros .cartao-numero").length;
+    if (numeros.length && naPagina !== Math.min(3, numeros.length)) {
+      falhas.push(`${PAGINA}: o cartão do boletim mostra ${naPagina} número(s) e o arquivo `
+                  + `congelado tem ${Math.min(3, numeros.length)}`);
+    }
+    for (const n of numeros.slice(0, 3)) {
+      if (!txt("boletimNumeros").includes(String(n.valor))) {
+        falhas.push(`${PAGINA}: o número ${n.valor} do boletim não aparece no cartão`);
       }
     }
-  } catch (e) { falhas.push(`${PAGINA}: data/imprensa/semana.json ilegível: ${e.message}`); }
+  } catch (e) { falhas.push(`${PAGINA}: boletim ilegível: ${e.message}`); }
 
   if (falhas.length) {
     console.log("✗ IMPRENSA (regra 0 — nada à mão que dependa do dado):");

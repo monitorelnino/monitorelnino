@@ -1,0 +1,43 @@
+{
+  "_governanca": "Contrato do MODELO DE POST do blog (handover de 03/10/2026). Ele vale para todo texto: título · abertura de uma frase · etiqueta e data · 'Editoria do MARÉ' · corpo em PROSA · fontes numa linha · como citar, com o endereço permanente. A verificação do corpo (sem tópicos, sem listas, sem cartões) é na geração, em gerar_blog.py, porque é lá que o texto se torna página.",
+  "pagina": "blog/<data>-<slug>.html",
+  "estrutura": [
+    "titulo",
+    "abertura",
+    "etiqueta_e_data",
+    "autoria",
+    "corpo_em_prosa",
+    "fontes",
+    "como_citar_com_endereco_permanente"
+  ],
+  "corpo": {
+    "texto_corrido": true,
+    "sem_topicos": true,
+    "sem_listas": true,
+    "sem_cartoes": true
+  },
+  "cabecalho_obrigatorio": [
+    "titulo",
+    "data",
+    "categoria",
+    "autor",
+    "resumo",
+    "aprovado"
+  ],
+  "etiquetas": [
+    "Boletim",
+    "Acontecimento"
+  ],
+  "texto_proibido": [
+    "FIGURA",
+    "Corte da edição",
+    "desastre",
+    "defeso",
+    "antecipação",
+    "prontidão",
+    "dados abertos"
+  ],
+  "_nota_boletim": "No boletim, os cinco grupos de cartões aprovados em 02/10 ficam ACIMA do texto, nunca dentro dele, e os números são os congelados na data da edição.",
+  "modelo": true,
+  "_nota_modelo": "Este contrato é um MODELO: ele vale para cada página de texto gerada em `blog/<data>-<slug>.html`, e não para um arquivo chamado `blog-post.html`, que não existe. O portão de conformidade pula contratos de modelo na varredura de páginas; quem cobra o modelo é `gerar_blog.py`, na geração — e é lá que ele tem de ser cobrado, porque é lá que o texto se torna página. Sem esta marca, o portão tentava renderizar uma página inexistente e reprovava pelo fundo transparente do 404."
+}

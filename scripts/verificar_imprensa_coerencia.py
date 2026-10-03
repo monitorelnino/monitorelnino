@@ -39,6 +39,13 @@ import tempfile
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 
 # (id do cartão da Imprensa, página de origem, id do elemento do número naquela página)
+# 03/10/2026 (handover do blog e da imprensa): "Esta semana em números" SAIU da Imprensa, e com ela
+# os nove cartões que este portão comparava na própria página. O que sobrou de dinâmico ali é o
+# PONTEIRO do boletim — três números congelados na edição.
+#
+# A comparação continua, no lugar certo: o motor da semana (`imprensa/semana.json`) é conferido
+# contra as páginas de origem, porque é dele que o boletim tira os números. Se o motor divergir da
+# página, o boletim nasce errado — e o portão pega antes de nascer.
 MAPA = (
     ("desembolsado_no_mes", "financiamento.html", "topoPagoMes"),
     ("resposta_autorizado_semana", "financiamento.html", "topoRespostaSemana"),

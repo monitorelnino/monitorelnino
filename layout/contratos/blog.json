@@ -1,20 +1,41 @@
 {
-  "_governanca": "Contrato de layout do Blog do MARÉ — o MODELO de post (handover 'Conformidade permanente', 02/10/2026, item 1.3). O que o contrato cobra é o que vale para todo post: a ordem dos dois blocos e o vocabulário. O corpo de cada texto é editorial e não se contrata.",
+  "_governanca": "Contrato de layout do Blog do MARÉ — ÍNDICE (handover de 03/10/2026). O blog é sobre acontecimentos do ciclo, em prosa. Saíram os quatro quadros 'Situação do monitoramento' (vocabulário antigo) e os registros técnicos de mudança, que foram para `mudancas.html`. Quem verifica é scripts/verificar_conformidade.py.",
   "pagina": "blog.html",
   "componentes": {
+    "numeros": ".cartao-numero",
+    "grade_numeros": ".grade-numeros--3",
     "figura": ".cartao-mapa",
     "grade_figuras": ".grade-figuras--3"
   },
-  "h2_esperados": [
-    "Situação do monitoramento",
-    "Textos"
+  "secoes": [
+    {
+      "id": "boletim",
+      "h2": "Boletim mais recente",
+      "tipo": "lista_simples",
+      "_nota": "O ÚNICO cartão do blog, por decisão explícita: três números da semana congelados na edição, ligando para ela. No corpo dos textos não entra cartão nenhum."
+    },
+    {
+      "id": "textos",
+      "h2": "Textos",
+      "tipo": "lista_simples",
+      "exige_texto": [
+        "Do mais recente ao mais antigo",
+        "feed Atom"
+      ]
+    }
   ],
-  "_nota_raiz": "Esta página não usa `<section>`: os blocos dela são `div` sem id, e o despejo não as vê como seção. O contrato declara então o que se pode provar sem reescrever a marcação: a ORDEM dos títulos (`h2_esperados`), as figuras que têm de existir e estar no componente, e o vocabulário proibido. Divergência declarada: é menos do que um contrato de seção prova, e reescrever a marcação de três páginas publicadas para ganhar o resto não era o pedido.",
+  "exige_texto": [
+    "Textos da editoria do MARÉ sobre o que está acontecendo no ciclo do El Niño",
+    "Os números vivos estão nas páginas do Monitor."
+  ],
   "texto_proibido": [
     "FIGURA",
     "Corte da edição",
     "desastre",
-    "defeso"
+    "defeso",
+    "antecipação",
+    "prontidão",
+    "dados abertos"
   ],
-  "secoes": []
+  "_nota_proibido": "'antecipação' e 'prontidão' entram na lista desta página porque eram o vocabulário dos quadros que saíram — e vocabulário revogado volta por hábito se nada o barrar."
 }

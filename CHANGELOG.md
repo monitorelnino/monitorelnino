@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-03 · #535 · Dizemos o que disponibilizamos; o blog conta o ciclo
+
+Duas regras para todo o site: nenhuma frase sobre código, base de dados ou licença de dados, e o blog só sobre acontecimentos do ciclo, em prosa escrita por pessoa. Saem a pasta de dados abertos, a planilha da edição e o release gerado; nasce `mudancas.html`, com as 57 entradas do CHANGELOG. Blog com boletim congelado por edição e aprovação obrigatória; imprensa só com o estável. METODOLOGIA §103.
+
 ## 2026-10-03 · #534 · A corrente na janela, as listas federais primeiro, e a fila que para de crescer
 
 Corrente às 22h, busca web com cinco rodadas em paralelo, evidências e OCR de volta ao elo, painel da noite com portão para elo que não roda. Prioridade de coleta pelas três listas federais (3.160 municípios), com cursor persistido. Fila de pistas: limpeza única fechou 8.025 com o motivo de cada uma (de 8.678 abertas para 654), esquema cobrado na gravação, e triagem como último elo de toda rodada. METODOLOGIA §102.

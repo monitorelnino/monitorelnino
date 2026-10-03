@@ -248,6 +248,8 @@ def _autoteste() -> int:
             falhas.append(nome)
 
     regras = ler_json(REGRAS) or {}
+    ok("contrato de modelo é reconhecido pela marca",
+       (ler_json(CONTRATOS / "blog-post.json", {}) or {}).get("modelo") is True)
     ok("as regras existem e declaram a hierarquia",
        bool(regras.get("hierarquia")) and regras["hierarquia"][0].startswith("AI_EDITORIAL"))
     ok("a hierarquia põe handover por último", regras["hierarquia"][-1] == "handovers")
@@ -354,7 +356,7 @@ def _autoteste() -> int:
        not ({"gravar", "gravar_em", "write_text", "write_bytes"} & nomes))
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
-          else "✓ AUTOTESTE OK — 32 casos, sem rede e sem navegador.")
+          else "✓ AUTOTESTE OK — 33 casos, sem rede e sem navegador.")
     return 1 if falhas else 0
 
 
@@ -377,7 +379,15 @@ def main() -> int:
     elif "--todas" in sys.argv:
         paginas = [p for p in regras.get("paginas_publicas") or [] if (RAIZ / p).exists()]
     else:
-        paginas = [c.stem + ".html" for c in sorted(CONTRATOS.glob("*.json"))]
+        # Contrato de MODELO (`modelo: true`) não é página: ele vale para cada página gerada a
+        # partir dele, e quem o cobra é o gerador. Tentar renderizá-lo servia um 404 e reprovava
+        # pelo fundo transparente — vermelho que acusa a coisa errada.
+        paginas = []
+        for c in sorted(CONTRATOS.glob("*.json")):
+            if (ler_json(c, {}) or {}).get("modelo"):
+                print(f"— {c.stem}: contrato de modelo, cobrado na geração (não é página)")
+                continue
+            paginas.append(c.stem + ".html")
 
     total = 0
     for pagina in paginas:
