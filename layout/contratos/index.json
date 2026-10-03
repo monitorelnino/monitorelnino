@@ -1,0 +1,29 @@
+{
+  "_governanca": "Contrato de layout da página inicial, o MARÉ Legal (handover 'Conformidade permanente', 02/10/2026, item 1.3). Nasce do que a página PUBLICA hoje. Quem verifica é scripts/verificar_conformidade.py.",
+  "pagina": "index.html",
+  "componentes": {
+    "numeros": ".cartao-numero",
+    "grade_numeros": ".grade-numeros--3",
+    "figura": ".cartao-mapa",
+    "grade_figuras": ".grade-figuras--3",
+    "estados": "#regions"
+  },
+  "h2_esperados": [
+    "Como ler o MARÉ Legal",
+    "Sua cidade: o plano foi publicado?",
+    "O MARÉ Legal por estado",
+    "Você encontrou um plano ou decreto que ainda não está no MARÉ Legal?"
+  ],
+  "_nota_raiz": "Esta página não usa `<section>`: os blocos dela são `div` sem id, e o despejo não as vê como seção. O contrato declara então o que se pode provar sem reescrever a marcação: a ORDEM dos títulos (`h2_esperados`), as figuras que têm de existir e estar no componente, e o vocabulário proibido. Divergência declarada: é menos do que um contrato de seção prova, e reescrever a marcação de três páginas publicadas para ganhar o resto não era o pedido.",
+  "exige_texto": [
+    "O MARÉ Legal mede o que foi PUBLICADO",
+    "Sua cidade: o plano foi publicado?"
+  ],
+  "texto_proibido": [
+    "FIGURA",
+    "Corte da edição",
+    "desastre",
+    "defeso"
+  ],
+  "secoes": []
+}

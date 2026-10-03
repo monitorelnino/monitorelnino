@@ -845,9 +845,17 @@ const ultimaProb = prob && prob.trimestres && prob.trimestres.length ? prob.trim
 // =============================  Gráficos  =============================
 const SEM_ANIM = {animation:false, responsive:true, maintainAspectRatio:false};
 
-function canvasEm(wrapId, canvasId){
+function canvasEm(wrapId, canvasId, rotulo){
   const w = document.getElementById(wrapId);
-  const c = document.createElement('canvas'); c.id = canvasId; w.appendChild(c); return c;
+  const c = document.createElement('canvas'); c.id = canvasId;
+  /* Rótulo acessível na própria criação: gráfico sem rótulo é figura muda para quem usa leitor de
+     tela, e o portão de conformidade (03/10/2026) passou a cobrar. Sem rótulo dado, cai no título
+     da figura — que é a descrição que já está aprovada. */
+  const fig = w && w.closest('figure');
+  const titulo = fig && fig.querySelector('.figura-titulo');
+  c.setAttribute('role', 'img');
+  c.setAttribute('aria-label', rotulo || (titulo ? titulo.textContent.trim() : 'Gráfico'));
+  w.appendChild(c); return c;
 }
 
 // 30/09/2026 (handover do Monitor de riscos): os gráficos do ONI e da anomalia mensal

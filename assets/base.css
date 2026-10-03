@@ -727,7 +727,10 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 .ficha.r-seca h2{color:var(--seca);}
 .ficha.r-fogo h2{color:var(--fogo);}
 .ficha-cols{display:grid; grid-template-columns:repeat(3, 1fr); gap:var(--sp-5); margin:var(--sp-4) 0 var(--sp-1);}
-.ficha-col h3{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); text-transform:uppercase; letter-spacing:var(--ls-caps); color:var(--muted); margin:0 0 var(--sp-2); padding-bottom:var(--sp-2); border-bottom:1px solid var(--line);}
+/* 03/10/2026: estes h3 são RÓTULO de coluna ("Antes", "Durante", "Depois"), e não título:
+   eles ganharam a classe `.ficha-rotulo` para dizê-lo, e é por ela que o portão de conformidade
+   sabe que ali a família é a de DADO, e não a de display. */
+.ficha-col h3, .ficha-rotulo{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); text-transform:uppercase; letter-spacing:var(--ls-caps); color:var(--muted); margin:0 0 var(--sp-2); padding-bottom:var(--sp-2); border-bottom:1px solid var(--line);}
 .ficha-col ul{list-style:none; margin:0; padding:0;}
 .ficha-col li{position:relative; padding-left:var(--sp-5); margin:0 0 var(--sp-2); font-size:var(--fs-small); line-height:var(--lh-small);}
 .ficha-col li::before{content:"☐"; position:absolute; left:0; top:0; color:var(--muted); font-size:var(--fs-body);}
@@ -1056,7 +1059,7 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
    padrão do navegador — 13,3333 px, medido —, que está fora da escala tipográfica fixa do projeto
    (12 · 14 · 16 · 18 · 22 · 28 · 36 · 48). O portão de consistência visual reprovou nas três
    larguras, e estava certo: dois campos lado a lado com tamanhos diferentes são duas famílias. */
-.busca-mun input, .busca-mun select{flex:1 1 180px; min-width:0; max-width:100%; font:inherit;
+.busca-mun input, .busca-mun select{flex:1 1 180px; min-width:0; max-width:100%; font:inherit; min-height:var(--alvo-toque);
   font-size:var(--fs-small); padding:var(--sp-2); border:1px solid var(--line);
   border-radius:var(--radius); background:var(--surface); color:var(--ink);}
 .busca-mun-conta{flex:1 1 100%; font-family:var(--font-dado); font-size:var(--fs-caption);
@@ -1114,6 +1117,9 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
 .cartao-numero-fonte{font-family:var(--font-dado); font-size:var(--fs-caption);
   line-height:var(--lh-caption); color:var(--muted); margin:auto 0 0;}
 .link-pequeno{background:none; border:0; padding:0; color:var(--link); cursor:pointer;
+  /* 03/10/2026: alvo de toque de 44 px (portão de conformidade). O desenho continua o de LINK —
+     sem fundo e sem borda —, e o que cresce é a área sensível, não a tipografia. */
+  display:inline-flex; align-items:center; min-height:var(--alvo-toque);
   font-size:var(--fs-caption); line-height:var(--lh-caption); text-align:left;}
 .link-pequeno:hover{text-decoration:underline;}
 
@@ -1132,3 +1138,17 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
 .diag-grupo{font-family:var(--font-dado); font-size:var(--fs-caption);
   letter-spacing:.12em; text-transform:uppercase; fill:var(--muted);}
 .diag-via{font-family:var(--font-texto); font-size:var(--fs-small); fill:var(--tinta);}
+
+/* 03/10/2026 (conformidade): o resumo que abre a lista do cartão é o alvo de toque mais usado
+   da página no celular — é por ele que se chega à busca por município. */
+.cartao-mapa-dados > summary, .figura-dados > summary{min-height:var(--alvo-toque);
+  display:flex; align-items:center;}
+
+/* 03/10/2026 (portão de conformidade, primeiro passe): três alvos de toque abaixo dos 44 px, e os
+   três são alvo de verdade — não link em meio a frase. O resumo que abre um bloco recolhido, o link
+   de ação do cartão e o link da portaria na lista de atos: em todos, o dedo acerta ou não acerta.
+   O desenho não muda; cresce a área sensível. */
+main details > summary{min-height:var(--alvo-toque); display:flex; align-items:center;}
+.cartao .cartao-a{display:inline-flex; align-items:center; min-height:var(--alvo-toque);}
+.cartao-mapa dl dt a, .figura dl dt a{display:inline-flex; align-items:center;
+  min-height:var(--alvo-toque);}

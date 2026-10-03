@@ -8,7 +8,7 @@ Serve a uma pergunta só: **por onde começar a ler** quando um pedido chega. An
 
 **Regra de página: contrato + componentes** (editoria, 02/10/2026). A forma de uma página não vive no HTML: vive em `layout/contratos/<pagina>.json`, que declara seções, ordem, cartões, grades e texto proibido. O HTML e o JavaScript se conformam ao contrato, e `scripts/verificar_layout.py` reprova a divergência — nenhum PR de página com contrato é mesclado com ele vermelho. Cartão de número é `.cartao-numero` em `.grade-numeros--3`; figura é `.cartao-mapa` em `.grade-figuras--3`; nada de ajuste de pixel por cartão.
 
-Atualizado em 02/10/2026.
+Atualizado em 03/10/2026.
 
 | arquivo | telas que afeta | dados que usa | portões que o cobrem | toca o índice? |
 |---|---|---|---|---|

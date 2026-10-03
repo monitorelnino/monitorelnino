@@ -1,0 +1,41 @@
+{
+  "_governanca": "Contrato de layout do Para gestores (handover 'Conformidade permanente', 02/10/2026, item 1.3). As três âncoras — #antes, #depois, #caminhos — são cobradas porque a página do Financiamento e a Imprensa apontam para elas, e âncora quebrada é link que não leva a nada.",
+  "pagina": "prefeituras.html",
+  "componentes": {
+    "figura": ".cartao-mapa",
+    "grade_figuras": ".grade-figuras--3"
+  },
+  "secoes": [
+    {
+      "id": "sua-cidade",
+      "h2": "Como está a sua cidade",
+      "tipo": "lista_simples"
+    },
+    {
+      "id": "caminho",
+      "h2": "Do risco ao plano publicado",
+      "tipo": "lista_simples"
+    },
+    {
+      "id": "conteudo-plano",
+      "h2": "O que o plano pode conter",
+      "tipo": "lista_simples"
+    },
+    {
+      "id": "recursos",
+      "h2": "Como os recursos chegam",
+      "tipo": "lista_simples"
+    }
+  ],
+  "ancoras": [
+    "antes",
+    "depois",
+    "caminhos"
+  ],
+  "texto_proibido": [
+    "FIGURA",
+    "Corte da edição",
+    "desastre",
+    "defeso"
+  ]
+}

@@ -135,9 +135,15 @@ const srv = http.createServer((req, res) => { const u = decodeURIComponent(req.u
       }
       // (4) crédito no formato único
       for (const c of r.creditos) if (!/^Fonte: .+ · Atualização: (\d{2}\/\d{2}\/\d{4}|sem coleta até o corte)$/.test(c)) falhas.push(`${p}@${largura}: crédito fora do formato "Fonte: … · Atualização: dd/mm/aaaa": "${c.slice(0, 90)}"`);
-      // (5) numeração: Figura 1, 2, 3… na ordem do documento
-      if (largura === LARGURAS[0]) { r.numeros.forEach((n, i) => { const m = n.match(/^Figura (\d+)$/); if (!m || +m[1] !== i + 1) falhas.push(`${p}: numeração de figura fora de sequência (esperado "Figura ${i + 1}", há "${n}")`); });
-        r.secoes.forEach((t, i) => { if (!t.startsWith((i + 1) + " · ")) falhas.push(`${p}: numeração de seção fora de sequência (esperado "${i + 1} · …", há "${t.slice(0, 40)}")`); }); }
+      /* (5) A NUMERAÇÃO SAIU — de figura e de seção.
+         Ela era exigida aqui desde a auditoria de 07/09/2026. As decisões de 01 e 02/10/2026 a
+         revogaram ("seções sem caixa e sem numeração"; "FIGURA" proibida no texto), e em 03/10 o
+         portão de conformidade apontou a colisão: este portão exigia o que aquele proíbe. Pela
+         hierarquia das regras (CLAUDE.md, topo), vence a decisão editorial mais recente, e a
+         numeração deixou de ser escrita em `assets/colunas.js`. O que continua valendo aqui é o
+         resto da harmonização: posição, largura, altura e formato do crédito.
+         Se um dia a numeração voltar, ela volta pelo documento-fonte e por layout/regras.json —
+         nunca por um portão isolado. */
       if (RELATORIO && largura === LARGURAS[0]) inventario[p] = { figuras: r.figuras.length, creditos: r.creditos.length };
       // 30/09/2026 (§318): uma captura por largura, no workspace, para subir como artefato do
       // run. As três larguras deste portão são justamente desktop, tablet e mobile.

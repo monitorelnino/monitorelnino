@@ -1,0 +1,74 @@
+name: Conformidade do site inteiro (diária)
+
+# Item 3 do handover "Conformidade permanente" (02/10/2026): o mesmo portão de conformidade roda
+# TODO DIA sobre o site inteiro, e não só nos PRs. A razão é que metade das regressões não vem de
+# código: vem de DADO. Um cartão esvazia porque a série não foi coletada, um número vira travessão,
+# um texto gerado sai com erro de concordância — e nada disso aparece num PR, porque não há PR.
+#
+# O que ele roda é o mesmo julgamento dos PRs, sobre as páginas do repositório na `main`, que é o
+# conteúdo que o Netlify publica, com os dados da rodada mais recente.
+#
+# DIVERGÊNCIA DECLARADA: o handover diz "sobre o site publicado". O domínio está atrás de senha
+# (regime de cortina, decisão da editoria), e a credencial não é manejada pelo Code — nenhum
+# segredo de cortina entra aqui. Rodar sobre a `main` publicada mede o mesmo conteúdo e os mesmos
+# dados; o que ele não pega é diferença introduzida pelo próprio deploy, e disso cuida o workflow
+# "Verificar o site publicado (domínio real)", que consulta o domínio.
+#
+# Ele só RELATA: não publica, não reverte, não corrige. Vermelho vira registro no resumo do run e
+# tarefa para o próximo ciclo de trabalho, antes de qualquer item novo.
+on:
+  workflow_dispatch:
+  schedule:
+    # 11h UTC: depois da publicação da manhã e depois do verificador do domínio (10h).
+    - cron: "0 11 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  conformidade:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4
+        with:
+          node-version: '20'
+      - uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5
+        with:
+          python-version: '3.12'
+      - name: Dependências
+        run: |
+          npm ci --omit=dev >/dev/null 2>&1 || npm install --no-audit --no-fund >/dev/null 2>&1
+          npx playwright install --with-deps chromium >/dev/null 2>&1 || npx playwright install chromium
+      - name: Conformidade de todas as páginas públicas
+        id: passe
+        run: |
+          set +e
+          python3 scripts/verificar_conformidade.py --todas 2>&1 | tee /tmp/conformidade.txt
+          echo "codigo=$?" >> "$GITHUB_OUTPUT"
+      - name: Resumo do passe
+        if: always()
+        run: |
+          {
+            echo "## Conformidade do site inteiro"
+            echo
+            echo '```'
+            cat /tmp/conformidade.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Artefato
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: conformidade-diaria
+          path: /tmp/conformidade.txt
+          if-no-files-found: ignore
+      - name: Vermelho reprova o run
+        if: always()
+        run: |
+          if grep -q "Publicação bloqueada" /tmp/conformidade.txt; then
+            echo "::error::conformidade vermelha no site publicado — ver o resumo do run"
+            exit 1
+          fi
+          echo "conformidade verde"

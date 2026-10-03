@@ -327,16 +327,13 @@ jobs:
         if: steps.diff.outputs.pagina_mudou == 'true'
         run: |
           npx playwright install --with-deps chromium >/dev/null 2>&1 || npx playwright install chromium
+          # assunto: cor texto — CONFORMIDADE (03/10/2026): um portão para todas as páginas
+          # contratadas, que INCORPORA o de layout e acrescenta tipografia, as quatro funções da
+          # figura, vocabulário, forma dos números e acessibilidade. Ele lê layout/regras.json e o
+          # contrato de cada página; exceção só por layout/excecoes.json, com motivo e data.
+          python3 scripts/verificar_conformidade.py --autoteste
           # assunto: cor texto
-          python3 scripts/verificar_layout.py saude.html
-          # assunto: cor texto
-          python3 scripts/verificar_layout.py financiamento.html
-          # assunto: cor texto
-          python3 scripts/verificar_layout.py defesa-civil.html
-          # assunto: cor texto
-          python3 scripts/verificar_layout.py proteja-se.html
-          # assunto: cor texto
-          python3 scripts/verificar_layout.py imprensa.html
+          python3 scripts/verificar_conformidade.py
           # assunto: dado
           python3 scripts/verificar_imprensa_coerencia.py
       - name: Portão 18 — consistência visual (1366 · 900 · 390 px, Chromium real — v3.1.1)
