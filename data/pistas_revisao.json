@@ -1,12 +1,12 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-10-03",
- "total_pistas": 8629,
+ "total_pistas": 8681,
  "total_municipios": 334,
  "por_nivel": {
-  "A": 161,
-  "B": 1111,
-  "C": 7357
+  "A": 169,
+  "B": 1139,
+  "C": 7373
  },
  "grupos": [
   {
@@ -7994,6 +7994,303 @@
    ]
   },
   {
+   "ibge": "3205002",
+   "municipio": "Serra",
+   "uf": "ES",
+   "melhor_nivel": "A",
+   "n_pistas": 15,
+   "niveis": {
+    "A": 5,
+    "B": 8,
+    "C": 2
+   },
+   "pistas": [
+    {
+     "id": "49d4550b60",
+     "nivel_confianca": "A",
+     "pontos_confianca": 8,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.portaltemponovo.com.br/serra-apresenta-plano-de-contingencia-para-enfrentar-possiveis-impactos-do-el-nino/",
+     "titulo": "Serra apresenta plano de contingência para enfrentar possíveis ...",
+     "trecho": "Serra apresenta plano de contingência para enfrentar possíveis impactos do El Niño. Foto de Jady Oliveira Jady Oliveira. 08/08/2026 - 08:25. 08/08/2026 - 08 ...",
+     "data": "27/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "d53c841939",
+     "nivel_confianca": "A",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.serra.es.gov.br/noticias/plano-de-contingencia-serra-esta-trabalhando-na-prevencao-dos-riscos-em-periodos-de-chuva-na-cidade",
+     "titulo": "Defesa Civil da Serra elabora Plano de Contingência ...",
+     "trecho": "A Defesa Cívil da Serra, em conjunto com as demais secretarias da Prefeitura da Serra, está trabalhando no Plano de Contingência, que tem como objetivo elaborar ações preventivas para os períodos chuvosos e evitar ocorrências indesejadas.",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
+    },
+    {
+     "id": "6de71b2035",
+     "nivel_confianca": "A",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://legislacao.serra.es.gov.br/Arquivo/Documents/legislacao/html/D18712025.html?identificador=3100350031003700360034003A004C00",
+     "titulo": "DECRETO Nº 1.871, DE 10 DE DEZEMBRO DE 2025",
+     "trecho": "Dec 10, 2025 ... Fica instituído o Plano Municipal de Proteção e Defesa Civil (Plano de Contingência ... Serra. (Redação dada pelo Decreto nº 609/2026). Art. 2º O ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "3f8922a3b6",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo",
+      "texto_candidato_forte"
+     ],
+     "alertas": [],
+     "origem": "querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3205002/2026-07-06/14f15f4983a66fc582e0ec3782574ebbf13b3917.pdf",
+     "titulo": null,
+     "trecho": "e na restauração da \nnormalidade social, articulando e facilitando as ações \nde prevenção, preparação, resposta e recuperação no \nMunicípio de Serra. “\n\nLeia-se: […]\n“ Art. 1º Fica instituído o Plano Municipal de Proteção e \nDefesa Civil (Plano de Contingência de Proteção e Defesa \nCivil), como inst",
+     "data": "06/07/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "900b8ddce3",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.serra.es.gov.br/noticias/serra-sai-na-frente-e-apresenta-plano-para-enfrentar-os-efeitos-do-el-nino",
+     "titulo": "Serra sai na frente e apresenta plano para enfrentar os efeitos ...",
+     "trecho": "Com o objetivo de preparar a cidade ... quinta-feira (6), o Plano de Contingência que irá nortear as ações do município para enfrentar situações como chuvas intensas, alagamentos, inundações e períodos de estiagem....",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
+    },
+    {
+     "id": "941cec3cf2",
+     "nivel_confianca": "B",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://prefeiturasempapel.serra.es.gov.br/Arquivo/Documents/legislacao/html/D68232015.html",
+     "titulo": "decreto nº 6823, de 5 de novembro de 2015",
+     "trecho": "Neste sentido, a Defesa Civil do Município, seguindo a orientação da Defesa Civil Nacional/Estadual, elaborou o Plano Municipal de Contingência, importante instrumento de planejamento das ações, com vista à preparação para atuação em situações de eventos adversos (chuvas de grandes proporções, vendavais, incêndios, turfas, entre outros), que possam causar danos e prejuízos à comunidade.",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: resposta"
+    },
+    {
+     "id": "914f69a7da",
+     "nivel_confianca": "B",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3205002/2025-12-19/35d226b9dea4bc74b05a648fb52e72ac5d1116a2.pdf",
+     "titulo": "Diário oficial de 2025-12-19",
+     "trecho": "ficando revogadas as disposições em contrário. Palácio Municipal em Serra, 17 de dezembro de 2025. WEVERSON VALCKER MEIRELES Prefeito Municipal Protocolo 1693752 Decretos DECRETO Nº 1.871, DE 10 DE DEZEMBRO DE 2025 INSTITUI O PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL (PMPDEC) E DISPÕE SOBRE A ESTRUTURA DO COMITÊ MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL. O PREFEITO MUNICIPAL DA SERRA, ESTADO DO ESPÍRITO SANTO, usando das atribuições legais que lhe são conferidas pelo disposto no inciso V do artigo",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "93ee2f87e5",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/boas-praticas/008_boas_praticas_eixo_plancon/001_boaspraticas_plancon_plano_contingencia_enfrentamento_desastres_belo_horizonte_mg.pdf",
+     "titulo": "plano de contingência 2020/2021 - Portal Gov.br",
+     "trecho": "PLANO DE CONTINGÊNCIA 2020/2021 PARA ENFRENTAMENTO DE DESASTRES EM DE BELO HORIZONTE ... Arrudas\". Em 2003, deslizamentos nos aglomerados do Morro das · Pedras, da Serra e no Taquaril vitimaram 16 pessoas e culminaram com",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: autoridade_nao_confirmada"
+    },
+    {
+     "id": "82f9f02ce6",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://esbrasil.com.br/serra-cria-plano-para-enfrentar-efeitos-do-elnino/",
+     "titulo": "Serra cria plano para enfrentar efeitos do El Niño - Revista ES Brasil",
+     "trecho": "Aug 7, 2026 ... A Serra é a primeira prefeitura a apresentar um Plano de Contingência para o El Niño, demonstrando nosso compromisso com o planejamento, a ...",
+     "data": "27/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "8ce3bfd95a",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://defesacivil.es.gov.br/Media/defesacivil/Plano%20de%20Conting%C3%AAncia/Alegre.pdf",
+     "titulo": "plano de contingência de proteção e defesa civil",
+     "trecho": "O Plano de Contingência de Proteção e Defesa Civil – PLANCON para preparação e ... Campo de Aviação, Centro, Chácara da Serra, Charqueada, Clério Moulin, Colina,.",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "af11c5a524",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://serra.es.gov.br/site/download/1447872651896-sds-04--ao-de-preveno-socorro-assistncia-proteo-e-defesa-civil.pdf",
+     "titulo": "Ação de Prevenção Socorro Assistência Proteção e Defesa Civil",
+     "trecho": "Aug 31, 2015 ... 4.3 – O Plano de Contingência Municipal ou Plano Preventivo de Defesa Civil: ... ssocial.sedes@serra.es.gov.br.",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "c4320e89f3",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/reel/DclxdDCOw7_/",
+     "titulo": "O Super El Niño está confirmado, e a Serra precisa se preparar para ...",
+     "trecho": "Aug 28, 2026 ... ... plano de contingência, que prevê até o uso de escolas como abrigo ... O Super El Niño está confirmado, e a Serra precisa se preparar ...",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "19d201966d",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_querido_diario",
+     "url": "s3://okbr-qd-migration//3205002/2025-12-29/c949d9bb8d6ed6cee21f7b449559a342fd8cba47.pdf",
+     "titulo": "Diário oficial de 2025-12-29",
+     "trecho": "Protocolo 1697291 PORTARIA CG Nº 046/2025 PUBLICA O PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DE SERRA - 2025 (PMPDEC). A COORDENADORA MUNICIPAL DE GOVERNO, no uso das atribuições que lhe são conferidas por lei; CONSIDERANDO o Decreto Municipal nº 1.871, de 10 de dezembro de 2025, publicado no Diário Oficial de 19 de dezembro de 2025, que instituiu o Plano Municipal de Proteção e Defesa Civil da Serra - PMPDEC (Plano de Contingência Municipal); CONSIDERANDO a necessidade de coordenação",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "1fd1e09ea2",
+     "nivel_confianca": "C",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "uf_divergente_na_url",
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://serraalta.sc.gov.br/uploads/sites/323/2023/06/1965559_DECRETO_2262020.pdf",
+     "titulo": "PREFEITURA MUNICIPAL DE SERRA ALTA www.serraalta.sc.gov.br",
+     "trecho": "e em conformidade com as diretrizes estabelecidas no Plano de Contingência Municipal. め. R. Fone: (49) 3364.0092|3364-0076 3364 0172. Av. Dom Pedro II 830 ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "6a02a7e1d2",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_oficial"
+     ],
+     "alertas": [],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3205002/2026-01-06/6d23fe1ca4e777b647898ca2bc48b40769f6cfd3.pdf",
+     "titulo": "Diário oficial de 2026-01-06",
+     "trecho": "APLICACOES DIRETAS 33.745.000,003.1.90.00.00 1.500.0000.0000 APL. DIR. DEC. DE OP. ÓRGÃOS, FUNDOS E ENT. DOS OR 2.500.000,003.1.91.00.00 1.500.0000.0000 APLICACOES DIRETAS 28.255.000,003.3.90.00.00 1.500.0000.0000 64.500.000,00 Natureza Despesa 01.031.0022.2.162",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
+    }
+   ]
+  },
+  {
    "ibge": "4106902",
    "municipio": "Curitiba",
    "uf": "PR",
@@ -9239,173 +9536,163 @@
    ]
   },
   {
-   "ibge": "3205002",
-   "municipio": "Serra",
+   "ibge": "3205309",
+   "municipio": "Vitória",
    "uf": "ES",
    "melhor_nivel": "A",
    "n_pistas": 11,
    "niveis": {
-    "A": 4,
-    "B": 6,
+    "A": 5,
+    "B": 5,
     "C": 1
    },
    "pistas": [
     {
-     "id": "49d4550b60",
+     "id": "ab9dfdc5bf",
      "nivel_confianca": "A",
-     "pontos_confianca": 8,
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://m.vitoria.es.gov.br/noticia/saude-de-vitoria-desenvolve-plano-de-contingencia-para-situacoes-de-desastres-51224",
+     "titulo": "Saúde de Vitória desenvolve Plano de Contingência para situações ...",
+     "trecho": "Em Vitória, além da Defesa Civil, a Secretaria Municipal de Saúde de Vitória (Semus) também elaborou um Plano de Contingência voltado para pessoas afetadas por desastres naturais, como deslizamentos, alagamentos e inundações por meio do Programa Vigidesastres.",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
+    },
+    {
+     "id": "d18d64a5a8",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3205309/2025-12-01/452d5c537adf89813a2b1cb664786c90bf0a6a92.pdf",
+     "titulo": "Diário oficial de 2025-12-01",
+     "trecho": "Lorenzo Pazolini Prefeito Municipal Decretos DECRETO Nº 25.944 Atualiza o Plano Municipal de Proteção e Defesa Civil (PMPDC) do Município de Vitória/ES 2025/2026. O Prefeito Municipal de Vitória, Estado do Espírito Santo, no uso de suas atribuições legais conferidas pela Lei Orgânica Municipal, Considerando a vigência do Decreto nº 25.340, de 16 de junho de 2025, que atualiza o Plano Municipal de Proteção e Defesa Civil – PMPDC; Considerando a necessidade de revisão e atualização periódica do PMPDC",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
+    },
+    {
+     "id": "7168e66e84",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://m.vitoria.es.gov.br/cidadao/defesa-civil-plano-de-contingencia-para-desastre-e-emergencia",
+     "titulo": "Plano Municipal de Proteção e Defesa Civil – Prefeitura de ...",
+     "trecho": "De acordo com o Plano Municipal de Proteção e Defesa Civil - PMPDC, lançado em 2007 e atualizado em 2022 e 2024, são desenvolvidas ações de prevenção, de preparação para emergências e desastres, de resposta aos desastres e de reconstrução, todas com a ampla participação da comunidade.",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
+    },
+    {
+     "id": "938a518d32",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.vitoria.es.gov.br/prefeitura/defesa-civil",
+     "titulo": "Defesa Civil – Prefeitura de Vitória",
+     "trecho": "Envolvendo a atuação de 14 secretarias municipais, o Plano de Contingência divide o desastre em quatro estados:",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
+    },
+    {
+     "id": "2d33da1c4a",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.vitoria.es.gov.br/semus/planos-de-contingencia",
+     "titulo": "Planos de contingência - Prefeitura de Vitória",
+     "trecho": "Plano de contingência da saúde frente aos desastres naturais em Vitória ... O documento estabelece diretrizes e procedimentos integrados do setor saúde para a ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "f3c4158eff",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
      "sinais": [
       "fonte_imprensa",
       "municipio_no_titulo",
-      "plano_no_titulo",
-      "ato_formal",
+      "plano_no_trecho",
       "familia_de_risco_do_ciclo"
      ],
      "alertas": [],
      "origem": "busca_web",
-     "url": "https://www.portaltemponovo.com.br/serra-apresenta-plano-de-contingencia-para-enfrentar-possiveis-impactos-do-el-nino/",
-     "titulo": "Serra apresenta plano de contingência para enfrentar possíveis ...",
-     "trecho": "Serra apresenta plano de contingência para enfrentar possíveis impactos do El Niño. Foto de Jady Oliveira Jady Oliveira. 08/08/2026 - 08:25. 08/08/2026 - 08 ...",
-     "data": "27/09/2026",
+     "url": "https://rbtv.com.br/noticia/13581/el-nino-coloca-municipios-em-alerta-e-prefeitura-de-vitoria-da-conquista-reforca-planejamento-para-prevencao-de-riscos",
+     "titulo": "El Niño coloca municípios em alerta e Prefeitura de Vitória da ...",
+     "trecho": "Sep 10, 2026 ... A partir daí, estamos elaborando o plano de contingência específico. ... El Niño em Vitória da Conquista. * O conteúdo de cada comentário é ...",
+     "data": "24/09/2026",
      "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
-     "id": "d53c841939",
-     "nivel_confianca": "A",
-     "pontos_confianca": 7,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.serra.es.gov.br/noticias/plano-de-contingencia-serra-esta-trabalhando-na-prevencao-dos-riscos-em-periodos-de-chuva-na-cidade",
-     "titulo": "Defesa Civil da Serra elabora Plano de Contingência ...",
-     "trecho": "A Defesa Cívil da Serra, em conjunto com as demais secretarias da Prefeitura da Serra, está trabalhando no Plano de Contingência, que tem como objetivo elaborar ações preventivas para os períodos chuvosos e evitar ocorrências indesejadas.",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: citacao_incompleta"
-    },
-    {
-     "id": "3f8922a3b6",
-     "nivel_confianca": "A",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_so_no_trecho",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo",
-      "texto_candidato_forte"
-     ],
-     "alertas": [],
-     "origem": "querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/3205002/2026-07-06/14f15f4983a66fc582e0ec3782574ebbf13b3917.pdf",
-     "titulo": null,
-     "trecho": "e na restauração da \nnormalidade social, articulando e facilitando as ações \nde prevenção, preparação, resposta e recuperação no \nMunicípio de Serra. “\n\nLeia-se: […]\n“ Art. 1º Fica instituído o Plano Municipal de Proteção e \nDefesa Civil (Plano de Contingência de Proteção e Defesa \nCivil), como inst",
-     "data": "06/07/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "900b8ddce3",
-     "nivel_confianca": "A",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.serra.es.gov.br/noticias/serra-sai-na-frente-e-apresenta-plano-para-enfrentar-os-efeitos-do-el-nino",
-     "titulo": "Serra sai na frente e apresenta plano para enfrentar os efeitos ...",
-     "trecho": "Com o objetivo de preparar a cidade ... quinta-feira (6), o Plano de Contingência que irá nortear as ações do município para enfrentar situações como chuvas intensas, alagamentos, inundações e períodos de estiagem....",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: citacao_incompleta"
-    },
-    {
-     "id": "941cec3cf2",
-     "nivel_confianca": "B",
-     "pontos_confianca": 7,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "ato_formal",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://prefeiturasempapel.serra.es.gov.br/Arquivo/Documents/legislacao/html/D68232015.html",
-     "titulo": "decreto nº 6823, de 5 de novembro de 2015",
-     "trecho": "Neste sentido, a Defesa Civil do Município, seguindo a orientação da Defesa Civil Nacional/Estadual, elaborou o Plano Municipal de Contingência, importante instrumento de planejamento das ações, com vista à preparação para atuação em situações de eventos adversos (chuvas de grandes proporções, vendavais, incêndios, turfas, entre outros), que possam causar danos e prejuízos à comunidade.",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: resposta"
-    },
-    {
-     "id": "914f69a7da",
-     "nivel_confianca": "B",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_so_no_trecho",
-      "plano_no_trecho",
-      "ato_formal",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/3205002/2025-12-19/35d226b9dea4bc74b05a648fb52e72ac5d1116a2.pdf",
-     "titulo": "Diário oficial de 2025-12-19",
-     "trecho": "ficando revogadas as disposições em contrário. Palácio Municipal em Serra, 17 de dezembro de 2025. WEVERSON VALCKER MEIRELES Prefeito Municipal Protocolo 1693752 Decretos DECRETO Nº 1.871, DE 10 DE DEZEMBRO DE 2025 INSTITUI O PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL (PMPDEC) E DISPÕE SOBRE A ESTRUTURA DO COMITÊ MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL. O PREFEITO MUNICIPAL DA SERRA, ESTADO DO ESPÍRITO SANTO, usando das atribuições legais que lhe são conferidas pelo disposto no inciso V do artigo",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "93ee2f87e5",
+     "id": "04bfce3cfe",
      "nivel_confianca": "B",
      "pontos_confianca": 5,
      "sinais": [
       "fonte_oficial",
-      "municipio_so_no_trecho",
       "plano_no_titulo",
       "familia_de_risco_do_ciclo"
      ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
+     "alertas": [],
      "origem": "seguimento_busca_oficial",
-     "url": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/boas-praticas/008_boas_praticas_eixo_plancon/001_boaspraticas_plancon_plano_contingencia_enfrentamento_desastres_belo_horizonte_mg.pdf",
-     "titulo": "plano de contingência 2020/2021 - Portal Gov.br",
-     "trecho": "PLANO DE CONTINGÊNCIA 2020/2021 PARA ENFRENTAMENTO DE DESASTRES EM DE BELO HORIZONTE ... Arrudas\". Em 2003, deslizamentos nos aglomerados do Morro das · Pedras, da Serra e no Taquaril vitimaram 16 pessoas e culminaram com",
+     "url": "https://defesacivil.es.gov.br/Media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/VIANA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-2025.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL DE VIANA PLANCON ...",
+     "trecho": "O plano contempla protocolos detalhados · de prevenção, monitoramento constante e resposta rápida a eventuais incidentes, ... Imagem 14: Estrutura básica do Plano de Ação da Barragem PCH São Pedro.",
      "data": "24/09/2026",
      "status": "pista — recusada pelo juiz: autoridade_nao_confirmada"
     },
     {
-     "id": "82f9f02ce6",
+     "id": "b09d9c0f90",
      "nivel_confianca": "B",
      "pontos_confianca": 5,
      "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_titulo",
       "familia_de_risco_do_ciclo"
      ],
      "alertas": [],
-     "origem": "busca_web",
-     "url": "https://esbrasil.com.br/serra-cria-plano-para-enfrentar-efeitos-do-elnino/",
-     "titulo": "Serra cria plano para enfrentar efeitos do El Niño - Revista ES Brasil",
-     "trecho": "Aug 7, 2026 ... A Serra é a primeira prefeitura a apresentar um Plano de Contingência para o El Niño, demonstrando nosso compromisso com o planejamento, a ...",
-     "data": "27/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
+     "origem": "seguimento_busca_oficial",
+     "url": "https://defesacivil.es.gov.br/Media/DefesaCivil/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/PINHEIROS%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202026.pdf",
+     "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA - CEPDEC",
+     "trecho": "O Plano de Contingência de Proteção e Defesa Civil – PLANCON para o município de ... Capital – Vitória. O município ocupa uma área de 973 km² , limitando-se com ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
     },
     {
-     "id": "c4320e89f3",
+     "id": "f63069b16f",
      "nivel_confianca": "B",
      "pontos_confianca": 4,
      "sinais": [
@@ -9416,35 +9703,246 @@
      ],
      "alertas": [],
      "origem": "busca_web",
-     "url": "https://www.instagram.com/reel/DclxdDCOw7_/",
-     "titulo": "O Super El Niño está confirmado, e a Serra precisa se preparar para ...",
-     "trecho": "Aug 28, 2026 ... ... plano de contingência, que prevê até o uso de escolas como abrigo ... O Super El Niño está confirmado, e a Serra precisa se preparar ...",
+     "url": "https://www.instagram.com/p/DZ5wii5gHCw/",
+     "titulo": "Diante das previsões relacionadas ao El Niño, União da Vitória tem ...",
+     "trecho": "Jun 22, 2026 ... A atuação integrada entre a Defesa Civil e as secretarias municipais, a atualização do Plano de Contingência, a criação do Conselho Municipal de ...",
      "data": "24/09/2026",
      "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
-     "id": "19d201966d",
+     "id": "038c548f92",
      "nivel_confianca": "B",
      "pontos_confianca": 4,
      "sinais": [
       "fonte_desconhecida",
-      "municipio_so_no_trecho",
+      "municipio_no_titulo",
       "plano_no_trecho",
-      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://bahiadestaque.com/noticia/36193/el-nino-coloca-municipios-em-alerta-e-prefeitura-de-vitoria-da-conquista-reforca-planejamento-para-prevencao-de-riscos",
+     "titulo": "El Niño coloca municípios em alerta e Prefeitura de Vitória da ...",
+     "trecho": "Sep 10, 2026 ... A partir daí, estamos elaborando o plano de contingência específico. ... El Niño em Vitória da Conquista. * O conteúdo de cada comentário é ...",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "403eb09b43",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3205309/2026-07-29/a7f158e2d5e7fd975935d29393b6f819beea151d.pdf",
+     "titulo": "Diário oficial de 2026-07-29",
+     "trecho": "vagas para os 21 km, 42 km, Desafio 5 + 21 km e Maratoninha Kids já estejam esgotadas. SERVIÇO Maratona de Vitória 2026 29 e 30 de agosto Praça do Papa, Enseada do Suá Inscrições: www.ticketsports.com.br ou www.maratonadevitoria.com.br E sp or te vi x E sportevix 5 Diário Oficial do Município de Vitória - ES 29 de julho de 2026 - Edição nº 2934 PODER EXECUTIVO Editais SECRETARIA DE GESTÃO E PLANEJAMENTO PROCESSO SELETIVO SIMPLIFICADO EDITAL DE CONVOCAÇÃO Nº 195/2026 O Secretário",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: autoridade_nao_confirmada"
+    }
+   ]
+  },
+  {
+   "ibge": "2611101",
+   "municipio": "Petrolina",
+   "uf": "PE",
+   "melhor_nivel": "A",
+   "n_pistas": 11,
+   "niveis": {
+    "A": 2,
+    "B": 8,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "0ae0a524aa",
+     "nivel_confianca": "A",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://petrolina.pe.gov.br/mapa-do-site/",
+     "titulo": "Mapa do Site | Prefeitura de Petrolina - PE",
+     "trecho": "Coronavírus Plano de Contingência · Coronavírus Tire Suas Dúvidas · Decreto N.º 037/2020 – Reabertura Gradual · Resoluções CIB/PE · Dados Abertos · Dados Abertos – API · Decretos · Decretos 2012 · Decretos 2013 · Decretos 2014 · Decretos 2015 ·",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: autoridade_nao_confirmada"
+    },
+    {
+     "id": "53953ddbae",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://petrolina.pe.gov.br/chesf-e-defesa-civil-de-petrolina-iniciam-instalacao-de-placas-do-plano-de-contingencia-na-tapera/",
+     "titulo": "CHESF e Defesa Civil de Petrolina iniciam instalação de placas ...",
+     "trecho": "Petrolina é uma das poucas cidades de Pernambuco que possui um plano de contingência, o que demonstra que as equipes da Defesa Civil do município seguem realizando o seu trabalho com seriedade.",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
+    },
+    {
+     "id": "5f847c1a41",
+     "nivel_confianca": "B",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
       "familia_de_risco_do_ciclo"
      ],
      "alertas": [
       "ano_anterior_ao_ciclo"
      ],
-     "origem": "seguimento_querido_diario",
-     "url": "s3://okbr-qd-migration//3205002/2025-12-29/c949d9bb8d6ed6cee21f7b449559a342fd8cba47.pdf",
-     "titulo": "Diário oficial de 2025-12-29",
-     "trecho": "Protocolo 1697291 PORTARIA CG Nº 046/2025 PUBLICA O PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DE SERRA - 2025 (PMPDEC). A COORDENADORA MUNICIPAL DE GOVERNO, no uso das atribuições que lhe são conferidas por lei; CONSIDERANDO o Decreto Municipal nº 1.871, de 10 de dezembro de 2025, publicado no Diário Oficial de 19 de dezembro de 2025, que instituiu o Plano Municipal de Proteção e Defesa Civil da Serra - PMPDEC (Plano de Contingência Municipal); CONSIDERANDO a necessidade de coordenação",
-     "data": "24/09/2026",
+     "origem": "seguimento_busca_oficial",
+     "url": "https://petrolina.pe.gov.br/wp-content/uploads/2025/10/Decreto-136.pdf",
+     "titulo": "Edição 4.425 | Ano 15 24 de outubro de 2025 - Prefeitura de Petrolina",
+     "trecho": "Oct 24, 2025 ... PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO DE CHUVAS INTENSAS NO MUNICÍPIO DE PETROLINA/PE -. PLANCON 2025. A PREFEITURA MUNICIPAL DE PETROLINA ...",
+     "data": "03/10/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     },
     {
-     "id": "6a02a7e1d2",
+     "id": "b1a5c2ad74",
+     "nivel_confianca": "B",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://esppe.saude.pe.gov.br/pluginfile.php/137700/mod_folder/content/0/REDE%20URG%C3%8ANCIA%20E%20EMERG%C3%8ANCIA%20-%20QUADRO%20DE%20ACOMPANHAMNETO%20DAS%20RESOLU%C3%87%C3%95ES%20CIB%20-%20ATUALIZADO%20%2016.09.2022.pdf?forcedownload=1",
+     "titulo": "Atualizado em 16/09/2022 REDE URGÊNCIA E EMERGÊNCIA",
+     "trecho": "Sep 16, 2022 ... de Petrolina/PE. DOE nº218. Pág. 15 e 16. 27/11/2018. DOE nº 153. Pág. 12 ... Aprovar o Plano de Contingência para infecção pelo Coronavírus ( ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "e6187df402",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/2611101/2025-10-24/3151b51738df227376e28d7a6e96266b6309e564.pdf",
+     "titulo": "Diário oficial de 2025-10-24",
+     "trecho": ". . . . . . . . . . . DECRETO DECRETO Nº 136 DE 22 DE OUTUBRO DE 2025 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . EDITAL DE CONVOCAÇÃO PARA CONSULTA PÚBLICA N.º 001/2025- PLANCON. . . . . . . . . . . . . . . . . . . . . . . . TERMO EXTRATO DE CONTRATO . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . EXTRATO DE",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
+    },
+    {
+     "id": "f2fdbb2b26",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/2611101/2025-11-05/8470c278430a8cbc62a6bf8a4ab2756775830857.pdf",
+     "titulo": "Diário oficial de 2025-11-05",
+     "trecho": ". . . . . . . . . . . . . . . PORTARIA Nº. 04249-2025 - SEDUCE . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . EDITAL 1º RETIFICAÇÃO DE EDITAL N.º 001-2025 - PLANCON - DEF.CIVIL . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . EDITAL N.º 057-2025 - SEDUCE . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
+    },
+    {
+     "id": "23212a31d6",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://petrolina.pe.gov.br/wp-content/uploads/2021/07/Nova_Portaria_Conjunta_Protocolo_Sanitario_Transporte_Publico_Coronavirus-vf.pdf",
+     "titulo": "Edição 2.722 - Prefeitura de Petrolina",
+     "trecho": "Jul 27, 2021 ... Protocolo Geral do Estado de Pernambuco, instituído pelo Decreto ... Petrolina (www.petrolina.pe.gov.br) conjuntamente com o Plano de Contingência ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "b53b04907d",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://acessoinformacao.org.br/licitacoes/arquivos/download/519738d5b18c9de931797692eae9444c09bb4aaf.pdf",
+     "titulo": "plano municipal de saneamento de petrolina/pe",
+     "trecho": "Um Plano de Contingência pode estruturar-se em três grandes capítulos: aspectos ... Petrolina-Pe. Recife, 2010. FONTE, Paulo Gilberto Dantas da. Aspectos ...",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "e1e400f1bf",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.defesacivil.pe.gov.br/images/manuais/Manual_Tecnico_de_Ajuda_Humanitaria_2024_-_SEPDEC-PE.pdf",
+     "titulo": "manual de - ajuda humanitária - Defesa Civil",
+     "trecho": "Apresentar o Plano de Contingência do Estado para o efetivo interno ... Sertão: Arcoverde, Serra Talhada, Ouricuri e Petrolina. Os centros de ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "8a884d3778",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/2611101/2026-09-17/6c8f7efb6f3d6b683bd057e63b5d533b996f0b54.pdf",
+     "titulo": "Diário oficial de 2026-09-17",
+     "trecho": "Petrolina-PE. CEP:56.302-905 E-mail: gabineteprefeiturapetrolina@gmail.com Tel. 3983-6410 MATRIZ DA EDUCAÇÃO – AGENDA TRANSVERSAL DA CRIANÇA E DO ADOLESCENTE SECRETARIA MUNICIPAL DE EDUCAÇÃO – PETROLINA/PE | PPA 2026–2029 Problema Programa Indicad or SELO UNICE F OBS Objetivo Ação Entrega 2026 2027 2028 2029 Necessidade de fortalecer os processos de gestão e as condições de funcionamen to das unidades de Educação Infantil, contribuindo para a qualidade da oferta e do atendimento às crianças",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
+    },
+    {
+     "id": "b6cd0781c1",
      "nivel_confianca": "C",
      "pontos_confianca": 2,
      "sinais": [
@@ -9452,11 +9950,11 @@
      ],
      "alertas": [],
      "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/3205002/2026-01-06/6d23fe1ca4e777b647898ca2bc48b40769f6cfd3.pdf",
-     "titulo": "Diário oficial de 2026-01-06",
-     "trecho": "APLICACOES DIRETAS 33.745.000,003.1.90.00.00 1.500.0000.0000 APL. DIR. DEC. DE OP. ÓRGÃOS, FUNDOS E ENT. DOS OR 2.500.000,003.1.91.00.00 1.500.0000.0000 APLICACOES DIRETAS 28.255.000,003.3.90.00.00 1.500.0000.0000 64.500.000,00 Natureza Despesa 01.031.0022.2.162",
+     "url": "https://data.queridodiario.ok.org.br/2611101/2026-08-25/ebe64a6d7daf5862bf7ed2fcf83ca5029bf8b902.pdf",
+     "titulo": "Diário oficial de 2026-08-25",
+     "trecho": "filhos menores de 6 anos, se houver; CPF dos dependentes; Título de Eleitor e comprovação das obrigações eleitorais (original e cópia); Cartão PIS ou PASEP; Comprovação do nível de escolaridade (original e cópia); Comprovações de As si na do p or 1 p es so a: D O R IA N E S E C C H I M A S C A R E LO P ar a ve rif ic ar a v al id ad e da s as si na tu ra s, a ce ss e ht tp s: //p et ro lin a. 1d oc .c om .b r/ ve rif ic ac ao /5 E 12 -3 76 7-",
      "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: natureza_duvidosa"
+     "status": "pista — recusada pelo juiz: autoridade_nao_confirmada"
     }
    ]
   },
@@ -9645,74 +10143,55 @@
    ]
   },
   {
-   "ibge": "3205309",
-   "municipio": "Vitória",
-   "uf": "ES",
+   "ibge": "3304524",
+   "municipio": "Rio das Ostras",
+   "uf": "RJ",
    "melhor_nivel": "A",
    "n_pistas": 9,
    "niveis": {
-    "A": 4,
-    "B": 4,
-    "C": 1
+    "A": 3,
+    "B": 6,
+    "C": 0
    },
    "pistas": [
     {
-     "id": "ab9dfdc5bf",
+     "id": "91ff9d71c6",
      "nivel_confianca": "A",
      "pontos_confianca": 7,
      "sinais": [
       "fonte_oficial",
-      "municipio_no_titulo",
       "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://m.vitoria.es.gov.br/noticia/saude-de-vitoria-desenvolve-plano-de-contingencia-para-situacoes-de-desastres-51224",
-     "titulo": "Saúde de Vitória desenvolve Plano de Contingência para situações ...",
-     "trecho": "Em Vitória, além da Defesa Civil, a Secretaria Municipal de Saúde de Vitória (Semus) também elaborou um Plano de Contingência voltado para pessoas afetadas por desastres naturais, como deslizamentos, alagamentos e inundações por meio do Programa Vigidesastres.",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: citacao_incompleta"
-    },
-    {
-     "id": "d18d64a5a8",
-     "nivel_confianca": "A",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_so_no_trecho",
-      "plano_no_trecho",
       "ato_formal",
       "familia_de_risco_do_ciclo"
      ],
      "alertas": [],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/3205309/2025-12-01/452d5c537adf89813a2b1cb664786c90bf0a6a92.pdf",
-     "titulo": "Diário oficial de 2025-12-01",
-     "trecho": "Lorenzo Pazolini Prefeito Municipal Decretos DECRETO Nº 25.944 Atualiza o Plano Municipal de Proteção e Defesa Civil (PMPDC) do Município de Vitória/ES 2025/2026. O Prefeito Municipal de Vitória, Estado do Espírito Santo, no uso de suas atribuições legais conferidas pela Lei Orgânica Municipal, Considerando a vigência do Decreto nº 25.340, de 16 de junho de 2025, que atualiza o Plano Municipal de Proteção e Defesa Civil – PMPDC; Considerando a necessidade de revisão e atualização periódica do PMPDC",
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.riodasostras.rj.gov.br/wp-content/uploads/2025/11/plancon-chuvas-intensas-2025-2026.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL – PLANCON",
+     "trecho": "Complementando esse marco legal, o Decreto Municipal nº 3267, de 2022,",
      "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: natureza_duvidosa"
+     "status": "pista — recusada pelo juiz: resposta"
     },
     {
-     "id": "7168e66e84",
+     "id": "8c3232cd15",
      "nivel_confianca": "A",
-     "pontos_confianca": 6,
+     "pontos_confianca": 7,
      "sinais": [
       "fonte_oficial",
-      "municipio_na_url",
+      "municipio_no_inicio_do_trecho",
       "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
+      "ato_formal"
      ],
      "alertas": [],
      "origem": "seguimento_busca_oficial",
-     "url": "https://m.vitoria.es.gov.br/cidadao/defesa-civil-plano-de-contingencia-para-desastre-e-emergencia",
-     "titulo": "Plano Municipal de Proteção e Defesa Civil – Prefeitura de ...",
-     "trecho": "De acordo com o Plano Municipal de Proteção e Defesa Civil - PMPDC, lançado em 2007 e atualizado em 2022 e 2024, são desenvolvidas ações de prevenção, de preparação para emergências e desastres, de resposta aos desastres e de reconstrução, todas com a ampla participação da comunidade.",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: citacao_incompleta"
+     "url": "https://www.riodasostras.rj.gov.br/wp-content/uploads/2026/10/plano-de-contingencia-para-enfrentamento-do-fenomeno-el-nino-1.pdf",
+     "titulo": "plano de contingência para enfrentamento dos efeitos causados ...",
+     "trecho": "Município: Rio das Ostras – RJ. Ano: 2026/2027. Atualização: Em atualização ... Decreto nº 3267 (2022), desenvolveu este Plano de Contingência. O ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
     },
     {
-     "id": "938a518d32",
+     "id": "87d0fe5eb9",
      "nivel_confianca": "A",
      "pontos_confianca": 6,
      "sinais": [
@@ -9723,14 +10202,72 @@
      ],
      "alertas": [],
      "origem": "seguimento_busca_oficial",
-     "url": "https://www.vitoria.es.gov.br/prefeitura/defesa-civil",
-     "titulo": "Defesa Civil – Prefeitura de Vitória",
-     "trecho": "Envolvendo a atuação de 14 secretarias municipais, o Plano de Contingência divide o desastre em quatro estados:",
+     "url": "https://www.riodasostras.rj.gov.br/defesacivilmunicipal/",
+     "titulo": "Portal da Segurança: Defesa Civil Municipal - Rio das Ostras",
+     "trecho": "PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO DOS EFEITOS CAUSADOS PELO FENÔMENO EL NIÑO ... Amaral Peixoto, 3190 - Bosque da Praia, Rio das Ostras - RJ, 28893-160 ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "2790627bda",
+     "nivel_confianca": "B",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.riodasostras.rj.gov.br/wp-content/uploads/2024/10/plancon-alagamentos-2024.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON ...",
+     "trecho": "Rio das Ostras.",
      "data": "24/09/2026",
      "status": "pista — recusada pelo juiz: citacao_incompleta"
     },
     {
-     "id": "f3c4158eff",
+     "id": "2d84e088f9",
+     "nivel_confianca": "B",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.riodasostras.rj.gov.br/wp-content/uploads/2023/12/plancon-incendios-florestais-2023.pdf",
+     "titulo": "incêndios florestais - Prefeitura de Rio das Ostras",
+     "trecho": "Oct 20, 2023 ... O Plano de Contingência de Proteção e Defesa Civil para INCÊNDIOS. FLORESTAIS, (Em Áreas de Proteção Ambiental e Áreas Não Protegidas), do.",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "081c850403",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.riodasostras.rj.gov.br/defesa-civil-e-saude-de-rio-das-ostras-participam-de-evento-sobre-enfrentamento-aos-impactos-do-el-nino/",
+     "titulo": null,
+     "trecho": "Aug 20, 2026 ... Rio das Ostras participa de evento sobre os impactos do El Niño. Foto ... Plano de Contingência do Vigidesastres (Programa Nacional de ...",
+     "data": "21/09/2026",
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
+    },
+    {
+     "id": "2153e2be9a",
      "nivel_confianca": "B",
      "pontos_confianca": 5,
      "sinais": [
@@ -9741,80 +10278,48 @@
      ],
      "alertas": [],
      "origem": "busca_web",
-     "url": "https://rbtv.com.br/noticia/13581/el-nino-coloca-municipios-em-alerta-e-prefeitura-de-vitoria-da-conquista-reforca-planejamento-para-prevencao-de-riscos",
-     "titulo": "El Niño coloca municípios em alerta e Prefeitura de Vitória da ...",
-     "trecho": "Sep 10, 2026 ... A partir daí, estamos elaborando o plano de contingência específico. ... El Niño em Vitória da Conquista. * O conteúdo de cada comentário é ...",
+     "url": "https://riodasostras.com.br/noticias/Noticias.php?noticia=14414",
+     "titulo": "Rio das Ostras participa de evento sobre os impactos do El Niño",
+     "trecho": "Aug 21, 2026 ... Rio das Ostras participa de evento sobre os impactos do El Niño ... Plano de Contingência do Vigidesastres (Programa Nacional de ...",
      "data": "24/09/2026",
      "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
-     "id": "04bfce3cfe",
+     "id": "f1c181077f",
      "nivel_confianca": "B",
      "pontos_confianca": 5,
      "sinais": [
       "fonte_oficial",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
+      "municipio_no_titulo",
+      "plano_no_trecho"
      ],
      "alertas": [],
      "origem": "seguimento_busca_oficial",
-     "url": "https://defesacivil.es.gov.br/Media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/VIANA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-2025.pdf",
-     "titulo": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL DE VIANA PLANCON ...",
-     "trecho": "O plano contempla protocolos detalhados · de prevenção, monitoramento constante e resposta rápida a eventuais incidentes, ... Imagem 14: Estrutura básica do Plano de Ação da Barragem PCH São Pedro.",
+     "url": "https://appro.riodasostras.rj.gov.br/storage/riodasostrasapp/jornais/2026/07/5c20e01c-6d1f-4e66-a433-d2c71a2f24e5.pdf",
+     "titulo": "Jornal Oficial Município de Rio das Ostras - Poderes Executivo ...",
+     "trecho": "Municipal reuniu todos os setores envolvidos para tomada de decisões imediatas, a partir de um Plano de Contingência.",
      "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: autoridade_nao_confirmada"
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
     },
     {
-     "id": "f63069b16f",
+     "id": "64324be146",
      "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DZ5wii5gHCw/",
-     "titulo": "Diante das previsões relacionadas ao El Niño, União da Vitória tem ...",
-     "trecho": "Jun 22, 2026 ... A atuação integrada entre a Defesa Civil e as secretarias municipais, a atualização do Plano de Contingência, a criação do Conselho Municipal de ...",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "038c548f92",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://bahiadestaque.com/noticia/36193/el-nino-coloca-municipios-em-alerta-e-prefeitura-de-vitoria-da-conquista-reforca-planejamento-para-prevencao-de-riscos",
-     "titulo": "El Niño coloca municípios em alerta e Prefeitura de Vitória da ...",
-     "trecho": "Sep 10, 2026 ... A partir daí, estamos elaborando o plano de contingência específico. ... El Niño em Vitória da Conquista. * O conteúdo de cada comentário é ...",
-     "data": "27/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "403eb09b43",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
+     "pontos_confianca": 5,
      "sinais": [
       "fonte_oficial",
-      "municipio_so_no_trecho"
+      "municipio_so_no_trecho",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
      ],
-     "alertas": [],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/3205309/2026-07-29/a7f158e2d5e7fd975935d29393b6f819beea151d.pdf",
-     "titulo": "Diário oficial de 2026-07-29",
-     "trecho": "vagas para os 21 km, 42 km, Desafio 5 + 21 km e Maratoninha Kids já estejam esgotadas. SERVIÇO Maratona de Vitória 2026 29 e 30 de agosto Praça do Papa, Enseada do Suá Inscrições: www.ticketsports.com.br ou www.maratonadevitoria.com.br E sp or te vi x E sportevix 5 Diário Oficial do Município de Vitória - ES 29 de julho de 2026 - Edição nº 2934 PODER EXECUTIVO Editais SECRETARIA DE GESTÃO E PLANEJAMENTO PROCESSO SELETIVO SIMPLIFICADO EDITAL DE CONVOCAÇÃO Nº 195/2026 O Secretário",
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.riodasostras.rj.gov.br/wp-content/uploads/2024/10/plancon-mares-de-tempestade-2024.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON MARÉS ...",
+     "trecho": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E · DEFESA CIVIL PLANCON · MARÉS DE TEMPESTADE OU · RESSACA MARÍTIMA · Degradação severa das Regiões Costeiras · COBRADE: 1.3.1.1.2 · RIO DAS OSTRAS · VERSÃO: 8.0 / 2024 · ÚLTIMA ATUALIZAÇÃO: 20 DE SETEMBRO DE 2024 · EXEMPLAR PERTENCENTE ...",
      "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: autoridade_nao_confirmada"
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
     }
    ]
   },
@@ -11220,142 +11725,6 @@
    ]
   },
   {
-   "ibge": "2611101",
-   "municipio": "Petrolina",
-   "uf": "PE",
-   "melhor_nivel": "A",
-   "n_pistas": 7,
-   "niveis": {
-    "A": 2,
-    "B": 4,
-    "C": 1
-   },
-   "pistas": [
-    {
-     "id": "0ae0a524aa",
-     "nivel_confianca": "A",
-     "pontos_confianca": 7,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "ato_formal"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://petrolina.pe.gov.br/mapa-do-site/",
-     "titulo": "Mapa do Site | Prefeitura de Petrolina - PE",
-     "trecho": "Coronavírus Plano de Contingência · Coronavírus Tire Suas Dúvidas · Decreto N.º 037/2020 – Reabertura Gradual · Resoluções CIB/PE · Dados Abertos · Dados Abertos – API · Decretos · Decretos 2012 · Decretos 2013 · Decretos 2014 · Decretos 2015 ·",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: autoridade_nao_confirmada"
-    },
-    {
-     "id": "53953ddbae",
-     "nivel_confianca": "A",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://petrolina.pe.gov.br/chesf-e-defesa-civil-de-petrolina-iniciam-instalacao-de-placas-do-plano-de-contingencia-na-tapera/",
-     "titulo": "CHESF e Defesa Civil de Petrolina iniciam instalação de placas ...",
-     "trecho": "Petrolina é uma das poucas cidades de Pernambuco que possui um plano de contingência, o que demonstra que as equipes da Defesa Civil do município seguem realizando o seu trabalho com seriedade.",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: citacao_incompleta"
-    },
-    {
-     "id": "e6187df402",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_oficial",
-      "plano_no_trecho",
-      "ato_formal"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/2611101/2025-10-24/3151b51738df227376e28d7a6e96266b6309e564.pdf",
-     "titulo": "Diário oficial de 2025-10-24",
-     "trecho": ". . . . . . . . . . . DECRETO DECRETO Nº 136 DE 22 DE OUTUBRO DE 2025 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . EDITAL DE CONVOCAÇÃO PARA CONSULTA PÚBLICA N.º 001/2025- PLANCON. . . . . . . . . . . . . . . . . . . . . . . . TERMO EXTRATO DE CONTRATO . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . EXTRATO DE",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: natureza_duvidosa"
-    },
-    {
-     "id": "f2fdbb2b26",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_oficial",
-      "plano_no_trecho",
-      "ato_formal"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/2611101/2025-11-05/8470c278430a8cbc62a6bf8a4ab2756775830857.pdf",
-     "titulo": "Diário oficial de 2025-11-05",
-     "trecho": ". . . . . . . . . . . . . . . PORTARIA Nº. 04249-2025 - SEDUCE . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . EDITAL 1º RETIFICAÇÃO DE EDITAL N.º 001-2025 - PLANCON - DEF.CIVIL . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . EDITAL N.º 057-2025 - SEDUCE . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: natureza_duvidosa"
-    },
-    {
-     "id": "b53b04907d",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_titulo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://acessoinformacao.org.br/licitacoes/arquivos/download/519738d5b18c9de931797692eae9444c09bb4aaf.pdf",
-     "titulo": "plano municipal de saneamento de petrolina/pe",
-     "trecho": "Um Plano de Contingência pode estruturar-se em três grandes capítulos: aspectos ... Petrolina-Pe. Recife, 2010. FONTE, Paulo Gilberto Dantas da. Aspectos ...",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "8a884d3778",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_inicio_do_trecho"
-     ],
-     "alertas": [],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/2611101/2026-09-17/6c8f7efb6f3d6b683bd057e63b5d533b996f0b54.pdf",
-     "titulo": "Diário oficial de 2026-09-17",
-     "trecho": "Petrolina-PE. CEP:56.302-905 E-mail: gabineteprefeiturapetrolina@gmail.com Tel. 3983-6410 MATRIZ DA EDUCAÇÃO – AGENDA TRANSVERSAL DA CRIANÇA E DO ADOLESCENTE SECRETARIA MUNICIPAL DE EDUCAÇÃO – PETROLINA/PE | PPA 2026–2029 Problema Programa Indicad or SELO UNICE F OBS Objetivo Ação Entrega 2026 2027 2028 2029 Necessidade de fortalecer os processos de gestão e as condições de funcionamen to das unidades de Educação Infantil, contribuindo para a qualidade da oferta e do atendimento às crianças",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: citacao_incompleta"
-    },
-    {
-     "id": "b6cd0781c1",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_oficial"
-     ],
-     "alertas": [],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/2611101/2026-08-25/ebe64a6d7daf5862bf7ed2fcf83ca5029bf8b902.pdf",
-     "titulo": "Diário oficial de 2026-08-25",
-     "trecho": "filhos menores de 6 anos, se houver; CPF dos dependentes; Título de Eleitor e comprovação das obrigações eleitorais (original e cópia); Cartão PIS ou PASEP; Comprovação do nível de escolaridade (original e cópia); Comprovações de As si na do p or 1 p es so a: D O R IA N E S E C C H I M A S C A R E LO P ar a ve rif ic ar a v al id ad e da s as si na tu ra s, a ce ss e ht tp s: //p et ro lin a. 1d oc .c om .b r/ ve rif ic ac ao /5 E 12 -3 76 7-",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: autoridade_nao_confirmada"
-    }
-   ]
-  },
-  {
    "ibge": "4104303",
    "municipio": "Campo Mourão",
    "uf": "PR",
@@ -11763,6 +12132,125 @@
    ]
   },
   {
+   "ibge": "3204906",
+   "municipio": "São Mateus",
+   "uf": "ES",
+   "melhor_nivel": "A",
+   "n_pistas": 6,
+   "niveis": {
+    "A": 4,
+    "B": 2,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "dfee82c174",
+     "nivel_confianca": "A",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://defesacivil.es.gov.br/Media/DefesaCivil/Legislacao/S%C3%83O%20MATEUS%20-%20PLANO%20DE%20CONTING%C3%8ANCIA.pdf",
+     "titulo": "SÃO MATEUS - PLANO DE CONTINGÊNCIA.pdf - CEPDEC",
+     "trecho": "O Plano de Contingência de Proteção e Defesa Civil - PLANCON para preparação e resposta a desastres do município de São Mateus / ES estabelece os procedimentos ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "49cbc4989a",
+     "nivel_confianca": "A",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://saomateus.es.gov.br/uploads/conselhosmunicipais/6ezg53mnvia8b9tx7fcyhsj2lod1rk04pwqu.pdf",
+     "titulo": "RESOLUÇÃO Nº 080/2026 - Prefeitura de São Mateus",
+     "trecho": "2° Aprovação, do Plano de Contingência das Arboviroses;. Art. 3° Esta ... PA -Pronto Atendimento, 2° piso, São Mateus/ES - Cont. 27 99248-5844. E-mail ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "9e41a19f6f",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://portalrdx.com.br/21/07/2026/sao-mateus-do-sul-reuniao-sobre-o-plano-de-contingencia-para-o-el-nino-acontece-nesta-terca-21/",
+     "titulo": "São Mateus do Sul: reunião sobre o Plano de Contingência para o ...",
+     "trecho": "Jul 21, 2026 ... São Mateus do Sul: reunião sobre o Plano de Contingência para o El Niño acontece nesta terça (21) ... 21 de julho de 2026. Compartilhe essa ...",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "0a6f89093a",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://folhadeirati.com.br/sao-mateus-do-sul-apresenta-plano-de-contingencia-e-reforca-preparacao-para-possiveis-cheias/",
+     "titulo": "São Mateus do Sul apresenta Plano de Contingência e reforça ...",
+     "trecho": "Jul 22, 2026 ... São Mateus do Sul apresenta Plano de Contingência e reforça preparação para possíveis cheias ... O El Niño é um fenômeno climático natural ...",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "9e4625ad97",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://saude.es.gov.br/Media/informacoes-de-saude/Plano_de_Conting%C3%AAncia_da_Secretaria_de_Estado_da_Sa%C3%BAde_para_o_Enfrentamento_de_Desastres_Hidrometeorol%C3%B3gicos_no_Esp%C3%ADrito_Santo_(1).pdf",
+     "titulo": "Plano de Contingência da Secretaria de Estado da Saúde ... - SESA",
+     "trecho": "Oct 3, 2025 ... Superintendência Regional de Saúde de São Mateus -SESA ES. Bruno ... - Acompanhar o desenvolvimento das ações de saúde previstas no. Plano de ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "cc565c077b",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://saomateus.es.gov.br/uploads/acessetambem/aj019l36fqyu8izg57e4prcmtbhdwxvsno2k.pdf",
+     "titulo": "estado do espírito santo - Prefeitura de São Mateus",
+     "trecho": "LEI: Art. 1º. As atividades passíveis de dispensa de licenciamento ambiental junto ao Município de São Mateus são as relacionadas no Anexo Único desta Lei.",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4109609",
    "municipio": "Guaratuba",
    "uf": "PR",
@@ -12121,127 +12609,125 @@
    ]
   },
   {
-   "ibge": "3304524",
-   "municipio": "Rio das Ostras",
-   "uf": "RJ",
+   "ibge": "2413003",
+   "municipio": "São Vicente",
+   "uf": "RN",
    "melhor_nivel": "A",
    "n_pistas": 6,
    "niveis": {
-    "A": 1,
-    "B": 5,
-    "C": 0
+    "A": 2,
+    "B": 3,
+    "C": 1
    },
    "pistas": [
     {
-     "id": "91ff9d71c6",
+     "id": "c9edcbd126",
      "nivel_confianca": "A",
      "pontos_confianca": 7,
-     "sinais": [
-      "fonte_oficial",
-      "plano_no_titulo",
-      "ato_formal",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.riodasostras.rj.gov.br/wp-content/uploads/2025/11/plancon-chuvas-intensas-2025-2026.pdf",
-     "titulo": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL – PLANCON",
-     "trecho": "Complementando esse marco legal, o Decreto Municipal nº 3267, de 2022,",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: resposta"
-    },
-    {
-     "id": "2790627bda",
-     "nivel_confianca": "B",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_inicio_do_trecho",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.riodasostras.rj.gov.br/wp-content/uploads/2024/10/plancon-alagamentos-2024.pdf",
-     "titulo": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON ...",
-     "trecho": "Rio das Ostras.",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: citacao_incompleta"
-    },
-    {
-     "id": "081c850403",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.riodasostras.rj.gov.br/defesa-civil-e-saude-de-rio-das-ostras-participam-de-evento-sobre-enfrentamento-aos-impactos-do-el-nino/",
-     "titulo": null,
-     "trecho": "Aug 20, 2026 ... Rio das Ostras participa de evento sobre os impactos do El Niño. Foto ... Plano de Contingência do Vigidesastres (Programa Nacional de ...",
-     "data": "21/09/2026",
-     "status": "pista — recusada pelo juiz: citacao_incompleta"
-    },
-    {
-     "id": "2153e2be9a",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
      "sinais": [
       "fonte_imprensa",
       "municipio_no_titulo",
       "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
+      "familia_de_risco_do_ciclo",
+      "texto_candidato_forte"
      ],
      "alertas": [],
      "origem": "busca_web",
-     "url": "https://riodasostras.com.br/noticias/Noticias.php?noticia=14414",
-     "titulo": "Rio das Ostras participa de evento sobre os impactos do El Niño",
-     "trecho": "Aug 21, 2026 ... Rio das Ostras participa de evento sobre os impactos do El Niño ... Plano de Contingência do Vigidesastres (Programa Nacional de ...",
-     "data": "24/09/2026",
+     "url": "https://santaportal.com.br/baixada/sao-vicente-reforca-preparacao-para-o-el-nino/",
+     "titulo": "São Vicente reforça preparação para o El Niño - Santa Portal",
+     "trecho": "Além das intervenções estruturais, São Vicente conta com o Plano de Contingência de Proteção e Defesa Civil (PCPDC), que estabelece protocolos de monitoramento, prevenção e resposta a eventos meteorológicos severos.",
+     "data": "23/09/2026",
      "status": "pista — recusada pelo juiz: sem_documento_primario"
     },
     {
-     "id": "f1c181077f",
+     "id": "dfbc75c84b",
+     "nivel_confianca": "A",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo",
+      "texto_candidato_forte"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://jornaldaorla.com.br/noticias/sao-vicente-reforca-drenagem-como-prevencao-ao-el-nino/",
+     "titulo": "São Vicente reforça drenagem como prevenção ao El Niño - Jornal ...",
+     "trecho": "Já São Vicente mantém o Plano de Contingência de Proteção e Defesa Civil, que estabelece protocolos de monitoramento, prevenção e resposta a ocorrências provocadas por chuvas intensas.",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "1fa7fa8743",
      "nivel_confianca": "B",
-     "pontos_confianca": 5,
+     "pontos_confianca": 4,
      "sinais": [
       "fonte_oficial",
-      "municipio_no_titulo",
+      "municipio_no_inicio_do_trecho",
       "plano_no_trecho"
      ],
      "alertas": [],
      "origem": "seguimento_busca_oficial",
-     "url": "https://appro.riodasostras.rj.gov.br/storage/riodasostrasapp/jornais/2026/07/5c20e01c-6d1f-4e66-a433-d2c71a2f24e5.pdf",
-     "titulo": "Jornal Oficial Município de Rio das Ostras - Poderes Executivo ...",
-     "trecho": "Municipal reuniu todos os setores envolvidos para tomada de decisões imediatas, a partir de um Plano de Contingência.",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: citacao_incompleta"
+     "url": "https://webdisk.diariooficial.rn.gov.br/Jornal/12021-09-21.pdf",
+     "titulo": "ESTADO DO RIO GRANDE DO NORTE - Diário Oficial do RN",
+     "trecho": "Sep 21, 2021 ... Sítio Luiza, Zona Rural, São Vicente/RN;. Art. 2º. Publique-se em ... Considerando o Plano de Contingência Regional da VI Região de Saúde elegeu o ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
     },
     {
-     "id": "64324be146",
+     "id": "a297303e25",
      "nivel_confianca": "B",
-     "pontos_confianca": 5,
+     "pontos_confianca": 3,
      "sinais": [
       "fonte_oficial",
       "municipio_so_no_trecho",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://webdisk.diariooficial.rn.gov.br/Jornal/12021-11-20.pdf",
+     "titulo": "ESTADO DO RIO GRANDE DO NORTE - Diário Oficial do RN",
+     "trecho": "Nov 20, 2021 ... ao Plano de Contingência Hospitalar para o enfrentamento ao COVID-19, pro- ... SAO VICENTE. Inscrição. Nome. Classificação Por DIREC ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "0e73c22033",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "http://adcon.rn.gov.br/ACERVO/SETHAS/DOC/DOC000000000281179.PDF",
+     "titulo": "MEDIDAS ADOTADAS PELA SETHAS NO ENFRENTAMENTO À ...",
+     "trecho": "❏ RN faz discussão pioneira do Plano de Contingência Socioassistencial. ​O ... Rafael, São Vicente e Tenente Laurentino Cruz na Região Central. Já na ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "d9a4ddc7c1",
+     "nivel_confianca": "C",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_titulo"
      ],
      "alertas": [
+      "uf_divergente_na_url",
       "ano_anterior_ao_ciclo"
      ],
      "origem": "seguimento_busca_oficial",
-     "url": "https://www.riodasostras.rj.gov.br/wp-content/uploads/2024/10/plancon-mares-de-tempestade-2024.pdf",
-     "titulo": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON MARÉS ...",
-     "trecho": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E · DEFESA CIVIL PLANCON · MARÉS DE TEMPESTADE OU · RESSACA MARÍTIMA · Degradação severa das Regiões Costeiras · COBRADE: 1.3.1.1.2 · RIO DAS OSTRAS · VERSÃO: 8.0 / 2024 · ÚLTIMA ATUALIZAÇÃO: 20 DE SETEMBRO DE 2024 · EXEMPLAR PERTENCENTE ...",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: citacao_incompleta"
+     "url": "https://aguai.sp.gov.br/home/wp-content/uploads/2021/12/Anexo-Decreto-Municipal-4554-Plano-de-Contingencia-Coronovirus-Revisao-3.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA MUNICIPAL DO NOVO ...",
+     "trecho": "Os familiares/responsável ou gestão das instituições de longa permanência (Comunidade São Vicente de Paula,. Comunidades Terapêuticas e Casa Lar Educandário) ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -13020,6 +13506,111 @@
    ]
   },
   {
+   "ibge": "3302254",
+   "municipio": "Itatiaia",
+   "uf": "RJ",
+   "melhor_nivel": "A",
+   "n_pistas": 5,
+   "niveis": {
+    "A": 1,
+    "B": 3,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "a691ddb18c",
+     "nivel_confianca": "A",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://diariodovale.com.br/cidade/itatiaia-avanca-na-construcao-de-plano-de-acao-para-eventos-climaticos-extremos/",
+     "titulo": "Itatiaia avança na construção de plano de ação para eventos ...",
+     "trecho": "Itatiaia – A cidade de Itatiaia participa, nesta terça-feira (25) e quarta-feira (26), da Oficina Estadual de Preparação dos Municípios para Respostas aos Eventos Climáticos Extremos em virtude do El Niño 2026/2027.",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "62152476bb",
+     "nivel_confianca": "B",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://itatiaia.rj.gov.br/wp-content/uploads/2025/10/2025-PLANO-DE-CONTINGENCIA-INUNDACOES-Atualizado.pdf",
+     "titulo": "plano de contingência da defesa civil itatiaia / rj",
+     "trecho": "Plano de Contingência para ITATIAIA/RJ · Atualizado por: Rodrigo de Oliveira Rocha 17 · A PROCURADORIA GERAL DO MUNICÍPIO (PGM):  Apoiar as ações de Defesa Civil, no que se refere à parte jurídica;  Elaborar e providenciar, quando necessário, o decreto declarando Situação Anormal.",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: executivo_pendente"
+    },
+    {
+     "id": "271267c5be",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "http://iprevi.rj.gov.br/index.php/seja-bem-vindo/noticias/156-decreto-estabelece-medidas-da-prefeitura-para-prevencao-contra-o-novo-coronavirus",
+     "titulo": "Iprevi Itatiaia - Decreto estabelece medidas da Prefeitura para ...",
+     "trecho": "O decreto (nº 3406/20) assinado pelo prefeito Eduardo Guedes foi publicado no Boletim Oficial da Prefeitura desta segunda-feira, dia 16. O endereço eletrônico é www.itatiaia.rj.gov.br. Para esclarecer quaisquer dúvidas, ou adotar novos procedimentos em relação à prevenção e proliferação ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "b0f2e2a4f8",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.rj.gov.br/secsocial/sites/default/files/arquivos_paginas/11667COLET%C3%82NEA%20-%20O%20SUAS%20NO%20ESTADO%20DO%20RIO%20DE%20JANEIRO%20NO%20CONTEXTO%20DA%20COVID-19%20-%20VOLUME%202_1.pdf",
+     "titulo": "a proteção social básica no estado do rio de janeiro no contexto da ...",
+     "trecho": "1.2 Plano de Contingência ... Barra do Piraí, Barra Mansa, Itatiaia, Pinheiral,. Piraí, Porto Real, Quatis, Resende, Rio Claro, Rio. Das Flores, Valença e ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "9b2466b7de",
+     "nivel_confianca": "C",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "uf_divergente_na_url"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.pjf.mg.gov.br/noticias/anexo/PlanodeContingencia-PeriodoChuvoso2026-2027_2.pdf",
+     "titulo": "Plano de Contingência de Chuvas - Período Chuvoso 2026-2027 ...",
+     "trecho": "fundamentais deste plano de contingência. Diante de todo esse contexto, o ... Escola Municipal Santana Itatiaia. Campus Universitário s/nº - Martelos.",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3305505",
    "municipio": "Saquarema",
    "uf": "RJ",
@@ -13735,6 +14326,91 @@
      "titulo": "Plano de Contingência da Assistência Social - Município de Franca",
      "trecho": "Notas Públicas - CMAS · Boletins informativos CMAS periodo pandemia · Plano de Contingência da Assistência Social ... Contato. ouvidoria@franca.sp.gov.br (16)3711 ...",
      "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3205200",
+   "municipio": "Vila Velha",
+   "uf": "ES",
+   "melhor_nivel": "A",
+   "n_pistas": 4,
+   "niveis": {
+    "A": 3,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "213cfdefc1",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://eshoje.com.br/meio-ambiente/2026/08/vila-velha-apresenta-plano-de-contingencia-com-foco-no-el-nino/",
+     "titulo": "Vila Velha apresenta plano de contingência com foco no El Niño ...",
+     "trecho": "Aug 19, 2026 ... ... 2026. sexta-feira, 11 de setembro de 2026 ... Vila Velha apresenta plano de contingência com foco no El Niño.",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "1a14ffe379",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://defesacivil.es.gov.br/Media/DefesaCivil/Legislacao/VILA%20VELHA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA.pdf",
+     "titulo": "plano municipal de proteção e defesa civil - CEPDEC",
+     "trecho": "Vila Velha, ES, 04 de agosto de 2023. ARNALDO BORGO FILHO. Prefeito ... O Município de Vila Velha elaborou a 1ª edição do seu Plano de Contingência no ano.",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "d29730c151",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/VIT%C3%93RIA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202024-2025.pdf",
+     "titulo": "PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PMPDC",
+     "trecho": "Apr 29, 2025 ... liga as cidades de Vitória e Vila Velha, uma das maiores obras de engenharia do Estado ... O que é um plano de contingência ou preventivo de ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "2eb46c1ba3",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://pcmc.es.gov.br/pdf/plano_de_adaptacao.pdf",
+     "titulo": "Plano de Adaptação às Mudanças Climáticas do Espírito Santo",
+     "trecho": "Oct 20, 2025 ... Vila Velha é o município. 11 com menor nível de segurança, com quase ... • Plano de Contingência. Dimensão I - Instrumentos de ...",
+     "data": "03/10/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -14461,74 +15137,6 @@
    ]
   },
   {
-   "ibge": "3302254",
-   "municipio": "Itatiaia",
-   "uf": "RJ",
-   "melhor_nivel": "A",
-   "n_pistas": 3,
-   "niveis": {
-    "A": 1,
-    "B": 2,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "a691ddb18c",
-     "nivel_confianca": "A",
-     "pontos_confianca": 7,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://diariodovale.com.br/cidade/itatiaia-avanca-na-construcao-de-plano-de-acao-para-eventos-climaticos-extremos/",
-     "titulo": "Itatiaia avança na construção de plano de ação para eventos ...",
-     "trecho": "Itatiaia – A cidade de Itatiaia participa, nesta terça-feira (25) e quarta-feira (26), da Oficina Estadual de Preparação dos Municípios para Respostas aos Eventos Climáticos Extremos em virtude do El Niño 2026/2027.",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "62152476bb",
-     "nivel_confianca": "B",
-     "pontos_confianca": 7,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://itatiaia.rj.gov.br/wp-content/uploads/2025/10/2025-PLANO-DE-CONTINGENCIA-INUNDACOES-Atualizado.pdf",
-     "titulo": "plano de contingência da defesa civil itatiaia / rj",
-     "trecho": "Plano de Contingência para ITATIAIA/RJ · Atualizado por: Rodrigo de Oliveira Rocha 17 · A PROCURADORIA GERAL DO MUNICÍPIO (PGM):  Apoiar as ações de Defesa Civil, no que se refere à parte jurídica;  Elaborar e providenciar, quando necessário, o decreto declarando Situação Anormal.",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: executivo_pendente"
-    },
-    {
-     "id": "271267c5be",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "http://iprevi.rj.gov.br/index.php/seja-bem-vindo/noticias/156-decreto-estabelece-medidas-da-prefeitura-para-prevencao-contra-o-novo-coronavirus",
-     "titulo": "Iprevi Itatiaia - Decreto estabelece medidas da Prefeitura para ...",
-     "trecho": "O decreto (nº 3406/20) assinado pelo prefeito Eduardo Guedes foi publicado no Boletim Oficial da Prefeitura desta segunda-feira, dia 16. O endereço eletrônico é www.itatiaia.rj.gov.br. Para esclarecer quaisquer dúvidas, ou adotar novos procedimentos em relação à prevenção e proliferação ...",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
    "ibge": "4202438",
    "municipio": "Bocaina do Sul",
    "uf": "SC",
@@ -14785,56 +15393,6 @@
    ]
   },
   {
-   "ibge": "3204906",
-   "municipio": "São Mateus",
-   "uf": "ES",
-   "melhor_nivel": "A",
-   "n_pistas": 2,
-   "niveis": {
-    "A": 2,
-    "B": 0,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "9e41a19f6f",
-     "nivel_confianca": "A",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://portalrdx.com.br/21/07/2026/sao-mateus-do-sul-reuniao-sobre-o-plano-de-contingencia-para-o-el-nino-acontece-nesta-terca-21/",
-     "titulo": "São Mateus do Sul: reunião sobre o Plano de Contingência para o ...",
-     "trecho": "Jul 21, 2026 ... São Mateus do Sul: reunião sobre o Plano de Contingência para o El Niño acontece nesta terça (21) ... 21 de julho de 2026. Compartilhe essa ...",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "0a6f89093a",
-     "nivel_confianca": "A",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://folhadeirati.com.br/sao-mateus-do-sul-apresenta-plano-de-contingencia-e-reforca-preparacao-para-possiveis-cheias/",
-     "titulo": "São Mateus do Sul apresenta Plano de Contingência e reforça ...",
-     "trecho": "Jul 22, 2026 ... São Mateus do Sul apresenta Plano de Contingência e reforça preparação para possíveis cheias ... O El Niño é um fenômeno climático natural ...",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    }
-   ]
-  },
-  {
    "ibge": "4103909",
    "municipio": "Campina da Lagoa",
    "uf": "PR",
@@ -14931,58 +15489,6 @@
      "trecho": "na Avenida Francisco de \nAssis Carneiro da Silva, número 205 – Caxias.\n\nPAUTA:\n\n1 – Apreciação e aprovação da Programação Anual de Saúde – \nPAS 2027;\n\n2 – Apreciação e aprovação do Plano Municipal de \nContingência de desastres 2026-2028 e Plano de Contingência \ndas Arboviroses 2026-2028;\n\n3 – Criaçã",
      "data": "21/08/2026",
      "status": "pista — recusada pelo juiz: natureza_duvidosa"
-    }
-   ]
-  },
-  {
-   "ibge": "2413003",
-   "municipio": "São Vicente",
-   "uf": "RN",
-   "melhor_nivel": "A",
-   "n_pistas": 2,
-   "niveis": {
-    "A": 2,
-    "B": 0,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "c9edcbd126",
-     "nivel_confianca": "A",
-     "pontos_confianca": 7,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo",
-      "texto_candidato_forte"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://santaportal.com.br/baixada/sao-vicente-reforca-preparacao-para-o-el-nino/",
-     "titulo": "São Vicente reforça preparação para o El Niño - Santa Portal",
-     "trecho": "Além das intervenções estruturais, São Vicente conta com o Plano de Contingência de Proteção e Defesa Civil (PCPDC), que estabelece protocolos de monitoramento, prevenção e resposta a eventos meteorológicos severos.",
-     "data": "23/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "dfbc75c84b",
-     "nivel_confianca": "A",
-     "pontos_confianca": 7,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo",
-      "texto_candidato_forte"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://jornaldaorla.com.br/noticias/sao-vicente-reforca-drenagem-como-prevencao-ao-el-nino/",
-     "titulo": "São Vicente reforça drenagem como prevenção ao El Niño - Jornal ...",
-     "trecho": "Já São Vicente mantém o Plano de Contingência de Proteção e Defesa Civil, que estabelece protocolos de monitoramento, prevenção e resposta a ocorrências provocadas por chuvas intensas.",
-     "data": "23/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -15418,38 +15924,6 @@
      "trecho": "Nesta terça-feira (21), acontenceu ... servidores públicos e membros de entidades locais sobre a elaboração do Plano de Contingência Municipal....",
      "data": "27/09/2026",
      "status": "pista — recusada pelo juiz: autoridade_nao_confirmada"
-    }
-   ]
-  },
-  {
-   "ibge": "3205200",
-   "municipio": "Vila Velha",
-   "uf": "ES",
-   "melhor_nivel": "A",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 1,
-    "B": 0,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "213cfdefc1",
-     "nivel_confianca": "A",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://eshoje.com.br/meio-ambiente/2026/08/vila-velha-apresenta-plano-de-contingencia-com-foco-no-el-nino/",
-     "titulo": "Vila Velha apresenta plano de contingência com foco no El Niño ...",
-     "trecho": "Aug 19, 2026 ... ... 2026. sexta-feira, 11 de setembro de 2026 ... Vila Velha apresenta plano de contingência com foco no El Niño.",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -119874,6 +120348,245 @@
    ]
   },
   {
+   "ibge": "2610707",
+   "municipio": "Paulista",
+   "uf": "PE",
+   "melhor_nivel": "B",
+   "n_pistas": 12,
+   "niveis": {
+    "A": 0,
+    "B": 6,
+    "C": 6
+   },
+   "pistas": [
+    {
+     "id": "55cc6ecfa6",
+     "nivel_confianca": "B",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://paulista.pe.gov.br/2024/dinamico/noticia-detalhe.php?id=7782",
+     "titulo": "Paulista aciona Gabinete de Gerenciamento de Risco para atualizar ...",
+     "trecho": "O Gabinete de Gerenciamento de Risco do Paulista, reativou na manhã desta sexta-feira (20.03), o Plano de Contingência e Proteção da Defesa Civil. O Plano que foi implantado há sete anos, envolve todas as secretarias municipais, que deverão ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "6d7dc08e68",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.gazetaderiopreto.com.br/el-nino-coloca-saude-do-noroeste-paulista-no-radar-do-ministerio-da-saude/",
+     "titulo": "El Niño coloca saúde do Noroeste Paulista no radar do Ministério ...",
+     "trecho": "Sep 16, 2026 ... ... El Niño. Por isso que nós estamos organizando junto aos municípios e aos estados um plano de contingência mais robusto”, afirmou. Ads. O ...",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "78f12d9669",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.gazetaderiopreto.com.br/el-nino-coloca-saude-do-noroeste-paulista-no-radar-do-ministerio-da-saude/",
+     "titulo": null,
+     "trecho": "5 days ago ... ... El Niño. Por isso que nós estamos organizando junto aos municípios e aos estados um plano de contingência mais robusto”, afirmou. Ads. O ...",
+     "data": "21/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "417950010d",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DdZ_Zs9DJqA/",
+     "titulo": "EL NIÑO 2026 | Representantes da CPFL Paulista se reuniram na ...",
+     "trecho": "7 days ago ... EL NIÑO 2026 | Representantes da CPFL Paulista ... plano de contingência com foco no aumento de ocorrências associadas ao fenômeno El Niño.",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "469f974651",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DdZ_Zs9DJqA/",
+     "titulo": null,
+     "trecho": "4 days ago ... EL NIÑO 2026 | Representantes da CPFL Paulista ... plano de contingência com foco no aumento de ocorrências associadas ao fenômeno El Niño.",
+     "data": "21/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "6030146a2b",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/pndc/docs/produto-4-pn-pdc.pdf",
+     "titulo": "plano nacional de proteção e defesa civil - Portal Gov.br",
+     "trecho": "br/images/stories/ArquivosDefesaCivil/ArquivosPDF/publicacoes/ · II---Plano-de-Contingencia---Livro-Base. ... cos na Macrometrópole Paulista: O papel da educação.",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "cdb8158a6f",
+     "nivel_confianca": "C",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo",
+      "uf_divergente_na_url"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.pedrinhaspaulista.sp.gov.br/plano-municipal/plano-municipal-index/download/3/",
+     "titulo": "PLANO DE CONTINGÊNCIA DE PEDRINHAS PAULISTA (COVID-19)",
+     "trecho": "Na aplicação do plano de contingência, as atividades específicas serão · direcionadas para os três níveis de respostas descritos abaixo: A. Nível de resposta: Alerta: Corresponde a uma situação de risco de introdução do novo Coronavírus (COVID-19) em · Pedrinhas Paulista, contudo ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "48b4ee03b7",
+     "nivel_confianca": "C",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "uf_divergente_na_url"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.al.sp.gov.br/noticia/?id=434103",
+     "titulo": "Em São Paulo, apenas 237 municípios têm plano de contingência ...",
+     "trecho": "Apenas 237 dos 645 municípios paulistas têm um Plano de Contingência de Defesa Civil para desastres. Os dados são do Observatório do Futuro, do TCESP (Tribunal de Contas do Estado de São Paulo), e foram apresentados nesta terça-feira ...",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
+    },
+    {
+     "id": "b2c7f577a3",
+     "nivel_confianca": "C",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "uf_divergente_na_url",
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://transparencia.itanhaem.sp.gov.br/wp-content/uploads/2024/12/Plano-de-contigencia2025-1.pdf",
+     "titulo": "PLANCON PLANO DE CONTIGÊNCIA",
+     "trecho": "Dec 31, 2024 ... Seus limites são Juquitiba e a capital paulista, ao norte; São Vicente e Mongaguá, a ... Plano de Contingência e também, caso necessário, após a ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "74f939994e",
+     "nivel_confianca": "C",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "uf_divergente_na_url"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.prefeitura.sp.gov.br/cidade/secretarias/desenvolvimento/desenvolvimento_economico/index.php?p=297913",
+     "titulo": "Retomada Econômica da cidade de São Paulo | Secretaria Municipal ...",
+     "trecho": "Portaria SMADS Nº 33, de 21 de agosto de 2020, aprova o \"Plano de Contingência dos Serviços de Medidas Socioeducativas em Meio Aberto para situação de emergência decorrente da COVID-19.",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
+    },
+    {
+     "id": "6c63e4a4d5",
+     "nivel_confianca": "C",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "uf_divergente_na_url",
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://legislacao.prefeitura.sp.gov.br/ordem-interna-sec-mun-de-assistencia-e-desenvolvimento-social-1-de-26-de-maio-de-2015",
+     "titulo": "SMADS Nº 1 DE 15 DE MAIO DE 2015 - Legislação Municipal",
+     "trecho": "... Plano de Contingência para Situações de Baixas Temperaturas”. DETERMINA. Às ... 11) Supervisão de Assistência Social de Itaim Paulista – SAS IT: Centro ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "cd4703fb08",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DbY6fIWFA_v/",
+     "titulo": null,
+     "trecho": "Jul 29, 2026 ... Birigui recebe na próxima sexta-feira (31/07) uma reunião de alinhamento do Plano de Contingência – El Niño 2026, iniciativa da CPFL Paulista ...",
+     "data": "21/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    }
+   ]
+  },
+  {
    "ibge": "2304400",
    "municipio": "Fortaleza",
    "uf": "CE",
@@ -120432,188 +121145,6 @@
      "trecho": "May 23, 2025 ... institucional da Associação Avícola de Pernambuco, Eduardo Valença, a produção local foi distribuída em ... Plano de contingência, faz-se ...",
      "data": "30/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "2610707",
-   "municipio": "Paulista",
-   "uf": "PE",
-   "melhor_nivel": "B",
-   "n_pistas": 9,
-   "niveis": {
-    "A": 0,
-    "B": 5,
-    "C": 4
-   },
-   "pistas": [
-    {
-     "id": "55cc6ecfa6",
-     "nivel_confianca": "B",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://paulista.pe.gov.br/2024/dinamico/noticia-detalhe.php?id=7782",
-     "titulo": "Paulista aciona Gabinete de Gerenciamento de Risco para atualizar ...",
-     "trecho": "O Gabinete de Gerenciamento de Risco do Paulista, reativou na manhã desta sexta-feira (20.03), o Plano de Contingência e Proteção da Defesa Civil. O Plano que foi implantado há sete anos, envolve todas as secretarias municipais, que deverão ...",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "6d7dc08e68",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.gazetaderiopreto.com.br/el-nino-coloca-saude-do-noroeste-paulista-no-radar-do-ministerio-da-saude/",
-     "titulo": "El Niño coloca saúde do Noroeste Paulista no radar do Ministério ...",
-     "trecho": "Sep 16, 2026 ... ... El Niño. Por isso que nós estamos organizando junto aos municípios e aos estados um plano de contingência mais robusto”, afirmou. Ads. O ...",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "78f12d9669",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.gazetaderiopreto.com.br/el-nino-coloca-saude-do-noroeste-paulista-no-radar-do-ministerio-da-saude/",
-     "titulo": null,
-     "trecho": "5 days ago ... ... El Niño. Por isso que nós estamos organizando junto aos municípios e aos estados um plano de contingência mais robusto”, afirmou. Ads. O ...",
-     "data": "21/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "417950010d",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DdZ_Zs9DJqA/",
-     "titulo": "EL NIÑO 2026 | Representantes da CPFL Paulista se reuniram na ...",
-     "trecho": "7 days ago ... EL NIÑO 2026 | Representantes da CPFL Paulista ... plano de contingência com foco no aumento de ocorrências associadas ao fenômeno El Niño.",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "469f974651",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_inicio_do_trecho",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DdZ_Zs9DJqA/",
-     "titulo": null,
-     "trecho": "4 days ago ... EL NIÑO 2026 | Representantes da CPFL Paulista ... plano de contingência com foco no aumento de ocorrências associadas ao fenômeno El Niño.",
-     "data": "21/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "cdb8158a6f",
-     "nivel_confianca": "C",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_titulo"
-     ],
-     "alertas": [
-      "risco_errado_no_titulo",
-      "uf_divergente_na_url"
-     ],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.pedrinhaspaulista.sp.gov.br/plano-municipal/plano-municipal-index/download/3/",
-     "titulo": "PLANO DE CONTINGÊNCIA DE PEDRINHAS PAULISTA (COVID-19)",
-     "trecho": "Na aplicação do plano de contingência, as atividades específicas serão · direcionadas para os três níveis de respostas descritos abaixo: A. Nível de resposta: Alerta: Corresponde a uma situação de risco de introdução do novo Coronavírus (COVID-19) em · Pedrinhas Paulista, contudo ...",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "48b4ee03b7",
-     "nivel_confianca": "C",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_inicio_do_trecho",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "uf_divergente_na_url"
-     ],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.al.sp.gov.br/noticia/?id=434103",
-     "titulo": "Em São Paulo, apenas 237 municípios têm plano de contingência ...",
-     "trecho": "Apenas 237 dos 645 municípios paulistas têm um Plano de Contingência de Defesa Civil para desastres. Os dados são do Observatório do Futuro, do TCESP (Tribunal de Contas do Estado de São Paulo), e foram apresentados nesta terça-feira ...",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: citacao_incompleta"
-    },
-    {
-     "id": "74f939994e",
-     "nivel_confianca": "C",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_oficial",
-      "plano_no_trecho"
-     ],
-     "alertas": [
-      "uf_divergente_na_url"
-     ],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.prefeitura.sp.gov.br/cidade/secretarias/desenvolvimento/desenvolvimento_economico/index.php?p=297913",
-     "titulo": "Retomada Econômica da cidade de São Paulo | Secretaria Municipal ...",
-     "trecho": "Portaria SMADS Nº 33, de 21 de agosto de 2020, aprova o \"Plano de Contingência dos Serviços de Medidas Socioeducativas em Meio Aberto para situação de emergência decorrente da COVID-19.",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: natureza_duvidosa"
-    },
-    {
-     "id": "cd4703fb08",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_so_no_trecho",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DbY6fIWFA_v/",
-     "titulo": null,
-     "trecho": "Jul 29, 2026 ... Birigui recebe na próxima sexta-feira (31/07) uma reunião de alinhamento do Plano de Contingência – El Niño 2026, iniciativa da CPFL Paulista ...",
-     "data": "21/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -121931,6 +122462,150 @@
    ]
   },
   {
+   "ibge": "1703826",
+   "municipio": "Cachoeirinha",
+   "uf": "TO",
+   "melhor_nivel": "B",
+   "n_pistas": 7,
+   "niveis": {
+    "A": 0,
+    "B": 3,
+    "C": 4
+   },
+   "pistas": [
+    {
+     "id": "c374e77c18",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DdZX8XIRdv_/",
+     "titulo": "Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura ...",
+     "trecho": "6 days ago ... 46 likes, 0 comments - prefcachoeirinhars on September 17, 2026: \" Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura, por ...",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "4de3abf82b",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.oreporter.net/cachoeirinha-e-contemplada-no-prepara-rs-el-nino-e-vai-receber-r-300-mil/",
+     "titulo": "Cachoeirinha é contemplada no Prepara RS - El Niño e vai receber ...",
+     "trecho": "Jun 18, 2026 ... Cachoeirinha - Cachoeirinha é um dos municípios contemplados no ... plano de contingência municipal atualizado e a conclusão do ...",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "28af31ddc8",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DdZX8XIRdv_/",
+     "titulo": "Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura ...",
+     "trecho": "Sep 17, 2026 ... 46 likes, 0 comments - prefcachoeirinhars on September 17, 2026: \" Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura, por ...",
+     "data": "27/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "bf9a24f6b5",
+     "nivel_confianca": "C",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "uf_divergente_na_url"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.cmcachoeirinha.rs.gov.br/noticia/plano-de-contingencia-de-cachoeirinha-sera-apresentado-em-audiencia-na-camara-991",
+     "titulo": "Plano de contingência de Cachoeirinha será apresentado em ...",
+     "trecho": "Sep 22, 2026 ... Plano de contingência de Cachoeirinha será apresentado em audiência na Câmara. Atividade da Secretaria Municipal de Defesa Civil e ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "bbc744f6f9",
+     "nivel_confianca": "C",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "uf_divergente_na_url"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.cmcachoeirinha.rs.gov.br/noticia/defesa-civil-apresenta-novo-plano-de-contingencia-em-audiencia-publica-na-camara-999",
+     "titulo": "Defesa Civil apresenta novo Plano de Contingência em audiência ...",
+     "trecho": "Sep 25, 2026 ... ... Plano de Contingência (Plancon) de 2026, em audiência pública realizada no Plenário Osvaldo Corrêa da Câmara Municipal de Cachoeirinha. A ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "f0a9222cc9",
+     "nivel_confianca": "C",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "uf_divergente_na_url"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://prefeitura.sp.gov.br/web/subprefeituras/w/noticias/296661",
+     "titulo": "Prefeitura elabora Plano de Contingenciamento e adota novas ...",
+     "trecho": "Foi liberado crédito suplementar de R$ 39.402.176 para atender a todo o plano de contingência. ... Cachoeirinha. De a cordo com o decreto 59.372, as ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "d612a473a8",
+     "nivel_confianca": "C",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "uf_divergente_na_url"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.cmcachoeirinha.rs.gov.br/noticia/camara-realiza-sessao-plenaria-nesta-terca-feira-22-990",
+     "titulo": "Câmara realiza sessão plenária nesta terça-feira (22) - Notícias",
+     "trecho": "Sep 22, 2026 ... Outras Notícias. Plano de contingência de Cachoeirinha será ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4109302",
    "municipio": "Guaraniaçu",
    "uf": "PR",
@@ -122051,6 +122726,253 @@
    ]
   },
   {
+   "ibge": "3300605",
+   "municipio": "Bom Jesus do Itabapoana",
+   "uf": "RJ",
+   "melhor_nivel": "B",
+   "n_pistas": 6,
+   "niveis": {
+    "A": 0,
+    "B": 5,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "5d7fd533db",
+     "nivel_confianca": "B",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "busca_web",
+     "url": "https://g1.globo.com/rj/norte-fluminense/noticia/2025/11/04/bom-jesus-do-itabapoana-apresenta-plano-de-contingencia-para-enfrentar-chuvas-fortes.ghtml",
+     "titulo": "Bom Jesus do Itabapoana apresenta plano de contingência para ...",
+     "trecho": "Nov 4, 2025 ... Bom Jesus do Itabapoana apresenta plano de contingência para enfrentar chuvas fortes ... Com El Niño muito forte, Sul deve ter chuva ...",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "7aea6e5b4b",
+     "nivel_confianca": "B",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "busca_web",
+     "url": "https://g1.globo.com/rj/norte-fluminense/noticia/2025/11/04/bom-jesus-do-itabapoana-apresenta-plano-de-contingencia-para-enfrentar-chuvas-fortes.ghtml",
+     "titulo": "Bom Jesus do Itabapoana apresenta plano de contingência para enfrentar chuvas fortes",
+     "trecho": "1 de 1 O documento prevê ações como limpeza de bueiros, monitoramento de áreas de risco e implantação de um sistema de alerta para avisar a população sobre temporais. — Foto: Arquivo da Defesa Civil de Bom Jesus do Itabapoana",
+     "data": "27/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "8a26e560d8",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.rj.gov.br/concessaosaneamentorj2021/sites/default/files/arquivos_paginas/Planejamento%20Universaliza%C3%A7%C3%A3o%20-%20Bom%20Jesus%20do%20Itabapoana_0.pdf",
+     "titulo": "Planejamento Universalização - Bom Jesus do ... - RJ Gov",
+     "trecho": "sendo responsabilidade do Poder Público municipal de Bom Jesus do Itabapoana ativar oficialmente o Plano de Contingência para Escassez de Água. ... Decreto n° ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "375ed07a8d",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=NzI0Njk%2C",
+     "titulo": "Governo do Estado do Rio de Janeiro - Saude.RJ",
+     "trecho": "estão na da região Noroeste, em Bom Jesus do Itabapoana. Itaeci listou os municípios que não. 61 entregaram o Plano de Contingência de Arboviroses 2024-2026: ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "47332f3f21",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://aperibe.rj.gov.br/portal/arquivo/6774",
+     "titulo": "Sumário - Prefeitura de Aperibé-RJ",
+     "trecho": "Este Plano de Contingência estabelece os protocolos e procedimentos a serem ... do Avaí e para o Hospital São José em Bom Jesus do Itabapoana. 3 Solicitar ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "c3bd28f4ca",
+     "nivel_confianca": "C",
+     "pontos_confianca": 1,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DcjeKSYhTDO/",
+     "titulo": null,
+     "trecho": "Aug 27, 2026 ... 1 likes, 0 comments - fallaregiao on August 27, 2026: \"Bom Jesus do Itabapoana Estrutura Plano de Contingência para Emergências Climáticas A ...",
+     "data": "21/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    }
+   ]
+  },
+  {
+   "ibge": "3303401",
+   "municipio": "Nova Friburgo",
+   "uf": "RJ",
+   "melhor_nivel": "B",
+   "n_pistas": 6,
+   "niveis": {
+    "A": 0,
+    "B": 5,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "4841b88b8b",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.pmnf.rj.gov.br/noticia/view/563",
+     "titulo": "DEFESA CIVIL APRESENTA ATUALIZAÇÃO DO PLANO DE ...",
+     "trecho": "Nov 28, 2024 ... ... PLANO DE CONTINGÊNCIA DE NOVA FRIBURGO, VISANDO O PERÍODO DE CHUVAS ... rj.gov.br. alarm. Horário de atendimento: Segunda a Sexta das 09h às ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "ee78fe94d7",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.facebook.com/wandersonnogueira.rj/videos/como-nova-friburgo-ser%C3%A1-atingida-pelo-super-el-ni%C3%B1o-segundo-especialistas-com-pa/1720640012274128/",
+     "titulo": "Como Nova Friburgo será atingida pelo super El Niño? Segundo ...",
+     "trecho": "Jun 10, 2026 ... Como Nova Friburgo será atingida pelo super El Niño? Segundo ... plano de contingência para respostas rápidas à emergências. A ...",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "71fe1fb0c1",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.pmnf.rj.gov.br/noticia/view/145/defesa-civil-abre-consulta-publica-para-participacao-dos-cidadaos-no-plano-de-contingencia-de-chuvas-intensas",
+     "titulo": "DEFESA CIVIL ABRE CONSULTA PÚBLICA PARA PARTICIPAÇÃO ...",
+     "trecho": "Sep 25, 2025 ... ... Plano de Contingência de Chuvas Intensas 2025/2026 (PLANCON). A ... Participe! ×. voltar. Nova Friburgo. Rio de Janeiro. mail.",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "a5ed111a8a",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "http://www.rj.gov.br/casacivil/node/247",
+     "titulo": "Governo anuncia a chegada de 70 sirenes ao sistema de ...",
+     "trecho": "... Plano de Contingência para Chuvas Intensas até o ano que vem. O governador ... Nova Friburgo ganhará quatro novas sirenes. O valor estimado para ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "7fe1c44b7c",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3303401/2025-10-23/73b365c36a8eb243297134684209517b6c1694c4.pdf",
+     "titulo": "Diário oficial de 2025-10-23",
+     "trecho": "Aberto e fechado Objeto da compra: REGISTRO DE PREÇOS para futura e eventual CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA O FORNECIMENTO DE CESTAS BÁSICAS, em atendimento às necessidades das famílias de risco alto e risco muito alto do Plano de Contingência do Município, at ingidas por situações de emergência e calamidade, provenientes de intempéries climáticas, pelo período de 01 (um) ano. • Aceito e Habilitado para a empresa Z E S COMERCIAL LTDA, CNPJ 47.496.710/ 0001-18, pelo melhor",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
+    },
+    {
+     "id": "4e991b8671",
+     "nivel_confianca": "C",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo",
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://sapl.novafriburgo.rj.leg.br/media/sapl/public/documentoacessorio/2024/17824/pa_5005-24_ri_414-24.pdf",
+     "titulo": "câmara municipal de nova friburgo - gabinete do vereadora maiara ...",
+     "trecho": "Mar 25, 2024 ... Resposta: De acordo com o Plano de Contingência do Município de Nova Friburgo as ... Alberto Braune, 225 - Centro Nova Friburgo, RJ | Tel.: (22) ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3305000",
    "municipio": "São João da Barra",
    "uf": "RJ",
@@ -122167,6 +123089,135 @@
      "trecho": "Jul 8, 2026 ... ... plano de contingência já existente, estamos trabalhando um plano ... Os impactos do Novo El Niño fazem com que São João da Barra se ...",
      "data": "21/09/2026",
      "status": "pista — recusada pelo juiz: sem_documento_primario"
+    }
+   ]
+  },
+  {
+   "ibge": "2408607",
+   "municipio": "Paraná",
+   "uf": "RN",
+   "melhor_nivel": "B",
+   "n_pistas": 6,
+   "niveis": {
+    "A": 0,
+    "B": 2,
+    "C": 4
+   },
+   "pistas": [
+    {
+     "id": "f4a1c5aa12",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://g1.globo.com/pr/campos-gerais-sul/noticia/2026/05/14/el-nino-pode-provocar-tempestades-severas-no-parana-entenda-o-fenomeno-e-veja-o-que-dizem-os-meteorologistas.ghtml",
+     "titulo": "El Niño pode provocar tempestades severas no Paraná - G1 - Globo",
+     "trecho": "Devido à previsão, Defesa Civil começou a revisar Plano de Contingência e a orientar prefeituras sobre prevenção a desastres. Por Millena Sartori, g1 PR. 14 ...",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "3a46a08b18",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.gov.br/agricultura/pt-br/assuntos/sanidade-animal-e-vegetal/saude-animal/arquivos-das-publicacoes-de-saude-animal/plano-de-contingencia-versao-1_4.pdf/@@download/file/plano-de-contingencia-versao-1_4.pdf",
+     "titulo": "Plano de Contingência - Versão 1.4x - Portal Gov.br",
+     "trecho": "Apr 4, 2013 ... do conteúdo deste Plano de Contingência. Algumas figuras foram ... PARANÁ. SFA-PR - SUPERINTENDÊNCIA FEDERAL DE AGRICULTURA NO ESTADO DO.",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "2236b63f59",
+     "nivel_confianca": "C",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "uf_divergente_na_url"
+     ],
+     "origem": "busca_web",
+     "url": "https://legisvideos.assembleia.pr.leg.br/video/2330",
+     "titulo": "El Niño no Paraná: prevenção, cenários e desafios | Legis Vídeos",
+     "trecho": "Jul 14, 2026 ... El Niño no Paraná: prevenção, cenários e desafios. Transcrição ... plano de contingência de enfrentamento é o Ninho. Já temos dentro do ...",
+     "data": "26/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "ddad9d51bd",
+     "nivel_confianca": "C",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://wikisda.agricultura.gov.br/pt-br/Sa%C3%BAde-Animal/plano-de-contingencia-para-influenza-aviaria-e-doenca-de-newcastle",
+     "titulo": "Plano de contingência para Influenza Aviária e Doença de Newcastle",
+     "trecho": "PARANÁ. SFA-PR - SUPERINTENDÊNCIA FEDERAL DE AGRICULTURA NO ESTADO DO PARANÁ. Rua José Veríssimo, 420 - Tarumã. CEP: 82.820-000 Curitiba/PR. TEL: (41) 3361-4045 ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "e623f23de2",
+     "nivel_confianca": "C",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo",
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://portalcovid19.saude.rn.gov.br/wp-content/uploads/2020/04/Plano_de_Contigencia_e_Imunizacao_COVID_19__VI_URSAP_.pdf",
+     "titulo": "governo do estado do rio grande do norte - COVID-19 (Coronavírus)",
+     "trecho": "Apr 8, 2020 ... D'água dos Borges, Paraná,Patu, Pau dos Ferros, Pilões, Portalegre, Rafael Fernandes, ... leitos conforme o Plano de Contingência/RN. Atualmente ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "f79f67bca9",
+     "nivel_confianca": "C",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo",
+      "uf_divergente_na_url",
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.saude.pr.gov.br/sites/default/arquivos_restritos/files/documento/2025-10/manual-digital.pdf",
+     "titulo": "manual de educação permanente em sala de vacinas",
+     "trecho": "Este instrumento orienta as equipes na elaboração de plano de contingência local de forma padronizada no Estado. ... Lei ordinária do estado do Paraná Diário ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -123537,6 +124588,111 @@
    ]
   },
   {
+   "ibge": "1100346",
+   "municipio": "Alvorada D'Oeste",
+   "uf": "RO",
+   "melhor_nivel": "B",
+   "n_pistas": 5,
+   "niveis": {
+    "A": 0,
+    "B": 4,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "38509a769e",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.portovelho.ro.gov.br/uploads/editor/files/Decreto%20de%20calamidade.pdf",
+     "titulo": "Diário Oficial dos Municípios do Estado de Rondônia • ANO XI",
+     "trecho": "Mar 23, 2020 ... ... PLANO DE CONTINGÊNCIA. MUNICIPAL DE ENFRENTAMENTO À DOENÇA PELO ... ALVORADA D'OESTE. PROCURADORIA GERAL DO MUNICIPIO. DECRETO Nº 041/2020.",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "bc54c96f5a",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.rondoniaovivo.com/noticia/interior/2026/04/07/el-nino-alvorada-doeste-planeja-racionamento-de-agua-diante-de-alerta-de-seca-severa.html",
+     "titulo": "EL NIÑO: Alvorada D'Oeste planeja racionamento de água diante ...",
+     "trecho": "Apr 7, 2026 ... EL NIÑO: Alvorada D'Oeste planeja racionamento de água diante de alerta de seca ... plano de contingência e aguarda retorno. Sugestão de Pauta",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "bf8388f3cc",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://pncp.gov.br/pncp-api/v1/orgaos/07172665000121/compras/2024/1/arquivos/1",
+     "titulo": "SEJUS Documento de Oficialização de Demanda nº 4/2024/SEJUS",
+     "trecho": "Jan 11, 2024 ... ALVORADA D'OESTE ... prioritariamente atribuídos aos municípios, este Plano de Contingência tem como finalidade aprimorar e implementar ações ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "4a4c02af2e",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://ppe.sistemas.ro.gov.br/Diof/pdf/9615",
+     "titulo": "Estado de Rondônia - DIOF - GPDOE",
+     "trecho": "Jun 25, 2021 ... ... plano de contingência para que em nenhum momento os serviços ... Alvorada d' Oeste RO. Concordante aos termos da Portaria 51 de 21 de ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "12cb80eefb",
+     "nivel_confianca": "C",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo",
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://rondonia.ro.gov.br/wp-content/uploads/2020/06/1%C2%BA_Adendo_ao_Plano-de-Contigencia-Rondonia-Coronavirus-Versao-III.pdf",
+     "titulo": "Plano Estadual de Contingência ao Coronavírus (COVID 19)",
+     "trecho": "Jun 18, 2020 ... Alvorada d'Oeste. 99397-9465. Ariquemes. 3516-2149. Buritis ... • Plano de Contingência Medidas de Distanciamento Social/ Isolamento Social;.",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "1100205",
    "municipio": "PORTO VELHO",
    "uf": "RO",
@@ -124401,6 +125557,94 @@
    ]
   },
   {
+   "ibge": "1712009",
+   "municipio": "Lajeado",
+   "uf": "TO",
+   "melhor_nivel": "B",
+   "n_pistas": 4,
+   "niveis": {
+    "A": 0,
+    "B": 2,
+    "C": 2
+   },
+   "pistas": [
+    {
+     "id": "81bac8fc03",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://grupoahora.net.br/conteudos/2026/09/21/lajeado-aciona-plano-de-contingencia-e-inicia-remocao-de-familias-na-cota-21m/",
+     "titulo": "Lajeado aciona plano de contingência e inicia remoção de famílias ...",
+     "trecho": "Decisão foi tomada em reunião no gabinete da prefeita Gláucia Schumacher, no início da tarde desta segunda-feira - Grupo A Hora",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "5d3c1140a2",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://central.to.gov.br/download/102815",
+     "titulo": "PLANO DE CONTINGÊNCIA DO TOCANTINS NOVO ...",
+     "trecho": "Sep 2, 2020 ... descentralizadas (SAMU 192) dos municípios circunvizinhos (Novo Acordo, Lajeado, ... Plano de Contingência do Distrito Sanitário Especial ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "4e36d76e22",
+     "nivel_confianca": "C",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "uf_divergente_na_url"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "http://www.lajeado.rs.gov.br/noticia/14718/892?titulo=Prefeitura+de+Lajeado+realiza+chamamento+p%C3%BAblico+para+localizar+pessoas+com+direitos+sobre+im%C3%B3veis+nas+Zonas+de+Arraste",
+     "titulo": "Prefeitura de Lajeado realiza chamamento público para localizar ...",
+     "trecho": "Sep 25, 2026 ... ... Decreto Estadual nº 58.839/2026, que tem como objetivo promover a ... INUNDAÇÃO DO RIO TAQUARI: Lajeado aciona Plano de Contingência e ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "6c1e0c6de4",
+     "nivel_confianca": "C",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "uf_divergente_na_url"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.itapetininga.sp.gov.br/pagina/62/plano-de-contingencia/download/77/",
+     "titulo": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL ...",
+     "trecho": "PLANO DE CONTINGÊNCIA (PLANCON) ... Seu nome tem origem indígena (tupi-guarani) e significa pedra enxuta ou lajeado seco.",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "1303957",
    "municipio": "SÃO SEBASTIÃO DO UATUMÃ",
    "uf": "AM",
@@ -124793,77 +126037,6 @@
      "trecho": "ública relacionadas às arboviroses e à Febre \nAmarela; \nCONSIDERANDO a apresentação e apreciação do Plano Municipal \nde Contingência e do Plano Municipal de Ação para Enfrentamento da \nDengue, do Zika Vírus, da Febre Chikungunya e da Febre Amarela, \npela Secretaria Municipal de Saúde de Itambé – Pr; \nCONSIDERANDO a deliberação  e aprovação dos conselheiros \npresentes na Reunião Ordinária do Conselho Municipal de Saúde \nrealizada em 28 de agosto de ",
      "data": "2026-09-10",
      "status": "pista — recusada pelo juiz: citacao_incompleta"
-    }
-   ]
-  },
-  {
-   "ibge": "3300605",
-   "municipio": "Bom Jesus do Itabapoana",
-   "uf": "RJ",
-   "melhor_nivel": "B",
-   "n_pistas": 3,
-   "niveis": {
-    "A": 0,
-    "B": 2,
-    "C": 1
-   },
-   "pistas": [
-    {
-     "id": "5d7fd533db",
-     "nivel_confianca": "B",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "busca_web",
-     "url": "https://g1.globo.com/rj/norte-fluminense/noticia/2025/11/04/bom-jesus-do-itabapoana-apresenta-plano-de-contingencia-para-enfrentar-chuvas-fortes.ghtml",
-     "titulo": "Bom Jesus do Itabapoana apresenta plano de contingência para ...",
-     "trecho": "Nov 4, 2025 ... Bom Jesus do Itabapoana apresenta plano de contingência para enfrentar chuvas fortes ... Com El Niño muito forte, Sul deve ter chuva ...",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "7aea6e5b4b",
-     "nivel_confianca": "B",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "busca_web",
-     "url": "https://g1.globo.com/rj/norte-fluminense/noticia/2025/11/04/bom-jesus-do-itabapoana-apresenta-plano-de-contingencia-para-enfrentar-chuvas-fortes.ghtml",
-     "titulo": "Bom Jesus do Itabapoana apresenta plano de contingência para enfrentar chuvas fortes",
-     "trecho": "1 de 1 O documento prevê ações como limpeza de bueiros, monitoramento de áreas de risco e implantação de um sistema de alerta para avisar a população sobre temporais. — Foto: Arquivo da Defesa Civil de Bom Jesus do Itabapoana",
-     "data": "27/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "c3bd28f4ca",
-     "nivel_confianca": "C",
-     "pontos_confianca": 1,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_so_no_trecho",
-      "plano_no_trecho"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DcjeKSYhTDO/",
-     "titulo": null,
-     "trecho": "Aug 27, 2026 ... 1 likes, 0 comments - fallaregiao on August 27, 2026: \"Bom Jesus do Itabapoana Estrutura Plano de Contingência para Emergências Climáticas A ...",
-     "data": "21/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -125274,72 +126447,6 @@
      "titulo": "Santo Antônio de Posse define diretrizes do Plano de Contingência ...",
      "trecho": "Feb 3, 2026 ... Santo Antônio de Posse define diretrizes do. Plano de Contingência contra a dengue em. 2026. Jaguariúna divulga lista de pré-selecionados do.",
      "data": "23/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    }
-   ]
-  },
-  {
-   "ibge": "1703826",
-   "municipio": "Cachoeirinha",
-   "uf": "TO",
-   "melhor_nivel": "B",
-   "n_pistas": 3,
-   "niveis": {
-    "A": 0,
-    "B": 3,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "c374e77c18",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_titulo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DdZX8XIRdv_/",
-     "titulo": "Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura ...",
-     "trecho": "6 days ago ... 46 likes, 0 comments - prefcachoeirinhars on September 17, 2026: \" Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura, por ...",
-     "data": "23/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "4de3abf82b",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.oreporter.net/cachoeirinha-e-contemplada-no-prepara-rs-el-nino-e-vai-receber-r-300-mil/",
-     "titulo": "Cachoeirinha é contemplada no Prepara RS - El Niño e vai receber ...",
-     "trecho": "Jun 18, 2026 ... Cachoeirinha - Cachoeirinha é um dos municípios contemplados no ... plano de contingência municipal atualizado e a conclusão do ...",
-     "data": "23/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "28af31ddc8",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_titulo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DdZX8XIRdv_/",
-     "titulo": "Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura ...",
-     "trecho": "Sep 17, 2026 ... 46 likes, 0 comments - prefcachoeirinhars on September 17, 2026: \" Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura, por ...",
-     "data": "27/09/2026",
      "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
@@ -125829,6 +126936,58 @@
    ]
   },
   {
+   "ibge": "4115853",
+   "municipio": "Mercedes",
+   "uf": "PR",
+   "melhor_nivel": "B",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 0,
+    "B": 2,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "7033dd8bd3",
+     "nivel_confianca": "B",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://mercedes.pr.gov.br/arquivos/licitacoes/2020/09/Dispensa_82_2020.pdf",
+     "titulo": "ESTADO DO PARANÁ - Município de Mercedes",
+     "trecho": "Sep 29, 2020 ... - o Plano de Contingência COVID-19, da Secretaria Municipal de Saúde de Mercedes;. - o Decreto Municipal n.\" 112/2020 (cópia anexa), que ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "e6a4dbbe87",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.datoposta.com/mercedes-activa-el-comite-de-emergencia-frente-a-el-nino/",
+     "titulo": "MERCEDES ACTIVA EL COMITE DE EMERGENCIA FRENTE A \"EL NIÑO\" - Dato ...",
+     "trecho": "Con el objetivo de anticiparse ... formalizó la medida a través del Decreto N.º 1874/2026, que declara la Emergencia Climatológica Preventiva hasta el próximo 31 de diciembre....",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    }
+   ]
+  },
+  {
    "ibge": "4122305",
    "municipio": "RIO NEGRO",
    "uf": "PR",
@@ -126020,108 +127179,6 @@
      "titulo": "O MODELO PARANAENSE PARA A GESTÃO DE RISCOS DE ...",
      "trecho": "Plano de Contingência, o Plano de Contingência Online. Figura 5-10 – Tela ... União da Vitória. IG3. 11.9. 0.5. 0.0. 0.0. 0.1. 2.9. 37.8. 6.8. Sengés. IT1. 5.8.",
      "data": "01/10/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "3303401",
-   "municipio": "Nova Friburgo",
-   "uf": "RJ",
-   "melhor_nivel": "B",
-   "n_pistas": 2,
-   "niveis": {
-    "A": 0,
-    "B": 2,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "ee78fe94d7",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.facebook.com/wandersonnogueira.rj/videos/como-nova-friburgo-ser%C3%A1-atingida-pelo-super-el-ni%C3%B1o-segundo-especialistas-com-pa/1720640012274128/",
-     "titulo": "Como Nova Friburgo será atingida pelo super El Niño? Segundo ...",
-     "trecho": "Jun 10, 2026 ... Como Nova Friburgo será atingida pelo super El Niño? Segundo ... plano de contingência para respostas rápidas à emergências. A ...",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "7fe1c44b7c",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_oficial",
-      "plano_no_trecho"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/3303401/2025-10-23/73b365c36a8eb243297134684209517b6c1694c4.pdf",
-     "titulo": "Diário oficial de 2025-10-23",
-     "trecho": "Aberto e fechado Objeto da compra: REGISTRO DE PREÇOS para futura e eventual CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA O FORNECIMENTO DE CESTAS BÁSICAS, em atendimento às necessidades das famílias de risco alto e risco muito alto do Plano de Contingência do Município, at ingidas por situações de emergência e calamidade, provenientes de intempéries climáticas, pelo período de 01 (um) ano. • Aceito e Habilitado para a empresa Z E S COMERCIAL LTDA, CNPJ 47.496.710/ 0001-18, pelo melhor",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: natureza_duvidosa"
-    }
-   ]
-  },
-  {
-   "ibge": "2408607",
-   "municipio": "Paraná",
-   "uf": "RN",
-   "melhor_nivel": "B",
-   "n_pistas": 2,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 1
-   },
-   "pistas": [
-    {
-     "id": "f4a1c5aa12",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://g1.globo.com/pr/campos-gerais-sul/noticia/2026/05/14/el-nino-pode-provocar-tempestades-severas-no-parana-entenda-o-fenomeno-e-veja-o-que-dizem-os-meteorologistas.ghtml",
-     "titulo": "El Niño pode provocar tempestades severas no Paraná - G1 - Globo",
-     "trecho": "Devido à previsão, Defesa Civil começou a revisar Plano de Contingência e a orientar prefeituras sobre prevenção a desastres. Por Millena Sartori, g1 PR. 14 ...",
-     "data": "23/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "2236b63f59",
-     "nivel_confianca": "C",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "uf_divergente_na_url"
-     ],
-     "origem": "busca_web",
-     "url": "https://legisvideos.assembleia.pr.leg.br/video/2330",
-     "titulo": "El Niño no Paraná: prevenção, cenários e desafios | Legis Vídeos",
-     "trecho": "Jul 14, 2026 ... El Niño no Paraná: prevenção, cenários e desafios. Transcrição ... plano de contingência de enfrentamento é o Ninho. Já temos dentro do ...",
-     "data": "26/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -127729,38 +128786,6 @@
    ]
   },
   {
-   "ibge": "4115853",
-   "municipio": "Mercedes",
-   "uf": "PR",
-   "melhor_nivel": "B",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "e6a4dbbe87",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "ato_formal",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.datoposta.com/mercedes-activa-el-comite-de-emergencia-frente-a-el-nino/",
-     "titulo": "MERCEDES ACTIVA EL COMITE DE EMERGENCIA FRENTE A \"EL NIÑO\" - Dato ...",
-     "trecho": "Con el objetivo de anticiparse ... formalizó la medida a través del Decreto N.º 1874/2026, que declara la Emergencia Climatológica Preventiva hasta el próximo 31 de diciembre....",
-     "data": "23/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    }
-   ]
-  },
-  {
    "ibge": "4116406",
    "municipio": "NOSSA SENHORA DAS GRAÇAS",
    "uf": "PR",
@@ -128202,38 +129227,6 @@
      "trecho": "entual deve ser efetivada para \nindivíduos, famílias, e grupos, independentemente da existência de \nPlano de Contingência Municipal ou da decretação de situação de \nemergência ou estado de calamidade pública pelo Município. \n§ 2º Compete à gestão municipal firmar protocolos interinstitucionais \ncom a finalidade de definir atribuições e fluxos para a atuação da \nDefesa Civil, da A",
      "data": "2026-10-01",
      "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "1100346",
-   "municipio": "Alvorada D'Oeste",
-   "uf": "RO",
-   "melhor_nivel": "B",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "bc54c96f5a",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.rondoniaovivo.com/noticia/interior/2026/04/07/el-nino-alvorada-doeste-planeja-racionamento-de-agua-diante-de-alerta-de-seca-severa.html",
-     "titulo": "EL NIÑO: Alvorada D'Oeste planeja racionamento de água diante ...",
-     "trecho": "Apr 7, 2026 ... EL NIÑO: Alvorada D'Oeste planeja racionamento de água diante de alerta de seca ... plano de contingência e aguarda retorno. Sugestão de Pauta",
-     "data": "23/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -128989,37 +129982,6 @@
      "trecho": "Queluz / SP. Disponível em: http://atlasdigital.mdr.gov.br/paginas ... 9842020-DISPE-SOBRE-O-PLANO-DE-CONTINGENCIA.pdf. Acesso em: 11 fev. 2024 ...",
      "data": "23/09/2026",
      "status": "pista — recusada pelo juiz: citacao_incompleta"
-    }
-   ]
-  },
-  {
-   "ibge": "1712009",
-   "municipio": "Lajeado",
-   "uf": "TO",
-   "melhor_nivel": "B",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "81bac8fc03",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_titulo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://grupoahora.net.br/conteudos/2026/09/21/lajeado-aciona-plano-de-contingencia-e-inicia-remocao-de-familias-na-cota-21m/",
-     "titulo": "Lajeado aciona plano de contingência e inicia remoção de famílias ...",
-     "trecho": "Decisão foi tomada em reunião no gabinete da prefeita Gláucia Schumacher, no início da tarde desta segunda-feira - Grupo A Hora",
-     "data": "23/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
