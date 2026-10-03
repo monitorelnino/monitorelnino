@@ -64,13 +64,41 @@ def ja_no_banco(municipios: list, nome: str, uf: str) -> bool:
                and str(m.get("uf", "")).strip().upper() == u for m in municipios)
 
 
+def preservar_o_documento(url: str, origem: str = "juiz_automatico"):
+    """Preserva o documento do registro pela porta canônica e devolve o hash. None se não der.
+
+    03/10/2026: o portão de evidências reprovou a primeira promoção do caminho novo — "1 de 93
+    registro(s) pontuável(is) com URL sem evidência preservada — BLOQUEANTE". Estava certo: o juiz
+    calcula o hash do TEXTO que julgou e, de propósito, **não preserva** (§: duas portas gravando a
+    mesma chave é como se perde prova). Quem preserva é quem aplica — e no caminho do plano sem ato
+    não havia ninguém antes, porque o documento não vinha de um coletor que já o tivesse baixado.
+
+    A porta é `coletores_base.preservar_evidencia`, a mesma de todos os coletores: ela guarda o
+    binário, indexa por sha256 em `data/evidencias.json` e pede snapshot ao Wayback acima do teto.
+    Falha de rede devolve None, e aí a promoção não é aplicada — registro pontuável sem evidência
+    é exatamente o que o portão existe para impedir.
+    """
+    if not url:
+        return None
+    try:
+        from coletores_base import buscar, preservar_evidencia
+        corpo = buscar(url)
+        ext = (str(url).lower().split("?")[0].rsplit(".", 1)[-1] or "html")[:5]
+        if ext not in ("pdf", "doc", "docx", "odt", "rtf", "html", "htm", "txt"):
+            ext = "html"
+        return preservar_evidencia(corpo, url, ext, origem)
+    except Exception as e:  # noqa: BLE001
+        print(f"   ! evidência não preservada ({type(e).__name__}): {str(e)[:90]}")
+        return None
+
+
 def registro_do_veredito(v: dict, lat, lon, canal: str, fonte_base: str, hoje: str) -> dict:
     """O registro do banco, com a proveniência que permite conferir a decisão depois.
 
     `categoria` vem do veredito — não é fixa. A versão anterior deste caminho, em
     `julgar_e_aplicar_descobertas.py`, gravava sempre "plano", e um `plano_antigo` entraria como
     plano novo, mudando o que o índice conta."""
-    return {
+    registro = {
         "nome": v["municipio"], "uf": v["uf"], "categoria": v["categoria"],
         "documento": documento_do_veredito(v),
         "data": v.get("data"),
@@ -80,6 +108,18 @@ def registro_do_veredito(v: dict, lat, lon, canal: str, fonte_base: str, hoje: s
         "hash_evidencia": v.get("hash_evidencia"),
         "pista_id": v.get("pista_id"), "codebook": v.get("codebook"),
     }
+    # DECISÃO DA EDITORIA, 03/10/2026: o plano publicado sem ato de aprovação localizado conta no
+    # degrau da leitura, **com a marca visível na ficha**. A marca é do REGISTRO, e não do texto da
+    # fonte: quem lê a ficha precisa saber que o documento é o plano publicado e que o ato que o
+    # aprova não foi localizado — e a marca sai quando o ato aparecer, numa rodada seguinte.
+    if v.get("sem_ato_de_aprovacao"):
+        registro["sem_ato_de_aprovacao"] = True
+        registro["marca_na_ficha"] = "sem ato de aprovação localizado"
+        registro["fonte"] = (f"{fonte_base} — plano publicado em domínio oficial do ente, lido e "
+                             f"classificado pelo juiz automático em {hoje} (codebook "
+                             f"{v.get('codebook')}); ato de aprovação não localizado até o corte; "
+                             "critérios em promocoes_automaticas.json")
+    return registro
 
 
 def documento_do_veredito(v: dict) -> str:
@@ -124,6 +164,19 @@ def autoteste() -> int:
                   and r["data"] == "30/12/2025"))
     casos.append(("o registro liga à decisão pelo pista_id e pelo codebook",
                   r["pista_id"] == "abc" and r["codebook"] == V))
+    # 03/10/2026: a marca da decisão da editoria viaja do veredito para o registro, e é ela que a
+    # ficha mostra. Registro sem a marca não pode ganhá-la por descuido, e com a marca não pode
+    # perdê-la — os dois casos abaixo guardam as duas metades.
+    r_marca = registro_do_veredito(dict(base, sem_ato_de_aprovacao=True), -1, -2, "c", "f", "01/01/2026")
+    casos.append(("plano sem ato: o registro leva a marca para a ficha",
+                  r_marca.get("sem_ato_de_aprovacao") is True
+                  and r_marca.get("marca_na_ficha") == "sem ato de aprovação localizado"))
+    casos.append(("plano sem ato: a fonte do registro diz que o ato não foi localizado",
+                  "ato de aprovação não localizado até o corte" in r_marca["fonte"]))
+    casos.append(("preservar_o_documento sem URL devolve None, e não quebra",
+                  preservar_o_documento("") is None))
+    casos.append(("plano COM ato não ganha a marca",
+                  "sem_ato_de_aprovacao" not in r and "marca_na_ficha" not in r))
     casos.append(("a fonte diz que foi o juiz, com a versão",
                   "juiz automático" in r["fonte"] and "1.1" in r["fonte"]))
     casos.append(("a ementa sai do objeto ex-ante",
@@ -184,6 +237,16 @@ def main() -> int:
             recusados.append((v, "não consta na referência do IBGE — sem posição no mapa"))
             continue
         canal, fonte_base = canal_e_fonte(v.get("url") or "")
+        # A EVIDÊNCIA vem antes do registro: registro pontuável com URL e sem evidência preservada
+        # é vermelho no portão 26, e com razão — a prova é o que permite conferir a decisão depois.
+        # O hash do documento preservado substitui o hash do texto julgado no registro: o primeiro
+        # é do arquivo que ficou guardado, e é esse que a auditoria vai abrir.
+        hash_preservado = preservar_o_documento(v.get("url") or "")
+        if not hash_preservado:
+            recusados.append((v, "documento não pôde ser preservado — registro pontuável exige "
+                                 "evidência guardada (portão 26)"))
+            continue
+        v["hash_evidencia"] = hash_preservado
         municipios.append(registro_do_veredito(v, lat, lon, canal, fonte_base,
                                                hoje.strftime("%d/%m/%Y")))
         pontos.append({"nome": v["municipio"], "uf": v["uf"], "categoria": v["categoria"],

@@ -388,7 +388,7 @@ function selectUF(uf, tileEl){
     <span class="badge ${badgeClass}">${STATUS_LABEL[d.status]}</span>
     ${riscoBox(d.uf)}
     <div class="field"><div class="k">Estrutura de coordenação</div><div class="v">${d.estrutura ? '<span class="pill-nivel">' + (STATUS_LABEL[d.estrutura.status] || d.estrutura.status) + '</span> ' + esc(d.estrutura.doc) + (d.estrutura.data && d.estrutura.data !== '—' ? ' (' + d.estrutura.data + ')' : '') : '—'}</div></div>
-    <div class="field"><div class="k">Instrumento operacional</div><div class="v"><span class="pill-nivel">${STATUS_LABEL[d.status]}</span> ${esc(d.doc)}${d.data ? ' (' + d.data + ')' : ''}</div></div>
+    <div class="field"><div class="k">Instrumento operacional</div><div class="v"><span class="pill-nivel">${STATUS_LABEL[d.status]}</span> ${esc(d.doc)}${d.data ? ' (' + d.data + ')' : ''}${d.sem_ato_de_aprovacao ? '<br><span class="spec">sem ato de aprovação localizado</span>' : ''}</div></div>
     ${(function(){ // 01/10/2026, texto aprovado pela editoria. A v3.1 dá zero ao instrumento
       // recorrente que NÃO cobre o risco previsto para o ciclo (degrau VIG_NAO_COBRE), e até aqui a
       // interface não dizia isso em lugar nenhum: o cartão mostrava "vigente-recorrente" e o leitor
@@ -712,6 +712,13 @@ function renderMinha(){
   const status = m ? statusDoPlano(m.categoria) : 'nao_encontrado';
   if (status === 'encontrado' || status === 'estadual'){
     html += `<p class="fv"><strong>Plano de contingência localizado${status === 'estadual' ? ', no âmbito estadual' : ''}.</strong></p>`;
+    /* DECISÃO DA EDITORIA, 03/10/2026: plano publicado em domínio oficial do ente conta no degrau
+       que a leitura indicar, mesmo sem o ato de aprovação — e a ficha DIZ que o ato não foi
+       localizado. A frase descreve o que se tem e o que não se tem, sem juízo: o índice mede
+       preparação publicada, e o ato de aprovação é atributo de formalização. */
+    if (m && m.sem_ato_de_aprovacao){
+      html += `<p class="note">Sem ato de aprovação localizado: o plano está publicado em domínio oficial do município; o decreto ou portaria que o aprova não foi localizado até a data de corte.</p>`;
+    }
   } else if (m && m.categoria === 'nao_localizado'){
     // "Não localizamos" só onde a busca DE FATO ocorreu e não achou. É o teto público de ausência
     // do projeto: nunca "não existe", e nunca sobre município que ninguém procurou.

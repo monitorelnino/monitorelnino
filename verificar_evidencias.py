@@ -22,11 +22,19 @@ PONT = {"plano", "plano_antigo", "plano_elaboracao", "coberto_estadual"}
 BLOQUEIA_A_PARTIR = date(2026, 9, 15)
 
 
+# 03/10/2026: `hoje_editorial` era importado DENTRO de `checar_cliente_http`, e usado em outras
+# duas funções — `from … import` dentro de função cria nome LOCAL, e lá fora ele não existe. O
+# portão estourava com NameError na linha que escolhe o regime (aviso ou bloqueante) assim que a
+# execução chegava nela. Import no módulo, onde o nome é de todos.
+sys.path.insert(0, str(RAIZ))
+from coletores_base import hoje_editorial  # noqa: E402
+
+
 def checar_cliente_http() -> list:
     """Teste negativo permanente (08/09/2026): toda URL pontuável tem de sair de coletores_base.url_ascii em ASCII puro,
     idêntica quando já estava codificada. Foi um "ê" cru em 69 URLs do ES que deixou 69 registros sem evidência."""
     sys.path.insert(0, str(RAIZ))
-    from coletores_base import url_ascii, hoje_editorial
+    from coletores_base import url_ascii
     erros = []
     exemplo = "https://defesacivil.es.gov.br/Media/DefesaCivil/Plano%20de%20Contingência%20atualizado/2026/%C3%81GUA.pdf"
     if url_ascii(exemplo) != "https://defesacivil.es.gov.br/Media/DefesaCivil/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/%C3%81GUA.pdf":

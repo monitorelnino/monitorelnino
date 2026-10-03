@@ -163,6 +163,71 @@ def rodar():
             R["sobreposicao"][u] = {"declarado_antigo": da, "plano_antigo_doc": n_pa,
                                      "teto_pp": round(100 * n_pa * med[u] * 0.3 / pop_uf[u], 2)}
 
+    # 7b. VARIANTE DE 70% — plano sem ato de aprovação localizado (decisão da editoria, 03/10/2026)
+    #
+    # A decisão foi: sem degrau novo; o plano publicado em domínio oficial conta no degrau da
+    # leitura, com a marca na ficha. A editoria pediu, junto, que a análise de incerteza publicasse
+    # a variante em que esses planos valessem **70% do degrau** — e quantas unidades mudariam de
+    # faixa. É a pergunta certa a fazer de uma decisão de régua: se o crédito fosse menor, o retrato
+    # mudaria? A resposta entra na METODOLOGIA, não na nota.
+    #
+    # O desconto incide sobre o crédito populacional do município marcado, que é por onde o plano
+    # entra na nota do estado. `municipios.json` traz a marca desde 03/10/2026.
+    from gerar_monitor_saude import faixa as faixa_canonica
+    FATOR_SEM_ATO = 0.7
+    marcados = {}
+    for r in mun:
+        if r.get("sem_ato_de_aprovacao"):
+            marcados.setdefault(r["uf"], []).append(r)
+
+    def cobertura_com_desconto_sem_ato(uf, fator=FATOR_SEM_ATO):
+        """Cobertura populacional da UF com os planos sem ato valendo `fator` do degrau. Pura."""
+        c, w = {}, 0.0
+        for r in mun:
+            if r["uf"] != uf:
+                continue
+            c[r["categoria"]] = c.get(r["categoria"], 0) + 1
+            credito = rm.CRED_POP.get(r["categoria"], 0.0)
+            if r.get("sem_ato_de_aprovacao"):
+                credito *= fator
+            w += pop.get(cod_por[(r["nome"], r["uf"])], 0) * credito
+        t, e = rm.excedente_agregado(uf, c)
+        if t:
+            w += e * med[uf] * rm.CRED_POP[t]
+        dp = pct[uf].get("declarado_plano", 0) or 0
+        da = pct[uf].get("declarado_antigo", 0) or 0
+        doc_n = sum(v for k, v in c.items() if k in rm.PESO_DOC)
+        if dp:
+            w += max(dp - doc_n, 0) * med[uf] * 0.5
+        if da:
+            w += da * med[uf] * 0.3
+        return min(100.0, 100.0 * w / pop_uf[uf])
+
+    Xv = X.copy()
+    mudou_de_faixa, antes_depois = [], {}
+    for i, u in enumerate(ufs):
+        if u in marcados:
+            Xv[i, 2] = round(cobertura_com_desconto_sem_ato(u), 1)
+    nota_base = X.mean(axis=1)
+    nota_var = Xv.mean(axis=1)
+    for i, u in enumerate(ufs):
+        # A régua da faixa é a canônica de `gerar_monitor_saude.faixa` — uma definição só para os
+        # dois índices, que é o que `scripts/registrar_faixas.py` também usa.
+        fa, fb = faixa_canonica(float(nota_base[i])), faixa_canonica(float(nota_var[i]))
+        if fa != fb:
+            mudou_de_faixa.append(u)
+        if abs(nota_base[i] - nota_var[i]) > 0.049:
+            antes_depois[u] = (round(float(nota_base[i]), 1), round(float(nota_var[i]), 1))
+    R["sem_ato_70"] = {
+        "fator": FATOR_SEM_ATO,
+        "municipios_marcados": sum(len(v) for v in marcados.values()),
+        "ufs_com_marcados": sorted(marcados),
+        "ufs_que_mudam_de_nota": antes_depois,
+        "ufs_que_mudam_de_faixa": mudou_de_faixa,
+        "media_base": round(float(nota_base.mean()), 1),
+        "media_variante": round(float(nota_var.mean()), 1),
+    }
+
     # 8. Monte Carlo: estabilidade de semente e convergência
     def mc(seed, n):
         """Roda uma rodada do Monte Carlo com a semente informada, para o teste de estabilidade de semente."""
@@ -208,6 +273,13 @@ def main():
     print(f"5. contribuição efetiva à variância: {['%.0f%%' % (100*c) for c in R['contrib_var']]}")
     print(f"6. camadas da cobertura populacional: {R['camadas']}")
     print(f"7. sobreposição declarada: {R['sobreposicao']}")
+    sa = R["sem_ato_70"]
+    print(f"7b. variante 70% (plano sem ato): {sa['municipios_marcados']} município(s) marcado(s) "
+          f"em {len(sa['ufs_com_marcados'])} UF(s) · média {sa['media_base']} → "
+          f"{sa['media_variante']} · muda de faixa: "
+          f"{', '.join(sa['ufs_que_mudam_de_faixa']) or 'nenhuma UF'}")
+    if sa["ufs_que_mudam_de_nota"]:
+        print(f"    notas que mudam: {sa['ufs_que_mudam_de_nota']}")
     print(f"8. MC: sementes ±{R['mc_sementes']} posição · 10k×100k Δ={R['mc_convergencia']}")
     print(f"9. teto ativo: {R['teto_ativo'] or 'nenhum'} · antecipação {R['antecip_valores']} · malha {R['malha']}")
 
