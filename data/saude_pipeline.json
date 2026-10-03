@@ -1299,13 +1299,76 @@
   },
   {
    "data": "2026-10-03",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-03T06:23:16",
-   "duracao_s": 1.9,
+   "script": "consultar_querido_diario.py",
+   "inicio": "2026-10-03T05:07:15",
+   "duracao_s": 61.0,
+   "itens": null,
+   "status": "erro",
+   "erro": "urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "data": "2026-10-03",
+   "script": "coletar_diarios_municipais.py",
+   "inicio": "2026-10-03T05:08:16",
+   "duracao_s": 3638.1,
+   "itens": 39,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-03",
+   "script": "coletar_diarios_municipais.py",
+   "inicio": "2026-10-03T06:08:54",
+   "duracao_s": 2052.7,
+   "itens": 44,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-03",
+   "script": "coletar_diarios_municipais.py",
+   "inicio": "2026-10-03T06:43:06",
+   "duracao_s": 2576.5,
+   "itens": 43,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-03",
+   "script": "coletar_diarios_consorciados.py",
+   "inicio": "2026-10-03T07:26:02",
+   "duracao_s": 3490.2,
+   "itens": 1,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-03",
+   "script": "coletar_doe.py",
+   "inicio": "2026-10-03T08:24:12",
+   "duracao_s": 833.3,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-03",
+   "script": "coletar_s2id.py",
+   "inicio": "2026-10-03T08:38:05",
+   "duracao_s": 759.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-03",
+   "script": "coletar_recursos_resposta.py",
+   "inicio": "2026-10-03T08:50:45",
+   "duracao_s": 108.4,
    "itens": null,
    "status": "ok",
    "erro": ""
   }
  ],
- "atualizado_em": "2026-10-03T06:23:17"
+ "atualizado_em": "2026-10-03T08:52:33"
 }
