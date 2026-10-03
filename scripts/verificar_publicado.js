@@ -73,9 +73,14 @@ async function get(url, tentativas = 3) {
   if (fs.existsSync(manifesto)) {
     const linhas = fs.readFileSync(manifesto, "utf8").split("\n").map(l => l.trim()).filter(Boolean);
     const entradas = linhas.map(l => { const m = l.match(/^([0-9a-f]{64})\s+\*?(.+)$/); return m ? { hash: m[1], arq: m[2].replace(/^\.\//, "") } : null; }).filter(Boolean);
+    // 03/10/2026: `dados-abertos/` sai da amostra. A regra 1 da editoria tirou a distribuição de
+    // dados do site, e o `netlify.toml` passou a devolver 301 para `/dados-abertos/*` — os arquivos
+    // continuam selados no manifesto, porque existem no repositório, mas o site não os serve, e
+    // cobrar 200 deles é cobrar o contrário da decisão. Foram as oito "ausentes (301)" de hoje.
+    const REDIRECIONADOS = /^dados-abertos\//;
     // robots.txt fica de fora no ensaio (é trocado de propósito); .github, scripts, docs e node não são servidos ao público
     // fora da amostra: o que o Netlify não serve (dotfiles, netlify.toml) e o que não é do site público
-    const servidos = entradas.filter(e => !/^(\.github|scripts|docs|node_modules|tests?|leituras_qd)\//.test(e.arq) && !/^\./.test(e.arq) && !/^(robots\.txt|netlify\.toml|package.*\.json|requirements\.txt|.*\.py|README\.md|CHANGELOG\.md|METODOLOGIA\.md|LICENSE.*)$/.test(e.arq));
+    const servidos = entradas.filter(e => !REDIRECIONADOS.test(e.arq) && !/^(\.github|scripts|docs|node_modules|tests?|leituras_qd)\//.test(e.arq) && !/^\./.test(e.arq) && !/^(robots\.txt|netlify\.toml|package.*\.json|requirements\.txt|.*\.py|README\.md|CHANGELOG\.md|METODOLOGIA\.md|LICENSE.*)$/.test(e.arq));
     const prioridade = servidos.filter(e => /\.(html|pdf|xml)$|^data\/(meta|indice|sinais_risco|saude_sinais|monitor_saude)\.json$|^data\/saude_desfechos\/(serie_painel|dda_serie|chik_serie_painel|srag_serie)\.json$|^assets\/js\/|^assets\/.*\.css$/.test(e.arq));
     const resto = servidos.filter(e => !prioridade.includes(e));
     const amostra = prioridade.concat(resto.slice(0, Math.max(0, AMOSTRA - prioridade.length)));
