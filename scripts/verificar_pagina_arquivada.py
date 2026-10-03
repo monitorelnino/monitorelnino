@@ -14,7 +14,12 @@ apontando — que é a pior das duas situações, porque ninguém olharia.
 
 O portão trava quatro coisas:
 
-  1. nenhum HTML **publicado** linka `pesquisadores.html` ou `pesquisadores.js`;
+  1. nenhum HTML **publicado** linka `pesquisadores.html` ou `pesquisadores.js` — ou seja, nenhum
+     `href`, `src`, `action`, `content` ou `url(...)` aponta para eles. Citar o nome em PROSA é
+     outra coisa, e vira nota: desde 03/10/2026 a página `mudancas.html` publica o registro de
+     mudanças, e a entrada que anuncia o arquivamento nomeia a página arquivada. Esse é o registro
+     fazendo o seu trabalho, não um link sobrevivente; proibir a menção obrigaria o histórico a
+     não dizer o que aconteceu.
   2. os arquivos não voltaram para a raiz nem para `assets/js/`;
   3. `netlify.toml` tem a regra que devolve 404 para `/arquivo/*`;
   4. se algum dia voltarem, o CHANGELOG tem de registrar a decisão — o portão exige a linha lá,
@@ -51,6 +56,19 @@ ARQUIVADAS = {
 # portão diz quantos citam, para a conta nunca virar zero por esquecimento.
 EXCECAO_DECLARADA = "previa/"
 
+# Referência que o navegador SEGUE: é isso que ressuscita a página, e é isso que reprova. O nome
+# solto em prosa — numa entrada datada do registro de mudanças, por exemplo — não leva ninguém a
+# lugar nenhum, e vira nota contada.
+ATRIBUTOS_QUE_LEVAM = ("href", "src", "action", "content")
+
+
+def referencia_em_atributo(nome: str) -> str:
+    """O padrão que casa uma referência SEGUÍVEL ao arquivo arquivado. Função pura."""
+    n = re.escape(nome)
+    atributos = "|".join(ATRIBUTOS_QUE_LEVAM)
+    return (r"(?:" + atributos + r"|data-[a-z-]+)\s*=\s*[\"'][^\"']*" + n
+            + r"|url\(\s*[\"']?[^)]*" + n)
+
 
 def html_publicado():
     """Todo HTML que o deploy serve, menos o que está sob `arquivo/`."""
@@ -83,16 +101,21 @@ def problemas() -> tuple[list[str], list[str]]:
                     notas.append(f"{caminho} está de volta, e o CHANGELOG registra a decisão")
 
         # 1. algum HTML publicado ainda linka?
-        citam, citam_previa = [], []
+        citam, citam_previa, mencionam = [], [], []
         for rel, arq in html_publicado():
             texto = arq.read_text(encoding="utf-8", errors="replace")
             # comentário de migração não conta: ele fala do arquivamento, não linka
             texto_sem_comentario = re.sub(r"<!--.*?-->", "", texto, flags=re.S)
-            if nome in texto_sem_comentario:
+            if re.search(referencia_em_atributo(nome), texto_sem_comentario):
                 (citam_previa if rel.startswith(EXCECAO_DECLARADA) else citam).append(rel)
+            elif nome in texto_sem_comentario:
+                mencionam.append(rel)
         if citam:
             p.append(f"{len(citam)} HTML publicado ainda menciona {nome}: "
                      f"{', '.join(citam[:6])}{'…' if len(citam) > 6 else ''}")
+        if mencionam:
+            notas.append(f"{len(mencionam)} HTML publicado nomeia {nome} em prosa, sem linkar: "
+                         f"{', '.join(mencionam[:6])} — registro histórico, não link")
         if citam_previa:
             notas.append(f"{len(citam_previa)} protótipo(s) em {EXCECAO_DECLARADA} menciona(m) "
                          f"{nome} — exceção declarada (atrás de senha própria, fora da navegação "
@@ -180,6 +203,17 @@ def autoteste() -> int:
                                          encoding="utf-8", newline="\n")))
     checar("protótipo em previa/ é NOTA, não falha",
            pr == [] and any("protótipo" in n for n in notas2))
+
+    pr, notas_prosa = com_repo(lambda r: (r / "mudancas.html").write_text(
+        "<dd>A página pesquisadores.html saiu do ar em 27/09/2026.</dd>",
+        encoding="utf-8", newline="\n"))
+    checar("nome em PROSA, sem link, é nota e não falha",
+           pr == [] and any("em prosa" in n for n in notas_prosa))
+
+    pr, _ = com_repo(lambda r: (r / "index.html").write_text(
+        '<script src="assets/js/pesquisadores.js"></script>', encoding="utf-8", newline="\n"))
+    checar("src apontando para o script arquivado REPROVA",
+           any("ainda menciona pesquisadores.js" in x for x in pr))
 
     pr, _ = com_repo(lambda r: (r / "pesquisadores.html").write_text(
         "x", encoding="utf-8", newline="\n"))
