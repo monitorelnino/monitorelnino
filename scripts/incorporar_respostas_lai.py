@@ -107,6 +107,9 @@ def ato_informado(nome: str, uf: str, numero: str, data_ato: str, data_resposta:
         "danos": None,
         "fonte": FONTE_LAI.format(uf=uf, data=data_resposta),
         "url": None,
+        # Lacuna declarada no campo, não no comentário: o portão de resposta exige proveniência, e
+        # é esta marca que diz que a proveniência é a resposta do órgão, sem documento localizado.
+        "documento_nao_localizado": True,
         "canal": "orgao_estadual",
     }
     if coordenadas:
@@ -227,6 +230,7 @@ def _autoteste() -> int:
     ok("a fonte do ato é a resposta ao pedido, com data",
        "resposta a pedido de acesso à informação de 23/09/2026" in ev["fonte"])
     ok("o ato não inventa URL nem danos", ev["url"] is None and ev["danos"] is None)
+    ok("a ausência do documento fica declarada no campo", ev["documento_nao_localizado"] is True)
     ok("as coordenadas entram quando existem", ev["lat"] == -11.0)
     ok("sem coordenadas o evento não ganha campo vazio",
        "lat" not in ato_informado("X", "MT", "1", "01/01/2026", "23/09/2026"))
@@ -267,7 +271,7 @@ def _autoteste() -> int:
        not ({"gravar", "gravar_pista", "write_text"} & nomes))
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
-          else "✓ AUTOTESTE OK — 20 casos, sem rede e sem escrita.")
+          else "✓ AUTOTESTE OK — 21 casos, sem rede e sem escrita.")
     return 1 if falhas else 0
 
 

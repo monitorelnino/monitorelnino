@@ -70,7 +70,17 @@ try:
     if por["nacional"].get("indice") != (round(100.0 * ndec / npop, 1) if npop else 0.0): erro("(f) índice nacional de resposta ≠ recomputado")
     # (g)
     atos = json.load(open(D / "atos_resposta.json", encoding="utf-8"))["eventos"]
-    sem = [e for e in atos if not (e.get("fonte") and e.get("data") and (e.get("url") or e.get("hash_evidencia")))]
+    # 03/10/2026: o ato INFORMADO por órgão estadual em resposta a pedido de acesso à informação não
+    # tem URL nem hash, e não é descuido: o órgão deu número e data, o documento ainda não foi
+    # localizado em fonte pública, e a resposta em si é material privado que não entra neste
+    # repositório. É lacuna declarada, no sentido da METODOLOGIA — e fica declarada no campo, não
+    # no comentário: `documento_nao_localizado: true` mais fonte e data. O evento não pontua, como
+    # nenhum ato de resposta pontua, então a exigência que resta é de proveniência, e ela está dita.
+    def tem_proveniencia(e):
+        if not (e.get("fonte") and e.get("data")):
+            return False
+        return bool(e.get("url") or e.get("hash_evidencia") or e.get("documento_nao_localizado"))
+    sem = [e for e in atos if not tem_proveniencia(e)]
     if sem: erro(f"(g) {len(sem)} evento(s) sem fonte/data/URL-ou-hash")
 except Exception as e:  # noqa: BLE001
     erro(f"portão falhou ao executar: {e}")
