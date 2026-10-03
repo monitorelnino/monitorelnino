@@ -37,5 +37,6 @@
     "prontidão",
     "dados abertos"
   ],
-  "_nota_proibido": "'antecipação' e 'prontidão' entram na lista desta página porque eram o vocabulário dos quadros que saíram — e vocabulário revogado volta por hábito se nada o barrar."
+  "_nota_proibido": "'antecipação' e 'prontidão' entram na lista desta página porque eram o vocabulário dos quadros que saíram — e vocabulário revogado volta por hábito se nada o barrar.",
+  "_divergencia_do_handover": "Divergência declarada (03/10/2026): o handover pedia um `.cartao-destaque` largo para o boletim. Essa classe não existe no sistema de design — não há uma linha dela em assets/base.css —, e a hierarquia de regras põe o sistema acima do handover. O boletim usa o componente que existe para isso, `.cartao cartao--status` com `.grade-numeros--3`, que é o mesmo de todo cartão de números do site. Criar uma classe nova para um só lugar é exatamente o 'ajuste manual' que o § Design proíbe."
 }
