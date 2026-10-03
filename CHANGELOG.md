@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-03 · #532 · A pista de documento oficial pertence a quem é o domínio
+
+Garimpo pedido pela editoria: 13 documentos de plano em domínio oficial ao juiz. Nenhum promovido, e o relatório mostrou por quê — **nove estavam atribuídos ao município errado**, pelo nome que aparecia no trecho (o plano de Celso Ramos virou pista de Salete). `municipio_do_dominio.py` resolve o host no ente dono e `corrigir_atribuicao_por_dominio.py` reatribui e devolve ao juiz. Rejulgados com o ente certo, os 9 param na etapa 2 ou 3: o plano não é o ato.
+
 ## 2026-10-03 · #529 · Conformidade permanente: as regras passam a ser verificadas, em toda página
 
 Hierarquia das regras no alto do CLAUDE.md, `layout/regras.json` com o que é verificável, contrato para as nove páginas públicas e `scripts/verificar_conformidade.py`, bloqueante, que incorpora o portão de layout. Rotina diária sobre o site inteiro. O primeiro passe achou 40 violações reais: alvo de toque de 40 px, numeração de figura e de seção que a editoria já havia revogado, duas figuras fora do componente, gráficos sem rótulo acessível e "defeso" em texto público. METODOLOGIA §100.
