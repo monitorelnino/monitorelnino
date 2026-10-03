@@ -54,8 +54,16 @@ if [ "$MODO" = "--pode-regenerar" ]; then
   echo "  push para a \`main\`, que é onde o derivado obsoleto importa (§314)."
   exit 0
 fi
-if git diff --quiet --exit-code -- . ':!data/snapshot_feed.json' ':!capturas-ci'; then
+# 03/10/2026: `data/saude_pipeline.json` e `docs/SAUDE_PIPELINE.md` saem da COMPARAÇÃO, não só da
+# cadeia. O §273 tirou o gerador daqui, mas o painel continua mudando quando a cadeia roda — porque
+# `recalcular_mare.py --write`, que é um passo da cadeia, grava a própria linha de execução no
+# painel. Então uma árvore limpa fica suja pela regeneração, por desenho, e o portão cobrava
+# "regenerar não altera nada" de um arquivo que registra a própria regeneração. Foi isso que
+# reprovou o publicador duas vezes em 03/10. O painel é selado pelo passo que o gera, antes do
+# commit, como o §273 determinou.
+SEM_PAINEL=(':!data/snapshot_feed.json' ':!capturas-ci' ':!data/saude_pipeline.json' ':!docs/SAUDE_PIPELINE.md')
+if git diff --quiet --exit-code -- . "${SEM_PAINEL[@]}"; then
   echo "✓ DERIVADOS OK — cadeia canônica regenerada em árvore limpa sem diferença (índice, selos, feeds, dados abertos, PDFs, manifesto)."
 else
-  echo "✗ DERIVADOS: a regeneração alterou arquivos versionados — havia derivado obsoleto:"; git diff --stat -- . ':!data/snapshot_feed.json' ':!capturas-ci' | tail -8; exit 1
+  echo "✗ DERIVADOS: a regeneração alterou arquivos versionados — havia derivado obsoleto:"; git diff --stat -- . "${SEM_PAINEL[@]}" | tail -8; exit 1
 fi
