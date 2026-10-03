@@ -23,7 +23,74 @@
    "consultas": 1,
    "com_resultado_bruto": 1,
    "pistas": 15
+  },
+  "descobrir_planos": {
+   "alvos_consultados": 20,
+   "achados_novos": 1,
+   "fila_acumulada": 42
+  },
+  "rede_social": {
+   "entes_consultados": 20,
+   "perfis_confirmados": 37,
+   "pistas": 352,
+   "sem_perfil": 4,
+   "lacunas": 4
   }
  },
- "atualizado_em": "2026-10-03T08:52:33"
+ "atualizado_em": "2026-10-03T09:42:29",
+ "verificador_imprensa": {
+  "na_fila": 8624,
+  "lidas": 43,
+  "exibiveis": 0,
+  "inacessiveis": 1,
+  "nao_lidas_por_orcamento": 0,
+  "resolucoes": 20,
+  "nao_resolvidas_por_orcamento": 4308,
+  "por_motivo": {
+   "inacessivel": 1,
+   "recusada_pelo_juiz": 2,
+   "ente_nao_confirmado": 12,
+   "genero_nao_noticia": 3,
+   "natureza_duvidosa": 3,
+   "fora_do_ciclo": 22,
+   "resposta_a_desastre": 1,
+   "veiculo_nao_listado": 4232,
+   "sem_https": 20,
+   "redirecionamento_nao_resolvido": 20
+  },
+  "crescimento_da_lista": {
+   "candidatos": 360,
+   "avaliados_por_noite": 15,
+   "entraram": [
+    "otempo.com.br"
+   ],
+   "recusas": {
+    "sem_pagina_de_expediente": 6,
+    "sem_https": 3,
+    "expediente_sem_identidade_jornalistica": 3,
+    "expediente_sem_nome_nem_cnpj": 2
+   },
+   "institucionais": []
+  },
+  "orcamento": {
+   "paginas_lidas": 44,
+   "por_host": {
+    "horacampinas.com.br": 1,
+    "vale360news.com.br": 2,
+    "plantaoguaruja.com.br": 1,
+    "abcdoabc.com.br": 1,
+    "upiara.com.br": 3,
+    "ndmais.com.br": 11,
+    "canoinhasonline.com.br": 22,
+    "nsctotal.com.br": 3
+   },
+   "recusas_por_host": {
+    "horacampinas.com.br": 1
+   },
+   "hosts_desligados": [],
+   "teto_por_host": 40,
+   "teto_global": 600
+  },
+  "versao": "1.0 (29/09/2026)"
+ }
 }
