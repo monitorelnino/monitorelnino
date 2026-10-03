@@ -139,6 +139,108 @@ def gravar(nome, obj, compacto: bool = False):
     return gravar_em(DATA / nome, obj, compacto)
 
 
+# =============================================================================================
+# A PORTA DE ENTRADA DA FILA DE PISTAS (item C.3 do handover da corrente noturna, 03/10/2026)
+# =============================================================================================
+# A fila chegou a 8.681 pistas. O retrato que a central mediu em 03/10/2026 nao e de excesso de
+# coleta: e de excesso de pista SEM CONDICAO DE SER JULGADA.
+#
+#     6.462 sem municipio nem UF identificavel   (busca por termo, sem alvo)
+#     6.455 em redirecionamento do Google News   (nao o endereco do veiculo)
+#     2.549 URLs repetidas
+#     4.455 sobre decreto (resposta), que nao pontua e ja vem de fonte oficial
+#
+# Filtrar na saida nao da conta: a cada rodada entra mais do mesmo. A regra passa a valer na
+# GRAVACAO, aqui, numa porta so — e `schemas/pista.json` e o que ela cobra. Pista fora do esquema
+# e recusada com motivo, e o motivo volta para quem chamou, para o coletor registrar a recusa em
+# vez de engolir.
+TIPOS_DE_PISTA = ("plano", "estrutura", "decreto", "outro")
+NIVEIS_DE_PISTA = ("A", "B", "C")
+TETO_DE_PISTAS_POR_MUNICIPIO = 5
+
+
+def validar_pista(pista: dict, existentes: list = None) -> tuple:
+    """(ok, motivo) — a pista pode entrar na fila? FUNCAO PURA.
+
+    As recusas, na ordem em que importam:
+      · sem `url_final`, ou com redirecionador nela: nao se julga o que nao se sabe onde esta;
+      · sem `alvo`: "noticia sobre municipios" nao e pista de municipio;
+      · `tipo` fora do esquema, ou `outro`: covid, escolar, hospitalar privado, assistencia social
+        sem defesa civil, noticia generica — descarta com motivo, nao entra na fila;
+      · `tipo` igual a `decreto`: vai para a conferencia da base oficial de resposta, nunca para a
+        fila de planos;
+      · repetida (mesma url_final + alvo + tipo): nao entra de novo;
+      · acima do teto de cinco abertas para o municipio e o assunto, salvo nivel superior.
+    """
+    url = str((pista or {}).get("url_final") or "").strip()
+    if not url:
+        return False, "sem url_final: o redirecionamento tem de ser resolvido antes de gravar"
+    if "news.google.com" in url or "/rss/articles/" in url:
+        return False, "url_final e redirecionamento, nao o endereco do veiculo"
+    if not str(pista.get("alvo") or "").strip():
+        return False, "sem alvo: municipio (IBGE) ou UF identificavel e obrigatorio"
+    tipo = pista.get("tipo")
+    if tipo not in TIPOS_DE_PISTA:
+        return False, f"tipo {tipo!r} fora do esquema {list(TIPOS_DE_PISTA)}"
+    if tipo == "outro":
+        return False, "tipo 'outro' nao entra na fila: descarta com motivo"
+    if tipo == "decreto":
+        return False, ("pista de decreto nao entra na fila de planos: vai para a conferencia da "
+                       "base oficial de resposta")
+    if str(pista.get("nivel") or "").upper() not in NIVEIS_DE_PISTA:
+        return False, f"nivel {pista.get('nivel')!r} fora de {list(NIVEIS_DE_PISTA)}"
+    if not str(pista.get("data") or "").strip():
+        return False, "sem data do achado"
+    if not str(pista.get("origem") or "").strip():
+        return False, "sem origem: qual coletor gravou"
+
+    iguais = [p for p in (existentes or [])
+              if str(p.get("url_final") or p.get("url") or "") == url
+              and str(p.get("alvo") or "") == str(pista.get("alvo") or "")
+              and p.get("tipo") == tipo]
+    if iguais:
+        return False, "repetida: mesma url_final, alvo e tipo ja na fila"
+    abertas = [p for p in (existentes or [])
+               if str(p.get("alvo") or "") == str(pista.get("alvo") or "")
+               and p.get("tipo") == tipo
+               and not str(p.get("status") or "").startswith(("fechada", "aplicada", "rejeitada"))]
+    if len(abertas) >= TETO_DE_PISTAS_POR_MUNICIPIO:
+        nivel_novo = NIVEIS_DE_PISTA.index(str(pista.get("nivel")).upper())
+        piores = [p for p in abertas
+                  if str(p.get("nivel") or "C").upper() in NIVEIS_DE_PISTA
+                  and NIVEIS_DE_PISTA.index(str(p.get("nivel") or "C").upper()) > nivel_novo]
+        if not piores:
+            return False, (f"acima do teto de {TETO_DE_PISTAS_POR_MUNICIPIO} pistas abertas para o "
+                           "alvo e o assunto, e nao e de nivel superior")
+    return True, ""
+
+
+def gravar_pista(nome_da_fila: str, pista: dict) -> tuple:
+    """Grava a pista na fila se ela passar pelo esquema. Devolve (gravada, motivo).
+
+    Pista repetida NAO entra de novo: incrementa `repeticoes` na existente, para que a frequencia
+    com que uma fonte repete o mesmo achado continue medida sem inflar a fila.
+    """
+    doc = ler(nome_da_fila) or {"pistas": []}
+    lista = doc.get("pistas") if isinstance(doc.get("pistas"), list) else doc.setdefault("pistas", [])
+    ok, motivo = validar_pista(pista, lista)
+    if not ok:
+        if motivo.startswith("repetida"):
+            url = str(pista.get("url_final") or "")
+            for p in lista:
+                if str(p.get("url_final") or p.get("url") or "") == url:
+                    p["repeticoes"] = int(p.get("repeticoes") or 0) + 1
+                    break
+            gravar(nome_da_fila, doc)
+        return False, motivo
+    nova = dict(pista)
+    nova.setdefault("registrado_em", hoje_editorial().isoformat())
+    nova.setdefault("status", "pista — na fila, aguardando busca dirigida e juiz")
+    lista.append(nova)
+    gravar(nome_da_fila, doc)
+    return True, ""
+
+
 def carimbar_atos(atos: dict) -> dict:
     """Devolve `atos_resposta.json` com o carimbo do dia. PURA: não escreve nada.
 

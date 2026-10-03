@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-03 · #534 · A corrente na janela, as listas federais primeiro, e a fila que para de crescer
+
+Corrente às 22h, busca web com cinco rodadas em paralelo, evidências e OCR de volta ao elo, painel da noite com portão para elo que não roda. Prioridade de coleta pelas três listas federais (3.160 municípios), com cursor persistido. Fila de pistas: limpeza única fechou 8.025 com o motivo de cada uma (de 8.678 abertas para 654), esquema cobrado na gravação, e triagem como último elo de toda rodada. METODOLOGIA §102.
+
 ## 2026-10-03 · #533 · Plano publicado sem ato de aprovação localizado conta no degrau da leitura
 
 Decisão da editoria, sem degrau novo: plano em domínio oficial do ente conta nos dois índices, com três condições (domínio oficial; órgão, título e ano; não ser minuta) e a marca "sem ato de aprovação localizado" na ficha do município e do estado. Etapas 2, 3, 4 e 6 do codebook ajustadas, versão 1.2, que devolve à fila o que a régua antiga recusou. Variante de 70% do degrau entra na análise de incerteza dos dois índices. METODOLOGIA §101.

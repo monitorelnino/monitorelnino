@@ -23,7 +23,12 @@ name: Noturno — evidências e OCR
 
 on:
   workflow_run:
-    workflows: ["Noturno — funil de saúde estadual"]
+    # 03/10/2026 (item A.3 do handover): as evidências e o OCR passam a ser acionados pela
+    # **descoberta**, e não pelo funil quinzenal de saúde. Em 02→03/10 este elo NÃO RODOU: ele
+    # pendia de um workflow que roda a cada quinze dias, e numa noite em que o funil não rodou a
+    # corrente pulava as evidências inteiras — documento preservado é prova, e prova não pode
+    # depender da quinzena. A ordem passa a ser diários → descoberta → evidências e OCR → juiz.
+    workflows: ["Noturno — descoberta"]
     types: [completed]
   workflow_dispatch:
 

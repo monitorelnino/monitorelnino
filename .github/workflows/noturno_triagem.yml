@@ -1,0 +1,44 @@
+# Triagem da fila de pistas — o ÚLTIMO elo da corrente, antes de publicar.
+#
+# Item C.2 do handover da corrente noturna (03/10/2026). A limpeza de C.1 foi única; esta é rotina
+# permanente: toda rodada pega a fila na ordem que a editoria fixou — municípios das listas federais
+# de risco, depois capitais, depois o resto; dentro de cada grupo, nível A → B → C, mais nova
+# primeiro — e dá um desfecho REGISTRADO a cada pista.
+#
+# Por que é o último elo: a triagem consome o que os elos anteriores acabaram de achar (diários,
+# descoberta, evidências, juiz). Rodar antes deles seria triar a fila de ontem.
+#
+# Ele fecha por prazo (duas tentativas sem documento, ou 21 dias) e chama o juiz no resto. O juiz
+# tem rede de proteção própria; a triagem não aplica nada no banco por conta própria.
+name: Noturno — triagem da fila
+
+on:
+  workflow_run:
+    workflows: ["Noturno — sinais físicos"]
+    types: [completed]
+  # Mesma rede de segurança dos sinais: se a corrente não chegou até aqui, o elo roda sozinho,
+  # tarde na janela, para que a fila não fique uma noite inteira sem triagem.
+  schedule:
+    - cron: "30 8 * * *"   # 5h30 de Brasília, antes do publicador
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  triagem:
+    uses: ./.github/workflows/_coletor.yml
+    with:
+      nome: triagem
+      grupo_de_concorrencia: noturno
+      timeout_minutos: 60
+      # O juiz roda a suíte de portões na rede de proteção, e ela é em Node (jsdom).
+      precisa_node: true
+      # A busca dirigida do documento consulta o metabuscador.
+      precisa_searxng: true
+      comandos: |
+        scripts/triar_fila.py --aplicar --limite 120
+        julgar_filas.py --aplicar --dominio-oficial --limite 80
+        aplicar_promocoes_do_juiz.py --aplicar
+        scripts/verificar_esquema_de_pista.py
+    secrets: inherit

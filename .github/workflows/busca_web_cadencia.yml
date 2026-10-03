@@ -33,9 +33,19 @@
 # todos, para rodar à mão quando preciso.
 name: Busca web — cadência automática
 on:
-  workflow_run:
-    workflows: ["Noturno — descoberta"]
-    types: [completed]
+  # 03/10/2026 (item A.2 do handover da corrente noturna): a busca web deixa de ser ELO da corrente
+  # e passa a ter as suas **cinco rodadas distribuídas na janela**, em paralelo aos diários. A razão
+  # é de dependência: a busca web não precisa do que os diários produzem, e pendurá-la na corrente
+  # fazia as cinco rodadas começarem só depois de 3h47 de diários — quando a janela já estava no
+  # fim. Cada rodada respeita o disjuntor e a cascata que já existem.
+  #
+  # A janela é 22h–06h de Brasília (01:00–09:00 UTC). Cinco rodadas, de duas em duas horas:
+  schedule:
+    - cron: "10 1 * * *"   # 22h10
+    - cron: "10 3 * * *"   #  0h10
+    - cron: "10 5 * * *"   #  2h10
+    - cron: "10 7 * * *"   #  4h10
+    - cron: "40 8 * * *"   #  5h40, a última antes de fechar a janela
   workflow_dispatch:
     inputs:
       forcar:

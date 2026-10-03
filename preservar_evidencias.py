@@ -47,6 +47,14 @@ def gravar_texto(h: str, paginas: list) -> str:
     coletores_base.py para a fundamentação (LGPD art. 6º, III)."""
     EVID.mkdir(exist_ok=True)
     txt = "".join(f"\n=== página {i+1} ===\n{t}\n" for i, t in enumerate(paginas))
+    # §177, agora também aqui (03/10/2026): o CRLF pode vir do DOCUMENTO DE ORIGEM, e não da
+    # máquina — 95 PDFs lidos nesta rodada trouxeram CRLF solto no texto extraído, e o portão de
+    # evidências reprovou dois deles ("a cópia preservada dependeria da máquina"). `newline="\n"`
+    # na escrita não resolve isso: ele traduz o `\n` que a gente escreve, não o `\r\n` que já está
+    # na string. A cópia preservada é transcrição, não arquivo byte a byte — já redigimos CPF dela —,
+    # e a regra do projeto é que ela não dependa da máquina. `preservar_texto_integral` normaliza
+    # desde 25/09; esta porta ficou de fora.
+    txt = txt.replace("\r\n", "\n").replace("\r", "\n")
     txt, n_cpfs = redigir_dados_pessoais(txt)
     if n_cpfs:
         print(f"  [redação] {n_cpfs} CPF(s) removido(s) do texto antes de preservar")
