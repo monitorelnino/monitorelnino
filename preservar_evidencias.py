@@ -128,7 +128,7 @@ def ler_pdfs(limite: int = 40, alvo: str | None = None) -> int:
             falhas += 1; registrar_lacuna(f"leitura de PDF {u[:60]}", "PDF sem texto extraível (imagem?)", canal="DOM", camada=2, strings=[u]); continue
         th = gravar_texto(h, paginas)
         item = itens.setdefault(h, {"url": u, "origem": it.get("origem"), "preservado_em": None, "tamanho": len(bruto), "arquivo": None, "wayback": None})
-        item.update({"texto_arquivo": f"evidencias/{h}.txt", "paginas": len(paginas), "texto_hash": th, "lido_em": __import__("datetime").hoje_editorial().isoformat(), "caracteres": sum(len(t) for t in paginas),
+        item.update({"texto_arquivo": f"evidencias/{h}.txt", "paginas": len(paginas), "texto_hash": th, "lido_em": hoje_editorial().isoformat(), "caracteres": sum(len(t) for t in paginas),
                      # §227: por onde o documento veio. Sem o campo, um plano lido no sítio
                      # do órgão e um lido numa captura de arquivo ficavam iguais no banco.
                      "procedencia_do_documento": procedencia})

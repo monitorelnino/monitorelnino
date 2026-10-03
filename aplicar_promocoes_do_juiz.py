@@ -64,6 +64,34 @@ def ja_no_banco(municipios: list, nome: str, uf: str) -> bool:
                and str(m.get("uf", "")).strip().upper() == u for m in municipios)
 
 
+def preservar_o_documento(url: str, origem: str = "juiz_automatico"):
+    """Preserva o documento do registro pela porta canônica e devolve o hash. None se não der.
+
+    03/10/2026: o portão de evidências reprovou a primeira promoção do caminho novo — "1 de 93
+    registro(s) pontuável(is) com URL sem evidência preservada — BLOQUEANTE". Estava certo: o juiz
+    calcula o hash do TEXTO que julgou e, de propósito, **não preserva** (§: duas portas gravando a
+    mesma chave é como se perde prova). Quem preserva é quem aplica — e no caminho do plano sem ato
+    não havia ninguém antes, porque o documento não vinha de um coletor que já o tivesse baixado.
+
+    A porta é `coletores_base.preservar_evidencia`, a mesma de todos os coletores: ela guarda o
+    binário, indexa por sha256 em `data/evidencias.json` e pede snapshot ao Wayback acima do teto.
+    Falha de rede devolve None, e aí a promoção não é aplicada — registro pontuável sem evidência
+    é exatamente o que o portão existe para impedir.
+    """
+    if not url:
+        return None
+    try:
+        from coletores_base import buscar, preservar_evidencia
+        corpo = buscar(url)
+        ext = (str(url).lower().split("?")[0].rsplit(".", 1)[-1] or "html")[:5]
+        if ext not in ("pdf", "doc", "docx", "odt", "rtf", "html", "htm", "txt"):
+            ext = "html"
+        return preservar_evidencia(corpo, url, ext, origem)
+    except Exception as e:  # noqa: BLE001
+        print(f"   ! evidência não preservada ({type(e).__name__}): {str(e)[:90]}")
+        return None
+
+
 def registro_do_veredito(v: dict, lat, lon, canal: str, fonte_base: str, hoje: str) -> dict:
     """O registro do banco, com a proveniência que permite conferir a decisão depois.
 
@@ -145,6 +173,8 @@ def autoteste() -> int:
                   and r_marca.get("marca_na_ficha") == "sem ato de aprovação localizado"))
     casos.append(("plano sem ato: a fonte do registro diz que o ato não foi localizado",
                   "ato de aprovação não localizado até o corte" in r_marca["fonte"]))
+    casos.append(("preservar_o_documento sem URL devolve None, e não quebra",
+                  preservar_o_documento("") is None))
     casos.append(("plano COM ato não ganha a marca",
                   "sem_ato_de_aprovacao" not in r and "marca_na_ficha" not in r))
     casos.append(("a fonte diz que foi o juiz, com a versão",
@@ -207,6 +237,16 @@ def main() -> int:
             recusados.append((v, "não consta na referência do IBGE — sem posição no mapa"))
             continue
         canal, fonte_base = canal_e_fonte(v.get("url") or "")
+        # A EVIDÊNCIA vem antes do registro: registro pontuável com URL e sem evidência preservada
+        # é vermelho no portão 26, e com razão — a prova é o que permite conferir a decisão depois.
+        # O hash do documento preservado substitui o hash do texto julgado no registro: o primeiro
+        # é do arquivo que ficou guardado, e é esse que a auditoria vai abrir.
+        hash_preservado = preservar_o_documento(v.get("url") or "")
+        if not hash_preservado:
+            recusados.append((v, "documento não pôde ser preservado — registro pontuável exige "
+                                 "evidência guardada (portão 26)"))
+            continue
+        v["hash_evidencia"] = hash_preservado
         municipios.append(registro_do_veredito(v, lat, lon, canal, fonte_base,
                                                hoje.strftime("%d/%m/%Y")))
         pontos.append({"nome": v["municipio"], "uf": v["uf"], "categoria": v["categoria"],

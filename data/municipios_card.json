@@ -1,11 +1,11 @@
 {
  "_governanca": "Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. `prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). `imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o leitor peça o documento ao gestor. Só municípios com algo a dizer; ausência = nada localizado. `defesa_civil_orcamento` (§207) = despesa liquidada na subfunção 06.182 declarada ao SICONFI, peso ZERO; classe de ausência nunca vira zero.",
  "gerado_em": "2026-10-03",
- "total": 2219,
- "com_registro": 268,
+ "total": 2220,
+ "com_registro": 271,
  "com_imprensa": 185,
  "prioritarios": 2095,
- "com_despesa_182": 2219,
+ "com_despesa_182": 2220,
  "municipios": {
   "1100023": {
    "nome": "Ariquemes",
@@ -22377,6 +22377,12 @@
    "nome": "Rio das Ostras",
    "uf": "RJ",
    "prioritario": true,
+   "categoria": "plano_antigo",
+   "documento": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON ALAGAMENTOS Acúmulo de água nas ruas e nos perímetros urbanos, por problemas de drenagem. COBRADE: 1.2.3.0.0 RIO DAS OST…",
+   "url": "https://www.riodasostras.rj.gov.br/wp-content/uploads/2024/10/plancon-alagamentos-2024.pdf",
+   "data": "2024",
+   "fonte": "Portal oficial (www.riodasostras.rj.gov.br) — plano publicado em domínio oficial do ente, lido e classificado pelo juiz ",
+   "sem_ato_de_aprovacao": true,
    "imprensa": [
     {
      "titulo": "Rio das Ostras participa de evento sobre os impactos do El Niño",
@@ -22394,8 +22400,7 @@
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
-   },
-   "categoria": "nao_localizado"
+   }
   },
   "3304557": {
    "nome": "Rio de Janeiro",
@@ -29009,6 +29014,26 @@
    },
    "categoria": "nao_localizado"
   },
+  "4204152": {
+   "nome": "Celso Ramos",
+   "uf": "SC",
+   "prioritario": false,
+   "categoria": "plano_antigo",
+   "documento": "a Católica 8 1.5. INSTRUÇÕES PARA USO E ATUALIZAÇÃO DO PLANO A efetiva aplicação do Plano de Contingência decorre da operacionalização de diversos procedimentos, bem como da uti…",
+   "url": "https://celsoramos.sc.gov.br/uploads/sites/408/2026/07/E0sHEoaT41QWSDWXVHtynGs9.pdf",
+   "data": "2022",
+   "fonte": "Portal oficial (celsoramos.sc.gov.br) — plano publicado em domínio oficial do ente, lido e classificado pelo juiz automá",
+   "sem_ato_de_aprovacao": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 81.047597,
+    "liquidada": 227338.51,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
+  },
   "4204202": {
    "nome": "Chapecó",
    "uf": "SC",
@@ -31642,6 +31667,12 @@
    "nome": "Taió",
    "uf": "SC",
    "prioritario": true,
+   "categoria": "plano",
+   "documento": "PLANO DE CONTINGÊNCIA Proteção e Defesa Civil de Taió-SC | 01/2026 Taió-SC COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DE TAIÓ PLANO DE CONTINGÊNCIA Proteção e Defesa Civ…",
+   "url": "https://defesacivil.taio.sc.gov.br/wp-content/uploads/2026/01/PLANO-DE-CONTINGENCIA-TAIO-JAN-2026.pdf",
+   "data": "2026",
+   "fonte": "Portal oficial (defesacivil.taio.sc.gov.br) — plano publicado em domínio oficial do ente, lido e classificado pelo juiz ",
+   "sem_ato_de_aprovacao": true,
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
@@ -31650,8 +31681,7 @@
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
-   },
-   "categoria": "nao_localizado"
+   }
   },
   "4217907": {
    "nome": "Tangará",
