@@ -26,9 +26,11 @@ name: Noturno — diários oficiais
 
 on:
   schedule:
-    # 30/09/2026 (item 7): 00:05 UTC — o disparo mais cedo da janela noturna, e o ÚNICO
-    # cron da corrente. Os elos seguintes são acionados pelo término deste, não por hora.
-    - cron: "5 0 * * *"   # 21h05 de Brasília, abre a noite
+    # 03/10/2026 (item A.1 do handover da corrente noturna): a corrente começa às **22h de
+    # Brasília**, que é 01:00 UTC. O disparo anterior era 00:05 UTC — 21h05 de Brasília —, e a
+    # editoria fixou 22h: é a hora em que a redação para, e a janela vai até as 06h.
+    # Continua sendo o ÚNICO cron da corrente: os elos seguintes são acionados pelo TÉRMINO deste.
+    - cron: "0 1 * * *"   # 22h de Brasília, abre a noite
   workflow_dispatch:
 
 permissions:

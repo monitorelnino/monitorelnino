@@ -3852,3 +3852,101 @@ depois e **quais mudam de faixa** — e o número fica na METODOLOGIA, nunca na 
 A pergunta que a variante responde é a pergunta certa a fazer de uma decisão de régua: **se o
 crédito fosse menor, o retrato mudaria?** Enquanto nenhuma unidade muda de faixa, a decisão não
 está sustentando o retrato sozinha.
+
+## 102. A corrente dentro da janela, a prioridade de coleta e a fila que para de crescer (03/10/2026)
+
+Handover da editoria — **três decisões de ROTINA, nenhuma de régua**. Nada aqui muda pontuação,
+critério ou categoria; muda a ordem em que o trabalho é feito e o que entra na fila.
+
+### 102.1 A corrente começa às 22h, e a busca web sai dela
+
+A janela noturna é **22h–06h de Brasília** (01:00–09:00 UTC). O único cron da corrente passa para
+**01:00 UTC**, e os elos seguintes continuam acionados pelo término do anterior — por hora só o
+primeiro.
+
+A **busca web deixa de ser elo** e passa a ter as suas cinco rodadas distribuídas na janela, de
+duas em duas horas, em paralelo aos diários. A razão é de dependência: ela não precisa do que os
+diários produzem, e pendurá-la na corrente fazia as cinco rodadas começarem depois de 3h47 de
+diários — com a janela já no fim.
+
+**As evidências e o OCR voltam à corrente.** Na noite de 02→03/10 esse elo **não rodou**: ele
+pendia do funil de saúde, que roda a cada quinze dias. Documento preservado é prova, e prova não
+pode depender da quinzena. A ordem passa a ser **diários → descoberta → evidências e OCR → juiz →
+sinais → triagem → publicar**.
+
+### 102.2 O painel da noite: elo que não roda vira vermelho
+
+`data/painel_da_noite.json` guarda uma linha por elo por noite, com início, fim, duração e
+**"terminou dentro da janela"**. O portão reprova quando um elo da corrente não tem linha na noite.
+
+A razão de existir está na própria noite de 02→03/10: o elo que não rodou **não deixa buraco
+visível**. Ele deixa um arquivo com a data de ontem, que se parece com um arquivo normal. A falta
+só apareceu quando a central foi conferir à mão.
+
+### 102.3 Prioridade de coleta: as listas federais de risco primeiro
+
+`data/prioridade_municipios.json` é a **união das três listas federais** já coletadas — enxurradas
+e inundações (Casa Civil, NT 2/2025), Semiárido (Sudene, Res. Condel 176/2024) e prioritários do
+desmatamento e do fogo (MMA, portaria vigente): **3.160 municípios**.
+
+Toda coleta por município percorre primeiro esse conjunto; esgotado na rodada, expande para os
+demais do mesmo estado e, por fim, dos outros estados. Dentro de cada grupo: **nunca verificados →
+verificação mais antiga → maior população**.
+
+O **cursor persistido** (`data/cursor_de_coleta.json`) é o que impede o pior desfecho desta regra:
+uma rodada curta percorreria sempre os mesmos primeiros municípios da lista, e os do fim nunca
+seriam consultados. Ele guarda o último código atendido por rotina, e a rodada seguinte começa
+depois dele, dando a volta.
+
+**É ordem de coleta, não peso.** Município fora das listas continua sendo buscado — depois, e nunca
+"nunca".
+
+### 102.4 A fila de pistas: o que estava errado era a ENTRADA
+
+O retrato que a central mediu em 03/10/2026, com **8.681 pistas**:
+
+| o que | quantas |
+|---|---|
+| sem município nem UF identificável | 6.462 |
+| em redirecionamento do Google News, e não o endereço do veículo | 6.455 |
+| URLs repetidas | 2.549 |
+| sobre decreto (resposta), que não pontua e já vem de fonte oficial | 4.455 |
+
+**A limpeza única** (`scripts/limpar_fila_de_pistas.py`) fechou 8.025 pistas, cada uma com o motivo
+que de fato se aplica — e não com um motivo genérico:
+
+| motivo | quantas |
+|---|---|
+| sem município nem UF identificável | 4.452 |
+| pista de decreto (sai da fila de planos) | 2.027 |
+| acima do teto de cinco por município e assunto | 1.221 |
+| notícia genérica: o mesmo artigo em três municípios ou mais | 273 |
+| prazo de vida (21 dias ou duas tentativas) | 46 |
+| coberta pela fonte oficial | 6 |
+
+A **notícia genérica** merece registro: o mesmo identificador de artigo aparecia atribuído a
+vários municípios — "El Niño coloca municípios em alerta e Prefeitura de Vitória…" estava em
+Camaçari/BA e em Juazeiro/BA ao mesmo tempo. A pista não nasceu porque a notícia era daquela
+cidade: nasceu porque a busca rodou o nome da cidade. É o mesmo defeito de atribuição que o garimpo
+achou nos documentos oficiais (§101), em outra fonte.
+
+**A regra passa a valer na gravação**, não na saída: `coletores_base.gravar_pista` recusa pista fora
+de `schemas/pista.json` — sem URL final resolvida, sem alvo, de tipo `outro`, de tipo `decreto`,
+repetida, ou acima do teto. O portão `scripts/verificar_esquema_de_pista.py` confere as pistas
+novas e a **saúde da fila**: alerta se ela crescer três rodadas seguidas, se a idade mediana passar
+de 14 dias ou se a fração de nível C passar de 70%.
+
+Filtrar na saída não dá conta: a cada rodada entra mais do mesmo. Depois da limpeza, a fila de
+planos ficou com **654 abertas**, idade mediana de **8 dias** e **11%** em nível C.
+
+### 102.5 A triagem, em toda rodada
+
+A limpeza foi única; a **triagem é rotina**, e é o **último elo** antes de publicar — ela consome o
+que os elos anteriores acabaram de achar. A ordem é a do §102.3 (listas federais, capitais, o
+resto; nível A → B → C, mais nova primeiro), e cada pista recebe um **desfecho registrado**:
+promovida · coberta pela fonte oficial · sem documento oficial localizado · recusada pelo juiz, com
+o critério · para humano, com o motivo.
+
+Pista com **duas tentativas** de busca dirigida sem documento, ou **21 dias** na fila, fecha — e
+**reabre sozinha** se surgir evidência nova para o mesmo município e assunto. Fechar não é apagar:
+o registro fica, e é por ele que a reabertura sabe o que já foi tentado.

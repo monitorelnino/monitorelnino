@@ -125,6 +125,13 @@ jobs:
         timeout-minutes: 5
         run: sudo apt-get update -qq && sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-por
 
+      # 03/10/2026 (item A.5 do handover da corrente noturna): a hora de INÍCIO do elo, guardada
+      # antes de qualquer comando. O painel da noite precisa dela para dizer quanto durou e se
+      # terminou dentro da janela de 22h às 06h — e foi a falta desse registro que deixou a noite de
+      # 02→03/10 passar sem ninguém ver que as evidências não rodaram.
+      - name: Marcar o início do elo
+        run: echo "ELO_INICIO=$(date -u +%H:%M)" >> "$GITHUB_ENV"
+
       # Cada comando passa pelo invólucro, que cronometra e grava a linha de saúde. `|| true` é
       # deliberado: coletor que falha não derruba os outros nem impede o commit do que já foi achado.
       - name: Coletar
@@ -149,6 +156,14 @@ jobs:
         continue-on-error: true
         timeout-minutes: 3
         run: python3 scripts/gerar_saude_pipeline.py
+
+      # O painel da NOITE é outro: ele não resume os comandos, resume os ELOS — um por noite, com
+      # início, fim e "terminou dentro da janela". `inputs.nome` é o nome do elo.
+      - name: Registrar o elo no painel da noite
+        continue-on-error: true
+        timeout-minutes: 2
+        run: |
+          python3 scripts/painel_da_noite.py --registrar "${{ inputs.nome }}"             --inicio "${ELO_INICIO:-}" --conclusao "${{ job.status }}" || true
 
       - name: Commit com rebase-e-push (item 1a)
         id: commit
