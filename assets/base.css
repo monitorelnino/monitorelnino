@@ -1158,5 +1158,5 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
    a página a 546 px de largura em tela de 390 px (portão MÓVEL). A quebra é aqui, na lista, e não
    no corpo do site: em texto corrido quebrar dentro da palavra piora a leitura. */
 .mudancas-lista { overflow-wrap: anywhere; }
-.mudancas-lista dt { font-family: var(--font-spec); text-transform: uppercase; letter-spacing: .12em; font-variant-numeric: tabular-nums; font-size: 14px; margin-top: var(--sp-5); }
+.mudancas-lista dt { font-family: var(--font-spec); text-transform: uppercase; letter-spacing: .12em; font-variant-numeric: tabular-nums; font-size: var(--fs-small); margin-top: var(--sp-5); }
 .mudancas-lista dd { margin: var(--sp-2) 0 0; }
