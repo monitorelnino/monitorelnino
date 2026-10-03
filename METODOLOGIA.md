@@ -3685,3 +3685,101 @@ seção dos alertas. O serviço foi conferido pela central em 02/10/2026. Para n
 Proteja-se ganhou **contrato de layout** que exige os quatro números (192, 199, 190, 40199) — um
 contrato pequeno, de propósito: ele cobre a barra de emergência e mais nada, porque redesenhar o
 Proteja-se não foi pedido.
+
+## 100. Conformidade permanente: a regra deixa de ser lembrada e passa a ser verificada (03/10/2026)
+
+Decisão da editoria: as regras de design e editoriais já decididas valem para **todas as páginas,
+o tempo todo**, e **não dependem de um handover repeti-las**. O que não é verificado por máquina
+volta a ser interpretado a cada rodada — e foi assim que um cartão de telefone saiu de uma página
+numa reforma de desenho, que um rótulo foi cortado no meio por um eixo de gráfico, e que um texto
+ficou da cor do fundo.
+
+### 100.1 A hierarquia, escrita
+
+```
+AI_EDITORIAL_NARRATIVE_GOVERNANCE.md   (editorial e narrativa)
+AI_VISUAL_ART_DIRECTION.md             (direção de arte)
+  >  METODOLOGIA.md                    (travas de PROVA: limite de fato, não de estilo)
+  >  CLAUDE.md                         (Design, Paleta, Tipografia, regras editoriais)
+  >  layout/contratos/<pagina>.json    (o layout de cada página)
+  >  handovers                         (o pedido da rodada)
+```
+
+**Handover é o último.** Se um handover contrariar uma regra, aplica-se a regra e registra-se a
+divergência em uma linha. Isto não é desobediência: é o que a editoria decidiu que aconteça,
+porque um pedido de rodada é escrito para um caso e a regra foi escrita para todos.
+
+### 100.2 `layout/regras.json`: o que é verificável, extraído
+
+O arquivo **não cria regra** — ele extrai, na forma que um programa confere, o que já está
+decidido. Cada regra traz o campo `fonte`, que diz em que documento ela mora; onde divergir dele,
+vence o documento. Cobre tipografia (família, peso, escala, versalete), cor (hexadecimal só em dois
+arquivos, fundo branco declarado), componentes (quais existem, um terço da largura, seção sem caixa
+e sem numeração), as **quatro funções da figura** (título, legenda, nota, fonte — nunca num bloco
+só), vocabulário proibido (global, por página, advérbio colado a número, locução de dever), forma
+dos números e acessibilidade (alvo de toque, texto invisível, mídia rotulada).
+
+### 100.3 O portão, e a única forma de abrir exceção
+
+`scripts/verificar_conformidade.py` **incorpora** o portão de layout e acrescenta o resto. Ele
+renderiza cada página em 1280 e 390 px, espera os dados e julga contra `regras.json` mais o
+contrato da página. A divisão de sempre: o navegador **mede**, o portão **julga**, e por isso ele
+tem autoteste offline (32 casos).
+
+Exceção só por `layout/excecoes.json`, com **regra, página, motivo, data e quem decidiu** — e sem
+os três últimos campos ela não vale. O arquivo nasceu **vazio**, e vazio é o estado desejado:
+exceção que não se declara é regra desligada em silêncio.
+
+### 100.4 Contrato para toda página pública, inclusive as que não têm seção
+
+Nove contratos, de cinco para nove: entraram a inicial, o Monitor de riscos, o Para gestores e o
+Blog. Três dessas páginas **não usam `<section>`** — os blocos são `div` sem id —, e por isso o
+contrato delas declara na raiz o que se pode provar sem reescrever a marcação: a ordem dos
+títulos, as figuras que têm de existir e estar no componente, o texto exigido e o proibido.
+Divergência declarada em cada um: é menos do que um contrato de seção prova.
+
+**Não existe `metodologia.html`.** O handover a lista entre as páginas a contratar; a metodologia
+deste projeto é um documento do repositório, não uma página. Fica registrado em vez de inventado.
+
+### 100.5 O primeiro passe, e o que ele achou
+
+Trinta e duas violações em cinco páginas na primeira vez que rodou, e nenhuma era cosmética:
+
+| o que | quantas | o que era |
+|---|---|---|
+| alvo de toque abaixo de 44 px | 27 | o token do projeto era 40 px; `summary`, campo de busca, seletor de estado, botão e link de ação ficavam abaixo da régua |
+| h3 na família de dado | 1 | os rótulos "Antes/Durante/Depois" do Proteja-se, que são rótulo e não título |
+| "defeso" no texto público | 1 | ficha de um estado dizia "fonte suspensa no defeso"; corrigido na fonte do dado |
+| "FIGURA" | 1 | **falso positivo do próprio portão**: ele comparava sem caixa e pegou "cada figura" |
+
+A correção do alvo de toque foi num lugar só: o token `--alvo-toque` passou de 40 para 44 px, e com
+ele todo botão do site. Os elementos que não liam o token passaram a ler. Link **dentro de texto
+corrido** — parágrafo, item de lista, legenda, crédito de figura, célula de tabela — fica de fora
+da régua: ele tem a altura da linha, e esticá-lo quebraria a prosa.
+
+**O achado maior veio no segundo passe, nas páginas sem contrato:** `assets/colunas.js` escrevia
+"Figura N" em toda figura fora de cartão e "N · " em todo título de seção das páginas de dados —
+uma decisão de auditoria de 07/09/2026. As decisões de 01 e 02/10 a revogaram em dois passos
+("seções sem caixa e sem numeração"; "FIGURA" proibido), e as duas coisas conviveram porque
+**ninguém verificava**: a folha de estilo ESCONDIA o rótulo nos cartões e o script continuava
+ESCREVENDO-O fora deles. Esconder o que não deveria existir é pior do que escrever: o texto chega
+a quem usa leitor de tela e some para quem confere a página. A numeração deixou de ser escrita.
+
+No mesmo passe: as duas figuras do Pacífico eram as **únicas figuras com mídia do site fora do
+componente `.cartao-mapa`**, e os gráficos criados por `canvasEm` nasciam **sem rótulo
+acessível**. As duas entraram no componente, e o rótulo passou a ser posto na criação do gráfico,
+a partir do título aprovado da figura.
+
+### 100.6 Fora dos PRs: o site inteiro, todo dia
+
+`.github/workflows/conformidade_diaria.yml` roda o mesmo julgamento sobre todas as páginas
+públicas, uma vez por dia, depois da publicação. Metade das regressões não vem de código: vem de
+**dado** — cartão que esvazia, número que vira travessão, texto gerado com erro —, e nada disso
+aparece num PR, porque não há PR. Ele só relata; vermelho vira registro e tarefa do próximo ciclo,
+antes de qualquer item novo.
+
+**Divergência declarada:** o handover pede o passe "sobre o site publicado". O domínio está atrás
+de senha, e a credencial da cortina não é manejada pelo Code — nenhum segredo de cortina entra no
+workflow. A rotina roda sobre a `main`, que é o conteúdo publicado, com os dados da rodada mais
+recente; o que ela não pega é diferença introduzida pelo próprio deploy, e disso já cuida o
+"Verificar o site publicado (domínio real)", que consulta o domínio.

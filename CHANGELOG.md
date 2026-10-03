@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-03 · #529 · Conformidade permanente: as regras passam a ser verificadas, em toda página
+
+Hierarquia das regras no alto do CLAUDE.md, `layout/regras.json` com o que é verificável, contrato para as nove páginas públicas e `scripts/verificar_conformidade.py`, bloqueante, que incorpora o portão de layout. Rotina diária sobre o site inteiro. O primeiro passe achou 40 violações reais: alvo de toque de 40 px, numeração de figura e de seção que a editoria já havia revogado, duas figuras fora do componente, gráficos sem rótulo acessível e "defeso" em texto público. METODOLOGIA §100.
+
 ## 2026-10-02 · #528 · Defesa civil: a cadeia do aviso ao recurso, e a Imprensa lendo as páginas
 
 Emergências por estado, com a cidade na lista e as três marcas da cadeia; série do decreto ao recurso; tipo de evento do ato; as três listas federais de risco juntas; alerta com portão de 24 horas. A Imprensa passa a LER o instantâneo de cada página, com portão que compara no navegador. Corrigidos: país somado duas vezes nas respiratórias (8.534 → 4.267) e autoteste que gravava no banco. O 40199 volta ao Proteja-se. METODOLOGIA §99.

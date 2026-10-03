@@ -112,8 +112,56 @@ const COLETA = () => {
     borda: (() => { const cs = getComputedStyle(s); return cs.borderStyle !== "none" && parseFloat(cs.borderTopWidth || "0") > 0; })(),
     fundo: getComputedStyle(s).backgroundColor,
   }));
+  /* 03/10/2026 (conformidade permanente): a medição deixa de ser só de FORMA e passa a incluir o
+     que as regras de tipografia, de componente e de acessibilidade precisam para serem conferidas
+     por máquina. Continua valendo a divisão: aqui só se mede; quem julga é
+     scripts/verificar_conformidade.py, contra layout/regras.json. */
+  const estiloDe = el => {
+    const cs = getComputedStyle(el);
+    return { familia: (cs.fontFamily || "").split(",")[0].replace(/['"]/g, "").trim(),
+             peso: cs.fontWeight, tamanho: Math.round(parseFloat(cs.fontSize || "0")),
+             espacamento: cs.letterSpacing, caixa: cs.textTransform, cor: cs.color };
+  };
+  const amostra = (seletor, limite) => [...document.querySelectorAll(seletor)]
+    .filter(el => (el.textContent || "").trim().length > 0 && vis(el))
+    .slice(0, limite || 6)
+    .map(el => Object.assign({ seletor: seletor, id: el.id || "",
+                               texto: (el.textContent || "").trim().slice(0, 40) }, estiloDe(el)));
+  const tipografia = [].concat(
+    amostra("main h1", 2), amostra("main h2"), amostra("main h3:not(.ficha-rotulo)"),
+    amostra("main .figura-titulo"), amostra("main .cartao-numero-valor"),
+    amostra("main .cartao-numero-rotulo"), amostra("main .figura-sub"),
+    amostra("main .fonte-figura"), amostra("main p.hint", 3), amostra("main .map-legend span", 4));
+  /* Alvo de toque: no celular, botão e link de 20 px não se acerta com o dedo. A régua é a do
+     documento de direção de arte (44 px), e a medição só vale a 390 px — no desktop o ponteiro
+     resolve, e cobrar lá produziria vermelho que ninguém deve apagar. */
+  const alvos = [...document.querySelectorAll("main a, main button, main summary, main input, main select, main [role=button]")]
+    .filter(el => vis(el))
+    .map(el => { const r = el.getBoundingClientRect();
+                 return { tag: el.tagName.toLowerCase(), id: el.id || "",
+                          texto: (el.textContent || "").trim().slice(0, 30),
+                          largura: Math.round(r.width), altura: Math.round(r.height),
+                          /* Link dentro de texto corrido tem a altura da LINHA, e esticá-lo para 44 px quebraria a
+                             prosa. Conta como texto corrido: parágrafo, item de lista, nota, legenda, CRÉDITO
+                             DE FIGURA e célula de tabela — os dois últimos entraram em 03/10/2026, quando o
+                             portão novo apontou o link da portaria no crédito e o da fonte na tabela. */
+                          dentro_de_texto: !!el.closest("p, li, dd, .note, .hint, figcaption, .fonte-figura, td, th, .map-legend") }; })
+    .filter(a => a.altura < 44 && !a.dentro_de_texto)
+    .slice(0, 12);
+  const figurasCompletas = [...document.querySelectorAll("figure")].map(f => ({
+    id: f.id,
+    titulo: ((f.querySelector(".figura-titulo") || {}).textContent || "").trim(),
+    legenda: ((f.querySelector(".figura-sub") || {}).textContent || "").trim(),
+    fonte: ((f.querySelector(".fonte-figura") || {}).textContent || "").trim(),
+    tem_midia: !!f.querySelector("svg, canvas"),
+    rotulada: [...f.querySelectorAll("svg, canvas, img")]
+      .every(m => (m.getAttribute("aria-label") || m.getAttribute("alt") || "").trim().length > 3),
+    visivel: vis(f),
+  }));
   return {
     titulo: document.title,
+    tipografia, alvos_de_toque: alvos, figuras_completas: figurasCompletas,
+    fundo_do_corpo: getComputedStyle(document.body).backgroundColor,
     largura_main: Math.round((document.querySelector("main") || document.body).getBoundingClientRect().width),
     h2: [...document.querySelectorAll("main h2")].map(h => (h.textContent || "").trim()).filter(Boolean),
     secoes, grades, figuras, numeros, invisiveis,

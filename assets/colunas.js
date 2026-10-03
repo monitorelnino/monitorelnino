@@ -13,40 +13,18 @@
       if (n >= 320) el.classList.add('cols');
     }
   }
-  /* Numeração (auditoria de 07/09/2026): toda figura recebe "Figura N" e, nas páginas de dados (body.pagina-dados),
-     toda seção recebe "N · " — sempre índice + 1, na ordem do documento; nenhum número é escrito à mão no HTML. */
-  function numerar() {
-    var todas = document.querySelectorAll('.figura:not([hidden])');   // 13/09/2026: figura oculta (ex.: sem cobertura mínima) não consome número nem aparece como "Figura N"
-    // 14/09/2026 (auditoria editorial, expandidos "ver mais"): figura dentro de um <details> fechado não consome número;
-    // ao abrir, tudo é renumerado na ordem do documento (ver o ouvinte de "toggle" abaixo).
-    /* 02/10/2026: figura no componente `.cartao-mapa` NÃO é numerada. A regra já estava
-       escrita na folha de estilo desde 30/09 ('FIGURA n sai destes cartões'), mas ela
-       escondia `.figura-numero` e `::before`, e quem escreve o rótulo aqui é `.figura-num` —
-       classe diferente, regra que nunca casou. O contrato de layout proíbe o texto, e é mais
-       honesto não escrevê-lo do que escondê-lo. */
-    var figs = [];
-    for (var k = 0; k < todas.length; k++) {
-      if (todas[k].classList.contains('cartao-mapa')) continue;
-      var dt = todas[k].closest('details'); if (!dt || dt.open) figs.push(todas[k]);
-    }
-    for (var i = 0; i < figs.length; i++) {
-      var f = figs[i], pe = f.querySelector(':scope > .figura-pe');
-      if (!pe) { pe = document.createElement('div'); pe.className = 'figura-pe'; f.appendChild(pe); }
-      var n = pe.querySelector('.figura-num');
-      if (!n) { n = document.createElement('span'); n.className = 'figura-num'; pe.appendChild(n); }
-      n.textContent = 'Figura ' + (i + 1);
-    }
-    if (document.body.classList.contains('pagina-dados')) {
-      var h2s = document.querySelectorAll('main > .panel > h2:first-child');
-      for (var j = 0; j < h2s.length; j++) {
-        if (h2s[j].querySelector('.secao-num')) continue;
-        var s = document.createElement('span'); s.className = 'secao-num'; s.textContent = (j + 1) + ' · ';
-        h2s[j].insertBefore(s, h2s[j].firstChild);
-      }
-    }
-  }
-  function tudo() { aplicar(); numerar();
-  document.addEventListener('toggle', function (e) { if (e.target && e.target.tagName === 'DETAILS' && e.target.querySelector('.figura')) numerar(); }, true); }
+  /* 03/10/2026 — A NUMERAÇÃO SAIU, de seção e de figura.
+     Ela nasceu de uma auditoria de 07/09/2026: toda figura recebia "Figura N" e, nas páginas de
+     dados, toda seção recebia "N · ". As decisões de 01 e 02/10/2026 a revogaram em dois passos —
+     os handovers passaram a exigir "seções sem caixa e sem numeração", e os contratos de layout
+     proibiram a palavra "FIGURA" no texto que o leitor lê. Até aqui as duas coisas conviviam porque
+     ninguém verificava: a folha de estilo ESCONDIA o rótulo nos cartões e este arquivo continuava
+     ESCREVENDO-O fora deles. O portão de conformidade, no primeiro passe (03/10/2026), leu
+     "FIGURA 1" e "1 · Situação atual" no Monitor de riscos e no Blog, onde as figuras não são
+     cartão. Esconder o que não devia existir é pior do que escrever: o texto chega a quem usa
+     leitor de tela e some para quem confere a página. Então ele deixa de ser escrito. */
+
+  function tudo() { aplicar(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', tudo); else tudo();
   window.addEventListener('load', tudo);
   // Abre o acordeão que contém o alvo de um link com âncora (ex.: pesquisadores.html#fontes-sinais)

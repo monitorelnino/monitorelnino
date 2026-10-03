@@ -1,0 +1,128 @@
+{
+  "_governanca": "REGRAS DE CONFORMIDADE, legíveis por máquina (handover 'Conformidade permanente', 02/10/2026). Este arquivo NÃO cria regra: ele EXTRAI, na forma que um programa confere, o que já está decidido nos documentos-fonte. Onde divergir deles, vencem eles — e o campo `fonte` de cada regra diz onde ela mora. Quem verifica é scripts/verificar_conformidade.py, portão bloqueante. Exceção só por layout/excecoes.json, com motivo e data.",
+  "hierarquia": [
+    "AI_EDITORIAL_NARRATIVE_GOVERNANCE.md",
+    "AI_VISUAL_ART_DIRECTION.md",
+    "METODOLOGIA.md",
+    "CLAUDE.md",
+    "layout/contratos/<pagina>.json",
+    "handovers"
+  ],
+  "_nota_hierarquia": "A ordem é a do item 1 do handover, com uma precisão que o próprio CLAUDE.md já fazia: as travas de PROVA da METODOLOGIA são limite de fato, e por isso vencem estilo — na colisão entre 'o texto aprovado pede X' e 'a prova não sustenta X', vence a prova. Handover é o último: se um handover contrariar uma regra, aplica-se a regra e registra-se a divergência em uma linha.",
+  "paginas_publicas": [
+    "index.html", "monitor-de-riscos.html", "defesa-civil.html", "saude.html",
+    "financiamento.html", "proteja-se.html", "prefeituras.html", "imprensa.html",
+    "blog.html", "metodologia.html"
+  ],
+
+  "tipografia": {
+    "fonte": "CLAUDE.md §4 (Tipografia) e AI_VISUAL_ART_DIRECTION.md",
+    "familias_permitidas": {
+      "display": ["Fraunces", "Georgia", "Playfair Display"],
+      "texto": ["Archivo", "Inter", "Segoe UI"],
+      "dado": ["Archivo Narrow", "Archivo"]
+    },
+    "por_seletor": {
+      "main h1": {"grupo": "display", "peso_maximo": 300},
+      "main h2": {"grupo": "display", "peso_maximo": 300},
+      "main h3:not(.ficha-rotulo)": {"grupo": "display", "peso_maximo": 300},
+      "main .figura-titulo": {"grupo": "display", "peso_maximo": 300},
+      "main .cartao-numero-valor": {"grupo": "display", "peso_maximo": 300},
+      "main .cartao-numero-rotulo": {"grupo": "dado", "versalete": true},
+      "main .fonte-figura": {"grupo": "dado"},
+      "main .map-legend span": {"grupo": "dado"}
+    },
+    "escala_px": [12, 14, 16, 18, 22, 28, 36, 48],
+    "_nota_escala": "A escala do CLAUDE.md §Design. O portão confere o tamanho RENDERIZADO dos seletores medidos: tamanho fora da escala é degrau inventado, e degrau inventado é o começo de duas tipografias na mesma página.",
+    "versalete": {"caixa": "uppercase", "espacamento_minimo_px": 1.0},
+    "_nota_h3_rotulo": "h3 com a classe `.ficha-rotulo` é RÓTULO de coluna, não título — \"Antes\", \"Durante\", \"Depois\" nas fichas do Proteja-se. Ali a família é a de dado, por desenho aprovado em 30/09/2026; a classe existe para que a exceção seja DECLARADA no HTML em vez de virar exceção silenciosa no portão."
+  },
+
+  "cor": {
+    "fonte": "CLAUDE.md §3 (Paleta) e assets/tokens.css",
+    "hex_somente_em": ["assets/tokens.css", "assets/mapas.js"],
+    "fundo_do_corpo": "rgb(255, 255, 255)",
+    "_nota_fundo": "DESVIO DECLARADO do sistema de marca, já registrado no CLAUDE.md: o fundo deste site é BRANCO, por decisão editorial de 05/09/2026 reafirmada em 23/09/2026. A regra existe para impedir que uma rodada o reverta para escuro 'por fidelidade à marca'.",
+    "cor_nunca_sozinha": true,
+    "_nota_cor_sozinha": "Nenhuma informação vive só na cor: todo degrau de legenda tem rótulo, e é o que verificar_legendas.js e verificar_rampas_dos_mapas.py já cobram. Aqui a regra fica declarada para que a razão não se perca."
+  },
+
+  "componentes": {
+    "fonte": "CLAUDE.md §Design, contratos de layout, handovers de 01 e 02/10/2026",
+    "numeros": ".cartao-numero",
+    "grade_numeros": ".grade-numeros--3",
+    "figura": ".cartao-mapa",
+    "grade_figuras": ".grade-figuras--3",
+    "estados": "mapa_cartoes_uf (assets/js/grade-estados.js)",
+    "fracao_maxima_da_largura": 0.4,
+    "_nota_fracao": "Um terço com folga de arredondamento e de gap da grade. Cartão que passa disso no desktop ocupa o lugar de dois e quebra o ritmo da página.",
+    "secao_sem_caixa": true,
+    "secao_sem_numeracao": true,
+    "ultima_linha_pode_ser_incompleta": true
+  },
+
+  "figura": {
+    "fonte": "AI_EDITORIAL_NARRATIVE_GOVERNANCE.md §11 a §14",
+    "quatro_funcoes_separadas": ["titulo", "legenda", "nota_metodologica", "fonte"],
+    "titulo_obrigatorio": true,
+    "fonte_obrigatoria": true,
+    "legenda_nao_repete_titulo": true,
+    "legenda_maxima_caracteres": 180,
+    "midia_rotulada": true,
+    "_nota": "Título diz o que se vê; legenda diz universo, período, recorte e unidade; nota metodológica é opcional e recolhida; fonte traz órgão, documento e data. As quatro nunca num bloco só — é o que impede o cartão de virar parágrafo."
+  },
+
+  "vocabulario_proibido": {
+    "fonte": "handovers de 01, 02 e 03/10/2026, consolidados; AI_EDITORIAL_NARRATIVE_GOVERNANCE.md §15, §16, §20, §24",
+    "global": [
+      "FIGURA",
+      "Corte da edição",
+      "corte de",
+      "desastre",
+      "defeso",
+      "subfunção",
+      "mês lido",
+      "meses lidos"
+    ],
+    "com_numero": ["apenas", "somente"],
+    "_nota_com_numero": "'apenas 3 estados' é juízo: o advérbio diz ao leitor que três é pouco. O portão barra a palavra ENCOSTADA a um número, e não a palavra em qualquer lugar — 'somente' em texto de lei citada continua possível.",
+    "dever": ["é obrigatório", "deve publicar", "tem o dever de"],
+    "_nota_dever": "Constar de lista federal não cria dever de plano (METODOLOGIA). A locução de dever só entra em citação literal de lei, e o portão barra as formas que apareceram de verdade nas páginas.",
+    "por_pagina": {
+      "imprensa.html": ["no período", "Backlog"],
+      "financiamento.html": ["chave que abre", "unidade gestora", "pontos por município"],
+      "defesa-civil.html": ["pontos por município", "SEDEC/MIDR (DOU)", "S2iD"],
+      "saude.html": ["antecipação", "Backlog"]
+    },
+    "_nota_por_pagina": "A lista de cada página fica no contrato dela, e é lá que o portão a lê. Esta cópia existe para a lista ser visível num lugar só; o contrato prevalece, porque é ele que declara as divergências."
+  },
+
+  "numeros": {
+    "fonte": "handover da Imprensa (02/10/2026) e CLAUDE.md (regras editoriais)",
+    "formato": "pt-BR",
+    "zero_por_extenso_em_cartao": true,
+    "populacao_em_milhoes_uma_casa": true,
+    "travessao_em_cartao_proibido": true,
+    "sem_dado_nunca_e_zero": true,
+    "_nota": "Zero medido e ausência de dado são coisas distintas, e nenhuma das duas é travessão. O portão confere o cartão RENDERIZADO: vazio ou '—' reprova, e 'sem dado' com a série em disco também."
+  },
+
+  "dados_na_pagina": {
+    "fonte": "handovers de 01 e 02/10/2026",
+    "estados_em_mapa": true,
+    "municipios_em_lista_com_busca": true,
+    "comparacao_construida_proibida": true,
+    "_nota_comparacao": "Razão entre etapas e ranking ordinal são comparações NOSSAS, e a página não as constrói: ela mostra as etapas e quem compara é o leitor.",
+    "nada_escrito_a_mao_que_dependa_do_dado": true
+  },
+
+  "acessibilidade": {
+    "fonte": "AI_VISUAL_ART_DIRECTION.md §23 e CLAUDE.md (marca pessoal, item 7 do checklist)",
+    "alvo_de_toque_px": 44,
+    "largura_de_celular_px": 390,
+    "sem_rolagem_horizontal": true,
+    "texto_invisivel_proibido": true,
+    "midia_rotulada": true,
+    "_nota_alvo": "A régua de 44 px vale no celular, e só para alvo que não está dentro de um parágrafo: link em meio a texto corrido tem a altura da linha, e cobrar 44 px ali quebraria a prosa."
+  }
+}

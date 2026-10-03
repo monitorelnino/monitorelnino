@@ -84,7 +84,7 @@ def cartoes_da_saude(dengue: dict, srag: dict, painel: dict, sinais: dict, monit
                   if se_d else "notificações de dengue na semana epidemiológica",
         "fonte": "Ministério da Saúde (Sinan)", "sem_coleta": se_d is None,
         "nota": "notificações, não casos confirmados; as últimas semanas são parciais e sobem com "
-                "as notificações atrasadas",
+                "as notificações atrasadas; este número não indica relação com o El Niño",
     })
     ano_s = str((srag or {}).get("ano_corrente") or "")
     nac = nacional_da_serie((srag or {}).get("serie") or {}, ano_s)
@@ -95,7 +95,8 @@ def cartoes_da_saude(dengue: dict, srag: dict, painel: dict, sinais: dict, monit
                    + se_s.split("-")[-1]) if se_s else
                   "internações por síndrome respiratória grave na semana epidemiológica",
         "fonte": "Ministério da Saúde (SIVEP-Gripe)", "sem_coleta": se_s is None,
-        "nota": "as últimas semanas são parciais e sobem com as notificações atrasadas",
+        "nota": "as últimas semanas são parciais e sobem com as notificações atrasadas; este "
+                "número não indica relação com o El Niño",
     })
     M = (painel or {}).get("municipios") or {}
     ufs = sorted({m.get("uf") for m in M.values()

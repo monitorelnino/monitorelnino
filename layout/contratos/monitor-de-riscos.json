@@ -1,0 +1,50 @@
+{
+  "_governanca": "Contrato de layout do Monitor de riscos (handover 'Conformidade permanente', 02/10/2026, item 1.3). Nasce do que a página PUBLICA hoje, com os textos aprovados em 30/09/2026.",
+  "pagina": "monitor-de-riscos.html",
+  "componentes": {
+    "figura": ".cartao-mapa",
+    "grade_figuras": ".grade-figuras--3"
+  },
+  "h2_esperados": [
+    "Situação atual",
+    "Os riscos no Brasil"
+  ],
+  "_nota_raiz": "Esta página não usa `<section>`: os blocos dela são `div` sem id, e o despejo não as vê como seção. O contrato declara então o que se pode provar sem reescrever a marcação: a ORDEM dos títulos (`h2_esperados`), as figuras que têm de existir e estar no componente, e o vocabulário proibido. Divergência declarada: é menos do que um contrato de seção prova, e reescrever a marcação de três páginas publicadas para ganhar o resto não era o pedido.",
+  "figuras_esperadas": [
+    {
+      "el": "boxRoni"
+    },
+    {
+      "el": "boxAnomalia"
+    },
+    {
+      "el": "boxRiscoPrevisto"
+    },
+    {
+      "el": "boxSecas"
+    },
+    {
+      "el": "boxFogo"
+    },
+    {
+      "el": "boxAr"
+    },
+    {
+      "el": "boxTemperatura"
+    },
+    {
+      "el": "boxAvisos"
+    }
+  ],
+  "exige_texto": [
+    "Os riscos no Brasil"
+  ],
+  "texto_proibido": [
+    "FIGURA",
+    "Corte da edição",
+    "desastre",
+    "defeso"
+  ],
+  "secoes": [],
+  "_nota_pacifico": "03/10/2026: as duas figuras do Pacífico (`boxRoni`, `boxAnomalia`) estavam FORA do componente `.cartao-mapa` — eram as duas únicas figuras com mídia do site fora dele. O portão de conformidade apontou, e a correção foi pôr as duas no componente, e não abrir exceção: a regra de componente existe para que figura equivalente tenha a mesma moldura."
+}

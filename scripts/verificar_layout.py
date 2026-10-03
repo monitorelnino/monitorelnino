@@ -83,8 +83,14 @@ def problemas_do_despejo(contrato: dict, despejo: dict) -> list:
         return ["despejo sem a largura de 1280 px"]
 
     secoes_contrato = contrato.get("secoes") or []
-    # (a) ordem dos h2
-    esperados = [s["h2"] for s in secoes_contrato if s.get("h2")]
+    # (a) ordem dos h2.
+    # 03/10/2026: três páginas públicas (inicial, Monitor de riscos, Blog) não usam `<section>` —
+    # os blocos delas são `div` sem id, e o despejo não as vê como seção. Para que elas também
+    # tenham contrato, ele pode declarar a ordem dos títulos na RAIZ, em `h2_esperados`, e as
+    # figuras em `figuras_esperadas`. É menos do que um contrato de seção prova, e é o que se pode
+    # provar sem reescrever a marcação daquelas páginas — divergência declarada em cada contrato.
+    esperados = list(contrato.get("h2_esperados") or [])
+    esperados += [s["h2"] for s in secoes_contrato if s.get("h2")]
     vistos = [h for h in (d1280.get("h2") or []) if h]
     if [h for h in vistos if h in esperados] != esperados:
         p.append(f"ordem dos títulos divergiu do contrato: contrato {esperados} · página {vistos}")
@@ -185,6 +191,16 @@ def problemas_do_despejo(contrato: dict, despejo: dict) -> list:
             if exigido not in texto:
                 p.append(f"seção '{sid}': texto exigido ausente: {exigido!r}")
 
+    # figuras declaradas na raiz (páginas sem `<section>`): presença e componente
+    for esperada in contrato.get("figuras_esperadas") or []:
+        f = figuras.get(esperada if isinstance(esperada, str) else esperada.get("el"))
+        alvo = esperada if isinstance(esperada, str) else esperada.get("el")
+        if f is None:
+            p.append(f"figura '{alvo}' do contrato não existe na página")
+            continue
+        if not isinstance(esperada, str) and esperada.get("cartao_mapa", True) and not f.get("cartao_mapa"):
+            p.append(f"figura '{alvo}' fora do componente .cartao-mapa")
+
     # (c) toda figura com mídia ou lista dentro do componente
     for f in d1280.get("figuras") or []:
         if (f.get("tem_midia") or f.get("tem_lista")) and f.get("visivel") and not f.get("cartao_mapa"):
@@ -256,6 +272,26 @@ def autoteste() -> int:
         d = copy.deepcopy(bom)
         mud(d["larguras"]["1280"])
         return d
+
+    raiz = {"pagina": "y.html", "h2_esperados": ["Primeiro", "Segundo"],
+            "figuras_esperadas": [{"el": "boxR1"}], "secoes": []}
+    despejo_raiz = {"larguras": {"1280": {
+        "h2": ["Primeiro", "Segundo"], "secoes": [], "grades": [],
+        "figuras": [{"id": "boxR1", "cartao_mapa": True, "tem_midia": True, "visivel": True,
+                     "largura": 300, "pai_grade": "grade-figuras grade-figuras--3"}],
+        "numeros": [], "estados": [], "texto_visivel": "", "erros_de_runtime": [],
+        "rolagem_horizontal": False}}}
+    casos_raiz = [
+        ("contrato de raiz: ordem e figura conferem",
+         problemas_do_despejo(raiz, despejo_raiz) == []),
+        ("contrato de raiz: ordem trocada reprova",
+         any("ordem dos títulos" in x for x in problemas_do_despejo(
+             raiz, {"larguras": {"1280": dict(despejo_raiz["larguras"]["1280"],
+                                              h2=["Segundo", "Primeiro"])}}))),
+        ("contrato de raiz: figura ausente reprova",
+         any("não existe na página" in x for x in problemas_do_despejo(
+             raiz, {"larguras": {"1280": dict(despejo_raiz["larguras"]["1280"], figuras=[])}}))),
+    ]
 
     casos = [
         ("contrato cumprido não acusa nada", problemas_do_despejo(contrato, bom) == []),

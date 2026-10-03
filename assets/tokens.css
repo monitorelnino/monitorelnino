@@ -210,5 +210,8 @@
   --tabela-altura-max: 480px;   /* .tbl-wrap rolável dentro da figura */
   --diagrama-altura: 300px;     /* diagrama das MPs (rotas por órgão) */
   --medida-leitura: 68ch;       /* parágrafos corridos */
-  --alvo-toque: 40px;           /* botões e itens de navegação no toque */
+  --alvo-toque: 44px;           /* botões e itens de navegação no toque — 03/10/2026: de 40 para
+                                   44 px, a régua da direção de arte que o portão de conformidade
+                                   passou a cobrar. O token é um lugar só, e por isso a correção
+                                   valeu para todo botão do site de uma vez. */
 }

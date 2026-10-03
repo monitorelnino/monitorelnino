@@ -897,7 +897,9 @@ def montar(corte: date) -> dict:
     faixas["rotulo"] = "Estados que mudaram de faixa no MARÉ Legal ou no MARÉ Saúde"
     capitais = cartao_capitais_com_plano(municipios)
     capitais["id"] = "capitais_com_plano"
-    capitais["rotulo"] = "Capitais com plano localizado"
+    # O rótulo do handover é "{n} de 27 capitais com plano localizado": o número grande é o `n`, e o
+    # "de 27" entra no rótulo, que é onde o denominador se lê sem competir com o valor.
+    capitais["rotulo"] = "de 27 capitais com plano localizado"
 
     cartoes = [planos, faixas, capitais]
     cartoes += cartoes_das_emergencias(dc)

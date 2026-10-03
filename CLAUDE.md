@@ -3,6 +3,30 @@
 Lido automaticamente pelo Claude Code ao abrir o projeto. Resume as regras de
 trabalho; os documentos canônicos citados abaixo prevalecem em caso de dúvida.
 
+> # HIERARQUIA DAS REGRAS (editoria, 02/10/2026 — conformidade permanente)
+>
+> ```
+> AI_EDITORIAL_NARRATIVE_GOVERNANCE.md   (editorial e narrativa)
+> AI_VISUAL_ART_DIRECTION.md             (direção de arte)
+>   >  METODOLOGIA.md                    (travas de PROVA: limite de fato, não de estilo)
+>   >  CLAUDE.md                         (§ Design, § 3 Paleta, § 4 Tipografia, regras editoriais)
+>   >  layout/contratos/<pagina>.json    (o layout de cada página)
+>   >  handovers                         (o pedido da rodada)
+> ```
+>
+> **Se um handover contrariar uma regra, a regra vence**: aplica-se a regra, registra-se a
+> divergência em uma linha (no contrato, no código ou no relatório) e segue-se — sem perguntar.
+>
+> As regras verificáveis por máquina estão extraídas em **`layout/regras.json`**, e quem reprova é
+> **`scripts/verificar_conformidade.py`**, portão bloqueante em todo PR que toque página, estilo,
+> script de página, figura, texto público ou dado exibido. Exceção só por `layout/excecoes.json`,
+> com regra, página, motivo, data e quem decidiu — exceção sem registro é vermelho.
+>
+> **Antes de mexer:** (1) ler as regras aplicáveis — os dois documentos `AI_*`, o § Design/Paleta/
+> Tipografia e o contrato da página; (2) mudança de LAYOUT começa pelo **contrato**, mudança de
+> REGRA começa pelo **documento-fonte** e por `regras.json`; (3) no PR, anexar a lista de
+> conformidade que o portão imprime; (4) handover contra regra → aplica a regra e registra.
+
 ## O projeto
 
 MARÉ · Medida de Antecipação e Resposta ao El Niño (monitorelnino.com.br),
