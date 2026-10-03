@@ -240,14 +240,14 @@
    "id": "municipios_alerta_cemaden",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob alerta do Cemaden",
-   "valor": 14,
+   "valor": 16,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "02/10/2026 19:15",
+   "referencia": "03/10/2026 09:56",
    "fonte": "Cemaden",
    "url_fonte": "https://www.gov.br/cemaden/pt-br",
-   "consultado_em": "02/10/2026 19:15",
+   "consultado_em": "03/10/2026 09:56",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -260,14 +260,14 @@
    "id": "municipios_aviso_inmet",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob aviso do Inmet",
-   "valor": 2876,
+   "valor": 2582,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "02/10/2026 19:15",
+   "referencia": "03/10/2026 09:56",
    "fonte": "Inmet",
    "url_fonte": "https://portal.inmet.gov.br/",
-   "consultado_em": "02/10/2026 19:15",
+   "consultado_em": "03/10/2026 09:56",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -280,14 +280,14 @@
    "id": "decreto_e_alerta_ao_mesmo_tempo",
    "grupo": "risco_agora",
    "rotulo": "Municípios com decreto de emergência e alerta ao mesmo tempo",
-   "valor": 332,
+   "valor": 345,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "02/10/2026 19:15",
+   "referencia": "03/10/2026 09:56",
    "fonte": "MARÉ (cruzamento das duas consultas)",
    "url_fonte": null,
-   "consultado_em": "02/10/2026 19:15",
+   "consultado_em": "03/10/2026 09:56",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -300,112 +300,80 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 18756,
+   "valor": 2448,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
    "url_fonte": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
-   "consultado_em": "02/10/2026",
+   "consultado_em": "03/10/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "Focos do dia — focos_diario_br_20261002.csv",
+   "nota": "Focos do dia — focos_diario_br_20261003.csv",
    "secundaria": null,
    "lista": [
     {
      "uf": "PA",
-     "valor": 6786
-    },
-    {
-     "uf": "BA",
-     "valor": 5272
+     "valor": 1158
     },
     {
      "uf": "MA",
-     "valor": 1257
+     "valor": 439
+    },
+    {
+     "uf": "BA",
+     "valor": 316
     },
     {
      "uf": "AM",
-     "valor": 1200
-    },
-    {
-     "uf": "MG",
-     "valor": 987
-    },
-    {
-     "uf": "PI",
-     "valor": 892
+     "valor": 186
     },
     {
      "uf": "MT",
-     "valor": 506
-    },
-    {
-     "uf": "AP",
-     "valor": 397
-    },
-    {
-     "uf": "TO",
-     "valor": 339
-    },
-    {
-     "uf": "AC",
-     "valor": 251
+     "valor": 103
     },
     {
      "uf": "RO",
-     "valor": 228
+     "valor": 78
+    },
+    {
+     "uf": "MG",
+     "valor": 50
+    },
+    {
+     "uf": "AP",
+     "valor": 33
     },
     {
      "uf": "RR",
-     "valor": 216
+     "valor": 25
     },
     {
-     "uf": "CE",
-     "valor": 112
-    },
-    {
-     "uf": "PE",
-     "valor": 101
-    },
-    {
-     "uf": "RS",
-     "valor": 39
-    },
-    {
-     "uf": "AL",
-     "valor": 33
-    },
-    {
-     "uf": "RN",
-     "valor": 33
-    },
-    {
-     "uf": "GO",
-     "valor": 32
-    },
-    {
-     "uf": "PB",
-     "valor": 30
-    },
-    {
-     "uf": "SE",
+     "uf": "PI",
      "valor": 18
     },
     {
-     "uf": "ES",
-     "valor": 10
+     "uf": "AL",
+     "valor": 14
     },
     {
-     "uf": "MS",
-     "valor": 9
+     "uf": "AC",
+     "valor": 12
     },
     {
-     "uf": "SC",
-     "valor": 7
+     "uf": "CE",
+     "valor": 11
     },
     {
-     "uf": "PR",
+     "uf": "RN",
+     "valor": 2
+    },
+    {
+     "uf": "SE",
+     "valor": 2
+    },
+    {
+     "uf": "PE",
      "valor": 1
     }
    ],
@@ -421,10 +389,10 @@
    "unidade": "°C",
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "02/10/2026",
+   "referencia": "03/10/2026",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "url_fonte": null,
-   "consultado_em": "02/10/2026",
+   "consultado_em": "03/10/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -437,7 +405,7 @@
    "id": "capitais_ar_ruim_ou_pior",
    "grupo": "risco_agora",
    "rotulo": "Capitais com o ar na faixa ruim ou acima dela",
-   "valor": 11,
+   "valor": 12,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
@@ -454,12 +422,13 @@
     "AC",
     "AM",
     "DF",
-    "ES",
-    "MG",
-    "MS",
-    "PR",
+    "GO",
+    "MT",
+    "PI",
     "RJ",
     "RO",
+    "RS",
+    "SC",
     "SP",
     "TO"
    ],
