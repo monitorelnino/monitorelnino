@@ -376,6 +376,14 @@ def aplicar_estadual(uf, texto, numero, data, url, hoje):
 
     alvo["status"] = status_novo
     alvo["doc"] = f"{texto[:200].strip()} (ato {numero}, {data})" if numero else texto[:200].strip()
+    # DECISÃO DA EDITORIA, 03/10/2026: o plano publicado sem ato de aprovação localizado conta no
+    # degrau da leitura, nos DOIS índices, com a marca visível na ficha. No estadual, "sem ato" é
+    # exatamente o caso em que não há número de ato a citar — e a ficha do estado passa a dizê-lo,
+    # em vez de mostrar o instrumento como se o ato tivesse sido localizado.
+    if numero:
+        alvo.pop("sem_ato_de_aprovacao", None)
+    else:
+        alvo["sem_ato_de_aprovacao"] = True
     alvo["data"] = data
     alvo["natureza_doc"] = "ex-ante"
     alvo["justificativa_ex_ante"] = (

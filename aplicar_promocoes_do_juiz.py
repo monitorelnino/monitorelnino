@@ -70,7 +70,7 @@ def registro_do_veredito(v: dict, lat, lon, canal: str, fonte_base: str, hoje: s
     `categoria` vem do veredito — não é fixa. A versão anterior deste caminho, em
     `julgar_e_aplicar_descobertas.py`, gravava sempre "plano", e um `plano_antigo` entraria como
     plano novo, mudando o que o índice conta."""
-    return {
+    registro = {
         "nome": v["municipio"], "uf": v["uf"], "categoria": v["categoria"],
         "documento": documento_do_veredito(v),
         "data": v.get("data"),
@@ -80,6 +80,18 @@ def registro_do_veredito(v: dict, lat, lon, canal: str, fonte_base: str, hoje: s
         "hash_evidencia": v.get("hash_evidencia"),
         "pista_id": v.get("pista_id"), "codebook": v.get("codebook"),
     }
+    # DECISÃO DA EDITORIA, 03/10/2026: o plano publicado sem ato de aprovação localizado conta no
+    # degrau da leitura, **com a marca visível na ficha**. A marca é do REGISTRO, e não do texto da
+    # fonte: quem lê a ficha precisa saber que o documento é o plano publicado e que o ato que o
+    # aprova não foi localizado — e a marca sai quando o ato aparecer, numa rodada seguinte.
+    if v.get("sem_ato_de_aprovacao"):
+        registro["sem_ato_de_aprovacao"] = True
+        registro["marca_na_ficha"] = "sem ato de aprovação localizado"
+        registro["fonte"] = (f"{fonte_base} — plano publicado em domínio oficial do ente, lido e "
+                             f"classificado pelo juiz automático em {hoje} (codebook "
+                             f"{v.get('codebook')}); ato de aprovação não localizado até o corte; "
+                             "critérios em promocoes_automaticas.json")
+    return registro
 
 
 def documento_do_veredito(v: dict) -> str:
@@ -124,6 +136,17 @@ def autoteste() -> int:
                   and r["data"] == "30/12/2025"))
     casos.append(("o registro liga à decisão pelo pista_id e pelo codebook",
                   r["pista_id"] == "abc" and r["codebook"] == V))
+    # 03/10/2026: a marca da decisão da editoria viaja do veredito para o registro, e é ela que a
+    # ficha mostra. Registro sem a marca não pode ganhá-la por descuido, e com a marca não pode
+    # perdê-la — os dois casos abaixo guardam as duas metades.
+    r_marca = registro_do_veredito(dict(base, sem_ato_de_aprovacao=True), -1, -2, "c", "f", "01/01/2026")
+    casos.append(("plano sem ato: o registro leva a marca para a ficha",
+                  r_marca.get("sem_ato_de_aprovacao") is True
+                  and r_marca.get("marca_na_ficha") == "sem ato de aprovação localizado"))
+    casos.append(("plano sem ato: a fonte do registro diz que o ato não foi localizado",
+                  "ato de aprovação não localizado até o corte" in r_marca["fonte"]))
+    casos.append(("plano COM ato não ganha a marca",
+                  "sem_ato_de_aprovacao" not in r and "marca_na_ficha" not in r))
     casos.append(("a fonte diz que foi o juiz, com a versão",
                   "juiz automático" in r["fonte"] and "1.1" in r["fonte"]))
     casos.append(("a ementa sai do objeto ex-ante",

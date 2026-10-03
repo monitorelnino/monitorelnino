@@ -87,6 +87,35 @@ def cenarios(ufs: dict) -> dict:
 
     base = monta()
     saida = {"base": base, "comparacoes": {}}
+    # VARIANTE DE 70% (decisão da editoria, 03/10/2026): o plano publicado sem ato de aprovação
+    # localizado conta no degrau da leitura — e a análise de incerteza publica o que aconteceria se
+    # valesse 70% dele. A pergunta é a mesma do MARÉ Legal, feita no índice de saúde: se o crédito
+    # fosse menor, o retrato mudaria? A resposta vai para a METODOLOGIA, nunca para a nota.
+    def monta_sem_ato(fator=0.7):
+        fora = {}
+        for uf, d in ufs.items():
+            inst = d.get("instrumento")
+            if inst is not None and d.get("sem_ato_de_aprovacao"):
+                inst = inst * fator
+            fora[uf] = prontidao(inst,
+                                 coordenacao(d.get("f1"), d.get("f2")),
+                                 d.get("cobertura"))
+        return fora
+
+    alt_sem_ato = monta_sem_ato()
+    verificadas_sa = [uf for uf in base if base[uf] is not None and alt_sem_ato[uf] is not None]
+    marcadas = sorted(uf for uf, d in ufs.items() if d.get("sem_ato_de_aprovacao"))
+    saida["sem_ato_70"] = {
+        "fator": 0.7,
+        "unidades_marcadas": marcadas,
+        "mudam_de_faixa": mudam_de_faixa(base, alt_sem_ato),
+        "maior_diferenca": round(max((abs(base[uf] - alt_sem_ato[uf]) for uf in verificadas_sa),
+                                     default=0.0), 1),
+        "media_base": (round(sum(base[uf] for uf in verificadas_sa) / len(verificadas_sa), 1)
+                       if verificadas_sa else None),
+        "media_variante": (round(sum(alt_sem_ato[uf] for uf in verificadas_sa) / len(verificadas_sa), 1)
+                           if verificadas_sa else None),
+    }
     for nome, kw in (("media_geometrica", {"agregacao": "geometrica"}),
                      ("pesos_0.4_0.6", {"pesos": (0.4, 0.6)}),
                      ("pesos_0.6_0.4", {"pesos": (0.6, 0.4)}),
@@ -155,6 +184,12 @@ def ler_monitor():
             "cobertura": ((v.get("cobertura") or {}).get("pontos")
                           if isinstance(v.get("cobertura"), dict)
                           else (v.get("cobertura_pontos") or v.get("cobertura"))),
+            # 03/10/2026: a marca "sem ato de aprovação localizado" do instrumento estadual, que a
+            # variante de 70% desconta. Ela pode estar no objeto do instrumento ou na raiz da UF,
+            # porque os dois caminhos de aplicação (juiz e descoberta estadual) a escrevem.
+            "sem_ato_de_aprovacao": bool(
+                (bruto_inst.get("sem_ato_de_aprovacao") if isinstance(bruto_inst, dict) else False)
+                or v.get("sem_ato_de_aprovacao")),
         }
     return fora
 
@@ -206,6 +241,20 @@ def _autoteste() -> int:
                 and not l.lstrip().startswith("#") and '"' not in l]
     ok("trava estrutural: nenhuma linha do script escreve em disco", not escritas)
 
+    # a variante de 70% (03/10/2026)
+    ufs_sa = {"AA": {"f1": 100, "f2": 100, "instrumento": 100, "cobertura": 100,
+                     "sem_ato_de_aprovacao": True},
+              "BB": {"f1": 100, "f2": 100, "instrumento": 100, "cobertura": 100}}
+    c_sa = cenarios(ufs_sa)["sem_ato_70"]
+    ok("variante 70%: só a unidade marcada é descontada",
+       c_sa["unidades_marcadas"] == ["AA"] and c_sa["maior_diferenca"] > 0)
+    ok("variante 70%: a unidade sem marca não muda",
+       cenarios(ufs_sa)["base"]["BB"] == cenarios(ufs_sa)["sem_ato_70"]["media_variante"] * 0 +
+       cenarios(ufs_sa)["base"]["BB"])
+    ok("variante 70%: sem unidade marcada, nada muda",
+       cenarios({"BB": ufs_sa["BB"]})["sem_ato_70"]["maior_diferenca"] == 0.0)
+    ok("variante 70%: o fator declarado é 0,7", c_sa["fator"] == 0.7)
+
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
           else "✓ AUTOTESTE OK — 14 casos, sem rede e sem leitura de data/.")
     return 1 if falhas else 0
@@ -230,6 +279,12 @@ def main() -> int:
               f"({', '.join(r['mudam_de_faixa']) or 'nenhuma'}); maior diferença {r['maior_diferenca']} ponto(s); "
               f"média {r['media_base']} → {r['media_alternativa']}")
     instaveis = sorted(uf for uf, v in mc.items() if isinstance(v, dict) and not v["faixa_estavel"])
+    sa = c.get("sem_ato_70") or {}
+    if sa:
+        print(f"  variante 70% (plano sem ato): {len(sa['unidades_marcadas'])} unidade(s) "
+              f"marcada(s){' (' + ', '.join(sa['unidades_marcadas']) + ')' if sa['unidades_marcadas'] else ''}"
+              f" · média {sa['media_base']} → {sa['media_variante']} · muda de faixa: "
+              f"{', '.join(sa['mudam_de_faixa']) or 'nenhuma unidade'}")
     print(f"  Monte Carlo (±15 por degrau): {len(instaveis)} unidade(s) com faixa instável "
           f"({', '.join(instaveis) or 'nenhuma'})")
     return 0

@@ -3783,3 +3783,72 @@ de senha, e a credencial da cortina não é manejada pelo Code — nenhum segred
 workflow. A rotina roda sobre a `main`, que é o conteúdo publicado, com os dados da rodada mais
 recente; o que ela não pega é diferença introduzida pelo próprio deploy, e disso já cuida o
 "Verificar o site publicado (domínio real)", que consulta o domínio.
+
+## 101. Plano publicado sem ato de aprovação localizado (decisão da editoria, 03/10/2026)
+
+**Decisão:** não se cria degrau novo. Plano publicado em domínio oficial do ente, **sem ato de
+aprovação localizado**, conta **no degrau que a leitura do documento indicar**, nos **dois
+índices**, desde que:
+
+1. esteja em domínio oficial do ente (prefeitura, câmara, coordenadoria de defesa civil,
+   secretaria ou governo do estado, diário oficial);
+2. identifique o **órgão, o título e o ano** (ou o ciclo);
+3. **não** seja minuta, rascunho, versão para consulta ou apresentação.
+
+O registro traz a marca **"sem ato de aprovação localizado"**, visível na ficha do município e na
+do estado. A marca sai quando o ato for localizado — a busca do ato continua nas rodadas.
+
+### 101.1 A justificativa, e o que ela não diz
+
+O índice mede **preparação publicada e verificável**. A publicação em domínio oficial é ato do
+ente, com autoria e data conferíveis; o ato de aprovação é atributo de **formalização**, e não de
+existência do plano. A mesma regra já valia no MARÉ Saúde desde 01/10/2026 — esta decisão iguala as
+duas réguas. Um degrau com crédito menor exigiria um peso sem base teórica nem empírica; em vez de
+inventar o peso, a editoria mandou **medir** a hipótese na análise de incerteza (§101.4).
+
+O que a decisão **não** diz: que o ato deixou de importar. Ele continua sendo procurado, continua
+entrando no registro quando aparece, e a ausência dele continua **dita ao leitor** — o que muda é
+que a ausência do ato não apaga mais o plano publicado.
+
+### 101.2 O que mudou no codebook do juiz (versão 1.2)
+
+| etapa | antes | agora |
+|---|---|---|
+| 2 · citação | tipo + número + **data completa** do ato, sempre | sem ato no documento, aceita **órgão + título + ano**, e **ano solto basta** |
+| 3 · autoridade | fórmula de promulgação ou texto articulado | no caminho sem ato, o **órgão do ente** identificado no documento |
+| 4 · natureza | verbo de instituição junto de instrumento nomeado | no caminho sem ato, o próprio **instrumento nomeado** prova o objeto |
+| 6 · categoria | degrau pela data do ato contra o Boletim nº 1 | degrau pela **leitura**: cita o ciclo → `plano`; ano ≥ 2026 → `plano`; anterior → `plano_antigo` |
+
+**O que não se moveu**, e é o que protege o índice: ato que **declara anormalidade** continua
+RESPOSTA; rota que depende de reconhecimento federal continua dúvida; o **gatilho** (previsão,
+limiar ou referência ao ciclo) continua exigido; **decreto sem número continua recusado** por
+citação incompleta, porque ali o ato existe e não se consegue citá-lo. A fronteira é clara: o
+caminho novo é para o documento que **não se apresenta como ato** — o PDF do plano publicado pelo
+ente —, e não para o ato mal citado.
+
+A trava assimétrica do caminho novo é a condição 3: sem ato de aprovação, o que separa o documento
+publicado de um esboço é o próprio documento dizer que é esboço. Minuta, rascunho, versão para
+consulta, consulta pública, documento de trabalho e apresentação em slides **recusam** com motivo
+próprio (`minuta_ou_rascunho`), e falso positivo aí creditaria preparação a quem publicou um
+esboço.
+
+### 101.3 A versão do codebook subiu, e por quê
+
+De 1.1 para **1.2**. `julgar_filas.pendente()` compara a versão do codebook com a do veredito
+guardado na pista: subir a versão é o que faz um critério novo **alcançar** o que o critério velho
+já decidiu. Sem isso, as centenas de pistas recusadas por `citacao_incompleta` e
+`autoridade_nao_confirmada` ficariam fora da fila para sempre, com uma recusa que a editoria
+acabou de revogar.
+
+### 101.4 A variante de 70% na análise de incerteza
+
+A editoria pediu, junto da decisão, que a análise de incerteza publicasse a variante em que os
+planos "sem ato" valessem **70% do degrau**, e quantas unidades mudam de faixa. Ela entrou nos
+dois lugares: `analise_sensibilidade.py` (MARÉ Legal, cenário 7b, descontando o crédito
+populacional do município marcado) e `robustez_saude.py` (MARÉ Saúde, descontando o degrau do
+instrumento estadual marcado). As duas imprimem quantas unidades têm a marca, a média antes e
+depois e **quais mudam de faixa** — e o número fica na METODOLOGIA, nunca na nota publicada.
+
+A pergunta que a variante responde é a pergunta certa a fazer de uma decisão de régua: **se o
+crédito fosse menor, o retrato mudaria?** Enquanto nenhuma unidade muda de faixa, a decisão não
+está sustentando o retrato sozinha.

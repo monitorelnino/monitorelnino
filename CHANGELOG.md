@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-03 · #533 · Plano publicado sem ato de aprovação localizado conta no degrau da leitura
+
+Decisão da editoria, sem degrau novo: plano em domínio oficial do ente conta nos dois índices, com três condições (domínio oficial; órgão, título e ano; não ser minuta) e a marca "sem ato de aprovação localizado" na ficha do município e do estado. Etapas 2, 3, 4 e 6 do codebook ajustadas, versão 1.2, que devolve à fila o que a régua antiga recusou. Variante de 70% do degrau entra na análise de incerteza dos dois índices. METODOLOGIA §101.
+
 ## 2026-10-03 · #532 · A pista de documento oficial pertence a quem é o domínio
 
 Garimpo pedido pela editoria: 13 documentos de plano em domínio oficial ao juiz. Nenhum promovido, e o relatório mostrou por quê — **nove estavam atribuídos ao município errado**, pelo nome que aparecia no trecho (o plano de Celso Ramos virou pista de Salete). `municipio_do_dominio.py` resolve o host no ente dono e `corrigir_atribuicao_por_dominio.py` reatribui e devolve ao juiz. Rejulgados com o ente certo, os 9 param na etapa 2 ou 3: o plano não é o ato.

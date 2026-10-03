@@ -2,7 +2,7 @@
  "_governanca": "Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. `prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). `imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o leitor peça o documento ao gestor. Só municípios com algo a dizer; ausência = nada localizado. `defesa_civil_orcamento` (§207) = despesa liquidada na subfunção 06.182 declarada ao SICONFI, peso ZERO; classe de ausência nunca vira zero.",
  "gerado_em": "2026-10-03",
  "total": 2219,
- "com_registro": 267,
+ "com_registro": 268,
  "com_imprensa": 185,
  "prioritarios": 2095,
  "com_despesa_182": 2219,
@@ -28015,6 +28015,12 @@
    "nome": "Umuarama",
    "uf": "PR",
    "prioritario": true,
+   "categoria": "plano",
+   "documento": "neste Plano. 11/08/2026 Página 3 de 72 Plano de contingência do município de Umuarama - PR 1.2. Página de Assinaturas Nome Instituição Assinatura 05 - MAJOR VALDECIR GONÇALVES S…",
+   "url": "https://umuarama.pr.gov.br/files/ArquivoDiversos/arquivo/1786533277.pdf",
+   "data": "2026",
+   "fonte": "Portal oficial (umuarama.pr.gov.br) — plano publicado em domínio oficial do ente, lido e classificado pelo juiz automáti",
+   "sem_ato_de_aprovacao": true,
    "imprensa": [
     {
      "titulo": "Francisco Alves atualiza Plano de Contingência e reforça ações ...",
@@ -28039,8 +28045,7 @@
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
-   },
-   "categoria": "nao_localizado"
+   }
   },
   "4128203": {
    "nome": "União da Vitória",

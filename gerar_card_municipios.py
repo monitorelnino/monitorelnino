@@ -78,6 +78,12 @@ def montar(referencia, prioritarios, municipios, pistas, despesa_182=None):
         c = cards.setdefault(cod, {"nome": r["nome"], "uf": r["uf"], "prioritario": cod in prior})
         c.update({"categoria": r.get("categoria"), "documento": (r.get("documento") or "")[:220],
                   "url": r.get("url"), "data": r.get("data"), "fonte": (r.get("fonte") or "")[:120]})
+        # DECISÃO DA EDITORIA, 03/10/2026: o plano publicado sem ato de aprovação localizado conta
+        # no degrau da leitura, e a ficha diz isso. A marca viaja do registro para o card, que é o
+        # que a página lê — sem ela, o leitor veria "plano localizado" sem saber que o ato que o
+        # aprova não foi achado.
+        if r.get("sem_ato_de_aprovacao"):
+            c["sem_ato_de_aprovacao"] = True
     for p in pistas:
         st = p.get("status") or ""
         if not st.startswith("pista") or p.get("nivel_confianca") not in NIVEIS_NO_CARD:
@@ -156,7 +162,10 @@ def autoteste():
         "1301803": {"exercicio": 2025, "classe": "sem_lancamento_182", "rs_hab": None, "valores": {}},
         "9999999": {"exercicio": 2025, "classe": "com_lancamento", "rs_hab": 9.9, "valores": {"liquidada": 1.0}},
     }}
-    mun = [{"nome": "Bagé", "uf": "RS", "categoria": "plano", "documento": "Decreto x", "url": "https://bage.rs.gov.br/d", "data": "10/07/2026"}]
+    mun = [{"nome": "Bagé", "uf": "RS", "categoria": "plano", "documento": "Decreto x", "url": "https://bage.rs.gov.br/d", "data": "10/07/2026"},
+           {"nome": "Taió", "uf": "SC", "categoria": "plano", "documento": "Plano publicado",
+            "url": "https://defesacivil.taio.sc.gov.br/p.pdf", "data": "2026",
+            "sem_ato_de_aprovacao": True}]
     pis = [{"ibge": "3529005", "municipio": "Marília", "uf": "SP", "status": "pista — promover…", "nivel_confianca": "B", "titulo": "Marília prepara plano", "url": "https://www.marilianoticia.com.br/a", "data": "15/09/2026"},
            {"ibge": "3529005", "municipio": "Marília", "uf": "SP", "status": "pista — promover…", "nivel_confianca": "C", "titulo": "ruído", "url": "https://x", "data": "16/09/2026"},
            {"ibge": "3529005", "municipio": "Marília", "uf": "SP", "status": "rejeitada_humana", "nivel_confianca": "A", "titulo": "rejeitada", "url": "https://y", "data": "17/09/2026"},

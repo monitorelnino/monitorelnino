@@ -59,7 +59,24 @@ from classificador_natureza import citacao_completa, extrair_data
 # porque o critério mudou, e porque `pendente()` usa a versão para decidir o que volta à fila: subir
 # aqui devolve ao juiz toda pista já julgada sob a regra frouxa — inclusive as quatro que ela
 # promoveu por engano.
-CODEBOOK_VERSAO = "1.1 (28/09/2026)"
+CODEBOOK_VERSAO = "1.3 (03/10/2026)"
+# 1.3 — primeira rodada real do caminho novo, no mesmo dia: cinco promoções em sessenta pistas, e
+# DUAS eram notícia institucional no domínio do ente ("Prefeitura apresenta plano de contingência
+# para emergências"). A notícia satisfazia as três condições por acidente — está em domínio oficial,
+# cita o órgão, o título e o ano, e não é minuta. Faltava a condição que o handover do garimpo já
+# dizia com outras palavras: **a URL tem de ser o documento**. Sem isto, o caminho novo creditaria
+# preparação a quem publicou um release. Falso positivo é pior que falso negativo.
+#
+# 1.2 — DECISÃO DA EDITORIA de 03/10/2026: **plano publicado sem ato de aprovação localizado**
+# conta no degrau que a leitura do documento indicar, nos DOIS índices, com três condições
+# (domínio oficial do ente; órgão, título e ano identificados; não ser minuta, rascunho, versão
+# para consulta ou apresentação) e a marca "sem ato de aprovação localizado" na ficha.
+#
+# Por que a versão sobe: `pendente()` em `julgar_filas.py` compara a versão do codebook com a do
+# veredito guardado na pista. Subir a versão é o que faz um critério novo ALCANÇAR o que o critério
+# velho já decidiu — sem isso, as centenas de pistas recusadas por "citacao_incompleta" e
+# "autoridade_nao_confirmada" ficariam fora da fila para sempre, com uma recusa que a editoria
+# acabou de revogar.
 
 # --- Etapa 0 ---------------------------------------------------------------------------------
 # Padrões de fonte provável oficial. Mesma lista que `descobrir_planos.py` usa desde 18/09/2026;
@@ -99,6 +116,135 @@ RE_COLEGIADO = re.compile(
     r"resolu[çc][ãa]o\s+c[ií]b|comiss[ãa]o\s+intergestores)\b", re.I)
 RE_APROVACAO_COLEGIADA = re.compile(
     r"\b(aprova(?:d[oa]|r|do\s+ad\s+referendum)?|homologa(?:d[oa]|r)?|referenda(?:d[oa]|r)?)\b", re.I)
+
+# --- Etapas 2 e 3, caminho do PLANO SEM ATO (decisão da editoria, 03/10/2026) ----------------
+# Condição 3 da decisão: **não ser minuta, rascunho, versão para consulta ou apresentação**. É a
+# trava assimétrica deste caminho — sem ato de aprovação, o que separa o documento publicado de um
+# esboço é o próprio documento dizer que é esboço. Falso positivo aqui creditaria preparação a quem
+# publicou uma minuta.
+RE_MINUTA = re.compile(
+    r"\b(minuta|rascunho|vers[ãa]o\s+preliminar|vers[ãa]o\s+para\s+consulta|consulta\s+p[úu]blica|"
+    r"em\s+elabora[çc][ãa]o|documento\s+de\s+trabalho|draft|apresenta[çc][ãa]o\s+em\s+slides|"
+    r"n[ãa]o\s+aprovado)\b", re.I)
+# Condição 2, primeira parte: o documento identifica o ÓRGÃO do ente. Publicação em domínio oficial
+# é ato do ente (etapa 0 já exige o domínio); aqui se exige que o documento diga de quem é.
+RE_ORGAO_DO_ENTE = re.compile(
+    r"\b(prefeitura\s+municipal|prefeitura\s+d[aeo]|munic[íi]pio\s+d[aeo]|"
+    r"coordenadoria\s+(?:municipal|estadual)\s+de\s+(?:prote[çc][ãa]o\s+e\s+)?defesa\s+civil|"
+    r"coordenadoria\s+de\s+(?:prote[çc][ãa]o\s+e\s+)?defesa\s+civil|"
+    r"compdec|comdec|cedec|cepdec|defesa\s+civil\s+(?:de|do|da|municipal|estadual)|"
+    r"secretaria\s+(?:municipal|de\s+estado|estadual)|governo\s+do\s+estado|"
+    r"estado\s+d[aeo]\s+\w+)\b", re.I)
+# Condição 2, segunda parte: o TÍTULO é de plano, e não de outro documento qualquer.
+RE_TITULO_DE_PLANO = re.compile(
+    r"\bplano\s+(?:municipal\s+|estadual\s+)?(?:de\s+)?"
+    r"(conting[êe]ncia|a[çc][ãa]o\s+e\s+conting[êe]ncia|prote[çc][ãa]o\s+e\s+defesa\s+civil|"
+    r"opera[çc][õo]es|preven[çc][ãa]o)\b|\bplamcon\b|\bplancon\b|\bplacon\b", re.I)
+# Condição 2, terceira parte: o ANO, ou o ciclo. Ano solto BASTA aqui — e só aqui. No caminho do
+# ATO a data completa continua obrigatória, porque ato se situa por data.
+RE_ANO_OU_CICLO = re.compile(r"\b(20\d{2})\s*[/-]?\s*(20\d{2})?\b|\bel\s*ni[ñn]o\b", re.I)
+# O documento se APRESENTA como ato? Palavra de tipo de ato numa linha só, sem número junto (se
+# houvesse número, `RE_TIPO_E_NUMERO` teria casado). Serve para separar as duas recusas: decreto
+# sem número é ATO com citação incompleta, e continua recusado por `citacao_incompleta` — o ato
+# existe e não se consegue citá-lo. O caminho do plano sem ato é para o documento que NÃO se
+# apresenta como ato: o PDF do plano publicado pelo ente.
+RE_ATO_SEM_NUMERO = re.compile(
+    r"^\s*(decreto|portaria|lei|resolu[çc][ãa]o|instru[çc][ãa]o\s+normativa)"
+    r"(?:\s+(?:municipal|estadual|complementar|ordin[áa]ri[oa]))?\s*$", re.I | re.M)
+
+
+# O documento É o plano, ou é uma NOTÍCIA sobre o plano? A pergunta separa o release institucional
+# ("Prefeitura apresenta o plano de contingência") do documento. Dois sinais, nos dois sentidos:
+RE_MARCA_DE_NOTICIA = re.compile(
+    r"\b(assessoria\s+de\s+(?:comunica[çc][ãa]o|imprensa)|secom|leia\s+(?:tamb[ée]m|mais)|"
+    r"compartilh[ae]|publicado\s+(?:em|por)\s|not[íi]cias?\s*[:>|]|"
+    r"[úu]ltimas\s+not[íi]cias|fale\s+com\s+a\s+prefeitura|redes\s+sociais|"
+    r"apresent(?:a|ou)\s+o\s+plano|lan[çc](?:a|ou)\s+o\s+plano)\b", re.I)
+# Estrutura de PLANO: as partes que um plano de contingência tem e uma notícia não tem.
+RE_ESTRUTURA_DE_PLANO = re.compile(
+    r"\b(este\s+plano|o\s+presente\s+plano|objetivo\s+deste\s+plano|"
+    r"n[íi]veis?\s+de\s+(?:alerta|prontid[ãa]o)|acionamento|atribui[çc][õo]es|"
+    r"fluxograma|an[eé]xo\s+[ivx0-9]|sum[áa]rio|"
+    r"1\s*[.)]\s*introdu[çc][ãa]o|pontos?\s+de\s+apoio|abrigos?\s+tempor[áa]rio|"
+    r"a[çc][õo]es\s+de\s+(?:prepara[çc][ãa]o|resposta)|matriz\s+de\s+risco)\b", re.I)
+EXTENSOES_DE_DOCUMENTO = (".pdf", ".doc", ".docx", ".odt", ".rtf")
+MINIMO_DE_ESTRUTURA = 2
+
+
+def e_o_proprio_plano(texto: str, url: str = None) -> tuple:
+    """(ok, motivo, provas). O julgado é o PLANO, e não uma notícia sobre ele. Função pura.
+
+    A prova vem por um de dois caminhos, e o segundo é mais exigente de propósito:
+      · a URL é um documento (`.pdf`, `.doc`, `.docx`, `.odt`, `.rtf`) — aí o que foi baixado é o
+        arquivo que o ente publicou;
+      · ou o texto traz pelo menos DOIS sinais de estrutura de plano (este plano, níveis de alerta,
+        acionamento, atribuições, anexo, sumário, pontos de apoio…) e nenhuma marca de notícia.
+
+    Marca de notícia com URL de página derruba: "Prefeitura apresenta o plano" é release, e release
+    não é plano. Com URL de documento a marca de notícia não derruba — um PDF pode citar a notícia
+    que o divulgou, e o que vale é o que foi baixado.
+    """
+    u = str(url or "").lower().split("?")[0]
+    e_documento = u.endswith(EXTENSOES_DE_DOCUMENTO)
+    estrutura = set(m.group(0).lower() for m in RE_ESTRUTURA_DE_PLANO.finditer(texto or ""))
+    noticia = RE_MARCA_DE_NOTICIA.search(texto or "")
+    if e_documento:
+        return True, "", {"prova": "a URL é o documento publicado pelo ente",
+                          "estrutura": sorted(estrutura)[:4]}
+    if noticia:
+        return False, "noticia_institucional_nao_e_o_plano", {
+            "prova": trecho_em_volta(texto, noticia),
+            "detalhe": "página de notícia no domínio do ente: a notícia diz que o plano existe, "
+                       "mas não é o plano"}
+    if len(estrutura) < MINIMO_DE_ESTRUTURA:
+        return False, "noticia_institucional_nao_e_o_plano", {
+            "detalhe": f"a página não é documento e traz {len(estrutura)} sinal(is) de estrutura "
+                       f"de plano (mínimo {MINIMO_DE_ESTRUTURA})",
+            "estrutura": sorted(estrutura)}
+    return True, "", {"prova": "página com estrutura de plano e sem marca de notícia",
+                      "estrutura": sorted(estrutura)[:4]}
+
+
+def plano_sem_ato(texto: str, url: str = None) -> tuple:
+    """(ok, motivo, dados) do caminho "plano publicado sem ato de aprovação localizado". PURA.
+
+    Decisão da editoria de 03/10/2026. O índice mede **preparação publicada e verificável**: a
+    publicação em domínio oficial é ato do ente, com autoria e data conferíveis, e o ato de
+    aprovação é atributo de FORMALIZAÇÃO — não de existência do plano. O documento conta no degrau
+    que a leitura indicar, e a ficha diz que o ato não foi localizado.
+
+    As três condições da decisão, nesta ordem:
+      1. domínio oficial do ente — já exigido na etapa 0, pela URL;
+      2. órgão, título e ano (ou o ciclo) identificados NO documento;
+      3. não ser minuta, rascunho, versão para consulta ou apresentação.
+    """
+    ok_doc, motivo_doc, provas_doc = e_o_proprio_plano(texto, url)
+    if not ok_doc:
+        return False, motivo_doc, provas_doc
+    if RE_MINUTA.search(texto or ""):
+        return False, "minuta_ou_rascunho", {
+            "detalhe": "o documento se declara minuta, rascunho, versão para consulta ou "
+                       "apresentação",
+            "trecho": trecho_em_volta(texto, RE_MINUTA.search(texto))}
+    orgao = RE_ORGAO_DO_ENTE.search(texto or "")
+    titulo = RE_TITULO_DE_PLANO.search(texto or "")
+    ano = RE_ANO_OU_CICLO.search(texto or "")
+    faltam = [nome for nome, achado in (("órgão", orgao), ("título de plano", titulo),
+                                        ("ano ou ciclo", ano)) if not achado]
+    if faltam:
+        return False, "plano_sem_identificacao", {
+            "detalhe": "o documento não identifica: " + ", ".join(faltam)}
+    return True, "", {
+        "tipo": "plano publicado sem ato de aprovação localizado",
+        "numero": None,
+        "data": (ano.group(1) if ano.lastindex else None) or ano.group(0),
+        "sem_ato_de_aprovacao": True,
+        "orgao": orgao.group(0),
+        "titulo": titulo.group(0),
+        "trecho": trecho_em_volta(texto, titulo),
+        "prova_de_que_e_o_plano": provas_doc.get("prova"),
+    }
+
 
 # --- Etapa 4 ---------------------------------------------------------------------------------
 # Objeto ex-ante: o que o ato FAZ. Origem: METODOLOGIA §5.2.1 (teste do objeto), 03/09/2026.
@@ -335,7 +481,7 @@ def etapa1_identidade(texto: str, nome: str, uf: str) -> tuple:
 # =============================================================================================
 # Etapa 2 — citação completa (§3.2)
 # =============================================================================================
-def etapa2_citacao(texto: str, eh_plano_tecnico: bool = False) -> tuple:
+def etapa2_citacao(texto: str, eh_plano_tecnico: bool = False, url: str = None) -> tuple:
     """(ok, motivo, dados). Tipo de ato + número + data extraídos do PRÓPRIO texto.
 
     Exceção declarada no handover: plano publicado como documento técnico sem número recebe a
@@ -350,13 +496,28 @@ def etapa2_citacao(texto: str, eh_plano_tecnico: bool = False) -> tuple:
     tipo = (m.group(1).lower() if m else None)
     numero = (m.group(2) if m else None)
     dados = {"tipo": tipo, "numero": numero, "data": data}
-    if not data:
-        return False, "citacao_incompleta", dict(dados, detalhe="sem data completa no texto")
     if m is None:
-        if eh_plano_tecnico:
+        # CAMINHO DO PLANO SEM ATO (editoria, 03/10/2026): quando não há tipo e número de ato, o
+        # documento pode ainda ser o PLANO publicado pelo ente. Aí a identificação exigida é outra
+        # — órgão, título e ano —, e o ano solto basta. Este caminho vem ANTES da exigência de data
+        # completa, de propósito: data completa é como se situa um ATO, e aqui não há ato.
+        apresenta_se_como_ato = RE_ATO_SEM_NUMERO.search(texto or "")
+        ok_plano, motivo_plano, dados_plano = plano_sem_ato(texto, url)
+        if ok_plano and not apresenta_se_como_ato:
+            return True, "", dados_plano
+        if eh_plano_tecnico and data:
+            # Caminho anterior, de 28/09: plano técnico com DATA completa declarada pelo chamador.
+            # Ele continua valendo — o caminho novo é mais largo, não substitui este.
             dados["tipo"] = "plano de contingência (documento técnico sem número)"
             return True, "", dados
+        if not data and not apresenta_se_como_ato:
+            # Sem ato e sem conseguir ser plano publicado: a recusa é a do plano, que diz o que
+            # faltou (minuta, ou identificação incompleta), e não "sem data" — que mandaria quem lê
+            # procurar a coisa errada.
+            return False, motivo_plano, dict(dados, **dados_plano)
         return False, "citacao_incompleta", dict(dados, detalhe="sem tipo e número de ato")
+    if not data:
+        return False, "citacao_incompleta", dict(dados, detalhe="sem data completa no texto")
     # `citacao_completa` exige o TIPO junto do número (RE_NUMERO_ATO não casa um número solto).
     # Remontar a citação é o que ela espera receber — passar "numero data" reprovava tudo.
     if not citacao_completa(f"{tipo} nº {numero} de {data}"):
@@ -368,12 +529,29 @@ def etapa2_citacao(texto: str, eh_plano_tecnico: bool = False) -> tuple:
 # =============================================================================================
 # Etapa 3 — autoridade do ato (§5.2.1)
 # =============================================================================================
-def etapa3_autoridade(texto: str) -> tuple:
+def etapa3_autoridade(texto: str, sem_ato_de_aprovacao: bool = False) -> tuple:
     """(ok, motivo, trecho). Ato do Poder Executivo, não aprovação por colegiado.
 
     Aprovação por Conselho de Saúde ou Câmara devolve `executivo_pendente`: o documento pode ser
     o instrumento certo, mas o ato que o institui é outro. Pela §9, instrumento do SUS aprovado
-    em colegiado vive na camada observada de saúde — e não pontua no MARÉ Legal."""
+    em colegiado vive na camada observada de saúde — e não pontua no MARÉ Legal.
+
+    03/10/2026 (decisão da editoria): quando a etapa 2 reconheceu **plano publicado sem ato de
+    aprovação localizado**, a autoridade já foi verificada ali, e de outra maneira — o documento
+    identifica o ÓRGÃO do ente e está publicado no domínio oficial dele, o que é ato do ente com
+    autoria e data conferíveis. Exigir aqui fórmula de promulgação seria exigir o ato que a decisão
+    declarou não ser condição. O que continua valendo é a trava do colegiado: documento que é só a
+    aprovação de um conselho não é o plano publicado pelo Executivo.
+    """
+    if sem_ato_de_aprovacao:
+        tem_colegiado = RE_COLEGIADO.search(texto)
+        if tem_colegiado and RE_APROVACAO_COLEGIADA.search(texto) \
+                and not RE_ORGAO_DO_ENTE.search(texto):
+            return False, "executivo_pendente", trecho_em_volta(texto, tem_colegiado)
+        orgao = RE_ORGAO_DO_ENTE.search(texto)
+        if not orgao:
+            return False, "plano_sem_identificacao", "o documento não identifica o órgão do ente"
+        return True, "", trecho_em_volta(texto, orgao)
     tem_colegiado = RE_COLEGIADO.search(texto)
     tem_executivo = RE_AUTORIDADE_EXECUTIVO.search(texto)
     tem_forma = RE_TEXTO_ARTICULADO.search(texto) or RE_FORMULA_EXECUTIVO.search(texto)
@@ -392,20 +570,37 @@ def etapa3_autoridade(texto: str) -> tuple:
 # =============================================================================================
 # Etapa 4 — natureza
 # =============================================================================================
-def etapa4_natureza(texto: str) -> tuple:
+def etapa4_natureza(texto: str, sem_ato_de_aprovacao: bool = False) -> tuple:
     """(natureza, motivo, provas). EX_ANTE só com os três testes cumulativos.
 
     O classificador de natureza (31/08/2026) continua sendo a primeira palavra — ele é regra, não
     inferência, e já foi validado contra 223 registros reais. O que este juiz acrescenta é o teste
-    do objeto explícito em três partes, exigidas CUMULATIVAMENTE."""
+    do objeto explícito em três partes, exigidas CUMULATIVAMENTE.
+
+    03/10/2026 (decisão da editoria, plano sem ato): o teste do objeto pergunta se o ato **institui**
+    um instrumento nomeado — e isso cabe a um ATO. Quando o documento julgado É o plano, não há
+    verbo de instituição a procurar: o plano não institui o plano, ele **é** o plano, e diz
+    "estabelece os procedimentos", "define as atribuições". Nesse caminho o objeto se prova pelo
+    próprio instrumento nomeado no título, que a etapa 2 já conferiu.
+
+    O que NÃO muda, e é o que protege o índice: ato que declara anormalidade continua RESPOSTA;
+    rota que depende de reconhecimento federal continua dúvida; e o gatilho (previsão, limiar ou
+    referência ao ciclo) continua exigido. Um "plano" que só fala de desastre ocorrido não passa.
+    """
     tem_rota_federal = bool(RE_ROTA_FEDERAL.search(texto))
     decisao, motivo = classificar_natureza(texto, tem_reconhecimento_federal=tem_rota_federal)
     if decisao == "RESPOSTA":
         return "RESPOSTA", motivo, {}
-    if decisao == "DUVIDA":
+    if decisao == "DUVIDA" and not sem_ato_de_aprovacao:
         return "DUVIDA", f"natureza_duvidosa: {motivo}", {}
 
     tem_objeto, prova_objeto = objeto_ex_ante(texto)
+    if sem_ato_de_aprovacao and not tem_objeto:
+        m_instrumento = RE_INSTRUMENTO_EX_ANTE.search(texto or "")
+        if m_instrumento:
+            tem_objeto = True
+            prova_objeto = ("o documento É o instrumento nomeado: "
+                            + trecho_em_volta(texto, m_instrumento))
     m_ciclo = RE_GATILHO_CICLO.search(texto)
     m_obs = RE_GATILHO_OBSERVACIONAL.search(texto)
     m_anormal = RE_DECLARA_ANORMALIDADE.search(texto)
@@ -424,6 +619,14 @@ def etapa4_natureza(texto: str) -> tuple:
         "gatilho": trecho_em_volta(texto, m_ciclo or m_obs),
         "rota_do_recurso": "sem dependência de reconhecimento federal no texto",
     }
+
+
+def etapa4_natureza_com_marca(texto: str, sem_ato_de_aprovacao: bool = False) -> tuple:
+    """Ponte: `julgar()` conhece a marca da etapa 2 e a repassa. Existe para que a assinatura de
+    `etapa4_natureza` continue servindo a quem a chama com um argumento só (os canários e o
+    classificador) — e para que a passagem da marca seja visível numa linha, em vez de escondida
+    num parâmetro posicional no meio da cadeia."""
+    return etapa4_natureza(texto, sem_ato_de_aprovacao=sem_ato_de_aprovacao)
 
 
 # =============================================================================================
@@ -461,7 +664,8 @@ def etapa5_familia_de_risco(texto: str) -> tuple:
 # =============================================================================================
 # Etapa 6 — categoria e data (§3 e §5.3)
 # =============================================================================================
-def etapa6_categoria(texto: str, data: str, eh_estadual: bool = False) -> tuple:
+def etapa6_categoria(texto: str, data: str, eh_estadual: bool = False,
+                    sem_ato_de_aprovacao: bool = False) -> tuple:
     """(categoria, motivo). A escada de créditos NÃO é decidida aqui.
 
     Este juiz escolhe entre `plano`, `plano_elaboracao` e `plano_antigo` pela data do ato em
@@ -474,6 +678,26 @@ def etapa6_categoria(texto: str, data: str, eh_estadual: bool = False) -> tuple:
     # perguntar de novo devolvia "plano".
     if RE_SO_DETERMINA_ELABORACAO.search(texto) and not RE_INSTITUI.search(texto):
         return "plano_elaboracao", "o ato determina a elaboração do plano, não o institui"
+    if sem_ato_de_aprovacao:
+        # DECISÃO DA EDITORIA, 03/10/2026: sem degrau novo — o plano conta no degrau que **a leitura
+        # do documento** indicar. Aqui a leitura dá o ano (a etapa 2 o exigiu) e a menção ao ciclo:
+        #   · cita o El Niño ou o ciclo        -> `plano`        (feito para o ciclo)
+        #   · ano de 2026 ou posterior         -> `plano`        (de todo ano, revisado no ciclo)
+        #   · ano anterior                     -> `plano_antigo`
+        # Nenhuma categoria nova, nenhum peso novo: são os degraus que já existem, atribuídos pela
+        # mesma pergunta que o resto do codebook faz — o documento cobre este ciclo?
+        if RE_GATILHO_CICLO.search(texto or ""):
+            return "plano", f"plano publicado ({data}) que cita o ciclo; ato de aprovação não localizado"
+        ano = None
+        m_ano = re.search(r"(20\d{2})", str(data or ""))
+        if m_ano:
+            ano = int(m_ano.group(1))
+        if ano and ano >= 2026:
+            return "plano", f"plano publicado de {ano}; ato de aprovação não localizado"
+        if ano:
+            return "plano_antigo", (f"plano publicado de {ano}, anterior ao ciclo; ato de aprovação "
+                                    "não localizado")
+        return None, "plano_sem_identificacao: sem ano no documento"
     if not data:
         return None, "citacao_incompleta: sem data não há como situar o ato no ciclo"
     try:
@@ -523,20 +747,24 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
         veredito["motivo"] = motivo
         return veredito
 
-    ok, motivo, dados = etapa2_citacao(texto, eh_plano_tecnico)
+    ok, motivo, dados = etapa2_citacao(texto, eh_plano_tecnico, url=url)
     veredito["criterios"]["2_citacao"] = {"ok": ok, "trecho": dados.get("trecho", ""), "dados": dados}
     veredito["data"] = dados.get("data")
     if not ok:
         veredito["motivo"] = motivo
         return veredito
 
-    ok, motivo, trecho = etapa3_autoridade(texto)
+    # A marca viaja da etapa 2 para a 3 e para o veredito: é ela que diz à ficha do município e do
+    # estado que o plano conta, e que o ato de aprovação não foi localizado.
+    sem_ato = bool(dados.get("sem_ato_de_aprovacao"))
+    veredito["sem_ato_de_aprovacao"] = sem_ato
+    ok, motivo, trecho = etapa3_autoridade(texto, sem_ato_de_aprovacao=sem_ato)
     veredito["criterios"]["3_autoridade"] = {"ok": ok, "trecho": trecho}
     if not ok:
         veredito["motivo"] = motivo
         return veredito
 
-    natureza, motivo_nat, provas = etapa4_natureza(texto)
+    natureza, motivo_nat, provas = etapa4_natureza_com_marca(texto, sem_ato_de_aprovacao=sem_ato)
     veredito["natureza"] = natureza
     veredito["criterios"]["4_natureza"] = {"ok": natureza == "EX_ANTE", "trecho": motivo_nat, **provas}
     if natureza == "RESPOSTA":
@@ -557,7 +785,8 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
         return veredito
     veredito["familia_de_risco"] = familia
 
-    categoria, motivo_cat = etapa6_categoria(texto, veredito["data"], eh_estadual)
+    categoria, motivo_cat = etapa6_categoria(texto, veredito["data"], eh_estadual,
+                                             sem_ato_de_aprovacao=sem_ato)
     veredito["criterios"]["6_categoria"] = {"ok": categoria is not None, "trecho": motivo_cat}
     if categoria is None:
         veredito["motivo"] = motivo_cat.split(":")[0]
@@ -589,6 +818,10 @@ pré-posicionamento de carro-pipa. Art. 2º Este decreto não configura situaç�
 PORTARIA Nº 45, DE 4 DE JULHO DE 2026
 Concede licença a servidor do quadro efetivo, sem relação com o ciclo climático.
 """
+
+URL_PDF_DE_PLANO = "https://defesacivil.taio.sc.gov.br/plano-2026.pdf"
+
+PLANO_PUBLICADO_SEM_ATO = 'PREFEITURA MUNICIPAL DE TAIO - SC\nCOORDENADORIA MUNICIPAL DE PROTECAO E DEFESA CIVIL DE TAIO\nPLANO DE CONTINGENCIA DE PROTECAO E DEFESA CIVIL\nVersao 01/2026\nO presente plano estabelece os procedimentos de preparacao e de resposta para inundacao brusca,\ndeslizamento e estiagem no municipio, com pre-posicionamento de equipes, pontos de apoio e\nacionamento do sistema de alerta. Define as atribuicoes de cada orgao municipal na preparacao\npara o ciclo El Nino 2026/2027, a rotina de monitoramento e os abrigos. xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
 CANARIOS = {
     "plano_novo": dict(
@@ -695,6 +928,27 @@ Art. 1º Fica instituído o Plano de Contingência Municipal de Proteção e Def
 período chuvoso 2026/2027, contemplando inundação e deslizamento. Art. 2º Este decreto tem
 caráter preventivo."""),
 
+    # 03/10/2026 — DECISÃO DA EDITORIA: plano publicado sem ato de aprovação localizado. Os três
+    # canários abaixo são o contorno exato da decisão: o que passa, o que não passa por ser esboço,
+    # e o que não passa por não se identificar. O quarto guarda a fronteira que a decisão NÃO moveu:
+    # decreto sem número continua recusado por citação incompleta.
+    "plano_sem_ato_de_aprovacao": dict(
+        esperado={"promove": True, "categoria": "plano"},
+        nome="Taió", uf="SC", url="https://defesacivil.taio.sc.gov.br/plano-2026.pdf",
+        texto=PLANO_PUBLICADO_SEM_ATO),
+
+    "plano_minuta_nao_passa": dict(
+        esperado={"promove": False, "motivo": "minuta_ou_rascunho"},
+        nome="Taió", uf="SC", url="https://defesacivil.taio.sc.gov.br/minuta-plano.pdf",
+        texto=PLANO_PUBLICADO_SEM_ATO.replace("PLANO DE CONTINGENCIA DE PROTECAO E DEFESA CIVIL",
+                                              "MINUTA DO PLANO DE CONTINGENCIA")),
+
+    "plano_sem_identificacao_nao_passa": dict(
+        esperado={"promove": False, "motivo": "plano_sem_identificacao"},
+        nome="Taió", uf="SC", url="https://defesacivil.taio.sc.gov.br/documento.pdf",
+        texto=("Taio - SC. Este documento descreve procedimentos de preparacao para inundacao e "
+               "estiagem, com pre-posicionamento de equipes e pontos de apoio. " + "x" * 600)),
+
     "citacao_incompleta": dict(
         esperado={"promove": False, "motivo": "citacao_incompleta"},
         # URL própria: dois canários na mesma URL fazem o autoteste de `julgar_filas.py`, que indexa
@@ -778,6 +1032,55 @@ def autoteste() -> int:
         ("plano técnico sem número passa a citação quando tem data",
          etapa2_citacao("Plano de Contingência Municipal, versão 2026. Publicado em 14/07/2026. "
                         + "x" * 500, eh_plano_tecnico=True)[0] is True),
+        # as três condições da decisão de 03/10/2026, uma a uma
+        ("plano sem ato: passa com órgão, título e ano, e marca a ficha",
+         plano_sem_ato(PLANO_PUBLICADO_SEM_ATO, URL_PDF_DE_PLANO)[0] is True
+         and plano_sem_ato(PLANO_PUBLICADO_SEM_ATO, URL_PDF_DE_PLANO)[2]["sem_ato_de_aprovacao"] is True),
+        ("plano sem ato: minuta não passa",
+         plano_sem_ato("MINUTA DO PLANO DE CONTINGENCIA de 2026, Prefeitura Municipal de X",
+                       URL_PDF_DE_PLANO)[1] == "minuta_ou_rascunho"),
+        ("plano sem ato: versão para consulta não passa",
+         plano_sem_ato("PLANO DE CONTINGENCIA — versão para consulta pública, 2026, "
+                       "Prefeitura Municipal de X", URL_PDF_DE_PLANO)[1] == "minuta_ou_rascunho"),
+        ("plano sem ato: sem órgão não passa",
+         plano_sem_ato("PLANO DE CONTINGENCIA 2026 — procedimentos de resposta", URL_PDF_DE_PLANO)[1]
+         == "plano_sem_identificacao"),
+        ("plano sem ato: sem ano nem ciclo não passa",
+         plano_sem_ato("Prefeitura Municipal de X — PLANO DE CONTINGENCIA de proteção e defesa "
+                       "civil", URL_PDF_DE_PLANO)[1] == "plano_sem_identificacao"),
+        # 03/10/2026, codebook 1.3: o julgado tem de SER o plano. Duas promoções da primeira rodada
+        # real eram notícia institucional no domínio do ente, e é esta trava que as barra.
+        ("notícia institucional no domínio do ente NÃO é o plano",
+         e_o_proprio_plano("A Prefeitura Municipal de Toledo apresenta o plano de contingência "
+                           "para emergências. Assessoria de Comunicação. Leia também.",
+                           "https://toledo.pr.gov.br/noticia/prefeitura-apresenta-plano")[1]
+         == "noticia_institucional_nao_e_o_plano"),
+        ("página sem estrutura de plano NÃO é o plano",
+         e_o_proprio_plano("Prefeitura Municipal de X — Plano de Contingência 2026. Acesse aqui.",
+                           "https://x.sp.gov.br/pagina/plano")[1]
+         == "noticia_institucional_nao_e_o_plano"),
+        ("página COM estrutura de plano e sem marca de notícia é o plano",
+         e_o_proprio_plano("Este plano estabelece os níveis de alerta e o acionamento das equipes, "
+                           "com as atribuições de cada órgão e os pontos de apoio.",
+                           "https://x.sp.gov.br/pagina/plano")[0] is True),
+        ("URL de documento basta, mesmo com marca de notícia no texto",
+         e_o_proprio_plano("Publicado em 2026 pela Assessoria de Comunicação. Este plano…",
+                           URL_PDF_DE_PLANO)[0] is True),
+        ("plano sem ato: o ano solto basta (e só aqui)",
+         etapa2_citacao(PLANO_PUBLICADO_SEM_ATO)[0] is True
+         and etapa2_citacao(PLANO_PUBLICADO_SEM_ATO)[2].get("sem_ato_de_aprovacao") is True),
+        ("plano sem ato: a etapa 3 não exige fórmula de promulgação",
+         etapa3_autoridade(PLANO_PUBLICADO_SEM_ATO, sem_ato_de_aprovacao=True)[0] is True
+         and etapa3_autoridade(PLANO_PUBLICADO_SEM_ATO)[0] is False),
+        ("a fronteira não se moveu: decreto sem número continua citação incompleta",
+         etapa2_citacao(CANARIOS["citacao_incompleta"]["texto"])[1] == "citacao_incompleta"),
+        ("o veredito carrega a marca para a ficha",
+         julgar(PLANO_PUBLICADO_SEM_ATO, nome="Taió", uf="SC",
+                url="https://defesacivil.taio.sc.gov.br/plano-2026.pdf")
+         .get("sem_ato_de_aprovacao") is True),
+        ("plano COM ato não leva a marca",
+         julgar(CANARIOS["plano_novo"]["texto"], nome="Bonito", uf="MS",
+                url=CANARIOS["plano_novo"]["url"]).get("sem_ato_de_aprovacao") is False),
         ("recorte do ato: o trecho isola o ato dentro da edição do diário",
          recortar_ato(EDICAO_DE_DIARIO, "institui o Plano de Contingência").strip().startswith("DECRETO Nº 88")
          and "PORTARIA" not in recortar_ato(EDICAO_DE_DIARIO, "institui o Plano de Contingência")),

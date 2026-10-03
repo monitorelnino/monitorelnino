@@ -53,6 +53,12 @@ PROMOCOES = "promocoes_automaticas.json"
 MOTIVOS = ("sem_documento_primario", "documento_inacessivel", "texto_nao_extraivel",
            "ente_nao_confirmado",
            "citacao_incompleta", "executivo_pendente", "autoridade_nao_confirmada",
+           # 03/10/2026 (decisão da editoria, plano sem ato de aprovação localizado): os dois
+           # motivos do caminho novo do codebook 1.2. Sem eles aqui, o relatório os imprimia como
+           # "fora da lista de motivos do codebook" — e motivo que o relatório não reconhece é
+           # motivo que ninguém agrupa nem acompanha.
+           "plano_sem_identificacao", "minuta_ou_rascunho",
+           "noticia_institucional_nao_e_o_plano",
            "natureza_duvidosa", "fora_do_objeto", "familia_de_risco_nao_identificada",
            "resposta")
 
