@@ -517,6 +517,40 @@ def redigir_dados_pessoais(texto: str) -> tuple:
     return padrao.sub("[CPF REDIGIDO]", texto), n
 
 
+PADROES_DE_SEGREDO = (
+    # Atribuição de chave em código ou configuração salvos dentro da página preservada.
+    (re.compile(r"((?:api[_-]?key|apikey|access[_-]?token|client[_-]?secret|secret[_-]?key|"
+                r"authorization)\s*[:=]\s*[\"']?)([A-Za-z0-9_\-\.]{16,})"), r"\1[SEGREDO REDIGIDO]"),
+    # Prefixos que identificam a credencial sozinhos, sem precisar do nome do campo.
+    (re.compile(r"\b(AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{20,}|AIza[0-9A-Za-z_\-]{20,}|"
+                r"sk-[A-Za-z0-9]{20,}|xox[baprs]-[A-Za-z0-9\-]{10,})"), "[SEGREDO REDIGIDO]"),
+)
+
+
+def redigir_segredos(texto: str) -> tuple:
+    """Remove credencial de TERCEIRO que vem dentro da página preservada. Função pura.
+
+    01/10/2026 (alerta do GitHub, "Possible valid secrets detected"): uma página oficial salva como
+    evidência trazia, em um dos seus 51 `<script>`, a chave de API do Flickr do próprio sítio. O
+    `netlify.toml` publica a raiz do repositório — `publish = "."` —, então a cópia preservada é
+    servida pelo nosso domínio, e com ela a chave de um terceiro que não nos autorizou a redistribuí-la.
+    A fonte original já publicava a chave; republicá-la indexada no nosso domínio é outra coisa, e é a
+    mesma razão de minimização que fundamentou `redigir_dados_pessoais` em 12/09.
+
+    Redige o VALOR, nunca o nome do campo: quem auditar a evidência continua vendo que havia uma
+    chave ali, e onde. Devolve (texto_redigido, quantidade) — a contagem vai ao log, para a redação
+    nunca ser silenciosa.
+    """
+    n = 0
+    for padrao, troca in PADROES_DE_SEGREDO:
+        texto, k = padrao.subn(troca, texto)
+        n += k
+    return texto, n
+
+
+EXTENSOES_DE_TEXTO_EM_EVIDENCIA = (".html", ".htm", ".txt", ".json", ".xml", ".csv")
+
+
 # ---------------------------------------------------------------------------------
 # robots.txt: leitura, ritmo e rastro (§185, 23/09/2026 — decisão da editoria).
 #
@@ -1265,7 +1299,26 @@ def sha256(b: bytes) -> str:
 
 def preservar_evidencia(conteudo: bytes, url: str, ext: str, origem: str) -> str:
     """Guarda cópia da evidência e indexa em data/evidencias.json. Retorna o hash.
-    Acima de 5 MB: só o hash + pedido de snapshot ao Wayback (best effort)."""
+    Acima de 5 MB: só o hash + pedido de snapshot ao Wayback (best effort).
+
+    03/10/2026: em arquivo de TEXTO (html, txt, json, xml, csv) a credencial de terceiro é redigida
+    ANTES do hash, como o CPF já era em `gravar_texto`. O hash é, por definição do portão de
+    evidências, o hash do que está em disco; redigir depois o quebraria. O índice guarda
+    `segredos_redigidos` e `hash_antes_da_redacao`, para a cópia nunca se dizer byte a byte quando
+    não é. Binário (PDF) não passa por aqui: não se edita PDF preservado."""
+    redigidos = 0
+    hash_bruto = None
+    if ext.lstrip(".").lower() in tuple(e.lstrip(".") for e in EXTENSOES_DE_TEXTO_EM_EVIDENCIA):
+        try:
+            texto = conteudo.decode("utf-8")
+        except UnicodeDecodeError:
+            texto = None
+        if texto is not None:
+            limpo, redigidos = redigir_segredos(texto)
+            if redigidos:
+                hash_bruto = sha256(conteudo)
+                conteudo = limpo.encode("utf-8")
+                print(f"  [redação] {redigidos} credencial(is) de terceiro removida(s) antes de preservar")
     h = sha256(conteudo)
     idx = ler("evidencias.json", {"_governanca": "Índice de evidências preservadas (§3.8, v2.2.4). "
                                    "Chave = sha256 do documento; nunca lido pelo cálculo do índice.",
@@ -1274,6 +1327,9 @@ def preservar_evidencia(conteudo: bytes, url: str, ext: str, origem: str) -> str
         return h
     item = {"url": url, "origem": origem, "preservado_em": hoje(), "tamanho": len(conteudo),
             "arquivo": None, "wayback": None}
+    if redigidos:
+        item["segredos_redigidos"] = redigidos
+        item["hash_antes_da_redacao"] = hash_bruto
     if len(conteudo) <= LIMITE_EVIDENCIA:
         EVID.mkdir(exist_ok=True)
         destino = EVID / f"{h}.{ext.lstrip('.')}"

@@ -604,6 +604,13 @@ jobs:
           # preservam evidência.
           python3 scripts/verificar_binario_novo_em_evidencias.py --contra origin/main
           python3 scripts/declarar_evidencia_perdida.py --autoteste
+          # 03/10/2026 (alerta do GitHub de 01/10): credencial de TERCEIRO dentro da página
+          # preservada. Eram 18 arquivos — chave do Flickr e do Google Maps —, servidos pelo
+          # nosso domínio porque `publish = "."` publica a raiz. A redação agora é na porta de
+          # preservação, antes do hash; este portão barra a volta pelo diff do PR.
+          python3 scripts/verificar_evidencia_sem_segredo.py --autoteste
+          python3 scripts/verificar_evidencia_sem_segredo.py --contra origin/main
+          python3 scripts/remediar_segredos_evidencias.py --autoteste
           # 28/09/2026 (decisão da editoria, item 1): o Querido Diário volta ao funil. O autoteste do
           # juiz trava o recorte do ato — a pista do QD aponta a EDIÇÃO, e o documento primário do
           # §5.2.1 é o ATO. O da fila trava que ela gera ALVOS, não pistas: a primeira tentativa montou
