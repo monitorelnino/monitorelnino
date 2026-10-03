@@ -137,6 +137,15 @@ jobs:
         timeout-minutes: 3
         run: python3 scripts/registrar_faixas.py
 
+      # 03/10/2026: os INSTANTÂNEOS do topo de cada página são gerados ANTES da imprensa, porque é
+      # deles que ela lê (handover do redesenho, item 1). Sem este passo o instantâneo ficava
+      # congelado na rodada anterior enquanto as páginas seguiam coletando — e o portão de
+      # coerência reprovou a publicação com três divergências de alerta ("a Imprensa diz 14 e a
+      # Defesa civil diz 16"). O portão estava certo: faltava o passo.
+      - name: Gerar os instantâneos do topo das páginas
+        timeout-minutes: 5
+        run: python3 scripts/gerar_topo_das_paginas.py
+
       - name: Gerar os números da semana (Imprensa)
         timeout-minutes: 5
         run: python3 gerar_imprensa_semana.py

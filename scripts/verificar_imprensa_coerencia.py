@@ -65,6 +65,16 @@ MAPA_VARIACAO = (
     ("populacao_decretos_na_semana", "populacao_sob_decreto"),
     ("reconhecimentos_na_semana", "reconhecidos_pelo_governo_federal"),
 )
+# Cartões de AGORA: o número deles é função do TEMPO. Entre a edição da imprensa e a renderização
+# da página pode ter entrado uma coleta nova de alerta (a cadeia roda a cada duas horas), e aí os
+# dois números divergem sem que ninguém tenha errado. Medido em 03/10/2026, na publicação: "a
+# Imprensa diz 14 e a Defesa civil diz 16".
+#
+# O que se exige deles é o que faz sentido exigir: que a imprensa publique a CONSULTA que ela leu, e
+# que essa consulta não seja mais nova do que a da página de origem — imprensa adiantada seria
+# número inventado; imprensa atrasada é a edição sendo o que ela é, um retrato datado. Divergência
+# de valor com referência igual continua reprovando.
+DE_AGORA = ("municipios_alerta_cemaden", "municipios_aviso_inmet", "decreto_e_alerta_ao_mesmo_tempo")
 MULTIPLICADOR = {"mil": 1e3, "mi": 1e6, "bi": 1e9, "milhão": 1e6, "milhões": 1e6}
 
 
@@ -151,6 +161,16 @@ def divergencias(cartoes: dict, indices: dict, numeros: dict, textos: dict,
                          f"número ({na_pagina!r})")
             continue
         if not mesmo_numero(c.get("valor"), na_pagina):
+            if ident in DE_AGORA:
+                # A referência da imprensa é a consulta que ela leu; a da página está no texto
+                # visível. Se a página já tem consulta MAIS NOVA, a divergência é do relógio.
+                ref_imprensa = str(c.get("referencia") or "")
+                alvo = (textos.get(pagina) or "")
+                if ref_imprensa and ref_imprensa not in alvo:
+                    print(f"   [nota] {ident}: a Imprensa publica a consulta de {ref_imprensa} "
+                          f"({c.get('valor')!r}) e {pagina} já renderiza uma consulta mais nova "
+                          f"({na_pagina!r}) — informação de agora, retrato datado")
+                    continue
             ruins.append(f"{ident}: a Imprensa diz {c.get('valor')!r} e {pagina} diz "
                          f"{na_pagina!r}")
         ref = str(c.get("referencia") or "")
@@ -235,6 +255,18 @@ def _autoteste() -> int:
                     {}, {"saude.html": {"nDengueSE": "8.146"}},
                     {"saude.html": "SEMANA EPIDEMIOLÓGICA 33"},
                     (("dengue_casos_se", "saude.html", "nDengueSE"),), ()) == [])
+    ok("alerta com referência mais antiga que a da página é nota, não falha",
+       divergencias({"municipios_alerta_cemaden": {"valor": 14, "sem_coleta": False,
+                                                   "referencia": "02/10/2026 11:22"}},
+                    {}, {"defesa-civil.html": {"topoCemaden": "16"}},
+                    {"defesa-civil.html": "CONSULTA DE 03/10/2026 09:40"},
+                    (("municipios_alerta_cemaden", "defesa-civil.html", "topoCemaden"),), ()) == [])
+    ok("alerta divergente com a MESMA referência continua reprovando",
+       len(divergencias({"municipios_alerta_cemaden": {"valor": 14, "sem_coleta": False,
+                                                       "referencia": "03/10/2026 09:40"}},
+                        {}, {"defesa-civil.html": {"topoCemaden": "16"}},
+                        {"defesa-civil.html": "consulta de 03/10/2026 09:40"},
+                        (("municipios_alerta_cemaden", "defesa-civil.html", "topoCemaden"),), ())) == 1)
     ok("a semana da Imprensa é a variação do instantâneo",
        divergencias_de_variacao({"decretos_na_semana": {"valor": 69, "sem_coleta": False}},
                                 {"cartoes": [{"id": "municipios_decretaram", "variacao": 69}]}) == [])
@@ -245,7 +277,7 @@ def _autoteste() -> int:
        all(len(x) == 3 and x[1].endswith(".html") for x in MAPA))
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
-          else "✓ AUTOTESTE OK — 24 casos, sem rede e sem navegador.")
+          else "✓ AUTOTESTE OK — 26 casos, sem rede e sem navegador.")
     return 1 if falhas else 0
 
 
