@@ -17,6 +17,15 @@ ser na porta de preservação, antes do hash; o passado foi redigido e rechavead
 registrado; um portão barra a volta. Em `coletores_base.py`, `scripts/remediar_segredos_evidencias.py`
 e `scripts/verificar_evidencia_sem_segredo.py`.
 
+## 2026-10-03 · #542 · As respostas de LAI entram como o que são
+
+MT e RN responderam a pedidos de acesso à informação. Afirmação de órgão sem documento não pontua:
+vira nota com órgão e data (textos aprovados pela editoria), e tarefa de busca dirigida. Os três
+decretos que MT informou com número e data entram em `atos_resposta.json`, declarando que o documento
+ainda não foi localizado. O detalhe da UF, na home, passa a mostrar a nota do estado. Em
+`scripts/incorporar_respostas_lai.py`, `data/notas_lai.json` e `ler_caixa_lai.py` (leitura semanal da
+caixa, à espera da credencial).
+
 ## 2026-10-03 · #535 · Dizemos o que disponibilizamos; o blog conta o ciclo
 
 Duas regras para todo o site: nenhuma frase sobre código, base de dados ou licença de dados, e o blog só sobre acontecimentos do ciclo, em prosa escrita por pessoa. Saem a pasta de dados abertos, a planilha da edição e o release gerado; nasce `mudancas.html`, com as 57 entradas do CHANGELOG. Blog com boletim congelado por edição e aprovação obrigatória; imprensa só com o estável. METODOLOGIA §103.
