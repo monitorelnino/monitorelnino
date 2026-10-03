@@ -3950,3 +3950,75 @@ o critério · para humano, com o motivo.
 Pista com **duas tentativas** de busca dirigida sem documento, ou **21 dias** na fila, fecha — e
 **reabre sozinha** se surgir evidência nova para o mesmo município e assunto. Fechar não é apagar:
 o registro fica, e é por ele que a reabertura sabe o que já foi tentado.
+
+## 103. Dizemos o que disponibilizamos; o blog conta o ciclo (03/10/2026)
+
+Duas regras editoriais que valem para **todo o site**, e duas páginas refeitas por causa delas.
+
+### 103.1 A regra do que se diz sobre o que se oferece
+
+**Dizemos o que disponibilizamos; nunca o que não disponibilizamos.** A metodologia é pública —
+ponto. Mapas e gráficos podem ser reproduzidos com crédito. Recortes, cruzamentos e gráficos sob
+medida pelo e-mail da imprensa. **Nenhuma frase** sobre código, base de dados ou licença de dados
+— nem "não distribuído", nem "CC BY" aplicada a dados, nem "dados abertos".
+
+A razão é editorial e é simples: cada frase sobre o que **não** se oferece convida uma pergunta
+que o projeto não quer responder na página, e desloca o leitor do que ele veio ver. O texto
+anterior da imprensa dizia, numa frase só, que o código não era distribuído e que os dados eram
+CC BY — duas afirmações sobre distribuição onde bastava uma sobre método.
+
+**Saíram do site:** a pasta de dados abertos e todos os links para ela, a planilha de números da
+edição, o bloco de dado estruturado que anunciava distribuição (`Dataset`, com `license` e
+`distribution`) e a frase "Dados abertos" da descrição da página inicial. Os arquivos **continuam
+no repositório** — eles são insumo das páginas e trilha de auditoria interna —, e quem chegar pelo
+endereço antigo vai para a metodologia.
+
+**Divergência declarada:** o handover diz "saem do site", e o site é servido da **raiz do
+repositório**. Remover os arquivos quebraria a cadeia de derivados, que os regenera, e o portão 12,
+que os cobra. O que desfaz a publicação sem mexer na cadeia é a regra de redirecionamento — e é o
+que está no `netlify.toml`.
+
+### 103.2 O blog conta o ciclo, em prosa
+
+O blog **não trata** de decisões, método, correções nem funcionamento do site: isso vive na
+metodologia e na página nova **Mudanças no MARÉ** (`mudancas.html`), ligada da metodologia e **sem
+link no menu** — ela é material de quem audita, não de quem chega. A página nasce do `CHANGELOG.md`,
+que já era o registro canônico: 57 entradas na primeira geração.
+
+Cada texto do blog conta uma condição do ciclo como história de fatos — onde, quando, quanto,
+quem, com fonte — em **texto corrido**. Sem tópicos, sem listas, sem cartões no meio do texto: os
+números vivem nas páginas, e o texto pode citá-los. A verificação é na **geração**, porque é ali
+que o texto se torna página: `gerar_blog.py` recusa corpo com lista ou cartão, e recusa texto sem
+`aprovado: sim`.
+
+**O fluxo editorial é a trava:** a central entrega em `robo-registro/blog/<data>-<slug>.md`, com a
+marca de aprovação, e o Code copia e publica **só o que estiver lá**. Nada gerado automaticamente
+vai ao ar como texto do blog — e o release gerado, que existia, **deixou de existir**.
+
+As etiquetas passam a ser **Boletim** e **Acontecimento**. "Análise" e "Diário do monitoramento"
+saíram: a primeira convidava texto de opinião, e a segunda era por onde os registros técnicos
+entravam no blog. O texto de 22/09 foi **retirado** — ele usava "nota de antecipação", vocabulário
+revogado; a editoria decide se volta reescrito.
+
+### 103.3 O boletim é congelado por edição
+
+Uma edição por semana, com três números — municípios que decretaram emergência na semana,
+municípios sob alerta do Cemaden, casos prováveis de dengue na última semana fechada. Eles vêm do
+motor da semana, que lê o instantâneo do topo de cada página (§101.5): **nenhuma conta nova
+nasce no boletim**.
+
+O que o boletim faz é **congelar**: `data/blog/boletins/<data>.json` guarda os números daquela
+edição. Um boletim de três semanas atrás mostrando o número de hoje seria outro documento, e quem
+cita a edição cita o que ela dizia. Cartão sem dado **sai** do boletim, e a ausência fica
+declarada no próprio arquivo.
+
+### 103.4 A imprensa passa a ter só o estável
+
+Saíram "Esta semana em números", o release gerado com o botão de copiar, a variação semanal e a
+planilha da edição. O que muda toda semana — e que, por mudar, pedia conferência toda semana —
+vive agora no boletim do blog, escrito por pessoa. Na imprensa fica o **ponteiro**: a data da
+edição, os três números congelados e o caminho para ela.
+
+O portão de coerência **continua**, no lugar certo: ele compara o motor da semana com as páginas
+de origem, porque é do motor que o boletim tira os números. Se o motor divergir da página, o
+boletim nasce errado — e o portão pega antes de nascer.

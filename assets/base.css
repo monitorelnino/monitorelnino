@@ -1152,3 +1152,11 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
 .cartao .cartao-a{display:inline-flex; align-items:center; min-height:var(--alvo-toque);}
 .cartao-mapa dl dt a, .figura dl dt a{display:inline-flex; align-items:center;
   min-height:var(--alvo-toque);}
+
+/* 03/10/2026 · mudancas.html — o registro técnico cita caminhos, rotas e trechos de comando, que
+   são palavras únicas de 80 a 160 caracteres. Sem quebra dentro da palavra, uma só delas empurrava
+   a página a 546 px de largura em tela de 390 px (portão MÓVEL). A quebra é aqui, na lista, e não
+   no corpo do site: em texto corrido quebrar dentro da palavra piora a leitura. */
+.mudancas-lista { overflow-wrap: anywhere; }
+.mudancas-lista dt { font-family: var(--font-spec); text-transform: uppercase; letter-spacing: .12em; font-variant-numeric: tabular-nums; font-size: var(--fs-small); margin-top: var(--sp-5); }
+.mudancas-lista dd { margin: var(--sp-2) 0 0; }

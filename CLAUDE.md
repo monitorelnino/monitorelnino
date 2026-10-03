@@ -271,6 +271,25 @@ log v2 são tentativas reais distintas e contam. Una pela base comum
 lado. Em 23/09/2026 uma união por conteúdo produziu um log menor que cada lado — quase 3.000
 execuções apagadas sem aviso. Use `/merge-main`.
 
+## Duas regras editoriais que valem para todo o site (editoria, 03/10/2026)
+
+**1. Dizemos o que disponibilizamos; nunca o que não disponibilizamos.** Onde couber: "A
+metodologia é pública." Ponto. Mapas e gráficos podem ser reproduzidos com crédito. Recortes,
+cruzamentos e gráficos sob medida pelo e-mail da imprensa. **Nenhuma frase** sobre código, base de
+dados ou licença de dados — nem "não distribuído", nem "CC BY" aplicada a dados, nem "dados
+abertos". A página da **metodologia** é o único material técnico público.
+
+Saíram do site: a página de dados abertos e todos os links para ela, as planilhas de edição e de
+números, os arquivos de consultas (endereços, hashes) e as tabelas de auditoria. Eles continuam no
+repositório e nas notas — internos.
+
+**2. Blog = acontecimentos do ciclo, em prosa.** O blog não trata de decisões, método, correções
+nem funcionamento do site: isso vive na metodologia e em `mudancas.html`. Cada texto conta uma
+condição do ciclo como história de fatos — onde, quando, quanto, quem, com fonte —, em **texto
+corrido, sem tópicos, sem listas e sem cartões no meio do texto**. Escrito por pessoa: a central
+redige, a editoria aprova, e o Code publica só o que estiver em `robo-registro/blog/` com
+`aprovado: sim`. Nada gerado automaticamente vai ao ar como texto do blog.
+
 ## Regras editoriais que o código não pode violar
 
 - Nunca inventar dado. Ausência é "lacuna declarada", com fonte.

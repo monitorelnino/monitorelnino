@@ -27,6 +27,7 @@ Uso: python3 gerar_blog.py            → escreve os derivados
 """
 import datetime as _dt
 import json
+import pathlib
 import os
 import re
 import sys
@@ -46,8 +47,18 @@ INDICE = RAIZ / "data" / "blog" / "posts.json"
 FEED = RAIZ / "feeds" / "blog.xml"
 PAGINA_INDICE = RAIZ / "blog.html"
 BASE_URL = "https://monitorelnino.com.br/"
-CATEGORIAS = {"analise": "Análise", "diario": "Diário do monitoramento"}
+# 03/10/2026 (regra 2 da editoria): o blog passa a ter DUAS etiquetas, e as duas são sobre o ciclo.
+# "Análise" e "Diário do monitoramento" saíram: a primeira convidava a texto de opinião, e a segunda
+# era onde os registros técnicos de mudança entravam — eles agora vivem em `mudancas.html`.
+CATEGORIAS = {"boletim": "Boletim", "acontecimento": "Acontecimento"}
+# A central entrega o texto aprovado no repositório privado; o Code publica só o que tiver a marca.
+# Nada gerado automaticamente vai ao ar como texto do blog.
+DIR_APROVADOS = pathlib.Path(
+    os.environ.get("MARE_BLOG_APROVADOS", str(RAIZ.parent / "robo-registro" / "blog")))
+MARCA_DE_APROVACAO = "aprovado"
 CHAVES_OBRIGATORIAS = ("titulo", "data", "categoria", "autor", "resumo")
+# Sem `aprovado: sim` o texto não vai ao ar — é a trava do fluxo editorial de 03/10/2026.
+CHAVES_DE_APROVACAO = ("aprovado",)
 SITE = "MARÉ · Monitor de Antecipação e Resposta ao El Niño"
 
 
@@ -76,7 +87,19 @@ def ler_post(caminho: Path) -> dict:
     slug = caminho.stem
     if not re.fullmatch(r"\d{4}-\d{2}-\d{2}-[a-z0-9-]+", slug):
         raise SystemExit(f"{caminho.name}: nome do arquivo deve ser AAAA-MM-DD-slug-em-minusculas.md")
+    if str(meta.get(MARCA_DE_APROVACAO) or "").strip().lower() not in ("sim", "s", "true"):
+        raise SystemExit(f"{caminho.name}: sem `aprovado: sim` no cabeçalho — a editoria aprova "
+                         "antes de o texto ir ao ar (regra 2, 03/10/2026)")
     corpo_md = m.group(2).strip()
+    # REGRA 2: texto corrido. Sem tópicos, sem listas, sem cartões no meio do texto — os números
+    # vivem nas páginas, e o texto pode citá-los. A verificação é na GERAÇÃO, porque é aqui que o
+    # texto se torna página; o portão de conformidade confere depois, no que foi publicado.
+    for marca, nome in (("\n- ", "lista com travessão"), ("\n* ", "lista com asterisco"),
+                        ("\n1. ", "lista numerada"), ("<ul", "lista em HTML"),
+                        ("<ol", "lista em HTML"), ("cartao", "cartão")):
+        if marca in corpo_md:
+            raise SystemExit(f"{caminho.name}: o corpo tem {nome} — o blog é texto corrido "
+                             "(regra 2, 03/10/2026); os números vivem nas páginas do Monitor")
     corpo_html = markdown.markdown(corpo_md, extensions=["smarty"], output_format="html5")
     # títulos internos do texto começam em h2 (o h1 da página é o título do texto)
     corpo_html = re.sub(r"<(/?)h1>", r"<\1h2>", corpo_html)
@@ -85,6 +108,9 @@ def ler_post(caminho: Path) -> dict:
         "slug": slug, "titulo": meta["titulo"], "data": data.isoformat(), "data_br": data.strftime("%d/%m/%Y"),
         "categoria": meta["categoria"], "categoria_rotulo": CATEGORIAS[meta["categoria"]], "autor": meta["autor"],
         "resumo": meta["resumo"], "palavras": palavras, "url": f"blog/{slug}.html", "html": corpo_html,
+        "etiqueta": CATEGORIAS[meta["categoria"]],
+        "endereco_permanente": BASE_URL + f"blog/{slug}.html",
+        "fontes": meta.get("fontes") or "",
     }
 
 
@@ -184,6 +210,32 @@ def render_feed(posts: list[dict]) -> str:
 """
 
 
+def postos_aprovados() -> list:
+    """Os arquivos de texto que a editoria aprovou, no repositório privado.
+
+    03/10/2026 (fluxo editorial): a central entrega em `robo-registro/blog/<data>-<slug>.md`, com
+    `aprovado: sim`. O Code copia para `blog/posts/` e publica — e **nada mais entra no blog**. A
+    pasta local continua sendo a fonte do que é publicado, para que o site se gere sem o privado;
+    o que ela não pode é receber texto que não passou pela editoria.
+    """
+    if not DIR_APROVADOS.exists():
+        return []
+    novos = []
+    for origem in sorted(DIR_APROVADOS.glob("*.md")):
+        texto = origem.read_text(encoding="utf-8")
+        if not re.search(r"^aprovado:\s*(sim|s|true)\s*$", texto, re.M | re.I):
+            print(f"  [blog] {origem.name}: sem `aprovado: sim` — não publicado")
+            continue
+        destino = DIR_POSTS / origem.name
+        if not destino.exists() or destino.read_text(encoding="utf-8") != texto:
+            destino.write_text(texto, encoding="utf-8", newline="\n")
+            novos.append(origem.name)
+    if novos:
+        print(f"  [blog] {len(novos)} texto(s) aprovado(s) copiado(s) do repositório da editoria: "
+              + ", ".join(novos))
+    return novos
+
+
 def gerar() -> dict[Path, str]:
     """Devolve {caminho: conteúdo} de todos os derivados, sem escrever nada."""
     pagina = PAGINA_INDICE.read_text(encoding="utf-8")
@@ -228,14 +280,30 @@ def main(argv: list[str]) -> int:
 
 def autoteste() -> int:
     import tempfile
-    md = "---\ntitulo: Teste <b>\ndata: 2026-01-02\ncategoria: diario\nautor: Editoria\nresumo: Frase.\n---\n\n# Sub\n\nTexto **forte**.\n"
+    # 03/10/2026: etiquetas novas (boletim | acontecimento) e `aprovado: sim` obrigatório.
+    md = ("---\ntitulo: Teste <b>\ndata: 2026-01-02\ncategoria: acontecimento\n"
+          "autor: Editoria\nresumo: Frase.\naprovado: sim\n---\n\n# Sub\n\nTexto **forte**.\n")
     with tempfile.TemporaryDirectory() as d:
         p = Path(d) / "2026-01-02-teste.md"; p.write_text(md, encoding="utf-8", newline="\n")
         post = ler_post(p)
-        assert post["titulo"] == "Teste <b>" and post["categoria_rotulo"] == CATEGORIAS["diario"]
+        assert post["titulo"] == "Teste <b>" and post["categoria_rotulo"] == CATEGORIAS["acontecimento"]
+        assert post["etiqueta"] == "Acontecimento" and post["endereco_permanente"].endswith(
+            "blog/2026-01-02-teste.html")
         assert "<h2>Sub</h2>" in post["html"] and "<h1>" not in post["html"], post["html"]
         assert post["data_br"] == "02/01/2026" and post["url"] == "blog/2026-01-02-teste.html"
-        for ruim, msg in [("---\ntitulo: x\n---\n\ncorpo", "sem data"), (md.replace("diario", "outra"), "categoria inválida"), (md.replace("2026-01-02", "02/01/2026"), "data fora do formato")]:
+        # As recusas que o blog precisa fazer, uma por linha. As quatro últimas são de 03/10/2026:
+        # texto sem aprovação da editoria não vai ao ar, e o corpo é prosa — sem listas.
+        ruins = [
+            ("---\ntitulo: x\n---\n\ncorpo", "sem data"),
+            (md.replace("acontecimento", "outra"), "categoria inválida"),
+            (md.replace("2026-01-02", "02/01/2026"), "data fora do formato"),
+            (md.replace("aprovado: sim", "aprovado: nao"), "texto não aprovado"),
+            (md.replace("\naprovado: sim", ""), "texto sem marca de aprovação"),
+            (md + "\n- item de lista\n", "lista no corpo"),
+            (md + "\n1. item numerado\n", "lista numerada no corpo"),
+            (md + "\n<ul><li>x</li></ul>\n", "lista em HTML no corpo"),
+        ]
+        for ruim, msg in ruins:
             q = Path(d) / "2026-01-02-ruim.md"; q.write_text(ruim, encoding="utf-8", newline="\n")
             try:
                 ler_post(q); raise AssertionError("aceitou " + msg)

@@ -1,5 +1,5 @@
 {
-  "_governanca": "Contrato de layout da Imprensa (handover 'Imprensa — redesenho definitivo', 02/10/2026). ESTE ARQUIVO É A VERDADE: o HTML e o JS se conformam a ele. Quem verifica é scripts/verificar_layout.py; a coerência de cada número com a página de origem é do portão scripts/verificar_imprensa_coerencia.py, que compara o número da Imprensa com o número RENDERIZADO no topo da página de onde ele vem.",
+  "_governanca": "Contrato de layout da Imprensa (handover de 03/10/2026): a página passa a ter SÓ O ESTÁVEL. Saíram 'Esta semana em números', o release gerado com o botão de copiar, a variação semanal e a planilha da edição — o que muda vive no boletim do blog, e aqui fica o ponteiro. Quem verifica é scripts/verificar_conformidade.py.",
   "pagina": "imprensa.html",
   "componentes": {
     "numeros": ".cartao-numero",
@@ -14,40 +14,29 @@
       "h2": null,
       "tipo": "lista_simples",
       "exige_texto": [
-        "Os números da semana, o texto pronto para copiar, como citar e como ler os índices.",
+        "O que é o MARÉ, como os índices são calculados, o que cada página mostra e como citar.",
         "MARÉ Legal",
         "MARÉ Saúde"
       ]
     },
     {
-      "id": "semana-em-numeros",
-      "h2": "Esta semana em números",
+      "id": "boletim",
+      "h2": "O boletim desta semana",
       "tipo": "lista_simples",
       "exige_texto": [
-        "Cada número traz a fonte e a data da consulta",
-        "Nenhum deles entra no cálculo dos índices",
-        "Baixar os números desta edição (planilha)"
+        "Todas as edições"
       ],
-      "grupos": [
-        {"chave": "preparacao", "titulo": "Preparação", "cartoes": 3},
-        {"chave": "emergencias", "titulo": "Emergências", "cartoes": 3},
-        {"chave": "risco_agora", "titulo": "Risco agora", "cartoes": 6},
-        {"chave": "dinheiro", "titulo": "Dinheiro", "cartoes": 3},
-        {"chave": "saude", "titulo": "Saúde", "cartoes": 3}
-      ],
-      "_nota_grupos": "Os grupos são desenhados pelo JS a partir de data/imprensa/semana.json, e o número de cartões é o do handover. Cartão sem dado SAI da grade, e o seu rótulo entra na linha única 'Sem dado nesta edição' — por isso o portão de layout não cobra a contagem por grupo: a contagem varia com a lacuna, e cobrar número fixo reprovaria a edição honesta. Quem cobra o conteúdo é o portão de coerência."
-    },
-    {
-      "id": "release",
-      "h2": "Release da edição",
-      "tipo": "lista_simples",
-      "exige_texto": ["Copiar texto", "O MARÉ é uma criação da Futura Evidence Lab."]
+      "_nota": "Único elemento dinâmico da página: data da edição, três números e o caminho para ela."
     },
     {
       "id": "citar",
       "h2": "Como citar",
       "tipo": "lista_simples",
-      "exige_texto": ["FUTURA EVIDENCE LAB"]
+      "exige_texto": [
+        "Fonte: MARÉ / Futura Evidence Lab.",
+        "A metodologia é pública.",
+        "o crédito \"MARÉ / Futura Evidence Lab\""
+      ]
     },
     {
       "id": "o-que-e",
@@ -64,16 +53,35 @@
       "h2": "O que cada página mostra",
       "tipo": "lista_simples",
       "exige_texto": [
-        "avisos e alertas em vigor, as emergências declaradas no ciclo, o que o governo federal reconheceu e as listas federais de risco",
-        "os recursos do El Niño, de onde vêm, como estão sendo aplicados e o que a defesa civil federal autorizou"
+        "os textos da editoria sobre o que está acontecendo no ciclo, e o boletim de cada semana"
       ]
     },
     {
       "id": "faq",
       "h2": "Perguntas de fato",
       "tipo": "lista_simples"
+    },
+    {
+      "id": "redacoes",
+      "h2": "Para redações",
+      "tipo": "lista_simples",
+      "exige_texto": [
+        "com fonte e data em cada entrega"
+      ]
     }
   ],
-  "texto_proibido": ["FIGURA", "Corte da edição", "corte de", "desastre", "no período", "Backlog"],
-  "_nota_texto_proibido": "O handover barra 'pago', 'nota' e 'período' (o recorte se diz 'semana'). 'pago' não ocorre nesta página depois do redesenho e 'nota' aparece em 'notificações' no texto aprovado da saúde, por isso o portão barra a locução 'no período', que era o vício real dos rótulos antigos ('decretos no período', 'planos no período'). O vocabulário do dinheiro é conferido por verificar_palavras_financiamento.py, que lê o texto visível das três páginas."
+  "texto_proibido": [
+    "FIGURA",
+    "Corte da edição",
+    "corte de",
+    "desastre",
+    "no período",
+    "Backlog",
+    "dados abertos",
+    "CC BY",
+    "não é distribuído",
+    "não é distribuido",
+    "código que calcula"
+  ],
+  "_nota_texto_proibido": "03/10/2026 (regra 1 da editoria): nenhuma frase sobre código, base de dados ou licença de dados entra no texto público — nem para dizer que existe, nem para dizer que não existe. A metodologia se anuncia numa frase, e é só."
 }

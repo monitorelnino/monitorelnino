@@ -389,7 +389,14 @@ except Exception as _e:
 # (2) congelamento das constantes do motor no defeso (Errata C25): hash em data/congelamento_defeso.json.
 try:
     import glob as _g, re as _re2, pathlib
+    # 03/10/2026: `mudancas.html` é gerada do CHANGELOG e publica o registro histórico. As datas
+    # que aparecem nela são CITAÇÃO de uma edição passada — "a nota dizia 'Última verificação:
+    # 24/09/2026'" —, não o carimbo desta edição, que é o que este portão existe para barrar.
+    # Exigir que o histórico não cite data seria exigir que ele não diga o que aconteceu.
+    _SEM_CARIMBO = {"mudancas.html"}
     for _f in sorted(_g.glob(str(RAIZ / "*.html"))):
+        if pathlib.Path(_f).name in _SEM_CARIMBO:
+            continue
         _t = _re2.sub(r"<script.*?</script>", "", open(_f, encoding="utf-8").read(), flags=_re2.S)
         for _m in _re2.finditer(r"(corte desta edi[çc][ãa]o|[Úu]ltima verifica[çc][ãa]o:|[Úu]ltima atualiza[çc][ãa]o:)[^<\n]{0,40}?(\d{2}/\d{2}/20\d{2})", _t):
             erro(f"data literal de edição no HTML (v3.1 §12) em {pathlib.Path(_f).name}: '{_m.group(0)[:70]}'")

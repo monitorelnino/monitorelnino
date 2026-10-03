@@ -125,6 +125,14 @@ jobs:
           # assunto: dado
           python3 scripts/painel_da_noite.py --autoteste
           # assunto: dado
+          python3 scripts/gerar_boletim.py --autoteste
+          # assunto: texto
+          python3 scripts/gerar_mudancas.py --autoteste
+          # assunto: texto
+          python3 scripts/gerar_mudancas.py --check
+          # assunto: texto
+          python3 gerar_blog.py --autoteste
+          # assunto: dado
           python3 scripts/verificar_esquema_de_pista.py --autoteste
           # assunto: dado
           python3 scripts/verificar_esquema_de_pista.py
