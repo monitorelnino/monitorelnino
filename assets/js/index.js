@@ -408,6 +408,12 @@ function selectUF(uf, tileEl){
       if (!doInstrumento || !doCiclo || doInstrumento === doCiclo) return '';
       return `<div class="card-note">O plano estadual em vigor trata de outro risco (${doInstrumento}), não do previsto para este ciclo (${doCiclo}).</div>`;
     })()}
+    ${(function(){ /* 03/10/2026: o que o próprio órgão respondeu ao MARÉ por pedido de acesso
+      à informação. Não pontua e não deve pontuar: é prova de que o órgão afirma, não de que o
+      documento existe e diz o que se espera dele. A frase é literal aprovado pela editoria e vem
+      do dado (`nota_lai` em data/estados.json), nunca escrita aqui. */
+      return d.nota_lai ? `<div class="card-note">${esc(d.nota_lai)}</div>` : '';
+    })()}
     <div class="field"><div class="k">Órgão responsável</div><div class="v">${esc(d.orgao)}</div></div>
     ${(function(){ // 26/09/2026: a face da célula não comporta este campo, e ele NÃO existia no
       // detalhe — sem isto, o alcance da varredura sumiria da interface inteira.
