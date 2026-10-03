@@ -95945,7 +95945,7 @@
       "autoridade": "indefinido",
       "objeto": "indefinido",
       "destino": "indefinido",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: natureza_duvidosa",
       "id": "b0523a0d9b",
       "nivel_confianca": "B",
       "pontos_confianca": 4,
@@ -95982,6 +95982,51 @@
         "numero": null,
         "data_ato": "2025",
         "citacao_completa": false
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "natureza_duvidosa",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "natureza_duvidosa",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "ao convênio celebrado com a UNESC conforme Decreto e a prefeitura municipal de timbó Grande, representada pelo sr. CONCEDER EXONERAÇÃO, de acordo com o art. 16"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "......................................69 DESIGNAR, de acordo com os art. 39, da lei n. 6.745/85, conforme Educação..............................................",
+            "dados": {
+              "tipo": "lei",
+              "numero": "6.745/85",
+              "data": "31/12/2025",
+              "trecho": "......................................69 DESIGNAR, de acordo com os art. 39, da lei n. 6.745/85, conforme Educação.............................................."
+            }
+          },
+          "3_autoridade": {
+            "ok": true,
+            "trecho": "istas .......................................................................67 Governador do Estado GABINETE DO GOVERNADOR 2 procuradoria-Geral do Estado ....."
+          },
+          "4_natureza": {
+            "ok": false,
+            "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+          }
+        },
+        "categoria": null,
+        "data": "31/12/2025",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "ca25e022461dc311351edeb5194854fb224099aba035b69e22ca802553091aeb"
       }
     },
     {
@@ -96255,7 +96300,16 @@
         "numero": null,
         "data_ato": "2024",
         "citacao_completa": false
-      }
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "tecnica",
+          "motivo": "documento_inacessivel",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "proxima_tentativa_em": "2026-10-04"
     },
     {
       "municipio": "Timbó Grande",
@@ -96334,7 +96388,7 @@
       "autoridade": "indefinido",
       "objeto": "el_nino",
       "destino": "indefinido",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: sem_documento_primario",
       "id": "855977129d",
       "nivel_confianca": "B",
       "pontos_confianca": 5,
@@ -96377,6 +96431,41 @@
           "motivo": "portão automático: fonte não oficial"
         },
         "resultado": "preparada"
+      },
+      "busca_dirigida": [
+        {
+          "em": "2026-10-03",
+          "fontes": [
+            "querido_diario",
+            "sitio_oficial",
+            "busca_web"
+          ],
+          "encontrou": null
+        }
+      ],
+      "ultima_busca_em": "2026-10-03",
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "sem_documento_primario",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "sem_documento_primario",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": false,
+            "trecho": "url fora dos padrões de fonte oficial: https://www.mpsc.mp.br/documents/d/guest/compilacao-de-enunciados-aprovados-gedclima-mpsc"
+          }
+        },
+        "categoria": null,
+        "data": null,
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": null
       }
     },
     {
@@ -96572,7 +96661,7 @@
       "autoridade": "indefinido",
       "objeto": "el_nino",
       "destino": "indefinido",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: sem_documento_primario",
       "id": "c974a5cd81",
       "nivel_confianca": "B",
       "pontos_confianca": 5,
@@ -96619,6 +96708,41 @@
           "motivo": "portão automático: fonte não oficial"
         },
         "resultado": "preparada"
+      },
+      "busca_dirigida": [
+        {
+          "em": "2026-10-03",
+          "fontes": [
+            "querido_diario",
+            "sitio_oficial",
+            "busca_web"
+          ],
+          "encontrou": null
+        }
+      ],
+      "ultima_busca_em": "2026-10-03",
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "sem_documento_primario",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "sem_documento_primario",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": false,
+            "trecho": "url fora dos padrões de fonte oficial: https://biblioteca.mpf.mp.br/server/api/core/bitstreams/28b48a6b-ad87-4d4d-be07-d4a9c4250cf4/content"
+          }
+        },
+        "categoria": null,
+        "data": null,
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": null
       }
     },
     {
@@ -96635,7 +96759,7 @@
       "autoridade": "indefinido",
       "objeto": "indefinido",
       "destino": "indefinido",
-      "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+      "status": "pista — recusada pelo juiz: citacao_incompleta",
       "id": "202d759caf",
       "nivel_confianca": "B",
       "pontos_confianca": 5,
@@ -96691,7 +96815,54 @@
         "veredito_do_juiz": null
       },
       "atribuicao_corrigida_em": "2026-10-03",
-      "atribuicao_corrigida_por": "dominio_oficial_do_documento"
+      "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+      "busca_dirigida": [
+        {
+          "em": "2026-10-03",
+          "fontes": [
+            "querido_diario"
+          ],
+          "encontrou": null
+        }
+      ],
+      "ultima_busca_em": "2026-10-03",
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "citacao_incompleta",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "citacao_incompleta",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "STADODODESENVOLVIMENTOECONÔMICOSUSTENTÁVEL PLANO MUNICIPAL DE SANEAMENTO BÁSICO CALMON VOLUME I Consolidação do Plano Municipal de Saneamento Básico Consórcio:"
+          },
+          "2_citacao": {
+            "ok": false,
+            "trecho": "",
+            "dados": {
+              "tipo": "lei",
+              "numero": "11.445",
+              "data": null,
+              "detalhe": "sem data completa no texto"
+            }
+          }
+        },
+        "categoria": null,
+        "data": null,
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "a718c33578151090d044c44f45e7c15e4f069e6389b869aba3c0b142950a1a8d"
+      }
     },
     {
       "municipio": "Timbó Grande",
@@ -96745,7 +96916,7 @@
       "autoridade": "indefinido",
       "objeto": "indefinido",
       "destino": "indefinido",
-      "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+      "status": "pista — recusada pelo juiz: executivo_pendente",
       "id": "96d876c78c",
       "nivel_confianca": "B",
       "pontos_confianca": 4,
@@ -96801,7 +96972,48 @@
         "veredito_do_juiz": null
       },
       "atribuicao_corrigida_em": "2026-10-03",
-      "atribuicao_corrigida_por": "dominio_oficial_do_documento"
+      "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "executivo_pendente",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "executivo_pendente",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "1 ESTADO DE SANTA CATARINA PREFEITURA MUNICIPAL DE CALMON SECRETARIA MUNICIPAL DE SAÚDE PLANO MUNICIPAL DE SAUDE 2022 a 2025 CALMON / SC CALMON – SC 2022 2 PREF"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "............................................................................ 36 LEI ORGÂNICA DA SAÚDE N°8080/90 ................................................",
+            "dados": {
+              "tipo": "lei",
+              "numero": "8080/90",
+              "data": "13/01/2012",
+              "trecho": "............................................................................ 36 LEI ORGÂNICA DA SAÚDE N°8080/90 ................................................"
+            }
+          },
+          "3_autoridade": {
+            "ok": false,
+            "trecho": "APOIO ESF Calmon ESF Assentamento Conquista 05 de Maio Equipe NASF COLABORAÇÃO Conselho Municipal de Saúde GESTÃO 2022 – 2024 4 DADOS DA PREFEITURA MUNICIPAL:"
+          }
+        },
+        "categoria": null,
+        "data": "13/01/2012",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "529e658adbbbbc84d1ded6be1474c09239db31427aa717682b68b747cf9bf8b6"
+      }
     },
     {
       "municipio": "Timbó Grande",
@@ -96853,7 +97065,16 @@
         "numero": "Lei n. 13.005",
         "data_ato": "2014",
         "citacao_completa": true
-      }
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "tecnica",
+          "motivo": "documento_inacessivel",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "proxima_tentativa_em": "2026-10-04"
     },
     {
       "municipio": "Timbó Grande",
@@ -96869,7 +97090,7 @@
       "autoridade": "indefinido",
       "objeto": "indefinido",
       "destino": "indefinido",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: ente_nao_confirmado",
       "id": "a54b6b1eab",
       "nivel_confianca": "B",
       "pontos_confianca": 4,
@@ -96915,6 +97136,33 @@
           "motivo": "portão automático: ato de 2002 — pode ser edição anterior; decisão humana"
         },
         "resultado": "preparada"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "ente_nao_confirmado",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "ente_nao_confirmado",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": false,
+            "trecho": "o texto não nomeia \"Timbó Grande\""
+          }
+        },
+        "categoria": null,
+        "data": null,
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "5d49efb43f64f25c833203b2515fdf895fc6e591ad37aa08dd881956d923478e"
       }
     },
     {
@@ -96931,7 +97179,7 @@
       "autoridade": "indefinido",
       "objeto": "indefinido",
       "destino": "indefinido",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: ente_nao_confirmado",
       "id": "d627170233",
       "nivel_confianca": "B",
       "pontos_confianca": 4,
@@ -96979,6 +97227,33 @@
           "motivo": "portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo"
         },
         "resultado": "preparada"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "ente_nao_confirmado",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "ente_nao_confirmado",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "19999 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": false,
+            "trecho": "o texto não nomeia \"Timbó Grande\""
+          }
+        },
+        "categoria": null,
+        "data": null,
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "1b46b2d098f4817a5be5d4c044389220b27c6efa135718b836287bfd24773995"
       }
     },
     {
@@ -97081,7 +97356,16 @@
           "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
         },
         "resultado": "preparada"
-      }
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "tecnica",
+          "motivo": "texto_nao_extraivel",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "proxima_tentativa_em": "2026-10-04"
     },
     {
       "municipio": "Timbó Grande",
@@ -97097,7 +97381,7 @@
       "autoridade": "indefinido",
       "objeto": "indefinido",
       "destino": "indefinido",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: ente_nao_confirmado",
       "id": "26b9a2391e",
       "nivel_confianca": "C",
       "pontos_confianca": 4,
@@ -97122,6 +97406,33 @@
           }
         },
         "url": "https://www.conexaoambiental.pr.gov.br/sites/conexao-ambiental/arquivos_restritos/files/documento/2021-12/Plano%20de%20A%C3%A7%C3%A3o%20Estadual%20para%20a%20Conserva%C3%A7%C3%A3o%20de%20Aves_2009.pdf"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "ente_nao_confirmado",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "ente_nao_confirmado",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": false,
+            "trecho": "o texto não nomeia \"Timbó Grande\""
+          }
+        },
+        "categoria": null,
+        "data": null,
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "48b857c8ab5b8da5d321ff9f3d1c60fdd87299df2622a80ef687125c1c9dc32d"
       }
     },
     {
@@ -97138,7 +97449,7 @@
       "autoridade": "indefinido",
       "objeto": "indefinido",
       "destino": "indefinido",
-      "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+      "status": "pista — recusada pelo juiz: citacao_incompleta",
       "id": "8ab6a8ac23",
       "nivel_confianca": "B",
       "pontos_confianca": 6,
@@ -97195,7 +97506,56 @@
         "veredito_do_juiz": null
       },
       "atribuicao_corrigida_em": "2026-10-03",
-      "atribuicao_corrigida_por": "dominio_oficial_do_documento"
+      "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+      "busca_dirigida": [
+        {
+          "em": "2026-10-03",
+          "fontes": [
+            "querido_diario",
+            "sitio_oficial",
+            "busca_web"
+          ],
+          "encontrou": null
+        }
+      ],
+      "ultima_busca_em": "2026-10-03",
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "citacao_incompleta",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "citacao_incompleta",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "19999 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "A PERSPECTIVA DA EDUCAÇÃO INCLUSIVA NA REDE MUNICIPAL DE ENSINO DO MUNICÍPIO DE TANGARÁ.” ALDAIR BIASIOLO, Prefeito de Tangará em exercício, Estado de Santa Cat"
+          },
+          "2_citacao": {
+            "ok": false,
+            "trecho": "",
+            "dados": {
+              "tipo": "decreto",
+              "numero": "051",
+              "data": null,
+              "detalhe": "sem data completa no texto"
+            }
+          }
+        },
+        "categoria": null,
+        "data": null,
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "4b4577be4f551aed5bd47d5b5a2a7a230f9eaf511f4eb1554f3935b013341152"
+      }
     },
     {
       "municipio": "Timbó Grande",
@@ -97211,7 +97571,7 @@
       "autoridade": "indefinido",
       "objeto": "indefinido",
       "destino": "indefinido",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: sem_documento_primario",
       "id": "d574a712b9",
       "nivel_confianca": "B",
       "pontos_confianca": 4,
@@ -97253,6 +97613,41 @@
           "motivo": "portão automático: fonte não oficial"
         },
         "resultado": "preparada"
+      },
+      "busca_dirigida": [
+        {
+          "em": "2026-10-03",
+          "fontes": [
+            "querido_diario",
+            "sitio_oficial",
+            "busca_web"
+          ],
+          "encontrou": null
+        }
+      ],
+      "ultima_busca_em": "2026-10-03",
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "sem_documento_primario",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "sem_documento_primario",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": false,
+            "trecho": "url fora dos padrões de fonte oficial: https://www.mpf.mp.br/atuacao/ccr1/atos-e-publicacoes/atas-das-sessoes/atas-de-revisao/docs/ata-da-15a-sessao-ordinaria-da-1a-camara"
+          }
+        },
+        "categoria": null,
+        "data": null,
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": null
       }
     },
     {
@@ -97304,7 +97699,16 @@
         "numero": null,
         "data_ato": "2025",
         "citacao_completa": false
-      }
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "tecnica",
+          "motivo": "documento_inacessivel",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "proxima_tentativa_em": "2026-10-04"
     },
     {
       "municipio": "Timbó Grande",
@@ -97444,7 +97848,7 @@
       "autoridade": "indefinido",
       "objeto": "indefinido",
       "destino": "indefinido",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: citacao_incompleta",
       "id": "2077921e4b",
       "nivel_confianca": "B",
       "pontos_confianca": 4,
@@ -97490,6 +97894,55 @@
           "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
         },
         "resultado": "preparada"
+      },
+      "busca_dirigida": [
+        {
+          "em": "2026-10-03",
+          "fontes": [
+            "querido_diario",
+            "sitio_oficial",
+            "busca_web"
+          ],
+          "encontrou": null
+        }
+      ],
+      "ultima_busca_em": "2026-10-03",
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "citacao_incompleta",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "citacao_incompleta",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "19999 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "do Peixe Arroio Trinta Ibiam Matos Costa Tangará Caçador Iomerê Pinheiro Preto Timbó Grande Calmon Lebon Régis Rio das Antas Videira Fraiburgo Macieira Salto V"
+          },
+          "2_citacao": {
+            "ok": false,
+            "trecho": "",
+            "dados": {
+              "tipo": "decreto",
+              "numero": "1.324/2012",
+              "data": null,
+              "detalhe": "sem data completa no texto"
+            }
+          }
+        },
+        "categoria": null,
+        "data": null,
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "bf88574cdd43173b0bb95165a75aff8f4a1c2aeb2a037555ce11bb7c15bae192"
       }
     },
     {
@@ -97537,7 +97990,16 @@
         "numero": null,
         "data_ato": null,
         "citacao_completa": false
-      }
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "tecnica",
+          "motivo": "documento_inacessivel",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "proxima_tentativa_em": "2026-10-04"
     },
     {
       "municipio": "Timbó Grande",
@@ -97622,7 +98084,16 @@
         "numero": null,
         "data_ato": null,
         "citacao_completa": false
-      }
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "tecnica",
+          "motivo": "documento_inacessivel",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "proxima_tentativa_em": "2026-10-04"
     },
     {
       "municipio": "Timbó Grande",
@@ -150117,7 +150588,16 @@
           }
         },
         "url": "http://www.planalto.gov.br/Ccivil_03/Leis/L9610.htm"
-      }
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "tecnica",
+          "motivo": "documento_inacessivel",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "proxima_tentativa_em": "2026-10-04"
     },
     {
       "municipio": "Rio do Oeste",
@@ -150128,7 +150608,7 @@
       "titulo": "Diário Oficial dos Municípios",
       "data": "28/09/2026",
       "origem": "seguimento_link_noticia",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: ente_nao_confirmado",
       "pista_origem": "c466b7a306",
       "id": "03a3148dca",
       "nivel_confianca": "C",
@@ -150169,6 +150649,33 @@
           }
         },
         "url": "https://www.diariomunicipal.sc.gov.br/?r=site/portal&codigoEntidade=300"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "ente_nao_confirmado",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "ente_nao_confirmado",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "2655 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": false,
+            "trecho": "o texto não nomeia \"Rio do Oeste\""
+          }
+        },
+        "categoria": null,
+        "data": null,
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "ac3c78b01dc3ff0bb12edd2b4e7e5efc61a7407f7f8a9d4854f3ee2b0f61aaea"
       }
     },
     {
@@ -150243,7 +150750,7 @@
       "autoridade": "indefinido",
       "objeto": "indefinido",
       "destino": "indefinido",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
       "id": "b30d5823c6",
       "nivel_confianca": "A",
       "pontos_confianca": 7,
@@ -150290,6 +150797,47 @@
           "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
         },
         "resultado": "preparada"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "autoridade_nao_confirmada",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "autoridade_nao_confirmada",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "4729 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "Prefeitura de Esperantinópolis Prefeitura Municipal de Esperantinópolis Ouvidoria/Sic Transparência CORONAVÍRUS (COVID-19): Boletins, Ações, Transparência e mat"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "rnecidos acima serão tratados com respeito à sua privacidade. Seguindo a LGPD - Lei Geral de Proteção de Dados 13.709 , de 14 de agosto de 2018. Cancelar Enviar",
+            "dados": {
+              "tipo": "lei",
+              "numero": "13.709",
+              "data": "21/05/2026",
+              "trecho": "rnecidos acima serão tratados com respeito à sua privacidade. Seguindo a LGPD - Lei Geral de Proteção de Dados 13.709 , de 14 de agosto de 2018. Cancelar Enviar"
+            }
+          },
+          "3_autoridade": {
+            "ok": false,
+            "trecho": "sem fórmula de promulgação nem texto articulado"
+          }
+        },
+        "categoria": null,
+        "data": "21/05/2026",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "b67ec64a5912add615349ce0cf3209258944ef3e04f100f48215e08c7b40885c"
       }
     },
     {
@@ -150422,7 +150970,7 @@
       "autoridade": "indefinido",
       "objeto": "indefinido",
       "destino": "indefinido",
-      "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
+      "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
       "id": "fbc2da7491",
       "nivel_confianca": "A",
       "pontos_confianca": 6,
@@ -150481,40 +151029,43 @@
           "classe": "criterio",
           "motivo": "autoridade_nao_confirmada",
           "codebook": "1.1 (28/09/2026)"
+        },
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "noticia_institucional_nao_e_o_plano",
+          "codebook": "1.3 (03/10/2026)"
         }
       ],
       "juiz": {
-        "codebook": "1.1 (28/09/2026)",
+        "codebook": "1.3 (03/10/2026)",
         "promove": false,
-        "motivo": "autoridade_nao_confirmada",
+        "motivo": "noticia_institucional_nao_e_o_plano",
         "criterios": {
           "0_documento_primario": {
             "ok": true,
-            "trecho": "20000 caracteres de fonte oficial"
+            "trecho": "2026 caracteres de fonte oficial"
           },
           "1_identidade": {
             "ok": true,
-            "trecho": "stado de Alagoas • ANO XIII | Nº 2735 ESTADO DE ALAGOAS PREFEITURA MUNICIPAL DE ARAPIRACA PREFEITURA MUNICIPAL DE ARAPIRACA AVISO DE DISPENSA ELETRÔNICA AVISO D"
+            "trecho": "Arquivos Plano de Contingência - Prefeitura de Arapiraca Close A Prefeitura Gabinete Telefones Secretarias Órgãos A Cidade Feriados Municipais Dados Gerais Econ"
           },
           "2_citacao": {
-            "ok": true,
-            "trecho": "RO NOVO, NO MUNICÍPIO DE ARAPIRACA/AL. FUNDAMENTO: COM BASE NO ART. 65, §8º, DA LEI FEDERAL Nº 8.666/93, REALIZA-SE O PRESENTE APOSTILAMENTO AO CONTRATO Nº 830/",
-            "dados": {
-              "tipo": "lei",
-              "numero": "8.666/93",
-              "data": "04/02/2026",
-              "trecho": "RO NOVO, NO MUNICÍPIO DE ARAPIRACA/AL. FUNDAMENTO: COM BASE NO ART. 65, §8º, DA LEI FEDERAL Nº 8.666/93, REALIZA-SE O PRESENTE APOSTILAMENTO AO CONTRATO Nº 830/"
-            }
-          },
-          "3_autoridade": {
             "ok": false,
-            "trecho": "sem fórmula de promulgação nem texto articulado"
+            "trecho": "",
+            "dados": {
+              "tipo": null,
+              "numero": null,
+              "data": null,
+              "prova": "para melhorar sua experiência neste site. Curta Nossa página Siga Nossos Tweets Compartilhe nosso mundo Veja nossos Vídeos Serviços Online Transparência Prefeit",
+              "detalhe": "página de notícia no domínio do ente: a notícia diz que o plano existe, mas não é o plano"
+            }
           }
         },
         "categoria": null,
-        "data": "04/02/2026",
+        "data": null,
         "julgado_em": "2026-10-03",
-        "hash_evidencia": "7bcb3e343b3c8027d39a76607f4ef30ab1bd4a5216aff8ea239a5ccc11d4da55"
+        "hash_evidencia": "fa2115630c6ae291215cf0388f01c37d2552eec3cafb611329f740d2c5f5ba72"
       }
     },
     {
@@ -150531,7 +151082,7 @@
       "autoridade": "indefinido",
       "objeto": "indefinido",
       "destino": "indefinido",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: citacao_incompleta",
       "id": "89e192563b",
       "nivel_confianca": "C",
       "pontos_confianca": 5,
@@ -150555,6 +151106,55 @@
           }
         },
         "url": "https://web.arapiraca.al.gov.br/arquivos/plano-de-contingencia/"
+      },
+      "busca_dirigida": [
+        {
+          "em": "2026-10-03",
+          "fontes": [
+            "querido_diario",
+            "sitio_oficial",
+            "busca_web"
+          ],
+          "encontrou": null
+        }
+      ],
+      "ultima_busca_em": "2026-10-03",
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "citacao_incompleta",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "citacao_incompleta",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "3442 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "Plano de Contingência para Infecção Humana pelo Coronavírus - Prefeitura de Arapiraca Close A Prefeitura Gabinete Telefones Secretarias Órgãos A Cidade Feriados"
+          },
+          "2_citacao": {
+            "ok": false,
+            "trecho": "",
+            "dados": {
+              "tipo": "lei",
+              "numero": "8211",
+              "data": null,
+              "detalhe": "sem data completa no texto"
+            }
+          }
+        },
+        "categoria": null,
+        "data": null,
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "392201b4a88464c6ed1f42a877da8af187a861066bdc89678e98aa7f1c753311"
       }
     },
     {
@@ -150571,7 +151171,7 @@
       "autoridade": "indefinido",
       "objeto": "fora_do_objeto",
       "destino": "fora_do_objeto",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
       "id": "a41f22b2cb",
       "nivel_confianca": "C",
       "pontos_confianca": 5,
@@ -150595,6 +151195,47 @@
           }
         },
         "url": "https://transparencia.arapiraca.al.gov.br/relatorio_geral/147/arquivo/157/download"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "autoridade_nao_confirmada",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "autoridade_nao_confirmada",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "tingência para Infecção Humana pelo Novo Coronavírus (Covid-19) do Município de Arapiraca-AL 23 de abril de 2020 0 SUMÁRIO JUSTIFICATIVA ......................."
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "ncia Internacional (ESPII), foi declarada pelo Ministério da Saúde, por meio da Portaria nº 188, de 03/02/2020, Emergência em Saúde Pública de importância Nacio",
+            "dados": {
+              "tipo": "portaria",
+              "numero": "188",
+              "data": "03/02/2020",
+              "trecho": "ncia Internacional (ESPII), foi declarada pelo Ministério da Saúde, por meio da Portaria nº 188, de 03/02/2020, Emergência em Saúde Pública de importância Nacio"
+            }
+          },
+          "3_autoridade": {
+            "ok": false,
+            "trecho": "sem fórmula de promulgação nem texto articulado"
+          }
+        },
+        "categoria": null,
+        "data": "03/02/2020",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "89a6a832feeecaa6c04d0428c148a471f7fdd49e80bacb5eaef56309c1d4b3dd"
       }
     },
     {
@@ -150787,7 +151428,7 @@
       "autoridade": "indefinido",
       "objeto": "indefinido",
       "destino": "indefinido",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
       "id": "560a85f834",
       "nivel_confianca": "A",
       "pontos_confianca": 6,
@@ -150818,6 +151459,47 @@
         "numero": null,
         "data_ato": null,
         "citacao_completa": false
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "autoridade_nao_confirmada",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "autoridade_nao_confirmada",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "1755 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "de publicação Exercício de referência Órgão Ações 1 PLANO MUNICIPAL DE SAÚDE DE ARAPIRACA PLANO MUNICIPAL DE SAÚDE 2022-2025 20/04/2022 2022 SECRETARIA MUNICIPA"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "25 20/04/2022 2022 SECRETARIA MUNICIPAL DE SAÚDE Detalhes Visualizar Download 2 RESOLUÇÃO CMS/AL Nº 18 DE 02 DEZ 2021 APROVAÇÃO DO PLANO MUNICIPAL DE SAÚDE 2022",
+            "dados": {
+              "tipo": "resolução",
+              "numero": "18",
+              "data": "20/04/2022",
+              "trecho": "25 20/04/2022 2022 SECRETARIA MUNICIPAL DE SAÚDE Detalhes Visualizar Download 2 RESOLUÇÃO CMS/AL Nº 18 DE 02 DEZ 2021 APROVAÇÃO DO PLANO MUNICIPAL DE SAÚDE 2022"
+            }
+          },
+          "3_autoridade": {
+            "ok": false,
+            "trecho": "sem fórmula de promulgação nem texto articulado"
+          }
+        },
+        "categoria": null,
+        "data": "20/04/2022",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "267f55e0df1f182146446026dced904578ea882884fcb9231470f20c4b44f7a8"
       }
     },
     {
@@ -150910,7 +151592,7 @@
       "autoridade": "indefinido",
       "objeto": "el_nino",
       "destino": "indefinido",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: citacao_incompleta",
       "id": "f750f8d480",
       "nivel_confianca": "A",
       "pontos_confianca": 6,
@@ -150957,6 +151639,55 @@
           "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
         },
         "resultado": "preparada"
+      },
+      "busca_dirigida": [
+        {
+          "em": "2026-10-03",
+          "fontes": [
+            "querido_diario",
+            "sitio_oficial",
+            "busca_web"
+          ],
+          "encontrou": null
+        }
+      ],
+      "ultima_busca_em": "2026-10-03",
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "citacao_incompleta",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "citacao_incompleta",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "4784 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "ETARIA DE MUNICÍPIO DE RESILIÊNCIA CLIMÁTICA E RELAÇÕES COMUNITÁRIAS Secretaria Santa Maria Cidade Resiliente Serviços Boletim Meteorológico Dicas de Prevenção"
+          },
+          "2_citacao": {
+            "ok": false,
+            "trecho": "",
+            "dados": {
+              "tipo": null,
+              "numero": null,
+              "data": "20/12/2024",
+              "detalhe": "sem tipo e número de ato"
+            }
+          }
+        },
+        "categoria": null,
+        "data": "20/12/2024",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "25912e21db41eb72e9346519d86c1ebfa3225c5857256d0d8375af59e46075b6"
       }
     },
     {
@@ -150973,7 +151704,7 @@
       "autoridade": "indefinido",
       "objeto": "indefinido",
       "destino": "indefinido",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
       "id": "60ea06e1cf",
       "nivel_confianca": "B",
       "pontos_confianca": 3,
@@ -151015,6 +151746,44 @@
           "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
         },
         "resultado": "preparada"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "noticia_institucional_nao_e_o_plano",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "noticia_institucional_nao_e_o_plano",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "18680 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "ETARIA DE MUNICÍPIO DE RESILIÊNCIA CLIMÁTICA E RELAÇÕES COMUNITÁRIAS Secretaria Santa Maria Cidade Resiliente Serviços Boletim Meteorológico Dicas de Prevenção"
+          },
+          "2_citacao": {
+            "ok": false,
+            "trecho": "",
+            "dados": {
+              "tipo": null,
+              "numero": null,
+              "data": null,
+              "prova": "página da Secretaria, é realizada em conjunto com a Secretaria de Comunicação, SECOM, que mantém plantão permanente para esta finalidade. A Alteração de Nível",
+              "detalhe": "página de notícia no domínio do ente: a notícia diz que o plano existe, mas não é o plano"
+            }
+          }
+        },
+        "categoria": null,
+        "data": null,
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "31b30ea904e9e5b9721b31a8f6277874fffecb3a2c00b1d98c318254b6dd3a8b"
       }
     },
     {
@@ -151145,10 +151914,16 @@
           "classe": "criterio",
           "motivo": "autoridade_nao_confirmada",
           "codebook": "1.1 (28/09/2026)"
+        },
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "autoridade_nao_confirmada",
+          "codebook": "1.3 (03/10/2026)"
         }
       ],
       "juiz": {
-        "codebook": "1.1 (28/09/2026)",
+        "codebook": "1.3 (03/10/2026)",
         "promove": false,
         "motivo": "autoridade_nao_confirmada",
         "criterios": {
@@ -151195,7 +151970,7 @@
       "autoridade": "indefinido",
       "objeto": "el_nino",
       "destino": "indefinido",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: citacao_incompleta",
       "id": "fb5709e16a",
       "nivel_confianca": "A",
       "pontos_confianca": 6,
@@ -151238,6 +152013,55 @@
           "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
         },
         "resultado": "preparada"
+      },
+      "busca_dirigida": [
+        {
+          "em": "2026-10-03",
+          "fontes": [
+            "querido_diario",
+            "sitio_oficial",
+            "busca_web"
+          ],
+          "encontrou": null
+        }
+      ],
+      "ultima_busca_em": "2026-10-03",
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "citacao_incompleta",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "citacao_incompleta",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "7683 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "ara agir em 18 tipos de protocolos de ação em caso de desastres A Prefeitura de Santa Maria, por meio da Defesa Civil do Município, assinou na manhã desta terça"
+          },
+          "2_citacao": {
+            "ok": false,
+            "trecho": "",
+            "dados": {
+              "tipo": null,
+              "numero": null,
+              "data": "19/03/2024",
+              "detalhe": "sem tipo e número de ato"
+            }
+          }
+        },
+        "categoria": null,
+        "data": "19/03/2024",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "48169155734b782e8aecd2929516e3cd61021185ca90443d9239ceb1b5d2ba89"
       }
     },
     {
@@ -151254,7 +152078,7 @@
       "autoridade": "indefinido",
       "objeto": "indefinido",
       "destino": "indefinido",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: citacao_incompleta",
       "id": "4eebce38c0",
       "nivel_confianca": "B",
       "pontos_confianca": 5,
@@ -151296,6 +152120,55 @@
           "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
         },
         "resultado": "preparada"
+      },
+      "busca_dirigida": [
+        {
+          "em": "2026-10-03",
+          "fontes": [
+            "querido_diario",
+            "sitio_oficial",
+            "busca_web"
+          ],
+          "encontrou": null
+        }
+      ],
+      "ultima_busca_em": "2026-10-03",
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "citacao_incompleta",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "citacao_incompleta",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "6031 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "Prefeitura de Santa Rosa alinha estratégias e atualiza Plano de Contingência com forças de segurança &#8211; Prefeitura Municipal de Santa Rosa/RS Pular para o"
+          },
+          "2_citacao": {
+            "ok": false,
+            "trecho": "",
+            "dados": {
+              "tipo": null,
+              "numero": null,
+              "data": "12/06/2026",
+              "detalhe": "sem tipo e número de ato"
+            }
+          }
+        },
+        "categoria": null,
+        "data": "12/06/2026",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "069d84685cdb7906bc2e62d8c4bb7a0ac407b7e9433a00ed0071a2e06fa82a3b"
       }
     },
     {
@@ -151365,7 +152238,7 @@
       "titulo": "Diário Oficial - DOE/SC",
       "data": "28/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: ente_nao_confirmado",
       "pista_origem": "1c60b93f73",
       "id": "74fe8369e6",
       "nivel_confianca": "B",
@@ -151414,6 +152287,33 @@
           }
         },
         "url": "https://portal.doe.sea.sc.gov.br/repositorio/2024/20240313/Jornal/22223.pdf"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "ente_nao_confirmado",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "ente_nao_confirmado",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "19999 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": false,
+            "trecho": "o texto não nomeia \"Monte Castelo\""
+          }
+        },
+        "categoria": null,
+        "data": null,
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "705680efa8ecb478290a270b2d87f4c3d80a2b0dcb96c7acff552fe9c2e8fdde"
       }
     },
     {
@@ -236330,6 +237230,67 @@
           "motivo": "portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo"
         },
         "resultado": "preparada"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "promocao",
+          "motivo": null,
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": true,
+        "motivo": null,
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "19999 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "dio Gladiston Alves da Silva Secretário Executivo de Proteção e Defesa Civil de Manaus Manaus 2024 PREFEITURA MUNICIPAL DE MANAUS Secretaria Municipal de Segura"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "Plano de Contingência 2024 PLANO DE CONTINGÊNCIA “PLANCON – 2024” Chuvas Intensas – Cheia Estiagem - Incêndio Gladiston Alves da Silva Secretário Executivo de P",
+            "dados": {
+              "tipo": "plano publicado sem ato de aprovação localizado",
+              "numero": null,
+              "data": "2024",
+              "sem_ato_de_aprovacao": true,
+              "orgao": "Defesa Civil de",
+              "titulo": "Plano de Contingência",
+              "trecho": "Plano de Contingência 2024 PLANO DE CONTINGÊNCIA “PLANCON – 2024” Chuvas Intensas – Cheia Estiagem - Incêndio Gladiston Alves da Silva Secretário Executivo de P",
+              "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+            }
+          },
+          "3_autoridade": {
+            "ok": true,
+            "trecho": "Estiagem - Incêndio Gladiston Alves da Silva Secretário Executivo de Proteção e Defesa Civil de Manaus Manaus 2024 PREFEITURA MUNICIPAL DE MANAUS Secretaria Mun"
+          },
+          "4_natureza": {
+            "ok": true,
+            "trecho": "nenhum padrão claro bateu — não classificar sozinho",
+            "objeto": "tidas neste Plano. Para a construção do PLANCON, abordaram-se aspectos gerais envolvendo símbolos, estrutura e outras informações importantes destinadas, principalmente, ao público externo da Secretaria Executiva de Proteção e Defesa de Manaus – SEPDEC, que não possui familiaridade com esta Instituição Municipal. Além disso, também integra este documento as informações sobre a Política Nacional de Proteção e Defesa Civil – PNDEC que trazem questões",
+            "gatilho": "s para a criação e manutenção das condições necessárias com vista ao desempenho previsto nas atividades e responsabilidades contidas neste Plano. Para a constru",
+            "rota_do_recurso": "sem dependência de reconhecimento federal no texto"
+          },
+          "5_familia_de_risco": {
+            "ok": true,
+            "familia": "seca_estiagem_fogo",
+            "trecho": "ontingência 2024 PLANO DE CONTINGÊNCIA “PLANCON – 2024” Chuvas Intensas – Cheia Estiagem - Incêndio Gladiston Alves da Silva Secretário Executivo de Proteção e"
+          },
+          "6_categoria": {
+            "ok": true,
+            "trecho": "plano publicado de 2024, anterior ao ciclo; ato de aprovação não localizado"
+          }
+        },
+        "categoria": "plano_antigo",
+        "data": "2024",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "ddda0c77aaf7767ab3c5de0e248d2ad949567e18a21e97ff7001a221e07c8ac2"
       }
     },
     {
@@ -236341,7 +237302,7 @@
       "titulo": "LEI Nº 7.772, DE 17 DE SETEMBRO DE 2025. INSTITUI a ... - SAPL",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: resposta",
       "pista_origem": "4e6b0deeb7",
       "id": "e63904251f",
       "nivel_confianca": "B",
@@ -236380,6 +237341,51 @@
         "numero": "LEI Nº 7.772",
         "data_ato": "17/09/2025",
         "citacao_completa": true
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "resposta",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "resposta",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "econômicos e sociais; Av. Mário Ypiranga Monteiro, 3950 Parque 10 de Novembro, Manaus, Amazonas CEP 69.050-030 PODER LEGISLATIVO ASSEMBLEIA LEGISLATIVA DO ESTA"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "PODER LEGISLATIVO ASSEMBLEIA LEGISLATIVA DO ESTADO DO AMAZONAS LEI Nº 7.772, DE 17 DE SETEMBRO DE 2025. INSTITUI a Política Estadual de Proteção e Defesa Civil",
+            "dados": {
+              "tipo": "lei",
+              "numero": "7.772",
+              "data": "17/09/2025",
+              "trecho": "PODER LEGISLATIVO ASSEMBLEIA LEGISLATIVA DO ESTADO DO AMAZONAS LEI Nº 7.772, DE 17 DE SETEMBRO DE 2025. INSTITUI a Política Estadual de Proteção e Defesa Civil"
+            }
+          },
+          "3_autoridade": {
+            "ok": true,
+            "trecho": "eliberativo e consultivo, vinculado à Defesa Civil do Amazonas e presidido pelo Secretário Estadual de Defesa Civil, tem as seguintes finalidades: I – auxiliar"
+          },
+          "4_natureza": {
+            "ok": false,
+            "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+          }
+        },
+        "categoria": null,
+        "data": "17/09/2025",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "abcbaa2cab7e762f0a6921a19c7ad5d0a53b53a16521d6aa046a329089ebae46"
       }
     },
     {
@@ -236391,7 +237397,7 @@
       "titulo": "plano de contingência das arboviroses manaus-am",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: citacao_incompleta",
       "pista_origem": "4e6b0deeb7",
       "id": "b02b59811b",
       "nivel_confianca": "C",
@@ -236441,6 +237447,55 @@
           "motivo": "portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo, risco_errado_no_titulo"
         },
         "resultado": "preparada"
+      },
+      "busca_dirigida": [
+        {
+          "em": "2026-10-03",
+          "fontes": [
+            "querido_diario",
+            "sitio_oficial",
+            "busca_web"
+          ],
+          "encontrou": null
+        }
+      ],
+      "ultima_busca_em": "2026-10-03",
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "citacao_incompleta",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "citacao_incompleta",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "PLANO DE CONTINGÊNCIA DAS ARBOVIROSES MANAUS-AM SUBSECRETARIA MUNICIPAL DE GESTÃO DA SAÚDE Janeiro de 2024 DAVID ANTÔNIO ABISAI PEREIRA DE ALMEIDA Prefeito de M"
+          },
+          "2_citacao": {
+            "ok": false,
+            "trecho": "",
+            "dados": {
+              "tipo": "portaria",
+              "numero": "783/2023",
+              "data": null,
+              "detalhe": "sem data completa no texto"
+            }
+          }
+        },
+        "categoria": null,
+        "data": null,
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "fa88c3b7ec347e9b18132db1a9ece67d20ece94e5526e3aa22b04dec1ca60921"
       }
     },
     {
@@ -236452,7 +237507,7 @@
       "titulo": "PLANO MUNICIPAL DE REDUÇÃO DE RISCOS – PMRR MANAUS ...",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
       "pista_origem": "4e6b0deeb7",
       "id": "80cfd1c0d5",
       "nivel_confianca": "A",
@@ -236500,6 +237555,47 @@
           "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
         },
         "resultado": "preparada"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "autoridade_nao_confirmada",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "autoridade_nao_confirmada",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "19999 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "PLANO MUNICIPAL DE REDUÇÃO DE RISCOS – PMRR MANAUS ETAPA 01 PLANO DE TRABALHO 15/07/2024 UNIVERSIDADE FEDERAL DO AMAZONAS (UFAM) Manaus – Amazonas PLANO MUNICIP"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "de elaboração de planos locais de redução de risco, conforme estabelecido pelo Decreto nº 11.468, de 5 de abril de 2023, com uma ênfase especial na participaçã",
+            "dados": {
+              "tipo": "decreto",
+              "numero": "11.468",
+              "data": "15/07/2024",
+              "trecho": "de elaboração de planos locais de redução de risco, conforme estabelecido pelo Decreto nº 11.468, de 5 de abril de 2023, com uma ênfase especial na participaçã"
+            }
+          },
+          "3_autoridade": {
+            "ok": false,
+            "trecho": "nenhuma autoridade do Executivo no texto"
+          }
+        },
+        "categoria": null,
+        "data": "15/07/2024",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "b4f6736a207e750e987f33603a0ca4c176492efdb4ee02272815b8124b28f40f"
       }
     },
     {
@@ -236511,7 +237607,7 @@
       "titulo": "CONTINGÊNCIA - RJ Gov",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: ente_nao_confirmado",
       "pista_origem": "0a62c14347",
       "id": "f5b3441180",
       "nivel_confianca": "B",
@@ -236543,6 +237639,33 @@
         "numero": null,
         "data_ato": null,
         "citacao_completa": false
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "ente_nao_confirmado",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "ente_nao_confirmado",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": false,
+            "trecho": "o texto não nomeia \"Duque de Caxias\""
+          }
+        },
+        "categoria": null,
+        "data": null,
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "16b56e802d9df00511d8a358f5bd7753b2288c0c48a03260a4c30f5403f1bcbf"
       }
     },
     {
@@ -236598,7 +237721,16 @@
           "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
         },
         "resultado": "preparada"
-      }
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "tecnica",
+          "motivo": "texto_nao_extraivel",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "proxima_tentativa_em": "2026-10-04"
     },
     {
       "municipio": "Cabo Frio",
@@ -236609,7 +237741,7 @@
       "titulo": "Prefeitura de Cabo Frio intensifica combate ao trabalho infantil com ...",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
       "pista_origem": "b4b939ce17",
       "id": "4e1917b04a",
       "nivel_confianca": "C",
@@ -236658,6 +237790,47 @@
           "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
         },
         "resultado": "preparada"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "autoridade_nao_confirmada",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "autoridade_nao_confirmada",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "11758 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "Prefeitura de Cabo Frio intensifica combate ao trabalho infantil com ação de sensibilização no Shopping Park Lagos - Prefeitura Municipal de Cabo Frio --> --> -"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "rianças e adolescentes. As piores formas de trabalho infantil estão listadas no Decreto N. 6.481, de 12/06/2008. Kátia Simone Souza, coordenadora municipal do P",
+            "dados": {
+              "tipo": "decreto",
+              "numero": "6.481",
+              "data": "25/01/2024",
+              "trecho": "rianças e adolescentes. As piores formas de trabalho infantil estão listadas no Decreto N. 6.481, de 12/06/2008. Kátia Simone Souza, coordenadora municipal do P"
+            }
+          },
+          "3_autoridade": {
+            "ok": false,
+            "trecho": "sem fórmula de promulgação nem texto articulado"
+          }
+        },
+        "categoria": null,
+        "data": "25/01/2024",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "31cde5b961e916ed20bfb5b875ec39e5026e20d3b5057a4b3c60c23856fffdce"
       }
     },
     {
@@ -236669,7 +237842,7 @@
       "titulo": "Reunião define últimos detalhes do Plano de Contingência da ...",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: citacao_incompleta",
       "pista_origem": "b4b939ce17",
       "id": "599a6b396a",
       "nivel_confianca": "B",
@@ -236712,6 +237885,55 @@
           "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
         },
         "resultado": "preparada"
+      },
+      "busca_dirigida": [
+        {
+          "em": "2026-10-03",
+          "fontes": [
+            "querido_diario",
+            "sitio_oficial",
+            "busca_web"
+          ],
+          "encontrou": null
+        }
+      ],
+      "ultima_busca_em": "2026-10-03",
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "citacao_incompleta",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "citacao_incompleta",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "6061 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "nomeia \"Cabo Frio\" (UF não citada no texto; identidade pelo nome)"
+          },
+          "2_citacao": {
+            "ok": false,
+            "trecho": "",
+            "dados": {
+              "tipo": null,
+              "numero": null,
+              "data": "19/12/2025",
+              "detalhe": "sem tipo e número de ato"
+            }
+          }
+        },
+        "categoria": null,
+        "data": "19/12/2025",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "19d7de39bb7327ca2dc5fa331ff095ced4b91d1ce51aeab9da1b2e429703bd69"
       }
     },
     {
@@ -236723,7 +237945,7 @@
       "titulo": "SJB na coordenação da Câmara Técnica de Gestão de Segurança ...",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: ente_nao_confirmado",
       "pista_origem": "cc4266e0a8",
       "id": "26a11f6738",
       "nivel_confianca": "B",
@@ -236770,6 +237992,33 @@
           "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
         },
         "resultado": "preparada"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "ente_nao_confirmado",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "ente_nao_confirmado",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "509 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": false,
+            "trecho": "o texto não nomeia \"São João da Barra\""
+          }
+        },
+        "categoria": null,
+        "data": null,
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "444cd6c210b54ed613a62fb4d08794c5dfb3f3c601ce4d294ad868bb40f89dcc"
       }
     },
     {
@@ -236781,7 +238030,7 @@
       "titulo": "DIÁRIO OFICIAL - Prefeitura de São João da Barra",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: natureza_duvidosa",
       "pista_origem": "cc4266e0a8",
       "id": "e9b83366be",
       "nivel_confianca": "B",
@@ -236828,6 +238077,51 @@
           "motivo": "portão automático: data do ato incompleta (2019)"
         },
         "resultado": "preparada"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "natureza_duvidosa",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "natureza_duvidosa",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "14494 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "EXECUTIVO Prefeita | CARLA CAPUTI Vice-prefeito | CHICO DA QUIXABA MUNICÍPIO DE SÃO JOÃO DA BARRA | ESTADO DO RIO DE JANEIRO Rua Barão de Barcelos, 88 • Centro"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "te João Carlos Nunes Pereira Carla Caputi Secretário Municipal de Administração DECRETO Nº 106, DE 25 DE SETEMBRO DE 2026 – LEI Nº 1444/2025 Portaria nº 0907/20",
+            "dados": {
+              "tipo": "decreto",
+              "numero": "106",
+              "data": "22/09/2026",
+              "trecho": "te João Carlos Nunes Pereira Carla Caputi Secretário Municipal de Administração DECRETO Nº 106, DE 25 DE SETEMBRO DE 2026 – LEI Nº 1444/2025 Portaria nº 0907/20"
+            }
+          },
+          "3_autoridade": {
+            "ok": true,
+            "trecho": "DIÁRIO OFICIAL Poder | EXECUTIVO Prefeita | CARLA CAPUTI Vice-prefeito | CHICO DA QUIXABA MUNICÍPIO DE SÃO JOÃO DA BARRA | ESTADO DO RIO DE JANEIRO Rua Barão de"
+          },
+          "4_natureza": {
+            "ok": false,
+            "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+          }
+        },
+        "categoria": null,
+        "data": "22/09/2026",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "b9da56ca98e64a941e35c79650d2458e5aee096dbfa64b33a28e12f7362b221f"
       }
     },
     {
@@ -236839,7 +238133,7 @@
       "titulo": "Instruções Normativas - Defesa Civil",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: ente_nao_confirmado",
       "pista_origem": "cc4266e0a8",
       "id": "4b70843628",
       "nivel_confianca": "B",
@@ -236887,6 +238181,33 @@
           "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
         },
         "resultado": "preparada"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "ente_nao_confirmado",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "ente_nao_confirmado",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": false,
+            "trecho": "o texto não nomeia \"São João da Barra\""
+          }
+        },
+        "categoria": null,
+        "data": null,
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "1ce486d0892b9692e12104174941acac8b191f1609740f9055a6df73f2ccf973"
       }
     },
     {
@@ -236898,7 +238219,7 @@
       "titulo": "Plano de Contingência para Inundações e Movimentos de Massa",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+      "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
       "pista_origem": "d5cd31c2c0",
       "id": "9c73bfd761",
       "nivel_confianca": "A",
@@ -236954,7 +238275,48 @@
         "veredito_do_juiz": null
       },
       "atribuicao_corrigida_em": "2026-10-03",
-      "atribuicao_corrigida_por": "dominio_oficial_do_documento"
+      "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "autoridade_nao_confirmada",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "autoridade_nao_confirmada",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "9283 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "Prefeitura de Blumenau O que você procura? Buscar Acessibilidade Radar da Transparência eSIC --> EU PRECISO... Início Blumenau Contatos Fale com a Prefeitura Ou"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "egunda via da fatura de água Portal RH - Portal do Servidor RH - Declarar Bens (Decreto nº 13.352/2021) Emitir guias/boletos de ISS e parcelamentos Consultar Ce",
+            "dados": {
+              "tipo": "decreto",
+              "numero": "13.352/2021",
+              "data": "03/10/26",
+              "trecho": "egunda via da fatura de água Portal RH - Portal do Servidor RH - Declarar Bens (Decreto nº 13.352/2021) Emitir guias/boletos de ISS e parcelamentos Consultar Ce"
+            }
+          },
+          "3_autoridade": {
+            "ok": false,
+            "trecho": "sem fórmula de promulgação nem texto articulado"
+          }
+        },
+        "categoria": null,
+        "data": "03/10/26",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "45188e75929eb1fb2b257f2d0db0bd5fb7baeb4aa7ac78fcfc5b4a173a588502"
+      }
     },
     {
       "municipio": "Itajaí",
@@ -236965,7 +238327,7 @@
       "titulo": "37º Sessão Ordinária - 18-06-2026 - Câmara de Vereadores de Itajaí",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: executivo_pendente",
       "pista_origem": "d5cd31c2c0",
       "id": "fab00bec3c",
       "nivel_confianca": "C",
@@ -237015,6 +238377,47 @@
           "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
         },
         "resultado": "preparada"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "executivo_pendente",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "executivo_pendente",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "37º Sessão Ordinária - 18-06-2026 - Sessões - Câmara de Vereadores de Itajaí --> Câmara de Vereadores de Itajaí Início 0 Ir para o conteúdo 1 Ir para o menu 2 B"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "ções e documentos acerca da implementação, no âmbito do Município de Itajaí, da Lei Federal nº 15.355, de 11 de março de 2026, que institui a Política de Acolhi",
+            "dados": {
+              "tipo": "lei",
+              "numero": "15.355",
+              "data": "18/06/2026",
+              "trecho": "ções e documentos acerca da implementação, no âmbito do Município de Itajaí, da Lei Federal nº 15.355, de 11 de março de 2026, que institui a Política de Acolhi"
+            }
+          },
+          "3_autoridade": {
+            "ok": false,
+            "trecho": "37º Sessão Ordinária - 18-06-2026 - Sessões - Câmara de Vereadores de Itajaí --> Câmara de Vereadores de Itajaí Início 0 Ir para o conteúdo 1 Ir para o menu 2 B"
+          }
+        },
+        "categoria": null,
+        "data": "18/06/2026",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "78d359df94f881b9bddbd4025fd425fd0edf939e62806a9a227a9a398718d88e"
       }
     },
     {
@@ -237026,7 +238429,7 @@
       "titulo": "TERMO DE REFERÊNCIA Nº 002/2025 1. OBJETO Contratação de ...",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: citacao_incompleta",
       "pista_origem": "d5cd31c2c0",
       "id": "527c397c31",
       "nivel_confianca": "B",
@@ -237074,6 +238477,55 @@
           "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
         },
         "resultado": "preparada"
+      },
+      "busca_dirigida": [
+        {
+          "em": "2026-10-03",
+          "fontes": [
+            "querido_diario",
+            "sitio_oficial",
+            "busca_web"
+          ],
+          "encontrou": null
+        }
+      ],
+      "ultima_busca_em": "2026-10-03",
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "citacao_incompleta",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "citacao_incompleta",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "à elaboração do projeto executivo de dragagem de trecho do leito natural do rio Itajaí-Mirim, localizado no município de Itajaí - SC. 1.1. Especificações e quan"
+          },
+          "2_citacao": {
+            "ok": false,
+            "trecho": "",
+            "dados": {
+              "tipo": "instrução normativa",
+              "numero": "18",
+              "data": null,
+              "detalhe": "sem data completa no texto"
+            }
+          }
+        },
+        "categoria": null,
+        "data": null,
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "8b77b36d80d09191a2a294419edf346b61e10efc8dcbd9be7774961f1400f040"
       }
     },
     {
@@ -237085,7 +238537,7 @@
       "titulo": "plano de contingência para a covid-19",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
       "pista_origem": "2026bb79e8",
       "id": "179b114355",
       "nivel_confianca": "C",
@@ -237130,6 +238582,47 @@
           "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
         },
         "resultado": "preparada"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "autoridade_nao_confirmada",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "autoridade_nao_confirmada",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "CATARINA SECRETARIA DE ESTADO DA EDUCAÇÃO COORDENADORIA REGIONAL DE EDUCAÇÃO DE CHAPECÓ ESCOLA DE EDUCAÇÃO BÁSICA MARECHAL BORMANN Travessa Brasil, 31 d – Centr"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "das, se integram na Política Nacional de Proteção e Defesa Civil, definida pela Lei n° 12.608, de 10 de abril de 2012. Efetivamente estamos em estado de calamid",
+            "dados": {
+              "tipo": "lei",
+              "numero": "12.608",
+              "data": "10/04/2012",
+              "trecho": "das, se integram na Política Nacional de Proteção e Defesa Civil, definida pela Lei n° 12.608, de 10 de abril de 2012. Efetivamente estamos em estado de calamid"
+            }
+          },
+          "3_autoridade": {
+            "ok": false,
+            "trecho": "sem fórmula de promulgação nem texto articulado"
+          }
+        },
+        "categoria": null,
+        "data": "10/04/2012",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "d73941eebce800ef570c2aee29d261220178e2c349d82686500603b6fa693913"
       }
     },
     {
@@ -237141,7 +238634,7 @@
       "titulo": "PLANCON EDU editável",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
       "pista_origem": "2026bb79e8",
       "id": "4e8a5affda",
       "nivel_confianca": "B",
@@ -237188,6 +238681,47 @@
           "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
         },
         "resultado": "preparada"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "autoridade_nao_confirmada",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "autoridade_nao_confirmada",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "dio e Superior CENTRO DE ENSINO MÁRIO QUINTANA . ​ PLANCON-EDU/ESCOLAS COVID-19 CHAPECÓ OUTUBRO ​ de 2020 1 Este Plano de Contingência foi construído com base n"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "das, se integram na Política Nacional de Proteção e Defesa Civil, definida pela Lei n° 12.608, de 10 de abril de 2012. Efetivamente estamos em estado de calamid",
+            "dados": {
+              "tipo": "lei",
+              "numero": "12.608",
+              "data": "10/04/2012",
+              "trecho": "das, se integram na Política Nacional de Proteção e Defesa Civil, definida pela Lei n° 12.608, de 10 de abril de 2012. Efetivamente estamos em estado de calamid"
+            }
+          },
+          "3_autoridade": {
+            "ok": false,
+            "trecho": "sem fórmula de promulgação nem texto articulado"
+          }
+        },
+        "categoria": null,
+        "data": "10/04/2012",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "55473ea2f15c757c9241ce63ebc89e672fe3878e7501b3331fa13968efb18c36"
       }
     },
     {
@@ -237199,7 +238733,7 @@
       "titulo": "PLANO DE CONTINGÊNCIA para a COVID-19",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
       "pista_origem": "2026bb79e8",
       "id": "d99cd11502",
       "nivel_confianca": "C",
@@ -237249,6 +238783,47 @@
           "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
         },
         "resultado": "preparada"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "autoridade_nao_confirmada",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "autoridade_nao_confirmada",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "REGIONAL DE EDUCAÇÃO-CRE CENTRO DE EDUCAÇÃO DE JOVENS E ADULTOS – 760007005500 CHAPECÓ - SC PLANO DE CONTINGÊNCIA para a COVID-19 Estabelecimento de Educação/E"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "das, se integram na Política Nacional de Proteção e Defesa Civil, definida pela Lei n° 12.608, de 10 de abril de 2012. Efetivamente estamos em estado de calamid",
+            "dados": {
+              "tipo": "lei",
+              "numero": "12.608",
+              "data": "22/09/1999",
+              "trecho": "das, se integram na Política Nacional de Proteção e Defesa Civil, definida pela Lei n° 12.608, de 10 de abril de 2012. Efetivamente estamos em estado de calamid"
+            }
+          },
+          "3_autoridade": {
+            "ok": false,
+            "trecho": "sem fórmula de promulgação nem texto articulado"
+          }
+        },
+        "categoria": null,
+        "data": "22/09/1999",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "73c33a1a1cf38b802808945cbff7073bbd52f48d9f585952a66cf49e4d64a2ba"
       }
     },
     {
@@ -237260,7 +238835,7 @@
       "titulo": "eletrônico - DIÁRIO DA JUSTIÇA",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: ente_nao_confirmado",
       "pista_origem": "2026bb79e8",
       "id": "db914806ab",
       "nivel_confianca": "B",
@@ -237308,6 +238883,33 @@
           "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
         },
         "resultado": "preparada"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "ente_nao_confirmado",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "ente_nao_confirmado",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "19999 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": false,
+            "trecho": "o texto não nomeia \"Chapecó\""
+          }
+        },
+        "categoria": null,
+        "data": null,
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "e7dc059f439f5d131cde7b0e988e88feef6f96f3e47bb8e28d5efa8c5ca6a08d"
       }
     },
     {
@@ -237319,7 +238921,7 @@
       "titulo": "PLANO DE CONTINGÊNCIA-EDUCAÇÃO",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
       "pista_origem": "d56c36c155",
       "id": "fffaf82f50",
       "nivel_confianca": "B",
@@ -237351,6 +238953,47 @@
         "numero": null,
         "data_ato": null,
         "citacao_completa": false
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "autoridade_nao_confirmada",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "autoridade_nao_confirmada",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "19999 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "s Externos Prof. Eduardo R. da Cunha - Colégio Bom Jesus - Unidade Pedra Branca/Palhoça/SC Prof. Josué Silva Sabino - Escola Básica Padre Doutor Itamar Luis da"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "mar, se integram na Política Nacional de Proteção e Defesa Civil, definida pela Lei n° 12.608, de 10 de abril de 2012. Efetivamente estamos em estado de calamid",
+            "dados": {
+              "tipo": "lei",
+              "numero": "12.608",
+              "data": "10/04/2012",
+              "trecho": "mar, se integram na Política Nacional de Proteção e Defesa Civil, definida pela Lei n° 12.608, de 10 de abril de 2012. Efetivamente estamos em estado de calamid"
+            }
+          },
+          "3_autoridade": {
+            "ok": false,
+            "trecho": "sem fórmula de promulgação nem texto articulado"
+          }
+        },
+        "categoria": null,
+        "data": "10/04/2012",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "e032781a9f393e1bfdb92df91acacd9da8264af5a5d661287f53d3b0d8f4bc7c"
       }
     },
     {
@@ -237362,7 +239005,7 @@
       "titulo": "Defesa Civil de Santa Catarina Grupo de Trabalho Plano de ...",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+      "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
       "pista_origem": "d56c36c155",
       "id": "4cd952fc6e",
       "nivel_confianca": "B",
@@ -237416,7 +239059,48 @@
         "veredito_do_juiz": null
       },
       "atribuicao_corrigida_em": "2026-10-03",
-      "atribuicao_corrigida_por": "dominio_oficial_do_documento"
+      "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "autoridade_nao_confirmada",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "autoridade_nao_confirmada",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "EEB FRANCISCO MAZZOLA Estabelecimento de Educação/Ensino Fundamental e Médio NOVA TRENTO - SC Outubro de 2020 COMITÊ TÉCNICO CIENTÍFICO Defesa Civil de Santa Ca"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "mar, se integram na Política Nacional de Proteção e Defesa Civil, definida pela Lei n° 12.608, de 10 de abril de 2012. Efetivamente estamos em estado de calamid",
+            "dados": {
+              "tipo": "lei",
+              "numero": "12.608",
+              "data": "10/04/2012",
+              "trecho": "mar, se integram na Política Nacional de Proteção e Defesa Civil, definida pela Lei n° 12.608, de 10 de abril de 2012. Efetivamente estamos em estado de calamid"
+            }
+          },
+          "3_autoridade": {
+            "ok": false,
+            "trecho": "sem fórmula de promulgação nem texto articulado"
+          }
+        },
+        "categoria": null,
+        "data": "10/04/2012",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "99c9b9ba5f1ec99cd839f892c42d5fbc46f4f727919b62aa9bdeea26dac566d2"
+      }
     },
     {
       "municipio": "Araranguá",
@@ -237427,7 +239111,7 @@
       "titulo": "PLANO DE CONTINGÊNCIA para a COVID-19",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+      "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
       "pista_origem": "d56c36c155",
       "id": "af87a034ba",
       "nivel_confianca": "C",
@@ -237482,7 +239166,48 @@
         "veredito_do_juiz": null
       },
       "atribuicao_corrigida_em": "2026-10-03",
-      "atribuicao_corrigida_por": "dominio_oficial_do_documento"
+      "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "autoridade_nao_confirmada",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "autoridade_nao_confirmada",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "cimento de Educação Infantil E.M. CRIANÇAS ALEGRES PLANCON-EDU/ESCOLAS COVID-19 ARARANGUÁ OUTUBRO de 2020 1 Este Plano de Contingência foi construído com base n"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "das, se integram na Política Nacional de Proteção e Defesa Civil, definida pela Lei n° 12.608, de 10 de abril de 2012. Efetivamente estamos em estado de calamid",
+            "dados": {
+              "tipo": "lei",
+              "numero": "12.608",
+              "data": "10/04/2012",
+              "trecho": "das, se integram na Política Nacional de Proteção e Defesa Civil, definida pela Lei n° 12.608, de 10 de abril de 2012. Efetivamente estamos em estado de calamid"
+            }
+          },
+          "3_autoridade": {
+            "ok": false,
+            "trecho": "sem fórmula de promulgação nem texto articulado"
+          }
+        },
+        "categoria": null,
+        "data": "10/04/2012",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "b86244f2381d7c74d1f477fb30cdc5a7d6a3c78b471d1269c8e01e4ca16cac7b"
+      }
     },
     {
       "municipio": "Criciúma",
@@ -237493,7 +239218,7 @@
       "titulo": "Decreto - Prefeitura Municipal de Criciúma",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: natureza_duvidosa",
       "pista_origem": "7804b7b382",
       "id": "ce1eba8afb",
       "nivel_confianca": "B",
@@ -237540,6 +239265,51 @@
           "motivo": "portão automático: ato de 2025 — pode ser edição anterior; decisão humana"
         },
         "resultado": "preparada"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "natureza_duvidosa",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "natureza_duvidosa",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "19999 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "................................................13 Decreto Governo Municipal de Criciúma DECRETO SG/Nº 996/25, DE 13 DE MAIO DE 2025. Dispõe sobre a autorização"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": ".......................................13 Decreto Governo Municipal de Criciúma DECRETO SG/Nº 996/25, DE 13 DE MAIO DE 2025. Dispõe sobre a autorização de uso d",
+            "dados": {
+              "tipo": "decreto",
+              "numero": "996/25",
+              "data": "20/12/1999",
+              "trecho": ".......................................13 Decreto Governo Municipal de Criciúma DECRETO SG/Nº 996/25, DE 13 DE MAIO DE 2025. Dispõe sobre a autorização de uso d"
+            }
+          },
+          "3_autoridade": {
+            "ok": true,
+            "trecho": "agem ao Criciúma Esporte Clube na Praça Nereu Ramos e dá outras providências. O PREFEITO DO MUNICÍPIO DE CRICIÚMA, no uso das atribuições que lhe são legalmente"
+          },
+          "4_natureza": {
+            "ok": false,
+            "trecho": "natureza_duvidosa: sem gatilho (previsão, limiar ou referência ao ciclo)"
+          }
+        },
+        "categoria": null,
+        "data": "20/12/1999",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "690728b9a47827e4b0d2e2ae80c84dc1ba697c740ba8c3216a6aa9a2a3390ba5"
       }
     },
     {
@@ -237551,7 +239321,7 @@
       "titulo": "Diário Oficial dos Municípios de Santa Catarina - DOM/SC",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: natureza_duvidosa",
       "pista_origem": "7804b7b382",
       "id": "f220e24e26",
       "nivel_confianca": "A",
@@ -237599,6 +239369,51 @@
           "motivo": "portão automático: ato de 2020 — pode ser edição anterior; decisão humana"
         },
         "resultado": "preparada"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "natureza_duvidosa",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "natureza_duvidosa",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "6082 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "rtos Apresentação Normas de Publicação Página inicial / Prefeitura municipal de Criciúma × Atenção Cancelar Atualizar dados de contato Prefeitura municipal de C"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "de: &quot;Prefeitura municipal de Criciúma&quot; RSS Feed Criar Alerta Download PORTARIA Nº 1571/SME/2020 N.º 2723874 - 13/11/2020 - Portarias - Prefeitura muni",
+            "dados": {
+              "tipo": "portaria",
+              "numero": "1571",
+              "data": "13/11/2020",
+              "trecho": "de: &quot;Prefeitura municipal de Criciúma&quot; RSS Feed Criar Alerta Download PORTARIA Nº 1571/SME/2020 N.º 2723874 - 13/11/2020 - Portarias - Prefeitura muni"
+            }
+          },
+          "3_autoridade": {
+            "ok": true,
+            "trecho": "Covid-19, instituído pelo Decreto 1239/20, de 5 de outubro de 2020, por meio da Secretaria Municipal de Educação do Município d... PORTARIA Nº 1536/SME/2020, DE"
+          },
+          "4_natureza": {
+            "ok": false,
+            "trecho": "natureza_duvidosa: sem gatilho (previsão, limiar ou referência ao ciclo)"
+          }
+        },
+        "categoria": null,
+        "data": "13/11/2020",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "2056143a1db016e484e4992507035db090415e9d0d62688f68630e301cc2701d"
       }
     },
     {
@@ -237610,7 +239425,7 @@
       "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA- EDUCAÇÃO",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
       "pista_origem": "8aa38d8664",
       "id": "71d599bde3",
       "nivel_confianca": "B",
@@ -237657,6 +239472,47 @@
           "motivo": "portão automático: data do ato incompleta (2020)"
         },
         "resultado": "preparada"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "autoridade_nao_confirmada",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "autoridade_nao_confirmada",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "INAÇÃO DA COVID-19 NOS ESTABELECIMENTOS DOS DIVERSOS NÍVEIS DE EDUCAÇÃO/ENSINO. Lages PLANCON-EDU/COVID-19 Outubro de 2020 COMITÊ ESTRATÉGICO DE RETORNO AS AULA"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "medidas tomadas na Política Nacional de Proteção e Defesa Civil, definida pela Lei N° 12.608, de 10 de abril de 2012. Efetivamente, estamos em estado de calami",
+            "dados": {
+              "tipo": "lei",
+              "numero": "12.608",
+              "data": "10/04/2012",
+              "trecho": "medidas tomadas na Política Nacional de Proteção e Defesa Civil, definida pela Lei N° 12.608, de 10 de abril de 2012. Efetivamente, estamos em estado de calami"
+            }
+          },
+          "3_autoridade": {
+            "ok": false,
+            "trecho": "sem fórmula de promulgação nem texto articulado"
+          }
+        },
+        "categoria": null,
+        "data": "10/04/2012",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "b2663e405f082a4eb3e593dcf09af2acad3bb6f0ba6a74c3540c5d7dff27ebdd"
       }
     },
     {
@@ -237668,7 +239524,7 @@
       "titulo": "Documentos Protocolos - Secretaria Municipal da Saúde",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: ente_nao_confirmado",
       "pista_origem": "8aa38d8664",
       "id": "e3af8f2917",
       "nivel_confianca": "B",
@@ -237700,6 +239556,33 @@
         "numero": null,
         "data_ato": null,
         "citacao_completa": false
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "ente_nao_confirmado",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "ente_nao_confirmado",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "2194 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": false,
+            "trecho": "o texto não nomeia \"Lages\""
+          }
+        },
+        "categoria": null,
+        "data": null,
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "51de38a98d1e98d8b96c8f1f63cf23a388ea212d3b52238894a5ed5757c391e9"
       }
     },
     {
@@ -237711,7 +239594,7 @@
       "titulo": "Nova etapa do Plano de Contingência Municipal da Defesa Civil é ...",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: citacao_incompleta",
       "pista_origem": "4f544e83d5",
       "id": "02a66a03a2",
       "nivel_confianca": "A",
@@ -237749,6 +239632,55 @@
         "numero": null,
         "data_ato": "05/07/2024",
         "citacao_completa": false
+      },
+      "busca_dirigida": [
+        {
+          "em": "2026-10-03",
+          "fontes": [
+            "querido_diario",
+            "sitio_oficial",
+            "busca_web"
+          ],
+          "encontrou": null
+        }
+      ],
+      "ultima_busca_em": "2026-10-03",
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "citacao_incompleta",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "citacao_incompleta",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "3106 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "n/models/MobileDeviceDetect/mobile_device_detect.php on line 44 Defesa Civil de Brusque MENU Telefones da Defesa Civil Emergência: 199 / Normalidade: (47) 4042-"
+          },
+          "2_citacao": {
+            "ok": false,
+            "trecho": "",
+            "dados": {
+              "tipo": null,
+              "numero": null,
+              "data": "05/07/2024",
+              "detalhe": "sem tipo e número de ato"
+            }
+          }
+        },
+        "categoria": null,
+        "data": "05/07/2024",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "c69954b30c966a822aec5623c1b2dfb7c2859fee93d29e503fb8eb174f7a0518"
       }
     },
     {
@@ -237760,7 +239692,7 @@
       "titulo": "LEI COMPLEMENTAR Nº 741, DE 12 DE JUNHO DE 2019",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: ente_nao_confirmado",
       "pista_origem": "4f544e83d5",
       "id": "38df1c27ab",
       "nivel_confianca": "B",
@@ -237808,6 +239740,33 @@
           "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
         },
         "resultado": "preparada"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "ente_nao_confirmado",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "ente_nao_confirmado",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": false,
+            "trecho": "o texto não nomeia \"Brusque\""
+          }
+        },
+        "categoria": null,
+        "data": null,
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "4cf9559bf96052c68f7ca1b30c93ee7f43867e27ef92c1e62a51155e0e63da63"
       }
     },
     {
@@ -237871,7 +239830,68 @@
         "veredito_do_juiz": null
       },
       "atribuicao_corrigida_em": "2026-10-03",
-      "atribuicao_corrigida_por": "dominio_oficial_do_documento"
+      "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "promocao",
+          "motivo": null,
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": true,
+        "motivo": null,
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "impacto, inundações bruscas ou processos geológicos ou hidrológicos correlatoS Tijucas - SC VERSÃO: 02/2020 ÚLTIMA ATUALIZAÇÃO: 2022 EXEMPLAR PERTENCENTE A: CO"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL Deslizamentos de grande impacto, inundações bruscas ou processos geológicos ou hidrológicos correlatoS Tijucas",
+            "dados": {
+              "tipo": "plano publicado sem ato de aprovação localizado",
+              "numero": null,
+              "data": "2020",
+              "sem_ato_de_aprovacao": true,
+              "orgao": "COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL",
+              "titulo": "PLANO DE CONTINGÊNCIA",
+              "trecho": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL Deslizamentos de grande impacto, inundações bruscas ou processos geológicos ou hidrológicos correlatoS Tijucas",
+              "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+            }
+          },
+          "3_autoridade": {
+            "ok": true,
+            "trecho": "S Tijucas - SC VERSÃO: 02/2020 ÚLTIMA ATUALIZAÇÃO: 2022 EXEMPLAR PERTENCENTE A: COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL INTRODUÇÃO DOCUMENTO DE APROV"
+          },
+          "4_natureza": {
+            "ok": true,
+            "trecho": "nenhum padrão claro bateu — não classificar sozinho",
+            "objeto": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL Deslizamentos de grande impacto, inundações bruscas ou processos geológicos ou hidrológicos correlatoS Tijucas - SC VERSÃO: 02/2020 ÚLTIMA ATUALIZAÇÃO: 2022 EXEMPLAR PERTENCENTE A: COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL INTRODUÇÃO DOCUMENTO DE APROVAÇÃO O Plano de Contingência de proteç",
+            "gatilho": "para a criação e manutenção das condições necessárias com vistas ao desempenho previsto nas atividades e responsabilidades contidas neste Plano. 2 PÁGINA DE AS",
+            "rota_do_recurso": "sem dependência de reconhecimento federal no texto"
+          },
+          "5_familia_de_risco": {
+            "ok": true,
+            "familia": "chuvas_inundacao_deslizamento",
+            "trecho": "ANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL Deslizamentos de grande impacto, inundações bruscas ou processos geológicos ou hidrológicos correlatoS Tijucas -"
+          },
+          "6_categoria": {
+            "ok": true,
+            "trecho": "plano publicado de 2020, anterior ao ciclo; ato de aprovação não localizado"
+          }
+        },
+        "categoria": "plano_antigo",
+        "data": "2020",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "6f1aa5dae9c6797dbe0b91cd1f9ff0a8b35041de3b3b34cbd6bcbf635265bc0b"
+      }
     },
     {
       "municipio": "Brusque",
@@ -237882,7 +239902,7 @@
       "titulo": "Relatório Anual de Gestão - 2022 - NEPSHU",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: executivo_pendente",
       "pista_origem": "4f544e83d5",
       "id": "dc1a8aef39",
       "nivel_confianca": "B",
@@ -237919,6 +239939,47 @@
         "numero": null,
         "data_ato": "2022",
         "citacao_completa": false
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "executivo_pendente",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.3 (03/10/2026)",
+        "promove": false,
+        "motivo": "executivo_pendente",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "REPÚBLICA FEDERATIVA DO BRASIL ESTADO: SANTA CATARINA MUNICÍPIO: BRUSQUE Relatório Anual de Gestão 2022 OSVALDO QUIRINO DE SOUZA Secretário(a) de Saúde https://"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "SIOPS ) Data da consulta: 24/03/2023 1.4. Fundo de Saúde Instrumento de criação LEI Data de criação 07/1991 CNPJ 11.188.015/0001-41 Natureza Jurídica FUNDO PUBL",
+            "dados": {
+              "tipo": "lei",
+              "numero": "07/1991",
+              "data": "24/03/2023",
+              "trecho": "SIOPS ) Data da consulta: 24/03/2023 1.4. Fundo de Saúde Instrumento de criação LEI Data de criação 07/1991 CNPJ 11.188.015/0001-41 Natureza Jurídica FUNDO PUBL"
+            }
+          },
+          "3_autoridade": {
+            "ok": false,
+            "trecho": "de Saúde 2022-2025 e as Programações Anuais de Saúde 2022 e 2023 aprovadas pelo Conselho Municipal de Saúde ¿ COMUSA, que foi instituído pela Lei nº 11/1992, é"
+          }
+        },
+        "categoria": null,
+        "data": "24/03/2023",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "80f1aaf1cd5865819bf5cae4842dd838a962e578d3588d4a40dcee182ad1cdee"
       }
     },
     {
@@ -237976,7 +240037,16 @@
           "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
         },
         "resultado": "preparada"
-      }
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "tecnica",
+          "motivo": "documento_inacessivel",
+          "codebook": "1.3 (03/10/2026)"
+        }
+      ],
+      "proxima_tentativa_em": "2026-10-04"
     },
     {
       "municipio": "Balneário Camboriú",
