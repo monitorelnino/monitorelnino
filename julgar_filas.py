@@ -29,6 +29,9 @@ USO
   python3 julgar_filas.py --relatorio           # julga e conta, NÃO aplica e NÃO escreve
   python3 julgar_filas.py --relatorio --limite 50
   python3 julgar_filas.py --aplicar             # julga e aplica o que passa
+  python3 julgar_filas.py --aplicar --dominio-oficial          # só o que está em domínio oficial
+  python3 julgar_filas.py --relatorio --urls-de alvos.txt      # aponta a um conjunto nomeado
+  python3 julgar_filas.py --relatorio --ids 2b4ceec828,8bfdd5f2e7
   python3 julgar_filas.py --autoteste
 """
 import json
@@ -60,6 +63,49 @@ def pistas_da_fila(doc: dict) -> list:
         if isinstance(doc.get(chave), list):
             return doc[chave]
     return []
+
+
+# 03/10/2026 (garimpo da central): dois FILTROS, para que o juiz possa ser apontado a um conjunto
+# em vez de varrer a fila inteira.
+#
+# A razão é de ordem, não de preguiça: a central garimpou a fila e achou 88 pistas cujo documento
+# está em DOMÍNIO OFICIAL do próprio ente — muitas sendo o próprio PDF do plano no sítio da
+# prefeitura — paradas como "a confirmar". Varrer 6.456 pendentes para alcançar essas 88 gastaria a
+# rodada em busca dirigida de notícia de veículo privado, que é a parte caraa. Com o filtro, o
+# documento que já está em domínio oficial vai ao juiz primeiro, que é a prioridade que a editoria
+# deu — e a regra nova que ela escreveu: documento em domínio oficial vai direto ao juiz, na mesma
+# rodada; notícia de veículo privado é que fica à espera de busca dirigida.
+
+def url_em_dominio_oficial(url: str) -> bool:
+    """A URL está em domínio oficial do ente? Função pura.
+
+    Reusa `_dominio_publico` de `coletores_base`, que é quem já sabe distinguir sítio de ente
+    (.gov.br, .leg.br, .jus.br, .mp.br, "prefeitura" no host) de API de dado e de armazenamento
+    genérico. Uma definição só: duas respostas diferentes para "isto é oficial?" no mesmo
+    repositório é como se promove o que não devia.
+    """
+    if not url:
+        return False
+    from coletores_base import _dominio_publico
+    return _dominio_publico(str(url))
+
+
+def selecionar(pistas: list, ids=None, so_oficial: bool = False, urls=None) -> list:
+    """As pistas que esta rodada julga. Função pura.
+
+    `ids` e `urls` são para apontar o juiz a um conjunto nomeado (o garimpo da central);
+    `so_oficial` é o recorte da regra nova. Sem filtro, devolve tudo o que entrou.
+    """
+    fora = []
+    for p in pistas:
+        if ids and not any(str(p.get("id") or "").startswith(x) for x in ids):
+            continue
+        if urls and not any(x in str(p.get("url") or "") for x in urls):
+            continue
+        if so_oficial and not url_em_dominio_oficial(p.get("url")):
+            continue
+        fora.append(p)
+    return fora
 
 
 def pendente(p: dict, hoje=None) -> bool:
@@ -446,6 +492,26 @@ def autoteste() -> int:
                   nao_preserva))
     casos.append(("o modo relatório não marca a pista em memória", bool(guarda_pista)))
     casos.append(("a fila só é gravada sob --aplicar", bool(grava_fila_sob_guarda)))
+
+    # os filtros do garimpo (03/10/2026)
+    amostra = [{"id": "aaa111", "url": "https://franca.sp.gov.br/plano.pdf"},
+               {"id": "bbb222", "url": "https://g1.globo.com/noticia.html"},
+               {"id": "ccc333", "url": "https://camara.leme.sp.leg.br/ato.pdf"},
+               {"id": "ddd444", "url": "https://api.queridodiario.ok.org.br/x"}]
+    casos.append(("sem filtro, tudo entra", len(selecionar(amostra)) == 4))
+    casos.append(("--dominio-oficial pega .gov.br e .leg.br",
+                  [p["id"] for p in selecionar(amostra, so_oficial=True)] == ["aaa111", "ccc333"]))
+    casos.append(("--dominio-oficial descarta veículo privado",
+                  all(p["id"] != "bbb222" for p in selecionar(amostra, so_oficial=True))))
+    casos.append(("--dominio-oficial descarta API de dado",
+                  all(p["id"] != "ddd444" for p in selecionar(amostra, so_oficial=True))))
+    casos.append(("--ids aponta pelo começo do id",
+                  [p["id"] for p in selecionar(amostra, ids=["aaa"])] == ["aaa111"]))
+    casos.append(("--urls aponta por trecho da URL",
+                  [p["id"] for p in selecionar(amostra, urls=["franca.sp.gov.br"])] == ["aaa111"]))
+    casos.append(("os filtros se combinam",
+                  selecionar(amostra, ids=["bbb"], so_oficial=True) == []))
+    casos.append(("url vazia não é domínio oficial", not url_em_dominio_oficial("")))
     # e o caminho sem preservador devolve veredito sem hash
     v_sem = julgar_uma({"id": "z", "municipio": "Bonito", "uf": "MS",
                         "url": CANARIOS["plano_novo"]["url"]}, buscar, None)
@@ -518,6 +584,12 @@ def main() -> int:
     # pede) e sai com `--sem-busca-dirigida` para uma passada puramente local.
     dirigida = "--sem-busca-dirigida" not in sys.argv
     limite = int(sys.argv[sys.argv.index("--limite") + 1]) if "--limite" in sys.argv else None
+    ids = (sys.argv[sys.argv.index("--ids") + 1].split(",") if "--ids" in sys.argv else None)
+    urls = (sys.argv[sys.argv.index("--urls") + 1].split(",") if "--urls" in sys.argv else None)
+    so_oficial = "--dominio-oficial" in sys.argv
+    if "--urls-de" in sys.argv:
+        alvo = pathlib.Path(sys.argv[sys.argv.index("--urls-de") + 1])
+        urls = [l.strip() for l in alvo.read_text(encoding="utf-8").splitlines() if l.strip()]
 
     import funil
     from coletores_base import DATA, gravar_em, ler, log_busca, hoje_editorial
@@ -542,7 +614,8 @@ def main() -> int:
         if not doc:
             continue
         lista = pistas_da_fila(doc)
-        alvo = [p for p in lista if pendente(p)]
+        alvo = selecionar([p for p in lista if pendente(p)], ids=ids, so_oficial=so_oficial,
+                          urls=urls)
         if limite is not None:
             alvo = alvo[:max(0, limite - len(vereditos))]
         por_fila[nome_fila] = len(alvo)

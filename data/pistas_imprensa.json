@@ -67585,9 +67585,9 @@
       }
     },
     {
-      "municipio": "Rio do Oeste",
+      "municipio": "Taió",
       "uf": "SC",
-      "ibge": "4214607",
+      "ibge": "4217808",
       "origem": "busca_web",
       "data": "27/09/2026",
       "url": "https://defesacivil.taio.sc.gov.br/wp-content/uploads/2026/01/PLANO-DE-CONTINGENCIA-TAIO-JAN-2026.pdf",
@@ -67598,7 +67598,7 @@
       "autoridade": "indefinido",
       "objeto": "indefinido",
       "destino": "indefinido",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: citacao_incompleta",
       "id": "c5ba96c426",
       "nivel_confianca": "B",
       "pontos_confianca": 5,
@@ -67641,6 +67641,78 @@
           }
         },
         "url": "https://defesacivil.taio.sc.gov.br/wp-content/uploads/2026/01/PLANO-DE-CONTINGENCIA-TAIO-JAN-2026.pdf"
+      },
+      "busca_dirigida": [
+        {
+          "em": "2026-10-03",
+          "fontes": [
+            "querido_diario",
+            "sitio_oficial",
+            "busca_web"
+          ],
+          "encontrou": null
+        },
+        {
+          "em": "2026-10-03",
+          "fontes": [
+            "querido_diario",
+            "sitio_oficial",
+            "busca_web"
+          ],
+          "encontrou": null
+        }
+      ],
+      "ultima_busca_em": "2026-10-03",
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "citacao_incompleta",
+          "codebook": "1.1 (28/09/2026)"
+        },
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "citacao_incompleta",
+          "codebook": "1.1 (28/09/2026)"
+        }
+      ],
+      "municipio_atribuido_antes": {
+        "municipio": "Rio do Oeste",
+        "uf": "SC",
+        "ibge": "4214607",
+        "veredito_do_juiz": "citacao_incompleta"
+      },
+      "atribuicao_corrigida_em": "2026-10-03",
+      "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+      "juiz": {
+        "codebook": "1.1 (28/09/2026)",
+        "promove": false,
+        "motivo": "citacao_incompleta",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "PLANO DE CONTINGÊNCIA Proteção e Defesa Civil de Taió-SC | 01/2026 Taió-SC COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DE TAIÓ PLANO DE CONTINGÊNCIA Prot"
+          },
+          "2_citacao": {
+            "ok": false,
+            "trecho": "",
+            "dados": {
+              "tipo": null,
+              "numero": null,
+              "data": null,
+              "detalhe": "sem data completa no texto"
+            }
+          }
+        },
+        "categoria": null,
+        "data": null,
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "56ef36a76c47ffe1733b74cbbba70460782b520e2cd1e675a84e78afd4fed242"
       }
     },
     {
@@ -71181,9 +71253,9 @@
       }
     },
     {
-      "municipio": "Monte Castelo",
+      "municipio": "Tubarão",
       "uf": "SC",
-      "ibge": "4211108",
+      "ibge": "4218707",
       "origem": "busca_web",
       "data": "27/09/2026",
       "url": "https://tubarao.sc.gov.br/uploads/sites/265/2025/04/PLANO_DE_CONTINGE_NCIA_2025.pdf",
@@ -71194,7 +71266,7 @@
       "autoridade": "indefinido",
       "objeto": "indefinido",
       "destino": "indefinido",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
       "id": "ecee6648db",
       "nivel_confianca": "B",
       "pontos_confianca": 5,
@@ -71238,6 +71310,61 @@
           }
         },
         "url": "https://tubarao.sc.gov.br/uploads/sites/265/2025/04/PLANO_DE_CONTINGE_NCIA_2025.pdf"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "autoridade_nao_confirmada",
+          "codebook": "1.1 (28/09/2026)"
+        },
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "autoridade_nao_confirmada",
+          "codebook": "1.1 (28/09/2026)"
+        }
+      ],
+      "municipio_atribuido_antes": {
+        "municipio": "Monte Castelo",
+        "uf": "SC",
+        "ibge": "4211108",
+        "veredito_do_juiz": "autoridade_nao_confirmada"
+      },
+      "atribuicao_corrigida_em": "2026-10-03",
+      "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+      "juiz": {
+        "codebook": "1.1 (28/09/2026)",
+        "promove": false,
+        "motivo": "autoridade_nao_confirmada",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA Proteção e Defesa Civil - PLAMCON Município de Tubarão/SC Ativação das estruturas do Grupo de Ações Coordenadas - GRAC em situaç"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "co e Meteorológico Data da Primeira Versão: 2014 Atualizações: 03/2024 Conforme Decreto Nº 7.527, de 25 de março de 2024 03/2025 Decreto Nº ……. Município de Tub",
+            "dados": {
+              "tipo": "decreto",
+              "numero": "7.527",
+              "data": "24/03/1974",
+              "trecho": "co e Meteorológico Data da Primeira Versão: 2014 Atualizações: 03/2024 Conforme Decreto Nº 7.527, de 25 de março de 2024 03/2025 Decreto Nº ……. Município de Tub"
+            }
+          },
+          "3_autoridade": {
+            "ok": false,
+            "trecho": "sem fórmula de promulgação nem texto articulado"
+          }
+        },
+        "categoria": null,
+        "data": "24/03/1974",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "334a1080bf8a2f5af3d2d9f1cdbf90068507a52720a33f16b5927d4e4a2f9bf2"
       }
     },
     {
@@ -76263,7 +76390,16 @@
           }
         },
         "url": "https://ipuacu.sc.gov.br/plano-de-contingencia-de-protecao-e-defesa-civil-plancon/"
-      }
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "tecnica",
+          "motivo": "documento_inacessivel",
+          "codebook": "1.1 (28/09/2026)"
+        }
+      ],
+      "proxima_tentativa_em": "2026-10-04"
     },
     {
       "municipio": "Ipuaçu",
@@ -77499,9 +77635,9 @@
       }
     },
     {
-      "municipio": "Salete",
+      "municipio": "Celso Ramos",
       "uf": "SC",
-      "ibge": "4215307",
+      "ibge": "4204152",
       "origem": "busca_web",
       "data": "27/09/2026",
       "url": "https://celsoramos.sc.gov.br/uploads/sites/408/2026/07/E0sHEoaT41QWSDWXVHtynGs9.pdf",
@@ -77512,7 +77648,7 @@
       "autoridade": "indefinido",
       "objeto": "el_nino",
       "destino": "indefinido",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: citacao_incompleta",
       "id": "2b4ceec828",
       "nivel_confianca": "A",
       "pontos_confianca": 6,
@@ -77555,6 +77691,69 @@
           }
         },
         "url": "https://celsoramos.sc.gov.br/uploads/sites/408/2026/07/E0sHEoaT41QWSDWXVHtynGs9.pdf"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "ente_nao_confirmado",
+          "codebook": "1.1 (28/09/2026)"
+        },
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "citacao_incompleta",
+          "codebook": "1.1 (28/09/2026)"
+        }
+      ],
+      "municipio_atribuido_antes": {
+        "municipio": "Salete",
+        "uf": "SC",
+        "ibge": "4215307",
+        "veredito_do_juiz": "ente_nao_confirmado"
+      },
+      "atribuicao_corrigida_em": "2026-10-03",
+      "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+      "busca_dirigida": [
+        {
+          "em": "2026-10-03",
+          "fontes": [
+            "querido_diario",
+            "sitio_oficial",
+            "busca_web"
+          ],
+          "encontrou": null
+        }
+      ],
+      "ultima_busca_em": "2026-10-03",
+      "juiz": {
+        "codebook": "1.1 (28/09/2026)",
+        "promove": false,
+        "motivo": "citacao_incompleta",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA Celso Ramos | SC www.cincatarina.sc.gov.br PLANO MUNICIPAL DE CONTINGÊNCIA, DE PROTEÇÃO E DEFESA CIVIL DE CELSO RAMOS Estiagem,"
+          },
+          "2_citacao": {
+            "ok": false,
+            "trecho": "",
+            "dados": {
+              "tipo": null,
+              "numero": null,
+              "data": null,
+              "detalhe": "sem data completa no texto"
+            }
+          }
+        },
+        "categoria": null,
+        "data": null,
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "833311e6622a623cf59ccf7e32df3ce4dd7a69935fdbdf2a77b75f6eb6e08839"
       }
     },
     {
@@ -77709,9 +77908,9 @@
       }
     },
     {
-      "municipio": "Salete",
+      "municipio": "Taió",
       "uf": "SC",
-      "ibge": "4215307",
+      "ibge": "4217808",
       "origem": "busca_web",
       "data": "27/09/2026",
       "url": "https://defesacivil.taio.sc.gov.br/wp-content/uploads/2026/01/PLANO-DE-CONTINGENCIA-TAIO-JAN-2026.pdf",
@@ -77722,7 +77921,7 @@
       "autoridade": "indefinido",
       "objeto": "indefinido",
       "destino": "indefinido",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: citacao_incompleta",
       "id": "d20bd28ea0",
       "nivel_confianca": "B",
       "pontos_confianca": 5,
@@ -77765,6 +77964,78 @@
           }
         },
         "url": "https://defesacivil.taio.sc.gov.br/wp-content/uploads/2026/01/PLANO-DE-CONTINGENCIA-TAIO-JAN-2026.pdf"
+      },
+      "busca_dirigida": [
+        {
+          "em": "2026-10-03",
+          "fontes": [
+            "querido_diario",
+            "sitio_oficial",
+            "busca_web"
+          ],
+          "encontrou": null
+        },
+        {
+          "em": "2026-10-03",
+          "fontes": [
+            "querido_diario",
+            "sitio_oficial",
+            "busca_web"
+          ],
+          "encontrou": null
+        }
+      ],
+      "ultima_busca_em": "2026-10-03",
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "citacao_incompleta",
+          "codebook": "1.1 (28/09/2026)"
+        },
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "citacao_incompleta",
+          "codebook": "1.1 (28/09/2026)"
+        }
+      ],
+      "municipio_atribuido_antes": {
+        "municipio": "Salete",
+        "uf": "SC",
+        "ibge": "4215307",
+        "veredito_do_juiz": "citacao_incompleta"
+      },
+      "atribuicao_corrigida_em": "2026-10-03",
+      "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+      "juiz": {
+        "codebook": "1.1 (28/09/2026)",
+        "promove": false,
+        "motivo": "citacao_incompleta",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "PLANO DE CONTINGÊNCIA Proteção e Defesa Civil de Taió-SC | 01/2026 Taió-SC COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DE TAIÓ PLANO DE CONTINGÊNCIA Prot"
+          },
+          "2_citacao": {
+            "ok": false,
+            "trecho": "",
+            "dados": {
+              "tipo": null,
+              "numero": null,
+              "data": null,
+              "detalhe": "sem data completa no texto"
+            }
+          }
+        },
+        "categoria": null,
+        "data": null,
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "56ef36a76c47ffe1733b74cbbba70460782b520e2cd1e675a84e78afd4fed242"
       }
     },
     {
@@ -142589,7 +142860,7 @@
       "autoridade": "indefinido",
       "objeto": "indefinido",
       "destino": "indefinido",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
       "id": "fbc2da7491",
       "nivel_confianca": "A",
       "pontos_confianca": 6,
@@ -142631,6 +142902,57 @@
           "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
         },
         "resultado": "preparada"
+      },
+      "busca_dirigida": [
+        {
+          "em": "2026-10-03",
+          "fontes": [
+            "querido_diario"
+          ],
+          "encontrou": "https://data.queridodiario.ok.org.br/2700300/2026-01-30/ee0b337b0badcad3705e370fef78f89a.txt"
+        }
+      ],
+      "ultima_busca_em": "2026-10-03",
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "autoridade_nao_confirmada",
+          "codebook": "1.1 (28/09/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.1 (28/09/2026)",
+        "promove": false,
+        "motivo": "autoridade_nao_confirmada",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "stado de Alagoas • ANO XIII | Nº 2735 ESTADO DE ALAGOAS PREFEITURA MUNICIPAL DE ARAPIRACA PREFEITURA MUNICIPAL DE ARAPIRACA AVISO DE DISPENSA ELETRÔNICA AVISO D"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "RO NOVO, NO MUNICÍPIO DE ARAPIRACA/AL. FUNDAMENTO: COM BASE NO ART. 65, §8º, DA LEI FEDERAL Nº 8.666/93, REALIZA-SE O PRESENTE APOSTILAMENTO AO CONTRATO Nº 830/",
+            "dados": {
+              "tipo": "lei",
+              "numero": "8.666/93",
+              "data": "04/02/2026",
+              "trecho": "RO NOVO, NO MUNICÍPIO DE ARAPIRACA/AL. FUNDAMENTO: COM BASE NO ART. 65, §8º, DA LEI FEDERAL Nº 8.666/93, REALIZA-SE O PRESENTE APOSTILAMENTO AO CONTRATO Nº 830/"
+            }
+          },
+          "3_autoridade": {
+            "ok": false,
+            "trecho": "sem fórmula de promulgação nem texto articulado"
+          }
+        },
+        "categoria": null,
+        "data": "04/02/2026",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "7bcb3e343b3c8027d39a76607f4ef30ab1bd4a5216aff8ea239a5ccc11d4da55"
       }
     },
     {
@@ -143211,7 +143533,7 @@
       "autoridade": "indefinido",
       "objeto": "el_nino",
       "destino": "indefinido",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
       "id": "20fa85ef94",
       "nivel_confianca": "A",
       "pontos_confianca": 7,
@@ -143254,6 +143576,47 @@
           "motivo": "portão automático: data do ato incompleta (2024)"
         },
         "resultado": "preparada"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "autoridade_nao_confirmada",
+          "codebook": "1.1 (28/09/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.1 (28/09/2026)",
+        "promove": false,
+        "motivo": "autoridade_nao_confirmada",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "Estado do Rio Grande do Sul Prefeitura Municipal de Santa Maria Gabinete do Prefeito Coordenadoria Municipal de Defesa Civil Avenida Pedro Cezar Saccol, 605 – D"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "EIRO DOS DESASTRES)................................................. ANEXO II - LEI MUNICIPAL Nº 5551, DE 11 DE NOVEMBRO DE 2011................................",
+            "dados": {
+              "tipo": "lei",
+              "numero": "5551",
+              "data": "20/12/2024",
+              "trecho": "EIRO DOS DESASTRES)................................................. ANEXO II - LEI MUNICIPAL Nº 5551, DE 11 DE NOVEMBRO DE 2011................................"
+            }
+          },
+          "3_autoridade": {
+            "ok": false,
+            "trecho": "sem fórmula de promulgação nem texto articulado"
+          }
+        },
+        "categoria": null,
+        "data": "20/12/2024",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "573bc3488a2b96619e33e19685f2742247bfde9c6c03783ac19181ac725595e0"
       }
     },
     {
@@ -230690,15 +231053,15 @@
       }
     },
     {
-      "municipio": "Videira",
+      "municipio": "Ibiam",
       "uf": "SC",
-      "ibge": "4219309",
+      "ibge": "4206751",
       "url": "https://ibiam.sc.gov.br/uploads/sites/321/2025/05/PLANO-DE-CONTINGENCIA-DE-PROTECAO-E-DEFESA-CIVIL-FORMATADO.pdf",
       "trecho": "• Videira, Rio das Antas precipitação de 70mm em 12 horas ou 230mm em 96 ... Elaboração de Plano de Contingência: livro base. Brasília: Ministério da ...",
       "titulo": "plano municipal de contingência de proteção e defesa civil",
       "data": "29/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: citacao_incompleta",
       "pista_origem": "bb82c0a14b",
       "id": "8e1838a884",
       "nivel_confianca": "B",
@@ -230744,6 +231107,69 @@
           "motivo": "portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo"
         },
         "resultado": "preparada"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "ente_nao_confirmado",
+          "codebook": "1.1 (28/09/2026)"
+        },
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "citacao_incompleta",
+          "codebook": "1.1 (28/09/2026)"
+        }
+      ],
+      "municipio_atribuido_antes": {
+        "municipio": "Videira",
+        "uf": "SC",
+        "ibge": "4219309",
+        "veredito_do_juiz": "ente_nao_confirmado"
+      },
+      "atribuicao_corrigida_em": "2026-10-03",
+      "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+      "busca_dirigida": [
+        {
+          "em": "2026-10-03",
+          "fontes": [
+            "querido_diario",
+            "sitio_oficial",
+            "busca_web"
+          ],
+          "encontrou": null
+        }
+      ],
+      "ultima_busca_em": "2026-10-03",
+      "juiz": {
+        "codebook": "1.1 (28/09/2026)",
+        "promove": false,
+        "motivo": "citacao_incompleta",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "Estado de Santa Catarina MUNICÍPIO DE IBIAM PREFEITURA MUNICIPAL DE IBIAM COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PLANO MUNICIPAL DE CONTINGÊNCIA DE"
+          },
+          "2_citacao": {
+            "ok": false,
+            "trecho": "",
+            "dados": {
+              "tipo": "lei",
+              "numero": "12.608",
+              "data": null,
+              "detalhe": "sem data completa no texto"
+            }
+          }
+        },
+        "categoria": null,
+        "data": null,
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "501ea9f28a8315bfab0109d992752c9c79eaafccafe16829524e3688699776ac"
       }
     },
     {
@@ -246934,15 +247360,15 @@
       }
     },
     {
-      "municipio": "Pomerode",
+      "municipio": "Rio dos Cedros",
       "uf": "SC",
-      "ibge": "4213203",
+      "ibge": "4214706",
       "url": "https://riodoscedros.sc.gov.br/uploads/sites/444/2021/12/2056430_plano_de_contingencia_versao_107.pdf",
       "trecho": "O Plano de Contingência para inundações e ... O município interliga-se com Timbó e Pomerode pela Rodovia SC 416, denominada Rodovia RALF KNAESEL, com.",
       "titulo": "Plano Municipal de Contingência Inundações e Deslizamentos",
       "data": "30/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: citacao_incompleta",
       "pista_origem": "b16e877d25",
       "id": "666648a668",
       "nivel_confianca": "B",
@@ -246988,6 +247414,78 @@
           }
         },
         "url": "https://riodoscedros.sc.gov.br/uploads/sites/444/2021/12/2056430_plano_de_contingencia_versao_107.pdf"
+      },
+      "busca_dirigida": [
+        {
+          "em": "2026-10-03",
+          "fontes": [
+            "querido_diario",
+            "sitio_oficial",
+            "busca_web"
+          ],
+          "encontrou": null
+        },
+        {
+          "em": "2026-10-03",
+          "fontes": [
+            "querido_diario",
+            "sitio_oficial",
+            "busca_web"
+          ],
+          "encontrou": null
+        }
+      ],
+      "ultima_busca_em": "2026-10-03",
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "citacao_incompleta",
+          "codebook": "1.1 (28/09/2026)"
+        },
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "citacao_incompleta",
+          "codebook": "1.1 (28/09/2026)"
+        }
+      ],
+      "municipio_atribuido_antes": {
+        "municipio": "Pomerode",
+        "uf": "SC",
+        "ibge": "4213203",
+        "veredito_do_juiz": "citacao_incompleta"
+      },
+      "atribuicao_corrigida_em": "2026-10-03",
+      "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+      "juiz": {
+        "codebook": "1.1 (28/09/2026)",
+        "promove": false,
+        "motivo": "citacao_incompleta",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "ROVAÇÃO O Plano de Contingência para inundações e deslizamentos do município de Rio dos Cedros SC estabelece os procedimentos a serem adotados pelos órgãos envo"
+          },
+          "2_citacao": {
+            "ok": false,
+            "trecho": "",
+            "dados": {
+              "tipo": null,
+              "numero": null,
+              "data": "21/08/2013",
+              "detalhe": "sem tipo e número de ato"
+            }
+          }
+        },
+        "categoria": null,
+        "data": "21/08/2013",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "6231a109e90ca19995e7d65798f23a629e099bf8a66ddbc615658d648bd256f5"
       }
     },
     {
@@ -247831,15 +248329,15 @@
       }
     },
     {
-      "municipio": "Porto Alegre",
+      "municipio": "Encantado",
       "uf": "RS",
-      "ibge": "4314902",
+      "ibge": "4306809",
       "url": "https://encantado.rs.gov.br/noticia/visualizar/id/6891/?plano-de-contingencia-de-encantado.html",
       "trecho": "Plano de Contingência de Encantado. Plano de Contingência de Encantado ... Porto Alegre, às margens do Rio Taquari. Faz divisa com os municípios de ...",
       "titulo": "Plano de Contingência de Encantado.",
       "data": "30/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
       "pista_origem": "0c4848ddc3",
       "id": "751d0bbd32",
       "nivel_confianca": "B",
@@ -247871,18 +248369,73 @@
           }
         },
         "url": "https://encantado.rs.gov.br/noticia/visualizar/id/6891/?plano-de-contingencia-de-encantado.html"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "autoridade_nao_confirmada",
+          "codebook": "1.1 (28/09/2026)"
+        },
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "autoridade_nao_confirmada",
+          "codebook": "1.1 (28/09/2026)"
+        }
+      ],
+      "municipio_atribuido_antes": {
+        "municipio": "Porto Alegre",
+        "uf": "RS",
+        "ibge": "4314902",
+        "veredito_do_juiz": "autoridade_nao_confirmada"
+      },
+      "atribuicao_corrigida_em": "2026-10-03",
+      "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+      "juiz": {
+        "codebook": "1.1 (28/09/2026)",
+        "promove": false,
+        "motivo": "autoridade_nao_confirmada",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "Plano de Contingência de Encantado. - Prefeitura Municipal de Encantado Ir paa conte&uacute;do Encantado, 03 de outubro de 2026. Transparência e-SIC Acesso à In"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "o Legislação Leis Municipais Decretos Editais Lei Aldir Blanc Lei Paulo Gustavo Portaria TABELA DE APROVADOS DO R$ 5.100 DO GOVERNO FEDERAL Diário Oficial Contr",
+            "dados": {
+              "tipo": "portaria",
+              "numero": "5.100",
+              "data": "03/10/2026",
+              "trecho": "o Legislação Leis Municipais Decretos Editais Lei Aldir Blanc Lei Paulo Gustavo Portaria TABELA DE APROVADOS DO R$ 5.100 DO GOVERNO FEDERAL Diário Oficial Contr"
+            }
+          },
+          "3_autoridade": {
+            "ok": false,
+            "trecho": "sem fórmula de promulgação nem texto articulado"
+          }
+        },
+        "categoria": null,
+        "data": "03/10/2026",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "0808e3ede28bbbc015cf24e8216295f0707e66bd6892503423bd8035159f0812"
       }
     },
     {
-      "municipio": "Bom Jesus",
+      "municipio": "Caxias do Sul",
       "uf": "RS",
-      "ibge": "4302303",
+      "ibge": "4305108",
       "url": "https://gcpstorage.caxias.rs.gov.br/documents/2026/05/971f44db-bc1d-42a1-bb76-f7c1990a74e8.pdf",
       "trecho": "PLANO DE CONTINGÊNCIA: é o planejamento tático elaborado com antecipação, ... LOCALIZAÇÃO: Capela São Francisco, Bom Jesus - RS, Rio das Antas. Coordenadas ...",
       "titulo": "PLANO DE CONTINGÊNCIA CAXIAS DO SUL/RS 2026",
       "data": "30/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
       "pista_origem": "ee931a5f66",
       "id": "e7f153ec77",
       "nivel_confianca": "B",
@@ -247918,6 +248471,61 @@
           }
         },
         "url": "https://gcpstorage.caxias.rs.gov.br/documents/2026/05/971f44db-bc1d-42a1-bb76-f7c1990a74e8.pdf"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "ente_nao_confirmado",
+          "codebook": "1.1 (28/09/2026)"
+        },
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "autoridade_nao_confirmada",
+          "codebook": "1.1 (28/09/2026)"
+        }
+      ],
+      "municipio_atribuido_antes": {
+        "municipio": "Bom Jesus",
+        "uf": "RS",
+        "ibge": "4302303",
+        "veredito_do_juiz": "ente_nao_confirmado"
+      },
+      "atribuicao_corrigida_em": "2026-10-03",
+      "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+      "juiz": {
+        "codebook": "1.1 (28/09/2026)",
+        "promove": false,
+        "motivo": "autoridade_nao_confirmada",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "19999 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "PLANO DE CONTINGÊNCIA CAXIAS DO SUL/RS 2026 PLANO MUNICIPAL DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLACON 2026 ADILÓ DIDOMENICO Prefeito Municipal Édson Nés"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "diretrizes da Política Nacional de Proteção e Defesa Civil (PNPDEC), conforme a Lei Federal n. 12.608, de 10 de abril de 2012. Denomina-se proteção e defesa civ",
+            "dados": {
+              "tipo": "lei",
+              "numero": "12.608",
+              "data": "10/04/2012",
+              "trecho": "diretrizes da Política Nacional de Proteção e Defesa Civil (PNPDEC), conforme a Lei Federal n. 12.608, de 10 de abril de 2012. Denomina-se proteção e defesa civ"
+            }
+          },
+          "3_autoridade": {
+            "ok": false,
+            "trecho": "sem fórmula de promulgação nem texto articulado"
+          }
+        },
+        "categoria": null,
+        "data": "10/04/2012",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "79b941af8e02d2c410f2d2606672ab2db5a61ae3a72eaec21c3895565906f04c"
       }
     },
     {
@@ -288637,7 +289245,7 @@
       "titulo": "PLANO DE CONTINGÊNCIA DE DEFESA CIVIL - Franca",
       "data": "30/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: citacao_incompleta",
       "pista_origem": "a1cf9dfc3c",
       "id": "8bfdd5f2e7",
       "nivel_confianca": "A",
@@ -288685,6 +289293,55 @@
           "motivo": "portão automático: natureza RESPOSTA — só ex-ante é aplicado sozinho"
         },
         "resultado": "preparada"
+      },
+      "busca_dirigida": [
+        {
+          "em": "2026-10-03",
+          "fontes": [
+            "querido_diario",
+            "sitio_oficial",
+            "busca_web"
+          ],
+          "encontrou": null
+        }
+      ],
+      "ultima_busca_em": "2026-10-03",
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "citacao_incompleta",
+          "codebook": "1.1 (28/09/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.1 (28/09/2026)",
+        "promove": false,
+        "motivo": "citacao_incompleta",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "19999 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "PREFEITURA MUNICIPAL DE FRANCA COMISSÃO MUNICIPAL DE DEFESA CIVIL PLANO DE CONTINGÊNCIA DE DEFESA CIVIL PERÍODOS CHUVOSOS Edição 2026/2027 PLANO DE CONTINGÊNCIA"
+          },
+          "2_citacao": {
+            "ok": false,
+            "trecho": "",
+            "dados": {
+              "tipo": "decreto",
+              "numero": "25.249",
+              "data": null,
+              "detalhe": "sem data completa no texto"
+            }
+          }
+        },
+        "categoria": null,
+        "data": null,
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "469938a7341b630b87bad323945f00687f456f4241248c58c80cf704ee8ee465"
       }
     },
     {
@@ -289530,7 +290187,7 @@
       "titulo": "Plano de Contingência Municipal de Proteção e Defesa Civil Leme",
       "data": "30/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: citacao_incompleta",
       "pista_origem": "468c7d518a",
       "id": "98dc759dde",
       "nivel_confianca": "A",
@@ -289579,6 +290236,55 @@
           "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
         },
         "resultado": "preparada"
+      },
+      "busca_dirigida": [
+        {
+          "em": "2026-10-03",
+          "fontes": [
+            "querido_diario",
+            "sitio_oficial",
+            "busca_web"
+          ],
+          "encontrou": null
+        }
+      ],
+      "ultima_busca_em": "2026-10-03",
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "citacao_incompleta",
+          "codebook": "1.1 (28/09/2026)"
+        }
+      ],
+      "juiz": {
+        "codebook": "1.1 (28/09/2026)",
+        "promove": false,
+        "motivo": "citacao_incompleta",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "Plano de Contingência Municipal de Proteção e Defesa Civil Leme - SP O presente Plano de Contingência Municipal estabelece diretrizes para ações de resposta a d"
+          },
+          "2_citacao": {
+            "ok": false,
+            "trecho": "",
+            "dados": {
+              "tipo": null,
+              "numero": null,
+              "data": "01/02/2023",
+              "detalhe": "sem tipo e número de ato"
+            }
+          }
+        },
+        "categoria": null,
+        "data": "01/02/2023",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "7a16f1a85e4a1d055de5a1dd6afb05f9c4463b7b2f256d04732bdbadc1b6a86b"
       }
     },
     {
@@ -289638,15 +290344,15 @@
       }
     },
     {
-      "municipio": "Leme",
+      "municipio": "Itapetininga",
       "uf": "SP",
-      "ibge": "3526704",
+      "ibge": "3522307",
       "url": "https://www.itapetininga.sp.gov.br/pagina/62/plano-de-contingencia/download/75/",
       "trecho": "PLANO DE CONTINGÊNCIA (PLACON) ... Leme – Vila Nova Itapetininga. 3.1.1. Acidentes Naturais (Inundações ...",
       "titulo": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL ...",
       "data": "30/09/2026",
       "origem": "seguimento_busca_oficial",
-      "status": "pista — promover a registro exige documento primário lido por humano",
+      "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
       "pista_origem": "468c7d518a",
       "id": "3a4ca4936e",
       "nivel_confianca": "A",
@@ -289690,6 +290396,61 @@
           "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
         },
         "resultado": "preparada"
+      },
+      "juiz_tentativas": [
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "ente_nao_confirmado",
+          "codebook": "1.1 (28/09/2026)"
+        },
+        {
+          "em": "2026-10-03",
+          "classe": "criterio",
+          "motivo": "autoridade_nao_confirmada",
+          "codebook": "1.1 (28/09/2026)"
+        }
+      ],
+      "municipio_atribuido_antes": {
+        "municipio": "Leme",
+        "uf": "SP",
+        "ibge": "3526704",
+        "veredito_do_juiz": "ente_nao_confirmado"
+      },
+      "atribuicao_corrigida_em": "2026-10-03",
+      "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+      "juiz": {
+        "codebook": "1.1 (28/09/2026)",
+        "promove": false,
+        "motivo": "autoridade_nao_confirmada",
+        "criterios": {
+          "0_documento_primario": {
+            "ok": true,
+            "trecho": "20000 caracteres de fonte oficial"
+          },
+          "1_identidade": {
+            "ok": true,
+            "trecho": "turais e Acidentes Tecnológicos 2022-2023 COMISSÃO MUNICIPAL DE DEFESA CIVIL DE ITAPETININGA/SP PREFEITURA DE ITAPETININGA / SP COMISSÂO MUNICIPAL DE DEFESA CIV"
+          },
+          "2_citacao": {
+            "ok": true,
+            "trecho": "ão Municipal de Defesa Civil do Município de Itapetininga iniciou-se através do Decreto Municipal n.º 125, de 29 de setembro de 1989, que dispõe sobre Criação d",
+            "dados": {
+              "tipo": "decreto",
+              "numero": "125",
+              "data": "13/03/1855",
+              "trecho": "ão Municipal de Defesa Civil do Município de Itapetininga iniciou-se através do Decreto Municipal n.º 125, de 29 de setembro de 1989, que dispõe sobre Criação d"
+            }
+          },
+          "3_autoridade": {
+            "ok": false,
+            "trecho": "sem fórmula de promulgação nem texto articulado"
+          }
+        },
+        "categoria": null,
+        "data": "13/03/1855",
+        "julgado_em": "2026-10-03",
+        "hash_evidencia": "4c80620c88b9c952d3abf5ece38d782e6c90def3837de4d94dad170fe81f3c1f"
       }
     },
     {
