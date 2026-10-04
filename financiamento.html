@@ -223,6 +223,12 @@
       <p class="card-body">Oito caminhos, sete federais e um estadual. Alguns chegam todo mês, por regra; outros abrem depois de um decreto de emergência; outros dependem de decisão do governo ou de uma emenda; e alguns chegam direto às pessoas e às obras, sem passar pela prefeitura.</p>
 
       <figure class="figura figura--diagrama cartao-mapa cartao-mapa--largo r-chuva" id="boxCaminhos">
+        <!-- A faixa de família e o sobretítulo são do componente de cartão de mapa, e o portão de
+             runtime do Financiamento os exige em todos os nove: a figura larga é uma variante de
+             largura, não um componente novo. O sobretítulo vem do DADO (quantos caminhos o arquivo
+             declara), nunca digitado. -->
+        <p class="cartao-mapa-familia">Os caminhos</p>
+        <p class="cartao-mapa-boletim" id="linhaCaminhos">—</p>
         <h3 class="figura-titulo">Por onde o dinheiro público chega a uma cidade</h3>
         <p class="figura-sub">Os oito caminhos do dinheiro federal e estadual até o município, e o que abre cada um · estrutura, não valores · atos em vigor em 2026</p>
         <div class="figura-midia"><svg id="svgCaminhos" viewBox="0 0 960 420" role="img" aria-label="Diagrama: União e Estado à esquerda, os oito caminhos do dinheiro no centro e o município à direita, com o tipo de linha de cada caminho"></svg></div>
@@ -285,7 +291,7 @@
 </div>
 
 <script src="assets/colunas.js?v=3669e58d" defer></script>
-<script src="assets/js/financiamento.js?v=9fb13706" defer></script><script src="assets/js/proveniencia.js?v=50e1ec93" defer></script>
+<script src="assets/js/financiamento.js?v=1d416370" defer></script><script src="assets/js/proveniencia.js?v=50e1ec93" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

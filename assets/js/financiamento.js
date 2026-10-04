@@ -1197,6 +1197,10 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     /* Em tela pequena o desenho encolhido não se lê. A lista vertical tem a mesma cor e uma
        amostra do traço de cada caminho — e é a figura, não um resumo dela. O CSS troca uma pela
        outra; as duas saem do mesmo dado. */
+    if (el('linhaCaminhos')) {
+      el('linhaCaminhos').textContent = vias.length + ' caminhos declarados';
+    }
+
     const lista = el('listaCaminhos');
     if (lista) {
       lista.innerHTML = posicao.map(v => {
