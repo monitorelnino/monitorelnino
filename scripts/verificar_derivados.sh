@@ -50,8 +50,26 @@ if [ "$MODO" = "--idempotencia" ]; then
   else echo "✗ DERIVADOS: a segunda regeneração alterou arquivos — derivado não determinístico ou ordem errada no pipeline."; exit 1; fi
 fi
 if [ "$MODO" = "--pode-regenerar" ]; then
-  echo "✓ DERIVADOS OK — a cadeia canônica inteira regenerou sem erro. A comparação com o git é do"
-  echo "  push para a \`main\`, que é onde o derivado obsoleto importa (§314)."
+  # 04/10/2026: o modo do PR deixa de ser cego para o MANIFESTO.
+  #
+  # O §314 afrouxou a comparação no PR para não cobrar derivado de dado que a noite ainda vai
+  # mudar — e isso continua certo. Mas o manifesto é outra coisa: ele é função dos ARQUIVOS DO
+  # PR, não do dado da noite. PR que toca arquivo selado e não resela deixa a `main` vermelha no
+  # push, e foi o que aconteceu quatro vezes entre 03 e 04/10 (#538, #541 e duas no publicador).
+  # Cada uma custou um ciclo de CI e um PR de uma linha só para carimbar.
+  #
+  # Então aqui o manifesto é cobrado, e só ele: se estiver obsoleto, reprova no PR, onde o
+  # conserto é `git add docs/MANIFEST_SHA256.txt` no mesmo commit.
+  if ! git diff --quiet --exit-code -- docs/MANIFEST_SHA256.txt; then
+    echo "✗ DERIVADOS: o manifesto está obsoleto. A cadeia regenerou e ele mudou, o que significa"
+    echo "  que este PR toca arquivo selado e não reselou. Rode:"
+    echo "      bash scripts/verificar_derivados.sh && git add docs/MANIFEST_SHA256.txt"
+    echo "  e inclua no commit. Sem isso a \`main\` fica vermelha no push (§314 afrouxa o derivado"
+    echo "  de DADO no PR, não o manifesto, que é função dos arquivos do próprio PR)."
+    exit 1
+  fi
+  echo "✓ DERIVADOS OK — a cadeia canônica inteira regenerou sem erro e o manifesto está em dia."
+  echo "  A comparação do resto com o git é do push para a \`main\` (§314)."
   exit 0
 fi
 # 03/10/2026: `data/saude_pipeline.json` e `docs/SAUDE_PIPELINE.md` saem da COMPARAÇÃO, não só da
