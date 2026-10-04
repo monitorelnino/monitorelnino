@@ -96,7 +96,14 @@ jobs:
           fi
           mkdir -p ~/.ssh && echo "$CHAVE" > ~/.ssh/id_ed25519 && chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
-          git clone --depth 1 git@github.com:monitorelnino/robo-registro.git /tmp/privado
+          # 04/10/2026: a chave existe mas não alcança o `robo-registro` ("Repository not found"),
+          # e o passo derrubava o workflow INTEIRO — com o pacote já gerado e guardado no artefato,
+          # que é o caminho alternativo declarado logo abaixo. Levar o pacote ao privado é
+          # desejável; perder o pacote por causa disso, não. O erro fica dito no log e o run segue.
+          if ! git clone --depth 1 git@github.com:monitorelnino/robo-registro.git /tmp/privado; then
+            echo "::warning::sem acesso ao robo-registro com esta chave — o pacote fica no artefato deste run"
+            exit 0
+          fi
           mkdir -p /tmp/privado/blog/pacotes
           cp pacotes/*.json pacotes/*.md /tmp/privado/blog/pacotes/ 2>/dev/null || true
           cd /tmp/privado
