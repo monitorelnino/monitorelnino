@@ -237,11 +237,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://transparencia.caxias.ma.gov.br/transparencia/publicacoes?tipo=p22
   - trecho: Plano de Contingência, Plano de Contratações Anual (PCA), Precatórios do ... Serviço de Informação Municipal Email: ascom@caxias.ma.gov.brTelefone: (99) 99107- ...
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
-- `c5dd531f6b` · nível **B** (5 pts) · seguimento_busca_oficial · — · data 2025 (do trecho)
+- `c5dd531f6b` · nível **B** (5 pts) · seguimento_busca_oficial · DUVIDA · **Lei N° 233**, 15/12/2025
   - título: Prefeitura Municipal de Caxias
   - url: https://caxias.ma.gov.br/wp-content/uploads/dom-files/2025/dom_111387_2.pdf
   - trecho: Dec 15, 2025 ... ... caxias.ma.gov.br/dom. Importante ressaltar que todas as consultas ... 1º Fica instituído o Plano de Contingência da Secretaria Municipal.
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `dc078080d6` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Possibilidade de El Niño reacende alerta para chuvas intensas em ...
   - url: https://gauchazh.clicrbs.com.br/pioneiro/geral/noticia/2026/04/possibilidade-de-el-nino-reacende-alerta-para-chuvas-intensas-em-caxias-do-sul-onde-mais-de-5-mil-pessoas-vivem-em-areas-de-risco-cmoekgnpv02bt015b7ep38go2.html
@@ -345,10 +346,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Monte Sião/MG — 1 pendente(s)
-- `53156f516d` · nível **A** (9 pts) · busca_web · — · data 2054 (do trecho)
+- `53156f516d` · nível **A** (9 pts) · busca_web · EX_ANTE · data 2054 (do trecho)
   - título: PLANO DE CONTINGÊNCIA - Prefeitura Municipal de Monte Sião
   - url: https://montesiao.mg.gov.br/public/admin/globalarq/uploads/files/PLANO_DE_CONTINGENCIA%20-%20Divulga%C3%A7%C3%A3o%20popula%C3%A7%C3%A3o.pdf
   - trecho: O Plano de Contingência de Proteção e Defesa Civil- PLANCON ... Casa de Caridade. Ouro Fino. Ouro Fino. Rua Treze de Maio, 2054, Bela vista. (35)3441-1059.
+  - juiz: portão automático: ato de 2021 — pode ser edição anterior; decisão humana
 
 ## Primavera/PA — 5 pendente(s)
 - `07e8f9702d` · nível **A** (6 pts) · seguimento_busca_oficial · EX_ANTE · data 2023 (do trecho)
@@ -954,9 +956,10 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Apr 18, 2023 ... O prefeito Adiló Didomenico assinou na manhã desta quinta-feira (06/04) o decreto ... Plano de Contingência de Caxias do Sul. “Agora estamos ...
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
-- `5f1a2834eb` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+- `5f1a2834eb` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - url: https://caxias.rs.gov.br/noticias/2026/04/prefeitura-promove-palestra-sobre-el-nino-e-reforca-acoes-de-prevencao-em-caxias-do-sul
   - trecho: Apr 29, 2026 ... ... Plano de Contingência de Caxias do Sul. Muitas ações já estão sendo ... © 2026 Prefeitura de Caxias do Sul. Ícones por Freepik · Sobre o ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Encantado/RS — 1 pendente(s)
 - `751d0bbd32` · nível **A** (6 pts) · seguimento_busca_oficial · — · citação não extraída
@@ -977,21 +980,24 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://fatonovo.com.br/destaque/audiencia-publica-do-plano-de-contingencia-de-montenegro-sera-remarcada/
   - trecho: A audiência pública agendada ... seria apresentado o Plano de Contingência Municipal, foi cancelada, em virtude da previsão de fortes chuvas e do risco de enchente....
   - juiz: portão automático: fonte não oficial
-- `7a297f925d` · nível **B** (4 pts) · seguimento_busca_oficial · — · data 2025 (do trecho)
+- `7a297f925d` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · data 2025 (do trecho)
   - título: nota técnica 001/2025 - Sema
   - url: https://www.sema.rs.gov.br/upload/arquivos/202505/23101443-nota-tecnica-sema-001-2025-assinado-assinado-assin-250523-084107.pdf
   - trecho: May 21, 2025 ... Rita, Montenegro, Esteio, Canoas, Gravataí, Sapucaia do Sul, São Leopoldo, ... ○ Elaboração de um Plano de Contingência para o ...
   - ⚠ ano_anterior_ao_ciclo
-- `fb0ce6c2ad` · nível **B** (4 pts) · seguimento_busca_oficial · — · data 2024 (do trecho)
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `fb0ce6c2ad` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · data 2024 (do trecho)
   - título: Plano Estadual de Saúde 2024-2027
   - url: https://saude.rs.gov.br/upload/arquivos/202410/30121947-plano-estadual-saude-versao-final-site.pdf
   - trecho: ... Montenegro, Nova Santa Rita, Pareci. Novo, Salvador do Sul, São José do Sul ... Plano de Contingência e Ação Estadual do Rio Grande do. Sul para Infecção ...
   - ⚠ ano_anterior_ao_ciclo
-- `64ee182645` · nível **B** (3 pts) · seguimento_busca_oficial · — · data 2021 (do trecho)
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `64ee182645` · nível **B** (3 pts) · seguimento_busca_oficial · DUVIDA · **Decreto nº 53.777**, 06/11/2017
   - título: Diário Oficial Eletrônico do Estado do Rio Grande do Sul
   - url: https://www.pge.rs.gov.br/upload/arquivos/202103/10083036-doe-2021-03-10.pdf
   - trecho: Mar 10, 2021 ... ... Plano de Contingência da. Secretaria do Estado do RS para o ... MONTENEGRO. 2257556. HOSPITAL MONTENEGRO. 22. 0. 9. 0. 19. 0. 0. 0. 0. RS. 4314902.
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `eb647e3436` · nível **B** (3 pts) · seguimento_busca_oficial · — · citação não extraída
   - título: Nota técnica sobre salvamento e recuperação dos documentos ...
   - url: https://apers.rs.gov.br/upload/arquivos/202407/08141514-nota-tecnica-salvamento-recuperacao-documentos-atingidos-enchentes.pdf
@@ -1037,25 +1043,28 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://fatonovo.com.br/destaque/risco-de-enchente-montenegro-e-sao-sebastiao-do-cai-acionam-plano-de-contingencia/
   - trecho: Risco de enchente: Montenegro e São Sebastião do Caí acionam Plano de Contingência. 21 de julho de 2026; por Guilherme Baptista · 0. Compartilhar; Facebook ...
   - juiz: portão automático: fonte não oficial
-- `54857dafce` · nível **B** (4 pts) · seguimento_busca_oficial · — · data 2024 (do trecho)
+- `54857dafce` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · data 2024 (do trecho)
   - título: Plano Estadual de Saúde 2024-2027
   - url: https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf
   - trecho: Porto Alegre, São Sebastião do Caí, Sapucaia do Sul, Horizontina, Três de ... por desenvolver o Plano de Contingência e Ação Estadual do Rio Grande do Sul para ...
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 - `1a4ff3523d` · nível **B** (4 pts) · seguimento_busca_oficial · — · data 2025 (do trecho)
   - título: 6ª CONFERÊNCIA ESTADUAL DAS CIDADES - SEHAB
   - url: https://www.habitacao.rs.gov.br/upload/arquivos/202508/18155139-caderno-dos-delegados-concidades.pdf
   - trecho: Aug 28, 2025 ... Aditiva 7 (São Sebastião do Caí) - Cidade Segura: Demolir locais ... Plano de Contingência para Catástrofes Climáticas e ações de fiscalização.
-- `7872305633` · nível **B** (4 pts) · seguimento_busca_oficial · — · data 2020 (do trecho)
+- `7872305633` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · data 2020 (do trecho)
   - título: estado do rio grande do sul - Prefeitura de Canoas
   - url: https://www.canoas.rs.gov.br/wp-content/uploads/2020/06/Plano-Continge%CC%82ncia-Canoas-COVID-19-Versa%CC%83o-4-0.pdf
   - trecho: Jun 1, 2020 ... Sul, São Pedro da Serra, São Sebastião do Caí ... insuficiência da rede assistencial, continuam como premissas deste plano de contingência:.
   - ⚠ ano_anterior_ao_ciclo
-- `7692029e08` · nível **B** (3 pts) · seguimento_busca_oficial · — · data 2024 (do trecho)
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `7692029e08` · nível **B** (3 pts) · seguimento_busca_oficial · DUVIDA · data 2024 (do trecho)
   - título: parecer (sf) nº 1, de 2024 - SENADO FEDERAL
   - url: https://legis.senado.leg.br/sdleg-getter/documento?dm=9862195&ts=1735605051489&rendition_principal=S&disposition=inline
   - trecho: Dec 5, 2024 ... apresente plano de contingência. Isso permitiu que passasse de cerca ... de um dique no Município de São Sebastião do Caí. Ele defendeu ...
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Terra de Areia/RS — 1 pendente(s)
 - `dc6c8beaa8` · nível **A** (6 pts) · busca_web · DUVIDA · **Lei 13.019**, 2014
@@ -1065,10 +1074,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Veranópolis/RS — 7 pendente(s)
-- `45f8f0e033` · nível **A** (6 pts) · seguimento_busca_oficial · — · citação não extraída
+- `45f8f0e033` · nível **A** (6 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
   - título: PLANO DE CONTINGÊNCIA DEFESA CIVIL - Município de Colinas
   - url: https://colinas.rs.gov.br/uploads/norma/18361/COL_PLANO_DE_CONTINGNCIA_2026_R02__finalizado.pdf
   - trecho: Plano de contingencia ... Veranópolis, Guaporé) que possuam réguas de medição nos Rios Taquari-Antas e ...
+  - juiz: portão automático: data do ato incompleta (2026)
 - `30b9dd8912` · nível **B** (5 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Veranópolis aciona Plano de Contingência após chuvas intensas e ...
   - url: https://www.instagram.com/p/DdjWyeyFvGR/
@@ -1083,10 +1093,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: PLANO DE CONTINGÊNCIA - Prefeitura Municipal de Encantado
   - url: https://encantado.rs.gov.br/uploads/paginadinamica/45046/Plano_de_contingencia___Encantado___ed_1.pdf
   - trecho: Este Plano de Contingência aborda, com maior detalhe, riscos ... • UHE Monte Claro (Nova Roma do Sul e Veranópolis/ Bento Gonçalves e Pinto Bandeira);.
-- `6d120d2d62` · nível **B** (4 pts) · seguimento_busca_oficial · — · citação não extraída
+- `6d120d2d62` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
   - título: Ver.ª Adriane Maria Parise (MDB)
   - url: https://legis.camaraveranopolis.rs.gov.br/?sec=nproponente&id=12231&q=nproponente
   - trecho: E também que seja enviado a esta casa legislativa o Plano de Contingência atualizado. ... Veranópolis / RS Veja no mapa. Horário de Funcionamento: Segunda à sexta ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `a53fd3b774` · nível **C** (5 pts) · seguimento_busca_oficial · — · citação não extraída
   - título: PLANO DE CONTINGÊNCIA PARA DENGUE DO ESTADO DO RIO ...
   - url: https://cevs.rs.gov.br/upload/arquivos/201808/27092736-cevs-2013-plano-estadual-de-contigencia-para-dengue-do-rio-grande-do-sul.pdf
@@ -2016,19 +2027,22 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## None/None — 2010 pendente(s)
-- `8e1fd7870e` · nível **B** (3 pts) · None · — · citação não extraída
+- `8e1fd7870e` · nível **B** (3 pts) · None · DUVIDA · citação não extraída
   - título: Cappelli promete decreto no 1º dia contra esgoto a céu aberto no DF - correiobraziliense.com.br
   - url: https://news.google.com/rss/articles/CBMi0gFBVV95cUxQVWk1VUJJYjRqUUo1VkFuOF9aLW85M0hhRE5WM1NJS3E1VjFxcl9fSlo2dmJYcTJGZEkxcGhUb1I3eGkzekxFa1dVbGx6Vk1oUy1FZnpuYzN5SE9XeW1UMm5CcVNtMzg2VG03ZmtsbGJ1TDdMQ2ZXMGp0MnE2WDZXa0kwZUV6MzY1aE01SlpoS2FoUUZEWU9zNFpoV3MxcEM5U0JWYjgzWkxtSHBkNXZDdk5OWXp6SmdWVDBVdGxUNDQzZ2V3d3g5cnZhTHFtZFVMekHSAdcBQVVfeXFMT3VLZjlxVzZ6cl92emNaSU81SnpYVngxaGZrbWcxSXVUbmpLRkpIZk5TQnRGUXhWalhsc0Fqc3FLXzh1QmMyMGdrTGhUMGNPQUhPUDAyYUlxUU9tREt3MGMxQlRiaFVaREZSZmtYNkNKeUJHcUQ2T0w1TG5BdEdOMUlweHhGTDdWNXo5dVRmR2dJTFR4M2piWkxKZ1lrWEhCRDJHbE45dWt0bEtYUTdPOFNZVUtwUkVqVkNLNHlpSWJjZmFrX0VNTlU2UnE3a21UOXY0OTdtaEU?oc=5
   - trecho: 
-- `6188e08bac` · nível **B** (3 pts) · None · — · **Decreto nº 040**, 2024 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `6188e08bac` · nível **B** (3 pts) · None · DUVIDA · **Decreto nº 040**, 2024
   - título: Decreto nº 040/2024: situação de emergência hídrica em Gravatá - Prefeitura de Gravatá (PE)
   - url: https://news.google.com/rss/articles/CBMinAFBVV95cUxOdGRDWEtlNGR1bDI4SFZFUTRQN2VRajRpamoxUHFCajVRbnhLUEZTaWo4ekxzSUNzdTFUWGQxNzlJNXpmR2Z1T0lSbHRKdk1tVzFMSnhONDFCS0sxQ1lJWW1JSXJ4X2NJT2pYVHdwVlV1ZWZST18za0ZGSTNqcWxKSVc3b3ZUN2dRVUFGelZqa2JqSXNnb1JsOWlwako?oc=5
   - trecho: 
   - ⚠ ano_anterior_ao_ciclo
-- `8e1fd7870e` · nível **B** (3 pts) · None · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `8e1fd7870e` · nível **B** (3 pts) · None · DUVIDA · citação não extraída
   - título: Cappelli promete decreto no 1º dia contra esgoto a céu aberto no DF - Correio Braziliense
   - url: https://news.google.com/rss/articles/CBMi0gFBVV95cUxQVWk1VUJJYjRqUUo1VkFuOF9aLW85M0hhRE5WM1NJS3E1VjFxcl9fSlo2dmJYcTJGZEkxcGhUb1I3eGkzekxFa1dVbGx6Vk1oUy1FZnpuYzN5SE9XeW1UMm5CcVNtMzg2VG03ZmtsbGJ1TDdMQ2ZXMGp0MnE2WDZXa0kwZUV6MzY1aE01SlpoS2FoUUZEWU9zNFpoV3MxcEM5U0JWYjgzWkxtSHBkNXZDdk5OWXp6SmdWVDBVdGxUNDQzZ2V3d3g5cnZhTHFtZFVMekHSAdcBQVVfeXFMT3VLZjlxVzZ6cl92emNaSU81SnpYVngxaGZrbWcxSXVUbmpLRkpIZk5TQnRGUXhWalhsc0Fqc3FLXzh1QmMyMGdrTGhUMGNPQUhPUDAyYUlxUU9tREt3MGMxQlRiaFVaREZSZmtYNkNKeUJHcUQ2T0w1TG5BdEdOMUlweHhGTDdWNXo5dVRmR2dJTFR4M2piWkxKZ1lrWEhCRDJHbE45dWt0bEtYUTdPOFNZVUtwUkVqVkNLNHlpSWJjZmFrX0VNTlU2UnE3a21UOXY0OTdtaEU?oc=5
   - trecho: 
+  - juiz: portão automático: fonte não oficial
 - `811e665685` · nível **C** (2 pts) · None · — · citação não extraída
   - título: Governo decreta emergência em Roraima e cria gabinete para enfrentar impactos da estiagem - Folha BV
   - url: https://news.google.com/rss/articles/CBMixAFBVV95cUxOOURGVnVmY1lZOEFjNTNKeE9obFhVa1QzVW9uWGdkZEcxLXR5RXo4bTg3aGJ6UFZBSnQ5MmxVdzRNMmJwaFRORkxmczBabTZwYk1pazBCel9RcVVNN3l4S2xOaXJQVG9IYnUxb1lQb3U4aTl2NHdNNWl4NEVTOTFSZWVsMm4xNGQ2b0FxbWY2VjhuNVJXcUJhSVF4THhHWDdROE1oenZzX1Q1dmxoY2FKemdoYWw4WUZGQ0F5WUxlcmQ4Zm5l?oc=5
@@ -10285,16 +10299,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: fonte não oficial
 
 ## Imperatriz/MA — 5 pendente(s)
-- `76d96df4a3` · nível **B** (7 pts) · seguimento_busca_oficial · — · **decreto nº 068**, 18/08/2025 (do trecho)
+- `76d96df4a3` · nível **B** (7 pts) · seguimento_busca_oficial · EX_ANTE · **DECRETO Nº 068**, 18/08/2025
   - título: decreto nº 068, de 18 de agosto de 2025. - Prefeitura de Imperatriz
   - url: http://novo.imperatriz.ma.gov.br/media/site/download/legislacao/068_-_DECRETO.pdf
   - trecho: Aug 18, 2025 ... a) elaboração e atualização do Plano de Contingência Municipal; ... sti.imperatriz.ma.gov.br/autenticar/. Documento assinado: 18/08/2025 ...
   - ⚠ ano_anterior_ao_ciclo
-- `c0a35eca58` · nível **B** (7 pts) · seguimento_busca_oficial · — · **decreto n°020**, 08/03/2021 (do trecho)
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `c0a35eca58` · nível **B** (7 pts) · seguimento_busca_oficial · DUVIDA · **DECRETO N°020**, 08/03/2021
   - título: decreto n°020 de 08 de março de 2021 - Prefeitura de Imperatriz
   - url: https://novo.imperatriz.ma.gov.br/media/site/notify/gap/decreto/Decreto_n%C2%BA_020-2021_-_Regulamenta_a_Lei_n%C2%BA_1.075-2006_que_cria_a_Coordenadoria_Municipal_de_Prote%C3%A7%C3%A3o_e_Defesa_Civil_-_COMDEC.pdf
   - trecho: XIV - Realizar regularmente exercícios simulados, conforme Plano de Contingência de ... Imperatriz - MA www.imperatriz.ma.gov.br.
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `acc5082fbd` · nível **B** (4 pts) · busca_web · EX_ANTE · **Lei nº 8.080**, 1990
   - url: https://transparencia.imperatriz.ma.gov.br/upload/plano_municipal_saude/19310.pdf
   - trecho: Dessa forma, o Plano Municipal de Saúde 2026–2029 de Imperatriz/MA apresenta ... Plano de Contingência da COVID-19;. • Plano de Enfrentamento das ...
@@ -10627,10 +10643,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## General Carneiro/PR — 1 pendente(s)
-- `868aef5e14` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+- `868aef5e14` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Plano Municipal de Saúde - 2026-2029
   - url: https://www.generalcarneiro.pr.gov.br/uploads/copiado_20260914183133_zrZ4ezvc.pdf
   - trecho: ... Monte Castelo. O setor é composto por duas agendadoras e enfrenta dois ... se em Plano de Contingência acompanhado pela SESA. Com a conclusão da obra ...
+  - juiz: portão automático: data do ato incompleta (2026)
 
 ## Guaraniaçu/PR — 3 pendente(s)
 - `9487cc7458` · nível **B** (4 pts) · querido_diario · EX_ANTE · **Lei Municipal nº 134**, 31/03/2021
@@ -10720,9 +10737,10 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: fonte não oficial
 
 ## Nova Santa Rosa/PR — 1 pendente(s)
-- `7c33c584b2` · nível **B** (4 pts) · busca_web · — · citação não extraída
+- `7c33c584b2` · nível **B** (4 pts) · busca_web · DUVIDA · **lei nº 950**, 14/09/2026
   - url: https://novasantarosa.pr.gov.br/nova-santa-rosa-conta-com-plano-municipal-de-contingencia-para-situacoes-de-emergencia-e-calamidade-publica/
   - trecho: Ferramentas de Acessibilidade · O Município de Nova Santa Rosa conta agora com um Plano Municipal de Contingência para Situações de Emergência e Calamidade Pública. O documento estabelece diretrizes, procedimentos, respo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Pinhais/PR — 6 pendente(s)
 - `7fe6011407` · nível **B** (5 pts) · seguimento_busca_oficial · — · data 15/02/2023 (do trecho)
@@ -11101,10 +11119,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo, risco_errado_no_titulo
 
 ## Porto Velho/RO — 2 pendente(s)
-- `02ac3032b2` · nível **B** (5 pts) · busca_web · — · data 2020 (do trecho)
+- `02ac3032b2` · nível **B** (5 pts) · busca_web · EX_ANTE · **Lei 4.320**, 2020
   - título: Lista Geral de Fornecedores - Transparência Porto Velho
   - url: https://transparencia.portovelho.ro.gov.br/fornecedores
   - trecho: Plano de contingência. 13/ago/2020 · 15/jul/2020 · 27/mai/2020 · 25/mai/2020 · 28/abr ... PALMA SOLA, PALMEIRA, PALMITOS, PAPANDUVA, PARAISO, PASSO DE TORRES ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `38509a769e` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · **DECRETO Nº 041**, 07/03/2020
   - título: Diário Oficial dos Municípios do Estado de Rondônia • ANO XI
   - url: https://www.portovelho.ro.gov.br/uploads/editor/files/Decreto%20de%20calamidade.pdf
@@ -11112,11 +11131,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: ato de 2020 — pode ser edição anterior; decisão humana
 
 ## Alto Feliz/RS — 1 pendente(s)
-- `b30ba919b3` · nível **B** (3 pts) · busca_web · — · data 27/06/2025 (do trecho)
+- `b30ba919b3` · nível **B** (3 pts) · busca_web · EX_ANTE · **Lei 14.133**, 26/06/2025
   - título: Rio Grande do Sul , 27 de Junho de 2025 • Diário Oficial dos ...
   - url: https://www.altofeliz.rs.gov.br/web/imgs/arquivos/publicacao-famurs-n-52-de-27-de-junho-de-20251751025320.pdf
   - trecho: Jun 26, 2025 ... ... Treze de Maio nº 1922, torna público que, no dia 09 de julho de 2025 ... Plano De Contingência, bem como das comunicações com a ...
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 
 ## Bom Jesus/RS — 5 pendente(s)
 - `57ed7351c7` · nível **B** (6 pts) · busca_web · EX_ANTE · data 2025 (do trecho)
@@ -11638,11 +11658,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Este Plano de Contingência foi construído com base no Modelo do ... Localizada no centro de Papanduva-SC, a EEB Alinor Vieira Corte possui atualmente 1336.
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
-- `f479496a00` · nível **B** (3 pts) · seguimento_busca_oficial · — · citação não extraída
+- `f479496a00` · nível **B** (3 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
   - título: Relatório de Atividades - Aresc
   - url: https://aresc.sc.gov.br/wp-content/uploads/2025/10/RELATORIO-DE-GESTaO-OUVIDORIA-ARESC-2020.pdf
   - trecho: RESOLUÇÃO ARESC Nº 156 – Estabelece diretrizes para a elaboração e implemen- tação do Plano de Contingência e Emergência dos serviços de abastecimento de água e ...
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 
 ## Piratuba/SC — 1 pendente(s)
 - `722d809daa` · nível **B** (6 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
