@@ -105,6 +105,24 @@ def previsto_x_iniciado(linhas: list, noite: str, elos=ELOS) -> list:
     return fora
 
 
+def estado_do_blog(pacotes: list, textos: list, hoje: str) -> dict:
+    """A linha "Blog" do painel: pacote pronto e texto da semana, por linha. Função pura.
+
+    04/10/2026, item 4 do handover da rotina semanal. Não bloqueia nada — é acompanhamento: sem
+    texto aprovado e publicado de uma linha até a quinta-feira, o painel avisa, e a publicação do
+    site segue. `pacotes` são os nomes dos arquivos em `blog/pacotes/`; `textos` são os posts
+    publicados, com etiqueta e data.
+    """
+    fora = {}
+    for linha, etiqueta in (("legal", "Legal e financiamento"), ("saude", "Saúde")):
+        tem_pacote = any(str(n).endswith(f"_{linha}.json") for n in (pacotes or []))
+        posts = [t for t in (textos or []) if (t.get("etiqueta") or "") == etiqueta]
+        fora[linha] = {"pacote": "pronto" if tem_pacote else "atrasado",
+                       "texto": "publicado" if posts else "sem texto",
+                       "ultimo": (posts[0].get("data") if posts else None)}
+    return fora
+
+
 def noite_abriu(linhas: list, noite: str) -> bool:
     """A noite abriu, isto é: o elo de abertura tem linha nesta noite? Função pura."""
     return any(l.get("noite") == noite and l.get("elo") == ELOS[0] for l in (linhas or []))
@@ -161,6 +179,16 @@ def _autoteste() -> int:
     ok("noite só com elos posteriores NÃO abriu",
        not noite_abriu([{"noite": "n", "elo": "juiz"}], "n"))
     ok("painel vazio não diz que abriu", not noite_abriu([], "n"))
+
+    eb = estado_do_blog(["2026-10-03_legal.json"],
+                        [{"etiqueta": "Legal e financiamento", "data": "2026-10-04"}],
+                        "2026-10-04")
+    ok("pacote presente é 'pronto'", eb["legal"]["pacote"] == "pronto")
+    ok("pacote ausente é 'atrasado'", eb["saude"]["pacote"] == "atrasado")
+    ok("texto publicado aparece com a data", eb["legal"]["ultimo"] == "2026-10-04")
+    ok("linha sem texto é nomeada, não zerada", eb["saude"]["texto"] == "sem texto")
+    ok("a linha do blog não bloqueia nada: ela só descreve",
+       set(eb) == {"legal", "saude"})
     ok("a governança diz por que o painel existe", "não rodou" in GOV or "NÃO rodou" in GOV)
 
     import dis
@@ -175,7 +203,7 @@ def _autoteste() -> int:
        not ({"gravar", "gravar_em", "write_text"} & nomes))
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
-          else "✓ AUTOTESTE OK — 24 casos, sem rede e sem escrita.")
+          else "✓ AUTOTESTE OK — 29 casos, sem rede e sem escrita.")
     return 1 if falhas else 0
 
 

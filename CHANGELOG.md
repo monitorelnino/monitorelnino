@@ -9,12 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-04 · #551 · O primeiro texto do blog no ar, e o tipo de evento pela COBRADE
+## 2026-10-04 · #551 · O primeiro texto no ar e a rotina semanal do blog
 
-O texto aprovado não ia ao ar: `postos_aprovados()` nunca era chamada, a pasta de posts havia sido
-apagada e o cabeçalho exigido era outro. Números conferidos contra o dado do dia — 59
-reconhecimentos, 29 no Sul, 22 no Nordeste, 16 sem tipo — todos batem. E `tipo_evento` passa a vir
-da COBRADE: a gravação lia só a causa, e granizo agora é tempestade.
+O texto aprovado não ia ao ar: a porta do fluxo editorial nunca era chamada. Números conferidos
+contra o dado do dia — 59 reconhecimentos, 29 no Sul, 22 no Nordeste, 16 sem tipo. `tipo_evento`
+passa a vir da COBRADE, com granizo em tempestade. E entra a rotina: `gerar_pacote_blog.py`, o
+verificador que exige número do pacote, dois cartões de texto no blog e "Textos desta semana" na
+Imprensa.
 
 ## 2026-10-04 · #550 · Coleta de alerta vencida não impede a publicação
 

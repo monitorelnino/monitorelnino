@@ -230,6 +230,43 @@
       "fonte e data no fim",
       "ligação para a página do Monitor onde o dado vive",
       "nos textos de saúde, a frase de parcialidade e a de que o dado não indica relação com o El Niño"
-    ]
+    ],
+    "etiquetas": [
+      "Legal e financiamento",
+      "Saúde",
+      "Acontecimento"
+    ],
+    "palavras_do_corpo_proibidas": [
+      "desastre",
+      "pago",
+      "pagos",
+      "pagamento",
+      "apenas",
+      "graças a",
+      "obrigatório",
+      "deve",
+      "dever"
+    ],
+    "_nota_palavras": "Vocabulário proibido pelo guia de redação da central (04/10/2026), verificado por scripts/verificar_texto_blog.py no corpo do texto, FORA de citação entre aspas — citar a lei é permitido, escrever no nosso nome não. 'pago' sai em favor de 'desembolsado'; 'deve' e 'obrigatório' saem porque o site não diz ao leitor o que fazer.",
+    "palavras_de_corpo_que_exigem_explicacao": [
+      "reconhecimento",
+      "homologação",
+      "decreto",
+      "aviso",
+      "alerta",
+      "semana epidemiológica",
+      "faixa esperada",
+      "S2iD",
+      "Sinan"
+    ],
+    "frases_obrigatorias_de_saude": [
+      "as semanas mais recentes são parciais e sobem com notificações atrasadas",
+      "os números não indicam relação com o El Niño"
+    ],
+    "palavras_por_texto": {
+      "minimo": 250,
+      "maximo": 450
+    },
+    "numero_so_do_pacote": "Todo número e toda data do corpo tem de estar em `numeros_permitidos` do pacote da semana. Número fora do pacote reprova o texto — e, se o texto estiver certo, é o PACOTE que está incompleto: corrige-se o gerador, nunca o texto."
   }
 }

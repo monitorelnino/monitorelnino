@@ -290,6 +290,24 @@ corrido, sem tópicos, sem listas e sem cartões no meio do texto**. Escrito por
 redige, a editoria aprova, e o Code publica só o que estiver em `robo-registro/blog/` com
 `aprovado: sim`. Nada gerado automaticamente vai ao ar como texto do blog.
 
+## Blog: pacote, aprovação e verificador (editoria, 04/10/2026)
+
+**Texto do blog só existe com três coisas: pacote da semana, aprovação da editoria e verificador
+verde.** Dois textos por semana, em prosa — *Legal e financiamento* (pacote de domingo, texto na
+segunda) e *Saúde* (pacote de quarta, texto na quinta); *Acontecimento* só quando algo grande
+ocorrer. A etiqueta *Boletim* saiu.
+
+- **O Code não escreve, não edita e não aprova texto do blog.** `robo-registro/blog/*.md` é
+  território da central; o guia dela é `blog/GUIA_DE_REDACAO.md`, que o Code não edita.
+- **`gerar_pacote_blog.py`** produz o pacote da semana em `robo-registro/blog/pacotes/`: só
+  contagens, somas, listas alfabéticas, datas e documentos, cada fato com fonte, URL e data de
+  consulta. Nenhum ranking, nenhuma razão entre números. Dado com mais de nove dias vira lacuna
+  declarada, não fato.
+- **`scripts/verificar_texto_blog.py`** roda antes de publicar: todo número e toda data do corpo
+  tem de estar no pacote. Texto reprovado **não vai ao ar e não bloqueia o site**. Se o texto está
+  certo e o número não está no pacote, **o pacote está incompleto** — corrige-se o gerador, nunca
+  o texto.
+
 ## Regras editoriais que o código não pode violar
 
 - Nunca inventar dado. Ausência é "lacuna declarada", com fonte.

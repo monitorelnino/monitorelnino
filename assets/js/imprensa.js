@@ -7,28 +7,30 @@ const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt
    números" SAÍRAM da Imprensa. O que muda toda semana vive no boletim do blog, escrito pela
    editoria; aqui fica o PONTEIRO — a data da edição, três números congelados nela e o caminho.
    O motor da semana continua existindo: é dele que o boletim tira os números. */
-(function ponteiroDoBoletim(){
-  const alvo = document.getElementById('boletimNumeros');
+/* 04/10/2026 (handover da rotina semanal): o ponteiro do boletim vira o ponteiro dos TEXTOS. Dois
+   links, título e data, um por linha da rotina. Sem número: o que muda toda semana é o texto, e
+   número repetido aqui seria uma terceira cópia a conferir. */
+(function ponteiroDosTextos(){
+  const alvo = document.getElementById('textosDaSemana');
   if (!alvo) return;
-  Promise.all([
-    fetch('data/blog/boletim_mais_recente.json').then(r => r.ok ? r.json() : null).catch(() => null),
-    fetch('data/blog/posts.json').then(r => r.ok ? r.json() : null).catch(() => null),
-  ]).then(([boletim, posts]) => {
-    const secao = document.getElementById('boletim');
-    const lista = Array.isArray(posts) ? posts : ((posts || {}).posts || []);
-    const ed = lista.filter(p => (p.etiqueta || '') === 'Boletim')[0];
-    if (!boletim || !(boletim.numeros || []).length) { if (secao) secao.hidden = true; return; }
-    const data = document.getElementById('boletimData');
-    if (data) data.textContent = 'Edição de ' + (boletim.edicao || '');
-    const link = document.getElementById('boletimLink');
-    if (link && ed) { link.href = ed.url; link.textContent = 'ler o boletim de ' + (ed.data_br || ''); }
-    else if (link) { link.href = 'blog.html'; link.textContent = 'ver o blog'; }
-    alvo.innerHTML = boletim.numeros.slice(0, 3).map(n =>
-      '<div class="cartao-numero">'
-      + '<p class="cartao-numero-valor">' + esc(n.valor) + '</p>'
-      + '<p class="cartao-numero-rotulo">' + esc(n.rotulo) + '</p>'
-      + '<p class="cartao-numero-fonte">' + esc(n.fonte || '') + '</p></div>').join('');
-  });
+  const LINHAS = ['Legal e financiamento', 'Saúde'];
+  fetch('data/blog/posts.json').then(r => r.ok ? r.json() : null).then(dados => {
+    const lista = Array.isArray(dados) ? dados : ((dados || {}).posts || []);
+    const itens = LINHAS.map(linha => {
+      const p = lista.filter(x => (x.etiqueta || '') === linha)[0];
+      if (!p) return '';
+      return '<li><span class="spec">' + esc(linha) + '</span> '
+        + '<a href="' + esc(p.url) + '">' + esc(p.titulo) + '</a> · ' + esc(p.data_br || '')
+        + '</li>';
+    }).filter(Boolean).join('');
+    /* Sem texto de nenhuma das duas linhas, esconde-se a LISTA, não a seção: o título e o
+       ponteiro "Todos os textos" são permanentes — não dependem de haver texto nesta semana —, e
+       esconder a seção inteira tirava do ar o caminho para o blog. Nada é afirmado no lugar da
+       lista: lista vazia não vira frase. */
+    if (!itens) { alvo.hidden = true; return; }
+    alvo.hidden = false;
+    alvo.innerHTML = itens;
+  }).catch(() => {});
 })();
 
 

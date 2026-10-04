@@ -7,9 +7,10 @@ Fonte de verdade: um arquivo Markdown por texto em blog/posts/, com cabeçalho
     ---
     titulo: Título do texto
     data: 2026-09-22
-    categoria: analise | diario
-    autor: Editoria · Futura Evidence Lab
-    resumo: Uma frase.
+    etiqueta: Legal e financiamento | Saúde | Acontecimento
+    abertura: Uma frase.
+    fontes: De onde vêm os números.
+    aprovado: sim | nao
     ---
 
 Derivados (nunca editados à mão; regenerados pela cadeia canônica — Portão 12):
@@ -56,10 +57,10 @@ BASE_URL = "https://monitorelnino.com.br/"
 # gerador aceita o rótulo porque é ele que o guia de redação manda escrever.
 ETIQUETAS = ("Legal e financiamento", "Saúde", "Acontecimento")
 CATEGORIAS = {"legal e financiamento": "Legal e financiamento", "saude": "Saúde",
-              "saúde": "Saúde", "acontecimento": "Acontecimento",
-              # `boletim` continua reconhecido para não quebrar texto antigo; o rótulo que ele
-              # recebe é o da etiqueta geral, porque a etiqueta Boletim saiu do site.
-              "boletim": "Acontecimento"}
+              "saúde": "Saúde", "acontecimento": "Acontecimento"}
+# `Boletim` NÃO entra: o handover de 04/10 a retirou, e não há texto antigo com ela — o único post
+# publicado é o de 04/10, com etiqueta Acontecimento. Aceitá-la "por compatibilidade" deixaria a
+# etiqueta revogada voltar por hábito, que é o que a lista de etiquetas existe para barrar.
 # A central entrega o texto aprovado no repositório privado; o Code publica só o que tiver a marca.
 # Nada gerado automaticamente vai ao ar como texto do blog.
 DIR_APROVADOS = pathlib.Path(
@@ -313,9 +314,10 @@ def main(argv: list[str]) -> int:
 
 def autoteste() -> int:
     import tempfile
-    # 03/10/2026: etiquetas novas (boletim | acontecimento) e `aprovado: sim` obrigatório.
-    md = ("---\ntitulo: Teste <b>\ndata: 2026-01-02\ncategoria: acontecimento\n"
-          "autor: Editoria\nresumo: Frase.\naprovado: sim\n---\n\n# Sub\n\nTexto **forte**.\n")
+    # 04/10/2026: o cabeçalho é o do guia de redação da central — etiqueta e abertura, não
+    # categoria, autor e resumo. A fixture usava o cabeçalho antigo e reprovava o próprio gerador.
+    md = ("---\ntitulo: Teste <b>\ndata: 2026-01-02\netiqueta: Acontecimento\n"
+          "abertura: Frase.\nfontes: Fonte.\naprovado: sim\n---\n\n# Sub\n\nTexto **forte**.\n")
     with tempfile.TemporaryDirectory() as d:
         p = Path(d) / "2026-01-02-teste.md"; p.write_text(md, encoding="utf-8", newline="\n")
         post = ler_post(p)
@@ -328,7 +330,7 @@ def autoteste() -> int:
         # texto sem aprovação da editoria não vai ao ar, e o corpo é prosa — sem listas.
         ruins = [
             ("---\ntitulo: x\n---\n\ncorpo", "sem data"),
-            (md.replace("acontecimento", "outra"), "categoria inválida"),
+            (md.replace("Acontecimento", "Boletim"), "etiqueta inválida"),
             (md.replace("2026-01-02", "02/01/2026"), "data fora do formato"),
             (md.replace("aprovado: sim", "aprovado: nao"), "texto não aprovado"),
             (md.replace("\naprovado: sim", ""), "texto sem marca de aprovação"),

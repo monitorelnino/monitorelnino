@@ -1,5 +1,5 @@
 {
-  "_governanca": "Contrato do MODELO DE POST do blog (handover de 03/10/2026). Ele vale para todo texto: título · abertura de uma frase · etiqueta e data · 'Editoria do MARÉ' · corpo em PROSA · fontes numa linha · como citar, com o endereço permanente. A verificação do corpo (sem tópicos, sem listas, sem cartões) é na geração, em gerar_blog.py, porque é lá que o texto se torna página.",
+  "_governanca": "Contrato do MODELO DE POST do blog (rotina semanal, 04/10/2026). Vale para todo texto: título · abertura de uma frase · etiqueta e data · 'Editoria do MARÉ' · corpo em PROSA · fontes numa linha · como citar, com o endereço permanente. A verificação do corpo e dos números é de scripts/verificar_texto_blog.py, que roda ANTES de publicar: todo número do texto tem de estar no pacote da semana, e texto reprovado não vai ao ar sem bloquear o site.",
   "pagina": "blog/<data>-<slug>.html",
   "estrutura": [
     "titulo",
@@ -18,14 +18,16 @@
   },
   "cabecalho_obrigatorio": [
     "titulo",
+    "abertura",
+    "etiqueta",
     "data",
-    "categoria",
-    "autor",
-    "resumo",
-    "aprovado"
+    "fontes",
+    "aprovado",
+    "pacote"
   ],
   "etiquetas": [
-    "Boletim",
+    "Legal e financiamento",
+    "Saúde",
     "Acontecimento"
   ],
   "texto_proibido": [
@@ -39,5 +41,6 @@
   ],
   "_nota_boletim": "No boletim, os cinco grupos de cartões aprovados em 02/10 ficam ACIMA do texto, nunca dentro dele, e os números são os congelados na data da edição.",
   "modelo": true,
-  "_nota_modelo": "Este contrato é um MODELO: ele vale para cada página de texto gerada em `blog/<data>-<slug>.html`, e não para um arquivo chamado `blog-post.html`, que não existe. O portão de conformidade pula contratos de modelo na varredura de páginas; quem cobra o modelo é `gerar_blog.py`, na geração — e é lá que ele tem de ser cobrado, porque é lá que o texto se torna página. Sem esta marca, o portão tentava renderizar uma página inexistente e reprovava pelo fundo transparente do 404."
+  "_nota_modelo": "Este contrato é um MODELO: ele vale para cada página de texto gerada em `blog/<data>-<slug>.html`, e não para um arquivo chamado `blog-post.html`, que não existe. O portão de conformidade pula contratos de modelo na varredura de páginas; quem cobra o modelo é `gerar_blog.py`, na geração — e é lá que ele tem de ser cobrado, porque é lá que o texto se torna página. Sem esta marca, o portão tentava renderizar uma página inexistente e reprovava pelo fundo transparente do 404.",
+  "_nota_pacote": "`pacote` é exigido a partir dos textos da rotina. O primeiro texto aprovado (04/10) foi escrito antes de a rotina existir e é conferido em tudo, menos nisso — exceção declarada em scripts/verificar_texto_blog.py, porque o Code não altera texto aprovado para fazê-lo caber numa regra posterior."
 }
