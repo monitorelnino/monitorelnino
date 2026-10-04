@@ -240,14 +240,14 @@
    "id": "municipios_alerta_cemaden",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob alerta do Cemaden",
-   "valor": 16,
+   "valor": 22,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "03/10/2026 09:56",
+   "referencia": "04/10/2026 07:12",
    "fonte": "Cemaden",
    "url_fonte": "https://www.gov.br/cemaden/pt-br",
-   "consultado_em": "03/10/2026 09:56",
+   "consultado_em": "04/10/2026 07:12",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -260,14 +260,14 @@
    "id": "municipios_aviso_inmet",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob aviso do Inmet",
-   "valor": 2582,
+   "valor": 3093,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "03/10/2026 09:56",
+   "referencia": "04/10/2026 07:12",
    "fonte": "Inmet",
    "url_fonte": "https://portal.inmet.gov.br/",
-   "consultado_em": "03/10/2026 09:56",
+   "consultado_em": "04/10/2026 07:12",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -280,14 +280,14 @@
    "id": "decreto_e_alerta_ao_mesmo_tempo",
    "grupo": "risco_agora",
    "rotulo": "Municípios com decreto de emergência e alerta ao mesmo tempo",
-   "valor": 345,
+   "valor": 295,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "03/10/2026 09:56",
+   "referencia": "04/10/2026 07:12",
    "fonte": "MARÉ (cruzamento das duas consultas)",
    "url_fonte": null,
-   "consultado_em": "03/10/2026 09:56",
+   "consultado_em": "04/10/2026 07:12",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -300,80 +300,96 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 2448,
+   "valor": 7146,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
    "url_fonte": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
-   "consultado_em": "03/10/2026",
+   "consultado_em": "04/10/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "Focos do dia — focos_diario_br_20261003.csv",
+   "nota": "Focos do dia — focos_diario_br_20261004.csv",
    "secundaria": null,
    "lista": [
     {
      "uf": "PA",
-     "valor": 1158
-    },
-    {
-     "uf": "MA",
-     "valor": 439
-    },
-    {
-     "uf": "BA",
-     "valor": 316
+     "valor": 4954
     },
     {
      "uf": "AM",
-     "valor": 186
+     "valor": 575
     },
     {
-     "uf": "MT",
-     "valor": 103
+     "uf": "MA",
+     "valor": 498
     },
     {
      "uf": "RO",
-     "valor": 78
+     "valor": 338
     },
     {
-     "uf": "MG",
-     "valor": 50
+     "uf": "MT",
+     "valor": 294
     },
     {
      "uf": "AP",
-     "valor": 33
+     "valor": 127
+    },
+    {
+     "uf": "TO",
+     "valor": 79
     },
     {
      "uf": "RR",
-     "valor": 25
+     "valor": 67
+    },
+    {
+     "uf": "BA",
+     "valor": 62
     },
     {
      "uf": "PI",
-     "valor": 18
-    },
-    {
-     "uf": "AL",
-     "valor": 14
+     "valor": 58
     },
     {
      "uf": "AC",
-     "valor": 12
+     "valor": 37
+    },
+    {
+     "uf": "MS",
+     "valor": 25
     },
     {
      "uf": "CE",
-     "valor": 11
+     "valor": 10
     },
     {
-     "uf": "RN",
-     "valor": 2
+     "uf": "MG",
+     "valor": 7
     },
     {
-     "uf": "SE",
-     "valor": 2
+     "uf": "GO",
+     "valor": 5
     },
     {
      "uf": "PE",
+     "valor": 5
+    },
+    {
+     "uf": "SP",
+     "valor": 2
+    },
+    {
+     "uf": "AL",
+     "valor": 1
+    },
+    {
+     "uf": "PB",
+     "valor": 1
+    },
+    {
+     "uf": "RN",
      "valor": 1
     }
    ],
@@ -385,18 +401,18 @@
    "id": "temperatura_desvio_capital",
    "grupo": "risco_agora",
    "rotulo": "A maior diferença de temperatura máxima em relação ao normal, em grau Celsius",
-   "valor": 2.9,
+   "valor": 5.0,
    "unidade": "°C",
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "03/10/2026",
+   "referencia": "04/10/2026",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "url_fonte": null,
-   "consultado_em": "03/10/2026",
+   "consultado_em": "04/10/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "máxima prevista de 36.0 °C contra a média de 33.1 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 39.0 °C contra a média de 34.0 °C do mês; 24 capital(is) com normal publicada",
    "secundaria": null,
    "lista": [],
    "pagina_de_origem": "monitor-de-riscos.html"
@@ -405,7 +421,7 @@
    "id": "capitais_ar_ruim_ou_pior",
    "grupo": "risco_agora",
    "rotulo": "Capitais com o ar na faixa ruim ou acima dela",
-   "valor": 12,
+   "valor": 7,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
@@ -423,12 +439,7 @@
     "AM",
     "DF",
     "GO",
-    "MT",
-    "PI",
     "RJ",
-    "RO",
-    "RS",
-    "SC",
     "SP",
     "TO"
    ],
