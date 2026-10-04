@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-04 · #550 · Coleta de alerta vencida não impede a publicação
+
+A publicação das 09:57 UTC morreu no portão de runtime: o arquivo de alertas completou 24h02 e a
+página, pela regra das 24 horas, escreveu "Sem atualização desde…" no lugar dos números — fazendo o
+que devia. O portão cobrava o número em todo caso; agora exige a declaração quando ela existe. A
+trava fica: alerta vencido nunca é apresentado como vigente.
+
 ## 2026-10-04 · #549 · AM e RO: os quatro documentos lidos, e nada sobe nem desce
 
 O juiz leu os planos de AM (estiagem e inundações), o plano operacional de RO e o ofício do CBMRO,

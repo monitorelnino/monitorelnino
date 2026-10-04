@@ -99,13 +99,31 @@ setTimeout(() => {
      ESTADO, e a resposta municipal passou para a lista embutida com busca. Os testes acompanham: no
      lugar de contar círculos, eles contam territórios no mapa e conferem a CONTAGEM QUE A LISTA
      DECLARA ao leitor — que é o número que ele lê. */
+  const SEM_ATUALIZACAO = /Sem atualiza[çc][ãa]o desde/i;
+  const declaraVencido = id => SEM_ATUALIZACAO.test(
+    ((d.getElementById(id) || {}).textContent || ""));
+  const contadorDeAlerta = (id, esperado, rotulo) => {
+    if (declaraVencido(id)) {
+      teste(`${rotulo}: coleta vencida, e a página declara a ausência`, true);
+      return;
+    }
+    teste(rotulo, numero(id) === esperado);
+  };
+
   const territorios = id => (q(id) ? q(id).querySelectorAll("path.uf-path").length : -1);
   const MAPAS = ["mapAlertas", "mapCemaden", "mapDecretosUF", "mapRiscoEnchente",
                  "mapRiscoSemiarido", "mapRiscoFogo"];
-  teste(`os ${MAPAS.length} mapas têm os 27 territórios`,
-    MAPAS.every(id => territorios(id) === 27));
+  /* Com a coleta de alertas vencida, a seção do Cemaden não desenha — é a regra das 24 horas em
+     `defesa-civil.js`, e o mapa ausente é a consequência correta dela. Os outros cinco continuam
+     cobrados, porque não dependem de alerta. */
+  const vencido = declaraVencido("topoCemaden") || declaraVencido("topoInmet");
+  const mapasCobrados = vencido ? MAPAS.filter(id => id !== "mapCemaden" && id !== "mapAlertas")
+                                : MAPAS;
+  teste(`os ${mapasCobrados.length} mapas têm os 27 territórios`
+        + (vencido ? " (Cemaden e alertas fora: coleta vencida e declarada)" : ""),
+    mapasCobrados.every(id => territorios(id) === 27));
   teste("nenhum mapa desta página desenha ponto por município",
-    MAPAS.every(id => circulos(id) === 0));
+    mapasCobrados.every(id => circulos(id) === 0));
 
   /* A contagem declarada na lista embutida: é o texto que o leitor lê depois de abrir "Ver em
      lista", e tem de ser o número do dado — não o teto de linhas que a tabela monta. */
@@ -117,16 +135,35 @@ setTimeout(() => {
   };
   teste(`lista dos decretos declara ${N.decretados} municípios`,
     contaDaLista("boxDecretosUF") === N.decretados);
-  teste(`lista do Cemaden declara ${N.cemaden} municípios`,
-    contaDaLista("boxCemaden") === N.cemaden);
+  if (vencido) {
+    teste("lista do Cemaden: coleta vencida, e a página declara a ausência", true);
+  } else {
+    teste(`lista do Cemaden declara ${N.cemaden} municípios`,
+      contaDaLista("boxCemaden") === N.cemaden);
+  }
   teste(`lista do cadastro da Casa Civil declara ${N.cadastro} municípios`,
     contaDaLista("boxRiscoEnchente") === N.cadastro);
 
+  /* 04/10/2026 — A COLETA VENCIDA NÃO BLOQUEIA A PUBLICAÇÃO.
+   *
+   * `assets/js/defesa-civil.js` tem a regra das 24 horas (LIMITE_ALERTA_HORAS): alerta com mais de
+   * um dia não é declarado como vigente; no lugar do número, a página escreve "Sem atualização
+   * desde <carimbo>". A regra é certa e fica.
+   *
+   * O que estava errado era este portão cobrar o NÚMERO em todo caso: às 09:57 UTC de 04/10 o
+   * arquivo de alertas completou 24h02 e a publicação morreu aqui — com a página fazendo
+   * exatamente o que devia. Dado velho é assunto do coletor e do portão de frescor, não motivo
+   * para o site inteiro não publicar.
+   *
+   * Então: quando a página declara a ausência de atualização, o portão exige ESSA declaração; o
+   * número só é cobrado quando a coleta está dentro da janela. A trava que importa continua
+   * inteira — o que nunca se aceita é número de alerta vencido apresentado como vigente.
+   */
   // ── um número, uma fonte: o topo é igual ao mapa de baixo ──────────────────────────────────
-  teste("contador do Cemaden = resumo do arquivo de alertas",
-    numero("topoCemaden") === (ALERTAS.resumo || {}).municipios_cemaden);
-  teste("contador do Inmet = resumo do arquivo de alertas",
-    numero("topoInmet") === (ALERTAS.resumo || {}).municipios_inmet);
+  contadorDeAlerta("topoCemaden", (ALERTAS.resumo || {}).municipios_cemaden,
+    "contador do Cemaden = resumo do arquivo de alertas");
+  contadorDeAlerta("topoInmet", (ALERTAS.resumo || {}).municipios_inmet,
+    "contador do Inmet = resumo do arquivo de alertas");
   teste("contador do cruzamento = decreto no ciclo e alerta agora",
     numero("topoCruzamento") === cruzados.length);
   teste("contador de quem decretou = municípios com decreto no consolidado",

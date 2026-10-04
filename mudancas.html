@@ -49,6 +49,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>04/10/2026 · Coleta de alerta vencida não impede a publicação</dt>
+      <dd>A publicação das 09:57 UTC morreu no portão de runtime: o arquivo de alertas completou 24h02 e a página, pela regra das 24 horas, escreveu &quot;Sem atualização desde…&quot; no lugar dos números — fazendo o que devia. O portão cobrava o número em todo caso; agora exige a declaração quando ela existe. A trava fica: alerta vencido nunca é apresentado como vigente.</dd>
       <dt>04/10/2026 · AM e RO: os quatro documentos lidos, e nada sobe nem desce</dt>
       <dd>O juiz leu os planos de AM (estiagem e inundações), o plano operacional de RO e o ofício do CBMRO, com a proveniência de LAI que a etapa 0 passa a aceitar — órgão, data e hash. Os quatro recusam, cada um com seu motivo, e entram como documentos do estado, sem alterar os índices. As 30 respostas das COMPDECs viram nota e busca dirigida: 27 declaram plano, 3 não; nada pontua.</dd>
       <dt>04/10/2026 · O `git add` do publicador ignorava tudo porque `blog/` não existe mais</dt>
@@ -167,8 +169,6 @@
       <dd>Telefones em quatro cartões no topo, &quot;Leve com você&quot; com botões de verdade, e as fichas viram abas: uma por vez, com teclado, e todas empilhadas quando não há JS. O calor ganha ficha própria, com orientação do Ministério da Saúde, fonte e data; a de seca fica só com estiagem. Saem o sobretítulo e dois textos que prometiam o que a página não entrega mais.</dd>
       <dt>30/09/2026 · Uma atmosfera por família de risco nos mapas</dt>
       <dd>Cada família ganha fundo, rampa e marca próprios: fogo noturno com brasa em mescla screen, seca em papel ressecado, chuva em ardósia pelo maior grau de aviso, calor e ar em fundo claro com o estado nunca pintado e anel vazio na capital sem dado. Malha de coordenadas de 5° sutil. Portão novo confere contraste e daltonismo das rampas; a brasa mais escura subiu para passar.</dd>
-      <dt>30/09/2026 · Certificação dos coletores: cadência declarada, corrente noturna e dois erros corrigidos</dt>
-      <dd>O cron do GitHub atrasava e descartava; a noite passa a ser uma corrente — um disparo às 00:05 UTC e cada elo acionado pelo término do anterior, rodando mesmo se ele falhou. Busca web: cinco rodadas num job. Diários: teto de 240 min e lotes de 50. `docs/CADENCIAS.md` declara a cadência de cada coletor e um portão marca atrasado acima de 1,1×. Corrigidos o TLS do Querido Diário e a forma de `municipios.json` no monitor de redes.</dd>
     </dl>
   </section>
 </main>

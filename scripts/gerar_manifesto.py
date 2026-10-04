@@ -56,7 +56,13 @@ FORA = {"gerar_tese.js", "data/transferencias_api_raw.json",   # ferramenta de s
         # E o painel que resume esse relatório, pela mesma razão e por uma segunda: desde o §273 ele é
         # gerado DEPOIS dos portões e ANTES do commit. Selado, ele deixaria o manifesto obsoleto na
         # rodada seguinte — o painel mudaria no commit e o manifesto não acompanharia.
-        "docs/SAUDE_PIPELINE.md"}
+        "docs/SAUDE_PIPELINE.md",
+        # 04/10/2026, mesma razão e a mesma família: `data/painel_da_noite.json` registra os elos
+        # da noite À MEDIDA que eles rodam — e desde 03/10 o próprio publicador grava a linha dele
+        # ali, no passo seguinte aos portões. Selado, ele deixa o manifesto obsoleto a cada
+        # execução: foi o que reprovou o portão 12 no PR #550, com o diagnóstico apontando esta
+        # única linha. Registro de execução não é prova selável; a prova é o dado que ele resume.
+        "data/painel_da_noite.json"}
 
 
 def listar():
