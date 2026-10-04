@@ -1,0 +1,63 @@
+# relogio.yml — o segundo relógio, o da nuvem do Claude
+# ======================================================
+# Este arquivo vive SÓ no ramo `relogio`, que é órfão e tem apenas ele e `tick.txt`.
+#
+# Item 2(b) do `HANDOVER_garantia_dos_temporizadores_04-10-2026.md` (rev. 2), decisão da editoria
+# de 04/10: sem agendador externo e sem criar conta ou token em serviço de terceiros. O segundo
+# relógio é uma rotina (Routine) do próprio Claude Code, na conta da editoria, que roda na nuvem da
+# Anthropic — funciona com o computador desligado.
+#
+# COMO ELE É INDEPENDENTE DO AGENDADOR DO GITHUB
+# ----------------------------------------------
+# A rotina não dispara workflow: ela escreve a hora em `tick.txt` e dá push neste ramo. O push é um
+# EVENTO, não um agendamento — e evento o GitHub entrega. Por isso este workflow é `on: push`, e é
+# ele que chama o despachante. Se o `schedule` do GitHub estiver atrasado ou descartado, este
+# caminho continua inteiro.
+#
+# Um commit só, sobrescrito a cada tique (`push --force`): o ramo não cresce e não toca a `main`.
+# Os workflows que escutam `push` na `main` não são afetados — eles declaram `branches: [main]`.
+name: Relógio da nuvem do Claude
+
+on:
+  push:
+    branches: [relogio]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+  issues: write
+
+concurrency:
+  group: relogio-claude
+  cancel-in-progress: false
+
+jobs:
+  tiquetaquear:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      # O código do despachante vive na `main`; este ramo só carrega o gatilho.
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with: { python-version: "3.12" }
+
+      - name: Despachar o que está devido
+        env:
+          GH_TOKEN: ${{ secrets.ROBO_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/despachar_temporizadores.py --origem relogio-claude | tee /tmp/d.txt
+
+      - name: Resumo
+        if: always()
+        run: |
+          {
+            echo "### Relógio da nuvem do Claude"
+            echo ""
+            echo '```'
+            cat /tmp/d.txt 2>/dev/null || echo "sem saída"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
