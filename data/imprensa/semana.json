@@ -1,9 +1,9 @@
 {
  "_governanca": "Cartões 'Esta semana em números' da página Imprensa. Peso ZERO nos índices. 02/10/2026 (handover do redesenho): a Imprensa NÃO recalcula número que outra página publica — ela lê o instantâneo do topo de cada página (Financiamento, MARÉ Saúde, Defesa civil, Monitor de riscos), e cada cartão declara a sua `pagina_de_origem`. Zero só quando a coleta rodou; sem coleta é `sem_coleta: true`, o cartão SAI da grade e o rótulo entra na linha 'Sem dado nesta edição'. Derivado de gerar_imprensa_semana.py — não se edita à mão.",
- "gerado_em": "2026-10-03",
+ "gerado_em": "2026-10-04",
  "janela_dias": 7,
  "indices": {
-  "edicao": "03/10/2026",
+  "edicao": "04/10/2026",
   "mare_legal": 45.3,
   "mare_saude": 31.8,
   "saude_verificadas": 21,
@@ -17,8 +17,8 @@
    "valor": 0,
    "sem_coleta": false,
    "periodo": {
-    "ini": "2026-09-26",
-    "fim": "2026-10-03"
+    "ini": "2026-09-27",
+    "fim": "2026-10-04"
    },
    "fonte": "Diários oficiais municipais e sítios das prefeituras (via MARÉ)",
    "url_fonte": null,
@@ -46,7 +46,7 @@
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "entre as edições de 2026-10-02 e 2026-10-03, nos dois índices",
+   "nota": "entre as edições de 2026-10-03 e 2026-10-04, nos dois índices",
    "secundaria": null,
    "lista": [],
    "pagina_de_origem": null,
@@ -582,5 +582,5 @@
    "por_que_nao": "depende do campo `escopo` em data/calendario/fontes_suspensas.json, que hoje é nulo nos 38 registros (bloco E do pedido de 27/09, não executado)."
   }
  ],
- "texto_pronto": "Edição de 03/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 45,3 de 100; o MARÉ Saúde, em 31,8 de 100, média dos 21 estados verificados. Na semana, nenhum município publicou plano para o ciclo e 50 municípios decretaram situação de emergência ou calamidade; 926.925 de pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde o início do ciclo, em 29 de junho, 17 de 27 capitais têm plano localizado e 749 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação da Futura Evidence Lab."
+ "texto_pronto": "Edição de 04/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 45,3 de 100; o MARÉ Saúde, em 31,8 de 100, média dos 21 estados verificados. Na semana, nenhum município publicou plano para o ciclo e 50 municípios decretaram situação de emergência ou calamidade; 926.925 de pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde o início do ciclo, em 29 de junho, 17 de 27 capitais têm plano localizado e 749 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação da Futura Evidence Lab."
 }
