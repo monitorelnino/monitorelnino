@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-04 · #547 · O publicador deixa de reprovar a si mesmo
+
+Duas publicações morreram no portão 12 com 49 derivados obsoletos, depois de o passo de commit dizer
+"sem alterações a publicar". O publicador regenerava a cadeia em `--idempotencia`, que mede
+determinismo e não comparação com o git: a árvore ficava igual ao commit anterior, nada era
+commitado e a suíte, depois, achava a diferença. Passa a usar `--regenerar-para-commit`, que só
+regenera; quem compara é a suíte, depois do commit. Em `scripts/verificar_derivados.sh`.
+
 ## 2026-10-04 · #545 · A sobra do Diário Oficial não para a publicação
 
 A publicação da noite de 03→04 falhou duas vezes por 10 sobras de homologação na forma anterior ao
