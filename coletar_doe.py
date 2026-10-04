@@ -478,6 +478,50 @@ def iso_para_br(s: str) -> str:
         return s
 
 
+# 04/10/2026 — A SOBRA DO DOE NASCE NO ESQUEMA.
+#
+# Medido pela central: `Publicar dados` falhou duas vezes na noite de 03→04 (04:51 e 05:16 UTC) no
+# portão `verificar_esquema_de_pista.py`, com "10 pista(s) nova(s) fora do esquema" — e **nenhum dado
+# novo foi publicado**. As dez eram homologações estaduais achadas aqui, gravadas na forma antiga
+# (`municipio`/`uf`/`url`/`trecho`), que é anterior ao `schemas/pista.json` do handover de 03/10.
+#
+# O portão acusou o certo. O que estava errado era a GRAVAÇÃO: o esquema diz, em letra de forma, que
+# "pista sem os campos obrigatórios é RECUSADA NA GRAVAÇÃO" — filtrar na saída não dá conta do que
+# entra errado. Aqui a sobra passa a nascer com os seis campos obrigatórios e com o `destino`
+# declarado, porque ela não é pista de plano e nunca foi: homologação de emergência é ato de
+# RESPOSTA, e o esquema manda a pista de decreto para a conferência da base oficial, não para a fila
+# de planos. O que faltava era dizer isso no dado.
+def sobra_de_homologacao(hm: dict, hash_evidencia: str, hoje: str, cod_ibge=None) -> dict:
+    """A homologação que não virou registro, na forma do esquema. Função pura.
+
+    Entra aqui o que não casou: sem número do decreto municipal, ou município que não casou com a
+    base do IBGE. O `alvo` é o código do município quando ele existe e a UF quando não — "UF" é um
+    alvo legítimo no esquema, e é a verdade do que se sabe: o ato é daquele estado, e o município
+    ainda não foi identificado. `nivel` é A porque a fonte é o Diário Oficial do Estado.
+    """
+    return {
+        "url_final": hm.get("url"),
+        "tipo": "decreto",
+        "alvo": str(cod_ibge or hm.get("uf") or ""),
+        "nivel": "A",
+        "data": hm.get("data") or hoje,
+        "origem": "doe",
+        "registrado_em": hoje,
+        # O destino declarado é o que impede esta sobra de ser lida como pista de plano por quem
+        # vier depois — inclusive pelo portão, que rebaixa a aviso o que está declarado.
+        "destino": "conferencia_resposta",
+        "motivo": hm.get("motivo") or "sem número do decreto ou município não casou com IBGE",
+        "municipio": hm.get("municipio"),
+        "uf": hm.get("uf"),
+        "decreto_estadual": hm.get("decreto_estadual"),
+        "decreto_municipal": hm.get("decreto_municipal"),
+        "trecho": hm.get("trecho"),
+        "pagina": hm.get("pagina"),
+        "paginas": hm.get("paginas"),
+        "hash_evidencia": hash_evidencia,
+    }
+
+
 def coletar_uf(uf: str, desde: str, cfg: dict) -> str:
     por_cod, por_nome = referencia_ibge()
     f = cfg["ufs"][uf]
@@ -581,8 +625,8 @@ def coletar_uf(uf: str, desde: str, cfg: dict) -> str:
     for hm in homol:
         cod = por_nome.get((hm["municipio"], hm["uf"]))
         if not cod or not hm["decreto_municipal"]:
-            pistas["itens"].append({**hm, "motivo": "sem número do decreto ou município não casou com IBGE",
-                                    "hash_evidencia": h, "registrado_em": hoje_editorial().isoformat()}); pist += 1
+            pistas["itens"].append(
+                sobra_de_homologacao(hm, h, hoje_editorial().isoformat(), cod)); pist += 1
             continue
         ref = por_cod[cod]; dbr = iso_para_br(hm["data"])
         chave = (ref["nome"], hm["uf"], dbr, "homologação estadual")

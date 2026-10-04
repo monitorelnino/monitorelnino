@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-04 · #545 · A sobra do Diário Oficial não para a publicação
+
+A publicação da noite de 03→04 falhou duas vezes por 10 sobras de homologação na forma anterior ao
+`schemas/pista.json`, e nenhum dado novo foi ao ar. A gravação em `coletar_doe.py` passa a nascer no
+esquema, com `destino: conferencia_resposta` — homologação é ato de resposta, não pista de plano. O
+portão bloqueia só a fila ativa; o que saiu dela avisa. As 55 sobras migraram sem perda.
+
 ## 2026-10-04 · #544 · A noite abre mesmo quando o cron não dispara
 
 Duas noites seguidas não abriram: o cron de 01:00 UTC não disparou (1h40 de atraso em 04/10, 5h30 em

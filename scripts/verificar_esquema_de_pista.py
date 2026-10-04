@@ -52,8 +52,35 @@ def ler_esquema(caminho=ESQUEMA) -> dict:
         return {}
 
 
-def problemas_de_esquema(pistas: list, esquema: dict, vale_a_partir_de=VALE_A_PARTIR_DE) -> list:
-    """As pistas novas que não cumprem o esquema. Função pura."""
+# 04/10/2026 — O QUE BLOQUEIA E O QUE AVISA.
+#
+# Medido pela central: a publicação da noite de 03→04 falhou duas vezes por 10 pistas fora do
+# esquema, e **nenhum dado novo foi ao ar**. O portão acusou o certo — pista malformada não pode
+# entrar —, mas parar o site inteiro por dez sobras de Diário Oficial é desproporcional, e a
+# editoria mandou rebaixar.
+#
+# A linha nova é esta: pista que está na FILA ATIVA (vai ao juiz, pode virar registro) e está fora do
+# esquema **bloqueia**; pista já tirada da fila — em quarentena, ou com `destino` declarado para
+# outro lugar, como a conferência da base de resposta — **avisa**. A diferença é de consequência: a
+# primeira pode entrar no índice errada, a segunda já não vai a lugar nenhum sem alguém olhar.
+DESTINOS_FORA_DA_FILA = ("conferencia_resposta", "quarentena", "rejeitada")
+
+
+def fora_da_fila_ativa(pista: dict) -> bool:
+    """A pista já foi tirada da fila ativa, e portanto não pode virar registro? Função pura."""
+    p = pista or {}
+    if p.get("quarentena") or p.get("rejeitada"):
+        return True
+    return str(p.get("destino") or "") in DESTINOS_FORA_DA_FILA
+
+
+def problemas_de_esquema(pistas: list, esquema: dict, vale_a_partir_de=VALE_A_PARTIR_DE,
+                         so_fila_ativa: bool = False) -> list:
+    """As pistas novas que não cumprem o esquema. Função pura.
+
+    Com `so_fila_ativa=True`, ignora o que já saiu da fila: é a lista que BLOQUEIA. Sem o
+    parâmetro, devolve tudo — é a lista que vira aviso no painel.
+    """
     obrigatorios = list((esquema.get("obrigatorios") or {}).keys())
     tipos = set(esquema.get("tipos_validos") or [])
     niveis = set(esquema.get("niveis_validos") or [])
@@ -65,6 +92,8 @@ def problemas_de_esquema(pistas: list, esquema: dict, vale_a_partir_de=VALE_A_PA
         # antigas cuja notícia tinha data recente — vermelho em quem a regra não alcança.
         registrado = str(p.get("registrado_em") or "")[:10]
         if not registrado or registrado < vale_a_partir_de:
+            continue
+        if so_fila_ativa and fora_da_fila_ativa(p):
             continue
         ident = str(p.get("id") or p.get("url_final") or p.get("url") or "?")[:12]
         faltam = [c for c in obrigatorios if not p.get(c)]
@@ -210,7 +239,12 @@ def main() -> int:
         if not doc:
             continue
         pistas = doc.get("pistas") or doc.get("itens") or []
-        ruins += [f"{nome}: {x}" for x in problemas_de_esquema(pistas, esquema)]
+        ruins += [f"{nome}: {x}" for x in problemas_de_esquema(pistas, esquema, so_fila_ativa=True)]
+        declaradas = [x for x in problemas_de_esquema(pistas, esquema)
+                      if x not in problemas_de_esquema(pistas, esquema, so_fila_ativa=True)]
+        if declaradas:
+            alertas.append(f"{nome}: {len(declaradas)} pista(s) fora do esquema já tirada(s) da "
+                           f"fila (conferência ou quarentena) — não bloqueia, mas fica visível")
         if nome == "pistas_imprensa.json":
             s = saude_da_fila(pistas, (ler("saude_da_fila.json") or {}).get("rodadas") or [], hoje)
             print(f"fila de planos: {s['tamanho']} aberta(s) · idade mediana "
@@ -224,7 +258,7 @@ def main() -> int:
         for r in ruins[:20]:
             print("   - " + r)
         return 1
-    print(f"✓ ESQUEMA DA PISTA OK — nenhuma pista nova fora de schemas/pista.json"
+    print(f"✓ ESQUEMA DA PISTA OK — nenhuma pista nova DA FILA ATIVA fora de schemas/pista.json"
           + (f"; {len(alertas)} alerta(s) de saúde da fila" if alertas else ""))
     return 0
 
