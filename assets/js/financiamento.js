@@ -1068,49 +1068,168 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       + ' municípios não havia sido publicada pelo estado.';
   }).catch(() => {});
 
-  /* 7b · O diagrama dos caminhos: estrutura, não série. Cada grupo é uma coluna de rótulo de
-   * leitor, e cada via um retângulo com o que ela exige. Sem valor nenhum no desenho: valor por
-   * via não existe no dado, e desenhar largura por valor inventaria o que não foi medido. */
+  /* 7b · A FIGURA DOS CAMINHOS, LARGA (04/10/2026, item 7 aprovado pela editoria).
+   *
+   * Ela estava num cartão de 1/3 da largura: um SVG de 960 de largura espremido a 327 px, sem as
+   * curvas, ilegível. Volta o desenho de 01/10 — União e Estado à esquerda, os oito caminhos em
+   * barras no centro, o município à direita, ligados por curvas — agora na largura inteira da
+   * coluna, dentro do rodapé recolhido.
+   *
+   * O que o desenho NÃO faz: largura por valor. Valor por caminho não existe no dado, e desenhar
+   * espessura proporcional inventaria o que não foi medido. A espessura distingue TIPO de caminho,
+   * não quantia.
+   *
+   * Os rótulos são os literais aprovados pela editoria; o `id` de cada caminho vem do dado
+   * (`data/financiamento/caminhos.json`), e é por ele que rótulo e ordem se amarram — texto
+   * aprovado não se escreve duas vezes, e número de caminho não se digita à mão.
+   */
+  const ROTULO_DO_CAMINHO = {
+    r1: '1 · Repartição constitucional — todo mês, por regra',
+    r2: '2 · Fundo a fundo (SUS e assistência social) — todo mês, por regra',
+    r3: '3 · Defesa civil federal — resposta depois do decreto de emergência; prevenção por projeto aprovado',
+    r4: '4 · Emergência em saúde — depois do decreto de emergência',
+    r5: '5 · Voluntárias e emendas com finalidade — por decisão do governo ou emenda',
+    r6: '6 · Transferências especiais — por emenda parlamentar',
+    r7: '7 · Execução direta da União — direto às pessoas e às obras',
+    rE: '8 · Do estado — quando o estado repassa, como o Prepara RS',
+  };
+  /* O tipo de linha vem do GRUPO declarado no dado, não de uma segunda lista: contínua para o que
+     chega por regra, tracejada para o que o decreto abre, pontilhada para o que depende de decisão
+     ou emenda, dupla para o que vai direto às pessoas e às obras. */
+  const TRACO_DO_GRUPO = {
+    'todo mês, por regra': {dash: null, largura: 3, nome: 'contínua: todo mês, por regra'},
+    'depois do decreto de emergência': {dash: '9,5', largura: 3,
+      nome: 'tracejada: depois do decreto de emergência'},
+    'por decisão do governo ou emenda': {dash: '2,4', largura: 3,
+      nome: 'pontilhada: por decisão do governo ou emenda'},
+    'direto às pessoas e às obras': {dash: null, largura: 6, dupla: true,
+      nome: 'dupla: direto às pessoas e às obras'},
+    'do estado': {dash: null, largura: 3, nome: 'contínua: todo mês, por regra'},
+  };
+
   fetch('data/financiamento/caminhos.json').then(r => r.ok ? r.json() : null).then(C => {
     const svg = el('svgCaminhos');
     if (!svg || !C || !window.MonitorMapas) return;
     const vias = C.vias || [];
-    const grupos = C.grupos || [];
     if (!vias.length) {
-      MonitorMapas.legenda('legCaminhos', [{cor: MonitorMapas.NEUTRA, rotulo: 'vias sem coleta até o corte'}]);
+      MonitorMapas.legenda('legCaminhos', [{cor: MonitorMapas.NEUTRA,
+                                            rotulo: 'caminhos sem coleta até o corte'}]);
       return;
     }
     const cores = MonitorMapas.PALETA.ordinal4 || [];
-    const corDoGrupo = g => cores[Math.max(0, grupos.indexOf(g)) % Math.max(1, cores.length)]
+    const grupos = C.grupos || [];
+    const corDe = v => cores[Math.max(0, grupos.indexOf(v.grupo)) % Math.max(1, cores.length)]
       || MonitorMapas.NEUTRA;
-    const L = 960, alturaLinha = 34, margem = {t: 30, l: 14, r: 14};
-    let y = margem.t;
+    const tracoDe = v => TRACO_DO_GRUPO[v.grupo] || {dash: null, largura: 3, nome: v.grupo};
+
+    const L = 960, A = 30 + vias.length * 44 + 40;
+    const xOrigem = 112, xBarra = 330, larguraBarra = 380, xMunicipio = 862;
+    const yUniao = 90, yEstado = A - 90;
+    const passo = (A - 70) / vias.length;
+    const posicao = vias.map((v, i) => ({...v, y: 44 + passo * i + passo / 2}));
     const partes = [];
-    grupos.forEach(g => {
-      const doGrupo = vias.filter(v => v.grupo === g);
-      if (!doGrupo.length) return;
-      partes.push('<text x="' + margem.l + '" y="' + y + '" class="diag-grupo">' + esc(g) + '</text>');
-      y += 10;
-      doGrupo.forEach(v => {
-        partes.push('<rect x="' + margem.l + '" y="' + y + '" width="' + (L - margem.l - margem.r)
-          + '" height="' + (alturaLinha - 8) + '" rx="4" fill="' + corDoGrupo(g) + '" fill-opacity="0.18"'
-          + ' stroke="' + corDoGrupo(g) + '"></rect>');
-        partes.push('<text x="' + (margem.l + 10) + '" y="' + (y + 17) + '" class="diag-via">'
-          + esc(v.nome) + (v.exige ? ' — exige ' + esc(v.exige) : '') + '</text>');
-        y += alturaLinha;
-      });
-      y += 8;
+
+    /* As curvas: cada caminho sai da sua origem (a União, ou o Estado no caminho estadual) e
+       chega ao município. Curva de Bézier com os pontos de controle no meio do vão — o mesmo
+       traçado de 01/10. */
+    const curva = (x1, y1, x2, y2) =>
+      'M' + x1 + ',' + y1 + ' C' + ((x1 + x2) / 2) + ',' + y1 + ' '
+      + ((x1 + x2) / 2) + ',' + y2 + ' ' + x2 + ',' + y2;
+
+    posicao.forEach(v => {
+      const t = tracoDe(v), cor = corDe(v);
+      const yOrigem = v.id === 'rE' ? yEstado : yUniao;
+      const dash = t.dash ? ' stroke-dasharray="' + t.dash + '"' : '';
+      // origem → barra
+      partes.push('<path d="' + curva(xOrigem + 86, yOrigem, xBarra - 6, v.y) + '" fill="none"'
+        + ' stroke="' + cor + '" stroke-width="' + t.largura + '" stroke-opacity="0.85"' + dash
+        + '></path>');
+      // barra → município
+      partes.push('<path d="' + curva(xBarra + larguraBarra + 6, v.y, xMunicipio - 62, A / 2)
+        + '" fill="none" stroke="' + cor + '" stroke-width="' + t.largura + '"'
+        + ' stroke-opacity="0.85"' + dash + '></path>');
+      if (t.dupla) {
+        // a linha DUPLA: uma segunda linha branca por dentro, que é o que a torna dupla à vista
+        partes.push('<path d="' + curva(xOrigem + 86, yOrigem, xBarra - 6, v.y)
+          + '" fill="none" stroke="' + MonitorMapas.cor('branco') + '" stroke-width="2"></path>');
+        partes.push('<path d="' + curva(xBarra + larguraBarra + 6, v.y, xMunicipio - 62, A / 2)
+          + '" fill="none" stroke="' + MonitorMapas.cor('branco') + '" stroke-width="2"></path>');
+      }
     });
-    svg.setAttribute('viewBox', '0 0 ' + L + ' ' + (y + 10));
+
+    /* As linhas verticais: o que a União repassa ao estado. Feixe curto entre os dois nós, na cor
+       de cada caminho que alcança o estado — é a terceira informação do desenho, e sem ela o
+       estado pareceria uma origem independente. */
+    posicao.filter(v => v.id !== 'rE').forEach((v, i) => {
+      const x = xOrigem - 40 + i * 12;
+      partes.push('<path d="M' + x + ',' + (yUniao + 26) + ' L' + x + ',' + (yEstado - 26)
+        + '" fill="none" stroke="' + corDe(v) + '" stroke-width="2" stroke-opacity="0.55"></path>');
+    });
+
+    const caixa = (x, y, w, h, titulo, sub) => {
+      partes.push('<rect x="' + (x - w / 2) + '" y="' + (y - h / 2) + '" width="' + w
+        + '" height="' + h + '" rx="8" fill="' + MonitorMapas.cor('abissal') + '"></rect>');
+      partes.push('<text x="' + x + '" y="' + (y - (sub ? 5 : 0)) + '" text-anchor="middle"'
+        + ' dominant-baseline="middle" class="diag-caixa">' + esc(titulo) + '</text>');
+      if (sub) {
+        partes.push('<text x="' + x + '" y="' + (y + 12) + '" text-anchor="middle"'
+          + ' dominant-baseline="middle" class="diag-caixa-sub">' + esc(sub) + '</text>');
+      }
+    };
+    caixa(xOrigem, yUniao, 172, 48, 'União', 'origem federal');
+    caixa(xOrigem, yEstado, 172, 48, 'Estado', 'recebe e repassa');
+    caixa(xMunicipio, A / 2, 124, 46, 'Município', null);
+
+    posicao.forEach(v => {
+      const cor = corDe(v);
+      const h = Math.max(26, passo - 10);
+      partes.push('<rect x="' + xBarra + '" y="' + (v.y - h / 2) + '" width="' + larguraBarra
+        + '" height="' + h + '" rx="5" fill="' + cor + '" fill-opacity="0.2" stroke="' + cor
+        + '"></rect>');
+      partes.push('<text x="' + (xBarra + 12) + '" y="' + (v.y + 1) + '"'
+        + ' dominant-baseline="middle" class="diag-via">'
+        + esc(ROTULO_DO_CAMINHO[v.id] || v.nome) + '</text>');
+    });
+
+    svg.setAttribute('viewBox', '0 0 ' + L + ' ' + A);
     svg.innerHTML = partes.join('');
-    MonitorMapas.legenda('legCaminhos', grupos.map(g => ({cor: corDoGrupo(g), rotulo: g})));
-    MonitorMapas.credito('boxCaminhos', {fontes: ['leis e atos citados em cada via (via MARÉ)'],
-                                         data: C.revisado_em});
-    if (el('linhaCaminhos')) el('linhaCaminhos').textContent = vias.length + ' vias declaradas';
+
+    /* Em tela pequena o desenho encolhido não se lê. A lista vertical tem a mesma cor e uma
+       amostra do traço de cada caminho — e é a figura, não um resumo dela. O CSS troca uma pela
+       outra; as duas saem do mesmo dado. */
+    if (el('linhaCaminhos')) {
+      el('linhaCaminhos').textContent = vias.length + ' caminhos declarados';
+    }
+
+    const lista = el('listaCaminhos');
+    if (lista) {
+      lista.innerHTML = posicao.map(v => {
+        const t = tracoDe(v), cor = corDe(v);
+        const amostra = '<svg class="caminhos-traco" viewBox="0 0 40 10" aria-hidden="true">'
+          + '<path d="M0,5 L40,5" stroke="' + cor + '" stroke-width="' + t.largura + '"'
+          + (t.dash ? ' stroke-dasharray="' + t.dash + '"' : '') + '></path>'
+          + (t.dupla ? '<path d="M0,5 L40,5" stroke="' + MonitorMapas.cor('branco') + '" stroke-width="2"></path>' : '')
+          + '</svg>';
+        return '<li>' + amostra + '<span>' + esc(ROTULO_DO_CAMINHO[v.id] || v.nome)
+          + '</span></li>';
+      }).join('');
+    }
+
+    const vistos = [];
+    posicao.forEach(v => {
+      const t = tracoDe(v);
+      if (!vistos.some(x => x.rotulo === t.nome)) vistos.push({cor: corDe(v), rotulo: t.nome});
+    });
+    vistos.push({cor: MonitorMapas.cor('abissal'),
+                 rotulo: 'linhas verticais: o que a União repassa ao estado'});
+    MonitorMapas.legenda('legCaminhos', vistos);
+    MonitorMapas.credito('boxCaminhos', {
+      fontes: ["as leis e os atos que criam cada caminho, um a um em 'Ver em lista'"],
+      data: C.revisado_em});
     if (el('dlCaminhos')) {
-      el('dlCaminhos').innerHTML = vias.map(v => '<dt>' + esc(v.nome) + '</dt><dd>' + esc(v.grupo)
-        + (v.exige ? ' · exige ' + esc(v.exige) : '')
-        + (v.base_legal ? ' · ' + esc(v.base_legal) : '') + '</dd>').join('');
+      el('dlCaminhos').innerHTML = vias.map(v => '<dt>' + esc(ROTULO_DO_CAMINHO[v.id] || v.nome)
+        + '</dt><dd>' + esc(v.base_legal || 'base legal não localizada até o corte')
+        + (v.exige ? ' · abre com: ' + esc(v.exige) : '') + '</dd>').join('');
     }
   }).catch(() => {});
 

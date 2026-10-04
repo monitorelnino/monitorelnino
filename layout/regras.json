@@ -110,7 +110,18 @@
     "_nota_fracao": "Um terço com folga de arredondamento e de gap da grade. Cartão que passa disso no desktop ocupa o lugar de dois e quebra o ritmo da página.",
     "secao_sem_caixa": true,
     "secao_sem_numeracao": true,
-    "ultima_linha_pode_ser_incompleta": true
+    "ultima_linha_pode_ser_incompleta": true,
+    "figura_larga": {
+      "classe": "cartao-mapa--largo",
+      "quando": "Só para DIAGRAMA, e no máximo UMA por página. Um diagrama de 960 de largura num cartão de um terço da coluna não é um diagrama menor: é um diagrama ilegível — a figura dos caminhos do dinheiro passou três dias assim, sem as curvas, espremida a 327 px. Mapa, gráfico de série e cartão de número NÃO usam esta variante: eles se leem na grade de três, e largura total neles é desperdício de coluna.",
+      "exige": [
+        "grid-column: 1 / -1",
+        "svg com width:100% e height:auto",
+        "alternativa em lista vertical abaixo de 640 px"
+      ],
+      "registrado_em": "2026-10-04",
+      "decidido_por": "editoria (item 7 do handover dos temporizadores)"
+    }
   },
   "figura": {
     "fonte": "AI_EDITORIAL_NARRATIVE_GOVERNANCE.md §11 a §14",

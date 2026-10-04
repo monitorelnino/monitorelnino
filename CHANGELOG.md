@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-04 · #553 · Nada depende de um único relógio, e a figura dos caminhos volta grande
+
+A abertura da noite falhou três vezes em cinco dias. Entram o registro dos temporizadores com portão
+bloqueante, um despachante que dispara o que está devido e quatro observadores independentes —
+inclusive uma rotina na nuvem do Claude, cujo push é evento, não agendamento, e que já recuperou o
+despachante às 16:08 UTC. Abertura tardia ganha orçamento e cursor. A figura dos caminhos volta na
+largura da coluna.
+
 ## 2026-10-04 · #551 · O primeiro texto no ar e a rotina semanal do blog
 
 O texto aprovado não ia ao ar: a porta do fluxo editorial nunca era chamada. Números conferidos

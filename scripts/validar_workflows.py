@@ -60,6 +60,28 @@ for m in erros_de_shell:
     print(f"  X {m}")
 erros += len(erros_de_shell)
 
+# 04/10/2026 — `secrets` em `if` NÃO EXISTE, e o GitHub rejeita o arquivo inteiro.
+#
+# Medido: `pacote_do_blog.yml` entrou com `if: ${{ secrets.ROBO_DEPLOY_KEY != '' }}` num passo.
+# O contexto `secrets` não está disponível em `if`, e a consequência não é o passo ser ignorado: o
+# workflow passa a aparecer com o CAMINHO no lugar do nome e cada push gera um run `failure`. O
+# painel dos temporizadores foi quem mostrou, na primeira execução real. A decisão sobre um segredo
+# existir pertence ao `run`, onde ele chega como variável de ambiente.
+segredo_em_if = []
+for f, wf in carregados.items():
+    for nome, job in ((wf or {}).get("jobs") or {}).items():
+        alvos = [("job", job.get("if"))]
+        for i, passo in enumerate((job or {}).get("steps") or []):
+            alvos.append((passo.get("name") or f"passo {i + 1}", (passo or {}).get("if")))
+        for rotulo, condicao in alvos:
+            if condicao and "secrets." in str(condicao):
+                segredo_em_if.append(
+                    f"{f}: job '{nome}', {rotulo}: `secrets` em `if` — o contexto não existe ali e "
+                    f"o GitHub rejeita o arquivo; teste a variável dentro do `run`")
+for m in segredo_em_if:
+    print(f"  X {m}")
+erros += len(segredo_em_if)
+
 TETO_MAXIMO_MIN = 360   # o padrão do GitHub; declarar 360 é o mesmo que não declarar nada
 sem_teto = []
 for f, wf in carregados.items():

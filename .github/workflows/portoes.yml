@@ -129,6 +129,19 @@ jobs:
           # seguros porque esta função pura decide, sem adivinhar, se a noite já abriu.
           # assunto: dado
           python3 scripts/janela_da_noite.py --autoteste
+          # 04/10/2026 (garantia dos temporizadores): o registro, o despachante, o
+          # orçamento da noite e o painel. O registro é BLOQUEANTE: workflow agendado que
+          # falte nele é temporizador que ninguém recupera.
+          # assunto: dado
+          python3 scripts/verificar_temporizadores.py
+          # assunto: dado
+          python3 scripts/verificar_temporizadores.py --autoteste
+          # assunto: dado
+          python3 scripts/despachar_temporizadores.py --autoteste
+          # assunto: dado
+          python3 scripts/orcamento_da_noite.py --autoteste
+          # assunto: dado
+          python3 scripts/painel_dos_temporizadores.py --autoteste
           # 04/10/2026: a migração das sobras do DOE e a porta de gravação do coletor. A
           # publicação da noite de 03→04 morreu duas vezes por 10 sobras fora do esquema.
           # assunto: dado

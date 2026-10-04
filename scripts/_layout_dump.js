@@ -154,8 +154,13 @@ const COLETA = () => {
     legenda: ((f.querySelector(".figura-sub") || {}).textContent || "").trim(),
     fonte: ((f.querySelector(".fonte-figura") || {}).textContent || "").trim(),
     tem_midia: !!f.querySelector("svg, canvas"),
+    // 04/10/2026: mídia DECORATIVA (`aria-hidden="true"`) conta como rotulada, porque esconder do
+    // leitor de tela é exatamente o que se deve fazer com ela. A figura dos caminhos tem oito
+    // amostras de traço de 40×10 px ao lado dos itens da lista: dar `aria-label` a cada uma faria
+    // o leitor de tela anunciar oito vezes um traço que o texto ao lado já descreve.
     rotulada: [...f.querySelectorAll("svg, canvas, img")]
-      .every(m => (m.getAttribute("aria-label") || m.getAttribute("alt") || "").trim().length > 3),
+      .every(m => m.getAttribute("aria-hidden") === "true"
+        || (m.getAttribute("aria-label") || m.getAttribute("alt") || "").trim().length > 3),
     visivel: vis(f),
   }));
   return {

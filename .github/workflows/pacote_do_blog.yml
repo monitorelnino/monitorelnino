@@ -45,6 +45,20 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+
+      # 04/10/2026 (item 2c do handover dos temporizadores): OBSERVADOR OPORTUNISTA.
+      # Cada execução de qualquer coisa vira um tique de relógio. São segundos, sem job extra, e é
+      # o observador mais barato que existe: se este workflow conseguiu rodar, o agendador está
+      # vivo o suficiente para despachar o que estiver devido. `|| true` porque o despachante é
+      # auxiliar — a falha dele não pode derrubar a coleta que ia rodar.
+      - name: Tique oportunista
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.ROBO_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/despachar_temporizadores.py --origem oportunista \
+            --so-ler-e-despachar || true
+
       - run: pip install -r requirements.txt
 
       - name: Qual linha
@@ -68,11 +82,18 @@ jobs:
 
       # O pacote é material da central e vive no repositório PRIVADO — nunca no site. O mesmo
       # mecanismo que publica os relatórios de diagnóstico leva o arquivo para lá.
+      # 04/10/2026: `if: ${{ secrets.X != '' }}` é INVÁLIDO — `secrets` não existe no contexto de
+      # `if`, e o GitHub rejeita o arquivo inteiro: o workflow aparece com o caminho no lugar do
+      # nome e cada push gera um run `failure`. Foi o que o painel dos temporizadores mostrou na
+      # primeira execução real. A decisão passa para dentro do `run`, onde a variável existe.
       - name: Levar o pacote ao repositório da editoria
-        if: ${{ secrets.ROBO_DEPLOY_KEY != '' }}
         env:
           CHAVE: ${{ secrets.ROBO_DEPLOY_KEY }}
         run: |
+          if [ -z "$CHAVE" ]; then
+            echo "::notice::sem ROBO_DEPLOY_KEY — o pacote fica no artefato deste run"
+            exit 0
+          fi
           mkdir -p ~/.ssh && echo "$CHAVE" > ~/.ssh/id_ed25519 && chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
           git clone --depth 1 git@github.com:monitorelnino/robo-registro.git /tmp/privado

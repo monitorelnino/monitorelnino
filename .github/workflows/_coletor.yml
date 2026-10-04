@@ -129,6 +129,19 @@ jobs:
       # antes de qualquer comando. O painel da noite precisa dela para dizer quanto durou e se
       # terminou dentro da janela de 22h às 06h — e foi a falta desse registro que deixou a noite de
       # 02→03/10 passar sem ninguém ver que as evidências não rodaram.
+      # 04/10/2026 (item 2c do handover dos temporizadores): OBSERVADOR OPORTUNISTA.
+      # Cada execução de qualquer coisa vira um tique de relógio. São segundos, sem job extra, e é
+      # o observador mais barato que existe: se este workflow conseguiu rodar, o agendador está
+      # vivo o suficiente para despachar o que estiver devido. `|| true` porque o despachante é
+      # auxiliar — a falha dele não pode derrubar a coleta que ia rodar.
+      - name: Tique oportunista
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.ROBO_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/despachar_temporizadores.py --origem oportunista \
+            --so-ler-e-despachar || true
+
       - name: Marcar o início do elo
         run: echo "ELO_INICIO=$(date -u +%H:%M)" >> "$GITHUB_ENV"
 

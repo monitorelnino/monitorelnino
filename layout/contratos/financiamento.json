@@ -5,7 +5,8 @@
     "numeros": ".cartao-numero",
     "grade_numeros": ".grade-numeros--3",
     "figura": ".cartao-mapa",
-    "grade_figuras": ".grade-figuras--3"
+    "grade_figuras": ".grade-figuras--3",
+    "figura_larga": ".cartao-mapa--largo"
   },
   "_nota_componentes": "O handover nomeia `.cartao-destaque` para números. Esse seletor NÃO existe no repositório: o componente real de número é `.cartao-numero`, que a Imprensa reusa (está escrito em assets/base.css). Usar o que existe em vez de criar um segundo componente para a mesma coisa — divergência declarada.",
   "secoes": [
@@ -16,11 +17,29 @@
       "grade": ".grade-numeros--3",
       "linhas": 1,
       "cartoes": [
-        {"id": "desembolsado_mp_mes", "tipo": "numero", "chave": "financiamento/mps_2026.json", "valor_el": "topoPagoMes"},
-        {"id": "resposta_autorizado_semana", "tipo": "numero", "chave": "resposta/recursos_liberados.json", "valor_el": "topoRespostaSemana"},
-        {"id": "atos_federais_semana", "tipo": "numero", "chave": "financiamento/compromissos_federais.json", "valor_el": "topoAtosSemana"}
+        {
+          "id": "desembolsado_mp_mes",
+          "tipo": "numero",
+          "chave": "financiamento/mps_2026.json",
+          "valor_el": "topoPagoMes"
+        },
+        {
+          "id": "resposta_autorizado_semana",
+          "tipo": "numero",
+          "chave": "resposta/recursos_liberados.json",
+          "valor_el": "topoRespostaSemana"
+        },
+        {
+          "id": "atos_federais_semana",
+          "tipo": "numero",
+          "chave": "financiamento/compromissos_federais.json",
+          "valor_el": "topoAtosSemana"
+        }
       ],
-      "exige_texto": ["anunciam", "desembolsado é o que já saiu do caixa"],
+      "exige_texto": [
+        "anunciam",
+        "desembolsado é o que já saiu do caixa"
+      ],
       "_nota_zero": "Zero na semana é ZERO, com a janela dita — nunca travessão. O cartão de atos é fixo nesta revisão: a grade é de três, e três cartões a preenchem."
     },
     {
@@ -29,9 +48,24 @@
       "tipo": "figuras",
       "grade": ".grade-figuras--3",
       "cartoes": [
-        {"id": "forma_de_aplicacao", "tipo": "grafico", "el": "boxFormaAplicacao", "chave": "financiamento/mps_2026.json"},
-        {"id": "origem_anunciado_empenhado_desembolsado", "tipo": "grafico", "el": "boxOrigens", "chave": "financiamento/compromissos_federais.json"},
-        {"id": "lista_origens", "tipo": "lista", "el": "boxListaOrigens", "chave": "financiamento/compromissos_federais.json"}
+        {
+          "id": "forma_de_aplicacao",
+          "tipo": "grafico",
+          "el": "boxFormaAplicacao",
+          "chave": "financiamento/mps_2026.json"
+        },
+        {
+          "id": "origem_anunciado_empenhado_desembolsado",
+          "tipo": "grafico",
+          "el": "boxOrigens",
+          "chave": "financiamento/compromissos_federais.json"
+        },
+        {
+          "id": "lista_origens",
+          "tipo": "lista",
+          "el": "boxListaOrigens",
+          "chave": "financiamento/compromissos_federais.json"
+        }
       ]
     },
     {
@@ -40,9 +74,24 @@
       "tipo": "figuras",
       "grade": ".grade-figuras--3",
       "cartoes": [
-        {"id": "mapa_uf_resposta", "tipo": "mapa", "el": "boxRespostaUF", "chave": "resposta/recursos_liberados.json"},
-        {"id": "serie_semanal", "tipo": "grafico", "el": "boxSerieSemanal", "chave": "resposta/recursos_liberados.json"},
-        {"id": "lista_portarias_recentes", "tipo": "lista", "el": "boxPortariasRecentes", "chave": "resposta/recursos_liberados.json"}
+        {
+          "id": "mapa_uf_resposta",
+          "tipo": "mapa",
+          "el": "boxRespostaUF",
+          "chave": "resposta/recursos_liberados.json"
+        },
+        {
+          "id": "serie_semanal",
+          "tipo": "grafico",
+          "el": "boxSerieSemanal",
+          "chave": "resposta/recursos_liberados.json"
+        },
+        {
+          "id": "lista_portarias_recentes",
+          "tipo": "lista",
+          "el": "boxPortariasRecentes",
+          "chave": "resposta/recursos_liberados.json"
+        }
       ],
       "_nota_prevencao": "O handover previa um terceiro cartão com o mapa da PREVENÇÃO por estado, e previu a alternativa: 'se o dado não separar prevenção de resposta, o cartão vira lista_portarias_recentes'. ESCOLHA REGISTRADA: as portarias da SEDEC separam `resposta`, `recuperacao` e `outra` — prevenção não existe nessa fonte. Então o terceiro cartão é a lista das portarias recentes, e a série semanal mostra as duas finalidades que existem."
     },
@@ -52,8 +101,17 @@
       "tipo": "figuras",
       "grade": ".grade-figuras--3",
       "cartoes": [
-        {"id": "mapa_uf_gasto_proprio", "tipo": "mapa", "el": "boxGastoProprioUF", "chave": "financiamento/municipios/despesa_182.json"},
-        {"id": "como_ler_gasto", "tipo": "texto", "el": "boxComoLerGasto"}
+        {
+          "id": "mapa_uf_gasto_proprio",
+          "tipo": "mapa",
+          "el": "boxGastoProprioUF",
+          "chave": "financiamento/municipios/despesa_182.json"
+        },
+        {
+          "id": "como_ler_gasto",
+          "tipo": "texto",
+          "el": "boxComoLerGasto"
+        }
       ],
       "ultima_linha_incompleta": true
     },
@@ -64,15 +122,44 @@
       "detalhes": "caminhos",
       "fechado_por_padrao": true,
       "cartoes": [
-        {"id": "diagrama_caminhos", "tipo": "diagrama", "el": "boxCaminhos"},
-        {"id": "antes", "tipo": "texto", "el": "antes"},
-        {"id": "depois", "tipo": "texto", "el": "depois"}
+        {
+          "id": "diagrama_caminhos",
+          "tipo": "diagrama",
+          "el": "boxCaminhos"
+        },
+        {
+          "id": "antes",
+          "tipo": "texto",
+          "el": "antes"
+        },
+        {
+          "id": "depois",
+          "tipo": "texto",
+          "el": "depois"
+        }
       ],
-      "ancoras": ["antes", "depois", "setores", "caminhos"]
+      "ancoras": [
+        "antes",
+        "depois",
+        "setores",
+        "caminhos"
+      ]
     }
   ],
-  "texto_proibido": ["FIGURA", "Corte da edição", "corte de", "defeso", "chave que abre", "desastre", "subfunção", "unidade gestora", "mês lido", "meses lidos"],
+  "texto_proibido": [
+    "FIGURA",
+    "Corte da edição",
+    "corte de",
+    "defeso",
+    "chave que abre",
+    "desastre",
+    "subfunção",
+    "unidade gestora",
+    "mês lido",
+    "meses lidos"
+  ],
   "_nota_texto_proibido": "A lista do handover inclui 'pago', 'rota' e 'nota' em singular. 'pago' é a ETAPA do orçamento e aparece dentro de 'Ver em lista' e na METODOLOGIA, por decisão do próprio handover; 'rota' e 'nota' aparecem em texto legítimo ('a rota constitucional' é vocabulário do dado declarado na METODOLOGIA; 'note' entra em classe de CSS). O portão barra o que o handover quer barrar — a palavra no texto que o leitor lê — e isso é conferido por `verificar_palavras_financiamento.py`, que olha o texto visível e sabe distinguir prosa de bloco de prova.",
   "sem_grade_de_estados": true,
-  "_nota_sem_grade": "A grade dos 27 quadros (#regionsFin) SAIU da página por decisão da editoria: estados em mapa, municípios em lista dentro do mesmo cartão."
+  "_nota_sem_grade": "A grade dos 27 quadros (#regionsFin) SAIU da página por decisão da editoria: estados em mapa, municípios em lista dentro do mesmo cartão.",
+  "_nota_figura_larga": "04/10/2026: a figura dos caminhos usa a variante registrada `figura larga` — uma por página, declarada em layout/regras.json, NÃO por exceção. Ela fica no topo do rodapé recolhido 'Como o dinheiro público chega', que continua fechado até o leitor abrir, e abaixo dela vem a linha de três cartões. Abaixo de 640 px o desenho dá lugar à lista vertical dos oito caminhos, com a mesma cor e uma amostra do traço de cada um."
 }
