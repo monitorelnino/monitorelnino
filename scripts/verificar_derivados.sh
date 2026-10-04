@@ -49,6 +49,24 @@ if [ "$MODO" = "--idempotencia" ]; then
   if [ "$ANTES" = "$DEPOIS" ]; then echo "✓ DERIVADOS OK — cadeia canônica idempotente nesta rodada (segunda regeneração não alterou nada)."; exit 0
   else echo "✗ DERIVADOS: a segunda regeneração alterou arquivos — derivado não determinístico ou ordem errada no pipeline."; exit 1; fi
 fi
+# 04/10/2026 — O MODO DO PUBLICADOR.
+#
+# Medido: a publicação das 07:41 e das 08:05 UTC morreu no portão 12 com 49 derivados obsoletos
+# (selos, índice, feeds), e o passo de commit do publicador havia dito "sem alterações a publicar".
+# As duas coisas juntas revelam o buraco: o publicador regenerava a cadeia em `--idempotencia`, que
+# mede se DUAS regenerações seguidas dão o mesmo resultado — determinismo —, e não se o resultado
+# bate com o que está no git. Partindo de árvore limpa, as duas passavam; a árvore ficava igual ao
+# commit anterior; o commit não via nada para publicar; e então a SUÍTE rodava a cadeia em modo
+# estrito e achava os 49. O publicador reprovava a si mesmo.
+#
+# Este modo é o que ele precisa: regenera a cadeia inteira e sai 0, sem comparar com nada. Quem
+# compara é a suíte, depois do commit — que é a ordem desenhada em 28/09 (commit local antes da
+# suíte, push condicionado a ela). Nome explícito para que a escolha fique legível no workflow.
+if [ "$MODO" = "--regenerar-para-commit" ]; then
+  echo "✓ DERIVADOS — cadeia canônica regenerada para o commit do publicador. A comparação com o"
+  echo "  git é da suíte, que roda depois do commit."
+  exit 0
+fi
 if [ "$MODO" = "--pode-regenerar" ]; then
   # 04/10/2026: o modo do PR deixa de ser cego para o MANIFESTO.
   #

@@ -180,7 +180,12 @@ jobs:
 
       - name: Regenerar a cadeia canônica de derivados
         timeout-minutes: 8
-        run: bash scripts/verificar_derivados.sh --idempotencia
+        # 04/10/2026: era `--idempotencia`, que mede determinismo e não comparação
+        # com o git — e por isso a árvore ficava igual ao commit anterior, o commit
+        # dizia "sem alterações" e a suíte, depois, achava 49 derivados obsoletos.
+        # Duas publicações morreram assim em 04/10. Aqui a cadeia só precisa
+        # REGENERAR; quem compara é a suíte, depois do commit.
+        run: bash scripts/verificar_derivados.sh --regenerar-para-commit
 
       # §273: o painel é gerado AQUI, depois dos portões e antes do commit, porque ele resume a
       # execução em curso — inclusive a linha de saúde que o passo de recalcular acabou de gravar.
