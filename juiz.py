@@ -435,13 +435,32 @@ def trecho_em_volta(texto: str, achado, largura: int = 160) -> str:
 # =============================================================================================
 # Etapa 0 — documento primário
 # =============================================================================================
-def etapa0_documento_primario(url: str, texto: str) -> tuple:
+def etapa0_documento_primario(url: str, texto: str, proveniencia: dict = None) -> tuple:
     """(ok, motivo, trecho). Fonte oficial e texto extraível — nada disso se presume.
 
     28/09/2026: "documento não obtido" ganhou motivo PRÓPRIO (`documento_inacessivel`). Ele estava
     junto de "url fora dos padrões de fonte oficial" sob o mesmo nome, e as duas coisas são
     opostas: a segunda é estável (a URL é o que é), a primeira é uma noite ruim de rede. Separá-las
     é o que permite recusar uma e adiar a outra."""
+    # 04/10/2026 — DOCUMENTO ENTREGUE PELO PRÓPRIO ÓRGÃO.
+    #
+    # Até aqui a proveniência era sempre uma URL: fonte oficial se reconhecia pelo domínio. Mas o
+    # handover de LAI (03/10) decidiu que "documento anexado ou vinculado vai ao juiz, como qualquer
+    # documento oficial" — e os quatro primeiros, de AM e RO, chegaram por e-mail do órgão, sem
+    # endereço público. Recusá-los por falta de URL seria recusar a prova MAIS forte que existe:
+    # o documento entregue pelo órgão que o escreveu, em resposta a um pedido formal.
+    #
+    # A proveniência de LAI exige as três coisas que a tornam verificável — órgão, data da resposta
+    # e hash do arquivo guardado no repositório privado —, e nenhuma delas é presumida: sem as três,
+    # a recusa continua. O hash é o que liga o veredito ao byte julgado.
+    if not url and e_proveniencia_de_lai(proveniencia):
+        if texto is None:
+            return False, "documento_inacessivel", "documento não obtido nesta tentativa"
+        if len(str(texto).strip()) < TEXTO_MINIMO:
+            return False, "texto_nao_extraivel", f"{len(str(texto).strip())} caracteres extraídos"
+        return True, "", (f"documento entregue por {proveniencia['orgao']} em "
+                          f"{proveniencia['data']} (resposta a pedido de acesso à informação; "
+                          f"sha256 {str(proveniencia['hash'])[:12]}…)")
     if not url:
         return False, "sem_documento_primario", ""
     u = str(url).lower()
@@ -454,6 +473,18 @@ def etapa0_documento_primario(url: str, texto: str) -> tuple:
         # ou recusa servida com 200 (§186) — e nenhum deles é documento primário.
         return False, "texto_nao_extraivel", f"{len(texto.strip())} caracteres extraídos"
     return True, "", f"{len(texto.strip())} caracteres de fonte oficial"
+
+
+def e_proveniencia_de_lai(proveniencia: dict) -> bool:
+    """A proveniência declara documento entregue pelo órgão, com as três provas? Função pura.
+
+    Órgão, data da resposta e hash do arquivo. Sem as três, não é proveniência: é alegação — e
+    alegação não substitui documento primário em lugar nenhum deste codebook.
+    """
+    p = proveniencia or {}
+    if str(p.get("tipo") or "") != "resposta_lai":
+        return False
+    return all(str(p.get(c) or "").strip() for c in ("orgao", "data", "hash"))
 
 
 # =============================================================================================
@@ -718,7 +749,8 @@ def etapa6_categoria(texto: str, data: str, eh_estadual: bool = False,
 # O juiz
 # =============================================================================================
 def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
-           eh_estadual: bool = False, eh_plano_tecnico: bool = False, trecho: str = None) -> dict:
+           eh_estadual: bool = False, eh_plano_tecnico: bool = False, trecho: str = None,
+           proveniencia: dict = None) -> dict:
     """Aplica as etapas 0 a 6 e devolve o veredito.
 
     `promove` é True só quando TODAS passam. Quando não promove, `motivo` é o critério que
@@ -727,7 +759,7 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
                 "criterios": {}, "categoria": None, "data": None, "natureza": None,
                 "ibge": ibge, "municipio": nome, "uf": uf, "url": url}
 
-    ok, motivo, prova = etapa0_documento_primario(url, texto)
+    ok, motivo, prova = etapa0_documento_primario(url, texto, proveniencia)
     veredito["criterios"]["0_documento_primario"] = {"ok": ok, "trecho": prova}
     if not ok:
         veredito["motivo"] = motivo
@@ -1096,6 +1128,38 @@ def autoteste() -> int:
         ("plano técnico sem número e SEM data não passa",
          etapa2_citacao("Plano de Contingência Municipal, versão 2026." + "x" * 500,
                         eh_plano_tecnico=True)[0] is False),
+        # 04/10/2026 — proveniência de LAI. Documento entregue pelo órgão é prova de proveniência;
+        # alegação de que foi entregue, não.
+        ("proveniência de LAI completa dispensa a URL",
+         etapa0_documento_primario(None, "PLANO DE CONTINGENCIA " * 60,
+                                   {"tipo": "resposta_lai", "orgao": "Defesa Civil AM",
+                                    "data": "01/10/2026", "hash": "a" * 64})[0] is True),
+        ("proveniência sem hash NÃO passa",
+         etapa0_documento_primario(None, "PLANO DE CONTINGENCIA " * 60,
+                                   {"tipo": "resposta_lai", "orgao": "x", "data": "01/10/2026",
+                                    "hash": ""})[0] is False),
+        ("proveniência sem órgão NÃO passa",
+         etapa0_documento_primario(None, "PLANO DE CONTINGENCIA " * 60,
+                                   {"tipo": "resposta_lai", "orgao": "", "data": "01/10/2026",
+                                    "hash": "a" * 64})[0] is False),
+        ("proveniência sem data NÃO passa",
+         etapa0_documento_primario(None, "PLANO DE CONTINGENCIA " * 60,
+                                   {"tipo": "resposta_lai", "orgao": "x", "data": "",
+                                    "hash": "a" * 64})[0] is False),
+        ("tipo de proveniência desconhecido NÃO passa",
+         etapa0_documento_primario(None, "PLANO DE CONTINGENCIA " * 60,
+                                   {"tipo": "email", "orgao": "x", "data": "01/10/2026",
+                                    "hash": "a" * 64})[0] is False),
+        ("sem proveniência e sem URL continua recusando",
+         etapa0_documento_primario(None, "PLANO DE CONTINGENCIA " * 60, None)[1]
+         == "sem_documento_primario"),
+        ("proveniência de LAI não dispensa o piso de texto",
+         etapa0_documento_primario(None, "curto",
+                                   {"tipo": "resposta_lai", "orgao": "x", "data": "01/10/2026",
+                                    "hash": "a" * 64})[1] == "texto_nao_extraivel"),
+        ("URL de fonte oficial continua valendo sozinha",
+         etapa0_documento_primario("https://x.gov.br/a.pdf",
+                                   "PLANO DE CONTINGENCIA " * 60)[0] is True),
     ]
     for nome_check, ok in checagens:
         print(f"  {'OK  ' if ok else 'FALHA'} {nome_check}")
