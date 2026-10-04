@@ -61,7 +61,13 @@ permissions:
 
 concurrency:
   group: publicar-dados
-  cancel-in-progress: true
+  # 04/10/2026 (item 3 do handover dos temporizadores): era `true`, e isso cancelava publicação EM
+  # ANDAMENTO por causa de um `workflow_run` que, quando começasse, seria SKIPPED — o gatilho de
+  # coletor que falhou. Medido três vezes em 04/10: o dispatch válido morreu `cancelled` e o
+  # suposto substituto não publicou nada. Publicar duas vezes seguidas é inofensivo (a segunda
+  # execução encontra a árvore limpa e diz "sem alterações"); perder a publicação não é. Fila, e
+  # não cancelamento.
+  cancel-in-progress: false
 
 jobs:
   publicar:
@@ -86,6 +92,20 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+
+      # 04/10/2026 (item 2c do handover dos temporizadores): OBSERVADOR OPORTUNISTA.
+      # Cada execução de qualquer coisa vira um tique de relógio. São segundos, sem job extra, e é
+      # o observador mais barato que existe: se este workflow conseguiu rodar, o agendador está
+      # vivo o suficiente para despachar o que estiver devido. `|| true` porque o despachante é
+      # auxiliar — a falha dele não pode derrubar a coleta que ia rodar.
+      - name: Tique oportunista
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.ROBO_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/despachar_temporizadores.py --origem oportunista \
+            --so-ler-e-despachar || true
+
       - run: pip install -r requirements.txt
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with: { node-version: "22", cache: npm }

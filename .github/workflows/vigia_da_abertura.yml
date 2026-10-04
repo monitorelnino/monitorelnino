@@ -45,6 +45,20 @@ jobs:
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with: { python-version: "3.12" }
 
+      # 04/10/2026 (item 2c do handover dos temporizadores): OBSERVADOR OPORTUNISTA.
+      # Cada execução de qualquer coisa vira um tique de relógio. São segundos, sem job extra, e é
+      # o observador mais barato que existe: se este workflow conseguiu rodar, o agendador está
+      # vivo o suficiente para despachar o que estiver devido. `|| true` porque o despachante é
+      # auxiliar — a falha dele não pode derrubar a coleta que ia rodar.
+      - name: Tique oportunista
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.ROBO_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/despachar_temporizadores.py --origem oportunista \
+            --so-ler-e-despachar || true
+
+
       - name: A noite abriu?
         id: olhar
         env:
@@ -74,8 +88,12 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "::warning::a noite de ${{ steps.olhar.outputs.noite }} não abriu em ${{ steps.olhar.outputs.atraso }} min; o vigia está disparando a corrente"
-          gh workflow run noturno_diarios.yml
-          gh workflow run busca_web_cadencia.yml || true
+          # 04/10/2026 (item 2d): o vigia deixa de disparar workflow por nome e passa a ser uma
+          # ENTRADA DO DESPACHANTE. A diferença importa: disparar por nome sabe de um temporizador
+          # só, e o despachante sabe de todos os que estão devidos naquela janela — inclusive os
+          # que ninguém estava vigiando. O vigia continua existindo porque é o observador que olha
+          # a abertura especificamente, e porque ele já provou o seu valor.
+          python3 scripts/despachar_temporizadores.py --origem vigia
 
       - name: Resumo
         if: always()

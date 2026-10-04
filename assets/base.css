@@ -1160,3 +1160,28 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
 .mudancas-lista { overflow-wrap: anywhere; }
 .mudancas-lista dt { font-family: var(--font-spec); text-transform: uppercase; letter-spacing: .12em; font-variant-numeric: tabular-nums; font-size: var(--fs-small); margin-top: var(--sp-5); }
 .mudancas-lista dd { margin: var(--sp-2) 0 0; }
+
+/* 04/10/2026 · item 7 do handover dos temporizadores — A FIGURA LARGA.
+   Variante registrada em layout/regras.json: UMA por página, só para diagrama. Ela existe porque
+   um diagrama de 960 de largura num cartão de 1/3 da coluna não é um diagrama menor, é um diagrama
+   ilegível — a figura dos caminhos passou três dias assim. */
+.cartao-mapa--largo{grid-column:1 / -1; width:100%;}
+.cartao-mapa--largo .figura-midia{width:100%;}
+.cartao-mapa--largo .figura-midia svg{width:100%; height:auto;}
+.diag-caixa{font-family:var(--font-texto); font-size:var(--fs-small); font-weight:600; fill:var(--bg);}
+.diag-caixa-sub{font-family:var(--font-dado); font-size:var(--fs-caption); fill:var(--bg);}
+
+/* A lista vertical do celular: a mesma figura, em outra forma. Ela só aparece onde o desenho não
+   cabe, e o desenho só aparece onde ele se lê. */
+.caminhos-lista{display:none; list-style:none; margin:var(--sp-3) 0 0; padding:0;}
+.caminhos-lista li{display:flex; align-items:center; gap:var(--sp-3); padding:var(--sp-2) 0;
+  border-bottom:1px solid var(--linha); font-size:var(--fs-small);}
+.caminhos-lista li:last-child{border-bottom:0;}
+.caminhos-traco{flex:0 0 40px; width:40px; height:10px;}
+/* 640 é o breakpoint canônico do projeto (o portão de estrutura só aceita 640 e 1020): o handover
+   falava de "≤ 600 px", e 640 é o degrau que existe — a diferença não muda o que o leitor vê, e
+   inventar um terceiro breakpoint quebraria a régua de todas as páginas. */
+@media (max-width: 640px){
+  .cartao-mapa--largo .figura-midia{display:none;}
+  .caminhos-lista{display:block;}
+}

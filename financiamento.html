@@ -30,7 +30,7 @@
 <script src="assets/vendor/d3.min.js?v=f2094bbf"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=94671300">
-<link rel="stylesheet" href="assets/base.css?v=5e7dcedf">
+<link rel="stylesheet" href="assets/base.css?v=0107e59a">
 <script src="assets/mapas.js?v=d03e0aca"></script>
 </head>
 <body class="pagina-dados">
@@ -212,26 +212,36 @@
     <h2 id="f5Titulo" class="sr-only">Como o dinheiro público chega a estados e municípios</h2>
     <details id="caminhos">
       <summary>Como o dinheiro público chega a estados e municípios</summary>
-      <div class="grade-figuras grade-figuras--3 grade-mapas" id="setores">
-        <figure class="figura figura--diagrama cartao-mapa r-chuva" id="boxCaminhos">
-          <p class="cartao-mapa-familia">Os caminhos</p>
-          <p class="cartao-mapa-boletim" id="linhaCaminhos">—</p>
-          <h3 class="figura-titulo">Por onde o dinheiro público chega</h3>
-          <p class="figura-sub">Estrutura, não série · oito vias · o que cada uma exige para ser acessada</p>
-          <div class="figura-midia"><svg id="svgCaminhos" viewBox="0 0 960 420" role="img" aria-label="Diagrama das vias pelas quais o dinheiro público chega a estados e municípios, com o que cada uma exige"></svg></div>
-          <div class="map-legend" id="legCaminhos"></div>
-          <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
-            <dl class="lista-definicao" id="dlCaminhos"></dl>
-          </details>
-        </figure>
-      </div>
-      <div class="grade-cartoes">
+      <!-- 04/10/2026 (item 7 do handover dos temporizadores, aprovado pela editoria): a figura
+           dos caminhos volta GRANDE. Ela estava num cartão de 1/3 da largura — um SVG de 960 de
+           largura espremido a 327 px, sem as curvas, ilegível e sozinho numa linha. Aqui ela ocupa
+           a coluna inteira, no topo do rodapé recolhido, que continua fechado até o leitor abrir.
+           Abaixo dela, uma linha completa de três cartões. -->
+      <!-- O texto acima da figura (literal aprovado em 02/10) fica FORA do cartão: parágrafo dentro
+           de cartão de figura é proibido desde 03/10, e com razão — o cartão é o desenho, o título,
+           a legenda e a fonte, e prosa dentro dele disputa a leitura com o que se vê. -->
+      <p class="card-body">Oito caminhos, sete federais e um estadual. Alguns chegam todo mês, por regra; outros abrem depois de um decreto de emergência; outros dependem de decisão do governo ou de uma emenda; e alguns chegam direto às pessoas e às obras, sem passar pela prefeitura.</p>
+
+      <figure class="figura figura--diagrama cartao-mapa cartao-mapa--largo r-chuva" id="boxCaminhos">
+        <h3 class="figura-titulo">Por onde o dinheiro público chega a uma cidade</h3>
+        <p class="figura-sub">Os oito caminhos do dinheiro federal e estadual até o município, e o que abre cada um · estrutura, não valores · atos em vigor em 2026</p>
+        <div class="figura-midia"><svg id="svgCaminhos" viewBox="0 0 960 420" role="img" aria-label="Diagrama: União e Estado à esquerda, os oito caminhos do dinheiro no centro e o município à direita, com o tipo de linha de cada caminho"></svg></div>
+        <!-- Em tela pequena o desenho encolhido não se lê: no lugar dele, os oito caminhos como
+             lista vertical, com a mesma cor e uma amostra do traço de cada um. -->
+        <ul class="caminhos-lista" id="listaCaminhos" aria-label="Os oito caminhos, em lista"></ul>
+        <div class="map-legend" id="legCaminhos"></div>
+        <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
+          <dl class="lista-definicao" id="dlCaminhos"></dl>
+        </details>
+      </figure>
+
+      <div class="grade-cartoes grade-cartoes--3" id="setores">
         <div class="cartao" id="antes">
           <h3 class="figura-titulo">Antes da emergência</h3>
           <ul class="checklist">
             <li>Todo mês, por regra: o Fundo de Participação dos Municípios e os repasses do SUS e da assistência social</li>
             <li>Para obras de prevenção: projetos da defesa civil para municípios com área de risco mapeada, sem decreto</li>
-            <li>Para o fogo: o Fundo Nacional do Meio Ambiente, para municípios em região declarada em situação de emergência ambiental, com plano operativo aprovado</li>
+            <li>Para o fogo: o Fundo Nacional do Meio Ambiente, para municípios em região declarada em situação de emergência ambiental</li>
             <li>Por decisão do governo ou emenda: transferências voluntárias e especiais</li>
             <li>Direto às pessoas: Garantia-Safra, cisternas, brigadas federais</li>
             <li>Do estado: onde existe, como o Prepara RS</li>
@@ -248,20 +258,18 @@
             <li>Na saúde: a emergência em saúde pública, declarada pelo município ou pelo estado</li>
           </ul>
         </div>
-      </div>
-      <p class="hint"><strong>Dois exemplos de dinheiro que chega antes da emergência, e em que o
-        acesso depende de um plano:</strong> um federal, para o fogo, que exige plano operativo
-        aprovado; e um estadual, no Rio Grande do Sul, que exige plano de contingência atualizado.</p>
-      <div class="grade-cartoes">
+        <!-- O terceiro cartão junta os dois exemplos e abre com a frase que antes ficava solta
+             entre as duas linhas de cartões. -->
         <div class="cartao" data-voz="lei">
-          <h3 class="figura-titulo">O caminho do fogo</h3>
-          <p class="card-body">Em 2025, um edital do Fundo Nacional do Meio Ambiente destinou <a href="https://www.gov.br/mj/pt-br/assuntos/noticias/governo-federal-destina-r-32-milhoes-para-combater-incendios-na-amazonia-e-no-pantanal" target="_blank" rel="noopener">R$ 32 milhões a planos operativos municipais na Amazônia e no Pantanal</a>. Não localizamos até o corte, em fonte oficial consultável, o resultado por município: a página do fundo exige autenticação. Desde 2025, a lei permite a transferência direta, sem convênio, a estados e municípios em região declarada em situação de emergência ambiental, com plano operativo aprovado (Lei 15.143/2025, que inclui o art. 3º-A na Lei 7.797/1989; regulamento no Decreto 13.013, de 10/06/2026).</p>
-        </div>
-        <div class="cartao" data-voz="lei">
-          <h3 class="figura-titulo">Rio Grande do Sul: dinheiro antes da emergência</h3>
-          <p class="card-body" id="textoRS">—</p>
+          <h3 class="figura-titulo">Dois exemplos de dinheiro que chega antes da emergência</h3>
+          <p class="card-body">Dois exemplos de dinheiro que chega antes da emergência, e em que o
+            acesso depende de um plano: um federal, para o fogo, que exige plano operativo aprovado;
+            e um estadual, no Rio Grande do Sul, que exige plano de contingência atualizado.</p>
+          <p class="card-body" id="textoFogo">Em 2025, um edital do Fundo Nacional do Meio Ambiente destinou <a href="https://www.gov.br/mj/pt-br/assuntos/noticias/governo-federal-destina-r-32-milhoes-para-combater-incendios-na-amazonia-e-no-pantanal" target="_blank" rel="noopener">R$ 32 milhões a planos operativos municipais na Amazônia e no Pantanal</a>. Não localizamos até o corte, em fonte oficial consultável, o resultado por município: a página do fundo exige autenticação. Desde 2025, a lei permite a transferência direta, sem convênio, a estados e municípios em região declarada em situação de emergência ambiental, com plano operativo aprovado (Lei 15.143/2025, que inclui o art. 3º-A na Lei 7.797/1989; regulamento no Decreto 13.013, de 10/06/2026).</p>
+          <p class="card-body u-mb-0" id="textoRS">—</p>
         </div>
       </div>
+
       <p class="note u-mb-0">Além desses caminhos, a União transfere todo mês aos municípios os
         repasses obrigatórios, como o Fundo de Participação dos Municípios e os do SUS e da
         assistência social; eles não são específicos do El Niño e não aparecem nesta página.</p>
@@ -277,7 +285,7 @@
 </div>
 
 <script src="assets/colunas.js?v=3669e58d" defer></script>
-<script src="assets/js/financiamento.js?v=9340b9c7" defer></script><script src="assets/js/proveniencia.js?v=50e1ec93" defer></script>
+<script src="assets/js/financiamento.js?v=9fb13706" defer></script><script src="assets/js/proveniencia.js?v=50e1ec93" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

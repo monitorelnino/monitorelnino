@@ -565,6 +565,31 @@ Regras 2 e 3 abaixo não alteram a nota antes de 26/10/2026 (§24). A regra 1 (c
 
 A "edição narrativa" muda como o site conta o que o índice mede — não o que ele mede. Escada de status, créditos municipais, pesos, régua de antecipação, tabela de estrutura e Monte Carlo são os da v3.0, e estão trancados por portão até 25/10/2026 (Errata C25, §10.3). O que a v3.1 acrescenta é **peso zero**: o contador de resposta (§32), o Calendário eleitoral (§24), o Monitor Saúde em duas metades e os contadores do financiamento (§33), o canal de diários com as três decisões e o detector de defeso (§26, §24), o canal LAI pré-registrado (§29). Decisões da editoria registradas em 06/09/2026: **E13** (MARÉ = antecipação + resposta, nunca combinadas), **E14** (medidor preservado), **E15** (uma tela = uma pergunta), **E16** (cartão com cinco campos), **E17** (Saúde em duas metades), **E18** (financiamento em contadores), **E19** (nada vira nota: peso zero em tudo o que é novo), **E20** (Calendário nasce com o buraco à vista), **E21** (galeria dissolvida em Defesa civil), **E22** (Pesquisadores como página de provas), **E23** (design técnico, acessibilidade e segurança com portão para cada mudança). Convenções: **C15** (barra = fração de municípios; traço = fração da população), **C16** (fatias e tons; em classificação nunca imputado), **C17** (sem composto), **C18** (frase obrigatória do art. 73, VI, *a*), **C19** ("Resposta" par de "Antecipação"), **C20** (dispersão como única leitura conjunta), **C21** (galeria → Defesa civil, 301), **C22** (Pesquisadores), **C23** (navegação em grupos), **C24** ("sinal do ato" sai da interface, a doutrina fica), **C25** (errata da v3.0 no defeso), **C26** (correção de dado por prova dentro do defeso, com corrente de erratas auditável).
 
+## Nada depende de um único relógio (04/10/2026)
+
+Toda coleta, toda rodada e toda publicação do MARÉ têm horário previsto — e **nenhuma depende de um
+único agendador para acontecer**. A razão é medida: o gatilho `schedule` do GitHub Actions é de
+melhor esforço, e a abertura da noite falhou três vezes em cinco dias (30/09, com 5h30 de atraso;
+03/10, com 4h05; 04/10, sem disparar, aberta à mão às 02:40 UTC).
+
+O princípio, que é da editoria: **nada roda "às 22h07"; tudo roda quando está devido**, e quem
+confere são observadores independentes. `config/temporizadores.json` declara, de cada temporizador,
+quando ele está devido, qual é a sua janela, qual a tolerância de atraso e **por que o disparo
+repetido é seguro** — sem essa última, nenhum dos observadores poderia agir. Quatro observadores
+chamam o mesmo despachante: o cron do GitHub a cada 20 minutos, uma rotina na nuvem do Claude que
+escreve num ramo próprio (o push é evento, não agendamento), todo workflow que rode (cada execução
+vira um tique) e o vigia da abertura.
+
+O que isto garante: gatilho perdido é detectado e recuperado por **dois agendadores independentes** —
+o do GitHub e o da nuvem do Claude — e por qualquer workflow que rode; se nenhuma recuperação
+funcionar, a editoria é avisada por e-mail, por uma Issue no repositório privado. O que isto **não**
+garante: que o GitHub Actions e a nuvem do Claude estejam fora do ar ao mesmo tempo, nem que a
+pré-visualização das rotinas da Anthropic não mude.
+
+A abertura tardia é aceita até 03:00 de Brasília, com orçamento de tempo até 05:30 e **cursor**: o
+que não couber na noite continua na seguinte, do ponto exato. A regra de 27/09 — nenhum commit
+automático na `main` durante o dia — continua inteira, e é a única razão da janela noturna.
+
 ## 13. Fim do ranking ordinal como produto público (v2.2.3, decisão de 29/08/2026)
 
 **Decisão.** A partir da v2.2.3, o MARÉ **não publica posição ordinal entre estados** em nenhuma superfície pública. O produto público por UF passa a ser exclusivamente: a **nota** (linear e geométrica com piso), a **faixa interpretativa** (§5.6) e a **confiança da verificação**. Os campos `rank_mediano`, `rank_p5` e `rank_p95` saem de `data/indice.json` e migram, integralmente computados e selados, para `data/robustez_mc.json` — artefato de evidência metodológica, reproduzido e conferido pelo portão 2 (`recalcular_mare.py --check`) a cada execução, e publicado como anexo de robustez (§5.8 da Documentação do Índice), sempre com o intervalo p5–p95 junto do rank mediano, nunca o ordinal isolado.
