@@ -30,14 +30,75 @@ on:
     # Brasília**, que é 01:00 UTC. O disparo anterior era 00:05 UTC — 21h05 de Brasília —, e a
     # editoria fixou 22h: é a hora em que a redação para, e a janela vai até as 06h.
     # Continua sendo o ÚNICO cron da corrente: os elos seguintes são acionados pelo TÉRMINO deste.
-    - cron: "0 1 * * *"   # 22h de Brasília, abre a noite
+    # 04/10/2026 (medição da central, duas noites seguidas): com cron de 01:00 o GitHub não
+    # disparou — 1h40 de atraso em 04/10, 5h30 em 30/09. `:00`, `:10` e `:30` são os minutos de
+    # PICO, porque é onde todo mundo agenda, e o cron do GitHub é de melhor esforço: sob carga ele
+    # atrasa e descarta. Daqui em diante a abertura tem minuto ímpar e fora do pico, e uma RESERVA
+    # meia hora depois. Os dois disparos são seguros porque a abertura é idempotente: o primeiro
+    # passo pergunta a `scripts/janela_da_noite.py` se esta noite já abriu e, se abriu, não
+    # trabalha — sem isso a reserva duplicaria lote de diários e commit na mesma janela.
+    - cron: "7 1 * * *"    # 22h07 de Brasília, abre a noite
+    - cron: "37 1 * * *"   # 22h37, reserva — não faz nada se a noite já abriu
   workflow_dispatch:
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
+  # 04/10/2026 — A GUARDA DA ABERTURA.
+  #
+  # A noite tem agora três chances de abrir: o cron de 01:07, a reserva de 01:37 e o vigia de 02:07
+  # (`vigia_da_abertura.yml`). Três chances só são seguras se a segunda e a terceira souberem que a
+  # primeira já aconteceu — senão a reserva duplicaria o lote de diários e dois commits competiriam
+  # pela mesma janela.
+  #
+  # A pergunta NÃO pode ser feita ao painel da noite: a linha dele é escrita quando o elo TERMINA, e
+  # a reserva dispara meia hora depois da abertura, quando os diários costumam estar no meio do
+  # lote. O painel diria "não abriu" e a reserva duplicaria exatamente no caso que ela existe para
+  # cobrir. Então a pergunta é à API: houve execução DESTE workflow desde o início desta janela?
+  # Execução em andamento conta — é o caso da reserva — e execução que falhou também: o que a
+  # reserva cobre é cron que não disparou, não coletor que deu errado. Repetir por causa de falha
+  # duplicaria lote e commit, que é a decisão errada aqui.
+  #
+  # Disparo à mão (`workflow_dispatch`) passa sempre: quando a editoria manda rodar, roda.
+  abertura:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      abrir: ${{ steps.guarda.outputs.abrir }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with: { persist-credentials: false }
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with: { python-version: "3.12" }
+      - name: Esta noite já abriu?
+        id: guarda
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "disparo à mão: abre sempre"
+            echo "abrir=sim" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          JANELA="$(python3 scripts/janela_da_noite.py --inicio-da-janela)"
+          NOITE="$(python3 scripts/janela_da_noite.py --noite)"
+          # `created:>=` na busca de execuções: a API aceita o filtro, e assim a contagem é da
+          # JANELA, não das últimas N execuções — uma noite movimentada não esconde a abertura.
+          ANTERIORES="$(gh run list --workflow=noturno_diarios.yml --limit 20 \
+            --json databaseId,createdAt,event,status \
+            --jq "[.[] | select(.createdAt >= \"$JANELA\") | select(.databaseId != ${{ github.run_id }})] | length")"
+          echo "noite de $NOITE · janela desde $JANELA · execuções anteriores nesta janela: $ANTERIORES"
+          if [ "${ANTERIORES:-0}" -gt 0 ]; then
+            echo "a noite já abriu — esta é a reserva, e ela não trabalha"
+            echo "abrir=nao" >> "$GITHUB_OUTPUT"
+          else
+            echo "abrir=sim" >> "$GITHUB_OUTPUT"
+          fi
+
   diarios:
+    needs: abertura
+    if: needs.abertura.outputs.abrir == 'sim'
     uses: ./.github/workflows/_coletor.yml
     with:
       nome: diarios

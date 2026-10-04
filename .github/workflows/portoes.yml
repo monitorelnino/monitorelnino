@@ -124,6 +124,11 @@ jobs:
           python3 scripts/gerar_topo_das_paginas.py --autoteste
           # assunto: dado
           python3 scripts/painel_da_noite.py --autoteste
+          # 04/10/2026: a janela da noite. Duas noites seguidas não abriram porque o cron do
+          # GitHub não disparou, e a abertura passou a ter reserva e vigia — que só são
+          # seguros porque esta função pura decide, sem adivinhar, se a noite já abriu.
+          # assunto: dado
+          python3 scripts/janela_da_noite.py --autoteste
           # assunto: dado
           python3 scripts/gerar_boletim.py --autoteste
           # assunto: texto
