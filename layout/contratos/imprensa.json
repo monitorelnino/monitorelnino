@@ -21,12 +21,12 @@
     },
     {
       "id": "boletim",
-      "h2": "O boletim desta semana",
+      "h2": "Textos desta semana",
       "tipo": "lista_simples",
       "exige_texto": [
-        "Todas as edições"
+        "Todos os textos"
       ],
-      "_nota": "Único elemento dinâmico da página: data da edição, três números e o caminho para ela."
+      "_nota": "Os dois links da rotina, título e data. Sem números: o que muda toda semana é o texto, e número repetido aqui seria uma terceira cópia a conferir."
     },
     {
       "id": "citar",
@@ -53,7 +53,7 @@
       "h2": "O que cada página mostra",
       "tipo": "lista_simples",
       "exige_texto": [
-        "os textos da editoria sobre o que está acontecendo no ciclo, e o boletim de cada semana"
+        "os textos da editoria sobre o que está acontecendo no ciclo"
       ]
     },
     {
@@ -84,5 +84,6 @@
     "código que calcula"
   ],
   "_nota_texto_proibido": "03/10/2026 (regra 1 da editoria): nenhuma frase sobre código, base de dados ou licença de dados entra no texto público — nem para dizer que existe, nem para dizer que não existe. A metodologia se anuncia numa frase, e é só.",
-  "_divergencia_do_handover": "Divergência declarada (03/10/2026): o handover pedia um `.cartao-destaque` largo para o boletim. Essa classe não existe no sistema de design — não há uma linha dela em assets/base.css —, e a hierarquia de regras põe o sistema acima do handover. O boletim usa o componente que existe para isso, `.cartao cartao--status` com `.grade-numeros--3`, que é o mesmo de todo cartão de números do site. Criar uma classe nova para um só lugar é exatamente o 'ajuste manual' que o § Design proíbe."
+  "_divergencia_do_handover": "Divergência declarada (03/10/2026): o handover pedia um `.cartao-destaque` largo para o boletim. Essa classe não existe no sistema de design — não há uma linha dela em assets/base.css —, e a hierarquia de regras põe o sistema acima do handover. O boletim usa o componente que existe para isso, `.cartao cartao--status` com `.grade-numeros--3`, que é o mesmo de todo cartão de números do site. Criar uma classe nova para um só lugar é exatamente o 'ajuste manual' que o § Design proíbe.",
+  "_nota_rotina_semanal": "04/10/2026: o ponteiro 'O boletim desta semana' virou 'Textos desta semana'. O Boletim saiu com a rotina de dois textos por semana."
 }

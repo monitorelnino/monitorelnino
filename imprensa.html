@@ -61,14 +61,13 @@
     <p class="spec" id="topoSaudeNota">—</p>
   </section>
 
+  <!-- 04/10/2026 (handover da rotina semanal): "O boletim desta semana" passa a ser "Textos desta
+       semana", com os dois links da rotina e sem números — os números vivem nas páginas e no
+       pacote interno, e um número aqui seria uma terceira cópia a conferir toda semana. -->
   <section id="boletim" aria-labelledby="boletimTitulo">
-    <h2 id="boletimTitulo">O boletim desta semana</h2>
-    <div class="cartao cartao--status cartao--acento-musgo-topo" id="cartaoBoletim">
-      <p class="cartao-k" id="boletimData">—</p>
-      <div class="grade-numeros grade-numeros--3" id="boletimNumeros"></div>
-      <a class="cartao-a" id="boletimLink" href="blog.html">ler o boletim</a>
-      <p class="note u-mb-0"><a href="blog.html">Todas as edições</a></p>
-    </div>
+    <h2 id="boletimTitulo">Textos desta semana</h2>
+    <ul class="lista-simples" id="textosDaSemana"></ul>
+    <p class="note u-mb-0"><a href="blog.html">Todos os textos</a></p>
   </section>
 
   <section id="citar" aria-labelledby="citarTitulo">
@@ -151,7 +150,7 @@
 </div>
 
 <script src="assets/colunas.js?v=3669e58d" defer></script>
-<script src="assets/js/imprensa.js?v=507fb4e2" defer></script>
+<script src="assets/js/imprensa.js?v=8b186b81" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

@@ -1,5 +1,5 @@
 {
-  "_governanca": "Contrato de layout do Blog do MARÉ — ÍNDICE (handover de 03/10/2026). O blog é sobre acontecimentos do ciclo, em prosa. Saíram os quatro quadros 'Situação do monitoramento' (vocabulário antigo) e os registros técnicos de mudança, que foram para `mudancas.html`. Quem verifica é scripts/verificar_conformidade.py.",
+  "_governanca": "Contrato de layout do Blog do MARÉ — ÍNDICE (handover da rotina semanal, 04/10/2026). O blog publica DOIS textos por semana, escritos pela central e aprovados pela editoria: Legal e financiamento, e Saúde. No topo, os dois cartões de texto mais recentes de cada linha; abaixo, a lista cronológica com filtro por etiqueta. Sai o cartão de números do antigo Boletim: a rotina produz texto, e os números vivem nas páginas do Monitor e no pacote interno. Quem verifica é scripts/verificar_conformidade.py.",
   "pagina": "blog.html",
   "componentes": {
     "numeros": ".cartao-numero",
@@ -9,10 +9,10 @@
   },
   "secoes": [
     {
-      "id": "boletim",
-      "h2": "Boletim mais recente",
+      "id": "destaques",
+      "h2": "Os textos mais recentes",
       "tipo": "lista_simples",
-      "_nota": "O ÚNICO cartão do blog, por decisão explícita: três números da semana congelados na edição, ligando para ela. No corpo dos textos não entra cartão nenhum."
+      "_nota": "Dois cartões `.cartao-mapa` de TEXTO, um por linha da rotina. Cartão de linha sem texto não aparece — cartão vazio afirma que existe algo ali."
     },
     {
       "id": "textos",
@@ -35,8 +35,14 @@
     "defeso",
     "antecipação",
     "prontidão",
-    "dados abertos"
+    "dados abertos",
+    "Boletim mais recente"
   ],
-  "_nota_proibido": "'antecipação' e 'prontidão' entram na lista desta página porque eram o vocabulário dos quadros que saíram — e vocabulário revogado volta por hábito se nada o barrar.",
-  "_divergencia_do_handover": "Divergência declarada (03/10/2026): o handover pedia um `.cartao-destaque` largo para o boletim. Essa classe não existe no sistema de design — não há uma linha dela em assets/base.css —, e a hierarquia de regras põe o sistema acima do handover. O boletim usa o componente que existe para isso, `.cartao cartao--status` com `.grade-numeros--3`, que é o mesmo de todo cartão de números do site. Criar uma classe nova para um só lugar é exatamente o 'ajuste manual' que o § Design proíbe."
+  "_nota_proibido": "'Boletim mais recente' entra na lista porque era o título do cartão que saiu em 04/10: título revogado volta por hábito se nada o barrar. 'antecipação' e 'prontidão' estão aqui desde 03/10, pelo mesmo motivo.",
+  "_divergencia_do_handover": "Divergência declarada (03/10/2026): o handover pedia um `.cartao-destaque` largo para o boletim. Essa classe não existe no sistema de design — não há uma linha dela em assets/base.css —, e a hierarquia de regras põe o sistema acima do handover. O boletim usa o componente que existe para isso, `.cartao cartao--status` com `.grade-numeros--3`, que é o mesmo de todo cartão de números do site. Criar uma classe nova para um só lugar é exatamente o 'ajuste manual' que o § Design proíbe.",
+  "etiquetas": [
+    "Legal e financiamento",
+    "Saúde",
+    "Acontecimento"
+  ]
 }

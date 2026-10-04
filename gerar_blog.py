@@ -7,9 +7,10 @@ Fonte de verdade: um arquivo Markdown por texto em blog/posts/, com cabeçalho
     ---
     titulo: Título do texto
     data: 2026-09-22
-    categoria: analise | diario
-    autor: Editoria · Futura Evidence Lab
-    resumo: Uma frase.
+    etiqueta: Legal e financiamento | Saúde | Acontecimento
+    abertura: Uma frase.
+    fontes: De onde vêm os números.
+    aprovado: sim | nao
     ---
 
 Derivados (nunca editados à mão; regenerados pela cadeia canônica — Portão 12):
@@ -50,13 +51,27 @@ BASE_URL = "https://monitorelnino.com.br/"
 # 03/10/2026 (regra 2 da editoria): o blog passa a ter DUAS etiquetas, e as duas são sobre o ciclo.
 # "Análise" e "Diário do monitoramento" saíram: a primeira convidava a texto de opinião, e a segunda
 # era onde os registros técnicos de mudança entravam — eles agora vivem em `mudancas.html`.
-CATEGORIAS = {"boletim": "Boletim", "acontecimento": "Acontecimento"}
+# 04/10/2026 (handover da rotina semanal): as etiquetas são as três da rotina. Sai `Boletim`, que
+# era a edição numérica semanal — a rotina passa a produzir TEXTO, não edição de números. O
+# cabeçalho que a central escreve é `etiqueta: Legal e financiamento` (o rótulo, não um slug), e o
+# gerador aceita o rótulo porque é ele que o guia de redação manda escrever.
+ETIQUETAS = ("Legal e financiamento", "Saúde", "Acontecimento")
+CATEGORIAS = {"legal e financiamento": "Legal e financiamento", "saude": "Saúde",
+              "saúde": "Saúde", "acontecimento": "Acontecimento"}
+# `Boletim` NÃO entra: o handover de 04/10 a retirou, e não há texto antigo com ela — o único post
+# publicado é o de 04/10, com etiqueta Acontecimento. Aceitá-la "por compatibilidade" deixaria a
+# etiqueta revogada voltar por hábito, que é o que a lista de etiquetas existe para barrar.
 # A central entrega o texto aprovado no repositório privado; o Code publica só o que tiver a marca.
 # Nada gerado automaticamente vai ao ar como texto do blog.
 DIR_APROVADOS = pathlib.Path(
     os.environ.get("MARE_BLOG_APROVADOS", str(RAIZ.parent / "robo-registro" / "blog")))
 MARCA_DE_APROVACAO = "aprovado"
-CHAVES_OBRIGATORIAS = ("titulo", "data", "categoria", "autor", "resumo")
+# O cabeçalho do guia de redação da central (04/10/2026): título, abertura de uma frase, etiqueta,
+# data, fontes e a marca de aprovação. `autor` e `resumo` saíram porque a central não os escreve —
+# o autor é sempre a editoria do MARÉ e o resumo é a `abertura`. `pacote` é exigido pelo
+# verificador, não aqui: o texto de 04/10 foi aprovado ANTES de a rotina de pacotes existir, e o
+# Code não altera texto aprovado para fazê-lo caber numa regra posterior.
+CHAVES_OBRIGATORIAS = ("titulo", "data", "etiqueta", "abertura")
 # Sem `aprovado: sim` o texto não vai ao ar — é a trava do fluxo editorial de 03/10/2026.
 CHAVES_DE_APROVACAO = ("aprovado",)
 SITE = "MARÉ · Monitor de Antecipação e Resposta ao El Niño"
@@ -74,12 +89,20 @@ def ler_post(caminho: Path) -> dict:
         if ":" not in linha:
             raise SystemExit(f"{caminho.name}: linha de cabeçalho sem 'chave: valor' → {linha!r}")
         k, v = linha.split(":", 1)
-        meta[k.strip().lower()] = v.strip()
+        v = v.strip()
+        # 04/10/2026: o guia da central escreve título e abertura entre aspas, como manda o YAML
+        # quando o valor tem dois-pontos. Sem tirar as aspas, elas iam ao ar no título da página e
+        # no feed — e foi o que aconteceu com o primeiro texto aprovado.
+        if len(v) >= 2 and v[0] == v[-1] and v[0] in "\"'":
+            v = v[1:-1]
+        meta[k.strip().lower()] = v
     faltam = [k for k in CHAVES_OBRIGATORIAS if not meta.get(k)]
     if faltam:
         raise SystemExit(f"{caminho.name}: cabeçalho sem {', '.join(faltam)}")
-    if meta["categoria"] not in CATEGORIAS:
-        raise SystemExit(f"{caminho.name}: categoria {meta['categoria']!r} (use {' | '.join(CATEGORIAS)})")
+    rotulo = CATEGORIAS.get(str(meta["etiqueta"]).strip().lower())
+    if rotulo is None:
+        raise SystemExit(f"{caminho.name}: etiqueta {meta['etiqueta']!r} "
+                         f"(use {' | '.join(ETIQUETAS)})")
     try:
         data = _dt.date.fromisoformat(meta["data"])
     except ValueError:
@@ -106,9 +129,11 @@ def ler_post(caminho: Path) -> dict:
     palavras = len(re.sub(r"<[^>]+>", " ", corpo_html).split())
     return {
         "slug": slug, "titulo": meta["titulo"], "data": data.isoformat(), "data_br": data.strftime("%d/%m/%Y"),
-        "categoria": meta["categoria"], "categoria_rotulo": CATEGORIAS[meta["categoria"]], "autor": meta["autor"],
-        "resumo": meta["resumo"], "palavras": palavras, "url": f"blog/{slug}.html", "html": corpo_html,
-        "etiqueta": CATEGORIAS[meta["categoria"]],
+        "categoria": rotulo, "categoria_rotulo": rotulo,
+        "autor": meta.get("autor") or "Editoria do MARÉ",
+        "resumo": meta.get("resumo") or meta.get("abertura") or "",
+        "palavras": palavras, "url": f"blog/{slug}.html", "html": corpo_html,
+        "etiqueta": rotulo, "pacote": meta.get("pacote") or "",
         "endereco_permanente": BASE_URL + f"blog/{slug}.html",
         "fontes": meta.get("fontes") or "",
     }
@@ -226,6 +251,10 @@ def postos_aprovados() -> list:
         if not re.search(r"^aprovado:\s*(sim|s|true)\s*$", texto, re.M | re.I):
             print(f"  [blog] {origem.name}: sem `aprovado: sim` — não publicado")
             continue
+        # 04/10/2026: a pasta local de posts foi apagada em 03/10, quando o texto
+        # antigo saiu — e sem ela a cópia do texto aprovado não tinha onde cair, de
+        # modo que o publicador dizia "0 texto(s)" com o texto aprovado na mão.
+        DIR_POSTS.mkdir(parents=True, exist_ok=True)
         destino = DIR_POSTS / origem.name
         if not destino.exists() or destino.read_text(encoding="utf-8") != texto:
             destino.write_text(texto, encoding="utf-8", newline="\n")
@@ -250,7 +279,7 @@ def gerar() -> dict[Path, str]:
         saida[DIR_SAIDA / f"{p['slug']}.html"] = render_post(p, cabecalho, rodape, scripts)
     indice = {"_governanca": "Índice dos textos do Blog do MARÉ, gerado por gerar_blog.py a partir de blog/posts/*.md. Nunca editado à mão.",
               "categorias": CATEGORIAS,
-              "posts": [{k: p[k] for k in ("slug", "titulo", "data", "data_br", "categoria", "categoria_rotulo", "autor", "resumo", "palavras", "url")} for p in posts]}
+              "posts": [{k: p[k] for k in ("slug", "titulo", "data", "data_br", "categoria", "categoria_rotulo", "autor", "resumo", "palavras", "url", "etiqueta", "endereco_permanente", "fontes")} for p in posts]}
     saida[INDICE] = json.dumps(indice, ensure_ascii=False, indent=2) + "\n"
     saida[FEED] = render_feed(posts)
     return saida
@@ -259,6 +288,11 @@ def gerar() -> dict[Path, str]:
 def main(argv: list[str]) -> int:
     if "--autoteste" in argv:
         return autoteste()
+    # 04/10/2026: `postos_aprovados()` existia desde 03/10 e NUNCA era chamada — ficou órfã quando
+    # o fluxo editorial entrou. O efeito foi exato: com o primeiro texto aprovado pela editoria no
+    # repositório privado, o gerador dizia "0 texto(s)". Função que ninguém chama é função que não
+    # existe, e esta era a porta inteira do fluxo.
+    postos_aprovados()
     saida = gerar()
     if "--check" in argv:
         obsoletos = [str(c.relative_to(RAIZ)) for c, conteudo in saida.items() if not c.exists() or c.read_text(encoding="utf-8") != conteudo]
@@ -280,9 +314,10 @@ def main(argv: list[str]) -> int:
 
 def autoteste() -> int:
     import tempfile
-    # 03/10/2026: etiquetas novas (boletim | acontecimento) e `aprovado: sim` obrigatório.
-    md = ("---\ntitulo: Teste <b>\ndata: 2026-01-02\ncategoria: acontecimento\n"
-          "autor: Editoria\nresumo: Frase.\naprovado: sim\n---\n\n# Sub\n\nTexto **forte**.\n")
+    # 04/10/2026: o cabeçalho é o do guia de redação da central — etiqueta e abertura, não
+    # categoria, autor e resumo. A fixture usava o cabeçalho antigo e reprovava o próprio gerador.
+    md = ("---\ntitulo: Teste <b>\ndata: 2026-01-02\netiqueta: Acontecimento\n"
+          "abertura: Frase.\nfontes: Fonte.\naprovado: sim\n---\n\n# Sub\n\nTexto **forte**.\n")
     with tempfile.TemporaryDirectory() as d:
         p = Path(d) / "2026-01-02-teste.md"; p.write_text(md, encoding="utf-8", newline="\n")
         post = ler_post(p)
@@ -295,7 +330,7 @@ def autoteste() -> int:
         # texto sem aprovação da editoria não vai ao ar, e o corpo é prosa — sem listas.
         ruins = [
             ("---\ntitulo: x\n---\n\ncorpo", "sem data"),
-            (md.replace("acontecimento", "outra"), "categoria inválida"),
+            (md.replace("Acontecimento", "Boletim"), "etiqueta inválida"),
             (md.replace("2026-01-02", "02/01/2026"), "data fora do formato"),
             (md.replace("aprovado: sim", "aprovado: nao"), "texto não aprovado"),
             (md.replace("\naprovado: sim", ""), "texto sem marca de aprovação"),

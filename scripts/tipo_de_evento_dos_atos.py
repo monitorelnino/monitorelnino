@@ -36,13 +36,18 @@ import sys
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
 
+# 04/10/2026 (bloco da editoria): as famílias são estas cinco, e `granizo` passa a pertencer a
+# VENDAVAL, não a chuva. A COBRADE separa "Granizo - 1.3.2.1.3" de "Vendaval - 1.3.2.1.5" dentro do
+# mesmo grupo de tempestade, e é assim que a editoria as nomeia — o texto do blog diz "oito
+# reconhecidas por vendaval e quatro por granizo" porque são eventos de tempestade, não de chuva
+# acumulada. Granizo em "chuva" misturava enchente com temporal de vento.
 FAMILIAS = {
-    "chuva": re.compile(r"(?i)chuva|enchent|inunda|alagam|granizo|precipita|deslizam|hidrol"),
+    "chuva": re.compile(r"(?i)chuva|enchent|inunda|alagam|precipita|deslizam|hidrol|enxurrada"),
     "seca": re.compile(r"(?i)\bseca\b|estiagem|escassez h|d[eé]ficit h[íi]dric|desabastec"),
     "fogo": re.compile(r"(?i)inc[êe]ndi|queimad|fuma[çc]a|focos de calor"),
-    "vendaval": re.compile(r"(?i)vendaval|tornado|ciclone|ventos? forte|microexplos|granizo e vento"),
+    "vendaval": re.compile(r"(?i)vendaval|tornado|ciclone|ventos? forte|microexplos|granizo"),
 }
-TIPOS = tuple(FAMILIAS) + ("outro_declarado",)
+TIPOS = tuple(FAMILIAS) + ("outro_declarado", "sem_tipo_informado")
 
 
 def familia_do_texto(texto: str) -> str | None:
@@ -77,10 +82,20 @@ def tipo_de_evento(evento) -> str | None:
     return pela_cobrade or pela_causa
 
 
+def tipo_ou_sem_informacao(evento) -> str:
+    """O tipo, ou `sem_tipo_informado` quando a fonte não diz. Função pura.
+
+    04/10/2026: o blog e o painel precisam CONTAR à parte os atos cujo registro federal não informa
+    o evento — são 255 dos 929, e 16 na semana de 27/09 a 03/10. `None` servia ao código e não
+    servia ao texto: "sem tipo informado" é um desfecho, e desfecho tem nome.
+    """
+    return tipo_de_evento(evento) or "sem_tipo_informado"
+
+
 def contagem(eventos: list) -> dict:
     """Quantos eventos por tipo, incluindo os não classificados. Função pura."""
-    c = collections.Counter(tipo_de_evento(e) for e in eventos)
-    return {("nao_classificado" if k is None else k): v for k, v in sorted(
+    c = collections.Counter(tipo_ou_sem_informacao(e) for e in eventos)
+    return {k: v for k, v in sorted(
         c.items(), key=lambda kv: (kv[0] is None, str(kv[0])))}
 
 
@@ -92,11 +107,20 @@ def _autoteste() -> int:
         if not cond:
             falhas.append(nome)
 
-    ok("chuva intensa é chuva", tipo_de_evento("chuva intensa com granizo") == "chuva")
+    ok("chuva intensa é chuva", tipo_de_evento("Chuvas Intensas - 1.3.2.1.4") == "chuva")
+    # "chuva intensa COM granizo" é o caso de duas famílias, e devolve None de propósito: o texto
+    # tem de dizer as duas palavras. São 5 eventos de SC, e eles ficam como não classificados.
+    ok("chuva com granizo é o caso de duas famílias, e não escolhe uma",
+       tipo_de_evento("chuva intensa com granizo") is None)
     ok("enchente é chuva", tipo_de_evento("enchente do rio") == "chuva")
     ok("estiagem é seca", tipo_de_evento("estiagem prolongada") == "seca")
     ok("incêndio é fogo", tipo_de_evento("incêndio em vegetação") == "fogo")
     ok("vendaval é vendaval", tipo_de_evento("vendaval com destelhamentos") == "vendaval")
+    ok("granizo é tempestade, não chuva acumulada",
+       tipo_de_evento("Granizo - 1.3.2.1.3") == "vendaval")
+    ok("enxurrada é chuva", tipo_de_evento("Enxurradas - 1.2.2.0.0") == "chuva")
+    ok("sem informação da fonte tem nome próprio",
+       tipo_ou_sem_informacao({"desastre": None, "causa": None}) == "sem_tipo_informado")
     ok("duas famílias não escolhem uma",
        tipo_de_evento("chuva intensa e vendaval") is None)
     ok("causa vazia não vira tipo", tipo_de_evento("") is None and tipo_de_evento(None) is None)
@@ -109,7 +133,7 @@ def _autoteste() -> int:
        tipo_de_evento({"desastre": "Estiagem - 1.4.1.1.0",
                        "causa": "reconhecimento federal"}) == "seca")
     ok("sem COBRADE, vale a causa",
-       tipo_de_evento({"desastre": None, "causa": "chuva intensa com granizo"}) == "chuva")
+       tipo_de_evento({"desastre": None, "causa": "estiagem prolongada"}) == "seca")
     ok("COBRADE que não casa não apaga a causa que casa",
        tipo_de_evento({"desastre": "Subsidências e colapsos - 1.1.3.4.0",
                        "causa": "estiagem"}) == "seca")
@@ -119,7 +143,8 @@ def _autoteste() -> int:
     eventos = [{"causa": "chuva intensa"}, {"causa": "estiagem"}, {"causa": ""},
                {"causa": "chuva e vendaval"}]
     c = contagem(eventos)
-    ok("a contagem separa os não classificados", c.get("nao_classificado") == 2)
+    ok("a contagem separa quem a fonte não informou",
+       c.get("sem_tipo_informado") == 2)
     ok("a contagem não perde evento", sum(c.values()) == len(eventos))
     ok("todo tipo devolvido está na lista declarada",
        all(t in TIPOS for t in (tipo_de_evento(x) for x in eventos) if t))
@@ -136,7 +161,7 @@ def _autoteste() -> int:
        not ({"gravar", "write_text"} & nomes))
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
-          else "✓ AUTOTESTE OK — 17 casos, sem rede e sem escrita.")
+          else "✓ AUTOTESTE OK — 21 casos, sem rede e sem escrita.")
     return 1 if falhas else 0
 
 
@@ -148,7 +173,12 @@ def aplicar(relatorio: bool = False) -> int:
     if relatorio:
         return 0
     for e in eventos:
-        e["tipo_evento"] = tipo_de_evento(e.get("causa"))
+        # 04/10/2026: era `tipo_de_evento(e.get("causa"))` — a gravação passava só a CAUSA, de modo
+        # que a COBRADE do campo `desastre` nunca era lida e 923 dos 929 eventos ficavam
+        # "outro_declarado", exatamente o defeito que a editoria mediu. O relatório, que já passava
+        # o evento inteiro, mostrava os números certos; a gravação, não. Função certa, argumento
+        # errado — e a diferença só apareceu ao conferir o arquivo depois de gravar.
+        e["tipo_evento"] = tipo_ou_sem_informacao(e)
     gravar("atos_resposta.json", atos)
     print(f"  {len(eventos)} evento(s) com `tipo_evento` gravado")
     return 0

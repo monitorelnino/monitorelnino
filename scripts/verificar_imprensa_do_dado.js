@@ -47,8 +47,11 @@ const PAGINA = "imprensa.html";
 const OBRIGATORIOS = [
   "topoLegal", "topoSaude",
   "citarVersaoLegal", "citarVersaoSaude", "citarAcesso",
-  // o ponteiro do boletim: data da edição e os três números, preenchidos do arquivo congelado
-  "boletimData",
+  // 04/10/2026 (rotina semanal): `boletimData` saiu, e `textosDaSemana` NÃO entra nesta lista. A
+  // lista exige conteúdo preenchido do banco, e o ponteiro dos textos pode estar legitimamente
+  // vazio — enquanto nenhuma das duas linhas da rotina tiver texto publicado, a lista se esconde e
+  // a seção fica com o título e o caminho para o blog. Quem confere o ponteiro é o bloco próprio,
+  // abaixo: cada link mostrado tem de existir em posts.json, e número nenhum pode aparecer.
 ];
 
 const falhas = [];
@@ -91,35 +94,45 @@ const ler = p => JSON.parse(fs.readFileSync(path.join(RAIZ, p), "utf-8"));
     falhas.push(`${PAGINA}: versão do MARÉ Saúde na página ("${txt("citarVersaoSaude")}") ≠ data/monitor_saude.json ("${saude.versao}")`);
   }
 
-  // A data da edição é a do banco.
-  // A data da edição é a do BOLETIM congelado, e não a do corte: o ponteiro aponta para a edição
-  // que existe, que pode ser de ontem se a de hoje ainda não foi escrita pela editoria.
+  /* 04/10/2026 — O PONTEIRO É DOS TEXTOS, NÃO DO BOLETIM.
+   *
+   * O handover da rotina semanal trocou "O boletim desta semana" por "Textos desta semana": dois
+   * links, título e data, um por linha da rotina, e **sem números** — os números vivem nas páginas
+   * do Monitor e no pacote interno, e um número aqui seria uma terceira cópia a conferir toda
+   * semana. O que a regra 0 cobra, então, é que cada link mostrado exista em `posts.json` com
+   * aquele título: nada escrito à mão, nada que envelheça em silêncio.
+   *
+   * Sem texto de nenhuma das duas linhas, a LISTA é escondida pelo próprio script e a seção fica
+   * com o título e o ponteiro permanente para o blog. Esse caso não é falha: é a página dizendo
+   * menos, que é o certo quando não há o que dizer.
+   */
   try {
-    const boletim = ler("data/blog/boletim_mais_recente.json");
-    const naPagina = txt("boletimData");
-    if (boletim && boletim.edicao && !naPagina.includes(boletim.edicao)) {
-      falhas.push(`${PAGINA}: o cartão do boletim diz "${naPagina}" e a edição congelada é `
-                  + `"${boletim.edicao}"`);
+    const dados = ler("data/blog/posts.json");
+    const posts = Array.isArray(dados) ? dados : (dados.posts || []);
+    const LINHAS = ["Legal e financiamento", "Saúde"];
+    const esperados = LINHAS
+      .map(linha => posts.filter(p => (p.etiqueta || "") === linha)[0])
+      .filter(Boolean);
+    const itens = d.querySelectorAll("#textosDaSemana li");
+    if (itens.length !== esperados.length) {
+      falhas.push(`${PAGINA}: o ponteiro mostra ${itens.length} texto(s) e as duas linhas da `
+                  + `rotina têm ${esperados.length} publicado(s)`);
     }
-  } catch (e) { falhas.push(`${PAGINA}: boletim_mais_recente.json ilegível: ${e.message}`); }
-
-  /* O release gerado SAIU da Imprensa (03/10/2026): o que muda toda semana vive no boletim do
-     blog, escrito pela editoria e aprovado por ela. O que se confere aqui é o PONTEIRO — os três
-     números do cartão são os do arquivo congelado, e não uma segunda conta. */
-  try {
-    const boletim = ler("data/blog/boletim_mais_recente.json");
-    const numeros = (boletim && boletim.numeros) || [];
-    const naPagina = d.querySelectorAll("#boletimNumeros .cartao-numero").length;
-    if (numeros.length && naPagina !== Math.min(3, numeros.length)) {
-      falhas.push(`${PAGINA}: o cartão do boletim mostra ${naPagina} número(s) e o arquivo `
-                  + `congelado tem ${Math.min(3, numeros.length)}`);
-    }
-    for (const n of numeros.slice(0, 3)) {
-      if (!txt("boletimNumeros").includes(String(n.valor))) {
-        falhas.push(`${PAGINA}: o número ${n.valor} do boletim não aparece no cartão`);
+    const mostrado = txt("textosDaSemana");
+    for (const p of esperados) {
+      if (!mostrado.includes(p.titulo)) {
+        falhas.push(`${PAGINA}: o texto "${p.titulo}" não aparece no ponteiro`);
+      }
+      if (p.data_br && !mostrado.includes(p.data_br)) {
+        falhas.push(`${PAGINA}: a data ${p.data_br} do texto não aparece no ponteiro`);
       }
     }
-  } catch (e) { falhas.push(`${PAGINA}: boletim ilegível: ${e.message}`); }
+    // A trava do que SAIU: número no ponteiro significa que o cartão numérico voltou.
+    if (/\d{1,3}(\.\d{3})+|\d{3,}/.test(mostrado)) {
+      falhas.push(`${PAGINA}: o ponteiro dos textos mostra número — os números vivem nas páginas `
+                  + `e no pacote, não aqui (handover de 04/10/2026)`);
+    }
+  } catch (e) { falhas.push(`${PAGINA}: posts.json ilegível: ${e.message}`); }
 
   if (falhas.length) {
     console.log("✗ IMPRENSA (regra 0 — nada à mão que dependa do dado):");
