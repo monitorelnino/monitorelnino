@@ -97,7 +97,8 @@ fi
 # "regenerar não altera nada" de um arquivo que registra a própria regeneração. Foi isso que
 # reprovou o publicador duas vezes em 03/10. O painel é selado pelo passo que o gera, antes do
 # commit, como o §273 determinou.
-SEM_PAINEL=(':!data/snapshot_feed.json' ':!capturas-ci' ':!data/saude_pipeline.json' ':!docs/SAUDE_PIPELINE.md')
+SEM_PAINEL=(':!data/snapshot_feed.json' ':!capturas-ci' ':!data/saude_pipeline.json'
+            ':!docs/SAUDE_PIPELINE.md' ':!data/painel_da_noite.json')
 if git diff --quiet --exit-code -- . "${SEM_PAINEL[@]}"; then
   echo "✓ DERIVADOS OK — cadeia canônica regenerada em árvore limpa sem diferença (índice, selos, feeds, dados abertos, PDFs, manifesto)."
 else
