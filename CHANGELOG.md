@@ -26,6 +26,14 @@ ainda não foi localizado. O detalhe da UF, na home, passa a mostrar a nota do e
 `scripts/incorporar_respostas_lai.py`, `data/notas_lai.json` e `ler_caixa_lai.py` (leitura semanal da
 caixa, à espera da credencial).
 
+## 2026-10-03 · #543 · O tipo de evento de cada decreto, e a divergência do cartão declarada
+
+Dependência do handover do blog: os atos de resposta não tinham `tipo_evento`. Ele passa a vir da
+COBRADE do S2iD — 275 chuva, 327 seca, 66 vendaval, 4 fogo, 257 sem família — e não da `causa`, que
+nos registros federais diz o canal do ato, não o evento. O handover pedia um `.cartao-destaque` que
+não existe no sistema de design; os contratos do blog e da imprensa registram a divergência. Em
+`scripts/tipo_de_evento_dos_atos.py`.
+
 ## 2026-10-03 · #535 · Dizemos o que disponibilizamos; o blog conta o ciclo
 
 Duas regras para todo o site: nenhuma frase sobre código, base de dados ou licença de dados, e o blog só sobre acontecimentos do ciclo, em prosa escrita por pessoa. Saem a pasta de dados abertos, a planilha da edição e o release gerado; nasce `mudancas.html`, com as 57 entradas do CHANGELOG. Blog com boletim congelado por edição e aprovação obrigatória; imprensa só com o estável. METODOLOGIA §103.
