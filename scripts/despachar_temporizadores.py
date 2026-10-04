@@ -208,13 +208,33 @@ def plano_de_disparo(registro: dict, execucoes_por_workflow: dict, agora: dt.dat
     return fora
 
 
+def workflow_rejeitado(execucoes: list) -> bool:
+    """O GitHub rejeitou o arquivo deste workflow? Função pura.
+
+    04/10/2026 (20:30): `busca_web_cadencia.yml` e `auditoria_seguranca.yml` ficaram cinco horas
+    rejeitados, e o despachante não tinha como saber — ele disparava, o GitHub criava um run de
+    ZERO jobs com `failure`, e para o despachante aquilo era "rodou". O sintoma é observável: run
+    `failure` sem job nenhum. Rejeição é defeito de ARQUIVO, não de horário, e nenhum disparo a
+    conserta: por isso ela vira alarme de gravidade alta, sempre.
+    """
+    for e in (execucoes or [])[:1]:
+        if e.get("conclusion") == "failure" and int(e.get("jobs") or 0) == 0:
+            return True
+    return False
+
+
 def precisa_alarmar(item: dict, tentou_recuperar: bool) -> bool:
     """Abre-se Issue para a editoria? Função pura.
 
     Gravidade alta alarma na primeira falha de recuperação; as outras, só além da tolerância. O
     alarme é sobre a RECUPERAÇÃO ter falhado — temporizador atrasado que o despachante conseguiu
     disparar não é problema, é o sistema funcionando.
+
+    A exceção é o workflow REJEITADO pelo GitHub: ali o disparo "funciona" e não produz nada, então
+    disparar não é recuperar. Alarma sempre, com gravidade alta.
     """
+    if item.get("rejeitado"):
+        return True
     if tentou_recuperar:
         return False
     if item.get("gravidade") == "alta":
@@ -234,11 +254,19 @@ def _gh(args: list) -> str:
 def execucoes_de(workflow: str, limite: int = 20) -> list:
     """As execuções recentes do workflow, pela API."""
     saida = _gh(["run", "list", "--workflow", workflow, "--limit", str(limite),
-                 "--json", "databaseId,createdAt,status,conclusion,event"])
+                 "--json", "databaseId,createdAt,status,conclusion,event,workflowDatabaseId"])
     try:
-        return json.loads(saida) if saida.strip() else []
+        bruto = json.loads(saida) if saida.strip() else []
     except json.JSONDecodeError:
         return []
+    # A contagem de jobs só é consultada na execução MAIS RECENTE e só quando ela falhou: é o que
+    # distingue "o GitHub rejeitou o arquivo" (zero jobs) de "o teste reprovou" (jobs > 0). Uma
+    # chamada por workflow, não vinte.
+    if bruto and bruto[0].get("conclusion") == "failure":
+        jb = _gh(["api", f"repos/{{owner}}/{{repo}}/actions/runs/{bruto[0]['databaseId']}/jobs",
+                  "--jq", ".total_count"])
+        bruto[0]["jobs"] = int(jb.strip()) if jb.strip().isdigit() else 1
+    return bruto
 
 
 def disparar(item: dict, origem: str) -> bool:
@@ -357,6 +385,15 @@ def _autoteste() -> int:
     ok("tique de três horas é silêncio", relogio_silencioso("2026-10-03T23:00:00", agora))
     ok("tique ilegível é tratado como silêncio", relogio_silencioso("ontem", agora))
 
+    ok("última execução com falha e zero jobs é rejeição",
+       workflow_rejeitado([{"conclusion": "failure", "jobs": 0}]))
+    ok("falha com jobs não é rejeição",
+       not workflow_rejeitado([{"conclusion": "failure", "jobs": 2}]))
+    ok("rejeição no histórico não conta; só a última",
+       not workflow_rejeitado([{"conclusion": "success", "jobs": 1},
+                               {"conclusion": "failure", "jobs": 0}]))
+    ok("workflow rejeitado alarma mesmo com o disparo aceito",
+       precisa_alarmar({"rejeitado": True, "gravidade": "baixa"}, True))
     ok("recuperação que funcionou NÃO alarma",
        not precisa_alarmar({"gravidade": "alta", "alem_da_tolerancia": True}, True))
     ok("gravidade alta sem recuperação alarma na primeira",
@@ -381,7 +418,7 @@ def _autoteste() -> int:
        not ({"run", "disparar", "abrir_issue", "write_text"} & nomes))
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
-          else "✓ AUTOTESTE OK — 36 casos, sem rede e sem escrita.")
+          else "✓ AUTOTESTE OK — 40 casos, sem rede e sem escrita.")
     return 1 if falhas else 0
 
 
@@ -401,7 +438,11 @@ def despachar(origem: str, relatorio: bool = False, silencioso: bool = False) ->
         return 0
 
     for item in plano:
-        aceito = disparar(item, origem)
+        item["rejeitado"] = workflow_rejeitado(execucoes.get(item["workflow"]) or [])
+        if item["rejeitado"]:
+            print(f"  ✗ {item['id']} ({item['workflow']}): o GitHub REJEITOU o arquivo — a última "
+                  f"execução falhou com zero jobs. Disparar não conserta isto.")
+        aceito = disparar(item, origem) and not item["rejeitado"]
         if precisa_alarmar(item, aceito):
             abrir_issue(item)
     return 0

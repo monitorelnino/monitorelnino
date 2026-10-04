@@ -60,6 +60,40 @@ for m in erros_de_shell:
     print(f"  X {m}")
 erros += len(erros_de_shell)
 
+# 04/10/2026 (20:30) — PASSO COM `run` E `with` AO MESMO TEMPO: o GitHub rejeita o arquivo.
+#
+# Medido pela central: `busca_web_cadencia.yml` e `auditoria_seguranca.yml` passaram a aparecer no
+# GitHub com o CAMINHO no lugar do nome, e cada push na `main` gerava um run `failure` com ZERO
+# jobs — cinco vezes entre 13:40 e 14:29 BRT. A busca web não rodou desde 11:25, e a auditoria de
+# segurança parou.
+#
+# A causa foi minha, e o YAML não acusava: ao inserir o tique oportunista nos workflows, o passo
+# entrou NO MEIO do `actions/setup-python`, e o `with: { python-version }` dele ficou dentro do meu
+# passo — que também tem `run`. Um passo com `run` e `with` é inválido para o GitHub e **válido**
+# para qualquer parser YAML, porque sintaticamente é só um mapa com duas chaves. `actionlint` e
+# este validador passavam; só o GitHub reprovava, e sem mensagem pela API.
+#
+# A trava é esta: nenhum passo tem `run` com `with` ou `uses`. São as três chaves que decidem o que
+# o passo É, e duas delas juntas significam que alguém colou um passo dentro do outro.
+EXCLUSIVAS = ("run", "uses")
+passo_ambiguo = []
+for f, wf in carregados.items():
+    for nome, job in ((wf or {}).get("jobs") or {}).items():
+        for i, passo in enumerate((job or {}).get("steps") or []):
+            if not isinstance(passo, dict):
+                continue
+            rotulo = passo.get("name") or f"passo {i + 1}"
+            if "run" in passo and "uses" in passo:
+                passo_ambiguo.append(f"{f}: job '{nome}', {rotulo}: tem `run` E `uses` — um passo "
+                                     f"ou executa um comando, ou usa uma ação")
+            if "run" in passo and "with" in passo:
+                passo_ambiguo.append(f"{f}: job '{nome}', {rotulo}: tem `run` E `with` — `with` é "
+                                     f"de ação (`uses`); o GitHub rejeita o arquivo inteiro e o "
+                                     f"workflow passa a aparecer com o caminho no lugar do nome")
+for m in passo_ambiguo:
+    print(f"  X {m}")
+erros += len(passo_ambiguo)
+
 # 04/10/2026 — `secrets` em `if` NÃO EXISTE, e o GitHub rejeita o arquivo inteiro.
 #
 # Medido: `pacote_do_blog.yml` entrou com `if: ${{ secrets.ROBO_DEPLOY_KEY != '' }}` num passo.
