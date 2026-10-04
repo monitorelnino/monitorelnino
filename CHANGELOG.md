@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-04 · #551 · O primeiro texto do blog no ar, e o tipo de evento pela COBRADE
+
+O texto aprovado não ia ao ar: `postos_aprovados()` nunca era chamada, a pasta de posts havia sido
+apagada e o cabeçalho exigido era outro. Números conferidos contra o dado do dia — 59
+reconhecimentos, 29 no Sul, 22 no Nordeste, 16 sem tipo — todos batem. E `tipo_evento` passa a vir
+da COBRADE: a gravação lia só a causa, e granizo agora é tempestade.
+
 ## 2026-10-04 · #550 · Coleta de alerta vencida não impede a publicação
 
 A publicação das 09:57 UTC morreu no portão de runtime: o arquivo de alertas completou 24h02 e a
