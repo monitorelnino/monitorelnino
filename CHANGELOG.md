@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-04 · #549 · AM e RO: os quatro documentos lidos, e nada sobe nem desce
+
+O juiz leu os planos de AM (estiagem e inundações), o plano operacional de RO e o ofício do CBMRO,
+com a proveniência de LAI que a etapa 0 passa a aceitar — órgão, data e hash. Os quatro recusam, cada
+um com seu motivo, e entram como documentos do estado, sem alterar os índices. As 30 respostas das
+COMPDECs viram nota e busca dirigida: 27 declaram plano, 3 não; nada pontua.
+
 ## 2026-10-04 · #548 · O `git add` do publicador ignorava tudo porque `blog/` não existe mais
 
 Três publicações morreram no portão 12 (07:41, 08:05 e 08:30 UTC) acusando 49 derivados obsoletos,
