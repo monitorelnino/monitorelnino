@@ -56873,6 +56873,409 @@
    "origem": "seguimento_busca_oficial",
    "leu_documento": true,
    "hash_evidencia": "e8cddc2405f45b0edee3372c7376091c7e1525ad599f83761506fc0be0e84b18"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2105302",
+   "municipio": "Imperatriz",
+   "uf": "MA",
+   "url": "https://www.al.ma.leg.br/sitealema/wp-content/uploads/2026/03/DIARIO_041_13.03.2026___.pdf",
+   "pista_id": "c3cd9ccb8c",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19999 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "o Oficial Volume 5, N° 6351/2025 Publicação: 15/12/2025 Prefeitura Municipal de Caxias - MA Prefeito José Gentil Rosa Neto Criado pela Lei N° 2331/2017 N°. 6351"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Caxias - MA Prefeito José Gentil Rosa Neto Criado pela Lei N° 2331/2017 N°. 6351/2025 • Caxias - MA, 15/12/2025 tícios Perecíveis e Hor",
+     "dados": {
+      "tipo": "lei",
+      "numero": "2331/2017",
+      "data": "15/12/2025",
+      "trecho": "Prefeitura Municipal de Caxias - MA Prefeito José Gentil Rosa Neto Criado pela Lei N° 2331/2017 N°. 6351/2025 • Caxias - MA, 15/12/2025 tícios Perecíveis e Hor"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "15/12/2025",
+   "natureza": null,
+   "ibge": "2103000",
+   "municipio": "Caxias",
+   "uf": "MA",
+   "url": "https://caxias.ma.gov.br/wp-content/uploads/dom-files/2025/dom_111387_2.pdf",
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "c5dd531f6b",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "89fa1583c240971540a79dce4fe0a84c4636097f4dc21844281df60e143ec31c"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "7245 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "risco sanitário nos Municípios de Triunfo, Capela de Santana, Nova Santa Rita, Montenegro, Esteio, Canoas, Gravataí, Sapucaia do Sul, São Leopoldo, Cachoeirinh"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ge à saúde animal e humana. ● 17/05/2025: o O Governo do Estado do RS publica o Decreto n° 58.169 que declara estado de emergência em saúde animal para fins de",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "58.169",
+      "data": "11/05/2025",
+      "trecho": "ge à saúde animal e humana. ● 17/05/2025: o O Governo do Estado do RS publica o Decreto n° 58.169 que declara estado de emergência em saúde animal para fins de"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "11/05/2025",
+   "natureza": null,
+   "ibge": "4312401",
+   "municipio": "Montenegro",
+   "uf": "RS",
+   "url": "https://www.sema.rs.gov.br/upload/arquivos/202505/23101443-nota-tecnica-sema-001-2025-assinado-assinado-assin-250523-084107.pdf",
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "7a297f925d",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "e8d9b13f717086714bc4d09e4836f8b294b54e7918723a6cb4738c640cf72aec"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Montenegro\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4312401",
+   "municipio": "Montenegro",
+   "uf": "RS",
+   "url": "https://www.pge.rs.gov.br/upload/arquivos/202103/10083036-doe-2021-03-10.pdf",
+   "pista_id": "64ee182645",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "54cc0af574dce6bad539b35aa09cb9a5298a768a1ed1da123ef381f6b5beed20"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Montenegro\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4312401",
+   "municipio": "Montenegro",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202410/30121947-plano-estadual-saude-versao-final-site.pdf",
+   "pista_id": "fb0ce6c2ad",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "e489bcd69453ae73b807f1dfbd5ad62750755705f91b029088f6a2d44ab6e184"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4312401",
+   "municipio": "Montenegro",
+   "uf": "RS",
+   "url": "https://apers.rs.gov.br/upload/arquivos/202407/08141514-nota-tecnica-salvamento-recuperacao-documentos-atingidos-enchentes.pdf",
+   "pista_id": "eb647e3436",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"São Sebastião do Caí\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4319505",
+   "municipio": "São Sebastião do Caí",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf",
+   "pista_id": "54857dafce",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "961f098de257520b1d93b6dce7464f56e79ee3c549058fc11a72fc840a6c7352"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4319505",
+   "municipio": "São Sebastião do Caí",
+   "uf": "RS",
+   "url": "https://www.habitacao.rs.gov.br/upload/arquivos/202508/18155139-caderno-dos-delegados-concidades.pdf",
+   "pista_id": "1a4ff3523d",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Santa Rita, Parecei Novo, Salvador do Sul, São José do Sul, São Pedro da Serra, São Sebastião do Caí, Sapucaia do Sul, Tabaí, Triunfo e Tupandi, conforme figura"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "mento ao novo Coronavírus. O governo do Estado do Rio Grande do Sul, através do decreto nº 55.240 de 10 de maio de 2020, instituiu o Sistema de Distanciamento C",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "55.240",
+      "data": "07/06/2020",
+      "trecho": "mento ao novo Coronavírus. O governo do Estado do Rio Grande do Sul, através do decreto nº 55.240 de 10 de maio de 2020, instituiu o Sistema de Distanciamento C"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "07/06/2020",
+   "natureza": null,
+   "ibge": "4319505",
+   "municipio": "São Sebastião do Caí",
+   "uf": "RS",
+   "url": "https://www.canoas.rs.gov.br/wp-content/uploads/2020/06/Plano-Continge%CC%82ncia-Canoas-COVID-19-Versa%CC%83o-4-0.pdf",
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "7872305633",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "e2a80df6bdd96de175f96883d58fe77e7a6e5a09f0117a2cf10cfa177eb154d4"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"São Sebastião do Caí\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4319505",
+   "municipio": "São Sebastião do Caí",
+   "uf": "RS",
+   "url": "https://legis.senado.leg.br/sdleg-getter/documento?dm=9862195&ts=1735605051489&rendition_principal=S&disposition=inline",
+   "pista_id": "7692029e08",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "14231511f9a97fffea4cf534a029bdbd54d9983e01dee002b7517a8cffc5645e"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4322806",
+   "municipio": "Veranópolis",
+   "uf": "RS",
+   "url": "https://encantado.rs.gov.br/uploads/paginadinamica/45046/Plano_de_contingencia___Encantado___ed_1.pdf",
+   "pista_id": "3bf1df1d55",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Veranópolis\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4322806",
+   "municipio": "Veranópolis",
+   "uf": "RS",
+   "url": "https://colinas.rs.gov.br/uploads/norma/18361/COL_PLANO_DE_CONTINGNCIA_2026_R02__finalizado.pdf",
+   "pista_id": "45f8f0e033",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "d799a06078a7fb3df2e534f691a0259ff3e56cd790c334fd43223cc70aedc70d"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Câmara de Vereadores de Veranópolis - Ver.ª Adriane Maria Parise (MDB) Página Inicial Institucional Mesa Diretora Sobre a Câmara Regimento Interno Vereadores Co"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "do Município, visando a elaboração de um novo marco legal que substitua a atual Lei Municipal nº 1.687, de 1980. Ver.ª Adriane Maria Parise e Ver. Cleverson Eva",
+     "dados": {
+      "tipo": "lei",
+      "numero": "1.687",
+      "data": "27/04/1983",
+      "trecho": "do Município, visando a elaboração de um novo marco legal que substitua a atual Lei Municipal nº 1.687, de 1980. Ver.ª Adriane Maria Parise e Ver. Cleverson Eva"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "la CDP e conduzido as suas alterações pela DPM, o mesmo deixado nos arquivos da Secretaria de Educação, que estava em fase para se iniciar as assembleias. Ver.ª"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: nenhum padrão claro bateu — não classificar sozinho"
+    }
+   },
+   "categoria": null,
+   "data": "27/04/1983",
+   "natureza": "DUVIDA",
+   "ibge": "4322806",
+   "municipio": "Veranópolis",
+   "uf": "RS",
+   "url": "https://legis.camaraveranopolis.rs.gov.br/?sec=nproponente&id=12231&q=nproponente",
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "6d120d2d62",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "c9d13d8a5749484940493b5934d86c87082b3bade498211cdd32f8806e104982"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4322806",
+   "municipio": "Veranópolis",
+   "uf": "RS",
+   "url": "https://cevs.rs.gov.br/upload/arquivos/201808/27092736-cevs-2013-plano-estadual-de-contigencia-para-dengue-do-rio-grande-do-sul.pdf",
+   "pista_id": "a53fd3b774",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
   }
  ]
 }
