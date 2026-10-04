@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-04 · #548 · O `git add` do publicador ignorava tudo porque `blog/` não existe mais
+
+Três publicações morreram no portão 12 (07:41, 08:05 e 08:30 UTC) acusando 49 derivados obsoletos,
+depois de o passo de commit dizer "sem alterações a publicar". A causa estava no `git add`: ele
+listava `blog/`, que saiu em 03/10, e um pathspec que não casa faz o comando inteiro falhar — com
+`|| true` engolindo o erro. Agora cada caminho é adicionado por conta própria e o que não existe é
+declarado no log.
+
 ## 2026-10-04 · #547 · O publicador deixa de reprovar a si mesmo
 
 Duas publicações morreram no portão 12 com 49 derivados obsoletos, depois de o passo de commit dizer
