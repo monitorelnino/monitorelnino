@@ -50,7 +50,7 @@
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
       <dt>04/10/2026 · A noite abre mesmo quando o cron não dispara</dt>
-      <dd>Duas noites seguidas não abriram: o cron de 01:00 UTC dos diários não disparou (1h40 de atraso em 04/10, 5h30 em 30/09). Três defesas: crons saem dos minutos de pico (abertura 01:07, busca web :23, :41 e :53), a abertura ganha reserva às 01:37 e um vigia às 02:07 UTC a dispara se ela não abriu. Os três disparos não duplicam porque `scripts/janela_da_noite.py` decide se a noite já abriu, pela janela e pela API. O painel passa a mostrar previsto × iniciado, e o portão acusa noite sem abertura.</dd>
+      <dd>Duas noites seguidas não abriram: o cron de 01:00 UTC não disparou (1h40 de atraso em 04/10, 5h30 em 30/09). Os crons saem dos minutos de pico, a abertura ganha reserva às 01:37 e um vigia às 02:07 a dispara se preciso. Os três disparos não duplicam porque `scripts/janela_da_noite.py` decide se a noite já abriu. O painel mostra previsto × iniciado e acusa noite sem abertura.</dd>
       <dt>03/10/2026 · Credencial de terceiro não fica na cópia preservada</dt>
       <dd>Alerta do GitHub de 01/10: 18 páginas salvas como prova traziam chave de API de terceiro (Flickr e Google Maps) e eram servidas pelo nosso domínio, porque o deploy publica a raiz. A redação passa a ser na porta de preservação, antes do hash; o passado foi redigido e rechaveado, com o hash anterior registrado; um portão barra a volta. Em `coletores_base.py`, `scripts/remediar_segredos_evidencias.py` e `scripts/verificar_evidencia_sem_segredo.py`.</dd>
       <dt>03/10/2026 · As respostas de LAI entram como o que são</dt>

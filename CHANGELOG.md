@@ -11,11 +11,10 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-04 · #544 · A noite abre mesmo quando o cron não dispara
 
-Duas noites seguidas não abriram: o cron de 01:00 UTC dos diários não disparou (1h40 de atraso em
-04/10, 5h30 em 30/09). Três defesas: crons saem dos minutos de pico (abertura 01:07, busca web :23,
-:41 e :53), a abertura ganha reserva às 01:37 e um vigia às 02:07 UTC a dispara se ela não abriu.
-Os três disparos não duplicam porque `scripts/janela_da_noite.py` decide se a noite já abriu, pela
-janela e pela API. O painel passa a mostrar previsto × iniciado, e o portão acusa noite sem abertura.
+Duas noites seguidas não abriram: o cron de 01:00 UTC não disparou (1h40 de atraso em 04/10, 5h30 em
+30/09). Os crons saem dos minutos de pico, a abertura ganha reserva às 01:37 e um vigia às 02:07 a
+dispara se preciso. Os três disparos não duplicam porque `scripts/janela_da_noite.py` decide se a
+noite já abriu. O painel mostra previsto × iniciado e acusa noite sem abertura.
 
 ## 2026-10-03 · #541 · Credencial de terceiro não fica na cópia preservada
 
