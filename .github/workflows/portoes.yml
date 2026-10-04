@@ -129,6 +129,10 @@ jobs:
           # seguros porque esta função pura decide, sem adivinhar, se a noite já abriu.
           # assunto: dado
           python3 scripts/janela_da_noite.py --autoteste
+          # 04/10/2026: a migração das sobras do DOE e a porta de gravação do coletor. A
+          # publicação da noite de 03→04 morreu duas vezes por 10 sobras fora do esquema.
+          # assunto: dado
+          python3 scripts/migrar_sobras_do_doe.py --autoteste
           # assunto: dado
           python3 scripts/gerar_boletim.py --autoteste
           # assunto: texto

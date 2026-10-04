@@ -100,6 +100,13 @@ jobs:
       # Vem ANTES de recalcular porque os geradores de derivado carimbam `gerado_em` a partir dele;
       # depois, ficariam um dia atrás e o portão 12 cobraria a diferença. A data sai do repositório
       # (último commit que tocou `data/`), nunca do relógio: rodada sem dado novo não avança nada.
+      # 04/10/2026 (item 4 do bloco de prioridade): o publicador é o último elo da corrente e
+      # não aparecia no painel da noite. Nas duas falhas de 03→04 (04:51 e 05:16 UTC) o painel
+      # ficou sem a linha `publicar`, e quem olhasse de manhã veria "elo que não rodou" sem saber
+      # que ele rodou e foi REPROVADO por um portão. A hora de início vem antes de qualquer passo.
+      - name: Marcar o início do elo
+        run: echo "ELO_INICIO=$(date -u +%H:%M)" >> "$GITHUB_ENV"
+
       - name: Carimbar a data de atualização
         timeout-minutes: 3
         run: python3 scripts/frescor.py --carimbar
@@ -292,6 +299,15 @@ jobs:
           grep -q "Deploy is live" /tmp/repor_relatorio.txt \
             && echo "Domínio reposto com o site completo, atrás de senha." \
             || echo "::warning::Reposição falhou — ver o relatório acima."
+
+      # A linha do elo `publicar` no painel da noite, com a conclusão do job. Falha aqui é
+      # diferente de ausência: "publicou e reprovou no portão" tem conserto (o portão diz qual) e
+      # "não rodou" tem outro (o vigia da abertura). O painel passa a distinguir os dois.
+      - name: Registrar no painel da noite
+        if: always()
+        run: |
+          python3 scripts/painel_da_noite.py --registrar publicar \
+            --inicio "${ELO_INICIO:-}" --conclusao "${{ job.status }}" || true
 
       - name: Resumo no job
         if: always()
