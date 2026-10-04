@@ -79,6 +79,37 @@ def linha(elo: str, noite: str, inicio: str, fim: str, conclusao: str) -> dict:
             "conclusao": conclusao or "desconhecida"}
 
 
+# 04/10/2026: o horário PREVISTO de cada elo. Só a abertura tem cron; os outros são acionados pelo
+# término do anterior, e o previsto deles é uma estimativa de ordem, não um compromisso de relógio.
+# Está aqui para o painel poder dizer "previsto × iniciado", que é o que mostra a noite ESCORREGANDO
+# antes de ela acabar — um elo que começa 3h depois do previsto ainda roda, e ninguém via.
+PREVISTO_UTC = {"diarios": "01:07", "descoberta": "05:00", "evidencias": "06:00",
+                "juiz": "07:00", "sinais": "08:00", "triagem": "08:30", "publicar": "09:05"}
+
+
+def previsto_x_iniciado(linhas: list, noite: str, elos=ELOS) -> list:
+    """Uma linha por elo: previsto, iniciado e a diferença. Função pura.
+
+    Elo sem registro aparece com `iniciado: None` — e é esse o caso que importa: o painel existe
+    para que o elo que NÃO rodou apareça, e não só o que rodou devagar.
+    """
+    por_elo = {l.get("elo"): l for l in (linhas or []) if l.get("noite") == noite}
+    fora = []
+    for elo in elos:
+        l = por_elo.get(elo)
+        iniciado = l.get("inicio") if l else None
+        previsto = PREVISTO_UTC.get(elo)
+        fora.append({"elo": elo, "previsto": previsto, "iniciado": iniciado,
+                     "atraso_min": minutos_entre(previsto, iniciado) if (previsto and iniciado)
+                     else None})
+    return fora
+
+
+def noite_abriu(linhas: list, noite: str) -> bool:
+    """A noite abriu, isto é: o elo de abertura tem linha nesta noite? Função pura."""
+    return any(l.get("noite") == noite and l.get("elo") == ELOS[0] for l in (linhas or []))
+
+
 def elos_que_faltaram(linhas: list, noite: str, elos=ELOS) -> list:
     """Os elos da corrente sem linha nesta noite. Função pura."""
     presentes = {l.get("elo") for l in linhas if l.get("noite") == noite}
@@ -118,6 +149,18 @@ def _autoteste() -> int:
     ok("noite completa não acusa nada",
        elos_que_faltaram([{"noite": "n", "elo": e} for e in ELOS], "n") == [])
     ok("a busca web não é elo da corrente", "busca_web" not in ELOS)
+
+    px = previsto_x_iniciado([{"noite": "n", "elo": "diarios", "inicio": "02:40"}], "n")
+    ok("previsto × iniciado cobre todos os elos", len(px) == len(ELOS))
+    ok("o atraso do elo é medido do previsto",
+       px[0]["atraso_min"] == 93 and px[0]["previsto"] == "01:07")
+    ok("elo sem registro aparece como não iniciado",
+       px[1]["iniciado"] is None and px[1]["atraso_min"] is None)
+    ok("noite com o elo de abertura registrado abriu",
+       noite_abriu([{"noite": "n", "elo": "diarios"}], "n"))
+    ok("noite só com elos posteriores NÃO abriu",
+       not noite_abriu([{"noite": "n", "elo": "juiz"}], "n"))
+    ok("painel vazio não diz que abriu", not noite_abriu([], "n"))
     ok("a governança diz por que o painel existe", "não rodou" in GOV or "NÃO rodou" in GOV)
 
     import dis
@@ -132,7 +175,7 @@ def _autoteste() -> int:
        not ({"gravar", "gravar_em", "write_text"} & nomes))
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
-          else "✓ AUTOTESTE OK — 18 casos, sem rede e sem escrita.")
+          else "✓ AUTOTESTE OK — 24 casos, sem rede e sem escrita.")
     return 1 if falhas else 0
 
 
@@ -180,11 +223,25 @@ def main() -> int:
     for l in desta:
         print(f"   {l['elo']:12s} {l['inicio']}→{l['fim']}  {str(l['minutos']) + ' min':>8s}  "
               f"{'na janela' if l['dentro_da_janela'] else 'FORA DA JANELA':14s}  {l['conclusao']}")
+    print("   previsto × iniciado:")
+    for x in previsto_x_iniciado(linhas, ultima):
+        quando = x["iniciado"] or "não iniciou"
+        atraso = f"+{x['atraso_min']} min" if x["atraso_min"] is not None else ""
+        print(f"     {x['elo']:12s} {x['previsto']} → {quando:12s} {atraso}")
     faltaram = elos_que_faltaram(linhas, ultima)
     fora = [l["elo"] for l in desta if not l["dentro_da_janela"]]
     if faltaram:
         print(f"   elo(s) que não rodaram: {', '.join(faltaram)}")
     if "--portao" in sys.argv:
+        # 04/10/2026: a noite que NÃO ABRIU é um caso à parte, e mais grave que elo faltando. Nas
+        # noites de 02→03 e 03→04 o cron não disparou e nada acusou: o painel não tinha linha
+        # nenhuma, então "elos que faltaram" seria a lista inteira, sem dizer que o problema foi a
+        # abertura. Aqui ela é nomeada, porque é ela que tem conserto próprio (reserva e vigia).
+        if not noite_abriu(linhas, ultima):
+            print(f"✗ PAINEL DA NOITE: a noite de {ultima} não abriu — o elo "
+                  f"`{ELOS[0]}` não tem registro. Ver o vigia da abertura "
+                  f"(.github/workflows/vigia_da_abertura.yml).")
+            return 1
         if faltaram:
             print(f"✗ PAINEL DA NOITE: {len(faltaram)} elo(s) sem registro na noite de {ultima}: "
                   f"{', '.join(faltaram)}")

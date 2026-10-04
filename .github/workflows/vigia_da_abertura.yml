@@ -1,0 +1,89 @@
+# vigia_da_abertura.yml — se a noite não abriu, abre
+# ===================================================
+# MEDIDO DUAS VEZES (central, 03/10 02:30 UTC e 04/10 02:40 UTC): a corrente noturna não abriu. O
+# cron de `noturno_diarios` estava em 01:00 UTC e, uma hora e quarenta depois, não havia disparado.
+# Em 30/09 o mesmo cron abriu com 5h30 de atraso e morreu no teto do job. O cron do GitHub é de
+# MELHOR ESFORÇO — a documentação diz isso em letra de forma —, e minuto redondo é o pior horário
+# possível, porque é onde todo mundo agenda.
+#
+# Três defesas foram instaladas em 04/10, e esta é a terceira:
+#   1. minuto fora do pico (abertura às 01:07; busca web em :23, :41 e :53);
+#   2. cron de RESERVA 30 min depois, idempotente pela guarda de abertura;
+#   3. este VIGIA, às 02:07 UTC (23h07 de Brasília), que não é um terceiro cron da coleta: ele é um
+#      job de dois minutos que PERGUNTA se a noite abriu e, se não abriu, dispara a corrente e
+#      registra o atraso.
+#
+# A diferença entre o vigia e mais um cron importa: um terceiro cron de coleta teria a mesma chance
+# de ser descartado e, se os três disparassem, a noite rodaria três vezes. O vigia é leve (sem
+# dependências, sem navegador), então é o tipo de job que o GitHub atrasa menos — e, mesmo
+# atrasado, ele continua correto, porque pergunta pelo ESTADO da janela, não pelo relógio.
+#
+# Ele NUNCA dispara fora da janela de 22h às 06h de Brasília: disparar às 10h levaria coleta e
+# commit para o horário de trabalho da editoria, que é o que a janela existe para evitar.
+name: Vigia da abertura da noite
+
+on:
+  schedule:
+    - cron: "7 2 * * *"   # 23h07 de Brasília — uma hora depois da abertura prevista
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write        # para disparar a corrente quando ela não abriu
+
+concurrency:
+  group: vigia-da-abertura
+  cancel-in-progress: false
+
+jobs:
+  vigiar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with: { persist-credentials: false }
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with: { python-version: "3.12" }
+
+      - name: A noite abriu?
+        id: olhar
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          JANELA="$(python3 scripts/janela_da_noite.py --inicio-da-janela)"
+          NOITE="$(python3 scripts/janela_da_noite.py --noite)"
+          ATRASO="$(python3 scripts/janela_da_noite.py --atraso)"
+          EXECUCOES="$(gh run list --workflow=noturno_diarios.yml --limit 20 \
+            --json databaseId,createdAt,status \
+            --jq "[.[] | select(.createdAt >= \"$JANELA\")] | length")"
+          echo "noite de $NOITE · janela desde $JANELA · execuções da corrente: ${EXECUCOES:-0}"
+          echo "noite=$NOITE" >> "$GITHUB_OUTPUT"
+          echo "atraso=$ATRASO" >> "$GITHUB_OUTPUT"
+          if [ "${EXECUCOES:-0}" -gt 0 ]; then
+            echo "abriu=sim" >> "$GITHUB_OUTPUT"
+          else
+            echo "abriu=nao" >> "$GITHUB_OUTPUT"
+          fi
+
+      # O disparo é da CORRENTE, só do primeiro elo: os seguintes são acionados pelo término dele,
+      # como em qualquer noite. A busca web é independente e tem os seus cinco horários, então o
+      # vigia também a cobre — ela é a outra coisa que a noite precisa e que nenhum elo aciona.
+      - name: Abrir a noite que não abriu
+        if: steps.olhar.outputs.abriu == 'nao'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "::warning::a noite de ${{ steps.olhar.outputs.noite }} não abriu em ${{ steps.olhar.outputs.atraso }} min; o vigia está disparando a corrente"
+          gh workflow run noturno_diarios.yml
+          gh workflow run busca_web_cadencia.yml || true
+
+      - name: Resumo
+        if: always()
+        run: |
+          {
+            echo "### Vigia da abertura"
+            echo ""
+            echo "- noite: ${{ steps.olhar.outputs.noite }}"
+            echo "- abriu sozinha: ${{ steps.olhar.outputs.abriu }}"
+            echo "- atraso da abertura: ${{ steps.olhar.outputs.atraso }} min"
+          } >> "$GITHUB_STEP_SUMMARY"

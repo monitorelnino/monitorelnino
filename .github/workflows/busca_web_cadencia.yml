@@ -41,11 +41,14 @@ on:
   #
   # A janela é 22h–06h de Brasília (01:00–09:00 UTC). Cinco rodadas, de duas em duas horas:
   schedule:
-    - cron: "10 1 * * *"   # 22h10
-    - cron: "10 3 * * *"   #  0h10
-    - cron: "10 5 * * *"   #  2h10
-    - cron: "10 7 * * *"   #  4h10
-    - cron: "40 8 * * *"   #  5h40, a última antes de fechar a janela
+    # 04/10/2026: os cinco horários saem dos minutos de pico (:10 e :40) pelo mesmo motivo da
+    # abertura — medido duas vezes, o cron de minuto redondo não disparou. As cinco rodadas
+    # continuam de duas em duas horas dentro da janela.
+    - cron: "23 1 * * *"   # 22h23
+    - cron: "23 3 * * *"   #  0h23
+    - cron: "41 5 * * *"   #  2h41
+    - cron: "41 7 * * *"   #  4h41
+    - cron: "53 8 * * *"   #  5h53, a última antes de fechar a janela
   workflow_dispatch:
     inputs:
       forcar:
