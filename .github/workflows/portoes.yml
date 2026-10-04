@@ -142,6 +142,14 @@ jobs:
           python3 scripts/orcamento_da_noite.py --autoteste
           # assunto: dado
           python3 scripts/painel_dos_temporizadores.py --autoteste
+          # 04/10/2026 (20:30): o GitHub rejeitou dois workflows por cinco horas, e nenhum
+          # portão viu — `run` e `with` no mesmo passo é válido para o YAML e inválido para
+          # ele. A trava estrutural está em `validar_workflows.py`; este portão pergunta ao
+          # próprio GitHub se ele conseguiu ler cada arquivo.
+          # assunto: dado
+          python3 scripts/verificar_workflow_aceito.py --autoteste
+          # assunto: dado
+          python3 scripts/verificar_workflow_aceito.py
           # 04/10/2026: a migração das sobras do DOE e a porta de gravação do coletor. A
           # publicação da noite de 03→04 morreu duas vezes por 10 sobras fora do esquema.
           # assunto: dado
