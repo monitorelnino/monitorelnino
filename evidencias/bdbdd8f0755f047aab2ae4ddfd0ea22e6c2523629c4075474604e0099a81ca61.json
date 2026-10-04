@@ -1,0 +1,19 @@
+{
+ "fonte": "https://dadosabertos.saude.gov.br/dataset?q=gripal",
+ "medido_em": "2026-10-04",
+ "estado_da_fonte": {
+  "anos_oferecidos": [
+   2020,
+   2021,
+   2022,
+   2023,
+   2024
+  ],
+  "api": "https://notifica-prd-es.saude.gov.br/desc-esus-notifica-estado-*/_search",
+  "api_erro": "HTTPError: HTTP Error 403: Forbidden",
+  "csv_erro": "HTTPError: HTTP Error 403: Forbidden",
+  "csv_exemplo": "https://s3.sa-east-1.amazonaws.com/ckan.saude.gov.br/SGL/2024/uf=AC/lote=1/part-00000-d6ff2750-bce1-41eb-a79e-6663000ae993.c000.csv",
+  "arquivos_no_ano_mais_recente": 28
+ },
+ "decisao": "fonte_bloqueada"
+}

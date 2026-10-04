@@ -1,6 +1,6 @@
 {
  "_governanca": "SRAG hospitalizada — nacional e por UF (§36, catálogo). Peso zero, sem nota, sem faixa. O Monitor não atribui casos ao El Niño. A série é a contagem de notificações de SRAG hospitalizada no Sivep-Gripe (Ministério da Saúde), por UF de residência e semana epidemiológica de primeiros sintomas, sem estimativa de dados recentes. Canal endêmico: mediana/p75/p90 de 2019–2025. Últimas 4 SE marcadas como incompletas: notificação e resultado laboratorial chegam depois, e o número dessas semanas ainda sobe. Diferente da série anterior (InfoGripe), esta NÃO traz estimativa de dados recentes — é a contagem como está no sistema.",
- "gerado_em": "01/10/2026",
+ "gerado_em": "04/10/2026",
  "fonte": "https://dadosabertos.saude.gov.br/dataset/srag-2019-a-2026",
  "sistema": "SIVEP-Gripe (Ministério da Saúde)",
  "indicador": "srag",
@@ -25,7 +25,17 @@
   2025,
   2026
  ],
- "anos_reusados_do_cache": [],
+ "anos_reusados_do_cache": [
+  2019,
+  2020,
+  2021,
+  2022,
+  2023,
+  2024
+ ],
+ "anos_republicados_por_falha": [],
+ "lacunas_por_ano": {},
+ "ultimo_dado_valido_em": "2026-10-04",
  "serie": {
   "SP": {
    "2019-30": 238,
