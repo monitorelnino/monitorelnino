@@ -38,6 +38,15 @@ COLETORES = (
     "coletar_diarios_consorciados.py",
     "coletar_edicoes_doe.py",
     "coletar_recursos_resposta.py",
+    # 05/10/2026: os coletores que passaram a gravar pela porta única
+    # (`scripts/pistas.sincronizar` / `gravar_lote`). Entram aqui porque o furo que a migração
+    # abriu foi exatamente este: um ajudante que chamasse `coletores_base.gravar` passaria por
+    # fora da troca do autoteste e gravaria a fixture no arquivo real — e gravou, duas pistas de
+    # fixture em `pistas_imprensa.json`, antes de a porta passar a receber `ler_fn`/`gravar_fn`.
+    "descobrir_planos.py",
+    "seguir_pistas.py",
+    "monitorar_redes_oficiais.py",
+    "monitorar_busca_web.py",
 )
 # Arquivos de banco que um autoteste jamais deve tocar. São os que guardam o ciclo inteiro: perder
 # um deles é perder evidência, não refazer uma conta.
@@ -49,6 +58,9 @@ BANCO = (
     "doe_ocorrencias.json",
     "resposta/recursos_liberados.json",
     "evidencias.json",
+    "pistas_descobertas.json",
+    "pistas_sinais.json",
+    "pistas_rejeitadas.json",
 )
 
 

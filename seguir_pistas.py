@@ -111,10 +111,15 @@ def candidatos_busca(pista, buscar):
 def seguir(fila, hoje, buscar_html_=buscar_html, consultar_qd_=None, buscar_web_=None, cobertura_qd=frozenset(),
            limite=20, refazer_dias=7):
     """Segue até `limite` notícias pendentes A/B ainda não seguidas (ou seguidas há mais de `refazer_dias`).
-    Devolve estatística. Acrescenta pistas novas ao fim da fila; nunca altera status de ninguém."""
+    Devolve estatística. Acrescenta pistas novas ao fim da fila; nunca altera status de ninguém.
+
+    05/10/2026 (item 1 do handover da noite confiável): a extensão de `fila["pistas"]` continua,
+    porque é dela que saem a deduplicação da rodada e os autotestes — mas ela é **só em memória**.
+    Quem GRAVA é `scripts/pistas.gravar_lote`, pela lista em `est["novas_lista"]`, e este módulo não
+    abre mais `data/pistas_imprensa.json` para escrita."""
     urls_existentes = {p.get("url") for p in fila["pistas"]}
     d_hoje = datetime.datetime.strptime(hoje, "%d/%m/%Y").date()
-    est = {"seguidas": 0, "candidatos": 0, "novas": 0, "rotas_falharam": 0}
+    est = {"seguidas": 0, "candidatos": 0, "novas": 0, "rotas_falharam": 0, "novas_lista": []}
     novas = []
     for p in fila["pistas"]:
         if est["seguidas"] >= limite:
@@ -161,6 +166,7 @@ def seguir(fila, hoje, buscar_html_=buscar_html, consultar_qd_=None, buscar_web_
         p["seguimento"] = {"data": hoje, "candidatos": len(cands), "pistas_novas": n_novas, "falhas": falhas}
         est["novas"] += n_novas
     fila["pistas"].extend(novas)
+    est["novas_lista"] = novas
     return est
 
 
@@ -251,6 +257,25 @@ if __name__ == "__main__":
         web = None
     e = seguir(fila, hoje_editorial().strftime("%d/%m/%Y"), consultar_qd_=qd, buscar_web_=web,
                cobertura_qd=cob, limite=a.limite, refazer_dias=a.refazer_dias)
-    gravar("pistas_imprensa.json", fila)
+    # A fila é gravada pela única porta; `seguir()` só planeja. O `seguimento` que ele marcou nas
+    # pistas de origem é estado da pista existente, não pista nova: ele segue gravado aqui.
+    from scripts.pistas import gravar_lote
+    balanco = gravar_lote(e["novas_lista"], origem="seguimento")
+    fila_em_disco = ler("pistas_imprensa.json") or {"pistas": []}
+    por_id = {p.get("id"): p for p in fila_em_disco.get("pistas") or []}
+    novos_ids = {n.get("id") for n in e["novas_lista"]}
+    for p in fila["pistas"]:
+        if p.get("id") in novos_ids or not p.get("seguimento"):
+            continue
+        alvo_em_disco = por_id.get(p.get("id"))
+        if alvo_em_disco is not None:
+            alvo_em_disco["seguimento"] = p["seguimento"]
+    from scripts.pistas import sincronizar as sincronizar_pistas
+    sincronizar_pistas("pistas_imprensa.json", fila_em_disco, origem="seguimento",
+                       ler_fn=ler, gravar_fn=gravar)
+    if balanco["recusadas"]:
+        print(f"  {balanco['recusadas']} candidato(s) recusado(s) pela fila, com motivo em "
+              f"data/pistas_rejeitadas.json: {balanco['motivos']}")
+    e["novas"] = balanco["gravadas"]
     print(f"seguimento: {e['seguidas']} notícia(s) seguida(s) · {e['candidatos']} candidato(s) · {e['novas']} pista(s) nova(s) "
           f"· {e['rotas_falharam']} rota(s) indisponível(is) · SearXNG={'sim' if web else 'não'} · QD={'sim' if qd else 'não'}")

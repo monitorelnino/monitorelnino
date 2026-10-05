@@ -65,6 +65,24 @@ def ler_esquema(caminho=ESQUEMA) -> dict:
 # primeira pode entrar no índice errada, a segunda já não vai a lugar nenhum sem alguém olhar.
 DESTINOS_FORA_DA_FILA = ("conferencia_resposta", "quarentena", "rejeitada")
 
+# 05/10/2026 — O PORTÃO QUARENTENA; ELE NÃO BLOQUEIA MAIS A PUBLICAÇÃO.
+#
+# Medido na noite de 04→05/10: a publicação reprovou OITO vezes entre 21:23 e 03:57 BRT, e o site
+# ficou com dado de 04/10. A causa foram 655 pistas novas sem `url_final`, `tipo`, `alvo` nem
+# `nivel`, de coletores que nunca foram migrados para o esquema de 03/10 (654 de
+# `rede_social_oficial`). O portão acusou o certo — pista malformada não pode ir ao juiz —, mas a
+# consequência era desproporcional: seiscentas sobras de coletor paravam o site inteiro.
+#
+# A regra passa a ser esta: **pista fora do esquema sai da fila ativa, e a publicação segue**. Quem
+# a tira é `quarentenar()`, aqui, e ela fica contável por origem no painel. Bloqueio só quando a
+# quarentena FALHA — aí sim o dado malformado continuaria na fila ativa, a caminho do juiz, e
+# publicar seria publicar o errado.
+#
+# A porta de entrada é consertada em outro lugar, e é lá que ela tem de ser consertada:
+# `scripts/pistas.py` é o único escritor da fila, e `scripts/verificar_escritor_de_pista.py`
+# reprova no PR quem abrir o arquivo por fora. Este portão é a rede de segurança, não a regra.
+MOTIVO_DA_QUARENTENA = "fora do esquema de schemas/pista.json"
+
 
 def fora_da_fila_ativa(pista: dict) -> bool:
     """A pista já foi tirada da fila ativa, e portanto não pode virar registro? Função pura."""
@@ -111,6 +129,43 @@ def problemas_de_esquema(pistas: list, esquema: dict, vale_a_partir_de=VALE_A_PA
         if p.get("tipo") == "decreto":
             ruins.append(f"{ident}: pista de decreto na fila de planos — vai para a base oficial")
     return ruins
+
+
+def quarentenar(pistas: list, esquema: dict, vale_a_partir_de=VALE_A_PARTIR_DE,
+                hoje_iso: str = "") -> tuple:
+    """(pistas, movidas) — tira da fila ativa o que está fora do esquema. FUNÇÃO PURA.
+
+    Devolve uma lista NOVA; nada do original se perde. A pista movida ganha `quarentena: True`,
+    `destino: "quarentena"`, o motivo e o campo que faltou — ela continua no arquivo, contável e
+    legível, e `fora_da_fila_ativa()` passa a dizer que ela não vai ao juiz.
+
+    `movidas` é {origem_do_coletor: contagem}, que é o que o painel precisa: "quem está gravando
+    errado" responde-se por coletor, não por pista.
+    """
+    obrigatorios = list((esquema.get("obrigatorios") or {}).keys())
+    ruins = {x.split(":", 1)[0] for x in problemas_de_esquema(pistas, esquema, vale_a_partir_de,
+                                                              so_fila_ativa=True)}
+    fora = []
+    movidas = {}
+    for p in pistas or []:
+        ident = str(p.get("id") or p.get("url_final") or p.get("url") or "?")[:12]
+        registrado = str(p.get("registrado_em") or "")[:10]
+        alcancada = bool(registrado) and registrado >= vale_a_partir_de
+        if not alcancada or fora_da_fila_ativa(p) or ident not in ruins:
+            fora.append(p)
+            continue
+        faltam = [c for c in obrigatorios if not p.get(c)]
+        nova_pista = dict(p)
+        nova_pista["quarentena"] = True
+        nova_pista["destino"] = "quarentena"
+        nova_pista["motivo_da_quarentena"] = (
+            MOTIVO_DA_QUARENTENA + (f": sem {', '.join(faltam)}" if faltam else ""))
+        if hoje_iso:
+            nova_pista["quarentenada_em"] = hoje_iso
+        chave = str(p.get("origem_do_coletor") or p.get("origem") or "?")
+        movidas[chave] = movidas.get(chave, 0) + 1
+        fora.append(nova_pista)
+    return fora, movidas
 
 
 def saude_da_fila(pistas: list, historico: list, hoje_iso: str) -> dict:
@@ -211,54 +266,114 @@ def _autoteste() -> int:
                saude_da_fila(abertas, [{"tamanho": 3}, {"tamanho": 2}, {"tamanho": 1}], "2026-10-03")["alertas"]))
     ok("fila vazia não quebra", saude_da_fila([], [], "2026-10-03")["tamanho"] == 0)
 
+    # ---- a quarentena (05/10/2026) ----
+    ruim = {"id": "r1", "registrado_em": "2026-10-05", "origem_do_coletor": "rede_social_oficial",
+            "url": "https://x.ms.gov.br/a"}
+    nova, movidas = quarentenar([boa, ruim], esquema, hoje_iso="2026-10-05")
+    ok("a quarentena tira da fila ativa só o que está fora do esquema",
+       problemas_de_esquema(nova, esquema, so_fila_ativa=True) == [])
+    ok("a quarentena não perde pista: as duas continuam no arquivo", len(nova) == 2)
+    ok("a pista boa passa intacta pela quarentena", nova[0] == boa)
+    ok("a pista movida fica marcada", nova[1]["quarentena"] is True
+       and nova[1]["destino"] == "quarentena")
+    ok("o motivo nomeia o campo que faltou", "url_final" in nova[1]["motivo_da_quarentena"])
+    ok("a data da quarentena fica registrada", nova[1]["quarentenada_em"] == "2026-10-05")
+    ok("a contagem é por coletor, que é quem grava errado",
+       movidas == {"rede_social_oficial": 1})
+    ok("pista antiga não é quarentenada — a regra não a alcança",
+       quarentenar([dict(ruim, registrado_em="2026-09-01")], esquema)[1] == {})
+    ok("pista já fora da fila ativa não é quarentenada de novo",
+       quarentenar([dict(ruim, quarentena=True)], esquema)[1] == {})
+    ok("fila só de pistas boas não move nada", quarentenar([boa], esquema) == ([boa], {}))
+    ok("fila vazia não quebra a quarentena", quarentenar([], esquema) == ([], {}))
+    ok("a quarentena é idempotente: a segunda passada não move nada",
+       quarentenar(nova, esquema)[1] == {})
+
     import dis
     nomes = set()
     for nome_obj, obj in list(globals().items()):
+        # `main` escreve de propósito desde 05/10: é ela que aplica a quarentena. A trava passa a
+        # valer para as funções PURAS, que é onde ela sempre importou — as que o resto do projeto
+        # chama para decidir sem efeito colateral.
         if nome_obj in ("_autoteste", "main"):
             continue
         codigo = getattr(obj, "__code__", None)
         if codigo is not None:
             nomes |= {i.argval for i in dis.get_instructions(codigo) if isinstance(i.argval, str)}
-    ok("trava estrutural: o portão não escreve",
+    ok("trava estrutural: as funções puras do portão não escrevem",
        not ({"gravar", "gravar_em", "write_text", "write_bytes"} & nomes))
+    ok("trava estrutural: quarentenar devolve lista nova, não altera a de entrada",
+       (lambda orig: (quarentenar(orig, esquema), orig == [dict(ruim)])[1])([dict(ruim)]))
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
-          else "✓ AUTOTESTE OK — 21 casos, sem rede e sem escrita.")
+          else "✓ AUTOTESTE OK — 34 casos, sem rede e sem escrita.")
     return 1 if falhas else 0
 
 
 def main() -> int:
     if "--autoteste" in sys.argv:
         return _autoteste()
-    from coletores_base import ler, hoje_editorial
+    from coletores_base import ler, gravar, hoje_editorial
     esquema = ler_esquema()
     hoje = hoje_editorial().isoformat()
-    ruins, alertas = [], []
+    so_conferir = "--sem-quarentenar" in sys.argv
+    bloqueios, alertas, quarentenadas = [], [], {}
+
     for nome in FILAS:
         doc = ler(nome)
         if not doc:
             continue
         pistas = doc.get("pistas") or doc.get("itens") or []
-        ruins += [f"{nome}: {x}" for x in problemas_de_esquema(pistas, esquema, so_fila_ativa=True)]
+        ativas = problemas_de_esquema(pistas, esquema, so_fila_ativa=True)
+
+        if ativas and not so_conferir:
+            # A QUARENTENA, e a prova de que ela funcionou. A escrita só acontece se a conferência
+            # na lista nova vier limpa: gravar primeiro e conferir depois deixaria o arquivo pior
+            # do que estava se a função tivesse defeito.
+            novas, movidas = quarentenar(pistas, esquema, hoje_iso=hoje)
+            if problemas_de_esquema(novas, esquema, so_fila_ativa=True):
+                bloqueios.append(f"{nome}: a quarentena NÃO limpou a fila ativa — "
+                                 f"{len(ativas)} pista(s) seguem a caminho do juiz")
+                continue
+            chave = "pistas" if doc.get("pistas") is not None else "itens"
+            doc[chave] = novas
+            doc["quarentena"] = {"em": hoje, "motivo": MOTIVO_DA_QUARENTENA, "por_origem": movidas}
+            gravar(nome, doc)
+            for origem, n in sorted(movidas.items()):
+                quarentenadas[origem] = quarentenadas.get(origem, 0) + n
+            pistas = novas
+        elif ativas:
+            bloqueios.append(f"{nome}: {len(ativas)} pista(s) nova(s) da fila ativa fora do "
+                             f"esquema (--sem-quarentenar: nada foi movido)")
+
         declaradas = [x for x in problemas_de_esquema(pistas, esquema)
                       if x not in problemas_de_esquema(pistas, esquema, so_fila_ativa=True)]
         if declaradas:
             alertas.append(f"{nome}: {len(declaradas)} pista(s) fora do esquema já tirada(s) da "
                            f"fila (conferência ou quarentena) — não bloqueia, mas fica visível")
         if nome == "pistas_imprensa.json":
-            s = saude_da_fila(pistas, (ler("saude_da_fila.json") or {}).get("rodadas") or [], hoje)
-            print(f"fila de planos: {s['tamanho']} aberta(s) · idade mediana "
-                  f"{s['idade_mediana']} dia(s) · nível C {s['fracao_c']:.0%}")
-            alertas += s["alertas"]
+            s_fila = saude_da_fila(pistas, (ler("saude_da_fila.json") or {}).get("rodadas") or [],
+                                   hoje)
+            print(f"fila de planos: {s_fila['tamanho']} aberta(s) · idade mediana "
+                  f"{s_fila['idade_mediana']} dia(s) · nível C {s_fila['fracao_c']:.0%}")
+            alertas += s_fila["alertas"]
 
+    if quarentenadas:
+        total = sum(quarentenadas.values())
+        print(f"⚠ quarentena: {total} pista(s) fora do esquema saíram da fila ativa — "
+              "a publicação SEGUE. Por coletor:")
+        for origem, n in sorted(quarentenadas.items(), key=lambda kv: -kv[1]):
+            print(f"   - {origem}: {n}")
+        print("   Conserto da porta de entrada: scripts/pistas.py é o único escritor da fila.")
     for a in alertas:
         print(f"⚠ saúde da fila: {a}")
-    if ruins:
-        print(f"✗ ESQUEMA DA PISTA: {len(ruins)} pista(s) nova(s) fora do esquema:")
-        for r in ruins[:20]:
-            print("   - " + r)
+    if bloqueios:
+        print(f"✗ ESQUEMA DA PISTA: {len(bloqueios)} fila(s) que a quarentena não resolveu:")
+        for b in bloqueios:
+            print("   - " + b)
         return 1
-    print(f"✓ ESQUEMA DA PISTA OK — nenhuma pista nova DA FILA ATIVA fora de schemas/pista.json"
+    print("✓ ESQUEMA DA PISTA OK — nenhuma pista fora de schemas/pista.json na fila ativa"
+          + (f"; {sum(quarentenadas.values())} quarentenada(s)" if quarentenadas else "")
           + (f"; {len(alertas)} alerta(s) de saúde da fila" if alertas else ""))
     return 0
 

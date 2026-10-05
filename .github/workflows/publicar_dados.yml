@@ -198,6 +198,25 @@ jobs:
         timeout-minutes: 5
         run: python3 gerar_financiamento_semana.py
 
+      # 05/10/2026 (item 1.3 do handover da noite confiável) — A QUARENTENA, ANTES DOS PORTÕES.
+      #
+      # A publicação reprovou OITO vezes entre 21:23 e 03:57 BRT de 04→05/10, e o site ficou com
+      # dado de 04/10, por 655 pistas novas sem `url_final`, `tipo`, `alvo` nem `nivel` — de
+      # coletores que nunca foram migrados para o esquema de 03/10. O portão acusava o certo e a
+      # consequência era desproporcional.
+      #
+      # Aqui a pista fora do esquema SAI DA FILA ATIVA e a publicação segue. Ela continua no
+      # arquivo, marcada, contável por coletor, e o passo imprime quem gravou errado. Bloqueio só
+      # quando a quarentena FALHA — aí o dado malformado seguiria a caminho do juiz. Por isso o
+      # passo NÃO é `continue-on-error`: ele é a condição de a fila ativa estar limpa.
+      #
+      # A porta de entrada está fechada em outro lugar: `scripts/pistas.py` é o único escritor da
+      # fila, e `scripts/verificar_escritor_de_pista.py` reprova no PR quem abrir o arquivo por
+      # fora. Este passo é a rede de segurança da corrente, não a regra.
+      - name: Quarentenar pista fora do esquema (a publicação não para por ela)
+        timeout-minutes: 4
+        run: python3 scripts/verificar_esquema_de_pista.py | tee -a "$GITHUB_STEP_SUMMARY"
+
       - name: Regenerar a cadeia canônica de derivados
         timeout-minutes: 8
         # 04/10/2026: era `--idempotencia`, que mede determinismo e não comparação
