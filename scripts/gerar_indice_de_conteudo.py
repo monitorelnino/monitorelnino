@@ -94,8 +94,17 @@ def como_html(paginas: dict) -> str:
          "<style>",
          "body{font-family:system-ui,sans-serif;max-width:60rem;margin:2rem auto;padding:0 1rem;",
          "line-height:1.5;color:#1b1b1b}",
-         "h1{font-weight:300;font-size:1.8rem} h2{font-weight:300;margin-top:2.5rem}",
-         "h3{font-weight:400;font-size:1rem;margin:1.5rem 0 .4rem;color:#444}",
+         # 05/10/2026 — A ESCALA TIPOGRÁFICA VALE AQUI TAMBÉM, e o portão 18 reprovou por isso.
+         # `1.8rem` computa 28,8 px, `.92rem` dá 14,72, `.82rem` dá 13,12 — todos FORA da escala
+         # fixa do projeto (12 · 14 · 16 · 18 · 22 · 28 · 36 · 48). Esta página é interna e não
+         # carrega `assets/tokens.css`, então os valores entram em px literal, da própria escala:
+         # é o único jeito de uma página autônoma respeitá-la, e o portão confere o computado.
+         # Mesmo critério das outras duas correções desta série: interna fica fora do SEO, porque
+         # metadado de compartilhamento não faz sentido nela; não fica fora de design nem de
+         # acessibilidade, porque quem lê é uma pessoa.
+         "h1{font-weight:300;font-size:28px} h2{font-weight:300;font-size:22px;margin-top:2.5rem}",
+         "h3{font-weight:400;font-size:16px;margin:1.5rem 0 .4rem;color:#444}",
+         "h2 small{font-size:14px}",
          ".aviso{background:#f6f3ec;border-left:3px solid #7C4A34;padding:.8rem 1rem;margin:1rem 0}",
          # `table-layout:fixed` + quebra em qualquer ponto: sem isso o identificador longo
          # (`financiamento.dinheiroElNino.forma_aplicacao.legenda`) força a tabela a 403 px e a
@@ -104,13 +113,13 @@ def como_html(paginas: dict) -> str:
          # também a lê no celular, e rolagem lateral em tabela é onde a leitura se perde.
          "table{border-collapse:collapse;width:100%;table-layout:fixed;margin:.4rem 0 1.2rem}",
          "td,th{border-bottom:1px solid #e3e3e3;padding:.45rem .5rem;vertical-align:top;",
-         "font-size:.92rem;text-align:left;overflow-wrap:anywhere;word-break:break-word}",
-         "th{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#666}",
+         "font-size:14px;text-align:left;overflow-wrap:anywhere;word-break:break-word}",
+         "th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#666}",
          "th:first-child{width:5.5rem}",
-         "code{font-family:ui-monospace,monospace;font-size:.82rem;color:#5E7C93;",
+         "code{font-family:ui-monospace,monospace;font-size:12px;color:#5E7C93;",
          "overflow-wrap:anywhere}",
          "@media (max-width:28rem){body{padding:0 .6rem}td,th{padding:.4rem .25rem;",
-         "font-size:.85rem}th:first-child{width:4rem}}",
+         "font-size:12px}th:first-child{width:4rem}}",
          ".molde{color:#7C4A34} .ex{color:#666;font-style:italic}",
          "</style></head><body>",
          "<h1>Índice de conteúdo</h1>",
