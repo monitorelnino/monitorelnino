@@ -1,11 +1,11 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-10-05",
- "total_pistas": 11437,
- "total_municipios": 380,
+ "total_pistas": 11440,
+ "total_municipios": 381,
  "por_nivel": {
   "A": 198,
-  "B": 1324,
+  "B": 1327,
   "C": 9915
  },
  "grupos": [
@@ -153447,6 +153447,77 @@
      "trecho": " situações de \nurgência devidamente justificadas. \n  \nArt. 6º - Compete ao Comitê:  \nI – Executar o Plano de Contingência Municipal – PLANCON \n2026;  \nII – Integrar-se ao Comitê Estadual para troca de informações e \ncoordenação de ações conjuntas;  \nIII – Monitorar e avaliar cenários de risco;  \nIV – Emitir alertas e recomendações;  \nV – Mobilizar recursos humanos, materiais e financeiros;  \nVI – Elaborar relatórios de situação e propor ",
      "data": "2026-10-02",
      "status": "fechada — notícia genérica: o mesmo artigo foi atribuído a vários municípios pela busca, e não trata de nenhum deles em particular"
+    }
+   ]
+  },
+  {
+   "ibge": "2303709",
+   "municipio": "Caucaia",
+   "uf": "CE",
+   "melhor_nivel": "B",
+   "n_pistas": 3,
+   "niveis": {
+    "A": 0,
+    "B": 3,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "c014d2e159",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "busca_web",
+     "url": "https://www.blogdofarias.com/2020/01/17/defesa-civil-mapeia-31-areas-de-risco-em-caucaia/",
+     "titulo": "Defesa Civil mapeia 31 áreas de risco em Caucaia - Blog do Farias",
+     "trecho": "A Coordenadoria de Proteção e Defesa Civil (Compdec) concluiu o estudo do mapeamento de áreas de risco em todo o município de Caucaia Ao todo foram detectados 31 pontos distribuídos em zonas urbanas e rurais, compreendendo as serras, sertão e litoral. Conforme o coordenador da Compdec, Airton da Silva, será elaborado um plano de contingência […]",
+     "data": "2026-10-05",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "a11a311af9",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.facebook.com/prefeituradecaucaia/posts/a-coordenadoria-de-prote%C3%A7%C3%A3o-e-defesa-civil-concluiu-o-estudo-do-mapeamento-de-%C3%A1r/848968692207899/",
+     "titulo": "A Coordenadoria de Proteção e... - Prefeitura de Caucaia - Facebook",
+     "trecho": "A Coordenadoria de Proteção e Defesa Civil concluiu o estudo do mapeamento de áreas de risco em todo o município de Caucaia . Ao todo foram detectados 31 pontos distribuídos em zonas urbanas e rurais, compreendendo as serras, sertão e litoral. O próximo passo é elaborar um plano de contingência e de ação para possíveis sinistros em cada uma dessas áreas de risco . Saiba mais: http ...",
+     "data": "2026-10-05",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "b4d19878f3",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "busca_web",
+     "url": "https://secretariadesaudecaucaia.blogspot.com/2013/02/secretaria-municipal-de-saude-lanca.html",
+     "titulo": "Centro de Endemias de Caucaia: SECRETARIA MUNICIPAL DE SAÚDE LANÇA ...",
+     "trecho": "A Secretaria Municipal de Saúde lança nesta segunda feira, dia 18 de Fevereiro às 14h no auditório do convento das irmãs cordimarianas o Plano de Contingência 2013 para a prevenção e controle de epidemias da doença em Caucaia. O conjunto de ações visa prevenir e controlar uma epidemia da doença no município.",
+     "data": "2026-10-05",
+     "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
   },
