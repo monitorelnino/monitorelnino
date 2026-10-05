@@ -82,44 +82,27 @@ jobs:
 
       # O pacote é material da central e vive no repositório PRIVADO — nunca no site. O mesmo
       # mecanismo que publica os relatórios de diagnóstico leva o arquivo para lá.
-      # 04/10/2026: `if: ${{ secrets.X != '' }}` é INVÁLIDO — `secrets` não existe no contexto de
-      # `if`, e o GitHub rejeita o arquivo inteiro: o workflow aparece com o caminho no lugar do
-      # nome e cada push gera um run `failure`. Foi o que o painel dos temporizadores mostrou na
-      # primeira execução real. A decisão passa para dentro do `run`, onde a variável existe.
-      # 04/10/2026: `if: ${{ secrets.X != '' }}` é INVÁLIDO — `secrets` não existe no contexto de
-      # `if`, e o GitHub rejeita o arquivo inteiro. A decisão fica dentro do `run`.
+      # 05/10/2026 — A EDITORIA DECIDIU: O PACOTE FICA NO ARTEFATO.
       #
-      # 05/10/2026 (item 4 do handover da noite confiável) — A CREDENCIAL CERTA.
-      # O passo usava `ROBO_DEPLOY_KEY` por SSH e respondia "Repository not found": a chave existe
-      # e não alcança o `robo-registro`. Os NOVE outros gravadores do privado — `atualizar.yml`,
-      # `auditoria_seguranca.yml`, `busca_web_cadencia.yml`, `diagnostico_sinais.yml`,
-      # `portoes.yml`, `publicar_previa.yml`, `publicar_dominio_ensaio.yml`,
-      # `verificar_publicado.yml` — clonam por HTTPS com `ROBO_TOKEN`, e funcionam. O pacote do
-      # blog era o único fora do padrão; não havia o que a editoria decidisse sobre a chave: havia
-      # uma credencial errada. Passa a usar a mesma dos outros.
-      - name: Levar o pacote ao repositório da editoria
-        env:
-          ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
-        run: |
-          if [ -z "$ROBO_TOKEN" ]; then
-            echo "::notice::sem ROBO_TOKEN — o pacote fica no artefato deste run"
-            exit 0
-          fi
-          # Perder o pacote por falha de acesso ao privado, não: ele já está no artefato, que é o
-          # caminho alternativo declarado logo abaixo. O erro fica dito no log e o run segue.
-          if ! git clone -q --depth 1                "https://x-access-token:${ROBO_TOKEN}@github.com/monitorelnino/robo-registro.git"                /tmp/privado; then
-            echo "::warning::sem acesso ao robo-registro — o pacote fica no artefato deste run"
-            exit 0
-          fi
-          mkdir -p /tmp/privado/blog/pacotes
-          cp pacotes/*.json pacotes/*.md /tmp/privado/blog/pacotes/ 2>/dev/null || true
-          cd /tmp/privado
-          git config user.name "monitor-el-nino-bot"
-          git config user.email "bot@users.noreply.github.com"
-          git add blog/pacotes
-          git diff --cached --quiet || git commit -q -m "Pacote do blog (${{ steps.linha.outputs.linha }}, $(date -u +%d/%m/%Y))"
-          git push -q || echo "::warning::push do pacote falhou — o arquivo fica no artefato do run"
-
+      # Aqui havia um passo que clonava o `robo-registro` e commitava o pacote lá. Ele nasceu
+      # tentando levar o pacote ao repositório da editoria, falhou com `Repository not found`
+      # (usava `ROBO_DEPLOY_KEY` por SSH, enquanto os nove outros gravadores do privado clonam por
+      # HTTPS com `ROBO_TOKEN`), e a pergunta foi levada à editoria: dar acesso à chave, ou deixar o
+      # pacote só no artefato?
+      #
+      # **Ela escolheu o artefato.** O passo sai inteiro. Isto não é uma limitação técnica
+      # contornada: `ROBO_TOKEN` já alcança o privado e não exigiria acesso novo nenhum — levar o
+      # pacote lá sairia de graça. A editoria decidiu que ele não deve ir, e a decisão é dela.
+      #
+      # O que fica, então: o pacote da semana vive no artefato do run que o gerou, e a central o
+      # baixa quando vai escrever. Quem precisar dele no `robo-registro` o gera à mão, por
+      # `python3 gerar_pacote_blog.py --linha legal|saude --semana AAAA-MM-DD`, que grava
+      # direto em `robo-registro/blog/pacotes/` — foi assim que os dois pacotes da semana encerrada
+      # em 03/10 chegaram lá.
+      #
+      # Consequência que fica dita: o artefato do GitHub **expira** (90 dias, o padrão do
+      # repositório). Pacote que a central não baixar dentro do prazo se regera pelo comando acima,
+      # com os mesmos dados, porque o gerador é função do corte e não do run.
       - name: Guardar o pacote como artefato (sempre)
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
@@ -136,4 +119,8 @@ jobs:
             echo ""
             echo "- linha: ${{ steps.linha.outputs.linha }}"
             ls -1 pacotes/ 2>/dev/null | sed 's/^/- /' || echo "- nenhum arquivo gerado"
+            echo ""
+            echo "O pacote fica no **artefato \`pacote-do-blog\`** deste run, por decisão da"
+            echo "editoria de 05/10/2026. Para tê-lo em \`robo-registro/blog/pacotes/\`, rode"
+            echo "\`python3 gerar_pacote_blog.py --linha <legal|saude> --semana AAAA-MM-DD\`."
           } >> "$GITHUB_STEP_SUMMARY"
