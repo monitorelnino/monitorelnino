@@ -17583,14 +17583,14 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `b34d688911` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `e320d480e5` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `6ef186c42b` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `b34d688911` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `b34d688911` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `e3c9a25d20` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `734c471eaf` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `db8afc7ac3` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `5aa494b5bc` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `cad3d03fe3` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `4f4db36dac` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `d9242f2d1b` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `d9242f2d1b` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `0fec5a3519` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `7e5067106c` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `8757c92739` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
@@ -17635,7 +17635,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `02c39c0323` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `aac7caf024` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `cad3d03fe3` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `93d87556ce` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `93d87556ce` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `1a21d4a683` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `1f76d9d6b2` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `13f676f447` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
@@ -17863,7 +17863,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `fd95828b60` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `e505529477` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `81ab4a494a` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `d859cc272e` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `d859cc272e` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `95a3334705` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `2ea5d87f59` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `a093fc6a82` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
@@ -17912,7 +17912,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `cc6438b952` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `8f26ac4550` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `d48fffde09` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `3116d87150` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `3116d87150` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `8cb043b846` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `4fc32113e4` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `6dbafd8faf` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
@@ -18961,7 +18961,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `58121be769` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `5df8ad6a1b` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `54d9676def` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `7447dc1dd3` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `7447dc1dd3` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `c397e049b1` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `49794829f3` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `ad407d99b6` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
@@ -19704,7 +19704,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `7ad8e95f35` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `5515491eb3` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `bdcf0f58dc` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `a6bca90e68` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `a6bca90e68` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `23e090490c` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `bda96f94af` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `e78c6f4818` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
@@ -19734,7 +19734,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `d016a3252f` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `e78c6f4818` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `003b39303a` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `8ac0dee6f3` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `8ac0dee6f3` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `b83c850378` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `1bbdecc041` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `94f0b40042` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
@@ -19769,7 +19769,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `13104afa38` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `e224a02605` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `b83c850378` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `bdcf0f58dc` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `bdcf0f58dc` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `23e090490c` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `02065b0004` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `8a4b4fbde4` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
@@ -19826,7 +19826,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `470ebca11f` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `594e25b92e` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `685288ab89` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `8bdbc8e5c4` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `8bdbc8e5c4` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `b0199749d3` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `cad3d03fe3` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `e778f65e81` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
@@ -19842,16 +19842,16 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `cad3d03fe3` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `b0199749d3` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `33271ca007` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `9636052c07` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `9636052c07` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `16c23939b4` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `8a4b4fbde4` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `cad3d03fe3` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `b0199749d3` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `e778f65e81` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `c409c89475` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `c409c89475` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `c3e3d92f31` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `e320d480e5` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `b7f335fa6f` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `b7f335fa6f` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `3d44c36783` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `5addf84462` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `e320d480e5` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
@@ -19878,26 +19878,26 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `5addf84462` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `1cb0decc46` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `02065b0004` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `130bde99cb` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `130bde99cb` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `e130f38865` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `95e3a547ef` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `e130f38865` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `51d3da4814` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `08da181c6d` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `5ca8171414` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `6ef186c42b` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `6ef186c42b` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `d85299ed6d` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `5b22b54586` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `5b22b54586` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `70d230c0cd` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `9c96d93237` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `003b39303a` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `003b39303a` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `80883aad9a` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `70d230c0cd` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `1a3643f27c` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `a5f3581f79` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `5e22587a2f` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `5b8e042537` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `2b0a37c4bd` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `2b0a37c4bd` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `7e1951ab11` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `5b8e042537` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `7e1951ab11` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
@@ -20161,7 +20161,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `addff42ad8` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `20db40e2a0` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `d02526968c` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `bfecd0971f` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `bfecd0971f` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `954d3d37b0` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `d5ec9579d8` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `607016c58c` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
@@ -20392,15 +20392,15 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `a26feceef0` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `e19d3024ac` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `772dabf236` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `20e92e85eb` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `f2aff3351f` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `1f20c5a94d` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `1125aadf47` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `949ac7ca26` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `5ec5d873f6` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `e496f79eec` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `24679fe733` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `96b310f212` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `20e92e85eb` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
+- `f2aff3351f` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
+- `1f20c5a94d` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
+- `1125aadf47` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
+- `949ac7ca26` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
+- `5ec5d873f6` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
+- `e496f79eec` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
+- `24679fe733` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
+- `96b310f212` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `8fb32d4482` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `891aee6f2c` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `8f0691b391` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
@@ -20489,7 +20489,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `60a4d5e6b1` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `57a13e6103` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `60a4d5e6b1` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `60a4d5e6b1` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `60a4d5e6b1` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `72d393e2e4` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `9bc7b43958` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `8af505138b` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
@@ -20508,17 +20508,17 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `1cb0decc46` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `ccd635129e` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `3c2f70f8e8` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `79e33a4b2c` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `cad3d03fe3` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `79e33a4b2c` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
+- `cad3d03fe3` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `a59c17b24d` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `ccd635129e` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `e320d480e5` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `652cd4ee2f` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `652cd4ee2f` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `ccd635129e` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `712aede471` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `712aede471` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `094c653590` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `ccd635129e` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `594e25b92e` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `594e25b92e` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `094c653590` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `480da5d3a8` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `32de0b788a` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
@@ -20527,7 +20527,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `ccd635129e` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `ccd635129e` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `ccd635129e` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `da469d0b43` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `da469d0b43` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `ccd635129e` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `7951ad735c` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `282946b9c6` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
@@ -20683,16 +20683,16 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `b0199749d3` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `094c653590` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `653b2e04a3` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `220130965b` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `220130965b` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `b969d40805` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `e7cb174f61` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `462039ce19` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `462039ce19` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `28333b3bcb` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `7951ad735c` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `054f78afd2` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `d671eeebdf` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `161f190bb9` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `0a27892882` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `161f190bb9` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
+- `0a27892882` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `00b21863a6` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `1669aa1df3` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `1669aa1df3` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
@@ -20701,7 +20701,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `806106db0b` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `23950143bf` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `a549b9c140` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `02c39c0323` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `02c39c0323` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `18f1a8beea` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `ccd635129e` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `806106db0b` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
@@ -20709,10 +20709,10 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `e9e586b2c9` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `4a02c7057a` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `26dd77a005` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `e971adadee` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `e971adadee` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `ccd635129e` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `1cb0decc46` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `25c29928e7` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `25c29928e7` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `60dc4549f6` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `868a6f088e` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `d661fb56cb` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
@@ -20728,8 +20728,8 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `036b703235` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `e075f9d433` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `e62f4343ef` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `f68c6cb61b` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
-- `a59c17b24d` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `f68c6cb61b` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
+- `a59c17b24d` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `45e1619207` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `8a4b4fbde4` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `be6e59774b` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
@@ -21318,8 +21318,8 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `6b203e15d1` None/None · pendente_confirmacao_documento · 
 - `c8cc7897b2` None/None · pendente_confirmacao_documento · 
 - `0fa11a156e` None/None · pendente_confirmacao_documento · 
-- `fb9048507b` None/None · pendente_confirmacao_documento · 
-- `6db68b7155` None/None · pendente_confirmacao_documento · 
+- `fb9048507b` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `6db68b7155` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `03c7ef7827` None/None · pendente_confirmacao_documento · 
 - `30bcfab46e` None/None · pendente_confirmacao_documento · 
 - `e69639a99b` None/None · pendente_confirmacao_documento · 
@@ -21330,18 +21330,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `a549b9c140` None/None · pendente_confirmacao_documento · 
 - `646ec98576` None/None · pendente_confirmacao_documento · 
 - `baa28ee51a` None/None · pendente_confirmacao_documento · 
-- `918e5d4fa8` None/None · pendente_confirmacao_documento · 
+- `918e5d4fa8` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `ad06e5a78f` None/None · pendente_confirmacao_documento · 
-- `a59dfd6204` None/None · pendente_confirmacao_documento · 
+- `a59dfd6204` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `be67f0452a` None/None · pendente_confirmacao_documento · 
-- `8500d5fc6c` None/None · pendente_confirmacao_documento · 
+- `8500d5fc6c` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `00238582a7` None/None · pendente_confirmacao_documento · 
 - `31bb1176af` None/None · pendente_confirmacao_documento · 
 - `cfdb1c4868` None/None · pendente_confirmacao_documento · 
 - `12d99401f8` None/None · pendente_confirmacao_documento · 
 - `287e69ccd6` None/None · pendente_confirmacao_documento · 
 - `323c2528c4` None/None · pendente_confirmacao_documento · 
-- `89177bb7ba` None/None · pendente_confirmacao_documento · 
+- `89177bb7ba` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `2d0814d164` None/None · pendente_confirmacao_documento · 
 - `9d456b0d0c` None/None · pendente_confirmacao_documento · 
 - `e63eb2b53f` None/None · pendente_confirmacao_documento · 
@@ -21362,7 +21362,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `6855e3304a` None/None · pendente_confirmacao_documento · 
 - `9420ad6bed` None/None · pendente_confirmacao_documento · 
 - `b650e730be` None/None · pendente_confirmacao_documento · 
-- `e778f65e81` None/None · pendente_confirmacao_documento · 
+- `e778f65e81` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `654915e31e` None/None · pendente_confirmacao_documento · 
 - `f4f28d56f2` None/None · pendente_confirmacao_documento · 
 - `8dfb4d0c4f` None/None · pendente_confirmacao_documento · 
@@ -21380,7 +21380,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `0653b5ae24` None/None · pendente_confirmacao_documento · 
 - `55fc29363d` None/None · pendente_confirmacao_documento · 
 - `abc6d9187f` None/None · pendente_confirmacao_documento · 
-- `6c46fe6afd` None/None · pendente_confirmacao_documento · 
+- `6c46fe6afd` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `e91c832792` None/None · pendente_confirmacao_documento · 
 - `27c5c66222` None/None · pendente_confirmacao_documento · 
 - `5de2e5d667` None/None · pendente_confirmacao_documento · 
@@ -21396,7 +21396,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `fa09fa1bf8` None/None · pendente_confirmacao_documento · 
 - `5f2905bb70` None/None · pendente_confirmacao_documento · 
 - `f7692e1983` None/None · pendente_confirmacao_documento · 
-- `d671eeebdf` None/None · pendente_confirmacao_documento · 
+- `d671eeebdf` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `45bc6a90d7` None/None · pendente_confirmacao_documento · 
 - `309ccd73a0` None/None · pendente_confirmacao_documento · 
 - `8058e58f3c` None/None · pendente_confirmacao_documento · 
@@ -21410,8 +21410,8 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `cfe4d45d79` None/None · pendente_confirmacao_documento · 
 - `f800618714` None/None · pendente_confirmacao_documento · 
 - `822e6021c7` None/None · pendente_confirmacao_documento · 
-- `384008d62c` None/None · pendente_confirmacao_documento · 
-- `60c749b4c5` None/None · pendente_confirmacao_documento · 
+- `384008d62c` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `60c749b4c5` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `41745b6d0a` None/None · pendente_confirmacao_documento · 
 - `0b7e76f9a7` None/None · pendente_confirmacao_documento · 
 - `4f9c97b0b4` None/None · pendente_confirmacao_documento · 
@@ -21419,7 +21419,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `60dc4549f6` None/None · pendente_confirmacao_documento · 
 - `4eaded3c3b` None/None · pendente_confirmacao_documento · 
 - `7ad50914f4` None/None · pendente_confirmacao_documento · 
-- `8c0b346e02` None/None · pendente_confirmacao_documento · 
+- `8c0b346e02` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `46498d0395` None/None · pendente_confirmacao_documento · 
 - `e95a1bebdf` None/None · pendente_confirmacao_documento · 
 - `da5e592b0b` None/None · pendente_confirmacao_documento · 
@@ -21430,22 +21430,22 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `ddf4ffd5cf` None/None · pendente_confirmacao_documento · 
 - `4db625b7e2` None/None · pendente_confirmacao_documento · 
 - `81226dcb6e` None/None · pendente_confirmacao_documento · 
-- `323c2528c4` None/None · pendente_confirmacao_documento · 
+- `323c2528c4` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `a67c42aa6d` None/None · pendente_confirmacao_documento · 
 - `ec6ef8ef1e` None/None · pendente_confirmacao_documento · 
 - `c2a91c4c94` None/None · pendente_confirmacao_documento · 
 - `bdda912e55` None/None · pendente_confirmacao_documento · 
-- `0b7e76f9a7` None/None · pendente_confirmacao_documento · 
+- `0b7e76f9a7` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `da91e2326c` None/None · pendente_confirmacao_documento · 
 - `4d0b993726` None/None · pendente_confirmacao_documento · 
 - `12224c6acb` None/None · pendente_confirmacao_documento · 
 - `452158efcd` None/None · pendente_confirmacao_documento · 
 - `1da2b592f6` None/None · pendente_confirmacao_documento · 
 - `a49597fc91` None/None · pendente_confirmacao_documento · 
-- `46498d0395` None/None · pendente_confirmacao_documento · 
+- `46498d0395` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `c7e3a09e91` None/None · pendente_confirmacao_documento · 
 - `f8008da99b` None/None · pendente_confirmacao_documento · 
-- `81ab4a494a` None/None · pendente_confirmacao_documento · 
+- `81ab4a494a` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `00bbde8493` None/None · pendente_confirmacao_documento · 
 - `30798daa6d` None/None · pendente_confirmacao_documento · 
 - `30f9603272` None/None · pendente_confirmacao_documento · 
@@ -21992,22 +21992,22 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `c205a38919` None/None · pendente_confirmacao_documento · 
 - `8ed1c52692` None/None · pendente_confirmacao_documento · 
 - `9703a97069` None/None · pendente_confirmacao_documento · 
-- `8a4b4fbde4` None/None · pendente_confirmacao_documento · 
+- `8a4b4fbde4` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `accd174258` None/None · pendente_confirmacao_documento · 
 - `cd789281ca` None/None · pendente_confirmacao_documento · 
 - `09952986c0` None/None · pendente_confirmacao_documento · 
 - `25f164ff31` None/None · pendente_confirmacao_documento · 
 - `ccd635129e` None/None · pendente_confirmacao_documento · 
-- `0653b5ae24` None/None · pendente_confirmacao_documento · 
+- `0653b5ae24` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `08d5563d4c` None/None · pendente_confirmacao_documento · 
 - `60dc4549f6` None/None · pendente_confirmacao_documento · 
 - `ceb0b93480` None/None · pendente_confirmacao_documento · 
 - `09952986c0` None/None · pendente_confirmacao_documento · 
 - `09952986c0` None/None · pendente_confirmacao_documento · 
-- `70d230c0cd` None/None · pendente_confirmacao_documento · 
+- `70d230c0cd` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `09952986c0` None/None · pendente_confirmacao_documento · 
-- `ceb0b93480` None/None · pendente_confirmacao_documento · 
-- `09952986c0` None/None · pendente_confirmacao_documento · 
+- `ceb0b93480` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `09952986c0` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `cd789281ca` None/None · pendente_confirmacao_documento · 
 - `0b9214ec29` None/None · pendente_confirmacao_documento · 
 - `b0199749d3` None/None · pendente_confirmacao_documento · 
@@ -22020,8 +22020,8 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `094c653590` None/None · pendente_confirmacao_documento · 
 - `b0199749d3` None/None · pendente_confirmacao_documento · 
 - `ccd635129e` None/None · pendente_confirmacao_documento · 
-- `e320d480e5` None/None · pendente_confirmacao_documento · 
-- `872f97b918` None/None · pendente_confirmacao_documento · 
+- `e320d480e5` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `872f97b918` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `6e81349cc2` None/None · pendente_confirmacao_documento · 
 - `b0199749d3` None/None · pendente_confirmacao_documento · 
 - `094c653590` None/None · pendente_confirmacao_documento · 
@@ -22036,7 +22036,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `1669aa1df3` None/None · pendente_confirmacao_documento · 
 - `ddf4ffd5cf` None/None · pendente_confirmacao_documento · 
 - `ef9b6f11c0` None/None · pendente_confirmacao_documento · 
-- `215a691cf7` None/None · pendente_confirmacao_documento · 
+- `215a691cf7` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `0b587080fb` None/None · pendente_confirmacao_documento · 
 - `6e81349cc2` None/None · pendente_confirmacao_documento · 
 - `dfcd009db8` None/None · pendente_confirmacao_documento · 
@@ -22345,7 +22345,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `a292563fff` None/None · pendente_confirmacao_documento · 
 - `e8b78a084a` None/None · pendente_confirmacao_documento · 
 - `e0a945af8d` None/None · pendente_confirmacao_documento · 
-- `6a59b98d6b` None/None · pendente_confirmacao_documento · 
+- `6a59b98d6b` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `a3d0e97a16` None/None · pendente_confirmacao_documento · 
 - `b69ff7d348` None/None · pendente_confirmacao_documento · 
 - `8fdcea39bf` None/None · pendente_confirmacao_documento · 
@@ -22438,16 +22438,16 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `8c94db0d2a` None/None · pendente_confirmacao_documento · 
 - `1db5335dc1` None/None · pendente_confirmacao_documento · 
 - `7e1951ab11` None/None · pendente_confirmacao_documento · 
-- `a549b9c140` None/None · pendente_confirmacao_documento · 
-- `a9823bc856` None/None · pendente_confirmacao_documento · 
+- `a549b9c140` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `a9823bc856` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `868a6f088e` None/None · pendente_confirmacao_documento · 
 - `dfc58646d1` None/None · pendente_confirmacao_documento · 
-- `b7dfb25735` None/None · pendente_confirmacao_documento · 
+- `b7dfb25735` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `9bc7b43958` None/None · pendente_confirmacao_documento · 
 - `8af505138b` None/None · pendente_confirmacao_documento · 
 - `d963b06536` None/None · pendente_confirmacao_documento · 
 - `8af505138b` None/None · pendente_confirmacao_documento · 
-- `9ac23fc73c` None/None · pendente_confirmacao_documento · 
+- `9ac23fc73c` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `00a5cd61ed` None/None · pendente_confirmacao_documento · 
 - `f95ccd062c` None/None · pendente_confirmacao_documento · 
 - `094c653590` None/None · pendente_confirmacao_documento · 
@@ -22456,10 +22456,10 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `094c653590` None/None · pendente_confirmacao_documento · 
 - `c84fdc4543` None/None · pendente_confirmacao_documento · 
 - `b0199749d3` None/None · pendente_confirmacao_documento · 
-- `094c653590` None/None · pendente_confirmacao_documento · 
+- `094c653590` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `c2dec811e2` None/None · pendente_confirmacao_documento · 
 - `6e81349cc2` None/None · pendente_confirmacao_documento · 
-- `3c2f70f8e8` None/None · pendente_confirmacao_documento · 
+- `3c2f70f8e8` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `b52616e7e4` None/None · pendente_confirmacao_documento · 
 - `9aec5077e8` None/None · pendente_confirmacao_documento · 
 - `0bf22f6b2d` None/None · pendente_confirmacao_documento · 
@@ -22504,7 +22504,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `95c9f90e1c` None/None · pendente_confirmacao_documento · 
 - `2bd3add871` None/None · pendente_confirmacao_documento · 
 - `9f06245302` None/None · pendente_confirmacao_documento · 
-- `e70bc5fc31` None/None · pendente_confirmacao_documento · 
+- `e70bc5fc31` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `b623d6b094` None/None · pendente_confirmacao_documento · 
 - `48b34312eb` None/None · pendente_confirmacao_documento · 
 - `f8ca74c37e` None/None · pendente_confirmacao_documento · 
@@ -22539,7 +22539,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `70ca06164c` None/None · pendente_confirmacao_documento · 
 - `c40e789c66` None/None · pendente_confirmacao_documento · 
 - `34e3ea42cc` None/None · pendente_confirmacao_documento · 
-- `5ca8171414` None/None · pendente_confirmacao_documento · 
+- `5ca8171414` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `58617fac93` None/None · pendente_confirmacao_documento · 
 - `f935232343` None/None · pendente_confirmacao_documento · 
 - `aa0888b5e1` None/None · pendente_confirmacao_documento · 
