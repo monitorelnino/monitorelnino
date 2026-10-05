@@ -49,6 +49,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>05/10/2026 · O CODEMAP mentia por omissão, e agora diz quantos importam cada arquivo</dt>
+      <dd>Comparado com o grafo de dependências, o mapa tinha um ponto cego: só via o nome do dado **literal na chamada**. Quem o guarda em constante — o estilo dos scripts novos — ficava invisível, e 23 arquivos subiram de 17 para 84 dependências declaradas; `coletores_base.py` aparecia sem `log_buscas.json`. Coluna nova `importado por`: ele tem 169 importadores, e era esse número que faltava antes dos dois acidentes de isolamento.</dd>
       <dt>05/10/2026 · O CODEMAP apontava três caminhos que não existem</dt>
       <dd>Ao comparar o mapa com a árvore, três scripts apareciam como `assets/js/acesso.js`, `assets/js/colunas.js` e `assets/js/mapas.js` — e os três vivem em `assets/`. A causa era uma compreensão sobre lista vazia no gerador, com o padrão errado vencendo sempre. Consertado, com trava que confere que todo caminho do mapa existe no disco. Os 19 scripts de `scripts/` que tocam `data/` entraram: 142 → 172 arquivos, incluindo a porta da fila de pistas.</dd>
       <dt>05/10/2026 · Duas skills do projeto, e a tabela de arquivos grandes remedida</dt>
@@ -167,8 +169,6 @@
       <dd>Título, subtítulo e legenda definitivos do mapa do cadastro; manchete do MARÉ Saúde só com os 27 estados; os dois cadastros federais distintos na METODOLOGIA §66; linha aprovada para o plano estadual que trata de outro risco (MG). A conferência da portaria do MMA achou ato novo: a **1.717/2026** revogou a 1.202/2024 — Anexo I 81 → 80, Anexo II 10 → 17, com MA entrando. §67.</dd>
       <dt>01/10/2026 · Defesa civil refeita: só alertas e emergências</dt>
       <dd>Saem os mapas de preparação (o plano mora no MARÉ Legal) e o material de auditoria, com destino em `dados-abertos/` e METODOLOGIA §65. Seis contadores no topo; o mapa principal de alerta é o do Cemaden, porque o aviso do Inmet é por área; três mapas de emergência, com o reconhecimento federal; o cadastro passa a ser a lista nominal da Casa Civil, e &quot;Cadastro Nacional&quot; sai do site. Busca por município em todo cartão.</dd>
-      <dt>01/10/2026 · Imprensa descobre, nunca registra: Curitiba corrigida, errata C29</dt>
-      <dd>A auditoria pedida pela editoria encontrou um registro pontuável apoiado só em notícia — Curitiba (PR) como `plano`, com URL de jornal. O documento primário é outro: Decreto nº 1.141, de 17/07/2026, que institui comitê, não plano. O registro passa a `estrutura`, com o diário municipal como fonte. PR 67,4 → 64,6; nacional 45,3 → 45,2; nenhuma UF muda de faixa. Errata pública C29 em `data/congelamento_defeso.json` e portão novo (`scripts/verificar_imprensa_nao_registra.py`).</dd>
     </dl>
   </section>
 </main>

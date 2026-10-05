@@ -27,6 +27,7 @@ USO
   python3 scripts/gerar_codemap.py --conferir  # falha se o mapa estiver desatualizado
   python3 scripts/gerar_codemap.py --autoteste
 """
+import ast
 import json
 import pathlib
 import re
@@ -58,6 +59,94 @@ TOCA_O_INDICE = ("recalcular_mare.py", "aplicar_promocoes_do_juiz.py", "juiz.py"
                  "converter_contribuicao.py", "gerar_resposta.py")
 
 
+def importadores(fontes: dict) -> dict:
+    """{caminho: quantos arquivos o importam}. Função pura — recebe `{caminho: fonte}`.
+
+    05/10/2026 — A COLUNA QUE O GRAFO DE DEPENDÊNCIAS PRODUZIU, e que o mapa não tinha.
+    O cabeçalho do CODEMAP sempre disse, com razão, que ele não é análise de dependência completa.
+    Mas há um fato de primeira ordem que ele podia dar e não dava: **quantos arquivos importam
+    este**. É a resposta mais útil para "o que a minha mudança alcança".
+
+    Medido em 05/10: `coletores_base.py` tem **169 importadores** — dois terços dos 247 `.py` do
+    repositório. Isso explica, retroativamente, por que os dois acidentes de isolamento daqui
+    custaram tanto: em 02/10 um ajudante que gravava neste módulo apagou 907 atos do ciclo, e em
+    05/10 o mesmo desenho apagou seis execuções do log. Quem mexe num arquivo com 169 importadores
+    precisa ver esse número ANTES de mexer, e agora ele está na linha.
+
+    Conta `import x` e `from x import y` em nível de módulo ou dentro de função — as duas formas
+    valem, porque as duas criam dependência. Import relativo (`from . import x`) fica fora: o
+    projeto não os usa, e resolvê-los exigiria saber o pacote.
+    """
+    por_nome = {}
+    for caminho in fontes:
+        base = caminho.rsplit("/", 1)[-1][:-3] if caminho.endswith(".py") else None
+        if base:
+            por_nome.setdefault(base, caminho)
+            if caminho.startswith("scripts/"):
+                por_nome.setdefault("scripts." + base, caminho)
+    contagem = {c: 0 for c in fontes}
+    for caminho, fonte in fontes.items():
+        try:
+            arvore = ast.parse(fonte or "")
+        except (SyntaxError, ValueError):
+            continue
+        alcanca = set()
+        for no in ast.walk(arvore):
+            nomes = []
+            if isinstance(no, ast.Import):
+                nomes = [a.name for a in no.names]
+            elif isinstance(no, ast.ImportFrom) and no.module and not no.level:
+                nomes = [no.module]
+            for n in nomes:
+                destino = por_nome.get(n) or por_nome.get(n.split(".")[0])
+                if destino and destino != caminho:
+                    alcanca.add(destino)
+        for d in alcanca:
+            contagem[d] = contagem.get(d, 0) + 1
+    return contagem
+
+
+def constantes_de(texto: str) -> set:
+    """Nomes de `.json` guardados em CONSTANTE de módulo. Função pura.
+
+    05/10/2026 — O PONTO CEGO QUE A COMPARAÇÃO COM O GRAFO DE DEPENDÊNCIAS ACHOU.
+    `RE_SAIDA` só reconhecia três nomes de constante (`SAIDA`, `ARQUIVO`, `DESTINO`) e um literal por
+    linha. Quem guarda o nome do dado em qualquer outra constante — ou numa tupla, que é como as
+    filas e as listas de arquivo são escritas — ficava invisível para o mapa.
+
+    Medido: **33 arquivos** com dependência de dado que o gerador não via. O pior caso é
+    `coletores_base.py`, que tem **169 importadores** e aparecia no mapa sem `log_buscas.json` nem
+    `robots_registro.json` — dois dos arquivos mais importantes do projeto. A linha existia; a coluna
+    "dados que usa" é que mentia por omissão, e omissão num índice é pior que ausência, porque quem
+    o lê acha que já olhou.
+
+    Lê só o nível do módulo, e só constante em MAIÚSCULAS: é o estilo do projeto, e descer em corpo
+    de função traria nome calculado, que o mapa não deve afirmar. `ast` em texto que não é Python
+    (os `.js` passam por aqui) levanta `SyntaxError`, e aí não há constante a achar.
+    """
+    fora = set()
+    try:
+        arvore = ast.parse(texto or "")
+    except (SyntaxError, ValueError):
+        return fora
+    for no in arvore.body:
+        if not isinstance(no, ast.Assign):
+            continue
+        if not any(isinstance(a, ast.Name) and a.id.isupper() for a in no.targets):
+            continue
+        valores = ([no.value] if isinstance(no.value, ast.Constant)
+                   else list(no.value.elts) if isinstance(no.value, (ast.Tuple, ast.List))
+                   else [])
+        for v in valores:
+            if not (isinstance(v, ast.Constant) and isinstance(v.value, str)):
+                continue
+            nome = v.value
+            # `.json` sozinho é a extensão, não um arquivo: entraria como dependência fantasma.
+            if nome.endswith(".json") and nome not in (".json",) and not nome.startswith("."):
+                fora.add(nome)
+    return fora
+
+
 def dados_de(texto: str) -> set:
     """Os arquivos de `data/` que este código lê ou escreve. Função pura."""
     achados = set()
@@ -68,6 +157,7 @@ def dados_de(texto: str) -> set:
     achados |= set(RE_FETCH_DADO.findall(texto or ""))
     achados |= set(RE_GRAVAR.findall(texto or ""))
     achados |= set(RE_SAIDA.findall(texto or ""))
+    achados |= constantes_de(texto)
     if RE_FETCH_MONTADO.search(texto or ""):
         for bloco in RE_LISTA_DE_NOMES.findall(texto or ""):
             for nome in RE_NOME.findall(bloco):
@@ -92,7 +182,7 @@ def js_da_pagina(html: str) -> set:
 
 
 def montar(paginas: dict, scripts: dict, pythons: dict, portoes: dict,
-           caminhos_js: dict = None) -> list:
+           caminhos_js: dict = None, quem_importa: dict = None) -> list:
     """A tabela do mapa, uma linha por arquivo. Função pura — recebe conteúdos, não lê disco."""
     cobertura = {}
     for nome, texto in (portoes or {}).items():
@@ -127,6 +217,7 @@ def montar(paginas: dict, scripts: dict, pythons: dict, portoes: dict,
         dados = sorted(dados_de(pythons[py]))
         linhas.append({"arquivo": py, "telas": [], "js": [],
                        "dados": dados, "portoes": [],
+                       "importado_por": (quem_importa or {}).get(py, 0),
                        "indice": "SIM" if py in TOCA_O_INDICE else "não"})
     return linhas
 
@@ -150,15 +241,19 @@ def como_markdown(linhas: list, gerado_em: str) -> str:
          "número é `.cartao-numero` em `.grade-numeros--3`; figura é `.cartao-mapa` em "
          "`.grade-figuras--3`; nada de ajuste de pixel por cartão.", "",
          f"Atualizado em {gerado_em}.", "",
-         "| arquivo | telas que afeta | dados que usa | portões que o cobrem | toca o índice? |",
-         "|---|---|---|---|---|"]
+         "**A coluna `importado por`** (05/10/2026) diz quantos arquivos do repositório importam aquele — é a resposta curta para \"o que a minha mudança alcança\". Ela não substitui o portão de runtime, mas evita a surpresa: `coletores_base.py` tem 169 importadores, e os dois acidentes de isolamento de 02 e 05/10 custaram 907 atos e seis execuções de log por mexer ali sem ver esse número.", "",
+         "| arquivo | telas que afeta | dados que usa | portões que o cobrem | importado por | toca o índice? |",
+         "|---|---|---|---|---|---|"]
     for x in linhas:
         telas = ", ".join(x["telas"]) or "—"
         dados = ", ".join(f"`{d}`" for d in x["dados"][:6]) or "—"
         if len(x["dados"]) > 6:
             dados += f" (+{len(x['dados']) - 6})"
         portoes = ", ".join(f"`{p}`" for p in x["portoes"]) or "—"
-        L.append(f"| `{x['arquivo']}` | {telas} | {dados} | {portoes} | {x['indice']} |")
+        imp = x.get("importado_por")
+        imp = "—" if not imp else (f"**{imp}**" if imp >= 20 else str(imp))
+        L.append(f"| `{x['arquivo']}` | {telas} | {dados} | {portoes} | {imp} | "
+                 f"{x['indice']} |")
     L.append("")
     return "\n".join(L)
 
@@ -199,7 +294,14 @@ def ler_tudo() -> tuple:
                                # aparecia na coluna de cobertura de nenhuma das duas páginas, e o
                                # mapa dizia que a regra não existia.
                                + list((RAIZ / "scripts").glob("verificar_*.py")))}
-    return paginas, scripts, pythons, portoes, caminhos_js
+    # A contagem de importadores sai de TODOS os .py versionados, não só dos que o mapa
+    # lista: quem importa `coletores_base` conta mesmo que não tenha linha própria.
+    todos_py = {q.relative_to(RAIZ).as_posix(): q.read_text(encoding="utf-8",
+                                                            errors="replace")
+                for q in sorted(RAIZ.rglob("*.py"))
+                if not any(x in q.parts for x in ("arquivo", "node_modules", ".git"))}
+    quem_importa = importadores(todos_py)
+    return paginas, scripts, pythons, portoes, caminhos_js, quem_importa
 
 
 def autoteste() -> int:
@@ -268,6 +370,54 @@ def autoteste() -> int:
     casos.append(("e declara o que NÃO é", "análise de dependência completa" in md))
     casos.append(("uma linha por arquivo", md.count("\n| `") == len(linhas)))
 
+    # 05/10/2026 — as travas do PONTO CEGO DA CONSTANTE, achado ao comparar o mapa com o grafo de
+    # dependências: 33 arquivos tinham dado em constante que o gerador não via.
+    casos.append(("constante escalar com nome de dado é vista",
+                  constantes_de('ARQUIVO = "painel_da_noite.json"') == {"painel_da_noite.json"}))
+    casos.append(("constante em TUPLA é vista — é como as filas são escritas",
+                  constantes_de('FILAS = ("pistas_imprensa.json", "pistas_doe.json")')
+                  == {"pistas_imprensa.json", "pistas_doe.json"}))
+    casos.append(("constante em LISTA é vista", constantes_de('X = ["a.json"]') == {"a.json"}))
+    casos.append(("constante com qualquer NOME é vista, não só SAIDA/ARQUIVO/DESTINO",
+                  constantes_de('PAINEL_DA_NOITE = "x.json"') == {"x.json"}))
+    casos.append((".json sozinho não entra: é extensão, não arquivo",
+                  constantes_de('EXT = ".json"') == set()))
+    casos.append(("nome minúsculo não entra: constante do projeto é MAIÚSCULA",
+                  constantes_de('arquivo = "x.json"') == set()))
+    casos.append(("variável DENTRO de função não entra — nome calculado não se afirma",
+                  constantes_de('def f():\n    ARQ = "x.json"') == set()))
+    casos.append(("texto que não é Python não quebra (os .js passam por aqui)",
+                  constantes_de('const X = "x.json";') == set()))
+    casos.append(("o ponto cego fechou: dados_de agora vê a constante",
+                  "painel_da_noite.json" in dados_de('ARQUIVO = "painel_da_noite.json"')))
+
+    # 05/10/2026 — as travas da coluna `importado por`.
+    fontes = {"a.py": "import coletores_base",
+              "b.py": "from coletores_base import ler",
+              "c.py": "def f():\n    import coletores_base",
+              "d.py": "import json, re",
+              "coletores_base.py": "x = 1"}
+    cont = importadores(fontes)
+    casos.append(("conta `import x` e `from x import y`", cont["coletores_base.py"] == 3))
+    casos.append(("conta import DENTRO de função — ele cria dependência igual",
+                  "c.py" in fontes and cont["coletores_base.py"] == 3))
+    casos.append(("quem ninguém importa fica em zero", cont["a.py"] == 0))
+    casos.append(("import da biblioteca padrão não conta", cont.get("d.py") == 0))
+    casos.append(("o próprio arquivo não se conta",
+                  importadores({"x.py": "import x"})["x.py"] == 0))
+    casos.append(("import duplicado no mesmo arquivo conta UMA vez",
+                  importadores({"a.py": "import b\nfrom b import c", "b.py": ""})["b.py"] == 1))
+    casos.append(("fonte que não é Python não quebra a contagem",
+                  importadores({"a.js": "const x = require('b')", "b.py": ""})["b.py"] == 0))
+    casos.append(("a coluna sai na tabela, e o hub vem em negrito",
+                  "| **99** |" in como_markdown(
+                      [{"arquivo": "h.py", "telas": [], "js": [], "dados": [], "portoes": [],
+                        "importado_por": 99, "indice": "não"}], "x")))
+    casos.append(("quem tem poucos importadores sai sem negrito",
+                  "| 3 |" in como_markdown(
+                      [{"arquivo": "h.py", "telas": [], "js": [], "dados": [], "portoes": [],
+                        "importado_por": 3, "indice": "não"}], "x")))
+
     # 05/10/2026 — as travas do defeito do caminho inventado. Elas existem porque o mapa apontou
     # `assets/js/mapas.js` durante dias, e esse arquivo nunca existiu: ele vive em `assets/`. A
     # causa era uma compreensão sobre lista vazia, com um comentário dizendo que outro trecho a
@@ -304,7 +454,9 @@ def main() -> int:
         return autoteste()
 
     from coletores_base import hoje_editorial
-    linhas = montar(*ler_tudo())
+    paginas, scripts_js, pythons, portoes, caminhos_js, quem_importa = ler_tudo()
+    linhas = montar(paginas, scripts_js, pythons, portoes,
+                    caminhos_js=caminhos_js, quem_importa=quem_importa)
     novo = como_markdown(linhas, hoje_editorial().strftime("%d/%m/%Y"))
 
     if "--conferir" in sys.argv:
