@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-05 · #560 · O CODEMAP mentia por omissão, e agora diz quantos importam cada arquivo
+
+Comparado com o grafo de dependências, o mapa tinha um ponto cego: só via o nome do dado **literal
+na chamada**. Quem o guarda em constante — o estilo dos scripts novos — ficava invisível, e 23
+arquivos subiram de 17 para 84 dependências declaradas; `coletores_base.py` aparecia sem
+`log_buscas.json`. Coluna nova `importado por`: ele tem 169 importadores, e era esse número que
+faltava antes dos dois acidentes de isolamento.
+
 ## 2026-10-05 · #559 · O CODEMAP apontava três caminhos que não existem
 
 Ao comparar o mapa com a árvore, três scripts apareciam como `assets/js/acesso.js`,
