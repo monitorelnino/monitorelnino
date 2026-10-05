@@ -83,6 +83,13 @@ LOGS_QUE_SO_CRESCEM = {
 # append-only, em outro formato, e ate hoje sem classe: ele recusava e parava a rodada.
 PREFIXOS_JSONL_QUE_SO_CRESCEM = ("data/log_buscas/",)
 
+# CONTADORES que só sobem. `data/funil/<data>.json` guarda, por etapa, quantas pistas passaram por
+# cada peneira naquele dia, e `funil.registrar` SOMA a cada rodada — ninguém reescreve o número de
+# ninguém. Dois elos que contaram no mesmo dia são dois acréscimos, e a união é a mesma de sempre,
+# aplicada a número em vez de item de lista: `base + (nosso − base) + (deles − base)`.
+# Lado que ficou MENOR que a base é decremento, não acréscimo, e aí se recusa.
+PREFIXOS_CONTADORES_QUE_SO_CRESCEM = ("data/funil/",)
+
 # Função de outros dados. Resolve-se com a versão de cima e regenera-se depois.
 REGENERAVEIS = (
     "docs/MANIFEST_SHA256.txt",
@@ -270,6 +277,67 @@ def estagio(caminho, n, repo=None):
         return None
 
 
+def e_contador_que_so_cresce(caminho: str) -> bool:
+    """O caminho é um arquivo de contadores somados por rodada? Função pura."""
+    return (str(caminho).startswith(PREFIXOS_CONTADORES_QUE_SO_CRESCEM)
+            and str(caminho).endswith(".json"))
+
+
+def unir_contadores(caminho, base_txt, nosso_txt, deles_txt):
+    """União pela base comum em NÚMEROS: base + (nosso − base) + (deles − base). Função pura.
+
+    `etapas` é um dicionário de etapa → {contagem: inteiro}, e cada rodada soma. Somar os dois
+    acréscimos preserva o trabalho dos dois lados; escolher um lado jogaria fora o do outro, que é
+    a perda que este arquivo inteiro existe para impedir.
+
+    Campo fora de `etapas` que divirja é recusado: `data` e `formato_versao` não são contagem, e
+    diferença neles quer dizer que os dois lados falam de coisas diferentes.
+    """
+    if nosso_txt is None or deles_txt is None:
+        raise Recusa("um dos lados não tem o arquivo; isto não é acréscimo dos dois lados")
+    nosso, deles = json.loads(nosso_txt), json.loads(deles_txt)
+    base = json.loads(base_txt) if base_txt is not None else {}
+    for nome, d in (("nosso", nosso), ("deles", deles)):
+        if not isinstance(d, dict) or not isinstance(d.get("etapas"), dict):
+            raise Recusa(f"o lado {nome} não tem 'etapas' no formato esperado")
+
+    fora_de_etapas = set()
+    for chave in set(nosso) | set(deles):
+        if chave == "etapas" or chave == "atualizado_em":
+            continue
+        if nosso.get(chave) != deles.get(chave):
+            fora_de_etapas.add(chave)
+    if fora_de_etapas:
+        raise Recusa("os campos fora de 'etapas' divergem: " + ", ".join(sorted(fora_de_etapas)))
+
+    eb = (base.get("etapas") or {}) if isinstance(base, dict) else {}
+    etapas, somados = {}, 0
+    for etapa in sorted(set(nosso["etapas"]) | set(deles["etapas"])):
+        b = eb.get(etapa) or {}
+        n = nosso["etapas"].get(etapa) or {}
+        d = deles["etapas"].get(etapa) or {}
+        junto = {}
+        for chave in sorted(set(b) | set(n) | set(d)):
+            vb, vn, vd = b.get(chave, 0), n.get(chave, 0), d.get(chave, 0)
+            for nome, v in (("nosso", vn), ("deles", vd), ("base", vb)):
+                if not isinstance(v, int) or isinstance(v, bool):
+                    raise Recusa(f"{etapa}.{chave}: o lado {nome} não é inteiro")
+            for nome, v in (("nosso", vn), ("deles", vd)):
+                if v < vb:
+                    raise Recusa(f"{etapa}.{chave}: o lado {nome} ({v}) é menor que a base "
+                                 f"({vb}) — houve decremento, e isto não é acréscimo")
+            junto[chave] = vb + (vn - vb) + (vd - vb)
+            somados += 1
+        etapas[etapa] = junto
+
+    fundido = dict(nosso)
+    fundido["etapas"] = etapas
+    carimbos = [x for x in (nosso.get("atualizado_em"), deles.get("atualizado_em")) if x]
+    if carimbos:
+        fundido["atualizado_em"] = max(carimbos)
+    return fundido, len(nosso["etapas"]), len(deles["etapas"]), somados
+
+
 def e_jsonl_que_so_cresce(caminho: str) -> bool:
     """O caminho é um JSONL append-only declarado? Função pura."""
     return (str(caminho).startswith(PREFIXOS_JSONL_QUE_SO_CRESCEM)
@@ -372,6 +440,19 @@ def resolver(repo=None, escrever=True):
                         encoding="utf-8", newline="")
                     git("add", "--", norm, repo=repo)
                 resolvidos.append(f"{norm}: {a} + {b} → {t} (união pela base comum)")
+
+            elif e_contador_que_so_cresce(norm):
+                fundido, a, b, t = unir_contadores(
+                    norm,
+                    estagio(norm, 1, repo=repo), estagio(norm, 2, repo=repo),
+                    estagio(norm, 3, repo=repo))
+                if escrever:
+                    (raiz / norm).write_text(
+                        json.dumps(fundido, ensure_ascii=False, indent=1) + "\n",
+                        encoding="utf-8", newline="\n")
+                    git("add", "--", norm, repo=repo)
+                resolvidos.append(f"{norm}: {a} + {b} etapa(s), {t} contagem(ns) somada(s) "
+                                  f"(união pela base comum)")
 
             elif e_jsonl_que_so_cresce(norm):
                 fundido, a, b, t = unir_jsonl(
@@ -607,6 +688,30 @@ def autoteste() -> int:
         checar("JSONL que nao comeca pela base e RECUSADO", False)
     except Recusa:
         checar("JSONL que nao comeca pela base e RECUSADO", True)
+    checar("o funil do dia tem classe", e_contador_que_so_cresce("data/funil/2026-10-05.json"))
+    checar("outro json nao entra como contador", not e_contador_que_so_cresce("data/meta.json"))
+    _b = '{"data":"2026-10-05","formato_versao":1,"etapas":{"juiz":{"recebidas":10}}}'
+    _n = '{"data":"2026-10-05","formato_versao":1,"etapas":{"juiz":{"recebidas":14}}}'
+    _d = '{"data":"2026-10-05","formato_versao":1,"etapas":{"juiz":{"recebidas":13},"doe":{"x":2}}}'
+    _f = unir_contadores("data/funil/x.json", _b, _n, _d)
+    checar("contagem soma os dois acrescimos sobre a base",
+           _f[0]["etapas"]["juiz"]["recebidas"] == 17)
+    checar("etapa que so um lado tem entra inteira", _f[0]["etapas"]["doe"]["x"] == 2)
+    checar("a uniao de contadores nunca fica menor que um lado",
+           _f[0]["etapas"]["juiz"]["recebidas"] >= 14)
+    try:
+        unir_contadores("data/funil/x.json", _b,
+                        '{"data":"2026-10-05","formato_versao":1,"etapas":{"juiz":{"recebidas":9}}}',
+                        _d)
+        checar("decremento e RECUSADO", False)
+    except Recusa:
+        checar("decremento e RECUSADO", True)
+    try:
+        unir_contadores("data/funil/x.json", _b, _n,
+                        '{"data":"2026-10-04","formato_versao":1,"etapas":{"juiz":{"recebidas":13}}}')
+        checar("campo fora de etapas divergente e RECUSADO", False)
+    except Recusa:
+        checar("campo fora de etapas divergente e RECUSADO", True)
     checar("o painel da noite e log que so cresce, pela chave `noites`",
            LOGS_QUE_SO_CRESCEM.get("data/painel_da_noite.json") == "noites")
     checar("o resumo do log e o card de municipios sao regeneraveis",
