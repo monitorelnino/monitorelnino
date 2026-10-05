@@ -61,6 +61,13 @@ BANCO = (
     "pistas_descobertas.json",
     "pistas_sinais.json",
     "pistas_rejeitadas.json",
+    # 05/10/2026, achado na mesclagem do #555: o nosso lado tinha SEIS linhas MENOS que a base
+    # comum em `data/log_buscas/2026-10.jsonl` — seis execuções reais do canal DOM contra
+    # defesacivil.am.gov.br, apagadas por um autoteste de coletor que gravou no arquivo real. O log
+    # é o livro-razão da coleta: ele só cresce, e perder linha dele é perder a prova de que a
+    # consulta aconteceu. Era o mesmo furo das pistas, em arquivo que não estava nesta lista.
+    "log_buscas_resumo.json",
+    "log_buscas/2026-10.jsonl",
 )
 
 
