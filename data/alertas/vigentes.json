@@ -7,15 +7,15 @@
   "validade_horas": 36,
   "escrito_por": "coletar_sinais_risco.py"
  },
- "gerado_em": "04/10/2026 10:37",
+ "gerado_em": "04/10/2026 22:13",
  "resumo": {
   "municipios": 2831,
   "municipios_inmet": 2826,
-  "municipios_cemaden": 23,
+  "municipios_cemaden": 31,
   "avisos_inmet": 2,
-  "alertas_cemaden_em_vigor": 23,
-  "alertas_cemaden_cessados": 5,
-  "alertas_cemaden_devolvidos": 28,
+  "alertas_cemaden_em_vigor": 31,
+  "alertas_cemaden_cessados": 1,
+  "alertas_cemaden_devolvidos": 32,
   "alertas_cemaden_sem_codigo_ibge": 0,
   "campos_devolvidos_pelo_cemaden": [
    "cidade",
@@ -17842,7 +17842,15 @@
      "fim": "2026-10-04 23:59"
     }
    ],
-   "cemaden": []
+   "cemaden": [
+    {
+     "nivel": "Moderado",
+     "tipo": "Risco Hidrológico",
+     "evento": "Risco Hidrológico - Moderado",
+     "inicio": "2026-10-04T17:54:06.084Z",
+     "fim": null
+    }
+   ]
   },
   "3509601": {
    "nome": "Campo Limpo Paulista",
@@ -18563,7 +18571,15 @@
      "fim": "2026-10-04 23:59"
     }
    ],
-   "cemaden": []
+   "cemaden": [
+    {
+     "nivel": "Moderado",
+     "tipo": "Risco Hidrológico",
+     "evento": "Risco Hidrológico - Moderado",
+     "inicio": "2026-10-04T17:26:37.358Z",
+     "fim": null
+    }
+   ]
   },
   "3513108": {
    "nome": "Cravinhos",
@@ -19914,7 +19930,15 @@
      "fim": "2026-10-04 23:59"
     }
    ],
-   "cemaden": []
+   "cemaden": [
+    {
+     "nivel": "Moderado",
+     "tipo": "Risco Hidrológico",
+     "evento": "Risco Hidrológico - Moderado",
+     "inicio": "2026-10-04T17:13:45.855Z",
+     "fim": null
+    }
+   ]
   },
   "3518800": {
    "nome": "Guarulhos",
@@ -26893,7 +26917,15 @@
      "fim": "2026-10-04 23:59"
     }
    ],
-   "cemaden": []
+   "cemaden": [
+    {
+     "nivel": "Moderado",
+     "tipo": "Risco Hidrológico",
+     "evento": "Risco Hidrológico - Moderado",
+     "inicio": "2026-10-04T19:34:27.702Z",
+     "fim": null
+    }
+   ]
   },
   "3549953": {
    "nome": "São Lourenço da Serra",
@@ -26977,7 +27009,15 @@
      "fim": "2026-10-04 23:59"
     }
    ],
-   "cemaden": []
+   "cemaden": [
+    {
+     "nivel": "Moderado",
+     "tipo": "Risco Hidrológico",
+     "evento": "Risco Hidrológico - Moderado",
+     "inicio": "2026-10-04T17:21:48.926Z",
+     "fim": null
+    }
+   ]
   },
   "3550407": {
    "nome": "São Pedro",
@@ -27040,7 +27080,15 @@
      "fim": "2026-10-04 23:59"
     }
    ],
-   "cemaden": []
+   "cemaden": [
+    {
+     "nivel": "Moderado",
+     "tipo": "Risco Hidrológico",
+     "evento": "Risco Hidrológico - Moderado",
+     "inicio": "2026-10-04T17:24:15.746Z",
+     "fim": null
+    }
+   ]
   },
   "3550704": {
    "nome": "São Sebastião",
@@ -27355,7 +27403,15 @@
      "fim": "2026-10-04 23:59"
     }
    ],
-   "cemaden": []
+   "cemaden": [
+    {
+     "nivel": "Moderado",
+     "tipo": "Risco Hidrológico",
+     "evento": "Risco Hidrológico - Moderado",
+     "inicio": "2026-10-04T16:14:57.917Z",
+     "fim": null
+    }
+   ]
   },
   "3552304": {
    "nome": "Sud Mennucci",
@@ -27488,7 +27544,15 @@
      "fim": "2026-10-04 23:59"
     }
    ],
-   "cemaden": []
+   "cemaden": [
+    {
+     "nivel": "Moderado",
+     "tipo": "Risco Hidrológico",
+     "evento": "Risco Hidrológico - Moderado",
+     "inicio": "2026-10-04T17:38:48.041Z",
+     "fim": null
+    }
+   ]
   },
   "3552908": {
    "nome": "Taciba",
@@ -47193,48 +47257,12 @@
   }
  },
  "cessados": {
-  "4108304": [
+  "3522307": [
    {
     "nivel": "Cessar",
     "tipo": "Risco Hidrológico",
     "evento": "Risco Hidrológico - Cessar",
-    "inicio": "2026-10-04T09:35:29.859Z",
-    "fim": null
-   }
-  ],
-  "4108403": [
-   {
-    "nivel": "Cessar",
-    "tipo": "Risco Hidrológico",
-    "evento": "Risco Hidrológico - Cessar",
-    "inicio": "2026-10-04T09:35:28.140Z",
-    "fim": null
-   }
-  ],
-  "4118501": [
-   {
-    "nivel": "Cessar",
-    "tipo": "Risco Hidrológico",
-    "evento": "Risco Hidrológico - Cessar",
-    "inicio": "2026-10-04T09:35:26.221Z",
-    "fim": null
-   }
-  ],
-  "4125704": [
-   {
-    "nivel": "Cessar",
-    "tipo": "Risco Hidrológico",
-    "evento": "Risco Hidrológico - Cessar",
-    "inicio": "2026-10-04T09:35:24.221Z",
-    "fim": null
-   }
-  ],
-  "4314902": [
-   {
-    "nivel": "Cessar",
-    "tipo": "Risco Hidrológico",
-    "evento": "Risco Hidrológico - Cessar",
-    "inicio": "2026-10-04T09:33:27.160Z",
+    "inicio": "2026-10-04T19:53:18.688Z",
     "fim": null
    }
   ]
