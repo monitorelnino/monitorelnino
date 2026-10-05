@@ -35,6 +35,7 @@ from __future__ import annotations
 import collections
 import datetime as dt
 import json
+import re
 import pathlib
 import sys
 
@@ -143,6 +144,11 @@ def data_por_extenso(iso: str) -> str:
     return f"{d.day} de {MESES[d.month - 1]} de {d.year}"
 
 
+# As grafias de numero que um texto pode usar: milhar com ponto, decimal com virgula, data em
+# dd/mm/aaaa. E a mesma familia que `scripts/verificar_texto_blog.py` extrai do corpo.
+_RE_NUMERO = re.compile(r"\d{1,3}(?:\.\d{3})+|\d+(?:,\d+)?")
+
+
 def numeros_permitidos(fatos: list) -> list:
     """Todas as formas em que o texto pode escrever cada valor e cada data dos fatos. Função pura.
 
@@ -161,6 +167,17 @@ def numeros_permitidos(fatos: list) -> list:
             fora.add(("%g" % v).replace(".", ","))
         elif isinstance(v, str) and v.strip():
             fora.add(v.strip())
+        # OS NUMEROS DO PROPRIO TEXTO DO FATO TAMBEM CONTAM. Sem isto, um fato de base legal --
+        # cujo numero vive na frase ("Lei 12.340/2010"), nao num campo `valor` -- era declarado no
+        # pacote e proibido no texto ao mesmo tempo: o verificador reprovava 12.340, 2010, 260 e
+        # 2022 com a base legal deles impressa no pacote, duas linhas acima. Numero que esta no
+        # pacote pode ser citado; e para isso que o pacote existe.
+        for achado in _RE_NUMERO.findall(str(f.get("texto") or "")):
+            fora.add(achado)
+            cru = achado.replace(".", "")
+            if cru.isdigit():
+                fora.add(cru)
+                fora.add(numero_pt(int(cru)))
         for chave in ("data", "data_consulta"):
             d = str(f.get(chave) or "")
             iso = d if (len(d) == 10 and d[:4].isdigit()) else para_iso(d)
@@ -403,6 +420,15 @@ def fatos_de_tipos(atos: list, recursos: dict, caminhos: dict, ocp: dict, hoje: 
                               f"{regiao}", n, "decretos",
                               "S2iD e diários oficiais, pelo Monitor", None, hoje_iso, hoje_iso))
 
+    # A central mediu "outro ou sem tipo" como um numero so, e e a mesma contagem desta fonte, somada.
+    # Soma do mesmo campo e descricao; o que as regras proibem e razao entre etapas e ranking.
+    sem_tipo_claro = por_tipo.get("outro_declarado", 0) + por_tipo.get("sem_tipo_informado", 0)
+    if sem_tipo_claro:
+        fatos.append(fato("decretos_sem_tipo_claro", "decretos",
+                          "decretos do ciclo cujo tipo de evento a fonte declara como outro ou nao "
+                          "informa", sem_tipo_claro, "decretos",
+                          "S2iD e diarios oficiais, pelo Monitor", None, hoje_iso, hoje_iso))
+
     lacunas.append("reconhecimentos federais por tipo de evento: os atos registrados não trazem a "
                    "marca de reconhecimento federal, então a contagem por tipo não se faz com o "
                    "dado de hoje")
@@ -433,26 +459,48 @@ def fatos_de_tipos(atos: list, recursos: dict, caminhos: dict, ocp: dict, hoje: 
                    "(resposta, recuperação, outra), não o evento que a motivou; o pacote traz por "
                    "ação, que é o que a fonte diz")
 
-    # ── 3. seca: a Operação Carro-Pipa, já reconciliada ──
-    if ocp:
+    # ── 3. seca: a Operação Carro-Pipa, do arquivo que a ingestão grava ──
+    #
+    # A forma lida é a de `scripts/ingerir_ocp_midr.py`: o agregado vive em `resumo`, e as
+    # anomalias vivem em `anomalias`, cada uma com o seu tratamento. As anomalias entram como
+    # LACUNA, não como fato: "Qtd. meses acima do período" é coisa que a planilha tem, não coisa
+    # que aconteceu no mundo, e publicá-la como fato trocaria uma pela outra.
+    r = (ocp or {}).get("resumo") or {}
+    if r:
+        fonte_ocp, recebido = ocp.get("fonte"), ocp.get("recebido_em")
         fatos.append(fato("ocp_municipios", "seca",
                           "municípios atendidos pela Operação Carro-Pipa entre janeiro e agosto de "
-                          "2026", ocp.get("municipios"), "municípios", ocp.get("fonte"), None,
-                          ocp.get("recebido_em"), hoje_iso))
+                          "2026", r.get("municipios"), "municípios", fonte_ocp, None,
+                          recebido, hoje_iso))
         fatos.append(fato("ocp_ufs", "seca",
-                          "estados com municípios atendidos pela Operação Carro-Pipa no período",
-                          len(ocp.get("ufs") or []), "estados", ocp.get("fonte"), None,
-                          ocp.get("recebido_em"), hoje_iso))
-        fatos.append(fato("ocp_meses_8", "seca",
-                          "municípios atendidos em oito dos oito meses do período",
-                          ocp.get("meses_8"), "municípios", ocp.get("fonte"), None,
-                          ocp.get("recebido_em"), hoje_iso))
+                          "estados com município atendido pela Operação Carro-Pipa no período",
+                          len(r.get("ufs") or []), "estados", fonte_ocp, None, recebido, hoje_iso))
+        for uf, n in sorted((r.get("municipios_por_uf") or {}).items()):
+            fatos.append(fato(f"ocp_municipios_{uf.lower()}", "seca",
+                              f"municípios atendidos pela Operação Carro-Pipa no {uf}", n,
+                              "municípios", fonte_ocp, None, recebido, hoje_iso))
+        fatos.append(fato("ocp_portarias", "seca",
+                          "portarias de situação de emergência distintas informadas no período",
+                          r.get("portarias_distintas"), "portarias", fonte_ocp, None, recebido,
+                          hoje_iso))
+        # O handover proíbe chamar estes de "novos": a planilha não separa reconhecimento de
+        # renovação, e o fato permitido é a DATA da portaria.
         fatos.append(fato("ocp_portarias_ciclo", "seca",
-                          "portarias de situação de emergência com data em ou após 29 de junho de "
-                          "2026, entre as informadas", ocp.get("desde_2906"), "portarias",
-                          ocp.get("fonte"), None, ocp.get("recebido_em"), hoje_iso))
-        fatos.append(fato("ocp_ressalva", "seca", ocp.get("ressalva") or "", None, None,
-                          ocp.get("fonte"), None, ocp.get("recebido_em"), hoje_iso))
+                          "portarias com data em ou após 29 de junho de 2026, entre as informadas",
+                          r.get("portarias_com_data_a_partir_do_inicio_do_ciclo"), "portarias",
+                          fonte_ocp, None, recebido, hoje_iso))
+        for meses, n in sorted((r.get("municipios_por_meses_atendidos") or {}).items(),
+                               key=lambda kv: int(kv[0])):
+            fatos.append(fato(f"ocp_municipios_meses_{meses}", "seca",
+                              f"municípios com {meses} mês(es) de atendimento informado no período",
+                              n, "municípios", fonte_ocp, None, recebido, hoje_iso))
+        for sit, n in sorted((r.get("portarias_por_situacao_na_fonte") or {}).items()):
+            fatos.append(fato(f"ocp_portarias_{sit.lower()}", "seca",
+                              f"portarias cuja situação a fonte nomeia «{sit}»", n, "portarias",
+                              fonte_ocp, None, recebido, hoje_iso))
+        for a in (ocp.get("anomalias") or []):
+            lacunas.append(f"Operação Carro-Pipa, {a.get('anomalia')}: {a.get('descricao')} "
+                           f"[{a.get('tratamento')}]")
     else:
         lacunas.append("Operação Carro-Pipa: o arquivo `data/programas_federais/ocp_2026.json` "
                        "ainda não existe nesta árvore")
