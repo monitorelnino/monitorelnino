@@ -2145,40 +2145,103 @@
   },
   {
    "data": "2026-10-05",
-   "script": "preservar_evidencias.py",
-   "inicio": "2026-10-05T07:54:51",
-   "duracao_s": 3.3,
-   "itens": null,
+   "script": "monitorar_imprensa_regional.py",
+   "inicio": "2026-10-05T07:54:33",
+   "duracao_s": 124.1,
+   "itens": 40,
    "status": "ok",
    "erro": ""
   },
   {
    "data": "2026-10-05",
-   "script": "preservar_evidencias.py",
-   "inicio": "2026-10-05T07:54:54",
+   "script": "monitorar_imprensa_saude.py",
+   "inicio": "2026-10-05T07:56:37",
    "duracao_s": 0.5,
    "itens": null,
+   "status": "erro",
+   "erro": "KeyError: 'hash'"
+  },
+  {
+   "data": "2026-10-05",
+   "script": "monitorar_atos_resposta.py",
+   "inicio": "2026-10-05T07:56:37",
+   "duracao_s": 209.5,
+   "itens": 3011,
    "status": "ok",
    "erro": ""
   },
   {
    "data": "2026-10-05",
-   "script": "preservar_evidencias.py",
-   "inicio": "2026-10-05T07:54:54",
-   "duracao_s": 46.8,
+   "script": "monitorar_politica_por_inteiro.py",
+   "inicio": "2026-10-05T08:00:06",
+   "duracao_s": 5.6,
+   "itens": 3011,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-05",
+   "script": "monitorar_sinais_federais.py",
+   "inicio": "2026-10-05T08:00:11",
+   "duracao_s": 3.8,
+   "itens": 10,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-05",
+   "script": "detectar_marcos_federais.py",
+   "inicio": "2026-10-05T08:00:14",
+   "duracao_s": 1.6,
+   "itens": 0,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-05",
+   "script": "descobrir_planos.py",
+   "inicio": "2026-10-05T08:00:15",
+   "duracao_s": 1022.7,
+   "itens": 42,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-05",
+   "script": "monitorar_redes_oficiais.py",
+   "inicio": "2026-10-05T08:17:17",
+   "duracao_s": 1035.9,
    "itens": null,
    "status": "ok",
    "erro": ""
   },
   {
    "data": "2026-10-05",
-   "script": "scripts/preservar_textos_integrais.py",
-   "inicio": "2026-10-05T07:55:40",
-   "duracao_s": 1.4,
+   "script": "seguir_pistas.py",
+   "inicio": "2026-10-05T08:34:33",
+   "duracao_s": 296.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-05",
+   "script": "triar_confianca_pistas.py",
+   "inicio": "2026-10-05T08:39:29",
+   "duracao_s": 2.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-05",
+   "script": "verificar_pista_imprensa.py",
+   "inicio": "2026-10-05T08:39:32",
+   "duracao_s": 40.0,
    "itens": null,
    "status": "ok",
    "erro": ""
   }
  ],
- "atualizado_em": "2026-10-05T07:55:41"
+ "atualizado_em": "2026-10-05T08:40:12"
 }
