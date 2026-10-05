@@ -11,12 +11,11 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-05 · #556 · Um escritor por arquivo, cancelado não é feito, e a noite passa a ser ensaiada
 
-A busca web perdeu 114 min na noite de 04→05/10 porque o rebase usava `-X theirs`, que num arquivo
-de fila apaga o lado perdedor. Agora `unir_conflito_de_rodada.py` resolve as filas de pista pela
-base comum com a política da porta única, e recusa só o mesmo campo com valores diferentes.
-`config/escritores.json` declara quem commita cada arquivo. Elo cancelado deixa de contar como
-noite aberta: o marcador `.feito` é gravado antes do commit. `ensaio_da_noite.py` prova as quatro
-causas, de dia, sem tocar a `main`.
+A busca web perdeu 114 min porque o rebase usava `-X theirs`, que num arquivo de fila apaga o lado
+perdedor. `unir_conflito_de_rodada.py` passa a unir as filas pela base comum, com a política da
+porta única. `config/escritores.json` declara quem commita cada arquivo. Elo cancelado deixa de
+contar como noite aberta: o marcador `.feito` vem antes do commit. `ensaio_da_noite.py` prova as
+quatro causas de dia, sem tocar a `main`.
 
 ## 2026-10-05 · #555 · A fila de pistas tem uma porta, e o esquema não para mais a publicação
 
