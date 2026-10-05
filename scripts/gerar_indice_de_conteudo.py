@@ -97,12 +97,20 @@ def como_html(paginas: dict) -> str:
          "h1{font-weight:300;font-size:1.8rem} h2{font-weight:300;margin-top:2.5rem}",
          "h3{font-weight:400;font-size:1rem;margin:1.5rem 0 .4rem;color:#444}",
          ".aviso{background:#f6f3ec;border-left:3px solid #7C4A34;padding:.8rem 1rem;margin:1rem 0}",
-         "table{border-collapse:collapse;width:100%;margin:.4rem 0 1.2rem}",
+         # `table-layout:fixed` + quebra em qualquer ponto: sem isso o identificador longo
+         # (`financiamento.dinheiroElNino.forma_aplicacao.legenda`) força a tabela a 403 px e a
+         # página ganha rolagem horizontal a 390 px — o portão móvel reprovou exatamente isso.
+         # Esta página é interna, mas a régua de acessibilidade não é só do público: a editoria
+         # também a lê no celular, e rolagem lateral em tabela é onde a leitura se perde.
+         "table{border-collapse:collapse;width:100%;table-layout:fixed;margin:.4rem 0 1.2rem}",
          "td,th{border-bottom:1px solid #e3e3e3;padding:.45rem .5rem;vertical-align:top;",
-         "font-size:.92rem;text-align:left}",
+         "font-size:.92rem;text-align:left;overflow-wrap:anywhere;word-break:break-word}",
          "th{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#666}",
+         "th:first-child{width:5.5rem}",
          "code{font-family:ui-monospace,monospace;font-size:.82rem;color:#5E7C93;",
-         "word-break:break-all}",
+         "overflow-wrap:anywhere}",
+         "@media (max-width:28rem){body{padding:0 .6rem}td,th{padding:.4rem .25rem;",
+         "font-size:.85rem}th:first-child{width:4rem}}",
          ".molde{color:#7C4A34} .ex{color:#666;font-style:italic}",
          "</style></head><body>",
          "<h1>Índice de conteúdo</h1>",
