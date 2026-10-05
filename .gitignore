@@ -45,6 +45,12 @@ diagnostico_sinais.json
 # 30/09/2026 (§318): capturas geradas pelos portões de navegador. Sobem como artefato do
 # run, nunca como arquivo do repositório — são 2,8 MB por execução.
 capturas-ci/
+
+# 05/10/2026: recortes de figura do renderizador por identificador
+# (`scripts/renderizar_figura.py`). São artefato de REVISÃO: a editoria olha e descarta, e
+# cada um se regenera num comando. Versioná-los encheria o repositório de PNG de 170 kB que
+# envelhecem a cada mudança de dado — e o que vale no PR é a imagem anexada, não o arquivo.
+capturas/figuras/
 wt-*/
 
 # Capturas dos portões de navegador: saída de execução, não derivado de dado.

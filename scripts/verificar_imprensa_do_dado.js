@@ -128,7 +128,7 @@ const ler = p => JSON.parse(fs.readFileSync(path.join(RAIZ, p), "utf-8"));
       }
     }
     // A trava do que SAIU: número no ponteiro significa que o cartão numérico voltou.
-    if (/\d{1,3}(\.\d{3})+|\d{3,}/.test(mostrado)) {
+    if (/\d{1,3}(\.\d{3})+|\b\d{3,}\b/.test(mostrado)) {
       falhas.push(`${PAGINA}: o ponteiro dos textos mostra número — os números vivem nas páginas `
                   + `e no pacote, não aqui (handover de 04/10/2026)`);
     }

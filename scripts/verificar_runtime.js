@@ -82,7 +82,7 @@ setTimeout(() => {
     teste("consulta municipal: cartão mínimo visível, com status do plano",
           !card.hidden && /Plano de contingência localizado|Não localizamos|Ainda não verificamos/.test(card.innerHTML));
     teste("cartão mínimo: sem contatos, sem SMS, sem PDF",
-          !/199|40199|mailto:|btnPDF/.test(card.innerHTML));
+          !/\b199\b|40199|mailto:|btnPDF/.test(card.innerHTML));
     teste("cartão mínimo: traz o risco do estado no mesmo componente da ficha",
           /risco-box|RISCO PROJETADO|risco projetado/i.test(card.innerHTML));
     teste("datalist com municípios de SC", q("listaMun").children.length === 295);

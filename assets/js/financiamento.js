@@ -1,6 +1,17 @@
 // ===== financiamento.html · bloco 1 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
 let BR_GEOJSON, ROTAS, PORUF, EMENDAS, CONSULTAS, TRANSF, ATOS, POP, MPS, CONTADORES, RESP_FIN = null;
 
+/* O texto público desta página vive em `conteudo/financiamento.json` (handover do catálogo de
+ * conteúdo, 05/10/2026). `doCatalogo` pede a frase ao catálogo e preenche os marcadores com os
+ * valores que este arquivo tem em mão — o leitor do catálogo não busca dado, porque dado é a
+ * terceira camada. Se o catálogo não tiver a entrada, devolve string vazia e o texto de reserva
+ * que está no HTML permanece: a página não fica em branco por causa de um JSON que não carregou. */
+function doCatalogo(idElemento, idTexto, valores) {
+  const C = window.MonitorCatalogo;
+  if (!C) return null;            /* catálogo ausente: fica o texto de reserva do HTML */
+  return C.escrever(idElemento, idTexto, valores);
+}
+
 // ===== 3b · Contadores por estado (v3.1 §11; redesenhado 13/09/2026 — auditoria de visualizações) =====
 function renderContadores(){
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -559,8 +570,10 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     escrever('resposta_liberado_semana', 'topoRespostaSemana', null, 'topoRespostaFonte', reaisCurto, null);
     const resp = por['resposta_liberado_semana'];
     if (resp && !resp.sem_coleta && el('topoRespostaMunicipios')) {
-      el('topoRespostaMunicipios').textContent = 'autorizado em portarias de resposta nos últimos '
-        + 'sete dias' + (resp.detalhe ? ' · ' + resp.detalhe : '');
+      /* O TEXTO vem do catálogo (handover de 05/10/2026); aqui fica só o dado. */
+      doCatalogo('topoRespostaMunicipios',
+                 'financiamento.dc-topo.topo_resposta_municipios.molde_do_painel',
+                 { detalhe: resp.detalhe ? ' · ' + resp.detalhe : '' });
     }
     /* O cartao de atos SO aparece quando e maior que zero — e a regra e do contrato: grade de
      * tres com um quarto cartao vazio e pior que grade de tres. */
@@ -670,11 +683,21 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     muns.forEach(m => (m.atos || []).forEach(a => {
       if (a.data && new Date(a.data + 'T00:00:00').getTime() >= limite) naSemana.add(m.nome + '/' + m.uf);
     }));
-    el('topoRespostaMunicipios').textContent = naSemana.size
-      ? 'autorizados pela defesa civil federal nos últimos sete dias, para ' + n(naSemana.size)
-        + ' município(s) · ' + n(muns.length) + ' municípios com recursos autorizados desde 29 de junho'
-      : 'nenhuma portaria nos últimos sete dias · ' + n(muns.length)
-        + ' municípios com recursos autorizados desde 29 de junho';
+    /* O TEXTO vem do catálogo; o código só traz os números. Espera `pronto` porque este
+     * `fetch` pode resolver antes de o catálogo carregar, e aí a entrada não existiria. */
+    const esperar = (window.MonitorCatalogo && window.MonitorCatalogo.pronto)
+      || Promise.resolve();
+    esperar.then(() => {
+      if (naSemana.size) {
+        doCatalogo('topoRespostaMunicipios',
+                   'financiamento.dc-topo.topo_resposta_municipios.molde_com_portaria',
+                   { n_semana: naSemana.size, n_total: muns.length });
+      } else {
+        doCatalogo('topoRespostaMunicipios',
+                   'financiamento.dc-topo.topo_resposta_municipios.molde_sem_portaria',
+                   { n_total: muns.length });
+      }
+    });
   }).catch(() => {});
 
   /* O contexto do anunciado, com as duas frases do handover. */

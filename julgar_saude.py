@@ -186,7 +186,17 @@ def atribuicao_citada(texto: str) -> str:
 RE_ORGAO_SAUDE = re.compile(
     r"(secretaria\s+(?:de\s+estado\s+)?(?:estadual\s+)?d[ae]\s+sa[úu]de"
     r"|secretaria\s+d[ae]\s+sa[úu]de\s+d[eo]\s+estado"
-    r"|SES[-/\s]?[A-Z]{2}"
+    # 05/10/2026: esta linha trazia DOIS caracteres de backspace (0x08) no lugar das bordas de palavra —
+    # escape de shell que virou byte quando o arquivo foi escrito por heredoc, em 01/10. O
+    # padrão não dava erro: ele simplesmente nunca casava, e a alternativa "SES-XX" ficou morta
+    # por quatro dias dentro do juiz da saúde. Achado pelo portão de escrita portável, que
+    # passou a varrer caractere de controle no fonte.
+    # 05/10/2026: esta linha trazia DOIS caracteres de backspace (0x08) no lugar dos `\b` —
+    # escape de shell que virou byte quando o arquivo foi escrito por heredoc, em 01/10. O
+    # padrão não dava erro: ele simplesmente nunca casava, e a alternativa "SES-XX" ficou
+    # morta por quatro dias dentro do juiz da saúde. Achado pelo portão de escrita portável,
+    # que passou a varrer caractere de controle no fonte.
+    r"|\bSES[-/\s]?[A-Z]{2}\b"
     r"|funda[çc][ãa]o\s+de\s+vigil[âa]ncia\s+em\s+sa[úu]de"
     r"|superintend[êe]ncia\s+de\s+vigil[âa]ncia\s+em\s+sa[úu]de)", re.I)
 RE_ANO_OU_CICLO = re.compile(r"\b20\d{2}\b")

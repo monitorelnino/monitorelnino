@@ -49,6 +49,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>05/10/2026 · O texto público sai do código e vai para o catálogo</dt>
+      <dd>Três camadas separadas: estrutura (contrato), conteúdo (catálogo) e dado (geradores). O Financiamento migrou como prova — 57 identificadores estáveis em `conteudo/financiamento.json`, extraídos mecanicamente para não mudar uma vírgula, e o texto visível em 1280 e 390 px ficou idêntico, 532 trechos. Vêm juntos o leitor, o portão do catálogo, o renderizador de uma figura por vez, o aplicador de edição aprovada e o índice interno.</dd>
       <dt>05/10/2026 · O CODEMAP mentia por omissão, e agora diz quantos importam cada arquivo</dt>
       <dd>Comparado com o grafo de dependências, o mapa tinha um ponto cego: só via o nome do dado **literal na chamada**. Quem o guarda em constante — o estilo dos scripts novos — ficava invisível, e 23 arquivos subiram de 17 para 84 dependências declaradas; `coletores_base.py` aparecia sem `log_buscas.json`. Coluna nova `importado por`: ele tem 169 importadores, e era esse número que faltava antes dos dois acidentes de isolamento.</dd>
       <dt>05/10/2026 · O CODEMAP apontava três caminhos que não existem</dt>
@@ -167,8 +169,6 @@
       <dd>A v0.4 ganha a escala de razão do Legal, o componente de coordenação em saúde e o tempo fora da nota. Fica em `monitor_saude_v04.json`, que a página não lê: a troca autorizada espera a verificação da coordenação, que nasceu nesta versão e não existia em estado nenhum — somar um terço de zero afirmaria ausência de sala de situação por ausência de busca. MT verificada por dois atos lidos: média publicada 32,5 → 31,8. METODOLOGIA §68.</dd>
       <dt>01/10/2026 · Pendências resolvidas pela editoria, e a portaria do MMA estava revogada</dt>
       <dd>Título, subtítulo e legenda definitivos do mapa do cadastro; manchete do MARÉ Saúde só com os 27 estados; os dois cadastros federais distintos na METODOLOGIA §66; linha aprovada para o plano estadual que trata de outro risco (MG). A conferência da portaria do MMA achou ato novo: a **1.717/2026** revogou a 1.202/2024 — Anexo I 81 → 80, Anexo II 10 → 17, com MA entrando. §67.</dd>
-      <dt>01/10/2026 · Defesa civil refeita: só alertas e emergências</dt>
-      <dd>Saem os mapas de preparação (o plano mora no MARÉ Legal) e o material de auditoria, com destino em `dados-abertos/` e METODOLOGIA §65. Seis contadores no topo; o mapa principal de alerta é o do Cemaden, porque o aviso do Inmet é por área; três mapas de emergência, com o reconhecimento federal; o cadastro passa a ser a lista nominal da Casa Civil, e &quot;Cadastro Nacional&quot; sai do site. Busca por município em todo cartão.</dd>
     </dl>
   </section>
 </main>

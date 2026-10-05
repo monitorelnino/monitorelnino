@@ -183,6 +183,18 @@ jobs:
           python3 scripts/verificar_escritores.py --autoteste
           # assunto: dado
           python3 scripts/verificar_escritores.py
+          # assunto: texto
+          python3 scripts/verificar_catalogo.py --autoteste
+          # assunto: texto
+          python3 scripts/verificar_catalogo.py
+          # assunto: texto
+          python3 scripts/migrar_para_catalogo.py --autoteste
+          # assunto: texto
+          python3 scripts/aplicar_edicoes.py --autoteste
+          # assunto: texto
+          python3 scripts/renderizar_figura.py --autoteste
+          # assunto: texto
+          python3 scripts/gerar_indice_de_conteudo.py --autoteste
           # assunto: dado
           python3 scripts/ensaio_da_noite.py
           # assunto: dado
