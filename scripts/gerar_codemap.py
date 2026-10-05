@@ -91,7 +91,8 @@ def js_da_pagina(html: str) -> set:
     return set(RE_SCRIPT_HTML.findall(html or ""))
 
 
-def montar(paginas: dict, scripts: dict, pythons: dict, portoes: dict) -> list:
+def montar(paginas: dict, scripts: dict, pythons: dict, portoes: dict,
+           caminhos_js: dict = None) -> list:
     """A tabela do mapa, uma linha por arquivo. Função pura — recebe conteúdos, não lê disco."""
     cobertura = {}
     for nome, texto in (portoes or {}).items():
@@ -107,8 +108,15 @@ def montar(paginas: dict, scripts: dict, pythons: dict, portoes: dict) -> list:
         linhas.append({"arquivo": pag, "telas": [pag], "js": sorted(js),
                        "dados": sorted(dados), "portoes": sorted(cobertura.get(pag, [])),
                        "indice": "não"})
-    caminho_js = {p.name: (f"assets/js/{p.name}" if p.parent.name == "js" else f"assets/{p.name}")
-                  for p in []}          # preenchido por quem lê o disco; no teste, o padrão serve
+    # 05/10/2026 — DEFEITO CONSERTADO. Aqui havia uma compreensão sobre lista VAZIA
+    # (`for p in []`), com um comentário dizendo que quem lê o disco a preencheria. Ninguém
+    # preenchia, então o `get` caía sempre no padrão `assets/js/<nome>` — e três arquivos que vivem
+    # em `assets/` apareciam no mapa com um caminho que NÃO EXISTE: `assets/js/acesso.js`,
+    # `assets/js/colunas.js` e `assets/js/mapas.js`. Num índice cujo único propósito é dizer "por
+    # onde começar a ler", apontar caminho inexistente é o pior defeito possível — e `assets/mapas.js`
+    # é um dos dois únicos arquivos do projeto autorizados a carregar cor em hexadecimal.
+    # Agora `ler_tudo` passa os caminhos reais do disco, e o padrão só vale no autoteste.
+    caminho_js = dict(caminhos_js or {})
     for j in sorted(scripts or {}):
         telas = sorted(p for p, h in (paginas or {}).items() if j in js_da_pagina(h))
         linhas.append({"arquivo": caminho_js.get(j, f"assets/js/{j}"), "telas": telas, "js": [],
@@ -158,11 +166,31 @@ def como_markdown(linhas: list, gerado_em: str) -> str:
 def ler_tudo() -> tuple:
     paginas = {p.name: p.read_text(encoding="utf-8", errors="replace")
                for p in sorted(RAIZ.glob("*.html"))}
-    scripts = {p.name: p.read_text(encoding="utf-8", errors="replace")
-               for p in sorted(list((RAIZ / "assets" / "js").glob("*.js"))
-                               + list((RAIZ / "assets").glob("*.js")))}
+    js_em_disco = sorted(list((RAIZ / "assets" / "js").glob("*.js"))
+                         + list((RAIZ / "assets").glob("*.js")))
+    scripts = {p.name: p.read_text(encoding="utf-8", errors="replace") for p in js_em_disco}
+    # O caminho REAL de cada script, para o mapa não inventar diretório (ver `montar`).
+    caminhos_js = {p.name: p.relative_to(RAIZ).as_posix() for p in js_em_disco}
     pythons = {p.name: p.read_text(encoding="utf-8", errors="replace")
                for p in sorted(RAIZ.glob("*.py"))}
+    # 05/10/2026 — OS SCRIPTS DE `scripts/` QUE TOCAM `data/` ENTRAM NO MAPA.
+    #
+    # Até hoje o mapa cobria `*.py` da raiz e `scripts/verificar_*`, e deixava 127 arquivos de
+    # `scripts/` de fora. A maioria deles o mapa não teria o que dizer: não leem nem escrevem dado,
+    # e as três colunas sairiam vazias. Mas 19 tocam `data/` — e entre eles estava
+    # `scripts/pistas.py`, que desde o #555 é a ÚNICA porta da fila de pistas. Um índice que existe
+    # para dizer "por onde começar a ler" e que omite a porta da fila está omitindo justamente o
+    # ponto de partida.
+    #
+    # O critério é o que o mapa consegue afirmar: entra quem lê ou escreve `data/`. Isso acrescenta
+    # 19 linhas, não 127 — e o mapa é lido em toda sessão, então dobrá-lo com linhas vazias custaria
+    # contexto sem dar resposta.
+    for q in sorted((RAIZ / "scripts").glob("*.py")):
+        if q.name.startswith("verificar_") or q.name == "__init__.py":
+            continue                      # portão já entra abaixo; `__init__` não tem conteúdo
+        texto = q.read_text(encoding="utf-8", errors="replace")
+        if dados_de(texto):
+            pythons[q.relative_to(RAIZ).as_posix()] = texto
     portoes = {p.name: p.read_text(encoding="utf-8", errors="replace")
                for p in sorted(list((RAIZ / "scripts").glob("verificar_*.js"))
                                # 01/10/2026: os portões de página em PYTHON também entram. Sem
@@ -171,7 +199,7 @@ def ler_tudo() -> tuple:
                                # aparecia na coluna de cobertura de nenhuma das duas páginas, e o
                                # mapa dizia que a regra não existia.
                                + list((RAIZ / "scripts").glob("verificar_*.py")))}
-    return paginas, scripts, pythons, portoes
+    return paginas, scripts, pythons, portoes, caminhos_js
 
 
 def autoteste() -> int:
@@ -239,6 +267,27 @@ def autoteste() -> int:
     casos.append(("o markdown diz que é gerado", "não editar à mão" in md))
     casos.append(("e declara o que NÃO é", "análise de dependência completa" in md))
     casos.append(("uma linha por arquivo", md.count("\n| `") == len(linhas)))
+
+    # 05/10/2026 — as travas do defeito do caminho inventado. Elas existem porque o mapa apontou
+    # `assets/js/mapas.js` durante dias, e esse arquivo nunca existiu: ele vive em `assets/`. A
+    # causa era uma compreensão sobre lista vazia, com um comentário dizendo que outro trecho a
+    # preencheria; ninguém preenchia, e o padrão errado vencia sempre.
+    caminhos = {"acesso.js": "assets/acesso.js", "index.js": "assets/js/index.js"}
+    l2 = montar({}, {"acesso.js": "", "index.js": ""}, {}, {}, caminhos_js=caminhos)
+    casos.append(("o caminho real do script é respeitado, não inventado",
+                  {x["arquivo"] for x in l2} == {"assets/acesso.js", "assets/js/index.js"}))
+    casos.append(("sem o mapa de caminhos, o padrão continua servindo ao teste",
+                  {x["arquivo"] for x in montar({}, {"index.js": ""}, {}, {})}
+                  == {"assets/js/index.js"}))
+
+    # A trava que fecha o caso geral: TODO caminho de script no mapa tem de existir no disco. É
+    # barata, e é a que teria pegado o defeito no dia em que ele entrou.
+    mapa_em_disco = MAPA.read_text(encoding="utf-8") if MAPA.exists() else ""
+    fora_do_disco = [c for c in re.findall(r"^\| `(assets/[^`]+)`", mapa_em_disco, re.M)
+                     if not (RAIZ / c).exists()]
+    casos.append(("todo caminho de assets/ no mapa existe no disco", not fora_do_disco))
+    if fora_do_disco:
+        print("    caminhos que o mapa inventou:", ", ".join(fora_do_disco[:5]))
 
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:

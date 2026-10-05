@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-05 · #559 · O CODEMAP apontava três caminhos que não existem
+
+Ao comparar o mapa com a árvore, três scripts apareciam como `assets/js/acesso.js`,
+`assets/js/colunas.js` e `assets/js/mapas.js` — e os três vivem em `assets/`. A causa era uma
+compreensão sobre lista vazia no gerador, com o padrão errado vencendo sempre. Consertado, com
+trava que confere que todo caminho do mapa existe no disco. Os 19 scripts de `scripts/` que tocam
+`data/` entraram: 142 → 172 arquivos, incluindo a porta da fila de pistas.
+
 ## 2026-10-05 · #558 · Duas skills do projeto, e a tabela de arquivos grandes remedida
 
 `regras-do-site` e `noite-e-coletores` reúnem, com ponteiros, as regras que já estavam espalhadas em
