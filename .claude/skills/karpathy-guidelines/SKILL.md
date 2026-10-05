@@ -25,6 +25,24 @@ atrapalharia essa comparação.
 
 ## Precedência — onde esta skill vale, e onde ela cede
 
+> **REVOGAÇÃO, 27/09/2026 (noite) — ler antes do resto desta seção.** O que vem abaixo registra a
+> decisão de **26/09** (§238), e a parte dela sobre **interação foi revogada no dia seguinte**: o
+> `CLAUDE.md` (§ "Histórico de regimes") diz que a editoria desfez o regime de 26/09 porque "o
+> código conversava demais e pedia decisões que sabia tomar". A regra em vigor é **autonomia
+> decisória responsável**: analisar → decidir → implementar → testar → verificar → corrigir →
+> continuar, sem narrar e sem pedir permissão fora das paradas que o `CLAUDE.md` lista.
+>
+> Então, hoje: **o §1 "pergunte" NÃO vale** para decisão técnica de rotina — vale a lista de paradas
+> do `CLAUDE.md` (credencial que não existe · exclusão irreversível · mudança de regra, peso ou
+> régua do índice · alteração material de texto público · licença e distribuição · risco jurídico ou
+> de privacidade · conflito real entre requisitos · impedimento que persista após diagnóstico
+> razoável). O **§3 "Surgical Changes" continua valendo integralmente**, e o §2 e o §4 também: esta
+> skill segue sendo a referência de **qualidade de código** (escopo, simplicidade, nada de mudança
+> gratuita), não de interação. Nas colisões, **vence o `CLAUDE.md`**.
+>
+> O texto de 26/09 fica abaixo como histórico, não como instrução — apagá-lo esconderia a troca, e a
+> troca é a informação.
+
 Ela é **subordinada** às três fontes de verdade do projeto (`METODOLOGIA.md`,
 `AI_EDITORIAL_NARRATIVE_GOVERNANCE.md`, `AI_VISUAL_ART_DIRECTION.md`), que são limite de prova e de
 governança e não se negociam. Já nas duas colisões de **conduta de trabalho** abaixo, a editoria

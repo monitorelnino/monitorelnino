@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-05 · #558 · Duas skills do projeto, e a tabela de arquivos grandes remedida
+
+`regras-do-site` e `noite-e-coletores` reúnem, com ponteiros, as regras que já estavam espalhadas em
+seis documentos — nenhuma regra nova, auditado. A tabela de arquivos que nunca entram em contexto
+estava errada no que mais importa: `evidencias/` figurava com 380 MB e tem 4,1 GB, e
+`pistas_imprensa.json` (26 MB) nem constava. A skill `karpathy-guidelines` ganhou o aviso de que seu
+§1 foi revogado em 27/09.
+
 ## 2026-10-05 · #557 · O pacote do blog fica no artefato, por decisão da editoria
 
 A editoria respondeu a pergunta de 04/10: o pacote não vai ao `robo-registro`. O passo que clonava o
