@@ -2,7 +2,26 @@
 /* Portão de SEO (07/09/2026): título único (≤ 110 caracteres), descrição única (70–170), canônica no domínio,
  * Open Graph e Twitter completos, JSON-LD válido, um único <h1>, sitemap com todas as páginas, robots com sitemap. */
 const fs = require("fs"), path = require("path"); const RAIZ = path.join(__dirname, ".."); const falhas = []; const BASE = "https://monitorelnino.com.br/";
-const paginas = fs.readdirSync(RAIZ).filter(f => f.endsWith(".html")); const titulos = new Map(), descs = new Map();
+/* 05/10/2026 — PÁGINA INTERNA FICA FORA DO PORTÃO DE SEO, e isso é regra, não exceção.
+ *
+ * O catálogo de conteúdo trouxe `indice-de-conteudo.html`: um índice que a editoria usa para
+ * apontar o trecho que quer mudar, servido só na prévia e fora do manifesto público. Cobrar dele
+ * canônica, Open Graph, Twitter Card e JSON-LD seria cobrar que uma página interna se apresente
+ * como página pública — a canônica apontaria o domínio, e o `og:image` existiria para um
+ * compartilhamento que nunca acontece.
+ *
+ * `noindex` não serve de critério aqui: enquanto o domínio está na cortina, TODA página do site o
+ * tem (`publicacao.json: indexar=false`), e ele voltaria a não discriminar no dia do lançamento.
+ * Quem decide é a declaração em `layout/regras.json` → `paginas_internas`, que é onde as decisões
+ * de página deste projeto já vivem. Acrescentar uma página ali é dizer, por escrito, que ela não é
+ * do público — e o portão de integridade continua acusando se ela aparecer servida no domínio. */
+const REGRAS = (() => {
+  try { return JSON.parse(fs.readFileSync(path.join(RAIZ, "layout", "regras.json"), "utf-8")); }
+  catch (e) { return {}; }
+})();
+const INTERNAS = new Set(REGRAS.paginas_internas || []);
+const paginas = fs.readdirSync(RAIZ).filter(f => f.endsWith(".html") && !INTERNAS.has(f));
+const titulos = new Map(), descs = new Map();
 for (const p of paginas) {
   const h = fs.readFileSync(path.join(RAIZ, p), "utf-8");
   const t = (h.match(/<title>([^<]*)<\/title>/) || [])[1] || ""; const d = (h.match(/<meta name="description" content="([^"]*)"/) || [])[1] || "";

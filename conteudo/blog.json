@@ -1,0 +1,13 @@
+{
+ "_governanca": "CATÁLOGO DE CONTEÚDO (handover de 05/10/2026). Todo texto público desta página vive aqui, com identificador estável `pagina.secao.elemento.funcao`. A página lê este arquivo; o HTML não contém texto público. Edição pequena passa por `robo-registro/edicoes/*.md` aprovado e `scripts/aplicar_edicoes.py` — não se edita este arquivo à mão numa rodada de edição. Mudar identificador exige entrada em `conteudo/_renomeacoes.json`.",
+ "pagina": "blog.html",
+ "textos": {
+  "blog.abertura": "Textos da editoria do MARÉ sobre o que está acontecendo no ciclo do El Niño: as emergências declaradas, os alertas, o que os órgãos de saúde registram, o que estados e municípios publicaram, o dinheiro que chega. Cada texto diz onde, quando e com que fonte. Os números vivos estão nas páginas do Monitor.",
+  "blog.textos.titulo_da_secao": "Textos",
+  "blog.anteriores.titulo_da_secao": "Textos anteriores",
+  "blog.textos.rotulo_fontes": "Fontes: {fontes}",
+  "blog.textos.como_citar": "Como citar: Editoria do MARÉ. {titulo}. Blog do MARÉ, {data}.",
+  "blog.textos.sem_texto": "Nenhum texto publicado até agora."
+ },
+ "_nota_rotulos_do_js": "`blog.textos.rotulo_fontes`, `blog.textos.como_citar` e `blog.textos.sem_texto` são escritos por `assets/js/blog.js`, não pelo HTML: o corpo dos textos chega de `data/blog/posts.json` e os rótulos que o envolvem vêm daqui. A linha do feed Atom continua no HTML porque leva um link dentro da frase, e o leitor do catálogo escreve texto, não marcação."
+}

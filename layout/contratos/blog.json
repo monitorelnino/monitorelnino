@@ -1,5 +1,5 @@
 {
-  "_governanca": "Contrato de layout do Blog do MARÉ — ÍNDICE (handover da rotina semanal, 04/10/2026). O blog publica DOIS textos por semana, escritos pela central e aprovados pela editoria: Legal e financiamento, e Saúde. No topo, os dois cartões de texto mais recentes de cada linha; abaixo, a lista cronológica com filtro por etiqueta. Sai o cartão de números do antigo Boletim: a rotina produz texto, e os números vivem nas páginas do Monitor e no pacote interno. Quem verifica é scripts/verificar_conformidade.py.",
+  "_governanca": "Contrato de layout do Blog do MARÉ — A PÁGINA DOS TEXTOS (handover da preparação programática, item 6.1, 05/10/2026). Cada texto aparece INTEIRO, um após o outro, do mais recente ao mais antigo: título, etiqueta e data, autoria, corpo em prosa, linha de fontes e “como citar” com o endereço permanente. Do décimo primeiro texto em diante, os dez mais recentes ficam inteiros e os anteriores vão para a lista do fim. As páginas individuais continuam, e é para elas que o endereço permanente e o feed apontam. Quem verifica é scripts/verificar_conformidade.py.",
   "pagina": "blog.html",
   "componentes": {
     "numeros": ".cartao-numero",
@@ -9,24 +9,22 @@
   },
   "secoes": [
     {
-      "id": "destaques",
-      "h2": "Os textos mais recentes",
-      "tipo": "lista_simples",
-      "_nota": "Dois cartões `.cartao-mapa` de TEXTO, um por linha da rotina. Cartão de linha sem texto não aparece — cartão vazio afirma que existe algo ali."
-    },
-    {
       "id": "textos",
       "h2": "Textos",
       "tipo": "lista_simples",
-      "exige_texto": [
-        "Do mais recente ao mais antigo",
-        "feed Atom"
-      ]
+      "_nota": "Cada texto em `article.panel.post`: `p.selo` com etiqueta, data e autoria; `h3` com o título ligado à página do texto; `p.hint.post-lede` com a abertura; `div.post-corpo` com a prosa; `p.post-fontes.spec`; `p.post-citar.spec` com o endereço permanente. Sem cartão e sem número no corpo."
+    },
+    {
+      "id": "anteriores",
+      "h2": "Textos anteriores",
+      "tipo": "lista_simples",
+      "_nota": "Só existe a partir do décimo primeiro texto. Seção oculta enquanto não há o que listar — título de seção vazia afirma que existe algo ali."
     }
   ],
   "exige_texto": [
     "Textos da editoria do MARÉ sobre o que está acontecendo no ciclo do El Niño",
-    "Os números vivos estão nas páginas do Monitor."
+    "Os números vivos estão nas páginas do Monitor.",
+    "feed Atom"
   ],
   "texto_proibido": [
     "FIGURA",
@@ -36,13 +34,16 @@
     "antecipação",
     "prontidão",
     "dados abertos",
-    "Boletim mais recente"
+    "Boletim mais recente",
+    "Os textos mais recentes",
+    "Todas as etiquetas"
   ],
-  "_nota_proibido": "'Boletim mais recente' entra na lista porque era o título do cartão que saiu em 04/10: título revogado volta por hábito se nada o barrar. 'antecipação' e 'prontidão' estão aqui desde 03/10, pelo mesmo motivo.",
+  "_nota_proibido": "'Boletim mais recente' entra na lista porque era o título do cartão que saiu em 04/10: título revogado volta por hábito se nada o barrar. 'antecipação' e 'prontidão' estão aqui desde 03/10, pelo mesmo motivo. 'Os textos mais recentes' e 'Todas as etiquetas' entram em 05/10: eram o título da seção de cartões e a opção do filtro, os dois revogados pelo item 6.1.",
   "_divergencia_do_handover": "Divergência declarada (03/10/2026): o handover pedia um `.cartao-destaque` largo para o boletim. Essa classe não existe no sistema de design — não há uma linha dela em assets/base.css —, e a hierarquia de regras põe o sistema acima do handover. O boletim usa o componente que existe para isso, `.cartao cartao--status` com `.grade-numeros--3`, que é o mesmo de todo cartão de números do site. Criar uma classe nova para um só lugar é exatamente o 'ajuste manual' que o § Design proíbe.",
   "etiquetas": [
     "Legal e financiamento",
     "Saúde",
     "Acontecimento"
-  ]
+  ],
+  "_divergencia_do_handover_06_1": "Divergência declarada (05/10/2026): o item 6.1 manda sair a lista de links e o filtro de etiqueta, e não diz nada sobre os dois cartões de “textos mais recentes”. Eles saíram também, por consequência do que entrou: com cada texto inteiro na página, do mais novo ao mais antigo, o mais recente de cada linha já é o que o leitor encontra primeiro, e o cartão repetiria título e abertura logo acima do próprio texto. Remoção de redundância é decisão do Code pela governança editorial (§29)."
 }

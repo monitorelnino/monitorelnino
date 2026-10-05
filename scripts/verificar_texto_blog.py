@@ -32,6 +32,10 @@ sys.path.insert(0, str(RAIZ))
 
 DIR_POSTS = RAIZ / "blog" / "posts"
 DIR_PACOTES = RAIZ.parent / "robo-registro" / "blog" / "pacotes"
+# Excecao declarada (04/10/2026): o primeiro texto aprovado foi escrito ANTES de a rotina de
+# pacotes existir, e o Code nao altera texto aprovado para faze-lo caber numa regra posterior.
+# Vive aqui, e nao em cada chamador, porque duplicada ela sai de sincronia sem ninguem notar.
+SEM_PACOTE_POR_DECISAO = {"2026-10-04-reconhecimentos-da-semana.md"}
 CABECALHO = ("titulo", "abertura", "etiqueta", "data", "fontes", "aprovado")
 ETIQUETAS = ("Legal e financiamento", "Saúde", "Acontecimento")
 PALAVRAS_MIN, PALAVRAS_MAX = 250, 450
@@ -128,8 +132,17 @@ def avisos(corpo: str, etiqueta: str) -> list:
     return fora
 
 
-def problemas(meta: dict, corpo: str, pacote: dict, exige_pacote: bool = True) -> list:
-    """Os problemas BLOQUEANTES do texto. Função pura — é ela que o autoteste exercita."""
+def problemas(meta: dict, corpo: str, pacote: dict, exige_pacote: bool = True,
+              pacotes_ao_alcance: bool = True) -> list:
+    """Os problemas BLOQUEANTES do texto. Função pura — é ela que o autoteste exercita.
+
+    `pacotes_ao_alcance` existe porque a pasta de pacotes vive no repositório PRIVADO, e a CI do
+    repositório público não a clona. Enquanto este parâmetro não existia, todo texto que declarava
+    um pacote reprovava na CI por "pacote não encontrado" — um portão que nenhum texto correto
+    podia satisfazer. Agora a distinção é a que importa: pasta ao alcance e pacote ausente é
+    REPROVA; pasta fora de alcance é conferência NÃO FEITA, e quem a declara é `conferir`, em voz
+    alta, no lugar de passar calado.
+    """
     fora = []
     faltam = [c for c in CABECALHO if not (meta or {}).get(c)]
     if faltam:
@@ -157,7 +170,7 @@ def problemas(meta: dict, corpo: str, pacote: dict, exige_pacote: bool = True) -
         if sobrando:
             fora.append("número fora do pacote: " + ", ".join(sobrando[:8])
                         + " — se o texto está certo, o PACOTE está incompleto")
-    elif exige_pacote:
+    elif exige_pacote and pacotes_ao_alcance:
         fora.append(f"pacote {(meta or {}).get('pacote')!r} não encontrado para conferir os números")
 
     if etiqueta == "Saúde":
@@ -171,7 +184,10 @@ def problemas(meta: dict, corpo: str, pacote: dict, exige_pacote: bool = True) -
 def _autoteste() -> int:
     falhas = []
 
+    contados = []
+
     def ok(nome, cond):
+        contados.append(nome)
         print(("  ✓ " if cond else "  ✗ ") + nome)
         if not cond:
             falhas.append(nome)
@@ -199,6 +215,16 @@ def _autoteste() -> int:
        not any("sem `pacote`" in x for x in problemas({k: v for k, v in meta.items()
                                                        if k != "pacote"}, corpo, pac,
                                                       exige_pacote=False)))
+    # A pasta de pacotes vive no privado: a CI do publico nao a tem, e exigir ali o que nao se
+    # pode ler era portao insatisfazivel.
+    sem_pac = {k: v for k, v in pac.items() if False}
+    ok("pacote ausente com a pasta ao alcance reprova",
+       any("nao encontrado" in x.replace("ã", "a").replace("õ", "o")
+           for x in problemas(meta, corpo, sem_pac, pacotes_ao_alcance=True)))
+    ok("pacote ausente com a pasta FORA de alcance nao reprova",
+       problemas(meta, corpo, sem_pac, pacotes_ao_alcance=False) == [])
+    ok("fora de alcance nao afrouxa as outras travas",
+       any("palavras" in x for x in problemas(meta, "curto", sem_pac, pacotes_ao_alcance=False)))
     ok("etiqueta fora da lista bloqueia",
        any("etiqueta" in x for x in problemas(dict(meta, etiqueta="Boletim"), corpo, pac)))
 
@@ -250,7 +276,7 @@ def _autoteste() -> int:
        not ({"gravar", "write_text", "write_bytes"} & nomes))
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
-          else "✓ AUTOTESTE OK — 28 casos, sem rede e sem escrita.")
+          else f"✓ AUTOTESTE OK — {len(contados)} casos, sem rede e sem escrita.")
     return 1 if falhas else 0
 
 
@@ -271,7 +297,10 @@ def conferir(caminhos: list) -> int:
     # pacotes existir, e o Code não altera texto aprovado para fazê-lo caber numa regra posterior.
     # Ele é conferido em tudo, menos na exigência de `pacote`. A exceção é desta data e deste
     # arquivo; o próximo texto já nasce com pacote.
-    SEM_PACOTE_POR_DECISAO = {"2026-10-04-reconhecimentos-da-semana.md"}
+    ao_alcance = DIR_PACOTES.is_dir()
+    if not ao_alcance:
+        print(f"  [aviso] {DIR_PACOTES} fora de alcance nesta árvore: os números NÃO foram "
+              f"conferidos contra o pacote. A conferência que vale é a local, antes do PR.")
     reprovados = 0
     for caminho in caminhos:
         meta, corpo = ler_cabecalho(pathlib.Path(caminho).read_text(encoding="utf-8"))
@@ -279,7 +308,8 @@ def conferir(caminhos: list) -> int:
             print(f"  [pulado] {pathlib.Path(caminho).name}: sem `aprovado: sim`")
             continue
         exige = pathlib.Path(caminho).name not in SEM_PACOTE_POR_DECISAO
-        p = problemas(meta, corpo, pacote_de(meta), exige_pacote=exige)
+        p = problemas(meta, corpo, pacote_de(meta), exige_pacote=exige,
+                      pacotes_ao_alcance=ao_alcance)
         a = avisos(corpo, meta.get("etiqueta") or "")
         nome = pathlib.Path(caminho).name
         if p:

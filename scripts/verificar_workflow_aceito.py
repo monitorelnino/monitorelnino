@@ -60,6 +60,24 @@ def existe_na_arvore(caminho: str, raiz: pathlib.Path = None) -> bool:
     return ((raiz or RAIZ) / caminho).exists()
 
 
+def mudou_depois_do_run(caminho: str, run: dict, raiz: pathlib.Path = None) -> bool:
+    """O arquivo foi alterado DEPOIS desta execução? Função pura quanto ao git — recebe as datas.
+
+    O run espera `arquivo_alterado_em`, posto por quem leu o git. Sem essa data, devolve False: não
+    saber quando o arquivo mudou não é saber que ele mudou.
+
+    Existe por causa de 05/10/2026. O `_coletor.yml` foi rejeitado às 09:10 UTC, a correção entrou
+    às 18:39 e o portão continuou vermelho — ele olhava a última execução, que era das 18:15 e
+    portanto anterior à correção. Portão que não distingue "quebrado agora" de "esteve quebrado"
+    fica vermelho até alguém chamar o arquivo, e enquanto isso ensina a ignorá-lo.
+    """
+    alterado = str((run or {}).get("arquivo_alterado_em") or "")
+    rodou = str((run or {}).get("run_started_at") or (run or {}).get("created_at") or "")
+    if not alterado or not rodou:
+        return False
+    return alterado > rodou
+
+
 def problemas(workflows: list, runs_por_workflow: dict, raiz: pathlib.Path = None) -> list:
     """Os workflows que o GitHub rejeitou. Função pura.
 
@@ -85,7 +103,8 @@ def problemas(workflows: list, runs_por_workflow: dict, raiz: pathlib.Path = Non
         recentes = (runs_por_workflow or {}).get(w.get("id")) or []
         if recentes:
             r = recentes[0]
-            if r.get("conclusion") == "failure" and int(r.get("jobs") or 0) == 0:
+            if (r.get("conclusion") == "failure" and int(r.get("jobs") or 0) == 0
+                    and not mudou_depois_do_run(caminho, r, raiz)):
                 fora.append(f"{caminho}: a última execução ({r.get('id')}) falhou com ZERO jobs — "
                             f"é o run que o GitHub cria quando rejeita o arquivo")
     return fora
@@ -93,8 +112,12 @@ def problemas(workflows: list, runs_por_workflow: dict, raiz: pathlib.Path = Non
 
 def _autoteste() -> int:
     falhas = []
+    # O total era um literal e envelhecia calado: dizia cobrir mais casos do que
+    # cobre, ou menos. Agora e contado.
+    _casos_contados = []
 
     def ok(nome, cond):
+        _casos_contados.append(nome)
         print(("  ✓ " if cond else "  ✗ ") + nome)
         if not cond:
             falhas.append(nome)
@@ -140,19 +163,42 @@ def _autoteste() -> int:
         ok("um workflow ruim entre vários é nomeado",
            len(problemas([bom, ruim], {}, raiz)) == 1)
 
+    ok("arquivo alterado depois do run tira o run da conta",
+       mudou_depois_do_run("a.yml", {"arquivo_alterado_em": "2026-10-05T18:39:00Z",
+                                     "run_started_at": "2026-10-05T18:15:00Z"}))
+    ok("arquivo alterado antes do run mantem o run na conta",
+       not mudou_depois_do_run("a.yml", {"arquivo_alterado_em": "2026-10-05T09:00:00Z",
+                                         "run_started_at": "2026-10-05T18:15:00Z"}))
+    ok("sem a data do arquivo o run continua valendo",
+       not mudou_depois_do_run("a.yml", {"run_started_at": "2026-10-05T18:15:00Z"}))
+    ok("sem a data do run nao se conclui nada",
+       not mudou_depois_do_run("a.yml", {"arquivo_alterado_em": "2026-10-05T18:39:00Z"}))
+    ok("run de zero jobs anterior a correcao nao reprova",
+       problemas([{"id": 1, "path": __file__.split("monitorelnino")[-1].replace(chr(92), "/").lstrip("/"),
+                   "name": "X", "state": "active"}],
+                 {1: [{"id": 9, "conclusion": "failure", "jobs": 0,
+                       "arquivo_alterado_em": "2026-10-05T18:39:00Z",
+                       "run_started_at": "2026-10-05T18:15:00Z"}]}) == [])
+
     import dis
     nomes = set()
     for nome_obj, obj in list(globals().items()):
-        if nome_obj in ("_autoteste", "main", "_gh", "ler_do_github"):
+        # `_alterado_em` entra na lista de LEITORES, com `_gh` e `ler_do_github`: ele chama o
+        # git, e o docstring dele diz isso. A trava vale para as funcoes de julgamento.
+        if nome_obj in ("_autoteste", "main", "_gh", "ler_do_github", "_alterado_em"):
             continue
         codigo = getattr(obj, "__code__", None)
         if codigo is not None:
             nomes |= {i.argval for i in dis.get_instructions(codigo) if isinstance(i.argval, str)}
-    ok("trava estrutural: as funções puras não consultam rede",
-       not ({"run", "subprocess", "urlopen"} & nomes))
+    # `run` SAIU da lista. Num script sobre execuções de workflow, "run" é nome de parâmetro e de
+    # chave em toda função — a trava acusava `mudou_depois_do_run` por causa do próprio argumento
+    # dela. Trava que acusa nome inocente ensina a ignorá-la, e quem de fato chama processo é
+    # `subprocess`, que continua na lista.
+    ok("trava estrutural: as funções puras não consultam rede nem chamam processo",
+       not ({"subprocess", "urlopen", "Popen", "requests"} & nomes))
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
-          else "✓ AUTOTESTE OK — 16 casos, sem rede e sem escrita.")
+          else f"✓ AUTOTESTE OK — {len(_casos_contados)} casos, sem rede e sem escrita.")
     return 1 if falhas else 0
 
 
@@ -161,6 +207,31 @@ def _gh(args: list) -> str:
         r = subprocess.run(["gh"] + args, cwd=RAIZ, capture_output=True, text=True, timeout=120)
         return r.stdout
     except (OSError, subprocess.SubprocessError):
+        return ""
+
+
+def _alterado_em(caminho: str) -> str:
+    """Data ISO do último commit que tocou o arquivo, em UTC, ou "". Lê o git; não escreve."""
+    if not caminho:
+        return ""
+    try:
+        import subprocess
+        # `--first-parent` de proposito: o que importa nao e quando a correcao foi ESCRITA, e sim
+        # quando ela CHEGOU a `main`. Sem ele, o git devolve a data do commit no ramo -- 18:16 UTC
+        # em 05/10/2026 -- e o run das 18:32, que ainda rodou sobre a `main` velha, parecia
+        # posterior a correcao que so entrou as 18:39, no merge.
+        saida = subprocess.run(["git", "log", "-1", "--first-parent", "--format=%cI", "--",
+                                caminho], capture_output=True, text=True, timeout=20)
+    except Exception:
+        return ""
+    bruto = (saida.stdout or "").strip()
+    if not bruto:
+        return ""
+    try:
+        import datetime as _dt
+        return _dt.datetime.fromisoformat(bruto).astimezone(
+            _dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    except ValueError:
         return ""
 
 
@@ -178,7 +249,8 @@ def ler_do_github() -> tuple:
     runs = {}
     for w in workflows:
         bruto = _gh(["api", f"repos/{{owner}}/{{repo}}/actions/workflows/{w['id']}/runs?per_page=5",
-                     "--jq", ".workflow_runs[] | {id, conclusion, jobs: 0, jobs_url}"])
+                     "--jq", ".workflow_runs[] | {id, conclusion, jobs: 0, jobs_url, "
+                             "run_started_at, created_at}"])
         lista = []
         for linha in (bruto or "").splitlines():
             if not linha.strip():
@@ -193,6 +265,8 @@ def ler_do_github() -> tuple:
                 jb = _gh(["api", f"repos/{{owner}}/{{repo}}/actions/runs/{r['id']}/jobs",
                           "--jq", ".total_count"])
                 r["jobs"] = int(jb.strip() or 0) if jb.strip().isdigit() else 1
+            # Quando o arquivo mudou DEPOIS do run, o run fala do arquivo antigo.
+            r["arquivo_alterado_em"] = _alterado_em(w.get("path") or "")
             lista.append(r)
         runs[w["id"]] = lista
     return workflows, runs

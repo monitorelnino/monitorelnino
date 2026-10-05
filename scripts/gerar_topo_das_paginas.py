@@ -278,8 +278,12 @@ def cartoes_do_monitor_de_riscos(sinais: dict, normais: dict, limiar_ar: int = 4
 
 def _autoteste() -> int:
     falhas = []
+    # O total era um literal e envelhecia calado: dizia cobrir mais casos do que
+    # cobre, ou menos. Agora e contado.
+    _casos_contados = []
 
     def ok(nome, cond):
+        _casos_contados.append(nome)
         print(("  ✓ " if cond else "  ✗ ") + nome)
         if not cond:
             falhas.append(nome)
@@ -369,7 +373,7 @@ def _autoteste() -> int:
     ok("o ar conta as capitais acima da faixa", rid["capitais_ar_ruim_ou_pior"]["valor"] == 1)
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
-          else "✓ AUTOTESTE OK — 26 casos, sem rede e sem escrita em data/.")
+          else f"✓ AUTOTESTE OK — {len(_casos_contados)} casos, sem rede e sem escrita em data/.")
     return 1 if falhas else 0
 
 

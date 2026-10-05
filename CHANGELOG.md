@@ -9,6 +9,22 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-05 · #561 · O texto público sai do código e vai para o catálogo
+
+Três camadas separadas: estrutura (contrato), conteúdo (catálogo) e dado (geradores). Financiamento e
+Defesa civil migrados — 100 identificadores estáveis, extraídos mecanicamente para não mudar uma
+vírgula; o texto visível em 1280 e 390 px ficou idêntico nas duas páginas. Vêm juntos o leitor, o
+portão do catálogo, o renderizador de uma figura por vez, o aplicador de edição aprovada e o índice
+interno.
+
+## 2026-10-05 · #561 · Pacote por tipo de evento, e duas travas do blog que não travavam
+
+Nova linha `tipos_de_evento` no gerador de pacote, sobre o ciclo inteiro. `para_iso` só lia
+`dd/mm/aaaa` e descartava calado 97 dos 929 atos, que vêm em ISO do diário consorciado. O
+verificador do blog reprovava por pacote ausente mesmo onde a pasta não é alcançável, e o gerador
+publicava texto citando pacote inexistente: agora um distingue ausente de fora de alcance, e o outro
+recusa pacote declarado que não existe.
+
 ## 2026-10-05 · #560 · O CODEMAP mentia por omissão, e agora diz quantos importam cada arquivo
 
 Comparado com o grafo de dependências, o mapa tinha um ponto cego: só via o nome do dado **literal

@@ -276,8 +276,75 @@ for _alvo in sorted(list(_RAIZ_CANCEL.glob(".github/workflows/*.yml"))
                 erros += 1
                 break
 
+# ───────── 05/10/2026 — EXPRESSÃO QUE O GITHUB NÃO CONSEGUE AVALIAR ─────────
+#
+# A TERCEIRA DA SÉRIE, e a mais irônica: o comentário que explicava a lição de 04/10 trazia a
+# expressão VAZIA como ilustração — as duas chaves e nada dentro — e foi ela que fez o GitHub
+# rejeitar o `_coletor.yml` inteiro. A corrente noturna ficou parada das 09:10 UTC até o
+# conserto, porque TODO workflow noturno chama aquele arquivo.
+#
+# A causa é a mesma das outras duas: o GitHub resolve expressão em TODO o arquivo, inclusive
+# dentro de `run:` — é por isso que `inputs.nome` funciona lá — e inclusive no que o shell
+# trataria como comentário, porque a substituição acontece ANTES de o shell ver a linha. Para o
+# YAML é texto; para o GitHub é sintaxe. E, como nas outras duas, a API não devolve a mensagem:
+# o sintoma é o caminho no lugar do nome e um run de zero jobs.
+#
+# Esta trava recusa a expressão VAZIA e a aberta sem fechar. Não valida o conteúdo: se
+# `inputs.x` existe é outra pergunta, e quem responde é o GitHub.
+import re as _re_expr
+
+# `\$` escapado: sem a barra, o `$` é ÂNCORA de fim de linha e o padrão nunca casa — foi assim que
+# a primeira versão desta trava passou verde sobre o arquivo que estava quebrado.
+_VAZIA = _re_expr.compile(r'\$\{\{\s*\}\}')
+_ABERTURA = _re_expr.compile(r'\$\{\{')
+# Expressão COMPLETA: abre, tem conteúdo sem chave, e fecha. Contar `}}` solto acusava toda linha
+# com uma expressão normal, porque o fecho aparece uma vez e a abertura (mal escrita) nenhuma.
+#
+# O conteúdo pode ter chave: `format('coletor-{0}', inputs.nome)` é expressão legítima e usa `{0}`
+# como posição. Então o casamento vai até o PRIMEIRO `}}`, não até o primeiro `}` — foi o que a
+# versão anterior desta linha errava, acusando a única linha do repositório que usa `format`.
+_COMPLETA = _re_expr.compile(r'\$\{\{.*?\}\}')
+
+for _p in sorted((_pl.Path(__file__).resolve().parent.parent / '.github' / 'workflows')
+                 .glob('*.yml')):
+    _rel = '.github/workflows/' + _p.name
+    try:
+        _fonte = _p.read_text(encoding='utf-8')
+    except OSError:
+        continue
+    for _n, _linha in enumerate(_fonte.splitlines(), start=1):
+        if _VAZIA.search(_linha):
+            print(f'  ✗ {_rel}:{_n}: expressão VAZIA de contexto — o GitHub a avalia e '
+                  f'REJEITA o arquivo inteiro. Nem em comentário: descreva, não escreva.')
+            erros += 1
+        elif len(_ABERTURA.findall(_linha)) != len(_COMPLETA.findall(_linha)):
+            print(f'  ✗ {_rel}:{_n}: expressão aberta e não fechada na linha — '
+                  f'o GitHub não consegue ler o arquivo.')
+            erros += 1
+
+    # INPUT REFERENCIADO TEM DE SER DECLARADO.
+    #
+    # Em 05/10/2026 o `_coletor.yml` lia `${{ inputs.scripts }}` e nunca existiu input com esse
+    # nome — o certo é `inputs.comandos`. Nada falhou: a expressão resolve para vazio, o teste que
+    # dependia dela foi sempre falso, e o funil do verificador de imprensa simplesmente NUNCA saiu
+    # no resumo da noite. Defeito calado é pior que defeito ruidoso, porque ninguém o procura.
+    try:
+        _doc = yaml.safe_load(_fonte) or {}
+    except Exception:
+        _doc = {}
+    _gatilhos = _doc.get(True) or _doc.get('on') or {}
+    _declarados = set()
+    for _bloco in ('workflow_call', 'workflow_dispatch'):
+        _declarados |= set(((_gatilhos.get(_bloco) or {}).get('inputs') or {}))
+    if _declarados or 'inputs.' in _fonte:
+        for _nome in sorted(set(_re_expr.findall(r'\binputs\.(\w+)', _fonte))):
+            if _nome not in _declarados:
+                print(f'  ✗ {_rel}: usa `inputs.{_nome}` e não declara esse input — '
+                      f'a expressão resolve para vazio e o passo que depende dela nunca acontece.')
+                erros += 1
+
 print("✓ WORKFLOWS OK — YAML válido, sem chave duplicada, todo job com teto de tempo, "
       "todo portão de página com assunto declarado, reposição do domínio fora da fila da rodada, "
-      "nenhum script cancelando run de outro."
+      "nenhum script cancelando run de outro, nenhuma expressão de contexto vazia."
       if not erros else f"✗ WORKFLOWS: {erros} problema(s).")
 sys.exit(1 if erros else 0)

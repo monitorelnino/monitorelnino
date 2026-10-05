@@ -152,6 +152,11 @@ CADEIA_DERIVADOS = (
     ("gerar_pdf_metodologia.py",),
     ("scripts/carimbar_assets.py",),
     ("gerar_blog.py",),
+    # 05/10/2026: o CODEMAP e o `mudancas.html` eram derivados COBRADOS por portão e estavam fora
+    # desta cadeia. Dois PRs seguidos reprovaram no mesmo dia, cada um com a instrução de rodar um
+    # gerador que a cadeia não conhecia.
+    ("scripts/gerar_codemap.py",),
+    ("scripts/gerar_mudancas.py",),
     # item 4 (28/09/2026): o resumo do log é derivado e entra na cadeia. Esta constante tem de ser
     # IDÊNTICA à de scripts/verificar_derivados.sh — o autoteste compara as duas, e a divergência
     # deixou o portão 12 vermelho na main em 22/09/2026.

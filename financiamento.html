@@ -28,6 +28,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/vendor/chart.umd.min.js?v=ecc3cd1e"></script>
 <script src="assets/vendor/d3.min.js?v=f2094bbf"></script>
+<script src="assets/catalogo.js?v=b8d1077f"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=94671300">
 <link rel="stylesheet" href="assets/base.css?v=0107e59a">
@@ -47,7 +48,7 @@
   </header>
 <main id="conteudo">
   <h1>Por onde o dinheiro chega</h1>
-  <p class="hint">O dinheiro público para o El Niño: de onde vêm os recursos, quanto já foi desembolsado, como está sendo aplicado e quanto a defesa civil federal autorizou para prevenção e resposta, estado a estado e município a município.</p>
+  <p class="hint" data-conteudo="financiamento.abertura">O dinheiro público para o El Niño: de onde vêm os recursos, quanto já foi desembolsado, como está sendo aplicado e quanto a defesa civil federal autorizou para prevenção e resposta, estado a estado e município a município.</p>
 
   <!-- 01/10/2026 (bloco B do handover): a página passa a ter seis blocos. Saem a figura das oito
        rotas (código e dado ficam no repositório, não apagados), as duas fichas "Como ler", a seção
@@ -59,23 +60,23 @@
     <h2 id="finTopoTitulo" class="sr-only">Os números do financiamento</h2>
     <div class="grade-numeros grade-numeros--3">
       <div class="cartao-numero cartao-numero--resposta" data-cartao="desembolsado_mp_mes">
-        <p class="cartao-numero-familia">Medidas federais</p>
+        <p class="cartao-numero-familia" data-conteudo="financiamento.dc-topo.topo_pago_mes.familia">Medidas federais</p>
         <p class="cartao-numero-valor"><span id="topoPagoMes">R$ 150,9 mi</span></p>
-        <p class="cartao-numero-rotulo" id="topoPagoMesRotulo">pago pelas ações reforçadas pelas medidas provisórias, no mês de setembro de 2026</p>
+        <p class="cartao-numero-rotulo" id="topoPagoMesRotulo" data-conteudo="financiamento.dc-topo.topo_pago_mes.rotulo">pago pelas ações reforçadas pelas medidas provisórias, no mês de setembro de 2026</p>
         <p class="cartao-numero-variacao" id="topoPagoMesVariacao"></p>
-        <p class="cartao-numero-fonte" id="topoPagoMesFonte">R$ 150.887.173 · Portal da Transparência, Execução da Despesa (arquivos mensais abertos) · execução das ações reforçadas pelas medidas provisórias do ciclo. O valor inclui a dotação ordinária da ação. É teto, não a execução do crédito</p>
+        <p class="cartao-numero-fonte" id="topoPagoMesFonte" data-conteudo="financiamento.dc-topo.topo_pago_mes.fonte">R$ 150.887.173 · Portal da Transparência, Execução da Despesa (arquivos mensais abertos) · execução das ações reforçadas pelas medidas provisórias do ciclo. O valor inclui a dotação ordinária da ação. É teto, não a execução do crédito</p>
       </div>
       <div class="cartao-numero cartao-numero--resposta" data-cartao="resposta_autorizado_semana">
-        <p class="cartao-numero-familia">Defesa civil federal</p>
+        <p class="cartao-numero-familia" data-conteudo="financiamento.dc-topo.topo_resposta_semana.familia">Defesa civil federal</p>
         <p class="cartao-numero-valor"><span id="topoRespostaSemana">R$ 0</span></p>
-        <p class="cartao-numero-rotulo" id="topoRespostaMunicipios">autorizados pela defesa civil federal nos últimos sete dias</p>
+        <p class="cartao-numero-rotulo" id="topoRespostaMunicipios" data-conteudo="financiamento.dc-topo.topo_resposta_municipios.rotulo">autorizados pela defesa civil federal nos últimos sete dias</p>
         <p class="cartao-numero-variacao" id="topoRespostaVariacao"></p>
-        <p class="cartao-numero-fonte" id="topoRespostaFonte">R$ 0 · Portarias da SEDEC no Diário Oficial da União · nenhuma portaria de resposta publicada nos últimos 7 dias</p>
+        <p class="cartao-numero-fonte" id="topoRespostaFonte" data-conteudo="financiamento.dc-topo.topo_resposta.fonte">R$ 0 · Portarias da SEDEC no Diário Oficial da União · nenhuma portaria de resposta publicada nos últimos 7 dias</p>
       </div>
       <div class="cartao-numero cartao-numero--chuva" data-cartao="atos_federais_semana">
-        <p class="cartao-numero-familia">Atos novos</p>
+        <p class="cartao-numero-familia" data-conteudo="financiamento.dc-topo.topo_atos_semana.familia">Atos novos</p>
         <p class="cartao-numero-valor"><span id="topoAtosSemana">—</span></p>
-        <p class="cartao-numero-rotulo" id="topoAtosRotulo">atos federais de financiamento publicados nos últimos sete dias</p>
+        <p class="cartao-numero-rotulo" id="topoAtosRotulo" data-conteudo="financiamento.dc-topo.topo_atos.rotulo">atos federais de financiamento publicados nos últimos sete dias</p>
         <p class="cartao-numero-variacao" id="topoAtosVariacao"></p>
         <p class="cartao-numero-fonte" id="topoAtosSemanaFonte">—</p>
       </div>
@@ -84,38 +85,38 @@
   </section>
 
   <section id="dinheiroElNino" aria-labelledby="f2Titulo">
-    <h2 id="f2Titulo">O dinheiro do El Niño</h2>
-    <p class="hint">De onde vêm os recursos do ciclo, como estão sendo aplicados e quanto de cada um
+    <h2 id="f2Titulo" data-conteudo="financiamento.dinheiroElNino.titulo_da_secao">O dinheiro do El Niño</h2>
+    <p class="hint" data-conteudo="financiamento.dinheiroElNino.abertura">De onde vêm os recursos do ciclo, como estão sendo aplicados e quanto de cada um
       já foi empenhado e desembolsado.</p>
     <p class="note" id="fraseFormaAplicacao">—</p>
     <div class="grade-figuras grade-figuras--3 grade-mapas">
       <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxFormaAplicacao">
-        <p class="cartao-mapa-familia">Forma de aplicação</p>
+        <p class="cartao-mapa-familia" data-conteudo="financiamento.dinheiroElNino.forma_aplicacao.familia">Forma de aplicação</p>
         <p class="cartao-mapa-boletim" id="linhaFormaAplicacao">—</p>
-        <h3 class="figura-titulo">Como os recursos das medidas do El Niño estão sendo aplicados</h3>
-        <p class="figura-sub">Ciclo 2026/2027 · modalidade de aplicação registrada no orçamento federal · % do valor desembolsado</p>
+        <h3 class="figura-titulo" data-conteudo="financiamento.dinheiroElNino.forma_aplicacao.titulo">Como os recursos das medidas do El Niño estão sendo aplicados</h3>
+        <p class="figura-sub" data-conteudo="financiamento.dinheiroElNino.forma_aplicacao.legenda">Ciclo 2026/2027 · modalidade de aplicação registrada no orçamento federal · % do valor desembolsado</p>
         <div class="figura-midia canvas-wrap"><canvas id="cFormaAplicacao" aria-label="Distribuição do valor desembolsado pelas medidas federais do El Niño por modalidade de aplicação"></canvas></div>
         <div class="map-legend" id="legFormaAplicacao"></div>
-        <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
+        <details class="figura-dados" data-alternativa="dados"><summary data-conteudo="financiamento.dinheiroElNino.forma_aplicacao.resumo">Ver em lista</summary>
           <dl class="dl-dados" id="dlFormaAplicacao"></dl>
         </details>
       </figure>
       <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxOrigens">
-        <p class="cartao-mapa-familia">Por origem</p>
+        <p class="cartao-mapa-familia" data-conteudo="financiamento.dinheiroElNino.origens.familia">Por origem</p>
         <p class="cartao-mapa-boletim" id="linhaOrigens">—</p>
-        <h3 class="figura-titulo">Anunciado, empenhado e desembolsado por origem</h3>
-        <p class="figura-sub">Ciclo 2026/2027 · R$ milhões por origem dos recursos · e o desembolsado mês a mês desde junho</p>
+        <h3 class="figura-titulo" data-conteudo="financiamento.dinheiroElNino.origens.titulo">Anunciado, empenhado e desembolsado por origem</h3>
+        <p class="figura-sub" data-conteudo="financiamento.dinheiroElNino.origens.legenda">Ciclo 2026/2027 · R$ milhões por origem dos recursos · e o desembolsado mês a mês desde junho</p>
         <div class="figura-midia canvas-wrap"><canvas id="cOrigens" aria-label="Valores anunciado, empenhado e desembolsado por origem dos recursos do ciclo"></canvas></div>
         <div class="map-legend" id="legOrigens"></div>
-        <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
+        <details class="figura-dados" data-alternativa="dados"><summary data-conteudo="financiamento.dinheiroElNino.origens.resumo">Ver em lista</summary>
           <dl class="dl-dados" id="dlOrigensMes"></dl>
         </details>
       </figure>
       <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxListaOrigens">
-        <p class="cartao-mapa-familia">Uma a uma</p>
+        <p class="cartao-mapa-familia" data-conteudo="financiamento.dinheiroElNino.lista_origens.familia">Uma a uma</p>
         <p class="cartao-mapa-boletim" id="linhaListaOrigens">—</p>
-        <h3 class="figura-titulo">Cada origem, com o ato que a criou</h3>
-        <p class="figura-sub">Ciclo 2026/2027 · ato, data e os três valores de cada origem · anunciado, empenhado e desembolsado</p>
+        <h3 class="figura-titulo" data-conteudo="financiamento.dinheiroElNino.lista_origens.titulo">Cada origem, com o ato que a criou</h3>
+        <p class="figura-sub" data-conteudo="financiamento.dinheiroElNino.lista_origens.legenda">Ciclo 2026/2027 · ato, data e os três valores de cada origem · anunciado, empenhado e desembolsado</p>
         <div class="figura-midia"><dl class="dl-dados" id="dlListaOrigens"></dl></div>
         <div class="map-legend" id="legListaOrigens"></div>
       </figure>
@@ -123,18 +124,18 @@
   </section>
 
   <section id="defesaCivil" aria-labelledby="f3Titulo">
-    <h2 id="f3Titulo">Defesa civil no ciclo: prevenção e resposta</h2>
-    <p class="hint">O que a defesa civil federal autorizou, por portaria, desde 29 de junho.
+    <h2 id="f3Titulo" data-conteudo="financiamento.defesaCivil.titulo_da_secao">Defesa civil no ciclo: prevenção e resposta</h2>
+    <p class="hint" data-conteudo="financiamento.defesaCivil.abertura">O que a defesa civil federal autorizou, por portaria, desde 29 de junho.
       Município sem registro aparece como sem registro, não como R$ 0.</p>
     <div class="grade-figuras grade-figuras--3 grade-mapas">
       <figure class="figura figura--mapa cartao-mapa r-chuva" id="boxRespostaUF">
-        <p class="cartao-mapa-familia">Autorizado por estado</p>
+        <p class="cartao-mapa-familia" data-conteudo="financiamento.defesaCivil.resposta_uf.familia">Autorizado por estado</p>
         <p class="cartao-mapa-boletim" id="linhaRespostaUF">—</p>
-        <h3 class="figura-titulo">Autorizado por portaria, por estado</h3>
-        <p class="figura-sub">Desde 29/06/2026 · R$ autorizados em portarias da defesa civil federal · por estado</p>
+        <h3 class="figura-titulo" data-conteudo="financiamento.defesaCivil.resposta_uf.titulo">Autorizado por portaria, por estado</h3>
+        <p class="figura-sub" data-conteudo="financiamento.defesaCivil.resposta_uf.legenda">Desde 29/06/2026 · R$ autorizados em portarias da defesa civil federal · por estado</p>
         <div class="figura-midia"><svg id="mapaRespostaUF" role="img" aria-label="Mapa do Brasil com o valor autorizado em portarias da defesa civil federal, por estado" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legRespostaUF"></div>
-        <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
+        <details class="figura-dados" data-alternativa="dados"><summary data-conteudo="financiamento.defesaCivil.resposta_uf.resumo">Ver em lista</summary>
           <div class="busca-mun" id="buscaRespostaMun">
             <label for="ufRespostaMun">Estado</label>
             <select id="ufRespostaMun"><option value="">Escolha o estado…</option></select>
@@ -149,18 +150,18 @@
         </details>
       </figure>
       <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxSerieSemanal">
-        <p class="cartao-mapa-familia">Semana a semana</p>
+        <p class="cartao-mapa-familia" data-conteudo="financiamento.defesaCivil.serie_semanal.familia">Semana a semana</p>
         <p class="cartao-mapa-boletim" id="linhaSerieSemanal">—</p>
-        <h3 class="figura-titulo">Autorizado por semana, desde 29 de junho</h3>
-        <p class="figura-sub">Semanas desde 29/06/2026 · R$ autorizados por portaria · resposta e recuperação em séries separadas</p>
+        <h3 class="figura-titulo" data-conteudo="financiamento.defesaCivil.serie_semanal.titulo">Autorizado por semana, desde 29 de junho</h3>
+        <p class="figura-sub" data-conteudo="financiamento.defesaCivil.serie_semanal.legenda">Semanas desde 29/06/2026 · R$ autorizados por portaria · resposta e recuperação em séries separadas</p>
         <div class="figura-midia canvas-wrap"><canvas id="cSerieSemanal" aria-label="Valor autorizado por semana em portarias da defesa civil federal, por finalidade"></canvas></div>
         <div class="map-legend" id="legSerieSemanal"></div>
       </figure>
       <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxPortariasRecentes">
-        <p class="cartao-mapa-familia">Portarias recentes</p>
+        <p class="cartao-mapa-familia" data-conteudo="financiamento.defesaCivil.portarias_recentes.familia">Portarias recentes</p>
         <p class="cartao-mapa-boletim" id="linhaPortariasRecentes">—</p>
-        <h3 class="figura-titulo">As portarias publicadas mais recentemente</h3>
-        <p class="figura-sub">Desde 29/06/2026 · portaria, data, município, finalidade e valor autorizado</p>
+        <h3 class="figura-titulo" data-conteudo="financiamento.defesaCivil.portarias_recentes.titulo">As portarias publicadas mais recentemente</h3>
+        <p class="figura-sub" data-conteudo="financiamento.defesaCivil.portarias_recentes.legenda">Desde 29/06/2026 · portaria, data, município, finalidade e valor autorizado</p>
         <div class="figura-midia"><dl class="dl-dados" id="dlPortariasRecentes"></dl></div>
         <div class="map-legend" id="legPortariasRecentes"></div>
       </figure>
@@ -168,18 +169,18 @@
   </section>
 
   <section id="gastoProprio" aria-labelledby="f4Titulo">
-    <h2 id="f4Titulo">Contexto: o que os municípios gastam por conta própria</h2>
-    <p class="hint">Quanto as prefeituras declararam ter gasto em defesa civil em 2025, antes do
+    <h2 id="f4Titulo" data-conteudo="financiamento.gastoProprio.titulo_da_secao">Contexto: o que os municípios gastam por conta própria</h2>
+    <p class="hint" data-conteudo="financiamento.gastoProprio.abertura">Quanto as prefeituras declararam ter gasto em defesa civil em 2025, antes do
       ciclo. O número soma preparação e resposta.</p>
     <div class="grade-figuras grade-figuras--3 grade-mapas">
       <figure class="figura figura--mapa cartao-mapa r-chuva" id="boxGastoProprioUF">
-        <p class="cartao-mapa-familia">Dinheiro próprio</p>
+        <p class="cartao-mapa-familia" data-conteudo="financiamento.gastoProprio.gasto_proprio_uf.familia">Dinheiro próprio</p>
         <p class="cartao-mapa-boletim" id="linhaGastoProprioUF">—</p>
-        <h3 class="figura-titulo">Gasto próprio em defesa civil, por habitante</h3>
-        <p class="figura-sub">Exercício 2025 · R$ por habitante · soma da despesa dividida pela população dos municípios com lançamento</p>
+        <h3 class="figura-titulo" data-conteudo="financiamento.gastoProprio.gasto_proprio_uf.titulo">Gasto próprio em defesa civil, por habitante</h3>
+        <p class="figura-sub" data-conteudo="financiamento.gastoProprio.gasto_proprio_uf.legenda">Exercício 2025 · R$ por habitante · soma da despesa dividida pela população dos municípios com lançamento</p>
         <div class="figura-midia"><svg id="mapaGastoProprioUF" role="img" aria-label="Mapa do Brasil com o gasto municipal próprio em defesa civil por habitante, por estado" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legGastoProprioUF"></div>
-        <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
+        <details class="figura-dados" data-alternativa="dados"><summary data-conteudo="financiamento.gastoProprio.gasto_proprio_uf.resumo">Ver em lista</summary>
           <div class="busca-mun" id="buscaGastoMun">
             <label for="ufGastoMun">Estado</label>
             <select id="ufGastoMun"><option value="">Escolha o estado…</option></select>
@@ -194,10 +195,10 @@
         </details>
       </figure>
       <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxComoLerGasto">
-        <p class="cartao-mapa-familia">Como ler</p>
+        <p class="cartao-mapa-familia" data-conteudo="financiamento.gastoProprio.como_ler_gasto.familia">Como ler</p>
         <p class="cartao-mapa-boletim" id="linhaComoLerGasto">—</p>
-        <h3 class="figura-titulo">O que este número mede</h3>
-        <p class="figura-sub">Exercício 2025 · despesa declarada em defesa civil · R$ por habitante</p>
+        <h3 class="figura-titulo" data-conteudo="financiamento.gastoProprio.como_ler_gasto.titulo">O que este número mede</h3>
+        <p class="figura-sub" data-conteudo="financiamento.gastoProprio.como_ler_gasto.legenda">Exercício 2025 · despesa declarada em defesa civil · R$ por habitante</p>
         <div class="figura-midia"><ul class="checklist" id="listaComoLerGasto">
           <li id="comoLerGastoContagem">—</li>
           <li>Prefeitura que registra a defesa civil em outra rubrica aparece como sem lançamento, o que não significa gasto zero.</li>
@@ -211,7 +212,7 @@
   <section id="caminhosSecao" aria-labelledby="f5Titulo" data-voz="lei">
     <h2 id="f5Titulo" class="sr-only">Como o dinheiro público chega a estados e municípios</h2>
     <details id="caminhos">
-      <summary>Como o dinheiro público chega a estados e municípios</summary>
+      <summary data-conteudo="financiamento.caminhosSecao.como_ler_gasto.resumo">Como o dinheiro público chega a estados e municípios</summary>
       <!-- 04/10/2026 (item 7 do handover dos temporizadores, aprovado pela editoria): a figura
            dos caminhos volta GRANDE. Ela estava num cartão de 1/3 da largura — um SVG de 960 de
            largura espremido a 327 px, sem as curvas, ilegível e sozinho numa linha. Aqui ela ocupa
@@ -220,30 +221,30 @@
       <!-- O texto acima da figura (literal aprovado em 02/10) fica FORA do cartão: parágrafo dentro
            de cartão de figura é proibido desde 03/10, e com razão — o cartão é o desenho, o título,
            a legenda e a fonte, e prosa dentro dele disputa a leitura com o que se vê. -->
-      <p class="card-body">Oito caminhos, sete federais e um estadual. Alguns chegam todo mês, por regra; outros abrem depois de um decreto de emergência; outros dependem de decisão do governo ou de uma emenda; e alguns chegam direto às pessoas e às obras, sem passar pela prefeitura.</p>
+      <p class="card-body" data-conteudo="financiamento.caminhosSecao.como_ler_gasto.prosa">Oito caminhos, sete federais e um estadual. Alguns chegam todo mês, por regra; outros abrem depois de um decreto de emergência; outros dependem de decisão do governo ou de uma emenda; e alguns chegam direto às pessoas e às obras, sem passar pela prefeitura.</p>
 
       <figure class="figura figura--diagrama cartao-mapa cartao-mapa--largo r-chuva" id="boxCaminhos">
         <!-- A faixa de família e o sobretítulo são do componente de cartão de mapa, e o portão de
              runtime do Financiamento os exige em todos os nove: a figura larga é uma variante de
              largura, não um componente novo. O sobretítulo vem do DADO (quantos caminhos o arquivo
              declara), nunca digitado. -->
-        <p class="cartao-mapa-familia">Os caminhos</p>
+        <p class="cartao-mapa-familia" data-conteudo="financiamento.caminhosSecao.caminhos.familia">Os caminhos</p>
         <p class="cartao-mapa-boletim" id="linhaCaminhos">—</p>
-        <h3 class="figura-titulo">Por onde o dinheiro público chega a uma cidade</h3>
-        <p class="figura-sub">Os oito caminhos do dinheiro federal e estadual até o município, e o que abre cada um · estrutura, não valores · atos em vigor em 2026</p>
+        <h3 class="figura-titulo" data-conteudo="financiamento.caminhosSecao.caminhos.titulo">Por onde o dinheiro público chega a uma cidade</h3>
+        <p class="figura-sub" data-conteudo="financiamento.caminhosSecao.caminhos.legenda">Os oito caminhos do dinheiro federal e estadual até o município, e o que abre cada um · estrutura, não valores · atos em vigor em 2026</p>
         <div class="figura-midia"><svg id="svgCaminhos" viewBox="0 0 960 420" role="img" aria-label="Diagrama: União e Estado à esquerda, os oito caminhos do dinheiro no centro e o município à direita, com o tipo de linha de cada caminho"></svg></div>
         <!-- Em tela pequena o desenho encolhido não se lê: no lugar dele, os oito caminhos como
              lista vertical, com a mesma cor e uma amostra do traço de cada um. -->
         <ul class="caminhos-lista" id="listaCaminhos" aria-label="Os oito caminhos, em lista"></ul>
         <div class="map-legend" id="legCaminhos"></div>
-        <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
+        <details class="figura-dados" data-alternativa="dados"><summary data-conteudo="financiamento.caminhosSecao.caminhos.resumo">Ver em lista</summary>
           <dl class="lista-definicao" id="dlCaminhos"></dl>
         </details>
       </figure>
 
       <div class="grade-cartoes grade-cartoes--3" id="setores">
         <div class="cartao" id="antes">
-          <h3 class="figura-titulo">Antes da emergência</h3>
+          <h3 class="figura-titulo" data-conteudo="financiamento.caminhosSecao.antes.titulo">Antes da emergência</h3>
           <ul class="checklist">
             <li>Todo mês, por regra: o Fundo de Participação dos Municípios e os repasses do SUS e da assistência social</li>
             <li>Para obras de prevenção: projetos da defesa civil para municípios com área de risco mapeada, sem decreto</li>
@@ -254,7 +255,7 @@
           </ul>
         </div>
         <div class="cartao" id="depois">
-          <h3 class="figura-titulo">Depois do decreto de emergência</h3>
+          <h3 class="figura-titulo" data-conteudo="financiamento.caminhosSecao.depois.titulo">Depois do decreto de emergência</h3>
           <ul class="checklist">
             <li>O decreto municipal de situação de emergência ou calamidade</li>
             <li>O registro no S2iD, o sistema da defesa civil nacional</li>
@@ -267,8 +268,8 @@
         <!-- O terceiro cartão junta os dois exemplos e abre com a frase que antes ficava solta
              entre as duas linhas de cartões. -->
         <div class="cartao" data-voz="lei">
-          <h3 class="figura-titulo">Dois exemplos de dinheiro que chega antes da emergência</h3>
-          <p class="card-body">Dois exemplos de dinheiro que chega antes da emergência, e em que o
+          <h3 class="figura-titulo" data-conteudo="financiamento.caminhosSecao.texto_fogo.titulo">Dois exemplos de dinheiro que chega antes da emergência</h3>
+          <p class="card-body" data-conteudo="financiamento.caminhosSecao.texto_fogo.prosa">Dois exemplos de dinheiro que chega antes da emergência, e em que o
             acesso depende de um plano: um federal, para o fogo, que exige plano operativo aprovado;
             e um estadual, no Rio Grande do Sul, que exige plano de contingência atualizado.</p>
           <p class="card-body" id="textoFogo">Em 2025, um edital do Fundo Nacional do Meio Ambiente destinou <a href="https://www.gov.br/mj/pt-br/assuntos/noticias/governo-federal-destina-r-32-milhoes-para-combater-incendios-na-amazonia-e-no-pantanal" target="_blank" rel="noopener">R$ 32 milhões a planos operativos municipais na Amazônia e no Pantanal</a>. Não localizamos até o corte, em fonte oficial consultável, o resultado por município: a página do fundo exige autenticação. Desde 2025, a lei permite a transferência direta, sem convênio, a estados e municípios em região declarada em situação de emergência ambiental, com plano operativo aprovado (Lei 15.143/2025, que inclui o art. 3º-A na Lei 7.797/1989; regulamento no Decreto 13.013, de 10/06/2026).</p>
@@ -276,7 +277,7 @@
         </div>
       </div>
 
-      <p class="note u-mb-0">Além desses caminhos, a União transfere todo mês aos municípios os
+      <p class="note u-mb-0" data-conteudo="financiamento.caminhosSecao.texto_fogo.nota">Além desses caminhos, a União transfere todo mês aos municípios os
         repasses obrigatórios, como o Fundo de Participação dos Municípios e os do SUS e da
         assistência social; eles não são específicos do El Niño e não aparecem nesta página.</p>
     </details>
@@ -291,7 +292,7 @@
 </div>
 
 <script src="assets/colunas.js?v=3669e58d" defer></script>
-<script src="assets/js/financiamento.js?v=1d416370" defer></script><script src="assets/js/proveniencia.js?v=50e1ec93" defer></script>
+<script src="assets/js/financiamento.js?v=964b476b" defer></script><script src="assets/js/proveniencia.js?v=50e1ec93" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

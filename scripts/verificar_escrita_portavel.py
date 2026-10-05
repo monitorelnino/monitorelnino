@@ -94,10 +94,79 @@ def autoteste() -> int:
         n = len(problemas_do_fonte(src, "teste"))
         if n != esperado:
             falhas.append(f"{src!r} devolveu {n} problema(s); esperado {esperado}")
+
+    # 05/10/2026 — os casos do caractere de controle. O primeiro é o defeito real: um backspace
+    # (0x08) onde devia estar a borda de palavra da expressão regular.
+    BACKSPACE = chr(8)
+    controle = [
+        (f'    r"|{BACKSPACE}SES[-/]?[A-Z]{{2}}{BACKSPACE}"', 1),
+        ('    r"|\\bSES[-/]?[A-Z]{2}\\b"', 0),
+        (f'if (/{BACKSPACE}199{BACKSPACE}|40199/.test(x))', 1),
+        (f'linha um\nlinha {chr(1)}dois\nlinha tres', 1),
+        # Tabulação vertical e avanço de página na MESMA linha: uma acusação, e ela aparece —
+        # `splitlines()` as trataria como fim de linha e não acharia nada.
+        (f'{chr(11)}{chr(12)}', 1),
+        (f'linha um{chr(11)}ainda a um', 1),
+        ("tabulação\tnão é controle proibido", 0),
+        ("quebra\nde\nlinha\nnão é", 0),
+        ("retorno\r\nde carro é assunto do newline, não daqui", 0),
+        ("", 0),
+    ]
+    for src, esperado in controle:
+        n = len(caracteres_de_controle(src, "teste"))
+        if n != esperado:
+            falhas.append(f"controle: {src!r} devolveu {n}; esperado {esperado}")
+    if caracteres_de_controle(chr(8), "assets/vendor/x.js"):
+        falhas.append("controle: assets/vendor/ devia ficar fora da varredura")
+
     if falhas:
         print("✗ AUTOTESTE (escrita portável):"); [print("   ", f) for f in falhas]; return 1
-    print(f"✓ AUTOTESTE OK — {len(casos)} casos: modo texto, binário, leitura, write_text, csv e exceção declarada.")
+    print(f"✓ AUTOTESTE OK — {len(casos) + len(controle) + 1} casos: modo texto, binário, "
+          f"leitura, write_text, csv, exceção declarada e caractere de controle no fonte.")
     return 0
+
+
+def caracteres_de_controle(texto: str, nome: str = "<fonte>") -> list:
+    """Bytes de controle no meio do fonte. Função pura.
+
+    05/10/2026 — A MESMA FAMÍLIA DE DEFEITO, pela terceira vez na mesma semana. Escrever arquivo
+    por heredoc do shell (`python3 - <<'PY'`) e deixar um `\\b` ou um `\\n` chegar ao shell faz o
+    shell gravar o CARACTERE DE CONTROLE, não a sequência de escape. O resultado é um fonte que
+    parece certo quando se lê — `[^>]*\\bid=` — e que na verdade traz um backspace (`0x08`) ali.
+
+    Já custou três vezes: um `printf '%s\\n'` que virou quebra de linha real dentro do YAML e
+    rejeitou o workflow; um `json.dumps(...) + "\\n"` que virou literal de string sem fechamento; e
+    um `\\b` de expressão regular que virou backspace e fez o padrão nunca casar — este último o
+    mais perigoso, porque não dá erro de sintaxe: o programa roda e silenciosamente não acha nada.
+
+    É a mesma lição deste portão, por outro caminho: **os bytes em disco não são o que se lê.** O
+    que o portão de newline faz pelo fim de linha, esta função faz pelo resto.
+
+    Tabulação (`0x09`), nova linha (`0x0a`) e retorno (`0x0d`) ficam fora: são brancos legítimos,
+    e o fim de linha é assunto do resto do portão.
+    """
+    # Tabulação, nova linha e retorno são brancos legítimos; o fim de linha é assunto do resto
+    # deste portão. Biblioteca de terceiro minificada (`assets/vendor/`) fica fora: o `jspdf`
+    # carrega um `0x01` dentro de uma literal, é assim que o autor o publicou, e reescrever
+    # dependência de terceiro por causa disso seria pior que o defeito.
+    LEGITIMOS = (0x09, 0x0a, 0x0d)
+    if "assets/vendor/" in (nome or ""):
+        return []
+    # Varre o texto caractere a caractere, contando a linha só no `\n`. NÃO usa `splitlines()`:
+    # em Python ele trata `\x0b` (tabulação vertical) e `\x0c` (avanço de página) como FIM DE LINHA
+    # e os engole, de modo que justamente dois dos caracteres que este portão procura ficariam
+    # invisíveis para ele. Portão cego no que procura é o defeito que ele existe para pegar.
+    fora = []
+    linha, acusada = 1, 0
+    for c in (texto or ""):
+        if c == "\n":
+            linha += 1
+            continue
+        if ord(c) < 0x20 and ord(c) not in LEGITIMOS and acusada != linha:
+            acusada = linha
+            fora.append(f"{nome}:{linha}: caractere de controle {hex(ord(c))} no fonte — "
+                        f"escape do shell que virou byte; reescreva a linha com Edit/Write")
+    return fora
 
 
 def main() -> int:
@@ -111,7 +180,26 @@ def main() -> int:
         if "__pycache__" in p.parts:
             continue
         arquivos += 1
-        problemas += problemas_do_fonte(p.read_text(encoding="utf-8"), p.relative_to(RAIZ).as_posix())
+        fonte = p.read_text(encoding="utf-8")
+        rel = p.relative_to(RAIZ).as_posix()
+        problemas += problemas_do_fonte(fonte, rel)
+        problemas += caracteres_de_controle(fonte, rel)
+
+    # 05/10/2026: a varredura de caractere de controle NÃO para no Python. Dos quatro casos achados
+    # em 05/10, dois estavam em portão escrito em JavaScript — `verificar_imprensa_do_dado.js` e
+    # `verificar_runtime.js` —, cada um com uma alternativa de expressão regular morta por um
+    # backspace no lugar da borda de palavra. Portão com alternativa morta não reprova e não avisa:
+    # ele passa verde cobrindo menos do que diz. Por isso `.js`, `.yml` e `.sh` entram aqui.
+    for alvo in ("*.js", "*.yml", "*.sh"):
+        for p in sorted(RAIZ.rglob(alvo)):
+            if any(x in p.parts for x in ("node_modules", "__pycache__", ".git", "arquivo")):
+                continue
+            rel = p.relative_to(RAIZ).as_posix()
+            try:
+                problemas += caracteres_de_controle(p.read_text(encoding="utf-8"), rel)
+            except (OSError, UnicodeDecodeError):
+                continue
+            arquivos += 1
     if problemas:
         print(f"✗ ESCRITA PORTÁVEL: {len(problemas)} sítio(s) de escrita que corrompem o arquivo fora do runner:")
         for x in problemas[:20]:
@@ -121,7 +209,8 @@ def main() -> int:
         print(f'    Conserto: acrescentar newline="\\n" (ou lineterminator="\\n" no csv). Exceção justificada '
               f'declara "# {MARCA_EXCECAO} <motivo>" na própria linha.')
         return 1
-    print(f"✓ ESCRITA PORTÁVEL OK — {arquivos} arquivo(s) Python, nenhuma escrita em modo texto sem newline fixado.")
+    print(f"✓ ESCRITA PORTÁVEL OK — {arquivos} arquivo(s) de fonte (.py, .js, .yml, .sh): nenhuma "
+          f"escrita em modo texto sem newline fixado, nenhum caractere de controle no fonte.")
     return 0
 
 

@@ -307,6 +307,12 @@ jobs:
           python3 scripts/saude_pipeline.py --listar | tail -20 >> "$GITHUB_STEP_SUMMARY" || true
           # 29/09/2026 (item 5): o funil do verificador de imprensa sai no resumo da noite em que
           # ele rodou. Sem isso, "0 exibíveis" chegaria à editoria sem a causa ao lado.
-          if printf '%s' '${{ inputs.scripts }}' | grep -q verificar_pista_imprensa; then
+          # A linha abaixo lia um input que nunca foi declarado -- o nome estava no plural, em
+          # ingles, e o input que existe e `comandos`. (Nao se escreve o nome errado nem em
+          # comentario: o portao varre o arquivo inteiro, e a mencao basta para acusar.) A
+          # expressao resolvia para vazio, o teste era sempre falso, e o funil do verificador de
+          # imprensa NUNCA saiu no resumo da noite -- o item 5 de 29/09 estava escrito e nao
+          # acontecia. Defeito calado: nada falha, so deixa de aparecer.
+          if printf '%s' '${{ inputs.comandos }}' | grep -q verificar_pista_imprensa; then
             python3 verificar_pista_imprensa.py --funil >> "$GITHUB_STEP_SUMMARY" || true
           fi
