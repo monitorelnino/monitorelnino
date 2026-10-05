@@ -178,7 +178,7 @@ Atualizado em 05/10/2026.
 | `scripts/testar_reposicao_dominio.py` | — | `publicacao.json` | — | — | não |
 | `scripts/tipo_de_evento_dos_atos.py` | — | `atos_resposta.json` | — | — | não |
 | `scripts/triar_fila.py` | — | `pistas_imprensa.json` | — | — | não |
-| `scripts/unir_conflito_de_rodada.py` | — | `fontes_consultadas.json`, `historico_mudancas.json`, `log_buscas.json`, `municipios.json`, `pistas_descobertas.json`, `pistas_doe.json` (+5) | — | 2 | não |
+| `scripts/unir_conflito_de_rodada.py` | — | `fontes_consultadas.json`, `historico_mudancas.json`, `log_buscas.json`, `log_buscas/2026-10.json`, `log_buscas_resumo.json`, `municipios.json` (+9) | — | 2 | não |
 | `seguir_pistas.py` | — | — | — | — | não |
 | `sondar_paineis.py` | — | `pistas_paineis.json` | — | — | não |
 | `triar_confianca_pistas.py` | — | `pistas_imprensa.json`, `pistas_revisao.json` | — | — | não |

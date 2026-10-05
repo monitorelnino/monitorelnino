@@ -322,6 +322,27 @@ for _p in sorted((_pl.Path(__file__).resolve().parent.parent / '.github' / 'work
                   f'o GitHub não consegue ler o arquivo.')
             erros += 1
 
+    # INPUT REFERENCIADO TEM DE SER DECLARADO.
+    #
+    # Em 05/10/2026 o `_coletor.yml` lia `${{ inputs.scripts }}` e nunca existiu input com esse
+    # nome — o certo é `inputs.comandos`. Nada falhou: a expressão resolve para vazio, o teste que
+    # dependia dela foi sempre falso, e o funil do verificador de imprensa simplesmente NUNCA saiu
+    # no resumo da noite. Defeito calado é pior que defeito ruidoso, porque ninguém o procura.
+    try:
+        _doc = yaml.safe_load(_fonte) or {}
+    except Exception:
+        _doc = {}
+    _gatilhos = _doc.get(True) or _doc.get('on') or {}
+    _declarados = set()
+    for _bloco in ('workflow_call', 'workflow_dispatch'):
+        _declarados |= set(((_gatilhos.get(_bloco) or {}).get('inputs') or {}))
+    if _declarados or 'inputs.' in _fonte:
+        for _nome in sorted(set(_re_expr.findall(r'\binputs\.(\w+)', _fonte))):
+            if _nome not in _declarados:
+                print(f'  ✗ {_rel}: usa `inputs.{_nome}` e não declara esse input — '
+                      f'a expressão resolve para vazio e o passo que depende dela nunca acontece.')
+                erros += 1
+
 print("✓ WORKFLOWS OK — YAML válido, sem chave duplicada, todo job com teto de tempo, "
       "todo portão de página com assunto declarado, reposição do domínio fora da fila da rodada, "
       "nenhum script cancelando run de outro, nenhuma expressão de contexto vazia."

@@ -72,13 +72,28 @@ LOGS_QUE_SO_CRESCEM = {
     # 05/10/2026: o painel de saúde acrescenta uma linha por execução e nunca reescreve as
     # anteriores — é a mesma forma, e o portão `verificar_escritores.py` cobrou a classe.
     "data/saude_pipeline.json": "execucoes",
+    # 05/10/2026: o painel da noite acrescenta um registro por elo por noite e nunca reescreve os
+    # anteriores. Ele foi RECUSADO na triagem das 18:58 e levou a rodada junto -- o elo coletou e
+    # perdeu o commit, que e exatamente a perda que a regra 3 da corrente existe para evitar.
+    "data/painel_da_noite.json": "noites",
 }
+
+# JSONL que so cresce: uma linha por registro, uniao pela base comum nas LINHAS.
+# `data/log_buscas/<ano-mes>.jsonl` e o volume que saiu de `data/log_buscas.json` -- a mesma regra
+# append-only, em outro formato, e ate hoje sem classe: ele recusava e parava a rodada.
+PREFIXOS_JSONL_QUE_SO_CRESCEM = ("data/log_buscas/",)
 
 # Função de outros dados. Resolve-se com a versão de cima e regenera-se depois.
 REGENERAVEIS = (
     "docs/MANIFEST_SHA256.txt",
     "docs/FILA_PISTAS.md",
     "data/pistas_revisao.json",
+    # 05/10/2026: os dois sao funcao de outro dado e sao regerados pela cadeia canonica --
+    # `scripts/gerar_resumo_do_log.py` e `gerar_card_municipios.py`, os dois dentro de
+    # `scripts/verificar_derivados.sh`. Recusa-los era conservadorismo sem razao, pela mesma logica
+    # do comentario de `dados-abertos/` logo abaixo, e os dois pararam a triagem de 05/10.
+    "data/log_buscas_resumo.json",
+    "data/municipios_card.json",
 )
 
 # §252 (27/09/2026): prefixos que o PRÓPRIO projeto já declara derivados, em
@@ -255,6 +270,42 @@ def estagio(caminho, n, repo=None):
         return None
 
 
+def e_jsonl_que_so_cresce(caminho: str) -> bool:
+    """O caminho é um JSONL append-only declarado? Função pura."""
+    return (str(caminho).startswith(PREFIXOS_JSONL_QUE_SO_CRESCEM)
+            and str(caminho).endswith(".jsonl"))
+
+
+def unir_jsonl(caminho, base_txt, nosso_txt, deles_txt):
+    """União pela base comum em LINHAS: base + nossas_novas + delas_novas. Função pura.
+
+    Mesma regra do log em JSON, no formato em que o volume da busca passou a ser gravado. E a mesma
+    trava: os dois lados têm de COMEÇAR com a base, linha a linha. Se não começarem, alguém
+    reescreveu ou removeu histórico, e unir aqui esconderia isso — foi assim que uma união por
+    conteúdo apagou quase 3.000 execuções em 23/09/2026.
+    """
+    if nosso_txt is None or deles_txt is None:
+        raise Recusa("um dos lados não tem o arquivo; isto não é acréscimo dos dois lados")
+
+    def linhas(txt):
+        return [x for x in str(txt).splitlines() if x.strip()]
+
+    lb = linhas(base_txt) if base_txt is not None else []
+    ln, ld = linhas(nosso_txt), linhas(deles_txt)
+    n = len(lb)
+    for nome, lado in (("nosso", ln), ("deles", ld)):
+        if len(lado) < n:
+            raise Recusa(f"o lado {nome} tem {len(lado)} linha(s), menos que a base ({n}) — "
+                         f"houve remoção, e isto não é acréscimo")
+        if lado[:n] != lb:
+            raise Recusa(f"o lado {nome} não começa pela base — houve reescrita de histórico")
+
+    fundido = lb + ln[n:] + ld[n:]
+    if len(fundido) < max(len(ln), len(ld)):
+        raise Recusa("a união ficou MENOR que um dos lados; isto é perda, não união")
+    return "\n".join(fundido) + "\n", len(ln), len(ld), len(fundido)
+
+
 def unir_log(caminho, chave, base_txt, nosso_txt, deles_txt):
     """Une pela base comum: base + nossos_novos + deles_novos. Recusa se não for append-only."""
     if nosso_txt is None or deles_txt is None:
@@ -321,6 +372,16 @@ def resolver(repo=None, escrever=True):
                         encoding="utf-8", newline="")
                     git("add", "--", norm, repo=repo)
                 resolvidos.append(f"{norm}: {a} + {b} → {t} (união pela base comum)")
+
+            elif e_jsonl_que_so_cresce(norm):
+                fundido, a, b, t = unir_jsonl(
+                    norm,
+                    estagio(norm, 1, repo=repo), estagio(norm, 2, repo=repo),
+                    estagio(norm, 3, repo=repo))
+                if escrever:
+                    (raiz / norm).write_text(fundido, encoding="utf-8", newline="\n")
+                    git("add", "--", norm, repo=repo)
+                resolvidos.append(f"{norm}: {a} + {b} → {t} linha(s) (união pela base comum)")
 
             elif norm in FILAS_DE_PISTA:
                 fundido, a, b, t, m = unir_fila_de_pistas(
@@ -526,6 +587,30 @@ def autoteste() -> int:
         doc = json.loads((pathlib.Path(r) / "data/pistas_imprensa.json").read_text(encoding="utf-8"))
         checar("fila de pista: a união nunca é menor que o maior dos lados",
                not rec and len(doc["pistas"]) == 3)
+
+    # 05/10/2026 - as cinco classes que faltavam, e que pararam a triagem das 18:58.
+    checar("JSONL do log de buscas tem classe", e_jsonl_que_so_cresce("data/log_buscas/2026-10.jsonl"))
+    checar("JSON solto na mesma pasta NAO e tratado como JSONL",
+           not e_jsonl_que_so_cresce("data/log_buscas/2026-10.json"))
+    checar("JSONL de outra pasta nao entra por engano",
+           not e_jsonl_que_so_cresce("data/outro/2026-10.jsonl"))
+    _u = unir_jsonl("x.jsonl", "a\nb\n", "a\nb\nc\n", "a\nb\nd\n")
+    checar("JSONL une pela base comum", _u[0] == "a\nb\nc\nd\n" and _u[3] == 4)
+    checar("JSONL unido nunca e menor que um lado", _u[3] >= max(_u[1], _u[2]))
+    try:
+        unir_jsonl("x.jsonl", "a\nb\n", "a\n", "a\nb\nd\n")
+        checar("JSONL com remocao e RECUSADO", False)
+    except Recusa:
+        checar("JSONL com remocao e RECUSADO", True)
+    try:
+        unir_jsonl("x.jsonl", "a\nb\n", "z\nb\nc\n", "a\nb\nd\n")
+        checar("JSONL que nao comeca pela base e RECUSADO", False)
+    except Recusa:
+        checar("JSONL que nao comeca pela base e RECUSADO", True)
+    checar("o painel da noite e log que so cresce, pela chave `noites`",
+           LOGS_QUE_SO_CRESCEM.get("data/painel_da_noite.json") == "noites")
+    checar("o resumo do log e o card de municipios sao regeneraveis",
+           e_regeneravel("data/log_buscas_resumo.json") and e_regeneravel("data/municipios_card.json"))
 
     checar("data/pistas_revisao.json segue DERIVADO, não fila (ele é função da fila)",
            "data/pistas_revisao.json" in REGENERAVEIS
