@@ -57276,6 +57276,1275 @@
    "pista_id": "a53fd3b774",
    "origem": "seguimento_busca_oficial",
    "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Belém\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2700805",
+   "municipio": "Belém",
+   "uf": "AL",
+   "url": "https://santaizabel.pa.gov.br/wp-content/uploads/2021/04/CONTIGENCIA.pdf",
+   "pista_id": "bef3493509",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "7f81e521725e8a49c86fb69034987fb6469f18b41ea6c46e79db9e6bf5c549d6"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2700805",
+   "municipio": "Belém",
+   "uf": "AL",
+   "url": "http://paraiba-portal-backend.plone.rke.codataprd.pb.gov.br/portal_paraiba/diretas/saude/arquivos-1/vigilancia-em-saude/plano-de-contingencia-de-seca-e-estiagem-ses-paraiba-versao-final.pdf",
+   "pista_id": "7dbe3ae9cd",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2700805",
+   "municipio": "Belém",
+   "uf": "AL",
+   "url": "https://www.defesacivil.se.gov.br/wp-content/uploads/2019/03/PLANO-DE-CONTING%C3%8ANCIA-2019-1.pdf",
+   "pista_id": "3497d4b116",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "l Intergovernamental sobre Mudança do Clima (IPCC), o Plano de Ação em Saúde de Belém (lançado pelo Brasil na COP30) e a Agenda 2030, o AdaptaSUS articula-se ta"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "14.904/2024",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2700805",
+   "municipio": "Belém",
+   "uf": "AL",
+   "url": "https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/guias-e-manuais/2026/guia-para-elaboracao-de-planos-de-adaptacao-a-mudanca-do-clima-do-setor-saude-versao-final-preliminar.pdf/@@download/file",
+   "pista_id": "4beb6ccdf0",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "37cb66c5ba3012e9613cc09289f1ff9f04f83d67993f360d97b507c1c04840aa",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PPOONNEENNTTEE IIIIII – Assistência ao Paciente 2 © 2008 Secretaria Estadual de Saúde da Bahia. Todos os direitos reservados. É permitida a reprodução parcial o"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ública do Estado da Bahia, de abrangência regional, de Porte IV de acordo com a portaria 2.224/02 do Ministério da Saúde, situado em Pólo Regional de Saúde, com",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "2.224/02",
+      "data": "17/12/2008",
+      "trecho": "ública do Estado da Bahia, de abrangência regional, de Porte IV de acordo com a portaria 2.224/02 do Ministério da Saúde, situado em Pólo Regional de Saúde, com"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "17/12/2008",
+   "natureza": null,
+   "ibge": "2929800",
+   "municipio": "Saúde",
+   "uf": "BA",
+   "url": "http://www2.saude.ba.gov.br/hgpv/Plano%20de%20Conting%C3%AAncia%20Epidemia%20de%20Dengue%20HGPV.pdf",
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "9e7bd544b0",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "2898deb423564b25fdc4e79de4286c8db3fce2d98566647266ca4852e62a66d0"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2929800",
+   "municipio": "Saúde",
+   "uf": "BA",
+   "url": "https://www.madrededeus.ba.gov.br/abrir_arquivo.aspx/Plano_de_Contingencia?cdLocal=2&arquivo=%7BE1BA21D6-A35B-B3AC-5BBE-6CAE436DCB15%7D.pdf",
+   "pista_id": "7bda3e2b21",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "6652 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "O 08 08 AGO 2023 TRANSPORTE E TRÂNSITO Novos semáforos e sinalizações no bairro Inconfidentes --> --> Foto: Gabriela Freitas --> --> --> --> --> --> COMPARTILHA"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "19/08/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "19/08/2026",
+   "natureza": null,
+   "ibge": "3130606",
+   "municipio": "Inconfidentes",
+   "uf": "MG",
+   "url": "https://www.transcon.contagem.mg.gov.br/portal/noticias/0/3/156/novos-semaforos-e-sinalizacoes-no-bairro-inconfidentes",
+   "pista_id": "6bcd41d79e",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "ce57adb4267e928e4e967603ea0f534edaf167619ca056c4b68615bda34cd3c9",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Inconfidentes\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3130606",
+   "municipio": "Inconfidentes",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/system/files/media/documento_detalhado/2025-05/RELAT%C3%93RIO%20PER%C3%8DODO%20CHUVOSO%2024-25.pdf",
+   "pista_id": "2bdf3f4496",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "01d6c6195481b40bda5018012a281f83766deaf12df2bbe9ac0fcb618b005a9d"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Inconfidentes\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3130606",
+   "municipio": "Inconfidentes",
+   "uf": "MG",
+   "url": "https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/estudos-e-notas-informativas/2024/nota-informativa-no-35-2024.pdf",
+   "pista_id": "923e8e5d5a",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "d7c0ce1faa74e438ad6b8210b7cb5f6c726199457f40e3ee43a99595be7688ae"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ão João de Viçosa, Caxixe, Prata, Alegre, Pardinho, Monte Alverne, Pedra Roxa e Pedregulho. Ocupa uma área de aproximadamente 5.919,5 km², abrangendo os municíp"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "233/2023",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3537008",
+   "municipio": "Pedregulho",
+   "uf": "SP",
+   "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/IBITIRAMA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202026.pdf",
+   "pista_id": "b01a7cb834",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "bd41228a6be7f5730da980fb63709b63e3bd0b36bb5efebd2a0d7fc978c330e9",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Pedregulho\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3537008",
+   "municipio": "Pedregulho",
+   "uf": "SP",
+   "url": "https://sedurb.es.gov.br/media/PDF/Etapa%206%20-%20Plano%20Municipal%20de%20Saneamento%20B%C3%A1sico%20de%20Castelo.pdf",
+   "pista_id": "290606b725",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "b361d3311f5f5e750241d9bc73365716121ff236f76cab973338a1032d4159f6"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "15290 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Promotoria de Justiça de Panorama R E C O M E N D A Ç Ã O1 Ementa: Necessidade de observância às normas legais e ao regramento específico estabelecido para cont"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "uas atribuições, com fulcro no art. 129, inciso III, da 27, inciso IV, ambos da Lei Federal nº 8.625/93; e art. 103, inciso VIII, da Lei Complementar Estadual n",
+     "dados": {
+      "tipo": "lei",
+      "numero": "8.625/93",
+      "data": "05/10/06",
+      "trecho": "uas atribuições, com fulcro no art. 129, inciso III, da 27, inciso IV, ambos da Lei Federal nº 8.625/93; e art. 103, inciso VIII, da Lei Complementar Estadual n"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "/c Súmulas 346 e 473 do Supremo Tribunal Federal); RESOLVE RECOMENDAR ao Senhor Prefeito do Município de Pauliceia, ERMES DA SILVA, bem como ao Coordenador Muni"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: sinalizador 'situação de emergência' presente, mas sem dano nem disclaimer claro"
+    }
+   },
+   "categoria": null,
+   "data": "05/10/06",
+   "natureza": "DUVIDA",
+   "ibge": "3535408",
+   "municipio": "Panorama",
+   "uf": "SP",
+   "url": "https://www.pauliceia.sp.gov.br/arquivos/downloads/recomendao_MP.pdf",
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "00b0a054f0",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "2a81f0745be4373303a4ae267db5e86f70c08ac85fc03c01f9d62473d039ad0b"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "13175 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura de Portalegre Prefeitura Municipal de Portalegre Ouvidoria e-Sic Transparência CORONAVÍRUS (COVID-19): Boletins, Ações, Transparência e material educ"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "01/2017 Acessar CONCURSO PÚBLICO 2017: 024/2019 - CONCURSO PÚBLICO 06/06/2019 · DECRETO Nº 024/2019  GP/PMP Portalegre/RN, 06 de junho de 2019 PRORROGA O PRAZO",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "024/2019",
+      "data": "29/09/2026",
+      "trecho": "01/2017 Acessar CONCURSO PÚBLICO 2017: 024/2019 - CONCURSO PÚBLICO 06/06/2019 · DECRETO Nº 024/2019  GP/PMP Portalegre/RN, 06 de junho de 2019 PRORROGA O PRAZO"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "29/09/2026",
+   "natureza": null,
+   "ibge": "2410207",
+   "municipio": "Portalegre",
+   "uf": "RN",
+   "url": "https://www.portalegre.rn.gov.br/publicacoes.php?grupo=13&ta=3",
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "b9c184b4ca",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "a3e8d99538d724bc5a381904f82d20593d58b8b6c75fa56e7dbf278b069e7407"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19999 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Portalegre\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2410207",
+   "municipio": "Portalegre",
+   "uf": "RN",
+   "url": "https://webdisk.diariooficial.rn.gov.br/Jornal/12024-08-20.pdf",
+   "pista_id": "1673701b2a",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "f67da2c3b1ad8c4b522efec1f1a5fc62584e7de8820ecfbb616ce4e218d1c847"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "90 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1703826",
+   "municipio": "Cachoeirinha",
+   "uf": "TO",
+   "url": "https://www.cmcachoeirinha.rs.gov.br/noticia/relatorio-de-gestao-em-saude-sera-apresentado-na-proxima-quinta-feira-8-1002",
+   "pista_id": "93820b831a",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2508109",
+   "municipio": "Lagoa",
+   "uf": "PB",
+   "url": "https://auniao.pb.gov.br/servicos/doe/2026/maio/diario-oficial-09-05-2026-portal.pdf",
+   "pista_id": "3f76ced5c8",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2508109",
+   "municipio": "Lagoa",
+   "uf": "PB",
+   "url": "https://www.cagepa.pb.gov.br/wp-content/uploads/2026/02/PRSB-CAGEPA-LITORAL_publicacao.pdf",
+   "pista_id": "d87a2d06fe",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "12943 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "po A, Serviços de Fisioterapia pós Covid-19, Reforma do Prédio da Associação de Lagoa de Praia e Posto Âncora Lagoa de Praia. Acessar BOLETIM OFICIAL: 113215 01"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "02:54 BOLETIM OFICIAL: 113314 01/2022 27/04/2022 · Boletim Oficial nº 113314 01 Decreto Municipal nº 016_2022 Dispõe sobre a adoção de medidas de prevenção ao c",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "016",
+      "data": "01/10/2026",
+      "trecho": "02:54 BOLETIM OFICIAL: 113314 01/2022 27/04/2022 · Boletim Oficial nº 113314 01 Decreto Municipal nº 016_2022 Dispõe sobre a adoção de medidas de prevenção ao c"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "01/10/2026",
+   "natureza": null,
+   "ibge": "2508109",
+   "municipio": "Lagoa",
+   "uf": "PB",
+   "url": "https://www.riotinto.pb.gov.br/publicacoes.php?campanha=1",
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "8b77b5dab3",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "e4fc18b1fb3af11d7c06877c16a52ddba63648cdc7a4dae860c308574b79e76a"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1303403",
+   "municipio": "Parintins",
+   "uf": "AM",
+   "url": "https://www.gov.br/saude/pt-br/composicao/sesai/publicacoes/plano-de-contingencia-nacional-para-covid-19-em-povos-indigenas-dsei-pin-parintins",
+   "pista_id": "3f4fab56d4",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "c 1 PREFEITURA MUNICIPAL DE PARINTINS Frank Luiz da Cunha Garcia Prefeito Municipal SECRETARIA MUNICIPAL DE SAÚDE DE PARINTIS Clerton Rodrigues Florêncio Secret"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "instrumentos e ferramentas desenvolvidas em processos de trabalho. A edição do Decreto n° 7.508, de 28 de junho de 2011, e da Lei Complementar n° 141, de 13 de",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "7.508",
+      "data": "28/06/2011",
+      "trecho": "instrumentos e ferramentas desenvolvidas em processos de trabalho. A edição do Decreto n° 7.508, de 28 de junho de 2011, e da Lei Complementar n° 141, de 13 de"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "28/06/2011",
+   "natureza": null,
+   "ibge": "1303403",
+   "municipio": "Parintins",
+   "uf": "AM",
+   "url": "https://files.parintins.am.gov.br/relatoriomunicipalsaude/1.pdf",
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "8e37b049c8",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "5e4dd0219ba676864bd06ffdf2fbf3acc13b8b316435ca91530805147368af3d"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Parintins\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1303403",
+   "municipio": "Parintins",
+   "uf": "AM",
+   "url": "https://www.amazonas.am.gov.br/wp-content/uploads/2025/01/2_Mensagem-Governamental-2021-%E2%80%93-Relatorio-de-Atividades-2020.pdf",
+   "pista_id": "5cc96f4339",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "1ef7b289e5859a25b46373bdd0b03bec4770ec970da2e1b5f44add778fa53e59"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": ", Nhamundá, Nova Olinda do Norte, Novo Airão, Novo Aripuanã, Osório da Fonseca, Parintins, Pauini, Presidente Figueiredo, Puraquequara, Purupuru, Rio Preto da E"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "OS NUMERADOS REGIMENTO INTERNO Publicações Recentes Ver mais Decretos Numerados DECRETO N.° 43.106, DE 27 DE NOVEMBRO DE 2020 Publicado em 27 de novembro de 202",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "43.106",
+      "data": "27/11/2020",
+      "trecho": "OS NUMERADOS REGIMENTO INTERNO Publicações Recentes Ver mais Decretos Numerados DECRETO N.° 43.106, DE 27 DE NOVEMBRO DE 2020 Publicado em 27 de novembro de 202"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "nenhuma autoridade do Executivo no texto"
+    }
+   },
+   "categoria": null,
+   "data": "27/11/2020",
+   "natureza": null,
+   "ibge": "1303403",
+   "municipio": "Parintins",
+   "uf": "AM",
+   "url": "https://legisla.imprensaoficial.am.gov.br/diario_am/12/1989/10/746",
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "ba8d69dbc9",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "8be72ed49900e64bfbb0f10825340391e892f8019ffc3a36c2108d341e7b79bc"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19999 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Caapiranga\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1300839",
+   "municipio": "Caapiranga",
+   "uf": "AM",
+   "url": "https://www.cnj.jus.br/wp-content/uploads/2025/09/justica-itinerante-f3-amazonia-legal-boca-do-acre-e-xapuri.pdf",
+   "pista_id": "16205ceaeb",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "ee5801fa84c2b7fc62a6d57a8c4be6ebbe56815f2dae957ac1a44ca61a48c2b4"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Caapiranga\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1300839",
+   "municipio": "Caapiranga",
+   "uf": "AM",
+   "url": "https://www.ciama.am.gov.br/wp-content/uploads/2020/10/Preliminar_PZFV_BIRD_Agosto_27.pdf",
+   "pista_id": "0ff95b70c7",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "f98528d0689af7810c64a5c36d03500ba8713fa0a7ea8c7ef63e07a4f0b22812"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "rueri, Itapevi, Jandira, Vargem Grande Paulista, Embu das Artes, Itapecerica da Serra e Ibiúna, integrando importante eixo de desenvolvimento econômico, industr"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA (PLANCON) – COTIA/SP SUMÁRIO 1. INTRODUÇÃO .....................................................................................",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2022",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Secretaria Municipal",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA (PLANCON) – COTIA/SP SUMÁRIO 1. INTRODUÇÃO .....................................................................................",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "............................................. 11 6.2.1 Estrutura Operacional da Secretaria Municipal de Defesa Civil ................................ 12 6.2.1.1"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "2022",
+   "natureza": "RESPOSTA",
+   "ibge": "3205002",
+   "municipio": "Serra",
+   "uf": "ES",
+   "url": "https://cotia.sp.gov.br/wp-content/uploads/2026/09/plano-municipal-de-contingencia-3-1.pdf",
+   "sem_ato_de_aprovacao": true,
+   "encaminhar": "atos_resposta",
+   "pista_id": "5ad3b2bec8",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "52bc8d46df23412380237d4fa795e8e86af1abfdaff634286eadeb7020ad5a52"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "15930 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "nomeia \"Macaé\" (UF não citada no texto; identidade pelo nome)"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "omo o que temos com o Gabinete Municipal de Gerenciamento de Crise, criado pelo Decreto 205/2022, liderado pelo chefe do Executivo”, destacou. Joseferson mostro",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "205/2022",
+      "data": "01/12/2025",
+      "trecho": "omo o que temos com o Gabinete Municipal de Gerenciamento de Crise, criado pelo Decreto 205/2022, liderado pelo chefe do Executivo”, destacou. Joseferson mostro"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "01/12/2025",
+   "natureza": null,
+   "ibge": "3302403",
+   "municipio": "Macaé",
+   "uf": "RJ",
+   "url": "https://www.macae.rj.gov.br/noticias/leitura/noticia/plano-de-contingencia-de-protecao-e-defesa-civil-e-apresentado",
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "ac7643eb51",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "7c6c4c96c533ac05984e14f2a82fcb98923befd7747fd94f0207b6a18e850f7a"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "nomeia \"Macaé\" (UF não citada no texto; identidade pelo nome)"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "- PROCON - Atualizado 4/jun Ações da Secretaria de Educação - Atualizado 4/jun Decreto Municipal 27/2020 Decreto Municipal 30/2020 Decreto Municipal 31/2020 De",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "27/2020",
+      "data": "31/12/19",
+      "trecho": "- PROCON - Atualizado 4/jun Ações da Secretaria de Educação - Atualizado 4/jun Decreto Municipal 27/2020 Decreto Municipal 30/2020 Decreto Municipal 31/2020 De"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "31/12/19",
+   "natureza": null,
+   "ibge": "3302403",
+   "municipio": "Macaé",
+   "uf": "RJ",
+   "url": "https://www.macae.rj.gov.br/saude/conteudo/titulo/coronavirus-informacoes-e-orientacoes-importantes",
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "bd1cd6c21d",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "01c582553cfa89177a4c1efba49e4329a88914aa011225716ef61ae1f6ca4989"
+  },
+  {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "17176 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "nomeia \"Macaé\" (UF não citada no texto; identidade pelo nome)"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Conselho Municipal de Saúde Leis e Resoluções &nbsp; Arquivos Relacionados LEIS Resolução 453/2012 do Conselho Nacional de Saúde (42 Kb) Política Nacional da Pr",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "453/2012",
+      "data": "18/09/2018",
+      "trecho": "Conselho Municipal de Saúde Leis e Resoluções &nbsp; Arquivos Relacionados LEIS Resolução 453/2012 do Conselho Nacional de Saúde (42 Kb) Política Nacional da Pr"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "Transparência Serviços Notícias Legislação Transparência Doe Sangue Secretarias Conselho Municipal de Saúde Menu Apresentação Editais CMS Processo Eleitoral 202"
+    }
+   },
+   "categoria": null,
+   "data": "18/09/2018",
+   "natureza": null,
+   "ibge": "3302403",
+   "municipio": "Macaé",
+   "uf": "RJ",
+   "url": "https://www.macae.rj.gov.br/cms/conteudo/titulo/leis-e-resolucoes",
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "4722e2bc9e",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "0f2c6c20aca312bd2480a95b738afed8f03c122175766a74ad166af33b0cf502"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Saquarema\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3305505",
+   "municipio": "Saquarema",
+   "uf": "RJ",
+   "url": "https://www.saquarema.rj.gov.br/wp-content/uploads/2020/07/PLANO-DE-MANEJO-PCSOL-2019.pdf",
+   "pista_id": "2e511e6dfa",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "b87a363cb4f7e83ce3c43e1bb45602a7af8ad5f9df07da498504c8ab74235c7e"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4592 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "HOME | Site oficial do Município de Saquarema &#8211; RJ Ir para o conteúdo [1] Ir para o menu [2] Ir para a busca [3] Alternar Contraste | Alternar Tamanho da"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.232/10",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3305505",
+   "municipio": "Saquarema",
+   "uf": "RJ",
+   "url": "https://www.saquarema.rj.gov.br/",
+   "pista_id": "1846b11833",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "e35e7e27a093de9c48e22b90c84c3019affc1ddd963b5bba1f241303b6968265",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://www.saquarema.rj.gov.br/",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Diário Oficial do Município de Saquarema | Poder Executivo | Ano VIII | Nº 1978 | Sexta-feira, 21 de agosto de 2026 SAQUAREMA PARTICIPA DE ENCONTRO ESTADUAL SOB"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "de Saquarema...........................08 Diário Oficial Eletrônico criado pela Lei 1.715/2018 e regulamentado pelo Decreto 1.822/2018. Rua Coronel Madureira, 7",
+     "dados": {
+      "tipo": "lei",
+      "numero": "1.715/2018",
+      "data": "21/08/2026",
+      "trecho": "de Saquarema...........................08 Diário Oficial Eletrônico criado pela Lei 1.715/2018 e regulamentado pelo Decreto 1.822/2018. Rua Coronel Madureira, 7"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "I ● Nº 1978 Sexta-feira, 21 de agosto de 2026 PREFEITURA DA CIDADE DE SAQUAREMA Secretário Municipal de Finanças Secretário Municipal de PREFEITA Águido Henriqu"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: nenhum padrão claro bateu — não classificar sozinho"
+    }
+   },
+   "categoria": null,
+   "data": "21/08/2026",
+   "natureza": "DUVIDA",
+   "ibge": "3305505",
+   "municipio": "Saquarema",
+   "uf": "RJ",
+   "url": "https://dos.saquarema.rj.gov.br/wp-content/uploads/2026/08/D.O.S.-1978-8.pdf",
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "3cc86d552d",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "0cc67a25721f3f563fe847583c794674c3f37ff02dd13087a5cafd06be4dc31c"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Câmara Municipal de Saquarema exportação materias Olá! bem-vindo ao nosso ambiente exportação de dados - materias Opções para exportação XLS CSV JSON TXT DOC PD"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "\". Roberto Ramalho 28/09/2026 Aguardando Pauta #e67e22 Em Tramitação PROJETO DE RESOLUÇÃO: 063/2026 DISPÕE SOBRE \"MEDALHA DE BRAVURA DA SEGURANÇA PÚBLICA CLEYSO",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "063/2026",
+      "data": "01/10/2026",
+      "trecho": "\". Roberto Ramalho 28/09/2026 Aguardando Pauta #e67e22 Em Tramitação PROJETO DE RESOLUÇÃO: 063/2026 DISPÕE SOBRE \"MEDALHA DE BRAVURA DA SEGURANÇA PÚBLICA CLEYSO"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "01/10/2026",
+   "natureza": null,
+   "ibge": "3305505",
+   "municipio": "Saquarema",
+   "uf": "RJ",
+   "url": "https://transparencia.saquarema.rj.leg.br/materias/export?origem=V-303",
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "ab184c6fc6",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "74b6da8d1e413872d8b0f177cccdd8d82bf4f7ca2da10e77af907545e3e0f337"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "EXECUTIVO Prefeita | CARLA CAPUTI Vice-prefeito | CHICO DA QUIXABA MUNICÍPIO DE SÃO JOÃO DA BARRA | ESTADO DO RIO DE JANEIRO Rua Barão de Barcelos, 88 • Centro"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "22) 2741-8449 Sexta-feira, 03 de janeiro de 2025 • Edição 002 www.sjb.rj.gov.br Portaria nº. 052/25, de 03 de janeiro de 2025. A Prefeita Municipal de São João",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "052/25",
+      "data": "03/01/2025",
+      "trecho": "22) 2741-8449 Sexta-feira, 03 de janeiro de 2025 • Edição 002 www.sjb.rj.gov.br Portaria nº. 052/25, de 03 de janeiro de 2025. A Prefeita Municipal de São João"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "DIÁRIO OFICIAL Poder | EXECUTIVO Prefeita | CARLA CAPUTI Vice-prefeito | CHICO DA QUIXABA MUNICÍPIO DE SÃO JOÃO DA BARRA | ESTADO DO RIO DE JANEIRO Rua Barão de"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "03/01/2025",
+   "natureza": "DUVIDA",
+   "ibge": "3305000",
+   "municipio": "São João da Barra",
+   "uf": "RJ",
+   "url": "https://www.sjb.rj.gov.br/arquivos/diario_oficial/002_25_do-03012025-ed002.pdf",
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "d4933c6ab5",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "e2f723058002a52fc21d92842dff2ce8fc184a9142b5bd0c49f3a9119887f8e3"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"São João da Barra\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3305000",
+   "municipio": "São João da Barra",
+   "uf": "RJ",
+   "url": "https://web.bndes.gov.br/bib/jspui/bitstream/1408/22344/3/PR__REL.ANUAL_2021.pdf",
+   "pista_id": "6445992283",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "e4825dea18a823fa56ac7a23260c9465ed44868c36897c51ade0cf5573b80ddb"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"São João da Barra\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3305000",
+   "municipio": "São João da Barra",
+   "uf": "RJ",
+   "url": "https://www.defesacivil.rj.gov.br/index.php/legislacao-cepedec/instrucoes-normativas-cepedec",
+   "pista_id": "81a6c6f9b2",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "1ce486d0892b9692e12104174941acac8b191f1609740f9055a6df73f2ccf973"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "13234 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "XO R$ 5.707.060,16 DE 05.08.2020 RJ 330050 BOM JARDIM R$ 1.223.647,65 RJ 330060 BOM JESUS DO ITABAPOANA R$ 2.544.013,10 PROCESSO Nº SEI-21/0032/001906/2020 - MÁ"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "42.518",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3300605",
+   "municipio": "Bom Jesus do Itabapoana",
+   "uf": "RJ",
+   "url": "https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=MzQyOTI%2C",
+   "pista_id": "c2faa71cbc",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "3e912dbc0e59de8f3ec21fd8769d107a7cb76456d81ac5ff93b0ff53794f1556",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "90 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4208203",
+   "municipio": "Itajaí",
+   "uf": "SC",
+   "url": "https://www.cvi.sc.gov.br/sessao/43o-sessao-ordinaria-09-07-2026-1000165",
+   "pista_id": "7b8e8b5143",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Julia Da Silva Pepes, representante das UD CEJA, EJA e Extensão IFSC do polo de Criciúma. Rosilene Aparecida Matos, representante dos profissionais e trabalhado"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "medidas tomadas na Política Nacional de Proteção e Defesa Civil, definida pela Lei N° 12.608, de 10 de abril de 2012. Efetivamente, estamos em estado de calami",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608",
+      "data": "10/04/2012",
+      "trecho": "medidas tomadas na Política Nacional de Proteção e Defesa Civil, definida pela Lei N° 12.608, de 10 de abril de 2012. Efetivamente, estamos em estado de calami"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "10/04/2012",
+   "natureza": null,
+   "ibge": "4204608",
+   "municipio": "Criciúma",
+   "uf": "SC",
+   "url": "https://urussanga.sc.gov.br/uploads/sites/473/2022/02/plancon6.pdf",
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "7a18f7fa17",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "1ad330eb01b09c53189fd067ecff2fd8ea8d16ba4b3e64bdf6820e8f1e12b722"
   }
  ]
 }
