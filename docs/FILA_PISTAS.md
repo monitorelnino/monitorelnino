@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 05/10/2026 · 3809 pendente(s) · 7628 decidida(s) · A=178 B=549 C=3082
+Gerado em 05/10/2026 · 3812 pendente(s) · 7628 decidida(s) · A=178 B=552 C=3082
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -10689,6 +10689,24 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://pesquisa.apps.tcu.gov.br/#/documento/ata-sessao/37528019987.PROC/%2520/DTRELEVANCIA%2520desc/1/%2520
   - trecho: 1.2.5.3 providencie plano de contingência para ensaios e equipamentos;. 1.2 ... Valença/BA - CEPLAC/CENEX/VALE. Exercício: 2002. 1.1. Determinar ao CEPLAC ...
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+
+## Caucaia/CE — 3 pendente(s)
+- `c014d2e159` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: Defesa Civil mapeia 31 áreas de risco em Caucaia - Blog do Farias
+  - url: https://www.blogdofarias.com/2020/01/17/defesa-civil-mapeia-31-areas-de-risco-em-caucaia/
+  - trecho: A Coordenadoria de Proteção e Defesa Civil (Compdec) concluiu o estudo do mapeamento de áreas de risco em todo o município de Caucaia Ao todo foram detectados 31 pontos distribuídos em zonas urbanas e rurais, compreenden
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: fonte não oficial
+- `a11a311af9` · nível **B** (4 pts) · busca_web · DUVIDA · citação não extraída
+  - título: A Coordenadoria de Proteção e... - Prefeitura de Caucaia - Facebook
+  - url: https://www.facebook.com/prefeituradecaucaia/posts/a-coordenadoria-de-prote%C3%A7%C3%A3o-e-defesa-civil-concluiu-o-estudo-do-mapeamento-de-%C3%A1r/848968692207899/
+  - trecho: A Coordenadoria de Proteção e Defesa Civil concluiu o estudo do mapeamento de áreas de risco em todo o município de Caucaia . Ao todo foram detectados 31 pontos distribuídos em zonas urbanas e rurais, compreendendo as se
+  - juiz: portão automático: fonte não oficial
+- `b4d19878f3` · nível **B** (3 pts) · busca_web · — · data 2013 (do trecho)
+  - título: Centro de Endemias de Caucaia: SECRETARIA MUNICIPAL DE SAÚDE LANÇA ...
+  - url: https://secretariadesaudecaucaia.blogspot.com/2013/02/secretaria-municipal-de-saude-lanca.html
+  - trecho: A Secretaria Municipal de Saúde lança nesta segunda feira, dia 18 de Fevereiro às 14h no auditório do convento das irmãs cordimarianas o Plano de Contingência 2013 para a prevenção e controle de epidemias da doença em Ca
+  - ⚠ ano_anterior_ao_ciclo
 
 ## Fortaleza/CE — 5 pendente(s)
 - `af1877047a` · nível **B** (5 pts) · seguimento_busca_oficial · — · data 16/03/2020 (do trecho)
