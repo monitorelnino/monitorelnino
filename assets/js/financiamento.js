@@ -6,6 +6,22 @@ let BR_GEOJSON, ROTAS, PORUF, EMENDAS, CONSULTAS, TRANSF, ATOS, POP, MPS, CONTAD
  * valores que este arquivo tem em mão — o leitor do catálogo não busca dado, porque dado é a
  * terceira camada. Se o catálogo não tiver a entrada, devolve string vazia e o texto de reserva
  * que está no HTML permanece: a página não fica em branco por causa de um JSON que não carregou. */
+/* Escreve texto vindo do DADO e marca o elemento como fixado.
+ *
+ * A marca importa por causa de uma corrida real, medida em 05/10/2026: o leitor do catálogo
+ * (`assets/catalogo.js`) e o `fetch` desta página resolvem em ordem imprevisível, e quando o
+ * catálogo chegava por último ele reescrevia o rótulo com o texto de RESERVA — apagando o
+ * período e a fonte que o dado tinha acabado de pôr. A 390 px dava certo e a 1280 px não, que
+ * é a assinatura de corrida.
+ *
+ * A regra geral, válida para toda página migrada: **quem escreve a partir de dado marca**.
+ * Ou usa `MonitorCatalogo.escrever`, que já marca, ou chama esta função. */
+function porDado(elemento, texto) {
+  if (!elemento) return;
+  elemento.textContent = texto;
+  elemento.setAttribute('data-conteudo-fixado', '1');
+}
+
 function doCatalogo(idElemento, idTexto, valores) {
   const C = window.MonitorCatalogo;
   if (!C) return null;            /* catálogo ausente: fica o texto de reserva do HTML */
@@ -550,17 +566,17 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     ((S || {}).cartoes || []).forEach(c => { por[c.id] = c; });
     const escrever = (ident, idValor, idRotulo, idFonte, formata, rotuloBase) => {
       const c = por[ident];
-      if (!c) { if (el(idValor)) el(idValor).textContent = 'sem coleta'; return; }
+      if (!c) { porDado(el(idValor), 'sem coleta'); return; }
       if (c.sem_coleta) {
-        if (el(idValor)) el(idValor).textContent = 'sem coleta';
-        if (el(idFonte)) el(idFonte).textContent = c.detalhe || '';
+        porDado(el(idValor), 'sem coleta');
+        porDado(el(idFonte), c.detalhe || '');
         return;
       }
-      if (el(idValor)) el(idValor).textContent = formata(c.valor);
-      if (idRotulo && el(idRotulo)) el(idRotulo).textContent = rotuloBase + ', no ' + c.periodo;
+      porDado(el(idValor), formata(c.valor));
+      if (idRotulo) porDado(el(idRotulo), rotuloBase + ', no ' + c.periodo);
       if (el(idFonte)) {
         const exato = typeof c.valor === 'number' && c.unidade === 'reais' ? reais(c.valor) + ' · ' : '';
-        el(idFonte).textContent = exato + c.fonte + (c.detalhe ? ' · ' + c.detalhe : '');
+        porDado(el(idFonte), exato + c.fonte + (c.detalhe ? ' · ' + c.detalhe : ''));
       }
     };
     escrever('pago_periodo_mp', 'topoPagoMes', 'topoPagoMesRotulo', 'topoPagoMesFonte', reaisCurto,

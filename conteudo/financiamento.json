@@ -2,14 +2,17 @@
  "_governanca": "CATÁLOGO DE CONTEÚDO (handover de 05/10/2026). Todo texto público desta página vive aqui, com identificador estável `pagina.secao.elemento.funcao`. A página lê este arquivo; o HTML não contém texto público. Edição pequena passa por `robo-registro/edicoes/*.md` aprovado e `scripts/aplicar_edicoes.py` — não se edita este arquivo à mão numa rodada de edição. Mudar identificador exige entrada em `conteudo/_renomeacoes.json`.",
  "pagina": "financiamento.html",
  "textos": {
+  "financiamento.dc-topo.topo_resposta_municipios.molde_com_portaria": "autorizados pela defesa civil federal nos últimos sete dias, para {n_semana} município(s) · {n_total} municípios com recursos autorizados desde 29 de junho",
+  "financiamento.dc-topo.topo_resposta_municipios.molde_sem_portaria": "nenhuma portaria nos últimos sete dias · {n_total} municípios com recursos autorizados desde 29 de junho",
+  "financiamento.dc-topo.topo_resposta_municipios.molde_do_painel": "autorizado em portarias de resposta nos últimos sete dias{detalhe}",
   "financiamento.abertura": "O dinheiro público para o El Niño: de onde vêm os recursos, quanto já foi desembolsado, como está sendo aplicado e quanto a defesa civil federal autorizou para prevenção e resposta, estado a estado e município a município.",
-  "financiamento.dc-topo.familia": "Medidas federais",
+  "financiamento.dc-topo.topo_pago_mes.familia": "Medidas federais",
   "financiamento.dc-topo.topo_pago_mes.rotulo": "pago pelas ações reforçadas pelas medidas provisórias, no mês de setembro de 2026",
   "financiamento.dc-topo.topo_pago_mes.fonte": "R$ 150.887.173 · Portal da Transparência, Execução da Despesa (arquivos mensais abertos) · execução das ações reforçadas pelas medidas provisórias do ciclo. O valor inclui a dotação ordinária da ação. É teto, não a execução do crédito",
-  "financiamento.dc-topo.familia_2": "Defesa civil federal",
+  "financiamento.dc-topo.topo_resposta_semana.familia": "Defesa civil federal",
   "financiamento.dc-topo.topo_resposta_municipios.rotulo": "autorizados pela defesa civil federal nos últimos sete dias",
   "financiamento.dc-topo.topo_resposta.fonte": "R$ 0 · Portarias da SEDEC no Diário Oficial da União · nenhuma portaria de resposta publicada nos últimos 7 dias",
-  "financiamento.dc-topo.familia_3": "Atos novos",
+  "financiamento.dc-topo.topo_atos_semana.familia": "Atos novos",
   "financiamento.dc-topo.topo_atos.rotulo": "atos federais de financiamento publicados nos últimos sete dias",
   "financiamento.dinheiroElNino.titulo_da_secao": "O dinheiro do El Niño",
   "financiamento.dinheiroElNino.abertura": "De onde vêm os recursos do ciclo, como estão sendo aplicados e quanto de cada um já foi empenhado e desembolsado.",
@@ -53,12 +56,9 @@
   "financiamento.caminhosSecao.caminhos.resumo": "Ver em lista",
   "financiamento.caminhosSecao.antes.titulo": "Antes da emergência",
   "financiamento.caminhosSecao.depois.titulo": "Depois do decreto de emergência",
-  "financiamento.caminhosSecao.depois.titulo_2": "Dois exemplos de dinheiro que chega antes da emergência",
-  "financiamento.caminhosSecao.depois.prosa": "Dois exemplos de dinheiro que chega antes da emergência, e em que o acesso depende de um plano: um federal, para o fogo, que exige plano operativo aprovado; e um estadual, no Rio Grande do Sul, que exige plano de contingência atualizado.",
-  "financiamento.caminhosSecao.depois.nota": "Além desses caminhos, a União transfere todo mês aos municípios os repasses obrigatórios, como o Fundo de Participação dos Municípios e os do SUS e da assistência social; eles não são específicos do El Niño e não aparecem nesta página.",
-  "financiamento.dc-topo.topo_resposta_municipios.molde_com_portaria": "autorizados pela defesa civil federal nos últimos sete dias, para {n_semana} município(s) · {n_total} municípios com recursos autorizados desde 29 de junho",
-  "financiamento.dc-topo.topo_resposta_municipios.molde_sem_portaria": "nenhuma portaria nos últimos sete dias · {n_total} municípios com recursos autorizados desde 29 de junho",
-  "financiamento.dc-topo.topo_resposta_municipios.molde_do_painel": "autorizado em portarias de resposta nos últimos sete dias{detalhe}"
+  "financiamento.caminhosSecao.texto_fogo.titulo": "Dois exemplos de dinheiro que chega antes da emergência",
+  "financiamento.caminhosSecao.texto_fogo.prosa": "Dois exemplos de dinheiro que chega antes da emergência, e em que o acesso depende de um plano: um federal, para o fogo, que exige plano operativo aprovado; e um estadual, no Rio Grande do Sul, que exige plano de contingência atualizado.",
+  "financiamento.caminhosSecao.texto_fogo.nota": "Além desses caminhos, a União transfere todo mês aos municípios os repasses obrigatórios, como o Fundo de Participação dos Municípios e os do SUS e da assistência social; eles não são específicos do El Niño e não aparecem nesta página."
  },
  "_moldes": "Entrada com marcador `{chave}` é MOLDE: quem a preenche é o código da página, que tem o dado em mão, por `MonitorCatalogo.texto(id, valores)`. O leitor do catálogo não busca dado — a camada de DADO é a terceira, e a fronteira é de propósito. Plural e zero declaram-se no próprio molde, na forma `{n|nenhum …|um …|{n} …}`."
 }

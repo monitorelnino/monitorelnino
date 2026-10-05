@@ -146,12 +146,27 @@ def extrair(html: str, pagina: str) -> tuple:
     # o `div.map-legend` fica DENTRO da figura e vinha depois dela, de modo que o `summary` do
     # "Ver em lista" era nomeado pela legenda de categorias (`leg_forma_aplicacao`) em vez de pela
     # figura. Contexto de conteúdo é o cartão, não o último elemento com `id` que passou.
-    CARTAO = re.compile(r'<(figure|div)([^>]*\bid="([\w-]+)"[^>]*)>')
+    CARTAO = re.compile(r'<(figure|div)([^>]*)>')
     cartoes = []
     for m in CARTAO.finditer(corpo):
-        attrs, nome = m.group(2), m.group(3)
+        attrs = m.group(2)
         classes = (re.search(r'class="([^"]*)"', attrs) or [None, ""])[1] or ""
-        if m.group(1) == "figure" or any(c.startswith("cartao") for c in classes.split()):
+        if not (m.group(1) == "figure" or any(c.startswith("cartao") for c in classes.split())):
+            continue
+        nome = (re.search(r'\bid="([\w-]+)"', attrs) or [None, ""])[1]
+        if not nome:
+            # 05/10/2026 — CARTÃO SEM `id` é nomeado pelo PRIMEIRO `id` que aparece dentro dele.
+            #
+            # Na Defesa civil os seis cartões de número são `div.cartao-numero` sem `id`, e só o
+            # elemento do valor tem (`topoCemaden`, `topoInmet`, …). Sem esta regra os rótulos
+            # viravam `rotulo`, `rotulo_2` … `rotulo_6` — ORDINAIS, que mudam quando a editoria
+            # reordena a grade. Identificador que muda quebra o pedido de edição antigo, e é por
+            # isso que `conteudo/_renomeacoes.json` existe; melhor não produzir o problema.
+            #
+            # O `id` do valor é a identidade daquele número, e não muda de lugar.
+            dentro = re.search(r'\bid="([\w-]+)"', corpo[m.end():m.end() + 900])
+            nome = dentro.group(1) if dentro else ""
+        if nome:
             cartoes.append((m.start(), nome))
 
     def elemento_em(pos: int, id_proprio: str = "", funcao: str = "") -> str:
@@ -163,7 +178,8 @@ def extrair(html: str, pagina: str) -> tuple:
         O sufixo da função sai do nome, porque a função já é o último campo do identificador.
         """
         if id_proprio:
-            base = re.sub(r"(Rotulo|Fonte|Titulo|Familia|Legenda|Sub)$", "", id_proprio)
+            base = re.sub(r"(Rotulo|Fonte|Titulo|Familia|Legenda|Sub|Valor|Variacao)$",
+                          "", id_proprio)
             if base:
                 return nome_do_elemento(base)
         melhor = ""
@@ -254,6 +270,23 @@ def _autoteste() -> int:
     ok("extrai o título da figura", ents.get("pag.s1.um.titulo") == "O título da figura")
     ok("extrai a legenda", ents.get("pag.s1.um.legenda") == "Período · unidade · recorte")
     ok("extrai o resumo do details", ents.get("pag.s1.um.resumo") == "Ver em lista")
+
+    # 05/10/2026 — cartão SEM `id`, nomeado pelo `id` do valor que ele contém.
+    SEM_ID = ('<main><section id="s"><div class="cartao-numero">'
+              '<p class="cartao-numero-rotulo">Municípios sob alerta</p>'
+              '<p class="cartao-numero-valor" id="topoCemaden">12</p>'
+              '<p class="cartao-numero-fonte" id="topoCemadenFonte">Cemaden</p>'
+              '</div></section></main>')
+    e2 = extrair(SEM_ID, "dc")[0]
+    ok("cartão sem id é nomeado pelo id do valor que ele contém",
+       "dc.s.topo_cemaden.rotulo" in e2)
+    ok("o sufixo do id do valor não entra no nome",
+       not any("topo_cemaden_valor" in k for k in e2))
+    ok("o irmão com id próprio usa o SEU id, sem o sufixo da função",
+       "dc.s.topo_cemaden.fonte" in e2)
+    ok("nenhum identificador ordinal sobrou nos cartões de número",
+       not any(k.endswith(("_2", "_3", "_4")) for k in e2))
+
     ok("NÃO extrai o que o JS preenche (travessão de espera)",
        not any("esperando" in k for k in ents))
     ok("o número de entradas é o esperado", len(ents) == 6)
@@ -285,7 +318,7 @@ def _autoteste() -> int:
        not ({"read_text", "write_text", "open", "gravar"} & nomes))
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
-          else "✓ AUTOTESTE OK — 29 casos, sem rede e sem escrita.")
+          else "✓ AUTOTESTE OK — 33 casos, sem rede e sem escrita.")
     return 1 if falhas else 0
 
 

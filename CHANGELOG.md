@@ -11,11 +11,11 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-05 · #561 · O texto público sai do código e vai para o catálogo
 
-Três camadas separadas: estrutura (contrato), conteúdo (catálogo) e dado (geradores). O Financiamento
-migrou como prova — 57 identificadores estáveis em `conteudo/financiamento.json`, extraídos
-mecanicamente para não mudar uma vírgula, e o texto visível em 1280 e 390 px ficou idêntico, 532
-trechos. Vêm juntos o leitor, o portão do catálogo, o renderizador de uma figura por vez, o aplicador
-de edição aprovada e o índice interno.
+Três camadas separadas: estrutura (contrato), conteúdo (catálogo) e dado (geradores). Financiamento e
+Defesa civil migrados — 100 identificadores estáveis, extraídos mecanicamente para não mudar uma
+vírgula; o texto visível em 1280 e 390 px ficou idêntico nas duas páginas. Vêm juntos o leitor, o
+portão do catálogo, o renderizador de uma figura por vez, o aplicador de edição aprovada e o índice
+interno.
 
 ## 2026-10-05 · #560 · O CODEMAP mentia por omissão, e agora diz quantos importam cada arquivo
 
