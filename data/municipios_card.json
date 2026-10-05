@@ -2,7 +2,7 @@
  "_governanca": "Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. `prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). `imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o leitor peça o documento ao gestor. Só municípios com algo a dizer; ausência = nada localizado. `defesa_civil_orcamento` (§207) = despesa liquidada na subfunção 06.182 declarada ao SICONFI, peso ZERO; classe de ausência nunca vira zero.",
  "gerado_em": "2026-10-05",
  "total": 2194,
- "com_registro": 276,
+ "com_registro": 278,
  "com_imprensa": 129,
  "prioritarios": 2095,
  "com_despesa_182": 2194,
@@ -29835,6 +29835,12 @@
    "nome": "Rio do Oeste",
    "uf": "SC",
    "prioritario": true,
+   "categoria": "plano",
+   "documento": "PLANO DE CONTINGÊNCIA Proteção e Defesa Civil de Taió-SC | 08/2026 Taió-SC COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DE TAIÓ PLANO DE CONTINGÊNCIA Proteção e Defesa Civ…",
+   "url": "https://defesacivil.taio.sc.gov.br/wp-content/uploads/2026/08/PLANO-DE-CONTINGENCIA-Taio-agosto-2026.pdf",
+   "data": "2026",
+   "fonte": "Portal oficial (defesacivil.taio.sc.gov.br) — plano publicado em domínio oficial do ente, lido e classificado pelo juiz ",
+   "sem_ato_de_aprovacao": true,
    "imprensa": [
     {
      "titulo": "Prevenção contra enchentes antes do El Niño em SC - ND Mais",
@@ -29866,8 +29872,7 @@
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
-   },
-   "categoria": "nao_localizado"
+   }
   },
   "4214706": {
    "nome": "Rio dos Cedros",
@@ -33184,6 +33189,12 @@
    "nome": "Santa Rosa",
    "uf": "RS",
    "prioritario": true,
+   "categoria": "plano_antigo",
+   "documento": "– Cep:99615-000 Trindade do Sul - RS “O Plano de Contingência analisa os cenários de risco de desastres e estabelece os procedimentos para ações de monitoramento (acompanhamento…",
+   "url": "https://www.trindadedosul.rs.gov.br/wp-content/uploads/2025/06/Plano-de-Contingencia.pdf",
+   "data": "2025",
+   "fonte": "Portal oficial (www.trindadedosul.rs.gov.br) — plano publicado em domínio oficial do ente, lido e classificado pelo juiz",
+   "sem_ato_de_aprovacao": true,
    "imprensa": [
     {
      "titulo": "Portal do Cidadão - MUNICIPIO DE SANTA ROSA/RS - Prefeitura de Santa ...",
@@ -33201,8 +33212,7 @@
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
-   },
-   "categoria": "nao_localizado"
+   }
   },
   "4317301": {
    "nome": "Santa Vitória do Palmar",
