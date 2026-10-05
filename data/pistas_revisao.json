@@ -1,12 +1,12 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-10-04",
- "total_pistas": 8715,
- "total_municipios": 379,
+ "total_pistas": 8756,
+ "total_municipios": 380,
  "por_nivel": {
-  "A": 188,
-  "B": 1168,
-  "C": 7359
+  "A": 192,
+  "B": 1192,
+  "C": 7372
  },
  "grupos": [
   {
@@ -6078,11 +6078,11 @@
    "municipio": "Itajaí",
    "uf": "SC",
    "melhor_nivel": "A",
-   "n_pistas": 24,
+   "n_pistas": 25,
    "niveis": {
     "A": 4,
     "B": 12,
-    "C": 8
+    "C": 9
    },
    "pistas": [
     {
@@ -6407,6 +6407,25 @@
      "trecho": "A Secretaria de Educação de Itajaí lançou nesta sexta-feira (23) o Plano Municipal de Contingência da Educação para a prevenção, monitoramento e controle do coronavírus (COVID-19) nas unidades escolares, aprovado pelo Governo do Estado.",
      "data": "24/09/2026",
      "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila"
+    },
+    {
+     "id": "7b8e8b5143",
+     "nivel_confianca": "C",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.cvi.sc.gov.br/sessao/43o-sessao-ordinaria-09-07-2026-1000165",
+     "titulo": "43º Sessão Ordinária - 09-07-2026 - Câmara de Vereadores de Itajaí",
+     "trecho": "Jul 9, 2026 ... solicitando via SEMASA a avaliação, a elaboração e divulgação de plano de contingência ... Itajaí/SC - CEP 88307-303. Legisoft. 2026 - Todos os ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
     },
     {
      "id": "5c1fae3ce3",
@@ -7196,6 +7215,302 @@
    ]
   },
   {
+   "ibge": "3205002",
+   "municipio": "Serra",
+   "uf": "ES",
+   "melhor_nivel": "A",
+   "n_pistas": 15,
+   "niveis": {
+    "A": 5,
+    "B": 8,
+    "C": 2
+   },
+   "pistas": [
+    {
+     "id": "49d4550b60",
+     "nivel_confianca": "A",
+     "pontos_confianca": 8,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.portaltemponovo.com.br/serra-apresenta-plano-de-contingencia-para-enfrentar-possiveis-impactos-do-el-nino/",
+     "titulo": "Serra apresenta plano de contingência para enfrentar possíveis ...",
+     "trecho": "Serra apresenta plano de contingência para enfrentar possíveis impactos do El Niño. Foto de Jady Oliveira Jady Oliveira. 08/08/2026 - 08:25. 08/08/2026 - 08 ...",
+     "data": "27/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "d53c841939",
+     "nivel_confianca": "A",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.serra.es.gov.br/noticias/plano-de-contingencia-serra-esta-trabalhando-na-prevencao-dos-riscos-em-periodos-de-chuva-na-cidade",
+     "titulo": "Defesa Civil da Serra elabora Plano de Contingência ...",
+     "trecho": "A Defesa Cívil da Serra, em conjunto com as demais secretarias da Prefeitura da Serra, está trabalhando no Plano de Contingência, que tem como objetivo elaborar ações preventivas para os períodos chuvosos e evitar ocorrências indesejadas.",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
+    },
+    {
+     "id": "6de71b2035",
+     "nivel_confianca": "A",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://legislacao.serra.es.gov.br/Arquivo/Documents/legislacao/html/D18712025.html?identificador=3100350031003700360034003A004C00",
+     "titulo": "DECRETO Nº 1.871, DE 10 DE DEZEMBRO DE 2025",
+     "trecho": "Dec 10, 2025 ... Fica instituído o Plano Municipal de Proteção e Defesa Civil (Plano de Contingência ... Serra. (Redação dada pelo Decreto nº 609/2026). Art. 2º O ...",
+     "data": "03/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "3f8922a3b6",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo",
+      "texto_candidato_forte"
+     ],
+     "alertas": [],
+     "origem": "querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3205002/2026-07-06/14f15f4983a66fc582e0ec3782574ebbf13b3917.pdf",
+     "titulo": null,
+     "trecho": "e na restauração da \nnormalidade social, articulando e facilitando as ações \nde prevenção, preparação, resposta e recuperação no \nMunicípio de Serra. “\n\nLeia-se: […]\n“ Art. 1º Fica instituído o Plano Municipal de Proteção e \nDefesa Civil (Plano de Contingência de Proteção e Defesa \nCivil), como inst",
+     "data": "06/07/2026",
+     "status": "fechada — sem documento oficial localizado no prazo da fila; reabre se surgir evidência nova para o mesmo município e assunto"
+    },
+    {
+     "id": "900b8ddce3",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.serra.es.gov.br/noticias/serra-sai-na-frente-e-apresenta-plano-para-enfrentar-os-efeitos-do-el-nino",
+     "titulo": "Serra sai na frente e apresenta plano para enfrentar os efeitos ...",
+     "trecho": "Com o objetivo de preparar a cidade ... quinta-feira (6), o Plano de Contingência que irá nortear as ações do município para enfrentar situações como chuvas intensas, alagamentos, inundações e períodos de estiagem....",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
+    },
+    {
+     "id": "941cec3cf2",
+     "nivel_confianca": "B",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://prefeiturasempapel.serra.es.gov.br/Arquivo/Documents/legislacao/html/D68232015.html",
+     "titulo": "decreto nº 6823, de 5 de novembro de 2015",
+     "trecho": "Neste sentido, a Defesa Civil do Município, seguindo a orientação da Defesa Civil Nacional/Estadual, elaborou o Plano Municipal de Contingência, importante instrumento de planejamento das ações, com vista à preparação para atuação em situações de eventos adversos (chuvas de grandes proporções, vendavais, incêndios, turfas, entre outros), que possam causar danos e prejuízos à comunidade.",
+     "data": "24/09/2026",
+     "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila"
+    },
+    {
+     "id": "914f69a7da",
+     "nivel_confianca": "B",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3205002/2025-12-19/35d226b9dea4bc74b05a648fb52e72ac5d1116a2.pdf",
+     "titulo": "Diário oficial de 2025-12-19",
+     "trecho": "ficando revogadas as disposições em contrário. Palácio Municipal em Serra, 17 de dezembro de 2025. WEVERSON VALCKER MEIRELES Prefeito Municipal Protocolo 1693752 Decretos DECRETO Nº 1.871, DE 10 DE DEZEMBRO DE 2025 INSTITUI O PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL (PMPDEC) E DISPÕE SOBRE A ESTRUTURA DO COMITÊ MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL. O PREFEITO MUNICIPAL DA SERRA, ESTADO DO ESPÍRITO SANTO, usando das atribuições legais que lhe são conferidas pelo disposto no inciso V do artigo",
+     "data": "24/09/2026",
+     "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila"
+    },
+    {
+     "id": "93ee2f87e5",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/boas-praticas/008_boas_praticas_eixo_plancon/001_boaspraticas_plancon_plano_contingencia_enfrentamento_desastres_belo_horizonte_mg.pdf",
+     "titulo": "plano de contingência 2020/2021 - Portal Gov.br",
+     "trecho": "PLANO DE CONTINGÊNCIA 2020/2021 PARA ENFRENTAMENTO DE DESASTRES EM DE BELO HORIZONTE ... Arrudas\". Em 2003, deslizamentos nos aglomerados do Morro das · Pedras, da Serra e no Taquaril vitimaram 16 pessoas e culminaram com",
+     "data": "24/09/2026",
+     "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila"
+    },
+    {
+     "id": "82f9f02ce6",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://esbrasil.com.br/serra-cria-plano-para-enfrentar-efeitos-do-elnino/",
+     "titulo": "Serra cria plano para enfrentar efeitos do El Niño - Revista ES Brasil",
+     "trecho": "Aug 7, 2026 ... A Serra é a primeira prefeitura a apresentar um Plano de Contingência para o El Niño, demonstrando nosso compromisso com o planejamento, a ...",
+     "data": "27/09/2026",
+     "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila"
+    },
+    {
+     "id": "8ce3bfd95a",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://defesacivil.es.gov.br/Media/defesacivil/Plano%20de%20Conting%C3%AAncia/Alegre.pdf",
+     "titulo": "plano de contingência de proteção e defesa civil",
+     "trecho": "O Plano de Contingência de Proteção e Defesa Civil – PLANCON para preparação e ... Campo de Aviação, Centro, Chácara da Serra, Charqueada, Clério Moulin, Colina,.",
+     "data": "03/10/2026",
+     "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila"
+    },
+    {
+     "id": "af11c5a524",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://serra.es.gov.br/site/download/1447872651896-sds-04--ao-de-preveno-socorro-assistncia-proteo-e-defesa-civil.pdf",
+     "titulo": "Ação de Prevenção Socorro Assistência Proteção e Defesa Civil",
+     "trecho": "Aug 31, 2015 ... 4.3 – O Plano de Contingência Municipal ou Plano Preventivo de Defesa Civil: ... ssocial.sedes@serra.es.gov.br.",
+     "data": "03/10/2026",
+     "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila"
+    },
+    {
+     "id": "c4320e89f3",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/reel/DclxdDCOw7_/",
+     "titulo": "O Super El Niño está confirmado, e a Serra precisa se preparar para ...",
+     "trecho": "Aug 28, 2026 ... ... plano de contingência, que prevê até o uso de escolas como abrigo ... O Super El Niño está confirmado, e a Serra precisa se preparar ...",
+     "data": "24/09/2026",
+     "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila"
+    },
+    {
+     "id": "19d201966d",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_querido_diario",
+     "url": "s3://okbr-qd-migration//3205002/2025-12-29/c949d9bb8d6ed6cee21f7b449559a342fd8cba47.pdf",
+     "titulo": "Diário oficial de 2025-12-29",
+     "trecho": "Protocolo 1697291 PORTARIA CG Nº 046/2025 PUBLICA O PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DE SERRA - 2025 (PMPDEC). A COORDENADORA MUNICIPAL DE GOVERNO, no uso das atribuições que lhe são conferidas por lei; CONSIDERANDO o Decreto Municipal nº 1.871, de 10 de dezembro de 2025, publicado no Diário Oficial de 19 de dezembro de 2025, que instituiu o Plano Municipal de Proteção e Defesa Civil da Serra - PMPDEC (Plano de Contingência Municipal); CONSIDERANDO a necessidade de coordenação",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "5ad3b2bec8",
+     "nivel_confianca": "C",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "uf_divergente_na_url"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://cotia.sp.gov.br/wp-content/uploads/2026/09/plano-municipal-de-contingencia-3-1.pdf",
+     "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA (PLANCON) – COTIA/SP",
+     "trecho": "Participar da elaboração e atualização do Plano de Contingência. Resposta ... Ressaca (divisa com Itapecerica da Serra), Ribeirão da Vargem Grande, Córrego Moinho ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "6a02a7e1d2",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_oficial"
+     ],
+     "alertas": [],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3205002/2026-01-06/6d23fe1ca4e777b647898ca2bc48b40769f6cfd3.pdf",
+     "titulo": "Diário oficial de 2026-01-06",
+     "trecho": "APLICACOES DIRETAS 33.745.000,003.1.90.00.00 1.500.0000.0000 APL. DIR. DEC. DE OP. ÓRGÃOS, FUNDOS E ENT. DOS OR 2.500.000,003.1.91.00.00 1.500.0000.0000 APLICACOES DIRETAS 28.255.000,003.3.90.00.00 1.500.0000.0000 64.500.000,00 Natureza Despesa 01.031.0022.2.162",
+     "data": "24/09/2026",
+     "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila"
+    }
+   ]
+  },
+  {
    "ibge": "4106902",
    "municipio": "Curitiba",
    "uf": "PR",
@@ -7746,283 +8061,6 @@
      "titulo": null,
      "trecho": "Jun 22, 2026 ... Na última sexta-feira (19), o prefeito de Camboriú, Leonel Pavan, reuniu no Auditório Ulisses Guimarães, no Paço Municipal, ...",
      "data": "22/09/2026",
-     "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila"
-    }
-   ]
-  },
-  {
-   "ibge": "3205002",
-   "municipio": "Serra",
-   "uf": "ES",
-   "melhor_nivel": "A",
-   "n_pistas": 14,
-   "niveis": {
-    "A": 5,
-    "B": 8,
-    "C": 1
-   },
-   "pistas": [
-    {
-     "id": "49d4550b60",
-     "nivel_confianca": "A",
-     "pontos_confianca": 8,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "ato_formal",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.portaltemponovo.com.br/serra-apresenta-plano-de-contingencia-para-enfrentar-possiveis-impactos-do-el-nino/",
-     "titulo": "Serra apresenta plano de contingência para enfrentar possíveis ...",
-     "trecho": "Serra apresenta plano de contingência para enfrentar possíveis impactos do El Niño. Foto de Jady Oliveira Jady Oliveira. 08/08/2026 - 08:25. 08/08/2026 - 08 ...",
-     "data": "27/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "d53c841939",
-     "nivel_confianca": "A",
-     "pontos_confianca": 7,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.serra.es.gov.br/noticias/plano-de-contingencia-serra-esta-trabalhando-na-prevencao-dos-riscos-em-periodos-de-chuva-na-cidade",
-     "titulo": "Defesa Civil da Serra elabora Plano de Contingência ...",
-     "trecho": "A Defesa Cívil da Serra, em conjunto com as demais secretarias da Prefeitura da Serra, está trabalhando no Plano de Contingência, que tem como objetivo elaborar ações preventivas para os períodos chuvosos e evitar ocorrências indesejadas.",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: citacao_incompleta"
-    },
-    {
-     "id": "6de71b2035",
-     "nivel_confianca": "A",
-     "pontos_confianca": 7,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "ato_formal",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://legislacao.serra.es.gov.br/Arquivo/Documents/legislacao/html/D18712025.html?identificador=3100350031003700360034003A004C00",
-     "titulo": "DECRETO Nº 1.871, DE 10 DE DEZEMBRO DE 2025",
-     "trecho": "Dec 10, 2025 ... Fica instituído o Plano Municipal de Proteção e Defesa Civil (Plano de Contingência ... Serra. (Redação dada pelo Decreto nº 609/2026). Art. 2º O ...",
-     "data": "03/10/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "3f8922a3b6",
-     "nivel_confianca": "A",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_so_no_trecho",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo",
-      "texto_candidato_forte"
-     ],
-     "alertas": [],
-     "origem": "querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/3205002/2026-07-06/14f15f4983a66fc582e0ec3782574ebbf13b3917.pdf",
-     "titulo": null,
-     "trecho": "e na restauração da \nnormalidade social, articulando e facilitando as ações \nde prevenção, preparação, resposta e recuperação no \nMunicípio de Serra. “\n\nLeia-se: […]\n“ Art. 1º Fica instituído o Plano Municipal de Proteção e \nDefesa Civil (Plano de Contingência de Proteção e Defesa \nCivil), como inst",
-     "data": "06/07/2026",
-     "status": "fechada — sem documento oficial localizado no prazo da fila; reabre se surgir evidência nova para o mesmo município e assunto"
-    },
-    {
-     "id": "900b8ddce3",
-     "nivel_confianca": "A",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.serra.es.gov.br/noticias/serra-sai-na-frente-e-apresenta-plano-para-enfrentar-os-efeitos-do-el-nino",
-     "titulo": "Serra sai na frente e apresenta plano para enfrentar os efeitos ...",
-     "trecho": "Com o objetivo de preparar a cidade ... quinta-feira (6), o Plano de Contingência que irá nortear as ações do município para enfrentar situações como chuvas intensas, alagamentos, inundações e períodos de estiagem....",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: citacao_incompleta"
-    },
-    {
-     "id": "941cec3cf2",
-     "nivel_confianca": "B",
-     "pontos_confianca": 7,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "ato_formal",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://prefeiturasempapel.serra.es.gov.br/Arquivo/Documents/legislacao/html/D68232015.html",
-     "titulo": "decreto nº 6823, de 5 de novembro de 2015",
-     "trecho": "Neste sentido, a Defesa Civil do Município, seguindo a orientação da Defesa Civil Nacional/Estadual, elaborou o Plano Municipal de Contingência, importante instrumento de planejamento das ações, com vista à preparação para atuação em situações de eventos adversos (chuvas de grandes proporções, vendavais, incêndios, turfas, entre outros), que possam causar danos e prejuízos à comunidade.",
-     "data": "24/09/2026",
-     "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila"
-    },
-    {
-     "id": "914f69a7da",
-     "nivel_confianca": "B",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_so_no_trecho",
-      "plano_no_trecho",
-      "ato_formal",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/3205002/2025-12-19/35d226b9dea4bc74b05a648fb52e72ac5d1116a2.pdf",
-     "titulo": "Diário oficial de 2025-12-19",
-     "trecho": "ficando revogadas as disposições em contrário. Palácio Municipal em Serra, 17 de dezembro de 2025. WEVERSON VALCKER MEIRELES Prefeito Municipal Protocolo 1693752 Decretos DECRETO Nº 1.871, DE 10 DE DEZEMBRO DE 2025 INSTITUI O PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL (PMPDEC) E DISPÕE SOBRE A ESTRUTURA DO COMITÊ MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL. O PREFEITO MUNICIPAL DA SERRA, ESTADO DO ESPÍRITO SANTO, usando das atribuições legais que lhe são conferidas pelo disposto no inciso V do artigo",
-     "data": "24/09/2026",
-     "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila"
-    },
-    {
-     "id": "93ee2f87e5",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_so_no_trecho",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/boas-praticas/008_boas_praticas_eixo_plancon/001_boaspraticas_plancon_plano_contingencia_enfrentamento_desastres_belo_horizonte_mg.pdf",
-     "titulo": "plano de contingência 2020/2021 - Portal Gov.br",
-     "trecho": "PLANO DE CONTINGÊNCIA 2020/2021 PARA ENFRENTAMENTO DE DESASTRES EM DE BELO HORIZONTE ... Arrudas\". Em 2003, deslizamentos nos aglomerados do Morro das · Pedras, da Serra e no Taquaril vitimaram 16 pessoas e culminaram com",
-     "data": "24/09/2026",
-     "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila"
-    },
-    {
-     "id": "82f9f02ce6",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://esbrasil.com.br/serra-cria-plano-para-enfrentar-efeitos-do-elnino/",
-     "titulo": "Serra cria plano para enfrentar efeitos do El Niño - Revista ES Brasil",
-     "trecho": "Aug 7, 2026 ... A Serra é a primeira prefeitura a apresentar um Plano de Contingência para o El Niño, demonstrando nosso compromisso com o planejamento, a ...",
-     "data": "27/09/2026",
-     "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila"
-    },
-    {
-     "id": "8ce3bfd95a",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_so_no_trecho",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://defesacivil.es.gov.br/Media/defesacivil/Plano%20de%20Conting%C3%AAncia/Alegre.pdf",
-     "titulo": "plano de contingência de proteção e defesa civil",
-     "trecho": "O Plano de Contingência de Proteção e Defesa Civil – PLANCON para preparação e ... Campo de Aviação, Centro, Chácara da Serra, Charqueada, Clério Moulin, Colina,.",
-     "data": "03/10/2026",
-     "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila"
-    },
-    {
-     "id": "af11c5a524",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://serra.es.gov.br/site/download/1447872651896-sds-04--ao-de-preveno-socorro-assistncia-proteo-e-defesa-civil.pdf",
-     "titulo": "Ação de Prevenção Socorro Assistência Proteção e Defesa Civil",
-     "trecho": "Aug 31, 2015 ... 4.3 – O Plano de Contingência Municipal ou Plano Preventivo de Defesa Civil: ... ssocial.sedes@serra.es.gov.br.",
-     "data": "03/10/2026",
-     "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila"
-    },
-    {
-     "id": "c4320e89f3",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/reel/DclxdDCOw7_/",
-     "titulo": "O Super El Niño está confirmado, e a Serra precisa se preparar para ...",
-     "trecho": "Aug 28, 2026 ... ... plano de contingência, que prevê até o uso de escolas como abrigo ... O Super El Niño está confirmado, e a Serra precisa se preparar ...",
-     "data": "24/09/2026",
-     "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila"
-    },
-    {
-     "id": "19d201966d",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_so_no_trecho",
-      "plano_no_trecho",
-      "ato_formal",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_querido_diario",
-     "url": "s3://okbr-qd-migration//3205002/2025-12-29/c949d9bb8d6ed6cee21f7b449559a342fd8cba47.pdf",
-     "titulo": "Diário oficial de 2025-12-29",
-     "trecho": "Protocolo 1697291 PORTARIA CG Nº 046/2025 PUBLICA O PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DE SERRA - 2025 (PMPDEC). A COORDENADORA MUNICIPAL DE GOVERNO, no uso das atribuições que lhe são conferidas por lei; CONSIDERANDO o Decreto Municipal nº 1.871, de 10 de dezembro de 2025, publicado no Diário Oficial de 19 de dezembro de 2025, que instituiu o Plano Municipal de Proteção e Defesa Civil da Serra - PMPDEC (Plano de Contingência Municipal); CONSIDERANDO a necessidade de coordenação",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "6a02a7e1d2",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_oficial"
-     ],
-     "alertas": [],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/3205002/2026-01-06/6d23fe1ca4e777b647898ca2bc48b40769f6cfd3.pdf",
-     "titulo": "Diário oficial de 2026-01-06",
-     "trecho": "APLICACOES DIRETAS 33.745.000,003.1.90.00.00 1.500.0000.0000 APL. DIR. DEC. DE OP. ÓRGÃOS, FUNDOS E ENT. DOS OR 2.500.000,003.1.91.00.00 1.500.0000.0000 APLICACOES DIRETAS 28.255.000,003.3.90.00.00 1.500.0000.0000 64.500.000,00 Natureza Despesa 01.031.0022.2.162",
-     "data": "24/09/2026",
      "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila"
     }
    ]
@@ -9556,6 +9594,174 @@
    ]
   },
   {
+   "ibge": "3302403",
+   "municipio": "Macaé",
+   "uf": "RJ",
+   "melhor_nivel": "A",
+   "n_pistas": 9,
+   "niveis": {
+    "A": 1,
+    "B": 3,
+    "C": 5
+   },
+   "pistas": [
+    {
+     "id": "ac7643eb51",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.macae.rj.gov.br/noticias/leitura/noticia/plano-de-contingencia-de-protecao-e-defesa-civil-e-apresentado",
+     "titulo": "Plano de Contingência de Proteção e Defesa Civil é apresentado",
+     "trecho": "Dec 1, 2025 ... Somos um governo que avança em várias áreas e queremos uma Macaé melhor”, ressaltou. O Plano de Contingência de Proteção e Defesa Civil foi ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "4722e2bc9e",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.macae.rj.gov.br/cms/conteudo/titulo/leis-e-resolucoes",
+     "titulo": "Conselho Municipal de Saúde - Prefeitura Municipal de Macaé",
+     "trecho": "Resolução 009/2015 - aprovação do plano de contingência da dengue 2015 (111 Kb) ... Macaé de acordo com a Política de Privacidade. Se clicar em \"Rejeitar ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "4f3e0c2f47",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/Da0Kligjr2w/",
+     "titulo": "Macaé está se preparando para os possíveis impactos do El Niño ...",
+     "trecho": "Jul 15, 2026 ... May be a meme. Photo by Defesa Civil de Macaé on July 15, 2026. May be ...",
+     "data": "27/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "a169a4ca43",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3302403/2025-10-11/0cc3251b8329372bb9921aba468701a459a5738f.pdf",
+     "titulo": "Diário oficial de 2025-10-11",
+     "trecho": "entra o Município de Macaé e o Consórcio Público Intermunicipal de Desenvolvimento do Norte e Noroeste Fluminense – CIDENF, e eventuais contratações oriundos desta, ao titular da Secretaria Executiva de Relações Institucionais, em especial quanto à or- denação de despesas e demais atos de gestão orçamentária, financeira e patrimonial. Art. 2º O Secretário Municipal de Governo, poderá, a qualquer momento, avocar para si, as atribuições e/ou competências aqui delegadas, de acordo com a conveniência",
+     "data": "27/09/2026",
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
+    },
+    {
+     "id": "bd1cd6c21d",
+     "nivel_confianca": "C",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.macae.rj.gov.br/saude/conteudo/titulo/coronavirus-informacoes-e-orientacoes-importantes",
+     "titulo": "Coronavírus - Secretaria de Saúde - Prefeitura Municipal de Macaé",
+     "trecho": "Plano de contingência para o coronavírus · Decreto Municipal 134/2020 · Decreto ... Ao aceitar, você terá acesso a todas as funcionalidades do site e concorda em ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "66f8ba9275",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_oficial"
+     ],
+     "alertas": [],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3302403/2026-09-16/a345866ab86301e92a3f7ea7e510c128f5f802de.pdf",
+     "titulo": "Diário oficial de 2026-09-16",
+     "trecho": "anterior, o saldo remanescente será revertido para a Reserva de Contingência na Secretaria Municipal de Planejamen- to e Gestão, conforme estabelecida no caput deste artigo. § 4º As Emendas Parlamentares Impositivas que apresentarem impedimentos de or- dem técnica que não puderem ser implementadas pelo Poder Executivo, com o fim de viabilizar a execução total ou parcial das programações orçamentárias, deverão obser- var os seguintes procedimentos e prazos, contados a partir da publicação do Decreto",
+     "data": "27/09/2026",
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
+    },
+    {
+     "id": "d6bbf7595b",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_oficial"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3302403/2025-10-03/cbd9f3bfe5ec0ec19e8e387e610e9b27818d3287.pdf",
+     "titulo": "Diário oficial de 2025-10-03",
+     "trecho": "Automotivo Tipo: Mineral Premium Classificação: Api Gl-4 Viscosidade: Sae 80w DESCRIÇÃO COMPLEMENTAR: óleo lubrificante API GL 4 80W formulado com básicos parafínicos e aditivos de extrema pressão, desenvolvido para engrenagens automotivas: or ASTM: 4,0 (80W), 4,5 (90), 5,5 (140) (ASTM D1500) Viscosidade a 100°C (cSt): 8,30 (80W), 16,71 (90), 26,98 (140) (ASTM D445) Viscosidade a 40°C (cSt): 53,2 (80W), 178,45 (90), 377,85 (140) (ASTM D445) Densidade 20/4°C (g/cm³): 0,875 (80W)",
+     "data": "27/09/2026",
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
+    },
+    {
+     "id": "e417076448",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3302403/2025-10-15/e630e72e75c26f7ef11f660a095ea27e0e5cf1aa.pdf",
+     "titulo": "Diário oficial de 2025-10-15",
+     "trecho": "vigência. O Edital, seus anexos e demais informações estarão disponíveis para download nos sites www.macae.rj.gov.br e www. compras.gov.br. Contato: licitacao@macae.rj.gov.br. Objeto: Seleção de propostas que tenham por objeto celebração de parceria com Or- ganização da Sociedade Civil – OSC, sem fins lucrativos, regularmente constituída, para gestão das Unidades de Assistência e Bem-Estar, em funcionamento no municí- pio, e a criação de uma Unidade Básica de Assistência e Bem-Estar Animal em região",
+     "data": "27/09/2026",
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
+    },
+    {
+     "id": "5d71e3b3bc",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_oficial"
+     ],
+     "alertas": [],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3302403/2026-09-29/96475fb7dcd6e96b2e4bca694ba133fd27602c97.pdf",
+     "titulo": "Diário oficial de 2026-09-29",
+     "trecho": "XVIII – Secretaria Municipal de Ordem Pública Titular: Não indicado Suplente: Não indicado § 1º A Comissão será coordenada e presidida pelo representante da Secretaria Muni- cipal de Políticas de Promoção da Igualdade Racial – SEMPIR, a quem competirá or- ganizar e coordenar os trabalhos, convocar as reuniões e acompanhar o cumprimento das atividades estabelecidas. § 2º Cada órgão ou entidade integrante da Comissão deverá indicar 01 (um) represen- tante titular e 01 (um) suplente. § 3º Os representantes",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3304524",
    "municipio": "Rio das Ostras",
    "uf": "RJ",
@@ -9733,6 +9939,175 @@
      "trecho": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E · DEFESA CIVIL PLANCON · MARÉS DE TEMPESTADE OU · RESSACA MARÍTIMA · Degradação severa das Regiões Costeiras · COBRADE: 1.3.1.1.2 · RIO DAS OSTRAS · VERSÃO: 8.0 / 2024 · ÚLTIMA ATUALIZAÇÃO: 20 DE SETEMBRO DE 2024 · EXEMPLAR PERTENCENTE ...",
      "data": "24/09/2026",
      "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila"
+    }
+   ]
+  },
+  {
+   "ibge": "3305505",
+   "municipio": "Saquarema",
+   "uf": "RJ",
+   "melhor_nivel": "A",
+   "n_pistas": 9,
+   "niveis": {
+    "A": 2,
+    "B": 6,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "456aa025e5",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.serramarnews.com.br/noticia/11506/saquarema/politica/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico.html",
+     "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
+     "trecho": "2 days ago ... Saquarema,25/09/2026. tempo hoje 26°|26°. Serramar FM. ○ AO VIVO92,1 ... Resumindo: plano de contingência, população das áreas de risco ...",
+     "data": "27/09/2026",
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
+    },
+    {
+     "id": "3cc86d552d",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://dos.saquarema.rj.gov.br/wp-content/uploads/2026/08/D.O.S.-1978-8.pdf",
+     "titulo": "PDF Diário Oficial do Município de Saquarema | Poder Executivo | Ano VIII ...",
+     "trecho": "\"Nossa participação neste encontro é fundamental para alinharmos as estratégias de Saquarema com o plano de contingência estadual. O El Niño traz desafios diretos para a saúde pública, e o trabalho integrado das secretarias permite que nossa rede de atendimento esteja preparada para agir rapidamente, sempre com foco na prevenção e ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "1846b11833",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://transparencia.saquarema.rj.leg.br/materias/17533",
+     "titulo": "Câmara Municipal de Saquarema",
+     "trecho": "A solicitação de elaboração e execução de um plano de contingência emergencial específico para o período sazonal de dezembro de 2026, janeiro de 2027 e fevereiro de 2027 se faz necessária para garantir a segurança e o abastecimento de água para a população durante os meses de maior demanda. Com ações objetivas, cronograma e metas claras, será possível prevenir possíveis ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "cf5bb3f6d7",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "ato_formal"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3305505/2025-12-05/2e89b8976c8bdcaafb20133421c51d34a5cc75e6.pdf",
+     "titulo": "Diário oficial de 2025-12-05",
+     "trecho": "de 2025 DECRETO Nº 3.118, DE 3 DE DEZEMBRO DE 2025 Abre Crédito Adicional Suplementar, por anulação parcial, no valor de R$ 3.398.800,00 (três milhões, trezentos e noventa e oito mil e oitocentos reais) para Reforço de Dotações Consignadas no Or- çamento Geral do Município. A PREFEITA MUNICIPAL DE SAQUA- REMA, Estado do Rio de Janeiro, no uso de suas atribuições legais e de acordo com a Lei Municipal nº 2.668, de 18 de dezembro de 2024; DECRETA Art. 1º Fica aberto Crédito Adicional Su-",
+     "data": "27/09/2026",
+     "status": "pista de decreto — vai para a conferência da base oficial de resposta; não ocupa a fila de planos"
+    },
+    {
+     "id": "d2cfac6a6c",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3305505/2026-03-11/1f44fdc80935ee135ea105b34c35b0dcb71ef4f4.pdf",
+     "titulo": "Diário oficial de 2026-03-11",
+     "trecho": "será compensado observado o inci- so III do § 1º do art. 43 da Lei Federal n° 4.320/64, resultante de anulação de dota- ção orçamentária. Art. 3º Em decorrência deste Decreto, fica alterado o Quadro de Detalhamento das Despesas da respectiva unidade or- çamentária. Art. 4º Este Decreto entra em vigor na data de sua publicação, produzindo seus efeitos a partir de 6 de março de 2026. Saquarema, 6 de março de 2026. Lucimar Pereira Vidal da Costa Prefeita ANEXO ÚNICO DECRETO Nº 3.179, DE 6 DE MARÇO",
+     "data": "27/09/2026",
+     "status": "pista de decreto — vai para a conferência da base oficial de resposta; não ocupa a fila de planos"
+    },
+    {
+     "id": "66ce0eb422",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "ato_formal"
+     ],
+     "alertas": [],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3305505/2026-03-23/a354a774d51c2aa915811ed66b993a729b950b79.pdf",
+     "titulo": "Diário oficial de 2026-03-23",
+     "trecho": "Municipal nº 2.837, de 16 de março de 2026; DECRETA Art. 1º Fica aberto Crédito Adicional Es- pecial, no montante de R$ 59.010,00 (cinquenta e nove mil e dez reais), por Anulação Parcial de Dotação, alocada na Secretaria Municipal de Segurança e Or- dem Pública, consignada no Orçamento Geral do Município, conforme previamen- te autorizado pela Lei nº 2.837 de 16 de março de 2026, para reforço orçamentário na forma do Anexo Único deste Decreto. Art. 2º O crédito de que trata o artigo anterior",
+     "data": "27/09/2026",
+     "status": "pista de decreto — vai para a conferência da base oficial de resposta; não ocupa a fila de planos"
+    },
+    {
+     "id": "2e511e6dfa",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.saquarema.rj.gov.br/wp-content/uploads/2020/07/PLANO-DE-MANEJO-PCSOL-2019.pdf",
+     "titulo": "Plano de Manejo do Parque Estadual da Costa do Sol",
+     "trecho": "Saquarema: 7,58% da área do município estão no PECS, equivalendo a 24,86% da ... do Plano de Contingência já existente no PECS). Levantamento dos ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "ab184c6fc6",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://transparencia.saquarema.rj.leg.br/materias/export?origem=V-303",
+     "titulo": "Exportar - Câmara Municipal de Saquarema",
+     "trecho": "98/2025, DE 02 DE JANEIRO DE 2025, QUE \"DISPÕE SOBRE O REGIMENTO INTERNO DA CÂMARA MUNICIPAL DE SAQUAREMA-RJ\". Comissão de Educação, Cultura, Bem Estar ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "9dcb3b22ad",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_oficial"
+     ],
+     "alertas": [],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3305505/2026-04-22/e356e157a90e44fa51139715ebffe6de2c90b8f7.pdf",
+     "titulo": "Diário oficial de 2026-04-22",
+     "trecho": "nicipais de Assistência Social, da Crian- ça e Adolescente, de Direitos do Idoso, e de Meio Ambiente no valor total de R$ 8.638.082,95 (oito milhões, seiscentos e trinta e oito mil, oitenta e dois reais e no- venta e cinco centavos), para reforço or- çamentário conforme Anexo Único. Art. 2º O crédito de que trata o artigo anterior será compensado na forma do inciso III do § 1º do art. 43 da Lei Fede- ral n° 4.320/64, proveniente de anulação parcial. Art. 3º Em decorrência deste Decreto, fica",
+     "data": "27/09/2026",
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
     }
    ]
   },
@@ -11390,6 +11765,146 @@
    ]
   },
   {
+   "ibge": "4204608",
+   "municipio": "Criciúma",
+   "uf": "SC",
+   "melhor_nivel": "A",
+   "n_pistas": 7,
+   "niveis": {
+    "A": 1,
+    "B": 5,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "f220e24e26",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.diariomunicipal.sc.gov.br/?r=site%2Findex&q=cod_entidade%3A79",
+     "titulo": "Diário Oficial dos Municípios de Santa Catarina - DOM/SC",
+     "trecho": "MUNICÍPIO DE CRICIÚMA Poder Executivo Secretaria Geral / Apoio Administrativo PORTARIA Nº 1571/SME/2020 Homologa, com registro em ata, o Plano de Contingência, ...",
+     "data": "29/09/2026",
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
+    },
+    {
+     "id": "7a18f7fa17",
+     "nivel_confianca": "B",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://urussanga.sc.gov.br/uploads/sites/473/2022/02/plancon6.pdf",
+     "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA-EDUCAÇÃO",
+     "trecho": "Feb 19, 2022 ... de Criciúma. Rosilene Aparecida Matos, representante dos ... Plano de Contingência de Proteção e Defesa Civil (PLANCON-PDC). Nele ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "ce1eba8afb",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://apoio.criciuma.sc.gov.br/files/6824fc1e18f0f14052025.pdf",
+     "titulo": "Decreto - Prefeitura Municipal de Criciúma",
+     "trecho": "May 14, 2025 ... 1° Aprovar o Plano de Contingência da Secretaria Municipal da Assistência Social e Habitação. ... Maina, município de Criciúma-SC. CONVÊNIO: TERMO ...",
+     "data": "29/09/2026",
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
+    },
+    {
+     "id": "7804b7b382",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://folha1sc.com.br/2026/09/04/prefeitura-de-criciuma-apresenta-plano-de-contingencia-contra-el-nino/",
+     "titulo": null,
+     "trecho": "Sep 4, 2026 ... Início › Cidades SC › Criciúma › Prefeitura de Criciúma apresenta Plano de Contingência contra El Niño ... 2026. Prefeitura de Criciúma ...",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
+    },
+    {
+     "id": "40409d11e4",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/Dbbd0HoEY6T/",
+     "titulo": "Prefeitura de Criciúma on Instagram: \"Com a influência do El Niño e ...",
+     "trecho": "Jul 30, 2026 ... ... Criciúma tem um Plano de Contingência para organizar o monitoramento, os alertas e a atuação das equipes em casos de chuvas fortes ...",
+     "data": "27/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "b1716f8dc3",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.youtube.com/watch?v=EZ9qXUkowyo",
+     "titulo": null,
+     "trecho": "Jun 19, 2026 ... O município de Criciúma, em Santa Catarina, atualizou o seu Plano ... Criciúma atualiza plano de contingência para desastres naturais.",
+     "data": "22/09/2026",
+     "status": "fechada — notícia genérica: o mesmo artigo foi atribuído a vários municípios pela busca, e não trata de nenhum deles em particular"
+    },
+    {
+     "id": "bb234937a9",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_na_url",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://tnsul.com/2026/06/17/plano-de-contingencia-de-criciuma-prepara-mobilizacao-em-emergencias/",
+     "titulo": null,
+     "trecho": "Plano de contingência de Criciúma prepara mobilização em emergências. 17 de junho de 2026. Foto: Divulgação / Prefeitura de Criciúma. A Prefeitura de ...",
+     "data": "22/09/2026",
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
+    }
+   ]
+  },
+  {
    "ibge": "3204906",
    "municipio": "São Mateus",
    "uf": "ES",
@@ -11993,126 +12508,6 @@
    ]
   },
   {
-   "ibge": "4204608",
-   "municipio": "Criciúma",
-   "uf": "SC",
-   "melhor_nivel": "A",
-   "n_pistas": 6,
-   "niveis": {
-    "A": 1,
-    "B": 4,
-    "C": 1
-   },
-   "pistas": [
-    {
-     "id": "f220e24e26",
-     "nivel_confianca": "A",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_inicio_do_trecho",
-      "plano_no_trecho",
-      "ato_formal"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.diariomunicipal.sc.gov.br/?r=site%2Findex&q=cod_entidade%3A79",
-     "titulo": "Diário Oficial dos Municípios de Santa Catarina - DOM/SC",
-     "trecho": "MUNICÍPIO DE CRICIÚMA Poder Executivo Secretaria Geral / Apoio Administrativo PORTARIA Nº 1571/SME/2020 Homologa, com registro em ata, o Plano de Contingência, ...",
-     "data": "29/09/2026",
-     "status": "pista — recusada pelo juiz: natureza_duvidosa"
-    },
-    {
-     "id": "ce1eba8afb",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_trecho"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://apoio.criciuma.sc.gov.br/files/6824fc1e18f0f14052025.pdf",
-     "titulo": "Decreto - Prefeitura Municipal de Criciúma",
-     "trecho": "May 14, 2025 ... 1° Aprovar o Plano de Contingência da Secretaria Municipal da Assistência Social e Habitação. ... Maina, município de Criciúma-SC. CONVÊNIO: TERMO ...",
-     "data": "29/09/2026",
-     "status": "pista — recusada pelo juiz: natureza_duvidosa"
-    },
-    {
-     "id": "7804b7b382",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://folha1sc.com.br/2026/09/04/prefeitura-de-criciuma-apresenta-plano-de-contingencia-contra-el-nino/",
-     "titulo": null,
-     "trecho": "Sep 4, 2026 ... Início › Cidades SC › Criciúma › Prefeitura de Criciúma apresenta Plano de Contingência contra El Niño ... 2026. Prefeitura de Criciúma ...",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: citacao_incompleta"
-    },
-    {
-     "id": "40409d11e4",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/Dbbd0HoEY6T/",
-     "titulo": "Prefeitura de Criciúma on Instagram: \"Com a influência do El Niño e ...",
-     "trecho": "Jul 30, 2026 ... ... Criciúma tem um Plano de Contingência para organizar o monitoramento, os alertas e a atuação das equipes em casos de chuvas fortes ...",
-     "data": "27/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "b1716f8dc3",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_inicio_do_trecho",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.youtube.com/watch?v=EZ9qXUkowyo",
-     "titulo": null,
-     "trecho": "Jun 19, 2026 ... O município de Criciúma, em Santa Catarina, atualizou o seu Plano ... Criciúma atualiza plano de contingência para desastres naturais.",
-     "data": "22/09/2026",
-     "status": "fechada — notícia genérica: o mesmo artigo foi atribuído a vários municípios pela busca, e não trata de nenhum deles em particular"
-    },
-    {
-     "id": "bb234937a9",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_na_url",
-      "plano_no_trecho"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://tnsul.com/2026/06/17/plano-de-contingencia-de-criciuma-prepara-mobilizacao-em-emergencias/",
-     "titulo": null,
-     "trecho": "Plano de contingência de Criciúma prepara mobilização em emergências. 17 de junho de 2026. Foto: Divulgação / Prefeitura de Criciúma. A Prefeitura de ...",
-     "data": "22/09/2026",
-     "status": "pista — recusada pelo juiz: citacao_incompleta"
-    }
-   ]
-  },
-  {
    "ibge": "3513504",
    "municipio": "Cubatão",
    "uf": "SP",
@@ -12235,6 +12630,109 @@
      "titulo": "Relatório de Diagnóstico Volume 3 - BNDES",
      "trecho": "Plano de Contingência para Ressacas e Inundações - Santos ... 21 CUBATÃO (SP). Lei Complementar n° 134 de 28 de dezembro de 2023. Institui ...",
      "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "1303403",
+   "municipio": "Parintins",
+   "uf": "AM",
+   "melhor_nivel": "A",
+   "n_pistas": 5,
+   "niveis": {
+    "A": 1,
+    "B": 4,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "8e37b049c8",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://files.parintins.am.gov.br/relatoriomunicipalsaude/1.pdf",
+     "titulo": "prefeitura municipal de parintins",
+     "trecho": "realização das vacinas nas comunidades. ✓. Execução do plano de contingência da estiagem, com ações intersetoriais em todas ... de Parintins-AM. Fonte: Relatório ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "a86d3d616f",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://parintinsnoticias.com/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico/",
+     "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
+     "trecho": "3 days ago ... Resumindo: plano de contingência, população das áreas de risco ... Parintins, Amazonas. © 2026 Parintins Notícias. Todos os direitos ...",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "3f4fab56d4",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.gov.br/saude/pt-br/composicao/sesai/publicacoes/plano-de-contingencia-nacional-para-covid-19-em-povos-indigenas-dsei-pin-parintins",
+     "titulo": "Ministério da Saúde - Portal Gov.br",
+     "trecho": "PLANO DE CONTINGÊNCIA DISTRITAL PARA INFECÇÃO HUMANA. PELO NOVO CORONAVÍRUS (COVID-19) EM POVOS INDÍGENAS. HEXKARYANA E SATERÉ-MAWÉ. PARINTINS/AM. 2020. Page 2 ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "ba8d69dbc9",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://legisla.imprensaoficial.am.gov.br/diario_am/12/1989/10/746",
+     "titulo": "constituição do estado do amazonas - Legisla.AM",
+     "trecho": "... Parintins, Pauini, Presidente Figueiredo, Puraquequara, Purupuru, Rio Preto ... IV - coordenar a elaboração do plano de contingência estadual e ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "5cc96f4339",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.amazonas.am.gov.br/wp-content/uploads/2025/01/2_Mensagem-Governamental-2021-%E2%80%93-Relatorio-de-Atividades-2020.pdf",
+     "titulo": "PDF - Amazonas",
+     "trecho": "casos no estado do Amazonas, elaboração e atualização de plano de contingência, intensificação da ... Parintins, Presidente Figueiredo, Rio Preto da Eva ...",
+     "data": "04/10/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -12846,105 +13344,6 @@
      "trecho": "fundamentais deste plano de contingência. Diante de todo esse contexto, o ... Escola Municipal Santana Itatiaia. Campus Universitário s/nº - Martelos.",
      "data": "03/10/2026",
      "status": "pista — recusada pelo juiz: ente_nao_confirmado"
-    }
-   ]
-  },
-  {
-   "ibge": "3305505",
-   "municipio": "Saquarema",
-   "uf": "RJ",
-   "melhor_nivel": "A",
-   "n_pistas": 5,
-   "niveis": {
-    "A": 1,
-    "B": 3,
-    "C": 1
-   },
-   "pistas": [
-    {
-     "id": "456aa025e5",
-     "nivel_confianca": "A",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "ato_formal",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.serramarnews.com.br/noticia/11506/saquarema/politica/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico.html",
-     "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
-     "trecho": "2 days ago ... Saquarema,25/09/2026. tempo hoje 26°|26°. Serramar FM. ○ AO VIVO92,1 ... Resumindo: plano de contingência, população das áreas de risco ...",
-     "data": "27/09/2026",
-     "status": "pista — recusada pelo juiz: natureza_duvidosa"
-    },
-    {
-     "id": "cf5bb3f6d7",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_oficial",
-      "ato_formal"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/3305505/2025-12-05/2e89b8976c8bdcaafb20133421c51d34a5cc75e6.pdf",
-     "titulo": "Diário oficial de 2025-12-05",
-     "trecho": "de 2025 DECRETO Nº 3.118, DE 3 DE DEZEMBRO DE 2025 Abre Crédito Adicional Suplementar, por anulação parcial, no valor de R$ 3.398.800,00 (três milhões, trezentos e noventa e oito mil e oitocentos reais) para Reforço de Dotações Consignadas no Or- çamento Geral do Município. A PREFEITA MUNICIPAL DE SAQUA- REMA, Estado do Rio de Janeiro, no uso de suas atribuições legais e de acordo com a Lei Municipal nº 2.668, de 18 de dezembro de 2024; DECRETA Art. 1º Fica aberto Crédito Adicional Su-",
-     "data": "27/09/2026",
-     "status": "pista de decreto — vai para a conferência da base oficial de resposta; não ocupa a fila de planos"
-    },
-    {
-     "id": "d2cfac6a6c",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_so_no_trecho",
-      "ato_formal"
-     ],
-     "alertas": [],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/3305505/2026-03-11/1f44fdc80935ee135ea105b34c35b0dcb71ef4f4.pdf",
-     "titulo": "Diário oficial de 2026-03-11",
-     "trecho": "será compensado observado o inci- so III do § 1º do art. 43 da Lei Federal n° 4.320/64, resultante de anulação de dota- ção orçamentária. Art. 3º Em decorrência deste Decreto, fica alterado o Quadro de Detalhamento das Despesas da respectiva unidade or- çamentária. Art. 4º Este Decreto entra em vigor na data de sua publicação, produzindo seus efeitos a partir de 6 de março de 2026. Saquarema, 6 de março de 2026. Lucimar Pereira Vidal da Costa Prefeita ANEXO ÚNICO DECRETO Nº 3.179, DE 6 DE MARÇO",
-     "data": "27/09/2026",
-     "status": "pista de decreto — vai para a conferência da base oficial de resposta; não ocupa a fila de planos"
-    },
-    {
-     "id": "66ce0eb422",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_oficial",
-      "ato_formal"
-     ],
-     "alertas": [],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/3305505/2026-03-23/a354a774d51c2aa915811ed66b993a729b950b79.pdf",
-     "titulo": "Diário oficial de 2026-03-23",
-     "trecho": "Municipal nº 2.837, de 16 de março de 2026; DECRETA Art. 1º Fica aberto Crédito Adicional Es- pecial, no montante de R$ 59.010,00 (cinquenta e nove mil e dez reais), por Anulação Parcial de Dotação, alocada na Secretaria Municipal de Segurança e Or- dem Pública, consignada no Orçamento Geral do Município, conforme previamen- te autorizado pela Lei nº 2.837 de 16 de março de 2026, para reforço orçamentário na forma do Anexo Único deste Decreto. Art. 2º O crédito de que trata o artigo anterior",
-     "data": "27/09/2026",
-     "status": "pista de decreto — vai para a conferência da base oficial de resposta; não ocupa a fila de planos"
-    },
-    {
-     "id": "9dcb3b22ad",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_oficial"
-     ],
-     "alertas": [],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/3305505/2026-04-22/e356e157a90e44fa51139715ebffe6de2c90b8f7.pdf",
-     "titulo": "Diário oficial de 2026-04-22",
-     "trecho": "nicipais de Assistência Social, da Crian- ça e Adolescente, de Direitos do Idoso, e de Meio Ambiente no valor total de R$ 8.638.082,95 (oito milhões, seiscentos e trinta e oito mil, oitenta e dois reais e no- venta e cinco centavos), para reforço or- çamentário conforme Anexo Único. Art. 2º O crédito de que trata o artigo anterior será compensado na forma do inciso III do § 1º do art. 43 da Lei Fede- ral n° 4.320/64, proveniente de anulação parcial. Art. 3º Em decorrência deste Decreto, fica",
-     "data": "27/09/2026",
-     "status": "pista — recusada pelo juiz: natureza_duvidosa"
     }
    ]
   },
@@ -14071,6 +14470,96 @@
    ]
   },
   {
+   "ibge": "3130606",
+   "municipio": "Inconfidentes",
+   "uf": "MG",
+   "melhor_nivel": "A",
+   "n_pistas": 4,
+   "niveis": {
+    "A": 1,
+    "B": 3,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "6f1e9a2bb2",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.panoramainconfidentes.com.br/noticia/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico",
+     "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
+     "trecho": "Por Panorama Inconfidentes Em 24/09/2026 19:34. Especialista resume alertas sobre El Niño e cobra ações urgentes do ... Resumindo: plano de contingência, ...",
+     "data": "26/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "2bdf3f4496",
+     "nivel_confianca": "B",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.mg.gov.br/system/files/media/documento_detalhado/2025-05/RELAT%C3%93RIO%20PER%C3%8DODO%20CHUVOSO%2024-25.pdf",
+     "titulo": "Relatório período chuvoso 2024/2025",
+     "trecho": "No Plano de Contingência, apenas o risco de inundação foi mapeado. No ... Inconfidentes. 09/02/2022. 12100 - Inundações. Tocos do Moji. 10/02/2022. 12200 ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "6bcd41d79e",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.transcon.contagem.mg.gov.br/portal/noticias/0/3/156/novos-semaforos-e-sinalizacoes-no-bairro-inconfidentes",
+     "titulo": "Novos semáforos e sinalizações no bairro Inconfidentes - Transcon",
+     "trecho": "Aug 8, 2023 ... Novos semáforos e sinalizações no bairro Inconfidentes. ... Autoridades municipais se unem para preparar Plano de Contingência para o período ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "923e8e5d5a",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/estudos-e-notas-informativas/2024/nota-informativa-no-35-2024.pdf",
+     "titulo": "Nota Informativa 35 (0045195845) SEI 25000.195969/2024-66 / pg. 1",
+     "trecho": "Jan 15, 2025 ... está previsto no “Plano de Contingência para Resposta às Emergências ... Inconfidentes. SP. 350950. Campinas. SP. 354970. São José do Rio ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3137809",
    "municipio": "Lambari",
    "uf": "MG",
@@ -14767,6 +15256,72 @@
      "trecho": "Jan 3, 2021 ... Manejo CEP: 27520-005 Resende-RJ. Diretor Executivo – André Luis ... Plano de Contingência e Proteção. (PLACONP), com sua última versão ...",
      "data": "21/09/2026",
      "status": "pista — recusada pelo juiz: plano_sem_identificacao"
+    }
+   ]
+  },
+  {
+   "ibge": "2410207",
+   "municipio": "Portalegre",
+   "uf": "RN",
+   "melhor_nivel": "A",
+   "n_pistas": 3,
+   "niveis": {
+    "A": 1,
+    "B": 2,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "b9c184b4ca",
+     "nivel_confianca": "A",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.portalegre.rn.gov.br/publicacoes.php?grupo=13&ta=3",
+     "titulo": "concurso - Prefeitura de Portalegre",
+     "trecho": "... PORTALEGRE RN, PLANO DE CARGOS E SALÁRIOS, PLANO DE CONTINGÊNCIA MUNICIPAL COVID-19 ... DECRETO Nº 024/2019 – GP/PMP Portalegre/RN, 06 de junho de 2019 ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "ed61fcdedc",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.cm-portalegre.pt/blog/2026/07/02/plano-de-contingencia-do-municipio-de-portalegre-para-as-ondas-de-calor-temperaturas-elevadas/",
+     "titulo": "Plano de Contingência do Município de Portalegre para as ondas ...",
+     "trecho": "Devido às elevadas temperaturas ... os seguintes espaços climatizados como abrigo temporário: Centro de Artes do Espetáculo – 14h00-19h00 e 20h30-23h30 ......",
+     "data": "26/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "1673701b2a",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://webdisk.diariooficial.rn.gov.br/Jornal/12024-08-20.pdf",
+     "titulo": "Diário Oficial - ESTADO DO RIO GRANDE DO NORTE",
+     "trecho": "Aug 23, 2024 ... ... Plano de Contingência e Emergência da estação de trata- mento de ... PmJ de Portalegre. Ministério Público Estadual; e Maria Helena de ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -15826,6 +16381,56 @@
    ]
   },
   {
+   "ibge": "3535408",
+   "municipio": "Panorama",
+   "uf": "SP",
+   "melhor_nivel": "A",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 1,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "0e8defe30c",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.panoramainconfidentes.com.br/noticia/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico",
+     "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
+     "trecho": "Por Panorama Inconfidentes Em 24/09/2026 19:34. Especialista resume alertas sobre El Niño e cobra ações urgentes do ... Resumindo: plano de contingência, ...",
+     "data": "26/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "00b0a054f0",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.pauliceia.sp.gov.br/arquivos/downloads/recomendao_MP.pdf",
+     "titulo": "Panorama, SP Telefone (18) 3871-1609 e-mail",
+     "trecho": "Feb 3, 2020 ... plano de contingência, com a previsão de ações indispensáveis ao balizamento da ... Panorama, SP, 26 de março de 2020. EMERSON MARTINS ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3556305",
    "municipio": "Valparaíso",
    "uf": "SP",
@@ -16070,39 +16675,6 @@
      "trecho": "Prefeitura Municipal - Portal",
      "data": "26/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "3130606",
-   "municipio": "Inconfidentes",
-   "uf": "MG",
-   "melhor_nivel": "A",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 1,
-    "B": 0,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "6f1e9a2bb2",
-     "nivel_confianca": "A",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "ato_formal",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.panoramainconfidentes.com.br/noticia/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico",
-     "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
-     "trecho": "Por Panorama Inconfidentes Em 24/09/2026 19:34. Especialista resume alertas sobre El Niño e cobra ações urgentes do ... Resumindo: plano de contingência, ...",
-     "data": "26/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -16649,39 +17221,6 @@
      "trecho": "Milena Rinaldo destacou a importância ... que ninguém fique desamparado. Estamos organizando abrigos, suprimentos e equipes de apoio para agir com rapidez e acolhimento, caso seja necessário....",
      "data": "25/09/2026",
      "status": "pista — recusada pelo juiz: natureza_duvidosa"
-    }
-   ]
-  },
-  {
-   "ibge": "3535408",
-   "municipio": "Panorama",
-   "uf": "SP",
-   "melhor_nivel": "A",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 1,
-    "B": 0,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "0e8defe30c",
-     "nivel_confianca": "A",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "ato_formal",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.panoramainconfidentes.com.br/noticia/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico",
-     "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
-     "trecho": "Por Panorama Inconfidentes Em 24/09/2026 19:34. Especialista resume alertas sobre El Niño e cobra ações urgentes do ... Resumindo: plano de contingência, ...",
-     "data": "26/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -121268,6 +121807,178 @@
    ]
   },
   {
+   "ibge": "3305000",
+   "municipio": "São João da Barra",
+   "uf": "RJ",
+   "melhor_nivel": "B",
+   "n_pistas": 9,
+   "niveis": {
+    "A": 0,
+    "B": 8,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "1dcfe978e1",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.folha1.com.br/geral/2026/07/1317511-sao-joao-da-barra-se-planeja-para-impactos-do-fenomeno-el-nino.html",
+     "titulo": "São João da Barra se planeja para impactos do fenômeno El Niño ...",
+     "trecho": "\"Existe a necessidade de atendermos às orientações das esferas superiores e apresentar a estrutura existente no município para resposta a possíveis desastres naturais. No plano de contingência já existente, estamos trabalhando um plano específico em relação a incêndios florestais e da vegetação em geral dentro de todo o território sanjoanense.",
+     "data": "27/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "e9b83366be",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.sjb.rj.gov.br/arquivos/diario_oficial/174_26_do-25092026-ed174.pdf",
+     "titulo": "DIÁRIO OFICIAL - Prefeitura de São João da Barra",
+     "trecho": "3 days ago ... São João da Barra/RJ, 25 de setembro de 2026. Daniel Pinheiro ... Plano de Contingência de Arboviroses - Biênio 2026-2028;. Art.2º ...",
+     "data": "29/09/2026",
+     "status": "pista — recusada pelo juiz: natureza_duvidosa"
+    },
+    {
+     "id": "d4933c6ab5",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.sjb.rj.gov.br/arquivos/diario_oficial/002_25_do-03012025-ed002.pdf",
+     "titulo": "DIÁRIO OFICIAL - Prefeitura de São João da Barra",
+     "trecho": "Jan 3, 2025 ... MUNICÍPIO DE SÃO JOÃO DA BARRA | ESTADO DO RIO DE JANEIRO. Rua Barão ... 2.9 PLANO DE CONTINGÊNCIA ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "cc4266e0a8",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://odia.ig.com.br/sao-joao-da-barra/2026/07/7281194-enfrentamento-ao-el-nino-e-priorizado-em-sao-joao-da-barra.html",
+     "titulo": null,
+     "trecho": "Jul 23, 2026 ... São João da Barra - Plano Municipal de Contingência para o enfrentamento dos possíveis impactos do fenômeno El Niño é uma das prioridades do ...",
+     "data": "21/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "26a11f6738",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.sjb.rj.gov.br/site/noticia/sjb_na_coordenacao_da_camara_tecnica_de_gestao_de_seguranca_publica_do_cidennf/16551",
+     "titulo": "SJB na coordenação da Câmara Técnica de Gestão de Segurança ...",
+     "trecho": "Oct 23, 2025 ... São João da Barra passa a compor a coordenação da Câmara Técnica de ... SJB avança na elaboração do Plano de Contingência para enfrentamento ao El ...",
+     "data": "29/09/2026",
+     "status": "pista — recusada pelo juiz: ente_nao_confirmado"
+    },
+    {
+     "id": "4b70843628",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://defesacivil.rj.gov.br/index.php/legislacao-cepedec/instrucoes-normativas-cepedec",
+     "titulo": "Instruções Normativas - Defesa Civil",
+     "trecho": "Dec 7, 2020 ... XV - plano de contingência: documento que registra o planejamento ... São João da Barra. Sul I. Barra do Piraí · Barra Mansa · Comendador ...",
+     "data": "29/09/2026",
+     "status": "pista — recusada pelo juiz: ente_nao_confirmado"
+    },
+    {
+     "id": "6445992283",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://web.bndes.gov.br/bib/jspui/bitstream/1408/22344/3/PR__REL.ANUAL_2021.pdf",
+     "titulo": "O BANCO DO DESENVOLVIMENTO DO BRASIL Entenda nossos ...",
+     "trecho": "Dec 31, 2021 ... ... São João da Barra (RJ), tem capacidade instalada de 1.338,3 MW ... plano de contingência de liquidez e capital; avalia os níveis de ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "81a6c6f9b2",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.defesacivil.rj.gov.br/index.php/legislacao-cepedec/instrucoes-normativas-cepedec",
+     "titulo": "Instruções Normativas - Defesa Civil",
+     "trecho": "Dec 7, 2020 ... XV - plano de contingência: documento que registra o planejamento ... São João da Barra. Sul I. Barra do Piraí · Barra Mansa · Comendador ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "ea0671aa2d",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/reel/Dai6_4EoDv0/",
+     "titulo": null,
+     "trecho": "Jul 8, 2026 ... ... plano de contingência já existente, estamos trabalhando um plano ... Os impactos do Novo El Niño fazem com que São João da Barra se ...",
+     "data": "21/09/2026",
+     "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila"
+    }
+   ]
+  },
+  {
    "ibge": "4204202",
    "municipio": "Chapecó",
    "uf": "SC",
@@ -121441,6 +122152,168 @@
      "trecho": "Chapecó – SC. Abril – 2022. Page 2. 2. Este Plano de Contingência foi ... A estrutura do Plano de Contingência da Escola de Artes de Chapecó, obedece ao modelo.",
      "data": "04/10/2026",
      "status": "pista — recusada pelo juiz: autoridade_nao_confirmada"
+    }
+   ]
+  },
+  {
+   "ibge": "2700805",
+   "municipio": "Belém",
+   "uf": "AL",
+   "melhor_nivel": "B",
+   "n_pistas": 8,
+   "niveis": {
+    "A": 0,
+    "B": 5,
+    "C": 3
+   },
+   "pistas": [
+    {
+     "id": "f31b168edf",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://aprovinciadopara.com.br/belem-vai-enfrentar-o-novo-el-nino-ha-riscos-de-seca-fumaca-e-doencas-na-capital-paraense-diz-a-fiocruz/",
+     "titulo": "Belém vai enfrentar o novo El Niño. Há riscos de seca, fumaça ...",
+     "trecho": "Nos últimos dias, também iniciou a elaboração de um Plano Municipal de Enfrentamento ao El Niño 2026-2027, reunindo 35 órgãos municipais, estaduais e federais para discutir medidas preventivas diante das projeções climáticas.",
+     "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "7f2e70971c",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.romanews.com.br/brasil/saiba-o-que-e-o-super-el-nino-e-por-que-ele-preocupa-o-brasil-em-2026-0726",
+     "titulo": "Entenda o Super El Niño e como Belém se prepara para enfrentar ...",
+     "trecho": "Diante desse cenário, a Prefeitura de Belém está elaborando o Plano Municipal de Enfrentamento ao Super El Niño 2026–2027.",
+     "data": "25/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "d0a5cdc873",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.facebook.com/jornaldiariodopara/posts/bel%C3%A9m-est%C3%A1-pronta-para-enfrentar-o-super-el-ni%C3%B1o-2026-2027-com-um-plano-integrad/1020795150701006/",
+     "titulo": "Belém está pronta para enfrentar o Super El Niño 2026 ...",
+     "trecho": "Diário do Pará, Belém. 110,992 followers · 177,813 talking about this · 79 were here. O Diário do Pará é um jornal fundado pelo jornalista Laércio Wilson Barbalho, impresso diariamente em Belém desde...",
+     "data": "25/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "885e08b5bd",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DaqT2kElC19/",
+     "titulo": "EL NIÑO Belém pode enfrentar, nos próximos meses ...",
+     "trecho": "Create an account or log in to Instagram - Share what you're into with the people who get you.",
+     "data": "25/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "4beb6ccdf0",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/guias-e-manuais/2026/guia-para-elaboracao-de-planos-de-adaptacao-a-mudanca-do-clima-do-setor-saude-versao-final-preliminar.pdf/@@download/file",
+     "titulo": "GUIA PARA ELABORAÇÃO DE PLANOS DE ADAPTAÇÃO DO ...",
+     "trecho": "Desse modo, é fundamental compreender que plano de ação, plano de contingência, ... Belém. A iniciativa busca fortalecer a ação coletiva no enfrentamento dos ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "7dbe3ae9cd",
+     "nivel_confianca": "C",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "uf_divergente_na_url"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "http://paraiba-portal-backend.plone.rke.codataprd.pb.gov.br/portal_paraiba/diretas/saude/arquivos-1/vigilancia-em-saude/plano-de-contingencia-de-seca-e-estiagem-ses-paraiba-versao-final.pdf",
+     "titulo": "Plano de Contingencia de seca e estiagem",
+     "trecho": "ESTRATÉGIA DO PLANO DE CONTINGÊNCIA ... BELÉM LUIZ ALEXANDRINO. DA SILVA. Endereço: Rua Projetada, S/N - Conjunto Nova.",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "3497d4b116",
+     "nivel_confianca": "C",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "uf_divergente_na_url",
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.defesacivil.se.gov.br/wp-content/uploads/2019/03/PLANO-DE-CONTING%C3%8ANCIA-2019-1.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA PERÍODOS CHUVOSOS - Defesa Civil",
+     "trecho": "Mar 17, 2019 ... 5.1|PLANO DE CONTINGÊNCIA ... Rua Eduardo Cruz, Rua Belém e Av. Confiança;. 60. Rua Socorro c/ Av ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "bef3493509",
+     "nivel_confianca": "C",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "uf_divergente_na_url",
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://santaizabel.pa.gov.br/wp-content/uploads/2021/04/CONTIGENCIA.pdf",
+     "titulo": "Plano de Contingência Municipal para Infecção Humana pelo Novo ...",
+     "trecho": "Plano de Contingência do Município de Santa Izabel do Pará para a. Infecção ... Belém - PA, 66811-000. Geral: (91) 3199-9860. Diretor: (18) 99660-7121.",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -121906,6 +122779,168 @@
      "trecho": "Toledo/PR, no uso de suas atribuições que lhe confere o art. 4º da Lei Estadual nº 19.848, de 03 de maio de 2019, a Lei Estadual nº 13.331, de 23 de ...",
      "data": "30/09/2026",
      "status": "pista — recusada pelo juiz: natureza_duvidosa"
+    }
+   ]
+  },
+  {
+   "ibge": "1703826",
+   "municipio": "Cachoeirinha",
+   "uf": "TO",
+   "melhor_nivel": "B",
+   "n_pistas": 8,
+   "niveis": {
+    "A": 0,
+    "B": 3,
+    "C": 5
+   },
+   "pistas": [
+    {
+     "id": "c374e77c18",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DdZX8XIRdv_/",
+     "titulo": "Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura ...",
+     "trecho": "6 days ago ... 46 likes, 0 comments - prefcachoeirinhars on September 17, 2026: \" Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura, por ...",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "4de3abf82b",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.oreporter.net/cachoeirinha-e-contemplada-no-prepara-rs-el-nino-e-vai-receber-r-300-mil/",
+     "titulo": "Cachoeirinha é contemplada no Prepara RS - El Niño e vai receber ...",
+     "trecho": "Jun 18, 2026 ... Cachoeirinha - Cachoeirinha é um dos municípios contemplados no ... plano de contingência municipal atualizado e a conclusão do ...",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "28af31ddc8",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DdZX8XIRdv_/",
+     "titulo": "Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura ...",
+     "trecho": "Sep 17, 2026 ... 46 likes, 0 comments - prefcachoeirinhars on September 17, 2026: \" Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura, por ...",
+     "data": "27/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "bf9a24f6b5",
+     "nivel_confianca": "C",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "uf_divergente_na_url"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.cmcachoeirinha.rs.gov.br/noticia/plano-de-contingencia-de-cachoeirinha-sera-apresentado-em-audiencia-na-camara-991",
+     "titulo": "Plano de contingência de Cachoeirinha será apresentado em ...",
+     "trecho": "Sep 22, 2026 ... Plano de contingência de Cachoeirinha será apresentado em audiência na Câmara. Atividade da Secretaria Municipal de Defesa Civil e ...",
+     "data": "03/10/2026",
+     "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila"
+    },
+    {
+     "id": "bbc744f6f9",
+     "nivel_confianca": "C",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "uf_divergente_na_url"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.cmcachoeirinha.rs.gov.br/noticia/defesa-civil-apresenta-novo-plano-de-contingencia-em-audiencia-publica-na-camara-999",
+     "titulo": "Defesa Civil apresenta novo Plano de Contingência em audiência ...",
+     "trecho": "Sep 25, 2026 ... ... Plano de Contingência (Plancon) de 2026, em audiência pública realizada no Plenário Osvaldo Corrêa da Câmara Municipal de Cachoeirinha. A ...",
+     "data": "03/10/2026",
+     "status": "pista — recusada pelo juiz: citacao_incompleta"
+    },
+    {
+     "id": "f0a9222cc9",
+     "nivel_confianca": "C",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "uf_divergente_na_url"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://prefeitura.sp.gov.br/web/subprefeituras/w/noticias/296661",
+     "titulo": "Prefeitura elabora Plano de Contingenciamento e adota novas ...",
+     "trecho": "Foi liberado crédito suplementar de R$ 39.402.176 para atender a todo o plano de contingência. ... Cachoeirinha. De a cordo com o decreto 59.372, as ...",
+     "data": "03/10/2026",
+     "status": "pista — recusada pelo juiz: autoridade_nao_confirmada"
+    },
+    {
+     "id": "d612a473a8",
+     "nivel_confianca": "C",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "uf_divergente_na_url"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.cmcachoeirinha.rs.gov.br/noticia/camara-realiza-sessao-plenaria-nesta-terca-feira-22-990",
+     "titulo": "Câmara realiza sessão plenária nesta terça-feira (22) - Notícias",
+     "trecho": "Sep 22, 2026 ... Outras Notícias. Plano de contingência de Cachoeirinha será ...",
+     "data": "03/10/2026",
+     "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila"
+    },
+    {
+     "id": "93820b831a",
+     "nivel_confianca": "C",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url"
+     ],
+     "alertas": [
+      "uf_divergente_na_url"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.cmcachoeirinha.rs.gov.br/noticia/relatorio-de-gestao-em-saude-sera-apresentado-na-proxima-quinta-feira-8-1002",
+     "titulo": "Relatório de gestão em saúde será apresentado na próxima quinta ...",
+     "trecho": "3 days ago ... Na próxima quinta-feira (8), a partir das 10:00, no Plenarinho Saul Lazzarotto, na Câmara de Vereadores de Cachoeirinha ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -122461,150 +123496,6 @@
    ]
   },
   {
-   "ibge": "1703826",
-   "municipio": "Cachoeirinha",
-   "uf": "TO",
-   "melhor_nivel": "B",
-   "n_pistas": 7,
-   "niveis": {
-    "A": 0,
-    "B": 3,
-    "C": 4
-   },
-   "pistas": [
-    {
-     "id": "c374e77c18",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_titulo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DdZX8XIRdv_/",
-     "titulo": "Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura ...",
-     "trecho": "6 days ago ... 46 likes, 0 comments - prefcachoeirinhars on September 17, 2026: \" Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura, por ...",
-     "data": "23/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "4de3abf82b",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.oreporter.net/cachoeirinha-e-contemplada-no-prepara-rs-el-nino-e-vai-receber-r-300-mil/",
-     "titulo": "Cachoeirinha é contemplada no Prepara RS - El Niño e vai receber ...",
-     "trecho": "Jun 18, 2026 ... Cachoeirinha - Cachoeirinha é um dos municípios contemplados no ... plano de contingência municipal atualizado e a conclusão do ...",
-     "data": "23/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "28af31ddc8",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_titulo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DdZX8XIRdv_/",
-     "titulo": "Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura ...",
-     "trecho": "Sep 17, 2026 ... 46 likes, 0 comments - prefcachoeirinhars on September 17, 2026: \" Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura, por ...",
-     "data": "27/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "bf9a24f6b5",
-     "nivel_confianca": "C",
-     "pontos_confianca": 7,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "uf_divergente_na_url"
-     ],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.cmcachoeirinha.rs.gov.br/noticia/plano-de-contingencia-de-cachoeirinha-sera-apresentado-em-audiencia-na-camara-991",
-     "titulo": "Plano de contingência de Cachoeirinha será apresentado em ...",
-     "trecho": "Sep 22, 2026 ... Plano de contingência de Cachoeirinha será apresentado em audiência na Câmara. Atividade da Secretaria Municipal de Defesa Civil e ...",
-     "data": "03/10/2026",
-     "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila"
-    },
-    {
-     "id": "bbc744f6f9",
-     "nivel_confianca": "C",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_na_url",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "uf_divergente_na_url"
-     ],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.cmcachoeirinha.rs.gov.br/noticia/defesa-civil-apresenta-novo-plano-de-contingencia-em-audiencia-publica-na-camara-999",
-     "titulo": "Defesa Civil apresenta novo Plano de Contingência em audiência ...",
-     "trecho": "Sep 25, 2026 ... ... Plano de Contingência (Plancon) de 2026, em audiência pública realizada no Plenário Osvaldo Corrêa da Câmara Municipal de Cachoeirinha. A ...",
-     "data": "03/10/2026",
-     "status": "pista — recusada pelo juiz: citacao_incompleta"
-    },
-    {
-     "id": "f0a9222cc9",
-     "nivel_confianca": "C",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_so_no_trecho",
-      "plano_no_titulo"
-     ],
-     "alertas": [
-      "uf_divergente_na_url"
-     ],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://prefeitura.sp.gov.br/web/subprefeituras/w/noticias/296661",
-     "titulo": "Prefeitura elabora Plano de Contingenciamento e adota novas ...",
-     "trecho": "Foi liberado crédito suplementar de R$ 39.402.176 para atender a todo o plano de contingência. ... Cachoeirinha. De a cordo com o decreto 59.372, as ...",
-     "data": "03/10/2026",
-     "status": "pista — recusada pelo juiz: autoridade_nao_confirmada"
-    },
-    {
-     "id": "d612a473a8",
-     "nivel_confianca": "C",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_na_url",
-      "plano_no_trecho"
-     ],
-     "alertas": [
-      "uf_divergente_na_url"
-     ],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.cmcachoeirinha.rs.gov.br/noticia/camara-realiza-sessao-plenaria-nesta-terca-feira-22-990",
-     "titulo": "Câmara realiza sessão plenária nesta terça-feira (22) - Notícias",
-     "trecho": "Sep 22, 2026 ... Outras Notícias. Plano de contingência de Cachoeirinha será ...",
-     "data": "03/10/2026",
-     "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila"
-    }
-   ]
-  },
-  {
    "ibge": "4109302",
    "municipio": "Guaraniaçu",
    "uf": "PR",
@@ -122848,6 +123739,131 @@
    ]
   },
   {
+   "ibge": "3300605",
+   "municipio": "Bom Jesus do Itabapoana",
+   "uf": "RJ",
+   "melhor_nivel": "B",
+   "n_pistas": 6,
+   "niveis": {
+    "A": 0,
+    "B": 5,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "5d7fd533db",
+     "nivel_confianca": "B",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "busca_web",
+     "url": "https://g1.globo.com/rj/norte-fluminense/noticia/2025/11/04/bom-jesus-do-itabapoana-apresenta-plano-de-contingencia-para-enfrentar-chuvas-fortes.ghtml",
+     "titulo": "Bom Jesus do Itabapoana apresenta plano de contingência para ...",
+     "trecho": "Nov 4, 2025 ... Bom Jesus do Itabapoana apresenta plano de contingência para enfrentar chuvas fortes ... Com El Niño muito forte, Sul deve ter chuva ...",
+     "data": "24/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "7aea6e5b4b",
+     "nivel_confianca": "B",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "busca_web",
+     "url": "https://g1.globo.com/rj/norte-fluminense/noticia/2025/11/04/bom-jesus-do-itabapoana-apresenta-plano-de-contingencia-para-enfrentar-chuvas-fortes.ghtml",
+     "titulo": "Bom Jesus do Itabapoana apresenta plano de contingência para enfrentar chuvas fortes",
+     "trecho": "1 de 1 O documento prevê ações como limpeza de bueiros, monitoramento de áreas de risco e implantação de um sistema de alerta para avisar a população sobre temporais. — Foto: Arquivo da Defesa Civil de Bom Jesus do Itabapoana",
+     "data": "27/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "8a26e560d8",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.rj.gov.br/concessaosaneamentorj2021/sites/default/files/arquivos_paginas/Planejamento%20Universaliza%C3%A7%C3%A3o%20-%20Bom%20Jesus%20do%20Itabapoana_0.pdf",
+     "titulo": "Planejamento Universalização - Bom Jesus do ... - RJ Gov",
+     "trecho": "sendo responsabilidade do Poder Público municipal de Bom Jesus do Itabapoana ativar oficialmente o Plano de Contingência para Escassez de Água. ... Decreto n° ...",
+     "data": "03/10/2026",
+     "status": "pista — recusada pelo juiz: executivo_pendente"
+    },
+    {
+     "id": "375ed07a8d",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=NzI0Njk%2C",
+     "titulo": "Governo do Estado do Rio de Janeiro - Saude.RJ",
+     "trecho": "estão na da região Noroeste, em Bom Jesus do Itabapoana. Itaeci listou os municípios que não. 61 entregaram o Plano de Contingência de Arboviroses 2024-2026: ...",
+     "data": "03/10/2026",
+     "status": "pista — recusada pelo juiz: executivo_pendente"
+    },
+    {
+     "id": "c2faa71cbc",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=MzQyOTI%2C",
+     "titulo": "Resolução SES n° 2128 de 15 de setembro de 2020 - Saude.RJ",
+     "trecho": "Sep 16, 2020 ... - o Plano de Contingência Nacional para Infecção Humana pelo novo ... BOM JESUS DO ITABAPOANA. R$ 2.544.013,10. RJ. 330070. CABO FRIO. R$ 4.666 ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "c3bd28f4ca",
+     "nivel_confianca": "C",
+     "pontos_confianca": 1,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DcjeKSYhTDO/",
+     "titulo": null,
+     "trecho": "Aug 27, 2026 ... 1 likes, 0 comments - fallaregiao on August 27, 2026: \"Bom Jesus do Itabapoana Estrutura Plano de Contingência para Emergências Climáticas A ...",
+     "data": "21/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    }
+   ]
+  },
+  {
    "ibge": "3303401",
    "municipio": "Nova Friburgo",
    "uf": "RJ",
@@ -122967,126 +123983,6 @@
      "titulo": "câmara municipal de nova friburgo - gabinete do vereadora maiara ...",
      "trecho": "Mar 25, 2024 ... Resposta: De acordo com o Plano de Contingência do Município de Nova Friburgo as ... Alberto Braune, 225 - Centro Nova Friburgo, RJ | Tel.: (22) ...",
      "data": "03/10/2026",
-     "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila"
-    }
-   ]
-  },
-  {
-   "ibge": "3305000",
-   "municipio": "São João da Barra",
-   "uf": "RJ",
-   "melhor_nivel": "B",
-   "n_pistas": 6,
-   "niveis": {
-    "A": 0,
-    "B": 5,
-    "C": 1
-   },
-   "pistas": [
-    {
-     "id": "1dcfe978e1",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.folha1.com.br/geral/2026/07/1317511-sao-joao-da-barra-se-planeja-para-impactos-do-fenomeno-el-nino.html",
-     "titulo": "São João da Barra se planeja para impactos do fenômeno El Niño ...",
-     "trecho": "\"Existe a necessidade de atendermos às orientações das esferas superiores e apresentar a estrutura existente no município para resposta a possíveis desastres naturais. No plano de contingência já existente, estamos trabalhando um plano específico em relação a incêndios florestais e da vegetação em geral dentro de todo o território sanjoanense.",
-     "data": "27/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "e9b83366be",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_trecho"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.sjb.rj.gov.br/arquivos/diario_oficial/174_26_do-25092026-ed174.pdf",
-     "titulo": "DIÁRIO OFICIAL - Prefeitura de São João da Barra",
-     "trecho": "3 days ago ... São João da Barra/RJ, 25 de setembro de 2026. Daniel Pinheiro ... Plano de Contingência de Arboviroses - Biênio 2026-2028;. Art.2º ...",
-     "data": "29/09/2026",
-     "status": "pista — recusada pelo juiz: natureza_duvidosa"
-    },
-    {
-     "id": "cc4266e0a8",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://odia.ig.com.br/sao-joao-da-barra/2026/07/7281194-enfrentamento-ao-el-nino-e-priorizado-em-sao-joao-da-barra.html",
-     "titulo": null,
-     "trecho": "Jul 23, 2026 ... São João da Barra - Plano Municipal de Contingência para o enfrentamento dos possíveis impactos do fenômeno El Niño é uma das prioridades do ...",
-     "data": "21/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "26a11f6738",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_inicio_do_trecho",
-      "plano_no_trecho"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.sjb.rj.gov.br/site/noticia/sjb_na_coordenacao_da_camara_tecnica_de_gestao_de_seguranca_publica_do_cidennf/16551",
-     "titulo": "SJB na coordenação da Câmara Técnica de Gestão de Segurança ...",
-     "trecho": "Oct 23, 2025 ... São João da Barra passa a compor a coordenação da Câmara Técnica de ... SJB avança na elaboração do Plano de Contingência para enfrentamento ao El ...",
-     "data": "29/09/2026",
-     "status": "pista — recusada pelo juiz: ente_nao_confirmado"
-    },
-    {
-     "id": "4b70843628",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_so_no_trecho",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://defesacivil.rj.gov.br/index.php/legislacao-cepedec/instrucoes-normativas-cepedec",
-     "titulo": "Instruções Normativas - Defesa Civil",
-     "trecho": "Dec 7, 2020 ... XV - plano de contingência: documento que registra o planejamento ... São João da Barra. Sul I. Barra do Piraí · Barra Mansa · Comendador ...",
-     "data": "29/09/2026",
-     "status": "pista — recusada pelo juiz: ente_nao_confirmado"
-    },
-    {
-     "id": "ea0671aa2d",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_so_no_trecho",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/reel/Dai6_4EoDv0/",
-     "titulo": null,
-     "trecho": "Jul 8, 2026 ... ... plano de contingência já existente, estamos trabalhando um plano ... Os impactos do Novo El Niño fazem com que São João da Barra se ...",
-     "data": "21/09/2026",
      "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila"
     }
    ]
@@ -123545,6 +124441,110 @@
      "trecho": "ta; \nIV – emergência. \n  \n§ 1º - Cada nível será vinculado a providências previamente definidas \nno Plano Municipal de Contingência, de modo que a decisão sobre as \nmedidas a adotar não seja tomada apenas após a instalação da situação \ncrítica. \n§ 2º  - As providências graduais poderão compreender, conforme o \nrisco, o reforço do monitoramento, a convocação do Comitê, a \ncomunicação preventiva à popu",
      "data": "2026-09-21",
      "status": "fechada — notícia genérica: o mesmo artigo foi atribuído a vários municípios pela busca, e não trata de nenhum deles em particular"
+    }
+   ]
+  },
+  {
+   "ibge": "2929800",
+   "municipio": "Saúde",
+   "uf": "BA",
+   "melhor_nivel": "B",
+   "n_pistas": 5,
+   "niveis": {
+    "A": 0,
+    "B": 4,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "bea041a44e",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DdXJSijlMz7/",
+     "titulo": "O Ministério da Saúde anunciou um plano de contingência para ...",
+     "trecho": "6 days ago ... O Ministério da Saúde anunciou um plano de contingência para enfrentar os impactos do El Niño, do calor intenso e da seca no Nordeste.",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "91647c4cad",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DdXJSijlMz7/",
+     "titulo": "O Ministério da Saúde anunciou um plano de contingência para ...",
+     "trecho": "Sep 16, 2026 ... O Ministério da Saúde anunciou um plano de contingência para enfrentar os impactos do El Niño, do calor intenso e da seca no Nordeste.",
+     "data": "26/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "7bda3e2b21",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.madrededeus.ba.gov.br/abrir_arquivo.aspx/Plano_de_Contingencia?cdLocal=2&arquivo=%7BE1BA21D6-A35B-B3AC-5BBE-6CAE436DCB15%7D.pdf",
+     "titulo": "prefeitura municipal de madre de deus/ba secretaria da saúde",
+     "trecho": "disponibilizadas pela Organização Mundial de Saúde (OMS) e Ministério da Saúde (MS), a. Secretaria Municipal de Saúde apresenta o Plano de Contingência para ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "a31600aeb5",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DdXM3Qjga7q/",
+     "titulo": "EL NIÑO ⚠️ O Ministério da Saúde prepara uma série de ações ...",
+     "trecho": "6 days ago ... ... Plano de Contingência para chuvas intensas, além da emissão de ... saúde relacionadas ao El Niño 2026-2027. O documento prevê ações ...",
+     "data": "23/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "9e7bd544b0",
+     "nivel_confianca": "C",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "http://www2.saude.ba.gov.br/hgpv/Plano%20de%20Conting%C3%AAncia%20Epidemia%20de%20Dengue%20HGPV.pdf",
+     "titulo": "Plano de Contingência Epidemia de Dengue - SESAB",
+     "trecho": "© 2008 Secretaria Estadual de Saúde da Bahia. Todos os direitos reservados ... O Plano de Contingência Assistencial para Epidemia de Dengue no âmbito do Hospital ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -124162,211 +125162,6 @@
    ]
   },
   {
-   "ibge": "3300605",
-   "municipio": "Bom Jesus do Itabapoana",
-   "uf": "RJ",
-   "melhor_nivel": "B",
-   "n_pistas": 5,
-   "niveis": {
-    "A": 0,
-    "B": 4,
-    "C": 1
-   },
-   "pistas": [
-    {
-     "id": "5d7fd533db",
-     "nivel_confianca": "B",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "busca_web",
-     "url": "https://g1.globo.com/rj/norte-fluminense/noticia/2025/11/04/bom-jesus-do-itabapoana-apresenta-plano-de-contingencia-para-enfrentar-chuvas-fortes.ghtml",
-     "titulo": "Bom Jesus do Itabapoana apresenta plano de contingência para ...",
-     "trecho": "Nov 4, 2025 ... Bom Jesus do Itabapoana apresenta plano de contingência para enfrentar chuvas fortes ... Com El Niño muito forte, Sul deve ter chuva ...",
-     "data": "24/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "7aea6e5b4b",
-     "nivel_confianca": "B",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "busca_web",
-     "url": "https://g1.globo.com/rj/norte-fluminense/noticia/2025/11/04/bom-jesus-do-itabapoana-apresenta-plano-de-contingencia-para-enfrentar-chuvas-fortes.ghtml",
-     "titulo": "Bom Jesus do Itabapoana apresenta plano de contingência para enfrentar chuvas fortes",
-     "trecho": "1 de 1 O documento prevê ações como limpeza de bueiros, monitoramento de áreas de risco e implantação de um sistema de alerta para avisar a população sobre temporais. — Foto: Arquivo da Defesa Civil de Bom Jesus do Itabapoana",
-     "data": "27/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "8a26e560d8",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_so_no_trecho",
-      "plano_no_trecho",
-      "ato_formal"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.rj.gov.br/concessaosaneamentorj2021/sites/default/files/arquivos_paginas/Planejamento%20Universaliza%C3%A7%C3%A3o%20-%20Bom%20Jesus%20do%20Itabapoana_0.pdf",
-     "titulo": "Planejamento Universalização - Bom Jesus do ... - RJ Gov",
-     "trecho": "sendo responsabilidade do Poder Público municipal de Bom Jesus do Itabapoana ativar oficialmente o Plano de Contingência para Escassez de Água. ... Decreto n° ...",
-     "data": "03/10/2026",
-     "status": "pista — recusada pelo juiz: executivo_pendente"
-    },
-    {
-     "id": "375ed07a8d",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_inicio_do_trecho",
-      "plano_no_trecho"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=NzI0Njk%2C",
-     "titulo": "Governo do Estado do Rio de Janeiro - Saude.RJ",
-     "trecho": "estão na da região Noroeste, em Bom Jesus do Itabapoana. Itaeci listou os municípios que não. 61 entregaram o Plano de Contingência de Arboviroses 2024-2026: ...",
-     "data": "03/10/2026",
-     "status": "pista — recusada pelo juiz: executivo_pendente"
-    },
-    {
-     "id": "c3bd28f4ca",
-     "nivel_confianca": "C",
-     "pontos_confianca": 1,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_so_no_trecho",
-      "plano_no_trecho"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DcjeKSYhTDO/",
-     "titulo": null,
-     "trecho": "Aug 27, 2026 ... 1 likes, 0 comments - fallaregiao on August 27, 2026: \"Bom Jesus do Itabapoana Estrutura Plano de Contingência para Emergências Climáticas A ...",
-     "data": "21/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    }
-   ]
-  },
-  {
-   "ibge": "3302403",
-   "municipio": "Macaé",
-   "uf": "RJ",
-   "melhor_nivel": "B",
-   "n_pistas": 5,
-   "niveis": {
-    "A": 0,
-    "B": 2,
-    "C": 3
-   },
-   "pistas": [
-    {
-     "id": "4f3e0c2f47",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/Da0Kligjr2w/",
-     "titulo": "Macaé está se preparando para os possíveis impactos do El Niño ...",
-     "trecho": "Jul 15, 2026 ... May be a meme. Photo by Defesa Civil de Macaé on July 15, 2026. May be ...",
-     "data": "27/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "a169a4ca43",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_inicio_do_trecho"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/3302403/2025-10-11/0cc3251b8329372bb9921aba468701a459a5738f.pdf",
-     "titulo": "Diário oficial de 2025-10-11",
-     "trecho": "entra o Município de Macaé e o Consórcio Público Intermunicipal de Desenvolvimento do Norte e Noroeste Fluminense – CIDENF, e eventuais contratações oriundos desta, ao titular da Secretaria Executiva de Relações Institucionais, em especial quanto à or- denação de despesas e demais atos de gestão orçamentária, financeira e patrimonial. Art. 2º O Secretário Municipal de Governo, poderá, a qualquer momento, avocar para si, as atribuições e/ou competências aqui delegadas, de acordo com a conveniência",
-     "data": "27/09/2026",
-     "status": "pista — recusada pelo juiz: natureza_duvidosa"
-    },
-    {
-     "id": "66f8ba9275",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_oficial"
-     ],
-     "alertas": [],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/3302403/2026-09-16/a345866ab86301e92a3f7ea7e510c128f5f802de.pdf",
-     "titulo": "Diário oficial de 2026-09-16",
-     "trecho": "anterior, o saldo remanescente será revertido para a Reserva de Contingência na Secretaria Municipal de Planejamen- to e Gestão, conforme estabelecida no caput deste artigo. § 4º As Emendas Parlamentares Impositivas que apresentarem impedimentos de or- dem técnica que não puderem ser implementadas pelo Poder Executivo, com o fim de viabilizar a execução total ou parcial das programações orçamentárias, deverão obser- var os seguintes procedimentos e prazos, contados a partir da publicação do Decreto",
-     "data": "27/09/2026",
-     "status": "pista — recusada pelo juiz: natureza_duvidosa"
-    },
-    {
-     "id": "d6bbf7595b",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_oficial"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/3302403/2025-10-03/cbd9f3bfe5ec0ec19e8e387e610e9b27818d3287.pdf",
-     "titulo": "Diário oficial de 2025-10-03",
-     "trecho": "Automotivo Tipo: Mineral Premium Classificação: Api Gl-4 Viscosidade: Sae 80w DESCRIÇÃO COMPLEMENTAR: óleo lubrificante API GL 4 80W formulado com básicos parafínicos e aditivos de extrema pressão, desenvolvido para engrenagens automotivas: or ASTM: 4,0 (80W), 4,5 (90), 5,5 (140) (ASTM D1500) Viscosidade a 100°C (cSt): 8,30 (80W), 16,71 (90), 26,98 (140) (ASTM D445) Viscosidade a 40°C (cSt): 53,2 (80W), 178,45 (90), 377,85 (140) (ASTM D445) Densidade 20/4°C (g/cm³): 0,875 (80W)",
-     "data": "27/09/2026",
-     "status": "pista — recusada pelo juiz: natureza_duvidosa"
-    },
-    {
-     "id": "e417076448",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_so_no_trecho"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/3302403/2025-10-15/e630e72e75c26f7ef11f660a095ea27e0e5cf1aa.pdf",
-     "titulo": "Diário oficial de 2025-10-15",
-     "trecho": "vigência. O Edital, seus anexos e demais informações estarão disponíveis para download nos sites www.macae.rj.gov.br e www. compras.gov.br. Contato: licitacao@macae.rj.gov.br. Objeto: Seleção de propostas que tenham por objeto celebração de parceria com Or- ganização da Sociedade Civil – OSC, sem fins lucrativos, regularmente constituída, para gestão das Unidades de Assistência e Bem-Estar, em funcionamento no municí- pio, e a criação de uma Unidade Básica de Assistência e Bem-Estar Animal em região",
-     "data": "27/09/2026",
-     "status": "pista — recusada pelo juiz: natureza_duvidosa"
-    }
-   ]
-  },
-  {
    "ibge": "3303906",
    "municipio": "Petrópolis",
    "uf": "RJ",
@@ -124771,86 +125566,91 @@
    ]
   },
   {
-   "ibge": "2700805",
-   "municipio": "Belém",
-   "uf": "AL",
+   "ibge": "1300839",
+   "municipio": "Caapiranga",
+   "uf": "AM",
    "melhor_nivel": "B",
    "n_pistas": 4,
    "niveis": {
     "A": 0,
-    "B": 4,
-    "C": 0
+    "B": 3,
+    "C": 1
    },
    "pistas": [
     {
-     "id": "f31b168edf",
+     "id": "bfc9ac179d",
      "nivel_confianca": "B",
-     "pontos_confianca": 5,
+     "pontos_confianca": 4,
      "sinais": [
       "fonte_imprensa",
-      "municipio_no_titulo",
+      "municipio_na_url",
       "plano_no_trecho",
       "familia_de_risco_do_ciclo"
      ],
      "alertas": [],
      "origem": "busca_web",
-     "url": "https://aprovinciadopara.com.br/belem-vai-enfrentar-o-novo-el-nino-ha-riscos-de-seca-fumaca-e-doencas-na-capital-paraense-diz-a-fiocruz/",
-     "titulo": "Belém vai enfrentar o novo El Niño. Há riscos de seca, fumaça ...",
-     "trecho": "Nos últimos dias, também iniciou a elaboração de um Plano Municipal de Enfrentamento ao El Niño 2026-2027, reunindo 35 órgãos municipais, estaduais e federais para discutir medidas preventivas diante das projeções climáticas.",
-     "data": "25/09/2026",
+     "url": "https://www.portalmarcossantos.com.br/2026/08/11/super-el-nino-mp-acompanha-medidas-preventivas-para-fenomeno-em-caapiranga/",
+     "titulo": "Super El Niño: MP acompanha medidas preventivas para fenômeno ...",
+     "trecho": "Aug 11, 2026 ... Por conta da previsão de ocorrência do fenômeno climático Super El Niño em Caapiranga ... Plano de Contingência Municipal (Plancon) e a ...",
+     "data": "27/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "16205ceaeb",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.cnj.jus.br/wp-content/uploads/2025/09/justica-itinerante-f3-amazonia-legal-boca-do-acre-e-xapuri.pdf",
+     "titulo": "justiça itinerante cooperativa na amazônia legal 2025 - CNJ",
+     "trecho": "Sep 2, 2025 ... Caapiranga. Canutama. Carauari. Careiro. Careiro da Várzea ... Plano de contingência para eventos em massa: desenvolvimento de um plano para.",
+     "data": "04/10/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     },
     {
-     "id": "7f2e70971c",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.romanews.com.br/brasil/saiba-o-que-e-o-super-el-nino-e-por-que-ele-preocupa-o-brasil-em-2026-0726",
-     "titulo": "Entenda o Super El Niño e como Belém se prepara para enfrentar ...",
-     "trecho": "Diante desse cenário, a Prefeitura de Belém está elaborando o Plano Municipal de Enfrentamento ao Super El Niño 2026–2027.",
-     "data": "25/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "d0a5cdc873",
+     "id": "0ff95b70c7",
      "nivel_confianca": "B",
      "pontos_confianca": 3,
      "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "familia_de_risco_do_ciclo"
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
      ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.facebook.com/jornaldiariodopara/posts/bel%C3%A9m-est%C3%A1-pronta-para-enfrentar-o-super-el-ni%C3%B1o-2026-2027-com-um-plano-integrad/1020795150701006/",
-     "titulo": "Belém está pronta para enfrentar o Super El Niño 2026 ...",
-     "trecho": "Diário do Pará, Belém. 110,992 followers · 177,813 talking about this · 79 were here. O Diário do Pará é um jornal fundado pelo jornalista Laércio Wilson Barbalho, impresso diariamente em Belém desde...",
-     "data": "25/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.ciama.am.gov.br/wp-content/uploads/2020/10/Preliminar_PZFV_BIRD_Agosto_27.pdf",
+     "titulo": "programa de desenvolvimento regional do estado do amazonas ...",
+     "trecho": "A atividade foi ampliada para os municípios de Manacapuru, Iranduba, Caapiranga e Benjamin ... Deverá ser elaborado um Plano de Contingência para ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
     },
     {
-     "id": "885e08b5bd",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
+     "id": "6f54c6f958",
+     "nivel_confianca": "C",
+     "pontos_confianca": 1,
      "sinais": [
       "fonte_desconhecida",
-      "municipio_no_titulo",
-      "familia_de_risco_do_ciclo"
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
      ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DaqT2kElC19/",
-     "titulo": "EL NIÑO Belém pode enfrentar, nos próximos meses ...",
-     "trecho": "Create an account or log in to Instagram - Share what you're into with the people who get you.",
-     "data": "25/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://doe.tceam.tc.br/wp-content/uploads/2024/11/Edicao-de-n%C2%B03445-de-26-de-novembro-de-2024.pdf",
+     "titulo": "Manaus, 26 de novembro de 2024 Edição nº 3445 Pag.1",
+     "trecho": "Nov 12, 2024 ... APROVAÇÃO DE PLANO DE CONTINGÊNCIA MUNICIPAL COMPLETO, NO SENTIDO DE IMPLEMENTAR GESTÃO LOCAL DE RISCOS DE ... MUNICÍPIO DE CAAPIRANGA ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -125021,6 +125821,90 @@
      "trecho": "tiva, manutenção corretiva, identificação de \nequipamento inoperante e retirada segura de uso; \nV - plano de contingência para indisponibilidade de equipamentos críticos, incluindo remanejamento entre unidades, a cionamento de manutenção, \nsubstituição temporária, comunicação à gestão e registro da não conformidade; \nVI - integração da gestão de equipamentos críticos com os protocolos assistenciais, o Núcleo de Segurança do Paciente, o N",
      "data": "2026-08-18",
      "status": "fechada — notícia genérica: o mesmo artigo foi atribuído a vários municípios pela busca, e não trata de nenhum deles em particular"
+    }
+   ]
+  },
+  {
+   "ibge": "2508109",
+   "municipio": "Lagoa",
+   "uf": "PB",
+   "melhor_nivel": "B",
+   "n_pistas": 4,
+   "niveis": {
+    "A": 0,
+    "B": 4,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "8a4014bfe8",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "busca_web",
+     "url": "https://www.anglogoldashanti.com.br/wp-content/uploads/2024/01/PAELG-PN0151-Revisao-5_08.01.2024_tarjado_-LAGOA_GRANDE.pdf",
+     "titulo": "Plano de ação de Emergência - PAE BARRAGEM LAGOA GRANDE ...",
+     "trecho": "Horizonte é um sistema integrado, a implantação de um Plano de Contingência. Operacional, pode garantir um acréscimo no fornecimento de água para a área ...",
+     "data": "27/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "3f76ced5c8",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://auniao.pb.gov.br/servicos/doe/2026/maio/diario-oficial-09-05-2026-portal.pdf",
+     "titulo": "Diário Oficial 09-05-2026 Eduardo.indd - A União",
+     "trecho": "May 9, 2026 ... e a Prefeitura Municipal de São José da Lagoa Tapada/PB, por meio da Secretaria de Estado de Planeja- ... i) plano de contingência; j ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "8b77b5dab3",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.riotinto.pb.gov.br/publicacoes.php?campanha=1",
+     "titulo": "outras publicações - Prefeitura Municipal de Rio Tinto",
+     "trecho": "... Lagoa de Praia e Posto Âncora Lagoa de Praia. Acessar · BOLETIM OFICIAL ... Dispõe sobre readequação do Plano de Contingência Covid-19. Acessar · BOLETIM ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "d87a2d06fe",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.cagepa.pb.gov.br/wp-content/uploads/2026/02/PRSB-CAGEPA-LITORAL_publicacao.pdf",
+     "titulo": "ESTADO DA PARAÍBA PLANO REGIONAL DE SANEAMENTO ...",
+     "trecho": "Plano de Contingência Operacional ... gradeamento e caixa de areia, lagoa anaeróbia, lagoa facultativa e emissário final.",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -125685,74 +126569,6 @@
      "trecho": " situações de \nurgência devidamente justificadas. \n  \nArt. 6º - Compete ao Comitê:  \nI – Executar o Plano de Contingência Municipal – PLANCON \n2026;  \nII – Integrar-se ao Comitê Estadual para troca de informações e \ncoordenação de ações conjuntas;  \nIII – Monitorar e avaliar cenários de risco;  \nIV – Emitir alertas e recomendações;  \nV – Mobilizar recursos humanos, materiais e financeiros;  \nVI – Elaborar relatórios de situação e propor ",
      "data": "2026-10-02",
      "status": "fechada — notícia genérica: o mesmo artigo foi atribuído a vários municípios pela busca, e não trata de nenhum deles em particular"
-    }
-   ]
-  },
-  {
-   "ibge": "2929800",
-   "municipio": "Saúde",
-   "uf": "BA",
-   "melhor_nivel": "B",
-   "n_pistas": 3,
-   "niveis": {
-    "A": 0,
-    "B": 3,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "bea041a44e",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DdXJSijlMz7/",
-     "titulo": "O Ministério da Saúde anunciou um plano de contingência para ...",
-     "trecho": "6 days ago ... O Ministério da Saúde anunciou um plano de contingência para enfrentar os impactos do El Niño, do calor intenso e da seca no Nordeste.",
-     "data": "23/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "91647c4cad",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DdXJSijlMz7/",
-     "titulo": "O Ministério da Saúde anunciou um plano de contingência para ...",
-     "trecho": "Sep 16, 2026 ... O Ministério da Saúde anunciou um plano de contingência para enfrentar os impactos do El Niño, do calor intenso e da seca no Nordeste.",
-     "data": "26/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    },
-    {
-     "id": "a31600aeb5",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DdXM3Qjga7q/",
-     "titulo": "EL NIÑO ⚠️ O Ministério da Saúde prepara uma série de ações ...",
-     "trecho": "6 days ago ... ... Plano de Contingência para chuvas intensas, além da emissão de ... saúde relacionadas ao El Niño 2026-2027. O documento prevê ações ...",
-     "data": "23/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -126617,6 +127433,76 @@
      "titulo": "gabinete do prefeito - Imprensa Oficial",
      "trecho": "5º O Plano de Contingência para Situações de Baixas. Temperaturas a que ... 2014-0.041.292-3 - Museu de Arte de São Paulo – Assis. Chateaubriand - Cessão ...",
      "data": "30/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3537008",
+   "municipio": "Pedregulho",
+   "uf": "SP",
+   "melhor_nivel": "B",
+   "n_pistas": 3,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 2
+   },
+   "pistas": [
+    {
+     "id": "ec0c080dbe",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_na_url",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://smastr20.blob.core.windows.net/conesan/Pedregulho_RS_2018.pdf",
+     "titulo": "plano municipal específico dos serviços de saneamento básico",
+     "trecho": "Jun 30, 2018 ... Cândido Portinari (SP-334) passando por Batatais e Franca, até Pedregulho, como ... Quanto ao rendimento médio total, Pedregulho detém o menor ...",
+     "data": "26/09/2026",
+     "status": "pista — recusada pelo juiz: sem_documento_primario"
+    },
+    {
+     "id": "290606b725",
+     "nivel_confianca": "C",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "uf_divergente_na_url"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://sedurb.es.gov.br/media/PDF/Etapa%206%20-%20Plano%20Municipal%20de%20Saneamento%20B%C3%A1sico%20de%20Castelo.pdf",
+     "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO E GESTÃO ...",
+     "trecho": "... Pedregulho. Segunda, Quarta e. Sexta. -. Capivara. Segunda, Quarta e. Sexta. -. Ubá ... Plano de Contingência que tem por objetivo orientar as ações de ...",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "b01a7cb834",
+     "nivel_confianca": "C",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "uf_divergente_na_url"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/IBITIRAMA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202026.pdf",
+     "titulo": "PLANO DE CONTIGÊNCIA DE IBITIRAMA 2026 - CEPDEC",
+     "trecho": "O Plano de Contingência de Defesa Civil (PCDC) constitui-se como conjunto de ... Alegre, Pardinho, Monte Alverne, Pedra Roxa e Pedregulho. Ocupa uma ...",
+     "data": "04/10/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -128154,38 +129040,6 @@
    ]
   },
   {
-   "ibge": "1300839",
-   "municipio": "Caapiranga",
-   "uf": "AM",
-   "melhor_nivel": "B",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "bfc9ac179d",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.portalmarcossantos.com.br/2026/08/11/super-el-nino-mp-acompanha-medidas-preventivas-para-fenomeno-em-caapiranga/",
-     "titulo": "Super El Niño: MP acompanha medidas preventivas para fenômeno ...",
-     "trecho": "Aug 11, 2026 ... Por conta da previsão de ocorrência do fenômeno climático Super El Niño em Caapiranga ... Plano de Contingência Municipal (Plancon) e a ...",
-     "data": "27/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    }
-   ]
-  },
-  {
    "ibge": "1302306",
    "municipio": "JUTAÍ",
    "uf": "AM",
@@ -128244,38 +129098,6 @@
      "trecho": "te os índices pluviométricos, níveis de \nreservatórios e focos de calor no município. \n• Elaborar o Plano de Contingência Municipal para Estiagem e \nIncêndios Florestais. \n• Articular o fornecimento emergencial de água potável para as \ncomunidades afetadas, com prioridade para escolas, hospital, UBS’s e \nPostos de Saúde. \n• Coo",
      "data": "2026-09-08",
      "status": "fechada — notícia genérica: o mesmo artigo foi atribuído a vários municípios pela busca, e não trata de nenhum deles em particular"
-    }
-   ]
-  },
-  {
-   "ibge": "1303403",
-   "municipio": "Parintins",
-   "uf": "AM",
-   "melhor_nivel": "B",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "a86d3d616f",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://parintinsnoticias.com/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico/",
-     "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
-     "trecho": "3 days ago ... Resumindo: plano de contingência, população das áreas de risco ... Parintins, Amazonas. © 2026 Parintins Notícias. Todos os direitos ...",
-     "data": "27/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -128934,39 +129756,6 @@
      "trecho": "O sucesso do Plano de Comunicação Municipal para a Alfabetização na Idade Certaem Diamantino – MT depende diretamente da sinergia entre a Secretaria Municipal de Educação, a assessoria de comunicação da prefeitura e as equipes escolares.",
      "data": "29/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "2508109",
-   "municipio": "Lagoa",
-   "uf": "PB",
-   "melhor_nivel": "B",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "8a4014bfe8",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_titulo"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "busca_web",
-     "url": "https://www.anglogoldashanti.com.br/wp-content/uploads/2024/01/PAELG-PN0151-Revisao-5_08.01.2024_tarjado_-LAGOA_GRANDE.pdf",
-     "titulo": "Plano de ação de Emergência - PAE BARRAGEM LAGOA GRANDE ...",
-     "trecho": "Horizonte é um sistema integrado, a implantação de um Plano de Contingência. Operacional, pode garantir um acréscimo no fornecimento de água para a área ...",
-     "data": "27/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
   },
@@ -129754,37 +130543,6 @@
      "titulo": null,
      "trecho": "Jul 23, 2026 ... Com a atualização do Plano de Contingência e o fortalecimento da integração entre os órgãos municipais e estaduais, Valença busca ampliar ...",
      "data": "21/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    }
-   ]
-  },
-  {
-   "ibge": "2410207",
-   "municipio": "Portalegre",
-   "uf": "RN",
-   "melhor_nivel": "B",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "ed61fcdedc",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_titulo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.cm-portalegre.pt/blog/2026/07/02/plano-de-contingencia-do-municipio-de-portalegre-para-as-ondas-de-calor-temperaturas-elevadas/",
-     "titulo": "Plano de Contingência do Município de Portalegre para as ondas ...",
-     "trecho": "Devido às elevadas temperaturas ... os seguintes espaços climatizados como abrigo temporário: Centro de Artes do Espetáculo – 14h00-19h00 e 20h30-23h30 ......",
-     "data": "26/09/2026",
      "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
@@ -130974,37 +131732,6 @@
      "titulo": "MUNICÍPIO DE MONTE ALEGRE DO SUL PLANO MUNICIPAL DE ...",
      "trecho": "... Plano de Contingência para o Sistema de Esgotamento Sanitário. 351. 6.4. Prognóstico do Sistema de Drenagem Pluvial do Município de Monte Alegre do Sul. 353.",
      "data": "23/09/2026",
-     "status": "pista — recusada pelo juiz: sem_documento_primario"
-    }
-   ]
-  },
-  {
-   "ibge": "3537008",
-   "municipio": "Pedregulho",
-   "uf": "SP",
-   "melhor_nivel": "B",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "ec0c080dbe",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_na_url",
-      "plano_no_titulo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://smastr20.blob.core.windows.net/conesan/Pedregulho_RS_2018.pdf",
-     "titulo": "plano municipal específico dos serviços de saneamento básico",
-     "trecho": "Jun 30, 2018 ... Cândido Portinari (SP-334) passando por Batatais e Franca, até Pedregulho, como ... Quanto ao rendimento médio total, Pedregulho detém o menor ...",
-     "data": "26/09/2026",
      "status": "pista — recusada pelo juiz: sem_documento_primario"
     }
    ]
@@ -144532,6 +145259,39 @@
      "trecho": null,
      "data": "28/08/2026",
      "status": "fechada — sem documento oficial localizado no prazo da fila; reabre se surgir evidência nova para o mesmo município e assunto"
+    }
+   ]
+  },
+  {
+   "ibge": "1721109",
+   "municipio": "Tocantínia",
+   "uf": "TO",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "f73ce58110",
+     "nivel_confianca": "C",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo"
+     ],
+     "origem": "busca_web",
+     "url": "https://pesquisa.bvsalud.org/portal/resource/pt/biblio-1140154",
+     "titulo": "Plano de contingência do munícipio de Tocantinía: Novo Coronavírus ...",
+     "trecho": "Orienta na campanha para ações de combate ao Coronavírus (Covid-19) no município de Tocantínia no Tocantins. Apresenta quais …",
+     "data": "04/10/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
   }

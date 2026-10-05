@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 04/10/2026 · 2714 pendente(s) · 6001 decidida(s) · A=168 B=474 C=2072
+Gerado em 04/10/2026 · 2755 pendente(s) · 6001 decidida(s) · A=172 B=498 C=2085
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -58,6 +58,32 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Meio Ambiente · Arborização · Infraestrutura · Atenção primária · Arborização · Mobilidade · Compromisso · Mobilidade · Oportunidade · ÚLTIMAS NOTÍCIAS · Oportunidade · Fiscalização · Nota de Pesar · Mais notícias · Plan
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
+## Parintins/AM — 5 pendente(s)
+- `8e37b049c8` · nível **A** (6 pts) · seguimento_busca_oficial · DUVIDA · citação não extraída
+  - título: prefeitura municipal de parintins
+  - url: https://files.parintins.am.gov.br/relatoriomunicipalsaude/1.pdf
+  - trecho: realização das vacinas nas comunidades. ✓. Execução do plano de contingência da estiagem, com ações intersetoriais em todas ... de Parintins-AM. Fonte: Relatório ...
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `a86d3d616f` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Especialista resume alertas sobre El Niño e cobra ações urgentes ...
+  - url: https://parintinsnoticias.com/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico/
+  - trecho: 3 days ago ... Resumindo: plano de contingência, população das áreas de risco ... Parintins, Amazonas. © 2026 Parintins Notícias. Todos os direitos ...
+- `3f4fab56d4` · nível **B** (4 pts) · seguimento_busca_oficial · — · data 2020 (do trecho)
+  - título: Ministério da Saúde - Portal Gov.br
+  - url: https://www.gov.br/saude/pt-br/composicao/sesai/publicacoes/plano-de-contingencia-nacional-para-covid-19-em-povos-indigenas-dsei-pin-parintins
+  - trecho: PLANO DE CONTINGÊNCIA DISTRITAL PARA INFECÇÃO HUMANA. PELO NOVO CORONAVÍRUS (COVID-19) EM POVOS INDÍGENAS. HEXKARYANA E SATERÉ-MAWÉ. PARINTINS/AM. 2020. Page 2 ...
+- `ba8d69dbc9` · nível **B** (4 pts) · seguimento_busca_oficial · DUVIDA · citação não extraída
+  - título: constituição do estado do amazonas - Legisla.AM
+  - url: https://legisla.imprensaoficial.am.gov.br/diario_am/12/1989/10/746
+  - trecho: ... Parintins, Pauini, Presidente Figueiredo, Puraquequara, Purupuru, Rio Preto ... IV - coordenar a elaboração do plano de contingência estadual e ...
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `5cc96f4339` · nível **B** (3 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: PDF - Amazonas
+  - url: https://www.amazonas.am.gov.br/wp-content/uploads/2025/01/2_Mensagem-Governamental-2021-%E2%80%93-Relatorio-de-Atividades-2020.pdf
+  - trecho: casos no estado do Amazonas, elaboração e atualização de plano de contingência, intensificação da ... Parintins, Presidente Figueiredo, Rio Preto da Eva ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+
 ## Pacajus/CE — 2 pendente(s)
 - `0f13e405fb` · nível **A** (7 pts) · busca_web · DUVIDA · **Lei nº 403**, 24/06/2015
   - título: Governo de Pacajus - pacajus.ce.gov.br
@@ -78,7 +104,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Nesta terça-feira (21), acontenceu ... servidores públicos e membros de entidades locais sobre a elaboração do Plano de Contingência Municipal....
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
-## Serra/ES — 5 pendente(s)
+## Serra/ES — 6 pendente(s)
 - `49d4550b60` · nível **A** (8 pts) · busca_web · EX_ANTE · data 08/08/2026 (do trecho)
   - título: Serra apresenta plano de contingência para enfrentar possíveis ...
   - url: https://www.portaltemponovo.com.br/serra-apresenta-plano-de-contingencia-para-enfrentar-possiveis-impactos-do-el-nino/
@@ -104,6 +130,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: s3://okbr-qd-migration//3205002/2025-12-29/c949d9bb8d6ed6cee21f7b449559a342fd8cba47.pdf
   - trecho: Protocolo 1697291 PORTARIA CG Nº 046/2025 PUBLICA O PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DE SERRA - 2025 (PMPDEC). A COORDENADORA MUNICIPAL DE GOVERNO, no uso das atribuições que lhe são conferidas por lei; CONSIDE
   - ⚠ ano_anterior_ao_ciclo
+- `5ad3b2bec8` · nível **C** (4 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: PLANO MUNICIPAL DE CONTINGÊNCIA (PLANCON) – COTIA/SP
+  - url: https://cotia.sp.gov.br/wp-content/uploads/2026/09/plano-municipal-de-contingencia-3-1.pdf
+  - trecho: Participar da elaboração e atualização do Plano de Contingência. Resposta ... Ressaca (divisa com Itapecerica da Serra), Ribeirão da Vargem Grande, Córrego Moinho ...
+  - ⚠ uf_divergente_na_url
+  - juiz: portão automático: alerta da triagem de confiança: uf_divergente_na_url
 
 ## São Mateus/ES — 5 pendente(s)
 - `dfee82c174` · nível **A** (7 pts) · seguimento_busca_oficial · — · citação não extraída
@@ -314,12 +346,29 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Lei 14.904/24
   - ⚠ ano_anterior_ao_ciclo
 
-## Inconfidentes/MG — 1 pendente(s)
+## Inconfidentes/MG — 4 pendente(s)
 - `6f1e9a2bb2` · nível **A** (6 pts) · busca_web · RESPOSTA · **Lei 12.340**, 2011
   - título: Especialista resume alertas sobre El Niño e cobra ações urgentes ...
   - url: https://www.panoramainconfidentes.com.br/noticia/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico
   - trecho: Por Panorama Inconfidentes Em 24/09/2026 19:34. Especialista resume alertas sobre El Niño e cobra ações urgentes do ... Resumindo: plano de contingência, ...
   - juiz: portão automático: fonte não oficial
+- `2bdf3f4496` · nível **B** (6 pts) · seguimento_busca_oficial · RESPOSTA · data 09/02/2022 (do trecho)
+  - título: Relatório período chuvoso 2024/2025
+  - url: https://www.mg.gov.br/system/files/media/documento_detalhado/2025-05/RELAT%C3%93RIO%20PER%C3%8DODO%20CHUVOSO%2024-25.pdf
+  - trecho: No Plano de Contingência, apenas o risco de inundação foi mapeado. No ... Inconfidentes. 09/02/2022. 12100 - Inundações. Tocos do Moji. 10/02/2022. 12200 ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza RESPOSTA — só ex-ante é aplicado sozinho
+- `6bcd41d79e` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · data 2023 (do trecho)
+  - título: Novos semáforos e sinalizações no bairro Inconfidentes - Transcon
+  - url: https://www.transcon.contagem.mg.gov.br/portal/noticias/0/3/156/novos-semaforos-e-sinalizacoes-no-bairro-inconfidentes
+  - trecho: Aug 8, 2023 ... Novos semáforos e sinalizações no bairro Inconfidentes. ... Autoridades municipais se unem para preparar Plano de Contingência para o período ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `923e8e5d5a` · nível **B** (3 pts) · seguimento_busca_oficial · EX_ANTE · data 2024 (do trecho)
+  - título: Nota Informativa 35 (0045195845) SEI 25000.195969/2024-66 / pg. 1
+  - url: https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/estudos-e-notas-informativas/2024/nota-informativa-no-35-2024.pdf
+  - trecho: Jan 15, 2025 ... está previsto no “Plano de Contingência para Resposta às Emergências ... Inconfidentes. SP. 350950. Campinas. SP. 354970. São José do Rio ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 
 ## Lambari/MG — 4 pendente(s)
 - `36a3c6f5a6` · nível **A** (6 pts) · seguimento_busca_oficial · DUVIDA · **Lei n.º 14.133**, 01/04/2021
@@ -810,6 +859,57 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: fundamentais deste plano de contingência. Diante de todo esse contexto, o ... Escola Municipal Santana Itatiaia. Campus Universitário s/nº - Martelos.
   - ⚠ uf_divergente_na_url
 
+## Macaé/RJ — 9 pendente(s)
+- `ac7643eb51` · nível **A** (6 pts) · seguimento_busca_oficial · EX_ANTE · **Decreto 205**, 2022
+  - título: Plano de Contingência de Proteção e Defesa Civil é apresentado
+  - url: https://www.macae.rj.gov.br/noticias/leitura/noticia/plano-de-contingencia-de-protecao-e-defesa-civil-e-apresentado
+  - trecho: Dec 1, 2025 ... Somos um governo que avança em várias áreas e queremos uma Macaé melhor”, ressaltou. O Plano de Contingência de Proteção e Defesa Civil foi ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `4722e2bc9e` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · **Lei Municipal 3.233**, 2009
+  - título: Conselho Municipal de Saúde - Prefeitura Municipal de Macaé
+  - url: https://www.macae.rj.gov.br/cms/conteudo/titulo/leis-e-resolucoes
+  - trecho: Resolução 009/2015 - aprovação do plano de contingência da dengue 2015 (111 Kb) ... Macaé de acordo com a Política de Privacidade. Se clicar em "Rejeitar ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `4f3e0c2f47` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: Macaé está se preparando para os possíveis impactos do El Niño ...
+  - url: https://www.instagram.com/p/Da0Kligjr2w/
+  - trecho: Jul 15, 2026 ... May be a meme. Photo by Defesa Civil de Macaé on July 15, 2026. May be ...
+  - juiz: portão automático: fonte não oficial
+- `a169a4ca43` · nível **B** (3 pts) · seguimento_querido_diario · EX_ANTE · data 2025 (do trecho)
+  - título: Diário oficial de 2025-10-11
+  - url: https://data.queridodiario.ok.org.br/3302403/2025-10-11/0cc3251b8329372bb9921aba468701a459a5738f.pdf
+  - trecho: entra o Município de Macaé e o Consórcio Público Intermunicipal de Desenvolvimento do Norte e Noroeste Fluminense – CIDENF, e eventuais contratações oriundos desta, ao titular da Secretaria Executiva de Relações Instituc
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `bd1cd6c21d` · nível **C** (5 pts) · seguimento_busca_oficial · DUVIDA · **Decreto Municipal 134**, 2020
+  - título: Coronavírus - Secretaria de Saúde - Prefeitura Municipal de Macaé
+  - url: https://www.macae.rj.gov.br/saude/conteudo/titulo/coronavirus-informacoes-e-orientacoes-importantes
+  - trecho: Plano de contingência para o coronavírus · Decreto Municipal 134/2020 · Decreto ... Ao aceitar, você terá acesso a todas as funcionalidades do site e concorda em ...
+  - ⚠ risco_errado_no_titulo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `66f8ba9275` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · **LEI Nº. 5.593**, 2026
+  - título: Diário oficial de 2026-09-16
+  - url: https://data.queridodiario.ok.org.br/3302403/2026-09-16/a345866ab86301e92a3f7ea7e510c128f5f802de.pdf
+  - trecho: anterior, o saldo remanescente será revertido para a Reserva de Contingência na Secretaria Municipal de Planejamen- to e Gestão, conforme estabelecida no caput deste artigo. § 4º As Emendas Parlamentares Impositivas que 
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `d6bbf7595b` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · **PORTARIA Nº. 1.503**, 2025
+  - título: Diário oficial de 2025-10-03
+  - url: https://data.queridodiario.ok.org.br/3302403/2025-10-03/cbd9f3bfe5ec0ec19e8e387e610e9b27818d3287.pdf
+  - trecho: Automotivo Tipo: Mineral Premium Classificação: Api Gl-4 Viscosidade: Sae 80w DESCRIÇÃO COMPLEMENTAR: óleo lubrificante API GL 4 80W formulado com básicos parafínicos e aditivos de extrema pressão, desenvolvido para engr
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `e417076448` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · data 2025 (do trecho)
+  - título: Diário oficial de 2025-10-15
+  - url: https://data.queridodiario.ok.org.br/3302403/2025-10-15/e630e72e75c26f7ef11f660a095ea27e0e5cf1aa.pdf
+  - trecho: vigência. O Edital, seus anexos e demais informações estarão disponíveis para download nos sites www.macae.rj.gov.br e www. compras.gov.br. Contato: licitacao@macae.rj.gov.br. Objeto: Seleção de propostas que tenham por 
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `5d71e3b3bc` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · **Portaria n.º 030**, 06/05/2026
+  - título: Diário oficial de 2026-09-29
+  - url: https://data.queridodiario.ok.org.br/3302403/2026-09-29/96475fb7dcd6e96b2e4bca694ba133fd27602c97.pdf
+  - trecho: XVIII – Secretaria Municipal de Ordem Pública Titular: Não indicado Suplente: Não indicado § 1º A Comissão será coordenada e presidida pelo representante da Secretaria Muni- cipal de Políticas de Promoção da Igualdade Ra
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+
 ## Resende/RJ — 3 pendente(s)
 - `755af763db` · nível **A** (6 pts) · seguimento_busca_oficial · DUVIDA · citação não extraída
   - título: PLANO MUNICIPAL DE SANEAMENTO BÁSICO Resende - RJ
@@ -885,12 +985,20 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Municipal reuniu todos os setores envolvidos para tomada de decisões imediatas, a partir de um Plano de Contingência.
   - juiz: portão automático: sem texto normativo articulado (Art. 1º / fica instituído)
 
-## Saquarema/RJ — 5 pendente(s)
+## Saquarema/RJ — 9 pendente(s)
 - `456aa025e5` · nível **A** (6 pts) · busca_web · EX_ANTE · **Lei 12.340**, 2011
   - título: Especialista resume alertas sobre El Niño e cobra ações urgentes ...
   - url: https://www.serramarnews.com.br/noticia/11506/saquarema/politica/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico.html
   - trecho: 2 days ago ... Saquarema,25/09/2026. tempo hoje 26°|26°. Serramar FM. ○ AO VIVO92,1 ... Resumindo: plano de contingência, população das áreas de risco ...
   - juiz: portão automático: fonte não oficial
+- `3cc86d552d` · nível **A** (6 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: PDF Diário Oficial do Município de Saquarema | Poder Executivo | Ano VIII ...
+  - url: https://dos.saquarema.rj.gov.br/wp-content/uploads/2026/08/D.O.S.-1978-8.pdf
+  - trecho: "Nossa participação neste encontro é fundamental para alinharmos as estratégias de Saquarema com o plano de contingência estadual. O El Niño traz desafios diretos para a saúde pública, e o trabalho integrado das secretar
+- `1846b11833` · nível **B** (5 pts) · seguimento_busca_oficial · — · data 2026 (do trecho)
+  - título: Câmara Municipal de Saquarema
+  - url: https://transparencia.saquarema.rj.leg.br/materias/17533
+  - trecho: A solicitação de elaboração e execução de um plano de contingência emergencial específico para o período sazonal de dezembro de 2026, janeiro de 2027 e fevereiro de 2027 se faz necessária para garantir a segurança e o ab
 - `cf5bb3f6d7` · nível **B** (4 pts) · seguimento_querido_diario · DUVIDA · **DECRETO Nº 3.118**, 03/12/2025
   - título: Diário oficial de 2025-12-05
   - url: https://data.queridodiario.ok.org.br/3305505/2025-12-05/2e89b8976c8bdcaafb20133421c51d34a5cc75e6.pdf
@@ -907,6 +1015,15 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://data.queridodiario.ok.org.br/3305505/2026-03-23/a354a774d51c2aa915811ed66b993a729b950b79.pdf
   - trecho: Municipal nº 2.837, de 16 de março de 2026; DECRETA Art. 1º Fica aberto Crédito Adicional Es- pecial, no montante de R$ 59.010,00 (cinquenta e nove mil e dez reais), por Anulação Parcial de Dotação, alocada na Secretaria
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `2e511e6dfa` · nível **B** (4 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: Plano de Manejo do Parque Estadual da Costa do Sol
+  - url: https://www.saquarema.rj.gov.br/wp-content/uploads/2020/07/PLANO-DE-MANEJO-PCSOL-2019.pdf
+  - trecho: Saquarema: 7,58% da área do município estão no PECS, equivalendo a 24,86% da ... do Plano de Contingência já existente no PECS). Levantamento dos ...
+  - ⚠ ano_anterior_ao_ciclo
+- `ab184c6fc6` · nível **B** (4 pts) · seguimento_busca_oficial · — · data 02/01/2025 (do trecho)
+  - título: Exportar - Câmara Municipal de Saquarema
+  - url: https://transparencia.saquarema.rj.leg.br/materias/export?origem=V-303
+  - trecho: 98/2025, DE 02 DE JANEIRO DE 2025, QUE "DISPÕE SOBRE O REGIMENTO INTERNO DA CÂMARA MUNICIPAL DE SAQUAREMA-RJ". Comissão de Educação, Cultura, Bem Estar ...
 - `9dcb3b22ad` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · data 2026 (do trecho)
   - título: Diário oficial de 2026-04-22
   - url: https://data.queridodiario.ok.org.br/3305505/2026-04-22/e356e157a90e44fa51139715ebffe6de2c90b8f7.pdf
@@ -918,6 +1035,23 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: Versão: 1.2 - Prefeitura do Natal
   - url: https://www.natal.rn.gov.br/storage/app/media/semdes/planodecontigencia.pdf
   - trecho: ... Plano de Contingência para enfrentamento de riscos e desastres 2025/2026. ... Maria Salete Alves Bila. Rua Abreulândia , s/n, Planalto. CMEI Prof. Maria ...
+
+## Portalegre/RN — 3 pendente(s)
+- `b9c184b4ca` · nível **A** (7 pts) · seguimento_busca_oficial · DUVIDA · **DECRETO Nº 024**, 06/06/2019
+  - título: concurso - Prefeitura de Portalegre
+  - url: https://www.portalegre.rn.gov.br/publicacoes.php?grupo=13&ta=3
+  - trecho: ... PORTALEGRE RN, PLANO DE CARGOS E SALÁRIOS, PLANO DE CONTINGÊNCIA MUNICIPAL COVID-19 ... DECRETO Nº 024/2019 – GP/PMP Portalegre/RN, 06 de junho de 2019 ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `ed61fcdedc` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: Plano de Contingência do Município de Portalegre para as ondas ...
+  - url: https://www.cm-portalegre.pt/blog/2026/07/02/plano-de-contingencia-do-municipio-de-portalegre-para-as-ondas-de-calor-temperaturas-elevadas/
+  - trecho: Devido às elevadas temperaturas ... os seguintes espaços climatizados como abrigo temporário: Centro de Artes do Espetáculo – 14h00-19h00 e 20h30-23h30 ......
+  - juiz: portão automático: fonte não oficial
+- `1673701b2a` · nível **B** (3 pts) · seguimento_busca_oficial · EX_ANTE · **DECRETO Nº 33.877**, 19/08/2024
+  - título: Diário Oficial - ESTADO DO RIO GRANDE DO NORTE
+  - url: https://webdisk.diariooficial.rn.gov.br/Jornal/12024-08-20.pdf
+  - trecho: Aug 23, 2024 ... ... Plano de Contingência e Emergência da estação de trata- mento de ... PmJ de Portalegre. Ministério Público Estadual; e Maria Helena de ...
+  - juiz: portão automático: ato de 2024 — pode ser edição anterior; decisão humana
 
 ## São Vicente/RN — 5 pendente(s)
 - `c9edcbd126` · nível **A** (7 pts) · busca_web · DUVIDA · citação não extraída
@@ -1281,12 +1415,17 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Criciúma/SC — 5 pendente(s)
+## Criciúma/SC — 6 pendente(s)
 - `f220e24e26` · nível **A** (6 pts) · seguimento_busca_oficial · EX_ANTE · **PORTARIA Nº 157**, 13/11/2020
   - título: Diário Oficial dos Municípios de Santa Catarina - DOM/SC
   - url: https://www.diariomunicipal.sc.gov.br/?r=site%2Findex&q=cod_entidade%3A79
   - trecho: MUNICÍPIO DE CRICIÚMA Poder Executivo Secretaria Geral / Apoio Administrativo PORTARIA Nº 1571/SME/2020 Homologa, com registro em ata, o Plano de Contingência, ...
   - juiz: portão automático: ato de 2020 — pode ser edição anterior; decisão humana
+- `7a18f7fa17` · nível **B** (6 pts) · seguimento_busca_oficial · — · data 2022 (do trecho)
+  - título: PLANO MUNICIPAL DE CONTINGÊNCIA-EDUCAÇÃO
+  - url: https://urussanga.sc.gov.br/uploads/sites/473/2022/02/plancon6.pdf
+  - trecho: Feb 19, 2022 ... de Criciúma. Rosilene Aparecida Matos, representante dos ... Plano de Contingência de Proteção e Defesa Civil (PLANCON-PDC). Nele ...
+  - ⚠ ano_anterior_ao_ciclo
 - `ce1eba8afb` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · **Lei Municipal n° 3.172**, 07/05/2025
   - título: Decreto - Prefeitura Municipal de Criciúma
   - url: https://apoio.criciuma.sc.gov.br/files/6824fc1e18f0f14052025.pdf
@@ -1335,7 +1474,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.irati.sc.gov.br/uploads/364/arquivos/2008302_PLANO_DE_CONTINGENCIA_IRATI_SC.pdf
   - trecho: Plano de contingência aplicável ao Município de IRATI-SC. Equipe responsável ... SALETE F. M. DAL BELLO e SANDRA B. ZANCHET: Representante dos ...
 
-## Itajaí/SC — 7 pendente(s)
+## Itajaí/SC — 8 pendente(s)
 - `952958170b` · nível **A** (7 pts) · seguimento_busca_oficial · EX_ANTE · data 29/10/2016 (do trecho)
   - título: Plano Vigidesastre 2025 2027.docx - Vigilância Sanitária
   - url: https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/406-regional-de-saude-de-itajai.html?download=1312%3Appr-esp-itajai&Itemid=109
@@ -1371,6 +1510,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.instagram.com/reel/DdeH-bKxvPQ/
   - trecho: Sep 19, 2026 ... ... plano de contingência. A estratégia inclui o monitoramento de ... Photo by Defesa Civil de Itajaí on September 08, 2026. May be an ...
   - juiz: portão automático: fonte não oficial
+- `7b8e8b5143` · nível **C** (5 pts) · seguimento_busca_oficial · — · data 2026 (do trecho)
+  - título: 43º Sessão Ordinária - 09-07-2026 - Câmara de Vereadores de Itajaí
+  - url: https://www.cvi.sc.gov.br/sessao/43o-sessao-ordinaria-09-07-2026-1000165
+  - trecho: Jul 9, 2026 ... solicitando via SEMASA a avaliação, a elaboração e divulgação de plano de contingência ... Itajaí/SC - CEP 88307-303. Legisoft. 2026 - Todos os ...
+  - ⚠ risco_errado_no_titulo
 
 ## Lages/SC — 5 pendente(s)
 - `7596e02225` · nível **A** (6 pts) · busca_web · DUVIDA · data 2025 (do trecho)
@@ -1965,12 +2109,17 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Milena Rinaldo destacou a importância ... que ninguém fique desamparado. Estamos organizando abrigos, suprimentos e equipes de apoio para agir com rapidez e acolhimento, caso seja necessário....
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
-## Panorama/SP — 1 pendente(s)
+## Panorama/SP — 2 pendente(s)
 - `0e8defe30c` · nível **A** (6 pts) · busca_web · RESPOSTA · **Lei 12.340**, 2011
   - título: Especialista resume alertas sobre El Niño e cobra ações urgentes ...
   - url: https://www.panoramainconfidentes.com.br/noticia/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico
   - trecho: Por Panorama Inconfidentes Em 24/09/2026 19:34. Especialista resume alertas sobre El Niño e cobra ações urgentes do ... Resumindo: plano de contingência, ...
   - juiz: portão automático: fonte não oficial
+- `00b0a054f0` · nível **B** (5 pts) · seguimento_busca_oficial · DUVIDA · **Lei 13.979**, 20/03/2020
+  - título: Panorama, SP Telefone (18) 3871-1609 e-mail
+  - url: https://www.pauliceia.sp.gov.br/arquivos/downloads/recomendao_MP.pdf
+  - trecho: Feb 3, 2020 ... plano de contingência, com a previsão de ações indispensáveis ao balizamento da ... Panorama, SP, 26 de março de 2020. EMERSON MARTINS ...
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Pereiras/SP — 1 pendente(s)
 - `742c031931` · nível **A** (6 pts) · busca_web · DUVIDA · **Lei N° 11.445**, 05/01/2007
@@ -10133,7 +10282,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://news.google.com/rss/articles/CBMivAFBVV95cUxOaW5aZDNtQ1d0dWR1eGR0S2J2NUd3bW5rUktQYmpXMTRpaElySFlKOEpYbl95aFQ1d0ZqeTFlb0MyQ1RhcEpqZEtMWGlBREdEU2twMzVjQzd4NzRoNXNxSExiNkxtYWpaNEF0UEFhOElmZnBzWlVXcU8zdjdNZGNTZlVOcDJJQ0kxanhaTDZ4VFdIcXN3V2l5MDlvYXNxR09zWDE3RnFSS3pZdTNEcGQ4YUNmNFMtUlI5ekp2Nw?oc=5
   - trecho: 
 
-## Belém/AL — 4 pendente(s)
+## Belém/AL — 8 pendente(s)
 - `f31b168edf` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
   - título: Belém vai enfrentar o novo El Niño. Há riscos de seca, fumaça ...
   - url: https://aprovinciadopara.com.br/belem-vai-enfrentar-o-novo-el-nino-ha-riscos-de-seca-fumaca-e-doencas-na-capital-paraense-diz-a-fiocruz/
@@ -10153,19 +10302,53 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.instagram.com/p/DaqT2kElC19/
   - trecho: Create an account or log in to Instagram - Share what you're into with the people who get you.
   - juiz: portão automático: fonte não oficial
+- `4beb6ccdf0` · nível **B** (3 pts) · seguimento_busca_oficial · DUVIDA · **Lei nº 14.904**, 2024
+  - título: GUIA PARA ELABORAÇÃO DE PLANOS DE ADAPTAÇÃO DO ...
+  - url: https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/guias-e-manuais/2026/guia-para-elaboracao-de-planos-de-adaptacao-a-mudanca-do-clima-do-setor-saude-versao-final-preliminar.pdf/@@download/file
+  - trecho: Desse modo, é fundamental compreender que plano de ação, plano de contingência, ... Belém. A iniciativa busca fortalecer a ação coletiva no enfrentamento dos ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `7dbe3ae9cd` · nível **C** (6 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: Plano de Contingencia de seca e estiagem
+  - url: http://paraiba-portal-backend.plone.rke.codataprd.pb.gov.br/portal_paraiba/diretas/saude/arquivos-1/vigilancia-em-saude/plano-de-contingencia-de-seca-e-estiagem-ses-paraiba-versao-final.pdf
+  - trecho: ESTRATÉGIA DO PLANO DE CONTINGÊNCIA ... BELÉM LUIZ ALEXANDRINO. DA SILVA. Endereço: Rua Projetada, S/N - Conjunto Nova.
+  - ⚠ uf_divergente_na_url
+  - juiz: portão automático: alerta da triagem de confiança: uf_divergente_na_url
+- `3497d4b116` · nível **C** (5 pts) · seguimento_busca_oficial · — · data 2019 (do trecho)
+  - título: PLANO DE CONTINGÊNCIA PERÍODOS CHUVOSOS - Defesa Civil
+  - url: https://www.defesacivil.se.gov.br/wp-content/uploads/2019/03/PLANO-DE-CONTING%C3%8ANCIA-2019-1.pdf
+  - trecho: Mar 17, 2019 ... 5.1|PLANO DE CONTINGÊNCIA ... Rua Eduardo Cruz, Rua Belém e Av. Confiança;. 60. Rua Socorro c/ Av ...
+  - ⚠ uf_divergente_na_url, ano_anterior_ao_ciclo
+- `bef3493509` · nível **C** (4 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: Plano de Contingência Municipal para Infecção Humana pelo Novo ...
+  - url: https://santaizabel.pa.gov.br/wp-content/uploads/2021/04/CONTIGENCIA.pdf
+  - trecho: Plano de Contingência do Município de Santa Izabel do Pará para a. Infecção ... Belém - PA, 66811-000. Geral: (91) 3199-9860. Diretor: (18) 99660-7121.
+  - ⚠ uf_divergente_na_url, ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo, uf_divergente_na_url
 
-## Caapiranga/AM — 1 pendente(s)
+## Caapiranga/AM — 4 pendente(s)
 - `bfc9ac179d` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Super El Niño: MP acompanha medidas preventivas para fenômeno ...
   - url: https://www.portalmarcossantos.com.br/2026/08/11/super-el-nino-mp-acompanha-medidas-preventivas-para-fenomeno-em-caapiranga/
   - trecho: Aug 11, 2026 ... Por conta da previsão de ocorrência do fenômeno climático Super El Niño em Caapiranga ... Plano de Contingência Municipal (Plancon) e a ...
   - juiz: portão automático: fonte não oficial
-
-## Parintins/AM — 1 pendente(s)
-- `a86d3d616f` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
-  - título: Especialista resume alertas sobre El Niño e cobra ações urgentes ...
-  - url: https://parintinsnoticias.com/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico/
-  - trecho: 3 days ago ... Resumindo: plano de contingência, população das áreas de risco ... Parintins, Amazonas. © 2026 Parintins Notícias. Todos os direitos ...
+- `16205ceaeb` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · **Resolução n. 331**, 2020
+  - título: justiça itinerante cooperativa na amazônia legal 2025 - CNJ
+  - url: https://www.cnj.jus.br/wp-content/uploads/2025/09/justica-itinerante-f3-amazonia-legal-boca-do-acre-e-xapuri.pdf
+  - trecho: Sep 2, 2025 ... Caapiranga. Canutama. Carauari. Careiro. Careiro da Várzea ... Plano de contingência para eventos em massa: desenvolvimento de um plano para.
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `0ff95b70c7` · nível **B** (3 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: programa de desenvolvimento regional do estado do amazonas ...
+  - url: https://www.ciama.am.gov.br/wp-content/uploads/2020/10/Preliminar_PZFV_BIRD_Agosto_27.pdf
+  - trecho: A atividade foi ampliada para os municípios de Manacapuru, Iranduba, Caapiranga e Benjamin ... Deverá ser elaborado um Plano de Contingência para ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `6f54c6f958` · nível **C** (1 pts) · seguimento_busca_oficial · EX_ANTE · data 26/11/2024 (do trecho)
+  - título: Manaus, 26 de novembro de 2024 Edição nº 3445 Pag.1
+  - url: https://doe.tceam.tc.br/wp-content/uploads/2024/11/Edicao-de-n%C2%B03445-de-26-de-novembro-de-2024.pdf
+  - trecho: Nov 12, 2024 ... APROVAÇÃO DE PLANO DE CONTINGÊNCIA MUNICIPAL COMPLETO, NO SENTIDO DE IMPLEMENTAR GESTÃO LOCAL DE RISCOS DE ... MUNICÍPIO DE CAAPIRANGA ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 
 ## Alagoinhas/BA — 1 pendente(s)
 - `dcbb078c19` · nível **B** (3 pts) · querido_diario · EX_ANTE · citação não extraída
@@ -10180,7 +10363,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Dec 16, 2019 ... b) Plano de contingência elaborado exclusivamente para o PLANO SETORIAL, ... Peçanha, Taperoá e Valença. É o único município brasileiro ...
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
-## Saúde/BA — 3 pendente(s)
+## Saúde/BA — 5 pendente(s)
 - `bea041a44e` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
   - título: O Ministério da Saúde anunciou um plano de contingência para ...
   - url: https://www.instagram.com/p/DdXJSijlMz7/
@@ -10191,11 +10374,21 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.instagram.com/p/DdXJSijlMz7/
   - trecho: Sep 16, 2026 ... O Ministério da Saúde anunciou um plano de contingência para enfrentar os impactos do El Niño, do calor intenso e da seca no Nordeste.
   - juiz: portão automático: fonte não oficial
+- `7bda3e2b21` · nível **B** (5 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: prefeitura municipal de madre de deus/ba secretaria da saúde
+  - url: https://www.madrededeus.ba.gov.br/abrir_arquivo.aspx/Plano_de_Contingencia?cdLocal=2&arquivo=%7BE1BA21D6-A35B-B3AC-5BBE-6CAE436DCB15%7D.pdf
+  - trecho: disponibilizadas pela Organização Mundial de Saúde (OMS) e Ministério da Saúde (MS), a. Secretaria Municipal de Saúde apresenta o Plano de Contingência para ...
 - `a31600aeb5` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: EL NIÑO ⚠️ O Ministério da Saúde prepara uma série de ações ...
   - url: https://www.instagram.com/p/DdXM3Qjga7q/
   - trecho: 6 days ago ... ... Plano de Contingência para chuvas intensas, além da emissão de ... saúde relacionadas ao El Niño 2026-2027. O documento prevê ações ...
   - juiz: portão automático: fonte não oficial
+- `9e7bd544b0` · nível **C** (5 pts) · seguimento_busca_oficial · EX_ANTE · **portaria 2.224**, 2008
+  - título: Plano de Contingência Epidemia de Dengue - SESAB
+  - url: http://www2.saude.ba.gov.br/hgpv/Plano%20de%20Conting%C3%AAncia%20Epidemia%20de%20Dengue%20HGPV.pdf
+  - trecho: © 2008 Secretaria Estadual de Saúde da Bahia. Todos os direitos reservados ... O Plano de Contingência Assistencial para Epidemia de Dengue no âmbito do Hospital ...
+  - ⚠ risco_errado_no_titulo
+  - juiz: portão automático: alerta da triagem de confiança: risco_errado_no_titulo
 
 ## Valença/BA — 5 pendente(s)
 - `1914876af4` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
@@ -10496,13 +10689,27 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.cm-almeirim.pt/images/repositorio/2025/Plano%20de%20A%C3%A7%C3%A3o%202025.pdf
   - trecho: e aprovados na última revisão do Plano d · nto de ações a implementar que preten · o de recursos, esforços e iniciativas locais, be · or parte das entidades locais. Palno de Ação · 2025/2026 · no de · olvimento · 024/202
 
-## Lagoa/PB — 1 pendente(s)
+## Lagoa/PB — 4 pendente(s)
 - `8a4014bfe8` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
   - título: Plano de ação de Emergência - PAE BARRAGEM LAGOA GRANDE ...
   - url: https://www.anglogoldashanti.com.br/wp-content/uploads/2024/01/PAELG-PN0151-Revisao-5_08.01.2024_tarjado_-LAGOA_GRANDE.pdf
   - trecho: Horizonte é um sistema integrado, a implantação de um Plano de Contingência. Operacional, pode garantir um acréscimo no fornecimento de água para a área ...
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: fonte não oficial
+- `3f76ced5c8` · nível **B** (4 pts) · seguimento_busca_oficial · DUVIDA · **PORTARIA Nº 327**, 08/05/2026
+  - título: Diário Oficial 09-05-2026 Eduardo.indd - A União
+  - url: https://auniao.pb.gov.br/servicos/doe/2026/maio/diario-oficial-09-05-2026-portal.pdf
+  - trecho: May 9, 2026 ... e a Prefeitura Municipal de São José da Lagoa Tapada/PB, por meio da Secretaria de Estado de Planeja- ... i) plano de contingência; j ...
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `8b77b5dab3` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · **Decreto Municipal nº 014**, 18/05/2021
+  - título: outras publicações - Prefeitura Municipal de Rio Tinto
+  - url: https://www.riotinto.pb.gov.br/publicacoes.php?campanha=1
+  - trecho: ... Lagoa de Praia e Posto Âncora Lagoa de Praia. Acessar · BOLETIM OFICIAL ... Dispõe sobre readequação do Plano de Contingência Covid-19. Acessar · BOLETIM ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `d87a2d06fe` · nível **B** (3 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: ESTADO DA PARAÍBA PLANO REGIONAL DE SANEAMENTO ...
+  - url: https://www.cagepa.pb.gov.br/wp-content/uploads/2026/02/PRSB-CAGEPA-LITORAL_publicacao.pdf
+  - trecho: Plano de Contingência Operacional ... gradeamento e caixa de areia, lagoa anaeróbia, lagoa facultativa e emissário final.
 
 ## Paulista/PE — 7 pendente(s)
 - `55cc6ecfa6` · nível **B** (6 pts) · seguimento_busca_oficial · — · citação não extraída
@@ -10880,7 +11087,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Bom Jesus do Itabapoana/RJ — 5 pendente(s)
+## Bom Jesus do Itabapoana/RJ — 6 pendente(s)
 - `5d7fd533db` · nível **B** (6 pts) · busca_web · EX_ANTE · data 2025 (do trecho)
   - título: Bom Jesus do Itabapoana apresenta plano de contingência para ...
   - url: https://g1.globo.com/rj/norte-fluminense/noticia/2025/11/04/bom-jesus-do-itabapoana-apresenta-plano-de-contingencia-para-enfrentar-chuvas-fortes.ghtml
@@ -10902,39 +11109,14 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=NzI0Njk%2C
   - trecho: estão na da região Noroeste, em Bom Jesus do Itabapoana. Itaeci listou os municípios que não. 61 entregaram o Plano de Contingência de Arboviroses 2024-2026: ...
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `c2faa71cbc` · nível **B** (3 pts) · seguimento_busca_oficial · — · data 15/09/2020 (do trecho)
+  - título: Resolução SES n° 2128 de 15 de setembro de 2020 - Saude.RJ
+  - url: https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=MzQyOTI%2C
+  - trecho: Sep 16, 2020 ... - o Plano de Contingência Nacional para Infecção Humana pelo novo ... BOM JESUS DO ITABAPOANA. R$ 2.544.013,10. RJ. 330070. CABO FRIO. R$ 4.666 ...
+  - ⚠ ano_anterior_ao_ciclo
 - `c3bd28f4ca` · nível **C** (1 pts) · busca_web · — · data 2026 (do trecho)
   - url: https://www.instagram.com/p/DcjeKSYhTDO/
   - trecho: Aug 27, 2026 ... 1 likes, 0 comments - fallaregiao on August 27, 2026: "Bom Jesus do Itabapoana Estrutura Plano de Contingência para Emergências Climáticas A ...
-
-## Macaé/RJ — 5 pendente(s)
-- `4f3e0c2f47` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
-  - título: Macaé está se preparando para os possíveis impactos do El Niño ...
-  - url: https://www.instagram.com/p/Da0Kligjr2w/
-  - trecho: Jul 15, 2026 ... May be a meme. Photo by Defesa Civil de Macaé on July 15, 2026. May be ...
-  - juiz: portão automático: fonte não oficial
-- `a169a4ca43` · nível **B** (3 pts) · seguimento_querido_diario · EX_ANTE · data 2025 (do trecho)
-  - título: Diário oficial de 2025-10-11
-  - url: https://data.queridodiario.ok.org.br/3302403/2025-10-11/0cc3251b8329372bb9921aba468701a459a5738f.pdf
-  - trecho: entra o Município de Macaé e o Consórcio Público Intermunicipal de Desenvolvimento do Norte e Noroeste Fluminense – CIDENF, e eventuais contratações oriundos desta, ao titular da Secretaria Executiva de Relações Instituc
-  - ⚠ ano_anterior_ao_ciclo
-  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
-- `66f8ba9275` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · **LEI Nº. 5.593**, 2026
-  - título: Diário oficial de 2026-09-16
-  - url: https://data.queridodiario.ok.org.br/3302403/2026-09-16/a345866ab86301e92a3f7ea7e510c128f5f802de.pdf
-  - trecho: anterior, o saldo remanescente será revertido para a Reserva de Contingência na Secretaria Municipal de Planejamen- to e Gestão, conforme estabelecida no caput deste artigo. § 4º As Emendas Parlamentares Impositivas que 
-  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
-- `d6bbf7595b` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · **PORTARIA Nº. 1.503**, 2025
-  - título: Diário oficial de 2025-10-03
-  - url: https://data.queridodiario.ok.org.br/3302403/2025-10-03/cbd9f3bfe5ec0ec19e8e387e610e9b27818d3287.pdf
-  - trecho: Automotivo Tipo: Mineral Premium Classificação: Api Gl-4 Viscosidade: Sae 80w DESCRIÇÃO COMPLEMENTAR: óleo lubrificante API GL 4 80W formulado com básicos parafínicos e aditivos de extrema pressão, desenvolvido para engr
-  - ⚠ ano_anterior_ao_ciclo
-  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
-- `e417076448` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · data 2025 (do trecho)
-  - título: Diário oficial de 2025-10-15
-  - url: https://data.queridodiario.ok.org.br/3302403/2025-10-15/e630e72e75c26f7ef11f660a095ea27e0e5cf1aa.pdf
-  - trecho: vigência. O Edital, seus anexos e demais informações estarão disponíveis para download nos sites www.macae.rj.gov.br e www. compras.gov.br. Contato: licitacao@macae.rj.gov.br. Objeto: Seleção de propostas que tenham por 
-  - ⚠ ano_anterior_ao_ciclo
-  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Nova Friburgo/RJ — 5 pendente(s)
 - `4841b88b8b` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · data 2024 (do trecho)
@@ -11026,7 +11208,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.silvajardim.rj.gov.br/index.php/plano-de-contingencia-da-defesa-civil/
   - trecho: Please wait while flipbook is loading. For more related info, FAQs and issues please refer to DearFlip WordPress Flipbook Plugin Help documentation · Prefeitura Municipal de Silva Jardim - CNPJ: 28.741.098/0001-57 - Rua 
 
-## São João da Barra/RJ — 5 pendente(s)
+## São João da Barra/RJ — 8 pendente(s)
 - `1dcfe978e1` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
   - título: São João da Barra se planeja para impactos do fenômeno El Niño ...
   - url: https://www.folha1.com.br/geral/2026/07/1317511-sao-joao-da-barra-se-planeja-para-impactos-do-fenomeno-el-nino.html
@@ -11037,6 +11219,10 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.sjb.rj.gov.br/arquivos/diario_oficial/174_26_do-25092026-ed174.pdf
   - trecho: 3 days ago ... São João da Barra/RJ, 25 de setembro de 2026. Daniel Pinheiro ... Plano de Contingência de Arboviroses - Biênio 2026-2028;. Art.2º ...
   - juiz: portão automático: data do ato incompleta (2019)
+- `d4933c6ab5` · nível **B** (5 pts) · seguimento_busca_oficial · — · data 2025 (do trecho)
+  - título: DIÁRIO OFICIAL - Prefeitura de São João da Barra
+  - url: https://www.sjb.rj.gov.br/arquivos/diario_oficial/002_25_do-03012025-ed002.pdf
+  - trecho: Jan 3, 2025 ... MUNICÍPIO DE SÃO JOÃO DA BARRA | ESTADO DO RIO DE JANEIRO. Rua Barão ... 2.9 PLANO DE CONTINGÊNCIA ...
 - `cc4266e0a8` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - url: https://odia.ig.com.br/sao-joao-da-barra/2026/07/7281194-enfrentamento-ao-el-nino-e-priorizado-em-sao-joao-da-barra.html
   - trecho: Jul 23, 2026 ... São João da Barra - Plano Municipal de Contingência para o enfrentamento dos possíveis impactos do fenômeno El Niño é uma das prioridades do ...
@@ -11051,6 +11237,14 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://defesacivil.rj.gov.br/index.php/legislacao-cepedec/instrucoes-normativas-cepedec
   - trecho: Dec 7, 2020 ... XV - plano de contingência: documento que registra o planejamento ... São João da Barra. Sul I. Barra do Piraí · Barra Mansa · Comendador ...
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `6445992283` · nível **B** (4 pts) · seguimento_busca_oficial · — · data 2021 (do trecho)
+  - título: O BANCO DO DESENVOLVIMENTO DO BRASIL Entenda nossos ...
+  - url: https://web.bndes.gov.br/bib/jspui/bitstream/1408/22344/3/PR__REL.ANUAL_2021.pdf
+  - trecho: Dec 31, 2021 ... ... São João da Barra (RJ), tem capacidade instalada de 1.338,3 MW ... plano de contingência de liquidez e capital; avalia os níveis de ...
+- `81a6c6f9b2` · nível **B** (4 pts) · seguimento_busca_oficial · — · data 2020 (do trecho)
+  - título: Instruções Normativas - Defesa Civil
+  - url: https://www.defesacivil.rj.gov.br/index.php/legislacao-cepedec/instrucoes-normativas-cepedec
+  - trecho: Dec 7, 2020 ... XV - plano de contingência: documento que registra o planejamento ... São João da Barra. Sul I. Barra do Piraí · Barra Mansa · Comendador ...
 
 ## Valença/RJ — 1 pendente(s)
 - `6ad08bf44e` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
@@ -11086,13 +11280,6 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Este instrumento orienta as equipes na elaboração de plano de contingência local de forma padronizada no Estado. ... Lei ordinária do estado do Paraná Diário ...
   - ⚠ risco_errado_no_titulo, uf_divergente_na_url, ano_anterior_ao_ciclo
   - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo, risco_errado_no_titulo, uf_divergente_na_url
-
-## Portalegre/RN — 1 pendente(s)
-- `ed61fcdedc` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
-  - título: Plano de Contingência do Município de Portalegre para as ondas ...
-  - url: https://www.cm-portalegre.pt/blog/2026/07/02/plano-de-contingencia-do-municipio-de-portalegre-para-as-ondas-de-calor-temperaturas-elevadas/
-  - trecho: Devido às elevadas temperaturas ... os seguintes espaços climatizados como abrigo temporário: Centro de Artes do Espetáculo – 14h00-19h00 e 20h30-23h30 ......
-  - juiz: portão automático: fonte não oficial
 
 ## Alvorada D'Oeste/RO — 4 pendente(s)
 - `bc54c96f5a` · nível **B** (4 pts) · busca_web · EX_ANTE · **LEI N.° 14.133**, 2021
@@ -11821,12 +12008,24 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ texto_falso_positivo_provavel
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Pedregulho/SP — 1 pendente(s)
+## Pedregulho/SP — 3 pendente(s)
 - `ec0c080dbe` · nível **B** (3 pts) · busca_web · DUVIDA · data 2018 (do trecho)
   - título: plano municipal específico dos serviços de saneamento básico
   - url: https://smastr20.blob.core.windows.net/conesan/Pedregulho_RS_2018.pdf
   - trecho: Jun 30, 2018 ... Cândido Portinari (SP-334) passando por Batatais e Franca, até Pedregulho, como ... Quanto ao rendimento médio total, Pedregulho detém o menor ...
   - juiz: portão automático: fonte não oficial
+- `290606b725` · nível **C** (5 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: PLANO MUNICIPAL DE SANEAMENTO BÁSICO E GESTÃO ...
+  - url: https://sedurb.es.gov.br/media/PDF/Etapa%206%20-%20Plano%20Municipal%20de%20Saneamento%20B%C3%A1sico%20de%20Castelo.pdf
+  - trecho: ... Pedregulho. Segunda, Quarta e. Sexta. -. Capivara. Segunda, Quarta e. Sexta. -. Ubá ... Plano de Contingência que tem por objetivo orientar as ações de ...
+  - ⚠ uf_divergente_na_url
+  - juiz: portão automático: alerta da triagem de confiança: uf_divergente_na_url
+- `b01a7cb834` · nível **C** (4 pts) · seguimento_busca_oficial · EX_ANTE · data 2026 (do trecho)
+  - título: PLANO DE CONTIGÊNCIA DE IBITIRAMA 2026 - CEPDEC
+  - url: https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/IBITIRAMA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202026.pdf
+  - trecho: O Plano de Contingência de Defesa Civil (PCDC) constitui-se como conjunto de ... Alegre, Pardinho, Monte Alverne, Pedra Roxa e Pedregulho. Ocupa uma ...
+  - ⚠ uf_divergente_na_url
+  - juiz: portão automático: alerta da triagem de confiança: uf_divergente_na_url
 
 ## Queluz/SP — 1 pendente(s)
 - `0768d2e16c` · nível **B** (6 pts) · busca_web · EX_ANTE · data 2024 (do trecho)
@@ -11893,7 +12092,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: A Prefeitura de Votorantim confirmou que o plano de contingência administrativa entra em vigor na …
   - ⚠ ano_anterior_ao_ciclo
 
-## Cachoeirinha/TO — 5 pendente(s)
+## Cachoeirinha/TO — 6 pendente(s)
 - `c374e77c18` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura ...
   - url: https://www.instagram.com/p/DdZX8XIRdv_/
@@ -11919,6 +12118,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: Prefeitura elabora Plano de Contingenciamento e adota novas ...
   - url: https://prefeitura.sp.gov.br/web/subprefeituras/w/noticias/296661
   - trecho: Foi liberado crédito suplementar de R$ 39.402.176 para atender a todo o plano de contingência. ... Cachoeirinha. De a cordo com o decreto 59.372, as ...
+  - ⚠ uf_divergente_na_url
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `93820b831a` · nível **C** (3 pts) · seguimento_busca_oficial · DUVIDA · citação não extraída
+  - título: Relatório de gestão em saúde será apresentado na próxima quinta ...
+  - url: https://www.cmcachoeirinha.rs.gov.br/noticia/relatorio-de-gestao-em-saude-sera-apresentado-na-proxima-quinta-feira-8-1002
+  - trecho: 3 days ago ... Na próxima quinta-feira (8), a partir das 10:00, no Plenarinho Saul Lazzarotto, na Câmara de Vereadores de Cachoeirinha ...
   - ⚠ uf_divergente_na_url
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
@@ -12066,6 +12271,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: PLANO DE CONTINGÊNCIA DE PEDRINHAS PAULISTA (COVID-19)
   - url: https://www.pedrinhaspaulista.sp.gov.br/plano-municipal/plano-municipal-index/download/3/
   - trecho: Na aplicação do plano de contingência, as atividades específicas serão · direcionadas para os três níveis de respostas descritos abaixo: A. Nível de resposta: Alerta: Corresponde a uma situação de risco de introdução do 
+  - ⚠ risco_errado_no_titulo
+
+## Tocantínia/TO — 1 pendente(s)
+- `f73ce58110` · nível **C** (4 pts) · busca_web · — · citação não extraída
+  - título: Plano de contingência do munícipio de Tocantinía: Novo Coronavírus ...
+  - url: https://pesquisa.bvsalud.org/portal/resource/pt/biblio-1140154
+  - trecho: Orienta na campanha para ações de combate ao Coronavírus (Covid-19) no município de Tocantínia no Tocantins. Apresenta quais …
   - ⚠ risco_errado_no_titulo
 
 ---
