@@ -51,6 +51,8 @@
     <dl class="mudancas-lista">
       <dt>05/10/2026 · O texto público sai do código e vai para o catálogo</dt>
       <dd>Três camadas separadas: estrutura (contrato), conteúdo (catálogo) e dado (geradores). Financiamento e Defesa civil migrados — 100 identificadores estáveis, extraídos mecanicamente para não mudar uma vírgula; o texto visível em 1280 e 390 px ficou idêntico nas duas páginas. Vêm juntos o leitor, o portão do catálogo, o renderizador de uma figura por vez, o aplicador de edição aprovada e o índice interno.</dd>
+      <dt>05/10/2026 · Pacote por tipo de evento, e duas travas do blog que não travavam</dt>
+      <dd>Nova linha `tipos_de_evento` no gerador de pacote, sobre o ciclo inteiro. `para_iso` só lia `dd/mm/aaaa` e descartava calado 97 dos 929 atos, que vêm em ISO do diário consorciado. O verificador do blog reprovava por pacote ausente mesmo onde a pasta não é alcançável, e o gerador publicava texto citando pacote inexistente: agora um distingue ausente de fora de alcance, e o outro recusa pacote declarado que não existe.</dd>
       <dt>05/10/2026 · O CODEMAP mentia por omissão, e agora diz quantos importam cada arquivo</dt>
       <dd>Comparado com o grafo de dependências, o mapa tinha um ponto cego: só via o nome do dado **literal na chamada**. Quem o guarda em constante — o estilo dos scripts novos — ficava invisível, e 23 arquivos subiram de 17 para 84 dependências declaradas; `coletores_base.py` aparecia sem `log_buscas.json`. Coluna nova `importado por`: ele tem 169 importadores, e era esse número que faltava antes dos dois acidentes de isolamento.</dd>
       <dt>05/10/2026 · O CODEMAP apontava três caminhos que não existem</dt>
@@ -167,8 +169,6 @@
       <dd>`julgar_saude.py` roda o juiz sobre a fila de saúde e escreve na camada estadual — o runner do Legal não a lê. A bateria passou pelas 27 UFs sem motor doente (78–80 resultados por UF, 73 pistas, 27 oficiais). O juiz recusou as 27: 14 por `autoridade_nao_confirmada`, porque o plano estadual de saúde é documento técnico e a etapa de autoridade foi escrita para o MARÉ Legal. METODOLOGIA §69.</dd>
       <dt>01/10/2026 · MARÉ Saúde v0.4 calculada em paralelo, e MT verificada</dt>
       <dd>A v0.4 ganha a escala de razão do Legal, o componente de coordenação em saúde e o tempo fora da nota. Fica em `monitor_saude_v04.json`, que a página não lê: a troca autorizada espera a verificação da coordenação, que nasceu nesta versão e não existia em estado nenhum — somar um terço de zero afirmaria ausência de sala de situação por ausência de busca. MT verificada por dois atos lidos: média publicada 32,5 → 31,8. METODOLOGIA §68.</dd>
-      <dt>01/10/2026 · Pendências resolvidas pela editoria, e a portaria do MMA estava revogada</dt>
-      <dd>Título, subtítulo e legenda definitivos do mapa do cadastro; manchete do MARÉ Saúde só com os 27 estados; os dois cadastros federais distintos na METODOLOGIA §66; linha aprovada para o plano estadual que trata de outro risco (MG). A conferência da portaria do MMA achou ato novo: a **1.717/2026** revogou a 1.202/2024 — Anexo I 81 → 80, Anexo II 10 → 17, com MA entrando. §67.</dd>
     </dl>
   </section>
 </main>
