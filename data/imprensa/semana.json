@@ -240,14 +240,14 @@
    "id": "municipios_alerta_cemaden",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob alerta do Cemaden",
-   "valor": 31,
+   "valor": 8,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "04/10/2026 22:13",
+   "referencia": "05/10/2026 15:48",
    "fonte": "Cemaden",
    "url_fonte": "https://www.gov.br/cemaden/pt-br",
-   "consultado_em": "04/10/2026 22:13",
+   "consultado_em": "05/10/2026 15:48",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -260,14 +260,14 @@
    "id": "municipios_aviso_inmet",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob aviso do Inmet",
-   "valor": 2826,
+   "valor": 3980,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "04/10/2026 22:13",
+   "referencia": "05/10/2026 15:48",
    "fonte": "Inmet",
    "url_fonte": "https://portal.inmet.gov.br/",
-   "consultado_em": "04/10/2026 22:13",
+   "consultado_em": "05/10/2026 15:48",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -280,14 +280,14 @@
    "id": "decreto_e_alerta_ao_mesmo_tempo",
    "grupo": "risco_agora",
    "rotulo": "Municípios com decreto de emergência e alerta ao mesmo tempo",
-   "valor": 171,
+   "valor": 484,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "04/10/2026 22:13",
+   "referencia": "05/10/2026 15:48",
    "fonte": "MARÉ (cruzamento das duas consultas)",
    "url_fonte": null,
-   "consultado_em": "04/10/2026 22:13",
+   "consultado_em": "05/10/2026 15:48",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -300,12 +300,12 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 245,
+   "valor": 6925,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
    "url_fonte": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
-   "consultado_em": "04/10/2026",
+   "consultado_em": "05/10/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -314,35 +314,75 @@
    "lista": [
     {
      "uf": "PA",
-     "valor": 181
+     "valor": 4302
     },
     {
      "uf": "AM",
-     "valor": 23
+     "valor": 848
     },
     {
      "uf": "PI",
-     "valor": 16
-    },
-    {
-     "uf": "RR",
-     "valor": 9
-    },
-    {
-     "uf": "AP",
-     "valor": 6
-    },
-    {
-     "uf": "MT",
-     "valor": 5
+     "valor": 510
     },
     {
      "uf": "RO",
-     "valor": 4
+     "valor": 328
     },
     {
      "uf": "BA",
-     "valor": 1
+     "valor": 225
+    },
+    {
+     "uf": "AC",
+     "valor": 176
+    },
+    {
+     "uf": "AP",
+     "valor": 147
+    },
+    {
+     "uf": "RR",
+     "valor": 113
+    },
+    {
+     "uf": "MA",
+     "valor": 99
+    },
+    {
+     "uf": "MT",
+     "valor": 54
+    },
+    {
+     "uf": "CE",
+     "valor": 33
+    },
+    {
+     "uf": "MG",
+     "valor": 28
+    },
+    {
+     "uf": "PB",
+     "valor": 23
+    },
+    {
+     "uf": "TO",
+     "valor": 20
+    },
+    {
+     "uf": "AL",
+     "valor": 6
+    },
+    {
+     "uf": "RN",
+     "valor": 5
+    },
+    {
+     "uf": "GO",
+     "valor": 4
+    },
+    {
+     "uf": "PE",
+     "valor": 4
     }
    ],
    "pagina_de_origem": null,
@@ -357,10 +397,10 @@
    "unidade": "°C",
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "04/10/2026",
+   "referencia": "05/10/2026",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "url_fonte": null,
-   "consultado_em": "04/10/2026",
+   "consultado_em": "05/10/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -373,7 +413,7 @@
    "id": "capitais_ar_ruim_ou_pior",
    "grupo": "risco_agora",
    "rotulo": "Capitais com o ar na faixa ruim ou acima dela",
-   "valor": 13,
+   "valor": 18,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
@@ -390,14 +430,19 @@
     "AC",
     "AL",
     "AM",
-    "BA",
+    "CE",
     "DF",
     "GO",
     "MG",
+    "MS",
     "PA",
+    "PB",
+    "PE",
     "PR",
     "RJ",
-    "RS",
+    "RN",
+    "RO",
+    "SE",
     "SP",
     "TO"
    ],
