@@ -8,7 +8,7 @@ Serve a uma pergunta só: **por onde começar a ler** quando um pedido chega. An
 
 **Regra de página: contrato + componentes** (editoria, 02/10/2026). A forma de uma página não vive no HTML: vive em `layout/contratos/<pagina>.json`, que declara seções, ordem, cartões, grades e texto proibido. O HTML e o JavaScript se conformam ao contrato, e `scripts/verificar_layout.py` reprova a divergência — nenhum PR de página com contrato é mesclado com ele vermelho. Cartão de número é `.cartao-numero` em `.grade-numeros--3`; figura é `.cartao-mapa` em `.grade-figuras--3`; nada de ajuste de pixel por cartão.
 
-Atualizado em 04/10/2026.
+Atualizado em 05/10/2026.
 
 | arquivo | telas que afeta | dados que usa | portões que o cobrem | toca o índice? |
 |---|---|---|---|---|
@@ -65,9 +65,9 @@ Atualizado em 04/10/2026.
 | `coletar_dda.py` | — | `saude_desfechos/dda_serie.json` | — | não |
 | `coletar_declarado_nacional.py` | — | `declarado_nacional.json`, `fontes_consultadas.json`, `fontes_declarado.json` | — | não |
 | `coletar_desfechos_saude.py` | — | — | — | não |
-| `coletar_diarios_consorciados.py` | — | `atos_resposta.json`, `pistas_imprensa.json` | — | não |
-| `coletar_diarios_municipais.py` | — | `atos_resposta.json`, `cobertura_qd.json`, `pistas_imprensa.json`, `verificacao_municipal.json` | — | não |
-| `coletar_doe.py` | — | `atos_resposta.json`, `fontes_doe.json`, `pistas_doe.json` | — | não |
+| `coletar_diarios_consorciados.py` | — | `atos_resposta.json` | — | não |
+| `coletar_diarios_municipais.py` | — | `atos_resposta.json`, `cobertura_qd.json`, `verificacao_municipal.json` | — | não |
+| `coletar_doe.py` | — | `atos_resposta.json`, `fontes_doe.json` | — | não |
 | `coletar_edicoes_doe.py` | — | — | — | não |
 | `coletar_espin.py` | — | `espin_revisar.json`, `saude_sinais.json` | — | não |
 | `coletar_execucao_mps.py` | — | `financiamento/mps_2026.json` | — | não |
@@ -92,7 +92,7 @@ Atualizado em 04/10/2026.
 | `consultar_querido_diario.py` | — | `pistas_querido_diario.json` | — | não |
 | `converter_contribuicao.py` | — | — | — | SIM |
 | `descobrir_dominios.py` | — | `dominios_oficiais.json` | — | não |
-| `descobrir_planos.py` | — | `pistas_descobertas.json` | — | não |
+| `descobrir_planos.py` | — | — | — | não |
 | `detectar_marcos_federais.py` | — | `marcos_federais_saude.json`, `saude_uf.json` | — | não |
 | `funil.py` | — | — | — | não |
 | `gerar_blog.py` | — | — | — | não |
@@ -122,11 +122,11 @@ Atualizado em 04/10/2026.
 | `migrar_saude_instrumentos.py` | — | — | — | não |
 | `migrar_v224_verificacao.py` | — | `citacao_incompleta.json`, `erratas_v224.json`, `log_buscas.json`, `municipios.json`, `pontos_mapa.json` | — | não |
 | `monitorar_atos_resposta.py` | — | — | — | não |
-| `monitorar_busca_web.py` | — | `busca_web_espera.json`, `busca_web_estado.json`, `pistas_imprensa.json` | — | não |
+| `monitorar_busca_web.py` | — | `busca_web_espera.json`, `busca_web_estado.json` | — | não |
 | `monitorar_imprensa_regional.py` | — | — | — | não |
 | `monitorar_imprensa_saude.py` | — | — | — | não |
-| `monitorar_politica_por_inteiro.py` | — | `pistas_imprensa.json`, `pistas_sinais.json` | — | não |
-| `monitorar_redes_oficiais.py` | — | `pistas_imprensa.json` | — | não |
+| `monitorar_politica_por_inteiro.py` | — | — | — | não |
+| `monitorar_redes_oficiais.py` | — | — | — | não |
 | `monitorar_sinais_federais.py` | — | — | — | não |
 | `motores_busca.py` | — | `busca_web_motores.json` | — | não |
 | `pagina_completa.py` | — | — | — | não |
@@ -138,7 +138,7 @@ Atualizado em 04/10/2026.
 | `revisar_pistas.py` | — | `pistas_imprensa.json` | — | não |
 | `robustez_saude.py` | — | — | — | não |
 | `saude_opendatasus.py` | — | — | — | não |
-| `seguir_pistas.py` | — | `pistas_imprensa.json` | — | não |
+| `seguir_pistas.py` | — | — | — | não |
 | `sondar_paineis.py` | — | — | — | não |
 | `triar_confianca_pistas.py` | — | `pistas_imprensa.json`, `pistas_revisao.json` | — | não |
 | `trocar_para_v04.py` | — | — | — | não |
