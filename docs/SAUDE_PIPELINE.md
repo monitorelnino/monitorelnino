@@ -9,18 +9,19 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-09-28 a 2026-10-04 (203 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-09-28 a 2026-10-05 (258 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
 - consultar_querido_diario.py: erro em 5 rodadas seguidas — urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>
+- monitorar_imprensa_saude.py: erro em 4 rodadas seguidas — KeyError: 'hash'
 
 ## Última execução de cada script
 
 | script | papel | última execução | duração | itens | status | erro |
 |---|---|---|---|---:|---|---|
-| `recalcular_mare.py` | essencial | 2026-10-04 17:04 | 3 s | — | ok | — |
-| `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-04 14:13 | 0 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-05 09:25 | 3 s | — | ok | — |
+| `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-05 03:49 | 1 s | — | ok | — |
 | `coletar_diarios_consorciados.py` | coletor | 2026-10-04 03:56 | 3037 s | 0 | ok | — |
 | `coletar_diarios_municipais.py` | coletor | 2026-10-04 03:43 | 822 s | 49 | ok | — |
 | `coletar_doe.py` | coletor | 2026-10-04 04:47 | 837 s | — | ok | — |
@@ -31,25 +32,25 @@ Janela: 2026-09-28 a 2026-10-04 (203 execução(ões) registrada(s), 7 dias de h
 | `coletar_sinais_risco.py` | coletor | 2026-10-04 13:35 | 79 s | — | ok | — |
 | `coletar_srag_sivep.py` | coletor | 2026-10-04 14:19 | 40 s | — | ok | — |
 | `consultar_querido_diario.py` | coletor | 2026-10-03 02:41 | 62 s | — | **erro** (5 seguidas) | urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)> |
-| `descobrir_planos.py` | coletor | 2026-10-03 09:05 | 915 s | — | ok | — |
-| `detectar_marcos_federais.py` | coletor | 2026-10-03 09:05 | 2 s | 0 | ok | — |
-| `julgar_e_aplicar_descobertas.py` | coletor | 2026-10-01 21:35 | 1 s | — | ok | — |
-| `julgar_filas.py` | coletor | 2026-10-04 14:13 | 1 s | — | ok | — |
+| `descobrir_planos.py` | coletor | 2026-10-05 08:00 | 1023 s | 42 | ok | — |
+| `detectar_marcos_federais.py` | coletor | 2026-10-05 08:00 | 2 s | 0 | ok | — |
+| `julgar_e_aplicar_descobertas.py` | coletor | 2026-10-05 03:49 | 1 s | — | ok | — |
+| `julgar_filas.py` | coletor | 2026-10-05 02:28 | 4910 s | — | ok | — |
 | `julgar_saude.py` | coletor | 2026-10-02 10:39 | 2 s | — | ok | — |
-| `monitorar_atos_resposta.py` | coletor | 2026-10-03 08:58 | 388 s | 1821 | ok | — |
-| `monitorar_imprensa_regional.py` | coletor | 2026-10-03 08:54 | 240 s | 40 | ok | — |
-| `monitorar_imprensa_saude.py` | coletor | 2026-10-03 08:58 | 1 s | — | **erro** | KeyError: 'hash' |
-| `monitorar_politica_por_inteiro.py` | coletor | 2026-10-03 09:05 | 2 s | 1821 | ok | — |
-| `monitorar_redes_oficiais.py` | coletor | 2026-10-03 09:20 | 1311 s | — | ok | — |
-| `monitorar_sinais_federais.py` | coletor | 2026-10-03 09:05 | 4 s | 10 | ok | — |
-| `preservar_evidencias.py` | coletor | 2026-10-04 06:18 | 45 s | — | ok | — |
-| `revisar_pistas.py` | coletor | 2026-10-01 20:20 | 261 s | — | ok | — |
-| `scripts/amostra_auditoria_semanal.py` | coletor | 2026-10-01 21:35 | 0 s | — | ok | — |
+| `monitorar_atos_resposta.py` | coletor | 2026-10-05 07:56 | 210 s | 3011 | ok | — |
+| `monitorar_imprensa_regional.py` | coletor | 2026-10-05 07:54 | 124 s | 40 | ok | — |
+| `monitorar_imprensa_saude.py` | coletor | 2026-10-05 07:56 | 0 s | — | **erro** (4 seguidas) | KeyError: 'hash' |
+| `monitorar_politica_por_inteiro.py` | coletor | 2026-10-05 08:00 | 6 s | 3011 | ok | — |
+| `monitorar_redes_oficiais.py` | coletor | 2026-10-05 08:17 | 1036 s | — | ok | — |
+| `monitorar_sinais_federais.py` | coletor | 2026-10-05 08:00 | 4 s | 10 | ok | — |
+| `preservar_evidencias.py` | coletor | 2026-10-05 08:43 | 49 s | — | ok | — |
+| `revisar_pistas.py` | coletor | 2026-10-04 02:22 | 315 s | — | ok | — |
+| `scripts/amostra_auditoria_semanal.py` | coletor | 2026-10-05 03:49 | 1 s | — | ok | — |
 | `scripts/fechar_saude.py` | coletor | 2026-10-02 10:39 | 1 s | — | ok | — |
-| `scripts/preservar_textos_integrais.py` | coletor | 2026-10-04 06:18 | 1 s | — | ok | — |
-| `scripts/triar_fila.py` | coletor | 2026-10-04 14:13 | 1 s | — | ok | — |
-| `scripts/verificar_esquema_de_pista.py` | coletor | 2026-10-04 14:13 | 1 s | — | ok | — |
-| `seguir_pistas.py` | coletor | 2026-10-03 09:42 | 20 s | — | ok | — |
-| `triar_confianca_pistas.py` | coletor | 2026-10-03 09:42 | 2 s | — | ok | — |
-| `verificar_pista_imprensa.py` | coletor | 2026-10-03 09:42 | 237 s | — | ok | — |
+| `scripts/preservar_textos_integrais.py` | coletor | 2026-10-05 08:44 | 1 s | — | ok | — |
+| `scripts/triar_fila.py` | coletor | 2026-10-04 01:12 | 2 s | — | ok | — |
+| `scripts/verificar_esquema_de_pista.py` | coletor | 2026-10-04 01:20 | 1 s | — | **erro** | ✗ ESQUEMA DA PISTA: 1 pista(s) nova(s) fora do esquema: |
+| `seguir_pistas.py` | coletor | 2026-10-05 08:34 | 296 s | — | ok | — |
+| `triar_confianca_pistas.py` | coletor | 2026-10-05 08:39 | 3 s | — | ok | — |
+| `verificar_pista_imprensa.py` | coletor | 2026-10-05 08:39 | 40 s | — | ok | — |
 | `verificar_prazos_legais.py` | coletor | 2026-09-29 09:16 | 0 s | — | ok | — |
