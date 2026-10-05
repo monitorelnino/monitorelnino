@@ -189,9 +189,26 @@ def _autoteste() -> int:
     return 1 if falhas else 0
 
 
+def _lembrete_de_renovacao() -> None:
+    """Imprime o que precisa ser pedido de novo, antes de qualquer coisa.
+
+    Item 4 do handover de 05/10/2026: "o `ler_caixa_lai` semanal e o painel mostram 'renovar pedido
+    da OCP até {data}'". Vem ANTES da leitura da caixa de propósito — o prazo de renovação não
+    depende de a credencial existir, e enquanto ela não existe esta é a única coisa que este script
+    tem a dizer. Falha aqui não derruba a rotina: lembrete é aviso, não portão.
+    """
+    try:
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent / "scripts"))
+        import lembrete_de_renovacao_lai as lembrete
+        lembrete.main([])
+    except Exception as erro:          # pragma: no cover — ausência do script, não do prazo
+        print(f"· lembrete de renovação não pôde ser lido ({erro})")
+
+
 def main() -> int:
     if "--autoteste" in sys.argv[1:]:
         return _autoteste()
+    _lembrete_de_renovacao()
     falta = credencial_ausente()
     if falta:
         print("⚠ CAIXA LAI não lida: " + falta)

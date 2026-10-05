@@ -89,38 +89,47 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
  *      `data/cadencia_publicacao.json`, que o gerador le do gatilho do publicador. Trocar um
  *      horario no workflow muda a frase sozinho.
  *
- * Os dois marcam `data-conteudo-fixado`: quem escreve a partir de dado marca, senao a `aplicar`
- * seguinte do catalogo reescreve com o molde nao resolvido. Foi a corrida medida no Financiamento.
+ * Quem resolve e escreve e o leitor do catalogo: esta funcao so poe os VALORES no elemento e
+ * pede uma nova passada. Ver o comentario dentro da funcao.
  */
 (function moldesGerados(){
   const C = window.MonitorCatalogo;
-  if (!C || !C.pronto) return;
+  if (!C || !C.pronto || !C.aplicar) return;
 
-  function porDado(elemento, html) {
-    if (!elemento || html == null) return;
-    elemento.innerHTML = html;
-    elemento.setAttribute('data-conteudo-fixado', '1');
+  /* Quem resolve o molde e ESCREVE e o proprio leitor do catalogo, nao este arquivo. A pagina so
+     poe os VALORES no elemento, em `data-conteudo-valores`, e pede uma nova passada.
+     Duas razoes, nesta ordem:
+       1. a entrada do catalogo tem marcacao (`<strong>`), entao ela entra por `innerHTML` -- e
+          `innerHTML` escrito aqui seria `innerHTML` sem escape no meio do codigo da pagina, que e
+          exatamente o que o portao de seguranca reprova, com razao: o proximo a mexer nao tem como
+          saber de onde veio aquela string;
+       2. com os valores NO elemento, qualquer `aplicar` posterior recalcula o mesmo texto. Nao
+          existe corrida a fechar, e por isso aqui nao se marca `data-conteudo-fixado`: a marca
+          serve a quem compoe fora do leitor, e esta funcao deixou de compor. */
+  function comValores(elemento, valores) {
+    if (!elemento) return;
+    elemento.dataset.conteudoValores = JSON.stringify(valores);
+    C.aplicar(elemento.parentNode || document);
   }
 
   C.pronto.then(function () {
     const TODAS = 27;
 
     fetch('data/monitor_saude.json').then(r => r.ok ? r.json() : null).then(sa => {
-      const res = (sa || {}).resumo || {};
-      const verificadas = res.verificadas;
+      const verificadas = ((sa || {}).resumo || {}).verificadas;
       if (verificadas == null) return;        /* sem o numero, fica o texto de reserva */
+      /* Com os 27 verificados a frase SOME: a media ja e nacional, e o qualificador passaria a
+         negar o que o numero e. */
       const parcial = verificadas >= TODAS
         ? ''
         : (C.texto('imprensa.calculo.saude_parcial', { n: verificadas }) || '');
-      const t = C.texto('imprensa.calculo.saude', { parcial: parcial });
-      porDado(document.getElementById('calculoSaude'), t && t.replace(/\s+$/, ''));
+      comValores(document.getElementById('calculoSaude'), { parcial: parcial });
     }).catch(() => {});
 
     fetch('data/cadencia_publicacao.json').then(r => r.ok ? r.json() : null).then(cad => {
       const vezes = (cad || {}).publicacoes_por_dia;
       if (!vezes) return;                     /* zero nao vira frase: fica o texto de reserva */
-      porDado(document.getElementById('perguntaFrequencia'),
-              C.texto('imprensa.perguntas.entender.5', { n: vezes }));
+      comValores(document.getElementById('perguntaFrequencia'), { n: vezes });
     }).catch(() => {});
   });
 })();
