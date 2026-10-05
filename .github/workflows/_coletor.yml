@@ -196,8 +196,16 @@ jobs:
         run: |
           # `--feito` vem do passo do marcador: é o elo dizendo "eu coletei". Sem ele, o painel
           # cai na conclusão do job, e um job cancelado passa a NÃO contar como noite aberta.
-          # A decisão fica no `run`, não numa expressão `${{ }}` dentro da linha de comando: foi
+          # A decisão fica no `run`, não numa expressão de contexto dentro da linha de comando: foi
           # expressão em lugar errado que fez o GitHub rejeitar dois workflows em 04/10.
+          #
+          # 05/10/2026 — e ESTE comentário fez o mesmo, pela terceira vez na série. Ele trazia a
+          # expressão VAZIA, com as duas chaves e nada dentro, como ilustração da lição. O GitHub
+          # resolve expressão em TODO o arquivo — inclusive dentro de `run:`, que é justamente por
+          # que `inputs.nome` funciona aqui — e expressão vazia é erro de sintaxe. Resultado: o
+          # arquivo inteiro rejeitado, com o caminho no lugar do nome e zero job, e a corrente
+          # noturna parada das 09:10 UTC em diante, porque TODO noturno chama este arquivo.
+          # Não se escreve a expressão como exemplo, nem em comentário: descreve-se.
           MARCA="--nao-feito"
           if [ "${FEITO:-}" = "1" ]; then MARCA="--feito"; fi
           python3 scripts/painel_da_noite.py --registrar "${{ inputs.nome }}"             --inicio "${ELO_INICIO:-}" --conclusao "${{ job.status }}" "$MARCA" || true
