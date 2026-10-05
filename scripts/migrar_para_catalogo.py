@@ -43,6 +43,9 @@ import pathlib
 import re
 import sys
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
+from coletores_base import gravar_em  # noqa: E402
+
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 CATALOGO = RAIZ / "conteudo"
 
@@ -358,8 +361,9 @@ def main() -> int:
         "Mudar identificador exige entrada em `conteudo/_renomeacoes.json`."))
     doc.setdefault("pagina", f"{pagina}.html")
     doc["textos"] = {**(doc.get("textos") or {}), **entradas}
-    destino.write_text(json.dumps(doc, ensure_ascii=False, indent=1) + "\n",
-                       encoding="utf-8", newline="\n")
+    # §229: porta atomica. Escrita direta no destino deixa o arquivo pela
+    # metade quando a rodada morre no meio, e foi por isso que a porta existe.
+    gravar_em(destino, doc)
     arquivo.write_text(novo, encoding="utf-8", newline="\n")
     print(f"\n✓ gravado: conteudo/{pagina}.json ({len(entradas)} entradas) e {pagina}.html")
     return 0

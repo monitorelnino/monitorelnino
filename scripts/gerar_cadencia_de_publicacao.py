@@ -23,6 +23,9 @@ import pathlib
 import re
 import sys
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
+from coletores_base import gravar_em  # noqa: E402
+
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 WORKFLOW = RAIZ / ".github" / "workflows" / "publicar_dados.yml"
 SAIDA = RAIZ / "data" / "cadencia_publicacao.json"
@@ -124,8 +127,9 @@ def main(argv: list) -> int:
         print(f"✗ {WORKFLOW.relative_to(RAIZ)} não existe")
         return 1
     dados = cadencia(WORKFLOW.read_text(encoding="utf-8"))
-    SAIDA.write_text(json.dumps(dados, ensure_ascii=False, indent=1) + "\n",
-                     encoding="utf-8", newline="\n")
+    # §229: porta atomica. Escrita direta no destino deixa o arquivo pela
+    # metade quando a rodada morre no meio, e foi por isso que a porta existe.
+    gravar_em(SAIDA, dados)
     print(f"cadência: {dados['publicacoes_por_dia']} publicação(ões) por dia "
           f"({len(dados['gatilhos_de_relogio'])} gatilho(s) de relógio) → "
           f"{SAIDA.relative_to(RAIZ)}")

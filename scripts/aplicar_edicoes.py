@@ -40,6 +40,9 @@ import pathlib
 import re
 import sys
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
+from coletores_base import gravar_em  # noqa: E402
+
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 CATALOGO = RAIZ / "conteudo"
 # O privado fica ao lado do público, como todo o resto das notas da editoria.
@@ -235,8 +238,9 @@ def main() -> int:
         recusados_tudo += rec
         if apl and "--aplicar" in argv:
             doc["textos"] = novos
-            arq.write_text(json.dumps(doc, ensure_ascii=False, indent=1) + "\n",
-                           encoding="utf-8", newline="\n")
+            # §229: porta atomica. Escrita direta no destino deixa o arquivo pela
+            # metade quando a rodada morre no meio, e foi por isso que a porta existe.
+            gravar_em(arq, doc)
 
     print(f"{total} pedido(s) lido(s) · {len(aplicados_tudo)} aplicável(is) · "
           f"{len(recusados_tudo)} recusado(s)")
