@@ -3,15 +3,19 @@
  "formato_versao": 1,
  "etapas": {
   "juiz": {
-   "pistas_recebidas": 450,
-   "com_documento": 37,
-   "promovidas": 0,
+   "pistas_recebidas": 530,
+   "com_documento": 84,
+   "promovidas": 2,
    "recusa_sem_documento_primario": 413,
-   "recusa_autoridade_nao_confirmada": 2,
+   "recusa_autoridade_nao_confirmada": 12,
    "recusa_noticia_institucional_nao_e_o_plano": 1,
-   "recusa_natureza_duvidosa": 24,
-   "recusa_resposta": 3,
-   "recusa_citacao_incompleta": 7
+   "recusa_natureza_duvidosa": 26,
+   "recusa_resposta": 5,
+   "recusa_citacao_incompleta": 11,
+   "recusa_documento_inacessivel": 28,
+   "recusa_texto_nao_extraivel": 5,
+   "recusa_ente_nao_confirmado": 26,
+   "recusa_fora_do_objeto": 1
   },
   "descobrir_planos": {
    "alvos_consultados": 40,
@@ -38,5 +42,5 @@
    "brutos_siglas_e_variantes": 20424
   }
  },
- "atualizado_em": "2026-10-05T18:45:17"
+ "atualizado_em": "2026-10-05T19:28:18"
 }
