@@ -1863,7 +1863,106 @@
    "itens": null,
    "status": "erro",
    "erro": "✗ ESQUEMA DA PISTA: 1 pista(s) nova(s) fora do esquema:"
+  },
+  {
+   "data": "2026-10-04",
+   "script": "monitorar_imprensa_regional.py",
+   "inicio": "2026-10-05T01:22:42",
+   "duracao_s": 323.5,
+   "itens": 40,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-04",
+   "script": "monitorar_imprensa_saude.py",
+   "inicio": "2026-10-05T01:28:05",
+   "duracao_s": 1.0,
+   "itens": null,
+   "status": "erro",
+   "erro": "KeyError: 'hash'"
+  },
+  {
+   "data": "2026-10-04",
+   "script": "monitorar_atos_resposta.py",
+   "inicio": "2026-10-05T01:28:06",
+   "duracao_s": 264.6,
+   "itens": 2300,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-04",
+   "script": "monitorar_politica_por_inteiro.py",
+   "inicio": "2026-10-05T01:32:30",
+   "duracao_s": 1.7,
+   "itens": 2300,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-04",
+   "script": "monitorar_sinais_federais.py",
+   "inicio": "2026-10-05T01:32:31",
+   "duracao_s": 3.8,
+   "itens": 10,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-04",
+   "script": "detectar_marcos_federais.py",
+   "inicio": "2026-10-05T01:32:34",
+   "duracao_s": 1.7,
+   "itens": 0,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-04",
+   "script": "descobrir_planos.py",
+   "inicio": "2026-10-05T01:32:35",
+   "duracao_s": 1062.2,
+   "itens": 42,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-04",
+   "script": "monitorar_redes_oficiais.py",
+   "inicio": "2026-10-05T01:50:17",
+   "duracao_s": 1066.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-04",
+   "script": "seguir_pistas.py",
+   "inicio": "2026-10-05T02:08:03",
+   "duracao_s": 214.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-04",
+   "script": "triar_confianca_pistas.py",
+   "inicio": "2026-10-05T02:11:37",
+   "duracao_s": 2.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-04",
+   "script": "verificar_pista_imprensa.py",
+   "inicio": "2026-10-05T02:11:39",
+   "duracao_s": 174.6,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
   }
  ],
- "atualizado_em": "2026-10-05T01:20:17"
+ "atualizado_em": "2026-10-05T02:14:33"
 }

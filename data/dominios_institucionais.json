@@ -1,6 +1,6 @@
 {
   "_governanca": "Domínios institucionais ou oficiais que NÃO são veículos de imprensa. NÃO é lista de bloqueio: o caminho deles é o juiz, com documento primário. Decisão da editoria de 30/09/2026 (caso CEIVAP).",
-  "atualizado_em": "2026-09-30",
+  "atualizado_em": "2026-10-04",
   "dominios": [
     {
       "dominio": "ceivap.org.br",
@@ -17,6 +17,13 @@
       "motivo": "reavaliação de 30/09/2026 com a regra nova: a página institucional lista bairros, cidades vizinhas e pontos turísticos, sem nenhum termo jornalístico e sem cargo de redação. Guia de cidade não é veículo.",
       "incluido_em": "2026-09-30",
       "incluido_por": "reavaliação da lista (30/09/2026)"
+    },
+    {
+      "dominio": "diariodocomercio.com.br",
+      "termo_institucional": "CONSELHO GESTOR",
+      "expediente": "https://diariodocomercio.com.br/expediente",
+      "incluido_em": "2026-10-04",
+      "incluido_por": "triagem automática da entrada de veículos (30/09/2026)"
     }
   ]
 }

@@ -48,7 +48,75 @@
    "brutos_plancon": 14624,
    "brutos_periodo_ou_seca": 14596,
    "brutos_siglas_e_variantes": 14536
+  },
+  "descobrir_planos": {
+   "alvos_consultados": 20,
+   "achados_novos": 0,
+   "fila_acumulada": 42
+  },
+  "rede_social": {
+   "entes_consultados": 20,
+   "perfis_confirmados": 32,
+   "pistas": 319,
+   "sem_perfil": 4,
+   "lacunas": 5
   }
  },
- "atualizado_em": "2026-10-05T01:20:16"
+ "atualizado_em": "2026-10-05T02:08:03",
+ "verificador_imprensa": {
+  "na_fila": 9971,
+  "lidas": 13,
+  "exibiveis": 0,
+  "inacessiveis": 5,
+  "nao_lidas_por_orcamento": 9953,
+  "resolucoes": 0,
+  "nao_resolvidas_por_orcamento": 0,
+  "por_motivo": {
+   "inacessivel": 5,
+   "recusada_pelo_juiz": 2,
+   "ente_nao_confirmado": 3,
+   "genero_nao_noticia": 3,
+   "natureza_duvidosa": 3,
+   "fora_do_ciclo": 2
+  },
+  "crescimento_da_lista": {
+   "candidatos": 469,
+   "avaliados_por_noite": 15,
+   "entraram": [
+    "radioaltouruguai.com.br"
+   ],
+   "recusas": {
+    "sem_pagina_de_expediente": 5,
+    "sem_https": 4,
+    "expediente_sem_nome_nem_cnpj": 2,
+    "expediente_sem_identidade_jornalistica": 2,
+    "sitio_institucional_nao_e_veiculo": 1
+   },
+   "institucionais": [
+    "diariodocomercio.com.br"
+   ]
+  },
+  "orcamento": {
+   "paginas_lidas": 18,
+   "por_host": {
+    "horacampinas.com.br": 1,
+    "vale360news.com.br": 2,
+    "plantaoguaruja.com.br": 1,
+    "abcdoabc.com.br": 1,
+    "upiara.com.br": 3,
+    "ndmais.com.br": 6,
+    "canoinhasonline.com.br": 2,
+    "nsctotal.com.br": 2
+   },
+   "recusas_por_host": {
+    "horacampinas.com.br": 1,
+    "canoinhasonline.com.br": 2,
+    "nsctotal.com.br": 2
+   },
+   "hosts_desligados": [],
+   "teto_por_host": 40,
+   "teto_global": 600
+  },
+  "versao": "1.0 (29/09/2026)"
+ }
 }
