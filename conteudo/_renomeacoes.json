@@ -1,4 +1,7 @@
 {
  "_governanca": "RENOMEAÇÕES DE IDENTIFICADOR (item 1.5.d do handover de 05/10/2026). A editoria aponta um trecho pelo identificador, e pedido de edição guarda esse identificador. Se ele mudar em silêncio, o pedido antigo vira recusa sem que ninguém entenda por quê. Então identificador que sai do catálogo declara aqui para onde foi, e `scripts/verificar_catalogo.py` reprova o sumiço não registrado. Formato: `de_para` com {identificador_antigo: identificador_novo}.",
- "de_para": {}
+ "de_para": {
+  "imprensa.perguntas.entender.titulo": "(retirado em 05/10/2026: as cinco perguntas abrem a seção, sem subtítulo)",
+  "imprensa.perguntas.contato.1": "(retirado em 05/10/2026 por decisão da editoria)"
+ }
 }

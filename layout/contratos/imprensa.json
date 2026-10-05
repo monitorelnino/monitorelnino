@@ -1,5 +1,5 @@
 {
- "_governanca": "Contrato de layout da Imprensa (handover da preparação programática, itens 7, 7-B e 7-C, 05/10/2026). A página é o título “Imprensa” e, imediatamente, as seções. Ordem final: O que é o MARÉ · Como os índices são calculados · O que cada página responde · Perguntas de repórter · Como citar · Para redações. Saíram, sem substituição: a abertura com o contato (o e-mail fica só em “Para redações”), o bloco “Os índices nesta edição” e o bloco “Textos desta semana”. “O que cada página mostra” e “Perguntas de fato” foram substituídas. O texto público vive em conteudo/imprensa.json. Quem verifica é scripts/verificar_conformidade.py.",
+ "_governanca": "Contrato de layout da Imprensa (handover da preparação programática, itens 7, 7-B e 7-C, 05/10/2026). A página é o título “Imprensa” e, imediatamente, as seções. Ordem final: O que é o MARÉ · Como os índices são calculados · O que cada página responde · Perguntas frequentes · Como citar · Para redações. Saíram, sem substituição: a abertura com o contato (o e-mail fica só em “Para redações”), o bloco “Os índices nesta edição” e o bloco “Textos desta semana”. “O que cada página mostra” e “Perguntas de fato” foram substituídas. O texto público vive em conteudo/imprensa.json. Quem verifica é scripts/verificar_conformidade.py.",
  "pagina": "imprensa.html",
  "componentes": {
   "numeros": ".cartao-numero",
@@ -36,9 +36,9 @@
   },
   {
    "id": "perguntas",
-   "h2": "Perguntas de repórter",
+   "h2": "Perguntas frequentes",
    "tipo": "lista_simples",
-   "_nota": "Cinco grupos em h3: Para entender o que está vendo · Sobre o método · Sobre as fontes · O que se pode e o que não se pode concluir · Sobre o MARÉ e o contato. A resposta sobre a frequência traz molde gerado, lido do gatilho do publicador."
+   "_nota": "Quatro grupos. As cinco primeiras perguntas abrem a seção, sem subtítulo; depois, em h3: Sobre o método · Sobre as fontes · O que se pode e o que não se pode concluir · Contato. A resposta sobre a frequência traz molde gerado, lido do gatilho do publicador."
   },
   {
    "id": "citar",
@@ -67,18 +67,23 @@
   "FIGURA",
   "O que cada página mostra",
   "Os índices nesta edição",
+  "Para entender o que está vendo",
   "Perguntas de fato",
+  "Perguntas de repórter",
+  "Sobre o MARÉ e o contato",
   "Textos desta semana",
   "Todos os textos",
+  "como ele se sustenta",
   "corte de",
   "código que calcula",
   "dados abertos",
   "desastre",
   "no período",
   "não é distribuido",
-  "não é distribuído"
+  "não é distribuído",
+  "recursos próprios"
  ],
- "_nota_texto_proibido": "03/10/2026 (regra 1 da editoria): nenhuma frase sobre código, base de dados ou licença de dados entra no texto público — nem para dizer que existe, nem para dizer que não existe. A metodologia se anuncia numa frase, e é só. Em 05/10 entram os títulos revogados pelos itens 7 e 7-C: título revogado volta por hábito se nada o barrar.",
+ "_nota_texto_proibido": "03/10/2026 (regra 1 da editoria): nenhuma frase sobre código, base de dados ou licença de dados entra no texto público — nem para dizer que existe, nem para dizer que não existe. A metodologia se anuncia numa frase, e é só. Em 05/10 entram os títulos revogados pelos itens 7 e 7-C: título revogado volta por hábito se nada o barrar. Na revisão da editoria de 05/10 entram os títulos revogados da seção de perguntas e as expressões da pergunta retirada: nenhuma menção a financiamento, recursos próprios ou vínculos entra no site.",
  "_divergencia_do_handover": "Divergência declarada (03/10/2026): o handover pedia um `.cartao-destaque` largo para o boletim. Essa classe não existe no sistema de design — não há uma linha dela em assets/base.css —, e a hierarquia de regras põe o sistema acima do handover. O boletim usa o componente que existe para isso, `.cartao cartao--status` com `.grade-numeros--3`, que é o mesmo de todo cartão de números do site. Criar uma classe nova para um só lugar é exatamente o 'ajuste manual' que o § Design proíbe.",
  "_nota_rotina_semanal": "04/10/2026: o ponteiro 'O boletim desta semana' virou 'Textos desta semana'. O Boletim saiu com a rotina de dois textos por semana."
 }

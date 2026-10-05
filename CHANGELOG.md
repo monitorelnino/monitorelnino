@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-05 · #563 · A seção de perguntas da imprensa chama-se Perguntas frequentes
+
+Revisão da editoria. As cinco perguntas que vinham sob o subtítulo “Para entender o que está
+vendo” abrem a seção, sem subtítulo; o último grupo chama-se “Contato”. Sai por inteiro a
+pergunta sobre quem faz o MARÉ e como ele se mantém: nenhuma menção a financiamento, recursos ou
+vínculos entra em lugar nenhum do site. Os títulos revogados e as expressões retiradas entram no
+texto proibido do contrato.
+
 ## 2026-10-05 · #561 · O texto público sai do código e vai para o catálogo
 
 Três camadas separadas: estrutura (contrato), conteúdo (catálogo) e dado (geradores). Financiamento e
