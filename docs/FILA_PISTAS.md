@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 04/10/2026 · 2755 pendente(s) · 6001 decidida(s) · A=172 B=498 C=2085
+Gerado em 04/10/2026 · 3102 pendente(s) · 6874 decidida(s) · A=174 B=520 C=2408
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -991,14 +991,16 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.serramarnews.com.br/noticia/11506/saquarema/politica/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico.html
   - trecho: 2 days ago ... Saquarema,25/09/2026. tempo hoje 26°|26°. Serramar FM. ○ AO VIVO92,1 ... Resumindo: plano de contingência, população das áreas de risco ...
   - juiz: portão automático: fonte não oficial
-- `3cc86d552d` · nível **A** (6 pts) · seguimento_busca_oficial · — · citação não extraída
+- `3cc86d552d` · nível **A** (6 pts) · seguimento_busca_oficial · DUVIDA · citação não extraída
   - título: PDF Diário Oficial do Município de Saquarema | Poder Executivo | Ano VIII ...
   - url: https://dos.saquarema.rj.gov.br/wp-content/uploads/2026/08/D.O.S.-1978-8.pdf
   - trecho: "Nossa participação neste encontro é fundamental para alinharmos as estratégias de Saquarema com o plano de contingência estadual. O El Niño traz desafios diretos para a saúde pública, e o trabalho integrado das secretar
-- `1846b11833` · nível **B** (5 pts) · seguimento_busca_oficial · — · data 2026 (do trecho)
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `1846b11833` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · data 2026 (do trecho)
   - título: Câmara Municipal de Saquarema
   - url: https://transparencia.saquarema.rj.leg.br/materias/17533
   - trecho: A solicitação de elaboração e execução de um plano de contingência emergencial específico para o período sazonal de dezembro de 2026, janeiro de 2027 e fevereiro de 2027 se faz necessária para garantir a segurança e o ab
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `cf5bb3f6d7` · nível **B** (4 pts) · seguimento_querido_diario · DUVIDA · **DECRETO Nº 3.118**, 03/12/2025
   - título: Diário oficial de 2025-12-05
   - url: https://data.queridodiario.ok.org.br/3305505/2025-12-05/2e89b8976c8bdcaafb20133421c51d34a5cc75e6.pdf
@@ -1015,15 +1017,17 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://data.queridodiario.ok.org.br/3305505/2026-03-23/a354a774d51c2aa915811ed66b993a729b950b79.pdf
   - trecho: Municipal nº 2.837, de 16 de março de 2026; DECRETA Art. 1º Fica aberto Crédito Adicional Es- pecial, no montante de R$ 59.010,00 (cinquenta e nove mil e dez reais), por Anulação Parcial de Dotação, alocada na Secretaria
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
-- `2e511e6dfa` · nível **B** (4 pts) · seguimento_busca_oficial · — · citação não extraída
+- `2e511e6dfa` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · **Lei Estadual nº 5.101**, 04/10/2007
   - título: Plano de Manejo do Parque Estadual da Costa do Sol
   - url: https://www.saquarema.rj.gov.br/wp-content/uploads/2020/07/PLANO-DE-MANEJO-PCSOL-2019.pdf
   - trecho: Saquarema: 7,58% da área do município estão no PECS, equivalendo a 24,86% da ... do Plano de Contingência já existente no PECS). Levantamento dos ...
   - ⚠ ano_anterior_ao_ciclo
-- `ab184c6fc6` · nível **B** (4 pts) · seguimento_busca_oficial · — · data 02/01/2025 (do trecho)
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `ab184c6fc6` · nível **B** (4 pts) · seguimento_busca_oficial · DUVIDA · **RESOLUÇÃO Nº. 98**, 02/01/2025
   - título: Exportar - Câmara Municipal de Saquarema
   - url: https://transparencia.saquarema.rj.leg.br/materias/export?origem=V-303
   - trecho: 98/2025, DE 02 DE JANEIRO DE 2025, QUE "DISPÕE SOBRE O REGIMENTO INTERNO DA CÂMARA MUNICIPAL DE SAQUAREMA-RJ". Comissão de Educação, Cultura, Bem Estar ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `9dcb3b22ad` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · data 2026 (do trecho)
   - título: Diário oficial de 2026-04-22
   - url: https://data.queridodiario.ok.org.br/3305505/2026-04-22/e356e157a90e44fa51139715ebffe6de2c90b8f7.pdf
@@ -1415,17 +1419,73 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
+## Capinzal/SC — 4 pendente(s)
+- `31ff814295` · nível **A** (6 pts) · seguimento_busca_oficial · DUVIDA · **Lei Estadual n.º 870**, 23/01/1963
+  - título: plano municipal de preparação e resposta a emergências
+  - url: https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/393-regional-de-saude-de-concordia.html?download=1127%3Appr-esp-presidente-castelo-branco&Itemid=109
+  - trecho: Já pela Lei Estadual n.º 870, de 23/01/1963, transfere o distrito de Dois Irmãos do município de Capinzal para o novo município de Ouro. ... Plano de Contingência ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `ffefa000e0` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: Ouro inicia ações preventivas contra impactos do El Niño e promove ...
+  - url: https://capinzalfm.com.br/noticia/ouro-inicia-acoes-preventivas-contra-impactos-do-el-nino-e-promove-mutirao-de-cadastramento-neste-sabado
+  - trecho: Jun 20, 2026 ... Rádio Capinzal. Início; Notícias ... As medidas fazem parte de um plano de contingência elaborado após ...
+  - juiz: portão automático: fonte não oficial
+- `5eae720baf` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · **Decreto nº 51**, 15/04/2020
+  - título: Centro Municipal de Educação Infantil Pinguinho de Gent
+  - url: https://capinzal.sc.gov.br/uploads/sites/200/2024/11/Plano-de-Gestao-CMEI-Pinguinho-de-Gente-25-28.pdf
+  - trecho: Em 2021 o atendimento presencial foi retomado de forma escalonada, respeitando o Plano de Contingência para Covid- ... Capinzal/SC, 2023.
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `d915e221c3` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - url: https://capinzalfm.com.br/noticia/ouro-apresenta-plano-de-contingencia-da-defesa-civil-e-reforca-preparacao-para-eventos-climaticos
+  - trecho: Jun 23, 2026 ... ... Plano de Contingência do município. O encontro ocorreu na Sala do ... Capinzal e região), 3º Sargento BM David Azevedo de Souza, que ...
+  - juiz: portão automático: fonte não oficial
+
+## Caçador/SC — 7 pendente(s)
+- `65e0c5d2b9` · nível **A** (7 pts) · seguimento_busca_oficial · — · **Decreto 867**, 18/03/2020
+  - título: Boletim Epidemiológico - Prefeitura de Caçador |
+  - url: https://cacador.sc.gov.br/pagina-36688/
+  - trecho: 18/03/2020 - PLANO DE CONTINGÊNCIA MUNICIPAL DE CAÇADOR.docx. Decretos. 19/04/2020 - Decreto 8673 - autorização feriados ... SC; CEP: 89500-124; CNPJ: 83.074.302 ...
+- `f44a722a53` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Prefeitura de Caçador intensifica ações preventivas diante da ...
+  - url: https://cacador.sc.gov.br/prefeitura-de-cacador-intensifica-acoes-preventivas-diante-da-possibilidade-de-el-nino/
+  - trecho: May 28, 2026 ... As novas residências foram construídas no Loteamento Nossa Senhora Salete. ... Confira o Plano de Contingência de Caçador. ← Prefeitura de ...
+- `4063211934` · nível **B** (5 pts) · seguimento_busca_oficial · — · **Decreto Estadual n.º 1.530**, 2026
+  - título: Prefeitura realiza trabalhos de prevenção à enxurradas na Ponte ...
+  - url: https://cacador.sc.gov.br/prefeitura-realiza-trabalhos-de-prevencao-a-enxurradas-na-ponte-antonio-bortolon/
+  - trecho: Jun 17, 2026 ... As ações são realizadas em conformidade com o Decreto Estadual n.º 1.530 ... Caçador. Conforme o Plano de Contingência, o mecanismo de ...
+- `312d30994b` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: O El Niño vai atingir Caçador? A dragagem do Rio do Peixe ...
+  - url: https://www.facebook.com/prefeituradecacador/videos/o-el-ni%C3%B1o-vai-atingir-ca%C3%A7ador-a-dragagem-do-rio-do-peixe-resolveria-as-enchentes/1492919225921170/
+  - trecho: Jul 11, 2026 ... ☺️ - in Caçador, SC, Brazil. Rosemeri Moura and 3 others · 󰍸 4 · 󰍹 5 · 󰤧 2 ... Além disso, Caçador tem o plano de contingência da Defesa ...
+  - juiz: portão automático: fonte não oficial
+- `ca2d62c6a8` · nível **B** (3 pts) · seguimento_busca_oficial · EX_ANTE · **Lei 18.316**, 2021
+  - título: LEI COMPLEMENTAR Nº 741, DE 12 DE JUNHO DE 2019
+  - url: https://leis.alesc.sc.gov.br/ato-normativo/20438/compilado
+  - trecho: IV – coordenar a elaboração do plano de contingência estadual e fomentar a elaboração dos planos de contingência municipais;. V – mobilizar recursos para ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `3529756c29` · nível **B** (3 pts) · seguimento_busca_oficial · DUVIDA · data 2026 (do trecho)
+  - título: Institui o Plano Diretor de Desenvolvimento Sustentável do ...
+  - url: https://www.camaracacador.sc.gov.br/tramitacoes/1/11828/0
+  - trecho: Jul 20, 2026 ... Art. 2º O Plano Diretor de Desenvolvimento Sustentável do Município de Caçador é o instrumento básico da Política Territorial e Urbana de ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `363746d364` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - url: https://www.instagram.com/reel/DaqEP-KuSM8/?hl=en
+  - trecho: Jul 11, 2026 ... Duas famílias que vivem em áreas de risco já receberam atendimento da assistência social. A Defesa Civil mantém o plano de contingência em ...
+
 ## Criciúma/SC — 6 pendente(s)
 - `f220e24e26` · nível **A** (6 pts) · seguimento_busca_oficial · EX_ANTE · **PORTARIA Nº 157**, 13/11/2020
   - título: Diário Oficial dos Municípios de Santa Catarina - DOM/SC
   - url: https://www.diariomunicipal.sc.gov.br/?r=site%2Findex&q=cod_entidade%3A79
   - trecho: MUNICÍPIO DE CRICIÚMA Poder Executivo Secretaria Geral / Apoio Administrativo PORTARIA Nº 1571/SME/2020 Homologa, com registro em ata, o Plano de Contingência, ...
   - juiz: portão automático: ato de 2020 — pode ser edição anterior; decisão humana
-- `7a18f7fa17` · nível **B** (6 pts) · seguimento_busca_oficial · — · data 2022 (do trecho)
+- `7a18f7fa17` · nível **B** (6 pts) · seguimento_busca_oficial · EX_ANTE · data 2022 (do trecho)
   - título: PLANO MUNICIPAL DE CONTINGÊNCIA-EDUCAÇÃO
   - url: https://urussanga.sc.gov.br/uploads/sites/473/2022/02/plancon6.pdf
   - trecho: Feb 19, 2022 ... de Criciúma. Rosilene Aparecida Matos, representante dos ... Plano de Contingência de Proteção e Defesa Civil (PLANCON-PDC). Nele ...
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 - `ce1eba8afb` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · **Lei Municipal n° 3.172**, 07/05/2025
   - título: Decreto - Prefeitura Municipal de Criciúma
   - url: https://apoio.criciuma.sc.gov.br/files/6824fc1e18f0f14052025.pdf
@@ -1444,7 +1504,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://tnsul.com/2026/06/17/plano-de-contingencia-de-criciuma-prepara-mobilizacao-em-emergencias/
   - trecho: Plano de contingência de Criciúma prepara mobilização em emergências. 17 de junho de 2026. Foto: Divulgação / Prefeitura de Criciúma. A Prefeitura de ...
 
-## Ipuaçu/SC — 5 pendente(s)
+## Ipuaçu/SC — 6 pendente(s)
 - `a353384432` · nível **A** (8 pts) · busca_web · — · data 31/03/2023 (do trecho)
   - título: Plano de Contingência de Proteção e Defesa Civil – PLANCON -
   - url: https://ipuacu.sc.gov.br/plano-de-contingencia-de-protecao-e-defesa-civil-plancon/
@@ -1457,6 +1517,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: Ipuaçu celebra 34 anos com grande festa -
   - url: https://ipuacu.sc.gov.br/ipuacu-celebra-34-anos-com-grande-festa/
   - trecho: Ipuaçu celebra 34 anos com grande festa. 7 de abril de 2026 7 de abril de 2026 ... Plano de Contingência de Proteção e Defesa Civil – PLANCON · 18 de ...
+- `4dfefea765` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · data 2025 (do trecho)
+  - título: Edital Concurso Público N° 002/2025 - Prefeitura de Ipuaçu
+  - url: https://ipuacu.sc.gov.br/uploads/sites/426/2025/12/1-Edital-Concurso-Publico-N%C2%B0-002_2025-Prefeitura-de-Ipuacu.pdf
+  - trecho: Dec 30, 2025 ... exigidos na Área de Recursos Humanos do Município de Ipuaçu - SC, no prazo estabelecido. ... simulados, conforme Plano de Contingência de Proteção ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 - `5d0ec7f96f` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Defesa Civil apura ocorrência de tornado após tempestade em ...
   - url: https://thmais.com.br/giro-de-noticias/defesa-civil-apura-ocorrencia-de-tornado-apos-tempestade-em-santa-catarina/
@@ -1510,11 +1576,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.instagram.com/reel/DdeH-bKxvPQ/
   - trecho: Sep 19, 2026 ... ... plano de contingência. A estratégia inclui o monitoramento de ... Photo by Defesa Civil de Itajaí on September 08, 2026. May be an ...
   - juiz: portão automático: fonte não oficial
-- `7b8e8b5143` · nível **C** (5 pts) · seguimento_busca_oficial · — · data 2026 (do trecho)
+- `7b8e8b5143` · nível **C** (5 pts) · seguimento_busca_oficial · DUVIDA · data 2026 (do trecho)
   - título: 43º Sessão Ordinária - 09-07-2026 - Câmara de Vereadores de Itajaí
   - url: https://www.cvi.sc.gov.br/sessao/43o-sessao-ordinaria-09-07-2026-1000165
   - trecho: Jul 9, 2026 ... solicitando via SEMASA a avaliação, a elaboração e divulgação de plano de contingência ... Itajaí/SC - CEP 88307-303. Legisoft. 2026 - Todos os ...
   - ⚠ risco_errado_no_titulo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Lages/SC — 5 pendente(s)
 - `7596e02225` · nível **A** (6 pts) · busca_web · DUVIDA · data 2025 (do trecho)
@@ -1618,7 +1685,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: 3 days ago ... Conhecer os potenciais riscos de desastres na sua cidade e no seu bairro bem como estar ciente do plano de contingência, com os locais seguros e ...
   - juiz: portão automático: data do ato incompleta (2026)
 
-## Palma Sola/SC — 5 pendente(s)
+## Palma Sola/SC — 8 pendente(s)
 - `497a4c5ffd` · nível **A** (6 pts) · busca_web · EX_ANTE · **Lei nº. 787**, 18/12/1961
   - título: MUNICÍPIO DE PALMA SOLA SC SECRETARIA MUNICIPAL DA ...
   - url: https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/392-regional-de-saude-sao-miguel-do-oeste.html?download=1107%3Apalma-sola&Itemid=109
@@ -1635,6 +1702,23 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/392-regional-de-saude-sao-miguel-do-oeste.html?download=1111%3Asao-jose-do-cedro&Itemid=109
   - trecho: Mondai, Palma Sola, Paraíso, Princesa, Santa Helena, São João do Oeste, São ... descrito nesse plano de contingência, sempre, no entanto, a partir da liberação ...
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `0d01c3e4af` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: plano municipal de contingência - placom - Anchieta (SC)
+  - url: https://www.anchieta.sc.gov.br/uploads/sites/403/2024/01/OFICIAL-PLANO-DE-CONTINGENCIA-MUNICIPAL-ANCHIETA-SC.pdf
+  - trecho: O Plano de Contingência para Enxurradas, deslizamentos, estiagem, granizos e vendavais do município de Anchieta/SC estabelece os procedimentos a serem ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `6a68df4dae` · nível **B** (4 pts) · seguimento_busca_oficial · RESPOSTA · **Lei Estadual 10.180**, 19/06/1990
+  - título: EXEMPLAR DE ASSINANTE DA IMPRENSA NACIONAL
+  - url: https://www.gov.br/mme/pt-br/arquivos/do-26-05-2011-s1.pdf
+  - trecho: May 26, 2011 ... ... PALMA SOLA UF: SC. Resolução Proc/MAPA/CER Mutuário. 1130/2011 5511 ... plano de contingência de tecnologia da informação da rede DPU;. X ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza RESPOSTA — só ex-ante é aplicado sozinho
+- `d38c4f31dc` · nível **B** (4 pts) · seguimento_busca_oficial · DUVIDA · **DECRETONº 372**, 19/06/2007
+  - título: OFICIAL - Arquivo Público do Estado de Santa Catarina
+  - url: https://acervo.arquivopublico.sc.gov.br/uploads/r/arquivo-publico-do-estado-de-santa-catarina-apesc/f/b/5/fb53972df0ebdd1c90467101f8f15546ec771fd646fff4cdd9d2c85270216048/7332d3b1-4b26-4328-84ce-2bbe9cddbf70-15264-DOE_18145_19_06_2007_64F.pdf
+  - trecho: Jun 19, 2007 ... ... Palma Sola. 02 - Bandeirante. 17 - Paraíso. 03 - Barra Bonita. 18 ... Plano de Contingência Operacional. |. Diretor Presidente. ICITAÇÃO.
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `4154da118f` · nível **B** (3 pts) · busca_web · RESPOSTA · data 2024 (do trecho)
   - título: Cidades de SC ativam plano de contingência, decretam situação de ...
   - url: https://g1.globo.com/sc/santa-catarina/noticia/2024/12/08/sc-plano-contingencia-situacao-emergencia-chuvas-estragos.ghtml
@@ -1729,11 +1813,17 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.instagram.com/p/DYStRN-AfHD/
   - trecho: May 13, 2026 ... ... plano de contingência diante das previsões de chuvas intensas associadas ao fenômeno El Niño. ... Rio do Sul SC e Região.. agora fica a ...
 
-## Salete/SC — 6 pendente(s)
+## Salete/SC — 7 pendente(s)
 - `3645fef486` · nível **A** (7 pts) · busca_web · — · citação não extraída
   - título: Coordenadoria Municipal de Proteção e Defesa Civil
   - url: https://salete.sc.gov.br/estrutura/pagina-9384/
   - trecho: XI- Realizar regularmente exercícios simulados, conforme Plano de Contingência de Proteção e Defesa Civil. ... E-mail: defesacivil@salete.sc.gov.br. Fone: 47 ...
+- `b6f0c31eb7` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: PLANO DE CONTINGÊNCIA PARA ... - Prefeitura de Descanso
+  - url: https://descanso.sc.gov.br/uploads/sites/330/2024/05/Plano-de-Contingencia-2023-Descanso.pdf
+  - trecho: Claudia Salete Alves De Carvalho. Dineia Lurdes Trevisan. Fabiana Claudia ... 4.1 Ativação do Plano de Contingência ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 - `cb319c3dda` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: requerimento nº 0023/2026 - Câmara Municipal de Biguaçu/SC
   - url: https://www.cmb.sc.gov.br/proposicoes/Requerimentos/0/1/0/36789
@@ -2175,7 +2265,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Plano de Cargos, Vencimentos e Carreiras dos Servidores Públicos do Município de Votuporanga, Plano de Contingência de Proteção e Defesa Civil - PLANCON ...
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
-## None/None — 2010 pendente(s)
+## None/None — 2014 pendente(s)
+- `0370b59649` · nível **B** (4 pts) · seguimento_busca_oficial · — · **Decreto 184**, 2018
+  - título: Decreto 1846 2018 de Santa Catarina SC
+  - url: https://www.pmf.sc.gov.br/arquivos/arquivos/pdf/13_03_2023_12.22.52.80a3cb7a48f5538e6f1082f9e125dcc5.pdf
+  - trecho: § 3º Em situações de desastre ambiental ou antrópico, o Plano de Contingência deverá ... 300px; position:absolute; display: none; margin-left: 320px; } # ...
+  - ⚠ ano_anterior_ao_ciclo
+- `4d7ea9bd02` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · data 2020 (do trecho)
+  - título: REDUÇÃO DO RISCO DE DESASTRES - Fatec SJC
+  - url: http://sjc.fatec.sp.gov.br/downloads/arquivos/2020-2/e-book_reducao_risco_desastres.pdf
+  - trecho: Feb 15, 2020 ... ... none of them obtained permanent results (PASSADOR; PASSADOR,. 2010) ... plano de contingência comunitário e técnico-científico.
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 - `8e1fd7870e` · nível **B** (3 pts) · None · DUVIDA · citação não extraída
   - título: Cappelli promete decreto no 1º dia contra esgoto a céu aberto no DF - correiobraziliense.com.br
   - url: https://news.google.com/rss/articles/CBMi0gFBVV95cUxQVWk1VUJJYjRqUUo1VkFuOF9aLW85M0hhRE5WM1NJS3E1VjFxcl9fSlo2dmJYcTJGZEkxcGhUb1I3eGkzekxFa1dVbGx6Vk1oUy1FZnpuYzN5SE9XeW1UMm5CcVNtMzg2VG03ZmtsbGJ1TDdMQ2ZXMGp0MnE2WDZXa0kwZUV6MzY1aE01SlpoS2FoUUZEWU9zNFpoV3MxcEM5U0JWYjgzWkxtSHBkNXZDdk5OWXp6SmdWVDBVdGxUNDQzZ2V3d3g5cnZhTHFtZFVMekHSAdcBQVVfeXFMT3VLZjlxVzZ6cl92emNaSU81SnpYVngxaGZrbWcxSXVUbmpLRkpIZk5TQnRGUXhWalhsc0Fqc3FLXzh1QmMyMGdrTGhUMGNPQUhPUDAyYUlxUU9tREt3MGMxQlRiaFVaREZSZmtYNkNKeUJHcUQ2T0w1TG5BdEdOMUlweHhGTDdWNXo5dVRmR2dJTFR4M2piWkxKZ1lrWEhCRDJHbE45dWt0bEtYUTdPOFNZVUtwUkVqVkNLNHlpSWJjZmFrX0VNTlU2UnE3a21UOXY0OTdtaEU?oc=5
@@ -2192,6 +2293,17 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://news.google.com/rss/articles/CBMi0gFBVV95cUxQVWk1VUJJYjRqUUo1VkFuOF9aLW85M0hhRE5WM1NJS3E1VjFxcl9fSlo2dmJYcTJGZEkxcGhUb1I3eGkzekxFa1dVbGx6Vk1oUy1FZnpuYzN5SE9XeW1UMm5CcVNtMzg2VG03ZmtsbGJ1TDdMQ2ZXMGp0MnE2WDZXa0kwZUV6MzY1aE01SlpoS2FoUUZEWU9zNFpoV3MxcEM5U0JWYjgzWkxtSHBkNXZDdk5OWXp6SmdWVDBVdGxUNDQzZ2V3d3g5cnZhTHFtZFVMekHSAdcBQVVfeXFMT3VLZjlxVzZ6cl92emNaSU81SnpYVngxaGZrbWcxSXVUbmpLRkpIZk5TQnRGUXhWalhsc0Fqc3FLXzh1QmMyMGdrTGhUMGNPQUhPUDAyYUlxUU9tREt3MGMxQlRiaFVaREZSZmtYNkNKeUJHcUQ2T0w1TG5BdEdOMUlweHhGTDdWNXo5dVRmR2dJTFR4M2piWkxKZ1lrWEhCRDJHbE45dWt0bEtYUTdPOFNZVUtwUkVqVkNLNHlpSWJjZmFrX0VNTlU2UnE3a21UOXY0OTdtaEU?oc=5
   - trecho: 
   - juiz: portão automático: fonte não oficial
+- `3e98a29444` · nível **B** (3 pts) · seguimento_busca_oficial · DUVIDA · **DECRETO Nº 38.017**, 21/02/2017
+  - título: 39 BRASÍLIA - DF, QUINTA-FEIRA, 23 DE FEVEREIRO DE 2017
+  - url: https://www.sinj.df.gov.br/sinj/Diario/97ab8d5b-d510-3cd2-a720-5f7939bcbe8f/DODF%20039%2023-02-2017%20INTEGRA.pdf
+  - trecho: Feb 23, 2017 ... VII - elaborar plano de contingência de riscos em Tecnologia da Informação, em consonância ... NONE, NOTIFICAÇÃO DE LANÇAMENTO Nº 703/2015, ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `c107323ec9` · nível **B** (3 pts) · seguimento_busca_oficial · DUVIDA · **Decreto n° 3.177**, 2020
+  - título: estado do paraná - Prefeitura Municipal de Bandeirantes
+  - url: https://www.bandeirantes.pr.gov.br/public/admin/globalarq/licitacao/arquivo/6b9923345ed82e76080a479347bfc111.pdf
+  - trecho: Feb 22, 2020 ... Oí) do Juinal Palha da None Pnmnocnse para c.vcreer o carjo ile ... Considerando o Plano de Contingência Nacional para Infecção. Humana ...
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `811e665685` · nível **C** (2 pts) · None · — · citação não extraída
   - título: Governo decreta emergência em Roraima e cria gabinete para enfrentar impactos da estiagem - Folha BV
   - url: https://news.google.com/rss/articles/CBMixAFBVV95cUxOOURGVnVmY1lZOEFjNTNKeE9obFhVa1QzVW9uWGdkZEcxLXR5RXo4bTg3aGJ6UFZBSnQ5MmxVdzRNMmJwaFRORkxmczBabTZwYk1pazBCel9RcVVNN3l4S2xOaXJQVG9IYnUxb1lQb3U4aTl2NHdNNWl4NEVTOTFSZWVsMm4xNGQ2b0FxbWY2VjhuNVJXcUJhSVF4THhHWDdROE1oenZzX1Q1dmxoY2FKemdoYWw4WUZGQ0F5WUxlcmQ4Zm5l?oc=5
@@ -10484,12 +10596,33 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Alterações no Plano Anual de Aplicações de Recursos (PAAR) de Parambu Considerando que a Política Nacional Aldir Blanc (PNAB) é uma política pública de aplicação anual e estava previsto possíveis alterações no decorrer d
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
-## Apicum-Açu/MA — 1 pendente(s)
+## Apicum-Açu/MA — 5 pendente(s)
+- `1a47215fd9` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · **Lei nº 10.336**, 24/08/2001
+  - título: EXEMPLAR DE ASSINANTE DA IMPRENSA NACIONAL
+  - url: https://www.gov.br/mme/pt-br/arquivos/do-31-10-2011-s1.pdf
+  - trecho: Oct 31, 2011 ... ... Apicum-Açu. MA. 14.959. 18,99. 25,21. 10.000,00. 58. 210130 Bacuri. MA ... Plano de Contingência com o detalhamento das ações a serem de ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 - `a9ba25426a` · nível **B** (3 pts) · busca_web · DUVIDA · citação não extraída
   - título: Apicum-Açu - MA - Infosanbas
   - url: https://infosanbas.org.br/municipio/apicum-acu-ma/
   - trecho: Seu território é composto 100% pelo bioma Amazonia. O IDHM de Apicum-Açu é 0,57. O município possui Política Municipal de Saneamento Básico e possui Plano Municipal de Saneamento Básico.
   - juiz: portão automático: fonte não oficial
+- `8c24eb8d07` · nível **B** (3 pts) · seguimento_busca_oficial · EX_ANTE · **Resolução. 201**, 10.12.2010
+  - título: EXEMPLAR DE ASSINANTE DA IMPRENSA NACIONAL
+  - url: https://www.gov.br/mme/pt-br/arquivos/do-13-12-2010-s1.pdf
+  - trecho: Dec 13, 2010 ... ... plano de contingência na forma definida, sem prejuízo dos ... Apicum-Açu. 5. MA. 2100873 Araguanã. 2. MA. 2101202 Bacabal. 26. MA. 2101301 ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `86c2e46876` · nível **B** (3 pts) · seguimento_busca_oficial · — · data 2007 (do trecho)
+  - título: república federativa do brasil - Diários da Câmara dos Deputados
+  - url: https://imagem.camara.leg.br/Imagem/d/pdf/DCD13SET2007.pdf
+  - trecho: Sep 13, 2007 ... ... plano de contingência do fornecimento de gás natural, que seria ... Apicum-Açu, no Maranhão, onde registramos um triste recorde: o ...
+- `731b1edbdc` · nível **C** (2 pts) · seguimento_busca_oficial · EX_ANTE · **Lei nº 8.443**, 16/07/1992
+  - título: Diário Eletrônico - TCU
+  - url: https://btcu.apps.tcu.gov.br/api/obterDocumentoPdf/79185646
+  - trecho: Oct 22, 2025 ... Unidade Jurisdicionada: Prefeitura Municipal de Apicum-açu - MA. Representação legal: não há. 014.717/2025-5 - Natureza: TOMADA DE CONTAS ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Imperatriz/MA — 5 pendente(s)
 - `76d96df4a3` · nível **B** (7 pts) · seguimento_busca_oficial · EX_ANTE · **DECRETO Nº 068**, 18/08/2025
@@ -10518,12 +10651,33 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.al.ma.leg.br/sitealema/wp-content/uploads/2026/03/DIARIO_041_13.03.2026___.pdf
   - trecho: Mar 13, 2026 ... ... plano de contingência (chuvas). Informar qual a garantia contratual ... Imperatriz, nas ruas de todo o Estado do Maranhão. Esse mês, o ...
 
-## Peritoró/MA — 1 pendente(s)
+## Peritoró/MA — 5 pendente(s)
+- `19e331d024` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · data 2020 (do trecho)
+  - título: Plano Estadual de Saúde 2020-2023
+  - url: https://www.saude.ma.gov.br/wp-content/uploads/2024/04/PES-20-23.pdf
+  - trecho: ,Santana do Maranhão, São Francisco do Maranhão, Peritoró, Feira Nova do ... O Plano de Contingência para enfrentamento da pandemia no Maranhão, já em ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 - `11aa114104` · nível **B** (3 pts) · busca_web · DUVIDA · citação não extraída
   - título: Peritoró - MA - Infosanbas
   - url: https://infosanbas.org.br/municipio/peritoro-ma/
   - trecho: Seu território é composto 100% pelo bioma Cerrado. O IDHM de Peritoró é 0,56. O município não possui Política Municipal de Saneamento Básico e possui Plano Municipal de Saneamento Básico.
   - juiz: portão automático: fonte não oficial
+- `e84ed1d2d2` · nível **B** (3 pts) · seguimento_busca_oficial · EX_ANTE · **Lei nº 8.443**, 16/07/1992
+  - título: Diário Eletrônico - TCU
+  - url: https://btcu.apps.tcu.gov.br/api/obterDocumentoPdf/72260618
+  - trecho: Oct 19, 2022 ... Órgão/Entidade: Prefeitura Municipal de Peritoró - MA. Embargante: Agamenon Lima Milhomem. Representação legal: Sâmara Santos Noleto, Antino ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `0f01bcd2a6` · nível **C** (2 pts) · seguimento_link_noticia · DUVIDA · citação não extraída
+  - título: Atlas de Saneamento
+  - url: https://biblioteca.ibge.gov.br/visualizacao/livros/liv53096_cap3.pdf
+  - trecho: Atlas de Saneamento
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `2d40d8c0d8` · nível **C** (2 pts) · seguimento_link_noticia · DUVIDA · citação não extraída
+  - título: Impactos na saúde e no Sistema Único de Saúde decorrentes de agravos relacionados a um saneamento ambiental inadequado
+  - url: http://bvsms.saude.gov.br/bvs/publicacoes/1_caderno_pesquisa_engenharia_saude_publica.pdf
+  - trecho: Impactos na saúde e no Sistema Único de Saúde decorrentes de agravos relacionados a um saneamento ambiental inadequado
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Presidente Sarney/MA — 1 pendente(s)
 - `f809a9822f` · nível **B** (3 pts) · busca_web · DUVIDA · citação não extraída
@@ -11109,11 +11263,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=NzI0Njk%2C
   - trecho: estão na da região Noroeste, em Bom Jesus do Itabapoana. Itaeci listou os municípios que não. 61 entregaram o Plano de Contingência de Arboviroses 2024-2026: ...
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
-- `c2faa71cbc` · nível **B** (3 pts) · seguimento_busca_oficial · — · data 15/09/2020 (do trecho)
+- `c2faa71cbc` · nível **B** (3 pts) · seguimento_busca_oficial · EX_ANTE · **Decreto Estadual nº 42.518**, 2010
   - título: Resolução SES n° 2128 de 15 de setembro de 2020 - Saude.RJ
   - url: https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=MzQyOTI%2C
   - trecho: Sep 16, 2020 ... - o Plano de Contingência Nacional para Infecção Humana pelo novo ... BOM JESUS DO ITABAPOANA. R$ 2.544.013,10. RJ. 330070. CABO FRIO. R$ 4.666 ...
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `c3bd28f4ca` · nível **C** (1 pts) · busca_web · — · data 2026 (do trecho)
   - url: https://www.instagram.com/p/DcjeKSYhTDO/
   - trecho: Aug 27, 2026 ... 1 likes, 0 comments - fallaregiao on August 27, 2026: "Bom Jesus do Itabapoana Estrutura Plano de Contingência para Emergências Climáticas A ...
@@ -11219,10 +11374,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.sjb.rj.gov.br/arquivos/diario_oficial/174_26_do-25092026-ed174.pdf
   - trecho: 3 days ago ... São João da Barra/RJ, 25 de setembro de 2026. Daniel Pinheiro ... Plano de Contingência de Arboviroses - Biênio 2026-2028;. Art.2º ...
   - juiz: portão automático: data do ato incompleta (2019)
-- `d4933c6ab5` · nível **B** (5 pts) · seguimento_busca_oficial · — · data 2025 (do trecho)
+- `d4933c6ab5` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · **Portaria nº. 052**, 03/01/2025
   - título: DIÁRIO OFICIAL - Prefeitura de São João da Barra
   - url: https://www.sjb.rj.gov.br/arquivos/diario_oficial/002_25_do-03012025-ed002.pdf
   - trecho: Jan 3, 2025 ... MUNICÍPIO DE SÃO JOÃO DA BARRA | ESTADO DO RIO DE JANEIRO. Rua Barão ... 2.9 PLANO DE CONTINGÊNCIA ...
+  - juiz: portão automático: ato de 2025 — pode ser edição anterior; decisão humana
 - `cc4266e0a8` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - url: https://odia.ig.com.br/sao-joao-da-barra/2026/07/7281194-enfrentamento-ao-el-nino-e-priorizado-em-sao-joao-da-barra.html
   - trecho: Jul 23, 2026 ... São João da Barra - Plano Municipal de Contingência para o enfrentamento dos possíveis impactos do fenômeno El Niño é uma das prioridades do ...
@@ -11237,14 +11393,16 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://defesacivil.rj.gov.br/index.php/legislacao-cepedec/instrucoes-normativas-cepedec
   - trecho: Dec 7, 2020 ... XV - plano de contingência: documento que registra o planejamento ... São João da Barra. Sul I. Barra do Piraí · Barra Mansa · Comendador ...
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
-- `6445992283` · nível **B** (4 pts) · seguimento_busca_oficial · — · data 2021 (do trecho)
+- `6445992283` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · data 2021 (do trecho)
   - título: O BANCO DO DESENVOLVIMENTO DO BRASIL Entenda nossos ...
   - url: https://web.bndes.gov.br/bib/jspui/bitstream/1408/22344/3/PR__REL.ANUAL_2021.pdf
   - trecho: Dec 31, 2021 ... ... São João da Barra (RJ), tem capacidade instalada de 1.338,3 MW ... plano de contingência de liquidez e capital; avalia os níveis de ...
-- `81a6c6f9b2` · nível **B** (4 pts) · seguimento_busca_oficial · — · data 2020 (do trecho)
+  - juiz: portão automático: ato de 2021 — pode ser edição anterior; decisão humana
+- `81a6c6f9b2` · nível **B** (4 pts) · seguimento_busca_oficial · RESPOSTA · data 2020 (do trecho)
   - título: Instruções Normativas - Defesa Civil
   - url: https://www.defesacivil.rj.gov.br/index.php/legislacao-cepedec/instrucoes-normativas-cepedec
   - trecho: Dec 7, 2020 ... XV - plano de contingência: documento que registra o planejamento ... São João da Barra. Sul I. Barra do Piraí · Barra Mansa · Comendador ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Valença/RJ — 1 pendente(s)
 - `6ad08bf44e` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
@@ -11449,19 +11607,32 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Araquari/SC — 1 pendente(s)
+## Araquari/SC — 2 pendente(s)
 - `c72bffd2a7` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
   - título: MPSC amplia atuação preventiva contra impactos do El Niño e abre ...
   - url: https://folhadearaquari.com.br/mpsc-amplia-atuacao-preventiva-contra-impactos-do-el-nino-e-abre-mais-de-130-procedimentos-em-cidades-de-sc/
   - trecho: 3 days ago ... Já em Passo de Torres, o acompanhamento verificou a atualização do Plano de Contingência ... Araquari - SC, 89245-000. Redes sociais. Facebook ...
   - juiz: portão automático: fonte não oficial
+- `f83b2979b3` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: APÊNDICE B PLANO DE CONTINGÊNCIA (PLANCON) DE ...
+  - url: https://www.joinville.sc.gov.br/wp-content/uploads/2026/06/Cap.-14-Anexo-XV-Plano-de-Contingencia-PLANCON-PMGRD.pdf
+  - trecho: PLANO DE CONTINGÊNCIA (PLANCON) DE JOINVILLE – SC. Após o embasamento ... Paranaguamirim, 210-250 - Paranaguamirim, Araquari - SC, 89245-000. A-15.
+  - juiz: portão automático: data do ato inválida (26.0.0705)
 
-## Ascurra/SC — 1 pendente(s)
+## Ascurra/SC — 3 pendente(s)
+- `d668476523` · nível **B** (5 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: Prefeitura de Ascurra realiza Seminário Virtual sobre o Plano ...
+  - url: https://ascurra.sc.gov.br/prefeitura-de-ascurra-promove-seminario-virtual-sobre-o-plano-municipal-de-saneamento-basico/
+  - trecho: ... Plano de Contingência e Emergência do Plano Municipal de Saneamento Básico (PMSB). ... https://ascurra.sc.gov.br/consulta-publica-sobre-o-diagnostico-do-plano ...
 - `1046080b53` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Ascurra se prepara para o El Niño
   - url: https://jornaldomediovale.com.br/geral/ascurra-reforca-prevencao-para-enfrentar-possiveis-impactos-do-el-nino/
   - trecho: Defesa Civil de Ascurra amplia ações preventivas, atualiza planos de contingência e fortalece equipes para reduzir riscos durante o período de influência do El Niño 2026/2027.
   - juiz: portão automático: fonte não oficial
+- `eef597dec5` · nível **B** (3 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: CEI Professora Onorata Zonta Dalfovo tem equipe reduzida nos ...
+  - url: https://ascurra.sc.gov.br/noticia-718339/
+  - trecho: A Prefeitura de Ascurra, por meio da Secretaria de Educação, vem através de nota oficial informar sobre o atendimento no Centro de Educação Infantil ...
 
 ## Bandeirante/SC — 1 pendente(s)
 - `8ac9f4196e` · nível **B** (5 pts) · busca_web · — · citação não extraída
@@ -11510,37 +11681,6 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: O Plano Municipal de Saúde está de acordo com o Plano Plurianual de. Saúde 2022 ... Lebon Régis, Matos Costa, Timbó Grande e Arroio Trinta; e à Secretaria.
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
-
-## Capinzal/SC — 3 pendente(s)
-- `ffefa000e0` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
-  - título: Ouro inicia ações preventivas contra impactos do El Niño e promove ...
-  - url: https://capinzalfm.com.br/noticia/ouro-inicia-acoes-preventivas-contra-impactos-do-el-nino-e-promove-mutirao-de-cadastramento-neste-sabado
-  - trecho: Jun 20, 2026 ... Rádio Capinzal. Início; Notícias ... As medidas fazem parte de um plano de contingência elaborado após ...
-  - juiz: portão automático: fonte não oficial
-- `5eae720baf` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · **Decreto nº 51**, 15/04/2020
-  - título: Centro Municipal de Educação Infantil Pinguinho de Gent
-  - url: https://capinzal.sc.gov.br/uploads/sites/200/2024/11/Plano-de-Gestao-CMEI-Pinguinho-de-Gente-25-28.pdf
-  - trecho: Em 2021 o atendimento presencial foi retomado de forma escalonada, respeitando o Plano de Contingência para Covid- ... Capinzal/SC, 2023.
-  - ⚠ ano_anterior_ao_ciclo
-  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
-- `d915e221c3` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
-  - url: https://capinzalfm.com.br/noticia/ouro-apresenta-plano-de-contingencia-da-defesa-civil-e-reforca-preparacao-para-eventos-climaticos
-  - trecho: Jun 23, 2026 ... ... Plano de Contingência do município. O encontro ocorreu na Sala do ... Capinzal e região), 3º Sargento BM David Azevedo de Souza, que ...
-  - juiz: portão automático: fonte não oficial
-
-## Caçador/SC — 3 pendente(s)
-- `f44a722a53` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
-  - título: Prefeitura de Caçador intensifica ações preventivas diante da ...
-  - url: https://cacador.sc.gov.br/prefeitura-de-cacador-intensifica-acoes-preventivas-diante-da-possibilidade-de-el-nino/
-  - trecho: May 28, 2026 ... As novas residências foram construídas no Loteamento Nossa Senhora Salete. ... Confira o Plano de Contingência de Caçador. ← Prefeitura de ...
-- `312d30994b` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
-  - título: O El Niño vai atingir Caçador? A dragagem do Rio do Peixe ...
-  - url: https://www.facebook.com/prefeituradecacador/videos/o-el-ni%C3%B1o-vai-atingir-ca%C3%A7ador-a-dragagem-do-rio-do-peixe-resolveria-as-enchentes/1492919225921170/
-  - trecho: Jul 11, 2026 ... ☺️ - in Caçador, SC, Brazil. Rosemeri Moura and 3 others · 󰍸 4 · 󰍹 5 · 󰤧 2 ... Além disso, Caçador tem o plano de contingência da Defesa ...
-  - juiz: portão automático: fonte não oficial
-- `363746d364` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
-  - url: https://www.instagram.com/reel/DaqEP-KuSM8/?hl=en
-  - trecho: Jul 11, 2026 ... Duas famílias que vivem em áreas de risco já receberam atendimento da assistência social. A Defesa Civil mantém o plano de contingência em ...
 
 ## Celso Ramos/SC — 4 pendente(s)
 - `2b4ceec828` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
@@ -11724,7 +11864,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Jun 1, 2026 ... Defesa Civil de Mafra apresenta plano de contingência para enchentes e alagamentos ... El Niño. Durante o encontro, o prefeito Carlos Nitz ...
   - juiz: portão automático: fonte não oficial
 
-## Major Vieira/SC — 5 pendente(s)
+## Major Vieira/SC — 8 pendente(s)
 - `f005c24366` · nível **B** (6 pts) · busca_web · EX_ANTE · **LEI Nº 4.526**, 2025
   - título: DIÁRIO DO LEGISLATIVO - 23/10/2025
   - url: https://diariolegislativo.almg.gov.br/2025/L20251023.pdf
@@ -11741,6 +11881,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.aguas.sc.gov.br/jsmallfib_top/DHRI/Planos%20de%20Bacias/Plano%20da%20Bacia%20Hidrografica%20do%20Rio%20Canoinhas%20e%20Afluentes%20do%20Negro%20%20/Produto_Etapa_E_PRH_Canoinhas_Negro.pdf
   - trecho: Major Vieira (UG 2), e duas no município de Mafra (UG 6 e UG 7), sendo que ... Plano de Contingência e Defesa Civil - PLANCON. Prefeitura de Campo.
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `9edce61403` · nível **B** (5 pts) · seguimento_busca_oficial · DUVIDA · data 01/12/2025 (do trecho)
+  - título: Diário Oficial - DOE/SC
+  - url: https://portal.doe.sea.sc.gov.br/repositorio/2025/20251219/Jornal/22665-A.pdf
+  - trecho: Dec 19, 2025 ... ... MAJOR VIEIRA. MAJOR VIEIRA. 01/12/2025. MIZAEL ALVES DO PRADO. 0640041-8-04. 3424/2025. 777 777000357690 - EEB CASIMIRO DE ABREU - CURITIBANOS.
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `a79b07a162` · nível **B** (3 pts) · busca_web · DUVIDA · **Lei 13.024**, 2014
   - título: DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO
   - url: https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2025/DMPF-EXTRAJUDICIAL-2025-10-01.pdf
@@ -11752,6 +11898,15 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://mais.opovo.com.br/reportagens-especiais/calor-impactos-economia-meio-ambiente/2026/01/27/ondas-de-calor-o-planeta-no-limite.html
   - trecho: Jan 27, 2026 ... ... plano de contingência contra efeitos de Foto: Fernando Frazão ... MAJOR VIEIRA 33 XANXERE 31 LAGES 31 SAO JOAQUIM 30 FLORIANOPOLIS 30 ...
   - juiz: portão automático: fonte não oficial
+- `04711c75ef` · nível **B** (3 pts) · seguimento_busca_oficial · — · data 2025 (do trecho)
+  - título: Diário Oficial Eletrônico - IIS Windows Server - TCE/SC
+  - url: https://consulta.tce.sc.gov.br/Diario/dotc-e2025-12-02.pdf
+  - trecho: Dec 2, 2025 ... ... plano de contingência em fases sucessivas. A coerência entre as falhas detectadas e as medidas propostas, aliada à definição clara de ...
+- `4695f3713b` · nível **C** (4 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: Resposta
+  - url: https://www.bombeiros.pa.gov.br/wp-content/uploads/2019/05/Resposta-Livro-Base.pdf
+  - trecho: foi adotada pelo município de Major Vieira/SC e seus municípios vizinhos ... O Plano de Contingência é assunto tratado com profundidade no Módulo II ...
+  - ⚠ uf_divergente_na_url, ano_anterior_ao_ciclo
 
 ## Meleiro/SC — 1 pendente(s)
 - `90b712cc41` · nível **B** (5 pts) · busca_web · DUVIDA · **Portaria nº 281**, 2020
@@ -12070,27 +12225,32 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: data do ato incompleta (2026)
 
 ## Votorantim/SP — 5 pendente(s)
-- `82f66483aa` · nível **B** (5 pts) · busca_web · — · citação não extraída
+- `82f66483aa` · nível **B** (5 pts) · busca_web · EX_ANTE · **decreto nº 8.160**, 15/12/2025
   - título: Prefeitura de Votorantim prorroga medidas de contingenciamento
   - url: https://www.votorantim.sp.gov.br/portal/noticias/0/3/15830/prefeitura-de-votorantim-prorroga-medidas-de-contingenciamento/
   - trecho: A Prefeitura de Votorantim prorrogou o plano de contingência administrativa com o objetivo de reduzir custos operacionais e otimizar …
-- `bb8407c0a9` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `bb8407c0a9` · nível **B** (5 pts) · busca_web · EX_ANTE · **decreto nº 8.160**, 2025
   - título: Prefeitura de Votorantim mantém plano de contingência até junho …
   - url: https://news.radiocidadesorocaba.com.br/prefeitura-de-votorantim-mantem-plano-de-contingencia-ate-junho-para-reduzir-gastos-publicos/
   - trecho: Jan 4, 2026 · A administração municipal de Votorantim decidiu estender o plano de contingenciamento administrativo até o dia 30 …
-- `e91c2d1b7e` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `e91c2d1b7e` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Plano de contingência altera horário de... - votoprev.sp.gov.br
   - url: https://www.votoprev.sp.gov.br/portal/noticias/0/3/10/plano-de-contingencia-altera-horario-de-atendimento-na-prefeitura-de-votorantim
   - trecho: A Fundação da Seguridade Social dos Funcionários Públicos do Município de Votorantim – VOTOPREV, em conformidade com o …
-- `c887410520` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `c887410520` · nível **B** (4 pts) · busca_web · EX_ANTE · **decreto nº 8.160**, 15/12/2025
   - título: Prefeitura de Votorantim prorroga medidas de contingenciamento
   - url: https://www.tvsmais.com.br/prefeitura-de-votorantim-prorroga-medidas-de-contingenciamento/
   - trecho: Prefeitura de Votorantim prorrogou o plano de contingência administrativa com o objetivo de reduzir custos operacionais.
-- `f9d262715c` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `f9d262715c` · nível **B** (4 pts) · busca_web · DUVIDA · citação não extraída
   - título: Plano de contingência começa na segunda-feira (29) …
   - url: https://www.jornalcruzeiro.com.br/sorocaba/regiao/2025/09/752488-plano-de-contingencia-de-votorantim-comeca-na-segunda-feira-29.html
   - trecho: A Prefeitura de Votorantim confirmou que o plano de contingência administrativa entra em vigor na …
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: fonte não oficial
 
 ## Cachoeirinha/TO — 6 pendente(s)
 - `c374e77c18` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
@@ -12138,7 +12298,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://central.to.gov.br/download/102815
   - trecho: Sep 2, 2020 ... descentralizadas (SAMU 192) dos municípios circunvizinhos (Novo Acordo, Lajeado, ... Plano de Contingência do Distrito Sanitário Especial ...
 
-## defesa_civil/AC — 5 pendente(s)
+## defesa_civil/AC — 17 pendente(s)
 - `5d9330b913` · nível **C** (0 pts) · rede_social_oficial · — · data 2010 (do trecho)
   - título: DuckDuckGo - Reddit
   - url: https://www.reddit.com/r/duckduckgo/top/
@@ -12159,8 +12319,56 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: [Other] - Candy Mountain | Typology Central
   - url: https://www.typologycentral.com/threads/candy-mountain.13040/
   - trecho: Jan 19, 2009 · chris1207 New member Joined Apr 11, 2008 Messages 467 MBTI Type XNXX Enneagram 3w2 Jan 20, 2009 #17
+- `148ec5d760` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: GitHub - Feh/nocache: minimize caching effects
+  - url: https://github.com/Feh/nocache
+  - trecho: minimize caching effects. Contribute to Feh/nocache development by creating an account on GitHub.
+- `fff8d1564b` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Daily Crossword - Free Puzzles from the Los Angeles Times
+  - url: https://www.latimes.com/games/daily-crossword
+  - trecho: Explore mazes for hidden word treasures. Sink putts to answer trivia questions. The nation's oldest crossword puzzle is free to play …
+- `71f8f7c865` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Games, Puzzles & Crossword - Los Angeles Times
+  - url: https://www.latimes.com/games
+  - trecho: Welcome to the new L.A. Times games section, with a refreshed look and even more games! We are excited to present old favorites, …
+- `f9967926e1` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: LA Times Crossword — Daily Puzzles | DailyCrosses | DailyCrosses
+  - url: https://www.dailycrosses.com/crossword/la-times
+  - trecho: 2 days ago · Daily crossword puzzle from the Los Angeles Times. Find today's LA Times crossword puzzles and play online for free.
+- `08e98baa6d` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Human Capital Management (HCM) Software | Workday US
+  - url: https://www.workday.com/en-us/products/human-capital-management/overview.html
+  - trecho: HUMAN CAPITAL MANAGEMENT SOFTWARE Elevate your work and your workforce. Meet Workday Human Capital Management …
+- `677f87a849` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: 6 Best HCM Software Of 2026 – Forbes Advisor
+  - url: https://www.forbes.com/advisor/business/software/best-hcm-software/
+  - trecho: Mar 25, 2026 · Human capital management software manages the employee lifecycle, from onboarding to retirement. Find the best …
+- `181aba7dbc` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Human Capital Management Software: AI-Powered Solution
+  - url: https://www.cornerstoneondemand.com/solutions/hcm/
+  - trecho: A skills-based human capital management (HCM) software system that provides a centralized platform for streamlining talent …
+- `da1530c750` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Lists Related to The Story of O - IMDb
+  - url: https://www.imdb.com/lists/tt0073115
+  - trecho: 2 days ago · Lists Related to The Story of O This page presents a consolidated catalog of lists directly connected to the Title page …
+- `0e98199e99` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: 51 Movies with an amazing storyline!! - IMDb
+  - url: https://www.imdb.com/list/ls003913224/
+  - trecho: The history of the United States from the 1950s to the '70s unfolds from the perspective of an Alabama man with an IQ of 75, who …
+- `f1825786a0` · nível **C** (0 pts) · rede_social_oficial · — · data 1994 (do trecho)
+  - título: Fatal Vows: The Alexandra O'Hara Story (TV Movie 1994) - IMDb
+  - url: https://www.imdb.com/title/tt0109776/
+  - trecho: Fatal Vows: The Alexandra O'Hara Story: Directed by John Power. With John Stamos, Cynthia Gibb, David Faustino, Sean McCann. …
+- `5754c0bc07` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Stanford University
+  - url: https://www.stanford.edu/
+  - trecho: Here you’ll find a place of intellectual expansiveness, wide-ranging perspectives, and freedom to explore new lines of thinking. Alive …
+- `7e190808b0` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Stanford University - Wikipedia
+  - url: https://en.wikipedia.org/wiki/Stanford_University
+  - trecho: Leland Stanford Junior University, [9][10] commonly referred to as Stanford University, is a private research university in Stanford, …
 
-## saude/AC — 5 pendente(s)
+## saude/AC — 29 pendente(s)
 - `ebd6e09f9c` · nível **C** (0 pts) · rede_social_oficial · — · data 2007 (do trecho)
   - título: Gulls | Nikon Cafe
   - url: https://www.nikoncafe.com/threads/gulls.65488/
@@ -12181,6 +12389,104 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: Google Drive: Share Files Online with Secure Cloud Storage | Google ...
   - url: https://workspace.google.com/products/drive/
   - trecho: Learn about Google Drive’s file sharing platform that provides a personal, secure cloud storage option to share content with other users.
+- `61c53d9588` · nível **C** (0 pts) · rede_social_oficial · — · data 2001 (do trecho)
+  - título: Log In? - Fine Homebuilding
+  - url: https://www.finehomebuilding.com/forum/log-in
+  - trecho: Oct 16, 2001 · * What ever happened to the Log In button? I emailed Andy about this, but have yet to get a responce from Taunton. …
+- `74d075e11c` · nível **C** (0 pts) · rede_social_oficial · — · data 1999 (do trecho)
+  - título: Splicing Ridge Boards - Fine Homebuilding
+  - url: https://www.finehomebuilding.com/1999/07/01/splicing-ridge-boards
+  - trecho: Jul 1, 1999 · A reader offers his excellent solution for when a ridge span is longer than the overall length of the material being used …
+- `69ad475b5e` · nível **C** (0 pts) · rede_social_oficial · — · data 2018 (do trecho)
+  - título: Venting a Bath Fan in a Cold Climate - Fine Homebuilding
+  - url: https://www.finehomebuilding.com/2018/03/01/bath-fan-venting-cold-climates
+  - trecho: Mar 1, 2018 · In this Q. & A., Michael Maines answers and gives advice on the question about bath-fan venting for cold climates. The …
+  - ⚠ ano_anterior_ao_ciclo
+- `f71e4a9b92` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Internal Revenue Service | An official website of the United ...
+  - url: https://www.irs.gov/
+  - trecho: Get an EIN for free from the IRS. This federal tax identification number is for businesses, tax-exempt organizations and other entities. …
+- `97f1418c72` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: U.S. taxpayer identification number requirement | Internal ...
+  - url: https://www.irs.gov/individuals/international-taxpayers/us-taxpayer-identification-number-requirement
+  - trecho: Feb 22, 2026 · As the withholding agent, you must generally request that the payee provide you with its U.S. taxpayer identification …
+- `2e3cf32747` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: IRS tax forms - Tools | Internal Revenue Service
+  - url: https://sa4.www4.irs.gov/
+  - trecho: Sep 25, 2026 · Preparer tax identification number (PTIN) Request or renew a PTIN. It's mandatory for anyone who prepares or …
+- `7b09e65d95` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Play Mahjong Online Free - The Mahjong
+  - url: https://themahjong.com/
+  - trecho: Amazing free Mahjong that’ll knock your socks off. Play classic and modern Mahjong games in full screen, with lots of layouts and …
+- `2f38c37e31` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Classic Mahjong - Play Mahjong Online for Free
+  - url: https://classic-mahjong.com/
+  - trecho: Play free Mahjong games online, no download required. Enjoy the classic Mahjong game with 120+ original puzzles, full screen …
+- `11249b99e0` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Mahjong | Play online
+  - url: https://mahjong-pro.com/
+  - trecho: This version of Mahjong online, in addition to the traditional difficulty level, also contains 10 difficulty levels whose deals are always …
+- `4daa2abe5a` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: 14 Best Business Software for 2026 - Geekflare
+  - url: https://geekflare.com/software/best-business-software/
+  - trecho: Mar 11, 2026 · Check out the best enterprise software to simplify and streamline your business operations. Explore these top picks …
+- `571553fa8c` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: The Best Small Business Accounting Software We've Tested for 2026
+  - url: https://www.pcmag.com/picks/the-best-small-business-accounting-software
+  - trecho: Jul 6, 2026 · To help you effectively understand and manage the finances of your small business, we've tested the top accounting …
+- `036c38ee3f` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: 42 Best Free Business Software for Small Businesses in 2026
+  - url: https://fitsmallbusiness.com/free-small-business-software/
+  - trecho: May 4, 2026 · Most free business software is best suited for solo operators, freelancers, and early-stage businesses. While these …
+- `923c18982f` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: DJIA | Dow Jones Industrial Average Overview | MarketWatch
+  - url: https://www.marketwatch.com/investing/index/djia
+  - trecho: 3 days ago · DJIA | A complete Dow Jones Industrial Average index overview by MarketWatch. View stock market news, stock …
+- `2214554ced` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Record diesel prices are exposing pain points in the stock market and ...
+  - url: https://www.marketwatch.com/story/record-diesel-prices-are-exposing-pain-points-in-the-stock-market-and-economy-a2079b04
+  - trecho: Sep 21, 2026 · Record diesel prices are exposing pain points in the stock market and economy ‘This is the AI economy,’ but we have …
+- `2941da4b55` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: AI Credit Underwriting & Automated Credit Decisioning | Machine ...
+  - url: https://www.zest.ai/product/underwriting
+  - trecho: Zest AI is an AI credit underwriting solution for banks and credit unions. Custom machine learning credit underwriting models help …
+- `b4e81e1ad2` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Top 10 Best Loan Underwriting Software: 2026 Comparison
+  - url: https://zipdo.co/best/loan-underwriting-software/
+  - trecho: Feb 18, 2026 · Top 10 loan underwriting software ranked by automation and accuracy for lenders, with feature comparisons and …
+- `ccf8ba5132` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: 10 Best Loan Underwriting Software Reviewed In 2026
+  - url: https://thecfoclub.com/tools/best-loan-underwriting-software/
+  - trecho: Aug 31, 2026 · Discover the top loan underwriting software and find the best option for you. Compare features, pros & cons, prices, …
+- `f612a8e293` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Fervo Energy Company (FRVO) Competitive Analysis & Comparison …
+  - url: https://koalagains.com/stocks/NASDAQ/FRVO/competition
+  - trecho: Jul 16, 2026 · Fervo's key strength is its differentiated technology targeting the high-value market for 24/7 clean power, which gives it …
+- `09546703e7` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: FRVO Stock: Grid Milestone Hit, But Profitability Still Years Away
+  - url: https://www.marketbeat.com/articles/fervo-energy-hits-geothermal-milestone-will-it-matter-for-the-stock/
+  - trecho: 6 days ago · Fervo Energy (FRVO) achieved first grid power at its Cape Station plant, but profitability remains years away and …
+- `23aa836883` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Fervo Energy Stock: Yes, It's Public Now — Here's the FRVO Story
+  - url: https://geothermalinsider.com/news/fervo-energy-stock-explained/
+  - trecho: Aug 1, 2026 · Fervo Energy went public in May 2026 and trades on the Nasdaq as FRVO. Here's the IPO story, what the company …
+- `8ab1cc635f` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: www.alight-motion.com - Coming Soon
+  - url: https://alight-motion.com/download/
+  - trecho: 🚀 www.alight-motion.com This domain is coming soon.
+- `b822a9c53c` · nível **C** (0 pts) · rede_social_oficial · — · data 2010 (do trecho)
+  - título: #1 Cheerleader Camp (2010) - Mark Quod - AllMovie
+  - url: https://www.allmovie.com/movie/1-cheerleader-camp-am46008
+  - trecho: Jul 27, 2010 · #1 Cheerleader Camp is a 2010 sex comedy film by The Asylum, directed by Mark Quod and starring Jay Gillespie, …
+  - ⚠ ano_anterior_ao_ciclo
+- `db830e4989` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: #1 Cheerleader Camp - Cast & Crew — The Movie Database (TMDB)
+  - url: https://www.themoviedb.org/movie/41371-1-cheerleader-camp/cast
+  - trecho: A pair of horny European-American college guys get summer jobs at a sexy cheerleader camp.
+- `41ed81722c` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: www.letmejerk.com
+  - url: https://www.letmejerk.com/s/cheerleader-camp-porn
+  - trecho: We would like to show you a description here but the site won’t allow us.
 
 ## Girau do Ponciano/AL — 2 pendente(s)
 - `50407bdc23` · nível **C** (2 pts) · busca_web · — · citação não extraída
@@ -12192,6 +12498,286 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.nescon.medicina.ufmg.br/biblioteca/registro/Plano_de_acao_para_reducao_da_incidencia_de_gravidez_nas_adolescentes_da_comunidade_Sete_Casas_do_municipio_de_Girau_do_Ponciano___AL/338
   - trecho: Sendo assim, este estudo teve como objetivo elaborar um plano de ação para reduzir a incidência de gravidez nas adolescentes da comunidade Sete Casas do município de Girau do Ponciano. A metodologia foi executada em três
 
+## defesa_civil/AL — 28 pendente(s)
+- `775feb1c47` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: PROFILE Definition & Meaning - Merriam-Webster
+  - url: https://www.merriam-webster.com/dictionary/profile
+  - trecho: 2 days ago · The meaning of PROFILE is a representation of something in outline; especially : a human head or face represented or …
+- `1b289bd810` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: PROFILE | English meaning - Cambridge Dictionary
+  - url: https://dictionary.cambridge.org/dictionary/english/profile
+  - trecho: PROFILE definition: 1. a short description of someone's life, work, character, etc. 2. information about a person's…. Learn more.
+- `718cec9305` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Search Images - Bing
+  - url: https://www.bing.com/camera
+  - trecho: Intelligent search from Bing makes it easier to quickly find what you’re looking for and rewards you.
+- `c916deb34e` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Bing Images
+  - url: https://www.bing.com/images/
+  - trecho: Search and explore high-quality, free photos and wallpapers on Bing Images. Inspire and elevate your visuals!
+- `eb9d19f28d` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Search - Microsoft Bing
+  - url: https://www2.bing.com/
+  - trecho: Search with Microsoft Bing and use the power of AI to find information, explore webpages, images, videos, maps, and more. A smart …
+- `138d972976` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: MODELS - Gay Side of Life
+  - url: https://gayside1.com/men/models/
+  - trecho: Selection of men fashion & fitness models and actors.
+- `a191667635` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: 89 Shirtless Men ideas | male fitness models, instagram ... - Pinterest
+  - url: https://www.pinterest.com/imagineaistudio/shirtless-men/
+  - trecho: See more ideas about male fitness models, instagram worthy, fashion portrait.
+- `52a7eed353` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Male Fitness Models UK | Ripped Models
+  - url: https://www.rippedmodels.co.uk/filter/men/
+  - trecho: Our male fitness models have worked with A-list celebrities, appeared in campaign launches and modelled for leading brands. …
+- `fab6a33623` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Stage 4 (IV) Breast Cancer: Survival Rates, Treatment & Prognosis
+  - url: https://www.nationalbreastcancer.org/breast-cancer-stage-4/
+  - trecho: Jun 11, 2026 · Learn everything you need to know about Stage 4 breast cancer, including what it means and what to expect from …
+- `16a650cfba` · nível **C** (0 pts) · rede_social_oficial · — · data 2024 (do trecho)
+  - título: Lung Cancer Spread to the Spine: Symptoms, Life Expectancy, and …
+  - url: https://www.mylungcancerteam.com/resources/lung-cancer-spread-to-the-spine-symptoms-life-expectancy-and-more
+  - trecho: Jun 4, 2024 · In people with stage 4 lung cancer, tumors have metastasized (spread) to other parts of the body outside the lungs. …
+- `b7b87221eb` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Stage 4 Cancer: Life Expectancy, Treatments & Hope (2026)
+  - url: https://www.onedaymd.com/2025/01/understanding-stage-4-cancer-life.html
+  - trecho: Jul 11, 2026 · The relative 5-year survival rate for a person receiving a diagnosis of stage 4 small cell lung cancer (SCLS) is 3%, and …
+- `19a37cc5d3` · nível **C** (0 pts) · rede_social_oficial · — · data 2025 (do trecho)
+  - título: SUPER TIP - Get Free 100,000 Coins From CasinoWorld
+  - url: https://forum.casinoworld.com/t/super-tip-get-free-100-000-coins-from-casinoworld/1507?page=6
+  - trecho: Jul 10, 2025 · Every so often, CW gives a Code to Redeem “FREE Coins” :smiley: You can find it here! We’re hoping brings big wins! …
+- `4b2526d700` · nível **C** (0 pts) · rede_social_oficial · — · data 2024 (do trecho)
+  - título: Slot Payouts - Games - Casino World
+  - url: https://forum.casinoworld.com/t/slot-payouts/20
+  - trecho: Jul 25, 2024 · Pay Table The Pay Table includes all of the information on the payouts of each Slot, including how many Coins are …
+- `886243265a` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: "To [put a] boot in the ass to do something" — uncertain meaning
+  - url: https://english.stackexchange.com/questions/93043/to-put-a-boot-in-the-ass-to-do-something-uncertain-meaning
+  - trecho: EDIT: This increase in severity stands out to me. My argument is that "a boot in the ass" is just a harsher way of saying "a kick in the …
+- `a7d109bb14` · nível **C** (0 pts) · rede_social_oficial · — · data 2019 (do trecho)
+  - título: nouns - Is there a grammatically need to hyphenate the compound …
+  - url: https://english.stackexchange.com/questions/496944/is-there-a-grammatically-need-to-hyphenate-the-compound-words-dumb-fck-within
+  - trecho: May 2, 2019 · Here, the word dumb is an adjective and if you're treating fuck as a noun, you could also hyphenate it. For example: …
+- `00395c848b` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: How bad is the f-word, really? - English Language & Usage Stack …
+  - url: https://english.stackexchange.com/questions/406/how-bad-is-the-f-word-really
+  - trecho: The "traditional" swear words (fuck, shit, ass, damn, etc.) have had their offensiveness gradually worn down over the past century, to …
+- `f2c2b8873a` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Learning and Training Resources | Help Center
+  - url: https://support.jobnimbus.com/learning-and-training-resources
+  - trecho: Learning and Training Resources This is the spot for new companies and new users to get started using JobNimbus. Where Can I …
+- `457d1dc85e` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: JobNimbus: 2026 Institutional Verdict & Operational Audit | Lumen
+  - url: https://lumendirectory.com/directory/jobnimbus
+  - trecho: JobNimbus is the industry-leading workflow engine for diversified home service pros, having helped over 15,000 contractors …
+- `18dbf8dcd8` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: JobNimbus Customer Support | Help Center for Roofing Contractors
+  - url: https://www.jobnimbus.com/support
+  - trecho: Get help from the JobNimbus customer support team. Access tutorials, onboarding resources, and live support for roofing contractors.
+- `966bc557cd` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Google Maps
+  - url: https://maps.google.com/maps/search/
+  - trecho: Map data ©2026 Google Terms 5 km Directions
+- `bb3e1bf775` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Directions, Traffic & Transit - Google Maps
+  - url: https://maps.google.com/maps/dir/
+  - trecho: Find local businesses, view maps and get driving directions in Google Maps.
+- `628cdf7d78` · nível **C** (0 pts) · rede_social_oficial · — · data 2010 (do trecho)
+  - título: NFL Schedules: Games, Times, Matchups & Tickets
+  - url: https://www.nfl.com/schedules
+  - trecho: Oct 19, 2010 · View the full current NFL schedule for the season. Get tickets, hotel reservations, kickoff times, matchups, TV …
+- `4ca52f8308` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: NFL Official 2026 Team Schedules | NFL.com
+  - url: https://www.nfl.com/schedules/2026/by-team
+  - trecho: Find your favorite team's most up to date full 2026 NFL Schedule. Get tickets, hotel reservations, kickoff times, matchups, TV …
+- `8f196c314a` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: NFL.com | Official Site of the National Football League
+  - url: https://www.nfl.com/
+  - trecho: The official source for NFL news, video highlights, game-day coverage, schedules, stats, scores and more.
+- `614400da2b` · nível **C** (0 pts) · rede_social_oficial · — · data 2022 (do trecho)
+  - título: I found why Duckduckgo was draining my battery, it was the Sam
+  - url: https://www.reddit.com/r/duckduckgo/comments/wbsbx9/i_found_why_duckduckgo_was_draining_my_battery_it/
+  - trecho: Jul 30, 2022 · I found why Duckduckgo was draining my battery, it was the Sam's Club app. Over 15,000 of those blocked trackers …
+- `4727e5c836` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Millennium Falcon™ 75192 | Star Wars™ | Buy online at the ... - LEGO
+  - url: https://www.lego.com/en-us/product/millennium-falcon-75192
+  - trecho: The ultimate LEGO® Star Wars™ Millennium Falcon is here. With 7,500 elements, this LEGO® model of the ship that made the …
+- `bdcd39a342` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Millennium Falke 75192 | Star Wars™ | Offizieller LEGO® Shop DE
+  - url: https://www.lego.com/de-de/product/millennium-falcon-75192
+  - trecho: Der ultimative LEGO® Star Wars™ Millennium Falke ist da. Dieses LEGO® Modell des Schiffs, das den Kessel-Flug in weniger als …
+- `1d3309da4d` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Millennium Falcon™ 75192 | Star Wars™ | LEGO® Shop ufficiale IT
+  - url: https://www.lego.com/it-it/product/millennium-falcon-75192
+  - trecho: Caratteristiche "Vai ora!" È arrivato il set Millennium Falcon LEGO® Star Wars™ per eccellenza. Con 7.500 elementi, questo …
+
+## saude/AL — 41 pendente(s)
+- `b068b4df85` · nível **C** (1 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: 8 Dating Apps & Sites With Totally Free Messaging (2026)
+  - url: https://www.datingnews.com/daters-pulse/dating-apps-with-totally-free-messaging/
+  - trecho: Aug 17, 2026 · 8 Dating Apps & Sites With Totally Free Messaging (2026) Discover apps offering free messaging without risking your …
+- `f06493ee9b` · nível **C** (1 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: 15 Totally Free Online Dating Sites (2026) - DatingNews.com
+  - url: https://www.datingnews.com/apps-and-sites/totally-free-online-dating-sites/
+  - trecho: Aug 31, 2026 · 15 Totally Free Online Dating Sites (2026) Learn which dating services are truly free and what you can do without …
+- `8b61eddf06` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: 16 Dating Sites With Free Messaging (Oct. 2026) - DatingAdvice.com
+  - url: https://www.datingadvice.com/online-dating/dating-sites-with-free-messaging
+  - trecho: Sep 24, 2026 · 16 Dating Sites With Free Messaging (Oct. 2026) Discover which apps let you message for free, which cap …
+- `6f5bae584d` · nível **C** (0 pts) · rede_social_oficial · — · data 2013 (do trecho)
+  - título: Songs That Got "Hip Hop Quoteable" in the Source - Boxden.Com
+  - url: https://boxden.com/showthread.php?t=1882532
+  - trecho: Feb 9, 2013 · Eminem-Forgot About Dre,The Way I Am,Renagade Foxy Brown-730 Fredro Starr-What If Game-Letter To The King, …
+- `280b46fd59` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: hip hop - BX - The urban web's front page - Boxden.Com
+  - url: https://boxden.com/forumdisplay.php?f=87
+  - trecho: What's going down in the urban music scene.
+- `5cd7b3e938` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: NUAAS Daily Jumble
+  - url: https://jumbleanswers.com/jumble/nuaas-daily-jumble
+  - trecho: What does unscramble to? Take a hint or reveal the Daily Jumble answer for , plus the rest of that day's words.
+- `95ed390412` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Ravens Home | Baltimore Ravens – baltimoreravens.com
+  - url: https://www.baltimoreravens.com/
+  - trecho: 3 days ago · The official source of the latest Ravens headlines, news, videos, photos, tickets, rosters, stats, schedule, and gameday …
+- `9cdc460618` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Ravens 2026 NFL Schedule | Baltimore Ravens – baltimoreravens.com
+  - url: https://www.baltimoreravens.com/schedule/
+  - trecho: VS Dallas Cowboys Maracana Stadium Game Center Official Rio Hospitality Book Ravens Fan Travel Presented By WEEK 4 · Sun …
+- `ecffce765d` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Baltimore Ravens Scores, Stats and Highlights - ESPN
+  - url: https://www.espn.com/nfl/team/_/name/bal/baltimore-ravens
+  - trecho: 1 day ago · Visit ESPN for Baltimore Ravens live scores, video highlights, and latest news. Find standings and the full 2026 season …
+- `f45db711df` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: A Guide to GLPs-1s for Weight Loss - WebMD
+  - url: https://www.webmd.com/obesity/listicle-what-to-know-about-glps-1s-for-weight-loss
+  - trecho: Jan 23, 2026 · Here's what you need to know about GLP-1 weight loss drugs, including who can take them, side effects, and costs.
+- `c08cca2c6c` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: GLP-1 Peptides for Weight Loss: Semaglutide, Ozempic, Tirzepatide
+  - url: https://peptidesguide.com/peptides-for-weight-loss.html
+  - trecho: Sep 23, 2026 · Healthy weight loss maintenance with exercise, GLP-1 receptor agonist, or both combined followed by one year …
+- `54f944629b` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Which GLP-1 drug is best for weight loss? - Drugs.com
+  - url: https://www.drugs.com/medical-answers/glp-1-drug-best-weight-loss-3579236/
+  - trecho: Jul 21, 2026 · Which GLP-1 Drug is Most Effective for Weight Loss? As of early 2026, the most effective GLP-1 drug for weight loss is …
+- `2facb670ef` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Shop Striped Fabrics Collection Online | Connecting Threads
+  - url: https://www.connectingthreads.com/fabrics/stripes/c/60020321
+  - trecho: Shop a wide selection of striped fabrics at Connecting Threads. Perfect for quilting, sewing, and crafting projects. High-quality …
+- `1b224dae10` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Chambray Tonals Fabric | Connecting Threads
+  - url: https://www.connectingthreads.com/fabrics/chambray-tonals/c/391
+  - trecho: Shop the Chambray Tonals quilting fabric collection. Plus, get free shipping on all orders over $75!
+- `87d2303220` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: LA Times Crossword Answers - Updated Daily!
+  - url: https://latcrosswordanswers.com/
+  - trecho: Daily LA Times Crossword answers — find every clue and solution from today's puzzle.
+- `d5a4257015` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: ekaterina lisina search results - PornZog Free Porn Clips
+  - url: https://pornzog.com/search/?s=ekaterina+lisina
+  - trecho: ekaterina lisina search results - PornZog Free Porn Clips. Watch ekaterina lisina videos at our mega porn collection.
+- `e4ccc5ed1e` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Ekaterina Lisina Blowjob Porn Videos | HeavyFetish
+  - url: https://heavyfetish.com/search/Ekaterina-Lisina-blowjob/
+  - trecho: You searched for Ekaterina Lisina blowjob, and here’s what HeavyFetish has for your query. We hope you’re pleased with the results!
+- `dec833a9e9` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Ekaterina lisina leak OnlyFans Leaks – Free HD Videos | FapForHer
+  - url: https://www.fapforher.com/tags/ekaterina-lisina-leak/
+  - trecho: Browse 2 exclusive ekaterina lisina leak OnlyFans leaks — 0 added today. Stream or download in full-HD with no paywalls, 18+ only.
+- `7a07025062` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Chocolate tart recipe with sea salt | Jamie magazine recipes
+  - url: https://www.jamieoliver.com/recipes/chocolate/rich-chocolate-tart-with-salt-flakes/
+  - trecho: This sea salt chocolate tart recipe is a proper showstopper. The salt brings out the sweetness in this rich tart, which really takes …
+- `f14fec2c3b` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Simple chocolate tart - Jamie Oliver
+  - url: https://www.jamieoliver.com/recipes/chocolate/simple-chocolate-tart/
+  - trecho: This Jamie Oliver dessert recipe is great on its own, or served with sweet seasonal berries.
+- `2cc0c232b2` · nível **C** (0 pts) · rede_social_oficial · — · data 2025 (do trecho)
+  - título: Jamie Oliver Chocolate Tart Recipe - British Baking Recipes
+  - url: https://britishbakingrecipes.co.uk/chocolate-tart/
+  - trecho: Apr 19, 2025 · This Jamie Oliver Chocolate Tart is a rich, velvety dessert that’s perfect for special occasions or when you want …
+- `205af5f88f` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: 11 Best Property Management Software | 2026 Reviews
+  - url: https://softwareconnect.com/roundups/best-property-management-software/
+  - trecho: Jun 4, 2026 · The best property management software includes tracking rent, scheduling maintenance and repairs, screening …
+- `d8a19d4ae3` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Top 10 Best Propertymanagement Software | 2026 Edition
+  - url: https://worldmetrics.org/best/propertymanagement-software/
+  - trecho: Jul 5, 2026 · Top 10 propertymanagement software ranking for landlords and managers with feature, pricing, and support evidence, …
+- `57ba7ba2a2` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: 11 Best Online Property Management Software for 2026
+  - url: https://softwareconnect.com/roundups/best-online-property-management-software/
+  - trecho: Jan 29, 2026 · Home Roundups The Best Online Property Management Software We reviewed the most popular web-based …
+- `fc0b56a452` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Optimum | TV, Phone and Internet Support Home
+  - url: https://www.optimum.net/login/
+  - trecho: Sign in with your Optimum ID to manage your account, check email, set DVR, and pay bills online.
+- `e38681855c` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Optimum | Support & Customer Account Management Home
+  - url: https://www.optimum.net/
+  - trecho: Get answers to everything Optimum! Pay your bill, find free WiFi, check your email, set up your voicemail, program your DVR and more!
+- `cb41d58dc0` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Optimum Online Account Management System
+  - url: https://memberservices.optonline.net/acctms/webmaillogin
+  - trecho: Please enter your Optimum ID and Password to enter the AMS system, and remember that your password is case sensitive.
+- `64e7d6ba84` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Turn Restricted Mode on or off on YouTube
+  - url: https://support.google.com/youtube/answer/174084?hl=en&co=genie.platform%3Ddesktop
+  - trecho: Check the YouTube content restrictions page to see if you have any network or account level restrictions. A check mark will display …
+- `d59cd9b9e0` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Documentos de Google: inicio de sesión
+  - url: https://docs.google.com/document/u/0/?hl=es&pli=1
+  - trecho: Accede a Documentos de Google con una cuenta de Google personal o una cuenta de Google Workspace (para uso corporativo).
+- `534aea6b1f` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: The 10 Best Mold Remediation Companies Near Me - Thumbtack
+  - url: https://www.thumbtack.com/k/mold-remediation/near-me?msockid=0f597f073f6a60dc147e68ee3ef1616e
+  - trecho: Here is the definitive list of mold remediation companies near your location as rated by your neighborhood community. Want to see …
+- `ada81e1627` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Hire the Best Local Mold removal pros Near Me with Reviews | Angi
+  - url: https://www.angi.com/nearme/mold-removal/?msockid=0f597f073f6a60dc147e68ee3ef1616e
+  - trecho: Apr 29, 2026 · Find and hire the best local mold removal pros near you with real customer reviews on Angi. Compare pros for free …
+- `4d8e32b80d` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Mold Remediation, Removal & Restoration Services | SERVPRO
+  - url: https://www.servpro.com/services/mold-remediation
+  - trecho: Mold problem? SERVPRO is your 24/7 solution for rapid mold containment, remediation, and full mold restoration. Call SERVPRO to …
+- `db47b62826` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Stanford Careers - Stanford University
+  - url: https://careersearch.stanford.edu/hcmUI/CandidateExperience/en/sites/stanford/
+  - trecho: Stanford is the birthplace of so many important human innovations. And that long-held belief that our people can change the world, is …
+- `97b7d14728` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Explore Graduate Programs | Graduate Admissions
+  - url: https://gradadmissions.stanford.edu/explore-programs
+  - trecho: Explore Graduate Programs If this page does not load, click here.
+- `16df52dc5a` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: 8 of the Top Financial Advisor Companies for High-Net-Worth ...
+  - url: https://www.wsj.com/buyside/personal-finance/financial-advisors/top-financial-advisors-for-high-net-worth?msockid=17bed7c5843a6882035dc02c858d694b
+  - trecho: 4 days ago · Compare top financial advisors for high-net-worth individuals and learn about the services these firms can offer.
+- `8b290d75ea` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: High Net Worth Accounting & CPA Services - alpinemar.com
+  - url: https://alpinemar.com/industries/high-net-worth-accounting-cpa/
+  - trecho: Our team of CPAs and high net worth accountants specializes in serving clients with substantial wealth and complex financial situations.
+- `e5093a9b09` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: High Net Worth CPA & Tax Services | GreenGrowth CPAs
+  - url: https://greengrowthcpas.com/industries/high-net-worth-individuals/
+  - trecho: Specialized high net worth CPA services for substantial wealth. Financial statement preparation, tax return preparation, tax …
+- `2e77eab9c1` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Personal Injury Calculator - How Much Is Your Case Worth?
+  - url: https://roblevine.com/injury-calculator/
+  - trecho: Estimate your personal injury case settlement value with our free calculator. No personal info needed—13 questions for an estimated …
+- `0f6adfd0c9` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Free California Personal Injury Settlement Calculator (2026)
+  - url: https://feherlawfirm.com/calculators/personal-injury-settlement-calculator/
+  - trecho: Our personal injury settlement calculator estimates ranges by accounting for the injury tier, available coverage, and case-strength …
+- `640a11c82f` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Lawsuit Settlement Calculator - Scheuerman Law LLC
+  - url: https://www.scheuermanlaw.com/lawsuit-settlement-calculator/
+  - trecho: Free Lawsuit Settlement Calculator for personal injury, medical malpractice, wrongful death, and civil cases. Estimate your potential …
+- `d6e4a16965` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: CHCH TV | Your Trusted News Leader for Hamilton, Halton & Niagara
+  - url: https://www.chch.com/
+  - trecho: Local TV news, weather, traffic, sports, entertainment, and events in Hamilton, Halton, Brant and Niagara, Ontario, Canada.
+
 ## ITAPIRANGA/AM — 1 pendente(s)
 - `cdc3639111` · nível **C** (5 pts) · seguimento_busca_oficial · — · **DECRETO Nº 122**, 04/11/2020
   - título: Diário Oficial dos Municípios de Santa Catarina - DOM/SC
@@ -12199,10 +12785,885 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: 1. 1. 1. DECRETO Nº 122, DE 04 DE NOVEMBRO DE 2020. 1. Dispõe sobre a homologação do Plano de Contingência Municipal elaborado pelo COMITÊ MUNICIPAL DE GERENCIAMNETO DE COVID-19 NO ÂMBITO DA EDUCAÇÃO.
   - ⚠ uf_divergente_na_url
 
+## defesa_civil/AM — 12 pendente(s)
+- `6e937259e3` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: ESPN - Serving Sports Fans. Anytime. Anywhere.
+  - url: https://www.espn.com/
+  - trecho: Visit ESPN for live scores, highlights and sports news. Stream exclusive games on ESPN and play fantasy sports.
+- `6eab27cafe` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: College Football on ESPN - Scores, Stats and Highlights
+  - url: https://www.espn.com/college-football/
+  - trecho: Visit ESPN for NCAA live scores, video highlights and latest news. Stream exclusive college football games on ESPN and play …
+- `29d3f6b3ce` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Football on ESPN - Scores, Stats and Highlights
+  - url: https://global.espn.com/football/
+  - trecho: Visit ESPN for football live scores, highlights and news from all major football leagues. Stream games on ESPN and play Fantasy …
+- `02479d5c39` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Abogados de lesiones personales - Demandado en Miami, FL
+  - url: https://www.abogado.com/lesiones-personales-demandado/florida/miami/
+  - trecho: Un abogado de lesiones personales - demandado en Miami, Florida debe poder comunicarle un plan básico, explicar el proceso, las …
+- `070148e292` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Abogados De Lesiones Personales En Miami | JDLE Lawyers
+  - url: https://dlelawyers.com/es/abogado-lesiones-personales/
+  - trecho: JDLE Lawyers son abogados de lesiones personales en Miami. El abogado de lesiones personales es el profesional a consultar …
+- `79c6e48a56` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Abogados de lesiones personales en Miami | Abogados de …
+  - url: https://wernerhoffman.com/es/lesiones-personales-en-miami/
+  - trecho: Confíe en nuestro equipo de abogados de lesiones personales de Miami para negociar la indemnización que necesita después de …
+- `f2f24223ce` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: East Liverpool, OH Weather Radar | AccuWeather
+  - url: https://www.accuweather.com/en/us/east-liverpool/43920/weather-radar/2214891
+  - trecho: Track storms, and stay in-the-know and prepared for what's coming. Easy to use weather radar at your fingertips!
+- `1a87931edf` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: NWS Radar
+  - url: https://radar.weather.gov/?__nationalweatherserviceradar
+  - trecho: 2 days ago · Visit IDP-GIS web services for questions about geospatial services. This site is organized into views that provide …
+- `cfae2f3496` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Interactive Radar for East Liverpool, 43920, Ohio | weather.com
+  - url: https://weather.com/us/ohio/east-liverpool/postcode/43920/radar
+  - trecho: Interactive weather radar for East Liverpool, 43920, Ohio from The Weather Channel and weather.com
+- `ab3a882410` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Hollis, Oklahoma, United States | Sighting Opportunity | Spot The ...
+  - url: https://spotthestation.nasa.gov/sightings/view.cfm?country=United_States&region=Oklahoma&city=Hollis
+  - trecho: Upcoming dates, times and sighting details for the space station's next passes over Hollis, Oklahoma, United States
+- `ced476fa5b` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Johnson Space Center, Texas, United States | Sighting Opportunity ...
+  - url: https://spotthestation.nasa.gov/sightings/view.cfm?country=United_States&region=Texas&city=Johnson_Space_Center&ss=2C9B38F2-B739-1F3C-B44DA7D62DD0E9A1
+  - trecho: Upcoming dates, times and sighting details for the space station's next passes over Johnson Space Center, Texas, United States
+- `c28c92cda4` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Troy, Michigan, United States | Sighting Opportunity - Spot The Station
+  - url: https://spotthestation.nasa.gov/sightings/viewsocial.cfm?country=United_States%2Cregion%3DMichigan%2Ccity%3DTroy
+  - trecho: Upcoming dates, times and sighting details for the space station's next passes over Troy, Michigan, United States
+
 ## Barra/BA — 1 pendente(s)
 - `7797a6856f` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
   - url: https://www.instagram.com/reel/Dai6_4EoDv0/
   - trecho: Jul 8, 2026 ... ... plano de contingência já existente, estamos trabalhando um plano ... Os impactos do Novo El Niño fazem com que São João da Barra se ...
+
+## defesa_civil/CE — 7 pendente(s)
+- `89b866ab9d` · nível **C** (0 pts) · rede_social_oficial · — · data 2022 (do trecho)
+  - título: why aren't women looked at the same way as men when they date
+  - url: https://www.reddit.com/r/AskReddit/comments/wqxha9/why_arent_women_looked_at_the_same_way_as_men/
+  - trecho: Aug 17, 2022 · When she was arrested, Marsha May had her phone on her which had videos she recorded of her drugging and …
+- `2b20e86ab5` · nível **C** (0 pts) · rede_social_oficial · — · data 2024 (do trecho)
+  - título: Marsha May : r/Beforeandafteruse - Reddit
+  - url: https://www.reddit.com/r/Beforeandafteruse/comments/1bows2i/marsha_may/
+  - trecho: Mar 27, 2024 · 850 subscribers in the Beforeandafteruse community. It’s all about the journey, from the neat makeup and perfect hair …
+- `fa37be07f1` · nível **C** (0 pts) · rede_social_oficial · — · data 2018 (do trecho)
+  - título: From her snap, posted on insta. Is she out of jail or is this ... - Reddit
+  - url: https://www.reddit.com/r/MarshaMay/comments/9s2x02/from_her_snap_posted_on_insta_is_she_out_of_jail/
+  - trecho: Oct 28, 2018 · From her snap, posted on insta. Is she out of jail or is this old? Not quite sure if the account is even hers.... : …
+- `1e7fc01916` · nível **C** (0 pts) · rede_social_oficial · — · data 2015 (do trecho)
+  - título: Is it reliable to buy used book from amazon? : r/amazon - Reddit
+  - url: https://www.reddit.com/r/amazon/comments/3hiaq1/is_it_reliable_to_buy_used_book_from_amazon/
+  - trecho: Aug 18, 2015 · I've bought probably a hundred books used, never had a problem. Sometimes the pages will be more yellow or …
+- `56f4379f62` · nível **C** (0 pts) · rede_social_oficial · — · data 2015 (do trecho)
+  - título: Sportwagen TDI (2015+) ECO Kit DPF, EGR & Adblue Delete Exhaust ...
+  - url: https://www.rawtekinc.com/products/sportwagen-tdi-2015-dpf-egr-adblue-delete-exhaust-eco-ki
+  - trecho: Increase the performance, reliability and fuel economy of your 2015 VW Sportwagen TDI by eliminating the restrictive Diesel …
+  - ⚠ ano_anterior_ao_ciclo
+- `5a7b751e46` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: 2.0L TDI Delete Kit ( Jetta, Golf, A3, Beetle, Passat )
+  - url: https://gwndiesel.com/shop/tdi-bundle/2-0l-tdi-delete-kit-jetta-golf-a3/
+  - trecho: 2.0L TDI Delete Kit for Jetta, Golf, A3, Beetle & Passat. Includes tuner, credits, and full DPF, EGR & AdBlue delete with optional …
+- `a9918c258d` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Exhaust Kits - Rawtek Performance Fabrication Inc.
+  - url: https://www.rawtekinc.com/collections/diesel-dpf-egr-def-delete-kits
+  - trecho: All kits require a tune. You will find the correct one for your vehicle listed on the product page under "HERE ARE YOUR REQUIRED …
+
+## defesa_civil/ES — 10 pendente(s)
+- `65edae83fa` · nível **C** (0 pts) · rede_social_oficial · — · data 2023 (do trecho)
+  - título: Why is yahoo mail down? : r/yahoo - Reddit
+  - url: https://www.reddit.com/r/yahoo/comments/12k5thm/why_is_yahoo_mail_down/
+  - trecho: Apr 13, 2023 · Is yahoo mail down again today. I can’t get my mail on any device and yahoo wants me to pay to talk to someone or …
+- `7102764633` · nível **C** (0 pts) · rede_social_oficial · — · data 2022 (do trecho)
+  - título: Emails being delivered to trash - no filters in use : r/yahoo
+  - url: https://www.reddit.com/r/yahoo/comments/v3yi9b/emails_being_delivered_to_trash_no_filters_in_use/
+  - trecho: Jun 3, 2022 · If you've set up filters, the settings may be routing some emails to the trash. You can review your filter settings in …
+- `a8bd0959e6` · nível **C** (0 pts) · rede_social_oficial · — · data 2022 (do trecho)
+  - título: How do you make a undisclosed recipients group on Yahoo mail?
+  - url: https://www.answers.com/auto-parts/How_do_you_make_a_undisclosed_recipients_group_on_Yahoo_mail
+  - trecho: Oct 23, 2022 · It's also the little mysteries that make life interesting, right? - A message to mysteriously "undisclosed recipients", for …
+- `b0fd8b8455` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Top 10 Home Remedies to Get Rid of Mucus Naturally (2026)
+  - url: https://www.respiratorytherapyzone.com/mucus-home-remedies/
+  - trecho: Feb 4, 2026 · The best home remedy for mucus is a combination of warm fluids, steam inhalation, and immune-boosting ingredients. …
+- `6f896ae711` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Doctors Recommend These Simple Remedies to Clear Phlegm
+  - url: https://www.prevention.com/health/a70957373/doctors-explain-how-to-get-rid-of-phlegm/
+  - trecho: Apr 15, 2026 · Doctors Say These Are the 8 Best Remedies for Getting Rid of Phlegm Experts explain how to clear phlegm from your …
+- `6bb648347d` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: 33+ Natural Ways to Get Rid of Mucus and Phlegm (2026)
+  - url: https://www.respiratorytherapyzone.com/get-rid-of-mucus-and-phlegm/
+  - trecho: Jun 8, 2026 · Discover the most effective ways to get rid of mucus and phlegm from your lungs, airways, and entire respiratory system.
+- `addc157094` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: how safe is duckduckgo? : r/privacy - Reddit
+  - url: https://www.reddit.com/r/privacy/comments/14op32s/how_safe_is_duckduckgo/
+  - trecho: Hi! To start off, DuckDuckGo is “safe” - much safer (and more private!) compared to Google or Bing in its raw form. There are …
+- `ad7bd2d141` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: SAP Investor Relations
+  - url: https://www.sap.com/investors/en.html
+  - trecho: Jul 23, 2026 · Explore SAP Investor Relations, with financial news, investor events, annual reports and quarterly statements
+- `40fb1be6d5` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Financial Documents & Events | SAP Investor Relations
+  - url: https://www.sap.com/investors/en/financial-documents-and-events.html
+  - trecho: View and download all financial disclosures, reports, and presentations.
+- `e280ff6224` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: WDEFIT - SAP Financials Forum | SAP Training
+  - url: https://training.sap.com/course/wdefit
+  - trecho: Das SAP Financials Forum 2026 (WDEFIT) bietet Ihnen die Gelegenheit, viele spannenden Neuerungen im Bereich Finance …
+
+## saude/ES — 29 pendente(s)
+- `bbbaecce92` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: NFL Jobs and Careers | NFL.com
+  - url: https://www.nfl.com/careers/
+  - trecho: Whether you are looking to join one of our 32 NFL teams, the NFL League office in New York City, NFL Films office based in Mt. …
+- `dc650be7fa` · nível **C** (0 pts) · rede_social_oficial · — · data 2020 (do trecho)
+  - título: NFL International Homepage | NFL.com Official Site of the National ...
+  - url: https://www.nfl.com/international
+  - trecho: Sep 5, 2020 · The official home for the NFL's International fans.
+- `7278d3d67f` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Game Books – NFL
+  - url: https://support.nfl.com/hc/en-us/articles/35869678028180-Game-Books
+  - trecho: The official source for NFL news, video highlights, fantasy football, game-day coverage, schedules, stats, scores and more.
+- `aa5f78d27b` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: 7 best enterprise AI platforms in 2026 | Market guide
+  - url: https://www.kore.ai/blog/7-best-enterprise-ai-platforms
+  - trecho: Dec 24, 2025 · The enterprise AI platform landscape has shifted toward agentic systems. Compare the top seven platforms on …
+- `e92189b3e7` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: 10 Best AI Platforms for Enterprises: Features, Pricing & Comparison
+  - url: https://aisquared.ai/blog/best-ai-platforms-for-enterprises/
+  - trecho: May 21, 2026 · Compare the top enterprise AI platforms including AWS, Azure, Google Cloud, IBM, and Anthropic. Learn key …
+- `7c710d8590` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Top 10 Enterprise AI Platforms Transforming Workflows in 2026
+  - url: https://wizr.ai/blog/enterprise-ai-platforms/
+  - trecho: 5 days ago · Explore top 10 Enterprise AI Platforms transforming workflows, automating tasks, & boosting efficiency & productivity …
+- `af76105a9b` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Gass Haney Funeral Home Obituaries & Services In Columbus, Ne
+  - url: https://www.legacy.com/funeral-homes/nebraska/columbus/gass-haney-funeral-home/fh-26930
+  - trecho: Read Gass Haney Funeral Home obituaries, find service information, send sympathy gifts, or plan and price a funeral in Columbus, NE
+- `8be1a28e11` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Columbus, NE - Gass Haney Funeral Home
+  - url: https://www.gasshaney.com/gass-haney-funeral-home
+  - trecho: Sep 17, 2026 · Gass Haney Funeral Home is designed to accommodate the families we serve. Our facility is conveniently located on …
+- `305daa8af3` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Funeral Services in Columbus, NE | Gass Haney Funeral Homes
+  - url: https://www.gasshaney.com/
+  - trecho: Gass Haney Funeral Homes offers caring funeral services. Plan ahead for arrangements & view recent obituaries. Contact us today!
+- `b0743ab38e` · nível **C** (0 pts) · rede_social_oficial · — · data 2002 (do trecho)
+  - título: Altered Carbon (TV series) - Wikipedia
+  - url: https://en.wikipedia.org/wiki/Altered_Carbon_(TV_series)
+  - trecho: Altered Carbon is an American cyberpunk television series created by Laeta Kalogridis and based on the 2002 novel of the same title …
+- `d732cb6571` · nível **C** (0 pts) · rede_social_oficial · — · data 2018 (do trecho)
+  - título: Altered Carbon (TV Series 2018–2020) - IMDb
+  - url: https://www.imdb.com/title/tt2261227/
+  - trecho: Altered Carbon: Created by Laeta Kalogridis. With Chris Conner, Renée Elise Goldsberry, Dichen Lachman, Will Yun Lee. Set in a …
+- `0c27e5a5d8` · nível **C** (0 pts) · rede_social_oficial · — · data 2002 (do trecho)
+  - título: Altered Carbon - Wikipedia
+  - url: https://en.wikipedia.org/wiki/Altered_Carbon
+  - trecho: Altered Carbon is a 2002 British cyberpunk novel by the English writer Richard K. Morgan.
+- `ca359aab6d` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Cream Tacos: Tacos de Crema Recipe | Food Network
+  - url: https://www.foodnetwork.com/recipes/cream-tacos-tacos-de-crema-recipe-1943088
+  - trecho: This Cream Tacos: Tacos de Crema recipe packs bold flavor into every single bite. Perfect for lunch, dinner, or game day. Get the …
+- `33ac991376` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: 50 Tacos : Recipes and Cooking - Food Network
+  - url: https://www.foodnetwork.com/recipes/articles/50-tacos.print.html
+  - trecho: Liven up your party menu with these fun, easy tacos from Food Network Magazine.
+- `6149484b5f` · nível **C** (0 pts) · rede_social_oficial · — · data 2016 (do trecho)
+  - título: How Iggy Azalea mastered her "blaccent" : r/linguistics - Reddit
+  - url: https://www.reddit.com/r/linguistics/comments/3ziiik/how_iggy_azalea_mastered_her_blaccent/
+  - trecho: Jan 5, 2016 · Iggy is obviously a fan of hip-hop, and must know this; not imitating AAVE was a viable option that she knew was …
+- `695636ea98` · nível **C** (0 pts) · rede_social_oficial · — · data 2017 (do trecho)
+  - título: [LEAK] Iggy Azalea - Digital Distortion : r/popheads - Reddit
+  - url: https://www.reddit.com/r/popheads/comments/6eigzv/leak_iggy_azalea_digital_distortion/
+  - trecho: May 31, 2017 · Iggy basically did what M.I.A was trying to do. M.I.A. threatened to leak Matangi if Interscope (now former record label …
+- `890ee77baa` · nível **C** (0 pts) · rede_social_oficial · — · data 2020 (do trecho)
+  - título: A subreddit for Iggy Azalea
+  - url: https://www.reddit.com/r/IggyAzeaIsAQueen/
+  - trecho: Jan 21, 2020 · The End Of An Era is Iggy Azalea's final album Iggy has stated that she will no longer be making music after The End …
+- `7d321c7d72` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Pornhub - Reddit
+  - url: https://www.reddit.com/r/Pornhub/rising/
+  - trecho: the unofficial subreddit for Pornhub.com
+- `5d7475e7b6` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: AIPornhub - Reddit
+  - url: https://www.reddit.com/r/AIpornhub/
+  - trecho: Official Subreddit for the AI Art Generator https://AIPornHub.net Please consider supporting our project. We allow other generator …
+- `6ee17f6bdb` · nível **C** (0 pts) · rede_social_oficial · — · data 2014 (do trecho)
+  - título: No more Pornhub billboard in Times Square : ( : r/pics - Reddit
+  - url: https://www.reddit.com/r/pics/comments/2iovjw/no_more_pornhub_billboard_in_times_square/
+  - trecho: Oct 8, 2014 · 1.7K votes, 208 comments. 30M subscribers in the pics community. A place for photographs, pictures, and other images.
+- `8d9253b4e1` · nível **C** (0 pts) · rede_social_oficial · — · data 1979 (do trecho)
+  - título: A Bend in the River - Wikipedia
+  - url: https://en.wikipedia.org/wiki/A_Bend_in_the_River
+  - trecho: A Bend in the River is a 1979 novel by Nobel laureate V. S. Naipaul. The novel, telling the story of Salim, a merchant in post-colonial …
+- `de15c45505` · nível **C** (0 pts) · rede_social_oficial · — · data 2020 (do trecho)
+  - título: A Bend in the River (2020) - IMDb
+  - url: https://www.imdb.com/title/tt8187840/
+  - trecho: A Bend in the River: Directed by Colin Broderick. With John Duddy, Kathy Kiera Clarke, John McConnell, Brendan Broderick. The …
+  - ⚠ ano_anterior_ao_ciclo
+- `b398aaaa38` · nível **C** (0 pts) · rede_social_oficial · — · data 1979 (do trecho)
+  - título: A Bend in the River by V.S. Naipaul | Goodreads
+  - url: https://www.goodreads.com/book/show/5845.A_Bend_in_the_River
+  - trecho: Sep 20, 1979 · In his 1979 novel, Bend in the River, V. S. Naipaul captures the climate of disruptive & unpredictable transition from …
+- `1623d36475` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: my Social Security | SSA
+  - url: https://www.ssa.gov/myaccount/
+  - trecho: Social Security uses Login.gov to allow you to sign in to your official my Social Security account safely and securely. The first step in …
+- `03a31ac97a` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: my Social Security | SSA
+  - url: https://www.ssa.gov/myaccount/#!=
+  - trecho: Social Security uses Login.gov to allow you to sign in to your official my Social Security account safely and securely. The first step in …
+- `49244b98b2` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Online Services | SSA
+  - url: https://www.ssa.gov/onlineservices/
+  - trecho: To create your online my Social Security account, first you’ll need to verify your identity with our partner site, Login.gov. If you live …
+- `4bf85eb349` · nível **C** (0 pts) · rede_social_oficial · — · data 2024 (do trecho)
+  - título: Are Psychopaths Crazy or Misunderstood? Understanding the Truth …
+  - url: https://mindpsychiatrist.com/are-psychopaths-crazy/
+  - trecho: Nov 9, 2024 · Myths about psychopaths abound, often painting them as violent criminals or “crazy” individuals. In reality, not all …
+- `a88092f7fa` · nível **C** (0 pts) · rede_social_oficial · — · data 2025 (do trecho)
+  - título: What We Get Wrong About Psychopaths - Psychology Today
+  - url: https://www.psychologytoday.com/us/blog/making-evil/201902/what-we-get-wrong-about-psychopaths?msockid=2b0be1f8a1df6027261df611a02f610c
+  - trecho: Oct 24, 2025 · We have an unhealthy obsession with psychopaths. We tune into true crime shows, podcasts, and movies, and say …
+- `82a8258a5c` · nível **C** (0 pts) · rede_social_oficial · — · data 2025 (do trecho)
+  - título: Are All Psychopaths Evil or Just Misunderstood? Unpacking Common …
+  - url: https://mindpsychiatrist.com/are-all-psychopaths-evil/
+  - trecho: Jan 17, 2025 · No, not all psychopaths are dangerous or evil. Many individuals with psychopathic traits lead normal lives, maintain …
+
+## defesa_civil/GO — 64 pendente(s)
+- `50d936836b` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Online Shopping for Clothing Shoes Accessories - Walmart.com
+  - url: https://www.walmart.com/c/kp/online-shopping
+  - trecho: About Online Shopping for Clothing Shoes Accessories Explore clothing, shoes, and accessories online with ease and confidence. …
+- `74e4b338bc` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: All Departments - Walmart.com
+  - url: https://www.walmart.com/all-departments
+  - trecho: Walmart Business Walmart Business Shop Walmart BusinessAbout Walmart Business Walmart Business+ Walmart Services Tax …
+- `08d452656d` · nível **C** (0 pts) · rede_social_oficial · — · data 2025 (do trecho)
+  - título: Amazon Relay | Load board & trucking contracts for carriers - Amazon …
+  - url: https://relay.amazon.com/
+  - trecho: Nov 5, 2025 · Amazon Relay gives trucking companies of all sizes free access to instantly book spot loads and contracts. With real …
+- `43a20d5e78` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Direct Freight | Largest Free Load Board for Truck Drivers, Freight ...
+  - url: https://www.directfreight.com/home/
+  - trecho: Search More than 300K Loads Daily from Reputable Brokers & Shippers on Direct Freight. Find and book your own freight for free. …
+- `abfb9b3c39` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Amazon Relay | Load board & trucking contracts for carriers
+  - url: https://relay.amazon.com/loadboard/
+  - trecho: We would like to show you a description here but the site won’t allow us.
+- `831fc84fd3` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Create a replacement Google Account - Google Account Help
+  - url: https://support.google.com/accounts/answer/7564124?hl=en
+  - trecho: Choose a new username:Usernames aren't recycled, so your old email address isn't available. Create a similar email address by …
+- `cafbab2cb8` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Create a Google Account for Gmail
+  - url: https://support.google.com/mail/answer/56256?hl=en
+  - trecho: From your device, go to the Google Account sign in page. Click Create account. To finish, follow the on-screen instructions. Create a …
+- `87479f56de` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Delete Google Account & Create New One: Full Guide
+  - url: https://unanswered.io/guide/delete-google-account-and-create-new-one
+  - trecho: Aug 31, 2026 · Yes, you can delete your old Google Account and create a completely new one afterward. The new account must use …
+- `96048f2d1e` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Alt Hotel Toronto Airport | Official Site - Groupe Germain Hotels
+  - url: https://www.germainhotels.com/en/alt-hotel/toronto-airport
+  - trecho: Our hotel is the ideal stopover when you’re transiting through Toronto Pearson International Airport. Departing early or arriving late? …
+- `b5406522f8` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Official Site | Alt Hotels | Stylish
+  - url: https://www.germainhotels.com/en/alt-hotel
+  - trecho: Discover how our Alt Hotels challenge conventions across Canada with comfortable, well-thought-out and trendy design rooms.
+- `ce648f6162` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: ALT HOTEL MENU
+  - url: https://assets.germainhotels.com/germain-website-assets-production/website-assets/Alt-Toronto-Airport/Offers/Alt-Hotel-Toronto-Airport-Three-day-menu-2021.pdf
+  - trecho: NAME: ROOM #: BREAKFAST: Breakfast will be served daily between 8:30-9:00am. It will include an assortment of continental …
+  - ⚠ ano_anterior_ao_ciclo
+- `b5d735ead8` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Abraham Lincoln - Wikipedia
+  - url: https://en.wikipedia.org/wiki/Abraham_Lincoln
+  - trecho: Abraham Lincoln[b] (February 12, 1809 – April 15, 1865) was the 16th president of the United States, serving from 1861 until his …
+- `2af580c745` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Abraham Lincoln | Biography, Childhood, Quotes, Death, & Facts
+  - url: https://www.britannica.com/biography/Abraham-Lincoln
+  - trecho: Sep 25, 2026 · Abraham Lincoln (born February 12, 1809, near Hodgenville, Kentucky, U.S.—died April 15, 1865, Washington, D.C.) …
+- `b3b0ae523d` · nível **C** (0 pts) · rede_social_oficial · — · data 2009 (do trecho)
+  - título: Abraham Lincoln: Facts, Birthday & Assassination | HISTORY
+  - url: https://www.history.com/articles/abraham-lincoln
+  - trecho: Oct 29, 2009 · In April 1865, with the Union on the brink of victory, Abraham Lincoln was assassinated by Confederate sympathizer …
+- `29b9ae7774` · nível **C** (0 pts) · rede_social_oficial · — · data 2013 (do trecho)
+  - título: Are there legit adult sexual sites that aren't scams? - Dating Sites ...
+  - url: https://www.datingsitesreviews.com/forum/viewtopic.php?showtopic=5486
+  - trecho: Sep 29, 2013 · Anonymous Yes. As a woman I used Adult Friend Finder for a year and a half. As with any site you have to have a …
+- `1c311531c8` · nível **C** (0 pts) · rede_social_oficial · — · data 2019 (do trecho)
+  - título: Is Adult Friend Finder trustworthy? - Dating Sites Reviews
+  - url: https://www.datingsitesreviews.com/forum/viewtopic.php?showtopic=15610
+  - trecho: May 10, 2019 · Of all the sites I have tried Adult Friend Finder seems to be the best. it is by no means perfect and has a long way to …
+- `13ceea61dd` · nível **C** (0 pts) · rede_social_oficial · — · data 2025 (do trecho)
+  - título: Allow standard aff members to contact me - Dating Sites Reviews
+  - url: https://www.datingsitesreviews.com/forum/viewtopic.php?showtopic=18654
+  - trecho: Jul 15, 2025 · On Adult Friend Finder just wondering if I pay for a gold membership if other regular free standard members will be …
+- `cf88c68f31` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Log In to My Account | American Express US
+  - url: https://www.americanexpress.com/en-us/account/login/
+  - trecho: American Express offers world-class Charge and Credit Cards, Gift Cards, Rewards, Travel, Personal Savings, Business Services, …
+- `cac9bbc84b` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Login - American Express
+  - url: https://www.americanexpress.com/en-sg/account/login
+  - trecho: Copyright © 2026 American Express Company. Users of this site agree to be bound by American Express Web Site Rules and …
+- `c1779b4916` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Login - American Express
+  - url: https://www.americanexpress.com/es-es/account/login
+  - trecho: Copyright © 2026 American Express Company. Reservados todos los derechos. Los usuarios del presente sitio están obligados a …
+- `38fa288980` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Settings | Speedtest by Ookla
+  - url: https://www.speedtest.net/zh-Hant/settings
+  - trecho: Join the millions of other people helping us to accelerate the Internet! By creating an account, you'll be able to access your historical …
+- `70b2aac066` · nível **C** (0 pts) · rede_social_oficial · — · data 2006 (do trecho)
+  - título: Speedtest Intelligence
+  - url: https://intelligence.speedtest.net/
+  - trecho: © 2006-2026 Ookla, LLC., a Ziff Davis company. All Rights Reserved. Ookla®, Speedtest®, and Speedtest Intelligence® are among …
+- `46afdece2b` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Water Solutions for Denver, CO - Leaf Home
+  - url: https://www.leafhome.com/locations/colorado/denver/water-solutions
+  - trecho: While Denver Water has implemented a Lead Reduction Program and treats approximately 600 million gallons daily for 1.5 million …
+- `4c635fe271` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Leaf Home Water Solutions
+  - url: https://www.leafhome.com/water-solutions
+  - trecho: Leaf Home Water Solutions provides whole home water treatment systems designed to give you safe, healthy water.
+- `6cdd8a42cd` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Denver’s Top Rated Gutter Guards - LeafFilter Gutter Protection
+  - url: https://www.leaffilter.com/locations/colorado/denver/gutter-guards/
+  - trecho: From spring runoff to hailstorms and dry debris accumulation, Denver homeowners face constant pressure on their gutter systems. …
+- `6c21ab1ca3` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Generate "never-expire" access token for Facebook Page
+  - url: https://stackoverflow.com/questions/17426018/generate-never-expire-access-token-for-facebook-page
+  - trecho: Native mobile applications using Facebook's SDKs will get long-lived access tokens, good for about 60 days. These tokens will be …
+- `782d737020` · nível **C** (0 pts) · rede_social_oficial · — · data 2017 (do trecho)
+  - título: Android Facebook integration with invalid key hash
+  - url: https://stackoverflow.com/questions/23674131/android-facebook-integration-with-invalid-key-hash
+  - trecho: Feb 24, 2017 · The Facebook SDK for Unity gets the wrong key hash. It gets the key from "C:\Users\"your …
+- `fd45895f85` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Newest Questions - Stack Overflow
+  - url: https://facebook.stackoverflow.com/
+  - trecho: 2 days ago · How do I connect my webapp to Google, Facebook, Apple, etc., so users can log in with those accounts? I've created a …
+- `c4972bc0b2` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: 22 Real Estate Branding Ideas to Stand Out in 2026
+  - url: https://www.luxurypresence.com/blogs/real-estate-branding-ideas/
+  - trecho: Apr 14, 2026 · The 22 real estate branding ideas below will help you build a recognizable, trustworthy presence that stands out in a …
+- `9e806be627` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Luxury Presence | Premier Real Estate Websites & Marketing
+  - url: https://www.luxurypresence.com/
+  - trecho: The growth platform for real estate's top-performing agents, teams, and brokerages. Grow your brand and uncover hidden buying …
+- `b22d1da10e` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: 22 must-have real estate marketing tools for 2026 - HousingWire
+  - url: https://www.housingwire.com/articles/real-estate-marketing-tools/
+  - trecho: Jun 29, 2026 · Indispensable real estate marketing tools to help you save time, scale faster, be more productive, attract more clients …
+- `057d234d50` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: 8 of the Top Financial Advisor Companies for High-Net-Worth ...
+  - url: https://www.wsj.com/buyside/personal-finance/financial-advisors/top-financial-advisors-for-high-net-worth?msockid=2b4cc51c47b962740cf1d2f5464f637e
+  - trecho: 4 days ago · Compare top financial advisors for high-net-worth individuals and learn about the services these firms can offer.
+- `4bc53f7eb4` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Platinum Spas | UK’s Luxury Hot Tub and Swim Spa Brand
+  - url: https://www.platinum-spas.com/us/
+  - trecho: Find a premium hot tub from the UK's biggest hot tub and swim spa manufacturer. Explore energy-efficient, feature-packed models in …
+- `b65ac15c0c` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Hot Tubs For Sale | British-Designed Hot Tub Spas | USA - Platinum Spas
+  - url: https://www.platinum-spas.com/us/product-category/hot-tubs/
+  - trecho: British-designed hot tubs and swim spas, available across the USA through our authorised dealers. Browse the range and find your …
+- `a737d8d801` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Platinum Hot Tubs
+  - url: https://platinumhottubs.com/
+  - trecho: Best Selling Hot Tub The Legend. The Legend with its own unique pattern of 78 hydrotherapy jets. Relax, you deserve it!
+- `ed3884f015` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Official Boston Red Sox Website | MLB.com
+  - url: https://www.mlb.com/redsox?msockid=3ae05b0c3541687b341e4ce534e969eb
+  - trecho: The official website of the Boston Red Sox with the most up-to-date information on news, tickets, schedule, stadium, roster, rumors, …
+- `35263549dc` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Latest Red Sox News | Boston Red Sox - MLB.com
+  - url: https://www.mlb.com/redsox/news?msockid=3ae05b0c3541687b341e4ce534e969eb
+  - trecho: 5 days ago · The official Red Sox news source including trades, rumors, scores, standings, stats, game recaps, highlights, injuries …
+- `b16bf437a2` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Boston Red Sox Scores, Stats and Highlights - ESPN
+  - url: https://www.espn.com/mlb/team/_/name/bos/boston-red-sox
+  - trecho: Visit ESPN for Boston Red Sox live scores, video highlights, and latest news. Find standings and the full 2026 season schedule.
+- `37dac848b3` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Integration: Transaction management and troubleshooting
+  - url: https://support.changenow.io/hc/en-us/articles/22686695418396-Integration-Transaction-management-and-troubleshooting
+  - trecho: Fixed-Rate transactions To enable fixed-rate transactions, the following endpoints must be manually enabled upon your request: …
+- `369597eec8` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Courier HQ — Find Courier Contracts, Manage Your Delivery Business
+  - url: https://www.courierhq.io/
+  - trecho: Courier HQ is a centralized hub for independent couriers to find direct shipper contracts, calculate real-time profitability, and manage …
+- `746e825dd0` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: ChangeNOW Overview: Effortless Crypto Management in One Platform?
+  - url: https://m.youtube.com/watch?v=UGGT7ghsYQk
+  - trecho: Mar 26, 2026 · ChangeNOW.io is a crypto management platform that makes it easy to exchange and manage digital assets across …
+- `cce970efa3` · nível **C** (0 pts) · rede_social_oficial · — · data 2020 (do trecho)
+  - título: can't upload anything : r/erome - Reddit
+  - url: https://www.reddit.com/r/erome/comments/g3kyus/cant_upload_anything/
+  - trecho: Apr 18, 2020 · everything I try to upload stops midway and doesn't move again.
+- `b5cd572a0b` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: We have just improved the search engine : r/erome - Reddit
+  - url: https://www.reddit.com/r/erome/comments/9hgtgb/we_have_just_improved_the_search_engine/
+  - trecho: Is the ascending order working correctly? Right now if i search for "Joi" it will bring up 14 pages of results and the newest ones will be …
+- `68a7b0065d` · nível **C** (0 pts) · rede_social_oficial · — · data 2023 (do trecho)
+  - título: www.erome.com - video or audio doesn't play #116674
+  - url: https://github.com/webcompat/web-bugs/issues/116674
+  - trecho: Jan 11, 2023 · changed the title In the moderation queue.www.erome.com - video or audio doesn't play on Jan 11, 2023
+- `fad7ed8e61` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Now Hiring: 262,000 Truck Driver Jobs | Indeed
+  - url: https://www.indeed.com/q-Truck-Driver-jobs.html
+  - trecho: Browse 262,313 Truck Driver jobs. New jobs posted today. Apply now and find your next opportunity on Indeed.com.
+- `4b471c04c4` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: CDL Jobs Near You | OTR, Local Truck Driving Jobs | CDLjobs.com
+  - url: https://www.cdljobs.com/
+  - trecho: Finding local, regional &amp; OTR truck driving jobs near you has never been easier. Apply to hundreds of jobs instantly using our …
+- `23eac79aba` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Local Truck Driving Jobs | Job Listings | Drive J.B. Hunt
+  - url: https://drivers.jbhunt.com/jobs/local-truck-driving-jobs
+  - trecho: 1 day ago · A local truck driving job typically consists of transporting freight within a 200-mile radius, allowing the driver to complete …
+- `a50a7b346f` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: The Home Depot
+  - url: https://www.homedepot.com/
+  - trecho: Shop online for all your home improvement needs: appliances, bathroom decorating ideas, kitchen remodeling, patio furniture, power …
+- `1512ab8acd` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Grants | The Home Depot
+  - url: https://corporate.homedepot.com/page/grants
+  - trecho: The Home Depot and The Home Depot Foundation are deeply committed to serving our communities. Click the tiles below to learn …
+- `42abc1f2ab` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Bagged Mulch - Mulch - The Home Depot
+  - url: https://www.homedepot.com/b/Outdoors-Garden-Center-Landscaping-Supplies-Mulch/Bagged-Mulch/N-5yc1vZbx4aZ1z0tgs0
+  - trecho: Does The Home Depot have an app? Our mobile app was made for getting things done quickly. Shop conveniently with helpful …
+- `b0801ee54a` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: New Payton Hall Porn Videos @ PornSteak
+  - url: https://pornsteak.com/pornstars/payton-hall/new/
+  - trecho: Explore the newest videos on Payton Hall's personal page. High-quality content updated regularly, featuring the latest and freshest …
+- `4af998a940` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: New Payton Hall Porn Videos - Free Sex Movies - BestPornStars.Tv
+  - url: https://bestpornstars.tv/pornstar/payton-hall/new/
+  - trecho: New Payton Hall Tube and other famous pornstars at BestPornStars. We scan many porn videos sources daily, add a lot !
+- `5f4089c967` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Payton Hall - Big Tits Porn - GOLD TITS
+  - url: https://goldtits.com/pornstars/payton-hall/
+  - trecho: As far as big tits action on porn videos goes, nobody does it the way Payton Hall does. It's nothing but pure porn with Payton Hall.
+- `2ef0844bed` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: ChangeNOW-token/contracts at master · ChangeNow-io/ChangeNOW …
+  - url: https://github.com/ChangeNow-io/ChangeNOW-token/tree/master/contracts
+  - trecho: Contribute to ChangeNow-io/ChangeNOW-token development by creating an account on GitHub.
+- `aa4ffb8711` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Official Program - ChangeNOW 2026
+  - url: https://www.changenow-summit.com/2026/timetable/
+  - trecho: Discover the full program of ChangeNOW 2026 in Paris. Explore three days of inspiring keynotes, workshops, and panels covering …
+- `42c1440b5b` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: 'xxxx' Search - XNXX.COM
+  - url: https://www.xnxx.com/search/xxxx
+  - trecho: Unsatisfied by her stepson's cock, the stepmother quenched her burning lust by thrusting a bottle gourd into her pussy -right out in …
+- `1997ddf3a0` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Watch XXXX Porn Free in HD | Pornhub
+  - url: https://www.pornhub.com/video/search?search=xxxx
+  - trecho: Watch free XXXX porn videos on Pornhub. Huge library of amateur and exclusive scenes streaming in full HD - updated daily. Start …
+- `d6ec02f5cd` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Xxxx Porn Videos - xHamster
+  - url: https://xhamster.com/search/xxxx
+  - trecho: Watch xxxx porn videos. Explore tons of XXX movies with sex scenes in 2026 on xHamster!
+- `a876493826` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: The Point
+  - url: https://thepoint.lww.com/
+  - trecho: Inspired Learning for Life. When it comes to providing students and teachers in nursing, medicine, and the health professions with …
+- `6a69d1dfd1` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: PrepU - The Point
+  - url: https://thepoint.lww.com/template/rendertemplatebyinstanceid/-18
+  - trecho: PrepU Lippincott’s Adaptive Learning System PrepU’s personalized learning system helps every student learn more, while giving …
+- `f0879b2954` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Rosdahl's Textbook of Basic Nursing, Twelfth Edition - The Point
+  - url: https://thepoint.lww.com/Book/Show/1020300
+  - trecho: About this Title A proven approach trusted by LPN/LVN students for more than 50 years, Rosdahl’s Textbook of Basic Nursing, 12th …
+- `840041a1b9` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Allrecipes | Recipes, How-Tos, Videos and More
+  - url: https://www.allrecipes.com/
+  - trecho: Everyday recipes with ratings and reviews by home cooks like you. Find easy dinner ideas, healthy recipes, plus helpful cooking tips …
+- `a881e420e4` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Recipes
+  - url: https://www.allrecipes.com/recipes/
+  - trecho: Find and share everyday cooking inspiration on Allrecipes. Discover recipes, cooks, videos, and how-tos based on the food you love …
+- `6a7b0cfd9a` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Recipes Archives
+  - url: https://www.tasteofhome.com/recipes/
+  - trecho: Explore our thousands of tested recipes to find the best recipe for dinner, breakfast, lunch, game day, snacks, cooking for two—you …
+
+## saude/GO — 2 pendente(s)
+- `bbc712db50` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: USER Definition & Meaning - Merriam-Webster
+  - url: https://www.merriam-webster.com/dictionary/user
+  - trecho: Sep 28, 2026 · The meaning of USER is someone who uses something. How to use user in a sentence.
+- `90721039ab` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: User (computing) - Wikipedia
+  - url: https://en.wikipedia.org/wiki/User_(computing)
+  - trecho: A user is a person who uses a computer or network service. A user typically has a user account and is recognized by the system …
+
+## defesa_civil/MA — 90 pendente(s)
+- `bfd7df6bbc` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Hentai - Newgrounds.com
+  - url: https://www.newgrounds.com/collection/hentai
+  - trecho: All of the entries on this page have been hidden by your filters.
+- `13fbba047c` · nível **C** (0 pts) · rede_social_oficial · — · data 2012 (do trecho)
+  - título: Simgirls (Full Version) - Newgrounds.com
+  - url: https://www.newgrounds.com/portal/view/594476
+  - trecho: Apr 25, 2012 · Simgirls (full version), the most popular online dating sim game.
+- `6ca632817f` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Dress-Up Hentai - Newgrounds.com
+  - url: https://www.newgrounds.com/collection/dress-up-hentai
+  - trecho: All of the entries on this page have been hidden by your filters.
+- `4b3b9f03cc` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Home Fiber Internet, Wireless, and Business IT Solutions | C Spire
+  - url: https://www.cspire.com/
+  - trecho: Get the best home fiber internet, wireless service powered by our blazing-fast 5G network, and managed IT, cybersecurity, and cloud …
+- `2f5d8be9fd` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: 5G Wireless Broadband & Cloud Management | Inseego
+  - url: https://inseego.com/
+  - trecho: Deploy, connect, and unify a new era of wireless broadband with Inseego routers, gateways, receivers, adapters, mobile hotspots, …
+- `97e18c8e0e` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Nile | Secure Network-as-a-Service (NaaS) & AI Networking
+  - url: https://nilesecure.com/
+  - trecho: Nile delivers secure Network-as-a-Service with built-in Zero Trust, autonomous operations, and guaranteed performance for campus …
+- `03a80b17b8` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: ‎Instagram App - App Store
+  - url: https://apps.apple.com/us/app/instagram/id389801252
+  - trecho: Download Instagram by Instagram, Inc. on the App Store. See screenshots, ratings and reviews, user tips, and more apps like …
+- `e5bb589f57` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Warner Theatre Tickets & Schedule | Washington Concert Venue
+  - url: https://www.warnertheatredc.com/
+  - trecho: Warner Theatre information and upcoming 2026 events. Find details on the official Warner Theatre website including tickets, seating …
+- `e0d06a6c6d` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Warner Theatre Upcoming Shows: 2026 Event Calendar
+  - url: https://www.warnertheatredc.com/shows
+  - trecho: Warner Theatre 2026 event calendar. Buy tickets and find details on upcoming shows at Warner Theatre in Washington, DC.
+- `88e632b905` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: The Warner Theatre | NWCT's Largest Performing Arts Center
+  - url: https://www.warnertheatre.org/
+  - trecho: Today, a destination as much for the historic building’s lush Art-Deco style as the world-class performances on our stage, the Warner …
+- `18dd7443c7` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Warrior Nun (TV series) - Wikipedia
+  - url: https://en.wikipedia.org/wiki/Warrior_Nun_(TV_series)
+  - trecho: Premise Warrior Nun revolves around the story of a 19-year-old who wakes up in a morgue with a new lease on life and a divine …
+- `df539d4b1d` · nível **C** (0 pts) · rede_social_oficial · — · data 2020 (do trecho)
+  - título: Warrior Nun (TV Series 2020–2022) - IMDb
+  - url: https://www.imdb.com/title/tt9059350
+  - trecho: Warrior Nun: Created by Simon Barry. With Alba Baptista, Kristina Tonteri-Young, Lorena Andrea, Tristán Ulloa. After waking up in a …
+- `a1f450ba5a` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Warrior Nun - Wikipedia
+  - url: https://en.wikipedia.org/wiki/Warrior_Nun
+  - trecho: Warrior Nun is an American media franchise consisting of comic books and a fantasy action-drama television series which follow the …
+- `fb524bacc0` · nível **C** (0 pts) · rede_social_oficial · — · data 1995 (do trecho)
+  - título: Hwasa - Wikipedia
+  - url: https://en.m.wikipedia.org/wiki/Hwasa
+  - trecho: Ahn Hye-jin (Korean: 안혜진; born July 23, 1995), known professionally by her stage name Hwasa (화사; sometimes stylized as Hwa …
+- `6b01bf830d` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: HWASA (@_mariahwasa) • Instagram photos and videos
+  - url: https://www.instagram.com/_mariahwasa/
+  - trecho: 10M Followers, 0 Following, 406 Posts - See Instagram photos and videos from HWASA (@_mariahwasa)
+- `45a5f3a7c8` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: HWASA (MAMAMOO) Profile and Facts (Updated!) - Kpop Profiles
+  - url: https://kprofiles.com/hwasa-profile/
+  - trecho: Our HWASA (MAMAMOO) Profile and Facts is updated on a regular basis, providing up to date facts and news.
+- `2f95dd9831` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Free Porn Videos - XVIDEOS.COM
+  - url: https://www.xvideos.com/
+  - trecho: XVideos.com is a free hosting service for porn videos. We convert your files to various formats. You can grab our 'embed code' to …
+- `6640c58490` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Free Porn Videos - XVIDEOS.COM
+  - url: https://www.xvideos.com/home/en
+  - trecho: XVIDEOS Free Porn Videos Madrasta safada fode com enteado e amigo pauzudo - Casada safada puta de novinho fode com o …
+- `f66eda85c5` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Free Porn Videos - XVIDEOS.COM
+  - url: https://mobile-xvideos.com/
+  - trecho: XVIDEOS Free Porn Videos horny blonde girl gifted me her pussy by a forest waterfall | I got her ass and pussy soaking wet -white …
+- `1fa12821ae` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: saggy-tits videos - XVIDEOS.COM
+  - url: https://www.xvideos.com/tags/saggy-tits
+  - trecho: Real Redhead Ginger Teen with saggy natural Tits and Bushy Pussy Pick Up and seduce to Old Young Fuck 1080p 23 min
+- `908955158e` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Saggy Tits Porn Videos: Big Floppy Boobs | xHamster
+  - url: https://xhamster.com/categories/saggy-tits
+  - trecho: Watch saggy tits bounce and swing as girls get fucked doggystyle or climb on top to ride in hardcore videos. Floppy boobs love to be …
+- `1d2168b272` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Saggy Tits - Big Tits Porn - GOLD TITS
+  - url: https://goldtits.com/categories/saggy-big-tits/
+  - trecho: Saggy Tits porn videos are as kinky as it gets. Horny big tits pornstars in hardcore action make high-quality Saggy Tits videos.
+- `776b341c53` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: All Quiet on the Western Front - Wikipedia
+  - url: https://en.wikipedia.org/wiki/All_Quiet_on_the_Western_Front
+  - trecho: All Quiet on the Western Front (German: Im Westen nichts Neues, lit. 'In the west, nothing new') is a semi-autobiographical novel by …
+- `c7d7594cbe` · nível **C** (0 pts) · rede_social_oficial · — · data 2022 (do trecho)
+  - título: All Quiet on the Western Front (2022 film) - Wikipedia
+  - url: https://en.wikipedia.org/wiki/All_Quiet_on_the_Western_Front_(2022_film)
+  - trecho: All Quiet on the Western Front (German: Im Westen nichts Neues, lit. 'Nothing New in the West') is a 2022 German epic anti-war film …
+  - ⚠ ano_anterior_ao_ciclo
+- `c5773b5798` · nível **C** (0 pts) · rede_social_oficial · — · data 2022 (do trecho)
+  - título: All Quiet on the Western Front (2022) - IMDb
+  - url: https://www.imdb.com/title/tt1016150/
+  - trecho: All Quiet on the Western Front: Directed by Edward Berger. With Felix Kammerer, Albrecht Schuch, Aaron Hilmer, Moritz Klaus. A …
+  - ⚠ ano_anterior_ao_ciclo
+- `28fa12a48d` · nível **C** (0 pts) · rede_social_oficial · — · data 2022 (do trecho)
+  - título: seasons4u (u/seasons4u) - Reddit
+  - url: https://www.reddit.com/user/seasons4u/
+  - trecho: u/seasons4u Dec 20, 2022 Cake day Trophy Case
+- `adb0b3fa8c` · nível **C** (0 pts) · rede_social_oficial · — · data 2023 (do trecho)
+  - título: Kodi add on seasons4u : r/Addons4Kodi - Reddit
+  - url: https://www.reddit.com/r/Addons4Kodi/comments/14xalk3/kodi_add_on_seasons4u/
+  - trecho: Jul 12, 2023 · Can someone help me with figuring out how to add my seasons4u account to Kodi??
+- `4d30c46383` · nível **C** (0 pts) · rede_social_oficial · — · data 2021 (do trecho)
+  - título: What VPN do you guys recommend for ESPN+ to get the Sporting
+  - url: https://www.reddit.com/r/SportingKC/comments/mrucd3/what_vpn_do_you_guys_recommend_for_espn_to_get/
+  - trecho: Apr 16, 2021 · Seasons4u offers actual broadcast quality. They have access to the networks internal code It’s a gorgeous product.
+- `7a253bf8ea` · nível **C** (0 pts) · rede_social_oficial · — · data 2024 (do trecho)
+  - título: Is it true that using Pornhub is generally safe until pressing ... - Reddit
+  - url: https://www.reddit.com/r/techsupport/comments/1b1de01/is_it_true_that_using_pornhub_is_generally_safe/
+  - trecho: Feb 27, 2024 · I accidentally (yes) pressed on the ads on my android phone and am freaking out because I heard pornhub in general …
+- `8a10f35d4f` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Quick and Easy Chicken Noodle Soup Recipe
+  - url: https://www.allrecipes.com/recipe/26460/quick-and-easy-chicken-noodle-soup/
+  - trecho: Feb 24, 2026 · This easy chicken noodle soup recipe made with veggies and leftover chicken is warm, comforting, and ready to ladle …
+- `5c45b77b17` · nível **C** (0 pts) · rede_social_oficial · — · data 2024 (do trecho)
+  - título: Chicken Noodle Soup Recipe: How to Make It - Taste of Home
+  - url: https://www.tasteofhome.com/recipes/the-ultimate-chicken-noodle-soup/
+  - trecho: Mar 7, 2024 · This chicken noodle soup recipe is made from scratch with bone-in chicken, chewy egg noodles and a high-quality …
+- `744a3ee587` · nível **C** (0 pts) · rede_social_oficial · — · data 2023 (do trecho)
+  - título: Literally the BEST Chicken Noodle Soup - The Recipe Critic
+  - url: https://therecipecritic.com/chicken-noodle-soup-recipe/
+  - trecho: Oct 5, 2023 · This is literally the BEST chicken noodle soup full of chicken, sliced carrots, celery, and tender wide noodles. A classic …
+- `90d29132bf` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Messenger
+  - url: https://www.messenger.com/
+  - trecho: Messenger helps you connect with your Facebook friends and family, build your community, and deepen your interests.
+- `51d156f936` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Messenger - Facebook
+  - url: https://www.facebook.com/messenger/
+  - trecho: Messenger from Facebook helps you stay close with those who matter most, and on any device.
+- `35f1afe7fe` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: How to Perform Xbox 360 Hard Drive Format - Recoverit
+  - url: https://recoverit.wondershare.com/format-harddrive/format-xbox-360-hard-drive.html
+  - trecho: To use an external hard drive with your Xbox 360, you must format it from NTFS to the exFAT file system using Windows Disk …
+- `db3a2b79fe` · nível **C** (0 pts) · rede_social_oficial · — · data 2020 (do trecho)
+  - título: how to format a HDD for the xbox 360 : r/xbox360 - Reddit
+  - url: https://www.reddit.com/r/xbox360/comments/gvtl98/how_to_format_a_hdd_for_the_xbox_360/
+  - trecho: Jun 3, 2020 · The only way its to restore the secure sector, so you need an image from other 360 hdd or flash the firmware from …
+- `9b0c7cc18e` · nível **C** (0 pts) · rede_social_oficial · — · data 2022 (do trecho)
+  - título: Would anyone be able to explain the exact process to upgrading ... - Reddit
+  - url: https://www.reddit.com/r/360hacks/comments/ucbs9q/would_anyone_be_able_to_explain_the_exact_process/
+  - trecho: Apr 26, 2022 · Don't know if rules still apply after modding the Xbox but there are specific types of HDD to be used and all are made …
+- `c23acc09cb` · nível **C** (0 pts) · rede_social_oficial · — · data 2014 (do trecho)
+  - título: Remember old adult paperbacks? - Literotica Discussion Board
+  - url: https://forum.literotica.com/threads/remember-old-adult-paperbacks.1079867/
+  - trecho: Sep 10, 2014 · Has anyone else begun their fascination with smutty fiction because of reading the old adult paperbacks of the 1960s …
+- `e38317702c` · nível **C** (0 pts) · rede_social_oficial · — · data 1960 (do trecho)
+  - título: high school and college sex stories--from the 1960's and 70's
+  - url: https://forum.literotica.com/threads/high-school-and-college-sex-stories-from-the-1960s-and-70s.1146675/
+  - trecho: Feb 4, 2015 · high school and college sex stories--from the 1960's and 70's Kenny9990 Feb 4, 2015
+- `6dcbaa248f` · nível **C** (0 pts) · rede_social_oficial · — · data 2012 (do trecho)
+  - título: Has anyone/couples visited an adult theater?
+  - url: https://forum.literotica.com/threads/has-anyone-couples-visited-an-adult-theater.815434/
+  - trecho: Jun 22, 2012 · There is an adult theater/bookstore there called the Lido which I visited regularly. The Lido had 2 theaters -- one …
+- `eecb922f05` · nível **C** (0 pts) · rede_social_oficial · — · data 2012 (do trecho)
+  - título: Identity increment is jumping in SQL Server database
+  - url: https://stackoverflow.com/questions/14146148/identity-increment-is-jumping-in-sql-server-database
+  - trecho: In one of my tables Fee in column "ReceiptNo" in SQL Server 2012 database identity increment suddenly started jumping to 100s …
+- `192a7ff40c` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: ‎Google Gemini
+  - url: https://gemini.google.com/
+  - trecho: Meet Gemini, Google’s AI assistant. Get help with writing, planning, brainstorming, and more. Experience the power of generative AI.
+- `e8d4df86a0` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: ‎Google Gemini
+  - url: https://gemini.google.com/?hl=fi
+  - trecho: Tutustu Geminiin, Googlen tekoälyavustajaan. Se voi auttaa sinua muun muassa kirjoittamisessa, ideoimisessa ja oppimisessa. Koe …
+- `96cad0761b` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: ‎Google Gemini
+  - url: https://gemini.google.com/?hl=cs
+  - trecho: Seznamte se s Gemini, AI asistentem od Googlu. Dokáže pomoct s psaním, plánováním, brainstormingem a spoustou dalších …
+- `b2deaa1191` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Sign in - Google Accounts
+  - url: https://accounts.google.com/Login
+  - trecho: Not your computer? Use a private browsing window to sign in. Learn more about using Guest mode Next Create account
+- `6629d55389` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Google Accounts
+  - url: https://accounts.google.com/servicelogin?service=mail
+  - trecho: Not your computer? Use a private browsing window to sign in. Learn more about using Guest mode Next Create account
+- `bab8e2acfe` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Rule 34 - If it exists there is porn of it.
+  - url: https://rule34.xxx/
+  - trecho: Rule 34 - If it exists, there is porn of it. We have pokemon, my little pony, Other hentai, whatever you want. Serving 15,910,774 posts.
+- `5f2f0ddc77` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Rule 34
+  - url: https://rule34.xxx/index.php?page=tags&s=list
+  - trecho: Rule 34 - If it exists, there is porn of it. We have pokemon, my little pony, Other hentai, whatever you want.
+- `a727e83265` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Rule 34
+  - url: https://api.rule34.xxx/
+  - trecho: When using the rule34.xxx API or if you serve content from our CDN, you will not display any advertisements or run paywalls. This …
+- `f721fa70bc` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Amazon.com: Coffee Cups & Mugs: Home & Kitchen
+  - url: https://www.amazon.com/Mugs/b?node=367142011
+  - trecho: Discover our great selection of Mugs on Amazon.com. Over 120,000 Mugs Great Selection & Price Free Shipping on Prime eligible …
+- `0afe70e40f` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Amazon.com: Cup
+  - url: https://www.amazon.com/Cup/s?k=Cup
+  - trecho: AOZITA 100 Pack 16 oz Plastic Cups With Strawless Sip-Lids, Iced Coffee Cups With Lids BPA Free, Disposable Clear Cups, To Go …
+- `814ff00611` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Amazon.com: Cups, Mugs, Saucers: Home & Kitchen: Coffee Cups
+  - url: https://www.amazon.com/cups-mugs-saucers/b?node=367125011
+  - trecho: Discover Cups, Mugs & Saucers on Amazon.com at a great price. Our Dining & Entertaining category offers a great selection of …
+- `238eb6ce2c` · nível **C** (0 pts) · rede_social_oficial · — · data 2015 (do trecho)
+  - título: ESPN FantasyFootball Can't Login Using Chrome? - Reddit
+  - url: https://www.reddit.com/r/fantasyfootball/comments/3kbzqv/espn_fantasyfootball_cant_login_using_chrome/
+  - trecho: Sep 10, 2015 · ESPN FantasyFootball Can't Login Using Chrome? Anyone else having a weird issue with Google Chrome and the …
+- `1c9b4db276` · nível **C** (0 pts) · rede_social_oficial · — · data 2016 (do trecho)
+  - título: ESPN users: Can somebody clarify the difference to me in "Free
+  - url: https://www.reddit.com/r/fantasyfootball/comments/4q6vvc/espn_users_can_somebody_clarify_the_difference_to/
+  - trecho: Jun 28, 2016 · On ESPN, I only have the option of Continuous or just FAA. I want to have waivers run everyday but Sunday and …
+- `85f7218585` · nível **C** (0 pts) · rede_social_oficial · — · data 2018 (do trecho)
+  - título: Import pre-draft order into ESPN : r/fantasybball - Reddit
+  - url: https://www.reddit.com/r/fantasybball/comments/9iq5ne/import_predraft_order_into_espn/
+  - trecho: Sep 25, 2018 · Due to ESPN's rankings being so awful this year I'm planning to import rankings from either bbm or hashtagbasketball …
+- `7393882ecc` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Einzelfirma gründen: einfach, schnell und kostenlos - EasyGov
+  - url: https://einzelfirma.easygov.swiss/
+  - trecho: Jetzt mit EasyGov Einzelfirma-Gründung in drei einfachen Schritten Wir begleiten Sie Schritt für Schritt durch den Gründungsprozess.
+- `5ad7bba940` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Registrieren - armee.ch
+  - url: https://www.armee.ch/de/registrieren
+  - trecho: TIPP: Falls Sie bereits ein AGOV-Konto mit höherer Vertrauensstufe besitzen, können Sie sich damit direkt einloggen, ohne sich …
+- `06afbacde3` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Schnell & einfach eine Firma in der Schweiz gründen | Fasoon
+  - url: https://fasoon.ch/
+  - trecho: Gründe online in der Schweiz. Wir unterstützen dich bei der Gründung deiner Firma: GmbH, AG, Einzelfirma, KLG. Kostenlose …
+- `3980b9ea1c` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Abogados destacados de defensa por conducir ebrio en Fort Lauderdale ...
+  - url: https://www.abogado.com/transito-dui/florida/fort-lauderdale/
+  - trecho: 1 Abogado verificado 25 años Promedio de Experiencia 340 Columbia Drive, Suite 111, West Palm Beach, FL 33409 Quienes …
+- `918a592e82` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Abogado de Accidentes por Conducir Ebrio en Fort Lauderdale
+  - url: https://www.floridainjuryadvocate.com/es/fort-lauderdale/abogado-accidente-de-coche/accidente-por-conducir-ebrio/
+  - trecho: Puede confiar en nuestros abogados de accidentes por conducir ebrio en Fort Lauderdale para que tomen en serio sus pérdidas por …
+- `84d2fa29d4` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Abogado de accidentes por conducir ebrio en Fort Lauderdale
+  - url: https://www.bakerdisalvo.com/es/fort-lauderdale-lesion/abogado-accidentes-coche/conduccion-ebria/
+  - trecho: Las víctimas de conductores ebrios en el condado de Broward merecen un abogado de accidentes por conducir ebrio en Ft. …
+- `8be7f0e8a3` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Tag: snuff - E-Hentai Galleries
+  - url: https://e-hentai.org/tag/snuff
+  - trecho: Showing search results for Tag: snuff - just some of the over a million absolutely free hentai galleries available.
+- `3f091182e1` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: female:snuff - E-Hentai Galleries
+  - url: https://e-hentai.org/tag/female%3Asnuff
+  - trecho: Showing search results for female:snuff - just some of the over a million absolutely free hentai galleries available.
+- `e6a3fc2216` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Snuff Hentai | Best Snuff Doujinshi Collection
+  - url: https://www.hentai.name/tag/snuff/?sort=popular
+  - trecho: The Snuff tag encompasses a wide range of adult content centered around this specific theme. From popular series like Fate Grand …
+- `efc89f4f0f` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Arugula, Strawberry and Walnut Salad - California Walnuts
+  - url: https://walnuts.org/recipe/arugula-strawberry-and-walnut-salad/
+  - trecho: To make the salad combine all ingredients, using the vinegar from the shallots and walnut oil from the walnuts as the vinaigrette. …
+- `64d618a051` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Strawberry Arugula Salad - Real and Vibrant
+  - url: https://realandvibrant.com/strawberry-walnut-arugula-salad/
+  - trecho: Apr 2, 2026 · Prepare salad: When everything is ready, combine all of the ingredients in a bowl, including the arugula, strawberries, …
+- `adce8d6598` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Space exploration - Wikipedia
+  - url: https://en.wikipedia.org/wiki/Space_exploration
+  - trecho: While the observation of objects in space, known as astronomy, predates reliable recorded history, it was the development of large …
+- `4d2cda0296` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Space exploration | History, Definition, & Facts | Britannica
+  - url: https://www.britannica.com/science/space-exploration
+  - trecho: Sep 26, 2026 · Space exploration, investigation, by means of crewed and uncrewed spacecraft, of the reaches of the universe …
+- `8ab661a4f4` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: NASA
+  - url: https://www.nasa.gov/
+  - trecho: 5 days ago · NASA.gov brings you the latest news, images and videos from America's space agency, pioneering the future in space …
+- `ab6d246b1e` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Deer - Extreme Porn Video - LuxureTV
+  - url: https://en.luxuretv.com/search/videos/deer/
+  - trecho: Extreme porn videos for Deer. New videos about deer added today! You will find all your kinky fantasies! Even the most perverse.
+- `fe3609419d` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Fucking Deer In All Holes GayBeast.com - Man Fucks Animal
+  - url: https://aporntv.com/video/fucking-deer-in-all-holes-gaybeastcom-man-fucks-animal-27388.html
+  - trecho: Fucking Deer In All Holes GayBeast.com - Man Fucks Animal - Extrem Sex and Taboo Porn.
+- `dddcf98c8c` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Videos Tagged with deer - Rule34video.com
+  - url: https://rule34video.com/tags/deer/
+  - trecho: Watch the best deer videos in the world with the tag deer for free on Rule34video.com
+- `9b31167993` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Troubleshooting Silverdaddies Login Issues - Expert Solutions
+  - url: https://www.justanswer.com/computer/5v1g0-not-click-silverdaddies-will-not-accept-username.html?msockid=1553bf76ea21634b1c5ea89febd2622a
+  - trecho: SilverDaddies Login Issues: Troubleshooting Username and Password Problems Users often face login failures due to incorrect …
+- `a81db1295e` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Scantronic 9427 User Manual, Troubleshooting & Installation Guide ...
+  - url: https://www.justanswer.com/home-security-systems/9a9q5-scantronic-alarm-keypad-white-9427-download.html?msockid=1553bf76ea21634b1c5ea89febd2622a
+  - trecho: I have a Scantronic alarm keypad all white 9427 but the manual only covers the black keypad model. How do I set a longer exit time?
+- `eba14f798f` · nível **C** (0 pts) · rede_social_oficial · — · data 2013 (do trecho)
+  - título: CHESS SET FREDERICK REMINGTON FROM TIME-LIFE 1980s …
+  - url: http://www.jlaforums.com/viewtopic.php?t=220069646
+  - trecho: Aug 16, 2013 · FOR SALE - Los Angeles, CA - FREDERIC REMINGTON CHESS SET FROM TIME-LIFE CLASSICS 1980s. RARE, …
+- `65277ec7c4` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Jumping Jack Flash/Quitter Never Wins (Live) - SoundCloud
+  - url: https://soundcloud.com/guy-dossi/jumping-jack-flashquitter-never-wins-live
+  - trecho: Stream Jumping Jack Flash/Quitter Never Wins (Live) by Guy Dossi on desktop and mobile. Play over 320 million tracks for free on …
+- `55e7371763` · nível **C** (0 pts) · rede_social_oficial · — · data 2014 (do trecho)
+  - título: Grand Canyon Jumper Guy - YouTube
+  - url: https://www.youtube.com/watch?v=TPBEtd52O-Y
+  - trecho: May 26, 2014 · Grand Canyon Jumper Guy Grand Canyon Jumper Guy …...more ...more Show less
+- `4d848cea54` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Quiet Quitter by Average Game Studio - Play Online - Game Jolt
+  - url: https://gamejolt.com/games/quietquitter/858018
+  - trecho: Press space mid-walk or mid-sprint, leap through the air, and stop on a dime (kinda) LEADERBOARDS! You can compete against …
+- `e3110fe68e` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: HumanaCare is now GreenShield | Greenshield
+  - url: https://www.greenshield.ca/en-ca/humanacare
+  - trecho: HumanaCare is now part of GreenShield, Canada's only national non-profit health care and insurance organization. Access your …
+- `b3e0c0ec85` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Humana | Find Medicare Plans and Health Insurance Coverage
+  - url: https://www.humana.com/
+  - trecho: 4 days ago · Explore Medicare plans and health insurance coverage to fit your lifestyle. Turning 65 or recently qualified? Sign up for …
+- `a241a59c38` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Integrated Health Coverage and Care | GreenShield
+  - url: https://www.greenshield.ca/en-ca
+  - trecho: GreenShield offers a new model of care that integrates insurance benefits with health providers, to simplify your health journey and …
+- `2039a8780d` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Gmail - Email from Google
+  - url: https://mail.google.com/maiL
+  - trecho: Gmail is email that's intuitive, efficient, and useful. 15 GB of storage, less spam, and mobile access.
+- `07c440381d` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Outlook
+  - url: https://outlook.office.com/mail/?ui=en-US&rs=US
+  - trecho: Sign in to access your Microsoft account and manage your emails, calendar, and other features in one place.
+- `dae9b900b0` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Your AdSense for YouTube account was deactivated
+  - url: https://support.google.com/youtube/answer/10801543?hl=en
+  - trecho: Your AdSense for YouTube account was deactivated Your AdSense for YouTube account may have been deactivated if you haven't …
+- `ac825dad20` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Bing Images
+  - url: https://www.bing.com/images/
+  - trecho: Bing Image is a powerful tool for searching and exploring high-quality, relevant images tailored to your needs.
+- `03d2d91132` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Search - Bing
+  - url: https://www.bing.com/spotlight/imagepuzzle
+  - trecho: Explore Bing's image puzzle for a fun and engaging way to test your visual skills.
+- `06962df19a` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Bing Images
+  - url: https://www.bing.com/images/feed
+  - trecho: Search and explore high-quality, free photos and wallpapers on Bing Images. Inspire and elevate your visuals!
+- `e69a408713` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: 'hawaii nude beach' Search - XVIDEOS.COM
+  - url: https://www.xvideos.com/?k=hawaii+nude+beach
+  - trecho: Nude beach swingers foursome with wife exchange. Beach date! We like it nude!! 3,536 hawaii nude beach FREE videos found on …
+- `e5cc7fad4c` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: 'hawaii pussy hawaiian teen nude' Search - XVIDEOS.COM
+  - url: https://www.xvideos.com/?k=hawaii+pussy+hawaiian+teen+nude
+  - trecho: 44,481 hawaii pussy hawaiian teen nude FREE videos found on XVIDEOS for this search.
+- `b0645aa12d` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Naked Exhibitionism at Hawaiian Beach - XNXX.COM
+  - url: https://www.xnxx.com/video-10wcb172/naked_exhibitionism_at_hawaiian_beach
+  - trecho: Naked Exhibitionism at Hawaiian Beach...
 
 ## Candeias/MG — 1 pendente(s)
 - `c83ac94522` · nível **C** (7 pts) · busca_web · — · data 2025 (do trecho)
@@ -12281,7 +13742,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ risco_errado_no_titulo
 
 ---
-## Decididas (6001) — registro permanente, nunca apagadas
+## Decididas (6874) — registro permanente, nunca apagadas
 
 - `094c653590` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `5b22b54586` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
@@ -16729,6 +18190,879 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `7f6cc18aa6` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `8e8e26028d` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `468dd54abd` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
+- `206e850f3a` None/None · pendente_confirmacao_documento · 
+- `838f5049b2` None/None · pendente_confirmacao_documento · 
+- `6dbafd8faf` None/None · pendente_confirmacao_documento · 
+- `ed4880ab58` None/None · pendente_confirmacao_documento · 
+- `fb9048507b` None/None · pendente_confirmacao_documento · 
+- `0b7e76f9a7` None/None · pendente_confirmacao_documento · 
+- `6db68b7155` None/None · pendente_confirmacao_documento · 
+- `7a67b2ea2f` None/None · pendente_confirmacao_documento · 
+- `b930762573` None/None · pendente_confirmacao_documento · 
+- `f70fe3b2e3` None/None · pendente_confirmacao_documento · 
+- `806106db0b` None/None · pendente_confirmacao_documento · 
+- `52eea2fbef` None/None · pendente_confirmacao_documento · 
+- `5b4c0347e7` None/None · pendente_confirmacao_documento · 
+- `e4257ff983` None/None · pendente_confirmacao_documento · 
+- `91fba3d4b9` None/None · pendente_confirmacao_documento · 
+- `d42ddd33c3` None/None · pendente_confirmacao_documento · 
+- `168c5e2ec4` None/None · pendente_confirmacao_documento · 
+- `0b37aab335` None/None · pendente_confirmacao_documento · 
+- `8318fc24a9` None/None · pendente_confirmacao_documento · 
+- `f202a4eef9` None/None · pendente_confirmacao_documento · 
+- `1a20e86fef` None/None · pendente_confirmacao_documento · 
+- `57d962934b` None/None · pendente_confirmacao_documento · 
+- `32f0b6d792` None/None · pendente_confirmacao_documento · 
+- `201e5aa5f9` None/None · pendente_confirmacao_documento · 
+- `b8989e1fe1` None/None · pendente_confirmacao_documento · 
+- `9ac23fc73c` None/None · pendente_confirmacao_documento · 
+- `ba4b1bd1f4` None/None · pendente_confirmacao_documento · 
+- `d2d2d0d1c0` None/None · pendente_confirmacao_documento · 
+- `10dd654fc6` None/None · pendente_confirmacao_documento · 
+- `1de0759359` None/None · pendente_confirmacao_documento · 
+- `5f2c8e679c` None/None · pendente_confirmacao_documento · 
+- `490022e2f3` None/None · pendente_confirmacao_documento · 
+- `20bd45fcf2` None/None · pendente_confirmacao_documento · 
+- `d55c4fe9d1` None/None · pendente_confirmacao_documento · 
+- `9e5b33461b` None/None · pendente_confirmacao_documento · 
+- `3f86298233` None/None · pendente_confirmacao_documento · 
+- `2238845903` None/None · pendente_confirmacao_documento · 
+- `e06c27d596` None/None · pendente_confirmacao_documento · 
+- `8e8bb0ff0a` None/None · pendente_confirmacao_documento · 
+- `8dec19305a` None/None · pendente_confirmacao_documento · 
+- `e49bfc2aa6` None/None · pendente_confirmacao_documento · 
+- `d1ab92865d` None/None · pendente_confirmacao_documento · 
+- `0653b5ae24` None/None · pendente_confirmacao_documento · 
+- `9b4a6230ee` None/None · pendente_confirmacao_documento · 
+- `b69ac973a7` None/None · pendente_confirmacao_documento · 
+- `6c46fe6afd` None/None · pendente_confirmacao_documento · 
+- `170291ed19` None/None · pendente_confirmacao_documento · 
+- `f5b1b8d278` None/None · pendente_confirmacao_documento · 
+- `72a2215485` None/None · pendente_confirmacao_documento · 
+- `d606f1da9c` None/None · pendente_confirmacao_documento · 
+- `9537b973ce` None/None · pendente_confirmacao_documento · 
+- `de3bed42f3` None/None · pendente_confirmacao_documento · 
+- `824c68ff89` None/None · pendente_confirmacao_documento · 
+- `eeadcd76f9` None/None · pendente_confirmacao_documento · 
+- `3cbfe03fd7` None/None · pendente_confirmacao_documento · 
+- `8657691592` None/None · pendente_confirmacao_documento · 
+- `0f9e97289f` None/None · pendente_confirmacao_documento · 
+- `79fefdec60` None/None · pendente_confirmacao_documento · 
+- `b16648f233` None/None · pendente_confirmacao_documento · 
+- `0db82cdb7e` None/None · pendente_confirmacao_documento · 
+- `e52cf29a76` None/None · pendente_confirmacao_documento · 
+- `89177bb7ba` None/None · pendente_confirmacao_documento · 
+- `323c2528c4` None/None · pendente_confirmacao_documento · 
+- `35f5447204` None/None · pendente_confirmacao_documento · 
+- `69bf247b93` None/None · pendente_confirmacao_documento · 
+- `8253c10c11` None/None · pendente_confirmacao_documento · 
+- `b6f192ebdf` None/None · pendente_confirmacao_documento · 
+- `919b2342e6` None/None · pendente_confirmacao_documento · 
+- `8c0b346e02` None/None · pendente_confirmacao_documento · 
+- `a2dd83eea3` None/None · pendente_confirmacao_documento · 
+- `46498d0395` None/None · pendente_confirmacao_documento · 
+- `c24893eeb3` None/None · pendente_confirmacao_documento · 
+- `1a465e1ff3` None/None · pendente_confirmacao_documento · 
+- `1f77d89f0b` None/None · pendente_confirmacao_documento · 
+- `df42fffdfc` None/None · pendente_confirmacao_documento · 
+- `60a227c802` None/None · pendente_confirmacao_documento · 
+- `f3012e8290` None/None · pendente_confirmacao_documento · 
+- `a09aff6a4d` None/None · pendente_confirmacao_documento · 
+- `3f53926fd7` None/None · pendente_confirmacao_documento · 
+- `4f1c66e205` None/None · pendente_confirmacao_documento · 
+- `a231f966e9` None/None · pendente_confirmacao_documento · 
+- `ba4b1bd1f4` None/None · pendente_confirmacao_documento · 
+- `980b26d4fb` None/None · pendente_confirmacao_documento · 
+- `54fe2a331f` None/None · pendente_confirmacao_documento · 
+- `36038b90e1` None/None · pendente_confirmacao_documento · 
+- `2378f813ba` None/None · pendente_confirmacao_documento · 
+- `384008d62c` None/None · pendente_confirmacao_documento · 
+- `60c749b4c5` None/None · pendente_confirmacao_documento · 
+- `ff07c7b17a` None/None · pendente_confirmacao_documento · 
+- `84c7db033f` None/None · pendente_confirmacao_documento · 
+- `8ee5be4509` None/None · pendente_confirmacao_documento · 
+- `8ad936b710` None/None · pendente_confirmacao_documento · 
+- `0e41e1cfe7` None/None · pendente_confirmacao_documento · 
+- `d81d3d41b9` None/None · pendente_confirmacao_documento · 
+- `62e0604c2d` None/None · pendente_confirmacao_documento · 
+- `334f31a603` None/None · pendente_confirmacao_documento · 
+- `bc2f75c5d8` None/None · pendente_confirmacao_documento · 
+- `2df8bc7ce8` None/None · pendente_confirmacao_documento · 
+- `3deb2b1534` None/None · pendente_confirmacao_documento · 
+- `1ae13897ef` None/None · pendente_confirmacao_documento · 
+- `6a3ba1b72d` None/None · pendente_confirmacao_documento · 
+- `df44c24ee5` None/None · pendente_confirmacao_documento · 
+- `697fb0f562` None/None · pendente_confirmacao_documento · 
+- `e85dd986b2` None/None · pendente_confirmacao_documento · 
+- `199e14feca` None/None · pendente_confirmacao_documento · 
+- `2b1c72af31` None/None · pendente_confirmacao_documento · 
+- `d661fb56cb` None/None · pendente_confirmacao_documento · 
+- `81ab4a494a` None/None · pendente_confirmacao_documento · 
+- `5151315629` None/None · pendente_confirmacao_documento · 
+- `85d2d507de` None/None · pendente_confirmacao_documento · 
+- `c2abc8c071` None/None · pendente_confirmacao_documento · 
+- `81ab4a494a` None/None · pendente_confirmacao_documento · 
+- `34d065390e` None/None · pendente_confirmacao_documento · 
+- `a65f2fbb7c` None/None · pendente_confirmacao_documento · 
+- `cd00f66bab` None/None · pendente_confirmacao_documento · 
+- `a59dfd6204` None/None · pendente_confirmacao_documento · 
+- `918e5d4fa8` None/None · pendente_confirmacao_documento · 
+- `a549b9c140` None/None · pendente_confirmacao_documento · 
+- `8500d5fc6c` None/None · pendente_confirmacao_documento · 
+- `86de9ab9c5` None/None · pendente_confirmacao_documento · 
+- `7971421b34` None/None · pendente_confirmacao_documento · 
+- `29c64435c6` None/None · pendente_confirmacao_documento · 
+- `085f6fddb8` None/None · pendente_confirmacao_documento · 
+- `89177bb7ba` None/None · pendente_confirmacao_documento · 
+- `f3012e8290` None/None · pendente_confirmacao_documento · 
+- `36a3b9b556` None/None · pendente_confirmacao_documento · 
+- `cd866c998c` None/None · pendente_confirmacao_documento · 
+- `8155d4997b` None/None · pendente_confirmacao_documento · 
+- `d03614d042` None/None · pendente_confirmacao_documento · 
+- `a7a4bfd8af` None/None · pendente_confirmacao_documento · 
+- `7e32ecc35f` None/None · pendente_confirmacao_documento · 
+- `d55c4fe9d1` None/None · pendente_confirmacao_documento · 
+- `cf8321fa3f` None/None · pendente_confirmacao_documento · 
+- `464570da29` None/None · pendente_confirmacao_documento · 
+- `8d62371930` None/None · pendente_confirmacao_documento · 
+- `e37e2cff86` None/None · pendente_confirmacao_documento · 
+- `82d893fbe9` None/None · pendente_confirmacao_documento · 
+- `3f86298233` None/None · pendente_confirmacao_documento · 
+- `608397d309` None/None · pendente_confirmacao_documento · 
+- `5a58ae667c` None/None · pendente_confirmacao_documento · 
+- `89177bb7ba` None/None · pendente_confirmacao_documento · 
+- `8c0b346e02` None/None · pendente_confirmacao_documento · 
+- `bc0896bf5f` None/None · pendente_confirmacao_documento · 
+- `abc1f0e18a` None/None · pendente_confirmacao_documento · 
+- `cf87ee2315` None/None · pendente_confirmacao_documento · 
+- `c4db65996c` None/None · pendente_confirmacao_documento · 
+- `5a3753f83d` None/None · pendente_confirmacao_documento · 
+- `8bcfd98eda` None/None · pendente_confirmacao_documento · 
+- `1a923de84f` None/None · pendente_confirmacao_documento · 
+- `ac1b760aef` None/None · pendente_confirmacao_documento · 
+- `8b55545c4b` None/None · pendente_confirmacao_documento · 
+- `1366bc2909` None/None · pendente_confirmacao_documento · 
+- `2b0367b82f` None/None · pendente_confirmacao_documento · 
+- `69bd0b6f5c` None/None · pendente_confirmacao_documento · 
+- `e48cc6d8ea` None/None · pendente_confirmacao_documento · 
+- `a78410bd1d` None/None · pendente_confirmacao_documento · 
+- `d20b866fab` None/None · pendente_confirmacao_documento · 
+- `476ca8f6cf` None/None · pendente_confirmacao_documento · 
+- `d3e6c88a87` None/None · pendente_confirmacao_documento · 
+- `1168bb48c9` None/None · pendente_confirmacao_documento · 
+- `de351a9160` None/None · pendente_confirmacao_documento · 
+- `26fbd62bcf` None/None · pendente_confirmacao_documento · 
+- `3b8f43b452` None/None · pendente_confirmacao_documento · 
+- `65037a582a` None/None · pendente_confirmacao_documento · 
+- `811eddf850` None/None · pendente_confirmacao_documento · 
+- `a2ed3e78e4` None/None · pendente_confirmacao_documento · 
+- `1b7b670508` None/None · pendente_confirmacao_documento · 
+- `134353b4fe` None/None · pendente_confirmacao_documento · 
+- `91d54ab92d` None/None · pendente_confirmacao_documento · 
+- `42bb94e609` None/None · pendente_confirmacao_documento · 
+- `7a74e71b53` None/None · pendente_confirmacao_documento · 
+- `c980b1139b` None/None · pendente_confirmacao_documento · 
+- `34db93f944` None/None · pendente_confirmacao_documento · 
+- `796240bad5` None/None · pendente_confirmacao_documento · 
+- `accd174258` None/None · pendente_confirmacao_documento · 
+- `5f33b820dd` None/None · pendente_confirmacao_documento · 
+- `d3db47e8e5` None/None · pendente_confirmacao_documento · 
+- `ce55918465` None/None · pendente_confirmacao_documento · 
+- `36f68acee4` None/None · pendente_confirmacao_documento · 
+- `642224b5e4` None/None · pendente_confirmacao_documento · 
+- `17bd399483` None/None · pendente_confirmacao_documento · 
+- `8d93c10d49` None/None · pendente_confirmacao_documento · 
+- `0b7e76f9a7` None/None · pendente_confirmacao_documento · 
+- `ae7947f59e` None/None · pendente_confirmacao_documento · 
+- `a7a5481a6f` None/None · pendente_confirmacao_documento · 
+- `7f84671240` None/None · pendente_confirmacao_documento · 
+- `3f14f17aae` None/None · pendente_confirmacao_documento · 
+- `42bb94e609` None/None · pendente_confirmacao_documento · 
+- `7f95123a59` None/None · pendente_confirmacao_documento · 
+- `d54c60be14` None/None · pendente_confirmacao_documento · 
+- `4e4434f85e` None/None · pendente_confirmacao_documento · 
+- `a30a6bf4d3` None/None · pendente_confirmacao_documento · 
+- `937708bf91` None/None · pendente_confirmacao_documento · 
+- `384008d62c` None/None · pendente_confirmacao_documento · 
+- `ddf4ffd5cf` None/None · pendente_confirmacao_documento · 
+- `c534add38d` None/None · pendente_confirmacao_documento · 
+- `67181f72fb` None/None · pendente_confirmacao_documento · 
+- `cfe4d45d79` None/None · pendente_confirmacao_documento · 
+- `850b8a69f5` None/None · pendente_confirmacao_documento · 
+- `ac87166933` None/None · pendente_confirmacao_documento · 
+- `61e44a12c5` None/None · pendente_confirmacao_documento · 
+- `1086fd2ad4` None/None · pendente_confirmacao_documento · 
+- `a67c42aa6d` None/None · pendente_confirmacao_documento · 
+- `548681175e` None/None · pendente_confirmacao_documento · 
+- `8b55545c4b` None/None · pendente_confirmacao_documento · 
+- `89177bb7ba` None/None · pendente_confirmacao_documento · 
+- `27c5c66222` None/None · pendente_confirmacao_documento · 
+- `9bf7c48689` None/None · pendente_confirmacao_documento · 
+- `f3ddd55412` None/None · pendente_confirmacao_documento · 
+- `47d32295a7` None/None · pendente_confirmacao_documento · 
+- `1366bc2909` None/None · pendente_confirmacao_documento · 
+- `2d0814d164` None/None · pendente_confirmacao_documento · 
+- `5563fc2fbe` None/None · pendente_confirmacao_documento · 
+- `b1e8663d9d` None/None · pendente_confirmacao_documento · 
+- `0488b1f2e0` None/None · pendente_confirmacao_documento · 
+- `dd8c3d2e5e` None/None · pendente_confirmacao_documento · 
+- `b0319e45c1` None/None · pendente_confirmacao_documento · 
+- `345fffac02` None/None · pendente_confirmacao_documento · 
+- `0b7e76f9a7` None/None · pendente_confirmacao_documento · 
+- `2121f8b8bd` None/None · pendente_confirmacao_documento · 
+- `37a19fd5db` None/None · pendente_confirmacao_documento · 
+- `ee7c617741` None/None · pendente_confirmacao_documento · 
+- `cf34258c4d` None/None · pendente_confirmacao_documento · 
+- `4adbea5380` None/None · pendente_confirmacao_documento · 
+- `96f36e4d7a` None/None · pendente_confirmacao_documento · 
+- `65f1d38c6d` None/None · pendente_confirmacao_documento · 
+- `00bf0779f9` None/None · pendente_confirmacao_documento · 
+- `249dd86ee7` None/None · pendente_confirmacao_documento · 
+- `f2f6f277e8` None/None · pendente_confirmacao_documento · 
+- `6b203e15d1` None/None · pendente_confirmacao_documento · 
+- `c8cc7897b2` None/None · pendente_confirmacao_documento · 
+- `0fa11a156e` None/None · pendente_confirmacao_documento · 
+- `fb9048507b` None/None · pendente_confirmacao_documento · 
+- `6db68b7155` None/None · pendente_confirmacao_documento · 
+- `03c7ef7827` None/None · pendente_confirmacao_documento · 
+- `30bcfab46e` None/None · pendente_confirmacao_documento · 
+- `e69639a99b` None/None · pendente_confirmacao_documento · 
+- `678246b845` None/None · pendente_confirmacao_documento · 
+- `459bd61ff8` None/None · pendente_confirmacao_documento · 
+- `ae4d0ca268` None/None · pendente_confirmacao_documento · 
+- `47d32295a7` None/None · pendente_confirmacao_documento · 
+- `a549b9c140` None/None · pendente_confirmacao_documento · 
+- `646ec98576` None/None · pendente_confirmacao_documento · 
+- `baa28ee51a` None/None · pendente_confirmacao_documento · 
+- `918e5d4fa8` None/None · pendente_confirmacao_documento · 
+- `ad06e5a78f` None/None · pendente_confirmacao_documento · 
+- `a59dfd6204` None/None · pendente_confirmacao_documento · 
+- `be67f0452a` None/None · pendente_confirmacao_documento · 
+- `8500d5fc6c` None/None · pendente_confirmacao_documento · 
+- `00238582a7` None/None · pendente_confirmacao_documento · 
+- `31bb1176af` None/None · pendente_confirmacao_documento · 
+- `cfdb1c4868` None/None · pendente_confirmacao_documento · 
+- `12d99401f8` None/None · pendente_confirmacao_documento · 
+- `287e69ccd6` None/None · pendente_confirmacao_documento · 
+- `323c2528c4` None/None · pendente_confirmacao_documento · 
+- `89177bb7ba` None/None · pendente_confirmacao_documento · 
+- `2d0814d164` None/None · pendente_confirmacao_documento · 
+- `9d456b0d0c` None/None · pendente_confirmacao_documento · 
+- `e63eb2b53f` None/None · pendente_confirmacao_documento · 
+- `b143f80bbc` None/None · pendente_confirmacao_documento · 
+- `24134035dc` None/None · pendente_confirmacao_documento · 
+- `12fc229bf1` None/None · pendente_confirmacao_documento · 
+- `76efa25cc4` None/None · pendente_confirmacao_documento · 
+- `7770419ae6` None/None · pendente_confirmacao_documento · 
+- `4a325b57b0` None/None · pendente_confirmacao_documento · 
+- `2812243a29` None/None · pendente_confirmacao_documento · 
+- `ab108bd61b` None/None · pendente_confirmacao_documento · 
+- `e4b7229ed4` None/None · pendente_confirmacao_documento · 
+- `dd8c3d2e5e` None/None · pendente_confirmacao_documento · 
+- `cec89fcf80` None/None · pendente_confirmacao_documento · 
+- `c846c2661c` None/None · pendente_confirmacao_documento · 
+- `9ac23fc73c` None/None · pendente_confirmacao_documento · 
+- `b4c8c8209e` None/None · pendente_confirmacao_documento · 
+- `6855e3304a` None/None · pendente_confirmacao_documento · 
+- `9420ad6bed` None/None · pendente_confirmacao_documento · 
+- `b650e730be` None/None · pendente_confirmacao_documento · 
+- `e778f65e81` None/None · pendente_confirmacao_documento · 
+- `654915e31e` None/None · pendente_confirmacao_documento · 
+- `f4f28d56f2` None/None · pendente_confirmacao_documento · 
+- `8dfb4d0c4f` None/None · pendente_confirmacao_documento · 
+- `879954f2cc` None/None · pendente_confirmacao_documento · 
+- `55d6078cea` None/None · pendente_confirmacao_documento · 
+- `0546d7b173` None/None · pendente_confirmacao_documento · 
+- `7ac9031e3c` None/None · pendente_confirmacao_documento · 
+- `1ee9c286de` None/None · pendente_confirmacao_documento · 
+- `227e93b58f` None/None · pendente_confirmacao_documento · 
+- `930fb2a9d2` None/None · pendente_confirmacao_documento · 
+- `accd174258` None/None · pendente_confirmacao_documento · 
+- `4146fee0a4` None/None · pendente_confirmacao_documento · 
+- `8a5d66920d` None/None · pendente_confirmacao_documento · 
+- `b6e8cfafc5` None/None · pendente_confirmacao_documento · 
+- `0653b5ae24` None/None · pendente_confirmacao_documento · 
+- `55fc29363d` None/None · pendente_confirmacao_documento · 
+- `abc6d9187f` None/None · pendente_confirmacao_documento · 
+- `6c46fe6afd` None/None · pendente_confirmacao_documento · 
+- `e91c832792` None/None · pendente_confirmacao_documento · 
+- `27c5c66222` None/None · pendente_confirmacao_documento · 
+- `5de2e5d667` None/None · pendente_confirmacao_documento · 
+- `f3ddd55412` None/None · pendente_confirmacao_documento · 
+- `3a4061db44` None/None · pendente_confirmacao_documento · 
+- `dd90f2b4e2` None/None · pendente_confirmacao_documento · 
+- `5b6802920c` None/None · pendente_confirmacao_documento · 
+- `1edcd36e0e` None/None · pendente_confirmacao_documento · 
+- `8cc8f46fad` None/None · pendente_confirmacao_documento · 
+- `9deb13cc80` None/None · pendente_confirmacao_documento · 
+- `cb7342e4e1` None/None · pendente_confirmacao_documento · 
+- `4dddaf20de` None/None · pendente_confirmacao_documento · 
+- `fa09fa1bf8` None/None · pendente_confirmacao_documento · 
+- `5f2905bb70` None/None · pendente_confirmacao_documento · 
+- `f7692e1983` None/None · pendente_confirmacao_documento · 
+- `d671eeebdf` None/None · pendente_confirmacao_documento · 
+- `45bc6a90d7` None/None · pendente_confirmacao_documento · 
+- `309ccd73a0` None/None · pendente_confirmacao_documento · 
+- `8058e58f3c` None/None · pendente_confirmacao_documento · 
+- `9a7b63daa3` None/None · pendente_confirmacao_documento · 
+- `8aa160c3d8` None/None · pendente_confirmacao_documento · 
+- `813e4b157e` None/None · pendente_confirmacao_documento · 
+- `ea6cce37af` None/None · pendente_confirmacao_documento · 
+- `1ee9c286de` None/None · pendente_confirmacao_documento · 
+- `d335537449` None/None · pendente_confirmacao_documento · 
+- `87c2fec736` None/None · pendente_confirmacao_documento · 
+- `cfe4d45d79` None/None · pendente_confirmacao_documento · 
+- `f800618714` None/None · pendente_confirmacao_documento · 
+- `822e6021c7` None/None · pendente_confirmacao_documento · 
+- `384008d62c` None/None · pendente_confirmacao_documento · 
+- `60c749b4c5` None/None · pendente_confirmacao_documento · 
+- `41745b6d0a` None/None · pendente_confirmacao_documento · 
+- `0b7e76f9a7` None/None · pendente_confirmacao_documento · 
+- `4f9c97b0b4` None/None · pendente_confirmacao_documento · 
+- `2d0814d164` None/None · pendente_confirmacao_documento · 
+- `60dc4549f6` None/None · pendente_confirmacao_documento · 
+- `4eaded3c3b` None/None · pendente_confirmacao_documento · 
+- `7ad50914f4` None/None · pendente_confirmacao_documento · 
+- `8c0b346e02` None/None · pendente_confirmacao_documento · 
+- `46498d0395` None/None · pendente_confirmacao_documento · 
+- `e95a1bebdf` None/None · pendente_confirmacao_documento · 
+- `da5e592b0b` None/None · pendente_confirmacao_documento · 
+- `e2c7903174` None/None · pendente_confirmacao_documento · 
+- `083b42955d` None/None · pendente_confirmacao_documento · 
+- `11bc24d012` None/None · pendente_confirmacao_documento · 
+- `14aff78254` None/None · pendente_confirmacao_documento · 
+- `ddf4ffd5cf` None/None · pendente_confirmacao_documento · 
+- `4db625b7e2` None/None · pendente_confirmacao_documento · 
+- `81226dcb6e` None/None · pendente_confirmacao_documento · 
+- `323c2528c4` None/None · pendente_confirmacao_documento · 
+- `a67c42aa6d` None/None · pendente_confirmacao_documento · 
+- `ec6ef8ef1e` None/None · pendente_confirmacao_documento · 
+- `c2a91c4c94` None/None · pendente_confirmacao_documento · 
+- `bdda912e55` None/None · pendente_confirmacao_documento · 
+- `0b7e76f9a7` None/None · pendente_confirmacao_documento · 
+- `da91e2326c` None/None · pendente_confirmacao_documento · 
+- `4d0b993726` None/None · pendente_confirmacao_documento · 
+- `12224c6acb` None/None · pendente_confirmacao_documento · 
+- `452158efcd` None/None · pendente_confirmacao_documento · 
+- `1da2b592f6` None/None · pendente_confirmacao_documento · 
+- `a49597fc91` None/None · pendente_confirmacao_documento · 
+- `46498d0395` None/None · pendente_confirmacao_documento · 
+- `c7e3a09e91` None/None · pendente_confirmacao_documento · 
+- `f8008da99b` None/None · pendente_confirmacao_documento · 
+- `81ab4a494a` None/None · pendente_confirmacao_documento · 
+- `00bbde8493` None/None · pendente_confirmacao_documento · 
+- `30798daa6d` None/None · pendente_confirmacao_documento · 
+- `30f9603272` None/None · pendente_confirmacao_documento · 
+- `571b92ada8` None/None · pendente_confirmacao_documento · 
+- `a820d48fea` None/None · pendente_confirmacao_documento · 
+- `fc5bb394d2` None/None · pendente_confirmacao_documento · 
+- `3b5a65daf0` None/None · pendente_confirmacao_documento · 
+- `d0beb76b67` None/None · pendente_confirmacao_documento · 
+- `07b0df1eff` None/None · pendente_confirmacao_documento · 
+- `8436edf9b7` None/None · pendente_confirmacao_documento · 
+- `48407527ea` None/None · pendente_confirmacao_documento · 
+- `3a40e137a7` None/None · pendente_confirmacao_documento · 
+- `6617ba8317` None/None · pendente_confirmacao_documento · 
+- `aff0464eb7` None/None · pendente_confirmacao_documento · 
+- `25e14bd65e` None/None · pendente_confirmacao_documento · 
+- `497541309f` None/None · pendente_confirmacao_documento · 
+- `da47dc2ea9` None/None · pendente_confirmacao_documento · 
+- `b5b7c6708b` None/None · pendente_confirmacao_documento · 
+- `7431f9636a` None/None · pendente_confirmacao_documento · 
+- `ed0331ee12` None/None · pendente_confirmacao_documento · 
+- `5142125c12` None/None · pendente_confirmacao_documento · 
+- `ce2a734327` None/None · pendente_confirmacao_documento · 
+- `ba9cc599b1` None/None · pendente_confirmacao_documento · 
+- `d10844fbdd` None/None · pendente_confirmacao_documento · 
+- `13f676f447` None/None · pendente_confirmacao_documento · 
+- `554dda63e9` None/None · pendente_confirmacao_documento · 
+- `e9ac26dfbc` None/None · pendente_confirmacao_documento · 
+- `f6c3502528` None/None · pendente_confirmacao_documento · 
+- `05855facfe` None/None · pendente_confirmacao_documento · 
+- `faee30f99a` None/None · pendente_confirmacao_documento · 
+- `850b8a69f5` None/None · pendente_confirmacao_documento · 
+- `bc0e4bd6bf` None/None · pendente_confirmacao_documento · 
+- `bc44ee8ef6` None/None · pendente_confirmacao_documento · 
+- `1a03be4faa` None/None · pendente_confirmacao_documento · 
+- `41ab1a7fd9` None/None · pendente_confirmacao_documento · 
+- `0fe8b45370` None/None · pendente_confirmacao_documento · 
+- `fbaa14e34f` None/None · pendente_confirmacao_documento · 
+- `62c86ab9ff` None/None · pendente_confirmacao_documento · 
+- `2d41292e2f` None/None · pendente_confirmacao_documento · 
+- `11283458d0` None/None · pendente_confirmacao_documento · 
+- `e7ace6d175` None/None · pendente_confirmacao_documento · 
+- `6b62448db8` None/None · pendente_confirmacao_documento · 
+- `4bd9098e82` None/None · pendente_confirmacao_documento · 
+- `8420621e89` None/None · pendente_confirmacao_documento · 
+- `5aadd85370` None/None · pendente_confirmacao_documento · 
+- `1f44cd451c` None/None · pendente_confirmacao_documento · 
+- `cf6dc71486` None/None · pendente_confirmacao_documento · 
+- `c647773fc1` None/None · pendente_confirmacao_documento · 
+- `774e984330` None/None · pendente_confirmacao_documento · 
+- `2dd542651a` None/None · pendente_confirmacao_documento · 
+- `d967e61be2` None/None · pendente_confirmacao_documento · 
+- `3150aac79c` None/None · pendente_confirmacao_documento · 
+- `d4048b31c7` None/None · pendente_confirmacao_documento · 
+- `079efbdb6a` None/None · pendente_confirmacao_documento · 
+- `d63c10b055` None/None · pendente_confirmacao_documento · 
+- `6f640d7638` None/None · pendente_confirmacao_documento · 
+- `f721d0bf18` None/None · pendente_confirmacao_documento · 
+- `d4b5cd9189` None/None · pendente_confirmacao_documento · 
+- `51d20a6fc9` None/None · pendente_confirmacao_documento · 
+- `c53337e2f5` None/None · pendente_confirmacao_documento · 
+- `95874260c5` None/None · pendente_confirmacao_documento · 
+- `28f0dc60da` None/None · pendente_confirmacao_documento · 
+- `15439069ab` None/None · pendente_confirmacao_documento · 
+- `8cf347d064` None/None · pendente_confirmacao_documento · 
+- `493003799f` None/None · pendente_confirmacao_documento · 
+- `8a4b4fbde4` None/None · pendente_confirmacao_documento · 
+- `859bb57c63` None/None · pendente_confirmacao_documento · 
+- `845b2d4c90` None/None · pendente_confirmacao_documento · 
+- `d748bb9da9` None/None · pendente_confirmacao_documento · 
+- `6c3005fd09` None/None · pendente_confirmacao_documento · 
+- `0aec1e8635` None/None · pendente_confirmacao_documento · 
+- `446b2b67aa` None/None · pendente_confirmacao_documento · 
+- `0aec1e8635` None/None · pendente_confirmacao_documento · 
+- `8cf347d064` None/None · pendente_confirmacao_documento · 
+- `8a4b4fbde4` None/None · pendente_confirmacao_documento · 
+- `8cf347d064` None/None · pendente_confirmacao_documento · 
+- `859bb57c63` None/None · pendente_confirmacao_documento · 
+- `493003799f` None/None · pendente_confirmacao_documento · 
+- `71dacf5045` None/None · pendente_confirmacao_documento · 
+- `8cf347d064` None/None · pendente_confirmacao_documento · 
+- `8cf347d064` None/None · pendente_confirmacao_documento · 
+- `8cf347d064` None/None · pendente_confirmacao_documento · 
+- `8a4b4fbde4` None/None · pendente_confirmacao_documento · 
+- `c97f200517` None/None · pendente_confirmacao_documento · 
+- `8cf347d064` None/None · pendente_confirmacao_documento · 
+- `8cf347d064` None/None · pendente_confirmacao_documento · 
+- `011419ba3d` None/None · pendente_confirmacao_documento · 
+- `8a4b4fbde4` None/None · pendente_confirmacao_documento · 
+- `13104afa38` None/None · pendente_confirmacao_documento · 
+- `1bbdecc041` None/None · pendente_confirmacao_documento · 
+- `94f0b40042` None/None · pendente_confirmacao_documento · 
+- `8da85c2dc0` None/None · pendente_confirmacao_documento · 
+- `011419ba3d` None/None · pendente_confirmacao_documento · 
+- `8a4b4fbde4` None/None · pendente_confirmacao_documento · 
+- `94f0b40042` None/None · pendente_confirmacao_documento · 
+- `8da85c2dc0` None/None · pendente_confirmacao_documento · 
+- `13104afa38` None/None · pendente_confirmacao_documento · 
+- `c139723c54` None/None · pendente_confirmacao_documento · 
+- `bfa1544a25` None/None · pendente_confirmacao_documento · 
+- `8a4b4fbde4` None/None · pendente_confirmacao_documento · 
+- `5515491eb3` None/None · pendente_confirmacao_documento · 
+- `dd5125546b` None/None · pendente_confirmacao_documento · 
+- `68590f6802` None/None · pendente_confirmacao_documento · 
+- `6f886023f5` None/None · pendente_confirmacao_documento · 
+- `f74b61bffd` None/None · pendente_confirmacao_documento · 
+- `10feb1f35e` None/None · pendente_confirmacao_documento · 
+- `dc91dac34a` None/None · pendente_confirmacao_documento · 
+- `e5644800e1` None/None · pendente_confirmacao_documento · 
+- `5364d27a67` None/None · pendente_confirmacao_documento · 
+- `73db0e2bf3` None/None · pendente_confirmacao_documento · 
+- `649437d78a` None/None · pendente_confirmacao_documento · 
+- `7e3e0fea16` None/None · pendente_confirmacao_documento · 
+- `0ed4fac98f` None/None · pendente_confirmacao_documento · 
+- `9b97e9623a` None/None · pendente_confirmacao_documento · 
+- `a481a55cf8` None/None · pendente_confirmacao_documento · 
+- `62077deca2` None/None · pendente_confirmacao_documento · 
+- `3d4735ab40` None/None · pendente_confirmacao_documento · 
+- `c0898b9d9c` None/None · pendente_confirmacao_documento · 
+- `82bd06bd44` None/None · pendente_confirmacao_documento · 
+- `5b0074757c` None/None · pendente_confirmacao_documento · 
+- `bf7c77116b` None/None · pendente_confirmacao_documento · 
+- `3988c744a8` None/None · pendente_confirmacao_documento · 
+- `eeed6ad6f5` None/None · pendente_confirmacao_documento · 
+- `be0913f792` None/None · pendente_confirmacao_documento · 
+- `8eafe893ef` None/None · pendente_confirmacao_documento · 
+- `a8410d6b24` None/None · pendente_confirmacao_documento · 
+- `5194a69236` None/None · pendente_confirmacao_documento · 
+- `78b3cdb56b` None/None · pendente_confirmacao_documento · 
+- `c25a061528` None/None · pendente_confirmacao_documento · 
+- `9e2d7fd7ad` None/None · pendente_confirmacao_documento · 
+- `ce41299d5f` None/None · pendente_confirmacao_documento · 
+- `1aa18054e7` None/None · pendente_confirmacao_documento · 
+- `ad8e1fad25` None/None · pendente_confirmacao_documento · 
+- `1837dc16cc` None/None · pendente_confirmacao_documento · 
+- `0ff1041760` None/None · pendente_confirmacao_documento · 
+- `8d5dfe541b` None/None · pendente_confirmacao_documento · 
+- `07a5bf6f51` None/None · pendente_confirmacao_documento · 
+- `27668e8cd4` None/None · pendente_confirmacao_documento · 
+- `f9a3850865` None/None · pendente_confirmacao_documento · 
+- `874b8c2c96` None/None · pendente_confirmacao_documento · 
+- `1c3144dd15` None/None · pendente_confirmacao_documento · 
+- `cfc76630e9` None/None · pendente_confirmacao_documento · 
+- `adbfec10e5` None/None · pendente_confirmacao_documento · 
+- `d16ea29e9d` None/None · pendente_confirmacao_documento · 
+- `02f28025d1` None/None · pendente_confirmacao_documento · 
+- `46076f5421` None/None · pendente_confirmacao_documento · 
+- `04b2e90f33` None/None · pendente_confirmacao_documento · 
+- `a86f8b5d33` None/None · pendente_confirmacao_documento · 
+- `03534c6c94` None/None · pendente_confirmacao_documento · 
+- `4814e8fd67` None/None · pendente_confirmacao_documento · 
+- `49ea6072bb` None/None · pendente_confirmacao_documento · 
+- `63fd46f6b6` None/None · pendente_confirmacao_documento · 
+- `d96ff2cae0` None/None · pendente_confirmacao_documento · 
+- `fede57c7b1` None/None · pendente_confirmacao_documento · 
+- `8256273730` None/None · pendente_confirmacao_documento · 
+- `3c7ee786eb` None/None · pendente_confirmacao_documento · 
+- `c4c2d68902` None/None · pendente_confirmacao_documento · 
+- `64e1b0eba0` None/None · pendente_confirmacao_documento · 
+- `64eae22f4b` None/None · pendente_confirmacao_documento · 
+- `2193c27758` None/None · pendente_confirmacao_documento · 
+- `3d375575b1` None/None · pendente_confirmacao_documento · 
+- `3a71184d48` None/None · pendente_confirmacao_documento · 
+- `023e80a77f` None/None · pendente_confirmacao_documento · 
+- `cf751b4431` None/None · pendente_confirmacao_documento · 
+- `5b19aecaac` None/None · pendente_confirmacao_documento · 
+- `80dfede0e9` None/None · pendente_confirmacao_documento · 
+- `cad4b1dff8` None/None · pendente_confirmacao_documento · 
+- `cb9a85b72b` None/None · pendente_confirmacao_documento · 
+- `2f253f6670` None/None · pendente_confirmacao_documento · 
+- `08fcd0efbf` None/None · pendente_confirmacao_documento · 
+- `c9ad0186a4` None/None · pendente_confirmacao_documento · 
+- `99e8016843` None/None · pendente_confirmacao_documento · 
+- `34d43551ef` None/None · pendente_confirmacao_documento · 
+- `f86e3a0709` None/None · pendente_confirmacao_documento · 
+- `77845caa03` None/None · pendente_confirmacao_documento · 
+- `07bbfe180a` None/None · pendente_confirmacao_documento · 
+- `cb49165677` None/None · pendente_confirmacao_documento · 
+- `a2848c3fb2` None/None · pendente_confirmacao_documento · 
+- `29d2f833a1` None/None · pendente_confirmacao_documento · 
+- `3bf90c4845` None/None · pendente_confirmacao_documento · 
+- `c82d3b8237` None/None · pendente_confirmacao_documento · 
+- `03ebb6e175` None/None · pendente_confirmacao_documento · 
+- `c2a0136ab9` None/None · pendente_confirmacao_documento · 
+- `802e74e208` None/None · pendente_confirmacao_documento · 
+- `7f4b023673` None/None · pendente_confirmacao_documento · 
+- `f396b3846d` None/None · pendente_confirmacao_documento · 
+- `4b33bd37ff` None/None · pendente_confirmacao_documento · 
+- `5c8a728961` None/None · pendente_confirmacao_documento · 
+- `c82ae98b52` None/None · pendente_confirmacao_documento · 
+- `a3d5e79275` None/None · pendente_confirmacao_documento · 
+- `f52c02dd23` None/None · pendente_confirmacao_documento · 
+- `678bd71f01` None/None · pendente_confirmacao_documento · 
+- `6d94e108a6` None/None · pendente_confirmacao_documento · 
+- `fbb65a466f` None/None · pendente_confirmacao_documento · 
+- `85936e2235` None/None · pendente_confirmacao_documento · 
+- `86365698e2` None/None · pendente_confirmacao_documento · 
+- `34e1876593` None/None · pendente_confirmacao_documento · 
+- `ea5ea873cf` None/None · pendente_confirmacao_documento · 
+- `bafa2dfe31` None/None · pendente_confirmacao_documento · 
+- `c637c9d235` None/None · pendente_confirmacao_documento · 
+- `7baee1e13e` None/None · pendente_confirmacao_documento · 
+- `9e0a241b0b` None/None · pendente_confirmacao_documento · 
+- `7c7e300492` None/None · pendente_confirmacao_documento · 
+- `8ba7ffa634` None/None · pendente_confirmacao_documento · 
+- `22c5afa304` None/None · pendente_confirmacao_documento · 
+- `e01ed47370` None/None · pendente_confirmacao_documento · 
+- `cf490ef717` None/None · pendente_confirmacao_documento · 
+- `91954d245c` None/None · pendente_confirmacao_documento · 
+- `d01876f5dd` None/None · pendente_confirmacao_documento · 
+- `58918337cb` None/None · pendente_confirmacao_documento · 
+- `55f2175e09` None/None · pendente_confirmacao_documento · 
+- `cd24ccdf6b` None/None · pendente_confirmacao_documento · 
+- `d7559234b7` None/None · pendente_confirmacao_documento · 
+- `44faf5a984` None/None · pendente_confirmacao_documento · 
+- `17b6978e19` None/None · pendente_confirmacao_documento · 
+- `79035f5958` None/None · pendente_confirmacao_documento · 
+- `319c44d431` None/None · pendente_confirmacao_documento · 
+- `0589ef2fe9` None/None · pendente_confirmacao_documento · 
+- `86691472e9` None/None · pendente_confirmacao_documento · 
+- `7d0df76db6` None/None · pendente_confirmacao_documento · 
+- `f1cda02e61` None/None · pendente_confirmacao_documento · 
+- `b8dce31e4e` None/None · pendente_confirmacao_documento · 
+- `0165e626e2` None/None · pendente_confirmacao_documento · 
+- `df548726e7` None/None · pendente_confirmacao_documento · 
+- `e371e5fe2f` None/None · pendente_confirmacao_documento · 
+- `c1a3c9d005` None/None · pendente_confirmacao_documento · 
+- `670e082b3f` None/None · pendente_confirmacao_documento · 
+- `b061e7cc87` None/None · pendente_confirmacao_documento · 
+- `8fad13ebda` None/None · pendente_confirmacao_documento · 
+- `98357f346b` None/None · pendente_confirmacao_documento · 
+- `1b45876645` None/None · pendente_confirmacao_documento · 
+- `bb71cba6ea` None/None · pendente_confirmacao_documento · 
+- `0db562de90` None/None · pendente_confirmacao_documento · 
+- `f4258dedcb` None/None · pendente_confirmacao_documento · 
+- `c9a5094a52` None/None · pendente_confirmacao_documento · 
+- `1dd17c74c4` None/None · pendente_confirmacao_documento · 
+- `7dca06b916` None/None · pendente_confirmacao_documento · 
+- `8a0b5fb3e8` None/None · pendente_confirmacao_documento · 
+- `97aa1b4d59` None/None · pendente_confirmacao_documento · 
+- `30e3223c64` None/None · pendente_confirmacao_documento · 
+- `aa4b99e8b4` None/None · pendente_confirmacao_documento · 
+- `6057207785` None/None · pendente_confirmacao_documento · 
+- `2d6ec2a316` None/None · pendente_confirmacao_documento · 
+- `3a4b5c4007` None/None · pendente_confirmacao_documento · 
+- `1dd17c74c4` None/None · pendente_confirmacao_documento · 
+- `10feb1f35e` None/None · pendente_confirmacao_documento · 
+- `dc91dac34a` None/None · pendente_confirmacao_documento · 
+- `fdffa9b5f5` None/None · pendente_confirmacao_documento · 
+- `e06eda3fa8` None/None · pendente_confirmacao_documento · 
+- `c8c71bb384` None/None · pendente_confirmacao_documento · 
+- `5c83f95d6f` None/None · pendente_confirmacao_documento · 
+- `d92b54d5b7` None/None · pendente_confirmacao_documento · 
+- `14c536bb90` None/None · pendente_confirmacao_documento · 
+- `43155acb19` None/None · pendente_confirmacao_documento · 
+- `0a89f69604` None/None · pendente_confirmacao_documento · 
+- `fc91b428fd` None/None · pendente_confirmacao_documento · 
+- `0e53e1800a` None/None · pendente_confirmacao_documento · 
+- `62077deca2` None/None · pendente_confirmacao_documento · 
+- `281b458275` None/None · pendente_confirmacao_documento · 
+- `efd5045b0e` None/None · pendente_confirmacao_documento · 
+- `935faa2fd2` None/None · pendente_confirmacao_documento · 
+- `acd86cba8c` None/None · pendente_confirmacao_documento · 
+- `1364830494` None/None · pendente_confirmacao_documento · 
+- `14bc929866` None/None · pendente_confirmacao_documento · 
+- `68fefd6c5a` None/None · pendente_confirmacao_documento · 
+- `0fc5380fd1` None/None · pendente_confirmacao_documento · 
+- `265abce811` None/None · pendente_confirmacao_documento · 
+- `6d3b129fe8` None/None · pendente_confirmacao_documento · 
+- `802e74e208` None/None · pendente_confirmacao_documento · 
+- `dc597dd32a` None/None · pendente_confirmacao_documento · 
+- `f396b3846d` None/None · pendente_confirmacao_documento · 
+- `a6d57286b7` None/None · pendente_confirmacao_documento · 
+- `eb49e6b9a0` None/None · pendente_confirmacao_documento · 
+- `cea8f6e110` None/None · pendente_confirmacao_documento · 
+- `044e2fb97c` None/None · pendente_confirmacao_documento · 
+- `a70caf4f72` None/None · pendente_confirmacao_documento · 
+- `5c8a728961` None/None · pendente_confirmacao_documento · 
+- `57b3640632` None/None · pendente_confirmacao_documento · 
+- `9c2708828c` None/None · pendente_confirmacao_documento · 
+- `772dabf236` None/None · pendente_confirmacao_documento · 
+- `cfc4af974a` None/None · pendente_confirmacao_documento · 
+- `fddc8651f4` None/None · pendente_confirmacao_documento · 
+- `626b798a97` None/None · pendente_confirmacao_documento · 
+- `d73d8315bd` None/None · pendente_confirmacao_documento · 
+- `b218c5648b` None/None · pendente_confirmacao_documento · 
+- `10ab4b65d4` None/None · pendente_confirmacao_documento · 
+- `10feb1f35e` None/None · pendente_confirmacao_documento · 
+- `54a1b544f8` None/None · pendente_confirmacao_documento · 
+- `62077deca2` None/None · pendente_confirmacao_documento · 
+- `9a2d998362` None/None · pendente_confirmacao_documento · 
+- `181921c7ce` None/None · pendente_confirmacao_documento · 
+- `67cb01aaf3` None/None · pendente_confirmacao_documento · 
+- `0ab569a050` None/None · pendente_confirmacao_documento · 
+- `0a6603b95a` None/None · pendente_confirmacao_documento · 
+- `fdbf7db1fe` None/None · pendente_confirmacao_documento · 
+- `7fd985ae2a` None/None · pendente_confirmacao_documento · 
+- `935faa2fd2` None/None · pendente_confirmacao_documento · 
+- `e87594d764` None/None · pendente_confirmacao_documento · 
+- `1e618f145a` None/None · pendente_confirmacao_documento · 
+- `41b1658ab3` None/None · pendente_confirmacao_documento · 
+- `a3db654e29` None/None · pendente_confirmacao_documento · 
+- `be834dcf57` None/None · pendente_confirmacao_documento · 
+- `e9e25fe8c8` None/None · pendente_confirmacao_documento · 
+- `76edb31787` None/None · pendente_confirmacao_documento · 
+- `322e7a0bd3` None/None · pendente_confirmacao_documento · 
+- `f65f63cd1e` None/None · pendente_confirmacao_documento · 
+- `96a7bd952e` None/None · pendente_confirmacao_documento · 
+- `45619967aa` None/None · pendente_confirmacao_documento · 
+- `472e4823b3` None/None · pendente_confirmacao_documento · 
+- `9e0322ae88` None/None · pendente_confirmacao_documento · 
+- `15e1eb3e4b` None/None · pendente_confirmacao_documento · 
+- `a26feceef0` None/None · pendente_confirmacao_documento · 
+- `ce345e5076` None/None · pendente_confirmacao_documento · 
+- `e8b78a084a` None/None · pendente_confirmacao_documento · 
+- `449909b551` None/None · pendente_confirmacao_documento · 
+- `238d08b03c` None/None · pendente_confirmacao_documento · 
+- `20db40e2a0` None/None · pendente_confirmacao_documento · 
+- `b6f8f2aac0` None/None · pendente_confirmacao_documento · 
+- `31736e0d75` None/None · pendente_confirmacao_documento · 
+- `46b310453b` None/None · pendente_confirmacao_documento · 
+- `0396a25a71` None/None · pendente_confirmacao_documento · 
+- `aad4e10f11` None/None · pendente_confirmacao_documento · 
+- `7b15390af2` None/None · pendente_confirmacao_documento · 
+- `35e40f56de` None/None · pendente_confirmacao_documento · 
+- `cf86b85ebe` None/None · pendente_confirmacao_documento · 
+- `857ab31a48` None/None · pendente_confirmacao_documento · 
+- `c55169d2b2` None/None · pendente_confirmacao_documento · 
+- `8b3f253e5a` None/None · pendente_confirmacao_documento · 
+- `37c58140dc` None/None · pendente_confirmacao_documento · 
+- `d6c38ed71f` None/None · pendente_confirmacao_documento · 
+- `0a5673d3cb` None/None · pendente_confirmacao_documento · 
+- `69a32cceaa` None/None · pendente_confirmacao_documento · 
+- `1dd17c74c4` None/None · pendente_confirmacao_documento · 
+- `3a7e6ba770` None/None · pendente_confirmacao_documento · 
+- `ea6589c551` None/None · pendente_confirmacao_documento · 
+- `4f1504bcce` None/None · pendente_confirmacao_documento · 
+- `3141c55d07` None/None · pendente_confirmacao_documento · 
+- `def5cdac5b` None/None · pendente_confirmacao_documento · 
+- `8a7829c228` None/None · pendente_confirmacao_documento · 
+- `634af62886` None/None · pendente_confirmacao_documento · 
+- `938ddaeda5` None/None · pendente_confirmacao_documento · 
+- `9de618906b` None/None · pendente_confirmacao_documento · 
+- `13a5223884` None/None · pendente_confirmacao_documento · 
+- `26e56aa0a1` None/None · pendente_confirmacao_documento · 
+- `02f28025d1` None/None · pendente_confirmacao_documento · 
+- `9ec183d285` None/None · pendente_confirmacao_documento · 
+- `3038434c4a` None/None · pendente_confirmacao_documento · 
+- `9780f71738` None/None · pendente_confirmacao_documento · 
+- `5079ccbe10` None/None · pendente_confirmacao_documento · 
+- `9602c842e0` None/None · pendente_confirmacao_documento · 
+- `96cc183ca0` None/None · pendente_confirmacao_documento · 
+- `1dd17c74c4` None/None · pendente_confirmacao_documento · 
+- `d910dc5250` None/None · pendente_confirmacao_documento · 
+- `07b3a45249` None/None · pendente_confirmacao_documento · 
+- `93e7a09c2e` None/None · pendente_confirmacao_documento · 
+- `093d1fecb1` None/None · pendente_confirmacao_documento · 
+- `509a72d69e` None/None · pendente_confirmacao_documento · 
+- `38cca5aef2` None/None · pendente_confirmacao_documento · 
+- `65455b430a` None/None · pendente_confirmacao_documento · 
+- `df7f0d8c59` None/None · pendente_confirmacao_documento · 
+- `c05442eb7d` None/None · pendente_confirmacao_documento · 
+- `31b1845e2c` None/None · pendente_confirmacao_documento · 
+- `85f72713aa` None/None · pendente_confirmacao_documento · 
+- `1f0f179e99` None/None · pendente_confirmacao_documento · 
+- `3732d77b10` None/None · pendente_confirmacao_documento · 
+- `68f8e29ea2` None/None · pendente_confirmacao_documento · 
+- `64f8c296be` None/None · pendente_confirmacao_documento · 
+- `8b034b732b` None/None · pendente_confirmacao_documento · 
+- `67e4691b45` None/None · pendente_confirmacao_documento · 
+- `43af5a36f0` None/None · pendente_confirmacao_documento · 
+- `976e1d6012` None/None · pendente_confirmacao_documento · 
+- `8500203a7a` None/None · pendente_confirmacao_documento · 
+- `4f32bc21c1` None/None · pendente_confirmacao_documento · 
+- `5189be258b` None/None · pendente_confirmacao_documento · 
+- `0077ea9ce4` None/None · pendente_confirmacao_documento · 
+- `634af62886` None/None · pendente_confirmacao_documento · 
+- `994a456f7a` None/None · pendente_confirmacao_documento · 
+- `4a2d1ca177` None/None · pendente_confirmacao_documento · 
+- `143e2d105f` None/None · pendente_confirmacao_documento · 
+- `942a5df542` None/None · pendente_confirmacao_documento · 
+- `0a3f133c34` None/None · pendente_confirmacao_documento · 
+- `2d6ec2a316` None/None · pendente_confirmacao_documento · 
+- `fb09542c8b` None/None · pendente_confirmacao_documento · 
+- `d0957a7897` None/None · pendente_confirmacao_documento · 
+- `5a470d2fc2` None/None · pendente_confirmacao_documento · 
+- `47074203d8` None/None · pendente_confirmacao_documento · 
+- `d0a31548f7` None/None · pendente_confirmacao_documento · 
+- `19de8e54ff` None/None · pendente_confirmacao_documento · 
+- `b6a663a546` None/None · pendente_confirmacao_documento · 
+- `1f3975a4a9` None/None · pendente_confirmacao_documento · 
+- `13f8eee598` None/None · pendente_confirmacao_documento · 
+- `790ee730df` None/None · pendente_confirmacao_documento · 
+- `ef39fd4d58` None/None · pendente_confirmacao_documento · 
+- `4470e6e353` None/None · pendente_confirmacao_documento · 
+- `ac1c2de511` None/None · pendente_confirmacao_documento · 
+- `d625bb4723` None/None · pendente_confirmacao_documento · 
+- `9daef6ba8b` None/None · pendente_confirmacao_documento · 
+- `2e640a8f3c` None/None · pendente_confirmacao_documento · 
+- `57de68cb83` None/None · pendente_confirmacao_documento · 
+- `d47fefa84f` None/None · pendente_confirmacao_documento · 
+- `107d411e4a` None/None · pendente_confirmacao_documento · 
+- `282946b9c6` None/None · pendente_confirmacao_documento · 
+- `468dfb6a99` None/None · pendente_confirmacao_documento · 
+- `66e8b554ea` None/None · pendente_confirmacao_documento · 
+- `c25a061528` None/None · pendente_confirmacao_documento · 
+- `7abd86fcbf` None/None · pendente_confirmacao_documento · 
+- `9de618906b` None/None · pendente_confirmacao_documento · 
+- `6ce07f4b25` None/None · pendente_confirmacao_documento · 
+- `52c328f262` None/None · pendente_confirmacao_documento · 
+- `6f886023f5` None/None · pendente_confirmacao_documento · 
+- `ef68e0b516` None/None · pendente_confirmacao_documento · 
+- `8d60b53d02` None/None · pendente_confirmacao_documento · 
+- `8fd1d6fd57` None/None · pendente_confirmacao_documento · 
+- `f77d9c017f` None/None · pendente_confirmacao_documento · 
+- `bd807cc1b0` None/None · pendente_confirmacao_documento · 
+- `d9f029bf4c` None/None · pendente_confirmacao_documento · 
+- `317695d173` None/None · pendente_confirmacao_documento · 
+- `0a68668dec` None/None · pendente_confirmacao_documento · 
+- `5d3a58ea49` None/None · pendente_confirmacao_documento · 
+- `9dc76a879d` None/None · pendente_confirmacao_documento · 
+- `0f0434ebe3` None/None · pendente_confirmacao_documento · 
+- `b9384dc088` None/None · pendente_confirmacao_documento · 
+- `8e304755b7` None/None · pendente_confirmacao_documento · 
+- `db1179eae3` None/None · pendente_confirmacao_documento · 
+- `f5d7f524bc` None/None · pendente_confirmacao_documento · 
+- `59bdf4f1ea` None/None · pendente_confirmacao_documento · 
+- `de95d45aca` None/None · pendente_confirmacao_documento · 
+- `313a3a4985` None/None · pendente_confirmacao_documento · 
+- `f852e3b96c` None/None · pendente_confirmacao_documento · 
+- `567c311db8` None/None · pendente_confirmacao_documento · 
+- `52d74cdf90` None/None · pendente_confirmacao_documento · 
+- `891825a5a5` None/None · pendente_confirmacao_documento · 
+- `da257d5597` None/None · pendente_confirmacao_documento · 
+- `0b9c2b75a7` None/None · pendente_confirmacao_documento · 
+- `af22f3ea04` None/None · pendente_confirmacao_documento · 
+- `dfb152a3f5` None/None · pendente_confirmacao_documento · 
+- `eec84ed920` None/None · pendente_confirmacao_documento · 
+- `70e818ef90` None/None · pendente_confirmacao_documento · 
+- `09248e88f4` None/None · pendente_confirmacao_documento · 
+- `7562414584` None/None · pendente_confirmacao_documento · 
+- `5d588d554a` None/None · pendente_confirmacao_documento · 
+- `db9c62cde7` None/None · pendente_confirmacao_documento · 
+- `88ed63050d` None/None · pendente_confirmacao_documento · 
+- `3751a04f10` None/None · pendente_confirmacao_documento · 
+- `7b2761432e` None/None · pendente_confirmacao_documento · 
+- `e19d3024ac` None/None · pendente_confirmacao_documento · 
+- `5b219092f3` None/None · pendente_confirmacao_documento · 
+- `bcee8abd55` None/None · pendente_confirmacao_documento · 
+- `2d6ec2a316` None/None · pendente_confirmacao_documento · 
+- `02f28025d1` None/None · pendente_confirmacao_documento · 
+- `ae17b631d3` None/None · pendente_confirmacao_documento · 
+- `b010926189` None/None · pendente_confirmacao_documento · 
+- `2dad83918e` None/None · pendente_confirmacao_documento · 
+- `e5044ff3e5` None/None · pendente_confirmacao_documento · 
+- `a75e39e839` None/None · pendente_confirmacao_documento · 
+- `25f1b25eb1` None/None · pendente_confirmacao_documento · 
+- `150230a81a` None/None · pendente_confirmacao_documento · 
+- `78cb468b5a` None/None · pendente_confirmacao_documento · 
+- `150618eb78` None/None · pendente_confirmacao_documento · 
+- `83e764177f` None/None · pendente_confirmacao_documento · 
+- `8d1fc3f310` None/None · pendente_confirmacao_documento · 
+- `3654e52051` None/None · pendente_confirmacao_documento · 
+- `0c834bbd96` None/None · pendente_confirmacao_documento · 
+- `448c62ea2c` None/None · pendente_confirmacao_documento · 
+- `0b216fd72a` None/None · pendente_confirmacao_documento · 
+- `417ee201a9` None/None · pendente_confirmacao_documento · 
+- `83879b7f3f` None/None · pendente_confirmacao_documento · 
+- `6be5487bde` None/None · pendente_confirmacao_documento · 
+- `85898ee3ff` None/None · pendente_confirmacao_documento · 
+- `4cfd5953b3` None/None · pendente_confirmacao_documento · 
+- `da26584955` None/None · pendente_confirmacao_documento · 
+- `f758787932` None/None · pendente_confirmacao_documento · 
+- `61690de8b7` None/None · pendente_confirmacao_documento · 
+- `5b19aecaac` None/None · pendente_confirmacao_documento · 
+- `b4dc25f5c4` None/None · pendente_confirmacao_documento · 
+- `50f31679c7` None/None · pendente_confirmacao_documento · 
+- `b6698e06f7` None/None · pendente_confirmacao_documento · 
+- `a5f10644e7` None/None · pendente_confirmacao_documento · 
+- `16385d6fee` None/None · pendente_confirmacao_documento · 
+- `481a28663f` None/None · pendente_confirmacao_documento · 
+- `6a03138127` None/None · pendente_confirmacao_documento · 
+- `e38fca9764` None/None · pendente_confirmacao_documento · 
+- `1cb889c9db` None/None · pendente_confirmacao_documento · 
+- `9c901ac84e` None/None · pendente_confirmacao_documento · 
+- `fa6fda440e` None/None · pendente_confirmacao_documento · 
+- `1f466b6ef2` None/None · pendente_confirmacao_documento · 
+- `583a88f1f7` None/None · pendente_confirmacao_documento · 
+- `187761d1ad` None/None · pendente_confirmacao_documento · 
+- `ef31991df7` None/None · pendente_confirmacao_documento · 
+- `4d26bdc6d7` None/None · pendente_confirmacao_documento · 
+- `251d33b964` None/None · pendente_confirmacao_documento · 
+- `3a76d06620` None/None · pendente_confirmacao_documento · 
+- `321a265f7c` None/None · pendente_confirmacao_documento · 
+- `536e170289` None/None · pendente_confirmacao_documento · 
+- `94fbafa891` None/None · pendente_confirmacao_documento · 
+- `4544d010ee` None/None · pendente_confirmacao_documento · 
+- `39821ad80d` None/None · pendente_confirmacao_documento · 
+- `2b55d81de4` None/None · pendente_confirmacao_documento · 
+- `f45375e74e` None/None · pendente_confirmacao_documento · 
+- `341514f7aa` None/None · pendente_confirmacao_documento · 
+- `0299a73954` None/None · pendente_confirmacao_documento · 
+- `578602037f` None/None · pendente_confirmacao_documento · 
+- `f0c199c39f` None/None · pendente_confirmacao_documento · 
+- `fb51ed14fd` None/None · pendente_confirmacao_documento · 
+- `0feba2539c` None/None · pendente_confirmacao_documento · 
+- `f0a5f1d213` None/None · pendente_confirmacao_documento · 
+- `d6cae71da2` None/None · pendente_confirmacao_documento · 
+- `5a639bd972` None/None · pendente_confirmacao_documento · 
+- `9fdd69a12b` None/None · pendente_confirmacao_documento · 
+- `c3938f8ede` None/None · pendente_confirmacao_documento · 
+- `5b219092f3` None/None · pendente_confirmacao_documento · 
+- `a8ac0828fd` None/None · pendente_confirmacao_documento · 
+- `afe62b4869` None/None · pendente_confirmacao_documento · 
 - `e0c2afcacf` None/AC · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `c53cf50fc3` Rio Branco/AC · fechada — sem documento oficial localizado no prazo da fila; reabre se surgir evidência nova para o mesmo município e assunto · 
 - `da2464af5e` defesa_civil/AC · fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila · 
