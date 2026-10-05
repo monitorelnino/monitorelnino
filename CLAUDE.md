@@ -353,6 +353,13 @@ ocorrer. A etiqueta *Boletim* saiu.
   contagens, somas, listas alfabéticas, datas e documentos, cada fato com fonte, URL e data de
   consulta. Nenhum ranking, nenhuma razão entre números. Dado com mais de nove dias vira lacuna
   declarada, não fato.
+- **O pacote gerado pelo workflow fica no ARTEFATO do run** (editoria, 05/10/2026). O
+  `pacote_do_blog.yml` não empurra nada ao `robo-registro`: a pergunta foi feita — levar o pacote ao
+  privado, ou deixá-lo no artefato? — e a editoria escolheu o artefato. Não é limitação técnica
+  contornada: `ROBO_TOKEN` já alcança o privado e o push sairia de graça. Para ter o pacote em
+  `robo-registro/blog/pacotes/`, roda-se o gerador à mão, que é o caminho normal da central. O
+  artefato expira em 90 dias; pacote não baixado se regera pelo mesmo comando, com os mesmos dados,
+  porque o gerador é função do corte e não do run.
 - **`scripts/verificar_texto_blog.py`** roda antes de publicar: todo número e toda data do corpo
   tem de estar no pacote. Texto reprovado **não vai ao ar e não bloqueia o site**. Se o texto está
   certo e o número não está no pacote, **o pacote está incompleto** — corrige-se o gerador, nunca

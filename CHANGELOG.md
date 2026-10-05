@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-05 · #557 · O pacote do blog fica no artefato, por decisão da editoria
+
+A editoria respondeu a pergunta de 04/10: o pacote não vai ao `robo-registro`. O passo que clonava o
+privado sai inteiro de `pacote_do_blog.yml`, e o pacote vive no artefato do run. Não é limitação
+contornada — `ROBO_TOKEN` já alcança o privado e o push sairia de graça; a decisão é dela. Quem
+precisar do pacote lá roda `gerar_pacote_blog.py` à mão. O artefato expira em 90 dias, e o gerador
+é função do corte, não do run.
+
 ## 2026-10-05 · #556 · Um escritor por arquivo, cancelado não é feito, e a noite passa a ser ensaiada
 
 A busca web perdeu 114 min porque o rebase usava `-X theirs`, que num arquivo de fila apaga o lado
