@@ -97,6 +97,11 @@
       postos += 1;
     });
     onde.querySelectorAll("[data-conteudo-html]").forEach(function (el) {
+      // A marca de FIXADO vale aqui também. Ela só estava no caminho de texto, e a assimetria era
+      // um defeito à espera: uma entrada com marcação que a página compõe com dado em mão seria
+      // reescrita com o molde não resolvido na primeira `aplicar` que passasse depois — a mesma
+      // corrida que o Financiamento mediu em 05/10/2026, só que no outro caminho.
+      if (el.hasAttribute("data-conteudo-fixado")) return;
       const id = el.getAttribute("data-conteudo-html");
       const t = texto(id, el.dataset.conteudoValores ? JSON.parse(el.dataset.conteudoValores) : null);
       if (t == null) { ausentes.push(id); return; }

@@ -10,28 +10,10 @@ const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt
 /* 04/10/2026 (handover da rotina semanal): o ponteiro do boletim vira o ponteiro dos TEXTOS. Dois
    links, título e data, um por linha da rotina. Sem número: o que muda toda semana é o texto, e
    número repetido aqui seria uma terceira cópia a conferir. */
-(function ponteiroDosTextos(){
-  const alvo = document.getElementById('textosDaSemana');
-  if (!alvo) return;
-  const LINHAS = ['Legal e financiamento', 'Saúde'];
-  fetch('data/blog/posts.json').then(r => r.ok ? r.json() : null).then(dados => {
-    const lista = Array.isArray(dados) ? dados : ((dados || {}).posts || []);
-    const itens = LINHAS.map(linha => {
-      const p = lista.filter(x => (x.etiqueta || '') === linha)[0];
-      if (!p) return '';
-      return '<li><span class="spec">' + esc(linha) + '</span> '
-        + '<a href="' + esc(p.url) + '">' + esc(p.titulo) + '</a> · ' + esc(p.data_br || '')
-        + '</li>';
-    }).filter(Boolean).join('');
-    /* Sem texto de nenhuma das duas linhas, esconde-se a LISTA, não a seção: o título e o
-       ponteiro "Todos os textos" são permanentes — não dependem de haver texto nesta semana —, e
-       esconder a seção inteira tirava do ar o caminho para o blog. Nada é afirmado no lugar da
-       lista: lista vazia não vira frase. */
-    if (!itens) { alvo.hidden = true; return; }
-    alvo.hidden = false;
-    alvo.innerHTML = itens;
-  }).catch(() => {});
-})();
+/* 05/10/2026 (handover da preparacao programatica, item 7): `ponteiroDosTextos` SAIU. O bloco
+   "Textos desta semana" deixou a pagina de imprensa -- o blog e o menu, e o ponteiro era uma
+   terceira copia a conferir. O codigo sai junto com o elemento: script que escreve num `id` que
+   nao existe mais e codigo morto, e foi assim que `listaNaoSuspenso` ficou orfao em 03/10. */
 
 
 // 03/10/2026: os blocos que escreviam em `listaNaoSuspenso` e `listaSuspenso` saíram. Os dois
@@ -63,44 +45,13 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
    localizou. As duas podem distar semanas, e a segunda mede o nosso trabalho, não o do ente. */
 (function numerosDoTopo(){
   const põe = (id, v) => { const e = document.getElementById(id); if (e && v != null && v !== '') e.textContent = v; };
-  const n = v => Number(v).toLocaleString('pt-BR');
 
-  fetch('data/indice.json').then(r => r.ok ? r.json() : null).then(idx => {
-    if (!idx) return;
-    const ufs = Object.keys(idx).filter(k => k.length === 2);
-    if (!ufs.length) return;
-    const media = Math.round(ufs.reduce((a, u) => a + idx[u].total, 0) / ufs.length * 10) / 10;
-    põe('topoLegal', media.toLocaleString('pt-BR', {minimumFractionDigits: 1}));
-    // A versão sai do próprio campo `metodo` do índice: ele começa por "v3.1 — …". Assim a versão
-    // publicada é a do motor que calculou o número, e não uma string paralela que alguém atualiza.
-    const m = String((idx[ufs[0]] || {}).metodo || '').match(/^v(\d+(?:\.\d+)*)/);
-    if (m) põe('citarVersaoLegal', m[1]);
-  }).catch(() => {});
-
-  fetch('data/monitor_saude.json').then(r => r.ok ? r.json() : null).then(sa => {
-    if (!sa) return;
-    // O MARÉ Saúde NÃO tem número nacional hoje, e o próprio dado diz isso: o campo é
-    // `media_das_verificadas`, e a nota que vem com ele é "a média cobre só as UFs verificadas e
-    // não é um número nacional". A página de Saúde já publica esse número com o qualificador ao
-    // lado, e aqui ele vai igual — sem o qualificador, uma média parcial viraria índice nacional,
-    // que é exatamente o que a metodologia proíbe afirmar.
-    const res = sa.resumo || {};
-    if (res.media_das_verificadas != null) {
-      põe('topoSaude', Number(res.media_das_verificadas).toLocaleString('pt-BR', {minimumFractionDigits: 1}));
-      /* 01/10/2026 (decisão da editoria): o número só vira MANCHETE NACIONAL quando os 27 estados
-         estiverem verificados. Antes disso ele sai com o rótulo que diz de quantos é a média — e o
-         rótulo é a diferença entre publicar uma média parcial e publicar um índice nacional que
-         ainda não existe. O corte é o próprio dado: 27 verificadas, não uma data. */
-      const TODAS = 27;
-      if (res.verificadas != null) {
-        põe('topoSaudeNota', res.verificadas >= TODAS
-          ? 'os ' + TODAS + ' estados verificados'
-          : 'média dos ' + res.verificadas + ' estados verificados');
-      }
-    }
-    if (sa.versao != null) põe('citarVersaoSaude', String(sa.versao));
-  }).catch(() => {});
-
+  /* 05/10/2026 (itens 7 e 7-B): o bloco "Os indices nesta edicao" e a VERSAO na referencia
+     sairam da pagina. A manchete sai da imprensa (os indices vivem nas paginas) e a versao nao
+     serve ao leitor, porque o codigo nao e distribuido. O codigo que lia `data/indice.json` e
+     `data/monitor_saude.json` so para escreve-los sai junto -- menos a leitura de saude, que
+     continua, porque o molde do "Como os indices sao calculados" depende de quantos estados
+     estao verificados. */
   fetch('data/meta.json').then(r => r.ok ? r.json() : null).then(M => {
     if (!M) return;
     ['relData', 'relData2', 'relDataRelease'].forEach(i => põe(i, M.atualizado_em || M.corte));
@@ -122,6 +73,54 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       const antes = b.textContent;
       b.textContent = 'Texto copiado';
       setTimeout(() => { b.textContent = antes; }, 2000);
+    }).catch(() => {});
+  });
+})();
+
+/* ===== Os dois moldes gerados da pagina (handover de 05/10/2026, itens 7-B e 7-C) =====
+ *
+ * Frase que depende do dado nao se escreve a mao: e molde no catalogo, resolvido aqui com o dado
+ * em maos. Sao dois.
+ *
+ *   1. "Como os indices sao calculados", MARE Saude: enquanto os 27 estados nao estiverem
+ *      verificados, a frase diz de quantos e a media. Quando os 27 estiverem, a frase SOME --
+ *      porque ai a media ja e nacional, e o qualificador passaria a negar o que o numero e.
+ *   2. "Com que frequencia o site e atualizado?": a cadencia vem de
+ *      `data/cadencia_publicacao.json`, que o gerador le do gatilho do publicador. Trocar um
+ *      horario no workflow muda a frase sozinho.
+ *
+ * Os dois marcam `data-conteudo-fixado`: quem escreve a partir de dado marca, senao a `aplicar`
+ * seguinte do catalogo reescreve com o molde nao resolvido. Foi a corrida medida no Financiamento.
+ */
+(function moldesGerados(){
+  const C = window.MonitorCatalogo;
+  if (!C || !C.pronto) return;
+
+  function porDado(elemento, html) {
+    if (!elemento || html == null) return;
+    elemento.innerHTML = html;
+    elemento.setAttribute('data-conteudo-fixado', '1');
+  }
+
+  C.pronto.then(function () {
+    const TODAS = 27;
+
+    fetch('data/monitor_saude.json').then(r => r.ok ? r.json() : null).then(sa => {
+      const res = (sa || {}).resumo || {};
+      const verificadas = res.verificadas;
+      if (verificadas == null) return;        /* sem o numero, fica o texto de reserva */
+      const parcial = verificadas >= TODAS
+        ? ''
+        : (C.texto('imprensa.calculo.saude_parcial', { n: verificadas }) || '');
+      const t = C.texto('imprensa.calculo.saude', { parcial: parcial });
+      porDado(document.getElementById('calculoSaude'), t && t.replace(/\s+$/, ''));
+    }).catch(() => {});
+
+    fetch('data/cadencia_publicacao.json').then(r => r.ok ? r.json() : null).then(cad => {
+      const vezes = (cad || {}).publicacoes_por_dia;
+      if (!vezes) return;                     /* zero nao vira frase: fica o texto de reserva */
+      porDado(document.getElementById('perguntaFrequencia'),
+              C.texto('imprensa.perguntas.entender.5', { n: vezes }));
     }).catch(() => {});
   });
 })();

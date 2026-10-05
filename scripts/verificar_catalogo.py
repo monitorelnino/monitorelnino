@@ -83,8 +83,15 @@ def vocabulario_proibido_em(textos: dict, proibidas: list, por_pagina: dict = No
                             pagina: str = "") -> list:
     """As entradas que trazem palavra proibida. Função pura.
 
-    Casa palavra inteira, sem acento e sem caixa — a mesma régua do portão de conformidade: cobrar
-    subcadeia acusaria "subfunção" dentro de "subfunções" e também dentro de palavra inocente.
+    Casa palavra inteira e sem acento — cobrar subcadeia acusaria "subfunção" dentro de palavra
+    inocente.
+
+    A CAIXA conta quando o termo proibido vem em caixa alta. "FIGURA" na lista é o rótulo de
+    numeração que a editoria tirou, não a palavra "figura" numa frase legítima — "a fonte primária
+    de cada figura", que é como a própria página de imprensa explica a reprodução. O portão de
+    conformidade aprendeu isso em 03/10/2026, no primeiro falso positivo dele, e este portão
+    repetiu o mesmo erro em 05/10 porque comparava tudo em minúsculas. Termo em caixa alta casa com
+    caixa; o resto casa sem caixa.
     """
     import unicodedata
 
@@ -92,15 +99,21 @@ def vocabulario_proibido_em(textos: dict, proibidas: list, por_pagina: dict = No
         b = unicodedata.normalize("NFKD", str(s or "").lower())
         return "".join(c for c in b if not unicodedata.combining(c))
 
+    def sem_acento(s):
+        b = unicodedata.normalize("NFKD", str(s or ""))
+        return "".join(c for c in b if not unicodedata.combining(c))
+
     lista = list(proibidas or []) + list((por_pagina or {}).get(pagina) or [])
     fora = []
     for ident, texto in sorted((textos or {}).items()):
-        alvo = normal(texto)
         for termo in lista:
-            t = normal(termo)
+            caixa_alta = any(c.isalpha() for c in str(termo)) and str(termo).upper() == str(termo)
+            alvo = sem_acento(texto) if caixa_alta else normal(texto)
+            t = sem_acento(termo) if caixa_alta else normal(termo)
             if not t:
                 continue
-            if re.search(r"(?<![a-z0-9])" + re.escape(t) + r"(?![a-z0-9])", alvo):
+            borda = r"(?![A-Za-z0-9])" if caixa_alta else r"(?![a-z0-9])"
+            if re.search(r"(?<![A-Za-z0-9])" + re.escape(t) + borda, alvo):
                 fora.append(f"{ident}: traz {termo!r}, que o site não escreve")
                 break
     return fora
@@ -205,6 +218,15 @@ def _autoteste() -> int:
     ok("pagina com o leitor passa",
        sem_o_leitor("<script src='assets/catalogo.js?v=1'></script>", {"x.y"}) == [])
     ok("pagina que nao pede nada nao precisa do leitor", sem_o_leitor("<p></p>", set()) == [])
+
+    ok("termo em caixa alta so casa em caixa alta",
+       vocabulario_proibido_em({"a": "a fonte primaria de cada figura"}, ["FIGURA"]) == [])
+    ok("termo em caixa alta casa quando esta em caixa alta",
+       vocabulario_proibido_em({"a": "FIGURA 3 - mapa"}, ["FIGURA"]) != [])
+    ok("termo em minusculas continua casando sem caixa",
+       vocabulario_proibido_em({"a": "houve um Desastre"}, ["desastre"]) != [])
+    ok("termo em minusculas casa com acento normalizado",
+       vocabulario_proibido_em({"a": "a subfuncao"}, ["subfunção"]) != [])
 
     import dis
     nomes = set()

@@ -1,89 +1,84 @@
 {
-  "_governanca": "Contrato de layout da Imprensa (handover de 03/10/2026): a página passa a ter SÓ O ESTÁVEL. Saíram 'Esta semana em números', o release gerado com o botão de copiar, a variação semanal e a planilha da edição — o que muda vive no boletim do blog, e aqui fica o ponteiro. Quem verifica é scripts/verificar_conformidade.py.",
-  "pagina": "imprensa.html",
-  "componentes": {
-    "numeros": ".cartao-numero",
-    "grade_numeros": ".grade-numeros--3",
-    "figura": ".cartao-mapa",
-    "grade_figuras": ".grade-figuras--3"
+ "_governanca": "Contrato de layout da Imprensa (handover da preparação programática, itens 7, 7-B e 7-C, 05/10/2026). A página é o título “Imprensa” e, imediatamente, as seções. Ordem final: O que é o MARÉ · Como os índices são calculados · O que cada página responde · Perguntas de repórter · Como citar · Para redações. Saíram, sem substituição: a abertura com o contato (o e-mail fica só em “Para redações”), o bloco “Os índices nesta edição” e o bloco “Textos desta semana”. “O que cada página mostra” e “Perguntas de fato” foram substituídas. O texto público vive em conteudo/imprensa.json. Quem verifica é scripts/verificar_conformidade.py.",
+ "pagina": "imprensa.html",
+ "componentes": {
+  "numeros": ".cartao-numero",
+  "grade_numeros": ".grade-numeros--3",
+  "figura": ".cartao-mapa",
+  "grade_figuras": ".grade-figuras--3"
+ },
+ "_nota_componentes": "O handover nomeia `.cartao-destaque` e pede cada grupo em `.grade-figuras--3`. Duas divergências declaradas, pelas mesmas razões dos outros contratos: (1) `.cartao-destaque` não existe no repositório — o componente de número é `.cartao-numero`; (2) número não mora na grade de FIGURAS: a regra (i) do portão de layout cobra que cartão de número esteja dentro do componente de números, e `.grade-numeros--3` dá exatamente o mesmo ritmo de três colunas que o handover quer. Grupo de seis preenche duas linhas de três.",
+ "secoes": [
+  {
+   "id": "o-que-e",
+   "h2": "O que é o MARÉ",
+   "tipo": "lista_simples",
+   "exige_texto": [
+    "É uma criação da"
+   ]
   },
-  "_nota_componentes": "O handover nomeia `.cartao-destaque` e pede cada grupo em `.grade-figuras--3`. Duas divergências declaradas, pelas mesmas razões dos outros contratos: (1) `.cartao-destaque` não existe no repositório — o componente de número é `.cartao-numero`; (2) número não mora na grade de FIGURAS: a regra (i) do portão de layout cobra que cartão de número esteja dentro do componente de números, e `.grade-numeros--3` dá exatamente o mesmo ritmo de três colunas que o handover quer. Grupo de seis preenche duas linhas de três.",
-  "secoes": [
-    {
-      "id": "topo",
-      "h2": null,
-      "tipo": "lista_simples",
-      "exige_texto": [
-        "O que é o MARÉ, como os índices são calculados, o que cada página mostra e como citar.",
-        "MARÉ Legal",
-        "MARÉ Saúde"
-      ]
-    },
-    {
-      "id": "boletim",
-      "h2": "Textos desta semana",
-      "tipo": "lista_simples",
-      "exige_texto": [
-        "Todos os textos"
-      ],
-      "_nota": "Os dois links da rotina, título e data. Sem números: o que muda toda semana é o texto, e número repetido aqui seria uma terceira cópia a conferir."
-    },
-    {
-      "id": "citar",
-      "h2": "Como citar",
-      "tipo": "lista_simples",
-      "exige_texto": [
-        "Fonte: MARÉ / Futura Evidence Lab.",
-        "A metodologia é pública.",
-        "o crédito \"MARÉ / Futura Evidence Lab\""
-      ]
-    },
-    {
-      "id": "o-que-e",
-      "h2": "O que é o MARÉ",
-      "tipo": "lista_simples"
-    },
-    {
-      "id": "como-calculados",
-      "h2": "Como os índices são calculados",
-      "tipo": "lista_simples"
-    },
-    {
-      "id": "o-que-mostra",
-      "h2": "O que cada página mostra",
-      "tipo": "lista_simples",
-      "exige_texto": [
-        "os textos da editoria sobre o que está acontecendo no ciclo"
-      ]
-    },
-    {
-      "id": "faq",
-      "h2": "Perguntas de fato",
-      "tipo": "lista_simples"
-    },
-    {
-      "id": "redacoes",
-      "h2": "Para redações",
-      "tipo": "lista_simples",
-      "exige_texto": [
-        "com fonte e data em cada entrega"
-      ]
-    }
-  ],
-  "texto_proibido": [
-    "FIGURA",
-    "Corte da edição",
-    "corte de",
-    "desastre",
-    "no período",
-    "Backlog",
-    "dados abertos",
-    "CC BY",
-    "não é distribuído",
-    "não é distribuido",
-    "código que calcula"
-  ],
-  "_nota_texto_proibido": "03/10/2026 (regra 1 da editoria): nenhuma frase sobre código, base de dados ou licença de dados entra no texto público — nem para dizer que existe, nem para dizer que não existe. A metodologia se anuncia numa frase, e é só.",
-  "_divergencia_do_handover": "Divergência declarada (03/10/2026): o handover pedia um `.cartao-destaque` largo para o boletim. Essa classe não existe no sistema de design — não há uma linha dela em assets/base.css —, e a hierarquia de regras põe o sistema acima do handover. O boletim usa o componente que existe para isso, `.cartao cartao--status` com `.grade-numeros--3`, que é o mesmo de todo cartão de números do site. Criar uma classe nova para um só lugar é exatamente o 'ajuste manual' que o § Design proíbe.",
-  "_nota_rotina_semanal": "04/10/2026: o ponteiro 'O boletim desta semana' virou 'Textos desta semana'. O Boletim saiu com a rotina de dois textos por semana."
+  {
+   "id": "como-calculados",
+   "h2": "Como os índices são calculados",
+   "tipo": "lista_simples",
+   "exige_texto": [
+    "O que os índices não dizem."
+   ],
+   "_nota": "A frase do MARÉ Saúde traz molde gerado: enquanto os 27 estados não estiverem verificados, ela diz de quantos é a média, e some quando os 27 estiverem."
+  },
+  {
+   "id": "paginas",
+   "h2": "O que cada página responde",
+   "tipo": "lista_simples",
+   "exige_texto": [
+    "os textos da editoria sobre o que está acontecendo no ciclo"
+   ]
+  },
+  {
+   "id": "perguntas",
+   "h2": "Perguntas de repórter",
+   "tipo": "lista_simples",
+   "_nota": "Cinco grupos em h3: Para entender o que está vendo · Sobre o método · Sobre as fontes · O que se pode e o que não se pode concluir · Sobre o MARÉ e o contato. A resposta sobre a frequência traz molde gerado, lido do gatilho do publicador."
+  },
+  {
+   "id": "citar",
+   "h2": "Como citar",
+   "tipo": "lista_simples",
+   "exige_texto": [
+    "Fonte: MARÉ / Futura Evidence Lab.",
+    "A metodologia é pública.",
+    "o crédito \"MARÉ / Futura Evidence Lab\""
+   ],
+   "_nota": "Sem a versão dos índices, por decisão da editoria (item 7-B): o código não é distribuído, e a versão não serve ao leitor."
+  },
+  {
+   "id": "redacoes",
+   "h2": "Para redações",
+   "tipo": "lista_simples",
+   "exige_texto": [
+    "com fonte e data em cada entrega"
+   ]
+  }
+ ],
+ "texto_proibido": [
+  "Backlog",
+  "CC BY",
+  "Corte da edição",
+  "FIGURA",
+  "O que cada página mostra",
+  "Os índices nesta edição",
+  "Perguntas de fato",
+  "Textos desta semana",
+  "Todos os textos",
+  "corte de",
+  "código que calcula",
+  "dados abertos",
+  "desastre",
+  "no período",
+  "não é distribuido",
+  "não é distribuído"
+ ],
+ "_nota_texto_proibido": "03/10/2026 (regra 1 da editoria): nenhuma frase sobre código, base de dados ou licença de dados entra no texto público — nem para dizer que existe, nem para dizer que não existe. A metodologia se anuncia numa frase, e é só. Em 05/10 entram os títulos revogados pelos itens 7 e 7-C: título revogado volta por hábito se nada o barrar.",
+ "_divergencia_do_handover": "Divergência declarada (03/10/2026): o handover pedia um `.cartao-destaque` largo para o boletim. Essa classe não existe no sistema de design — não há uma linha dela em assets/base.css —, e a hierarquia de regras põe o sistema acima do handover. O boletim usa o componente que existe para isso, `.cartao cartao--status` com `.grade-numeros--3`, que é o mesmo de todo cartão de números do site. Criar uma classe nova para um só lugar é exatamente o 'ajuste manual' que o § Design proíbe.",
+ "_nota_rotina_semanal": "04/10/2026: o ponteiro 'O boletim desta semana' virou 'Textos desta semana'. O Boletim saiu com a rotina de dois textos por semana."
 }

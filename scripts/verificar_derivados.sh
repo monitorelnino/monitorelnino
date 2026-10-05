@@ -32,6 +32,10 @@ python3 gerar_pdf_indice.py >/dev/null
 python3 gerar_pdf_metodologia.py >/dev/null
 python3 scripts/carimbar_assets.py >/dev/null
 python3 gerar_blog.py >/dev/null   # 22/09/2026: depois do carimbo (as páginas dos textos copiam o cabeçalho carimbado de blog.html)
+python3 scripts/gerar_codemap.py >/dev/null   # mesmo caso do `mudancas.html` logo abaixo: o
+# CODEMAP e derivado, um portao cobra que esteja em dia, e ele nao estava nesta cadeia. Dois
+# PRs seguidos reprovaram por isso em 05/10, cada um com a instrucao de rodar um gerador que a
+# cadeia nao conhecia. Derivado cobrado tem de ser derivado regenerado aqui.
 python3 scripts/gerar_mudancas.py >/dev/null   # 05/10/2026: `mudancas.html` e derivado do
 # CHANGELOG.md e estava FORA desta cadeia, embora outro portao cobrasse que ele estivesse em
 # dia. O efeito era exato: PR que mexia no CHANGELOG passava no portao 12 e reprovava no de
@@ -47,7 +51,7 @@ python3 scripts/gerar_resumo_do_log.py >/dev/null   # item 4: resumo do log para
 python3 scripts/gerar_manifesto.py >/dev/null
 if [ "$MODO" = "--idempotencia" ]; then
   ANTES="$(git ls-files -z | xargs -0 sha256sum 2>/dev/null | sha256sum)"
-  python3 scripts/gerar_mudancas.py >/dev/null; python3 recalcular_mare.py --write >/dev/null; python3 gerar_monitor_saude.py >/dev/null; python3 gerar_resposta.py >/dev/null; python3 gerar_prioritarios.py >/dev/null; python3 gerar_contadores_financiamento.py >/dev/null; python3 gerar_feeds.py >/dev/null; python3 gerar_dados_abertos.py >/dev/null; python3 gerar_card_municipios.py >/dev/null; python3 scripts/gerar_enquadramento_card.py >/dev/null
+  python3 scripts/gerar_codemap.py >/dev/null; python3 scripts/gerar_mudancas.py >/dev/null; python3 recalcular_mare.py --write >/dev/null; python3 gerar_monitor_saude.py >/dev/null; python3 gerar_resposta.py >/dev/null; python3 gerar_prioritarios.py >/dev/null; python3 gerar_contadores_financiamento.py >/dev/null; python3 gerar_feeds.py >/dev/null; python3 gerar_dados_abertos.py >/dev/null; python3 gerar_card_municipios.py >/dev/null; python3 scripts/gerar_enquadramento_card.py >/dev/null
   python3 gerar_pdf_indice.py >/dev/null; python3 gerar_pdf_metodologia.py >/dev/null; python3 scripts/carimbar_assets.py >/dev/null; python3 gerar_blog.py >/dev/null; python3 scripts/gerar_resumo_do_log.py >/dev/null; python3 scripts/gerar_manifesto.py >/dev/null
   python3 gerar_pdf_indice.py >/dev/null; python3 gerar_pdf_metodologia.py >/dev/null; python3 scripts/carimbar_assets.py >/dev/null; python3 gerar_blog.py >/dev/null; python3 scripts/gerar_manifesto.py >/dev/null
   DEPOIS="$(git ls-files -z | xargs -0 sha256sum 2>/dev/null | sha256sum)"

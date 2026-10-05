@@ -1,0 +1,9 @@
+{
+ "publicacoes_por_dia": 2,
+ "gatilhos_de_relogio": [
+  "5 9 * * *",
+  "5 1 * * *"
+ ],
+ "_fonte": ".github/workflows/publicar_dados.yml",
+ "_nota": "Gerado por scripts/gerar_cadencia_de_publicacao.py. Só gatilho de relógio entra; disparo manual e disparo por outro workflow não são cadência."
+}
