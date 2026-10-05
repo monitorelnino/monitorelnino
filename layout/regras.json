@@ -21,6 +21,10 @@
     "blog.html",
     "metodologia.html"
   ],
+  "paginas_internas": [
+    "indice-de-conteudo.html"
+  ],
+  "_nota_paginas_internas": "Páginas que existem no repositório e NÃO são do público: material de trabalho da editoria, servido só no endereço reservado e fora do manifesto público. Elas ficam fora do portão de SEO (canônica, Open Graph, Twitter, JSON-LD e sitemap), porque cobrar isso seria cobrar que uma página interna se apresente como pública — a canônica apontaria o domínio e o `og:image` existiria para um compartilhamento que nunca acontece. `noindex` NÃO serve de critério: enquanto o domínio está na cortina toda página o tem, e ele deixaria de discriminar no dia do lançamento. Acrescentar uma página aqui é dizer, por escrito, que ela não é do público; o portão de integridade continua acusando se ela aparecer servida no domínio. `indice-de-conteudo.html` entrou em 05/10/2026 com o catálogo de conteúdo.",
   "tipografia": {
     "fonte": "CLAUDE.md §4 (Tipografia) e AI_VISUAL_ART_DIRECTION.md",
     "familias_permitidas": {
