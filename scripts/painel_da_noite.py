@@ -71,12 +71,39 @@ def dentro_da_janela(fim_utc: str, janela=JANELA_UTC) -> bool:
     return inicio <= h < fim if inicio < fim else (h >= inicio or h < fim)
 
 
-def linha(elo: str, noite: str, inicio: str, fim: str, conclusao: str) -> dict:
+def trabalhou(conclusao: str, feito: bool = None) -> bool:
+    """O elo realmente TRABALHOU nesta noite? Função pura.
+
+    05/10/2026 (item 3.1 do handover da noite confiável) — CANCELADO NÃO É FEITO.
+    Medido na noite de 04→05/10: o job `diarios / coletar` foi cancelado às 01:14:09 UTC, dois
+    minutos depois de começar, e a guarda "esta noite já abriu?" contou aquele run como abertura.
+    A reserva e o despachante acharam que a noite tinha aberto, e **ninguém refez a coleta
+    perdida**. As tentativas das 03:56 e 04:38 saíram sem trabalhar.
+
+    A distinção que importa não é a conclusão do run, é se houve trabalho: um elo que coletou e
+    falhou no PUSH trabalhou — refazê-lo duplicaria lote e commit, que é o que o comentário
+    anterior desta função temia, com razão. Um elo cancelado antes de coletar não trabalhou.
+
+    Quem sabe a diferença é o próprio elo, que grava o marcador `feito` ao terminar os comandos de
+    coleta, ANTES do commit. Por isso `feito` vence a conclusão sempre que está declarado; sem
+    marcador, cai-se no que a conclusão permite dizer.
+    """
+    if feito is not None:
+        return bool(feito)
+    return str(conclusao or "").strip().lower() in ("success", "in_progress", "failure")
+
+
+NAO_CONTAM = ("cancelled", "skipped", "timed_out", "desconhecida", "")
+
+
+def linha(elo: str, noite: str, inicio: str, fim: str, conclusao: str,
+          feito: bool = None) -> dict:
     """A linha do painel. Função pura — é ela que o autoteste exercita."""
     return {"noite": noite, "elo": elo, "inicio": inicio, "fim": fim,
             "minutos": minutos_entre(inicio, fim),
             "dentro_da_janela": dentro_da_janela(fim),
-            "conclusao": conclusao or "desconhecida"}
+            "conclusao": conclusao or "desconhecida",
+            "trabalhou": trabalhou(conclusao, feito)}
 
 
 # 04/10/2026: o horário PREVISTO de cada elo. Só a abertura tem cron; os outros são acionados pelo
@@ -155,6 +182,25 @@ def _autoteste() -> int:
     ok("a linha traz os minutos", l["minutos"] == 227)
     ok("a linha diz se ficou na janela", l["dentro_da_janela"] is True)
     ok("a linha guarda a conclusão", l["conclusao"] == "success")
+
+    # ---- cancelado não é feito (05/10/2026, item 3.1) ----
+    ok("success conta como trabalho", trabalhou("success"))
+    ok("em execução conta como trabalho", trabalhou("in_progress"))
+    ok("falha conta: o elo coletou e perdeu o push — refazer duplicaria lote",
+       trabalhou("failure"))
+    ok("CANCELADO não conta", not trabalhou("cancelled"))
+    ok("pulado não conta", not trabalhou("skipped"))
+    ok("estourou o tempo não conta", not trabalhou("timed_out"))
+    ok("conclusão desconhecida não conta", not trabalhou(""))
+    ok("o marcador `feito` vence a conclusão: cancelado com trabalho feito CONTA",
+       trabalhou("cancelled", feito=True))
+    ok("o marcador `feito` vence a conclusão: success sem trabalho NÃO conta",
+       not trabalhou("success", feito=False))
+    ok("a linha registra se o elo trabalhou",
+       linha("x", "n", "01:00", "02:00", "cancelled")["trabalhou"] is False
+       and linha("x", "n", "01:00", "02:00", "success")["trabalhou"] is True)
+    ok("a caixa da conclusão não muda a resposta", trabalhou("SUCCESS"))
+
     ok("sem conclusão, fica declarado",
        linha("x", "n", "01:00", "02:00", "")["conclusao"] == "desconhecida")
 
@@ -203,11 +249,11 @@ def _autoteste() -> int:
        not ({"gravar", "gravar_em", "write_text"} & nomes))
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
-          else "✓ AUTOTESTE OK — 29 casos, sem rede e sem escrita.")
+          else "✓ AUTOTESTE OK — 40 casos, sem rede e sem escrita.")
     return 1 if falhas else 0
 
 
-def registrar(elo: str, inicio: str, conclusao: str) -> dict:
+def registrar(elo: str, inicio: str, conclusao: str, feito: bool = None) -> dict:
     """Acrescenta a linha desta execução ao painel. Escreve."""
     from coletores_base import gravar, ler, hoje_editorial
     agora = dt.datetime.utcnow()
@@ -218,7 +264,7 @@ def registrar(elo: str, inicio: str, conclusao: str) -> dict:
              agora.date() - dt.timedelta(days=1)).isoformat()
     doc = ler(ARQUIVO) or {"_governanca": GOV, "noites": []}
     doc.setdefault("_governanca", GOV)
-    nova = linha(elo, noite, inicio or fim, fim, conclusao)
+    nova = linha(elo, noite, inicio or fim, fim, conclusao, feito)
     doc.setdefault("noites", []).append(nova)
     doc["noites"] = doc["noites"][-400:]
     gravar(ARQUIVO, doc)
@@ -234,7 +280,9 @@ def main() -> int:
         elo = sys.argv[i + 1]
         inicio = sys.argv[sys.argv.index("--inicio") + 1] if "--inicio" in sys.argv else None
         conclusao = sys.argv[sys.argv.index("--conclusao") + 1] if "--conclusao" in sys.argv else ""
-        nova = registrar(elo, inicio, conclusao)
+        # `--feito` é o elo dizendo "eu coletei", gravado antes do commit. Ele vence a conclusão.
+        feito = True if "--feito" in sys.argv else (False if "--nao-feito" in sys.argv else None)
+        nova = registrar(elo, inicio, conclusao, feito)
         print(f"painel da noite: {nova['elo']} {nova['inicio']}→{nova['fim']} "
               f"({nova['minutos']} min) · dentro da janela: "
               f"{'sim' if nova['dentro_da_janela'] else 'NÃO'}")

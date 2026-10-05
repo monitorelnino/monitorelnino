@@ -69,6 +69,9 @@ RAIZ = pathlib.Path(__file__).resolve().parent.parent
 LOGS_QUE_SO_CRESCEM = {
     "data/log_buscas.json": "execucoes",
     "data/historico_mudancas.json": "eventos",
+    # 05/10/2026: o painel de saúde acrescenta uma linha por execução e nunca reescreve as
+    # anteriores — é a mesma forma, e o portão `verificar_escritores.py` cobrou a classe.
+    "data/saude_pipeline.json": "execucoes",
 }
 
 # Função de outros dados. Resolve-se com a versão de cima e regenera-se depois.
@@ -87,6 +90,138 @@ REGENERAVEIS = (
 # Fica como PREFIXO, não nome exato, porque o conjunto cresce com o dado (um CSV novo em
 # dados-abertos/ nasce derivado, e não deve precisar de PR para ser resolvido).
 PREFIXOS_REGENERAVEIS = ("dados-abertos/", "feeds/", "selos/")
+
+# 05/10/2026 (item 2 do handover da noite confiável) — AS FILAS DE PISTA PASSAM A SER RESOLVÍVEIS.
+#
+# Até hoje `data/pistas_imprensa.json` era RECUSADO de propósito, e o cabeçalho deste arquivo dizia
+# por quê: "os dois lados alteram os MESMOS registros (status de triagem) ... escolher qual vence é
+# política de mesclagem — decisão da editoria, não deste script". Estava certo: a política não
+# existia.
+#
+# Ela existe desde o PR #555. `scripts/pistas.py` é a única porta da fila e declara, com 46 casos de
+# autoteste, o que acontece com cada caso: pista nova é validada e acrescentada; pista que já está
+# lá tem os campos MESCLADOS; pista que só um lado conhece FICA. Esta classe aplica a mesma política
+# ao conflito de rebase — e é por isso que ela pode existir agora e não podia antes.
+#
+# O que ela continua recusando, e é o núcleo da política: quando os dois lados mudaram o MESMO campo
+# da MESMA pista para valores diferentes. Aí a pergunta "qual vence" é real, e adivinhar seria
+# exatamente o que custou 3.000 execuções em 23/09. Na prática é raro, porque cada elo escreve
+# campos distintos — a triagem escreve `triagem`, o seguimento escreve `seguimento`, o juiz escreve
+# `status`.
+#
+# O ganho medido: a busca web perdeu 114 minutos de trabalho na noite de 04→05/10 porque o rebase
+# conflitou quatro vezes nestes arquivos e o laço desistiu.
+FILAS_DE_PISTA = (
+    "data/pistas_imprensa.json",
+    "data/pistas_descobertas.json",
+    "data/pistas_doe.json",
+    "data/pistas_sinais.json",
+    "data/pistas_rejeitadas.json",
+)
+
+
+def _chave_de_pista(pista: dict) -> str:
+    """A identidade da pista. A MESMA de `scripts/pistas.chave_da_pista` — duas definições de
+    identidade produziriam duas filas diferentes que se acham iguais."""
+    p = pista or {}
+    ident = str(p.get("id") or "").strip()
+    if ident:
+        return "id:" + ident
+    url = str(p.get("url_final") or p.get("url") or "").strip()
+    return "url:" + url + "|" + str(p.get("alvo") or p.get("ibge") or p.get("uf") or "")
+
+
+def _mesclar_pista(base: dict, nossa: dict, delas: dict) -> dict:
+    """A pista com os campos dos dois lados. Levanta `Recusa` no conflito real. Função pura.
+
+    A regra: parte-se da base e aplica-se o que cada lado MUDOU em relação a ela. Campo que só um
+    lado tocou entra. Campo que os dois tocaram para o MESMO valor entra. Campo que os dois tocaram
+    para valores DIFERENTES é a pergunta que ninguém decidiu — recusa.
+    """
+    b = dict(base or {})
+    fora = dict(b)
+    for campo in sorted(set(dict(nossa or {})) | set(dict(delas or {}))):
+        na_base = b.get(campo, _AUSENTE)
+        nosso_v = (nossa or {}).get(campo, _AUSENTE)
+        deles_v = (delas or {}).get(campo, _AUSENTE)
+        nos_mudou = nosso_v != na_base
+        eles_mudou = deles_v != na_base
+        if nos_mudou and eles_mudou and nosso_v != deles_v:
+            raise Recusa(f"os dois lados mudaram o campo {campo!r} da mesma pista para valores "
+                         f"diferentes — qual vence é política, e este script não adivinha")
+        escolhido = nosso_v if nos_mudou else (deles_v if eles_mudou else na_base)
+        if escolhido is _AUSENTE:
+            fora.pop(campo, None)
+        else:
+            fora[campo] = escolhido
+    return fora
+
+
+def unir_fila_de_pistas(caminho, base_txt, nosso_txt, deles_txt):
+    """Une a fila pela base comum, com a política da porta única. Devolve (doc, n_nosso, n_deles,
+    n_uniao, n_mescladas).
+
+    Nada se perde: pista que só um lado tem FICA, e a união nunca é menor que o maior dos lados —
+    a mesma trava de 23/09, pelo mesmo motivo.
+    """
+    if nosso_txt is None or deles_txt is None:
+        raise Recusa("um dos lados não tem o arquivo; isto não é acréscimo dos dois lados")
+    nosso, deles = json.loads(nosso_txt), json.loads(deles_txt)
+    base = json.loads(base_txt) if base_txt is not None else {}
+
+    chave = None
+    for candidata in ("pistas", "itens", "rejeitadas"):
+        if isinstance(nosso.get(candidata), list) and isinstance(deles.get(candidata), list):
+            chave = candidata
+            break
+    if chave is None:
+        raise Recusa("os dois lados não trazem a mesma lista de pistas no formato esperado")
+
+    lb = base.get(chave) if isinstance(base.get(chave), list) else []
+    ln, ld = nosso[chave], deles[chave]
+    por_chave_base = {_chave_de_pista(p): p for p in lb}
+    por_chave_nosso = {_chave_de_pista(p): p for p in ln}
+    por_chave_deles = {_chave_de_pista(p): p for p in ld}
+
+    # A ORDEM é a da base, depois os acréscimos nossos, depois os deles. Ordem estável mantém o
+    # diff legível e faz a união ser a mesma qualquer que seja o lado em que o rebase corre.
+    ordem = [_chave_de_pista(p) for p in lb]
+    ordem += [k for k in (_chave_de_pista(p) for p in ln) if k not in por_chave_base]
+    vistas = set(ordem)
+    ordem += [k for k in (_chave_de_pista(p) for p in ld)
+              if k not in por_chave_base and k not in vistas]
+
+    uniao, mescladas = [], 0
+    for k in ordem:
+        na_base = por_chave_base.get(k)
+        nossa = por_chave_nosso.get(k)
+        delas = por_chave_deles.get(k)
+        if na_base is not None and nossa is not None and delas is not None:
+            uniao.append(_mesclar_pista(na_base, nossa, delas))
+            if nossa != delas:
+                mescladas += 1
+        else:
+            uniao.append(nossa if nossa is not None else (delas if delas is not None else na_base))
+
+    if len(uniao) < max(len(ln), len(ld)):
+        raise Recusa(f"a união deu {len(uniao)}, menor que um dos lados ({len(ln)} e {len(ld)}) — "
+                     f"recusado")
+
+    fundido = dict(deles)
+    for k, v in nosso.items():
+        if k != chave and k not in fundido:
+            fundido[k] = v
+    fundido[chave] = uniao
+    return fundido, len(ln), len(ld), len(uniao), mescladas
+
+
+class _Ausente:
+    """O campo não existe neste lado — distinto de existir com valor nulo."""
+    def __repr__(self):
+        return "<ausente>"
+
+
+_AUSENTE = _Ausente()
 
 
 def e_regeneravel(caminho: str) -> bool:
@@ -186,6 +321,21 @@ def resolver(repo=None, escrever=True):
                         encoding="utf-8", newline="")
                     git("add", "--", norm, repo=repo)
                 resolvidos.append(f"{norm}: {a} + {b} → {t} (união pela base comum)")
+
+            elif norm in FILAS_DE_PISTA:
+                fundido, a, b, t, m = unir_fila_de_pistas(
+                    norm,
+                    estagio(norm, 1, repo=repo), estagio(norm, 2, repo=repo),
+                    estagio(norm, 3, repo=repo))
+                if escrever:
+                    # Indentado, como `coletores_base.gravar` grava a fila: o diff do robô tem de
+                    # continuar legível, e trocar o formato aqui mudaria o arquivo inteiro.
+                    (raiz / norm).write_text(
+                        json.dumps(fundido, ensure_ascii=False, indent=1) + "\n",
+                        encoding="utf-8", newline="\n")
+                    git("add", "--", norm, repo=repo)
+                resolvidos.append(f"{norm}: {a} + {b} → {t} pista(s), {m} mesclada(s) "
+                                  f"(união pela base comum, política de scripts/pistas.py)")
 
             elif e_regeneravel(norm):
                 de_cima = estagio(norm, 2, repo=repo)
@@ -307,12 +457,79 @@ def autoteste() -> int:
 
     # 4. NEGATIVO: caminho sem política decidida NÃO é adivinhado
     with tempfile.TemporaryDirectory() as t:
-        r = _repo_com_conflito(t, "data/pistas_imprensa.json",
-                               '{"pistas":[{"a":1}]}', '{"pistas":[{"a":2}]}',
-                               '{"pistas":[{"a":3}]}')
+        r = _repo_com_conflito(t, "data/municipios.json",
+                               '{"municipios":[{"a":1}]}', '{"municipios":[{"a":2}]}',
+                               '{"municipios":[{"a":3}]}')
         res, reg, rec = resolver(repo=r)
         checar("caminho sem resolução conhecida é RECUSADO",
                not res and len(rec) == 1 and "não está decidida" in rec[0])
+
+    # 4b. FILA DE PISTA (05/10/2026): a classe nova. Cada lado acrescentou uma pista; nada se perde.
+    def _fila(*pistas):
+        return json.dumps({"pistas": list(pistas), "atualizado_em": "2026-10-05"},
+                          ensure_ascii=False)
+
+    A = {"id": "a1", "url_final": "https://x/a", "alvo": "1", "tipo": "plano", "nivel": "A",
+         "data": "2026-10-04", "origem": "busca_web", "status": "pista"}
+    B = {"id": "b1", "url_final": "https://x/b", "alvo": "2", "tipo": "plano", "nivel": "B",
+         "data": "2026-10-05", "origem": "imprensa", "status": "pista"}
+    C = {"id": "c1", "url_final": "https://x/c", "alvo": "3", "tipo": "estrutura", "nivel": "C",
+         "data": "2026-10-05", "origem": "diario", "status": "pista"}
+
+    with tempfile.TemporaryDirectory() as t:
+        r = _repo_com_conflito(t, "data/pistas_imprensa.json",
+                               _fila(A), _fila(A, B), _fila(A, C))
+        res, reg, rec = resolver(repo=r)
+        checar("fila de pista: os acréscimos dos DOIS lados entram",
+               not rec and len(res) == 1 and "3 pista(s)" in res[0])
+        doc = json.loads((pathlib.Path(r) / "data/pistas_imprensa.json").read_text(encoding="utf-8"))
+        checar("fila de pista: a união tem as três, na ordem base → nossas → delas",
+               [x["id"] for x in doc["pistas"]] == ["a1", "b1", "c1"])
+
+    with tempfile.TemporaryDirectory() as t:
+        # Cada lado tocou um CAMPO DIFERENTE da mesma pista: é o caso comum da noite — a triagem
+        # escreve `triagem`, o seguimento escreve `seguimento`. Os dois entram.
+        r = _repo_com_conflito(t, "data/pistas_imprensa.json",
+                               _fila(A),
+                               _fila(dict(A, triagem="humana")),
+                               _fila(dict(A, seguimento={"data": "05/10/2026"})))
+        res, reg, rec = resolver(repo=r)
+        doc = json.loads((pathlib.Path(r) / "data/pistas_imprensa.json").read_text(encoding="utf-8"))
+        checar("fila de pista: campos diferentes da mesma pista se MESCLAM",
+               not rec and doc["pistas"][0].get("triagem") == "humana"
+               and doc["pistas"][0].get("seguimento", {}).get("data") == "05/10/2026")
+        checar("fila de pista: a mescla é contada na saída", "1 mesclada(s)" in res[0])
+
+    with tempfile.TemporaryDirectory() as t:
+        # O MESMO campo, valores diferentes: a pergunta é real, e o script não a responde.
+        r = _repo_com_conflito(t, "data/pistas_imprensa.json",
+                               _fila(A),
+                               _fila(dict(A, status="fechada — sem documento")),
+                               _fila(dict(A, status="aplicada")))
+        res, reg, rec = resolver(repo=r)
+        checar("fila de pista: o MESMO campo com valores diferentes é RECUSADO",
+               not res and len(rec) == 1 and "qual vence é política" in rec[0])
+
+    with tempfile.TemporaryDirectory() as t:
+        # Sem base comum (arquivo nasceu nos dois lados): a união é nossas + delas.
+        r = _repo_com_conflito(t, "data/pistas_doe.json", None, _fila(A, B), _fila(A, C))
+        res, reg, rec = resolver(repo=r)
+        doc = json.loads((pathlib.Path(r) / "data/pistas_doe.json").read_text(encoding="utf-8"))
+        checar("fila de pista sem base comum: nada se perde",
+               not rec and sorted(x["id"] for x in doc["pistas"]) == ["a1", "b1", "c1"])
+
+    with tempfile.TemporaryDirectory() as t:
+        # A trava de 23/09, aplicada à fila: a união nunca é menor que o maior dos lados.
+        r = _repo_com_conflito(t, "data/pistas_imprensa.json",
+                               _fila(A), _fila(A, B), _fila(A, B, C))
+        res, reg, rec = resolver(repo=r)
+        doc = json.loads((pathlib.Path(r) / "data/pistas_imprensa.json").read_text(encoding="utf-8"))
+        checar("fila de pista: a união nunca é menor que o maior dos lados",
+               not rec and len(doc["pistas"]) == 3)
+
+    checar("data/pistas_revisao.json segue DERIVADO, não fila (ele é função da fila)",
+           "data/pistas_revisao.json" in REGENERAVEIS
+           and "data/pistas_revisao.json" not in FILAS_DE_PISTA)
 
     # 5. NEGATIVO: mudança de formato no meio do conflito não passa
     with tempfile.TemporaryDirectory() as t:

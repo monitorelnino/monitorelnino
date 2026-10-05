@@ -158,6 +158,22 @@ jobs:
           ${{ inputs.comandos }}
           COMANDOS
 
+      # 05/10/2026 (item 3.1 do handover da noite confiável) — CANCELADO NÃO É FEITO.
+      # O marcador é gravado AQUI: depois dos comandos de coleta, antes do commit. A ordem é a
+      # regra. Um elo que coletou e perdeu o push trabalhou, e refazê-lo duplicaria lote e commit;
+      # um elo cancelado antes de coletar não trabalhou, e tem de ser refeito. Medido na noite de
+      # 04→05/10: `diarios / coletar` foi cancelado dois minutos depois de começar, a guarda contou
+      # aquele run como abertura da noite, e ninguém refez a coleta perdida.
+      - name: Marcar que este elo trabalhou
+        id: feito
+        run: |
+          NOITE="$(python3 scripts/janela_da_noite.py --noite)"
+          mkdir -p "data/noite/$NOITE"
+          echo "${{ inputs.nome }} · $(date -u +%FT%TZ) · run ${{ github.run_id }}" \
+            > "data/noite/$NOITE/${{ inputs.nome }}.feito"
+          echo "feito=1" >> "$GITHUB_OUTPUT"
+          echo "marcador: data/noite/$NOITE/${{ inputs.nome }}.feito"
+
       - name: Regenerar derivados
         continue-on-error: true
         timeout-minutes: 10
@@ -175,8 +191,16 @@ jobs:
       - name: Registrar o elo no painel da noite
         continue-on-error: true
         timeout-minutes: 2
+        env:
+          FEITO: ${{ steps.feito.outputs.feito }}
         run: |
-          python3 scripts/painel_da_noite.py --registrar "${{ inputs.nome }}"             --inicio "${ELO_INICIO:-}" --conclusao "${{ job.status }}" || true
+          # `--feito` vem do passo do marcador: é o elo dizendo "eu coletei". Sem ele, o painel
+          # cai na conclusão do job, e um job cancelado passa a NÃO contar como noite aberta.
+          # A decisão fica no `run`, não numa expressão `${{ }}` dentro da linha de comando: foi
+          # expressão em lugar errado que fez o GitHub rejeitar dois workflows em 04/10.
+          MARCA="--nao-feito"
+          if [ "${FEITO:-}" = "1" ]; then MARCA="--feito"; fi
+          python3 scripts/painel_da_noite.py --registrar "${{ inputs.nome }}"             --inicio "${ELO_INICIO:-}" --conclusao "${{ job.status }}" "$MARCA" || true
 
       - name: Commit com rebase-e-push (item 1a)
         id: commit
@@ -206,22 +230,41 @@ jobs:
           for TENTATIVA in 1 2 3 4 5; do
             GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
             if ! git rebase FETCH_HEAD; then
-              # conflito em arquivo de dado GERADO se resolve regenerando, nunca à mão (item 1a).
-              git rebase --abort || true
-              echo "tentativa $TENTATIVA: rebase conflitou; regenerando derivados e tentando de novo"
-              GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
-              git rebase -X theirs FETCH_HEAD || { git rebase --abort || true; sleep $((TENTATIVA * 10)); continue; }
-              bash scripts/verificar_derivados.sh || true
-              # 29/09/2026: `evidencias/` ENTRA no commit. Sem ela, todo coletor que chama
-          # `preservar_evidencia` gravava o índice em `data/evidencias.json` e deixava o
-          # arquivo para trás no runner — o índice afirmando cópia preservada que não existe.
-          # Foram 216 numa noite. É o §270 outra vez, por outro caminho: lá o `.gitignore`
-          # descartava o binário, aqui o `git add` nunca o incluiu. O §275 consertou o
-          # primeiro e não viu o segundo, porque o portão só reprova quando o índice chega
-          # à `main` — e ele chegava junto, no mesmo commit.
-          git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt docs/FILA_PISTAS.md 2>/dev/null || true
-              git diff --cached --quiet || git commit --amend --no-edit
+              # 05/10/2026 (item 2 do handover da noite confiável) — A UNIÃO, NÃO O DESCARTE.
+              #
+              # Era `git rebase -X theirs`. Num arquivo de FILA isso não resolve, apaga: `-X theirs`
+              # manda o git escolher um lado inteiro, e o lado perdedor são as pistas que o outro elo
+              # acabou de achar. Medido na noite de 04→05/10: a busca web perdeu 114 minutos de
+              # trabalho em quatro tentativas de rebase conflitando em `data/pistas_imprensa.json`,
+              # `data/pistas_revisao.json` e `docs/MANIFEST_SHA256.txt`.
+              #
+              # A lei do projeto para arquivo que só cresce é unir pela BASE COMUM, nunca escolher um
+              # lado nem deduplicar por conteúdo (23/09: uma união por conteúdo produziu um log menor
+              # que cada lado e apagou quase 3.000 execuções). `scripts/unir_conflito_de_rodada.py`
+              # faz isso, e desde hoje sabe resolver as filas de pista com a política declarada por
+              # `scripts/pistas.py`: acréscimo dos dois lados entra, campo que só um lado tocou entra,
+              # MESMO campo com valores diferentes é RECUSADO em vez de adivinhado.
+              #
+              # Só se a união recusar é que se desiste desta tentativa. Desistir aqui não perde o
+              # trabalho: ele sai como artefato no passo abaixo.
+              echo "tentativa $TENTATIVA: rebase conflitou; unindo pela base comum"
+              if python3 scripts/unir_conflito_de_rodada.py; then
+                bash scripts/verificar_derivados.sh || true
+                git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt docs/FILA_PISTAS.md 2>/dev/null || true
+                if ! GIT_EDITOR=true git rebase --continue; then
+                  git rebase --abort || true
+                  echo "::warning::a união resolveu mas o rebase não seguiu; nova tentativa"
+                  sleep $((TENTATIVA * 10)); continue
+                fi
+              else
+                # Recusa registrada: a política daquele caminho não está decidida, e adivinhar
+                # apagaria dado. O trabalho vira artefato, e a editoria vê o nome do arquivo no log.
+                git rebase --abort || true
+                echo "::warning::a união RECUSOU um caminho — ver o nome no log acima; nova tentativa"
+                sleep $((TENTATIVA * 10)); continue
+              fi
             fi
+
             if GIT_SSH_COMMAND="$SSH" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main; then
               EMPURROU=1; echo "empurrado na tentativa $TENTATIVA"; break
             fi

@@ -230,7 +230,54 @@ for (_m, _h, _dia), _quais in sorted(_agendados.items()):
               f"{', '.join(_quais)} — desloque o minuto de um deles")
         erros += 1
 
+# ───────── 05/10/2026 (item 3.2 do handover da noite confiável) ─────────
+# NENHUM SCRIPT CANCELA RUN DE OUTRO.
+#
+# Na noite de 04→05/10 o job `diarios / coletar` foi cancelado às 01:14:09 UTC, dois minutos depois
+# de começar, e com ele a coleta da noite. A API REST não diz QUEM cancela um run — `actor` e
+# `triggering_actor` são quem disparou —, então essa pergunta não se responde pelo GitHub. O que se
+# pode garantir é o lado de cá, e a varredura de 05/10 confirmou que hoje não há nenhum
+# cancelamento automático na árvore.
+#
+# Esta trava existe para que continue assim: um `gh run cancel` acrescentado por conveniência
+# reintroduziria, calada, a perda que custou a noite. Cancelar é decisão de quem está ao teclado.
+#
+# Concorrência NÃO é cancelamento: `cancel-in-progress` é configuração de grupo, e o publicador o
+# usa de propósito (publicar duas vezes o mesmo estado não tem valor). Aqui o assunto é chamada
+# explícita de cancelamento, em workflow ou em script.
+import re as _re_cancel
+
+_PADROES_DE_CANCELAMENTO = (
+    (_re_cancel.compile(r"\bgh\s+run\s+cancel\b"), "gh run cancel"),
+    (_re_cancel.compile(r"actions/runs/[^\s\"']*/cancel"), "chamada /cancel na API de runs"),
+)
+_RAIZ_CANCEL = _pl.Path(__file__).resolve().parent.parent
+_CANCEL_IGNORA = ("arquivo/", "node_modules/", ".git/", "scripts/validar_workflows.py")
+
+for _alvo in sorted(list(_RAIZ_CANCEL.glob(".github/workflows/*.yml"))
+                    + list(_RAIZ_CANCEL.rglob("*.py"))
+                    + list(_RAIZ_CANCEL.glob("scripts/*.sh"))):
+    _rel = _alvo.relative_to(_RAIZ_CANCEL).as_posix()
+    if _rel.startswith(_CANCEL_IGNORA) or _rel in _CANCEL_IGNORA:
+        continue
+    try:
+        _fonte = _alvo.read_text(encoding="utf-8", errors="replace")
+    except OSError:
+        continue
+    for _n, _linha in enumerate(_fonte.splitlines(), start=1):
+        _nua = _linha.strip()
+        if _nua.startswith("#") or _nua.startswith("//"):
+            continue
+        for _padrao, _nome in _PADROES_DE_CANCELAMENTO:
+            if _padrao.search(_nua):
+                print(f"  ✗ {_rel}:{_n}: {_nome} — nenhum script cancela run de outro "
+                      f"(item 3.2 de 05/10/2026). Cancelar é decisão de quem está ao teclado; "
+                      f"automação que cancela apaga coleta sem aviso.")
+                erros += 1
+                break
+
 print("✓ WORKFLOWS OK — YAML válido, sem chave duplicada, todo job com teto de tempo, "
-      "todo portão de página com assunto declarado, reposição do domínio fora da fila da rodada."
+      "todo portão de página com assunto declarado, reposição do domínio fora da fila da rodada, "
+      "nenhum script cancelando run de outro."
       if not erros else f"✗ WORKFLOWS: {erros} problema(s).")
 sys.exit(1 if erros else 0)
