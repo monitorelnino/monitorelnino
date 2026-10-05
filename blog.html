@@ -27,6 +27,7 @@
 <title>Blog do MARÉ: os textos da editoria sobre o ciclo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="assets/catalogo.js?v=dd1229c8"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <script src="assets/mapas.js?v=d03e0aca"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=94671300">
@@ -45,30 +46,36 @@
   </header>
 <main id="conteudo">
   <h1>Blog do MARÉ</h1>
-  <p class="hint">Textos da editoria do MARÉ sobre o que está acontecendo no ciclo do El Niño: as emergências declaradas, os alertas, o que os órgãos de saúde registram, o que estados e municípios publicaram, o dinheiro que chega. Cada texto diz onde, quando e com que fonte. Os números vivos estão nas páginas do Monitor.</p>
+  <p class="hint" data-conteudo="blog.abertura">Textos da editoria do MARÉ sobre o que está acontecendo no ciclo do El Niño: as emergências declaradas, os alertas, o que os órgãos de saúde registram, o que estados e municípios publicaram, o dinheiro que chega. Cada texto diz onde, quando e com que fonte. Os números vivos estão nas páginas do Monitor.</p>
 
-  <!-- 03/10/2026 (handover do blog e da imprensa): saíram os quatro quadros "Situação do
-       monitoramento" — eles usavam o vocabulário antigo ("antecipação", "prontidão") e repetiam,
-       com outra régua, o que as páginas do Monitor publicam. No lugar entra UM cartão: o boletim
-       mais recente, com três números da semana congelados na edição. É o único cartão do blog,
-       por decisão explícita: no corpo dos textos não entra cartão nenhum. -->
-  <!-- 04/10/2026 (handover da rotina semanal): sai o cartão de números do antigo "Boletim" e
-       entram DOIS cartões de texto — o mais recente de cada linha da rotina, Legal e financiamento
-       e Saúde. A razão é da própria rotina: ela passa a produzir TEXTO, não edição numérica, e os
-       números vivem nas páginas do Monitor e no pacote interno. Cartão de uma linha sem texto não
-       aparece: cartão vazio é pior que cartão ausente. -->
-  <section id="destaques" aria-labelledby="destaquesTitulo">
-    <h2 id="destaquesTitulo">Os textos mais recentes</h2>
-    <div class="grade-figuras grade-figuras--3" id="destaquesTextos"></div>
+  <!-- 05/10/2026 (handover da preparação programática, item 6.1): o blog deixa de ser índice e
+       passa a ser a PÁGINA DOS TEXTOS. Cada texto aparece inteiro, um após o outro, do mais
+       recente ao mais antigo, com título, etiqueta e data, autoria, corpo em prosa, linha de
+       fontes e "como citar" com o endereço permanente. A partir do décimo primeiro texto, os dez
+       mais recentes ficam inteiros e os anteriores vão para uma lista no fim.
+
+       Saíram, por decisão deste handover: a lista de links com abertura solta e o filtro de
+       etiqueta. Saíram TAMBÉM os dois cartões de "textos mais recentes", e a razão é consequência
+       do que entrou: com cada texto inteiro na página, do mais novo ao mais antigo, o mais
+       recente de cada linha já é o que o leitor encontra primeiro. O cartão passaria a repetir
+       título e abertura logo acima do próprio texto, e redundância é o que a governança editorial
+       manda remover. A divergência com o contrato anterior está registrada em
+       `layout/contratos/blog.json`.
+
+       As páginas individuais continuam, e são elas que o endereço permanente e o feed apontam. -->
+  <section id="textos" aria-labelledby="textosTitulo">
+    <h2 id="textosTitulo" data-conteudo="blog.textos.titulo_da_secao">Textos</h2>
+    <div id="blogTextos">
+      <noscript><p class="hint">Os textos estão em <a href="feeds/blog.xml">feed Atom</a> e cada um no seu endereço permanente.</p></noscript>
+    </div>
   </section>
 
-  <section id="textos" aria-labelledby="textosTitulo">
-    <h2 id="textosTitulo">Textos</h2>
-    <p class="hint">Do mais recente ao mais antigo. Também em <a href="feeds/blog.xml">feed Atom</a>.</p>
-    <p><label class="spec" for="blogFiltro">Etiqueta</label>
-       <select id="blogFiltro" class="seletor"></select></p>
+  <section id="anteriores" aria-labelledby="anterioresTitulo" hidden>
+    <h2 id="anterioresTitulo" data-conteudo="blog.anteriores.titulo_da_secao">Textos anteriores</h2>
     <ol class="blog-lista" id="blogLista"></ol>
   </section>
+
+  <p class="hint u-mb-0">Também em <a href="feeds/blog.xml">feed Atom</a>.</p>
 </main>
   <footer class="site-footer">
     <div class="grad-line"></div>
@@ -79,7 +86,7 @@
 </div>
 
 <script src="assets/colunas.js?v=3669e58d" defer></script>
-<script src="assets/js/blog.js?v=edc95e64" defer></script>
+<script src="assets/js/blog.js?v=7f8a0ec2" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

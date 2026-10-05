@@ -121,8 +121,12 @@ def veredito_da_recusa(erro) -> dict:
 
 def _autoteste() -> int:
     falhas = []
+    # O total era um literal e envelhecia calado: dizia cobrir mais casos do que
+    # cobre, ou menos. Agora e contado.
+    _casos_contados = []
 
     def ok(nome, cond):
+        _casos_contados.append(nome)
         print(("  ✓ " if cond else "  ✗ ") + nome)
         if not cond:
             falhas.append(nome)
@@ -175,7 +179,7 @@ def _autoteste() -> int:
        not any(f'gravar("{b}' in fonte for b in BANCO_PROIBIDO))
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
-          else "✓ AUTOTESTE OK — 14 casos, sem rede e sem escrita.")
+          else f"✓ AUTOTESTE OK — {len(_casos_contados)} casos, sem rede e sem escrita.")
     return 1 if falhas else 0
 
 

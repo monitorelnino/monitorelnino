@@ -165,6 +165,34 @@ def _para_subpasta(trecho: str) -> str:
     return trecho
 
 
+def _linha_de_fontes(post: dict, recuo: str = "") -> str:
+    """A linha de fontes do texto, ou "" quando o cabeçalho não a traz. Função pura.
+
+    Sem fontes não se escreve "sem fontes" nem se inventa nada: a ausência da linha é o que a
+    ausência de dado permite. O guia da central exige `fontes` e o verificador cobra, então a
+    linha falta só em texto que já estaria reprovado por outro motivo.
+    """
+    fontes = str(post.get("fontes") or "").strip()
+    if not fontes:
+        return ""
+    return recuo + '<p class="post-fontes spec">Fontes: ' + _html.escape(fontes) + "</p>\n"
+
+
+def _como_citar(post: dict, recuo: str = "") -> str:
+    """O "como citar" do texto, com o endereço permanente. Função pura.
+
+    Mesma forma na página do texto e na página do blog, porque é o mesmo elemento: endereço
+    permanente é o que faz um texto citável, e ele não muda de redação conforme a página.
+    """
+    url = str(post.get("endereco_permanente") or "").strip()
+    if not url:
+        return ""
+    return (recuo + '<p class="post-citar spec">Como citar: Editoria do MARÉ. '
+            + _html.escape(str(post.get("titulo") or "")) + ". Blog do MARÉ, "
+            + str(post.get("data_br") or "") + '. <a href="' + _html.escape(url) + '">'
+            + _html.escape(url) + "</a></p>\n")
+
+
 def render_post(post: dict, cabecalho: str, rodape: str, scripts: str) -> str:
     t = _html.escape(post["titulo"]); desc = _html.escape(post["resumo"])
     url = BASE_URL + post["url"]
@@ -209,7 +237,7 @@ def render_post(post: dict, cabecalho: str, rodape: str, scripts: str) -> str:
     <div class="post-corpo">
 {post['html']}
     </div>
-    <p class="post-volta"><a href="../blog.html">Todos os textos</a> · <a href="../feeds/blog.xml">Feed</a></p>
+{_linha_de_fontes(post, "    ")}{_como_citar(post, "    ")}    <p class="post-volta"><a href="../blog.html">Todos os textos</a> · <a href="../feeds/blog.xml">Feed</a></p>
   </article>
 </main>
 {rodape}
@@ -331,7 +359,7 @@ def gerar() -> dict[Path, str]:
         saida[DIR_SAIDA / f"{p['slug']}.html"] = render_post(p, cabecalho, rodape, scripts)
     indice = {"_governanca": "Índice dos textos do Blog do MARÉ, gerado por gerar_blog.py a partir de blog/posts/*.md. Nunca editado à mão.",
               "categorias": CATEGORIAS,
-              "posts": [{k: p[k] for k in ("slug", "titulo", "data", "data_br", "categoria", "categoria_rotulo", "autor", "resumo", "palavras", "url", "etiqueta", "endereco_permanente", "fontes")} for p in posts]}
+              "posts": [{k: p[k] for k in ("slug", "titulo", "data", "data_br", "categoria", "categoria_rotulo", "autor", "resumo", "palavras", "url", "etiqueta", "endereco_permanente", "fontes", "html")} for p in posts]}
     saida[INDICE] = json.dumps(indice, ensure_ascii=False, indent=2) + "\n"
     saida[FEED] = render_feed(posts)
     return saida

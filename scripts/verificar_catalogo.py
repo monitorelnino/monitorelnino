@@ -56,6 +56,23 @@ def identificadores_da_pagina(html: str) -> set:
     return set(re.findall(r'data-conteudo(?:-html)?="([^"]+)"', html or ""))
 
 
+def sem_o_leitor(html: str, pedidos: set) -> list:
+    """Página que pede identificador e não carrega `assets/catalogo.js`. Função pura.
+
+    Faltava a mais óbvia das conferências, e ela escapou em 05/10/2026 no próprio blog: a migração
+    marcou os elementos, este portão conferiu que todo identificador pedido existia, e passou verde
+    com a página sem o leitor — de modo que o catálogo não era lido e o que o leitor via era só o
+    texto de reserva do HTML. Identificador pedido sem leitor na página não é catálogo: é marcação
+    inerte que ninguém resolve.
+    """
+    if not pedidos:
+        return []
+    if "assets/catalogo.js" in html:
+        return []
+    return [f"pede {len(pedidos)} identificador(es) do catálogo e não carrega "
+            f"assets/catalogo.js — a página fica com o texto de reserva"]
+
+
 def ausentes(pedidos: set, catalogo: dict, comum: dict = None) -> list:
     """Os identificadores pedidos e não declarados. Função pura."""
     tem = set(catalogo or {}) | set(comum or {})
@@ -128,8 +145,12 @@ def renomeacoes_faltando(antigos: set, atuais: set, registradas: dict) -> list:
 
 def _autoteste() -> int:
     falhas = []
+    # O total era um literal e envelhecia calado: dizia cobrir mais casos do que
+    # cobre, ou menos. Agora e contado.
+    _casos_contados = []
 
     def ok(nome, cond):
+        _casos_contados.append(nome)
         print(("  ✓ " if cond else "  ✗ ") + nome)
         if not cond:
             falhas.append(nome)
@@ -179,6 +200,12 @@ def _autoteste() -> int:
        renomeacoes_faltando({"a", "b"}, {"a"}, {"b": "a"}) == [])
     ok("identificador novo não é sumiço", renomeacoes_faltando({"a"}, {"a", "c"}, {}) == [])
 
+    ok("pagina que pede identificador e nao carrega o leitor reprova",
+       sem_o_leitor("<p data-conteudo='x.y'></p>", {"x.y"}) != [])
+    ok("pagina com o leitor passa",
+       sem_o_leitor("<script src='assets/catalogo.js?v=1'></script>", {"x.y"}) == [])
+    ok("pagina que nao pede nada nao precisa do leitor", sem_o_leitor("<p></p>", set()) == [])
+
     import dis
     nomes = set()
     for n in ("identificadores_da_pagina", "ausentes", "vocabulario_proibido_em",
@@ -190,7 +217,7 @@ def _autoteste() -> int:
        not ({"read_text", "write_text", "open", "gravar"} & nomes))
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
-          else "✓ AUTOTESTE OK — 23 casos, sem rede e sem escrita.")
+          else f"✓ AUTOTESTE OK — {len(_casos_contados)} casos, sem rede e sem escrita.")
     return 1 if falhas else 0
 
 
@@ -224,9 +251,11 @@ def main() -> int:
 
         html_arq = RAIZ / f"{nome}.html"
         if html_arq.exists():
-            pedidos = identificadores_da_pagina(html_arq.read_text(encoding="utf-8"))
+            html = html_arq.read_text(encoding="utf-8")
+            pedidos = identificadores_da_pagina(html)
             problemas += [f"{nome}: {x} pedido pela página e ausente do catálogo"
                           for x in ausentes(pedidos, textos, comum)]
+            problemas += [f"{nome}: {x}" for x in sem_o_leitor(html, pedidos)]
 
         problemas += [f"{nome}: {x}" for x in vocabulario_proibido_em(
             textos, vocab.get("global") or [], vocab.get("por_pagina") or {},

@@ -223,8 +223,12 @@ def extrair(html: str, pagina: str) -> tuple:
 
 def _autoteste() -> int:
     falhas = []
+    # O total era um literal e envelhecia calado: dizia cobrir mais casos do que
+    # cobre, ou menos. Agora e contado.
+    _casos_contados = []
 
     def ok(nome, cond):
+        _casos_contados.append(nome)
         print(("  ✓ " if cond else "  ✗ ") + nome)
         if not cond:
             falhas.append(nome)
@@ -318,7 +322,7 @@ def _autoteste() -> int:
        not ({"read_text", "write_text", "open", "gravar"} & nomes))
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
-          else "✓ AUTOTESTE OK — 33 casos, sem rede e sem escrita.")
+          else f"✓ AUTOTESTE OK — {len(_casos_contados)} casos, sem rede e sem escrita.")
     return 1 if falhas else 0
 
 

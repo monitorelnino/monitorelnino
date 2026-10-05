@@ -189,8 +189,12 @@ def montar(mps: dict, transf: dict, rec: dict, comp: dict, corte: datetime) -> d
 
 def _autoteste() -> int:
     falhas = []
+    # O total era um literal e envelhecia calado: dizia cobrir mais casos do que
+    # cobre, ou menos. Agora e contado.
+    _casos_contados = []
 
     def ok(nome, cond):
+        _casos_contados.append(nome)
         print(("  ✓ " if cond else "  ✗ ") + nome)
         if not cond:
             falhas.append(nome)
@@ -255,7 +259,7 @@ def _autoteste() -> int:
        not any(b in fonte.split("BANCO_PROIBIDO = ")[-1].split("}")[1] for b in BANCO_PROIBIDO))
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
-          else "✓ AUTOTESTE OK — 19 casos, sem rede e sem escrita em data/.")
+          else f"✓ AUTOTESTE OK — {len(_casos_contados)} casos, sem rede e sem escrita em data/.")
     return 1 if falhas else 0
 
 
