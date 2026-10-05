@@ -1,0 +1,76 @@
+{
+  "_governanca": "UM ESCRITOR POR ARQUIVO (item 2 do HANDOVER_noite_confiavel_05-10-2026.md). Cada arquivo compartilhado da corrente noturna declara aqui QUEM pode commitá-lo. O portão `scripts/verificar_escritores.py` reprova no PR o workflow que commite arquivo cujo escritor declarado é outro. A regra nasceu da noite de 04→05/10: a busca web perdeu 114 minutos de trabalho porque quatro rebases conflitaram em `data/pistas_imprensa.json`, `data/pistas_revisao.json` e `docs/MANIFEST_SHA256.txt` — vários elos gravando os mesmos arquivos em paralelo.",
+  "_como_ler": "Chave = caminho (ou prefixo terminado em /). Valor = { escritor, por_que }. `escritor` é o workflow que pode commitar, ou `qualquer_elo` quando o arquivo é unido pela base comum e a corrida é resolvida, não evitada.",
+  "_o_que_este_portao_nao_faz": "Ele não impede duas execuções de gravarem ao mesmo tempo — isso é concorrência, e quem decide é o grupo do workflow. Ele impede que o CONJUNTO de arquivos que cada elo commita se sobreponha onde a sobreposição não tem resolução declarada.",
+
+  "arquivos": {
+    "docs/MANIFEST_SHA256.txt": {
+      "escritor": "qualquer_elo",
+      "por_que": "Derivado de tudo o mais. Conflito nele resolve-se com a versão de cima e a cadeia canônica regenera — `scripts/unir_conflito_de_rodada.py`, classe REGENERAVEIS. O handover pede que só o publicador o commite; a mudança fica para o PR do ensaio da noite, porque remover o manifesto do commit do elo deixa a `main` com manifesto obsoleto entre o elo e o publicador, e isso tem de ser provado no ensaio antes de valer. Até lá o conflito está resolvido, não evitado.",
+      "pendente": "mover para o publicador, provado pelo ensaio da noite (item 5)"
+    },
+    "docs/FILA_PISTAS.md": {
+      "escritor": "qualquer_elo",
+      "por_que": "Derivado da fila. Mesma classe REGENERAVEIS."
+    },
+    "data/pistas_imprensa.json": {
+      "escritor": "qualquer_elo",
+      "por_que": "A fila tem UMA porta (`scripts/pistas.py`) e uma política de mesclagem declarada e testada: acréscimo dos dois lados entra, campo que só um lado tocou entra, mesmo campo com valores diferentes é recusado. `unir_conflito_de_rodada.py` aplica essa política ao conflito de rebase, classe FILAS_DE_PISTA. A corrida é resolvida, não evitada — e é por isso que este arquivo pode ter vários elos."
+    },
+    "data/pistas_descobertas.json": { "escritor": "qualquer_elo", "por_que": "Fila, classe FILAS_DE_PISTA." },
+    "data/pistas_doe.json": { "escritor": "qualquer_elo", "por_que": "Fila, classe FILAS_DE_PISTA." },
+    "data/pistas_sinais.json": { "escritor": "qualquer_elo", "por_que": "Fila, classe FILAS_DE_PISTA." },
+    "data/pistas_rejeitadas.json": { "escritor": "qualquer_elo", "por_que": "Fila, classe FILAS_DE_PISTA." },
+    "data/pistas_revisao.json": {
+      "escritor": "qualquer_elo",
+      "por_que": "Derivado da fila, não fonte: classe REGENERAVEIS. Quem o produz é `scripts/preparar_fila_revisao.py`."
+    },
+    "data/log_buscas.json": {
+      "escritor": "qualquer_elo",
+      "por_que": "Log que só cresce. União pela base comum, classe LOGS_QUE_SO_CRESCEM. Nunca deduplicar por conteúdo: em 23/09/2026 isso apagou quase 3.000 execuções."
+    },
+    "data/historico_mudancas.json": {
+      "escritor": "qualquer_elo",
+      "por_que": "Log que só cresce. Mesma classe."
+    },
+    "data/fontes_consultadas.json": {
+      "escritor": "qualquer_elo",
+      "por_que": "Conflito nele é RECUSADO de propósito pelo resolvedor: os dois lados alteram `ultima_verificacao` e `fontes` dos mesmos municípios, e qual vence é política que a editoria não decidiu. A recusa é o comportamento certo — o elo desiste da tentativa e o trabalho sai como artefato.",
+      "pendente": "a editoria decide a política de mesclagem, ou o arquivo passa a ter escritor único"
+    },
+
+    "data/publicacao.json": {
+      "escritor": "ninguem",
+      "por_que": "Indexação e regime do domínio só mudam por decisão da editoria (CLAUDE.md). Nenhum workflow o commita."
+    },
+    "data/municipios.json": {
+      "escritor": "atualizar.yml",
+      "por_que": "O banco do índice. Um escritor, sempre: o `monitorar_politica_por_inteiro.py` tem até uma trava que aborta se o banco mudar durante o vigia dele."
+    },
+    "data/painel_da_noite.json": {
+      "escritor": "qualquer_elo",
+      "por_que": "Cada elo registra a SUA linha, por `scripts/painel_da_noite.py --registrar <elo>`; nenhum elo reescreve a linha de outro. Mas o arquivo não é append-only — o elo ATUALIZA a entrada da noite em curso —, então o resolvedor não o cobre e o conflito ainda cai na recusa.",
+      "pendente": "dar ao resolvedor uma classe para o painel: unir por elo dentro da noite, nunca por noite inteira. Entra no PR do ensaio da noite (item 5), que é onde o comportamento pode ser provado."
+    },
+    "data/saude_pipeline.json": {
+      "escritor": "qualquer_elo",
+      "por_que": "Log que só cresce: cada execução acrescenta a sua linha em `execucoes` e nenhuma reescreve as anteriores. Classe LOGS_QUE_SO_CRESCEM, acrescentada em 05/10 porque este portão cobrou."
+    },
+
+    "data/noite/": {
+      "escritor": "qualquer_elo",
+      "sem_colisao_possivel": true,
+      "por_que": "Um arquivo por elo e por noite: `data/noite/<noite>/<elo>.feito`. Dois elos nunca escrevem o mesmo caminho, porque o nome traz o elo. É o marcador de 'cancelado não é feito' (item 3.1): ele existe para que falha com trabalho feito conte como noite aberta e cancelamento antes da coleta não conte."
+    },
+    "evidencias/": {
+      "escritor": "qualquer_elo",
+      "sem_colisao_possivel": true,
+      "por_que": "Endereçado pelo CONTEÚDO: o nome do arquivo é o sha256 dele. Dois elos nunca escrevem o mesmo caminho com conteúdo diferente, então não há conflito a resolver — e exigir uma classe do resolvedor seria exigir resposta a uma pergunta que não existe."
+    },
+    "dados-abertos/": { "escritor": "qualquer_elo", "por_que": "Derivado. Classe REGENERAVEIS, por prefixo." },
+    "feeds/": { "escritor": "qualquer_elo", "por_que": "Derivado. Classe REGENERAVEIS, por prefixo." },
+    "selos/": { "escritor": "qualquer_elo", "por_que": "Derivado. Classe REGENERAVEIS, por prefixo." }
+  },
+
+  "_regra_do_portao": "Arquivo declarado com `escritor` igual a um workflow só pode aparecer no `git add` DAQUELE workflow. Arquivo com `escritor: ninguem` não aparece em nenhum. Arquivo com `escritor: qualquer_elo` exige que o resolvedor saiba resolvê-lo ou o recuse por escrito — e o portão confere que ele está numa das classes de `scripts/unir_conflito_de_rodada.py`, ou que o `pendente` explica por quê não."
+}

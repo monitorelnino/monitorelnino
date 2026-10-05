@@ -70,13 +70,30 @@ def dentro_da_janela(agora: dt.datetime, janela=JANELA_UTC) -> bool:
 
 
 def ja_abriu(linhas: list, noite: str, elo: str = ELO_DE_ABERTURA) -> bool:
-    """Esta noite já tem registro do elo de abertura? Função pura.
+    """Esta noite já tem registro de TRABALHO do elo de abertura? Função pura.
 
-    Qualquer conclusão conta, inclusive falha: se os diários rodaram e falharam, a noite ABRIU — o
-    que a reserva existe para resolver é cron que não disparou, não coletor que deu errado. Repetir
-    a coleta por causa de falha é outra decisão, e seria a errada aqui: duplicaria lote e commit.
+    05/10/2026 (item 3.1 do handover da noite confiável) — CANCELADO NÃO É FEITO.
+    Esta função contava QUALQUER registro da noite. Medido na noite de 04→05/10: o job
+    `diarios / coletar` foi cancelado às 01:14:09 UTC, dois minutos depois de começar, e a reserva e
+    o despachante leram aquele registro como "a noite abriu" — **ninguém refez a coleta perdida**, e
+    as tentativas das 03:56 e 04:38 saíram sem trabalhar.
+
+    O comentário anterior defendia contar a falha, e tinha razão no caso dele: um elo que coletou e
+    falhou no push trabalhou, e refazê-lo duplicaria lote e commit. A distinção certa não é a
+    conclusão, é o TRABALHO — e é `painel_da_noite.trabalhou` quem a faz, pelo marcador que o elo
+    grava ao terminar os comandos, antes do commit. Falha com trabalho feito continua contando;
+    cancelado antes de coletar passa a NÃO contar.
     """
-    return any(l.get("noite") == noite and l.get("elo") == elo for l in (linhas or []))
+    import sys as _s
+    _s.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+    from painel_da_noite import trabalhou
+    for l in (linhas or []):
+        if l.get("noite") != noite or l.get("elo") != elo:
+            continue
+        # `trabalhou` já gravado na linha (desde 05/10) vence; linha antiga cai na conclusão.
+        if l.get("trabalhou") if l.get("trabalhou") is not None else trabalhou(l.get("conclusao")):
+            return True
+    return False
 
 
 def atraso_minutos(agora: dt.datetime, prevista: str = ABERTURA_PREVISTA) -> int:
@@ -146,8 +163,38 @@ def _autoteste() -> int:
 
     ok("noite não aberta, dentro da janela: o vigia dispara",
        precisa_abrir(linhas, d(2026, 10, 4, 2, 7)))
-    ok("noite já aberta: o vigia NÃO dispara",
-       not precisa_abrir([{"noite": "2026-10-04", "elo": "diarios"}], d(2026, 10, 4, 2, 7)))
+    ok("noite já aberta com trabalho feito: o vigia NÃO dispara",
+       not precisa_abrir([{"noite": "2026-10-04", "elo": "diarios",
+                           "conclusao": "success"}], d(2026, 10, 4, 2, 7)))
+
+    # 05/10/2026 (item 3.1) — o que a noite de 04→05/10 provou que faltava.
+    ok("elo CANCELADO não abriu a noite: o vigia DISPARA e a coleta é refeita",
+       precisa_abrir([{"noite": "2026-10-04", "elo": "diarios",
+                       "conclusao": "cancelled"}], d(2026, 10, 4, 2, 7)))
+    ok("elo que estourou o tempo não abriu a noite",
+       precisa_abrir([{"noite": "2026-10-04", "elo": "diarios",
+                       "conclusao": "timed_out"}], d(2026, 10, 4, 2, 7)))
+    ok("elo PULADO não abriu a noite",
+       precisa_abrir([{"noite": "2026-10-04", "elo": "diarios",
+                       "conclusao": "skipped"}], d(2026, 10, 4, 2, 7)))
+    ok("elo que coletou e FALHOU no push abriu a noite — refazer duplicaria lote",
+       not precisa_abrir([{"noite": "2026-10-04", "elo": "diarios",
+                           "conclusao": "failure"}], d(2026, 10, 4, 2, 7)))
+    ok("linha sem conclusão não abriu a noite",
+       precisa_abrir([{"noite": "2026-10-04", "elo": "diarios"}], d(2026, 10, 4, 2, 7)))
+    ok("o marcador `trabalhou` vence a conclusão: cancelado COM trabalho abriu",
+       not precisa_abrir([{"noite": "2026-10-04", "elo": "diarios",
+                           "conclusao": "cancelled", "trabalhou": True}],
+                         d(2026, 10, 4, 2, 7)))
+    ok("o marcador `trabalhou` vence a conclusão: success SEM trabalho não abriu",
+       precisa_abrir([{"noite": "2026-10-04", "elo": "diarios",
+                       "conclusao": "success", "trabalhou": False}], d(2026, 10, 4, 2, 7)))
+    ok("elo de outra noite não abre esta",
+       precisa_abrir([{"noite": "2026-10-03", "elo": "diarios",
+                       "conclusao": "success"}], d(2026, 10, 4, 2, 7)))
+    ok("outro elo com trabalho não conta como abertura dos diários",
+       precisa_abrir([{"noite": "2026-10-04", "elo": "triagem",
+                       "conclusao": "success"}], d(2026, 10, 4, 2, 7)))
     ok("fora da janela o vigia nunca dispara, mesmo sem abertura",
        not precisa_abrir([], d(2026, 10, 4, 14, 0)))
 
@@ -163,7 +210,7 @@ def _autoteste() -> int:
        not ({"gravar", "write_text", "write_bytes"} & nomes))
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
-          else "✓ AUTOTESTE OK — 22 casos, sem rede e sem escrita.")
+          else "✓ AUTOTESTE OK — 32 casos, sem rede e sem escrita.")
     return 1 if falhas else 0
 
 

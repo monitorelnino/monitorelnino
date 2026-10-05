@@ -262,6 +262,56 @@ os 5.569 municípios, e **acumula um mês por mês, indefinidamente**. Entra aqu
 por tamanho de hoje — é o único da tabela que cresce por rotina, e esperar que ele incomode seria
 descobri-lo numa sessão estourada.
 
+## A corrente noturna: seis regras permanentes (editoria, 05/10/2026)
+
+Nasceram da noite de 04→05/10, em que quatro defeitos se somaram: a publicação reprovou **oito
+vezes** (21:23→03:57 BRT) e o site ficou com dado de 04/10; o elo dos diários foi **cancelado** dois
+minutos depois de começar e a guarda contou aquilo como noite aberta, de modo que **ninguém refez a
+coleta**; a busca web perdeu **114 minutos** de trabalho em conflito de rebase; e o pacote do blog
+falhou por usar uma credencial que não alcança o repositório privado. Cada regra abaixo tem um portão
+que a reprova — regra sem portão volta a ser esquecimento.
+
+1. **Nenhum coletor grava pista fora de `scripts/pistas.py`.** A fila tem uma porta: ela normaliza
+   para `schemas/pista.json`, classifica o `tipo`, valida e **recusa com motivo** em
+   `data/pistas_rejeitadas.json`. Entrada de pista nova vai por `gravar`, `gravar_lote` (uma escrita
+   por rodada) ou `sincronizar` (varredura longa, com salvamento parcial). Operação sobre a fila
+   inteira — limpeza, triagem, união de conflito — declara-se em `MANUTENCAO`, por escrito.
+   Portão: `scripts/verificar_escritor_de_pista.py`.
+
+2. **Um escritor por arquivo, ou uma resolução declarada.** `config/escritores.json` diz, para cada
+   arquivo compartilhado da corrente, quem pode commitá-lo. Quando vários elos commitam o mesmo
+   arquivo, a corrida tem de estar **resolvida** — uma classe de
+   `scripts/unir_conflito_de_rodada.py` — ou o arquivo declara `pendente` dizendo o que falta
+   decidir. Portão: `scripts/verificar_escritores.py`.
+
+3. **Cancelado e pulado nunca contam como feito.** A guarda "esta noite já abriu?" conta só o run
+   que **trabalhou**: `in_progress`, ou `success`/`failure` com o marcador
+   `data/noite/<noite>/<elo>.feito` que o elo grava **depois dos comandos e antes do commit**. Elo
+   que coletou e perdeu o push trabalhou — refazê-lo duplicaria lote e commit. Elo cancelado antes
+   de coletar não trabalhou, e a reserva refaz. Quem decide é `painel_da_noite.trabalhou`.
+
+4. **Nenhum script cancela run de outro.** Conferido por varredura: não há `gh run cancel` nem
+   chamada de cancelamento na árvore. Grupo de concorrência é fila, nunca cancelamento —
+   `cancel-in-progress: false` em todo elo; só o publicador cancela o anterior, porque publicar duas
+   vezes o mesmo estado não tem valor.
+
+5. **O portão de esquema quarentena; ele não bloqueia a publicação.** Pista fora do esquema sai da
+   fila ativa pela mão do próprio portão, marcada e contável por coletor, e a publicação segue.
+   Bloqueio só quando a quarentena **falha** — aí o dado malformado seguiria a caminho do juiz.
+   Parar o site inteiro por sobra de coletor é desproporcional; deixar sobra ir ao índice, não.
+
+6. **Toda mudança na corrente noturna passa pelo ensaio da noite.** `scripts/ensaio_da_noite.py` e
+   `.github/workflows/ensaio_da_noite.yml` rodam a noite em miniatura, de dia, em repositório
+   temporário, e reprovam quando qualquer uma das quatro causas volta: conflito entre elos que perde
+   pista, disparo duplicado que duplica trabalho, elo cancelado que não é refeito, pista fora do
+   esquema que para a publicação. **Mudança na corrente sem ensaio verde não entra.**
+
+**Nunca unir arquivo que só cresce por conteúdo.** Vale para log e para fila: une-se pela **base
+comum** (`base + nossos_novos + deles_novos`), e o total final é maior ou igual a cada lado. Em
+23/09/2026 uma união por conteúdo produziu um log menor que cada lado e apagou quase 3.000
+execuções. Nas filas de pista a política é a da porta: acréscimo dos dois lados entra, campo que só
+um lado tocou entra, **mesmo campo com valores diferentes é recusado** em vez de adivinhado.
+
 ## Log append-only: merge pela base comum
 
 `data/log_buscas.json` e `data/historico_mudancas.json` só crescem. Quando os dois lados

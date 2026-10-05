@@ -83,16 +83,38 @@ jobs:
           fi
           JANELA="$(python3 scripts/janela_da_noite.py --inicio-da-janela)"
           NOITE="$(python3 scripts/janela_da_noite.py --noite)"
+          # 05/10/2026 (item 3.1 do handover da noite confiável) — CANCELADO NÃO É FEITO.
+          #
+          # Esta contagem incluía QUALQUER run criado na janela, inclusive `cancelled`, `failure`,
+          # `skipped` e `timed_out`. Medido na noite de 04→05/10: o job `diarios / coletar` foi
+          # cancelado às 01:14:09 UTC, dois minutos depois de começar; a guarda contou aquele run
+          # como abertura, a reserva e o despachante acharam que a noite tinha aberto, e NINGUÉM
+          # refez a coleta perdida. As tentativas das 03:56 e 04:38 saíram sem trabalhar.
+          #
+          # Agora contam só os runs que TRABALHARAM. `in_progress` conta: está coletando agora, e
+          # disparar outro duplicaria lote. `success` e `failure` contam, porque um elo que coletou
+          # e perdeu o push trabalhou e refazê-lo duplicaria commit — e é por isso que o marcador
+          # existe, gravado pelo elo depois dos comandos e antes do commit. `cancelled`, `skipped` e
+          # `timed_out` NÃO contam: ali não houve coleta, e a reserva tem de refazer.
+          #
           # `created:>=` na busca de execuções: a API aceita o filtro, e assim a contagem é da
           # JANELA, não das últimas N execuções — uma noite movimentada não esconde a abertura.
-          ANTERIORES="$(gh run list --workflow=noturno_diarios.yml --limit 20 \
-            --json databaseId,createdAt,event,status \
-            --jq "[.[] | select(.createdAt >= \"$JANELA\") | select(.databaseId != ${{ github.run_id }})] | length")"
-          echo "noite de $NOITE · janela desde $JANELA · execuções anteriores nesta janela: $ANTERIORES"
-          if [ "${ANTERIORES:-0}" -gt 0 ]; then
-            echo "a noite já abriu — esta é a reserva, e ela não trabalha"
+          FILTRO='[.[] | select(.createdAt >= "JANELA_AQUI") | select(.databaseId != RUN_AQUI) | select(.status == "in_progress" or .conclusion == "success" or .conclusion == "failure")] | length'
+          FILTRO="${FILTRO/JANELA_AQUI/$JANELA}"
+          FILTRO="${FILTRO/RUN_AQUI/${{ github.run_id }}}"
+          TRABALHARAM="$(gh run list --workflow=noturno_diarios.yml --limit 20 \
+            --json databaseId,createdAt,status,conclusion --jq "$FILTRO")"
+          # O marcador é a prova de que houve COLETA, e não só de que houve run. Ele chega à `main`
+          # no mesmo commit do dado.
+          MARCADOR="data/noite/$NOITE/diarios.feito"
+          TEM_MARCADOR=0
+          if [ -f "$MARCADOR" ]; then TEM_MARCADOR=1; fi
+          echo "noite de $NOITE · janela desde $JANELA · runs que trabalharam: ${TRABALHARAM:-0} · marcador: $TEM_MARCADOR"
+          if [ "${TRABALHARAM:-0}" -gt 0 ] || [ "$TEM_MARCADOR" = "1" ]; then
+            echo "a noite já abriu COM TRABALHO FEITO — esta é a reserva, e ela não trabalha"
             echo "abrir=nao" >> "$GITHUB_OUTPUT"
           else
+            echo "nenhum run desta janela trabalhou (cancelado e pulado não contam) — abre"
             echo "abrir=sim" >> "$GITHUB_OUTPUT"
           fi
 

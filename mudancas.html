@@ -49,6 +49,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>05/10/2026 · Um escritor por arquivo, cancelado não é feito, e a noite passa a ser ensaiada</dt>
+      <dd>A busca web perdeu 114 min porque o rebase usava `-X theirs`, que num arquivo de fila apaga o lado perdedor. `unir_conflito_de_rodada.py` passa a unir as filas pela base comum, com a política da porta única. `config/escritores.json` declara quem commita cada arquivo. Elo cancelado deixa de contar como noite aberta: o marcador `.feito` vem antes do commit. `ensaio_da_noite.py` prova as quatro causas de dia, sem tocar a `main`.</dd>
       <dt>05/10/2026 · A fila de pistas tem uma porta, e o esquema não para mais a publicação</dt>
       <dd>A publicação reprovou oito vezes entre 21:23 e 03:57 BRT de 04→05/10 por 655 pistas novas sem `url_final`, `tipo`, `alvo` nem `nivel` — de coletores que nunca foram migrados ao esquema de 03/10 e gravavam `data/pistas_*.json` direto. Agora só `scripts/pistas.py` escreve a fila (normaliza, classifica, valida, recusa com motivo em `pistas_rejeitadas.json`); oito coletores migrados; `verificar_escritor_de_pista.py` reprova escrita por fora; o portão do esquema quarentena em vez de bloquear.</dd>
       <dt>04/10/2026 · Nada depende de um único relógio, e a figura dos caminhos volta grande</dt>
@@ -167,8 +169,6 @@
       <dd>Topo com os dois índices e quatro contadores, todos do banco; &quot;O que é o MARÉ&quot;, &quot;Como os índices são calculados&quot; e &quot;O que cada página mostra&quot; com os textos aprovados; &quot;Como citar&quot; com direitos e licença. Saem o sobretítulo, o kit que prometia PDFs inexistentes, o resto do calendário eleitoral e duas perguntas com base legal errada. Portão novo confere versão, data e números contra o banco.</dd>
       <dt>01/10/2026 · Monitor de riscos: um componente de cartão de mapa, seis vezes</dt>
       <dd>Os seis mapas da seção 2 passam a ter a mesma moldura, a mesma ordem interna e o mesmo tamanho, com o risco previsto em primeiro e pequeno como os outros. Família e linha do boletim entram no cartão, com altura reservada. Legendas só com categorias. &quot;Mais de um risco&quot; vira hachura das duas cores, e o calor deixa de colidir com a seca. Seletores de camada saem da grade.</dd>
-      <dt>01/10/2026 · Calor: a cor passa a ser o desvio contra a normal 1991–2020</dt>
-      <dd>`coletar_normais_inmet.py` lê a normal climatológica do Inmet uma vez e guarda a média das máximas de cada mês por capital. O mapa de calor passa a pintar pelo desvio, não pela temperatura: 35 °C é normal em Cuiabá e muito quente em Porto Alegre. Vinte e quatro capitais têm normal; MS, RJ e RO ficam com anel vazio, com a razão escrita.</dd>
     </dl>
   </section>
 </main>
