@@ -49,6 +49,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>05/10/2026 · Duas skills do projeto, e a tabela de arquivos grandes remedida</dt>
+      <dd>`regras-do-site` e `noite-e-coletores` reúnem, com ponteiros, as regras que já estavam espalhadas em seis documentos — nenhuma regra nova, auditado. A tabela de arquivos que nunca entram em contexto estava errada no que mais importa: `evidencias/` figurava com 380 MB e tem 4,1 GB, e `pistas_imprensa.json` (26 MB) nem constava. A skill `karpathy-guidelines` ganhou o aviso de que seu §1 foi revogado em 27/09.</dd>
       <dt>05/10/2026 · O pacote do blog fica no artefato, por decisão da editoria</dt>
       <dd>A editoria respondeu a pergunta de 04/10: o pacote não vai ao `robo-registro`. O passo que clonava o privado sai inteiro de `pacote_do_blog.yml`, e o pacote vive no artefato do run. Não é limitação contornada — `ROBO_TOKEN` já alcança o privado e o push sairia de graça; a decisão é dela. Quem precisar do pacote lá roda `gerar_pacote_blog.py` à mão. O artefato expira em 90 dias, e o gerador é função do corte, não do run.</dd>
       <dt>05/10/2026 · Um escritor por arquivo, cancelado não é feito, e a noite passa a ser ensaiada</dt>
@@ -167,8 +169,6 @@
       <dd>A auditoria pedida pela editoria encontrou um registro pontuável apoiado só em notícia — Curitiba (PR) como `plano`, com URL de jornal. O documento primário é outro: Decreto nº 1.141, de 17/07/2026, que institui comitê, não plano. O registro passa a `estrutura`, com o diário municipal como fonte. PR 67,4 → 64,6; nacional 45,3 → 45,2; nenhuma UF muda de faixa. Errata pública C29 em `data/congelamento_defeso.json` e portão novo (`scripts/verificar_imprensa_nao_registra.py`).</dd>
       <dt>01/10/2026 · Paridade do Querido Diário: o portão comparava duas perguntas</dt>
       <dd>O portão media 527 contra 524 e chamava de divergência uma diferença de definição: um arquivo conta quem o acervo indexa, o outro quem foi indexado e lido. Os três que faltavam são indexados com log ilegível, e já viviam em `cobertura_indefinida`. Passa a comparar acervo com acervo. A `main` estava vermelha por isso.</dd>
-      <dt>01/10/2026 · Imprensa refeita: nada escrito à mão que dependa do dado</dt>
-      <dd>Topo com os dois índices e quatro contadores, todos do banco; &quot;O que é o MARÉ&quot;, &quot;Como os índices são calculados&quot; e &quot;O que cada página mostra&quot; com os textos aprovados; &quot;Como citar&quot; com direitos e licença. Saem o sobretítulo, o kit que prometia PDFs inexistentes, o resto do calendário eleitoral e duas perguntas com base legal errada. Portão novo confere versão, data e números contra o banco.</dd>
     </dl>
   </section>
 </main>

@@ -127,6 +127,16 @@ menor a reversibilidade, maior a certeza exigida — e mudança incremental, com
 > qualidade de código (escopo, simplicidade, nada de mudança gratuita), não para a
 > interação; `caveman` deixa de ser skill invocada e passa a *output style* permanente.
 > `.claude/skills/caveman/SUBORDINACAO.md` fica como histórico.
+>
+> **05/10/2026 — a mesma colisão, agora com o Superpowers.** A editoria mandou desativar **só** a
+> skill `brainstorming` do Superpowers e manter as demais: ela entrevista antes de agir, o que
+> contraria a regra de não perguntar. O interruptor por skill não existe no plugin gerenciado — ele
+> se desativa no `/plugin` da máquina da editoria, e é isso que falta fazer. Até lá vale a
+> subordinação, pela mesma razão e com a mesma força do caso `karpathy-guidelines`: **se
+> `brainstorming` carregar, este `CLAUDE.md` vence** e o trabalho segue sem entrevista — analisar,
+> decidir, implementar, testar, verificar, corrigir, continuar. As outras skills do Superpowers
+> (`systematic-debugging` e companhia) continuam valendo para qualidade de trabalho, não para a
+> interação. Mesma regra para `Grill Me`, caso seja instalada algum dia.
 
 ## Preprint e site são rotinas SEPARADAS (editoria, 27/09/2026, §260)
 
@@ -245,17 +255,27 @@ culpa, confira com `/e-da-main`: carimbo obsoleto já deixou a `main` vermelha s
 
 ## Arquivos que nunca entram em contexto
 
-| arquivo | tamanho |
+| arquivo | tamanho (medido em 05/10/2026) |
 |---|---|
-| `data/log_buscas.json` | ~14 MB |
+| `evidencias/` | **~4,1 GB** |
+| `data/log_buscas/*.jsonl` | **~31 MB** no total, um arquivo por mês |
+| `data/pistas_imprensa.json` | **~26 MB** |
 | `data/fontes_consultadas.json` | ~12 MB |
-| `data/verificacao_municipal.json` | ~2 MB |
 | `data/financiamento/municipios/transferencias_uniao.json` | ~5 MB, e cresce todo mês |
-| `evidencias/` | ~380 MB |
+| `data/verificacao_municipal.json` | ~3 MB |
+| `data/log_buscas.json` | ~1 MB (o volume migrou para `data/log_buscas/`) |
 
 Consulte sempre agregando (`python3 -c "import json,collections; ..."`), nunca com `Read`.
-Um Read nos dois primeiros estoura a sessão sozinho. Há hook que bloqueia acima de 1 MB em
+Um Read nos três primeiros estoura a sessão sozinho. Há hook que bloqueia acima de 1 MB em
 `data/`, `dados-abertos/` e `evidencias/`.
+
+**A tabela foi remedida em 05/10/2026, e três linhas estavam erradas de um jeito que importava.**
+`evidencias/` figurava como ~380 MB e tem **4,1 GB** — dez vezes mais, no arquivo que a tabela existe
+para proteger. `data/log_buscas.json` figurava como ~14 MB e tem **1 MB**: o volume migrou para
+`data/log_buscas/*.jsonl`, que **não estava na tabela** e soma 31 MB. E `data/pistas_imprensa.json`,
+com **26 MB**, também não estava — um `Read` nele estoura a sessão sozinho, e ele é tocado toda noite.
+Números de tamanho envelhecem por rotina, como o de transferências já avisava; quem os citar
+(inclusive a skill `noite-e-coletores`) cita **esta** tabela, e quem a vir defasada remede.
 
 O de transferências entrou em 01/10/2026, a pedido da editoria: ele guarda nove meses de 2026 para
 os 5.569 municípios, e **acumula um mês por mês, indefinidamente**. Entra aqui por trajetória, não
