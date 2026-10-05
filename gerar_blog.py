@@ -113,6 +113,21 @@ def ler_post(caminho: Path) -> dict:
     if str(meta.get(MARCA_DE_APROVACAO) or "").strip().lower() not in ("sim", "s", "true"):
         raise SystemExit(f"{caminho.name}: sem `aprovado: sim` no cabeçalho — a editoria aprova "
                          "antes de o texto ir ao ar (regra 2, 03/10/2026)")
+    # O `pacote` declarado tem de EXISTIR. Em 05/10/2026 um texto foi para o repositório público
+    # sem pacote e sem verificador, e nada reprovou: o cabeçalho citava um pacote, e ninguém
+    # conferia se o arquivo citado estava lá. Citar pacote inexistente é pior que não citar —
+    # parece conferido. Quando a pasta de pacotes não está ao alcance (a CI não clona o privado),
+    # a conferência não acontece, e isso se DIZ em vez de passar calado.
+    pacote = str(meta.get("pacote") or "").strip()
+    if pacote:
+        pasta = DIR_APROVADOS / "pacotes"
+        if not pasta.is_dir():
+            print(f"  [blog] {caminho.name}: pacote {pacote!r} não conferido — "
+                  f"{pasta} fora de alcance nesta árvore")
+        elif not (pasta / f"{pacote}.json").exists() and not (pasta / pacote).exists():
+            raise SystemExit(f"{caminho.name}: o cabeçalho declara o pacote {pacote!r} e ele não "
+                             f"existe em {pasta} — texto do blog só vai ao ar com o pacote da "
+                             "semana (regra de 04/10/2026)")
     corpo_md = m.group(2).strip()
     # REGRA 2: texto corrido. Sem tópicos, sem listas, sem cartões no meio do texto — os números
     # vivem nas páginas, e o texto pode citá-los. A verificação é na GERAÇÃO, porque é aqui que o
@@ -235,6 +250,25 @@ def render_feed(posts: list[dict]) -> str:
 """
 
 
+def _reprovacao(caminho: Path) -> list:
+    """As linhas de reprovação do verificador para um texto, ou [] se ele passa.
+
+    O verificador é `scripts/verificar_texto_blog.py`, e é ele que decide — não há segunda régua
+    aqui. Quando ele não pode ser importado, esta função devolve [] e o publicador segue: a
+    conferência que falta se declara no portão, não se inventa um juízo paralelo.
+    """
+    try:
+        sys.path.insert(0, str(RAIZ / "scripts"))
+        import verificar_texto_blog as v
+    except Exception as erro:          # pragma: no cover — ausência do verificador, não do texto
+        print(f"  [blog] verificador indisponível ({erro}) — nenhuma conferência de texto feita")
+        return []
+    meta, corpo = v.ler_cabecalho(caminho.read_text(encoding="utf-8"))
+    exige = caminho.name not in v.SEM_PACOTE_POR_DECISAO
+    return v.problemas(meta, corpo, v.pacote_de(meta), exige_pacote=exige,
+                       pacotes_ao_alcance=v.DIR_PACOTES.is_dir())
+
+
 def postos_aprovados() -> list:
     """Os arquivos de texto que a editoria aprovou, no repositório privado.
 
@@ -250,6 +284,24 @@ def postos_aprovados() -> list:
         texto = origem.read_text(encoding="utf-8")
         if not re.search(r"^aprovado:\s*(sim|s|true)\s*$", texto, re.M | re.I):
             print(f"  [blog] {origem.name}: sem `aprovado: sim` — não publicado")
+            continue
+        # A APROVAÇÃO NÃO DISPENSA O VERIFICADOR, e é aqui que a regra de 04/10/2026 se cumpre:
+        # "texto reprovado não vai ao ar e não bloqueia o site". Enquanto esta conferência não
+        # estava aqui, o publicador copiava o texto aprovado e o renderizava sem olhar o pacote —
+        # e o portão reprovava DEPOIS, no texto já copiado, deixando o site vermelho por causa de
+        # um texto que a regra manda apenas não publicar. Reprovado agora fica de fora, com o
+        # motivo impresso, e o site segue.
+        veredito = _reprovacao(origem)
+        if veredito:
+            print(f"  [blog] {origem.name}: reprovado pelo verificador — não publicado")
+            for linha in veredito:
+                print(f"      · {linha}")
+            # Cópia anterior sai: um texto que hoje reprova não pode continuar no ar porque
+            # passou ontem.
+            antiga = DIR_POSTS / origem.name
+            if antiga.exists():
+                antiga.unlink()
+                print(f"      · a cópia em {antiga} foi retirada")
             continue
         # 04/10/2026: a pasta local de posts foi apagada em 03/10, quando o texto
         # antigo saiu — e sem ela a cópia do texto aprovado não tinha onde cair, de

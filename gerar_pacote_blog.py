@@ -41,7 +41,7 @@ import sys
 RAIZ = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(RAIZ))
 
-LINHAS = ("legal", "saude")
+LINHAS = ("legal", "saude", "tipos_de_evento")
 DIAS_DE_VALIDADE = 9
 SAIDA_PADRAO = RAIZ.parent / "robo-registro" / "blog" / "pacotes"
 
@@ -75,9 +75,21 @@ def semana_encerrada(hoje: dt.date) -> tuple:
 
 
 def para_iso(data_br: str) -> str | None:
-    """"dd/mm/aaaa" → "aaaa-mm-dd". Função pura; devolve None no que não é data."""
+    """"dd/mm/aaaa" → "aaaa-mm-dd". Função pura; devolve None no que não é data.
+
+    Aceita TAMBÉM data já em ISO, e isso não é conveniência: `data/atos_resposta.json` mistura os
+    dois formatos, e enquanto esta função só lia o brasileiro ela devolvia None para 97 dos 929
+    atos — que então saíam da contagem sem aviso nenhum. Dado que não entra por formato é perda
+    silenciosa, e a regra do repositório é que ausência se declara, não se produz.
+    """
+    s = str(data_br).strip()
+    if len(s) == 10 and s[4] == "-" and s[7] == "-":
+        a, m, d = s[:4], s[5:7], s[8:]
+        if a.isdigit() and m.isdigit() and d.isdigit() and "01" <= m <= "12" and "01" <= d <= "31":
+            return s
+        return None
     try:
-        d, m, a = str(data_br).strip().split("/")
+        d, m, a = s.split("/")
         if len(a) == 4 and d.isdigit() and m.isdigit():
             return f"{a}-{m.zfill(2)}-{d.zfill(2)}"
     except (ValueError, AttributeError):
@@ -325,6 +337,152 @@ def fatos_de_saude(topo: dict, hoje: dt.date) -> tuple:
 
 
 # ---------------------------------------------------------------- montagem
+# ------------------------------------------------- o pacote TIPOS DE EVENTO (handover da seca)
+#
+# Item 6.3 do `HANDOVER_preparacao_programatica_seca_05-10-2026.md`. É um pacote TEMÁTICO, não
+# semanal: a janela é o ciclo inteiro, de 29/06/2026 em diante, porque a pergunta que ele serve —
+# o que muda no acesso a recursos conforme o evento seja seca, fogo ou chuva — não é uma pergunta
+# de semana.
+#
+# A regra que mais pesa aqui é a do que NÃO entra. O handover diz, com todas as letras: "cada base
+# legal com o dispositivo exato e o link … nada de dispositivo não conferido: se faltar, entra em
+# `lacunas`". Então a curadoria auditada (`data/financiamento/caminhos.json`) é a única fonte de
+# base legal, e o que não está nela é lacuna NOMEADA — não é texto que eu complete de memória.
+# Pelo mesmo motivo, duas coisas que o handover pede e o dado não tem viram lacuna:
+# "reconhecidos por tipo" (os atos não trazem a marca de reconhecimento federal) e "recursos por
+# tipo de evento" (as portarias trazem a AÇÃO — resposta, recuperação, outra —, não o evento).
+INICIO_DO_CICLO = dt.date(2026, 6, 29)
+
+TIPOS_PUBLICOS = {
+    "seca": "seca ou estiagem",
+    "chuva": "chuva",
+    "vendaval": "vendaval",
+    "fogo": "incêndio",
+    "outro_declarado": "outro tipo declarado pela fonte",
+    "sem_tipo_informado": "sem tipo informado pela fonte",
+}
+
+
+def fatos_de_tipos(atos: list, recursos: dict, caminhos: dict, ocp: dict, hoje: dt.date) -> tuple:
+    """Os fatos do pacote temático dos tipos de evento. Devolve (fatos, lacunas). Função pura."""
+    hoje_iso = hoje.isoformat()
+    fatos, lacunas = [], []
+
+    # ── 1. decretos do ciclo, por tipo ──
+    do_ciclo = []
+    for e in atos or []:
+        d = para_iso(str(e.get("data") or ""))
+        if d and dt.date.fromisoformat(d) >= INICIO_DO_CICLO:
+            do_ciclo.append(e)
+    por_tipo = collections.Counter(str(e.get("tipo_evento") or "sem_tipo_informado")
+                                   for e in do_ciclo)
+    fatos.append(fato("decretos_total", "decretos",
+                      f"decretos de emergência ou calamidade registrados no ciclo, desde "
+                      f"29 de junho de 2026", len(do_ciclo), "decretos",
+                      "S2iD e diários oficiais, pelo Monitor", None, hoje_iso, hoje_iso))
+    for chave, rotulo in TIPOS_PUBLICOS.items():
+        n = por_tipo.get(chave, 0)
+        if not n:
+            continue
+        fatos.append(fato(f"decretos_{chave}", "decretos",
+                          f"decretos do ciclo cujo tipo de evento é {rotulo}", n, "decretos",
+                          "S2iD e diários oficiais, pelo Monitor", None, hoje_iso, hoje_iso))
+
+    # por região, só para os três tipos que o texto compara
+    for chave in ("seca", "fogo", "chuva"):
+        por_regiao = collections.Counter()
+        for e in do_ciclo:
+            if str(e.get("tipo_evento") or "") != chave:
+                continue
+            r = regiao_da_uf(str(e.get("uf") or ""))
+            if r:
+                por_regiao[r] += 1
+        for regiao, n in sorted(por_regiao.items()):
+            fatos.append(fato(f"decretos_{chave}_{regiao.lower().replace(' ', '_')}", "decretos",
+                              f"decretos do ciclo por {TIPOS_PUBLICOS[chave]} na região "
+                              f"{regiao}", n, "decretos",
+                              "S2iD e diários oficiais, pelo Monitor", None, hoje_iso, hoje_iso))
+
+    lacunas.append("reconhecimentos federais por tipo de evento: os atos registrados não trazem a "
+                   "marca de reconhecimento federal, então a contagem por tipo não se faz com o "
+                   "dado de hoje")
+
+    # ── 2. recursos de resposta autorizados, por AÇÃO (o dado não traz o evento) ──
+    atos_rec = [a for m in (recursos or {}).get("municipios", {}).values()
+                for a in (m.get("atos") or [])]
+    do_ciclo_rec = [a for a in atos_rec
+                    if (para_iso(str(a.get("data") or "")) or "") >= INICIO_DO_CICLO.isoformat()]
+    por_acao = collections.defaultdict(lambda: {"valor": 0.0, "municipios": set(), "atos": 0})
+    for a in do_ciclo_rec:
+        c = por_acao[str(a.get("acao") or "outra")]
+        c["valor"] += float(a.get("valor_autorizado") or 0)
+        c["municipios"].add((str(a.get("municipio")), str(a.get("uf"))))
+        c["atos"] += 1
+    for acao, c in sorted(por_acao.items()):
+        fatos.append(fato(f"recursos_{acao}", "recursos",
+                          f"autorizado pela defesa civil federal em portarias de {acao}, desde "
+                          f"29 de junho de 2026", round(c["valor"], 2), "reais",
+                          "Portarias da SEDEC no Diário Oficial da União", None, hoje_iso,
+                          hoje_iso))
+        fatos.append(fato(f"recursos_{acao}_municipios", "recursos",
+                          f"municípios com recurso de {acao} autorizado no ciclo",
+                          len(c["municipios"]), "municípios",
+                          "Portarias da SEDEC no Diário Oficial da União", None, hoje_iso,
+                          hoje_iso))
+    lacunas.append("recursos autorizados por TIPO DE EVENTO: as portarias da SEDEC declaram a ação "
+                   "(resposta, recuperação, outra), não o evento que a motivou; o pacote traz por "
+                   "ação, que é o que a fonte diz")
+
+    # ── 3. seca: a Operação Carro-Pipa, já reconciliada ──
+    if ocp:
+        fatos.append(fato("ocp_municipios", "seca",
+                          "municípios atendidos pela Operação Carro-Pipa entre janeiro e agosto de "
+                          "2026", ocp.get("municipios"), "municípios", ocp.get("fonte"), None,
+                          ocp.get("recebido_em"), hoje_iso))
+        fatos.append(fato("ocp_ufs", "seca",
+                          "estados com municípios atendidos pela Operação Carro-Pipa no período",
+                          len(ocp.get("ufs") or []), "estados", ocp.get("fonte"), None,
+                          ocp.get("recebido_em"), hoje_iso))
+        fatos.append(fato("ocp_meses_8", "seca",
+                          "municípios atendidos em oito dos oito meses do período",
+                          ocp.get("meses_8"), "municípios", ocp.get("fonte"), None,
+                          ocp.get("recebido_em"), hoje_iso))
+        fatos.append(fato("ocp_portarias_ciclo", "seca",
+                          "portarias de situação de emergência com data em ou após 29 de junho de "
+                          "2026, entre as informadas", ocp.get("desde_2906"), "portarias",
+                          ocp.get("fonte"), None, ocp.get("recebido_em"), hoje_iso))
+        fatos.append(fato("ocp_ressalva", "seca", ocp.get("ressalva") or "", None, None,
+                          ocp.get("fonte"), None, ocp.get("recebido_em"), hoje_iso))
+    else:
+        lacunas.append("Operação Carro-Pipa: o arquivo `data/programas_federais/ocp_2026.json` "
+                       "ainda não existe nesta árvore")
+    lacunas.append("Garantia-Safra: não há fonte oficial de adesão municipal 2026/2027 coletada "
+                   "até o corte; o programa aparece só pela base legal")
+
+    # ── 4. as bases legais, só as auditadas ──
+    vias = (caminhos or {}).get("vias") or []
+    revisado = str((caminhos or {}).get("revisado_em") or "")
+    for via in vias:
+        base = str(via.get("base_legal") or "").strip()
+        if not base:
+            continue
+        fatos.append(fato(f"base_{via.get('id')}", "base_legal",
+                          f"{via.get('nome')}: {base}", None, None,
+                          "curadoria do MARÉ sobre os atos citados, em "
+                          "data/financiamento/caminhos.json", None, para_iso(revisado), hoje_iso))
+    for falta in ("Fundo Nacional do Meio Ambiente (Lei 15.143/2025; Decreto 13.013/2026)",
+                  "Política Nacional de Manejo Integrado do Fogo (Lei 14.944/2024)",
+                  "Portaria MIDR 260/2022 (reconhecimento e recursos de resposta)",
+                  "Portarias Interministeriais MI/MD nº 1/2012 e nº 2/2015 (Operação Carro-Pipa)"):
+        lacunas.append(f"base legal não auditada na curadoria do repositório: {falta} — o "
+                       f"dispositivo exato e o link não estão conferidos, e o handover proíbe "
+                       f"publicar dispositivo não conferido")
+    lacunas.append("municípios prioritários do MMA e recursos da MP 1.367 (incêndios): sem coleta "
+                   "até o corte")
+
+    return fatos, lacunas
+
+
 def montar(linha: str, inicio: dt.date, fim: dt.date, fatos: list, lacunas: list,
            hoje: dt.date) -> dict:
     """O pacote inteiro, no formato do handover. Função pura."""
@@ -376,8 +534,12 @@ def em_markdown(pacote: dict) -> str:
 
 def _autoteste() -> int:
     falhas = []
+    # O total era um literal no texto final, e ficou em "37" enquanto os casos cresciam. Contagem
+    # escrita a mao envelhece calada: ela diz que cobre mais do que cobre, ou menos.
+    contados = []
 
     def ok(nome, cond):
+        contados.append(nome)
         print(("  ✓ " if cond else "  ✗ ") + nome)
         if not cond:
             falhas.append(nome)
@@ -393,6 +555,11 @@ def _autoteste() -> int:
     ok("data brasileira vira ISO", para_iso("27/09/2026") == "2026-09-27")
     ok("data com um dígito é normalizada", para_iso("7/9/2026") == "2026-09-07")
     ok("texto que não é data devolve None", para_iso("sem data") is None)
+    # `atos_resposta.json` mistura os dois formatos: ISO recusada já custou 97 atos.
+    ok("data já em ISO passa inteira", para_iso("2026-07-31") == "2026-07-31")
+    ok("ISO com mês impossível devolve None", para_iso("2026-13-01") is None)
+    ok("ISO com dia impossível devolve None", para_iso("2026-07-00") is None)
+    ok("dez caracteres que não são data devolvem None", para_iso("abcd-ef-gh") is None)
     ok("dentro da semana é inclusivo nas duas pontas",
        dentro_da_semana("27/09/2026", d(2026, 9, 27), d(2026, 10, 3))
        and dentro_da_semana("03/10/2026", d(2026, 9, 27), d(2026, 10, 3)))
@@ -488,7 +655,7 @@ def _autoteste() -> int:
        not ({"gravar", "write_text", "write_bytes"} & nomes))
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
-          else "✓ AUTOTESTE OK — 37 casos, sem rede e sem escrita.")
+          else f"✓ AUTOTESTE OK — {len(contados)} casos, sem rede e sem escrita.")
     return 1 if falhas else 0
 
 
@@ -510,6 +677,15 @@ def gerar(linha: str, fim_da_semana: dt.date = None, saida: pathlib.Path = None)
         fatos += fatos_de_emergencia(atos, inicio, fim, hoje)
         fa, lacunas = fatos_de_alertas(alertas, hoje)
         fatos += fa
+    elif linha == "tipos_de_evento":
+        atos = (ler("atos_resposta.json") or {}).get("eventos") or []
+        recursos = ler("resposta/recursos_liberados.json") or {}
+        caminhos = ler("financiamento/caminhos.json") or {}
+        ocp = ler("programas_federais/ocp_2026.json") or {}
+        fatos, lacunas = fatos_de_tipos(atos, recursos, caminhos, ocp, hoje)
+        # O pacote temático cobre o ciclo, não a semana: a janela declarada vai do primeiro
+        # boletim até hoje, e é ela que aparece no cabeçalho do markdown.
+        inicio, fim = INICIO_DO_CICLO, hoje
     else:
         topo = ler("saude_desfechos/topo_saude.json") or {}
         fatos, lacunas = fatos_de_saude(topo, hoje)
