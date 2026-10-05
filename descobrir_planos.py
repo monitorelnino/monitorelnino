@@ -53,6 +53,7 @@ import funil
 from coletores_base import (RAIZ, buscar, preservar_evidencia, ler, gravar,
                              log_busca, registrar_lacuna, registrar_acesso_contra_robots, robots_permite,
                              rodar_autoteste, setor_da_url)
+from scripts.pistas import sincronizar as sincronizar_pistas  # 05/10/2026: a fila tem UMA porta
 
 FILA = RAIZ / "data" / "pistas_descobertas.json"
 
@@ -448,7 +449,7 @@ def main() -> int:
     # atribuída a um alvo — pista sem UF não serve para nada a jusante.
     if "--limpar-ruido" in sys.argv:
         fora = purgar_ruido_renderizado(fila)
-        gravar("pistas_descobertas.json", fila)
+        sincronizar_pistas("pistas_descobertas.json", fila, origem="descoberta", ler_fn=ler, gravar_fn=gravar)
         print(f"{len(fora)} link(s) do canal renderizado saíram da fila pelo filtro do §186:")
         for i in fora[:20]:
             print(f"  − [{i['uf']}/{i['setor']}] {str(i.get('titulo'))[:46]:46s} {i['url'][:70]}")
@@ -463,7 +464,7 @@ def main() -> int:
         uf = sys.argv[sys.argv.index("--uf") + 1].upper()
         setor = sys.argv[sys.argv.index("--setor") + 1]
         novos = descobrir_renderizado(uf, setor, url, fila)
-        gravar("pistas_descobertas.json", fila)
+        sincronizar_pistas("pistas_descobertas.json", fila, origem="descoberta", ler_fn=ler, gravar_fn=gravar)
         print(f"Canal renderizado: {len(novos)} pista(s) inédita(s) de {url}")
         for n in novos:
             print(f"  · [{n['uf']}/{n['setor']}] {str(n.get('titulo'))[:70]} — {n['url'][:80]}")
@@ -481,7 +482,7 @@ def main() -> int:
         if consultas >= limite:
             break
 
-    gravar("pistas_descobertas.json", fila)
+    sincronizar_pistas("pistas_descobertas.json", fila, origem="descoberta", ler_fn=ler, gravar_fn=gravar)
     # Item B do handover da auditoria do funil (27/09/2026): a rodada conta por etapa, para que
     # "está encontrando?" se responda sem abrir o código. Contagem não decide nada.
     # Defeito 3 da auditoria: este coletor está agendado 4x ao dia e tinha UMA execução em todo o

@@ -9,6 +9,15 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-05 · #555 · A fila de pistas tem uma porta, e o esquema não para mais a publicação
+
+A publicação reprovou oito vezes entre 21:23 e 03:57 BRT de 04→05/10 por 655 pistas novas sem
+`url_final`, `tipo`, `alvo` nem `nivel` — de coletores que nunca foram migrados ao esquema de
+03/10 e gravavam `data/pistas_*.json` direto. Agora só `scripts/pistas.py` escreve a fila
+(normaliza, classifica, valida, recusa com motivo em `pistas_rejeitadas.json`); oito coletores
+migrados; `verificar_escritor_de_pista.py` reprova escrita por fora; o portão do esquema
+quarentena em vez de bloquear.
+
 ## 2026-10-04 · #553 · Nada depende de um único relógio, e a figura dos caminhos volta grande
 
 A abertura da noite falhou três vezes em cinco dias. Entram o registro dos temporizadores com portão

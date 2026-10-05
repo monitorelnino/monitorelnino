@@ -120,6 +120,7 @@ import funil
 from coletores_base import (carimbar_atos, UA, preservar_evidencia, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, referencia_ibge, ler, gravar, rodar_autoteste,
                             CANAIS_ATO, hoje_editorial, normalizar_nome)
+from scripts.pistas import sincronizar as sincronizar_pistas  # 05/10/2026: a fila tem UMA porta
 from classificar_pista_civil import triagem_completa
 
 # Só slugs confirmados por navegação/fetch reais nesta sessão (20-22/09/2026). AL fica de
@@ -580,11 +581,13 @@ def coletar(desde_iso: str, ate_iso: str, apenas_uf: str = "") -> int:
             # cerca de duas por fonte — e gravar só no fim significava que uma interrupção na
             # última hora jogaria fora todas as anteriores. É a mesma lição do §212, aplicada ao
             # que se COLETOU e não ao que se registrou: rodada longa não pode depender de terminar.
-            gravar("pistas_imprensa.json", pistas_reg); gravar("atos_resposta.json", carimbar_atos(atos))
+            sincronizar_pistas("pistas_imprensa.json", pistas_reg, origem="diarios_consorciados",
+                       ler_fn=ler, gravar_fn=gravar); gravar("atos_resposta.json", carimbar_atos(atos))
             print(f"  {r['dias_com_edicao']} dia(s) com edição, {r['dias_com_erro']} erro(s), "
                  f"{len(r['pistas'])} pista(s), {len(r['decretos'])} decreto(s) brutos "
                  f"[gravado: {total_pistas} pista(s), {total_decretos_novos} decreto(s) no acumulado]", flush=True)
-    gravar("pistas_imprensa.json", pistas_reg); gravar("atos_resposta.json", carimbar_atos(atos))
+    sincronizar_pistas("pistas_imprensa.json", pistas_reg, origem="diarios_consorciados",
+                       ler_fn=ler, gravar_fn=gravar); gravar("atos_resposta.json", carimbar_atos(atos))
     # Item B do handover da auditoria do funil (27/09/2026): a rodada conta por etapa, para que
     # "está encontrando?" se responda sem abrir o código. Contagem não decide nada.
     funil.registrar("diario_consorciado", fontes=total_fontes, pistas=total_pistas,

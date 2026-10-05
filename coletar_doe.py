@@ -26,6 +26,7 @@ from coletores_base import (carimbar_atos, buscar, enviar, preservar_evidencia, 
                             marcar_fonte_consultada, marcar_fato_municipal, referencia_ibge,
                             abrir_lote_log, fechar_lote_log, abrir_lote_livro, fechar_lote_livro,
                             ler, gravar, rodar_autoteste, eh_suspensao_defeso, hoje_editorial)
+from scripts.pistas import sincronizar as sincronizar_pistas  # 05/10/2026: a fila tem UMA porta
 
 REGIOES = {"N": "AC AM AP PA RO RR TO", "NE": "AL BA CE MA PB PE PI RN SE", "CO": "DF GO MS MT",
            "SE": "ES MG RJ SP", "S": "PR RS SC"}
@@ -642,7 +643,7 @@ def coletar_uf(uf: str, desde: str, cfg: dict) -> str:
                                 "fonte": f"Diário Oficial do Estado ({hm['uf']})", "url": hm["url"],
                                 "lat": ref["lat"], "lon": ref["lon"], "canal": "repositorio_estadual", "hash_evidencia": h})
         marcar_fato_municipal(cod, "decreto_homologado", True); vistos.add(chave); novos += 1
-    gravar("atos_resposta.json", carimbar_atos(atos)); gravar("pistas_doe.json", pistas)
+    gravar("atos_resposta.json", carimbar_atos(atos)); sincronizar_pistas("pistas_doe.json", pistas, origem="doe", ler_fn=ler, gravar_fn=gravar)
     ibges_uf = [c for c, r in por_cod.items() if r["uf"] == uf]
     marcar_fonte_consultada(ibges_uf, f"DOE/{uf}", "estadual", resultado=f"{len(itens)} edição(ões)/trecho(s)")
     log_busca("repositorio_estadual", 1, TERMOS[:4], "registro" if novos else "pista", uf=uf, nivel="estadual",

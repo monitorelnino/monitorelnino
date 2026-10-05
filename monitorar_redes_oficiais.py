@@ -209,8 +209,14 @@ def rodar(limite: int = LIMITE_PADRAO) -> int:
         print(f"✗ só {len(motores)} motor(es) ativo(s) — a rodada não pergunta de verdade")
         return 1
 
-    pistas_doc = ler("pistas_imprensa.json") or {"pistas": []}
-    vistos = {(p.get("url"), p.get("trecho")) for p in pistas_doc["pistas"]}
+    # 05/10/2026 (item 1 do handover da noite confiável): este coletor NÃO abre mais
+    # `data/pistas_imprensa.json` para escrita. Ele junta os achados da rodada e entrega a
+    # `scripts/pistas.gravar_lote`, a única porta da fila — era por aqui que entravam as 654
+    # pistas sem `url_final`, `tipo`, `alvo` nem `nivel` que pararam a publicação oito vezes na
+    # noite de 04→05/10.
+    vistos = {(p.get("url"), p.get("trecho"))
+              for p in ((ler("pistas_imprensa.json") or {}).get("pistas") or [])}
+    novas_da_rodada = []
     n_perfis = n_pistas = n_sem_perfil = n_lacunas = 0
 
     for rotulo, uf, dominio in alvos:
@@ -247,12 +253,17 @@ def rodar(limite: int = LIMITE_PADRAO) -> int:
                     if (pista["url"], pista["trecho"]) in vistos:
                         continue
                     vistos.add((pista["url"], pista["trecho"]))
-                    pistas_doc["pistas"].append(pista)
+                    novas_da_rodada.append(pista)
                     n_pistas += 1
         marcar_fonte_consultada([], FONTE, "nao_verificado",
                                 resultado=f"{len(perfis)} perfil(is) oficial(is) confirmado(s)")
 
-    gravar("pistas_imprensa.json", pistas_doc)
+    from scripts.pistas import gravar_lote
+    balanco = gravar_lote(novas_da_rodada, origem="rede_social_oficial", ler_fn=ler, gravar_fn=gravar)
+    n_pistas = balanco["gravadas"]
+    if balanco["recusadas"]:
+        print(f"  {balanco['recusadas']} achado(s) recusado(s) pela fila, com motivo em "
+              f"data/pistas_rejeitadas.json: {balanco['motivos']}")
     estado_motores, caidos, motivos = motores_busca.aplicar_disjuntor(estado_motores, agora)
     gravar(motores_busca.ARQUIVO, estado_motores)
     funil.registrar("rede_social", entes_consultados=len(alvos), perfis_confirmados=n_perfis,

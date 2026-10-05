@@ -260,7 +260,11 @@ def rodar(lote: str | None, tamanho: int) -> int:
         gravar(motores_busca.ARQUIVO, estado_motores)
         return 1
 
-    pistas = ler("pistas_imprensa.json") or {"pistas": []}
+    # 05/10/2026 (item 1 do handover da noite confiável): este coletor não abre mais
+    # `data/pistas_imprensa.json` para escrita. Junta os achados e entrega a
+    # `scripts/pistas.gravar_lote`, a única porta da fila.
+    pistas = {"pistas": list((ler("pistas_imprensa.json") or {}).get("pistas") or [])}
+    ja_na_fila = len(pistas["pistas"])
     vistos_pistas = {(p.get("ibge"), p.get("url"), p.get("trecho")) for p in pistas["pistas"]}
     # 27/09/2026 (PR 1 item 2): quantas rodadas cada município já teve COM resultado bruto e SEM
     # pista. Duas são necessárias para "coberto_sem_mencao"; até lá o estado é de espera.
@@ -380,7 +384,12 @@ def rodar(lote: str | None, tamanho: int) -> int:
             elif decisao == "nao_localizado_ate_o_momento":
                 n_esperando += 1
 
-    gravar("pistas_imprensa.json", pistas)
+    from scripts.pistas import gravar_lote
+    balanco = gravar_lote(pistas["pistas"][ja_na_fila:], origem="busca_web", ler_fn=ler, gravar_fn=gravar)
+    npist = balanco["gravadas"]
+    if balanco["recusadas"]:
+        print(f"  {balanco['recusadas']} achado(s) recusado(s) pela fila, com motivo em "
+              f"data/pistas_rejeitadas.json: {balanco['motivos']}")
     gravar("busca_web_espera.json", {"municipios": espera["municipios"],
                                      "atualizado_em": hoje_editorial().isoformat()})
     estado_motores, caidos, motivos = motores_busca.aplicar_disjuntor(estado_motores, agora_utc)

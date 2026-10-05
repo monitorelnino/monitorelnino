@@ -41,6 +41,7 @@ import unicodedata
 import urllib.request
 from pathlib import Path
 from coletores_base import ua_de, gravar  # noqa: E402  (§228: um cliente só, com propósito)
+from scripts.pistas import sincronizar as sincronizar_pistas  # 05/10/2026: a fila tem UMA porta
 
 RAIZ = Path(__file__).parent
 DATA = RAIZ / "data"
@@ -241,8 +242,10 @@ def executar(dry_run=False, buscar=_get):
     resumo["pistas_federais"] = len(msf.registrar(fila_fed, novas_fed))
     # §229: as duas filas de revisão humana, atômicas. Perder metade de uma fila por
     # interrupção é perder trabalho de julgamento que ninguém sabe que faltou.
-    gravar("pistas_imprensa.json", fila_imp)
-    gravar("pistas_sinais.json", fila_fed)
+    sincronizar_pistas("pistas_imprensa.json", fila_imp, origem="politica_por_inteiro",
+                       ler_fn=ler, gravar_fn=gravar)
+    sincronizar_pistas("pistas_sinais.json", fila_fed, origem="politica_por_inteiro",
+                       ler_fn=ler, gravar_fn=gravar)
     assert _hash_banco() == antes, "TRAVA VIOLADA: o banco mudou durante o vigia da Política Por Inteiro"
     return resumo
 
