@@ -42,6 +42,7 @@ import pathlib
 import sys
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
+NOVA_LINHA = chr(10)
 DIR_NOITE = RAIZ / "data" / "noite"
 
 
@@ -121,6 +122,13 @@ def unir_listas_que_so_crescem(da_arvore: list, do_artefato: list) -> list:
     pode ser menor que qualquer um dos lados.
     """
     base = base_comum(da_arvore, do_artefato)
+    if not base and da_arvore and do_artefato:
+        # SEM BASE COMUM nao se soma. Dado que so cresce tem base por definicao; nao ter base e a
+        # prova de que a premissa nao vale ali, e somar os dois lados seria CONCATENAR. Foi assim
+        # que `data/pistas_imprensa.json` foi de 28 MB a 187,53 MB em meia hora, em 06/10/2026, e
+        # passou do limite de 100 MB do GitHub: 28, 56, 112, 187, dobrando a cada reaplicacao.
+        raise ValueError("os dois lados nao tem comeco em comum: nao e o mesmo arquivo em dois "
+                         "momentos, e soma-los seria concatenar")
     n = len(base)
     uniao = base + list(da_arvore or [])[n:] + list(do_artefato or [])[n:]
     if len(uniao) < max(len(da_arvore or []), len(do_artefato or [])):
@@ -221,6 +229,12 @@ def _autoteste() -> int:
     ok("lado vazio devolve o outro inteiro",
        unir_listas_que_so_crescem([], [1, 2]) == [1, 2])
     ok("lados iguais não duplicam", unir_listas_que_so_crescem([1, 2], [1, 2]) == [1, 2])
+    try:
+        unir_listas_que_so_crescem([1, 2], [8, 9])
+        ok("concatenacao disfarcada de uniao e RECUSADA", False)
+    except ValueError:
+        ok("concatenacao disfarcada de uniao e RECUSADA", True)
+    ok("lado vazio nao dispara a recusa", unir_listas_que_so_crescem([], [1, 2]) == [1, 2])
 
     ART = [
         {"name": "coleta-perdida-diarios-37397775612", "created_at": "2026-10-06T01:13:00Z"},
@@ -279,6 +293,26 @@ def _unir_arquivo(da_arvore: pathlib.Path, do_artefato: pathlib.Path):
         return None
     if not isinstance(a, dict) or not isinstance(b, dict):
         return None
+
+    # FILA DE PISTA tem politica PROPRIA, e nao e a do prefixo: ela e identificada por CHAVE, e a
+    # ordem muda porque `scripts/pistas.py` reescreve o arquivo inteiro. Trata-la como lista que so
+    # cresce foi o que a inflou. Aqui vale a porta: pista nova entra, pista repetida tem os campos
+    # mesclados, nada duplica.
+    if isinstance(a.get("pistas"), list) and isinstance(b.get("pistas"), list):
+        sys.path.insert(0, str(RAIZ / "scripts"))
+        from pistas import chave_da_pista
+        por_chave = {}
+        for pista in list(b["pistas"]) + list(a["pistas"]):
+            k = chave_da_pista(pista)
+            if k in por_chave:
+                for campo, valor in (pista or {}).items():
+                    if campo not in por_chave[k] or por_chave[k][campo] in (None, "", [], {}):
+                        por_chave[k][campo] = valor
+            else:
+                por_chave[k] = dict(pista)
+        fundido = dict(b)
+        fundido["pistas"] = list(por_chave.values())
+        return json.dumps(fundido, ensure_ascii=False, indent=1) + NOVA_LINHA
     listas = [k for k in a if isinstance(a.get(k), list) and isinstance(b.get(k), list)]
     if len(listas) != 1:
         return None                     # duas listas: qual cresce? Não se adivinha.
