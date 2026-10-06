@@ -7,7 +7,7 @@
 # evidencias/ (cópias de documentos-fonte, indexadas por hash em data/evidencias.json), node_modules/ e arquivos de imagem. Tudo o mais versionado está selado (AUD-09).
 # (ferramenta de sessão — inventário em docs/AUDITORIA_CODIGO.md §2). Conferência: sha256sum -c
 e7b36936250d82483b3277c3bff749a3d98ef7f5092efbb5b5943b1e11ada877  .env.example
-6f7ceb0199871532c4657ad0f56e9e47e25eb513ed7b69fde8425ebe8c8871e5  .github/workflows/_coletor.yml
+b64925cf46fc0c2d27681b0426b6f3f5f80b972bf7dbc05fc8387f1525b17f87  .github/workflows/_coletor.yml
 e30eaa10a98dc35d912046b446081dd531095d8e4a1e0e3c7eac4d782d446b8c  .github/workflows/atualizar.yml
 6427f0de1fc614b6a57ce51735bb021ff27cce9fa0b38ceeb5fada98f623f265  .github/workflows/auditoria_seguranca.yml
 e87b10d2db88f49cc3ed9658d2016ba0f69011f8423d496300e837864cf90ab7  .github/workflows/busca_web_cadencia.yml
@@ -28,7 +28,7 @@ f33f41e2d1f142174120f46b91e007053be418fb7a18b3ede66a03291ebed8f3  .github/workfl
 ac88890efffe1ba1565866a4af9ae7033af05eaf67c44394c900154cea38f71a  .github/workflows/pacote_do_blog.yml
 ce4448cb32d507ffb7dc700cb0bd3f7f41ad4e872c35407d66f7f5a3ae2a397f  .github/workflows/portoes.yml
 f6217e0986ad0441033169dc8393af713a2b810be415f239b278f34d1e8c70c7  .github/workflows/preservar_evidencias.yml
-46a3b438af78c101b724682ff9c41346bdc7d7dc78c54bf3a82b052508e5c582  .github/workflows/publicar_dados.yml
+e2b29fea15bd28700cc0b2f5463136f043db2d1b388aafbea803969832f90451  .github/workflows/publicar_dados.yml
 c98b2eb496ee1b432cbf57f268b96bdd1de8723960ab16979ae90fdbcd718945  .github/workflows/publicar_dominio_ensaio.yml
 be519d99fb047a0cf5e1db32ea2fa22c3fca6e383a9f84396a7a613a88e577f5  .github/workflows/publicar_previa.yml
 92b846829d376e9daeba76807f185db611a10f9063a0593f781d14821d448d6f  .github/workflows/semanal_respiratorias.yml

@@ -67,7 +67,9 @@ permissions:
   contents: read
 
 concurrency:
-  group: publicar-dados
+  # O ramo na chave (06/10/2026): publicar no ensaio e publicar na `main` sao duas coisas, e
+  # este grupo CANCELA o anterior. Sem o ramo, o ensaio mataria a publicacao de verdade.
+  group: publicar-dados-${{ github.ref_name }}
   # 04/10/2026 (item 3 do handover dos temporizadores): era `true`, e isso cancelava publicação EM
   # ANDAMENTO por causa de um `workflow_run` que, quando começasse, seria SKIPPED — o gatilho de
   # coletor que falhou. Medido três vezes em 04/10: o dispatch válido morreu `cancelled` e o

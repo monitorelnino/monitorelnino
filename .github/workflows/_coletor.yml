@@ -84,8 +84,12 @@ jobs:
     timeout-minutes: ${{ inputs.timeout_minutos }}
     # Fila, não cancelamento: uma coleta interrompida no meio perde o que já achou. Só o publicador
     # cancela o anterior, porque publicar duas vezes o mesmo estado não tem valor.
+    # O RAMO entra na chave do grupo (06/10/2026). Sem ele, o ensaio real no ramo `ensaio` e a
+    # noite de verdade na `main` disputam a MESMA fila: o ensaio de dia ficaria atras da rodada
+    # noturna, ou pior, a rodada noturna ficaria atras do ensaio. Sao duas noites diferentes, em
+    # dois ramos diferentes, e so parecem a mesma coisa porque o grupo se chamava `noturno`.
     concurrency:
-      group: ${{ inputs.grupo_de_concorrencia != '' && inputs.grupo_de_concorrencia || format('coletor-{0}', inputs.nome) }}
+      group: ${{ github.ref_name }}-${{ inputs.grupo_de_concorrencia != '' && inputs.grupo_de_concorrencia || format('coletor-{0}', inputs.nome) }}
       cancel-in-progress: false
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
