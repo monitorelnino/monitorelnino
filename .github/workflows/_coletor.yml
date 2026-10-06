@@ -215,6 +215,7 @@ jobs:
         id: feito
         run: |
           NOITE="$(python3 scripts/janela_da_noite.py --noite)"
+          echo "NOITE=$NOITE" >> "$GITHUB_ENV"
           mkdir -p "data/noite/$NOITE"
           echo "${{ inputs.nome }} · $(date -u +%FT%TZ) · run ${{ github.run_id }}" \
             > "data/noite/$NOITE/${{ inputs.nome }}.feito"
@@ -258,90 +259,41 @@ jobs:
           if [ "${FEITO:-}" = "1" ]; then MARCA="--feito"; fi
           python3 scripts/painel_da_noite.py --registrar "${{ inputs.nome }}"             --inicio "${ELO_INICIO:-}" --conclusao "${{ job.status }}" "$MARCA" || true
 
-      - name: Commit com rebase-e-push (item 1a)
+      # FASE 1 (06/10/2026) — O COLETOR NAO EMPURRA MAIS.
+      #
+      # Ate aqui cada elo commitava, rebaseava, fundia e empurrava sozinho, em paralelo. Cada
+      # correcao fechava uma colisao e a seguinte aparecia: conflito em arquivo compartilhado,
+      # fusao repetida que levou a fila de pistas de 28 MB a 187,53 MB, `git add -A data/`,
+      # push fixo na `main` mesmo no ensaio, trabalho descartado. Nenhum era defeito solto --
+      # eram sintomas de MUITOS ESCRITORES na mesma `main`.
+      #
+      # O elo agora entrega: grava as proprias saidas, sobe como artefato e vai embora. Quem
+      # escreve e o `consolidar_noite.yml`, sozinho, uma vez por janela, pela porta de cada
+      # arquivo. Nao ha com quem colidir quando so um escreve.
+      - name: Separar as saidas deste elo
+        id: saidas
         if: steps.janela.outputs.pode == '1'
-        id: commit
-        env:
-          ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+        timeout-minutes: 5
         run: |
-          git config user.name "monitor-el-nino-bot"
-          git config user.email "bot@users.noreply.github.com"
-          # 29/09/2026: `evidencias/` ENTRA no commit. Sem ela, todo coletor que chama
-          # `preservar_evidencia` gravava o índice em `data/evidencias.json` e deixava o
-          # arquivo para trás no runner — o índice afirmando cópia preservada que não existe.
-          # Foram 216 numa noite. É o §270 outra vez, por outro caminho: lá o `.gitignore`
-          # descartava o binário, aqui o `git add` nunca o incluiu. O §275 consertou o
-          # primeiro e não viu o segundo, porque o portão só reprova quando o índice chega
-          # à `main` — e ele chegava junto, no mesmo commit.
-          # Item 1 do handover de 06/10/2026: o commit do elo poe no indice SO os arquivos que
-          # `config/escritores.json` da a ele. O `git add` de pasta inteira levava junto arquivo
-          # de outro elo, e o conflito que isso criava descartou 364 minutos de coleta na noite
-          # de 05 para 06/10. `scripts/verificar_commit_do_elo.py` reprova a volta do atalho.
-          # As saidas deste elo saem do repositorio ANTES de qualquer commit: o laco abaixo faz
-          # `reset --hard` no ramo mais novo, e o que nao estiver guardado some com ele.
           python3 scripts/aplicar_delta_do_elo.py "${{ inputs.nome }}" --guardar
-          python3 scripts/commit_do_elo.py "${{ inputs.nome }}" --mensagem "${{ inputs.nome }} automatico ($(date -u +%d/%m/%Y\ %H:%M) UTC)" | tee /tmp/commit_do_elo.txt
-          # O ajudante ja comitou. Ele imprime `houve=0` quando nao havia nada DESTE elo --
-          # e nada deste elo e saida legitima, nao falha: o elo pode ter rodado sem achar nada.
-          if grep -q "^houve=1" /tmp/commit_do_elo.txt; then
-            echo "houve=1" >> "$GITHUB_OUTPUT"
-          else
-            echo "Sem alteracoes deste elo."; echo "houve=0" >> "$GITHUB_OUTPUT"; exit 0
+          mkdir -p saida_do_elo
+          if [ -d /tmp/delta_do_elo ]; then
+            cp -r /tmp/delta_do_elo/. saida_do_elo/ 2>/dev/null || true
           fi
-          git checkout -- . 2>/dev/null || true
-          mkdir -p ~/.ssh && printf '%s\n' "$ROBO_DEPLOY_KEY" > ~/.ssh/robo && chmod 600 ~/.ssh/robo
-          ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
-          SSH="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes"
-          # CAUSA C (06/10/2026) — O DELTA SOBRE O RAMO MAIS NOVO, SEM FUSAO DE TRES VIAS.
-          #
-          # O laco antigo fazia `git rebase FETCH_HEAD` sobre um commit que JA continha a uniao
-          # da tentativa anterior, e chamava o resolvedor de novo: o conteudo acumulava a cada
-          # volta. `data/pistas_imprensa.json` foi de 28 MB para 104,79 MB e 187,53 MB num unico
-          # run, passou do limite de 100 MB do GitHub e o push ficou impossivel. Cada tentativa
-          # de salvar o trabalho o destruia um pouco mais.
-          #
-          # Agora: guarda-se o que ESTE elo produziu; a cada tentativa parte-se do ramo mais
-          # novo e reaplica-se so isso. O que os outros gravaram ja vem no `reset --hard`.
-          # Arquivo de dono unico entra por copia; FILA entra pela porta (`pistas.sincronizar`),
-          # que mescla por chave e nao duplica. Nenhuma fusao de tres vias em arquivo
-          # compartilhado -- `unir_conflito_de_rodada.py` deixa de ser chamado pelo elo e fica
-          # para uso manual.
-          EMPURROU=0
-          for TENTATIVA in 1 2 3 4 5; do
-            GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git "${{ inputs.ramo_destino }}" || true
-            git reset --hard FETCH_HEAD
-            python3 scripts/aplicar_delta_do_elo.py "${{ inputs.nome }}" --reaplicar
-            python3 scripts/commit_do_elo.py "${{ inputs.nome }}" --mensagem "${{ inputs.nome }} automatico ($(date -u +%d/%m/%Y\ %H:%M) UTC)" | tee /tmp/commit_do_elo.txt
-            if ! grep -q "^houve=1" /tmp/commit_do_elo.txt; then
-              echo "nada deste elo a empurrar na tentativa $TENTATIVA"; EMPURROU=1; break
-            fi
-            # A trava de tamanho roda ANTES do push: arquivo que passou do teto nao sobe, e o
-            # trabalho vira artefato em vez de um push que o GitHub recusaria de qualquer forma.
-            if ! python3 scripts/verificar_tamanho_dos_dados.py --contra FETCH_HEAD; then
-              echo "::error::o commit deste elo estoura a trava de tamanho; nao sobe"
-              break
-            fi
-            if GIT_SSH_COMMAND="$SSH" git push git@github.com:${GITHUB_REPOSITORY}.git "HEAD:${{ inputs.ramo_destino }}"; then
-              EMPURROU=1; echo "empurrado na tentativa $TENTATIVA"; break
-            fi
-            echo "tentativa $TENTATIVA: push recusado (${{ inputs.ramo_destino }} avancou); nova tentativa"
-            sleep $((TENTATIVA * 10))
-          done
-          rm -f ~/.ssh/robo
-          if [ "$EMPURROU" != "1" ]; then
-            echo "empurrou=0" >> "$GITHUB_OUTPUT"
-            # O marcador viaja no artefato: se o push falhou porque o ramo andou, o push do
-            # marcador falharia pelo mesmo motivo.
-            CAMINHOS=$(git show --name-only --pretty=format: HEAD | tr "\n" " ")
-            python3 scripts/pendente_do_elo.py --marcar "${{ inputs.nome }}" \
-              --run "${GITHUB_RUN_ID}" --caminhos $CAMINHOS || true
-            echo "::error::commit perdido para ${{ inputs.ramo_destino }} em movimento"
-            exit 1
-          fi
-          echo "empurrou=1" >> "$GITHUB_OUTPUT"
+          N=$(find saida_do_elo -type f ! -name _lista.json | wc -l)
+          echo "arquivos=$N" >> "$GITHUB_OUTPUT"
+          echo "· $N arquivo(s) deste elo para o consolidador" | tee -a "$GITHUB_STEP_SUMMARY"
 
-      # As saídas viram artefato quando o commit se perde: o dado coletado não desaparece junto com
-      # o job (item 1a).
+      # O nome do artefato e o contrato com o consolidador: `saida-<elo>-<janela>`.
+      - name: Entregar as saidas ao consolidador
+        if: steps.janela.outputs.pode == '1' && steps.saidas.outputs.arquivos != '0'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
+        with:
+          name: saida-${{ inputs.nome }}-${{ env.NOITE }}
+          path: saida_do_elo/
+          retention-days: 14
+          if-no-files-found: ignore
+
       - name: Guardar as saídas quando o commit se perde
         if: failure() && steps.commit.outputs.houve == '1'
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2

@@ -460,6 +460,13 @@ jobs:
 
       # Causa F: a regra "nenhum commit automatico na `main` de dia" passa a ter guarda no codigo.
       # Causa C: o elo aplica o proprio delta sobre o ramo mais novo, sem fusao de tres vias.
+      # Fase 1: um escritor so. O coletor entrega artefato; o consolidador escreve.
+      - name: Consolidador — o único escritor da rodada
+        timeout-minutes: 3
+        run: |
+          # assunto: dado rapido
+          python3 scripts/consolidar_noite.py --autoteste
+
       - name: Delta do elo — nenhuma fusão de três vias em arquivo compartilhado
         timeout-minutes: 3
         run: |

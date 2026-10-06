@@ -47,20 +47,13 @@ on:
   # `cancel-in-progress: true` no grupo faz o trabalho pesado aqui: uma noite com cinco coletores
   # não gera cinco publicações: a mais nova substitui a mais velha, e a última publica tudo o que
   # todas commitaram. Publicação cancelada por uma mais nova NÃO é dado não publicado.
+  # FASE 1 (06/10/2026): o publicador roda depois do CONSOLIDADOR, nao depois de cada elo.
+  # Ate aqui ele era disparado por onze workflows diferentes, e por isso publicava no meio da
+  # rodada, com parte do dado aplicado. Agora ha um escritor so, e publicar depois dele e
+  # publicar depois de tudo -- que e o que a palavra "depois" sempre quis dizer.
   workflow_run:
     workflows:
-      - "Noturno — diários oficiais"
-      - "Noturno — descoberta"
-      - "Noturno — evidências e OCR"
-      - "Noturno — juiz automático"
-      - "Noturno — sinais físicos"
-      # 03/10/2026: a triagem da fila é o último elo da corrente (item C.2), e é o término dela que
-      # fecha a noite — publicar antes dela publicaria sem o que a triagem acabou de promover.
-      - "Noturno — triagem da fila"
-      - "Semanal — sinais climáticos e links"
-      - "Busca web — cadência automática"
-      - "Atualização semanal de dados"
-      - "Preservar textos integrais das evidências"
+      - "Consolidar a noite"
     types: [completed]
 
 permissions:
@@ -336,8 +329,12 @@ jobs:
             exit 1
           fi
 
+      # O DOMINIO E SO DA `main`. Fase 1, item 3 (06/10/2026): no ramo `ensaio` o publicador
+      # publica na previa e NUNCA no dominio -- o ensaio e ensaio, e republicar o site de
+      # verdade a partir dele poria dado de teste no ar. A trava e aqui, no passo, e nao numa
+      # instrucao: instrucao se esquece numa rodada de madrugada.
       - name: Repor o site no domínio, atrás de senha
-        if: always()
+        if: always() && github.ref_name == 'main'
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}

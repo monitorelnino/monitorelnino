@@ -4,139 +4,170 @@
  "_o_que_este_portao_nao_faz": "Ele não impede duas execuções de gravarem ao mesmo tempo — isso é concorrência, e quem decide é o grupo do workflow. Ele impede que o CONJUNTO de arquivos que cada elo commita se sobreponha onde a sobreposição não tem resolução declarada.",
  "arquivos": {
   "docs/MANIFEST_SHA256.txt": {
-   "escritor": "publicar",
+   "escritor": "consolidador",
    "por_que": "Derivado de tudo o mais, e quem sela o estado publicado e o publicador. Ate 06/10 era `qualquer_elo`, com a pendencia escrita aqui: mover exigia provar que a `main` aguenta ficar com manifesto obsoleto entre o elo e o publicador. O ensaio real do item 5 e essa prova.",
-   "nota": "Enquanto o manifesto nao e reselado, o portao 12 so cobra no push para a `main` -- e o publicador e quem empurra o estado selado. Elo de coleta nao o comita mais."
+   "nota": "Enquanto o manifesto nao e reselado, o portao 12 so cobra no push para a `main` -- e o publicador e quem empurra o estado selado. Elo de coleta nao o comita mais.",
+   "escritor_antes_da_fase_1": "publicar"
   },
   "docs/FILA_PISTAS.md": {
-   "escritor": "triagem",
-   "por_que": "Derivado da fila, e quem mexe na fila por oficio e a triagem. Em 05 para 06/10 a busca web perdeu 136 e 128 minutos em conflito neste arquivo, que nao e dela."
+   "escritor": "consolidador",
+   "por_que": "Derivado da fila, e quem mexe na fila por oficio e a triagem. Em 05 para 06/10 a busca web perdeu 136 e 128 minutos em conflito neste arquivo, que nao e dela.",
+   "escritor_antes_da_fase_1": "triagem"
   },
   "data/pistas_imprensa.json": {
-   "escritor": "qualquer_elo",
-   "por_que": "A fila tem UMA porta (`scripts/pistas.py`) e uma política de mesclagem declarada e testada: acréscimo dos dois lados entra, campo que só um lado tocou entra, mesmo campo com valores diferentes é recusado. `unir_conflito_de_rodada.py` aplica essa política ao conflito de rebase, classe FILAS_DE_PISTA. A corrida é resolvida, não evitada — e é por isso que este arquivo pode ter vários elos."
+   "escritor": "consolidador",
+   "por_que": "A fila tem UMA porta (`scripts/pistas.py`) e uma política de mesclagem declarada e testada: acréscimo dos dois lados entra, campo que só um lado tocou entra, mesmo campo com valores diferentes é recusado. `unir_conflito_de_rodada.py` aplica essa política ao conflito de rebase, classe FILAS_DE_PISTA. A corrida é resolvida, não evitada — e é por isso que este arquivo pode ter vários elos.",
+   "escritor_antes_da_fase_1": "qualquer_elo"
   },
   "data/pistas_descobertas.json": {
-   "escritor": "qualquer_elo",
-   "por_que": "Fila, classe FILAS_DE_PISTA."
+   "escritor": "consolidador",
+   "por_que": "Fila, classe FILAS_DE_PISTA.",
+   "escritor_antes_da_fase_1": "qualquer_elo"
   },
   "data/pistas_doe.json": {
-   "escritor": "qualquer_elo",
-   "por_que": "Fila, classe FILAS_DE_PISTA."
+   "escritor": "consolidador",
+   "por_que": "Fila, classe FILAS_DE_PISTA.",
+   "escritor_antes_da_fase_1": "qualquer_elo"
   },
   "data/pistas_sinais.json": {
-   "escritor": "qualquer_elo",
-   "por_que": "Fila, classe FILAS_DE_PISTA."
+   "escritor": "consolidador",
+   "por_que": "Fila, classe FILAS_DE_PISTA.",
+   "escritor_antes_da_fase_1": "qualquer_elo"
   },
   "data/pistas_rejeitadas.json": {
-   "escritor": "qualquer_elo",
-   "por_que": "Fila, classe FILAS_DE_PISTA."
+   "escritor": "consolidador",
+   "por_que": "Fila, classe FILAS_DE_PISTA.",
+   "escritor_antes_da_fase_1": "qualquer_elo"
   },
   "data/pistas_revisao.json": {
-   "escritor": "triagem",
-   "por_que": "Derivado da fila, produzido por `scripts/preparar_fila_revisao.py`. Mesmo caso do `FILA_PISTAS.md`: a busca web conflitava nele sem ter escrito nada."
+   "escritor": "consolidador",
+   "por_que": "Derivado da fila, produzido por `scripts/preparar_fila_revisao.py`. Mesmo caso do `FILA_PISTAS.md`: a busca web conflitava nele sem ter escrito nada.",
+   "escritor_antes_da_fase_1": "triagem"
   },
   "data/log_buscas.json": {
-   "escritor": "qualquer_elo",
-   "por_que": "Log que só cresce. União pela base comum, classe LOGS_QUE_SO_CRESCEM. Nunca deduplicar por conteúdo: em 23/09/2026 isso apagou quase 3.000 execuções."
+   "escritor": "consolidador",
+   "por_que": "Log que só cresce. União pela base comum, classe LOGS_QUE_SO_CRESCEM. Nunca deduplicar por conteúdo: em 23/09/2026 isso apagou quase 3.000 execuções.",
+   "escritor_antes_da_fase_1": "qualquer_elo"
   },
   "data/historico_mudancas.json": {
-   "escritor": "qualquer_elo",
-   "por_que": "Log que só cresce. Mesma classe."
+   "escritor": "consolidador",
+   "por_que": "Log que só cresce. Mesma classe.",
+   "escritor_antes_da_fase_1": "qualquer_elo"
   },
   "data/fontes_consultadas.json": {
-   "escritor": "qualquer_elo",
+   "escritor": "consolidador",
    "por_que": "Conflito nele é RECUSADO de propósito pelo resolvedor: os dois lados alteram `ultima_verificacao` e `fontes` dos mesmos municípios, e qual vence é política que a editoria não decidiu. A recusa é o comportamento certo — o elo desiste da tentativa e o trabalho sai como artefato.",
-   "pendente": "a editoria decide a política de mesclagem, ou o arquivo passa a ter escritor único"
+   "pendente": "a editoria decide a política de mesclagem, ou o arquivo passa a ter escritor único",
+   "escritor_antes_da_fase_1": "qualquer_elo"
   },
   "data/publicacao.json": {
    "escritor": "ninguem",
    "por_que": "Indexação e regime do domínio só mudam por decisão da editoria (CLAUDE.md). Nenhum workflow o commita."
   },
   "data/municipios.json": {
-   "escritor": "atualizar.yml",
-   "por_que": "O banco do índice. Um escritor, sempre: o `monitorar_politica_por_inteiro.py` tem até uma trava que aborta se o banco mudar durante o vigia dele."
+   "escritor": "consolidador",
+   "por_que": "O banco do índice. Um escritor, sempre: o `monitorar_politica_por_inteiro.py` tem até uma trava que aborta se o banco mudar durante o vigia dele.",
+   "escritor_antes_da_fase_1": "atualizar.yml"
   },
   "data/painel_da_noite.json": {
-   "escritor": "qualquer_elo",
+   "escritor": "consolidador",
    "por_que": "Cada elo registra a SUA linha, por `scripts/painel_da_noite.py --registrar <elo>`; nenhum elo reescreve a linha de outro. Mas o arquivo não é append-only — o elo ATUALIZA a entrada da noite em curso —, então o resolvedor não o cobre e o conflito ainda cai na recusa.",
-   "pendente": "dar ao resolvedor uma classe para o painel: unir por elo dentro da noite, nunca por noite inteira. Entra no PR do ensaio da noite (item 5), que é onde o comportamento pode ser provado."
+   "pendente": "dar ao resolvedor uma classe para o painel: unir por elo dentro da noite, nunca por noite inteira. Entra no PR do ensaio da noite (item 5), que é onde o comportamento pode ser provado.",
+   "escritor_antes_da_fase_1": "qualquer_elo"
   },
   "data/saude_pipeline.json": {
-   "escritor": "publicar",
+   "escritor": "consolidador",
    "por_que": "Log das execucoes do recalculo, gravado por `scripts/gerar_saude_pipeline.py`, que roda no publicador. Era `qualquer_elo` pela classe LOGS_QUE_SO_CRESCEM, e a classe continua valendo para o caso de o arquivo chegar em conflito -- mas quem o COMITA passa a ser um so. Em 05 para 06/10 os diarios perderam 100 minutos em conflito nele sem terem escrito nada.",
-   "nota": "A classe LOGS_QUE_SO_CRESCEM continua declarada no resolvedor, como rede."
+   "nota": "A classe LOGS_QUE_SO_CRESCEM continua declarada no resolvedor, como rede.",
+   "escritor_antes_da_fase_1": "publicar"
   },
   "data/noite/": {
-   "escritor": "qualquer_elo",
+   "escritor": "consolidador",
    "sem_colisao_possivel": true,
-   "por_que": "Um arquivo por elo e por noite: `data/noite/<noite>/<elo>.feito`. Dois elos nunca escrevem o mesmo caminho, porque o nome traz o elo. É o marcador de 'cancelado não é feito' (item 3.1): ele existe para que falha com trabalho feito conte como noite aberta e cancelamento antes da coleta não conte."
+   "por_que": "Um arquivo por elo e por noite: `data/noite/<noite>/<elo>.feito`. Dois elos nunca escrevem o mesmo caminho, porque o nome traz o elo. É o marcador de 'cancelado não é feito' (item 3.1): ele existe para que falha com trabalho feito conte como noite aberta e cancelamento antes da coleta não conte.",
+   "escritor_antes_da_fase_1": "qualquer_elo"
   },
   "evidencias/": {
-   "escritor": "qualquer_elo",
+   "escritor": "consolidador",
    "sem_colisao_possivel": true,
-   "por_que": "Endereçado pelo CONTEÚDO: o nome do arquivo é o sha256 dele. Dois elos nunca escrevem o mesmo caminho com conteúdo diferente, então não há conflito a resolver — e exigir uma classe do resolvedor seria exigir resposta a uma pergunta que não existe."
+   "por_que": "Endereçado pelo CONTEÚDO: o nome do arquivo é o sha256 dele. Dois elos nunca escrevem o mesmo caminho com conteúdo diferente, então não há conflito a resolver — e exigir uma classe do resolvedor seria exigir resposta a uma pergunta que não existe.",
+   "escritor_antes_da_fase_1": "qualquer_elo"
   },
   "dados-abertos/": {
-   "escritor": "publicar",
-   "por_que": "Derivado, e so o publicador gera derivado (regra da parte 2, aplicada em 06/10 quando o passo de regenerar saiu do `_coletor.yml`). Era `qualquer_elo` porque todo elo regenerava a cadeia e levava os derivados no proprio commit."
+   "escritor": "consolidador",
+   "por_que": "Derivado, e so o publicador gera derivado (regra da parte 2, aplicada em 06/10 quando o passo de regenerar saiu do `_coletor.yml`). Era `qualquer_elo` porque todo elo regenerava a cadeia e levava os derivados no proprio commit.",
+   "escritor_antes_da_fase_1": "publicar"
   },
   "feeds/": {
-   "escritor": "publicar",
-   "por_que": "Derivado, e so o publicador gera derivado (regra da parte 2, aplicada em 06/10 quando o passo de regenerar saiu do `_coletor.yml`). Era `qualquer_elo` porque todo elo regenerava a cadeia e levava os derivados no proprio commit."
+   "escritor": "consolidador",
+   "por_que": "Derivado, e so o publicador gera derivado (regra da parte 2, aplicada em 06/10 quando o passo de regenerar saiu do `_coletor.yml`). Era `qualquer_elo` porque todo elo regenerava a cadeia e levava os derivados no proprio commit.",
+   "escritor_antes_da_fase_1": "publicar"
   },
   "selos/": {
-   "escritor": "publicar",
-   "por_que": "Derivado, e so o publicador gera derivado (regra da parte 2, aplicada em 06/10 quando o passo de regenerar saiu do `_coletor.yml`). Era `qualquer_elo` porque todo elo regenerava a cadeia e levava os derivados no proprio commit."
+   "escritor": "consolidador",
+   "por_que": "Derivado, e so o publicador gera derivado (regra da parte 2, aplicada em 06/10 quando o passo de regenerar saiu do `_coletor.yml`). Era `qualquer_elo` porque todo elo regenerava a cadeia e levava os derivados no proprio commit.",
+   "escritor_antes_da_fase_1": "publicar"
   },
   "docs/": {
-   "escritor": "publicar",
-   "por_que": "Derivado que o publicador regenera e sela. Entrou em 06/10 porque o commit do elo passou a ser por lista declarada: caminho nao declarado fica FORA do commit, e sem esta linha a publicacao deixaria de levar o que publica."
+   "escritor": "consolidador",
+   "por_que": "Derivado que o publicador regenera e sela. Entrou em 06/10 porque o commit do elo passou a ser por lista declarada: caminho nao declarado fica FORA do commit, e sem esta linha a publicacao deixaria de levar o que publica.",
+   "escritor_antes_da_fase_1": "publicar"
   },
   "assets/": {
-   "escritor": "publicar",
-   "por_que": "Derivado que o publicador regenera e sela. Entrou em 06/10 porque o commit do elo passou a ser por lista declarada: caminho nao declarado fica FORA do commit, e sem esta linha a publicacao deixaria de levar o que publica."
+   "escritor": "consolidador",
+   "por_que": "Derivado que o publicador regenera e sela. Entrou em 06/10 porque o commit do elo passou a ser por lista declarada: caminho nao declarado fica FORA do commit, e sem esta linha a publicacao deixaria de levar o que publica.",
+   "escritor_antes_da_fase_1": "publicar"
   },
   "blog/": {
-   "escritor": "publicar",
-   "por_que": "Derivado que o publicador regenera e sela. Entrou em 06/10 porque o commit do elo passou a ser por lista declarada: caminho nao declarado fica FORA do commit, e sem esta linha a publicacao deixaria de levar o que publica."
+   "escritor": "consolidador",
+   "por_que": "Derivado que o publicador regenera e sela. Entrou em 06/10 porque o commit do elo passou a ser por lista declarada: caminho nao declarado fica FORA do commit, e sem esta linha a publicacao deixaria de levar o que publica.",
+   "escritor_antes_da_fase_1": "publicar"
   },
   "CITATION.cff": {
-   "escritor": "publicar",
-   "por_que": "Derivado que o publicador regenera e sela. Entrou em 06/10 porque o commit do elo passou a ser por lista declarada: caminho nao declarado fica FORA do commit, e sem esta linha a publicacao deixaria de levar o que publica."
+   "escritor": "consolidador",
+   "por_que": "Derivado que o publicador regenera e sela. Entrou em 06/10 porque o commit do elo passou a ser por lista declarada: caminho nao declarado fica FORA do commit, e sem esta linha a publicacao deixaria de levar o que publica.",
+   "escritor_antes_da_fase_1": "publicar"
   },
   "*.html": {
-   "escritor": "publicar",
-   "por_que": "Derivado que o publicador regenera e sela. Entrou em 06/10 porque o commit do elo passou a ser por lista declarada: caminho nao declarado fica FORA do commit, e sem esta linha a publicacao deixaria de levar o que publica."
+   "escritor": "consolidador",
+   "por_que": "Derivado que o publicador regenera e sela. Entrou em 06/10 porque o commit do elo passou a ser por lista declarada: caminho nao declarado fica FORA do commit, e sem esta linha a publicacao deixaria de levar o que publica.",
+   "escritor_antes_da_fase_1": "publicar"
   },
   "*.pdf": {
-   "escritor": "publicar",
-   "por_que": "Derivado que o publicador regenera e sela. Entrou em 06/10 porque o commit do elo passou a ser por lista declarada: caminho nao declarado fica FORA do commit, e sem esta linha a publicacao deixaria de levar o que publica."
+   "escritor": "consolidador",
+   "por_que": "Derivado que o publicador regenera e sela. Entrou em 06/10 porque o commit do elo passou a ser por lista declarada: caminho nao declarado fica FORA do commit, e sem esta linha a publicacao deixaria de levar o que publica.",
+   "escritor_antes_da_fase_1": "publicar"
   },
   "data/alertas/vigentes.json": {
-   "escritor": "sinais-fisicos",
-   "por_que": "Saida propria do elo dos sinais fisicos (`coletar_sinais_risco.py`). Nenhum outro elo escreve. Declarado em 06/10, quando o ENSAIO REAL mostrou que o commit por lista o estava deixando de fora -- a lista protege contra levar o arquivo do outro, e tambem deixa de levar o proprio enquanto ninguem o declara. Foi o ensaio que achou."
+   "escritor": "consolidador",
+   "por_que": "Saida propria do elo dos sinais fisicos (`coletar_sinais_risco.py`). Nenhum outro elo escreve. Declarado em 06/10, quando o ENSAIO REAL mostrou que o commit por lista o estava deixando de fora -- a lista protege contra levar o arquivo do outro, e tambem deixa de levar o proprio enquanto ninguem o declara. Foi o ensaio que achou.",
+   "escritor_antes_da_fase_1": "sinais-fisicos"
   },
   "data/focos_pontos.json": {
-   "escritor": "sinais-fisicos",
-   "por_que": "Saida propria do elo dos sinais fisicos (`coletar_sinais_risco.py`). Nenhum outro elo escreve. Declarado em 06/10, quando o ENSAIO REAL mostrou que o commit por lista o estava deixando de fora -- a lista protege contra levar o arquivo do outro, e tambem deixa de levar o proprio enquanto ninguem o declara. Foi o ensaio que achou."
+   "escritor": "consolidador",
+   "por_que": "Saida propria do elo dos sinais fisicos (`coletar_sinais_risco.py`). Nenhum outro elo escreve. Declarado em 06/10, quando o ENSAIO REAL mostrou que o commit por lista o estava deixando de fora -- a lista protege contra levar o arquivo do outro, e tambem deixa de levar o proprio enquanto ninguem o declara. Foi o ensaio que achou.",
+   "escritor_antes_da_fase_1": "sinais-fisicos"
   },
   "data/sinais_risco.json": {
-   "escritor": "sinais-fisicos",
-   "por_que": "Saida propria do elo dos sinais fisicos (`coletar_sinais_risco.py`). Nenhum outro elo escreve. Declarado em 06/10, quando o ENSAIO REAL mostrou que o commit por lista o estava deixando de fora -- a lista protege contra levar o arquivo do outro, e tambem deixa de levar o proprio enquanto ninguem o declara. Foi o ensaio que achou."
+   "escritor": "consolidador",
+   "por_que": "Saida propria do elo dos sinais fisicos (`coletar_sinais_risco.py`). Nenhum outro elo escreve. Declarado em 06/10, quando o ENSAIO REAL mostrou que o commit por lista o estava deixando de fora -- a lista protege contra levar o arquivo do outro, e tambem deixa de levar o proprio enquanto ninguem o declara. Foi o ensaio que achou.",
+   "escritor_antes_da_fase_1": "sinais-fisicos"
   },
   "data/sinais_risco_consultas.json": {
-   "escritor": "sinais-fisicos",
-   "por_que": "Saida propria do elo dos sinais fisicos (`coletar_sinais_risco.py`). Nenhum outro elo escreve. Declarado em 06/10, quando o ENSAIO REAL mostrou que o commit por lista o estava deixando de fora -- a lista protege contra levar o arquivo do outro, e tambem deixa de levar o proprio enquanto ninguem o declara. Foi o ensaio que achou."
+   "escritor": "consolidador",
+   "por_que": "Saida propria do elo dos sinais fisicos (`coletar_sinais_risco.py`). Nenhum outro elo escreve. Declarado em 06/10, quando o ENSAIO REAL mostrou que o commit por lista o estava deixando de fora -- a lista protege contra levar o arquivo do outro, e tambem deixa de levar o proprio enquanto ninguem o declara. Foi o ensaio que achou.",
+   "escritor_antes_da_fase_1": "sinais-fisicos"
   },
   "data/monitor_saude.json": {
-   "escritor": "publicar",
-   "por_que": "Indice do MARE Saude, recalculado pelo publicador. Aparecia na arvore dos elos que rodam o pipeline de saude e nao era commitado por ninguem declarado."
+   "escritor": "consolidador",
+   "por_que": "Indice do MARE Saude, recalculado pelo publicador. Aparecia na arvore dos elos que rodam o pipeline de saude e nao era commitado por ninguem declarado.",
+   "escritor_antes_da_fase_1": "publicar"
   },
   "CODEMAP.md": {
    "escritor": "ninguem",
    "por_que": "Documentacao de CODIGO, nao derivado de dado. Saiu da cadeia canonica em 06/10 (causa A da parte 3): como cada commit de dado muda o que o mapa conta, cada publicacao de dados era reprovada por ele -- seis morreram assim num dia, com o site parado. Quem o mantem em dia e o portao de PR (`gerar_codemap.py --conferir`), que roda onde o codigo muda. Nenhum elo de rotina o commita."
   }
  },
- "_regra_do_portao": "Arquivo declarado com `escritor` igual a um workflow só pode aparecer no `git add` DAQUELE workflow. Arquivo com `escritor: ninguem` não aparece em nenhum. Arquivo com `escritor: qualquer_elo` exige que o resolvedor saiba resolvê-lo ou o recuse por escrito — e o portão confere que ele está numa das classes de `scripts/unir_conflito_de_rodada.py`, ou que o `pendente` explica por quê não. 06/10/2026: alem de declarar, agora se APLICA -- `scripts/commit_do_elo.py` poe no indice so o que o elo pode escrever, e `scripts/verificar_commit_do_elo.py` reprova `git add` de pasta inteira em qualquer workflow. Declarar sem aplicar foi o que custou 364 minutos de coleta na noite de 05 para 06."
+ "_regra_do_portao": "Arquivo declarado com `escritor` igual a um workflow só pode aparecer no `git add` DAQUELE workflow. Arquivo com `escritor: ninguem` não aparece em nenhum. Arquivo com `escritor: qualquer_elo` exige que o resolvedor saiba resolvê-lo ou o recuse por escrito — e o portão confere que ele está numa das classes de `scripts/unir_conflito_de_rodada.py`, ou que o `pendente` explica por quê não. 06/10/2026: alem de declarar, agora se APLICA -- `scripts/commit_do_elo.py` poe no indice so o que o elo pode escrever, e `scripts/verificar_commit_do_elo.py` reprova `git add` de pasta inteira em qualquer workflow. Declarar sem aplicar foi o que custou 364 minutos de coleta na noite de 05 para 06.",
+ "_fase_1": "06/10/2026 — UM ESCRITOR SO. Os elos nao commitam mais: eles entregam artefato `saida-<elo>-<janela>`, e o `consolidar_noite.yml` aplica tudo pela porta de cada arquivo e escreve UMA vez por janela. `escritor_antes_da_fase_1` guarda de quem era cada caminho, porque e essa declaracao que o consolidador usa para saber se o artefato de um elo pode tocar aquele caminho -- a regra 'um escritor por arquivo' nao sumiu, ela passou a ser aplicada no unico lugar onde a escrita acontece."
 }
