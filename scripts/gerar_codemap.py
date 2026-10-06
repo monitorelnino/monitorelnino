@@ -449,19 +449,39 @@ def autoteste() -> int:
     return 0
 
 
+def _data_do_commit() -> str:
+    """A data do último commit da árvore, em dd/mm/aaaa. Lê o git; não escreve.
+
+    Fora de um repositório git — num tarball, por exemplo — devolve "" e a linha do carimbo some.
+    Mapa sem data é melhor que mapa com data que muda sozinha.
+    """
+    import subprocess
+    try:
+        saida = subprocess.run(["git", "log", "-1", "--format=%cs"],
+                               cwd=str(MAPA.parent), capture_output=True, text=True, timeout=20)
+    except Exception:
+        return ""
+    bruto = (saida.stdout or "").strip()
+    if len(bruto) != 10:
+        return ""
+    return f"{bruto[8:10]}/{bruto[5:7]}/{bruto[0:4]}"
+
+
 def main() -> int:
     if "--autoteste" in sys.argv:
         return autoteste()
 
-    # §193, de novo em 06/10/2026: o carimbo vem do RELOGIO FIXADO da cadeia, nunca
-    # do relogio da parede. Com `hoje_editorial`, o mapa mudava sozinho na virada do
-    # dia e o portao 12 fechava a publicacao -- nove vezes seguidas na noite de
-    # 05 para 06/10, das 23:53 as 06:09.
-    from coletores_base import data_do_corte
+    # O carimbo do mapa é a data do COMMIT que ele mapeia — não o relógio, nem o corte da edição.
+    #
+    # Duas correções no mesmo dia, a segunda porque a primeira não bastou. Com `hoje_editorial` o
+    # mapa mudava na virada do dia (nove publicações mortas, 23:53→06:09). Com a data do corte, ele
+    # mudava quando o corte avançava, e aí era toda publicação de dado (mais seis). A data certa é
+    # a do código que o mapa descreve: para uma mesma árvore, ela não muda nunca — que é o que um
+    # derivado precisa ser.
     paginas, scripts_js, pythons, portoes, caminhos_js, quem_importa = ler_tudo()
     linhas = montar(paginas, scripts_js, pythons, portoes,
                     caminhos_js=caminhos_js, quem_importa=quem_importa)
-    novo = como_markdown(linhas, data_do_corte().strftime("%d/%m/%Y"))
+    novo = como_markdown(linhas, _data_do_commit())
 
     if "--conferir" in sys.argv:
         if not MAPA.exists():
