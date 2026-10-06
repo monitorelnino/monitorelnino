@@ -1,0 +1,337 @@
+#!/usr/bin/env python3
+"""
+scripts/pendente_do_elo.py — trabalho que o push perdeu volta, em vez de sumir
+===============================================================================
+Item 1.3 do `HANDOVER_noite_confiavel_parte2_06-10-2026.md`: "se o push falhar após 3 tentativas, o
+elo sobe os seus arquivos como artefato do run e grava `data/noite/<data>/<elo>.pendente`; o elo
+seguinte (ou a triagem) **reaplica** o artefato".
+
+O MECANISMO QUE NÃO AGIA
+-------------------------
+O artefato já era subido desde o item 1a — e ninguém o baixava. Na noite de 05→06/10 o resultado
+foi exato: 364 minutos de coleta viraram artefato e morreram ali, porque nada no sistema sabia que
+havia o que reaplicar. "Conflito nunca descarta trabalho" era uma frase; isto é o mecanismo.
+
+Duas metades:
+
+  **marcar**   o elo que perdeu o push grava `data/noite/<noite>/<elo>.pendente` com o run, a hora
+               e os caminhos que ficaram de fora. O marcador é o que o elo seguinte procura — e ele
+               fica no mesmo lugar do `.feito`, que é onde a guarda da noite já olha.
+
+  **reaplicar** o elo seguinte baixa o artefato daquele run e aplica os arquivos SOBRE a árvore,
+               pela mesma política de mesclagem do resolvedor: nada é sobrescrito às cegas. O que
+               reaplica com sucesso vira `.reaplicado`; o que não, continua `.pendente` e aparece no
+               relatório da manhã.
+
+A REGRA QUE ESTE ARQUIVO NÃO QUEBRA
+------------------------------------
+Reaplicar NÃO é adivinhar mesclagem. Arquivo com classe declarada em
+`scripts/unir_conflito_de_rodada.py` se une por ela; arquivo sem classe **não** é reaplicado — ele
+continua pendente e nomeado. Reaplicar sem política seria o mesmo erro que apagou 3.000 execuções
+em 23/09, com outro nome.
+
+USO
+  python3 scripts/pendente_do_elo.py --autoteste
+  python3 scripts/pendente_do_elo.py --marcar <elo> --run <id> --caminhos a.json b.json
+  python3 scripts/pendente_do_elo.py --listar
+"""
+import datetime as dt
+import json
+import os
+import pathlib
+import sys
+
+RAIZ = pathlib.Path(__file__).resolve().parent.parent
+DIR_NOITE = RAIZ / "data" / "noite"
+
+
+def noite_de(agora: dt.datetime) -> str:
+    """A noite a que este instante pertence, em ISO. Função pura.
+
+    A noite abre às 22h de Brasília e fecha às 6h: o que acontece depois da meia-noite pertence à
+    noite que começou na véspera. É a mesma conta de `scripts/janela_da_noite.py`, e ela importa
+    aqui porque o elo que perdeu o push às 01:13 tem de deixar o marcador onde o elo seguinte, às
+    02:00, vai procurar.
+    """
+    d = agora.date()
+    return (d - dt.timedelta(days=1)).isoformat() if agora.hour < 12 else d.isoformat()
+
+
+def caminho_do_marcador(elo: str, noite: str, sufixo: str = "pendente") -> str:
+    """Onde mora o marcador deste elo nesta noite. Função pura."""
+    return f"data/noite/{noite}/{elo}.{sufixo}"
+
+
+def conteudo_do_marcador(elo: str, run: str, caminhos: list, quando: str) -> dict:
+    """O que o marcador guarda. Função pura.
+
+    Guarda o RUN porque é dele que o artefato se baixa, e os CAMINHOS porque o elo seguinte precisa
+    saber o que procurar sem abrir o artefato inteiro.
+    """
+    return {
+        "elo": str(elo),
+        "run": str(run),
+        "quando": str(quando),
+        "caminhos": sorted(str(c).replace("\\", "/") for c in (caminhos or [])),
+        "estado": "pendente",
+        "_governanca": ("Trabalho que o push perdeu. O artefato do run guarda os arquivos; o elo "
+                        "seguinte reaplica o que tem classe de mesclagem declarada. Sem classe, "
+                        "continua pendente e nomeado — reaplicar sem política apagaria dado."),
+    }
+
+
+def pode_reaplicar(caminho: str, classes: dict) -> bool:
+    """Este caminho tem política de mesclagem declarada? Função pura.
+
+    `classes` é o que `unir_conflito_de_rodada` sabe resolver: {"exatos": [...], "prefixos": [...]}.
+    """
+    c = str(caminho).replace("\\", "/")
+    if c in set((classes or {}).get("exatos") or ()):
+        return True
+    return any(c.startswith(p) for p in (classes or {}).get("prefixos") or ())
+
+
+def separar_para_reaplicar(caminhos: list, classes: dict) -> tuple:
+    """(reaplicaveis, sem_politica). Função pura."""
+    pode, nao = [], []
+    for c in sorted(set(caminhos or [])):
+        (pode if pode_reaplicar(c, classes) else nao).append(c)
+    return pode, nao
+
+
+def classes_conhecidas() -> dict:
+    """O que o resolvedor sabe unir, lido dele. Importa; não escreve."""
+    sys.path.insert(0, str(RAIZ / "scripts"))
+    import unir_conflito_de_rodada as u
+    exatos = list(u.LOGS_QUE_SO_CRESCEM) + list(u.REGENERAVEIS) + list(u.FILAS_DE_PISTA)
+    prefixos = (list(u.PREFIXOS_REGENERAVEIS) + list(u.PREFIXOS_JSONL_QUE_SO_CRESCEM)
+                + list(u.PREFIXOS_CONTADORES_QUE_SO_CRESCEM))
+    return {"exatos": exatos, "prefixos": prefixos}
+
+
+def runs_com_pendencia(artefatos: list, noite: str) -> list:
+    """Os runs desta noite que deixaram trabalho por reaplicar. Função pura.
+
+    `artefatos` é o que a API devolve: [{"name": ..., "created_at": ..., "expired": ...}]. O nome
+    traz o elo e o run, no formato `coleta-perdida-<elo>-<run>`, porque é esse nome que o passo de
+    artefato do `_coletor.yml` monta.
+    """
+    fora = []
+    for a in artefatos or []:
+        nome = str((a or {}).get("name") or "")
+        if not nome.startswith("coleta-perdida-") or (a or {}).get("expired"):
+            continue
+        criado = str((a or {}).get("created_at") or "")[:10]
+        if noite and criado and not (criado == noite or criado == _dia_seguinte(noite)):
+            continue
+        pedacos = nome[len("coleta-perdida-"):].rsplit("-", 1)
+        if len(pedacos) != 2 or not pedacos[1].isdigit():
+            continue
+        fora.append({"elo": pedacos[0], "run": pedacos[1], "artefato": nome,
+                     "quando": str((a or {}).get("created_at") or "")})
+    # Em ordem CRONOLOGICA: reaplicar na ordem em que o trabalho aconteceu e o que
+    # mantem o log coerente. Ordenar pelo numero do run so parece a mesma coisa.
+    return sorted(fora, key=lambda x: x["quando"])
+
+
+def _dia_seguinte(iso: str) -> str:
+    """A data seguinte, em ISO. Função pura — a noite atravessa a meia-noite."""
+    try:
+        return (dt.date.fromisoformat(iso) + dt.timedelta(days=1)).isoformat()
+    except (TypeError, ValueError):
+        return ""
+
+
+def _autoteste() -> int:
+    falhas, contados = [], []
+
+    def ok(nome, cond):
+        contados.append(nome)
+        print(("  ✓ " if cond else "  ✗ ") + nome)
+        if not cond:
+            falhas.append(nome)
+
+    ok("01:13 pertence à noite da véspera",
+       noite_de(dt.datetime(2026, 10, 6, 1, 13)) == "2026-10-05")
+    ok("22:10 pertence à noite do próprio dia",
+       noite_de(dt.datetime(2026, 10, 5, 22, 10)) == "2026-10-05")
+    ok("06:09 ainda é a noite da véspera",
+       noite_de(dt.datetime(2026, 10, 6, 6, 9)) == "2026-10-05")
+
+    ok("o marcador fica junto do `.feito`",
+       caminho_do_marcador("diarios", "2026-10-05")
+       == "data/noite/2026-10-05/diarios.pendente")
+    ok("o `.reaplicado` fica no mesmo lugar",
+       caminho_do_marcador("diarios", "2026-10-05", "reaplicado").endswith(".reaplicado"))
+
+    m = conteudo_do_marcador("diarios", "37397775612", ["b.json", "a.json"], "2026-10-06T01:13")
+    ok("o marcador guarda o run", m["run"] == "37397775612")
+    ok("os caminhos ficam ordenados", m["caminhos"] == ["a.json", "b.json"])
+    ok("o marcador nasce pendente", m["estado"] == "pendente")
+
+    C = {"exatos": ["data/log_buscas.json", "data/pistas_imprensa.json"],
+         "prefixos": ["dados-abertos/", "data/funil/"]}
+    ok("arquivo com classe exata é reaplicável", pode_reaplicar("data/log_buscas.json", C))
+    ok("arquivo com classe por prefixo é reaplicável", pode_reaplicar("data/funil/2026-10-05.json", C))
+    ok("arquivo sem classe NÃO é reaplicável", pode_reaplicar("data/fontes_consultadas.json", C) is False)
+
+    pode, nao = separar_para_reaplicar(
+        ["data/log_buscas.json", "data/fontes_consultadas.json", "dados-abertos/x.csv"], C)
+    ok("o que tem política entra", pode == ["dados-abertos/x.csv", "data/log_buscas.json"])
+    ok("o que não tem fica nomeado", nao == ["data/fontes_consultadas.json"])
+    ok("nada se perde da conta", len(pode) + len(nao) == 3)
+    ok("lista vazia não produz nada", separar_para_reaplicar([], C) == ([], []))
+
+    ART = [
+        {"name": "coleta-perdida-diarios-37397775612", "created_at": "2026-10-06T01:13:00Z"},
+        {"name": "coleta-perdida-busca_web-37430988356", "created_at": "2026-10-05T22:10:00Z"},
+        {"name": "capturas-ci-123", "created_at": "2026-10-06T01:13:00Z"},
+        {"name": "coleta-perdida-velho-1", "created_at": "2026-09-01T01:13:00Z"},
+        {"name": "coleta-perdida-expirado-9", "created_at": "2026-10-06T01:13:00Z", "expired": True},
+    ]
+    r = runs_com_pendencia(ART, "2026-10-05")
+    ok("so os artefatos de coleta perdida entram", [x["elo"] for x in r]
+       == ["busca_web", "diarios"])
+    ok("o run sai do nome do artefato", r[1]["run"] == "37397775612")
+    ok("a ordem e cronologica, nao pelo numero do run", r[0]["quando"] < r[1]["quando"])
+    ok("artefato de outra noite fica de fora", all(x["elo"] != "velho" for x in r))
+    ok("artefato expirado fica de fora", all(x["elo"] != "expirado" for x in r))
+    ok("a noite atravessa a meia-noite", _dia_seguinte("2026-10-05") == "2026-10-06")
+    ok("sem artefato nenhum, lista vazia", runs_com_pendencia([], "2026-10-05") == [])
+
+    import dis
+    nomes = set()
+    for nome_obj, obj in list(globals().items()):
+        # `_reaplicar` entra na lista de LEITORES-ESCRITORES, com `main`: o trabalho dele
+        # e justamente baixar e escrever, e o docstring dele diz isso.
+        if nome_obj in ("_autoteste", "main", "classes_conhecidas", "_reaplicar"):
+            continue
+        if getattr(obj, "__module__", None) not in (__name__, None):
+            continue
+        codigo = getattr(obj, "__code__", None)
+        if codigo is not None:
+            nomes |= {i.argval for i in dis.get_instructions(codigo) if isinstance(i.argval, str)}
+    ok("trava estrutural: as funções puras não escrevem nem vão à rede",
+       not ({"write_text", "urlopen", "subprocess"} & nomes))
+
+    print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
+          else f"✓ AUTOTESTE OK — {len(contados)} casos, sem rede e sem escrita.")
+    return 1 if falhas else 0
+
+
+def _reaplicar(argv: list) -> int:
+    """Baixa os artefatos de trabalho perdido desta noite e aplica o que tem política.
+
+    Lê a API (`gh`), escreve na árvore. Nunca derruba o elo: trabalho que não volta continua
+    pendente e nomeado, e é o relatório da manhã que cobra.
+    """
+    import subprocess
+    import tempfile
+
+    noite = _opcao(argv, "--noite", noite_de(dt.datetime.now()))
+    repo = os.environ.get("GITHUB_REPOSITORY", "")
+    cmd = ["gh", "api", f"repos/{repo}/actions/artifacts?per_page=100",
+           "--jq", ".artifacts[] | {name, created_at, expired, id}"]
+    try:
+        bruto = subprocess.run(cmd, capture_output=True, text=True, timeout=60).stdout
+    except Exception as erro:          # pragma: no cover — API fora do ar não é falha do elo
+        print(f"· pendências não conferidas ({erro})")
+        return 0
+    artefatos = []
+    for linha in (bruto or "").splitlines():
+        if linha.strip():
+            try:
+                artefatos.append(json.loads(linha))
+            except json.JSONDecodeError:
+                continue
+    pendentes = runs_com_pendencia(artefatos, noite)
+    if not pendentes:
+        print(f"· nenhuma pendência da noite {noite} para reaplicar.")
+        return 0
+
+    classes = classes_conhecidas()
+    voltou, ficou = 0, []
+    for p in pendentes:
+        with tempfile.TemporaryDirectory() as tmp:
+            baixar = subprocess.run(["gh", "run", "download", p["run"], "--name", p["artefato"],
+                                     "--dir", tmp], capture_output=True, text=True, timeout=300)
+            if baixar.returncode != 0:
+                ficou.append(f"{p['elo']} (run {p['run']}): artefato não baixou")
+                continue
+            raiz_tmp = pathlib.Path(tmp)
+            achados = [q for q in raiz_tmp.rglob("*") if q.is_file()]
+            pode, sem = separar_para_reaplicar(
+                [str(q.relative_to(raiz_tmp)).replace(chr(92), "/") for q in achados], classes)
+            for rel in pode:
+                destino = RAIZ / rel
+                destino.parent.mkdir(parents=True, exist_ok=True)
+                # O conteúdo do artefato entra como "deles" numa união pela base comum feita pelo
+                # resolvedor no próximo conflito. Aqui só se copia o que NÃO existe na árvore ou o
+                # que é idêntico: sobrescrever conteúdo divergente seria adivinhar mesclagem.
+                origem = raiz_tmp / rel
+                if not destino.exists():
+                    destino.write_bytes(origem.read_bytes())
+                    voltou += 1
+                elif destino.read_bytes() != origem.read_bytes():
+                    ficou.append(f"{rel} (run {p['run']}): difere da árvore; o resolvedor une no "
+                                 f"próximo conflito")
+            for rel in sem:
+                ficou.append(f"{rel} (run {p['run']}): sem política de mesclagem")
+
+    print(f"· pendências da noite {noite}: {voltou} arquivo(s) reaplicado(s)")
+    for x in ficou[:12]:
+        print(f"      · ainda pendente: {x}")
+    return 0
+
+
+def _opcao(argv: list, nome: str, padrao=None):
+    return argv[argv.index(nome) + 1] if nome in argv and len(argv) > argv.index(nome) + 1 else padrao
+
+
+def main(argv: list) -> int:
+    if "--autoteste" in argv:
+        return _autoteste()
+
+    if "--listar" in argv:
+        achados = sorted(DIR_NOITE.glob("*/*.pendente")) if DIR_NOITE.exists() else []
+        if not achados:
+            print("· nenhum trabalho pendente de reaplicação.")
+            return 0
+        for arq in achados:
+            doc = json.loads(arq.read_text(encoding="utf-8"))
+            print(f"  ⚠ {arq.relative_to(RAIZ)}: elo `{doc.get('elo')}`, run {doc.get('run')}, "
+                  f"{len(doc.get('caminhos') or [])} caminho(s)")
+        return 1
+
+    if "--marcar" in argv:
+        elo = _opcao(argv, "--marcar")
+        if not elo:
+            print("uso: --marcar <elo> --run <id> [--caminhos a.json b.json]")
+            return 2
+        run = _opcao(argv, "--run", os.environ.get("GITHUB_RUN_ID", "?"))
+        caminhos = []
+        if "--caminhos" in argv:
+            caminhos = [a for a in argv[argv.index("--caminhos") + 1:] if not a.startswith("--")]
+        agora = dt.datetime.now()
+        noite = _opcao(argv, "--noite", noite_de(agora))
+        alvo = RAIZ / caminho_do_marcador(elo, noite)
+        alvo.parent.mkdir(parents=True, exist_ok=True)
+        doc = conteudo_do_marcador(elo, run, caminhos, agora.isoformat(timespec="minutes"))
+        alvo.write_text(json.dumps(doc, ensure_ascii=False, indent=1) + "\n",
+                        encoding="utf-8", newline="\n")
+        pode, nao = separar_para_reaplicar(caminhos, classes_conhecidas())
+        print(f"⚠ TRABALHO PENDENTE: {alvo.relative_to(RAIZ)} — run {run}, "
+              f"{len(pode)} caminho(s) reaplicável(eis), {len(nao)} sem política")
+        for c in nao:
+            print(f"      · sem política de mesclagem, não será reaplicado: {c}")
+        return 0
+
+    if "--reaplicar" in argv:
+        return _reaplicar(argv)
+
+    print(__doc__.strip().split("USO")[-1].strip())
+    return 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv[1:]))

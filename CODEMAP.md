@@ -165,6 +165,7 @@ Atualizado em 05/10/2026.
 | `scripts/orcamento_da_noite.py` | — | `cursor_da_noite.json` | — | — | não |
 | `scripts/ordem_de_coleta.py` | — | `cursor_de_coleta.json` | — | — | não |
 | `scripts/painel_da_noite.py` | — | `painel_da_noite.json` | — | 1 | não |
+| `scripts/pendente_do_elo.py` | — | `fontes_consultadas.json`, `funil/2026-10-05.json`, `log_buscas.json`, `pistas_imprensa.json` | — | — | não |
 | `scripts/pistas.py` | — | `pistas_imprensa.json`, `pistas_rejeitadas.json` | — | 9 | não |
 | `scripts/preservar_textos_integrais.py` | — | `evidencias.json` | — | — | não |
 | `scripts/quais_portoes.py` | — | `indice.json` | — | — | não |
@@ -179,7 +180,7 @@ Atualizado em 05/10/2026.
 | `scripts/testar_reposicao_dominio.py` | — | `publicacao.json` | — | — | não |
 | `scripts/tipo_de_evento_dos_atos.py` | — | `atos_resposta.json` | — | — | não |
 | `scripts/triar_fila.py` | — | `pistas_imprensa.json` | — | — | não |
-| `scripts/unir_conflito_de_rodada.py` | — | `fontes_consultadas.json`, `funil/2026-10-05.json`, `funil/x.json`, `historico_mudancas.json`, `log_buscas.json`, `log_buscas/2026-10.json` (+12) | — | 2 | não |
+| `scripts/unir_conflito_de_rodada.py` | — | `fontes_consultadas.json`, `funil/2026-10-05.json`, `funil/x.json`, `historico_mudancas.json`, `log_buscas.json`, `log_buscas/2026-10.json` (+12) | — | 3 | não |
 | `seguir_pistas.py` | — | — | — | — | não |
 | `sondar_paineis.py` | — | `pistas_paineis.json` | — | — | não |
 | `triar_confianca_pistas.py` | — | `pistas_imprensa.json`, `pistas_revisao.json` | — | — | não |

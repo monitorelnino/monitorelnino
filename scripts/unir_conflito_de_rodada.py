@@ -407,14 +407,26 @@ def unir_log(caminho, chave, base_txt, nosso_txt, deles_txt):
 
     # Os escalares do topo: vêm do lado de quem reaplica (deles), que é a rodada. Se algum
     # divergir, é mudança de formato no meio de um conflito — para isso o script não serve.
-    escalares_n = {k: v for k, v in nosso.items() if k != chave}
-    escalares_d = {k: v for k, v in deles.items() if k != chave}
+    #
+    # CARIMBO DE ATUALIZAÇÃO NÃO É MUDANÇA DE FORMATO, e tratá-lo como tal custou caro: em
+    # 06/10/2026 os sinais físicos e os diários perderam a coleta porque os dois lados de
+    # `data/saude_pipeline.json` tinham `atualizado_em` diferente — cada lado acrescentou a sua
+    # execução em momentos diferentes, que é exatamente o que um log append-only faz. Divergir no
+    # carimbo é o estado NORMAL de dois lados que escreveram; o mais recente vale, pelo mesmo
+    # critério que a união dos contadores já usava.
+    CARIMBOS = ("atualizado_em", "gerado_em", "atualizado", "ultima_execucao")
+    escalares_n = {k: v for k, v in nosso.items() if k != chave and k not in CARIMBOS}
+    escalares_d = {k: v for k, v in deles.items() if k != chave and k not in CARIMBOS}
     if escalares_n != escalares_d:
         raise Recusa(f"os campos fora de '{chave}' divergem entre os lados "
                      f"({sorted(escalares_n)} vs {sorted(escalares_d)}) — mudança de formato")
 
     fundido = dict(deles)
     fundido[chave] = uniao
+    for carimbo in CARIMBOS:
+        valores = [d.get(carimbo) for d in (nosso, deles) if d.get(carimbo)]
+        if valores:
+            fundido[carimbo] = max(valores)
     return fundido, len(ln), len(ld), len(uniao)
 
 
@@ -688,6 +700,22 @@ def autoteste() -> int:
         checar("JSONL que nao comeca pela base e RECUSADO", False)
     except Recusa:
         checar("JSONL que nao comeca pela base e RECUSADO", True)
+    # 06/10: o carimbo divergente custou a coleta dos sinais fisicos e dos diarios.
+    _b = '{"atualizado_em":"2026-10-05T01:00:00","execucoes":[{"a":1}]}'
+    _n = '{"atualizado_em":"2026-10-06T01:10:00","execucoes":[{"a":1},{"b":2}]}'
+    _d = '{"atualizado_em":"2026-10-06T01:13:00","execucoes":[{"a":1},{"c":3}]}'
+    _u = unir_log("data/saude_pipeline.json", "execucoes", _b, _n, _d)
+    checar("carimbo divergente nao recusa a uniao do log", len(_u[0]["execucoes"]) == 3)
+    checar("o carimbo que vale e o mais recente",
+           _u[0]["atualizado_em"] == "2026-10-06T01:13:00")
+    try:
+        unir_log("x.json", "execucoes", _b,
+                 '{"atualizado_em":"2026-10-06T01:10:00","formato":1,"execucoes":[{"a":1}]}',
+                 '{"atualizado_em":"2026-10-06T01:13:00","formato":2,"execucoes":[{"a":1}]}')
+        checar("mudanca de formato de verdade continua RECUSADA", False)
+    except Recusa:
+        checar("mudanca de formato de verdade continua RECUSADA", True)
+
     checar("o funil do dia tem classe", e_contador_que_so_cresce("data/funil/2026-10-05.json"))
     checar("outro json nao entra como contador", not e_contador_que_so_cresce("data/meta.json"))
     _b = '{"data":"2026-10-05","formato_versao":1,"etapas":{"juiz":{"recebidas":10}}}'
