@@ -2,204 +2,6 @@
  "formato_versao": 1,
  "execucoes": [
   {
-   "data": "2026-09-28",
-   "script": "monitorar_imprensa_regional.py",
-   "inicio": "2026-09-28T08:54:30",
-   "duracao_s": 123.7,
-   "itens": 40,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-28",
-   "script": "monitorar_imprensa_saude.py",
-   "inicio": "2026-09-28T08:56:33",
-   "duracao_s": 103.4,
-   "itens": 27,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-28",
-   "script": "monitorar_atos_resposta.py",
-   "inicio": "2026-09-28T08:58:16",
-   "duracao_s": 318.2,
-   "itens": 1161,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-28",
-   "script": "monitorar_politica_por_inteiro.py",
-   "inicio": "2026-09-28T09:03:34",
-   "duracao_s": 1.5,
-   "itens": 1161,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-28",
-   "script": "monitorar_sinais_federais.py",
-   "inicio": "2026-09-28T09:03:35",
-   "duracao_s": 3.8,
-   "itens": 10,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-28",
-   "script": "detectar_marcos_federais.py",
-   "inicio": "2026-09-28T09:03:38",
-   "duracao_s": 1.7,
-   "itens": 0,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-28",
-   "script": "verificar_prazos_legais.py",
-   "inicio": "2026-09-28T09:03:39",
-   "duracao_s": 0.8,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-28",
-   "script": "descobrir_planos.py",
-   "inicio": "2026-09-28T09:03:39",
-   "duracao_s": 881.0,
-   "itens": 41,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-28",
-   "script": "seguir_pistas.py",
-   "inicio": "2026-09-28T09:18:20",
-   "duracao_s": 18.8,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-28",
-   "script": "triar_confianca_pistas.py",
-   "inicio": "2026-09-28T09:18:38",
-   "duracao_s": 1.5,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-28",
-   "script": "revisar_pistas.py",
-   "inicio": "2026-09-28T16:33:14",
-   "duracao_s": 824.9,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-28",
-   "script": "julgar_filas.py",
-   "inicio": "2026-09-28T16:46:58",
-   "duracao_s": 669.4,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-28",
-   "script": "julgar_e_aplicar_descobertas.py",
-   "inicio": "2026-09-28T16:58:07",
-   "duracao_s": 0.8,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-28",
-   "script": "scripts/amostra_auditoria_semanal.py",
-   "inicio": "2026-09-28T16:58:07",
-   "duracao_s": 0.9,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-28",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-09-28T18:46:24",
-   "duracao_s": 2.7,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-28",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-09-28T19:35:34",
-   "duracao_s": 2.4,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-28",
-   "script": "revisar_pistas.py",
-   "inicio": "2026-09-28T22:52:56",
-   "duracao_s": 275.6,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-28",
-   "script": "julgar_filas.py",
-   "inicio": "2026-09-28T22:57:31",
-   "duracao_s": 1165.0,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-28",
-   "script": "julgar_e_aplicar_descobertas.py",
-   "inicio": "2026-09-28T23:16:56",
-   "duracao_s": 0.2,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-28",
-   "script": "aplicar_promocoes_do_juiz.py",
-   "inicio": "2026-09-28T23:16:56",
-   "duracao_s": 0.4,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-28",
-   "script": "scripts/amostra_auditoria_semanal.py",
-   "inicio": "2026-09-28T23:16:56",
-   "duracao_s": 0.5,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-28",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-09-28T23:19:48",
-   "duracao_s": 2.8,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
    "data": "2026-09-29",
    "script": "recalcular_mare.py",
    "inicio": "2026-09-29T06:48:55",
@@ -2538,7 +2340,106 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-05",
+   "script": "monitorar_imprensa_regional.py",
+   "inicio": "2026-10-06T02:54:57",
+   "duracao_s": 140.3,
+   "itens": 40,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-05",
+   "script": "monitorar_imprensa_saude.py",
+   "inicio": "2026-10-06T02:57:17",
+   "duracao_s": 0.7,
+   "itens": null,
+   "status": "erro",
+   "erro": "KeyError: 'hash'"
+  },
+  {
+   "data": "2026-10-06",
+   "script": "monitorar_atos_resposta.py",
+   "inicio": "2026-10-06T02:57:17",
+   "duracao_s": 176.7,
+   "itens": 3357,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-06",
+   "script": "monitorar_politica_por_inteiro.py",
+   "inicio": "2026-10-06T03:00:13",
+   "duracao_s": 2.8,
+   "itens": 3357,
+   "status": "erro",
+   "erro": "NameError: name 'ler' is not defined. Did you mean: 'len'?"
+  },
+  {
+   "data": "2026-10-06",
+   "script": "monitorar_sinais_federais.py",
+   "inicio": "2026-10-06T03:00:15",
+   "duracao_s": 4.8,
+   "itens": 10,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-06",
+   "script": "detectar_marcos_federais.py",
+   "inicio": "2026-10-06T03:00:19",
+   "duracao_s": 1.9,
+   "itens": 0,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-06",
+   "script": "descobrir_planos.py",
+   "inicio": "2026-10-06T03:00:20",
+   "duracao_s": 911.5,
+   "itens": 42,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-06",
+   "script": "monitorar_redes_oficiais.py",
+   "inicio": "2026-10-06T03:15:31",
+   "duracao_s": 988.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-06",
+   "script": "seguir_pistas.py",
+   "inicio": "2026-10-06T03:31:59",
+   "duracao_s": 145.3,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-06",
+   "script": "triar_confianca_pistas.py",
+   "inicio": "2026-10-06T03:34:24",
+   "duracao_s": 2.1,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-06",
+   "script": "verificar_pista_imprensa.py",
+   "inicio": "2026-10-06T03:34:26",
+   "duracao_s": 156.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
   }
  ],
- "atualizado_em": "2026-10-06T02:52:34"
+ "atualizado_em": "2026-10-06T03:37:02"
 }
