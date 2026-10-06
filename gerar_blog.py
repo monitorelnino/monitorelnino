@@ -39,7 +39,7 @@ import markdown
 # §227: a data vem da REDAÇÃO, não do runner (que roda em UTC). A rodada de sábado 22h40
 # em Brasília já é domingo em UTC, e o carimbo gravado em data/ sairia um dia adiante do que o
 # leitor brasileiro viu.
-from coletores_base import hoje_editorial  # noqa: E402
+from coletores_base import hoje_editorial, data_do_corte  # noqa: E402
 
 RAIZ = Path(__file__).resolve().parent
 DIR_POSTS = RAIZ / "blog" / "posts"
@@ -250,7 +250,7 @@ def render_post(post: dict, cabecalho: str, rodape: str, scripts: str) -> str:
 
 
 def render_feed(posts: list[dict]) -> str:
-    atual = max((p["data"] for p in posts), default=hoje_editorial().isoformat())
+    atual = max((p["data"] for p in posts), default=data_do_corte().isoformat())
     itens = []
     for p in posts:
         itens.append(f"""  <entry>

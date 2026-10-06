@@ -440,6 +440,17 @@ jobs:
           path: capturas-ci/
           if-no-files-found: ignore
           retention-days: 30
+      # Antes do portão 12, porque ele explica a falha que o 12 mostraria sem causa: derivado
+      # que carimba pelo relógio da parede muda sozinho na virada do dia, e o 12 acusa "obsoleto"
+      # sem dizer por quê. Em 05 para 06/10 isso derrubou nove publicações seguidas.
+      - name: Relógio dos derivados — nenhum carimbo pela parede
+        timeout-minutes: 3
+        run: |
+          # assunto: dado rapido
+          python3 scripts/verificar_relogio_dos_derivados.py --autoteste
+          # assunto: dado rapido
+          python3 scripts/verificar_relogio_dos_derivados.py
+
       - name: Portão 12 — a cadeia de derivados regenera sem erro
         id: p12
         if: steps.diff.outputs.dado_mudou == 'true'

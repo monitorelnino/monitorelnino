@@ -29,7 +29,7 @@ from pathlib import Path
 # §227: a data vem da REDAÇÃO, não do runner (que roda em UTC). A rodada de sábado 22h40
 # em Brasília já é domingo em UTC, e o carimbo gravado em data/ sairia um dia adiante do que o
 # leitor brasileiro viu.
-from coletores_base import hoje_editorial  # noqa: E402
+from coletores_base import hoje_editorial, data_do_corte  # noqa: E402
 from coletores_base import gravar_em  # §229 (o nome local gravar é um booleano)
 
 RAIZ = Path(__file__).parent
@@ -248,7 +248,7 @@ def self_test():
 def main():
     """Interface de linha de comando."""
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--data", default=hoje_editorial().strftime("%d/%m/%Y"))
+    ap.add_argument("--data", default=data_do_corte().strftime("%d/%m/%Y"))
     ap.add_argument("--self-test", action="store_true")
     a = ap.parse_args()
     if a.self_test:

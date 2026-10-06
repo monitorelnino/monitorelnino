@@ -453,11 +453,15 @@ def main() -> int:
     if "--autoteste" in sys.argv:
         return autoteste()
 
-    from coletores_base import hoje_editorial
+    # §193, de novo em 06/10/2026: o carimbo vem do RELOGIO FIXADO da cadeia, nunca
+    # do relogio da parede. Com `hoje_editorial`, o mapa mudava sozinho na virada do
+    # dia e o portao 12 fechava a publicacao -- nove vezes seguidas na noite de
+    # 05 para 06/10, das 23:53 as 06:09.
+    from coletores_base import data_do_corte
     paginas, scripts_js, pythons, portoes, caminhos_js, quem_importa = ler_tudo()
     linhas = montar(paginas, scripts_js, pythons, portoes,
                     caminhos_js=caminhos_js, quem_importa=quem_importa)
-    novo = como_markdown(linhas, hoje_editorial().strftime("%d/%m/%Y"))
+    novo = como_markdown(linhas, data_do_corte().strftime("%d/%m/%Y"))
 
     if "--conferir" in sys.argv:
         if not MAPA.exists():
