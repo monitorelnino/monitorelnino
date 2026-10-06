@@ -193,6 +193,27 @@ const COLETA = () => {
     page.on("pageerror", e => erros.push(e.message));
     await page.route(/vlibras\.gov\.br|fonts\.g|netlify/, r => r.abort());
     await page.goto(`http://127.0.0.1:${porta}/${PAGINA}`, { waitUntil: "networkidle", timeout: 45000 });
+    // 06/10/2026: era SÓ `waitForTimeout(1500)`, e isso faz do portão um relógio. O publicador
+    // reprovou `financiamento.html` por "texto exigido ausente: 'desembolsado é o que já saiu do
+    // caixa'" com a página correta e o dado no lugar — a frase é escrita por um `fetch` que ainda
+    // não tinha resolvido. Portão que reprova página correta é o pior defeito que um portão tem:
+    // ele ensina a ignorá-lo.
+    //
+    // As páginas já dizem quando terminaram: `window.__finPronto` no Financiamento e
+    // `MonitorCatalogo.pronto` em toda página migrada. Espera-se O SINAL, e o tempo fixo vira só
+    // o piso para quem não tem sinal nenhum.
+    await page.evaluate(async () => {
+      const esperas = [];
+      if (window.__finPronto) esperas.push(window.__finPronto);
+      if (window.MonitorCatalogo && window.MonitorCatalogo.pronto) {
+        esperas.push(window.MonitorCatalogo.pronto);
+      }
+      // Teto próprio: sinal que não resolve não pode travar o portão por 45 s.
+      await Promise.race([
+        Promise.allSettled(esperas),
+        new Promise((r) => setTimeout(r, 8000)),
+      ]);
+    });
     await page.waitForTimeout(1500);
     const dados = await page.evaluate(COLETA);
     dados.erros_de_runtime = erros;
