@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 06/10/2026 · 3828 pendente(s) · 8315 decidida(s) · A=180 B=564 C=3084
+Gerado em 06/10/2026 · 3829 pendente(s) · 8497 decidida(s) · A=180 B=565 C=3084
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -10576,6 +10576,313 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://news.google.com/rss/articles/CBMivAFBVV95cUxOaW5aZDNtQ1d0dWR1eGR0S2J2NUd3bW5rUktQYmpXMTRpaElySFlKOEpYbl95aFQ1d0ZqeTFlb0MyQ1RhcEpqZEtMWGlBREdEU2twMzVjQzd4NzRoNXNxSExiNkxtYWpaNEF0UEFhOElmZnBzWlVXcU8zdjdNZGNTZlVOcDJJQ0kxanhaTDZ4VFdIcXN3V2l5MDlvYXNxR09zWDE3RnFSS3pZdTNEcGQ4YUNmNFMtUlI5ekp2Nw?oc=5
   - trecho: 
 
+## saude/AC — 75 pendente(s)
+- `7b64b6d019` · nível **B** (3 pts) · rede_social · — · data 2021 (do trecho)
+  - título: Saúde do Acre on Instagram: "ESTRATÉGIA| Saúde traça plano de ...
+  - url: https://www.instagram.com/p/CJzo_ljhOE3/
+  - trecho: Saúde do Acre on Instagram: "ESTRATÉGIA| Saúde traça plano de contingência para enfrentar doenças causadas pelo Aedes Aegypti Em meio à apreensão causada pelo coronavírus, que segue fazendo vítimas e preocupando autorida
+- `ebd6e09f9c` · nível **C** (0 pts) · rede_social_oficial · — · data 2007 (do trecho)
+  - título: Gulls | Nikon Cafe
+  - url: https://www.nikoncafe.com/threads/gulls.65488/
+  - trecho: Aug 11, 2007 · Thread starter Glideslope Start dateAug 11, 2007 Glideslope Joined Feb 8, 2006 Messages 792 Location NY Aug 11, …
+- `0024f5f414` · nível **C** (0 pts) · rede_social_oficial · — · data 2012 (do trecho)
+  - título: Arielle | Nikon Cafe
+  - url: https://www.nikoncafe.com/threads/arielle.251112/
+  - trecho: Oct 1, 2012 · My friends girlfriend as she coincidentally walked into perfect light as I was turning around to say something to her...
+- `49c6681df0` · nível **C** (0 pts) · rede_social_oficial · — · data 2012 (do trecho)
+  - título: Using TC's | Nikon Cafe
+  - url: https://www.nikoncafe.com/threads/using-tcs.252951/
+  - trecho: Nov 1, 2012 · I have been struggling with my D4, 300/f4 + TCs. Although I have little problem using 1.7tc or 2x111tc with my D300 & …
+- `fce77a28a0` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Google Images
+  - url: https://images.google.com/?hl=en
+  - trecho: Google Images. The most comprehensive image search on the web.
+- `d1b15ea626` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Google Drive: Share Files Online with Secure Cloud Storage | Google ...
+  - url: https://workspace.google.com/products/drive/
+  - trecho: Learn about Google Drive’s file sharing platform that provides a personal, secure cloud storage option to share content with other users.
+- `61c53d9588` · nível **C** (0 pts) · rede_social_oficial · — · data 2001 (do trecho)
+  - título: Log In? - Fine Homebuilding
+  - url: https://www.finehomebuilding.com/forum/log-in
+  - trecho: Oct 16, 2001 · * What ever happened to the Log In button? I emailed Andy about this, but have yet to get a responce from Taunton. …
+- `74d075e11c` · nível **C** (0 pts) · rede_social_oficial · — · data 1999 (do trecho)
+  - título: Splicing Ridge Boards - Fine Homebuilding
+  - url: https://www.finehomebuilding.com/1999/07/01/splicing-ridge-boards
+  - trecho: Jul 1, 1999 · A reader offers his excellent solution for when a ridge span is longer than the overall length of the material being used …
+- `69ad475b5e` · nível **C** (0 pts) · rede_social_oficial · — · data 2018 (do trecho)
+  - título: Venting a Bath Fan in a Cold Climate - Fine Homebuilding
+  - url: https://www.finehomebuilding.com/2018/03/01/bath-fan-venting-cold-climates
+  - trecho: Mar 1, 2018 · In this Q. & A., Michael Maines answers and gives advice on the question about bath-fan venting for cold climates. The …
+  - ⚠ ano_anterior_ao_ciclo
+- `f71e4a9b92` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Internal Revenue Service | An official website of the United ...
+  - url: https://www.irs.gov/
+  - trecho: Get an EIN for free from the IRS. This federal tax identification number is for businesses, tax-exempt organizations and other entities. …
+- `97f1418c72` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: U.S. taxpayer identification number requirement | Internal ...
+  - url: https://www.irs.gov/individuals/international-taxpayers/us-taxpayer-identification-number-requirement
+  - trecho: Feb 22, 2026 · As the withholding agent, you must generally request that the payee provide you with its U.S. taxpayer identification …
+- `2e3cf32747` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: IRS tax forms - Tools | Internal Revenue Service
+  - url: https://sa4.www4.irs.gov/
+  - trecho: Sep 25, 2026 · Preparer tax identification number (PTIN) Request or renew a PTIN. It's mandatory for anyone who prepares or …
+- `7b09e65d95` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Play Mahjong Online Free - The Mahjong
+  - url: https://themahjong.com/
+  - trecho: Amazing free Mahjong that’ll knock your socks off. Play classic and modern Mahjong games in full screen, with lots of layouts and …
+- `2f38c37e31` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Classic Mahjong - Play Mahjong Online for Free
+  - url: https://classic-mahjong.com/
+  - trecho: Play free Mahjong games online, no download required. Enjoy the classic Mahjong game with 120+ original puzzles, full screen …
+- `11249b99e0` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Mahjong | Play online
+  - url: https://mahjong-pro.com/
+  - trecho: This version of Mahjong online, in addition to the traditional difficulty level, also contains 10 difficulty levels whose deals are always …
+- `4daa2abe5a` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: 14 Best Business Software for 2026 - Geekflare
+  - url: https://geekflare.com/software/best-business-software/
+  - trecho: Mar 11, 2026 · Check out the best enterprise software to simplify and streamline your business operations. Explore these top picks …
+- `571553fa8c` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: The Best Small Business Accounting Software We've Tested for 2026
+  - url: https://www.pcmag.com/picks/the-best-small-business-accounting-software
+  - trecho: Jul 6, 2026 · To help you effectively understand and manage the finances of your small business, we've tested the top accounting …
+- `036c38ee3f` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: 42 Best Free Business Software for Small Businesses in 2026
+  - url: https://fitsmallbusiness.com/free-small-business-software/
+  - trecho: May 4, 2026 · Most free business software is best suited for solo operators, freelancers, and early-stage businesses. While these …
+- `923c18982f` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: DJIA | Dow Jones Industrial Average Overview | MarketWatch
+  - url: https://www.marketwatch.com/investing/index/djia
+  - trecho: 3 days ago · DJIA | A complete Dow Jones Industrial Average index overview by MarketWatch. View stock market news, stock …
+- `2214554ced` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Record diesel prices are exposing pain points in the stock market and ...
+  - url: https://www.marketwatch.com/story/record-diesel-prices-are-exposing-pain-points-in-the-stock-market-and-economy-a2079b04
+  - trecho: Sep 21, 2026 · Record diesel prices are exposing pain points in the stock market and economy ‘This is the AI economy,’ but we have …
+- `2941da4b55` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: AI Credit Underwriting & Automated Credit Decisioning | Machine ...
+  - url: https://www.zest.ai/product/underwriting
+  - trecho: Zest AI is an AI credit underwriting solution for banks and credit unions. Custom machine learning credit underwriting models help …
+- `b4e81e1ad2` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Top 10 Best Loan Underwriting Software: 2026 Comparison
+  - url: https://zipdo.co/best/loan-underwriting-software/
+  - trecho: Feb 18, 2026 · Top 10 loan underwriting software ranked by automation and accuracy for lenders, with feature comparisons and …
+- `ccf8ba5132` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: 10 Best Loan Underwriting Software Reviewed In 2026
+  - url: https://thecfoclub.com/tools/best-loan-underwriting-software/
+  - trecho: Aug 31, 2026 · Discover the top loan underwriting software and find the best option for you. Compare features, pros & cons, prices, …
+- `f612a8e293` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Fervo Energy Company (FRVO) Competitive Analysis & Comparison …
+  - url: https://koalagains.com/stocks/NASDAQ/FRVO/competition
+  - trecho: Jul 16, 2026 · Fervo's key strength is its differentiated technology targeting the high-value market for 24/7 clean power, which gives it …
+- `09546703e7` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: FRVO Stock: Grid Milestone Hit, But Profitability Still Years Away
+  - url: https://www.marketbeat.com/articles/fervo-energy-hits-geothermal-milestone-will-it-matter-for-the-stock/
+  - trecho: 6 days ago · Fervo Energy (FRVO) achieved first grid power at its Cape Station plant, but profitability remains years away and …
+- `23aa836883` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Fervo Energy Stock: Yes, It's Public Now — Here's the FRVO Story
+  - url: https://geothermalinsider.com/news/fervo-energy-stock-explained/
+  - trecho: Aug 1, 2026 · Fervo Energy went public in May 2026 and trades on the Nasdaq as FRVO. Here's the IPO story, what the company …
+- `8ab1cc635f` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: www.alight-motion.com - Coming Soon
+  - url: https://alight-motion.com/download/
+  - trecho: 🚀 www.alight-motion.com This domain is coming soon.
+- `b822a9c53c` · nível **C** (0 pts) · rede_social_oficial · — · data 2010 (do trecho)
+  - título: #1 Cheerleader Camp (2010) - Mark Quod - AllMovie
+  - url: https://www.allmovie.com/movie/1-cheerleader-camp-am46008
+  - trecho: Jul 27, 2010 · #1 Cheerleader Camp is a 2010 sex comedy film by The Asylum, directed by Mark Quod and starring Jay Gillespie, …
+  - ⚠ ano_anterior_ao_ciclo
+- `db830e4989` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: #1 Cheerleader Camp - Cast & Crew — The Movie Database (TMDB)
+  - url: https://www.themoviedb.org/movie/41371-1-cheerleader-camp/cast
+  - trecho: A pair of horny European-American college guys get summer jobs at a sexy cheerleader camp.
+- `41ed81722c` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: www.letmejerk.com
+  - url: https://www.letmejerk.com/s/cheerleader-camp-porn
+  - trecho: We would like to show you a description here but the site won’t allow us.
+- `87c56755a3` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: University of Texas tower shooting - Wikipedia
+  - url: https://en.m.wikipedia.org/wiki/University_of_Texas_tower_shooting
+  - trecho: At the time, the University of Texas tower shooting was the deadliest mass shooting by a lone gunman in U.S. history, [7] being …
+- `1300557a49` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Charles Whitman - Wikipedia
+  - url: https://en.m.wikipedia.org/wiki/Charles_Whitman
+  - trecho: All of these items, in addition to seven firearms (three rifles, one shotgun, three handguns) and plenty of ammunition, were carted up …
+- `275fd393a2` · nível **C** (0 pts) · rede_social_oficial · — · data 2010 (do trecho)
+  - título: VPC - Where'd They Get Their Guns? - University of Texas Tower, …
+  - url: https://vpc.org/studies/wgun660801.htm
+  - trecho: Feb 1, 2010 · After killing his mother and wife, and leaving cryptic and rambling notes by their bodies, Whitman lugged a footlocker …
+- `1b120cd1ef` · nível **C** (0 pts) · rede_social_oficial · — · data 1974 (do trecho)
+  - título: Stephen King Books in Order: Full 1974-2026 Reading Guide
+  - url: https://bibliolifestyle.com/stephen-king-books-in-order/
+  - trecho: 3 days ago · Complete Stephen King books in order (1974–2027), including series reading order, where to start, and the newest …
+- `3d2a386a73` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Stephen King Books in Order: Complete List & Series Guide
+  - url: https://www.tlbranson.com/stephen-king-books-in-order/
+  - trecho: Whether you’re picking up your first Stephen King novel or you’ve been reading him for years, this guide makes the Stephen King …
+- `9c340e8310` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Stephen King bibliography - Wikipedia
+  - url: https://en.m.wikipedia.org/wiki/Stephen_King_bibliography
+  - trecho: King has published 67 novels/novellas, including seven under the pen name Richard Bachman, and five nonfiction books. He has …
+- `25cfd6551b` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: D&D Beyond | Play Your Way With the Official D&D Toolset
+  - url: https://www.dndbeyond.com/en?msockid=21ccbf10d0ba679705d4a8f9d1d56666
+  - trecho: Play Dungeons & Dragons with digital tools on D&D Beyond: character builder, encounter and campaign management, and Maps …
+- `f9bce57449` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Crocodile - Monsters - D&D Beyond
+  - url: https://www.dndbeyond.com/monsters/16834-crocodile?msockid=21ccbf10d0ba679705d4a8f9d1d56666
+  - trecho: Bite. Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 7 (1d10 + 2) piercing damage, and the target is grappled (escape …
+- `8024635739` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Bomb - Equipment - D&D Beyond
+  - url: https://www.dndbeyond.com/equipment/195-bomb?msockid=21ccbf10d0ba679705d4a8f9d1d56666
+  - trecho: Dungeons and Dragons (D&D) Fifth Edition (5e) Equipment, Gear, & Items - Bomb - As an action, a character can light this bomb …
+- `4a8e96db86` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: naked-women videos - XVIDEOS.COM
+  - url: https://www.xvideos.com/tags/naked-women
+  - trecho: TREASURE OF NADIA #189 • Six gorgeous, naked, sexy women! Future MILF pornstar AimeeParadise: first immodest photo …
+- `0165e8ced2` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Sexy Naked and Nude Women Pics - Elite Babes
+  - url: https://www.elitebabes.com/tag/naked-women/
+  - trecho: Dive in and jerk your cock to an endless stream of hot nude women getting down and dirty, because this archive is packed with …
+- `a2c2e9ed40` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Latest Nude Pics - Updated Daily | Babes & Girls
+  - url: https://www.babesandgirls.com/galleries
+  - trecho: 2 days ago · Latest nude photo galleries updated daily. Discover new nude babes and naked girls in high quality pictures, all free to …
+- `0b58f8e63e` · nível **C** (0 pts) · rede_social_oficial · — · data 2017 (do trecho)
+  - título: Used 2017 Toyota Camry - Kelley Blue Book
+  - url: https://www.kbb.com/toyota/camry/2017/?msockid=1f5e6749a77967f6212470a0a6166625
+  - trecho: Jul 22, 2016 · Get current 2017 Camry fair market price, depreciation, trade-in, and resale values from the trusted experts at Kelley …
+  - ⚠ ano_anterior_ao_ciclo
+- `1fbea9d6b2` · nível **C** (0 pts) · rede_social_oficial · — · data 2017 (do trecho)
+  - título: Used 2017 Toyota Camry for Sale Near Me - Autotrader
+  - url: https://www.autotrader.com/cars-for-sale/2017/toyota/camry?msockid=1f5e6749a77967f6212470a0a6166625
+  - trecho: Test drive Used 2017 Toyota Camry at home from the top dealers in your area. Search from 454 Used Toyota Camry cars for sale, …
+  - ⚠ ano_anterior_ao_ciclo
+- `efc9b6be2a` · nível **C** (0 pts) · rede_social_oficial · — · data 2017 (do trecho)
+  - título: Used 2017 Toyota Camry for Sale Near Me - CARFAX
+  - url: https://www.carfax.com/Used-2017-Toyota-Camry_z5790?msockid=1f5e6749a77967f6212470a0a6166625
+  - trecho: The 2017 Toyota Camry excels in reliability and fuel efficiency, with owners reporting trouble-free operation for hundreds of …
+  - ⚠ ano_anterior_ao_ciclo
+- `49c9f53a72` · nível **C** (0 pts) · rede_social_oficial · — · data 2025 (do trecho)
+  - título: Pointercrate
+  - url: https://pointercrate.com/
+  - trecho: Jul 26, 2025 · Pointercrate's backend now features a localization framework which allows us to easily translate the page into different …
+- `cef9d8f04a` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Geometry Dash Demonlist - Pointercrate
+  - url: https://www.pointercrate.com/demonlist/
+  - trecho: The official pointercrate Demonlist!
+- `8f2e639f65` · nível **C** (0 pts) · rede_social_oficial · — · data 2028 (do trecho)
+  - título: Pointercrate 2028
+  - url: https://pointercrate2028.com/
+  - trecho: # 2 - The Golden Published by BoBoBoBoBoBo Verified by Cynoq 472.75 points
+- `0f844fc2db` · nível **C** (0 pts) · rede_social_oficial · — · data 2025 (do trecho)
+  - título: Motu Patlu - YouTube
+  - url: https://www.youtube.com/channel/UC_lQpRnSykxyiiMAgnD2kFQ
+  - trecho: Motu Patlu : Motu Aur Chacha Par Hua Attack | Back To Back Fun 2025 | S12 | Cartoons For Kids Motu Patlu 9.1K 6mo ago 10:11
+- `e68e468426` · nível **C** (0 pts) · rede_social_oficial · — · data 2025 (do trecho)
+  - título: Motu Patlu | मोटू पतलू | Full Episode | Baby Dinosaur
+  - url: https://m.youtube.com/watch?v=tACkNQUULio
+  - trecho: Mar 24, 2025 · Inspired from the characters of Lot Pot Comics, Motu Patlu is a lively comic caper for the kids as well as the entire family.
+- `1fa0a0f13e` · nível **C** (0 pts) · rede_social_oficial · — · data 2025 (do trecho)
+  - título: Motu Patlu | मोटू पतलू | Full Episode | Murti Ki Khoj
+  - url: https://m.youtube.com/watch?v=ni-EW6N6e9E
+  - trecho: May 5, 2025 · Inspired from the characters of Lot Pot Comics, Motu Patlu is a lively comic caper for the kids as well as the entire family.
+- `2ac730ebde` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: DEM | Diccionario del español de México
+  - url: https://dem.colmex.mx/
+  - trecho: CONSEGUIR EL DEM Adquiere la segunda edición del Diccionario del español de México, que incluye aproximadamente 33 mil …
+- `11f2b0101a` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: | Diccionario del español de México
+  - url: https://dem.colmex.mx/Busqueda/Avanzada
+  - trecho: Diccionario del español de México Seleccione una categoría, materia, región y/o nivel. Es posible agregar o eliminar cajas de …
+- `8c2681ad97` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: descargar | Diccionario del español de México
+  - url: https://dem.colmex.mx/ver/descargar
+  - trecho: Diccionario del español de México descargar v tr (Se conjuga como amar) 1 Quitar o disminuir la carga o el peso puesto sobre algo …
+- `a112f2d089` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: 11 Top Medical Practice Management Software Tools for 2026
+  - url: https://practicesuite.com/resources/medical-practice-management-software/
+  - trecho: Jan 27, 2026 · Simplify running your healthcare organization with medical practice management software. Discover the top medical …
+- `ff2d682f14` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Best Medical Billing Practice Management Software (2026)
+  - url: https://worldmetrics.org/best/medical-billing-practice-management-software/
+  - trecho: Feb 19, 2026 · Medical billing practice management software matters because billing workflows connect claims generation, denial …
+- `147285c628` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: 11 Best Medical Practice Management Software (2026)
+  - url: https://softwarefinder.com/resources/best-medical-practice-management-software
+  - trecho: Aug 17, 2026 · Discover the 11 best medical practice management software for streamlined workflows, efficient billing, and improved …
+- `82dedf9650` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Paradisus Palma Real Golf & Spa Resort
+  - url: https://www.palmarealresort.com/
+  - trecho: Paradisus Palma Real Golf & Spa Resort The Paradisus Palma Real Golf & Spa Resort located on Playa Bavaro is the favorite all …
+- `86fbda044f` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Paradisus Palma Real Resort - Punta Cana - Paradisus Palma Real …
+  - url: https://www.palmarealresort.com/master-suite-swim-up.asp
+  - trecho: Take a refreshing dip in the pool directly from the terrace of Swim-Up Master Suite at Paradisus Palma Real Resort. It features a …
+- `f84e556316` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Paradisus Palma Real Resort - Punta Cana - Paradisus Palma Real …
+  - url: https://www.palmarealresort.com/master-suite-deluxe.asp
+  - trecho: Master Suite Deluxe Garden View The spectacular Master Suite Deluxe at Paradisus Palma Real Resort provides a bedroom, a …
+- `cceec669ba` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Cloud Computing Services - Amazon Web Services (AWS)
+  - url: https://aws.amazon.com/
+  - trecho: Amazon Web Services offers reliable, scalable, and inexpensive cloud computing services. Free to join, pay only for what you use.
+- `21b493244c` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: AWS マネジメントコンソール
+  - url: https://aws.amazon.com/jp/console/
+  - trecho: AWS マネジメントコンソールを使用して、ウェブベースのインターフェイスを介して AWS クラウドリソースを簡単に管理でき ...
+- `9b08579363` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Using Advance Pay - AWS Billing
+  - url: https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/manage-advancepay.html
+  - trecho: AWS Inc. customers can add funds using any personal or business bank account with a US branch location. To use Advance Pay in …
+- `4917143db4` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: One Bowl Chocolate Cake Recipe
+  - url: https://www.allrecipes.com/recipe/17981/one-bowl-chocolate-cake-iii/
+  - trecho: Jul 20, 2026 · This homemade chocolate cake recipe is easy to make in one bowl; top with your favorite chocolate frosting for a …
+- `b51d061775` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Chocolate Layer Cake (Popular Recipe!) - Sally's Baking
+  - url: https://sallysbakingaddiction.com/triple-chocolate-layer-cake/
+  - trecho: Jul 28, 2026 · This is my favorite homemade chocolate cake recipe. Top with creamy chocolate buttercream and chocolate chips for …
+- `8cfd4e7c2a` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: The Most Amazing Chocolate Cake
+  - url: https://thestayathomechef.com/the-most-amazing-chocolate-cake/
+  - trecho: Jul 21, 2026 · This is the recipe that has converted thousands of box-mix bakers for life. Deeply fudgy, impossibly moist, and the only …
+- `984b3259d5` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
+  - título: Red Back Church Hymnal Singing at Coal Mountain Baptist
+  - url: https://www.facebook.com/TheLightAtlanta/videos/red-back-church-hymnal-singing-at-coal-mountain-baptist-church-in-cumming-on-jan/920029913870210/
+  - trecho: Jan 20, 2026 · Red Back Church Hymnal Singing at Coal Mountain Baptist Church in Cumming on Jan. 18, 2025. The Rogers Family …
+- `1b921e1e32` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Red Back Church Hymnal Singing - Coal Mountain Baptist Church
+  - url: https://www.youtube.com/watch?v=2bd-VDFV8K0
+  - trecho: Red Back Church Hymnal Singing - Coal Mountain Baptist Church redbackchurchhymnal 3.06K subscribers 462
+- `029bb51062` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Red Back Church Hymnal Singing - Facebook
+  - url: https://www.facebook.com/groups/110973403955/
+  - trecho: 2 days ago · We’ll be singing from the Red Back Church Hymnal at Coal Mountain BC, 3220 Dahlonega Hwy in Cumming Ga. …
+- `db70fad70c` · nível **C** (0 pts) · rede_social_oficial · — · data 2021 (do trecho)
+  - título: When will yankees stop moving south (generation, Baby Boomers, …
+  - url: https://www.city-data.com/forum/politics-other-controversies/3324653-when-will-yankees-stop-moving-south.html
+  - trecho: Dec 12, 2021 · So my question is when will yankees stop moving here? Once housing costs are the same as they are up north? …
+- `080b147124` · nível **C** (0 pts) · rede_social_oficial · — · data 2010 (do trecho)
+  - título: Yankees/Mets geography of fans (New York, Buffalo: live in, suburbs ...
+  - url: https://www.city-data.com/forum/new-york/934120-yankees-mets-geography-fans.html
+  - trecho: Mar 28, 2010 · As far as today's Yankees and Mets fans in the state of New York, how does that work? Is there a certain portion of …
+- `c4bdbec71b` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Tampa, Florida (FL) profile: population, maps, real estate, averages ...
+  - url: https://www.city-data.com/city/Tampa-Florida.html
+  - trecho: User-submitted facts and corrections: ST. PETERSBURG COLLEGE about 18 miles from Tampa, Full-time enrollment 10,066 New …
+- `e1714770ef` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Guideposts Customer Service
+  - url: https://guideposts.org/guideposts-customer-service/
+  - trecho: Guideposts Customer CareMonday – Friday, 8 am – 6 pm ESTMagazine – (800) 431-2344Book Products – (800) 932-2145 Online …
+- `41ba6d567c` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: Ordinary Women of the Bible | ShopGuideposts
+  - url: https://guideposts.org/shop/category/fiction-books/biblical-fiction/ordinary-women-bible/
+  - trecho: Experience the thrills and solve the mysteries contained in Ordinary Women of the Bible. Plus, check out all of the ShopGuideposts …
+- `7c53b488e4` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
+  - título: About Us - Guideposts - Home
+  - url: https://home.guideposts.org/about-us/
+  - trecho: A Legacy of Hope For more than 80 years, Guideposts has helped people discover the hope that only God provides. What began as …
+
 ## Belém/AL — 8 pendente(s)
 - `f31b168edf` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
   - título: Belém vai enfrentar o novo El Niño. Há riscos de seca, fumaça ...
@@ -12735,309 +13042,6 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: Online Counselling, Therapy, & Psychologist in India - Manochikitsa
   - url: https://manochikitsa.com/
   - trecho: Manochikitsa.com is a leading online counseling service, offering affordable support for mental health, career, and relationship …
-
-## saude/AC — 74 pendente(s)
-- `ebd6e09f9c` · nível **C** (0 pts) · rede_social_oficial · — · data 2007 (do trecho)
-  - título: Gulls | Nikon Cafe
-  - url: https://www.nikoncafe.com/threads/gulls.65488/
-  - trecho: Aug 11, 2007 · Thread starter Glideslope Start dateAug 11, 2007 Glideslope Joined Feb 8, 2006 Messages 792 Location NY Aug 11, …
-- `0024f5f414` · nível **C** (0 pts) · rede_social_oficial · — · data 2012 (do trecho)
-  - título: Arielle | Nikon Cafe
-  - url: https://www.nikoncafe.com/threads/arielle.251112/
-  - trecho: Oct 1, 2012 · My friends girlfriend as she coincidentally walked into perfect light as I was turning around to say something to her...
-- `49c6681df0` · nível **C** (0 pts) · rede_social_oficial · — · data 2012 (do trecho)
-  - título: Using TC's | Nikon Cafe
-  - url: https://www.nikoncafe.com/threads/using-tcs.252951/
-  - trecho: Nov 1, 2012 · I have been struggling with my D4, 300/f4 + TCs. Although I have little problem using 1.7tc or 2x111tc with my D300 & …
-- `fce77a28a0` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: Google Images
-  - url: https://images.google.com/?hl=en
-  - trecho: Google Images. The most comprehensive image search on the web.
-- `d1b15ea626` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: Google Drive: Share Files Online with Secure Cloud Storage | Google ...
-  - url: https://workspace.google.com/products/drive/
-  - trecho: Learn about Google Drive’s file sharing platform that provides a personal, secure cloud storage option to share content with other users.
-- `61c53d9588` · nível **C** (0 pts) · rede_social_oficial · — · data 2001 (do trecho)
-  - título: Log In? - Fine Homebuilding
-  - url: https://www.finehomebuilding.com/forum/log-in
-  - trecho: Oct 16, 2001 · * What ever happened to the Log In button? I emailed Andy about this, but have yet to get a responce from Taunton. …
-- `74d075e11c` · nível **C** (0 pts) · rede_social_oficial · — · data 1999 (do trecho)
-  - título: Splicing Ridge Boards - Fine Homebuilding
-  - url: https://www.finehomebuilding.com/1999/07/01/splicing-ridge-boards
-  - trecho: Jul 1, 1999 · A reader offers his excellent solution for when a ridge span is longer than the overall length of the material being used …
-- `69ad475b5e` · nível **C** (0 pts) · rede_social_oficial · — · data 2018 (do trecho)
-  - título: Venting a Bath Fan in a Cold Climate - Fine Homebuilding
-  - url: https://www.finehomebuilding.com/2018/03/01/bath-fan-venting-cold-climates
-  - trecho: Mar 1, 2018 · In this Q. & A., Michael Maines answers and gives advice on the question about bath-fan venting for cold climates. The …
-  - ⚠ ano_anterior_ao_ciclo
-- `f71e4a9b92` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: Internal Revenue Service | An official website of the United ...
-  - url: https://www.irs.gov/
-  - trecho: Get an EIN for free from the IRS. This federal tax identification number is for businesses, tax-exempt organizations and other entities. …
-- `97f1418c72` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
-  - título: U.S. taxpayer identification number requirement | Internal ...
-  - url: https://www.irs.gov/individuals/international-taxpayers/us-taxpayer-identification-number-requirement
-  - trecho: Feb 22, 2026 · As the withholding agent, you must generally request that the payee provide you with its U.S. taxpayer identification …
-- `2e3cf32747` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
-  - título: IRS tax forms - Tools | Internal Revenue Service
-  - url: https://sa4.www4.irs.gov/
-  - trecho: Sep 25, 2026 · Preparer tax identification number (PTIN) Request or renew a PTIN. It's mandatory for anyone who prepares or …
-- `7b09e65d95` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: Play Mahjong Online Free - The Mahjong
-  - url: https://themahjong.com/
-  - trecho: Amazing free Mahjong that’ll knock your socks off. Play classic and modern Mahjong games in full screen, with lots of layouts and …
-- `2f38c37e31` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: Classic Mahjong - Play Mahjong Online for Free
-  - url: https://classic-mahjong.com/
-  - trecho: Play free Mahjong games online, no download required. Enjoy the classic Mahjong game with 120+ original puzzles, full screen …
-- `11249b99e0` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: Mahjong | Play online
-  - url: https://mahjong-pro.com/
-  - trecho: This version of Mahjong online, in addition to the traditional difficulty level, also contains 10 difficulty levels whose deals are always …
-- `4daa2abe5a` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
-  - título: 14 Best Business Software for 2026 - Geekflare
-  - url: https://geekflare.com/software/best-business-software/
-  - trecho: Mar 11, 2026 · Check out the best enterprise software to simplify and streamline your business operations. Explore these top picks …
-- `571553fa8c` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
-  - título: The Best Small Business Accounting Software We've Tested for 2026
-  - url: https://www.pcmag.com/picks/the-best-small-business-accounting-software
-  - trecho: Jul 6, 2026 · To help you effectively understand and manage the finances of your small business, we've tested the top accounting …
-- `036c38ee3f` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
-  - título: 42 Best Free Business Software for Small Businesses in 2026
-  - url: https://fitsmallbusiness.com/free-small-business-software/
-  - trecho: May 4, 2026 · Most free business software is best suited for solo operators, freelancers, and early-stage businesses. While these …
-- `923c18982f` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: DJIA | Dow Jones Industrial Average Overview | MarketWatch
-  - url: https://www.marketwatch.com/investing/index/djia
-  - trecho: 3 days ago · DJIA | A complete Dow Jones Industrial Average index overview by MarketWatch. View stock market news, stock …
-- `2214554ced` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
-  - título: Record diesel prices are exposing pain points in the stock market and ...
-  - url: https://www.marketwatch.com/story/record-diesel-prices-are-exposing-pain-points-in-the-stock-market-and-economy-a2079b04
-  - trecho: Sep 21, 2026 · Record diesel prices are exposing pain points in the stock market and economy ‘This is the AI economy,’ but we have …
-- `2941da4b55` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: AI Credit Underwriting & Automated Credit Decisioning | Machine ...
-  - url: https://www.zest.ai/product/underwriting
-  - trecho: Zest AI is an AI credit underwriting solution for banks and credit unions. Custom machine learning credit underwriting models help …
-- `b4e81e1ad2` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
-  - título: Top 10 Best Loan Underwriting Software: 2026 Comparison
-  - url: https://zipdo.co/best/loan-underwriting-software/
-  - trecho: Feb 18, 2026 · Top 10 loan underwriting software ranked by automation and accuracy for lenders, with feature comparisons and …
-- `ccf8ba5132` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
-  - título: 10 Best Loan Underwriting Software Reviewed In 2026
-  - url: https://thecfoclub.com/tools/best-loan-underwriting-software/
-  - trecho: Aug 31, 2026 · Discover the top loan underwriting software and find the best option for you. Compare features, pros & cons, prices, …
-- `f612a8e293` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
-  - título: Fervo Energy Company (FRVO) Competitive Analysis & Comparison …
-  - url: https://koalagains.com/stocks/NASDAQ/FRVO/competition
-  - trecho: Jul 16, 2026 · Fervo's key strength is its differentiated technology targeting the high-value market for 24/7 clean power, which gives it …
-- `09546703e7` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: FRVO Stock: Grid Milestone Hit, But Profitability Still Years Away
-  - url: https://www.marketbeat.com/articles/fervo-energy-hits-geothermal-milestone-will-it-matter-for-the-stock/
-  - trecho: 6 days ago · Fervo Energy (FRVO) achieved first grid power at its Cape Station plant, but profitability remains years away and …
-- `23aa836883` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
-  - título: Fervo Energy Stock: Yes, It's Public Now — Here's the FRVO Story
-  - url: https://geothermalinsider.com/news/fervo-energy-stock-explained/
-  - trecho: Aug 1, 2026 · Fervo Energy went public in May 2026 and trades on the Nasdaq as FRVO. Here's the IPO story, what the company …
-- `8ab1cc635f` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: www.alight-motion.com - Coming Soon
-  - url: https://alight-motion.com/download/
-  - trecho: 🚀 www.alight-motion.com This domain is coming soon.
-- `b822a9c53c` · nível **C** (0 pts) · rede_social_oficial · — · data 2010 (do trecho)
-  - título: #1 Cheerleader Camp (2010) - Mark Quod - AllMovie
-  - url: https://www.allmovie.com/movie/1-cheerleader-camp-am46008
-  - trecho: Jul 27, 2010 · #1 Cheerleader Camp is a 2010 sex comedy film by The Asylum, directed by Mark Quod and starring Jay Gillespie, …
-  - ⚠ ano_anterior_ao_ciclo
-- `db830e4989` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: #1 Cheerleader Camp - Cast & Crew — The Movie Database (TMDB)
-  - url: https://www.themoviedb.org/movie/41371-1-cheerleader-camp/cast
-  - trecho: A pair of horny European-American college guys get summer jobs at a sexy cheerleader camp.
-- `41ed81722c` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: www.letmejerk.com
-  - url: https://www.letmejerk.com/s/cheerleader-camp-porn
-  - trecho: We would like to show you a description here but the site won’t allow us.
-- `87c56755a3` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: University of Texas tower shooting - Wikipedia
-  - url: https://en.m.wikipedia.org/wiki/University_of_Texas_tower_shooting
-  - trecho: At the time, the University of Texas tower shooting was the deadliest mass shooting by a lone gunman in U.S. history, [7] being …
-- `1300557a49` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: Charles Whitman - Wikipedia
-  - url: https://en.m.wikipedia.org/wiki/Charles_Whitman
-  - trecho: All of these items, in addition to seven firearms (three rifles, one shotgun, three handguns) and plenty of ammunition, were carted up …
-- `275fd393a2` · nível **C** (0 pts) · rede_social_oficial · — · data 2010 (do trecho)
-  - título: VPC - Where'd They Get Their Guns? - University of Texas Tower, …
-  - url: https://vpc.org/studies/wgun660801.htm
-  - trecho: Feb 1, 2010 · After killing his mother and wife, and leaving cryptic and rambling notes by their bodies, Whitman lugged a footlocker …
-- `1b120cd1ef` · nível **C** (0 pts) · rede_social_oficial · — · data 1974 (do trecho)
-  - título: Stephen King Books in Order: Full 1974-2026 Reading Guide
-  - url: https://bibliolifestyle.com/stephen-king-books-in-order/
-  - trecho: 3 days ago · Complete Stephen King books in order (1974–2027), including series reading order, where to start, and the newest …
-- `3d2a386a73` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: Stephen King Books in Order: Complete List & Series Guide
-  - url: https://www.tlbranson.com/stephen-king-books-in-order/
-  - trecho: Whether you’re picking up your first Stephen King novel or you’ve been reading him for years, this guide makes the Stephen King …
-- `9c340e8310` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: Stephen King bibliography - Wikipedia
-  - url: https://en.m.wikipedia.org/wiki/Stephen_King_bibliography
-  - trecho: King has published 67 novels/novellas, including seven under the pen name Richard Bachman, and five nonfiction books. He has …
-- `25cfd6551b` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: D&D Beyond | Play Your Way With the Official D&D Toolset
-  - url: https://www.dndbeyond.com/en?msockid=21ccbf10d0ba679705d4a8f9d1d56666
-  - trecho: Play Dungeons & Dragons with digital tools on D&D Beyond: character builder, encounter and campaign management, and Maps …
-- `f9bce57449` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: Crocodile - Monsters - D&D Beyond
-  - url: https://www.dndbeyond.com/monsters/16834-crocodile?msockid=21ccbf10d0ba679705d4a8f9d1d56666
-  - trecho: Bite. Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 7 (1d10 + 2) piercing damage, and the target is grappled (escape …
-- `8024635739` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: Bomb - Equipment - D&D Beyond
-  - url: https://www.dndbeyond.com/equipment/195-bomb?msockid=21ccbf10d0ba679705d4a8f9d1d56666
-  - trecho: Dungeons and Dragons (D&D) Fifth Edition (5e) Equipment, Gear, & Items - Bomb - As an action, a character can light this bomb …
-- `4a8e96db86` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: naked-women videos - XVIDEOS.COM
-  - url: https://www.xvideos.com/tags/naked-women
-  - trecho: TREASURE OF NADIA #189 • Six gorgeous, naked, sexy women! Future MILF pornstar AimeeParadise: first immodest photo …
-- `0165e8ced2` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: Sexy Naked and Nude Women Pics - Elite Babes
-  - url: https://www.elitebabes.com/tag/naked-women/
-  - trecho: Dive in and jerk your cock to an endless stream of hot nude women getting down and dirty, because this archive is packed with …
-- `a2c2e9ed40` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: Latest Nude Pics - Updated Daily | Babes & Girls
-  - url: https://www.babesandgirls.com/galleries
-  - trecho: 2 days ago · Latest nude photo galleries updated daily. Discover new nude babes and naked girls in high quality pictures, all free to …
-- `0b58f8e63e` · nível **C** (0 pts) · rede_social_oficial · — · data 2017 (do trecho)
-  - título: Used 2017 Toyota Camry - Kelley Blue Book
-  - url: https://www.kbb.com/toyota/camry/2017/?msockid=1f5e6749a77967f6212470a0a6166625
-  - trecho: Jul 22, 2016 · Get current 2017 Camry fair market price, depreciation, trade-in, and resale values from the trusted experts at Kelley …
-  - ⚠ ano_anterior_ao_ciclo
-- `1fbea9d6b2` · nível **C** (0 pts) · rede_social_oficial · — · data 2017 (do trecho)
-  - título: Used 2017 Toyota Camry for Sale Near Me - Autotrader
-  - url: https://www.autotrader.com/cars-for-sale/2017/toyota/camry?msockid=1f5e6749a77967f6212470a0a6166625
-  - trecho: Test drive Used 2017 Toyota Camry at home from the top dealers in your area. Search from 454 Used Toyota Camry cars for sale, …
-  - ⚠ ano_anterior_ao_ciclo
-- `efc9b6be2a` · nível **C** (0 pts) · rede_social_oficial · — · data 2017 (do trecho)
-  - título: Used 2017 Toyota Camry for Sale Near Me - CARFAX
-  - url: https://www.carfax.com/Used-2017-Toyota-Camry_z5790?msockid=1f5e6749a77967f6212470a0a6166625
-  - trecho: The 2017 Toyota Camry excels in reliability and fuel efficiency, with owners reporting trouble-free operation for hundreds of …
-  - ⚠ ano_anterior_ao_ciclo
-- `49c9f53a72` · nível **C** (0 pts) · rede_social_oficial · — · data 2025 (do trecho)
-  - título: Pointercrate
-  - url: https://pointercrate.com/
-  - trecho: Jul 26, 2025 · Pointercrate's backend now features a localization framework which allows us to easily translate the page into different …
-- `cef9d8f04a` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: Geometry Dash Demonlist - Pointercrate
-  - url: https://www.pointercrate.com/demonlist/
-  - trecho: The official pointercrate Demonlist!
-- `8f2e639f65` · nível **C** (0 pts) · rede_social_oficial · — · data 2028 (do trecho)
-  - título: Pointercrate 2028
-  - url: https://pointercrate2028.com/
-  - trecho: # 2 - The Golden Published by BoBoBoBoBoBo Verified by Cynoq 472.75 points
-- `0f844fc2db` · nível **C** (0 pts) · rede_social_oficial · — · data 2025 (do trecho)
-  - título: Motu Patlu - YouTube
-  - url: https://www.youtube.com/channel/UC_lQpRnSykxyiiMAgnD2kFQ
-  - trecho: Motu Patlu : Motu Aur Chacha Par Hua Attack | Back To Back Fun 2025 | S12 | Cartoons For Kids Motu Patlu 9.1K 6mo ago 10:11
-- `e68e468426` · nível **C** (0 pts) · rede_social_oficial · — · data 2025 (do trecho)
-  - título: Motu Patlu | मोटू पतलू | Full Episode | Baby Dinosaur
-  - url: https://m.youtube.com/watch?v=tACkNQUULio
-  - trecho: Mar 24, 2025 · Inspired from the characters of Lot Pot Comics, Motu Patlu is a lively comic caper for the kids as well as the entire family.
-- `1fa0a0f13e` · nível **C** (0 pts) · rede_social_oficial · — · data 2025 (do trecho)
-  - título: Motu Patlu | मोटू पतलू | Full Episode | Murti Ki Khoj
-  - url: https://m.youtube.com/watch?v=ni-EW6N6e9E
-  - trecho: May 5, 2025 · Inspired from the characters of Lot Pot Comics, Motu Patlu is a lively comic caper for the kids as well as the entire family.
-- `2ac730ebde` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: DEM | Diccionario del español de México
-  - url: https://dem.colmex.mx/
-  - trecho: CONSEGUIR EL DEM Adquiere la segunda edición del Diccionario del español de México, que incluye aproximadamente 33 mil …
-- `11f2b0101a` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: | Diccionario del español de México
-  - url: https://dem.colmex.mx/Busqueda/Avanzada
-  - trecho: Diccionario del español de México Seleccione una categoría, materia, región y/o nivel. Es posible agregar o eliminar cajas de …
-- `8c2681ad97` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: descargar | Diccionario del español de México
-  - url: https://dem.colmex.mx/ver/descargar
-  - trecho: Diccionario del español de México descargar v tr (Se conjuga como amar) 1 Quitar o disminuir la carga o el peso puesto sobre algo …
-- `a112f2d089` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
-  - título: 11 Top Medical Practice Management Software Tools for 2026
-  - url: https://practicesuite.com/resources/medical-practice-management-software/
-  - trecho: Jan 27, 2026 · Simplify running your healthcare organization with medical practice management software. Discover the top medical …
-- `ff2d682f14` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
-  - título: Best Medical Billing Practice Management Software (2026)
-  - url: https://worldmetrics.org/best/medical-billing-practice-management-software/
-  - trecho: Feb 19, 2026 · Medical billing practice management software matters because billing workflows connect claims generation, denial …
-- `147285c628` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
-  - título: 11 Best Medical Practice Management Software (2026)
-  - url: https://softwarefinder.com/resources/best-medical-practice-management-software
-  - trecho: Aug 17, 2026 · Discover the 11 best medical practice management software for streamlined workflows, efficient billing, and improved …
-- `82dedf9650` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: Paradisus Palma Real Golf & Spa Resort
-  - url: https://www.palmarealresort.com/
-  - trecho: Paradisus Palma Real Golf & Spa Resort The Paradisus Palma Real Golf & Spa Resort located on Playa Bavaro is the favorite all …
-- `86fbda044f` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: Paradisus Palma Real Resort - Punta Cana - Paradisus Palma Real …
-  - url: https://www.palmarealresort.com/master-suite-swim-up.asp
-  - trecho: Take a refreshing dip in the pool directly from the terrace of Swim-Up Master Suite at Paradisus Palma Real Resort. It features a …
-- `f84e556316` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: Paradisus Palma Real Resort - Punta Cana - Paradisus Palma Real …
-  - url: https://www.palmarealresort.com/master-suite-deluxe.asp
-  - trecho: Master Suite Deluxe Garden View The spectacular Master Suite Deluxe at Paradisus Palma Real Resort provides a bedroom, a …
-- `cceec669ba` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: Cloud Computing Services - Amazon Web Services (AWS)
-  - url: https://aws.amazon.com/
-  - trecho: Amazon Web Services offers reliable, scalable, and inexpensive cloud computing services. Free to join, pay only for what you use.
-- `21b493244c` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: AWS マネジメントコンソール
-  - url: https://aws.amazon.com/jp/console/
-  - trecho: AWS マネジメントコンソールを使用して、ウェブベースのインターフェイスを介して AWS クラウドリソースを簡単に管理でき ...
-- `9b08579363` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: Using Advance Pay - AWS Billing
-  - url: https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/manage-advancepay.html
-  - trecho: AWS Inc. customers can add funds using any personal or business bank account with a US branch location. To use Advance Pay in …
-- `4917143db4` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
-  - título: One Bowl Chocolate Cake Recipe
-  - url: https://www.allrecipes.com/recipe/17981/one-bowl-chocolate-cake-iii/
-  - trecho: Jul 20, 2026 · This homemade chocolate cake recipe is easy to make in one bowl; top with your favorite chocolate frosting for a …
-- `b51d061775` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
-  - título: Chocolate Layer Cake (Popular Recipe!) - Sally's Baking
-  - url: https://sallysbakingaddiction.com/triple-chocolate-layer-cake/
-  - trecho: Jul 28, 2026 · This is my favorite homemade chocolate cake recipe. Top with creamy chocolate buttercream and chocolate chips for …
-- `8cfd4e7c2a` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
-  - título: The Most Amazing Chocolate Cake
-  - url: https://thestayathomechef.com/the-most-amazing-chocolate-cake/
-  - trecho: Jul 21, 2026 · This is the recipe that has converted thousands of box-mix bakers for life. Deeply fudgy, impossibly moist, and the only …
-- `984b3259d5` · nível **C** (0 pts) · rede_social_oficial · — · data 2026 (do trecho)
-  - título: Red Back Church Hymnal Singing at Coal Mountain Baptist
-  - url: https://www.facebook.com/TheLightAtlanta/videos/red-back-church-hymnal-singing-at-coal-mountain-baptist-church-in-cumming-on-jan/920029913870210/
-  - trecho: Jan 20, 2026 · Red Back Church Hymnal Singing at Coal Mountain Baptist Church in Cumming on Jan. 18, 2025. The Rogers Family …
-- `1b921e1e32` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: Red Back Church Hymnal Singing - Coal Mountain Baptist Church
-  - url: https://www.youtube.com/watch?v=2bd-VDFV8K0
-  - trecho: Red Back Church Hymnal Singing - Coal Mountain Baptist Church redbackchurchhymnal 3.06K subscribers 462
-- `029bb51062` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: Red Back Church Hymnal Singing - Facebook
-  - url: https://www.facebook.com/groups/110973403955/
-  - trecho: 2 days ago · We’ll be singing from the Red Back Church Hymnal at Coal Mountain BC, 3220 Dahlonega Hwy in Cumming Ga. …
-- `db70fad70c` · nível **C** (0 pts) · rede_social_oficial · — · data 2021 (do trecho)
-  - título: When will yankees stop moving south (generation, Baby Boomers, …
-  - url: https://www.city-data.com/forum/politics-other-controversies/3324653-when-will-yankees-stop-moving-south.html
-  - trecho: Dec 12, 2021 · So my question is when will yankees stop moving here? Once housing costs are the same as they are up north? …
-- `080b147124` · nível **C** (0 pts) · rede_social_oficial · — · data 2010 (do trecho)
-  - título: Yankees/Mets geography of fans (New York, Buffalo: live in, suburbs ...
-  - url: https://www.city-data.com/forum/new-york/934120-yankees-mets-geography-fans.html
-  - trecho: Mar 28, 2010 · As far as today's Yankees and Mets fans in the state of New York, how does that work? Is there a certain portion of …
-- `c4bdbec71b` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: Tampa, Florida (FL) profile: population, maps, real estate, averages ...
-  - url: https://www.city-data.com/city/Tampa-Florida.html
-  - trecho: User-submitted facts and corrections: ST. PETERSBURG COLLEGE about 18 miles from Tampa, Full-time enrollment 10,066 New …
-- `e1714770ef` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: Guideposts Customer Service
-  - url: https://guideposts.org/guideposts-customer-service/
-  - trecho: Guideposts Customer CareMonday – Friday, 8 am – 6 pm ESTMagazine – (800) 431-2344Book Products – (800) 932-2145 Online …
-- `41ba6d567c` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: Ordinary Women of the Bible | ShopGuideposts
-  - url: https://guideposts.org/shop/category/fiction-books/biblical-fiction/ordinary-women-bible/
-  - trecho: Experience the thrills and solve the mysteries contained in Ordinary Women of the Bible. Plus, check out all of the ShopGuideposts …
-- `7c53b488e4` · nível **C** (0 pts) · rede_social_oficial · — · citação não extraída
-  - título: About Us - Guideposts - Home
-  - url: https://home.guideposts.org/about-us/
-  - trecho: A Legacy of Hope For more than 80 years, Guideposts has helped people discover the hope that only God provides. What began as …
 
 ## Girau do Ponciano/AL — 2 pendente(s)
 - `50407bdc23` · nível **C** (2 pts) · busca_web · — · citação não extraída
@@ -16740,7 +16744,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ risco_errado_no_titulo
 
 ---
-## Decididas (8315) — registro permanente, nunca apagadas
+## Decididas (8497) — registro permanente, nunca apagadas
 
 - `094c653590` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `5b22b54586` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
@@ -23022,8 +23026,8 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `26dd77a005` None/None · pendente_confirmacao_documento · 
 - `5ca8171414` None/None · pendente_confirmacao_documento · 
 - `6bb7bc0c07` None/None · pendente_confirmacao_documento · 
-- `5ca8171414` None/None · pendente_confirmacao_documento · 
-- `a549b9c140` None/None · pendente_confirmacao_documento · 
+- `5ca8171414` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `a549b9c140` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `13265ef5b6` None/None · pendente_confirmacao_documento · 
 - `020af02374` None/None · pendente_confirmacao_documento · 
 - `d6d6531f3f` None/None · pendente_confirmacao_documento · 
@@ -23093,7 +23097,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `0844082c28` None/None · pendente_confirmacao_documento · 
 - `1df62912aa` None/None · pendente_confirmacao_documento · 
 - `3751cdc571` None/None · pendente_confirmacao_documento · 
-- `8c0b346e02` None/None · pendente_confirmacao_documento · 
+- `8c0b346e02` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `3691fab9e6` None/None · pendente_confirmacao_documento · 
 - `b5a6c8e3a2` None/None · pendente_confirmacao_documento · 
 - `86fbf6f2ee` None/None · pendente_confirmacao_documento · 
@@ -23105,11 +23109,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `de791dde11` None/None · pendente_confirmacao_documento · 
 - `62ba99f376` None/None · pendente_confirmacao_documento · 
 - `8a3531e64e` None/None · pendente_confirmacao_documento · 
-- `a59dfd6204` None/None · pendente_confirmacao_documento · 
+- `a59dfd6204` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `9e3fe7569b` None/None · pendente_confirmacao_documento · 
 - `aa18ba3cc0` None/None · pendente_confirmacao_documento · 
 - `ac0f47b9cc` None/None · pendente_confirmacao_documento · 
-- `29c64435c6` None/None · pendente_confirmacao_documento · 
+- `29c64435c6` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `06651fcad0` None/None · pendente_confirmacao_documento · 
 - `e90d788897` None/None · pendente_confirmacao_documento · 
 - `0488b1f2e0` None/None · pendente_confirmacao_documento · 
@@ -23137,50 +23141,50 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `fa871c09b2` None/None · pendente_confirmacao_documento · 
 - `66d800e80a` None/None · pendente_confirmacao_documento · 
 - `931bf0974f` None/None · pendente_confirmacao_documento · 
-- `e49bfc2aa6` None/None · pendente_confirmacao_documento · 
-- `d1ab92865d` None/None · pendente_confirmacao_documento · 
+- `e49bfc2aa6` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `d1ab92865d` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `e8452f849b` None/None · pendente_confirmacao_documento · 
-- `b16648f233` None/None · pendente_confirmacao_documento · 
+- `b16648f233` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `ccd635129e` None/None · pendente_confirmacao_documento · 
-- `919b2342e6` None/None · pendente_confirmacao_documento · 
+- `919b2342e6` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `3751cdc571` None/None · pendente_confirmacao_documento · 
 - `8bbcde5cbb` None/None · pendente_confirmacao_documento · 
 - `4613fc8c35` None/None · pendente_confirmacao_documento · 
-- `3f53926fd7` None/None · pendente_confirmacao_documento · 
+- `3f53926fd7` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `6988544983` None/None · pendente_confirmacao_documento · 
 - `30288fcc24` None/None · pendente_confirmacao_documento · 
-- `84c7db033f` None/None · pendente_confirmacao_documento · 
+- `84c7db033f` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `d6d15ee6bc` None/None · pendente_confirmacao_documento · 
 - `9cdc71b9b4` None/None · pendente_confirmacao_documento · 
-- `8ee5be4509` None/None · pendente_confirmacao_documento · 
+- `8ee5be4509` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `b570f88a32` None/None · pendente_confirmacao_documento · 
 - `70cfb55502` None/None · pendente_confirmacao_documento · 
 - `afcd71bf64` None/None · pendente_confirmacao_documento · 
 - `cad323bdc2` None/None · pendente_confirmacao_documento · 
 - `49fe92ff62` None/None · pendente_confirmacao_documento · 
-- `3deb2b1534` None/None · pendente_confirmacao_documento · 
+- `3deb2b1534` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `473ab8140d` None/None · pendente_confirmacao_documento · 
-- `6a3ba1b72d` None/None · pendente_confirmacao_documento · 
+- `6a3ba1b72d` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `dbc3093bc0` None/None · pendente_confirmacao_documento · 
 - `13265ef5b6` None/None · pendente_confirmacao_documento · 
 - `d5bf5e5664` None/None · pendente_confirmacao_documento · 
 - `75e852900f` None/None · pendente_confirmacao_documento · 
-- `a65f2fbb7c` None/None · pendente_confirmacao_documento · 
+- `a65f2fbb7c` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `aa18ba3cc0` None/None · pendente_confirmacao_documento · 
 - `fd00096524` None/None · pendente_confirmacao_documento · 
-- `7971421b34` None/None · pendente_confirmacao_documento · 
-- `085f6fddb8` None/None · pendente_confirmacao_documento · 
-- `8155d4997b` None/None · pendente_confirmacao_documento · 
+- `7971421b34` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `085f6fddb8` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `8155d4997b` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `0f642b36d5` None/None · pendente_confirmacao_documento · 
 - `47c2e60987` None/None · pendente_confirmacao_documento · 
 - `8365d54390` None/None · pendente_confirmacao_documento · 
 - `01a8bbd5eb` None/None · pendente_confirmacao_documento · 
 - `ec0ed871e8` None/None · pendente_confirmacao_documento · 
 - `c08348d267` None/None · pendente_confirmacao_documento · 
-- `1a923de84f` None/None · pendente_confirmacao_documento · 
+- `1a923de84f` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `480c35ec59` None/None · pendente_confirmacao_documento · 
 - `cc80bc1b55` None/None · pendente_confirmacao_documento · 
-- `ac1b760aef` None/None · pendente_confirmacao_documento · 
+- `ac1b760aef` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `2d99f3964a` None/None · pendente_confirmacao_documento · 
 - `a9f344daec` None/None · pendente_confirmacao_documento · 
 - `8b55545c4b` None/None · pendente_confirmacao_documento · 
@@ -23206,7 +23210,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `6988544983` None/None · pendente_confirmacao_documento · 
 - `ac87166933` None/None · pendente_confirmacao_documento · 
 - `999f1b31c2` None/None · pendente_confirmacao_documento · 
-- `60c749b4c5` None/None · pendente_confirmacao_documento · 
+- `60c749b4c5` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `ce7b87b781` None/None · pendente_confirmacao_documento · 
 - `7c7841bb30` None/None · pendente_confirmacao_documento · 
 - `8b55545c4b` None/None · pendente_confirmacao_documento · 
@@ -23221,7 +23225,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `47a8e058c2` None/None · pendente_confirmacao_documento · 
 - `f2f0d84ad4` None/None · pendente_confirmacao_documento · 
 - `fd9e99192b` None/None · pendente_confirmacao_documento · 
-- `46498d0395` None/None · pendente_confirmacao_documento · 
+- `46498d0395` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `11681f73d4` None/None · pendente_confirmacao_documento · 
 - `afbc66a142` None/None · pendente_confirmacao_documento · 
 - `b5859a272a` None/None · pendente_confirmacao_documento · 
@@ -23276,7 +23280,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `4eaded3c3b` None/None · pendente_confirmacao_documento · 
 - `efc94e9a6a` None/None · pendente_confirmacao_documento · 
 - `58adad0969` None/None · pendente_confirmacao_documento · 
-- `d03614d042` None/None · pendente_confirmacao_documento · 
+- `d03614d042` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `919eb3011b` None/None · pendente_confirmacao_documento · 
 - `7bfd169480` None/None · pendente_confirmacao_documento · 
 - `950c16fda4` None/None · pendente_confirmacao_documento · 
@@ -23460,7 +23464,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `6636020bb9` None/None · pendente_confirmacao_documento · 
 - `da0f6d6424` None/None · pendente_confirmacao_documento · 
 - `d438b470dd` None/None · pendente_confirmacao_documento · 
-- `594e25b92e` None/None · pendente_confirmacao_documento · 
+- `594e25b92e` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `4edeb5e20e` None/None · pendente_confirmacao_documento · 
 - `79156841ae` None/None · pendente_confirmacao_documento · 
 - `e290ddac67` None/None · pendente_confirmacao_documento · 
@@ -23502,6 +23506,188 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `76ebd374dd` None/None · pendente_confirmacao_documento · 
 - `8a0624c7e6` None/None · pendente_confirmacao_documento · 
 - `ac065a3655` None/None · pendente_confirmacao_documento · 
+- `765610d5b7` None/None · pendente_confirmacao_documento · 
+- `0aec1e8635` None/None · pendente_confirmacao_documento · 
+- `cf4291c59d` None/None · pendente_confirmacao_documento · 
+- `e4e400b915` None/None · pendente_confirmacao_documento · 
+- `e4e400b915` None/None · pendente_confirmacao_documento · 
+- `c53337e2f5` None/None · pendente_confirmacao_documento · 
+- `011419ba3d` None/None · pendente_confirmacao_documento · 
+- `011419ba3d` None/None · pendente_confirmacao_documento · 
+- `1bbdecc041` None/None · pendente_confirmacao_documento · 
+- `a6bca90e68` None/None · pendente_confirmacao_documento · 
+- `d5d0fecda3` None/None · pendente_confirmacao_documento · 
+- `ec0c694e6b` None/None · pendente_confirmacao_documento · 
+- `d5d0fecda3` None/None · pendente_confirmacao_documento · 
+- `b48bf359b9` None/None · pendente_confirmacao_documento · 
+- `4001f567fc` None/None · pendente_confirmacao_documento · 
+- `53960af236` None/None · pendente_confirmacao_documento · 
+- `d5d0fecda3` None/None · pendente_confirmacao_documento · 
+- `e4e400b915` None/None · pendente_confirmacao_documento · 
+- `d5d0fecda3` None/None · pendente_confirmacao_documento · 
+- `e4e400b915` None/None · pendente_confirmacao_documento · 
+- `b531ddc9be` None/None · pendente_confirmacao_documento · 
+- `2b807d4e87` None/None · pendente_confirmacao_documento · 
+- `b5a5d3d373` None/None · pendente_confirmacao_documento · 
+- `02c39c0323` None/None · pendente_confirmacao_documento · 
+- `1669aa1df3` None/None · pendente_confirmacao_documento · 
+- `60dc4549f6` None/None · pendente_confirmacao_documento · 
+- `c347732d3c` None/None · pendente_confirmacao_documento · 
+- `310bdefecf` None/None · pendente_confirmacao_documento · 
+- `ac0b278571` None/None · pendente_confirmacao_documento · 
+- `663e9de0f3` None/None · pendente_confirmacao_documento · 
+- `f3309e4d51` None/None · pendente_confirmacao_documento · 
+- `1441f0cfa0` None/None · pendente_confirmacao_documento · 
+- `1010a0f115` None/None · pendente_confirmacao_documento · 
+- `22dee8eea4` None/None · pendente_confirmacao_documento · 
+- `df6eb06480` None/None · pendente_confirmacao_documento · 
+- `feb6ad121d` None/None · pendente_confirmacao_documento · 
+- `048d60419b` None/None · pendente_confirmacao_documento · 
+- `ba019fea3a` None/None · pendente_confirmacao_documento · 
+- `42ac704cad` None/None · pendente_confirmacao_documento · 
+- `26c9d34bbd` None/None · pendente_confirmacao_documento · 
+- `8021999c59` None/None · pendente_confirmacao_documento · 
+- `e389f12881` None/None · pendente_confirmacao_documento · 
+- `b76ecd42b0` None/None · pendente_confirmacao_documento · 
+- `40fd5c66f0` None/None · pendente_confirmacao_documento · 
+- `9124c08cdc` None/None · pendente_confirmacao_documento · 
+- `f13d6eb64d` None/None · pendente_confirmacao_documento · 
+- `604f0e36d7` None/None · pendente_confirmacao_documento · 
+- `59acdf307c` None/None · pendente_confirmacao_documento · 
+- `85d721da60` None/None · pendente_confirmacao_documento · 
+- `a598c04ebe` None/None · pendente_confirmacao_documento · 
+- `4f5758e7ec` None/None · pendente_confirmacao_documento · 
+- `14ff4ae899` None/None · pendente_confirmacao_documento · 
+- `f802da068a` None/None · pendente_confirmacao_documento · 
+- `6e2ebda404` None/None · pendente_confirmacao_documento · 
+- `a85944af13` None/None · pendente_confirmacao_documento · 
+- `947512b3a0` None/None · pendente_confirmacao_documento · 
+- `07243d88aa` None/None · pendente_confirmacao_documento · 
+- `1560b09afa` None/None · pendente_confirmacao_documento · 
+- `255245eca4` None/None · pendente_confirmacao_documento · 
+- `0e5cae2f75` None/None · pendente_confirmacao_documento · 
+- `40d1d4b8f6` None/None · pendente_confirmacao_documento · 
+- `78495b5da0` None/None · pendente_confirmacao_documento · 
+- `f9ef62185c` None/None · pendente_confirmacao_documento · 
+- `3afc1496d9` None/None · pendente_confirmacao_documento · 
+- `5bacdecaa1` None/None · pendente_confirmacao_documento · 
+- `dc20440e1c` None/None · pendente_confirmacao_documento · 
+- `6db68b7155` None/None · pendente_confirmacao_documento · 
+- `2fc49d18eb` None/None · pendente_confirmacao_documento · 
+- `14ff4ae899` None/None · pendente_confirmacao_documento · 
+- `348b9cd530` None/None · pendente_confirmacao_documento · 
+- `1c794d0b10` None/None · pendente_confirmacao_documento · 
+- `614749367a` None/None · pendente_confirmacao_documento · 
+- `6f5cdc4bf1` None/None · pendente_confirmacao_documento · 
+- `ade5cc25bc` None/None · pendente_confirmacao_documento · 
+- `705411c3cc` None/None · pendente_confirmacao_documento · 
+- `812efc5272` None/None · pendente_confirmacao_documento · 
+- `e2754f3029` None/None · pendente_confirmacao_documento · 
+- `42ac704cad` None/None · pendente_confirmacao_documento · 
+- `7032fec691` None/None · pendente_confirmacao_documento · 
+- `35ffc3eed9` None/None · pendente_confirmacao_documento · 
+- `45d01e05f2` None/None · pendente_confirmacao_documento · 
+- `eafd5f20b3` None/None · pendente_confirmacao_documento · 
+- `df9f602ce6` None/None · pendente_confirmacao_documento · 
+- `15c3b8a031` None/None · pendente_confirmacao_documento · 
+- `f900039430` None/None · pendente_confirmacao_documento · 
+- `365d38d5e2` None/None · pendente_confirmacao_documento · 
+- `5237a5286c` None/None · pendente_confirmacao_documento · 
+- `d57fdcabba` None/None · pendente_confirmacao_documento · 
+- `1e29d92d37` None/None · pendente_confirmacao_documento · 
+- `3bad47cd52` None/None · pendente_confirmacao_documento · 
+- `3e85d2425e` None/None · pendente_confirmacao_documento · 
+- `3504b53a41` None/None · pendente_confirmacao_documento · 
+- `8656d0f32b` None/None · pendente_confirmacao_documento · 
+- `2623dd857b` None/None · pendente_confirmacao_documento · 
+- `93b9011414` None/None · pendente_confirmacao_documento · 
+- `dc2c118cf2` None/None · pendente_confirmacao_documento · 
+- `1a15834194` None/None · pendente_confirmacao_documento · 
+- `07a5bf6f51` None/None · pendente_confirmacao_documento · 
+- `bdedea7699` None/None · pendente_confirmacao_documento · 
+- `d53703a846` None/None · pendente_confirmacao_documento · 
+- `52afd9373a` None/None · pendente_confirmacao_documento · 
+- `57a50bed6f` None/None · pendente_confirmacao_documento · 
+- `1cd4c7d1ee` None/None · pendente_confirmacao_documento · 
+- `03534c6c94` None/None · pendente_confirmacao_documento · 
+- `c6057e64f3` None/None · pendente_confirmacao_documento · 
+- `a0a517ebee` None/None · pendente_confirmacao_documento · 
+- `341c31fe1b` None/None · pendente_confirmacao_documento · 
+- `ca01601596` None/None · pendente_confirmacao_documento · 
+- `fbf326ecfd` None/None · pendente_confirmacao_documento · 
+- `1e191f7b1d` None/None · pendente_confirmacao_documento · 
+- `b24314b6de` None/None · pendente_confirmacao_documento · 
+- `51795c7257` None/None · pendente_confirmacao_documento · 
+- `f900039430` None/None · pendente_confirmacao_documento · 
+- `4f4fa2ce2a` None/None · pendente_confirmacao_documento · 
+- `7626974e3d` None/None · pendente_confirmacao_documento · 
+- `d6ff8a5157` None/None · pendente_confirmacao_documento · 
+- `fa46ba7ac5` None/None · pendente_confirmacao_documento · 
+- `da038b1c6c` None/None · pendente_confirmacao_documento · 
+- `259f1e5f88` None/None · pendente_confirmacao_documento · 
+- `a2848c3fb2` None/None · pendente_confirmacao_documento · 
+- `29d2f833a1` None/None · pendente_confirmacao_documento · 
+- `0107b8d42f` None/None · pendente_confirmacao_documento · 
+- `bea3ac3ebd` None/None · pendente_confirmacao_documento · 
+- `4b33bd37ff` None/None · pendente_confirmacao_documento · 
+- `71f2778962` None/None · pendente_confirmacao_documento · 
+- `7131e17b15` None/None · pendente_confirmacao_documento · 
+- `7a14ff7854` None/None · pendente_confirmacao_documento · 
+- `2610f18454` None/None · pendente_confirmacao_documento · 
+- `a00d8c7d9e` None/None · pendente_confirmacao_documento · 
+- `1f2462e56b` None/None · pendente_confirmacao_documento · 
+- `fdf931e471` None/None · pendente_confirmacao_documento · 
+- `5c055bac48` None/None · pendente_confirmacao_documento · 
+- `4cd9c748b0` None/None · pendente_confirmacao_documento · 
+- `48b34312eb` None/None · pendente_confirmacao_documento · 
+- `047df06834` None/None · pendente_confirmacao_documento · 
+- `463d344ec6` None/None · pendente_confirmacao_documento · 
+- `9c9877d963` None/None · pendente_confirmacao_documento · 
+- `4ac392f59e` None/None · pendente_confirmacao_documento · 
+- `b4e00db733` None/None · pendente_confirmacao_documento · 
+- `1aa18054e7` None/None · pendente_confirmacao_documento · 
+- `4c74a22fd5` None/None · pendente_confirmacao_documento · 
+- `35ffc3eed9` None/None · pendente_confirmacao_documento · 
+- `2d0c2982b7` None/None · pendente_confirmacao_documento · 
+- `e91f0ca7ee` None/None · pendente_confirmacao_documento · 
+- `fbd94ba23f` None/None · pendente_confirmacao_documento · 
+- `119ac9954b` None/None · pendente_confirmacao_documento · 
+- `ea77105c3a` None/None · pendente_confirmacao_documento · 
+- `0051ebbe5d` None/None · pendente_confirmacao_documento · 
+- `9f8b9211b2` None/None · pendente_confirmacao_documento · 
+- `2c77917430` None/None · pendente_confirmacao_documento · 
+- `2e8878fb02` None/None · pendente_confirmacao_documento · 
+- `40c99520b7` None/None · pendente_confirmacao_documento · 
+- `e3c01bad9e` None/None · pendente_confirmacao_documento · 
+- `6be5487bde` None/None · pendente_confirmacao_documento · 
+- `14ff4ae899` None/None · pendente_confirmacao_documento · 
+- `c15acb4f6e` None/None · pendente_confirmacao_documento · 
+- `0fb1973c53` None/None · pendente_confirmacao_documento · 
+- `0d2b3b2a58` None/None · pendente_confirmacao_documento · 
+- `35ffc3eed9` None/None · pendente_confirmacao_documento · 
+- `4c74a22fd5` None/None · pendente_confirmacao_documento · 
+- `d17af47138` None/None · pendente_confirmacao_documento · 
+- `41b1658ab3` None/None · pendente_confirmacao_documento · 
+- `6732495405` None/None · pendente_confirmacao_documento · 
+- `93b9011414` None/None · pendente_confirmacao_documento · 
+- `1a58361f95` None/None · pendente_confirmacao_documento · 
+- `2256df5728` None/None · pendente_confirmacao_documento · 
+- `8556cf872e` None/None · pendente_confirmacao_documento · 
+- `d610cbe6f5` None/None · pendente_confirmacao_documento · 
+- `bb43a1c3d4` None/None · pendente_confirmacao_documento · 
+- `908c2db975` None/None · pendente_confirmacao_documento · 
+- `93b9011414` None/None · pendente_confirmacao_documento · 
+- `35ffc3eed9` None/None · pendente_confirmacao_documento · 
+- `4c74a22fd5` None/None · pendente_confirmacao_documento · 
+- `ba019fea3a` None/None · pendente_confirmacao_documento · 
+- `7a14ff7854` None/None · pendente_confirmacao_documento · 
+- `56c5017ce0` None/None · pendente_confirmacao_documento · 
+- `46b310453b` None/None · pendente_confirmacao_documento · 
+- `7cee627576` None/None · pendente_confirmacao_documento · 
+- `f7b08c9f86` None/None · pendente_confirmacao_documento · 
+- `6be5487bde` None/None · pendente_confirmacao_documento · 
+- `8fd97a78bb` None/None · pendente_confirmacao_documento · 
+- `5b219092f3` None/None · pendente_confirmacao_documento · 
 - `e0c2afcacf` None/AC · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `c53cf50fc3` Rio Branco/AC · fechada — sem documento oficial localizado no prazo da fila; reabre se surgir evidência nova para o mesmo município e assunto · 
 - `da2464af5e` defesa_civil/AC · fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila · 
