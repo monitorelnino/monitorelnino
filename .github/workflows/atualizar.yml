@@ -625,7 +625,9 @@ jobs:
           git config user.name "monitor-el-nino-bot"
           git config user.email "bot@users.noreply.github.com"
           # 23/09/2026: a lista nomeava só index.html e defesa-civil.html. preencher_fallback_estatico.py reescreve TAMBÉM saude.html e financiamento.html (o que o leitor sem JavaScript vê), e carimbar_assets.py reescreve as 12 páginas. Tudo isso era descartado no commit enquanto o manifesto guardava o hash da versão nova — portão 12 vermelho na main, e a página de Saúde servindo número velho a quem não roda JavaScript. `*.html` cobre as páginas de hoje e as de amanhã.
-          git add data/ *.html recalcular_mare.py MARE_Indice_Documentacao.pdf METODOLOGIA.pdf selos/ feeds/ dados-abertos/ evidencias/ docs/MANIFEST_SHA256.txt docs/FILA_PISTAS.md
+          # 06/10/2026 (item 1): quem comita e `scripts/commit_do_elo.py`, pela declaracao
+          # de `config/escritores.json`. `git add` de pasta levava arquivo de outro elo.
+          python3 scripts/commit_do_elo.py atualizar.yml --somente-indice
           # Escopo do commit ampliado em 31/08/2026, e revisado depois no mesmo
           # dia quando mapas/gráficos ganharam página própria: index.html
           # (o número fixo do medidor), mapas-e-graficos.html (AREAS —
@@ -691,7 +693,7 @@ jobs:
                   # canônica e emenda, senão o portão 12 reprova na main depois do push.
                   if grep -q '^REGENERAR=' /tmp/uniao.log; then
                     bash scripts/verificar_derivados.sh || true
-                    git add -A && GIT_EDITOR=true git commit -q --amend --no-edit || true
+                    python3 scripts/commit_do_elo.py atualizar.yml --somente-indice && GIT_EDITOR=true git commit -q --amend --no-edit || true
                     echo "tentativa $TENTATIVA: derivados regenerados e emendados no commit"
                   fi
                 else

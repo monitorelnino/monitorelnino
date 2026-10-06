@@ -142,6 +142,7 @@ Atualizado em 05/10/2026.
 | `revisar_pistas.py` | — | `pistas_imprensa.json` | — | — | não |
 | `robustez_saude.py` | — | — | — | — | não |
 | `saude_opendatasus.py` | — | — | — | 2 | não |
+| `scripts/commit_do_elo.py` | — | `inventado.json`, `municipios.json`, `novo.json`, `pistas_imprensa.json`, `pistas_revisao.json`, `publicacao.json` | — | — | não |
 | `scripts/contar_filas_humanas.py` | — | `decretos_conteudo_revisar.json`, `pistas_descobertas.json`, `pistas_imprensa.json`, `pistas_imprensa_saude.json`, `saude_no_plano_revisar.json` | — | — | não |
 | `scripts/corrigir_atribuicao_por_dominio.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json`, `pistas_revisao.json` | — | — | não |
 | `scripts/diagnosticar_querido_diario.py` | — | `atos_resposta.json`, `municipios_ibge_referencia.json` | — | — | não |

@@ -185,9 +185,14 @@ jobs:
         run: |
           git config user.name "monitor-el-nino-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add data/ *.html selos/ dados-abertos/ docs/MANIFEST_SHA256.txt docs/FILA_PISTAS.md
-          if git diff --cached --quiet; then echo "Sem alterações."; echo "HOUVE=0" >> $GITHUB_ENV; exit 0; fi
-          git commit -m "Busca web automática ($(date -u +%d/%m/%Y\ %H:%M) UTC)"
+          # Item 1 do handover de 06/10/2026: o commit do elo poe no indice SO os arquivos que
+          # `config/escritores.json` da a ele. O `git add` de pasta inteira levava junto arquivo
+          # de outro elo, e o conflito que isso criava descartou 364 minutos de coleta na noite
+          # de 05 para 06/10. `scripts/verificar_commit_do_elo.py` reprova a volta do atalho.
+          python3 scripts/commit_do_elo.py busca_web --mensagem "Busca web automatica ($(date -u +%d/%m/%Y\ %H:%M) UTC)" | tee /tmp/commit_do_elo.txt
+          if ! grep -q "^houve=1" /tmp/commit_do_elo.txt; then
+            echo "Sem alteracoes deste elo."; echo "HOUVE=0" >> $GITHUB_ENV; exit 0
+          fi
           echo "HOUVE=1" >> $GITHUB_ENV
           git checkout -- .
           mkdir -p ~/.ssh && printf '%s\n' "$ROBO_DEPLOY_KEY" > ~/.ssh/robo && chmod 600 ~/.ssh/robo

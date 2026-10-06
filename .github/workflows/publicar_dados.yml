@@ -268,25 +268,14 @@ jobs:
           #
           # Agora cada caminho é adicionado por conta própria, e o que não existe é DITO — a lista
           # envelhece sozinha quando uma pasta sai do site, e envelhecer em silêncio foi o defeito.
-          falhou=0
-          for alvo in data/ dados-abertos/ feeds/ selos/ docs/ blog/ assets/ CITATION.cff *.html *.pdf; do
-            # `-e` e não `compgen`: o `for` já expandiu `*.html` e `*.pdf`, então cada `$alvo`
-            # é um caminho concreto — e `compgen -G "blog/"` responde "casou" mesmo sem a pasta,
-            # porque trata a barra como padrão. Medido antes de confiar.
-            if [ ! -e "$alvo" ]; then
-              echo "::notice::git add ignorou $alvo: nao existe mais nesta arvore"
-              continue
-            fi
-            git add -A "$alvo" || falhou=1
-          done
-          if [ "$falhou" = "1" ]; then
-            echo "::error::git add falhou em um dos caminhos — nada será publicado nesta execução"
-            exit 1
+          # 06/10/2026 (item 1 do handover da noite confiavel, parte 2): o laco de `git add` por
+          # caminho vira uma chamada ao ajudante, que le `config/escritores.json`. A lista de
+          # caminhos do publicador agora vive LA, com o resto da regra, em vez de repetida aqui --
+          # era a repeticao que envelhecia em silencio quando uma pasta saia do site.
+          python3 scripts/commit_do_elo.py publicar --mensagem "Publicacao automatica ($(date -u +%d/%m/%Y\ %H:%M) UTC)" | tee /tmp/commit_do_elo.txt
+          if ! grep -q "^houve=1" /tmp/commit_do_elo.txt; then
+            echo "Sem alteracoes a publicar."; echo "houve=0" >> "$GITHUB_OUTPUT"; exit 0
           fi
-          if git diff --cached --quiet; then
-            echo "Sem alterações a publicar."; echo "houve=0" >> "$GITHUB_OUTPUT"; exit 0
-          fi
-          git commit -m "Publicação automática ($(date -u +%d/%m/%Y\ %H:%M) UTC)"
           echo "houve=1" >> "$GITHUB_OUTPUT"
           git checkout -- . 2>/dev/null || true
 
@@ -323,7 +312,7 @@ jobs:
               git rebase -X theirs FETCH_HEAD || { git rebase --abort || true; sleep $((TENTATIVA * 10)); continue; }
               python3 recalcular_mare.py --write || true
               bash scripts/verificar_derivados.sh --idempotencia || true
-              git add -A data/ dados-abertos/ feeds/ selos/ docs/ blog/ assets/ CITATION.cff *.html *.pdf 2>/dev/null || true
+              python3 scripts/commit_do_elo.py publicar --somente-indice || true
               git diff --cached --quiet || git commit --amend --no-edit
             fi
             if GIT_SSH_COMMAND="$SSH" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main; then
