@@ -143,7 +143,8 @@ Atualizado em 06/10/2026.
 | `robustez_saude.py` | — | — | — | — | não |
 | `saude_opendatasus.py` | — | — | — | 2 | não |
 | `scripts/aplicar_delta_do_elo.py` | — | `focos_pontos.json`, `nao_declarado.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_revisao.json` | — | — | não |
-| `scripts/commit_do_elo.py` | — | `inventado.json`, `municipios.json`, `novo.json`, `pistas_imprensa.json`, `pistas_revisao.json`, `publicacao.json` | — | 1 | não |
+| `scripts/commit_do_elo.py` | — | `inventado.json`, `municipios.json`, `novo.json`, `pistas_imprensa.json`, `pistas_revisao.json`, `publicacao.json` | — | 2 | não |
+| `scripts/consolidar_noite.py` | — | `focos_pontos.json`, `historico_mudancas.json`, `inventado.json`, `log_buscas.json`, `painel_da_noite.json`, `pistas_imprensa.json` (+2) | — | — | não |
 | `scripts/contar_filas_humanas.py` | — | `decretos_conteudo_revisar.json`, `pistas_descobertas.json`, `pistas_imprensa.json`, `pistas_imprensa_saude.json`, `saude_no_plano_revisar.json` | — | — | não |
 | `scripts/corrigir_atribuicao_por_dominio.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json`, `pistas_revisao.json` | — | — | não |
 | `scripts/deduplicar_fila_de_pistas.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_rejeitadas.json`, `pistas_sinais.json` | — | — | não |
@@ -167,8 +168,8 @@ Atualizado em 06/10/2026.
 | `scripts/orcamento_da_noite.py` | — | `cursor_da_noite.json` | — | — | não |
 | `scripts/ordem_de_coleta.py` | — | `cursor_de_coleta.json` | — | — | não |
 | `scripts/painel_da_noite.py` | — | `painel_da_noite.json` | — | 1 | não |
-| `scripts/pendente_do_elo.py` | — | `fontes_consultadas.json`, `funil/2026-10-05.json`, `log_buscas.json`, `pistas_imprensa.json` | — | — | não |
-| `scripts/pistas.py` | — | `pistas_imprensa.json`, `pistas_rejeitadas.json` | — | 12 | não |
+| `scripts/pendente_do_elo.py` | — | `fontes_consultadas.json`, `funil/2026-10-05.json`, `log_buscas.json`, `pistas_imprensa.json`, `pistas_revisao.json` | — | — | não |
+| `scripts/pistas.py` | — | `pistas_imprensa.json`, `pistas_rejeitadas.json` | — | 13 | não |
 | `scripts/preservar_textos_integrais.py` | — | `evidencias.json` | — | — | não |
 | `scripts/quais_portoes.py` | — | `indice.json` | — | — | não |
 | `scripts/reavaliar_fontes_suspensas.py` | — | `calendario/fontes_suspensas.json` | — | — | não |
