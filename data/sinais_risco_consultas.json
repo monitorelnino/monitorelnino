@@ -4,54 +4,54 @@
   "efeito_no_indice": "NENHUM — peso zero, como todo sinal de risco.",
   "escrito_por": "coletar_sinais_risco.py"
  },
- "gerado_em": "06/10/2026 15:52",
+ "gerado_em": "06/10/2026 16:35",
  "consultas": [
   {
    "fonte": "inmet_avisos",
    "url": "https://apiprevmet3.inmet.gov.br/avisos/ativos",
-   "consultado_em": "06/10/2026 15:51",
+   "consultado_em": "06/10/2026 16:35",
    "bytes": 466940,
    "sha256": "52b5350e57ec5e0c994220a5bd677bb7a475584920d676cb637fbbacf242ea8f"
   },
   {
    "fonte": "cemaden_alertas",
    "url": "https://gsc.cemaden.gov.br/geoserver/cemaden_dev/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=cemaden_dev:alertas_vigentes_siaden&outputFormat=application/json&count=3000",
-   "consultado_em": "06/10/2026 15:51",
-   "bytes": 503324,
-   "sha256": "2b614facfc6f322caca8a5134b93d81478d972fb1c00dbee02f037bab08751ec"
+   "consultado_em": "06/10/2026 16:35",
+   "bytes": 503335,
+   "sha256": "ac02345dab644740509f6c9144b89f7a589b654d89ca972b0d2520cbcf56237a"
   },
   {
    "fonte": "open_meteo_tempo",
    "url": "https://api.open-meteo.com/v1/forecast?latitude=-9.9750,-9.6660,-3.1187,0.0349,-12.9718,-3.7166,-15.7795,-20.3155,-16.6864,-2.5387,-19.9102,-20.4486,-15.6010,-1.4554,-7.1151,-8.0467,-5.0919,-25.4195,-22.9129,-5.7936,-8.7608,2.8238,-30.0318,-27.5945,-10.9091,-23.5329,-10.2400&longitude=-67.8243,-35.7350,-60.0212,-51.0694,-38.5011,-38.5423,-47.9297,-40.3128,-49.2643,-44.2825,-43.9266,-54.6295,-56.0974,-48.4898,-34.8641,-34.8771,-42.8034,-49.2646,-43.2003,-35.1986,-63.8999,-60.6753,-51.2065,-48.5477,-37.0677,-46.6395,-48.3558&daily=temperature_2m_max,temperature_2m_min,apparent_temperature_max&timezone=America%2FSao_Paulo&past_days=1&forecast_days=4",
-   "consultado_em": "06/10/2026 15:51",
-   "bytes": 15161,
-   "sha256": "9b26792a2c0585da98ad61fc758744ef0964f1e7b029d9bdd77d3bbab448f0c9"
+   "consultado_em": "06/10/2026 16:35",
+   "bytes": 15158,
+   "sha256": "18e6e3cad94cb56f6ed7acb245743992fac42f5e7a1d3bf80703a55d4cac1756"
   },
   {
    "fonte": "inmet_previsao_capitais",
    "url": "https://apiprevmet3.inmet.gov.br/previsao/capitais",
-   "consultado_em": "06/10/2026 15:52",
+   "consultado_em": "06/10/2026 16:35",
    "bytes": 6619424,
-   "sha256": "a800c350e1dd1362fec084f87caa4fe6534dbb0426941c9f0a10907e2484a790"
+   "sha256": "cc5d1c2635bd5e59fc4654da189562bfc92c0e7fd1ac79154b766797cbadd321"
   },
   {
    "fonte": "open_meteo_ar",
    "url": "https://air-quality-api.open-meteo.com/v1/air-quality?latitude=-9.9750,-9.6660,-3.1187,0.0349,-12.9718,-3.7166,-15.7795,-20.3155,-16.6864,-2.5387,-19.9102,-20.4486,-15.6010,-1.4554,-7.1151,-8.0467,-5.0919,-25.4195,-22.9129,-5.7936,-8.7608,2.8238,-30.0318,-27.5945,-10.9091,-23.5329,-10.2400&longitude=-67.8243,-35.7350,-60.0212,-51.0694,-38.5011,-38.5423,-47.9297,-40.3128,-49.2643,-44.2825,-43.9266,-54.6295,-56.0974,-48.4898,-34.8641,-34.8771,-42.8034,-49.2646,-43.2003,-35.1986,-63.8999,-60.6753,-51.2065,-48.5477,-37.0677,-46.6395,-48.3558&hourly=pm2_5,pm10,ozone,nitrogen_dioxide,carbon_monoxide,european_aqi&timezone=America%2FSao_Paulo&forecast_days=1&domains=cams_global",
-   "consultado_em": "06/10/2026 15:52",
-   "bytes": 42773,
-   "sha256": "ab2836f1d0f35b5d09246d75fd5c6da088a894bd90484316dca19c8986cd7db3"
+   "consultado_em": "06/10/2026 16:35",
+   "bytes": 42778,
+   "sha256": "266f16953bbb62b18d1c127a176a238a3ea0bd14f3053d82ba5b51058b7660a3"
   },
   {
    "fonte": "inmet_estacoes",
    "url": "https://apitempo.inmet.gov.br/estacoes/T",
-   "consultado_em": "06/10/2026 15:52",
-   "bytes": 262504,
-   "sha256": "d54d320aa89c77965d4e9349a1aa43255c3cc0fd0f1d6ddf034f34b5f31b36c9"
+   "consultado_em": "06/10/2026 16:35",
+   "bytes": 262500,
+   "sha256": "def48cc4fa7b6354e039ea7d91722a101459ad0b641531c77fc07c270cbd034c"
   },
   {
    "fonte": "inmet_estacoes",
    "url": "https://apitempo.inmet.gov.br/condicao/capitais/2026-10-06",
-   "consultado_em": "06/10/2026 15:52",
+   "consultado_em": "06/10/2026 16:35",
    "bytes": 2348,
    "sha256": "9838c76baab641af13b4aa22f31d7f2088ccdc4b7aa5c6c103810e5888041a65"
   }
