@@ -73699,6 +73699,91 @@
    "origem": "seguimento_busca_oficial",
    "leu_documento": true,
    "hash_evidencia": "e0ecbd20c3e163da825cacbecf1f89a85c8d19f0be32c444111a136756d0e2d5"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "6329 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PPI Pagamento e Parcelamento Incentivado Votorantim Ir para o conteúdo --> Prefeitura de Votorantim e os cookies: nosso site usa cookies para melhorar a sua exp"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "das pessoas responsáveis pela mesma, e, ainda, os demais documentos exigidos na Lei nº 1.719/2003. * Procuração com poderes especiais e cópia simples dos docume",
+     "dados": {
+      "tipo": "lei",
+      "numero": "1.719/2003",
+      "data": "21/09/2026",
+      "trecho": "das pessoas responsáveis pela mesma, e, ainda, os demais documentos exigidos na Lei nº 1.719/2003. * Procuração com poderes especiais e cópia simples dos docume"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "21/09/2026",
+   "natureza": null,
+   "ibge": "3557006",
+   "municipio": "Votorantim",
+   "uf": "SP",
+   "url": "https://www.votorantim.sp.gov.br/portal/noticias/0/3/15695/descontos-de-ate-100-atraem-media-de-70-contribuintes-por-dia-ao-ppi-2025/",
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "973f742595",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "ac6d31adfa4d18607a9b82845c4b6eeea834b55d909aa8eb56c6f48b79667064"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5438 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ar SERVIDOR EMPRESA Play Pause Notícias Fique por dentro das novidades Ver mais Votorantim - Chamamento da Audiência Pública 2026 PÚBLICA AUDIÊNCIA PÚBLICA O VO"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "30/06/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "30/06/2026",
+   "natureza": null,
+   "ibge": "3557006",
+   "municipio": "Votorantim",
+   "uf": "SP",
+   "url": "https://www.votoprev.sp.gov.br/",
+   "pista_id": "2b411df629",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "9b78d7a9082a66613e8ad2fc9d6b38cff6e4f6a585569a80414d4c883ea5c0b1",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
   }
  ]
 }
