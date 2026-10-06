@@ -155,7 +155,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git fetch --quiet --depth=50 "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" main
+          git fetch --quiet --depth=50 "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "${{ github.ref_name }}"
           git reset --hard FETCH_HEAD
           echo "main atual: $(git rev-parse --short HEAD)"
 
@@ -665,7 +665,7 @@ jobs:
           # Uma tentativa só descartava um dia inteiro de coleta quando a main andava no intervalo.
           EMPURROU=0
           for TENTATIVA in 1 2 3 4 5 6; do
-            GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
+            GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git "${{ github.ref_name }}" || true
             if ! git rebase FETCH_HEAD; then
               # §246 (27/09/2026): conflito NÃO se resolve repetindo. Abortar e repetir reaplica
               # exatamente o mesmo conteúdo sobre a mesma main e conflita igual — medido: seis
@@ -707,7 +707,7 @@ jobs:
                 sleep $((TENTATIVA * 10)); continue
               fi
             fi
-            if GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main; then
+            if GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git push git@github.com:${GITHUB_REPOSITORY}.git "HEAD:${{ github.ref_name }}"; then
               EMPURROU=1; echo "empurrado na tentativa $TENTATIVA"; break
             fi
             echo "tentativa $TENTATIVA: push recusado (main avançou); nova tentativa"

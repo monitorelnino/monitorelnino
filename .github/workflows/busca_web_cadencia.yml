@@ -75,7 +75,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git fetch --quiet --depth=50 "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" main
+          git fetch --quiet --depth=50 "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "${{ github.ref_name }}"
           git reset --hard FETCH_HEAD
       - name: Decidir a fase (2h em 2h até cobrir todos; depois 4x/dia)
         id: fase
@@ -197,20 +197,20 @@ jobs:
           git checkout -- .
           mkdir -p ~/.ssh && printf '%s\n' "$ROBO_DEPLOY_KEY" > ~/.ssh/robo && chmod 600 ~/.ssh/robo
           ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
-          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git "${{ github.ref_name }}"
           # 24/09/2026: uma tentativa só perdia a rodada inteira quando a main andava entre o fetch e
           # o push — e ela anda, porque o atualizar.yml e a prévia commitam em paralelo desde que os
           # grupos de concorrência foram separados. Agora são seis tentativas com espera crescente:
           # busca o main de novo, rebaseia e empurra. O dado coletado só se perde se as seis falharem.
           EMPURROU=0
           for TENTATIVA in 1 2 3 4 5 6; do
-            GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
+            GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git "${{ github.ref_name }}" || true
             if ! git rebase FETCH_HEAD; then
               git rebase --abort || true
               echo "tentativa $TENTATIVA: rebase conflitou; nova tentativa"
               sleep $((TENTATIVA * 10)); continue
             fi
-            if GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main; then
+            if GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git push git@github.com:${GITHUB_REPOSITORY}.git "HEAD:${{ github.ref_name }}"; then
               EMPURROU=1; echo "empurrado na tentativa $TENTATIVA"; break
             fi
             echo "tentativa $TENTATIVA: push recusado (main avançou); nova tentativa"

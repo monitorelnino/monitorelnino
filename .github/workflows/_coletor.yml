@@ -164,7 +164,23 @@ jobs:
       # perdeu no push. Sem este passo o artefato de trabalho perdido existia e ninguem o
       # baixava -- foi assim que 364 minutos de coleta morreram na noite de 05 para 06.
       # Nunca derruba o elo: o que nao volta continua pendente e nomeado.
+      # Causa F (06/10/2026): a regra de 27/09 -- nenhum commit automatico na `main` de dia --
+      # dependia de os `cron` estarem certos, e `cron` certo nao impede disparo manual, cadeia de
+      # `workflow_run` nem reexecucao de run antigo. Em 06/10 rodaram coletores na `main` fora da
+      # janela, disputando-a com o trabalho da editoria. A guarda pergunta antes de coletar, e
+      # para em SUCESSO: nao coletar fora da hora e o certo, nao um defeito.
+      - name: Janela da noite — na `main`, só de noite
+        id: janela
+        timeout-minutes: 2
+        run: |
+          if ! python3 scripts/guarda_da_janela.py --ramo "${{ inputs.ramo_destino }}" --elo "${{ inputs.nome }}" | tee -a "$GITHUB_STEP_SUMMARY"; then
+            echo "pode=0" >> "$GITHUB_OUTPUT"
+          else
+            echo "pode=1" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Reaplicar o trabalho que o elo anterior perdeu
+        if: steps.janela.outputs.pode == '1'
         continue-on-error: true
         timeout-minutes: 6
         env:
@@ -172,6 +188,7 @@ jobs:
         run: python3 scripts/pendente_do_elo.py --reaplicar | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Coletar
+        if: steps.janela.outputs.pode == '1'
         run: |
           while IFS= read -r cmd; do
             [ -z "$(echo "$cmd" | tr -d '[:space:]')" ] && continue
@@ -194,6 +211,7 @@ jobs:
       # 04→05/10: `diarios / coletar` foi cancelado dois minutos depois de começar, a guarda contou
       # aquele run como abertura da noite, e ninguém refez a coleta perdida.
       - name: Marcar que este elo trabalhou
+        if: steps.janela.outputs.pode == '1'
         id: feito
         run: |
           NOITE="$(python3 scripts/janela_da_noite.py --noite)"
@@ -204,6 +222,7 @@ jobs:
           echo "marcador: data/noite/$NOITE/${{ inputs.nome }}.feito"
 
       - name: Regenerar derivados
+        if: steps.janela.outputs.pode == '1'
         continue-on-error: true
         timeout-minutes: 10
         run: bash scripts/verificar_derivados.sh || true
@@ -240,6 +259,7 @@ jobs:
           python3 scripts/painel_da_noite.py --registrar "${{ inputs.nome }}"             --inicio "${ELO_INICIO:-}" --conclusao "${{ job.status }}" "$MARCA" || true
 
       - name: Commit com rebase-e-push (item 1a)
+        if: steps.janela.outputs.pode == '1'
         id: commit
         env:
           ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}

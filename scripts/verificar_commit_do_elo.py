@@ -61,6 +61,24 @@ def e_add_largo(resto: str) -> bool:
     return False
 
 
+# `HEAD:main` escrito a mão: o workflow grava na `main` esteja onde estiver.
+
+
+def destino_fixo(linha: str) -> bool:
+    """A linha empurra para a `main` por nome, em vez do ramo em que roda? Função pura.
+
+    Causa B de 06/10/2026: `_coletor.yml` tinha `git push … HEAD:main` fixo, então o elo rodando no
+    ramo `ensaio` tentava gravar na `main` — de dia, contra a regra de 27/09. O ensaio não era
+    isolado coisa nenhuma; só não estragou a `main` porque o arquivo passou de 100 MB e o GitHub
+    recusou o push por outro motivo.
+    """
+    sem_comentario = str(linha or "").split("#")[0]
+    if "HEAD:main" not in sem_comentario:
+        return False
+    # `HEAD:${{ ... }}` é o certo e não casa com o literal; o que resta é o nome escrito à mão.
+    return True
+
+
 def blocos_run(texto: str) -> list:
     """Os blocos `run:` do workflow, como listas de linhas. Função pura.
 
@@ -103,6 +121,12 @@ def problemas_do_texto(nome: str, texto: str) -> list:
                 continue               # clone do repositório privado: outra árvore, outra regra
             fora.append(f"{nome}: `{linha.strip()[:100]}` — comita pasta inteira. "
                         f"Use `python3 scripts/commit_do_elo.py <elo>`.")
+    # O destino do push é outra pergunta, e ela vale em TODO bloco, com `cd` ou sem: empurrar para a
+    # `main` por nome é empurrar para a `main` mesmo rodando no ramo `ensaio`.
+    for n, linha in enumerate(str(texto or "").splitlines(), start=1):
+        if destino_fixo(linha):
+            fora.append(f"{nome}:{n}: `HEAD:main` escrito à mão — o workflow grava na `main` "
+                        f"esteja no ramo em que estiver. Use o ramo em que ele roda.")
     return fora
 
 
@@ -141,6 +165,14 @@ def _autoteste() -> int:
     ajudante = ("jobs:\n  x:\n    steps:\n      - run: |\n"
                 "          python3 scripts/commit_do_elo.py diarios --mensagem x\n")
     ok("quem usa o ajudante passa", problemas_do_texto("d.yml", ajudante) == [])
+    ok("`HEAD:main` escrito a mão é acusado", destino_fixo("git push origin HEAD:main"))
+    ok("destino pelo ramo que roda passa",
+       not destino_fixo("git push origin \"HEAD:${{ github.ref_name }}\""))
+    ok("`HEAD:main` em comentário não é acusado", not destino_fixo("# nunca use HEAD:main"))
+    ok("linha sem push passa", not destino_fixo("echo main"))
+    ok("o portão acusa o destino fixo no workflow inteiro",
+       any("HEAD:main" in x for x in problemas_do_texto(
+           "a.yml", "jobs:\n  x:\n    steps:\n      - run: |\n          git push o HEAD:main\n")))
     ok("add em comentário não é acusado",
        problemas_do_texto("e.yml", "jobs:\n  x:\n    steps:\n      - run: |\n"
                                    "          # nao use git add -A aqui\n") == [])
