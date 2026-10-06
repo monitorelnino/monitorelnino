@@ -121,8 +121,11 @@ jobs:
   diarios:
     needs: abertura
     if: needs.abertura.outputs.abrir == 'sim'
+    # 06/10/2026 (item 5): o ensaio real dispara este workflow no ramo `ensaio` e o elo
+    # empurra para la, nao para a `main`. Na rotina o padrao continua sendo `main`.
     uses: ./.github/workflows/_coletor.yml
     with:
+      ramo_destino: ${{ github.ref_name == 'ensaio' && 'ensaio' || 'main' }}
       nome: diarios
       # Escreve em data/pistas_*.json — grupo compartilhado da noite (seção G1).
       grupo_de_concorrencia: noturno

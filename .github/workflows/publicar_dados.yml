@@ -31,6 +31,13 @@ on:
     - cron: "5 9 * * *"    # 06h05 de Brasília — fecha a noite
     - cron: "5 1 * * *"    # 22h05 de Brasília — abre a noite, com o que a editoria mesclou de dia
   workflow_dispatch:
+    inputs:
+      ramo_destino:
+        # Item 5 (06/10/2026): o ensaio real publica no ramo `ensaio`, nunca na `main`.
+        description: "Ramo para onde o publicador empurra. `main` na rotina."
+        required: false
+        default: main
+        type: string
   # 28/09/2026 (item 2 do bloco de frescor): CONTRATO — toda coleta que muda dado termina em
   # publicação. Até aqui o publicador só tinha horário, e uma noite que commitava dado às 06h30
   # esperava até as 22h05 para aparecer; noite em que o publicador falhava, o dado esperava o dia
@@ -84,7 +91,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git fetch --quiet --depth=50 "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" main
+          git fetch --quiet --depth=50 "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "${{ inputs.ramo_destino || 'main' }}"
           git reset --hard FETCH_HEAD
           echo "main atual: $(git rev-parse --short HEAD)"
 
@@ -304,18 +311,18 @@ jobs:
           SSH="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes"
           EMPURROU=0
           for TENTATIVA in 1 2 3 4 5; do
-            GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
+            GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git "${{ inputs.ramo_destino || 'main' }}" || true
             if ! git rebase FETCH_HEAD; then
               git rebase --abort || true
               echo "tentativa $TENTATIVA: rebase conflitou; regenerando derivados e tentando de novo"
-              GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
+              GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git "${{ inputs.ramo_destino || 'main' }}" || true
               git rebase -X theirs FETCH_HEAD || { git rebase --abort || true; sleep $((TENTATIVA * 10)); continue; }
               python3 recalcular_mare.py --write || true
               bash scripts/verificar_derivados.sh --idempotencia || true
               python3 scripts/commit_do_elo.py publicar --somente-indice || true
               git diff --cached --quiet || git commit --amend --no-edit
             fi
-            if GIT_SSH_COMMAND="$SSH" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main; then
+            if GIT_SSH_COMMAND="$SSH" git push git@github.com:${GITHUB_REPOSITORY}.git "HEAD:${{ inputs.ramo_destino || 'main' }}"; then
               EMPURROU=1; echo "empurrado na tentativa $TENTATIVA"; break
             fi
             echo "tentativa $TENTATIVA: push recusado (main avançou); nova tentativa"
