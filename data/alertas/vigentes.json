@@ -7,15 +7,15 @@
   "validade_horas": 36,
   "escrito_por": "coletar_sinais_risco.py"
  },
- "gerado_em": "06/10/2026 12:09",
+ "gerado_em": "06/10/2026 15:46",
  "resumo": {
   "municipios": 3246,
   "municipios_inmet": 3241,
-  "municipios_cemaden": 9,
+  "municipios_cemaden": 10,
   "avisos_inmet": 4,
-  "alertas_cemaden_em_vigor": 9,
+  "alertas_cemaden_em_vigor": 10,
   "alertas_cemaden_cessados": 1,
-  "alertas_cemaden_devolvidos": 10,
+  "alertas_cemaden_devolvidos": 11,
   "alertas_cemaden_sem_codigo_ibge": 0,
   "campos_devolvidos_pelo_cemaden": [
    "cidade",
@@ -40775,7 +40775,15 @@
      "fim": "2026-10-06 23:59"
     }
    ],
-   "cemaden": []
+   "cemaden": [
+    {
+     "nivel": "Moderado",
+     "tipo": "Movimentos de Massa",
+     "evento": "Movimentos de Massa - Moderado",
+     "inicio": "2026-10-06T15:31:53.316Z",
+     "fim": null
+    }
+   ]
   },
   "4208955": {
    "nome": "Jardinópolis",
