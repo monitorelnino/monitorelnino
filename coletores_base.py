@@ -22,7 +22,7 @@ Cinco regras herdadas de `coletar_sinais_risco.py` e da transferência conceitua
    verificação — os coletores nunca escrevem `verificacao_municipal.json`.
 """
 import hashlib, html, io, json, os, pathlib, re, ssl, sys, time, urllib.error, urllib.parse, urllib.request
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
 RAIZ = pathlib.Path(__file__).parent
@@ -101,6 +101,28 @@ def hoje_editorial(agora=None) -> date:
     que já virou o dia em UTC mas não em Brasília. Sem o relógio injetável, um teste só pegaria a
     regressão nas três horas do dia em que os dois fusos discordam."""
     return (agora or datetime.now(FUSO_EDITORIAL)).astimezone(FUSO_EDITORIAL).date()
+
+
+def data_do_corte() -> date:
+    """A data do RELÓGIO FIXADO da cadeia de derivados, ou a data editorial fora dela.
+
+    §193 (24/09/2026), e de novo em 06/10/2026. `scripts/verificar_derivados.sh` fixa
+    `SOURCE_DATE_EPOCH` no corte da edição justamente para a cadeia ser reproduzível. Derivado que
+    carimba pelo relógio da parede muda sozinho na virada do dia: o runner regenera com o dia
+    seguinte, o portão 12 acusa derivado obsoleto, e a publicação para por uma diferença que não é
+    de dado nenhum. Em 05→06/10 isso derrubou NOVE publicações seguidas, das 23:53 às 06:09, pelo
+    carimbo do `CODEMAP.md`.
+
+    Esta função existe para a regra ter um dono. Ela estava copiada dentro de
+    `gerar_card_municipios.py`, e cópia de regra é regra que o próximo gerador não herda.
+    """
+    epoch = os.environ.get("SOURCE_DATE_EPOCH")
+    if epoch:
+        try:
+            return datetime.fromtimestamp(int(epoch), tz=timezone.utc).date()
+        except (TypeError, ValueError):
+            pass
+    return hoje_editorial()
 
 
 def hoje() -> str:
