@@ -283,8 +283,11 @@ def _aplicar(dir_artefatos: pathlib.Path, aplicar: bool, importacao: bool) -> in
                         fundido = dict(do)
                         fundido[chave] = unir_log(da.get(chave) or [], do.get(chave) or [])
                         destino.parent.mkdir(parents=True, exist_ok=True)
-                        destino.write_text(json.dumps(fundido, ensure_ascii=False, indent=1) + "\n",
-                                           encoding="utf-8", newline="\n")
+                        # §229: porta atômica. O consolidador é o ÚNICO escritor — escrita direta
+                        # aqui deixaria o banco pela metade se a rodada morresse no meio, e não há
+                        # segundo escritor para refazer.
+                        from coletores_base import gravar_em
+                        gravar_em(destino, fundido)
                 elif aplicar:
                     import shutil
                     destino.parent.mkdir(parents=True, exist_ok=True)

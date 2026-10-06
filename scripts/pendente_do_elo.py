@@ -467,8 +467,11 @@ def main(argv: list) -> int:
         alvo = RAIZ / caminho_do_marcador(elo, noite)
         alvo.parent.mkdir(parents=True, exist_ok=True)
         doc = conteudo_do_marcador(elo, run, caminhos, agora.isoformat(timespec="minutes"))
-        alvo.write_text(json.dumps(doc, ensure_ascii=False, indent=1) + "\n",
-                        encoding="utf-8", newline="\n")
+        # §229: porta atômica. O marcador de pendência é a prova de que houve trabalho a recuperar
+        # — marcador pela metade é pior que marcador nenhum, porque ninguém o lê e ninguém o
+        # procura.
+        from coletores_base import gravar_em
+        gravar_em(alvo, doc)
         pode, nao = separar_para_reaplicar(caminhos, classes_conhecidas())
         print(f"⚠ TRABALHO PENDENTE: {alvo.relative_to(RAIZ)} — run {run}, "
               f"{len(pode)} caminho(s) reaplicável(eis), {len(nao)} sem política")
