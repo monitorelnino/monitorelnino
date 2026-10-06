@@ -1,11 +1,11 @@
 {
  "_governanca": "Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. `prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). `imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o leitor peça o documento ao gestor. Só municípios com algo a dizer; ausência = nada localizado. `defesa_civil_orcamento` (§207) = despesa liquidada na subfunção 06.182 declarada ao SICONFI, peso ZERO; classe de ausência nunca vira zero.",
  "gerado_em": "2026-10-05",
- "total": 2194,
+ "total": 2195,
  "com_registro": 278,
- "com_imprensa": 129,
+ "com_imprensa": 132,
  "prioritarios": 2095,
- "com_despesa_182": 2194,
+ "com_despesa_182": 2195,
  "municipios": {
   "1100023": {
    "nome": "Ariquemes",
@@ -10930,6 +10930,30 @@
    "nome": "Tupanatinga",
    "uf": "PE",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_localizado"
+  },
+  "2616001": {
+   "nome": "VENTUROSA",
+   "uf": "PE",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "nte, Infraestrutura e Segurança \nPública, Saúde e Assistência Social. \n  \n21. CONSIDERAÇÕES FINAIS \nPlano Municipal de Contingência passa a",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=365&i=publicado_115911_2026-10-02_49052bbeac783e7a5acbf180689311c1.pdf",
+     "data": "2026-10-05",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -26159,6 +26183,15 @@
    "nome": "Mandaguari",
    "uf": "PR",
    "prioritario": true,
+   "imprensa": [
+    {
+     "titulo": "ico de Saúde (SUS) e demais \nnormas correlacionadas ao Pacto de Gestão SUS \n  \nResolve: \ne APROVA O PLANO DE CONTINGÊNCIA PARA EVENTOS \nRELA",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118197_2026-10-02_d0f2ff6cb94310e9ed32a1bfd214405c.pdf",
+     "data": "2026-10-05",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
@@ -33921,6 +33954,15 @@
    "nome": "Triunfo",
    "uf": "RS",
    "prioritario": true,
+   "imprensa": [
+    {
+     "titulo": "Estadual nº 16.263/2024, no prazo de até 60 (sessenta) dias; \nb) a revisão técnica e atualização do Plano Municipal de Contingência \nem Defe",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117943_2026-10-02_7f570ae7ab4df849e0869c544ad62289.pdf",
+     "data": "2026-10-05",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",

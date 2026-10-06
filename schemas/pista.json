@@ -1,28 +1,48 @@
 {
-  "_governanca": "ESQUEMA DA PISTA (item C.3 do handover da corrente noturna, 03/10/2026). Pista sem os campos obrigatórios é RECUSADA NA GRAVAÇÃO, por `coletores_base.gravar_pista`, e o portão `scripts/verificar_esquema_de_pista.py` reprova coletor que grave fora do esquema. A regra existe porque a fila chegou a 8.681 pistas com 6.462 sem município nem UF, 6.455 em redirecionamento do Google News e 2.549 repetidas: filtrar na saída não dá conta do que entra errado.",
-  "obrigatorios": {
-    "url_final": "O endereço do VEÍCULO ou do documento, já resolvido. Redirecionamento (Google News e afins) é resolvido antes de gravar; sem resolver, a pista é descartada com motivo.",
-    "tipo": "plano | estrutura | decreto | outro. `decreto` nunca entra na fila de planos: vai para a conferência da base oficial de resposta. `outro` é descartado com motivo.",
-    "alvo": "Código IBGE do município ou sigla da UF. Sem alvo identificável, a pista é descartada com motivo — 'notícia sobre municípios' não é pista de município.",
-    "nivel": "A | B | C, pelo mesmo critério de confiança já em uso.",
-    "data": "Data do achado, em AAAA-MM-DD.",
-    "origem": "Qual coletor gravou: busca_web | imprensa | rede_social | diario | descoberta | querido_diario."
-  },
-  "opcionais": {
-    "titulo": "Título do item, quando a fonte o dá.",
-    "trecho": "O excerto que localizou a menção.",
-    "hash_evidencia": "Hash da evidência preservada, quando houver.",
-    "tentativas_de_busca_dirigida": "Contador; duas tentativas sem documento fecham a pista.",
-    "repeticoes": "Contador de vezes que a mesma pista voltou a ser achada — a repetida não entra de novo, incrementa aqui."
-  },
-  "tipos_validos": ["plano", "estrutura", "decreto", "outro"],
-  "niveis_validos": ["A", "B", "C"],
-  "origens_validas": ["busca_web", "imprensa", "rede_social", "diario", "descoberta", "querido_diario", "doe", "revisao"],
-  "regras": {
-    "teto_por_municipio_e_assunto": 5,
-    "dias_de_vida": 21,
-    "tentativas_de_busca_dirigida": 2,
-    "dominio_oficial_vai_direto_ao_juiz": true,
-    "deduplicacao_na_entrada": "url_final + alvo + assunto; repetida incrementa `repeticoes` na existente"
-  }
+ "_governanca": "ESQUEMA DA PISTA (item C.3 do handover da corrente noturna, 03/10/2026). Pista sem os campos obrigatórios é RECUSADA NA GRAVAÇÃO, por `coletores_base.gravar_pista`, e o portão `scripts/verificar_esquema_de_pista.py` reprova coletor que grave fora do esquema. A regra existe porque a fila chegou a 8.681 pistas com 6.462 sem município nem UF, 6.455 em redirecionamento do Google News e 2.549 repetidas: filtrar na saída não dá conta do que entra errado.",
+ "obrigatorios": {
+  "url_final": "O endereço do VEÍCULO ou do documento, já resolvido. Redirecionamento (Google News e afins) é resolvido antes de gravar; sem resolver, a pista é descartada com motivo.",
+  "tipo": "plano | estrutura | decreto | outro. `decreto` nunca entra na fila de planos: vai para a conferência da base oficial de resposta. `outro` é descartado com motivo.",
+  "alvo": "Código IBGE do município ou sigla da UF. Sem alvo identificável, a pista é descartada com motivo — 'notícia sobre municípios' não é pista de município.",
+  "nivel": "A | B | C, pelo mesmo critério de confiança já em uso.",
+  "data": "Data do achado, em AAAA-MM-DD.",
+  "origem": "Qual coletor gravou: busca_web | imprensa | rede_social | diario | descoberta | querido_diario."
+ },
+ "opcionais": {
+  "titulo": "Título do item, quando a fonte o dá.",
+  "trecho": "O excerto que localizou a menção.",
+  "hash_evidencia": "Hash da evidência preservada, quando houver.",
+  "tentativas_de_busca_dirigida": "Contador; duas tentativas sem documento fecham a pista.",
+  "repeticoes": "Contador de vezes que a mesma pista voltou a ser achada — a repetida não entra de novo, incrementa aqui."
+ },
+ "tipos_validos": [
+  "plano",
+  "estrutura",
+  "decreto",
+  "outro"
+ ],
+ "niveis_validos": [
+  "A",
+  "B",
+  "C"
+ ],
+ "origens_validas": [
+  "busca_web",
+  "descoberta",
+  "diario",
+  "diario_consorciado",
+  "doe",
+  "imprensa",
+  "querido_diario",
+  "rede_social",
+  "revisao"
+ ],
+ "regras": {
+  "teto_por_municipio_e_assunto": 5,
+  "dias_de_vida": 21,
+  "tentativas_de_busca_dirigida": 2,
+  "dominio_oficial_vai_direto_ao_juiz": true,
+  "deduplicacao_na_entrada": "url_final + alvo + assunto; repetida incrementa `repeticoes` na existente"
+ },
+ "_nota_origens": "`diario_consorciado` entrou em 06/10/2026: o coletor existe na arvore desde sempre, a origem dele nunca esteve nesta lista, e a quarentena tirava da fila ativa pista legitima -- esquema incompleto acusando o dado. Seis pistas ficaram presas por isso na reaplicacao do trabalho perdido da noite de 05 para 06."
 }

@@ -81,6 +81,19 @@ def conteudo_do_marcador(elo: str, run: str, caminhos: list, quando: str) -> dic
     }
 
 
+def e_derivado(caminho: str, classes: dict) -> bool:
+    """O caminho é função de outro dado? Função pura.
+
+    Derivado NÃO se reaplica: ele se regenera. Reaplicar é, na melhor hipótese, inútil — a cadeia o
+    reescreve logo depois — e na pior, estrago: em 06/10/2026 a reaplicação levou
+    `data/pistas_revisao.json` de 9,9 MB para 87 MB, +775% numa execução, e o portão de tamanho
+    pegou. Ele é derivado da fila, e a fila já tinha voltado inteira pelo caminho dela.
+    """
+    c = str(caminho).replace("\\", "/")
+    return (c in set((classes or {}).get("regeneraveis") or ())
+            or any(c.startswith(p) for p in (classes or {}).get("prefixos_regeneraveis") or ()))
+
+
 def pode_reaplicar(caminho: str, classes: dict) -> bool:
     """Este caminho tem política de mesclagem declarada? Função pura.
 
@@ -96,6 +109,8 @@ def separar_para_reaplicar(caminhos: list, classes: dict) -> tuple:
     """(reaplicaveis, sem_politica). Função pura."""
     pode, nao = [], []
     for c in sorted(set(caminhos or [])):
+        if e_derivado(c, classes):
+            continue                    # regenera-se, não se reaplica
         (pode if pode_reaplicar(c, classes) else nao).append(c)
     return pode, nao
 
@@ -141,9 +156,13 @@ def classes_conhecidas() -> dict:
     sys.path.insert(0, str(RAIZ / "scripts"))
     import unir_conflito_de_rodada as u
     exatos = list(u.LOGS_QUE_SO_CRESCEM) + list(u.REGENERAVEIS) + list(u.FILAS_DE_PISTA)
+    regeneraveis = list(u.REGENERAVEIS)
+    prefixos_regeneraveis = list(u.PREFIXOS_REGENERAVEIS)
     prefixos = (list(u.PREFIXOS_REGENERAVEIS) + list(u.PREFIXOS_JSONL_QUE_SO_CRESCEM)
                 + list(u.PREFIXOS_CONTADORES_QUE_SO_CRESCEM))
-    return {"exatos": exatos, "prefixos": prefixos}
+    return {"exatos": exatos, "prefixos": prefixos,
+            "regeneraveis": regeneraveis,
+            "prefixos_regeneraveis": prefixos_regeneraveis}
 
 
 def runs_com_pendencia(artefatos: list, noite: str) -> list:
@@ -216,6 +235,15 @@ def _autoteste() -> int:
         ["data/log_buscas.json", "data/fontes_consultadas.json", "dados-abertos/x.csv"], C)
     ok("o que tem política entra", pode == ["dados-abertos/x.csv", "data/log_buscas.json"])
     ok("o que não tem fica nomeado", nao == ["data/fontes_consultadas.json"])
+
+    D = dict(C, regeneraveis=["data/pistas_revisao.json"], prefixos_regeneraveis=["feeds/"])
+    ok("derivado é reconhecido", e_derivado("data/pistas_revisao.json", D))
+    ok("derivado por prefixo também", e_derivado("feeds/blog.xml", D))
+    ok("o que não é derivado passa", not e_derivado("data/log_buscas.json", D))
+    p2, n2 = separar_para_reaplicar(
+        ["data/pistas_revisao.json", "feeds/x.xml", "data/log_buscas.json"], D)
+    ok("derivado NÃO entra na reaplicação", p2 == ["data/log_buscas.json"])
+    ok("e nem fica como pendente", n2 == [])
     ok("nada se perde da conta", len(pode) + len(nao) == 3)
     ok("lista vazia não produz nada", separar_para_reaplicar([], C) == ([], []))
 

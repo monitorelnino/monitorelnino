@@ -221,11 +221,11 @@ jobs:
           echo "feito=1" >> "$GITHUB_OUTPUT"
           echo "marcador: data/noite/$NOITE/${{ inputs.nome }}.feito"
 
-      - name: Regenerar derivados
-        if: steps.janela.outputs.pode == '1'
-        continue-on-error: true
-        timeout-minutes: 10
-        run: bash scripts/verificar_derivados.sh || true
+      # 06/10/2026 (causa D, parte 3): o elo NAO regenera mais derivado. A regra da parte 2 ja
+      # dizia que so o publicador gera derivado, e o passo ficou aqui -- por isso `dados-abertos/`,
+      # `feeds/` e `selos/` tinham varios escritores e entravam no commit de quem passou por
+      # ultimo. Derivado atrasado entre o elo e o publicador nao e problema: o portao 12 so cobra
+      # no push para a `main`, e quem empurra o estado selado e o publicador.
 
       # §273: o painel resume a execução em curso, então é gerado depois dos comandos e antes do
       # commit — não na cadeia canônica, onde o portão 12 o cobraria por não mudar.
@@ -277,6 +277,9 @@ jobs:
           # `config/escritores.json` da a ele. O `git add` de pasta inteira levava junto arquivo
           # de outro elo, e o conflito que isso criava descartou 364 minutos de coleta na noite
           # de 05 para 06/10. `scripts/verificar_commit_do_elo.py` reprova a volta do atalho.
+          # As saidas deste elo saem do repositorio ANTES de qualquer commit: o laco abaixo faz
+          # `reset --hard` no ramo mais novo, e o que nao estiver guardado some com ele.
+          python3 scripts/aplicar_delta_do_elo.py "${{ inputs.nome }}" --guardar
           python3 scripts/commit_do_elo.py "${{ inputs.nome }}" --mensagem "${{ inputs.nome }} automatico ($(date -u +%d/%m/%Y\ %H:%M) UTC)" | tee /tmp/commit_do_elo.txt
           # O ajudante ja comitou. Ele imprime `houve=0` quando nao havia nada DESTE elo --
           # e nada deste elo e saida legitima, nao falha: o elo pode ter rodado sem achar nada.
@@ -289,61 +292,46 @@ jobs:
           mkdir -p ~/.ssh && printf '%s\n' "$ROBO_DEPLOY_KEY" > ~/.ssh/robo && chmod 600 ~/.ssh/robo
           ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
           SSH="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes"
+          # CAUSA C (06/10/2026) — O DELTA SOBRE O RAMO MAIS NOVO, SEM FUSAO DE TRES VIAS.
+          #
+          # O laco antigo fazia `git rebase FETCH_HEAD` sobre um commit que JA continha a uniao
+          # da tentativa anterior, e chamava o resolvedor de novo: o conteudo acumulava a cada
+          # volta. `data/pistas_imprensa.json` foi de 28 MB para 104,79 MB e 187,53 MB num unico
+          # run, passou do limite de 100 MB do GitHub e o push ficou impossivel. Cada tentativa
+          # de salvar o trabalho o destruia um pouco mais.
+          #
+          # Agora: guarda-se o que ESTE elo produziu; a cada tentativa parte-se do ramo mais
+          # novo e reaplica-se so isso. O que os outros gravaram ja vem no `reset --hard`.
+          # Arquivo de dono unico entra por copia; FILA entra pela porta (`pistas.sincronizar`),
+          # que mescla por chave e nao duplica. Nenhuma fusao de tres vias em arquivo
+          # compartilhado -- `unir_conflito_de_rodada.py` deixa de ser chamado pelo elo e fica
+          # para uso manual.
           EMPURROU=0
           for TENTATIVA in 1 2 3 4 5; do
             GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git "${{ inputs.ramo_destino }}" || true
-            if ! git rebase FETCH_HEAD; then
-              # 05/10/2026 (item 2 do handover da noite confiável) — A UNIÃO, NÃO O DESCARTE.
-              #
-              # Era `git rebase -X theirs`. Num arquivo de FILA isso não resolve, apaga: `-X theirs`
-              # manda o git escolher um lado inteiro, e o lado perdedor são as pistas que o outro elo
-              # acabou de achar. Medido na noite de 04→05/10: a busca web perdeu 114 minutos de
-              # trabalho em quatro tentativas de rebase conflitando em `data/pistas_imprensa.json`,
-              # `data/pistas_revisao.json` e `docs/MANIFEST_SHA256.txt`.
-              #
-              # A lei do projeto para arquivo que só cresce é unir pela BASE COMUM, nunca escolher um
-              # lado nem deduplicar por conteúdo (23/09: uma união por conteúdo produziu um log menor
-              # que cada lado e apagou quase 3.000 execuções). `scripts/unir_conflito_de_rodada.py`
-              # faz isso, e desde hoje sabe resolver as filas de pista com a política declarada por
-              # `scripts/pistas.py`: acréscimo dos dois lados entra, campo que só um lado tocou entra,
-              # MESMO campo com valores diferentes é RECUSADO em vez de adivinhado.
-              #
-              # Só se a união recusar é que se desiste desta tentativa. Desistir aqui não perde o
-              # trabalho: ele sai como artefato no passo abaixo.
-              echo "tentativa $TENTATIVA: rebase conflitou; unindo pela base comum"
-              if python3 scripts/unir_conflito_de_rodada.py; then
-                bash scripts/verificar_derivados.sh || true
-                python3 scripts/commit_do_elo.py "${{ inputs.nome }}" --somente-indice || true
-                if ! GIT_EDITOR=true git rebase --continue; then
-                  git rebase --abort || true
-                  echo "::warning::a união resolveu mas o rebase não seguiu; nova tentativa"
-                  sleep $((TENTATIVA * 10)); continue
-                fi
-              else
-                # Recusa registrada: a política daquele caminho não está decidida, e adivinhar
-                # apagaria dado. O trabalho vira artefato, e a editoria vê o nome do arquivo no log.
-                git rebase --abort || true
-                echo "::warning::a união RECUSOU um caminho — ver o nome no log acima; nova tentativa"
-                sleep $((TENTATIVA * 10)); continue
-              fi
+            git reset --hard FETCH_HEAD
+            python3 scripts/aplicar_delta_do_elo.py "${{ inputs.nome }}" --reaplicar
+            python3 scripts/commit_do_elo.py "${{ inputs.nome }}" --mensagem "${{ inputs.nome }} automatico ($(date -u +%d/%m/%Y\ %H:%M) UTC)" | tee /tmp/commit_do_elo.txt
+            if ! grep -q "^houve=1" /tmp/commit_do_elo.txt; then
+              echo "nada deste elo a empurrar na tentativa $TENTATIVA"; EMPURROU=1; break
             fi
-
+            # A trava de tamanho roda ANTES do push: arquivo que passou do teto nao sobe, e o
+            # trabalho vira artefato em vez de um push que o GitHub recusaria de qualquer forma.
+            if ! python3 scripts/verificar_tamanho_dos_dados.py --contra FETCH_HEAD; then
+              echo "::error::o commit deste elo estoura a trava de tamanho; nao sobe"
+              break
+            fi
             if GIT_SSH_COMMAND="$SSH" git push git@github.com:${GITHUB_REPOSITORY}.git "HEAD:${{ inputs.ramo_destino }}"; then
               EMPURROU=1; echo "empurrado na tentativa $TENTATIVA"; break
             fi
-            echo "tentativa $TENTATIVA: push recusado (${{ inputs.ramo_destino }} avançou); nova tentativa"
+            echo "tentativa $TENTATIVA: push recusado (${{ inputs.ramo_destino }} avancou); nova tentativa"
             sleep $((TENTATIVA * 10))
           done
           rm -f ~/.ssh/robo
           if [ "$EMPURROU" != "1" ]; then
             echo "empurrou=0" >> "$GITHUB_OUTPUT"
-            # Item 1.3 (06/10/2026): o artefato ja era subido desde o item 1a, e ninguem o
-            # baixava. Na noite de 05 para 06 isso custou 364 minutos de coleta -- viraram
-            # artefato e morreram ali.
-            #
-            # O marcador NAO e empurrado para a `main`: se o push falhou porque a `main` andou,
-            # o push do marcador falharia pelo mesmo motivo. Ele e escrito na arvore e viaja
-            # DENTRO do artefato, e quem o procura e o elo seguinte, pela API dos artefatos.
+            # O marcador viaja no artefato: se o push falhou porque o ramo andou, o push do
+            # marcador falharia pelo mesmo motivo.
             CAMINHOS=$(git show --name-only --pretty=format: HEAD | tr "\n" " ")
             python3 scripts/pendente_do_elo.py --marcar "${{ inputs.nome }}" \
               --run "${GITHUB_RUN_ID}" --caminhos $CAMINHOS || true

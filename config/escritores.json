@@ -78,16 +78,16 @@
    "por_que": "Endereçado pelo CONTEÚDO: o nome do arquivo é o sha256 dele. Dois elos nunca escrevem o mesmo caminho com conteúdo diferente, então não há conflito a resolver — e exigir uma classe do resolvedor seria exigir resposta a uma pergunta que não existe."
   },
   "dados-abertos/": {
-   "escritor": "qualquer_elo",
-   "por_que": "Derivado. Classe REGENERAVEIS, por prefixo."
+   "escritor": "publicar",
+   "por_que": "Derivado, e so o publicador gera derivado (regra da parte 2, aplicada em 06/10 quando o passo de regenerar saiu do `_coletor.yml`). Era `qualquer_elo` porque todo elo regenerava a cadeia e levava os derivados no proprio commit."
   },
   "feeds/": {
-   "escritor": "qualquer_elo",
-   "por_que": "Derivado. Classe REGENERAVEIS, por prefixo."
+   "escritor": "publicar",
+   "por_que": "Derivado, e so o publicador gera derivado (regra da parte 2, aplicada em 06/10 quando o passo de regenerar saiu do `_coletor.yml`). Era `qualquer_elo` porque todo elo regenerava a cadeia e levava os derivados no proprio commit."
   },
   "selos/": {
-   "escritor": "qualquer_elo",
-   "por_que": "Derivado. Classe REGENERAVEIS, por prefixo."
+   "escritor": "publicar",
+   "por_que": "Derivado, e so o publicador gera derivado (regra da parte 2, aplicada em 06/10 quando o passo de regenerar saiu do `_coletor.yml`). Era `qualquer_elo` porque todo elo regenerava a cadeia e levava os derivados no proprio commit."
   },
   "docs/": {
    "escritor": "publicar",

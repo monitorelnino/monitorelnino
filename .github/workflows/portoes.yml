@@ -445,6 +445,33 @@ jobs:
       # sem dizer por quê. Em 05 para 06/10 isso derrubou nove publicações seguidas.
       # Item 1 do handover de 06/10: a regra "um escritor por arquivo" estava registrada e não
       # aplicada, e o `git add` de pasta descartou 364 minutos de coleta numa noite.
+      # 06/10/2026: `data/pistas_imprensa.json` foi de 28 MB a 187,53 MB em meia hora e passou do
+      # limite do GitHub, derrubando o push de todo elo que o grava. Arquivo que dobra e visivel na
+      # primeira duplicacao -- se alguem olhar.
+      - name: Tamanho dos dados — nada incha sem ninguém ver
+        timeout-minutes: 3
+        run: |
+          # assunto: dado rapido
+          python3 scripts/verificar_tamanho_dos_dados.py --autoteste
+          # assunto: dado rapido
+          python3 scripts/verificar_tamanho_dos_dados.py
+          # assunto: dado rapido
+          python3 scripts/deduplicar_fila_de_pistas.py --autoteste
+
+      # Causa F: a regra "nenhum commit automatico na `main` de dia" passa a ter guarda no codigo.
+      # Causa C: o elo aplica o proprio delta sobre o ramo mais novo, sem fusao de tres vias.
+      - name: Delta do elo — nenhuma fusão de três vias em arquivo compartilhado
+        timeout-minutes: 3
+        run: |
+          # assunto: dado rapido
+          python3 scripts/aplicar_delta_do_elo.py --autoteste
+
+      - name: Janela da noite — a guarda da coleta na `main`
+        timeout-minutes: 2
+        run: |
+          # assunto: dado rapido
+          python3 scripts/guarda_da_janela.py --autoteste
+
       - name: Commit do elo — nenhum workflow comita pasta inteira
         timeout-minutes: 3
         run: |

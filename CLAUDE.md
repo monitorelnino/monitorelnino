@@ -326,6 +326,46 @@ que a reprova — regra sem portão volta a ser esquecimento.
    pista, disparo duplicado que duplica trabalho, elo cancelado que não é refeito, pista fora do
    esquema que para a publicação. **Mudança na corrente sem ensaio verde não entra.**
 
+## A corrente noturna, parte 3: o que mudou em 06/10/2026
+
+As seis regras acima continuam. Estas sete saíram das **cinco causas confirmadas** pela editoria no
+código e nos logs — não de suposição:
+
+7. **Commit pelo ajudante, só dos próprios arquivos, no ramo em que roda.**
+   `scripts/commit_do_elo.py` põe no índice só o que `config/escritores.json` dá ao elo.
+   `git add -A`, `git add .` e `git add <pasta>/` são **proibidos** em qualquer workflow desta
+   árvore, e `HEAD:main` escrito à mão também — empurra-se para o ramo em que o workflow roda.
+   Portão: `scripts/verificar_commit_do_elo.py`.
+
+8. **Nenhuma fusão de três vias em arquivo compartilhado pelos elos.** O elo guarda as próprias
+   saídas fora do repositório, e a cada tentativa parte do ramo mais novo e reaplica só elas —
+   arquivo de dono único por cópia, fila pela porta (`pistas.sincronizar`). O laço antigo refundia
+   o que já fora fundido, e `data/pistas_imprensa.json` foi de 28 MB a 187,53 MB num único run.
+   `scripts/unir_conflito_de_rodada.py` fica para uso manual.
+
+9. **Trava de 50 MB e 20%.** Nenhum arquivo versionado passa de 50 MB — metade do limite do
+   GitHub, porque quando o GitHub recusa a coleta da noite já se perdeu — e nenhum cresce mais de
+   20% numa execução. Portão: `scripts/verificar_tamanho_dos_dados.py`, e a mesma trava roda antes
+   do push de cada elo.
+
+10. **O publicador regenera os derivados antes de conferir**, e o **CODEMAP fica fora** do
+    publicador de dados: ele é documentação de código, e como cada commit de dado muda o que o mapa
+    conta, cobrá-lo ali reprovava toda publicação. Quem o cobra é o portão de PR.
+
+11. **Na `main`, coleta só dentro da janela** (01:00–09:00 UTC, 22h–06h de Brasília). `cron` certo
+    não impede disparo manual, cadeia de `workflow_run` nem reexecução de run antigo — a guarda é
+    `scripts/guarda_da_janela.py`, e ela para em SUCESSO. De dia a coleta roda no ramo `ensaio`. O
+    publicador é a exceção única, quando a editoria chama.
+
+12. **Ensaio REAL isolado, obrigatório para qualquer mudança na corrente.** O ensaio em miniatura
+    prova os mecanismos e não passa pelo passo de commit real de cada elo — que é onde a noite se
+    perdeu. `scripts/ensaio_real_da_noite.py` dispara os workflows de verdade no ramo `ensaio`, com
+    elos em paralelo e conflito plantado, e recusa rodar fora dele.
+
+13. **Trabalho que o push perdeu volta.** O elo grava `data/noite/<noite>/<elo>.pendente`, o
+    artefato leva as saídas, e o elo seguinte reaplica o que tem política declarada. O que não tem
+    continua pendente e **nomeado** — reaplicar sem política apagaria dado.
+
 **Nunca unir arquivo que só cresce por conteúdo.** Vale para log e para fila: une-se pela **base
 comum** (`base + nossos_novos + deles_novos`), e o total final é maior ou igual a cada lado. Em
 23/09/2026 uma união por conteúdo produziu um log menor que cada lado e apagou quase 3.000
