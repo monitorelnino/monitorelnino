@@ -142,12 +142,30 @@ jobs:
           python3 scripts/despachar_temporizadores.py --origem oportunista \
             --so-ler-e-despachar || true
 
+      # Causa F (06/10/2026): a regra de 27/09 -- nenhum commit automatico na `main` de dia --
+      # dependia de os `cron` estarem certos, e `cron` certo nao impede disparo manual, cadeia de
+      # `workflow_run` nem reexecucao de run antigo. Em 06/10 a publicacao da fase 0 encadeou a
+      # corrente antiga e cinco elos coletaram de dia na `main`, dois deles perdendo o commit.
+      # A guarda pergunta antes de coletar, e para em SUCESSO: nao coletar fora da hora e o
+      # comportamento certo, nao um defeito. Fora da `main` ela nunca barra -- e no ramo `ensaio`
+      # que a campanha roda de dia. O publicador e a excecao unica, quando a editoria chama.
+      - name: Janela da noite — na `main`, só de noite
+        id: janela
+        timeout-minutes: 2
+        run: |
+          if ! python3 scripts/guarda_da_janela.py --ramo "${GITHUB_REF_NAME}" --elo "${{ inputs.nome }}" | tee -a "$GITHUB_STEP_SUMMARY"; then
+            echo "pode=0" >> "$GITHUB_OUTPUT"
+          else
+            echo "pode=1" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Marcar o início do elo
         run: echo "ELO_INICIO=$(date -u +%H:%M)" >> "$GITHUB_ENV"
 
       # Cada comando passa pelo invólucro, que cronometra e grava a linha de saúde. `|| true` é
       # deliberado: coletor que falha não derruba os outros nem impede o commit do que já foi achado.
       - name: Coletar
+        if: steps.janela.outputs.pode == '1'
         run: |
           while IFS= read -r cmd; do
             [ -z "$(echo "$cmd" | tr -d '[:space:]')" ] && continue
@@ -165,6 +183,7 @@ jobs:
       # 04→05/10: `diarios / coletar` foi cancelado dois minutos depois de começar, a guarda contou
       # aquele run como abertura da noite, e ninguém refez a coleta perdida.
       - name: Marcar que este elo trabalhou
+        if: steps.janela.outputs.pode == '1'
         id: feito
         run: |
           NOITE="$(python3 scripts/janela_da_noite.py --noite)"
@@ -211,6 +230,7 @@ jobs:
           python3 scripts/painel_da_noite.py --registrar "${{ inputs.nome }}"             --inicio "${ELO_INICIO:-}" --conclusao "${{ job.status }}" "$MARCA" || true
 
       - name: Commit com rebase-e-push (item 1a)
+        if: steps.janela.outputs.pode == '1'
         id: commit
         env:
           ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
