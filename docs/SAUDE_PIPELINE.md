@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-09-29 a 2026-10-06 (386 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-09-29 a 2026-10-06 (391 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -21,8 +21,8 @@ Janela: 2026-09-29 a 2026-10-06 (386 execução(ões) registrada(s), 7 dias de h
 
 | script | papel | última execução | duração | itens | status | erro |
 |---|---|---|---|---:|---|---|
-| `recalcular_mare.py` | essencial | 2026-10-06 20:07 | 3 s | — | ok | — |
-| `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-06 17:23 | 1 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-06 21:13 | 2 s | — | ok | — |
+| `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-06 20:51 | 0 s | — | ok | — |
 | `coletar_diarios_consorciados.py` | coletor | 2026-10-04 03:56 | 3037 s | 0 | ok | — |
 | `coletar_diarios_municipais.py` | coletor | 2026-10-04 03:43 | 822 s | 49 | ok | — |
 | `coletar_doe.py` | coletor | 2026-10-04 04:47 | 837 s | — | ok | — |
@@ -36,7 +36,7 @@ Janela: 2026-09-29 a 2026-10-06 (386 execução(ões) registrada(s), 7 dias de h
 | `descobrir_planos.py` | coletor | 2026-10-06 16:27 | 819 s | 42 | ok | — |
 | `detectar_marcos_federais.py` | coletor | 2026-10-06 16:27 | 1 s | 0 | ok | — |
 | `julgar_e_aplicar_descobertas.py` | coletor | 2026-10-06 17:23 | 2 s | — | ok | — |
-| `julgar_filas.py` | coletor | 2026-10-06 17:22 | 48 s | — | ok | — |
+| `julgar_filas.py` | coletor | 2026-10-06 20:51 | 2 s | — | ok | — |
 | `julgar_saude.py` | coletor | 2026-10-02 10:39 | 2 s | — | ok | — |
 | `monitorar_atos_resposta.py` | coletor | 2026-10-06 16:25 | 133 s | 3373 | ok | — |
 | `monitorar_imprensa_regional.py` | coletor | 2026-10-06 16:23 | 95 s | 40 | ok | — |
@@ -49,8 +49,8 @@ Janela: 2026-09-29 a 2026-10-06 (386 execução(ões) registrada(s), 7 dias de h
 | `scripts/amostra_auditoria_semanal.py` | coletor | 2026-10-06 17:23 | 0 s | — | ok | — |
 | `scripts/fechar_saude.py` | coletor | 2026-10-02 10:39 | 1 s | — | ok | — |
 | `scripts/preservar_textos_integrais.py` | coletor | 2026-10-06 17:53 | 1 s | — | ok | — |
-| `scripts/triar_fila.py` | coletor | 2026-10-06 17:15 | 2 s | — | ok | — |
-| `scripts/verificar_esquema_de_pista.py` | coletor | 2026-10-06 17:15 | 2 s | — | ok | — |
+| `scripts/triar_fila.py` | coletor | 2026-10-06 20:51 | 2 s | — | ok | — |
+| `scripts/verificar_esquema_de_pista.py` | coletor | 2026-10-06 20:51 | 3 s | — | ok | — |
 | `seguir_pistas.py` | coletor | 2026-10-06 17:03 | 9 s | — | ok | — |
 | `triar_confianca_pistas.py` | coletor | 2026-10-06 17:03 | 3 s | — | ok | — |
 | `verificar_pista_imprensa.py` | coletor | 2026-10-06 17:03 | 70 s | — | ok | — |
