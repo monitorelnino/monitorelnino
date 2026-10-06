@@ -112,6 +112,26 @@
   "*.pdf": {
    "escritor": "publicar",
    "por_que": "Derivado que o publicador regenera e sela. Entrou em 06/10 porque o commit do elo passou a ser por lista declarada: caminho nao declarado fica FORA do commit, e sem esta linha a publicacao deixaria de levar o que publica."
+  },
+  "data/alertas/vigentes.json": {
+   "escritor": "sinais-fisicos",
+   "por_que": "Saida propria do elo dos sinais fisicos (`coletar_sinais_risco.py`). Nenhum outro elo escreve. Declarado em 06/10, quando o ENSAIO REAL mostrou que o commit por lista o estava deixando de fora -- a lista protege contra levar o arquivo do outro, e tambem deixa de levar o proprio enquanto ninguem o declara. Foi o ensaio que achou."
+  },
+  "data/focos_pontos.json": {
+   "escritor": "sinais-fisicos",
+   "por_que": "Saida propria do elo dos sinais fisicos (`coletar_sinais_risco.py`). Nenhum outro elo escreve. Declarado em 06/10, quando o ENSAIO REAL mostrou que o commit por lista o estava deixando de fora -- a lista protege contra levar o arquivo do outro, e tambem deixa de levar o proprio enquanto ninguem o declara. Foi o ensaio que achou."
+  },
+  "data/sinais_risco.json": {
+   "escritor": "sinais-fisicos",
+   "por_que": "Saida propria do elo dos sinais fisicos (`coletar_sinais_risco.py`). Nenhum outro elo escreve. Declarado em 06/10, quando o ENSAIO REAL mostrou que o commit por lista o estava deixando de fora -- a lista protege contra levar o arquivo do outro, e tambem deixa de levar o proprio enquanto ninguem o declara. Foi o ensaio que achou."
+  },
+  "data/sinais_risco_consultas.json": {
+   "escritor": "sinais-fisicos",
+   "por_que": "Saida propria do elo dos sinais fisicos (`coletar_sinais_risco.py`). Nenhum outro elo escreve. Declarado em 06/10, quando o ENSAIO REAL mostrou que o commit por lista o estava deixando de fora -- a lista protege contra levar o arquivo do outro, e tambem deixa de levar o proprio enquanto ninguem o declara. Foi o ensaio que achou."
+  },
+  "data/monitor_saude.json": {
+   "escritor": "publicar",
+   "por_que": "Indice do MARE Saude, recalculado pelo publicador. Aparecia na arvore dos elos que rodam o pipeline de saude e nao era commitado por ninguem declarado."
   }
  },
  "_regra_do_portao": "Arquivo declarado com `escritor` igual a um workflow só pode aparecer no `git add` DAQUELE workflow. Arquivo com `escritor: ninguem` não aparece em nenhum. Arquivo com `escritor: qualquer_elo` exige que o resolvedor saiba resolvê-lo ou o recuse por escrito — e o portão confere que ele está numa das classes de `scripts/unir_conflito_de_rodada.py`, ou que o `pendente` explica por quê não. 06/10/2026: alem de declarar, agora se APLICA -- `scripts/commit_do_elo.py` poe no indice so o que o elo pode escrever, e `scripts/verificar_commit_do_elo.py` reprova `git add` de pasta inteira em qualquer workflow. Declarar sem aplicar foi o que custou 364 minutos de coleta na noite de 05 para 06."

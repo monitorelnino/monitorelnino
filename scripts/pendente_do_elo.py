@@ -99,6 +99,35 @@ def separar_para_reaplicar(caminhos: list, classes: dict) -> tuple:
     return pode, nao
 
 
+def base_comum(a: list, b: list) -> list:
+    """O prefixo comum de duas listas que só crescem. Função pura.
+
+    A união pela base comum precisa da base, e no artefato ela não vem junto. Para dado
+    append-only ela é DERIVÁVEL: é o prefixo em que os dois lados ainda concordam. Não é um palpite
+    — é a definição de "até onde os dois eram o mesmo arquivo".
+    """
+    fora = []
+    for x, y in zip(a or [], b or []):
+        if x != y:
+            break
+        fora.append(x)
+    return fora
+
+
+def unir_listas_que_so_crescem(da_arvore: list, do_artefato: list) -> list:
+    """base + o que cada lado acrescentou. Função pura.
+
+    Mesma conta do resolvedor, com a base derivada. A trava é a mesma de 23/09: o resultado nunca
+    pode ser menor que qualquer um dos lados.
+    """
+    base = base_comum(da_arvore, do_artefato)
+    n = len(base)
+    uniao = base + list(da_arvore or [])[n:] + list(do_artefato or [])[n:]
+    if len(uniao) < max(len(da_arvore or []), len(do_artefato or [])):
+        raise ValueError("a união ficou menor que um dos lados")
+    return uniao
+
+
 def classes_conhecidas() -> dict:
     """O que o resolvedor sabe unir, lido dele. Importa; não escreve."""
     sys.path.insert(0, str(RAIZ / "scripts"))
@@ -182,6 +211,17 @@ def _autoteste() -> int:
     ok("nada se perde da conta", len(pode) + len(nao) == 3)
     ok("lista vazia não produz nada", separar_para_reaplicar([], C) == ([], []))
 
+    ok("a base comum é o prefixo em que os dois concordam",
+       base_comum([1, 2, 3], [1, 2, 9]) == [1, 2])
+    ok("sem nada em comum, a base é vazia", base_comum([1], [9]) == [])
+    ok("união traz o que cada lado acrescentou",
+       unir_listas_que_so_crescem([1, 2, 3], [1, 2, 9]) == [1, 2, 3, 9])
+    ok("união nunca fica menor que um lado",
+       len(unir_listas_que_so_crescem([1, 2, 3], [1, 2])) >= 3)
+    ok("lado vazio devolve o outro inteiro",
+       unir_listas_que_so_crescem([], [1, 2]) == [1, 2])
+    ok("lados iguais não duplicam", unir_listas_que_so_crescem([1, 2], [1, 2]) == [1, 2])
+
     ART = [
         {"name": "coleta-perdida-diarios-37397775612", "created_at": "2026-10-06T01:13:00Z"},
         {"name": "coleta-perdida-busca_web-37430988356", "created_at": "2026-10-05T22:10:00Z"},
@@ -204,7 +244,8 @@ def _autoteste() -> int:
     for nome_obj, obj in list(globals().items()):
         # `_reaplicar` entra na lista de LEITORES-ESCRITORES, com `main`: o trabalho dele
         # e justamente baixar e escrever, e o docstring dele diz isso.
-        if nome_obj in ("_autoteste", "main", "classes_conhecidas", "_reaplicar"):
+        if nome_obj in ("_autoteste", "main", "classes_conhecidas", "_reaplicar",
+                        "_unir_arquivo"):
             continue
         if getattr(obj, "__module__", None) not in (__name__, None):
             continue
@@ -217,6 +258,38 @@ def _autoteste() -> int:
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
           else f"✓ AUTOTESTE OK — {len(contados)} casos, sem rede e sem escrita.")
     return 1 if falhas else 0
+
+
+def _unir_arquivo(da_arvore: pathlib.Path, do_artefato: pathlib.Path):
+    """Une dois JSON que só crescem, ou devolve None. Lê disco; não escreve.
+
+    Só as formas que o projeto declara append-only: `{chave: [...]}` com uma única lista no topo, e
+    JSONL. Qualquer outra forma devolve None — e o arquivo continua pendente, nomeado.
+    """
+    bruto_a = da_arvore.read_text(encoding="utf-8")
+    bruto_b = do_artefato.read_text(encoding="utf-8")
+    if da_arvore.suffix == ".jsonl":
+        linhas = unir_listas_que_so_crescem(
+            [x for x in bruto_a.splitlines() if x.strip()],
+            [x for x in bruto_b.splitlines() if x.strip()])
+        return "\n".join(linhas) + "\n"
+    try:
+        a, b = json.loads(bruto_a), json.loads(bruto_b)
+    except json.JSONDecodeError:
+        return None
+    if not isinstance(a, dict) or not isinstance(b, dict):
+        return None
+    listas = [k for k in a if isinstance(a.get(k), list) and isinstance(b.get(k), list)]
+    if len(listas) != 1:
+        return None                     # duas listas: qual cresce? Não se adivinha.
+    chave = listas[0]
+    fundido = dict(b)
+    fundido[chave] = unir_listas_que_so_crescem(a[chave], b[chave])
+    for carimbo in ("atualizado_em", "gerado_em"):
+        valores = [d.get(carimbo) for d in (a, b) if d.get(carimbo)]
+        if valores:
+            fundido[carimbo] = max(valores)
+    return json.dumps(fundido, ensure_ascii=False, indent=1) + "\n"
 
 
 def _reaplicar(argv: list) -> int:
@@ -273,8 +346,23 @@ def _reaplicar(argv: list) -> int:
                     destino.write_bytes(origem.read_bytes())
                     voltou += 1
                 elif destino.read_bytes() != origem.read_bytes():
-                    ficou.append(f"{rel} (run {p['run']}): difere da árvore; o resolvedor une no "
-                                 f"próximo conflito")
+                    # DIFERE: é aqui que o trabalho volta ou se perde. Desistir deixaria o artefato
+                    # intacto e o trabalho fora — foi o que o ensaio real de 06/10 mostrou na
+                    # primeira execução deste mecanismo. Para o dado que só cresce, a união pela
+                    # base DERIVADA (o prefixo em que os dois lados ainda concordam) traz os dois
+                    # acréscimos sem adivinhar nada. O que não é lista que só cresce continua
+                    # pendente e nomeado.
+                    try:
+                        unido = _unir_arquivo(destino, origem)
+                    except Exception as erro:
+                        unido = None
+                        motivo = str(erro)[:80]
+                    if unido is not None:
+                        destino.write_text(unido, encoding="utf-8", newline="\n")
+                        voltou += 1
+                    else:
+                        ficou.append(f"{rel} (run {p['run']}): difere e não é lista que só cresce "
+                                     f"({motivo if 'motivo' in dir() else 'sem união possível'})")
             for rel in sem:
                 ficou.append(f"{rel} (run {p['run']}): sem política de mesclagem")
 
