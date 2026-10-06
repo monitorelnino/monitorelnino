@@ -3159,7 +3159,106 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-06",
+   "script": "monitorar_imprensa_regional.py",
+   "inicio": "2026-10-06T16:23:47",
+   "duracao_s": 95.1,
+   "itens": 40,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-06",
+   "script": "monitorar_imprensa_saude.py",
+   "inicio": "2026-10-06T16:25:22",
+   "duracao_s": 0.7,
+   "itens": null,
+   "status": "erro",
+   "erro": "KeyError: 'hash'"
+  },
+  {
+   "data": "2026-10-06",
+   "script": "monitorar_atos_resposta.py",
+   "inicio": "2026-10-06T16:25:22",
+   "duracao_s": 132.7,
+   "itens": 3373,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-06",
+   "script": "monitorar_politica_por_inteiro.py",
+   "inicio": "2026-10-06T16:27:34",
+   "duracao_s": 2.5,
+   "itens": 3373,
+   "status": "erro",
+   "erro": "NameError: name 'ler' is not defined. Did you mean: 'len'?"
+  },
+  {
+   "data": "2026-10-06",
+   "script": "monitorar_sinais_federais.py",
+   "inicio": "2026-10-06T16:27:36",
+   "duracao_s": 4.2,
+   "itens": 10,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-06",
+   "script": "detectar_marcos_federais.py",
+   "inicio": "2026-10-06T16:27:40",
+   "duracao_s": 0.9,
+   "itens": 0,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-06",
+   "script": "descobrir_planos.py",
+   "inicio": "2026-10-06T16:27:40",
+   "duracao_s": 818.9,
+   "itens": 42,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-06",
+   "script": "monitorar_redes_oficiais.py",
+   "inicio": "2026-10-06T16:41:19",
+   "duracao_s": 1301.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-06",
+   "script": "seguir_pistas.py",
+   "inicio": "2026-10-06T17:03:00",
+   "duracao_s": 8.6,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-06",
+   "script": "triar_confianca_pistas.py",
+   "inicio": "2026-10-06T17:03:08",
+   "duracao_s": 3.4,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-06",
+   "script": "verificar_pista_imprensa.py",
+   "inicio": "2026-10-06T17:03:11",
+   "duracao_s": 70.1,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
   }
  ],
- "atualizado_em": "2026-10-06T15:30:10"
+ "atualizado_em": "2026-10-06T17:04:21"
 }
