@@ -50,15 +50,38 @@ def filas_de_pista(caminhos: list) -> tuple:
     return filas, [c for c in caminhos or [] if c not in set(filas)]
 
 
-def meus_arquivos(mudados: list, elo: str, tabela: dict) -> list:
-    """Os caminhos deste elo, pela declaração. Função pura.
+# O que NUNCA é saída de coletor: documentação de código, decisão da editoria, lixo de execução.
+NUNCA_ENTREGA = ("CODEMAP.md", "data/publicacao.json")
+PREFIXOS_QUE_NAO_ENTREGAM = (".cache/", "node_modules/", ".git/", "capturas-ci/", "saida_do_elo/",
+                             ".pytest_cache/", "__pycache__/")
 
-    Reaproveita a mesma leitura do ajudante de commit — a lista de quem pode escrever o quê tem um
-    dono só, e duas leituras dela discordariam na primeira mudança.
+
+def meus_arquivos(mudados: list, elo: str, tabela: dict) -> list:
+    """O que ESTE elo produziu, para entregar ao consolidador. Função pura.
+
+    R1-a (06/10/2026) — ESTA FUNÇÃO USAVA O PREDICADO ERRADO, e por isso a rodada 1 foi vermelha.
+    Ela perguntava `pode_comitar(caminho, elo)`, que responde "este elo pode ESCREVER aqui?". Na
+    fase 1 todos os caminhos compartilhados passaram a ter `escritor: consolidador`, então a
+    resposta virou **sempre não** — e arquivo sem regra nenhuma (`estados.json`,
+    `pistas_imprensa_saude.json`, `pistas_paineis.json`…) também era não. O log da descoberta diz o
+    tamanho do estrago: `guardado fora do repositorio: 0 caminho(s)` **depois de 50 minutos de
+    coleta**, upload `skipped`, trabalho sumido sem um erro.
+
+    São duas perguntas diferentes e elas não compartilham predicado:
+
+      · **quem pode escrever** → `commit_do_elo.pode_comitar`, e quem responde é o consolidador;
+      · **o que este elo produziu** → tudo o que mudou na árvore, menos o que não é saída.
+
+    Quem decide se a entrega vale é o consolidador, na hora de aplicar — lá a declaração volta a
+    valer, e lá ela tem o dado para julgar. Aqui, filtrar é perder.
     """
-    sys.path.insert(0, str(RAIZ / "scripts"))
-    from commit_do_elo import pode_comitar
-    return sorted(c for c in set(mudados or []) if pode_comitar(c, elo, tabela))
+    fora = []
+    for c in sorted(set(mudados or [])):
+        caminho = str(c).replace("\\", "/")
+        if caminho in NUNCA_ENTREGA or caminho.startswith(PREFIXOS_QUE_NAO_ENTREGAM):
+            continue
+        fora.append(caminho)
+    return fora
 
 
 def _git(*args, **kw):
@@ -152,16 +175,28 @@ def _autoteste() -> int:
     ok("nada se perde da conta", len(filas) + len(demais) == 4)
     ok("lista vazia devolve dois vazios", filas_de_pista([]) == ([], []))
 
-    T = {"data/focos_pontos.json": "sinais", "data/pistas_imprensa.json": "qualquer_elo",
-         "docs/MANIFEST_SHA256.txt": "publicar"}
-    meus = meus_arquivos(
-        ["data/focos_pontos.json", "docs/MANIFEST_SHA256.txt", "data/pistas_imprensa.json",
-         "data/nao_declarado.json"], "sinais", T)
-    ok("o arquivo do elo entra", "data/focos_pontos.json" in meus)
-    ok("a fila com resolução declarada entra", "data/pistas_imprensa.json" in meus)
-    ok("o arquivo de outro elo NÃO entra", "docs/MANIFEST_SHA256.txt" not in meus)
-    ok("o não declarado NÃO entra", "data/nao_declarado.json" not in meus)
-    ok("árvore limpa não dá nada", meus_arquivos([], "sinais", T) == [])
+    # ITEM 3 (06/10/2026): o autoteste usa a TABELA REAL, nao uma de brinquedo. A R1-a passou
+    # porque a tabela do teste tinha o elo como dono -- a de verdade tem o consolidador, e ali o
+    # predicado antigo respondia nao a tudo. Teste com dado de brinquedo prova o brinquedo.
+    import json as _json
+    real = _json.loads((RAIZ / "config" / "escritores.json").read_text(encoding="utf-8"))
+    sys.path.insert(0, str(RAIZ / "scripts"))
+    from commit_do_elo import regras
+    T = regras(real)
+
+    arvore = ["data/pistas_imprensa.json", "data/estados.json", "evidencias/x.pdf",
+              "CODEMAP.md", "data/publicacao.json", ".cache/tmp.json"]
+    for elo in ("descoberta", "diarios", "busca_web", "sinais-fisicos", "triagem"):
+        meus = meus_arquivos(arvore, elo, T)
+        ok(f"`{elo}` entrega a fila de pistas", "data/pistas_imprensa.json" in meus)
+        ok(f"`{elo}` entrega arquivo SEM regra declarada", "data/estados.json" in meus)
+        ok(f"`{elo}` entrega a evidencia", "evidencias/x.pdf" in meus)
+        ok(f"`{elo}` NAO entrega o CODEMAP", "CODEMAP.md" not in meus)
+        ok(f"`{elo}` NAO entrega a decisao da editoria", "data/publicacao.json" not in meus)
+        ok(f"`{elo}` NAO entrega lixo de execucao", ".cache/tmp.json" not in meus)
+    ok("arvore limpa nao entrega nada", meus_arquivos([], "descoberta", T) == [])
+    ok("a tabela real tem o consolidador como escritor",
+       T.get("data/pistas_imprensa.json") == "consolidador")
 
     import dis
     nomes = set()

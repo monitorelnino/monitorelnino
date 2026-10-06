@@ -283,6 +283,21 @@ jobs:
           N=$(find saida_do_elo -type f ! -name _lista.json | wc -l)
           echo "arquivos=$N" >> "$GITHUB_OUTPUT"
           echo "· $N arquivo(s) deste elo para o consolidador" | tee -a "$GITHUB_STEP_SUMMARY"
+          # ITEM 2 (06/10/2026): PERDA SILENCIOSA VIRA VERMELHO.
+          #
+          # Na rodada 1 a descoberta coletou por 50 minutos, o separador devolveu
+          # `0 caminho(s)`, o upload saiu `skipped` e o run fechou VERDE. Trabalho que some sem
+          # erro e pior que trabalho que falha: ninguem o procura. Zero so e aceitavel quando o
+          # elo nao gravou nada -- e quem sabe disso e a arvore, nao o nosso otimismo.
+          if [ "$N" = "0" ]; then
+            SUJO=$(git status --porcelain | grep -v "^?? saida_do_elo/" | wc -l)
+            if [ "$SUJO" != "0" ]; then
+              echo "::error::o elo gravou $SUJO caminho(s) na arvore e entregou ZERO ao consolidador"
+              git status --porcelain | head -20
+              exit 1
+            fi
+            echo "· nada novo nesta rodada: arvore limpa, entrega vazia e legitima"
+          fi
 
       # O nome do artefato e o contrato com o consolidador: `saida-<elo>-<janela>`.
       - name: Entregar as saidas ao consolidador

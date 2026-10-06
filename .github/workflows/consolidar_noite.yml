@@ -41,6 +41,11 @@ concurrency:
 jobs:
   consolidar:
     name: Baixar os artefatos da janela e escrever uma vez
+    # R1-b (06/10/2026): o GitHub só despacha workflow cujo ARQUIVO existe no ramo padrão. Enquanto
+    # este existia só no `ensaio`, ele não aparecia em `GET /actions/workflows` e a rodada nunca
+    # chegava à consolidação. Ele vai para a `main` para poder ser chamado — e lá o job inteiro não
+    # faz nada até a fase 3, porque na `main` quem escreve ainda é o desenho antigo.
+    if: github.ref_name != 'main'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
