@@ -10,6 +10,14 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+## 2026-10-07 · #PR · A margem do medidor de layout, medida e registrada
+
+Depois de a página do Financiamento passar a buscar o arquivo uma vez só, a folga do portão da
+corrida foi medida: 34 rodadas verdes seguidas em três baterias, com carga gerada de propósito, e
+a frase aparecendo em 5,4 a 5,6 s contra o teto de 20 s — número que não se mexeu quando a carga
+dobrou. A página não passa dos 20 s sob runner lento, e o mesmo teto vale na publicação. Sem
+mudança de código; a medição fica no cabeçalho do teste.
+
 ## 2026-10-07 · #PR · O bloco do formulário sai da comparação byte a byte do site publicado
 
 Onde a marcação declara `data-netlify="true"`, o servidor reescreve o formulário: tira os
