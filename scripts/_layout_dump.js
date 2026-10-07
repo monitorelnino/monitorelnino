@@ -24,6 +24,39 @@ const PAGINA = process.argv[2];
 const SAIDA = process.argv[3] || null;
 if (!PAGINA) { console.error("uso: node scripts/_layout_dump.js <pagina.html> [saida.json]"); process.exit(2); }
 
+// OS ALVOS DINAMICOS DA PAGINA, lidos do contrato dela.
+//
+// 06/10/2026 — a espera era `networkidle` mais 1.500 ms FIXOS, e isso faz do medidor um relogio.
+// Tres publicacoes morreram por "texto exigido ausente: 'desembolsado e o que ja saiu do caixa'"
+// com a pagina certa e o dado certo: a frase e escrita por um `fetch` encadeado, e num runner
+// lento o medidor mede ANTES de ela existir. Aumentar o tempo fixo seria a mesma corrida, mais
+// lenta -- o que falta e uma CONDICAO.
+//
+// A condicao sai do proprio contrato: cada `exige_texto` tem de estar no texto da pagina. Quem
+// declara o que a pagina promete ja e o contrato; aqui so se espera a promessa ser cumprida.
+function alvosDoContrato(pagina) {
+  const caminho = path.join(__dirname, "..", "layout", "contratos",
+                            pagina.replace(/\.html$/, "") + ".json");
+  if (!fs.existsSync(caminho)) return [];
+  let doc;
+  try { doc = JSON.parse(fs.readFileSync(caminho, "utf-8")); } catch (e) { return []; }
+  // SO o que o JUIZ confere, que e o `exige_texto` das SECOES. O `exige_texto` da raiz do
+  // contrato existe em alguns arquivos e `verificar_layout.problemas_do_despejo` NAO o verifica --
+  // `index.json` declara "O MARE Legal mede o que foi PUBLICADO", frase que a pagina nao tem, e a
+  // conformidade passa na `main` ha semanas. Esperar por ele deixaria o medidor MAIS ESTRITO que
+  // quem julga: a pagina ficaria 20 s esperando uma frase que ninguem cobra, e seria reprovada por
+  // "nao terminou de carregar" sem nada de errado.
+  //
+  // A lacuna fica registrada aqui porque e real: contrato que declara texto que ninguem confere da
+  // falsa garantia. Corrigi-la e decisao de CONTEUDO da pagina, nao do medidor.
+  const fora = [];
+  for (const sec of doc.secoes || []) fora.push(...(sec.exige_texto || []));
+  // Trecho curto demais casa com qualquer coisa e nao serve de condicao.
+  return fora.filter(t => typeof t === "string" && t.trim().length >= 8);
+}
+
+const ALVOS = alvosDoContrato(PAGINA);
+
 const COLETA = () => {
   const vis = el => {
     const r = el.getBoundingClientRect();
@@ -193,9 +226,30 @@ const COLETA = () => {
     page.on("pageerror", e => erros.push(e.message));
     await page.route(/vlibras\.gov\.br|fonts\.g|netlify/, r => r.abort());
     await page.goto(`http://127.0.0.1:${porta}/${PAGINA}`, { waitUntil: "networkidle", timeout: 45000 });
+    // Espera a PROMESSA DO CONTRATO estar cumprida, nao um relogio. Ate 20 s.
+    let incompleto = [];
+    if (ALVOS.length) {
+      try {
+        await page.waitForFunction(
+          (alvos) => {
+            const t = (document.querySelector("main") || document.body).innerText || "";
+            return alvos.every((a) => t.includes(a));
+          },
+          ALVOS, { timeout: 20000 });
+      } catch (e) {
+        // Nao e "texto ausente": e "a pagina nao terminou de carregar". A diferenca importa, e
+        // quem julga precisa saber qual das duas aconteceu.
+        incompleto = await page.evaluate((alvos) => {
+          const t = (document.querySelector("main") || document.body).innerText || "";
+          return alvos.filter((a) => !t.includes(a));
+        }, ALVOS);
+      }
+    }
+    // A folga final fica, para o que o contrato nao declara (numero de cartao, figura).
     await page.waitForTimeout(1500);
     const dados = await page.evaluate(COLETA);
     dados.erros_de_runtime = erros;
+    if (incompleto.length) dados.render_incompleto = incompleto;
     dados.rolagem_horizontal = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
     saida.larguras[String(largura)] = dados;
     await ctx.close();

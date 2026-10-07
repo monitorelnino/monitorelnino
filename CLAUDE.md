@@ -326,6 +326,37 @@ que a reprova — regra sem portão volta a ser esquecimento.
    pista, disparo duplicado que duplica trabalho, elo cancelado que não é refeito, pista fora do
    esquema que para a publicação. **Mudança na corrente sem ensaio verde não entra.**
 
+## O que barra a publicação de dado, e o que não barra (editoria, 06/10/2026)
+
+Entre 03 e 06/10 a publicação falhou **33 vezes**, e as 33 foram **portão de código reprovando num
+publicador de dado**: 29 por derivado obsoleto (gerador não idempotente) e 3 por corrida no medidor
+de layout. Em nenhuma delas o dado estava errado.
+
+O princípio: **código que está na `main` já passou por esses portões no PR.** Quando reprovam de
+novo no publicador, o que pegam é não determinismo — não erro. Parar a publicação do dia por isso
+troca um problema pequeno por um grande: o site fica velho, e ninguém olha o portão.
+
+**Barra a publicação:** integridade do dado (esquema → quarentena por arquivo), segredo ou dado
+pessoal, vocabulário proibido e `texto_proibido` (dado externo traz palavra proibida), página que
+não **renderiza** (erro de runtime), arquivo que estourou a trava de tamanho.
+
+**Não barra:** presença e estrutura de layout, tipografia, CODEMAP, documentação e todo portão que
+só mede código. Reprovação ali **publica mesmo assim** e abre Issue no `robo-registro`, com o portão
+e a saída.
+
+Os portões **não mudam**: seguem bloqueantes no PR, e a conformidade diária do site publicado segue
+igual. Muda só o que barra a publicação. O perfil é `python3 scripts/portoes_locais.py publicacao`.
+
+**Duas regras que vêm junto, pela mesma razão:**
+- **Medidor espera condição, nunca relógio.** `scripts/_layout_dump.js` espera a promessa do
+  contrato da página estar cumprida, até 20 s, e renderiza duas vezes antes de julgar. "A página
+  não terminou de carregar" é relatado como isso, e não como "texto ausente" — são coisas
+  diferentes, e confundi-las matou três publicações. Aumentar tempo fixo é a mesma corrida, mais
+  lenta: `scripts/testar_corrida_do_medidor.js` prova que o relógio falha e a condição passa.
+- **Idempotência é portão de PR**, não do publicador: `verificar_idempotencia_dos_derivados.py`
+  regenera a cadeia duas vezes e compara. Gerador que depende de relógio, ordem ou caminho
+  absoluto reprova ali, com o arquivo e a linha.
+
 **Nunca unir arquivo que só cresce por conteúdo.** Vale para log e para fila: une-se pela **base
 comum** (`base + nossos_novos + deles_novos`), e o total final é maior ou igual a cada lado. Em
 23/09/2026 uma união por conteúdo produziu um log menor que cada lado e apagou quase 3.000

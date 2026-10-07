@@ -301,9 +301,50 @@ jobs:
       # O teto subiu de 12 para 20 min por causa dos portões de navegador. A meta de "menos de 10
       # min" era do publicador que não rodava a suíte inteira; publicar rápido nunca valeu mais do
       # que publicar conferido.
-      - name: Portões
+      # O QUE BARRA A PUBLICACAO, E O QUE NAO BARRA (item 4 do handover de 06/10/2026).
+      #
+      # Entre 03 e 06/10 a publicacao falhou 33 vezes, e as 33 foram portao de CODIGO reprovando
+      # num publicador de DADO: 29 por derivado obsoleto, 3 por corrida no medidor de layout. Em
+      # nenhuma o dado estava errado. Codigo que esta na `main` ja passou por esses portoes no
+      # PR -- quando reprovam de novo aqui, o que pegam e nao determinismo, nao erro. E parar a
+      # publicacao do dia por isso troca um problema pequeno por um grande: o site fica velho.
+      #
+      # Os portoes NAO mudam: seguem bloqueantes no PR, e a conformidade diaria do site
+      # publicado segue igual. Muda so o que barra a PUBLICACAO.
+      - name: Portões que barram a publicação (dado, segredo, vocabulário, runtime)
         timeout-minutes: 20
-        run: python3 scripts/portoes_locais.py tudo
+        run: python3 scripts/portoes_locais.py publicacao
+
+      # Os de codigo rodam e NAO barram: reprovacao aqui publica mesmo assim e abre Issue.
+      - name: Portões de código (avisam, não barram)
+        id: portoes_codigo
+        continue-on-error: true
+        timeout-minutes: 25
+        run: python3 scripts/portoes_locais.py tudo | tee /tmp/portoes_codigo.txt
+
+      # Reprovacao de portao que NAO barra nao some: ela vira Issue no repositorio privado,
+      # com o portao e a saida. Publicar mesmo assim e a decisao; esconder nao faz parte dela.
+      - name: Issue quando um portão de código reprova
+        if: steps.portoes_codigo.outcome == 'failure'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.ROBO_TOKEN }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          {
+            echo "A publicacao seguiu, como manda a politica de 06/10/2026: portao que so mede"
+            echo "codigo nao barra a publicacao de dado. Os portoes seguem bloqueantes no PR."
+            echo
+            echo "Run: $RUN_URL"
+            echo
+            echo '```'
+            tail -60 /tmp/portoes_codigo.txt 2>/dev/null || echo "sem saida registrada"
+            echo '```'
+          } > /tmp/corpo_issue.md
+          gh issue create --repo monitorelnino/robo-registro \
+            --title "Portao de codigo reprovou na publicacao de $(date -u +%d/%m/%Y) (publicou mesmo assim)" \
+            --body-file /tmp/corpo_issue.md \
+            || echo "::warning::nao consegui abrir a Issue; a saida esta no log deste run"
 
       - name: Empurrar com rebase (item 1a)
         if: steps.commit.outputs.houve == '1'

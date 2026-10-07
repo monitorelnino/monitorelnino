@@ -109,7 +109,11 @@ def _git(*args, **kw):
 
 def mudados_na_arvore() -> list:
     """Os caminhos modificados, novos ou apagados. Lê o git; não escreve."""
-    saida = _git("status", "--porcelain", "-z").stdout or ""
+    # `-uall`: sem ele o git COLAPSA pasta nova numa linha so (`data/noite/2026-10-07/`), e
+    # quem tentar copiar aquilo como arquivo quebra -- foi o `IsADirectoryError` que derrubou
+    # os sinais fisicos e as evidencias na rodada 3 de 07/10/2026. Caminho tem de ser caminho
+    # de arquivo.
+    saida = _git("status", "--porcelain", "-uall", "-z").stdout or ""
     fora = []
     for pedaco in saida.split("\0"):
         if len(pedaco) > 3:

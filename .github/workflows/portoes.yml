@@ -458,6 +458,28 @@ jobs:
           # assunto: dado rapido
           python3 scripts/guarda_da_janela.py --autoteste
 
+      # Item 3 (06/10/2026): a IDEMPOTENCIA vira portao de PR, que e onde o gerador muda. No
+      # publicador, regenerar e a funcao -- "havia derivado obsoleto" nao pode barrar a publicacao
+      # de dado. Entre 03 e 06/10 foram 29 publicacoes perdidas por essa confusao.
+      # Item 2: o teste que reproduz a corrida. O medidor antigo tem de reprovar; o novo, passar.
+      - name: Corrida do medidor — espera por condição, não por relógio
+        timeout-minutes: 8
+        run: |
+          # O passo roda sempre, e o cache do navegador so e restaurado quando a pagina muda:
+          # sem a instalacao aqui, o Chromium falta e o portao reprova por infraestrutura.
+          npx playwright install --with-deps chromium >/dev/null 2>&1 || npx playwright install chromium
+          # assunto: texto
+          node scripts/testar_corrida_do_medidor.js
+
+      - name: Idempotência dos derivados — o gerador dá sempre o mesmo resultado
+        if: steps.diff.outputs.dado_mudou == 'true'
+        timeout-minutes: 30
+        run: |
+          # assunto: dado
+          python3 scripts/verificar_idempotencia_dos_derivados.py --autoteste
+          # assunto: dado
+          python3 scripts/verificar_idempotencia_dos_derivados.py
+
       - name: Portão 12 — a cadeia de derivados regenera sem erro
         id: p12
         if: steps.diff.outputs.dado_mudou == 'true'
