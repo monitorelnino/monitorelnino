@@ -108,7 +108,9 @@ def _guardar(elo: str) -> int:
     GUARDADO.mkdir(parents=True, exist_ok=True)
     for rel in alvos:
         origem = RAIZ / rel
-        if not origem.exists():
+        # Diretorio nao se copia como arquivo. A trava fica aqui tambem, e nao so no `-uall` do
+        # `git status`: quem chamar esta funcao com outra lista nao pode quebrar por isso.
+        if not origem.is_file():
             continue
         destino = GUARDADO / rel
         destino.parent.mkdir(parents=True, exist_ok=True)
