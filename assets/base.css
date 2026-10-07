@@ -605,6 +605,11 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 .enq-box .k{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); text-transform:uppercase; letter-spacing:var(--ls-caps); margin:0 0 var(--sp-2);}
 .enq-box .enq-linha{border-left:4px solid var(--line); padding-left:var(--sp-3); margin:0 0 var(--sp-3);}
 .enq-box .enq-linha:last-child{margin-bottom:0;}
+/* Os tipos de risco que a nota tecnica nomeia, pelos nomes da fonte: marca quadrada de 8 px e o
+   nome ao lado. A cor nunca e o unico sinal — o nome esta escrito. */
+.enq-box .enq-tipos{display:flex; flex-wrap:wrap; gap:var(--sp-2); margin:var(--sp-1) 0 0; padding:0; list-style:none;}
+.enq-box .enq-tipos .chip-risco{display:inline-flex; align-items:center; gap:6px; font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); text-transform:uppercase; letter-spacing:var(--ls-caps);}
+.enq-box .enq-tipos .chip-risco::before{content:""; width:8px; height:8px; background:var(--chuva); flex:0 0 8px;}
 .enq-box .enq-linha.r-chuva{border-left-color:var(--chuva);}
 .enq-box .enq-linha.r-seca{border-left-color:var(--seca);}
 .enq-box .enq-linha.r-fogo{border-left-color:var(--fogo);}

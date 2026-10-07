@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-07 · #PR · As listas federais mostram todos os riscos da fonte
+
+A nota técnica da Casa Civil nomeia deslizamento em 1.050 municípios do cadastro, e o cartão
+descartava esse tipo. Agora os tipos aparecem pelos nomes da fonte, em ordem alfabética, e os 9
+municípios que constam da lista de prioritários só por deslizamento têm linha própria. A fonte
+citada passa a ser a nota técnica nº 2/2025 e a nº 1/2023, com link para os dois documentos; o
+decreto 12.444 sai da citação. O ano do MMA vem da portaria em vigor, gravada no dado.
+
 ## 2026-10-07 · #PR · O cartão do município se monta pelo código IBGE
 
 O cartão resolvia o município pelo nome no banco de planos; agora resolve pelo código IBGE da

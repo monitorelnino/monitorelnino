@@ -224,13 +224,35 @@ fetch('data/enquadramento_card.json').then(r => r.ok ? r.json() : null).catch(()
 // para o município, e a que cria (o cadastro do art. 3º-A da Lei 12.340) não é nenhuma delas.
 // `scripts/verificar_textos_enquadramento.py` reprova se estes textos mudarem ou se palavra de
 // dever entrar aqui.
-const ENQ_TEXTO = {
-  chuva: 'Consta do cadastro federal de municípios suscetíveis a enxurradas e inundações (Casa Civil, 2025).',
-  seca: 'Integra a delimitação oficial do Semiárido brasileiro, região sujeita a estiagens prolongadas (Sudene, 2024).',
-  fogo: 'Consta da lista federal de municípios prioritários para controle do desmatamento e dos incêndios florestais na Amazônia (MMA, 2024).',
-  nenhuma: 'Não consta de nenhuma das listas federais de risco por município: enxurradas e inundações (Casa Civil), Semiárido (Sudene) e prioritários para desmatamento e incêndios (MMA).',
+// Data em DD/MM/AAAA, como manda a editoria em todo texto publico. ISO sem conversao ja apareceu
+// no cartao, e data e dado: ou se mostra no formato do leitor, ou nao se mostra.
+const dataBR = s => {
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(s || ''));
+  return m ? `${m[3]}/${m[2]}/${m[1]}` : String(s || '');
 };
-const ENQ_RISCO = {i: 'inundação', e: 'enxurrada', ie: 'inundação e enxurrada'};
+
+// Textos aprovados pela editoria em 07/10/2026 (C3 do handover dos cartoes). Nenhuma palavra de
+// dever, obrigacao ou recomendacao: duas destas listas nao criam dever nenhum para o municipio, e a
+// que cria (o cadastro do art. 3o-A da Lei 12.340) nao e nenhuma delas.
+// `scripts/verificar_textos_enquadramento.py` reprova se estes textos mudarem ou se palavra de
+// dever entrar aqui. O ano do MMA vem da portaria em vigor, gravada no dado — nao do codigo.
+const ENQ_TEXTO = {
+  chuva: 'Consta do cadastro federal de municípios suscetíveis a enxurradas e inundações.',
+  geo: 'Consta da lista federal de municípios suscetíveis a risco geo-hidrológico.',
+  seca: 'Integra a delimitação oficial do Semiárido brasileiro.',
+  fogo: 'Consta da lista federal de municípios prioritários para controle do desmatamento e dos incêndios florestais na Amazônia (MMA, {ano}).',
+  nenhuma: 'Não consta das listas federais de risco por município: enxurradas e inundações (Casa Civil), Semiárido (Sudene) e prioritários para desmatamento e incêndios (MMA).',
+};
+// Os tipos que a nota tecnica nomeia, pelos nomes da fonte, em ordem alfabetica.
+const ENQ_TIPO = {d: 'deslizamento', e: 'enxurrada', i: 'inundação'};
+
+// O ano do instrumento, para o texto que o cita. Vem da data gravada na fonte; sem data, o texto
+// fica sem o parenteses em vez de inventar ano.
+function anoDaFonte(fam){
+  const f = (ENQ_FONTES || {})[fam] || {};
+  const m = /(\d{4})/.exec(String(f.publicada_em || f.consultado_em || ''));
+  return m ? m[1] : '';
+}
 
 // Bloco do cartão do município. Vazio quando não se sabe DE QUE município se trata: "não consta de
 // nenhuma lista" é afirmação sobre um município identificado, e sem código IBGE não há afirmação a
@@ -246,24 +268,34 @@ function enquadramentoBox(uf, nome, codigo){
   const fonte = fam => {
     const f = ENQ_FONTES[fam];
     if (!f || !f.instrumento) return '';
-    const nomeFonte = f.url
-      ? `<a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.instrumento)}</a>`
-      : esc(f.instrumento);
-    return `<p class="fonte">Fonte: ${nomeFonte}${f.consultado_em ? ' · consultado em ' + esc(f.consultado_em) : ''}</p>`;
+    // Um instrumento pode estar publicado em mais de um documento: as duas notas tecnicas da Casa
+    // Civil sao duas, e as duas vao como link.
+    const varios = Array.isArray(f.urls) && f.urls.length;
+    const links = (varios ? f.urls : (f.url ? [[f.instrumento, f.url]] : []))
+      .map(par => `<a href="${esc(par[1])}" target="_blank" rel="noopener">${esc(par[0])}</a>`);
+    const quando = f.consultado_em ? ' · consultado em ' + esc(dataBR(f.consultado_em)) : '';
+    // Com vários documentos, o nome do órgão vem uma vez e cada documento vira o próprio link —
+    // repetir o nome do documento no texto e no link dizia a mesma coisa duas vezes.
+    const corpoFonte = varios
+      ? esc(f.prefixo || f.instrumento) + ', ' + links.slice(0, -1).join(', ') + (links.length > 1 ? ' e ' : '') + links[links.length - 1]
+      : (links.length ? links[0] : esc(f.instrumento));
+    return `<p class="fonte">Fonte: ${corpoFonte}${quando}</p>`;
   };
-  // Ordem fixa chuva → seca → fogo, decidida pela editoria. Interseção mostra todas as linhas.
+  const tipos = String(marcas.tp || '').split('').map(l => ENQ_TIPO[l]).filter(Boolean).sort((a, b) => a.localeCompare(b, 'pt-BR'));
+  const marcasTipo = tipos.length
+    ? `<p class="enq-tipos">${tipos.map(x => `<span class="chip-risco">${esc(x)}</span>`).join('')}</p>`
+    : '';
+  // Ordem fixa chuva → geo-hidrológico → seca → fogo. Interseção mostra todas as linhas.
   const linhas = [];
-  if (marcas.ch !== undefined){
-    const tipo = ENQ_RISCO[marcas.ch];
-    linhas.push({fam: 'chuva', texto: ENQ_TEXTO.chuva + (tipo ? ' Risco identificado: ' + tipo + '.' : '')});
-  }
-  if (marcas.sa) linhas.push({fam: 'seca', texto: ENQ_TEXTO.seca});
-  if (marcas.mma) linhas.push({fam: 'fogo', texto: ENQ_TEXTO.fogo});
+  if (marcas.ch !== undefined) linhas.push({fam: 'chuva', texto: ENQ_TEXTO.chuva, tipos: marcasTipo});
+  if (marcas.geo) linhas.push({fam: 'chuva', texto: ENQ_TEXTO.geo, tipos: ''});
+  if (marcas.sa) linhas.push({fam: 'seca', texto: ENQ_TEXTO.seca, tipos: ''});
+  if (marcas.mma) linhas.push({fam: 'fogo', texto: ENQ_TEXTO.fogo.replace('{ano}', anoDaFonte('fogo')).replace(' (MMA, )', ' (MMA)'), tipos: ''});
   const corpo = linhas.length
-    ? linhas.map(l => `<div class="enq-linha r-${l.fam}"><p class="v">${esc(l.texto)}</p>${fonte(l.fam)}</div>`).join('')
+    ? linhas.map(l => `<div class="enq-linha r-${l.fam}"><p class="v">${esc(l.texto)}</p>${l.tipos}${fonte(l.fam)}</div>`).join('')
     : `<div class="enq-linha"><p class="v">${esc(ENQ_TEXTO.nenhuma)}</p>${fonte('chuva')}${fonte('seca')}${fonte('fogo')}</div>`;
   return `<div class="enq-box">
-    <p class="k">Enquadramento federal de risco</p>
+    <p class="k">Este município nas listas federais de risco</p>
     ${corpo}
   </div>`;
 }
