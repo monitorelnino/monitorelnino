@@ -4,29 +4,30 @@
  "cartoes": [
   {
    "id": "temperatura_desvio_capital",
-   "valor": 2.9,
+   "valor": 3.9,
    "referencia": "07/10/2026",
    "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Rio Branco",
    "capital": "Rio Branco",
    "uf": "AC",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "sem_coleta": false,
-   "nota": "máxima prevista de 36.0 °C contra a média de 33.1 °C do mês; 24 capital(is) com normal publicada"
+   "nota": "máxima prevista de 37.0 °C contra a média de 33.1 °C do mês; 24 capital(is) com normal publicada"
   },
   {
    "id": "capitais_ar_ruim_ou_pior",
-   "valor": 14,
+   "valor": 15,
    "referencia": "leitura mais recente",
    "rotulo": "capitais com o ar na faixa ruim ou acima dela",
    "fonte": "Copernicus (CAMS), via Open-Meteo",
    "sem_coleta": false,
    "lista": [
     "AC",
+    "AL",
     "AM",
+    "BA",
     "DF",
     "GO",
     "MG",
-    "MS",
     "MT",
     "PI",
     "RJ",
