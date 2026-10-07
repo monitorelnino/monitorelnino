@@ -38,12 +38,12 @@
     "monitor-de-riscos.pacifico.roni.rotulo_acessivel": "Barras do RONI por trimestre, de {inicio} a {fim}",
     "monitor-de-riscos.pacifico.roni.lacuna": "A série do RONI aparece aqui assim que a rotina registrar a primeira coleta no CPC/NOAA. Até lá, ela pode ser consultada na origem, no link abaixo.",
     "monitor-de-riscos.pacifico.episodios.titulo": "RONI no ciclo em curso e nos episódios de El Niño anteriores",
-    "monitor-de-riscos.pacifico.episodios.molde_titulo": "RONI em {ano} e nos episódios de El Niño anteriores",
+    "monitor-de-riscos.pacifico.episodios.molde_titulo": "RONI em {ano} e nos {n} episódios de El Niño desde {inicio}",
     "monitor-de-riscos.pacifico.episodios.molde_titulo_sem_episodio": "RONI em {ano}, e o critério de episódio de El Niño",
     "monitor-de-riscos.pacifico.episodios.legenda": "Uma linha por episódio · de janeiro do ano de início a junho do ano seguinte · mesmo índice e mesma escala do gráfico ao lado",
     "monitor-de-riscos.pacifico.episodios.nota": "Episódio: cinco ou mais médias trimestrais consecutivas acima de +0,5 °C, critério da NOAA/CPC.",
     "monitor-de-riscos.pacifico.episodios.molde_nota": "Episódio: cinco ou mais médias trimestrais consecutivas acima de +0,5 °C, critério da NOAA/CPC, aplicado à série de {inicio} a {fim}.",
-    "monitor-de-riscos.pacifico.episodios.molde_leitura": "RONI de {trimestre}: {valores}.",
+    "monitor-de-riscos.pacifico.episodios.molde_leitura": "RONI de {trimestre}: {atual} °C em {ano}. Nos {n} episódios anteriores, o mesmo trimestre ficou entre {minimo} °C e {maximo} °C.",
     "monitor-de-riscos.pacifico.episodios.molde_contagem": "Em {ano}, {n|nenhuma média trimestral seguida|uma média trimestral|{n} médias trimestrais seguidas} acima de +0,5 °C até {trimestre}; o critério de episódio se completa na quinta.",
     "monitor-de-riscos.pacifico.episodios.molde_valor_do_ano": "{valor} °C em {ano}",
     "monitor-de-riscos.pacifico.episodios.rotulo_acessivel": "Linhas do RONI mês a mês, comparando o ciclo em curso aos episódios anteriores de El Niño da série",
@@ -52,6 +52,8 @@
     "monitor-de-riscos.pacifico.episodios.marca_la_nina": "−0,5 · La Niña",
     "monitor-de-riscos.pacifico.episodios.eixo_ano_inicio": "ano de início do episódio",
     "monitor-de-riscos.pacifico.episodios.eixo_ano_seguinte": "ano seguinte",
-    "monitor-de-riscos.pacifico.ponte_metodologia": "Para especialistas: o índice ONI está na <a href=\"METODOLOGIA.pdf\">metodologia</a> →"
+    "monitor-de-riscos.pacifico.ponte_metodologia": "Para especialistas: o índice ONI está na <a href=\"METODOLOGIA.pdf\">metodologia</a> →",
+    "monitor-de-riscos.pacifico.episodios.legenda_atual": "{ano}, o ciclo em curso",
+    "monitor-de-riscos.pacifico.episodios.legenda_contexto": "{n} episódios de El Niño, de {inicio} a {fim}"
   }
 }

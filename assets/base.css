@@ -1090,12 +1090,12 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
    pontilhada. É a regra de que cor nunca é o único portador da informação. */
 .g-pac .l-agora{fill:none; stroke:var(--pacifico-agora); stroke-width:3; stroke-linejoin:round;
   stroke-linecap:round;}
-.g-pac .l-0{fill:none; stroke:var(--pacifico-serie-a); stroke-width:2; opacity:.85;}
-.g-pac .l-1{fill:none; stroke:var(--pacifico-serie-b); stroke-width:2; stroke-dasharray:6 4;}
-.g-pac .l-2{fill:none; stroke:var(--pacifico-serie-b); stroke-width:2; stroke-dasharray:1 4;
-  stroke-linecap:round;}
-.g-pac .l-3{fill:none; stroke:var(--pacifico-serie-a); stroke-width:2; stroke-dasharray:8 3 2 3;
-  opacity:.7;}
+/* 07/10/2026: com a série desde 1950 o critério da NOAA/CPC encontra 22 episódios, e quatro
+   traços distintos deixaram de servir — 22 linhas nomeadas numa legenda não se leem, e escolher
+   quais mostrar seria recorte nosso. Todas passam a ser UMA família de contexto, no mesmo traço
+   fino e no mesmo tom: a nuvem dos episódios anteriores, dentro da qual o ciclo em curso se vê.
+   Nenhuma é destacada sobre as outras, porque o dado não sustenta destaque entre elas. */
+.g-pac .l-contexto{fill:none; stroke:var(--pacifico-serie-b); stroke-width:1.2; opacity:.5;}
 .g-pac .hit{fill:transparent; cursor:default;}
 /* A legenda do gráfico 2 mostra o TRAÇO de cada linha, não um quadrado de cor — por isso ela não
    é a `.map-legend` canônica, que é de amostra de cor e serve aos mapas. */
@@ -1111,11 +1111,8 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
 .leg-pacifico i::before{content:""; display:block; width:20px; height:0;
   border-top-width:3px; border-top-style:solid;}
 .leg-pacifico .t-agora::before{border-top-color:var(--pacifico-agora);}
-.leg-pacifico .t-0::before{border-top-color:var(--pacifico-serie-a);}
-.leg-pacifico .t-1::before{border-top-color:var(--pacifico-serie-b); border-top-style:dashed;}
-.leg-pacifico .t-2::before{border-top-color:var(--pacifico-serie-b); border-top-style:dotted;}
-.leg-pacifico .t-3::before{border-top-color:var(--pacifico-serie-a); border-top-style:dashed;
-  opacity:.7;}
+.leg-pacifico .t-contexto::before{border-top-color:var(--pacifico-serie-b); border-top-width:1.2px;
+  opacity:.5;}
 
 /* ===== Defesa civil (01/10/2026): alertas e emergências, fundo branco ======================
    A página era uma pilha de `.panel` cinza com mapas de preparação e material de auditoria. Agora

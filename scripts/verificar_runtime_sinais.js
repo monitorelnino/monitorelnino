@@ -188,23 +188,34 @@ setTimeout(() => {
   const esperados = trechos.filter(t => t !== emCurso && t.length >= 5)
     .map(t => t[0].ano + "–" + String(t[0].ano + 1).slice(2));
   if (emCurso) esperados.push(String(emCurso[0].ano));
+  // 07/10/2026: com a série desde 1950 são 22 episódios, e o recorte decidido foi NÃO recortar —
+  // todos desenhados como contexto, só o ciclo em curso destacado. A legenda deixa de nomear um a
+  // um e passa a ter DOIS itens, com a contagem. O que o portão cobra muda de forma junto: a
+  // contagem da legenda tem de ser a calculada, e o número de linhas desenhadas também.
+  const fechados = esperados.filter(e => e.includes("–"));
   const naLegenda = [...d.querySelectorAll("#legEpisodios span")].map(x => x.textContent.trim());
-  teste(`gráfico 2: episódios calculados do dado (${esperados.join(", ")})`,
-    esperados.length > 0 && esperados.every(e => naLegenda.includes(e))
-    && naLegenda.every(e => esperados.includes(e)));
+  teste(`gráfico 2: legenda com dois itens (ciclo em curso e ${fechados.length} episódios)`,
+    naLegenda.length === (emCurso ? 2 : 1)
+    && naLegenda.some(x => x.includes(String(fechados.length))));
+  teste("gráfico 2: a legenda não nomeia episódio um a um",
+    !fechados.some(e => naLegenda.some(x => x.includes(e))));
   // 07/10/2026: a lista saiu do TÍTULO e foi para a NOTA — no título ela ocupava cinco linhas
   // numa coluna da grade de dois e desalinhava a dupla em 70 px, e com a série desde 1950 ela
   // cresce para dezenas de episódios. A cobrança não some: muda de alvo junto com a página.
   // Quem nomeia cada episódio é a LEGENDA, item a item (conferida acima), e a frase de leitura
   // sob o gráfico, com o valor de cada um. Nem o título nem a nota carregam a lista: as duas
   // reservam altura para a dupla alinhar, e lista que cresce com o dado estoura a reserva.
-  const fechados = esperados.filter(e => e.includes("–"));
+  // A leitura dá o valor do ciclo em curso e a FAIXA dos demais — nunca uma lista ordenada, que
+  // seria ranking, e nunca 22 valores, que ninguém lê.
   const leituraEp = (q("episodiosLeitura") || {}).textContent || "";
-  teste("gráfico 2: a leitura dá o valor de cada episódio e do ciclo em curso",
-    esperados.every(e => leituraEp.includes(e.slice(0, 4))));
+  teste("gráfico 2: a leitura dá o ciclo em curso e a faixa dos demais",
+    (!emCurso || leituraEp.includes(String(emCurso[0].ano)))
+    && /entre .+ e .+ °C/.test(leituraEp)
+    && !fechados.some(e => leituraEp.includes(e)));
   const tituloEp = (q("episodiosTitulo") || {}).textContent || "";
-  teste("gráfico 2: o título nomeia o ciclo em curso e não cresce com a lista",
+  teste("gráfico 2: o título traz a contagem, e não a lista",
     (!emCurso || tituloEp.includes(String(emCurso[0].ano)))
+    && tituloEp.includes(String(fechados.length))
     && !fechados.some(e => tituloEp.includes(e)));
   teste("gráfico 2: uma linha por episódio, mais o ciclo em curso",
     q("wrapEpisodios") && q("wrapEpisodios").querySelectorAll("polyline").length === esperados.length);

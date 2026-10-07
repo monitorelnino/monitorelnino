@@ -71,5 +71,6 @@
       "excecao": "\"muito forte\" entre aspas, atribuído à NOAA/CPC",
       "conferido_por": "scripts/verificar_runtime_sinais.js"
     }
-  }
+  },
+  "_nota_recorte_do_grafico_2": "07/10/2026 (decisão da editoria, delegada ao Code): com a série do RONI desde 1950 o critério da NOAA/CPC encontra 22 episódios. O recorte decidido foi NÃO recortar: todos são desenhados como contexto, no mesmo traço e no mesmo tom, e só o ciclo em curso é destacado e rotulado. As alternativas e por que caem: escolher os mais intensos é ranking ordinal, que `layout/regras.json/dados_na_pagina` proíbe; escolher os mais recentes é recorte nosso sem o dado pedir; nomear 22 numa legenda não se lê. A legenda passa a ter dois itens, com a contagem, e cada linha se nomeia ao passar o mouse, ao tocar e para o leitor de tela. Conferido por scripts/verificar_runtime_sinais.js."
 }

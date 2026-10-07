@@ -10,6 +10,14 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+## 2026-10-07 · #PR · O recorte do gráfico dos episódios: nenhum sai
+
+Com a série do RONI desde 1950, o critério da NOAA/CPC encontra 22 episódios — a lista nominal
+deixou de caber. Todos passam a ser desenhados como contexto, no mesmo traço e no mesmo tom, e só
+o ciclo em curso é destacado e rotulado. Escolher os mais intensos seria ranking, que a página não
+constrói; escolher os mais recentes seria recorte nosso. A legenda tem dois itens com a contagem,
+e a leitura dá o valor do ciclo em curso e a faixa dos demais.
+
 ## 2026-10-07 · #PR · A margem do medidor de layout, medida e registrada
 
 Depois de a página do Financiamento passar a buscar o arquivo uma vez só, a folga do portão da
