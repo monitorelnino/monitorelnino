@@ -93,8 +93,9 @@ espera a pista B. Isso é a governança automático × humano do projeto
 
 **Merge (regra em vigor desde 08/09/2026, por decisão escrita da editoria no
 chat).** Claude faz o merge dos PRs que ele mesmo abre, sem consultar a
-editoria, desde que (a) os 19 portões locais tenham passado na árvore final do
-ramo, (b) a Action "Portões" do PR esteja verde e (c) o PR não seja de
+editoria, desde que (a) os portões locais que a mudança pode afetar tenham passado na
+árvore final do ramo — quais são, `python3 scripts/quais_portoes.py` responde, pelo mesmo
+critério que a CI usa —, (b) a Action "Portões" do PR esteja verde e (c) o PR não seja de
 lançamento ou reversão do domínio (§7), que continua exigindo merge pela
 editoria. Se a Action falhar, o PR fica aberto e o problema é relatado — nunca
 merge no vermelho. *Regra anterior (01/09–07/09/2026): o clique de Merge era da

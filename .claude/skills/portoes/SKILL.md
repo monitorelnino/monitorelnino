@@ -15,8 +15,13 @@ A lista de portões **não vive num documento** — vive em `.github/workflows/p
 a olho foi o que custou um ciclo de CI em 23/09/2026: `verificar_seguranca.js` ficou de fora
 e reprovou no CI por uma Action sem SHA fixado.
 
-Hoje o workflow roda **46 comandos**, contra 19 listados no CLAUDE.md e 19 numerados no
-PROTOCOLO §3.3. Essas listas descrevem o conjunto; não o definem.
+**Quantos são, pergunte ao script:** `python3 scripts/portoes_locais.py --listar` conta e
+mostra. Esta página não repete o número, de propósito — ela já o repetiu, e em 07/10/2026 havia
+três números diferentes em três arquivos (46 aqui, 61 no CLAUDE.md, 19 no PROTOCOLO §3.3), todos
+errados: a medição daquele dia deu **217**. Contagem escrita à mão num documento envelhece sem
+avisar, e a que envelhece aqui é perigosa: ela convida a rodar "os 46" e deixar o resto de fora,
+que é exatamente o erro de 23/09 descrito acima. O CLAUDE.md guarda uma ordem de grandeza, com a
+data e o aviso de que ela envelhece; quem precisa do número exato mede.
 
 ## Grupos
 

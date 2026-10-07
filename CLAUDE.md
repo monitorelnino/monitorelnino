@@ -235,8 +235,16 @@ python3 scripts/portoes_locais.py tudo        # ou: paginas | dados
 ```
 
 A lista de portões **não vive aqui**. Ela é derivada de `.github/workflows/portoes.yml`, que
-é o único lugar que reprova de verdade — hoje são 61 comandos (`--listar` confere). Este arquivo e o PROTOCOLO
-§3.3 *descrevem* o conjunto; não o definem. Rodar um subconjunto escolhido a olho custou um
+é o único lugar que reprova de verdade — em 07/10/2026 são **217 comandos** (`--listar` confere):
+101 no perfil `paginas` e 116 no `dados`, sem repetição entre os dois; destes, 127 são
+`--autoteste` e 90 são portão propriamente dito. Este arquivo e o PROTOCOLO
+§3.3 *descrevem* o conjunto; não o definem.
+
+**Este número envelhece por rotina, como os tamanhos da tabela acima.** Ele dizia 61 e ficou
+assim por semanas enquanto o conjunto quase quadruplicava — quem o citar cita o que `--listar`
+responde na hora, e quem o vir defasado remede. Número de portão escrito à mão e não conferido é
+pior do que número nenhum: ele convida a rodar "os 61" e deixar o resto de fora, que é o erro
+que o parágrafo seguinte existe para impedir. Rodar um subconjunto escolhido a olho custou um
 ciclo de CI em 23/09/2026 (`verificar_seguranca.js` ficou de fora e reprovou lá por uma
 Action sem SHA fixado).
 
