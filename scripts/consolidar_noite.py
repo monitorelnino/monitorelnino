@@ -252,12 +252,25 @@ def _aplicar(dir_artefatos: pathlib.Path, aplicar: bool, importacao: bool) -> in
 
     aplicados, pendentes, relatorio = 0, [], []
     tocados = set()
+    # PROGRESSO, e nao so o resultado. A primeira execucao real ficou 30 minutos sem imprimir uma
+    # linha e morreu no teto: um travamento mudo nao se diagnostica, so se adivinha. Cada artefato
+    # e cada 200 arquivos dizem onde estao, com o relogio.
+    import time as _t
+    inicio = _t.time()
+    filas_juntas = {}
+    def minuto():
+        return f"[{int(_t.time() - inicio)//60:02d}:{int(_t.time() - inicio)%60:02d}]"
+    print(f"{minuto()} {len(entradas)} artefato(s) a aplicar", flush=True)
     for pasta in entradas:
         elo = elo_do_artefato(pasta.name)
         if not elo:
             pendentes.append(f"{pasta.name}: nome fora do padrao `saida-<elo>-<janela>`")
             continue
-        for origem in sorted(q for q in pasta.rglob("*") if q.is_file()):
+        arquivos = sorted(q for q in pasta.rglob("*") if q.is_file())
+        print(f"{minuto()} {pasta.name}: {len(arquivos)} arquivo(s)", flush=True)
+        for n, origem in enumerate(arquivos, start=1):
+            if n % 200 == 0:
+                print(f"{minuto()}   {pasta.name}: {n}/{len(arquivos)}", flush=True)
             rel = str(origem.relative_to(pasta)).replace("\\", "/")
             if not pode_aplicar(rel, elo, tabela):
                 pendentes.append(f"{rel} (de `{elo}`): nao e dele, ou nao esta declarado")
@@ -265,10 +278,14 @@ def _aplicar(dir_artefatos: pathlib.Path, aplicar: bool, importacao: bool) -> in
             tipo = classificar(rel)
             destino = RAIZ / rel
             try:
-                if tipo == "fila" and aplicar:
-                    from pistas import sincronizar
-                    doc = json.loads(origem.read_text(encoding="utf-8"))
-                    sincronizar(pathlib.Path(rel).stem, doc, origem=f"consolidador/{elo}")
+                if tipo == "fila":
+                    # UMA fila, UMA escrita. Cada artefato traz a sua copia da fila, e sincronizar
+                    # uma por uma reescreve o arquivo inteiro a cada vez: medido em 07/10/2026, a
+                    # descoberta levou 7:55 e as evidencias 17:45 fazendo exatamente isso, e o
+                    # consolidador morria no teto sem passar do terceiro artefato. As copias se
+                    # juntam em memoria e vao ao disco uma vez so -- que e o que "um escritor"
+                    # quer dizer quando levado a serio.
+                    filas_juntas.setdefault(rel, []).append((elo, origem))
                 elif tipo == "log" and aplicar:
                     chave = chave_da_lista(rel)
                     if rel.endswith(".jsonl"):
@@ -297,6 +314,38 @@ def _aplicar(dir_artefatos: pathlib.Path, aplicar: bool, importacao: bool) -> in
                 relatorio.append(f"{rel} ({tipo}, de `{elo}`)")
             except Exception as erro:
                 pendentes.append(f"{rel} (de `{elo}`): {str(erro)[:110]}")
+
+    # As filas, agora: uma leitura de disco, uma uniao em memoria, uma escrita pela porta.
+    for rel, copias in sorted(filas_juntas.items()):
+        nome = pathlib.Path(rel).stem
+        if not aplicar:
+            print(f"{minuto()} fila {rel}: {len(copias)} copia(s) a unir")
+            continue
+        from pistas import chave_da_pista, sincronizar
+        por_chave = {}
+        for elo, origem in copias:
+            try:
+                doc = json.loads(origem.read_text(encoding="utf-8"))
+            except json.JSONDecodeError as erro:
+                pendentes.append(f"{rel} (de `{elo}`): {str(erro)[:80]}")
+                continue
+            for pista in doc.get("pistas") or []:
+                k = chave_da_pista(pista)
+                if k in por_chave:
+                    for campo, valor in (pista or {}).items():
+                        if campo not in por_chave[k] or por_chave[k][campo] in (None, "", [], {}):
+                            por_chave[k][campo] = valor
+                else:
+                    por_chave[k] = dict(pista)
+        print(f"{minuto()} fila {rel}: {len(copias)} copia(s) → {len(por_chave)} pista(s) distintas",
+              flush=True)
+        try:
+            sincronizar(nome, {"pistas": list(por_chave.values())},
+                        origem=f"consolidador ({len(copias)} artefato(s))")
+            aplicados += 1
+            print(f"{minuto()} fila {rel}: gravada pela porta", flush=True)
+        except Exception as erro:
+            pendentes.append(f"{rel}: a porta recusou ({str(erro)[:90]})")
 
     print(f"· {aplicados} caminho(s) aplicado(s) de {len(entradas)} artefato(s)")
     for x in relatorio[:20]:

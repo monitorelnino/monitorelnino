@@ -75,7 +75,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git fetch --quiet --depth=50 "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" main
+          git fetch --quiet --depth=50 "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "${{ github.ref_name }}"
           git reset --hard FETCH_HEAD
       - name: Decidir a fase (2h em 2h até cobrir todos; depois 4x/dia)
         id: fase
@@ -185,27 +185,32 @@ jobs:
         run: |
           git config user.name "monitor-el-nino-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add data/ *.html selos/ dados-abertos/ docs/MANIFEST_SHA256.txt docs/FILA_PISTAS.md
-          if git diff --cached --quiet; then echo "Sem alterações."; echo "HOUVE=0" >> $GITHUB_ENV; exit 0; fi
-          git commit -m "Busca web automática ($(date -u +%d/%m/%Y\ %H:%M) UTC)"
+          # Item 1 do handover de 06/10/2026: o commit do elo poe no indice SO os arquivos que
+          # `config/escritores.json` da a ele. O `git add` de pasta inteira levava junto arquivo
+          # de outro elo, e o conflito que isso criava descartou 364 minutos de coleta na noite
+          # de 05 para 06/10. `scripts/verificar_commit_do_elo.py` reprova a volta do atalho.
+          python3 scripts/commit_do_elo.py busca_web --mensagem "Busca web automatica ($(date -u +%d/%m/%Y\ %H:%M) UTC)" | tee /tmp/commit_do_elo.txt
+          if ! grep -q "^houve=1" /tmp/commit_do_elo.txt; then
+            echo "Sem alteracoes deste elo."; echo "HOUVE=0" >> $GITHUB_ENV; exit 0
+          fi
           echo "HOUVE=1" >> $GITHUB_ENV
           git checkout -- .
           mkdir -p ~/.ssh && printf '%s\n' "$ROBO_DEPLOY_KEY" > ~/.ssh/robo && chmod 600 ~/.ssh/robo
           ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
-          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git "${{ github.ref_name }}"
           # 24/09/2026: uma tentativa só perdia a rodada inteira quando a main andava entre o fetch e
           # o push — e ela anda, porque o atualizar.yml e a prévia commitam em paralelo desde que os
           # grupos de concorrência foram separados. Agora são seis tentativas com espera crescente:
           # busca o main de novo, rebaseia e empurra. O dado coletado só se perde se as seis falharem.
           EMPURROU=0
           for TENTATIVA in 1 2 3 4 5 6; do
-            GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
+            GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git "${{ github.ref_name }}" || true
             if ! git rebase FETCH_HEAD; then
               git rebase --abort || true
               echo "tentativa $TENTATIVA: rebase conflitou; nova tentativa"
               sleep $((TENTATIVA * 10)); continue
             fi
-            if GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main; then
+            if GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git push git@github.com:${GITHUB_REPOSITORY}.git "HEAD:${{ github.ref_name }}"; then
               EMPURROU=1; echo "empurrado na tentativa $TENTATIVA"; break
             fi
             echo "tentativa $TENTATIVA: push recusado (main avançou); nova tentativa"

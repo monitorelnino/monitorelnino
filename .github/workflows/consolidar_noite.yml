@@ -90,7 +90,11 @@ jobs:
           done < /tmp/lista.tsv
 
       - name: Aplicar cada artefato pela porta do arquivo
-        timeout-minutes: 10
+        # 07/10/2026: eram 10 minutos, e a primeira execucao real estourou exatamente neles. Este
+        # passo le todos os artefatos da janela -- o da descoberta sozinho tem 91,7 MB -- e aplica
+        # cada fila pela porta, que reescreve o arquivo inteiro. E um job por noite: o teto existe
+        # para conter travamento, nao para competir com o tamanho do trabalho.
+        timeout-minutes: 30
         run: |
           python3 scripts/consolidar_noite.py --janela "$janela" --dir artefatos \
             --aplicar ${{ inputs.importacao_em_massa && '--importacao-em-massa' || '' }} \

@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-07 · #PR · Fase 1 da corrente noturna: um escritor só
+
+Os elos deixam de commitar: cada um entrega as próprias saídas como artefato, e `consolidar_noite`
+é o único que escreve, uma vez por rodada e uma escrita por arquivo. Entram a trava de 50 MB e 20%,
+o commit por `commit_do_elo.py` (nenhum `git add` de pasta), o delta do elo sem fusão de três vias,
+a guarda da janela, a volta do trabalho que o push perdeu e o ensaio real isolado. O publicador
+passa a correr depois do consolidador, não depois de cada elo.
+
 ## 2026-10-05 · #563 · A seção de perguntas da imprensa chama-se Perguntas frequentes
 
 Revisão da editoria. As cinco perguntas que vinham sob o subtítulo “Para entender o que está

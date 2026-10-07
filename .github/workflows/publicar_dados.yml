@@ -31,6 +31,13 @@ on:
     - cron: "5 9 * * *"    # 06h05 de Brasília — fecha a noite
     - cron: "5 1 * * *"    # 22h05 de Brasília — abre a noite, com o que a editoria mesclou de dia
   workflow_dispatch:
+    inputs:
+      ramo_destino:
+        # Item 5 (06/10/2026): o ensaio real publica no ramo `ensaio`, nunca na `main`.
+        description: "Ramo para onde o publicador empurra. `main` na rotina."
+        required: false
+        default: main
+        type: string
   # 28/09/2026 (item 2 do bloco de frescor): CONTRATO — toda coleta que muda dado termina em
   # publicação. Até aqui o publicador só tinha horário, e uma noite que commitava dado às 06h30
   # esperava até as 22h05 para aparecer; noite em que o publicador falhava, o dado esperava o dia
@@ -40,27 +47,22 @@ on:
   # `cancel-in-progress: true` no grupo faz o trabalho pesado aqui: uma noite com cinco coletores
   # não gera cinco publicações: a mais nova substitui a mais velha, e a última publica tudo o que
   # todas commitaram. Publicação cancelada por uma mais nova NÃO é dado não publicado.
+  # FASE 1 (06/10/2026): o publicador roda depois do CONSOLIDADOR, nao depois de cada elo.
+  # Ate aqui ele era disparado por onze workflows diferentes, e por isso publicava no meio da
+  # rodada, com parte do dado aplicado. Agora ha um escritor so, e publicar depois dele e
+  # publicar depois de tudo -- que e o que a palavra "depois" sempre quis dizer.
   workflow_run:
     workflows:
-      - "Noturno — diários oficiais"
-      - "Noturno — descoberta"
-      - "Noturno — evidências e OCR"
-      - "Noturno — juiz automático"
-      - "Noturno — sinais físicos"
-      # 03/10/2026: a triagem da fila é o último elo da corrente (item C.2), e é o término dela que
-      # fecha a noite — publicar antes dela publicaria sem o que a triagem acabou de promover.
-      - "Noturno — triagem da fila"
-      - "Semanal — sinais climáticos e links"
-      - "Busca web — cadência automática"
-      - "Atualização semanal de dados"
-      - "Preservar textos integrais das evidências"
+      - "Consolidar a noite"
     types: [completed]
 
 permissions:
   contents: read
 
 concurrency:
-  group: publicar-dados
+  # O ramo na chave (06/10/2026): publicar no ensaio e publicar na `main` sao duas coisas, e
+  # este grupo CANCELA o anterior. Sem o ramo, o ensaio mataria a publicacao de verdade.
+  group: publicar-dados-${{ github.ref_name }}
   # 04/10/2026 (item 3 do handover dos temporizadores): era `true`, e isso cancelava publicação EM
   # ANDAMENTO por causa de um `workflow_run` que, quando começasse, seria SKIPPED — o gatilho de
   # coletor que falhou. Medido três vezes em 04/10: o dispatch válido morreu `cancelled` e o
@@ -84,7 +86,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git fetch --quiet --depth=50 "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" main
+          git fetch --quiet --depth=50 "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "${{ inputs.ramo_destino || 'main' }}"
           git reset --hard FETCH_HEAD
           echo "main atual: $(git rev-parse --short HEAD)"
 
@@ -268,25 +270,14 @@ jobs:
           #
           # Agora cada caminho é adicionado por conta própria, e o que não existe é DITO — a lista
           # envelhece sozinha quando uma pasta sai do site, e envelhecer em silêncio foi o defeito.
-          falhou=0
-          for alvo in data/ dados-abertos/ feeds/ selos/ docs/ blog/ assets/ CITATION.cff *.html *.pdf; do
-            # `-e` e não `compgen`: o `for` já expandiu `*.html` e `*.pdf`, então cada `$alvo`
-            # é um caminho concreto — e `compgen -G "blog/"` responde "casou" mesmo sem a pasta,
-            # porque trata a barra como padrão. Medido antes de confiar.
-            if [ ! -e "$alvo" ]; then
-              echo "::notice::git add ignorou $alvo: nao existe mais nesta arvore"
-              continue
-            fi
-            git add -A "$alvo" || falhou=1
-          done
-          if [ "$falhou" = "1" ]; then
-            echo "::error::git add falhou em um dos caminhos — nada será publicado nesta execução"
-            exit 1
+          # 06/10/2026 (item 1 do handover da noite confiavel, parte 2): o laco de `git add` por
+          # caminho vira uma chamada ao ajudante, que le `config/escritores.json`. A lista de
+          # caminhos do publicador agora vive LA, com o resto da regra, em vez de repetida aqui --
+          # era a repeticao que envelhecia em silencio quando uma pasta saia do site.
+          python3 scripts/commit_do_elo.py publicar --mensagem "Publicacao automatica ($(date -u +%d/%m/%Y\ %H:%M) UTC)" | tee /tmp/commit_do_elo.txt
+          if ! grep -q "^houve=1" /tmp/commit_do_elo.txt; then
+            echo "Sem alteracoes a publicar."; echo "houve=0" >> "$GITHUB_OUTPUT"; exit 0
           fi
-          if git diff --cached --quiet; then
-            echo "Sem alterações a publicar."; echo "houve=0" >> "$GITHUB_OUTPUT"; exit 0
-          fi
-          git commit -m "Publicação automática ($(date -u +%d/%m/%Y\ %H:%M) UTC)"
           echo "houve=1" >> "$GITHUB_OUTPUT"
           git checkout -- . 2>/dev/null || true
 
@@ -346,6 +337,7 @@ jobs:
             --body-file /tmp/corpo_issue.md \
             || echo "::warning::nao consegui abrir a Issue; a saida esta no log deste run"
 
+
       - name: Empurrar com rebase (item 1a)
         if: steps.commit.outputs.houve == '1'
         env:
@@ -356,18 +348,18 @@ jobs:
           SSH="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes"
           EMPURROU=0
           for TENTATIVA in 1 2 3 4 5; do
-            GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
+            GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git "${{ inputs.ramo_destino || 'main' }}" || true
             if ! git rebase FETCH_HEAD; then
               git rebase --abort || true
               echo "tentativa $TENTATIVA: rebase conflitou; regenerando derivados e tentando de novo"
-              GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
+              GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git "${{ inputs.ramo_destino || 'main' }}" || true
               git rebase -X theirs FETCH_HEAD || { git rebase --abort || true; sleep $((TENTATIVA * 10)); continue; }
               python3 recalcular_mare.py --write || true
               bash scripts/verificar_derivados.sh --idempotencia || true
-              git add -A data/ dados-abertos/ feeds/ selos/ docs/ blog/ assets/ CITATION.cff *.html *.pdf 2>/dev/null || true
+              python3 scripts/commit_do_elo.py publicar --somente-indice || true
               git diff --cached --quiet || git commit --amend --no-edit
             fi
-            if GIT_SSH_COMMAND="$SSH" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main; then
+            if GIT_SSH_COMMAND="$SSH" git push git@github.com:${GITHUB_REPOSITORY}.git "HEAD:${{ inputs.ramo_destino || 'main' }}"; then
               EMPURROU=1; echo "empurrado na tentativa $TENTATIVA"; break
             fi
             echo "tentativa $TENTATIVA: push recusado (main avançou); nova tentativa"
@@ -379,8 +371,12 @@ jobs:
             exit 1
           fi
 
+      # O DOMINIO E SO DA `main`. Fase 1, item 3 (06/10/2026): no ramo `ensaio` o publicador
+      # publica na previa e NUNCA no dominio -- o ensaio e ensaio, e republicar o site de
+      # verdade a partir dele poria dado de teste no ar. A trava e aqui, no passo, e nao numa
+      # instrucao: instrucao se esquece numa rodada de madrugada.
       - name: Repor o site no domínio, atrás de senha
-        if: always()
+        if: always() && github.ref_name == 'main'
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}

@@ -27,6 +27,15 @@ on:
         description: "Nome curto do coletor, usado na mensagem de commit e no resumo do job"
         required: true
         type: string
+      ramo_destino:
+        # 06/10/2026 (item 5): o ensaio REAL precisa rodar os workflows de verdade sem tocar a
+        # `main`. O destino do fetch e do push passa a ser declarado, com `main` por padrao -- o
+        # ensaio passa `ensaio`, e a regra de 27/09 ("o teste roda no ramo `ensaio`, nunca com
+        # commit automatico na `main` de dia") deixa de depender de ninguem lembrar dela.
+        description: "Ramo para onde este elo empurra. `main` na rotina; `ensaio` no ensaio real."
+        required: false
+        default: main
+        type: string
       comandos:
         description: "Um comando por linha. Cada um roda pelo invólucro de saúde e NUNCA derruba o job."
         required: true
@@ -75,8 +84,22 @@ jobs:
     timeout-minutes: ${{ inputs.timeout_minutos }}
     # Fila, não cancelamento: uma coleta interrompida no meio perde o que já achou. Só o publicador
     # cancela o anterior, porque publicar duas vezes o mesmo estado não tem valor.
+    # O RAMO entra na chave do grupo (06/10/2026). Sem ele, o ensaio real no ramo `ensaio` e a
+    # noite de verdade na `main` disputam a MESMA fila: o ensaio de dia ficaria atras da rodada
+    # noturna, ou pior, a rodada noturna ficaria atras do ensaio. Sao duas noites diferentes, em
+    # dois ramos diferentes, e so parecem a mesma coisa porque o grupo se chamava `noturno`.
     concurrency:
-      group: ${{ inputs.grupo_de_concorrencia != '' && inputs.grupo_de_concorrencia || format('coletor-{0}', inputs.nome) }}
+      # FORA DA `main`, UM GRUPO POR ELO. Na `main` a corrente e sequencial de proposito: os elos
+      # compartilham o grupo `noturno` e esperam uns pelos outros, porque todos escrevem na mesma
+      # arvore. No ramo de ENSAIO eles nao escrevem -- entregam artefato --, e a campanha pede que
+      # rodem em PARALELO.
+      #
+      # Com um grupo so, o GitHub guarda um run em execucao e UM pendente por grupo: o terceiro
+      # disparo cancela o pendente. Foi isso, e nao instabilidade, que cancelou um ou dois elos em
+      # TODAS as rodadas de 06 e 07/10 -- a cada rodada eu disparava cinco de uma vez, e tres
+      # caiam. Diagnostico que custou cinco rodadas para aparecer porque o cancelamento nao deixa
+      # log nenhum.
+      group: ${{ github.ref_name }}-${{ (github.ref_name != 'main' || inputs.grupo_de_concorrencia == '') && format('coletor-{0}', inputs.nome) || inputs.grupo_de_concorrencia }}
       cancel-in-progress: false
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -88,9 +111,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git fetch --quiet --depth=50 "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" main
+          git fetch --quiet --depth=50 "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "${{ inputs.ramo_destino }}"
           git reset --hard FETCH_HEAD
-          echo "main atual: $(git rev-parse --short HEAD)"
+          echo "${{ inputs.ramo_destino }} atual: $(git rev-parse --short HEAD)"
 
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
@@ -142,33 +165,48 @@ jobs:
           python3 scripts/despachar_temporizadores.py --origem oportunista \
             --so-ler-e-despachar || true
 
-      # Causa F (06/10/2026): a regra de 27/09 -- nenhum commit automatico na `main` de dia --
-      # dependia de os `cron` estarem certos, e `cron` certo nao impede disparo manual, cadeia de
-      # `workflow_run` nem reexecucao de run antigo. Em 06/10 a publicacao da fase 0 encadeou a
-      # corrente antiga e cinco elos coletaram de dia na `main`, dois deles perdendo o commit.
-      # A guarda pergunta antes de coletar, e para em SUCESSO: nao coletar fora da hora e o
-      # comportamento certo, nao um defeito. Fora da `main` ela nunca barra -- e no ramo `ensaio`
-      # que a campanha roda de dia. O publicador e a excecao unica, quando a editoria chama.
-      - name: Janela da noite — na `main`, só de noite
-        id: janela
-        timeout-minutes: 2
-        run: |
-          if ! python3 scripts/guarda_da_janela.py --ramo "${GITHUB_REF_NAME}" --elo "${{ inputs.nome }}" | tee -a "$GITHUB_STEP_SUMMARY"; then
-            echo "pode=0" >> "$GITHUB_OUTPUT"
-          else
-            echo "pode=1" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: Marcar o início do elo
         run: echo "ELO_INICIO=$(date -u +%H:%M)" >> "$GITHUB_ENV"
 
       # Cada comando passa pelo invólucro, que cronometra e grava a linha de saúde. `|| true` é
       # deliberado: coletor que falha não derruba os outros nem impede o commit do que já foi achado.
+      # Item 1.3 (06/10/2026): antes de coletar, o elo devolve a arvore o que o elo anterior
+      # perdeu no push. Sem este passo o artefato de trabalho perdido existia e ninguem o
+      # baixava -- foi assim que 364 minutos de coleta morreram na noite de 05 para 06.
+      # Nunca derruba o elo: o que nao volta continua pendente e nomeado.
+      # Causa F (06/10/2026): a regra de 27/09 -- nenhum commit automatico na `main` de dia --
+      # dependia de os `cron` estarem certos, e `cron` certo nao impede disparo manual, cadeia de
+      # `workflow_run` nem reexecucao de run antigo. Em 06/10 rodaram coletores na `main` fora da
+      # janela, disputando-a com o trabalho da editoria. A guarda pergunta antes de coletar, e
+      # para em SUCESSO: nao coletar fora da hora e o certo, nao um defeito.
+      - name: Janela da noite — na `main`, só de noite
+        id: janela
+        timeout-minutes: 2
+        run: |
+          if ! python3 scripts/guarda_da_janela.py --ramo "${{ inputs.ramo_destino }}" --elo "${{ inputs.nome }}" | tee -a "$GITHUB_STEP_SUMMARY"; then
+            echo "pode=0" >> "$GITHUB_OUTPUT"
+          else
+            echo "pode=1" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Reaplicar o trabalho que o elo anterior perdeu
+        if: steps.janela.outputs.pode == '1'
+        continue-on-error: true
+        timeout-minutes: 6
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/pendente_do_elo.py --reaplicar | tee -a "$GITHUB_STEP_SUMMARY"
+
       - name: Coletar
         if: steps.janela.outputs.pode == '1'
         run: |
           while IFS= read -r cmd; do
             [ -z "$(echo "$cmd" | tr -d '[:space:]')" ] && continue
+            # Linha de comentario tambem se pula. A lista de comandos e escrita a mao, com
+            # comentarios explicando cada coletor, e o laco tentava EXECUTAR o comentario: dois
+            # `FileNotFoundError: ... '#'` por rodada, em todo elo, desde sempre. O `|| true`
+            # engolia o erro, entao ninguem via -- e ruido assim esconde a falha de verdade.
+            printf '%s' "$cmd" | grep -qE '^[[:space:]]*#' && continue
             echo "::group::$cmd"
             python3 scripts/saude_pipeline.py --rodar $cmd || true
             echo "::endgroup::"
@@ -187,16 +225,18 @@ jobs:
         id: feito
         run: |
           NOITE="$(python3 scripts/janela_da_noite.py --noite)"
+          echo "NOITE=$NOITE" >> "$GITHUB_ENV"
           mkdir -p "data/noite/$NOITE"
           echo "${{ inputs.nome }} · $(date -u +%FT%TZ) · run ${{ github.run_id }}" \
             > "data/noite/$NOITE/${{ inputs.nome }}.feito"
           echo "feito=1" >> "$GITHUB_OUTPUT"
           echo "marcador: data/noite/$NOITE/${{ inputs.nome }}.feito"
 
-      - name: Regenerar derivados
-        continue-on-error: true
-        timeout-minutes: 10
-        run: bash scripts/verificar_derivados.sh || true
+      # 06/10/2026 (causa D, parte 3): o elo NAO regenera mais derivado. A regra da parte 2 ja
+      # dizia que so o publicador gera derivado, e o passo ficou aqui -- por isso `dados-abertos/`,
+      # `feeds/` e `selos/` tinham varios escritores e entravam no commit de quem passou por
+      # ultimo. Derivado atrasado entre o elo e o publicador nao e problema: o portao 12 so cobra
+      # no push para a `main`, e quem empurra o estado selado e o publicador.
 
       # §273: o painel resume a execução em curso, então é gerado depois dos comandos e antes do
       # commit — não na cadeia canônica, onde o portão 12 o cobraria por não mudar.
@@ -229,86 +269,56 @@ jobs:
           if [ "${FEITO:-}" = "1" ]; then MARCA="--feito"; fi
           python3 scripts/painel_da_noite.py --registrar "${{ inputs.nome }}"             --inicio "${ELO_INICIO:-}" --conclusao "${{ job.status }}" "$MARCA" || true
 
-      - name: Commit com rebase-e-push (item 1a)
+      # FASE 1 (06/10/2026) — O COLETOR NAO EMPURRA MAIS.
+      #
+      # Ate aqui cada elo commitava, rebaseava, fundia e empurrava sozinho, em paralelo. Cada
+      # correcao fechava uma colisao e a seguinte aparecia: conflito em arquivo compartilhado,
+      # fusao repetida que levou a fila de pistas de 28 MB a 187,53 MB, `git add -A data/`,
+      # push fixo na `main` mesmo no ensaio, trabalho descartado. Nenhum era defeito solto --
+      # eram sintomas de MUITOS ESCRITORES na mesma `main`.
+      #
+      # O elo agora entrega: grava as proprias saidas, sobe como artefato e vai embora. Quem
+      # escreve e o `consolidar_noite.yml`, sozinho, uma vez por janela, pela porta de cada
+      # arquivo. Nao ha com quem colidir quando so um escreve.
+      - name: Separar as saidas deste elo
+        id: saidas
         if: steps.janela.outputs.pode == '1'
-        id: commit
-        env:
-          ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+        timeout-minutes: 5
         run: |
-          git config user.name "monitor-el-nino-bot"
-          git config user.email "bot@users.noreply.github.com"
-          # 29/09/2026: `evidencias/` ENTRA no commit. Sem ela, todo coletor que chama
-          # `preservar_evidencia` gravava o índice em `data/evidencias.json` e deixava o
-          # arquivo para trás no runner — o índice afirmando cópia preservada que não existe.
-          # Foram 216 numa noite. É o §270 outra vez, por outro caminho: lá o `.gitignore`
-          # descartava o binário, aqui o `git add` nunca o incluiu. O §275 consertou o
-          # primeiro e não viu o segundo, porque o portão só reprova quando o índice chega
-          # à `main` — e ele chegava junto, no mesmo commit.
-          git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt docs/FILA_PISTAS.md 2>/dev/null || true
-          if git diff --cached --quiet; then
-            echo "Sem alterações."; echo "houve=0" >> "$GITHUB_OUTPUT"; exit 0
+          python3 scripts/aplicar_delta_do_elo.py "${{ inputs.nome }}" --guardar
+          mkdir -p saida_do_elo
+          if [ -d /tmp/delta_do_elo ]; then
+            cp -r /tmp/delta_do_elo/. saida_do_elo/ 2>/dev/null || true
           fi
-          git commit -m "${{ inputs.nome }} automático ($(date -u +%d/%m/%Y\ %H:%M) UTC)"
-          echo "houve=1" >> "$GITHUB_OUTPUT"
-          git checkout -- . 2>/dev/null || true
-          mkdir -p ~/.ssh && printf '%s\n' "$ROBO_DEPLOY_KEY" > ~/.ssh/robo && chmod 600 ~/.ssh/robo
-          ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
-          SSH="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes"
-          EMPURROU=0
-          for TENTATIVA in 1 2 3 4 5; do
-            GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
-            if ! git rebase FETCH_HEAD; then
-              # 05/10/2026 (item 2 do handover da noite confiável) — A UNIÃO, NÃO O DESCARTE.
-              #
-              # Era `git rebase -X theirs`. Num arquivo de FILA isso não resolve, apaga: `-X theirs`
-              # manda o git escolher um lado inteiro, e o lado perdedor são as pistas que o outro elo
-              # acabou de achar. Medido na noite de 04→05/10: a busca web perdeu 114 minutos de
-              # trabalho em quatro tentativas de rebase conflitando em `data/pistas_imprensa.json`,
-              # `data/pistas_revisao.json` e `docs/MANIFEST_SHA256.txt`.
-              #
-              # A lei do projeto para arquivo que só cresce é unir pela BASE COMUM, nunca escolher um
-              # lado nem deduplicar por conteúdo (23/09: uma união por conteúdo produziu um log menor
-              # que cada lado e apagou quase 3.000 execuções). `scripts/unir_conflito_de_rodada.py`
-              # faz isso, e desde hoje sabe resolver as filas de pista com a política declarada por
-              # `scripts/pistas.py`: acréscimo dos dois lados entra, campo que só um lado tocou entra,
-              # MESMO campo com valores diferentes é RECUSADO em vez de adivinhado.
-              #
-              # Só se a união recusar é que se desiste desta tentativa. Desistir aqui não perde o
-              # trabalho: ele sai como artefato no passo abaixo.
-              echo "tentativa $TENTATIVA: rebase conflitou; unindo pela base comum"
-              if python3 scripts/unir_conflito_de_rodada.py; then
-                bash scripts/verificar_derivados.sh || true
-                git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt docs/FILA_PISTAS.md 2>/dev/null || true
-                if ! GIT_EDITOR=true git rebase --continue; then
-                  git rebase --abort || true
-                  echo "::warning::a união resolveu mas o rebase não seguiu; nova tentativa"
-                  sleep $((TENTATIVA * 10)); continue
-                fi
-              else
-                # Recusa registrada: a política daquele caminho não está decidida, e adivinhar
-                # apagaria dado. O trabalho vira artefato, e a editoria vê o nome do arquivo no log.
-                git rebase --abort || true
-                echo "::warning::a união RECUSOU um caminho — ver o nome no log acima; nova tentativa"
-                sleep $((TENTATIVA * 10)); continue
-              fi
+          N=$(find saida_do_elo -type f ! -name _lista.json | wc -l)
+          echo "arquivos=$N" >> "$GITHUB_OUTPUT"
+          echo "· $N arquivo(s) deste elo para o consolidador" | tee -a "$GITHUB_STEP_SUMMARY"
+          # ITEM 2 (06/10/2026): PERDA SILENCIOSA VIRA VERMELHO.
+          #
+          # Na rodada 1 a descoberta coletou por 50 minutos, o separador devolveu
+          # `0 caminho(s)`, o upload saiu `skipped` e o run fechou VERDE. Trabalho que some sem
+          # erro e pior que trabalho que falha: ninguem o procura. Zero so e aceitavel quando o
+          # elo nao gravou nada -- e quem sabe disso e a arvore, nao o nosso otimismo.
+          if [ "$N" = "0" ]; then
+            SUJO=$(git status --porcelain | grep -v "^?? saida_do_elo/" | wc -l)
+            if [ "$SUJO" != "0" ]; then
+              echo "::error::o elo gravou $SUJO caminho(s) na arvore e entregou ZERO ao consolidador"
+              git status --porcelain | head -20
+              exit 1
             fi
-
-            if GIT_SSH_COMMAND="$SSH" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main; then
-              EMPURROU=1; echo "empurrado na tentativa $TENTATIVA"; break
-            fi
-            echo "tentativa $TENTATIVA: push recusado (main avançou); nova tentativa"
-            sleep $((TENTATIVA * 10))
-          done
-          rm -f ~/.ssh/robo
-          if [ "$EMPURROU" != "1" ]; then
-            echo "empurrou=0" >> "$GITHUB_OUTPUT"
-            echo "::error::commit perdido para main em movimento"
-            exit 1
+            echo "· nada novo nesta rodada: arvore limpa, entrega vazia e legitima"
           fi
-          echo "empurrou=1" >> "$GITHUB_OUTPUT"
 
-      # As saídas viram artefato quando o commit se perde: o dado coletado não desaparece junto com
-      # o job (item 1a).
+      # O nome do artefato e o contrato com o consolidador: `saida-<elo>-<janela>`.
+      - name: Entregar as saidas ao consolidador
+        if: steps.janela.outputs.pode == '1' && steps.saidas.outputs.arquivos != '0'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
+        with:
+          name: saida-${{ inputs.nome }}-${{ env.NOITE }}
+          path: saida_do_elo/
+          retention-days: 14
+          if-no-files-found: ignore
+
       - name: Guardar as saídas quando o commit se perde
         if: failure() && steps.commit.outputs.houve == '1'
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2

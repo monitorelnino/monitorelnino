@@ -35,15 +35,16 @@ jobs:
         run: |
           git config user.name "monitor-el-nino-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add evidencias/ data/evidencias.json
-          git diff --cached --quiet && { echo "Sem alterações."; exit 0; } \
-            || git commit -m "evidencias: texto integral das pistas de diário ($(date +%d/%m/%Y))"
+          # 06/10/2026 (item 1): quem comita e `scripts/commit_do_elo.py`, pela declaracao
+          # de `config/escritores.json`. `git add` de pasta levava arquivo de outro elo.
+          python3 scripts/commit_do_elo.py preservar_evidencias --mensagem "evidencias: texto integral das pistas de diario ($(date +%d/%m/%Y))" | tee /tmp/commit_do_elo.txt
+          grep -q "^houve=1" /tmp/commit_do_elo.txt || { echo "Sem alteracoes deste elo."; exit 0; }
           # AUD-06: mesmo caminho do robô semanal — push por deploy key, com rebase se a main andou.
           mkdir -p ~/.ssh && printf '%s\n' "$ROBO_DEPLOY_KEY" > ~/.ssh/robo && chmod 600 ~/.ssh/robo
           ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
-          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git "${{ github.ref_name }}"
           git rebase FETCH_HEAD || { git rebase --abort; echo "::error::main avançou com conflito; rode o workflow de novo"; rm -f ~/.ssh/robo; exit 1; }
-          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git push git@github.com:${GITHUB_REPOSITORY}.git "HEAD:${{ github.ref_name }}"
           rm -f ~/.ssh/robo
         env:
           ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}

@@ -458,6 +458,47 @@ jobs:
           # assunto: dado rapido
           python3 scripts/guarda_da_janela.py --autoteste
 
+      # Item 1 do handover de 06/10: a regra "um escritor por arquivo" estava registrada e não
+      # aplicada, e o `git add` de pasta descartou 364 minutos de coleta numa noite.
+      # 06/10/2026: `data/pistas_imprensa.json` foi de 28 MB a 187,53 MB em meia hora e passou do
+      # limite do GitHub, derrubando o push de todo elo que o grava. Arquivo que dobra e visivel na
+      # primeira duplicacao -- se alguem olhar.
+      - name: Tamanho dos dados — nada incha sem ninguém ver
+        timeout-minutes: 3
+        run: |
+          # assunto: dado rapido
+          python3 scripts/verificar_tamanho_dos_dados.py --autoteste
+          # assunto: dado rapido
+          python3 scripts/verificar_tamanho_dos_dados.py
+          # assunto: dado rapido
+          python3 scripts/deduplicar_fila_de_pistas.py --autoteste
+
+      # Causa C: o elo aplica o proprio delta sobre o ramo mais novo, sem fusao de tres vias.
+      # Fase 1: um escritor so. O coletor entrega artefato; o consolidador escreve.
+      - name: Consolidador — o único escritor da rodada
+        timeout-minutes: 3
+        run: |
+          # assunto: dado rapido
+          python3 scripts/consolidar_noite.py --autoteste
+
+      - name: Delta do elo — nenhuma fusão de três vias em arquivo compartilhado
+        timeout-minutes: 3
+        run: |
+          # assunto: dado rapido
+          python3 scripts/aplicar_delta_do_elo.py --autoteste
+          # assunto: dado rapido
+          python3 scripts/pendente_do_elo.py --autoteste
+
+      - name: Commit do elo — nenhum workflow comita pasta inteira
+        timeout-minutes: 3
+        run: |
+          # assunto: dado rapido
+          python3 scripts/verificar_commit_do_elo.py --autoteste
+          # assunto: dado rapido
+          python3 scripts/verificar_commit_do_elo.py
+          # assunto: dado rapido
+          python3 scripts/commit_do_elo.py --autoteste
+
       # Item 3 (06/10/2026): a IDEMPOTENCIA vira portao de PR, que e onde o gerador muda. No
       # publicador, regenerar e a funcao -- "havia derivado obsoleto" nao pode barrar a publicacao
       # de dado. Entre 03 e 06/10 foram 29 publicacoes perdidas por essa confusao.

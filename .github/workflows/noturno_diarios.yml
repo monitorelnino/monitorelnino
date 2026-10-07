@@ -64,7 +64,11 @@ jobs:
   # Disparo à mão (`workflow_dispatch`) passa sempre: quando a editoria manda rodar, roda.
   abertura:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    # 06/10/2026: era 5 minutos, e o job gastava isso so em checkout e setup-python quando o
+    # runner esta lento -- nas rodadas 1 e 2 da campanha ele morreu em 5:03, exatamente no teto,
+    # e levou os diarios junto. O teto existe para conter guarda travada, nao para competir com
+    # o tempo de provisionamento.
+    timeout-minutes: 12
     outputs:
       abrir: ${{ steps.guarda.outputs.abrir }}
     steps:
@@ -121,8 +125,11 @@ jobs:
   diarios:
     needs: abertura
     if: needs.abertura.outputs.abrir == 'sim'
+    # 06/10/2026 (item 5): o ensaio real dispara este workflow no ramo `ensaio` e o elo
+    # empurra para la, nao para a `main`. Na rotina o padrao continua sendo `main`.
     uses: ./.github/workflows/_coletor.yml
     with:
+      ramo_destino: ${{ github.ref_name == 'ensaio' && 'ensaio' || 'main' }}
       nome: diarios
       # Escreve em data/pistas_*.json — grupo compartilhado da noite (seção G1).
       grupo_de_concorrencia: noturno

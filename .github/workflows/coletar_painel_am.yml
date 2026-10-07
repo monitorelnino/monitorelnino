@@ -46,7 +46,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git fetch --quiet --depth=50 "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" main
+          git fetch --quiet --depth=50 "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "${{ github.ref_name }}"
           git reset --hard FETCH_HEAD
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with: { python-version: "3.12", cache: pip }
@@ -146,13 +146,14 @@ jobs:
         run: |
           git config user.name "monitor-el-nino-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add data/ dados-abertos/ selos/ *.html docs/MANIFEST_SHA256.txt
-          if git diff --cached --quiet; then echo "Sem alterações."; exit 0; fi
-          git commit -m "Painel do AM: rodada renderizada ($(date -u +%d/%m/%Y\ %H:%M) UTC)"
+          # 06/10/2026 (item 1): quem comita e `scripts/commit_do_elo.py`, pela declaracao
+          # de `config/escritores.json`. `git add` de pasta levava arquivo de outro elo.
+          python3 scripts/commit_do_elo.py painel_am --mensagem "Painel do AM: rodada renderizada ($(date -u +%d/%m/%Y\ %H:%M) UTC)" | tee /tmp/commit_do_elo.txt
+          grep -q "^houve=1" /tmp/commit_do_elo.txt || { echo "Sem alteracoes deste elo."; exit 0; }
           git checkout -- .
           mkdir -p ~/.ssh && printf '%s\n' "$ROBO_DEPLOY_KEY" > ~/.ssh/robo && chmod 600 ~/.ssh/robo
           ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
-          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git "${{ github.ref_name }}"
           git rebase FETCH_HEAD || { git rebase --abort; echo "::error::main avançou com conflito; rodada não comitada"; rm -f ~/.ssh/robo; exit 1; }
-          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git push git@github.com:${GITHUB_REPOSITORY}.git "HEAD:${{ github.ref_name }}"
           rm -f ~/.ssh/robo
