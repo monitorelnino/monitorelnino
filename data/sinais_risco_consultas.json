@@ -4,56 +4,56 @@
   "efeito_no_indice": "NENHUM — peso zero, como todo sinal de risco.",
   "escrito_por": "coletar_sinais_risco.py"
  },
- "gerado_em": "07/10/2026 06:35",
+ "gerado_em": "07/10/2026 07:18",
  "consultas": [
   {
    "fonte": "inmet_avisos",
    "url": "https://apiprevmet3.inmet.gov.br/avisos/ativos",
-   "consultado_em": "07/10/2026 06:35",
+   "consultado_em": "07/10/2026 07:17",
    "bytes": 295354,
    "sha256": "f229aa014de3231402f3df511f8618e832c7ba53038e073cbccbdca0700f3a23"
   },
   {
    "fonte": "cemaden_alertas",
    "url": "https://gsc.cemaden.gov.br/geoserver/cemaden_dev/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=cemaden_dev:alertas_vigentes_siaden&outputFormat=application/json&count=3000",
-   "consultado_em": "07/10/2026 06:35",
-   "bytes": 589231,
-   "sha256": "4138fe0ceeb15e987789b441492c9a420e25690da5fdf23a08876841ac199b91"
+   "consultado_em": "07/10/2026 07:17",
+   "bytes": 589218,
+   "sha256": "e0bdcb3972a7c29a029fadfba0c33c7f09130e90f97dfdddbadd5472720ed730"
   },
   {
    "fonte": "open_meteo_tempo",
    "url": "https://api.open-meteo.com/v1/forecast?latitude=-9.9750,-9.6660,-3.1187,0.0349,-12.9718,-3.7166,-15.7795,-20.3155,-16.6864,-2.5387,-19.9102,-20.4486,-15.6010,-1.4554,-7.1151,-8.0467,-5.0919,-25.4195,-22.9129,-5.7936,-8.7608,2.8238,-30.0318,-27.5945,-10.9091,-23.5329,-10.2400&longitude=-67.8243,-35.7350,-60.0212,-51.0694,-38.5011,-38.5423,-47.9297,-40.3128,-49.2643,-44.2825,-43.9266,-54.6295,-56.0974,-48.4898,-34.8641,-34.8771,-42.8034,-49.2646,-43.2003,-35.1986,-63.8999,-60.6753,-51.2065,-48.5477,-37.0677,-46.6395,-48.3558&daily=temperature_2m_max,temperature_2m_min,apparent_temperature_max&timezone=America%2FSao_Paulo&past_days=1&forecast_days=4",
-   "consultado_em": "07/10/2026 06:35",
-   "bytes": 15157,
-   "sha256": "37e7d1ef490f5d6950ca3f7e7e94e1fc268b5b3e70a6d908222eecb52c57b256"
+   "consultado_em": "07/10/2026 07:17",
+   "bytes": 15150,
+   "sha256": "2a6a4452c2c445c8fd1900e3326e61abd799c1a68efcb2977cf9cab16906a0d5"
   },
   {
    "fonte": "inmet_previsao_capitais",
    "url": "https://apiprevmet3.inmet.gov.br/previsao/capitais",
-   "consultado_em": "07/10/2026 06:35",
-   "bytes": 6079397,
-   "sha256": "1a4e888e7dd6ffb5220fae7bace0705546180e5cf389d8f91933e8a60140dc9c"
+   "consultado_em": "07/10/2026 07:18",
+   "bytes": 6069565,
+   "sha256": "6c30405652e9667f12a733309f5b182d7432c6c625e6b23abfe64c34f963a2fa"
   },
   {
    "fonte": "open_meteo_ar",
    "url": "https://air-quality-api.open-meteo.com/v1/air-quality?latitude=-9.9750,-9.6660,-3.1187,0.0349,-12.9718,-3.7166,-15.7795,-20.3155,-16.6864,-2.5387,-19.9102,-20.4486,-15.6010,-1.4554,-7.1151,-8.0467,-5.0919,-25.4195,-22.9129,-5.7936,-8.7608,2.8238,-30.0318,-27.5945,-10.9091,-23.5329,-10.2400&longitude=-67.8243,-35.7350,-60.0212,-51.0694,-38.5011,-38.5423,-47.9297,-40.3128,-49.2643,-44.2825,-43.9266,-54.6295,-56.0974,-48.4898,-34.8641,-34.8771,-42.8034,-49.2646,-43.2003,-35.1986,-63.8999,-60.6753,-51.2065,-48.5477,-37.0677,-46.6395,-48.3558&hourly=pm2_5,pm10,ozone,nitrogen_dioxide,carbon_monoxide,european_aqi&timezone=America%2FSao_Paulo&forecast_days=1&domains=cams_global",
-   "consultado_em": "07/10/2026 06:35",
-   "bytes": 42945,
-   "sha256": "ede799fdc2a0e7a12746cab2534265e4cb4702bb6aacea19cd21a2946440508d"
+   "consultado_em": "07/10/2026 07:18",
+   "bytes": 42914,
+   "sha256": "2a9db68c08e553f78d77b791062f7e94245dd9576ca5e19121fb4f681566e409"
   },
   {
    "fonte": "inmet_estacoes",
    "url": "https://apitempo.inmet.gov.br/estacoes/T",
-   "consultado_em": "07/10/2026 06:35",
+   "consultado_em": "07/10/2026 07:18",
    "bytes": 262500,
    "sha256": "def48cc4fa7b6354e039ea7d91722a101459ad0b641531c77fc07c270cbd034c"
   },
   {
    "fonte": "inmet_estacoes",
    "url": "https://apitempo.inmet.gov.br/condicao/capitais/2026-10-07",
-   "consultado_em": "07/10/2026 06:35",
+   "consultado_em": "07/10/2026 07:18",
    "bytes": 2324,
-   "sha256": "108dbc7a1244bbc62f61b2a2003fed579d116ed99298c7e90a707b73466ad39a"
+   "sha256": "f647b5a6b8aeea94c104b2879d3c13d89790fe1347be34392f23f23d6ef082d1"
   }
  ]
 }
