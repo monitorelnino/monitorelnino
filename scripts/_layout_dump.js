@@ -40,7 +40,16 @@ function alvosDoContrato(pagina) {
   if (!fs.existsSync(caminho)) return [];
   let doc;
   try { doc = JSON.parse(fs.readFileSync(caminho, "utf-8")); } catch (e) { return []; }
-  const fora = [...(doc.exige_texto || [])];
+  // SO o que o JUIZ confere, que e o `exige_texto` das SECOES. O `exige_texto` da raiz do
+  // contrato existe em alguns arquivos e `verificar_layout.problemas_do_despejo` NAO o verifica --
+  // `index.json` declara "O MARE Legal mede o que foi PUBLICADO", frase que a pagina nao tem, e a
+  // conformidade passa na `main` ha semanas. Esperar por ele deixaria o medidor MAIS ESTRITO que
+  // quem julga: a pagina ficaria 20 s esperando uma frase que ninguem cobra, e seria reprovada por
+  // "nao terminou de carregar" sem nada de errado.
+  //
+  // A lacuna fica registrada aqui porque e real: contrato que declara texto que ninguem confere da
+  // falsa garantia. Corrigi-la e decisao de CONTEUDO da pagina, nao do medidor.
+  const fora = [];
   for (const sec of doc.secoes || []) fora.push(...(sec.exige_texto || []));
   // Trecho curto demais casa com qualquer coisa e nao serve de condicao.
   return fora.filter(t => typeof t === "string" && t.trim().length >= 8);

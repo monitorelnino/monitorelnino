@@ -58,7 +58,18 @@ async function medir(porta, esperarPorCondicao) {
     await new Promise(r => setTimeout(r, ATRASO_MS));
     await rota.continue();
   });
-  await page.goto(`http://127.0.0.1:${porta}/${PAGINA}`, { waitUntil: "networkidle", timeout: 45000 });
+  // A JANELA EM QUE A CORRIDA ACONTECE, reproduzida de forma deterministica.
+  //
+  // `networkidle` espera 500 ms sem conexao -- e um `fetch` ENCADEADO, que so comeca depois de o
+  // anterior resolver e de uma conta rodar, pode comecar DEPOIS dessa janela. Em producao foi isso:
+  // a espera era `networkidle` mais 1.500 ms e mesmo assim media cedo. Atrasar o JSON por `route`
+  // nao reproduz, porque o `networkidle` passa a esperar o proprio atraso.
+  //
+  // Entao o lado do RELOGIO mede a partir de `domcontentloaded`, que e exatamente a janela em que
+  // o defeito mora: a pagina ja existe, o encadeamento ainda nao terminou. O lado da CONDICAO parte
+  // do mesmo ponto -- a diferenca entre os dois e so o que cada um espera.
+  await page.goto(`http://127.0.0.1:${porta}/${PAGINA}`,
+                  { waitUntil: "domcontentloaded", timeout: 45000 });
   if (esperarPorCondicao) {
     try {
       await page.waitForFunction(
