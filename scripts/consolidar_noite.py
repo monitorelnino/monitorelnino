@@ -252,12 +252,24 @@ def _aplicar(dir_artefatos: pathlib.Path, aplicar: bool, importacao: bool) -> in
 
     aplicados, pendentes, relatorio = 0, [], []
     tocados = set()
+    # PROGRESSO, e nao so o resultado. A primeira execucao real ficou 30 minutos sem imprimir uma
+    # linha e morreu no teto: um travamento mudo nao se diagnostica, so se adivinha. Cada artefato
+    # e cada 200 arquivos dizem onde estao, com o relogio.
+    import time as _t
+    inicio = _t.time()
+    def minuto():
+        return f"[{int(_t.time() - inicio)//60:02d}:{int(_t.time() - inicio)%60:02d}]"
+    print(f"{minuto()} {len(entradas)} artefato(s) a aplicar", flush=True)
     for pasta in entradas:
         elo = elo_do_artefato(pasta.name)
         if not elo:
             pendentes.append(f"{pasta.name}: nome fora do padrao `saida-<elo>-<janela>`")
             continue
-        for origem in sorted(q for q in pasta.rglob("*") if q.is_file()):
+        arquivos = sorted(q for q in pasta.rglob("*") if q.is_file())
+        print(f"{minuto()} {pasta.name}: {len(arquivos)} arquivo(s)", flush=True)
+        for n, origem in enumerate(arquivos, start=1):
+            if n % 200 == 0:
+                print(f"{minuto()}   {pasta.name}: {n}/{len(arquivos)}", flush=True)
             rel = str(origem.relative_to(pasta)).replace("\\", "/")
             if not pode_aplicar(rel, elo, tabela):
                 pendentes.append(f"{rel} (de `{elo}`): nao e dele, ou nao esta declarado")
