@@ -10,6 +10,13 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+## 2026-10-07 · #PR · O cache do navegador deixa de depender de a página ter mudado
+
+O portão da corrida do medidor roda sempre, e o cache do Playwright só era restaurado quando a
+página mudava. Num PR que não toca página, a instalação do Chromium partia do zero e gastava os
+oito minutos do teto: o processo morria como órfão e o teste nem rodava — reprovação por
+infraestrutura, com mensagem de tempo esgotado que não se parece com a causa. A condição sai.
+
 ## 2026-10-07 · #PR · A contagem de portões, medida e num lugar só
 
 Três arquivos traziam três números, todos errados: 61 no CLAUDE.md, 46 na skill `portoes` e 19 no
