@@ -117604,6 +117604,426 @@
     "fontes": [],
     "encontrou": null
    }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "esus de Itabapoana trata o presente Decreto, nos limites da Lei Complementar nº Cabo Frio NOTA TÉCNICA - SGAIS/SES-RJ Nº 01/2020 101/2000”; Campos dos Goitacaze"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "10.212",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3300704",
+   "municipio": "Cabo Frio",
+   "uf": "RJ",
+   "url": "https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=NTI5NjU%2C",
+   "pista_id": "c0520454dc",
+   "origem": "seguimento",
+   "leu_documento": true,
+   "hash_evidencia": "82054089bc82b5aaffe5dad4a72cf742903c1b746509fe0f3b5132b5f845ffa9",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "O TÉCNICO E OPERACIONAL À COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DE POMERODE/SC, COMPREENDENDO O AUXÍLIO NA ELABORAÇÃO, REVISÃO E ATUALIZAÇÃO DOS DO"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "14.133/2021",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4213203",
+   "municipio": "Pomerode",
+   "uf": "SC",
+   "url": "https://pncp.gov.br/pncp-api/v1/orgaos/83102251000104/compras/2026/314/arquivos/3",
+   "pista_id": "7803f88d40",
+   "origem": "seguimento",
+   "leu_documento": true,
+   "hash_evidencia": "721c188ac7530653cdaa9421bb3bf983c323d17bb269b1fcd180c75b57f808cb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4213203",
+   "municipio": "Pomerode",
+   "uf": "SC",
+   "url": "https://www.cmpomerode.sc.gov.br/imprensa/noticias/0/527/0/846",
+   "pista_id": "193742abd5",
+   "origem": "seguimento",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4208500",
+   "municipio": "Ituporanga",
+   "uf": "SC",
+   "url": "https://defesacivil.blumenau.sc.gov.br/static/app/defesa-civil/Plano_de_conting%C3%AAncia_2021.pdf",
+   "pista_id": "bf6315b6cb",
+   "origem": "seguimento",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ta, Aurora, Braço do Trombudo, Chapadão do Lageado, Dona Emma, Ibirama, Imbuia, Ituporanga, José Boiteux, Laurentino, Lontras, Mirim Doce, Petrolândia, Pouso Re"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "dos órgãos de saúde pública para execução de tais políticas estão expressas na Portaria MS/GM nº 1.378, de 9 de julho de 2013, que define enquanto competência",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "1.378",
+      "data": "09/07/2013",
+      "trecho": "dos órgãos de saúde pública para execução de tais políticas estão expressas na Portaria MS/GM nº 1.378, de 9 de julho de 2013, que define enquanto competência"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "09/07/2013",
+   "natureza": null,
+   "ibge": "4208500",
+   "municipio": "Ituporanga",
+   "uf": "SC",
+   "url": "https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/399-regional-de-saude-de-rio-do-sul.html?download=1226%3Appr-esp-santa-terezinha&Itemid=109",
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "7384cb1b7b",
+   "origem": "seguimento",
+   "leu_documento": true,
+   "hash_evidencia": "6b0bb7af0e1ca5d476bd0c17a6a3555d1e5becd61e2ede7880484d234b3f1b30"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4314902",
+   "municipio": "Porto Alegre",
+   "uf": "RS",
+   "url": "https://sintse.tse.jus.br/documentos/2026/Out/6/diario-da-justica-eletronico-tres-destaques/portaria-no-2-813-2026-institui-o-plano-de-contingencia-socioambiental-do-tribunal-regional",
+   "pista_id": "cc63c5b73e",
+   "origem": "seguimento",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "minuta_ou_rascunho",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ão da Vale, em Tapira, Minas Gerais. B) Barragem de rejeito da mina Gongo Soco, Barão de Cocais, Minas Gerais. C) Barragem da geração de energia, São José da Ba"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "LANO ESTADUAL DE ENFRENTAMENTO A DESASTRES TECNOLÓGICOS 2025-2031 VERSÃO 2025 1 CONSULTA PÚBLICA Participe da revisão anual do Plano Estadual de Enfrentamento a",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "o documento se declara minuta, rascunho, versão para consulta ou apresentação",
+      "trecho": "LANO ESTADUAL DE ENFRENTAMENTO A DESASTRES TECNOLÓGICOS 2025-2031 VERSÃO 2025 1 CONSULTA PÚBLICA Participe da revisão anual do Plano Estadual de Enfrentamento a"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3105400",
+   "municipio": "Barão de Cocais",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/system/files/media/defesacivil/documento_detalhado/2025/manual-guia/22-plano-estadual-de-enfrentamento-desastres-tecnologicos-2025-2031-18-12-2025-20h-final-1.pdf",
+   "pista_id": "07856380aa",
+   "origem": "seguimento",
+   "leu_documento": true,
+   "hash_evidencia": "79ebf072abfd6c01b0567fa6e30beac24ea928a0a6abf7e1bb7e3a91b467e4a3"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Barão de Cocais\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3105400",
+   "municipio": "Barão de Cocais",
+   "uf": "MG",
+   "url": "https://sapl.congonhas.mg.leg.br/media/sapl/public/documentoacessorio/2024/820/relatorio-_versao_final_do_requerimento_cidadao_n8_de_2024.pdf",
+   "pista_id": "0a71f7d0fc",
+   "origem": "seguimento",
+   "leu_documento": true,
+   "hash_evidencia": "705b3d085e8883bb3e8d364255930c812c6c181202902fa3255bcefa6b0ac785"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Lambari\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3137809",
+   "municipio": "Lambari",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2025/07/NOTA-TE%CC%81CNICA-No-342025-CGARB-DEDT-SVSA-MS.pdf",
+   "pista_id": "043d70ee30",
+   "origem": "seguimento",
+   "leu_documento": true,
+   "hash_evidencia": "b70552ebfb1c8c57d92f1c74f816d27f22dd5e17371ecdd07208e33968828fde"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Lambari\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3137809",
+   "municipio": "Lambari",
+   "uf": "MG",
+   "url": "https://www3.sema.rs.gov.br/upload/arquivos/202605/14095809-apa-lag-verde-1.pdf",
+   "pista_id": "7361617cc8",
+   "origem": "seguimento",
+   "leu_documento": true,
+   "hash_evidencia": "71737775040e1157d10bb7be1e3a1aee7318e1a85b462a23c54374aa4a014efb"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3516200",
+   "municipio": "Franca",
+   "uf": "SP",
+   "url": "https://www.saude.sp.gov.br/resources/vetores/homepage/banner_central/planos-municipais-manejo-escorpiao/ipua.pdf",
+   "pista_id": "2cf957da34",
+   "origem": "seguimento",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "8213 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Decreto Municipal nº 110/2023 Cidade: Limeira-SP Data: 27/04/2023 Situação: Revogada Classificação: Servidor Público, cargos, salários, funções gratificadas e b"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Decreto Municipal nº 110/2023 Cidade: Limeira-SP Data: 27/04/2023 Situação: Revogada Classificação: Servidor Público, cargos, salários, funções gratificadas e b",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "110/2023",
+      "data": "27/04/2023",
+      "trecho": "Decreto Municipal nº 110/2023 Cidade: Limeira-SP Data: 27/04/2023 Situação: Revogada Classificação: Servidor Público, cargos, salários, funções gratificadas e b"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "Servidor Público, cargos, salários, funções gratificadas e benefícios Autoria: Prefeito Mário Celso Botion Ementa/Assunto: Regulamenta a concessão dos adiciona"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: sem gatilho (previsão, limiar ou referência ao ciclo)"
+    }
+   },
+   "categoria": null,
+   "data": "27/04/2023",
+   "natureza": "DUVIDA",
+   "ibge": "3526902",
+   "municipio": "Limeira",
+   "uf": "SP",
+   "url": "http://legislacao.limeira.sp.leg.br/?Pagina=2&Pesquisa=Simples&TipoId=0&Ano=2023&SituacaoId=3370&Ordernacao=NumeroAnoDecrescente&Export=Pdf",
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "97d19d9a81",
+   "origem": "seguimento",
+   "leu_documento": true,
+   "hash_evidencia": "3de8e34d59c8835daa04c03cd0acfe25d3466f3ae77313489263fcb4e3806a39"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3504107",
+   "municipio": "Atibaia",
+   "uf": "SP",
+   "url": "https://www.camaraatibaia.sp.gov.br/temp/29092026232345PLC_06_2025_PDTIC.pdf",
+   "pista_id": "0bf5d25583",
+   "origem": "seguimento",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.3 (03/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19999 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Atibaia\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3504107",
+   "municipio": "Atibaia",
+   "uf": "SP",
+   "url": "https://portal-adm.campinas.sp.gov.br/sites/default/files/publicacoes-dom/dom/2043531493110914931120435324.pdf",
+   "pista_id": "55b7cfa8fe",
+   "origem": "seguimento",
+   "leu_documento": true,
+   "hash_evidencia": "dfd725a2cef49e85284f16843cab0acfe259fb252e8eed35d0fb16e137bca0e5"
   }
  ]
 }
