@@ -240,14 +240,14 @@
    "id": "municipios_alerta_cemaden",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob alerta do Cemaden",
-   "valor": 12,
+   "valor": 10,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "07/10/2026 07:18",
+   "referencia": "07/10/2026 10:51",
    "fonte": "Cemaden",
    "url_fonte": "https://www.gov.br/cemaden/pt-br",
-   "consultado_em": "07/10/2026 07:18",
+   "consultado_em": "07/10/2026 10:51",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -260,14 +260,14 @@
    "id": "municipios_aviso_inmet",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob aviso do Inmet",
-   "valor": 3300,
+   "valor": 3461,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "07/10/2026 07:18",
+   "referencia": "07/10/2026 10:51",
    "fonte": "Inmet",
    "url_fonte": "https://portal.inmet.gov.br/",
-   "consultado_em": "07/10/2026 07:18",
+   "consultado_em": "07/10/2026 10:51",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -280,14 +280,14 @@
    "id": "decreto_e_alerta_ao_mesmo_tempo",
    "grupo": "risco_agora",
    "rotulo": "Municípios com decreto de emergência e alerta ao mesmo tempo",
-   "valor": 503,
+   "valor": 506,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "07/10/2026 07:18",
+   "referencia": "07/10/2026 10:51",
    "fonte": "MARÉ (cruzamento das duas consultas)",
    "url_fonte": null,
-   "consultado_em": "07/10/2026 07:18",
+   "consultado_em": "07/10/2026 10:51",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -300,7 +300,7 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 8763,
+   "valor": 12477,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
@@ -314,59 +314,59 @@
    "lista": [
     {
      "uf": "PA",
-     "valor": 4659
+     "valor": 7237
     },
     {
      "uf": "AM",
-     "valor": 1360
+     "valor": 1751
     },
     {
      "uf": "BA",
-     "valor": 695
+     "valor": 893
     },
     {
      "uf": "PI",
-     "valor": 652
+     "valor": 785
     },
     {
      "uf": "MA",
-     "valor": 415
+     "valor": 505
     },
     {
      "uf": "TO",
-     "valor": 250
+     "valor": 344
     },
     {
      "uf": "AC",
-     "valor": 197
+     "valor": 237
     },
     {
      "uf": "MG",
-     "valor": 139
+     "valor": 191
     },
     {
      "uf": "RR",
-     "valor": 138
+     "valor": 179
     },
     {
      "uf": "AP",
-     "valor": 70
+     "valor": 117
     },
     {
      "uf": "RO",
-     "valor": 69
+     "valor": 81
     },
     {
      "uf": "MT",
-     "valor": 47
+     "valor": 68
     },
     {
      "uf": "CE",
-     "valor": 30
+     "valor": 41
     },
     {
      "uf": "AL",
-     "valor": 14
+     "valor": 17
     },
     {
      "uf": "GO",
@@ -374,11 +374,11 @@
     },
     {
      "uf": "RN",
-     "valor": 8
+     "valor": 10
     },
     {
      "uf": "PB",
-     "valor": 5
+     "valor": 6
     },
     {
      "uf": "ES",
