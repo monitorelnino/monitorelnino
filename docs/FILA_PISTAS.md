@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 06/10/2026 · 3829 pendente(s) · 8497 decidida(s) · A=180 B=565 C=3084
+Gerado em 07/10/2026 · 3843 pendente(s) · 8662 decidida(s) · A=180 B=576 C=3087
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -390,7 +390,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Lista de planos municipais. PLANO MUNICIPAL DE EDUCAÇÃO RELATÓRIO DE GESTÃO MUNICIPAL RELATÓRIO ANUAL DE AÇÕES DESENVOLVIDAS EM 2025 21/05/2026 RELATÓRIO DE GESTÃO DE EDUCAÇÃO 2024 06/02/2025 RELATÓRIO ANUAL DE GESTÃO DA
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
-## Barão de Cocais/MG — 5 pendente(s)
+## Barão de Cocais/MG — 7 pendente(s)
 - `7707f5b8cd` · nível **A** (6 pts) · seguimento_busca_oficial · RESPOSTA · **Decreto Municipal nº 280**, 90.01.0009
   - título: Diário Do ExECutivo - SEF/MG
   - url: https://www.fazenda.mg.gov.br/governo/compras_publicas_e_contratos/compras/pregao_eletronico/extrato-de-publicacao-66.pdf
@@ -409,11 +409,23 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://sistemas.meioambiente.mg.gov.br/reunioes/uploads/qJjSUsOciyy1K4_e5E6iIOms7nXl3-sA.pdf
   - trecho: Brucutu, nos municípios São Gonçalo do Rio Abaixo e Barão de Cocais/MG (processo ... Plano de Contingência e a realização de inúmeros treinamentos ...
   - juiz: portão automático: ato de 2017 — pode ser edição anterior; decisão humana
+- `0a71f7d0fc` · nível **B** (4 pts) · seguimento · EX_ANTE · citação não extraída
+  - título: DIRETRIZES TÉCNICAS E SOCIOAMBIENTAIS PARA PROJETOS ...
+  - url: https://sapl.congonhas.mg.leg.br/media/sapl/public/documentoacessorio/2024/820/relatorio-_versao_final_do_requerimento_cidadao_n8_de_2024.pdf
+  - trecho: Medidas Preventivas e Plano de Contingência ... Barão de Cocais. A-05-04-7 - Pilhas de rejeito/estéril -. Minério de ferro. NE.
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 - `485d102b89` · nível **B** (3 pts) · seguimento_busca_oficial · EX_ANTE · **Portaria nº 70.389**, 17/05/2017
   - título: Programa de Vigilância em Saúde Ambiental Relacionada aos Riscos ...
   - url: http://vigilancia.saude.mg.gov.br/index.php/programa-de-vigilancia-em-saude-ambiental-relacionada-aos-riscos-decorrentes-dos-desastres-vigidesastres/
   - trecho: Visando preparar o setor saúde ... o Plano de Contingência para os acidentes com Barragens de Mineração em Minas Gerais em parceria com o Corpo de Bombeiros de Minas Gerias. Em maio desse ano (2023) ocorreu o primeiro se
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `07856380aa` · nível **B** (3 pts) · seguimento · RESPOSTA · data 2025 (do trecho)
+  - título: PLANO ESTADUAL - Portal MG
+  - url: https://www.mg.gov.br/system/files/media/defesacivil/documento_detalhado/2025/manual-guia/22-plano-estadual-de-enfrentamento-desastres-tecnologicos-2025-2031-18-12-2025-20h-final-1.pdf
+  - trecho: Dec 18, 2025 ... PLANCON - Plano de Contingência. PMDI - Plano Mineiro de ... Barragem de Rejeito em Barão de Cocais (MG) pode se romper nos próximos dias.
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza RESPOSTA — só ex-ante é aplicado sozinho
 
 ## Coqueiral/MG — 1 pendente(s)
 - `e3edb754f4` · nível **A** (6 pts) · busca_web · DUVIDA · citação não extraída
@@ -472,7 +484,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 
-## Lambari/MG — 4 pendente(s)
+## Lambari/MG — 6 pendente(s)
 - `36a3c6f5a6` · nível **A** (6 pts) · seguimento_busca_oficial · DUVIDA · **Lei n.º 14.133**, 01/04/2021
   - título: aviso de contratação direta (dispensa eletrônica)
   - url: https://www.saaelambari.mg.gov.br/arquivos/09d0b2fadde749a15e2609a5a168537f.pdf
@@ -495,6 +507,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Dec 17, 2025 ... Plano de Contingência para Resposta às Emergências em Saúde Pública ... Lambari. MG. 313900. Machado. MG. 313990. Maria da Fé. MG. 314040.
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `043d70ee30` · nível **B** (3 pts) · seguimento · EX_ANTE · data 2025 (do trecho)
+  - título: nota técnica nº 34/2025-cgarb/dedt/svsa/ms
+  - url: https://www.saude.mg.gov.br/wp-content/uploads/2025/07/NOTA-TE%CC%81CNICA-No-342025-CGARB-DEDT-SVSA-MS.pdf
+  - trecho: Apr 28, 2025 ... Plano de Contingência para Resposta às Emergências em Saúde Pública ... 313780 Lambari. 35. SP. 353282. Nova Campina. MUNICÍPIOS DA ÁREA ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `7361617cc8` · nível **C** (3 pts) · seguimento · EX_ANTE · data 2006 (do trecho)
+  - título: PLANO DE MANEJO DA APA DA LAGOA VERDE - Sema
+  - url: https://www3.sema.rs.gov.br/upload/arquivos/202605/14095809-apa-lag-verde-1.pdf
+  - trecho: Tal plano de contingencia deverá ser formalizado mediante convênio ... Lambari-de-faixa-preta. Hyphessobrycon togoi. (Miquelarena& López, 2006). Lambari-do ...
+  - ⚠ uf_divergente_na_url
+  - juiz: portão automático: alerta da triagem de confiança: uf_divergente_na_url
 
 ## Monte Sião/MG — 1 pendente(s)
 - `53156f516d` · nível **A** (9 pts) · busca_web · EX_ANTE · data 2054 (do trecho)
@@ -913,7 +937,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Este Plano de Contingência estabelece os protocolos e procedimentos a serem ... do Avaí e para o Hospital São José em Bom Jesus do Itabapoana. 3 Solicitar ...
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
-## Cabo Frio/RJ — 7 pendente(s)
+## Cabo Frio/RJ — 8 pendente(s)
 - `17218417dd` · nível **A** (6 pts) · busca_web · EX_ANTE · data 18/09/2026 (do trecho)
   - url: https://lagosinforma.com.br/cidades/cabofrio/cabo-frio-prepara-plano-de-contingencia-na-saude-para-possiveis-impactos-do-el-nino/
   - trecho: Cabo Frio prepara plano de contingência na Saúde para possíveis impactos do El Niño. Foto de Redação Por Redação; • 18/09/2026; - 15:31.
@@ -938,6 +962,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: DELIBERAÇÃO AGENERSA Nº 5022 DE 26 DE MARÇO DE 2026
   - url: https://www.rj.gov.br/agenersa/sites/default/files/arquivos_paginas_basicas/DELIBERACAO5022.pdf
   - trecho: Apr 8, 2026 ... 1º Reconhecer que a Concessionária Prolagos apresentou o Plano de Contingência dos. Sistemas de Abastecimento de Água e de Esgotamento Sanitário ...
+- `c0520454dc` · nível **B** (3 pts) · seguimento · EX_ANTE · **RESOLUÇÃO N° 200**, 19/03/2020
+  - título: Á - Saude.RJ
+  - url: https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=NTI5NjU%2C
+  - trecho: Apr 8, 2020 ... - o Plano de Contingência da Atenção Primária à Saúde para o Co- ... Cabo Frio. Campos dos Goitacazes. Casimiro de Abreu. Cordeiro. Iguaba ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `0bafbf4dbc` · nível **C** (5 pts) · seguimento · EX_ANTE · data 2020 (do trecho)
   - título: Saúde de Cabo Frio capacita multiplicadores para enfrentamento ...
   - url: https://cabofrio.rj.gov.br/saude-de-cabo-frio-capacita-multiplicadores-para-enfrentamento-ao-coronavirus/
@@ -1925,16 +1954,27 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Dec 5, 2025 ... Fortalecer a Proteção Social Brasileira no município de Pedras Grandes/SC, por meio da consolidação de uma gestão descentralizada e ...
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Pomerode/SC — 2 pendente(s)
+## Pomerode/SC — 4 pendente(s)
 - `2871712dd9` · nível **A** (6 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
   - título: secretariadesaúde de pomerode - Vigilância Sanitária
   - url: https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/401-regional-de-saude-de-blumenau.html?download=1253%3Appr-esp-pomerode&Itemid=109
   - trecho: m o Plano de Contingência de Proteção e Defesa Civil ... mesotérmico úmido. nicípio de Pomerode, a média pluviométrica do município é de 1.70 atempo.com.br/ ...
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `7803f88d40` · nível **B** (5 pts) · seguimento · EX_ANTE · citação não extraída
+  - título: estudo técnico preliminar
+  - url: https://pncp.gov.br/pncp-api/v1/orgaos/83102251000104/compras/2026/314/arquivos/3
+  - trecho: ... Pomerode/SC. 1.5. A necessidade identificada também compreende o ... 3.3. O auxílio relacionado ao Plano de Contingência de Proteção e Defesa Civil – PLANCON, ao ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `b16e877d25` · nível **B** (3 pts) · busca_web · RESPOSTA · **Decreto Estadual nº 1.530**, 18/05/2026
   - url: https://www.jornaldepomerode.com.br/como-se-preparar-para-o-el-nino-nova-pagina-da-defesa-civil-reune-informacoes-alertas-e-medidas-de-autoprotecao/
   - trecho: Jun 17, 2026 ... Outro destaque é a área “Planos de Preparação”, que disponibiliza o Plano de Contingência ... >>> Siga o canal do Jornal de Pomerode no WhatsApp.
   - juiz: portão automático: fonte não oficial
+- `193742abd5` · nível **C** (4 pts) · seguimento · DUVIDA · data 18/06/2014 (do trecho)
+  - título: 18 de junho de 2014 A Sessão Ordinária da Câmara de Vereadores ...
+  - url: https://www.cmpomerode.sc.gov.br/imprensa/noticias/0/527/0/846
+  - trecho: Existe um plano de contingência em caso de emergência, elaborado junto com o Comdec. ... Pomerode/SC. (47) 3387-2464. camara@cmpomerode.sc.gov.br. 83.551.895/0001 ...
+  - ⚠ risco_errado_no_titulo, ano_anterior_ao_ciclo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Rio do Oeste/SC — 7 pendente(s)
 - `c5beca2c33` · nível **A** (7 pts) · busca_web · — · data 13/04/2021 (do trecho)
@@ -2191,7 +2231,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Moreira Siketo, Juiz da 009ª Zona Eleitoral; e Mário Celso Lopes, Prefeito do município de Andradina/SP.         PREFEITURA MUNICIPAL DE ANDRADINA                COMISSÃO MUNICIPAL DE DEFESA CIVIL                        
   - juiz: portão automático: data do ato incompleta (2021)
 
-## Atibaia/SP — 5 pendente(s)
+## Atibaia/SP — 7 pendente(s)
 - `bf998ab2f2` · nível **A** (6 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: El Niño em Atibaia: o dobro da chuva prevista para setembro em ...
   - url: https://www.atibaia.sp.gov.br/noticias/defesa-civil/el-nino-em-atibaia-o-dobro-da-chuva-prevista-para-setembro-em-apenas-tres-dias
@@ -2202,6 +2242,17 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.saude.sp.gov.br/resources/cve-centro-de-vigilancia-epidemiologica/areas-de-vigilancia/doencas-de-transmissao-por-vetores-e-zoonoses/doc/famarela/2025/febre_amarela2025_plano_acao_vacinacao_05agosto.pdf
   - trecho: Sep 8, 2025 ... 350410 ATIBAIA. AFETADA. CAMPINAS. BRAGANÇA. 350710 BOM ... Plano de contingência para resposta às emergências em Saúde Pública: febre amarela.
   - ⚠ ano_anterior_ao_ciclo
+- `0bf5d25583` · nível **B** (4 pts) · seguimento · DUVIDA · data 2025 (do trecho)
+  - título: Projeto de Lei Complementar nº 06/2025
+  - url: https://www.camaraatibaia.sp.gov.br/temp/29092026232345PLC_06_2025_PDTIC.pdf
+  - trecho: Mar 18, 2025 ... Instituição das políticas do projeto de lei PDTIC Atibaia. Criações ... • Aceitar: de forma ativa, estabelecendo plano de contingência caso o ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `55b7cfa8fe` · nível **B** (4 pts) · seguimento · EX_ANTE · **LEI Nº 16.968**, 23/09/2026
+  - título: Quinta-feira, 24 de setembro de 2026 - Campinas
+  - url: https://portal-adm.campinas.sp.gov.br/sites/default/files/publicacoes-dom/dom/2043531493110914931120435324.pdf
+  - trecho: Sep 24, 2026 ... ... PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL -. PCPDC OPERAÇÃO ... Atibaia para o abastecimento ininterrupto de mais de 1,2 milhão ...
+  - juiz: portão automático: triagem do ato: destino=indefinido (autoridade=indefinido, objeto=indefinido)
 - `3a5b0ed193` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: El Niño em Atibaia: o dobro da chuva prevista para setembro em ...
   - url: https://www.instagram.com/p/DdMtGm7FpnC/
@@ -2289,7 +2340,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Plano de Contingência para Ressacas e Inundações - Santos ... 21 CUBATÃO (SP). Lei Complementar n° 134 de 28 de dezembro de 2023. Institui ...
   - juiz: portão automático: ato de 2023 — pode ser edição anterior; decisão humana
 
-## Franca/SP — 5 pendente(s)
+## Franca/SP — 6 pendente(s)
 - `8bfdd5f2e7` · nível **A** (7 pts) · seguimento_busca_oficial · RESPOSTA · data 2026 (do trecho)
   - título: PLANO DE CONTINGÊNCIA DE DEFESA CIVIL - Franca
   - url: https://www3.franca.sp.gov.br/pdf/20260316140411_69b8380b3cf8d_PLANO_DE_CONTING_NCIA_DE_DEFESA_CIVIL_-_PER_ODOS_CHUVOSOS_.pdf
@@ -2314,6 +2365,10 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: Plano de Contingência da Assistência Social - Município de Franca
   - url: https://www4.franca.sp.gov.br/index.php?option=com_phocadownload&view=file&id=1141%3Adecreto-n-7739&Itemid=1944
   - trecho: Notas Públicas - CMAS · Boletins informativos CMAS periodo pandemia · Plano de Contingência da Assistência Social ... Contato. ouvidoria@franca.sp.gov.br (16)3711 ...
+- `2cf957da34` · nível **B** (4 pts) · seguimento · — · citação não extraída
+  - título: PLANO DE AÇÃO PARA MANEJO E CONTROLE DE ESCORPIÃO
+  - url: https://www.saude.sp.gov.br/resources/vetores/homepage/banner_central/planos-municipais-manejo-escorpiao/ipua.pdf
+  - trecho: O plano de contingência para enfrentamento de Escorpião no Município Ipuã, tem por finalidade ... 5.1 Localização: Compõe a DRS VIII de Franca um total de 22 ...
 
 ## Ilhabela/SP — 2 pendente(s)
 - `d214752152` · nível **A** (7 pts) · busca_web · EX_ANTE · citação não extraída
@@ -2357,11 +2412,17 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ risco_errado_no_titulo
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
-## Limeira/SP — 3 pendente(s)
+## Limeira/SP — 4 pendente(s)
 - `64efa41e1b` · nível **A** (7 pts) · seguimento_busca_oficial · EX_ANTE · **Portaria nº 55**, 25/04/2023
   - título: Limeira-SP - Legislação Digital
   - url: https://legislacao.limeira.sp.leg.br/limeira-sp?Pagina=92&Pesquisa=Simples&SituacaoId=3370&Ordernacao=DataCrescente&Export=Pdf
   - trecho: Limeira-SP. Portaria nº 37/2023. Data: 22 ... Ementa/Assunto: Institui o Plano de Contingência Municipal para a Prevenção e Controle das Arboviroses Urbanas.
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `97d19d9a81` · nível **B** (6 pts) · seguimento · EX_ANTE · **Portaria nº 94**, 07/12/2023
+  - título: PDF - Página inicial - Legislação Digital
+  - url: http://legislacao.limeira.sp.leg.br/?Pagina=2&Pesquisa=Simples&TipoId=0&Ano=2023&SituacaoId=3370&Ordernacao=NumeroAnoDecrescente&Export=Pdf
+  - trecho: Jun 20, 1991 ... Cidade: Limeira-SP. Data: 27/04/2023. Situação: Revogada. Classificação ... Ementa/Assunto: Institui o Plano de Contingência Municipal para a ...
+  - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `931153e48f` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
   - título: PLANO MUNICIPAL DE SANEAMENTO BÁSICO - CEIVAP
@@ -12083,7 +12144,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.novohamburgo.rs.gov.br/noticia/novo-hamburgo-debate-possiveis-impactos-el-nino-2o-seminario-resiliencia-climatica
   - trecho: Jul 6, 2026 ... Novo Hamburgo debate possíveis impactos do El Niño no 2º Seminário de Resiliência Climática ... Plano de Contingência, como a integração entre as ...
 
-## Porto Alegre/RS — 5 pendente(s)
+## Porto Alegre/RS — 6 pendente(s)
 - `9610100eb2` · nível **B** (6 pts) · seguimento_busca_oficial · EX_ANTE · **PORTARIA Nº 708**, 2011
   - título: portaria nº 708, doe 106, de 31 de maio de 2011
   - url: https://saude.rs.gov.br/upload/arquivos/202012/07173724-708-11.pdf
@@ -12111,6 +12172,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Dec 27, 2024 ... IX - plano de contingência: conjunto de procedimentos e de ações ... PALÁCIO PIRATINI , em Porto Alegre, 27 de dezembro de 2024.
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `cc63c5b73e` · nível **C** (4 pts) · seguimento · — · data 05/10/2026 (do trecho)
+  - título: TRE/RS
+  - url: https://sintse.tse.jus.br/documentos/2026/Out/6/diario-da-justica-eletronico-tres-destaques/portaria-no-2-813-2026-institui-o-plano-de-contingencia-socioambiental-do-tribunal-regional
+  - trecho: 6 hours ago ... Porto Alegre, disponibilizado segunda-feira, 05 de outubro de 2026. 2 ... 1º Fica instituído o Plano de Contingência Socioambiental do ...
+  - ⚠ risco_errado_no_titulo
 
 ## Santa Rosa/RS — 7 pendente(s)
 - `4eebce38c0` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
@@ -12342,12 +12408,17 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 
-## Ituporanga/SC — 3 pendente(s)
+## Ituporanga/SC — 5 pendente(s)
 - `ec2d6a37f8` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · **LEI Nº 18.646**, 06/06/2023
   - título: LEI Nº 18.646, de 5 de junho de 2023 - Legislação SC
   - url: https://leis.alesc.sc.gov.br/ato-normativo/22014
   - trecho: IV – coordenar a elaboração do plano de contingência estadual e fomentar a elaboração dos planos de contingência municipais;. V – mobilizar recursos para ...
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `7384cb1b7b` · nível **B** (5 pts) · seguimento · EX_ANTE · citação não extraída
+  - título: - VIGIDESASTRES - Vigilância Sanitária
+  - url: https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/399-regional-de-saude-de-rio-do-sul.html?download=1226%3Appr-esp-santa-terezinha&Itemid=109
+  - trecho: Ituporanga, José Boiteux, Laurentino, Lontras, Mirim Doce, Petrolândia, Pouso ... especialmente com o Plano de Contingência da Defesa Civil e com os demais planos.
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `8fdf540c39` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - url: https://www.gcd.com.br/ituporanga/pedido-de-informacao-na-camara-cobra-preparo-de-ituporanga-para-o-el-nino/
@@ -12357,6 +12428,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.gcd.com.br/ituporanga/ituporanga-decreta-estado-de-alerta-climatico-por-previsoes-do-el-nino/
   - trecho: May 29, 2026 ... Ituporanga decreta estado de alerta climático ... Diante do El Niño, lojistas de Rio do Sul são orientados a fazer plano de contingência.
   - juiz: portão automático: fonte não oficial
+- `bf6315b6cb` · nível **B** (4 pts) · seguimento · — · data 2021 (do trecho)
+  - título: CONTINGÊNCIA 2021 - Defesa Civil
+  - url: https://defesacivil.blumenau.sc.gov.br/static/app/defesa-civil/Plano_de_conting%C3%AAncia_2021.pdf
+  - trecho: Plano de Contingência – Inundações e Movimentos de Massa - Anexo B – Abrigo ... Ituporanga. Amazonas. Garcia. 11,45. Reinoldo Freygang. Casa nº 130. Garcia.
+  - ⚠ ano_anterior_ao_ciclo
 
 ## Laguna/SC — 3 pendente(s)
 - `4c29f5f9a4` · nível **B** (4 pts) · busca_web · DUVIDA · data 10/07/2026 (do trecho)
@@ -16744,7 +16820,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ risco_errado_no_titulo
 
 ---
-## Decididas (8497) — registro permanente, nunca apagadas
+## Decididas (8662) — registro permanente, nunca apagadas
 
 - `094c653590` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
 - `5b22b54586` None/None · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · fonte não reconhecida como oficial (sem mudança)
@@ -23515,7 +23591,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `011419ba3d` None/None · pendente_confirmacao_documento · 
 - `011419ba3d` None/None · pendente_confirmacao_documento · 
 - `1bbdecc041` None/None · pendente_confirmacao_documento · 
-- `a6bca90e68` None/None · pendente_confirmacao_documento · 
+- `a6bca90e68` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `d5d0fecda3` None/None · pendente_confirmacao_documento · 
 - `ec0c694e6b` None/None · pendente_confirmacao_documento · 
 - `d5d0fecda3` None/None · pendente_confirmacao_documento · 
@@ -23529,7 +23605,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `b531ddc9be` None/None · pendente_confirmacao_documento · 
 - `2b807d4e87` None/None · pendente_confirmacao_documento · 
 - `b5a5d3d373` None/None · pendente_confirmacao_documento · 
-- `02c39c0323` None/None · pendente_confirmacao_documento · 
+- `02c39c0323` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `1669aa1df3` None/None · pendente_confirmacao_documento · 
 - `60dc4549f6` None/None · pendente_confirmacao_documento · 
 - `c347732d3c` None/None · pendente_confirmacao_documento · 
@@ -23547,7 +23623,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `42ac704cad` None/None · pendente_confirmacao_documento · 
 - `26c9d34bbd` None/None · pendente_confirmacao_documento · 
 - `8021999c59` None/None · pendente_confirmacao_documento · 
-- `e389f12881` None/None · pendente_confirmacao_documento · 
+- `e389f12881` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `b76ecd42b0` None/None · pendente_confirmacao_documento · 
 - `40fd5c66f0` None/None · pendente_confirmacao_documento · 
 - `9124c08cdc` None/None · pendente_confirmacao_documento · 
@@ -23572,7 +23648,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `3afc1496d9` None/None · pendente_confirmacao_documento · 
 - `5bacdecaa1` None/None · pendente_confirmacao_documento · 
 - `dc20440e1c` None/None · pendente_confirmacao_documento · 
-- `6db68b7155` None/None · pendente_confirmacao_documento · 
+- `6db68b7155` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `2fc49d18eb` None/None · pendente_confirmacao_documento · 
 - `14ff4ae899` None/None · pendente_confirmacao_documento · 
 - `348b9cd530` None/None · pendente_confirmacao_documento · 
@@ -23688,6 +23764,171 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `6be5487bde` None/None · pendente_confirmacao_documento · 
 - `8fd97a78bb` None/None · pendente_confirmacao_documento · 
 - `5b219092f3` None/None · pendente_confirmacao_documento · 
+- `8533584bc2` None/None · pendente_confirmacao_documento · 
+- `8533584bc2` None/None · pendente_confirmacao_documento · 
+- `094c653590` None/None · pendente_confirmacao_documento · 
+- `094c653590` None/None · pendente_confirmacao_documento · 
+- `1cb0decc46` None/None · pendente_confirmacao_documento · 
+- `fb4e7bc4b5` None/None · pendente_confirmacao_documento · 
+- `094c653590` None/None · pendente_confirmacao_documento · 
+- `094c653590` None/None · pendente_confirmacao_documento · 
+- `e62f4343ef` None/None · pendente_confirmacao_documento · 
+- `25c29928e7` None/None · pendente_confirmacao_documento · 
+- `95e3a547ef` None/None · pendente_confirmacao_documento · 
+- `0b2e33aa1a` None/None · pendente_confirmacao_documento · 
+- `00b89445b1` None/None · pendente_confirmacao_documento · 
+- `8c94db0d2a` None/None · pendente_confirmacao_documento · 
+- `7042882cb4` None/None · pendente_confirmacao_documento · 
+- `25f164ff31` None/None · pendente_confirmacao_documento · 
+- `02c39c0323` None/None · pendente_confirmacao_documento · 
+- `81a062e6fc` None/None · pendente_confirmacao_documento · 
+- `c3e3d92f31` None/None · pendente_confirmacao_documento · 
+- `ccd635129e` None/None · pendente_confirmacao_documento · 
+- `a1f2ba0d9c` None/None · pendente_confirmacao_documento · 
+- `a461bb74b0` None/None · pendente_confirmacao_documento · 
+- `8021999c59` None/None · pendente_confirmacao_documento · 
+- `b5a5d3d373` None/None · pendente_confirmacao_documento · 
+- `a47b77793a` None/None · pendente_confirmacao_documento · 
+- `f8eb43724d` None/None · pendente_confirmacao_documento · 
+- `04cc0f7c0a` None/None · pendente_confirmacao_documento · 
+- `d6cc257723` None/None · pendente_confirmacao_documento · 
+- `161800f7f6` None/None · pendente_confirmacao_documento · 
+- `f7454ed1f9` None/None · pendente_confirmacao_documento · 
+- `5b219092f3` None/None · pendente_confirmacao_documento · 
+- `4c74a22fd5` None/None · pendente_confirmacao_documento · 
+- `08b73f8043` None/None · pendente_confirmacao_documento · 
+- `0d90fb413f` None/None · pendente_confirmacao_documento · 
+- `a5fe62b612` None/None · pendente_confirmacao_documento · 
+- `1871fbb53a` None/None · pendente_confirmacao_documento · 
+- `c15acb4f6e` None/None · pendente_confirmacao_documento · 
+- `6d3b129fe8` None/None · pendente_confirmacao_documento · 
+- `47f4917ddb` None/None · pendente_confirmacao_documento · 
+- `7dff927496` None/None · pendente_confirmacao_documento · 
+- `e19d3024ac` None/None · pendente_confirmacao_documento · 
+- `195f74044f` None/None · pendente_confirmacao_documento · 
+- `bb43a1c3d4` None/None · pendente_confirmacao_documento · 
+- `35ffc3eed9` None/None · pendente_confirmacao_documento · 
+- `affea1190c` None/None · pendente_confirmacao_documento · 
+- `908c2db975` None/None · pendente_confirmacao_documento · 
+- `bfec25059d` None/None · pendente_confirmacao_documento · 
+- `96cc183ca0` None/None · pendente_confirmacao_documento · 
+- `b77218045c` None/None · pendente_confirmacao_documento · 
+- `d57fdcabba` None/None · pendente_confirmacao_documento · 
+- `1775f63d5f` None/None · pendente_confirmacao_documento · 
+- `ca7abbf871` None/None · pendente_confirmacao_documento · 
+- `864e5e1521` None/None · pendente_confirmacao_documento · 
+- `f5d7f524bc` None/None · pendente_confirmacao_documento · 
+- `a5233a6b79` None/None · pendente_confirmacao_documento · 
+- `b54784b5b7` None/None · pendente_confirmacao_documento · 
+- `4be99d7779` None/None · pendente_confirmacao_documento · 
+- `66fe498122` None/None · pendente_confirmacao_documento · 
+- `1094326732` None/None · pendente_confirmacao_documento · 
+- `ba019fea3a` None/None · pendente_confirmacao_documento · 
+- `bfe346f869` None/None · pendente_confirmacao_documento · 
+- `4c74a22fd5` None/None · pendente_confirmacao_documento · 
+- `908c2db975` None/None · pendente_confirmacao_documento · 
+- `93b9011414` None/None · pendente_confirmacao_documento · 
+- `449909b551` None/None · pendente_confirmacao_documento · 
+- `35ffc3eed9` None/None · pendente_confirmacao_documento · 
+- `efe6d42d28` None/None · pendente_confirmacao_documento · 
+- `3e0540d486` None/None · pendente_confirmacao_documento · 
+- `215f49302f` None/None · pendente_confirmacao_documento · 
+- `5194a69236` None/None · pendente_confirmacao_documento · 
+- `59d77d869d` None/None · pendente_confirmacao_documento · 
+- `cac9bb3934` None/None · pendente_confirmacao_documento · 
+- `41b390ca86` None/None · pendente_confirmacao_documento · 
+- `b9c330772f` None/None · pendente_confirmacao_documento · 
+- `812d62900f` None/None · pendente_confirmacao_documento · 
+- `107d411e4a` None/None · pendente_confirmacao_documento · 
+- `03cab5ab14` None/None · pendente_confirmacao_documento · 
+- `e55a2a0d12` None/None · pendente_confirmacao_documento · 
+- `276bbd656f` None/None · pendente_confirmacao_documento · 
+- `6184120423` None/None · pendente_confirmacao_documento · 
+- `53e0f0b724` None/None · pendente_confirmacao_documento · 
+- `cb76a451da` None/None · pendente_confirmacao_documento · 
+- `084aa43dd4` None/None · pendente_confirmacao_documento · 
+- `ca0ee81c1e` None/None · pendente_confirmacao_documento · 
+- `c386d3141e` None/None · pendente_confirmacao_documento · 
+- `0fe601bd42` None/None · pendente_confirmacao_documento · 
+- `082e2f8aaa` None/None · pendente_confirmacao_documento · 
+- `8dbfc9ab27` None/None · pendente_confirmacao_documento · 
+- `6c4e43568e` None/None · pendente_confirmacao_documento · 
+- `550fcfc3e9` None/None · pendente_confirmacao_documento · 
+- `410cf357e2` None/None · pendente_confirmacao_documento · 
+- `85877dac16` None/None · pendente_confirmacao_documento · 
+- `6f0e7c26b2` None/None · pendente_confirmacao_documento · 
+- `b9a21935c5` None/None · pendente_confirmacao_documento · 
+- `35ffc3eed9` None/None · pendente_confirmacao_documento · 
+- `96cc183ca0` None/None · pendente_confirmacao_documento · 
+- `8af342f9c1` None/None · pendente_confirmacao_documento · 
+- `0641cdb433` None/None · pendente_confirmacao_documento · 
+- `b78de9d777` None/None · pendente_confirmacao_documento · 
+- `71f2778962` None/None · pendente_confirmacao_documento · 
+- `d2cdda69f5` None/None · pendente_confirmacao_documento · 
+- `ee6147913c` None/None · pendente_confirmacao_documento · 
+- `2a6db0bdef` None/None · pendente_confirmacao_documento · 
+- `363bbcd95d` None/None · pendente_confirmacao_documento · 
+- `048d60419b` None/None · pendente_confirmacao_documento · 
+- `dca2d1d2c3` None/None · pendente_confirmacao_documento · 
+- `ca0ee81c1e` None/None · pendente_confirmacao_documento · 
+- `cc7c437c5d` None/None · pendente_confirmacao_documento · 
+- `c386d3141e` None/None · pendente_confirmacao_documento · 
+- `0fe601bd42` None/None · pendente_confirmacao_documento · 
+- `8ee7b7d385` None/None · pendente_confirmacao_documento · 
+- `2ef3655eb4` None/None · pendente_confirmacao_documento · 
+- `bdd691a8de` None/None · pendente_confirmacao_documento · 
+- `082e2f8aaa` None/None · pendente_confirmacao_documento · 
+- `8dbfc9ab27` None/None · pendente_confirmacao_documento · 
+- `410cf357e2` None/None · pendente_confirmacao_documento · 
+- `3e46e2b758` None/None · pendente_confirmacao_documento · 
+- `35ffc3eed9` None/None · pendente_confirmacao_documento · 
+- `b9a21935c5` None/None · pendente_confirmacao_documento · 
+- `4cab488c06` None/None · pendente_confirmacao_documento · 
+- `8b9e43600c` None/None · pendente_confirmacao_documento · 
+- `10d8340042` None/None · pendente_confirmacao_documento · 
+- `93b9011414` None/None · pendente_confirmacao_documento · 
+- `26620ca68c` None/None · pendente_confirmacao_documento · 
+- `0b32492891` None/None · pendente_confirmacao_documento · 
+- `b78de9d777` None/None · pendente_confirmacao_documento · 
+- `d2cdda69f5` None/None · pendente_confirmacao_documento · 
+- `16b03b6740` None/None · pendente_confirmacao_documento · 
+- `13a708251b` None/None · pendente_confirmacao_documento · 
+- `8f2fed9f15` None/None · pendente_confirmacao_documento · 
+- `3eb84bef4a` None/None · pendente_confirmacao_documento · 
+- `011419ba3d` None/None · pendente_confirmacao_documento · 
+- `ebdde7ab64` None/None · pendente_confirmacao_documento · 
+- `888a0f925e` None/None · pendente_confirmacao_documento · 
+- `ead719d5df` None/None · pendente_confirmacao_documento · 
+- `e8b78a084a` None/None · pendente_confirmacao_documento · 
+- `57edcd135f` None/None · pendente_confirmacao_documento · 
+- `4c74a22fd5` None/None · pendente_confirmacao_documento · 
+- `93b9011414` None/None · pendente_confirmacao_documento · 
+- `6be5487bde` None/None · pendente_confirmacao_documento · 
+- `3c4059701b` None/None · pendente_confirmacao_documento · 
+- `c55bef5118` None/None · pendente_confirmacao_documento · 
+- `f30f78d066` None/None · pendente_confirmacao_documento · 
+- `69a32cceaa` None/None · pendente_confirmacao_documento · 
+- `cc46820d1d` None/None · pendente_confirmacao_documento · 
+- `c5ffd1006b` None/None · pendente_confirmacao_documento · 
+- `784b6e1847` None/None · pendente_confirmacao_documento · 
+- `dcfce41c5e` None/None · pendente_confirmacao_documento · 
+- `05211fe511` None/None · pendente_confirmacao_documento · 
+- `4b57364756` None/None · pendente_confirmacao_documento · 
+- `a16fd3e582` None/None · pendente_confirmacao_documento · 
+- `c5ffd1006b` None/None · pendente_confirmacao_documento · 
+- `faed55db19` None/None · pendente_confirmacao_documento · 
+- `3319c72212` None/None · pendente_confirmacao_documento · 
+- `7cd0fc1a57` None/None · pendente_confirmacao_documento · 
+- `14080b518d` None/None · pendente_confirmacao_documento · 
+- `f4de4dba5a` None/None · pendente_confirmacao_documento · 
+- `cb76a451da` None/None · pendente_confirmacao_documento · 
+- `195f74044f` None/None · pendente_confirmacao_documento · 
+- `1d703e626e` None/None · pendente_confirmacao_documento · 
+- `cf288e34c8` None/None · pendente_confirmacao_documento · 
+- `c47227ff17` None/None · pendente_confirmacao_documento · 
+- `ac8366e515` None/None · pendente_confirmacao_documento · 
+- `6832fe1957` None/None · pendente_confirmacao_documento · 
+- `03f028c66d` None/None · pendente_confirmacao_documento · 
 - `e0c2afcacf` None/AC · fechada — sem município nem UF identificável na pista: a regra de entrada passa a descartar; reabre se a busca dirigida achar o alvo · 
 - `c53cf50fc3` Rio Branco/AC · fechada — sem documento oficial localizado no prazo da fila; reabre se surgir evidência nova para o mesmo município e assunto · 
 - `da2464af5e` defesa_civil/AC · fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila · 
