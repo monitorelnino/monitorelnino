@@ -68,6 +68,11 @@ def elo_do_artefato(nome: str) -> str:
 def classificar(caminho: str) -> str:
     """"fila" · "log" · "arquivo". Função pura — decide por qual porta o caminho entra."""
     c = str(caminho).replace("\\", "/")
+    # As recusas vêm antes da fila: o caminho casa com o prefixo das filas, mas a lista dentro do
+    # arquivo chama-se `rejeitadas`, e tratá-lo como fila lia zero pista e deixava a cópia de um
+    # elo sobrescrever a do outro — `pistas_rejeitadas.json` dobrou de 4,9 para 9,2 MB na rodada 8.
+    if c == "data/pistas_rejeitadas.json":
+        return "recusas"
     if c.startswith("data/pistas_") and c.endswith(".json"):
         return "fila"
     if c in ("data/log_buscas.json", "data/historico_mudancas.json",
@@ -85,6 +90,34 @@ def chave_da_lista(caminho: str) -> str:
             "data/saude_pipeline.json": "execucoes",
             "data/painel_da_noite.json": "noites"}.get(
                 str(caminho).replace("\\", "/"), "")
+
+
+def chave_da_recusa(registro: dict) -> str:
+    """A identidade de uma recusa. Função pura — a mesma de `scripts/pistas.py`."""
+    r = registro or {}
+    return "|".join([str(r.get("url") or ""), str(r.get("alvo") or ""),
+                     str(r.get("origem_canonica") or ""), str(r.get("motivo") or "")])
+
+
+def unir_recusas(da_arvore: list, do_artefato: list) -> list:
+    """Uma recusa por chave, com `vezes` somado. Função pura.
+
+    Recusa repetida não é recusa nova: o que cresce é a contagem, não o arquivo. Sem isso, cada
+    artefato acrescentava a sua cópia inteira e a trava de tamanho barrava a rodada.
+    """
+    fora, ordem = {}, []
+    for registro in list(da_arvore or []) + list(do_artefato or []):
+        k = chave_da_recusa(registro)
+        vezes = int((registro or {}).get("vezes") or 1)
+        if k in fora:
+            fora[k]["vezes"] = int(fora[k].get("vezes") or 1) + vezes
+            for campo, valor in (registro or {}).items():
+                if campo != "vezes" and (campo not in fora[k] or fora[k][campo] in (None, "", [], {})):
+                    fora[k][campo] = valor
+        else:
+            fora[k] = dict(registro or {}, vezes=vezes)
+            ordem.append(k)
+    return [fora[k] for k in ordem]
 
 
 def unir_log(da_arvore: list, do_artefato: list) -> list:
@@ -166,6 +199,18 @@ def _autoteste() -> int:
     ok("nome fora do padrão devolve vazio", elo_do_artefato("capturas-ci-9") == "")
 
     ok("fila de pista é fila", classificar("data/pistas_imprensa.json") == "fila")
+    ok("o arquivo de recusas tem porta própria",
+       classificar("data/pistas_rejeitadas.json") == "recusas")
+    ok("recusa repetida conta em vezes, e não duplica",
+       unir_recusas([{"url": "u", "motivo": "m"}], [{"url": "u", "motivo": "m"}])
+       == [{"url": "u", "motivo": "m", "vezes": 2}])
+    ok("recusa de outro motivo é outra recusa",
+       len(unir_recusas([{"url": "u", "motivo": "m"}], [{"url": "u", "motivo": "n"}])) == 2)
+    ok("`vezes` que já vinha somado é respeitado",
+       unir_recusas([{"url": "u", "motivo": "m", "vezes": 3}],
+                    [{"url": "u", "motivo": "m", "vezes": 2}])[0]["vezes"] == 5)
+    ok("união de recusas com lados vazios não quebra",
+       unir_recusas(None, None) == [] and unir_recusas([], [{"url": "x"}]) != [])
     ok("log de buscas é log", classificar("data/log_buscas.json") == "log")
     ok("jsonl do log é log", classificar("data/log_buscas/2026-10.jsonl") == "log")
     ok("o painel da noite é log", classificar("data/painel_da_noite.json") == "log")
@@ -286,6 +331,19 @@ def _aplicar(dir_artefatos: pathlib.Path, aplicar: bool, importacao: bool) -> in
                     # juntam em memoria e vao ao disco uma vez so -- que e o que "um escritor"
                     # quer dizer quando levado a serio.
                     filas_juntas.setdefault(rel, []).append((elo, origem))
+                elif tipo == "recusas" and aplicar:
+                    # Recusa repetida conta em `vezes` e nao duplica registro: cada artefato traz a
+                    # sua copia inteira do arquivo de recusas, e copiar uma por cima da outra
+                    # dobrava o arquivo (4,9 -> 9,2 MB na rodada 8, barrado pela trava de tamanho).
+                    doc = json.loads(destino.read_text(encoding="utf-8")) if destino.exists()                         else {"rejeitadas": []}
+                    novo_doc = json.loads(origem.read_text(encoding="utf-8"))
+                    juntas = unir_recusas(doc.get("rejeitadas") or [],
+                                          novo_doc.get("rejeitadas") or [])
+                    doc["rejeitadas"] = juntas
+                    doc["total"] = len(juntas)
+                    from coletores_base import gravar_em
+                    gravar_em(destino, doc)
+                    aplicados += 1
                 elif tipo == "log" and aplicar:
                     chave = chave_da_lista(rel)
                     if rel.endswith(".jsonl"):
