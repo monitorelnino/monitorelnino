@@ -4,56 +4,56 @@
   "efeito_no_indice": "NENHUM — peso zero, como todo sinal de risco.",
   "escrito_por": "coletar_sinais_risco.py"
  },
- "gerado_em": "07/10/2026 05:55",
+ "gerado_em": "07/10/2026 06:08",
  "consultas": [
   {
    "fonte": "inmet_avisos",
    "url": "https://apiprevmet3.inmet.gov.br/avisos/ativos",
-   "consultado_em": "07/10/2026 05:54",
+   "consultado_em": "07/10/2026 06:08",
    "bytes": 295354,
    "sha256": "f229aa014de3231402f3df511f8618e832c7ba53038e073cbccbdca0700f3a23"
   },
   {
    "fonte": "cemaden_alertas",
    "url": "https://gsc.cemaden.gov.br/geoserver/cemaden_dev/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=cemaden_dev:alertas_vigentes_siaden&outputFormat=application/json&count=3000",
-   "consultado_em": "07/10/2026 05:54",
+   "consultado_em": "07/10/2026 06:08",
    "bytes": 589218,
-   "sha256": "b5d5e3ce2c2b0a74c0dbbcdb1f213789cb7c33586933a3c7cc9ccf51c86ec7f6"
+   "sha256": "cd29b1373f71773ebf261a4b0db612b7d7aa8e42cb53408afd1a2c199644360c"
   },
   {
    "fonte": "open_meteo_tempo",
    "url": "https://api.open-meteo.com/v1/forecast?latitude=-9.9750,-9.6660,-3.1187,0.0349,-12.9718,-3.7166,-15.7795,-20.3155,-16.6864,-2.5387,-19.9102,-20.4486,-15.6010,-1.4554,-7.1151,-8.0467,-5.0919,-25.4195,-22.9129,-5.7936,-8.7608,2.8238,-30.0318,-27.5945,-10.9091,-23.5329,-10.2400&longitude=-67.8243,-35.7350,-60.0212,-51.0694,-38.5011,-38.5423,-47.9297,-40.3128,-49.2643,-44.2825,-43.9266,-54.6295,-56.0974,-48.4898,-34.8641,-34.8771,-42.8034,-49.2646,-43.2003,-35.1986,-63.8999,-60.6753,-51.2065,-48.5477,-37.0677,-46.6395,-48.3558&daily=temperature_2m_max,temperature_2m_min,apparent_temperature_max&timezone=America%2FSao_Paulo&past_days=1&forecast_days=4",
-   "consultado_em": "07/10/2026 05:54",
-   "bytes": 15164,
-   "sha256": "46ff11f02235e4e93cca948e94b3b2716366e9389708bb47ae26f2267a6c4f1b"
+   "consultado_em": "07/10/2026 06:08",
+   "bytes": 15152,
+   "sha256": "83b3aedb649937435938c0fcbef7213b62006311c7e39140dbae79fb84af0921"
   },
   {
    "fonte": "inmet_previsao_capitais",
    "url": "https://apiprevmet3.inmet.gov.br/previsao/capitais",
-   "consultado_em": "07/10/2026 05:55",
+   "consultado_em": "07/10/2026 06:08",
    "bytes": 6079397,
-   "sha256": "25651607db31be4d3b2a2df1e79712c54a583396256b7814c062ce08e9665502"
+   "sha256": "1a4e888e7dd6ffb5220fae7bace0705546180e5cf389d8f91933e8a60140dc9c"
   },
   {
    "fonte": "open_meteo_ar",
    "url": "https://air-quality-api.open-meteo.com/v1/air-quality?latitude=-9.9750,-9.6660,-3.1187,0.0349,-12.9718,-3.7166,-15.7795,-20.3155,-16.6864,-2.5387,-19.9102,-20.4486,-15.6010,-1.4554,-7.1151,-8.0467,-5.0919,-25.4195,-22.9129,-5.7936,-8.7608,2.8238,-30.0318,-27.5945,-10.9091,-23.5329,-10.2400&longitude=-67.8243,-35.7350,-60.0212,-51.0694,-38.5011,-38.5423,-47.9297,-40.3128,-49.2643,-44.2825,-43.9266,-54.6295,-56.0974,-48.4898,-34.8641,-34.8771,-42.8034,-49.2646,-43.2003,-35.1986,-63.8999,-60.6753,-51.2065,-48.5477,-37.0677,-46.6395,-48.3558&hourly=pm2_5,pm10,ozone,nitrogen_dioxide,carbon_monoxide,european_aqi&timezone=America%2FSao_Paulo&forecast_days=1&domains=cams_global",
-   "consultado_em": "07/10/2026 05:55",
-   "bytes": 42942,
-   "sha256": "ac76ae9c6ab9afa4cbeb9ad5e2cab63d8bcfaa1d09c0c1b7666c740cb005abd7"
+   "consultado_em": "07/10/2026 06:08",
+   "bytes": 42944,
+   "sha256": "eb0723ebe46dfe0553ef41eb54c3f684ca75603a832a3ce3530eb607df8b1e2c"
   },
   {
    "fonte": "inmet_estacoes",
    "url": "https://apitempo.inmet.gov.br/estacoes/T",
-   "consultado_em": "07/10/2026 05:55",
+   "consultado_em": "07/10/2026 06:08",
    "bytes": 262500,
    "sha256": "def48cc4fa7b6354e039ea7d91722a101459ad0b641531c77fc07c270cbd034c"
   },
   {
    "fonte": "inmet_estacoes",
    "url": "https://apitempo.inmet.gov.br/condicao/capitais/2026-10-07",
-   "consultado_em": "07/10/2026 05:55",
-   "bytes": 2322,
-   "sha256": "2b757437fd227f2d9f3f5d6b2bf59448b1f2dbcbe07236102ec42f49c7ce7d26"
+   "consultado_em": "07/10/2026 06:08",
+   "bytes": 2324,
+   "sha256": "e854d3c093d2c982c012983f3df4e1dea05247bc92ae93beee8e07f72836e767"
   }
  ]
 }
