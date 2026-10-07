@@ -50,15 +50,45 @@ def contratos():
     return sorted(CONTRATOS.glob("*.json")) if CONTRATOS.exists() else []
 
 
-def despejar(pagina: str) -> dict:
-    """Renderiza e devolve o despejo. Levanta RuntimeError quando o renderizador falha."""
-    with tempfile.NamedTemporaryFile(suffix=".json", delete=False) as f:
-        alvo = pathlib.Path(f.name)
-    r = subprocess.run(["node", str(RAIZ / "scripts" / "_layout_dump.js"), pagina, str(alvo)],
-                       capture_output=True, text=True, cwd=str(RAIZ))
-    if r.returncode != 0:
-        raise RuntimeError((r.stderr or r.stdout or "").strip()[:300])
-    return json.loads(alvo.read_text(encoding="utf-8"))
+def render_incompleto(despejo: dict) -> list:
+    """Os alvos do contrato que a página não terminou de carregar. Função pura.
+
+    "A página não terminou de carregar" e "o texto exigido não existe" são coisas diferentes, e
+    confundi-las custou três publicações em 06/10/2026: a frase do Financiamento é escrita por um
+    `fetch` encadeado, e num runner lento o medidor media antes. Dizer "texto ausente" ali é acusar
+    a página de um defeito que ela não tem.
+    """
+    fora = []
+    for dados in (despejo or {}).get("larguras", {}).values():
+        for alvo in (dados or {}).get("render_incompleto") or []:
+            if alvo not in fora:
+                fora.append(alvo)
+    return fora
+
+
+def despejar(pagina: str, tentativas: int = 2) -> dict:
+    """Renderiza e devolve o despejo. Levanta RuntimeError quando o renderizador falha.
+
+    Renderiza DE NOVO quando a primeira passada não terminou de carregar — e só então se julga.
+    Uma renderização incompleta é um acidente do runner; duas seguidas, com a condição do contrato
+    esperada por 20 s em cada, já é a página.
+    """
+    ultimo = None
+    for n in range(max(1, tentativas)):
+        with tempfile.NamedTemporaryFile(suffix=".json", delete=False) as f:
+            alvo = pathlib.Path(f.name)
+        r = subprocess.run(["node", str(RAIZ / "scripts" / "_layout_dump.js"), pagina, str(alvo)],
+                           capture_output=True, text=True, cwd=str(RAIZ))
+        if r.returncode != 0:
+            raise RuntimeError((r.stderr or r.stdout or "").strip()[:300])
+        ultimo = json.loads(alvo.read_text(encoding="utf-8"))
+        incompleto = render_incompleto(ultimo)
+        if not incompleto:
+            return ultimo
+        if n + 1 < max(1, tentativas):
+            print(f"  · {pagina}: a página não terminou de carregar "
+                  f"({len(incompleto)} alvo(s)); renderizando de novo")
+    return ultimo
 
 
 def serie_existe(chave: str) -> bool:
@@ -81,6 +111,18 @@ def problemas_do_despejo(contrato: dict, despejo: dict) -> list:
     d390 = (despejo.get("larguras") or {}).get("390") or {}
     if not d1280:
         return ["despejo sem a largura de 1280 px"]
+
+    # RENDER INCOMPLETO NÃO É TEXTO AUSENTE. Quando a página não terminou de carregar, dizer
+    # "texto exigido ausente" acusa a página de um defeito que ela não tem — e foi essa confusão
+    # que matou três publicações em 06/10/2026. O medidor já esperou a condição do contrato por
+    # 20 s e renderizou duas vezes; se ainda falta, o que se relata é o que de fato se sabe.
+    incompleto = []
+    for lado in (d1280, d390):
+        for alvo in (lado or {}).get("render_incompleto") or []:
+            if alvo not in incompleto:
+                incompleto.append(alvo)
+    if incompleto:
+        return [f"a página não terminou de carregar: {alvo!r}" for alvo in incompleto]
 
     secoes_contrato = contrato.get("secoes") or []
     # (a) ordem dos h2.
@@ -324,6 +366,17 @@ def autoteste() -> int:
         ("texto proibido reprova",
          any("texto proibido" in x for x in problemas_do_despejo(
              contrato, com(lambda d: d.update(texto_visivel="frase obrigatória FIGURA 1"))))),
+        ("render incompleto reprova como 'nao terminou de carregar'",
+         any("não terminou de carregar" in x for x in problemas_do_despejo(
+             {"secoes": []},
+             {"larguras": {"1280": {"render_incompleto": ["uma frase do contrato"]}}}))),
+        ("render incompleto NAO e relatado como texto ausente",
+         not any("texto exigido" in x for x in problemas_do_despejo(
+             {"secoes": []},
+             {"larguras": {"1280": {"render_incompleto": ["uma frase"]}}}))),
+        ("render completo nao produz esse aviso",
+         not any("não terminou de carregar" in x for x in problemas_do_despejo(
+             contrato, com(lambda d: d)))),
         ("texto exigido ausente reprova",
          any("texto exigido" in x for x in problemas_do_despejo(
              contrato, com(lambda d: d.update(texto_visivel="nada"))))),
