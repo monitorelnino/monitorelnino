@@ -34,6 +34,15 @@ async function __load(){
   NORMAIS = await fetch('data/normais_capitais.json').then(r => r.ok ? r.json() : null).catch(() => null);
   FOCOS = await fetch('data/focos_pontos.json').then(r => r.ok ? r.json() : null).catch(() => null);
   window.__refMunicipios = await fetch('data/municipios_ibge_referencia.json').then(r => r.ok ? r.json() : []).catch(() => []);
+  /* 07/10/2026: o CATÁLOGO antes do desenho. O texto do topo e dos dois gráficos do Pacífico vive
+     em conteudo/monitor-de-riscos.json, e `assets/catalogo.js` o carrega por conta própria, em
+     paralelo com este fetch. Sem esta espera, quem chegasse primeiro decidia o que o leitor via:
+     com o dado na frente, o título do gráfico saía sem os anos e os cartões ficavam no texto de
+     reserva. A espera é tolerante — catálogo que não carrega não trava a página, e o texto de
+     reserva do HTML continua lá, que é o desenho de falha segura do próprio leitor. */
+  if (window.MonitorCatalogo && window.MonitorCatalogo.pronto) {
+    try { await window.MonitorCatalogo.pronto; } catch (e) {}
+  }
   __init();
 }
 
@@ -219,20 +228,10 @@ credito('boxRiscoPrevisto', 'painel_el_nino');
   const põe = (id, texto) => { const el = document.getElementById(id); if (el && texto) el.textContent = texto; };
   const dia = v => MonitorMapas.dataBR(v) || null;
 
-  // R4 — o subtítulo aprovado em 30/09, com o ano final gerado do dado. Antes ele saía "1950 a —"
-  // porque a parte fixa vivia no HTML e a variável nunca era preenchida.
-  const roni = SINAIS.enos.roni, sr = (roni && roni.serie) || [];
-  if (sr.length) põe('roniSub', 'Índice RONI, da NOAA · temperatura do Pacífico acima ou abaixo do '
-    + 'normal · média de três meses · °C · 1950 a ' + sr[sr.length - 1].ano);
-
-  // F.3 — a janela da série mensal, dos dois extremos do próprio dado.
-  const an = SINAIS.enos.nino34_mensal, sa = (an && an.serie) || [];
-  if (sa.length) {
-    const mes = p => ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'][p.mes - 1]
-      + '/' + p.ano;
-    põe('anomaliaSub', 'Região Niño 3.4 · diferença em relação ao normal · média mensal · °C · '
-      + mes(sa[0]) + ' a ' + mes(sa[sa.length - 1]));
-  }
+  // 07/10/2026: os subtítulos dos dois gráficos do Pacífico saíram daqui, e com eles um defeito
+  // que estava publicado: este bloco escrevia "1950 a 2026" numa série que começa em 2013 — o
+  // "1950" era parte fixa da frase, não do dado. Agora a legenda e a nota vivem no catálogo, e o
+  // título com os anos é composto no bloco do Pacífico, que é quem tem a série em mão.
 
   // R6 — o boletim que sustenta a previsão.
   const pe = fonte('painel_el_nino');
@@ -760,81 +759,195 @@ credito('boxFogo', 'inpe_fogo');
 const oni = SINAIS.enos.oni, prob = SINAIS.enos.probabilidades;
 const ultimoOni = oni && oni.serie && oni.serie.length ? oni.serie[oni.serie.length - 1] : null;
 const ultimaProb = prob && prob.trimestres && prob.trimestres.length ? prob.trimestres[0] : null;
-// ===== R2 e R3 (30/09/2026, handover do Monitor de riscos): o resumo e as três perguntas =====
-// O índice de referência passa a ser o RONI, oficial da NOAA desde fevereiro de 2026 — ele mede o
-// afastamento do Niño 3.4 em relação aos oceanos tropicais, e é ele que sustenta a palavra "forte".
-// O ONI e a anomalia mensal saíram da página: são apoio técnico e vivem na METODOLOGIA.
+// ===== O topo "Situação atual" (07/10/2026, handover "Monitor de riscos, parte 1") ==========
+// SAIU A RÉGUA DE FORÇA. As faixas "fraco/moderado/forte/muito forte" que este bloco aplicava
+// (`cls()`) não são definição da NOAA/CPC: ela define os LIMIARES de El Niño (+0,5 °C) e de La
+// Niña (−0,5 °C) e o critério de cinco médias trimestrais seguidas para caracterizar um episódio,
+// e nada mais. Classificar o ciclo por faixa própria era interpretação nossa vestida de dado.
+// "Muito forte" só aparece citado e atribuído, dentro da frase da própria NOAA/CPC.
 //
-// Nenhum número fixo: tudo o que aparece vem da série. Onde o dado não sustenta a frase, a frase
-// não é escrita — a oração sobre a alta só entra se a variação de seis meses for positiva.
-(function situacaoAtual(){
-  const el = id => document.getElementById(id); if (!el('stResumo')) return;
-  const roni = SINAIS.enos.roni;
-  const serie = (roni && roni.serie) || [];
-  const u = serie[serie.length - 1];
-  const cls = v => v >= 2.0 ? 'muito forte' : v >= 1.5 ? 'forte' : v >= 1.0 ? 'moderado'
-                 : v >= 0.5 ? 'fraco' : 'abaixo do limiar';
-  const num = (v, casas) => (v >= 0 ? '+' : '') + v.toFixed(casas == null ? 2 : casas).replace('.', ',');
-  // O trimestre vem da NOAA como três iniciais em inglês (JJA, SON, DJF…). Traduzir a sigla para
-  // um intervalo de meses em português é o que a leitora precisa — "jul–set" se lê, "JJA" não. A
-  // sigla que não casar com o calendário volta como veio, em vez de virar intervalo inventado.
-  const INICIAIS = 'JFMAMJJASOND';
-  const MES_ABREV = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
-  const periodoDoTrimestre = t => {
-    const sigla = String(t || '').toUpperCase();
-    if (sigla.length !== 3) return String(t || '');
-    // A sequência das iniciais dos doze meses, repetida, localiza o trimestre sem ambiguidade.
-    const ciclo = INICIAIS + INICIAIS;
-    const i = ciclo.indexOf(sigla);
-    if (i < 0) return String(t || '');
-    return MES_ABREV[i % 12] + '–' + MES_ABREV[(i + 2) % 12];
-  };
-
-  // R2 — resumo. "há El Niño" é fato datado do Painel (29/06/2026); a força e a variação vêm do RONI.
-  if (u) {
-    // Seis meses = dois trimestres para trás na série trimestral móvel.
-    const antes = serie.length >= 3 ? serie[serie.length - 3] : null;
-    const delta = antes ? u.anomalia - antes.anomalia : null;
-    let txt = 'O El Niño foi declarado pelos órgãos federais em 29 de junho de 2026 e hoje é considerado '
-            + esc(cls(u.anomalia)) + '. A temperatura do Pacífico, que define o fenômeno, ';
-    if (delta !== null && delta > 0) {
-      txt += 'subiu ' + esc(num(delta).replace('+', '')) + ' °C nos últimos seis meses';
-      txt += (serie.length >= 2 && u.anomalia > serie[serie.length - 2].anomalia)
-        ? ', e segue em alta.' : '.';
-    } else if (delta !== null) {
-      // O dado não sustenta "subiu": diz-se o que ele diz, e a oração sobre a alta não aparece.
-      txt += 'variou ' + esc(num(delta)) + ' °C nos últimos seis meses.';
-    } else {
-      txt += 'está em ' + esc(num(u.anomalia, 1)) + ' °C.';
+// Saíram junto os três quadros com ícone: "Há El Niño agora?" não muda até o fim do ciclo, e os
+// outros dois diziam uma faixa e um "100%" sem período. Entram quatro números, cada um gerado do
+// dado, com fonte e data na linha de baixo do cartão.
+//
+// O TEXTO não vive aqui: vive em `conteudo/monitor-de-riscos.json`. Este bloco traz o DADO.
+const PAC = (function pacificoComum(){
+  // O trimestre da NOAA vem como três iniciais (DJF, JAS…). A leitora precisa do intervalo de
+  // meses, não da sigla: "jul–set" se lê, "JAS" não. A sigla que não casar com o calendário
+  // volta como veio, em vez de virar intervalo inventado.
+  const MES = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+  // Centro do trimestre, em mês do ANO que o dado declara: DJF/2015 é dez/2014–fev/2015, centro
+  // jan/2015. É esta convenção que faz a série de 160 médias móveis mensais se ordenar sozinha.
+  const CENTRO = {DJF:0, JFM:1, FMA:2, MAM:3, AMJ:4, MJJ:5, JJA:6, JAS:7, ASO:8, SON:9, OND:10, NDJ:11};
+  const centro = p => CENTRO[String(p.trimestre || '').toUpperCase()];
+  const temCentro = p => centro(p) !== undefined;
+  // Ordem absoluta em meses, para varrer a série sem depender da ordem do arquivo.
+  const ordem = p => p.ano * 12 + centro(p);
+  const num = (v, casas) => (v > 0 ? '+' : v < 0 ? '−' : '')
+    + Math.abs(v).toFixed(casas == null ? 1 : casas).replace('.', ',');
+  // "jul–set 2026" quando o trimestre não vira o ano; "nov 2015–jan 2016" quando vira.
+  function periodo(p){
+    const c = centro(p);
+    if (c === undefined) return String(p.trimestre || '');
+    const ini = (c + 11) % 12, fim = (c + 1) % 12;
+    const anoIni = c === 0 ? p.ano - 1 : p.ano, anoFim = c === 11 ? p.ano + 1 : p.ano;
+    return anoIni === anoFim ? MES[ini] + '–' + MES[fim] + ' ' + p.ano
+                             : MES[ini] + ' ' + anoIni + '–' + MES[fim] + ' ' + anoFim;
+  }
+  // O mesmo, sem ano: "jul–set". Serve à comparação entre anos, em que o ano é a outra coluna.
+  function periodoCurto(p){
+    const c = centro(p);
+    if (c === undefined) return String(p.trimestre || '');
+    return MES[(c + 11) % 12] + '–' + MES[(c + 1) % 12];
+  }
+  // Episódio de El Niño pelo critério da NOAA/CPC: cinco ou mais médias trimestrais CONSECUTIVAS
+  // acima de +0,5 °C. Nunca escrito à mão — a lista sai do dado, e muda sozinha quando ele muda.
+  // O trecho que alcança o último ponto da série é o CICLO EM CURSO, e não entra na lista: ele
+  // pode ainda não ter completado as cinco, e chamá-lo de episódio seria afirmar o que falta provar.
+  function episodios(serie){
+    const s = (serie || []).filter(temCentro).slice().sort((a, b) => ordem(a) - ordem(b));
+    const trechos = [];
+    let atual = [];
+    for (let i = 0; i < s.length; i++) {
+      const contiguo = !atual.length || ordem(s[i]) === ordem(atual[atual.length - 1]) + 1;
+      if (s[i].anomalia > 0.5 && contiguo) { atual.push(s[i]); continue; }
+      if (atual.length) trechos.push(atual);
+      atual = s[i].anomalia > 0.5 ? [s[i]] : [];
     }
-    el('stResumo').innerHTML = txt;
+    if (atual.length) trechos.push(atual);
+    const ultimo = s.length ? s[s.length - 1] : null;
+    const emCurso = trechos.find(t => ultimo && t[t.length - 1] === ultimo) || null;
+    const fechados = trechos.filter(t => t !== emCurso && t.length >= 5);
+    const anoDe = t => t[0].ano;
+    const rotuloDe = t => anoDe(t) + '–' + String(anoDe(t) + 1).slice(2);
+    return {
+      serie: s,
+      ultimo: ultimo,
+      episodios: fechados.map(t => ({ano: anoDe(t), rotulo: rotuloDe(t), pontos: t})),
+      emCurso: emCurso ? {ano: anoDe(emCurso), rotulo: String(anoDe(emCurso)), pontos: emCurso} : null,
+    };
   }
+  // A janela de um ciclo: de janeiro do ano de início a junho do ano seguinte — 18 médias móveis.
+  function janela(serie, ano){
+    return (serie || []).filter(temCentro)
+      .map(p => ({k: (p.ano - ano) * 12 + centro(p), p}))
+      .filter(x => x.k >= 0 && x.k <= 17)
+      .sort((a, b) => a.k - b.k);
+  }
+  return {MES, centro, temCentro, ordem, num, periodo, periodoCurto, episodios, janela};
+})();
 
-  // R3 — três cartões.
-  const prob = SINAIS.enos.probabilidades;
-  const pg = SINAIS.enos.prognostico;
+// Texto do catálogo, com reserva. O catálogo é a fonte; a reserva existe para que uma falha de
+// rede não deixe um cartão vazio — e cartão vazio é o que o portão de números reprova.
+function txtCat(id, valores, reserva){
+  const c = window.MonitorCatalogo;
+  const t = c && c.texto ? c.texto(id, valores) : null;
+  return (t == null || t === '') ? (reserva == null ? null : reserva) : t;
+}
+function põeCat(elId, id, valores, reserva){
+  const el = document.getElementById(elId); if (!el) return null;
+  const t = txtCat(id, valores, reserva);
+  if (t == null) return null;
+  el.textContent = t;
+  el.setAttribute('data-conteudo-fixado', '1');
+  return t;
+}
+
+(function situacaoAtual(){
+  const el = id => document.getElementById(id); if (!el('situacaoGrade')) return;
+  const I = 'monitor-de-riscos.situacao.';
+  const roni = SINAIS.enos.roni;
+  const serie = ((roni && roni.serie) || []).filter(PAC.temCentro);
+  const u = serie.length ? serie[serie.length - 1] : null;
+  const fonte = k => (SINAIS.fontes || {})[k] || {};
+
+  // 1 — a frase de abertura. A segunda oração só aparece quando o dado trouxer a data em que a
+  // NOAA/CPC passou a manter o alerta; hoje ele não a traz, e a frase não a inventa.
+  const alerta = (SINAIS.enos.prognostico || {}).alerta_desde;
+  if (alerta) põeCat('stResumo', I + 'abertura.molde_com_alerta', {desde: alerta});
+
+  // 2 — o RONI mais recente, e a variação para a média móvel ANTERIOR: a série anda de mês em
+  // mês, então o trimestre anterior a jul–set é jun–ago, e não jan–mar.
   if (u) {
-    const ha = u.anomalia >= 0.5;
-    el('stHaElNino').textContent = ha ? 'Sim, desde junho de 2026' : 'Não';
-    el('stForca').textContent = cls(u.anomalia).charAt(0).toUpperCase() + cls(u.anomalia).slice(1);
-    el('stForcaNota').textContent = num(u.anomalia, 1) + ' °C acima do normal no Pacífico, '
-      + periodoDoTrimestre(u.trimestre) + ' (RONI)';
-  }
-  // A chance de continuar é a do trimestre do verão (DJF), quando existe na série de probabilidades;
-  // sem ela, o cartão não inventa número — fica com o travessão que já está no HTML.
-  const trims = (prob && prob.trimestres) || [];
-  const verao = trims.find(t => /DJF|NDJ/.test(String(t.trimestre || ''))) || trims[0] || null;
-  if (verao && verao.el_nino != null) {
-    el('stChance').textContent = verao.el_nino.toFixed(0) + '%';
-    el('stChanceNota').textContent = 'chance de El Niño em dezembro–fevereiro, segundo IRI/NOAA';
-  } else if (pg && pg.probabilidade != null) {
-    el('stChance').textContent = String(pg.probabilidade) + '%';
-    el('stChanceNota').textContent = 'chance de El Niño no trimestre publicado, segundo CPC/NOAA';
+    põeCat('stRoniRotulo', I + 'roni.molde_rotulo', {trimestre: PAC.periodo(u)});
+    põeCat('stRoniValor', I + 'roni.molde_valor', {valor: PAC.num(u.anomalia)});
+    const antes = serie.length >= 2 ? serie[serie.length - 2] : null;
+    if (antes) põeCat('stRoniVariacao', I + 'roni.molde_variacao',
+      {variacao: PAC.num(u.anomalia - antes.anomalia), anterior: PAC.periodo(antes)});
+    const f = fonte('noaa_roni');
+    põeCat('stRoniFonte', I + 'roni.molde_fonte', {orgao: f.orgao, data: f.consultado_em});
   }
 
-  // O crédito do painel inteiro SAIU (30/09/2026): o gráfico do RONI já traz a sua linha de fonte,
-  // e cada cartão diz de onde vem o seu número na linha pequena. Três créditos para as mesmas duas
-  // fontes, na mesma tela, é redundância — e a regra do site é fonte POR FIGURA, não por painel.
+  // 3 — a previsão da NOAA/CPC, traduzida fielmente da sinopse. O número vem do campo próprio; a
+  // frase longa só entra quando a sinopse é a que ela descreve. Mudando a estrutura da sinopse,
+  // fica o número e a atribuição, que é o que o dado sustenta em qualquer caso.
+  const pg = SINAIS.enos.prognostico;
+  if (pg && pg.probabilidade != null) {
+    const sinopse = String(pg.sinopse || '').toLowerCase();
+    const reconhecida = /very strong/.test(sinopse) && /fall and winter/.test(sinopse);
+    const f = fonte('cpc_ensodisc');
+    põeCat('stPrevisaoValor', I + 'previsao.molde_valor',
+      {limiar: pg.limiar === 'acima de' ? 'mais de' : '', probabilidade: pg.probabilidade});
+    põeCat('stPrevisaoVariacao',
+      I + (reconhecida ? 'previsao.molde_variacao' : 'previsao.molde_variacao_curta'), {});
+    põeCat('stPrevisaoFonte',
+      I + (pg.proxima_em ? 'previsao.molde_fonte' : 'previsao.molde_fonte_sem_proxima'),
+      {orgao: f.orgao, emitido: pg.emitido_em, proxima: pg.proxima_em});
+  }
+
+  // 4 — a duração: o último trimestre publicado com 90% ou mais, e o último da série. O rótulo de
+  // trimestre do IRI vem com o ano ("MAM 2027") ou sem ele; sem ano não há como datar a frase, e
+  // trimestre que não se consegue datar não vira número na tela.
+  const trims = ((SINAIS.enos.probabilidades || {}).trimestres || [])
+    .map(t => {
+      const m = /^([A-Z]{3})\s*(\d{4})$/.exec(String(t.trimestre || '').trim().toUpperCase());
+      return m ? {el_nino: t.el_nino, periodo: PAC.periodo({trimestre: m[1], ano: Number(m[2])}),
+                  ordem: Number(m[2]) * 12 + PAC.centro({trimestre: m[1]})} : null;
+    }).filter(t => t && t.el_nino != null).sort((a, b) => a.ordem - b.ordem);
+  if (trims.length) {
+    const altos = trims.filter(t => t.el_nino >= 90);
+    const marco = altos.length ? altos[altos.length - 1] : trims[0];
+    const fim = trims[trims.length - 1];
+    const f = fonte('iri_plume');
+    põeCat('stDuracaoValor', I + 'duracao.molde_valor',
+      {probabilidade: Math.round(marco.el_nino), trimestre: marco.periodo});
+    if (fim !== marco) põeCat('stDuracaoVariacao', I + 'duracao.molde_variacao',
+      {probabilidade_final: Math.round(fim.el_nino), trimestre_final: fim.periodo});
+    põeCat('stDuracaoFonte', I + 'duracao.molde_fonte', {orgao: f.orgao, data: f.consultado_em});
+  }
+
+  // 5 — o Brasil: a contagem dos componentes do risco projetado, estado a estado. Um estado com
+  // mais de um risco conta em CADA um deles, como o resto do site já conta.
+  (function brasil(){
+    const conta = {estiagem: 0, chuvas: 0, incendios: 0};
+    UFS.forEach(uf => {
+      const r = (SINAIS.uf[uf] || {}).risco_projetado; if (!r) return;
+      const comps = (r.componentes && r.componentes.length) ? r.componentes : [r.tipo];
+      comps.forEach(c => { if (c in conta) conta[c]++; });
+    });
+    const f = fonte('painel_el_nino');
+    // O número do boletim sai do documento declarado pela fonte ("Boletins nº 1 e 3 …"): o mais
+    // alto é o que sustenta a previsão em vigor. Sem número no documento, o rótulo fica o do HTML.
+    // Só os números que vêm DEPOIS do "nº": "Boletins nº 1 e 3 do Painel El Niño 2026-2027" tem
+    // quatro números, e dois deles são o ciclo. Varrer o documento inteiro publicava "boletim
+    // nº 2.027" — e número errado no rótulo é pior do que rótulo sem número.
+    const trecho = /n[ºo°]\s*([\d\s,eo]+)/i.exec(String(f.documento || ''));
+    const ns = trecho ? (trecho[1].match(/\d+/g) || []) : [];
+    if (ns.length) põeCat('stBrasilRotulo', I + 'brasil.molde_rotulo',
+      {boletim: String(Math.max.apply(null, ns.map(Number)))});
+    põeCat('stBrasilValor', I + 'brasil.molde_valor', {seca: conta.estiagem});
+    põeCat('stBrasilVariacao', I + 'brasil.molde_variacao',
+      {chuva: conta.chuvas, fogo: conta.incendios});
+    const pe = document.getElementById('stBrasilFonte');
+    const base = txtCat(I + 'brasil.molde_fonte', {orgao: f.orgao, data: f.consultado_em}, null);
+    const ponte = txtCat(I + 'brasil.ponte', null, null);
+    if (pe && base && ponte) {
+      pe.textContent = base;
+      const a = document.createElement('a'); a.href = '#riscos'; a.textContent = ponte;
+      pe.appendChild(a);
+      pe.setAttribute('data-conteudo-fixado', '1');
+    }
+  })();
 })();
 
 // 13/09/2026: cartoesCiclo/cartaoCiclo1-4 removidos — três dos quatro cartões duplicavam valores já
@@ -864,59 +977,272 @@ function canvasEm(wrapId, canvasId, rotulo){
 // não é a pergunta desta página. Os dois continuam coletados e vivem na METODOLOGIA,
 // como apoio técnico.
 
-// Paleta e opções do gráfico de anomalia. Vinham do bloco do ONI, que saiu da página em
-// 30/09/2026; ficam aqui porque o gráfico do RONI é quem as usa agora. Vermelho acima da média,
-// azul abaixo, opacidade crescendo com a intensidade — a mesma transição contínua dos medidores
-// do MARÉ, aplicada a uma série histórica.
-const ANOM_VERMELHO = [220, 38, 38], ANOM_AZUL = [37, 99, 235];
-const alphaAnom = v => Math.min(.92, .28 + .64 * Math.min(1, Math.abs(v) / 2.0));
-const corAnom = v => { const [r,g,b] = v >= 0 ? ANOM_VERMELHO : ANOM_AZUL; return `rgba(${r},${g},${b},${alphaAnom(v).toFixed(2)})`; };
-const opcoesGraficoAnom = (rotuloEixoY) => ({responsive:true, maintainAspectRatio:false, animation:{duration:900, easing:'easeOutCubic'},
-  plugins:{legend:{display:false}, tooltip:{backgroundColor:'#000', titleColor:'#fff', bodyColor:'#fff', borderColor:'rgba(255,255,255,.25)', borderWidth:1}},
-  scales:{
-    x:{ticks:{maxTicksLimit:12, color:'rgba(255,255,255,.75)'}, grid:{color:'rgba(255,255,255,.10)'}, border:{color:'rgba(255,255,255,.25)'}},
-    y:{title:{display:true, text: rotuloEixoY, color:'rgba(255,255,255,.75)'}, ticks:{color:'rgba(255,255,255,.75)'}, grid:{color:ctx => ctx.tick.value === 0 ? 'rgba(255,255,255,.45)' : 'rgba(255,255,255,.10)'}, border:{color:'rgba(255,255,255,.25)'}}}});
+// =====  Os dois gráficos do Pacífico (07/10/2026, maquete rev. 2)  ==========================
+//
+// POR QUE SVG, E NÃO CANVAS. O pedido tem uma exigência que o canvas não cumpre: letra de 12 px
+// TAMBÉM no celular. Um canvas de 560 unidades encolhido para 343 px de tela reduz toda a
+// tipografia na mesma proporção — a figura do desktop vista de longe, não uma figura para
+// celular. Aqui a figura é desenhada na LARGURA REAL do contêiner, redesenhada quando ela muda, e
+// 12 px são 12 px em qualquer tela. De quebra, some o erro de runtime "can't acquire context",
+// que era do canvas e só aparecia onde o contexto 2D não existe.
+//
+// Cor nenhuma aqui: tudo é classe de `assets/base.css`, que lê os tokens de `assets/tokens.css`.
+const SVGNS = 'http://www.w3.org/2000/svg';
+const RONI_MIN = -2.0, RONI_MAX = 2.5;            // a escala é a MESMA nos dois gráficos
+const RONI_LIMIARES = [[0.5, 'marca_el_nino'], [-0.5, 'marca_la_nina']];
 
-// ---- Gráfico 1b: série RONI (17/09/2026, achado ao checar o valor do ONI atual, pedido da editoria) ----
-// Mesmo padrão visual do ONI (fundo preto, vermelho/azul, transição por opacidade, animação ligada) —
-// são duas medidas da mesma coisa, lado a lado, então precisam se ler como duas versões de uma
-// mesma família de gráfico, não como duas figuras diferentes.
-const roni = SINAIS.enos.roni;
-if (roni && roni.serie && roni.serie.length) {
-  new Chart(canvasEm('wrapRoni', 'cRoni'), {type:'bar', data:{
-      labels: roni.serie.map(p => p.trimestre + '/' + String(p.ano).slice(2)),
-      datasets:[{label:'RONI (°C)', data: roni.serie.map(p => p.anomalia),
-                 backgroundColor: ctx => corAnom(ctx.raw), borderWidth:0, borderRadius:2,
-                 categoryPercentage:.9, barPercentage:.95}]},
-    options: opcoesGraficoAnom('°C')});
-  (function leituraRoni(){
-    const el = document.getElementById('roniLeitura'); const s = roni.serie; const u = s[s.length - 1]; if (!el || !u) return;
-    const cls = v => v >= 2.0 ? 'muito forte' : v >= 1.5 ? 'forte' : v >= 1.0 ? 'moderado' : v >= 0.5 ? 'fraco' : 'abaixo do limiar';
-    const fmt = v => (v >= 0 ? '+' : '') + v.toFixed(1).replace('.', ',');
-    // 17/09/2026 (pedido da editoria): a nota deste gráfico precisa se explicar sozinha, sem depender
-    // de o leitor ter lido a nota do ONI ao lado — cada figura carrega sua própria explicação completa.
-    let txt = 'Afastamento da temperatura do mar na região Niño 3.4 em relação à média dos oceanos tropicais, medida oficial da NOAA desde agosto de 2026. ';
-    txt += 'RONI em ' + fmt(u.anomalia) + ' °C (' + u.trimestre + '/' + u.ano + '), ' + cls(u.anomalia) + ' na mesma escala do CPC';
-    if (s.length >= 3) { const d = u.anomalia - s[s.length - 3].anomalia; txt += '; ' + (d >= 0 ? '+' : '') + d.toFixed(2).replace('.', ',') + ' °C em dois trimestres'; }
-    el.textContent = txt + '.'; el.hidden = false;
+function svgEl(nome, attrs, texto){
+  const e = document.createElementNS(SVGNS, nome);
+  for (const k in (attrs || {})) if (attrs[k] != null) e.setAttribute(k, attrs[k]);
+  if (texto != null) e.textContent = texto;
+  return e;
+}
+/** Valor com rótulo ao passar o mouse, ao tocar e ao focar — e `<title>` para o leitor de tela. */
+function comValor(el, texto){
+  el.appendChild(svgEl('title', null, texto));
+  el.addEventListener('mouseenter', evt => MonitorMapas.showTip(esc(texto), evt));
+  el.addEventListener('mouseleave', MonitorMapas.hideTip);
+  el.addEventListener('focus', evt => MonitorMapas.showTip(esc(texto), evt));
+  el.addEventListener('blur', MonitorMapas.hideTip);
+  return el;
+}
+
+/** A moldura comum: escala, linha do zero e os DOIS limiares oficiais. Nada além disso — a régua
+ *  de força não é da NOAA, e por isso não há faixa nenhuma no fundo destes gráficos. */
+function molduraPacifico(g, geo){
+  const {L, T, pw, ph, y, estreito} = geo;
+  for (let v = RONI_MIN; v <= RONI_MAX + 1e-9; v += 0.5) {
+    const r = Math.round(v * 10) / 10;
+    g.appendChild(svgEl('text', {x: L - 8, y: (y(r) + 4).toFixed(1), class: 'tk',
+                                 'text-anchor': 'end'}, r === 0 ? '0' : PAC.num(r)));
+  }
+  g.appendChild(svgEl('line', {x1: L, x2: L + pw, y1: y(0).toFixed(1), y2: y(0).toFixed(1), class: 'zero'}));
+  RONI_LIMIARES.forEach(([v, id]) => {
+    g.appendChild(svgEl('line', {x1: L, x2: L + pw, y1: y(v).toFixed(1), y2: y(v).toFixed(1), class: 'lim'}));
+    const rotulo = txtCat('monitor-de-riscos.pacifico.episodios.' + id, null,
+                          PAC.num(v) + ' · ' + (v > 0 ? 'El Niño' : 'La Niña'));
+    // Numa coluna estreita não há margem à direita para o rótulo do limiar: ele passa a ficar
+    // ACIMA da própria linha tracejada, encostado à esquerda. Mesma informação, outro lugar.
+    g.appendChild(estreito
+      ? svgEl('text', {x: L + 4, y: (y(v) - 5).toFixed(1), class: 'limt'}, rotulo)
+      : svgEl('text', {x: L + pw + 6, y: (y(v) + 4).toFixed(1), class: 'limt'}, rotulo));
+  });
+}
+
+/** Geometria do desenho, na largura real. `baixo` reserva espaço extra sob o eixo horizontal. */
+function geometriaPacifico(largura, baixo){
+  const W = Math.max(280, Math.round(largura || 0) || 560);
+  const estreito = W < 480;
+  const L = 42, R = estreito ? 14 : 104, T = estreito ? 24 : 16, B = 36 + (baixo || 0);
+  const H = Math.max(260, Math.min(360, Math.round(W * 0.62))) + (baixo || 0);
+  const pw = Math.max(40, W - L - R), ph = Math.max(40, H - T - B);
+  return {W, H, L, R, T, B, pw, ph, estreito,
+          y: v => T + (RONI_MAX - v) / (RONI_MAX - RONI_MIN) * ph};
+}
+
+/** Desenha dentro do contêiner e redesenha quando a largura muda. `pinta(g, geo)` faz a figura. */
+function desenharNaLargura(wrapId, baixo, rotulo, pinta){
+  const wrap = document.getElementById(wrapId); if (!wrap) return;
+  let ultimaLargura = null;
+  function render(){
+    const largura = wrap.clientWidth || wrap.getBoundingClientRect().width || 560;
+    if (ultimaLargura !== null && Math.abs(largura - ultimaLargura) < 8) return;
+    ultimaLargura = largura;
+    const geo = geometriaPacifico(largura, baixo);
+    const svg = svgEl('svg', {viewBox: '0 0 ' + geo.W + ' ' + geo.H, width: geo.W, height: geo.H,
+                              class: 'g-pac', role: 'img', 'aria-label': rotulo});
+    molduraPacifico(svg, geo);
+    pinta(svg, geo);
+    wrap.innerHTML = '';
+    wrap.appendChild(svg);
+  }
+  render();
+  // Redesenhar é melhoria de leitura: uma falha aqui não pode derrubar a figura já desenhada.
+  try {
+    if (typeof ResizeObserver === 'function') new ResizeObserver(() => { try { render(); } catch (e) {} }).observe(wrap);
+    else addEventListener('resize', () => { try { render(); } catch (e) {} });
+  } catch (e) {}
+}
+
+const RONI = SINAIS.enos.roni;
+const PACIFICO = PAC.episodios((RONI && RONI.serie) || []);
+const IP = 'monitor-de-riscos.pacifico.';
+
+// A fonte dos dois é a mesma, e diz qual é o último dado — não só quando consultamos.
+function creditoPacifico(caixaId){
+  const f = (SINAIS.fontes || {})['noaa_roni'] || {};
+  MonitorMapas.credito(caixaId, {
+    fontes: [f.orgao, f.nome].filter(Boolean).join(' · ')
+      + (PACIFICO.ultimo ? ' · último dado: ' + PAC.periodo(PACIFICO.ultimo) : ''),
+    url: f.url_publica, data: f.consultado_em});
+  const d = document.querySelector('#' + caixaId + ' .fonte-figura');
+  if (d) d.dataset.credito = 'noaa_roni';
+}
+
+if (PACIFICO.serie.length) {
+  const serie = PACIFICO.serie;
+  const primeiro = serie[0], ultimo = PACIFICO.ultimo;
+  const maximo = serie.reduce((a, b) => b.anomalia > a.anomalia ? b : a, serie[0]);
+  // O título traz os anos DO DADO: quando a série passar a começar em 1950, ele diz 1950 sozinho.
+  // ANO É RÓTULO, NÃO QUANTIDADE: o catálogo formata número em pt-BR, e `2026` chegaria à tela
+  // como "2.026". Tudo o que é ano entra no molde já como texto.
+  const anos = {inicio: String(primeiro.ano), fim: String(ultimo.ano)};
+  põeCat('roniTitulo', IP + 'roni.molde_titulo', anos);
+
+  // ---- Gráfico 1: a série inteira, em barras ----
+  desenharNaLargura('wrapRoni', 0,
+    txtCat(IP + 'roni.rotulo_acessivel', anos, 'Barras do RONI por trimestre'),
+    function (g, geo) {
+      const {L, T, pw, ph, y, estreito} = geo;
+      const n = serie.length, bw = pw / n;
+      // Um rótulo de ano a cada 2 anos na série curta e a cada 10 na série desde 1950 — e a cada
+      // 5 na coluna estreita, onde os rótulos se tocariam. O passo sai do TAMANHO da série.
+      const amplitude = ultimo.ano - primeiro.ano;
+      const passo = amplitude > 40 ? 10 : (estreito ? 5 : 2);
+      serie.forEach((pt, i) => {
+        const x = L + i * bw, v = pt.anomalia;
+        const y0 = Math.min(y(0), y(v)), y1 = Math.max(y(0), y(v));
+        const barra = svgEl('rect', {x: (x + 0.4).toFixed(2), y: y0.toFixed(2),
+          width: Math.max(bw - 0.8, 0.6).toFixed(2), height: Math.max(y1 - y0, 0.5).toFixed(2),
+          class: v >= 0 ? 'q' : 'f'});
+        g.appendChild(comValor(barra, PAC.periodo(pt) + ': ' + PAC.num(v) + ' °C'));
+        if (PAC.centro(pt) === 0 && pt.ano % passo === 0) {
+          g.appendChild(svgEl('line', {x1: x.toFixed(1), x2: x.toFixed(1), y1: T + ph, y2: T + ph + 5, class: 'tkl'}));
+          g.appendChild(svgEl('text', {x: x.toFixed(1), y: T + ph + 18, class: 'tk',
+                                       'text-anchor': 'middle'}, String(pt.ano)));
+        }
+      });
+      // Duas anotações literais, e nenhuma interpretação: o maior valor da série e o último.
+      const iMax = serie.indexOf(maximo);
+      const annMax = txtCat(IP + 'roni.molde_anotacao_maximo',
+        {periodo: PAC.periodo(maximo), valor: PAC.num(maximo.anomalia)}, null);
+      // Perto da borda direita a anotação sairia da figura: ela vira para a esquerda do pico.
+      const maxADireita = (iMax + 1) * bw > pw * 0.62;
+      if (annMax && !estreito) g.appendChild(svgEl('text', {
+        x: (L + (iMax + (maxADireita ? 0 : 1)) * bw + (maxADireita ? -6 : 6)).toFixed(1),
+        y: (y(maximo.anomalia) + 4).toFixed(1), class: 'ann',
+        'text-anchor': maxADireita ? 'end' : 'start'}, annMax));
+      const cx = L + (n - 0.5) * bw, cy = y(ultimo.anomalia);
+      g.appendChild(svgEl('circle', {cx: cx.toFixed(1), cy: cy.toFixed(1), r: 3.5, class: 'agora'}));
+      const annU = txtCat(IP + 'roni.molde_anotacao_ultimo',
+        {periodo: PAC.periodo(ultimo), valor: PAC.num(ultimo.anomalia)}, null);
+      if (annU && !estreito) g.appendChild(svgEl('text', {x: (cx - 8).toFixed(1),
+        y: (cy - 9).toFixed(1), class: 'ann ann-agora', 'text-anchor': 'end'}, annU));
+    });
+  // A frase sob o gráfico diz os dois mesmos valores por extenso — é ela que serve a quem não
+  // alcança a anotação dentro da figura, no celular.
+  põeCat('roniLeitura', IP + 'roni.molde_leitura', {
+    maximo: PAC.num(maximo.anomalia), maximo_periodo: PAC.periodo(maximo),
+    ultimo: PAC.num(ultimo.anomalia), ultimo_periodo: PAC.periodo(ultimo)});
+
+  // ---- Gráfico 2: o ciclo em curso e os episódios que o dado define ----
+  // A lista NUNCA é escrita à mão: sai do critério da NOAA/CPC aplicado à própria série.
+  const linhas = [];
+  if (PACIFICO.emCurso) linhas.push({ano: PACIFICO.emCurso.ano, rotulo: PACIFICO.emCurso.rotulo, classe: 'l-agora', agora: true});
+  PACIFICO.episodios.forEach((e, i) => linhas.push({ano: e.ano, rotulo: e.rotulo, classe: 'l-' + (i % 4), agora: false}));
+  const episodiosRotulos = PACIFICO.episodios.map(e => e.rotulo);
+  const listaPorExtenso = episodiosRotulos.length > 1
+    ? episodiosRotulos.slice(0, -1).join(', ') + ' e ' + episodiosRotulos[episodiosRotulos.length - 1]
+    : episodiosRotulos[0];
+  // O TÍTULO NÃO LISTA OS EPISÓDIOS, e a lista vai para a nota. O handover pediu a lista no
+  // título; a regra de componente vence, e por duas razões que o próprio dado impõe. A primeira é
+  // medida: numa coluna da grade de dois, "RONI nos episódios de El Niño de 2015–16, 2018–19 e
+  // 2023–24 e em 2026" ocupava CINCO linhas contra duas da figura ao lado, e o cartão de mapa
+  // reserva duas — as duas figuras desalinhavam em 70 px no subtítulo e na mídia, e o portão de
+  // consistência visual reprovava, com razão. A segunda é de trajetória: com a série desde 1950 a
+  // lista passa de três episódios para dezenas, e um título que cresce com o dado não é título.
+  // A nota é onde a lista cabe, e a legenda do gráfico nomeia cada linha de qualquer modo.
+  põeCat('episodiosTitulo',
+    IP + (episodiosRotulos.length ? 'episodios.molde_titulo' : 'episodios.molde_titulo_sem_episodio'),
+    {ano: String(PACIFICO.emCurso ? PACIFICO.emCurso.ano : ultimo.ano)});
+  // A lista dos episódios NÃO entra na nota: ela cresce com o dado, e nota que cresce desalinha a
+  // dupla do mesmo jeito que o título desalinhava. Quem os nomeia é a legenda do gráfico, item a
+  // item, e a frase de leitura logo abaixo, com o valor de cada um.
+  põeCat('episodiosNota', IP + 'episodios.molde_nota', anos);
+
+  desenharNaLargura('wrapEpisodios', 20,
+    txtCat(IP + 'episodios.rotulo_acessivel', null, 'Linhas do RONI por episódio'),
+    function (g, geo) {
+      const {L, T, pw, ph, y, estreito} = geo;
+      const xs = k => L + k * (pw / 17);
+      const passo = estreito ? 3 : 2;
+      for (let k = 0; k <= 17; k += passo) {
+        g.appendChild(svgEl('text', {x: xs(k).toFixed(1), y: T + ph + 18, class: 'tk',
+                                     'text-anchor': 'middle'}, PAC.MES[k % 12]));
+      }
+      g.appendChild(svgEl('line', {x1: xs(11.5).toFixed(1), x2: xs(11.5).toFixed(1),
+                                   y1: T, y2: T + ph + 30, class: 'div'}));
+      g.appendChild(svgEl('text', {x: xs(5.5).toFixed(1), y: T + ph + 34, class: 'tk2',
+        'text-anchor': 'middle'}, txtCat(IP + 'episodios.eixo_ano_inicio', null, '')));
+      g.appendChild(svgEl('text', {x: xs(14.5).toFixed(1), y: T + ph + 34, class: 'tk2',
+        'text-anchor': 'middle'}, txtCat(IP + 'episodios.eixo_ano_seguinte', null, '')));
+      // O ciclo em curso é desenhado POR ÚLTIMO, para ficar por cima.
+      linhas.slice().reverse().forEach(linha => {
+        const pts = PAC.janela(serie, linha.ano);
+        if (!pts.length) return;
+        g.appendChild(svgEl('polyline', {class: linha.classe,
+          points: pts.map(x => xs(x.k).toFixed(1) + ',' + y(x.p.anomalia).toFixed(1)).join(' ')}));
+        pts.forEach(x => {
+          const alvo = svgEl('circle', {cx: xs(x.k).toFixed(1), cy: y(x.p.anomalia).toFixed(1),
+                                        r: 7, class: 'hit', tabindex: '-1'});
+          g.appendChild(comValor(alvo, linha.rotulo + ' · ' + PAC.periodoCurto(x.p)
+                                       + ': ' + PAC.num(x.p.anomalia) + ' °C'));
+        });
+        // Rótulo direto na linha. No ciclo em curso ele fica no ÚLTIMO ponto, que é onde a
+        // leitura para; nos episódios fechados, no PICO de cada um. Pôr os quatro no fim da
+        // linha os empilhava no canto direito, onde as curvas convergem — três rótulos em cima
+        // do mesmo lugar não nomeiam nada. Os picos ficam em alturas diferentes, e é isso que
+        // separa os rótulos sem precisar de regra de colisão.
+        const fimDaLinha = pts[pts.length - 1];
+        const pico = pts.reduce((a, b) => b.p.anomalia > a.p.anomalia ? b : a, pts[0]);
+        const onde = linha.agora ? fimDaLinha : pico;
+        if (!estreito) g.appendChild(svgEl('text', {
+          x: xs(onde.k).toFixed(1),
+          y: (y(onde.p.anomalia) + (linha.agora ? 20 : -10)).toFixed(1),
+          class: 'ann' + (linha.agora ? ' ann-agora' : ' ann-b'),
+          'text-anchor': 'middle'}, linha.rotulo));
+        if (linha.agora) g.appendChild(svgEl('circle', {cx: xs(fimDaLinha.k).toFixed(1),
+          cy: y(fimDaLinha.p.anomalia).toFixed(1), r: 4, class: 'agora'}));
+      });
+    });
+
+  // A legenda mostra o traço de cada linha: cor nunca é o único portador da informação.
+  (function legendaEpisodios(){
+    const alvo = document.getElementById('legEpisodios'); if (!alvo) return;
+    alvo.innerHTML = linhas.map(l => '<span><i class="t-'
+      + (l.agora ? 'agora' : l.classe.replace('l-', '')) + '"></i>' + esc(l.rotulo) + '</span>').join('');
   })();
-} else { lacuna('wrapRoni', 'A série do RONI aparece aqui assim que a rotina semanal registrar a primeira coleta no CPC/NOAA. Até lá, ela pode ser consultada na origem, no link abaixo.'); }
-credito('boxRoni', 'noaa_roni');
 
-// ---- F.1/F.3 (30/09/2026): a anomalia mensal da região Niño 3.4 VOLTA à página.
-// Ela saiu em 30/09 junto com o ONI, e a editoria a trouxe de volta por uma razão de leitura, não
-// de método: é o número que a imprensa divulga. O ONI continua fora, como apoio técnico.
-const nino34Mensal = SINAIS.enos.nino34_mensal;
-const MES_CURTO = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
-if (nino34Mensal && nino34Mensal.serie && nino34Mensal.serie.length) {
-  new Chart(canvasEm('wrapAnomalia', 'cAnomalia'), {type:'bar', data:{
-      labels: nino34Mensal.serie.map(p => MES_CURTO[p.mes - 1] + '/' + String(p.ano).slice(2)),
-      datasets:[{label:'Anomalia mensal (°C)', data: nino34Mensal.serie.map(p => p.anomalia),
-                 backgroundColor: ctx => corAnom(ctx.raw), borderWidth:0, borderRadius:2,
-                 categoryPercentage:.9, barPercentage:.95}]},
-    options: opcoesGraficoAnom('°C')});
-} else { lacuna('wrapAnomalia', 'A anomalia mensal aparece aqui assim que a rotina semanal registrar a primeira coleta no CPC/NOAA. Até lá, ela pode ser consultada na origem, no link abaixo.'); }
-credito('boxAnomalia', 'noaa_nino34_mensal');
+  // A leitura sob o gráfico: o MESMO trimestre em cada linha, na ordem do calendário. Não há
+  // ordenação por valor aqui — ranking é comparação nossa, e a página mostra as etapas.
+  (function leituraEpisodios(){
+    const alvoK = (ultimo.ano - (PACIFICO.emCurso ? PACIFICO.emCurso.ano : ultimo.ano)) * 12 + PAC.centro(ultimo);
+    const ordenadas = linhas.slice().sort((a, b) => a.ano - b.ano);
+    const valores = ordenadas.map(l => {
+      const ponto = PAC.janela(serie, l.ano).find(x => x.k === alvoK);
+      return ponto ? txtCat(IP + 'episodios.molde_valor_do_ano',
+        {valor: PAC.num(ponto.p.anomalia), ano: String(l.ano)}, null) : null;
+    }).filter(Boolean);
+    let texto = valores.length ? txtCat(IP + 'episodios.molde_leitura',
+      {trimestre: PAC.periodoCurto(ultimo),
+       valores: valores.length > 1 ? valores.slice(0, -1).join(', ') + ' e ' + valores[valores.length - 1]
+                                   : valores[0]}, null) : null;
+    // A contagem do ciclo em curso só é dita enquanto o critério NÃO se completou: depois das
+    // cinco, a frase "se completa na quinta" deixa de ser verdadeira.
+    if (PACIFICO.emCurso && PACIFICO.emCurso.pontos.length < 5) {
+      const c = txtCat(IP + 'episodios.molde_contagem', {ano: String(PACIFICO.emCurso.ano),
+        n: PACIFICO.emCurso.pontos.length, trimestre: PAC.periodoCurto(ultimo)}, null);
+      if (c) texto = (texto ? texto + ' ' : '') + c;
+    }
+    const el = document.getElementById('episodiosLeitura');
+    if (el && texto) { el.textContent = texto; el.setAttribute('data-conteudo-fixado', '1'); }
+  })();
+} else {
+  lacuna('wrapRoni', txtCat(IP + 'roni.lacuna', null, 'Sem coleta até o corte.'));
+  lacuna('wrapEpisodios', txtCat(IP + 'episodios.lacuna', null, 'Sem coleta até o corte.'));
+}
+creditoPacifico('boxRoni');
+creditoPacifico('boxEpisodios');
 
 // ---- Gráfico 2: probabilidades ENOS ----
 // 13/09/2026: figura "Probabilidade por trimestre" retirada do HTML (ver comentário em

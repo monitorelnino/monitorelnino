@@ -56,7 +56,13 @@ function renderizar(pagina) {
         // 02/10/2026 (contrato de layout): `busca-mun-conta` é a linha de cobertura da busca por
         // município — quantos municípios a fonte acompanha. Entra na lista pelo mesmo motivo que
         // `figura-sub`: é parte declarada do componente, não explicação avulsa.
-        if (["figura-sub", "figura-cat", "figura-leitura", "busca-mun-conta", "cartao-mapa-familia",
+        // 07/10/2026: `figura-nota` é a NOTA METODOLÓGICA da governança §11 — a quarta função
+        // da figura, que até aqui não tinha componente e por isso vinha empurrada para dentro da
+        // legenda, que tem teto de 140 caracteres. `grafico-pacifico-eixo` é o rótulo do eixo
+        // vertical, que fica fora do SVG para não encolher junto com ele no celular. As duas
+        // entram pelo mesmo motivo que `figura-sub` entrou: são partes do componente.
+        if (["figura-sub", "figura-nota", "grafico-pacifico-eixo",
+             "figura-cat", "figura-leitura", "busca-mun-conta", "cartao-mapa-familia",
              "cartao-mapa-boletim", "cartao-mapa-leitura", "cartao-mapa-dados",
              "cartao-mapa-rodape"].some(c => e.classList.contains(c))) return false;
         if (e.closest(".cartao-mapa-leitura") || e.closest(".cartao-mapa-rodape")) return false;

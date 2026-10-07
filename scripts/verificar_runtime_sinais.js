@@ -23,7 +23,11 @@ vc.on("jsdomError", e => erros.push(e.detail && e.detail.stack ? e.detail.stack.
 const graficos = [];  // toda instância de Chart criada pela página
 
 const dom = new JSDOM(html, {
-  url: "https://localhost/", runScripts: "dangerously", virtualConsole: vc,
+  // A URL É A DA PÁGINA, de propósito: `assets/catalogo.js` descobre qual arquivo de conteúdo
+  // pedir pelo `location.pathname`, e com "/" ele pedia `conteudo/index.json` — o portão
+  // renderizava a página com o texto de RESERVA do HTML e conferia outra coisa que não a que vai
+  // ao ar. É a mesma lição que o inlinador aprendeu em 05/10/2026, no outro extremo do caminho.
+  url: "https://localhost/monitor-de-riscos.html", runScripts: "dangerously", virtualConsole: vc,
   beforeParse(w) {
     global.window = w; global.document = w.document; global.navigator = w.navigator;
     w.d3 = require("d3");
@@ -33,7 +37,7 @@ const dom = new JSDOM(html, {
     Chart.defaults = { font: {}, color: "" };
     w.Chart = Chart;
     w.fetch = (rel) => {
-      const p = path.join(raiz, rel);
+      const p = path.join(raiz, String(rel).replace(/^\//, "").split("?")[0]);
       try {
         const txt = fs.readFileSync(p, "utf-8");
         return Promise.resolve({ ok: true, json: () => Promise.resolve(JSON.parse(txt)) });
@@ -92,17 +96,123 @@ setTimeout(() => {
   // saíram da página por decisão da editoria e vivem na METODOLOGIA. A cobrança não some: muda
   // de alvo junto com a página, e continua exigindo a figura dentro do painel e o resumo cheio.
   teste("RONI: figura dentro do painel 'Situação atual'", (() => { const s = q("situacao"); return !!(s && s.querySelector("#boxRoni")); })());
-  teste("resumo da situação preenchido com o dado", q("stResumo") && /El Niño foi declarado/.test(q("stResumo").textContent));
-  teste("os três cartões respondem com o dado", ["stHaElNino", "stForca", "stChance"].every(id => q(id) && q(id).textContent.trim() && q(id).textContent.trim() !== "—"));
 
-  // wrapPlume/iri_plume retirado do loop em 13/09/2026 (auditoria de visualizações) — figura sem cobertura, trocada por cartão compacto fora do componente .figura
-  for (const [wrap, fonte] of [["wrapRoni", "noaa_roni"]]) {
-    const coletada = SINAIS.fontes[fonte].status === "coletado";
-    const temCanvas = q(wrap) && q(wrap).querySelector("canvas");
+  // ===== O topo "Situação atual" e os dois gráficos do Pacífico (07/10/2026, parte 1) =========
+  // O que estes testes guardam é o que o handover pediu e a conformidade não alcança sozinha: a
+  // régua de força fora do topo, os anos do título saindo do DADO, a lista de episódios igual à
+  // calculada pelo critério da NOAA/CPC, e nenhum número do topo sem fonte e data.
+  const contrato = require("../layout/contratos/monitor-de-riscos.json");
+
+  // --- a régua de força saiu, e com ela os três quadros com ícone ---
+  teste("os três quadros com ícone saíram do topo",
+    !q("stHaElNino") && !q("stForca") && !q("stChance") && !d.querySelector(".situacao--fichas"));
+
+  // --- vocabulário proibido POR SEÇÃO, do contrato. "Chuva forte", na legenda dos mapas de "Os
+  //     riscos no Brasil", é outra coisa e continua valendo: a regra é de seção, não de página ---
+  Object.entries(contrato.secoes_texto_proibido || {}).forEach(([seletor, regra]) => {
+    if (seletor.startsWith("_")) return;
+    const secao = d.querySelector(seletor);
+    if (!secao) { teste(`seção ${seletor} existe para o vocabulário por seção`, false); return; }
+    // A exceção declarada: "muito forte" ENTRE ASPAS e atribuído à NOAA/CPC. Qualquer outra
+    // ocorrência conta. Tirar os trechos citados antes de procurar é o que separa as duas.
+    const texto = secao.textContent.replace(/[“"][^”"]*[”"]/g, " ");
+    (regra.palavras || []).forEach(palavra => {
+      const achou = new RegExp("\\b" + palavra.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\b", "i").test(texto);
+      teste(`${seletor}: sem ${JSON.stringify(palavra)} fora de citação`, !achou);
+    });
+  });
+
+  // --- os quatro cartões de número do topo: valor preenchido, e fonte com órgão e data ---
+  const cartoes = contrato.numeros_esperados && contrato.numeros_esperados.cartoes || [];
+  teste(`topo: ${cartoes.length} cartão(ões) de número no componente do site`,
+    cartoes.length > 0 && cartoes.every(c => {
+      const el = d.querySelector(`[data-cartao="${c}"]`);
+      return el && el.classList.contains("cartao-numero") && el.closest(".grade-numeros");
+    }));
+  cartoes.forEach(c => {
+    const el = d.querySelector(`[data-cartao="${c}"]`);
+    const valor = el && el.querySelector(".cartao-numero-valor");
+    const fonte = el && el.querySelector(".cartao-numero-fonte");
+    const v = valor ? valor.textContent.trim() : "";
+    // Travessão e vazio são o que `layout/regras.json` reprova em cartão de número, e aqui vale
+    // sobre o cartão RENDERIZADO, que é onde o leitor o encontra.
+    teste(`cartão '${c}': valor sem travessão e sem vazio`, v !== "" && v !== "—" && v !== "-");
+    teste(`cartão '${c}': fonte com órgão e data`,
+      !!(fonte && fonte.textContent.trim() && /\d{2}\/\d{2}\/\d{4}/.test(fonte.textContent)));
+  });
+
+  // --- os dois gráficos: SVG desenhado, nunca canvas escalado, e letra de 12 px ---
+  for (const wrap of ["wrapRoni", "wrapEpisodios"]) {
+    const coletada = SINAIS.fontes["noaa_roni"].status === "coletado";
+    const svg = q(wrap) && q(wrap).querySelector("svg");
     const temLacuna = q(wrap) && q(wrap).querySelector(".lacuna");
-    teste(`${wrap}: ${coletada ? "gráfico desenhado" : "lacuna declarada ou leitura oficial"}`, coletada ? !!temCanvas : !!temLacuna);
-    teste(`${wrap}: nunca gráfico e lacuna ao mesmo tempo`, !(temCanvas && temLacuna));
+    teste(`${wrap}: ${coletada ? "gráfico desenhado" : "lacuna declarada"}`, coletada ? !!svg : !!temLacuna);
+    teste(`${wrap}: nunca gráfico e lacuna ao mesmo tempo`, !(svg && temLacuna));
+    if (!svg) continue;
+    teste(`${wrap}: o gráfico é SVG, e não canvas`, !q(wrap).querySelector("canvas"));
+    teste(`${wrap}: mídia rotulada para leitor de tela`,
+      svg.getAttribute("role") === "img" && (svg.getAttribute("aria-label") || "").length > 10);
+    // Só os DOIS limiares oficiais da NOAA/CPC, e nenhuma faixa de força no fundo.
+    teste(`${wrap}: duas linhas tracejadas de limiar, e nada além`, svg.querySelectorAll("line.lim").length === 2);
+    teste(`${wrap}: nenhuma cor em hexadecimal no desenho`, !/#[0-9a-fA-F]{3,8}\b/.test(svg.outerHTML));
+    teste(`${wrap}: todo valor tem rótulo ao passar o mouse`, svg.querySelectorAll("title").length > 0);
   }
+
+  // --- o título do gráfico 1 traz os ANOS DO DADO ---
+  const serieRoni = ((SINAIS.enos.roni || {}).serie || []);
+  if (serieRoni.length) {
+    const anoIni = serieRoni[0].ano, anoFim = serieRoni[serieRoni.length - 1].ano;
+    const tit = (q("roniTitulo") || {}).textContent || "";
+    teste(`título do gráfico 1 traz ${anoIni}–${anoFim}, do próprio dado`,
+      tit.includes(String(anoIni)) && tit.includes(String(anoFim)));
+  }
+
+  // --- a lista de episódios do gráfico 2 é a CALCULADA pelo critério, nunca escrita à mão ---
+  // O critério é o da NOAA/CPC: cinco ou mais médias trimestrais consecutivas acima de +0,5 °C.
+  // Este cálculo é independente do da página, de propósito: ele existe para discordar dela.
+  const CENTRO = {DJF:0,JFM:1,FMA:2,MAM:3,AMJ:4,MJJ:5,JJA:6,JAS:7,ASO:8,SON:9,OND:10,NDJ:11};
+  const ord = p => p.ano * 12 + CENTRO[String(p.trimestre).toUpperCase()];
+  const ordenada = serieRoni.filter(p => CENTRO[String(p.trimestre).toUpperCase()] !== undefined)
+    .slice().sort((a, b) => ord(a) - ord(b));
+  const trechos = [];
+  let corrente = [];
+  ordenada.forEach(pt => {
+    const contiguo = !corrente.length || ord(pt) === ord(corrente[corrente.length - 1]) + 1;
+    if (pt.anomalia > 0.5 && contiguo) { corrente.push(pt); return; }
+    if (corrente.length) trechos.push(corrente);
+    corrente = pt.anomalia > 0.5 ? [pt] : [];
+  });
+  if (corrente.length) trechos.push(corrente);
+  const derradeiro = ordenada[ordenada.length - 1];
+  const emCurso = trechos.find(t => t[t.length - 1] === derradeiro) || null;
+  const esperados = trechos.filter(t => t !== emCurso && t.length >= 5)
+    .map(t => t[0].ano + "–" + String(t[0].ano + 1).slice(2));
+  if (emCurso) esperados.push(String(emCurso[0].ano));
+  const naLegenda = [...d.querySelectorAll("#legEpisodios span")].map(x => x.textContent.trim());
+  teste(`gráfico 2: episódios calculados do dado (${esperados.join(", ")})`,
+    esperados.length > 0 && esperados.every(e => naLegenda.includes(e))
+    && naLegenda.every(e => esperados.includes(e)));
+  // 07/10/2026: a lista saiu do TÍTULO e foi para a NOTA — no título ela ocupava cinco linhas
+  // numa coluna da grade de dois e desalinhava a dupla em 70 px, e com a série desde 1950 ela
+  // cresce para dezenas de episódios. A cobrança não some: muda de alvo junto com a página.
+  // Quem nomeia cada episódio é a LEGENDA, item a item (conferida acima), e a frase de leitura
+  // sob o gráfico, com o valor de cada um. Nem o título nem a nota carregam a lista: as duas
+  // reservam altura para a dupla alinhar, e lista que cresce com o dado estoura a reserva.
+  const fechados = esperados.filter(e => e.includes("–"));
+  const leituraEp = (q("episodiosLeitura") || {}).textContent || "";
+  teste("gráfico 2: a leitura dá o valor de cada episódio e do ciclo em curso",
+    esperados.every(e => leituraEp.includes(e.slice(0, 4))));
+  const tituloEp = (q("episodiosTitulo") || {}).textContent || "";
+  teste("gráfico 2: o título nomeia o ciclo em curso e não cresce com a lista",
+    (!emCurso || tituloEp.includes(String(emCurso[0].ano)))
+    && !fechados.some(e => tituloEp.includes(e)));
+  teste("gráfico 2: uma linha por episódio, mais o ciclo em curso",
+    q("wrapEpisodios") && q("wrapEpisodios").querySelectorAll("polyline").length === esperados.length);
+
+  // --- a anomalia mensal saiu da página, e o dado dela continua coletado ---
+  teste("a anomalia mensal do Niño 3.4 saiu da página", !q("boxAnomalia") && !q("wrapAnomalia"));
+  teste("o dado da anomalia mensal continua no registro",
+    !!(SINAIS.enos.nino34_mensal && (SINAIS.enos.nino34_mensal.serie || []).length));
 
   // --- cartões do estado do ciclo removidos em 13/09/2026 (unificados em 'Situação atual', pedido
   //     de Patricia): três dos quatro duplicavam valores já no painel; verificação virou parte do
@@ -110,7 +220,7 @@ setTimeout(() => {
 
   // --- PROVENIÊNCIA VISÍVEL: regra própria desta página ---
   const creditos = [...d.querySelectorAll("[data-credito]")];
-  const figuras = ["boxSecas", "boxTemperatura", "boxAr", "boxFogo", "boxRoni", "boxRiscoPrevisto", "boxAvisos"]   // 24/09/2026: boxAvisos e boxCemaden foram para defesa-civil.html; entraram boxTemperatura e boxAr   // boxTipos fundido em boxTipoRisco (figura dupla) em 15/09/2026;   // boxCruz foi para a página inicial em 15/09/2026   // ids a partir de 1 (auditoria 07/09/2026); boxPlume retirado em 13/09/2026 (sem cobertura); cartaoCiclo1-4 retirados em 13/09/2026 (unificados em 'situacao')
+  const figuras = ["boxSecas", "boxTemperatura", "boxAr", "boxFogo", "boxRoni", "boxEpisodios", "boxRiscoPrevisto", "boxAvisos"]   // 24/09/2026: boxAvisos e boxCemaden foram para defesa-civil.html; entraram boxTemperatura e boxAr   // boxTipos fundido em boxTipoRisco (figura dupla) em 15/09/2026;   // boxCruz foi para a página inicial em 15/09/2026   // ids a partir de 1 (auditoria 07/09/2026); boxPlume retirado em 13/09/2026 (sem cobertura); cartaoCiclo1-4 retirados em 13/09/2026 (unificados em 'situacao')
   const semCredito = figuras.filter(id => !q(id) || !q(id).querySelector("[data-credito]"));
   teste(`toda figura tem crédito de fonte (${creditos.length} créditos)`, semCredito.length === 0);
   if (semCredito.length) console.log("      sem crédito:", semCredito.join(", "));
