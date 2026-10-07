@@ -23,6 +23,27 @@
 //
 // Um teste que só provasse o conserto não provaria que ele conserta alguma coisa.
 //
+// A MARGEM, MEDIDA — 07/10/2026
+// --------------------------------
+// Este portao reprovou sozinho em cerca de um terco das rodadas, e a causa estava na PAGINA, nao
+// aqui: `assets/js/financiamento.js` pedia `compromissos_federais.json` QUATRO vezes em paralelo a
+// cada carregamento, e quatro atrasos de 5 s somavam 20.000 ms contra o teto de 20.000 ms do
+// `waitForFunction` -- margem zero. Corrigido no mesmo dia (uma promessa compartilhada,
+// `compromissosFederais()`), e o comentario de ATRASO_MS acima registra o resto da historia.
+//
+// Depois da correcao, a margem foi MEDIDA, e fica aqui para ninguem reabrir isto as cegas:
+//
+//   · 34 rodadas verdes seguidas, em tres baterias, com a maquina sob carga gerada de proposito
+//     (uma e depois duas suites de navegador rodando em laco ao lado);
+//   · a frase aparece em 5,4 a 5,6 s de forma estavel -- 1 requisicao do JSON, nunca 4 --,
+//     o que deixa cerca de 14,5 s de folga contra o teto de 20 s;
+//   · o numero nao se mexeu quando a carga dobrou, o que diz que a folga nao e sorte de maquina.
+//
+// Entao a resposta a pergunta que importava: a pagina NAO passa dos 20 s sob runner lento, e o
+// teto que `scripts/_layout_dump.js` usa contra a pagina de verdade, na publicacao, tem a mesma
+// folga. Nao e achado de producao. Se este portao voltar a oscilar, a primeira coisa a medir e
+// quantas requisicoes do JSON a pagina faz: foi isso das duas vezes.
+//
 // USO
 //   node scripts/testar_corrida_do_medidor.js
 const http = require("http"), fs = require("fs"), path = require("path");
