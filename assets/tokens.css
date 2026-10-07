@@ -47,6 +47,21 @@
   /* 30/09/2026 (F.1): fundo dos gráficos do Pacífico — oceano noturno, da mesma família do
      fundo do mapa de fogo (--mapa-fogo-fundo), com o azul que a água pede. */
   --grafico-oceano: #14202B;
+
+  /* 07/10/2026 (maquete rev. 2 dos gráficos do Pacífico): a paleta dos DOIS gráficos sobre o
+     oceano noturno. Eles tomavam emprestados os tons do mapa de fogo — brasa é brasa, e um
+     gráfico de temperatura do mar pintado com a rampa do incêndio é duas famílias na mesma cor.
+     Os valores são os aprovados na maquete; hexadecimal só entra aqui e em assets/mapas.js. */
+  --pacifico-barra-quente: #D8621F;   /* acima de zero */
+  --pacifico-barra-fria:   #5E7C93;   /* abaixo de zero — o próprio --sintetico */
+  --pacifico-agora:        #F29A38;   /* o ciclo em curso, único acento quente do gráfico 2 */
+  --pacifico-serie-a:      #EDE6D8;   /* osso: o episódio de referência */
+  --pacifico-serie-b:      #8FA5A8;   /* mineral: os demais episódios, por traço e não por cor */
+  --pacifico-tinta:        #C5CFCE;   /* rótulo de eixo e anotação sobre o oceano */
+  --pacifico-tinta-fraca:  #8FA5A8;   /* rótulo secundário */
+  --pacifico-grade:        #55645B;   /* limiar tracejado e marca de eixo */
+  --pacifico-divisoria:    #3A4A41;   /* a virada de ano no gráfico 2 */
+  --pacifico-zero:         #8FA5A8;   /* a linha do zero */
   /* 30/09/2026 (Proteja-se, item 10.4): o calor ganha ficha própria e precisa de cor própria.
      Ele ficava com o mesmo token da seca, e duas famílias com a mesma cor não são duas
      famílias. Laranja queimado entre --seca e --fogo, conferido em contraste. */
