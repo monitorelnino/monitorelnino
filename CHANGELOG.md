@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-07 · #PR · A série do RONI deixa de ser cortada em 160 pontos
+
+O coletor guardava os últimos 160 trimestres móveis — treze anos, a partir de 2013 — e a página
+comparava o ciclo em curso com uma janela em que os maiores episódios não cabiam. Passa a guardar
+a série inteira: 920 pontos, de DJF/1950 a JAS/2026, medidos na origem em 07/10/2026, 49 KB de
+JSON. Autoteste prova o começo, o fim, a ausência de duplicados e que o corte não volta.
+
 ## 2026-10-05 · #563 · A seção de perguntas da imprensa chama-se Perguntas frequentes
 
 Revisão da editoria. As cinco perguntas que vinham sob o subtítulo “Para entender o que está
