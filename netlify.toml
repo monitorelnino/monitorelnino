@@ -20,40 +20,33 @@
   to = "/obrigado.html"
   status = 200
 
-# --- O script do Netlify Drawer (HUD): injetado ao servir, inalcançável aqui (07/10/2026) ---
+# --- O script do Netlify Drawer (HUD): não há como desligá-lo daqui (medido em 07/10/2026) ---
 # O Netlify injeta `<script async src="/.netlify/scripts/hud?...">` em toda página NO MOMENTO DE
 # SERVIR — não no build, então `skip_processing` não o alcança. É script de terceiro não pedido,
-# em todas as páginas de um site de interesse público.
+# em todas as páginas de um site de interesse público, e a seção existe para que ninguém gaste de
+# novo o tempo que isto já custou.
 #
-# NÃO HÁ CHAVE NESTE ARQUIVO QUE O DESLIGUE. A documentação do Netlify diz, literalmente, que a
-# desativação é só pela interface, em Project configuration > Developer settings > Continuous
-# deployment > Collaboration tools > Configure. Conferido em 07/10/2026 contra
-# docs.netlify.com/deploy/review-deploys/netlify-drawer-for-feedback/troubleshoot-the-netlify-drawer/.
-# `hud_enabled=false` pela API foi tentado em 14/09/2026 e não desligou; desligar pelo painel foi
-# tentado em 07/10/2026 e não segurou — 11 páginas com o script antes, 1 logo depois (cache de
-# borda), 11 de novo na republicação seguinte.
+# TRÊS TENTATIVAS, TRÊS MEDIÇÕES, NENHUMA FUNCIONOU:
 #
-# O que ESTE arquivo pode fazer é o que está abaixo: devolver 404 no caminho do script. A tag
-# continua sendo injetada no HTML — isso é do servidor, e está fora do nosso alcance —, mas o
-# recurso deixa de existir no domínio. Vira a segunda barreira: a primeira é a CSP, que não
-# permite `'self'` em `script-src` e faz o navegador recusar o script; esta impede que ele seja
-# sequer entregue. Nenhuma das duas é o desligamento, e o verificador do domínio continua
-# relatando a injeção em vez de escondê-la.
+#   1. `hud_enabled=false` pela API (14/09/2026) — não desligou.
+#   2. Desligar pelo painel (07/10/2026) — não segurou: 11 páginas com o script antes, 1 logo
+#      depois (cache de borda, que enganou), 11 de novo na republicação seguinte.
+#   3. Devolver 404 no caminho do script por `[[redirects]]` daqui (07/10/2026) — **o Netlify
+#      ignora redirect em `/.netlify/*`**, que é área interna dele. Publicado e medido contra o
+#      domínio real: o caminho seguiu respondendo **200**. O redirect foi removido, porque regra
+#      que não faz nada é pior do que regra nenhuma: ela promete uma proteção que não existe.
 #
-# 404 e não 301, pela mesma razão da pasta de arquivo abaixo: o recurso não mudou de lugar, ele
-# não é para existir aqui.
-[[redirects]]
-  from = "/.netlify/scripts/hud"
-  to = "/404.html"
-  status = 404
-  force = true
-[[redirects]]
-  from = "/.netlify/scripts/hud/*"
-  to = "/404.html"
-  status = 404
-  force = true
+# A documentação do Netlify diz que a desativação é SÓ pela interface, em Project configuration >
+# Developer settings > Continuous deployment > Collaboration tools > Configure (conferida em
+# 07/10/2026, página "Troubleshoot the Netlify Drawer"). Esse caminho é mais fundo que o
+# Site configuration > General onde a tentativa 2 foi feita, e é o único documentado.
+#
+# O QUE PROTEGE HOJE É A CSP, e está medido: `script-src` não traz `'self'` — só os caminhos
+# `/assets/` do próprio site e o VLibras —, então o navegador RECUSA o script injetado. O portão
+# de navegador do domínio confere isso a cada publicação: "injeção do Netlify é a única
+# bloqueada". A tag fica no HTML, e o verificador a relata em vez de escondê-la.
 
-# --- Pasta de arquivo: guardada no repositório, NUNCA servida (§258, 27/09/2026) ---
+# --- Pasta de arquivo: guardada no repositório, NUNCA servida (§258, 27/09/2026) ---# --- Pasta de arquivo: guardada no repositório, NUNCA servida (§258, 27/09/2026) ---
 # `publish = "."` serve a raiz inteira, então arquivar um arquivo dentro do repositório não o
 # retira do ar por si: sem esta regra, `arquivo/pesquisadores/pesquisadores.html` continuaria
 # acessível por URL, e a página que a editoria mandou suprimir seguiria publicada — só sem link

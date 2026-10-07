@@ -10,6 +10,14 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+## 2026-10-07 · #PR · O redirect do HUD sai: o Netlify ignora `/.netlify/*`
+
+Publicado e medido contra o domínio real, o 404 no caminho do script do Drawer não pegou — a área
+interna do Netlify não aceita redirect nosso, e o caminho seguiu respondendo 200. A regra sai,
+porque regra que não faz nada promete uma proteção que não existe, e a asserção que a conferia
+sai com ela. Ficam as três tentativas medidas no `netlify.toml`, para ninguém repeti-las. Quem
+protege é a CSP, que faz o navegador recusar o script.
+
 ## 2026-10-07 · #PR · O script do Netlify Drawer fica inalcançável no domínio
 
 Não há chave no `netlify.toml` que desligue a injeção: a documentação do Netlify diz que isso é
