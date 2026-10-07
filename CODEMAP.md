@@ -92,7 +92,7 @@ Atualizado em 06/10/2026.
 | `coletar_srag_sivep.py` | — | `saude_desfechos/srag_serie.json`, `saude_desfechos/srag_sivep_agregados.json` | — | — | não |
 | `coletar_transferegov.py` | — | `financiamento/consultas.json`, `financiamento/por_uf.json`, `financiamento/programas_faf_2026.json`, `financiamento/serie_nacional.json`, `transferegov_el_nino_revisar.json` | — | — | não |
 | `coletar_transferencias_municipais.py` | — | `estados.json`, `indice.json`, `monitor_saude.json`, `municipios.json`, `saude_uf.json`, `transferencias_uniao.json` | — | — | não |
-| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `evidencias.json`, `fontes_consultadas.json`, `log_buscas.json`, `robots_registro.json` (+1) | — | **172** | não |
+| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `evidencias.json`, `fontes_consultadas.json`, `log_buscas.json`, `robots_registro.json` (+1) | — | **174** | não |
 | `consultar_querido_diario.py` | — | `pistas_querido_diario.json` | — | 1 | não |
 | `converter_contribuicao.py` | — | — | — | — | SIM |
 | `descobrir_dominios.py` | — | `dominios_oficiais.json` | — | — | não |
@@ -142,7 +142,7 @@ Atualizado em 06/10/2026.
 | `revisar_pistas.py` | — | `pistas_imprensa.json` | — | — | não |
 | `robustez_saude.py` | — | — | — | — | não |
 | `saude_opendatasus.py` | — | — | — | 2 | não |
-| `scripts/aplicar_delta_do_elo.py` | — | `focos_pontos.json`, `nao_declarado.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_revisao.json` | — | — | não |
+| `scripts/aplicar_delta_do_elo.py` | — | `estados.json`, `focos_pontos.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_revisao.json`, `publicacao.json` | — | — | não |
 | `scripts/commit_do_elo.py` | — | `inventado.json`, `municipios.json`, `novo.json`, `pistas_imprensa.json`, `pistas_revisao.json`, `publicacao.json` | — | 2 | não |
 | `scripts/consolidar_noite.py` | — | `focos_pontos.json`, `historico_mudancas.json`, `inventado.json`, `log_buscas.json`, `painel_da_noite.json`, `pistas_imprensa.json` (+2) | — | — | não |
 | `scripts/contar_filas_humanas.py` | — | `decretos_conteudo_revisar.json`, `pistas_descobertas.json`, `pistas_imprensa.json`, `pistas_imprensa_saude.json`, `saude_no_plano_revisar.json` | — | — | não |

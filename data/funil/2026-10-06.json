@@ -3,25 +3,32 @@
  "formato_versao": 1,
  "etapas": {
   "descobrir_planos": {
-   "alvos_consultados": 40,
+   "alvos_consultados": 60,
    "achados_novos": 0,
-   "fila_acumulada": 84
+   "fila_acumulada": 126
   },
   "rede_social": {
-   "entes_consultados": 40,
-   "perfis_confirmados": 74,
-   "pistas": 0,
-   "sem_perfil": 8,
-   "lacunas": 8
+   "entes_consultados": 60,
+   "perfis_confirmados": 111,
+   "pistas": 1,
+   "sem_perfil": 12,
+   "lacunas": 12
   },
   "juiz": {
-   "pistas_recebidas": 300,
-   "com_documento": 0,
+   "pistas_recebidas": 1082,
+   "com_documento": 11,
    "promovidas": 0,
-   "recusa_sem_documento_primario": 288,
-   "recusa_documento_inacessivel": 8,
-   "recusa_texto_nao_extraivel": 4
+   "recusa_sem_documento_primario": 1038,
+   "recusa_documento_inacessivel": 27,
+   "recusa_texto_nao_extraivel": 6,
+   "recusa_ente_nao_confirmado": 2,
+   "recusa_citacao_incompleta": 1,
+   "recusa_executivo_pendente": 1,
+   "recusa_autoridade_nao_confirmada": 3,
+   "recusa_noticia_institucional_nao_e_o_plano": 2,
+   "recusa_natureza_duvidosa": 1,
+   "recusa_resposta": 1
   }
  },
- "atualizado_em": "2026-10-06T09:14:30"
+ "atualizado_em": "2026-10-06T22:15:06"
 }

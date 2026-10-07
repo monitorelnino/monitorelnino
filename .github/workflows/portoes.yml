@@ -497,6 +497,13 @@ jobs:
           # assunto: dado rapido
           python3 scripts/verificar_relogio_dos_derivados.py
 
+      # Causa F: a regra "nenhum commit automatico na `main` de dia" passa a ter guarda no codigo.
+      - name: Janela da noite — a guarda da coleta na `main`
+        timeout-minutes: 2
+        run: |
+          # assunto: dado rapido
+          python3 scripts/guarda_da_janela.py --autoteste
+
       - name: Portão 12 — a cadeia de derivados regenera sem erro
         id: p12
         if: steps.diff.outputs.dado_mudou == 'true'
