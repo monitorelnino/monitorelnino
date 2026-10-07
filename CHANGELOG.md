@@ -9,6 +9,30 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+
+## 2026-10-07 · #PR · Boletim nº 4 do Painel, com horizonte e link do documento
+
+O registro do Painel passa ao boletim nº 4 (setembro de 2026): a fonte citada é o documento, com
+número e mês, e o endereço é o do próprio boletim, não a página inicial do órgão. O horizonte
+exibido é o que o boletim diz — "no trimestre outubro-novembro-dezembro (OND) de 2026". Nenhuma UF
+mudou de risco ou de categoria: a tabela de trechos por UF está no registro interno, e onde o
+boletim fala por região sem nomear o estado, a leitura não avança. Nenhuma nota muda.
+
+## 2026-10-07 · #PR · As listas federais mostram todos os riscos da fonte
+
+A nota técnica da Casa Civil nomeia deslizamento em 1.050 municípios do cadastro, e o cartão
+descartava esse tipo. Agora os tipos aparecem pelos nomes da fonte, em ordem alfabética, e os 9
+municípios que constam da lista de prioritários só por deslizamento têm linha própria. A fonte
+citada passa a ser a nota técnica nº 2/2025 e a nº 1/2023, com link para os dois documentos; o
+decreto 12.444 sai da citação. O ano do MMA vem da portaria em vigor, gravada no dado.
+
+## 2026-10-07 · #PR · O cartão do município se monta pelo código IBGE
+
+O cartão resolvia o município pelo nome no banco de planos; agora resolve pelo código IBGE da
+lista de referência dos 5.571. Com isso o quadro das listas federais de risco aparece para os
+2.916 municípios que constam de alguma lista e não têm registro no banco. O escape de texto
+passou a acontecer uma vez só, na saída: escapado duas vezes, "Olho d'Água das Flores" saía com
+a entidade visível e o nome não casava com a lista oficial. Em `assets/js/index.js`.
 ## 2026-10-07 · #PR · A página do Financiamento busca o mesmo arquivo uma vez, não quatro
 
 Cinco trechos pediam `compromissos_federais.json` com o seu próprio `fetch`, e quatro disparavam

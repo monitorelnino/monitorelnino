@@ -27,17 +27,18 @@ RAIZ = pathlib.Path(__file__).resolve().parent.parent
 ARQUIVO = RAIZ / "assets" / "js" / "index.js"
 
 APROVADOS = {
-    "chuva": ("Consta do cadastro federal de municípios suscetíveis a enxurradas e inundações "
-              "(Casa Civil, 2025)."),
-    "seca": ("Integra a delimitação oficial do Semiárido brasileiro, região sujeita a estiagens "
-             "prolongadas (Sudene, 2024)."),
+    "chuva": "Consta do cadastro federal de municípios suscetíveis a enxurradas e inundações.",
+    "geo": "Consta da lista federal de municípios suscetíveis a risco geo-hidrológico.",
+    "seca": "Integra a delimitação oficial do Semiárido brasileiro.",
     "fogo": ("Consta da lista federal de municípios prioritários para controle do desmatamento e "
-             "dos incêndios florestais na Amazônia (MMA, 2024)."),
-    "nenhuma": ("Não consta de nenhuma das listas federais de risco por município: enxurradas e "
+             "dos incêndios florestais na Amazônia (MMA, {ano})."),
+    "nenhuma": ("Não consta das listas federais de risco por município: enxurradas e "
                 "inundações (Casa Civil), Semiárido (Sudene) e prioritários para desmatamento e "
                 "incêndios (MMA)."),
 }
-COMPLEMENTOS = ("inundação", "enxurrada", "inundação e enxurrada")
+# Os tipos de risco agora aparecem pelos NOMES DA FONTE, e nao por complemento de frase: o cartao
+# mostra as marcas de deslizamento, enxurrada e inundacao quando a nota tecnica as nomeia.
+COMPLEMENTOS = ("deslizamento", "enxurrada", "inundação")
 
 # Palavras de dever, obrigação e recomendação. `obrigat` cobre obrigatório e obrigatoriedade;
 # `dever` cobre deveres. "deve" e "devem" entram como palavra inteira, para não pegar "devendo" de
@@ -87,14 +88,14 @@ def problemas(fonte: str) -> list:
 def autoteste() -> int:
     bom = ("const ENQ_TEXTO = {\n"
            + "".join(f"  x: '{f}',\n" for f in APROVADOS.values())
-           + "};\nconst ENQ_RISCO = {i: 'inundação', e: 'enxurrada', ie: 'inundação e enxurrada'};\n"
+           + "};\nconst ENQ_TIPO = {d: 'deslizamento', e: 'enxurrada', i: 'inundação'};\n"
              "function enquadramentoBox(uf, nome){ return ''; }\n"
              "function outra(){ /* aqui o texto deve poder dizer deve */ }\n")
     casos = [
         ("bloco correto passa", problemas(bom) == []),
         ("arquivo sem o bloco reprova", any("não encontrado" in p for p in problemas("var x = 1;"))),
         ("texto alterado reprova",
-         any("texto de seca" in p for p in problemas(bom.replace("estiagens", "secas")))),
+         any("texto de seca" in p for p in problemas(bom.replace("delimitação", "lista")))),
         ("texto ausente reprova",
          any("texto de fogo" in p for p in problemas(bom.replace(APROVADOS["fogo"], "")))),
         ("complemento removido reprova",

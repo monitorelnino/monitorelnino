@@ -47,7 +47,7 @@ GOVERNANCA = (
     "consta de ALGUMA lista federal de risco; quem não consta de nenhuma simplesmente não está "
     "aqui. Chaves: `ch` = consta do cadastro federal de enxurradas e inundações (Casa Civil), com "
     "o risco identificado em 'i' (inundação), 'e' (enxurrada), 'ie' (as duas) ou '' (cadastrado "
-    "sem tipo nomeado na nota técnica); `sa` = integra a delimitação do Semiárido (Sudene); "
+    "sem tipo nomeado na nota técnica); `tp` = TODOS os tipos de risco que a nota técnica nomeia para o município, em letras ordenadas ('d' deslizamento, 'e' enxurrada, 'i' inundação); `geo` = consta da lista de prioritários só por deslizamento, fora do cadastro de enxurradas e inundações; `sa` = integra a delimitação do Semiárido (Sudene); "
     "`mma` = consta da lista de prioritários para controle do desmatamento (MMA); `mmb` = consta "
     "da lista de desmatamento monitorado e sob controle (MMA). Camada de CONTEXTO, PESO ZERO: "
     "nada disto entra na nota do MARÉ."
@@ -65,6 +65,24 @@ def risco_de_chuva(tipos) -> str:
     return ("i" if tem_i else "") + ("e" if tem_e else "")   # 'ie' = "inundação e enxurrada"
 
 
+def tipos_da_nota(tipos) -> str:
+    """Letras ordenadas de TODOS os tipos que a nota tecnica nomeia. Funcao pura.
+
+    `risco_de_chuva` responde o que o CADASTRO cobre (enxurrada e inundacao, o vocabulario da Lei
+    11.445). Esta responde o que a FONTE registra, e inclui deslizamento — que estava sendo
+    descartado em 1.050 municipios do cadastro: o dado existia na nota e nao chegava ao leitor.
+    """
+    nomes = {str(t).lower() for t in (tipos or [])}
+    letras = []
+    if any("desliz" in t for t in nomes):
+        letras.append("d")
+    if any("enxurrada" in t for t in nomes):
+        letras.append("e")
+    if any("inunda" in t for t in nomes):
+        letras.append("i")
+    return "".join(letras)
+
+
 def registros(casa_civil: dict, enquadramento: dict) -> dict:
     """{codigo_ibge: marcas} de quem consta de alguma lista. Função pura."""
     fora = {}
@@ -73,12 +91,23 @@ def registros(casa_civil: dict, enquadramento: dict) -> dict:
     # forma do contêiner não é falha que valha a pena ter.
     origem = (casa_civil or {}).get("municipios") or {}
     for r in (origem.values() if isinstance(origem, dict) else origem):
-        if not isinstance(r, dict) or not r.get("cadastro_casa_civil_2086"):
+        if not isinstance(r, dict):
             continue
         codigo = str(r.get("codigo_ibge") or "").zfill(7)
         if len(codigo) != 7 or not codigo.isdigit():
             continue
-        fora.setdefault(codigo, {})["ch"] = risco_de_chuva(r.get("tipos_de_risco"))
+        if not r.get("cadastro_casa_civil_2086"):
+            # Os 9 municipios que estao na lista de prioritarios (2.095) e fora do cadastro (2.086)
+            # constam por deslizamento. Dizer que eles constam do cadastro de enxurradas seria
+            # falso; omiti-los tambem — eles tem linha propria, com o nome da lista deles.
+            if r.get("prioritario_2095") and tipos_da_nota(r.get("tipos_de_risco")) == "d":
+                fora.setdefault(codigo, {})["geo"] = 1
+            continue
+        marcas_cc = {"ch": risco_de_chuva(r.get("tipos_de_risco"))}
+        tipos = tipos_da_nota(r.get("tipos_de_risco"))
+        if tipos:
+            marcas_cc["tp"] = tipos
+        fora.setdefault(codigo, {}).update(marcas_cc)
     dos_dois = (enquadramento or {}).get("municipios") or {}
     if not isinstance(dos_dois, dict):
         dos_dois = {str(x.get("codigo_ibge")): x for x in dos_dois if isinstance(x, dict)}
@@ -103,12 +132,18 @@ def fontes_de(casa_civil: dict, enquadramento: dict) -> dict:
     fontes_enq = (enquadramento or {}).get("fontes") or {}
     fora = {}
     if casa_civil:
+        # A fonte e a nota tecnica que publica o anexo, e nao o decreto: quem nomeia municipio e
+        # tipo de risco e a nota. Os dois PDFs vao como links, pela ordem em que foram lidos.
+        documentos = casa_civil.get("documentos") or {}
         fora["chuva"] = {
-            "instrumento": ("Cadastro de municípios suscetíveis a eventos de enxurradas e "
-                            "inundações — Casa Civil, Decreto 12.444/2025"),
-            "url": casa_civil.get("fonte"),
+            "instrumento": "Casa Civil, Nota Técnica nº 2/2025 e nº 1/2023",
+            "prefixo": "Casa Civil",
+            "url": documentos.get("nt2_2025") or casa_civil.get("fonte"),
+            "urls": [["Nota Técnica nº 2/2025", documentos.get("nt2_2025")],
+                     ["Nota Técnica nº 1/2023", documentos.get("nt1_2023")]],
             "consultado_em": casa_civil.get("coletado_em"),
         }
+        fora["chuva"]["urls"] = [par for par in fora["chuva"]["urls"] if par[1]]
     for familia, chave in (("seca", "semiarido"), ("fogo", "mma_desmatamento")):
         origem = fontes_enq.get(chave)
         if origem:
@@ -146,7 +181,10 @@ def autoteste() -> int:
         ("a ordem é sempre inundação antes de enxurrada",
          risco_de_chuva(["enxurrada", "inundação"]) == "ie"),
         ("quem está fora do cadastro publicado não ganha linha de chuva",
-         "3501152" not in r),
+         "ch" not in r.get("3501152", {})),
+        ("só deslizamento fora do cadastro ganha a marca própria", r["3501152"] == {"geo": 1}),
+        ("os tipos da nota técnica vão completos, deslizamento incluído",
+         r["1200054"]["tp"] == "dei"),
         ("Semiárido marcado", r["2900207"]["sa"] == 1),
         ("prioritário do MMA marcado", r["1500602"]["mma"] == 1),
         ("prioritário do MMA não vira monitorado", "mmb" not in r["1500602"]),
@@ -156,7 +194,7 @@ def autoteste() -> int:
          registros({"municipios": []}, {"municipios": {"1": {"semiarido": False}}}) == {}),
         ("um município em duas listas acumula marcas",
          registros(cc, {"municipios": {"1200054": {"semiarido": True}}})["1200054"] ==
-         {"ch": "ie", "sa": 1}),
+         {"ch": "ie", "tp": "dei", "sa": 1}),
         ("chaves em ordem de código", list(r) == sorted(r)),
         ("código curto é preenchido com zeros",
          "0123456" in registros({"municipios": [{"codigo_ibge": "123456",

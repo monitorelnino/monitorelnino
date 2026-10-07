@@ -1756,7 +1756,20 @@ def semear(registro: dict) -> dict:
     consist = json.loads(CONSIST.read_text(encoding="utf-8"))
     boletins = json.loads(BOLETINS.read_text(encoding="utf-8"))
     numero = boletins.get("ultimo_boletim")
-    documento = f"Boletins nº 1 e {numero} do Painel El Niño 2026-2027" if numero else "Painel El Niño 2026-2027"
+    # 07/10/2026 (A3): o documento e a URL vêm do registro do boletim, com número e mês, e o
+    # endereço é o do PDF — a página inicial do Cemaden não é a fonte de uma afirmação datada.
+    documento = boletins.get("documento") or (
+        f"Boletins nº 1 e {numero} do Painel El Niño 2026-2027" if numero
+        else "Painel El Niño 2026-2027")
+    url_do_boletim = boletins.get("url") or FONTES["painel_el_nino"]["url_publica"]
+    fonte_painel = registro.get("fontes", {}).get("painel_el_nino")
+    if isinstance(fonte_painel, dict):
+        fonte_painel["documento"] = documento
+        fonte_painel["url_publica"] = url_do_boletim
+        if boletins.get("horizonte"):
+            fonte_painel["horizonte"] = boletins["horizonte"]
+        if boletins.get("consultado_em"):
+            fonte_painel["consultado_em"] = boletins["consultado_em"]
     faltando = [uf for uf in UFS if uf not in consist]
     if faltando:
         raise SystemExit(f"✗ consist.json não cobre {len(faltando)} UF(s): {', '.join(faltando)}")
@@ -1770,7 +1783,7 @@ def semear(registro: dict) -> dict:
             "relacao_com_instrumento": consist[uf]["cat"],
             "fonte": "painel_el_nino",
             "documento": documento,
-            "url": FONTES["painel_el_nino"]["url_publica"],
+            "url": url_do_boletim,
         }
     registro["fontes"]["painel_el_nino"].update({
         "status": "coletado", "consultado_em": hoje(), "documento": documento,
