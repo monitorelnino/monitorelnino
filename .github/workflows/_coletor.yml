@@ -89,7 +89,17 @@ jobs:
     # noturna, ou pior, a rodada noturna ficaria atras do ensaio. Sao duas noites diferentes, em
     # dois ramos diferentes, e so parecem a mesma coisa porque o grupo se chamava `noturno`.
     concurrency:
-      group: ${{ github.ref_name }}-${{ inputs.grupo_de_concorrencia != '' && inputs.grupo_de_concorrencia || format('coletor-{0}', inputs.nome) }}
+      # FORA DA `main`, UM GRUPO POR ELO. Na `main` a corrente e sequencial de proposito: os elos
+      # compartilham o grupo `noturno` e esperam uns pelos outros, porque todos escrevem na mesma
+      # arvore. No ramo de ENSAIO eles nao escrevem -- entregam artefato --, e a campanha pede que
+      # rodem em PARALELO.
+      #
+      # Com um grupo so, o GitHub guarda um run em execucao e UM pendente por grupo: o terceiro
+      # disparo cancela o pendente. Foi isso, e nao instabilidade, que cancelou um ou dois elos em
+      # TODAS as rodadas de 06 e 07/10 -- a cada rodada eu disparava cinco de uma vez, e tres
+      # caiam. Diagnostico que custou cinco rodadas para aparecer porque o cancelamento nao deixa
+      # log nenhum.
+      group: ${{ github.ref_name }}-${{ (github.ref_name != 'main' || inputs.grupo_de_concorrencia == '') && format('coletor-{0}', inputs.nome) || inputs.grupo_de_concorrencia }}
       cancel-in-progress: false
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
