@@ -10,6 +10,14 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+## 2026-10-07 · #PR · O bloco do formulário sai da comparação byte a byte do site publicado
+
+Onde a marcação declara `data-netlify="true"`, o servidor reescreve o formulário: tira os
+atributos do recurso, reordena o resto, encurta o `action` e injeta um campo. Era a última
+divergência do `index.html` — não o HUD, não a aspa. O bloco do formulário passa a sair dos dois
+lados da comparação, contado e nomeado no relatório; o resto da página segue conferido byte a
+byte. Em página sem a declaração, `<form>` é marcação nossa e continua conferido.
+
 ## 2026-10-07 · #PR · O verificador do domínio conta a troca de aspas como achado próprio
 
 As duas reescritas do Netlify ao servir — o script do HUD e a troca de aspas de atributo — viviam
