@@ -257,7 +257,7 @@ culpa, confira com `/e-da-main`: carimbo obsoleto já deixou a `main` vermelha s
 
 | arquivo | tamanho (medido em 05/10/2026) |
 |---|---|
-| `evidencias/` | **~4,1 GB** |
+| `evidencias/` | **~4,7 GB** (remedido em 07/10/2026) |
 | `data/log_buscas/*.jsonl` | **~31 MB** no total, um arquivo por mês |
 | `data/pistas_imprensa.json` | **~26 MB** |
 | `data/fontes_consultadas.json` | ~12 MB |
