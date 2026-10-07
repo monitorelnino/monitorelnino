@@ -4,54 +4,54 @@
   "efeito_no_indice": "NENHUM — peso zero, como todo sinal de risco.",
   "escrito_por": "coletar_sinais_risco.py"
  },
- "gerado_em": "06/10/2026 22:52",
+ "gerado_em": "06/10/2026 22:55",
  "consultas": [
   {
    "fonte": "inmet_avisos",
    "url": "https://apiprevmet3.inmet.gov.br/avisos/ativos",
-   "consultado_em": "06/10/2026 22:52",
+   "consultado_em": "06/10/2026 22:54",
    "bytes": 441741,
    "sha256": "d0600c4063894e8387d868743c64deb786a8deff0adda6f85e4f45c2f402ef48"
   },
   {
    "fonte": "cemaden_alertas",
    "url": "https://gsc.cemaden.gov.br/geoserver/cemaden_dev/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=cemaden_dev:alertas_vigentes_siaden&outputFormat=application/json&count=3000",
-   "consultado_em": "06/10/2026 22:52",
+   "consultado_em": "06/10/2026 22:54",
    "bytes": 589226,
-   "sha256": "3c0152cba5ef8e7b03b6ad705b272b76f8e4d652cd890d13b4f9ebafca9c7e77"
+   "sha256": "6d24adf2785a5c91e91020e57d8dbc8a3569cecc691a880c4f8face7635a441b"
   },
   {
    "fonte": "open_meteo_tempo",
    "url": "https://api.open-meteo.com/v1/forecast?latitude=-9.9750,-9.6660,-3.1187,0.0349,-12.9718,-3.7166,-15.7795,-20.3155,-16.6864,-2.5387,-19.9102,-20.4486,-15.6010,-1.4554,-7.1151,-8.0467,-5.0919,-25.4195,-22.9129,-5.7936,-8.7608,2.8238,-30.0318,-27.5945,-10.9091,-23.5329,-10.2400&longitude=-67.8243,-35.7350,-60.0212,-51.0694,-38.5011,-38.5423,-47.9297,-40.3128,-49.2643,-44.2825,-43.9266,-54.6295,-56.0974,-48.4898,-34.8641,-34.8771,-42.8034,-49.2646,-43.2003,-35.1986,-63.8999,-60.6753,-51.2065,-48.5477,-37.0677,-46.6395,-48.3558&daily=temperature_2m_max,temperature_2m_min,apparent_temperature_max&timezone=America%2FSao_Paulo&past_days=1&forecast_days=4",
-   "consultado_em": "06/10/2026 22:52",
-   "bytes": 15139,
-   "sha256": "5228c6e7cd3847f791d413982799c3515ade6b68385d89ceeba98db8e4f0f8b1"
+   "consultado_em": "06/10/2026 22:54",
+   "bytes": 15156,
+   "sha256": "b1e35903ce9871ec2b855f83f4d31268f0923c148c1b04d54d84b93523791903"
   },
   {
    "fonte": "inmet_previsao_capitais",
    "url": "https://apiprevmet3.inmet.gov.br/previsao/capitais",
-   "consultado_em": "06/10/2026 22:52",
+   "consultado_em": "06/10/2026 22:55",
    "bytes": 6619424,
    "sha256": "bd76a96603dc820696842c9fd5d59976922ae585fa831a0d21881916acf61a75"
   },
   {
    "fonte": "open_meteo_ar",
    "url": "https://air-quality-api.open-meteo.com/v1/air-quality?latitude=-9.9750,-9.6660,-3.1187,0.0349,-12.9718,-3.7166,-15.7795,-20.3155,-16.6864,-2.5387,-19.9102,-20.4486,-15.6010,-1.4554,-7.1151,-8.0467,-5.0919,-25.4195,-22.9129,-5.7936,-8.7608,2.8238,-30.0318,-27.5945,-10.9091,-23.5329,-10.2400&longitude=-67.8243,-35.7350,-60.0212,-51.0694,-38.5011,-38.5423,-47.9297,-40.3128,-49.2643,-44.2825,-43.9266,-54.6295,-56.0974,-48.4898,-34.8641,-34.8771,-42.8034,-49.2646,-43.2003,-35.1986,-63.8999,-60.6753,-51.2065,-48.5477,-37.0677,-46.6395,-48.3558&hourly=pm2_5,pm10,ozone,nitrogen_dioxide,carbon_monoxide,european_aqi&timezone=America%2FSao_Paulo&forecast_days=1&domains=cams_global",
-   "consultado_em": "06/10/2026 22:52",
-   "bytes": 42731,
-   "sha256": "2773d8929457a8c6d3082d375dc330a4686023240109aa1cb37177001d080232"
+   "consultado_em": "06/10/2026 22:55",
+   "bytes": 42725,
+   "sha256": "2cf7409b367f1e46edd0699dfd6257d46d4f72b117240250efec7cc27ca21e35"
   },
   {
    "fonte": "inmet_estacoes",
    "url": "https://apitempo.inmet.gov.br/estacoes/T",
-   "consultado_em": "06/10/2026 22:52",
+   "consultado_em": "06/10/2026 22:55",
    "bytes": 262500,
    "sha256": "def48cc4fa7b6354e039ea7d91722a101459ad0b641531c77fc07c270cbd034c"
   },
   {
    "fonte": "inmet_estacoes",
    "url": "https://apitempo.inmet.gov.br/condicao/capitais/2026-10-06",
-   "consultado_em": "06/10/2026 22:52",
+   "consultado_em": "06/10/2026 22:55",
    "bytes": 2347,
    "sha256": "64ac4c7e8b1eb7064781c60e2a3be6dec27bfd817696001cd06ac3551ca80c88"
   }
