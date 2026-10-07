@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-07 · #PR · Monitor de riscos, parte 1: topo em números e gráficos do RONI
+
+A régua de intensidade saiu do topo: a NOAA/CPC define limiares (+0,5 e −0,5 °C) e o critério de
+cinco médias trimestrais seguidas, não faixas. Os três quadros com ícone viraram quatro cartões
+de número, gerados do dado, com fonte e data. Os dois gráficos do Pacífico medem o mesmo índice
+na mesma escala: a série do RONI e os episódios que o critério define.
+
 ## 2026-10-05 · #563 · A seção de perguntas da imprensa chama-se Perguntas frequentes
 
 Revisão da editoria. As cinco perguntas que vinham sob o subtítulo “Para entender o que está

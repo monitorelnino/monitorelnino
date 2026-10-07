@@ -1037,6 +1037,74 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
 .cartao-mapa{counter-increment:none;}
 .cartao-mapa .figura-numero, .cartao-mapa::before{content:none; display:none;}
 
+/* ===== Gráficos do Pacífico (07/10/2026, maquete rev. 2) =================================
+   Os dois gráficos do RONI são SVG desenhado na LARGURA REAL do contêiner, e não um canvas
+   escalado. A razão é de leitura, e está no pedido: 12 px de letra também no celular. Um viewBox
+   de 560 unidades esticado para 343 px de tela reduz toda a tipografia a 7 px — é a mesma figura
+   do desktop vista de longe, não uma figura para celular. Aqui o JS mede o contêiner, desenha
+   naquela largura e redesenha quando ela muda; o SVG não escala nada.
+
+   Por isso a proporção fixa 480/460 que o cartão de mapa impõe é desligada nestes dois: eles não
+   são mapas, e a altura deles é escolhida pela largura. */
+.cartao-mapa .figura-midia.grafico-pacifico{aspect-ratio:auto; height:auto; overflow:visible;}
+.cartao-mapa .figura-midia.grafico-pacifico > svg{width:100%; height:auto;}
+.grafico-pacifico-eixo{font-family:var(--font-dado); font-size:var(--fs-caption);
+  line-height:var(--lh-caption); color:var(--muted); margin:0 0 var(--sp-1);}
+/* A NOTA METODOLÓGICA da figura (governança §11: título · legenda · nota · fonte são quatro
+   funções separadas, e nunca se fundem). Ela não existia como componente, e por isso a definição
+   do índice vinha empurrada para dentro da legenda — que tem teto de 180 caracteres justamente
+   para não virar isto. Registro técnico: menor que a legenda e sem o espaçamento de versalete. */
+.figura-nota{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption);
+  color:var(--muted); margin:0 0 var(--esp-figura-legenda);}
+/* Hexadecimal nenhum: toda cor destes gráficos é token de `assets/tokens.css`. */
+.g-pac .tk{fill:var(--pacifico-tinta); font-family:var(--font-dado); font-size:var(--fs-caption);}
+.g-pac .tk2{fill:var(--pacifico-tinta-fraca); font-family:var(--font-dado); font-size:var(--fs-caption);
+  letter-spacing:.06em;}
+.g-pac .tkl{stroke:var(--pacifico-grade);}
+.g-pac .zero{stroke:var(--pacifico-zero); stroke-width:1;}
+.g-pac .lim{stroke:var(--pacifico-grade); stroke-width:1; stroke-dasharray:3 4;}
+.g-pac .limt{fill:var(--pacifico-tinta); font-family:var(--font-dado); font-size:var(--fs-caption);}
+.g-pac .div{stroke:var(--pacifico-divisoria); stroke-width:1;}
+.g-pac .q{fill:var(--pacifico-barra-quente);}
+.g-pac .f{fill:var(--pacifico-barra-fria);}
+/* A anotação é escrita SOBRE o gráfico: o contorno na cor do fundo é o que a mantém legível
+   quando ela cai em cima de uma barra. */
+.g-pac .ann{paint-order:stroke; stroke:var(--grafico-oceano); stroke-width:4px; stroke-linejoin:round;
+  fill:var(--osso); font-family:var(--font-dado); font-size:var(--fs-caption);}
+.g-pac .ann-agora{fill:var(--pacifico-agora); font-weight:500;}
+.g-pac .ann-b{fill:var(--pacifico-serie-b);}
+.g-pac .agora{fill:var(--pacifico-agora); stroke:var(--grafico-oceano); stroke-width:2;}
+/* Quatro linhas distintas por TRAÇO, não só por cor: cheia grossa, cheia fina, tracejada e
+   pontilhada. É a regra de que cor nunca é o único portador da informação. */
+.g-pac .l-agora{fill:none; stroke:var(--pacifico-agora); stroke-width:3; stroke-linejoin:round;
+  stroke-linecap:round;}
+.g-pac .l-0{fill:none; stroke:var(--pacifico-serie-a); stroke-width:2; opacity:.85;}
+.g-pac .l-1{fill:none; stroke:var(--pacifico-serie-b); stroke-width:2; stroke-dasharray:6 4;}
+.g-pac .l-2{fill:none; stroke:var(--pacifico-serie-b); stroke-width:2; stroke-dasharray:1 4;
+  stroke-linecap:round;}
+.g-pac .l-3{fill:none; stroke:var(--pacifico-serie-a); stroke-width:2; stroke-dasharray:8 3 2 3;
+  opacity:.7;}
+.g-pac .hit{fill:transparent; cursor:default;}
+/* A legenda do gráfico 2 mostra o TRAÇO de cada linha, não um quadrado de cor — por isso ela não
+   é a `.map-legend` canônica, que é de amostra de cor e serve aos mapas. */
+.leg-pacifico{display:flex; flex-wrap:wrap; gap:var(--sp-2) var(--sp-3);
+  margin:var(--esp-figura-legenda) 0 0; font-family:var(--font-dado); font-size:var(--fs-caption);
+  line-height:var(--lh-caption); color:var(--muted);}
+.leg-pacifico span{display:flex; align-items:center; gap:var(--sp-2);}
+/* A amostra é uma pastilha do fundo do gráfico, com o traço dentro: o osso da linha de
+   referência mede 1,2:1 sobre branco — invisível —, e é legível sobre o oceano noturno, que é
+   onde a linha existe. Mostrar a amostra fora do fundo dela mostraria outra coisa. */
+.leg-pacifico i{display:inline-flex; align-items:center; justify-content:center; flex:none;
+  width:28px; height:14px; background:var(--grafico-oceano); border-radius:2px;}
+.leg-pacifico i::before{content:""; display:block; width:20px; height:0;
+  border-top-width:3px; border-top-style:solid;}
+.leg-pacifico .t-agora::before{border-top-color:var(--pacifico-agora);}
+.leg-pacifico .t-0::before{border-top-color:var(--pacifico-serie-a);}
+.leg-pacifico .t-1::before{border-top-color:var(--pacifico-serie-b); border-top-style:dashed;}
+.leg-pacifico .t-2::before{border-top-color:var(--pacifico-serie-b); border-top-style:dotted;}
+.leg-pacifico .t-3::before{border-top-color:var(--pacifico-serie-a); border-top-style:dashed;
+  opacity:.7;}
+
 /* ===== Defesa civil (01/10/2026): alertas e emergências, fundo branco ======================
    A página era uma pilha de `.panel` cinza com mapas de preparação e material de auditoria. Agora
    são quatro seções sem moldura, no mesmo desenho do Proteja-se e do Monitor de riscos: o que

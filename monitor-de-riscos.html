@@ -29,8 +29,9 @@
 <script src="assets/vendor/chart.umd.min.js?v=ecc3cd1e"></script>
 <script src="assets/vendor/d3.min.js?v=f2094bbf"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
-<link rel="stylesheet" href="assets/tokens.css?v=94671300">
-<link rel="stylesheet" href="assets/base.css?v=0107e59a">
+<script src="assets/catalogo.js?v=b8d1077f"></script>
+<link rel="stylesheet" href="assets/tokens.css?v=02c36ec9">
+<link rel="stylesheet" href="assets/base.css?v=545f51d9">
 <script src="assets/mapas.js?v=d03e0aca"></script>
 </head>
 <body class="pagina-dados">
@@ -51,60 +52,72 @@
 
   <div class="panel panel--acento-teal" id="situacao">
     <h2>Situação atual</h2>
-    <!-- R2: as três lacunas vêm do dado (força do ENOS, variação do RONI em seis meses); a oração
-         final sobre a alta só aparece quando o dado a sustenta — é o JS que a remove. -->
-    <p class="hint" id="stResumo" aria-live="polite">—</p>
+    <!-- 07/10/2026 (handover "Monitor de riscos, parte 1"): SAÍRAM os três quadros com ícone.
+         "Há El Niño agora?" não muda até o fim do ciclo, e os outros dois diziam "Forte" e "100%"
+         com uma régua que não é da NOAA. A RÉGUA DE FORÇA SAIU INTEIRA: a NOAA/CPC define os
+         limiares de El Niño (+0,5 °C) e de La Niña (−0,5 °C) e o critério de cinco médias
+         trimestrais seguidas — não define faixas de "fraco/moderado/forte/muito forte". A palavra
+         só aparece aqui entre aspas, dentro de uma frase atribuída à própria NOAA/CPC.
 
-    <!-- R3: três cartões no desenho das fichas de proteja-se.html. Pergunta em versalete, resposta
-         em Fraunces, e a linha pequena com o número que sustenta a resposta. -->
-    <!-- data-voz="ficha": estes três cartões usam o componente de ficha de proteja-se.html, e a
-         pergunta é o rótulo do cartão, não prosa da página. O mecanismo é o mesmo que a
-         metodologia já declara para ficha e para texto de lei. -->
-    <div class="situacao situacao--fichas" data-voz="ficha" id="situacaoGrade" role="group" aria-label="Situação atual do ciclo em três perguntas">
-      <div class="ficha-cartao">
-        <div class="ficha-head">
-          <span class="ficha-selo" aria-hidden="true"><svg role="none" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M2 9c2.5-3 5-3 7.5 0S15 12 17.5 9 22 6 22 6"/><path d="M2 15c2.5-3 5-3 7.5 0s5.5 3 8-.1S22 12 22 12"/></svg></span>
-          <p class="card-kicker">Há El Niño agora?</p>
-        </div>
-        <p class="ficha-resposta" id="stHaElNino">—</p>
+         No lugar, quatro números, cada um gerado do dado e com fonte e data na linha de baixo.
+         DIVERGÊNCIA DECLARADA: o handover pediu o componente `.cartao-destaque`, que não existe
+         neste site; `layout/regras.json` manda número em `.cartao-numero` dentro de
+         `.grade-numeros--3`, e a regra vence o handover. São quatro cartões numa grade de três —
+         a última linha pode ficar incompleta, e a regra diz isso. -->
+    <p class="hint" id="stResumo" data-conteudo="monitor-de-riscos.situacao.abertura" aria-live="polite">Condição de El Niño declarada pelos órgãos federais em 29/06/2026.</p>
+
+    <div class="grade-numeros grade-numeros--3" id="situacaoGrade">
+      <div class="cartao-numero cartao-numero--risco_agora" data-cartao="roni_mais_recente">
+        <p class="cartao-numero-rotulo" id="stRoniRotulo" data-conteudo="monitor-de-riscos.situacao.roni.rotulo">RONI mais recente</p>
+        <p class="cartao-numero-valor" id="stRoniValor">sem coleta até o corte</p>
+        <p class="cartao-numero-variacao" id="stRoniVariacao"></p>
+        <p class="cartao-numero-fonte" id="stRoniFonte"></p>
       </div>
-      <div class="ficha-cartao">
-        <div class="ficha-head">
-          <span class="ficha-selo" aria-hidden="true"><svg role="none" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M5 20V12"/><path d="M12 20V7"/><path d="M19 20V4"/></svg></span>
-          <p class="card-kicker">Com que força?</p>
-        </div>
-        <p class="ficha-resposta" id="stForca">—</p>
-        <p class="figura-fonte" id="stForcaNota"></p>
+      <div class="cartao-numero cartao-numero--risco_agora" data-cartao="previsao_noaa_cpc">
+        <p class="cartao-numero-rotulo" id="stPrevisaoRotulo" data-conteudo="monitor-de-riscos.situacao.previsao.rotulo">Previsão da NOAA/CPC</p>
+        <p class="cartao-numero-valor" id="stPrevisaoValor">sem coleta até o corte</p>
+        <p class="cartao-numero-variacao" id="stPrevisaoVariacao"></p>
+        <p class="cartao-numero-fonte" id="stPrevisaoFonte"></p>
       </div>
-      <div class="ficha-cartao">
-        <div class="ficha-head">
-          <span class="ficha-selo" aria-hidden="true"><svg role="none" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M19 5 5 19"/><circle cx="7.5" cy="7.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg></span>
-          <p class="card-kicker">Qual a chance de continuar até o verão?</p>
-        </div>
-        <p class="ficha-resposta" id="stChance">—</p>
-        <p class="figura-fonte" id="stChanceNota"></p>
+      <div class="cartao-numero cartao-numero--risco_agora" data-cartao="duracao_iri_cpc">
+        <p class="cartao-numero-rotulo" id="stDuracaoRotulo" data-conteudo="monitor-de-riscos.situacao.duracao.rotulo">Probabilidade de El Niño (IRI/CPC)</p>
+        <p class="cartao-numero-valor" id="stDuracaoValor">sem coleta até o corte</p>
+        <p class="cartao-numero-variacao" id="stDuracaoVariacao"></p>
+        <p class="cartao-numero-fonte" id="stDuracaoFonte"></p>
+      </div>
+      <div class="cartao-numero cartao-numero--risco_agora" data-cartao="brasil_painel_el_nino">
+        <p class="cartao-numero-rotulo" id="stBrasilRotulo" data-conteudo="monitor-de-riscos.situacao.brasil.rotulo">Painel El Niño · seca prevista em</p>
+        <p class="cartao-numero-valor" id="stBrasilValor">sem coleta até o corte</p>
+        <p class="cartao-numero-variacao" id="stBrasilVariacao"></p>
+        <p class="cartao-numero-fonte" id="stBrasilFonte"></p>
       </div>
     </div>
 
-    <!-- F.1 e F.2 (30/09/2026): os dois gráficos do Pacífico, lado a lado — o RONI, que é o índice
-         de referência, e a anomalia mensal da região Niño 3.4, que volta à página por ser o número
-         divulgado pela imprensa. Empilham no celular. O ONI continua fora: ele é apoio técnico e
-         vive na METODOLOGIA. -->
+    <!-- 07/10/2026: os dois gráficos do Pacífico passam a medir O MESMO ÍNDICE (RONI), na mesma
+         escala e com o mesmo eixo. O da anomalia mensal da região Niño 3.4 SAIU da página — o
+         dado continua coletado —, e no lugar entra a comparação entre os episódios de El Niño
+         que o próprio dado define pelo critério da NOAA/CPC. Os dois são SVG desenhado na largura
+         real do contêiner, e não canvas escalado: é o que mantém a letra em 12 px no celular. -->
     <div class="grade-figuras grade-figuras--2">
       <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxRoni">
-        <h3 class="figura-titulo">O El Niño de agora, comparado aos maiores desde 1950</h3>
-        <p class="figura-sub" id="roniSub">Índice RONI, da NOAA · temperatura do Pacífico acima ou abaixo do normal · média de três meses · °C</p>
-        <div class="figura-midia canvas-wrap grafico-oceano" id="wrapRoni"></div>
-        <p class="figura-leitura">Acima de +0,5 °C por vários meses seguidos, há El Niño; acima de +1,5 °C, ele é forte; acima de +2 °C, muito forte. Os picos marcados são os três maiores já medidos.</p>
+        <h3 class="figura-titulo" id="roniTitulo" data-conteudo="monitor-de-riscos.pacifico.roni.titulo">Índice Oceânico Niño Relativo (RONI)</h3>
+        <p class="figura-sub" id="roniSub" data-conteudo="monitor-de-riscos.pacifico.roni.legenda">Médias móveis de três meses · °C · nas tracejadas, os limiares de El Niño (+0,5 °C) e de La Niña (−0,5 °C) da NOAA/CPC</p>
+        <p class="figura-nota" data-conteudo="monitor-de-riscos.pacifico.roni.nota">Anomalia da temperatura da superfície do mar na região Niño 3.4 (5°N–5°S, 170°W–120°W) menos a anomalia média da faixa tropical (20°N–20°S), período de referência 1991–2020.</p>
+        <p class="grafico-pacifico-eixo" data-conteudo="monitor-de-riscos.pacifico.eixo">RONI, °C</p>
+        <div class="figura-midia grafico-oceano grafico-pacifico" id="wrapRoni"></div>
+        <p class="figura-leitura" id="roniLeitura"></p>
       </figure>
-      <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxAnomalia">
-        <h3 class="figura-titulo">A temperatura do Pacífico mês a mês, na região que mede o El Niño</h3>
-        <p class="figura-sub" id="anomaliaSub">Região Niño 3.4 · diferença em relação ao normal · média mensal · °C</p>
-        <div class="figura-midia canvas-wrap grafico-oceano" id="wrapAnomalia"></div>
-        <p class="figura-leitura">Acima de +0,5 °C, as águas estão mais quentes que o normal; o El Niño é declarado quando isso se mantém por vários meses.</p>
+      <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxEpisodios">
+        <h3 class="figura-titulo" id="episodiosTitulo" data-conteudo="monitor-de-riscos.pacifico.episodios.titulo">RONI nos episódios de El Niño da série</h3>
+        <p class="figura-sub" id="episodiosSub" data-conteudo="monitor-de-riscos.pacifico.episodios.legenda">Uma linha por episódio · de janeiro do ano de início a junho do ano seguinte · mesmo índice e mesma escala do gráfico ao lado</p>
+        <p class="figura-nota" id="episodiosNota" data-conteudo="monitor-de-riscos.pacifico.episodios.nota">Episódio: cinco ou mais médias trimestrais consecutivas acima de +0,5 °C, critério da NOAA/CPC.</p>
+        <p class="grafico-pacifico-eixo" data-conteudo="monitor-de-riscos.pacifico.eixo">RONI, °C</p>
+        <div class="figura-midia grafico-oceano grafico-pacifico" id="wrapEpisodios"></div>
+        <div class="leg-pacifico" id="legEpisodios"></div>
+        <p class="figura-leitura" id="episodiosLeitura"></p>
       </figure>
     </div>
-    <p class="hint">Para especialistas: o índice ONI está na <a href="METODOLOGIA.pdf">metodologia</a> →</p>
+    <p class="hint" data-conteudo-html="monitor-de-riscos.pacifico.ponte_metodologia">Para especialistas: o índice ONI está na <a href="METODOLOGIA.pdf">metodologia</a> →</p>
   </div>
 
   <div class="panel" id="riscos">
@@ -234,7 +247,7 @@
 </div>
 
 <script src="assets/colunas.js?v=3669e58d" defer></script>
-<script src="assets/js/monitor-de-riscos.js?v=688e5011" defer></script><script src="assets/js/proveniencia.js?v=50e1ec93" defer></script>
+<script src="assets/js/monitor-de-riscos.js?v=9449f3e3" defer></script><script src="assets/js/proveniencia.js?v=50e1ec93" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
