@@ -1,0 +1,140 @@
+# O ÚNICO ESCRITOR DA RODADA.
+#
+# Fase 1 do `HANDOVER_campanha_de_testes_06-10-2026.md`. Até 06/10/2026 cada coletor commitava,
+# rebaseava, fundia e empurrava sozinho, em paralelo — e cada correção fechava uma colisão e abria a
+# seguinte: conflito em arquivo compartilhado, fusão repetida que levou a fila de pistas de 28 MB a
+# 187,53 MB, `git add -A data/`, push fixo na `main` mesmo no ensaio, trabalho descartado. Nenhum
+# deles era um defeito solto; eram sintomas de muitos escritores na mesma `main`.
+#
+# Agora o coletor entrega e vai embora: grava as próprias saídas e as sobe como artefato
+# `saida-<elo>-<janela>`. Este job baixa todos os artefatos da janela, aplica cada um PELA PORTA do
+# arquivo (fila por `pistas.sincronizar`; log por união pela base comum; o resto por cópia, e só do
+# escritor declarado), passa a trava de tamanho, regenera os derivados, **comita uma vez** e empurra
+# **para o ramo em que roda**.
+#
+# `concurrency` sem cancelamento: duas consolidações da mesma janela esperam, nunca se matam. Uma
+# consolidação interrompida no meio é pior que uma consolidação atrasada.
+name: Consolidar a noite
+
+on:
+  workflow_dispatch:
+    inputs:
+      janela:
+        description: "A noite a consolidar, em ISO (vazio = a de agora)"
+        required: false
+        default: ""
+        type: string
+      importacao_em_massa:
+        description: "Marcador explícito: esta rodada traz importação grande e o crescimento é esperado"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: consolidar-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  consolidar:
+    name: Baixar os artefatos da janela e escrever uma vez
+    # R1-b (06/10/2026): o GitHub só despacha workflow cujo ARQUIVO existe no ramo padrão. Enquanto
+    # este existia só no `ensaio`, ele não aparecia em `GET /actions/workflows` e a rodada nunca
+    # chegava à consolidação. Ele vai para a `main` para poder ser chamado — e lá o job inteiro não
+    # faz nada até a fase 3, porque na `main` quem escreve ainda é o desenho antigo.
+    if: github.ref_name != 'main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with: { persist-credentials: false }
+
+      - name: Partir do ramo atual
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git fetch --quiet --depth=50 "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "${{ github.ref_name }}"
+          git reset --hard FETCH_HEAD
+          echo "${{ github.ref_name }} atual: $(git rev-parse --short HEAD)"
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Baixar os artefatos desta janela
+        env:
+          GH_TOKEN: ${{ github.token }}
+        timeout-minutes: 15
+        run: |
+          JANELA="${{ inputs.janela }}"
+          [ -n "$JANELA" ] || JANELA=$(python3 -c "import sys;sys.path.insert(0,'scripts');import pendente_do_elo as p,datetime as d;print(p.noite_de(d.datetime.utcnow()))")
+          echo "janela=$JANELA" >> "$GITHUB_ENV"
+          mkdir -p artefatos
+          # Um artefato por elo. O nome traz o elo e a janela, e é por ele que o consolidador sabe
+          # de quem é cada arquivo — a mesma pergunta que `config/escritores.json` responde.
+          gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts?per_page=100" \
+            --jq ".artifacts[] | select(.expired == false) | select(.name | startswith(\"saida-\")) | select(.name | endswith(\"$JANELA\")) | [.name, (.workflow_run.id|tostring)] | @tsv" > /tmp/lista.tsv || true
+          if [ ! -s /tmp/lista.tsv ]; then
+            echo "· nenhum artefato da janela $JANELA"; exit 0
+          fi
+          while IFS=$'\t' read -r NOME RUN; do
+            [ -n "$NOME" ] || continue
+            gh run download "$RUN" --name "$NOME" --dir "artefatos/$NOME" \
+              && echo "  · baixado $NOME" \
+              || echo "::warning::$NOME nao baixou; fica pendente para a rodada seguinte"
+          done < /tmp/lista.tsv
+
+      - name: Aplicar cada artefato pela porta do arquivo
+        timeout-minutes: 10
+        run: |
+          python3 scripts/consolidar_noite.py --janela "$janela" --dir artefatos \
+            --aplicar ${{ inputs.importacao_em_massa && '--importacao-em-massa' || '' }} \
+            | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Deduplicar a fila, uma vez, com relatório
+        timeout-minutes: 5
+        run: python3 scripts/deduplicar_fila_de_pistas.py --aplicar | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Regenerar os derivados
+        timeout-minutes: 12
+        run: bash scripts/verificar_derivados.sh --regenerar-para-commit
+
+      - name: A trava de tamanho, antes do commit
+        timeout-minutes: 3
+        run: python3 scripts/verificar_tamanho_dos_dados.py --contra FETCH_HEAD
+
+      - name: Commitar uma vez e empurrar para o ramo em que roda
+        id: empurrar
+        env:
+          ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+        run: |
+          git config user.name "monitor-el-nino-bot"
+          git config user.email "bot@users.noreply.github.com"
+          python3 scripts/commit_do_elo.py consolidador \
+            --mensagem "consolidacao da noite $janela ($(date -u +%d/%m/%Y\ %H:%M) UTC)" \
+            | tee /tmp/commit.txt
+          if ! grep -q "^houve=1" /tmp/commit.txt; then
+            echo "Nada a consolidar nesta janela."; exit 0
+          fi
+          mkdir -p ~/.ssh && printf '%s\n' "$ROBO_DEPLOY_KEY" > ~/.ssh/robo && chmod 600 ~/.ssh/robo
+          ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
+          SSH="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes"
+          # Um escritor só: não há com quem colidir, e por isso não há fusão aqui. Se o ramo andou,
+          # foi gente — e aí o certo é falhar e deixar o artefato intacto para a rodada seguinte.
+          GIT_SSH_COMMAND="$SSH" git push git@github.com:${GITHUB_REPOSITORY}.git "HEAD:${{ github.ref_name }}"
+          rm -f ~/.ssh/robo
+          echo "empurrou=1" >> "$GITHUB_OUTPUT"
+
+      - name: Resumo
+        if: always()
+        run: |
+          {
+            echo "### Consolidação da noite $janela"
+            echo "- empurrou: ${{ steps.empurrar.outputs.empurrou || '0' }}"
+            echo "- ramo: ${{ github.ref_name }}"
+          } >> "$GITHUB_STEP_SUMMARY"
