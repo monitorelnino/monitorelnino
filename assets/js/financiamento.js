@@ -28,6 +28,33 @@ function doCatalogo(idElemento, idTexto, valores) {
   return C.escrever(idElemento, idTexto, valores);
 }
 
+/* UMA BUSCA SÓ para `compromissos_federais.json` (07/10/2026).
+ *
+ * Cinco trechos desta página pediam o mesmo arquivo, cada um com o seu `fetch`, e quatro deles
+ * disparavam juntos no carregamento — medido com instrumentação de rede em 07/10/2026: quatro
+ * requisições do mesmo arquivo dentro de 5 ms umas das outras, em todas as rodadas. O leitor
+ * pagava quatro vezes por um arquivo só.
+ *
+ * E não era só desperdício. `scripts/testar_corrida_do_medidor.js` atrasa este arquivo em 5 s
+ * para reproduzir o runner lento, e o teto da espera por condição é de 20 s — o mesmo de
+ * `_layout_dump.js`, que é o medidor de verdade. Quatro requisições atrasadas encostavam nos
+ * 20 s, e o portão reprovava sozinho em cerca de um terço das rodadas, na `main` inclusive
+ * (medido: 7 verdes em 10, nos dois lados da comparação). O comentário do próprio teste calculou
+ * a margem supondo DUAS buscas; eram quatro.
+ *
+ * A promessa é guardada, não o resultado: quem chega depois pega a mesma promessa, resolvida ou
+ * não, e ninguém precisa saber quem chegou primeiro. Falha é lembrada como falha — o `null` que
+ * cada chamador já tratava —, e não vira uma segunda tentativa escondida. */
+let __compromissos = null;
+function compromissosFederais() {
+  if (!__compromissos) {
+    __compromissos = fetch('data/financiamento/compromissos_federais.json')
+      .then(r => r.ok ? r.json() : null)
+      .catch(() => null);
+  }
+  return __compromissos;
+}
+
 // ===== 3b · Contadores por estado (v3.1 §11; redesenhado 13/09/2026 — auditoria de visualizações) =====
 function renderContadores(){
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -308,7 +335,10 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   try {
     const brl = v => (v == null) ? '—' : 'R$ ' + Number(v).toLocaleString('pt-BR', {maximumFractionDigits: 0});
-    const [ROTAS_FIN, COMP] = await Promise.all(['data/financiamento/rotas.json', 'data/financiamento/compromissos_federais.json'].map(f => fetch(f).then(r => r.ok ? r.json() : null)));
+    const [ROTAS_FIN, COMP] = await Promise.all([
+      fetch('data/financiamento/rotas.json').then(r => r.ok ? r.json() : null),
+      compromissosFederais(),
+    ]);
     if (COMP) {
       (function(){ const cv = document.getElementById('cCompromissos'); if (!cv || typeof Chart === 'undefined') return;
         const mps = (MPS && MPS.mps) || []; const itens = (COMP.itens || []).slice();
@@ -403,7 +433,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     ? (v / 1e9).toLocaleString('pt-BR', {maximumFractionDigits: 3}) + ' bi'
     : (v / 1e6).toLocaleString('pt-BR', {maximumFractionDigits: 1}) + ' mi');
   try {
-    const C = await fetch('data/financiamento/compromissos_federais.json').then(r => r.ok ? r.json() : null);
+    const C = await compromissosFederais();
     if (C && C.itens) {
       const federais = C.itens.filter(i => /^Federal/.test(i.esfera || ''));
       const plano = federais.find(i => /execução direta/i.test(i.esfera || ''));
@@ -604,7 +634,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
   }).catch(() => {});
 
   /* O anunciado vira CONTEXTO, nao cartao: ele nao muda a cada coleta. */
-  fetch('data/financiamento/compromissos_federais.json').then(r => r.ok ? r.json() : null).then(C => {
+  compromissosFederais().then(C => {
     const itens = (C || {}).itens || [];
     const anunciado = itens.reduce((a, x) => a + Number(x.valor_total || 0), 0);
     const ctx = el('finContexto');
@@ -717,7 +747,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
   }).catch(() => {});
 
   /* O contexto do anunciado, com as duas frases do handover. */
-  fetch('data/financiamento/compromissos_federais.json').then(r => r.ok ? r.json() : null).then(C => {
+  compromissosFederais().then(C => {
     const itens = (C || {}).itens || [];
     const anunciado = itens.reduce((a, x) => a + Number(x.valor_total || 0), 0);
     if (el('finContexto') && anunciado) {
@@ -781,7 +811,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
   /* 3 · Anunciado, empenhado e desembolsado por origem; e o desembolsado mês a mês. */
   Promise.all([
     fetch('data/financiamento/mps_2026.json').then(r => r.ok ? r.json() : null),
-    fetch('data/financiamento/compromissos_federais.json').then(r => r.ok ? r.json() : null),
+    compromissosFederais(),
   ]).then(([M, C]) => {
     const origens = [];
     ((M || {}).mps || []).forEach(m => origens.push({

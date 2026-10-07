@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-07 · #PR · A página do Financiamento busca o mesmo arquivo uma vez, não quatro
+
+Cinco trechos pediam `compromissos_federais.json` com o seu próprio `fetch`, e quatro disparavam
+juntos a cada carregamento — medido com instrumentação de rede. Passa a haver uma promessa
+compartilhada. O portão da corrida do medidor atrasa esse arquivo em 5 s contra um teto de 20 s:
+quatro atrasos somavam o teto exato, e ele reprovava sozinho em cerca de um terço das rodadas, na
+`main` inclusive. O medidor também deixa de abandonar temporizador entre as duas medições.
+
 ## 2026-10-07 · #PR · Monitor de riscos, parte 1: topo em números e gráficos do RONI
 
 A régua de intensidade saiu do topo: a NOAA/CPC define limiares (+0,5 e −0,5 °C) e o critério de
