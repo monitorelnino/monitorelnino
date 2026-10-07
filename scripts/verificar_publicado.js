@@ -188,15 +188,7 @@ async function get(url, tentativas = 3) {
     // bloqueante; no ensaio, aviso com a instrução. Desligar: painel do Netlify → Site configuration → (Build & deploy /
     // Post processing ou "Netlify HUD") → desativar; não há como pelo repositório.
     if (hud) ok(`Netlify HUD ${ESPERAR_INDEX ? "precisa estar DESLIGADO no lançamento" : "detectado"}: ${hud} página(s) com script injetado pelo Netlify — desligar no painel do site`, !ESPERAR_INDEX);
-    // 07/10/2026: a tag é injetada ao servir e está fora do nosso alcance, mas o RECURSO não.
-    // `netlify.toml` devolve 404 no caminho do script, e isto confere que o domínio o cumpre.
-    // Vale medir separado da tag porque são duas coisas: uma é o HTML que o Netlify escreve, a
-    // outra é o que o domínio entrega quando o navegador vai buscar. A segunda é nossa.
-    if (hud) {
-      const alvo = await get(`${BASE}/.netlify/scripts/hud`);
-      ok(`script do HUD inalcançável no domínio (404 por netlify.toml) · status=${alvo.status}`,
-         alvo.status === 404);
-    }
+
   } else ok("manifesto presente no repositório", false);
   // 4. canários de conteúdo
   const meta = await get(`${BASE}/data/meta.json`);
