@@ -1137,13 +1137,17 @@ if (PACIFICO.serie.length) {
 
   // ---- Gráfico 2: o ciclo em curso e os episódios que o dado define ----
   // A lista NUNCA é escrita à mão: sai do critério da NOAA/CPC aplicado à própria série.
+  // O RECORTE, decidido em 07/10/2026 com a série desde 1950 já no registro: NENHUM episódio sai.
+  // O critério da NOAA/CPC encontra 22 na série, e as três saídas possíveis se resolvem assim:
+  // escolher os "maiores" seria ranking, que a página não constrói; escolher os mais recentes
+  // seria recorte nosso, sem o dado pedir; e nomear 22 numa legenda não se lê. Então todos são
+  // desenhados como CONTEXTO, no mesmo traço fino e no mesmo tom — a nuvem dentro da qual o ciclo
+  // em curso se vê —, e só ele é destacado e rotulado, porque é o assunto da página. Nada é
+  // omitido: cada linha diz o seu episódio e o seu valor ao passar o mouse ou tocar.
   const linhas = [];
   if (PACIFICO.emCurso) linhas.push({ano: PACIFICO.emCurso.ano, rotulo: PACIFICO.emCurso.rotulo, classe: 'l-agora', agora: true});
-  PACIFICO.episodios.forEach((e, i) => linhas.push({ano: e.ano, rotulo: e.rotulo, classe: 'l-' + (i % 4), agora: false}));
+  PACIFICO.episodios.forEach(e => linhas.push({ano: e.ano, rotulo: e.rotulo, classe: 'l-contexto', agora: false}));
   const episodiosRotulos = PACIFICO.episodios.map(e => e.rotulo);
-  const listaPorExtenso = episodiosRotulos.length > 1
-    ? episodiosRotulos.slice(0, -1).join(', ') + ' e ' + episodiosRotulos[episodiosRotulos.length - 1]
-    : episodiosRotulos[0];
   // O TÍTULO NÃO LISTA OS EPISÓDIOS, e a lista vai para a nota. O handover pediu a lista no
   // título; a regra de componente vence, e por duas razões que o próprio dado impõe. A primeira é
   // medida: numa coluna da grade de dois, "RONI nos episódios de El Niño de 2015–16, 2018–19 e
@@ -1154,7 +1158,9 @@ if (PACIFICO.serie.length) {
   // A nota é onde a lista cabe, e a legenda do gráfico nomeia cada linha de qualquer modo.
   põeCat('episodiosTitulo',
     IP + (episodiosRotulos.length ? 'episodios.molde_titulo' : 'episodios.molde_titulo_sem_episodio'),
-    {ano: String(PACIFICO.emCurso ? PACIFICO.emCurso.ano : ultimo.ano)});
+    {ano: String(PACIFICO.emCurso ? PACIFICO.emCurso.ano : ultimo.ano),
+     n: episodiosRotulos.length,
+     inicio: String(PACIFICO.episodios.length ? PACIFICO.episodios[0].ano : primeiro.ano)});
   // A lista dos episódios NÃO entra na nota: ela cresce com o dado, e nota que cresce desalinha a
   // dupla do mesmo jeito que o título desalinhava. Quem os nomeia é a legenda do gráfico, item a
   // item, e a frase de leitura logo abaixo, com o valor de cada um.
@@ -1196,10 +1202,13 @@ if (PACIFICO.serie.length) {
         const fimDaLinha = pts[pts.length - 1];
         const pico = pts.reduce((a, b) => b.p.anomalia > a.p.anomalia ? b : a, pts[0]);
         const onde = linha.agora ? fimDaLinha : pico;
-        if (!estreito) g.appendChild(svgEl('text', {
+        // Rótulo direto SÓ no ciclo em curso. Vinte e dois rótulos sobre a nuvem seriam ruído, e
+        // escolher alguns para rotular seria o destaque que o dado não sustenta. Cada linha
+        // continua se nomeando ao passar o mouse, ao tocar e para o leitor de tela.
+        if (!estreito && linha.agora) g.appendChild(svgEl('text', {
           x: xs(onde.k).toFixed(1),
-          y: (y(onde.p.anomalia) + (linha.agora ? 20 : -10)).toFixed(1),
-          class: 'ann' + (linha.agora ? ' ann-agora' : ' ann-b'),
+          y: (y(onde.p.anomalia) + 20).toFixed(1),
+          class: 'ann ann-agora',
           'text-anchor': 'middle'}, linha.rotulo));
         if (linha.agora) g.appendChild(svgEl('circle', {cx: xs(fimDaLinha.k).toFixed(1),
           cy: y(fimDaLinha.p.anomalia).toFixed(1), r: 4, class: 'agora'}));
@@ -1207,26 +1216,38 @@ if (PACIFICO.serie.length) {
     });
 
   // A legenda mostra o traço de cada linha: cor nunca é o único portador da informação.
+  // A legenda tem DOIS itens, não 23: o ciclo em curso e a família de contexto, com a contagem
+  // e o intervalo de anos. Quem quer saber qual linha é qual toca nela.
   (function legendaEpisodios(){
     const alvo = document.getElementById('legEpisodios'); if (!alvo) return;
-    alvo.innerHTML = linhas.map(l => '<span><i class="t-'
-      + (l.agora ? 'agora' : l.classe.replace('l-', '')) + '"></i>' + esc(l.rotulo) + '</span>').join('');
+    const itens = [];
+    if (PACIFICO.emCurso) itens.push(['t-agora', txtCat(IP + 'episodios.legenda_atual',
+      {ano: String(PACIFICO.emCurso.ano)}, String(PACIFICO.emCurso.ano))]);
+    if (PACIFICO.episodios.length) itens.push(['t-contexto', txtCat(IP + 'episodios.legenda_contexto',
+      {n: PACIFICO.episodios.length,
+       inicio: String(PACIFICO.episodios[0].ano),
+       fim: String(PACIFICO.episodios[PACIFICO.episodios.length - 1].ano)}, null)]);
+    alvo.innerHTML = itens.filter(i => i[1])
+      .map(i => '<span><i class="' + i[0] + '"></i>' + esc(i[1]) + '</span>').join('');
   })();
 
   // A leitura sob o gráfico: o MESMO trimestre em cada linha, na ordem do calendário. Não há
   // ordenação por valor aqui — ranking é comparação nossa, e a página mostra as etapas.
   (function leituraEpisodios(){
     const alvoK = (ultimo.ano - (PACIFICO.emCurso ? PACIFICO.emCurso.ano : ultimo.ano)) * 12 + PAC.centro(ultimo);
-    const ordenadas = linhas.slice().sort((a, b) => a.ano - b.ano);
-    const valores = ordenadas.map(l => {
-      const ponto = PAC.janela(serie, l.ano).find(x => x.k === alvoK);
-      return ponto ? txtCat(IP + 'episodios.molde_valor_do_ano',
-        {valor: PAC.num(ponto.p.anomalia), ano: String(l.ano)}, null) : null;
-    }).filter(Boolean);
-    let texto = valores.length ? txtCat(IP + 'episodios.molde_leitura',
-      {trimestre: PAC.periodoCurto(ultimo),
-       valores: valores.length > 1 ? valores.slice(0, -1).join(', ') + ' e ' + valores[valores.length - 1]
-                                   : valores[0]}, null) : null;
+    // A leitura dá o valor do ciclo em curso e a FAIXA dos demais no mesmo ponto do calendário —
+    // mínimo e máximo. Listar 22 valores não se lê, e ordená-los seria ranking. A faixa descreve
+    // a nuvem sem ordenar nada, e é o leitor quem conclui onde o ciclo em curso cai dentro dela.
+    const noAlvo = PACIFICO.episodios
+      .map(e => (PAC.janela(serie, e.ano).find(x => x.k === alvoK) || {}).p)
+      .filter(Boolean).map(p => p.anomalia);
+    let texto = noAlvo.length ? txtCat(IP + 'episodios.molde_leitura', {
+      trimestre: PAC.periodoCurto(ultimo),
+      atual: PAC.num(ultimo.anomalia),
+      ano: String(PACIFICO.emCurso ? PACIFICO.emCurso.ano : ultimo.ano),
+      n: noAlvo.length,
+      minimo: PAC.num(Math.min.apply(null, noAlvo)),
+      maximo: PAC.num(Math.max.apply(null, noAlvo))}, null) : null;
     // A contagem do ciclo em curso só é dita enquanto o critério NÃO se completou: depois das
     // cinco, a frase "se completa na quinta" deixa de ser verdadeira.
     if (PACIFICO.emCurso && PACIFICO.emCurso.pontos.length < 5) {
