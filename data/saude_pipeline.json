@@ -2,258 +2,6 @@
  "formato_versao": 1,
  "execucoes": [
   {
-   "data": "2026-09-29",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-09-29T06:48:55",
-   "duracao_s": 2.7,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-29",
-   "script": "consultar_querido_diario.py",
-   "inicio": "2026-09-29T07:09:48",
-   "duracao_s": 1.0,
-   "itens": null,
-   "status": "erro",
-   "erro": "urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
-  },
-  {
-   "data": "2026-09-29",
-   "script": "coletar_diarios_municipais.py",
-   "inicio": "2026-09-29T07:09:49",
-   "duracao_s": 1808.8,
-   "itens": 140,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-29",
-   "script": "coletar_diarios_consorciados.py",
-   "inicio": "2026-09-29T07:39:58",
-   "duracao_s": 1987.1,
-   "itens": 2,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-29",
-   "script": "coletar_doe.py",
-   "inicio": "2026-09-29T08:13:05",
-   "duracao_s": 61.4,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-29",
-   "script": "coletar_s2id.py",
-   "inicio": "2026-09-29T08:14:06",
-   "duracao_s": 746.4,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-29",
-   "script": "monitorar_imprensa_regional.py",
-   "inicio": "2026-09-29T08:55:52",
-   "duracao_s": 544.9,
-   "itens": 40,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-29",
-   "script": "monitorar_imprensa_saude.py",
-   "inicio": "2026-09-29T09:04:57",
-   "duracao_s": 106.9,
-   "itens": 27,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-29",
-   "script": "monitorar_atos_resposta.py",
-   "inicio": "2026-09-29T09:06:44",
-   "duracao_s": 588.3,
-   "itens": 1186,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-29",
-   "script": "monitorar_politica_por_inteiro.py",
-   "inicio": "2026-09-29T09:16:32",
-   "duracao_s": 3.1,
-   "itens": 1186,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-29",
-   "script": "monitorar_sinais_federais.py",
-   "inicio": "2026-09-29T09:16:35",
-   "duracao_s": 3.7,
-   "itens": 10,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-29",
-   "script": "detectar_marcos_federais.py",
-   "inicio": "2026-09-29T09:16:38",
-   "duracao_s": 1.9,
-   "itens": 0,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-29",
-   "script": "verificar_prazos_legais.py",
-   "inicio": "2026-09-29T09:16:40",
-   "duracao_s": 0.2,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-29",
-   "script": "descobrir_planos.py",
-   "inicio": "2026-09-29T09:16:40",
-   "duracao_s": 926.1,
-   "itens": 41,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-29",
-   "script": "monitorar_redes_oficiais.py",
-   "inicio": "2026-09-29T09:32:06",
-   "duracao_s": 0.3,
-   "itens": null,
-   "status": "erro",
-   "erro": "AttributeError: 'list' object has no attribute 'get'"
-  },
-  {
-   "data": "2026-09-29",
-   "script": "seguir_pistas.py",
-   "inicio": "2026-09-29T09:32:06",
-   "duracao_s": 58.5,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-29",
-   "script": "triar_confianca_pistas.py",
-   "inicio": "2026-09-29T09:33:04",
-   "duracao_s": 1.7,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-29",
-   "script": "verificar_pista_imprensa.py",
-   "inicio": "2026-09-29T09:33:05",
-   "duracao_s": 8.4,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-29",
-   "script": "preservar_evidencias.py",
-   "inicio": "2026-09-29T10:18:35",
-   "duracao_s": 2.8,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-29",
-   "script": "preservar_evidencias.py",
-   "inicio": "2026-09-29T10:18:37",
-   "duracao_s": 4739.2,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-29",
-   "script": "preservar_evidencias.py",
-   "inicio": "2026-09-29T11:37:36",
-   "duracao_s": 0.5,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-29",
-   "script": "scripts/preservar_textos_integrais.py",
-   "inicio": "2026-09-29T11:37:36",
-   "duracao_s": 114.3,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-29",
-   "script": "revisar_pistas.py",
-   "inicio": "2026-09-29T11:42:06",
-   "duracao_s": 540.7,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-29",
-   "script": "julgar_filas.py",
-   "inicio": "2026-09-29T11:51:06",
-   "duracao_s": 1702.7,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-29",
-   "script": "julgar_e_aplicar_descobertas.py",
-   "inicio": "2026-09-29T12:19:28",
-   "duracao_s": 1.3,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-29",
-   "script": "aplicar_promocoes_do_juiz.py",
-   "inicio": "2026-09-29T12:19:29",
-   "duracao_s": 0.5,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-29",
-   "script": "scripts/amostra_auditoria_semanal.py",
-   "inicio": "2026-09-29T12:19:29",
-   "duracao_s": 0.7,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-09-29",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-09-29T13:20:13",
-   "duracao_s": 2.4,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
    "data": "2026-09-30",
    "script": "recalcular_mare.py",
    "inicio": "2026-09-30T06:37:00",
@@ -3762,7 +3510,43 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-07",
+   "script": "scripts/triar_fila.py",
+   "inicio": "2026-10-07T03:30:52",
+   "duracao_s": 1.4,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-07",
+   "script": "julgar_filas.py",
+   "inicio": "2026-10-07T03:30:53",
+   "duracao_s": 199.6,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-07",
+   "script": "aplicar_promocoes_do_juiz.py",
+   "inicio": "2026-10-07T03:34:12",
+   "duracao_s": 0.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-07",
+   "script": "scripts/verificar_esquema_de_pista.py",
+   "inicio": "2026-10-07T03:34:13",
+   "duracao_s": 2.1,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
   }
  ],
- "atualizado_em": "2026-10-07T01:59:50"
+ "atualizado_em": "2026-10-07T03:34:15"
 }
