@@ -49,13 +49,19 @@ DIR_NOITE = RAIZ / "data" / "noite"
 def noite_de(agora: dt.datetime) -> str:
     """A noite a que este instante pertence, em ISO. Função pura.
 
-    A noite abre às 22h de Brasília e fecha às 6h: o que acontece depois da meia-noite pertence à
-    noite que começou na véspera. É a mesma conta de `scripts/janela_da_noite.py`, e ela importa
-    aqui porque o elo que perdeu o push às 01:13 tem de deixar o marcador onde o elo seguinte, às
-    02:00, vai procurar.
+    UMA definição só (07/10/2026). Havia duas, e elas discordavam de um dia **dentro da própria
+    janela de coleta**: esta datava a noite pelo dia de Brasília em que ela começou (22h), e
+    `janela_da_noite.noite_de` a data pelo dia UTC em que a janela abre (01:00). Entre 01:00 e
+    12:00 UTC — que é a janela inteira — as duas davam datas diferentes, e por isso o consolidador
+    procurava artefato de `saida-<elo>-<ontem>` enquanto os elos gravavam `saida-<elo>-<hoje>`.
+    Medido na rodada 6, em 07/10/2026: seis elos verdes, e o consolidador consolidou a janela
+    anterior sem que nada reclamasse.
+
+    Quem manda é `janela_da_noite.noite_de`, porque é dela que sai o nome do artefato (contrato
+    `saida-<elo>-<janela>`) e o caminho do marcador que o elo grava.
     """
-    d = agora.date()
-    return (d - dt.timedelta(days=1)).isoformat() if agora.hour < 12 else d.isoformat()
+    from janela_da_noite import noite_de as canonica
+    return canonica(agora)
 
 
 def caminho_do_marcador(elo: str, noite: str, sufixo: str = "pendente") -> str:
@@ -208,11 +214,15 @@ def _autoteste() -> int:
             falhas.append(nome)
 
     ok("01:13 pertence à noite da véspera",
-       noite_de(dt.datetime(2026, 10, 6, 1, 13)) == "2026-10-05")
+       noite_de(dt.datetime(2026, 10, 6, 1, 13)) == "2026-10-06")
     ok("22:10 pertence à noite do próprio dia",
        noite_de(dt.datetime(2026, 10, 5, 22, 10)) == "2026-10-05")
     ok("06:09 ainda é a noite da véspera",
-       noite_de(dt.datetime(2026, 10, 6, 6, 9)) == "2026-10-05")
+       noite_de(dt.datetime(2026, 10, 6, 6, 9)) == "2026-10-06")
+    from janela_da_noite import noite_de as noite_canonica
+    ok("uma definicao so: a noite e a mesma de janela_da_noite em toda a janela",
+       all(noite_de(dt.datetime(2026, 10, 6, h, 30)) == noite_canonica(dt.datetime(2026, 10, 6, h, 30))
+           for h in range(24)))
 
     ok("o marcador fica junto do `.feito`",
        caminho_do_marcador("diarios", "2026-10-05")

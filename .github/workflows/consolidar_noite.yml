@@ -72,9 +72,16 @@ jobs:
         timeout-minutes: 15
         run: |
           JANELA="${{ inputs.janela }}"
-          [ -n "$JANELA" ] || JANELA=$(python3 -c "import sys;sys.path.insert(0,'scripts');import pendente_do_elo as p,datetime as d;print(p.noite_de(d.datetime.utcnow()))")
+          # A MESMA conta do nome do artefato (`janela_da_noite.py --noite`), e nao uma segunda:
+          # duas contas discordavam de um dia dentro da janela, e o consolidador consolidava a
+          # janela anterior com seis elos verdes e nenhuma reclamacao.
+          [ -n "$JANELA" ] || JANELA=$(python3 scripts/janela_da_noite.py --noite)
           echo "janela=$JANELA" >> "$GITHUB_ENV"
-          mkdir -p artefatos
+          # Fora da arvore de trabalho: baixado dentro dela, o proprio artefato aparecia no
+          # `git status` e rendia 690 avisos de "caminho sem escritor declarado" por rodada.
+          ART="${RUNNER_TEMP:-/tmp}/artefatos"
+          echo "art=$ART" >> "$GITHUB_ENV"
+          mkdir -p "$ART"
           # Um artefato por elo. O nome traz o elo e a janela, e é por ele que o consolidador sabe
           # de quem é cada arquivo — a mesma pergunta que `config/escritores.json` responde.
           gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts?per_page=100" \
@@ -84,7 +91,7 @@ jobs:
           fi
           while IFS=$'\t' read -r NOME RUN; do
             [ -n "$NOME" ] || continue
-            gh run download "$RUN" --name "$NOME" --dir "artefatos/$NOME" \
+            gh run download "$RUN" --name "$NOME" --dir "$ART/$NOME" \
               && echo "  · baixado $NOME" \
               || echo "::warning::$NOME nao baixou; fica pendente para a rodada seguinte"
           done < /tmp/lista.tsv
@@ -96,7 +103,7 @@ jobs:
         # para conter travamento, nao para competir com o tamanho do trabalho.
         timeout-minutes: 30
         run: |
-          python3 scripts/consolidar_noite.py --janela "$janela" --dir artefatos \
+          python3 scripts/consolidar_noite.py --janela "$janela" --dir "$art" \
             --aplicar ${{ inputs.importacao_em_massa && '--importacao-em-massa' || '' }} \
             | tee -a "$GITHUB_STEP_SUMMARY"
 
