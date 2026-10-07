@@ -20,6 +20,39 @@
   to = "/obrigado.html"
   status = 200
 
+# --- O script do Netlify Drawer (HUD): injetado ao servir, inalcançável aqui (07/10/2026) ---
+# O Netlify injeta `<script async src="/.netlify/scripts/hud?...">` em toda página NO MOMENTO DE
+# SERVIR — não no build, então `skip_processing` não o alcança. É script de terceiro não pedido,
+# em todas as páginas de um site de interesse público.
+#
+# NÃO HÁ CHAVE NESTE ARQUIVO QUE O DESLIGUE. A documentação do Netlify diz, literalmente, que a
+# desativação é só pela interface, em Project configuration > Developer settings > Continuous
+# deployment > Collaboration tools > Configure. Conferido em 07/10/2026 contra
+# docs.netlify.com/deploy/review-deploys/netlify-drawer-for-feedback/troubleshoot-the-netlify-drawer/.
+# `hud_enabled=false` pela API foi tentado em 14/09/2026 e não desligou; desligar pelo painel foi
+# tentado em 07/10/2026 e não segurou — 11 páginas com o script antes, 1 logo depois (cache de
+# borda), 11 de novo na republicação seguinte.
+#
+# O que ESTE arquivo pode fazer é o que está abaixo: devolver 404 no caminho do script. A tag
+# continua sendo injetada no HTML — isso é do servidor, e está fora do nosso alcance —, mas o
+# recurso deixa de existir no domínio. Vira a segunda barreira: a primeira é a CSP, que não
+# permite `'self'` em `script-src` e faz o navegador recusar o script; esta impede que ele seja
+# sequer entregue. Nenhuma das duas é o desligamento, e o verificador do domínio continua
+# relatando a injeção em vez de escondê-la.
+#
+# 404 e não 301, pela mesma razão da pasta de arquivo abaixo: o recurso não mudou de lugar, ele
+# não é para existir aqui.
+[[redirects]]
+  from = "/.netlify/scripts/hud"
+  to = "/404.html"
+  status = 404
+  force = true
+[[redirects]]
+  from = "/.netlify/scripts/hud/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
 # --- Pasta de arquivo: guardada no repositório, NUNCA servida (§258, 27/09/2026) ---
 # `publish = "."` serve a raiz inteira, então arquivar um arquivo dentro do repositório não o
 # retira do ar por si: sem esta regra, `arquivo/pesquisadores/pesquisadores.html` continuaria

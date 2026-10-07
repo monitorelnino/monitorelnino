@@ -10,6 +10,14 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+## 2026-10-07 · #PR · O script do Netlify Drawer fica inalcançável no domínio
+
+Não há chave no `netlify.toml` que desligue a injeção: a documentação do Netlify diz que isso é
+só pela interface, e desligar lá não segurou. O que o arquivo alcança é o recurso — passa a
+devolver 404 no caminho do script. A tag continua sendo escrita pelo servidor, e o verificador
+continua relatando a injeção em vez de escondê-la; o que muda é que o script deixa de ser
+entregue, atrás da CSP que já o recusava. O verificador passa a conferir o 404.
+
 ## 2026-10-07 · #PR · O cache do navegador deixa de depender de a página ter mudado
 
 O portão da corrida do medidor roda sempre, e o cache do Playwright só era restaurado quando a
