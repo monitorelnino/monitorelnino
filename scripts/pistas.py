@@ -350,6 +350,16 @@ def _autoteste() -> int:
                and "alvo" in falso[ARQUIVO_DE_REJEITADAS]["rejeitadas"][0]["motivo"])
             ok("as rejeitadas trazem o total", falso[ARQUIVO_DE_REJEITADAS]["total"] == 1)
 
+            gravar_lote([ruim_sem_alvo], origem="rede_social_oficial")
+            rej = falso[ARQUIVO_DE_REJEITADAS]["rejeitadas"]
+            ok("a MESMA recusa nao empilha copia identica", len(rej) == 1)
+            ok("a repeticao da recusa fica contavel em vezes", rej[0].get("vezes") == 2)
+
+            outro_motivo = dict(REDE, url="https://y.ms.gov.br/z", tipo="outro")
+            gravar_lote([outro_motivo], origem="rede_social_oficial")
+            ok("mesma url com OUTRO motivo e outra recusa",
+               len(falso[ARQUIVO_DE_REJEITADAS]["rejeitadas"]) == 2)
+
             # sincronizar: salvamento parcial de varredura longa
             memoria = {"pistas": list(falso[FILA_PADRAO]["pistas"])}
             memoria["pistas"].append(dict(REDE, url="https://w.ms.gov.br/plano-municipal",
@@ -403,14 +413,26 @@ def rejeitar(pista: dict, origem: str, motivo: str, ler_fn=None, gravar_fn=None)
     ler, gravar = (ler_fn or ler_base), (gravar_fn or gravar_base)
     doc = ler(ARQUIVO_DE_REJEITADAS) or {"rejeitadas": []}
     lista = doc.setdefault("rejeitadas", [])
-    lista.append({
+    registro = {
         "origem": origem, "origem_canonica": (pista or {}).get("origem"),
         "motivo": motivo,
         "url": str((pista or {}).get("url_final") or (pista or {}).get("url") or "")[:400],
         "alvo": (pista or {}).get("alvo"), "tipo": (pista or {}).get("tipo"),
         "municipio": (pista or {}).get("municipio"), "uf": (pista or {}).get("uf"),
         "rejeitada_em": hoje_editorial().isoformat(),
-    })
+    }
+    # A MESMA recusa chega quantas vezes o coletor reencontra o alvo, e a reaplicacao de artefato a
+    # traz de novo. Empilhar copia identica nao acrescenta rastro e dobra o arquivo: em 07/10/2026
+    # `data/pistas_rejeitadas.json` foi de 4,8 MB a 9,0 MB numa execucao, 7.778 copias exatas de
+    # 9.708 registros. Conta-se em `vezes`, que e o que a regra de ausencia pede: contavel.
+    k = chave_da_rejeicao(registro)
+    for anterior in lista:
+        if chave_da_rejeicao(anterior) == k:
+            anterior["vezes"] = int(anterior.get("vezes") or 1) + 1
+            anterior["rejeitada_em"] = registro["rejeitada_em"]
+            break
+    else:
+        lista.append(registro)
     doc["atualizado_em"] = hoje_editorial().isoformat()
     doc["total"] = len(lista)
     gravar(ARQUIVO_DE_REJEITADAS, doc)
@@ -486,6 +508,17 @@ def gravar_lote(novas: list, origem: str = "", nome_da_fila: str = FILA_PADRAO,
         rejeitar(normal, origem or normal.get("origem_do_coletor") or "", motivo,
                  ler_fn=ler_fn, gravar_fn=gravar_fn)
     return {"gravadas": gravadas, "recusadas": len(recusadas), "motivos": motivos}
+
+
+def chave_da_rejeicao(registro: dict) -> str:
+    """A identidade de uma RECUSA: alvo da recusa mais o motivo. Funcao pura.
+
+    Duas recusas com a mesma url, o mesmo alvo e o mesmo motivo sao a mesma recusa reencontrada —
+    nao duas. O que muda entre elas e a data, e essa fica no registro como a ultima vez.
+    """
+    r = registro or {}
+    return "|".join([str(r.get("url") or ""), str(r.get("alvo") or ""),
+                     str(r.get("origem_canonica") or ""), str(r.get("motivo") or "")])
 
 
 def chave_da_pista(pista: dict) -> str:

@@ -95,6 +95,15 @@ def _autoteste() -> int:
        len(deduplicar([{"url": "a"}] * 33, k)[0]) == 1)
     ok("a conta de removidas fecha", deduplicar([{"url": "a"}] * 33, k)[1] == 32)
 
+
+    def chave_rej(r):
+        return "|".join([str(r.get("url") or ""), str(r.get("alvo") or ""),
+                         str(r.get("origem_canonica") or ""), str(r.get("motivo") or "")])
+    recusas = [{"url": "u", "alvo": "5002704", "motivo": "sem url_final", "vezes": 2},
+               {"url": "u", "alvo": "5002704", "motivo": "sem url_final"},
+               {"url": "u", "alvo": "5002704", "motivo": "tipo outro"}]
+    fora_rej, saiu = deduplicar(recusas, chave_rej)
+    ok("recusa repetida sai, recusa de outro motivo fica", len(fora_rej) == 2 and saiu == 1)
     import dis
     nomes = set()
     for nome_obj, obj in list(globals().items()):
@@ -117,7 +126,7 @@ def main(argv: list) -> int:
     if "--autoteste" in argv:
         return _autoteste()
     sys.path.insert(0, str(RAIZ / "scripts"))
-    from pistas import chave_da_pista
+    from pistas import chave_da_pista, chave_da_rejeicao
 
     aplicar = "--aplicar" in argv
     total_fora = 0
@@ -127,15 +136,28 @@ def main(argv: list) -> int:
             continue
         antes_bytes = arq.stat().st_size
         doc = json.loads(arq.read_text(encoding="utf-8"))
-        pistas = doc.get("pistas")
+        # O arquivo de recusas guarda a lista em `rejeitadas`, nao em `pistas`: ele estava nesta
+        # lista desde o inicio e nunca era tocado, porque o `continue` abaixo o pulava calado.
+        campo = "pistas" if isinstance(doc.get("pistas"), list) else "rejeitadas"
+        pistas = doc.get(campo)
         if not isinstance(pistas, list):
             continue
-        fora, n = deduplicar(pistas, chave_da_pista)
+        chave = chave_da_pista if campo == "pistas" else chave_da_rejeicao
+        # Na recusa, a repeticao e contavel: ela vira `vezes`, e nao desaparece com a copia.
+        vezes = {}
+        if campo == "rejeitadas":
+            for r in pistas:
+                vezes[chave(r)] = vezes.get(chave(r), 0) + int((r or {}).get("vezes") or 1)
+        fora, n = deduplicar(pistas, chave)
+        for r in fora if campo == "rejeitadas" else []:
+            r["vezes"] = vezes.get(chave(r), 1)
         if not n:
             print(f"  · {rel}: {len(pistas)} pista(s), nenhuma repetida")
             continue
         total_fora += n
-        doc["pistas"] = fora
+        doc[campo] = fora
+        if campo == "rejeitadas":
+            doc["total"] = len(fora)
         bruto = json.dumps(doc, ensure_ascii=False, indent=1) + "\n"
         print(f"  {'·' if aplicar else '⚠'} {rel}: {len(pistas)} → {len(fora)} pista(s), "
               f"{n} repetida(s) removida(s); {round(antes_bytes / 1048576, 1)} MB → "
