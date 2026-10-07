@@ -70,8 +70,17 @@ jobs:
     # aberto: cinco rodadas medidas em ~20 min cada, mais folga para a instância subir.
     timeout-minutes: 150   # §153: --preparar pode acionar o juiz (portões) em pistas de fonte oficial
     steps:
+      # 07/10/2026: sem o histórico e sem `evidencias/` (4,7 GB). Este job não abre
+      # evidência preservada, e o clone completo custou 12m30s dos 12 minutos de teto na
+      # rodada 8 — o job morreu no provisionamento e levou a coleta da noite com ele.
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
-        with: { persist-credentials: false }
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/evidencias
       # Mesma correção estrutural do atualizar.yml (§148): partir do main REAL, não do SHA fixado no
       # disparo — com rodada a cada 2h e cada uma levando minutos, a anterior pode ter acabado de commitar.
       - name: Partir do main atual

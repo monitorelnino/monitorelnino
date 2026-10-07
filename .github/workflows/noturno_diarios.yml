@@ -71,12 +71,21 @@ jobs:
     # runner esta lento -- nas rodadas 1 e 2 da campanha ele morreu em 5:03, exatamente no teto,
     # e levou os diarios junto. O teto existe para conter guarda travada, nao para competir com
     # o tempo de provisionamento.
-    timeout-minutes: 12
+    timeout-minutes: 20
     outputs:
       abrir: ${{ steps.guarda.outputs.abrir }}
     steps:
+      # 07/10/2026: sem o histórico e sem `evidencias/` (4,7 GB). Este job não abre
+      # evidência preservada, e o clone completo custou 12m30s dos 12 minutos de teto na
+      # rodada 8 — o job morreu no provisionamento e levou a coleta da noite com ele.
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
-        with: { persist-credentials: false }
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/evidencias
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with: { python-version: "3.12" }
       - name: Esta noite já abriu?
