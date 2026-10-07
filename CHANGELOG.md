@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-07 · #PR · O cartão do município se monta pelo código IBGE
+
+O cartão resolvia o município pelo nome no banco de planos; agora resolve pelo código IBGE da
+lista de referência dos 5.571. Com isso o quadro das listas federais de risco aparece para os
+2.916 municípios que constam de alguma lista e não têm registro no banco. O escape de texto
+passou a acontecer uma vez só, na saída: escapado duas vezes, "Olho d'Água das Flores" saía com
+a entidade visível e o nome não casava com a lista oficial. Em `assets/js/index.js`.
+
 ## 2026-10-05 · #563 · A seção de perguntas da imprensa chama-se Perguntas frequentes
 
 Revisão da editoria. As cinco perguntas que vinham sob o subtítulo “Para entender o que está

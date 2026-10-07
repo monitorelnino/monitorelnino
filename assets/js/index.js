@@ -28,7 +28,6 @@ function respostaTile(uf){
 }
 // §5: campos 3–5 da face do cartão — nível de verificação da UF, instrumento estadual, capital (uma linha cada)
 function faceTile(uf){
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const d = (DATA.ufs || []).find(u => u.uf === uf) || {};
   const niv = (typeof VRESUMO !== 'undefined' && VRESUMO && VRESUMO.por_uf && VRESUMO.por_uf[uf]) || {};
   const tot = Object.values(niv).reduce((a, b) => a + b, 0);
@@ -47,6 +46,10 @@ function barraResposta(uf){
     <strong>${n}</strong> de ${r.total_municipios} municípios · <strong>${Math.round(100 * r.fracao_populacao)}%</strong> da população${r.primeiro_decreto ? ' · primeiro decreto em ' + r.primeiro_decreto : ''}<br>
     <span class="fv u-muted">${rec} reconhecido(s) pela União · ${dec} decretado(s) sem reconhecimento · evento observado: em classificação</span></div></div>`;
 }
+// AUD-02 revisto (07/10/2026): o escape acontece UMA VEZ, na saida. Escapar na carga e de novo
+// na saida dava "Olho d&amp;#39;Agua das Flores" no cartao, e fazia o nome do banco nao casar com o
+// da lista de referencia, que nao e escapada.
+const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let BR_GEOJSON, PCT_POR_UF, MAP_POINTS, TABELA_MUNICIPIOS, MARE, DATA, TRANSFERENCIAS, MUN_REF, META, POP_CENSO, RECURSOS, FIN, CONSIST, ATOS_RESPOSTA, VRESUMO, MUN_COD = {}, POP_UF = {}, MUN_LATLON = {};
 function nivelVerificacao(uf, nome){
   // v2.2.4 (§2.2): padrão é "não verificado"; níveis acima vêm do resumo derivado.
@@ -58,7 +61,6 @@ const NIVEL_ROTULO = { nao_verificado: 'ainda não verificado individualmente',
   nacional: 'verificado em fontes nacionais', estadual: 'verificado em fontes nacionais e estaduais',
   municipal_completo: 'verificação completa' };
 function renderContadorResposta(){
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const N = RESP && RESP.nacional; const box = document.getElementById('contadorResposta'); if (!box) return;
   const el = id => document.getElementById(id);
   if (!N) { MonitorMapas.credito('respFonte', {fontes: 'MARÉ', data: null}); return; }
@@ -80,17 +82,16 @@ async function __load(){
         return r.json();
       }))
   );
-  // AUD-02 (auditoria externa, 02/09/2026): todo texto vindo dos dados é escapado NA CARGA,
-  // antes de qualquer interpolação em innerHTML; URLs só sobrevivem se forem https://.
-  // Os dados não contêm marcação legítima (verificado em 02/09/2026), então escapar é neutro.
+  // AUD-02 (02/09/2026) revisto em 07/10/2026: a carga NAO escapa mais — quem escapa e a saida,
+  // uma vez so, por `esc`. A carga continua a derrubar URL que nao seja https://, porque isso e
+  // validacao de dado, nao escape de texto.
   (function sanitizar(){
-    const esc = v => String(v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     const walk = (o, chave) => {
       if (Array.isArray(o)) { for (let i = 0; i < o.length; i++) o[i] = walk(o[i], chave); return o; }
       if (o && typeof o === 'object') { for (const k of Object.keys(o)) o[k] = walk(o[k], k); return o; }
       if (typeof o === 'string') {
         if (/^url/i.test(chave || '') || /_url$/i.test(chave || '')) return /^https:\/\//i.test(o.trim()) ? o.trim() : '';
-        return esc(o);
+        return o;
       }
       return o;
     };
@@ -234,11 +235,13 @@ const ENQ_RISCO = {i: 'inundação', e: 'enxurrada', ie: 'inundação e enxurrad
 // Bloco do cartão do município. Vazio quando não se sabe DE QUE município se trata: "não consta de
 // nenhuma lista" é afirmação sobre um município identificado, e sem código IBGE não há afirmação a
 // fazer. Camada de contexto, peso zero — não entra na nota do MARÉ.
-function enquadramentoBox(uf, nome){
-  if (!ENQ_MUN || !uf || !nome) return '';
-  const cod = MUN_COD[uf + '|' + nome];
+function enquadramentoBox(uf, nome, codigo){
+  // 07/10/2026 (A1): o quadro depende do CODIGO IBGE, nao de haver registro no banco de planos.
+  // Enquanto ele dependia do registro, 2.916 municipios que constam de lista federal abriam o
+  // cartao sem o quadro — o dado existia e nao aparecia.
+  if (!ENQ_MUN || !uf) return '';
+  const cod = codigo || MUN_COD[uf + '|' + nome];
   if (!cod) return '';
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const marcas = ENQ_MUN[cod] || {};
   const fonte = fam => {
     const f = ENQ_FONTES[fam];
@@ -292,7 +295,7 @@ ufsOrdenadas.forEach(item=>{
   if (pos) { tile.style.gridRow = pos[0]; tile.style.gridColumn = pos[1]; }
   // 26/09/2026 (pedido da editoria): nome por extenso além da sigla. Vem de item.nome, a mesma
   // fonte que a janela de detalhe já usa ("Bahia (BA)") — nenhuma segunda lista de nomes.
-  tile.innerHTML = `<span class="tile-uf">${item.uf}</span><span class="tile-nome">${item.nome}</span>` +
+  tile.innerHTML = `<span class="tile-uf">${item.uf}</span><span class="tile-nome">${esc(item.nome)}</span>` +
     (v == null
       ? '<span class="tile-score">·</span>'
       : `<span class="tile-score" data-contar="${v}">0,0</span>
@@ -333,7 +336,6 @@ setTimeout(renderDetalhePadrao, 0);
 function riscoBox(uf){
   const r = RISCO_UF[uf];
   if (!r) return '';
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const NOME_COMP = {estiagem:'estiagem', incendios:'incêndios', chuvas:'chuvas', sem_sinal:'sem sinal elevado'};
   const FAMILIA = {estiagem:'r-seca', incendios:'r-fogo', chuvas:'r-chuva'};
   const comps = (r.componentes && r.componentes.length ? r.componentes : [r.tipo]);
@@ -357,7 +359,6 @@ function selectUF(uf, tileEl){
   // d.capital.nome são texto editorial (resumo humano de documento oficial), não
   // HTML bruto raspado — mas entram direto em innerHTML abaixo sem escape, ao
   // contrário do resto do módulo (ver financiamento.js). Corrigido aqui.
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   document.querySelectorAll('.tile').forEach(t=>t.classList.remove('active'));
   tileEl.classList.add('active');
   const d = DATA.ufs.find(x=>x.uf===uf);
@@ -367,7 +368,7 @@ function selectUF(uf, tileEl){
   // não verificado (regra de ouro: nunca link presumido ou fabricado).
   const capReg = d.capital ? TABELA_MUNICIPIOS.find(m => m.uf === uf && m.nome === d.capital.nome) : null;
   const linkCapital = capReg && capReg.url
-    ? `<div class="card-link"><a href="${capReg.url}" target="_blank" rel="noopener">Ver fonte oficial →</a></div>`
+    ? `<div class="card-link"><a href="${esc(capReg.url)}" target="_blank" rel="noopener">Ver fonte oficial →</a></div>`
     : capReg && capReg.categoria === 'nao_localizado'
       ? `<div class="card-note">Nenhum documento localizado até o corte dos dados.</div>`
       : capReg && capReg.categoria === 'nao_verificado'
@@ -376,19 +377,19 @@ function selectUF(uf, tileEl){
   const capitalBlock = d.capital ? `
     <div class="capital-box">
       <div class="card-kicker">Capital · verificação individual</div>
-      <div class="card-title">${esc(d.capital.nome)} <span class="sub">· ${d.capital.status}</span></div>
+      <div class="card-title">${esc(d.capital.nome)} <span class="sub">· ${esc(d.capital.status)}</span></div>
       <div class="card-body">${esc(d.capital.info)}</div>
       ${linkCapital}
     </div>` : `<p class="placeholder">Capital sem verificação individual até o corte.</p>`;
 
   document.getElementById('detailConteudo').innerHTML = `
-    <div class="uf-name">${d.nome} <span class="sub">(${d.uf})</span></div>
+    <div class="uf-name">${esc(d.nome)} <span class="sub">(${esc(d.uf)})</span></div>
     ${typeof MARE !== 'undefined' && MARE[d.uf] ? miniGauge(MARE[d.uf].total) : ''}
-    <div class="uf-region">${d.regiao}</div>
+    <div class="uf-region">${esc(d.regiao)}</div>
     <span class="badge ${badgeClass}">${STATUS_LABEL[d.status]}</span>
     ${riscoBox(d.uf)}
-    <div class="field"><div class="k">Estrutura de coordenação</div><div class="v">${d.estrutura ? '<span class="pill-nivel">' + (STATUS_LABEL[d.estrutura.status] || d.estrutura.status) + '</span> ' + esc(d.estrutura.doc) + (d.estrutura.data && d.estrutura.data !== '—' ? ' (' + d.estrutura.data + ')' : '') : '—'}</div></div>
-    <div class="field"><div class="k">Instrumento operacional</div><div class="v"><span class="pill-nivel">${STATUS_LABEL[d.status]}</span> ${esc(d.doc)}${d.data ? ' (' + d.data + ')' : ''}${d.sem_ato_de_aprovacao ? '<br><span class="spec">sem ato de aprovação localizado</span>' : ''}</div></div>
+    <div class="field"><div class="k">Estrutura de coordenação</div><div class="v">${d.estrutura ? '<span class="pill-nivel">' + (STATUS_LABEL[d.estrutura.status] || d.estrutura.status) + '</span> ' + esc(d.estrutura.doc) + (d.estrutura.data && d.estrutura.data !== '—' ? ' (' + esc(d.estrutura.data) + ')' : '') : '—'}</div></div>
+    <div class="field"><div class="k">Instrumento operacional</div><div class="v"><span class="pill-nivel">${STATUS_LABEL[d.status]}</span> ${esc(d.doc)}${d.data ? ' (' + esc(d.data) + ')' : ''}${d.sem_ato_de_aprovacao ? '<br><span class="spec">sem ato de aprovação localizado</span>' : ''}</div></div>
     ${(function(){ // 01/10/2026, texto aprovado pela editoria. A v3.1 dá zero ao instrumento
       // recorrente que NÃO cobre o risco previsto para o ciclo (degrau VIG_NAO_COBRE), e até aqui a
       // interface não dizia isso em lugar nenhum: o cartão mostrava "vigente-recorrente" e o leitor
@@ -422,7 +423,7 @@ function selectUF(uf, tileEl){
       const lidos = ((VRESUMO && VRESUMO.varredura_diarios && VRESUMO.varredura_diarios.por_uf) || {})[d.uf] || 0;
       return tot ? `<div class="field"><div class="k">Diários municipais consultados</div><div class="v">${lidos} de ${tot}</div></div>` : '';
     })()}
-    ${d.adpf743 ? '<div class="field"><div class="k">ADPF 743 (STF)</div><div class="v"><span class="pill-nivel">' + ({homologado:'plano homologado', ajustes_exigidos:'ajustes exigidos em 30 dias', ajustes_exigidos_car:'ajustes exigidos (CAR)', apresentado:'plano apresentado'}[d.adpf743.status] || d.adpf743.status) + '</span> intimado em ' + d.adpf743.intimado_em + ' · decisão de ' + d.adpf743.decisao + (d.adpf743.status !== 'homologado' ? ' · resultado após 25/07 não localizado' : '') + '</div></div>' : ''}
+    ${d.adpf743 ? '<div class="field"><div class="k">ADPF 743 (STF)</div><div class="v"><span class="pill-nivel">' + ({homologado:'plano homologado', ajustes_exigidos:'ajustes exigidos em 30 dias', ajustes_exigidos_car:'ajustes exigidos (CAR)', apresentado:'plano apresentado'}[d.adpf743.status] || esc(d.adpf743.status)) + '</span> intimado em ' + esc(d.adpf743.intimado_em) + ' · decisão de ' + esc(d.adpf743.decisao) + (d.adpf743.status !== 'homologado' ? ' · resultado após 25/07 não localizado' : '') + '</div></div>' : ''}
     ${barraResposta(d.uf)}
     ${(function(){ // v3.1 (30/09/2026): três componentes com um terço cada, nomeados pelo que são.
       // Na v3.0 estrutura e instrumento eram metades de um componente só; agora cada um vale por si,
@@ -444,10 +445,10 @@ function selectUF(uf, tileEl){
     ${(function(){ // C12: instrumento publicado dentro da janela do defeso (04/07–25/10/2026) — fato datado, sem juízo
         const m = String(d.data || '').match(/(\d{2})\/(\d{2})\/(\d{4})/); if (!m) return '';
         const dt = new Date(+m[3], +m[2]-1, +m[1]); const ini = new Date(2026,6,4), fim = new Date(2026,9,25);
-        return (dt >= ini && dt <= fim) ? `<div class="card-note">Publicado em ${d.data}, dentro do período eleitoral (04/07–25/10/2026), quando transferências voluntárias e publicidade institucional estão suspensas por lei — a publicação em diário oficial é ato oficial, não publicidade (METODOLOGIA §24).</div>` : '';
+        return (dt >= ini && dt <= fim) ? `<div class="card-note">Publicado em ${esc(d.data)}, dentro do período eleitoral (04/07–25/10/2026), quando transferências voluntárias e publicidade institucional estão suspensas por lei — a publicação em diário oficial é ato oficial, não publicidade (METODOLOGIA §24).</div>` : '';
       })()}
     ${capitalBlock}
-    <p class="note">Acompanhe ${d.nome} sem visitar o site: <a href="feeds/${d.uf}.xml" type="application/atom+xml">feed de atualizações (Atom)</a> — cada instrumento localizado, cada mudança no índice, com data.</p>
+    <p class="note">Acompanhe ${esc(d.nome)} sem visitar o site: <a href="feeds/${d.uf}.xml" type="application/atom+xml">feed de atualizações (Atom)</a> — cada instrumento localizado, cada mudança no índice, com data.</p>
   `;
   const __dialogDetail = document.getElementById('detail');
   if (__dialogDetail) __dialogDetail.setAttribute('aria-label', 'Detalhe do estado');
@@ -687,17 +688,32 @@ function statusDoPlano(categoria){
   return 'nao_encontrado';
 }
 
+// O nome como a lista de referencia do IBGE o escreve, a partir do que o visitante digitou. E por
+// ele que se chega ao codigo: comparar texto normalizado e o unico casamento possivel entre o que
+// se digita e a lista oficial.
+function nomeOficialDe(uf, digitadoNormalizado){
+  if (!uf || !digitadoNormalizado) return '';
+  return (MUN_REF[uf] || []).find(n => nrm(n) === digitadoNormalizado) || '';
+}
+
 function renderMinha(){
   const card = document.getElementById('meuCard');
   const q = nrm(document.getElementById('cidadeInput').value);
   const uf = selUF.value;
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   // Sem município não há cartão, com ou sem estado: o painel é do MUNICÍPIO, e o retrato do estado
   // vive na ficha do estado, logo abaixo nesta mesma página.
   if (!q){ card.hidden = true; card.innerHTML = ''; return; }
 
+  // 07/10/2026 (A1): o municipio se resolve pelo CODIGO IBGE, que vem da lista de referencia dos
+  // 5.571 — e nao do banco de planos, que cobre uma parte. O registro do banco, quando existe,
+  // tambem se procura pelo codigo. Quem nao tem registro continua tendo cartao.
+  const codigoDigitado = uf ? MUN_COD[uf + '|' + nomeOficialDe(uf, q)] : '';
   let matches = TABELA_MUNICIPIOS.filter(m => nrm(m.nome) === q);
   if (uf) matches = matches.filter(m => m.uf === uf);
+  const porCodigo = codigoDigitado
+    ? TABELA_MUNICIPIOS.filter(m => MUN_COD[m.uf + '|' + m.nome] === codigoDigitado)
+    : [];
+  if (porCodigo.length === 1) matches = porCodigo;
   const m = matches.length === 1 ? matches[0] : null;
   const ufFinal = uf || (m ? m.uf : '');
   card.dataset.uf = ufFinal || '';
@@ -737,7 +753,7 @@ function renderMinha(){
   }
 
   html += riscoBox(ufFinal);
-  html += enquadramentoBox(ufFinal, m ? m.nome : '');
+  html += enquadramentoBox(ufFinal, m ? m.nome : nomeOficialDe(ufFinal, q), codigoDigitado);
 
   if (status === 'encontrado' || status === 'estadual'){
     const fonte = m.url
@@ -753,7 +769,6 @@ function renderMinha(){
   card.hidden = false;
 }
 function popularLista(){
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const dl = document.getElementById('listaMun');
   const uf = selUF.value;
   dl.innerHTML = (uf && MUN_REF[uf] ? MUN_REF[uf] : []).map(n => `<option value="${esc(n)}">`).join('');
@@ -1033,7 +1048,7 @@ function copiarPedido(botao){
     t.setAttribute('aria-label', ev.label + (ev.quando ? ' · ' + ev.quando : ''));
     const mostrar = (evt) => {
       const b = t.getBoundingClientRect();
-      showTip(`<strong>${ev.label}</strong>${ev.quando ? '<br>' + ev.quando : ''}${ev.doc ? '<br>' + ev.doc : ''}`,
+      showTip(`<strong>${esc(ev.label)}</strong>${ev.quando ? '<br>' + esc(ev.quando) : ''}${ev.doc ? '<br>' + esc(ev.doc) : ''}`,
         evt.clientX ? evt : {clientX: b.x + b.width/2, clientY: b.y});
     };
     t.addEventListener('mouseenter', mostrar);
@@ -1090,8 +1105,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       if (!__refMun){
         __refMun = window.__MUN_REF__ || await fetch('data/municipios_ibge_referencia.json').then(r => r.json());
       }
-      const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-      dl.innerHTML = __refMun.filter(m => m.uf === uf)
+          dl.innerHTML = __refMun.filter(m => m.uf === uf)
         .map(m => esc(m.nome)).sort((a, b) => a.localeCompare(b))
         .map(n => `<option value="${n}">`).join('');
     } catch (e) { dl.innerHTML = ''; /* offline/prévia sem dados: campo segue como texto livre */ }
