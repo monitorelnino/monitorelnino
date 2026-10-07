@@ -84,12 +84,29 @@ async function get(url, tentativas = 3) {
     const prioridade = servidos.filter(e => /\.(html|pdf|xml)$|^data\/(meta|indice|sinais_risco|saude_sinais|monitor_saude)\.json$|^data\/saude_desfechos\/(serie_painel|dda_serie|chik_serie_painel|srag_serie)\.json$|^assets\/js\/|^assets\/.*\.css$/.test(e.arq));
     const resto = servidos.filter(e => !prioridade.includes(e));
     const amostra = prioridade.concat(resto.slice(0, Math.max(0, AMOSTRA - prioridade.length)));
-    let iguais = 0, prettyUrls = 0, hud = 0, diferentes = [], ausentes = [];
+    let iguais = 0, prettyUrls = 0, hud = 0, aspas = 0, diferentes = [], ausentes = [];
     // 14/09/2026 (2º ensaio, já com skip_processing): o que restava não era pós-processamento — é o "Netlify HUD",
     // recurso de painel do site que INJETA <script async src="/.netlify/scripts/hud?..."> em toda página ao servir e,
     // ao reserializar, troca aspas de atributos (class="x" → class='x'). Só se desliga no painel do Netlify. Aqui ele
     // é reconhecido pelo nome, removido para a comparação e reportado como achado próprio — nunca escondido.
-    const semHud = (txt) => { const antes = txt; txt = txt.replace(/<script[^>]*\/\.netlify\/scripts\/hud[^>]*><\/script>\s*/g, "").replace(/(<[a-z][^>]*?\s[a-z-]+=)'([^']*)'/g, '$1"$2"'); return [txt, txt !== antes]; };
+    // 07/10/2026: as DUAS reescritas do Netlify passam a ser normalizações SEPARADAS, cada uma
+    // aceita por si. Antes elas viviam numa função só, e o resultado só era aproveitado quando o
+    // script do HUD estava presente E a página voltava a bater por inteiro — bastava uma das duas
+    // não casar para a outra ser descartada junto. Era o caso do `index.html`: ele reprovava
+    // sozinho por `class="btn-nav"` servido como `class='btn-nav'`, e a normalização de aspas, que
+    // existia, nunca chegava a ser aplicada nele. Separadas, cada reescrita conhecida é desfeita e
+    // CONTADA pelo que é, e o que sobrar continua sendo divergência real.
+    const semHud = (txt) => {
+      const fora = txt.replace(/<script[^>]*\/\.netlify\/scripts\/hud[^>]*><\/script>\s*/g, "");
+      return [fora, fora !== txt];
+    };
+    // A reserialização do Netlify troca a aspa de atributos (class="x" → class='x'). Só desfaz
+    // onde o VALOR não contém aspa dupla: `style='font-family:"X"'` com aspas invertidas não é a
+    // mesma coisa, e reescrevê-lo mudaria o atributo em vez de restaurá-lo.
+    const semAspaTrocada = (txt) => {
+      const fora = txt.replace(/(<[a-z][^>]*?\s[a-z-]+=)'([^'"]*)'/g, '$1"$2"');
+      return [fora, fora !== txt];
+    };
     for (const e of amostra) {
       const r = await get(`${BASE}/${e.arq.split("/").map(encodeURIComponent).join("/")}`);
       if (r.status !== 200) { ausentes.push(`${e.arq} (${r.status})`); continue; }
@@ -104,8 +121,22 @@ async function get(url, tentativas = 3) {
         h = crypto.createHash("sha256").update(comparado).digest("hex");
         if (h === e.hash) prettyUrls++;
         if (h !== e.hash) {
+          // As duas em sequência, e cada uma contada pelo que é. A comparação final é a do texto
+          // com AS DUAS desfeitas — qualquer outra diferença sobrevive a isto e reprova.
           const [txtHud, tinhaHud] = semHud(comparado.toString("utf8"));
-          if (tinhaHud) { const h2 = crypto.createHash("sha256").update(Buffer.from(txtHud, "utf8")).digest("hex"); if (h2 === e.hash) { hud++; h = h2; comparado = Buffer.from(txtHud, "utf8"); } }
+          const [txtLimpo, tinhaAspa] = semAspaTrocada(txtHud);
+          if (tinhaHud || tinhaAspa) {
+            const h2 = crypto.createHash("sha256").update(Buffer.from(txtLimpo, "utf8")).digest("hex");
+            // `comparado` recebe o texto normalizado mesmo quando ele NÃO volta a bater: é esse o
+            // texto que a prova da divergência imprime logo abaixo, e imprimir o texto cru fazia o
+            // relatório apontar uma reescrita já conhecida no lugar da diferença que resta.
+            comparado = Buffer.from(txtLimpo, "utf8");
+            if (h2 === e.hash) {
+              h = h2;
+              if (tinhaHud) hud++;
+              if (tinhaAspa) aspas++;
+            }
+          }
         }
       }
       if (h === e.hash) { iguais++; continue; }
@@ -119,7 +150,7 @@ async function get(url, tentativas = 3) {
         console.log(`      servido: ${JSON.stringify(comparado.toString("utf8", Math.max(0, i - 60), i + 160))}`);
       }
     }
-    ok(`integridade: ${iguais}/${amostra.length} arquivo(s) servidos batem com o manifesto` + (prettyUrls ? ` (${prettyUrls} HTML só com a reescrita "Pretty URLs" do Netlify)` : "") + (hud ? ` (${hud} HTML idênticos depois de remover o script do Netlify HUD)` : ""), diferentes.length === 0 && ausentes.length === 0,
+    ok(`integridade: ${iguais}/${amostra.length} arquivo(s) servidos batem com o manifesto` + (prettyUrls ? ` (${prettyUrls} HTML só com a reescrita "Pretty URLs" do Netlify)` : "") + (hud ? ` (${hud} HTML idênticos depois de remover o script do Netlify HUD)` : "") + (aspas ? ` (${aspas} HTML idênticos depois de desfazer a troca de aspas de atributo)` : ""), diferentes.length === 0 && ausentes.length === 0,
        (diferentes.length ? "diferentes: " + diferentes.slice(0, 8).join(", ") : "") + (ausentes.length ? " · ausentes: " + ausentes.slice(0, 8).join(", ") : ""));
     // O HUD é um script de terceiro não pedido, em todas as páginas de um site de interesse público: no lançamento é
     // bloqueante; no ensaio, aviso com a instrução. Desligar: painel do Netlify → Site configuration → (Build & deploy /
