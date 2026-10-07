@@ -375,12 +375,16 @@ function riscoBox(uf){
   const chips = comps.map(c => `<span class="chip-risco">${esc(NOME_COMP[c] || c)}</span>`).join('');
   const fonte = RISCO_FONTE
     ? 'Fonte: ' + (RISCO_FONTE.url_publica
-        ? `<a href="${RISCO_FONTE.url_publica}" target="_blank" rel="noopener">${esc(RISCO_FONTE.nome)}</a>`
+        ? `<a href="${esc(RISCO_FONTE.url_publica)}" target="_blank" rel="noopener">${esc(RISCO_FONTE.documento || RISCO_FONTE.nome)}</a>`
         : esc(RISCO_FONTE.nome))
-      + (RISCO_FONTE.consultado_em ? ' · ' + esc(RISCO_FONTE.consultado_em) : '')
+      + (RISCO_FONTE.consultado_em ? ' · consultado em ' + esc(dataBR(RISCO_FONTE.consultado_em)) : '')
     : '';
+  // 07/10/2026 (A3): o horizonte e o que o BOLETIM diz — "no trimestre outubro-novembro-dezembro
+  // (OND) de 2026" —, nao "ciclo" nem "trimestre" por conta propria. Sem horizonte gravado, o
+  // rotulo fica sem complemento em vez de inventar um.
+  const horizonte = (RISCO_FONTE && RISCO_FONTE.horizonte) ? ' ' + RISCO_FONTE.horizonte : '';
   return `<div class="risco-box ${familia}">
-    <p class="k">Risco projetado para o ciclo</p>
+    <p class="k">Projeção do Painel El Niño${esc(horizonte)}</p>
     <p class="v">${esc(r.texto)}</p>
     <div class="chips">${chips}</div>
     ${fonte ? `<p class="fonte">${fonte}</p>` : ''}

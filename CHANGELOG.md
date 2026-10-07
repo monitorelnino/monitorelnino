@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-07 · #PR · Boletim nº 4 do Painel, com horizonte e link do documento
+
+O registro do Painel passa ao boletim nº 4 (setembro de 2026): a fonte citada é o documento, com
+número e mês, e o endereço é o do próprio boletim, não a página inicial do órgão. O horizonte
+exibido é o que o boletim diz — "no trimestre outubro-novembro-dezembro (OND) de 2026". Nenhuma UF
+mudou de risco ou de categoria: a tabela de trechos por UF está no registro interno, e onde o
+boletim fala por região sem nomear o estado, a leitura não avança. Nenhuma nota muda.
+
 ## 2026-10-07 · #PR · As listas federais mostram todos os riscos da fonte
 
 A nota técnica da Casa Civil nomeia deslizamento em 1.050 municípios do cadastro, e o cartão
