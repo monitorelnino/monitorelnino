@@ -1144,9 +1144,20 @@ if (PACIFICO.serie.length) {
   const listaPorExtenso = episodiosRotulos.length > 1
     ? episodiosRotulos.slice(0, -1).join(', ') + ' e ' + episodiosRotulos[episodiosRotulos.length - 1]
     : episodiosRotulos[0];
+  // O TÍTULO NÃO LISTA OS EPISÓDIOS, e a lista vai para a nota. O handover pediu a lista no
+  // título; a regra de componente vence, e por duas razões que o próprio dado impõe. A primeira é
+  // medida: numa coluna da grade de dois, "RONI nos episódios de El Niño de 2015–16, 2018–19 e
+  // 2023–24 e em 2026" ocupava CINCO linhas contra duas da figura ao lado, e o cartão de mapa
+  // reserva duas — as duas figuras desalinhavam em 70 px no subtítulo e na mídia, e o portão de
+  // consistência visual reprovava, com razão. A segunda é de trajetória: com a série desde 1950 a
+  // lista passa de três episódios para dezenas, e um título que cresce com o dado não é título.
+  // A nota é onde a lista cabe, e a legenda do gráfico nomeia cada linha de qualquer modo.
   põeCat('episodiosTitulo',
     IP + (episodiosRotulos.length ? 'episodios.molde_titulo' : 'episodios.molde_titulo_sem_episodio'),
-    {lista: listaPorExtenso, ano: String(PACIFICO.emCurso ? PACIFICO.emCurso.ano : ultimo.ano)});
+    {ano: String(PACIFICO.emCurso ? PACIFICO.emCurso.ano : ultimo.ano)});
+  // A lista dos episódios NÃO entra na nota: ela cresce com o dado, e nota que cresce desalinha a
+  // dupla do mesmo jeito que o título desalinhava. Quem os nomeia é a legenda do gráfico, item a
+  // item, e a frase de leitura logo abaixo, com o valor de cada um.
   põeCat('episodiosNota', IP + 'episodios.molde_nota', anos);
 
   desenharNaLargura('wrapEpisodios', 20,

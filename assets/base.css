@@ -1046,6 +1046,13 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
 
    Por isso a proporção fixa 480/460 que o cartão de mapa impõe é desligada nestes dois: eles não
    são mapas, e a altura deles é escolhida pela largura. */
+/* Os dois títulos do Pacífico reservam TRÊS linhas, e não as duas do cartão de mapa: numa coluna
+   da grade de dois eles são mais longos que o rótulo de um mapa, e a reserva é o que faz as duas
+   figuras começarem o subtítulo e a mídia na mesma altura. Medido: sem isto, 70 px de diferença. */
+.grade-figuras--2 > .cartao-mapa .figura-titulo{min-height:calc(3 * var(--fs-h4) * var(--lh-h4));}
+/* E a nota reserva duas linhas, pelo mesmo motivo: é ela que separa o subtítulo da mídia, e uma
+   nota de uma linha ao lado de outra de duas sobe o gráfico daquele cartão. */
+.grade-figuras--2 > .cartao-mapa .figura-nota{min-height:calc(2 * var(--fs-caption) * var(--lh-caption));}
 .cartao-mapa .figura-midia.grafico-pacifico{aspect-ratio:auto; height:auto; overflow:visible;}
 .cartao-mapa .figura-midia.grafico-pacifico > svg{width:100%; height:auto;}
 .grafico-pacifico-eixo{font-family:var(--font-dado); font-size:var(--fs-caption);

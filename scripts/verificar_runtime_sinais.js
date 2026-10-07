@@ -192,9 +192,20 @@ setTimeout(() => {
   teste(`gráfico 2: episódios calculados do dado (${esperados.join(", ")})`,
     esperados.length > 0 && esperados.every(e => naLegenda.includes(e))
     && naLegenda.every(e => esperados.includes(e)));
+  // 07/10/2026: a lista saiu do TÍTULO e foi para a NOTA — no título ela ocupava cinco linhas
+  // numa coluna da grade de dois e desalinhava a dupla em 70 px, e com a série desde 1950 ela
+  // cresce para dezenas de episódios. A cobrança não some: muda de alvo junto com a página.
+  // Quem nomeia cada episódio é a LEGENDA, item a item (conferida acima), e a frase de leitura
+  // sob o gráfico, com o valor de cada um. Nem o título nem a nota carregam a lista: as duas
+  // reservam altura para a dupla alinhar, e lista que cresce com o dado estoura a reserva.
+  const fechados = esperados.filter(e => e.includes("–"));
+  const leituraEp = (q("episodiosLeitura") || {}).textContent || "";
+  teste("gráfico 2: a leitura dá o valor de cada episódio e do ciclo em curso",
+    esperados.every(e => leituraEp.includes(e.slice(0, 4))));
   const tituloEp = (q("episodiosTitulo") || {}).textContent || "";
-  teste("gráfico 2: o título nomeia os mesmos episódios da legenda",
-    esperados.every(e => tituloEp.includes(e)));
+  teste("gráfico 2: o título nomeia o ciclo em curso e não cresce com a lista",
+    (!emCurso || tituloEp.includes(String(emCurso[0].ano)))
+    && !fechados.some(e => tituloEp.includes(e)));
   teste("gráfico 2: uma linha por episódio, mais o ciclo em curso",
     q("wrapEpisodios") && q("wrapEpisodios").querySelectorAll("polyline").length === esperados.length);
 
