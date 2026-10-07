@@ -81,6 +81,9 @@ permissions:
 jobs:
   coletar:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     timeout-minutes: ${{ inputs.timeout_minutos }}
     # Fila, não cancelamento: uma coleta interrompida no meio perde o que já achou. Só o publicador
     # cancela o anterior, porque publicar duas vezes o mesmo estado não tem valor.
@@ -183,11 +186,17 @@ jobs:
         id: janela
         timeout-minutes: 2
         run: |
-          if ! python3 scripts/guarda_da_janela.py --ramo "${{ inputs.ramo_destino }}" --elo "${{ inputs.nome }}" | tee -a "$GITHUB_STEP_SUMMARY"; then
-            echo "pode=0" >> "$GITHUB_OUTPUT"
-          else
+          # A decisão NÃO passa por cano (07/10/2026): o passo não declarava `shell:`, o
+          # Actions rodava `bash -e` sem `pipefail`, e o `if !` lia o status do `tee`, que é
+          # sempre 0. Entre 06/10 22:26 UTC e 07/10 16:00 UTC a guarda devolveu `pode=1` em
+          # toda execução, e a `main` recebeu nove commits de coleta de dia. O job agora
+          # declara `shell: bash` (que traz `pipefail`), e aqui o status vem do script.
+          if python3 scripts/guarda_da_janela.py --ramo "${{ inputs.ramo_destino }}" --elo "${{ inputs.nome }}" > /tmp/guarda.txt 2>&1; then
             echo "pode=1" >> "$GITHUB_OUTPUT"
+          else
+            echo "pode=0" >> "$GITHUB_OUTPUT"
           fi
+          cat /tmp/guarda.txt | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Reaplicar o trabalho que o elo anterior perdeu
         if: steps.janela.outputs.pode == '1'
@@ -195,7 +204,11 @@ jobs:
         timeout-minutes: 6
         env:
           GH_TOKEN: ${{ github.token }}
-        run: python3 scripts/pendente_do_elo.py --reaplicar | tee -a "$GITHUB_STEP_SUMMARY"
+        run: |
+          # Recuperação: falha aqui AVISA e não derruba a coleta (já era assim de fato,
+          # porque o `tee` engolia a saída; agora está escrito).
+          python3 scripts/pendente_do_elo.py --reaplicar | tee -a "$GITHUB_STEP_SUMMARY" \
+            || echo "::warning::reaplicacao do pendente falhou; o marcador fica para a rodada seguinte"
 
       - name: Coletar
         if: steps.janela.outputs.pode == '1'

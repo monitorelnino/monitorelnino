@@ -47,10 +47,27 @@ jobs:
     # faz nada até a fase 3, porque na `main` quem escreve ainda é o desenho antigo.
     if: github.ref_name != 'main'
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    defaults:
+      run:
+        shell: bash
+    # 07/10/2026: eram 45 minutos, e a rodada 7 morreu neles -- `cancelled`, que e como o Actions
+    # relata teto de JOB estourado, e que a olho nu parece cancelamento de terceiro (regra 4). O
+    # tempo nao estava no trabalho: `actions/checkout` levou 27m46s dos 45, porque clona o
+    # historico inteiro e `evidencias/`, que tem 4,7 GB. Sobraram 17 minutos para aplicar 200 MB de
+    # artefato. O teto subiu, mas quem resolve e o checkout abaixo.
+    timeout-minutes: 90
     steps:
+      # Sem o historico e sem `evidencias/`: o consolidador escreve `data/`, roda a cadeia de
+      # derivados e commita -- nada disso le evidencia preservada. Medido em 07/10/2026: 27m46s de
+      # checkout por rodada, todo noite, para baixar 4,7 GB que o job nao abre.
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
-        with: { persist-credentials: false }
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/evidencias
 
       - name: Partir do ramo atual
         env:
@@ -109,7 +126,12 @@ jobs:
 
       - name: Deduplicar a fila, uma vez, com relatório
         timeout-minutes: 5
-        run: python3 scripts/deduplicar_fila_de_pistas.py --aplicar | tee -a "$GITHUB_STEP_SUMMARY"
+        run: |
+          # Barra: deduplicador que falha deixa a fila num estado que ninguém conferiu.
+          python3 scripts/deduplicar_fila_de_pistas.py --aplicar > /tmp/dedup.txt 2>&1
+          rc=$?
+          cat /tmp/dedup.txt | tee -a "$GITHUB_STEP_SUMMARY"
+          exit $rc
 
       - name: Regenerar os derivados
         timeout-minutes: 12

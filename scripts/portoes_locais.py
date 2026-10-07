@@ -100,12 +100,51 @@ def rodar(cmd: str, verboso: bool) -> tuple:
     return p.returncode, veredito, saida, time.time() - t0
 
 
+# O QUE BARRA A PUBLICACAO DE DADO, E O QUE NAO BARRA (item 4 do handover de 06/10/2026).
+#
+# Entre 03 e 06/10 a publicacao falhou 33 vezes, e as 33 foram portao de CODIGO reprovando num
+# publicador de DADO: 29 por derivado obsoleto (gerador nao idempotente) e 3 por corrida no
+# medidor de layout. Em nenhuma delas o dado estava errado.
+#
+# O principio: codigo que esta na `main` JA passou por esses portoes no PR. Quando eles reprovam de
+# novo no publicador, o que pegam e nao determinismo -- nao erro. E parar a publicacao do dado do
+# dia por nao determinismo de um portao de codigo e trocar um problema pequeno por um grande: o
+# site fica velho, e ninguem olha o portao.
+#
+# BARRA: integridade do dado, segredo, dado pessoal, vocabulario proibido (dado externo traz
+# palavra proibida) e pagina que nao RENDERIZA (erro de runtime).
+# NAO BARRA: presenca e estrutura de layout, tipografia, CODEMAP, documentacao, e todo portao que
+# so mede codigo. Reprovacao ali publica mesmo assim e abre Issue.
+#
+# Os portoes NAO mudam: continuam todos bloqueantes no PR, e a conformidade diaria do site
+# publicado segue igual. O que muda e so o que barra a PUBLICACAO.
+BARRAM_A_PUBLICACAO = (
+    "verificar_esquema_de_pista",      # integridade do dado: quarentena por arquivo
+    "verificar_seguranca",             # segredo e dado pessoal
+    "verificar_evidencia_sem_segredo",
+    "verificar_vocabulario_publico",   # dado externo pode trazer palavra proibida
+    "verificar_palavras",
+    "verificar_voz_editorial",
+    "verificar_legendas",
+    "verificar_runtime",               # pagina que nao renderiza
+    "verificar_tamanho_dos_dados",     # arquivo que estourou nao sobe
+    "verificar_marcadores_de_conflito",
+    "verificar_escrita_portavel",
+)
+
+
+def barra_a_publicacao(comando: str) -> bool:
+    """Este portao pode impedir a publicacao do dado do dia? Funcao pura."""
+    return any(nome in str(comando or "") for nome in BARRAM_A_PUBLICACAO)
+
+
 def main() -> int:
     args = sys.argv[1:]
     verboso = "--verboso" in args
     listar = "--listar" in args
     rapido = "--rapido" in args
-    pedido = next((a for a in args if a in ("paginas", "dados", "tudo", "cor", "texto")), "tudo")
+    pedido = next((a for a in args if a in ("paginas", "dados", "tudo", "cor", "texto",
+                                            "publicacao")), "tudo")
     ate = None
     if "--ate" in args:
         ate = int(args[args.index("--ate") + 1])
@@ -115,6 +154,8 @@ def main() -> int:
         # §237: perfil por assunto. Só portão de PÁGINA entra — mudança de fonte, cor, forma ou
         # texto público não toca data/, e os portões de dado não têm o que dizer sobre ela.
         cmds = [(g, c, a) for g, c, a in todos if g == "paginas" and pedido in a]
+    elif pedido == "publicacao":
+        cmds = [(g, c, a) for g, c, a in todos if barra_a_publicacao(c)]
     else:
         cmds = [(g, c, a) for g, c, a in todos if pedido == "tudo" or g == pedido]
     if rapido:

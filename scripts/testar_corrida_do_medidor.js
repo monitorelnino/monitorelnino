@@ -1,0 +1,141 @@
+// scripts/testar_corrida_do_medidor.js — o medidor espera a condição, não o relógio
+// =================================================================================
+//
+// Item 2 do `HANDOVER_publicacao_definitiva_e_rodadas_agora_06-10-2026.md`.
+//
+// O QUE ACONTECEU
+// ----------------
+// Três publicações de 06/10 morreram com "texto exigido ausente: 'desembolsado é o que já saiu do
+// caixa'" — com a página certa e o dado certo (`compromissos_federais.json`: 5 itens,
+// R$ 1.383.300.000, igual desde 02/09). A frase é escrita por `assets/js/financiamento.js` depois
+// de um `fetch` encadeado, e `_layout_dump.js` esperava `networkidle` mais 1.500 ms FIXOS. Em
+// runner lento, media antes de a frase existir.
+//
+// Era corrida no MEDIDOR, não defeito da página nem do dado. Aumentar o tempo fixo seria a mesma
+// corrida, mais lenta.
+//
+// O QUE ESTE TESTE FAZ
+// ---------------------
+// Atrasa em 3 s o JSON que a frase precisa, e mede duas vezes:
+//
+//   · com espera FIXA de 1.500 ms  → tem de FALHAR (é o defeito, reproduzido);
+//   · com a espera por CONDIÇÃO    → tem de PASSAR (é o conserto, provado).
+//
+// Um teste que só provasse o conserto não provaria que ele conserta alguma coisa.
+//
+// USO
+//   node scripts/testar_corrida_do_medidor.js
+const http = require("http"), fs = require("fs"), path = require("path");
+const { chromium } = require("playwright");
+
+const RAIZ = path.join(__dirname, "..");
+const PAGINA = "financiamento.html";
+// O atraso tem de ficar ENTRE as duas esperas, com folga dos dois lados.
+//
+// O relogio espera 1.500 ms; a condicao espera ate 20.000 ms. Com 3 s o lado do relogio era
+// instavel (o `domcontentloaded` cai em instantes diferentes conforme a maquina); com 8 s passou a
+// ser o lado da CONDICAO, porque o atraso vale para CADA requisicao e a pagina busca o arquivo mais
+// de uma vez -- duas chamadas de 8 s encostam nos 20.
+//
+// 5 s e o meio: tres vezes o relogio, e um quarto do teto da condicao.
+//
+// 07/10/2026: este comentario dizia "mesmo contando duas buscas", e a pagina fazia QUATRO -- quatro
+// atrasos de 5 s somavam exatamente o teto de 20 s, e o portao reprovava sozinho em cerca de um
+// terco das rodadas, na `main` inclusive. A pagina passou a buscar o arquivo UMA vez
+// (`compromissosFederais()`, em assets/js/financiamento.js), entao a margem agora e real: um
+// atraso, nao quatro. Teste instavel e pior que teste nenhum -- fica registrado para ninguem
+// reduzir isto achando que ganha tempo, e para ninguem reintroduzir a busca repetida achando que
+// e so uma requisicao a mais.
+const ATRASO_MS = 5000;
+const ALVO = "desembolsado é o que já saiu do caixa";
+
+const TIPOS = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css",
+                ".json": "application/json", ".svg": "image/svg+xml" };
+
+function servidor() {
+  return http.createServer((req, res) => {
+    const rel = decodeURIComponent((req.url || "/").split("?")[0]).replace(/^\//, "") || "index.html";
+    const f = path.join(RAIZ, rel);
+    if (!f.startsWith(RAIZ) || !fs.existsSync(f) || fs.statSync(f).isDirectory()) {
+      res.writeHead(404); return res.end("nao encontrado");
+    }
+    res.writeHead(200, { "content-type": TIPOS[path.extname(f)] || "application/octet-stream" });
+    fs.createReadStream(f).pipe(res);
+  });
+}
+
+async function medir(porta, esperarPorCondicao) {
+  const t0 = Date.now();
+  const b = await chromium.launch();
+  const ctx = await b.newContext({ viewport: { width: 1280, height: 900 } });
+  const page = await ctx.newPage();
+  await page.route(/vlibras\.gov\.br|fonts\.g|netlify/, r => r.abort());
+  // O atraso que reproduz o runner lento: exatamente o arquivo de que a frase depende.
+  //
+  // 07/10/2026: os atrasos pendentes sao GUARDADOS, e a medicao so termina depois de todos
+  // drenarem. Sem isso, a primeira medicao (a do relogio) fechava o navegador aos 1.500 ms com os
+  // atrasos de 5 s ainda dormindo, e esses temporizadores orfaos seguiam vivos no processo
+  // enquanto a SEGUNDA medicao subia outro Chromium. Nao era a causa principal da instabilidade
+  // -- essa era a pagina buscar o arquivo quatro vezes --, mas era ruido real entre as duas
+  // medicoes, e medicao nao se faz com a anterior ainda rodando.
+  const pendentes = [];
+  await page.route(/compromissos_federais\.json/, async (rota) => {
+    const dormir = new Promise(r => setTimeout(r, ATRASO_MS));
+    pendentes.push(dormir);
+    await dormir;
+    // O navegador pode ter fechado enquanto este atraso dormia: `continue` de rota orfa rejeita,
+    // e a rejeicao nao e defeito da pagina nem do medidor.
+    try { await rota.continue(); } catch (e) { /* rota orfa */ }
+  });
+  // A JANELA EM QUE A CORRIDA ACONTECE, reproduzida de forma deterministica.
+  //
+  // `networkidle` espera 500 ms sem conexao -- e um `fetch` ENCADEADO, que so comeca depois de o
+  // anterior resolver e de uma conta rodar, pode comecar DEPOIS dessa janela. Em producao foi isso:
+  // a espera era `networkidle` mais 1.500 ms e mesmo assim media cedo. Atrasar o JSON por `route`
+  // nao reproduz, porque o `networkidle` passa a esperar o proprio atraso.
+  //
+  // Entao o lado do RELOGIO mede a partir de `domcontentloaded`, que e exatamente a janela em que
+  // o defeito mora: a pagina ja existe, o encadeamento ainda nao terminou. O lado da CONDICAO parte
+  // do mesmo ponto -- a diferenca entre os dois e so o que cada um espera.
+  await page.goto(`http://127.0.0.1:${porta}/${PAGINA}`,
+                  { waitUntil: "domcontentloaded", timeout: 45000 });
+  if (esperarPorCondicao) {
+    try {
+      await page.waitForFunction(
+        (alvo) => ((document.querySelector("main") || document.body).innerText || "").includes(alvo),
+        ALVO, { timeout: 20000 });
+    } catch (e) { /* o julgamento é do texto medido, abaixo */ }
+  }
+  await page.waitForTimeout(1500);
+  const texto = await page.evaluate(() => (document.querySelector("main") || document.body).innerText || "");
+  console.log(`      (${esperarPorCondicao ? "condicao" : "relogio"}: ${Date.now() - t0} ms)`);
+  // Drenar antes de fechar: a medicao seguinte comeca com o processo limpo.
+  await Promise.allSettled(pendentes);
+  await ctx.close(); await b.close();
+  return texto.includes(ALVO);
+}
+
+(async () => {
+  const srv = servidor();
+  await new Promise(r => srv.listen(0, "127.0.0.1", r));
+  const porta = srv.address().port;
+  const falhas = [];
+  const ok = (nome, cond) => {
+    console.log((cond ? "  ✓ " : "  ✗ ") + nome);
+    if (!cond) falhas.push(nome);
+  };
+
+  const comRelogio = await medir(porta, false);
+  ok(`com espera FIXA e o JSON atrasado em ${ATRASO_MS} ms, o medidor NAO ve a frase (o defeito)`,
+     comRelogio === false);
+
+  const comCondicao = await medir(porta, true);
+  ok("com espera por CONDICAO, o medidor ve a frase (o conserto)", comCondicao === true);
+
+  srv.close();
+  if (falhas.length) {
+    console.log(`✗ CORRIDA DO MEDIDOR: ${falhas.length} falha(s)`);
+    process.exit(1);
+  }
+  console.log("✓ CORRIDA DO MEDIDOR OK — o defeito se reproduz com relogio e some com condicao.");
+})();

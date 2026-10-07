@@ -64,6 +64,9 @@ jobs:
   # Disparo à mão (`workflow_dispatch`) passa sempre: quando a editoria manda rodar, roda.
   abertura:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     # 06/10/2026: era 5 minutos, e o job gastava isso so em checkout e setup-python quando o
     # runner esta lento -- nas rodadas 1 e 2 da campanha ele morreu em 5:03, exatamente no teto,
     # e levou os diarios junto. O teto existe para conter guarda travada, nao para competir com

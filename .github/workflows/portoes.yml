@@ -443,6 +443,21 @@ jobs:
       # Antes do portão 12, porque ele explica a falha que o 12 mostraria sem causa: derivado
       # que carimba pelo relógio da parede muda sozinho na virada do dia, e o 12 acusa "obsoleto"
       # sem dizer por quê. Em 05 para 06/10 isso derrubou nove publicações seguidas.
+      - name: Relógio dos derivados — nenhum carimbo pela parede
+        timeout-minutes: 3
+        run: |
+          # assunto: dado rapido
+          python3 scripts/verificar_relogio_dos_derivados.py --autoteste
+          # assunto: dado rapido
+          python3 scripts/verificar_relogio_dos_derivados.py
+
+      # Causa F: a regra "nenhum commit automatico na `main` de dia" passa a ter guarda no codigo.
+      - name: Janela da noite — a guarda da coleta na `main`
+        timeout-minutes: 2
+        run: |
+          # assunto: dado rapido
+          python3 scripts/guarda_da_janela.py --autoteste
+
       # Item 1 do handover de 06/10: a regra "um escritor por arquivo" estava registrada e não
       # aplicada, e o `git add` de pasta descartou 364 minutos de coleta numa noite.
       # 06/10/2026: `data/pistas_imprensa.json` foi de 28 MB a 187,53 MB em meia hora e passou do
@@ -458,7 +473,6 @@ jobs:
           # assunto: dado rapido
           python3 scripts/deduplicar_fila_de_pistas.py --autoteste
 
-      # Causa F: a regra "nenhum commit automatico na `main` de dia" passa a ter guarda no codigo.
       # Causa C: o elo aplica o proprio delta sobre o ramo mais novo, sem fusao de tres vias.
       # Fase 1: um escritor so. O coletor entrega artefato; o consolidador escreve.
       - name: Consolidador — o único escritor da rodada
@@ -472,12 +486,18 @@ jobs:
         run: |
           # assunto: dado rapido
           python3 scripts/aplicar_delta_do_elo.py --autoteste
+          # assunto: dado rapido
+          python3 scripts/pendente_do_elo.py --autoteste
 
-      - name: Janela da noite — a guarda da coleta na `main`
-        timeout-minutes: 2
+      # 07/10/2026: a guarda da janela nunca barrou nada entre 06/10 22:26 e 07/10 16:00 UTC,
+      # porque o `if ! <cmd> | tee` le o status do `tee`. Regra sem portao volta a ser esquecimento.
+      - name: Encanamento dos passos que decidem — nenhuma decisão por cano
+        timeout-minutes: 3
         run: |
           # assunto: dado rapido
-          python3 scripts/guarda_da_janela.py --autoteste
+          python3 scripts/verificar_encanamento_de_portao.py --autoteste
+          # assunto: dado rapido
+          python3 scripts/verificar_encanamento_de_portao.py
 
       - name: Commit do elo — nenhum workflow comita pasta inteira
         timeout-minutes: 3
@@ -489,20 +509,27 @@ jobs:
           # assunto: dado rapido
           python3 scripts/commit_do_elo.py --autoteste
 
-      - name: Relógio dos derivados — nenhum carimbo pela parede
-        timeout-minutes: 3
+      # Item 3 (06/10/2026): a IDEMPOTENCIA vira portao de PR, que e onde o gerador muda. No
+      # publicador, regenerar e a funcao -- "havia derivado obsoleto" nao pode barrar a publicacao
+      # de dado. Entre 03 e 06/10 foram 29 publicacoes perdidas por essa confusao.
+      # Item 2: o teste que reproduz a corrida. O medidor antigo tem de reprovar; o novo, passar.
+      - name: Corrida do medidor — espera por condição, não por relógio
+        timeout-minutes: 8
         run: |
-          # assunto: dado rapido
-          python3 scripts/verificar_relogio_dos_derivados.py --autoteste
-          # assunto: dado rapido
-          python3 scripts/verificar_relogio_dos_derivados.py
+          # O passo roda sempre, e o cache do navegador so e restaurado quando a pagina muda:
+          # sem a instalacao aqui, o Chromium falta e o portao reprova por infraestrutura.
+          npx playwright install --with-deps chromium >/dev/null 2>&1 || npx playwright install chromium
+          # assunto: texto
+          node scripts/testar_corrida_do_medidor.js
 
-      # Causa F: a regra "nenhum commit automatico na `main` de dia" passa a ter guarda no codigo.
-      - name: Janela da noite — a guarda da coleta na `main`
-        timeout-minutes: 2
+      - name: Idempotência dos derivados — o gerador dá sempre o mesmo resultado
+        if: steps.diff.outputs.dado_mudou == 'true'
+        timeout-minutes: 30
         run: |
-          # assunto: dado rapido
-          python3 scripts/guarda_da_janela.py --autoteste
+          # assunto: dado
+          python3 scripts/verificar_idempotencia_dos_derivados.py --autoteste
+          # assunto: dado
+          python3 scripts/verificar_idempotencia_dos_derivados.py
 
       - name: Portão 12 — a cadeia de derivados regenera sem erro
         id: p12
