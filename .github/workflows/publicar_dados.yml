@@ -77,6 +77,9 @@ jobs:
     # gatilhos (horário e botão) não têm `workflow_run` e passam sempre.
     if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     timeout-minutes: 25   # meta é < 10 min; o teto existe para que um travamento não fique pendurado
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -156,8 +159,12 @@ jobs:
       - name: Fechamento do MARÉ Saúde e troca para a v0.4
         timeout-minutes: 6
         run: |
-          python3 scripts/fechar_saude.py --aplicar | tee -a "$GITHUB_STEP_SUMMARY"
-          python3 trocar_para_v04.py | tee -a "$GITHUB_STEP_SUMMARY"
+          # Avisam, não barram: com `pipefail` a falha passaria a derrubar a publicação, e
+          # fechar o Saúde não é condição para publicar o dado do dia.
+          python3 scripts/fechar_saude.py --aplicar | tee -a "$GITHUB_STEP_SUMMARY" \
+            || echo "::warning::fechar_saude falhou"
+          python3 trocar_para_v04.py | tee -a "$GITHUB_STEP_SUMMARY" \
+            || echo "::warning::trocar_para_v04 falhou"
 
       # 01/10/2026 (handover da imprensa dinâmica): os números da semana são gerados A CADA
       # publicação, depois do recálculo e antes dos derivados — a página Imprensa não pode mostrar
@@ -217,7 +224,14 @@ jobs:
       # fora. Este passo é a rede de segurança da corrente, não a regra.
       - name: Quarentenar pista fora do esquema (a publicação não para por ela)
         timeout-minutes: 4
-        run: python3 scripts/verificar_esquema_de_pista.py | tee -a "$GITHUB_STEP_SUMMARY"
+        run: |
+          # Regra 5 (05/10/2026): a quarentena não bloqueia a publicação por achar pista fora
+          # do esquema — ela a tira da fila. Bloqueia quando a PRÓPRIA quarentena falha, e
+          # por isso o status vem do script, não do `tee`.
+          python3 scripts/verificar_esquema_de_pista.py > /tmp/quarentena.txt 2>&1
+          rc=$?
+          cat /tmp/quarentena.txt | tee -a "$GITHUB_STEP_SUMMARY"
+          exit $rc
 
       - name: Regenerar a cadeia canônica de derivados
         timeout-minutes: 8
@@ -274,7 +288,12 @@ jobs:
           # caminho vira uma chamada ao ajudante, que le `config/escritores.json`. A lista de
           # caminhos do publicador agora vive LA, com o resto da regra, em vez de repetida aqui --
           # era a repeticao que envelhecia em silencio quando uma pasta saia do site.
-          python3 scripts/commit_do_elo.py publicar --mensagem "Publicacao automatica ($(date -u +%d/%m/%Y\ %H:%M) UTC)" | tee /tmp/commit_do_elo.txt
+          # O status é do commit, não do `tee`: commit que falha e passa por verde publica
+          # árvore que ninguém gravou.
+          python3 scripts/commit_do_elo.py publicar --mensagem "Publicacao automatica ($(date -u +%d/%m/%Y\ %H:%M) UTC)" > /tmp/commit_do_elo.txt 2>&1
+          rc=$?
+          cat /tmp/commit_do_elo.txt
+          [ "$rc" = "0" ] || exit $rc
           if ! grep -q "^houve=1" /tmp/commit_do_elo.txt; then
             echo "Sem alteracoes a publicar."; echo "houve=0" >> "$GITHUB_OUTPUT"; exit 0
           fi
@@ -311,7 +330,9 @@ jobs:
         id: portoes_codigo
         continue-on-error: true
         timeout-minutes: 25
-        run: python3 scripts/portoes_locais.py tudo | tee /tmp/portoes_codigo.txt
+        # `continue-on-error` já cobre o passo; o `|| true` está aqui para o `pipefail` novo
+        # não transformar a reprovação esperada em falha de passo.
+        run: python3 scripts/portoes_locais.py tudo | tee /tmp/portoes_codigo.txt || true
 
       # Reprovacao de portao que NAO barra nao some: ela vira Issue no repositorio privado,
       # com o portao e a saida. Publicar mesmo assim e a decisao; esconder nao faz parte dela.

@@ -37,6 +37,9 @@ concurrency:
 jobs:
   painel_am:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -148,7 +151,12 @@ jobs:
           git config user.email "bot@users.noreply.github.com"
           # 06/10/2026 (item 1): quem comita e `scripts/commit_do_elo.py`, pela declaracao
           # de `config/escritores.json`. `git add` de pasta levava arquivo de outro elo.
-          python3 scripts/commit_do_elo.py painel_am --mensagem "Painel do AM: rodada renderizada ($(date -u +%d/%m/%Y\ %H:%M) UTC)" | tee /tmp/commit_do_elo.txt
+          # O status e do commit, nao do `tee`: commit que falha e passa por verde
+          # deixa a rodada inteira contada como feita sem que nada tenha sido gravado.
+          python3 scripts/commit_do_elo.py painel_am --mensagem "Painel do AM: rodada renderizada ($(date -u +%d/%m/%Y\ %H:%M) UTC)" > /tmp/commit_do_elo.txt 2>&1
+          rc=$?
+          cat /tmp/commit_do_elo.txt
+          [ "$rc" = "0" ] || exit $rc
           grep -q "^houve=1" /tmp/commit_do_elo.txt || { echo "Sem alteracoes deste elo."; exit 0; }
           git checkout -- .
           mkdir -p ~/.ssh && printf '%s\n' "$ROBO_DEPLOY_KEY" > ~/.ssh/robo && chmod 600 ~/.ssh/robo

@@ -11,6 +11,14 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-07 · #PR · A guarda da janela nunca barrou: o `| tee` engolia a saída
+
+O passo da guarda decidia por `if ! script | tee`, e sem `pipefail` o status lido é o do `tee`,
+sempre 0: entre 06/10 22:26 e 07/10 16:00 UTC a guarda liberou toda coleta e a `main` recebeu nove
+commits de dia. Os workflows da corrente passam a declarar `shell: bash`, e guarda, quarentena,
+dedup, ensaio e commit decidem por redirecionamento e `$?`. Portão novo:
+`verificar_encanamento_de_portao.py`.
+
 ## 2026-10-07 · #PR · Fase 1 da corrente noturna: um escritor só
 
 Os elos deixam de commitar: cada um entrega as próprias saídas como artefato, e `consolidar_noite`

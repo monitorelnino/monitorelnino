@@ -42,6 +42,9 @@ jobs:
   mecanismos:
     name: Os seis ensaios dos mecanismos da noite
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -60,7 +63,12 @@ jobs:
           git config --global user.email "ensaio@users.noreply.github.com"
 
       - name: Os seis ensaios
-        run: python3 scripts/ensaio_da_noite.py | tee -a "$GITHUB_STEP_SUMMARY"
+        run: |
+          # O veredito do ensaio é o do script, não o do `tee`.
+          python3 scripts/ensaio_da_noite.py > /tmp/ensaio.txt 2>&1
+          rc=$?
+          cat /tmp/ensaio.txt | tee -a "$GITHUB_STEP_SUMMARY"
+          exit $rc
 
       # As travas que a noite de 04→05/10 produziu, conferidas aqui também: uma porta só para a
       # fila, um escritor declarado por arquivo, e nenhum autoteste gravando no banco.
@@ -91,6 +99,9 @@ jobs:
   corrente_em_miniatura:
     name: Os coletores de verdade, com limite pequeno e sem commit
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     timeout-minutes: 30
     needs: mecanismos
     steps:
@@ -140,4 +151,8 @@ jobs:
       # A fila continua no esquema depois da rodada: é a prova de que a porta única está de pé em
       # execução real, e não só no autoteste.
       - name: A fila ativa continua no esquema
-        run: python3 scripts/verificar_esquema_de_pista.py | tee -a "$GITHUB_STEP_SUMMARY"
+        run: |
+          python3 scripts/verificar_esquema_de_pista.py > /tmp/quarentena.txt 2>&1
+          rc=$?
+          cat /tmp/quarentena.txt | tee -a "$GITHUB_STEP_SUMMARY"
+          exit $rc

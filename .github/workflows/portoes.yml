@@ -489,6 +489,16 @@ jobs:
           # assunto: dado rapido
           python3 scripts/pendente_do_elo.py --autoteste
 
+      # 07/10/2026: a guarda da janela nunca barrou nada entre 06/10 22:26 e 07/10 16:00 UTC,
+      # porque o `if ! <cmd> | tee` le o status do `tee`. Regra sem portao volta a ser esquecimento.
+      - name: Encanamento dos passos que decidem — nenhuma decisão por cano
+        timeout-minutes: 3
+        run: |
+          # assunto: dado rapido
+          python3 scripts/verificar_encanamento_de_portao.py --autoteste
+          # assunto: dado rapido
+          python3 scripts/verificar_encanamento_de_portao.py
+
       - name: Commit do elo — nenhum workflow comita pasta inteira
         timeout-minutes: 3
         run: |

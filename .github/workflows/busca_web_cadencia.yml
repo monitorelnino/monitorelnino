@@ -63,6 +63,9 @@ concurrency:
 jobs:
   busca_web:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     # 30/09/2026: cinco rodadas num job só pedem teto maior. 150 min é teto CLARO, não
     # aberto: cinco rodadas medidas em ~20 min cada, mais folga para a instância subir.
     timeout-minutes: 150   # §153: --preparar pode acionar o juiz (portões) em pistas de fonte oficial
@@ -189,7 +192,12 @@ jobs:
           # `config/escritores.json` da a ele. O `git add` de pasta inteira levava junto arquivo
           # de outro elo, e o conflito que isso criava descartou 364 minutos de coleta na noite
           # de 05 para 06/10. `scripts/verificar_commit_do_elo.py` reprova a volta do atalho.
-          python3 scripts/commit_do_elo.py busca_web --mensagem "Busca web automatica ($(date -u +%d/%m/%Y\ %H:%M) UTC)" | tee /tmp/commit_do_elo.txt
+          # O status e do commit, nao do `tee`: commit que falha e passa por verde
+          # deixa a rodada inteira contada como feita sem que nada tenha sido gravado.
+          python3 scripts/commit_do_elo.py busca_web --mensagem "Busca web automatica ($(date -u +%d/%m/%Y\ %H:%M) UTC)" > /tmp/commit_do_elo.txt 2>&1
+          rc=$?
+          cat /tmp/commit_do_elo.txt
+          [ "$rc" = "0" ] || exit $rc
           if ! grep -q "^houve=1" /tmp/commit_do_elo.txt; then
             echo "Sem alteracoes deste elo."; echo "HOUVE=0" >> $GITHUB_ENV; exit 0
           fi

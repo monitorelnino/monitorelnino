@@ -47,6 +47,9 @@ jobs:
     # faz nada até a fase 3, porque na `main` quem escreve ainda é o desenho antigo.
     if: github.ref_name != 'main'
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -109,7 +112,12 @@ jobs:
 
       - name: Deduplicar a fila, uma vez, com relatório
         timeout-minutes: 5
-        run: python3 scripts/deduplicar_fila_de_pistas.py --aplicar | tee -a "$GITHUB_STEP_SUMMARY"
+        run: |
+          # Barra: deduplicador que falha deixa a fila num estado que ninguém conferiu.
+          python3 scripts/deduplicar_fila_de_pistas.py --aplicar > /tmp/dedup.txt 2>&1
+          rc=$?
+          cat /tmp/dedup.txt | tee -a "$GITHUB_STEP_SUMMARY"
+          exit $rc
 
       - name: Regenerar os derivados
         timeout-minutes: 12
