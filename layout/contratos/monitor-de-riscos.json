@@ -15,7 +15,7 @@
       "el": "boxRoni"
     },
     {
-      "el": "boxAnomalia"
+      "el": "boxEpisodios"
     },
     {
       "el": "boxRiscoPrevisto"
@@ -46,5 +46,30 @@
     "defeso"
   ],
   "secoes": [],
-  "_nota_pacifico": "03/10/2026: as duas figuras do Pacífico (`boxRoni`, `boxAnomalia`) estavam FORA do componente `.cartao-mapa` — eram as duas únicas figuras com mídia do site fora dele. O portão de conformidade apontou, e a correção foi pôr as duas no componente, e não abrir exceção: a regra de componente existe para que figura equivalente tenha a mesma moldura."
+  "_nota_pacifico": "03/10/2026: as duas figuras do Pacífico (`boxRoni`, `boxAnomalia`) estavam FORA do componente `.cartao-mapa` — eram as duas únicas figuras com mídia do site fora dele. O portão de conformidade apontou, e a correção foi pôr as duas no componente, e não abrir exceção: a regra de componente existe para que figura equivalente tenha a mesma moldura. | 07/10/2026: `boxAnomalia` (anomalia mensal do Niño 3.4) SAIU da página e entrou `boxEpisodios` — os dois gráficos passam a medir o MESMO índice (RONI), na mesma escala e no mesmo eixo. O dado da anomalia mensal continua coletado. Os dois são SVG desenhado na largura real do contêiner, e não canvas escalado: é o que mantém a letra em 12 px no celular, como o pedido exige.",
+  "numeros_esperados": {
+    "_governanca": "07/10/2026 (handover 'Monitor de riscos, parte 1'): o topo 'Situação atual' deixou de ser três quadros com ícone e passou a ser SEÇÃO DE NÚMEROS. Divergência declarada: o handover pediu o componente `.cartao-destaque`, que não existe neste site; `layout/regras.json` manda número em `.cartao-numero` dentro de `.grade-numeros--3`, e a regra vence o handover.",
+    "grade": "#situacaoGrade",
+    "componente": ".cartao-numero",
+    "cartoes": [
+      "roni_mais_recente",
+      "previsao_noaa_cpc",
+      "duracao_iri_cpc",
+      "brasil_painel_el_nino"
+    ],
+    "exige_fonte_e_data": true
+  },
+  "secoes_texto_proibido": {
+    "_governanca": "07/10/2026: a régua de força do ENOS não é definição da NOAA/CPC — ela define os limiares de El Niño (+0,5 °C) e de La Niña (−0,5 °C) e o critério de cinco médias trimestrais seguidas, e não faixas de fraco/moderado/forte. A proibição vale SÓ nestas seções: 'Chuva forte', na legenda dos mapas de 'Os riscos no Brasil', é outra coisa e fica.",
+    "#situacao": {
+      "palavras": [
+        "acima do normal",
+        "forte",
+        "moderado",
+        "fraco"
+      ],
+      "excecao": "\"muito forte\" entre aspas, atribuído à NOAA/CPC",
+      "conferido_por": "scripts/verificar_runtime_sinais.js"
+    }
+  }
 }

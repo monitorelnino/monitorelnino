@@ -344,8 +344,10 @@ def main() -> int:
             print("   -", r)
         return 1
 
+    # Os enderecos dos PDFs ficam gravados: o cartao cita a nota tecnica, e a citacao precisa do
+    # link do documento lido, nao da pagina que o hospeda.
     gravar_em(SAIDA, {"_governanca": GOVERNANCA, "fonte": BASE, "coletado_em": hoje.isoformat(),
-                      "evidencias": hashes, "totais": {"prioritarios_2095": TOTAL_PRIORITARIOS,
+                      "documentos": dict(FONTES), "evidencias": hashes, "totais": {"prioritarios_2095": TOTAL_PRIORITARIOS,
                                                        "cadastro_2086": TOTAL_CADASTRO,
                                                        "apenas_deslizamento": TOTAL_SO_DESLIZAMENTO},
                       "municipios": registros})          # §229

@@ -37,9 +37,15 @@ const PAGINA = "financiamento.html";
 // ser o lado da CONDICAO, porque o atraso vale para CADA requisicao e a pagina busca o arquivo mais
 // de uma vez -- duas chamadas de 8 s encostam nos 20.
 //
-// 5 s e o meio: tres vezes o relogio, e metade do teto da condicao mesmo contando duas buscas.
-// Teste instavel e pior que teste nenhum, e aqui ele oscilou duas vezes antes de eu acertar a
-// margem -- fica registrado para ninguem reduzir isto achando que ganha tempo.
+// 5 s e o meio: tres vezes o relogio, e um quarto do teto da condicao.
+//
+// 07/10/2026: este comentario dizia "mesmo contando duas buscas", e a pagina fazia QUATRO -- quatro
+// atrasos de 5 s somavam exatamente o teto de 20 s, e o portao reprovava sozinho em cerca de um
+// terco das rodadas, na `main` inclusive. A pagina passou a buscar o arquivo UMA vez
+// (`compromissosFederais()`, em assets/js/financiamento.js), entao a margem agora e real: um
+// atraso, nao quatro. Teste instavel e pior que teste nenhum -- fica registrado para ninguem
+// reduzir isto achando que ganha tempo, e para ninguem reintroduzir a busca repetida achando que
+// e so uma requisicao a mais.
 const ATRASO_MS = 5000;
 const ALVO = "desembolsado é o que já saiu do caixa";
 
@@ -65,9 +71,21 @@ async function medir(porta, esperarPorCondicao) {
   const page = await ctx.newPage();
   await page.route(/vlibras\.gov\.br|fonts\.g|netlify/, r => r.abort());
   // O atraso que reproduz o runner lento: exatamente o arquivo de que a frase depende.
+  //
+  // 07/10/2026: os atrasos pendentes sao GUARDADOS, e a medicao so termina depois de todos
+  // drenarem. Sem isso, a primeira medicao (a do relogio) fechava o navegador aos 1.500 ms com os
+  // atrasos de 5 s ainda dormindo, e esses temporizadores orfaos seguiam vivos no processo
+  // enquanto a SEGUNDA medicao subia outro Chromium. Nao era a causa principal da instabilidade
+  // -- essa era a pagina buscar o arquivo quatro vezes --, mas era ruido real entre as duas
+  // medicoes, e medicao nao se faz com a anterior ainda rodando.
+  const pendentes = [];
   await page.route(/compromissos_federais\.json/, async (rota) => {
-    await new Promise(r => setTimeout(r, ATRASO_MS));
-    await rota.continue();
+    const dormir = new Promise(r => setTimeout(r, ATRASO_MS));
+    pendentes.push(dormir);
+    await dormir;
+    // O navegador pode ter fechado enquanto este atraso dormia: `continue` de rota orfa rejeita,
+    // e a rejeicao nao e defeito da pagina nem do medidor.
+    try { await rota.continue(); } catch (e) { /* rota orfa */ }
   });
   // A JANELA EM QUE A CORRIDA ACONTECE, reproduzida de forma deterministica.
   //
@@ -91,6 +109,8 @@ async function medir(porta, esperarPorCondicao) {
   await page.waitForTimeout(1500);
   const texto = await page.evaluate(() => (document.querySelector("main") || document.body).innerText || "");
   console.log(`      (${esperarPorCondicao ? "condicao" : "relogio"}: ${Date.now() - t0} ms)`);
+  // Drenar antes de fechar: a medicao seguinte comeca com o processo limpo.
+  await Promise.allSettled(pendentes);
   await ctx.close(); await b.close();
   return texto.includes(ALVO);
 }

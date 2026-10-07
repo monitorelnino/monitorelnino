@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+
+
 ## 2026-10-07 · #PR · Fase 1 da corrente noturna: um escritor só
 
 Os elos deixam de commitar: cada um entrega as próprias saídas como artefato, e `consolidar_noite`
@@ -16,6 +18,50 @@ Os elos deixam de commitar: cada um entrega as próprias saídas como artefato, 
 o commit por `commit_do_elo.py` (nenhum `git add` de pasta), o delta do elo sem fusão de três vias,
 a guarda da janela, a volta do trabalho que o push perdeu e o ensaio real isolado. O publicador
 passa a correr depois do consolidador, não depois de cada elo.
+## 2026-10-07 · #PR · Boletim nº 4 do Painel, com horizonte e link do documento
+
+O registro do Painel passa ao boletim nº 4 (setembro de 2026): a fonte citada é o documento, com
+número e mês, e o endereço é o do próprio boletim, não a página inicial do órgão. O horizonte
+exibido é o que o boletim diz — "no trimestre outubro-novembro-dezembro (OND) de 2026". Nenhuma UF
+mudou de risco ou de categoria: a tabela de trechos por UF está no registro interno, e onde o
+boletim fala por região sem nomear o estado, a leitura não avança. Nenhuma nota muda.
+
+## 2026-10-07 · #PR · As listas federais mostram todos os riscos da fonte
+
+A nota técnica da Casa Civil nomeia deslizamento em 1.050 municípios do cadastro, e o cartão
+descartava esse tipo. Agora os tipos aparecem pelos nomes da fonte, em ordem alfabética, e os 9
+municípios que constam da lista de prioritários só por deslizamento têm linha própria. A fonte
+citada passa a ser a nota técnica nº 2/2025 e a nº 1/2023, com link para os dois documentos; o
+decreto 12.444 sai da citação. O ano do MMA vem da portaria em vigor, gravada no dado.
+
+## 2026-10-07 · #PR · O cartão do município se monta pelo código IBGE
+
+O cartão resolvia o município pelo nome no banco de planos; agora resolve pelo código IBGE da
+lista de referência dos 5.571. Com isso o quadro das listas federais de risco aparece para os
+2.916 municípios que constam de alguma lista e não têm registro no banco. O escape de texto
+passou a acontecer uma vez só, na saída: escapado duas vezes, "Olho d'Água das Flores" saía com
+a entidade visível e o nome não casava com a lista oficial. Em `assets/js/index.js`.
+## 2026-10-07 · #PR · A página do Financiamento busca o mesmo arquivo uma vez, não quatro
+
+Cinco trechos pediam `compromissos_federais.json` com o seu próprio `fetch`, e quatro disparavam
+juntos a cada carregamento — medido com instrumentação de rede. Passa a haver uma promessa
+compartilhada. O portão da corrida do medidor atrasa esse arquivo em 5 s contra um teto de 20 s:
+quatro atrasos somavam o teto exato, e ele reprovava sozinho em cerca de um terço das rodadas, na
+`main` inclusive. O medidor também deixa de abandonar temporizador entre as duas medições.
+
+## 2026-10-07 · #PR · Monitor de riscos, parte 1: topo em números e gráficos do RONI
+
+A régua de intensidade saiu do topo: a NOAA/CPC define limiares (+0,5 e −0,5 °C) e o critério de
+cinco médias trimestrais seguidas, não faixas. Os três quadros com ícone viraram quatro cartões
+de número, gerados do dado, com fonte e data. Os dois gráficos do Pacífico medem o mesmo índice
+na mesma escala: a série do RONI e os episódios que o critério define.
+
+## 2026-10-07 · #PR · A série do RONI deixa de ser cortada em 160 pontos
+
+O coletor guardava os últimos 160 trimestres móveis — treze anos, a partir de 2013 — e a página
+comparava o ciclo em curso com uma janela em que os maiores episódios não cabiam. Passa a guardar
+a série inteira: 920 pontos, de DJF/1950 a JAS/2026, medidos na origem em 07/10/2026, 49 KB de
+JSON. Autoteste prova o começo, o fim, a ausência de duplicados e que o corte não volta.
 
 ## 2026-10-05 · #563 · A seção de perguntas da imprensa chama-se Perguntas frequentes
 
