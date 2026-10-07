@@ -10,6 +10,14 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+## 2026-10-07 · #PR · A contagem de portões, medida e num lugar só
+
+Três arquivos traziam três números, todos errados: 61 no CLAUDE.md, 46 na skill `portoes` e 19 no
+PROTOCOLO §3.1. A medição do dia deu **217 comandos** — 101 em `paginas`, 116 em `dados`, dos
+quais 127 são autoteste. O CLAUDE.md fica com o número datado e o aviso de que ele envelhece; a
+skill manda perguntar ao script; o PROTOCOLO troca a contagem pela condição, que é o que ele
+queria dizer. Contagem escrita à mão convida a rodar um subconjunto.
+
 ## 2026-10-07 · #PR · O recorte do gráfico dos episódios: nenhum sai
 
 Com a série do RONI desde 1950, o critério da NOAA/CPC encontra 22 episódios — a lista nominal
