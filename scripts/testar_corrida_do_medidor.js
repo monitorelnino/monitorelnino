@@ -30,7 +30,17 @@ const { chromium } = require("playwright");
 
 const RAIZ = path.join(__dirname, "..");
 const PAGINA = "financiamento.html";
-const ATRASO_MS = 3000;
+// O atraso tem de ficar ENTRE as duas esperas, com folga dos dois lados.
+//
+// O relogio espera 1.500 ms; a condicao espera ate 20.000 ms. Com 3 s o lado do relogio era
+// instavel (o `domcontentloaded` cai em instantes diferentes conforme a maquina); com 8 s passou a
+// ser o lado da CONDICAO, porque o atraso vale para CADA requisicao e a pagina busca o arquivo mais
+// de uma vez -- duas chamadas de 8 s encostam nos 20.
+//
+// 5 s e o meio: tres vezes o relogio, e metade do teto da condicao mesmo contando duas buscas.
+// Teste instavel e pior que teste nenhum, e aqui ele oscilou duas vezes antes de eu acertar a
+// margem -- fica registrado para ninguem reduzir isto achando que ganha tempo.
+const ATRASO_MS = 5000;
 const ALVO = "desembolsado é o que já saiu do caixa";
 
 const TIPOS = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css",
@@ -49,6 +59,7 @@ function servidor() {
 }
 
 async function medir(porta, esperarPorCondicao) {
+  const t0 = Date.now();
   const b = await chromium.launch();
   const ctx = await b.newContext({ viewport: { width: 1280, height: 900 } });
   const page = await ctx.newPage();
@@ -79,6 +90,7 @@ async function medir(porta, esperarPorCondicao) {
   }
   await page.waitForTimeout(1500);
   const texto = await page.evaluate(() => (document.querySelector("main") || document.body).innerText || "");
+  console.log(`      (${esperarPorCondicao ? "condicao" : "relogio"}: ${Date.now() - t0} ms)`);
   await ctx.close(); await b.close();
   return texto.includes(ALVO);
 }
