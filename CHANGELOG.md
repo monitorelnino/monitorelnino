@@ -10,6 +10,14 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+## 2026-10-07 · #PR · O verificador do domínio conta a troca de aspas como achado próprio
+
+As duas reescritas do Netlify ao servir — o script do HUD e a troca de aspas de atributo — viviam
+numa normalização só, e o resultado só era aproveitado quando as duas casavam juntas. Bastava uma
+falhar para a outra ser descartada: o `index.html` reprovava por `class="btn-nav"` servido como
+`class='btn-nav'`, com a normalização de aspas existindo e nunca sendo aplicada nele. Agora cada
+uma é desfeita e contada pelo que é, e o que sobrar segue sendo divergência real.
+
 ## 2026-10-07 · #PR · Boletim nº 4 do Painel, com horizonte e link do documento
 
 O registro do Painel passa ao boletim nº 4 (setembro de 2026): a fonte citada é o documento, com
