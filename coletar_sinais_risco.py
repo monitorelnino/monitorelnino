@@ -1373,7 +1373,20 @@ def coletar_fonte(chave: str):
         if len(serie) < 12:
             raise ValueError(f"série RONI curta demais ({len(serie)} pontos) — recusada")
         ultimo = serie[-1]
-        return {"serie": serie[-160:]}, f"RONI, último trimestre {ultimo['trimestre']}/{ultimo['ano']}"
+        # 07/10/2026 (handover "Monitor de riscos, parte 1", item 3): a série do RONI deixa de ser
+        # cortada. Ela saía em `serie[-160:]`, os últimos 160 trimestres móveis — treze anos, a
+        # partir de 2013 —, e a página mostrava isso enquanto o subtítulo dizia "1950 a 2026".
+        # Quem precisa dos 1950 é o próprio gráfico: o leitor compara o ciclo em curso com os
+        # episódios anteriores, e os maiores da série estão fora da janela de treze anos.
+        #
+        # O custo foi medido na origem em 07/10/2026: 920 pontos, de DJF/1950 a JAS/2026, 49 KB de
+        # JSON. `data/sinais_risco.json` passa de 146 KB para cerca de 187 KB — longe do teto de
+        # 50 MB da trava de tamanho, e abaixo do piso de 1 MB a partir do qual a taxa de
+        # crescimento é conferida (`scripts/consolidar_noite.py`). O ONI segue cortado: ele é apoio
+        # técnico, vive na METODOLOGIA e não é figura de página.
+        #
+        # A página já lê o intervalo de anos do dado, então o título passa a dizer 1950 sozinho.
+        return {"serie": serie}, f"RONI, último trimestre {ultimo['trimestre']}/{ultimo['ano']}"
     if chave == "noaa_nino34_mensal":
         serie = parse_nino34_mensal(bruto)
         if len(serie) < 6:
@@ -2152,6 +2165,40 @@ def autoteste() -> int:
         {"trimestre": "JJA", "ano": 2026, "anomalia": 1.36},
     ])
     checar("RONI negativo: cabeçalho não vira ponto de série", parse_roni("SEAS   YR  ANOM\n") == [])
+
+    # 07/10/2026 (item 3): a série do RONI não é mais cortada, e são estas três coisas que o
+    # handover pede provadas. Os testes rodam sobre uma série sintética que imita a forma da de
+    # verdade — o autoteste é offline, e provar a leitura do arquivo da NOAA é papel da coleta,
+    # não dele. O que se prova aqui é o CONTRATO: o que `_ler_fonte` devolve para `noaa_roni`.
+    _TRI = ["DJF", "JFM", "FMA", "MAM", "AMJ", "MJJ", "JJA", "JAS", "ASO", "SON", "OND", "NDJ"]
+    _bruta = "SEAS   YR  ANOM\n" + "".join(
+        f"{_TRI[i % 12]}  {1950 + i // 12} {((i % 37) - 18) / 10:+.2f}\n" for i in range(920))
+    _roni_longa = parse_roni(_bruta)
+    checar("RONI: a série inteira é lida, sem corte em 160 pontos", len(_roni_longa) == 920)
+    checar("RONI: a série começa em DJF de 1950",
+           _roni_longa[0]["trimestre"] == "DJF" and _roni_longa[0]["ano"] == 1950)
+    checar("RONI: o último ponto da leitura é o último da entrada",
+           _roni_longa[-1] == {"trimestre": "JAS", "ano": 2026, "anomalia": 1.3})
+    # O corte não vivia no parser, e sim em `_ler_fonte`: provar que `parse_roni` lê tudo não prova
+    # que a série chega inteira ao registro. Esta é a mesma trava ESTRUTURAL das outras — lê o
+    # próprio fonte e reprova se o corte voltar. Sem ela, um `serie[-160:]` reintroduzido passaria
+    # com todos os testes acima verdes.
+    _fonte = pathlib.Path(__file__).read_text(encoding="utf-8")
+    _bloco_roni = _fonte[_fonte.index('if chave == "noaa_roni":'):_fonte.index('if chave == "noaa_nino34_mensal":')]
+    # Só o CÓDIGO: o comentário do bloco cita `serie[-160:]` para dizer o que saiu, e um teste que
+    # lesse o comentário reprovaria a própria explicação de por que ele foi embora.
+    _codigo_roni = chr(10).join(l.split("#")[0] for l in _bloco_roni.splitlines())
+    checar("RONI: `_ler_fonte` devolve a série inteira, sem fatia",
+           not re.search(r"serie\[-?\d*:", _codigo_roni)
+           and 'return {"serie": serie}' in _codigo_roni)
+    # Duplicado é o defeito silencioso desta série: dois pontos no mesmo trimestre do mesmo ano
+    # passariam no desenho (duas barras coladas) e falseariam a contagem de médias consecutivas
+    # que define um episódio de El Niño.
+    _chaves = [(p["trimestre"], p["ano"]) for p in _roni_longa]
+    checar("RONI: nenhum ponto duplicado (trimestre e ano)", len(_chaves) == len(set(_chaves)))
+    # A trava de tamanho: a série inteira em JSON tem de caber com folga no teto da consolidação.
+    checar("RONI: a série inteira cabe muito abaixo do teto de 50 MB da trava de tamanho",
+           len(json.dumps(_roni_longa, ensure_ascii=False)) < 200_000)
     _mensal_teste = parse_nino34_mensal(" YR   MON  TOTAL ClimAdjust ANOM\n2026   7   29.07   27.29    1.78\n2026   8   29.04   26.87    2.17\n")
     checar("Niño 3.4 mensal: lê a 5ª coluna (ANOM), não a 3ª (TOTAL)", _mensal_teste == [
         {"ano": 2026, "mes": 7, "anomalia": 1.78}, {"ano": 2026, "mes": 8, "anomalia": 2.17}])
