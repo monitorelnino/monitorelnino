@@ -84,7 +84,7 @@ async function get(url, tentativas = 3) {
     const prioridade = servidos.filter(e => /\.(html|pdf|xml)$|^data\/(meta|indice|sinais_risco|saude_sinais|monitor_saude)\.json$|^data\/saude_desfechos\/(serie_painel|dda_serie|chik_serie_painel|srag_serie)\.json$|^assets\/js\/|^assets\/.*\.css$/.test(e.arq));
     const resto = servidos.filter(e => !prioridade.includes(e));
     const amostra = prioridade.concat(resto.slice(0, Math.max(0, AMOSTRA - prioridade.length)));
-    let iguais = 0, prettyUrls = 0, hud = 0, aspas = 0, diferentes = [], ausentes = [];
+    let iguais = 0, prettyUrls = 0, hud = 0, aspas = 0, forms = 0, diferentes = [], ausentes = [];
     // 14/09/2026 (2º ensaio, já com skip_processing): o que restava não era pós-processamento — é o "Netlify HUD",
     // recurso de painel do site que INJETA <script async src="/.netlify/scripts/hud?..."> em toda página ao servir e,
     // ao reserializar, troca aspas de atributos (class="x" → class='x'). Só se desliga no painel do Netlify. Aqui ele
@@ -107,6 +107,24 @@ async function get(url, tentativas = 3) {
       const fora = txt.replace(/(<[a-z][^>]*?\s[a-z-]+=)'([^'"]*)'/g, '$1"$2"');
       return [fora, fora !== txt];
     };
+    // A TERCEIRA reescrita conhecida: o Netlify Forms. Onde a marcação declara
+    // `data-netlify="true"`, o servidor REESCREVE o formulário — tira `data-netlify` e
+    // `netlify-honeypot`, reordena os atributos em ordem alfabética, troca `/obrigado.html` por
+    // `/obrigado` e injeta `<input name="form-name">`. É o mecanismo do recurso, não divergência;
+    // desfazê-lo com fidelidade exigiria reimplementar a reescrita do Netlify, e reimplementar
+    // o que não controlamos é como o portão passa a provar a nossa cópia em vez do site.
+    //
+    // Então o BLOCO do formulário — e só ele — sai da comparação byte a byte, nos dois lados, e o
+    // relatório diz quantos HTML foram comparados assim. O resto da página continua conferido
+    // byte a byte, inclusive tudo o que vem antes e depois do formulário.
+    //
+    // DECISÃO DA EDITORIA (07/10/2026): ela autorizou tirar o bloco, sabendo que isso reduz o que
+    // o portão prova naquele trecho. Hoje é UM formulário em UMA página (index.html, a
+    // contribuição pública); se aparecer um segundo, a contagem do relatório o mostra.
+    const semFormNetlify = (txt) => {
+      const fora = txt.replace(/<form\b[^>]*>[\s\S]*?<\/form>/gi, "<!-- form -->");
+      return [fora, fora !== txt];
+    };
     for (const e of amostra) {
       const r = await get(`${BASE}/${e.arq.split("/").map(encodeURIComponent).join("/")}`);
       if (r.status !== 200) { ausentes.push(`${e.arq} (${r.status})`); continue; }
@@ -124,17 +142,31 @@ async function get(url, tentativas = 3) {
           // As duas em sequência, e cada uma contada pelo que é. A comparação final é a do texto
           // com AS DUAS desfeitas — qualquer outra diferença sobrevive a isto e reprova.
           const [txtHud, tinhaHud] = semHud(comparado.toString("utf8"));
-          const [txtLimpo, tinhaAspa] = semAspaTrocada(txtHud);
-          if (tinhaHud || tinhaAspa) {
+          const [txtAspa, tinhaAspa] = semAspaTrocada(txtHud);
+          // O bloco do formulário sai dos DOIS lados, e só quando o lado do repositório realmente
+          // tem um formulário declarado para o Netlify: numa página sem `data-netlify` um `<form>`
+          // é marcação nossa, e tirá-lo da comparação esconderia uma mudança de verdade.
+          const localBruto = fs.existsSync(path.join(raiz, e.arq))
+            ? fs.readFileSync(path.join(raiz, e.arq), "utf8") : "";
+          const temFormNetlify = /<form\b[^>]*\sdata-netlify=/i.test(localBruto);
+          const [txtLimpo, tirouForm] = temFormNetlify ? semFormNetlify(txtAspa) : [txtAspa, false];
+          if (tinhaHud || tinhaAspa || tirouForm) {
+            const alvo = tirouForm
+              ? crypto.createHash("sha256").update(Buffer.from(semFormNetlify(localBruto)[0], "utf8")).digest("hex")
+              : e.hash;
             const h2 = crypto.createHash("sha256").update(Buffer.from(txtLimpo, "utf8")).digest("hex");
             // `comparado` recebe o texto normalizado mesmo quando ele NÃO volta a bater: é esse o
             // texto que a prova da divergência imprime logo abaixo, e imprimir o texto cru fazia o
             // relatório apontar uma reescrita já conhecida no lugar da diferença que resta.
             comparado = Buffer.from(txtLimpo, "utf8");
-            if (h2 === e.hash) {
-              h = h2;
+            if (h2 === alvo) {
+              // `h` recebe o hash do manifesto porque a comparação que VALEU foi a do texto
+              // normalizado contra o repositório normalizado do mesmo jeito. Contar as três
+              // separadamente é o que mantém o relatório honesto sobre o que foi desfeito.
+              h = e.hash;
               if (tinhaHud) hud++;
               if (tinhaAspa) aspas++;
+              if (tirouForm) forms++;
             }
           }
         }
@@ -150,7 +182,7 @@ async function get(url, tentativas = 3) {
         console.log(`      servido: ${JSON.stringify(comparado.toString("utf8", Math.max(0, i - 60), i + 160))}`);
       }
     }
-    ok(`integridade: ${iguais}/${amostra.length} arquivo(s) servidos batem com o manifesto` + (prettyUrls ? ` (${prettyUrls} HTML só com a reescrita "Pretty URLs" do Netlify)` : "") + (hud ? ` (${hud} HTML idênticos depois de remover o script do Netlify HUD)` : "") + (aspas ? ` (${aspas} HTML idênticos depois de desfazer a troca de aspas de atributo)` : ""), diferentes.length === 0 && ausentes.length === 0,
+    ok(`integridade: ${iguais}/${amostra.length} arquivo(s) servidos batem com o manifesto` + (prettyUrls ? ` (${prettyUrls} HTML só com a reescrita "Pretty URLs" do Netlify)` : "") + (hud ? ` (${hud} HTML idênticos depois de remover o script do Netlify HUD)` : "") + (aspas ? ` (${aspas} HTML idênticos depois de desfazer a troca de aspas de atributo)` : "") + (forms ? ` (${forms} HTML idênticos fora do bloco do formulário, que o Netlify Forms reescreve ao servir)` : ""), diferentes.length === 0 && ausentes.length === 0,
        (diferentes.length ? "diferentes: " + diferentes.slice(0, 8).join(", ") : "") + (ausentes.length ? " · ausentes: " + ausentes.slice(0, 8).join(", ") : ""));
     // O HUD é um script de terceiro não pedido, em todas as páginas de um site de interesse público: no lançamento é
     // bloqueante; no ensaio, aviso com a instrução. Desligar: painel do Netlify → Site configuration → (Build & deploy /
