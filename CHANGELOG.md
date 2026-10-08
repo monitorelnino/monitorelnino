@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-08 · #PR · Lote 1.3: uma porta só para a data do ato, em dd/mm/aaaa
+
+As 97 datas de ato vindas do diário consorciado estavam em ISO, e o resto do arquivo em dd/mm/aaaa. O gerador compara strings: o que não casava virava ausência. Vinte e sete fichas publicavam o primeiro decreto em branco, a de Roraima também, e a série semanal parava em 629 em vez de 656. Nova porta `coletores_base.data_br_de`, `data_ato` e `data_publicacao` no evento, esquema `schemas/ato_resposta.json` e portão que reprova data em ISO. Erratas: 29.
+
 ## 2026-10-08 · #PR · Lote 1.2: o decreto do diário consorciado deixa de ir ao município errado
 
 A posição do decreto no PDF vinha de `texto.find(numero)` — a primeira ocorrência da string do
