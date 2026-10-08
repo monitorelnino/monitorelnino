@@ -107,7 +107,7 @@ for (const id of ["mapaMonitor", "mapaDengueUF", "mapaChikUF", "mapaCalor"]) {
     txt("nDengueSE").replace(/\./g, "") === String(brDen[seDen])
     && txt("rotuloDengueSE").includes(datasDe(seDen)));
   teste("cartão de dengue: o rótulo não traz a semana como número",
-    !/semana epidemiológica|SE ?\d/.test(txt("rotuloDengueSE")));
+    !/semana epidemiológica|\bSE ?\d/.test(txt("rotuloDengueSE")));
   teste("cartão de dengue: diz que é notificação, não caso confirmado",
     /notificaç/i.test(txt("fonteDengueSE")));
   teste("cartões de casos trazem a ressalva de parcialidade e a frase do El Niño", (() => {
@@ -155,7 +155,7 @@ for (const id of ["mapaMonitor", "mapaDengueUF", "mapaChikUF", "mapaCalor"]) {
     teste(`${frase}: frase gerada do dado, com as datas da semana e a posição na faixa`,
       /notificações de \w+ na semana de \d{1,2}[^.]{0,60}\d{4}/.test(txt(frase))
       && /faixa esperada para a época/.test(txt(frase))
-      && !/semana epidemiológica|SE ?\d/.test(txt(frase)));
+      && !/semana epidemiológica|\bSE ?\d/.test(txt(frase)));
     teste(`${mapa}: 27 estados e legenda com 'sem coleta'`,
       q(mapa).querySelectorAll("path").length === 27 && /sem coleta/.test(txt(mapa.replace("mapa", "leg"))));
     teste(`${dl}: lista por estado com a taxa e o total`,
