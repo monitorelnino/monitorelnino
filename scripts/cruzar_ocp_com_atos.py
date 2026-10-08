@@ -164,6 +164,8 @@ def autoteste() -> int:
 def main() -> int:
     if "--autoteste" in sys.argv:
         return autoteste()
+    sys.path.insert(0, str(RAIZ))
+    from coletores_base import gravar_em  # noqa: PLC0415
     ocp = json.loads(OCP.read_text(encoding="utf-8"))["municipios"]
     doc = json.loads(ATOS.read_text(encoding="utf-8"))
     eventos = doc["eventos"]
@@ -182,8 +184,7 @@ def main() -> int:
            "municipios_sem_evento": len(sem_nada),
            "por_uf": relatorio_por_uf(ocp, eventos, fora),
            "faltantes": fora}
-    RELATORIO.write_text(json.dumps(rel, ensure_ascii=False, indent=1) + "\n",
-                         encoding="utf-8", newline="\n")
+    gravar_em(RELATORIO, rel)   # §229: JSON de data/ sai pela porta atômica
     print(f"relatório: {RELATORIO.relative_to(RAIZ)}")
 
     if "--aplicar" not in sys.argv:
@@ -197,8 +198,7 @@ def main() -> int:
            for c, r in por_cod.items()}
     novos = [evento_de(f, ref) for f in fora]
     doc["eventos"] = eventos + novos
-    ATOS.write_text(json.dumps(doc, ensure_ascii=False, indent=1) + "\n",
-                    encoding="utf-8", newline="\n")
+    gravar_em(ATOS, doc)
     print(f"eventos gravados: {len(novos)} (todos com documento_nao_localizado)")
     return 0
 
