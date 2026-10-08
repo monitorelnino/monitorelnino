@@ -20,6 +20,9 @@ permissions:
 jobs:
   portoes:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -74,6 +77,7 @@ jobs:
           # barato, repositório inteiro, antes de qualquer outra coisa.
           python3 scripts/verificar_marcadores_de_conflito.py --autoteste
           # assunto: cor texto rapido
+          # barra_publicacao: sim
           python3 scripts/verificar_marcadores_de_conflito.py
           # assunto: cor texto rapido
           python3 scripts/validar_workflows.py
@@ -81,10 +85,12 @@ jobs:
           # regenerado fora do runner (CRLF contra o LF que o manifesto sela). Roda sempre, não só
           # quando dado muda: o defeito entra por *.py, e é aí que ele precisa ser barrado.
           # assunto: texto rapido
+          # barra_publicacao: sim
           python3 scripts/verificar_escrita_portavel.py
           # assunto: cor texto rapido
           node scripts/verificar_estrutura.js
           # assunto: cor texto
+          # barra_publicacao: sim
           node scripts/verificar_runtime.js
           # assunto: cor texto
           node scripts/verificar_runtime_mapas.js
@@ -174,6 +180,17 @@ jobs:
           # assunto: dado
           python3 scripts/verificar_esquema_de_pista.py --autoteste
           # assunto: dado
+          # barra_publicacao: sim
+          python3 scripts/verificar_esquema_de_pista.py
+          # assunto: dado
+          # barra_publicacao: sim
+          python3 scripts/verificar_tamanho_dos_dados.py
+          # assunto: dado
+          python3 scripts/verificar_tamanho_dos_dados.py --autoteste
+          # assunto: texto
+          # barra_publicacao: sim
+          python3 scripts/verificar_conformidade.py --so-texto-proibido
+          # assunto: dado
           python3 scripts/pistas.py --autoteste
           # assunto: dado
           python3 scripts/verificar_escritor_de_pista.py --autoteste
@@ -225,8 +242,10 @@ jobs:
           # assunto: cor texto
           node scripts/verificar_runtime_resposta.js
           # assunto: texto rapido
+          # barra_publicacao: sim
           node scripts/verificar_palavras.js
           # assunto: cor rapido
+          # barra_publicacao: sim
           node scripts/verificar_seguranca.js
           # assunto: cor rapido
           node scripts/verificar_seo.js
@@ -372,6 +391,7 @@ jobs:
         run: |
           set -e
           # assunto: texto
+          # barra_publicacao: sim
           node scripts/verificar_vocabulario_publico.js
           # assunto: texto — regra 0 da imprensa: nada escrito à mão que dependa do dado
           node scripts/verificar_imprensa_do_dado.js

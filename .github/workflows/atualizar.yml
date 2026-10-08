@@ -77,10 +77,29 @@ jobs:
     # Não toca em data/, não comita nada, não roda coleta.
     if: github.event_name == 'workflow_dispatch' && inputs.apenas_repor_dominio
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     concurrency:
       group: repor-dominio-manual
       cancel-in-progress: false
     steps:
+      # 08/10/2026 (A2-18): o monolito semanal rodava sem guarda — em 04/10 saiu às 09:37 UTC,
+      # 6 h 27 depois do cron, FORA da janela, e commitou na `main` de dia. Migrar o que resta
+      # dele para elos é o item 5.4; até lá, a guarda vale aqui como vale para todo elo.
+      - name: Janela da noite — na `main`, só de noite
+        id: janela
+        timeout-minutes: 3
+        run: |
+          rc=0
+          python3 scripts/guarda_da_janela.py --ramo "${GITHUB_REF_NAME}" --elo atualizar > /tmp/guarda.txt 2>&1 || rc=$?
+          cat /tmp/guarda.txt | tee -a "$GITHUB_STEP_SUMMARY"
+          if [ "$rc" -eq 0 ]; then
+            echo "pode=1" >> "$GITHUB_OUTPUT"
+          else
+            echo "pode=0" >> "$GITHUB_OUTPUT"
+          fi
+
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: Repor o site completo no domínio (main atual), atrás de senha
         env:
@@ -143,6 +162,9 @@ jobs:
     # não repetir: pula quando o disparo foi explicitamente só para repor o domínio.
     if: "!(github.event_name == 'workflow_dispatch' && inputs.apenas_repor_dominio)"
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with: { persist-credentials: false }   # AUD-11: sem credencial git na árvore; o push é pela API com o GITHUB_TOKEN só no passo final
@@ -152,6 +174,7 @@ jobs:
       # o rebase antes do push dá conflito real — a rodada inteira se perde. Com rodadas a cada 2h
       # (§148) isso seria rotina. Solução estrutural: sempre partir do main REAL, agora.
       - name: Partir do main atual (não do SHA fixado no disparo)
+        if: steps.janela.outputs.pode == '1'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -168,6 +191,7 @@ jobs:
       # vivo o suficiente para despachar o que estiver devido. `|| true` porque o despachante é
       # auxiliar — a falha dele não pode derrubar a coleta que ia rodar.
       - name: Tique oportunista
+        if: steps.janela.outputs.pode == '1'
         continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.ROBO_TOKEN || secrets.GITHUB_TOKEN }}
@@ -182,6 +206,7 @@ jobs:
       # aqui num teste real. A rasterização sai por pypdfium2, que já vem com pdfplumber. Cinco
       # minutos de teto: é instalação de pacote, não coleta.
       - name: Instalar Tesseract com o modelo português (§177)
+        if: steps.janela.outputs.pode == '1'
         timeout-minutes: 5
         run: sudo apt-get update -qq && sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-por
 
@@ -205,7 +230,7 @@ jobs:
         # atualização" (mesmo conteúdo, barra de progresso); publicada aqui direto no domínio, no
         # início da rodada. O passo "Repor o site completo" (fim do job) substitui por cima quando
         # a rodada termina — sem mais corrida entre os dois.
-        if: github.event.inputs.ensaio != 'true'
+        if: steps.janela.outputs.pode == '1' && (github.event.inputs.ensaio != 'true')
         continue-on-error: true   # nunca bloqueia a rodada de dados por causa da cortina
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
@@ -249,13 +274,16 @@ jobs:
       # detector semanal de CVE novo. Informativas por ora (continue-on-error);
       # promover a bloqueantes quando a política de resposta for decidida.
       - name: Auditoria de vulnerabilidades Python (informativa)
+        if: steps.janela.outputs.pode == '1'
         continue-on-error: true
         run: pip install pip-audit --quiet && pip-audit -r requirements.txt --format json --output docs/pip-audit-resultado.json
       - name: Auditoria de vulnerabilidades Node (informativa)
+        if: steps.janela.outputs.pode == '1'
         continue-on-error: true
         run: npm audit --json > docs/npm-audit-resultado.json || true
 
       - name: População do Censo 2022 (uma vez; revalida se já existir)
+        if: steps.janela.outputs.pode == '1'
         run: |
           if [ -f data/populacao_censo2022.json ]; then
             python atualizar_populacao.py --check
@@ -268,6 +296,7 @@ jobs:
         # (projeções RIPSA rotuladas como 2022) foi rejeitada por elas.
 
       - name: Processar contribuições do formulário (verificação automática)
+        if: steps.janela.outputs.pode == '1'
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
@@ -290,6 +319,7 @@ jobs:
       # descoberta para triagem humana, nunca classificação.
       # 30/09/2026: a checagem de prazos federais saiu junto com o calendário (decisão da editoria).
       - name: Vigiar sinais federais novos (descoberta; informativa)
+        if: steps.janela.outputs.pode == '1'
         continue-on-error: true
         run: python3 monitorar_sinais_federais.py
 
@@ -299,6 +329,7 @@ jobs:
       # demais coletores, encerra com o job. Sem chave, sem cadastro — qualquer fork do projeto
       # sobe a mesma instância automaticamente, sem configuração adicional.
       - name: Subir SearXNG efêmero (busca web sem chave)
+        if: steps.janela.outputs.pode == '1'
         continue-on-error: true
         id: searxng
         run: |
@@ -312,7 +343,7 @@ jobs:
           done
           [ -n "$ok" ] && echo "pronto=1" >> "$GITHUB_OUTPUT" || echo "SearXNG não respondeu a tempo — busca web pulada nesta rodada"
       - name: Busca web por plano de contingência (SearXNG efêmero, 150 municípios/rodada, 2x ao dia)
-        if: steps.searxng.outputs.pronto == '1'
+        if: steps.janela.outputs.pode == '1' && (steps.searxng.outputs.pronto == '1')
         continue-on-error: true
         run: python3 monitorar_busca_web.py --tamanho 150
 
@@ -321,6 +352,7 @@ jobs:
       # contradição na contagem tem de aparecer no log da rodada sem impedir que os dados já
       # coletados sejam commitados — o portão do PR é que reprova de verdade.
       - name: Conferir o funil da rodada (contagem por etapa)
+        if: steps.janela.outputs.pode == '1'
         continue-on-error: true
         timeout-minutes: 3
         run: python3 scripts/verificar_funil.py --modo rodada
@@ -330,6 +362,7 @@ jobs:
       # trava absoluta (nenhuma pista entra no banco sem confirmação humana
       # em documento oficial). Limite alto pois a rede da Action é aberta.
       - name: Vigiar imprensa nacional por novos instrumentos (descoberta; informativa)
+        if: steps.janela.outputs.pode == '1'
         continue-on-error: true
         run: python3 monitorar_imprensa_regional.py --limite 40
 
@@ -337,6 +370,7 @@ jobs:
       # R$ 30,5 mi ficou fora do banco por mais de um mês porque nada vigiava imprensa por
       # secretaria de saúde). Mesma trava absoluta, fila própria (pistas_imprensa_saude.json).
       - name: Vigiar imprensa nacional por novos instrumentos de saúde (descoberta; informativa)
+        if: steps.janela.outputs.pode == '1'
         continue-on-error: true
         run: python3 monitorar_imprensa_saude.py --limite 27
 
@@ -345,6 +379,7 @@ jobs:
       # e todos os demais, sem verificação humana") — API WordPress dos sítios oficiais,
       # defesa civil e saúde desde o início. 100% descoberta: nunca promove sozinho (R7).
       - name: Descobrir planos via API WordPress (descoberta; informativa)
+        if: steps.janela.outputs.pode == '1'
         continue-on-error: true
         run: python3 descobrir_planos.py --limite 20
 
@@ -354,6 +389,7 @@ jobs:
       # requer_reverificacao=true — sinalizador interno em saude_uf.json, nunca público
       # (verificado por self-test que gerar_monitor_saude.py nunca o propaga).
       - name: Marcar reverificação por marco federal de saúde (interno; informativa)
+        if: steps.janela.outputs.pode == '1'
         continue-on-error: true
         run: python3 detectar_marcos_federais.py
 
@@ -366,6 +402,7 @@ jobs:
       # pista é resposta (vai para o mapa "Cidades que decretaram emergência",
       # nunca pontua) ou, por engano de busca, algo ex-ante.
       - name: Vigiar imprensa nacional por novos atos de resposta (descoberta; informativa)
+        if: steps.janela.outputs.pode == '1'
         continue-on-error: true
         run: python3 monitorar_atos_resposta.py --limite 10
 
@@ -381,6 +418,7 @@ jobs:
       # a notícia sobre ele); no ambiente de edição, sem rede para .gov.br, essa
       # etapa não tem o que buscar e não faz nada (degrada graciosamente).
       - name: Vigiar o painel El Niño da Política Por Inteiro (agregador terceiro; descoberta; informativa)
+        if: steps.janela.outputs.pode == '1'
         continue-on-error: true
         run: |
           # 31/08/2026 (decisão de Patricia): o painel da Talanoa entra como fonte de PISTAS,
@@ -390,6 +428,7 @@ jobs:
           python3 monitorar_politica_por_inteiro.py
 
       - name: Julgar e aplicar descobertas com fonte oficial e citação completa
+        if: steps.janela.outputs.pode == '1'
         continue-on-error: true
         run: python3 julgar_e_aplicar_descobertas.py
 
@@ -398,6 +437,7 @@ jobs:
       # variável, alternando pelo dia do mês, e o coletor RETOMA de onde parou — município já
       # lido hoje não é pedido de novo. Não é bloqueante: fonte sem resposta vira lacuna declarada.
       - name: Clima municipal (temperatura ou qualidade do ar, alternando por rodada)
+        if: steps.janela.outputs.pode == '1'
         continue-on-error: true
         timeout-minutes: 50
         run: |
@@ -407,6 +447,7 @@ jobs:
           python3 coletar_sinais_risco.py --municipios --apenas "$VARIAVEL" 2>&1 | tee /tmp/clima_mun.log
 
       - name: Atualizar dados (boletins + instrumentos estaduais + transferências)
+        if: steps.janela.outputs.pode == '1'
         # §246 (27/09/2026): este era o único passo pesado SEM teto próprio, e por isso comia o
         # orçamento inteiro do job. Medido: a rodada de 27/09 às 01h15 ficou 3 h aqui e foi
         # cortada pelo teto de 180 min do job, ainda neste passo — os passos 27 a 39, incluindo
@@ -448,6 +489,9 @@ jobs:
           set -o pipefail
           python atualizar.py 2>&1 | tee /tmp/atualizar.log
       - name: Relatório da execução no repositório privado (sempre)
+        # A guarda NAO condiciona este passo (08/10/2026): ele repoe o dominio, e tem
+        # de rodar mesmo quando um passo anterior falhou. `testar_reposicao_dominio.py`
+        # cobra exatamente isso.
         if: always()
         # §246 (27/09/2026): `continue-on-error` aqui é o que separa DIAGNÓSTICO de PRODUTO.
         # O `if:` do passo de commit não traz função de status, e quando o `if:` não traz uma, o
@@ -495,6 +539,7 @@ jobs:
         # interrompe o job antes do commit, então nada quebrado é publicado.
 
       - name: Regenerar PDF de documentação do índice
+        if: steps.janela.outputs.pode == '1'
         run: |
           # 03/09/2026: os coletores legados (Querido Diário, recursos, vigência, decretos) passaram
           # para DENTRO de atualizar.py, antes dos derivados e dos portões. Aqui só se garante o PDF
@@ -512,6 +557,9 @@ jobs:
         # em relação à base (o defeito clássico de PDF montado à mão).
 
       - name: Avisar sobre propostas pendentes de revisão humana
+        # A guarda NAO condiciona este passo (08/10/2026): ele repoe o dominio, e tem
+        # de rodar mesmo quando um passo anterior falhou. `testar_reposicao_dominio.py`
+        # cobra exatamente isso.
         if: always()
         run: |
           if [ -f data/instrumentos_revisar.json ]; then
@@ -522,6 +570,9 @@ jobs:
           fi
 
       - name: Verificar links externos (informativa; nunca remove link — decisão humana)
+        # A guarda NAO condiciona este passo (08/10/2026): ele repoe o dominio, e tem
+        # de rodar mesmo quando um passo anterior falhou. `testar_reposicao_dominio.py`
+        # cobra exatamente isso.
         if: always()
         continue-on-error: true
         run: |
@@ -536,6 +587,9 @@ jobs:
           tail -40 links_relatorio.txt
           if [ "$QUEBRADOS" != "0" ]; then echo "::warning::$QUEBRADOS link(s) externos com problema — ver artefato links_relatorio.txt e decidir (remover, substituir ou manter nomeado sem link)."; fi
       - name: Guardar relatório de links
+        # A guarda NAO condiciona este passo (08/10/2026): ele repoe o dominio, e tem
+        # de rodar mesmo quando um passo anterior falhou. `testar_reposicao_dominio.py`
+        # cobra exatamente isso.
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
@@ -552,6 +606,7 @@ jobs:
       # sincronização e do commit. Idempotente: quem já tem hash e cópia é pulado. Falha de rede
       # vira lacuna declarada — o portão cobra na rodada seguinte, que tenta de novo.
       - name: Preservar a evidência dos registros pontuáveis sem cópia (§164)
+        if: steps.janela.outputs.pode == '1'
         continue-on-error: true
         timeout-minutes: 20
         run: python3 preservar_evidencias.py --limite 20
@@ -561,6 +616,7 @@ jobs:
       # Wayback, que falha com frequência (40 itens do índice, mediana de 13 MB). Nesses casos o
       # TEXTO extraído é a única prova preservada — e o portão passou a exigir prova de verdade.
       - name: Ler o texto dos PDFs preservados (§10.1 — única prova acima de 5 MB)
+        if: steps.janela.outputs.pode == '1'
         continue-on-error: true
         timeout-minutes: 25
         run: python3 preservar_evidencias.py --ler --limite 20
@@ -571,11 +627,13 @@ jobs:
       # nunca insumo do classificador nem do juiz (§156). Depois da leitura, que é quem descobre
       # que o PDF não tem texto. Teto de 30 min: ~230 páginas a ~2,5 s cada, com folga.
       - name: OCR dos PDFs escaneados (§177 — única cópia legível possível)
+        if: steps.janela.outputs.pode == '1'
         continue-on-error: true
         timeout-minutes: 30
         run: python3 preservar_evidencias.py --ocr --limite 6
 
       - name: Completar evidências com texto integral (autocura, 10/09/2026)
+        if: steps.janela.outputs.pode == '1'
         # Pistas antigas sem .txt (inclusive evidência perdida, via recuperação por URL)
         # são completadas a cada rodada; o commit abaixo já inclui evidencias/.
         continue-on-error: true
@@ -590,6 +648,7 @@ jobs:
       # fonte do verificacao_municipal.json: idempotente e rápida (função pura dos dados desta
       # rodada), então rodar de novo aqui não tem custo real mesmo quando já está sincronizado.
       - name: Sincronizar índice antes do commit (garantia contra derivado desatualizado)
+        if: steps.janela.outputs.pode == '1'
         run: |
           export SOURCE_DATE_EPOCH="$(python3 -c "import json,datetime;d=json.load(open('data/meta.json'))['corte'];dd,mm,aa=d.split('/');print(int(datetime.datetime(int(aa),int(mm),int(dd),tzinfo=datetime.timezone.utc).timestamp()))")"
           python3 seguir_pistas.py --limite 20   # §159: notícia → documento (links, Querido Diário, busca no domínio oficial); SearXNG ainda no ar
@@ -620,7 +679,7 @@ jobs:
 
       - name: Commit das alterações de dados
         id: commit
-        if: github.event.inputs.ensaio != 'true'
+        if: steps.janela.outputs.pode == '1' && (github.event.inputs.ensaio != 'true')
         run: |
           git config user.name "monitor-el-nino-bot"
           git config user.email "bot@users.noreply.github.com"
@@ -719,7 +778,7 @@ jobs:
         # 03/09/2026: publica só um número operacional (consultados/total da varredura
         # dos diários municipais) no domínio, para a editoria acompanhar sem precisar da
         # prévia com senha. Nunca dado do índice, nunca afirma existência de plano.
-        if: env.HOUVE_ALTERACAO == '1'
+        if: steps.janela.outputs.pode == '1' && (env.HOUVE_ALTERACAO == '1')
         run: |
           mkdir -p ~/.ssh && printf '%s\n' "$ROBO_DEPLOY_KEY" > "$RUNNER_TEMP/robo_cortina" && chmod 600 "$RUNNER_TEMP/robo_cortina"
           ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
@@ -740,6 +799,9 @@ jobs:
         #   dominio: "senha"   -> site completo, Basic-Auth + noindex (este passo)
         #   dominio: "cortina" -> cortina/"em atualização" (nada a fazer: já é o que ficou do passo inicial)
         #   dominio: "aberto"  -> lançamento; fora do escopo deste passo, que sempre põe noindex
+        # A guarda NAO condiciona este passo (08/10/2026): ele repoe o dominio, e tem
+        # de rodar mesmo quando um passo anterior falhou. `testar_reposicao_dominio.py`
+        # cobra exatamente isso.
         if: always()
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
@@ -794,7 +856,7 @@ jobs:
       # `skipped` entra na lista de propósito: foi o desfecho das quatro rodadas de 26/09, e o
       # `continue-on-error` NÃO protege contra ele (§246, §252).
       - name: Vigia do desfecho — a rodada comitou dado?
-        if: always() && github.event.inputs.ensaio != 'true'
+        if: steps.janela.outputs.pode == '1' && (always() && github.event.inputs.ensaio != 'true')
         env:
           DESFECHO_COMMIT: ${{ steps.commit.outcome }}
         run: |

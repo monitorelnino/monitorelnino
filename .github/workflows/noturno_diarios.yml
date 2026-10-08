@@ -64,6 +64,9 @@ jobs:
   # Disparo à mão (`workflow_dispatch`) passa sempre: quando a editoria manda rodar, roda.
   abertura:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     timeout-minutes: 5
     outputs:
       abrir: ${{ steps.guarda.outputs.abrir }}
@@ -155,3 +158,7 @@ jobs:
         coletar_recursos_resposta.py
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+      # 08/10/2026 (A2-28): sem o `ROBO_TOKEN`, o tique oportunista roda com o
+      # `GITHUB_TOKEN`, que não alcança o `robo-registro`, e a Issue de alarme
+      # falha em silêncio por causa do `|| true`.
+      ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}

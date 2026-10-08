@@ -241,10 +241,33 @@ def _autoteste() -> int:
        set(eb) == {"legal", "saude"})
     ok("a governança diz por que o painel existe", "não rodou" in GOV or "NÃO rodou" in GOV)
 
+    # A2-26: a linha que falta é recuperável — conclusão real da API, trabalho pelo marcador.
+    execs = [{"elo": "diarios", "noite": "2026-10-08", "inicio": "01:09", "fim": "03:32",
+              "conclusao": "failure"},
+             {"elo": "juiz", "noite": "2026-10-08", "inicio": "05:27", "fim": "05:30",
+              "conclusao": "failure"}]
+    faltam = linhas_que_faltam(execs, {("juiz", "2026-10-08", "05:27")},
+                               lambda elo, n: elo == "diarios")
+    ok("só a linha que falta entra", len(faltam) == 1 and faltam[0]["elo"] == "diarios")
+    ok("falha COM marcador conta como trabalho feito", faltam[0].get("trabalhou") is True)
+    faltam2 = linhas_que_faltam(
+        [{"elo": "sinais", "noite": "2026-10-08", "inicio": "01:12", "fim": "01:13",
+          "conclusao": "cancelled"}], set(), lambda elo, n: False)
+    ok("cancelado sem marcador NÃO conta como trabalho",
+       faltam2 and faltam2[0].get("trabalhou") is False)
+    ok("as chaves do painel saem do documento",
+       chaves_do_painel({"noites": [{"elo": "juiz", "noite": "2026-10-08", "inicio": "05:27"}]})
+       == {("juiz", "2026-10-08", "05:27")})
+    ok("documento vazio não quebra", chaves_do_painel({}) == set()
+       and linhas_que_faltam([], set(), lambda e, n: False) == [])
+
     import dis
     nomes = set()
     for nome_obj, obj in list(globals().items()):
-        if nome_obj in ("_autoteste", "main", "registrar"):
+        # `recuperar_da_api` e `_execucoes_da_api` são portas de I/O declaradas, como
+        # `registrar`: a trava vale para as funções PURAS.
+        if nome_obj in ("_autoteste", "main", "registrar", "recuperar_da_api",
+                        "_execucoes_da_api"):
             continue
         codigo = getattr(obj, "__code__", None)
         if codigo is not None:
@@ -255,6 +278,99 @@ def _autoteste() -> int:
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
           else f"✓ AUTOTESTE OK — {len(_casos_contados)} casos, sem rede e sem escrita.")
     return 1 if falhas else 0
+
+
+def linhas_que_faltam(execucoes: list, ja_no_painel: set, tem_marcador) -> list:
+    """As linhas que o painel não tem e a API sabe. Função pura.
+
+    `execucoes` é [{"elo","noite","inicio","fim","conclusao"}] como a API as devolve;
+    `ja_no_painel` é o conjunto de (elo, noite, inicio) já registrado; `tem_marcador(elo, noite)`
+    diz se o elo gravou `.feito` — é ele que distingue "falhou depois de trabalhar" de "foi
+    cancelado antes de coletar", e a distinção é o que a regra 3 exige.
+
+    08/10/2026 (A2-26): a linha era gravada pelo PRÓPRIO elo, antes do push, com `job.status`
+    ainda `success`. O painel da `main` ficou com 138 linhas, todas `success`, e os seis elos que
+    perderam o commit de 07→08 não têm linha — ela estava no commit perdido.
+    """
+    fora = []
+    for e in execucoes or []:
+        elo = str((e or {}).get("elo") or "")
+        noite = str((e or {}).get("noite") or "")
+        inicio = str((e or {}).get("inicio") or "")
+        if not elo or not noite:
+            continue
+        if (elo, noite, inicio) in (ja_no_painel or set()):
+            continue
+        fora.append(linha(elo, noite, inicio, str((e or {}).get("fim") or inicio),
+                          str((e or {}).get("conclusao") or "desconhecida"),
+                          bool(tem_marcador(elo, noite))))
+    return fora
+
+
+def chaves_do_painel(doc: dict) -> set:
+    """(elo, noite, inicio) de tudo o que já está no painel. Função pura."""
+    fora = set()
+    for l in (doc or {}).get("noites") or []:
+        fora.add((str((l or {}).get("elo") or ""), str((l or {}).get("noite") or ""),
+                  str((l or {}).get("inicio") or "")))
+    return fora
+
+
+def recuperar_da_api(noite: str = "", listar=None) -> dict:
+    """Escreve no painel as linhas que faltam, lendo a API. ESCREVE.
+
+    `listar` é injetável para teste; em uso real é `_execucoes_da_api`.
+    """
+    from coletores_base import gravar, ler
+    doc = ler(ARQUIVO) or {"_governanca": GOV, "noites": []}
+    execucoes = (listar or _execucoes_da_api)(noite)
+    faltam = linhas_que_faltam(execucoes, chaves_do_painel(doc),
+                              lambda elo, n: (RAIZ / f"data/noite/{n}/{elo}.feito").exists())
+    if not faltam:
+        print(f"· painel em dia para a noite de {noite or 'corrente'}")
+        return doc
+    doc.setdefault("noites", []).extend(faltam)
+    doc["noites"] = doc["noites"][-400:]
+    gravar(ARQUIVO, doc)
+    for l in faltam:
+        print(f"  + {l['elo']} · {l['noite']} · {l['conclusao']} · trabalhou={l.get('trabalhou')}")
+    print(f"· {len(faltam)} linha(s) recuperada(s) da API")
+    return doc
+
+
+def _execucoes_da_api(noite: str = "") -> list:
+    """As execuções dos elos na janela, pela API do GitHub. Só lê."""
+    import json as _json
+    import subprocess
+    fora = []
+    for elo in ELOS:
+        if elo == "publicar":
+            wf = "publicar_dados.yml"
+        elif elo == "sinais":
+            wf = "noturno_sinais.yml"
+        else:
+            wf = f"noturno_{elo}.yml"
+        try:
+            saida = subprocess.run(
+                ["gh", "run", "list", "--workflow", wf, "--branch", "main", "--limit", "12",
+                 "--json", "createdAt,updatedAt,conclusion,status"],
+                cwd=RAIZ, capture_output=True, text=True, timeout=120).stdout
+            bruto = _json.loads(saida) if saida.strip() else []
+        except Exception:
+            bruto = []
+        for r in bruto:
+            criado = str(r.get("createdAt") or "")
+            if not criado:
+                continue
+            n = criado[:10] if criado[11:13] >= f"{JANELA_UTC[0]:02d}" else ""
+            if not n:
+                continue
+            if noite and n != noite:
+                continue
+            fora.append({"elo": elo, "noite": n, "inicio": criado[11:16],
+                         "fim": str(r.get("updatedAt") or criado)[11:16],
+                         "conclusao": str(r.get("conclusion") or r.get("status") or "")})
+    return fora
 
 
 def registrar(elo: str, inicio: str, conclusao: str, feito: bool = None) -> dict:
@@ -312,6 +428,14 @@ def main() -> int:
     fora = [l["elo"] for l in desta if not l["dentro_da_janela"]]
     if faltaram:
         print(f"   elo(s) que não rodaram: {', '.join(faltaram)}")
+    if "--recuperar-da-api" in sys.argv:
+        n = ""
+        if "--noite" in sys.argv:
+            i = sys.argv.index("--noite")
+            n = sys.argv[i + 1] if i + 1 < len(sys.argv) else ""
+        recuperar_da_api(n)
+        return 0
+
     if "--portao" in sys.argv:
         # 04/10/2026: a noite que NÃO ABRIU é um caso à parte, e mais grave que elo faltando. Nas
         # noites de 02→03 e 03→04 o cron não disparou e nada acusou: o painel não tinha linha

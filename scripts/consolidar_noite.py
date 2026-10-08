@@ -268,7 +268,7 @@ def _aplicar(dir_artefatos: pathlib.Path, aplicar: bool, importacao: bool) -> in
                 if tipo == "fila" and aplicar:
                     from pistas import sincronizar
                     doc = json.loads(origem.read_text(encoding="utf-8"))
-                    sincronizar(pathlib.Path(rel).stem, doc, origem=f"consolidador/{elo}")
+                    sincronizar(pathlib.Path(rel).name, doc, origem=f"consolidador/{elo}")
                 elif tipo == "log" and aplicar:
                     chave = chave_da_lista(rel)
                     if rel.endswith(".jsonl"):

@@ -10,6 +10,15 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+## 2026-10-08 · #PR · Lote 0: a corrente noturna para de sangrar
+
+A guarda da janela nunca barrou nada — `if ! cmd | tee` devolve o status do `tee` —, e entre
+05 e 08/10 foram 96 commits de coletor fora de 01:00–09:00 UTC. Os 22 workflows passam a
+declarar `shell: bash`; guarda, quarentena e conformidade decidem pelo `rc`. O carimbo deixa
+de fazer o resolvedor recusar a noite (perdeu diários, descoberta, juiz e dois sinais em
+07→08); o domínio só se repõe com push bem-sucedido; `workflow_run` só conta a `main`; a busca
+web une em vez de descartar; e o trabalho perdido volta por `reaplicar_noite.py`.
+
 ## 2026-10-07 · #PR · O redirect do HUD sai: o Netlify ignora `/.netlify/*`
 
 Publicado e medido contra o domínio real, o 404 no caminho do script do Drawer não pegou — a área

@@ -54,6 +54,10 @@ on:
       - "Busca web — cadência automática"
       - "Atualização semanal de dados"
       - "Preservar textos integrais das evidências"
+    # 08/10/2026 (A2-05): `workflow_run` dispara para run do workflow nomeado em QUALQUER
+    # ramo. Sem esta linha, diários do `ensaio` puxavam a corrente inteira na `main` — quatro
+    # descobertas medidas em 07/10, uma delas cancelando a triagem pendente.
+    branches: [main]
     types: [completed]
 
 permissions:
@@ -75,7 +79,13 @@ jobs:
     # gatilhos (horário e botão) não têm `workflow_run` e passam sempre.
     if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
-    timeout-minutes: 25   # meta é < 10 min; o teto existe para que um travamento não fique pendurado
+    defaults:
+      run:
+        shell: bash
+    # 08/10/2026 (A2-11): eram 25 minutos, e o push morria neles — o passo dos portões de
+    # código, que NÃO barra, consumia o tempo de quem barra. Os portões de código saíram para
+    # o job `portoes_de_codigo`, e o teto sobe para caber a mediana medida.
+    timeout-minutes: 45   # meta é < 15 min; o teto existe para que um travamento não fique pendurado
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with: { persist-credentials: false }
@@ -215,7 +225,14 @@ jobs:
       # fora. Este passo é a rede de segurança da corrente, não a regra.
       - name: Quarentenar pista fora do esquema (a publicação não para por ela)
         timeout-minutes: 4
-        run: python3 scripts/verificar_esquema_de_pista.py | tee -a "$GITHUB_STEP_SUMMARY"
+        run: |
+          # Regra 5 (05/10/2026): a quarentena não bloqueia a publicação por achar pista fora
+          # do esquema — ela a tira da fila. Bloqueia quando a PRÓPRIA quarentena falha, e o
+          # status vem do script, não do `tee`.
+          rc=0
+          python3 scripts/verificar_esquema_de_pista.py > /tmp/quarentena.txt 2>&1 || rc=$?
+          cat /tmp/quarentena.txt | tee -a "$GITHUB_STEP_SUMMARY"
+          exit $rc
 
       - name: Regenerar a cadeia canônica de derivados
         timeout-minutes: 8
@@ -312,41 +329,13 @@ jobs:
       # Os portoes NAO mudam: seguem bloqueantes no PR, e a conformidade diaria do site
       # publicado segue igual. Muda so o que barra a PUBLICACAO.
       - name: Portões que barram a publicação (dado, segredo, vocabulário, runtime)
+        id: portoes
         timeout-minutes: 20
         run: python3 scripts/portoes_locais.py publicacao
 
       # Os de codigo rodam e NAO barram: reprovacao aqui publica mesmo assim e abre Issue.
-      - name: Portões de código (avisam, não barram)
-        id: portoes_codigo
-        continue-on-error: true
-        timeout-minutes: 25
-        run: python3 scripts/portoes_locais.py tudo | tee /tmp/portoes_codigo.txt
-
-      # Reprovacao de portao que NAO barra nao some: ela vira Issue no repositorio privado,
-      # com o portao e a saida. Publicar mesmo assim e a decisao; esconder nao faz parte dela.
-      - name: Issue quando um portão de código reprova
-        if: steps.portoes_codigo.outcome == 'failure'
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ secrets.ROBO_TOKEN }}
-          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: |
-          {
-            echo "A publicacao seguiu, como manda a politica de 06/10/2026: portao que so mede"
-            echo "codigo nao barra a publicacao de dado. Os portoes seguem bloqueantes no PR."
-            echo
-            echo "Run: $RUN_URL"
-            echo
-            echo '```'
-            tail -60 /tmp/portoes_codigo.txt 2>/dev/null || echo "sem saida registrada"
-            echo '```'
-          } > /tmp/corpo_issue.md
-          gh issue create --repo monitorelnino/robo-registro \
-            --title "Portao de codigo reprovou na publicacao de $(date -u +%d/%m/%Y) (publicou mesmo assim)" \
-            --body-file /tmp/corpo_issue.md \
-            || echo "::warning::nao consegui abrir a Issue; a saida esta no log deste run"
-
       - name: Empurrar com rebase (item 1a)
+        id: push
         if: steps.commit.outputs.houve == '1'
         env:
           ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
@@ -358,13 +347,28 @@ jobs:
           for TENTATIVA in 1 2 3 4 5; do
             GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
             if ! git rebase FETCH_HEAD; then
-              git rebase --abort || true
-              echo "tentativa $TENTATIVA: rebase conflitou; regenerando derivados e tentando de novo"
-              GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
-              git rebase -X theirs FETCH_HEAD || { git rebase --abort || true; sleep $((TENTATIVA * 10)); continue; }
+              # 08/10/2026 (A2-10): era `git rebase -X theirs`, exatamente o que a lei do projeto
+              # proíbe em arquivo que só cresce — `-X theirs` escolhe um lado inteiro, e o lado
+              # perdedor é o trabalho do outro escritor. Quem resolve é o resolvedor, pela base
+              # comum, e recusa em vez de adivinhar quando a política não está declarada.
+              echo "tentativa $TENTATIVA: rebase conflitou; unindo pela base comum"
+              if ! python3 scripts/unir_conflito_de_rodada.py; then
+                git rebase --abort || true
+                echo "::error::a união RECUSOU um caminho — ver o nome no log acima"
+                break
+              fi
+              # A2-09: depois de unir, os derivados são função do dado unido — regenerar ANTES de
+              # continuar, senão o manifesto chega obsoleto à `main`.
               python3 recalcular_mare.py --write || true
-              bash scripts/verificar_derivados.sh --idempotencia || true
-              git add -A data/ dados-abertos/ feeds/ selos/ docs/ blog/ assets/ CITATION.cff *.html *.pdf 2>/dev/null || true
+              bash scripts/verificar_derivados.sh --regenerar-para-commit || true
+              python3 scripts/commit_do_elo.py publicar --somente-indice 2>/dev/null \
+                || git add -A data/ dados-abertos/ feeds/ selos/ docs/ blog/ assets/ CITATION.cff *.html *.pdf 2>/dev/null \
+                || true
+              if ! GIT_EDITOR=true git rebase --continue; then
+                git rebase --abort || true
+                echo "::warning::a união resolveu mas o rebase não seguiu; nova tentativa"
+                sleep $((TENTATIVA * 10)); continue
+              fi
               git diff --cached --quiet || git commit --amend --no-edit
             fi
             if GIT_SSH_COMMAND="$SSH" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main; then
@@ -379,8 +383,17 @@ jobs:
             exit 1
           fi
 
+      # 08/10/2026 (A2-04): era `always()`, e repunha o domínio depois de "Portões que barram"
+      # reprovar ou de o push ser cancelado no teto — o site passava a exibir um estado que o
+      # portão de dado recusou, ou que não existe na `main`. Medido em quatro runs de 06/10 e no
+      # 37732159332 de 08/10.
+      #
+      # Repõe quando o push deu certo, ou quando não havia o que empurrar (`houve=0`) e os portões
+      # que barram passaram — este segundo é o único caso em que `always()` era desejado.
       - name: Repor o site no domínio, atrás de senha
-        if: always()
+        if: |
+          success() && (steps.push.outcome == 'success'
+          || (steps.commit.outputs.houve == '0' && steps.portoes.outcome == 'success'))
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
@@ -436,3 +449,58 @@ jobs:
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "### Cadência dos coletores" >> "$GITHUB_STEP_SUMMARY"
           python3 scripts/verificar_cadencia_coletores.py >> "$GITHUB_STEP_SUMMARY" 2>&1 || true
+
+  # 08/10/2026 (A2-11, A7-04): os portões que AVISAM e não barram ficam num job próprio, depois da
+  # publicação. Eles não decidem nada sobre o que vai ao ar — pela regra de 06/10, reprovação aqui
+  # publica mesmo assim e abre Issue —, então não têm por que disputar o teto de tempo do push.
+  portoes_de_codigo:
+    needs: publicar
+    if: always()
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with: { persist-credentials: false, ref: main }
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "20"
+          cache: npm
+      - run: npm ci --silent
+      - run: npx playwright install --with-deps chromium >/dev/null 2>&1 || npx playwright install chromium
+      - name: Portões de código (avisam, não barram)
+        id: portoes_codigo
+        continue-on-error: true
+        timeout-minutes: 25
+        run: python3 scripts/portoes_locais.py tudo | tee /tmp/portoes_codigo.txt
+
+      # Reprovacao de portao que NAO barra nao some: ela vira Issue no repositorio privado,
+      # com o portao e a saida. Publicar mesmo assim e a decisao; esconder nao faz parte dela.
+      - name: Issue quando um portão de código reprova
+        if: steps.portoes_codigo.outcome == 'failure'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.ROBO_TOKEN }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          {
+            echo "A publicacao seguiu, como manda a politica de 06/10/2026: portao que so mede"
+            echo "codigo nao barra a publicacao de dado. Os portoes seguem bloqueantes no PR."
+            echo
+            echo "Run: $RUN_URL"
+            echo
+            echo '```'
+            tail -60 /tmp/portoes_codigo.txt 2>/dev/null || echo "sem saida registrada"
+            echo '```'
+          } > /tmp/corpo_issue.md
+          gh issue create --repo monitorelnino/robo-registro \
+            --title "Portao de codigo reprovou na publicacao de $(date -u +%d/%m/%Y) (publicou mesmo assim)" \
+            --body-file /tmp/corpo_issue.md \
+            || echo "::warning::nao consegui abrir a Issue; a saida esta no log deste run"

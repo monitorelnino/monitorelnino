@@ -98,12 +98,75 @@ def resolvido_pelo_resolvedor(caminho: str, classes: set) -> bool:
     return any(c.startswith(x) for x in classes if str(x).endswith("/"))
 
 
-def problemas(declarados: dict, por_workflow: dict, classes: set) -> list:
+def adiciona_pasta_inteira(fonte: str) -> list:
+    """Os `git add` de PASTA deste workflow. Função pura.
+
+    `git add -A data/` não nomeia arquivo: o portão não enxerga o que entra por ali, e foi assim
+    que 30+ caminhos ficaram com vários escritores sem declaração. Pasta inteira no índice de um
+    elo é proibida desde 06/10 (regra 7 da corrente) — aqui ela passa a reprovar.
+    """
+    fora = []
+    for linha in str(fonte or "").split("\n"):
+        nua = linha.strip()
+        if nua.startswith("#") or "git add" not in nua:
+            continue
+        for pedaco in nua.split():
+            if pedaco.endswith("/") and not pedaco.startswith("-"):
+                fora.append(pedaco)
+    return sorted(set(fora))
+
+
+def quem_commitou_de_fato(declarados: dict, log_por_caminho) -> list:
+    """A declaração contra a REALIDADE dos commits. Função pura.
+
+    `log_por_caminho(caminho)` devolve o conjunto de autores/elos que commitaram aquele caminho na
+    janela observada — injetado para o autoteste não precisar de repositório. Declaração que não
+    corresponde ao histórico é declaração morta: ela existe para dizer quem escreve, e dizer
+    errado é pior que não dizer.
+    """
+    fora = []
+    for caminho, regra in sorted((declarados or {}).items()):
+        if caminho.startswith("_"):
+            continue
+        escritor = str((regra or {}).get("escritor") or "").strip()
+        if escritor in ("", "qualquer_elo", "consolidador"):
+            continue
+        de_fato = set(log_por_caminho(caminho) or ())
+        if not de_fato:
+            continue
+        if escritor == "ninguem":
+            fora.append(f"{caminho}: declarado `escritor: ninguem`, e o histórico mostra "
+                        f"{sorted(de_fato)} commitando — ou a declaração está errada, ou a "
+                        f"escrita é indevida")
+            continue
+        outros = sorted(x for x in de_fato if x != escritor)
+        if outros:
+            fora.append(f"{caminho}: escritor declarado é {escritor}, e o histórico mostra "
+                        f"{outros} também commitando")
+    return fora
+
+
+def problemas(declarados: dict, por_workflow: dict, classes: set,
+              pastas_por_workflow: dict = None) -> list:
     """As violações. Função pura.
 
     `por_workflow` é {nome_do_arquivo_yml: {caminhos no git add}}.
+    `pastas_por_workflow` é {nome_do_arquivo_yml: [pastas no git add]} — pasta inteira reprova.
     """
     fora = []
+    # `_pastas_herdadas` é o TETO do que já existia em 08/10 (A2-13): pasta que não está lá
+    # reprova. A lista só pode encolher, e quem a esvazia é o item 5.3 do handover.
+    # Os campos de governança do bloco têm nome fixo; filtrar por "começa com _" apagaria
+    # `_coletor.yml`, que é um workflow de verdade e começa com sublinhado.
+    herdadas = {k: list(v) for k, v in ((declarados or {}).get("_pastas_herdadas") or {}).items()
+                if k.endswith(".yml")}
+    for wf, pastas in sorted((pastas_por_workflow or {}).items()):
+        for pasta in pastas:
+            if pasta in herdadas.get(wf, []):
+                continue
+            fora.append(f"{wf}: `git add` de pasta inteira ({pasta}) — pasta não nomeia arquivo, "
+                        f"e o que entra por ela não passa por escritor declarado. Use "
+                        f"`scripts/commit_do_elo.py`, que põe no índice só o que é do elo.")
     for caminho, regra in sorted((declarados or {}).items()):
         if caminho.startswith("_"):
             continue
@@ -219,6 +282,42 @@ def _autoteste() -> int:
        problemas({"_governanca": "texto"}, {}, classes) == [])
     ok("declaração vazia não quebra", problemas({}, {}, classes) == [])
 
+    # 08/10/2026 (A2-13): pasta inteira no índice de um elo reprova — ela não nomeia arquivo, e o
+    # que entra por ela não passa por escritor declarado.
+    p = problemas({}, {}, classes, {"_coletor.yml": ["data/"]})
+    ok("`git add` de pasta inteira REPROVA", len(p) == 1 and "pasta inteira" in p[0])
+    ok("pasta no teto herdado passa",
+       problemas({"_pastas_herdadas": {"_por_que": "x", "_coletor.yml": ["data/"]}},
+                 {}, classes, {"_coletor.yml": ["data/"]}) == [])
+    p = problemas({"_pastas_herdadas": {"_coletor.yml": ["data/"]}},
+                  {}, classes, {"_coletor.yml": ["data/", "selos/"]})
+    ok("pasta NOVA, fora do teto, REPROVA", len(p) == 1 and "selos/" in p[0])
+    ok("sem pasta no índice, nada a reprovar", problemas({}, {}, classes, {}) == [])
+    ok("as pastas saem do `git add` do workflow",
+       adiciona_pasta_inteira("          git add -A data/ feeds/ docs/MANIFEST_SHA256.txt")
+       == ["data/", "feeds/"])
+    ok("`git add` de arquivo nomeado não é pasta",
+       adiciona_pasta_inteira("          git add docs/MANIFEST_SHA256.txt") == [])
+    ok("comentário com `git add` não conta",
+       adiciona_pasta_inteira("          # git add -A data/") == [])
+
+    # A REALIDADE dos commits (A2-13): declaração que o histórico contradiz é declaração morta.
+    hist = {"data/municipios.json": {"atualizar.yml", "noturno_juiz.yml"},
+            "data/publicacao.json": {"publicar_dados.yml"},
+            "data/sozinho.json": {"atualizar.yml"}}
+    p = quem_commitou_de_fato(
+        {"data/municipios.json": {"escritor": "atualizar.yml"}},
+        lambda c: hist.get(c, set()))
+    ok("histórico com outro escritor REPROVA", len(p) == 1 and "histórico mostra" in p[0])
+    p = quem_commitou_de_fato(
+        {"data/publicacao.json": {"escritor": "ninguem"}}, lambda c: hist.get(c, set()))
+    ok("`ninguem` que o histórico contradiz REPROVA", len(p) == 1 and "ninguem" in p[0])
+    ok("declaração que o histórico confirma passa",
+       quem_commitou_de_fato({"data/sozinho.json": {"escritor": "atualizar.yml"}},
+                             lambda c: hist.get(c, set())) == [])
+    ok("caminho sem histórico não acusa nada",
+       quem_commitou_de_fato({"data/novinho.json": {"escritor": "x.yml"}}, lambda c: set()) == [])
+
     # ---- a declaração real ----
     real = ler_declaracao()
     ok("config/escritores.json existe e declara arquivos", len(real) >= 10)
@@ -242,6 +341,54 @@ def _autoteste() -> int:
     return 1 if falhas else 0
 
 
+_HISTORICO = {}
+
+
+def _elos_que_commitaram(caminho: str, dias: int = 7) -> set:
+    """Quem commitou este caminho nos últimos `dias`, pelo assunto do commit. ESCREVE nada.
+
+    O autor de todo commit da corrente é o mesmo robô, então o que identifica o elo é o ASSUNTO
+    ("juiz automático (…)", "Publicação automática (…)"). O mapa de assunto para workflow é o
+    mesmo que `config/escritores.json` usa como nome de escritor.
+    """
+    import subprocess
+    if not _HISTORICO:
+        try:
+            saida = subprocess.run(
+                ["git", "log", f"--since={dias} days ago", "--name-only",
+                 "--pretty=format:%x01%s"],
+                cwd=RAIZ, capture_output=True, text=True, timeout=120).stdout
+        except (OSError, subprocess.SubprocessError):
+            saida = ""
+        assunto = ""
+        for linha in saida.split("\n"):
+            if linha.startswith("\x01"):
+                assunto = linha[1:].strip()
+                continue
+            arq = linha.strip()
+            if arq:
+                _HISTORICO.setdefault(arq, set()).add(_workflow_do_assunto(assunto))
+        _HISTORICO.setdefault("_lido", set()).add("sim")
+    return {x for x in _HISTORICO.get(str(caminho), set()) if x}
+
+
+def _workflow_do_assunto(assunto: str) -> str:
+    """O workflow que escreveu, pelo assunto do commit. Função pura."""
+    a = str(assunto or "").lower()
+    for marca, wf in (("juiz", "noturno_juiz.yml"), ("evidencias", "noturno_evidencias.yml"),
+                      ("evidências", "noturno_evidencias.yml"),
+                      ("descoberta", "noturno_descoberta.yml"),
+                      ("sinais", "noturno_sinais.yml"), ("triagem", "noturno_triagem.yml"),
+                      ("diarios", "noturno_diarios.yml"), ("diários", "noturno_diarios.yml"),
+                      ("busca web", "busca_web_cadencia.yml"),
+                      ("publicação", "publicar_dados.yml"), ("publicacao", "publicar_dados.yml"),
+                      ("consolidacao", "consolidar_noite.yml"),
+                      ("painel do am", "coletar_painel_am.yml")):
+        if marca in a:
+            return wf
+    return ""
+
+
 def main() -> int:
     if "--autoteste" in sys.argv[1:]:
         return _autoteste()
@@ -255,7 +402,18 @@ def main() -> int:
             por_workflow[yml.name] = caminhos_no_git_add(yml.read_text(encoding="utf-8"))
         except OSError:
             continue
-    p = problemas(declarados, por_workflow, classes_do_resolvedor())
+    pastas_por_workflow = {}
+    for yml in sorted(WORKFLOWS.glob("*.yml")):
+        try:
+            pastas = adiciona_pasta_inteira(yml.read_text(encoding="utf-8"))
+        except OSError:
+            continue
+        if pastas:
+            pastas_por_workflow[yml.name] = pastas
+    p = problemas(declarados, por_workflow, classes_do_resolvedor(), pastas_por_workflow)
+    # 08/10/2026 (A2-13): e a REALIDADE dos commits dos últimos sete dias. Declaração que o
+    # histórico contradiz é declaração morta — ela existe para dizer quem escreve.
+    p += quem_commitou_de_fato(declarados, _elos_que_commitaram)
     if p:
         print(f"✗ ESCRITORES: {len(p)} arquivo(s) sem um escritor único nem resolução declarada:")
         for x in p:

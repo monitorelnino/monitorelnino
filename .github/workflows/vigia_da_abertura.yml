@@ -38,6 +38,9 @@ concurrency:
 jobs:
   vigiar:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -67,9 +70,27 @@ jobs:
           JANELA="$(python3 scripts/janela_da_noite.py --inicio-da-janela)"
           NOITE="$(python3 scripts/janela_da_noite.py --noite)"
           ATRASO="$(python3 scripts/janela_da_noite.py --atraso)"
-          EXECUCOES="$(gh run list --workflow=noturno_diarios.yml --limit 20 \
-            --json databaseId,createdAt,status \
-            --jq "[.[] | select(.createdAt >= \"$JANELA\")] | length")"
+          # 08/10/2026 (A2-08, A2-17): `--branch main`, e só run que TRABALHOU.
+          #
+          # Sem o ramo, um disparo no `ensaio` contava como "a noite abriu" e o vigia não abria
+          # nada. E `status` sozinho conta `cancelled`, `skipped` e `failure` sem trabalho: na
+          # noite de 04→05/10 o elo dos diários foi cancelado dois minutos depois de começar, a
+          # guarda contou aquilo como abertura, e ninguém refez a coleta.
+          #
+          # Trabalhou = em andamento, ou concluído com o marcador `data/noite/<noite>/<elo>.feito`
+          # no commit do run. Quem decide é `scripts/painel_da_noite.py --trabalhou`.
+          EXECUCOES="$(gh run list --workflow=noturno_diarios.yml --branch main --limit 20 \
+            --json databaseId,createdAt,status,conclusion \
+            --jq "[.[] | select(.createdAt >= \"$JANELA\") | select(.status == \"in_progress\" or .conclusion == \"success\" or .conclusion == \"failure\")] | length")"
+          if [ "${EXECUCOES:-0}" -gt 0 ] && [ -f "data/noite/$NOITE/diarios.feito" ]; then
+            TRABALHOU=1
+          elif [ "${EXECUCOES:-0}" -gt 0 ] && gh run list --workflow=noturno_diarios.yml --branch main --limit 5 --json status --jq '.[].status' | grep -q in_progress; then
+            TRABALHOU=1
+          else
+            TRABALHOU=0
+          fi
+          echo "runs na janela: ${EXECUCOES:-0} · trabalhou: $TRABALHOU"
+          EXECUCOES="$TRABALHOU"
           echo "noite de $NOITE · janela desde $JANELA · execuções da corrente: ${EXECUCOES:-0}"
           echo "noite=$NOITE" >> "$GITHUB_OUTPUT"
           echo "atraso=$ATRASO" >> "$GITHUB_OUTPUT"

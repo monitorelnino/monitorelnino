@@ -133,9 +133,43 @@ BARRAM_A_PUBLICACAO = (
 )
 
 
-def barra_a_publicacao(comando: str) -> bool:
-    """Este portao pode impedir a publicacao do dado do dia? Funcao pura."""
-    return any(nome in str(comando or "") for nome in BARRAM_A_PUBLICACAO)
+def barra_a_publicacao(comando: str, declarados=None) -> bool:
+    """Este portao pode impedir a publicacao do dado do dia? Funcao pura.
+
+    08/10/2026 (A2-14): quem decide e a DECLARACAO no `portoes.yml` -- a linha
+    `# barra_publicacao: sim` acima do comando --, nao o casamento por substring. O casamento
+    mentia nos dois sentidos: pegava o `--autoteste` do portao do esquema em vez do portao,
+    incluia `verificar_legendas` (que mede texto de pagina, nao dado) e deixava fora o
+    `texto_proibido`, que vive em `verificar_conformidade.py`.
+
+    `declarados` e o conjunto de comandos declarados, injetado por quem leu o YAML. Sem ele, cai
+    na lista antiga -- que serve de rede, nao de regra.
+    """
+    cmd = str(comando or "")
+    if declarados is not None:
+        return cmd.strip() in declarados
+    return any(nome in cmd for nome in BARRAM_A_PUBLICACAO)
+
+
+def declarados_no_yaml(texto_do_yaml: str) -> set:
+    """Os comandos marcados com `# barra_publicacao: sim` no `portoes.yml`. Funcao pura.
+
+    A marca vale para o comando da PROXIMA linha nao vazia que nao seja comentario, igual ao
+    `# assunto:`.
+    """
+    fora, armada = set(), False
+    for linha in str(texto_do_yaml or "").split("\n"):
+        nua = linha.strip()
+        if not nua:
+            continue
+        if nua.startswith("#"):
+            if "barra_publicacao:" in nua and nua.split("barra_publicacao:")[1].strip().startswith("sim"):
+                armada = True
+            continue
+        if armada:
+            fora.add(nua)
+            armada = False
+    return fora
 
 
 def main() -> int:
@@ -155,7 +189,10 @@ def main() -> int:
         # texto público não toca data/, e os portões de dado não têm o que dizer sobre ela.
         cmds = [(g, c, a) for g, c, a in todos if g == "paginas" and pedido in a]
     elif pedido == "publicacao":
-        cmds = [(g, c, a) for g, c, a in todos if barra_a_publicacao(c)]
+        declarados = declarados_no_yaml(
+            (RAIZ / ".github" / "workflows" / "portoes.yml").read_text(encoding="utf-8"))
+        cmds = [(g, c, a) for g, c, a in todos
+                if barra_a_publicacao(c, declarados if declarados else None)]
     else:
         cmds = [(g, c, a) for g, c, a in todos if pedido == "tudo" or g == pedido]
     if rapido:

@@ -343,6 +343,49 @@ for _p in sorted((_pl.Path(__file__).resolve().parent.parent / '.github' / 'work
                       f'a expressão resolve para vazio e o passo que depende dela nunca acontece.')
                 erros += 1
 
+# `| tee` SEM `pipefail`, e SCRIPT QUE NÃO EXISTE (08/10/2026, A2-01/A2-16/A7-01/A7-09).
+#
+# Sem `shell:` declarado, o Actions roda `bash -e {0}`: o `-e` não olha o status de quem está à
+# esquerda de um cano, então `cmd | tee` devolve sempre 0. Foi assim que a guarda da janela
+# respondeu "pode coletar" em toda execução entre 06 e 08/10 — 96 commits de coletor fora da
+# janela, com o passo verde. E foi assim que `consolidar_noite.yml`, na `main`, chamou um script
+# que só existia no ramo do PR: o passo falhou por "No such file", e o workflow seguiu.
+#
+# As duas conferências leem o ARQUIVO, não o YAML carregado, porque é o texto do `run:` que o
+# runner executa.
+_RE_SCRIPT = _re_expr.compile(r'\b(?:python3?|node|bash|sh)\s+((?:scripts/|\./)?[\w./-]+\.(?:py|js|sh))')
+for _p in sorted((_pl.Path(__file__).resolve().parent.parent / '.github' / 'workflows')
+                 .glob('*.yml')):
+    _rel = '.github/workflows/' + _p.name
+    try:
+        _fonte = _p.read_text(encoding='utf-8')
+    except OSError:
+        continue
+    _tem_shell = _re_expr.search(r'(?m)^\s*shell:\s*bash\s*$', _fonte) is not None
+    if not _tem_shell:
+        for _n, _linha in enumerate(_fonte.splitlines(), start=1):
+            _nua = _linha.strip()
+            if _nua.startswith('#') or '| tee' not in _nua:
+                continue
+            if '|| true' in _nua or '|| echo' in _nua or _nua.startswith(('echo', 'run: echo')):
+                continue
+            print(f'  ✗ {_rel}:{_n}: `| tee` num job sem `shell: bash` — o status do passo é o do '
+                  f'`tee`, que é sempre 0, e a decisão que depende dele é falsa. Declare '
+                  f'`defaults: run: shell: bash` no job, ou leia `$?` com redirecionamento.')
+            erros += 1
+    _raiz = _pl.Path(__file__).resolve().parent.parent
+    for _n, _linha in enumerate(_fonte.splitlines(), start=1):
+        _nua = _linha.strip()
+        if _nua.startswith('#'):
+            continue
+        for _chamado in _RE_SCRIPT.findall(_nua):
+            if '${{' in _nua or _chamado.startswith('/'):
+                continue
+            if not (_raiz / _chamado).exists():
+                print(f'  ✗ {_rel}:{_n}: chama `{_chamado}`, que não existe nesta árvore — '
+                      f'o passo falha por "No such file" e o workflow pode seguir verde.')
+                erros += 1
+
 print("✓ WORKFLOWS OK — YAML válido, sem chave duplicada, todo job com teto de tempo, "
       "todo portão de página com assunto declarado, reposição do domínio fora da fila da rodada, "
       "nenhum script cancelando run de outro, nenhuma expressão de contexto vazia."
