@@ -57,7 +57,7 @@ ARQ_REC = RAIZ / "data" / "contribuicoes_recusadas.json"
 
 UFS = set("AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO".split())
 FORCA = {"nao_localizado": 0, "nao_el_nino": 0, "coberto_estadual": 0,
-         "plano_elaboracao": 1, "plano_antigo": 1, "decreto": 1, "plano": 2}
+         "plano_elaboracao": 1, "plano_antigo": 1, "decreto": 1, "plano_nomeado": 0, "plano": 2}
 PALAVRAS = {
     "plano": ["contingencia", "plancon", "plano de acao", "plano preventivo"],
     "decreto": ["decreta", "situacao de emergencia", "estado de calamidade",

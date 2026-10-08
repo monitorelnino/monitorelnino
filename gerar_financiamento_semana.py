@@ -191,7 +191,9 @@ def cartao_atos(comp: dict, corte: datetime) -> dict:
         return sem_coleta("atos_federais_semana", "atos",
                           "o arquivo de compromissos federais não foi coletado até o corte",
                           "Atos federais lidos pelo MARÉ")
-    if not tem_data_legivel(itens):
+    # Lista VAZIA é zero medido: a coleta rodou e não havia ato no período. O caso do A3-10 é
+    # outro — há itens, e nenhum deles traz data, de modo que a janela não tem o que medir.
+    if itens and not tem_data_legivel(itens):
         return sem_coleta("atos_federais_semana", "atos",
                           "a origem dos compromissos federais não traz data de publicação do ato; "
                           "sem data não há janela de sete dias para medir",
@@ -264,6 +266,11 @@ def _autoteste() -> int:
     c = cartao_atos({"itens": [{"data": "2026-09-29", "instrumento": "Portaria 1"},
                                {"data": "2026-02-01", "instrumento": "Portaria 2"}]}, corte)
     ok("atos conta so a janela", c["valor"] == 1)
+    # 08/10/2026 (A3-10): itens SEM data não são zero — a janela não tem o que medir.
+    ok("atos com itens sem data declara lacuna",
+       cartao_atos({"itens": [{"instrumento": "Portaria sem data"}]}, corte)["sem_coleta"] is True)
+    ok("atos com itens sem data nao publica valor",
+       cartao_atos({"itens": [{"instrumento": "Portaria sem data"}]}, corte)["valor"] is None)
     ok("atos lista vazia e ZERO, nao lacuna",
        cartao_atos({"itens": []}, corte)["valor"] == 0
        and cartao_atos({"itens": []}, corte)["sem_coleta"] is False)
