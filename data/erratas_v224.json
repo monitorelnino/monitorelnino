@@ -1019,5 +1019,14 @@
   "por_que": "D1 (08/10/2026), achados A4-05 e A4-09: o registro recebia crédito no índice sem documento — sem endereço nenhum, ou com notícia no lugar do documento. Passa a `plano_nomeado`, crédito 0, até a busca dirigida anexar o documento; o que era fica guardado em `registro_anterior`. Portão: `scripts/verificar_documento_de_plano.py`. Metodologia §104.",
   "achado": "A4-05",
   "lote": "1.11"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "contribuição de leitor vinda de site de prefeitura (`aracaju.se.gov.br` e afins) era registrada com canal \"órgão estadual\"; passa a ser \"site municipal\"",
+  "por_que": "Achado ao escrever o autoteste do item 3.7: o padrão casava qualquer subdomínio de `<uf>.gov.br` que não começasse por \"www.\", e prefeitura em domínio do estado é a regra, não a exceção. Órgão estadual passa a ser o domínio do estado sem subdomínio, ou um dos prefixos conhecidos de defesa civil.",
+  "achado": "A6-26 (de passagem)",
+  "lote": "3.7"
  }
 ]

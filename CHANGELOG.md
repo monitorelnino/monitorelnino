@@ -33,6 +33,10 @@ Quatro fichas publicavam o texto que estava na página do PDF: "o documento É o
 
 O reconhecimento vindo da notícia do MIDR recebia a data da primeira portaria do lote e o link da notícia; dias depois o DOU trazia o ato exato, com outra data, e a deduplicação por data não casava. Eram 17 municípios com dois reconhecimentos onde houve um. A chave passa a ser (município, causa, portaria), o ato exato substitui o lote, e os 332 eventos com data de lote passam a declarar `data_aproximada`. O `except: pass` que escondia a causa virou lacuna registrada.
 
+## 2026-10-08 · #PR · Lote 3.7: autoteste em todos, com o nome certo e dentro do portão
+
+Quatro scripts tinham autoteste que ninguém rodava, porque a flag se chamava `--self-test` e o portão chama `--autoteste`; dois ignoravam a flag e iam à rede — `atualizar_recursos` chegava a gravar. Três não tinham autoteste nenhum. Agora: flag canônica em todos, autoteste puro onde faltava, a varredura de escrita cobre 27 scripts (eram 10) e cobra o nome da flag, e os cinco que estavam fora do `portoes.yml` entraram. De passagem, um defeito de canal.
+
 ## 2026-10-08 · #PR · Lote 1.2: o decreto do diário consorciado deixa de ir ao município errado
 
 A posição do decreto no PDF vinha de `texto.find(numero)` — a primeira ocorrência da string do
