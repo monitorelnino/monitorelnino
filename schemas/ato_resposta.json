@@ -1,0 +1,39 @@
+{
+  "_governanca": "ESQUEMA DO ATO DE RESPOSTA (item 1.3 do HANDOVER_CORRECAO_DEFINITIVA_08-10-2026, achados A3-08, A6-02 e A6-21). `data/atos_resposta.json` é a base que o leitor vê no contador de resposta, no mapa e no feed. Em 08/10/2026 ela tinha 832 datas em dd/mm/aaaa e 97 em ISO — todas do diário consorciado, que gravava `dia.isoformat()`. Quem lê o campo compara string com string, e '2026-07-31' nunca casa com '31/07/2026'. O portão `scripts/verificar_esquema_de_ato.py` reprova qualquer evento fora deste esquema.",
+  "obrigatorios": {
+    "nome": "Nome do município como a referência do IBGE o grafa.",
+    "uf": "Sigla da UF, duas letras maiúsculas.",
+    "data": "Data do evento, em dd/mm/aaaa. Nunca ISO, nunca texto.",
+    "causa": "A causa declarada no ato, em minúsculas (situação de emergência, estado de calamidade pública…).",
+    "decreto": "Identificação do ato ('Decreto nº 79', 'Portaria nº 1.234').",
+    "fonte": "De onde o ato foi lido, em palavras.",
+    "url": "Endereço do documento lido. Pode ficar vazio SÓ quando `documento_nao_localizado` é true — o ato é conhecido por fonte oficial e o documento ainda não foi lido (item 1.5, eventos de MT).",
+    "canal": "O canal de coleta, da lista fechada de `coletores_base.CANAIS_ATO`."
+  },
+  "datas": {
+    "formato": "dd/mm/aaaa",
+    "campos": [
+      "data",
+      "data_ato",
+      "data_publicacao",
+      "data_reconhecimento",
+      "data_decreto_municipal",
+      "data_documento"
+    ],
+    "_por_que": "Um formato só, em todos os campos de data do mesmo arquivo. A porta é `coletores_base.data_br_de`; data que não passa por ela é lacuna declarada, nunca data adivinhada."
+  },
+  "opcionais": {
+    "ibge": "Código IBGE de sete dígitos. Sem ele o evento não casa com a malha e não conta (regra g2 de `verificar_resposta.py`).",
+    "data_ato": "Data do próprio ato, quando o documento a traz. Lida por `coletores_base.data_do_ato_no_trecho`.",
+    "data_publicacao": "Data da edição em que o ato foi publicado. Sempre presente nos atos de diário.",
+    "hash_evidencia": "Hash da evidência preservada.",
+    "atribuicao_nao_conferida": "true quando a atribuição de município vem do código defeituoso do A6-01 e a edição não está preservada para reler. Evento assim NÃO conta até a recoleta.",
+    "documento_nao_localizado": "true quando o ato é conhecido por outra fonte e o documento ainda não foi lido."
+  },
+  "regras": {
+    "data_nunca_iso": "Evento com data em AAAA-MM-DD reprova o portão.",
+    "data_nunca_futura": "Data posterior ao corte da edição reprova — ato que ainda não aconteceu não é ato.",
+    "ibge_de_sete_digitos": "Quando presente, `ibge` tem sete dígitos e existe na malha.",
+    "url_vazia_so_com_documento_nao_localizado": "Evento sem `url` reprova, exceto com `documento_nao_localizado: true`."
+  }
+}

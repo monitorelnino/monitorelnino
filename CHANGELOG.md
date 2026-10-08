@@ -14,9 +14,13 @@ não pontuados permanecem na versão corrente.
 
 
 
+
 ## 2026-10-08 · #PR · Lote 1.8: a camada declarada deixa de contar a mesma população duas vezes
 
 O excedente declarado descontava só as categorias de plano e ignorava `estrutura` e `coberto_estadual`, já creditadas; e o contador de planos desatualizados era somado ao de planos sem desconto nem teto — 398 declarantes num levantamento de 485 respondentes no RS, cobertura 80 no DF, que tem um município. Passa a um termo só, com teto no número de municípios da UF. Média nacional 45,3 → 44,6; seis estados mudam de nota. Portão novo; errata C31.
+## 2026-10-08 · #PR · Lote 1.3: uma porta só para a data do ato, em dd/mm/aaaa
+
+As 97 datas de ato vindas do diário consorciado estavam em ISO, e o resto do arquivo em dd/mm/aaaa. O gerador compara strings: o que não casava virava ausência. Vinte e sete fichas publicavam o primeiro decreto em branco, a de Roraima também, e a série semanal parava em 629 em vez de 656. Nova porta `coletores_base.data_br_de`, `data_ato` e `data_publicacao` no evento, esquema `schemas/ato_resposta.json` e portão que reprova data em ISO. Erratas: 29.
 ## 2026-10-08 · #PR · Lote 1.9: a data do plano é a do documento, não a da nossa consulta
 
 Oitenta e quatro fichas de ES e SE publicavam 26/08/2026 como data do plano: era o dia em que o Monitor abriu o repositório estadual. Nove delas são planos antigos, e diziam 2026 — contradição entre a categoria e a data. `data` passa a ser o ano da edição do documento (ou o da atualização, quando declarada) e a consulta ganha campo próprio, `localizado_em`. Portão novo `verificar_datas_de_instrumento.py`, com fixtures de ES e SE.
