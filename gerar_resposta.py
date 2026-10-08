@@ -67,7 +67,15 @@ def consolidar_municipios(eventos: list, verificacao: list) -> dict:
         out[str(r["ibge"]).zfill(7)] = {"ibge": str(r["ibge"]).zfill(7), "nome": r.get("nome"), "uf": r.get("uf"), "decreto": False,
                                        "primeiro_decreto": None, "tipos": [], "reconhecido": bool(r.get("decreto_reconhecido")), "decretado": False,
                                        "evento_observado": "em_classificacao", "fontes": [], "n_eventos": 0}
+    nao_conferidos = 0
     for ev in eventos:
+        # 08/10/2026 (A6-01 + D1): atribuicao que veio do codigo errado e nao pode ser relida nao
+        # conta. Dos 97 eventos de diario consorciado, 18 de 61 relidos estavam no municipio
+        # errado (30%); os 36 sem edicao preservada vem do mesmo codigo, e publicar como certo o
+        # que nao se leu e pior que contar menos.
+        if ev.get("atribuicao_nao_conferida"):
+            nao_conferidos += 1
+            continue
         ib = str(ev.get("ibge") or "").zfill(7)
         m = out.get(ib)
         if not m:
@@ -79,6 +87,9 @@ def consolidar_municipios(eventos: list, verificacao: list) -> dict:
         if t not in m["tipos"]: m["tipos"].append(t)
         if d and (m["primeiro_decreto"] is None or d < data_br(m["primeiro_decreto"])): m["primeiro_decreto"] = d.strftime("%d/%m/%Y")
         m["fontes"].append({"canal": ev.get("canal"), "fonte": ev.get("fonte"), "url": ev.get("url"), "data": ev.get("data"), "decreto": ev.get("decreto"), "hash": ev.get("hash_evidencia")})
+    if nao_conferidos:
+        print(f"  · {nao_conferidos} evento(s) com atribuicao nao conferida, fora do contador "
+              f"(A6-01; voltam na recoleta)")
     for m in out.values():
         if m["reconhecido"] and not m["decreto"]: m["decreto"] = True     # reconhecido via S2iD sem evento no arquivo de atos
     return out

@@ -10,6 +10,14 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+## 2026-10-08 · #PR · Lote 1.2: o decreto do diário consorciado deixa de ir ao município errado
+
+A posição do decreto no PDF vinha de `texto.find(numero)` — a primeira ocorrência da string do
+número em qualquer lugar do diário —, e o município era o do cabeçalho anterior. Relidos os 61 PDFs
+preservados: 18 estavam no município errado (30%), corrigidos com errata por município. Os 36 cuja
+edição não está preservada saem do contador até a recoleta (D1): 749 → 723 municípios, 10,6% →
+10,1% da população. Um autoteste reproduz o caso Arapiraca × Piranhas.
+
 ## 2026-10-08 · #PR · Lote 0: a corrente noturna para de sangrar
 
 A guarda da janela nunca barrou nada — `if ! cmd | tee` devolve o status do `tee` —, e entre
