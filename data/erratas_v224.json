@@ -542,5 +542,95 @@
   "por_que": "A1-06 e A4-08: o campo `documento` saía do trecho do objeto julgado, e no caminho do plano publicado em domínio oficial não existe objeto — o trecho era o que estivesse na página. Passa a ser o título do documento, na forma '{Título} — {órgão}, {ano}', pela mesma função que o aplicador do juiz usa. Portão: `scripts/verificar_documento_publicado.py`.",
   "achado": "A4-08",
   "lote": "1.12"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "AC",
+  "municipio": "Rio Branco",
+  "o_que_mudou": "a ficha do estado dizia \"Novo\" sobre a capital enquanto o banco dizia \"ainda não verificada\"; passa a dizer o que o banco diz",
+  "por_que": "A3-11 e A4-03: a capital tinha duas fontes — um `status` e um `info` escritos à mão em `data/estados.json` e a categoria do banco, que é a que pontua. O cartão do estado lia o texto; o cartão do município lia o banco, e o leitor via os dois no mesmo clique. `capital` passa a guardar só o nome, e o que a ficha diz sai do registro do banco, pela mesma função do cartão do município. Portão: `scripts/verificar_capital.py`.",
+  "achado": "A3-11",
+  "lote": "1.10"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "AP",
+  "municipio": "Macapá",
+  "o_que_mudou": "a ficha do estado dizia \"Plano em elaboração\" sobre a capital enquanto o banco dizia \"ainda não verificada\"; passa a dizer o que o banco diz",
+  "por_que": "A3-11 e A4-03: a capital tinha duas fontes — um `status` e um `info` escritos à mão em `data/estados.json` e a categoria do banco, que é a que pontua. O cartão do estado lia o texto; o cartão do município lia o banco, e o leitor via os dois no mesmo clique. `capital` passa a guardar só o nome, e o que a ficha diz sai do registro do banco, pela mesma função do cartão do município. Portão: `scripts/verificar_capital.py`.",
+  "achado": "A3-11",
+  "lote": "1.10"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "PA",
+  "municipio": "Belém",
+  "o_que_mudou": "a ficha do estado dizia \"Plano em elaboração\" sobre a capital enquanto o banco dizia \"ainda não verificada\"; passa a dizer o que o banco diz",
+  "por_que": "A3-11 e A4-03: a capital tinha duas fontes — um `status` e um `info` escritos à mão em `data/estados.json` e a categoria do banco, que é a que pontua. O cartão do estado lia o texto; o cartão do município lia o banco, e o leitor via os dois no mesmo clique. `capital` passa a guardar só o nome, e o que a ficha diz sai do registro do banco, pela mesma função do cartão do município. Portão: `scripts/verificar_capital.py`.",
+  "achado": "A3-11",
+  "lote": "1.10"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "DF",
+  "municipio": "Brasília",
+  "o_que_mudou": "a ficha do estado dizia \"Não localizado\" sobre a capital enquanto o banco dizia \"coberta pelo plano estadual\"; passa a dizer o que o banco diz",
+  "por_que": "A3-11 e A4-03: a capital tinha duas fontes — um `status` e um `info` escritos à mão em `data/estados.json` e a categoria do banco, que é a que pontua. O cartão do estado lia o texto; o cartão do município lia o banco, e o leitor via os dois no mesmo clique. `capital` passa a guardar só o nome, e o que a ficha diz sai do registro do banco, pela mesma função do cartão do município. Portão: `scripts/verificar_capital.py`.",
+  "achado": "A3-11",
+  "lote": "1.10"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "MS",
+  "municipio": "Campo Grande",
+  "o_que_mudou": "a ficha do estado dizia \"Não localizado\" sobre a capital enquanto o banco dizia \"ainda não verificada\"; passa a dizer o que o banco diz",
+  "por_que": "A3-11 e A4-03: a capital tinha duas fontes — um `status` e um `info` escritos à mão em `data/estados.json` e a categoria do banco, que é a que pontua. O cartão do estado lia o texto; o cartão do município lia o banco, e o leitor via os dois no mesmo clique. `capital` passa a guardar só o nome, e o que a ficha diz sai do registro do banco, pela mesma função do cartão do município. Portão: `scripts/verificar_capital.py`.",
+  "achado": "A3-11",
+  "lote": "1.10"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "MG",
+  "municipio": "Belo Horizonte",
+  "o_que_mudou": "a ficha do estado dizia \"Em elaboração\" sobre a capital enquanto o banco dizia \"ainda não verificada\"; passa a dizer o que o banco diz",
+  "por_que": "A3-11 e A4-03: a capital tinha duas fontes — um `status` e um `info` escritos à mão em `data/estados.json` e a categoria do banco, que é a que pontua. O cartão do estado lia o texto; o cartão do município lia o banco, e o leitor via os dois no mesmo clique. `capital` passa a guardar só o nome, e o que a ficha diz sai do registro do banco, pela mesma função do cartão do município. Portão: `scripts/verificar_capital.py`.",
+  "achado": "A3-11",
+  "lote": "1.10"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "PR",
+  "municipio": "Curitiba",
+  "o_que_mudou": "a ficha do estado dizia \"Novo\" sobre a capital enquanto o banco dizia \"estrutura de coordenação\"; passa a dizer o que o banco diz",
+  "por_que": "A3-11 e A4-03: a capital tinha duas fontes — um `status` e um `info` escritos à mão em `data/estados.json` e a categoria do banco, que é a que pontua. O cartão do estado lia o texto; o cartão do município lia o banco, e o leitor via os dois no mesmo clique. `capital` passa a guardar só o nome, e o que a ficha diz sai do registro do banco, pela mesma função do cartão do município. Portão: `scripts/verificar_capital.py`.",
+  "achado": "A3-11",
+  "lote": "1.10"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "RS",
+  "municipio": "Porto Alegre",
+  "o_que_mudou": "a ficha do estado dizia \"Em elaboração\" sobre a capital enquanto o banco dizia \"plano localizado\"; passa a dizer o que o banco diz",
+  "por_que": "A3-11 e A4-03: a capital tinha duas fontes — um `status` e um `info` escritos à mão em `data/estados.json` e a categoria do banco, que é a que pontua. O cartão do estado lia o texto; o cartão do município lia o banco, e o leitor via os dois no mesmo clique. `capital` passa a guardar só o nome, e o que a ficha diz sai do registro do banco, pela mesma função do cartão do município. Portão: `scripts/verificar_capital.py`.",
+  "achado": "A3-11",
+  "lote": "1.10"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "SC",
+  "municipio": "Florianópolis",
+  "o_que_mudou": "a ficha do estado dizia \"Em elaboração\" sobre a capital enquanto o banco dizia \"ainda não verificada\"; passa a dizer o que o banco diz",
+  "por_que": "A3-11 e A4-03: a capital tinha duas fontes — um `status` e um `info` escritos à mão em `data/estados.json` e a categoria do banco, que é a que pontua. O cartão do estado lia o texto; o cartão do município lia o banco, e o leitor via os dois no mesmo clique. `capital` passa a guardar só o nome, e o que a ficha diz sai do registro do banco, pela mesma função do cartão do município. Portão: `scripts/verificar_capital.py`.",
+  "achado": "A3-11",
+  "lote": "1.10"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "sai do site a frase comparativa sobre a capital (\"caso mais avançado entre as 27 capitais\" e companhia): comparação construída por nós não entra, e a ficha descreve o que se tem",
+  "por_que": "A3-11 e A4-03: a capital tinha duas fontes — um `status` e um `info` escritos à mão em `data/estados.json` e a categoria do banco, que é a que pontua. O cartão do estado lia o texto; o cartão do município lia o banco, e o leitor via os dois no mesmo clique. `capital` passa a guardar só o nome, e o que a ficha diz sai do registro do banco, pela mesma função do cartão do município. Portão: `scripts/verificar_capital.py`.",
+  "achado": "A3-11",
+  "lote": "1.10"
  }
 ]

@@ -21,6 +21,10 @@ Oitenta e quatro fichas de ES e SE publicavam 26/08/2026 como data do plano: era
 
 Quatro fichas publicavam o texto que estava na página do PDF: "o documento É o instrumento nomeado: tanhaém…" (Itanhaém), "neste Plano. 11/08/2026 Página 3 de 72…" (Umuarama e Leme), "a Católica 8 1.5. INSTRUÇÕES PARA USO…" (Celso Ramos). O campo passa a ser o título do documento, extraído pela mesma função do aplicador do juiz; sem título provado, vale a forma genérica, e sem prova de que é plano, vale a classificação. Portão novo.
 
+## 2026-10-08 · #PR · Lote 1.10: a capital passa a ter uma fonte só
+
+`estados.json` guardava um status e um texto da capital escritos à mão, e o banco guardava a categoria que pontua: as duas se contradiziam em nove UFs, e o leitor via no mesmo clique "Novo, base da pontuação" e "ainda não verificado" (Rio Branco). `capital` passa a guardar só o nome; o rótulo e a frase saem do registro do banco, pela mesma função do cartão do município. A frase comparativa sai. Portão novo `verificar_capital.py`.
+
 ## 2026-10-08 · #PR · Lote 1.2: o decreto do diário consorciado deixa de ir ao município errado
 
 A posição do decreto no PDF vinha de `texto.find(numero)` — a primeira ocorrência da string do
