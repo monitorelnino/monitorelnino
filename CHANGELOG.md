@@ -10,6 +10,14 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+## 2026-10-08 · #PR · Lote 1.1: quatro registros falsos saem do banco
+
+O juiz havia promovido quatro planos de outro ente ou de outro objeto: o PDF de Rio do Oeste/SC é
+de Taió, o de Santa Rosa/RS é de Trindade do Sul, o de Cubatão/SP é um relatório do BNDES sobre
+Santos e o de Imperatriz/MA regulamenta o Plano de Segurança Pública. Os quatro saem, com errata
+e com o efeito medido: MA 46,3 → 45,0 e RS 55,4 → 55,2. As decisões ficam marcadas com
+`superada_por`, e 24 pistas atribuídas a outro ente voltaram à fila do juiz.
+
 ## 2026-10-08 · #PR · Lote 0: a corrente noturna para de sangrar
 
 A guarda da janela nunca barrou nada — `if ! cmd | tee` devolve o status do `tee` —, e entre
