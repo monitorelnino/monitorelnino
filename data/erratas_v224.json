@@ -545,6 +545,303 @@
  },
  {
   "data": "08/10/2026",
+  "uf": "PA",
+  "municipio": "Abel Figueiredo",
+  "ibge": "1500131",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 01/10/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "PR",
+  "municipio": "Adrianópolis",
+  "ibge": "4100202",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 14/09/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "AM",
+  "municipio": "Amaturá",
+  "ibge": "1300060",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 16/09/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "RS",
+  "municipio": "Benjamin Constant do Sul",
+  "ibge": "4302055",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 29/09/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "RS",
+  "municipio": "Candiota",
+  "ibge": "4304358",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 25/09/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "RR",
+  "municipio": "Cantá",
+  "ibge": "1400175",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 25/09/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "RS",
+  "municipio": "Capitão",
+  "ibge": "4304697",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 29/09/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "RS",
+  "municipio": "Fagundes Varela",
+  "ibge": "4307864",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 25/09/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "RS",
+  "municipio": "Guarani das Missões",
+  "ibge": "4309506",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 03/09/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "RR",
+  "municipio": "Iracema",
+  "ibge": "1400282",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 22/09/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "PE",
+  "municipio": "Itaíba",
+  "ibge": "2607505",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 22/09/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "AM",
+  "municipio": "Jutaí",
+  "ibge": "1302306",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 24/09/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "AM",
+  "municipio": "Maués",
+  "ibge": "1302900",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 22/09/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "RS",
+  "municipio": "Mostardas",
+  "ibge": "4312500",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 25/09/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "PB",
+  "municipio": "Ouro Velho",
+  "ibge": "2510600",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 15/09/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "RN",
+  "municipio": "Paraú",
+  "ibge": "2408706",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 22/09/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "RS",
+  "municipio": "Pareci Novo",
+  "ibge": "4314035",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 24/09/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "AM",
+  "municipio": "Presidente Figueiredo",
+  "ibge": "1303536",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 24/09/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "RS",
+  "municipio": "Santa Cruz do Sul",
+  "ibge": "4316808",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 28/09/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "RS",
+  "municipio": "Santana da Boa Vista",
+  "ibge": "4317004",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 23/09/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "RS",
+  "municipio": "São Leopoldo",
+  "ibge": "4318705",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 23/09/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "PB",
+  "municipio": "São Miguel de Taipu",
+  "ibge": "2515005",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 17/09/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "RN",
+  "municipio": "São Pedro",
+  "ibge": "2412708",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 29/09/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "PB",
+  "municipio": "Sossêgo",
+  "ibge": "2516151",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 18/09/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "PE",
+  "municipio": "Tamandaré",
+  "ibge": "2614857",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 28/09/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "AM",
+  "municipio": "Tapauá",
+  "ibge": "1304104",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 02/10/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "RN",
+  "municipio": "Viçosa",
+  "ibge": "2414902",
+  "o_que_mudou": "a ficha passa a publicar o primeiro decreto em 22/09/2026; antes o campo saía vazio",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "RR",
+  "municipio": null,
+  "o_que_mudou": "a ficha de Roraima passa a publicar o primeiro decreto do estado em 22/09/2026; antes saía vazia",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "a série semanal de decretos termina em 656 municípios acumulados, não 629: os 27 atos com data em ISO não caíam em semana nenhuma",
+  "por_que": "A3-08: as 97 datas de ato vindas do diário consorciado estavam gravadas em ISO (AAAA-MM-DD), e não no dd/mm/aaaa do resto do arquivo. O gerador lê a data como string: o que não casava com o formato esperado virava ausência, e a ficha publicava o primeiro decreto em branco. Migradas na porta única (`coletores_base.data_br_de`), com portão de esquema.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "três atos que apareciam duas vezes no banco (Água Branca/AL 705, União da Vitória/PR 473, Palmeira/PR 19.546) passam a um registro só, com o segundo endereço guardado como documento adicional",
+  "por_que": "A3-08: a conferência de duplicata compara a data como string, e o mesmo ato lido por dois canais tinha a data em formatos diferentes — ISO no consorciado, dd/mm/aaaa nos outros. Com um formato só, os três pares apareceram.",
+  "achado": "A3-08",
+  "lote": "1.3"
+ },
+ {
+  "data": "08/10/2026",
   "uf": null,
   "municipio": null,
   "o_que_mudou": "17 municípios tinham dois reconhecimentos federais onde houve um — entre eles Irauçuba/CE, Japurá/AM, Monsenhor Tabosa/CE e Porto Seguro/BA; passam a um registro só, com a data, o endereço e o hash do ato exato. O banco vai de 929 para 912 atos",
