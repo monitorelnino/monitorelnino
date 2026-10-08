@@ -579,6 +579,287 @@
    "nota_da_corrente": "hash_anterior e hash_novo são iguais porque esta errata corrige DADO, não regra: nenhuma constante nem a fórmula do motor foi tocada. A entrada existe pelo C6 — correção de dado dentro do defeso se publica com efeito em pontos por UF — e fica na mesma corrente para que o histórico seja um só."
   },
   {
+   "codigo": "C30",
+   "data": "2026-10-08",
+   "classe": "correção de DADO que violava regra de prova (C6/D1) — nenhuma regra, peso, constante ou fórmula do motor mudou",
+   "o_que_mudou": "47 registros municipais que recebiam crédito sem documento passam à categoria nova `plano_nomeado` (plano citado por fonte oficial, documento não localizado): 41 sem endereço nenhum e 6 com notícia no lugar do documento — 24 `plano`, 11 `plano_antigo`, 12 `plano_elaboracao`. `CRED_POP` NÃO foi tocado: `CRED_POP.get(cat, 0.0)` já devolve zero para categoria sem crédito, e por isso o hash das constantes é o mesmo.",
+   "uf": [
+    "AL",
+    "BA",
+    "CE",
+    "MA",
+    "MT",
+    "PB",
+    "PI",
+    "PR",
+    "RJ",
+    "RN",
+    "RO",
+    "RR",
+    "RS",
+    "SC",
+    "SE",
+    "SP",
+    "TO"
+   ],
+   "motivo": "Decisão D1 da editoria, na auditoria geral de 08/10/2026: nenhum registro pontua sem documento oficial lido pela máquina e preservado. A metodologia já exigia documento primário (§6); o que faltava era a régua ter uma categoria e um portão (`scripts/verificar_documento_de_plano.py`). Não é mudança de regra do índice, que segue proibida no defeso: é a classe de ausência aplicada a registro que estava na classe de presença, com o crédito das outras ausências, zero. Cada registro guarda o que era em `registro_anterior` e volta inteiro quando o documento aparecer.",
+   "efeito_por_uf": {
+    "AL": {
+     "total": [
+      54.4,
+      44.2
+     ],
+     "cobertura_pop": [
+      43.1,
+      12.7
+     ],
+     "total_geo": [
+      44.2,
+      29.4
+     ]
+    },
+    "BA": {
+     "total": [
+      15.0,
+      9.3
+     ],
+     "cobertura_pop": [
+      24.9,
+      7.9
+     ],
+     "total_geo": [
+      13.6,
+      9.2
+     ]
+    },
+    "CE": {
+     "total": [
+      20.5,
+      11.3
+     ],
+     "cobertura_pop": [
+      31.5,
+      4.0
+     ],
+     "total_geo": [
+      16.8,
+      9.1
+     ]
+    },
+    "MA": {
+     "total": [
+      45.0,
+      39.9
+     ],
+     "cobertura_pop": [
+      19.9,
+      4.7
+     ],
+     "total_geo": [
+      39.7,
+      25.1
+     ]
+    },
+    "MT": {
+     "total": [
+      69.9,
+      67.3
+     ],
+     "cobertura_pop": [
+      9.8,
+      1.8
+     ],
+     "total_geo": [
+      46.1,
+      36.8
+     ]
+    },
+    "PB": {
+     "total": [
+      10.2,
+      1.7
+     ],
+     "cobertura_pop": [
+      30.7,
+      5.1
+     ],
+     "total_geo": [
+      9.2,
+      5.0
+     ]
+    },
+    "PI": {
+     "total": [
+      27.6,
+      18.8
+     ],
+     "cobertura_pop": [
+      27.9,
+      1.5
+     ],
+     "total_geo": [
+      19.7,
+      11.1
+     ]
+    },
+    "PR": {
+     "total": [
+      64.9,
+      63.3
+     ],
+     "cobertura_pop": [
+      29.8,
+      24.8
+     ],
+     "total_geo": [
+      57.9,
+      54.4
+     ]
+    },
+    "RJ": {
+     "total": [
+      47.5,
+      47.1
+     ],
+     "cobertura_pop": [
+      67.6,
+      66.2
+     ],
+     "total_geo": [
+      45.0,
+      44.7
+     ]
+    },
+    "RN": {
+     "total": [
+      8.6,
+      1.1
+     ],
+     "cobertura_pop": [
+      25.8,
+      3.2
+     ],
+     "total_geo": [
+      8.6,
+      5.0
+     ]
+    },
+    "RO": {
+     "total": [
+      60.7,
+      51.3
+     ],
+     "cobertura_pop": [
+      67.0,
+      39.0
+     ],
+     "total_geo": [
+      59.5,
+      49.7
+     ]
+    },
+    "RR": {
+     "total": [
+      48.1,
+      26.5
+     ],
+     "cobertura_pop": [
+      69.2,
+      4.4
+     ],
+     "total_geo": [
+      45.4,
+      18.9
+     ]
+    },
+    "RS": {
+     "total": [
+      55.2,
+      54.6
+     ],
+     "cobertura_pop": [
+      30.6,
+      28.7
+     ],
+     "total_geo": [
+      51.8,
+      50.7
+     ]
+    },
+    "SC": {
+     "total": [
+      78.1,
+      72.5
+     ],
+     "cobertura_pop": [
+      34.4,
+      17.5
+     ],
+     "total_geo": [
+      70.1,
+      55.9
+     ]
+    },
+    "SE": {
+     "total": [
+      87.7,
+      71.5
+     ],
+     "cobertura_pop": [
+      63.1,
+      14.5
+     ],
+     "total_geo": [
+      85.8,
+      52.5
+     ]
+    },
+    "SP": {
+     "total": [
+      36.3,
+      35.3
+     ],
+     "cobertura_pop": [
+      33.9,
+      31.0
+     ],
+     "total_geo": [
+      35.8,
+      34.7
+     ]
+    },
+    "TO": {
+     "total": [
+      45.7,
+      39.1
+     ],
+     "cobertura_pop": [
+      22.0,
+      2.2
+     ],
+     "total_geo": [
+      41.1,
+      25.1
+     ]
+    }
+   },
+   "efeito_nacional": {
+    "media": [
+     45.3,
+     40.8
+    ],
+    "ufs_afetadas": 17
+   },
+   "prova": [
+    "data/municipios.json (categoria=plano_nomeado, por_que_nomeado, registro_anterior)",
+    "scripts/verificar_documento_de_plano.py",
+    "METODOLOGIA.md §104"
+   ],
+   "hash_anterior": "97d5b2ebbbac1ec342aebb568c666d59474a3b5a48b8daf221620817cb441380",
+   "hash_novo": "97d5b2ebbbac1ec342aebb568c666d59474a3b5a48b8daf221620817cb441380",
+   "nota_da_corrente": "hash_anterior e hash_novo são iguais porque esta errata corrige DADO: as constantes e a fórmula do motor não foram tocadas. A entrada existe pelo C6 — correção de dado dentro do defeso se publica com efeito em pontos por UF — e fica na mesma corrente para que o histórico seja um só."
+  },
+  {
    "codigo": "C31",
    "data": "2026-10-08",
    "classe": "correção de DEFEITO de cálculo (dupla contagem) — nenhuma constante nem a fórmula dos componentes mudou",
