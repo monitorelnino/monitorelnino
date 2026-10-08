@@ -23932,15 +23932,15 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `9bc7b43958` None/None · pendente_confirmacao_documento · 
 - `8af505138b` None/None · pendente_confirmacao_documento · 
 - `872f97b918` None/None · pendente_confirmacao_documento · 
-- `9ac23fc73c` None/None · pendente_confirmacao_documento · 
+- `9ac23fc73c` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `46db75297a` None/None · pendente_confirmacao_documento · 
 - `10695c22d6` None/None · pendente_confirmacao_documento · 
 - `38ae31fd53` None/None · pendente_confirmacao_documento · 
 - `872f97b918` None/None · pendente_confirmacao_documento · 
 - `970e03ed21` None/None · pendente_confirmacao_documento · 
-- `ff977fb16b` None/None · pendente_confirmacao_documento · 
+- `ff977fb16b` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `c2dec811e2` None/None · pendente_confirmacao_documento · 
-- `a6bca90e68` None/None · pendente_confirmacao_documento · 
+- `a6bca90e68` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `58830ddf8d` None/None · pendente_confirmacao_documento · 
 - `cbd77f99f0` None/None · pendente_confirmacao_documento · 
 - `414a71da2c` None/None · pendente_confirmacao_documento · 
@@ -23949,11 +23949,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `60b5ac9290` None/None · pendente_confirmacao_documento · 
 - `872f97b918` None/None · pendente_confirmacao_documento · 
 - `60b5ac9290` None/None · pendente_confirmacao_documento · 
-- `872f97b918` None/None · pendente_confirmacao_documento · 
+- `872f97b918` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `25c29928e7` None/None · pendente_confirmacao_documento · 
 - `1cb0decc46` None/None · pendente_confirmacao_documento · 
 - `60b5ac9290` None/None · pendente_confirmacao_documento · 
-- `25c29928e7` None/None · pendente_confirmacao_documento · 
+- `25c29928e7` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `0b3fa969e1` None/None · pendente_confirmacao_documento · 
 - `8533584bc2` None/None · pendente_confirmacao_documento · 
 - `680d7ce1a3` None/None · pendente_confirmacao_documento · 
@@ -23961,7 +23961,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `75edaa8984` None/None · pendente_confirmacao_documento · 
 - `052cbae766` None/None · pendente_confirmacao_documento · 
 - `b5a5d3d373` None/None · pendente_confirmacao_documento · 
-- `750da1f504` None/None · pendente_confirmacao_documento · 
+- `750da1f504` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `135cb998c4` None/None · pendente_confirmacao_documento · 
 - `6d40d64de9` None/None · pendente_confirmacao_documento · 
 - `7deaab713d` None/None · pendente_confirmacao_documento · 
