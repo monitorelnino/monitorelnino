@@ -842,6 +842,24 @@
  },
  {
   "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "17 municípios tinham dois reconhecimentos federais onde houve um — entre eles Irauçuba/CE, Japurá/AM, Monsenhor Tabosa/CE e Porto Seguro/BA; passam a um registro só, com a data, o endereço e o hash do ato exato. O banco vai de 929 para 912 atos",
+  "por_que": "A6-04 e A6-28: o reconhecimento lido pela notícia do MIDR, quando a página da portaria não casava o município — ou falhava em silêncio, num `except: pass` —, recebia a data da PRIMEIRA portaria da notícia e o link da notícia. Dias depois o canal do DOU lia o ato exato, com outra data, e a chave de deduplicação, que incluía a data, não casava: entrava um segundo evento. A deduplicação passa a ser por (município, causa, portaria), com janela de 15 dias para o lote, e o ato exato SUBSTITUI o lote.",
+  "achado": "A6-04",
+  "lote": "1.7"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "332 reconhecimentos cuja data é a da primeira portaria do lote, e não a do ato do próprio município, passam a declarar isso no registro (`data_aproximada`)",
+  "por_que": "A6-04 e A6-28: o reconhecimento lido pela notícia do MIDR, quando a página da portaria não casava o município — ou falhava em silêncio, num `except: pass` —, recebia a data da PRIMEIRA portaria da notícia e o link da notícia. Dias depois o canal do DOU lia o ato exato, com outra data, e a chave de deduplicação, que incluía a data, não casava: entrava um segundo evento. A deduplicação passa a ser por (município, causa, portaria), com janela de 15 dias para o lote, e o ato exato SUBSTITUI o lote.",
+  "achado": "A6-04",
+  "lote": "1.7"
+ },
+ {
+  "data": "08/10/2026",
   "uf": "DF",
   "municipio": null,
   "o_que_mudou": "a cobertura populacional do estado passa de 80,0 para 30,0 e a nota de 66,7 para 50,0",
