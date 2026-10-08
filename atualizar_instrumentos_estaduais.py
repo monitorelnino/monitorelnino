@@ -242,7 +242,7 @@ def diagnosticar(uf: str, achados: list[dict], municipios: list[dict]) -> list[d
         elif atual["categoria"] != categoria_proposta and atual.get("url") != a["url"]:
             # o repositório mostra edição de categoria diferente da já registrada
             # (ex.: base tinha plano_antigo e o repositório agora lista edição vigente)
-            ordem = {"nao_localizado": 0, "plano_antigo": 1, "decreto": 1, "plano_elaboracao": 1, "plano": 2}
+            ordem = {"nao_localizado": 0, "plano_nomeado": 0, "plano_antigo": 1, "decreto": 1, "plano_elaboracao": 1, "plano": 2}
             if ordem.get(categoria_proposta, 0) > ordem.get(atual["categoria"], 0):
                 propostas.append({"acao": "atualizar", "uf": uf, "de_categoria": atual["categoria"], **registro_base})
         # se já é 'plano' ou 'plano_antigo' e a URL bate: nada a propor (já sincronizado)
