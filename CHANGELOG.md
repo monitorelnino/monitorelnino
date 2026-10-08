@@ -10,6 +10,14 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+## 2026-10-08 · #PR · Lote 1.4: a data do decreto deixa de ser a da portaria
+
+Nos 732 atos vindos do DOU, o campo `data` é a data da portaria de reconhecimento federal, e 674
+deles traziam a data do decreto municipal num campo que nenhuma superfície lia. Em 21 UFs a página
+publicava a data da portaria como "primeiro decreto" — AM mostrava 30/06 quando o decreto é de
+08/06. Agora as duas datas aparecem separadas e nomeadas, a regra está no §32.6 da METODOLOGIA, e
+dois autotestes a provam. Quem conta não muda.
+
 ## 2026-10-08 · #PR · Lote 0: a corrente noturna para de sangrar
 
 A guarda da janela nunca barrou nada — `if ! cmd | tee` devolve o status do `tee` —, e entre

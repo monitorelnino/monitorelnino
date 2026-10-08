@@ -65,19 +65,29 @@ def consolidar_municipios(eventos: list, verificacao: list) -> dict:
     out = {}
     for r in verificacao:
         out[str(r["ibge"]).zfill(7)] = {"ibge": str(r["ibge"]).zfill(7), "nome": r.get("nome"), "uf": r.get("uf"), "decreto": False,
-                                       "primeiro_decreto": None, "tipos": [], "reconhecido": bool(r.get("decreto_reconhecido")), "decretado": False,
+                                       "primeiro_decreto": None, "primeiro_reconhecimento": None, "tipos": [], "reconhecido": bool(r.get("decreto_reconhecido")), "decretado": False,
                                        "evento_observado": "em_classificacao", "fontes": [], "n_eventos": 0}
     for ev in eventos:
         ib = str(ev.get("ibge") or "").zfill(7)
         m = out.get(ib)
         if not m:
             continue
-        d = data_br(ev.get("data")); t = tipo_do_evento(ev)
+        # 08/10/2026 (A3-07): a data do DECRETO e a do decreto, nao a da portaria que o
+        # reconhece. Nos 732 eventos do DOU, `data` e a data de reconhecimento em 100%;
+        # 674 trazem `data_decreto_municipal`, e era esse campo que faltava ser lido. A
+        # data do reconhecimento nao se perde: vai ao lado, em `primeiro_reconhecimento`.
+        d = data_br(ev.get("data_decreto_municipal") or ev.get("data"))
+        d_rec = data_br(ev.get("data_reconhecimento") or ev.get("data"))
+        t = tipo_do_evento(ev)
         m["decreto"] = True; m["n_eventos"] += 1
         if t == "reconhecimento_federal": m["reconhecido"] = True
         else: m["decretado"] = True
         if t not in m["tipos"]: m["tipos"].append(t)
         if d and (m["primeiro_decreto"] is None or d < data_br(m["primeiro_decreto"])): m["primeiro_decreto"] = d.strftime("%d/%m/%Y")
+        if t == "reconhecimento_federal" and d_rec and (
+                m.get("primeiro_reconhecimento") is None
+                or d_rec < data_br(m["primeiro_reconhecimento"])):
+            m["primeiro_reconhecimento"] = d_rec.strftime("%d/%m/%Y")
         m["fontes"].append({"canal": ev.get("canal"), "fonte": ev.get("fonte"), "url": ev.get("url"), "data": ev.get("data"), "decreto": ev.get("decreto"), "hash": ev.get("hash_evidencia")})
     for m in out.values():
         if m["reconhecido"] and not m["decreto"]: m["decreto"] = True     # reconhecido via S2iD sem evento no arquivo de atos
@@ -98,6 +108,9 @@ def agregar_uf(municipios: dict, populacao: dict) -> dict:
                    # 15/09/2026 (decisão editorial, §32.4): ÍNDICE de resposta 0–100 = 100 × fração da população em município sob decreto
                    "indice": round(100.0 * pop_dec / pop_uf, 1) if pop_uf else 0.0,
                    "primeiro_decreto": min(datas).strftime("%d/%m/%Y") if datas else None,
+                   # 08/10/2026 (A3-07): as duas datas, nomeadas. Elas nao sao a mesma coisa, e a UF que
+                   # publicava "primeiro decreto" estava publicando a primeira portaria federal.
+                   "primeiro_reconhecimento": (min([data_br(m["primeiro_reconhecimento"]) for m in com if m.get("primeiro_reconhecimento")]).strftime("%d/%m/%Y") if [m for m in com if m.get("primeiro_reconhecimento")] else None),
                    "fatias": {"apos_evento": 0, "antes_com_previsao": 0, "em_classificacao": len(com)},
                    "tons": {"reconhecido": sum(1 for m in com if m["reconhecido"]), "decretado_sem_reconhecimento": sum(1 for m in com if m["decretado"] and not m["reconhecido"])}}
     return por
@@ -150,11 +163,18 @@ def gerar() -> int:
 
 def autoteste() -> int:
     V = [{"ibge": "1", "nome": "A", "uf": "RS", "decreto_reconhecido": None}, {"ibge": "2", "nome": "B", "uf": "RS", "decreto_reconhecido": True},
-         {"ibge": "3", "nome": "C", "uf": "RS", "decreto_reconhecido": None}, {"ibge": "4", "nome": "D", "uf": "BA", "decreto_reconhecido": None}]
+         {"ibge": "3", "nome": "C", "uf": "RS", "decreto_reconhecido": None}, {"ibge": "4", "nome": "D", "uf": "BA", "decreto_reconhecido": None},
+         # A3-07: municipio proprio para o caso da data do decreto, para nao mexer no que os
+         # outros casos medem.
+         {"ibge": "5", "nome": "E", "uf": "PR", "decreto_reconhecido": None}]
     E = [{"ibge": "1", "uf": "RS", "data": "10/07/2026", "causa": "situação de emergência", "canal": "DOM", "fonte": "x", "url": "u"},
          {"ibge": "1", "uf": "RS", "data": "20/07/2026", "causa": "reconhecimento federal", "canal": "DOU", "fonte": "y", "url": "u"},
-         {"ibge": "9", "uf": "XX", "data": "01/07/2026", "causa": "situação de emergência", "canal": "DOM", "fonte": "z", "url": "u"}]
-    P = {"0000001": 100, "0000002": 300, "0000003": 600, "0000004": 50}
+         {"ibge": "9", "uf": "XX", "data": "01/07/2026", "causa": "situação de emergência", "canal": "DOM", "fonte": "z", "url": "u"},
+         # A3-07: evento do DOU em que a data da PORTARIA (20/07) nao e a do DECRETO (10/06).
+         {"ibge": "5", "uf": "PR", "data": "20/07/2026", "data_decreto_municipal": "10/06/2026",
+          "data_reconhecimento": "20/07/2026", "causa": "reconhecimento federal", "canal": "DOU",
+          "fonte": "DOU", "url": "u"}]
+    P = {"0000001": 100, "0000002": 300, "0000003": 600, "0000004": 50, "0000005": 20}
     m = consolidar_municipios(E, V); por = agregar_uf(m, P)
     def t1(): return m["0000001"]["decreto"] and m["0000001"]["reconhecido"] and m["0000001"]["decretado"] and m["0000001"]["primeiro_decreto"] == "10/07/2026"
     def t2(): return m["0000002"]["decreto"] and m["0000002"]["reconhecido"] and not m["0000002"]["decretado"] and not m["0000003"]["decreto"]
@@ -163,7 +183,20 @@ def autoteste() -> int:
     def t5(): s = serie_semanal(m); return sum(x["municipios"] for x in s) == 1 and any(x["defeso"] for x in s) and s[0]["semana"] == "2026-06-29"
     def t6(): return all(m2["evento_observado"] == "em_classificacao" for m2 in m.values() if m2["decreto"])   # C16: nunca imputado
     def t7(): return "art. 73, VI, a" in FRASE_C18 and semana_de(date(2026, 7, 8)) == "2026-07-06"
-    return rodar_autoteste({"município: decretado + reconhecido, primeiro decreto": t1, "reconhecido só pelo S2iD conta; ibge fora do universo ignorado": t2,
+    def t9():
+        """A3-07: a data exibida e a do DECRETO; a da portaria fica ao lado, com outro nome."""
+        return (m["0000005"]["primeiro_decreto"] == "10/06/2026"
+                and m["0000005"]["primeiro_reconhecimento"] == "20/07/2026")
+
+    def t10():
+        """Sem `data_decreto_municipal`, a data do evento serve -- e nao se inventa reconhecimento
+        para evento que nao e de reconhecimento."""
+        return (m["0000001"]["primeiro_decreto"] == "10/07/2026"
+                and m["0000001"]["primeiro_reconhecimento"] == "20/07/2026")
+
+    return rodar_autoteste({"A3-07: data do decreto, nao da portaria": t9,
+                            "A3-07: sem data de decreto, a do evento serve": t10,
+                            "município: decretado + reconhecido, primeiro decreto": t1, "reconhecido só pelo S2iD conta; ibge fora do universo ignorado": t2,
                             "UF: fração de municípios e de população": t3, "fatias em_classificacao e tons": t4, "série desde 29/06 com defeso": t5,
                             "C16: evento observado nunca imputado": t6, "frase C18 e semana ISO": t7})
 
