@@ -36,7 +36,10 @@ function faceTile(uf){
   return `<div class="tile-face">
     <span>diários: ${((VRESUMO && VRESUMO.varredura_diarios && VRESUMO.varredura_diarios.por_uf) || {})[uf] || 0} de ${tot}</span>
     <span>${esc(ST[d.status] || d.status)}${d.data && d.data !== 'Recorrente' ? ' · ' + esc(d.data) : ''}</span>
-    <span>${d.capital && d.capital.nome ? esc(d.capital.nome) + ' · ' + esc(rotuloDaCapital(TABELA_MUNICIPIOS.find(m => m.uf === d.uf && m.nome === d.capital.nome))) : 'capital —'}</span></div>`;
+    <span>${d.capital && d.capital.nome ? esc(d.capital.nome) : 'capital —'}</span></div>`;
+  // 08/10/2026 (A3-11): o ladrilho mostra só o NOME da capital. Ele pinta antes de o banco
+  // chegar, e qualquer rótulo aqui seria ou o texto à mão que saiu, ou um estado lido de uma
+  // tabela que ainda não existe. O estado da capital aparece na ficha do estado, que lê o banco.
 }
 function barraResposta(uf){
   const r = RESP && RESP.uf && RESP.uf[uf]; if (!r) return '';
@@ -395,6 +398,21 @@ function riscoBox(uf){
 // em NOVE UFs, e o leitor via no mesmo clique "Novo, base da pontuacao" e "ainda nao verificado"
 // (Rio Branco). Agora ha uma fonte: o registro do banco. O texto vem das MESMAS frases do cartao
 // do municipio, pela mesma funcao de estado.
+// O registro da capital no banco. A ladrilheira dos estados pinta ANTES de `TABELA_MUNICIPIOS`
+// chegar do fetch, e `[].find` num objeto vazio derruba a pintura inteira — foi o que apagou o
+// seletor de UF e mais onze verificações de runtime na primeira versão deste item.
+function regDaCapital(d){
+  if (!d || !d.capital || !Array.isArray(TABELA_MUNICIPIOS)) return null;
+  return TABELA_MUNICIPIOS.find(m => m.uf === d.uf && m.nome === d.capital.nome) || null;
+}
+const CAT_ROTULO = {
+  plano: 'plano localizado', plano_novo: 'plano do ciclo', plano_readaptado: 'plano readaptado',
+  plano_recorrente: 'plano recorrente', plano_antigo: 'plano vigente de ciclo anterior',
+  plano_elaboracao: 'plano em elaboração', plano_nomeado: 'plano citado, documento não localizado',
+  estrutura: 'estrutura de coordenação', coberto_estadual: 'coberta pelo plano estadual',
+  nao_el_nino: 'ato alheio aos riscos do ciclo', nao_localizado: 'não localizado',
+  nao_verificado: 'ainda não verificada'
+};
 function textoDaCapital(reg){
   if (!reg) return 'Ainda não verificamos esta capital com todas as fontes. Isso não é uma afirmação sobre a existência do plano.';
   const st = statusDoPlano(reg.categoria);
@@ -413,14 +431,6 @@ function textoDaCapital(reg){
 function rotuloDaCapital(reg){
   return reg && CAT_ROTULO[reg.categoria] ? CAT_ROTULO[reg.categoria] : 'ainda não verificada';
 }
-const CAT_ROTULO = {
-  plano: 'plano localizado', plano_novo: 'plano do ciclo', plano_readaptado: 'plano readaptado',
-  plano_recorrente: 'plano recorrente', plano_antigo: 'plano vigente de ciclo anterior',
-  plano_elaboracao: 'plano em elaboração', plano_nomeado: 'plano citado, documento não localizado',
-  estrutura: 'estrutura de coordenação', coberto_estadual: 'coberta pelo plano estadual',
-  nao_el_nino: 'ato alheio aos riscos do ciclo', nao_localizado: 'não localizado',
-  nao_verificado: 'ainda não verificada'
-};
 
 function selectUF(uf, tileEl){
   // P2 (auditoria 07/09/2026): d.doc, d.orgao, d.estrutura.doc e o nome da capital são texto
@@ -974,7 +984,7 @@ function gerarRelatorioCidadao(uf, municipio){
       item(municipio + ': ' + quando + ' (' + e.causa + '). Ato de resposta a dano já ocorrido — não conta para o índice. Fonte: ' + e.fonte + '.');
     });
   } else if (d.capital) {
-    const regCap = TABELA_MUNICIPIOS.find(m => m.uf === uf && m.nome === d.capital.nome);
+    const regCap = regDaCapital(d);
     item('Capital (' + d.capital.nome + '): ' + textoDaCapital(regCap).replace(/<[^>]*>/g, ''));
   }
   if (uf !== 'DF') item('Municípios do estado com algum ato localizado: ' + i.com_ato + ' de ' + i.total + ' (' + fmt(i.pct) + '%) — ' + i.n_plano + ' com plano preventivo, ' + i.n_decreto + ' com decreto de emergência.');  // DF: o único município é Brasília, já descrita como capital
@@ -1005,7 +1015,7 @@ function gerarRelatorioCidadao(uf, municipio){
   } else if (d.capital) {
     // A lacuna da capital sai da MESMA fonte do resto: a categoria do banco, nunca o texto
     // escrito à mão em `estados.json` (A3-11).
-    const regCap = TABELA_MUNICIPIOS.find(m => m.uf === d.uf && m.nome === d.capital.nome);
+    const regCap = regDaCapital(d);
     const catCap = regCap ? regCap.categoria : '';
     if (!catCap || catCap === 'nao_verificado') faltas.push('Ainda não verificamos a capital com a bateria completa de fontes.');
     else if (catCap === 'nao_localizado') faltas.push('Não localizamos plano de contingência da capital até o corte.');
