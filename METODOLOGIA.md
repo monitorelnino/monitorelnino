@@ -4056,6 +4056,31 @@ O portão de coerência **continua**, no lugar certo: ele compara o motor da sem
 de origem, porque é do motor que o boletim tira os números. Se o motor divergir da página, o
 boletim nasce errado — e o portão pega antes de nascer.
 
+## 104. Nomeado não é localizado: nada pontua sem documento lido (decisão D1 da editoria, 08/10/2026)
+
+A auditoria geral de 08/10/2026 encontrou **47 registros municipais recebendo crédito no índice sem
+documento nenhum**: 41 sem endereço e 6 com notícia no lugar do documento — 24 `plano`, 11
+`plano_antigo`, 12 `plano_elaboracao`. A metodologia já exigia documento primário (§6, trava de
+prova); o que faltava era a régua ter uma categoria e um portão.
+
+A categoria nova é **`plano_nomeado`**, crédito **0**: plano de contingência **citado por fonte
+oficial, datado, cujo documento não foi localizado até o corte**. Ela não é uma régua nova nem um
+peso novo — é a classe de ausência aplicada a quem estava na classe de presença. Fica entre
+`nao_localizado` (ninguém achou nada) e o plano lido: a citação oficial existe, está datada, e o
+site a publica como citação, não como documento. Por isso o crédito é o mesmo das outras ausências
+(`nao_localizado`, `nao_verificado`: 0) e **não há mudança de peso de componente** — o §12 exige
+versão maior para mudança de peso, crédito ou componente, e nenhum dos três muda.
+
+Para sair de `plano_nomeado`, o registro precisa de documento em endereço do próprio ente, lido pela
+máquina e preservado por hash. Endereço de notícia, de sala de imprensa ou raiz de portal não é
+documento. Quem reprova é **`scripts/verificar_documento_de_plano.py`**, portão bloqueante.
+
+**O efeito publicado, medido antes e depois:** a média nacional do MARÉ Legal cai de **45,3 para
+40,8**, e 17 UFs mudam de nota — Sergipe de 87,7 para 71,5, Roraima de 48,1 para 26,5, Rondônia de
+60,7 para 51,3. A queda não é perda de preparação: é a retirada do que nunca foi lido. Zero medido
+é melhor que número inventado, e cada registro afetado guarda o que era, em `registro_anterior`,
+para voltar inteiro quando o documento aparecer.
+
 ## 105. MARÉ Legal v3.2 — preparação programática: o arranjo permanente de resposta à seca (decidido em 05/10/2026, calculado em paralelo desde 08/10/2026)
 
 A régua do índice pergunta por **plano publicado**. No Semiárido, uma parte da preparação não tem
@@ -4081,10 +4106,7 @@ cumprem ao mesmo tempo, todas em fonte oficial**:
 plano: o arranjo **não soma**. Na cobertura populacional, o município com arranjo conta com o mesmo
 crédito, 0,45.
 
-**O que está medido, em 08/10/2026:** 191 municípios cumprem as três condições; 190 deles não têm
-plano publicado e entrariam no crédito. A média nacional iria de **45,3 para 45,6**, com oito UFs
-mudando de nota — RN 8,6 → 10,5, PB 10,2 → 11,8, PE 16,8 → 18,7, CE 20,5 → 22,1, AL 54,4 → 55,4,
-BA 15,0 → 15,8, PI 27,6 → 28,1, SE 87,7 → 88,5.
+**O que está medido, em 08/10/2026:** 191 municípios cumprem as três condições; 190 deles não têm plano publicado e entrariam no crédito. O efeito depende da base em que se mede, e por isso o relatório paralelo (`data/paralelo_v32.json`) o recalcula a cada rodada: medido sobre a base do dia, **com a decisão D1 já aplicada**, a média nacional iria de **40,8 para 41,2**; medida antes da D1, no mesmo dia, ia de 45,3 para 45,6. Em qualquer das duas, as oito UFs que mudam são as do Semiárido com reconhecimento vigente e atendimento do Carro-Pipa — AL, BA, CE, PB, PE, PI, RN e SE.
 
 **A v3.2 roda em paralelo e não publica nada.** O índice no ar é o da v3.1; o cálculo da v3.2 é
 derivado da cadeia, fica em `data/paralelo_v32.json` — ao lado do `robustez_mc.json` — e **nenhuma
