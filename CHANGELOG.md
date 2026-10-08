@@ -13,13 +13,17 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-08 · #PR · Lote 1.9: a data do plano é a do documento, não a da nossa consulta
-
-Oitenta e quatro fichas de ES e SE publicavam 26/08/2026 como data do plano: era o dia em que o Monitor abriu o repositório estadual. Nove delas são planos antigos, e diziam 2026 — contradição entre a categoria e a data. `data` passa a ser o ano da edição do documento (ou o da atualização, quando declarada) e a consulta ganha campo próprio, `localizado_em`. Portão novo `verificar_datas_de_instrumento.py`, com fixtures de ES e SE.
 
 ## 2026-10-08 · #PR · Lote 1.6: 71 reconhecimentos federais que a União publicou e o banco não tinha
 
 A planilha da Operação Carro-Pipa, recebida do MIDR em 05/10, lista as portarias de reconhecimento por município. Setenta e uma portarias do ciclo não tinham par no banco e 70 municípios não tinham evento nenhum — 69 na mesma portaria, a nº 2.203, vizinha de duas que o banco já tinha. Contador de resposta: 726 → 796 municípios, 10,2% → 11,4% da população; PE de 40 para 107 municípios. Entram com `documento_nao_localizado`. Portão: regra (h).
+## 2026-10-08 · #PR · Lote 1.9: a data do plano é a do documento, não a da nossa consulta
+
+Oitenta e quatro fichas de ES e SE publicavam 26/08/2026 como data do plano: era o dia em que o Monitor abriu o repositório estadual. Nove delas são planos antigos, e diziam 2026 — contradição entre a categoria e a data. `data` passa a ser o ano da edição do documento (ou o da atualização, quando declarada) e a consulta ganha campo próprio, `localizado_em`. Portão novo `verificar_datas_de_instrumento.py`, com fixtures de ES e SE.
+
+## 2026-10-08 · #PR · Lote 1.12: o campo do documento publica título, não sobra de página
+
+Quatro fichas publicavam o texto que estava na página do PDF: "o documento É o instrumento nomeado: tanhaém…" (Itanhaém), "neste Plano. 11/08/2026 Página 3 de 72…" (Umuarama e Leme), "a Católica 8 1.5. INSTRUÇÕES PARA USO…" (Celso Ramos). O campo passa a ser o título do documento, extraído pela mesma função do aplicador do juiz; sem título provado, vale a forma genérica, e sem prova de que é plano, vale a classificação. Portão novo.
 
 ## 2026-10-08 · #PR · Lote 1.2: o decreto do diário consorciado deixa de ir ao município errado
 
