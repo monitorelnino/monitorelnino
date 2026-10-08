@@ -33,6 +33,10 @@ Quatro fichas publicavam o texto que estava na página do PDF: "o documento É o
 
 O reconhecimento vindo da notícia do MIDR recebia a data da primeira portaria do lote e o link da notícia; dias depois o DOU trazia o ato exato, com outra data, e a deduplicação por data não casava. Eram 17 municípios com dois reconhecimentos onde houve um. A chave passa a ser (município, causa, portaria), o ato exato substitui o lote, e os 332 eventos com data de lote passam a declarar `data_aproximada`. O `except: pass` que escondia a causa virou lacuna registrada.
 
+## 2026-10-08 · #PR · Lote 4.1: os medidores voltam a mostrar número
+
+Os 21 estados verificados do MARÉ Saúde mostravam **0,0** na grade, e a ficha aberta por `index.html#UF` — o caminho do selo embutido em outro site — abria com 0,0/100: a função que escreve o número vivia no escopo de um módulo, e a outra página chamava uma função que não existia, com a guarda engolindo a ausência. O valor estava certo no atributo todo esse tempo. Um dono só, em `assets/mapas.js`, e o portão passa a exigir o número escrito.
+
 ## 2026-10-08 · #PR · Lote 1.2: o decreto do diário consorciado deixa de ir ao município errado
 
 A posição do decreto no PDF vinha de `texto.find(numero)` — a primeira ocorrência da string do

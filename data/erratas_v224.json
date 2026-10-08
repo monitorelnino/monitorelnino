@@ -1019,5 +1019,14 @@
   "por_que": "D1 (08/10/2026), achados A4-05 e A4-09: o registro recebia crédito no índice sem documento — sem endereço nenhum, ou com notícia no lugar do documento. Passa a `plano_nomeado`, crédito 0, até a busca dirigida anexar o documento; o que era fica guardado em `registro_anterior`. Portão: `scripts/verificar_documento_de_plano.py`. Metodologia §104.",
   "achado": "A4-05",
   "lote": "1.11"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "os 21 estados verificados do MARÉ Saúde mostravam 0,0 na grade, e a ficha aberta por `index.html#UF` — o caminho do selo embutido em outro site — abria com 0,0/100 e a barra vazia. Passam a mostrar o valor",
+  "por_que": "A4-01 e A4-04: a função que escreve o número no medidor morava no escopo de `assets/js/index.js`, e o MARÉ Saúde chamava `MonitorMapas.animarGauges`, que não existia — a guarda engolia a ausência em silêncio. O valor estava correto no atributo `data-contar` todo esse tempo; ninguém o escrevia. A animação passa a ter um dono, em `assets/mapas.js`, que as duas páginas carregam, e o portão de runtime passa a exigir o número escrito, não o atributo.",
+  "achado": "A4-01",
+  "lote": "4.1"
  }
 ]
