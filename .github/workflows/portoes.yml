@@ -178,6 +178,11 @@ jobs:
           # assunto: texto
           python3 gerar_blog.py --autoteste
           # assunto: dado
+          python3 scripts/verificar_datas_de_instrumento.py --autoteste
+          # assunto: dado
+          # barra_publicacao: sim
+          python3 scripts/verificar_datas_de_instrumento.py
+          # assunto: dado
           python3 scripts/verificar_esquema_de_ato.py --autoteste
           # assunto: dado
           # barra_publicacao: sim
