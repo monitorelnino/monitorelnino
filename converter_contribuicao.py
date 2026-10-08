@@ -57,7 +57,8 @@ from coletores_base import hoje_editorial, gravar_em  # noqa: E402
 RAIZ = Path(__file__).parent
 DATA = RAIZ / "data"
 
-CATEGORIAS_VALIDAS = {"plano", "plano_antigo", "plano_elaboracao", "decreto",
+CATEGORIAS_VALIDAS = {"plano", "plano_antigo", "plano_elaboracao",
+                      "plano_nomeado", "decreto",
                       "coberto_estadual", "nao_el_nino", "nao_localizado",
                       "plano_novo", "plano_readaptado", "plano_recorrente"}  # §202
 

@@ -763,6 +763,10 @@ const PLANO_ESTADUAL = ['coberto_estadual'];
 function statusDoPlano(categoria){
   if (PLANO_ENCONTRADO.includes(categoria)) return 'encontrado';
   if (PLANO_ESTADUAL.includes(categoria)) return 'estadual';
+  // 08/10/2026 (D1): plano CITADO por fonte oficial cujo documento nao foi localizado tem estado
+  // proprio. Dizer "localizado" seria afirmar o que nao se leu; dizer "nao localizamos plano"
+  // apagaria a citacao oficial, que existe e esta datada.
+  if (categoria === 'plano_nomeado') return 'nomeado';
   return 'nao_encontrado';
 }
 
@@ -819,6 +823,10 @@ function renderMinha(){
     if (m && m.sem_ato_de_aprovacao){
       html += `<p class="note">Sem ato de aprovação localizado: o plano está publicado em domínio oficial do município; o decreto ou portaria que o aprova não foi localizado até a data de corte.</p>`;
     }
+  } else if (status === 'nomeado'){
+    const q1 = m.fonte ? esc(m.fonte) : 'fonte oficial';
+    const d1 = m.data ? ', ' + esc(dataBR(m.data) || m.data) : '';
+    html += `<p class="fv"><strong>Plano de contingência citado em fonte oficial (${q1}${d1}); documento não localizado até o corte.</strong></p>`;
   } else if (m && m.categoria === 'nao_localizado'){
     // "Não localizamos" só onde a busca DE FATO ocorreu e não achou. É o teto público de ausência
     // do projeto: nunca "não existe", e nunca sobre município que ninguém procurou.
