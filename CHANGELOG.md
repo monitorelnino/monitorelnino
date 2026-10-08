@@ -10,6 +10,14 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+## 2026-10-08 · #PR · A semana epidemiológica não chega mais ao leitor
+
+Regra da editoria para o site inteiro. O leitor lia "semana epidemiológica 33"; passa a ler "na
+semana de 16 a 22 de agosto de 2026". Acumulados viram "de 1º de janeiro a 22 de agosto"; o eixo
+dos gráficos semanais vira de meses, com as datas no tooltip. A conversão segue a regra do
+Ministério da Saúde e é conferida contra o calendário publicado em quatro anos de virada. O dado
+continua guardado por semana: muda o que se escreve na tela, não o que se coleta.
+
 ## 2026-10-07 · #PR · O redirect do HUD sai: o Netlify ignora `/.netlify/*`
 
 Publicado e medido contra o domínio real, o 404 no caminho do script do Drawer não pegou — a área

@@ -235,9 +235,9 @@ python3 scripts/portoes_locais.py tudo        # ou: paginas | dados
 ```
 
 A lista de portões **não vive aqui**. Ela é derivada de `.github/workflows/portoes.yml`, que
-é o único lugar que reprova de verdade — em 07/10/2026 são **217 comandos** (`--listar` confere):
-101 no perfil `paginas` e 116 no `dados`, sem repetição entre os dois; destes, 127 são
-`--autoteste` e 90 são portão propriamente dito. Este arquivo e o PROTOCOLO
+é o único lugar que reprova de verdade — em 08/10/2026 são **219 comandos** (`--listar` confere).
+Eram 217 em 07/10, e subiram dois no dia seguinte com o portão da semana epidemiológica: é o
+envelhecimento que o parágrafo abaixo descreve, acontecendo. Este arquivo e o PROTOCOLO
 §3.3 *descrevem* o conjunto; não o definem.
 
 **Este número envelhece por rotina, como os tamanhos da tabela acima.** Ele dizia 61 e ficou
@@ -426,6 +426,17 @@ ocorrer. A etiqueta *Boletim* saiu.
 
 ## Regras editoriais que o código não pode violar
 
+- **A semana epidemiológica não chega ao leitor** (editoria, 07/10/2026, para o site inteiro).
+  Nenhuma página, legenda, eixo, tooltip, cartão ou texto gerado mostra "semana epidemiológica",
+  "SE", "SE 33" nem "202637". O dado continua sendo coletado e guardado por semana — isso é da
+  fonte e não muda; o que muda é o que se escreve na tela, que é o **intervalo de datas**: "na
+  semana de 16 a 22 de agosto de 2026". Acumulado: "de 1º de janeiro a 22 de agosto de 2026".
+  Eixo horizontal de gráfico semanal: **meses**, com o intervalo de datas no tooltip. A conversão
+  é `assets/semana.js`, com a regra do Ministério da Saúde (domingo a sábado; a semana 1 é a
+  primeira com pelo menos quatro dias de janeiro) e autoteste conferido contra o calendário
+  publicado em quatro anos de virada diferente. Portão: `scripts/verificar_semana_epidemiologica.js`,
+  que procura no texto **renderizado** — o texto montado a partir do dado não aparece numa busca
+  pelo fonte, e era de lá que a semana vinha.
 - Nunca inventar dado. Ausência é "lacuna declarada", com fonte.
 - Teto público de ausência: "não localizamos até o corte" — nunca "não existe".
 - Zero, ausência de dado, dado indisponível e dado não coletado são coisas distintas.
