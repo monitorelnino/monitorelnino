@@ -29,6 +29,10 @@ Oitenta e quatro fichas de ES e SE publicavam 26/08/2026 como data do plano: era
 
 Quatro fichas publicavam o texto que estava na página do PDF: "o documento É o instrumento nomeado: tanhaém…" (Itanhaém), "neste Plano. 11/08/2026 Página 3 de 72…" (Umuarama e Leme), "a Católica 8 1.5. INSTRUÇÕES PARA USO…" (Celso Ramos). O campo passa a ser o título do documento, extraído pela mesma função do aplicador do juiz; sem título provado, vale a forma genérica, e sem prova de que é plano, vale a classificação. Portão novo.
 
+## 2026-10-08 · #PR · Lote 1.7: um reconhecimento por município, e a data que diz o que é
+
+O reconhecimento vindo da notícia do MIDR recebia a data da primeira portaria do lote e o link da notícia; dias depois o DOU trazia o ato exato, com outra data, e a deduplicação por data não casava. Eram 17 municípios com dois reconhecimentos onde houve um. A chave passa a ser (município, causa, portaria), o ato exato substitui o lote, e os 332 eventos com data de lote passam a declarar `data_aproximada`. O `except: pass` que escondia a causa virou lacuna registrada.
+
 ## 2026-10-08 · #PR · Lote 1.2: o decreto do diário consorciado deixa de ir ao município errado
 
 A posição do decreto no PDF vinha de `texto.find(numero)` — a primeira ocorrência da string do
