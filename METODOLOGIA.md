@@ -4053,3 +4053,28 @@ edição, os três números congelados e o caminho para ela.
 O portão de coerência **continua**, no lugar certo: ele compara o motor da semana com as páginas
 de origem, porque é do motor que o boletim tira os números. Se o motor divergir da página, o
 boletim nasce errado — e o portão pega antes de nascer.
+
+## 104. Nomeado não é localizado: nada pontua sem documento lido (decisão D1 da editoria, 08/10/2026)
+
+A auditoria geral de 08/10/2026 encontrou **47 registros municipais recebendo crédito no índice sem
+documento nenhum**: 41 sem endereço e 6 com notícia no lugar do documento — 24 `plano`, 11
+`plano_antigo`, 12 `plano_elaboracao`. A metodologia já exigia documento primário (§6, trava de
+prova); o que faltava era a régua ter uma categoria e um portão.
+
+A categoria nova é **`plano_nomeado`**, crédito **0**: plano de contingência **citado por fonte
+oficial, datado, cujo documento não foi localizado até o corte**. Ela não é uma régua nova nem um
+peso novo — é a classe de ausência aplicada a quem estava na classe de presença. Fica entre
+`nao_localizado` (ninguém achou nada) e o plano lido: a citação oficial existe, está datada, e o
+site a publica como citação, não como documento. Por isso o crédito é o mesmo das outras ausências
+(`nao_localizado`, `nao_verificado`: 0) e **não há mudança de peso de componente** — o §12 exige
+versão maior para mudança de peso, crédito ou componente, e nenhum dos três muda.
+
+Para sair de `plano_nomeado`, o registro precisa de documento em endereço do próprio ente, lido pela
+máquina e preservado por hash. Endereço de notícia, de sala de imprensa ou raiz de portal não é
+documento. Quem reprova é **`scripts/verificar_documento_de_plano.py`**, portão bloqueante.
+
+**O efeito publicado, medido antes e depois:** a média nacional do MARÉ Legal cai de **45,3 para
+40,8**, e 17 UFs mudam de nota — Sergipe de 87,7 para 71,5, Roraima de 48,1 para 26,5, Rondônia de
+60,7 para 51,3. A queda não é perda de preparação: é a retirada do que nunca foi lido. Zero medido
+é melhor que número inventado, e cada registro afetado guarda o que era, em `registro_anterior`,
+para voltar inteiro quando o documento aparecer.
