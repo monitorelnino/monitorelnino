@@ -506,5 +506,41 @@
   "por_que": "A3-09: `atualizar_instrumentos_estaduais.py` gravava em `data` o dia em que o Monitor abriu o repositório estadual, e a ficha publicava aquilo como se fosse a data do plano. A data da consulta passa a ter campo próprio (`localizado_em`) e `data` passa a ser o ano da edição do documento — ou o da atualização, quando o documento a declara. Portão: `scripts/verificar_datas_de_instrumento.py`.",
   "achado": "A3-09",
   "lote": "1.9"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "PE",
+  "municipio": null,
+  "o_que_mudou": "a fração da população sob decreto no estado passa de 15,9% para 41,1%",
+  "por_que": "A3-06: a planilha oficial da Operação Carro-Pipa, recebida do MIDR em 05/10/2026 em resposta a pedido de acesso à informação, lista por município as portarias de reconhecimento com data e DOU. Setenta e uma portarias do ciclo não tinham par em `data/atos_resposta.json` e 70 municípios não tinham evento nenhum — 69 na mesma portaria, a nº 2.203 (DOU de 06/07/2026), vizinha das nº 2.200 e nº 2.212, que o banco tinha: lote inteiro perdido pelo coletor do DOU. Os eventos entram com `documento_nao_localizado`, porque a prova é a planilha do órgão e o texto da portaria ainda não foi lido. Portão: regra (h) de `verificar_resposta.py`.",
+  "achado": "A3-06",
+  "lote": "1.6"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "PB",
+  "municipio": null,
+  "o_que_mudou": "a fração da população sob decreto no estado passa de 13,0% para 13,1%",
+  "por_que": "A3-06: a planilha oficial da Operação Carro-Pipa, recebida do MIDR em 05/10/2026 em resposta a pedido de acesso à informação, lista por município as portarias de reconhecimento com data e DOU. Setenta e uma portarias do ciclo não tinham par em `data/atos_resposta.json` e 70 municípios não tinham evento nenhum — 69 na mesma portaria, a nº 2.203 (DOU de 06/07/2026), vizinha das nº 2.200 e nº 2.212, que o banco tinha: lote inteiro perdido pelo coletor do DOU. Os eventos entram com `documento_nao_localizado`, porque a prova é a planilha do órgão e o texto da portaria ainda não foi lido. Portão: regra (h) de `verificar_resposta.py`.",
+  "achado": "A3-06",
+  "lote": "1.6"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "RN",
+  "municipio": null,
+  "o_que_mudou": "a fração da população sob decreto no estado passa de 14,6% para 14,9%",
+  "por_que": "A3-06: a planilha oficial da Operação Carro-Pipa, recebida do MIDR em 05/10/2026 em resposta a pedido de acesso à informação, lista por município as portarias de reconhecimento com data e DOU. Setenta e uma portarias do ciclo não tinham par em `data/atos_resposta.json` e 70 municípios não tinham evento nenhum — 69 na mesma portaria, a nº 2.203 (DOU de 06/07/2026), vizinha das nº 2.200 e nº 2.212, que o banco tinha: lote inteiro perdido pelo coletor do DOU. Os eventos entram com `documento_nao_localizado`, porque a prova é a planilha do órgão e o texto da portaria ainda não foi lido. Portão: regra (h) de `verificar_resposta.py`.",
+  "achado": "A3-06",
+  "lote": "1.6"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "o contador de resposta passa de 726 para 796 municípios e de 10,2% para 11,4% da população; Pernambuco passa de 40 para 107 municípios com ato de resposta no banco",
+  "por_que": "A3-06: a planilha oficial da Operação Carro-Pipa, recebida do MIDR em 05/10/2026 em resposta a pedido de acesso à informação, lista por município as portarias de reconhecimento com data e DOU. Setenta e uma portarias do ciclo não tinham par em `data/atos_resposta.json` e 70 municípios não tinham evento nenhum — 69 na mesma portaria, a nº 2.203 (DOU de 06/07/2026), vizinha das nº 2.200 e nº 2.212, que o banco tinha: lote inteiro perdido pelo coletor do DOU. Os eventos entram com `documento_nao_localizado`, porque a prova é a planilha do órgão e o texto da portaria ainda não foi lido. Portão: regra (h) de `verificar_resposta.py`.",
+  "achado": "A3-06",
+  "lote": "1.6"
  }
 ]

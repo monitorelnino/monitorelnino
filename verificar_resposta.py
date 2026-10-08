@@ -103,6 +103,24 @@ try:
     if sem_codigo:
         erro(f"(g2) {len(sem_codigo)} evento(s) sem `ibge` casavel na malha: "
              + ", ".join(sorted(set(sem_codigo))[:8]))
+    # (h) 08/10/2026 (A3-06): toda portaria de reconhecimento que a planilha oficial da Operação
+    # Carro-Pipa lista com data no ciclo tem de ter par no banco. Faltavam 71, e 70 municípios
+    # não tinham evento NENHUM — 68 de Pernambuco, 69 na mesma portaria, a nº 2.203. Lote inteiro
+    # perdido pelo coletor do DOU, com o dado que o provava parado no repositório desde 05/10.
+    import importlib.util as _iu
+    _spec = _iu.spec_from_file_location("_ocp", RAIZ / "scripts" / "cruzar_ocp_com_atos.py")
+    _ocp = _iu.module_from_spec(_spec)
+    _spec.loader.exec_module(_ocp)
+    _plan = json.loads((RAIZ / "data" / "programas_federais" / "ocp_2026.json")
+                       .read_text(encoding="utf-8"))["municipios"]
+    _fora = _ocp.faltantes(_plan, atos)
+    if _fora:
+        _ufs = {}
+        for f in _fora:
+            _ufs[f["uf"]] = _ufs.get(f["uf"], 0) + 1
+        erro(f"(h) {len(_fora)} portaria(s) da OCP no ciclo sem evento em atos_resposta: "
+             + ", ".join(f"{u} {n}" for u, n in sorted(_ufs.items()))
+             + " — rode scripts/cruzar_ocp_com_atos.py --aplicar")
 except Exception as e:  # noqa: BLE001
     erro(f"portão falhou ao executar: {e}")
 if erros:
