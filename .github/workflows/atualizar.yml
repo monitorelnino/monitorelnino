@@ -102,7 +102,6 @@ jobs:
 
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: Repor o site completo no domínio (main atual), atrás de senha
-        if: steps.janela.outputs.pode == '1'
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
@@ -490,7 +489,10 @@ jobs:
           set -o pipefail
           python atualizar.py 2>&1 | tee /tmp/atualizar.log
       - name: Relatório da execução no repositório privado (sempre)
-        if: steps.janela.outputs.pode == '1' && (always())
+        # A guarda NAO condiciona este passo (08/10/2026): ele repoe o dominio, e tem
+        # de rodar mesmo quando um passo anterior falhou. `testar_reposicao_dominio.py`
+        # cobra exatamente isso.
+        if: always()
         # §246 (27/09/2026): `continue-on-error` aqui é o que separa DIAGNÓSTICO de PRODUTO.
         # O `if:` do passo de commit não traz função de status, e quando o `if:` não traz uma, o
         # GitHub soma o `success()` implícito — "todos os passos anteriores passaram". Este passo
@@ -555,7 +557,10 @@ jobs:
         # em relação à base (o defeito clássico de PDF montado à mão).
 
       - name: Avisar sobre propostas pendentes de revisão humana
-        if: steps.janela.outputs.pode == '1' && (always())
+        # A guarda NAO condiciona este passo (08/10/2026): ele repoe o dominio, e tem
+        # de rodar mesmo quando um passo anterior falhou. `testar_reposicao_dominio.py`
+        # cobra exatamente isso.
+        if: always()
         run: |
           if [ -f data/instrumentos_revisar.json ]; then
             echo "::warning::Há propostas em data/instrumentos_revisar.json aguardando revisão humana (não aplicadas automaticamente)."
@@ -565,7 +570,10 @@ jobs:
           fi
 
       - name: Verificar links externos (informativa; nunca remove link — decisão humana)
-        if: steps.janela.outputs.pode == '1' && (always())
+        # A guarda NAO condiciona este passo (08/10/2026): ele repoe o dominio, e tem
+        # de rodar mesmo quando um passo anterior falhou. `testar_reposicao_dominio.py`
+        # cobra exatamente isso.
+        if: always()
         continue-on-error: true
         run: |
           # 31/08/2026: verificar_links.py existia, mas não rodava em lugar nenhum — o
@@ -579,7 +587,10 @@ jobs:
           tail -40 links_relatorio.txt
           if [ "$QUEBRADOS" != "0" ]; then echo "::warning::$QUEBRADOS link(s) externos com problema — ver artefato links_relatorio.txt e decidir (remover, substituir ou manter nomeado sem link)."; fi
       - name: Guardar relatório de links
-        if: steps.janela.outputs.pode == '1' && (always())
+        # A guarda NAO condiciona este passo (08/10/2026): ele repoe o dominio, e tem
+        # de rodar mesmo quando um passo anterior falhou. `testar_reposicao_dominio.py`
+        # cobra exatamente isso.
+        if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: links-relatorio
@@ -788,7 +799,10 @@ jobs:
         #   dominio: "senha"   -> site completo, Basic-Auth + noindex (este passo)
         #   dominio: "cortina" -> cortina/"em atualização" (nada a fazer: já é o que ficou do passo inicial)
         #   dominio: "aberto"  -> lançamento; fora do escopo deste passo, que sempre põe noindex
-        if: steps.janela.outputs.pode == '1' && (always())
+        # A guarda NAO condiciona este passo (08/10/2026): ele repoe o dominio, e tem
+        # de rodar mesmo quando um passo anterior falhou. `testar_reposicao_dominio.py`
+        # cobra exatamente isso.
+        if: always()
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
