@@ -14,6 +14,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+
+## 2026-10-08 · #PR · Lote 1.14: o PDF público passa a descrever o índice que existe
+
+A análise de sensibilidade tinha a conta da cobertura copiada do motor, e a cópia divergiu: ignorava a camada declarada nacional e usava 0,3 onde o motor usa 0,5. O PDF publicava a tabela de camadas errada (DF 100% documentado contra 38/62 do motor), escrevia a cobertura na coluna da estrutura, nomeava "Antecipação" como componente e trazia o crédito antigo do plano de ciclo anterior. Conta única `cobertura_de_uf`; índice reproduzido sem mudança. Portão novo.
 ## 2026-10-08 · #PR · Lote 1.3: uma porta só para a data do ato, em dd/mm/aaaa
 
 As 97 datas de ato vindas do diário consorciado estavam em ISO, e o resto do arquivo em dd/mm/aaaa. O gerador compara strings: o que não casava virava ausência. Vinte e sete fichas publicavam o primeiro decreto em branco, a de Roraima também, e a série semanal parava em 629 em vez de 656. Nova porta `coletores_base.data_br_de`, `data_ato` e `data_publicacao` no evento, esquema `schemas/ato_resposta.json` e portão que reprova data em ISO. Erratas: 29.
@@ -25,9 +29,9 @@ Oitenta e quatro fichas de ES e SE publicavam 26/08/2026 como data do plano: era
 
 Quatro fichas publicavam o texto que estava na página do PDF: "o documento É o instrumento nomeado: tanhaém…" (Itanhaém), "neste Plano. 11/08/2026 Página 3 de 72…" (Umuarama e Leme), "a Católica 8 1.5. INSTRUÇÕES PARA USO…" (Celso Ramos). O campo passa a ser o título do documento, extraído pela mesma função do aplicador do juiz; sem título provado, vale a forma genérica, e sem prova de que é plano, vale a classificação. Portão novo.
 
-## 2026-10-08 · #PR · Lote 1.14: o PDF público passa a descrever o índice que existe
+## 2026-10-08 · #PR · Lote 1.7: um reconhecimento por município, e a data que diz o que é
 
-A análise de sensibilidade tinha a conta da cobertura copiada do motor, e a cópia divergiu: ignorava a camada declarada nacional e usava 0,3 onde o motor usa 0,5. O PDF publicava a tabela de camadas errada (DF 100% documentado contra 38/62 do motor), escrevia a cobertura na coluna da estrutura, nomeava "Antecipação" como componente e trazia o crédito antigo do plano de ciclo anterior. Conta única `cobertura_de_uf`; índice reproduzido sem mudança. Portão novo.
+O reconhecimento vindo da notícia do MIDR recebia a data da primeira portaria do lote e o link da notícia; dias depois o DOU trazia o ato exato, com outra data, e a deduplicação por data não casava. Eram 17 municípios com dois reconhecimentos onde houve um. A chave passa a ser (município, causa, portaria), o ato exato substitui o lote, e os 332 eventos com data de lote passam a declarar `data_aproximada`. O `except: pass` que escondia a causa virou lacuna registrada.
 
 ## 2026-10-08 · #PR · Lote 1.2: o decreto do diário consorciado deixa de ir ao município errado
 

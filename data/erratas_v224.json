@@ -844,6 +844,24 @@
   "data": "08/10/2026",
   "uf": null,
   "municipio": null,
+  "o_que_mudou": "17 municípios tinham dois reconhecimentos federais onde houve um — entre eles Irauçuba/CE, Japurá/AM, Monsenhor Tabosa/CE e Porto Seguro/BA; passam a um registro só, com a data, o endereço e o hash do ato exato. O banco vai de 929 para 912 atos",
+  "por_que": "A6-04 e A6-28: o reconhecimento lido pela notícia do MIDR, quando a página da portaria não casava o município — ou falhava em silêncio, num `except: pass` —, recebia a data da PRIMEIRA portaria da notícia e o link da notícia. Dias depois o canal do DOU lia o ato exato, com outra data, e a chave de deduplicação, que incluía a data, não casava: entrava um segundo evento. A deduplicação passa a ser por (município, causa, portaria), com janela de 15 dias para o lote, e o ato exato SUBSTITUI o lote.",
+  "achado": "A6-04",
+  "lote": "1.7"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "332 reconhecimentos cuja data é a da primeira portaria do lote, e não a do ato do próprio município, passam a declarar isso no registro (`data_aproximada`)",
+  "por_que": "A6-04 e A6-28: o reconhecimento lido pela notícia do MIDR, quando a página da portaria não casava o município — ou falhava em silêncio, num `except: pass` —, recebia a data da PRIMEIRA portaria da notícia e o link da notícia. Dias depois o canal do DOU lia o ato exato, com outra data, e a chave de deduplicação, que incluía a data, não casava: entrava um segundo evento. A deduplicação passa a ser por (município, causa, portaria), com janela de 15 dias para o lote, e o ato exato SUBSTITUI o lote.",
+  "achado": "A6-04",
+  "lote": "1.7"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
   "o_que_mudou": "o PDF público 'Documentação do Índice' publicava a tabela de camadas da cobertura errada — DF aparecia como 100% documentado, quando o motor tem 38% documentado e 62% declarado — e um efeito de variante que era artefato da divergência (as notas não mudam)",
   "por_que": "A3-05: `analise_sensibilidade.py` tinha a conta da cobertura COPIADA do motor, e a cópia divergiu — ignorava a camada declarada nacional (ativa desde 21/09) e aplicava 0,3 ao plano desatualizado onde o motor aplica 0,5. A conta passa a ter um dono, `recalcular_mare.cobertura_de_uf`, e o portão `scripts/verificar_camadas_do_pdf.py` compara a análise com o índice publicado, UF por UF.",
   "achado": "A3-05",

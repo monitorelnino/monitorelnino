@@ -22,7 +22,7 @@ USO
   python coletar_s2id.py --desde 2026-06-29        # coleta (precisa de rede)
 """
 import html as _html, json, re, sys, time, urllib.parse
-from datetime import date
+from datetime import date, datetime
 from coletores_base import (carimbar_atos, buscar, preservar_evidencia, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, marcar_fato_municipal, referencia_ibge,
                             ler, gravar, rodar_autoteste, eh_suspensao_defeso, sha256,
@@ -193,6 +193,60 @@ def eh_xml_rss(texto: str) -> bool:
     return bool(re.search(r"<item[ >]", texto)) and "<rss" in texto[:2000].lower() + texto[:2000]
 
 
+RE_NUM_PORTARIA = re.compile(r"\d[\d.]*\d|\d")
+JANELA_DE_LOTE_DIAS = 15
+
+
+def numeros_de_portaria(s) -> set:
+    """TODOS os números de portaria do campo. O evento em lote guarda vários numa string."""
+    return {m.group(0).replace(".", "") for m in RE_NUM_PORTARIA.finditer(str(s or ""))}
+
+
+def _dias(a: str, b: str) -> int:
+    """Distância em dias entre duas datas dd/mm/aaaa. 10**6 quando uma delas não é data."""
+    try:
+        da = datetime.strptime(str(a), "%d/%m/%Y")
+        db = datetime.strptime(str(b), "%d/%m/%Y")
+    except (TypeError, ValueError):
+        return 10 ** 6
+    return abs((da - db).days)
+
+
+def encaixar_reconhecimento(eventos: list, novo: dict) -> str:
+    """Acrescenta, substitui ou descarta o reconhecimento federal — e diz qual das três.
+
+    08/10/2026 (A6-04). A chave de deduplicação incluía a DATA, e o evento em lote recebe a data
+    da primeira portaria da notícia do MIDR. Dias depois o canal do DOU lê o ato exato daquele
+    município, com outra data: a chave não casava, e o mesmo reconhecimento entrava duas vezes.
+    Eram 17 municípios com dois reconhecimentos onde houve um, e a série semanal contava os dois.
+
+    A régua:
+    - mesmo município, mesma causa e **mesma portaria** → é o mesmo ato, descarta;
+    - município com evento em LOTE e o novo traz o ato exato, dentro de 15 dias → SUBSTITUI
+      (data, ato, URL e hash passam a ser os do documento, que é a prova melhor);
+    - o inverso — já existe o ato exato e chega o lote — descarta o lote;
+    - nada disso → acrescenta.
+    """
+    ibge, causa = str(novo.get("ibge") or ""), novo.get("causa")
+    nums_novo = numeros_de_portaria(novo.get("portaria") or novo.get("decreto"))
+    novo_e_lote = "lote:" in str(novo.get("portaria") or novo.get("decreto") or "")
+    for i, e in enumerate(eventos):
+        if str(e.get("ibge") or "") != ibge or e.get("causa") != causa:
+            continue
+        nums = numeros_de_portaria(e.get("portaria") or e.get("decreto"))
+        e_lote = "lote:" in str(e.get("portaria") or e.get("decreto") or "")
+        if nums and nums_novo and nums == nums_novo:
+            return "descartado"
+        perto = _dias(e.get("data"), novo.get("data")) <= JANELA_DE_LOTE_DIAS
+        if e_lote and not novo_e_lote and ((nums & nums_novo) or perto):
+            eventos[i] = {**e, **novo}
+            return "substituido"
+        if novo_e_lote and not e_lote and ((nums & nums_novo) or perto):
+            return "descartado"
+    eventos.append(novo)
+    return "acrescentado"
+
+
 def parse_noticia_midr(html_txt: str) -> dict:
     """Da notícia do MIDR: links de portarias no DOU (número + data no endereço) e pares município/UF do texto."""
     texto = re.sub(r"\s+", " ", _html.unescape(re.sub(r"<[^>]+>", " ", html_txt)))
@@ -278,14 +332,20 @@ def coletar_midr(por_cod, por_nome, atos, vistos, h_rss_ok) -> tuple:
         mapa = {}
         for p in info["portarias"]:
             try:
+                time.sleep(RITMO_S)      # §11: uma requisição a cada 2 s por domínio
                 pp = buscar(p["url"]); hp = preservar_evidencia(pp, p["url"], "html", "coletar_s2id")
                 _t = pp.decode("utf-8", "replace")
                 # 24/09/2026: o ato moderno traz TABELA, não prosa — sem ler a tabela o mapa
                 # ficava vazio e o lote inteiro era citado no lugar da portaria exata.
                 for nome, uf in parse_portaria_dou(_t): mapa[(nome, uf)] = (p, hp)
                 for linha in parse_tabela_portaria_dou(_t): mapa[(linha["municipio"], linha["uf"])] = (p, hp)
-            except Exception:  # noqa: BLE001
-                pass
+            except Exception as e:  # noqa: BLE001
+                # 08/10/2026 (A6-28): este `except: pass` era a causa silenciosa do A6-04. Quando
+                # a página da portaria falha, o município fica sem ato exato e recebe o "lote" —
+                # com a data da PRIMEIRA portaria da notícia e o link da notícia, não do ato. Eram
+                # 349 eventos assim, 48% dos reconhecimentos, e ninguém sabia por quê.
+                registrar_lacuna(f"DOU portaria {p.get('numero')}", f"{type(e).__name__}: {e}",
+                                 canal="DOU", camada=1, strings=[p.get("url") or ""])
         for nome, uf in info["municipios"]:
             cod = por_nome.get((nome, uf)) or por_norm.get((_norm(nome), uf)); total += 1
             if not cod:
@@ -294,12 +354,31 @@ def coletar_midr(por_cod, por_nome, atos, vistos, h_rss_ok) -> tuple:
             if p: dec, dt, url = f"Portaria SEDEC/MIDR nº {p['numero']}", p["data"], p["url"]
             elif info["portarias"]: dec, dt, url = "Portaria SEDEC/MIDR (lote: " + ", ".join("nº " + x["numero"] for x in info["portarias"]) + ")", info["portarias"][0]["data"], it["link"]
             else: dec, dt, url = "Portaria SEDEC/MIDR (número na notícia do MIDR)", "", it["link"]
-            ref = por_cod[cod]; chave = (ref["nome"], uf, dt, "reconhecimento federal")
-            if chave in vistos: continue
-            atos["eventos"].append({"nome": ref["nome"], "uf": uf, "ibge": cod, "data": dt or "", "causa": "reconhecimento federal", "decreto": dec,
-                                    "data_reconhecimento": dt, "portaria": dec, "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR", "url": url,
-                                    "lat": ref["lat"], "lon": ref["lon"], "canal": "DOU", "hash_evidencia": hp})
-            marcar_fato_municipal(cod, "decreto_reconhecido", True); vistos.add(chave); novos += 1
+            ref = por_cod[cod]
+            # 08/10/2026 (A6-04): quem decide acrescentar, substituir ou descartar é
+            # `encaixar_reconhecimento`, por (ibge, causa, portaria) — nunca mais pela data, que
+            # no evento em lote é a da PRIMEIRA portaria da notícia e não a do ato do município.
+            evento = {"nome": ref["nome"], "uf": uf, "ibge": cod, "data": dt or "",
+                      "causa": "reconhecimento federal", "decreto": dec,
+                      "data_reconhecimento": dt, "portaria": dec,
+                      "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR", "url": url,
+                      "lat": ref["lat"], "lon": ref["lon"], "canal": "DOU",
+                      "hash_evidencia": hp}
+            if not p:
+                # Sem o ato exato do município, a data é a da primeira portaria do lote: ela fica,
+                # porque é a melhor que se tem, mas DECLARADA como aproximada. O esquema do ato
+                # (schemas/ato_resposta.json) exige `data`; por isso a marca é um campo próprio, e
+                # não um `data` vazio como o handover sugeria — divergência registrada aqui.
+                evento["data_aproximada"] = True
+                evento["por_que_data_aproximada"] = (
+                    "A6-04: a página da portaria não casou este município (ou falhou), e a data é "
+                    "a da primeira portaria da notícia do MIDR, não a do ato deste município.")
+            o_que = encaixar_reconhecimento(atos["eventos"], evento)
+            if o_que == "descartado":
+                continue
+            marcar_fato_municipal(cod, "decreto_reconhecido", True)
+            if o_que == "acrescentado":
+                novos += 1
     log_busca("DOU", 1, [origem], "registro" if novos else "pista", resultados=f"MIDR ({'RSS' if origem == RSS_MIDR else 'listagem HTML'}): {len(itens)} notícias de reconhecimento, {total} municípios lidos, {novos} novos",
               nivel="nacional", n_resultados=len(itens), hash_evidencia=h)
     return novos, total, bool(itens)
@@ -465,6 +544,42 @@ FIX_PORTARIA = "<article>PORTARIA Nº 1.723, DE 22 DE MAIO DE 2026 ... Reconhece
 
 
 def autoteste() -> int:
+    # 08/10/2026 (A6-04): os cinco casos do reconhecimento em lote. O par é real: Irauçuba/CE
+    # entrou como lote de 22/08 (nº 2.724…) e de novo como nº 2.731 de 24/08.
+    LOTE = {"ibge": "2305407", "uf": "CE", "nome": "Irauçuba", "data": "22/08/2026",
+            "causa": "reconhecimento federal", "data_aproximada": True,
+            "portaria": "Portaria SEDEC/MIDR (lote: nº 2.724, nº 2.731)",
+            "decreto": "Portaria SEDEC/MIDR (lote: nº 2.724, nº 2.731)", "url": "noticia-do-midr",
+            "hash_evidencia": "hn"}
+    EXATO = {"ibge": "2305407", "uf": "CE", "nome": "Irauçuba", "data": "24/08/2026",
+             "causa": "reconhecimento federal", "portaria": "Portaria SEDEC/MIDR nº 2.731",
+             "decreto": "Portaria SEDEC/MIDR nº 2.731", "url": "dou/portaria-2731",
+             "hash_evidencia": "hp"}
+
+    def t22():
+        ev = [dict(LOTE)]
+        encaixar_reconhecimento(ev, dict(EXATO))
+        return len(ev) == 1
+
+    def t23():
+        ev = [dict(LOTE)]
+        encaixar_reconhecimento(ev, dict(EXATO))
+        return (ev[0]["decreto"] == "Portaria SEDEC/MIDR nº 2.731" and ev[0]["data"] == "24/08/2026"
+                and ev[0]["url"] == "dou/portaria-2731" and ev[0]["hash_evidencia"] == "hp")
+
+    def t24():
+        ev = [dict(EXATO)]
+        return encaixar_reconhecimento(ev, dict(EXATO)) == "descartado" and len(ev) == 1
+
+    def t25():
+        ev = [dict(EXATO)]
+        return encaixar_reconhecimento(ev, dict(LOTE)) == "descartado" and len(ev) == 1
+
+    def t26():
+        ev = [dict(LOTE)]
+        outro = dict(EXATO, ibge="2307700", nome="Monsenhor Tabosa")
+        return encaixar_reconhecimento(ev, outro) == "acrescentado" and len(ev) == 2
+
     def t1():
         r = parse_dou_html(FIXTURE_HTML); return len(r) == 2 and r[0]["url"].endswith("portaria-2659")
     def t2():
@@ -591,7 +706,12 @@ def autoteste() -> int:
                             "heurística de suspensão por defeso": t5,
                             "RSS do MIDR: só notícias de reconhecimento": t6, "notícia do MIDR: portarias (nº+data) e 14+ municípios/UF": t7,
                             "página da portaria no DOU: municípios nomeados": t8, "negativo: RSS sem reconhecimentos": t9,
-                            "listagem HTML do MIDR: só reconhecimentos": t10, "negativo: HTML/login não é RSS": t11})
+                            "listagem HTML do MIDR: só reconhecimentos": t10, "negativo: HTML/login não é RSS": t11,
+                            "lote e ato exato do mesmo município ficam num evento só": t22,
+                            "o evento que fica é o do ato exato, com data, URL e hash do documento": t23,
+                            "o mesmo ato lido duas vezes não entra duas vezes": t24,
+                            "o lote que chega depois do ato exato é descartado": t25,
+                            "município diferente na mesma portaria é acrescentado": t26})
 
 
 if __name__ == "__main__":
