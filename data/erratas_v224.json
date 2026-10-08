@@ -473,6 +473,42 @@
  },
  {
   "data": "08/10/2026",
+  "uf": "ES",
+  "municipio": null,
+  "o_que_mudou": "71 fichas de ES publicavam a data da consulta ao repositório estadual (26/08/2026) como data do plano; passam a publicar o ano da edição do documento",
+  "por_que": "A3-09: `atualizar_instrumentos_estaduais.py` gravava em `data` o dia em que o Monitor abriu o repositório estadual, e a ficha publicava aquilo como se fosse a data do plano. A data da consulta passa a ter campo próprio (`localizado_em`) e `data` passa a ser o ano da edição do documento — ou o da atualização, quando o documento a declara. Portão: `scripts/verificar_datas_de_instrumento.py`.",
+  "achado": "A3-09",
+  "lote": "1.9"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "SE",
+  "municipio": null,
+  "o_que_mudou": "13 fichas de SE publicavam a data da consulta ao repositório estadual (26/08/2026) como data do plano; passam a publicar o ano da edição do documento",
+  "por_que": "A3-09: `atualizar_instrumentos_estaduais.py` gravava em `data` o dia em que o Monitor abriu o repositório estadual, e a ficha publicava aquilo como se fosse a data do plano. A data da consulta passa a ter campo próprio (`localizado_em`) e `data` passa a ser o ano da edição do documento — ou o da atualização, quando o documento a declara. Portão: `scripts/verificar_datas_de_instrumento.py`.",
+  "achado": "A3-09",
+  "lote": "1.9"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "nove planos classificados como antigos carregavam data de 2026 — contradição entre a categoria e a data publicada; a data passa a ser a da edição (2018, 2019, 2021, 2023)",
+  "por_que": "A3-09: `atualizar_instrumentos_estaduais.py` gravava em `data` o dia em que o Monitor abriu o repositório estadual, e a ficha publicava aquilo como se fosse a data do plano. A data da consulta passa a ter campo próprio (`localizado_em`) e `data` passa a ser o ano da edição do documento — ou o da atualização, quando o documento a declara. Portão: `scripts/verificar_datas_de_instrumento.py`.",
+  "achado": "A3-09",
+  "lote": "1.9"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "SE",
+  "municipio": "Cedro de São João",
+  "o_que_mudou": "a ficha passa a publicar 2025, o ano da atualização declarada no documento (PLANCON ed. 2023, atualizado 31/01/2025), e não 2026",
+  "por_que": "A3-09: `atualizar_instrumentos_estaduais.py` gravava em `data` o dia em que o Monitor abriu o repositório estadual, e a ficha publicava aquilo como se fosse a data do plano. A data da consulta passa a ter campo próprio (`localizado_em`) e `data` passa a ser o ano da edição do documento — ou o da atualização, quando o documento a declara. Portão: `scripts/verificar_datas_de_instrumento.py`.",
+  "achado": "A3-09",
+  "lote": "1.9"
+ },
+ {
+  "data": "08/10/2026",
   "uf": "DF",
   "municipio": null,
   "o_que_mudou": "a cobertura populacional do estado passa de 80,0 para 30,0 e a nota de 66,7 para 50,0",

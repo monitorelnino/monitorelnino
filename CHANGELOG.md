@@ -13,9 +13,13 @@ não pontuados permanecem na versão corrente.
 
 
 
+
 ## 2026-10-08 · #PR · Lote 1.8: a camada declarada deixa de contar a mesma população duas vezes
 
 O excedente declarado descontava só as categorias de plano e ignorava `estrutura` e `coberto_estadual`, já creditadas; e o contador de planos desatualizados era somado ao de planos sem desconto nem teto — 398 declarantes num levantamento de 485 respondentes no RS, cobertura 80 no DF, que tem um município. Passa a um termo só, com teto no número de municípios da UF. Média nacional 45,3 → 44,6; seis estados mudam de nota. Portão novo; errata C31.
+## 2026-10-08 · #PR · Lote 1.9: a data do plano é a do documento, não a da nossa consulta
+
+Oitenta e quatro fichas de ES e SE publicavam 26/08/2026 como data do plano: era o dia em que o Monitor abriu o repositório estadual. Nove delas são planos antigos, e diziam 2026 — contradição entre a categoria e a data. `data` passa a ser o ano da edição do documento (ou o da atualização, quando declarada) e a consulta ganha campo próprio, `localizado_em`. Portão novo `verificar_datas_de_instrumento.py`, com fixtures de ES e SE.
 
 ## 2026-10-08 · #PR · Lote 1.2: o decreto do diário consorciado deixa de ir ao município errado
 
