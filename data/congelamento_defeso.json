@@ -577,6 +577,98 @@
    "hash_anterior": "97d5b2ebbbac1ec342aebb568c666d59474a3b5a48b8daf221620817cb441380",
    "hash_novo": "97d5b2ebbbac1ec342aebb568c666d59474a3b5a48b8daf221620817cb441380",
    "nota_da_corrente": "hash_anterior e hash_novo são iguais porque esta errata corrige DADO, não regra: nenhuma constante nem a fórmula do motor foi tocada. A entrada existe pelo C6 — correção de dado dentro do defeso se publica com efeito em pontos por UF — e fica na mesma corrente para que o histórico seja um só."
+  },
+  {
+   "codigo": "C31",
+   "data": "2026-10-08",
+   "classe": "correção de DEFEITO de cálculo (dupla contagem) — nenhuma constante nem a fórmula dos componentes mudou",
+   "o_que_mudou": "A camada declarada passa a ter UM termo só, com dois tetos: os dois contadores do tribunal de contas somam entre si, o resultado é comparado — nunca somado — ao levantamento nacional (MUNIC/ICM), e o total nunca passa do número de municípios da UF; do que sobra, desconta-se todo município que já tem crédito próprio (antes o desconto ignorava `estrutura` e `coberto_estadual`).",
+   "uf": [
+    "DF",
+    "GO",
+    "MA",
+    "PR",
+    "RR",
+    "RS"
+   ],
+   "motivo": "Achado A3-02, decisão D2 da auditoria de 08/10/2026: a camada contava população duas vezes. No RS, 183 declarantes com plano mais 215 com plano desatualizado entravam inteiros, num levantamento de 485 respondentes em 497 municípios; o DF aparecia com cobertura 80 tendo um município só. Não é mudança de régua: é defeito de soma, corrigido pelo C6, com efeito em pontos por UF.",
+   "efeito_por_uf": {
+    "DF": {
+     "total": [
+      66.7,
+      50.0
+     ],
+     "cobertura_pop": [
+      80.0,
+      30.0
+     ]
+    },
+    "GO": {
+     "total": [
+      69.2,
+      69.1
+     ],
+     "cobertura_pop": [
+      7.5,
+      7.4
+     ]
+    },
+    "MA": {
+     "total": [
+      45.0,
+      44.8
+     ],
+     "cobertura_pop": [
+      19.9,
+      19.4
+     ]
+    },
+    "PR": {
+     "total": [
+      64.9,
+      64.8
+     ],
+     "cobertura_pop": [
+      29.8,
+      29.4
+     ]
+    },
+    "RR": {
+     "total": [
+      48.1,
+      47.7
+     ],
+     "cobertura_pop": [
+      69.2,
+      68.2
+     ]
+    },
+    "RS": {
+     "total": [
+      55.2,
+      53.5
+     ],
+     "cobertura_pop": [
+      30.6,
+      25.4
+     ]
+    }
+   },
+   "efeito_nacional": {
+    "media": [
+     45.3,
+     44.6
+    ],
+    "ufs_afetadas": 6
+   },
+   "prova": [
+    "recalcular_mare.py (camada declarada, um termo com dois tetos)",
+    "scripts/verificar_camada_declarada.py",
+    "data/percentual_uf.json"
+   ],
+   "hash_anterior": "97d5b2ebbbac1ec342aebb568c666d59474a3b5a48b8daf221620817cb441380",
+   "hash_novo": "97d5b2ebbbac1ec342aebb568c666d59474a3b5a48b8daf221620817cb441380",
+   "nota_da_corrente": "hash_anterior e hash_novo são iguais: as constantes congeladas (CRED_POP, ESTADO_SCORE, ESTADOS, ESTRUTURA, PESO_ESTRUTURA, INSTRUMENTO_SCORE_V31, VIG_ATUALIZADO_EM_2026, CONSIST_NAO_COBRE) e a montagem dos componentes da v3.1 não foram tocadas."
   }
  ]
 }
