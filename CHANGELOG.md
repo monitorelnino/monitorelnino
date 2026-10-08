@@ -10,6 +10,14 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+## 2026-10-08 · #PR · Lote 1.5: três municípios de MT voltam ao contador de resposta
+
+Evento sem `ibge` era descartado em silêncio por um `continue`: oito eventos de órgão estadual não
+traziam o código, e Itaúba, Colniza e Várzea Grande (MT) não tinham nenhum outro — sumiam do
+contador. MT publicava índice de resposta 0,2 quando é 9,2. Agora o código é casado por (nome, UF)
+na malha, o descarte sai nomeado, e `verificar_resposta.py` reprova evento sem `ibge` casável.
+Nacional: 749 → 752 municípios, 10,6% → 10,8% da população.
+
 ## 2026-10-08 · #PR · Lote 0: a corrente noturna para de sangrar
 
 A guarda da janela nunca barrou nada — `if ! cmd | tee` devolve o status do `tee` —, e entre

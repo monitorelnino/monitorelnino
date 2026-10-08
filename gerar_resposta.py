@@ -59,6 +59,13 @@ def tipo_do_evento(ev: dict) -> str:
     return "SE"
 
 
+def _nrm(nome) -> str:
+    """Nome comparável: sem acento, sem caixa, sem espaço nas pontas. Função pura."""
+    import unicodedata
+    s = unicodedata.normalize("NFD", str(nome or ""))
+    return "".join(c for c in s if unicodedata.category(c) != "Mn").lower().strip()
+
+
 def consolidar_municipios(eventos: list, verificacao: list) -> dict:
     """{ibge: {decreto, primeiro_decreto, tipos, reconhecido, decretado, evento_observado, fontes}} para os 5.571.
     Reconhecido = DOU/SEDEC (reconhecimento federal) ou decreto_reconhecido em verificacao_municipal. Função pura."""
@@ -67,10 +74,30 @@ def consolidar_municipios(eventos: list, verificacao: list) -> dict:
         out[str(r["ibge"]).zfill(7)] = {"ibge": str(r["ibge"]).zfill(7), "nome": r.get("nome"), "uf": r.get("uf"), "decreto": False,
                                        "primeiro_decreto": None, "tipos": [], "reconhecido": bool(r.get("decreto_reconhecido")), "decretado": False,
                                        "evento_observado": "em_classificacao", "fontes": [], "n_eventos": 0}
+    # 08/10/2026 (A3-01): evento sem `ibge` era descartado em SILÊNCIO pelo `continue`. Oito
+    # eventos de canal `orgao_estadual` não traziam o código, e três deles — Itaúba, Colniza e
+    # Várzea Grande, todos MT — não tinham nenhum outro evento: sumiam do contador. MT publicava
+    # resposta 0,2 quando é 9,2, e o nacional dizia 749 municípios quando são 752.
+    #
+    # O código é recuperável: a malha tem (nome, UF) → ibge, e é a mesma malha que este gerador já
+    # leu para montar `out`. Descarte só quando nem isso casa, e aí o nome SAI NOMEADO — descarte
+    # silencioso foi o defeito.
+    por_nome_uf = {}
+    for chave, m in out.items():
+        por_nome_uf[(_nrm(m.get("nome")), str(m.get("uf") or "").upper())] = chave
+    descartados = []
     for ev in eventos:
         ib = str(ev.get("ibge") or "").zfill(7)
         m = out.get(ib)
         if not m:
+            achado = por_nome_uf.get((_nrm(ev.get("nome") or ev.get("municipio")),
+                                      str(ev.get("uf") or "").upper()))
+            m = out.get(achado) if achado else None
+            if m:
+                print(f"  · evento sem ibge casado pela malha: {ev.get('nome')}/{ev.get('uf')} "
+                      f"→ {achado}")
+        if not m:
+            descartados.append(f"{ev.get('nome') or ev.get('municipio')}/{ev.get('uf')}")
             continue
         d = data_br(ev.get("data")); t = tipo_do_evento(ev)
         m["decreto"] = True; m["n_eventos"] += 1
@@ -79,6 +106,9 @@ def consolidar_municipios(eventos: list, verificacao: list) -> dict:
         if t not in m["tipos"]: m["tipos"].append(t)
         if d and (m["primeiro_decreto"] is None or d < data_br(m["primeiro_decreto"])): m["primeiro_decreto"] = d.strftime("%d/%m/%Y")
         m["fontes"].append({"canal": ev.get("canal"), "fonte": ev.get("fonte"), "url": ev.get("url"), "data": ev.get("data"), "decreto": ev.get("decreto"), "hash": ev.get("hash_evidencia")})
+    if descartados:
+        print(f"  ⚠ {len(descartados)} evento(s) sem `ibge` e sem par na malha, descartado(s): "
+              + ", ".join(sorted(set(descartados))[:10]))
     for m in out.values():
         if m["reconhecido"] and not m["decreto"]: m["decreto"] = True     # reconhecido via S2iD sem evento no arquivo de atos
     return out
