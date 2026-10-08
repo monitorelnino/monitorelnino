@@ -25,6 +25,10 @@ Oitenta e quatro fichas de ES e SE publicavam 26/08/2026 como data do plano: era
 
 Quatro fichas publicavam o texto que estava na página do PDF: "o documento É o instrumento nomeado: tanhaém…" (Itanhaém), "neste Plano. 11/08/2026 Página 3 de 72…" (Umuarama e Leme), "a Católica 8 1.5. INSTRUÇÕES PARA USO…" (Celso Ramos). O campo passa a ser o título do documento, extraído pela mesma função do aplicador do juiz; sem título provado, vale a forma genérica, e sem prova de que é plano, vale a classificação. Portão novo.
 
+## 2026-10-08 · #PR · Lote 1.14: o PDF público passa a descrever o índice que existe
+
+A análise de sensibilidade tinha a conta da cobertura copiada do motor, e a cópia divergiu: ignorava a camada declarada nacional e usava 0,3 onde o motor usa 0,5. O PDF publicava a tabela de camadas errada (DF 100% documentado contra 38/62 do motor), escrevia a cobertura na coluna da estrutura, nomeava "Antecipação" como componente e trazia o crédito antigo do plano de ciclo anterior. Conta única `cobertura_de_uf`; índice reproduzido sem mudança. Portão novo.
+
 ## 2026-10-08 · #PR · Lote 1.2: o decreto do diário consorciado deixa de ir ao município errado
 
 A posição do decreto no PDF vinha de `texto.find(numero)` — a primeira ocorrência da string do

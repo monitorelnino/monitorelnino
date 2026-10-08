@@ -332,6 +332,37 @@ def _declarado_nacional_uf():
             if uf: n[uf] = n.get(uf, 0) + 1
     return n
 
+def cobertura_de_uf(uf, c, wpop_uf, mediana, pop_total, dp_tce, da_tce, nacional,
+                    desconto_plano=0.5, desconto_antigo=0.5):
+    """O componente de COBERTURA POPULACIONAL de uma UF. Função pura, e a única.
+
+    08/10/2026 (A3-05). Esta conta existia em dois lugares: aqui, dentro de `calcular`, e copiada
+    em `analise_sensibilidade.cobertura`, que alimenta o PDF público "Documentação do Índice". A
+    cópia divergiu: ignorava a camada declarada nacional (MUNIC/ICM, ativa desde 21/09) e aplicava
+    0,3 ao plano desatualizado onde o motor aplica 0,5. O PDF publicava, por isso, uma tabela de
+    camadas que o motor não produz — DF 100/0/0 contra 37/0/63 do motor — e um efeito de variante
+    que era artefato da divergência, não resultado.
+
+    Os descontos são parâmetro porque o teste de sensibilidade existe para variá-los; o padrão é o
+    do motor, e quem não passa nada recebe exatamente o que o índice publica.
+    """
+    w = float(wpop_uf)
+    tipo_agr, excedente = excedente_agregado(uf, c)
+    if tipo_agr:
+        w += excedente * mediana * CRED_POP[tipo_agr]
+    # Conservador: a declaração do tribunal de contas não SOMA com o levantamento nacional — vale
+    # o maior dos dois contadores.
+    dp = max(dp_tce or 0, nacional or 0)
+    da = da_tce or 0
+    doc_n = sum(v for k, v in c.items() if k in PESO_DOC)
+    if dp:
+        w += max(dp - doc_n, 0) * mediana * (CRED_POP["plano"] * desconto_plano)
+    if da:
+        w += da * mediana * (CRED_POP["plano_antigo"] * desconto_antigo)
+    return min(100.0, 100.0 * w / pop_total), {"documentado": doc_n, "declarado": dp,
+                                               "declarado_antigo": da}
+
+
 def calcular(versao="v3.1"):
     """Motor do índice: lê data/*.json, calcula os três componentes por estado, agrega com elemento
     geométrico e piso, e devolve o dicionário completo que vira data/indice.json.
@@ -377,22 +408,14 @@ def calcular(versao="v3.1"):
     for uf in ufs:
         c = cnt.get(uf, {})
         w = wpop.get(uf, 0.0)
-        tipo_agr, excedente = excedente_agregado(uf, c)
-        if tipo_agr:
-            w += excedente * mediana_uf[uf] * CRED_POP[tipo_agr]
-        dp = pct[uf].get("declarado_plano", 0) or 0
-        da = pct[uf].get("declarado_antigo", 0) or 0
+        # O excedente agregado entra dentro de `cobertura_de_uf`, com o resto da conta.
         # C5/§3.9: camada declarada nacional (MUNIC/ICM) ativada permanentemente em 21/09/2026,
-        # por decisão editorial explícita — não espera mais 26/10/2026. Antes disso era só
-        # simulação (calcular(simular_declarado_nacional=True), --simular-declarado-nacional);
-        # agora é parte padrão do cálculo, sempre, em toda atualização. Mesmo desconto de 50% de
-        # antes, sem mudança nenhuma na fórmula — só a trava de data caiu. Conservador: não soma
-        # à declaração de tribunal de contas — usa o maior dos dois contadores.
-        dp = max(dp, _declarado_nacional_uf().get(uf, 0))
-        doc_n = sum(v for k, v in c.items() if k in PESO_DOC)
-        if dp: w += max(dp - doc_n, 0) * mediana_uf[uf] * (CRED_POP["plano"] * 0.5)
-        if da: w += da * mediana_uf[uf] * (CRED_POP["plano_antigo"] * 0.5)
-        cobertura = min(100.0, 100.0 * w / pop_uf[uf])
+        # por decisão editorial explícita. 08/10/2026 (A3-05): a conta mora em
+        # `cobertura_de_uf`, uma só, porque a cópia que alimentava o PDF público divergiu dela.
+        cobertura, _camadas = cobertura_de_uf(
+            uf, c, w, mediana_uf[uf], pop_uf[uf],
+            pct[uf].get("declarado_plano", 0) or 0, pct[uf].get("declarado_antigo", 0) or 0,
+            _declarado_nacional_uf().get(uf, 0))
         st, ant, conf = ESTADOS[uf]
         if versao == "v3.1":
             # Três componentes sem sobreposição: instrumento, estrutura e cobertura. A estrutura

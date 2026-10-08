@@ -55,6 +55,25 @@ S_NOTA = ParagraphStyle("n", fontName="Helvetica-Oblique", fontSize=8.3, leading
 S_CEL = ParagraphStyle("c", fontName="Helvetica", fontSize=8.3, leading=10.5, textColor=TINTA)
 S_CELB = ParagraphStyle("cb", fontName="Helvetica-Bold", fontSize=8.3, leading=10.5, textColor=colors.white)
 
+CREDITO_EM_USO = ""   # preenchido em tempo de execução, a partir de recalcular_mare.CRED_POP
+
+
+def credito_em_uso() -> str:
+    """A linha de crédito por categoria, LIDA do motor.
+
+    08/10/2026 (A3-05): o PDF público trazia, desde setembro, o crédito antigo do plano de ciclo
+    anterior — 0,6 —, quando o valor em vigor é 1,0 (§196, 24/09). Número de peso não se escreve à
+    mão num documento que o motor pode responder.
+    """
+    import recalcular_mare as _rm
+    ordem = ["plano", "plano_novo", "plano_readaptado", "plano_recorrente", "plano_antigo",
+             "plano_elaboracao", "estrutura", "coberto_estadual", "plano_nomeado",
+             "nao_el_nino", "nao_localizado", "nao_verificado"]
+    partes = [f"{k} {str(_rm.CRED_POP[k]).replace('.', ',')}"
+              for k in ordem if k in _rm.CRED_POP]
+    return "crédito por categoria, lido do motor: " + " · ".join(partes)
+
+
 def tabela(cab, linhas, larguras=None, destaque_azul=False):
     """Desenha uma tabela formatada (cabeçalho, linhas, bordas) na página corrente do PDF do índice."""
     dados = [[Paragraph(f"<b>{c}</b>", S_CELB) for c in cab]] + \
@@ -92,7 +111,11 @@ def construir():
     # e deixava docs/MANIFEST_SHA256.txt obsoleto nos dias em que o robô encerra por cadência.
     # Passa a ser a data da última atualização publicada dos dados (data/meta.json).
     hoje = meta.get("atualizado_em") or meta["corte"]
-    nomes = ["Instrumento estadual", "Cobertura populacional", "Antecipação"]
+    # 08/10/2026 (A3-05): os componentes da v3.1 são instrumento, ESTRUTURA e cobertura.
+    # A antecipação deixou de ser componente em 30/09/2026 e é indicador publicado à
+    # parte (`dias_apos_boletim_1`); o PDF ainda a nomeava como terceiro componente.
+    nomes = ["Instrumento operacional estadual", "Estrutura de coordenação",
+             "Cobertura populacional"]
 
     E = []
     E.append(Paragraph("MARÉ v3.1 — Documentação do Índice", S_TIT))
@@ -137,18 +160,22 @@ def construir():
         "valor probatório é assimétrico: <b>nota baixa é evidência mais forte de despreparo do que nota alta é de "
         "preparo</b>, porque o documento é a parte mais barata da preparação.", S_P))
 
-    E.append(Paragraph("2. Os três componentes (pesos nominais iguais, 1/3 cada) — v2.2", S_H1))
+    global CREDITO_EM_USO
+    CREDITO_EM_USO = credito_em_uso()
+    E.append(Paragraph("2. Os três componentes (pesos nominais iguais, 1/3 cada) — v3.1", S_H1))
     E.append(tabela(
         ["Componente", "O que pontua", "Escala"],
         [["Instrumento estadual", "Status do instrumento de contingência do estado, por verificação documental externa",
           "NOVO 100 · READ 65 · VIG 45 · ELAB 35 · LAC 0"],
          ["Cobertura populacional", "Fração da POPULAÇÃO da UF (Censo 2022) residente em municípios com instrumento ex-ante, com crédito por categoria (§3). Funde os antigos componentes capital e cobertura municipal: a capital vale sua fração demográfica real, como qualquer município — sua proeminência permanece editorial (card de detalhe), não aritmética (§12.4.2 da Metodologia)",
-          "crédito: plano 1,0 · plano_antigo 0,6 · plano_elaboracao 0,45 · coberto_estadual 0,3 · nao_localizado 0 · decreto 0 (Correção B) · nao_el_nino 0 (desvio declarado do §12.4.2: o vocabulário obrigatório veda crédito a ato alheio ao ciclo; a herança do 0,1 da escala da capital dava 2,6 pontos ao AP por emergência sanitária — achado na simulação de 27/08/2026)"],
-         ["Antecipação", "Tempestividade do instrumento estadual ante o Boletim nº 1 do Painel El Niño (29/06/2026)",
-          "régua: 100 (antes) · 60 (≈30 dias) · 40 (estrutura recorrente ativada) · 30 · 20 · 10 · 0. Só instrumento ex-ante cronometra; decreto de emergência nunca (teste do objeto e definição de atraso: METODOLOGIA §5.2.1; escala de dano considerada e descartada, mesmo local)"]],
+          CREDITO_EM_USO],
+         ["Estrutura de coordenação", "Órgão, comitê, sala de situação ou COE criado ou acionado para o ciclo, por ato datado (§30)",
+          "NOVO 100 · READ 65 · VIG 45 · ELAB 35 · LAC 0"]],
         larguras=[34 * mm, 78 * mm, 62 * mm]))
     E.append(Paragraph(
-        f"Valores de antecipação em uso na edição: {R['antecip_valores']} — todos pertencentes à régua declarada (verificado).", S_NOTA))
+        "A régua de antecipação deixou de ser componente do índice em 30/09/2026 (v3.1) e passou a "
+        "indicador publicado à parte: publicar cedo é atributo de conduta, e a lei exige plano "
+        "existente e atualizado, não antecedência.", S_NOTA))
 
     E.append(Paragraph("3. Fórmula da cobertura populacional (três camadas, ponderadas pelo Censo 2022)", S_H1))
     E.append(Paragraph(
@@ -223,34 +250,46 @@ def construir():
                     [[f"knockout sem {n}", v["mediana"], v["max"],
                       ", ".join(f"{u} ({s})" for s, u in v["piores"] if s)] for n, v in kn.items()],
                     larguras=[76 * mm, 24 * mm, 24 * mm, 50 * mm]))
-    E.append(Paragraph("Leitura: o 1º componente principal explica 55% da variância e é dominado pelo par instrumento "
-                       "estadual + antecipação, atribuindo peso quase nulo à cobertura populacional — ponderar "
-                       "estatisticamente significaria apagar a única dimensão local do índice. É o argumento decisivo "
-                       "contra a ponderação por PCA (crítica de Greco et al.) e pela manutenção dos pesos iguais como "
-                       "escolha normativa declarada; a assimetria de influência resultante é quantificada na §5.4.", S_NOTA))
+    # 08/10/2026 (A3-05): esta leitura trazia 55% e o par "instrumento + antecipação", números e
+    # componentes da v2.2. Ela passa a ser escrita com o que a própria análise devolve.
+    _pc = R.get("pca") or {}
+    _var1 = _pc.get("variancia_pc1")
+    _dom = _pc.get("dominante") or "o instrumento estadual"
+    E.append(Paragraph(
+        ("Leitura: o 1º componente principal explica "
+         + (f"{100 * _var1:.0f}% " if isinstance(_var1, (int, float)) else "a maior parte ")
+         + "da variância e é dominado por " + str(_dom) + ", atribuindo peso quase nulo à "
+         "cobertura populacional — ponderar estatisticamente significaria apagar a única dimensão "
+         "local do índice. É o argumento contra a ponderação por PCA (crítica de Greco et al.) e "
+         "pela manutenção dos pesos iguais como escolha normativa declarada; a assimetria de "
+         "influência está na §5.4."), S_NOTA))
 
     E.append(Paragraph("5.4 Pesos nominais × influência efetiva", S_H2))
     E.append(tabela(["Componente", "Peso nominal", "Contribuição efetiva à variância do total", "Média", "Desvio-padrão"],
                     [[nomes[j], "33,3%", f"{100 * R['contrib_var'][j]:.0f}%",
                       R["stats_comp"][j][0], R["stats_comp"][j][1]] for j in range(3)],
                     larguras=[46 * mm, 26 * mm, 56 * mm, 22 * mm, 24 * mm], destaque_azul=True))
-    E.append(Paragraph("Leitura: pesos iguais nominais não implicam influência igual — o instrumento estadual contribui "
-                       "com 44% da variância do total e a antecipação com 38%; a cobertura populacional, de menor "
-                       "dispersão, com 18%. Somada à correlação da §5.5, a consequência é declarada sem eufemismo na "
-                       "§7: cerca de dois terços do índice respondem, direta ou indiretamente, ao instrumento "
-                       "estadual. A ponderação igual permanece como escolha normativa declarada (Beccari 2016), com a "
-                       "assimetria publicada em vez de omitida.", S_NOTA))
+    _contrib = " · ".join(f"{nomes[j]} {100 * R['contrib_var'][j]:.0f}%" for j in range(3))
+    E.append(Paragraph(
+        ("Leitura: pesos iguais nominais não implicam influência igual — a contribuição medida à "
+         "variância do total nesta edição é " + _contrib + ". A ponderação igual permanece como "
+         "escolha normativa declarada (Beccari 2016), com a assimetria publicada em vez de "
+         "omitida; a consequência está na §7."), S_NOTA))
 
     E.append(Paragraph("5.5 Correlações entre componentes", S_H2))
     C = R["correl"]
     E.append(tabela([""] + [n.split()[0] for n in nomes],
                     [[nomes[i].split()[0]] + [f"{C[i][j]:+.2f}" for j in range(3)] for i in range(3)],
                     larguras=[44 * mm, 42 * mm, 42 * mm, 42 * mm]))
-    E.append(Paragraph("Leitura: a exceção declarada permanece — instrumento estadual × antecipação (+0,66), ambos "
-                       "derivando parcialmente do mesmo fato (existência e data do instrumento estadual). Com a fusão "
-                       "da v2.2, esse par passou a somar 2/3 do peso nominal: a limitação foi AGRAVADA pela "
-                       "reestruturação, é reconhecida como tal na §7, e seu tratamento (fator de alinhamento, com "
-                       "confiabilidade inter-avaliadores medida) é o candidato central da v2.3.", S_NOTA))
+    _pares = [(abs(C[i][j]), i, j) for i in range(3) for j in range(i + 1, 3)]
+    _pares.sort(reverse=True)
+    _a, _i, _j = _pares[0]
+    E.append(Paragraph(
+        ("Leitura: o par de componentes mais correlacionado nesta edição é "
+         + f"{nomes[_i]} × {nomes[_j]} ({C[_i][_j]:+.2f})"
+         + ", e os dois derivam em parte do mesmo fato — a existência e a data do ato estadual. A "
+         "limitação é reconhecida na §7; o tratamento (fator de alinhamento, com confiabilidade "
+         "inter-avaliadores medida) segue em aberto."), S_NOTA))
 
     E.append(PageBreak())
     E.append(Paragraph("5.6 Transparência de camadas: de onde vem a cobertura populacional de cada UF", S_H2))
@@ -300,7 +339,7 @@ def construir():
     E.append(Paragraph("6. Escolhas normativas declaradas (síntese)", S_H1))
     E.append(Paragraph(
         "São escolhas de desenho, não derivações estatísticas — declaradas aqui e testadas na §5: (i) pesos iguais de "
-        "1/3; (ii) as escalas ordinais dos componentes estadual e de antecipação, e a escala de crédito populacional "
+        "1/3; (ii) as escalas ordinais do instrumento e da estrutura, e a escala de crédito populacional "
         "por categoria (generalização declarada da antiga escala da capital); (iii) o desconto de 50% da camada "
         "declarada (0,5 e 0,3); (iv) o piso 5 da geométrica; (v) os cortes das faixas interpretativas; (vi) a "
         "composição da malha (Fernando de Noronha incluído; Boa Esperança do Norte/MT com peso populacional 0 sob a "
@@ -312,10 +351,11 @@ def construir():
     E.append(Paragraph("7. Limitações reconhecidas", S_H1))
     E.append(Paragraph(
         "(1) O índice mede o <b>arcabouço público</b> da preparação, não capacidade instalada — com valor probatório "
-        "assimétrico, declarado na METODOLOGIA §5.0: mais confiável no fundo do ranking do que no topo. (2) Concentração no instrumento estadual: com a fusão da v2.2, instrumento estadual + "
-        "antecipação somam 2/3 do peso nominal e, com a correlação +0,66 (§5.5) e 82% da variância combinada (§5.4), "
-        "cerca de dois terços do índice respondem ao instrumento estadual — limitação AGRAVADA pela reestruturação, "
-        "declarada aqui; o fator de alinhamento com confiabilidade inter-avaliadores medida é o candidato da v2.3. "
+        "assimétrico, declarado na METODOLOGIA §5.0: mais confiável no fundo do ranking do que no topo. (2) Concentração no ato estadual: na v3.1, instrumento operacional e "
+        "estrutura de coordenação somam 2/3 do peso nominal e os dois derivam em parte do mesmo fato — a existência e "
+        "a data do ato estadual —, de modo que boa parte do índice responde a ele. A correlação medida do par e a "
+        "contribuição de cada componente à variância estão nas §5.4 e §5.5 desta edição; o fator de alinhamento, com "
+        "confiabilidade inter-avaliadores medida, segue em aberto. "
         "(3) Safra censitária fixa: as populações são as do Censo 2022 durante todo o ciclo (Boa Esperança do Norte/MT "
         "com peso 0; dinâmicas migratórias pós-Censo não capturadas). (4) A camada declarada repousa em levantamentos "
         "de terceiros E num estimador (mediana populacional da UF) — o desconto de 50% precifica o lastro, a mediana "

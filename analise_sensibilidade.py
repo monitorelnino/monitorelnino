@@ -72,24 +72,47 @@ def rodar():
     R = {"media": media, "ufs": ufs, "idx": idx}
 
     # cobertura populacional recomputável com descontos variáveis (mesma cadeia do motor)
-    def cobertura(uf, d_plano=0.5, d_antigo=0.3):
-        """Recalcula o componente de cobertura populacional sob um esquema de crédito por categoria alternativo, para o teste de sensibilidade da camada declarada."""
-        c = {}; w = 0.0
+    def contagem_e_peso(uf):
+        c, w = {}, 0.0
         for r in mun:
             if r["uf"] == uf:
                 c[r["categoria"]] = c.get(r["categoria"], 0) + 1
                 w += pop.get(cod_por[(r["nome"], r["uf"])], 0) * rm.CRED_POP.get(r["categoria"], 0.0)
-        t, e = rm.excedente_agregado(uf, c)
-        if t:
-            w += e * med[uf] * rm.CRED_POP[t]
-        dp = pct[uf].get("declarado_plano", 0) or 0
-        da = pct[uf].get("declarado_antigo", 0) or 0
-        doc_n = sum(v for k, v in c.items() if k in rm.PESO_DOC)
-        if dp:
-            w += max(dp - doc_n, 0) * med[uf] * d_plano
-        if da:
-            w += da * med[uf] * d_antigo
-        return min(100.0, 100.0 * w / pop_uf[uf])
+        return c, w
+
+    def cobertura(uf, d_plano=0.5, d_antigo=0.5):
+        """A cobertura populacional da UF, pela MESMA função do motor.
+
+        08/10/2026 (A3-05): esta função tinha a conta copiada, e a cópia divergiu — ignorava a
+        camada declarada nacional (MUNIC/ICM, ativa desde 21/09) e usava 0,3 para o plano
+        desatualizado onde o motor usa 0,5. O PDF público saía com uma tabela de camadas que o
+        motor não produz e com um "efeito" de variante que era a própria divergência.
+        """
+        c, w = contagem_e_peso(uf)
+        valor, _ = rm.cobertura_de_uf(uf, c, w, med[uf], pop_uf[uf],
+                                      pct[uf].get("declarado_plano", 0) or 0,
+                                      pct[uf].get("declarado_antigo", 0) or 0,
+                                      rm._declarado_nacional_uf().get(uf, 0),
+                                      desconto_plano=d_plano, desconto_antigo=d_antigo)
+        return valor
+
+    def camadas_da_uf(uf):
+        """(documentado, agregado, declarado) em pontos percentuais da população, pelo motor.
+
+        As três camadas saem da mesma conta, por diferença: documentado é o peso dos registros
+        lidos; agregado é o que o excedente agregado acrescenta (RO); declarado é o resto, que é
+        o que a camada do levantamento acrescenta. Somadas, dão a cobertura publicada.
+        """
+        c, w = contagem_e_peso(uf)
+        total, _ = rm.cobertura_de_uf(uf, c, w, med[uf], pop_uf[uf],
+                                      pct[uf].get("declarado_plano", 0) or 0,
+                                      pct[uf].get("declarado_antigo", 0) or 0,
+                                      rm._declarado_nacional_uf().get(uf, 0))
+        com_agregado, _ = rm.cobertura_de_uf(uf, c, w, med[uf], pop_uf[uf], 0, 0, 0)
+        doc_pct = min(100.0, 100.0 * w / pop_uf[uf])
+        agr = max(0.0, com_agregado - doc_pct)
+        dec = max(0.0, total - com_agregado)
+        return round(doc_pct, 1), round(agr, 1), round(dec, 1)
 
     rank_base = _ranks(ufs, X.mean(axis=1))
 
@@ -111,7 +134,10 @@ def rodar():
                            (0.5, 0.2, "0,3 → 0,2"), (0.5, 0.4, "0,3 → 0,4")):
         Xv = X.copy()
         for i, u in enumerate(ufs):
-            Xv[i, 1] = round(cobertura(u, dp_, da_), 1)
+            # v3.1: X = [instrumento, estrutura, cobertura]. A coluna 1 é a
+            # ESTRUTURA; escrever a cobertura nela media a sensibilidade da
+            # camada declarada sobre o componente errado (A3-05).
+            Xv[i, 2] = round(cobertura(u, dp_, da_), 1)
         R["descontos"][nome] = _shifts(_ranks(ufs, Xv.mean(axis=1)), rank_base, ufs)
 
     # 4. esquemas de ponderação: PCA e knockouts
@@ -137,22 +163,21 @@ def rodar():
                        for j in range(3)]
 
     # 6. decomposição da cobertura populacional por camada (nominal / agregado / declarada)
+    # 08/10/2026 (A3-05): a decomposição sai da MESMA conta do motor. A versão anterior aplicava
+    # 0,3 ao plano desatualizado (o motor aplica 0,5) e ignorava a camada nacional, e por isso o
+    # PDF público dizia "DF 100 % documentado" onde o motor tem 37 % documentado e 63 % declarado.
+    # 08/10/2026 (A3-05): a cobertura por UF e a decomposição em valores ABSOLUTOS saem no
+    # resultado, para o portão `verificar_camadas_do_pdf.py` poder compará-las com o que o índice
+    # publica. Enquanto a conta só existia dentro do relatório, nada a conferia.
+    R["cobertura_por_uf"] = {u: round(cobertura(u), 1) for u in ufs}
+    R["camadas_absolutas"] = {u: camadas_da_uf(u) for u in ufs}
     R["camadas"] = {}
     for u in ufs:
-        c = {}; w_doc = 0.0
-        for r in mun:
-            if r["uf"] == u:
-                c[r["categoria"]] = c.get(r["categoria"], 0) + 1
-                w_doc += pop.get(cod_por[(r["nome"], r["uf"])], 0) * rm.CRED_POP.get(r["categoria"], 0.0)
-        t, e = rm.excedente_agregado(u, c)
-        w_agr = e * med[u] * rm.CRED_POP[t] if t else 0.0
-        dp = pct[u].get("declarado_plano", 0) or 0
-        da = pct[u].get("declarado_antigo", 0) or 0
-        doc_n = sum(v for k, v in c.items() if k in rm.PESO_DOC)
-        w_dec = (max(dp - doc_n, 0) * med[u] * 0.5 if dp else 0.0) + (da * med[u] * 0.3 if da else 0.0)
-        w = w_doc + w_agr + w_dec
-        if w > 1e-9:
-            R["camadas"][u] = (round(100 * w_doc / w), round(100 * w_agr / w), round(100 * w_dec / w))
+        doc_pct, agr_pct, dec_pct = camadas_da_uf(u)
+        total = doc_pct + agr_pct + dec_pct
+        if total > 1e-9:
+            R["camadas"][u] = (round(100 * doc_pct / total), round(100 * agr_pct / total),
+                               round(100 * dec_pct / total))
 
     # 7. teto de risco de sobreposição declarada-desatualizada × plano_antigo documentado
     R["sobreposicao"] = {}
@@ -191,17 +216,13 @@ def rodar():
             if r.get("sem_ato_de_aprovacao"):
                 credito *= fator
             w += pop.get(cod_por[(r["nome"], r["uf"])], 0) * credito
-        t, e = rm.excedente_agregado(uf, c)
-        if t:
-            w += e * med[uf] * rm.CRED_POP[t]
-        dp = pct[uf].get("declarado_plano", 0) or 0
-        da = pct[uf].get("declarado_antigo", 0) or 0
-        doc_n = sum(v for k, v in c.items() if k in rm.PESO_DOC)
-        if dp:
-            w += max(dp - doc_n, 0) * med[uf] * 0.5
-        if da:
-            w += da * med[uf] * 0.3
-        return min(100.0, 100.0 * w / pop_uf[uf])
+        # 08/10/2026 (A3-05): a variante comparava a base COM a camada nacional contra uma
+        # variante SEM ela, e metade do "efeito" publicado era isso. A conta é a mesma do motor.
+        valor, _ = rm.cobertura_de_uf(uf, c, w, med[uf], pop_uf[uf],
+                                      pct[uf].get("declarado_plano", 0) or 0,
+                                      pct[uf].get("declarado_antigo", 0) or 0,
+                                      rm._declarado_nacional_uf().get(uf, 0))
+        return valor
 
     Xv = X.copy()
     mudou_de_faixa, antes_depois = [], {}
