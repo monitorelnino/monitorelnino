@@ -188,6 +188,11 @@ jobs:
           # barra_publicacao: sim
           python3 scripts/verificar_documento_publicado.py
           # assunto: dado
+          python3 scripts/verificar_esquema_de_ato.py --autoteste
+          # assunto: dado
+          # barra_publicacao: sim
+          python3 scripts/verificar_esquema_de_ato.py
+          # assunto: dado
           python3 scripts/verificar_esquema_de_pista.py --autoteste
           # assunto: dado
           # barra_publicacao: sim

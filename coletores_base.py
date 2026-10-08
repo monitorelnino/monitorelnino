@@ -103,6 +103,74 @@ def hoje_editorial(agora=None) -> date:
     return (agora or datetime.now(FUSO_EDITORIAL)).astimezone(FUSO_EDITORIAL).date()
 
 
+RE_DATA_ISO = re.compile(r"\b(\d{4})-(\d{2})-(\d{2})\b")
+RE_DATA_BR = re.compile(r"\b(\d{1,2})/(\d{1,2})/(\d{4})\b")
+MESES_PT = {"janeiro": 1, "fevereiro": 2, "marco": 3, "março": 3, "abril": 4, "maio": 5,
+            "junho": 6, "julho": 7, "agosto": 8, "setembro": 9, "outubro": 10,
+            "novembro": 11, "dezembro": 12}
+RE_DATA_EXTENSO = re.compile(
+    r"\b(\d{1,2})\s*º?\s*de\s+([A-Za-zçÇãÃéÉ]+)\s+de\s+(\d{4})\b", re.IGNORECASE)
+
+
+def data_br_de(valor) -> "str | None":
+    """Toda data que o site exibe sai desta porta, em **dd/mm/aaaa**, ou não sai.
+
+    08/10/2026 (A3-08, A6-02, A6-21). `data/atos_resposta.json` tinha 832 datas em dd/mm/aaaa e
+    **97 em ISO** — as do diário consorciado, que gravava `dia.isoformat()`. Não é cosmético:
+    quem lê o campo compara string com string (a série semanal, o cartão, o feed), e "2026-07-31"
+    nunca casa com "31/07/2026". Normalizar na saída de cada consumidor é a mesma regra copiada N
+    vezes; aqui ela tem um dono.
+
+    Aceita ISO, dd/mm/aaaa, d/m/aaaa, `datetime.date` e "31 de julho de 2026". Devolve `None`
+    quando não há data reconhecível — ausência é lacuna declarada, nunca data adivinhada.
+    """
+    if valor is None:
+        return None
+    if isinstance(valor, (date, datetime)):
+        d = valor.date() if isinstance(valor, datetime) else valor
+        return f"{d.day:02d}/{d.month:02d}/{d.year:04d}"
+    s = str(valor).strip()
+    if not s:
+        return None
+    m = RE_DATA_ISO.search(s)
+    if m:
+        a, mes, dia = int(m.group(1)), int(m.group(2)), int(m.group(3))
+    else:
+        m = RE_DATA_BR.search(s)
+        if m:
+            dia, mes, a = int(m.group(1)), int(m.group(2)), int(m.group(3))
+        else:
+            m = RE_DATA_EXTENSO.search(s)
+            if not m:
+                return None
+            mes = MESES_PT.get(m.group(2).lower())
+            if not mes:
+                return None
+            dia, a = int(m.group(1)), int(m.group(3))
+    try:
+        d = date(a, mes, dia)
+    except ValueError:
+        return None  # 31/02 e companhia: data impossível não é data
+    return f"{d.day:02d}/{d.month:02d}/{d.year:04d}"
+
+
+def data_do_ato_no_trecho(trecho: str, ano_minimo: int = 2000) -> "str | None":
+    """A data do ATO, lida do trecho do próprio ato, em dd/mm/aaaa — ou `None`.
+
+    O `data` do evento consorciado era a data da EDIÇÃO do diário, não a do decreto. As duas
+    costumam diferir por dias, e é a do ato que a metodologia §32.6 manda publicar. Quando o
+    trecho não traz data nenhuma, devolve `None` e quem chama fica com `data_publicacao`.
+    """
+    if not trecho:
+        return None
+    for regex in (RE_DATA_EXTENSO, RE_DATA_BR, RE_DATA_ISO):
+        for m in regex.finditer(trecho):
+            br = data_br_de(m.group(0))
+            if br and int(br[-4:]) >= ano_minimo:
+                return br
+    return None
+
+
 def data_do_corte() -> date:
     """A data do RELÓGIO FIXADO da cadeia de derivados, ou a data editorial fora dela.
 
