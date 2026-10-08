@@ -526,9 +526,9 @@
    "id": "atos_federais_semana",
    "grupo": "dinheiro",
    "rotulo": "Atos federais de financiamento publicados nos últimos 7 dias",
-   "valor": 0,
+   "valor": null,
    "unidade": "atos",
-   "sem_coleta": false,
+   "sem_coleta": true,
    "periodo": null,
    "referencia": "últimos 7 dias",
    "fonte": "atos federais lidos pelo MARÉ",
@@ -607,7 +607,9 @@
    "pagina_de_origem": "saude.html"
   }
  ],
- "sem_dado_nesta_edicao": [],
+ "sem_dado_nesta_edicao": [
+  "Atos federais de financiamento publicados nos últimos 7 dias"
+ ],
  "nao_calculaveis": [
   {
    "id": "planos_localizados_no_periodo",

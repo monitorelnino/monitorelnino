@@ -163,12 +163,38 @@ def cartao_resposta(rec: dict, corte: datetime) -> dict:
                            else "nenhuma portaria de resposta publicada nos últimos 7 dias"))
 
 
+def tem_data_legivel(atos: list) -> bool:
+    """Algum item traz data de publicação que a janela saiba ler?
+
+    08/10/2026 (A3-10). Nenhum dos cinco compromissos federais tinha `data` nem `publicado_em`:
+    `na_janela` devolvia lista vazia, e o cartão publicava **"0 atos" como fato**, nos últimos sete
+    dias, no Financiamento e na Imprensa. Zero medido e zero por campo inexistente são coisas
+    diferentes — e a regra do site é que zero só se publica quando a coleta rodou.
+    """
+    for a in atos or []:
+        if not isinstance(a, dict):
+            continue
+        bruta = str(a.get("data") or a.get("publicado_em") or "")[:10]
+        for fmt in ("%Y-%m-%d", "%d/%m/%Y"):
+            try:
+                datetime.strptime(bruta, fmt)
+                return True
+            except ValueError:
+                continue
+    return False
+
+
 def cartao_atos(comp: dict, corte: datetime) -> dict:
     """Atos federais de financiamento novos nos últimos sete dias."""
     itens = (comp or {}).get("itens")
     if itens is None:
         return sem_coleta("atos_federais_semana", "atos",
                           "o arquivo de compromissos federais não foi coletado até o corte",
+                          "Atos federais lidos pelo MARÉ")
+    if not tem_data_legivel(itens):
+        return sem_coleta("atos_federais_semana", "atos",
+                          "a origem dos compromissos federais não traz data de publicação do ato; "
+                          "sem data não há janela de sete dias para medir",
                           "Atos federais lidos pelo MARÉ")
     na = na_janela(itens, corte)
     return cartao("atos_federais_semana", len(na), "atos", "últimos 7 dias",
