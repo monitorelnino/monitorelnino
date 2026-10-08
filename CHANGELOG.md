@@ -11,6 +11,7 @@ não pontuados permanecem na versão corrente.
 
 
 
+
 ## 2026-10-08 · #PR · Lote 1.4: a data do decreto deixa de ser a da portaria
 
 Nos 732 atos vindos do DOU, o campo `data` é a data da portaria de reconhecimento federal, e 674
@@ -18,6 +19,13 @@ deles traziam a data do decreto municipal num campo que nenhuma superfície lia.
 publicava a data da portaria como "primeiro decreto" — AM mostrava 30/06 quando o decreto é de
 08/06. Agora as duas datas aparecem separadas e nomeadas, a regra está no §32.6 da METODOLOGIA, e
 dois autotestes a provam. Quem conta não muda.
+## 2026-10-08 · #PR · Lote 1.5: três municípios de MT voltam ao contador de resposta
+
+Evento sem `ibge` era descartado em silêncio por um `continue`: oito eventos de órgão estadual não
+traziam o código, e Itaúba, Colniza e Várzea Grande (MT) não tinham nenhum outro — sumiam do
+contador. MT publicava índice de resposta 0,2 quando é 9,2. Agora o código é casado por (nome, UF)
+na malha, o descarte sai nomeado, e `verificar_resposta.py` reprova evento sem `ibge` casável.
+Nacional: 749 → 752 municípios, 10,6% → 10,8% da população.
 ## 2026-10-08 · #PR · Lote 1.1: quatro registros falsos saem do banco
 
 O juiz havia promovido quatro planos de outro ente ou de outro objeto: o PDF de Rio do Oeste/SC é
