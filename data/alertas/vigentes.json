@@ -7,15 +7,15 @@
   "validade_horas": 36,
   "escrito_por": "coletar_sinais_risco.py"
  },
- "gerado_em": "07/10/2026 20:47",
+ "gerado_em": "07/10/2026 21:40",
  "resumo": {
   "municipios": 3462,
   "municipios_inmet": 3461,
-  "municipios_cemaden": 10,
+  "municipios_cemaden": 6,
   "avisos_inmet": 5,
-  "alertas_cemaden_em_vigor": 10,
-  "alertas_cemaden_cessados": 1,
-  "alertas_cemaden_devolvidos": 11,
+  "alertas_cemaden_em_vigor": 6,
+  "alertas_cemaden_cessados": 4,
+  "alertas_cemaden_devolvidos": 10,
   "alertas_cemaden_sem_codigo_ibge": 0,
   "campos_devolvidos_pelo_cemaden": [
    "cidade",
@@ -23945,15 +23945,7 @@
      "fim": "2026-10-07 23:59"
     }
    ],
-   "cemaden": [
-    {
-     "nivel": "Moderado",
-     "tipo": "Movimentos de Massa",
-     "evento": "Movimentos de Massa - Moderado",
-     "inicio": "2026-10-06T21:11:09.254Z",
-     "fim": null
-    }
-   ]
+   "cemaden": []
   },
   "3500105": {
    "nome": "Adamantina",
@@ -38527,15 +38519,7 @@
      "fim": "2026-10-07 23:59"
     }
    ],
-   "cemaden": [
-    {
-     "nivel": "Moderado",
-     "tipo": "Movimentos de Massa",
-     "evento": "Movimentos de Massa - Moderado",
-     "inicio": "2026-10-06T13:46:57.872Z",
-     "fim": null
-    }
-   ]
+   "cemaden": []
   },
   "4204707": {
    "nome": "Cunha Porã",
@@ -38934,15 +38918,7 @@
      "fim": "2026-10-07 23:59"
     }
    ],
-   "cemaden": [
-    {
-     "nivel": "Moderado",
-     "tipo": "Movimentos de Massa",
-     "evento": "Movimentos de Massa - Moderado",
-     "inicio": "2026-10-06T15:31:53.316Z",
-     "fim": null
-    }
-   ]
+   "cemaden": []
   },
   "4208955": {
    "nome": "Jardinópolis",
@@ -38984,15 +38960,7 @@
      "fim": "2026-10-07 23:59"
     }
    ],
-   "cemaden": [
-    {
-     "nivel": "Moderado",
-     "tipo": "Movimentos de Massa",
-     "evento": "Movimentos de Massa - Moderado",
-     "inicio": "2026-10-06T20:01:52.290Z",
-     "fim": null
-    }
-   ]
+   "cemaden": []
   },
   "4209177": {
    "nome": "Jupiá",
@@ -50838,12 +50806,39 @@
   }
  },
  "cessados": {
-  "5003306": [
+  "3306305": [
    {
     "nivel": "Cessar",
-    "tipo": "Risco Hidrológico",
-    "evento": "Risco Hidrológico - Cessar",
-    "inicio": "2026-10-07T12:29:53.381Z",
+    "tipo": "Movimentos de Massa",
+    "evento": "Movimentos de Massa - Cessar",
+    "inicio": "2026-10-08T00:03:49.279Z",
+    "fim": null
+   }
+  ],
+  "4204509": [
+   {
+    "nivel": "Cessar",
+    "tipo": "Movimentos de Massa",
+    "evento": "Movimentos de Massa - Cessar",
+    "inicio": "2026-10-08T00:16:00.172Z",
+    "fim": null
+   }
+  ],
+  "4208906": [
+   {
+    "nivel": "Cessar",
+    "tipo": "Movimentos de Massa",
+    "evento": "Movimentos de Massa - Cessar",
+    "inicio": "2026-10-08T00:16:45.773Z",
+    "fim": null
+   }
+  ],
+  "4209102": [
+   {
+    "nivel": "Cessar",
+    "tipo": "Movimentos de Massa",
+    "evento": "Movimentos de Massa - Cessar",
+    "inicio": "2026-10-08T00:16:24.149Z",
     "fim": null
    }
   ]
