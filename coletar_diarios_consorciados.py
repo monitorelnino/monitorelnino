@@ -119,7 +119,8 @@ from datetime import date, timedelta
 import funil
 from coletores_base import (carimbar_atos, UA, preservar_evidencia, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, referencia_ibge, ler, gravar, rodar_autoteste,
-                            CANAIS_ATO, hoje_editorial, normalizar_nome)
+                            CANAIS_ATO, hoje_editorial, normalizar_nome, data_br_de,
+                            data_do_ato_no_trecho)
 from scripts.pistas import sincronizar as sincronizar_pistas  # 05/10/2026: a fila tem UMA porta
 from classificar_pista_civil import triagem_completa
 
@@ -495,12 +496,22 @@ def coletar_fonte(uf: str, slug: str, nome_fonte: str, desde_iso: str, ate_iso: 
             h = preservar_evidencia(pdf_bytes, ed["url_pdf"], "pdf", "coletar_diarios_consorciados")
             decretos, pistas = classificar_trechos_consorciado(texto, candidatos)
             for d in decretos:
-                d.update({"data": dia.isoformat(), "url": ed["url_pdf"], "hash_evidencia": h,
+                # 08/10/2026 (A3-08): toda data sai pela porta, em dd/mm/aaaa. `data_publicacao`
+                # e a da EDICAO do diario, sempre presente; `data_ato` e a do proprio decreto,
+                # lida do trecho quando ele a traz. `data` segue sendo a da edicao, agora no
+                # formato unico - trocar o significado dela mudaria a chave de deduplicacao e
+                # duplicaria os 97 eventos ja gravados.
+                d.update({"data": data_br_de(dia), "data_publicacao": data_br_de(dia),
+                          "url": ed["url_pdf"], "hash_evidencia": h,
                           "fonte": nome_fonte, "uf": uf})
+                ato = data_do_ato_no_trecho(d.get("trecho") or "")
+                if ato:
+                    d["data_ato"] = ato
                 decretos_todos.append(d)
             for p in pistas:
                 p.update({"uf": uf, "origem": "diario_consorciado", "fonte": nome_fonte,
-                          "data": dia.isoformat(), "url": ed["url_pdf"], "hash_evidencia": h,
+                          "data": data_br_de(dia), "data_publicacao": data_br_de(dia),
+                          "url": ed["url_pdf"], "hash_evidencia": h,
                           "registrado_em": hoje_editorial().isoformat(), **triagem_completa(p["trecho"]),
                           "status": "pista — atribuição de município por proximidade no PDF consorciado; "
                                     "promover a registro exige documento primário lido por humano"})
@@ -575,7 +586,9 @@ def coletar(desde_iso: str, ate_iso: str, apenas_uf: str = "") -> int:
                                         "causa": d["tipo"], "decreto": d["decreto"],
                                         "fonte": f"Diário consorciado (via {d['fonte']})", "url": d["url"],
                                         "lat": ref["lat"], "lon": ref["lon"], "canal": "DOM-consorciado",
-                                        "hash_evidencia": d["hash_evidencia"]})
+                                        "hash_evidencia": d["hash_evidencia"],
+                                        "data_publicacao": d.get("data_publicacao") or d["data"],
+                                        **({"data_ato": d["data_ato"]} if d.get("data_ato") else {})})
                 vistos.add(chave); total_decretos_novos += 1
             for p in r["pistas"]:
                 p["municipio"] = p.get("municipio") or f"{uf} (não identificado no PDF consorciado)"
