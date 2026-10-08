@@ -1,25 +1,14 @@
 {
- "regra": "declarada em 02/09/2026 (C11): a partir de 26/10/2026, registro pontuável sem número de ato OU sem data no padrão dd/mm/aaaa sai da pontuação; até lá permanece, com fila pública",
- "prazo_saneamento": "2026-10-25",
- "vigencia_da_saida": "2026-10-26",
+ "_governanca": "O que falta na CITAÇÃO de cada registro que recebe crédito: número de ato, data em dd/mm/aaaa, endereço. Informação de ficha, sem efeito em nota nenhuma — a regra C11, que marcava 26/10/2026 como prazo de saída da pontuação, foi revogada em 08/10/2026 (decisão D3; METODOLOGIA §12.4, item 2). Regenerado pela cadeia de derivados.",
+ "regra": "revogada em 08/10/2026 (D3): esta fila não tira ponto de registro nenhum",
  "fila": [
-  {
-   "nome": "Rio Branco",
-   "uf": "AC",
-   "categoria": "plano",
-   "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
-  },
   {
    "nome": "Maceió",
    "uf": "AL",
    "categoria": "plano",
    "problemas": [
     "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Manaus",
@@ -27,8 +16,7 @@
    "categoria": "plano",
    "problemas": [
     "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Salvador",
@@ -37,8 +25,7 @@
    "problemas": [
     "sem_numero_de_ato",
     "data_fora_do_padrao"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Fortaleza",
@@ -46,8 +33,7 @@
    "categoria": "plano",
    "problemas": [
     "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Vitória",
@@ -56,8 +42,7 @@
    "problemas": [
     "sem_numero_de_ato",
     "data_fora_do_padrao"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "São Luís",
@@ -66,18 +51,7 @@
    "problemas": [
     "sem_numero_de_ato",
     "data_fora_do_padrao"
-   ],
-   "prazo_saneamento": "2026-10-25"
-  },
-  {
-   "nome": "Belém",
-   "uf": "PA",
-   "categoria": "plano_elaboracao",
-   "problemas": [
-    "sem_numero_de_ato",
-    "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "João Pessoa",
@@ -87,17 +61,7 @@
     "sem_numero_de_ato",
     "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
-  },
-  {
-   "nome": "Curitiba",
-   "uf": "PR",
-   "categoria": "plano",
-   "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Teresina",
@@ -107,8 +71,7 @@
     "sem_numero_de_ato",
     "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Rio de Janeiro",
@@ -117,8 +80,7 @@
    "problemas": [
     "sem_numero_de_ato",
     "data_fora_do_padrao"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Natal",
@@ -127,8 +89,7 @@
    "problemas": [
     "sem_numero_de_ato",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Porto Velho",
@@ -138,8 +99,7 @@
     "sem_numero_de_ato",
     "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Boa Vista",
@@ -149,8 +109,7 @@
     "sem_numero_de_ato",
     "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "São Paulo",
@@ -158,8 +117,7 @@
    "categoria": "plano",
    "problemas": [
     "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Aracaju",
@@ -169,8 +127,7 @@
     "sem_numero_de_ato",
     "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Palmas",
@@ -180,18 +137,7 @@
     "sem_numero_de_ato",
     "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
-  },
-  {
-   "nome": "Macapá",
-   "uf": "AP",
-   "categoria": "plano_elaboracao",
-   "problemas": [
-    "sem_numero_de_ato",
-    "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Brasília",
@@ -199,8 +145,7 @@
    "categoria": "coberto_estadual",
    "problemas": [
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Goiânia",
@@ -209,8 +154,7 @@
    "problemas": [
     "sem_numero_de_ato",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Cuiabá",
@@ -220,28 +164,7 @@
     "sem_numero_de_ato",
     "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
-  },
-  {
-   "nome": "Belo Horizonte",
-   "uf": "MG",
-   "categoria": "plano_elaboracao",
-   "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
-  },
-  {
-   "nome": "Florianópolis",
-   "uf": "SC",
-   "categoria": "plano_elaboracao",
-   "problemas": [
-    "sem_numero_de_ato",
-    "data_fora_do_padrao",
-    "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Itajaí",
@@ -250,8 +173,7 @@
    "problemas": [
     "sem_numero_de_ato",
     "data_fora_do_padrao"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Campina Grande",
@@ -261,8 +183,7 @@
     "sem_numero_de_ato",
     "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Campo do Brito",
@@ -272,8 +193,7 @@
     "sem_numero_de_ato",
     "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "São Francisco",
@@ -283,8 +203,7 @@
     "sem_numero_de_ato",
     "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Maruim",
@@ -294,8 +213,7 @@
     "sem_numero_de_ato",
     "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Nossa Senhora do Socorro",
@@ -305,8 +223,7 @@
     "sem_numero_de_ato",
     "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Itabaiana",
@@ -316,8 +233,15 @@
     "sem_numero_de_ato",
     "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
+  },
+  {
+   "nome": "Lagarto",
+   "uf": "SE",
+   "categoria": "plano",
+   "problemas": [
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Tasso Fragoso",
@@ -327,8 +251,7 @@
     "sem_numero_de_ato",
     "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Riachão",
@@ -338,8 +261,7 @@
     "sem_numero_de_ato",
     "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Balsas",
@@ -349,8 +271,7 @@
     "sem_numero_de_ato",
     "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "São Raimundo das Mangabeiras",
@@ -360,8 +281,7 @@
     "sem_numero_de_ato",
     "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Bonfim",
@@ -371,8 +291,7 @@
     "sem_numero_de_ato",
     "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "São Leopoldo",
@@ -381,8 +300,7 @@
    "problemas": [
     "sem_numero_de_ato",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Blumenau",
@@ -392,8 +310,7 @@
     "sem_numero_de_ato",
     "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Joinville",
@@ -402,30 +319,7 @@
    "problemas": [
     "sem_numero_de_ato",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
-  },
-  {
-   "nome": "Rio do Sul",
-   "uf": "SC",
-   "categoria": "plano_elaboracao",
-   "problemas": [
-    "sem_numero_de_ato",
-    "data_fora_do_padrao",
-    "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
-  },
-  {
-   "nome": "Indaial",
-   "uf": "SC",
-   "categoria": "plano_elaboracao",
-   "problemas": [
-    "sem_numero_de_ato",
-    "data_fora_do_padrao",
-    "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Brusque",
@@ -435,8 +329,7 @@
     "sem_numero_de_ato",
     "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Jaraguá do Sul",
@@ -446,8 +339,7 @@
     "sem_numero_de_ato",
     "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Araucária",
@@ -456,8 +348,7 @@
    "problemas": [
     "sem_numero_de_ato",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Campo Largo",
@@ -466,8 +357,7 @@
    "problemas": [
     "sem_numero_de_ato",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Campo Magro",
@@ -476,8 +366,7 @@
    "problemas": [
     "sem_numero_de_ato",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Colombo",
@@ -486,8 +375,7 @@
    "problemas": [
     "sem_numero_de_ato",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Pinhais",
@@ -496,8 +384,7 @@
    "problemas": [
     "sem_numero_de_ato",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Piraquara",
@@ -506,8 +393,7 @@
    "problemas": [
     "sem_numero_de_ato",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "São José dos Pinhais",
@@ -516,8 +402,7 @@
    "problemas": [
     "sem_numero_de_ato",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Quatro Barras",
@@ -526,8 +411,7 @@
    "problemas": [
     "sem_numero_de_ato",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Almirante Tamandaré",
@@ -536,8 +420,7 @@
    "problemas": [
     "sem_numero_de_ato",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Estância",
@@ -545,9 +428,9 @@
    "categoria": "plano",
    "problemas": [
     "sem_numero_de_ato",
+    "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Malhada dos Bois",
@@ -555,9 +438,9 @@
    "categoria": "plano",
    "problemas": [
     "sem_numero_de_ato",
+    "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Cedro de São João",
@@ -565,9 +448,9 @@
    "categoria": "plano",
    "problemas": [
     "sem_numero_de_ato",
+    "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Arauá",
@@ -575,9 +458,9 @@
    "categoria": "plano_antigo",
    "problemas": [
     "sem_numero_de_ato",
+    "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Divina Pastora",
@@ -585,9 +468,9 @@
    "categoria": "plano_antigo",
    "problemas": [
     "sem_numero_de_ato",
+    "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Santo Amaro das Brotas",
@@ -595,9 +478,9 @@
    "categoria": "plano_antigo",
    "problemas": [
     "sem_numero_de_ato",
+    "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "São Cristóvão",
@@ -605,9 +488,9 @@
    "categoria": "plano_antigo",
    "problemas": [
     "sem_numero_de_ato",
+    "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Itabaianinha",
@@ -615,9 +498,9 @@
    "categoria": "plano_antigo",
    "problemas": [
     "sem_numero_de_ato",
+    "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Santana do São Francisco",
@@ -625,9 +508,9 @@
    "categoria": "plano_antigo",
    "problemas": [
     "sem_numero_de_ato",
+    "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Pinhão",
@@ -635,9 +518,9 @@
    "categoria": "plano_antigo",
    "problemas": [
     "sem_numero_de_ato",
+    "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Telha",
@@ -645,9 +528,9 @@
    "categoria": "plano_antigo",
    "problemas": [
     "sem_numero_de_ato",
+    "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Riachuelo",
@@ -655,648 +538,648 @@
    "categoria": "plano_antigo",
    "problemas": [
     "sem_numero_de_ato",
+    "data_fora_do_padrao",
     "sem_url"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Afonso Cláudio",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Água Doce do Norte",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Águia Branca",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Alegre",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Alfredo Chaves",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Alto Rio Novo",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Anchieta",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Apiacá",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Aracruz",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Atilio Vivacqua",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Baixo Guandu",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Barra de São Francisco",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Boa Esperança",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Bom Jesus do Norte",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Cachoeiro de Itapemirim",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Cariacica",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Castelo",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Colatina",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Conceição da Barra",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Conceição do Castelo",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Divino de São Lourenço",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Ecoporanga",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Fundão",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Guaçuí",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Guarapari",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Ibatiba",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Ibiraçu",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Ibitirama",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Iconha",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Irupi",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Itaguaçu",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Itapemirim",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Itarana",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Iúna",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Jaguaré",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Jerônimo Monteiro",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "João Neiva",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Laranja da Terra",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Linhares",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Mantenópolis",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Marataízes",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Marechal Floriano",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Mimoso do Sul",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Montanha",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Mucurici",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Muniz Freire",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Muqui",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Nova Venécia",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Pancas",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Pedro Canário",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Pinheiros",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Piúma",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Ponto Belo",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Presidente Kennedy",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Rio Novo do Sul",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Santa Leopoldina",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Santa Maria de Jetibá",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Santa Teresa",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "São Domingos do Norte",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "São Gabriel da Palha",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "São José do Calçado",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "São Mateus",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "São Roque do Canaã",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Serra",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Sooretama",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Vargem Alta",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Venda Nova do Imigrante",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Viana",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Vila Pavão",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Vila Valério",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Vila Velha",
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   },
   {
    "nome": "Guarulhos",
@@ -1305,36 +1188,15 @@
    "problemas": [
     "sem_numero_de_ato",
     "data_fora_do_padrao"
-   ],
-   "prazo_saneamento": "2026-10-25"
-  },
-  {
-   "nome": "Campinas",
-   "uf": "SP",
-   "categoria": "plano",
-   "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "São Gonçalo",
    "uf": "RJ",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato",
-    "data_fora_do_padrao"
-   ],
-   "prazo_saneamento": "2026-10-25"
-  },
-  {
-   "nome": "São Bernardo do Campo",
-   "uf": "SP",
-   "categoria": "plano",
-   "problemas": [
     "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Duque de Caxias",
@@ -1342,8 +1204,7 @@
    "categoria": "plano",
    "problemas": [
     "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Nova Iguaçu",
@@ -1351,27 +1212,7 @@
    "categoria": "plano",
    "problemas": [
     "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
-  },
-  {
-   "nome": "Jacareí",
-   "uf": "SP",
-   "categoria": "plano",
-   "problemas": [
-    "sem_numero_de_ato",
-    "data_fora_do_padrao"
-   ],
-   "prazo_saneamento": "2026-10-25"
-  },
-  {
-   "nome": "Guarujá",
-   "uf": "SP",
-   "categoria": "plano",
-   "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
    "nome": "Macaé",
@@ -1380,17 +1221,70 @@
    "problemas": [
     "sem_numero_de_ato",
     "data_fora_do_padrao"
-   ],
-   "prazo_saneamento": "2026-10-25"
+   ]
   },
   {
-   "nome": "Mauá",
+   "nome": "Rio das Ostras",
+   "uf": "RJ",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Taió",
+   "uf": "SC",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Celso Ramos",
+   "uf": "SC",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Umuarama",
+   "uf": "PR",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Tijucas",
+   "uf": "SC",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Leme",
+   "uf": "SP",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Itanhaém",
    "uf": "SP",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato"
-   ],
-   "prazo_saneamento": "2026-10-25"
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
   }
  ]
 }

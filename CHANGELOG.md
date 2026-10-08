@@ -29,6 +29,10 @@ Quatro fichas publicavam o texto que estava na página do PDF: "o documento É o
 
 O reconhecimento vindo da notícia do MIDR recebia a data da primeira portaria do lote e o link da notícia; dias depois o DOU trazia o ato exato, com outra data, e a deduplicação por data não casava. Eram 17 municípios com dois reconhecimentos onde houve um. A chave passa a ser (município, causa, portaria), o ato exato substitui o lote, e os 332 eventos com data de lote passam a declarar `data_aproximada`. O `except: pass` que escondia a causa virou lacuna registrada.
 
+## 2026-10-08 · #PR · Lote 1.15: C11 revogada, versão com dono, v3.2 calculada em paralelo
+
+A C11 tiraria 142 dos 151 registros pontuáveis em 26/10 por falta de número de ato em documento já lido, contra a decisão de 03/10: revogada (D3), e a fila de citação passa a ser informação de ficha regenerada pela cadeia. `versao_indice` nasce em `meta.json` e alimenta CITATION e datapackage, que diziam "2.3". A **v3.2** (arranjo permanente de resposta à seca, degrau 45) está **decidida e implementada em paralelo**: 191 municípios cumprem as três condições, média 45,3 → 45,6, e nenhuma página lê o resultado. Metodologia §105.
+
 ## 2026-10-08 · #PR · Lote 1.2: o decreto do diário consorciado deixa de ir ao município errado
 
 A posição do decreto no PDF vinha de `texto.find(numero)` — a primeira ocorrência da string do
