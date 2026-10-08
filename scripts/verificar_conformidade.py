@@ -388,7 +388,7 @@ def main() -> int:
         for pagina in paginas:
             contrato = ler_json(CONTRATOS / (pagina.replace(".html", "") + ".json"), {})
             fonte = (RAIZ / pagina).read_text(encoding="utf-8")
-            visivel = _re.sub(r"(?is)<(script|style)[^>]*>.*?</>", " ", fonte)
+            visivel = _re.sub(r"(?is)<(?:script|style)[^>]*>.*?</(?:script|style)>", " ", fonte)
             visivel = _re.sub(r"(?s)<!--.*?-->", " ", visivel)
             visivel = _re.sub(r"(?s)<[^>]+>", " ", visivel)
             for problema in problemas_de_vocabulario(visivel, pagina, regras, contrato):
