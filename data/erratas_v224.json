@@ -1019,5 +1019,14 @@
   "por_que": "D1 (08/10/2026), achados A4-05 e A4-09: o registro recebia crédito no índice sem documento — sem endereço nenhum, ou com notícia no lugar do documento. Passa a `plano_nomeado`, crédito 0, até a busca dirigida anexar o documento; o que era fica guardado em `registro_anterior`. Portão: `scripts/verificar_documento_de_plano.py`. Metodologia §104.",
   "achado": "A4-05",
   "lote": "1.11"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "102 cartões de município recebiam \"Ainda não verificamos este município com todas as fontes\" — 97 com decreto de emergência, 4 com ato alheio ao ciclo e 1 com estrutura de coordenação. Esses municípios foram verificados: passam a receber a frase da sua categoria, e a do decreto diz a data e a fonte do decreto e do reconhecimento",
+  "por_que": "A4-07: `decreto`, `plano_elaboracao`, `estrutura` e `nao_el_nino` caíam no ramo do NÃO VERIFICADO, e o cartão negava ao leitor o que o banco sabe — no caso do decreto, escondia a única informação de resposta que existia. As três frases novas são as aprovadas na seção C do handover.",
+  "achado": "A4-07",
+  "lote": "4.2"
  }
 ]

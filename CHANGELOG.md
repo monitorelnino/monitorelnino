@@ -33,6 +33,10 @@ Quatro fichas publicavam o texto que estava na página do PDF: "o documento É o
 
 O reconhecimento vindo da notícia do MIDR recebia a data da primeira portaria do lote e o link da notícia; dias depois o DOU trazia o ato exato, com outra data, e a deduplicação por data não casava. Eram 17 municípios com dois reconhecimentos onde houve um. A chave passa a ser (município, causa, portaria), o ato exato substitui o lote, e os 332 eventos com data de lote passam a declarar `data_aproximada`. O `except: pass` que escondia a causa virou lacuna registrada.
 
+## 2026-10-08 · #PR · Lote 4.2: o cartão para de dizer "ainda não verificamos" sobre quem foi verificado
+
+Município com decreto de emergência, com ato alheio ao ciclo ou com estrutura de coordenação recebia a frase do não verificado — 102 cartões —, e no caso do decreto o cartão escondia a única informação de resposta que existia sobre o município. Cada categoria passa a ter a sua frase, nas palavras aprovadas na seção C do handover, e a data só aparece quando é completa: "em 2026" não é data.
+
 ## 2026-10-08 · #PR · Lote 1.2: o decreto do diário consorciado deixa de ir ao município errado
 
 A posição do decreto no PDF vinha de `texto.find(numero)` — a primeira ocorrência da string do
