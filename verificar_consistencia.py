@@ -29,7 +29,12 @@ indice = json.load(open(f"{D}/indice.json"))
 transf = json.load(open(f"{D}/transferencias.json"))
 atos_resposta = json.load(open(f"{D}/atos_resposta.json"))
 
-CATS = {"plano","plano_antigo","plano_elaboracao","estrutura","decreto","coberto_estadual","nao_el_nino","nao_localizado","nao_verificado"}  # v3.0: estrutura (§5.1-bis)
+CATS = {"plano","plano_antigo","plano_elaboracao","estrutura","decreto","coberto_estadual","nao_el_nino","nao_localizado","nao_verificado",
+        # 08/10/2026 (D1, §104): plano CITADO por fonte oficial cujo documento nao foi
+        # localizado. Credito 0, como as outras ausencias. Nao e peso novo: e a classe de
+        # ausencia aplicada a quem estava na de presenca, e por isso `CRED_POP` nao muda
+        # -- `CRED_POP.get(cat, 0.0)` ja devolve zero, e as constantes seguem congeladas.
+        "plano_nomeado"}  # v3.0: estrutura (§5.1-bis)
 # 25/09/2026 (§222): era uma cópia, e ficou para trás quando o canal dos diários consorciados
 # passou a produzir dado de verdade. O conjunto agora vem de quem produz — mesma lição do §213.
 from coletores_base import CANAIS_ATO, hoje_editorial  # noqa: E402
