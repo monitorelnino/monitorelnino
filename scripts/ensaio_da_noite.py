@@ -266,6 +266,138 @@ def ensaio_marcadores_de_todos_os_elos(diz) -> bool:
         return True
 
 
+# ─────────────── 7. o carimbo que recusava a noite (A2-02) ───────────────
+
+def ensaio_carimbo_nao_recusa_a_noite(diz) -> bool:
+    """`data/saude_pipeline.json` com carimbos distintos nos dois lados UNE.
+
+    É a causa que perdeu a noite de 07→08/10: todo elo commita este arquivo, cada um grava a hora
+    em que rodou, e o resolvedor recusava divergência em qualquer escalar. O laço tentava cinco
+    vezes a mesma união e desistia; diários, descoberta, juiz e dois sinais foram para artefato.
+    """
+    import unir_conflito_de_rodada as u
+    with tempfile.TemporaryDirectory() as t:
+        tmp = pathlib.Path(t)
+        g = _repo(tmp)
+        caminho = tmp / "data" / "saude_pipeline.json"
+        caminho.parent.mkdir(parents=True, exist_ok=True)
+
+        def doc(execucoes, carimbo):
+            return json.dumps({"formato_versao": 2, "atualizado_em": carimbo,
+                               "execucoes": execucoes}, ensure_ascii=False, indent=1) + "\n"
+
+        base = [{"i": 1}]
+        caminho.write_text(doc(base, "2026-10-07T23:00:00"), encoding="utf-8", newline="\n")
+        g("add", "-A"); g("commit", "-qm", "ontem")
+
+        g("checkout", "-qb", "elo_b")
+        caminho.write_text(doc(base + [{"i": 2}], "2026-10-08T02:40:00"),
+                           encoding="utf-8", newline="\n")
+        g("add", "-A"); g("commit", "-qm", "juiz")
+
+        g("checkout", "-q", "main")
+        caminho.write_text(doc(base + [{"i": 3}], "2026-10-08T01:13:00"),
+                           encoding="utf-8", newline="\n")
+        g("add", "-A"); g("commit", "-qm", "diarios")
+
+        if g("merge", "elo_b", "-m", "colisao", pode_falhar=True) == 0:
+            diz("  ✗ o ensaio não produziu conflito: ele não está medindo o que diz medir")
+            return False
+        resolvidos, _, recusados = u.resolver(repo=tmp)
+        if recusados:
+            diz(f"  ✗ o resolvedor RECUSOU o carimbo — é a causa de 07→08 de volta: {recusados[0]}")
+            return False
+        d = json.loads(caminho.read_text(encoding="utf-8"))
+        execucoes = sorted(x["i"] for x in d["execucoes"])
+        if execucoes != [1, 2, 3]:
+            diz(f"  ✗ perda de execução na união: ficaram {execucoes}")
+            return False
+        if d.get("atualizado_em") != "2026-10-08T02:40:00":
+            diz(f"  ✗ o carimbo não venceu pelo maior: {d.get('atualizado_em')}")
+            return False
+        diz("  ✓ carimbo distinto nos dois lados: união pela base comum, 3 execuções, "
+            "carimbo pelo maior — a noite não se perde")
+        return True
+
+
+# ─────────────── 8. o passo da guarda com o shell do Actions (A2-01) ───────────────
+
+def ensaio_guarda_com_o_shell_do_actions(diz) -> bool:
+    """O passo da guarda decide pelo `rc` do script, com `bash -e` e com `bash -eo pipefail`.
+
+    Era aqui que a regra morava e não valia: `if ! cmd | tee` devolve o status do `tee`, que é
+    sempre 0, e o Actions roda `bash -e` quando o passo não declara `shell:`. Este ensaio executa
+    o passo dos DOIS jeitos e exige a mesma decisão.
+    """
+    import subprocess
+    with tempfile.TemporaryDirectory() as t:
+        tmp = pathlib.Path(t)
+        falso = tmp / "guarda.py"
+        falso.write_text("import sys\nprint('· COLETA ADIADA: fora da janela')\nsys.exit(1)\n",
+                         encoding="utf-8", newline="\n")
+        passo = tmp / "passo.sh"
+        passo.write_text(
+            # A forma a prova de `-e`: com `shell: bash` o Actions roda `bash -eo pipefail`,
+            # e `cmd; rc=$?` aborta no proprio cmd que falha, antes de ler o rc.
+            "rc=0\n"
+            'python3 "$1" > /tmp/guarda_ensaio.txt 2>&1 || rc=$?\n'
+            'cat /tmp/guarda_ensaio.txt > /dev/null\n'
+            'if [ "$rc" -eq 0 ]; then echo pode=1; else echo pode=0; fi\n',
+            encoding="utf-8", newline="\n")
+        for shell in (["bash", "-e"], ["bash", "-eo", "pipefail"]):
+            r = subprocess.run(shell + [str(passo), str(falso)],
+                               capture_output=True, text=True, timeout=60)
+            if "pode=0" not in r.stdout:
+                diz(f"  ✗ com `{' '.join(shell)}` o passo decidiu {r.stdout.strip()!r} — "
+                    f"a guarda não barra")
+                return False
+        # E a forma ANTIGA tem de falhar com `bash -e`: é a prova de que o defeito existia.
+        antigo = tmp / "antigo.sh"
+        antigo.write_text('if ! python3 "$1" | tee /dev/null; then echo pode=0; else echo pode=1; fi\n',
+                          encoding="utf-8", newline="\n")
+        r = subprocess.run(["bash", "-e", str(antigo), str(falso)],
+                           capture_output=True, text=True, timeout=60)
+        if "pode=1" not in r.stdout:
+            diz("  ✗ a forma antiga NÃO reproduziu o defeito — o ensaio não está medindo nada")
+            return False
+        diz("  ✓ o passo da guarda decide pelo `rc` nos dois shells, e a forma antiga "
+            "(`if ! cmd | tee`) ainda responde `pode=1` com `bash -e` — defeito reproduzido e "
+            "corrigido")
+        return True
+
+
+# ─────────────── 9. publicador: portão vermelho não repõe o domínio (A2-04) ───────────────
+
+def ensaio_portao_vermelho_nao_repoe_o_dominio(diz) -> bool:
+    """A condição do deploy, avaliada como o Actions a avalia.
+
+    O passo "Repor o site" tinha `if: always()`: repunha o domínio depois de o portão de dado
+    reprovar ou de o push ser cancelado. Aqui a condição é lida do YAML e exercitada nos quatro
+    casos que importam.
+    """
+    fonte = (pathlib.Path(__file__).resolve().parent.parent
+             / ".github" / "workflows" / "publicar_dados.yml").read_text(encoding="utf-8")
+    i = fonte.find("- name: Repor o site no domínio")
+    if i < 0:
+        diz("  ✗ não achei o passo que repõe o domínio")
+        return False
+    bloco = fonte[i:i + 600]
+    if "always()" in bloco.split("run:")[0]:
+        diz("  ✗ o passo que repõe o domínio ainda tem `always()` — portão vermelho republica")
+        return False
+    condicao = bloco.split("if:", 1)[1].split("env:")[0] if "if:" in bloco else ""
+    for exigido in ("steps.push.outcome == 'success'", "success()"):
+        if exigido not in condicao:
+            diz(f"  ✗ a condição do deploy não exige {exigido!r}: {' '.join(condicao.split())}")
+            return False
+    if "houve" not in condicao:
+        diz("  ✗ a condição não trata o caso `houve=0` (nada a empurrar, portões verdes)")
+        return False
+    diz("  ✓ o domínio só se repõe com push bem-sucedido, ou com nada a empurrar e portões "
+        "verdes — portão vermelho não republica")
+    return True
+
+
 ENSAIOS = (
     ("dois elos em paralelo: zero conflito, zero perda", ensaio_dois_elos_em_paralelo),
     ("disparo duplicado: o segundo sai sem trabalho", ensaio_disparo_duplicado),
@@ -277,6 +409,9 @@ ENSAIOS = (
      ensaio_porta_recusa_com_motivo),
     ("todos os elos com marcador; o que falta é nomeado",
      ensaio_marcadores_de_todos_os_elos),
+    ("7. carimbo distinto não recusa a noite", ensaio_carimbo_nao_recusa_a_noite),
+    ("8. a guarda decide pelo `rc`, nos dois shells", ensaio_guarda_com_o_shell_do_actions),
+    ("9. portão vermelho não repõe o domínio", ensaio_portao_vermelho_nao_repoe_o_dominio),
 )
 
 

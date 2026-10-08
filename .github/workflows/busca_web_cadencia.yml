@@ -63,6 +63,9 @@ concurrency:
 jobs:
   busca_web:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     # 30/09/2026: cinco rodadas num job só pedem teto maior. 150 min é teto CLARO, não
     # aberto: cinco rodadas medidas em ~20 min cada, mais folga para a instância subir.
     timeout-minutes: 150   # §153: --preparar pode acionar o juiz (portões) em pistas de fonte oficial
@@ -77,8 +80,24 @@ jobs:
         run: |
           git fetch --quiet --depth=50 "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" main
           git reset --hard FETCH_HEAD
+      # 08/10/2026 (A2-03): a busca web não tinha guarda nenhuma — commitava na `main` de dia,
+      # como os três commits de 05/10 (10:37, 12:37, 16:22 UTC) mostram.
+      - name: Janela da noite — na `main`, só de noite
+        id: janela
+        timeout-minutes: 3
+        run: |
+          rc=0
+          python3 scripts/guarda_da_janela.py --ramo "${GITHUB_REF_NAME}" --elo busca_web > /tmp/guarda.txt 2>&1 || rc=$?
+          cat /tmp/guarda.txt | tee -a "$GITHUB_STEP_SUMMARY"
+          if [ "$rc" -eq 0 ]; then
+            echo "pode=1" >> "$GITHUB_OUTPUT"
+          else
+            echo "pode=0" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Decidir a fase (2h em 2h até cobrir todos; depois 4x/dia)
         id: fase
+        if: steps.janela.outputs.pode == '1' 
         run: |
           CICLOS=$(python3 -c "import json;print(int((json.load(open('data/busca_web_estado.json')) if __import__('os').path.exists('data/busca_web_estado.json') else {}).get('ciclos_completos',0)))")
           HORA=$(date -u +%H)
@@ -178,7 +197,8 @@ jobs:
           python3 scripts/carimbar_assets.py
           python3 scripts/gerar_manifesto.py
           python3 verificar_consistencia.py
-      - name: Commit com rebase (mesmo padrão do atualizar.yml)
+      - name: Commit com rebase, união pela base comum e artefato quando recusa
+        id: commit
         if: steps.fase.outputs.rodar == '1' && steps.searxng.outputs.pronto == '1'
         env:
           ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
@@ -186,47 +206,63 @@ jobs:
           git config user.name "monitor-el-nino-bot"
           git config user.email "bot@users.noreply.github.com"
           git add data/ *.html selos/ dados-abertos/ docs/MANIFEST_SHA256.txt docs/FILA_PISTAS.md
-          if git diff --cached --quiet; then echo "Sem alterações."; echo "HOUVE=0" >> $GITHUB_ENV; exit 0; fi
-          git commit -m "Busca web automática ($(date -u +%d/%m/%Y\ %H:%M) UTC)"
-          echo "HOUVE=1" >> $GITHUB_ENV
-          git checkout -- .
+          if git diff --cached --quiet; then
+            echo "Sem alterações."; echo "houve=0" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          git commit -m "Busca web automatica ($(date -u +%d/%m/%Y\ %H:%M) UTC)"
+          echo "houve=1" >> "$GITHUB_OUTPUT"
+          git checkout -- . 2>/dev/null || true
           mkdir -p ~/.ssh && printf '%s\n' "$ROBO_DEPLOY_KEY" > ~/.ssh/robo && chmod 600 ~/.ssh/robo
           ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
-          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main
-          # 24/09/2026: uma tentativa só perdia a rodada inteira quando a main andava entre o fetch e
-          # o push — e ela anda, porque o atualizar.yml e a prévia commitam em paralelo desde que os
-          # grupos de concorrência foram separados. Agora são seis tentativas com espera crescente:
-          # busca o main de novo, rebaseia e empurra. O dado coletado só se perde se as seis falharem.
+          SSH="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes"
           EMPURROU=0
-          for TENTATIVA in 1 2 3 4 5 6; do
-            GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
+          for TENTATIVA in 1 2 3 4 5; do
+            GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
             if ! git rebase FETCH_HEAD; then
-              git rebase --abort || true
-              echo "tentativa $TENTATIVA: rebase conflitou; nova tentativa"
-              sleep $((TENTATIVA * 10)); continue
+              # 08/10/2026 (A2-03): era `rebase --abort; sleep; continue`, seis vezes, sem unir e
+              # sem artefato — 11 de 20 runs desde 05/10 morreram exatamente aqui, cada um com
+              # 2–3 h de busca dentro. A união é a mesma do `_coletor.yml`, pela base comum, e a
+              # recusa sai na primeira, com o trabalho no artefato.
+              echo "tentativa $TENTATIVA: rebase conflitou; unindo pela base comum"
+              if ! python3 scripts/unir_conflito_de_rodada.py; then
+                git rebase --abort || true
+                echo "::error::a união RECUSOU um caminho — o trabalho vai no artefato"
+                break
+              fi
+              bash scripts/verificar_derivados.sh --regenerar-para-commit || true
+              git add -A data/ dados-abertos/ feeds/ selos/ docs/MANIFEST_SHA256.txt docs/FILA_PISTAS.md 2>/dev/null || true
+              if ! GIT_EDITOR=true git rebase --continue; then
+                git rebase --abort || true
+                echo "::warning::a união resolveu mas o rebase não seguiu; nova tentativa"
+                sleep $((TENTATIVA * 10)); continue
+              fi
             fi
-            if GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main; then
+            if GIT_SSH_COMMAND="$SSH" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main; then
               EMPURROU=1; echo "empurrado na tentativa $TENTATIVA"; break
             fi
             echo "tentativa $TENTATIVA: push recusado (main avançou); nova tentativa"
             sleep $((TENTATIVA * 10))
           done
           rm -f ~/.ssh/robo
-          if [ "$EMPURROU" != "1" ]; then echo "::error::seis tentativas de rebase-e-push falharam; rodada não comitada"; exit 1; fi
-      - name: Repor o site no domínio, atrás de senha
-        if: env.HOUVE == '1'
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          PREVIA_BASIC_AUTH: ${{ secrets.PREVIA_BASIC_AUTH }}
-        run: |
-          MODO=$(python3 -c "import json;print(json.load(open('data/publicacao.json')).get('dominio',''))" 2>/dev/null || echo "")
-          if [ "$MODO" != "senha" ]; then echo "modo '$MODO' — repor fica a cargo do atualizar.yml"; exit 0; fi
-          printf '/*\n  Basic-Auth: %s\n  X-Robots-Tag: noindex, nofollow\n' "$PREVIA_BASIC_AUTH" > _headers
-          printf 'User-agent: *\nDisallow: /\n' > robots.txt
-          npx --yes netlify-cli@17 deploy --prod --dir=. --message "Busca web automática ${GITHUB_SHA::7}" > /tmp/repor_out.txt 2>&1 || true
-          rm -f _headers; git checkout -- robots.txt 2>/dev/null
-          grep -q "Deploy is live" /tmp/repor_out.txt && echo "Site reposto atrás de senha." || echo "::warning::reposição não confirmou — ver atualizar.yml na próxima rodada"
+          if [ "$EMPURROU" != "1" ]; then
+            echo "::error::rodada não comitada; o trabalho sai no artefato abaixo"
+            echo "perdeu=1" >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
+
+      # O trabalho que o push não levou não se perde: sai como artefato, e
+      # `scripts/reaplicar_noite.py` o reaplica pela porta de cada arquivo.
+      - name: Guardar a coleta que o push não levou
+        if: failure() && steps.commit.outputs.houve == '1'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: coleta-perdida-busca_web-${{ github.run_id }}
+          path: |
+            data/
+            docs/MANIFEST_SHA256.txt
+          retention-days: 14
+          if-no-files-found: warn
+
       - name: Relatório no repositório privado (sempre)
         if: always() && steps.fase.outputs.rodar == '1'
         env:

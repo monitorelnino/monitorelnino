@@ -24,6 +24,27 @@
 name: Ensaio da noite
 
 on:
+  # 08/10/2026 (A2-15, A7-05): este workflow tinha ZERO runs na API. Ensaio que nunca roda nao
+  # prova nada, e a regra 6 da corrente exige o ensaio antes de a mudanca entrar. Agora ele e
+  # disparado no PR que toca a corrente, e e check obrigatorio ali.
+  pull_request:
+    paths:
+      - ".github/workflows/_coletor.yml"
+      - ".github/workflows/noturno_*.yml"
+      - ".github/workflows/publicar_dados.yml"
+      - ".github/workflows/consolidar_noite.yml"
+      - ".github/workflows/busca_web_cadencia.yml"
+      - ".github/workflows/ensaio_da_noite.yml"
+      - "scripts/unir_conflito_de_rodada.py"
+      - "scripts/guarda_da_janela.py"
+      - "scripts/janela_da_noite.py"
+      - "scripts/painel_da_noite.py"
+      - "scripts/pistas.py"
+      - "scripts/commit_do_elo.py"
+      - "scripts/consolidar_noite.py"
+      - "scripts/reaplicar_noite.py"
+      - "scripts/ensaio_da_noite.py"
+      - "config/escritores.json"
   workflow_dispatch:
     inputs:
       limite:
@@ -42,6 +63,9 @@ jobs:
   mecanismos:
     name: Os seis ensaios dos mecanismos da noite
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -91,6 +115,9 @@ jobs:
   corrente_em_miniatura:
     name: Os coletores de verdade, com limite pequeno e sem commit
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     timeout-minutes: 30
     needs: mecanismos
     steps:
@@ -140,4 +167,11 @@ jobs:
       # A fila continua no esquema depois da rodada: é a prova de que a porta única está de pé em
       # execução real, e não só no autoteste.
       - name: A fila ativa continua no esquema
-        run: python3 scripts/verificar_esquema_de_pista.py | tee -a "$GITHUB_STEP_SUMMARY"
+        run: |
+          # Regra 5 (05/10/2026): a quarentena não bloqueia a publicação por achar pista fora
+          # do esquema — ela a tira da fila. Bloqueia quando a PRÓPRIA quarentena falha, e o
+          # status vem do script, não do `tee`.
+          rc=0
+          python3 scripts/verificar_esquema_de_pista.py > /tmp/quarentena.txt 2>&1 || rc=$?
+          cat /tmp/quarentena.txt | tee -a "$GITHUB_STEP_SUMMARY"
+          exit $rc

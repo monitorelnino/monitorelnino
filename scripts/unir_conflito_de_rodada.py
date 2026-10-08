@@ -251,6 +251,11 @@ def e_regeneravel(caminho: str) -> bool:
     return caminho in REGENERAVEIS or caminho.startswith(PREFIXOS_REGENERAVEIS)
 
 
+# Campos que são CARIMBO de tempo, não dado: unem-se pelo maior. Nenhum deles é conteúdo que se
+# possa perder — são a hora em que o arquivo foi escrito.
+CARIMBOS = ("atualizado_em", "gerado_em", "atualizado", "gravado_em", "corte", "data_do_corte")
+
+
 class Recusa(Exception):
     """O script não sabe resolver este caminho, e adivinhar apagaria dado."""
 
@@ -405,15 +410,33 @@ def unir_log(caminho, chave, base_txt, nosso_txt, deles_txt):
         raise Recusa(f"a união deu {len(uniao)}, menor que um dos lados "
                      f"({len(ln)} e {len(ld)}) — recusado")
 
-    # Os escalares do topo: vêm do lado de quem reaplica (deles), que é a rodada. Se algum
-    # divergir, é mudança de formato no meio de um conflito — para isso o script não serve.
+    # Os escalares do topo: vêm do lado de quem reaplica (deles), que é a rodada.
+    #
+    # CARIMBO NÃO É MUDANÇA DE FORMATO (08/10/2026, A2-02). Esta conferência recusava o conflito
+    # quando QUALQUER escalar diferia — e `atualizado_em` difere sempre, porque cada elo grava a
+    # hora em que rodou. `data/saude_pipeline.json` é commitado por todos os elos, então todo
+    # conflito da noite caía aqui: na noite de 07→08/10 o laço tentou cinco vezes a mesma união e
+    # perdeu diários inteiros (2h23 de coleta), uma descoberta, um juiz e dois sinais.
+    #
+    # Carimbo de tempo une pelo MAIOR, que é o que `unir_contadores` já fazia. Divergência nos
+    # demais escalares continua sendo recusa: ali é mudança de formato, e para isso o script não
+    # serve.
     escalares_n = {k: v for k, v in nosso.items() if k != chave}
     escalares_d = {k: v for k, v in deles.items() if k != chave}
+    carimbos = {}
+    for k in list(escalares_n):
+        if k in CARIMBOS and k in escalares_d and escalares_n[k] != escalares_d[k]:
+            carimbos[k] = max(str(escalares_n[k]), str(escalares_d[k]))
+            escalares_n.pop(k)
+            escalares_d.pop(k)
     if escalares_n != escalares_d:
+        divergentes = sorted(set(escalares_n) ^ set(escalares_d)) or sorted(
+            k for k in escalares_n if escalares_n.get(k) != escalares_d.get(k))
         raise Recusa(f"os campos fora de '{chave}' divergem entre os lados "
-                     f"({sorted(escalares_n)} vs {sorted(escalares_d)}) — mudança de formato")
+                     f"({divergentes}) — mudança de formato")
 
     fundido = dict(deles)
+    fundido.update(carimbos)
     fundido[chave] = uniao
     return fundido, len(ln), len(ld), len(uniao)
 
@@ -574,6 +597,37 @@ def autoteste() -> int:
                d.get("formato_versao") == 2 and d.get("formato") == "v2")
         checar("o caminho resolvido foi adicionado ao índice",
                not em_conflito(repo=r))
+
+    # 1-b. O caso que perdeu a noite de 07→08/10 (A2-02): `data/saude_pipeline.json` com carimbos
+    # diferentes nos dois lados, porque cada elo grava a hora em que rodou. Antes disto, recusa em
+    # TODO conflito do arquivo que TODO elo commita.
+    with tempfile.TemporaryDirectory() as t2:
+        S = "data/saude_pipeline.json"
+        r = _repo_com_conflito(
+            t2, S,
+            _log("execucoes", [{"i": 1}, {"i": 2}], formato_versao=2,
+                 atualizado_em="2026-10-07T23:00:00"),
+            _log("execucoes", [{"i": 1}, {"i": 2}, {"i": 3}], formato_versao=2,
+                 atualizado_em="2026-10-08T01:13:00"),
+            _log("execucoes", [{"i": 1}, {"i": 2}, {"i": 4}], formato_versao=2,
+                 atualizado_em="2026-10-08T02:40:00"))
+        res, reg, rec = resolver(repo=r)
+        checar("dois lados com `atualizado_em` diferentes UNEM", not rec and len(res) == 1)
+        d = json.loads((r / S).read_text(encoding="utf-8"))
+        checar("a união do carimbo vence pelo maior",
+               d.get("atualizado_em") == "2026-10-08T02:40:00")
+        checar("nenhuma execução se perdeu na união",
+               [x["i"] for x in d["execucoes"]] == [1, 2, 3, 4])
+
+    # 1-c. Divergência que NÃO é carimbo continua sendo recusa: ali é mudança de formato.
+    with tempfile.TemporaryDirectory() as t3:
+        r = _repo_com_conflito(
+            t3, P,
+            _log("execucoes", [{"i": 1}], formato_versao=2),
+            _log("execucoes", [{"i": 1}, {"i": 2}], formato_versao=2),
+            _log("execucoes", [{"i": 1}, {"i": 3}], formato_versao=3))
+        res, reg, rec = resolver(repo=r)
+        checar("mudança de formato continua recusada", bool(rec) and not res)
 
     # 2. NEGATIVO: um lado ENCURTOU a lista — é o estrago de 23/09, tem de recusar
     with tempfile.TemporaryDirectory() as t:

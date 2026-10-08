@@ -15,6 +15,10 @@ name: Noturno — triagem da fila
 on:
   workflow_run:
     workflows: ["Noturno — sinais físicos"]
+    # 08/10/2026 (A2-05): `workflow_run` dispara para run do workflow nomeado em QUALQUER
+    # ramo. Sem esta linha, diários do `ensaio` puxavam a corrente inteira na `main` — quatro
+    # descobertas medidas em 07/10, uma delas cancelando a triagem pendente.
+    branches: [main]
     types: [completed]
   # Mesma rede de segurança dos sinais: se a corrente não chegou até aqui, o elo roda sozinho,
   # tarde na janela, para que a fila não fique uma noite inteira sem triagem.
@@ -27,6 +31,7 @@ permissions:
 
 jobs:
   triagem:
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
     uses: ./.github/workflows/_coletor.yml
     with:
       nome: triagem

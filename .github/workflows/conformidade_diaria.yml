@@ -28,6 +28,9 @@ permissions:
 jobs:
   conformidade:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     timeout-minutes: 40
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -64,8 +67,11 @@ jobs:
         id: passe
         run: |
           set +e
-          python3 scripts/verificar_conformidade.py --todas 2>&1 | tee /tmp/conformidade.txt
-          echo "codigo=$?" >> "$GITHUB_OUTPUT"
+          # O codigo e do comando, nao do `tee` (A2-21).
+          python3 scripts/verificar_conformidade.py --todas 2>&1 > /tmp/conformidade.txt 2>&1
+          codigo=$?
+          cat /tmp/conformidade.txt
+          echo "codigo=$codigo" >> "$GITHUB_OUTPUT"
       - name: Resumo do passe
         if: always()
         run: |

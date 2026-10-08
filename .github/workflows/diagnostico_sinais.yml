@@ -16,6 +16,9 @@ permissions:
 jobs:
   diagnosticar:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     # 14/09/2026: teto explícito — a sonda do DF já segurou o runner minutos a fio em timeouts
     # de TLS; sem isto um passo travado poderia ocupar o runner por até 6 h.
     timeout-minutes: 60

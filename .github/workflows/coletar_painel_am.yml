@@ -37,6 +37,9 @@ concurrency:
 jobs:
   painel_am:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4

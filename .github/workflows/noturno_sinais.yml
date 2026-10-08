@@ -42,6 +42,10 @@ name: Noturno — sinais físicos
 on:
   workflow_run:
     workflows: ["Noturno — juiz automático"]
+    # 08/10/2026 (A2-05): `workflow_run` dispara para run do workflow nomeado em QUALQUER
+    # ramo. Sem esta linha, diários do `ensaio` puxavam a corrente inteira na `main` — quatro
+    # descobertas medidas em 07/10, uma delas cancelando a triagem pendente.
+    branches: [main]
     types: [completed]
   # REDE DE SEGURANÇA (30/09/2026): a corrente roda mesmo quando um elo falha, mas ela não roda se o
   # PRIMEIRO elo não disparar — e é justamente o cron do primeiro elo que o GitHub atrasa ou
@@ -57,6 +61,7 @@ permissions:
 
 jobs:
   sinais:
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
     uses: ./.github/workflows/_coletor.yml
     with:
       nome: sinais-fisicos
@@ -67,3 +72,7 @@ jobs:
         coletar_sinais_risco.py
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+      # 08/10/2026 (A2-28): sem o `ROBO_TOKEN`, o tique oportunista roda com o
+      # `GITHUB_TOKEN`, que não alcança o `robo-registro`, e a Issue de alarme
+      # falha em silêncio por causa do `|| true`.
+      ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}

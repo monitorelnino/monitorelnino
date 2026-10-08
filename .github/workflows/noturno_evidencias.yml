@@ -29,6 +29,10 @@ on:
     # corrente pulava as evidências inteiras — documento preservado é prova, e prova não pode
     # depender da quinzena. A ordem passa a ser diários → descoberta → evidências e OCR → juiz.
     workflows: ["Noturno — descoberta"]
+    # 08/10/2026 (A2-05): `workflow_run` dispara para run do workflow nomeado em QUALQUER
+    # ramo. Sem esta linha, diários do `ensaio` puxavam a corrente inteira na `main` — quatro
+    # descobertas medidas em 07/10, uma delas cancelando a triagem pendente.
+    branches: [main]
     types: [completed]
   workflow_dispatch:
 
@@ -37,9 +41,14 @@ permissions:
 
 jobs:
   evidencias:
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
     uses: ./.github/workflows/_coletor.yml
     with:
       nome: evidencias
+      # 08/10/2026 (A2-27): este elo commita `data/evidencias.json`, as filas de pista,
+      # o `saude_pipeline` e o manifesto -- e um dos conflitantes da noite, e corria FORA
+      # da fila, em paralelo com juiz e triagem.
+      grupo_de_concorrencia: noturno
       timeout_minutos: 90
       precisa_tesseract: true
       comandos: |
@@ -49,6 +58,10 @@ jobs:
         scripts/preservar_textos_integrais.py
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+      # 08/10/2026 (A2-28): sem o `ROBO_TOKEN`, o tique oportunista roda com o
+      # `GITHUB_TOKEN`, que não alcança o `robo-registro`, e a Issue de alarme
+      # falha em silêncio por causa do `|| true`.
+      ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
 
   # Item 3 (28/09/2026): o binário preservado nesta noite vai para o ativo de Release do mês, com URL
   # estável, ANTES de o job terminar. Sem este passo, ignorar binário novo no git faria a prova
@@ -57,6 +70,9 @@ jobs:
     needs: evidencias
     if: always()
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     timeout-minutes: 30
     permissions:
       contents: write          # criar e atualizar o Release do mês

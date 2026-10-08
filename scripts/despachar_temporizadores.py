@@ -39,6 +39,7 @@ import datetime as dt
 import json
 import pathlib
 import subprocess
+import time
 import sys
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
@@ -253,7 +254,9 @@ def _gh(args: list) -> str:
 
 def execucoes_de(workflow: str, limite: int = 20) -> list:
     """As execuções recentes do workflow, pela API."""
-    saida = _gh(["run", "list", "--workflow", workflow, "--limit", str(limite),
+    # 08/10/2026 (A2-17): `--branch main`. Sem isso, um disparo de ensaio contava como execução
+    # da rotina e o despachante não recuperava o temporizador que de fato não rodou.
+    saida = _gh(["run", "list", "--workflow", workflow, "--branch", "main", "--limit", str(limite),
                  "--json", "databaseId,createdAt,status,conclusion,event,workflowDatabaseId"])
     try:
         bruto = json.loads(saida) if saida.strip() else []
@@ -274,12 +277,21 @@ def disparar(item: dict, origem: str) -> bool:
     args = ["workflow", "run", item["workflow"]]
     for k, v in (item.get("entradas") or {}).items():
         args += ["-f", f"{k}={v}"]
-    antes = _gh(["run", "list", "--workflow", item["workflow"], "--limit", "1",
+    # 08/10/2026 (A2-07): "aceito" era uma corrida. O GitHub leva alguns segundos para registrar
+    # o run novo, então comparar a lista imediatamente depois do disparo dizia "não produziu
+    # execução" para disparo que tinha funcionado — e o despachante abria Issue à toa, ou tentava
+    # de novo e duplicava trabalho. Agora espera o id MUDAR, até 30 segundos.
+    antes = _gh(["run", "list", "--workflow", item["workflow"], "--branch", "main", "--limit", "1",
                  "--json", "databaseId"])
     _gh(args)
-    depois = _gh(["run", "list", "--workflow", item["workflow"], "--limit", "1",
-                  "--json", "databaseId"])
-    aceito = antes != depois
+    aceito = False
+    for _ in range(10):
+        depois = _gh(["run", "list", "--workflow", item["workflow"], "--branch", "main",
+                      "--limit", "1", "--json", "databaseId"])
+        if depois and depois != antes:
+            aceito = True
+            break
+        time.sleep(3)
     print(f"  {'→' if aceito else '✗'} {item['id']} ({item['workflow']}) · atraso "
           f"{item['atraso_min']} min · origem {origem}"
           + ("" if aceito else " · o disparo não produziu execução nova"))

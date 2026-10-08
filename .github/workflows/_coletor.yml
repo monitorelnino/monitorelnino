@@ -63,6 +63,11 @@ on:
         default: false
         type: boolean
     secrets:
+      ROBO_TOKEN:
+        # 08/10/2026 (A2-28): sem ele, o tique oportunista roda com o `GITHUB_TOKEN`,
+        # que não alcança o `robo-registro`, e a Issue de alarme falha em silêncio
+        # (`|| true`). Opcional porque o ensaio roda sem segredo.
+        required: false
       ROBO_DEPLOY_KEY:
         required: true
 
@@ -72,6 +77,9 @@ permissions:
 jobs:
   coletar:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     timeout-minutes: ${{ inputs.timeout_minutos }}
     # Fila, não cancelamento: uma coleta interrompida no meio perde o que já achou. Só o publicador
     # cancela o anterior, porque publicar duas vezes o mesmo estado não tem valor.
@@ -153,11 +161,32 @@ jobs:
         id: janela
         timeout-minutes: 2
         run: |
-          if ! python3 scripts/guarda_da_janela.py --ramo "${GITHUB_REF_NAME}" --elo "${{ inputs.nome }}" | tee -a "$GITHUB_STEP_SUMMARY"; then
-            echo "pode=0" >> "$GITHUB_OUTPUT"
-          else
+          # A decisão NÃO passa por cano (08/10/2026, A2-01): o passo não declarava `shell:`,
+          # o Actions rodava `bash -e` sem `pipefail`, e o `if` lia o status do `tee`, que é
+          # sempre 0. Entre 05 e 08/10 foram 96 commits de coletor fora da janela, todos com
+          # este passo verde. O status agora vem do script, e a saída vai ao resumo depois.
+          # O `if` existe por causa do `-e`: com `shell: bash` o Actions roda `bash -eo
+          # pipefail`, e `cmd; rc=$?` aborta no proprio cmd que falha, antes de ler o rc.
+          rc=0
+          python3 scripts/guarda_da_janela.py --ramo "${GITHUB_REF_NAME}" --elo "${{ inputs.nome }}" > /tmp/guarda.txt 2>&1 || rc=$?
+          cat /tmp/guarda.txt | tee -a "$GITHUB_STEP_SUMMARY"
+          if [ "$rc" -eq 0 ]; then
             echo "pode=1" >> "$GITHUB_OUTPUT"
+          else
+            echo "pode=0" >> "$GITHUB_OUTPUT"
           fi
+
+      # 08/10/2026 (A2-26): o painel e preenchido pelo elo SEGUINTE, pela API. A linha gravada
+      # pelo proprio elo, antes do push, dizia `success` sempre -- 138 linhas desde 04/10, todas
+      # `success` -- e sumia junto com o commit perdido. A conclusao real esta na API, e o trabalho
+      # esta no marcador `.feito`, que o elo grava antes de commitar.
+      - name: Recuperar no painel a noite que ficou sem linha
+        if: steps.janela.outputs.pode == '1'
+        continue-on-error: true
+        timeout-minutes: 5
+        env:
+          GH_TOKEN: ${{ secrets.ROBO_TOKEN || secrets.GITHUB_TOKEN }}
+        run: python3 scripts/painel_da_noite.py --recuperar-da-api | tee -a "$GITHUB_STEP_SUMMARY" || true
 
       - name: Marcar o início do elo
         run: echo "ELO_INICIO=$(date -u +%H:%M)" >> "$GITHUB_ENV"
@@ -287,10 +316,26 @@ jobs:
               else
                 # Recusa registrada: a política daquele caminho não está decidida, e adivinhar
                 # apagaria dado. O trabalho vira artefato, e a editoria vê o nome do arquivo no log.
+                # 08/10/2026 (A2-02): SAIR NA PRIMEIRA RECUSA. Repetir não muda nada — a recusa
+                # é da política daquele caminho, não da corrida —, e as outras quatro tentativas
+                # custaram 2 min 50 s de espera por elo na noite de 07→08/10, sem alterar o
+                # desfecho. O trabalho sai como artefato no passo abaixo, e o elo seguinte o
+                # reaplica (`scripts/reaplicar_noite.py`).
                 git rebase --abort || true
-                echo "::warning::a união RECUSOU um caminho — ver o nome no log acima; nova tentativa"
-                sleep $((TENTATIVA * 10)); continue
+                echo "::error::a união RECUSOU um caminho — ver o nome no log acima; o trabalho vai no artefato"
+                break
               fi
+            fi
+
+            # 08/10/2026 (A2-09): REBASE SEM CONFLITO TAMBEM MOVE O DADO. Os derivados e o
+            # manifesto sao funcao do dado; se a `main` andou e o rebase passou limpo, o que este
+            # elo traz foi recalculado sobre outra base — e o manifesto chega obsoleto, que e o
+            # portao 12 vermelho na `main`. Regenerar e emendar ANTES do push, sempre que a `main`
+            # tiver andado.
+            if ! git diff --quiet FETCH_HEAD..HEAD -- data/; then
+              bash scripts/verificar_derivados.sh --regenerar-para-commit || true
+              git add -A dados-abertos/ feeds/ selos/ docs/MANIFEST_SHA256.txt 2>/dev/null || true
+              git diff --cached --quiet || git commit --amend --no-edit
             fi
 
             if GIT_SSH_COMMAND="$SSH" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main; then

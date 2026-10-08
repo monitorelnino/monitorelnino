@@ -110,7 +110,12 @@ def registrar(script: str, inicio: str, duracao_s: float, itens, status: str, er
         "duracao_s": round(float(duracao_s), 1), "itens": itens, "status": status,
         "erro": (erro or "")[:300],
     }]
-    doc["atualizado_em"] = datetime.datetime.now().replace(microsecond=0).isoformat()
+    # 08/10/2026 (A2-02): o carimbo DERIVA da ultima execucao registrada, nao do relogio.
+    # Com o relogio, dois elos da mesma noite gravavam carimbos diferentes e o resolvedor
+    # recusava todo conflito deste arquivo -- que todo elo commita. A noite de 07->08/10
+    # perdeu diarios, descoberta, juiz e sinais por isso.
+    ultima = doc["execucoes"][-1] if doc["execucoes"] else {}
+    doc["atualizado_em"] = str(ultima.get("inicio") or ultima.get("data") or hoje.isoformat())
     if gravar:
         from coletores_base import gravar_em
         ARQUIVO.parent.mkdir(parents=True, exist_ok=True)
