@@ -6,7 +6,7 @@
     "alvo": "Código IBGE do município ou sigla da UF. Sem alvo identificável, a pista é descartada com motivo — 'notícia sobre municípios' não é pista de município.",
     "nivel": "A | B | C, pelo mesmo critério de confiança já em uso.",
     "data": "Data do achado, em AAAA-MM-DD.",
-    "origem": "Qual coletor gravou: busca_web | imprensa | rede_social | diario | descoberta | querido_diario."
+    "origem": "Qual coletor gravou: busca_web | imprensa | rede_social | diario | diario_consorciado | descoberta | querido_diario | doe | revisao."
   },
   "opcionais": {
     "titulo": "Título do item, quando a fonte o dá.",
@@ -17,7 +17,8 @@
   },
   "tipos_validos": ["plano", "estrutura", "decreto", "outro"],
   "niveis_validos": ["A", "B", "C"],
-  "origens_validas": ["busca_web", "imprensa", "rede_social", "diario", "descoberta", "querido_diario", "doe", "revisao"],
+  "_por_que_diario_consorciado": "08/10/2026: `coletar_diarios_consorciados.py` grava pela porta com origem `diario_consorciado` desde que existe, e a lista nao a trazia -- as 23 pistas que a reaplicacao da noite de 07->08 devolveu caiam na quarentena por isso. Quarentenar pista de coletor real e perder trabalho; o que faltava era a origem estar declarada.",
+  "origens_validas": ["busca_web", "imprensa", "rede_social", "diario", "diario_consorciado", "descoberta", "querido_diario", "doe", "revisao"],
   "regras": {
     "teto_por_municipio_e_assunto": 5,
     "dias_de_vida": 21,
