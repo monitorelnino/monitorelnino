@@ -210,8 +210,10 @@ def main(argv: list) -> int:
                 recusados.append(f"{a['nome']} → {rel}: a porta recusou")
         print(f"     portas: " + ", ".join(f"{k}={v}" for k, v in sorted(n_portas.items())))
         marcador.parent.mkdir(parents=True, exist_ok=True)
-        marcador.write_text(json.dumps({"run": a["run"], "artefato": a["nome"]},
-                                       ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
+        # §229: todo JSON de `data/` passa pela porta atomica — escrita direta deixa arquivo
+        # truncado quando o processo morre no meio, e `testar_escrita_atomica.py` cobra isso.
+        from coletores_base import gravar_em
+        gravar_em(marcador, {"run": a["run"], "artefato": a["nome"]})
         feitos.append(a["nome"])
 
     if not aplicar:
