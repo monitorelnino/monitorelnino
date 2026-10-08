@@ -226,7 +226,14 @@ def diagnosticar(uf: str, achados: list[dict], municipios: list[dict]) -> list[d
             "nome": a["nome"], "uf": uf, "categoria": categoria_proposta,
             **({"lat": a["lat"], "lon": a["lon"]} if "lat" in a else {}),
             "documento": f"PLANCON edição {a.get('rotulo_ano', a['ano_edicao'])} (repositório estadual)",
-            "data": hoje, "fonte": cfg["fonte"], "url": a["url"], "canal": cfg["canal"],
+            # 08/10/2026 (A3-09): `data` era HOJE -- o dia em que o Monitor consultou o
+            # repositorio --, e a ficha publicava isso como se fosse a data do plano. Em 83
+            # registros de ES e SE a ficha dizia 26/08/2026, e 9 deles sao `plano_antigo`: um
+            # plano antigo com data de 2026 e contradicao publicada. `data` passa a ser o ano da
+            # EDICAO do documento; a data da consulta tem campo proprio, `localizado_em`.
+            "data": str(a.get("rotulo_ano", a["ano_edicao"])),
+            "localizado_em": hoje,
+            "fonte": cfg["fonte"], "url": a["url"], "canal": cfg["canal"],
         }
         if atual is None:
             propostas.append({"acao": "novo", "uf": uf, **registro_base})

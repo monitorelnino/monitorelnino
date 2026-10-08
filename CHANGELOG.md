@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-08 · #PR · Lote 1.9: a data do plano é a do documento, não a da nossa consulta
+
+Oitenta e quatro fichas de ES e SE publicavam 26/08/2026 como data do plano: era o dia em que o Monitor abriu o repositório estadual. Nove delas são planos antigos, e diziam 2026 — contradição entre a categoria e a data. `data` passa a ser o ano da edição do documento (ou o da atualização, quando declarada) e a consulta ganha campo próprio, `localizado_em`. Portão novo `verificar_datas_de_instrumento.py`, com fixtures de ES e SE.
+
 ## 2026-10-08 · #PR · Lote 1.2: o decreto do diário consorciado deixa de ir ao município errado
 
 A posição do decreto no PDF vinha de `texto.find(numero)` — a primeira ocorrência da string do
