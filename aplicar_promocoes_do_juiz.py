@@ -40,6 +40,7 @@ USO
 """
 import json
 import pathlib
+import re
 import sys
 
 RAIZ = pathlib.Path(__file__).resolve().parent
@@ -122,16 +123,67 @@ def registro_do_veredito(v: dict, lat, lon, canal: str, fonte_base: str, hoje: s
     return registro
 
 
-def documento_do_veredito(v: dict) -> str:
-    """A ementa curta: o que o ato é, pelo critério que o reconheceu.
+RE_SUJEIRA = re.compile(r"P[áa]gina\s+\d+\s+de\s+\d+|o documento [ÉE] o instrumento|\.\.\.\.|……", re.IGNORECASE)
+RE_FIM_DE_TITULO = re.compile(
+    r"^(.*?(?:\d{4}(?:\s*[-/]\s*\d{2,4})?|-\s*[A-Z]{2}\b))", re.DOTALL)
+RE_TITULO_DE_PLANO = re.compile(
+    r"(PLANCON[^\n\r.;]{0,90}|PLANO\s+(?:MUNICIPAL\s+)?DE\s+CONTING[ÊE]NCIA[^\n\r.;]{0,90})",
+    re.IGNORECASE)
 
-    Sai do trecho do objeto ex-ante (Etapa 4), que desde o §286 mostra o verbo e o instrumento
-    juntos — é a frase que diz o que foi instituído."""
+def titulo_de_plano(texto: str) -> str:
+    """O TÍTULO do plano, achado no texto — ou vazio.
+
+    08/10/2026 (A1-06, A4-08). O campo `documento` da ficha vinha do trecho do objeto, e no
+    caminho do "plano publicado em domínio oficial" não existe objeto nenhum: o trecho era sobra
+    de página. A ficha publicou "o documento É o instrumento nomeado: tanhaém…", "neste Plano.
+    11/08/2026 Página 3 de 72…" e "a Católica 8 1.5. INSTRUÇÕES PARA USO…".
+    """
+    m = RE_TITULO_DE_PLANO.search(" ".join(str(texto or "").split()))
+    if not m:
+        return ""
+    titulo = " ".join(m.group(1).split()).strip(" -–:;,")
+    # O título termina onde o documento o termina: no ano (ou no biênio) ou na sigla da UF. O que
+    # vem depois é o texto da página seguinte — nome de assinante, número de item, cabeçalho — e
+    # entrava no campo porque a janela do casamento é fixa.
+    corte = RE_FIM_DE_TITULO.match(titulo)
+    if not corte:
+        # Sem ano e sem sigla de UF, não há onde o título termine: o que a janela pegou é meio de
+        # frase ("Plano de Contingência decorre da operacionalização…"). Devolver isso seria
+        # trocar uma sobra de página por outra. Quem chama cai na forma genérica, que é verdadeira.
+        return ""
+    titulo = corte.group(1).strip(" -–:;,")
+    return titulo if len(titulo) >= 12 else ""
+
+
+def documento_do_veredito(v: dict) -> str:
+    """A ementa curta do ato — ou, no caminho do plano sem ato, o TÍTULO do documento.
+
+    A ementa sai do trecho do objeto ex-ante (Etapa 4), que desde o §286 mostra o verbo e o
+    instrumento juntos. Quando esse trecho não existe ou vem com sobra de página — marcador
+    "Página N de M", frase interna do juiz, reticências de corte, minúscula inicial —, o campo
+    passa a ser o título do documento, na forma aprovada "{Título} — {órgão}, {ano}".
+    """
     objeto = ((v.get("criterios") or {}).get("4_natureza") or {}).get("objeto") or ""
     objeto = " ".join(str(objeto).split())
-    if len(objeto) > 180:
-        objeto = objeto[:177] + "…"
-    return objeto or f"ato classificado como {v.get('categoria')} pelo juiz automático"
+    if objeto and not RE_SUJEIRA.search(objeto) and not objeto[:1].islower():
+        return objeto[:177] + "…" if len(objeto) > 180 else objeto
+    for f in (objeto, v.get("trecho") or "", v.get("titulo") or ""):
+        titulo = titulo_de_plano(f)
+        if titulo:
+            orgao = v.get("orgao") or (f"Prefeitura de {v['municipio']}" if v.get("municipio")
+                                       else "")
+            ano = str(v.get("data") or "")[-4:]
+            cabeca = " — ".join([titulo] + ([orgao] if orgao else []))
+            return f"{cabeca}, {ano}" if ano.isdigit() else cabeca
+    # A forma genérica só vale quando o próprio texto PROVA que o documento é um plano de
+    # contingência. Sem essa prova, nada de nome: vale a frase que diz o que se tem, que é a
+    # classificação — inventar título é pior que não ter título.
+    prova_de_plano = re.search(r"plano\s+de\s+conting[êe]ncia|PLANCON", objeto, re.IGNORECASE)
+    if prova_de_plano and v.get("municipio"):
+        ano = str(v.get("data") or "")[-4:]
+        cauda = f", {ano}" if ano.isdigit() else ""
+        return f"Plano de contingência municipal — Prefeitura de {v['municipio']}{cauda}"
+    return f"ato classificado como {v.get('categoria')} pelo juiz automático"
 
 
 def autoteste() -> int:
@@ -142,6 +194,28 @@ def autoteste() -> int:
             "hash_evidencia": "h" * 64, "pista_id": "abc",
             "criterios": {"4_natureza": {"objeto": "Fica instituído o Plano Municipal de Proteção"}}}
 
+    # 08/10/2026 (A1-06, A4-08): o campo `documento` é o título do documento, nunca sobra de
+    # página. Os quatro casos abaixo são os quatro registros reais que a ficha publicou errado.
+    casos.append(("ementa limpa continua sendo a ementa",
+                  documento_do_veredito(base) == "Fica instituído o Plano Municipal de Proteção"))
+    casos.append(("marcador de página vira título com órgão e ano",
+                  documento_do_veredito({"municipio": "Umuarama", "data": "2026", "criterios": {
+                      "4_natureza": {"objeto": "neste Plano. 11/08/2026 Página 3 de 72 Plano de "
+                                               "contingência do município de Umuarama - PR 1.2."}}})
+                  == "Plano de contingência do município de Umuarama - PR — Prefeitura de "
+                     "Umuarama, 2026"))
+    casos.append(("frase interna do juiz vira o PLANCON do documento",
+                  documento_do_veredito({"municipio": "Itanhaém", "data": "2024", "criterios": {
+                      "4_natureza": {"objeto": "o documento É o instrumento nomeado: tanhaém "
+                                               "Secretaria Municipal PLANCON PLANO DE CONTIGÊNCIA "
+                                               "2024-2025 Tiago"}}})
+                  == "PLANCON PLANO DE CONTIGÊNCIA 2024-2025 — Prefeitura de Itanhaém, 2024"))
+    casos.append(("meio de frase sem ano nem UF cai na forma genérica, não em outra sobra",
+                  documento_do_veredito({"municipio": "Celso Ramos", "data": "2022", "criterios": {
+                      "4_natureza": {"objeto": "a Católica 8 1.5. INSTRUÇÕES PARA USO E "
+                                               "ATUALIZAÇÃO DO PLANO A efetiva aplicação do "
+                                               "Plano de Contingência decorre"}}})
+                  == "Plano de contingência municipal — Prefeitura de Celso Ramos, 2022"))
     casos.append(("veredito da versão em vigor é aplicável", len(aplicaveis([base], V)) == 1))
     casos.append(("veredito de versão anterior NÃO é aplicável",
                   aplicaveis([dict(base, codebook="1.0 (27/09/2026)")], V) == []))
