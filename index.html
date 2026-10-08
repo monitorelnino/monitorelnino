@@ -152,7 +152,7 @@
 
   <div class="panel" id="formulario">
     <h2>Você encontrou um plano ou decreto que ainda não está no MARÉ Legal?</h2>
-    <p class="hint">Leva menos de um minuto. Nada entra no Monitor sem conferência da nossa equipe.</p>
+    <p class="hint">Leva menos de um minuto. A conferência é automática: a rotina lê o documento indicado, confere se a fonte é oficial e se o conteúdo corresponde ao declarado. O que passa entra na publicação seguinte.</p>
     <form name="contribuicao" method="POST" action="/obrigado.html" data-netlify="true" netlify-honeypot="bot-field" id="formContrib">
       <input type="hidden" name="form-name" value="contribuicao">
       <input type="hidden" name="subject" value="Novo documento indicado — %{formName} (%{submissionId})">
@@ -179,7 +179,7 @@
         <label class="fld">Número e data do ato<input type="text" name="numero_data" placeholder="Ex.: Decreto nº 123, de 15/07/2026"></label>
         <label class="fld">Observações<textarea name="observacoes" rows="3"></textarea></label>
       </details>
-      <p class="note">Não pedimos seu nome nem contato, só as informações sobre o documento. A conferência é feita pela nossa equipe.</p>
+      <p class="note">Não pedimos seu nome nem contato: o formulário pede as informações do documento. A conferência é automática: a rotina lê o documento indicado, confere se a fonte é oficial e se o conteúdo corresponde ao declarado. O que passa entra na publicação seguinte.</p>
       <button type="submit" class="btn">Enviar</button>
       <p class="note u-mt-2 u-mb-0" id="contribOffline"></p>
     </form>
@@ -202,7 +202,7 @@
 </div>
 
 <script src="assets/colunas.js?v=3669e58d" defer></script>
-<script src="assets/js/grade-estados.js?v=30c4224b" defer></script><script src="assets/js/index.js?v=3c74cc47" defer></script>
+<script src="assets/js/grade-estados.js?v=30c4224b" defer></script><script src="assets/js/index.js?v=508af92c" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

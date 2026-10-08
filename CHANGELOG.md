@@ -33,6 +33,10 @@ Quatro fichas publicavam o texto que estava na página do PDF: "o documento É o
 
 O reconhecimento vindo da notícia do MIDR recebia a data da primeira portaria do lote e o link da notícia; dias depois o DOU trazia o ato exato, com outra data, e a deduplicação por data não casava. Eram 17 municípios com dois reconhecimentos onde houve um. A chave passa a ser (município, causa, portaria), o ato exato substitui o lote, e os 332 eventos com data de lote passam a declarar `data_aproximada`. O `except: pass` que escondia a causa virou lacuna registrada.
 
+## 2026-10-08 · #PR · Lote 4.6: uma frase só sobre a conferência, a do processo real
+
+O formulário prometia "conferência da nossa equipe"; a página seguinte dizia que ela é automática e "semanal, normalmente no domingo", enquanto o rodapé diz que o site publica às 6h e às 22h — três cadências para o mesmo envio, e uma etapa humana que não existe. Os três lugares passam a dizer a frase aprovada. Saem "banco público" (regra de 03/10) e a frase do e-mail, que o formulário não pede.
+
 ## 2026-10-08 · #PR · Lote 1.2: o decreto do diário consorciado deixa de ir ao município errado
 
 A posição do decreto no PDF vinha de `texto.find(numero)` — a primeira ocorrência da string do

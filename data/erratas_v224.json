@@ -1019,5 +1019,14 @@
   "por_que": "D1 (08/10/2026), achados A4-05 e A4-09: o registro recebia crédito no índice sem documento — sem endereço nenhum, ou com notícia no lugar do documento. Passa a `plano_nomeado`, crédito 0, até a busca dirigida anexar o documento; o que era fica guardado em `registro_anterior`. Portão: `scripts/verificar_documento_de_plano.py`. Metodologia §104.",
   "achado": "A4-05",
   "lote": "1.11"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "o formulário dizia \"Nada entra no Monitor sem conferência da nossa equipe\" e \"a conferência é feita pela nossa equipe\"; a página de obrigado dizia que a conferência é automática, \"semanal, normalmente no domingo\", e falava de \"banco público\" e de um e-mail que o formulário não pede. Os três lugares passam a dizer a mesma frase, que é a do processo real",
+  "por_que": "A4-11: o código coleta, lê e julga sozinho (decisão de 08/10/2026), e o site prometia revisão humana que não existe — com três cadências diferentes para o mesmo envio. \"Banco público\" sai pela regra editorial de 03/10 (não falamos de base de dados), e a frase do e-mail sai porque o formulário não pede e-mail.",
+  "achado": "A4-11",
+  "lote": "4.6"
  }
 ]

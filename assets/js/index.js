@@ -805,7 +805,7 @@ function renderMinha(){
       : esc(m.fonte);
     html += `<p class="fk">Onde o documento foi localizado</p><p class="fv">${fonte}</p>`;
   } else {
-    html += `<p class="note">Tem o documento da sua prefeitura? <a href="${linkFormulario}">Envie pelo formulário</a> — toda entrada passa pela conferência da plataforma.</p>`;
+    html += `<p class="note">Tem o documento da sua prefeitura? <a href="${linkFormulario}">Envie pelo formulário</a> — a conferência é automática: a rotina lê o documento e confere se a fonte é oficial.</p>`;
   }
 
   card.innerHTML = html;
