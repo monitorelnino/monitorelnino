@@ -301,9 +301,15 @@ def localizar_municipio(texto: str, posicao: int, candidatos_uf: dict) -> tuple:
 def classificar_trechos_consorciado(texto: str, candidatos_uf: dict) -> tuple:
     """(decretos, pistas), cada item já com município candidato (ou None) e posição para evidência."""
     decretos, pistas = [], []
-    for numero, tipo in PAD_DECRETO.findall(texto):
-        pos = texto.find(numero)
-        nome_mun, ibge = localizar_municipio(texto, max(pos, 0), candidatos_uf)
+    # 08/10/2026 (A6-01): `findall` + `texto.find(numero)` atribuía o decreto ao município
+    # ERRADO em 31% dos casos testados. `find` procura a primeira ocorrência da STRING do número
+    # no diário inteiro — "31" está num CNPJ, "633" numa data, "011" em outra portaria —, e o
+    # cabeçalho mais próximo antes daquela posição falsa é de outro município. `finditer` dá a
+    # posição do PRÓPRIO decreto, que é o que a atribuição precisa.
+    for m in PAD_DECRETO.finditer(texto):
+        numero, tipo = m.group(1), m.group(2)
+        pos = m.start()
+        nome_mun, ibge = localizar_municipio(texto, pos, candidatos_uf)
         decretos.append({"decreto": f"Decreto nº {numero}", "tipo": tipo.lower(),
                          "municipio": nome_mun, "ibge": ibge, "trecho": texto[max(0, pos - 60):pos + 240]})
     for m in PAD_PLANO.finditer(texto):
@@ -889,7 +895,25 @@ def autoteste() -> int:
         resolve_ref_antes = trecho.index('ref = por_cod') < trecho.index("chave = (")
         return monta_com_ref and nao_usa_o_do_pdf and resolve_ref_antes
 
+    def t_posicao_do_decreto():
+        """A6-01: a posicao vem do PROPRIO decreto, nao da primeira ocorrencia do numero.
+
+        O texto abaixo e o caso real reduzido: o numero "31" aparece primeiro num CNPJ, sob o
+        cabecalho de ARAPIRACA, e o decreto de verdade esta paginas depois, sob PIRANHAS. Com
+        `texto.find("31")` a atribuicao ia para Arapiraca -- e foi o que publicamos.
+        """
+        texto = ("PREFEITURA MUNICIPAL DE ARAPIRACA\nCNPJ 12.317.311/0001-00\n"
+                 + "x" * 400
+                 + "\nPREFEITURA MUNICIPAL DE PIRANHAS\n"
+                 "Decreto nº 31, de 22 de setembro de 2026, declara situação de emergência\n")
+        candidatos = {normalizar_nome("Arapiraca"): "2700300",
+                      normalizar_nome("Piranhas"): "2707107"}
+        decretos, _ = classificar_trechos_consorciado(texto, candidatos)
+        return (len(decretos) == 1 and decretos[0]["ibge"] == "2707107"
+                and str(decretos[0]["municipio"]).upper().startswith("PIRANHAS"))
+
     return rodar_autoteste({
+        "A6-01: o decreto e do municipio em cujo cabecalho ele esta": t_posicao_do_decreto,
         "§276 janela corrida: --desde-dias, com --desde vencendo e recusa do inválido": t_janela_desde,
         "a chave de deduplicação é a mesma que o registro grava (14 duplicatas em 29/09)": t_chave_de_dedup_e_a_do_registro,
         "§222 o canal deste coletor existe no vocabulário de canais": t_canal_no_vocabulario,

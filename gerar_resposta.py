@@ -86,7 +86,15 @@ def consolidar_municipios(eventos: list, verificacao: list) -> dict:
     for chave, m in out.items():
         por_nome_uf[(_nrm(m.get("nome")), str(m.get("uf") or "").upper())] = chave
     descartados = []
+    nao_conferidos = 0
     for ev in eventos:
+        # 08/10/2026 (A6-01 + D1): atribuicao que veio do codigo errado e nao pode ser relida nao
+        # conta. Dos 97 eventos de diario consorciado, 18 de 61 relidos estavam no municipio
+        # errado (30%); os 36 sem edicao preservada vem do mesmo codigo, e publicar como certo o
+        # que nao se leu e pior que contar menos.
+        if ev.get("atribuicao_nao_conferida"):
+            nao_conferidos += 1
+            continue
         ib = str(ev.get("ibge") or "").zfill(7)
         m = out.get(ib)
         if not m:
@@ -119,6 +127,9 @@ def consolidar_municipios(eventos: list, verificacao: list) -> dict:
     if descartados:
         print(f"  ⚠ {len(descartados)} evento(s) sem `ibge` e sem par na malha, descartado(s): "
               + ", ".join(sorted(set(descartados))[:10]))
+    if nao_conferidos:
+        print(f"  · {nao_conferidos} evento(s) com atribuicao nao conferida, fora do contador "
+              f"(A6-01; voltam na recoleta)")
     for m in out.values():
         if m["reconhecido"] and not m["decreto"]: m["decreto"] = True     # reconhecido via S2iD sem evento no arquivo de atos
     return out
