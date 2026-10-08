@@ -128,6 +128,70 @@ def nome_da_fila_de(caminho: str) -> str:
     return pathlib.Path(str(caminho or "")).name
 
 
+# Arquivos de log cuja identidade por item é conhecida: a união é por CHAVE, não por prefixo.
+# Fora desta lista vale a regra estrita (prefixo comum), que é a do resolvedor.
+CHAVE_POR_ITEM = {
+    "data/painel_da_noite.json": ("noites", ("elo", "noite", "inicio")),
+    "data/saude_pipeline.json": ("execucoes", ("data", "script", "inicio")),
+    # Cada evento tem `id` proprio (hash do conteudo), entao a identidade e exata: a arvore tinha
+    # 1.985 eventos e o artefato dos diarios 2.057 -- 72 que o push perdeu e que ninguem reporia.
+    "data/historico_mudancas.json": ("eventos", ("id",)),
+}
+
+
+def unir_contadores_pelo_maior(da_arvore: dict, do_artefato: dict) -> dict:
+    """Contador do dia: o maior por campo, em profundidade. Função pura.
+
+    Devolve o documento unido. Levanta `ValueError` quando um campo que não é número divirja —
+    isso não é contagem, e adivinhar ali seria inventar.
+    """
+    def juntar(a, b, caminho=""):
+        if isinstance(a, dict) and isinstance(b, dict):
+            fora = dict(a)
+            for k in sorted(set(a) | set(b)):
+                if k not in a:
+                    fora[k] = b[k]
+                elif k in b:
+                    fora[k] = juntar(a[k], b[k], f"{caminho}.{k}" if caminho else k)
+            return fora
+        if isinstance(a, bool) or isinstance(b, bool):
+            if a != b:
+                raise ValueError(f"{caminho}: booleano divergente ({a} vs {b})")
+            return a
+        if isinstance(a, (int, float)) and isinstance(b, (int, float)):
+            return max(a, b)
+        if a == b:
+            return a
+        # Carimbo de tempo vence pelo maior; qualquer outro texto divergente é recusa.
+        if caminho.split(".")[-1] in ("atualizado_em", "gerado_em"):
+            return max(str(a), str(b))
+        raise ValueError(f"{caminho}: campo que não é contagem divergiu ({a!r} vs {b!r})")
+
+    return juntar(dict(da_arvore or {}), dict(do_artefato or {}))
+
+
+def unir_por_chave(da_arvore: list, do_artefato: list, campos: tuple) -> list:
+    """Um item por chave, os dois lados preservados, ordem cronológica estável. Função pura."""
+    def k(item):
+        return tuple(str((item or {}).get(c) or "") for c in campos)
+
+    por_chave, ordem = {}, []
+    for item in list(da_arvore or []) + list(do_artefato or []):
+        chave = k(item)
+        if chave in por_chave:
+            for campo, valor in (item or {}).items():
+                if campo not in por_chave[chave] or por_chave[chave][campo] in (None, "", [], {}):
+                    por_chave[chave][campo] = valor
+            continue
+        por_chave[chave] = dict(item or {})
+        ordem.append(chave)
+    fora = [por_chave[c] for c in ordem]
+    assert len(fora) >= max(len(da_arvore or []), len(do_artefato or [])) - len(
+        set(k(x) for x in (da_arvore or [])) & set(k(x) for x in (do_artefato or []))), \
+        "a união por chave encolheu mais do que a interseção"
+    return fora
+
+
 def caminho_do_reaplicado(noite: str, elo: str) -> str:
     """Onde fica o marcador de reaplicado. Função pura."""
     return f"data/noite/{noite}/{elo}.reaplicado"
@@ -243,12 +307,36 @@ def _aplicar_um(rel: str, origem: pathlib.Path, porta: str):
                                encoding="utf-8", newline="\n")
             return True
         if porta in ("log", "contador"):
-            from unir_conflito_de_rodada import unir_log, CHAVES_DE_LOG
-            chave = CHAVES_DE_LOG.get(rel) if "CHAVES_DE_LOG" in dir() else None
-            base = destino.read_text(encoding="utf-8") if destino.exists() else origem.read_text(encoding="utf-8")
-            fundido, *_ = unir_log(rel, chave or _chave_de(rel), base,
-                                   base, origem.read_text(encoding="utf-8"))
             from coletores_base import gravar_em
+            from unir_conflito_de_rodada import unir_log
+            do_artefato = origem.read_text(encoding="utf-8")
+            if not destino.exists():
+                # Arquivo que nem existe na árvore: o do artefato É o estado, e copiar é a união.
+                destino.parent.mkdir(parents=True, exist_ok=True)
+                gravar_em(destino, json.loads(do_artefato))
+                return True
+            da_arvore = destino.read_text(encoding="utf-8")
+            if da_arvore == do_artefato:
+                return None                      # nada a fazer, e dizer isso não é recusa
+            if rel in CHAVE_POR_ITEM:
+                campo, campos = CHAVE_POR_ITEM[rel]
+                doc = json.loads(da_arvore)
+                novo_doc = json.loads(do_artefato)
+                antes = len(doc.get(campo) or [])
+                juntos = unir_por_chave(doc.get(campo) or [], novo_doc.get(campo) or [], campos)
+                doc[campo] = juntos
+                gravar_em(destino, doc)
+                print(f"     {rel}: {antes} + {len(novo_doc.get(campo) or [])} → {len(juntos)} "
+                      f"(união por chave {campos})")
+                return True
+            # A BASE é o lado do artefato: o elo partiu dele, coletou e não conseguiu empurrar.
+            # Então "nosso" é a árvore (que andou) e "deles" é o artefato (o que se perdeu).
+            if porta == "contador":
+                # O maior por campo, não a soma: ver `unir_contadores_pelo_maior`.
+                fundido = unir_contadores_pelo_maior(json.loads(da_arvore),
+                                                     json.loads(do_artefato))
+            else:
+                fundido, *_ = unir_log(rel, _chave_de(rel), do_artefato, da_arvore, do_artefato)
             gravar_em(destino, fundido)
             return True
         if porta == "evidencias":
@@ -330,6 +418,37 @@ def _autoteste() -> int:
        nome_da_fila_de("data/pistas_imprensa.json") == "pistas_imprensa.json")
     ok("o radical sozinho nao serve de nome de fila",
        nome_da_fila_de("data/pistas_doe.json").endswith(".json"))
+    ok("contador do dia une pelo maior por campo",
+       unir_contadores_pelo_maior({"etapas": {"a": {"n": 0}}, "data": "2026-10-08"},
+                                  {"etapas": {"a": {"n": 11}}, "data": "2026-10-08"})
+       == {"etapas": {"a": {"n": 11}}, "data": "2026-10-08"})
+    ok("campo que só um lado tem entra",
+       unir_contadores_pelo_maior({"etapas": {"a": 1}}, {"etapas": {"b": 2}})
+       == {"etapas": {"a": 1, "b": 2}})
+    ok("carimbo vence pelo maior",
+       unir_contadores_pelo_maior({"atualizado_em": "2026-10-08T03:00"},
+                                  {"atualizado_em": "2026-10-08T12:00"})["atualizado_em"]
+       == "2026-10-08T12:00")
+    try:
+        unir_contadores_pelo_maior({"data": "2026-10-08"}, {"data": "2026-10-07"})
+        ok("campo que não é contagem divergente RECUSA", False)
+    except ValueError:
+        ok("campo que não é contagem divergente RECUSA", True)
+    ok("união por chave preserva os dois lados",
+       len(unir_por_chave([{"elo": "juiz", "noite": "n", "inicio": "01:00"}],
+                          [{"elo": "diarios", "noite": "n", "inicio": "01:09"}],
+                          ("elo", "noite", "inicio"))) == 2)
+    ok("item repetido por chave não duplica",
+       len(unir_por_chave([{"elo": "juiz", "noite": "n", "inicio": "01:00"}],
+                          [{"elo": "juiz", "noite": "n", "inicio": "01:00", "x": 1}],
+                          ("elo", "noite", "inicio"))) == 1)
+    ok("a união por chave preenche campo que faltava",
+       unir_por_chave([{"elo": "juiz", "noite": "n", "inicio": "01:00"}],
+                      [{"elo": "juiz", "noite": "n", "inicio": "01:00", "trabalhou": True}],
+                      ("elo", "noite", "inicio"))[0].get("trabalhou") is True)
+    ok("os dois arquivos de log por chave estão declarados",
+       set(CHAVE_POR_ITEM) == {"data/painel_da_noite.json", "data/saude_pipeline.json",
+                               "data/historico_mudancas.json"})
     ok("o marcador tem caminho previsível",
        caminho_do_reaplicado("2026-10-08", "diarios") == "data/noite/2026-10-08/diarios.reaplicado")
 
