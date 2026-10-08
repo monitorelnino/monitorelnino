@@ -29,6 +29,10 @@ Quatro fichas publicavam o texto que estava na página do PDF: "o documento É o
 
 O reconhecimento vindo da notícia do MIDR recebia a data da primeira portaria do lote e o link da notícia; dias depois o DOU trazia o ato exato, com outra data, e a deduplicação por data não casava. Eram 17 municípios com dois reconhecimentos onde houve um. A chave passa a ser (município, causa, portaria), o ato exato substitui o lote, e os 332 eventos com data de lote passam a declarar `data_aproximada`. O `except: pass` que escondia a causa virou lacuna registrada.
 
+## 2026-10-08 · #PR · Lote 1.16: sete achados do A3, do feed ao selo
+
+Reconhecimento federal deixa de gerar dois itens no feed e os títulos saem em dd/mm/aaaa (97 pares da migração ficam marcados no log, que só cresce, e fora do feed). "288.729 de pessoas" vira "288.729 pessoas". Umuarama/PR sai duplicado do mapa. O CSV de atos ganha `ibge` e as datas em colunas próprias. Os selos param de falar de licença. O painel para de chamar a camada declarada de "simulado". A reserva de data que chamava função inexistente foi corrigida.
+
 ## 2026-10-08 · #PR · Lote 1.2: o decreto do diário consorciado deixa de ir ao município errado
 
 A posição do decreto no PDF vinha de `texto.find(numero)` — a primeira ocorrência da string do

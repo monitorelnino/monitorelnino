@@ -848,7 +848,11 @@ def texto_pronto(cartoes: list[dict], indices: dict = None) -> str:
                  + " e " + mun(decretos, "decretou situação de emergência ou calamidade",
                                "decretaram situação de emergência ou calamidade"))
         if pop:
-            frase += f"; {milhoes(pop)} de pessoas vivem nos municípios que decretaram"
+            # 08/10/2026 (A3-23): "288.729 de pessoas" saía quando o número não chegava ao
+            # milhão. O "de" pertence a "milhão"/"milhões", não ao número cheio.
+            _p = milhoes(pop)
+            _liga = " de " if ("milh" in str(_p)) else " "
+            frase += f"; {_p}{_liga}pessoas vivem nos municípios que decretaram"
         frases.append(frase + ".")
     faixas = v("mudaram_faixa")
     if faixas is not None:
