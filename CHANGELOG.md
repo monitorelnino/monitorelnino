@@ -15,9 +15,13 @@ não pontuados permanecem na versão corrente.
 
 
 
+
 ## 2026-10-08 · #PR · Lote 1.6: 71 reconhecimentos federais que a União publicou e o banco não tinha
 
 A planilha da Operação Carro-Pipa, recebida do MIDR em 05/10, lista as portarias de reconhecimento por município. Setenta e uma portarias do ciclo não tinham par no banco e 70 municípios não tinham evento nenhum — 69 na mesma portaria, a nº 2.203, vizinha de duas que o banco já tinha. Contador de resposta: 726 → 796 municípios, 10,2% → 11,4% da população; PE de 40 para 107 municípios. Entram com `documento_nao_localizado`. Portão: regra (h).
+## 2026-10-08 · #PR · Lote 1.11: nomeado não é localizado (D1)
+
+Quarenta e sete registros municipais recebiam crédito no índice sem documento: 41 sem endereço, 6 com notícia no lugar do documento. Categoria nova `plano_nomeado`, crédito 0 — a classe de ausência aplicada a quem estava na de presença, sem mudança de peso ou componente. Média nacional do MARÉ Legal de 45,3 para 40,8; 17 estados mudam de nota (SE 87,7→71,5, RR 48,1→26,5). Portão `verificar_documento_de_plano.py`. Metodologia §104.
 ## 2026-10-08 · #PR · Lote 1.3: uma porta só para a data do ato, em dd/mm/aaaa
 
 As 97 datas de ato vindas do diário consorciado estavam em ISO, e o resto do arquivo em dd/mm/aaaa. O gerador compara strings: o que não casava virava ausência. Vinte e sete fichas publicavam o primeiro decreto em branco, a de Roraima também, e a série semanal parava em 629 em vez de 656. Nova porta `coletores_base.data_br_de`, `data_ato` e `data_publicacao` no evento, esquema `schemas/ato_resposta.json` e portão que reprova data em ISO. Erratas: 29.

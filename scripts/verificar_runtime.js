@@ -80,7 +80,10 @@ setTimeout(() => {
     // documento ou convite ao formulário. Contatos, SMS, decreto, PDF e o resto saíram por decisão
     // da editoria; o portão passou a cobrar o cartão novo, e a AUSÊNCIA do que foi removido.
     teste("consulta municipal: cartão mínimo visível, com status do plano",
-          !card.hidden && /Plano de contingência localizado|Não localizamos|Ainda não verificamos/.test(card.innerHTML));
+          // 08/10/2026 (D1): o cartão ganhou um quarto estado, `plano_nomeado` — plano
+          // citado em fonte oficial cujo documento não foi localizado. Blumenau, que
+          // este teste consulta, é um dos 47 que passaram a ele.
+          !card.hidden && /Plano de contingência localizado|Plano de contingência citado em fonte oficial|Não localizamos|Ainda não verificamos/.test(card.innerHTML));
     teste("cartão mínimo: sem contatos, sem SMS, sem PDF",
           !/\b199\b|40199|mailto:|btnPDF/.test(card.innerHTML));
     teste("cartão mínimo: traz o risco do estado no mesmo componente da ficha",
