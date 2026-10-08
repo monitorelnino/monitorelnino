@@ -10,6 +10,9 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+
+
+
 ## 2026-10-08 · #PR · Lote 1.2: o decreto do diário consorciado deixa de ir ao município errado
 
 A posição do decreto no PDF vinha de `texto.find(numero)` — a primeira ocorrência da string do
@@ -17,6 +20,27 @@ número em qualquer lugar do diário —, e o município era o do cabeçalho ant
 preservados: 18 estavam no município errado (30%), corrigidos com errata por município. Os 36 cuja
 edição não está preservada saem do contador até a recoleta (D1): 749 → 723 municípios, 10,6% →
 10,1% da população. Um autoteste reproduz o caso Arapiraca × Piranhas.
+## 2026-10-08 · #PR · Lote 1.4: a data do decreto deixa de ser a da portaria
+
+Nos 732 atos vindos do DOU, o campo `data` é a data da portaria de reconhecimento federal, e 674
+deles traziam a data do decreto municipal num campo que nenhuma superfície lia. Em 21 UFs a página
+publicava a data da portaria como "primeiro decreto" — AM mostrava 30/06 quando o decreto é de
+08/06. Agora as duas datas aparecem separadas e nomeadas, a regra está no §32.6 da METODOLOGIA, e
+dois autotestes a provam. Quem conta não muda.
+## 2026-10-08 · #PR · Lote 1.5: três municípios de MT voltam ao contador de resposta
+
+Evento sem `ibge` era descartado em silêncio por um `continue`: oito eventos de órgão estadual não
+traziam o código, e Itaúba, Colniza e Várzea Grande (MT) não tinham nenhum outro — sumiam do
+contador. MT publicava índice de resposta 0,2 quando é 9,2. Agora o código é casado por (nome, UF)
+na malha, o descarte sai nomeado, e `verificar_resposta.py` reprova evento sem `ibge` casável.
+Nacional: 749 → 752 municípios, 10,6% → 10,8% da população.
+## 2026-10-08 · #PR · Lote 1.1: quatro registros falsos saem do banco
+
+O juiz havia promovido quatro planos de outro ente ou de outro objeto: o PDF de Rio do Oeste/SC é
+de Taió, o de Santa Rosa/RS é de Trindade do Sul, o de Cubatão/SP é um relatório do BNDES sobre
+Santos e o de Imperatriz/MA regulamenta o Plano de Segurança Pública. Os quatro saem, com errata
+e com o efeito medido: MA 46,3 → 45,0 e RS 55,4 → 55,2. As decisões ficam marcadas com
+`superada_por`, e 24 pistas atribuídas a outro ente voltaram à fila do juiz.
 
 ## 2026-10-08 · #PR · Lote 0: a corrente noturna para de sangrar
 

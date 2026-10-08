@@ -82,6 +82,27 @@ try:
         return bool(e.get("url") or e.get("hash_evidencia") or e.get("documento_nao_localizado"))
     sem = [e for e in atos if not tem_proveniencia(e)]
     if sem: erro(f"(g) {len(sem)} evento(s) sem fonte/data/URL-ou-hash")
+    # (g2) 08/10/2026 (A3-01): todo evento tem de ter `ibge` de 7 digitos QUE EXISTA NA MALHA, ou
+    # um par (nome, UF) que case nela. Oito eventos nao traziam o codigo e o gerador os descartava
+    # em silencio: tres municipios de MT sumiam do contador, e MT publicava resposta 0,2 no lugar
+    # de 9,2. Este portao passava porque so exigia fonte, data e URL.
+    import unicodedata as _u
+    def _nrm(s):
+        s = _u.normalize("NFD", str(s or ""))
+        return "".join(c for c in s if _u.category(c) != "Mn").lower().strip()
+    malha = {(_nrm(m.get("nome")), str(m.get("uf") or "").upper()) for m in mun.values()}
+    codigos = set(mun)
+    sem_codigo = []
+    for e in atos:
+        ib = str(e.get("ibge") or "").zfill(7)
+        if ib in codigos:
+            continue
+        if (_nrm(e.get("nome") or e.get("municipio")), str(e.get("uf") or "").upper()) in malha:
+            continue
+        sem_codigo.append(f"{e.get('nome') or e.get('municipio')}/{e.get('uf')}")
+    if sem_codigo:
+        erro(f"(g2) {len(sem_codigo)} evento(s) sem `ibge` casavel na malha: "
+             + ", ".join(sorted(set(sem_codigo))[:8]))
 except Exception as e:  # noqa: BLE001
     erro(f"portão falhou ao executar: {e}")
 if erros:

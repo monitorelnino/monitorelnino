@@ -43,7 +43,7 @@ function barraResposta(uf){
   const ir = indiceResposta(r), rec = r.tons.reconhecido, dec = r.tons.decretado_sem_reconhecimento, n = r.n_municipios;
   return `<div class="field"><div class="k">Resposta · o índice</div><div class="v">
     ${typeof window.__miniGauge === 'function' ? window.__miniGauge(ir, 'Resposta · população sob decreto', 'resposta') : ''}
-    <strong>${n}</strong> de ${r.total_municipios} municípios · <strong>${Math.round(100 * r.fracao_populacao)}%</strong> da população${r.primeiro_decreto ? ' · primeiro decreto em ' + r.primeiro_decreto : ''}<br>
+    <strong>${n}</strong> de ${r.total_municipios} municípios · <strong>${Math.round(100 * r.fracao_populacao)}%</strong> da população${r.primeiro_decreto ? ' · primeiro decreto municipal em ' + r.primeiro_decreto : ''}<br>
     <span class="fv u-muted">${rec} reconhecido(s) pela União · ${dec} decretado(s) sem reconhecimento · evento observado: em classificação</span></div></div>`;
 }
 // AUD-02 revisto (07/10/2026): o escape acontece UMA VEZ, na saida. Escapar na carga e de novo
@@ -930,7 +930,17 @@ function gerarRelatorioCidadao(uf, municipio){
     }
     if (typeof HAB_SET !== 'undefined' && HAB_SET.has(nrm(municipio) + '|' + uf))
       item('Reconhecimento federal vigente: o município pode solicitar recursos de resposta pelo S2iD.');
-    emergs.forEach(e => item(municipio + ' decretou situação de emergência em ' + e.data + ' (' + e.causa + '). Ato de resposta a dano já ocorrido — não conta para o índice. Fonte: ' + e.fonte + '.'));
+    // 08/10/2026 (A3-07): `e.data` nos eventos do DOU é a data do RECONHECIMENTO, não a do
+    // decreto — a frase dizia "decretou em 02/09" sobre um decreto de 17/08. As duas datas são
+    // coisas diferentes e agora aparecem as duas, cada uma com o seu nome.
+    emergs.forEach(e => {
+      const dDec = e.data_decreto_municipal || e.data;
+      const dRec = e.data_reconhecimento || (String(e.causa || '').indexOf('reconhecimento') >= 0 ? e.data : '');
+      const quando = (dRec && dRec !== dDec)
+        ? 'decreto municipal em ' + dDec + '; reconhecimento federal em ' + dRec
+        : 'decreto municipal em ' + dDec;
+      item(municipio + ': ' + quando + ' (' + e.causa + '). Ato de resposta a dano já ocorrido — não conta para o índice. Fonte: ' + e.fonte + '.');
+    });
   } else if (d.capital) {
     item('Capital (' + d.capital.nome + '): ' + d.capital.status + '. ' + (d.capital.info || ''));
   }
