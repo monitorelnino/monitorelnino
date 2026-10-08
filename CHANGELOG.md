@@ -13,9 +13,13 @@ não pontuados permanecem na versão corrente.
 
 
 
+
 ## 2026-10-08 · #PR · Lote 1.11: nomeado não é localizado (D1)
 
 Quarenta e sete registros municipais recebiam crédito no índice sem documento: 41 sem endereço, 6 com notícia no lugar do documento. Categoria nova `plano_nomeado`, crédito 0 — a classe de ausência aplicada a quem estava na de presença, sem mudança de peso ou componente. Média nacional do MARÉ Legal de 45,3 para 40,8; 17 estados mudam de nota (SE 87,7→71,5, RR 48,1→26,5). Portão `verificar_documento_de_plano.py`. Metodologia §104.
+## 2026-10-08 · #PR · Lote 1.9: a data do plano é a do documento, não a da nossa consulta
+
+Oitenta e quatro fichas de ES e SE publicavam 26/08/2026 como data do plano: era o dia em que o Monitor abriu o repositório estadual. Nove delas são planos antigos, e diziam 2026 — contradição entre a categoria e a data. `data` passa a ser o ano da edição do documento (ou o da atualização, quando declarada) e a consulta ganha campo próprio, `localizado_em`. Portão novo `verificar_datas_de_instrumento.py`, com fixtures de ES e SE.
 
 ## 2026-10-08 · #PR · Lote 1.2: o decreto do diário consorciado deixa de ir ao município errado
 
