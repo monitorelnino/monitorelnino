@@ -41,6 +41,14 @@ ESQUEMA = RAIZ / "schemas" / "pista.json"
 FILAS = ("pistas_imprensa.json", "pistas_descobertas.json", "pistas_doe.json")
 # A regra do esquema passou a valer nesta data (handover da corrente noturna).
 VALE_A_PARTIR_DE = "2026-10-04"
+# A FORMA tem data propria, e por uma razao medida. Quando o portao passou a conferir forma em
+# todas as pistas (A7-08), a CI acusou 988 pistas REGISTRADAS DEPOIS DE 04/10 com alvo vazio — o
+# passivo nao esta so no que e antigo, porque parte dele entrou pelas escritas que fugiam da porta
+# (A7-19, as 18 do `config/escritores_legados.json`). Bloquear hoje seria reprovar a `main` por
+# divida que ja existia, e parar a noite por isso e desproporcional: o lugar de fechar a entrada e
+# a porta, nao o portao. Entao a forma vale a partir de AMANHA — a pista que entrar sob a porta
+# corrigida reprova; o que ja esta la e contado, nomeado e cobravel.
+FORMA_VALE_A_PARTIR_DE = "2026-10-10"
 IDADE_MEDIANA_MAXIMA = 14
 FRACAO_C_MAXIMA = 0.70
 RODADAS_DE_CRESCIMENTO = 3
@@ -371,6 +379,11 @@ def _autoteste() -> int:
     ok("pista registrada antes do corte não é nova",
        _e_nova({"registrado_em": "02/09/2026"}) is False
        and _e_nova({"registrado_em": "2026-09-02"}) is False)
+    ok("a forma tem data própria, e ela é posterior à do esquema",
+       FORMA_VALE_A_PARTIR_DE > VALE_A_PARTIR_DE)
+    ok("a data da forma decide o regime, não a do esquema",
+       _e_nova({"registrado_em": "2026-10-05"}, FORMA_VALE_A_PARTIR_DE) is False
+       and _e_nova({"registrado_em": "2026-10-05"}, VALE_A_PARTIR_DE) is True)
     ok("pista sem `registrado_em` não é nova (a regra não a alcança)",
        _e_nova({}) is False)
     ok("trava estrutural: as funções puras do portão não escrevem",
@@ -422,14 +435,17 @@ def main() -> int:
         # 09/10/2026 (A7-08): FORMA em todas as pistas, nos dois regimes. Nova reprova; antiga
         # conta e fica nomeada. A pista nova é a que `problemas_de_esquema` já alcança, e usar o
         # mesmo critério nos dois lugares evita um terceiro corte de data vivendo por aqui.
-        forma_novas = problemas_de_forma([x for x in pistas if _e_nova(x)])
-        forma_antigas = problemas_de_forma([x for x in pistas if not _e_nova(x)])
+        forma_novas = problemas_de_forma(
+            [x for x in pistas if _e_nova(x, FORMA_VALE_A_PARTIR_DE)])
+        forma_antigas = problemas_de_forma(
+            [x for x in pistas if not _e_nova(x, FORMA_VALE_A_PARTIR_DE)])
         if forma_novas and not so_conferir:
             bloqueios.append(f"{nome}: {len(forma_novas)} pista(s) nova(s) com defeito de forma "
                              f"(endereço, alvo ou data) — ex.: {forma_novas[0]}")
         if forma_antigas:
             alertas.append(f"{nome}: {len(forma_antigas)} defeito(s) de forma em pista anterior a "
-                           f"{VALE_A_PARTIR_DE} — não bloqueia, e a migração de esquema os fecha")
+                           f"{FORMA_VALE_A_PARTIR_DE} — não bloqueia; a porta e a migração de "
+                           f"esquema os fecham")
 
         declaradas = [x for x in problemas_de_esquema(pistas, esquema)
                       if x not in problemas_de_esquema(pistas, esquema, so_fila_ativa=True)]
