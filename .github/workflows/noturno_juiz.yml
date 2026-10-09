@@ -75,7 +75,14 @@ jobs:
       # caminho. Cada recusa por falta de documento passa a custar até quatro consultas de rede,
       # com o ritmo de 3 s da rodada entre elas — e a noite anterior mostrou que 74% das recusas
       # são desse tipo. Teto que termina e commita vale mais que fila inteira que não chega ao fim.
+      # 09/10/2026 (A1-10): o corretor de atribuicao por dominio existia desde 03/10 e NAO RODAVA
+      # em lugar nenhum — nem na noite, nem a mao. Ele reatribui a pista ao dono do dominio oficial
+      # do documento (o plano servido em `taio.sc.gov.br` e de Taio, nao do municipio que o texto
+      # menciona) e a devolve ao juiz. Roda ANTES de julgar, porque julgar um par que nunca existiu
+      # gasta busca na rede para recusar por identidade. Na arvore de hoje ele corrige 4 de 13.503
+      # pistas, duas delas so depois de `prefeitura.<nome>` passar a resolver.
       comandos: |
+        scripts/corrigir_atribuicao_por_dominio.py --aplicar
         revisar_pistas.py --preparar --relatorio
         julgar_filas.py --aplicar --limite 150
         julgar_e_aplicar_descobertas.py --limite 150
