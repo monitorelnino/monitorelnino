@@ -116,6 +116,13 @@ tupla era atribuída inteira a `ok`, sempre verdadeira — portão vermelho conf
 desfazer. E o caminho das descobertas gravava sempre `categoria: "plano"`, sem evidência nem
 proveniência, enquanto o caminho do juiz grava a categoria do veredito: um `plano_antigo` entrava
 como plano novo. Onde: aplicar_promocoes_do_juiz.py, julgar_e_aplicar_descobertas.py.
+## 2026-10-09 · #PR · metodologia e regras: o juiz 1.4 e o fim da etapa humana
+
+Lote 8. METODOLOGIA §106 descreve o codebook 1.4, as filas sem etapa humana e a regra de
+verificação do MARÉ Saúde v0.4 (D9); §12 ganha a nota de versão D4 ("v3.1 (30/09/2026)", uma string
+só). CLAUDE.md: nenhuma etapa humana (08/10), "semana epidemiológica" proibida em texto público,
+contagem de portões medida (239), figuras sem numeração.
+
 ## 2026-10-09 · #PR · atribuição do ato: domínio vence nome no texto
 
 Lote 2.1. Nome homônimo sem a UF no texto deixa de classificar (241 nomes estão em mais de uma
