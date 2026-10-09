@@ -706,7 +706,17 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     }
 
     const atos = por['atos_federais_semana'];
-    if (atos && !atos.sem_coleta) {
+    if (atos && atos.classe === 'sem_data_na_origem') {
+      /* 09/10/2026: quarta classe de ausencia, escrita em palavras. A serie EXISTE e foi lida —
+       * dizer "sem coleta" seria dizer o que nao aconteceu, e o portao de layout reprova. O que
+       * falta e a data do ato na origem, e sem data nao ha janela de sete dias para medir. */
+      if (el('topoAtosSemana')) el('topoAtosSemana').textContent = 'sem data na origem';
+      if (el('topoAtosRotulo')) {
+        el('topoAtosRotulo').textContent = 'os atos federais de financiamento lidos nao trazem '
+          + 'data de publicacao na origem, e sem data nao ha janela de sete dias para medir';
+      }
+      if (el('topoAtosSemanaFonte')) el('topoAtosSemanaFonte').textContent = atos.fonte;
+    } else if (atos && !atos.sem_coleta) {
       /* Zero é ZERO, com a janela dita — o handover proíbe travessão aqui. */
       if (el('topoAtosSemana')) el('topoAtosSemana').textContent = n(atos.valor);
       if (el('topoAtosRotulo')) {

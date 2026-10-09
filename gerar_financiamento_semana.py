@@ -90,6 +90,19 @@ def sem_coleta(ident: str, unidade: str, porque: str, fonte: str) -> dict:
             "url_fonte": None, "detalhe": porque, "sem_coleta": True}
 
 
+def sem_data_na_origem(ident: str, unidade: str, porque: str, fonte: str) -> dict:
+    """Ausência de OUTRA classe: a série existe e foi lida, e a origem não datou os atos.
+
+    09/10/2026. O A3-10 declarou este caso como `sem_coleta`, e as duas coisas são distintas — a
+    regra do site exige quatro estados separados, e dizer "sem coleta" de uma série que está em
+    disco é dizer o que não aconteceu. O portão de layout (regra g) reprova exatamente isso, e
+    reprovava com razão. O cartão passa a dizer a classe que é, em palavras, sem travessão.
+    """
+    return {"id": ident, "valor": None, "unidade": unidade, "periodo": None, "fonte": fonte,
+            "url_fonte": None, "detalhe": porque, "sem_coleta": False,
+            "classe": "sem_data_na_origem"}
+
+
 def cartao_pago(mps: dict) -> dict:
     """Pago pelas ações reforçadas pelas MPs. Mês fechado quando houver quebra mensal."""
     itens = (mps or {}).get("mps") or []
@@ -194,10 +207,10 @@ def cartao_atos(comp: dict, corte: datetime) -> dict:
     # Lista VAZIA é zero medido: a coleta rodou e não havia ato no período. O caso do A3-10 é
     # outro — há itens, e nenhum deles traz data, de modo que a janela não tem o que medir.
     if itens and not tem_data_legivel(itens):
-        return sem_coleta("atos_federais_semana", "atos",
-                          "a origem dos compromissos federais não traz data de publicação do ato; "
-                          "sem data não há janela de sete dias para medir",
-                          "Atos federais lidos pelo MARÉ")
+        return sem_data_na_origem("atos_federais_semana", "atos",
+                                  "a origem dos compromissos federais não traz data de publicação "
+                                  "do ato; sem data não há janela de sete dias para medir",
+                                  "Atos federais lidos pelo MARÉ")
     na = na_janela(itens, corte)
     return cartao("atos_federais_semana", len(na), "atos", "últimos 7 dias",
                   "Atos federais lidos pelo MARÉ",
@@ -267,8 +280,13 @@ def _autoteste() -> int:
                                {"data": "2026-02-01", "instrumento": "Portaria 2"}]}, corte)
     ok("atos conta so a janela", c["valor"] == 1)
     # 08/10/2026 (A3-10): itens SEM data não são zero — a janela não tem o que medir.
-    ok("atos com itens sem data declara lacuna",
-       cartao_atos({"itens": [{"instrumento": "Portaria sem data"}]}, corte)["sem_coleta"] is True)
+    ok("atos com itens sem data declara a CLASSE, nao `sem coleta`",
+       cartao_atos({"itens": [{"instrumento": "Portaria sem data"}]}, corte)["classe"]
+       == "sem_data_na_origem"
+       and cartao_atos({"itens": [{"instrumento": "Portaria sem data"}]},
+                       corte)["sem_coleta"] is False)
+    ok("serie ausente segue sendo `sem coleta`", cartao_atos({}, corte)["sem_coleta"] is True
+       and "classe" not in cartao_atos({}, corte))
     ok("atos com itens sem data nao publica valor",
        cartao_atos({"itens": [{"instrumento": "Portaria sem data"}]}, corte)["valor"] is None)
     ok("atos lista vazia e ZERO, nao lacuna",
