@@ -1266,7 +1266,8 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
 /* ===== Monitor de riscos, ajustes de 09/10/2026 (editoria) ====================================
    Variantes de componente existente — nenhum bloco novo. */
 /* Seção sem moldura: título e abertura como cabeçalho, e os cartões sobre o fundo da página. */
-.panel--aberto{background:none; border:0; box-shadow:none; padding:0;}
+.secao-aberta{margin:0 0 var(--esp-secao); max-width:100%; min-width:0;}
+.secao-aberta > h2:first-child{margin-top:0;}
 /* A grade de números mantém a altura igual na linha, e a fonte vai ao pé do cartão. */
 .grade-numeros{align-items:stretch;}
 /* Três por linha no desktop e UM por linha no celular, na mesma ordem (ajuste 3). */
