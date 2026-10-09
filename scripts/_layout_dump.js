@@ -124,6 +124,16 @@ const COLETA = () => {
     colunas: getComputedStyle(g).gridTemplateColumns.split(" ").filter(Boolean).length,
     secao: (() => { let e = g.parentElement; while (e && !e.id) e = e.parentElement; return e ? e.id : ""; })(),
   }));
+  // 08/10/2026 (A4-13): o travessao e proibido como VALOR em cartao, e o portao olhava so
+  // `.cartao-numero-valor`. O leitor o via em outros tres lugares: na linha do boletim de figura,
+  // na face do ladrilho de estado e no campo da ficha. Entram na varredura.
+  const travessoes = [...document.querySelectorAll(
+    ".cartao-mapa-boletim, .tile-face span, .field .v, .cartao-numero-valor")]
+    .filter(e => vis(e) && ["—", "-", "–"].includes((e.textContent || "").trim()))
+    .map(e => ({
+      classe: [...e.classList].join(" ") || e.tagName.toLowerCase(),
+      perto_de: ((e.closest("[id]") || {}).id) || "",
+    }));
   const numeros = [...document.querySelectorAll(".cartao-numero")].map(c => ({
     id: c.dataset.cartao || c.id || "",
     valor: ((c.querySelector(".cartao-numero-valor") || {}).textContent || "").trim(),
@@ -202,7 +212,7 @@ const COLETA = () => {
     fundo_do_corpo: getComputedStyle(document.body).backgroundColor,
     largura_main: Math.round((document.querySelector("main") || document.body).getBoundingClientRect().width),
     h2: [...document.querySelectorAll("main h2")].map(h => (h.textContent || "").trim()).filter(Boolean),
-    secoes, grades, figuras, numeros, invisiveis,
+    secoes, grades, figuras, numeros, travessoes, invisiveis,
     estados: [...document.querySelectorAll("#regionsSaude .tile, #regionsFin .tile")].map(t => ({
       uf: t.dataset.uf || "", texto: (t.textContent || "").trim().slice(0, 40),
       largura: Math.round(t.getBoundingClientRect().width),

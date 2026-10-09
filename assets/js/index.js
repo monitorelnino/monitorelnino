@@ -35,11 +35,19 @@ function faceTile(uf){
   const ST = {NOVO:'novo', READ:'readaptado', VIG:'vigente-recorrente', ELAB:'em elaboração', LAC:'não localizado'};
   return `<div class="tile-face">
     <span>diários: ${((VRESUMO && VRESUMO.varredura_diarios && VRESUMO.varredura_diarios.por_uf) || {})[uf] || 0} de ${tot}</span>
-    <span>${esc(ST[d.status] || d.status)}${d.data && d.data !== 'Recorrente' ? ' · ' + esc(d.data) : ''}</span>
-    <span>${d.capital && d.capital.nome ? esc(d.capital.nome) : 'capital —'}</span></div>`;
+    <span>${esc(ST[d.status] || d.status)}${temData(d.data) ? ' · ' + esc(d.data) : ''}</span>
+    <span>${d.capital && d.capital.nome ? esc(d.capital.nome) : 'capital não verificada'}</span></div>`;
   // 08/10/2026 (A3-11): o ladrilho mostra só o NOME da capital. Ele pinta antes de o banco
   // chegar, e qualquer rótulo aqui seria ou o texto à mão que saiu, ou um estado lido de uma
   // tabela que ainda não existe. O estado da capital aparece na ficha do estado, que lê o banco.
+}
+// 08/10/2026 (A4-13): o travessao e PROIBIDO como valor em cartao, e ele chegava a tela por tres
+// caminhos: campo com '—' guardado no dado, reserva de ramo e rotulo "capital —". Uma funcao
+// decide o que e data de verdade; o resto se escreve em palavras. Sem capital no banco, o
+// ladrilho escreve "capital não verificada" — nunca travessão.
+function temData(v){
+  const s = String(v == null ? '' : v).trim();
+  return s !== '' && s !== '—' && s !== '-' && s !== 'Recorrente';
 }
 function barraResposta(uf){
   const r = RESP && RESP.uf && RESP.uf[uf]; if (!r) return '';
@@ -47,7 +55,7 @@ function barraResposta(uf){
   return `<div class="field"><div class="k">Resposta · o índice</div><div class="v">
     ${typeof window.__miniGauge === 'function' ? window.__miniGauge(ir, 'Resposta · população sob decreto', 'resposta') : ''}
     <strong>${n}</strong> de ${r.total_municipios} municípios · <strong>${Math.round(100 * r.fracao_populacao)}%</strong> da população${r.primeiro_decreto ? ' · primeiro decreto municipal em ' + r.primeiro_decreto : ''}<br>
-    <span class="fv u-muted">${rec} reconhecido(s) pela União · ${dec} decretado(s) sem reconhecimento · evento observado: em classificação</span></div></div>`;
+    <span class="fv u-muted">${rec} reconhecido(s) pela União · ${dec} decretado(s) sem reconhecimento</span></div></div>`;
 }
 // AUD-02 revisto (07/10/2026): o escape acontece UMA VEZ, na saida. Escapar na carga e de novo
 // na saida dava "Olho d&amp;#39;Agua das Flores" no cartao, e fazia o nome do banco nao casar com o
@@ -450,8 +458,8 @@ function selectUF(uf, tileEl){
     : capReg && capReg.categoria === 'nao_localizado'
       ? `<div class="card-note">Nenhum documento localizado até o corte dos dados.</div>`
       : capReg && capReg.categoria === 'nao_verificado'
-        ? `<div class="card-note">Ainda não verificada individualmente com a bateria completa de fontes.</div>`
-        : `<div class="card-note">Documento nomeado; link oficial em verificação.</div>`;
+        ? `<div class="card-note">Ainda não verificamos esta capital com todas as fontes.</div>`
+        : `<div class="card-note">Documento não localizado até o corte.</div>`;
   const capitalBlock = d.capital ? `
     <div class="capital-box">
       <div class="card-kicker">Capital · verificação individual</div>
@@ -466,8 +474,8 @@ function selectUF(uf, tileEl){
     <div class="uf-region">${esc(d.regiao)}</div>
     <span class="badge ${badgeClass}">${STATUS_LABEL[d.status]}</span>
     ${riscoBox(d.uf)}
-    <div class="field"><div class="k">Estrutura de coordenação</div><div class="v">${d.estrutura ? '<span class="pill-nivel">' + (STATUS_LABEL[d.estrutura.status] || d.estrutura.status) + '</span> ' + esc(d.estrutura.doc) + (d.estrutura.data && d.estrutura.data !== '—' ? ' (' + esc(d.estrutura.data) + ')' : '') : '—'}</div></div>
-    <div class="field"><div class="k">Instrumento operacional</div><div class="v"><span class="pill-nivel">${STATUS_LABEL[d.status]}</span> ${esc(d.doc)}${d.data ? ' (' + esc(d.data) + ')' : ''}${d.sem_ato_de_aprovacao ? '<br><span class="spec">sem ato de aprovação localizado</span>' : ''}</div></div>
+    <div class="field"><div class="k">Estrutura de coordenação</div><div class="v">${d.estrutura ? '<span class="pill-nivel">' + (STATUS_LABEL[d.estrutura.status] || d.estrutura.status) + '</span> ' + esc(d.estrutura.doc) + (temData(d.estrutura.data) ? ' (' + esc(d.estrutura.data) + ')' : '') : 'Não localizamos ato de estrutura de coordenação até o corte.'}</div></div>
+    <div class="field"><div class="k">Instrumento operacional</div><div class="v"><span class="pill-nivel">${STATUS_LABEL[d.status]}</span> ${esc(d.doc)}${temData(d.data) ? ' (' + esc(d.data) + ')' : ''}${d.sem_ato_de_aprovacao ? '<br><span class="spec">sem ato de aprovação localizado</span>' : ''}</div></div>
     ${(function(){ // 01/10/2026, texto aprovado pela editoria. A v3.1 dá zero ao instrumento
       // recorrente que NÃO cobre o risco previsto para o ciclo (degrau VIG_NAO_COBRE), e até aqui a
       // interface não dizia isso em lugar nenhum: o cartão mostrava "vigente-recorrente" e o leitor
@@ -1027,7 +1035,7 @@ function gerarRelatorioCidadao(uf, municipio){
     const cat = reg ? reg.categoria : null;
     const _nivF = nivelVerificacao(uf, municipio);
     if (cat === 'nao_localizado' && _nivF === 'municipal_completo') faltas.push('Após verificação individual completa, não localizamos plano de contingência da sua cidade. Peça à prefeitura pela ouvidoria ou e-SIC (Lei 12.527/2011): resposta obrigatória em 20 dias.');
-    else if (!cat || cat === 'nao_localizado' || cat === 'nao_verificado') faltas.push('Ainda não verificamos sua cidade com a bateria completa de fontes. Peça o documento à prefeitura pela ouvidoria ou e-SIC (Lei 12.527/2011, resposta em até 20 dias) e envie pelo formulário no fim desta página.');
+    else if (!cat || cat === 'nao_localizado' || cat === 'nao_verificado') faltas.push('Ainda não verificamos sua cidade com todas as fontes. Peça o documento à prefeitura pela ouvidoria ou e-SIC (Lei 12.527/2011, resposta em até 20 dias) e envie pelo formulário no fim desta página.');
     else if (cat === 'plano_antigo') faltas.push('O plano da sua cidade é de edição anterior. Pergunte à prefeitura se há atualização para 2026/2027.');
     else if (cat === 'decreto') faltas.push('Sua cidade tem decreto de emergência (resposta a dano ocorrido), mas não localizamos plano preventivo. Pergunte à prefeitura se existe e onde está publicado.');
     else if (cat === 'plano_elaboracao') faltas.push('O plano da sua cidade está em elaboração. Pergunte a data prevista.');

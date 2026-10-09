@@ -176,8 +176,13 @@ def problemas_de_vocabulario(texto: str, pagina: str, regras: dict, contrato: di
 
 
 # ── (E) números e (F) acessibilidade ────────────────────────────────────────────────────────
-def problemas_de_numero(numeros: list, regras: dict) -> list:
-    """Travessão e vazio em cartão de número. Função pura."""
+def problemas_de_numero(numeros: list, regras: dict, travessoes: list = None) -> list:
+    """Travessão e vazio em cartão de número — e em todo elemento que só tem travessão.
+
+    08/10/2026 (A4-13): a varredura olhava só `.cartao-numero-valor`, e o leitor via o sinal
+    proibido em outros três lugares, medidos na página renderizada: a linha de boletim da figura,
+    a face do ladrilho de estado e o campo da ficha. `travessoes` vem do medidor, que os coleta.
+    """
     r = (regras or {}).get("numeros") or {}
     p = []
     if not r.get("travessao_em_cartao_proibido"):
@@ -186,6 +191,9 @@ def problemas_de_numero(numeros: list, regras: dict) -> list:
         valor = (n.get("valor") or "").strip()
         if valor in ("", "—", "-"):
             p.append(f"cartão de número '{n.get('id') or n.get('valor_id')}' em travessão ou vazio")
+    for e in travessoes or []:
+        p.append(f"elemento '{e.get('classe')}' em {e.get('perto_de') or 'seção sem id'} só com "
+                 f"travessão — ausência se escreve em palavras")
     return p
 
 
@@ -228,7 +236,8 @@ def problemas(pagina: str, despejo: dict, regras: dict, contrato: dict, excecoes
         ("figura", problemas_de_figura(d1280.get("figuras_completas") or [], regras)),
         ("vocabulario", problemas_de_vocabulario(d1280.get("texto_visivel") or "", pagina,
                                                  regras, contrato)),
-        ("numeros", problemas_de_numero(d1280.get("numeros") or [], regras)),
+        ("numeros", problemas_de_numero(d1280.get("numeros") or [], regras,
+                                        d1280.get("travessoes") or [])),
         ("acessibilidade", problemas_de_acessibilidade(d390, regras)),
         ("fundo", problemas_de_fundo(d1280, regras)),
     ]
@@ -323,6 +332,13 @@ def _autoteste() -> int:
 
     # (E) e (F)
     ok("cartão com valor passa", problemas_de_numero([{"id": "a", "valor": "749"}], regras) == [])
+    # 08/10/2026 (A4-13): os três lugares novos da varredura.
+    ok("elemento só com travessão reprova",
+       len(problemas_de_numero([], regras,
+                               [{"classe": "cartao-mapa-boletim", "perto_de": "boxDengue"}])) == 1)
+    ok("face de ladrilho com travessão reprova",
+       len(problemas_de_numero([], regras, [{"classe": "tile-face span"}])) == 1)
+    ok("sem travessão nenhum passa", problemas_de_numero([], regras, []) == [])
     ok("cartão em travessão reprova",
        len(problemas_de_numero([{"id": "a", "valor": "—"}], regras)) == 1)
     ok("cartão vazio reprova", len(problemas_de_numero([{"id": "a", "valor": ""}], regras)) == 1)
