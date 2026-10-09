@@ -1024,6 +1024,15 @@
   "data": "08/10/2026",
   "uf": null,
   "municipio": null,
+  "o_que_mudou": "a Imprensa publicava \"6 municípios sob alerta do Cemaden\", \"3.461 sob aviso do Inmet\" e \"489 com decreto e alerta ao mesmo tempo\" enquanto a página Defesa civil, lendo o mesmo arquivo, dizia \"sem atualização desde 07/10/2026 21:40\"; as duas passam a parar juntas",
+  "por_que": "A regra das 24 horas estava só no JavaScript da página: o instantâneo que alimenta as duas superfícies seguia publicando o número, e a Imprensa o copiava. A regra passa ao instantâneo (`scripts/gerar_topo_das_paginas.alertas_pararam`). Junto, o fuso: o carimbo é escrito no fuso da redação e era comparado com o relógio de onde o código roda — três horas de diferença entre o navegador no Brasil e o runner em UTC, o bastante para as duas superfícies discordarem sobre a idade do mesmo dado.",
+  "achado": "coerência da Imprensa",
+  "lote": "1 (defeito achado na fila da CI)"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
   "o_que_mudou": "o cartão \"atos federais de financiamento nos últimos 7 dias\" publicava 0 atos no Financiamento e na Imprensa; passa a declarar que a origem não traz data de publicação do ato, e nenhum número é publicado ali",
   "por_que": "A3-10: nenhum dos cinco compromissos federais tinha campo de data, e a função da janela devolvia lista vazia — o zero vinha do campo inexistente, não de medição. A regra do site é que zero só se publica quando a coleta rodou. O coletor passa a declarar a ausência da data na origem, e a regra (m) de `verificar_financiamento.py` reprova cartão de janela com valor quando a origem não tem data.",
   "achado": "A3-10",

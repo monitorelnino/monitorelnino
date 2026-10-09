@@ -15,6 +15,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+
+## 2026-10-08 · #PR · Lote 1.13: o cartão de atos federais para de publicar um zero que não foi medido
+
+Nenhum dos cinco compromissos federais tinha campo de data: a janela de sete dias devolvia lista vazia e o cartão publicava "0 atos" como fato, no Financiamento e na Imprensa. O cartão passa a declarar a lacuna; o coletor registra a ausência da data na origem, com o motivo; e a regra (m) do portão de financiamento reprova cartão de janela com valor quando a origem não tem data. Zero medido e campo inexistente são coisas diferentes.
 ## 2026-10-08 · #PR · Lote 1.11: nomeado não é localizado (D1)
 
 Quarenta e sete registros municipais recebiam crédito no índice sem documento: 41 sem endereço, 6 com notícia no lugar do documento. Categoria nova `plano_nomeado`, crédito 0 — a classe de ausência aplicada a quem estava na de presença, sem mudança de peso ou componente. Média nacional do MARÉ Legal de 45,3 para 40,8; 17 estados mudam de nota (SE 87,7→71,5, RR 48,1→26,5). Portão `verificar_documento_de_plano.py`. Metodologia §104.
@@ -33,9 +37,9 @@ Quatro fichas publicavam o texto que estava na página do PDF: "o documento É o
 
 O reconhecimento vindo da notícia do MIDR recebia a data da primeira portaria do lote e o link da notícia; dias depois o DOU trazia o ato exato, com outra data, e a deduplicação por data não casava. Eram 17 municípios com dois reconhecimentos onde houve um. A chave passa a ser (município, causa, portaria), o ato exato substitui o lote, e os 332 eventos com data de lote passam a declarar `data_aproximada`. O `except: pass` que escondia a causa virou lacuna registrada.
 
-## 2026-10-08 · #PR · Lote 1.13: o cartão de atos federais para de publicar um zero que não foi medido
+## 2026-10-08 · #PR · A Imprensa para quando a Defesa civil para
 
-Nenhum dos cinco compromissos federais tinha campo de data: a janela de sete dias devolvia lista vazia e o cartão publicava "0 atos" como fato, no Financiamento e na Imprensa. O cartão passa a declarar a lacuna; o coletor registra a ausência da data na origem, com o motivo; e a regra (m) do portão de financiamento reprova cartão de janela com valor quando a origem não tem data. Zero medido e campo inexistente são coisas diferentes.
+A página Defesa civil não desenha contagem de alerta com mais de 24 horas sem coleta; o instantâneo que alimenta as duas superfícies seguia publicando o número, e a Imprensa o copiava — ela dizia 489 municípios com decreto e alerta ao mesmo tempo enquanto a origem dizia "sem atualização". A regra passa ao instantâneo. E o carimbo, escrito no fuso da redação, passa a ser comparado em UTC: antes a idade do dado dependia de onde o código rodava.
 
 ## 2026-10-08 · #PR · Lote 1.2: o decreto do diário consorciado deixa de ir ao município errado
 
