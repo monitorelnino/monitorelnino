@@ -81,12 +81,23 @@ def fila_da_rodada(pistas: list, prioritarios: set, capitais: set, limite: int =
     return abertas[:limite]
 
 
+def recusa_lida(pista: dict) -> str:
+    """O motivo real quando o juiz LEU o documento e o recusou; "" quando não leu. Função pura.
+
+    09/10/2026 (lote 2.5, A1-16): o prazo fechava documento oficial lido-e-recusado dizendo "sem
+    documento oficial localizado" — motivo falso. A recusa lida vai escrita no fechamento."""
+    j = pista.get("juiz") or {}
+    if j.get("leu_documento") and j.get("motivo"):
+        return f"; lida e recusada: {j['motivo']}"
+    return ""
+
+
 def desfecho_por_prazo(pista: dict, hoje_iso: str):
     """("sem documento oficial localizado", motivo) quando a pista venceu. Função pura."""
     tentativas = int(pista.get("tentativas_de_busca_dirigida") or 0)
     if tentativas >= TENTATIVAS_MAXIMAS:
         return ("sem documento oficial localizado",
-                f"{tentativas} tentativas de busca dirigida sem documento")
+                f"{tentativas} tentativas de busca dirigida sem documento{recusa_lida(pista)}")
     bruto = str(pista.get("registrado_em") or "")[:10]
     try:
         d = dt.date.fromisoformat(bruto)
@@ -95,7 +106,7 @@ def desfecho_por_prazo(pista: dict, hoje_iso: str):
     dias = (dt.date.fromisoformat(hoje_iso) - d).days
     if dias > DIAS_DE_VIDA:
         return ("sem documento oficial localizado",
-                f"{dias} dias na fila (prazo de {DIAS_DE_VIDA})")
+                f"{dias} dias na fila (prazo de {DIAS_DE_VIDA}){recusa_lida(pista)}")
     return None
 
 
@@ -160,6 +171,12 @@ def _autoteste() -> int:
        "dias na fila" in desfecho_por_prazo({"registrado_em": "2026-09-10"}, "2026-10-03")[1])
     ok("pista nova não vence", desfecho_por_prazo({"registrado_em": "2026-10-02"}, "2026-10-03") is None)
     ok("sem data não vence por prazo", desfecho_por_prazo({}, "2026-10-03") is None)
+    ok("lida e recusada: o fechamento diz a recusa real (A1-16)",
+       "lida e recusada: natureza_duvidosa" in desfecho_por_prazo(
+           {"registrado_em": "2026-09-10", "juiz": {"leu_documento": True, "motivo": "natureza_duvidosa"}},
+           "2026-10-03")[1])
+    ok("não lida: o fechamento não inventa recusa",
+       "lida" not in desfecho_por_prazo({"registrado_em": "2026-09-10"}, "2026-10-03")[1])
 
     fechada = {"status": "fechada — sem documento oficial localizado", "alvo": "9", "tipo": "plano"}
     ok("evidência nova para o mesmo alvo e assunto reabre",

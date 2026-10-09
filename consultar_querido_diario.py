@@ -160,7 +160,7 @@ def varrer_uf(uf, ref, pistas, para_fila=None):
                            "edicao": g.get("edition"), "url_pdf": g.get("url"),
                            "excerto": (g.get("excerpts") or [""])[0][:400],
                            "hash_evidencia": _preservar_achado(g),
-                           "status_triagem": "pendente_julgamento_humano"})
+                           "status_triagem": "pendente_julgamento"})
 
 
 def rodar(alvos=None, ufs=None):
@@ -192,7 +192,7 @@ def rodar(alvos=None, ufs=None):
                                "edicao": g.get("edition"), "url_pdf": g.get("url"),
                                "excerto": (g.get("excerpts") or [""])[0][:400],
                                "hash_evidencia": _preservar_achado(g),
-                               "status_triagem": "pendente_julgamento_humano"})
+                               "status_triagem": "pendente_julgamento"})
     for uf in (ufs if ufs is not None else UFS_LAC):
         varrer_uf(uf, ref, pistas, para_fila)
     execucao["ufs_varridas"] = ufs if ufs is not None else UFS_LAC

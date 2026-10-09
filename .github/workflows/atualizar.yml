@@ -653,7 +653,7 @@ jobs:
           export SOURCE_DATE_EPOCH="$(python3 -c "import json,datetime;d=json.load(open('data/meta.json'))['corte'];dd,mm,aa=d.split('/');print(int(datetime.datetime(int(aa),int(mm),int(dd),tzinfo=datetime.timezone.utc).timestamp()))")"
           python3 seguir_pistas.py --limite 20   # §159: notícia → documento (links, Querido Diário, busca no domínio oficial); SearXNG ainda no ar
           python3 triar_confianca_pistas.py   # §150: anota nível A/B/C e regenera a fila de revisão por município
-          python3 revisar_pistas.py --preparar --relatorio   # §153: leitura assistida (busca doc, extrai nº/data, classifica) + docs/FILA_PISTAS.md
+          python3 revisar_pistas.py --preparar   # §153: leitura assistida (busca doc, extrai nº/data, classifica); 09/10 (lote 2.9): sem FILA_PISTAS.md
           # 22/09/2026 (§148, achado no CI): --write pode mudar verificacao_municipal.json neste ponto;
           # dados-abertos/verificacao_municipal.csv deriva dele e já tinha sido gerado antes — ficava
           # atrás. Regenera aqui também, e o manifesto por cima, para o commit sair consistente.
@@ -684,7 +684,7 @@ jobs:
           git config user.name "monitor-el-nino-bot"
           git config user.email "bot@users.noreply.github.com"
           # 23/09/2026: a lista nomeava só index.html e defesa-civil.html. preencher_fallback_estatico.py reescreve TAMBÉM saude.html e financiamento.html (o que o leitor sem JavaScript vê), e carimbar_assets.py reescreve as 12 páginas. Tudo isso era descartado no commit enquanto o manifesto guardava o hash da versão nova — portão 12 vermelho na main, e a página de Saúde servindo número velho a quem não roda JavaScript. `*.html` cobre as páginas de hoje e as de amanhã.
-          git add data/ *.html recalcular_mare.py MARE_Indice_Documentacao.pdf METODOLOGIA.pdf selos/ feeds/ dados-abertos/ evidencias/ docs/MANIFEST_SHA256.txt docs/FILA_PISTAS.md
+          git add data/ *.html recalcular_mare.py MARE_Indice_Documentacao.pdf METODOLOGIA.pdf selos/ feeds/ dados-abertos/ evidencias/ docs/MANIFEST_SHA256.txt
           # Escopo do commit ampliado em 31/08/2026, e revisado depois no mesmo
           # dia quando mapas/gráficos ganharam página própria: index.html
           # (o número fixo do medidor), mapas-e-graficos.html (AREAS —

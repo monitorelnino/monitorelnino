@@ -339,7 +339,7 @@ def rodar(lote: str | None, tamanho: int) -> int:
                 "titulo": (r.get("title") or "")[:300],   # 22/09/2026 (§150): título é o sinal mais forte da triagem de confiança
                 "registrado_em": hoje_editorial().isoformat(),
                 **triagem_completa(trecho),
-                "status": "pista — promover a registro exige documento primário lido por humano",
+                "status": "pista — na fila, aguardando busca dirigida e juiz",
             })
             vistos_pistas.add(chave_pista)
             npist += 1
