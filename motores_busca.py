@@ -78,6 +78,11 @@ def desligado(info: dict, agora: str) -> bool:
     return bool(ate) and str(agora) < str(ate)
 
 
+def livres(estado: dict, agora: str) -> list:
+    """Os motores fora da janela de desligamento — sem o complemento do piso."""
+    return [m for m in MOTORES if not desligado((estado.get("motores") or {}).get(m), agora)]
+
+
 def ativos(estado: dict, agora: str) -> list:
     """Os motores que a rodada vai pedir, na ordem de MOTORES.
 
@@ -130,8 +135,14 @@ def aplicar_disjuntor(estado: dict, agora: str) -> tuple:
     podem_cair = max(0, len(ativos_agora) - MINIMO_ATIVOS)
     # os piores caem primeiro; os poupados ficam com o motivo registrado
     candidatos.sort(reverse=True)
-    caidos = [m for _, m in candidatos[:podem_cair]]
-    poupados = [m for _, m in candidatos[podem_cair:]]
+    # 09/10/2026 (lote 2.7, A1-11): motor com 100 % de falhas cai sempre — o piso poupava o bing
+    # morto, e a rodada seguia "perguntando" a quem não responde. Sem dois motores livres, quem
+    # chama encerra a rodada (`monitorar_busca_web`), em vez de afirmar ausência.
+    mortos = [m for t, m in candidatos if t >= 1.0 and m in motivos and "falhas" in motivos[m]]
+    vivos = [(t, m) for t, m in candidatos if m not in mortos]
+    podem_cair = max(0, podem_cair - len(mortos))
+    caidos = mortos + [m for _, m in vivos[:podem_cair]]
+    poupados = [m for _, m in vivos[podem_cair:]]
 
     for motor in caidos:
         info = estado["motores"].setdefault(motor, {})
@@ -197,6 +208,16 @@ def autoteste() -> int:
     casos.append(("o caído sai da lista de ativos", "bing" not in ativos(e, agora)))
     casos.append(("e volta sozinho depois de 24 h", "bing" in ativos(e, depois)))
 
+    # 2b. 09/10/2026 (lote 2.7, A1-11): 100 % de falhas cai mesmo contra o piso
+    e = estado_vazio()
+    for m in MOTORES:
+        contabilizar(e, m, consultas=10, falhas=10 if m == MOTORES[0] else 0)
+    for m in MOTORES[1:-1]:
+        e["motores"][m]["desligado_ate"] = "2026-09-29T00:00:00+00:00"
+    e, caidos, _ = aplicar_disjuntor(e, agora)
+    casos.append(("motor com 100% de falhas não é poupado pelo piso", MOTORES[0] in caidos))
+    casos.append(("e sai da lista dos livres", MOTORES[0] not in livres(e, agora)))
+
     # 3. exatamente 50% NÃO derruba (o teto é "acima de")
     e = estado_vazio()
     contabilizar(e, "bing", consultas=10, falhas=5)
@@ -221,10 +242,10 @@ def autoteste() -> int:
     _, caidos, _ = aplicar_disjuntor(e, agora)
     casos.append(("sentinela que responde zera a sequência", caidos == []))
 
-    # 6. o piso de dois: com todos falhando, dois sobrevivem
+    # 6. o piso de dois: com todos falhando MUITO (mas não 100 %), dois sobrevivem
     e = estado_vazio()
     for m in MOTORES:
-        contabilizar(e, m, consultas=10, falhas=10)
+        contabilizar(e, m, consultas=10, falhas=9)
     e, caidos, _ = aplicar_disjuntor(e, agora)
     restantes = ativos(e, agora)
     casos.append(("nunca sobram menos de dois ativos", len(restantes) >= MINIMO_ATIVOS))
@@ -232,6 +253,14 @@ def autoteste() -> int:
     casos.append(("o poupado registra por que sobreviveu",
                   any("piso de" in ((e["motores"].get(m) or {}).get("poupado_pelo_piso") or "")
                       for m in restantes)))
+
+    # 6b. 09/10/2026: todos com 100 % de falhas — todos caem; nenhum livre (a rodada encerra)
+    e = estado_vazio()
+    for m in MOTORES:
+        contabilizar(e, m, consultas=10, falhas=10)
+    e, caidos, _ = aplicar_disjuntor(e, agora)
+    casos.append(("todos mortos: todos caem e nenhum fica livre",
+                  len(caidos) == len(MOTORES) and livres(e, agora) == []))
 
     # 7. as contagens são da rodada e zeram no fim dela
     e = estado_vazio()
