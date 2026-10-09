@@ -713,6 +713,9 @@ def cartoes_das_emergencias(dc):
 def cartoes_do_risco_agora(dc, riscos, sinais):
     """Risco agora: seis cartoes. Tres da Defesa civil, dois do Monitor de riscos, um do fogo."""
     d, r = por_id(dc), por_id(riscos)
+    # Os tres primeiros cartoes vem do instantaneo da Defesa civil, que desde 08/10/2026 ja
+    # declara a parada das 24 horas (scripts/gerar_topo_das_paginas.alertas_pararam). A Imprensa
+    # nao repete a regra: ela copia o instantaneo, e por isso para junto.
     cartoes = [
         importado("municipios_alerta_cemaden", "Municípios sob alerta do Cemaden",
                   d.get("municipios_alerta_cemaden"), grupo="risco_agora",
