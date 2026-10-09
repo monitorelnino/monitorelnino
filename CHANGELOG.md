@@ -32,13 +32,6 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-09 · #PR · nenhuma fila espera por uma pessoa
-
-Lote 2.9. Saem a decisão humana de pista (`--aceitar/--rejeitar/--adiar`), a fila de revisão
-agrupada (`pistas_revisao.json`, 10 MB por noite) e `FILA_PISTAS.md`. 148 pistas "lido por humano"
-e 97 decretos "pendente de julgamento humano" passam ao nome da regra automática, sem mudar decisão.
-Portão novo reprova status que espera por pessoa e, depois de 15/11, pendente com mais de 21 dias.
-
 ## 2026-10-09 · #PR · classificação: termo de risco com fronteira, instrumento numa lista só
 
 Lote 2.3, as três correções de fato. Termo de risco casava dentro de outra palavra ("secagem de
@@ -53,6 +46,13 @@ está lá: 13.330 sem `url_final`, 3.354 sem alvo, 3.177 com data fora de format
 conferida em todas, bloqueando a nova e nomeando o passivo. O portão do escritor só via o literal
 na mesma linha; agora vê escrita por variável e em linha partida — achou 18, quatro em fila do
 juiz, registradas com o que falta.
+## 2026-10-09 · #PR · nenhuma fila espera por uma pessoa
+
+Lote 2.9. Saem a decisão humana de pista (`--aceitar/--rejeitar/--adiar`), a fila de revisão
+agrupada (`pistas_revisao.json`, 10 MB por noite) e `FILA_PISTAS.md`. 148 pistas "lido por humano"
+e 97 decretos "pendente de julgamento humano" passam ao nome da regra automática, sem mudar decisão.
+Portão novo reprova status que espera por pessoa e, depois de 15/11, pendente com mais de 21 dias.
+
 ## 2026-10-09 · #PR · a coleta perdida volta, e o marcador sobrevive ao push
 
 Reaplicados os artefatos de `diarios` e `juiz` da noite de 08→09, pela porta de cada arquivo. Três
