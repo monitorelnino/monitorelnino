@@ -1,0 +1,85 @@
+{
+  "_governanca": "DÍVIDA NOMEADA, não exceção aberta. O portão `verificar_escritor_de_pista.py` passou a ver escrita na fila por VARIÁVEL e em linha lógica partida (A7-19, 09/10/2026), e com isso apareceram 18 escritas que escapavam da regra 1 de 05/10 — `nenhum coletor grava pista fora de scripts/pistas.py`. Quatro delas tocam fila que o juiz lê. Cada linha aqui diz o arquivo, a fila, por que ainda não passou pela porta e o que falta fazer. Linha sem `falta` é inválida: dívida sem o que fazer é exceção disfarçada. O portão imprime estas linhas em toda execução — elas são visíveis, contáveis e têm dono.",
+  "legados": [
+    {
+      "arquivo": "monitorar_imprensa_regional.py",
+      "fila": "data/pistas_imprensa.json",
+      "le_o_juiz": true,
+      "motivo": "coletor grava a fila inteira com gravar_em() depois de varrer, em salvamento único; migrar exige trocar por pistas.sincronizar e refazer o autoteste da varredura, que hoje intercepta gravar_em",
+      "falta": "migrar para pistas.sincronizar, com o par ler_fn/gravar_fn do próprio módulo",
+      "desde": "2026-10-09"
+    },
+    {
+      "arquivo": "consultar_querido_diario.py",
+      "fila": "data/pistas_querido_diario.json",
+      "le_o_juiz": true,
+      "motivo": "mesma forma: grava `{execucao, pistas}` numa escrita só, e o campo `execucao` não é pista — a porta hoje não carrega esse envelope",
+      "falta": "migrar as pistas para pistas.sincronizar e gravar `execucao` em arquivo próprio",
+      "desde": "2026-10-09"
+    },
+    {
+      "arquivo": "verificar_pista_imprensa.py",
+      "fila": "data/pistas_imprensa.json",
+      "le_o_juiz": true,
+      "motivo": "verificador que atualiza o ESTADO de pista existente (triagem), não acrescenta pista nova — é operação sobre a fila, da família de MANUTENCAO",
+      "falta": "declarar em MANUTENCAO depois de conferir que ele nunca acrescenta pista",
+      "desde": "2026-10-09"
+    },
+    {
+      "arquivo": "scripts/migrar_sobras_do_doe.py",
+      "fila": "data/pistas_doe.json",
+      "le_o_juiz": true,
+      "motivo": "migração de esquema sobre a fila inteira, que é exatamente o que MANUTENCAO cobre; ficou de fora da lista por esquecimento",
+      "falta": "declarar em MANUTENCAO",
+      "desde": "2026-10-09"
+    },
+    {
+      "arquivo": "scripts/ensaio_da_noite.py",
+      "fila": "data/pistas_imprensa.json",
+      "le_o_juiz": false,
+      "motivo": "o ensaio PLANTA pista inválida de propósito, em repositório temporário, para provar que a quarentena a tira da fila sem parar a publicação; ele nunca escreve na árvore do site",
+      "falta": "declarar em MANUTENCAO com a razão, ou mover a plantação para um ajudante declarado",
+      "desde": "2026-10-09"
+    },
+    {
+      "arquivo": "coletar_painel_am.py",
+      "fila": "data/pistas_painel_am.json",
+      "le_o_juiz": false,
+      "motivo": "fila auxiliar de painel estadual: o juiz não a lê, e ela guarda estado de leitura de painel, não pista de documento",
+      "falta": "decidir se fila auxiliar entra no esquema da pista ou ganha esquema próprio",
+      "desde": "2026-10-09"
+    },
+    {
+      "arquivo": "coletar_saude_estadual.py",
+      "fila": "data/pistas_imprensa_saude.json",
+      "le_o_juiz": false,
+      "motivo": "fila da saúde, lida pelo juiz da saúde (`julgar_saude.py`), não pelo juiz do índice legal",
+      "falta": "decidir se a porta da fila governa também a fila da saúde",
+      "desde": "2026-10-09"
+    },
+    {
+      "arquivo": "monitorar_imprensa_saude.py",
+      "fila": "data/pistas_imprensa_saude.json",
+      "le_o_juiz": false,
+      "motivo": "mesma fila da saúde",
+      "falta": "mesma decisão",
+      "desde": "2026-10-09"
+    },
+    {
+      "arquivo": "monitorar_sinais_federais.py",
+      "fila": "data/pistas_sinais.json",
+      "le_o_juiz": false,
+      "motivo": "fila de sinais federais: alimenta o painel de sinais, não o juiz",
+      "falta": "decidir se fila auxiliar entra no esquema",
+      "desde": "2026-10-09"
+    },
+    {
+      "arquivo": "sondar_paineis.py",
+      "fila": "data/pistas_paineis.json",
+      "le_o_juiz": false,
+      "motivo": "sonda de painéis: guarda o que cada painel oferece, não pista de documento",
+      "falta": "decidir se fila auxiliar entra no esquema",
+      "desde": "2026-10-09"
+    }
+  ]
+}

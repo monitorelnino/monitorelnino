@@ -30,6 +30,14 @@ não pontuados permanecem na versão corrente.
 
 
 
+
+## 2026-10-09 · #PR · os dois portões da fila passam a ver o que não viam
+
+Lote 2.10. O portão de esquema cobria 1.064 das 13.406 pistas, e nada conferia a forma do que já
+está lá: 13.330 sem `url_final`, 3.354 sem alvo, 3.177 com data fora de formato. Forma passa a ser
+conferida em todas, bloqueando a nova e nomeando o passivo. O portão do escritor só via o literal
+na mesma linha; agora vê escrita por variável e em linha partida — achou 18, quatro em fila do
+juiz, registradas com o que falta.
 ## 2026-10-09 · #PR · a coleta perdida volta, e o marcador sobrevive ao push
 
 Reaplicados os artefatos de `diarios` e `juiz` da noite de 08→09, pela porta de cada arquivo. Três
