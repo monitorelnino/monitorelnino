@@ -27,6 +27,14 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-09 · #PR · a fila de pistas passa a ter porta para origem e domínio
+
+Lote 2.8. Medido pista por pista: 12.309 das 13.503 pistas ativas tinham origem fora do esquema,
+9.976 sem origem nenhuma, e 1.667 das 1.734 de rede social estavam em domínio alheio. A porta
+recusa origem fora do esquema e rede social fora de domínio de rede ou `.gov.br`; o teto por
+município vale por classe de domínio; e um portão novo confere que todo script citado por
+workflow existe.
+
 ## 2026-10-08 · #PR · Lote 4.6: uma frase só sobre a conferência, a do processo real
 
 O formulário prometia "conferência da nossa equipe"; a página seguinte dizia que ela é automática e "semanal, normalmente no domingo", enquanto o rodapé diz que o site publica às 6h e às 22h — três cadências para o mesmo envio, e uma etapa humana que não existe. Os três lugares passam a dizer a frase aprovada. Saem "banco público" (regra de 03/10) e a frase do e-mail, que o formulário não pede.
