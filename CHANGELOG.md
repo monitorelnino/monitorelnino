@@ -15,6 +15,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+
+## 2026-10-08 · #PR · Lote 1.8: a camada declarada deixa de contar a mesma população duas vezes
+
+O excedente declarado descontava só as categorias de plano e ignorava `estrutura` e `coberto_estadual`, já creditadas; e o contador de planos desatualizados era somado ao de planos sem desconto nem teto — 398 declarantes num levantamento de 485 respondentes no RS, cobertura 80 no DF, que tem um município. Passa a um termo só, com teto no número de municípios da UF. Média nacional 45,3 → 44,6; seis estados mudam de nota. Portão novo; errata C31.
 ## 2026-10-08 · #PR · Lote 1.11: nomeado não é localizado (D1)
 
 Quarenta e sete registros municipais recebiam crédito no índice sem documento: 41 sem endereço, 6 com notícia no lugar do documento. Categoria nova `plano_nomeado`, crédito 0 — a classe de ausência aplicada a quem estava na de presença, sem mudança de peso ou componente. Média nacional do MARÉ Legal de 45,3 para 40,8; 17 estados mudam de nota (SE 87,7→71,5, RR 48,1→26,5). Portão `verificar_documento_de_plano.py`. Metodologia §104.
