@@ -16,9 +16,33 @@ não pontuados permanecem na versão corrente.
 
 
 
+
+
+
+
+
+
 ## 2026-10-08 · #PR · Lote 3.7: autoteste em todos, com o nome certo e dentro do portão
 
 Quatro scripts tinham autoteste que ninguém rodava, porque a flag se chamava `--self-test` e o portão chama `--autoteste`; dois ignoravam a flag e iam à rede — `atualizar_recursos` chegava a gravar. Três não tinham autoteste nenhum. Agora: flag canônica em todos, autoteste puro onde faltava, a varredura de escrita cobre 27 scripts (eram 10) e cobra o nome da flag, e os cinco que estavam fora do `portoes.yml` entraram. De passagem, um defeito de canal.
+## 2026-10-08 · #PR · Lote 1.15: C11 revogada, versão com dono, v3.2 calculada em paralelo
+
+A C11 tiraria 142 dos 151 registros pontuáveis em 26/10 por falta de número de ato em documento já lido, contra a decisão de 03/10: revogada (D3), e a fila de citação passa a ser informação de ficha regenerada pela cadeia. `versao_indice` nasce em `meta.json` e alimenta CITATION e datapackage, que diziam "2.3". A **v3.2** (arranjo permanente de resposta à seca, degrau 45) está **decidida e implementada em paralelo**: 191 municípios cumprem as três condições, média 45,3 → 45,6, e nenhuma página lê o resultado. Metodologia §105.
+## 2026-10-08 · #PR · Lote 1.16: sete achados do A3, do feed ao selo
+
+Reconhecimento federal deixa de gerar dois itens no feed e os títulos saem em dd/mm/aaaa (97 pares da migração ficam marcados no log, que só cresce, e fora do feed). "288.729 de pessoas" vira "288.729 pessoas". Umuarama/PR sai duplicado do mapa. O CSV de atos ganha `ibge` e as datas em colunas próprias. Os selos param de falar de licença. O painel para de chamar a camada declarada de "simulado". A reserva de data que chamava função inexistente foi corrigida.
+## 2026-10-08 · #PR · Lote 1.13: o cartão de atos federais para de publicar um zero que não foi medido
+
+Nenhum dos cinco compromissos federais tinha campo de data: a janela de sete dias devolvia lista vazia e o cartão publicava "0 atos" como fato, no Financiamento e na Imprensa. O cartão passa a declarar a lacuna; o coletor registra a ausência da data na origem, com o motivo; e a regra (m) do portão de financiamento reprova cartão de janela com valor quando a origem não tem data. Zero medido e campo inexistente são coisas diferentes.
+## 2026-10-08 · #PR · Lote 1.10: a capital passa a ter uma fonte só
+
+`estados.json` guardava um status e um texto da capital escritos à mão, e o banco guardava a categoria que pontua: as duas se contradiziam em nove UFs, e o leitor via no mesmo clique "Novo, base da pontuação" e "ainda não verificado" (Rio Branco). `capital` passa a guardar só o nome; o rótulo e a frase saem do registro do banco, pela mesma função do cartão do município. A frase comparativa sai. Portão novo `verificar_capital.py`.
+## 2026-10-08 · #PR · Lote 1.6: 71 reconhecimentos federais que a União publicou e o banco não tinha
+
+A planilha da Operação Carro-Pipa, recebida do MIDR em 05/10, lista as portarias de reconhecimento por município. Setenta e uma portarias do ciclo não tinham par no banco e 70 municípios não tinham evento nenhum — 69 na mesma portaria, a nº 2.203, vizinha de duas que o banco já tinha. Contador de resposta: 726 → 796 municípios, 10,2% → 11,4% da população; PE de 40 para 107 municípios. Entram com `documento_nao_localizado`. Portão: regra (h).
+## 2026-10-08 · #PR · Lote 1.8: a camada declarada deixa de contar a mesma população duas vezes
+
+O excedente declarado descontava só as categorias de plano e ignorava `estrutura` e `coberto_estadual`, já creditadas; e o contador de planos desatualizados era somado ao de planos sem desconto nem teto — 398 declarantes num levantamento de 485 respondentes no RS, cobertura 80 no DF, que tem um município. Passa a um termo só, com teto no número de municípios da UF. Média nacional 45,3 → 44,6; seis estados mudam de nota. Portão novo; errata C31.
 ## 2026-10-08 · #PR · Lote 1.11: nomeado não é localizado (D1)
 
 Quarenta e sete registros municipais recebiam crédito no índice sem documento: 41 sem endereço, 6 com notícia no lugar do documento. Categoria nova `plano_nomeado`, crédito 0 — a classe de ausência aplicada a quem estava na de presença, sem mudança de peso ou componente. Média nacional do MARÉ Legal de 45,3 para 40,8; 17 estados mudam de nota (SE 87,7→71,5, RR 48,1→26,5). Portão `verificar_documento_de_plano.py`. Metodologia §104.
@@ -40,6 +64,10 @@ O reconhecimento vindo da notícia do MIDR recebia a data da primeira portaria d
 ## 2026-10-08 · #PR · A Imprensa para quando a Defesa civil para
 
 A página Defesa civil não desenha contagem de alerta com mais de 24 horas sem coleta; o instantâneo que alimenta as duas superfícies seguia publicando o número, e a Imprensa o copiava — ela dizia 489 municípios com decreto e alerta ao mesmo tempo enquanto a origem dizia "sem atualização". A regra passa ao instantâneo. E o carimbo, escrito no fuso da redação, passa a ser comparado em UTC: antes a idade do dado dependia de onde o código rodava.
+
+## 2026-10-09 · #PR · O vigia deixa de atropelar a corrente que ele vigia
+
+Na noite de 08→09 a corrente abriu às 01:09; às 01:11 o vigia contou as execuções da janela, o run estava `queued` — sem runner —, o filtro só aceitava `in_progress`/`success`/`failure` e a conta deu zero. Ele disparou a corrente de novo e, com um grupo de concorrência só na `main`, o terceiro disparo cancelou o pendente: morreram `diarios / coletar` e `triagem / coletar`, antes do primeiro passo. Fila de runner passa a contar como noite aberta nos três decisores, e o vigia só age depois da tolerância. Ensaio 10.
 
 ## 2026-10-08 · #PR · Lote 1.2: o decreto do diário consorciado deixa de ir ao município errado
 

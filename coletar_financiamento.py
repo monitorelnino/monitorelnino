@@ -98,10 +98,20 @@ def semear():
                        "corte": hoje, "uf": por_uf})
     compromissos = [{"nome": p.get("nome"), "esfera": p.get("esfera"), "instrumento": p.get("instrumento"), "valor_total": p.get("valor_total"),
                      "condicionalidade": p.get("condicionalidade"), "fonte": p.get("fonte"), "rota": ("r3" if "obrigat" in (p.get("nome") or "").lower() else "rE" if "RS" in (p.get("esfera") or "") or "PR" in (p.get("esfera") or "") else "r5"),
+                     # 08/10/2026 (A3-10): a data de publicação do ato é DECLARADA, mesmo
+                     # quando não existe na origem. Sem o campo, o cartão de "atos federais nos
+                     # últimos 7 dias" media uma janela vazia e publicava 0 como fato.
+                     "publicado_em": p.get("publicado_em"),
+                     "por_que_sem_data": (None if p.get("publicado_em") else
+                                          "a fonte do compromisso não traz data de publicação do "
+                                          "ato; a janela de sete dias não se aplica a ele"),
                      "execucao": {"status": "aguardando_coleta", "fonte_prevista": "Portal da Transparência — execução por ação orçamentária"}}
                     for p in tr.get("programas", [])]
     compromissos.append({"nome": "PPA 2024–2027 — Programa 1158 (Enfrentamento da Emergência Climática), ação 20YJ", "esfera": "Federal", "instrumento": "PPA 2024–2027 / LOA 2026",
-                         "valor_total": None, "condicionalidade": None, "fonte": None, "rota": "r3", "execucao": {"status": "a_verificar", "fonte_prevista": "SIOP/Portal da Transparência (§15: verificar antes de citar valores)"}})
+                         "valor_total": None, "condicionalidade": None, "fonte": None, "rota": "r3",
+                         "publicado_em": None,
+                         "por_que_sem_data": "o PPA não é ato datado de liberação; a janela de sete dias não se aplica a ele",
+                         "execucao": {"status": "a_verificar", "fonte_prevista": "SIOP/Portal da Transparência (§15: verificar antes de citar valores)"}})
     _g("compromissos_federais.json", {"_governanca": "Compromissos federais e estaduais com dinheiro e prazo, já verificados em fonte primária (transferencias.json), "
                                                      "e a execução correspondente no Portal (aguardando coleta). Nada estimado.", "corte": hoje, "itens": compromissos})
     _g("serie_nacional.json", {"_governanca": "Série semanal 2026 das transferências da União a municípios, empilhada por rota (fonte: dados abertos mensais do Portal + API para o mês corrente). "
