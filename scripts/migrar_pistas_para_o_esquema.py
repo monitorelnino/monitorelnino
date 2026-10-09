@@ -53,7 +53,7 @@ sys.path.insert(0, str(RAIZ))
 sys.path.insert(0, str(RAIZ / "scripts"))
 
 FILAS = ("pistas_imprensa.json", "pistas_descobertas.json", "pistas_doe.json",
-         "pistas_revisao.json", "pistas_querido_diario.json")
+         "pistas_querido_diario.json")
 
 
 def origem_nova(pista: dict, mapa: dict, validas: set, desconhecida: str):
