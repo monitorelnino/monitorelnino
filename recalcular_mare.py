@@ -468,10 +468,26 @@ def calcular(versao="v3.1"):
         # agora é parte padrão do cálculo, sempre, em toda atualização. Mesmo desconto de 50% de
         # antes, sem mudança nenhuma na fórmula — só a trava de data caiu. Conservador: não soma
         # à declaração de tribunal de contas — usa o maior dos dois contadores.
-        dp = max(dp, _declarado_nacional_uf().get(uf, 0))
-        doc_n = sum(v for k, v in c.items() if k in PESO_DOC)
-        if dp: w += max(dp - doc_n, 0) * mediana_uf[uf] * (CRED_POP["plano"] * 0.5)
-        if da: w += da * mediana_uf[uf] * (CRED_POP["plano_antigo"] * 0.5)
+        # 08/10/2026 (A3-02, decisão D2): a camada declarada contava população DUAS VEZES, por
+        # dois caminhos somados.
+        #
+        # 1. `doc_n` subtraía do excedente só as categorias de `PESO_DOC` — `plano` e companhia —,
+        #    e deixava fora `estrutura` e `coberto_estadual`, que recebem crédito em `CRED_POP`.
+        #    Município já creditado por estrutura voltava a ser creditado como declarante.
+        # 2. O termo de `da` era somado ao de `dp` SEM nenhuma subtração: no RS, 183 declarantes
+        #    com plano mais 215 com plano desatualizado entravam inteiros, e o levantamento do
+        #    TCE-RS tem 485 respondentes num estado de 497 municípios — a mesma população contada
+        #    de novo. Nada impedia a soma de passar do número de municípios do estado.
+        #
+        # A régua passa a ser UM TERMO SÓ, com dois tetos: os dois contadores do tribunal de
+        # contas somam entre si (plano e plano desatualizado são municípios diferentes), o
+        # resultado é comparado — nunca somado — com o levantamento nacional (MUNIC/ICM), e o
+        # total nunca passa do número de municípios da UF. Do que sobra, desconta-se tudo o que já
+        # tem crédito próprio.
+        declarado = min(max(dp + da, _declarado_nacional_uf().get(uf, 0)), totais.get(uf, 0) or 0)
+        doc_n = sum(v for k, v in c.items() if CRED_POP.get(k, 0.0) > 0)
+        if declarado:
+            w += max(declarado - doc_n, 0) * mediana_uf[uf] * (CRED_POP["plano"] * 0.5)
         cobertura = min(100.0, 100.0 * w / pop_uf[uf])
         st, ant, conf = ESTADOS[uf]
         if versao == "v3.1":

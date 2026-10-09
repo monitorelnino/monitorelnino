@@ -398,6 +398,61 @@ def ensaio_portao_vermelho_nao_repoe_o_dominio(diz) -> bool:
     return True
 
 
+def ensaio_fila_de_runner_nao_e_falha(diz) -> bool:
+    """10. Run à espera de runner conta como noite aberta — nos três lugares que decidem isso.
+
+    A noite de 08→09/10/2026 custou dois elos. Às 01:09 a corrente abriu; às 01:11:03 o vigia
+    contou as execuções da janela, o run tinha status `queued` (sem runner ainda), o filtro só
+    aceitava `in_progress`, `success` e `failure`, e a conta deu ZERO. O vigia concluiu que a noite
+    não havia aberto e disparou a corrente de novo. Com um grupo de concorrência só na `main`, o
+    GitHub guarda um run em execução e UM pendente: o terceiro disparo cancelou o pendente.
+    Morreram `diarios / coletar` e `triagem / coletar`, os dois antes do primeiro passo, com zero
+    passos executados e sem log nenhum.
+
+    Este ensaio reprova se qualquer um dos três decisores voltar a tratar fila como falha: a
+    função `painel_da_noite.trabalhou`, o filtro do vigia e o filtro da guarda de abertura. E
+    reprova também se `cancelled` ou `skipped` passar a contar — a reserva tem de refazer esses.
+    """
+    import re
+    import pathlib
+    import sys
+
+    raiz = pathlib.Path(__file__).resolve().parents[1]
+    sys.path.insert(0, str(raiz / "scripts"))
+    from painel_da_noite import trabalhou
+
+    ok = True
+    for estado in ("queued", "requested", "waiting", "pending", "in_progress"):
+        if not trabalhou(estado):
+            diz(f"   ✗ `trabalhou({estado})` devolve falso: fila de runner tratada como falha")
+            ok = False
+    for estado in ("cancelled", "skipped", "timed_out"):
+        if trabalhou(estado):
+            diz(f"   ✗ `trabalhou({estado})` devolve verdadeiro: a reserva não refaria a coleta")
+            ok = False
+    if not trabalhou("cancelled", feito=True):
+        diz("   ✗ o marcador do elo deixou de vencer a conclusão")
+        ok = False
+
+    ESPERA = re.compile(r"queued\|requested\|waiting\|pending\|in_progress")
+    for arquivo, quem in ((".github/workflows/vigia_da_abertura.yml", "o vigia"),
+                          (".github/workflows/noturno_diarios.yml", "a guarda de abertura")):
+        fonte = (raiz / arquivo).read_text(encoding="utf-8")
+        if not ESPERA.search(fonte):
+            diz(f"   ✗ {quem} ({arquivo}) não conta run na fila de runner como noite aberta")
+            ok = False
+
+    vigia = (raiz / ".github/workflows/vigia_da_abertura.yml").read_text(encoding="utf-8")
+    if "abertura-atrasada" not in vigia:
+        diz("   ✗ o vigia dispara a corrente sem conferir a tolerância da abertura")
+        ok = False
+
+    if ok:
+        diz("   ✓ fila de runner conta como noite aberta nos três decisores; cancelado e pulado "
+            "seguem fora; o vigia só age depois da tolerância")
+    return ok
+
+
 ENSAIOS = (
     ("dois elos em paralelo: zero conflito, zero perda", ensaio_dois_elos_em_paralelo),
     ("disparo duplicado: o segundo sai sem trabalho", ensaio_disparo_duplicado),
@@ -412,6 +467,8 @@ ENSAIOS = (
     ("7. carimbo distinto não recusa a noite", ensaio_carimbo_nao_recusa_a_noite),
     ("8. a guarda decide pelo `rc`, nos dois shells", ensaio_guarda_com_o_shell_do_actions),
     ("9. portão vermelho não repõe o domínio", ensaio_portao_vermelho_nao_repoe_o_dominio),
+    ("10. fila de runner não é falha: o vigia não atropela a corrente",
+     ensaio_fila_de_runner_nao_e_falha),
 )
 
 

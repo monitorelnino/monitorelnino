@@ -90,7 +90,11 @@ def trabalhou(conclusao: str, feito: bool = None) -> bool:
     """
     if feito is not None:
         return bool(feito)
-    return str(conclusao or "").strip().lower() in ("success", "in_progress", "failure")
+    # 09/10/2026: `queued`, `requested`, `waiting` e `pending` entram na lista. Um run criado e à
+    # espera de runner não falhou — e tratá-lo como "não trabalhou" fez o vigia disparar a corrente
+    # por cima de si mesma na noite de 08→09, derrubando dois elos pendentes.
+    return str(conclusao or "").strip().lower() in (
+        "success", "in_progress", "failure", "queued", "requested", "waiting", "pending")
 
 
 NAO_CONTAM = ("cancelled", "skipped", "timed_out", "desconhecida", "")
@@ -190,6 +194,12 @@ def _autoteste() -> int:
     # ---- cancelado não é feito (05/10/2026, item 3.1) ----
     ok("success conta como trabalho", trabalhou("success"))
     ok("em execução conta como trabalho", trabalhou("in_progress"))
+    # 09/10/2026: a fila de runner conta como trabalho — é a lição da noite de 08→09.
+    for estado in ("queued", "requested", "waiting", "pending"):
+        ok(f"na fila de runner ({estado}) conta como trabalho", trabalhou(estado))
+    ok("cancelado segue não contando", not trabalhou("cancelled"))
+    ok("pulado segue não contando", not trabalhou("skipped"))
+    ok("o marcador do elo vence a conclusão", trabalhou("cancelled", feito=True))
     ok("falha conta: o elo coletou e perdeu o push — refazer duplicaria lote",
        trabalhou("failure"))
     ok("CANCELADO não conta", not trabalhou("cancelled"))
