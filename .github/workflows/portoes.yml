@@ -482,6 +482,16 @@ jobs:
           # figura, vocabulário, forma dos números e acessibilidade. Ele lê layout/regras.json e o
           # contrato de cada página; exceção só por layout/excecoes.json, com motivo e data.
           python3 scripts/verificar_conformidade.py --autoteste
+          # assunto: texto
+          # 09/10/2026 (ajustes 3 e 5): grade de números sem cartão órfão; figura com um título só.
+          python3 scripts/verificar_grades_de_numeros.py --autoteste
+          # assunto: texto
+          python3 scripts/verificar_grades_de_numeros.py
+          # assunto: texto
+          # 09/10/2026 (ajuste 6): texto do mouse dos mapas sem dado cru; um marcador por capital.
+          node scripts/verificar_dicas_dos_mapas.js --autoteste
+          # assunto: texto
+          node scripts/verificar_dicas_dos_mapas.js
           # assunto: cor texto
           python3 scripts/verificar_conformidade.py
           # assunto: dado

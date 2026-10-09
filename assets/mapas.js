@@ -52,6 +52,21 @@
     t.style.left = ((evt && evt.clientX) || 0) + 14 + 'px'; t.style.top = ((evt && evt.clientY) || 0) + 10 + 'px';
   }
   function hideTip() { const t = tooltipEl(); if (t) t.style.display = 'none'; }
+  /** Texto do mouse com UMA anatomia em todos os mapas (09/10/2026, ajuste 6): título (estado, ou
+   *  "Capital (UF)"), a linha do valor, linhas de contexto e, por último, data e fonte. Recebe
+   *  texto puro e escapa tudo. `semTitulo` serve ao coroplético, que já escreve o nome do estado. */
+  function dica(o) {
+    const p = [];
+    if (o.titulo && !o.semTitulo) p.push('<strong>' + esc(o.titulo) + '</strong>');
+    (o.linhas || []).filter(Boolean).forEach(l => p.push(esc(l)));
+    const pe = [o.data, o.fonte].filter(Boolean).join(' · ');
+    if (pe) p.push('<span class="dica-fonte">' + esc(pe) + '</span>');
+    return p.join('<br>');
+  }
+  /** Número em pt-BR com casas fixas (vírgula decimal). */
+  function numBR(v, casas) {
+    return Number(v).toLocaleString('pt-BR', {minimumFractionDigits: casas || 0, maximumFractionDigits: casas || 0});
+  }
 
   /** Contexto de projeção compartilhado por todos os mapas de uma página. */
   function contexto(geo, w, h) {
@@ -287,7 +302,7 @@
     atmosfera: {
       fogo:  {fundo:'#15201A', uf:'#1E2B24', contorno:'#3A4A41',
               rampa:['#BC5029', '#D8621F', '#F29A38'], nucleo:'#FFE3A3', claro:false},
-      seca:  {fundo:'#F7F0E2', uf:'#EFE6D3', contorno:'#C8B08A',
+      seca:  {fundo:'#FFFFFF', uf:'#FFFFFF', contorno:'#C8B08A',   // 09/10/2026: fundo branco (o bege não codificava nada)
               rampa:['#EFE6D3', '#E7C98E', '#D9A05B', '#B9702F', '#86461F', '#4E2812'], claro:true},
       chuva: {fundo:'#1B2630', uf:'#2B3A46', contorno:'#3A4A57',
               rampa:['#2B3A46', '#4F7A97', '#7FA6C4', '#C6B8E8'], claro:false},
@@ -297,7 +312,7 @@
       // já vêm do próprio dado), contorno discreto. Ele não tem rampa porque não mede
       // intensidade — mede a qual família o boletim atribui cada estado.
       previsto: {fundo:'#FFFFFF', uf:'#FFFFFF', contorno:'#C5CFCE', rampa:[], claro:true},
-      ar:    {fundo:'#EEEEF1', uf:'#FFFFFF', contorno:'#CFCFD8',
+      ar:    {fundo:'#FFFFFF', uf:'#FFFFFF', contorno:'#CFCFD8',   // 09/10/2026: fundo branco
               rampa:['#C9D6D1', '#A7A9B8', '#8A76A6', '#5B3F7A', '#2E1B45'], claro:true},
       // 01/10/2026 (desenho da Defesa civil, decisão da editoria): duas atmosferas CLARAS, para a
       // página de alertas e emergências. A `chuva` existente é noturna e vive no Monitor de riscos;
@@ -307,6 +322,10 @@
       //
       // `chuva_claro`: a rampa é a da chuva lida de trás para frente, azul → violeta, que é a
       // ordem de nível do alerta do Cemaden.
+      // 09/10/2026 (Monitor de riscos, ajuste 6): avisos do INMET sobre fundo branco — "sem aviso"
+      // em tom neutro claro e os três graus na rampa azul da chuva, do mais claro ao mais escuro.
+      avisos:      {fundo:'#FFFFFF', uf:'#FFFFFF', contorno:'#C3D2DD',
+                    rampa:['#EEF2F5', '#A9C3D6', '#4F7A97', '#2B3A46'], claro:true},
       chuva_claro: {fundo:'#FFFFFF', uf:'#FFFFFF', contorno:'#C3D2DD',
                     rampa:['#7FA6C4', '#4F7A97', '#8A76A6', '#5B3F7A'], claro:true},
       // `resposta`: o decreto de emergência é marca de resposta, e a cor dela no site é a argila.
@@ -371,5 +390,5 @@
     });
   }
 
-  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, desenharMapa, atmosfera, hachura, credito, dataBR, animarGauges };
+  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, dica, numBR, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, desenharMapa, atmosfera, hachura, credito, dataBR, animarGauges };
 })(window);

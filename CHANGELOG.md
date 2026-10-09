@@ -53,6 +53,13 @@ grãos" virava seca, "fogo de artifício" virava fogo); "instrução normativa" 
 instrumento pela etapa 2 e recusada por `citacao_completa`, duas regras da mesma régua
 discordando; e a data do ato era a primeira data do texto, que num diário é a da edição — a regra
 da janela existia num caminho e não no outro. Onde: juiz.py, classificador_natureza.py.
+## 2026-10-09 · #PR · Monitor de riscos: três cartões, episódios com ano, mapas por natureza
+
+Ajustes 3 a 6 de 09/10. Topo com três cartões numa linha, fora da moldura; a previsão da NOAA/CPC
+vira linha do cartão de probabilidade. Episódios de pico de +1,5 °C ou mais rotulados, os demais no
+mouse e em lista. Mapas em faixas (previsto, observado, agora), um título por mapa, fundo branco
+salvo o fogo, um marcador por capital e texto do mouse com uma anatomia só.
+
 ## 2026-10-09 · #PR · os dois portões da fila passam a ver o que não viam
 
 Lote 2.10. O portão de esquema cobria 1.064 das 13.406 pistas, e nada conferia a forma do que já
