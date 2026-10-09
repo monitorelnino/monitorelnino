@@ -27,6 +27,14 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-09 · #PR · classificação: termo de risco com fronteira, instrumento numa lista só
+
+Lote 2.3, as três correções de fato. Termo de risco casava dentro de outra palavra ("secagem de
+grãos" virava seca, "fogo de artifício" virava fogo); "instrução normativa" era aceita como
+instrumento pela etapa 2 e recusada por `citacao_completa`, duas regras da mesma régua
+discordando; e a data do ato era a primeira data do texto, que num diário é a da edição — a regra
+da janela existia num caminho e não no outro. Onde: juiz.py, classificador_natureza.py.
+
 ## 2026-10-08 · #PR · Lote 4.6: uma frase só sobre a conferência, a do processo real
 
 O formulário prometia "conferência da nossa equipe"; a página seguinte dizia que ela é automática e "semanal, normalmente no domingo", enquanto o rodapé diz que o site publica às 6h e às 22h — três cadências para o mesmo envio, e uma etapa humana que não existe. Os três lugares passam a dizer a frase aprovada. Saem "banco público" (regra de 03/10) e a frase do e-mail, que o formulário não pede.

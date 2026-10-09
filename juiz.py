@@ -53,7 +53,7 @@ import re
 import unicodedata
 
 from classificador_natureza import classificar as classificar_natureza
-from classificador_natureza import citacao_completa, extrair_data
+from classificador_natureza import citacao_completa, data_do_ato, extrair_data
 
 # 1.1 (28/09/2026): a Etapa 4 passou a exigir VERBO e INSTRUMENTO na mesma vizinhança. A versão sobe
 # porque o critério mudou, e porque `pendente()` usa a versão para decidir o que volta à fila: subir
@@ -322,13 +322,26 @@ RE_DECLARA_ANORMALIDADE = re.compile(
 # As três famílias de risco do ciclo. Refinamentos de 03/09 e 22/09/2026: a família é julgada
 # pela exposição do PRÓPRIO município, nunca pela família dominante da UF — foi um teste com
 # Salvador que travou por causa disso.
+# 09/10/2026 (A1-26). Os termos eram SUBSTRING solta e casavam dentro de outra palavra: "secagem
+# de graos" virava seca, "fogo de artificio" virava fogo, "cheirava" virava cheia. Medido no juiz
+# de hoje, antes da correcao: `maquina de secagem de graos` -> seca_estiagem_fogo. Agora cada termo
+# fechado tem fronteira de palavra, e "fogo" exige nao ser fogo de artificio. Os termos que sao
+# RADICAL de proposito (`inunda`, `desliza`, `alagad`, `desertifica`) seguem abertos a direita, que
+# e o que os faz pegar "inundacao", "inundacoes" e "inundado": ali a abertura e a regra.
+B = chr(92) + "b"   # a fronteira de palavra, montada sem escape no fonte
+S = chr(92) + "s"   # o espaço, idem
+
 FAMILIAS_DE_RISCO = {
-    "seca_estiagem_fogo": ("estiagem", "seca", "seca severa", "desertifica", "inc[êe]ndio",
-                           "queimada", "fogo", "escassez h[íi]drica", "crise h[íi]drica",
-                           "desabastecimento de [áa]gua", "carro-pipa"),
-    "chuvas_inundacao_deslizamento": ("chuva", "inunda", "alagamento", "enchente", "cheia",
-                                      "deslizamento", "desliza", "movimento de massa",
-                                      "encosta", "alagad", "transbordamento"),
+    "seca_estiagem_fogo": (B + "estiagem", B + "seca(?:s)?" + B, B + "seca severa" + B,
+                           B + "desertifica", B + "inc[êe]ndio",
+                           B + "queimada", B + "fogo" + B + "(?!" + S + "+de" + S + "+artif)",
+                           B + "escassez h[íi]drica", B + "crise h[íi]drica",
+                           B + "desabastecimento de [áa]gua", B + "carro-pipa"),
+    "chuvas_inundacao_deslizamento": (B + "chuva", B + "inunda", B + "alagamento",
+                                      B + "enchente", B + "cheia(?:s)?" + B,
+                                      B + "deslizamento", B + "desliza",
+                                      B + "movimento de massa",
+                                      B + "encosta", B + "alagad", B + "transbordamento"),
     "multirrisco_pdc": ("prote[çc][ãa]o e defesa civil", "multirrisco", "multi-risco",
                         "plano de conting[êe]ncia municipal", "plancon", "defesa civil",
                         "gest[ãa]o de riscos e desastres", "sistema nacional de prote[çc][ãa]o"),
@@ -519,7 +532,9 @@ def etapa2_citacao(texto: str, eh_plano_tecnico: bool = False, url: str = None) 
     data de publicação e a identificação "plano de contingência …, versão/ano". **A data é
     obrigatória sempre** — sem data não há como situar o ato no ciclo (§5.3)."""
     m = RE_TIPO_E_NUMERO.search(texto)
-    data = extrair_data(texto)
+    # 09/10/2026 (A1-21): a data do ATO, nao a primeira data do texto — num diario a primeira e a
+    # da edicao. A regua tem um dono em `classificador_natureza.data_do_ato`.
+    data = data_do_ato(texto)
     # `extrair_data` devolve ANO SOLTO quando não há data completa — para o §3.2 isso não é data:
     # "versão 2026" não situa o ato no ciclo. Aqui só vale dd/mm/aaaa.
     if data and not re.fullmatch(r"\d{1,2}[/-]\d{1,2}[/-]\d{2,4}", data):
@@ -1049,6 +1064,28 @@ def autoteste() -> int:
         ("o codebook é versionado no veredito",
          julgar(CANARIOS["plano_novo"]["texto"], nome="Bonito", uf="MS",
                 url=URL_OFICIAL)["codebook"] == CODEBOOK_VERSAO),
+        # 09/10/2026 (A1-26): termo de risco nao casa dentro de outra palavra.
+        ("'secagem de graos' nao e seca",
+         etapa5_familia_de_risco("maquina de secagem de graos")[1]
+         == "familia_de_risco_nao_identificada"),
+        ("'fogo de artificio' nao e incendio",
+         etapa5_familia_de_risco("fogo de artificio na festa de agosto")[1]
+         == "familia_de_risco_nao_identificada"),
+        ("'cheirava' nao e cheia",
+         etapa5_familia_de_risco("o bueiro cheirava mal")[1]
+         == "familia_de_risco_nao_identificada"),
+        ("seca no singular e no plural seguem valendo",
+         etapa5_familia_de_risco("a seca severa de 2026")[1] == "seca_estiagem_fogo"
+         and etapa5_familia_de_risco("secas recorrentes no municipio")[1]
+         == "seca_estiagem_fogo"),
+        ("cheia no plural segue valendo",
+         etapa5_familia_de_risco("as cheias do rio Itajai")[1]
+         == "chuvas_inundacao_deslizamento"),
+        ("fogo em vegetacao segue valendo",
+         etapa5_familia_de_risco("combate a fogo em vegetacao")[1] == "seca_estiagem_fogo"),
+        ("radical de inundacao segue aberto a direita",
+         etapa5_familia_de_risco("inundacoes e alagados recorrentes")[1]
+         == "chuvas_inundacao_deslizamento"),
         ("família de risco específica vence multirrisco",
          etapa5_familia_de_risco("plano de contingência de proteção e defesa civil para a "
                                  "estiagem e a seca severa")[1] == "seca_estiagem_fogo"),

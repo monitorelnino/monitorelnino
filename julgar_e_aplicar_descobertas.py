@@ -122,11 +122,11 @@ def extrair_numero_e_data(texto):
     número do ato ("DECRETO Nº 14.665 DE 21 DE AGOSTO DE 2026") é a data do ato; a primeira data do
     texto costuma ser a da EDIÇÃO do diário ("DATA 22/08/2026"), que vem antes. Prefere a janela
     imediata após o número; cai para a busca global só se ali não houver data."""
+    # 09/10/2026 (A1-21): a regra da janela mora em `classificador_natureza.data_do_ato`, que o
+    # juiz tambem usa. Duas copias da mesma regua discordaram por dezessete dias.
+    from classificador_natureza import data_do_ato
     m_num = RE_NUMERO_ATO.search(texto)
-    if not m_num:
-        return None, extrair_data(texto)
-    janela = texto[m_num.end(): m_num.end() + 90]
-    return m_num.group(0).strip(), (extrair_data(janela) or extrair_data(texto))
+    return (m_num.group(0).strip() if m_num else None), data_do_ato(texto)
 
 
 def eh_estadual(rotulo):
