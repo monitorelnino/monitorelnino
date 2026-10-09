@@ -72,8 +72,7 @@ jobs:
         run: |
           set -e
           # assunto: cor texto rapido
-          # 28/09/2026: `git add -A` marca o caminho como RESOLVIDO mesmo com <<<<<<< dentro, e o
-          # commit passa sem reclamar — o CHANGELOG.md subiu assim duas vezes neste dia. Portão
+          # 28/09/2026: `git add -A` marca o caminho como RESOLVIDO mesmo com           # commit passa sem reclamar — o CHANGELOG.md subiu assim duas vezes neste dia. Portão
           # barato, repositório inteiro, antes de qualquer outra coisa.
           python3 scripts/verificar_marcadores_de_conflito.py --autoteste
           # assunto: cor texto rapido
@@ -490,6 +489,7 @@ jobs:
           # contrato de cada página; exceção só por layout/excecoes.json, com motivo e data.
           python3 scripts/verificar_conformidade.py --autoteste
           # assunto: texto
+<<<<<<< HEAD
           # 09/10/2026 (ajustes 3 e 5): grade de números sem cartão órfão; figura com um título só.
           python3 scripts/verificar_grades_de_numeros.py --autoteste
           # assunto: texto
@@ -499,6 +499,17 @@ jobs:
           node scripts/verificar_dicas_dos_mapas.js --autoteste
           # assunto: texto
           node scripts/verificar_dicas_dos_mapas.js
+          # 09/10/2026 (ajuste 1): vocabulário proibido no texto que os scripts das páginas escrevem.
+          python3 scripts/verificar_vocabulario_dos_scripts.py --autoteste
+          # assunto: texto
+          python3 scripts/verificar_vocabulario_dos_scripts.py
+          # assunto: dado
+          # 09/10/2026 (ajuste 2): todo documento pontuado aponta para o endereço, ou declara a lacuna.
+          python3 scripts/verificar_proveniencia.py --autoteste
+          # assunto: dado
+          python3 scripts/verificar_proveniencia.py
+          # assunto: dado
+          python3 scripts/proveniencia_estadual.py --autoteste
           # assunto: cor texto
           python3 scripts/verificar_conformidade.py
           # assunto: dado

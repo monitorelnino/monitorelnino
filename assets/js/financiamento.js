@@ -553,7 +553,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       + '</ul>'
       + (temParcial ? '<p class="note u-mb-1">Mês marcado como parcial: o Portal publica o arquivo do mês e continua preenchendo.</p>' : '')
       + '<p class="note u-mb-0">Emenda parlamentar não é identificável nesta fonte e por isso não aparece como caminho. '
-      + '<a href="https://portaldatransparencia.gov.br/download-de-dados/transferencias/" target="_blank" rel="noopener">Dados abertos do Portal da Transparência</a>.</p>';
+      + '<a href="https://portaldatransparencia.gov.br/download-de-dados/transferencias/" target="_blank" rel="noopener">Transferências no Portal da Transparência</a>.</p>';
   }
   entrada.addEventListener('change', mostrar);
   entrada.addEventListener('input', () => { if ((entrada.value || '').length > 2) mostrar(); });
