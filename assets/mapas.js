@@ -307,6 +307,11 @@
       //
       // `chuva_claro`: a rampa é a da chuva lida de trás para frente, azul → violeta, que é a
       // ordem de nível do alerta do Cemaden.
+      // 09/10/2026 (Defesa civil, ajuste 10): UMA família de cor para contagem por estado — rampa
+      // sequencial de um matiz só (azul-ardósia, do claro ao escuro), fundo branco. A rampa azul →
+      // violeta se lia como duas categorias.
+      contagem:    {fundo:'#FFFFFF', uf:'#FFFFFF', contorno:'#C3D2DD',
+                    rampa:['#D3E0EA', '#9DBBD1', '#5E88A8', '#2C5373'], claro:true},
       chuva_claro: {fundo:'#FFFFFF', uf:'#FFFFFF', contorno:'#C3D2DD',
                     rampa:['#7FA6C4', '#4F7A97', '#8A76A6', '#5B3F7A'], claro:true},
       // `resposta`: o decreto de emergência é marca de resposta, e a cor dela no site é a argila.

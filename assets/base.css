@@ -1262,3 +1262,18 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
   .cartao-mapa--largo .figura-midia{display:none;}
   .caminhos-lista{display:block;}
 }
+/* ===== Defesa civil, ajuste 10 (09/10/2026) ============================================== */
+/* Topo compacto: a mesma anatomia do cartão de número, um degrau menor. */
+.grade-numeros--compacta .cartao-numero{padding:var(--sp-2) var(--sp-3);}
+.grade-numeros--compacta .cartao-numero-valor{font-size:var(--fs-h2); line-height:var(--lh-h2);}
+/* Barras em HTML: rótulo inteiro, valor na ponta, painel por órgão. */
+.figura-midia--barras, .figura-midia--texto{aspect-ratio:auto; overflow:visible;}
+.barras-painel{margin:0 0 var(--sp-3);}
+.barras-titulo{font-weight:400; font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); margin:0 0 var(--sp-1);}
+.barra-linha{display:grid; grid-template-columns:minmax(0, 42%) minmax(0, 1fr); gap:var(--sp-2); align-items:center; margin:0 0 var(--sp-1);}
+.barra-rotulo{font-size:var(--fs-caption); line-height:var(--lh-caption); overflow-wrap:anywhere;}
+.barra-trilho{display:flex; align-items:center; gap:var(--sp-1); min-width:0;}
+.barra{display:block; height:12px; border-radius:2px; flex:none; max-width:calc(100% - 4em);}
+.barra-valor{font-family:var(--font-dado); font-size:var(--fs-caption); font-variant-numeric:tabular-nums; white-space:nowrap;}
+.cemaden-resumo{font-size:var(--fs-body); margin:0 0 var(--sp-2);}
+.cemaden-lista{font-size:var(--fs-caption); line-height:var(--lh-caption); padding-left:var(--sp-4); margin:0;}
