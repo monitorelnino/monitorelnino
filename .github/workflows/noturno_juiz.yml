@@ -83,7 +83,7 @@ jobs:
       # pistas, duas delas so depois de `prefeitura.<nome>` passar a resolver.
       comandos: |
         scripts/corrigir_atribuicao_por_dominio.py --aplicar
-        revisar_pistas.py --preparar --relatorio
+        revisar_pistas.py --preparar
         julgar_filas.py --aplicar --limite 150
         julgar_e_aplicar_descobertas.py --limite 150
         aplicar_promocoes_do_juiz.py --aplicar
