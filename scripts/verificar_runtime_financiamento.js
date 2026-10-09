@@ -95,7 +95,15 @@ setTimeout(() => {
       teste("desembolsado: o cartão não fica em travessão", txt("topoPagoMes") !== "—");
     }
     const a = cartaoDe("atos_federais_semana");
-    if (a && !a.sem_coleta) {
+    if (a && a.classe === "sem_data_na_origem") {
+      // 09/10/2026: a quarta classe de ausencia. A serie EXISTE e foi lida, e a origem nao
+      // datou os atos: sem data nao ha janela de sete dias, por isso o cartao nao diz "sete
+      // dias" e nao publica numero. Travessao continua proibido, e "sem coleta" seria dizer o
+      // que nao aconteceu.
+      teste("atos novos: ausencia de classe declarada, em palavras e sem travessao",
+        txt("topoAtosSemana") === "sem data na origem"
+        && /nao trazem data|não trazem data/.test(txt("topoAtosRotulo")));
+    } else if (a && !a.sem_coleta) {
       teste("atos novos: zero é zero, e a janela é dita",
         txt("topoAtosSemana") === String(a.valor)
         && /sete dias/.test(txt("topoAtosRotulo")));

@@ -125,6 +125,21 @@ setTimeout(() => {
     const tile = d.querySelector('#regions .tile[data-uf="SC"]');
     tile.click();
     teste("detalhe do estado abre ao clique", q("detail").open && q("detail").innerHTML.includes("Santa Catarina"));
+    // 08/10/2026 (A4-01, A4-04): o medidor da ficha tinha o valor no `data-contar` e mostrava
+    // 0,0, porque a função que o escreve morava no escopo de um módulo e o outro caminho (o do
+    // selo, `index.html#SC`) não a chamava. O portão passa a exigir o NÚMERO escrito, não o
+    // atributo — era o atributo que estava certo todo esse tempo.
+    teste("medidor da ficha do estado escreve o número, não só o data-contar", (() => {
+      const alvos = [...q("detail").querySelectorAll("[data-contar]")];
+      return alvos.length > 0 && alvos.every(e => {
+        const alvo = parseFloat(e.dataset.contar);
+        const escrito = parseFloat((e.textContent || "").replace(",", "."));
+        return isFinite(escrito) && Math.abs(escrito - alvo) < 0.06;
+      });
+    })());
+    teste("a animação dos medidores tem dono único, em MonitorMapas",
+      typeof dom.window.MonitorMapas === "object"
+      && typeof dom.window.MonitorMapas.animarGauges === "function");
     q("detail").open = false;   // jsdom não implementa dialog.close(); a própria página já contorna assim
     // 26/09/2026: a linha é uma caixa genérica; sem papel e sem índice de tabulação, quem navega por
     // teclado não alcança estado nenhum. O clique acima passava verde com o defeito no ar — por

@@ -119,6 +119,31 @@ def checar(html, rotas, serie, poruf, motor, arquivos_fin: dict, despesa=None, c
     for uf, u in poruf.get("uf", {}).items():
         for rid, r in (u.get("rotas") or {}).items():
             if r.get("status") == "aguardando_coleta" and r.get("valor_2026") is not None: e.append(f"(d) {uf}/{rid}: valor imputado em rota aguardando coleta")
+    # (m) 08/10/2026 (A3-10): cartão de janela não publica ZERO quando a origem não tem data.
+    # O "atos federais nos últimos 7 dias" dizia 0 porque nenhum dos cinco compromissos federais
+    # tinha campo de data — `na_janela` devolvia lista vazia, e o zero virava fato publicado, no
+    # Financiamento e na Imprensa. Zero medido e campo inexistente são coisas diferentes.
+    semana_fin = arquivos_fin.get("semana.json") or ""
+    comp_fin = arquivos_fin.get("compromissos_federais.json") or ""
+    if semana_fin and comp_fin:
+        try:
+            import json as _js
+            _sem = _js.loads(semana_fin)
+            _comp = _js.loads(comp_fin)
+            _tem_data = any(str((i or {}).get("data") or (i or {}).get("publicado_em") or "")[:4]
+                            .isdigit() for i in (_comp.get("itens") or []))
+            for _c in _sem.get("cartoes") or []:
+                # 09/10/2026: a ausencia passou a ter CLASSE propria (`sem_data_na_origem`), em
+                # vez de `sem_coleta`: a serie existe e foi lida, e dizer "sem coleta" dela seria
+                # dizer o que nao aconteceu. O que esta regra cobra e o que sempre cobrou: nao
+                # publicar numero de janela quando a origem nao datou o ato.
+                if (_c.get("id") == "atos_federais_semana" and not _c.get("sem_coleta")
+                        and not _c.get("classe") and not _tem_data):
+                    e.append("(m) o cartão de atos federais publica valor na janela de 7 dias, e "
+                             "nenhum item da origem traz data — zero por campo inexistente não é "
+                             "zero medido (A3-10)")
+        except ValueError:
+            e.append("(m) semana.json ou compromissos_federais.json ilegível")
     resp = {r["id"] for r in rotas["rotas"] if not r["ex_ante"]}
     if resp != {"r3", "r4"}: e.append(f"(e) rotas de resposta devem ser exatamente r3 e r4; achou {sorted(resp)}")
     if "somaPreparacao" not in html or "filter(r => r.ex_ante)" not in html: e.append("(e) página sem somaPreparacao restrita a rotas ex_ante")

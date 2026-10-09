@@ -76,6 +76,35 @@ def buscar_coordenadas(nome: str, uf: str, ref: list[dict]):
     return None, None, None
 
 
+def autoteste() -> int:
+    """Autoteste puro (A6-26, 08/10/2026): sem rede, sem ler `data/`, sem escrever nada.
+
+    Este script não tinha autoteste nenhum, e é ele que transforma contribuição de leitor em
+    registro do banco público: a função que acha o município e a lista de categorias válidas são
+    exatamente o que não pode aceitar lixo.
+    """
+    ref = [{"nome": "Coração de Jesus", "uf": "MG", "lat": -16.6, "lon": -44.3},
+           {"nome": "Teófilo Otoni", "uf": "MG", "lat": -17.8, "lon": -41.5}]
+    casos = [
+        ("acha o município pela grafia oficial",
+         buscar_coordenadas("Coração de Jesus", "MG", ref)[2] == "Coração de Jesus"),
+        ("acha sem acento e em caixa alta, e devolve a grafia oficial",
+         buscar_coordenadas("CORACAO DE JESUS", "MG", ref)[2] == "Coração de Jesus"),
+        ("não acha em outra UF", buscar_coordenadas("Coração de Jesus", "BA", ref)[0] is None),
+        ("não acha o que não existe", buscar_coordenadas("Cidade Nenhuma", "MG", ref)[2] is None),
+        ("`plano_nomeado` é categoria válida (D1, 08/10/2026)",
+         "plano_nomeado" in CATEGORIAS_VALIDAS),
+        ("categoria inventada não é válida", "plano_otimo" not in CATEGORIAS_VALIDAS),
+        ("decreto é categoria válida e não pontua no índice", "decreto" in CATEGORIAS_VALIDAS),
+    ]
+    ruins = [n for n, ok in casos if not ok]
+    for n, ok in casos:
+        print(f"  {'✓' if ok else '✗'} {n}")
+    print(f"{'✓ AUTOTESTE OK' if not ruins else f'✗ AUTOTESTE: {len(ruins)} falha(s)'} — "
+          f"{len(casos)} casos, sem rede e sem escrita.")
+    return 1 if ruins else 0
+
+
 def main():
     """Lê um item aprovado da fila de contribuições e o converte para o formato de registro do banco público (sem e-mail nem qualquer dado de contato), pronto para revisão final e integração."""
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -131,4 +160,6 @@ def main():
 
 
 if __name__ == "__main__":
+    if "--autoteste" in sys.argv or "--self-test" in sys.argv:
+        sys.exit(autoteste())
     sys.exit(main())

@@ -19,9 +19,41 @@ não pontuados permanecem na versão corrente.
 
 
 
+
+
+
+
+
+
 ## 2026-10-08 · #PR · Lote 1.14: o PDF público passa a descrever o índice que existe
 
 A análise de sensibilidade tinha a conta da cobertura copiada do motor, e a cópia divergiu: ignorava a camada declarada nacional e usava 0,3 onde o motor usa 0,5. O PDF publicava a tabela de camadas errada (DF 100% documentado contra 38/62 do motor), escrevia a cobertura na coluna da estrutura, nomeava "Antecipação" como componente e trazia o crédito antigo do plano de ciclo anterior. Conta única `cobertura_de_uf`; índice reproduzido sem mudança. Portão novo.
+## 2026-10-08 · #PR · Lote 4.1: os medidores voltam a mostrar número
+
+Os 21 estados verificados do MARÉ Saúde mostravam **0,0** na grade, e a ficha aberta por `index.html#UF` — o caminho do selo embutido em outro site — abria com 0,0/100: a função que escreve o número vivia no escopo de um módulo, e a outra página chamava uma função que não existia, com a guarda engolindo a ausência. O valor estava certo no atributo todo esse tempo. Um dono só, em `assets/mapas.js`, e o portão passa a exigir o número escrito.
+## 2026-10-09 · #604 · cartão de atos federais: ausência da classe certa
+
+O cartão dizia "sem coleta" de uma série que está em disco, e o portão de layout reprovava com
+razão. A origem dos compromissos federais não data os atos: é ausência de outra classe, não falta
+de coleta nem zero. O gerador declara `sem_data_na_origem`, a página escreve isso em palavras, e
+os portões de coerência e de runtime aprendem a quarta classe. Onde: gerar_financiamento_semana.py,
+assets/js/financiamento.js, scripts/verificar_financiamento_coerencia.py.
+
+## 2026-10-08 · #PR · Lote 4.2: o cartão para de dizer "ainda não verificamos" sobre quem foi verificado
+
+Município com decreto de emergência, com ato alheio ao ciclo ou com estrutura de coordenação recebia a frase do não verificado — 102 cartões —, e no caso do decreto o cartão escondia a única informação de resposta que existia sobre o município. Cada categoria passa a ter a sua frase, nas palavras aprovadas na seção C do handover, e a data só aparece quando é completa: "em 2026" não é data.
+## 2026-10-08 · #PR · Lote 3.7: autoteste em todos, com o nome certo e dentro do portão
+
+Quatro scripts tinham autoteste que ninguém rodava, porque a flag se chamava `--self-test` e o portão chama `--autoteste`; dois ignoravam a flag e iam à rede — `atualizar_recursos` chegava a gravar. Três não tinham autoteste nenhum. Agora: flag canônica em todos, autoteste puro onde faltava, a varredura de escrita cobre 27 scripts (eram 10) e cobra o nome da flag, e os cinco que estavam fora do `portoes.yml` entraram. De passagem, um defeito de canal.
+## 2026-10-08 · #PR · Lote 1.15: C11 revogada, versão com dono, v3.2 calculada em paralelo
+
+A C11 tiraria 142 dos 151 registros pontuáveis em 26/10 por falta de número de ato em documento já lido, contra a decisão de 03/10: revogada (D3), e a fila de citação passa a ser informação de ficha regenerada pela cadeia. `versao_indice` nasce em `meta.json` e alimenta CITATION e datapackage, que diziam "2.3". A **v3.2** (arranjo permanente de resposta à seca, degrau 45) está **decidida e implementada em paralelo**: 191 municípios cumprem as três condições, média 45,3 → 45,6, e nenhuma página lê o resultado. Metodologia §105.
+## 2026-10-08 · #PR · Lote 1.16: sete achados do A3, do feed ao selo
+
+Reconhecimento federal deixa de gerar dois itens no feed e os títulos saem em dd/mm/aaaa (97 pares da migração ficam marcados no log, que só cresce, e fora do feed). "288.729 de pessoas" vira "288.729 pessoas". Umuarama/PR sai duplicado do mapa. O CSV de atos ganha `ibge` e as datas em colunas próprias. Os selos param de falar de licença. O painel para de chamar a camada declarada de "simulado". A reserva de data que chamava função inexistente foi corrigida.
+## 2026-10-08 · #PR · Lote 1.13: o cartão de atos federais para de publicar um zero que não foi medido
+
+Nenhum dos cinco compromissos federais tinha campo de data: a janela de sete dias devolvia lista vazia e o cartão publicava "0 atos" como fato, no Financiamento e na Imprensa. O cartão passa a declarar a lacuna; o coletor registra a ausência da data na origem, com o motivo; e a regra (m) do portão de financiamento reprova cartão de janela com valor quando a origem não tem data. Zero medido e campo inexistente são coisas diferentes.
 ## 2026-10-08 · #PR · Lote 1.10: a capital passa a ter uma fonte só
 
 `estados.json` guardava um status e um texto da capital escritos à mão, e o banco guardava a categoria que pontua: as duas se contradiziam em nove UFs, e o leitor via no mesmo clique "Novo, base da pontuação" e "ainda não verificado" (Rio Branco). `capital` passa a guardar só o nome; o rótulo e a frase saem do registro do banco, pela mesma função do cartão do município. A frase comparativa sai. Portão novo `verificar_capital.py`.

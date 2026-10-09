@@ -1222,6 +1222,123 @@
   "data": "08/10/2026",
   "uf": null,
   "municipio": null,
+  "o_que_mudou": "o cartão \"atos federais de financiamento nos últimos 7 dias\" publicava 0 atos no Financiamento e na Imprensa; passa a declarar que a origem não traz data de publicação do ato, e nenhum número é publicado ali",
+  "por_que": "A3-10: nenhum dos cinco compromissos federais tinha campo de data, e a função da janela devolvia lista vazia — o zero vinha do campo inexistente, não de medição. A regra do site é que zero só se publica quando a coleta rodou. O coletor passa a declarar a ausência da data na origem, e a regra (m) de `verificar_financiamento.py` reprova cartão de janela com valor quando a origem não tem data.",
+  "achado": "A3-10",
+  "lote": "1.13"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "a Imprensa publicava \"288.729 de pessoas\"; o \"de\" passa a aparecer só com \"milhão\" e \"milhões\"",
+  "por_que": "A3-23, auditoria de 08/10/2026 (lote 1.16).",
+  "achado": "A3-23",
+  "lote": "1.16"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "Umuarama/PR aparecia duas vezes no mapa; fica um ponto (275 → 274)",
+  "por_que": "A3-24, auditoria de 08/10/2026 (lote 1.16).",
+  "achado": "A3-24",
+  "lote": "1.16"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "os selos traziam uma frase sobre licença de código; sai, pela regra editorial de 03/10 — o site não fala de licença",
+  "por_que": "A3-26, auditoria de 08/10/2026 (lote 1.16).",
+  "achado": "A3-26",
+  "lote": "1.16"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "cada reconhecimento federal gerava DOIS itens no feed, um deles chamando o ato federal de \"decreto de emergência registrado\"; e 126 títulos traziam a data em ISO. Fica um item por fato, com a data em dd/mm/aaaa",
+  "por_que": "A3-28, auditoria de 08/10/2026 (lote 1.16).",
+  "achado": "A3-28",
+  "lote": "1.16"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "a ficha do painel chamava a camada declarada nacional de \"(simulado)\"; ela está em uso desde 21/09/2026",
+  "por_que": "A3-31, auditoria de 08/10/2026 (lote 1.16).",
+  "achado": "A3-31",
+  "lote": "1.16"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "o CSV de atos de resposta saía sem o código do IBGE — sem chave para cruzar — e com as datas numa coluna só; passa a trazer `ibge`, `data_decreto_municipal` e `data_reconhecimento`",
+  "por_que": "A3-21, auditoria de 08/10/2026 (lote 1.16).",
+  "achado": "A3-21",
+  "lote": "1.16"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "a reserva de data em `gerar_resposta.py` chamava uma função que não existe (`datetime._hoje`): levantaria erro no único dia em que é usada",
+  "por_que": "A3-25, auditoria de 08/10/2026 (lote 1.16).",
+  "achado": "A3-25",
+  "lote": "1.16"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "a regra C11, que marcava 26/10/2026 como prazo para registro sem número de ato sair da pontuação, está revogada; medida hoje, ela tiraria 142 dos 151 registros pontuáveis (45,9 milhões de habitantes) por falta de número de ato em documento que o site já leu",
+  "por_que": "A3-03, decisão D3: a C11 nunca teve código que a aplicasse e contraria a decisão §101 de 03/10/2026, que é posterior. O que a ausência de documento tira do crédito é tratado pela D1 (§104). A fila `data/citacao_incompleta.json` passa a ser informação de ficha, regenerada pela cadeia — estava parada desde 02/09, com 145 registros congelados; são 140 hoje.",
+  "achado": "A3-03",
+  "lote": "1.15"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "a versão do índice passa a ter um dono: `versao_indice` em `data/meta.json`, escrito pelo motor e lido por quem publica. O `CITATION.cff` e o `datapackage.json` diziam \"2.3\" e passam a dizer \"3.1\"; a tabela §5.2 da metodologia descrevia componentes extintos",
+  "por_que": "A3-16: cinco documentos públicos discordavam entre si e do código, e dois métodos diferentes eram chamados de v3.1. Portão: `scripts/verificar_versao_do_indice.py`.",
+  "achado": "A3-16",
+  "lote": "1.15"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "contribuição de leitor vinda de site de prefeitura (`aracaju.se.gov.br` e afins) era registrada com canal \"órgão estadual\"; passa a ser \"site municipal\"",
+  "por_que": "Achado ao escrever o autoteste do item 3.7: o padrão casava qualquer subdomínio de `<uf>.gov.br` que não começasse por \"www.\", e prefeitura em domínio do estado é a regra, não a exceção. Órgão estadual passa a ser o domínio do estado sem subdomínio, ou um dos prefixos conhecidos de defesa civil.",
+  "achado": "A6-26 (de passagem)",
+  "lote": "3.7"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "102 cartões de município recebiam \"Ainda não verificamos este município com todas as fontes\" — 97 com decreto de emergência, 4 com ato alheio ao ciclo e 1 com estrutura de coordenação. Esses municípios foram verificados: passam a receber a frase da sua categoria, e a do decreto diz a data e a fonte do decreto e do reconhecimento",
+  "por_que": "A4-07: `decreto`, `plano_elaboracao`, `estrutura` e `nao_el_nino` caíam no ramo do NÃO VERIFICADO, e o cartão negava ao leitor o que o banco sabe — no caso do decreto, escondia a única informação de resposta que existia. As três frases novas são as aprovadas na seção C do handover.",
+  "achado": "A4-07",
+  "lote": "4.2"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "os 21 estados verificados do MARÉ Saúde mostravam 0,0 na grade, e a ficha aberta por `index.html#UF` — o caminho do selo embutido em outro site — abria com 0,0/100 e a barra vazia. Passam a mostrar o valor",
+  "por_que": "A4-01 e A4-04: a função que escreve o número no medidor morava no escopo de `assets/js/index.js`, e o MARÉ Saúde chamava `MonitorMapas.animarGauges`, que não existia — a guarda engolia a ausência em silêncio. O valor estava correto no atributo `data-contar` todo esse tempo; ninguém o escrevia. A animação passa a ter um dono, em `assets/mapas.js`, que as duas páginas carregam, e o portão de runtime passa a exigir o número escrito, não o atributo.",
+  "achado": "A4-01",
+  "lote": "4.1"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
   "o_que_mudou": "o PDF público 'Documentação do Índice' publicava a tabela de camadas da cobertura errada — DF aparecia como 100% documentado, quando o motor tem 38% documentado e 62% declarado — e um efeito de variante que era artefato da divergência (as notas não mudam)",
   "por_que": "A3-05: `analise_sensibilidade.py` tinha a conta da cobertura COPIADA do motor, e a cópia divergiu — ignorava a camada declarada nacional (ativa desde 21/09) e aplicava 0,3 ao plano desatualizado onde o motor aplica 0,5. A conta passa a ter um dono, `recalcular_mare.cobertura_de_uf`, e o portão `scripts/verificar_camadas_do_pdf.py` compara a análise com o índice publicado, UF por UF.",
   "achado": "A3-05",

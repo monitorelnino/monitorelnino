@@ -126,7 +126,7 @@ def fichas():
                     "plano_declarado_munic": (decl.get(m["ibge"]) or {}).get("munic_plano_contingencia"), "plano_declarado_icm": (decl.get(m["ibge"]) or {}).get("icm_var8_plano_contingencia"),
                     "atos_resposta": len(ev), "rotas_2025": {r["id"]: None for r in rotas}, "rotas_2026": {r["id"]: None for r in rotas}, "rotas_status": "aguardando_coleta",
                     "programas_permanentes": "aguardando_coleta", "marcadores_semana": m["marcadores"],
-                    "fontes": {"verificacao": "data/verificacao_municipal.json", "instrumento": "data/municipios.json", "atos": "data/atos_resposta.json", "declarado": "data/declarado_nacional.json (simulado)", "rotas": "data/financiamento/ (aguardando coleta)"}, "data_ficha": hoje})
+                    "fontes": {"verificacao": "data/verificacao_municipal.json", "instrumento": "data/municipios.json", "atos": "data/atos_resposta.json", "declarado": "data/declarado_nacional.json (camada declarada nacional, MUNIC/ICM, em uso desde 21/09/2026)", "rotas": "data/financiamento/ (aguardando coleta)"}, "data_ficha": hoje})
     w(P / "fichas.json", {"_governanca": "Fichas dos 324 (mesmas colunas). Reverificadas toda segunda-feira. Cada campo com fonte declarada; nulo = não coletado. Peso zero.", "data": hoje, "fichas": out})
     # agregados região × porte × risco
     agg = {}

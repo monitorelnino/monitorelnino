@@ -47,6 +47,26 @@ COLETORES = (
     "seguir_pistas.py",
     "monitorar_redes_oficiais.py",
     "monitorar_busca_web.py",
+    # 08/10/2026 (A6-26): a varredura cobria dez dos trinta e seis scripts com autoteste. Entram
+    # os que escrevem em `data/` na rodada real — que é a condição que torna o autoteste perigoso
+    # — e os cinco que tinham autoteste verde e não estavam no `portoes.yml`.
+    "coletar_cobertura_qd.py",
+    "coletar_execucao_mps.py",
+    "coletar_transferegov.py",
+    "coletar_financiamento.py",
+    "coletar_saude.py",
+    "coletar_declarado_nacional.py",
+    "coletar_sinais_risco.py",
+    "atualizar_instrumentos_estaduais.py",
+    "atualizar_populacao.py",
+    "atualizar_recursos.py",
+    "atualizar_marcos_severidade.py",
+    "converter_contribuicao.py",
+    "processar_contribuicoes.py",
+    "monitorar_politica_por_inteiro.py",
+    "ler_caixa_lai.py",
+    "gerar_painel.py",
+    "gerar_lai.py",
 )
 # Arquivos de banco que um autoteste jamais deve tocar. São os que guardam o ciclo inteiro: perder
 # um deles é perder evidência, não refazer uma conta.
@@ -103,6 +123,17 @@ def _autoteste() -> int:
     ok("arquivo apagado pelo autoteste acusa", mudaram({"a": "1"}, {"a": None}) == ["a"])
     ok("ordem estável", mudaram({"b": "1", "a": "1"}, {"b": "2", "a": "2"}) == ["a", "b"])
     ok("todo coletor declarado existe", all((RAIZ / c).exists() for c in COLETORES))
+    # 08/10/2026 (A6-26): quatro scripts tinham autoteste e ninguém o rodava, porque a flag se
+    # chamava `--self-test` e o portão chama `--autoteste`. O nome canônico passa a ser cobrado.
+    import re as _re
+    sem_flag = []
+    for c in COLETORES:
+        fonte = (RAIZ / c).read_text(encoding="utf-8", errors="ignore")
+        if not _re.search(r'--autoteste', fonte):
+            sem_flag.append(c)
+    ok("todo script declarado aceita `--autoteste` pelo nome canônico", not sem_flag)
+    if sem_flag:
+        print("        sem a flag canônica: " + ", ".join(sem_flag))
     ok("todo arquivo de banco declarado é caminho relativo",
        all(not r.startswith("/") for r in BANCO))
     ok("as duas listas não estão vazias", bool(COLETORES) and bool(BANCO))
