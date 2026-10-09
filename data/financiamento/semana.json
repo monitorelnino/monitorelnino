@@ -1,6 +1,6 @@
 {
  "_governanca": "Gerado por gerar_financiamento_semana.py. Cada cartão traz o recorte que a fonte permite: mês fechado onde a fonte publica por mês, sete dias onde o ato tem data. Lacuna é declarada, nunca zero.",
- "corte": "08/10/2026",
+ "corte": "09/10/2026",
  "janela_dias": 7,
  "cartoes": [
   {
@@ -41,7 +41,8 @@
    "fonte": "Atos federais lidos pelo MARÉ",
    "url_fonte": null,
    "detalhe": "a origem dos compromissos federais não traz data de publicação do ato; sem data não há janela de sete dias para medir",
-   "sem_coleta": true
+   "sem_coleta": false,
+   "classe": "sem_data_na_origem"
   }
  ]
 }

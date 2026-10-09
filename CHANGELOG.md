@@ -23,6 +23,14 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-09 · #604 · cartão de atos federais: ausência da classe certa
+
+O cartão dizia "sem coleta" de uma série que está em disco, e o portão de layout reprovava com
+razão — reprovava a `main` inteira, 33 publicações seguidas. A origem dos compromissos federais
+não data os atos: é ausência de outra classe, não falta de coleta nem zero. O gerador passa a
+declarar `sem_data_na_origem`, a página escreve isso em palavras, e o portão de coerência aprende
+a quarta classe (valor nulo legítimo, período não exigido, motivo obrigatório). Onde: gerar_financiamento_semana.py, assets/js/financiamento.js, scripts/verificar_financiamento_coerencia.py.
+
 ## 2026-10-08 · #PR · Lote 4.2: o cartão para de dizer "ainda não verificamos" sobre quem foi verificado
 
 Município com decreto de emergência, com ato alheio ao ciclo ou com estrutura de coordenação recebia a frase do não verificado — 102 cartões —, e no caso do decreto o cartão escondia a única informação de resposta que existia sobre o município. Cada categoria passa a ter a sua frase, nas palavras aprovadas na seção C do handover, e a data só aparece quando é completa: "em 2026" não é data.
