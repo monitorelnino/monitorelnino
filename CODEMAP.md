@@ -46,7 +46,7 @@ Atualizado em 09/10/2026.
 | `_p4.py` | — | — | — | — | não |
 | `_p5.py` | — | — | — | — | não |
 | `analisar_decretos.py` | — | — | — | — | não |
-| `analise_sensibilidade.py` | — | — | — | 1 | não |
+| `analise_sensibilidade.py` | — | — | — | 2 | não |
 | `aplicar_c10_imprensa.py` | — | — | — | — | não |
 | `aplicar_promocoes_do_juiz.py` | — | — | — | — | SIM |
 | `aplicar_revisao.py` | — | — | — | — | não |
@@ -140,7 +140,7 @@ Atualizado em 09/10/2026.
 | `preencher_fallback_estatico.py` | — | — | — | — | não |
 | `preservar_evidencias.py` | — | `evidencias.json`, `municipios.json` | — | 6 | não |
 | `processar_contribuicoes.py` | — | — | — | — | não |
-| `recalcular_mare.py` | — | — | — | 6 | SIM |
+| `recalcular_mare.py` | — | — | — | 7 | SIM |
 | `registrar_saude_central.py` | — | `saude_uf.json` | — | — | não |
 | `revisar_pistas.py` | — | `pistas_imprensa.json` | — | — | não |
 | `robustez_saude.py` | — | — | — | — | não |
