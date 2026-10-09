@@ -4,7 +4,7 @@
  "janela_dias": 7,
  "indices": {
   "edicao": "08/10/2026",
-  "mare_legal": 45.3,
+  "mare_legal": 40.8,
   "mare_saude": 31.8,
   "saude_verificadas": 21,
   "decretaram_no_ciclo": 726
@@ -57,7 +57,7 @@
    "id": "capitais_com_plano",
    "grupo": "preparacao",
    "rotulo": "de 27 capitais com plano localizado",
-   "valor": 17,
+   "valor": 6,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Diários oficiais municipais e sítios das prefeituras (via MARÉ)",
@@ -70,28 +70,10 @@
    "secundaria": null,
    "lista": [
     {
-     "uf": "AL",
-     "municipio": "Maceió",
-     "documento": "Previne Maceió (5º ano)",
-     "url": "https://maceio.al.gov.br/noticias/defesa-civil/defesa-civil-intensifica-acoes-preventivas-para-o-periodo-chuvoso-em-maceio"
-    },
-    {
      "uf": "AM",
      "municipio": "Manaus",
      "documento": "Plano Operacional de Enfrentamento à Estiagem 2026",
      "url": "https://www.manaus.am.gov.br/wp-content/uploads/2025/03/PLANO-DE-CONTINGENCIA-OFICIAL-2024-UNIFICADO.pdf"
-    },
-    {
-     "uf": "BA",
-     "municipio": "Salvador",
-     "documento": "Operação Chuva 2026 / PPDC (Codesal)",
-     "url": "https://codesal.salvador.ba.gov.br/noticias/"
-    },
-    {
-     "uf": "CE",
-     "municipio": "Fortaleza",
-     "documento": "Operação Quadra Chuvosa 2026",
-     "url": "https://www.fortaleza.ce.gov.br/noticias/prefeitura-de-fortaleza-anuncia-acoes-da-operacao-quadra-chuvosa-de-2026"
     },
     {
      "uf": "ES",
@@ -100,28 +82,10 @@
      "url": "https://defesacivil.es.gov.br/Media/DefesaCivil/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/VIT%C3%93RIA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202024-2025.pdf"
     },
     {
-     "uf": "MA",
-     "municipio": "São Luís",
-     "documento": "Plano de Contingência (2024) + mapeamento 2026",
-     "url": "https://www.saoluis.ma.gov.br/portal/noticias/0/3/2902/defesa-civil-de-sao-luis-conclui-mapeamento-de-areas-com-riscos-de-alagamentos"
-    },
-    {
-     "uf": "PB",
-     "municipio": "João Pessoa",
-     "documento": "Plano de Contingência (período chuvoso)",
-     "url": null
-    },
-    {
      "uf": "PE",
      "municipio": "Recife",
      "documento": "Ação Inverno 2026 / Plano de Contingência Recife",
      "url": "https://acaoinverno.recife.pe.gov.br/wp-content/uploads/2026/04/PLANO-DE-CONTINGENCIA-RECIFE-2026__final.pdf"
-    },
-    {
-     "uf": "PI",
-     "municipio": "Teresina",
-     "documento": "Planos de ação 2026 (chuvas + estiagem + incêndios)",
-     "url": null
     },
     {
      "uf": "RJ",
@@ -130,46 +94,16 @@
      "url": "https://www.defesacivil.rj.gov.br/index.php/para-municipios/plano-de-contingencias-dc"
     },
     {
-     "uf": "RN",
-     "municipio": "Natal",
-     "documento": "Plano de Contingência — chuvas",
-     "url": null
-    },
-    {
-     "uf": "RO",
-     "municipio": "Porto Velho",
-     "documento": "Força-tarefa integrada + Programa 10 Passos",
-     "url": null
-    },
-    {
-     "uf": "RR",
-     "municipio": "Boa Vista",
-     "documento": "Plano de Estiagem + fiscalização de terrenos",
-     "url": null
-    },
-    {
      "uf": "RS",
      "municipio": "Porto Alegre",
      "documento": "PLACON 2025 (Decreto nº 23.434, 01/09/2025) + plano específico El Niño em elaboração",
      "url": "https://prefeitura.poa.br/defesa-civil/plano-de-contingencias-de-protecao-e-defesa-civil"
     },
     {
-     "uf": "SE",
-     "municipio": "Aracaju",
-     "documento": "Plano de Contingenciamento (ed. 2024)",
-     "url": null
-    },
-    {
      "uf": "SP",
      "municipio": "São Paulo",
      "documento": "Plano Preventivo de Chuvas de Verão (PPCV)",
      "url": "https://prefeitura.sp.gov.br/web/secretaria_executiva_de_mudancas_climaticas/participacao_social/conselhos_e_orgaos_colegiados/plano_preventivo_de_chuva_de_verao"
-    },
-    {
-     "uf": "TO",
-     "municipio": "Palmas",
-     "documento": "Comitê PrevIncêndio (permanente)",
-     "url": null
     }
    ],
    "pagina_de_origem": null,
@@ -200,7 +134,7 @@
    "id": "populacao_decretos_na_semana",
    "grupo": "emergencias",
    "rotulo": "Pessoas que vivem nos municípios que decretaram na semana",
-   "valor": 288729,
+   "valor": 275563,
    "unidade": "pessoas",
    "sem_coleta": false,
    "periodo": null,
@@ -240,14 +174,14 @@
    "id": "municipios_alerta_cemaden",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob alerta do Cemaden",
-   "valor": 6,
+   "valor": 9,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "07/10/2026 21:40",
+   "referencia": "08/10/2026 19:01",
    "fonte": "Cemaden",
    "url_fonte": "https://www.gov.br/cemaden/pt-br",
-   "consultado_em": "07/10/2026 21:40",
+   "consultado_em": "08/10/2026 19:01",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -260,14 +194,14 @@
    "id": "municipios_aviso_inmet",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob aviso do Inmet",
-   "valor": 3461,
+   "valor": 3137,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "07/10/2026 21:40",
+   "referencia": "08/10/2026 19:01",
    "fonte": "Inmet",
    "url_fonte": "https://portal.inmet.gov.br/",
-   "consultado_em": "07/10/2026 21:40",
+   "consultado_em": "08/10/2026 19:01",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -280,14 +214,14 @@
    "id": "decreto_e_alerta_ao_mesmo_tempo",
    "grupo": "risco_agora",
    "rotulo": "Municípios com decreto de emergência e alerta ao mesmo tempo",
-   "valor": 489,
+   "valor": 583,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "07/10/2026 21:40",
+   "referencia": "08/10/2026 19:01",
    "fonte": "MARÉ (cruzamento das duas consultas)",
    "url_fonte": null,
-   "consultado_em": "07/10/2026 21:40",
+   "consultado_em": "08/10/2026 19:01",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -300,125 +234,125 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 44843,
+   "valor": 57580,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
    "url_fonte": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
-   "consultado_em": "07/10/2026",
+   "consultado_em": "08/10/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "Focos do dia — focos_diario_br_20261007.csv",
+   "nota": "Focos do dia — focos_diario_br_20261008.csv",
    "secundaria": null,
    "lista": [
     {
      "uf": "PA",
-     "valor": 17588
+     "valor": 22684
     },
     {
      "uf": "AM",
-     "valor": 7092
+     "valor": 9601
     },
     {
      "uf": "MA",
-     "valor": 4297
-    },
-    {
-     "uf": "BA",
-     "valor": 3798
+     "valor": 5726
     },
     {
      "uf": "PI",
-     "valor": 3398
+     "valor": 5100
+    },
+    {
+     "uf": "BA",
+     "valor": 5065
     },
     {
      "uf": "TO",
-     "valor": 2005
-    },
-    {
-     "uf": "AC",
-     "valor": 1536
-    },
-    {
-     "uf": "RO",
-     "valor": 895
+     "valor": 2911
     },
     {
      "uf": "MG",
-     "valor": 891
-    },
-    {
-     "uf": "CE",
-     "valor": 772
-    },
-    {
-     "uf": "AP",
-     "valor": 618
-    },
-    {
-     "uf": "RR",
-     "valor": 543
+     "valor": 1635
     },
     {
      "uf": "MT",
-     "valor": 491
+     "valor": 1127
+    },
+    {
+     "uf": "CE",
+     "valor": 735
+    },
+    {
+     "uf": "RO",
+     "valor": 634
     },
     {
      "uf": "GO",
-     "valor": 351
+     "valor": 566
     },
     {
-     "uf": "PB",
-     "valor": 149
+     "uf": "AP",
+     "valor": 489
     },
     {
-     "uf": "PE",
-     "valor": 129
+     "uf": "RR",
+     "valor": 481
     },
     {
      "uf": "RN",
-     "valor": 69
+     "valor": 201
     },
     {
-     "uf": "AL",
-     "valor": 58
+     "uf": "PB",
+     "valor": 169
+    },
+    {
+     "uf": "PE",
+     "valor": 145
     },
     {
      "uf": "ES",
-     "valor": 44
-    },
-    {
-     "uf": "RS",
-     "valor": 41
-    },
-    {
-     "uf": "SE",
-     "valor": 21
+     "valor": 71
     },
     {
      "uf": "MS",
-     "valor": 17
-    },
-    {
-     "uf": "DF",
-     "valor": 15
-    },
-    {
-     "uf": "SC",
-     "valor": 9
-    },
-    {
-     "uf": "RJ",
-     "valor": 8
+     "valor": 53
     },
     {
      "uf": "SP",
-     "valor": 7
+     "valor": 51
+    },
+    {
+     "uf": "AC",
+     "valor": 44
     },
     {
      "uf": "PR",
-     "valor": 1
+     "valor": 36
+    },
+    {
+     "uf": "AL",
+     "valor": 34
+    },
+    {
+     "uf": "DF",
+     "valor": 8
+    },
+    {
+     "uf": "SE",
+     "valor": 6
+    },
+    {
+     "uf": "RJ",
+     "valor": 3
+    },
+    {
+     "uf": "RS",
+     "valor": 3
+    },
+    {
+     "uf": "SC",
+     "valor": 2
     }
    ],
    "pagina_de_origem": null,
@@ -429,18 +363,18 @@
    "id": "temperatura_desvio_capital",
    "grupo": "risco_agora",
    "rotulo": "A maior diferença de temperatura máxima em relação ao normal, em grau Celsius",
-   "valor": 3.9,
+   "valor": 4.3,
    "unidade": "°C",
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "07/10/2026",
+   "referencia": "08/10/2026",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "url_fonte": null,
-   "consultado_em": "07/10/2026",
+   "consultado_em": "08/10/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "máxima prevista de 37.0 °C contra a média de 33.1 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 33.0 °C contra a média de 28.7 °C do mês; 24 capital(is) com normal publicada",
    "secundaria": null,
    "lista": [],
    "pagina_de_origem": "monitor-de-riscos.html"
@@ -466,16 +400,16 @@
     "AC",
     "AL",
     "AM",
-    "AP",
     "BA",
     "DF",
+    "ES",
     "GO",
     "MG",
     "MT",
     "PI",
+    "PR",
     "RJ",
     "RO",
-    "RR",
     "RS",
     "SP",
     "TO"
@@ -630,5 +564,5 @@
    "por_que_nao": "depende do campo `escopo` em data/calendario/fontes_suspensas.json, que hoje é nulo nos 38 registros (bloco E do pedido de 27/09, não executado)."
   }
  ],
- "texto_pronto": "Edição de 08/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 45,3 de 100; o MARÉ Saúde, em 31,8 de 100, média dos 21 estados verificados. Na semana, nenhum município publicou plano para o ciclo e 14 municípios decretaram situação de emergência ou calamidade; 288.729 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde o início do ciclo, em 29 de junho, 17 de 27 capitais têm plano localizado e 726 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação da Futura Evidence Lab."
+ "texto_pronto": "Edição de 08/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,8 de 100; o MARÉ Saúde, em 31,8 de 100, média dos 21 estados verificados. Na semana, nenhum município publicou plano para o ciclo e 14 municípios decretaram situação de emergência ou calamidade; 275.563 de pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde o início do ciclo, em 29 de junho, 6 de 27 capitais têm plano localizado e 726 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação da Futura Evidence Lab."
 }
