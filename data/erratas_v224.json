@@ -1334,5 +1334,23 @@
   "por_que": "A4-01 e A4-04: a função que escreve o número no medidor morava no escopo de `assets/js/index.js`, e o MARÉ Saúde chamava `MonitorMapas.animarGauges`, que não existia — a guarda engolia a ausência em silêncio. O valor estava correto no atributo `data-contar` todo esse tempo; ninguém o escrevia. A animação passa a ter um dono, em `assets/mapas.js`, que as duas páginas carregam, e o portão de runtime passa a exigir o número escrito, não o atributo.",
   "achado": "A4-01",
   "lote": "4.1"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "o travessão sai da tela: quinze linhas de boletim do MARÉ Saúde nasciam com \"—\", a face do ladrilho de estado dizia \"capital —\" e os campos de estrutura e de instrumento da ficha mostravam \"—\" quando a data não existia. Ausência passa a ser escrita em palavras ou a não aparecer",
+  "por_que": "A4-13: o travessão como valor é proibido (`layout/regras.json/numeros.travessao_em_cartao_proibido`), e o portão olhava só `.cartao-numero-valor`. A varredura passa a cobrir a linha de boletim da figura, a face do ladrilho e o campo da ficha, medidos na página renderizada.",
+  "achado": "A4-13",
+  "lote": "4.5"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "saem da tela três frases de processo interno: \"evento observado: em classificação\", \"link oficial em verificação\" e \"bateria completa de fontes\"",
+  "por_que": "A4-14 (governança §27): o leitor lia o diário de bordo da coleta como se fosse dado. \"Em classificação\" sai; \"link oficial em verificação\" vira \"documento não localizado até o corte\"; \"bateria\" vira \"todas as fontes\".",
+  "achado": "A4-14",
+  "lote": "4.5"
  }
 ]

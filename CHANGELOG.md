@@ -24,6 +24,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+
+## 2026-10-08 · #PR · Lote 4.5: o travessão sai da tela, e o diário de bordo da coleta também
+
+Quinze linhas de boletim do MARÉ Saúde nasciam com "—", a face do ladrilho dizia "capital —" e os campos da ficha mostravam "—" sem data: o sinal que a regra proíbe, em vinte lugares. Agora ausência se escreve em palavras ou não aparece, e a varredura do portão passa a cobrir a linha de boletim, a face do ladrilho e o campo da ficha — antes só o cartão de número. Saem também "em classificação", "link oficial em verificação" e "bateria".
 ## 2026-10-08 · #PR · Lote 4.1: os medidores voltam a mostrar número
 
 Os 21 estados verificados do MARÉ Saúde mostravam **0,0** na grade, e a ficha aberta por `index.html#UF` — o caminho do selo embutido em outro site — abria com 0,0/100: a função que escreve o número vivia no escopo de um módulo, e a outra página chamava uma função que não existia, com a guarda engolindo a ausência. O valor estava certo no atributo todo esse tempo. Um dono só, em `assets/mapas.js`, e o portão passa a exigir o número escrito.
