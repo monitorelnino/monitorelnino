@@ -1226,5 +1226,68 @@
   "por_que": "A3-10: nenhum dos cinco compromissos federais tinha campo de data, e a função da janela devolvia lista vazia — o zero vinha do campo inexistente, não de medição. A regra do site é que zero só se publica quando a coleta rodou. O coletor passa a declarar a ausência da data na origem, e a regra (m) de `verificar_financiamento.py` reprova cartão de janela com valor quando a origem não tem data.",
   "achado": "A3-10",
   "lote": "1.13"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "a Imprensa publicava \"288.729 de pessoas\"; o \"de\" passa a aparecer só com \"milhão\" e \"milhões\"",
+  "por_que": "A3-23, auditoria de 08/10/2026 (lote 1.16).",
+  "achado": "A3-23",
+  "lote": "1.16"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "Umuarama/PR aparecia duas vezes no mapa; fica um ponto (275 → 274)",
+  "por_que": "A3-24, auditoria de 08/10/2026 (lote 1.16).",
+  "achado": "A3-24",
+  "lote": "1.16"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "os selos traziam uma frase sobre licença de código; sai, pela regra editorial de 03/10 — o site não fala de licença",
+  "por_que": "A3-26, auditoria de 08/10/2026 (lote 1.16).",
+  "achado": "A3-26",
+  "lote": "1.16"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "cada reconhecimento federal gerava DOIS itens no feed, um deles chamando o ato federal de \"decreto de emergência registrado\"; e 126 títulos traziam a data em ISO. Fica um item por fato, com a data em dd/mm/aaaa",
+  "por_que": "A3-28, auditoria de 08/10/2026 (lote 1.16).",
+  "achado": "A3-28",
+  "lote": "1.16"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "a ficha do painel chamava a camada declarada nacional de \"(simulado)\"; ela está em uso desde 21/09/2026",
+  "por_que": "A3-31, auditoria de 08/10/2026 (lote 1.16).",
+  "achado": "A3-31",
+  "lote": "1.16"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "o CSV de atos de resposta saía sem o código do IBGE — sem chave para cruzar — e com as datas numa coluna só; passa a trazer `ibge`, `data_decreto_municipal` e `data_reconhecimento`",
+  "por_que": "A3-21, auditoria de 08/10/2026 (lote 1.16).",
+  "achado": "A3-21",
+  "lote": "1.16"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "a reserva de data em `gerar_resposta.py` chamava uma função que não existe (`datetime._hoje`): levantaria erro no único dia em que é usada",
+  "por_que": "A3-25, auditoria de 08/10/2026 (lote 1.16).",
+  "achado": "A3-25",
+  "lote": "1.16"
  }
 ]

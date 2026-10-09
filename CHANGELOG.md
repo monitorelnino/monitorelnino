@@ -19,6 +19,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+
+## 2026-10-08 · #PR · Lote 1.16: sete achados do A3, do feed ao selo
+
+Reconhecimento federal deixa de gerar dois itens no feed e os títulos saem em dd/mm/aaaa (97 pares da migração ficam marcados no log, que só cresce, e fora do feed). "288.729 de pessoas" vira "288.729 pessoas". Umuarama/PR sai duplicado do mapa. O CSV de atos ganha `ibge` e as datas em colunas próprias. Os selos param de falar de licença. O painel para de chamar a camada declarada de "simulado". A reserva de data que chamava função inexistente foi corrigida.
 ## 2026-10-08 · #PR · Lote 1.13: o cartão de atos federais para de publicar um zero que não foi medido
 
 Nenhum dos cinco compromissos federais tinha campo de data: a janela de sete dias devolvia lista vazia e o cartão publicava "0 atos" como fato, no Financiamento e na Imprensa. O cartão passa a declarar a lacuna; o coletor registra a ausência da data na origem, com o motivo; e a regra (m) do portão de financiamento reprova cartão de janela com valor quando a origem não tem data. Zero medido e campo inexistente são coisas diferentes.
