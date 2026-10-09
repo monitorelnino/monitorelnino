@@ -51,6 +51,16 @@ def problemas(fin: dict, imp: dict) -> list:
                 ruins.append(f"cartão '{ident}': declarado sem coleta e com valor — ausência não é número")
             if not c.get("detalhe"):
                 ruins.append(f"cartão '{ident}': sem coleta e sem motivo escrito (lacuna tem de ser declarada)")
+        elif c.get("classe"):
+            # 09/10/2026: a quarta classe de ausência. A série EXISTE e foi lida, e a origem não
+            # datou os atos — não é "sem coleta", que seria dizer o que não aconteceu, e também
+            # não é zero. Sem data não há janela, por isso não se exige `periodo`; o que se exige é
+            # a classe nomeada e o motivo escrito.
+            if c.get("valor") is not None:
+                ruins.append(f"cartão '{ident}': declarou classe de ausência e trouxe valor — "
+                             f"ausência não é número")
+            if not c.get("detalhe"):
+                ruins.append(f"cartão '{ident}': classe de ausência sem motivo escrito")
         else:
             if c.get("valor") is None:
                 ruins.append(f"cartão '{ident}': valor nulo sem declarar a lacuna")
@@ -101,6 +111,25 @@ def _autoteste() -> int:
     sem_motivo = {"corte": "02/10/2026", "cartoes": [
         dict(base["cartoes"][0], sem_coleta=True, valor=None)] + base["cartoes"][1:]}
     ok("sem coleta sem motivo reprova", any("sem motivo escrito" in p for p in problemas(sem_motivo, {})))
+
+    classe = {"corte": "02/10/2026", "cartoes": [
+        dict(base["cartoes"][0], valor=None, periodo=None, sem_coleta=False,
+             classe="sem_data_na_origem", detalhe="a origem nao datou o ato")]
+        + base["cartoes"][1:]}
+    ok("classe de ausencia declarada passa, e sem exigir periodo",
+       problemas(classe, {"corte": "02/10/2026", "cartoes": []}) == [])
+
+    classe_com_valor = {"corte": "02/10/2026", "cartoes": [
+        dict(base["cartoes"][0], valor=3, periodo=None, sem_coleta=False,
+             classe="sem_data_na_origem", detalhe="x")] + base["cartoes"][1:]}
+    ok("classe de ausencia com valor reprova",
+       any("ausência não é número" in p for p in problemas(classe_com_valor, {})))
+
+    classe_sem_motivo = {"corte": "02/10/2026", "cartoes": [
+        dict(base["cartoes"][0], valor=None, periodo=None, sem_coleta=False,
+             classe="sem_data_na_origem")] + base["cartoes"][1:]}
+    ok("classe de ausencia sem motivo reprova",
+       any("sem motivo escrito" in p for p in problemas(classe_sem_motivo, {})))
 
     sem_periodo = {"corte": "02/10/2026", "cartoes": [
         dict(base["cartoes"][0], periodo=None)] + base["cartoes"][1:]}
