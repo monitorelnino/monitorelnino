@@ -46,6 +46,37 @@ GOV_DC = ("INSTANTÂNEO dos cartões do topo da Defesa civil, para a Imprensa le
           "do ciclo trazem a contagem desde 29/06 e quantos entraram nos últimos sete dias.")
 
 
+LIMITE_ALERTA_HORAS = 24   # a mesma regra de `assets/js/defesa-civil.js`
+
+
+def alertas_pararam(marca, agora=None) -> "str | None":
+    """A frase da parada quando o carimbo dos alertas passou das 24 horas — ou `None`.
+
+    O carimbo vem no fuso da redação (-03:00), escrito por `coletar_sinais_risco.agora()`; a
+    comparação é em UTC, para a resposta não depender de onde o código roda. `agora` existe para
+    o autoteste poder provar os dois lados da fronteira sem esperar o relógio.
+    """
+    from datetime import datetime, timedelta, timezone
+    marca = str(marca or "")
+    if not marca:
+        return "a coleta de avisos e alertas não tem carimbo de data"
+    for formato, reserva in (("%d/%m/%Y %H:%M", timedelta()),
+                             ("%d/%m/%Y", timedelta(hours=23, minutes=59))):
+        try:
+            d = datetime.strptime(marca[:len("01/01/2026 00:00") if " " in formato else 10],
+                                  formato) + reserva
+            break
+        except ValueError:
+            d = None
+    if d is None:
+        return f"a coleta de avisos e alertas tem carimbo ilegível ({marca})"
+    d = d.replace(tzinfo=timezone(timedelta(hours=-3)))
+    agora = agora or datetime.now(timezone.utc)
+    if (agora - d).total_seconds() / 3600.0 > LIMITE_ALERTA_HORAS:
+        return f"sem atualização desde {marca}: a coleta de avisos e alertas passou das 24 horas"
+    return None
+
+
 def ultima_fechada(serie: dict, ano: str):
     """(semana, valor) da última semana COM valor, no ano dado. Função pura."""
     ses = sorted(k for k, v in (serie or {}).items() if v is not None and str(k).startswith(ano))
@@ -156,6 +187,12 @@ def cartoes_da_defesa_civil(alertas: dict, decretados: dict, por_uf: dict, hoje_
     """
     import datetime as dt
     res = (alertas or {}).get("resumo") or {}
+    # 08/10/2026: a página Defesa civil PARA de publicar contagem de alerta depois de 24 horas sem
+    # coleta ("desenhar o retrato de ontem como em vigor é o único erro desta página que pode
+    # machucar alguém"), e o instantâneo do topo seguia publicando o número — de onde a Imprensa o
+    # copiava. A regra passa a estar no instantâneo, que é a fonte das duas superfícies.
+    if alertas_pararam((alertas or {}).get("gerado_em")):
+        res = {}
     muns_alerta = set(((alertas or {}).get("municipios") or {}).keys())
     quando = (alertas or {}).get("gerado_em")
     decret = {k: v for k, v in ((decretados or {}).get("municipios") or {}).items() if v.get("decreto")}
@@ -325,8 +362,26 @@ def _autoteste() -> int:
        cartoes_da_saude({}, {}, {}, {}, {})[0]["sem_coleta"] is True
        and cartoes_da_saude({}, {}, {}, {}, {})[0]["valor"] is None)
 
+    # 08/10/2026: o carimbo do fixture passa a ser RELATIVO ao relógio do teste. Com data fixa, a
+    # regra das 24 horas zeraria o resumo e os três casos abaixo reprovariam por envelhecimento do
+    # fixture, não por defeito do código.
+    from datetime import datetime as _dt, timedelta as _td, timezone as _tz
+    _fresco = (_dt.now(_tz(_td(hours=-3))) - _td(hours=1)).strftime("%d/%m/%Y %H:%M")
+    _velho = (_dt.now(_tz(_td(hours=-3))) - _td(hours=30)).strftime("%d/%m/%Y %H:%M")
+    ok("carimbo de uma hora não para a contagem", alertas_pararam(_fresco) is None)
+    ok("carimbo de trinta horas para a contagem", bool(alertas_pararam(_velho)))
+    ok("carimbo ausente para a contagem", bool(alertas_pararam("")))
+    _parado = cartoes_da_defesa_civil(
+        {"gerado_em": _velho, "resumo": {"municipios_cemaden": 13, "municipios_inmet": 2886},
+         "municipios": {"3550308": {}}},
+        {"municipios": {}}, {"nacional": {}}, "2026-10-02", {})
+    _pp = {c["id"]: c for c in _parado}
+    ok("alerta velho não publica contagem, e declara a parada",
+       _pp["municipios_alerta_cemaden"]["valor"] is None
+       and _pp["municipios_alerta_cemaden"]["sem_coleta"] is True)
+
     dc = cartoes_da_defesa_civil(
-        {"gerado_em": "02/10/2026 11:22", "resumo": {"municipios_cemaden": 13, "municipios_inmet": 2886},
+        {"gerado_em": _fresco, "resumo": {"municipios_cemaden": 13, "municipios_inmet": 2886},
          "municipios": {"3550308": {}, "9999999": {}}},
         {"municipios": {"3550308": {"decreto": True, "primeiro_decreto": "01/10/2026",
                                     "reconhecido": True, "fontes": [{"data": "01/10/2026"}]},
