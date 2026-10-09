@@ -165,16 +165,14 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       dest.innerHTML = cartao(b.dataset.uf, D.uf[b.dataset.uf]); dest.hidden = false;
     });
     const f = D.fonte || {};
-    const pe = document.getElementById('contatoFonte');
-    if (pe) {
-      const p = document.createElement('p'); p.className = 'fonte-figura';
-      p.innerHTML = '<span class="fonte-k">Fonte:</span> '
-        + (f.url ? '<a href="' + esc(f.url) + '" target="_blank" rel="noopener">' : '')
-        + 'Diretório da Defesa Civil nos Estados (MIDR)' + (f.url ? '</a>' : '')
-        + (f.atualizado_pelo_orgao_em ? ', atualizado pelo órgão em ' + esc(f.atualizado_pelo_orgao_em) : '')
-        + (f.consultado_em ? ' · transcrito em ' + esc(f.consultado_em) : '');
-      pe.appendChild(p);
-    }
+    // As duas datas separadas e nomeadas, no formato único de crédito do site (a regra de crédito
+    // vence o texto literal do pedido; divergência registrada no PR): o órgão atualizou o diretório
+    // em uma data, e o MARÉ o transcreveu em outra.
+    if (window.MonitorMapas) MonitorMapas.credito('contatoFonte', {
+      fontes: ['Diretório da Defesa Civil nos Estados (MIDR)'
+        + (f.atualizado_pelo_orgao_em ? ', atualizado pelo órgão em ' + f.atualizado_pelo_orgao_em : '')
+        + (f.consultado_em ? ', transcrito em ' + f.consultado_em : '')],
+      url: f.url, data: f.consultado_em});
   }).catch(() => { siglas.innerHTML = '<p class="note">Contatos não carregados.</p>'; });
 })();
 
