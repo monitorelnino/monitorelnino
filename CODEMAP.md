@@ -48,7 +48,7 @@ Atualizado em 09/10/2026.
 | `analisar_decretos.py` | — | — | — | — | não |
 | `analise_sensibilidade.py` | — | — | — | 2 | não |
 | `aplicar_c10_imprensa.py` | — | — | — | — | não |
-| `aplicar_promocoes_do_juiz.py` | — | — | — | — | SIM |
+| `aplicar_promocoes_do_juiz.py` | — | — | — | 1 | SIM |
 | `aplicar_revisao.py` | — | — | — | — | não |
 | `atualizar.py` | — | — | — | — | não |
 | `atualizar_boletins.py` | — | `boletins.json` | — | — | não |
