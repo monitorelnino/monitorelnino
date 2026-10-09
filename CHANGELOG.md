@@ -27,6 +27,9 @@ não pontuados permanecem na versão corrente.
 
 
 
+
+
+
 ## 2026-10-09 · #PR · a coleta perdida volta, e o marcador sobrevive ao push
 
 Reaplicados os artefatos de `diarios` e `juiz` da noite de 08→09, pela porta de cada arquivo. Três
@@ -34,7 +37,20 @@ consertos: o passo 1a guardava o trabalho num artefato que ninguém reaplicava, 
 reaplica antes de coletar; o marcador `.feito` morria com o push perdido, e passa a subir como
 artefato, com um dono só; e o despachante ganhou observador por `push`, fora do cron. Casos 11, 12
 e 13 no ensaio.
+## 2026-10-09 · #PR · a fila de pistas passa a ter porta para origem e domínio
 
+Lote 2.8. Medido pista por pista: 12.309 das 13.503 pistas ativas tinham origem fora do esquema,
+9.976 sem origem nenhuma, e 1.667 das 1.734 de rede social estavam em domínio alheio. A porta
+recusa origem fora do esquema e rede social fora de domínio de rede ou `.gov.br`; o teto por
+município vale por classe de domínio; e um portão novo confere que todo script citado por
+workflow existe.
+## 2026-10-09 · #PR · a aplicação no banco volta a ter rede e uma regra só
+
+Lote 2.4. O rollback do aplicador nunca disparava: `rodar_portoes()` devolve `(ok, saida)` e a
+tupla era atribuída inteira a `ok`, sempre verdadeira — portão vermelho confirmava em vez de
+desfazer. E o caminho das descobertas gravava sempre `categoria: "plano"`, sem evidência nem
+proveniência, enquanto o caminho do juiz grava a categoria do veredito: um `plano_antigo` entrava
+como plano novo. Onde: aplicar_promocoes_do_juiz.py, julgar_e_aplicar_descobertas.py.
 ## 2026-10-09 · #PR · atribuição do ato: domínio vence nome no texto
 
 Lote 2.1. Nome homônimo sem a UF no texto deixa de classificar (241 nomes estão em mais de uma

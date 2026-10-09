@@ -319,6 +319,21 @@ def autoteste() -> int:
     casos.append(("a ementa sai do objeto ex-ante",
                   r["documento"].startswith("Fica instituído o Plano Municipal")))
     sem_objeto = registro_do_veredito(dict(base, criterios={}), 0, 0, "DOM", "x", "28/09/2026")
+    # 09/10/2026 (A1-02): trava ESTRUTURAL do desempacotamento. `rodar_portoes()` devolve
+    # `(ok, saida)`; atribuir a tupla inteira a `ok` torna a rede de protecao morta, porque tupla
+    # de dois elementos e sempre verdadeira. A trava le o proprio fonte: foi assim que o defeito
+    # passou em revisao, e ler o fonte e o unico jeito de pegar o mesmo erro de novo sem rodar a
+    # aplicacao de verdade.
+    fonte_deste = pathlib.Path(__file__).read_text(encoding="utf-8")
+    atribuicoes = [l.strip() for l in fonte_deste.splitlines()
+                   if l.strip().endswith("= rodar_portoes()")]
+    casos.append(("o retorno de rodar_portoes e desempacotado em (ok, saida)",
+                  atribuicoes == ["ok, saida_portoes = rodar_portoes()"]))
+    import inspect
+    from julgar_e_aplicar_descobertas import rodar_portoes as _rp
+    casos.append(("rodar_portoes continua devolvendo dois valores",
+                  "return True," in inspect.getsource(_rp)
+                  and "return False," in inspect.getsource(_rp)))
     casos.append(("sem objeto, a ementa diz o que é sem inventar texto",
                   "classificado como plano_antigo" in sem_objeto["documento"]))
 
@@ -403,14 +418,23 @@ def main() -> int:
     gravar_em(PONTOS, pontos)
     print(f"{len(aplicados)} registro(s) escrito(s); rodando recálculo e portões antes de confirmar")
 
-    ok = rodar_portoes()
+    # 09/10/2026 (A1-02): `rodar_portoes()` devolve a TUPLA `(ok, saida)`, e aqui ela era atribuida
+    # inteira a `ok`. Tupla de dois elementos e sempre verdadeira — a rede de protecao descrita no
+    # cabecalho deste arquivo NUNCA disparou: portao vermelho confirmava a aplicacao em vez de
+    # desfaze-la. O motivo agora guarda a saida do portao que reprovou, porque reverter sem dizer o
+    # que reprovou obriga a repetir a rodada para descobrir.
+    ok, saida_portoes = rodar_portoes()
     if not ok:
         restaurar_dados(backup)
+        ultima = [l for l in (saida_portoes or "").splitlines() if l.strip()][-6:]
         for v in aplicados:
             v["revertido_por_portao"] = {"em": hoje.isoformat(),
-                                         "motivo": "portão vermelho depois da aplicação"}
+                                         "motivo": "portão vermelho depois da aplicação",
+                                         "saida": chr(10).join(ultima)}
         gravar_em(REGISTRO, doc)
         print("X portão vermelho — tudo restaurado em disco; as decisões guardam o erro")
+        for l in ultima:
+            print(f"   | {l}")
         return 1
 
     for v in aplicados:
