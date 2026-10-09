@@ -298,7 +298,7 @@ function escreverEstados(alvoId, rotuloDe, filtro){
   const limpo = h => String(h || '').replace(/<span class="dica-fonte">.*?<\/span>/g, '')
     .replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
   const linhas = UFS.filter(uf => !filtro || filtro(uf)).map(uf => nomeUF(uf) + ': ' + limpo(rotuloDe(uf)));
-  el.textContent = linhas.length ? linhas.join('; ') + '.' : 'Nenhum estado nesta consulta.';
+  el.innerHTML = linhas.map(l => '<li>' + esc(l) + '</li>').join('');
 }
 
 // ---- Mapa 2: seca observada ----

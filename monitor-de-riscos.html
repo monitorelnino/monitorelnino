@@ -31,7 +31,7 @@
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <script src="assets/catalogo.js?v=b8d1077f"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=02c36ec9">
-<link rel="stylesheet" href="assets/base.css?v=cf3ed1b9">
+<link rel="stylesheet" href="assets/base.css?v=80e94df0">
 <script src="assets/mapas.js?v=d80ff2e6"></script>
 </head>
 <body class="pagina-dados">
@@ -151,7 +151,7 @@
         <div class="figura-midia"><svg id="mapaRiscoPrevisto" role="img" aria-describedby="estadosRiscoPrevisto" aria-label="Mapa do Brasil com o risco previsto pelo boletim do Painel El Niño para cada estado" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legRiscoPrevisto"></div>
         <div class="cartao-mapa-rodape">
-        <details class="cartao-mapa-dados cartao-mapa-estados"><summary>Ver estados</summary><p class="figura-leitura" id="estadosRiscoPrevisto"></p></details>
+        <details class="cartao-mapa-dados cartao-mapa-estados"><summary>Ver estados</summary><ul class="lista-estados" id="estadosRiscoPrevisto"></ul></details>
         <details class="cartao-mapa-dados"><summary>Ver em lista</summary>
           <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblRiscoPrevisto"><thead><tr><th>UF</th><th>Risco previsto</th></tr></thead><tbody></tbody></table></div>
         </details>
@@ -169,7 +169,7 @@
         <div class="figura-midia"><svg id="mapaSecas" role="img" aria-describedby="estadosSecas" aria-label="Mapa do Brasil pela categoria de seca observada no Monitor de Secas" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legSecas"></div>
         <div class="cartao-mapa-rodape">
-        <details class="cartao-mapa-dados cartao-mapa-estados"><summary>Ver estados</summary><p class="figura-leitura" id="estadosSecas"></p></details>
+        <details class="cartao-mapa-dados cartao-mapa-estados"><summary>Ver estados</summary><ul class="lista-estados" id="estadosSecas"></ul></details>
         <details class="cartao-mapa-leitura"><summary>Como ler</summary>
           <p class="figura-leitura">O mapa é mensal e sai com algumas semanas de atraso. Um estado aparece na categoria que cobre pelo menos metade do seu território.</p>
         </details>
@@ -181,7 +181,7 @@
         <div class="figura-midia"><svg id="mapaFogo" role="img" aria-describedby="estadosFogo" aria-label="Mapa do Brasil com os focos de calor das últimas 24 horas na posição em que foram detectados, agrupados em células de cerca de 11 quilômetros, segundo o INPE" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legFogo"></div>
         <div class="cartao-mapa-rodape">
-        <details class="cartao-mapa-dados cartao-mapa-estados"><summary>Ver estados</summary><p class="figura-leitura" id="estadosFogo"></p></details>
+        <details class="cartao-mapa-dados cartao-mapa-estados"><summary>Ver estados</summary><ul class="lista-estados" id="estadosFogo"></ul></details>
         <details class="cartao-mapa-dados"><summary>Ver em lista</summary>
           <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblFogo"><thead><tr><th>UF</th><th>Focos em 24 h</th></tr></thead><tbody></tbody></table></div>
         </details>
@@ -199,7 +199,7 @@
         <div class="figura-midia"><svg id="mapaAr" role="img" aria-describedby="estadosAr" aria-label="Mapa do Brasil pelo índice de qualidade do ar estimado na capital de cada estado" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legAr"></div>
         <div class="cartao-mapa-rodape">
-        <details class="cartao-mapa-dados cartao-mapa-estados"><summary>Ver estados</summary><p class="figura-leitura" id="estadosAr"></p></details>
+        <details class="cartao-mapa-dados cartao-mapa-estados"><summary>Ver estados</summary><ul class="lista-estados" id="estadosAr"></ul></details>
         <details class="cartao-mapa-dados"><summary>Ver em lista</summary>
           <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblAr"><thead><tr><th>UF</th><th>Capital</th><th>Índice (EAQI)</th><th>PM2,5</th><th>PM10</th><th>Ozônio</th></tr></thead><tbody></tbody></table></div>
         </details>
@@ -214,7 +214,7 @@
         <div class="figura-midia"><svg id="mapaTemperatura" role="img" aria-describedby="estadosTemperatura" aria-label="Mapa do Brasil com a temperatura máxima prevista na capital de cada estado e quanto ela está acima da média histórica do mês" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legTemperatura"></div>
         <div class="cartao-mapa-rodape">
-        <details class="cartao-mapa-dados cartao-mapa-estados"><summary>Ver estados</summary><p class="figura-leitura" id="estadosTemperatura"></p></details>
+        <details class="cartao-mapa-dados cartao-mapa-estados"><summary>Ver estados</summary><ul class="lista-estados" id="estadosTemperatura"></ul></details>
         <details class="cartao-mapa-dados"><summary>Ver em lista</summary>
           <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblTemperatura"><thead><tr><th>UF</th><th>Capital</th><th>Máxima prevista</th><th>Mínima prevista</th><th>Máxima medida (estação do INMET)</th></tr></thead><tbody></tbody></table></div>
         </details>
@@ -229,7 +229,7 @@
         <div class="figura-midia"><svg id="mapaAvisos" role="img" aria-describedby="estadosAvisos" aria-label="Mapa do Brasil pelo maior grau de aviso meteorológico do INMET em vigor em cada estado" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legAvisos"></div>
         <div class="cartao-mapa-rodape">
-        <details class="cartao-mapa-dados cartao-mapa-estados"><summary>Ver estados</summary><p class="figura-leitura" id="estadosAvisos"></p></details>
+        <details class="cartao-mapa-dados cartao-mapa-estados"><summary>Ver estados</summary><ul class="lista-estados" id="estadosAvisos"></ul></details>
         <details class="cartao-mapa-dados"><summary>Ver em lista</summary>
           <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblAvisos"><thead><tr><th>UF</th><th>Avisos</th><th>Grau</th><th>Fenômeno</th></tr></thead><tbody></tbody></table></div>
         </details>
@@ -256,7 +256,7 @@
 </div>
 
 <script src="assets/colunas.js?v=3669e58d" defer></script>
-<script src="assets/js/monitor-de-riscos.js?v=4df7c146" defer></script><script src="assets/js/proveniencia.js?v=50e1ec93" defer></script>
+<script src="assets/js/monitor-de-riscos.js?v=6e165b81" defer></script><script src="assets/js/proveniencia.js?v=50e1ec93" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

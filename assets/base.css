@@ -1300,3 +1300,5 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
 .grade-mapas--previsto > .cartao-mapa{width:min(100%, 66%); justify-self:start;}
 @media (max-width: 1020px){ .grade-mapas--previsto > .cartao-mapa{width:100%;} }
 .dica-fonte{color:var(--muted); font-size:var(--fs-caption);}
+.lista-estados{margin:var(--sp-2) 0 0; padding-left:var(--sp-4); font-size:var(--fs-caption);
+  line-height:var(--lh-caption); color:var(--ink);}
