@@ -32,13 +32,6 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-09 · #PR · a fila do Querido Diário chega ao juiz
-
-Lote 2 (A1-12). A consulta ao diário gravava as pistas num formato que o juiz não lê, num arquivo
-que se sobrescrevia, e consultava sempre os mesmos 40 de 169 municípios. Agora cada edição com
-excerto entra pela porta da fila, no esquema, com o excerto que recorta o ato; o host atual da API
-vem primeiro; e um cursor percorre os 169.
-
 ## 2026-10-09 · #PR · o ato é recortado de dentro do diário, e o corte vem depois
 
 Lote 2.2. O recorte do ato procurava cabeçalho em início de linha num texto sem quebras: devolvia a
@@ -67,6 +60,13 @@ consertos: o passo 1a guardava o trabalho num artefato que ninguém reaplicava, 
 reaplica antes de coletar; o marcador `.feito` morria com o push perdido, e passa a subir como
 artefato, com um dono só; e o despachante ganhou observador por `push`, fora do cron. Casos 11, 12
 e 13 no ensaio.
+## 2026-10-09 · #PR · a fila do Querido Diário chega ao juiz
+
+Lote 2 (A1-12). A consulta ao diário gravava as pistas num formato que o juiz não lê, num arquivo
+que se sobrescrevia, e consultava sempre os mesmos 40 de 169 municípios. Agora cada edição com
+excerto entra pela porta da fila, no esquema, com o excerto que recorta o ato; o host atual da API
+vem primeiro; e um cursor percorre os 169.
+
 ## 2026-10-09 · #PR · a fila de pistas passa a ter porta para origem e domínio
 
 Lote 2.8. Medido pista por pista: 12.309 das 13.503 pistas ativas tinham origem fora do esquema,
