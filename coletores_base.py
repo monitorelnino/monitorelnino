@@ -249,6 +249,18 @@ NIVEIS_DE_PISTA = ("A", "B", "C")
 TETO_DE_PISTAS_POR_MUNICIPIO = 5
 
 
+def classe_de_dominio(url: str) -> str:
+    """"oficial" quando a URL esta em dominio de ente publico; "outros" no resto. Funcao pura.
+
+    09/10/2026 (A1-18): o teto por municipio passa a valer por CLASSE de dominio. O documento no
+    dominio da prefeitura e prova de outra ordem que a noticia de portal, e as duas nao disputam a
+    mesma vaga — cinco noticias barravam o PDF do plano.
+    """
+    import urllib.parse
+    host = urllib.parse.urlparse(str(url or "")).netloc.lower()
+    return "oficial" if host.endswith((".gov.br", ".leg.br", ".jus.br", ".mp.br")) else "outros"
+
+
 def validar_pista(pista: dict, existentes: list = None) -> tuple:
     """(ok, motivo) — a pista pode entrar na fila? FUNCAO PURA.
 
@@ -290,9 +302,16 @@ def validar_pista(pista: dict, existentes: list = None) -> tuple:
               and p.get("tipo") == tipo]
     if iguais:
         return False, "repetida: mesma url_final, alvo e tipo ja na fila"
+    # 09/10/2026 (A1-18). O teto contava por alvo e tipo, e nada mais: cinco noticias de portal
+    # ocupavam as cinco vagas do municipio, e o PDF do plano no dominio da prefeitura — a melhor
+    # prova que existe para este indice — era recusado por teto. Dominio oficial do ente e
+    # dominio alheio passam a disputar vagas SEPARADAS: cinco de cada, para o mesmo alvo e o mesmo
+    # assunto. Nao e teto maior: e teto que nao deixa a prova forte perder a vaga para a fraca.
+    classe = classe_de_dominio(url)
     abertas = [p for p in (existentes or [])
                if str(p.get("alvo") or "") == str(pista.get("alvo") or "")
                and p.get("tipo") == tipo
+               and classe_de_dominio(str(p.get("url_final") or p.get("url") or "")) == classe
                and not str(p.get("status") or "").startswith(("fechada", "aplicada", "rejeitada"))]
     if len(abertas) >= TETO_DE_PISTAS_POR_MUNICIPIO:
         nivel_novo = NIVEIS_DE_PISTA.index(str(pista.get("nivel")).upper())
@@ -301,7 +320,7 @@ def validar_pista(pista: dict, existentes: list = None) -> tuple:
                   and NIVEIS_DE_PISTA.index(str(p.get("nivel") or "C").upper()) > nivel_novo]
         if not piores:
             return False, (f"acima do teto de {TETO_DE_PISTAS_POR_MUNICIPIO} pistas abertas para o "
-                           "alvo e o assunto, e nao e de nivel superior")
+                           f"alvo, o assunto e o dominio {classe}, e nao e de nivel superior")
     return True, ""
 
 
