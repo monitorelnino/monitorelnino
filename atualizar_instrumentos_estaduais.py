@@ -249,6 +249,45 @@ def diagnosticar(uf: str, achados: list[dict], municipios: list[dict]) -> list[d
     return propostas
 
 
+def autoteste() -> int:
+    """Autoteste PURO (A3-30, A6-26, 08/10/2026): sem rede, sem ler `data/`, sem escrever nada.
+
+    O script não tinha autoteste, e é ele que propõe mudança de categoria a partir do que o
+    repositório estadual lista. Os fixtures são os dois casos reais: ES publica PLANCON por edição
+    anual; SE mantém, no mesmo repositório, edição de 2026 ao lado de planos de 2018 e 2019.
+    """
+    casos = [
+        ("edição deste ciclo é plano vigente", categoria_por_ano(2026) == "plano"),
+        ("edição do limiar é plano vigente", categoria_por_ano(ANO_LIMIAR_VIGENTE) == "plano"),
+        ("edição anterior ao limiar é plano de ciclo anterior",
+         categoria_por_ano(ANO_LIMIAR_VIGENTE - 1) == "plano_antigo"),
+        ("edição de 2018 é plano de ciclo anterior", categoria_por_ano(2018) == "plano_antigo"),
+    ]
+    achados_es = [{"nome": "Linhares", "ano_edicao": 2025, "rotulo_ano": "2025",
+                   "url": "https://x.es.gov.br/plancon-2025.pdf", "lat": -19.4, "lon": -40.1}]
+    base = [{"nome": "Linhares", "uf": "ES", "categoria": "nao_localizado"},
+            {"nome": "Poço Redondo", "uf": "SE", "categoria": "plano"}]
+    props = diagnosticar("ES", achados_es, base)
+    casos.append(("quem estava sem registro recebe proposta de atualização",
+                  len(props) == 1 and props[0]["acao"] == "atualizar"))
+    casos.append(("a proposta leva a data do DOCUMENTO, não a da consulta (A3-09)",
+                  props and props[0]["data"] == "2025"))
+    casos.append(("a proposta declara quando foi localizada",
+                  props and bool(props[0].get("localizado_em"))))
+    novos = diagnosticar("ES", [{**achados_es[0], "nome": "Cidade Nova"}], base)
+    casos.append(("município fora da base vira proposta nova",
+                  len(novos) == 1 and novos[0]["acao"] == "novo"))
+    iguais = diagnosticar("SE", [{"nome": "Poço Redondo", "ano_edicao": 2026,
+                                  "rotulo_ano": "2026", "url": "https://y.se.gov.br/p.pdf"}], base)
+    casos.append(("plano já registrado com categoria igual não gera proposta", iguais == []))
+    ruins = [n for n, ok in casos if not ok]
+    for n, ok in casos:
+        print(f"  {'✓' if ok else '✗'} {n}")
+    print(f"{'✓ AUTOTESTE OK' if not ruins else f'✗ AUTOTESTE: {len(ruins)} falha(s)'} — "
+          f"{len(casos)} casos, sem rede e sem escrita.")
+    return 1 if ruins else 0
+
+
 def main():
     """Percorre os repositórios estaduais com parser implementado, compara com o banco atual e grava as propostas em data/instrumentos_revisar.json para aprovação humana."""
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -316,4 +355,6 @@ def main():
 
 
 if __name__ == "__main__":
+    if "--autoteste" in sys.argv or "--self-test" in sys.argv:
+        sys.exit(autoteste())
     sys.exit(main() or 0)

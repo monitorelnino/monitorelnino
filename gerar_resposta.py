@@ -32,7 +32,10 @@ def _hoje():
         a = _js.load(open(_pl.Path(__file__).resolve().parent / "data" / "meta.json", encoding="utf-8")).get("atualizado_em")
         return _dt.datetime.strptime(a, "%d/%m/%Y").date()
     except Exception:  # noqa: BLE001
-        return _dt._hoje()
+        # 08/10/2026 (A3-25): aqui estava `_dt._hoje()`, que não existe em `datetime` — a reserva
+        # levantaria AttributeError no único dia em que ela é usada, o dia sem `meta.json`.
+        from coletores_base import hoje_editorial as _he
+        return _he()
 
 UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"]
 INICIO_CICLO = date(2026, 6, 29)     # Boletim nº 1 do Painel El Niño

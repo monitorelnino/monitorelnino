@@ -12,4 +12,3 @@ Para embutir no seu site, cole:
 O selo diz o que o índice mede — preparação *demonstrável publicamente* — e
 nunca "preparado". Não altere o número: o arquivo é regravado pelo pipeline e
 o site confere, a cada publicação, que cada selo bate com `data/indice.json`.
-Licença: MIT, como o restante do projeto.

@@ -1031,6 +1031,294 @@
  },
  {
   "data": "08/10/2026",
+  "uf": "DF",
+  "municipio": null,
+  "o_que_mudou": "a cobertura populacional do estado passa de 80,0 para 30,0 e a nota de 66,7 para 50,0",
+  "por_que": "A3-02 (D2): a camada declarada contava população duas vezes — o desconto do excedente ignorava municípios já creditados por `estrutura` e `coberto_estadual`, e o contador de planos desatualizados era somado ao de planos sem desconto nem teto. Passa a um termo só, com teto no número de municípios da UF. Portão: `scripts/verificar_camada_declarada.py`. Errata C31 na corrente do congelamento.",
+  "achado": "A3-02",
+  "lote": "1.8"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "GO",
+  "municipio": null,
+  "o_que_mudou": "a cobertura populacional do estado passa de 7,5 para 7,4 e a nota de 69,2 para 69,1",
+  "por_que": "A3-02 (D2): a camada declarada contava população duas vezes — o desconto do excedente ignorava municípios já creditados por `estrutura` e `coberto_estadual`, e o contador de planos desatualizados era somado ao de planos sem desconto nem teto. Passa a um termo só, com teto no número de municípios da UF. Portão: `scripts/verificar_camada_declarada.py`. Errata C31 na corrente do congelamento.",
+  "achado": "A3-02",
+  "lote": "1.8"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "MA",
+  "municipio": null,
+  "o_que_mudou": "a cobertura populacional do estado passa de 19,9 para 19,4 e a nota de 45,0 para 44,8",
+  "por_que": "A3-02 (D2): a camada declarada contava população duas vezes — o desconto do excedente ignorava municípios já creditados por `estrutura` e `coberto_estadual`, e o contador de planos desatualizados era somado ao de planos sem desconto nem teto. Passa a um termo só, com teto no número de municípios da UF. Portão: `scripts/verificar_camada_declarada.py`. Errata C31 na corrente do congelamento.",
+  "achado": "A3-02",
+  "lote": "1.8"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "PR",
+  "municipio": null,
+  "o_que_mudou": "a cobertura populacional do estado passa de 29,8 para 29,4 e a nota de 64,9 para 64,8",
+  "por_que": "A3-02 (D2): a camada declarada contava população duas vezes — o desconto do excedente ignorava municípios já creditados por `estrutura` e `coberto_estadual`, e o contador de planos desatualizados era somado ao de planos sem desconto nem teto. Passa a um termo só, com teto no número de municípios da UF. Portão: `scripts/verificar_camada_declarada.py`. Errata C31 na corrente do congelamento.",
+  "achado": "A3-02",
+  "lote": "1.8"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "RR",
+  "municipio": null,
+  "o_que_mudou": "a cobertura populacional do estado passa de 69,2 para 68,2 e a nota de 48,1 para 47,7",
+  "por_que": "A3-02 (D2): a camada declarada contava população duas vezes — o desconto do excedente ignorava municípios já creditados por `estrutura` e `coberto_estadual`, e o contador de planos desatualizados era somado ao de planos sem desconto nem teto. Passa a um termo só, com teto no número de municípios da UF. Portão: `scripts/verificar_camada_declarada.py`. Errata C31 na corrente do congelamento.",
+  "achado": "A3-02",
+  "lote": "1.8"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "RS",
+  "municipio": null,
+  "o_que_mudou": "a cobertura populacional do estado passa de 30,6 para 25,4 e a nota de 55,2 para 53,5",
+  "por_que": "A3-02 (D2): a camada declarada contava população duas vezes — o desconto do excedente ignorava municípios já creditados por `estrutura` e `coberto_estadual`, e o contador de planos desatualizados era somado ao de planos sem desconto nem teto. Passa a um termo só, com teto no número de municípios da UF. Portão: `scripts/verificar_camada_declarada.py`. Errata C31 na corrente do congelamento.",
+  "achado": "A3-02",
+  "lote": "1.8"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "a média nacional do MARÉ Legal passa de 45,3 para 44,6",
+  "por_que": "A3-02 (D2): a camada declarada contava população duas vezes — o desconto do excedente ignorava municípios já creditados por `estrutura` e `coberto_estadual`, e o contador de planos desatualizados era somado ao de planos sem desconto nem teto. Passa a um termo só, com teto no número de municípios da UF. Portão: `scripts/verificar_camada_declarada.py`. Errata C31 na corrente do congelamento.",
+  "achado": "A3-02",
+  "lote": "1.8"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "PE",
+  "municipio": null,
+  "o_que_mudou": "a fração da população sob decreto no estado passa de 15,9% para 41,1%",
+  "por_que": "A3-06: a planilha oficial da Operação Carro-Pipa, recebida do MIDR em 05/10/2026 em resposta a pedido de acesso à informação, lista por município as portarias de reconhecimento com data e DOU. Setenta e uma portarias do ciclo não tinham par em `data/atos_resposta.json` e 70 municípios não tinham evento nenhum — 69 na mesma portaria, a nº 2.203 (DOU de 06/07/2026), vizinha das nº 2.200 e nº 2.212, que o banco tinha: lote inteiro perdido pelo coletor do DOU. Os eventos entram com `documento_nao_localizado`, porque a prova é a planilha do órgão e o texto da portaria ainda não foi lido. Portão: regra (h) de `verificar_resposta.py`.",
+  "achado": "A3-06",
+  "lote": "1.6"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "PB",
+  "municipio": null,
+  "o_que_mudou": "a fração da população sob decreto no estado passa de 13,0% para 13,1%",
+  "por_que": "A3-06: a planilha oficial da Operação Carro-Pipa, recebida do MIDR em 05/10/2026 em resposta a pedido de acesso à informação, lista por município as portarias de reconhecimento com data e DOU. Setenta e uma portarias do ciclo não tinham par em `data/atos_resposta.json` e 70 municípios não tinham evento nenhum — 69 na mesma portaria, a nº 2.203 (DOU de 06/07/2026), vizinha das nº 2.200 e nº 2.212, que o banco tinha: lote inteiro perdido pelo coletor do DOU. Os eventos entram com `documento_nao_localizado`, porque a prova é a planilha do órgão e o texto da portaria ainda não foi lido. Portão: regra (h) de `verificar_resposta.py`.",
+  "achado": "A3-06",
+  "lote": "1.6"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "RN",
+  "municipio": null,
+  "o_que_mudou": "a fração da população sob decreto no estado passa de 14,6% para 14,9%",
+  "por_que": "A3-06: a planilha oficial da Operação Carro-Pipa, recebida do MIDR em 05/10/2026 em resposta a pedido de acesso à informação, lista por município as portarias de reconhecimento com data e DOU. Setenta e uma portarias do ciclo não tinham par em `data/atos_resposta.json` e 70 municípios não tinham evento nenhum — 69 na mesma portaria, a nº 2.203 (DOU de 06/07/2026), vizinha das nº 2.200 e nº 2.212, que o banco tinha: lote inteiro perdido pelo coletor do DOU. Os eventos entram com `documento_nao_localizado`, porque a prova é a planilha do órgão e o texto da portaria ainda não foi lido. Portão: regra (h) de `verificar_resposta.py`.",
+  "achado": "A3-06",
+  "lote": "1.6"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "o contador de resposta passa de 726 para 796 municípios e de 10,2% para 11,4% da população; Pernambuco passa de 40 para 107 municípios com ato de resposta no banco",
+  "por_que": "A3-06: a planilha oficial da Operação Carro-Pipa, recebida do MIDR em 05/10/2026 em resposta a pedido de acesso à informação, lista por município as portarias de reconhecimento com data e DOU. Setenta e uma portarias do ciclo não tinham par em `data/atos_resposta.json` e 70 municípios não tinham evento nenhum — 69 na mesma portaria, a nº 2.203 (DOU de 06/07/2026), vizinha das nº 2.200 e nº 2.212, que o banco tinha: lote inteiro perdido pelo coletor do DOU. Os eventos entram com `documento_nao_localizado`, porque a prova é a planilha do órgão e o texto da portaria ainda não foi lido. Portão: regra (h) de `verificar_resposta.py`.",
+  "achado": "A3-06",
+  "lote": "1.6"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "AC",
+  "municipio": "Rio Branco",
+  "o_que_mudou": "a ficha do estado dizia \"Novo\" sobre a capital enquanto o banco dizia \"ainda não verificada\"; passa a dizer o que o banco diz",
+  "por_que": "A3-11 e A4-03: a capital tinha duas fontes — um `status` e um `info` escritos à mão em `data/estados.json` e a categoria do banco, que é a que pontua. O cartão do estado lia o texto; o cartão do município lia o banco, e o leitor via os dois no mesmo clique. `capital` passa a guardar só o nome, e o que a ficha diz sai do registro do banco, pela mesma função do cartão do município. Portão: `scripts/verificar_capital.py`.",
+  "achado": "A3-11",
+  "lote": "1.10"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "AP",
+  "municipio": "Macapá",
+  "o_que_mudou": "a ficha do estado dizia \"Plano em elaboração\" sobre a capital enquanto o banco dizia \"ainda não verificada\"; passa a dizer o que o banco diz",
+  "por_que": "A3-11 e A4-03: a capital tinha duas fontes — um `status` e um `info` escritos à mão em `data/estados.json` e a categoria do banco, que é a que pontua. O cartão do estado lia o texto; o cartão do município lia o banco, e o leitor via os dois no mesmo clique. `capital` passa a guardar só o nome, e o que a ficha diz sai do registro do banco, pela mesma função do cartão do município. Portão: `scripts/verificar_capital.py`.",
+  "achado": "A3-11",
+  "lote": "1.10"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "PA",
+  "municipio": "Belém",
+  "o_que_mudou": "a ficha do estado dizia \"Plano em elaboração\" sobre a capital enquanto o banco dizia \"ainda não verificada\"; passa a dizer o que o banco diz",
+  "por_que": "A3-11 e A4-03: a capital tinha duas fontes — um `status` e um `info` escritos à mão em `data/estados.json` e a categoria do banco, que é a que pontua. O cartão do estado lia o texto; o cartão do município lia o banco, e o leitor via os dois no mesmo clique. `capital` passa a guardar só o nome, e o que a ficha diz sai do registro do banco, pela mesma função do cartão do município. Portão: `scripts/verificar_capital.py`.",
+  "achado": "A3-11",
+  "lote": "1.10"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "DF",
+  "municipio": "Brasília",
+  "o_que_mudou": "a ficha do estado dizia \"Não localizado\" sobre a capital enquanto o banco dizia \"coberta pelo plano estadual\"; passa a dizer o que o banco diz",
+  "por_que": "A3-11 e A4-03: a capital tinha duas fontes — um `status` e um `info` escritos à mão em `data/estados.json` e a categoria do banco, que é a que pontua. O cartão do estado lia o texto; o cartão do município lia o banco, e o leitor via os dois no mesmo clique. `capital` passa a guardar só o nome, e o que a ficha diz sai do registro do banco, pela mesma função do cartão do município. Portão: `scripts/verificar_capital.py`.",
+  "achado": "A3-11",
+  "lote": "1.10"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "MS",
+  "municipio": "Campo Grande",
+  "o_que_mudou": "a ficha do estado dizia \"Não localizado\" sobre a capital enquanto o banco dizia \"ainda não verificada\"; passa a dizer o que o banco diz",
+  "por_que": "A3-11 e A4-03: a capital tinha duas fontes — um `status` e um `info` escritos à mão em `data/estados.json` e a categoria do banco, que é a que pontua. O cartão do estado lia o texto; o cartão do município lia o banco, e o leitor via os dois no mesmo clique. `capital` passa a guardar só o nome, e o que a ficha diz sai do registro do banco, pela mesma função do cartão do município. Portão: `scripts/verificar_capital.py`.",
+  "achado": "A3-11",
+  "lote": "1.10"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "MG",
+  "municipio": "Belo Horizonte",
+  "o_que_mudou": "a ficha do estado dizia \"Em elaboração\" sobre a capital enquanto o banco dizia \"ainda não verificada\"; passa a dizer o que o banco diz",
+  "por_que": "A3-11 e A4-03: a capital tinha duas fontes — um `status` e um `info` escritos à mão em `data/estados.json` e a categoria do banco, que é a que pontua. O cartão do estado lia o texto; o cartão do município lia o banco, e o leitor via os dois no mesmo clique. `capital` passa a guardar só o nome, e o que a ficha diz sai do registro do banco, pela mesma função do cartão do município. Portão: `scripts/verificar_capital.py`.",
+  "achado": "A3-11",
+  "lote": "1.10"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "PR",
+  "municipio": "Curitiba",
+  "o_que_mudou": "a ficha do estado dizia \"Novo\" sobre a capital enquanto o banco dizia \"estrutura de coordenação\"; passa a dizer o que o banco diz",
+  "por_que": "A3-11 e A4-03: a capital tinha duas fontes — um `status` e um `info` escritos à mão em `data/estados.json` e a categoria do banco, que é a que pontua. O cartão do estado lia o texto; o cartão do município lia o banco, e o leitor via os dois no mesmo clique. `capital` passa a guardar só o nome, e o que a ficha diz sai do registro do banco, pela mesma função do cartão do município. Portão: `scripts/verificar_capital.py`.",
+  "achado": "A3-11",
+  "lote": "1.10"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "RS",
+  "municipio": "Porto Alegre",
+  "o_que_mudou": "a ficha do estado dizia \"Em elaboração\" sobre a capital enquanto o banco dizia \"plano localizado\"; passa a dizer o que o banco diz",
+  "por_que": "A3-11 e A4-03: a capital tinha duas fontes — um `status` e um `info` escritos à mão em `data/estados.json` e a categoria do banco, que é a que pontua. O cartão do estado lia o texto; o cartão do município lia o banco, e o leitor via os dois no mesmo clique. `capital` passa a guardar só o nome, e o que a ficha diz sai do registro do banco, pela mesma função do cartão do município. Portão: `scripts/verificar_capital.py`.",
+  "achado": "A3-11",
+  "lote": "1.10"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "SC",
+  "municipio": "Florianópolis",
+  "o_que_mudou": "a ficha do estado dizia \"Em elaboração\" sobre a capital enquanto o banco dizia \"ainda não verificada\"; passa a dizer o que o banco diz",
+  "por_que": "A3-11 e A4-03: a capital tinha duas fontes — um `status` e um `info` escritos à mão em `data/estados.json` e a categoria do banco, que é a que pontua. O cartão do estado lia o texto; o cartão do município lia o banco, e o leitor via os dois no mesmo clique. `capital` passa a guardar só o nome, e o que a ficha diz sai do registro do banco, pela mesma função do cartão do município. Portão: `scripts/verificar_capital.py`.",
+  "achado": "A3-11",
+  "lote": "1.10"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "sai do site a frase comparativa sobre a capital (\"caso mais avançado entre as 27 capitais\" e companhia): comparação construída por nós não entra, e a ficha descreve o que se tem",
+  "por_que": "A3-11 e A4-03: a capital tinha duas fontes — um `status` e um `info` escritos à mão em `data/estados.json` e a categoria do banco, que é a que pontua. O cartão do estado lia o texto; o cartão do município lia o banco, e o leitor via os dois no mesmo clique. `capital` passa a guardar só o nome, e o que a ficha diz sai do registro do banco, pela mesma função do cartão do município. Portão: `scripts/verificar_capital.py`.",
+  "achado": "A3-11",
+  "lote": "1.10"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "o cartão \"atos federais de financiamento nos últimos 7 dias\" publicava 0 atos no Financiamento e na Imprensa; passa a declarar que a origem não traz data de publicação do ato, e nenhum número é publicado ali",
+  "por_que": "A3-10: nenhum dos cinco compromissos federais tinha campo de data, e a função da janela devolvia lista vazia — o zero vinha do campo inexistente, não de medição. A regra do site é que zero só se publica quando a coleta rodou. O coletor passa a declarar a ausência da data na origem, e a regra (m) de `verificar_financiamento.py` reprova cartão de janela com valor quando a origem não tem data.",
+  "achado": "A3-10",
+  "lote": "1.13"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "a Imprensa publicava \"288.729 de pessoas\"; o \"de\" passa a aparecer só com \"milhão\" e \"milhões\"",
+  "por_que": "A3-23, auditoria de 08/10/2026 (lote 1.16).",
+  "achado": "A3-23",
+  "lote": "1.16"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "Umuarama/PR aparecia duas vezes no mapa; fica um ponto (275 → 274)",
+  "por_que": "A3-24, auditoria de 08/10/2026 (lote 1.16).",
+  "achado": "A3-24",
+  "lote": "1.16"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "os selos traziam uma frase sobre licença de código; sai, pela regra editorial de 03/10 — o site não fala de licença",
+  "por_que": "A3-26, auditoria de 08/10/2026 (lote 1.16).",
+  "achado": "A3-26",
+  "lote": "1.16"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "cada reconhecimento federal gerava DOIS itens no feed, um deles chamando o ato federal de \"decreto de emergência registrado\"; e 126 títulos traziam a data em ISO. Fica um item por fato, com a data em dd/mm/aaaa",
+  "por_que": "A3-28, auditoria de 08/10/2026 (lote 1.16).",
+  "achado": "A3-28",
+  "lote": "1.16"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "a ficha do painel chamava a camada declarada nacional de \"(simulado)\"; ela está em uso desde 21/09/2026",
+  "por_que": "A3-31, auditoria de 08/10/2026 (lote 1.16).",
+  "achado": "A3-31",
+  "lote": "1.16"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "o CSV de atos de resposta saía sem o código do IBGE — sem chave para cruzar — e com as datas numa coluna só; passa a trazer `ibge`, `data_decreto_municipal` e `data_reconhecimento`",
+  "por_que": "A3-21, auditoria de 08/10/2026 (lote 1.16).",
+  "achado": "A3-21",
+  "lote": "1.16"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "a reserva de data em `gerar_resposta.py` chamava uma função que não existe (`datetime._hoje`): levantaria erro no único dia em que é usada",
+  "por_que": "A3-25, auditoria de 08/10/2026 (lote 1.16).",
+  "achado": "A3-25",
+  "lote": "1.16"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "a regra C11, que marcava 26/10/2026 como prazo para registro sem número de ato sair da pontuação, está revogada; medida hoje, ela tiraria 142 dos 151 registros pontuáveis (45,9 milhões de habitantes) por falta de número de ato em documento que o site já leu",
+  "por_que": "A3-03, decisão D3: a C11 nunca teve código que a aplicasse e contraria a decisão §101 de 03/10/2026, que é posterior. O que a ausência de documento tira do crédito é tratado pela D1 (§104). A fila `data/citacao_incompleta.json` passa a ser informação de ficha, regenerada pela cadeia — estava parada desde 02/09, com 145 registros congelados; são 140 hoje.",
+  "achado": "A3-03",
+  "lote": "1.15"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "a versão do índice passa a ter um dono: `versao_indice` em `data/meta.json`, escrito pelo motor e lido por quem publica. O `CITATION.cff` e o `datapackage.json` diziam \"2.3\" e passam a dizer \"3.1\"; a tabela §5.2 da metodologia descrevia componentes extintos",
+  "por_que": "A3-16: cinco documentos públicos discordavam entre si e do código, e dois métodos diferentes eram chamados de v3.1. Portão: `scripts/verificar_versao_do_indice.py`.",
+  "achado": "A3-16",
+  "lote": "1.15"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "contribuição de leitor vinda de site de prefeitura (`aracaju.se.gov.br` e afins) era registrada com canal \"órgão estadual\"; passa a ser \"site municipal\"",
+  "por_que": "Achado ao escrever o autoteste do item 3.7: o padrão casava qualquer subdomínio de `<uf>.gov.br` que não começasse por \"www.\", e prefeitura em domínio do estado é a regra, não a exceção. Órgão estadual passa a ser o domínio do estado sem subdomínio, ou um dos prefixos conhecidos de defesa civil.",
+  "achado": "A6-26 (de passagem)",
+  "lote": "3.7"
+ },
+ {
+  "data": "08/10/2026",
   "uf": null,
   "municipio": null,
   "o_que_mudou": "os 21 estados verificados do MARÉ Saúde mostravam 0,0 na grade, e a ficha aberta por `index.html#UF` — o caminho do selo embutido em outro site — abria com 0,0/100 e a barra vazia. Passam a mostrar o valor",

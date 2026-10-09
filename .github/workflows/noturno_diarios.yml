@@ -102,7 +102,10 @@ jobs:
           #
           # `created:>=` na busca de execuções: a API aceita o filtro, e assim a contagem é da
           # JANELA, não das últimas N execuções — uma noite movimentada não esconde a abertura.
-          FILTRO='[.[] | select(.createdAt >= "JANELA_AQUI") | select(.databaseId != RUN_AQUI) | select(.status == "in_progress" or .conclusion == "success" or .conclusion == "failure")] | length'
+          # 09/10/2026: `queued`, `requested`, `waiting` e `pending` entram — run à espera de runner
+          # não é run que falhou, e a guarda que o ignorava deixou o vigia disparar a corrente
+          # por cima de si mesma na noite de 08→09 (dois elos pendentes cancelados).
+          FILTRO='[.[] | select(.createdAt >= "JANELA_AQUI") | select(.databaseId != RUN_AQUI) | select((.status | test("queued|requested|waiting|pending|in_progress")) or .conclusion == "success" or .conclusion == "failure")] | length'
           FILTRO="${FILTRO/JANELA_AQUI/$JANELA}"
           FILTRO="${FILTRO/RUN_AQUI/${{ github.run_id }}}"
           TRABALHARAM="$(gh run list --workflow=noturno_diarios.yml --limit 20 \
