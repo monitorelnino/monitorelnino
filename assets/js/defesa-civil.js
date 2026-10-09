@@ -225,8 +225,14 @@ function __init(){
     if (!marca) return null;
     const m = String(marca).match(/(\d{2})\/(\d{2})\/(\d{4})(?:[ T](\d{2}):(\d{2}))?/);
     if (!m) return null;
-    const d = new Date(Number(m[3]), Number(m[2]) - 1, Number(m[1]),
-                       m[4] ? Number(m[4]) : 23, m[5] ? Number(m[5]) : 59);
+    /* 08/10/2026: o carimbo e escrito pelo coletor no FUSO DA REDACAO (America/Sao_Paulo, -03:00)
+       -- `coletar_sinais_risco.agora()`. Construir a data com componentes LOCAIS fazia a idade do
+       dado depender de onde a pagina renderiza: no navegador no Brasil, tres horas mais nova; no
+       runner, que roda em UTC, tres horas mais velha. Era o bastante para a pagina declarar a
+       parada das 24 horas enquanto a Imprensa, lendo o mesmo arquivo, publicava a contagem. O
+       fuso passa a ser explicito. */
+    const d = new Date(Date.UTC(Number(m[3]), Number(m[2]) - 1, Number(m[1]),
+                                (m[4] ? Number(m[4]) : 23) + 3, m[5] ? Number(m[5]) : 59));
     return (Date.now() - d.getTime()) / 36e5;
   }
   const horas = horasDesde(carimbo);
