@@ -98,10 +98,22 @@ def main():
         if not caminho.exists():
             falhas.append(f"{arquivo} não encontrado — o portão precisa saber onde o dia é prometido")
             continue
-        m = re.search(padrao, caminho.read_text(encoding="utf-8"))
+        texto = caminho.read_text(encoding="utf-8")
+        m = re.search(padrao, texto)
         if not m:
-            falhas.append(f"{arquivo}: não localizei a frase de cadência (o padrão do portão "
-                          f"precisa acompanhar a reescrita do texto)")
+            # 09/10/2026: a pagina deixou de prometer dia ao leitor, e exigir a frase passou a
+            # reprovar texto correto. O que o portao cobra e a CONCORDANCIA: se a pagina nomear
+            # um dia da semana, ele tem de ser o dia da constante e do cron. Se ela nao nomear
+            # nenhum, nao ha promessa a conferir — mas tambem nao pode haver dia solto no texto,
+            # que e o jeito de a divergencia voltar sem o portao ver.
+            soltos = {d for d in NOMES_POR_INDICE.values()
+                      if re.search(r"\b" + d + r"s?\b", texto, re.IGNORECASE)}
+            if esperado:
+                soltos.discard(esperado)
+            if soltos:
+                falhas.append(
+                    f"{arquivo} nomeia {sorted(soltos)} ao leitor fora da frase de cadencia, "
+                    f"e o codigo publica em {esperado!r}")
             continue
         dito = m.group(1).lower().rstrip("s")
         if esperado and not dito.startswith(esperado[:5]):
@@ -241,7 +253,7 @@ def main():
 
     print(f"✓ cadência coerente: DIA_PUBLICACAO={dia} ({nome_dia}) medido no fuso da redação; "
           f"portão usa a constante; cron semanal cai no dia certo em Brasília; "
-          f"obrigado.html promete ao leitor o mesmo dia (pesquisadores.html saiu no §258, arquivada); "
+          f"nenhum texto público nomeia dia divergente (obrigado.html deixou de prometer dia em 09/10/2026; pesquisadores.html saiu no §258, arquivada); "
           f"destrava de rodada completa só pelo botão manual e sem suprimir o commit")
     return 0
 
