@@ -26,6 +26,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+
+## 2026-10-08 · #PR · Lote 4.6: uma frase só sobre a conferência, a do processo real
+
+O formulário prometia "conferência da nossa equipe"; a página seguinte dizia que ela é automática e "semanal, normalmente no domingo", enquanto o rodapé diz que o site publica às 6h e às 22h — três cadências para o mesmo envio, e uma etapa humana que não existe. Os três lugares passam a dizer a frase aprovada. Saem "banco público" (regra de 03/10) e a frase do e-mail, que o formulário não pede.
 ## 2026-10-08 · #PR · Lote 1.14: o PDF público passa a descrever o índice que existe
 
 A análise de sensibilidade tinha a conta da cobertura copiada do motor, e a cópia divergiu: ignorava a camada declarada nacional e usava 0,3 onde o motor usa 0,5. O PDF publicava a tabela de camadas errada (DF 100% documentado contra 38/62 do motor), escrevia a cobertura na coluna da estrutura, nomeava "Antecipação" como componente e trazia o crédito antigo do plano de ciclo anterior. Conta única `cobertura_de_uf`; índice reproduzido sem mudança. Portão novo.

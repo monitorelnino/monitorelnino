@@ -42,6 +42,9 @@ Atualizado em 09/10/2026.
 | `assets/js/proteja-se.js` | proteja-se.html | `alertas/vigentes.json`, `contatos_uf.json`, `saude_sinais.json`, `sinais_risco.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
 | `assets/js/proveniencia.js` | financiamento.html, monitor-de-riscos.html, saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+36) | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_publicado_navegador.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
 | `assets/js/saude.js` | saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+42) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_publicado_navegador.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
+| `_p3.py` | — | — | — | — | não |
+| `_p4.py` | — | — | — | — | não |
+| `_p5.py` | — | — | — | — | não |
 | `analisar_decretos.py` | — | — | — | — | não |
 | `analise_sensibilidade.py` | — | — | — | 2 | não |
 | `aplicar_c10_imprensa.py` | — | — | — | — | não |

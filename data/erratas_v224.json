@@ -1370,5 +1370,14 @@
   "por_que": "A3-05: `analise_sensibilidade.py` tinha a conta da cobertura COPIADA do motor, e a cópia divergiu — ignorava a camada declarada nacional (ativa desde 21/09) e aplicava 0,3 ao plano desatualizado onde o motor aplica 0,5. A conta passa a ter um dono, `recalcular_mare.cobertura_de_uf`, e o portão `scripts/verificar_camadas_do_pdf.py` compara a análise com o índice publicado, UF por UF.",
   "achado": "A3-05",
   "lote": "1.14"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "o formulário dizia \"Nada entra no Monitor sem conferência da nossa equipe\" e \"a conferência é feita pela nossa equipe\"; a página de obrigado dizia que a conferência é automática, \"semanal, normalmente no domingo\", e falava de \"banco público\" e de um e-mail que o formulário não pede. Os três lugares passam a dizer a mesma frase, que é a do processo real",
+  "por_que": "A4-11: o código coleta, lê e julga sozinho (decisão de 08/10/2026), e o site prometia revisão humana que não existe — com três cadências diferentes para o mesmo envio. \"Banco público\" sai pela regra editorial de 03/10 (não falamos de base de dados), e a frase do e-mail sai porque o formulário não pede e-mail.",
+  "achado": "A4-11",
+  "lote": "4.6"
  }
 ]
