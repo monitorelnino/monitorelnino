@@ -57,7 +57,7 @@ const fonteDe = id => (SINAIS.fontes || {})[id] || {};
 const coletada = id => fonteDe(id).status === 'coletado';
 
 /* Crédito de UMA linha ao pé do cartão (04/09/2026): "Fonte: nome · data" ou "· sem coleta até o corte". */
-function credito(caixaId, fonteId){
+function credito(caixaId, fonteId, apoioId){
   /* 29/09/2026: a linha passou a trazer o que a tabela removida trazia — órgão, o que o dado é e a
      situação —, porque a seção "Fontes dos sinais de risco" saiu e a fonte de uma figura pertence
      à figura. Situação só aparece quando NÃO é "coletado": dizer "coletado" em toda linha seria
@@ -68,6 +68,9 @@ function credito(caixaId, fonteId){
   const partes = [f.orgao, f.nome].filter(Boolean);
   const situacao = coletada(fonteId) ? null : (SITUACAO[f.status] || 'sem coleta até o corte');
   if (situacao) partes.push(situacao);
+  /* 09/10/2026 (ajuste 6): a medição da estação entra no texto do mouse e na tabela, não no mapa;
+     a fonte dela vai no mesmo crédito, como segunda parte — só quando há medição coletada para mostrar. */
+  if (apoioId && coletada(apoioId)) partes.push('medição: ' + (fonteDe(apoioId).orgao || fonteDe(apoioId).nome));
   MonitorMapas.credito(caixaId, {fontes: partes.join(' · '), url: f.url_publica,
                                  data: coletada(fonteId) ? f.consultado_em : null});
   const d = document.querySelector('#' + caixaId + ' .fonte-figura'); if (d) d.dataset.credito = fonteId;
@@ -425,7 +428,7 @@ MonitorMapas.pontos(__ctx(), 'mapaTemperatura',
 // aquela capital não tem desvio.
 anelVazio('mapaTemperatura', UFS.filter(uf => coordCapital[uf] && desvioDe(uf) == null), ATM.calor,
           'anelTemp');
-credito('boxTemperatura', 'inmet_previsao_capitais');
+credito('boxTemperatura', 'inmet_previsao_capitais', 'inmet_estacoes');
 // A visão MUNICIPAL da temperatura continua vindo do Open-Meteo (clima_municipios.json): o INMET
 // publica previsão por capital, não pelos 5.571 municípios. São duas fontes para duas granularidades,
 // e cada uma é creditada onde aparece.
@@ -459,7 +462,13 @@ const rotuloAr = uf => { const a = ar(uf); const [d, o] = fonteLinha('open_meteo
   const h = /(\d{4})-(\d{2})-(\d{2})T(\d{2})/.exec(String(i.hora || ''));
   return MonitorMapas.dica({titulo: capitalUF(uf, nomeCapital(a, uf)), linhas: [
     'Índice europeu de qualidade do ar: ' + n1(i.valor) + ' (' + FAIXA_EAQI_NOME[FAIXAS_EAQI.filter(l => i.valor > l).length] + ')',
-    h ? 'Hora de maior concentração: ' + Number(h[4]) + 'h de ' + h[3] + '/' + h[2] : ''], data: d, fonte: o}); };
+    h ? 'Hora de maior concentração: ' + Number(h[4]) + 'h de ' + h[3] + '/' + h[2] : '',
+    medicaoAr(uf)], data: d, fonte: o}); };
+/* Ajuste 6b: quando o OpenAQ tiver ponto, a medição entra no texto da capital — nunca segundo marcador. */
+function medicaoAr(uf){ const m = (SINAIS.uf[uf] || {}).ar_medido; if (!m || !m.medida) return '';
+  const v = m.medida.pm25 != null ? m.medida.pm25 : m.medida.valor; if (v == null) return '';
+  const dm = /(\d{4})-(\d{2})-(\d{2})/.exec(String(m.medida.data || m.data || ''));
+  return 'Medido' + (dm ? ' em ' + dm[3] + '/' + dm[2] : '') + ' na estação' + (m.distancia_km != null ? ' a ' + n1(m.distancia_km) + ' km do centro' : '') + ': PM2,5 ' + n1(v) + ' µg/m³'; }
 desenharMapa('mapaAr', 'legAr', () => ATM.ar.uf, rotuloAr,
   [{cor: ATM.ar.rampa[0], rotulo: 'Boa'}, {cor: ATM.ar.rampa[1], rotulo: 'Razo\u00e1vel'},
    {cor: ATM.ar.rampa[2], rotulo: 'Moderada'}, {cor: ATM.ar.rampa[3], rotulo: 'Ruim'},
@@ -471,7 +480,7 @@ MonitorMapas.pontos(__ctx(), 'mapaAr',
   {r: () => 6, cor: d => escalaAr(d.v), rotulo: d => rotuloAr(d.uf), classe: 'pontosAr'});
 anelVazio('mapaAr', UFS.filter(uf => coordCapital[uf] && typeof iqa(uf) !== 'number'), ATM.ar,
           'anelAr');
-credito('boxAr', 'open_meteo_ar');
+credito('boxAr', 'open_meteo_ar', 'openaq');
 
 
 /* CAMADA MUNICIPAL (§209) — os mesmos dois fenômenos, nos 5.570 municípios.
