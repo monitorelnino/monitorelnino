@@ -235,8 +235,8 @@ python3 scripts/portoes_locais.py tudo        # ou: paginas | dados
 ```
 
 A lista de portões **não vive aqui**. Ela é derivada de `.github/workflows/portoes.yml`, que
-é o único lugar que reprova de verdade — em 09/10/2026 são **241 comandos** (`--listar` confere):
-125 no perfil `paginas` e 116 no `dados`, sem repetição entre os dois; destes, 138 são
+é o único lugar que reprova de verdade — em 09/10/2026 são **242 comandos** (`--listar` confere):
+125 no perfil `paginas` e 117 no `dados`, sem repetição entre os dois; destes, 139 são
 `--autoteste` e 103 são portão propriamente dito. Este arquivo e o PROTOCOLO
 §3.3 *descrevem* o conjunto; não o definem.
 
