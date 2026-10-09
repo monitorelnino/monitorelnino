@@ -1352,5 +1352,23 @@
   "por_que": "A4-14 (governança §27): o leitor lia o diário de bordo da coleta como se fosse dado. \"Em classificação\" sai; \"link oficial em verificação\" vira \"documento não localizado até o corte\"; \"bateria\" vira \"todas as fontes\".",
   "achado": "A4-14",
   "lote": "4.5"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "o PDF público 'Documentação do Índice' publicava a tabela de camadas da cobertura errada — DF aparecia como 100% documentado, quando o motor tem 38% documentado e 62% declarado — e um efeito de variante que era artefato da divergência (as notas não mudam)",
+  "por_que": "A3-05: `analise_sensibilidade.py` tinha a conta da cobertura COPIADA do motor, e a cópia divergiu — ignorava a camada declarada nacional (ativa desde 21/09) e aplicava 0,3 ao plano desatualizado onde o motor aplica 0,5. A conta passa a ter um dono, `recalcular_mare.cobertura_de_uf`, e o portão `scripts/verificar_camadas_do_pdf.py` compara a análise com o índice publicado, UF por UF.",
+  "achado": "A3-05",
+  "lote": "1.14"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "o mesmo PDF nomeava 'Antecipação' como terceiro componente do índice e publicava o crédito antigo do plano de ciclo anterior (0,6); passa a nomear instrumento, estrutura e cobertura, com o crédito lido do motor",
+  "por_que": "A3-05: `analise_sensibilidade.py` tinha a conta da cobertura COPIADA do motor, e a cópia divergiu — ignorava a camada declarada nacional (ativa desde 21/09) e aplicava 0,3 ao plano desatualizado onde o motor aplica 0,5. A conta passa a ter um dono, `recalcular_mare.cobertura_de_uf`, e o portão `scripts/verificar_camadas_do_pdf.py` compara a análise com o índice publicado, UF por UF.",
+  "achado": "A3-05",
+  "lote": "1.14"
  }
 ]

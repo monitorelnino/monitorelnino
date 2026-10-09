@@ -212,6 +212,10 @@ jobs:
           # assunto: dado
           python3 scripts/verificar_versao_do_indice.py
           # assunto: dado
+          python3 scripts/verificar_camadas_do_pdf.py --autoteste
+          # assunto: dado
+          python3 scripts/verificar_camadas_do_pdf.py
+          # assunto: dado
           python3 scripts/verificar_esquema_de_pista.py --autoteste
           # assunto: dado
           # barra_publicacao: sim

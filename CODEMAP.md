@@ -43,7 +43,7 @@ Atualizado em 09/10/2026.
 | `assets/js/proveniencia.js` | financiamento.html, monitor-de-riscos.html, saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+36) | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_publicado_navegador.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
 | `assets/js/saude.js` | saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+42) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_publicado_navegador.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
 | `analisar_decretos.py` | — | — | — | — | não |
-| `analise_sensibilidade.py` | — | — | — | 1 | não |
+| `analise_sensibilidade.py` | — | — | — | 2 | não |
 | `aplicar_c10_imprensa.py` | — | — | — | — | não |
 | `aplicar_promocoes_do_juiz.py` | — | — | — | — | SIM |
 | `aplicar_revisao.py` | — | — | — | — | não |
@@ -137,7 +137,7 @@ Atualizado em 09/10/2026.
 | `preencher_fallback_estatico.py` | — | — | — | — | não |
 | `preservar_evidencias.py` | — | `evidencias.json`, `municipios.json` | — | 6 | não |
 | `processar_contribuicoes.py` | — | — | — | — | não |
-| `recalcular_mare.py` | — | — | — | 6 | SIM |
+| `recalcular_mare.py` | — | — | — | 7 | SIM |
 | `registrar_saude_central.py` | — | `saude_uf.json` | — | — | não |
 | `revisar_pistas.py` | — | `pistas_imprensa.json` | — | — | não |
 | `robustez_saude.py` | — | — | — | — | não |
