@@ -27,6 +27,14 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-09 · #PR · atribuição do ato: domínio vence nome no texto
+
+Lote 2.1. Nome homônimo sem a UF no texto deixa de classificar (241 nomes estão em mais de uma
+UF); `prefeitura.<nome>.<uf>.gov.br` passa a resolver o dono do domínio; o corretor de atribuição,
+que existia e não rodava, entra na corrente antes do juiz; e o aplicador recusa veredito cujo
+documento está em domínio de outro município — três dos trinta promovidos. Onde: juiz.py,
+scripts/municipio_do_dominio.py, aplicar_promocoes_do_juiz.py, noturno_juiz.yml.
+
 ## 2026-10-08 · #PR · Lote 4.6: uma frase só sobre a conferência, a do processo real
 
 O formulário prometia "conferência da nossa equipe"; a página seguinte dizia que ela é automática e "semanal, normalmente no domingo", enquanto o rodapé diz que o site publica às 6h e às 22h — três cadências para o mesmo envio, e uma etapa humana que não existe. Os três lugares passam a dizer a frase aprovada. Saem "banco público" (regra de 03/10) e a frase do e-mail, que o formulário não pede.

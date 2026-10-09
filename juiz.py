@@ -49,11 +49,15 @@ USO
 
   python3 juiz.py --autoteste     # os dez canários, um por desfecho
 """
+import json
+import pathlib
 import re
 import unicodedata
 
 from classificador_natureza import classificar as classificar_natureza
 from classificador_natureza import citacao_completa, extrair_data
+
+RAIZ = pathlib.Path(__file__).resolve().parent
 
 # 1.1 (28/09/2026): a Etapa 4 passou a exigir VERBO e INSTRUMENTO na mesma vizinhança. A versão sobe
 # porque o critério mudou, e porque `pendente()` usa a versão para decidir o que volta à fila: subir
@@ -490,7 +494,32 @@ def e_proveniencia_de_lai(proveniencia: dict) -> bool:
 # =============================================================================================
 # Etapa 1 — identidade
 # =============================================================================================
-def etapa1_identidade(texto: str, nome: str, uf: str) -> tuple:
+_HOMONIMOS = None
+
+
+def nomes_homonimos() -> set:
+    """Nomes de município que existem em MAIS DE UMA UF, pela referência do IBGE.
+
+    São 233 na malha de 5.571 — "Bom Jesus" está em seis estados. Enquanto a etapa 1 aceitava o
+    nome sem a UF, qualquer um deles podia creditar o município errado, e o diário consorciado é
+    justamente o arquivo onde dezenas de nomes convivem na mesma página.
+    """
+    global _HOMONIMOS
+    if _HOMONIMOS is None:
+        caminho = RAIZ / "data" / "municipios_ibge_referencia.json"
+        conta = {}
+        try:
+            for m in json.loads(caminho.read_text(encoding="utf-8")):
+                n = normalizar(str(m.get("nome") or ""))
+                if n:
+                    conta[n] = conta.get(n, 0) + 1
+        except (OSError, ValueError):
+            return set()
+        _HOMONIMOS = {n for n, v in conta.items() if v > 1}
+    return _HOMONIMOS
+
+
+def etapa1_identidade(texto: str, nome: str, uf: str, homonimos=None) -> tuple:
     """O documento nomeia o ente, e o nome bate com a pista. Homônimo se resolve pela UF.
 
     Estrita por desenho: é esta etapa que impede que um diário consorciado — um arquivo com
@@ -502,9 +531,20 @@ def etapa1_identidade(texto: str, nome: str, uf: str) -> tuple:
         return False, "ente_nao_confirmado", "pista sem nome de município"
     if n not in t:
         return False, "ente_nao_confirmado", f'o texto não nomeia "{nome}"'
-    # homônimos: o nome aparece, mas a UF da pista não — não há como saber qual dos homônimos é
+    # homônimos: o nome aparece, mas a UF da pista não.
+    #
+    # 09/10/2026 (A1-09). Antes isto passava com uma nota, e a nota não impedia nada: "Bom Jesus"
+    # existe em seis estados, e um diário consorciado nomeia dezenas de municípios na mesma
+    # página. Quando o nome é homônimo — está em mais de uma UF na referência do IBGE —, sem a UF
+    # no texto NÃO HÁ COMO SABER qual deles é, e o juiz não classifica: recusa, com motivo.
+    # Nome único segue passando pelo nome, que é identidade suficiente.
     u = normalizar(uf)
-    if u and u not in t and normalizar(f"/{uf}") not in t and f" {u}" not in f" {t}":
+    sem_uf = bool(u) and u not in t and normalizar(f"/{uf}") not in t and f" {u}" not in f" {t}"
+    conjunto = nomes_homonimos() if homonimos is None else homonimos
+    if sem_uf and n in conjunto:
+        return (False, "homonimo_sem_uf",
+                f'"{nome}" existe em mais de uma UF e o texto não cita {uf}')
+    if sem_uf:
         return True, "", f'nomeia "{nome}" (UF não citada no texto; identidade pelo nome)'
     return True, "", trecho_em_volta(texto, re.search(re.escape(nome), texto, re.I)) or f'nomeia "{nome}"'
 
@@ -1049,6 +1089,19 @@ def autoteste() -> int:
         ("o codebook é versionado no veredito",
          julgar(CANARIOS["plano_novo"]["texto"], nome="Bonito", uf="MS",
                 url=URL_OFICIAL)["codebook"] == CODEBOOK_VERSAO),
+        # 09/10/2026 (A1-09): homônimo sem UF não se classifica. O conjunto entra por parâmetro
+        # para a trava ser pura — não depende da malha em disco.
+        ("nome homônimo sem a UF no texto é recusado",
+         etapa1_identidade("decreto de Bom Jesus declara emergência", "Bom Jesus", "PI",
+                           homonimos={"bom jesus"})[:2] == (False, "homonimo_sem_uf")),
+        ("nome homônimo COM a UF no texto passa",
+         etapa1_identidade("decreto de Bom Jesus - PI declara emergência", "Bom Jesus", "PI",
+                           homonimos={"bom jesus"})[0] is True),
+        ("nome único sem a UF segue passando pelo nome",
+         etapa1_identidade("decreto de Irauçuba declara emergência", "Irauçuba", "CE",
+                           homonimos={"bom jesus"})[0] is True),
+        ("a malha real tem homônimo, e a etapa 1 o enxerga",
+         "bom jesus" in nomes_homonimos()),
         ("família de risco específica vence multirrisco",
          etapa5_familia_de_risco("plano de contingência de proteção e defesa civil para a "
                                  "estiagem e a seca severa")[1] == "seca_estiagem_fogo"),
