@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-09 · #PR · Defesa civil: topo compacto, uma rampa de contagem, Cemaden em texto
+
+Ajuste 10 da editoria. Topo em dois grupos ("Consulta de dd/mm, hh:mm" e "Desde 29/06/2026"); saem os versaletes de família; seção "Avisos e alertas em vigor · consulta de…". Cemaden abaixo de 30 municípios vira lista por estado. Tipos de aviso em dois painéis com escala própria e valor na ponta. Mapas de contagem numa rampa de um matiz, por quantis. Portão novo: `verificar_figuras_de_contagem.js`. Contrato atualizado.
+
 ## 2026-10-09 · #PR · as pendentes do Google News deixam de girar em falso
 
 Lote 2.6. 3.415 pistas com link opaco do Google News ficavam pendentes para sempre, e a noite gastava

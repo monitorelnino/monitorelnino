@@ -34,6 +34,7 @@ let BR_GEOJSON, MAP_POINTS, RESP, DECRETADOS, ALERTAS, SINAIS, CADASTRO, ENQ, AT
 
 const INICIO_CICLO = '2026-06-29';
 const LIMITE_ALERTA_HORAS = 24;
+const LIMIAR_CEMADEN = 30;   // ajuste 10: abaixo disto, o alerta do Cemaden é texto, não mapa
 
 async function __load(){
   try {
@@ -165,37 +166,55 @@ function __init(){
      a última é aberta: faixa fechada no topo esconde a diferença entre 200 e 800. A primeira
      categoria é "nenhum" e é nomeada — zero medido não é a mesma coisa que ausência de dado, e a
      legenda tem de dizer qual dos dois é. */
+  /* 09/10/2026 (ajuste 10, editoria): UMA família de cor para contagem na página toda — a rampa
+     `contagem`, de um matiz só —, e as faixas pelos QUANTIS da distribuição real, rotuladas com os
+     limites efetivos de cada faixa. Faixas de largura igual ("1 a 125 · 126 a 250…") espremiam quase
+     todos os estados na primeira cor. Cinza neutro só para "nenhum"; faixa vazia não existe. */
+  function faixasPorQuantis(valores, rampa){
+    const v = valores.filter(x => x > 0).sort((a, b) => a - b);
+    if (!v.length) return [];
+    const k = Math.min(rampa.length, new Set(v).size);
+    const grupos = [];
+    for (let i = 0; i < k; i++) {
+      const ini = Math.floor(i * v.length / k), fim = Math.floor((i + 1) * v.length / k);
+      const fatia = v.slice(ini, fim); if (!fatia.length) continue;
+      const ult = grupos[grupos.length - 1];
+      if (ult && fatia[0] <= ult.ate) { ult.ate = Math.max(ult.ate, fatia[fatia.length - 1]); continue; }
+      grupos.push({de: fatia[0], ate: fatia[fatia.length - 1]});
+    }
+    const cores = grupos.length === 1 ? [rampa[rampa.length - 1]]
+      : grupos.map((g, i) => rampa[Math.round(i * (rampa.length - 1) / (grupos.length - 1))]);
+    return grupos.map((g, i) => ({de: g.de, ate: g.ate, cor: cores[i]}));
+  }
+  const RAMPA_CONTAGEM = (ATM.contagem || {}).rampa || [CINZA];
   function mapaDeContagem(svgId, legId, porUF, familia, unidade, extraRotulo){
-    const valores = Object.values(porUF).filter(v => v > 0);
-    const maior = valores.length ? Math.max.apply(null, valores) : 0;
-    /* Família sem rampa cai no cinza de categoria da paleta, e não numa cor semântica escolhida
-       aqui: cor de família só vem da atmosfera (portão de estrutura). */
-    const rampa = (ATM[familia] || {}).rampa || [CINZA];
-    /* Quatro faixas sobre o maior valor observado, arredondadas para número legível. A régua é do
-       dado desta edição, e a legenda diz os limites — régua fixa inventaria faixa vazia. */
-    const passo = Math.max(1, Math.ceil(maior / 4));
-    const faixas = [1, passo, passo * 2, passo * 3].map((x, i) => ({
-      de: i === 0 ? 1 : (passo * i) + 1,
-      ate: i === 3 ? null : passo * (i + 1),
-      cor: rampa[Math.min(i, rampa.length - 1)],
-    }));
-    const faixaDe = v => {
-      if (!v) return null;
-      for (let i = faixas.length - 1; i >= 0; i--) if (v >= faixas[i].de) return faixas[i];
-      return faixas[0];
-    };
+    const faixas = faixasPorQuantis(Object.values(porUF), RAMPA_CONTAGEM);
+    const faixaDe = v => { if (!v) return null; return faixas.find(f => v >= f.de && v <= f.ate) || faixas[faixas.length - 1]; };
     const corDe = uf => { const f = faixaDe(porUF[uf] || 0); return f ? f.cor : CINZA; };
     const rotuloDe = uf => {
       const v = porUF[uf] || 0;
       return (v ? n(v) + ' ' + unidade + (v === 1 ? '' : 's') : 'nenhum ' + unidade)
         + (extraRotulo ? extraRotulo(uf) : '');
     };
-    const itens = faixas.map(f => ({
-      cor: f.cor,
-      rotulo: f.ate ? n(f.de) + ' a ' + n(f.ate) : n(f.de) + ' ou mais',
-    })).concat([{cor: CINZA, rotulo: 'nenhum'}]);
-    const svg = desenharMapa(svgId, legId, corDe, rotuloDe, itens, familia);
-    return svg;
+    const itens = faixas.map(f => ({cor: f.cor, rotulo: f.de === f.ate ? n(f.de) : n(f.de) + ' a ' + n(f.ate)}))
+      .concat([{cor: CINZA, rotulo: 'nenhum'}]);
+    return desenharMapa(svgId, legId, corDe, rotuloDe, itens, 'contagem');
+  }
+
+  /* Barras horizontais em HTML (09/10/2026, ajuste 10): rótulo inteiro (quebra de linha, nunca
+     corte), valor escrito na ponta em pt-BR, ordem decrescente, e um painel por órgão com escala
+     própria — pequenos múltiplos, nunca a mesma régua para INMET e Cemaden. Sem legenda: o título do
+     painel diz o que é a cor. */
+  function barrasHTML(alvoId, paineis){
+    const alvo = document.getElementById(alvoId); if (!alvo) return;
+    alvo.innerHTML = paineis.filter(p => p.itens.length).map(p => {
+      const max = Math.max.apply(null, p.itens.map(i => i[1]));
+      return '<div class="barras-painel">' + (p.titulo ? '<h4 class="barras-titulo">' + esc(p.titulo) + '</h4>' : '')
+        + p.itens.map(i => '<div class="barra-linha"><span class="barra-rotulo">' + esc(i[0]) + '</span>'
+          + '<span class="barra-trilho"><span class="barra" style="width:' + (max ? Math.max(1, 100 * i[1] / max).toFixed(1) : 0)
+          + '%;background:' + p.cor + '"></span><span class="barra-valor">' + n(i[1]) + '</span></span></div>').join('')
+        + '</div>';
+    }).join('') || '<p class="lacuna">Nenhum registro na consulta.</p>';
   }
 
   /* O clique no estado leva a lista municipal até ele. Teclado também: o `path` da UF já recebe
@@ -249,6 +268,7 @@ function __init(){
     /* Nada de mapa e nada de contagem: a seção declara a parada. Desenhar o retrato de ontem como
        "em vigor" é o único erro desta página que pode machucar alguém. */
     ['linhaAlertas', 'linhaCemaden', 'linhaAlertasTipo'].forEach(id => texto(id, semAtualizacao));
+    texto('dcTopoConsulta', semAtualizacao);
     texto('subAlertas', semAtualizacao + ' · a coleta de avisos e alertas roda a cada publicação');
     texto('subCemaden', semAtualizacao + ' · a coleta de avisos e alertas roda a cada publicação');
     ['legAlertas', 'legCemaden', 'legAlertasTipo'].forEach(id =>
@@ -256,6 +276,11 @@ function __init(){
     ['boxAlertas', 'boxCemaden', 'boxAlertasTipo'].forEach(id =>
       creditoSinal(id, ['cemaden_alertas', 'inmet_avisos'], carimbo || null));
   } else {
+    // 09/10/2026 (ajuste 10): o título diz a hora da consulta, não "agora".
+    const dm = (/^(\d{2}\/\d{2})\/\d{4}\s*(\d{2}:\d{2})?/.exec(String(carimbo)) || []);
+    const quando = dm[1] ? dm[1] + (dm[2] ? ', ' + dm[2] : '') : carimbo;
+    texto('tituloAlertas', 'Avisos e alertas em vigor · consulta de ' + quando);
+    texto('dcTopoConsulta', 'Consulta de ' + quando);
     texto('linhaAlertas', 'Consulta de ' + carimbo);
     texto('linhaCemaden', 'Consulta de ' + carimbo);
     texto('linhaAlertasTipo', 'Consulta de ' + carimbo);
@@ -293,7 +318,28 @@ function __init(){
     cliqueDeUF('mapAlertas', filtrarAviso);
 
     // ---- 1b. alertas do Cemaden ----
-    mapaDeContagem('mapCemaden', 'legCemaden', porUFCemaden, 'chuva_claro', 'município');
+    /* 09/10/2026 (ajuste 10): abaixo de LIMIAR_CEMADEN municípios, o mapa vira texto — nove
+       municípios em três estados num mapa do Brasil inteiro é um país cinza. Acima, o mapa volta,
+       pela regra do código. O limiar está declarado no contrato da página. */
+    if (comCemaden.length < LIMIAR_CEMADEN) {
+      const porUFLista = {};
+      comCemaden.forEach(m => (porUFLista[m.uf] = porUFLista[m.uf] || []).push(m));
+      const ufsC = Object.keys(porUFLista).sort();
+      const midia = document.querySelector('#boxCemaden .figura-midia');
+      if (midia) {
+        midia.classList.add('figura-midia--texto');
+        midia.innerHTML = comCemaden.length
+          ? '<div class="cemaden-resumo">' + n(comCemaden.length) + ' município' + (comCemaden.length === 1 ? '' : 's')
+            + ' em ' + esc(ufsC.join(', ')) + '</div><ul class="cemaden-lista">'
+            + ufsC.map(uf => '<li><strong>' + esc(uf) + '</strong>: ' + porUFLista[uf].sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'))
+              .map(m => esc(m.nome) + ' (' + esc(m.cemaden.map(a => a.nivel || 'nível não declarado').join(', ').toLowerCase()) + ')').join('; ') + '</li>').join('')
+            + '</ul>'
+          : '<div class="cemaden-resumo">Nenhum município sob alerta do Cemaden na consulta.</div>';
+      }
+      const leg = document.getElementById('legCemaden'); if (leg) leg.innerHTML = '';
+    } else {
+      mapaDeContagem('mapCemaden', 'legCemaden', porUFCemaden, 'chuva_claro', 'município');
+    }
     creditoSinal('boxCemaden', ['cemaden_alertas'], carimbo);
     const filtrarCemaden = listaBuscavel('boxCemaden', {
       colunas: ['Município', 'UF', 'Tipo', 'Nível', 'Desde'],
@@ -321,18 +367,11 @@ function __init(){
         .forEach(t => porTipo[t] = (porTipo[t] || 0) + 1);
     });
     const tipos = Object.entries(porTipo).sort((a, b) => b[1] - a[1]);
-    const cv = document.getElementById('cAlertasTipo');
-    if (cv && window.Chart && tipos.length){
-      new Chart(cv, {type: 'bar',
-        data: {labels: tipos.map(t => t[0]),
-               datasets: [{data: tipos.map(t => t[1]), backgroundColor: MonitorMapas.PALETA.faixas.construcao}]},
-        options: {indexAxis: 'y', responsive: true, maintainAspectRatio: false,
-                  plugins: {legend: {display: false}},
-                  scales: {x: {beginAtZero: true},
-                           y: {ticks: {autoSkip: false, crossAlign: 'far'},
-                               afterFit: function(escala){ escala.width = Math.max(escala.width, 150); }}}}});
-    }
-    MonitorMapas.legenda('legAlertasTipo', [{cor: MonitorMapas.PALETA.faixas.construcao, rotulo: 'municípios sob o tipo'}]);
+    const doOrgao = org => tipos.filter(t => t[0].startsWith(org + ' · '))
+      .map(t => [t[0].slice(org.length + 3).replace(/^./, x => x.toUpperCase()), t[1]]);
+    barrasHTML('wrapAlertasTipo', [
+      {titulo: 'Avisos do Inmet · municípios por tipo', cor: RAMPA_CONTAGEM[3], itens: doOrgao('Inmet')},
+      {titulo: 'Alertas do Cemaden · municípios por tipo', cor: RAMPA_CONTAGEM[1], itens: doOrgao('Cemaden')}]);
     creditoSinal('boxAlertasTipo', ['inmet_avisos', 'cemaden_alertas'], carimbo);
     listaBuscavel('boxAlertasTipo', {
       colunas: ['Tipo em vigor', 'Municípios'], rotulo: 'Buscar tipo de aviso ou alerta', unidade: 'tipo',
@@ -389,27 +428,25 @@ function __init(){
      mais escuro só por ser grande. As faixas são quartos da parcela, e a primeira categoria é
      "nenhum" — zero medido, nomeado. */
   const RAMPA_RESP = (ATM.resposta || {}).rampa || [MonitorMapas.PALETA.resposta];
-  const FAIXAS_PARCELA = [
-    {de: 0.5, cor: RAMPA_RESP[Math.min(3, RAMPA_RESP.length - 1)], rotulo: 'metade ou mais'},
-    {de: 0.25, cor: RAMPA_RESP[Math.min(2, RAMPA_RESP.length - 1)], rotulo: 'de um quarto a metade'},
-    {de: 0.1, cor: RAMPA_RESP[Math.min(1, RAMPA_RESP.length - 1)], rotulo: 'de 10% a um quarto'},
-    {de: 0.0001, cor: RAMPA_RESP[0], rotulo: 'menos de 10%'},
-  ];
+  // 09/10/2026 (ajuste 10): mesma rampa de um matiz e faixas pelos quantis da parcela real.
+  const pctBR = p => (Math.round(p * 1000) / 10).toLocaleString('pt-BR') + '%';
+  const FAIXAS_PARCELA = faixasPorQuantis(UFS.map(uf => parcelaDe(uf) || 0), RAMPA_CONTAGEM);
   const corParcela = uf => {
     const p = parcelaDe(uf);
     if (p === null) return MonitorMapas.cor('sem-dado');
-    const f = FAIXAS_PARCELA.find(x => p >= x.de);
+    if (!p) return CINZA;
+    const f = FAIXAS_PARCELA.find(x => p >= x.de && p <= x.ate) || FAIXAS_PARCELA[FAIXAS_PARCELA.length - 1];
     return f ? f.cor : CINZA;
   };
   const rotuloParcela = uf => {
     const d = porUFDecreto[uf] || 0, t = totalUF[uf] || 0;
     if (!t) return 'sem contagem de municípios até o corte';
     return n(d) + ' de ' + n(t) + ' município' + (t === 1 ? '' : 's') + ' com decreto no ciclo'
-      + '<br>' + (Math.round((d / t) * 1000) / 10).toLocaleString('pt-BR') + '% do estado';
+      + '<br>' + pctBR(d / t) + ' do estado';
   };
   desenharMapa('mapDecretosUF', 'legDecretosUF', corParcela, rotuloParcela,
-    FAIXAS_PARCELA.map(f => ({cor: f.cor, rotulo: f.rotulo}))
-      .concat([{cor: CINZA, rotulo: 'nenhum'}]), 'resposta');
+    FAIXAS_PARCELA.map(f => ({cor: f.cor, rotulo: f.de === f.ate ? pctBR(f.de) : pctBR(f.de) + ' a ' + pctBR(f.ate)}))
+      .concat([{cor: CINZA, rotulo: 'nenhum'}]), 'contagem');
   MonitorMapas.credito('boxDecretosUF', {fontes: [FONTE_DECRETO, FONTE_DIARIOS], data: window.__metaAtualizado});
   /* As três marcas da cadeia lado a lado, na mesma linha do município: é a leitura que o mapa não
      dá — onde o município está na cadeia. Marca presente é "sim"; ausente é "—", e a ausência do
@@ -522,21 +559,20 @@ function __init(){
   const grandes = eventosTodos.filter(e => e[1] >= MINIMO_BARRA);
   const pequenos = eventosTodos.filter(e => e[1] < MINIMO_BARRA);
   const somaPequenos = pequenos.reduce((s, e) => s + e[1], 0);
-  const barras = grandes.concat(somaPequenos ? [['Outros tipos declarados', somaPequenos]] : []);
-  texto('linhaDecretosTipo', carimboCiclo ? 'Registro de ' + carimboCiclo : 'Sem registro até o corte');
-  const cvT = document.getElementById('cDecretosTipo');
-  if (cvT && window.Chart && barras.length){
-    new Chart(cvT, {type: 'bar',
-      data: {labels: barras.map(b => b[0]),
-             datasets: [{data: barras.map(b => b[1]), backgroundColor: RAMPA_RESP[Math.min(1, RAMPA_RESP.length - 1)]}]},
-      options: {indexAxis: 'y', responsive: true, maintainAspectRatio: false,
-                plugins: {legend: {display: false}},
-                scales: {x: {beginAtZero: true},
-                         y: {ticks: {autoSkip: false, crossAlign: 'far'},
-                             afterFit: function(escala){ escala.width = Math.max(escala.width, 150); }}}}});
+  // 09/10/2026 (ajuste 10): "Tipo não declarado no ato" e "Outros tipos declarados" sempre por
+  // último, nessa ordem; o resto em ordem decrescente; valor na ponta de cada barra.
+  const naoDeclarado = 'Tipo não declarado no ato';
+  const barrasTipo = grandes.filter(e => e[0] !== naoDeclarado)
+    .concat(grandes.filter(e => e[0] === naoDeclarado))
+    .concat(somaPequenos ? [['Outros tipos declarados', somaPequenos]] : []);
+  if (!grandes.some(e => e[0] === naoDeclarado) && pequenos.some(e => e[0] === naoDeclarado)) {
+    /* tipo não declarado abaixo do mínimo da barra: continua nomeado, antes de "outros" */
+    const nd = pequenos.find(e => e[0] === naoDeclarado);
+    barrasTipo.splice(barrasTipo.length - (somaPequenos ? 1 : 0), 0, nd);
+    if (somaPequenos) barrasTipo[barrasTipo.length - 1] = ['Outros tipos declarados', somaPequenos - nd[1]];
   }
-  MonitorMapas.legenda('legDecretosTipo', [
-    {cor: RAMPA_RESP[Math.min(1, RAMPA_RESP.length - 1)], rotulo: 'municípios com o tipo declarado'}]);
+  texto('linhaDecretosTipo', carimboCiclo ? 'Registro de ' + carimboCiclo : 'Sem registro até o corte');
+  barrasHTML('wrapDecretosTipo', [{titulo: '', cor: RAMPA_CONTAGEM[2], itens: barrasTipo.filter(b => b[1] > 0)}]);
   MonitorMapas.credito('boxDecretosTipo', {fontes: [FONTE_DECRETO, FONTE_DIARIOS], data: window.__metaAtualizado});
   listaBuscavel('boxDecretosTipo', {
     colunas: ['Tipo de evento declarado', 'Municípios'], rotulo: 'Buscar tipo de evento', unidade: 'tipo',

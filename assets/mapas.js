@@ -322,6 +322,11 @@
       //
       // `chuva_claro`: a rampa é a da chuva lida de trás para frente, azul → violeta, que é a
       // ordem de nível do alerta do Cemaden.
+      // 09/10/2026 (Defesa civil, ajuste 10): UMA família de cor para contagem por estado — rampa
+      // sequencial de um matiz só (azul-ardósia, do claro ao escuro), fundo branco. A rampa azul →
+      // violeta se lia como duas categorias.
+      contagem:    {fundo:'#FFFFFF', uf:'#FFFFFF', contorno:'#C3D2DD',
+                    rampa:['#D3E0EA', '#9DBBD1', '#5E88A8', '#2C5373'], claro:true},
       // 09/10/2026 (Monitor de riscos, ajuste 6): avisos do INMET sobre fundo branco — "sem aviso"
       // em tom neutro claro e os três graus na rampa azul da chuva, do mais claro ao mais escuro.
       avisos:      {fundo:'#FFFFFF', uf:'#FFFFFF', contorno:'#C3D2DD',

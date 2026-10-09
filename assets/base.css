@@ -1262,6 +1262,23 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
   .cartao-mapa--largo .figura-midia{display:none;}
   .caminhos-lista{display:block;}
 }
+/* ===== Defesa civil, ajuste 10 (09/10/2026) ============================================== */
+/* Topo compacto: a mesma anatomia do cartão de número, um degrau menor. */
+.grade-numeros--compacta .cartao-numero{padding:var(--sp-2) var(--sp-3);}
+.grade-numeros--compacta .cartao-numero-valor{font-size:var(--fs-h2); line-height:var(--lh-h2);}
+/* Barras em HTML: rótulo inteiro, valor na ponta, painel por órgão. */
+.figura-midia--barras, .figura-midia--texto{overflow:visible;}
+/* Em uma coluna (até 1020 px) a mídia de texto ou de barras não reserva a proporção do mapa: sem par ao lado para alinhar, a reserva vira vão. */
+@media (max-width:1020px){ .cartao-mapa .figura-midia--barras, .cartao-mapa .figura-midia--texto{aspect-ratio:auto; height:auto;} }
+.barras-painel{margin:0 0 var(--sp-3);}
+.barras-titulo{font-weight:400; font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); margin:0 0 var(--sp-1);}
+.barra-linha{display:grid; grid-template-columns:minmax(0, 42%) minmax(0, 1fr); gap:var(--sp-2); align-items:center; margin:0 0 var(--sp-1);}
+.barra-rotulo{font-size:var(--fs-caption); line-height:var(--lh-caption); overflow-wrap:anywhere;}
+.barra-trilho{display:flex; align-items:center; gap:var(--sp-1); min-width:0;}
+.barra{display:block; height:12px; border-radius:2px; flex:none; max-width:calc(100% - 4em);}
+.barra-valor{font-family:var(--font-dado); font-size:var(--fs-caption); font-variant-numeric:tabular-nums; white-space:nowrap;}
+.cemaden-resumo{font-size:var(--fs-body); margin:0 0 var(--sp-2);}
+.cemaden-lista{font-size:var(--fs-caption); line-height:var(--lh-caption); padding-left:var(--sp-4); margin:0;}
 /* ===== Proteja-se, ajustes de 09/10/2026 (editoria) ======================================== */
 /* Socorro em três números: variante da barra de telefones do topo, não bloco novo. */
 .emerg-cartoes--tres{grid-template-columns:repeat(3, minmax(0,1fr));}

@@ -15,6 +15,7 @@
       "tipo": "numeros",
       "grade": ".grade-numeros--3",
       "linhas": 2,
+      "_nota_ajuste_10": "Ajuste 10 (09/10/2026): topo compacto em dois grupos — 'Consulta de {dd/mm, hh:mm}' e 'Desde 29/06/2026' —, variante `.grade-numeros--compacta` do componente. Saem os versaletes de família dos cartões de figura.",
       "cartoes": [
         {"id": "municipios_alerta_cemaden", "tipo": "numero", "chave": "alertas/vigentes.json", "valor_el": "topoCemaden"},
         {"id": "municipios_aviso_inmet", "tipo": "numero", "chave": "alertas/vigentes.json", "valor_el": "topoInmet"},
@@ -28,7 +29,10 @@
     },
     {
       "id": "alertas",
-      "h2": "Alertas agora",
+      "h2": "Avisos e alertas em vigor",
+      "_nota_h2": "O título da seção recebe a hora da consulta em tempo de execução ('Avisos e alertas em vigor · consulta de dd/mm, hh:mm'); o portão compara o trecho antes do primeiro ' · '.",
+      "limiar_cemaden": 30,
+      "_nota_limiar_cemaden": "Abaixo de 30 municípios sob alerta do Cemaden o cartão vira texto ('{n} municípios em {UFs}' + lista por estado com o nível do órgão); de 30 em diante o mapa volta. Constante LIMIAR_CEMADEN em assets/js/defesa-civil.js. Tipos de aviso: barras horizontais em dois painéis (Inmet, Cemaden), escala própria, valor na ponta, sem legenda — portão scripts/verificar_figuras_de_contagem.js.",
       "tipo": "figuras",
       "grade": ".grade-figuras--3",
       "cartoes": [
@@ -51,7 +55,8 @@
         {"id": "etapas_semana_a_semana", "tipo": "grafico", "el": "boxEtapas", "chave": "resposta/municipios_decretados.json#semanas"},
         {"id": "decretos_por_tipo", "tipo": "grafico", "el": "boxDecretosTipo", "chave": "atos_resposta.json#tipo_de_evento"}
       ],
-      "exige_texto": ["Do decreto ao recurso, semana a semana"]
+      "exige_texto": ["Do decreto ao recurso, semana a semana"],
+      "_nota_tipos": "Decretos por tipo: valor na ponta; 'Tipo não declarado no ato' e 'Outros tipos declarados' sempre por último, nessa ordem. Mapas de contagem da página usam uma rampa de um matiz (`contagem` em assets/mapas.js), faixas por quantis da distribuição real, cinza só para 'nenhum', fundo branco."
     },
     {
       "id": "cadastro",
@@ -68,10 +73,9 @@
     },
     {
       "id": "cadeiaSecao",
-      "h2": null,
-      "tipo": "recolhido",
-      "detalhes": "cadeia",
-      "fechado_por_padrao": true,
+      "h2": "Do aviso ao recurso",
+      "tipo": "texto",
+      "_nota_ajuste_10": "Ajuste 10 (09/10/2026): o título ficava no fim da página sem conteúdo visível. Conferido o contrato: a seção é a cadeia aviso → alerta → decreto → reconhecimento → recurso; passa a ser lida aberta, sob título visível.",
       "cartoes": [
         {"id": "do_aviso_ao_recurso", "tipo": "texto", "el": "cadeia"}
       ],
