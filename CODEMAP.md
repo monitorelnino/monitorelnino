@@ -123,14 +123,14 @@ Atualizado em 09/10/2026.
 | `gerar_selos.py` | — | — | — | 1 | não |
 | `juiz.py` | — | — | — | 9 | SIM |
 | `julgar_e_aplicar_descobertas.py` | — | `atos_resposta.json`, `consist.json`, `decretos_historico_uf.json`, `estados.json`, `indice.json`, `municipios.json` (+2) | — | 4 | não |
-| `julgar_filas.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json`, `pistas_revisao.json`, `promocoes_automaticas.json` | — | 1 | não |
+| `julgar_filas.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json`, `pistas_revisao.json`, `promocoes_automaticas.json` | — | 2 | não |
 | `julgar_saude.py` | — | `pistas_imprensa_saude.json`, `saude_uf.json` | — | 1 | não |
 | `ler_caixa_lai.py` | — | — | — | — | não |
 | `migrar_saude_instrumentos.py` | — | — | — | 4 | não |
 | `migrar_v224_verificacao.py` | — | `citacao_incompleta.json`, `erratas_v224.json`, `log_buscas.json`, `municipios.json`, `pontos_mapa.json` | — | — | não |
 | `monitorar_atos_resposta.py` | — | — | — | — | não |
 | `monitorar_busca_web.py` | — | `busca_web_espera.json`, `busca_web_estado.json` | — | 4 | não |
-| `monitorar_imprensa_regional.py` | — | — | — | 5 | não |
+| `monitorar_imprensa_regional.py` | — | — | — | 6 | não |
 | `monitorar_imprensa_saude.py` | — | — | — | — | não |
 | `monitorar_politica_por_inteiro.py` | — | — | — | — | não |
 | `monitorar_redes_oficiais.py` | — | — | — | — | não |
@@ -198,7 +198,7 @@ Atualizado em 09/10/2026.
 | `verificar_financiamento.py` | — | `financiamento/x.json` | — | — | não |
 | `verificar_links.py` | — | — | — | — | não |
 | `verificar_painel.py` | — | `painel/lista.json` | — | — | não |
-| `verificar_pista_imprensa.py` | — | `veiculos_imprensa.json` | — | 1 | não |
+| `verificar_pista_imprensa.py` | — | `veiculos_imprensa.json` | — | 2 | não |
 | `verificar_recorrencia_uf.py` | — | — | — | 1 | não |
 | `verificar_resposta.py` | — | — | — | — | não |
 | `verificar_saude.py` | — | — | — | — | não |

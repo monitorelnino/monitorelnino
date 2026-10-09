@@ -636,6 +636,91 @@ def aplicar_resposta(uf, texto, numero, data, url, hoje):
     return True, "aplicado"
 
 
+# =============================================================================================
+# 09/10/2026 (lote 2.6, A1-08) — a fila de pendentes deixa de girar em falso
+# =============================================================================================
+# 2.876 pistas do Google News ficavam em `pendente_confirmacao_documento` para sempre: o link do
+# agregador não se resolvia, `processar_pista` devolvia "fonte não reconhecida", o status voltava o
+# mesmo, e o teto de 150 da noite era gasto nas MESMAS 150 primeiras da lista. Antes de julgar, cada
+# pendente é encaminhada:
+#   - link de agregador: resolve-se (HTTP, URL embutida, busca no veículo pelo título); sem resolver
+#     em duas noites, fecha com o veículo e o título no motivo (reabre se a URL surgir por outra rota);
+#   - fonte que não é oficial: sai daqui para a fila do juiz (`julgar_filas`), que recusa por
+#     documento primário e faz a busca dirigida do ato — é lá que notícia vira documento;
+#   - alvo `resposta/…` sem fonte oficial: vai para a conferência da base oficial de resposta, como o
+#     decreto (não ocupa a fila de planos).
+# Só a pista de fonte oficial chega a `processar_pista`. A ordem é a da notícia mais nova.
+NOITES_PARA_FECHAR_AGREGADOR = 2
+# Cada resolução é uma consulta ao metabuscador (~8 s com o ritmo). 200 cabem no teto de 90 min do
+# elo junto com o juiz; as 3.415 pendentes de 09/10 passam todas em ~17 noites (as mais novas antes).
+RESOLUCOES_POR_RODADA = 200
+STATUS_PISTA_DO_JUIZ = "pista — promover a registro exige documento primário"
+STATUS_RESPOSTA_SEM_FONTE = ("pista de decreto — vai para a conferência da base oficial de resposta; "
+                             "não ocupa a fila de planos")
+
+
+def status_agregador_fechado(p) -> str:
+    from verificar_pista_imprensa import dominio_de
+    veiculo = dominio_de(p.get("veiculo_dominio")) or "não declarado"
+    titulo = " ".join(str(p.get("titulo") or "").split())[:100] or "sem título"
+    return (f"fechada — agregador não resolvido em {NOITES_PARA_FECHAR_AGREGADOR} noites; veículo "
+            f"{veiculo}; título: {titulo}")
+
+
+def encaminhar_pendente(p, hoje_iso, resolver=None):
+    """None: a pista segue para `processar_pista`. "": fica pendente, sem julgar nesta rodada.
+    Texto: o status novo. Mexe só nos campos de resolução da própria pista."""
+    from verificar_pista_imprensa import eh_agregador
+    from monitorar_imprensa_regional import parece_fonte_oficial
+    if eh_agregador(p.get("url")):
+        final, como = resolver(p) if resolver else (None, "nao_tentado")
+        if final:
+            p["url_do_agregador"] = p["url"]
+            p["url"] = final
+            p["degrau_do_redirecionamento"] = como
+            p["fonte_provavel_oficial"] = parece_fonte_oficial(final)
+        else:
+            if resolver is None:
+                return ""            # fora do orçamento desta rodada: não conta noite
+            noites = p.setdefault("noites_sem_resolver_agregador", [])
+            if hoje_iso not in noites:
+                noites.append(hoje_iso)
+            if len(noites) >= NOITES_PARA_FECHAR_AGREGADOR:
+                return status_agregador_fechado(p)
+            return ""
+    if not p.get("fonte_provavel_oficial"):
+        if str(p.get("alvo") or "").startswith("resposta/"):
+            return STATUS_RESPOSTA_SEM_FONTE
+        return STATUS_PISTA_DO_JUIZ
+    return None
+
+
+def _quando(p):
+    """Data de publicação ordenável (RFC 822 do feed, dd/mm/aaaa ou ISO). "" quando ilegível."""
+    from email.utils import parsedate_to_datetime
+    bruto = str(p.get("data_publicacao") or "").strip()
+    try:
+        return parsedate_to_datetime(bruto).strftime("%Y-%m-%d")
+    except Exception:  # noqa: BLE001
+        pass
+    m = re.match(r"(\d{2})/(\d{2})/(\d{4})", bruto)
+    if m:
+        return f"{m.group(3)}-{m.group(2)}-{m.group(1)}"
+    return bruto[:10] if re.match(r"\d{4}-\d{2}-\d{2}", bruto) else ""
+
+
+def _resolver_da_rodada():
+    """O resolvedor com rede: HTTP + busca no veículo pelo metabuscador da rodada."""
+    from verificar_pista_imprensa import resolver_redirecionamento
+    from julgar_filas import _web_para_busca_dirigida, _ritmo
+    # Sem o degrau HTTP: o link opaco do Google News responde 200 com uma casca de JavaScript e
+    # nunca redirecionou (A1-08); a URL embutida do formato antigo sai sem rede.
+    return lambda p: resolver_redirecionamento(
+        p["url"], abrir=None,
+        veiculo=p.get("veiculo_dominio"), titulo=p.get("titulo"),
+        buscar_web=lambda q: (_ritmo(), _web_para_busca_dirigida(q))[1])
+
+
 def processar_pista(pista, hoje, buscar=buscar_texto):
     """Processa uma pista: busca, classifica, decide. Retorna um relatório dict.
     `buscar` é injetável para permitir fixtures no self-test, sem rede real."""
@@ -818,6 +903,33 @@ def self_test():
     assert "gravar_em(LOG_BUSCAS" not in _fonte, (
         "duas portas gravando o mesmo log é como se perde registro (§269)")
 
+    # 09/10/2026 (lote 2.6, A1-08): encaminhamento das pendentes, sem rede.
+    gn = {"url": "https://news.google.com/rss/articles/CBMiOPAQUE", "alvo": "B-capital/TO",
+          "veiculo_dominio": "https://www.palmas.to.gov.br", "titulo": "Palmas aprova plano"}
+    p1 = dict(gn)
+    res_ok = lambda p: ("https://www.palmas.to.gov.br/noticia/plano", "busca_no_veiculo")  # noqa: E731
+    assert encaminhar_pendente(p1, "2026-10-09", res_ok) is None, "resolvida em .gov.br vai a julgar"
+    assert p1["url"].startswith("https://www.palmas") and p1["url_do_agregador"].startswith("https://news")
+    p2 = dict(gn)
+    res_nao = lambda p: (None, "redirecionamento_nao_resolvido")  # noqa: E731
+    assert encaminhar_pendente(p2, "2026-10-08", res_nao) == "", "uma noite sem resolver: espera"
+    assert encaminhar_pendente(p2, "2026-10-08", res_nao) == "", "a mesma noite não conta duas vezes"
+    fech = encaminhar_pendente(p2, "2026-10-09", res_nao)
+    assert fech.startswith("fechada — agregador não resolvido") and "palmas.to.gov.br" in fech \
+        and "Palmas aprova plano" in fech, fech
+    p3 = dict(gn)
+    assert encaminhar_pendente(p3, "2026-10-09", None) == "" and "noites_sem_resolver_agregador" not in p3, \
+        "fora do orçamento não conta noite"
+    assert encaminhar_pendente({"url": "https://g1.globo.com/x", "alvo": "B-capital/CE",
+                                "fonte_provavel_oficial": False}, "2026-10-09") == STATUS_PISTA_DO_JUIZ
+    assert encaminhar_pendente({"url": "https://g1.globo.com/x", "alvo": "resposta/CE",
+                                "fonte_provavel_oficial": False}, "2026-10-09") == STATUS_RESPOSTA_SEM_FONTE
+    assert encaminhar_pendente({"url": "https://x.ce.gov.br/d.pdf", "alvo": "B-capital/CE",
+                                "fonte_provavel_oficial": True}, "2026-10-09") is None
+    ordem = sorted([{"data_publicacao": "Tue, 25 Aug 2026 07:00:00 GMT"},
+                    {"data_publicacao": "01/10/2026"}, {"data_publicacao": "lixo"}], key=_quando, reverse=True)
+    assert [_quando(o) for o in ordem] == ["2026-10-01", "2026-08-25", ""], ordem
+
     print("\n✓ self-test do orquestrador OK — 6 cenários cobertos (aplicar exigiria banco real; "
           "ver classificador_natureza.py e verificar_recorrencia_uf.py para os self-tests de aplicação).")
 
@@ -847,6 +959,24 @@ if __name__ == "__main__":
     hoje = hoje_editorial().strftime("%d/%m/%Y")
     fila = json.load(open(PISTAS_IMPRENSA, encoding="utf-8"))
     pendentes = [p for p in fila["pistas"] if p.get("status") == "pendente_confirmacao_documento"]
+    pendentes.sort(key=_quando, reverse=True)
+    hoje_iso = hoje_editorial().isoformat()
+    resolver, resolucoes, encaminhadas = _resolver_da_rodada(), 0, {}
+    a_julgar = []
+    for p in pendentes:
+        usa_rede = resolucoes < RESOLUCOES_POR_RODADA
+        from verificar_pista_imprensa import eh_agregador
+        if eh_agregador(p.get("url")) and usa_rede:
+            resolucoes += 1
+        novo = encaminhar_pendente(p, hoje_iso, resolver if usa_rede else None)
+        if novo is None:
+            a_julgar.append(p)
+        elif novo:
+            p["status"] = novo
+            chave = novo.split(";")[0][:60]
+            encaminhadas[chave] = encaminhadas.get(chave, 0) + 1
+    print(f"Encaminhadas sem julgar ({resolucoes} resoluções de agregador): {encaminhadas}")
+    pendentes = a_julgar
     total_pendentes = len(pendentes)
     if args.limite is not None:
         pendentes = pendentes[:args.limite]
