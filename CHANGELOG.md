@@ -39,6 +39,13 @@ o teto nas mesmas 150. Agora o link se resolve pela busca no próprio veículo, 
 resolver em duas noites, a pista fecha com veículo e título no motivo. Notícia sem fonte oficial
 segue para o juiz; alvo de resposta, para a conferência de decretos. Ordem: a mais nova primeiro.
 
+## 2026-10-09 · #PR · codebook 1.4: o que o prazo fechou volta ao juiz
+
+Lote 2.5. O juiz sobe para o codebook 1.4 (lote 2), e a pista fechada por prazo depois de lida volta
+à fila com ele; o fechamento passa a dizer a recusa real. O contador de busca dirigida é escrito, só
+busca com rota conta, e a raiz de portal deixa de ser candidata. URL fora de fonte oficial não é
+mais baixada. O diário achado pela busca chega ao juiz com o excerto.
+
 ## 2026-10-09 · #PR · o ato é recortado de dentro do diário, e o corte vem depois
 
 Lote 2.2. O recorte do ato procurava cabeçalho em início de linha num texto sem quebras: devolvia a
