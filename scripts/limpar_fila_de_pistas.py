@@ -179,7 +179,11 @@ def decidir(pistas: list, decretados: set, hoje_iso: str) -> list:
         d = dias_na_fila(p, hoje_iso)
         tentativas = int(p.get("tentativas_de_busca_dirigida") or 0)
         if (d is not None and d > DIAS_DE_VIDA) or tentativas >= TENTATIVAS_MAXIMAS:
-            mudancas.append((p, FECHA_PRAZO, "prazo"))
+            # 09/10/2026 (lote 2.5, A1-16): a recusa lida vai no fechamento, não "sem documento".
+            j = p.get("juiz") or {}
+            lida = (f" — lida e recusada: {j['motivo']}"
+                    if j.get("leu_documento") and j.get("motivo") else "")
+            mudancas.append((p, FECHA_PRAZO + lida, "prazo"))
             continue
         abertas_por_chave.setdefault(chave_de_teto(p), []).append(p)
 

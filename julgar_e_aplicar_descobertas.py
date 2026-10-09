@@ -69,6 +69,12 @@ PISTAS_IMPRENSA = RAIZ / "data" / "pistas_imprensa.json"
 LOG_BUSCAS = RAIZ / "data" / "log_buscas.json"
 
 
+# 09/10/2026 (lote 2.2, A1-20): teto de LEITURA, não de julgamento. Uma edição de diário com o ato
+# na página 60 tem de chegar inteira ao recorte; o juiz julga só o ato recortado (até 20.000).
+TETO_DA_LEITURA = 600000
+PAGINAS_DA_LEITURA = 300
+
+
 def buscar_texto(url, timeout=20):
     """Busca o conteúdo textual da URL. Tolerante a falha (retorna None, nunca lança).
     Extração crua (regex, sem parser HTML completo) — mesmo padrão de tolerância a
@@ -83,7 +89,7 @@ def buscar_texto(url, timeout=20):
         # por magic bytes (%PDF), não só pelo Content-Type/.pdf, porque servidores municipais mentem no tipo.
         if raw[:5] == b"%PDF-" or "application/pdf" in tipo or url.lower().split("?")[0].endswith(".pdf"):
             texto = extrair_texto_pdf(raw)
-            return texto[:20000] if texto else None
+            return texto[:TETO_DA_LEITURA] if texto else None
         try:
             html = raw.decode("utf-8")
         except UnicodeDecodeError:
@@ -91,7 +97,9 @@ def buscar_texto(url, timeout=20):
         texto = re.sub(r"<script.*?</script>|<style.*?</style>", " ", html, flags=re.S | re.I)
         texto = re.sub(r"<[^>]+>", " ", texto)
         texto = re.sub(r"\s+", " ", texto).strip()
-        return texto[:20000]  # teto generoso; documentos oficiais raramente passam disso em texto útil
+        # 09/10/2026 (lote 2.2, A1-20): o corte de 20.000 saiu daqui. Ele vinha ANTES do recorte do
+        # ato, e o ato além do corte nunca era lido. O juiz corta o que julga (`juiz.TETO_DO_JULGAMENTO`).
+        return texto[:TETO_DA_LEITURA]
     except Exception:
         return None
 
@@ -104,11 +112,11 @@ def extrair_texto_pdf(raw):
         import io, pdfplumber
         partes = []
         with pdfplumber.open(io.BytesIO(raw)) as pdf:
-            for pg in pdf.pages[:40]:   # decretos têm poucas páginas; diários inteiros podem ter centenas
+            for pg in pdf.pages[:PAGINAS_DA_LEITURA]:   # diários inteiros podem ter centenas
                 t = pg.extract_text() or ""
                 if t.strip():
                     partes.append(t)
-                if sum(len(x) for x in partes) > 60000:
+                if sum(len(x) for x in partes) > TETO_DA_LEITURA:
                     break
         texto = re.sub(r"\s+", " ", " ".join(partes)).strip()
         return texto or None
@@ -639,6 +647,8 @@ def processar_pista(pista, hoje, buscar=buscar_texto):
     texto = buscar(pista["url"])
     if texto is None:
         return {"decisao": "FILA_HUMANA", "motivo": "falha ao buscar o documento (tentar de novo na próxima execução)"}
+    # Este caminho não tem `trecho` para recortar: lê o que lia antes do lote 2.2 (A1-20).
+    texto = texto[:20000]
 
     numero, data = extrair_numero_e_data(texto)
     citacao_ok = citacao_completa(f"{numero or ''} {data or ''}")
