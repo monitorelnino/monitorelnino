@@ -133,7 +133,9 @@ def problemas_do_despejo(contrato: dict, despejo: dict) -> list:
     # provar sem reescrever a marcação daquelas páginas — divergência declarada em cada contrato.
     esperados = list(contrato.get("h2_esperados") or [])
     esperados += [s["h2"] for s in secoes_contrato if s.get("h2")]
-    vistos = [h for h in (d1280.get("h2") or []) if h]
+    # Título com hora da consulta ("… · consulta de dd/mm, hh:mm", ajuste 10, 09/10/2026): compara-se
+    # o trecho antes do primeiro " · ", que é o que o contrato declara.
+    vistos = [h if h in esperados else h.split(" · ")[0] for h in (d1280.get("h2") or []) if h]
     if [h for h in vistos if h in esperados] != esperados:
         p.append(f"ordem dos títulos divergiu do contrato: contrato {esperados} · página {vistos}")
 
@@ -357,6 +359,9 @@ def autoteste() -> int:
         ("grade de três com um cartão reprova",
          any("coluna vazia" in x for x in problemas_do_despejo(
              contrato, com(lambda d: d["grades"][1].update(filhos=1))))),
+        ("título com hora da consulta confere pelo trecho antes do ' · '",
+         not any("ordem dos títulos" in x for x in problemas_do_despejo(
+             contrato, com(lambda d: d.update(h2=["Seção de mapas · consulta de 08/10, 22:12"]))))),
         ("ordem de títulos diferente reprova",
          any("ordem dos títulos" in x for x in problemas_do_despejo(
              contrato, com(lambda d: d.update(h2=["Outra coisa"]))))),

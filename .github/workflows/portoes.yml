@@ -103,6 +103,8 @@ jobs:
           node scripts/verificar_acessibilidade.js
           # assunto: cor texto
           node scripts/verificar_runtime_financiamento.js
+          # assunto: cor texto rapido
+          node scripts/verificar_figuras_de_contagem.js --autoteste
           # assunto: dado
           python3 scripts/verificar_financiamento_coerencia.py --autoteste
           # assunto: dado
@@ -503,6 +505,9 @@ jobs:
           node scripts/verificar_dicas_dos_mapas.js --autoteste
           # assunto: texto
           node scripts/verificar_dicas_dos_mapas.js
+          # assunto: cor texto
+          # 09/10/2026 (ajuste 10): figuras de contagem da Defesa civil (Chromium real).
+          node scripts/verificar_figuras_de_contagem.js
           # assunto: texto
           # 09/10/2026 (ajuste 1): vocabulário proibido no texto que os scripts das páginas escrevem.
           python3 scripts/verificar_vocabulario_dos_scripts.py --autoteste
