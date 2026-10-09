@@ -38,6 +38,12 @@ Lote 2.6. 3.415 pistas com link opaco do Google News ficavam pendentes para semp
 o teto nas mesmas 150. Agora o link se resolve pela busca no próprio veículo, pelo título; sem
 resolver em duas noites, a pista fecha com veículo e título no motivo. Notícia sem fonte oficial
 segue para o juiz; alvo de resposta, para a conferência de decretos. Ordem: a mais nova primeiro.
+## 2026-10-09 · #PR · o ato é recortado de dentro do diário, e o corte vem depois
+
+Lote 2.2. O recorte do ato procurava cabeçalho em início de linha num texto sem quebras: devolvia a
+edição inteira em todas as decisões, e a lei de rua do topo virava a citação. Agora o cabeçalho é
+reconhecido pela forma, em qualquer posição; a identidade lê a cabeça da edição mais o ato. O corte
+de 20.000 caracteres passou da leitura para o julgamento. `juiz.py`, `julgar_e_aplicar_descobertas.py`.
 
 ## 2026-10-09 · #PR · classificação: termo de risco com fronteira, instrumento numa lista só
 
