@@ -197,7 +197,34 @@ def url_dentro_do_segmento(url: str):
     return None
 
 
-def resolver_redirecionamento(url: str, abrir=None, tentativas: int = 2) -> tuple:
+def busca_no_veiculo(veiculo, titulo, buscar_web) -> str:
+    """Degrau 3 (09/10/2026, lote 2.6, A1-08): a matéria procurada no PRÓPRIO veículo, pelo título.
+
+    O feed do Google News grava o `<source url>` (o veículo) e o título em toda pista, e ninguém os
+    usava: 2.876 pistas ficaram abertas para sempre com o link opaco do agregador. A busca é
+    restrita ao host do veículo e só aceita URL nesse host (ou subdomínio dele) com caminho — nunca
+    a home, nunca outro site. Sem resultado assim, devolve None: não se chuta."""
+    from urllib.parse import urlsplit
+    host = dominio_de(veiculo)
+    titulo = " ".join(str(titulo or "").split())
+    # o Google News acrescenta " - Nome do Veículo" ao título
+    titulo = re.sub(r"\s+-\s+[^-]{2,60}$", "", titulo)[:80].strip()
+    if not host or not titulo or buscar_web is None:
+        return None
+    try:
+        resultados = buscar_web(f'site:{host} "{titulo}"') or []
+    except Exception:  # noqa: BLE001
+        return None
+    for r in resultados:
+        u = r.get("url") if isinstance(r, dict) else r
+        d = dominio_de(u)
+        if d and (d == host or d.endswith("." + host)) and urlsplit(str(u)).path.strip("/"):
+            return u
+    return None
+
+
+def resolver_redirecionamento(url: str, abrir=None, tentativas: int = 2, veiculo=None,
+                              titulo=None, buscar_web=None) -> tuple:
     """(url_final, como). `como` diz por qual degrau resolveu, ou por que não.
 
     Duas rotas, nesta ordem, e nenhuma delas pede nada além do que a fonte serve:
@@ -212,15 +239,16 @@ def resolver_redirecionamento(url: str, abrir=None, tentativas: int = 2) -> tupl
     embutida = url_dentro_do_segmento(url)
     if embutida:
         return embutida, "url_embutida_no_link"
-    if abrir is None:
-        return None, "redirecionamento_nao_resolvido"
-    for _ in range(max(1, tentativas)):
+    for _ in range(max(1, tentativas)) if abrir is not None else ():
         try:
             final = abrir(url)
         except Exception:  # noqa: BLE001
             continue
         if final and not eh_agregador(final):
             return final, "redirecionamento_http"
+    achada = busca_no_veiculo(veiculo, titulo, buscar_web)
+    if achada:
+        return achada, "busca_no_veiculo"
     return None, "redirecionamento_nao_resolvido"
 
 
@@ -869,6 +897,20 @@ def autoteste() -> int:
     casos.append(("agregador que redireciona para agregador não conta como resolvido",
                   resolver_redirecionamento("https://news.google.com/articles/CBMiX",
                                             abrir=lambda u: "https://flipboard.com/x")
+                  == (None, "redirecionamento_nao_resolvido")))
+    # 09/10/2026 (lote 2.6, A1-08): degrau 3, busca no veículo pelo título.
+    falso = lambda q: [{"url": "https://g1.globo.com/x"}, {"url": "https://www.palmas.to.gov.br/"},
+                       {"url": "https://www.palmas.to.gov.br/noticia/x"}]  # noqa: E731
+    casos.append(("link opaco resolve pela busca no veículo, só no host do veículo e com caminho",
+                  resolver_redirecionamento("https://news.google.com/articles/CBMiOPAQUE",
+                                            veiculo="https://www.palmas.to.gov.br",
+                                            titulo="Palmas aprova plano - Prefeitura de Palmas",
+                                            buscar_web=falso)
+                  == ("https://www.palmas.to.gov.br/noticia/x", "busca_no_veiculo")))
+    casos.append(("busca no veículo sem resultado no host declara não resolvido",
+                  resolver_redirecionamento("https://news.google.com/articles/CBMiOPAQUE",
+                                            veiculo="https://outro.com.br", titulo="x y z",
+                                            buscar_web=falso)
                   == (None, "redirecionamento_nao_resolvido")))
     casos.append(("URL de veículo passa intacta",
                   resolver_redirecionamento("https://horacampinas.com.br/a")[1]

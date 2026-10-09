@@ -72,8 +72,13 @@ def classe_do_canal(canal: str) -> str:
     return CLASSES.get(canal, "outro")
 
 
-def verificou(decisao: str) -> bool:
+def verificou(decisao: str, execucao: dict = None) -> bool:
     d = (decisao or "").strip()
+    # 09/10/2026 (lote 2.7, A1-11): "coberto sem menção" da busca web só verifica com pelo menos
+    # três resultados que nomeiam o município. As 1.035 de 05/10 foram afirmadas sobre ruído do
+    # motor e não trazem a contagem — não contam.
+    if execucao is not None and execucao.get("canal") == "busca_web" and d == "coberto_sem_mencao":
+        return int(execucao.get("n_nomeiam") or 0) >= 3
     return any(d == v or d.startswith(v) for v in DECISOES_QUE_VERIFICAM)
 
 
@@ -93,7 +98,7 @@ def derivar(execucoes: list) -> dict:
         data = e.get("data")
         if data and (c["ultima_tentativa"] or "") < data:
             c["ultima_tentativa"] = data
-        if verificou(e.get("decisao")):
+        if verificou(e.get("decisao"), e):
             c["verificacoes"] += 1
             if data and (c["ultima_verificacao"] or "") < data:
                 c["ultima_verificacao"] = data
@@ -186,6 +191,15 @@ def autoteste() -> int:
         c = d["TO"]["canais"]["outro"]
         return c["verificado"] is True and c["canais_do_log"] == ["canal_novo_qualquer"]
 
+    def t_coberto_da_busca_web_exige_tres_que_nomeiam():
+        """09/10/2026 (lote 2.7, A1-11): sobre ruído do motor não se afirma cobertura."""
+        base = {"uf": "PI", "canal": "busca_web", "data": "2026-10-05", "decisao": "coberto_sem_mencao"}
+        sem = derivar([base])["PI"]["canais"]["busca_web"]["verificacoes"]
+        com = derivar([{**base, "n_nomeiam": 3}])
+        return (not verificou(base["decisao"], base) and verificou(base["decisao"], {**base, "n_nomeiam": 3})
+                and not verificou(base["decisao"], {**base, "n_nomeiam": 2}) and sem == 0
+                and com is not None)
+
     def t_nota_publica_nasce_em_branco():
         """Contrato com a editoria: o robô monta a estrutura e NÃO escreve a frase."""
         return construir()["nota_publica"] is None
@@ -199,6 +213,8 @@ def autoteste() -> int:
         "saem as 27 UFs, sempre": t_todas_as_27_ufs_saem,
         "canal desconhecido cai em 'outro' (não some)": t_canal_desconhecido_cai_em_outro,
         "nota pública nasce em branco (é da editoria)": t_nota_publica_nasce_em_branco,
+        "coberto sem menção da busca web exige três resultados que nomeiam o município":
+            t_coberto_da_busca_web_exige_tres_que_nomeiam,
     })
 
 

@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 """
-revisar_pistas.py — a fila de revisão humana das pistas (§153, 22/09/2026)
-==========================================================================
+revisar_pistas.py — leitura assistida das pistas (§153, 22/09/2026; 09/10/2026, lote 2.9)
+=========================================================================================
+
+09/10/2026 (lote 2.9, A1-17): a etapa humana acabou. Saíram `--aceitar/--rejeitar/--adiar`,
+`decisao_humana` e o relatório `docs/FILA_PISTAS.md`: não há pessoa lendo a fila, e o que decide é
+o juiz automático (`julgar_filas.py`) sobre documento oficial lido pela máquina. O que fica é a
+leitura assistida (`--preparar`). O texto abaixo é o histórico do desenho de 22/09.
 Adaptador entre a fila unificada de pistas (data/pistas_imprensa.json — busca web,
 Querido Diário, imprensa) e o caminho testado de promoção a registro
 (julgar_e_aplicar_descobertas.py: busca o documento, classifica ex-ante/resposta,
@@ -20,18 +25,8 @@ Três funções, nenhuma apaga nada:
                 de imprensa. Roda na rodada de cadência (tem rede). NUNCA rebaixa nem
                 descarta: só enriquece.
 
-  --aceitar / --rejeitar / --adiar   DECISÃO HUMANA, por id de pista. Grava
-                `decisao_humana` {decisao, motivo, ato, data, categoria, decidido_em}
-                e muda o status. --aceitar promove pelo mesmo aplicar_municipal() do
-                juiz (backup + portões + rollback). A rejeição é DA PISTA, não do
-                município: outra pista do mesmo lugar continua entrando normalmente.
-
-  --relatorio   Renderiza docs/FILA_PISTAS.md — legível, por município, nível A/B/C,
-                com número/data/natureza pré-extraídos; decididas no fim, nunca fora.
-
 Ids: sha1(ibge|url|trecho)[:10], estáveis entre rodadas (gravados na triagem).
-Regra de ouro (§3.2, C10; decisão editorial de 22/09/2026 — "cuidado com falsos
-negativos"): a máquina prepara e ordena; quem decide é a pessoa, pista a pista.
+A máquina prepara, e o juiz automático decide (`julgar_filas.py`, codebook versionado).
 """
 import argparse, datetime, hashlib, json, re, sys, unicodedata
 from urllib.parse import urlparse
@@ -42,9 +37,8 @@ from classificar_pista_civil import triagem_completa
 from monitorar_imprensa_regional import parece_fonte_oficial
 import julgar_e_aplicar_descobertas as juiz
 
-STATUS_PENDENTE = "pista — promover a registro exige documento primário lido por humano"
-DECIDIDAS = ("aceita_humana", "rejeitada_humana", "adiada_humana", "aplicada_automaticamente",
-             "descartada_resposta", "revertida_erro_portao")
+STATUS_PENDENTE = "pista — na fila, aguardando busca dirigida e juiz"
+DECIDIDAS = ("aplicada_automaticamente", "descartada_resposta", "revertida_erro_portao")
 DECIDIDAS_FINAIS = tuple(d for d in DECIDIDAS if d != "revertida_erro_portao")
 
 
@@ -237,88 +231,6 @@ def preparar(fila: dict, hoje: str, buscar=juiz.buscar_texto, processar=juiz.pro
     return dict(res)
 
 
-# ---------------------------------------------------------------- decisões humanas
-def decidir(fila: dict, pid: str, decisao: str, motivo: str = "", ato: str = "", data_ato: str = "",
-            categoria: str = "plano", url_documento: str = "", hoje: str = "", aplicar=juiz.aplicar_municipal,
-            backup=juiz.backup_dados, portoes=juiz.rodar_portoes, restaurar=juiz.restaurar_dados) -> dict:
-    p = next((x for x in fila["pistas"] if x.get("id") == pid), None)
-    if p is None: return {"ok": False, "motivo": f"id {pid} não encontrado"}
-    reg = {"decisao": decisao, "motivo": motivo, "decidido_em": hoje or hoje_editorial().strftime("%d/%m/%Y")}
-    if decisao == "rejeitar":
-        p["status"] = "rejeitada_humana"; p["decisao_humana"] = reg
-        return {"ok": True, "status": p["status"]}
-    if decisao == "adiar":
-        p["status"] = "adiada_humana"; p["decisao_humana"] = reg
-        return {"ok": True, "status": p["status"]}
-    if decisao == "aceitar":
-        if not (ato and data_ato):
-            return {"ok": False, "motivo": "aceitar exige --ato e --data (citação completa, §3.2) — nada aplicado"}
-        if categoria != "plano":
-            # aplicar_municipal() só cria registro 'plano'; outras categorias e atualizações de registro
-            # existente ficam para edição direta em municipios.json pela editoria (§3.2) — registra a decisão.
-            p["status"] = "aceita_humana"; p["decisao_humana"] = {**reg, "ato": ato, "data": data_ato, "categoria": categoria,
-                                                                   "url_documento": url_documento, "aplicado": False,
-                                                                   "nota": "categoria fora do caminho automático; aplicar manualmente"}
-            return {"ok": True, "status": p["status"], "aplicado": False}
-        texto = (p.get("preparacao") or {}).get("trecho_documento") or p.get("trecho") or ""
-        bkp = backup()
-        aplicado, msg = aplicar(p.get("municipio"), p.get("uf"), texto, ato, data_ato, url_documento or p.get("url"), reg["decidido_em"])
-        if not aplicado:
-            return {"ok": False, "motivo": msg}
-        ok_p, saida = portoes()
-        if not ok_p:
-            restaurar(bkp)
-            return {"ok": False, "motivo": "portão falhou após aplicar — desfeito", "detalhe": (saida or "")[-1500:]}
-        p["status"] = "aceita_humana"; p["decisao_humana"] = {**reg, "ato": ato, "data": data_ato, "categoria": categoria,
-                                                               "url_documento": url_documento, "aplicado": True}
-        return {"ok": True, "status": p["status"], "aplicado": True}
-    return {"ok": False, "motivo": f"decisão desconhecida: {decisao}"}
-
-
-# ---------------------------------------------------------------- relatório legível
-def relatorio(fila: dict) -> str:
-    ordem = {"A": 0, "B": 1, "C": 2, None: 3}
-    grupos = defaultdict(list)
-    for p in fila["pistas"]:
-        grupos[(p.get("uf"), p.get("municipio"))].append(p)
-    def melhor(ps): return min((ordem.get(p.get("nivel_confianca"), 3) for p in ps if pendente(p)), default=9)
-    chaves = sorted(grupos, key=lambda k: (melhor(grupos[k]), k[0] or "", k[1] or ""))
-    pend = [p for p in fila["pistas"] if pendente(p)]
-    dec = [p for p in fila["pistas"] if not pendente(p)]
-    L = [f"# Fila de pistas — revisão humana", "",
-         f"Gerado em {hoje_editorial().strftime('%d/%m/%Y')} · {len(pend)} pendente(s) · {len(dec)} decidida(s) · "
-         f"A={sum(1 for p in pend if p.get('nivel_confianca')=='A')} B={sum(1 for p in pend if p.get('nivel_confianca')=='B')} "
-         f"C={sum(1 for p in pend if p.get('nivel_confianca')=='C')}", "",
-         "Como decidir: `python3 revisar_pistas.py --aceitar ID --ato \"Decreto nº X\" --data dd/mm/aaaa [--url-documento …]` · "
-         "`--rejeitar ID --motivo \"…\"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).", ""]
-    for uf, mun in chaves:
-        ps = sorted(grupos[(uf, mun)], key=lambda p: (0 if pendente(p) else 1, ordem.get(p.get("nivel_confianca"), 3), -(p.get("pontos_confianca") or 0)))
-        if not any(pendente(p) for p in ps): continue
-        L.append(f"## {mun}/{uf} — {sum(1 for p in ps if pendente(p))} pendente(s)")
-        for p in ps:
-            if not pendente(p): continue
-            pr = p.get("preparacao") or {}
-            if pr.get("numero"):
-                cit = f"**{pr.get('numero')}**, {pr.get('data_ato')}"
-            else:
-                n_t, d_t = citacao_do_trecho(p)
-                cit = f"**{n_t}**, {d_t} (do trecho)" if n_t else ("data " + d_t + " (do trecho)" if d_t else "citação não extraída")
-            nat = pr.get("natureza") or "—"
-            L.append(f"- `{p.get('id')}` · nível **{p.get('nivel_confianca')}** ({p.get('pontos_confianca')} pts) · {p.get('origem')} · {nat} · {cit}")
-            if p.get("titulo"): L.append(f"  - título: {p['titulo'][:160]}")
-            L.append(f"  - url: {p.get('url')}")
-            L.append(f"  - trecho: {(p.get('trecho') or '')[:220].replace(chr(10),' ')}")
-            if p.get("alertas"): L.append(f"  - ⚠ {', '.join(p['alertas'])}")
-            if pr.get("juiz", {}).get("motivo"): L.append(f"  - juiz: {pr['juiz']['motivo'][:160]}")
-        L.append("")
-    if dec:
-        L += ["---", f"## Decididas ({len(dec)}) — registro permanente, nunca apagadas", ""]
-        for p in sorted(dec, key=lambda p: (p.get("uf") or "", p.get("municipio") or "")):
-            d = p.get("decisao_humana") or p.get("julgamento_automatico") or {}
-            L.append(f"- `{p.get('id')}` {p.get('municipio')}/{p.get('uf')} · {p.get('status')} · {d.get('motivo') or d.get('decisao') or ''}"[:220])
-    return "\n".join(L) + "\n"
-
-
 # ---------------------------------------------------------------- autoteste (hermético)
 def autoteste():
     def fila_falsa():
@@ -351,34 +263,6 @@ def autoteste():
         r = preparar(f, "22/09/2026", buscar=lambda u: None, processar=lambda pj, h, **kw: {"decisao": "FILA_HUMANA"})
         return r["nao_obtido"] == 2 and all(pendente(p) for p in f["pistas"])
 
-    def t_rejeitar_e_adiar_so_registram():
-        f = fila_falsa(); garantir_ids(f); i = f["pistas"][1]["id"]
-        r = decidir(f, i, "rejeitar", motivo="não é plano de contingência")
-        r2 = decidir(f, f["pistas"][2]["id"], "adiar")
-        return r["ok"] and f["pistas"][1]["status"] == "rejeitada_humana" and f["pistas"][1]["decisao_humana"]["motivo"] and \
-               r2["ok"] and f["pistas"][2]["status"] == "adiada_humana" and len(f["pistas"]) == 3
-
-    def t_aceitar_exige_citacao():
-        f = fila_falsa(); garantir_ids(f)
-        return decidir(f, f["pistas"][0]["id"], "aceitar")["ok"] is False
-
-    def t_aceitar_aplica_com_portoes_e_desfaz_se_falhar():
-        f = fila_falsa(); garantir_ids(f); i = f["pistas"][0]["id"]; log = []
-        ok = decidir(f, i, "aceitar", ato="Decreto nº 12/2026", data_ato="10/07/2026", hoje="22/09/2026",
-                     aplicar=lambda *a: (log.append("aplicou") or (True, "ok")), backup=lambda: "bkp",
-                     portoes=lambda: (True, ""), restaurar=lambda b: log.append("restaurou"))
-        g = fila_falsa(); garantir_ids(g)
-        falha = decidir(g, i, "aceitar", ato="Decreto nº 12/2026", data_ato="10/07/2026", hoje="22/09/2026",
-                        aplicar=lambda *a: (True, "ok"), backup=lambda: "bkp",
-                        portoes=lambda: (False, "portão x"), restaurar=lambda b: log.append("restaurou"))
-        return ok["ok"] and ok["aplicado"] and f["pistas"][0]["status"] == "aceita_humana" \
-               and falha["ok"] is False and "restaurou" in log and pendente(g["pistas"][0])
-
-    def t_relatorio_lista_pendentes_e_decididas():
-        f = fila_falsa(); garantir_ids(f); decidir(f, f["pistas"][2]["id"], "rejeitar", motivo="ruído")
-        md = relatorio(f)
-        return "Bagé/RS" in md and "Marília/SP" in md and "Decididas (1)" in md and "rejeitada_humana" in md
-
     def t_citacao_do_trecho_sem_rede():
         # caso real: Feira de Santana/BA — decreto no trecho, documento é PDF (não lido)
         p = {"trecho": "www.diariooficial.feiradesantana.ba.gov.br 3 DECRETO Nº 14.665 DE 21 DE AGOSTO DE 2026"}
@@ -387,7 +271,7 @@ def autoteste():
                          "status": STATUS_PENDENTE, "nivel_confianca": "A", "origem": "querido_diario"}]}
         garantir_ids(f); preparar(f, "22/09/2026", buscar=lambda u: None, processar=lambda pj, h, **kw: {})
         pr = f["pistas"][0]["preparacao"]
-        return bool(n) and "14.665" in n and pr["resultado"] == "documento_nao_obtido" and pr["numero"] == n and "14.665" in relatorio(f)
+        return bool(n) and "14.665" in n and pr["resultado"] == "documento_nao_obtido" and pr["numero"] == n
 
     def t_focar_diario_com_varios_atos():
         # caso real (rodada #6): diário inteiro → primeiro ato ("Lei nº 4.574") e "4574" como ano; focado → o decreto do plano
@@ -464,10 +348,6 @@ def autoteste():
         "preparar: só A e B, nunca descarta, C intocada": t_preparar_so_A_e_B_e_nunca_descarta,
         "preparar: fonte oficial delega ao juiz; não oficial só lê": t_preparar_oficial_delega_e_nao_oficial_nao,
         "preparar: documento não obtido não quebra nem rebaixa": t_preparar_documento_nao_obtido_nao_quebra,
-        "rejeitar/adiar só registram (nada some)": t_rejeitar_e_adiar_so_registram,
-        "aceitar exige citação completa": t_aceitar_exige_citacao,
-        "aceitar aplica com portões e desfaz se falhar": t_aceitar_aplica_com_portoes_e_desfaz_se_falhar,
-        "relatório lista pendentes por município e decididas no fim": t_relatorio_lista_pendentes_e_decididas,
     })
 
 
@@ -476,10 +356,6 @@ if __name__ == "__main__":
     ap.add_argument("--autoteste", action="store_true")
     ap.add_argument("--preparar", action="store_true")
     ap.add_argument("--limite", type=int, default=60)
-    ap.add_argument("--relatorio", action="store_true")
-    ap.add_argument("--aceitar", metavar="ID"); ap.add_argument("--rejeitar", metavar="ID"); ap.add_argument("--adiar", metavar="ID")
-    ap.add_argument("--motivo", default=""); ap.add_argument("--ato", default=""); ap.add_argument("--data", default="")
-    ap.add_argument("--categoria", default="plano"); ap.add_argument("--url-documento", default="")
     a = ap.parse_args()
     if a.autoteste: sys.exit(autoteste())
     fila = ler("pistas_imprensa.json") or {"pistas": []}
@@ -487,11 +363,4 @@ if __name__ == "__main__":
     novos = garantir_ids(fila)
     if a.preparar:
         print("preparação:", preparar(fila, hoje, limite=a.limite))
-    for pid, dec in ((a.aceitar, "aceitar"), (a.rejeitar, "rejeitar"), (a.adiar, "adiar")):
-        if pid:
-            print(dec, pid, "→", decidir(fila, pid, dec, a.motivo, a.ato, a.data, a.categoria, a.url_documento, hoje))
     gravar("pistas_imprensa.json", fila)
-    if a.relatorio or a.preparar or a.aceitar or a.rejeitar or a.adiar:
-        md = relatorio(fila)
-        open("docs/FILA_PISTAS.md", "w", encoding="utf-8", newline="\n").write(md)
-        print(f"docs/FILA_PISTAS.md regravado ({novos} id(s) novo(s))")

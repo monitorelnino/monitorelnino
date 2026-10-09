@@ -32,6 +32,20 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-09 · #PR · as pendentes do Google News deixam de girar em falso
+
+Lote 2.6. 3.415 pistas com link opaco do Google News ficavam pendentes para sempre, e a noite gastava
+o teto nas mesmas 150. Agora o link se resolve pela busca no próprio veículo, pelo título; sem
+resolver em duas noites, a pista fecha com veículo e título no motivo. Notícia sem fonte oficial
+segue para o juiz; alvo de resposta, para a conferência de decretos. Ordem: a mais nova primeiro.
+
+## 2026-10-09 · #PR · codebook 1.4: o que o prazo fechou volta ao juiz
+
+Lote 2.5. O juiz sobe para o codebook 1.4 (lote 2), e a pista fechada por prazo depois de lida volta
+à fila com ele; o fechamento passa a dizer a recusa real. O contador de busca dirigida é escrito, só
+busca com rota conta, e a raiz de portal deixa de ser candidata. URL fora de fonte oficial não é
+mais baixada. O diário achado pela busca chega ao juiz com o excerto.
+
 ## 2026-10-09 · #PR · o ato é recortado de dentro do diário, e o corte vem depois
 
 Lote 2.2. O recorte do ato procurava cabeçalho em início de linha num texto sem quebras: devolvia a
@@ -46,6 +60,13 @@ grãos" virava seca, "fogo de artifício" virava fogo); "instrução normativa" 
 instrumento pela etapa 2 e recusada por `citacao_completa`, duas regras da mesma régua
 discordando; e a data do ato era a primeira data do texto, que num diário é a da edição — a regra
 da janela existia num caminho e não no outro. Onde: juiz.py, classificador_natureza.py.
+## 2026-10-09 · #PR · busca web: cobertura só sobre resultado que fala do município
+
+Lote 2.7. O motor que ignora aspas devolvia ~23 resultados por consulta sem o nome do município, e
+1.035 municípios ganharam "coberto sem menção" sobre esse ruído. Agora resultado que não nomeia o
+município é motor sem resposta, a cobertura exige três que o nomeiam, motor com 100% de falhas não é
+poupado pelo piso, e o log guarda os três primeiros hosts. UFs com busca web verificada: 27 → 25.
+
 ## 2026-10-09 · #PR · os dois portões da fila passam a ver o que não viam
 
 Lote 2.10. O portão de esquema cobria 1.064 das 13.406 pistas, e nada conferia a forma do que já
@@ -53,6 +74,13 @@ está lá: 13.330 sem `url_final`, 3.354 sem alvo, 3.177 com data fora de format
 conferida em todas, bloqueando a nova e nomeando o passivo. O portão do escritor só via o literal
 na mesma linha; agora vê escrita por variável e em linha partida — achou 18, quatro em fila do
 juiz, registradas com o que falta.
+## 2026-10-09 · #PR · nenhuma fila espera por uma pessoa
+
+Lote 2.9. Saem a decisão humana de pista (`--aceitar/--rejeitar/--adiar`), a fila de revisão
+agrupada (`pistas_revisao.json`, 10 MB por noite) e `FILA_PISTAS.md`. 148 pistas "lido por humano"
+e 97 decretos "pendente de julgamento humano" passam ao nome da regra automática, sem mudar decisão.
+Portão novo reprova status que espera por pessoa e, depois de 15/11, pendente com mais de 21 dias.
+
 ## 2026-10-09 · #PR · a coleta perdida volta, e o marcador sobrevive ao push
 
 Reaplicados os artefatos de `diarios` e `juiz` da noite de 08→09, pela porta de cada arquivo. Três
