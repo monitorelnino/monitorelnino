@@ -32,6 +32,13 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-09 · #PR · as pendentes do Google News deixam de girar em falso
+
+Lote 2.6. 3.415 pistas com link opaco do Google News ficavam pendentes para sempre, e a noite gastava
+o teto nas mesmas 150. Agora o link se resolve pela busca no próprio veículo, pelo título; sem
+resolver em duas noites, a pista fecha com veículo e título no motivo. Notícia sem fonte oficial
+segue para o juiz; alvo de resposta, para a conferência de decretos. Ordem: a mais nova primeiro.
+
 ## 2026-10-09 · #PR · classificação: termo de risco com fronteira, instrumento numa lista só
 
 Lote 2.3, as três correções de fato. Termo de risco casava dentro de outra palavra ("secagem de
