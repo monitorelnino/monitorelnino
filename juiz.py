@@ -371,10 +371,25 @@ RE_SO_DETERMINA_ELABORACAO = re.compile(
 
 # Cabeçalho de ato dentro de uma edição de diário. Uma edição do Querido Diário traz dezenas de atos
 # num arquivo só; o documento primário do §5.2.1 é o ATO, não a edição.
+#
+# 09/10/2026 (lote 2.2, A1-03): a versão anterior era ancorada em `^…$` com `re.M`, e o texto que o
+# juiz recebe em produção chega com o espaço colapsado (`buscar_texto` faz `\s+ -> " "`). Sem quebra
+# de linha, o único "início de linha" era o começo do arquivo: o recorte devolvia a edição inteira
+# em 5.499 de 5.499 decisões, e a lei de rua do topo do diário virava a citação do plano (Sobral/CE).
+# Agora o cabeçalho é reconhecido pela FORMA, em qualquer posição: tipo do ato em CAIXA ALTA (como
+# os diários o compõem) + marca de número + número. A citação no corpo ("nos termos da Lei nº
+# 12.608") vem em caixa mista e não corta o recorte. Cabeçalho em caixa mista não é reconhecido: o
+# recorte devolve o texto inteiro, que é o erro tolerado (o juiz lê tudo e provavelmente recusa).
 RE_CABECALHO_DE_ATO = re.compile(
-    r"^[ 	]*((?:DECRETO|PORTARIA|LEI|RESOLU[ÇC][ÃA]O|INSTRU[ÇC][ÃA]O\s+NORMATIVA)"
-    r"(?:\s+(?:MUNICIPAL|ESTADUAL|COMPLEMENTAR|ORDIN[ÁA]RI[AO]))?[^\n]{0,80})$",
-    re.I | re.M)
+    r"(?<![A-Za-zÀ-ÿ])((?:DECRETO|PORTARIA|LEI|RESOLU[ÇC][ÃA]O|INSTRU[ÇC][ÃA]O\s+NORMATIVA)"
+    r"(?:\s+(?:MUNICIPAL|ESTADUAL|COMPLEMENTAR|ORDIN[ÁA]RI[AO]))?"
+    r"\s+N\s*[º°o.]{0,2}\s*\d[\d.]*(?:/\d{2,4})?)")
+
+# O juiz julga no máximo isto. O corte existia em `buscar_texto`, ANTES do recorte: 185 das 197
+# recusas `ente_nao_confirmado` do codebook 1.3 leram um diário truncado, com o ato além do corte
+# (A1-20). Agora a leitura traz o documento inteiro, o recorte acha o ato no texto integral, e o
+# corte se aplica ao que vai ser julgado.
+TETO_DO_JULGAMENTO = 20000
 
 
 def posicao_do_trecho(texto: str, trecho: str) -> int:
@@ -825,14 +840,21 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
         return veredito
 
     # Edição de diário traz dezenas de atos; o documento primário é o ATO que contém o excerto.
+    # 09/10/2026 (lote 2.2): a identidade do ente se lê na CABEÇA da edição ("Diário Oficial do
+    # Município de Bonito - MS") somada ao ato recortado — o ato sozinho costuma não repetir a UF, e
+    # o homônimo seria recusado por um corte nosso, não pelo documento. Citação, autoridade e objeto
+    # continuam lidos só no ato.
+    texto_da_identidade = None
     if trecho:
         recorte = recortar_ato(texto, trecho)
         if recorte is not texto and len(recorte) < len(texto):
             veredito["criterios"]["0_documento_primario"]["recorte_do_ato"] = (
                 f"{len(recorte)} de {len(texto)} caracteres — ato recortado da edição pelo excerto")
+            texto_da_identidade = texto[:600] + "\n" + recorte
             texto = recorte
+    texto = texto[:TETO_DO_JULGAMENTO]
 
-    ok, motivo, trecho = etapa1_identidade(texto, nome, uf)
+    ok, motivo, trecho = etapa1_identidade(texto_da_identidade or texto, nome, uf)
     veredito["criterios"]["1_identidade"] = {"ok": ok, "trecho": trecho}
     if not ok:
         veredito["motivo"] = motivo
@@ -1210,6 +1232,25 @@ def autoteste() -> int:
         ("recorte do ato: o trecho isola o ato dentro da edição do diário",
          recortar_ato(EDICAO_DE_DIARIO, "institui o Plano de Contingência").strip().startswith("DECRETO Nº 88")
          and "PORTARIA" not in recortar_ato(EDICAO_DE_DIARIO, "institui o Plano de Contingência")),
+        # 09/10/2026 (lote 2.2): a forma em que o texto chega em produção — espaço colapsado.
+        ("recorte do ato funciona no texto colapsado de produção (A1-03)",
+         recortar_ato(re.sub(r"\s+", " ", EDICAO_DE_DIARIO), "institui o Plano de Contingência")
+         .strip().startswith("DECRETO Nº 88")
+         and "PORTARIA Nº 45" not in recortar_ato(re.sub(r"\s+", " ", EDICAO_DE_DIARIO),
+                                                  "institui o Plano de Contingência")),
+        ("veredito sobre a edição colapsada cita o decreto 88, não a lei de rua (A1-03)",
+         (lambda v: (v["criterios"].get("2_citacao", {}).get("dados") or {}).get("numero") == "88")(
+             julgar(re.sub(r"\s+", " ", EDICAO_DE_DIARIO), nome="Bonito", uf="MS", url=URL_OFICIAL,
+                    trecho="Institui o Plano de Contingência Municipal para o período de estiagem"))),
+        ("citação em caixa mista no corpo não é cabeçalho",
+         not RE_CABECALHO_DE_ATO.search("nos termos da Lei nº 12.608, de 10 de abril de 2012")),
+        ("ato além dos 20.000 caracteres é achado pelo trecho no texto integral (A1-20)",
+         (lambda v: (v["criterios"].get("2_citacao", {}).get("dados") or {}).get("numero") == "88")(
+             julgar(("DIÁRIO OFICIAL DO MUNICÍPIO DE BONITO - MS PORTARIA Nº 1, DE 1 DE JULHO DE"
+                     " 2026 Concede férias. " + "z " * 15000
+                     + re.sub(r"\s+", " ", EDICAO_DE_DIARIO.split("ANO V EDIÇÃO Nº 1234")[1])),
+                    nome="Bonito", uf="MS", url=URL_OFICIAL,
+                    trecho="Institui o Plano de Contingência Municipal para o período de estiagem"))),
         ("recorte sem trecho devolve o texto inteiro",
          recortar_ato(EDICAO_DE_DIARIO, "") == EDICAO_DE_DIARIO),
         ("trecho ausente do texto devolve o texto inteiro",
