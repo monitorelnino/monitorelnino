@@ -23,6 +23,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+
+## 2026-10-08 · #PR · Lote 4.1: os medidores voltam a mostrar número
+
+Os 21 estados verificados do MARÉ Saúde mostravam **0,0** na grade, e a ficha aberta por `index.html#UF` — o caminho do selo embutido em outro site — abria com 0,0/100: a função que escreve o número vivia no escopo de um módulo, e a outra página chamava uma função que não existia, com a guarda engolindo a ausência. O valor estava certo no atributo todo esse tempo. Um dono só, em `assets/mapas.js`, e o portão passa a exigir o número escrito.
 ## 2026-10-09 · #604 · cartão de atos federais: ausência da classe certa
 
 O cartão dizia "sem coleta" de uma série que está em disco, e o portão de layout reprovava com

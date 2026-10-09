@@ -1325,5 +1325,14 @@
   "por_que": "A4-07: `decreto`, `plano_elaboracao`, `estrutura` e `nao_el_nino` caíam no ramo do NÃO VERIFICADO, e o cartão negava ao leitor o que o banco sabe — no caso do decreto, escondia a única informação de resposta que existia. As três frases novas são as aprovadas na seção C do handover.",
   "achado": "A4-07",
   "lote": "4.2"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "os 21 estados verificados do MARÉ Saúde mostravam 0,0 na grade, e a ficha aberta por `index.html#UF` — o caminho do selo embutido em outro site — abria com 0,0/100 e a barra vazia. Passam a mostrar o valor",
+  "por_que": "A4-01 e A4-04: a função que escreve o número no medidor morava no escopo de `assets/js/index.js`, e o MARÉ Saúde chamava `MonitorMapas.animarGauges`, que não existia — a guarda engolia a ausência em silêncio. O valor estava correto no atributo `data-contar` todo esse tempo; ninguém o escrevia. A animação passa a ter um dono, em `assets/mapas.js`, que as duas páginas carregam, e o portão de runtime passa a exigir o número escrito, não o atributo.",
+  "achado": "A4-01",
+  "lote": "4.1"
  }
 ]

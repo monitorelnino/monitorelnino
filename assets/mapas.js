@@ -338,5 +338,38 @@
     neutra: NEUTRA, semDado: COR['sem-dado'], zero: COR.zebra, trilho: COR['gauge-trilho'],   // trilho = fundo das barras do medidor (15/09/2026: arte única)
     serie: [COR.musgo, COR.sintetico, COR.ambar, COR.argila, COR.mineral, COR['areia-escura'], COR.bioluz, COR.muted] };
 
-  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, desenharMapa, atmosfera, hachura, credito, dataBR };
+  /** Anima os medidores e os contadores de `root`. Dono ÚNICO (08/10/2026, A4-01 e A4-04).
+   *
+   *  Antes de hoje esta função existia só no escopo de `assets/js/index.js`, e o MARÉ Saúde
+   *  chamava `MonitorMapas.animarGauges` — que não existia. A guarda engolia a ausência, e os 21
+   *  estados verificados mostravam **0,0** na grade: o valor estava no `data-contar`, e ninguém o
+   *  escrevia. Respeita `prefers-reduced-motion` e funciona sem `requestAnimationFrame` (jsdom),
+   *  caso em que escreve o valor final de uma vez — o número é o que importa, a animação não.
+   */
+  function animarGauges(root){
+    if (!root || typeof root.querySelectorAll !== "function") return;
+    const reduz = (typeof matchMedia === "function")
+      && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const temRAF = (typeof requestAnimationFrame === "function");
+    root.querySelectorAll(".gauge-fill[data-alvo], .tile-fill[data-alvo]").forEach(f => {
+      const set = () => { f.style.width = f.dataset.alvo + "%"; };
+      (!temRAF || reduz) ? set() : requestAnimationFrame(() => requestAnimationFrame(set));
+    });
+    root.querySelectorAll("[data-contar]").forEach(el => {
+      const alvo = parseFloat(el.dataset.contar);
+      if (!isFinite(alvo)) return;
+      const fmt = (x) => x.toFixed(1).replace(".", ",");
+      if (!temRAF || reduz){ el.textContent = fmt(alvo); return; }
+      const dur = 1200, t0 = (typeof performance === "object" ? performance.now() : 0);
+      const passo = (t) => {
+        const k = Math.min(1, (t - t0) / dur);
+        const e = 1 - Math.pow(1 - k, 3);
+        el.textContent = fmt(alvo * e);
+        if (k < 1) requestAnimationFrame(passo);
+      };
+      requestAnimationFrame(passo);
+    });
+  }
+
+  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, desenharMapa, atmosfera, hachura, credito, dataBR, animarGauges };
 })(window);
