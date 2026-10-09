@@ -17,6 +17,50 @@ DEST = RAIZ / "data" / "recursos_uf.json"
 SENT = {"DF": 129790.44, "SP": 77566.27, "MT": 74620.05}
 URL = "https://apisidra.ibge.gov.br/values/t/5938/n3/all/v/6323/p/2023?formato=json"
 
+def por_que_recusar(pib: dict) -> "str | None":
+    """O motivo de recusar o PIB lido, ou `None` quando ele passa. Função pura.
+
+    08/10/2026 (A6-26): a validação morava dentro de `main`, depois da chamada de rede, e
+    `--autoteste` era IGNORADO — o script ia ao SIDRA e GRAVAVA. Autoteste que depende da rede
+    não é autoteste; a trava que importa é esta, e agora ela se exerce offline.
+    """
+    if len(pib) != 27:
+        return f"{len(pib)}/27 UFs"
+    for uf, esperado in SENT.items():
+        if uf not in pib:
+            return f"sentinela {uf} ausente"
+        if abs(pib[uf] - esperado) > 0.5:
+            return f"sentinela {uf} divergente ({pib[uf]} ≠ {esperado})"
+    if min(pib, key=pib.get) != "MA":
+        return "última posição não é MA"
+    return None
+
+
+def autoteste() -> int:
+    """Autoteste PURO: sem rede, sem escrever nada."""
+    base = {uf: 50000.0 for uf in
+            ("RO AC AM RR PA AP TO MA PI CE RN PB PE AL SE BA MG ES RJ SP PR SC RS MS MT GO DF"
+             ).split()}
+    base.update(SENT)
+    base["MA"] = min(base.values()) - 1
+    casos = [
+        ("27 UFs com sentinelas e MA na última posição passam", por_que_recusar(base) is None),
+        ("26 UFs reprovam",
+         "26/27" in (por_que_recusar({k: v for k, v in list(base.items())[:26]}) or "")),
+        ("sentinela divergente reprova",
+         "divergente" in (por_que_recusar({**base,
+                                           next(iter(SENT)): SENT[next(iter(SENT))] + 10}) or "")),
+        ("última posição diferente de MA reprova",
+         por_que_recusar({**base, "MA": max(base.values()) + 1}) is not None),
+    ]
+    ruins = [n for n, ok in casos if not ok]
+    for n, ok in casos:
+        print(f"  {'✓' if ok else '✗'} {n}")
+    print(f"{'✓ AUTOTESTE OK' if not ruins else f'✗ AUTOTESTE: {len(ruins)} falha(s)'} — "
+          f"{len(casos)} casos, sem rede e sem escrita.")
+    return 1 if ruins else 0
+
+
 def main():
     """Busca o PIB per capita por UF na API SIDRA do IBGE, valida contra as quatro UFs-sentinela de 2023 e grava data/recursos_uf.json (ou marca completo:false em caso de falha, sem nunca publicar dado não confirmado)."""
     try:
@@ -34,17 +78,15 @@ def main():
         try: v = float(linha.get("V"))
         except (TypeError, ValueError): continue
         if uf: pib[uf] = v
-    if len(pib) != 27:
-        print(f"ABORTADO: {len(pib)}/27 UFs — nada gravado"); return 1
-    for uf, esperado in SENT.items():
-        if abs(pib[uf] - esperado) > 0.5:
-            print(f"ABORTADO: sentinela {uf} divergente ({pib[uf]} ≠ {esperado}) — nada gravado"); return 1
-    if min(pib, key=pib.get) != "MA":
-        print("ABORTADO: última posição não é MA — nada gravado"); return 1
+    recusa = por_que_recusar(pib)
+    if recusa:
+        print(f"ABORTADO: {recusa} — nada gravado"); return 1
     gravar_em(DEST, {"completo": True,
                      "fonte": "IBGE, Sistema de Contas Regionais 2023 (SIDRA), validado por 4 sentinelas em produção",
                      "pib_per_capita": pib})   # §229
     print(f"OK 27 UFs gravadas com sentinelas verdes — gráfico-tese passa ao eixo de riqueza"); return 0
 
 if __name__ == "__main__":
+    if "--autoteste" in sys.argv or "--self-test" in sys.argv:
+        sys.exit(autoteste())
     sys.exit(main())

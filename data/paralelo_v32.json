@@ -1,0 +1,1357 @@
+{
+ "_governanca": "MARÉ Legal v3.2 (preparação programática) calculada EM PARALELO, por decisão de método de 05/10/2026 e implementação de 08/10/2026 (A3-12). Nenhuma página lê este arquivo e nenhuma nota publicada vem dele: o índice no ar é o da v3.1. Regenerado pela cadeia de derivados.",
+ "degrau": {
+  "nome": "arranjo permanente de resposta à seca",
+  "pontos": 45,
+  "credito_populacional": 0.45,
+  "condicoes": [
+   "risco de seca: Semiárido pela delimitação federal",
+   "reconhecimento federal por estiagem ou seca vigente na data da leitura (validade de 180 dias da portaria SEDEC)",
+   "inclusão efetiva em programa federal de resposta à seca no ano (hoje só a Operação Carro-Pipa: a adesão municipal ao Garantia-Safra não tem fonte oficial por ano localizada)"
+  ],
+  "regra_de_soma": "com plano publicado, vale o plano; o arranjo não soma"
+ },
+ "municipios_com_arranjo": 191,
+ "municipios_que_entrariam_no_credito": 190,
+ "media_nacional_v31": 40.1,
+ "media_nacional_v32": 40.5,
+ "por_uf": {
+  "AC": {
+   "cobertura_v31": 20.4,
+   "cobertura_v32": 20.4,
+   "total_v31": 35.1,
+   "total_v32": 35.1,
+   "municipios_que_entram": 0
+  },
+  "AL": {
+   "cobertura_v31": 12.7,
+   "cobertura_v32": 15.7,
+   "total_v31": 44.2,
+   "total_v32": 45.2,
+   "municipios_que_entram": 14
+  },
+  "AM": {
+   "cobertura_v31": 65.6,
+   "cobertura_v32": 65.6,
+   "total_v31": 76.9,
+   "total_v32": 76.9,
+   "municipios_que_entram": 0
+  },
+  "AP": {
+   "cobertura_v31": 9.0,
+   "cobertura_v32": 9.0,
+   "total_v31": 13.0,
+   "total_v32": 13.0,
+   "municipios_que_entram": 0
+  },
+  "BA": {
+   "cobertura_v31": 7.9,
+   "cobertura_v32": 10.5,
+   "total_v31": 9.3,
+   "total_v32": 10.2,
+   "municipios_que_entram": 38
+  },
+  "CE": {
+   "cobertura_v31": 4.0,
+   "cobertura_v32": 8.9,
+   "total_v31": 11.3,
+   "total_v32": 13.0,
+   "municipios_que_entram": 22
+  },
+  "DF": {
+   "cobertura_v31": 30.0,
+   "cobertura_v32": 30.0,
+   "total_v31": 50.0,
+   "total_v32": 50.0,
+   "municipios_que_entram": 0
+  },
+  "ES": {
+   "cobertura_v31": 97.5,
+   "cobertura_v32": 97.5,
+   "total_v31": 57.5,
+   "total_v32": 57.5,
+   "municipios_que_entram": 0
+  },
+  "GO": {
+   "cobertura_v31": 7.4,
+   "cobertura_v32": 7.4,
+   "total_v31": 69.1,
+   "total_v32": 69.1,
+   "municipios_que_entram": 0
+  },
+  "MA": {
+   "cobertura_v31": 4.2,
+   "cobertura_v32": 4.2,
+   "total_v31": 39.7,
+   "total_v32": 39.7,
+   "municipios_que_entram": 0
+  },
+  "MG": {
+   "cobertura_v31": 9.1,
+   "cobertura_v32": 9.1,
+   "total_v31": 18.0,
+   "total_v32": 18.0,
+   "municipios_que_entram": 0
+  },
+  "MS": {
+   "cobertura_v31": 4.5,
+   "cobertura_v32": 4.5,
+   "total_v31": 46.5,
+   "total_v32": 46.5,
+   "municipios_que_entram": 0
+  },
+  "MT": {
+   "cobertura_v31": 1.8,
+   "cobertura_v32": 1.8,
+   "total_v31": 67.3,
+   "total_v32": 67.3,
+   "municipios_que_entram": 0
+  },
+  "PA": {
+   "cobertura_v31": 6.8,
+   "cobertura_v32": 6.8,
+   "total_v31": 47.3,
+   "total_v32": 47.3,
+   "municipios_que_entram": 0
+  },
+  "PB": {
+   "cobertura_v31": 5.1,
+   "cobertura_v32": 9.7,
+   "total_v31": 1.7,
+   "total_v32": 3.2,
+   "municipios_que_entram": 40
+  },
+  "PE": {
+   "cobertura_v31": 30.3,
+   "cobertura_v32": 36.1,
+   "total_v31": 16.8,
+   "total_v32": 18.7,
+   "municipios_que_entram": 30
+  },
+  "PI": {
+   "cobertura_v31": 1.5,
+   "cobertura_v32": 2.8,
+   "total_v31": 18.8,
+   "total_v32": 19.3,
+   "municipios_que_entram": 11
+  },
+  "PR": {
+   "cobertura_v31": 24.8,
+   "cobertura_v32": 24.8,
+   "total_v31": 63.3,
+   "total_v32": 63.3,
+   "municipios_que_entram": 0
+  },
+  "RJ": {
+   "cobertura_v31": 66.2,
+   "cobertura_v32": 66.2,
+   "total_v31": 47.1,
+   "total_v32": 47.1,
+   "municipios_que_entram": 0
+  },
+  "RN": {
+   "cobertura_v31": 3.2,
+   "cobertura_v32": 8.9,
+   "total_v31": 1.1,
+   "total_v32": 3.0,
+   "municipios_que_entram": 31
+  },
+  "RO": {
+   "cobertura_v31": 39.0,
+   "cobertura_v32": 39.0,
+   "total_v31": 51.3,
+   "total_v32": 51.3,
+   "municipios_que_entram": 0
+  },
+  "RR": {
+   "cobertura_v31": 4.4,
+   "cobertura_v32": 4.4,
+   "total_v31": 26.5,
+   "total_v32": 26.5,
+   "municipios_que_entram": 0
+  },
+  "RS": {
+   "cobertura_v31": 23.4,
+   "cobertura_v32": 23.4,
+   "total_v31": 52.8,
+   "total_v32": 52.8,
+   "municipios_que_entram": 0
+  },
+  "SC": {
+   "cobertura_v31": 17.5,
+   "cobertura_v32": 17.5,
+   "total_v31": 72.5,
+   "total_v32": 72.5,
+   "municipios_que_entram": 0
+  },
+  "SE": {
+   "cobertura_v31": 14.5,
+   "cobertura_v32": 16.9,
+   "total_v31": 71.5,
+   "total_v32": 72.3,
+   "municipios_que_entram": 4
+  },
+  "SP": {
+   "cobertura_v31": 31.0,
+   "cobertura_v32": 31.0,
+   "total_v31": 35.3,
+   "total_v32": 35.3,
+   "municipios_que_entram": 0
+  },
+  "TO": {
+   "cobertura_v31": 2.2,
+   "cobertura_v32": 2.2,
+   "total_v31": 39.1,
+   "total_v32": 39.1,
+   "municipios_que_entram": 0
+  }
+ },
+ "arranjo_por_municipio": {
+  "2403707": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.853, nº 2.855, nº 2.858, nº 2.865)",
+   "data_reconhecimento": "02/09/2026",
+   "meses_atendidos": 8
+  },
+  "2404002": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.853, nº 2.855, nº 2.858, nº 2.865)",
+   "data_reconhecimento": "02/09/2026",
+   "meses_atendidos": 8
+  },
+  "2922656": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.853, nº 2.855, nº 2.858, nº 2.865)",
+   "data_reconhecimento": "02/09/2026",
+   "meses_atendidos": 8
+  },
+  "2409407": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.853, nº 2.855, nº 2.858, nº 2.865)",
+   "data_reconhecimento": "02/09/2026",
+   "meses_atendidos": 8
+  },
+  "2924405": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.853, nº 2.855, nº 2.858, nº 2.865)",
+   "data_reconhecimento": "02/09/2026",
+   "meses_atendidos": 8
+  },
+  "2512101": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.853, nº 2.855, nº 2.858, nº 2.865)",
+   "data_reconhecimento": "02/09/2026",
+   "meses_atendidos": 1
+  },
+  "2707206": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.853, nº 2.855, nº 2.858, nº 2.865)",
+   "data_reconhecimento": "02/09/2026",
+   "meses_atendidos": 8
+  },
+  "2702900": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.819, nº 2.819, nº 2.819, nº 2.823)",
+   "data_reconhecimento": "31/08/2026",
+   "meses_atendidos": 7
+  },
+  "2504074": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.808, nº 2.808, nº 2.808, nº 2.809, nº 2.810, nº 2811, nº 2811, nº 2811, nº 2.814, nº 2.814, nº 2.814)",
+   "data_reconhecimento": "28/08/2026",
+   "meses_atendidos": 8
+  },
+  "2206050": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.808, nº 2.808, nº 2.808, nº 2.809, nº 2.810, nº 2811, nº 2811, nº 2811, nº 2.814, nº 2.814, nº 2.814)",
+   "data_reconhecimento": "28/08/2026",
+   "meses_atendidos": 1
+  },
+  "2207801": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.808, nº 2.808, nº 2.808, nº 2.809, nº 2.810, nº 2811, nº 2811, nº 2811, nº 2.814, nº 2.814, nº 2.814)",
+   "data_reconhecimento": "28/08/2026",
+   "meses_atendidos": 8
+  },
+  "2927606": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.793, nº 2.794, nº 2.795, nº 2.796)",
+   "data_reconhecimento": "27/08/2026",
+   "meses_atendidos": 8
+  },
+  "2917706": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.771, nº 2.772)",
+   "data_reconhecimento": "26/08/2026",
+   "meses_atendidos": 5
+  },
+  "2705002": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.771, nº 2.772)",
+   "data_reconhecimento": "26/08/2026",
+   "meses_atendidos": 8
+  },
+  "2510204": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.771, nº 2.772)",
+   "data_reconhecimento": "26/08/2026",
+   "meses_atendidos": 8
+  },
+  "2502904": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.754, nº 2.757, nº 2.758, nº 2.759)",
+   "data_reconhecimento": "25/08/2026",
+   "meses_atendidos": 8
+  },
+  "2701605": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.754, nº 2.757, nº 2.758, nº 2.759)",
+   "data_reconhecimento": "25/08/2026",
+   "meses_atendidos": 8
+  },
+  "2509602": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.754, nº 2.757, nº 2.758, nº 2.759)",
+   "data_reconhecimento": "25/08/2026",
+   "meses_atendidos": 8
+  },
+  "2925105": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.754, nº 2.757, nº 2.758, nº 2.759)",
+   "data_reconhecimento": "25/08/2026",
+   "meses_atendidos": 6
+  },
+  "2514404": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.754, nº 2.757, nº 2.758, nº 2.759)",
+   "data_reconhecimento": "25/08/2026",
+   "meses_atendidos": 8
+  },
+  "2308609": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.731",
+   "data_reconhecimento": "24/08/2026",
+   "meses_atendidos": 8
+  },
+  "2410900": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.731",
+   "data_reconhecimento": "24/08/2026",
+   "meses_atendidos": 8
+  },
+  "2311900": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.731",
+   "data_reconhecimento": "24/08/2026",
+   "meses_atendidos": 8
+  },
+  "2516003": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.731",
+   "data_reconhecimento": "24/08/2026",
+   "meses_atendidos": 8
+  },
+  "2512002": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.704, nº 2.705)",
+   "data_reconhecimento": "21/08/2026",
+   "meses_atendidos": 8
+  },
+  "2517100": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.704, nº 2.705)",
+   "data_reconhecimento": "21/08/2026",
+   "meses_atendidos": 8
+  },
+  "2905909": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.645, nº 2.658, nº 2.659, nº 2.659, nº 2.667)",
+   "data_reconhecimento": "19/08/2026",
+   "meses_atendidos": 9
+  },
+  "2405009": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.645, nº 2.658, nº 2.659, nº 2.659, nº 2.667)",
+   "data_reconhecimento": "19/08/2026",
+   "meses_atendidos": 8
+  },
+  "2406908": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.645, nº 2.658, nº 2.659, nº 2.659, nº 2.667)",
+   "data_reconhecimento": "19/08/2026",
+   "meses_atendidos": 8
+  },
+  "2807402": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.645, nº 2.658, nº 2.659, nº 2.659, nº 2.667)",
+   "data_reconhecimento": "19/08/2026",
+   "meses_atendidos": 8
+  },
+  "2903706": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.622, nº 2.627)",
+   "data_reconhecimento": "17/08/2026",
+   "meses_atendidos": 6
+  },
+  "2409605": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.622, nº 2.627)",
+   "data_reconhecimento": "17/08/2026",
+   "meses_atendidos": 8
+  },
+  "2502409": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.606, nº 2.606, nº 2.607, nº 2.607, nº 2.608, nº 2.608, nº 2.609, nº 2.609)",
+   "data_reconhecimento": "14/08/2026",
+   "meses_atendidos": 8
+  },
+  "2917003": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.606, nº 2.606, nº 2.607, nº 2.607, nº 2.608, nº 2.608, nº 2.609, nº 2.609)",
+   "data_reconhecimento": "14/08/2026",
+   "meses_atendidos": 8
+  },
+  "2512705": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.606, nº 2.606, nº 2.607, nº 2.607, nº 2.608, nº 2.608, nº 2.609, nº 2.609)",
+   "data_reconhecimento": "14/08/2026",
+   "meses_atendidos": 8
+  },
+  "2801405": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.582, nº 2.582, nº 2.583, nº 2.584, nº 2.584, nº 2.585, nº 2.585)",
+   "data_reconhecimento": "12/08/2026",
+   "meses_atendidos": 8
+  },
+  "2504306": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.582, nº 2.582, nº 2.583, nº 2.584, nº 2.584, nº 2.585, nº 2.585)",
+   "data_reconhecimento": "12/08/2026",
+   "meses_atendidos": 8
+  },
+  "2504702": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.582, nº 2.582, nº 2.583, nº 2.584, nº 2.584, nº 2.585, nº 2.585)",
+   "data_reconhecimento": "12/08/2026",
+   "meses_atendidos": 8
+  },
+  "2914208": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.582, nº 2.582, nº 2.583, nº 2.584, nº 2.584, nº 2.585, nº 2.585)",
+   "data_reconhecimento": "12/08/2026",
+   "meses_atendidos": 8
+  },
+  "2306603": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.582, nº 2.582, nº 2.583, nº 2.584, nº 2.584, nº 2.585, nº 2.585)",
+   "data_reconhecimento": "12/08/2026",
+   "meses_atendidos": 8
+  },
+  "2918753": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.582, nº 2.582, nº 2.583, nº 2.584, nº 2.584, nº 2.585, nº 2.585)",
+   "data_reconhecimento": "12/08/2026",
+   "meses_atendidos": 8
+  },
+  "2708956": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.582, nº 2.582, nº 2.583, nº 2.584, nº 2.584, nº 2.585, nº 2.585)",
+   "data_reconhecimento": "12/08/2026",
+   "meses_atendidos": 8
+  },
+  "2513984": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.582, nº 2.582, nº 2.583, nº 2.584, nº 2.584, nº 2.585, nº 2.585)",
+   "data_reconhecimento": "12/08/2026",
+   "meses_atendidos": 8
+  },
+  "2514909": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.582, nº 2.582, nº 2.583, nº 2.584, nº 2.584, nº 2.585, nº 2.585)",
+   "data_reconhecimento": "12/08/2026",
+   "meses_atendidos": 8
+  },
+  "2920502": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.546, nº 2.548, nº 2.548, nº 2.548, nº 2.549, nº 2.549, nº 2.553, nº 2.564)",
+   "data_reconhecimento": "06/08/2026",
+   "meses_atendidos": 8
+  },
+  "2613602": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.546, nº 2.548, nº 2.548, nº 2.548, nº 2.549, nº 2.549, nº 2.553, nº 2.564)",
+   "data_reconhecimento": "06/08/2026",
+   "meses_atendidos": 2
+  },
+  "2306801": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.520, nº 2.521, nº 2.521, nº 2.521, nº 2.522)",
+   "data_reconhecimento": "05/08/2026",
+   "meses_atendidos": 8
+  },
+  "2410801": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.520, nº 2.521, nº 2.521, nº 2.521, nº 2.522)",
+   "data_reconhecimento": "05/08/2026",
+   "meses_atendidos": 8
+  },
+  "2401859": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.484, nº 2.485, nº 2.486, nº 2.486, nº 2.486)",
+   "data_reconhecimento": "03/08/2026",
+   "meses_atendidos": 8
+  },
+  "2503902": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.484, nº 2.485, nº 2.486, nº 2.486, nº 2.486)",
+   "data_reconhecimento": "03/08/2026",
+   "meses_atendidos": 6
+  },
+  "2408904": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.484, nº 2.485, nº 2.486, nº 2.486, nº 2.486)",
+   "data_reconhecimento": "03/08/2026",
+   "meses_atendidos": 1
+  },
+  "2300309": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.475, nº 2.475, nº 2.475, nº 2.476, nº 2.477, nº 2.477, nº 2.477)",
+   "data_reconhecimento": "31/07/2026",
+   "meses_atendidos": 8
+  },
+  "2407401": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.475, nº 2.475, nº 2.475, nº 2.476, nº 2.477, nº 2.477, nº 2.477)",
+   "data_reconhecimento": "31/07/2026",
+   "meses_atendidos": 6
+  },
+  "2701209": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.884, nº 2.885, nº 2.886, nº 2.890)",
+   "data_reconhecimento": "03/09/2026",
+   "meses_atendidos": 8
+  },
+  "2920106": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.884, nº 2.885, nº 2.886, nº 2.890)",
+   "data_reconhecimento": "03/09/2026",
+   "meses_atendidos": 5
+  },
+  "2209658": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.884, nº 2.885, nº 2.886, nº 2.890)",
+   "data_reconhecimento": "03/09/2026",
+   "meses_atendidos": 8
+  },
+  "2502151": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.908",
+   "data_reconhecimento": "04/09/2026",
+   "meses_atendidos": 8
+  },
+  "2200053": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.942, nº 2.943)",
+   "data_reconhecimento": "08/09/2026",
+   "meses_atendidos": 8
+  },
+  "2400208": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.942, nº 2.943)",
+   "data_reconhecimento": "08/09/2026",
+   "meses_atendidos": 7
+  },
+  "2702504": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.942, nº 2.943)",
+   "data_reconhecimento": "08/09/2026",
+   "meses_atendidos": 8
+  },
+  "2203750": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.942, nº 2.943)",
+   "data_reconhecimento": "08/09/2026",
+   "meses_atendidos": 7
+  },
+  "2507002": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.942, nº 2.943)",
+   "data_reconhecimento": "08/09/2026",
+   "meses_atendidos": 8
+  },
+  "2516300": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.942, nº 2.943)",
+   "data_reconhecimento": "08/09/2026",
+   "meses_atendidos": 8
+  },
+  "2414001": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.942, nº 2.943)",
+   "data_reconhecimento": "08/09/2026",
+   "meses_atendidos": 8
+  },
+  "2700904": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 3.003, nº 3.003, nº 3.005, nº 3.005)",
+   "data_reconhecimento": "10/09/2026",
+   "meses_atendidos": 8
+  },
+  "2303659": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 3.003, nº 3.003, nº 3.005, nº 3.005)",
+   "data_reconhecimento": "10/09/2026",
+   "meses_atendidos": 8
+  },
+  "2802304": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 3.003, nº 3.003, nº 3.005, nº 3.005)",
+   "data_reconhecimento": "10/09/2026",
+   "meses_atendidos": 8
+  },
+  "2509701": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 3.003, nº 3.003, nº 3.005, nº 3.005)",
+   "data_reconhecimento": "10/09/2026",
+   "meses_atendidos": 8
+  },
+  "2504850": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.970, nº 2.971, nº 2.972)",
+   "data_reconhecimento": "09/09/2026",
+   "meses_atendidos": 8
+  },
+  "2910107": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 2.970, nº 2.971, nº 2.972)",
+   "data_reconhecimento": "09/09/2026",
+   "meses_atendidos": 8
+  },
+  "2201739": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 3.089, nº 3.089, nº 3.092, nº 3.092, nº 3.099, nº 3.099, nº 3.100, nº 3.101, nº 3.101)",
+   "data_reconhecimento": "16/09/2026",
+   "meses_atendidos": 8
+  },
+  "2701803": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 3.089, nº 3.089, nº 3.092, nº 3.092, nº 3.099, nº 3.099, nº 3.100, nº 3.101, nº 3.101)",
+   "data_reconhecimento": "16/09/2026",
+   "meses_atendidos": 8
+  },
+  "2210706": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 3.089, nº 3.089, nº 3.092, nº 3.092, nº 3.099, nº 3.099, nº 3.100, nº 3.101, nº 3.101)",
+   "data_reconhecimento": "16/09/2026",
+   "meses_atendidos": 8
+  },
+  "2705408": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 3.072, nº 3.073, nº 3.073, nº 3.074, nº 3.074, nº 3.084)",
+   "data_reconhecimento": "16/09/2026",
+   "meses_atendidos": 8
+  },
+  "2805406": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 3.072, nº 3.073, nº 3.073, nº 3.074, nº 3.074, nº 3.084)",
+   "data_reconhecimento": "16/09/2026",
+   "meses_atendidos": 6
+  },
+  "2205151": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 3.031, nº 3.032, nº 3.034)",
+   "data_reconhecimento": "14/09/2026",
+   "meses_atendidos": 8
+  },
+  "2313005": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 3.031, nº 3.032, nº 3.034)",
+   "data_reconhecimento": "14/09/2026",
+   "meses_atendidos": 9
+  },
+  "2515401": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 3.031, nº 3.032, nº 3.034)",
+   "data_reconhecimento": "14/09/2026",
+   "meses_atendidos": 8
+  },
+  "2702355": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 3.147, nº 3.147, nº 3.150, nº 3.151)",
+   "data_reconhecimento": "21/09/2026",
+   "meses_atendidos": 8
+  },
+  "2406809": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 3.147, nº 3.147, nº 3.150, nº 3.151)",
+   "data_reconhecimento": "21/09/2026",
+   "meses_atendidos": 8
+  },
+  "2407609": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 3.147, nº 3.147, nº 3.150, nº 3.151)",
+   "data_reconhecimento": "21/09/2026",
+   "meses_atendidos": 8
+  },
+  "2509404": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 3.147, nº 3.147, nº 3.150, nº 3.151)",
+   "data_reconhecimento": "21/09/2026",
+   "meses_atendidos": 8
+  },
+  "2310506": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 3.147, nº 3.147, nº 3.150, nº 3.151)",
+   "data_reconhecimento": "21/09/2026",
+   "meses_atendidos": 9
+  },
+  "2412906": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 3.147, nº 3.147, nº 3.150, nº 3.151)",
+   "data_reconhecimento": "21/09/2026",
+   "meses_atendidos": 8
+  },
+  "2517209": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR (lote: nº 3.147, nº 3.147, nº 3.150, nº 3.151)",
+   "data_reconhecimento": "21/09/2026",
+   "meses_atendidos": 8
+  },
+  "2407906": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 3.172",
+   "data_reconhecimento": "23/09/2026",
+   "meses_atendidos": 8
+  },
+  "2510659": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 3.172",
+   "data_reconhecimento": "23/09/2026",
+   "meses_atendidos": 8
+  },
+  "2709202": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 3.172",
+   "data_reconhecimento": "23/09/2026",
+   "meses_atendidos": 8
+  },
+  "2931004": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.345",
+   "data_reconhecimento": "17/07/2026",
+   "meses_atendidos": 6
+  },
+  "2924702": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.345",
+   "data_reconhecimento": "17/07/2026",
+   "meses_atendidos": 8
+  },
+  "2909901": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.345",
+   "data_reconhecimento": "17/07/2026",
+   "meses_atendidos": 8
+  },
+  "2311405": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.345",
+   "data_reconhecimento": "17/07/2026",
+   "meses_atendidos": 8
+  },
+  "2302404": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.345",
+   "data_reconhecimento": "17/07/2026",
+   "meses_atendidos": 8
+  },
+  "2311231": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.345",
+   "data_reconhecimento": "17/07/2026",
+   "meses_atendidos": 8
+  },
+  "2304269": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.345",
+   "data_reconhecimento": "17/07/2026",
+   "meses_atendidos": 8
+  },
+  "2505709": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.345",
+   "data_reconhecimento": "17/07/2026",
+   "meses_atendidos": 8
+  },
+  "2512606": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.345",
+   "data_reconhecimento": "17/07/2026",
+   "meses_atendidos": 8
+  },
+  "2608800": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.345",
+   "data_reconhecimento": "17/07/2026",
+   "meses_atendidos": 8
+  },
+  "2924900": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.305",
+   "data_reconhecimento": "15/07/2026",
+   "meses_atendidos": 8
+  },
+  "2919058": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.305",
+   "data_reconhecimento": "15/07/2026",
+   "meses_atendidos": 8
+  },
+  "2305605": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.305",
+   "data_reconhecimento": "15/07/2026",
+   "meses_atendidos": 8
+  },
+  "2311959": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.305",
+   "data_reconhecimento": "15/07/2026",
+   "meses_atendidos": 8
+  },
+  "2500577": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.305",
+   "data_reconhecimento": "15/07/2026",
+   "meses_atendidos": 8
+  },
+  "2616183": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.305",
+   "data_reconhecimento": "15/07/2026",
+   "meses_atendidos": 8
+  },
+  "2605806": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.305",
+   "data_reconhecimento": "15/07/2026",
+   "meses_atendidos": 8
+  },
+  "2606408": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.305",
+   "data_reconhecimento": "15/07/2026",
+   "meses_atendidos": 8
+  },
+  "2608255": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.305",
+   "data_reconhecimento": "15/07/2026",
+   "meses_atendidos": 8
+  },
+  "2603306": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.305",
+   "data_reconhecimento": "15/07/2026",
+   "meses_atendidos": 8
+  },
+  "2608107": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.305",
+   "data_reconhecimento": "15/07/2026",
+   "meses_atendidos": 8
+  },
+  "2600807": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.305",
+   "data_reconhecimento": "15/07/2026",
+   "meses_atendidos": 8
+  },
+  "2612000": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.305",
+   "data_reconhecimento": "15/07/2026",
+   "meses_atendidos": 8
+  },
+  "2414159": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.305",
+   "data_reconhecimento": "15/07/2026",
+   "meses_atendidos": 8
+  },
+  "2410603": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.305",
+   "data_reconhecimento": "15/07/2026",
+   "meses_atendidos": 8
+  },
+  "2609709": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.267",
+   "data_reconhecimento": "10/07/2026",
+   "meses_atendidos": 8
+  },
+  "2932002": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.252",
+   "data_reconhecimento": "08/07/2026",
+   "meses_atendidos": 8
+  },
+  "2933000": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.252",
+   "data_reconhecimento": "08/07/2026",
+   "meses_atendidos": 2
+  },
+  "2307635": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.252",
+   "data_reconhecimento": "08/07/2026",
+   "meses_atendidos": 8
+  },
+  "2603108": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.252",
+   "data_reconhecimento": "08/07/2026",
+   "meses_atendidos": 8
+  },
+  "2611309": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.252",
+   "data_reconhecimento": "08/07/2026",
+   "meses_atendidos": 8
+  },
+  "2611705": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.252",
+   "data_reconhecimento": "08/07/2026",
+   "meses_atendidos": 8
+  },
+  "2614709": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.252",
+   "data_reconhecimento": "08/07/2026",
+   "meses_atendidos": 8
+  },
+  "2615409": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.252",
+   "data_reconhecimento": "08/07/2026",
+   "meses_atendidos": 8
+  },
+  "2616209": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.252",
+   "data_reconhecimento": "08/07/2026",
+   "meses_atendidos": 9
+  },
+  "2402006": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.252",
+   "data_reconhecimento": "08/07/2026",
+   "meses_atendidos": 8
+  },
+  "2930204": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.212",
+   "data_reconhecimento": "06/07/2026",
+   "meses_atendidos": 8
+  },
+  "2303709": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.212",
+   "data_reconhecimento": "06/07/2026",
+   "meses_atendidos": 8
+  },
+  "2612703": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.212",
+   "data_reconhecimento": "06/07/2026",
+   "meses_atendidos": 8
+  },
+  "2604106": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.212",
+   "data_reconhecimento": "06/07/2026",
+   "meses_atendidos": 8
+  },
+  "2601904": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.212",
+   "data_reconhecimento": "06/07/2026",
+   "meses_atendidos": 8
+  },
+  "2615102": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.212",
+   "data_reconhecimento": "06/07/2026",
+   "meses_atendidos": 5
+  },
+  "2604155": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.212",
+   "data_reconhecimento": "06/07/2026",
+   "meses_atendidos": 8
+  },
+  "2606705": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.212",
+   "data_reconhecimento": "06/07/2026",
+   "meses_atendidos": 8
+  },
+  "2608909": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.212",
+   "data_reconhecimento": "06/07/2026",
+   "meses_atendidos": 8
+  },
+  "2901205": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.170",
+   "data_reconhecimento": "02/07/2026",
+   "meses_atendidos": 8
+  },
+  "2921500": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.170",
+   "data_reconhecimento": "02/07/2026",
+   "meses_atendidos": 8
+  },
+  "2308708": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.115",
+   "data_reconhecimento": "30/06/2026",
+   "meses_atendidos": 8
+  },
+  "2602209": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.115",
+   "data_reconhecimento": "30/06/2026",
+   "meses_atendidos": 8
+  },
+  "2205953": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.115",
+   "data_reconhecimento": "30/06/2026",
+   "meses_atendidos": 5
+  },
+  "2403103": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.115",
+   "data_reconhecimento": "30/06/2026",
+   "meses_atendidos": 8
+  },
+  "2411205": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.115",
+   "data_reconhecimento": "30/06/2026",
+   "meses_atendidos": 8
+  },
+  "2409332": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.115",
+   "data_reconhecimento": "30/06/2026",
+   "meses_atendidos": 8
+  },
+  "2413300": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.115",
+   "data_reconhecimento": "30/06/2026",
+   "meses_atendidos": 8
+  },
+  "2903235": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.546",
+   "data_reconhecimento": "06/08/2026",
+   "meses_atendidos": 6
+  },
+  "2911659": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.456",
+   "data_reconhecimento": "29/07/2026",
+   "meses_atendidos": 5
+  },
+  "2920809": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.456",
+   "data_reconhecimento": "29/07/2026",
+   "meses_atendidos": 8
+  },
+  "2925709": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.456",
+   "data_reconhecimento": "29/07/2026",
+   "meses_atendidos": 8
+  },
+  "2302800": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.456",
+   "data_reconhecimento": "29/07/2026",
+   "meses_atendidos": 8
+  },
+  "2610509": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.456",
+   "data_reconhecimento": "29/07/2026",
+   "meses_atendidos": 8
+  },
+  "2405702": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.456",
+   "data_reconhecimento": "29/07/2026",
+   "meses_atendidos": 5
+  },
+  "2919504": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.420",
+   "data_reconhecimento": "27/07/2026",
+   "meses_atendidos": 6
+  },
+  "2920452": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.420",
+   "data_reconhecimento": "27/07/2026",
+   "meses_atendidos": 8
+  },
+  "2301307": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.420",
+   "data_reconhecimento": "27/07/2026",
+   "meses_atendidos": 8
+  },
+  "2311207": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.420",
+   "data_reconhecimento": "27/07/2026",
+   "meses_atendidos": 6
+  },
+  "2508406": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.420",
+   "data_reconhecimento": "27/07/2026",
+   "meses_atendidos": 8
+  },
+  "2404309": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.420",
+   "data_reconhecimento": "27/07/2026",
+   "meses_atendidos": 8
+  },
+  "2411809": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.420",
+   "data_reconhecimento": "27/07/2026",
+   "meses_atendidos": 6
+  },
+  "2413409": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.420",
+   "data_reconhecimento": "27/07/2026",
+   "meses_atendidos": 8
+  },
+  "2706109": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.392",
+   "data_reconhecimento": "24/07/2026",
+   "meses_atendidos": 8
+  },
+  "2505402": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.392",
+   "data_reconhecimento": "24/07/2026",
+   "meses_atendidos": 8
+  },
+  "2903805": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.384",
+   "data_reconhecimento": "23/07/2026",
+   "meses_atendidos": 6
+  },
+  "2912004": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.384",
+   "data_reconhecimento": "23/07/2026",
+   "meses_atendidos": 8
+  },
+  "2902005": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.384",
+   "data_reconhecimento": "23/07/2026",
+   "meses_atendidos": 5
+  },
+  "2920304": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.384",
+   "data_reconhecimento": "23/07/2026",
+   "meses_atendidos": 8
+  },
+  "2306306": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.384",
+   "data_reconhecimento": "23/07/2026",
+   "meses_atendidos": 8
+  },
+  "2310407": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.384",
+   "data_reconhecimento": "23/07/2026",
+   "meses_atendidos": 8
+  },
+  "2514008": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.384",
+   "data_reconhecimento": "23/07/2026",
+   "meses_atendidos": 8
+  },
+  "2513158": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.384",
+   "data_reconhecimento": "23/07/2026",
+   "meses_atendidos": 8
+  },
+  "2502052": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.384",
+   "data_reconhecimento": "23/07/2026",
+   "meses_atendidos": 8
+  },
+  "2604908": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.384",
+   "data_reconhecimento": "23/07/2026",
+   "meses_atendidos": 8
+  },
+  "2613107": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.384",
+   "data_reconhecimento": "23/07/2026",
+   "meses_atendidos": 8
+  },
+  "2205003": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.384",
+   "data_reconhecimento": "23/07/2026",
+   "meses_atendidos": 3
+  },
+  "2614501": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.358",
+   "data_reconhecimento": "20/07/2026",
+   "meses_atendidos": 8
+  },
+  "2502003": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.794",
+   "data_reconhecimento": "27/08/2026",
+   "meses_atendidos": 6
+  },
+  "2502102": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.794",
+   "data_reconhecimento": "27/08/2026",
+   "meses_atendidos": 8
+  },
+  "2503753": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 2.794",
+   "data_reconhecimento": "27/08/2026",
+   "meses_atendidos": 8
+  },
+  "2400604": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 3.197",
+   "data_reconhecimento": "24/09/2026",
+   "meses_atendidos": 8
+  },
+  "2202091": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 3.150",
+   "data_reconhecimento": "21/09/2026",
+   "meses_atendidos": 9
+  },
+  "2916906": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 3.032",
+   "data_reconhecimento": "14/09/2026",
+   "meses_atendidos": 6
+  },
+  "2903508": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 3.250",
+   "data_reconhecimento": "25/09/2026",
+   "meses_atendidos": 7
+  },
+  "2502508": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 3.250",
+   "data_reconhecimento": "25/09/2026",
+   "meses_atendidos": 8
+  },
+  "2703403": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 3.250",
+   "data_reconhecimento": "25/09/2026",
+   "meses_atendidos": 8
+  },
+  "2921450": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 3.250",
+   "data_reconhecimento": "25/09/2026",
+   "meses_atendidos": 8
+  },
+  "2511400": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 3.256",
+   "data_reconhecimento": "25/09/2026",
+   "meses_atendidos": 8
+  },
+  "2700706": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 3.264",
+   "data_reconhecimento": "28/09/2026",
+   "meses_atendidos": 8
+  },
+  "2402303": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 3.264",
+   "data_reconhecimento": "28/09/2026",
+   "meses_atendidos": 8
+  },
+  "2402808": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 3.264",
+   "data_reconhecimento": "28/09/2026",
+   "meses_atendidos": 8
+  },
+  "2903904": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 3.299",
+   "data_reconhecimento": "29/09/2026",
+   "meses_atendidos": 8
+  },
+  "2513604": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 3.299",
+   "data_reconhecimento": "29/09/2026",
+   "meses_atendidos": 8
+  },
+  "2924207": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 3.326",
+   "data_reconhecimento": "30/09/2026",
+   "meses_atendidos": 8
+  },
+  "2501575": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 3.326",
+   "data_reconhecimento": "30/09/2026",
+   "meses_atendidos": 8
+  },
+  "2612406": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 3.326",
+   "data_reconhecimento": "30/09/2026",
+   "meses_atendidos": 8
+  }
+ }
+}

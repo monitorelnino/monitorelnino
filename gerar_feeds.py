@@ -55,7 +55,13 @@ def fotografar(estados, municipios, atos, indice, vresumo=None, saude_uf=None, e
     return {
         "estados": {u["uf"]: {"status": u.get("status"), "doc": u.get("doc", ""), "data": u.get("data", "")} for u in estados["ufs"]},
         "municipios": {f"{m['nome']}|{m['uf']}": {"categoria": m.get("categoria"), "documento": m.get("documento", ""), "data": m.get("data", "")} for m in municipios},
-        "atos_resposta": sorted({f"{e['nome']}|{e['uf']}|{e.get('data', '')}" for e in atos.get("eventos", [])}),
+        # 08/10/2026 (A3-28): o reconhecimento federal já tem tipo próprio de evento
+        # (`decreto_reconhecido`). Enquanto ele também entrava aqui, cada reconhecimento virava
+        # DOIS itens no feed, um deles dizendo "decreto de emergência registrado" sobre um ato
+        # que é federal — eram 925 eventos de resposta contra 732 de reconhecimento.
+        "atos_resposta": sorted({f"{e['nome']}|{e['uf']}|{e.get('data', '')}"
+                                 for e in atos.get("eventos", [])
+                                 if e.get("causa") != "reconhecimento federal"}),
         "indice": {uf: round(v["total"], 1) for uf, v in indice.items()},
         "nomes": {u["uf"]: u["nome"] for u in estados["ufs"]},
         # v2.3 (§7.2): tipos novos de evento
@@ -64,6 +70,17 @@ def fotografar(estados, municipios, atos, indice, vresumo=None, saude_uf=None, e
         "saude": {uf: {"status": v.get("status"), "doc": v.get("doc") or ""} for uf, v in ((saude_uf or {}).get("uf") or {}).items()},
         "docs_alterados": sorted(f"{h}|{it.get('alterado_em')}|{it.get('municipio','')}" for h, it in ((evidencias or {}).get("itens") or {}).items() if it.get("alterado_em")),
     }
+
+
+def data_no_titulo(bruta) -> str:
+    """A data como o site a escreve, dd/mm/aaaa — ou vazio.
+
+    08/10/2026 (A3-28): 97 títulos de feed saíam com "(2026-07-10)". A origem foi corrigida no
+    item 1.3, mas o histórico guardado antes dele continua em ISO, e o feed o relê a cada rodada:
+    a formatação tem de acontecer na saída também.
+    """
+    from coletores_base import data_br_de
+    return data_br_de(bruta) or ""
 
 
 def _evento(data, uf, tipo, chave, titulo, resumo, nomes):
@@ -117,7 +134,7 @@ def diferencas(antes, agora, data):
     for chave in agora.get("reconhecimentos", []):
         if chave not in set(antes.get("reconhecimentos", [])):
             nome, uf, d = chave.split("|")
-            ev.append(_evento(data, uf, "decreto_reconhecido", chave, f"{nome} ({uf}): reconhecimento federal de emergência ({d or 'data não localizada'})",
+            ev.append(_evento(data, uf, "decreto_reconhecido", chave, f"{nome} ({uf}): reconhecimento federal de emergência ({data_no_titulo(d) or 'data não localizada'})",
                               "Portaria SEDEC/MIDR no DOU. Ato de resposta: registro à parte, peso zero no índice.", nomes))
     for chave in agora.get("docs_alterados", []):
         if chave not in set(antes.get("docs_alterados", [])):
@@ -132,7 +149,7 @@ def diferencas(antes, agora, data):
     for chave in agora["atos_resposta"]:
         if chave not in set(antes.get("atos_resposta", [])):
             nome, uf, d = chave.split("|")
-            ev.append(_evento(data, uf, "resposta", chave, f"{nome} ({uf}): decreto de emergência registrado ({d or 'data não localizada'})",
+            ev.append(_evento(data, uf, "resposta", chave, f"{nome} ({uf}): decreto de emergência registrado ({data_no_titulo(d) or 'data não localizada'})",
                               "Ato de resposta a dano já ocorrido — registro de transparência; não pontua no índice.", nomes))
     for uf, v in sorted(agora["indice"].items()):
         a = antes["indice"].get(uf)
@@ -176,7 +193,19 @@ def atom(titulo, arquivo, eventos, atualizado):
 def renderizar(historico, nomes, data):
     """Escreve feeds/brasil.xml, feeds/UF.xml (27) e feeds/index.json."""
     FEEDS.mkdir(exist_ok=True)
-    eventos = sorted(historico["eventos"], key=lambda x: (x["data"].split("/")[::-1], x["titulo"]), reverse=True)
+    # 08/10/2026 (A3-28): o evento marcado como superado pela migração de formato do item 1.3 não
+    # entra no feed — é a MESMA mudança, com a data em ISO. Ele continua no log, que só cresce.
+    eventos = sorted((x for x in historico["eventos"] if not x.get("superado_por_migracao")),
+                     key=lambda x: (x["data"].split("/")[::-1], x["titulo"]), reverse=True)
+    # Sete títulos antigos guardam a data em ISO e não têm par em dd/mm/aaaa (foram gravados
+    # quando a origem estava em ISO e o fato não voltou a mudar). O log não se reescreve; a
+    # EXIBIÇÃO normaliza, porque o site escreve data de um jeito só.
+    import re as _re
+    def _br_no_texto(txt):
+        return _re.sub(r"\((20\d\d)-(\d\d)-(\d\d)\)",
+                       lambda m: f"({m.group(3)}/{m.group(2)}/{m.group(1)})", str(txt or ""))
+    eventos = [{**x, "titulo": _br_no_texto(x.get("titulo")),
+                "resumo": _br_no_texto(x.get("resumo"))} for x in eventos]
     (FEEDS / "brasil.xml").write_text(atom("MARÉ — atualizações", "brasil.xml", eventos[:100], eventos[0]["data"] if eventos else data), encoding="utf-8", newline="\n")
     for uf, nome in sorted(nomes.items()):
         ev = [x for x in eventos if x["uf"] == uf][:50]

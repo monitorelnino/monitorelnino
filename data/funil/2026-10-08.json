@@ -20,16 +20,19 @@
    "fila_acumulada": 84
   },
   "juiz": {
-   "com_documento": 7,
-   "pistas_recebidas": 445,
+   "com_documento": 19,
+   "pistas_recebidas": 595,
    "promovidas": 0,
-   "recusa_citacao_incompleta": 2,
-   "recusa_documento_inacessivel": 11,
+   "recusa_citacao_incompleta": 4,
+   "recusa_documento_inacessivel": 14,
    "recusa_ente_nao_confirmado": 4,
-   "recusa_natureza_duvidosa": 1,
+   "recusa_natureza_duvidosa": 2,
    "recusa_noticia_institucional_nao_e_o_plano": 1,
-   "recusa_sem_documento_primario": 422,
-   "recusa_texto_nao_extraivel": 5
+   "recusa_sem_documento_primario": 557,
+   "recusa_texto_nao_extraivel": 5,
+   "recusa_autoridade_nao_confirmada": 6,
+   "recusa_fora_do_objeto": 1,
+   "recusa_resposta": 2
   },
   "rede_social": {
    "entes_consultados": 40,
@@ -55,62 +58,5 @@
    "pistas": 17
   }
  },
- "atualizado_em": "2026-10-08T12:51:05",
- "verificador_imprensa": {
-  "na_fila": 12987,
-  "lidas": 40,
-  "exibiveis": 0,
-  "inacessiveis": 4,
-  "nao_lidas_por_orcamento": 0,
-  "resolucoes": 20,
-  "nao_resolvidas_por_orcamento": 4684,
-  "por_motivo": {
-   "inacessivel": 4,
-   "recusada_pelo_juiz": 2,
-   "ente_nao_confirmado": 10,
-   "genero_nao_noticia": 3,
-   "natureza_duvidosa": 3,
-   "fora_do_ciclo": 22,
-   "veiculo_nao_listado": 8201,
-   "sem_https": 39,
-   "redirecionamento_nao_resolvido": 20
-  },
-  "crescimento_da_lista": {
-   "candidatos": 713,
-   "avaliados_por_noite": 15,
-   "entraram": [],
-   "recusas": {
-    "sem_pagina_de_expediente": 5,
-    "sem_https": 5,
-    "sitio_institucional_nao_e_veiculo": 1,
-    "expediente_sem_nome_nem_cnpj": 1,
-    "expediente_sem_identidade_jornalistica": 2,
-    "nao_avaliado_por_orcamento": 1
-   },
-   "institucionais": [
-    "diariodocomercio.com.br"
-   ]
-  },
-  "orcamento": {
-   "paginas_lidas": 44,
-   "por_host": {
-    "horacampinas.com.br": 1,
-    "vale360news.com.br": 2,
-    "plantaoguaruja.com.br": 1,
-    "abcdoabc.com.br": 1,
-    "upiara.com.br": 3,
-    "ndmais.com.br": 11,
-    "canoinhasonline.com.br": 22,
-    "nsctotal.com.br": 3
-   },
-   "recusas_por_host": {
-    "horacampinas.com.br": 1,
-    "nsctotal.com.br": 3
-   },
-   "hosts_desligados": [],
-   "teto_por_host": 40,
-   "teto_global": 600
-  },
-  "versao": "1.0 (29/09/2026)"
- }
+ "atualizado_em": "2026-10-09T01:29:09"
 }

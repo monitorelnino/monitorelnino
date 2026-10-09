@@ -37,10 +37,14 @@ function faceTile(uf){
     <span>diários: ${((VRESUMO && VRESUMO.varredura_diarios && VRESUMO.varredura_diarios.por_uf) || {})[uf] || 0} de ${tot}</span>
     <span>${esc(ST[d.status] || d.status)}${temData(d.data) ? ' · ' + esc(d.data) : ''}</span>
     <span>${d.capital && d.capital.nome ? esc(d.capital.nome) : 'capital não verificada'}</span></div>`;
+  // 08/10/2026 (A3-11): o ladrilho mostra só o NOME da capital. Ele pinta antes de o banco
+  // chegar, e qualquer rótulo aqui seria ou o texto à mão que saiu, ou um estado lido de uma
+  // tabela que ainda não existe. O estado da capital aparece na ficha do estado, que lê o banco.
 }
 // 08/10/2026 (A4-13): o travessao e PROIBIDO como valor em cartao, e ele chegava a tela por tres
 // caminhos: campo com '—' guardado no dado, reserva de ramo e rotulo "capital —". Uma funcao
-// decide o que e data de verdade; o resto se escreve em palavras.
+// decide o que e data de verdade; o resto se escreve em palavras. Sem capital no banco, o
+// ladrilho escreve "capital não verificada" — nunca travessão.
 function temData(v){
   const s = String(v == null ? '' : v).trim();
   return s !== '' && s !== '—' && s !== '-' && s !== 'Recorrente';
@@ -397,11 +401,50 @@ function riscoBox(uf){
     ${fonte ? `<p class="fonte">${fonte}</p>` : ''}
   </div>`;
 }
+// 08/10/2026 (A3-11, item 1.10): a capital tinha DUAS fontes — `estados.json.capital.status` e
+// `.info`, escritos a mão, e `municipios.json`, que e a fonte da pontuacao. Elas se contradiziam
+// em NOVE UFs, e o leitor via no mesmo clique "Novo, base da pontuacao" e "ainda nao verificado"
+// (Rio Branco). Agora ha uma fonte: o registro do banco. O texto vem das MESMAS frases do cartao
+// do municipio, pela mesma funcao de estado.
+// O registro da capital no banco. A ladrilheira dos estados pinta ANTES de `TABELA_MUNICIPIOS`
+// chegar do fetch, e `[].find` num objeto vazio derruba a pintura inteira — foi o que apagou o
+// seletor de UF e mais onze verificações de runtime na primeira versão deste item.
+function regDaCapital(d){
+  if (!d || !d.capital || !Array.isArray(TABELA_MUNICIPIOS)) return null;
+  return TABELA_MUNICIPIOS.find(m => m.uf === d.uf && m.nome === d.capital.nome) || null;
+}
+const CAT_ROTULO = {
+  plano: 'plano localizado', plano_novo: 'plano do ciclo', plano_readaptado: 'plano readaptado',
+  plano_recorrente: 'plano recorrente', plano_antigo: 'plano vigente de ciclo anterior',
+  plano_elaboracao: 'plano em elaboração', plano_nomeado: 'plano citado, documento não localizado',
+  estrutura: 'estrutura de coordenação', coberto_estadual: 'coberta pelo plano estadual',
+  nao_el_nino: 'ato alheio aos riscos do ciclo', nao_localizado: 'não localizado',
+  nao_verificado: 'ainda não verificada'
+};
+function textoDaCapital(reg){
+  if (!reg) return 'Ainda não verificamos esta capital com todas as fontes. Isso não é uma afirmação sobre a existência do plano.';
+  const st = statusDoPlano(reg.categoria);
+  if (st === 'encontrado') return 'Plano de contingência localizado.';
+  if (st === 'estadual') return 'Plano de contingência localizado, no âmbito estadual.';
+  if (st === 'nomeado'){
+    const q = reg.fonte ? esc(reg.fonte) : 'fonte oficial';
+    const dd = reg.data ? ', ' + esc(dataBR(reg.data) || reg.data) : '';
+    return 'Plano de contingência citado em fonte oficial (' + q + dd + '); documento não localizado até o corte.';
+  }
+  if (reg.categoria === 'plano_elaboracao') return 'Plano de contingência em elaboração; o documento final não foi localizado até o corte.';
+  if (reg.categoria === 'estrutura') return 'Estrutura de coordenação localizada; não é plano de contingência para os riscos deste ciclo.';
+  if (reg.categoria === 'nao_localizado') return 'Não localizamos plano de contingência para esta capital até a data de corte.';
+  return 'Ainda não verificamos esta capital com todas as fontes. Isso não é uma afirmação sobre a existência do plano.';
+}
+function rotuloDaCapital(reg){
+  return reg && CAT_ROTULO[reg.categoria] ? CAT_ROTULO[reg.categoria] : 'ainda não verificada';
+}
+
 function selectUF(uf, tileEl){
-  // P2 (auditoria 07/09/2026): d.doc, d.orgao, d.estrutura.doc, d.capital.info e
-  // d.capital.nome são texto editorial (resumo humano de documento oficial), não
-  // HTML bruto raspado — mas entram direto em innerHTML abaixo sem escape, ao
-  // contrário do resto do módulo (ver financiamento.js). Corrigido aqui.
+  // P2 (auditoria 07/09/2026): d.doc, d.orgao, d.estrutura.doc e o nome da capital são texto
+  // editorial (resumo humano de documento oficial), não HTML bruto raspado — mas entravam direto
+  // em innerHTML sem escape, ao contrário do resto do módulo (ver financiamento.js). Corrigido.
+  // 08/10/2026 (A3-11): o texto da capital saiu de `estados.json`; o que ela diz vem do banco.
   document.querySelectorAll('.tile').forEach(t=>t.classList.remove('active'));
   tileEl.classList.add('active');
   const d = DATA.ufs.find(x=>x.uf===uf);
@@ -420,8 +463,8 @@ function selectUF(uf, tileEl){
   const capitalBlock = d.capital ? `
     <div class="capital-box">
       <div class="card-kicker">Capital · verificação individual</div>
-      <div class="card-title">${esc(d.capital.nome)} <span class="sub">· ${esc(d.capital.status)}</span></div>
-      <div class="card-body">${esc(d.capital.info)}</div>
+      <div class="card-title">${esc(d.capital.nome)} <span class="sub">· ${esc(rotuloDaCapital(capReg))}</span></div>
+      <div class="card-body">${textoDaCapital(capReg)}</div>
       ${linkCapital}
     </div>` : `<p class="placeholder">Capital sem verificação individual até o corte.</p>`;
 
@@ -957,7 +1000,8 @@ function gerarRelatorioCidadao(uf, municipio){
       item(municipio + ': ' + quando + ' (' + e.causa + '). Ato de resposta a dano já ocorrido — não conta para o índice. Fonte: ' + e.fonte + '.');
     });
   } else if (d.capital) {
-    item('Capital (' + d.capital.nome + '): ' + d.capital.status + '. ' + (d.capital.info || ''));
+    const regCap = regDaCapital(d);
+    item('Capital (' + d.capital.nome + '): ' + textoDaCapital(regCap).replace(/<[^>]*>/g, ''));
   }
   if (uf !== 'DF') item('Municípios do estado com algum ato localizado: ' + i.com_ato + ' de ' + i.total + ' (' + fmt(i.pct) + '%) — ' + i.n_plano + ' com plano preventivo, ' + i.n_decreto + ' com decreto de emergência.');  // DF: o único município é Brasília, já descrita como capital
   const fx = v.total < 25 ? 'estágio inicial' : v.total < 50 ? 'em construção' : v.total < 70 ? 'consolidado' : 'avançado';
@@ -984,8 +1028,16 @@ function gerarRelatorioCidadao(uf, municipio){
     else if (cat === 'nao_el_nino') faltas.push('O ato localizado na sua cidade não trata do El Niño. Pergunte se há plano específico para o ciclo.');
     else if (cat === 'coberto_estadual') faltas.push('Sua cidade está coberta pelo plano estadual, sem plano próprio. Cobertura estadual é operacional: o dever de ter plano municipal continua (Lei 12.608, art. 8º).');
     if (emergs.length && cat !== 'plano') faltas.push('Sua cidade já precisou decretar emergência neste ciclo. Um plano preventivo publicado reduz o improviso da próxima vez.');
-  } else if (d.capital && /elabora|não|nao/i.test(d.capital.status)) {
-    faltas.push('A capital ainda não tem plano publicado para o ciclo (' + d.capital.status + ').');
+  } else if (d.capital) {
+    // A lacuna da capital sai da MESMA fonte do resto: a categoria do banco, nunca o texto
+    // escrito à mão em `estados.json` (A3-11).
+    const regCap = regDaCapital(d);
+    const catCap = regCap ? regCap.categoria : '';
+    if (!catCap || catCap === 'nao_verificado') faltas.push('Ainda não verificamos a capital com a bateria completa de fontes.');
+    else if (catCap === 'nao_localizado') faltas.push('Não localizamos plano de contingência da capital até o corte.');
+    else if (catCap === 'plano_elaboracao') faltas.push('O plano da capital está em elaboração; o documento final não foi localizado até o corte.');
+    else if (catCap === 'plano_nomeado') faltas.push('O plano da capital é citado em fonte oficial, e o documento não foi localizado até o corte.');
+    else if (catCap === 'estrutura') faltas.push('Na capital localizamos estrutura de coordenação, não plano de contingência para os riscos do ciclo.');
   }
   if (i.com_ato === 0) faltas.push('Nenhum ato municipal localizado no estado até o corte.');
   else if (i.n_decreto > i.n_plano) faltas.push('No estado, predominam decretos de emergência sobre planos preventivos: a resposta vem depois do dano.');
