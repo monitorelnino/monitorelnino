@@ -117,8 +117,13 @@ setTimeout(() => {
      `defesa-civil.js`, e o mapa ausente é a consequência correta dela. Os outros cinco continuam
      cobrados, porque não dependem de alerta. */
   const vencido = declaraVencido("topoCemaden") || declaraVencido("topoInmet");
-  const mapasCobrados = vencido ? MAPAS.filter(id => id !== "mapCemaden" && id !== "mapAlertas")
-                                : MAPAS;
+  /* 09/10/2026 (ajuste 10): abaixo de LIMIAR_CEMADEN municípios o cartão do Cemaden vira texto
+     ("{n} municípios em {UFs}" + lista por estado) — sem mapa, por regra do código. */
+  const cemadenEmTexto = !!d.querySelector("#boxCemaden .figura-midia--texto");
+  if (cemadenEmTexto) teste("Cemaden abaixo do limiar: cartão em texto, com a contagem e a lista por estado",
+    /municípios? em |Nenhum município/.test(d.querySelector("#boxCemaden .figura-midia").textContent));
+  const mapasCobrados = (vencido ? MAPAS.filter(id => id !== "mapCemaden" && id !== "mapAlertas")
+                                 : MAPAS).filter(id => !(cemadenEmTexto && id === "mapCemaden"));
   teste(`os ${mapasCobrados.length} mapas têm os 27 territórios`
         + (vencido ? " (Cemaden e alertas fora: coleta vencida e declarada)" : ""),
     mapasCobrados.every(id => territorios(id) === 27));
@@ -226,7 +231,7 @@ setTimeout(() => {
   // ── harmonização dos mapas (padrão único) ─────────────────────────────────────────────────
   const mapasSvg = [...d.querySelectorAll('#conteudo svg[id^="map"]')].filter(s => s.querySelector("path"));
   teste(`padrão de mapas: ${mapasSvg.length} mapa(s) com as 27 siglas de UF`,
-    mapasSvg.length === 6 && mapasSvg.every(s => s.querySelectorAll("g.siglas text").length === 27));
+    mapasSvg.length === (cemadenEmTexto ? 5 : 6) && mapasSvg.every(s => s.querySelectorAll("g.siglas text").length === 27));
   const legendas = [...d.querySelectorAll(".map-legend")].filter(l => l.children.length);
   teste(`padrão de legendas: ${legendas.length} legenda(s) no formato <span><i></i>rótulo</span>`,
     legendas.every(l => [...l.children].every(c => c.tagName === "SPAN"
