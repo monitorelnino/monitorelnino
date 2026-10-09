@@ -235,7 +235,7 @@ python3 scripts/portoes_locais.py tudo        # ou: paginas | dados
 ```
 
 A lista de portões **não vive aqui**. Ela é derivada de `.github/workflows/portoes.yml`, que
-é o único lugar que reprova de verdade — em 07/10/2026 são **217 comandos** (`--listar` confere):
+é o único lugar que reprova de verdade — em 09/10/2026 são **239 comandos** (`--listar` confere):
 101 no perfil `paginas` e 116 no `dados`, sem repetição entre os dois; destes, 127 são
 `--autoteste` e 90 são portão propriamente dito. Este arquivo e o PROTOCOLO
 §3.3 *descrevem* o conjunto; não o definem.
@@ -424,13 +424,24 @@ ocorrer. A etiqueta *Boletim* saiu.
   certo e o número não está no pacote, **o pacote está incompleto** — corrige-se o gerador, nunca
   o texto.
 
+## Nenhuma etapa humana (editoria, 08/10/2026)
+
+Não há humano tomando decisões. O código coleta, lê e julga sozinho: **julgamento automático com
+documento oficial lido pela máquina; errata humana por linha** (METODOLOGIA §106). Nenhuma fila,
+status, rotina ou texto "para humano / revisão / leitura humana / a aprovar" entra no código — o
+portão `scripts/verificar_fila_nao_humana.py` reprova. Contribuição pública vira pista pela porta
+única e segue o juiz (D7). Dúvida vira a opção mais conservadora, registrada, nunca uma pergunta.
+
+**"Semana epidemiológica" é proibida em texto público.** A semana sai sempre em datas, pela função
+`scripts/semana_epidemiologica.py` ("na semana de 16 a 22 de agosto de 2026"); eixos em meses.
+
 ## Regras editoriais que o código não pode violar
 
 - Nunca inventar dado. Ausência é "lacuna declarada", com fonte.
 - Teto público de ausência: "não localizamos até o corte" — nunca "não existe".
 - Zero, ausência de dado, dado indisponível e dado não coletado são coisas distintas.
 - Decreto (`categoria=decreto`) não pontua no índice; fica no banco para transparência.
-- Na dúvida, o classificador não classifica; contribuição pública vai à revisão humana.
+- Na dúvida, o classificador não classifica; contribuição pública vira pista pela porta única e segue o juiz automático (D7, 08/10/2026).
 - Legendas, títulos de figura, tooltips e cartões só descrevem (variável,
   período, território, unidade, fato) — interpretação vive no texto narrativo (portão 19).
 - Texto explicativo: direto ao que se vê, sem instrução de uso e sem nota interna.
@@ -466,7 +477,7 @@ sozinho.
 - Escala tipográfica fixa: 12 · 14 · 16 · 18 · 22 · 28 · 36 · 48 px.
 - Elementos equivalentes usam o mesmo componente, classe e token; nada de
   ajuste manual de pixel. Toda figura usa o componente padrão de figura,
-  numerada a partir de 1, com fonte e data de atualização.
+  com fonte e data de atualização (sem numeração de figura — lote 8, 09/10/2026).
 
 ## Segurança e o que não entra neste repositório
 
