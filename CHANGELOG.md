@@ -27,6 +27,14 @@ não pontuados permanecem na versão corrente.
 
 
 
+
+## 2026-10-09 · #PR · a aplicação no banco volta a ter rede e uma regra só
+
+Lote 2.4. O rollback do aplicador nunca disparava: `rodar_portoes()` devolve `(ok, saida)` e a
+tupla era atribuída inteira a `ok`, sempre verdadeira — portão vermelho confirmava em vez de
+desfazer. E o caminho das descobertas gravava sempre `categoria: "plano"`, sem evidência nem
+proveniência, enquanto o caminho do juiz grava a categoria do veredito: um `plano_antigo` entrava
+como plano novo. Onde: aplicar_promocoes_do_juiz.py, julgar_e_aplicar_descobertas.py.
 ## 2026-10-09 · #PR · atribuição do ato: domínio vence nome no texto
 
 Lote 2.1. Nome homônimo sem a UF no texto deixa de classificar (241 nomes estão em mais de uma
