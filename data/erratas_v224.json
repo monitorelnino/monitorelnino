@@ -1024,6 +1024,15 @@
   "data": "08/10/2026",
   "uf": null,
   "municipio": null,
+  "o_que_mudou": "a Imprensa publicava \"6 municípios sob alerta do Cemaden\", \"3.461 sob aviso do Inmet\" e \"489 com decreto e alerta ao mesmo tempo\" enquanto a página Defesa civil, lendo o mesmo arquivo, dizia \"sem atualização desde 07/10/2026 21:40\"; as duas passam a parar juntas",
+  "por_que": "A regra das 24 horas estava só no JavaScript da página: o instantâneo que alimenta as duas superfícies seguia publicando o número, e a Imprensa o copiava. A regra passa ao instantâneo (`scripts/gerar_topo_das_paginas.alertas_pararam`). Junto, o fuso: o carimbo é escrito no fuso da redação e era comparado com o relógio de onde o código roda — três horas de diferença entre o navegador no Brasil e o runner em UTC, o bastante para as duas superfícies discordarem sobre a idade do mesmo dado.",
+  "achado": "coerência da Imprensa",
+  "lote": "1 (defeito achado na fila da CI)"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
   "o_que_mudou": "os 21 estados verificados do MARÉ Saúde mostravam 0,0 na grade, e a ficha aberta por `index.html#UF` — o caminho do selo embutido em outro site — abria com 0,0/100 e a barra vazia. Passam a mostrar o valor",
   "por_que": "A4-01 e A4-04: a função que escreve o número no medidor morava no escopo de `assets/js/index.js`, e o MARÉ Saúde chamava `MonitorMapas.animarGauges`, que não existia — a guarda engolia a ausência em silêncio. O valor estava correto no atributo `data-contar` todo esse tempo; ninguém o escrevia. A animação passa a ter um dono, em `assets/mapas.js`, que as duas páginas carregam, e o portão de runtime passa a exigir o número escrito, não o atributo.",
   "achado": "A4-01",
