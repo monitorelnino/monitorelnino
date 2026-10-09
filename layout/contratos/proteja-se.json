@@ -22,11 +22,24 @@
         "a Defesa Civil avisa sem cadastro"
       ],
       "_nota": "Os quatro números que o handover exige (192, 199, 190, 40199) mais o 193 dos Bombeiros, que já estava na barra e que o handover não mandou tirar — tirar número de socorro de uma página de emergência por causa de uma lista ilustrativa seria a leitura menos conservadora. Divergência declarada."
+    },
+    {
+      "id": "quem-chamar",
+      "h2": "Defesa Civil do seu estado",
+      "tipo": "lista_simples",
+      "exige_texto": [
+        "199",
+        "193",
+        "192",
+        "Não é o número de socorro imediato."
+      ],
+      "_nota": "09/10/2026 (ajuste 8, editoria): socorro primeiro (199, 193, 192 com tel:), uma frase numa coluna, um controle só (grade das 27 siglas) e fonte com as duas datas. Conferido por scripts/verificar_runtime.js (proteja-se) e verificar_layout.py."
     }
   ],
   "texto_proibido": [
     "FIGURA",
     "Corte da edição"
   ],
-  "_nota_escopo": "O contrato cobre SÓ a barra de emergência. As outras seções do Proteja-se vêm em caixa (`.panel`, `.ficha`), que é o desenho aprovado desta página; a regra 'seção sem caixa' é das páginas redesenhadas em 01 e 02/10, e redesenhar o Proteja-se não foi pedido. Contratar as outras seções agora reprovaria desenho vigente e aprovado — contrato que reprova o aprovado deixa de ser portão e passa a ser ruído."
+  "_nota_escopo": "O contrato cobre SÓ a barra de emergência. As outras seções do Proteja-se vêm em caixa (`.panel`, `.ficha`), que é o desenho aprovado desta página; a regra 'seção sem caixa' é das páginas redesenhadas em 01 e 02/10, e redesenhar o Proteja-se não foi pedido. Contratar as outras seções agora reprovaria desenho vigente e aprovado — contrato que reprova o aprovado deixa de ser portão e passa a ser ruído.",
+  "_nota_ajustes_09_10": "09/10/2026: a seção 'Alertas de saúde agora' saiu (ajuste 9); no lugar, logo após os telefones, o recado com os destinos (MARÉ Saúde, Defesa civil, Monitor de riscos), em `.cartao`, sem número. O guia em PDF e a imagem são conferidos por scripts/verificar_guia_proteja_se.js (ajuste 7)."
 }
