@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-09 · #PR · ESPIN e links ganham rotina semanal própria
+
+`coletar_espin.py` e `verificar_links.py` saem do fim de `semanal_sinais_e_links.yml` para `semanal_espin_e_links.yml` (domingo, 3h15 de Brasília, teto de 45 min). As duas últimas execuções da rotina de sinais foram canceladas no teto de 150 min antes de chegar a eles: o ESPIN não era reconferido e os links não eram verificados. Temporizador registrado em `config/temporizadores.json`.
+
 ## 2026-10-09 · #PR · as pendentes do Google News deixam de girar em falso
 
 Lote 2.6. 3.415 pistas com link opaco do Google News ficavam pendentes para sempre, e a noite gastava

@@ -1,0 +1,31 @@
+# ESPIN e verificação de links — rotina própria, semanal.
+#
+# POR QUE ELA EXISTE (09/10/2026, item 8.6/9.3 dos ajustes da editoria)
+# `coletar_espin.py` e `verificar_links.py` eram os dois últimos comandos de
+# `semanal_sinais_e_links.yml`. As duas últimas execuções daquela rotina bateram no teto de 150 min
+# e foram canceladas antes de chegar a eles: o ESPIN não era reconferido e os links não eram
+# verificados. Fila longa não é cadência (mesmo diagnóstico de `semanal_respiratorias.yml`, 02/10).
+# Separados, os dois rodam curtos e a falha de um não depende do comprimento da outra fila.
+name: Semanal — ESPIN e links
+
+on:
+  schedule:
+    # Domingo, 3h15 de Brasília — antes da rotina de sinais (4h30) e da busca web (4h00).
+    - cron: "15 6 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  espin_e_links:
+    uses: ./.github/workflows/_coletor.yml
+    with:
+      nome: espin-e-links
+      # `coletar_espin.py` escreve em data/saude_sinais.json; `verificar_links.py` só lê.
+      timeout_minutos: 45
+      comandos: |
+        coletar_espin.py
+        verificar_links.py
+    secrets:
+      ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
