@@ -18,6 +18,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+
+## 2026-10-08 · #PR · Lote 1.13: o cartão de atos federais para de publicar um zero que não foi medido
+
+Nenhum dos cinco compromissos federais tinha campo de data: a janela de sete dias devolvia lista vazia e o cartão publicava "0 atos" como fato, no Financiamento e na Imprensa. O cartão passa a declarar a lacuna; o coletor registra a ausência da data na origem, com o motivo; e a regra (m) do portão de financiamento reprova cartão de janela com valor quando a origem não tem data. Zero medido e campo inexistente são coisas diferentes.
 ## 2026-10-08 · #PR · Lote 1.10: a capital passa a ter uma fonte só
 
 `estados.json` guardava um status e um texto da capital escritos à mão, e o banco guardava a categoria que pontua: as duas se contradiziam em nove UFs, e o leitor via no mesmo clique "Novo, base da pontuação" e "ainda não verificado" (Rio Branco). `capital` passa a guardar só o nome; o rótulo e a frase saem do registro do banco, pela mesma função do cartão do município. A frase comparativa sai. Portão novo `verificar_capital.py`.
