@@ -27,6 +27,14 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-09 · #PR · a coleta perdida volta, e o marcador sobrevive ao push
+
+Reaplicados os artefatos de `diarios` e `juiz` da noite de 08→09, pela porta de cada arquivo. Três
+consertos: o passo 1a guardava o trabalho num artefato que ninguém reaplicava, e agora todo elo o
+reaplica antes de coletar; o marcador `.feito` morria com o push perdido, e passa a subir como
+artefato, com um dono só; e o despachante ganhou observador por `push`, fora do cron. Casos 11, 12
+e 13 no ensaio.
+
 ## 2026-10-09 · #PR · atribuição do ato: domínio vence nome no texto
 
 Lote 2.1. Nome homônimo sem a UF no texto deixa de classificar (241 nomes estão em mais de uma
