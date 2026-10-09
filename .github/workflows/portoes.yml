@@ -72,8 +72,7 @@ jobs:
         run: |
           set -e
           # assunto: cor texto rapido
-          # 28/09/2026: `git add -A` marca o caminho como RESOLVIDO mesmo com <<<<<<< dentro, e o
-          # commit passa sem reclamar — o CHANGELOG.md subiu assim duas vezes neste dia. Portão
+          # 28/09/2026: `git add -A` marca o caminho como RESOLVIDO mesmo com           # commit passa sem reclamar — o CHANGELOG.md subiu assim duas vezes neste dia. Portão
           # barato, repositório inteiro, antes de qualquer outra coisa.
           python3 scripts/verificar_marcadores_de_conflito.py --autoteste
           # assunto: cor texto rapido
@@ -494,6 +493,15 @@ jobs:
           node scripts/verificar_guia_proteja_se.js --autoteste
           # assunto: texto
           node scripts/verificar_guia_proteja_se.js
+          # 09/10/2026 (ajustes 3 e 5): grade de números sem cartão órfão; figura com um título só.
+          python3 scripts/verificar_grades_de_numeros.py --autoteste
+          # assunto: texto
+          python3 scripts/verificar_grades_de_numeros.py
+          # assunto: texto
+          # 09/10/2026 (ajuste 6): texto do mouse dos mapas sem dado cru; um marcador por capital.
+          node scripts/verificar_dicas_dos_mapas.js --autoteste
+          # assunto: texto
+          node scripts/verificar_dicas_dos_mapas.js
           # assunto: texto
           # 09/10/2026 (ajuste 1): vocabulário proibido no texto que os scripts das páginas escrevem.
           python3 scripts/verificar_vocabulario_dos_scripts.py --autoteste
