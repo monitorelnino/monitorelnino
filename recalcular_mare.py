@@ -38,7 +38,8 @@ Uso:
 """
 import json, re, pathlib, sys
 
-from coletores_base import gravar_em  # §229: escrita atômica de data/
+from datetime import date
+from coletores_base import gravar_em, data_do_corte  # §229 e o relógio do corte
 import numpy as np
 
 RAIZ = pathlib.Path(__file__).parent
@@ -332,6 +333,85 @@ def _declarado_nacional_uf():
             if uf: n[uf] = n.get(uf, 0) + 1
     return n
 
+ARRANJO_SECA = 45          # pontos em 100 — o mesmo que a régua estadual dá à estrutura permanente
+CRED_ARRANJO_SECA = 0.45   # e o mesmo número como crédito populacional, "com o mesmo desconto"
+VALIDADE_PORTARIA_DIAS = 180
+
+
+def _portarias_de_seca_vigentes(corte=None) -> dict:
+    """Municípios com reconhecimento federal por estiagem/seca vigente na data da leitura.
+
+    "Vigente" = portaria de reconhecimento com validade cobrindo o corte. A validade usada é de
+    180 dias a contar da data do reconhecimento, que é a regra das portarias SEDEC; a regra fica
+    registrada aqui, no código que a aplica, e no relatório paralelo.
+    """
+    corte = corte or data_do_corte()
+    atos = json.load(open(RAIZ / "data" / "atos_resposta.json", encoding="utf-8"))
+    fora = {}
+    for e in atos.get("eventos", []):
+        if e.get("atribuicao_nao_conferida"):
+            continue
+        causa = str(e.get("causa") or "").lower()
+        if "reconhecimento" not in causa:
+            continue
+        texto = " ".join(str(e.get(k) or "") for k in ("desastre", "decreto", "fonte", "causa"))
+        if not re.search(r"estiagem|seca", texto, re.IGNORECASE):
+            continue
+        bruta = e.get("data_reconhecimento") or e.get("data")
+        try:
+            d, m, a = (int(x) for x in str(bruta).split("/"))
+            inicio = date(a, m, d)
+        except (TypeError, ValueError):
+            continue
+        if (corte - inicio).days <= VALIDADE_PORTARIA_DIAS and corte >= inicio:
+            fora[str(e.get("ibge") or "")] = {"portaria": e.get("portaria") or e.get("decreto"),
+                                              "data_reconhecimento": bruta}
+    fora.pop("", None)
+    return fora
+
+
+def _no_carro_pipa() -> dict:
+    """Municípios efetivamente atendidos pela Operação Carro-Pipa no ano (meses ≥ 1)."""
+    caminho = RAIZ / "data" / "programas_federais" / "ocp_2026.json"
+    if not caminho.exists():
+        return {}
+    d = json.load(open(caminho, encoding="utf-8"))
+    return {str(m["ibge"]): {"meses_atendidos": m.get("meses_atendidos")}
+            for m in d.get("municipios", []) if (m.get("meses_atendidos") or 0) >= 1}
+
+
+def _no_semiarido() -> set:
+    """Municípios do Semiárido, pela delimitação federal já derivada em `enquadramento_card`."""
+    caminho = RAIZ / "data" / "enquadramento_card.json"
+    if not caminho.exists():
+        return set()
+    d = json.load(open(caminho, encoding="utf-8"))
+    return {str(c) for c, v in (d.get("municipios") or {}).items() if (v or {}).get("sa")}
+
+
+def arranjo_seca(corte=None) -> dict:
+    """Os municípios que cumprem as TRÊS condições do degrau, e a prova de cada uma.
+
+    Decisão de método de 05/10/2026 (MARÉ Legal v3.2, preparação programática), implementada em
+    paralelo em 08/10/2026 (A3-12): o degrau "arranjo permanente de resposta à seca" vale quando,
+    ao mesmo tempo e em fonte oficial, (1) o risco previsto para o município é seca — Semiárido
+    pela delimitação federal; (2) há reconhecimento federal por estiagem ou seca vigente na data
+    da leitura; (3) o município está efetivamente incluído em programa federal de resposta à seca
+    no ano — hoje só a Operação Carro-Pipa, porque a adesão municipal ao Garantia-Safra não tem
+    fonte oficial por ano localizada. Decreto sem inclusão não vale; inclusão sem decreto não
+    ocorre.
+    """
+    semiarido = _no_semiarido()
+    reconhecidos = _portarias_de_seca_vigentes(corte)
+    atendidos = _no_carro_pipa()
+    fora = {}
+    for cod, rec in reconhecidos.items():
+        if cod not in semiarido or cod not in atendidos:
+            continue
+        fora[cod] = {"semiarido": True, **rec, **atendidos[cod]}
+    return fora
+
+
 def calcular(versao="v3.1"):
     """Motor do índice: lê data/*.json, calcula os três componentes por estado, agrega com elemento
     geométrico e piso, e devolve o dicionário completo que vira data/indice.json.
@@ -388,10 +468,26 @@ def calcular(versao="v3.1"):
         # agora é parte padrão do cálculo, sempre, em toda atualização. Mesmo desconto de 50% de
         # antes, sem mudança nenhuma na fórmula — só a trava de data caiu. Conservador: não soma
         # à declaração de tribunal de contas — usa o maior dos dois contadores.
-        dp = max(dp, _declarado_nacional_uf().get(uf, 0))
-        doc_n = sum(v for k, v in c.items() if k in PESO_DOC)
-        if dp: w += max(dp - doc_n, 0) * mediana_uf[uf] * (CRED_POP["plano"] * 0.5)
-        if da: w += da * mediana_uf[uf] * (CRED_POP["plano_antigo"] * 0.5)
+        # 08/10/2026 (A3-02, decisão D2): a camada declarada contava população DUAS VEZES, por
+        # dois caminhos somados.
+        #
+        # 1. `doc_n` subtraía do excedente só as categorias de `PESO_DOC` — `plano` e companhia —,
+        #    e deixava fora `estrutura` e `coberto_estadual`, que recebem crédito em `CRED_POP`.
+        #    Município já creditado por estrutura voltava a ser creditado como declarante.
+        # 2. O termo de `da` era somado ao de `dp` SEM nenhuma subtração: no RS, 183 declarantes
+        #    com plano mais 215 com plano desatualizado entravam inteiros, e o levantamento do
+        #    TCE-RS tem 485 respondentes num estado de 497 municípios — a mesma população contada
+        #    de novo. Nada impedia a soma de passar do número de municípios do estado.
+        #
+        # A régua passa a ser UM TERMO SÓ, com dois tetos: os dois contadores do tribunal de
+        # contas somam entre si (plano e plano desatualizado são municípios diferentes), o
+        # resultado é comparado — nunca somado — com o levantamento nacional (MUNIC/ICM), e o
+        # total nunca passa do número de municípios da UF. Do que sobra, desconta-se tudo o que já
+        # tem crédito próprio.
+        declarado = min(max(dp + da, _declarado_nacional_uf().get(uf, 0)), totais.get(uf, 0) or 0)
+        doc_n = sum(v for k, v in c.items() if CRED_POP.get(k, 0.0) > 0)
+        if declarado:
+            w += max(declarado - doc_n, 0) * mediana_uf[uf] * (CRED_POP["plano"] * 0.5)
         cobertura = min(100.0, 100.0 * w / pop_uf[uf])
         st, ant, conf = ESTADOS[uf]
         if versao == "v3.1":
@@ -549,10 +645,13 @@ def _resumo_verificacao(out):
         suspensas = sum(1 for e in lg.get("execucoes", []) if e.get("data") == ult and e.get("fonte_suspensa_defeso"))
     except Exception:
         ult, suspensas = None, 0
-    try:
-        fila = len(json.load(open(RAIZ / "data" / "citacao_incompleta.json", encoding="utf-8")).get("fila", []))
-    except Exception:
-        fila = None
+    # 08/10/2026 (A3-03, decisão D3): a fila de citação incompleta deixa de ser prazo (a C11 foi
+    # revogada) e passa a ser INFORMAÇÃO DE FICHA, regenerada aqui, na cadeia. Ela estava parada
+    # desde 02/09, escrita por um script de migração que rodou uma vez: 145 registros congelados,
+    # com Rio Branco listado como `plano` quando hoje é `nao_verificado`. Fila que não se regenera
+    # é fila que mente.
+    regravar_versao_no_meta()
+    fila = len(regravar_citacao_incompleta())
     try:
         # 03/09/2026: o registro de LAI vive no repositório PRIVADO (nunca no site); aqui só
         # entra a lista de UFs cuja verificação estadual depende de resposta — sem contagens.
@@ -680,6 +779,140 @@ def _resumo_verificacao(out):
     gravar_em(RAIZ / "data" / "verificacao_resumo.json", resumo)   # §229
     return resumo
 
+RE_NUMERO_DE_ATO = re.compile(
+    r"(n[º°o.]\s*\d)|((decreto|portaria|lei|resolu[çc][ãa]o|instru[çc][ãa]o "
+    r"normativa|of[íi]cio)\s*(municipal|estadual|conjunta?)?\s*n?[º°o.]?\s*\d)",
+    re.IGNORECASE)
+RE_DATA_BR_EXATA = re.compile(r"^\d{2}/\d{2}/\d{4}$")
+
+
+VERSAO_INDICE = "v3.1 (30/09/2026)"   # a régua que o motor aplica HOJE; v3.2 roda em paralelo
+
+
+def calcular_paralelo_v32(corte=None) -> dict:
+    """O relatório v3.1 × v3.2, SEM tocar no índice publicado.
+
+    05/10/2026 decidiu o degrau; 08/10/2026 (A3-12) implementa em paralelo, que é o que o handover
+    pede: o número da v3.2 não vai a página nenhuma, e fica em `data/paralelo_v32.json` ao lado do
+    `robustez_mc.json`. O que muda na v3.2 é só a cobertura populacional: o município que cumpre
+    as três condições e **não tem plano publicado** passa a contar com crédito 0,45 — "com plano
+    publicado, vale o plano, e o arranjo não soma".
+    """
+    arranjo = arranjo_seca(corte)
+    base, media_base, *_ = calcular("v3.1")
+
+    tab = json.load(open(RAIZ / "data" / "municipios.json", encoding="utf-8"))
+    bruto = tab["municipios"] if isinstance(tab, dict) else tab
+    mun = list(bruto.values()) if isinstance(bruto, dict) else bruto
+    ref = json.load(open(RAIZ / "data" / "municipios_ibge_referencia.json", encoding="utf-8"))
+    pop = json.load(open(RAIZ / "data" / "populacao_censo2022.json", encoding="utf-8"))
+    cod_por, uf_de, pop_uf = {}, {}, {}
+    for r in ref:
+        cod = str(r["codigo_ibge"]).zfill(7)
+        cod_por[(r["nome"], r["uf"])] = cod
+        uf_de[cod] = r["uf"]
+        pop_uf[r["uf"]] = pop_uf.get(r["uf"], 0) + pop.get(cod, 0)
+    ja_creditado = {cod_por.get((m["nome"], m["uf"])) for m in mun
+                    if CRED_POP.get(m.get("categoria"), 0.0) > 0}
+
+    ganho_uf, entram = {}, {}
+    for cod in arranjo:
+        if cod in ja_creditado:
+            continue          # com plano publicado, vale o plano: o arranjo não soma
+        uf = uf_de.get(cod)
+        if not uf:
+            continue
+        ganho_uf[uf] = ganho_uf.get(uf, 0.0) + pop.get(cod, 0) * CRED_ARRANJO_SECA
+        entram.setdefault(uf, []).append(cod)
+
+    por_uf = {}
+    for uf, v in base.items():
+        cob31 = v["cobertura_pop"]
+        extra = 100.0 * ganho_uf.get(uf, 0.0) / pop_uf[uf] if pop_uf.get(uf) else 0.0
+        cob32 = min(100.0, cob31 + extra)
+        total32 = round((v["instrumento"] + v["estrutura"] + round(cob32, 1)) / 3, 1)
+        por_uf[uf] = {"cobertura_v31": cob31, "cobertura_v32": round(cob32, 1),
+                      "total_v31": v["total"], "total_v32": total32,
+                      "municipios_que_entram": len(entram.get(uf, []))}
+    media32 = round(sum(x["total_v32"] for x in por_uf.values()) / len(por_uf), 1)
+
+    relatorio = {
+        "_governanca": ("MARÉ Legal v3.2 (preparação programática) calculada EM PARALELO, por "
+                        "decisão de método de 05/10/2026 e implementação de 08/10/2026 (A3-12). "
+                        "Nenhuma página lê este arquivo e nenhuma nota publicada vem dele: o "
+                        "índice no ar é o da v3.1. Regenerado pela cadeia de derivados."),
+        "degrau": {"nome": "arranjo permanente de resposta à seca", "pontos": ARRANJO_SECA,
+                   "credito_populacional": CRED_ARRANJO_SECA,
+                   "condicoes": ["risco de seca: Semiárido pela delimitação federal",
+                                 "reconhecimento federal por estiagem ou seca vigente na data da "
+                                 f"leitura (validade de {VALIDADE_PORTARIA_DIAS} dias da portaria "
+                                 "SEDEC)",
+                                 "inclusão efetiva em programa federal de resposta à seca no ano "
+                                 "(hoje só a Operação Carro-Pipa: a adesão municipal ao "
+                                 "Garantia-Safra não tem fonte oficial por ano localizada)"],
+                   "regra_de_soma": "com plano publicado, vale o plano; o arranjo não soma"},
+        "municipios_com_arranjo": len(arranjo),
+        "municipios_que_entrariam_no_credito": sum(len(v) for v in entram.values()),
+        "media_nacional_v31": media_base,
+        "media_nacional_v32": media32,
+        "por_uf": por_uf,
+        "arranjo_por_municipio": arranjo,
+    }
+    gravar_em(RAIZ / "data" / "paralelo_v32.json", relatorio)
+    return relatorio
+
+
+def regravar_versao_no_meta(versao: str = VERSAO_INDICE) -> str:
+    """Grava `versao_indice` em `data/meta.json` — a versão tem um dono, e é o motor.
+
+    08/10/2026 (A3-16). O cabeçalho da METODOLOGIA, a tabela §5.2, o `CITATION.cff`, o
+    `datapackage.json` e o PDF diziam coisas diferentes: dois métodos diferentes chamados "v3.1" e
+    um dataset citável como "2.3". Quem sabe qual régua foi aplicada é o motor; os publicadores
+    leem daqui.
+    """
+    caminho = RAIZ / "data" / "meta.json"
+    meta = json.load(open(caminho, encoding="utf-8")) if caminho.exists() else {}
+    meta["versao_indice"] = versao
+    gravar_em(caminho, meta)
+    return versao
+
+
+def regravar_citacao_incompleta():
+    """Regenera `data/citacao_incompleta.json` — o que falta na citação de cada registro.
+
+    08/10/2026 (A3-03, D3). Não é prazo e não tira ponto de ninguém: a C11 foi revogada, porque
+    tiraria 142 dos 151 registros pontuáveis (45,9 M hab.) por ausência de número de ato em
+    documento que o site já leu, contra a decisão §101. O que tira crédito é a falta de documento
+    (D1, §104). Este arquivo passa a ser informação de ficha, regenerada pela cadeia.
+    """
+    tab = json.load(open(RAIZ / "data" / "municipios.json", encoding="utf-8"))
+    bruto = tab["municipios"] if isinstance(tab, dict) else tab
+    mun = list(bruto.values()) if isinstance(bruto, dict) else bruto
+    fila = []
+    for m in mun:
+        if CRED_POP.get(m.get("categoria"), 0.0) <= 0:
+            continue
+        problemas = []
+        if not RE_NUMERO_DE_ATO.search(m.get("documento") or ""):
+            problemas.append("sem_numero_de_ato")
+        if not RE_DATA_BR_EXATA.match(str(m.get("data") or "").strip()):
+            problemas.append("data_fora_do_padrao")
+        if not str(m.get("url") or "").startswith("http"):
+            problemas.append("sem_url")
+        if problemas:
+            fila.append({"nome": m["nome"], "uf": m["uf"], "categoria": m.get("categoria"),
+                         "problemas": problemas})
+    gravar_em(RAIZ / "data" / "citacao_incompleta.json", {
+        "_governanca": ("O que falta na CITAÇÃO de cada registro que recebe crédito: número de "
+                        "ato, data em dd/mm/aaaa, endereço. Informação de ficha, sem efeito em "
+                        "nota nenhuma — a regra C11, que marcava 26/10/2026 como prazo de saída "
+                        "da pontuação, foi revogada em 08/10/2026 (decisão D3; METODOLOGIA §12.4, "
+                        "item 2). Regenerado pela cadeia de derivados."),
+        "regra": "revogada em 08/10/2026 (D3): esta fila não tira ponto de registro nenhum",
+        "fila": fila})
+    return fila
+
+
 def regravar_verificacao_municipal():
     out = _recomputar_verificacao_em_memoria()
     with open(RAIZ / "data" / "verificacao_municipal.json", "w", encoding="utf-8", newline="\n") as f:
@@ -715,6 +948,13 @@ def main():
         import gerar_selos
         gerar_selos.gerar()
         print("selos/ regravados a partir do índice")
+        # 08/10/2026 (A3-12): o cálculo paralelo da v3.2 é DERIVADO — nasce aqui, com o resto, e
+        # não vai a página nenhuma. Enquanto ele não existia, a decisão de método de 05/10 estava
+        # publicada no CHANGELOG e em `mudancas.html` sem nada que a sustentasse.
+        _p32 = calcular_paralelo_v32()
+        print(f"data/paralelo_v32.json regravado · v3.1 {_p32['media_nacional_v31']:.1f} × "
+              f"v3.2 {_p32['media_nacional_v32']:.1f} · "
+              f"{_p32['municipios_que_entrariam_no_credito']} municípios entrariam no crédito")
         print("(percentual_uf.json agora é DERIVADO de municipios.json a cada --write; campos")
         print(" declarado_plano/declarado_antigo/fonte_declarada de auditorias externas preservados.)")
         return 0

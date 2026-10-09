@@ -182,10 +182,11 @@ MODELO_MANUAL = {
 def main():
     """Busca o recurso do Monitor de Secas no catálogo CKAN da ANA por descoberta dinâmica e classifica cada registro nas três zonas do marco temporal."""
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--self-test", action="store_true", help="Roda apenas os testes do motor de classificação")
+    ap.add_argument("--autoteste", "--self-test", dest="autoteste",
+                    action="store_true", help="Roda apenas os testes do motor de classificação")
     args = ap.parse_args()
 
-    if args.self_test:
+    if args.autoteste:
         return self_test()
 
     marcos = {}
