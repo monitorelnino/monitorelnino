@@ -498,6 +498,7 @@ jobs:
           node scripts/verificar_dicas_dos_mapas.js --autoteste
           # assunto: texto
           node scripts/verificar_dicas_dos_mapas.js
+          # assunto: texto
           # 09/10/2026 (ajuste 1): vocabulário proibido no texto que os scripts das páginas escrevem.
           python3 scripts/verificar_vocabulario_dos_scripts.py --autoteste
           # assunto: texto
