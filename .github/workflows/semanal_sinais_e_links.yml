@@ -83,8 +83,8 @@ jobs:
         # padrão de `coletar_srag_gripe.py` passou a ser sondar — ele não escreve mais série.
         coletar_srag_gripe.py
         descobrir_dominios.py
-        coletar_espin.py
+        # 09/10/2026: `coletar_espin.py` e `verificar_links.py` saíram para `semanal_espin_e_links.yml`
+        # — no fim desta fila, eles nunca chegavam a rodar antes do teto de 150 min.
         classificar_planos_municipais.py
-        verificar_links.py
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}

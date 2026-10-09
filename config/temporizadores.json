@@ -286,6 +286,30 @@
    "_nota_janela": "Fechado em 09:00 na campanha de 06/10/2026 (causa F): ia ate 12:00 e podia disparar coleta na `main` depois de a janela da noite fechar. A janela da noite e 01:00-09:00 UTC, e temporizador de COLETA nao a atravessa."
   },
   {
+   "id": "semanal_espin_e_links",
+   "workflow": "semanal_espin_e_links.yml",
+   "finalidade": "reconfere ESPIN e verifica links, domingo de madrugada",
+   "cron_primario": "15 6 * * 0",
+   "janela": {
+    "inicio_utc": "01:00",
+    "fim_utc": "09:00"
+   },
+   "devido_quando": "não há execução concluída neste domingo",
+   "tolerancia_atraso_min": 240,
+   "idempotencia": "ESPIN reescreve o estado da fonte; links não escrevem dado",
+   "orcamento_min": 30,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "saude.html",
+    "relatório de links"
+   ],
+   "gravidade": "media",
+   "_nota": "Separado de semanal_sinais_e_links em 09/10/2026: as duas últimas execuções daquela rotina foram canceladas no teto de 150 min antes de chegar a estes dois comandos."
+  },
+  {
    "id": "saude_estadual",
    "workflow": "noturno_saude_estadual.yml",
    "finalidade": "planos e estruturas de saúde estaduais, duas vezes por mês",
