@@ -24,8 +24,7 @@ Regra editorial central — "cuidado com falsos negativos" (pedido de 22/09/2026
   vira registro continua exigindo documento primário lido por humano (§3.2, C10).
 
 Saída: campos `nivel_confianca` (A/B/C), `pontos_confianca`, `sinais`, `alertas` gravados em
-cada pista de data/pistas_imprensa.json, e a fila de revisão agrupada por município em
-data/pistas_revisao.json (derivado; regenerado a cada rodada).
+cada pista de data/pistas_imprensa.json (a fila de revisão agrupada saiu em 09/10, lote 2.9).
 
 USO
   python triar_confianca_pistas.py            # anota as pistas e gera a fila
@@ -141,34 +140,22 @@ def classificar_confianca(pista: dict) -> dict:
 
 
 def anotar_e_gerar_fila() -> dict:
-    """Anota cada pista com o nível e grava a fila de revisão agrupada por município."""
+    """Anota cada pista com o nível de confiança, na própria pista.
+
+    09/10/2026 (lote 2.9, A1-17): deixa de gerar `data/pistas_revisao.json` — a "fila de revisão
+    humana" agrupada por município (10 MB regenerados toda noite, que ninguém lia e o juiz não
+    conseguia ler: a lista era `grupos`). O nível continua anotado: é ele que ordena a rodada."""
     d = ler("pistas_imprensa.json") or {"pistas": []}
-    por_mun = defaultdict(list)
+    por_nivel = {"A": 0, "B": 0, "C": 0}
+    municipios = set()
     for p in d["pistas"]:
-        if not p.get("id"):   # §153: id estável (sha1 ibge|url|trecho) para as decisões humanas
+        if not p.get("id"):   # §153: id estável (sha1 ibge|url|trecho)
             p["id"] = hashlib.sha1(f"{p.get('ibge') or ''}|{p.get('url') or ''}|{(p.get('trecho') or '')[:500]}".encode()).hexdigest()[:10]
         p.update(classificar_confianca(p))
-        por_mun[(p.get("ibge"), p.get("municipio"), p.get("uf"))].append(p)
+        por_nivel[p["nivel_confianca"]] += 1
+        municipios.add((p.get("ibge"), p.get("municipio"), p.get("uf")))
     gravar("pistas_imprensa.json", d)
-
-    ordem = {"A": 0, "B": 1, "C": 2}
-    grupos = []
-    for (ibge, mun, uf), ps in por_mun.items():
-        ps.sort(key=lambda p: (ordem[p["nivel_confianca"]], -p["pontos_confianca"]))
-        melhor = ps[0]["nivel_confianca"]
-        grupos.append({"ibge": ibge, "municipio": mun, "uf": uf, "melhor_nivel": melhor,
-                       "n_pistas": len(ps), "niveis": {n: sum(1 for p in ps if p["nivel_confianca"] == n) for n in "ABC"},
-                       "pistas": [{k: p.get(k) for k in ("id", "nivel_confianca", "pontos_confianca", "sinais", "alertas",
-                                                         "origem", "url", "titulo", "trecho", "data", "status")} for p in ps]})
-    grupos.sort(key=lambda g: (ordem[g["melhor_nivel"]], -g["n_pistas"], g["uf"] or "", g["municipio"] or ""))
-    fila = {"_governanca": ("Fila de revisão humana das pistas, agrupada por município e ordenada por nível de "
-                            "confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. "
-                            "Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. "
-                            "Registro continua exigindo documento primário lido por humano (§3.2, C10)."),
-            "gerado_em": hoje_editorial().isoformat(), "total_pistas": len(d["pistas"]), "total_municipios": len(grupos),
-            "por_nivel": {n: sum(g["niveis"][n] for g in grupos) for n in "ABC"}, "grupos": grupos}
-    gravar("pistas_revisao.json", fila)
-    return fila
+    return {"total_pistas": len(d["pistas"]), "total_municipios": len(municipios), "por_nivel": por_nivel}
 
 
 def autoteste():
@@ -264,4 +251,4 @@ if __name__ == "__main__":
         sys.exit(autoteste())
     f = anotar_e_gerar_fila()
     print(f"triagem de confiança: {f['total_pistas']} pistas em {f['total_municipios']} municípios · "
-          f"A={f['por_nivel']['A']} B={f['por_nivel']['B']} C={f['por_nivel']['C']} → data/pistas_revisao.json")
+          f"A={f['por_nivel']['A']} B={f['por_nivel']['B']} C={f['por_nivel']['C']} (anotado na própria pista)")

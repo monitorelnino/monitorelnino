@@ -44,7 +44,7 @@ sys.path.insert(0, str(RAIZ))
 sys.path.insert(0, str(RAIZ / "scripts"))
 
 FILAS = ("pistas_imprensa.json", "pistas_descobertas.json", "pistas_doe.json",
-         "pistas_revisao.json", "pistas_querido_diario.json")
+         "pistas_querido_diario.json")
 STATUS_DE_VOLTA = ("pista — atribuição corrigida pelo domínio oficial do documento; "
                    "volta ao juiz com o ente dono do domínio")
 
