@@ -240,8 +240,20 @@ def main(argv: list) -> int:
         import datetime as dt
         noite = noite_de(dt.datetime.now(dt.timezone.utc).replace(tzinfo=None))
     aplicar = "--aplicar" in argv
+    # 09/10/2026: `--artefato` escolhe UM artefato pelo nome, e pode repetir. A reaplicacao da
+    # noite inteira e o caminho normal; escolher nasceu de um pedido da editoria por dois
+    # artefatos nomeados, e e tambem o que permite reaplicar um elo cuja porta ja foi corrigida
+    # sem arrastar os outros.
+    escolhidos = [argv[i + 1] for i, a in enumerate(argv)
+                  if a == "--artefato" and i + 1 < len(argv)]
 
     artefatos = artefatos_da_noite(noite)
+    if escolhidos:
+        pedidos = set(escolhidos)
+        achados = {a["nome"] for a in artefatos}
+        for nome in sorted(pedidos - achados):
+            print(f"  ⚠ {nome}: nao esta entre os artefatos da noite de {noite}")
+        artefatos = [a for a in artefatos if a["nome"] in pedidos]
     if not artefatos:
         print(f"· nenhum artefato `{PREFIXO}*` para a noite de {noite}")
         return 0
@@ -296,8 +308,18 @@ def _aplicar_um(rel: str, origem: pathlib.Path, porta: str):
         if porta == "fila":
             from pistas import sincronizar
             doc = json.loads(origem.read_text(encoding="utf-8"))
-            sincronizar(nome_da_fila_de(rel), {"pistas": doc.get("pistas") or []},
-                        origem="reaplicacao da noite")
+            # 09/10/2026: a reaplicacao passava "reaplicacao da noite" como ORIGEM da pista, e isso
+            # nao existe em `schemas/pista.json`: as duas pistas reaplicadas hoje entraram fora do
+            # esquema e o portao ia quarentena-las — a reaplicacao desfazendo o proprio trabalho.
+            # A origem e da PISTA, e ela ja vem no artefato, posta pelo coletor que a achou. O que
+            # a reaplicacao acrescenta e um RASTRO, em campo proprio, que nao disputa com a origem.
+            pistas = []
+            for bruta in (doc.get("pistas") or []):
+                if isinstance(bruta, dict):
+                    bruta = dict(bruta)
+                    bruta.setdefault("reaplicada_em", "reaplicacao da noite")
+                pistas.append(bruta)
+            sincronizar(nome_da_fila_de(rel), {"pistas": pistas})
             return True
         if porta == "jsonl":
             a = destino.read_text(encoding="utf-8").splitlines() if destino.exists() else []

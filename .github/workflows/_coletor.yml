@@ -188,6 +188,23 @@ jobs:
           GH_TOKEN: ${{ secrets.ROBO_TOKEN || secrets.GITHUB_TOKEN }}
         run: python3 scripts/painel_da_noite.py --recuperar-da-api | tee -a "$GITHUB_STEP_SUMMARY" || true
 
+      # 09/10/2026 (defeito (a), passo 1a): O ARTEFATO DA COLETA PERDIDA VOLTA PARA DENTRO.
+      #
+      # O passo 1a guarda o trabalho num artefato quando o push morre, e o comentario dele dizia
+      # que "o elo seguinte o reaplica (`scripts/reaplicar_noite.py`)". O script existe desde
+      # 08/10 e NADA o chamava: os cinco artefatos da noite de 08->09 (18 MB cada) ficaram no
+      # GitHub esperando alguem, e expiram em catorze dias. Agora todo elo reaplica no comeco, pela
+      # porta de cada arquivo, antes de coletar — o que voltou entra no commit desta noite.
+      # Idempotente pelo marcador `.reaplicado`; `continue-on-error` porque reaplicar nao e a
+      # tarefa do elo, e falha aqui nao derruba a coleta.
+      - name: Reaplicar o que a noite perdeu
+        if: steps.janela.outputs.pode == '1'
+        continue-on-error: true
+        timeout-minutes: 10
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/reaplicar_noite.py --aplicar | tee -a "$GITHUB_STEP_SUMMARY" || true
+
       - name: Marcar o início do elo
         run: echo "ELO_INICIO=$(date -u +%H:%M)" >> "$GITHUB_ENV"
 
@@ -221,6 +238,22 @@ jobs:
             > "data/noite/$NOITE/${{ inputs.nome }}.feito"
           echo "feito=1" >> "$GITHUB_OUTPUT"
           echo "marcador: data/noite/$NOITE/${{ inputs.nome }}.feito"
+
+      # 09/10/2026 (defeito (b) da noite de 08->09): O MARCADOR SOBREVIVE AO PUSH PERDIDO.
+      #
+      # O `.feito` era gravado na arvore e chegava a `main` NO MESMO COMMIT DO DADO. Push que se
+      # perde leva o marcador junto: `diarios` (run 37875038703) coletou onze minutos, o laco de
+      # rebase-e-push falhou nas cinco tentativas, e para a guarda e para o vigia aquela coleta
+      # nunca aconteceu. Artefato nao depende de `git push`, e sobe AQUI, antes do commit. Quem le
+      # as duas provas e `scripts/marcador_de_elo.py`, que e o dono da pergunta.
+      - name: Guardar o marcador fora do commit
+        if: steps.feito.outputs.feito == '1'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
+        with:
+          name: feito-${{ inputs.nome }}-${{ env.NOITE }}
+          path: data/noite/${{ env.NOITE }}/${{ inputs.nome }}.feito
+          retention-days: 14
+          if-no-files-found: warn
 
       - name: Regenerar derivados
         continue-on-error: true
