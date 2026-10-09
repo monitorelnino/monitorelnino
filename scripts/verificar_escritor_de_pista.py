@@ -82,6 +82,27 @@ def relativo(caminho, raiz=None) -> str:
         return pathlib.Path(caminho).as_posix()
 
 
+LEGADOS = RAIZ / "config" / "escritores_legados.json"
+
+
+def legados(caminho=LEGADOS) -> dict:
+    """{arquivo: linha} da dívida nomeada. Linha sem `falta` NÃO vale e fica fora.
+
+    09/10/2026 (A7-19). Quando o portão passou a ver escrita por variável e em linha lógica
+    partida, apareceram 18 escritas que escapavam da regra 1 de 05/10. Quatro tocam fila que o
+    juiz lê. Elas não viram verde por decreto: cada uma está em `config/escritores_legados.json`
+    com a fila, o motivo e **o que falta fazer**, e o portão imprime a lista toda vez. Dívida sem
+    `falta` é exceção disfarçada, e esta função a descarta — ela volta a reprovar.
+    """
+    try:
+        import json
+        dados = json.loads(pathlib.Path(caminho).read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+    return {str(x.get("arquivo")): x for x in (dados.get("legados") or [])
+            if x.get("arquivo") and x.get("falta") and x.get("motivo")}
+
+
 def pode_escrever(rel: str) -> bool:
     """Este arquivo tem licença para abrir a fila para escrita? Função pura."""
     rel = str(rel or "").replace("\\", "/")
@@ -90,28 +111,96 @@ def pode_escrever(rel: str) -> bool:
     return any(rel.startswith(x) for x in PASTAS_IGNORADAS)
 
 
+RE_ATRIBUI_FILA = re.compile(
+    r"^\s*([A-Za-z_][A-Za-z_0-9]*)\s*=\s*[^\n]*[\"\'](?:data/)?" + ALVO)
+RE_ESCRITA_GENERICA = re.compile(
+    r"\b(?:gravar|gravar_em)\s*\(\s*([A-Za-z_][A-Za-z_0-9]*)\b|"
+    r"\b([A-Za-z_][A-Za-z_0-9]*)\s*\.\s*write_text\s*\(")
+
+
+def logicas(fonte: str) -> list:
+    """(primeira_linha, texto) de cada LINHA LÓGICA do fonte. Função pura.
+
+    09/10/2026 (A7-19). Os padrões exigiam o nome do arquivo e a chamada de escrita na MESMA
+    linha física: `[^)\n]` e `{0,80}` param na quebra. Uma escrita partida em duas linhas — que é
+    como ela sai de qualquer formatador com limite de coluna — passava inteira pelo portão. Juntar
+    as linhas lógicas antes de procurar fecha isso sem tocar nos padrões.
+
+    O critério é o do parêntese aberto: enquanto a linha tiver mais `(`, `[` ou `{` abertos que
+    fechados, a seguinte faz parte dela. É aproximado — parêntese dentro de texto entre aspas
+    conta errado —, e aproximado basta: o erro possível é juntar linha demais, o que faz o portão
+    ver MAIS, nunca menos.
+    """
+    fora = []
+    buffer_, inicio, saldo = "", 0, 0
+    for n, linha in enumerate(str(fonte or "").splitlines(), start=1):
+        if not buffer_ and linha.lstrip().startswith("#"):
+            continue
+        if not buffer_:
+            inicio = n
+        buffer_ += (" " if buffer_ else "") + linha.strip()
+        saldo += sum(linha.count(c) for c in "([{") - sum(linha.count(c) for c in ")]}")
+        if saldo <= 0:
+            fora.append((inicio, buffer_))
+            buffer_, saldo = "", 0
+    if buffer_:
+        fora.append((inicio, buffer_))
+    return fora
+
+
+def nomes_de_fila(fonte: str) -> set:
+    """As variáveis que recebem o nome de um arquivo de fila. Função pura.
+
+    09/10/2026 (A7-19). `FILA = "data/pistas_imprensa.json"` seguido de `gravar_em(FILA, doc)` não
+    tem o literal na linha da escrita, e nenhum padrão o alcançava — bastava uma variável para
+    abrir a fila por fora da porta. Aqui o portão aprende o nome, e a escrita por variável conta
+    como escrita no arquivo.
+    """
+    fora = set()
+    for _n, texto in logicas(fonte):
+        m = RE_ATRIBUI_FILA.match(texto)
+        if m:
+            fora.add(m.group(1))
+    return fora
+
+
 def escritas_no_fonte(fonte: str) -> list:
     """As escritas na fila que este fonte contém, como lista de (linha, motivo). Função pura.
 
     Linha comentada não conta: o comentário que explica a regra não é violação dela — e a
     explicação é obrigatória neste projeto, de modo que cobrá-la seria cobrar a documentação.
+
+    09/10/2026 (A7-19): procura na LINHA LÓGICA, não na física, e conhece as variáveis que guardam
+    o nome da fila.
     """
     fora = []
-    for n, linha in enumerate(str(fonte or "").splitlines(), start=1):
-        if linha.lstrip().startswith("#"):
-            continue
+    variaveis = nomes_de_fila(fonte)
+    for n, texto in logicas(fonte):
+        achou = ""
         for padrao, motivo in PADROES:
-            if padrao.search(linha):
-                fora.append((n, motivo))
+            if padrao.search(texto):
+                achou = motivo
                 break
+        if not achou and variaveis:
+            m = RE_ESCRITA_GENERICA.search(texto)
+            if m and (m.group(1) or m.group(2)) in variaveis:
+                achou = (f"escrita na fila por variável ({m.group(1) or m.group(2)}) — "
+                         f"o nome do arquivo está noutra linha")
+        if achou:
+            fora.append((n, achou))
     return fora
 
 
-def problemas(fontes: dict) -> list:
-    """`{caminho_relativo: fonte}` → a lista de violações. Função pura."""
+def problemas(fontes: dict, divida: dict = None) -> list:
+    """`{caminho_relativo: fonte}` → a lista de violações. Função pura dado `divida`.
+
+    `divida` é o mapa de `legados()`: arquivo nomeado ali não reprova, porque já está registrado
+    com o que falta. Tudo o que não está nem na porta, nem em MANUTENCAO, nem na dívida, reprova.
+    """
+    divida = divida if divida is not None else {}
     fora = []
     for rel in sorted(fontes):
-        if pode_escrever(rel):
+        if pode_escrever(rel) or rel in divida:
             continue
         for n, motivo in escritas_no_fonte(fontes[rel]):
             fora.append(f"{rel}:{n}: {motivo} — use scripts/pistas.gravar() ou gravar_lote()")
@@ -163,6 +252,30 @@ def _autoteste() -> int:
            "use scripts/pistas.gravar() ou gravar_lote()"])
     ok("a porta não é nomeada",
        problemas({"scripts/pistas.py": 'gravar("pistas_imprensa.json", d)'}) == [])
+    # 09/10/2026 (A7-19): escrita por VARIAVEL e em linha logica PARTIDA.
+    por_variavel = "FILA = " + repr("data/pistas_imprensa.json") + chr(10) + "gravar_em(FILA, doc)"
+    ok("escrita por variavel e vista",
+       any("por variável" in x for x in problemas({"c.py": por_variavel})))
+    nao_fila = "OUTRO = " + repr("data/estados.json") + chr(10) + "gravar_em(OUTRO, doc)"
+    ok("variavel que nao e fila nao acusa", problemas({"c.py": nao_fila}) == [])
+    partida = "gravar_em(" + chr(10) + "    " + repr("data/pistas_imprensa.json") + ", doc)"
+    ok("escrita partida em duas linhas e vista", problemas({"c.py": partida}) != [])
+    ok("linha logica junta o que o parentese abriu",
+       len(logicas("f(" + chr(10) + "  1," + chr(10) + "  2)" + chr(10) + "g()")) == 2)
+    ok("comentario segue nao contando",
+       problemas({"c.py": "# gravar(" + repr("pistas_imprensa.json") + ", d)"}) == [])
+    por_write = "P = " + repr("data/pistas_doe.json") + chr(10) + "P.write_text(x)"
+    ok("write_text por variavel e visto",
+       any("por variável" in x for x in problemas({"c.py": por_write})))
+    # a divida nomeada
+    ok("fonte na divida nao reprova",
+       problemas({"c.py": por_variavel},
+                 {"c.py": {"arquivo": "c.py", "falta": "migrar", "motivo": "x"}}) == [])
+    ok("divida que nao existe em disco devolve vazio",
+       legados(caminho="/caminho/que/nao/existe.json") == {})
+    ok("a divida real esta declarada, e toda linha diz o que falta",
+       bool(legados()) and all(x.get("falta") and x.get("motivo")
+                               for x in legados().values()))
     ok("árvore limpa devolve lista vazia", problemas({}) == [])
 
     import dis
@@ -191,7 +304,15 @@ def main() -> int:
             fontes[rel] = caminho.read_text(encoding="utf-8", errors="replace")
         except OSError:
             continue
-    p = problemas(fontes)
+    divida = legados()
+    if divida:
+        do_juiz = [x for x in divida.values() if x.get("le_o_juiz")]
+        print(f"⚠ dívida nomeada: {len(divida)} fonte(s) ainda escrevem a fila por fora da porta, "
+              f"{len(do_juiz)} em fila que o juiz lê (config/escritores_legados.json):")
+        for x in sorted(divida.values(), key=lambda y: (not y.get("le_o_juiz"), y["arquivo"])):
+            marca = "juiz" if x.get("le_o_juiz") else "auxiliar"
+            print(f"   - [{marca}] {x['arquivo']} → {x['fila']}; falta: {x['falta']}")
+    p = problemas(fontes, divida)
     if p:
         print(f"✗ ESCRITOR DE PISTA: {len(p)} escrita(s) na fila fora de scripts/pistas.py:")
         for x in p:

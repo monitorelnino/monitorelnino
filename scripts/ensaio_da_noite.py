@@ -453,6 +453,175 @@ def ensaio_fila_de_runner_nao_e_falha(diz) -> bool:
     return ok
 
 
+def ensaio_marcador_sobrevive_ao_push(diz) -> bool:
+    """11. O marcador do elo sobrevive ao push perdido — e a pergunta tem um dono.
+
+    Noite de 08→09/10/2026, defeito (b). `diarios` (run 37875038703) coletou onze minutos; o laço
+    de rebase-e-push do passo 1a falhou nas cinco tentativas; o dado saiu como artefato
+    `coleta-perdida-diarios-37875038703`. O marcador `data/noite/<noite>/diarios.feito` era gravado
+    na árvore e **chegava à `main` no mesmo commit do dado** — então morreu junto. Para a guarda de
+    abertura e para o vigia, aquela coleta nunca aconteceu.
+
+    Reprova se a pergunta "este elo trabalhou?" voltar a ter mais de um dono, se o artefato do
+    marcador deixar de ser a segunda prova (ou passar a valer para outro elo ou outra noite), ou
+    se o elo deixar de subir o marcador ANTES do commit.
+    """
+    import pathlib
+    import sys
+
+    raiz = pathlib.Path(__file__).resolve().parents[1]
+    sys.path.insert(0, str(raiz / "scripts"))
+    from marcador_de_elo import nome_do_artefato, trabalhou
+
+    ok = True
+    feito, prova = trabalhou("diarios", "2026-10-09", lambda c: True, [])
+    if not feito or "árvore" not in prova:
+        diz("   ✗ o marcador na árvore deixou de ser prova")
+        ok = False
+    if not trabalhou("diarios", "2026-10-09", lambda c: False,
+                     [nome_do_artefato("diarios", "2026-10-09")])[0]:
+        diz("   ✗ push perdido com artefato do marcador NÃO conta como trabalho — a reserva "
+            "refaria a coleta e duplicaria o lote")
+        ok = False
+    for errado in (nome_do_artefato("diarios", "2026-10-08"),
+                   nome_do_artefato("juiz", "2026-10-09"),
+                   "coleta-perdida-diarios-37875038703"):
+        if trabalhou("diarios", "2026-10-09", lambda c: False, [errado])[0]:
+            diz(f"   ✗ `{errado}` passou a provar coleta de `diarios` em 2026-10-09")
+            ok = False
+    if trabalhou("diarios", "2026-10-09", lambda c: False, [])[0]:
+        diz("   ✗ sem prova nenhuma o elo conta como trabalhado")
+        ok = False
+
+    coletor = (raiz / ".github/workflows/_coletor.yml").read_text(encoding="utf-8")
+    if "feito-" not in coletor or "upload-artifact" not in coletor:
+        diz("   ✗ o elo não sobe mais o marcador como artefato: push perdido volta a apagá-lo")
+        ok = False
+    elif coletor.index("Guardar o marcador fora do commit") > coletor.index("item 1a)"):
+        diz("   ✗ o marcador sobe DEPOIS do passo de commit — artefato que depende do push não "
+            "prova nada")
+        ok = False
+    for arquivo, quem in ((".github/workflows/noturno_diarios.yml", "a guarda de abertura"),
+                          (".github/workflows/vigia_da_abertura.yml", "o vigia")):
+        linhas = (raiz / arquivo).read_text(encoding="utf-8").splitlines()
+        # A MENÇÃO não basta: o comentário cita o script, e foi assim que o observador do
+        # despachante existiu por dias como promessa escrita. O que vale é a CHAMADA.
+        if not any("marcador_de_elo.py" in l and not l.strip().startswith("#") for l in linhas):
+            diz(f"   ✗ {quem} ({arquivo}) decide sozinha se o elo trabalhou, sem o dono da "
+                f"pergunta")
+            ok = False
+
+    if ok:
+        diz("   ✓ as duas provas valem, só para o elo e a noite certos; o marcador sobe antes do "
+            "commit; guarda e vigia usam o mesmo dono")
+    return ok
+
+
+def ensaio_coleta_perdida_volta_para_dentro(diz) -> bool:
+    """12. O artefato da coleta perdida é reaplicado pelo elo seguinte.
+
+    Defeito (a), passo 1a. O laço de rebase-e-push guarda o trabalho num artefato quando o push
+    morre, e o comentário dele prometia que "o elo seguinte o reaplica
+    (`scripts/reaplicar_noite.py`)". O script existia desde 08/10 e **nada o chamava**: os cinco
+    artefatos da noite de 08→09 — 18 MB cada, um deles com horas de coleta de diários — ficaram no
+    GitHub esperando alguém, e expiram em catorze dias.
+
+    Reprova se nenhum elo chamar a reaplicação, se ela rodar DEPOIS da coleta (o que deixaria o
+    reaplicado fora do commit desta noite), se rodar sem escrever, ou se deixar de ser idempotente
+    pelo marcador `.reaplicado`.
+    """
+    import pathlib
+    import sys
+
+    raiz = pathlib.Path(__file__).resolve().parents[1]
+    sys.path.insert(0, str(raiz / "scripts"))
+    from reaplicar_noite import caminho_do_reaplicado, elo_e_run, porta_de
+
+    ok = True
+    coletor = (raiz / ".github/workflows/_coletor.yml").read_text(encoding="utf-8")
+    if "reaplicar_noite.py" not in coletor:
+        diz("   ✗ nenhum elo reaplica o que a noite perdeu: o artefato fica no GitHub até expirar")
+        ok = False
+    else:
+        if coletor.index("reaplicar_noite.py") > coletor.index("- name: Coletar"):
+            diz("   ✗ a reaplicação roda DEPOIS da coleta — o que voltou não entra no commit "
+                "desta noite")
+            ok = False
+        chamadas = [l for l in coletor.splitlines()
+                    if "reaplicar_noite.py" in l and "run:" in l]
+        if not chamadas:
+            diz("   ✗ a reaplicação aparece só em comentário: nenhum passo a executa")
+            ok = False
+        elif not any("--aplicar" in l for l in chamadas):
+            diz("   ✗ a reaplicação roda em modo relatório: ela não escreve nada")
+            ok = False
+
+    if elo_e_run("coleta-perdida-sinais-fisicos-37711285165") != ("sinais-fisicos", "37711285165"):
+        diz("   ✗ o nome do artefato deixou de ser lido: elo com hífen se partiu")
+        ok = False
+    if ".reaplicado" not in caminho_do_reaplicado("2026-10-09", "diarios"):
+        diz("   ✗ a reaplicação perdeu o marcador de idempotência — cada noite reaplicaria tudo "
+            "de novo")
+        ok = False
+    for rel, esperado in (("data/pistas_imprensa.json", "fila"),
+                          ("data/log_buscas/2026-10.jsonl", "jsonl"),
+                          ("data/noite/2026-10-09/diarios.feito", "feito")):
+        if porta_de(rel) != esperado:
+            diz(f"   ✗ `{rel}` deixou de entrar pela porta `{esperado}` (veio {porta_de(rel)!r})")
+            ok = False
+    if porta_de("index.html"):
+        diz("   ✗ arquivo que não é saída de coletor passou a ter porta de reaplicação")
+        ok = False
+
+    if ok:
+        diz("   ✓ o elo reaplica antes de coletar, com escrita, pela porta de cada arquivo e uma "
+            "vez só por artefato")
+    return ok
+
+
+def ensaio_despachante_nao_depende_do_cron(diz) -> bool:
+    """13. O despachante tem um observador que não passa pelo cron do GitHub.
+
+    Defeito (c). O cabeçalho do `despachante.yml` declara quatro observadores independentes, e o
+    segundo — "o relógio da nuvem do Claude, por `relogio.yml` (evento push, não cron)" — **não
+    existia na árvore**. Dos quatro, três dependiam do mesmo agendador: o cron do próprio
+    despachante, o oportunista (que só roda quando outro workflow AGENDADO roda) e o vigia (cron).
+    Quando o cron do GitHub atrasa, caem juntos — e a abertura da noite falhou três vezes em cinco
+    dias por isso.
+
+    Reprova se o relógio sem cron desaparecer, se passar a depender de `schedule`, se deixar de
+    reagir ao push do ramo `relogio`, se não chamar o despachante, ou se o despachante deixar de
+    aceitar disparo externo.
+    """
+    import pathlib
+
+    raiz = pathlib.Path(__file__).resolve().parents[1]
+    ok = True
+    relogio = raiz / ".github/workflows/relogio.yml"
+    if not relogio.exists():
+        diz("   ✗ `relogio.yml` não existe: o observador que não é cron é só uma promessa escrita "
+            "no cabeçalho do despachante")
+        return False
+    fonte = relogio.read_text(encoding="utf-8")
+    if "schedule:" in fonte:
+        diz("   ✗ o relógio sem cron passou a ter `schedule`: voltou para o mesmo agendador")
+        ok = False
+    if "branches: [relogio]" not in fonte.replace("'", "").replace('"', ""):
+        diz("   ✗ o relógio não reage mais ao push do ramo `relogio`")
+        ok = False
+    if "despachar_temporizadores.py" not in fonte:
+        diz("   ✗ o relógio não chama o despachante — tiquetaquear sozinho não dispara nada")
+        ok = False
+    despachante = (raiz / ".github/workflows/despachante.yml").read_text(encoding="utf-8")
+    if "workflow_dispatch" not in despachante:
+        diz("   ✗ o despachante não aceita disparo externo: nenhum observador o alcança")
+        ok = False
+    if ok:
+        diz("   ✓ há um observador por evento `push`, fora do agendador, e ele chama o "
+            "despachante")
+    return ok
+
+
 ENSAIOS = (
     ("dois elos em paralelo: zero conflito, zero perda", ensaio_dois_elos_em_paralelo),
     ("disparo duplicado: o segundo sai sem trabalho", ensaio_disparo_duplicado),
@@ -469,6 +638,11 @@ ENSAIOS = (
     ("9. portão vermelho não repõe o domínio", ensaio_portao_vermelho_nao_repoe_o_dominio),
     ("10. fila de runner não é falha: o vigia não atropela a corrente",
      ensaio_fila_de_runner_nao_e_falha),
+    ("11. o marcador do elo sobrevive ao push perdido", ensaio_marcador_sobrevive_ao_push),
+    ("12. a coleta perdida volta para dentro, pela porta de cada arquivo",
+     ensaio_coleta_perdida_volta_para_dentro),
+    ("13. o despachante tem observador fora do cron do GitHub",
+     ensaio_despachante_nao_depende_do_cron),
 )
 
 

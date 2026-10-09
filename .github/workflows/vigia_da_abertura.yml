@@ -94,7 +94,10 @@ jobs:
           EXECUCOES="$(gh run list --workflow=noturno_diarios.yml --branch main --limit 20 \
             --json databaseId,createdAt,status,conclusion \
             --jq "[.[] | select(.createdAt >= \"$JANELA\") | select((.status | test(\"queued|requested|waiting|pending|in_progress\")) or .conclusion == \"success\" or .conclusion == \"failure\")] | length")"
-          if [ "${EXECUCOES:-0}" -gt 0 ] && [ -f "data/noite/$NOITE/diarios.feito" ]; then
+          # 09/10/2026: a prova do trabalho tem dois caminhos, e o vigia usa o mesmo dono que a
+          # guarda — `scripts/marcador_de_elo.py`. So o arquivo na arvore deixava o push perdido
+          # apagar a coleta aos olhos de quem decide refazer.
+          if [ "${EXECUCOES:-0}" -gt 0 ]              && python3 scripts/marcador_de_elo.py --elo diarios --noite "$NOITE"; then
             TRABALHOU=1
           elif [ "${EXECUCOES:-0}" -gt 0 ] && gh run list --workflow=noturno_diarios.yml --branch main --limit 5 --json status --jq '.[].status' | grep -q in_progress; then
             TRABALHOU=1

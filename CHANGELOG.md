@@ -30,6 +30,8 @@ não pontuados permanecem na versão corrente.
 
 
 
+
+
 ## 2026-10-09 · #PR · classificação: termo de risco com fronteira, instrumento numa lista só
 
 Lote 2.3, as três correções de fato. Termo de risco casava dentro de outra palavra ("secagem de
@@ -37,6 +39,20 @@ grãos" virava seca, "fogo de artifício" virava fogo); "instrução normativa" 
 instrumento pela etapa 2 e recusada por `citacao_completa`, duas regras da mesma régua
 discordando; e a data do ato era a primeira data do texto, que num diário é a da edição — a regra
 da janela existia num caminho e não no outro. Onde: juiz.py, classificador_natureza.py.
+## 2026-10-09 · #PR · os dois portões da fila passam a ver o que não viam
+
+Lote 2.10. O portão de esquema cobria 1.064 das 13.406 pistas, e nada conferia a forma do que já
+está lá: 13.330 sem `url_final`, 3.354 sem alvo, 3.177 com data fora de formato. Forma passa a ser
+conferida em todas, bloqueando a nova e nomeando o passivo. O portão do escritor só via o literal
+na mesma linha; agora vê escrita por variável e em linha partida — achou 18, quatro em fila do
+juiz, registradas com o que falta.
+## 2026-10-09 · #PR · a coleta perdida volta, e o marcador sobrevive ao push
+
+Reaplicados os artefatos de `diarios` e `juiz` da noite de 08→09, pela porta de cada arquivo. Três
+consertos: o passo 1a guardava o trabalho num artefato que ninguém reaplicava, e agora todo elo o
+reaplica antes de coletar; o marcador `.feito` morria com o push perdido, e passa a subir como
+artefato, com um dono só; e o despachante ganhou observador por `push`, fora do cron. Casos 11, 12
+e 13 no ensaio.
 ## 2026-10-09 · #PR · a fila de pistas passa a ter porta para origem e domínio
 
 Lote 2.8. Medido pista por pista: 12.309 das 13.503 pistas ativas tinham origem fora do esquema,

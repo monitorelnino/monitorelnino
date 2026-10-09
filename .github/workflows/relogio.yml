@@ -1,0 +1,65 @@
+# relogio.yml — o relogio que NAO e o cron do GitHub
+# ==================================================
+# Defeito (c), medido em 09/10/2026. O `despachante.yml` declara no cabecalho que quatro
+# observadores independentes o chamam, e o segundo deles — "o relogio da nuvem do Claude, por
+# `relogio.yml` (evento push, nao cron)" — **nao existia na arvore**. Dos quatro, tres dependiam
+# do mesmo agendador: o cron do proprio despachante, o oportunista (que so roda quando outro
+# workflow AGENDADO roda) e o vigia (cron). Se o cron do GitHub atrasa ou falha, caem juntos — e
+# foi exatamente o que a editoria mandou impedir ao pedir "o despachante independente do cron".
+#
+# Este arquivo fecha isso. Uma rotina na nuvem empurra `tick.txt` no ramo `relogio` de hora em
+# hora; o evento `push` nao passa pelo agendador do GitHub, e e ele que dispara o despachante
+# aqui. O ramo `relogio` nao tem nada do site: so o tique.
+#
+# O que este workflow NAO faz: coletar, publicar, commitar ou tocar a `main`. Ele chama o
+# despachante, que decide o que esta DEVIDO — a decisao continua sendo de um lugar so.
+name: Relógio do MARÉ (sem cron)
+
+on:
+  push:
+    branches: [relogio]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write      # para disparar o despachante
+
+concurrency:
+  group: relogio
+  cancel-in-progress: false
+
+jobs:
+  tique:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with: { python-version: "3.12" }
+
+      # Chama o despachante com a origem declarada. `--origem relogio-claude` e o nome que o
+      # proprio despachante ja documenta, e ele aparece no painel dos temporizadores: quem olhar o
+      # historico sabe qual observador acordou o que.
+      - name: Despachar o que está devido
+        env:
+          GH_TOKEN: ${{ secrets.ROBO_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/despachar_temporizadores.py \
+            --origem relogio-claude | tee /tmp/despacho.txt
+
+      - name: Resumo
+        if: always()
+        run: |
+          {
+            echo "### Relógio (push no ramo \`relogio\`, sem cron)"
+            echo ""
+            echo '```'
+            cat /tmp/despacho.txt 2>/dev/null || echo "(sem saída)"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
