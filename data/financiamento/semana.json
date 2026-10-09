@@ -35,13 +35,13 @@
   },
   {
    "id": "atos_federais_semana",
-   "valor": 0,
+   "valor": null,
    "unidade": "atos",
-   "periodo": "últimos 7 dias",
+   "periodo": null,
    "fonte": "Atos federais lidos pelo MARÉ",
    "url_fonte": null,
-   "detalhe": null,
-   "sem_coleta": false
+   "detalhe": "a origem dos compromissos federais não traz data de publicação do ato; sem data não há janela de sete dias para medir",
+   "sem_coleta": true
   }
  ]
 }
