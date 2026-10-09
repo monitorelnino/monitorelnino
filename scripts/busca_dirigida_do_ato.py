@@ -119,10 +119,17 @@ def deve_revisitar(entrada: dict, hoje) -> bool:
 
 def registrar_busca(pista: dict, fontes_tentadas: list, hoje, achou_url=None) -> dict:
     """Escreve na pista o que foi tentado. Recusa que não diz onde procurou não é conferível."""
+    # 09/10/2026 (lote 2.5, A1-16 e A1-24): busca sem rota nenhuma não é busca. 3.534 de 3.939
+    # registros tinham `fontes: []` — e o contador que o prazo lê (`tentativas_de_busca_dirigida`)
+    # nunca era escrito, de modo que a regra "duas tentativas" estava morta. Agora só se registra o
+    # que foi tentado, e cada tentativa real conta.
+    if not fontes_tentadas:
+        return None
     registro = {"em": hoje.isoformat(), "fontes": list(fontes_tentadas),
                 "encontrou": achou_url or None}
     pista.setdefault("busca_dirigida", []).append(registro)
     pista["ultima_busca_em"] = hoje.isoformat()
+    pista["tentativas_de_busca_dirigida"] = int(pista.get("tentativas_de_busca_dirigida") or 0) + 1
     return registro
 
 
@@ -146,11 +153,28 @@ def parece_fonte_oficial(url, padroes=None) -> bool:
     return bool(u) and any(pad in u for pad in padroes)
 
 
+# 09/10/2026 (lote 2.5, A1-24): a home do portal não é o ato. Candidato precisa de caminho e de
+# sinal de documento — PDF, ou termo de ato/plano no endereço ou no título do resultado.
+RE_SINAL_DE_DOCUMENTO = re.compile(
+    r"\.pdf\b|plano|conting|decreto|portaria|resolu|lei[-_/ ]|diario|di%c3%a1rio|diário|edicao|edição",
+    re.I)
+
+
+def tem_sinal_de_documento(url, titulo="") -> bool:
+    from urllib.parse import urlsplit
+    caminho = urlsplit(str(url or "")).path.strip("/")
+    if not caminho:
+        return False
+    return bool(RE_SINAL_DE_DOCUMENTO.search(f"{url} {titulo or ''}"))
+
+
 def candidato_dos_resultados(resultados, padroes=None):
-    """A primeira URL de fonte provável oficial. Resultado de busca não é prova: é endereço."""
+    """A primeira URL de fonte provável oficial COM sinal de documento. Resultado de busca não é
+    prova: é endereço — e a raiz de um portal não é endereço de ato."""
     for r in resultados or []:
         url = r.get("url") if isinstance(r, dict) else r
-        if parece_fonte_oficial(url, padroes):
+        titulo = (r.get("titulo") or r.get("title") or "") if isinstance(r, dict) else ""
+        if parece_fonte_oficial(url, padroes) and tem_sinal_de_documento(url, titulo):
             return url
     return None
 
@@ -264,6 +288,22 @@ def autoteste() -> int:
                   == "https://bonito.ms.gov.br/b.pdf"))
     casos.append(("resultado sem nenhuma fonte oficial devolve None",
                   candidato_dos_resultados([{"url": "https://g1.globo.com/a"}], PAD) is None))
+    # 09/10/2026 (lote 2.5, A1-24)
+    casos.append(("a home do portal não é candidato",
+                  candidato_dos_resultados([{"url": "https://x.sp.gov.br/"}], PAD) is None))
+    casos.append(("página oficial sem sinal de documento não é candidato",
+                  candidato_dos_resultados([{"url": "https://x.sp.gov.br/noticias/festa"}], PAD) is None))
+    casos.append(("plano no endereço é candidato",
+                  candidato_dos_resultados([{"url": "https://x.sp.gov.br/defesa/plano-2026"}], PAD)
+                  == "https://x.sp.gov.br/defesa/plano-2026"))
+    sem_rota = {}
+    casos.append(("busca sem rota nenhuma não é registrada",
+                  registrar_busca(sem_rota, [], d(2026, 10, 9)) is None and "busca_dirigida" not in sem_rota))
+    conta = {}
+    registrar_busca(conta, ["sitio_oficial"], d(2026, 10, 8))
+    registrar_busca(conta, ["busca_web"], d(2026, 10, 9))
+    casos.append(("cada busca real conta no contador do prazo",
+                  conta.get("tentativas_de_busca_dirigida") == 2))
 
     ident = {"municipio": "Bonito", "uf": "MS", "ibge": "5002209", "tipo": "decreto",
              "numero": "1.482", "nome_do_plano": "Plano de Contingência"}
