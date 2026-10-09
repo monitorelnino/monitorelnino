@@ -599,10 +599,14 @@ MonitorMapas.credito('prazosFonte', {fontes: ['registro de marcos do Monitor (Le
 // Link direto para um estado (#SC): usado pelos selos embutidos em outros sites (31/08/2026).
 (function(){
   const h = (location.hash || '').replace('#', '').toUpperCase();
-  if (/^[A-Z]{2}$/.test(h) && MARE[h]) {
-    const tile = document.querySelector('#regions .tile[data-uf="' + h + '"]');
-    if (tile) selectUF(h, tile);
-  }
+  if (!/^[A-Z]{2}$/.test(h) || !MARE[h]) return;
+  const tile = document.querySelector('#regions .tile[data-uf="' + h + '"]');
+  if (!tile) return;
+  selectUF(h, tile);
+  /* 08/10/2026 (A4-04): este caminho -- o do selo embutido em outro site, que abre
+     index.html#SC -- nao chamava `animarGauges`, e a ficha abria com 0,0/100 e a barra vazia. O
+     clique chamava; o hash, nao. Chama agora, e o mesmo laco serve aos dois. */
+  animarGauges(document.getElementById('detail') || document.body);
 })();
 (document.getElementById('munCount')||{}).textContent = TABELA_MUNICIPIOS.length;
 
@@ -706,26 +710,10 @@ function miniGauge(valor, rotulo, variante){
   </div>`;
 }
 window.__miniGauge = miniGauge;   // barraResposta (escopo de módulo) reutiliza o mesmo medidor do detalhe do estado
+// 08/10/2026 (A4-01): a animação dos medidores mora em `assets/mapas.js`, que as duas páginas
+// carregam. Aqui fica só o atalho — duas cópias foi o que deixou o MARÉ Saúde em 0,0.
 function animarGauges(root){
-  const reduz = (typeof matchMedia === 'function') && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const temRAF = (typeof requestAnimationFrame === 'function');
-  root.querySelectorAll('.gauge-fill[data-alvo], .tile-fill[data-alvo]').forEach(f => {
-    const set = () => { f.style.width = f.dataset.alvo + '%'; };
-    (!temRAF || reduz) ? set() : requestAnimationFrame(() => requestAnimationFrame(set));
-  });
-  root.querySelectorAll('[data-contar]').forEach(el => {
-    const alvo = parseFloat(el.dataset.contar);
-    const fmt = (x) => x.toFixed(1).replace('.', ',');
-    if (!temRAF || reduz){ el.textContent = fmt(alvo); return; }
-    const dur = 1200, t0 = performance.now();
-    const passo = (t) => {
-      const k = Math.min(1, (t - t0) / dur);
-      const e = 1 - Math.pow(1 - k, 3);
-      el.textContent = fmt(alvo * e);
-      if (k < 1) requestAnimationFrame(passo);
-    };
-    requestAnimationFrame(passo);
-  });
+  if (window.MonitorMapas && MonitorMapas.animarGauges) MonitorMapas.animarGauges(root);
 }
 const STATUS_HUMANO = {NOVO:'plano estadual novo, específico para o El Niño', READ:'plano recorrente readaptado para o ciclo',
   VIG:'instrumento recorrente, sem menção nominal ao El Niño', ELAB:'plano estadual ainda em elaboração', LAC:'sem plano estadual nominal para o El Niño'};
@@ -768,6 +756,16 @@ const PLANO_ESTADUAL = ['coberto_estadual'];
 // `decreto` NÃO é plano: decreto de emergência é resposta, não preparação, e a metodologia nunca os
 // confundiu. `plano_elaboracao` é "ainda não", e `nao_el_nino` é ato de outro risco. Os três, mais
 // `nao_localizado` e `nao_verificado`, levam ao convite para enviar o documento.
+// 08/10/2026: vazio, travessao e "Recorrente" nao sao data (A4-13).
+function temData(v){
+  const s = String(v == null ? '' : v).trim();
+  return s !== '' && s !== '—' && s !== '-' && s !== 'Recorrente';
+}
+// Data COMPLETA, para a frase que diz "em {data}": "em 2026" nao e informacao de data, e o campo
+// as vezes guarda so o ano (A4-07, medido em Parari/PB).
+function dataCompleta(v){
+  return /^\d{2}\/\d{2}\/\d{4}$/.test(String(dataBR(v) || '').trim());
+}
 function statusDoPlano(categoria){
   if (PLANO_ENCONTRADO.includes(categoria)) return 'encontrado';
   if (PLANO_ESTADUAL.includes(categoria)) return 'estadual';
@@ -839,6 +837,22 @@ function renderMinha(){
     // "Não localizamos" só onde a busca DE FATO ocorreu e não achou. É o teto público de ausência
     // do projeto: nunca "não existe", e nunca sobre município que ninguém procurou.
     html += `<p class="fv"><strong>Não localizamos plano de contingência para este município até a data de corte.</strong></p>`;
+  } else if (m && m.categoria === 'decreto'){
+    /* 08/10/2026 (A4-07), texto aprovado na secao C do handover: 97 municipios com decreto de
+       emergencia recebiam a frase do NAO VERIFICADO -- e o cartao escondia a unica informacao de
+       resposta que existia sobre eles. Eles foram verificados; o que nao tem e plano. */
+    const atos = (typeof ATOS_RESPOSTA !== 'undefined' && ATOS_RESPOSTA && ATOS_RESPOSTA.eventos)
+      ? ATOS_RESPOSTA.eventos.filter(e => e.nome === m.nome && e.uf === m.uf) : [];
+    const dec = atos.find(e => String(e.causa || '').indexOf('reconhecimento') < 0) || {};
+    const rec = atos.find(e => String(e.causa || '').indexOf('reconhecimento') >= 0) || {};
+    const dData = dec.data_decreto_municipal || dec.data || m.data;
+    const dFonte = dec.fonte || m.fonte || 'fonte oficial';
+    const dRec = rec.data_reconhecimento || rec.data || '';
+    html += `<p class="fv"><strong>Não localizamos plano de contingência até o corte.</strong> O município decretou situação de emergência${dataCompleta(dData) ? ' em ' + esc(dataBR(dData)) : ''} (${esc(dFonte)})${dataCompleta(dRec) ? '; reconhecimento federal em ' + esc(dataBR(dRec)) : ''}.</p>`;
+  } else if (m && m.categoria === 'plano_elaboracao'){
+    html += `<p class="fv"><strong>Plano de contingência em elaboração</strong>, segundo ${esc(m.fonte || 'fonte oficial')}${temData(m.data) ? ' (' + esc(dataBR(m.data) || m.data) + ')' : ''}. O documento final não foi localizado até o corte.</p>`;
+  } else if (m && (m.categoria === 'estrutura' || m.categoria === 'nao_el_nino')){
+    html += `<p class="fv">Localizamos ${esc(m.documento || 'ato oficial')}${m.fonte ? ' (' + esc(m.fonte) + (temData(m.data) ? ', ' + esc(dataBR(m.data) || m.data) : '') + ')' : ''}. <strong>Não é plano de contingência para os riscos deste ciclo.</strong></p>`;
   } else {
     // §6 (v2.2.4), trava de prova: município que ainda não passou pela bateria completa de fontes
     // — inclusive o que sequer tem registro no banco, que é a maioria dos 5.571 — NÃO pode receber
