@@ -306,7 +306,7 @@ jobs:
           # descartava o binário, aqui o `git add` nunca o incluiu. O §275 consertou o
           # primeiro e não viu o segundo, porque o portão só reprova quando o índice chega
           # à `main` — e ele chegava junto, no mesmo commit.
-          git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt docs/FILA_PISTAS.md 2>/dev/null || true
+          git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Sem alterações."; echo "houve=0" >> "$GITHUB_OUTPUT"; exit 0
           fi
@@ -340,7 +340,7 @@ jobs:
               echo "tentativa $TENTATIVA: rebase conflitou; unindo pela base comum"
               if python3 scripts/unir_conflito_de_rodada.py; then
                 bash scripts/verificar_derivados.sh || true
-                git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt docs/FILA_PISTAS.md 2>/dev/null || true
+                git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt 2>/dev/null || true
                 if ! GIT_EDITOR=true git rebase --continue; then
                   git rebase --abort || true
                   echo "::warning::a união resolveu mas o rebase não seguiu; nova tentativa"
