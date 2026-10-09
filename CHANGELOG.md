@@ -27,6 +27,14 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-09 · #PR · os dois portões da fila passam a ver o que não viam
+
+Lote 2.10. O portão de esquema cobria 1.064 das 13.406 pistas, e nada conferia a forma do que já
+está lá: 13.330 sem `url_final`, 3.354 sem alvo, 3.177 com data fora de formato. Forma passa a ser
+conferida em todas, bloqueando a nova e nomeando o passivo. O portão do escritor só via o literal
+na mesma linha; agora vê escrita por variável e em linha partida — achou 18, quatro em fila do
+juiz, registradas com o que falta.
+
 ## 2026-10-08 · #PR · Lote 4.6: uma frase só sobre a conferência, a do processo real
 
 O formulário prometia "conferência da nossa equipe"; a página seguinte dizia que ela é automática e "semanal, normalmente no domingo", enquanto o rodapé diz que o site publica às 6h e às 22h — três cadências para o mesmo envio, e uma etapa humana que não existe. Os três lugares passam a dizer a frase aprovada. Saem "banco público" (regra de 03/10) e a frase do e-mail, que o formulário não pede.

@@ -30,6 +30,7 @@ from __future__ import annotations
 import datetime as dt
 import json
 import pathlib
+import re
 import statistics
 import sys
 
@@ -128,6 +129,51 @@ def problemas_de_esquema(pistas: list, esquema: dict, vale_a_partir_de=VALE_A_PA
             ruins.append(f"{ident}: url_final é redirecionamento, não o endereço do veículo")
         if p.get("tipo") == "decreto":
             ruins.append(f"{ident}: pista de decreto na fila de planos — vai para a base oficial")
+    return ruins
+
+
+RE_DATA_ISO = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+RE_DATA_BR = re.compile(r"^\d{2}/\d{2}/\d{4}$")
+
+
+def _e_nova(pista: dict, vale_a_partir_de=VALE_A_PARTIR_DE) -> bool:
+    """A pista entrou na fila depois de a regra valer? Lê as duas grafias de `registrado_em`.
+
+    09/10/2026: as pistas antigas gravam `registrado_em` em dd/mm/aaaa, e a comparação de texto
+    com AAAA-MM-DD acertava por acidente (toda data br é menor que "2026-"). Ler as duas grafias
+    torna o critério explícito — e mostrou que o portão cobria 1.064 das 13.406 pistas, não 4.
+    """
+    v = str(pista.get("registrado_em") or "").strip()
+    m = RE_DATA_BR.match(v)
+    iso = f"{m.group(0)[6:10]}-{m.group(0)[3:5]}-{m.group(0)[0:2]}" if m else v[:10]
+    return bool(iso) and iso >= vale_a_partir_de
+
+
+def problemas_de_forma(pistas: list) -> list:
+    """Defeitos de FORMA em qualquer pista, nova ou antiga. Função pura.
+
+    09/10/2026 (A7-08). O portão só olhava pista com `registrado_em` a partir de 04/10 — 1.064 das
+    13.406 da fila, medido. O corte existe por uma razão boa: EXIGIR campo novo de pista antiga
+    reprovaria quem a regra não alcança. Mas forma de campo que a pista JÁ TEM não é exigência
+    nova, e nada a conferia: 13.330 pistas sem `url_final` (as antigas guardam o endereço em
+    `url`), 3.354 com `alvo` vazio, 3.177 com `data` fora de AAAA-MM-DD.
+
+    Por isso dois regimes, e não um corte: forma se confere em todas, e o que reprova é a pista
+    NOVA (ali o bloqueio é devido); na antiga, o defeito é contado e nomeado por fila, como alerta
+    de saúde — visível, sem parar a noite por um passivo que já existia.
+    """
+    ruins = []
+    for p in pistas or []:
+        ident = str(p.get("id") or p.get("url_final") or p.get("url") or "?")[:12]
+        endereco = str(p.get("url_final") or p.get("url") or "")
+        if not endereco.startswith(("http://", "https://")):
+            ruins.append(f"{ident}: sem endereço http em url_final nem em url")
+        if not str(p.get("alvo") or "").strip():
+            ruins.append(f"{ident}: alvo vazio — a pista não diz de quem é")
+        for campo in ("data", "registrado_em"):
+            v = str(p.get(campo) or "").strip()
+            if v and not (RE_DATA_ISO.match(v) or RE_DATA_BR.match(v)):
+                ruins.append(f"{ident}: {campo} {v!r} não é AAAA-MM-DD nem dd/mm/aaaa")
     return ruins
 
 
@@ -304,6 +350,29 @@ def _autoteste() -> int:
         codigo = getattr(obj, "__code__", None)
         if codigo is not None:
             nomes |= {i.argval for i in dis.get_instructions(codigo) if isinstance(i.argval, str)}
+    # 09/10/2026 (A7-08): forma de pista, e o critério de pista nova nas duas grafias de data.
+    ok("endereço em `url` serve quando `url_final` não existe",
+       problemas_de_forma([{"id": "a", "url": "https://x/1", "alvo": "Taió/SC",
+                            "data": "2026-10-09"}]) == [])
+    ok("sem endereço http nenhum reprova",
+       any("endereço http" in m for m in problemas_de_forma([{"id": "b", "url": "None"}])))
+    ok("alvo vazio reprova",
+       any("alvo vazio" in m for m in problemas_de_forma(
+           [{"id": "c", "url": "https://x/1", "alvo": "  "}])))
+    ok("data ilegível reprova, e diz qual campo",
+       any("data 'ontem'" in m for m in problemas_de_forma(
+           [{"id": "d", "url": "https://x/1", "alvo": "Taió/SC", "data": "ontem"}])))
+    ok("as duas grafias de data passam",
+       problemas_de_forma([{"id": "e", "url": "https://x/1", "alvo": "T", "data": "09/10/2026",
+                            "registrado_em": "2026-10-09"}]) == [])
+    ok("pista registrada depois do corte é nova",
+       _e_nova({"registrado_em": "2026-10-09"}) is True
+       and _e_nova({"registrado_em": "09/10/2026"}) is True)
+    ok("pista registrada antes do corte não é nova",
+       _e_nova({"registrado_em": "02/09/2026"}) is False
+       and _e_nova({"registrado_em": "2026-09-02"}) is False)
+    ok("pista sem `registrado_em` não é nova (a regra não a alcança)",
+       _e_nova({}) is False)
     ok("trava estrutural: as funções puras do portão não escrevem",
        not ({"gravar", "gravar_em", "write_text", "write_bytes"} & nomes))
     ok("trava estrutural: quarentenar devolve lista nova, não altera a de entrada",
@@ -349,6 +418,18 @@ def main() -> int:
         elif ativas:
             bloqueios.append(f"{nome}: {len(ativas)} pista(s) nova(s) da fila ativa fora do "
                              f"esquema (--sem-quarentenar: nada foi movido)")
+
+        # 09/10/2026 (A7-08): FORMA em todas as pistas, nos dois regimes. Nova reprova; antiga
+        # conta e fica nomeada. A pista nova é a que `problemas_de_esquema` já alcança, e usar o
+        # mesmo critério nos dois lugares evita um terceiro corte de data vivendo por aqui.
+        forma_novas = problemas_de_forma([x for x in pistas if _e_nova(x)])
+        forma_antigas = problemas_de_forma([x for x in pistas if not _e_nova(x)])
+        if forma_novas and not so_conferir:
+            bloqueios.append(f"{nome}: {len(forma_novas)} pista(s) nova(s) com defeito de forma "
+                             f"(endereço, alvo ou data) — ex.: {forma_novas[0]}")
+        if forma_antigas:
+            alertas.append(f"{nome}: {len(forma_antigas)} defeito(s) de forma em pista anterior a "
+                           f"{VALE_A_PARTIR_DE} — não bloqueia, e a migração de esquema os fecha")
 
         declaradas = [x for x in problemas_de_esquema(pistas, esquema)
                       if x not in problemas_de_esquema(pistas, esquema, so_fila_ativa=True)]
