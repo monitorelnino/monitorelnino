@@ -41,6 +41,10 @@ O reconhecimento vindo da notícia do MIDR recebia a data da primeira portaria d
 
 A página Defesa civil não desenha contagem de alerta com mais de 24 horas sem coleta; o instantâneo que alimenta as duas superfícies seguia publicando o número, e a Imprensa o copiava — ela dizia 489 municípios com decreto e alerta ao mesmo tempo enquanto a origem dizia "sem atualização". A regra passa ao instantâneo. E o carimbo, escrito no fuso da redação, passa a ser comparado em UTC: antes a idade do dado dependia de onde o código rodava.
 
+## 2026-10-09 · #PR · O vigia deixa de atropelar a corrente que ele vigia
+
+Na noite de 08→09 a corrente abriu às 01:09; às 01:11 o vigia contou as execuções da janela, o run estava `queued` — sem runner —, o filtro só aceitava `in_progress`/`success`/`failure` e a conta deu zero. Ele disparou a corrente de novo e, com um grupo de concorrência só na `main`, o terceiro disparo cancelou o pendente: morreram `diarios / coletar` e `triagem / coletar`, antes do primeiro passo. Fila de runner passa a contar como noite aberta nos três decisores, e o vigia só age depois da tolerância. Ensaio 10.
+
 ## 2026-10-08 · #PR · Lote 1.2: o decreto do diário consorciado deixa de ir ao município errado
 
 A posição do decreto no PDF vinha de `texto.find(numero)` — a primeira ocorrência da string do

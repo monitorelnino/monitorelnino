@@ -166,7 +166,7 @@ Atualizado em 08/10/2026.
 | `scripts/migrar_sobras_do_doe.py` | — | `pistas_doe.json` | — | — | não |
 | `scripts/orcamento_da_noite.py` | — | `cursor_da_noite.json` | — | — | não |
 | `scripts/ordem_de_coleta.py` | — | `cursor_de_coleta.json` | — | — | não |
-| `scripts/painel_da_noite.py` | — | `painel_da_noite.json` | — | 1 | não |
+| `scripts/painel_da_noite.py` | — | `painel_da_noite.json` | — | 2 | não |
 | `scripts/pistas.py` | — | `pistas_imprensa.json`, `pistas_rejeitadas.json` | — | 12 | não |
 | `scripts/preservar_textos_integrais.py` | — | `evidencias.json` | — | — | não |
 | `scripts/quais_portoes.py` | — | `indice.json` | — | — | não |
