@@ -1267,7 +1267,9 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
 .grade-numeros--compacta .cartao-numero{padding:var(--sp-2) var(--sp-3);}
 .grade-numeros--compacta .cartao-numero-valor{font-size:var(--fs-h2); line-height:var(--lh-h2);}
 /* Barras em HTML: rótulo inteiro, valor na ponta, painel por órgão. */
-.figura-midia--barras, .figura-midia--texto{aspect-ratio:auto; overflow:visible;}
+.figura-midia--barras, .figura-midia--texto{overflow:visible;}
+/* Em uma coluna (até 1020 px) a mídia de texto ou de barras não reserva a proporção do mapa: sem par ao lado para alinhar, a reserva vira vão. */
+@media (max-width:1020px){ .cartao-mapa .figura-midia--barras, .cartao-mapa .figura-midia--texto{aspect-ratio:auto; height:auto;} }
 .barras-painel{margin:0 0 var(--sp-3);}
 .barras-titulo{font-weight:400; font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); margin:0 0 var(--sp-1);}
 .barra-linha{display:grid; grid-template-columns:minmax(0, 42%) minmax(0, 1fr); gap:var(--sp-2); align-items:center; margin:0 0 var(--sp-1);}
