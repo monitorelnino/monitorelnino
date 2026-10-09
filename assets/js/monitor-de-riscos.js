@@ -57,7 +57,7 @@ const fonteDe = id => (SINAIS.fontes || {})[id] || {};
 const coletada = id => fonteDe(id).status === 'coletado';
 
 /* Crédito de UMA linha ao pé do cartão (04/09/2026): "Fonte: nome · data" ou "· sem coleta até o corte". */
-function credito(caixaId, fonteId){
+function credito(caixaId, fonteId, apoioId){
   /* 29/09/2026: a linha passou a trazer o que a tabela removida trazia — órgão, o que o dado é e a
      situação —, porque a seção "Fontes dos sinais de risco" saiu e a fonte de uma figura pertence
      à figura. Situação só aparece quando NÃO é "coletado": dizer "coletado" em toda linha seria
@@ -68,6 +68,9 @@ function credito(caixaId, fonteId){
   const partes = [f.orgao, f.nome].filter(Boolean);
   const situacao = coletada(fonteId) ? null : (SITUACAO[f.status] || 'sem coleta até o corte');
   if (situacao) partes.push(situacao);
+  /* 09/10/2026 (ajuste 6): a medição da estação entra no texto do mouse e na tabela, não no mapa;
+     a fonte dela vai no mesmo crédito, como segunda parte — só quando há medição coletada para mostrar. */
+  if (apoioId && coletada(apoioId)) partes.push('medição: ' + (fonteDe(apoioId).orgao || fonteDe(apoioId).nome));
   MonitorMapas.credito(caixaId, {fontes: partes.join(' · '), url: f.url_publica,
                                  data: coletada(fonteId) ? f.consultado_em : null});
   const d = document.querySelector('#' + caixaId + ' .fonte-figura'); if (d) d.dataset.credito = fonteId;
@@ -97,8 +100,11 @@ function lacuna(alvoId, texto){
 
 
 /* ---------- desenho genérico de mapa coroplético por UF (motor único em assets/mapas.js) ---------- */
-const desenharMapa = (svgId, legendaId, corDe, rotuloDe, itensLegenda, familia) =>
-  MonitorMapas.desenharMapa(__ctx(), svgId, legendaId, corDe, rotuloDe, itensLegenda, familia);
+const ROTULOS_DOS_MAPAS = {};
+const desenharMapa = (svgId, legendaId, corDe, rotuloDe, itensLegenda, familia) => {
+  ROTULOS_DOS_MAPAS[svgId] = rotuloDe;
+  return MonitorMapas.desenharMapa(__ctx(), svgId, legendaId, corDe, rotuloDe, itensLegenda, familia);
+};
 // 30/09/2026 (item 8): a atmosfera de cada família. As rampas são as aprovadas pela editoria;
 // elas vivem em assets/mapas.js, e aqui só se escolhe qual família o mapa é.
 const ATM = MonitorMapas.PALETA.atmosfera;
@@ -115,10 +121,31 @@ function anelVazio(svgId, ufsSemDado, atm, classe){
     .attr('r', 6).attr('fill', 'none')
     .attr('stroke', atm.contorno).attr('stroke-width', 1.2)
     .attr('role', 'img')
-    .attr('aria-label', d => d.uf + ': capital sem dado na consulta')
-    .on('mouseenter', (evt, d) => MonitorMapas.showTip(d.uf + ': capital sem dado na consulta', evt))
+    .attr('aria-label', d => semDadoNaCapital(d.uf, atm).replace(/<[^>]+>/g, ' '))
+    .on('mouseenter', (evt, d) => MonitorMapas.showTip(semDadoNaCapital(d.uf, atm), evt))
     .on('mouseleave', MonitorMapas.hideTip);
   return g;
+}
+// ===== Texto do mouse (09/10/2026, ajuste 6): uma anatomia em todos os mapas — título, valor,
+// contexto, data e fonte —, pela função compartilhada `MonitorMapas.dica`. Nunca data ISO, ponto
+// decimal, caixa alta da fonte, coordenada, código interno ou campo cru.
+const nomeUF = uf => { const f = (BR_GEOJSON.features || []).find(x => x.properties.sigla === uf);
+  return f ? f.properties.name : uf; };
+const n1 = v => MonitorMapas.numBR(v, Number.isInteger(Number(v)) ? 0 : 1);
+const plural = (n, um, varios) => n1(n) + ' ' + (Number(n) === 1 ? um : varios);
+const dataCurta = v => { const m = /(\d{2})\/(\d{2})\/(\d{4})/.exec(String(v || '')) || null;
+  if (m) return m[1] + '/' + m[2] + '/' + m[3];
+  const i = /(\d{4})-(\d{2})-(\d{2})/.exec(String(v || ''));
+  return i ? i[3] + '/' + i[2] + '/' + i[1] : ''; };
+const diaMes = v => dataCurta(v).slice(0, 5);
+const fonteLinha = id => { const f = fonteDe(id); return [f.consultado_em ? 'consulta de ' + f.consultado_em : '', f.orgao || '']; };
+const capitalUF = (uf, nome) => (nome || nomeUF(uf)) + ' (' + uf + ')';
+function semDadoNaCapital(uf, atm){
+  const id = atm === ATM.ar ? 'open_meteo_ar' : 'inmet_previsao_capitais';
+  const f = fonteDe(id);
+  return MonitorMapas.dica({titulo: capitalUF(uf, (temp(uf) || {}).capital),
+    linhas: ['Sem dado de ' + (f.orgao || 'a fonte') + ' para a capital na consulta'
+             + (f.consultado_em ? ' de ' + f.consultado_em : '')]});
 }
 function __ctx(){ if (!window.__ctxCache) window.__ctxCache = MonitorMapas.contexto(BR_GEOJSON, 480, 460); return window.__ctxCache; }
 
@@ -162,11 +189,11 @@ desenharMapa('mapaRiscoPrevisto', 'legRiscoPrevisto',
     return cores.length >= 2
       ? MonitorMapas.hachura('mapaRiscoPrevisto', cores[0], cores[1])
       : (cores[0] || MonitorMapas.PALETA.zero); },
-  uf => { const r = riscoDe(uf); if (!r) return 'Sem sinal elevado para este estado no boletim';
+  uf => { const r = riscoDe(uf); const [d, o] = fonteLinha('painel_el_nino');
+    if (!r) return MonitorMapas.dica({semTitulo: true, linhas: ['Sem sinal elevado para este estado no boletim'], data: d, fonte: o});
     const c = componentesDe(uf);
     const nomes = c.map(x => RISCO_FAMILIA_ROTULO[x] || x).join(' e ');
-    return '<em>' + esc(nomes || 'Sem sinal elevado') + '</em>'
-      + (r.texto ? '<br>' + esc(r.texto) : ''); },
+    return MonitorMapas.dica({semTitulo: true, linhas: ['Risco previsto: ' + (nomes || 'sem sinal elevado').toLowerCase(), r.texto], data: d, fonte: o}); },
   [{cor: MonitorMapas.PALETA.familia.seca, rotulo:'Seca'},
    {cor: MonitorMapas.PALETA.familia.fogo, rotulo:'Fogo'},
    {cor: MonitorMapas.PALETA.familia.chuva, rotulo:'Chuva forte'},
@@ -194,10 +221,13 @@ credito('boxRiscoPrevisto', 'painel_el_nino');
    a altura do mais alto entre os seis, depois do desenho e a cada mudança de largura. Ninguém é
    cortado, e os seis começam o mapa na mesma linha em qualquer tela. */
 (function alinharCartoes(){
-  const BLOCOS = ['.cartao-mapa-boletim', '.figura-titulo', '.figura-sub'];
-  function alinhar(){
-    const cartoes = [...document.querySelectorAll('.grade-mapas > .cartao-mapa')];
-    if (cartoes.length < 2) return;
+  const BLOCOS = ['.figura-titulo', '.figura-sub'];
+  // 09/10/2026 (ajuste 5): o alinhamento é POR GRADE — previsto, observado e agora são faixas
+  // diferentes, e igualar as três reservava espaço de uma faixa na outra.
+  function alinhar(){ document.querySelectorAll('.grade-mapas').forEach(alinharGrade); }
+  function alinharGrade(grade){
+    const cartoes = [...grade.querySelectorAll(':scope > .cartao-mapa')];
+    if (cartoes.length < 2) { cartoes.forEach(c => BLOCOS.forEach(s => { const e = c.querySelector(s); if (e) e.style.minHeight = ''; })); return; }
     // Numa coluna só (celular) não há com que alinhar, e a reserva viraria espaço vazio.
     const umaColuna = cartoes.length > 1
       && Math.abs(cartoes[0].getBoundingClientRect().top - cartoes[1].getBoundingClientRect().top) > 4;
@@ -233,73 +263,46 @@ credito('boxRiscoPrevisto', 'painel_el_nino');
   // "1950" era parte fixa da frase, não do dado. Agora a legenda e a nota vivem no catálogo, e o
   // título com os anos é composto no bloco do Pacífico, que é quem tem a série em mão.
 
-  // R6 — o boletim que sustenta a previsão.
+  // 09/10/2026 (ajustes 5 e 6): o TÍTULO diz o que é e quando; o subtítulo diz o critério e a fonte.
   const pe = fonte('painel_el_nino');
-  põe('linhaRiscoPrevisto', 'O que os órgãos federais projetam para o ciclo, estado a estado.');
-  põe('riscoPrevistoSub', 'Risco previsto até março de 2027 · por estado'
+  põe('riscoPrevistoSub', 'Por estado'
     + (pe.documento ? ' · ' + pe.documento : '')
     + (pe.consultado_em ? ', ' + pe.consultado_em : ''));
 
-  // R7 — o mês do mapa de seca.
   const algumaSeca = Object.keys(SINAIS.uf).map(uf => (SINAIS.uf[uf].secas || {}).mapa).find(Boolean);
-  // O mês vem do dado com inicial maiúscula ('Agosto de 2026'); no meio da frase ele é minúscula.
-  const semCaixaAlta = t => String(t || '').charAt(0).toLowerCase() + String(t || '').slice(1);
-  if (algumaSeca) põe('secasSub', 'Mapa de ' + semCaixaAlta(algumaSeca)
-    + ' · categoria de seca em pelo menos metade da área do estado');
+  if (algumaSeca) põe('tituloSecas', 'Seca observada, ' + String(algumaSeca).toLowerCase());
+  põe('secasSub', 'Categoria de seca em pelo menos metade da área do estado · mapa mensal');
 
-  // R8 — a hora do corte e o total de focos.
   const totalFocos = Object.keys(SINAIS.uf)
     .reduce((soma, uf) => soma + (((SINAIS.uf[uf] || {}).fogo || {}).focos_24h || 0), 0);
   const fFogo = fonte('inpe_fogo');
-  if (totalFocos) põe('fogoSub', 'Últimas 24 horas, até ' + (fFogo.consultado_em || dia(SINAIS.gerado_em) || '')
+  if (totalFocos) põe('fogoSub', 'Até ' + (fFogo.consultado_em || dia(SINAIS.gerado_em) || '')
     + ' · ' + totalFocos.toLocaleString('pt-BR') + ' focos · cada ponto reúne os focos de uma área de cerca de 11 km');
 
-  // R9 — o dia da pior hora.
   const fAr = fonte('open_meteo_ar');
-  põe('arSub', 'Pior hora do dia ' + (fAr.consultado_em || dia(SINAIS.gerado_em) || '')
-    + ' · uma capital por estado · estimativa por modelo');
+  if (fAr.consultado_em) põe('tituloAr', 'Qualidade do ar nas capitais, ' + String(fAr.consultado_em).slice(0, 10));
+  põe('arSub', 'Hora de maior concentração do dia · uma capital por estado · estimativa por modelo');
 
-  // R10 — o dia da previsão.
   const fTemp = fonte('inmet_previsao_capitais');
-  põe('temperaturaSub', 'Previsão para ' + (fTemp.consultado_em || dia(SINAIS.gerado_em) || '')
-    + ' · máxima prevista e diferença para a média histórica do mês · °C · uma capital por estado');
+  const diaPrev = (SINAIS.uf.SP && SINAIS.uf.SP.temperatura && SINAIS.uf.SP.temperatura.data) || fTemp.consultado_em;
+  if (diaPrev) põe('tituloTemperatura', 'Temperatura máxima prevista nas capitais, ' + String(diaPrev).slice(0, 10));
+  põe('temperaturaSub', 'Cor: diferença para a média histórica do mês · número: máxima prevista · °C');
 
-  // R11 — a hora da consulta dos avisos.
   const fAvisos = fonte('inmet_avisos');
-  // O texto aprovado é "Avisos em vigor na consulta, {dd/mm hh:mm}" e fica inteiro; o segundo
-  // segmento existe porque o formato de subtítulo do site separa por "·", e ele acrescenta
-  // informação (a unidade do mapa) em vez de repetir a primeira parte.
-  põe('avisosSub', 'Avisos em vigor na consulta, ' + (fAvisos.consultado_em || dia(SINAIS.gerado_em) || '')
-    + ' · por estado');
+  if (fAvisos.consultado_em) põe('tituloAvisos', 'Avisos de tempo severo em vigor, ' + fAvisos.consultado_em);
+  põe('avisosSub', 'Maior grau de aviso do INMET em vigor · por estado');
 })();
 
-// ---- Linha de cada bloco de família (R7, R8, R10, R11): quantos estados e quais.
-// Gerada do boletim, nunca escrita à mão. Quando nenhum estado tem a família, a linha some em vez
-// de dizer "0 estados" — zero estados não é informação útil aqui, e a frase aprovada pressupõe a
-// lista.
-(function linhasDasFamilias(){
-  const ufsCom = fam => Object.keys(SINAIS.uf).sort()
-    .filter(uf => componentesDe(uf).some(c => (RISCO_FAMILIA_ROTULO[c] || '') === fam));
-  const escreve = (id, fam, frase) => {
-    const el = document.getElementById(id); if (!el) return;
-    const lista = ufsCom(fam);
-    // Sem estados naquela família, a linha fica VAZIA, não escondida: esconder encurta o cartão
-    // e desalinha a grade, que é o defeito que o componente único existe para corrigir.
-    if (!lista.length) { el.textContent = ''; return; }
-    el.textContent = frase.replace('{n}', lista.length).replace('{lista}', lista.join(', ')) + '.';
-  };
-  // 01/10/2026: a linha do boletim passou para DENTRO de cada cartão, e os ids acompanham o do
-  // cartão. O de qualidade do ar é da mesma família do fogo e repete a linha dela — é o boletim que
-  // fala da família, não do mapa. No cartão de risco previsto a linha é o próprio subtítulo da
-  // previsão, escrito em `subtitulos()`.
-  escreve('linhaSecas', 'Seca', 'O boletim prevê seca para {n} estados: {lista}');
-  escreve('linhaFogo', 'Fogo', 'O boletim prevê risco de fogo para {n} estados: {lista}');
-  escreve('linhaAr', 'Fogo', 'O boletim prevê risco de fogo para {n} estados: {lista}');
-  escreve('linhaTemperatura', 'Calor',
-          'O boletim prevê calor acima do normal para {n} estados: {lista}');
-  escreve('linhaAvisos', 'Chuva forte',
-          'O boletim prevê chuva acima do normal para {n} estados: {lista}');
-})();
+// ---- "Ver estados" (09/10/2026, ajuste 5): a lista que estava no texto visível do cartão vai
+// para a descrição acessível do mapa e para um "Ver estados" fechado. Ela é gerada do MESMO texto
+// do mouse de cada estado, sem as marcas: o leitor de tela e a lista dizem o que o mapa diz.
+function escreverEstados(alvoId, rotuloDe, filtro){
+  const el = document.getElementById(alvoId); if (!el) return;
+  const limpo = h => String(h || '').replace(/<span class="dica-fonte">.*?<\/span>/g, '')
+    .replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
+  const linhas = UFS.filter(uf => !filtro || filtro(uf)).map(uf => nomeUF(uf) + ': ' + limpo(rotuloDe(uf)));
+  el.innerHTML = linhas.map(l => '<li>' + esc(l) + '</li>').join('');
+}
 
 // ---- Mapa 2: seca observada ----
 // 15/09/2026: a fonte passou a ser o RPC de dados tabulares da ANA (fração cumulativa da área da UF em cada categoria
@@ -316,10 +319,15 @@ const secaCat = s => s ? (s.categoria_mediana || s.categoria) : null;
 const pct1 = v => String(Math.round(v * 10) / 10).replace('.', ',') + '%';
 desenharMapa('mapaSecas', 'legSecas',
   uf => { const s = seca(uf); const c = secaCat(s); return c ? (SECA_COR[c] || NEUTRA) : NEUTRA; },
-  uf => { const s = seca(uf); if (!s) return 'Aguardando a primeira coleta desta fonte';
-    const c = secaCat(s); const cob = s.cobertura_pct || {};
-    const dist = ['sem seca','S0','S1','S2','S3','S4'].filter(k => (cob[k] || 0) >= 0.05).map(k => esc(k) + ' ' + pct1(cob[k])).join(' · ');
-    return '<em>' + esc(SECA_ROTULO[c] || c) + '</em>' + (s.mapa ? '<br>mapa ' + esc(s.mapa) : '') + (dist ? '<br>área da UF: ' + dist : ''); },
+  uf => { const s = seca(uf); const [d, o] = fonteLinha('monitor_secas');
+    if (!s) return MonitorMapas.dica({semTitulo: true, linhas: ['Sem dado do Monitor de Secas para o estado na consulta'], data: d, fonte: o});
+    const cob = s.cobertura_pct || {};
+    const NOME = {'sem seca': 'sem seca', S0: 'seca fraca', S1: 'seca moderada', S2: 'seca grave', S3: 'seca extrema', S4: 'seca excepcional'};
+    const partes = ['S4','S3','S2','S1','S0','sem seca'].filter(k => (cob[k] || 0) >= 0.5)
+      .map(k => NOME[k] + ' em ' + n1(Math.round(cob[k])) + '% da área');
+    const linha = partes.length ? partes[0].charAt(0).toUpperCase() + partes[0].slice(1)
+      + (partes.length > 1 ? '; ' + partes.slice(1).join('; ') : '') : '';
+    return MonitorMapas.dica({semTitulo: true, linhas: [linha, s.mapa ? 'Mapa de ' + String(s.mapa).toLowerCase() : ''], data: d, fonte: o}); },
   // R7 (30/09/2026): a legenda aprovada é em português corrente — "Fraca" em vez de "S0". O código
   // do Monitor de Secas continua no texto do mouse, para quem for conferir na fonte.
   [{cor:SECA_COR['sem seca'], rotulo:'Sem seca'}, {cor:SECA_COR.S0, rotulo:'Fraca'},
@@ -376,16 +384,25 @@ const escalaTemp = d => {
   if (v == null) return ATM.calor.fundo;
   return ATM.calor.rampa[DEGRAUS_DESVIO.filter(l => v > l).length];
 };
-const rotuloTemp = uf => { const t = temp(uf); if (!t) return 'Aguardando a primeira coleta desta fonte';
+const medidaDe = uf => { const m = (SINAIS.uf[uf] || {}).temperatura_medida; return m && m.medida ? m : null; };
+const linhaMedida = uf => {
+  const m = (SINAIS.uf[uf] || {}).temperatura_medida;
+  if (!m) return '';
+  if (!m.medida || m.medida.tmax == null) return 'Sem medição da estação do INMET' + (m.consultado_em ? ' em ' + diaMes(m.consultado_em) : '');
+  return 'Medido em ' + diaMes(m.medida.data) + ' na estação do INMET a ' + n1(m.distancia_km) + ' km do centro: máxima '
+    + n1(m.medida.tmax) + ' °C' + (m.medida.tmin != null ? ', mínima ' + n1(m.medida.tmin) + ' °C' : '');
+};
+const rotuloTemp = uf => { const t = temp(uf); const [d, o] = fonteLinha('inmet_previsao_capitais');
+  if (!t) return semDadoNaCapital(uf, ATM.calor);
   const dv = desvioDe(uf), nm = normalDe(uf);
-  const linhaDesvio = dv == null
-    ? '<br>Sem normal publicada para esta capital: o desvio não é calculado'
-    : '<br>' + (dv >= 0 ? '+' : '') + String(dv).replace('.', ',') + ' °C em relação à média de '
-      + String(nm).replace('.', ',') + ' °C do mês (normal 1991–2020, Inmet)';
-  return esc(t.capital || uf) + '<br>M\u00e1xima prevista: ' + (t.tmax != null ? t.tmax + ' \u00b0C' : 'sem valor')
-    + linhaDesvio
-    + (t.tmin != null ? '<br>M\u00ednima prevista: ' + t.tmin + ' \u00b0C' : '')
-    + (t.resumo ? '<br>' + esc(t.resumo) : '') + '<br>' + esc(t.data || '') + ' \u00b7 ' + esc(t.natureza || ''); };
+  const maxima = t.tmax != null
+    ? 'Máxima prevista para ' + diaMes(t.data) + ': ' + n1(t.tmax) + ' °C'
+      + (dv == null ? '; sem normal publicada para esta capital'
+         : ', ' + (dv >= 0 ? '+' : '−') + n1(Math.abs(dv)) + ' °C ' + (dv >= 0 ? 'acima' : 'abaixo')
+           + ' da normal do mês (normal 1991–2020: ' + n1(nm) + ' °C)')
+    : 'Sem máxima prevista';
+  return MonitorMapas.dica({titulo: capitalUF(uf, t.capital), linhas: [maxima,
+    t.tmin != null ? 'Mínima prevista: ' + n1(t.tmin) + ' °C' : '', linhaMedida(uf)], data: d, fonte: o}); };
 // o mapa base fica NEUTRO: ele é só o contorno onde os pontos se apoiam
 desenharMapa('mapaTemperatura', 'legTemperatura', () => ATM.calor.uf, rotuloTemp,
   // Nenhum degrau sem rótulo: informação que existe só por cor não existe para quem não a
@@ -411,14 +428,16 @@ MonitorMapas.pontos(__ctx(), 'mapaTemperatura',
 // aquela capital não tem desvio.
 anelVazio('mapaTemperatura', UFS.filter(uf => coordCapital[uf] && desvioDe(uf) == null), ATM.calor,
           'anelTemp');
-credito('boxTemperatura', 'inmet_previsao_capitais');
+credito('boxTemperatura', 'inmet_previsao_capitais', 'inmet_estacoes');
 // A visão MUNICIPAL da temperatura continua vindo do Open-Meteo (clima_municipios.json): o INMET
 // publica previsão por capital, não pelos 5.571 municípios. São duas fontes para duas granularidades,
 // e cada uma é creditada onde aparece.
 if (document.getElementById('boxTemperaturaMun')) credito('boxTemperaturaMun', 'open_meteo_tempo');
 preencherTabela('tblTemperatura', uf => { const t = temp(uf); if (!t) return null;
-  return [t.capital || '', t.tmax != null ? t.tmax + ' \u00b0C' : 'sem valor',
-          t.tmin != null ? t.tmin + ' \u00b0C' : 'sem valor', t.resumo || 'sem resumo']; });
+  const m = medidaDe(uf);
+  return [t.capital || '', t.tmax != null ? n1(t.tmax) + ' \u00b0C' : 'sem valor',
+          t.tmin != null ? n1(t.tmin) + ' \u00b0C' : 'sem valor',
+          m && m.medida.tmax != null ? n1(m.medida.tmax) + ' \u00b0C' : 'sem medição']; });
 
 // ---- Mapa 4: índice de qualidade do ar nas capitais (27/09/2026) ----
 /* Decisão da editoria: a página mostra ÍNDICE, não PM2,5 — é o que interessa a quem lê. O índice
@@ -435,11 +454,21 @@ const iqaMax = iqaVals.length ? Math.max(...iqaVals) : 1;
 // fechado — cinco faixas, não um contínuo —, então a escala é por degrau, e não interpolada.
 const FAIXAS_EAQI = [20, 40, 60, 80];
 const escalaAr = v => ATM.ar.rampa[FAIXAS_EAQI.filter(l => v > l).length];
-const rotuloAr = uf => { const a = ar(uf); if (!a) return 'Aguardando a primeira coleta desta fonte';
-  const i = a.indice; if (!i) return esc(nomeCapital(a, uf)) + '<br>\u00cdndice sem publica\u00e7\u00e3o nesta rodada';
-  return esc(nomeCapital(a, uf)) + '<br>\u00cdndice ' + esc(i.escala) + ': ' + i.valor
-    + '<br>' + esc(i.criterio) + ' (' + esc(String(i.hora).replace('T', ' \u00e0s ')) + ')'
-    + '<br>publicado por ' + esc(i.publicado_por); };
+const FAIXA_EAQI_NOME = ['boa', 'razoável', 'moderada', 'ruim', 'muito ruim'];
+const rotuloAr = uf => { const a = ar(uf); const [d, o] = fonteLinha('open_meteo_ar');
+  if (!a) return semDadoNaCapital(uf, ATM.ar);
+  const i = a.indice;
+  if (!i) return MonitorMapas.dica({titulo: capitalUF(uf, nomeCapital(a, uf)), linhas: ['Índice sem publicação nesta consulta'], data: d, fonte: o});
+  const h = /(\d{4})-(\d{2})-(\d{2})T(\d{2})/.exec(String(i.hora || ''));
+  return MonitorMapas.dica({titulo: capitalUF(uf, nomeCapital(a, uf)), linhas: [
+    'Índice europeu de qualidade do ar: ' + n1(i.valor) + ' (' + FAIXA_EAQI_NOME[FAIXAS_EAQI.filter(l => i.valor > l).length] + ')',
+    h ? 'Hora de maior concentração: ' + Number(h[4]) + 'h de ' + h[3] + '/' + h[2] : '',
+    medicaoAr(uf)], data: d, fonte: o}); };
+/* Ajuste 6b: quando o OpenAQ tiver ponto, a medição entra no texto da capital — nunca segundo marcador. */
+function medicaoAr(uf){ const m = (SINAIS.uf[uf] || {}).ar_medido; if (!m || !m.medida) return '';
+  const v = m.medida.pm25 != null ? m.medida.pm25 : m.medida.valor; if (v == null) return '';
+  const dm = /(\d{4})-(\d{2})-(\d{2})/.exec(String(m.medida.data || m.data || ''));
+  return 'Medido' + (dm ? ' em ' + dm[3] + '/' + dm[2] : '') + ' na estação' + (m.distancia_km != null ? ' a ' + n1(m.distancia_km) + ' km do centro' : '') + ': PM2,5 ' + n1(v) + ' µg/m³'; }
 desenharMapa('mapaAr', 'legAr', () => ATM.ar.uf, rotuloAr,
   [{cor: ATM.ar.rampa[0], rotulo: 'Boa'}, {cor: ATM.ar.rampa[1], rotulo: 'Razo\u00e1vel'},
    {cor: ATM.ar.rampa[2], rotulo: 'Moderada'}, {cor: ATM.ar.rampa[3], rotulo: 'Ruim'},
@@ -451,7 +480,7 @@ MonitorMapas.pontos(__ctx(), 'mapaAr',
   {r: () => 6, cor: d => escalaAr(d.v), rotulo: d => rotuloAr(d.uf), classe: 'pontosAr'});
 anelVazio('mapaAr', UFS.filter(uf => coordCapital[uf] && typeof iqa(uf) !== 'number'), ATM.ar,
           'anelAr');
-credito('boxAr', 'open_meteo_ar');
+credito('boxAr', 'open_meteo_ar', 'openaq');
 
 
 /* CAMADA MUNICIPAL (§209) — os mesmos dois fenômenos, nos 5.570 municípios.
@@ -551,36 +580,9 @@ credito('boxAr', 'open_meteo_ar');
    estações do INMET passou a exigir token). Enquanto a credencial não existir, a figura DIZ isso
    na legenda, e nenhum ponto é desenhado: modelo e medição nunca compartilham a escala de cor, e
    ausência de medição não é medição igual ao modelo. */
-(function camadaDeMedicao(){
-  const casos = [
-    {fonte: 'inmet_estacoes', legenda: 'legTemperatura', campo: 'temperatura_medida', svg: 'mapaTemperatura'},
-    {fonte: 'openaq', legenda: 'legAr', campo: 'ar_medido', svg: 'mapaAr'},
-  ];
-  casos.forEach(function(caso){
-    const f = fonteDe(caso.fonte);
-    const pontos = UFS.map(uf => [uf, (SINAIS.uf[uf] || {})[caso.campo]]).filter(par => par[1]);
-    const leg = document.getElementById(caso.legenda);
-    if (!leg) return;
-    // 01/10/2026: sem pontos de medição, a legenda NÃO ganha linha. O estado da coleta não é
-    // categoria do mapa, e a legenda diz apenas o que o mapa é. A ausência continua declarada no
-    // crédito da figura, que é onde a procedência mora.
-    if (!pontos.length) return;
-    const svg = d3.select('#' + caso.svg);
-    svg.append('g').selectAll('circle').data(pontos).join('circle')
-      .attr('cx', par => projection([par[1].coordenada.lon, par[1].coordenada.lat])[0])
-      .attr('cy', par => projection([par[1].coordenada.lon, par[1].coordenada.lat])[1])
-      .attr('r', 3.4).attr('fill', MonitorMapas.cor('branco'))
-      .attr('stroke', MonitorMapas.cor('abissal')).attr('stroke-width', 1.4)
-      .on('mouseenter', (evt, par) => showTip(
-        '<strong>' + esc(par[0]) + '</strong><br>' + esc(par[1].nome || '')
-        + '<br>' + esc(par[1].natureza) + ' · ' + esc(par[1].distancia_km) + ' km da capital'
-        + (par[1].rede_de_origem ? '<br>rede: ' + esc(par[1].rede_de_origem) : ''), evt))
-      .on('mousemove', (evt) => showTip(document.getElementById('mapTooltip').innerHTML, evt))
-      .on('mouseleave', hideTip);
-    // A contagem de pontos saiu da legenda pela mesma razão: ela é sobre a camada, não uma
-    // categoria do mapa. Cada ponto continua se explicando no texto do mouse.
-  });
-})();
+/* 09/10/2026 (ajuste 6b): a CAMADA DE MEDIÇÃO saiu do mapa. Ela punha um segundo marcador ao lado
+   de cada capital, que dizia a distância da estação e nenhuma medida. A medição entra no texto do
+   mouse da capital e na lista; ela nunca muda a cor (modelo e medição não compartilham escala). */
 
 /* Linha-fato dos alertas: a contagem fica aqui, os alertas moram na Defesa civil. Só reescreve
    quando o arquivo carregou — sem ele, o texto estático do HTML permanece, sem número inventado. */
@@ -618,9 +620,10 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
      capital desta página. Sem ele os focos flutuavam sem país, e foi o portão de runtime que pegou:
      ele exige os 27 estados desenhados, e estava certo em exigir. */
   desenharMapa('mapaFogo', 'legFogo', () => ATM.fogo.uf,
-    uf => { const f = fogo(uf); const n = f ? f.focos_24h : null;
-            return n == null ? 'Aguardando a primeira coleta desta fonte'
-                             : n.toLocaleString('pt-BR') + ' foco(s) nas últimas 24 h'; },
+    uf => { const f = fogo(uf); const n = f ? f.focos_24h : null; const [d, o] = fonteLinha('inpe_fogo');
+            return MonitorMapas.dica({semTitulo: true, linhas: [n == null
+              ? 'Sem dado do INPE para o estado na consulta'
+              : plural(n, 'foco', 'focos') + ' nas últimas 24 horas'], data: d, fonte: o}); },
     [], 'fogo');
   const itens = base.map(p => ({lat: p[0], lon: p[1], n: p[2]}));
   const maxCel = Math.max(...itens.map(p => p.n));
@@ -641,7 +644,8 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
     cor: d => d.n >= NUCLEO_A_PARTIR_DE ? ATM.fogo.nucleo : brasa(d.n),
     opacidade: .78,
     classe: 'focos',
-    rotulo: d => d.n + ' foco(s) nesta célula de ~11 km · ' + d.lat.toFixed(1) + '°, ' + d.lon.toFixed(1) + '°',
+    rotulo: d => MonitorMapas.dica({linhas: [plural(d.n, 'foco', 'focos') + ' num raio de cerca de 5 km'],
+                                    data: fonteLinha('inpe_fogo')[0], fonte: 'INPE'}),
   });
   d3.select('#mapaFogo').select('g.focos').attr('style', 'mix-blend-mode: screen');
   d3.select('#mapaFogo').selectAll('g.focos circle').attr('stroke', 'none');
@@ -724,10 +728,10 @@ credito('boxFogo', 'inpe_fogo');
   // que o INMET não emite.
   // 30/09/2026 (item 8): a rampa aprovada dos avisos, em ardósia. Os três graus do INMET mais o
   // "sem aviso", que também é informação e por isso tem tom próprio em vez de ficar sem cor.
-  const COR_GRAU = {'Perigo Potencial': ATM.chuva.rampa[1],
-                    'Perigo': ATM.chuva.rampa[2],
-                    'Grande Perigo': ATM.chuva.rampa[3]};
-  const SEM_AVISO = ATM.chuva.rampa[0];
+  const COR_GRAU = {'Perigo Potencial': ATM.avisos.rampa[1],
+                    'Perigo': ATM.avisos.rampa[2],
+                    'Grande Perigo': ATM.avisos.rampa[3]};
+  const SEM_AVISO = ATM.avisos.rampa[0];
   const ordena = o => Object.entries(o).sort((a, b) => b[1] - a[1]);
   const legenda = [{cor: SEM_AVISO, rotulo: 'Sem aviso'},
                    {cor: COR_GRAU['Perigo Potencial'], rotulo: 'Perigo potencial'},
@@ -740,9 +744,12 @@ credito('boxFogo', 'inpe_fogo');
   desenharMapa('mapaAvisos', 'legAvisos',
     uf => COR_GRAU[maiorGrau(uf)] || SEM_AVISO,
     uf => { const a = avisos(uf) || {}; const n = Number(a.total || 0); const g = maiorGrau(uf);
-            return n ? '<em>' + esc(g || 'Aviso em vigor') + '</em><br>' + n + ' aviso(s) em vigor'
-                     : 'Nenhum aviso em vigor nesta consulta'; },
-    legenda, 'chuva');
+            const [d, o] = fonteLinha('inmet_avisos');
+            return MonitorMapas.dica({semTitulo: true, linhas: n
+              ? ['Maior grau em vigor: ' + String(g || 'aviso').toLowerCase(), plural(n, 'aviso em vigor', 'avisos em vigor')
+                 + ((a.exemplos || []).length ? ': ' + a.exemplos.join(', ').toLowerCase() : '')]
+              : ['Nenhum aviso em vigor na consulta'], data: d, fonte: o}); },
+    legenda, 'avisos');
   if (corpo) {
     const linhas = UFS.map(uf => ({uf, a: avisos(uf) || {}}))
       .filter(x => Number(x.a.total || 0) > 0)
@@ -878,26 +885,10 @@ function põeCat(elId, id, valores, reserva){
     põeCat('stRoniFonte', I + 'roni.molde_fonte', {orgao: f.orgao, data: f.consultado_em});
   }
 
-  // 3 — a previsão da NOAA/CPC, traduzida fielmente da sinopse. O número vem do campo próprio; a
-  // frase longa só entra quando a sinopse é a que ela descreve. Mudando a estrutura da sinopse,
-  // fica o número e a atribuição, que é o que o dado sustenta em qualquer caso.
-  const pg = SINAIS.enos.prognostico;
-  if (pg && pg.probabilidade != null) {
-    const sinopse = String(pg.sinopse || '').toLowerCase();
-    const reconhecida = /very strong/.test(sinopse) && /fall and winter/.test(sinopse);
-    const f = fonte('cpc_ensodisc');
-    põeCat('stPrevisaoValor', I + 'previsao.molde_valor',
-      {limiar: pg.limiar === 'acima de' ? 'mais de' : '', probabilidade: pg.probabilidade});
-    põeCat('stPrevisaoVariacao',
-      I + (reconhecida ? 'previsao.molde_variacao' : 'previsao.molde_variacao_curta'), {});
-    põeCat('stPrevisaoFonte',
-      I + (pg.proxima_em ? 'previsao.molde_fonte' : 'previsao.molde_fonte_sem_proxima'),
-      {orgao: f.orgao, emitido: pg.emitido_em, proxima: pg.proxima_em});
-  }
-
-  // 4 — a duração: o último trimestre publicado com 90% ou mais, e o último da série. O rótulo de
-  // trimestre do IRI vem com o ano ("MAM 2027") ou sem ele; sem ano não há como datar a frase, e
-  // trimestre que não se consegue datar não vira número na tela.
+  // 3 — a probabilidade do IRI/CPC (09/10/2026, ajuste 3: o valor cabe numa linha — "99%" — e o
+  // trimestre vai para o rótulo). O último trimestre publicado com 90% ou mais é o marco; o último
+  // da série entra na linha de baixo. O rótulo de trimestre do IRI vem com o ano ("MAM 2027") ou
+  // sem ele; sem ano não há como datar, e trimestre que não se data não vira número na tela.
   const trims = ((SINAIS.enos.probabilidades || {}).trimestres || [])
     .map(t => {
       const m = /^([A-Z]{3})\s*(\d{4})$/.exec(String(t.trimestre || '').trim().toUpperCase());
@@ -909,15 +900,31 @@ function põeCat(elId, id, valores, reserva){
     const marco = altos.length ? altos[altos.length - 1] : trims[0];
     const fim = trims[trims.length - 1];
     const f = fonte('iri_plume');
-    põeCat('stDuracaoValor', I + 'duracao.molde_valor',
-      {probabilidade: Math.round(marco.el_nino), trimestre: marco.periodo});
+    põeCat('stDuracaoRotulo', I + 'duracao.molde_rotulo', {trimestre: marco.periodo});
+    põeCat('stDuracaoValor', I + 'duracao.molde_valor_curto', {probabilidade: Math.round(marco.el_nino)});
     if (fim !== marco) põeCat('stDuracaoVariacao', I + 'duracao.molde_variacao',
       {probabilidade_final: Math.round(fim.el_nino), trimestre_final: fim.periodo});
     põeCat('stDuracaoFonte', I + 'duracao.molde_fonte', {orgao: f.orgao, data: f.consultado_em});
   }
 
-  // 5 — o Brasil: a contagem dos componentes do risco projetado, estado a estado. Um estado com
-  // mais de um risco conta em CADA um deles, como o resto do site já conta.
+  // 4 — a previsão da NOAA/CPC entra no MESMO cartão, como linha de apoio com fonte própria
+  // (ajuste 3: saiu o cartão próprio). O número vem do campo; a frase longa só entra quando a
+  // sinopse é a que ela descreve. Sem "Hemisfério Norte": o período em meses diz o mesmo fato.
+  // A data da próxima discussão SAIU: uma data já passada aparecia como futura (09/10, "a próxima
+  // sai em 08/10/2026"), e a página não tem como saber se a seguinte já saiu.
+  const pg = SINAIS.enos.prognostico;
+  if (pg && pg.probabilidade != null) {
+    const sinopse = String(pg.sinopse || '').toLowerCase();
+    const reconhecida = /very strong/.test(sinopse) && /fall and winter/.test(sinopse);
+    const f = fonte('cpc_ensodisc');
+    põeCat('stPrevisaoVariacao',
+      I + (reconhecida ? 'previsao.molde_apoio' : 'previsao.molde_apoio_curto'),
+      {limiar: pg.limiar === 'acima de' ? 'acima de' : 'de', probabilidade: pg.probabilidade,
+       orgao: f.orgao || 'NOAA/CPC', emitido: pg.emitido_em});
+  }
+
+  // 5 — o Brasil: os TRÊS riscos com a mesma hierarquia (ajuste 3). Um estado com mais de um risco
+  // conta em CADA um deles, como o resto do site já conta. Ordem alfabética: chuva, fogo, seca.
   (function brasil(){
     const conta = {estiagem: 0, chuvas: 0, incendios: 0};
     UFS.forEach(uf => {
@@ -927,17 +934,14 @@ function põeCat(elId, id, valores, reserva){
     });
     const f = fonte('painel_el_nino');
     // O número do boletim sai do documento declarado pela fonte ("Boletins nº 1 e 3 …"): o mais
-    // alto é o que sustenta a previsão em vigor. Sem número no documento, o rótulo fica o do HTML.
-    // Só os números que vêm DEPOIS do "nº": "Boletins nº 1 e 3 do Painel El Niño 2026-2027" tem
-    // quatro números, e dois deles são o ciclo. Varrer o documento inteiro publicava "boletim
-    // nº 2.027" — e número errado no rótulo é pior do que rótulo sem número.
+    // alto é o que sustenta a previsão em vigor. Só os números que vêm DEPOIS do "nº".
     const trecho = /n[ºo°]\s*([\d\s,eo]+)/i.exec(String(f.documento || ''));
     const ns = trecho ? (trecho[1].match(/\d+/g) || []) : [];
     if (ns.length) põeCat('stBrasilRotulo', I + 'brasil.molde_rotulo',
       {boletim: String(Math.max.apply(null, ns.map(Number)))});
-    põeCat('stBrasilValor', I + 'brasil.molde_valor', {seca: conta.estiagem});
-    põeCat('stBrasilVariacao', I + 'brasil.molde_variacao',
-      {chuva: conta.chuvas, fogo: conta.incendios});
+    põeCat('stBrasilChuva', I + 'brasil.molde_numero', {n: conta.chuvas});
+    põeCat('stBrasilFogo', I + 'brasil.molde_numero', {n: conta.incendios});
+    põeCat('stBrasilSeca', I + 'brasil.molde_numero', {n: conta.estiagem});
     const pe = document.getElementById('stBrasilFonte');
     const base = txtCat(I + 'brasil.molde_fonte', {orgao: f.orgao, data: f.consultado_em}, null);
     const ponte = txtCat(I + 'brasil.ponte', null, null);
@@ -1147,6 +1151,19 @@ if (PACIFICO.serie.length) {
   const linhas = [];
   if (PACIFICO.emCurso) linhas.push({ano: PACIFICO.emCurso.ano, rotulo: PACIFICO.emCurso.rotulo, classe: 'l-agora', agora: true});
   PACIFICO.episodios.forEach(e => linhas.push({ano: e.ano, rotulo: e.rotulo, classe: 'l-contexto', agora: false}));
+  // 09/10/2026 (ajuste 4, editoria): cada episódio com o seu pico na janela desenhada. Rótulo
+  // direto só nos de pico de +1,5 °C ou mais — o critério de "forte" da NOAA/CPC, regra fixa e
+  // declarada na nota da figura, não escolha nossa. Na coluna estreita (celular), só os três
+  // maiores picos; os demais se nomeiam ao passar o mouse, ao tocar, pelo teclado e na lista.
+  const PICO_ROTULADO = 1.5;
+  linhas.forEach(l => {
+    const pts = PAC.janela(serie, l.ano);
+    l.pico = pts.length ? pts.reduce((a, b) => b.p.anomalia > a.p.anomalia ? b : a, pts[0]) : null;
+  });
+  const fortes = linhas.filter(l => !l.agora && l.pico && l.pico.p.anomalia >= PICO_ROTULADO);
+  const tresMaiores = fortes.slice().sort((a, b) => b.pico.p.anomalia - a.pico.p.anomalia).slice(0, 3);
+  const descreveEpisodio = l => l.rotulo + ' · pico ' + PAC.num(l.pico.p.anomalia) + ' °C em '
+    + PAC.periodoCurto(l.pico.p);
   const episodiosRotulos = PACIFICO.episodios.map(e => e.rotulo);
   // O TÍTULO NÃO LISTA OS EPISÓDIOS, e a lista vai para a nota. O handover pediu a lista no
   // título; a regra de componente vence, e por duas razões que o próprio dado impõe. A primeira é
@@ -1182,34 +1199,78 @@ if (PACIFICO.serie.length) {
         'text-anchor': 'middle'}, txtCat(IP + 'episodios.eixo_ano_inicio', null, '')));
       g.appendChild(svgEl('text', {x: xs(14.5).toFixed(1), y: T + ph + 34, class: 'tk2',
         'text-anchor': 'middle'}, txtCat(IP + 'episodios.eixo_ano_seguinte', null, '')));
+      // Rótulo da linha vertical: o mês que ela marca. Ele entra na lista de ocupados antes dos
+      // rótulos dos episódios, para que nenhum caia em cima dele.
+      const txtDiv = txtCat(IP + 'episodios.rotulo_divisoria', null, 'janeiro do ano seguinte');
+      // Na coluna estreita o rótulo não cabe à direita da linha: vai para a esquerda dela.
+      g.appendChild(svgEl('text', {x: (xs(11.5) + (estreito ? -4 : 4)).toFixed(1), y: (T + 10).toFixed(1),
+        class: 'tk2', 'text-anchor': estreito ? 'end' : 'start'}, txtDiv));
+      // Rótulos diretos: posição pedida no pico; colisão resolvida aqui, com deslocamento vertical
+      // mínimo. Nunca dois rótulos sobrepostos: o que não acha lugar fica sem rótulo direto (ele
+      // continua no mouse, no toque, no teclado e na lista).
+      const largDiv = 4 + txtDiv.length * 7.2;
+      const ocupados = [estreito ? {x0: xs(11.5) - largDiv, x1: xs(11.5), y0: T - 2, y1: T + 14}
+                                 : {x0: xs(11.5), x1: xs(11.5) + largDiv, y0: T - 2, y1: T + 14}];
+      const caixa = (x, yy, txt) => ({x0: x - txt.length * 3.6, x1: x + txt.length * 3.6, y0: yy - 12, y1: yy + 3});
+      const colide = c => ocupados.some(o => !(c.x1 < o.x0 || c.x0 > o.x1 || c.y1 < o.y0 || c.y0 > o.y1));
+      const rotuloDireto = (linha) => {
+        const deveRotular = linha.agora ? !estreito
+          : (estreito ? tresMaiores.includes(linha) : fortes.includes(linha));
+        if (!deveRotular) return null;
+        const onde = linha.agora ? PAC.janela(serie, linha.ano).slice(-1)[0] : linha.pico;
+        if (!onde) return null;
+        const x = Math.min(Math.max(xs(onde.k), L + 20), L + pw - 20);
+        const base = linha.agora ? y(onde.p.anomalia) + 20 : y(onde.p.anomalia) - 6;
+        for (const dx of [0, -34, 34]) {
+          for (const d of [0, 14, -14, 28, -28, 42, 56, 70]) {
+            const xx = Math.min(Math.max(x + dx, L + 20), L + pw - 20);
+            const c = caixa(xx, base + d, linha.rotulo);
+            if (c.y0 < T - 4 || c.y1 > T + ph) continue;
+            if (!colide(c)) { ocupados.push(c); return {x: xx, y: base + d}; }
+          }
+        }
+        return null;
+      };
+      // Posições calculadas ANTES de desenhar, na ordem de prioridade: o ciclo em curso, depois
+      // os picos maiores — é o que garante que o deslocamento recai sobre os menores.
+      const posicoes = new Map();
+      linhas.filter(l => l.pico).slice()
+        .sort((a, b) => (b.agora - a.agora) || (b.pico.p.anomalia - a.pico.p.anomalia))
+        .forEach(l => posicoes.set(l, rotuloDireto(l)));
       // O ciclo em curso é desenhado POR ÚLTIMO, para ficar por cima.
+      const grupos = [];
       linhas.slice().reverse().forEach(linha => {
         const pts = PAC.janela(serie, linha.ano);
         if (!pts.length) return;
-        g.appendChild(svgEl('polyline', {class: linha.classe,
+        const grupo = svgEl('g', {class: 'ep' + (linha.agora ? ' ep-agora' : ''), tabindex: '0',
+                                  role: 'img', 'aria-label': linha.agora ? linha.rotulo : descreveEpisodio(linha)});
+        grupo.appendChild(svgEl('polyline', {class: linha.classe,
+          points: pts.map(x => xs(x.k).toFixed(1) + ',' + y(x.p.anomalia).toFixed(1)).join(' ')}));
+        // Faixa larga e invisível sobre a linha: é o alvo do mouse e do toque para a linha inteira.
+        grupo.appendChild(svgEl('polyline', {class: 'hit-linha',
           points: pts.map(x => xs(x.k).toFixed(1) + ',' + y(x.p.anomalia).toFixed(1)).join(' ')}));
         pts.forEach(x => {
           const alvo = svgEl('circle', {cx: xs(x.k).toFixed(1), cy: y(x.p.anomalia).toFixed(1),
                                         r: 7, class: 'hit', tabindex: '-1'});
-          g.appendChild(comValor(alvo, linha.rotulo + ' · ' + PAC.periodoCurto(x.p)
+          grupo.appendChild(comValor(alvo, linha.rotulo + ' · ' + PAC.periodoCurto(x.p)
                                        + ': ' + PAC.num(x.p.anomalia) + ' °C'));
         });
-        // Rótulo direto na linha. No ciclo em curso ele fica no ÚLTIMO ponto, que é onde a
-        // leitura para; nos episódios fechados, no PICO de cada um. Pôr os quatro no fim da
-        // linha os empilhava no canto direito, onde as curvas convergem — três rótulos em cima
-        // do mesmo lugar não nomeiam nada. Os picos ficam em alturas diferentes, e é isso que
-        // separa os rótulos sem precisar de regra de colisão.
+        const acende = evt => { g.classList.add('foco'); grupo.classList.add('acesa');
+          if (!linha.agora && evt && evt.type !== 'mouseover') MonitorMapas.showTip(esc(descreveEpisodio(linha)), evt); };
+        const apaga = () => { g.classList.remove('foco'); grupo.classList.remove('acesa'); MonitorMapas.hideTip(); };
+        grupo.addEventListener('mouseover', acende);
+        grupo.addEventListener('mouseout', apaga);
+        grupo.addEventListener('focus', acende);
+        grupo.addEventListener('blur', apaga);
+        grupo.addEventListener('touchstart', acende, {passive: true});
+        g.appendChild(grupo);
+        grupos.push([grupo, linha]);
+        const pos = posicoes.get(linha);
+        if (pos && !linha.agora) g.appendChild(svgEl('text', {x: pos.x.toFixed(1), y: pos.y.toFixed(1),
+          class: 'ann ann-ep', 'text-anchor': 'middle'}, linha.rotulo));
+        if (pos && linha.agora) g.appendChild(svgEl('text', {x: pos.x.toFixed(1), y: pos.y.toFixed(1),
+          class: 'ann ann-agora', 'text-anchor': 'middle'}, linha.rotulo));
         const fimDaLinha = pts[pts.length - 1];
-        const pico = pts.reduce((a, b) => b.p.anomalia > a.p.anomalia ? b : a, pts[0]);
-        const onde = linha.agora ? fimDaLinha : pico;
-        // Rótulo direto SÓ no ciclo em curso. Vinte e dois rótulos sobre a nuvem seriam ruído, e
-        // escolher alguns para rotular seria o destaque que o dado não sustenta. Cada linha
-        // continua se nomeando ao passar o mouse, ao tocar e para o leitor de tela.
-        if (!estreito && linha.agora) g.appendChild(svgEl('text', {
-          x: xs(onde.k).toFixed(1),
-          y: (y(onde.p.anomalia) + 20).toFixed(1),
-          class: 'ann ann-agora',
-          'text-anchor': 'middle'}, linha.rotulo));
         if (linha.agora) g.appendChild(svgEl('circle', {cx: xs(fimDaLinha.k).toFixed(1),
           cy: y(fimDaLinha.p.anomalia).toFixed(1), r: 4, class: 'agora'}));
       });
@@ -1229,6 +1290,18 @@ if (PACIFICO.serie.length) {
        fim: String(PACIFICO.episodios[PACIFICO.episodios.length - 1].ano)}, null)]);
     alvo.innerHTML = itens.filter(i => i[1])
       .map(i => '<span><i class="' + i[0] + '"></i>' + esc(i[1]) + '</span>').join('');
+    // 09/10/2026 (ajuste 4): a alternativa acessível — os episódios em lista, na ordem do
+    // calendário (ano, pico e trimestre do pico), recolhida no mesmo link discreto dos mapas.
+    if (linhas.some(l => !l.agora)) {
+      const lin = linhas.filter(l => !l.agora && l.pico).slice().sort((a, b) => a.ano - b.ano)
+        .map(l => '<tr><td>' + esc(l.rotulo) + '</td><td>' + esc(PAC.num(l.pico.p.anomalia)) + ' °C</td><td>'
+          + esc(PAC.periodoCurto(l.pico.p)) + '</td></tr>').join('');
+      alvo.insertAdjacentHTML('beforeend', '<details class="cartao-mapa-dados lista-episodios"><summary>'
+        + esc(txtCat(IP + 'episodios.ver_em_lista', null, 'Ver em lista')) + '</summary>'
+        + '<div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente">'
+        + '<table class="mun-table"><thead><tr><th>Episódio</th><th>Pico do RONI</th><th>Trimestre do pico</th></tr></thead><tbody>'
+        + lin + '</tbody></table></div></details>');
+    }
   })();
 
   // A leitura sob o gráfico: o MESMO trimestre em cada linha, na ordem do calendário. Não há
@@ -1314,8 +1387,13 @@ new Chart(document.getElementById('cTipos'), {type:'bar', data:{
 
 // =============================  Tabela de fontes  =============================
 const CAMADA_ROTULO = {ciclo:'Ciclo', observado:'Observado', enos:'ENOS'};
+// "Ver estados" e descrição acessível de cada mapa (09/10/2026, ajuste 5), depois de todos desenhados.
+[['mapaRiscoPrevisto', 'estadosRiscoPrevisto'], ['mapaSecas', 'estadosSecas'], ['mapaFogo', 'estadosFogo'],
+ ['mapaAr', 'estadosAr'], ['mapaTemperatura', 'estadosTemperatura'], ['mapaAvisos', 'estadosAvisos']]
+  .forEach(([svg, alvo]) => { try { if (ROTULOS_DOS_MAPAS[svg]) escreverEstados(alvo, ROTULOS_DOS_MAPAS[svg]); } catch (e) {} });
 }
 __load();
 
 // ===== monitor-de-riscos.html · bloco 2 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
 window.addEventListener('load', function(){ if (window.VLibras && window.VLibras.Widget) { try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {} } });
+

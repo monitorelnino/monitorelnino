@@ -14,7 +14,7 @@ humana (R7) antes de ir ao público. Este script monta e alimenta a fila:
      registro"; o código nunca teve essa perna, e prometer o que não se faz é pior do que
      declarar a lacuna — §230.)
   3. Varre o texto pelos dois dicionários e grava achados com trechos em
-     data/decretos_conteudo_revisar.json (status: pendente_julgamento_humano).
+     data/decretos_conteudo_revisar.json (status: pendente_julgamento).
 Sem texto obtenível → 'texto_pendente' (a ausência fica registrada, nunca inferida).
 
 Uso: python3 analisar_decretos.py [--check]
@@ -123,7 +123,7 @@ def rodar():
             item["classificacao_preliminar"] = "candidato_teste_objeto"   # possível ex-ante (§5.2.1) — julgamento humano
         elif ga and rf:
             item["classificacao_preliminar"] = "iminencia_com_rota_federal"  # subcategoria p/ revisão da fronteira na v2.3
-        item["status_triagem"] = "pendente_julgamento_humano"
+        item["status_triagem"] = "pendente_julgamento"
         fila.append(item)
     # §230: escrita atômica (§229) e data da REDAÇÃO (§227) — `time.strftime` usa o relógio local
     # do processo, que no runner é UTC, e esta é a data que a editoria lê como "quando a fila foi

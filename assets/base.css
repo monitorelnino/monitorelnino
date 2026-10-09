@@ -1279,3 +1279,44 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
 .barra-valor{font-family:var(--font-dado); font-size:var(--fs-caption); font-variant-numeric:tabular-nums; white-space:nowrap;}
 .cemaden-resumo{font-size:var(--fs-body); margin:0 0 var(--sp-2);}
 .cemaden-lista{font-size:var(--fs-caption); line-height:var(--lh-caption); padding-left:var(--sp-4); margin:0;}
+
+/* ===== Monitor de riscos, ajustes de 09/10/2026 (editoria) ====================================
+   Variantes de componente existente — nenhum bloco novo. */
+/* Seção sem moldura: título e abertura como cabeçalho, e os cartões sobre o fundo da página. */
+.secao-aberta{margin:0 0 var(--esp-secao); max-width:100%; min-width:0;}
+.secao-aberta > h2:first-child{margin-top:0;}
+/* A grade de números mantém a altura igual na linha, e a fonte vai ao pé do cartão. */
+.grade-numeros{align-items:stretch;}
+/* Três por linha no desktop e UM por linha no celular, na mesma ordem (ajuste 3). */
+@media (max-width: 640px){ .grade-numeros--empilha{grid-template-columns:1fr;} }
+/* Cartão de número com três valores de mesma hierarquia: mesmo corpo, mesmo peso, lado a lado,
+   cada um com a legenda curta embaixo. Nenhum em destaque sobre os outros. */
+.cartao-numero-trio{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:var(--sp-2);
+  font-size:inherit; line-height:inherit;}
+.cartao-numero-trio .trio-item{display:flex; flex-direction:column; gap:var(--sp-1); margin:0;}
+.cartao-numero-trio .trio-numero{font-family:var(--font-titulo); font-weight:var(--peso-display);
+  font-size:var(--fs-h2); line-height:var(--lh-h2); font-variant-numeric:tabular-nums; white-space:nowrap;}
+.cartao-numero-trio .trio-legenda{font-family:var(--font-dado); font-size:var(--fs-caption);
+  line-height:var(--lh-caption); color:var(--muted);}
+/* Ajuste 4 (09/10/2026): os dois cabeçalhos do Pacífico se alinham pelas LINHAS DA GRADE
+   (subgrid), e não por altura reservada — a reserva abria ~80 px entre título e subtítulo. */
+.grade-pacifico{grid-auto-rows:auto;}
+.grade-pacifico > .cartao-mapa{display:grid; grid-template-rows:subgrid; grid-row:span 8; row-gap:0;}
+.grade-pacifico > .cartao-mapa .figura-titulo, .grade-pacifico > .cartao-mapa .figura-sub,
+.grade-pacifico > .cartao-mapa .figura-nota{min-height:0;}
+/* Episódios: ao passar o mouse, tocar ou focar uma linha, ela acende e as outras esmaecem. */
+.g-pac .hit-linha{fill:none; stroke:transparent; stroke-width:10; pointer-events:stroke;}
+.g-pac .ep{outline:none;}
+.g-pac.foco .ep .l-contexto{opacity:.15;}
+.g-pac.foco .ep.acesa .l-contexto{opacity:1; stroke-width:2.4;}
+.g-pac .ep:focus-visible .l-contexto, .g-pac .ep:focus-visible .l-agora{stroke-width:3.4;}
+.g-pac .ann-ep{fill:var(--pacifico-serie-b); font-family:var(--font-dado); font-size:var(--fs-caption);}
+/* Ajuste 5 (09/10/2026): faixas "Previsto" e "Observado" no Monitor de riscos. O mapa previsto,
+   sozinho na faixa, ocupa dois terços da largura (maior que os outros, sem esticar até virar
+   pôster); no celular, a largura toda. */
+.faixa-selo{margin:var(--sp-5) 0 var(--sp-3);}
+.grade-mapas--previsto > .cartao-mapa{width:min(100%, 66%); justify-self:start;}
+@media (max-width: 1020px){ .grade-mapas--previsto > .cartao-mapa{width:100%;} }
+.dica-fonte{color:var(--muted); font-size:var(--fs-caption);}
+.lista-estados{margin:var(--sp-2) 0 0; padding-left:var(--sp-4); font-size:var(--fs-caption);
+  line-height:var(--lh-caption); color:var(--ink);}

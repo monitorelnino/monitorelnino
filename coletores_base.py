@@ -1679,7 +1679,7 @@ DECISOES_LOG = ("registro", "pista", "nada", "consultado", "fonte", "erro", "ace
 
 def log_busca(canal: str, camada: int, strings: list, decisao: str, resultados: str = "",
               uf=None, municipio=None, ibge=None, nivel=None, n_resultados=None,
-              fonte_suspensa_defeso: bool = False, hash_evidencia=None):
+              fonte_suspensa_defeso: bool = False, hash_evidencia=None, extra: dict = None):
     """Acrescenta uma execução ao log v2. `decisao` no vocabulário fechado:
     registro | pista | nada localizado | consultado sem achado | fonte suspensa (defeso) | erro.
 
@@ -1698,6 +1698,11 @@ def log_busca(canal: str, camada: int, strings: list, decisao: str, resultados: 
         "resultados": resultados[:600], "decisao": decisao,
         "fonte_suspensa_defeso": bool(fonte_suspensa_defeso) or fonte_esta_suspensa(strings), "executor": EXECUTOR,
         "hash_evidencia": hash_evidencia}
+    # 09/10/2026 (lote 2.7, A1-11): campos próprios de um canal (ex.: a busca web grava quantos
+    # resultados nomeiam o município e os três primeiros hosts brutos, para auditar sem rede).
+    # Nunca sobrescrevem os campos do log v2.
+    for k, v in (extra or {}).items():
+        execucao.setdefault(k, v)
     # Com lote aberto, acumula e descarrega de 250 em 250 (ver LOTE DO LOG acima). Sem lote, o
     # comportamento é o de sempre: uma leitura e uma gravação por execução.
     if _LOTE_LOG is not None:

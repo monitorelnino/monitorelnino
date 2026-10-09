@@ -43,7 +43,8 @@
     "FIGURA",
     "Corte da edição",
     "desastre",
-    "defeso"
+    "defeso",
+    "Hemisfério Norte"
   ],
   "secoes": [],
   "_nota_pacifico": "03/10/2026: as duas figuras do Pacífico (`boxRoni`, `boxAnomalia`) estavam FORA do componente `.cartao-mapa` — eram as duas únicas figuras com mídia do site fora dele. O portão de conformidade apontou, e a correção foi pôr as duas no componente, e não abrir exceção: a regra de componente existe para que figura equivalente tenha a mesma moldura. | 07/10/2026: `boxAnomalia` (anomalia mensal do Niño 3.4) SAIU da página e entrou `boxEpisodios` — os dois gráficos passam a medir o MESMO índice (RONI), na mesma escala e no mesmo eixo. O dado da anomalia mensal continua coletado. Os dois são SVG desenhado na largura real do contêiner, e não canvas escalado: é o que mantém a letra em 12 px no celular, como o pedido exige.",
@@ -53,11 +54,11 @@
     "componente": ".cartao-numero",
     "cartoes": [
       "roni_mais_recente",
-      "previsao_noaa_cpc",
-      "duracao_iri_cpc",
+      "probabilidade_iri_cpc_com_noaa",
       "brasil_painel_el_nino"
     ],
-    "exige_fonte_e_data": true
+    "exige_fonte_e_data": true,
+    "_divergencia_09_10": "09/10/2026 (ajuste 3, editoria): de quatro para TRÊS cartões numa linha. O pedido de 07/10 (quatro cartões) fica superado: a previsão da NOAA/CPC deixou de ser cartão e virou linha de apoio do cartão de probabilidade. O cartão do boletim mostra os três riscos com a mesma hierarquia, em ordem alfabética (chuva, fogo, seca), escolhida pelo Code por ser neutra."
   },
   "secoes_texto_proibido": {
     "_governanca": "07/10/2026: a régua de força do ENOS não é definição da NOAA/CPC — ela define os limiares de El Niño (+0,5 °C) e de La Niña (−0,5 °C) e o critério de cinco médias trimestrais seguidas, e não faixas de fraco/moderado/forte. A proibição vale SÓ nestas seções: 'Chuva forte', na legenda dos mapas de 'Os riscos no Brasil', é outra coisa e fica.",
@@ -72,5 +73,21 @@
       "conferido_por": "scripts/verificar_runtime_sinais.js"
     }
   },
-  "_nota_recorte_do_grafico_2": "07/10/2026 (decisão da editoria, delegada ao Code): com a série do RONI desde 1950 o critério da NOAA/CPC encontra 22 episódios. O recorte decidido foi NÃO recortar: todos são desenhados como contexto, no mesmo traço e no mesmo tom, e só o ciclo em curso é destacado e rotulado. As alternativas e por que caem: escolher os mais intensos é ranking ordinal, que `layout/regras.json/dados_na_pagina` proíbe; escolher os mais recentes é recorte nosso sem o dado pedir; nomear 22 numa legenda não se lê. A legenda passa a ter dois itens, com a contagem, e cada linha se nomeia ao passar o mouse, ao tocar e para o leitor de tela. Conferido por scripts/verificar_runtime_sinais.js."
+  "_nota_recorte_do_grafico_2": "07/10/2026 (decisão da editoria, delegada ao Code): com a série do RONI desde 1950 o critério da NOAA/CPC encontra 22 episódios. O recorte decidido foi NÃO recortar: todos são desenhados como contexto, no mesmo traço e no mesmo tom, e só o ciclo em curso é destacado e rotulado. As alternativas e por que caem: escolher os mais intensos é ranking ordinal, que `layout/regras.json/dados_na_pagina` proíbe; escolher os mais recentes é recorte nosso sem o dado pedir; nomear 22 numa legenda não se lê. A legenda passa a ter dois itens, com a contagem, e cada linha se nomeia ao passar o mouse, ao tocar e para o leitor de tela. Conferido por scripts/verificar_runtime_sinais.js.",
+  "cartao_figura_um_titulo": true,
+  "faixas_dos_mapas": {
+    "_governanca": "09/10/2026 (ajustes 5 e 6): previsto separado de observado. Ordem: 'Previsto pelo boletim' (boxRiscoPrevisto, sozinho e maior) → 'Observado' (boxSecas, boxFogo) → 'Agora, nas capitais e nos estados' (boxAr, boxTemperatura, boxAvisos). Um título por mapa, sem sobretítulo; lista de UFs na descrição acessível e em 'Ver estados'. Conferido por scripts/verificar_grades_de_numeros.py e scripts/verificar_dicas_dos_mapas.js.",
+    "ordem": [
+      "boxRiscoPrevisto",
+      "boxSecas",
+      "boxFogo",
+      "boxAr",
+      "boxTemperatura",
+      "boxAvisos"
+    ]
+  },
+  "excecao_fundo_escuro": {
+    "figura": "boxFogo",
+    "motivo": "contraste necessário para marcas pontuais de fogo — ponto luminoso sobre fundo escuro é o que torna visível um foco pequeno (editoria, 09/10/2026, 06:24). Os outros cinco mapas têm fundo branco."
+  }
 }

@@ -8,10 +8,6 @@
    "por_que": "Derivado de tudo o mais. Conflito nele resolve-se com a versão de cima e a cadeia canônica regenera — `scripts/unir_conflito_de_rodada.py`, classe REGENERAVEIS. O handover pede que só o publicador o commite; a mudança fica para o PR do ensaio da noite, porque remover o manifesto do commit do elo deixa a `main` com manifesto obsoleto entre o elo e o publicador, e isso tem de ser provado no ensaio antes de valer. Até lá o conflito está resolvido, não evitado.",
    "pendente": "mover para o publicador, provado pelo ensaio da noite (item 5)"
   },
-  "docs/FILA_PISTAS.md": {
-   "escritor": "qualquer_elo",
-   "por_que": "Derivado da fila. Mesma classe REGENERAVEIS."
-  },
   "data/pistas_imprensa.json": {
    "escritor": "qualquer_elo",
    "por_que": "A fila tem UMA porta (`scripts/pistas.py`) e uma política de mesclagem declarada e testada: acréscimo dos dois lados entra, campo que só um lado tocou entra, mesmo campo com valores diferentes é recusado. `unir_conflito_de_rodada.py` aplica essa política ao conflito de rebase, classe FILAS_DE_PISTA. A corrida é resolvida, não evitada — e é por isso que este arquivo pode ter vários elos."
@@ -31,10 +27,6 @@
   "data/pistas_rejeitadas.json": {
    "escritor": "qualquer_elo",
    "por_que": "Fila, classe FILAS_DE_PISTA."
-  },
-  "data/pistas_revisao.json": {
-   "escritor": "qualquer_elo",
-   "por_que": "Derivado da fila, não fonte: classe REGENERAVEIS. Quem o produz é `scripts/preparar_fila_revisao.py`."
   },
   "data/log_buscas.json": {
    "escritor": "qualquer_elo",

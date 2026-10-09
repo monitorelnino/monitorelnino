@@ -440,6 +440,22 @@ function rotuloDaCapital(reg){
   return reg && CAT_ROTULO[reg.categoria] ? CAT_ROTULO[reg.categoria] : 'ainda não verificada';
 }
 
+
+// 09/10/2026 (ajuste 2, proveniência): o nome do documento é o link para ele, como no cartão do
+// município. Sem endereço conferido, o cartão diz isso no teto de ausência — nunca um link para a
+// raiz de um portal, nunca um endereço inventado (scripts/proveniencia_estadual.py).
+function docComEndereco(o) {
+  if (!o) return '';
+  return o.url
+    ? `<a href="${esc(o.url)}" target="_blank" rel="noopener">${esc(o.doc)}</a>`
+    : esc(o.doc);
+}
+function lacunaDeEndereco(o) {
+  return o && !o.url && o.endereco_lacuna
+    ? '<br><span class="spec">endereço do documento não localizado até o corte</span>'
+    : '';
+}
+
 function selectUF(uf, tileEl){
   // P2 (auditoria 07/09/2026): d.doc, d.orgao, d.estrutura.doc e o nome da capital são texto
   // editorial (resumo humano de documento oficial), não HTML bruto raspado — mas entravam direto
@@ -474,8 +490,8 @@ function selectUF(uf, tileEl){
     <div class="uf-region">${esc(d.regiao)}</div>
     <span class="badge ${badgeClass}">${STATUS_LABEL[d.status]}</span>
     ${riscoBox(d.uf)}
-    <div class="field"><div class="k">Estrutura de coordenação</div><div class="v">${d.estrutura ? '<span class="pill-nivel">' + (STATUS_LABEL[d.estrutura.status] || d.estrutura.status) + '</span> ' + esc(d.estrutura.doc) + (temData(d.estrutura.data) ? ' (' + esc(d.estrutura.data) + ')' : '') : 'Não localizamos ato de estrutura de coordenação até o corte.'}</div></div>
-    <div class="field"><div class="k">Instrumento operacional</div><div class="v"><span class="pill-nivel">${STATUS_LABEL[d.status]}</span> ${esc(d.doc)}${temData(d.data) ? ' (' + esc(d.data) + ')' : ''}${d.sem_ato_de_aprovacao ? '<br><span class="spec">sem ato de aprovação localizado</span>' : ''}</div></div>
+    <div class="field"><div class="k">Estrutura de coordenação</div><div class="v">${d.estrutura ? '<span class="pill-nivel">' + (STATUS_LABEL[d.estrutura.status] || d.estrutura.status) + '</span> ' + docComEndereco(d.estrutura) + (temData(d.estrutura.data) ? ' (' + esc(d.estrutura.data) + ')' : '') + lacunaDeEndereco(d.estrutura) : 'Não localizamos ato de estrutura de coordenação até o corte.'}</div></div>
+    <div class="field"><div class="k">Instrumento operacional</div><div class="v"><span class="pill-nivel">${STATUS_LABEL[d.status]}</span> ${docComEndereco(d)}${temData(d.data) ? ' (' + esc(d.data) + ')' : ''}${d.sem_ato_de_aprovacao ? '<br><span class="spec">sem ato de aprovação localizado</span>' : ''}${lacunaDeEndereco(d)}</div></div>
     ${(function(){ // 01/10/2026, texto aprovado pela editoria. A v3.1 dá zero ao instrumento
       // recorrente que NÃO cobre o risco previsto para o ciclo (degrau VIG_NAO_COBRE), e até aqui a
       // interface não dizia isso em lugar nenhum: o cartão mostrava "vigente-recorrente" e o leitor
@@ -534,7 +550,7 @@ function selectUF(uf, tileEl){
         return (dt >= ini && dt <= fim) ? `<div class="card-note">Publicado em ${esc(d.data)}, dentro do período eleitoral (04/07–25/10/2026), quando transferências voluntárias e publicidade institucional estão suspensas por lei — a publicação em diário oficial é ato oficial, não publicidade (METODOLOGIA §24).</div>` : '';
       })()}
     ${capitalBlock}
-    <p class="note">Acompanhe ${esc(d.nome)} sem visitar o site: <a href="feeds/${d.uf}.xml" type="application/atom+xml">feed de atualizações (Atom)</a> — cada instrumento localizado, cada mudança no índice, com data.</p>
+    <p class="note"><a href="feeds/${d.uf}.xml">Feed de atualizações de ${esc(d.nome)}</a> — cada instrumento localizado, cada mudança no índice, com data.</p>
   `;
   const __dialogDetail = document.getElementById('detail');
   if (__dialogDetail) __dialogDetail.setAttribute('aria-label', 'Detalhe do estado');

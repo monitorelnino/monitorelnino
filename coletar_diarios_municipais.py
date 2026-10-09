@@ -369,7 +369,7 @@ def _varrer(alvo, por_cod, desde, atos, pistas, vistos, vistos_pistas):
                                     "hash_evidencia": h, "registrado_em": hoje_editorial().isoformat(),
                                     # 03/09/2026: triagem/autoridade/objeto/destino só ORDENAM a fila; nunca decidem sozinhos (§3.2, §5.2.1-bis)
                                     **triagem_completa(p["trecho"]),
-                                    "status": "pista — promover a registro exige documento primário lido por humano"})
+                                    "status": "pista — na fila, aguardando busca dirigida e juiz"})
             vistos_pistas.add(chave_pista); npist += 1
         marcar_fonte_consultada([cod], FONTE_QD, "nao_verificado",
                                 resultado=f"{len(decretos)} decreto(s), {len(pist)} pista(s)")
