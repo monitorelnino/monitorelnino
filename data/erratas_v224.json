@@ -1024,6 +1024,15 @@
   "data": "08/10/2026",
   "uf": null,
   "municipio": null,
+  "o_que_mudou": "a Imprensa publicava \"6 municípios sob alerta do Cemaden\", \"3.461 sob aviso do Inmet\" e \"489 com decreto e alerta ao mesmo tempo\" enquanto a página Defesa civil, lendo o mesmo arquivo, dizia \"sem atualização desde 07/10/2026 21:40\"; as duas passam a parar juntas",
+  "por_que": "A regra das 24 horas estava só no JavaScript da página: o instantâneo que alimenta as duas superfícies seguia publicando o número, e a Imprensa o copiava. A regra passa ao instantâneo (`scripts/gerar_topo_das_paginas.alertas_pararam`). Junto, o fuso: o carimbo é escrito no fuso da redação e era comparado com o relógio de onde o código roda — três horas de diferença entre o navegador no Brasil e o runner em UTC, o bastante para as duas superfícies discordarem sobre a idade do mesmo dado.",
+  "achado": "coerência da Imprensa",
+  "lote": "1 (defeito achado na fila da CI)"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
   "o_que_mudou": "contribuição de leitor vinda de site de prefeitura (`aracaju.se.gov.br` e afins) era registrada com canal \"órgão estadual\"; passa a ser \"site municipal\"",
   "por_que": "Achado ao escrever o autoteste do item 3.7: o padrão casava qualquer subdomínio de `<uf>.gov.br` que não começasse por \"www.\", e prefeitura em domínio do estado é a regra, não a exceção. Órgão estadual passa a ser o domínio do estado sem subdomínio, ou um dos prefixos conhecidos de defesa civil.",
   "achado": "A6-26 (de passagem)",
