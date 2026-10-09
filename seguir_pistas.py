@@ -27,7 +27,7 @@ import argparse, datetime, hashlib, json, re, sys, urllib.parse, urllib.request
 from coletores_base import ler, gravar, rodar_autoteste, ua_de, hoje_editorial
 from monitorar_imprensa_regional import parece_fonte_oficial
 
-STATUS_PENDENTE = "pista — promover a registro exige documento primário lido por humano"
+STATUS_PENDENTE = "pista — na fila, aguardando busca dirigida e juiz"
 RE_LINK = re.compile(r'<a\s[^>]*href=["\']([^"\'#]+)["\'][^>]*>(.*?)</a>', re.I | re.S)
 RE_SINAL_ATO = re.compile(r"decreto|\blei\b|portaria|plancon|plano|conting|diario|\.pdf", re.I)
 TERMOS_QD = '"plano de contingência" OR plancon OR "plano municipal de proteção e defesa civil"'

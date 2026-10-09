@@ -189,7 +189,7 @@ jobs:
           export SOURCE_DATE_EPOCH="$(python3 -c "import json,datetime;d=json.load(open('data/meta.json'))['corte'];dd,mm,aa=d.split('/');print(int(datetime.datetime(int(aa),int(mm),int(dd),tzinfo=datetime.timezone.utc).timestamp()))")"
           python3 seguir_pistas.py --limite 20   # §159: notícia → documento (links, Querido Diário, busca no domínio oficial); SearXNG ainda no ar
           python3 triar_confianca_pistas.py   # §150: anota nível A/B/C e regenera a fila de revisão por município
-          python3 revisar_pistas.py --preparar --limite 30 --relatorio   # §153: leitura assistida (busca doc, extrai nº/data, classifica) + docs/FILA_PISTAS.md
+          python3 revisar_pistas.py --preparar --limite 30   # §153: leitura assistida (busca doc, extrai nº/data, classifica); 09/10 (lote 2.9): sem FILA_PISTAS.md
           python3 recalcular_mare.py --write
           python3 recalcular_mare.py --check
           python3 gerar_dados_abertos.py
@@ -205,7 +205,7 @@ jobs:
         run: |
           git config user.name "monitor-el-nino-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add data/ *.html selos/ dados-abertos/ docs/MANIFEST_SHA256.txt docs/FILA_PISTAS.md
+          git add data/ *.html selos/ dados-abertos/ docs/MANIFEST_SHA256.txt
           if git diff --cached --quiet; then
             echo "Sem alterações."; echo "houve=0" >> "$GITHUB_OUTPUT"; exit 0
           fi
@@ -230,7 +230,7 @@ jobs:
                 break
               fi
               bash scripts/verificar_derivados.sh --regenerar-para-commit || true
-              git add -A data/ dados-abertos/ feeds/ selos/ docs/MANIFEST_SHA256.txt docs/FILA_PISTAS.md 2>/dev/null || true
+              git add -A data/ dados-abertos/ feeds/ selos/ docs/MANIFEST_SHA256.txt 2>/dev/null || true
               if ! GIT_EDITOR=true git rebase --continue; then
                 git rebase --abort || true
                 echo "::warning::a união resolveu mas o rebase não seguiu; nova tentativa"

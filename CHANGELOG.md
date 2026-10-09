@@ -32,6 +32,13 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-09 · #PR · nenhuma fila espera por uma pessoa
+
+Lote 2.9. Saem a decisão humana de pista (`--aceitar/--rejeitar/--adiar`), a fila de revisão
+agrupada (`pistas_revisao.json`, 10 MB por noite) e `FILA_PISTAS.md`. 148 pistas "lido por humano"
+e 97 decretos "pendente de julgamento humano" passam ao nome da regra automática, sem mudar decisão.
+Portão novo reprova status que espera por pessoa e, depois de 15/11, pendente com mais de 21 dias.
+
 ## 2026-10-09 · #PR · classificação: termo de risco com fronteira, instrumento numa lista só
 
 Lote 2.3, as três correções de fato. Termo de risco casava dentro de outra palavra ("secagem de

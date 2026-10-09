@@ -237,6 +237,13 @@ jobs:
           # assunto: dado
           python3 scripts/verificar_escritor_de_pista.py
           # assunto: dado
+          python3 scripts/verificar_fila_nao_humana.py --autoteste
+          # assunto: dado
+          # 09/10/2026 (lote 2.9): nenhuma fila espera por pessoa; pendente > 21 dias reprova depois do prazo do estoque.
+          python3 scripts/verificar_fila_nao_humana.py
+          # assunto: dado
+          python3 scripts/migrar_fim_da_etapa_humana.py --autoteste
+          # assunto: dado
           python3 scripts/verificar_escritores.py --autoteste
           # assunto: dado
           python3 scripts/verificar_escritores.py
@@ -689,11 +696,6 @@ jobs:
           # autoteste trava os três defeitos corrigidos: 504 transitório perdia o município, 429
           # era laço infinito, e desistir era um print em vez de lacuna declarada.
           python3 atualizar_transferencias.py --autoteste
-          # §218 (25/09/2026): a fila de leitura humana em ordem de decisão. O autoteste
-          # trava o que importa: item já julgado sai da fila, falso positivo provável vai ao
-          # fim sem ser excluído (quem decide é a pessoa), e o script NÃO escreve no banco —
-          # trava estrutural que olha só o código, sem confundir a menção com a chamada.
-          python3 scripts/preparar_fila_revisao.py --autoteste
           # §220 (25/09/2026): autoteste que escreve no banco não é autoteste offline. Um
           # deles gravou OITO execuções no log real — mockava rede e arquivos, e não
           # `registrar_lacuna`, que chama `log_busca`, que grava. As travas estruturais dos

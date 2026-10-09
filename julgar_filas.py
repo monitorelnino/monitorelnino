@@ -45,7 +45,9 @@ sys.path.insert(0, str(RAIZ))
 # 06/09 caiu, e a regra que a substitui é explícita: toda pista do QD passa pelas etapas 0 a 7 do juiz e
 # NUNCA entra direto no banco. A fila começa pelos 169 municípios com excerto reconhecido no diário e sem
 # registro nem pista, montada por `scripts/fila_do_juiz_querido_diario.py`.
-FILAS = ("pistas_imprensa.json", "pistas_descobertas.json", "pistas_doe.json", "pistas_revisao.json",
+# 09/10/2026 (lote 2.9): `pistas_revisao.json` saiu — era a fila de revisão humana, derivada, e deixou
+# de ser gerada.
+FILAS = ("pistas_imprensa.json", "pistas_descobertas.json", "pistas_doe.json",
          "pistas_querido_diario.json")
 PROMOCOES = "promocoes_automaticas.json"
 
