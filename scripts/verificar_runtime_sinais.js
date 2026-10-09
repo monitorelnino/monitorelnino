@@ -218,7 +218,7 @@ setTimeout(() => {
     && tituloEp.includes(String(fechados.length))
     && !fechados.some(e => tituloEp.includes(e)));
   teste("gráfico 2: uma linha por episódio, mais o ciclo em curso",
-    q("wrapEpisodios") && q("wrapEpisodios").querySelectorAll("polyline").length === esperados.length);
+    q("wrapEpisodios") && q("wrapEpisodios").querySelectorAll("polyline:not(.hit-linha)").length === esperados.length);
 
   // --- a anomalia mensal saiu da página, e o dado dela continua coletado ---
   teste("a anomalia mensal do Niño 3.4 saiu da página", !q("boxAnomalia") && !q("wrapAnomalia"));
