@@ -30,6 +30,7 @@ USO
   python3 scripts/janela_da_noite.py --noite            # a data da janela corrente
   python3 scripts/janela_da_noite.py --precisa-abrir    # "sim"/"nao" + código de saída
   python3 scripts/janela_da_noite.py --atraso           # minutos desde a hora prevista
+  python3 scripts/janela_da_noite.py --abertura-atrasada # a abertura passou da tolerância?
 """
 import datetime as dt
 import pathlib
@@ -41,6 +42,30 @@ sys.path.insert(0, str(RAIZ))
 JANELA_UTC = (1, 9)        # 01:00 às 09:00 UTC = 22h às 06h de Brasília
 ABERTURA_PREVISTA = "01:07"  # o cron principal da corrente, fora do minuto de pico
 ELO_DE_ABERTURA = "diarios"
+
+
+TOLERANCIA_DA_ABERTURA_MIN = 25
+"""Minutos que a abertura pode atrasar antes de o vigia ter o que fazer.
+
+09/10/2026, medido na noite de 08→09. O despachante disparou o vigia **um minuto** depois de a
+corrente abrir, porque o critério dele é "não há execução do vigia nesta janela" e ignora o cron
+primário do próprio vigia (02:07 UTC). O vigia perguntou à listagem da API quantas execuções da
+corrente havia na janela, recebeu **zero** — o run tinha dois minutos e ainda não aparecia — e
+concluiu que a noite não havia aberto. Disparou a corrente de novo.
+
+O estrago foi real: com um grupo de concorrência só na `main`, o GitHub guarda um run em execução e
+UM pendente; o terceiro disparo cancela o pendente. Perderam-se `diarios / coletar` e
+`triagem / coletar`, os dois cancelados **antes do primeiro passo**, com zero passos executados.
+
+A tolerância existe para o vigia não competir com a corrente que ele vigia: abaixo dela, atraso é
+fila de runner, não falha.
+"""
+
+
+def abertura_atrasada(agora: dt.datetime, tolerancia_min: int = TOLERANCIA_DA_ABERTURA_MIN,
+                      prevista: str = ABERTURA_PREVISTA) -> bool:
+    """A abertura está atrasada ALÉM da tolerância? Função pura."""
+    return atraso_minutos(agora, prevista) > int(tolerancia_min)
 
 
 def noite_de(agora: dt.datetime, janela=JANELA_UTC) -> str:
@@ -234,6 +259,13 @@ def main() -> int:
     if "--atraso" in argv:
         print(atraso_minutos(agora))
         return 0
+    if "--abertura-atrasada" in argv:
+        # Para o vigia: devolve `sim`/`nao` e o código de saída, de modo que o passo do workflow
+        # possa condicionar o disparo sem reimplementar a conta (09/10/2026).
+        atrasada = abertura_atrasada(agora)
+        print(f"{'sim' if atrasada else 'nao'} · atraso {atraso_minutos(agora)} min · "
+              f"tolerância {TOLERANCIA_DA_ABERTURA_MIN} min")
+        return 0 if atrasada else 1
     if "--precisa-abrir" in argv:
         precisa = precisa_abrir(linhas, agora)
         print("sim" if precisa else "nao")

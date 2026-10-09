@@ -328,12 +328,13 @@ def self_test():
 def main():
     """Interface de linha de comando: escolhe o escopo (marcação, banco ou ambos) e despacha para rodar_verificacao ou self_test."""
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--self-test", action="store_true")
+    ap.add_argument("--autoteste", "--self-test", dest="autoteste",
+                    action="store_true")
     ap.add_argument("--so-marcacao", action="store_true")
     ap.add_argument("--so-banco", action="store_true")
     args = ap.parse_args()
 
-    if args.self_test:
+    if args.autoteste:
         return self_test()
 
     todos_quebrados = []

@@ -160,11 +160,44 @@ def canal_do_dominio(host, uf):
         return "DOM"
     if host.endswith("in.gov.br"):
         return "DOU"
-    if re.search(rf"(^|\.){uf.lower()}\.gov\.br$", host) and not host.startswith("www."):
+    # 08/10/2026: este ramo casava QUALQUER subdomínio de `<uf>.gov.br` que não começasse por
+    # "www." — e `aracaju.se.gov.br`, que é prefeitura, entrava como órgão estadual. O canal do
+    # registro ficava errado por isso. Órgão estadual aqui é o domínio do estado, sem subdomínio.
+    if re.fullmatch(rf"(www\.)?{uf.lower()}\.gov\.br", host):
         return "orgao_estadual"
     if re.search(rf"\.{uf.lower()}\.gov\.br$", host):
         return "orgao_estadual" if any(host.startswith(p) for p in ("defesacivil.", "cepdec.", "casamilitar.")) else "site_municipal"
     return "site_municipal"
+
+
+def autoteste() -> int:
+    """Autoteste PURO (A6-26, 08/10/2026): sem rede, sem ler `data/`, sem escrever nada.
+
+    O script não tinha autoteste, e ele é a porta por onde contribuição de leitor entra. O que se
+    exerce aqui são as duas travas que protegem o banco: o campo livre do formulário (AUD-02) e o
+    canal derivado do domínio.
+    """
+    casos = [
+        ("número e data curtos passam", numero_data_valido("Decreto 123, de 02/07/2026")),
+        ("campo vazio reprova", not numero_data_valido("")),
+        ("campo longo reprova", not numero_data_valido("x" * (TAM_MAX_NUMERO_DATA + 1))),
+        ("marcação reprova", not numero_data_valido("<script>alert(1)</script>")),
+        ("diário municipal consorciado vira DOM",
+         canal_do_dominio("diariomunicipal.com.br", "AL") == "DOM"),
+        ("DOU vira DOU", canal_do_dominio("www.in.gov.br", "AL") == "DOU"),
+        ("domínio do estado vira órgão estadual",
+         canal_do_dominio("se.gov.br", "SE") == "orgao_estadual"),
+        ("defesa civil do estado vira órgão estadual",
+         canal_do_dominio("defesacivil.se.gov.br", "SE") == "orgao_estadual"),
+        ("prefeitura vira site municipal",
+         canal_do_dominio("aracaju.se.gov.br", "SE") == "site_municipal"),
+    ]
+    ruins = [n for n, ok in casos if not ok]
+    for n, ok in casos:
+        print(f"  {'✓' if ok else '✗'} {n}")
+    print(f"{'✓ AUTOTESTE OK' if not ruins else f'✗ AUTOTESTE: {len(ruins)} falha(s)'} — "
+          f"{len(casos)} casos, sem rede e sem escrita.")
+    return 1 if ruins else 0
 
 
 def main():
@@ -315,4 +348,6 @@ def main():
 
 
 if __name__ == "__main__":
+    if "--autoteste" in sys.argv or "--self-test" in sys.argv:
+        sys.exit(autoteste())
     sys.exit(main())

@@ -298,10 +298,11 @@ def self_test():
 def main():
     """Interface de linha de comando."""
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--self-test", action="store_true")
+    ap.add_argument("--autoteste", "--self-test", dest="autoteste",
+                    action="store_true")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
-    if a.self_test:
+    if a.autoteste:
         return self_test()
     r = executar(dry_run=a.dry_run)
     print(json.dumps(r, ensure_ascii=False, indent=1))

@@ -23,7 +23,19 @@ from pathlib import Path
 RAIZ = Path(__file__).parent
 DATA = RAIZ / "data"
 SAIDA = RAIZ / "dados-abertos"
-VERSAO = "2.3"
+def _versao_do_meta() -> str:
+    """A versão do índice, lida de `data/meta.json` (A3-16). Nunca escrita à mão aqui."""
+    import json as _js
+    import pathlib as _pl
+    try:
+        v = _js.load(open(_pl.Path(__file__).resolve().parent / "data" / "meta.json",
+                          encoding="utf-8")).get("versao_indice")
+    except (OSError, ValueError):
+        v = None
+    return (v or "v3.1").split(" ")[0].lstrip("v")
+
+
+VERSAO = _versao_do_meta()
 SITE = "https://monitorelnino.com.br"
 FAIXAS = [(25, "estágio inicial"), (50, "em construção"), (70, "consolidado"), (101, "avançado")]
 
@@ -62,7 +74,13 @@ def tabelas(dados):
     municipios = [{"uf": m["uf"], "municipio": m["nome"], "categoria": m.get("categoria"), "documento": m.get("documento"),
                    "data": m.get("data"), "fonte": m.get("fonte"), "url": m.get("url", "")}
                   for m in sorted(dados["municipios"], key=lambda x: (x["uf"], x["nome"]))]
-    atos = [{"uf": e["uf"], "municipio": e["nome"], "data": e.get("data"), "causa": e.get("causa"), "decreto": e.get("decreto"),
+    # 08/10/2026 (A3-21): o CSV de atos saía sem o código do IBGE — sem chave, ninguém cruza a
+    # tabela com nada — e com as datas em dois formatos (o item 1.3 normalizou a origem). Entram
+    # `ibge` e as datas do ato, do decreto municipal e do reconhecimento, cada uma na sua coluna.
+    atos = [{"ibge": e.get("ibge", ""), "uf": e["uf"], "municipio": e["nome"], "data": e.get("data"),
+             "data_decreto_municipal": e.get("data_decreto_municipal", ""),
+             "data_reconhecimento": e.get("data_reconhecimento", ""),
+             "causa": e.get("causa"), "decreto": e.get("decreto"),
              "fonte": e.get("fonte"), "url": e.get("url", "")}
             for e in sorted(dados["atos_resposta"].get("eventos", []), key=lambda x: (x["uf"], x["nome"], x.get("data", "")))]
     hist = [{"data": h["data"], "uf": h["uf"], "tipo": h["tipo"], "titulo": h["titulo"], "resumo": h["resumo"]}
@@ -88,7 +106,8 @@ def tabelas(dados):
                     "Instrumento estadual localizado por UF (status NOVO/READ/VIG/ELAB/LAC), documento, data e órgão."),
         "municipios": (municipios, ["uf", "municipio", "categoria", "documento", "data", "fonte", "url"],
                        "Registros municipais verificados individualmente (categoria do vocabulário controlado, documento, fonte)."),
-        "atos_resposta": (atos, ["uf", "municipio", "data", "causa", "decreto", "fonte", "url"],
+        "atos_resposta": (atos, ["ibge", "uf", "municipio", "data", "data_decreto_municipal",
+                                 "data_reconhecimento", "causa", "decreto", "fonte", "url"],
                           "Decretos municipais de emergência/calamidade registrados (atos de resposta; nunca pontuam)."),
         "historico_mudancas": (hist, ["data", "uf", "tipo", "titulo", "resumo"],
                                "Mudanças detectadas pelo pipeline entre atualizações (base dos feeds Atom)."),
