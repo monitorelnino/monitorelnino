@@ -1,12 +1,12 @@
 {
  "_governanca": "INSTANTÂNEO dos cartões do topo da Defesa civil, para a Imprensa ler em vez de recalcular (handover de 02/10/2026, item 1). Não é fonte de nada: nasce dos mesmos arquivos que a página lê. Os três cartões de AGORA trazem a hora da consulta; os três do ciclo trazem a contagem desde 29/06 e quantos entraram nos últimos sete dias.",
- "gerado_em": "08/10/2026",
+ "gerado_em": "09/10/2026",
  "frase_c18": "Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, a).",
  "cartoes": [
   {
    "id": "municipios_alerta_cemaden",
    "valor": 9,
-   "referencia": "08/10/2026 19:01",
+   "referencia": "08/10/2026 22:12",
    "rotulo": "municípios sob alerta do Cemaden",
    "fonte": "Cemaden",
    "sem_coleta": false
@@ -14,42 +14,42 @@
   {
    "id": "municipios_aviso_inmet",
    "valor": 3137,
-   "referencia": "08/10/2026 19:01",
+   "referencia": "08/10/2026 22:12",
    "rotulo": "municípios sob aviso do Inmet",
    "fonte": "Inmet",
    "sem_coleta": false
   },
   {
    "id": "decreto_e_alerta_ao_mesmo_tempo",
-   "valor": 583,
-   "referencia": "08/10/2026 19:01",
+   "valor": 648,
+   "referencia": "08/10/2026 22:12",
    "rotulo": "municípios com decreto de emergência e alerta ao mesmo tempo",
    "fonte": "MARÉ (cruzamento das duas consultas)",
    "sem_coleta": false
   },
   {
    "id": "municipios_decretaram",
-   "valor": 726,
+   "valor": 796,
    "referencia": "desde 29/06/2026",
-   "variacao": 14,
+   "variacao": 1,
    "rotulo": "municípios que decretaram emergência ou calamidade",
    "fonte": "Defesa Civil nacional, no Diário Oficial da União",
    "sem_coleta": false
   },
   {
    "id": "populacao_sob_decreto",
-   "valor": 20781070,
+   "valor": 23078217,
    "referencia": "desde 29/06/2026",
-   "variacao": 275563,
+   "variacao": 19599,
    "rotulo": "pessoas que vivem nos municípios que decretaram",
    "fonte": "Censo 2022, do IBGE",
    "sem_coleta": false
   },
   {
    "id": "reconhecidos_pelo_governo_federal",
-   "valor": 670,
+   "valor": 741,
    "referencia": "desde 29/06/2026",
-   "variacao": 11,
+   "variacao": 0,
    "rotulo": "municípios com a emergência reconhecida pelo governo federal",
    "fonte": "Defesa Civil nacional, no Diário Oficial da União",
    "sem_coleta": false
