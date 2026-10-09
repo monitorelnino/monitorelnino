@@ -208,7 +208,7 @@ function gerarImagemGuia(){
             dicas: col ? [...col.querySelectorAll('li')].slice(0, 3).map(li => li.textContent.replace(/\s+/g, ' ').trim()) : []};
   }).filter(r => r.nome && r.dicas.length);
 
-  const FONTES_DA_IMAGEM = ['300 42px Fraunces', '400 22px Archivo', '700 20px "Archivo Narrow"'];
+  const FONTES_DA_IMAGEM = ['300 42px Fraunces', '400 22px Archivo', '700 24px Archivo', '700 20px "Archivo Narrow"'];
   const carregarImagem = src => new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = rej; im.src = src; });
   const roundRect = (x, y, w, h, r) => { if (ctx.roundRect) { ctx.beginPath(); ctx.roundRect(x, y, w, h, r); return; }
     ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); };
