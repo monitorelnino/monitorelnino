@@ -287,7 +287,7 @@ credito('boxRiscoPrevisto', 'painel_el_nino');
 
   const fAvisos = fonte('inmet_avisos');
   if (fAvisos.consultado_em) põe('tituloAvisos', 'Avisos de tempo severo em vigor, ' + fAvisos.consultado_em);
-  põe('avisosSub', 'Maior grau de aviso do INMET em vigor, por estado');
+  põe('avisosSub', 'Maior grau de aviso do INMET em vigor · por estado');
 })();
 
 // ---- "Ver estados" (09/10/2026, ajuste 5): a lista que estava no texto visível do cartão vai
