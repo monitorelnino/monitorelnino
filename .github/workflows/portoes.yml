@@ -482,6 +482,18 @@ jobs:
           # figura, vocabulário, forma dos números e acessibilidade. Ele lê layout/regras.json e o
           # contrato de cada página; exceção só por layout/excecoes.json, com motivo e data.
           python3 scripts/verificar_conformidade.py --autoteste
+          # assunto: texto
+          # 09/10/2026 (ajuste 1): vocabulário proibido no texto que os scripts das páginas escrevem.
+          python3 scripts/verificar_vocabulario_dos_scripts.py --autoteste
+          # assunto: texto
+          python3 scripts/verificar_vocabulario_dos_scripts.py
+          # assunto: dado
+          # 09/10/2026 (ajuste 2): todo documento pontuado aponta para o endereço, ou declara a lacuna.
+          python3 scripts/verificar_proveniencia.py --autoteste
+          # assunto: dado
+          python3 scripts/verificar_proveniencia.py
+          # assunto: dado
+          python3 scripts/proveniencia_estadual.py --autoteste
           # assunto: cor texto
           python3 scripts/verificar_conformidade.py
           # assunto: dado

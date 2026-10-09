@@ -67,6 +67,13 @@ Lote 2.8. Medido pista por pista: 12.309 das 13.503 pistas ativas tinham origem 
 recusa origem fora do esquema e rede social fora de domínio de rede ou `.gov.br`; o teto por
 município vale por classe de domínio; e um portão novo confere que todo script citado por
 workflow existe.
+## 2026-10-09 · #PR · o documento do estado vira link, e o feed perde o "Atom"
+
+Ajustes 1 e 2 de 09/10. O nome do documento no cartão do estado passa a ser o link para ele quando
+há evidência preservada no domínio do estado com o mesmo ato; sem isso, o cartão diz "endereço do
+documento não localizado até o corte" (45 de 45 hoje). Sai "Atom" do texto público. Portões novos:
+proveniência e vocabulário no texto que os scripts escrevem.
+
 ## 2026-10-09 · #PR · a aplicação no banco volta a ter rede e uma regra só
 
 Lote 2.4. O rollback do aplicador nunca disparava: `rodar_portoes()` devolve `(ok, saida)` e a
