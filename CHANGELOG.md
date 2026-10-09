@@ -33,6 +33,10 @@ Quatro fichas publicavam o texto que estava na página do PDF: "o documento É o
 
 O reconhecimento vindo da notícia do MIDR recebia a data da primeira portaria do lote e o link da notícia; dias depois o DOU trazia o ato exato, com outra data, e a deduplicação por data não casava. Eram 17 municípios com dois reconhecimentos onde houve um. A chave passa a ser (município, causa, portaria), o ato exato substitui o lote, e os 332 eventos com data de lote passam a declarar `data_aproximada`. O `except: pass` que escondia a causa virou lacuna registrada.
 
+## 2026-10-08 · #PR · A Imprensa para quando a Defesa civil para
+
+A página Defesa civil não desenha contagem de alerta com mais de 24 horas sem coleta; o instantâneo que alimenta as duas superfícies seguia publicando o número, e a Imprensa o copiava — ela dizia 489 municípios com decreto e alerta ao mesmo tempo enquanto a origem dizia "sem atualização". A regra passa ao instantâneo. E o carimbo, escrito no fuso da redação, passa a ser comparado em UTC: antes a idade do dado dependia de onde o código rodava.
+
 ## 2026-10-08 · #PR · Lote 1.2: o decreto do diário consorciado deixa de ir ao município errado
 
 A posição do decreto no PDF vinha de `texto.find(numero)` — a primeira ocorrência da string do
