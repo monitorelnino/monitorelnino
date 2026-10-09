@@ -1031,6 +1031,69 @@
  },
  {
   "data": "08/10/2026",
+  "uf": "DF",
+  "municipio": null,
+  "o_que_mudou": "a cobertura populacional do estado passa de 80,0 para 30,0 e a nota de 66,7 para 50,0",
+  "por_que": "A3-02 (D2): a camada declarada contava população duas vezes — o desconto do excedente ignorava municípios já creditados por `estrutura` e `coberto_estadual`, e o contador de planos desatualizados era somado ao de planos sem desconto nem teto. Passa a um termo só, com teto no número de municípios da UF. Portão: `scripts/verificar_camada_declarada.py`. Errata C31 na corrente do congelamento.",
+  "achado": "A3-02",
+  "lote": "1.8"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "GO",
+  "municipio": null,
+  "o_que_mudou": "a cobertura populacional do estado passa de 7,5 para 7,4 e a nota de 69,2 para 69,1",
+  "por_que": "A3-02 (D2): a camada declarada contava população duas vezes — o desconto do excedente ignorava municípios já creditados por `estrutura` e `coberto_estadual`, e o contador de planos desatualizados era somado ao de planos sem desconto nem teto. Passa a um termo só, com teto no número de municípios da UF. Portão: `scripts/verificar_camada_declarada.py`. Errata C31 na corrente do congelamento.",
+  "achado": "A3-02",
+  "lote": "1.8"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "MA",
+  "municipio": null,
+  "o_que_mudou": "a cobertura populacional do estado passa de 19,9 para 19,4 e a nota de 45,0 para 44,8",
+  "por_que": "A3-02 (D2): a camada declarada contava população duas vezes — o desconto do excedente ignorava municípios já creditados por `estrutura` e `coberto_estadual`, e o contador de planos desatualizados era somado ao de planos sem desconto nem teto. Passa a um termo só, com teto no número de municípios da UF. Portão: `scripts/verificar_camada_declarada.py`. Errata C31 na corrente do congelamento.",
+  "achado": "A3-02",
+  "lote": "1.8"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "PR",
+  "municipio": null,
+  "o_que_mudou": "a cobertura populacional do estado passa de 29,8 para 29,4 e a nota de 64,9 para 64,8",
+  "por_que": "A3-02 (D2): a camada declarada contava população duas vezes — o desconto do excedente ignorava municípios já creditados por `estrutura` e `coberto_estadual`, e o contador de planos desatualizados era somado ao de planos sem desconto nem teto. Passa a um termo só, com teto no número de municípios da UF. Portão: `scripts/verificar_camada_declarada.py`. Errata C31 na corrente do congelamento.",
+  "achado": "A3-02",
+  "lote": "1.8"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "RR",
+  "municipio": null,
+  "o_que_mudou": "a cobertura populacional do estado passa de 69,2 para 68,2 e a nota de 48,1 para 47,7",
+  "por_que": "A3-02 (D2): a camada declarada contava população duas vezes — o desconto do excedente ignorava municípios já creditados por `estrutura` e `coberto_estadual`, e o contador de planos desatualizados era somado ao de planos sem desconto nem teto. Passa a um termo só, com teto no número de municípios da UF. Portão: `scripts/verificar_camada_declarada.py`. Errata C31 na corrente do congelamento.",
+  "achado": "A3-02",
+  "lote": "1.8"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": "RS",
+  "municipio": null,
+  "o_que_mudou": "a cobertura populacional do estado passa de 30,6 para 25,4 e a nota de 55,2 para 53,5",
+  "por_que": "A3-02 (D2): a camada declarada contava população duas vezes — o desconto do excedente ignorava municípios já creditados por `estrutura` e `coberto_estadual`, e o contador de planos desatualizados era somado ao de planos sem desconto nem teto. Passa a um termo só, com teto no número de municípios da UF. Portão: `scripts/verificar_camada_declarada.py`. Errata C31 na corrente do congelamento.",
+  "achado": "A3-02",
+  "lote": "1.8"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "a média nacional do MARÉ Legal passa de 45,3 para 44,6",
+  "por_que": "A3-02 (D2): a camada declarada contava população duas vezes — o desconto do excedente ignorava municípios já creditados por `estrutura` e `coberto_estadual`, e o contador de planos desatualizados era somado ao de planos sem desconto nem teto. Passa a um termo só, com teto no número de municípios da UF. Portão: `scripts/verificar_camada_declarada.py`. Errata C31 na corrente do congelamento.",
+  "achado": "A3-02",
+  "lote": "1.8"
+ },
+ {
+  "data": "08/10/2026",
   "uf": "PE",
   "municipio": null,
   "o_que_mudou": "a fração da população sob decreto no estado passa de 15,9% para 41,1%",
