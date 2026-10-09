@@ -29,8 +29,8 @@
 <script src="assets/vendor/jspdf.umd.min.js?v=98ccf17a"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=02c36ec9">
-<link rel="stylesheet" href="assets/base.css?v=d7634d4d">
-<script src="assets/mapas.js?v=a058d688"></script>
+<link rel="stylesheet" href="assets/base.css?v=b73d83e9">
+<script src="assets/mapas.js?v=d80ff2e6"></script>
 </head>
 <body>
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -78,6 +78,15 @@
     </div>
     <p class="hint">Ligações gratuitas, 24 horas, de qualquer telefone. Deixe os alertas de emergência ativados no celular: a Defesa Civil avisa sem cadastro.</p>
   </section>
+
+  <!-- 09/10/2026 (ajuste 9, editoria): a seção "Alertas de saúde agora" saiu desta página. Cada
+       alerta mora na página dele, e o recado aponta para lá — sem número, porque número aqui
+       envelheceria longe da fonte. -->
+  <nav class="recado-destinos" aria-label="Onde ver os alertas">
+    <a class="cartao recado-destino" href="saude.html"><b class="cartao-t">Alertas de saúde</b><span class="cartao-s">Dengue, doenças respiratórias e emergências sanitárias</span><span class="cartao-a">MARÉ Saúde</span></a>
+    <a class="cartao recado-destino" href="defesa-civil.html#alertas"><b class="cartao-t">Avisos de tempo</b><span class="cartao-s">Calor, chuva forte, inundações e baixa umidade</span><span class="cartao-a">Defesa civil</span></a>
+    <a class="cartao recado-destino" href="monitor-de-riscos.html"><b class="cartao-t">Riscos do ciclo no Brasil</b><span class="cartao-s">Seca, fogo, chuva e calor, previstos e observados</span><span class="cartao-a">Monitor de riscos</span></a>
+  </nav>
 
   <!-- P3 (item 10.2): "Leve com você", com botões de verdade. As funções (gerar PDF e imagem) são
        as que já existiam — só o desenho mudou. -->
@@ -130,33 +139,26 @@
 
 
 
+  <!-- 09/10/2026 (ajuste 8, editoria): socorro primeiro, uma frase numa coluna, UM controle (a
+       grade das 27 siglas) e a fonte com as duas datas separadas. Saíram o seletor, a caixa vazia
+       com instrução de uso e o "Ver todos os estados". -->
   <div class="panel" id="quem-chamar">
-    <h2>Defesa Civil do seu estado: para que serve e como falar</h2>
-    <p class="hint">O órgão estadual coordena as Defesas Civis municipais: informa sobre alertas e boletins do estado, planos de contingência, abrigos, ajuda humanitária e decretos de emergência, e recebe pedidos de informação. <strong>Não é o número para socorro imediato</strong>: em situação de risco, ligue 199 (Defesa Civil do município), 193 (Bombeiros) ou 192 (SAMU). Onde há plantão 24 horas, ele aparece no cartão. Dados transcritos do diretório oficial do Ministério da Integração e do Desenvolvimento Regional.</p>
-    <div class="contato-selecao">
-      <div>
-        <label class="sr-only" for="selUFContato">Escolha o seu estado</label>
-        <select id="selUFContato" class="seletor" aria-label="Escolha o seu estado para ver os contatos"><option value="">Escolha o seu estado…</option></select>
-      </div>
-      <div class="contato-destaque" id="contatoDestaque" aria-live="polite" hidden></div>
-      <p class="hint contato-vazio" id="contatoVazio">Escolha o seu estado ao lado para ver telefone, e-mail e portal da Defesa Civil.</p>
+    <h2>Defesa Civil do seu estado</h2>
+    <div class="emerg-cartoes emerg-cartoes--tres" role="group" aria-label="Socorro imediato">
+      <a class="emerg-cartao emerg-cartao--defesa" href="tel:199">
+        <span class="emerg-icone" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5L17 13l4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4 7.2 2 2 0 0 1 6.5 3Z"/></svg></span>
+        <b class="emerg-numero">199</b><span class="emerg-rotulo">Defesa Civil do município</span></a>
+      <a class="emerg-cartao emerg-cartao--fogo" href="tel:193">
+        <span class="emerg-icone" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5L17 13l4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4 7.2 2 2 0 0 1 6.5 3Z"/></svg></span>
+        <b class="emerg-numero">193</b><span class="emerg-rotulo">Bombeiros</span></a>
+      <a class="emerg-cartao emerg-cartao--samu" href="tel:192">
+        <span class="emerg-icone" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5L17 13l4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4 7.2 2 2 0 0 1 6.5 3Z"/></svg></span>
+        <b class="emerg-numero">192</b><span class="emerg-rotulo">Samu</span></a>
     </div>
-    <details class="acc" id="accTodosContatos">
-      <summary class="acc-summary">Ver todos os estados</summary>
-      <div class="contato-grade" id="contatoGrade"></div>
-    </details>
+    <p class="contato-frase">O órgão estadual coordena as Defesas Civis municipais: emite alertas e boletins, cuida dos planos de contingência, dos abrigos, da ajuda humanitária e dos decretos de emergência, e responde a pedidos de informação. Não é o número de socorro imediato.</p>
+    <div class="contato-siglas" id="contatoSiglas" role="group" aria-label="Estados"></div>
+    <div class="contato-destaque" id="contatoDestaque" aria-live="polite" hidden></div>
     <div id="contatoFonte"></div>
-  </div>
-
-  <div class="panel" id="alertas-saude">
-    <h2>Alertas de saúde agora</h2>
-    <p class="hint">O que os órgãos de saúde estão registrando em cada estado, como dengue, doenças respiratórias e diarreia. Os mesmos dados da página <a href="saude.html#observado">MARÉ Saúde</a>. Quando uma fonte não foi coletada, o estado aparece sem dado.</p>
-    <div class="grade-cartoes" id="alertasSaude">
-      <div class="cartao cartao--acento-seca"><b class="cartao-t">Dengue nas capitais</b><span class="cartao-s" id="asDengue">Carregando…</span><a class="cartao-a" href="saude.html#observado">ver mapa na página de Saúde</a></div>
-      <div class="cartao cartao--acento-seca"><b class="cartao-t">Avisos e alertas em vigor</b><span class="cartao-s" id="asCalor">Carregando…</span><a class="cartao-a" href="defesa-civil.html#alertas">ver por município na Defesa civil</a></div>
-      <div class="cartao cartao--acento-neutro-topo"><b class="cartao-t">Emergências sanitárias declaradas</b><span class="cartao-s" id="asEmerg">Carregando…</span><a class="cartao-a" href="saude.html#observado">ver na página de Saúde</a></div>
-    </div>
-    <div id="asFonte"></div>
   </div>
 
   <div class="panel" id="direitos" data-voz="ficha">
@@ -174,7 +176,7 @@
 </div>
 
 <script src="assets/colunas.js?v=3669e58d" defer></script>
-<script src="assets/js/proteja-se.js?v=db8430ad" defer></script>
+<script src="assets/js/proteja-se.js?v=c611259f" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

@@ -5,15 +5,13 @@ function gerarPDFGuia(){
   const doc = new window.jspdf.jsPDF({unit:'pt', format:'a4'});
   const W = doc.internal.pageSize.getWidth(), H = doc.internal.pageSize.getHeight(), M = 52;
   let y = 0;
-  const marca = () => { doc.saveGraphicsState(); doc.setGState(new doc.GState({opacity:0.06}));
-    doc.setFont('times','italic'); doc.setFontSize(120); doc.setTextColor(60,60,60);
-    doc.text('MARÉ', W/2, H/2, {angle:45, align:'center'}); doc.restoreGraphicsState(); };
+  // 09/10/2026 (ajuste 7): a marca d'água "MARÉ" saiu — as letras vazavam no meio das frases no
+  // texto copiado e no leitor de tela. A marca fica só no cabeçalho.
   const rod = () => { doc.setFont('helvetica','normal'); doc.setFontSize(8.5); doc.setTextColor(120,110,95);
     doc.text('MARÉ · Proteja-se · Guia de proteção para o ciclo 2026/2027', M, H-30);
     doc.text('© 2026 Futura Evidence Lab. Todos os direitos reservados.', M, H-18);
     doc.text('Página ' + doc.internal.getNumberOfPages(), W-M, H-18, {align:'right'}); };
-  const nova = () => { rod(); doc.addPage(); marca(); y = M; };
-  marca();
+  const nova = () => { rod(); doc.addPage(); y = M; };
   doc.addImage(LOGO_MARE_PDF, 'PNG', M, 42, 150, 57);
   doc.setFont('helvetica','bold'); doc.setFontSize(16); doc.setTextColor(21,32,26);
   doc.text('Proteja-se: orientações oficiais e alertas', M, 128);
@@ -41,7 +39,7 @@ function gerarPDFGuia(){
     doc.roundedRect(bx, y, boxW, boxH, 5, 5, 'F');
     doc.setFont('helvetica','bold'); doc.setFontSize(15); doc.setTextColor(255,255,255);
     doc.text(e.num, bx + boxW/2, y + 21, {align:'center'});
-    doc.setFont('helvetica','bold'); doc.setFontSize(6.3); doc.setTextColor(255,255,255);
+    doc.setFont('helvetica','bold'); doc.setFontSize(9); doc.setTextColor(255,255,255);   // 09/10: mínimo legível impresso
     doc.text(e.nome, bx + boxW/2, y + 34, {align:'center'});
     bx += boxW + gapCx;
   });
@@ -56,140 +54,126 @@ function gerarPDFGuia(){
   doc.setFont('helvetica','bold'); doc.setFontSize(13.5); doc.setTextColor(21,32,26);
   doc.text('Como se proteger em cada cenário', M, y); y += 17;
   doc.setFont('helvetica','normal'); doc.setFontSize(10.5); doc.setTextColor(40,52,44);
-  const linhasHint = doc.splitTextToSize('Recomendações de segurança para os três riscos do ciclo, válidas em todo o país, antes, durante e depois do evento.', W - 2*M);
+  const linhasHint = doc.splitTextToSize('Recomendações de segurança para os quatro riscos do ciclo, válidas em todo o país, antes, durante e depois do evento.', W - 2*M);
   doc.text(linhasHint, M, y); y += linhasHint.length * 14.5 + 8;
   const CORES_RISCO = {'r-chuva':[94,124,147], 'r-seca':[201,129,75], 'r-fogo':[124,74,52]};
-  document.querySelectorAll('.wrap .ficha h2, .wrap .ficha h3, .wrap .ficha p, .wrap .ficha li').forEach(el => {
-    const txt = el.textContent.replace(/\s+/g,' ').trim();
-    if (!txt) return;
-    const nivel = el.tagName === 'H2' ? 2 : el.tagName === 'H3' ? 3 : 0;
-    const ficha = el.closest('.ficha');
-    const corRisco = ficha && Object.keys(CORES_RISCO).find(c => ficha.classList.contains(c));
-    doc.setFont('helvetica', nivel ? 'bold' : 'normal');
-    doc.setFontSize(nivel === 2 ? 13.5 : nivel === 3 ? 11.5 : 10.5);
-    if (nivel === 2) doc.setTextColor(...(corRisco ? CORES_RISCO[corRisco] : [166,95,63]));
-    else if (nivel === 3) doc.setTextColor(53,86,107); else doc.setTextColor(40,52,44);
-    const linhas = doc.splitTextToSize((el.tagName === 'LI' ? '•  ' : '') + txt, W - 2*M);
-    const alt = linhas.length * (nivel ? 17 : 14.5) + (nivel ? 10 : 3);
-    if (y + alt > H - 60) nova();
-    if (nivel) y += 8;
-    doc.text(linhas, M, y); y += alt;
+  // 09/10/2026 (ajuste 7): quebra de página por BLOCO. Título de seção nunca fica sem pelo menos
+  // três linhas abaixo na mesma página; subtítulo + itens não se partem; a fonte é uma unidade, com
+  // "ver na fonte" como link inteiro (a seta saiu: a fonte padrão do PDF não tem o glifo).
+  const LH = 12.8, LH_T = 15, larg = W - 2*M;   // espaçamento que cabe o guia em duas páginas
+  const medir = (txt, tam, estilo) => { doc.setFont('helvetica', estilo); doc.setFontSize(tam); return doc.splitTextToSize(txt, larg); };
+  const blocos = [];
+  document.querySelectorAll('.wrap .ficha').forEach(ficha => {
+    const corRisco = Object.keys(CORES_RISCO).find(c => ficha.classList.contains(c));
+    const cor = corRisco ? CORES_RISCO[corRisco] : [166,95,63];
+    const h2 = ficha.querySelector('h2');
+    const itens = [];
+    ficha.querySelectorAll('.ficha-col').forEach(col => {
+      const h3 = col.querySelector('h3');
+      const lis = [...col.querySelectorAll('li')].map(li => li.textContent.replace(/\s+/g,' ').trim()).filter(Boolean);
+      itens.push({h3: h3 ? h3.textContent.trim() : '', lis});
+    });
+    const alerta = ficha.querySelector('.ficha-alerta');
+    const fonteEl = ficha.querySelector('.ficha-fonte');
+    const link = fonteEl ? fonteEl.querySelector('a') : null;
+    blocos.push({h2: h2 ? h2.textContent.trim() : '', cor, itens,
+      alerta: alerta ? [...alerta.childNodes].map(n => n.textContent.trim()).filter(Boolean).join(': ').replace(/\s+/g,' ') : '',
+      fonte: fonteEl ? fonteEl.textContent.replace(/\s+/g,' ').replace(/\s*·?\s*ver na fonte\s*→?\s*$/,'').trim() : '',
+      url: link ? link.href : ''});
+  });
+  const alturaSub = it => LH_T + 6 + it.lis.reduce((s, t) => s + medir('•  ' + t, 9.8, 'normal').length * LH + 2, 0);
+  blocos.forEach(b => {
+    const primeiro = b.itens[0];
+    const minimo = LH_T + 10 + (primeiro ? LH_T + 6 + 3 * LH : 3 * LH);
+    if (y + minimo > H - 60) nova();
+    y += 6; doc.setFont('helvetica','bold'); doc.setFontSize(13.5); doc.setTextColor(...b.cor);
+    doc.text(b.h2, M, y); y += LH_T + 4;
+    b.itens.forEach(it => {
+      const alt = alturaSub(it);
+      if (y + Math.min(alt, H - 2*M) > H - 60) nova();
+      if (it.h3) { doc.setFont('helvetica','bold'); doc.setFontSize(11.5); doc.setTextColor(53,86,107);
+        doc.text(it.h3, M, y); y += LH_T; }
+      it.lis.forEach(t => { const l = medir('•  ' + t, 9.8, 'normal');
+        if (y + l.length * LH > H - 60) nova();
+        doc.setFont('helvetica','normal'); doc.setFontSize(9.8); doc.setTextColor(40,52,44);
+        doc.text(l, M, y); y += l.length * LH + 2; });
+      y += 4;
+    });
+    if (b.alerta) { const l = medir(b.alerta, 9.8, 'bold'); if (y + l.length * LH > H - 60) nova();
+      doc.setFont('helvetica','bold'); doc.setFontSize(9.8); doc.setTextColor(124,74,52); doc.text(l, M, y); y += l.length * LH + 4; }
+    if (b.fonte) {
+      const l = medir(b.fonte, 9, 'normal');
+      if (y + (l.length + 1) * 12 > H - 60) nova();
+      doc.setFont('helvetica','normal'); doc.setFontSize(9); doc.setTextColor(110,100,85);
+      doc.text(l, M, y); y += l.length * 12;
+      if (b.url) { doc.setTextColor(53,86,107); doc.textWithLink('ver na fonte', M, y, {url: b.url}); y += 12; }
+      y += 8;
+    }
   });
   doc.setFont('helvetica','italic'); doc.setFontSize(9); doc.setTextColor(110,100,85);
   const aviso = doc.splitTextToSize('Conteúdo orientativo baseado em fontes oficiais nomeadas na plataforma; em emergência, siga sempre as instruções da Defesa Civil local (199) e dos Bombeiros (193). Versão viva do guia: monitorelnino.com.br/proteja-se.html.', W - 2*M);
   if (y + aviso.length*13 > H - 60) nova();
   y += 6; doc.text(aviso, M, y);
   rod();
+  if (window.__GUIA_TESTE) { window.__GUIA_TESTE.pdf = doc; return; }
   doc.save('guia-proteja-se-el-nino-2026-2027.pdf');
 }
 
 // ===== proteja-se.html · bloco 2 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
 window.addEventListener('load', function(){ if (window.VLibras && window.VLibras.Widget) { try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {} } });
 
-// ===== proteja-se.html · bloco 3 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
-// Alertas de saúde do momento: MESMOS arquivos e MESMAS regras da página de Saúde (saude.html),
-// sem cópia de números à mão. Qualquer falha de carga vira lacuna declarada no próprio cartão.
-(async function(){
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const el = id => document.getElementById(id);
-  let SSIN = null, SINAIS = null;
-  let ALERTAS = null;
-  try { [SSIN, SINAIS] = await Promise.all(['data/saude_sinais.json','data/sinais_risco.json'].map(f => fetch(f).then(r => { if(!r.ok) throw new Error(f); return r.json(); }))); }
-  catch(e) { ['asDengue','asCalor','asEmerg'].forEach(id => el(id).textContent = 'Não foi possível carregar os dados desta camada agora — lacuna declarada.'); return; }
-  /* Alertas por município (24/09/2026): arquivo próprio. Ausência vira lacuna declarada no cartão,
-     nunca "nenhum aviso em vigor" — que é o que o código anterior dizia todos os dias por um defeito. */
-  try { ALERTAS = await fetch('data/alertas/vigentes.json').then(r => r.ok ? r.json() : null); } catch(e) { ALERTAS = null; }
-  // Dengue (InfoDengue, capitais): mostra as capitais em nível 2 ou mais; nível é vocabulário da fonte.
-  const NIV = {1:'nível 1 (baixa atividade)', 2:'nível 2 (atenção)', 3:'nível 3 (alerta)', 4:'nível 4 (emergência)'};
-  const caps = Object.entries(SSIN.dengue_capitais || {});
-  const fD = (SSIN.fontes || {}).infodengue || {};
-  if (!caps.length || fD.status !== 'coletado') {
-    el('asDengue').textContent = 'Não localizamos coleta desta fonte até o corte — lacuna declarada.';
-  } else {
-    const altas = caps.filter(([uf,d]) => (d.nivel||0) >= 2).sort((a,b) => (b[1].nivel||0)-(a[1].nivel||0));
-    el('asDengue').innerHTML = (altas.length
-      ? altas.map(([uf,d]) => '<strong>' + esc(d.municipio) + '/' + esc(uf) + '</strong> — ' + esc(NIV[d.nivel] || ('nível ' + d.nivel))).join('<br>')
-      : 'Nenhuma capital em nível 2 ou acima na última coleta (' + caps.length + ' capitais consultadas).')
-      + '<br><small>Última semana epidemiológica disponível · capitais apenas, não representa o estado.</small>';
-  }
-  /* Avisos e alertas em vigor, por estado, com os TIPOS que o órgão nomeou.
-     O código anterior filtrava avisos de calor lendo `a.lista`/`a.avisos` dentro de `avisos_inmet` —
-     campos que o agregado por UF nunca teve. O filtro devolvia sempre lista vazia, e o cartão dizia
-     "Nenhum aviso de calor vigente" TODOS OS DIAS, inclusive com aviso em vigor. Agora lê o arquivo
-     por município, que traz o tipo declarado, e ausência de arquivo é lacuna, não calma. */
-  const fI = (SINAIS.fontes || {}).inmet_avisos || {};
-  if (!ALERTAS || !ALERTAS.municipios) {
-    el('asCalor').textContent = 'Não localizamos coleta de avisos e alertas até o corte — lacuna declarada.';
-  } else {
-    const porUf = {};
-    Object.values(ALERTAS.municipios).forEach(function(m){
-      const d = porUf[m.uf] = porUf[m.uf] || {n: 0, tipos: new Set()};
-      d.n++;
-      (m.inmet || []).forEach(a => d.tipos.add(a.tipo));
-      (m.cemaden || []).forEach(a => d.tipos.add(a.tipo || 'tipo não declarado'));
-    });
-    const ordenadas = Object.entries(porUf).sort((a, b) => b[1].n - a[1].n);
-    el('asCalor').innerHTML = (ordenadas.length
-      ? ordenadas.map(([uf, d]) => '<strong>' + esc(uf) + '</strong> — ' + d.n + ' município(s): '
-          + esc([...d.tipos].sort().join(', '))).join('<br>')
-      : 'Nenhum município sob aviso ou alerta na última consulta.')
-      + '<br><small>Consultado em ' + esc(ALERTAS.gerado_em || '—') + '.</small>';
-  }
-  // Emergências sanitárias (ESPIN e decretos por dengue/calor): resposta, peso zero.
-  // 24/09/2026: enquanto não havia coletor, o cartão só sabia dizer "coleta em andamento" —
-  // frase que serve para quem não procurou. Com a busca no DOU rodando, ele passa a distinguir
-  // os estados que o projeto separa. O CONTADOR vem só do banco (`emergencias`), que é humano:
-  // o que o coletor classificou sozinho está na fila de leitura (R7) e não é registro, então
-  // aparece como ato localizado em conferência — nunca como emergência registrada.
-  const fE = (SSIN.fontes || {}).espin || {};
-  const bE = SSIN.espin_busca || null;
-  const nE = (SSIN.emergencias || []).length;
-  const emConferencia = bE ? ((bE.declaracoes || []).length + (bE.para_leitura_humana || []).length) : 0;
-  const naoLidos = bE ? (bE.nao_lidos || []).length : 0;
-  const janela = bE ? ('janela de ' + MonitorMapas.dataBR(bE.janela.de) + ' a ' + MonitorMapas.dataBR(bE.janela.ate)
-                       + ', consultada em ' + bE.consultado_em) : '';
-  el('asEmerg').textContent = nE
-    ? (nE + ' emergência(s) sanitária(s) registrada(s) — atos de resposta, registro à parte, peso zero.')
-    : !(fE.status === 'coletado' && bE)
-      ? 'Nenhuma emergência sanitária registrada até o corte (fonte: DOU e diários municipais; coleta em andamento).'
-      : emConferencia
-        ? (emConferencia + ' ato(s) localizado(s) no Diário Oficial da União, seção 1, ' + janela + ', em conferência antes de entrar no registro.')
-        : naoLidos
-          ? ('Consulta ao Diário Oficial da União, seção 1, ' + janela + '; ' + naoLidos + ' ato(s) não puderam ser abertos.')
-          : ('Nenhuma declaração localizada no Diário Oficial da União, seção 1, na ' + janela + '.');
-  MonitorMapas.credito('asFonte', {fontes: ['modelo InfoDengue (Fiocruz/FGV)', 'Painel de Arboviroses (MS)', 'INMET', 'DOU e diários municipais (ESPIN)'], data: [fD.ultima_coleta_ok, fD.consultado_em, fI.consultado_em, (SSIN || {}).gerado_em, (SINAIS || {}).gerado_em].find(Boolean) || null});
-})();
+// 09/10/2026 (ajuste 9): o bloco "Alertas de saúde agora" saiu desta página; cada alerta mora na
+// página dele (MARÉ Saúde e Defesa civil), e o recado do topo aponta para lá.
 
 // handler do botão de PDF (era onclick inline; CSP sem unsafe-inline)
 { const b = document.getElementById('btnPdfGuia'); if (b && typeof gerarPDFGuia === 'function') b.addEventListener('click', gerarPDFGuia); }
 
 // 15/09/2026 (pedido da editoria): "Defesa Civil do seu estado" — um cartão por UF, com telefones, plantão, e-mail, portal
 // e expediente lidos de data/contatos_uf.json (transcrição do diretório oficial do MIDR). Nada digitado aqui.
+// 09/10/2026 (ajuste 8, editoria): UM controle — a grade das 27 siglas, em ordem alfabética, com
+// `aria-pressed`. Ao escolher, o cartão do estado abre logo abaixo, na largura da grade. Sem estado
+// escolhido, nada abaixo da grade (nenhuma instrução). A fonte diz as duas datas separadas.
 (function(){
-  const sel = document.getElementById('selUFContato'), dest = document.getElementById('contatoDestaque'), grade = document.getElementById('contatoGrade'); if (!sel || !grade) return;
+  const siglas = document.getElementById('contatoSiglas'), dest = document.getElementById('contatoDestaque');
+  if (!siglas || !dest) return;
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const tel = t => '<a href="tel:+55' + String(t).replace(/\D/g, '') + '">' + esc(t) + '</a>';
-  const cartao = (uf, c, grande) => {
+  const cartao = (uf, c) => {
     const host = c.portal ? c.portal.replace(/^https?:\/\//, '').replace(/\/$/, '') : '';
-    return '<article class="contato' + (grande ? ' contato--grande' : '') + '" id="contato-' + uf + '">' +
-      '<div class="contato-topo"><span class="contato-uf">' + esc(uf) + '</span><span class="contato-nome">' + esc(c.nome) + '</span></div>' +
+    return '<article class="contato contato--grande" id="contato-' + uf + '">' +
+      '<div class="contato-topo"><span class="contato-uf">' + esc(uf) + '</span><span class="contato-nome">' + esc(c.nome) + '</span>'
+      + (c.plantao_24h && c.plantao_24h.length ? '<span class="selo-plantao">plantão 24 h</span>' : '') + '</div>' +
       '<p class="contato-orgao">' + esc(c.orgao) + '</p>' +
       '<dl class="contato-lista">' +
       '<dt>Telefone' + (c.telefones.length > 1 ? 's' : '') + '</dt><dd>' + c.telefones.map(tel).join(' · ') + (c.expediente ? ' <span class="u-muted">(' + esc(c.expediente) + ')</span>' : '') + '</dd>' +
       (c.plantao_24h && c.plantao_24h.length ? '<dt>Plantão 24 h</dt><dd>' + c.plantao_24h.map(tel).join(' · ') + '</dd>' : '') +
       (c.email ? '<dt>E-mail</dt><dd><a href="mailto:' + esc(c.email) + '">' + esc(c.email) + '</a></dd>' : '') +
-      '<dt>Portal</dt><dd>' + (c.portal ? '<a href="' + esc(c.portal) + '" target="_blank" rel="noopener">' + esc(host) + '</a>' : 'sem portal dedicado no diretório oficial · use telefone e e-mail') + '</dd>' +
+      (c.portal ? '<dt>Portal</dt><dd><a href="' + esc(c.portal) + '" target="_blank" rel="noopener">' + esc(host) + '</a></dd>' : '') +
       '</dl></article>';
   };
   fetch('data/contatos_uf.json').then(r => r.ok ? r.json() : null).then(D => {
-    if (!D || !D.uf) { grade.innerHTML = '<p class="note">Contatos não carregados.</p>'; return; }
+    if (!D || !D.uf) { siglas.innerHTML = '<p class="note">Contatos não carregados.</p>'; return; }
     const ufs = Object.keys(D.uf).sort();
-    ufs.forEach(uf => { const o = document.createElement('option'); o.value = uf; o.textContent = D.uf[uf].nome; sel.appendChild(o); });
-    grade.innerHTML = ufs.map(uf => cartao(uf, D.uf[uf], false)).join('');
-    const vazio = document.getElementById('contatoVazio');
-    sel.addEventListener('change', () => { const uf = sel.value; if (!uf) { dest.hidden = true; dest.innerHTML = ''; if (vazio) vazio.hidden = false; return; } dest.innerHTML = cartao(uf, D.uf[uf], true); dest.hidden = false; if (vazio) vazio.hidden = true; });
-    const f = D.fonte || {}; if (window.MonitorMapas) MonitorMapas.credito('contatoFonte', {fontes: [(f.nome || 'MIDR') + (f.atualizado_pelo_orgao_em ? ', atualizado pelo órgão em ' + f.atualizado_pelo_orgao_em : ''), 'números nacionais de emergência'], url: f.url, data: f.consultado_em});
-  }).catch(() => { grade.innerHTML = '<p class="note">Contatos não carregados.</p>'; });
+    siglas.innerHTML = ufs.map(uf => '<button type="button" aria-pressed="false" data-uf="' + esc(uf)
+      + '" aria-label="' + esc(D.uf[uf].nome) + '">' + esc(uf) + '</button>').join('');
+    siglas.addEventListener('click', ev => {
+      const b = ev.target.closest('button[data-uf]'); if (!b) return;
+      const ja = b.getAttribute('aria-pressed') === 'true';
+      siglas.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', 'false'));
+      if (ja) { dest.hidden = true; dest.innerHTML = ''; return; }
+      b.setAttribute('aria-pressed', 'true');
+      dest.innerHTML = cartao(b.dataset.uf, D.uf[b.dataset.uf]); dest.hidden = false;
+    });
+    const f = D.fonte || {};
+    // As duas datas separadas e nomeadas, no formato único de crédito do site (a regra de crédito
+    // vence o texto literal do pedido; divergência registrada no PR): o órgão atualizou o diretório
+    // em uma data, e o MARÉ o transcreveu em outra.
+    if (window.MonitorMapas) MonitorMapas.credito('contatoFonte', {
+      fontes: ['Diretório da Defesa Civil nos Estados (MIDR)'
+        + (f.atualizado_pelo_orgao_em ? ', atualizado pelo órgão em ' + f.atualizado_pelo_orgao_em : '')
+        + (f.consultado_em ? ', transcrito em ' + f.consultado_em : '')],
+      url: f.url, data: f.consultado_em});
+  }).catch(() => { siglas.innerHTML = '<p class="note">Contatos não carregados.</p>'; });
 })();
 
 // 18/09/2026 (pedido da editoria): a imagem só tinha os telefones — precisa das dicas por risco também.
@@ -201,7 +185,7 @@ function gerarImagemGuia(){
   if (btn) { btn.disabled = true; btn.querySelector('span').textContent = 'Gerando…'; }
   const concluir = () => { if (btn) { btn.disabled = false; btn.querySelector('span').textContent = rotuloOriginal; } };
 
-  const W = 1080, H = 1780;
+  const W = 1080, H = 2200;
   const canvas = document.createElement('canvas'); canvas.width = W; canvas.height = H;
   const ctx = canvas.getContext('2d');
 
@@ -212,24 +196,19 @@ function gerarImagemGuia(){
     {num:'190', nome:'Polícia Militar', cor:'rgb(14,15,13)'},
     {num:'40199', nome:'Alertas por SMS', cor:'rgb(46,61,48)'},
   ];
-  const RISCOS = [
-    {nome:'Chuvas intensas, enchentes e deslizamentos', cor:'rgb(94,124,147)', dicas:[
-      'Não atravesse água em movimento: 15 cm de correnteza derrubam um adulto',
-      'Vá para um local alto e siga a Defesa Civil (199)',
-      'Beba apenas água tratada ou fervida depois da enchente',
-    ]},
-    {nome:'Incêndios e fumaça', cor:'rgb(124,74,52)', dicas:[
-      'Mantenha portas e janelas fechadas nos dias de fumaça densa',
-      'Máscara PFF2/N95 reduz a inalação de partículas finas',
-      'Falta de ar, dor no peito ou confusão mental: atendimento imediato',
-    ]},
-    {nome:'Estiagem, seca e calor', cor:'rgb(201,129,75)', dicas:[
-      'Aumente a ingestão de água e procure locais frescos',
-      'Evite atividade física ao ar livre nas horas mais quentes',
-      'Náusea, vômito, febre ou confusão: procure atendimento de saúde',
-    ]},
-  ];
+  // 09/10/2026 (ajuste 7): UM conteúdo de origem para o PDF e para a imagem — as fichas da própria
+  // página, com a mesma divisão (chuva, fogo, seca, calor). A imagem leva as três primeiras
+  // orientações da coluna "durante" de cada ficha (ou da primeira coluna, se não houver segunda).
+  const CORES = {'r-chuva':'rgb(94,124,147)', 'r-fogo':'rgb(124,74,52)', 'r-seca':'rgb(201,129,75)', 'r-calor':'rgb(176,64,40)'};
+  const RISCOS = [...document.querySelectorAll('.wrap .ficha')].map(f => {
+    const cols = [...f.querySelectorAll('.ficha-col')];
+    const col = cols[1] || cols[0];
+    return {nome: (f.querySelector('h2') || {}).textContent || '',
+            cor: CORES[Object.keys(CORES).find(k => f.classList.contains(k))] || 'rgb(85,100,85)',
+            dicas: col ? [...col.querySelectorAll('li')].slice(0, 3).map(li => li.textContent.replace(/\s+/g, ' ').trim()) : []};
+  }).filter(r => r.nome && r.dicas.length);
 
+  const FONTES_DA_IMAGEM = ['300 42px Fraunces', '400 22px Archivo', '700 24px Archivo', '700 20px "Archivo Narrow"'];
   const carregarImagem = src => new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = rej; im.src = src; });
   const roundRect = (x, y, w, h, r) => { if (ctx.roundRect) { ctx.beginPath(); ctx.roundRect(x, y, w, h, r); return; }
     ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); };
@@ -240,7 +219,11 @@ function gerarImagemGuia(){
 
   Promise.all([
     carregarImagem(typeof LOGO_MARE_PDF !== 'undefined' ? LOGO_MARE_PDF : ''),
-    document.fonts ? document.fonts.load('300 40px Fraunces').then(() => document.fonts.load('400 24px "Archivo Narrow"')).then(() => document.fonts.load('700 26px Archivo')).catch(() => {}) : Promise.resolve(),
+    // 09/10/2026 (ajuste 7): as três famílias carregadas ANTES de desenhar. Sem elas, a imagem saía
+    // em Times e Arial; agora, sem fonte, a imagem não sai — e a pessoa é avisada.
+    document.fonts ? Promise.all(FONTES_DA_IMAGEM.map(f => document.fonts.load(f))).then(() => {
+      if (!FONTES_DA_IMAGEM.every(f => document.fonts.check(f))) throw new Error('fontes');
+    }) : Promise.reject(new Error('fontes'))
   ]).then(([logo]) => {
     ctx.fillStyle = 'rgb(255,255,255)'; ctx.fillRect(0, 0, W, H);
     const M = 70; let y = 60;
@@ -280,22 +263,22 @@ function gerarImagemGuia(){
     RISCOS.forEach(r => {
       ctx.fillStyle = r.cor; roundRect(M, y, 8, 34, 4); ctx.fill();
       ctx.font = '700 27px Archivo, Arial, sans-serif'; ctx.fillStyle = 'rgb(14,15,13)';
-      ctx.fillText(r.nome, M + 24, y + 26); y += 50;
+      ctx.fillText(r.nome, M + 24, y + 26); y += 26 + 42;   // espaço fixo título → lista, igual ao entre itens
       ctx.font = '400 23px Archivo, Arial, sans-serif'; ctx.fillStyle = 'rgb(30,30,28)';
       r.dicas.forEach(d => {
-        ctx.fillStyle = r.cor; ctx.beginPath(); ctx.arc(M + 14, y - 8, 5, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = r.cor; ctx.beginPath(); ctx.arc(M + 14, y - 7.5, 5, 0, Math.PI * 2); ctx.fill();   // centro na altura-x do texto
         ctx.fillStyle = 'rgb(30,30,28)';
         const linhas = quebrar(d, boxW - 46);
         linhas.forEach((linha, i) => { ctx.fillText(linha, M + 34, y + i * 30); });
         y += linhas.length * 30 + 12;
       });
-      y += 20;
+      y += 14;
     });
 
     ctx.strokeStyle = 'rgb(216,211,200)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(M, y); ctx.lineTo(W - M, y); ctx.stroke();
     y += 34;
     ctx.textAlign = 'center'; ctx.font = '400 20px Archivo, Arial, sans-serif'; ctx.fillStyle = 'rgb(85,100,85)';
-    ctx.fillText('Guia completo, com orientações por cenário: monitorelnino.com.br/proteja-se', W / 2, y); y += 30;
+    ctx.fillText('Guia completo, com orientações por cenário: monitorelnino.com.br/proteja-se.html', W / 2, y); y += 30;
     ctx.font = '400 17px Archivo, Arial, sans-serif'; ctx.fillStyle = 'rgb(138,132,120)';
     ctx.fillText('Gerado em ' + new Date().toLocaleDateString('pt-BR') + ' · © 2026 Futura Evidence Lab', W / 2, y);
 
@@ -303,13 +286,15 @@ function gerarImagemGuia(){
     const canvasFinal = alturaReal < H ? (() => { const c2 = document.createElement('canvas'); c2.width = W; c2.height = alturaReal;
       c2.getContext('2d').drawImage(canvas, 0, 0); return c2; })() : canvas;
 
+    if (window.__GUIA_TESTE) { window.__GUIA_TESTE.imagem = canvasFinal; concluir(); return; }
     canvasFinal.toBlob(blob => {
       const a = document.createElement('a'); const url = URL.createObjectURL(blob);
       a.href = url; a.download = 'mare-proteja-se-emergencia.jpg'; document.body.appendChild(a); a.click();
       document.body.removeChild(a); setTimeout(() => URL.revokeObjectURL(url), 4000);
       concluir();
     }, 'image/jpeg', 0.92);
-  }).catch(() => { alert('Não foi possível gerar a imagem agora.'); concluir(); });
+  }).catch(e => { if (window.__GUIA_TESTE) window.__GUIA_TESTE.recusa = String(e && e.message);
+    alert(e && e.message === 'fontes' ? 'Não foi possível carregar as fontes do site agora; a imagem não foi gerada. Tente de novo em instantes.' : 'Não foi possível gerar a imagem agora.'); concluir(); });
 }
 { const b = document.getElementById('btnImagemGuia'); if (b) b.addEventListener('click', gerarImagemGuia); }
 

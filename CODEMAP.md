@@ -20,11 +20,11 @@ Atualizado em 09/10/2026.
 | `imprensa.html` | imprensa.html | `cadencia_publicacao.json`, `meta.json`, `monitor_saude.json`, `publicacao.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
 | `index.html` | index.html | `atos_resposta.json`, `chuvas.json`, `cobertura_qd.json`, `consist.json`, `enquadramento_card.json`, `estados.json` (+25) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_publicado_navegador.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
 | `indice-de-conteudo.html` | indice-de-conteudo.html | — | — | — | não |
-| `monitor-de-riscos.html` | monitor-de-riscos.html | `.cartao-mapa-boletim.json`, `.figura-sub.json`, `.figura-titulo.json`, `AC.json`, `AL.json`, `AM.json` (+65) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
+| `monitor-de-riscos.html` | monitor-de-riscos.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+62) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
 | `mudancas.html` | mudancas.html | `blog/posts.json`, `publicacao.json` | — | — | não |
 | `obrigado.html` | obrigado.html | `publicacao.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_legendas.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
 | `prefeituras.html` | prefeituras.html | `publicacao.json` | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_legendas.js`, `verificar_publicado_navegador.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
-| `proteja-se.html` | proteja-se.html | `alertas/vigentes.json`, `contatos_uf.json`, `publicacao.json`, `saude_sinais.json`, `sinais_risco.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
+| `proteja-se.html` | proteja-se.html | `contatos_uf.json`, `publicacao.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
 | `saude.html` | saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+57) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_publicado_navegador.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
 | `assets/acesso.js` | blog.html, defesa-civil.html, financiamento.html, imprensa.html, index.html, monitor-de-riscos.html, mudancas.html, obrigado.html, prefeituras.html, proteja-se.html, saude.html | `publicacao.json` | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_publicado_navegador.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
 | `assets/js/blog.js` | blog.html, mudancas.html | `blog/posts.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
@@ -36,10 +36,10 @@ Atualizado em 09/10/2026.
 | `assets/js/imprensa.js` | imprensa.html | `cadencia_publicacao.json`, `meta.json`, `monitor_saude.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
 | `assets/js/index.js` | index.html | `atos_resposta.json`, `chuvas.json`, `cobertura_qd.json`, `consist.json`, `enquadramento_card.json`, `estados.json` (+24) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_publicado_navegador.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
 | `assets/mapas.js` | blog.html, defesa-civil.html, financiamento.html, index.html, monitor-de-riscos.html, mudancas.html, proteja-se.html, saude.html | — | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_publicado_navegador.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
-| `assets/js/monitor-de-riscos.js` | monitor-de-riscos.html | `.cartao-mapa-boletim.json`, `.figura-sub.json`, `.figura-titulo.json`, `AC.json`, `AL.json`, `AM.json` (+48) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
+| `assets/js/monitor-de-riscos.js` | monitor-de-riscos.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+45) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
 | `assets/js/obrigado.js` | obrigado.html | — | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_legendas.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
 | `assets/js/prefeituras.js` | prefeituras.html | — | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_legendas.js`, `verificar_publicado_navegador.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
-| `assets/js/proteja-se.js` | proteja-se.html | `alertas/vigentes.json`, `contatos_uf.json`, `saude_sinais.json`, `sinais_risco.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
+| `assets/js/proteja-se.js` | proteja-se.html | `contatos_uf.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
 | `assets/js/proveniencia.js` | financiamento.html, monitor-de-riscos.html, saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+36) | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_publicado_navegador.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
 | `assets/js/saude.js` | saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+42) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_publicado_navegador.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
 | `_p3.py` | — | — | — | — | não |
@@ -95,7 +95,7 @@ Atualizado em 09/10/2026.
 | `coletar_srag_sivep.py` | — | `saude_desfechos/srag_serie.json`, `saude_desfechos/srag_sivep_agregados.json` | — | — | não |
 | `coletar_transferegov.py` | — | `financiamento/consultas.json`, `financiamento/por_uf.json`, `financiamento/programas_faf_2026.json`, `financiamento/serie_nacional.json`, `transferegov_el_nino_revisar.json` | — | — | não |
 | `coletar_transferencias_municipais.py` | — | `estados.json`, `indice.json`, `monitor_saude.json`, `municipios.json`, `saude_uf.json`, `transferencias_uniao.json` | — | — | não |
-| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `evidencias.json`, `fontes_consultadas.json`, `log_buscas.json`, `robots_registro.json` (+1) | — | **178** | não |
+| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `evidencias.json`, `fontes_consultadas.json`, `log_buscas.json`, `robots_registro.json` (+1) | — | **179** | não |
 | `consultar_querido_diario.py` | — | `pistas_querido_diario.json` | — | 1 | não |
 | `converter_contribuicao.py` | — | — | — | — | SIM |
 | `descobrir_dominios.py` | — | `dominios_oficiais.json` | — | — | não |
@@ -123,7 +123,7 @@ Atualizado em 09/10/2026.
 | `gerar_selos.py` | — | — | — | 1 | não |
 | `juiz.py` | — | — | — | 9 | SIM |
 | `julgar_e_aplicar_descobertas.py` | — | `atos_resposta.json`, `consist.json`, `decretos_historico_uf.json`, `estados.json`, `indice.json`, `municipios.json` (+2) | — | 4 | não |
-| `julgar_filas.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json`, `promocoes_automaticas.json` | — | 2 | não |
+| `julgar_filas.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json`, `promocoes_automaticas.json` | — | 3 | não |
 | `julgar_saude.py` | — | `pistas_imprensa_saude.json`, `saude_uf.json` | — | 1 | não |
 | `ler_caixa_lai.py` | — | — | — | — | não |
 | `migrar_saude_instrumentos.py` | — | — | — | 4 | não |
@@ -173,8 +173,9 @@ Atualizado em 09/10/2026.
 | `scripts/orcamento_da_noite.py` | — | `cursor_da_noite.json` | — | — | não |
 | `scripts/ordem_de_coleta.py` | — | `cursor_de_coleta.json` | — | — | não |
 | `scripts/painel_da_noite.py` | — | `painel_da_noite.json` | — | 2 | não |
-| `scripts/pistas.py` | — | `pistas_imprensa.json`, `pistas_rejeitadas.json` | — | 13 | não |
+| `scripts/pistas.py` | — | `pistas_imprensa.json`, `pistas_rejeitadas.json` | — | 14 | não |
 | `scripts/preservar_textos_integrais.py` | — | `evidencias.json` | — | — | não |
+| `scripts/proveniencia_estadual.py` | — | `estados.json` | — | — | não |
 | `scripts/quais_portoes.py` | — | `indice.json` | — | — | não |
 | `scripts/reaplicar_noite.py` | — | `evidencias.json`, `funil/2026-10-08.json`, `historico_mudancas.json`, `log_buscas.json`, `municipios.json`, `painel_da_noite.json` (+4) | — | 1 | não |
 | `scripts/reavaliar_fontes_suspensas.py` | — | `calendario/fontes_suspensas.json` | — | — | não |

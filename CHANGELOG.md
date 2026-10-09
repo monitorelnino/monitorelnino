@@ -64,6 +64,20 @@ grãos" virava seca, "fogo de artifício" virava fogo); "instrução normativa" 
 instrumento pela etapa 2 e recusada por `citacao_completa`, duas regras da mesma régua
 discordando; e a data do ato era a primeira data do texto, que num diário é a da edição — a regra
 da janela existia num caminho e não no outro. Onde: juiz.py, classificador_natureza.py.
+## 2026-10-09 · #PR · Monitor de riscos: três cartões, episódios com ano, mapas por natureza
+
+Ajustes 3 a 6 de 09/10. Topo com três cartões numa linha, fora da moldura; a previsão da NOAA/CPC
+vira linha do cartão de probabilidade. Episódios de pico de +1,5 °C ou mais rotulados, os demais no
+mouse e em lista. Mapas em faixas (previsto, observado, agora), um título por mapa, fundo branco
+salvo o fogo, um marcador por capital e texto do mouse com uma anatomia só.
+
+## 2026-10-09 · #PR · busca web: cobertura só sobre resultado que fala do município
+
+Lote 2.7. O motor que ignora aspas devolvia ~23 resultados por consulta sem o nome do município, e
+1.035 municípios ganharam "coberto sem menção" sobre esse ruído. Agora resultado que não nomeia o
+município é motor sem resposta, a cobertura exige três que o nomeiam, motor com 100% de falhas não é
+poupado pelo piso, e o log guarda os três primeiros hosts. UFs com busca web verificada: 27 → 25.
+
 ## 2026-10-09 · #PR · os dois portões da fila passam a ver o que não viam
 
 Lote 2.10. O portão de esquema cobria 1.064 das 13.406 pistas, e nada conferia a forma do que já
@@ -85,6 +99,13 @@ consertos: o passo 1a guardava o trabalho num artefato que ninguém reaplicava, 
 reaplica antes de coletar; o marcador `.feito` morria com o push perdido, e passa a subir como
 artefato, com um dono só; e o despachante ganhou observador por `push`, fora do cron. Casos 11, 12
 e 13 no ensaio.
+## 2026-10-09 · #PR · a fila do Querido Diário chega ao juiz
+
+Lote 2 (A1-12). A consulta ao diário gravava as pistas num formato que o juiz não lê, num arquivo
+que se sobrescrevia, e consultava sempre os mesmos 40 de 169 municípios. Agora cada edição com
+excerto entra pela porta da fila, no esquema, com o excerto que recorta o ato; o host atual da API
+vem primeiro; e um cursor percorre os 169.
+
 ## 2026-10-09 · #PR · a fila de pistas passa a ter porta para origem e domínio
 
 Lote 2.8. Medido pista por pista: 12.309 das 13.503 pistas ativas tinham origem fora do esquema,
@@ -92,6 +113,20 @@ Lote 2.8. Medido pista por pista: 12.309 das 13.503 pistas ativas tinham origem 
 recusa origem fora do esquema e rede social fora de domínio de rede ou `.gov.br`; o teto por
 município vale por classe de domínio; e um portão novo confere que todo script citado por
 workflow existe.
+## 2026-10-09 · #PR · Proteja-se: guia sem marca d'água, Defesa Civil num controle só, alertas na casa deles
+
+Ajustes 7 a 9 de 09/10. O guia em PDF perde a marca d'água e a seta quebrada, não deixa título
+órfão e cabe em duas páginas; a imagem só é desenhada com as fontes do site e segue as quatro
+fichas. A seção da Defesa Civil abre com os números de socorro e uma grade de siglas. "Alertas de
+saúde agora" sai; um recado aponta para Saúde, Defesa civil e Monitor de riscos.
+
+## 2026-10-09 · #PR · o documento do estado vira link, e o feed perde o "Atom"
+
+Ajustes 1 e 2 de 09/10. O nome do documento no cartão do estado passa a ser o link para ele quando
+há evidência preservada no domínio do estado com o mesmo ato; sem isso, o cartão diz "endereço do
+documento não localizado até o corte" (45 de 45 hoje). Sai "Atom" do texto público. Portões novos:
+proveniência e vocabulário no texto que os scripts escrevem.
+
 ## 2026-10-09 · #PR · a aplicação no banco volta a ter rede e uma regra só
 
 Lote 2.4. O rollback do aplicador nunca disparava: `rodar_portoes()` devolve `(ok, saida)` e a
@@ -99,6 +134,13 @@ tupla era atribuída inteira a `ok`, sempre verdadeira — portão vermelho conf
 desfazer. E o caminho das descobertas gravava sempre `categoria: "plano"`, sem evidência nem
 proveniência, enquanto o caminho do juiz grava a categoria do veredito: um `plano_antigo` entrava
 como plano novo. Onde: aplicar_promocoes_do_juiz.py, julgar_e_aplicar_descobertas.py.
+## 2026-10-09 · #PR · metodologia e regras: o juiz 1.4 e o fim da etapa humana
+
+Lote 8. METODOLOGIA §106 descreve o codebook 1.4, as filas sem etapa humana e a regra de
+verificação do MARÉ Saúde v0.4 (D9); §12 ganha a nota de versão D4 ("v3.1 (30/09/2026)", uma string
+só). CLAUDE.md: nenhuma etapa humana (08/10), "semana epidemiológica" proibida em texto público,
+contagem de portões medida (239), figuras sem numeração.
+
 ## 2026-10-09 · #PR · atribuição do ato: domínio vence nome no texto
 
 Lote 2.1. Nome homônimo sem a UF no texto deixa de classificar (241 nomes estão em mais de uma

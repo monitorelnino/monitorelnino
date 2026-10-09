@@ -72,8 +72,7 @@ jobs:
         run: |
           set -e
           # assunto: cor texto rapido
-          # 28/09/2026: `git add -A` marca o caminho como RESOLVIDO mesmo com <<<<<<< dentro, e o
-          # commit passa sem reclamar — o CHANGELOG.md subiu assim duas vezes neste dia. Portão
+          # 28/09/2026: `git add -A` marca o caminho como RESOLVIDO mesmo com           # commit passa sem reclamar — o CHANGELOG.md subiu assim duas vezes neste dia. Portão
           # barato, repositório inteiro, antes de qualquer outra coisa.
           python3 scripts/verificar_marcadores_de_conflito.py --autoteste
           # assunto: cor texto rapido
@@ -489,6 +488,33 @@ jobs:
           # figura, vocabulário, forma dos números e acessibilidade. Ele lê layout/regras.json e o
           # contrato de cada página; exceção só por layout/excecoes.json, com motivo e data.
           python3 scripts/verificar_conformidade.py --autoteste
+          # assunto: texto
+          # 09/10/2026 (ajuste 7): o guia em PDF e a imagem do Proteja-se, gerados no navegador.
+          node scripts/verificar_guia_proteja_se.js --autoteste
+          # assunto: texto
+          node scripts/verificar_guia_proteja_se.js
+          # assunto: texto
+          # 09/10/2026 (ajustes 3 e 5): grade de números sem cartão órfão; figura com um título só.
+          python3 scripts/verificar_grades_de_numeros.py --autoteste
+          # assunto: texto
+          python3 scripts/verificar_grades_de_numeros.py
+          # assunto: texto
+          # 09/10/2026 (ajuste 6): texto do mouse dos mapas sem dado cru; um marcador por capital.
+          node scripts/verificar_dicas_dos_mapas.js --autoteste
+          # assunto: texto
+          node scripts/verificar_dicas_dos_mapas.js
+          # assunto: texto
+          # 09/10/2026 (ajuste 1): vocabulário proibido no texto que os scripts das páginas escrevem.
+          python3 scripts/verificar_vocabulario_dos_scripts.py --autoteste
+          # assunto: texto
+          python3 scripts/verificar_vocabulario_dos_scripts.py
+          # assunto: dado
+          # 09/10/2026 (ajuste 2): todo documento pontuado aponta para o endereço, ou declara a lacuna.
+          python3 scripts/verificar_proveniencia.py --autoteste
+          # assunto: dado
+          python3 scripts/verificar_proveniencia.py
+          # assunto: dado
+          python3 scripts/proveniencia_estadual.py --autoteste
           # assunto: cor texto
           python3 scripts/verificar_conformidade.py
           # assunto: dado
@@ -789,6 +815,7 @@ jobs:
           # pistas com o excerto errado, e a medição mostrou antes de confiar.
           python3 scripts/fila_do_juiz_querido_diario.py --autoteste
           python3 consultar_querido_diario.py --check
+          python3 consultar_querido_diario.py --autoteste
           # 28/09/2026 (decisão da editoria, item 2): rede social é canal de DESCOBERTA. O portão cobra
           # a condição que a autoriza — nada de rede social como fonte de registro nem como fonte no
           # site. O autoteste dele pegou o buraco que eu deixei: fonte escrita à mão ("Instagram da
