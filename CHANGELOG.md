@@ -15,6 +15,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+
+## 2026-10-08 · #PR · Lote 4.5: o travessão sai da tela, e o diário de bordo da coleta também
+
+Quinze linhas de boletim do MARÉ Saúde nasciam com "—", a face do ladrilho dizia "capital —" e os campos da ficha mostravam "—" sem data: o sinal que a regra proíbe, em vinte lugares. Agora ausência se escreve em palavras ou não aparece, e a varredura do portão passa a cobrir a linha de boletim, a face do ladrilho e o campo da ficha — antes só o cartão de número. Saem também "em classificação", "link oficial em verificação" e "bateria".
 ## 2026-10-08 · #PR · Lote 1.11: nomeado não é localizado (D1)
 
 Quarenta e sete registros municipais recebiam crédito no índice sem documento: 41 sem endereço, 6 com notícia no lugar do documento. Categoria nova `plano_nomeado`, crédito 0 — a classe de ausência aplicada a quem estava na de presença, sem mudança de peso ou componente. Média nacional do MARÉ Legal de 45,3 para 40,8; 17 estados mudam de nota (SE 87,7→71,5, RR 48,1→26,5). Portão `verificar_documento_de_plano.py`. Metodologia §104.
@@ -33,9 +37,9 @@ Quatro fichas publicavam o texto que estava na página do PDF: "o documento É o
 
 O reconhecimento vindo da notícia do MIDR recebia a data da primeira portaria do lote e o link da notícia; dias depois o DOU trazia o ato exato, com outra data, e a deduplicação por data não casava. Eram 17 municípios com dois reconhecimentos onde houve um. A chave passa a ser (município, causa, portaria), o ato exato substitui o lote, e os 332 eventos com data de lote passam a declarar `data_aproximada`. O `except: pass` que escondia a causa virou lacuna registrada.
 
-## 2026-10-08 · #PR · Lote 4.5: o travessão sai da tela, e o diário de bordo da coleta também
+## 2026-10-08 · #PR · A Imprensa para quando a Defesa civil para
 
-Quinze linhas de boletim do MARÉ Saúde nasciam com "—", a face do ladrilho dizia "capital —" e os campos da ficha mostravam "—" sem data: o sinal que a regra proíbe, em vinte lugares. Agora ausência se escreve em palavras ou não aparece, e a varredura do portão passa a cobrir a linha de boletim, a face do ladrilho e o campo da ficha — antes só o cartão de número. Saem também "em classificação", "link oficial em verificação" e "bateria".
+A página Defesa civil não desenha contagem de alerta com mais de 24 horas sem coleta; o instantâneo que alimenta as duas superfícies seguia publicando o número, e a Imprensa o copiava — ela dizia 489 municípios com decreto e alerta ao mesmo tempo enquanto a origem dizia "sem atualização". A regra passa ao instantâneo. E o carimbo, escrito no fuso da redação, passa a ser comparado em UTC: antes a idade do dado dependia de onde o código rodava.
 
 ## 2026-10-08 · #PR · Lote 1.2: o decreto do diário consorciado deixa de ir ao município errado
 

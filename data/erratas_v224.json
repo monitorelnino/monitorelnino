@@ -1024,6 +1024,15 @@
   "data": "08/10/2026",
   "uf": null,
   "municipio": null,
+  "o_que_mudou": "a Imprensa publicava \"6 municípios sob alerta do Cemaden\", \"3.461 sob aviso do Inmet\" e \"489 com decreto e alerta ao mesmo tempo\" enquanto a página Defesa civil, lendo o mesmo arquivo, dizia \"sem atualização desde 07/10/2026 21:40\"; as duas passam a parar juntas",
+  "por_que": "A regra das 24 horas estava só no JavaScript da página: o instantâneo que alimenta as duas superfícies seguia publicando o número, e a Imprensa o copiava. A regra passa ao instantâneo (`scripts/gerar_topo_das_paginas.alertas_pararam`). Junto, o fuso: o carimbo é escrito no fuso da redação e era comparado com o relógio de onde o código roda — três horas de diferença entre o navegador no Brasil e o runner em UTC, o bastante para as duas superfícies discordarem sobre a idade do mesmo dado.",
+  "achado": "coerência da Imprensa",
+  "lote": "1 (defeito achado na fila da CI)"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
   "o_que_mudou": "o travessão sai da tela: quinze linhas de boletim do MARÉ Saúde nasciam com \"—\", a face do ladrilho de estado dizia \"capital —\" e os campos de estrutura e de instrumento da ficha mostravam \"—\" quando a data não existia. Ausência passa a ser escrita em palavras ou a não aparecer",
   "por_que": "A4-13: o travessão como valor é proibido (`layout/regras.json/numeros.travessao_em_cartao_proibido`), e o portão olhava só `.cartao-numero-valor`. A varredura passa a cobrir a linha de boletim da figura, a face do ladrilho e o campo da ficha, medidos na página renderizada.",
   "achado": "A4-13",
