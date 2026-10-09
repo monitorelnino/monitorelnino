@@ -1279,6 +1279,21 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
 .barra-valor{font-family:var(--font-dado); font-size:var(--fs-caption); font-variant-numeric:tabular-nums; white-space:nowrap;}
 .cemaden-resumo{font-size:var(--fs-body); margin:0 0 var(--sp-2);}
 .cemaden-lista{font-size:var(--fs-caption); line-height:var(--lh-caption); padding-left:var(--sp-4); margin:0;}
+/* ===== Proteja-se, ajustes de 09/10/2026 (editoria) ======================================== */
+/* Socorro em três números: variante da barra de telefones do topo, não bloco novo. */
+.emerg-cartoes--tres{grid-template-columns:repeat(3, minmax(0,1fr));}
+.contato-frase{column-count:auto; max-width:none; margin:var(--sp-3) 0;}
+/* Um controle só: as 27 siglas em grade, ordem alfabética; o cartão do estado abre logo abaixo. */
+.contato-siglas{display:grid; grid-template-columns:repeat(auto-fill, minmax(56px, 1fr)); gap:var(--sp-2); margin:var(--sp-3) 0;}
+.contato-siglas button{min-height:var(--alvo-toque); font-family:var(--font-dado); font-size:var(--fs-small);
+  font-weight:var(--peso-semibold); letter-spacing:var(--ls-caps); background:var(--surface); color:var(--ink);
+  border:1px solid var(--line); border-radius:var(--radius); cursor:pointer;}
+.contato-siglas button[aria-pressed="true"]{background:var(--ink); color:var(--branco); border-color:var(--ink);}
+/* Recado com os destinos dos alertas, no componente de cartão. */
+.recado-destinos{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:var(--sp-3); margin:0 0 var(--esp-secao);}
+.recado-destino{text-decoration:none; color:inherit;}
+@media (max-width: 640px){ .recado-destinos, .emerg-cartoes--tres{grid-template-columns:minmax(0,1fr);} }
+.selo-plantao{margin-left:auto; font-family:var(--font-dado); font-size:var(--fs-caption); text-transform:uppercase; letter-spacing:var(--ls-caps); color:var(--musgo);}
 
 /* ===== Monitor de riscos, ajustes de 09/10/2026 (editoria) ====================================
    Variantes de componente existente — nenhum bloco novo. */

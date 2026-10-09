@@ -491,6 +491,11 @@ jobs:
           # contrato de cada página; exceção só por layout/excecoes.json, com motivo e data.
           python3 scripts/verificar_conformidade.py --autoteste
           # assunto: texto
+          # 09/10/2026 (ajuste 7): o guia em PDF e a imagem do Proteja-se, gerados no navegador.
+          node scripts/verificar_guia_proteja_se.js --autoteste
+          # assunto: texto
+          node scripts/verificar_guia_proteja_se.js
+          # assunto: texto
           # 09/10/2026 (ajustes 3 e 5): grade de números sem cartão órfão; figura com um título só.
           python3 scripts/verificar_grades_de_numeros.py --autoteste
           # assunto: texto
