@@ -68,7 +68,27 @@ ORIGEM_CANONICA = {
     "politica_por_inteiro": "descoberta",
     "diarios_municipais": "diario",
     "diarios_consorciados": "diario",
+    # 09/10/2026: as origens que a fila ATIVA realmente tem, medidas pista por pista. Faltavam
+    # quatro, e as quatro entravam cruas — `seguimento` sozinho (59), `rebaixamento C10` (12),
+    # `agencia_oficial` (1) e a ausência total (10.018). O esquema declara nove origens válidas e
+    # NADA conferia isso na gravação: origem fora do esquema entrava calada, e a pista ficava
+    # ilegível para quem lê a fila por origem.
+    "seguimento": "imprensa",
+    "rebaixamento C10": "revisao",
+    "rebaixamento": "revisao",
+    "agencia_oficial": "descoberta",
 }
+
+# A ausência de origem não se adivinha pela fila em que a pista mora: ela é LACUNA DECLARADA, com
+# nome próprio, e quem lê sabe que não sabe. Pista nova nunca recebe este valor — a porta exige
+# origem de coletor —, ele existe só para o que entrou antes da porta.
+ORIGEM_DESCONHECIDA = "desconhecida"
+
+# Os dominios de rede social em que um perfil oficial de ente pode viver. Lista fechada de
+# proposito: ela e usada para RECUSAR, e recusar por lista aberta recusaria o que nao conhece.
+REDES_SOCIAIS = ("instagram.com", "facebook.com", "twitter.com", "x.com", "threads.net",
+                 "youtube.com", "tiktok.com", "t.me", "telegram.me", "linkedin.com",
+                 "flickr.com", "whatsapp.com")
 
 REDIRECIONADORES = ("news.google.com", "/rss/articles/", "news.url.google.com")
 
@@ -224,7 +244,51 @@ def motivo_de_recusa(pista: dict, existentes: list = None) -> str:
     """
     from coletores_base import validar_pista
     ok, motivo = validar_pista(pista, existentes or [])
-    return "" if ok else motivo
+    if not ok:
+        return motivo
+    # 09/10/2026 (A1-13). O esquema declara nove origens válidas e NADA conferia isso na gravação.
+    # Quatro origens cruas estavam na fila ativa, e a pista com origem fora do esquema fica
+    # ilegível para quem lê a fila por origem — e invisível para o portão, que só sabe ler o que o
+    # esquema nomeia. A recusa NOMEIA a origem: coletor novo que invente origem descobre no
+    # primeiro lote, pelo motivo, em vez de descobrir meses depois numa contagem.
+    # 09/10/2026 (A1-07). O coletor de redes oficiais pos 1.734 pistas na fila, e 1.667 delas nao
+    # estao nem em rede social nem em dominio oficial: reddit.com (126), en.wikipedia.org (73),
+    # xvideos.com (25), stackoverflow.com (17), foodnetwork.com (17). A busca que alimenta o
+    # coletor devolve a web inteira, e a fila recebia tudo — cada uma dessas pistas e uma vaga
+    # gasta no teto por municipio e um documento a baixar no juiz.
+    #
+    # A regra minima que fecha isso sem adivinhar: pista cuja origem e REDE SOCIAL tem de estar em
+    # dominio de rede social ou em dominio oficial (`.gov.br`). Perfil oficial de prefeitura vive
+    # num dos dois; receita de bolo, em nenhum.
+    if str(pista.get("origem") or "") in ("rede_social", "rede_social_oficial"):
+        import urllib.parse as _url
+        host = _url.urlparse(str(pista.get("url_final") or pista.get("url") or "")).netloc.lower()
+        de_rede = any(host == r or host.endswith("." + r) for r in REDES_SOCIAIS)
+        if host and not de_rede and not host.endswith(".gov.br"):
+            return (f"pista de rede social em dominio alheio ({host}): perfil oficial vive em "
+                    f"rede social ou em dominio .gov.br")
+    origem = str(pista.get("origem") or "")
+    if origem and origem not in origens_validas():
+        return (f"origem '{origem}' não existe no esquema: use uma de "
+                f"{', '.join(sorted(origens_validas()))} ou declare a nova em schemas/pista.json")
+    return ""
+
+
+_ORIGENS = None
+
+
+def origens_validas() -> set:
+    """As origens que `schemas/pista.json` declara. O esquema é a fonte; aqui só se lê."""
+    global _ORIGENS
+    if _ORIGENS is None:
+        import json as _json
+        import pathlib as _pathlib
+        caminho = _pathlib.Path(__file__).resolve().parents[1] / "schemas" / "pista.json"
+        try:
+            _ORIGENS = set(_json.loads(caminho.read_text(encoding="utf-8"))["origens_validas"])
+        except (OSError, ValueError, KeyError):
+            return set(ORIGEM_CANONICA.values()) | {ORIGEM_DESCONHECIDA}
+    return _ORIGENS
 
 
 def _autoteste() -> int:
@@ -301,6 +365,28 @@ def _autoteste() -> int:
     # URLs distintas: com a mesma, a recusa que chega primeiro é a de repetida, não a do teto.
     cheias = [dict(n, url_final=f"https://bonito.ms.gov.br/n/{i}", nivel="A") for i in range(5)]
     ok("acima do teto recusa", "teto" in motivo_de_recusa(n, cheias))
+    # 09/10/2026 (A1-18): o teto vale por CLASSE de domínio. Cinco notícias de portal não barram
+    # mais o documento no domínio da prefeitura, que é a prova forte deste índice.
+    from coletores_base import classe_de_dominio
+    ok("domínio de ente é classe oficial",
+       classe_de_dominio("https://taio.sc.gov.br/a.pdf") == "oficial")
+    ok("portal de notícia é classe outros",
+       classe_de_dominio("https://g1.globo.com/x") == "outros")
+    cheias_alheias = [dict(n, url_final=f"https://portal.exemplo.com/n/{i}", nivel="A")
+                      for i in range(5)]
+    ok("cinco pistas em domínio alheio não barram a do domínio oficial",
+       motivo_de_recusa(dict(n, url_final="https://bonito.ms.gov.br/plano.pdf",
+                             url="https://bonito.ms.gov.br/plano.pdf"), cheias_alheias) == "")
+    cheias_oficiais = [dict(n, url_final=f"https://bonito.ms.gov.br/n/{i}", nivel="A")
+                       for i in range(5)]
+    ok("cinco pistas no domínio oficial ainda barram a sexta oficial",
+       "teto" in motivo_de_recusa(dict(n, url_final="https://bonito.ms.gov.br/plano.pdf",
+                                       url="https://bonito.ms.gov.br/plano.pdf"),
+                                  cheias_oficiais))
+    ok("o motivo do teto diz de que domínio se fala",
+       "oficial" in motivo_de_recusa(dict(n, url_final="https://bonito.ms.gov.br/plano.pdf",
+                                          url="https://bonito.ms.gov.br/plano.pdf"),
+                                     cheias_oficiais))
     ok("a UF serve de alvo quando o município não é conhecido",
        normalizar(dict(REDE, ibge=None))["alvo"] == "MS")
 
@@ -382,6 +468,28 @@ def _autoteste() -> int:
         codigo = getattr(globals()[nome_obj], "__code__", None)
         if codigo is not None:
             nomes |= {i.argval for i in dis.get_instructions(codigo) if isinstance(i.argval, str)}
+    # 09/10/2026 (A1-07, A1-13): a porta confere a ORIGEM e, na rede social, o DOMÍNIO.
+    _rede = {"municipio": "Taió", "uf": "SC", "tipo": "plano", "nivel": "A",
+             "data": "2026-10-09", "alvo": "Taió/SC", "origem": "rede_social"}
+    ok("rede social em domínio alheio é recusada, com o host no motivo",
+       "reddit.com" in motivo_de_recusa(dict(_rede, url="https://www.reddit.com/r/x",
+                                             url_final="https://www.reddit.com/r/x")))
+    ok("rede social em domínio de rede passa",
+       motivo_de_recusa(dict(_rede, url="https://www.instagram.com/p/abc",
+                             url_final="https://www.instagram.com/p/abc")) == "")
+    ok("rede social em domínio oficial passa",
+       motivo_de_recusa(dict(_rede, url="https://taio.sc.gov.br/post",
+                             url_final="https://taio.sc.gov.br/post")) == "")
+    ok("domínio alheio em OUTRA origem não é assunto desta regra",
+       "domínio alheio" not in motivo_de_recusa(
+           dict(_rede, origem="imprensa", url="https://www.reddit.com/r/x",
+                url_final="https://www.reddit.com/r/x")))
+    ok("origem fora do esquema é recusada e nomeada",
+       "origem_inventada" in motivo_de_recusa(
+           dict(_rede, origem="origem_inventada", url="https://taio.sc.gov.br/a",
+                url_final="https://taio.sc.gov.br/a")))
+    ok("as origens válidas saem do esquema, não de literal",
+       "desconhecida" in origens_validas() and len(origens_validas()) >= 9)
     ok("trava estrutural: as funções puras não escrevem",
        not ({"gravar", "gravar_em", "write_text", "write_bytes", "rejeitar"} & nomes))
     ok("trava estrutural: as funções puras não vão à rede",

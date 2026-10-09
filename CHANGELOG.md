@@ -28,6 +28,14 @@ não pontuados permanecem na versão corrente.
 
 
 
+
+## 2026-10-09 · #PR · a fila de pistas passa a ter porta para origem e domínio
+
+Lote 2.8. Medido pista por pista: 12.309 das 13.503 pistas ativas tinham origem fora do esquema,
+9.976 sem origem nenhuma, e 1.667 das 1.734 de rede social estavam em domínio alheio. A porta
+recusa origem fora do esquema e rede social fora de domínio de rede ou `.gov.br`; o teto por
+município vale por classe de domínio; e um portão novo confere que todo script citado por
+workflow existe.
 ## 2026-10-09 · #PR · a aplicação no banco volta a ter rede e uma regra só
 
 Lote 2.4. O rollback do aplicador nunca disparava: `rodar_portoes()` devolve `(ok, saida)` e a
