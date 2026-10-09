@@ -23,9 +23,25 @@ não pontuados permanecem na versão corrente.
 
 
 
+
+
 ## 2026-10-08 · #PR · Lote 4.6: uma frase só sobre a conferência, a do processo real
 
 O formulário prometia "conferência da nossa equipe"; a página seguinte dizia que ela é automática e "semanal, normalmente no domingo", enquanto o rodapé diz que o site publica às 6h e às 22h — três cadências para o mesmo envio, e uma etapa humana que não existe. Os três lugares passam a dizer a frase aprovada. Saem "banco público" (regra de 03/10) e a frase do e-mail, que o formulário não pede.
+## 2026-10-08 · #PR · Lote 4.1: os medidores voltam a mostrar número
+
+Os 21 estados verificados do MARÉ Saúde mostravam **0,0** na grade, e a ficha aberta por `index.html#UF` — o caminho do selo embutido em outro site — abria com 0,0/100: a função que escreve o número vivia no escopo de um módulo, e a outra página chamava uma função que não existia, com a guarda engolindo a ausência. O valor estava certo no atributo todo esse tempo. Um dono só, em `assets/mapas.js`, e o portão passa a exigir o número escrito.
+## 2026-10-09 · #604 · cartão de atos federais: ausência da classe certa
+
+O cartão dizia "sem coleta" de uma série que está em disco, e o portão de layout reprovava com
+razão. A origem dos compromissos federais não data os atos: é ausência de outra classe, não falta
+de coleta nem zero. O gerador declara `sem_data_na_origem`, a página escreve isso em palavras, e
+os portões de coerência e de runtime aprendem a quarta classe. Onde: gerar_financiamento_semana.py,
+assets/js/financiamento.js, scripts/verificar_financiamento_coerencia.py.
+
+## 2026-10-08 · #PR · Lote 4.2: o cartão para de dizer "ainda não verificamos" sobre quem foi verificado
+
+Município com decreto de emergência, com ato alheio ao ciclo ou com estrutura de coordenação recebia a frase do não verificado — 102 cartões —, e no caso do decreto o cartão escondia a única informação de resposta que existia sobre o município. Cada categoria passa a ter a sua frase, nas palavras aprovadas na seção C do handover, e a data só aparece quando é completa: "em 2026" não é data.
 ## 2026-10-08 · #PR · Lote 3.7: autoteste em todos, com o nome certo e dentro do portão
 
 Quatro scripts tinham autoteste que ninguém rodava, porque a flag se chamava `--self-test` e o portão chama `--autoteste`; dois ignoravam a flag e iam à rede — `atualizar_recursos` chegava a gravar. Três não tinham autoteste nenhum. Agora: flag canônica em todos, autoteste puro onde faltava, a varredura de escrita cobre 27 scripts (eram 10) e cobra o nome da flag, e os cinco que estavam fora do `portoes.yml` entraram. De passagem, um defeito de canal.

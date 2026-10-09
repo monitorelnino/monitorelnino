@@ -133,8 +133,12 @@ def checar(html, rotas, serie, poruf, motor, arquivos_fin: dict, despesa=None, c
             _tem_data = any(str((i or {}).get("data") or (i or {}).get("publicado_em") or "")[:4]
                             .isdigit() for i in (_comp.get("itens") or []))
             for _c in _sem.get("cartoes") or []:
+                # 09/10/2026: a ausencia passou a ter CLASSE propria (`sem_data_na_origem`), em
+                # vez de `sem_coleta`: a serie existe e foi lida, e dizer "sem coleta" dela seria
+                # dizer o que nao aconteceu. O que esta regra cobra e o que sempre cobrou: nao
+                # publicar numero de janela quando a origem nao datou o ato.
                 if (_c.get("id") == "atos_federais_semana" and not _c.get("sem_coleta")
-                        and not _tem_data):
+                        and not _c.get("classe") and not _tem_data):
                     e.append("(m) o cartão de atos federais publica valor na janela de 7 dias, e "
                              "nenhum item da origem traz data — zero por campo inexistente não é "
                              "zero medido (A3-10)")
