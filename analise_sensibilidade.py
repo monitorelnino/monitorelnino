@@ -80,7 +80,7 @@ def rodar():
                 w += pop.get(cod_por[(r["nome"], r["uf"])], 0) * rm.CRED_POP.get(r["categoria"], 0.0)
         return c, w
 
-    def cobertura(uf, d_plano=0.5, d_antigo=0.5):
+    def cobertura(uf, d_plano=0.5):
         """A cobertura populacional da UF, pela MESMA função do motor.
 
         08/10/2026 (A3-05): esta função tinha a conta copiada, e a cópia divergiu — ignorava a
@@ -93,7 +93,7 @@ def rodar():
                                       pct[uf].get("declarado_plano", 0) or 0,
                                       pct[uf].get("declarado_antigo", 0) or 0,
                                       rm._declarado_nacional_uf().get(uf, 0),
-                                      desconto_plano=d_plano, desconto_antigo=d_antigo)
+                                      totais.get(uf, 0) or 0, desconto_plano=d_plano)
         return valor
 
     def camadas_da_uf(uf):
@@ -107,8 +107,10 @@ def rodar():
         total, _ = rm.cobertura_de_uf(uf, c, w, med[uf], pop_uf[uf],
                                       pct[uf].get("declarado_plano", 0) or 0,
                                       pct[uf].get("declarado_antigo", 0) or 0,
-                                      rm._declarado_nacional_uf().get(uf, 0))
-        com_agregado, _ = rm.cobertura_de_uf(uf, c, w, med[uf], pop_uf[uf], 0, 0, 0)
+                                      rm._declarado_nacional_uf().get(uf, 0),
+                                      totais.get(uf, 0) or 0)
+        com_agregado, _ = rm.cobertura_de_uf(uf, c, w, med[uf], pop_uf[uf], 0, 0, 0,
+                                             totais.get(uf, 0) or 0)
         doc_pct = min(100.0, 100.0 * w / pop_uf[uf])
         agr = max(0.0, com_agregado - doc_pct)
         dec = max(0.0, total - com_agregado)
@@ -130,14 +132,18 @@ def rodar():
 
     # 3. descontos da camada declarada (referência: linear base)
     R["descontos"] = {}
-    for dp_, da_, nome in ((0.3, 0.3, "0,5 → 0,3"), (0.7, 0.3, "0,5 → 0,7"),
-                           (0.5, 0.2, "0,3 → 0,2"), (0.5, 0.4, "0,3 → 0,4")):
+    # 09/10/2026: a decisão D2 (A3-02) colapsou os dois termos da camada declarada num só, com
+    # dois tetos — não há mais desconto separado para o plano desatualizado. As quatro variantes
+    # passam a variar o ÚNICO desconto que existe; antes, duas delas mexiam só no termo extinto e
+    # devolveriam exatamente a base, publicando "efeito zero" onde não havia variante nenhuma.
+    for dp_, nome in ((0.3, "0,5 → 0,3"), (0.7, "0,5 → 0,7"),
+                      (0.4, "0,5 → 0,4"), (0.6, "0,5 → 0,6")):
         Xv = X.copy()
         for i, u in enumerate(ufs):
             # v3.1: X = [instrumento, estrutura, cobertura]. A coluna 1 é a
             # ESTRUTURA; escrever a cobertura nela media a sensibilidade da
             # camada declarada sobre o componente errado (A3-05).
-            Xv[i, 2] = round(cobertura(u, dp_, da_), 1)
+            Xv[i, 2] = round(cobertura(u, dp_), 1)
         R["descontos"][nome] = _shifts(_ranks(ufs, Xv.mean(axis=1)), rank_base, ufs)
 
     # 4. esquemas de ponderação: PCA e knockouts
@@ -221,7 +227,8 @@ def rodar():
         valor, _ = rm.cobertura_de_uf(uf, c, w, med[uf], pop_uf[uf],
                                       pct[uf].get("declarado_plano", 0) or 0,
                                       pct[uf].get("declarado_antigo", 0) or 0,
-                                      rm._declarado_nacional_uf().get(uf, 0))
+                                      rm._declarado_nacional_uf().get(uf, 0),
+                                      totais.get(uf, 0) or 0)
         return valor
 
     Xv = X.copy()

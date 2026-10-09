@@ -333,7 +333,7 @@ def _declarado_nacional_uf():
     return n
 
 def cobertura_de_uf(uf, c, wpop_uf, mediana, pop_total, dp_tce, da_tce, nacional,
-                    desconto_plano=0.5, desconto_antigo=0.5):
+                    n_municipios=None, desconto_plano=0.5):
     """O componente de COBERTURA POPULACIONAL de uma UF. Função pura, e a única.
 
     08/10/2026 (A3-05). Esta conta existia em dois lugares: aqui, dentro de `calcular`, e copiada
@@ -350,17 +350,19 @@ def cobertura_de_uf(uf, c, wpop_uf, mediana, pop_total, dp_tce, da_tce, nacional
     tipo_agr, excedente = excedente_agregado(uf, c)
     if tipo_agr:
         w += excedente * mediana * CRED_POP[tipo_agr]
-    # Conservador: a declaração do tribunal de contas não SOMA com o levantamento nacional — vale
-    # o maior dos dois contadores.
-    dp = max(dp_tce or 0, nacional or 0)
-    da = da_tce or 0
-    doc_n = sum(v for k, v in c.items() if k in PESO_DOC)
-    if dp:
-        w += max(dp - doc_n, 0) * mediana * (CRED_POP["plano"] * desconto_plano)
-    if da:
-        w += da * mediana * (CRED_POP["plano_antigo"] * desconto_antigo)
-    return min(100.0, 100.0 * w / pop_total), {"documentado": doc_n, "declarado": dp,
-                                               "declarado_antigo": da}
+    # Decisão D2 (A3-02, 08/10/2026): UM TERMO SÓ, com dois tetos. Os dois contadores do tribunal
+    # de contas somam entre si — plano e plano desatualizado são municípios diferentes —, o
+    # resultado é COMPARADO, nunca somado, com o levantamento nacional (MUNIC/ICM), e o total nunca
+    # passa do número de municípios da UF. Do que sobra, desconta-se tudo o que já tem crédito
+    # próprio em `CRED_POP` — antes a subtração usava só `PESO_DOC` e deixava `estrutura` e
+    # `coberto_estadual` de fora, de modo que o mesmo município era creditado duas vezes.
+    teto = n_municipios if n_municipios else float("inf")
+    declarado = min(max((dp_tce or 0) + (da_tce or 0), nacional or 0), teto)
+    doc_n = sum(v for k, v in c.items() if CRED_POP.get(k, 0.0) > 0)
+    if declarado:
+        w += max(declarado - doc_n, 0) * mediana * (CRED_POP["plano"] * desconto_plano)
+    return min(100.0, 100.0 * w / pop_total), {"documentado": doc_n, "declarado": declarado,
+                                               "declarado_antigo": da_tce or 0}
 
 
 def calcular(versao="v3.1"):
@@ -415,7 +417,7 @@ def calcular(versao="v3.1"):
         cobertura, _camadas = cobertura_de_uf(
             uf, c, w, mediana_uf[uf], pop_uf[uf],
             pct[uf].get("declarado_plano", 0) or 0, pct[uf].get("declarado_antigo", 0) or 0,
-            _declarado_nacional_uf().get(uf, 0))
+            _declarado_nacional_uf().get(uf, 0), totais.get(uf, 0) or 0)
         st, ant, conf = ESTADOS[uf]
         if versao == "v3.1":
             # Três componentes sem sobreposição: instrumento, estrutura e cobertura. A estrutura
