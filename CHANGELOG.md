@@ -21,6 +21,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+
+## 2026-10-08 · #PR · Lote 3.7: autoteste em todos, com o nome certo e dentro do portão
+
+Quatro scripts tinham autoteste que ninguém rodava, porque a flag se chamava `--self-test` e o portão chama `--autoteste`; dois ignoravam a flag e iam à rede — `atualizar_recursos` chegava a gravar. Três não tinham autoteste nenhum. Agora: flag canônica em todos, autoteste puro onde faltava, a varredura de escrita cobre 27 scripts (eram 10) e cobra o nome da flag, e os cinco que estavam fora do `portoes.yml` entraram. De passagem, um defeito de canal.
 ## 2026-10-08 · #PR · Lote 1.15: C11 revogada, versão com dono, v3.2 calculada em paralelo
 
 A C11 tiraria 142 dos 151 registros pontuáveis em 26/10 por falta de número de ato em documento já lido, contra a decisão de 03/10: revogada (D3), e a fila de citação passa a ser informação de ficha regenerada pela cadeia. `versao_indice` nasce em `meta.json` e alimenta CITATION e datapackage, que diziam "2.3". A **v3.2** (arranjo permanente de resposta à seca, degrau 45) está **decidida e implementada em paralelo**: 191 municípios cumprem as três condições, média 45,3 → 45,6, e nenhuma página lê o resultado. Metodologia §105.

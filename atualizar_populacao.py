@@ -107,6 +107,48 @@ def carregar_xlsx_oficial(caminho):
     return pop
 
 
+def autoteste() -> int:
+    """Autoteste PURO (A6-26, 08/10/2026): `--autoteste` ia à rede e morria no proxy.
+
+    O que se prova aqui é a trava que importa: `validar` só aceita a população quando as
+    sentinelas casam INTEGRALMENTE com uma apuração oficial e o total é o exato dela. Era essa
+    trava que rejeitava a fonte na rodada real, e ninguém a exercia offline.
+    """
+    rotulo, ap = list(APURACOES.items())[0]
+    bom = {c: v for c, (_n, v) in ap["sentinelas"].items()}
+    # Uma população sintética que casa as sentinelas e fecha o total exato da apuração.
+    resto = ap["total"] - sum(bom.values())
+    pop = dict(bom)
+    faltam = 5570 - len(pop)
+    for i in range(faltam):
+        pop[f"9{i:06d}"] = (resto // faltam) + (1 if i < resto % faltam else 0)
+    casos = []
+    erros, achou = validar(pop)
+    casos.append(("sentinelas e total exatos passam", not erros and achou == rotulo))
+    menos = dict(pop)
+    menos.pop(next(iter(menos)))
+    casos.append(("contagem diferente de 5.570 reprova",
+                  any("5570" in e for e in validar(menos)[0])))
+    trocado = dict(pop)
+    primeira = next(iter(ap["sentinelas"]))
+    trocado[primeira] = trocado[primeira] + 1
+    erros_t, achou_t = validar(trocado)
+    casos.append(("sentinela fora reprova e não identifica apuração",
+                  bool(erros_t) and achou_t is None))
+    total_errado = dict(pop)
+    ultima = list(total_errado)[-1]
+    total_errado[ultima] = total_errado[ultima] + 1000
+    erros_x, achou_x = validar(total_errado)
+    casos.append(("sentinelas certas com total errado reprovam",
+                  bool(erros_x) and achou_x is None))
+    ruins = [n for n, ok in casos if not ok]
+    for n, ok in casos:
+        print(f"  {'✓' if ok else '✗'} {n}")
+    print(f"{'✓ AUTOTESTE OK' if not ruins else f'✗ AUTOTESTE: {len(ruins)} falha(s)'} — "
+          f"{len(casos)} casos, sem rede e sem escrita.")
+    return 1 if ruins else 0
+
+
 def main():
     """Baixa a população municipal do Censo 2022, valida contra as cinco UFs-sentinela e o total nacional (tolerância de 0,1%), e só então grava data/populacao_censo2022.json."""
     if "--check" in sys.argv:
@@ -150,4 +192,8 @@ def main():
 
 
 if __name__ == "__main__":
+    # 08/10/2026 (A6-26): a flag era IGNORADA — o script ia à rede e morria no proxy, de modo que
+    # "autoteste verde" nunca existiu aqui.
+    if "--autoteste" in sys.argv or "--self-test" in sys.argv:
+        sys.exit(autoteste())
     sys.exit(main())
