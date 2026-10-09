@@ -60,6 +60,13 @@ grãos" virava seca, "fogo de artifício" virava fogo); "instrução normativa" 
 instrumento pela etapa 2 e recusada por `citacao_completa`, duas regras da mesma régua
 discordando; e a data do ato era a primeira data do texto, que num diário é a da edição — a regra
 da janela existia num caminho e não no outro. Onde: juiz.py, classificador_natureza.py.
+## 2026-10-09 · #PR · busca web: cobertura só sobre resultado que fala do município
+
+Lote 2.7. O motor que ignora aspas devolvia ~23 resultados por consulta sem o nome do município, e
+1.035 municípios ganharam "coberto sem menção" sobre esse ruído. Agora resultado que não nomeia o
+município é motor sem resposta, a cobertura exige três que o nomeiam, motor com 100% de falhas não é
+poupado pelo piso, e o log guarda os três primeiros hosts. UFs com busca web verificada: 27 → 25.
+
 ## 2026-10-09 · #PR · os dois portões da fila passam a ver o que não viam
 
 Lote 2.10. O portão de esquema cobria 1.064 das 13.406 pistas, e nada conferia a forma do que já
