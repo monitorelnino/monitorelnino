@@ -23,7 +23,19 @@ from pathlib import Path
 RAIZ = Path(__file__).parent
 DATA = RAIZ / "data"
 SAIDA = RAIZ / "dados-abertos"
-VERSAO = "2.3"
+def _versao_do_meta() -> str:
+    """A versão do índice, lida de `data/meta.json` (A3-16). Nunca escrita à mão aqui."""
+    import json as _js
+    import pathlib as _pl
+    try:
+        v = _js.load(open(_pl.Path(__file__).resolve().parent / "data" / "meta.json",
+                          encoding="utf-8")).get("versao_indice")
+    except (OSError, ValueError):
+        v = None
+    return (v or "v3.1").split(" ")[0].lstrip("v")
+
+
+VERSAO = _versao_do_meta()
 SITE = "https://monitorelnino.com.br"
 FAIXAS = [(25, "estágio inicial"), (50, "em construção"), (70, "consolidado"), (101, "avançado")]
 

@@ -1289,5 +1289,23 @@
   "por_que": "A3-25, auditoria de 08/10/2026 (lote 1.16).",
   "achado": "A3-25",
   "lote": "1.16"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "a regra C11, que marcava 26/10/2026 como prazo para registro sem número de ato sair da pontuação, está revogada; medida hoje, ela tiraria 142 dos 151 registros pontuáveis (45,9 milhões de habitantes) por falta de número de ato em documento que o site já leu",
+  "por_que": "A3-03, decisão D3: a C11 nunca teve código que a aplicasse e contraria a decisão §101 de 03/10/2026, que é posterior. O que a ausência de documento tira do crédito é tratado pela D1 (§104). A fila `data/citacao_incompleta.json` passa a ser informação de ficha, regenerada pela cadeia — estava parada desde 02/09, com 145 registros congelados; são 140 hoje.",
+  "achado": "A3-03",
+  "lote": "1.15"
+ },
+ {
+  "data": "08/10/2026",
+  "uf": null,
+  "municipio": null,
+  "o_que_mudou": "a versão do índice passa a ter um dono: `versao_indice` em `data/meta.json`, escrito pelo motor e lido por quem publica. O `CITATION.cff` e o `datapackage.json` diziam \"2.3\" e passam a dizer \"3.1\"; a tabela §5.2 da metodologia descrevia componentes extintos",
+  "por_que": "A3-16: cinco documentos públicos discordavam entre si e do código, e dois métodos diferentes eram chamados de v3.1. Portão: `scripts/verificar_versao_do_indice.py`.",
+  "achado": "A3-16",
+  "lote": "1.15"
  }
 ]

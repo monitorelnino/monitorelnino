@@ -20,6 +20,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+
+## 2026-10-08 · #PR · Lote 1.15: C11 revogada, versão com dono, v3.2 calculada em paralelo
+
+A C11 tiraria 142 dos 151 registros pontuáveis em 26/10 por falta de número de ato em documento já lido, contra a decisão de 03/10: revogada (D3), e a fila de citação passa a ser informação de ficha regenerada pela cadeia. `versao_indice` nasce em `meta.json` e alimenta CITATION e datapackage, que diziam "2.3". A **v3.2** (arranjo permanente de resposta à seca, degrau 45) está **decidida e implementada em paralelo**: 191 municípios cumprem as três condições, média 45,3 → 45,6, e nenhuma página lê o resultado. Metodologia §105.
 ## 2026-10-08 · #PR · Lote 1.16: sete achados do A3, do feed ao selo
 
 Reconhecimento federal deixa de gerar dois itens no feed e os títulos saem em dd/mm/aaaa (97 pares da migração ficam marcados no log, que só cresce, e fora do feed). "288.729 de pessoas" vira "288.729 pessoas". Umuarama/PR sai duplicado do mapa. O CSV de atos ganha `ibge` e as datas em colunas próprias. Os selos param de falar de licença. O painel para de chamar a camada declarada de "simulado". A reserva de data que chamava função inexistente foi corrigida.
