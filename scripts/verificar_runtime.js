@@ -210,12 +210,27 @@ setTimeout(() => {
       teste("proteja-se: seção de risco por estado não existe mais (mora em monitor-de-riscos.html)", !qP("selUFProteja") && !qP("riscoDoEstado"));
       // 15/09/2026: "Defesa Civil do seu estado" — 27 cartões do dado (contatos_uf.json), cada um com telefone tocável
       const C = JSON.parse(fs.readFileSync(path.join(raiz, "data", "contatos_uf.json"), "utf8"));
-      teste("proteja-se: 27 cartões de contato, todos com telefone (tel:) e órgão", qP("contatoGrade").querySelectorAll(".contato").length === 27 && [...qP("contatoGrade").querySelectorAll(".contato")].every(c => c.querySelector('a[href^="tel:"]') && c.querySelector(".contato-orgao").textContent.length > 10));
-      teste("proteja-se: telefone do cartão bate com o dado (primeiro telefone de cada UF)", Object.keys(C.uf).every(uf => { const c = dP.getElementById("contato-" + uf); return c && c.textContent.includes(C.uf[uf].telefones[0]); }));
-      // 17/09/2026: sem o seletor de risco (removido), o teste do destaque passa a usar o seletor de contato direto.
-      const selContato = qP("selUFContato"); const primeiraUf = Object.keys(C.uf).sort()[0];
-      if (selContato) { selContato.value = primeiraUf; selContato.dispatchEvent(new domP.window.Event("change", { bubbles: true }));
-        teste("proteja-se: escolher um estado em 'Defesa Civil do seu estado' preenche o destaque", !qP("contatoDestaque").hidden && qP("contatoDestaque").textContent.includes(C.uf[primeiraUf].nome)); }
+      // 09/10/2026 (ajuste 8): UM controle — a grade das 27 siglas. Escolher três estados abre o cartão
+      // de cada um, com telefone (tel:), e-mail (mailto:) quando houver e o portal; nada abaixo da
+      // grade sem estado escolhido; socorro (199, 193, 192) logo abaixo do título.
+      const botoes = [...(qP("contatoSiglas") || {querySelectorAll: () => []}).querySelectorAll("button[data-uf]")];
+      teste("proteja-se: 27 siglas na grade da Defesa Civil, em ordem alfabética",
+        botoes.length === 27 && botoes.map(b => b.dataset.uf).join() === Object.keys(C.uf).sort().join());
+      teste("proteja-se: sem estado escolhido, nada abaixo da grade", qP("contatoDestaque").hidden);
+      teste("proteja-se: sem seletor nem 'Ver todos os estados'", !qP("selUFContato") && !qP("accTodosContatos") && !qP("contatoVazio"));
+      const amostra = [Object.keys(C.uf).sort()[0], "PE", "SP"];
+      teste("proteja-se: escolher três estados abre o cartão de cada um com tel:, e-mail e portal", amostra.every(uf => {
+        const b = botoes.find(x => x.dataset.uf === uf); if (!b) return false;
+        b.dispatchEvent(new domP.window.MouseEvent("click", { bubbles: true }));
+        const d = qP("contatoDestaque"), c = C.uf[uf];
+        return !d.hidden && b.getAttribute("aria-pressed") === "true" && d.textContent.includes(c.telefones[0])
+          && d.querySelector('a[href^="tel:"]') && (!c.email || d.querySelector('a[href^="mailto:"]'))
+          && (!c.portal || d.querySelector('a[target="_blank"]'));
+      }));
+      teste("proteja-se: socorro imediato na seção da Defesa Civil (199, 193, 192, tocáveis)",
+        ["199","193","192"].every(n => qP("quem-chamar").querySelector('a[href="tel:' + n + '"]')));
+      teste("proteja-se: a seção 'Alertas de saúde agora' saiu, e o recado aponta os destinos",
+        !qP("alertas-saude") && ["saude.html", "defesa-civil.html#alertas"].every(h => dP.querySelector('.recado-destinos a[href="' + h + '"]')));
       // 30/09/2026: o texto aprovado traz QUATRO números e não traz mais o 40199 — o SMS saiu
       // da barra e a frase passou a apontar o alerta que não pede cadastro. O 40199 continua
       // dentro da ficha de chuva, que é conteúdo reproduzido do órgão e não mudou.
