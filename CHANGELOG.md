@@ -17,6 +17,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+
+## 2026-10-08 · #PR · Lote 1.10: a capital passa a ter uma fonte só
+
+`estados.json` guardava um status e um texto da capital escritos à mão, e o banco guardava a categoria que pontua: as duas se contradiziam em nove UFs, e o leitor via no mesmo clique "Novo, base da pontuação" e "ainda não verificado" (Rio Branco). `capital` passa a guardar só o nome; o rótulo e a frase saem do registro do banco, pela mesma função do cartão do município. A frase comparativa sai. Portão novo `verificar_capital.py`.
 ## 2026-10-08 · #PR · Lote 1.6: 71 reconhecimentos federais que a União publicou e o banco não tinha
 
 A planilha da Operação Carro-Pipa, recebida do MIDR em 05/10, lista as portarias de reconhecimento por município. Setenta e uma portarias do ciclo não tinham par no banco e 70 municípios não tinham evento nenhum — 69 na mesma portaria, a nº 2.203, vizinha de duas que o banco já tinha. Contador de resposta: 726 → 796 municípios, 10,2% → 11,4% da população; PE de 40 para 107 municípios. Entram com `documento_nao_localizado`. Portão: regra (h).
