@@ -134,17 +134,51 @@ def sinal_de_limite_de_taxa(erro: Exception = None, dados: dict = None) -> bool:
     return not dados.get("results")
 
 
-def decidir(n_brutos: int, n_pistas: int, rodadas_sem_pista: int) -> str:
+# 09/10/2026 (lote 2.7, A1-11): "coberto sem menção" só sobre resultados que falam do município.
+MINIMO_QUE_NOMEIAM_PARA_COBERTURA = 3
+
+
+def decidir(n_brutos: int, n_pistas: int, rodadas_sem_pista: int, n_nomeiam: int = None) -> str:
     """A decisão da camada 4, isolada para ser testável sem rede.
 
     `rodadas_sem_pista` é quantas rodadas ANTERIORES este município já teve com resultado
     bruto e sem pista. A regra editorial de 27/09/2026: zero resultado bruto nunca produz
-    `coberto_sem_mencao`, e uma rodada sozinha também não — precisa da segunda."""
+    `coberto_sem_mencao`, e uma rodada sozinha também não — precisa da segunda.
+
+    09/10/2026 (lote 2.7, A1-11): `n_nomeiam` é quantos resultados brutos NOMEIAM o município
+    (título, URL ou trecho). O motor que ignora as aspas devolve 23 resultados por consulta que não
+    falam do município ("Hello, world", npmjs) — e 1.035 municípios ganharam "coberto sem menção"
+    sobre esse ruído em 05/10. Resultado que não nomeia o município é o motor sem resposta; e a
+    cobertura só se afirma com pelo menos três que o nomeiam."""
     if n_pistas > 0:
         return "pista"
-    if n_brutos <= 0:
+    if n_nomeiam is None:
+        n_nomeiam = n_brutos
+    if n_brutos <= 0 or n_nomeiam <= 0:
         return "motor_sem_resposta"
-    return "coberto_sem_mencao" if rodadas_sem_pista >= 1 else "nao_localizado_ate_o_momento"
+    if rodadas_sem_pista >= 1 and n_nomeiam >= MINIMO_QUE_NOMEIAM_PARA_COBERTURA:
+        return "coberto_sem_mencao"
+    return "nao_localizado_ate_o_momento"
+
+
+def nomeia_municipio(resultado: dict, nome_municipio: str) -> bool:
+    """O resultado fala do município? Nome no título, na URL ou no trecho — a primeira metade de
+    `relevante()`, sem o termo de plano."""
+    nome = (nome_municipio or "").lower()
+    return bool(nome) and any(nome in (resultado.get(c) or "").lower() for c in ("title", "url", "content"))
+
+
+def hosts_brutos(resultados: list, n: int = 3) -> list:
+    """Os n primeiros hosts dos resultados crus, para auditar a rodada sem rede."""
+    from urllib.parse import urlsplit
+    hosts = []
+    for r in resultados or []:
+        h = urlsplit(str(r.get("url") or "")).hostname or ""
+        if h and h not in hosts:
+            hosts.append(h)
+        if len(hosts) >= n:
+            break
+    return hosts
 
 
 def buscar_searxng(query: str, timeout: int = 20, motores: list = None) -> dict:
@@ -252,8 +286,11 @@ def rodar(lote: str | None, tamanho: int) -> int:
         if muda:
             print(f"  sentinela muda: {motor}")
         time.sleep(espera_do_ritmo(0))
-    if len(motores) < motores_busca.MINIMO_ATIVOS:
+    saudaveis = motores_busca.livres(estado_motores, agora_utc)
+    if len(motores) < motores_busca.MINIMO_ATIVOS or len(saudaveis) < motores_busca.MINIMO_ATIVOS:
         # menos de dois motores é pouco para afirmar ausência: a rodada não pergunta de verdade.
+        # 09/10/2026 (lote 2.7, A1-11): o piso não ressuscita motor morto. Se para ter dois foi
+        # preciso trazer de volta um motor desligado (100 % de falhas), a rodada não pergunta.
         print(f"✗ busca web: só {len(motores)} motor(es) ativo(s); a rodada encerra sem afirmar "
               f"ausência de nada")
         motores_busca.aplicar_disjuntor(estado_motores, agora_utc)
@@ -339,7 +376,7 @@ def rodar(lote: str | None, tamanho: int) -> int:
                 "titulo": (r.get("title") or "")[:300],   # 22/09/2026 (§150): título é o sinal mais forte da triagem de confiança
                 "registrado_em": hoje_editorial().isoformat(),
                 **triagem_completa(trecho),
-                "status": "pista — promover a registro exige documento primário lido por humano",
+                "status": "pista — na fila, aguardando busca dirigida e juiz",
             })
             vistos_pistas.add(chave_pista)
             npist += 1
@@ -361,7 +398,8 @@ def rodar(lote: str | None, tamanho: int) -> int:
                     encerrada_pela_sonda = True
 
         rodadas_sem_pista = int((espera["municipios"].get(cod) or {}).get("rodadas_com_bruto_sem_pista", 0) or 0)
-        decisao = decidir(len(resultados_brutos), len(achados), rodadas_sem_pista)
+        n_nomeiam = sum(1 for r in resultados_brutos if nomeia_municipio(r, nome))
+        decisao = decidir(len(resultados_brutos), len(achados), rodadas_sem_pista, n_nomeiam)
         # o estado de espera só avança quando houve resultado bruto e nenhuma pista; pista zera.
         if decisao == "pista":
             espera["municipios"].pop(cod, None)
@@ -372,6 +410,7 @@ def rodar(lote: str | None, tamanho: int) -> int:
                                 resultado=f"{len(achados)} pista(s) via busca web; decisão {decisao}")
         log_busca("busca_web", 4, strings, decisao,
                   uf=uf, municipio=nome, ibge=cod, n_resultados=len(resultados_brutos),
+                  extra={"n_nomeiam": n_nomeiam, "hosts_brutos": hosts_brutos(resultados_brutos)},
                   resultados=(f"{len(achados)} pista(s) relevante(s) de {len(resultados_brutos)} resultado(s) brutos"
                               f" em {len(consultas) - falhas_de_rede}/{len(consultas)} consultas"))
         n_ok += 1
@@ -455,6 +494,17 @@ def autoteste():
         voltaram com zero resultado bruto e receberam `coberto_sem_mencao`."""
         return (decidir(0, 0, 0) == "motor_sem_resposta"
                 and decidir(0, 0, 5) == "motor_sem_resposta")   # nem com histórico de espera
+
+    def t19_ruido_do_motor_nao_e_cobertura():
+        """09/10/2026 (lote 2.7, A1-11): 23 brutos que não nomeiam o município são motor sem
+        resposta; cobertura só com três que nomeiam."""
+        sem_nome = [{"title": "Hello, world", "url": "https://npmjs.com/x", "content": "npm"}] * 23
+        n = sum(1 for r in sem_nome if nomeia_municipio(r, "Bonito"))
+        return (n == 0 and decidir(23, 0, 1, n) == "motor_sem_resposta"
+                and decidir(23, 0, 1, 2) == "nao_localizado_ate_o_momento"
+                and decidir(23, 0, 1, 3) == "coberto_sem_mencao"
+                and hosts_brutos([{"url": "https://a.com/1"}, {"url": "https://a.com/2"},
+                                  {"url": "https://b.org/"}, {"url": "https://c.net/"}]) == ["a.com", "b.org", "c.net"])
 
     def t9_uma_rodada_nao_basta_duas_bastam():
         return (decidir(7, 0, 0) == "nao_localizado_ate_o_momento"
@@ -607,6 +657,7 @@ def autoteste():
         "vocabulário de decisao usado aqui existe de fato em log_busca()": t4_vocabulario_log_busca_bate_com_o_codigo,
         "zero resultado bruto nunca vira coberto_sem_mencao": t8_zero_bruto_nunca_e_coberto_sem_mencao,
         "coberto_sem_mencao exige duas rodadas com resultado bruto": t9_uma_rodada_nao_basta_duas_bastam,
+        "resultado que não nomeia o município é motor sem resposta (A1-11)": t19_ruido_do_motor_nao_e_cobertura,
         "pista vence qualquer estado de espera": t10_pista_vence_tudo,
         "as oito consultas do handover, mais a antiga como controle": t11_conjunto_de_consultas_cobre_o_handover,
         "peneira aceita o nome do município no trecho, não só no título": t12_peneira_aceita_municipio_no_trecho,

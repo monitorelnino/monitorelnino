@@ -95,7 +95,7 @@ Atualizado em 09/10/2026.
 | `coletar_srag_sivep.py` | — | `saude_desfechos/srag_serie.json`, `saude_desfechos/srag_sivep_agregados.json` | — | — | não |
 | `coletar_transferegov.py` | — | `financiamento/consultas.json`, `financiamento/por_uf.json`, `financiamento/programas_faf_2026.json`, `financiamento/serie_nacional.json`, `transferegov_el_nino_revisar.json` | — | — | não |
 | `coletar_transferencias_municipais.py` | — | `estados.json`, `indice.json`, `monitor_saude.json`, `municipios.json`, `saude_uf.json`, `transferencias_uniao.json` | — | — | não |
-| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `evidencias.json`, `fontes_consultadas.json`, `log_buscas.json`, `robots_registro.json` (+1) | — | **177** | não |
+| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `evidencias.json`, `fontes_consultadas.json`, `log_buscas.json`, `robots_registro.json` (+1) | — | **178** | não |
 | `consultar_querido_diario.py` | — | `pistas_querido_diario.json` | — | 1 | não |
 | `converter_contribuicao.py` | — | — | — | — | SIM |
 | `descobrir_dominios.py` | — | `dominios_oficiais.json` | — | — | não |
@@ -123,14 +123,14 @@ Atualizado em 09/10/2026.
 | `gerar_selos.py` | — | — | — | 1 | não |
 | `juiz.py` | — | — | — | 9 | SIM |
 | `julgar_e_aplicar_descobertas.py` | — | `atos_resposta.json`, `consist.json`, `decretos_historico_uf.json`, `estados.json`, `indice.json`, `municipios.json` (+2) | — | 4 | não |
-| `julgar_filas.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json`, `pistas_revisao.json`, `promocoes_automaticas.json` | — | 1 | não |
+| `julgar_filas.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json`, `promocoes_automaticas.json` | — | 3 | não |
 | `julgar_saude.py` | — | `pistas_imprensa_saude.json`, `saude_uf.json` | — | 1 | não |
 | `ler_caixa_lai.py` | — | — | — | — | não |
 | `migrar_saude_instrumentos.py` | — | — | — | 4 | não |
 | `migrar_v224_verificacao.py` | — | `citacao_incompleta.json`, `erratas_v224.json`, `log_buscas.json`, `municipios.json`, `pontos_mapa.json` | — | — | não |
 | `monitorar_atos_resposta.py` | — | — | — | — | não |
 | `monitorar_busca_web.py` | — | `busca_web_espera.json`, `busca_web_estado.json` | — | 4 | não |
-| `monitorar_imprensa_regional.py` | — | — | — | 5 | não |
+| `monitorar_imprensa_regional.py` | — | — | — | 6 | não |
 | `monitorar_imprensa_saude.py` | — | — | — | — | não |
 | `monitorar_politica_por_inteiro.py` | — | — | — | — | não |
 | `monitorar_redes_oficiais.py` | — | — | — | — | não |
@@ -148,7 +148,7 @@ Atualizado em 09/10/2026.
 | `scripts/commit_do_elo.py` | — | `inventado.json`, `municipios.json`, `novo.json`, `pistas_imprensa.json`, `pistas_revisao.json`, `publicacao.json` | — | 1 | não |
 | `scripts/consolidar_noite.py` | — | `focos_pontos.json`, `historico_mudancas.json`, `inventado.json`, `log_buscas.json`, `painel_da_noite.json`, `pistas_imprensa.json` (+2) | — | — | não |
 | `scripts/contar_filas_humanas.py` | — | `decretos_conteudo_revisar.json`, `pistas_descobertas.json`, `pistas_imprensa.json`, `pistas_imprensa_saude.json`, `saude_no_plano_revisar.json` | — | — | não |
-| `scripts/corrigir_atribuicao_por_dominio.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json`, `pistas_revisao.json` | — | — | não |
+| `scripts/corrigir_atribuicao_por_dominio.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json` | — | — | não |
 | `scripts/deduplicar_fila_de_pistas.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_rejeitadas.json`, `pistas_sinais.json` | — | — | não |
 | `scripts/diagnosticar_querido_diario.py` | — | `atos_resposta.json`, `municipios_ibge_referencia.json` | — | — | não |
 | `scripts/ensaio_da_noite.py` | — | `pistas_imprensa.json` | — | — | não |
@@ -167,12 +167,13 @@ Atualizado em 09/10/2026.
 | `scripts/ingerir_ocp_midr.py` | — | `ocp_2026.json` | — | — | não |
 | `scripts/limpar_fila_de_pistas.py` | — | `pistas_imprensa.json` | — | 2 | não |
 | `scripts/medir_ciclo_de_mudanca.py` | — | `indice.json`, `saude_pipeline.json` | — | — | não |
-| `scripts/migrar_pistas_para_o_esquema.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json`, `pistas_revisao.json` | — | — | não |
+| `scripts/migrar_fim_da_etapa_humana.py` | — | `decretos_conteudo_revisar.json`, `pistas_imprensa.json` | — | — | não |
+| `scripts/migrar_pistas_para_o_esquema.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json` | — | — | não |
 | `scripts/migrar_sobras_do_doe.py` | — | `pistas_doe.json` | — | — | não |
 | `scripts/orcamento_da_noite.py` | — | `cursor_da_noite.json` | — | — | não |
 | `scripts/ordem_de_coleta.py` | — | `cursor_de_coleta.json` | — | — | não |
 | `scripts/painel_da_noite.py` | — | `painel_da_noite.json` | — | 2 | não |
-| `scripts/pistas.py` | — | `pistas_imprensa.json`, `pistas_rejeitadas.json` | — | 13 | não |
+| `scripts/pistas.py` | — | `pistas_imprensa.json`, `pistas_rejeitadas.json` | — | 14 | não |
 | `scripts/preservar_textos_integrais.py` | — | `evidencias.json` | — | — | não |
 | `scripts/quais_portoes.py` | — | `indice.json` | — | — | não |
 | `scripts/reaplicar_noite.py` | — | `evidencias.json`, `funil/2026-10-08.json`, `historico_mudancas.json`, `log_buscas.json`, `municipios.json`, `painel_da_noite.json` (+4) | — | 1 | não |
@@ -190,7 +191,7 @@ Atualizado em 09/10/2026.
 | `scripts/unir_conflito_de_rodada.py` | — | `fontes_consultadas.json`, `funil/2026-10-05.json`, `funil/x.json`, `historico_mudancas.json`, `log_buscas.json`, `log_buscas/2026-10.json` (+12) | — | 3 | não |
 | `seguir_pistas.py` | — | — | — | — | não |
 | `sondar_paineis.py` | — | `pistas_paineis.json` | — | — | não |
-| `triar_confianca_pistas.py` | — | `pistas_imprensa.json`, `pistas_revisao.json` | — | — | não |
+| `triar_confianca_pistas.py` | — | `pistas_imprensa.json` | — | — | não |
 | `trocar_para_v04.py` | — | — | — | — | não |
 | `verificar_consistencia.py` | — | — | — | — | não |
 | `verificar_contribuicoes.py` | — | — | — | — | não |
@@ -198,7 +199,7 @@ Atualizado em 09/10/2026.
 | `verificar_financiamento.py` | — | `financiamento/x.json` | — | — | não |
 | `verificar_links.py` | — | — | — | — | não |
 | `verificar_painel.py` | — | `painel/lista.json` | — | — | não |
-| `verificar_pista_imprensa.py` | — | `veiculos_imprensa.json` | — | 1 | não |
+| `verificar_pista_imprensa.py` | — | `veiculos_imprensa.json` | — | 2 | não |
 | `verificar_recorrencia_uf.py` | — | — | — | 1 | não |
 | `verificar_resposta.py` | — | — | — | — | não |
 | `verificar_saude.py` | — | — | — | — | não |

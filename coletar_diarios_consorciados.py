@@ -514,7 +514,7 @@ def coletar_fonte(uf: str, slug: str, nome_fonte: str, desde_iso: str, ate_iso: 
                           "url": ed["url_pdf"], "hash_evidencia": h,
                           "registrado_em": hoje_editorial().isoformat(), **triagem_completa(p["trecho"]),
                           "status": "pista — atribuição de município por proximidade no PDF consorciado; "
-                                    "promover a registro exige documento primário lido por humano"})
+                                    "na fila, aguardando busca dirigida e juiz"})
                 pistas_todas.append(p)
             dias_com_edicao += 1
         if not edicoes and dia.weekday() < 5:
