@@ -114,6 +114,9 @@ def selecionar(pistas: list, ids=None, so_oficial: bool = False, urls=None) -> l
     return fora
 
 
+PREFIXO_FECHADA_POR_PRAZO = "fechada — sem documento oficial localizado"
+
+
 def pendente(p: dict, hoje=None) -> bool:
     """Pista que ainda espera decisão. Já resolvida, não se mexe.
 
@@ -137,6 +140,12 @@ def pendente(p: dict, hoje=None) -> bool:
     prox = p.get("proxima_tentativa_em")
     if prox and str(prox) > (hoje or _hoje_data()).isoformat():
         return False    # ainda dentro do back-off
+    # 09/10/2026 (lote 2.5, A1-16): fechada por prazo DEPOIS de uma leitura do juiz volta quando o
+    # codebook muda. O prazo fechava documento oficial lido-e-recusado com o motivo "sem documento
+    # oficial localizado" — e a correção do juiz nunca alcançava o que o prazo tinha fechado (38 das
+    # 46 eram edições do Querido Diário recusadas por um recorte que não funcionava, A1-03).
+    if status.startswith(PREFIXO_FECHADA_POR_PRAZO) and (p.get("juiz") or {}).get("leu_documento"):
+        return True
     return status.startswith("pista") or status.startswith("rebaixado") or status.startswith("revertida")
 
 
@@ -147,8 +156,13 @@ def julgar_uma(p: dict, buscar, preservar=None) -> dict:
     permite ao autoteste rodar sem rede e sem escrever em `evidencias/`."""
     from juiz import julgar
 
+    from juiz import PADROES_FONTE_PROVAVEL_OFICIAL
     url = p.get("url")
-    texto = buscar(url) if url else None
+    # 09/10/2026 (lote 2.5, A1-19): a URL fora do padrão de fonte oficial é recusada pela etapa 0
+    # sem precisar do texto. Baixá-la antes custava 3.245 downloads de imprensa por versão de
+    # codebook — o runner do GitHub lendo página de jornal para descartá-la.
+    oficial = bool(url) and any(pad in str(url).lower() for pad in PADROES_FONTE_PROVAVEL_OFICIAL)
+    texto = buscar(url) if oficial else None
     # 28/09/2026 (item 1): o `trecho` da pista é o que permite recortar o ATO de dentro da edição do
     # diário. Sem ele, o juiz lê vinte mil caracteres com dezenas de atos e cai em dúvida, corretamente.
     veredito = julgar(texto, nome=p.get("municipio") or "", uf=p.get("uf") or "",
@@ -229,7 +243,11 @@ def tentar_busca_dirigida(p: dict, v: dict, buscar_texto, preservar) -> dict:
         v["busca_dirigida"] = {"fontes": fontes, "encontrou": None}
         return v
 
-    novo = julgar_uma({**p, "url": url}, buscar_texto, preservar)
+    # 09/10/2026 (lote 2.5, A1-24): a edição achada no Querido Diário vem com o excerto que a casou,
+    # e o excerto vai como `trecho` — sem ele o juiz lê a edição inteira (dezenas de atos) e recusa.
+    excerto = _EXCERTOS_DO_QD.get(url)
+    novo = julgar_uma({**p, "url": url, **({"trecho": excerto} if excerto else {})},
+                      buscar_texto, preservar)
     novo["busca_dirigida"] = {"fontes": fontes, "encontrou": url,
                               "recusa_original": v.get("motivo")}
     return novo
@@ -254,9 +272,16 @@ def _qd_para_busca_dirigida(ibge, ident):
         return None
     for g in (dados or {}).get("gazettes", []) or []:
         url = g.get("txt_url") or g.get("url")
-        if url:
+        excertos = [e for e in (g.get("excerpts") or []) if str(e).strip()]
+        if url and excertos:
+            _EXCERTOS_DO_QD[url] = excertos[0]
             return url
+    # Edição sem excerto não se recorta: o juiz leria dezenas de atos e recusaria. Não é candidata.
     return None
+
+
+# url -> excerto da edição achada pela rota 1 (só vive durante a rodada).
+_EXCERTOS_DO_QD = {}
 
 
 def _web_para_busca_dirigida(consulta):
@@ -375,6 +400,28 @@ def autoteste() -> int:
     # Isso é fiel ao mundo: a mesma URL devolve um texto só.
     vereditos = [julgar_uma(p, buscar, preservar) for p in pistas]
 
+    # 09/10/2026 (lote 2.5, A1-19): URL fora do padrão não é baixada.
+    def _nao_baixe(u):
+        raise AssertionError(f"baixou {u}")
+    v_imprensa = julgar_uma({"id": "x", "municipio": "Bonito", "uf": "MS",
+                             "url": "https://g1.globo.com/ms/plano.html"}, _nao_baixe)
+    casos.append(("URL de imprensa é recusada sem download",
+                  v_imprensa["motivo"] == "sem_documento_primario"))
+    # 09/10/2026 (lote 2.5, A1-16): fechada por prazo depois de leitura volta com codebook novo.
+    fechada_lida = {"status": "fechada — sem documento oficial localizado no prazo da fila",
+                    "juiz": {"codebook": "1.3 (03/10/2026)", "leu_documento": True,
+                             "motivo": "natureza_duvidosa"}}
+    casos.append(("fechada por prazo depois de leitura volta com codebook novo",
+                  pendente(fechada_lida)))
+    casos.append(("fechada por prazo e já julgada por este codebook não volta",
+                  not pendente({**fechada_lida, "juiz": {**fechada_lida["juiz"],
+                                                         "codebook": CODEBOOK_VERSAO}})))
+    casos.append(("fechada por prazo sem leitura não volta pelo codebook",
+                  not pendente({"status": fechada_lida["status"],
+                                "juiz": {"codebook": "1.3 (03/10/2026)", "leu_documento": False}})))
+    casos.append(("fechada por outro motivo não volta",
+                  not pendente({"status": "fechada — notícia genérica",
+                                "juiz": {"codebook": "1.3", "leu_documento": True}})))
     casos.append(("todo veredito carrega a versão do codebook",
                   all(v["codebook"] == CODEBOOK_VERSAO for v in vereditos)))
     casos.append(("todo veredito carrega o id da pista",

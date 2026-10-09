@@ -63,7 +63,11 @@ RAIZ = pathlib.Path(__file__).resolve().parent
 # porque o critério mudou, e porque `pendente()` usa a versão para decidir o que volta à fila: subir
 # aqui devolve ao juiz toda pista já julgada sob a regra frouxa — inclusive as quatro que ela
 # promoveu por engano.
-CODEBOOK_VERSAO = "1.3 (03/10/2026)"
+CODEBOOK_VERSAO = "1.4 (09/10/2026)"
+# 1.4 (09/10/2026, lote 2): atribuição pelo domínio do ente (2.1), classificação com fronteira de
+# palavra e instrução normativa numa régua só (2.3), recorte do ato no texto colapsado e corte de
+# 20.000 depois do recorte (2.2). A versão sobe para que `pendente()` devolva ao juiz tudo o que o
+# 1.3 decidiu — inclusive as pistas que o prazo fechou depois de uma leitura (2.5, A1-16).
 # 1.3 — primeira rodada real do caminho novo, no mesmo dia: cinco promoções em sessenta pistas, e
 # DUAS eram notícia institucional no domínio do ente ("Prefeitura apresenta plano de contingência
 # para emergências"). A notícia satisfazia as três condições por acidente — está em domínio oficial,
