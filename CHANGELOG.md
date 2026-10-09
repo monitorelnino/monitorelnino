@@ -16,6 +16,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+
+## 2026-10-08 · #PR · Lote 1.6: 71 reconhecimentos federais que a União publicou e o banco não tinha
+
+A planilha da Operação Carro-Pipa, recebida do MIDR em 05/10, lista as portarias de reconhecimento por município. Setenta e uma portarias do ciclo não tinham par no banco e 70 municípios não tinham evento nenhum — 69 na mesma portaria, a nº 2.203, vizinha de duas que o banco já tinha. Contador de resposta: 726 → 796 municípios, 10,2% → 11,4% da população; PE de 40 para 107 municípios. Entram com `documento_nao_localizado`. Portão: regra (h).
 ## 2026-10-08 · #PR · Lote 1.8: a camada declarada deixa de contar a mesma população duas vezes
 
 O excedente declarado descontava só as categorias de plano e ignorava `estrutura` e `coberto_estadual`, já creditadas; e o contador de planos desatualizados era somado ao de planos sem desconto nem teto — 398 declarantes num levantamento de 485 respondentes no RS, cobertura 80 no DF, que tem um município. Passa a um termo só, com teto no número de municípios da UF. Média nacional 45,3 → 44,6; seis estados mudam de nota. Portão novo; errata C31.
