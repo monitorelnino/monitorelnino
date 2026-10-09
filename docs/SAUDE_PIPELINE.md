@@ -9,19 +9,19 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-02 a 2026-10-09 (530 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-02 a 2026-10-09 (542 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
 - consultar_querido_diario.py: erro em 4 rodadas seguidas — urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>
-- monitorar_imprensa_saude.py: erro em 12 rodadas seguidas — KeyError: 'hash'
-- monitorar_politica_por_inteiro.py: erro em 8 rodadas seguidas — NameError: name 'ler' is not defined. Did you mean: 'len'?
+- monitorar_imprensa_saude.py: erro em 13 rodadas seguidas — KeyError: 'hash'
+- monitorar_politica_por_inteiro.py: erro em 9 rodadas seguidas — NameError: name 'ler' is not defined. Did you mean: 'len'?
 
 ## Última execução de cada script
 
 | script | papel | última execução | duração | itens | status | erro |
 |---|---|---|---|---:|---|---|
-| `recalcular_mare.py` | essencial | 2026-10-09 08:00 | 3 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-09 08:21 | 3 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-08 01:29 | 1 s | — | ok | — |
 | `coletar_diarios_consorciados.py` | coletor | 2026-10-08 01:49 | 4580 s | 38 | ok | — |
 | `coletar_diarios_municipais.py` | coletor | 2026-10-07 01:36 | 806 s | 49 | ok | — |
@@ -33,17 +33,17 @@ Janela: 2026-10-02 a 2026-10-09 (530 execução(ões) registrada(s), 7 dias de h
 | `coletar_sinais_risco.py` | coletor | 2026-10-08 01:11 | 60 s | — | ok | — |
 | `coletar_srag_sivep.py` | coletor | 2026-10-04 14:19 | 40 s | — | ok | — |
 | `consultar_querido_diario.py` | coletor | 2026-10-07 01:10 | 99 s | — | **erro** (4 seguidas) | urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)> |
-| `descobrir_planos.py` | coletor | 2026-10-08 08:15 | 874 s | 42 | ok | — |
-| `detectar_marcos_federais.py` | coletor | 2026-10-08 08:15 | 1 s | 0 | ok | — |
+| `descobrir_planos.py` | coletor | 2026-10-09 07:29 | 1089 s | 42 | ok | — |
+| `detectar_marcos_federais.py` | coletor | 2026-10-09 07:29 | 2 s | 0 | ok | — |
 | `julgar_e_aplicar_descobertas.py` | coletor | 2026-10-08 01:29 | 2 s | — | ok | — |
 | `julgar_filas.py` | coletor | 2026-10-08 01:26 | 167 s | — | ok | — |
 | `julgar_saude.py` | coletor | 2026-10-02 10:39 | 2 s | — | ok | — |
-| `monitorar_atos_resposta.py` | coletor | 2026-10-08 08:14 | 99 s | 3388 | ok | — |
-| `monitorar_imprensa_regional.py` | coletor | 2026-10-08 08:10 | 210 s | 40 | ok | — |
-| `monitorar_imprensa_saude.py` | coletor | 2026-10-08 08:14 | 1 s | — | **erro** (12 seguidas) | KeyError: 'hash' |
-| `monitorar_politica_por_inteiro.py` | coletor | 2026-10-08 08:15 | 4 s | 3388 | **erro** (8 seguidas) | NameError: name 'ler' is not defined. Did you mean: 'len'? |
-| `monitorar_redes_oficiais.py` | coletor | 2026-10-08 08:30 | 1189 s | — | ok | — |
-| `monitorar_sinais_federais.py` | coletor | 2026-10-08 08:15 | 3 s | 10 | ok | — |
+| `monitorar_atos_resposta.py` | coletor | 2026-10-09 07:26 | 138 s | 3416 | ok | — |
+| `monitorar_imprensa_regional.py` | coletor | 2026-10-09 07:22 | 236 s | 40 | ok | — |
+| `monitorar_imprensa_saude.py` | coletor | 2026-10-09 07:26 | 1 s | — | **erro** (13 seguidas) | KeyError: 'hash' |
+| `monitorar_politica_por_inteiro.py` | coletor | 2026-10-09 07:29 | 2 s | 3416 | **erro** (9 seguidas) | NameError: name 'ler' is not defined. Did you mean: 'len'? |
+| `monitorar_redes_oficiais.py` | coletor | 2026-10-09 07:47 | 1687 s | — | ok | — |
+| `monitorar_sinais_federais.py` | coletor | 2026-10-09 07:29 | 4 s | 10 | ok | — |
 | `preservar_evidencias.py` | coletor | 2026-10-08 08:58 | 1 s | — | ok | — |
 | `revisar_pistas.py` | coletor | 2026-10-08 01:23 | 153 s | — | ok | — |
 | `scripts/amostra_auditoria_semanal.py` | coletor | 2026-10-08 01:29 | 0 s | — | ok | — |
@@ -51,6 +51,6 @@ Janela: 2026-10-02 a 2026-10-09 (530 execução(ões) registrada(s), 7 dias de h
 | `scripts/preservar_textos_integrais.py` | coletor | 2026-10-08 08:58 | 1 s | — | ok | — |
 | `scripts/triar_fila.py` | coletor | 2026-10-07 01:08 | 2 s | — | ok | — |
 | `scripts/verificar_esquema_de_pista.py` | coletor | 2026-10-07 01:08 | 3 s | — | ok | — |
-| `seguir_pistas.py` | coletor | 2026-10-08 08:50 | 86 s | — | ok | — |
-| `triar_confianca_pistas.py` | coletor | 2026-10-08 08:51 | 4 s | — | ok | — |
-| `verificar_pista_imprensa.py` | coletor | 2026-10-08 08:51 | 82 s | — | ok | — |
+| `seguir_pistas.py` | coletor | 2026-10-09 08:15 | 103 s | — | ok | — |
+| `triar_confianca_pistas.py` | coletor | 2026-10-09 08:17 | 3 s | — | ok | — |
+| `verificar_pista_imprensa.py` | coletor | 2026-10-09 08:17 | 92 s | — | ok | — |
