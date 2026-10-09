@@ -44,8 +44,34 @@ DESTINO = RAIZ / "data" / "pistas_querido_diario.json"
 # isso ele falhava noite após noite. O mesmo acervo responde por `queridodiario.ok.org.br/api/...`,
 # e `coletar_cobertura_qd.py` já usava as duas nesta ordem desde 30/09. Aqui vai a mesma ordem: a
 # que responde vale; se nenhuma responder, o erro é real e sobe.
-APIS = ("https://queridodiario.ok.org.br/api/gazettes",
+# 09/10/2026 (lote 2, A1-12): o host atual vem primeiro — `api.queridodiario.org.br`, o mesmo de
+# `coletar_diarios_municipais.py` (o antigo responde 302 para ele). Os dois antigos ficam de reserva.
+APIS = ("https://api.queridodiario.org.br/gazettes",
+        "https://queridodiario.ok.org.br/api/gazettes",
         "https://api.queridodiario.ok.org.br/gazettes")
+STATUS_DA_PISTA = "pista — na fila, aguardando busca dirigida e juiz"
+
+
+def pista_da_gazeta(g: dict, nome: str, uf: str, ibge: str, termo: str, hash_evidencia=None,
+                    hoje: str = None):
+    """A pista que vai à porta da fila (`scripts/pistas.gravar_lote`), ou None. Função pura.
+
+    09/10/2026 (lote 2, A1-12): o arquivo próprio do QD gravava `url_pdf`, `excerto`,
+    `codigo_ibge` e `status_triagem` — chaves que o juiz não lê (`julgar_uma` usa `url`, `trecho` e
+    `status`). A "primeira fila do juiz" nunca chegou ao juiz. Agora a gazeta vira pista no esquema,
+    com o EXCERTO como `trecho`: é ele que recorta o ato de dentro da edição. Sem excerto ou sem URL,
+    não há pista (a edição inteira não se julga)."""
+    url = g.get("url") or g.get("txt_url")
+    excertos = [e for e in (g.get("excerpts") or []) if str(e or "").strip()]
+    if not url or not excertos:
+        return None
+    return {"municipio": nome, "uf": uf, "ibge": str(ibge).zfill(7), "url": url,
+            "trecho": " ".join(str(excertos[0]).split())[:500],
+            "titulo": f"Diário oficial de {nome}/{uf}, {g.get('date') or ''} — {termo}",
+            "data_publicacao": g.get("date"), "origem": "querido_diario",
+            "hash_evidencia": hash_evidencia, "status": STATUS_DA_PISTA,
+            "data": hoje or hoje_editorial().isoformat(),
+            "registrado_em": hoje or hoje_editorial().isoformat()}
 TERMOS = ["plano de contingência", "PLANCON", "PLACON", "plano de enfrentamento",
           "protocolo de alerta e enfrentamento", "plano preventivo", "operação estiagem"]
 JANELA_DESDE = "2026-01-01"  # ciclo 2026/2027; atos antigos vigentes ficam p/ busca dirigida
@@ -112,7 +138,7 @@ def _por_territorio(territorios, termo):
     return {"gazettes": gazetas}
 
 
-def varrer_uf(uf, ref, pistas):
+def varrer_uf(uf, ref, pistas, para_fila=None):
     """Consulta a API do Querido Diário para uma UF, dentro de uma janela de datas, retornando os excertos que mencionam os termos de busca fornecidos."""
     nomes = {f"{m['codigo_ibge']:07d}": m["nome"] for m in ref if m["uf"] == uf}
     terr = sorted(nomes)
@@ -126,6 +152,8 @@ def varrer_uf(uf, ref, pistas):
         r = _por_territorio(terr, termo)
         for g in r.get("gazettes", []):
             t = g.get("territory_id")
+            if para_fila is not None:
+                para_fila.append(pista_da_gazeta(g, nomes.get(t, g.get("territory_name")), uf, t, termo))
             pistas.append({"nome": nomes.get(t, g.get("territory_name")), "uf": uf,
                            "codigo_ibge": t, "cobertura_qd": True, "escopo": "uf_completa",
                            "termo": termo, "data_diario": g.get("date"),
@@ -140,6 +168,7 @@ def rodar(alvos=None, ufs=None):
     ref = json.load(open(RAIZ / "data" / "municipios_ibge_referencia.json", encoding="utf-8"))
     cod = {(m["nome"], m["uf"]): f"{m['codigo_ibge']:07d}" for m in ref}
     alvos = alvos or [(n, u) for n, u in CAPITAIS.items()]
+    para_fila = []
     pistas, execucao = [], {"data": time.strftime("%Y-%m-%d"), "janela_desde": JANELA_DESDE,
                             "termos": TERMOS, "alvos": len(alvos)}
     for nome, uf in alvos:
@@ -157,6 +186,7 @@ def rodar(alvos=None, ufs=None):
                       "excerpt_size": 300, "number_of_excerpts": 1})
             time.sleep(1.1)
             for g in r.get("gazettes", []):
+                para_fila.append(pista_da_gazeta(g, nome, uf, t, termo))
                 pistas.append({"nome": nome, "uf": uf, "codigo_ibge": t, "cobertura_qd": True,
                                "termo": termo, "data_diario": g.get("date"),
                                "edicao": g.get("edition"), "url_pdf": g.get("url"),
@@ -164,9 +194,15 @@ def rodar(alvos=None, ufs=None):
                                "hash_evidencia": _preservar_achado(g),
                                "status_triagem": "pendente_julgamento"})
     for uf in (ufs if ufs is not None else UFS_LAC):
-        varrer_uf(uf, ref, pistas)
+        varrer_uf(uf, ref, pistas, para_fila)
     execucao["ufs_varridas"] = ufs if ufs is not None else UFS_LAC
-    gravar_em(DESTINO, {"execucao": execucao, "pistas": pistas})   # §229
+    gravar_em(DESTINO, {"execucao": execucao, "pistas": pistas})   # §229 — retrato da rodada
+    # A fila do juiz recebe as pistas pela porta única, no esquema (A1-12).
+    from scripts.pistas import gravar_lote
+    balanco = gravar_lote([p for p in para_fila if p], origem="querido_diario")
+    execucao["fila"] = {k: balanco.get(k) for k in ("gravadas", "recusadas")}
+    print(f"  fila do juiz: {balanco.get('gravadas')} pista(s) gravada(s), "
+          f"{balanco.get('recusadas')} recusada(s) pela porta {balanco.get('motivos') or ''}")
     n_cob = sum(1 for p in pistas if p.get("cobertura_qd"))
     # Item B do handover da auditoria do funil (27/09/2026): a rodada conta por etapa, para que
     # "está encontrando?" se responda sem abrir o código. Contagem não decide nada.
@@ -176,8 +212,45 @@ def rodar(alvos=None, ufs=None):
     return 0
 
 
+def fatia_do_cursor(alvos: list, inicio: int, limite: int) -> tuple:
+    """(fatia, próximo início), dando a volta na lista. Função pura."""
+    if not alvos or limite <= 0:
+        return [], 0
+    inicio %= len(alvos)
+    fatia = [alvos[(inicio + i) % len(alvos)] for i in range(min(limite, len(alvos)))]
+    return fatia, (inicio + len(fatia)) % len(alvos)
+
+
+def autoteste() -> int:
+    """Sem rede e sem escrita: a gazeta vira pista válida pela porta, e o cursor anda."""
+    import sys as _s
+    _s.path.insert(0, str(RAIZ))
+    from scripts.pistas import normalizar, motivo_de_recusa
+    import julgar_filas
+    g = {"url": "https://data.queridodiario.ok.org.br/4301602/2026-07-10/a.pdf", "date": "2026-07-10",
+         "excerpts": ["Fica instituído o Plano de Contingência de Proteção e Defesa Civil de Bagé"]}
+    p = pista_da_gazeta(g, "Bagé", "RS", "4301602", "plano de contingência", hoje="2026-10-09")
+    n = normalizar(p, "querido_diario")
+    casos = [
+        ("gazeta com excerto vira pista com url e trecho", p["url"] == g["url"] and "Plano" in p["trecho"]),
+        ("a pista passa na porta da fila", motivo_de_recusa(n, []) == ""),
+        ("o juiz a vê como pendente", julgar_filas.pendente(n)),
+        ("gazeta sem excerto não vira pista", pista_da_gazeta({**g, "excerpts": []}, "Bagé", "RS", "4301602", "x", hoje="2026-10-09") is None),
+        ("o host atual vem primeiro", APIS[0].startswith("https://api.queridodiario.org.br")),
+        ("cursor anda e dá a volta", fatia_do_cursor(list(range(5)), 3, 4) == ([3, 4, 0, 1], 2)),
+        ("cursor com lista vazia", fatia_do_cursor([], 7, 4) == ([], 0)),
+    ]
+    for nome, ok in casos:
+        print(f"  {'OK  ' if ok else 'FALHA'} {nome}")
+    falhas = [c for c, ok in casos if not ok]
+    print(f"{'X' if falhas else 'OK'} AUTOTESTE — {len(casos)} casos, sem rede e sem escrita.")
+    return 1 if falhas else 0
+
+
 def main():
     """Interface de linha de comando: roda a varredura por UF(s) informada(s) ou, com --descobrir-termos, o modo de descoberta nacional de vocabulário."""
+    if "--autoteste" in sys.argv:
+        return autoteste()
     if "--descobrir-termos" in sys.argv:
         sementes = ["plano de contingência El Niño", "plano de enfrentamento", "operação estiagem",
                     "plano emergencial estiagem", "protocolo calor extremo", "plano de ação climática contingência"]
@@ -206,7 +279,10 @@ def main():
         alvos = [(a["nome"], a["uf"]) for a in doc.get("alvos", []) if a.get("nome") and a.get("uf")]
         limite = int(sys.argv[sys.argv.index("--limite") + 1]) if "--limite" in sys.argv else None
         if limite:
-            alvos = alvos[:limite]
+            # 09/10/2026 (lote 2, A1-12): cursor. `--limite 40` era sempre os 40 primeiros de 169.
+            alvos, proximo = fatia_do_cursor(alvos, int(doc.get("proximo") or 0), limite)
+            doc["proximo"] = proximo
+            gravar_em(caminho, doc)
         print(f"fila de alvos: {len(alvos)} município(s) de {caminho.name}")
         return rodar(alvos=alvos)
     if "--uf" in sys.argv:

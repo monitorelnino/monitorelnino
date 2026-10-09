@@ -123,7 +123,7 @@ Atualizado em 09/10/2026.
 | `gerar_selos.py` | — | — | — | 1 | não |
 | `juiz.py` | — | — | — | 9 | SIM |
 | `julgar_e_aplicar_descobertas.py` | — | `atos_resposta.json`, `consist.json`, `decretos_historico_uf.json`, `estados.json`, `indice.json`, `municipios.json` (+2) | — | 4 | não |
-| `julgar_filas.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json`, `promocoes_automaticas.json` | — | 2 | não |
+| `julgar_filas.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json`, `promocoes_automaticas.json` | — | 3 | não |
 | `julgar_saude.py` | — | `pistas_imprensa_saude.json`, `saude_uf.json` | — | 1 | não |
 | `ler_caixa_lai.py` | — | — | — | — | não |
 | `migrar_saude_instrumentos.py` | — | — | — | 4 | não |
@@ -173,7 +173,7 @@ Atualizado em 09/10/2026.
 | `scripts/orcamento_da_noite.py` | — | `cursor_da_noite.json` | — | — | não |
 | `scripts/ordem_de_coleta.py` | — | `cursor_de_coleta.json` | — | — | não |
 | `scripts/painel_da_noite.py` | — | `painel_da_noite.json` | — | 2 | não |
-| `scripts/pistas.py` | — | `pistas_imprensa.json`, `pistas_rejeitadas.json` | — | 13 | não |
+| `scripts/pistas.py` | — | `pistas_imprensa.json`, `pistas_rejeitadas.json` | — | 14 | não |
 | `scripts/preservar_textos_integrais.py` | — | `evidencias.json` | — | — | não |
 | `scripts/quais_portoes.py` | — | `indice.json` | — | — | não |
 | `scripts/reaplicar_noite.py` | — | `evidencias.json`, `funil/2026-10-08.json`, `historico_mudancas.json`, `log_buscas.json`, `municipios.json`, `painel_da_noite.json` (+4) | — | 1 | não |
