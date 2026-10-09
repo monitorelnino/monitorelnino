@@ -103,6 +103,13 @@ jobs:
         timeout-minutes: 5
         run: python3 scripts/deduplicar_fila_de_pistas.py --aplicar | tee -a "$GITHUB_STEP_SUMMARY"
 
+      # 09/10/2026 (A1-13): a origem das pistas que entraram ANTES da porta de 03/10 esta fora do
+      # vocabulario do esquema — 12.309 de 13.503 na medicao de hoje, 9.976 delas sem origem
+      # nenhuma. A migracao e idempotente: roda na mesma passada do consolidador, que ja e o elo
+      # que mexe na fila inteira, e para de ter efeito quando a fila estiver em dia.
+      - name: Origem das pistas no vocabulario do esquema
+        run: python3 scripts/migrar_pistas_para_o_esquema.py --aplicar | tee -a "$GITHUB_STEP_SUMMARY"
+
       - name: Regenerar os derivados
         timeout-minutes: 12
         run: bash scripts/verificar_derivados.sh --regenerar-para-commit

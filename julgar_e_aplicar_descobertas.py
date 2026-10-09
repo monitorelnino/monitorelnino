@@ -471,10 +471,22 @@ def ementa(texto, numero, data):
     return corpo if (numero and numero.lower() in corpo.lower()) else f"{corpo} (ato {numero}, {data})"
 
 
-def aplicar_municipal(nome, uf, texto, numero, data, url, hoje):
+def aplicar_municipal(nome, uf, texto, numero, data, url, hoje, veredito):
     """Mescla um registro municipal EX_ANTE confiante em municipios.json E em
     pontos_mapa.json (o mapa lê daqui, não de municipios.json — esquecer este
-    segundo arquivo foi um dos bugs achados no teste de ponta a ponta)."""
+    segundo arquivo foi um dos bugs achados no teste de ponta a ponta).
+
+    09/10/2026 (A1-15). Este caminho gravava **sempre** `categoria: "plano"` e sem proveniência,
+    enquanto o caminho de `aplicar_promocoes_do_juiz.py` grava a categoria do veredito e carrega
+    `hash_evidencia`, `pista_id` e `codebook`. Dois caminhos com regras diferentes escrevendo no
+    mesmo banco: um `plano_antigo` entrava aqui como plano novo, e o índice conta os dois
+    diferente. A categoria passa a vir do VEREDITO, que o chamador já tem em mãos, e o documento é
+    preservado antes de o registro existir — registro pontuável sem evidência é vermelho no portão
+    26, e agora o rollback funciona de verdade (A1-02).
+    """
+    categoria = str((veredito or {}).get("categoria") or "").strip()
+    if not categoria:
+        return False, f"{nome}/{uf} sem categoria no veredito — o banco não recebe registro sem ela"
     lat, lon = buscar_lat_lon(nome, uf)
     if lat is None:
         return False, f"{nome}/{uf} não consta na referência do IBGE — não dá pra posicionar no mapa, fila humana"
@@ -485,16 +497,26 @@ def aplicar_municipal(nome, uf, texto, numero, data, url, hoje):
         return False, f"{nome}/{uf} já consta na base — não duplicar (revisão humana decide se é atualização)"
     canal, fonte_base = canal_e_fonte(url)
     doc = ementa(texto, numero, data)
+    from aplicar_promocoes_do_juiz import preservar_o_documento
+    hash_evidencia = preservar_o_documento(url, "julgar_e_aplicar_descobertas")
+    if not hash_evidencia:
+        return False, (f"{nome}/{uf}: documento não pôde ser preservado — registro pontuável "
+                       f"exige evidência guardada (portão 26)")
     municipios.append({
-        "nome": nome, "uf": uf, "categoria": "plano", "documento": doc, "data": data,
-        "fonte": f"{fonte_base} — ato lido e classificado automaticamente em {hoje} (§158)",
+        "nome": nome, "uf": uf, "categoria": categoria, "documento": doc, "data": data,
+        "fonte": f"{fonte_base} — ato lido e classificado automaticamente em {hoje} "
+                 f"(codebook {(veredito or {}).get('codebook')})",
         "url": url, "lat": lat, "lon": lon, "canal": canal,
+        "hash_evidencia": hash_evidencia,
+        "pista_id": (veredito or {}).get("pista_id"),
+        "codebook": (veredito or {}).get("codebook"),
     })
     gravar_em(mun_path, municipios)
 
     pontos_path = RAIZ / "data" / "pontos_mapa.json"
     pontos = json.load(open(pontos_path, encoding="utf-8"))
-    pontos.append({"nome": nome, "uf": uf, "categoria": "plano", "lat": lat, "lon": lon, "fase": 3})
+    pontos.append({"nome": nome, "uf": uf, "categoria": categoria, "lat": lat, "lon": lon,
+                   "fase": 3})
     gravar_em(pontos_path, pontos)
 
     return True, "aplicado"
@@ -667,7 +689,8 @@ def processar_pista(pista, hoje, buscar=buscar_texto):
             return {"decisao": "FILA_HUMANA",
                     "motivo": f"juiz {veredito['codebook']}: {veredito['motivo']}",
                     "juiz": veredito}
-        aplicado, motivo_ap = aplicar_municipal(nome_mun, uf, texto, numero, data, pista["url"], hoje)
+        aplicado, motivo_ap = aplicar_municipal(nome_mun, uf, texto, numero, data,
+                                                pista["url"], hoje, veredito)
 
     if not aplicado:
         return {"decisao": "FILA_HUMANA", "motivo": motivo_ap}
@@ -739,6 +762,19 @@ def self_test():
                                                 "com base nas projeções do Painel El Niño.")
         assert r5["decisao"] == "FILA_HUMANA" and "citação incompleta" in r5["motivo"]
         print("✓ self-test OK — EX_ANTE confiante mas sem número/data vai para fila (citação incompleta)")
+
+        # 09/10/2026 (A1-15): a categoria do registro vem do VEREDITO, nunca fixa em "plano".
+        # Sem veredito com categoria, nada entra no banco — e a trava e pura: ela para antes de
+        # tocar disco, no primeiro `if` da funcao.
+        ok_sem, motivo_sem = aplicar_municipal("Taió", "SC", "texto", "12", "01/02/2026",
+                                               "https://taio.sc.gov.br/a.pdf", "01/02/2026", {})
+        assert ok_sem is False and "sem categoria" in motivo_sem, motivo_sem
+        import inspect
+        fonte_ap = inspect.getsource(aplicar_municipal)
+        assert '"categoria": categoria' in fonte_ap and '"categoria": "plano"' not in fonte_ap
+        assert "hash_evidencia" in fonte_ap and "pista_id" in fonte_ap
+        print("✓ self-test OK — aplicacao municipal usa a categoria do veredito e carrega "
+              "proveniencia")
 
     # 6) §163: a cadeia que o juiz regenera tem de ser a MESMA que o portão 12 cobra.
     #    Divergência aqui foi a causa do portão 12 vermelho na main em 22/09/2026 (histórico

@@ -51,11 +51,56 @@ MUNICIPIOS = RAIZ / "data" / "municipios.json"
 PONTOS = RAIZ / "data" / "pontos_mapa.json"
 
 
-def aplicaveis(decisoes: list, versao: str) -> list:
-    """Vereditos que promovem, na versão em vigor, ainda não aplicados nem superados."""
-    return [v for v in decisoes
-            if v.get("promove") and v.get("codebook") == versao
-            and not v.get("superada_por") and not v.get("aplicado_em")]
+def dominio_divergente(veredito: dict, dono) -> bool:
+    """O documento está em domínio oficial de OUTRO município? Função pura dado o dono.
+
+    09/10/2026 (A1-01). Três dos trinta vereditos que promoveram no registro creditam município
+    que não é o dono do domínio do documento:
+
+        Candeias/MG     ← prefeitura.candeias.ba.gov.br   (outra UF)
+        Rio do Oeste/SC ← defesacivil.taio.sc.gov.br      (o plano é de Taió)
+        Santa Rosa/RS   ← trindadedosul.rs.gov.br         (o plano é de Trindade do Sul)
+
+    O domínio é prova mais forte que um nome no meio do texto, e o corretor de atribuição já
+    reatribui a pista antes de julgar. Esta é a rede: aplicar no banco um par que o próprio
+    domínio contradiz grava registro falso, e registro falso pontua.
+
+    Host que não resolve município nenhum (diário consorciado, domínio federal, armazenamento)
+    devolve `None` e não decide nada aqui — quem cuida disso são as etapas 0 e 3 do codebook.
+    """
+    if not dono:
+        return False
+    nome = str(veredito.get("municipio") or "").strip().lower()
+    uf = str(veredito.get("uf") or "").strip().upper()
+    return (str(dono.get("uf") or "").upper() != uf
+            or str(dono.get("nome") or "").strip().lower() != nome)
+
+
+def aplicaveis(decisoes: list, versao: str, resolver=None) -> list:
+    """Vereditos que promovem, na versão em vigor, ainda não aplicados nem superados.
+
+    09/10/2026 (A1-29): `nao_aplicado` também exclui — a marca existe para dizer que a decisão
+    não vai ao banco, e sem o filtro Taió tinha três decisões vivas para a mesma URL.
+    09/10/2026 (A1-01): veredito cujo domínio aponta outro município não é aplicável.
+    """
+    if resolver is None:
+        try:
+            from municipio_do_dominio import municipio_de as resolver
+        except ImportError:
+            def resolver(_url):
+                return None
+    fora = []
+    for v in decisoes:
+        if not (v.get("promove") and v.get("codebook") == versao):
+            continue
+        if v.get("superada_por") or v.get("aplicado_em") or v.get("nao_aplicado"):
+            continue
+        if dominio_divergente(v, resolver(v.get("url") or "")):
+            print(f"   ! nao aplicado: {v.get('municipio')}/{v.get('uf')} — o documento esta em "
+                  f"dominio oficial de outro municipio")
+            continue
+        fora.append(v)
+    return fora
 
 
 def ja_no_banco(municipios: list, nome: str, uf: str) -> bool:
@@ -216,7 +261,25 @@ def autoteste() -> int:
                                                "ATUALIZAÇÃO DO PLANO A efetiva aplicação do "
                                                "Plano de Contingência decorre"}}})
                   == "Plano de contingência municipal — Prefeitura de Celso Ramos, 2022"))
-    casos.append(("veredito da versão em vigor é aplicável", len(aplicaveis([base], V)) == 1))
+    sem_dono = lambda _u: None            # noqa: E731 — resolvedor nulo, para as travas puras
+    casos.append(("veredito da versão em vigor é aplicável",
+                  len(aplicaveis([base], V, resolver=sem_dono)) == 1))
+    # 09/10/2026 (A1-01): domínio de outro município derruba a aplicação.
+    taio = {"nome": "Taió", "uf": "SC", "ibge": "4217808"}
+    casos.append(("domínio de outro município não é aplicável",
+                  aplicaveis([dict(base, municipio="Rio do Oeste", uf="SC")], V,
+                             resolver=lambda _u: taio) == []))
+    casos.append(("domínio do próprio município é aplicável",
+                  len(aplicaveis([dict(base, municipio="Taió", uf="SC")], V,
+                                 resolver=lambda _u: taio)) == 1))
+    casos.append(("domínio que não resolve município não decide nada",
+                  len(aplicaveis([base], V, resolver=sem_dono)) == 1))
+    casos.append(("UF divergente com mesmo nome não é aplicável",
+                  aplicaveis([dict(base, municipio="Candeias", uf="MG")], V,
+                             resolver=lambda _u: {"nome": "Candeias", "uf": "BA"}) == []))
+    # 09/10/2026 (A1-29): `nao_aplicado` exclui.
+    casos.append(("veredito marcado nao_aplicado não volta ao banco",
+                  aplicaveis([dict(base, nao_aplicado=True)], V, resolver=sem_dono) == []))
     casos.append(("veredito de versão anterior NÃO é aplicável",
                   aplicaveis([dict(base, codebook="1.0 (27/09/2026)")], V) == []))
     casos.append(("veredito superado NÃO é aplicável",
@@ -256,6 +319,21 @@ def autoteste() -> int:
     casos.append(("a ementa sai do objeto ex-ante",
                   r["documento"].startswith("Fica instituído o Plano Municipal")))
     sem_objeto = registro_do_veredito(dict(base, criterios={}), 0, 0, "DOM", "x", "28/09/2026")
+    # 09/10/2026 (A1-02): trava ESTRUTURAL do desempacotamento. `rodar_portoes()` devolve
+    # `(ok, saida)`; atribuir a tupla inteira a `ok` torna a rede de protecao morta, porque tupla
+    # de dois elementos e sempre verdadeira. A trava le o proprio fonte: foi assim que o defeito
+    # passou em revisao, e ler o fonte e o unico jeito de pegar o mesmo erro de novo sem rodar a
+    # aplicacao de verdade.
+    fonte_deste = pathlib.Path(__file__).read_text(encoding="utf-8")
+    atribuicoes = [l.strip() for l in fonte_deste.splitlines()
+                   if l.strip().endswith("= rodar_portoes()")]
+    casos.append(("o retorno de rodar_portoes e desempacotado em (ok, saida)",
+                  atribuicoes == ["ok, saida_portoes = rodar_portoes()"]))
+    import inspect
+    from julgar_e_aplicar_descobertas import rodar_portoes as _rp
+    casos.append(("rodar_portoes continua devolvendo dois valores",
+                  "return True," in inspect.getsource(_rp)
+                  and "return False," in inspect.getsource(_rp)))
     casos.append(("sem objeto, a ementa diz o que é sem inventar texto",
                   "classificado como plano_antigo" in sem_objeto["documento"]))
 
@@ -340,14 +418,23 @@ def main() -> int:
     gravar_em(PONTOS, pontos)
     print(f"{len(aplicados)} registro(s) escrito(s); rodando recálculo e portões antes de confirmar")
 
-    ok = rodar_portoes()
+    # 09/10/2026 (A1-02): `rodar_portoes()` devolve a TUPLA `(ok, saida)`, e aqui ela era atribuida
+    # inteira a `ok`. Tupla de dois elementos e sempre verdadeira — a rede de protecao descrita no
+    # cabecalho deste arquivo NUNCA disparou: portao vermelho confirmava a aplicacao em vez de
+    # desfaze-la. O motivo agora guarda a saida do portao que reprovou, porque reverter sem dizer o
+    # que reprovou obriga a repetir a rodada para descobrir.
+    ok, saida_portoes = rodar_portoes()
     if not ok:
         restaurar_dados(backup)
+        ultima = [l for l in (saida_portoes or "").splitlines() if l.strip()][-6:]
         for v in aplicados:
             v["revertido_por_portao"] = {"em": hoje.isoformat(),
-                                         "motivo": "portão vermelho depois da aplicação"}
+                                         "motivo": "portão vermelho depois da aplicação",
+                                         "saida": chr(10).join(ultima)}
         gravar_em(REGISTRO, doc)
         print("X portão vermelho — tudo restaurado em disco; as decisões guardam o erro")
+        for l in ultima:
+            print(f"   | {l}")
         return 1
 
     for v in aplicados:

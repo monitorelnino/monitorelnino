@@ -15,15 +15,36 @@
     "tentativas_de_busca_dirigida": "Contador; duas tentativas sem documento fecham a pista.",
     "repeticoes": "Contador de vezes que a mesma pista voltou a ser achada — a repetida não entra de novo, incrementa aqui."
   },
-  "tipos_validos": ["plano", "estrutura", "decreto", "outro"],
-  "niveis_validos": ["A", "B", "C"],
+  "tipos_validos": [
+    "plano",
+    "estrutura",
+    "decreto",
+    "outro"
+  ],
+  "niveis_validos": [
+    "A",
+    "B",
+    "C"
+  ],
   "_por_que_diario_consorciado": "08/10/2026: `coletar_diarios_consorciados.py` grava pela porta com origem `diario_consorciado` desde que existe, e a lista nao a trazia -- as 23 pistas que a reaplicacao da noite de 07->08 devolveu caiam na quarentena por isso. Quarentenar pista de coletor real e perder trabalho; o que faltava era a origem estar declarada.",
-  "origens_validas": ["busca_web", "imprensa", "rede_social", "diario", "diario_consorciado", "descoberta", "querido_diario", "doe", "revisao"],
+  "origens_validas": [
+    "busca_web",
+    "imprensa",
+    "rede_social",
+    "diario",
+    "diario_consorciado",
+    "descoberta",
+    "querido_diario",
+    "doe",
+    "revisao",
+    "desconhecida"
+  ],
   "regras": {
     "teto_por_municipio_e_assunto": 5,
     "dias_de_vida": 21,
     "tentativas_de_busca_dirigida": 2,
     "dominio_oficial_vai_direto_ao_juiz": true,
     "deduplicacao_na_entrada": "url_final + alvo + assunto; repetida incrementa `repeticoes` na existente"
-  }
+  },
+  "_por_que_desconhecida": "09/10/2026: 10.018 das 13.503 pistas da fila ativa entraram ANTES da porta de 03/10 e não têm origem nenhuma. A origem dessas não se adivinha pela fila em que a pista mora — isso seria inventar proveniência. Elas recebem `desconhecida`, que é lacuna declarada e aparece como tal em qualquer leitura por origem. Pista NOVA nunca recebe este valor: a porta exige origem de coletor, e origem fora desta lista é recusada com motivo."
 }

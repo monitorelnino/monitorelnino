@@ -27,6 +27,9 @@ não pontuados permanecem na versão corrente.
 
 
 
+
+
+
 ## 2026-10-09 · #PR · classificação: termo de risco com fronteira, instrumento numa lista só
 
 Lote 2.3, as três correções de fato. Termo de risco casava dentro de outra palavra ("secagem de
@@ -34,6 +37,27 @@ grãos" virava seca, "fogo de artifício" virava fogo); "instrução normativa" 
 instrumento pela etapa 2 e recusada por `citacao_completa`, duas regras da mesma régua
 discordando; e a data do ato era a primeira data do texto, que num diário é a da edição — a regra
 da janela existia num caminho e não no outro. Onde: juiz.py, classificador_natureza.py.
+## 2026-10-09 · #PR · a fila de pistas passa a ter porta para origem e domínio
+
+Lote 2.8. Medido pista por pista: 12.309 das 13.503 pistas ativas tinham origem fora do esquema,
+9.976 sem origem nenhuma, e 1.667 das 1.734 de rede social estavam em domínio alheio. A porta
+recusa origem fora do esquema e rede social fora de domínio de rede ou `.gov.br`; o teto por
+município vale por classe de domínio; e um portão novo confere que todo script citado por
+workflow existe.
+## 2026-10-09 · #PR · a aplicação no banco volta a ter rede e uma regra só
+
+Lote 2.4. O rollback do aplicador nunca disparava: `rodar_portoes()` devolve `(ok, saida)` e a
+tupla era atribuída inteira a `ok`, sempre verdadeira — portão vermelho confirmava em vez de
+desfazer. E o caminho das descobertas gravava sempre `categoria: "plano"`, sem evidência nem
+proveniência, enquanto o caminho do juiz grava a categoria do veredito: um `plano_antigo` entrava
+como plano novo. Onde: aplicar_promocoes_do_juiz.py, julgar_e_aplicar_descobertas.py.
+## 2026-10-09 · #PR · atribuição do ato: domínio vence nome no texto
+
+Lote 2.1. Nome homônimo sem a UF no texto deixa de classificar (241 nomes estão em mais de uma
+UF); `prefeitura.<nome>.<uf>.gov.br` passa a resolver o dono do domínio; o corretor de atribuição,
+que existia e não rodava, entra na corrente antes do juiz; e o aplicador recusa veredito cujo
+documento está em domínio de outro município — três dos trinta promovidos. Onde: juiz.py,
+scripts/municipio_do_dominio.py, aplicar_promocoes_do_juiz.py, noturno_juiz.yml.
 
 ## 2026-10-08 · #PR · Lote 4.6: uma frase só sobre a conferência, a do processo real
 

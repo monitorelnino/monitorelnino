@@ -57,7 +57,13 @@ UFS = ("ac", "al", "am", "ap", "ba", "ce", "df", "es", "go", "ma", "mg", "ms", "
 PREFIXOS = ("www", "www2", "www3", "web", "portal", "novoportal", "site", "transparencia",
             "defesacivil", "defesa-civil", "protecaocivil", "saude", "educacao", "gcpstorage",
             "storage", "arquivos", "documentos", "doc", "docs", "cdn", "static", "media",
-            "diariooficial", "dom", "do", "legislacao", "leis", "sapl")
+            "diariooficial", "dom", "do", "legislacao", "leis", "sapl",
+            # 09/10/2026 (A1-10): `prefeitura.<nome>.<uf>.gov.br` e suas variantes eram host de
+            # dois rótulos antes da UF, e a função devolvia None por "sobrou mais de um rótulo" —
+            # o corretor de atribuição não resolvia nenhum deles. "prefeitura" é rótulo de
+            # serviço, como "portal": o nome do município é o outro.
+            "prefeitura", "prefeituramunicipal", "pref", "municipio", "governo",
+            "cidadao", "servicos", "atendimento")
 
 # Hosts que NÃO são de município, mesmo terminando em .gov.br.
 NAO_MUNICIPAL = ("gov.br", "leg.br", "jus.br", "mp.br", "def.br")
@@ -190,6 +196,16 @@ def _autoteste() -> int:
     ok("host sem ponto devolve None", partes_do_host("localhost") == (None, None))
     ok("partes_do_host nomeia a UF em maiúscula",
        partes_do_host("encantado.rs.gov.br") == ("encantado", "RS"))
+
+    # 09/10/2026 (A1-10): `prefeitura.<nome>` e companhia eram host de dois rótulos antes da UF,
+    # e a função devolvia None — o corretor de atribuição não resolvia nenhum deles.
+    ok("prefeitura.<nome>.<uf>.gov.br resolve o municipio",
+       partes_do_host("prefeitura.sorocaba.sp.gov.br") == ("sorocaba", "SP"))
+    ok("www.prefeitura.<nome> tambem resolve",
+       partes_do_host("www.prefeitura.taio.sc.gov.br") == ("taio", "SC"))
+    ok("camara segue fora (nao e Executivo)",
+       partes_do_host("camara.leme.sp.leg.br") == (None, None))
+    ok("host de estado segue sem municipio", partes_do_host("sp.gov.br") == (None, None))
 
     # A referência real existe e o índice se monta sobre ela (sem rede).
     if REFERENCIA.exists():
