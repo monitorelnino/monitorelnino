@@ -109,6 +109,13 @@ Lote 2.8. Medido pista por pista: 12.309 das 13.503 pistas ativas tinham origem 
 recusa origem fora do esquema e rede social fora de domínio de rede ou `.gov.br`; o teto por
 município vale por classe de domínio; e um portão novo confere que todo script citado por
 workflow existe.
+## 2026-10-09 · #PR · Proteja-se: guia sem marca d'água, Defesa Civil num controle só, alertas na casa deles
+
+Ajustes 7 a 9 de 09/10. O guia em PDF perde a marca d'água e a seta quebrada, não deixa título
+órfão e cabe em duas páginas; a imagem só é desenhada com as fontes do site e segue as quatro
+fichas. A seção da Defesa Civil abre com os números de socorro e uma grade de siglas. "Alertas de
+saúde agora" sai; um recado aponta para Saúde, Defesa civil e Monitor de riscos.
+
 ## 2026-10-09 · #PR · o documento do estado vira link, e o feed perde o "Atom"
 
 Ajustes 1 e 2 de 09/10. O nome do documento no cartão do estado passa a ser o link para ele quando
