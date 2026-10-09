@@ -31,6 +31,14 @@ não pontuados permanecem na versão corrente.
 
 
 
+
+## 2026-10-09 · #PR · classificação: termo de risco com fronteira, instrumento numa lista só
+
+Lote 2.3, as três correções de fato. Termo de risco casava dentro de outra palavra ("secagem de
+grãos" virava seca, "fogo de artifício" virava fogo); "instrução normativa" era aceita como
+instrumento pela etapa 2 e recusada por `citacao_completa`, duas regras da mesma régua
+discordando; e a data do ato era a primeira data do texto, que num diário é a da edição — a regra
+da janela existia num caminho e não no outro. Onde: juiz.py, classificador_natureza.py.
 ## 2026-10-09 · #PR · os dois portões da fila passam a ver o que não viam
 
 Lote 2.10. O portão de esquema cobria 1.064 das 13.406 pistas, e nada conferia a forma do que já

@@ -77,8 +77,14 @@ RE_DECRETO_COM_CAUSA_DANO = re.compile(
     r"enchente|deslizamento|alagamento|erosão)\)"
     r"|decreto\s+de\s+(chuvas?|estiagem|seca|inundaç\w*|enchente|deslizamento|alagamento|erosão)",
     re.I)
+# 09/10/2026 (A1-14). A etapa 2 do juiz aceita "instrucao normativa" como instrumento, e esta
+# expressao nao a conhecia: o mesmo documento passava por instrumento e era recusado por
+# `citacao_incompleta`, duas regras da MESMA regua discordando. O acento tambem era obrigatorio em
+# "resolução", e diario oficial em OCR perde acento com frequencia. As duas listas passam a ser a
+# mesma lista de instrumentos.
 RE_NUMERO_ATO = re.compile(
-    r"(decreto|portaria|lei|resolução)\s*(estadual|municipal|est\.)?\s*[nº°.\s]*"
+    r"(decreto|portaria|lei|resolu[çc][ãa]o|instru[çc][ãa]o\s+normativa)"
+    r"\s*(estadual|municipal|est\.)?\s*[nº°.\s]*"
     r"(\d{1,3}(?:\.\d{3})*|\d+)", re.I)
 RE_DATA_COMPLETA = re.compile(r"\d{1,2}[/.]\d{1,2}[/.]\d{2,4}")
 # 22/09/2026 (§154): gramática padrão de diário oficial — "DE 21 DE AGOSTO DE 2026", "de 1º de setembro de 2026".
@@ -165,6 +171,29 @@ def extrair_data(texto):
     return m_ano.group(0) if m_ano else None
 
 
+JANELA_DA_DATA_DO_ATO = 90
+
+
+def data_do_ato(texto):
+    """A data DO ATO: a que vem logo depois do numero do ato, nao a primeira do texto.
+
+    09/10/2026 (A1-21). A regra existia desde 22/09 (§154, achado no diario de Feira de Santana)
+    dentro de `julgar_e_aplicar_descobertas.numero_e_data`, e o JUIZ nao a usava: ele chamava
+    `extrair_data(texto)`, que devolve a primeira data completa do documento. Num diario, a
+    primeira data e a da EDICAO ("DATA 22/08/2026"); num plano de sessenta paginas pode ser a data
+    de uma referencia bibliografica. A data do ato e a que acompanha o numero do ato.
+
+    Dois caminhos liam a mesma coisa com reguas diferentes; agora a regua tem um dono, e os dois a
+    chamam. Sem numero de ato no texto, nao ha janela, e vale a busca global — que e o que o
+    documento tecnico sem ato precisa.
+    """
+    m_num = RE_NUMERO_ATO.search(texto or "")
+    if not m_num:
+        return extrair_data(texto)
+    janela = (texto or "")[m_num.end(): m_num.end() + JANELA_DA_DATA_DO_ATO]
+    return extrair_data(janela) or extrair_data(texto)
+
+
 def citacao_completa(numero_e_data_texto):
     """Exige número do ato E data explícita — sem os dois, mesmo uma classificação
     EX_ANTE confiante não deve ser aplicada sozinha (não dá pra citar a fonte
@@ -212,6 +241,26 @@ def self_test():
     assert extrair_data("DECRETO Nº 14.665 DE 21 DE AGOSTO DE 2026") == "21/08/2026"
     assert extrair_data("Decreto nº 12, de 1º de setembro de 2026") == "01/09/2026"
     assert extrair_data("ciclo El Niño 2026/2027, de 15/08/2026") == "15/08/2026"  # numérica completa segue vencendo
+    # 09/10/2026 (A1-21): a data do ATO vence a data da EDICAO do diario.
+    _diario = ("DATA 22/08/2026 DIARIO OFICIAL ... DECRETO Nº 14.665 DE 21 DE AGOSTO DE 2026 "
+               "institui o Plano Municipal")
+    assert extrair_data(_diario) == "22/08/2026"      # a primeira do texto, que e a da edicao
+    assert data_do_ato(_diario) == "21/08/2026"       # a do ato, que e a que importa
+    assert data_do_ato("DATA 22/08/2026 ... Decreto nº 512, de 10/02/2026, institui") == "10/02/2026"
+    # sem numero de ato nao ha janela: vale a busca global, que e o caso do documento tecnico
+    assert data_do_ato("Plano de Contingência, versão de 15/08/2026") == "15/08/2026"
+    assert data_do_ato("") is None
+    import juiz as _j
+    assert _j.etapa2_citacao(_diario)[2]["data"] == "21/08/2026"
+    # 09/10/2026 (A1-14): a lista de instrumentos aqui e a da etapa 2 do juiz sao a mesma.
+    assert citacao_completa("Instrução Normativa nº 12, de 10/02/2026")
+    assert citacao_completa("Instrucao Normativa n 12, de 10/02/2026")   # OCR sem acento
+    assert citacao_completa("Resolucao 4, de 05/01/2026")
+    assert not citacao_completa("Instrução Normativa sem numero nem data")
+    import juiz as _juiz
+    for _instr in ("decreto", "portaria", "lei", "resolu", "instru"):
+        assert _instr in _juiz.RE_TIPO_E_NUMERO.pattern.lower(), _instr
+        assert _instr in RE_NUMERO_ATO.pattern.lower(), _instr
     print("✓ self-test OK — checagem de citação completa (número + data, inclusive por extenso)")
 
 
