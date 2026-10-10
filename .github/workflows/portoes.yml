@@ -456,6 +456,10 @@ jobs:
           node scripts/verificar_vocabulario_publico.js
           # assunto: texto — regra 0 da imprensa: nada escrito à mão que dependa do dado
           node scripts/verificar_imprensa_do_dado.js
+          # assunto: texto — a semana epidemiologica nao chega ao leitor (editoria, 07/10/2026)
+          node scripts/verificar_semana_epidemiologica.js --autoteste
+          # assunto: texto
+          node scripts/verificar_semana_epidemiologica.js
           # assunto: cor — as rampas dos mapas passam em contraste e em daltonismo
           python3 scripts/verificar_rampas_dos_mapas.py
           # assunto: cor

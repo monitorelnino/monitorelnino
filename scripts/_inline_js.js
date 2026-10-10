@@ -22,7 +22,13 @@
  * repositorio. */
 const fs = require("fs"), path = require("path");
 
-const TAG = /<script src="(assets\/(?:js\/[^"]+?|catalogo)\.js)(?:\?v=[0-9a-f]+)?"((?:\s+\w+)*)><\/script>/g;
+/* 08/10/2026: entra `assets/semana.js` junto, pelo mesmo motivo do `catalogo` e com o mesmo
+ * sintoma. Ele converte a semana epidemiologica em intervalo de datas, e sem ele as frases da
+ * Saude renderizavam SEM a data -- "notificacoes de dengue na semana", e so. Pior: o portao da
+ * semana passava verde, porque nao havia nem a palavra proibida nem a data. Portao que le uma
+ * pagina diferente da que vai ao ar nao esta conferindo nada, e esta e a segunda vez que este
+ * arquivo aprende isso. */
+const TAG = /<script src="(assets\/(?:js\/[^"]+?|catalogo|semana)\.js)(?:\?v=[0-9a-f]+)?"((?:\s+\w+)*)><\/script>/g;
 
 function inlinePageJs(html, raiz) {
   return String(html).replace(TAG, (m, rel) => {
