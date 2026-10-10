@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-10 · #PR · o ensaio real não conta marcador da noite de verdade
+
+O ramo do ensaio nascia da `main` com os `.feito` da noite de hoje e via "juiz feito" sem rodar o juiz (F34, 2º ensaio, 16:34 UTC). Agora o ramo começa sem `data/noite/<noite>/`, e o veredito só aceita marcador escrito por run do próprio ensaio.
+
 ## 2026-10-10 · #PR · o ensaio real usa ramos `ensaio-real/`
 
 O primeiro ensaio real (16:06 UTC) não criou o ramo: `ensaio/...` colide com o ramo `ensaio` que já existe ("directory file conflict"). O mecanismo inteiro passa ao prefixo `ensaio-real/` (F33 no catálogo).
