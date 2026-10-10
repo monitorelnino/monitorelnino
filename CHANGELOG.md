@@ -32,6 +32,9 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-10 · #PR · ajustes de página do relatório D (A4-02, A4-16, A4-21, A4-22, A4-25, A4-27)
+
+Saúde: `ST_COORD` volta a ser declarado (a ficha do estado lançava ReferenceError) e pontos decimais saem com vírgula, como na inicial. Riscos: sai a montagem morta de `#cTipos`. Saúde pede `sindrome_gripal_serie.json` no lugar do inexistente `sg_serie.json`; `mudancas.html` deixa de pedir catálogo que não existe. Financiamento: portaria sem número não mostra traço solto. Inicial: aria-label do medidor de resposta segue o valor exibido. Em `assets/js/` e nas páginas.
 ## 2026-10-10 · #PR · o ensaio real usa ramos `ensaio-real/`
 
 O primeiro ensaio real (16:06 UTC) não criou o ramo: `ensaio/...` colide com o ramo `ensaio` que já existe ("directory file conflict"). O mecanismo inteiro passa ao prefixo `ensaio-real/` (F33 no catálogo).
