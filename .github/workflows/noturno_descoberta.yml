@@ -33,6 +33,7 @@ on:
 
 permissions:
   contents: read
+  actions: read        # o job `vez` do coletor lê a fila de runs (10/10/2026)
 
 jobs:
   descoberta:
