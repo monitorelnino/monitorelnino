@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-10 · #PR · coletores: retry, Retry-After e código do erro HTTP (A1-27, A6-08, A6-14, A6-25)
+
+`com_espera` repete também `ConnectionError` e `IncompleteRead` e respeita `Retry-After` de 429/503 (teto 120 s); 200 com corpo vazio levanta `CorpoVazio` em `buscar_uma_vez`/`enviar_uma_vez`; `registrar_lacuna` acrescenta o código ao motivo "HTTPError". `RE_DATA` de `busca_dirigida_do_ato.py` lia o ano por referência ao grupo 2. Autotestes offline em `testar_espera_de_rede.py` e no script. Onde: `coletores_base.py`, `scripts/`.
+
 ## 2026-10-10 · #PR · elo fora da `main` não empurra para a `main`; token do Netlify sai da URL
 
 `_coletor.yml` partia da `main` e empurrava `HEAD:main` em qualquer ramo: um elo disparado no ramo de ensaio gravaria na `main` de dia (F32, ensaio 16). Agora, fora da `main`, o commit não é empurrado. `verificar_contribuicoes.py` passa o token do Netlify no cabeçalho `Authorization`, não na URL (A6-31).

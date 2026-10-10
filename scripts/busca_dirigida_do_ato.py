@@ -43,7 +43,7 @@ DIAS_ENTRE_REVISITAS = 7
 RE_ATO = re.compile(
     r"\b(decreto|portaria|lei(?:\s+complementar)?|resolu[çc][ãa]o|instru[çc][ãa]o\s+normativa)\b"
     r"[^\n\d]{0,30}?(?:n[ºo°.]?\s*)?([\d][\d.\-/]{0,12}\d|\d)", re.I)
-RE_DATA = re.compile(r"\b([0-3]?\d)[/\-\s]?(?:de\s+)?([0-1]?\d|[a-zç]{4,9})[/\-\s]?(?:de\s+)?(20\d\2)\b", re.I)
+RE_DATA = re.compile(r"\b([0-3]?\d)[/\-\s]?(?:de\s+)?([0-1]?\d|[a-zç]{4,9})[/\-\s]?(?:de\s+)?(20\d{2})\b", re.I)
 RE_NOME_DO_PLANO = re.compile(
     r"(plano\s+(?:municipal\s+|estadual\s+)?(?:de\s+)?"
     r"(?:conting[êe]ncia|a[çc][ãa]o|enfrentamento|prote[çc][ãa]o\s+e\s+defesa\s+civil)"
@@ -341,6 +341,11 @@ def autoteste() -> int:
     procurar(ident, consultar_qd=lambda i, d: None, buscar_web=lambda q: [],
              esperar=lambda: ritmo.append(1))
     casos.append(("toda consulta passa pelo ritmo da rodada", len(ritmo) >= 3))
+
+    m1, m2 = RE_DATA.search("publicado em 14/07/2026"), RE_DATA.search("em 3 de julho de 2026")
+    casos.append(("RE_DATA lê o ano com quatro dígitos (A1-27: era referência ao grupo 2)",
+                  bool(m1) and m1.groups() == ("14", "07", "2026")
+                  and bool(m2) and m2.groups() == ("3", "julho", "2026")))
 
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:

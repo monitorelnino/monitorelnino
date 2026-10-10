@@ -22,7 +22,7 @@ Cinco regras herdadas de `coletar_sinais_risco.py` e da transferência conceitua
    É deste livro (mais o log) que `recalcular_mare.py` deriva o nível de
    verificação — os coletores nunca escrevem `verificacao_municipal.json`.
 """
-import hashlib, html, io, json, os, pathlib, re, ssl, sys, time, urllib.error, urllib.parse, urllib.request
+import hashlib, html, http.client, io, json, os, pathlib, re, ssl, sys, time, urllib.error, urllib.parse, urllib.request
 from datetime import date, datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
@@ -926,7 +926,7 @@ def buscar_uma_vez(url: str, timeout: int = 40, origem: str = None) -> bytes:
     _respeitar_ritmo(host, robots.get("crawl_delay"))
     req = urllib.request.Request(url_ascii(url), headers={"User-Agent": UA, "Accept": "*/*"})
     with urllib.request.urlopen(req, timeout=timeout, context=contexto_tls()) as r:
-        corpo = r.read()
+        corpo = exigir_corpo(url, getattr(r, "status", None), r.read())
         ct = (r.headers.get("Content-Type") or "").lower()
         corpo = descomprimir(corpo, r.headers.get("Content-Encoding"))
     if robots.get("rp") is not None and not robots["rp"].can_fetch(UA, url_ascii(url)):
@@ -1226,6 +1226,52 @@ def esperas_para(codigo: int) -> tuple:
     return ()
 
 
+# A6-25 (10/10/2026): `Retry-After` em 429/503 é a fonte dizendo QUANTO esperar. Respeita-se o
+# valor em segundos, com teto, para que um pedido de horas não trave a rodada. Data HTTP no
+# lugar dos segundos fica com a espera da tabela.
+RETRY_AFTER_TETO = 120
+
+
+def retry_after_segundos(erro) -> int:
+    """Segundos pedidos no `Retry-After` de um HTTPError 429/503, já com o teto; None sem
+    cabeçalho legível. Função pura."""
+    if getattr(erro, "code", None) not in (429, 503):
+        return None
+    cab = getattr(erro, "headers", None)
+    valor = (cab.get("Retry-After") if cab is not None else None) or ""
+    valor = str(valor).strip()
+    if not valor.isdigit():
+        return None
+    return min(int(valor), RETRY_AFTER_TETO)
+
+
+class CorpoVazio(urllib.error.URLError):
+    """A6-25: HTTP 200 com corpo vazio não é conteúdo. Subclasse de URLError de propósito: é a
+    resposta que não chegou, e a espera trata como conexão (uma repetição curta)."""
+    def __init__(self, url):
+        super().__init__(f"corpo vazio com HTTP 200: {url}")
+        self.url = url
+
+
+def exigir_corpo(url: str, status, corpo: bytes) -> bytes:
+    """Devolve `corpo`, ou levanta CorpoVazio quando o 200 veio sem nada. Função pura."""
+    if status == 200 and not corpo:
+        raise CorpoVazio(url)
+    return corpo
+
+
+def motivo_com_codigo_http(motivo: str, erro) -> str:
+    """A6-14: "HTTPError" sozinho no motivo de uma lacuna perde o código. Quando `erro` é um
+    HTTPError e o código não está no texto, ele entra logo depois do nome ("HTTPError 503").
+    Função pura."""
+    codigo = getattr(erro, "code", None)
+    texto = str(motivo)
+    if (not isinstance(erro, urllib.error.HTTPError) or codigo is None
+            or "HTTPError" not in texto or str(codigo) in texto):
+        return motivo
+    return texto.replace("HTTPError", f"HTTPError {codigo}", 1)
+
+
 def enviar_uma_vez(url: str, dados: dict, timeout: int = 40, origem: str = None) -> bytes:
     """POST de formulário, com as MESMAS travas do GET, UMA tentativa (ver `enviar`).
 
@@ -1244,7 +1290,7 @@ def enviar_uma_vez(url: str, dados: dict, timeout: int = 40, origem: str = None)
                  "Content-Type": "application/x-www-form-urlencoded",
                  "X-Requested-With": "XMLHttpRequest"})
     with urllib.request.urlopen(req, timeout=timeout, context=contexto_tls()) as r:
-        corpo = r.read()
+        corpo = exigir_corpo(url, getattr(r, "status", None), r.read())
         ct = (r.headers.get("Content-Type") or "").lower()
         corpo = descomprimir(corpo, r.headers.get("Content-Encoding"))
     if robots.get("rp") is not None and not robots["rp"].can_fetch(UA, url_ascii(url)):
@@ -1321,8 +1367,12 @@ def com_espera(uma_vez, dormir=None):
                 restantes = list(esperas_para(e.code))
             if not restantes:
                 raise
-            _dormir(restantes.pop(0))
-        except (urllib.error.URLError, TimeoutError):
+            espera = restantes.pop(0)
+            pedida = retry_after_segundos(e)
+            _dormir(espera if pedida is None else pedida)
+        except (urllib.error.URLError, TimeoutError, ConnectionError, http.client.IncompleteRead):
+            # A6-08: reset no meio da leitura (ConnectionError) e corpo cortado (IncompleteRead)
+            # são a conexão que não completou, como URLError e timeout — mesma espera.
             if restantes is None:
                 restantes = list(ESPERAS_CONEXAO)
             if not restantes:
@@ -1831,6 +1881,7 @@ def eh_suspensao_defeso(html: str) -> bool:
 def registrar_lacuna(fonte: str, motivo: str, canal: str, camada: int, strings=None, **kw):
     """Fonte não coletada → entrada de log com decisão 'erro' (ou 'fonte suspensa (defeso)')."""
     dec = "fonte suspensa (defeso)" if kw.pop("suspensa", False) else "erro"
+    motivo = motivo_com_codigo_http(motivo, sys.exc_info()[1])   # A6-14: chamado dentro do except
     log_busca(canal, camada, strings or [fonte], dec, resultados=f"{fonte}: {motivo}",
               fonte_suspensa_defeso=(dec.startswith("fonte")), **kw)
     print(f"  [lacuna declarada] {fonte}: {motivo}")
