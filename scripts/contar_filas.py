@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""scripts/contar_filas_humanas.py — resumo de contagem das filas de revisão
-humana, para o relatório semanal (21/09/2026: absorve o que a "rotina diária",
+"""scripts/contar_filas.py — resumo de contagem das filas (pistas, descobertas, conferência),
+para o relatório semanal (nome até 09/10/2026: contar_filas_humanas.py) (21/09/2026: absorve o que a "rotina diária",
 prática manual sem definição formal no repositório, cobria de único)."""
 import json
 

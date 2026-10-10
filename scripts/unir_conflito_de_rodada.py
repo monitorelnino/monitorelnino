@@ -687,12 +687,12 @@ def autoteste() -> int:
         # escreve `triagem`, o seguimento escreve `seguimento`. Os dois entram.
         r = _repo_com_conflito(t, "data/pistas_imprensa.json",
                                _fila(A),
-                               _fila(dict(A, triagem="humana")),
+                               _fila(dict(A, triagem="automatica")),
                                _fila(dict(A, seguimento={"data": "05/10/2026"})))
         res, reg, rec = resolver(repo=r)
         doc = json.loads((pathlib.Path(r) / "data/pistas_imprensa.json").read_text(encoding="utf-8"))
         checar("fila de pista: campos diferentes da mesma pista se MESCLAM",
-               not rec and doc["pistas"][0].get("triagem") == "humana"
+               not rec and doc["pistas"][0].get("triagem") == "automatica"
                and doc["pistas"][0].get("seguimento", {}).get("data") == "05/10/2026")
         checar("fila de pista: a mescla é contada na saída", "1 mesclada(s)" in res[0])
 

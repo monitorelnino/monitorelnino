@@ -38,14 +38,14 @@ FEEDS = RAIZ / "feeds"
 SITE = "https://monitorelnino.com.br"
 SNAPSHOT = DATA / "snapshot_feed.json"
 HISTORICO = DATA / "historico_mudancas.json"
-CAT_HUMANO = {"plano": "plano preventivo", "plano_antigo": "plano vigente, de ciclo anterior",
+CAT_ROTULO = {"plano": "plano preventivo", "plano_antigo": "plano vigente, de ciclo anterior",
               "plano_novo": "plano novo, dedicado ao ciclo", "plano_readaptado": "plano readaptado para o ciclo",
               "plano_recorrente": "plano recorrente, sazonal", "plano_elaboracao": "plano em elaboração",
               "plano_nomeado": "plano citado em fonte oficial, documento não localizado",
               "decreto": "decreto de emergência", "coberto_estadual": "cobertura pelo plano estadual",
               "nao_el_nino": "ato que não trata do El Niño", "nao_localizado": "verificação completa sem ato localizado",
               "nao_verificado": "ainda não verificado com a bateria completa de fontes"}
-STATUS_HUMANO = {"NOVO": "plano estadual novo, específico para o El Niño", "READ": "plano recorrente readaptado para o ciclo",
+STATUS_ROTULO = {"NOVO": "plano estadual novo, específico para o El Niño", "READ": "plano recorrente readaptado para o ciclo",
                  "VIG": "instrumento recorrente, sem menção nominal ao El Niño", "ELAB": "plano estadual em elaboração",
                  "LAC": "sem plano estadual nominal localizado"}
 
@@ -101,26 +101,26 @@ def diferencas(antes, agora, data):
         for uf, e in sorted(agora["estados"].items()):
             n_mun = sum(1 for k in agora["municipios"] if k.endswith("|" + uf))
             ev.append(_evento(data, uf, "abertura", uf, f"{nomes[uf]}: feed iniciado",
-                              f"Estado: {STATUS_HUMANO.get(e['status'], e['status'])}. {n_mun} registro(s) municipal(is) verificado(s). MARÉ {str(agora['indice'].get(uf, '')).replace('.', ',')}/100.", nomes))
+                              f"Estado: {STATUS_ROTULO.get(e['status'], e['status'])}. {n_mun} registro(s) municipal(is) verificado(s). MARÉ {str(agora['indice'].get(uf, '')).replace('.', ',')}/100.", nomes))
         return ev
     for uf, e in sorted(agora["estados"].items()):
         a = antes["estados"].get(uf, {})
         if a.get("status") != e["status"] or a.get("doc") != e["doc"]:
-            ev.append(_evento(data, uf, "estado", uf, f"{nomes[uf]}: instrumento estadual — {STATUS_HUMANO.get(e['status'], e['status'])}",
-                              f"Antes: {STATUS_HUMANO.get(a.get('status'), a.get('status') or 'sem registro')}. Documento localizado: {e['doc'] or '—'}{(' (' + e['data'] + ')') if e['data'] else ''}.", nomes))
+            ev.append(_evento(data, uf, "estado", uf, f"{nomes[uf]}: instrumento estadual — {STATUS_ROTULO.get(e['status'], e['status'])}",
+                              f"Antes: {STATUS_ROTULO.get(a.get('status'), a.get('status') or 'sem registro')}. Documento localizado: {e['doc'] or '—'}{(' (' + e['data'] + ')') if e['data'] else ''}.", nomes))
     for chave, m in sorted(agora["municipios"].items()):
         nome, uf = chave.split("|")
         a = antes["municipios"].get(chave)
         if a is None:
-            ev.append(_evento(data, uf, "municipio", chave, f"{nome} ({uf}): {CAT_HUMANO.get(m['categoria'], m['categoria'])} localizado",
+            ev.append(_evento(data, uf, "municipio", chave, f"{nome} ({uf}): {CAT_ROTULO.get(m['categoria'], m['categoria'])} localizado",
                               f"{m['documento'] or '—'}{(' (' + m['data'] + ')') if m['data'] else ''}.", nomes))
         elif a.get("categoria") != m["categoria"] or a.get("documento") != m["documento"]:
-            ev.append(_evento(data, uf, "municipio", chave, f"{nome} ({uf}): registro atualizado — {CAT_HUMANO.get(m['categoria'], m['categoria'])}",
-                              (f"Antes: registrado como 'nada localizado' sem bateria municipal completa logada. Agora: {CAT_HUMANO['nao_verificado']} — reclassificação por regra de prova (§2.1, 02/09/2026), com errata pública; efeito nulo na nota."
+            ev.append(_evento(data, uf, "municipio", chave, f"{nome} ({uf}): registro atualizado — {CAT_ROTULO.get(m['categoria'], m['categoria'])}",
+                              (f"Antes: registrado como 'nada localizado' sem bateria municipal completa logada. Agora: {CAT_ROTULO['nao_verificado']} — reclassificação por regra de prova (§2.1, 02/09/2026), com errata pública; efeito nulo na nota."
                                if (m['categoria'] == 'nao_verificado' and a.get('categoria') == 'nao_localizado') else
-                               f"Antes: {CAT_HUMANO.get(a.get('categoria'), a.get('categoria'))}, apoiado apenas em imprensa. Agora: {CAT_HUMANO['nao_verificado']} — rebaixado a pista pela regra de prova (C10, 02/09/2026), com errata pública; volta a registro com documento primário (ato com número e data em fonte oficial)."
+                               f"Antes: {CAT_ROTULO.get(a.get('categoria'), a.get('categoria'))}, apoiado apenas em imprensa. Agora: {CAT_ROTULO['nao_verificado']} — rebaixado a pista pela regra de prova (C10, 02/09/2026), com errata pública; volta a registro com documento primário (ato com número e data em fonte oficial)."
                                if m['categoria'] == 'nao_verificado' else
-                               f"Antes: {CAT_HUMANO.get(a.get('categoria'), a.get('categoria'))}. Agora: {m['documento'] or '—'}{(' (' + m['data'] + ')') if m['data'] else ''}."), nomes))
+                               f"Antes: {CAT_ROTULO.get(a.get('categoria'), a.get('categoria'))}. Agora: {m['documento'] or '—'}{(' (' + m['data'] + ')') if m['data'] else ''}."), nomes))
     NIV_H = {"nacional": "verificado em fontes nacionais", "estadual": "verificado em fontes nacionais e estaduais", "municipal_completo": "verificação completa"}
     ORD = {"nao_verificado": 0, "nacional": 1, "estadual": 2, "municipal_completo": 3}
     # 03/09/2026: agregado por UF e nível (um evento por município inundava o feed: 5.571 de uma vez)
@@ -140,7 +140,7 @@ def diferencas(antes, agora, data):
         if chave not in set(antes.get("docs_alterados", [])):
             h, dt, mun = chave.split("|"); uf = mun[-2:] if "/" in mun else "BR"
             ev.append(_evento(data, uf, "documento_alterado", chave, f"{mun or 'documento'}: documento-fonte alterado em {dt}",
-                              f"O documento citado mudou de conteúdo (hash {h[:12]}…). Categoria mantida até julgamento humano (§3.8-bis).", nomes))
+                              f"O documento citado mudou de conteúdo (hash {h[:12]}…). Categoria mantida até novo julgamento automático do documento (§3.8-bis).", nomes))
     for uf, v in sorted(agora.get("saude", {}).items()):
         a = antes.get("saude", {}).get(uf, {})
         if a and (a.get("status") != v["status"] or a.get("doc") != v["doc"]):

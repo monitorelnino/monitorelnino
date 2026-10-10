@@ -234,11 +234,11 @@ def carregar_fila():
     if FILA.exists():
         return json.load(open(FILA, encoding="utf-8"))
     return {"_governanca": (
-        "Fila de DESCOBERTA em imprensa (saúde) para triagem humana. TRAVA ABSOLUTA: "
+        "Fila de DESCOBERTA em imprensa (saúde) para o juiz automático. TRAVA ABSOLUTA: "
         "nenhuma pista entra no banco (saude_uf.json/monitor_saude.json/indice.json) sem "
-        "que um humano preencha documento_oficial_confirmado com a URL do documento "
-        "primário e registre a promoção como um item novo em instrumentos[] (§3.2), pelo "
-        "fluxo manual normal. Este arquivo não é, em nenhuma circunstância, lido por "
+        "que o juiz automático leia o documento primário em fonte oficial, preencha "
+        "documento_oficial_confirmado e registre a promoção como um item novo em "
+        "instrumentos[] (§3.2, §106); na dúvida, abstenção. Este arquivo não é, em nenhuma circunstância, lido por "
         "gerar_monitor_saude.py nem recalcular_mare.py. Criado 18/09/2026 (handover ponto "
         "cego saúde, §3.3, achado real: caso Bahia)."),
         "pistas": []}
@@ -408,7 +408,7 @@ def main():
         print(f"[FILTRADAS] {total_filtradas} notícias descartadas por não mencionar a UF-alvo "
               f"(título/URL): resultado nacional do RSS atribuído erroneamente à UF.")
     if total_novas:
-        print(f"[PISTAS NOVAS] {total_novas} para triagem humana (status pendente_confirmacao_documento):")
+        print(f"[PISTAS NOVAS] {total_novas} para o juiz automático (status pendente_confirmacao_documento):")
         for p in fila["pistas"][-total_novas:]:
             marca = " [parece oficial]" if p["fonte_provavel_oficial"] else ""
             print(f"  · [{p['alvo']}]{marca} {p['titulo'][:100]}")

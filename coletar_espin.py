@@ -171,7 +171,7 @@ def montar_registro(itens: list, desde: str, ate: str, strings: list,
         "consultado_em": hoje_editorial().strftime("%d/%m/%Y"),
         "resultados_lidos": len(itens),
         "declaracoes": declaracoes,
-        "para_leitura_humana": fila,
+        "pendente_leitura_automatica": fila,
         "nao_lidos": nao_lidos,
         "leitura_parcial": list(incompletas or []),
         "situacao": ("declaracao_localizada" if declaracoes
@@ -179,8 +179,8 @@ def montar_registro(itens: list, desde: str, ate: str, strings: list,
                      else "nenhuma_declaracao_localizada"),
         "peso_no_indice": "nenhum",
         "nota": ("Ato de RESPOSTA: declarar emergência é posterior ao dano e não entra na nota. "
-                 "Nada aqui entra no banco sozinho: a promoção é humana (R7), e o que está em "
-                 "dúvida vai à fila de leitura, não ao registro."),
+                 "Nada aqui entra no banco sem o juiz automático com documento oficial lido (R7, §106); "
+                 "o que está em dúvida fica pendente de leitura automática, não vai ao registro."),
     }
 
 
@@ -242,16 +242,17 @@ def coletar(args) -> int:
     sinais["gerado_em"] = hoje_editorial().strftime("%d/%m/%Y")
     gravar("saude_sinais.json", sinais)
     # R7: nada entra no banco por classificação automática. O que o coletor achou — declaração
-    # inclusive — vai para a fila de leitura humana, que é o veículo do projeto para isso.
-    if bloco["declaracoes"] or bloco["para_leitura_humana"]:
+    # inclusive — fica pendente de leitura automática (juiz com documento oficial, §106).
+    if bloco["declaracoes"] or bloco["pendente_leitura_automatica"]:
         gravar("espin_revisar.json", {
-            "_governanca": ("Fila de leitura humana (R7). Saída de classificação automática do "
+            "_governanca": ("Fila de leitura automática (R7, §106). Saída de classificação automática do "
                             "coletar_espin.py: nada aqui é registro, e nada entra em "
-                            "data/saude_sinais.json['emergencias'] sem conferência de uma pessoa."),
+                            "data/saude_sinais.json['emergencias'] sem o juiz automático com o ato lido; "
+                            "na dúvida, abstenção registrada."),
             "gerado_em": bloco["consultado_em"],
             "janela": bloco["janela"],
             "candidatos_a_declaracao": bloco["declaracoes"],
-            "em_duvida_ou_outro_ato": bloco["para_leitura_humana"],
+            "em_duvida_ou_outro_ato": bloco["pendente_leitura_automatica"],
         })
     for c in bloco["nao_lidos"]:
         registrar_lacuna("DOU/ESPIN — ato não aberto",
@@ -262,7 +263,7 @@ def coletar(args) -> int:
                          canal="DOU", camada=1, strings=TERMOS)
     print(f"ESPIN: {bloco['resultados_lidos']} resultado(s) lidos · "
           f"{len(bloco['declaracoes'])} declaração(ões) · "
-          f"{len(bloco['para_leitura_humana'])} para leitura humana · {bloco['situacao']}")
+          f"{len(bloco['pendente_leitura_automatica'])} pendente(s) de leitura automática · {bloco['situacao']}")
     return 0
 
 
@@ -319,12 +320,12 @@ def autoteste() -> int:
 
     def t5():  # prorrogação e encerramento NÃO viram declaração automática
         r = montar_registro(parse_dou_html(FIX_DOU), "2026-06-29", "2026-09-24", TERMOS, ler_ato=_abre)
-        return (len(r["declaracoes"]) == 1 and len(r["para_leitura_humana"]) == 2
+        return (len(r["declaracoes"]) == 1 and len(r["pendente_leitura_automatica"]) == 2
                 and r["situacao"] == "declaracao_localizada" and r["peso_no_indice"] == "nenhum")
 
     def t6():  # menção de passagem não entra em lugar nenhum
         r = montar_registro(parse_dou_html(FIX_DOU), "2026-06-29", "2026-09-24", TERMOS, ler_ato=_abre)
-        todos = r["declaracoes"] + r["para_leitura_humana"]
+        todos = r["declaracoes"] + r["pendente_leitura_automatica"]
         return all("NOTA TÉCNICA" not in c["titulo"] for c in todos)
 
     def t7():  # busca sem achado é RESULTADO, com data e strings — não é ausência de busca
@@ -364,7 +365,7 @@ def autoteste() -> int:
         r = montar_registro(parse_dou_html(FIX_DOU), "2026-06-29", "2026-09-24", TERMOS, ler_ato=cai)
         return (r["declaracoes"] == [] and len(r["nao_lidos"]) == 4
                 and r["situacao"] == "leitura_incompleta"
-                and all(c["classe"] == "incerto" for c in r["para_leitura_humana"]))
+                and all(c["classe"] == "incerto" for c in r["pendente_leitura_automatica"]))
 
     def t16():
         """'Declara o encerramento' é UMA frase, não duas decisões: o casamento mais específico
@@ -397,7 +398,7 @@ def autoteste() -> int:
         "negativo: página sem a estrutura de resultados levanta, não devolve zero": t2,
         "lido o ato, classifica: declara, prorroga, encerra, menciona": t3,
         "sem abrir o ato, verbo no excerto é incerto — nunca declaração": t4,
-        "prorrogação e encerramento vão à leitura humana, não ao banco": t5,
+        "prorrogação e encerramento ficam pendentes de leitura automática, não vão ao banco": t5,
         "menção de passagem não vira ato": t6,
         "busca sem achado é resultado datado, não ausência de busca": t7,
         "número do ato extraído do título": t8,

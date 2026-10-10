@@ -256,6 +256,8 @@ jobs:
           # assunto: dado
           python3 scripts/migrar_fim_da_etapa_humana.py --autoteste
           # assunto: dado
+          python3 scripts/migrar_zero_humano.py --autoteste
+          # assunto: dado
           python3 scripts/verificar_escritores.py --autoteste
           # assunto: dado
           python3 scripts/verificar_escritores.py

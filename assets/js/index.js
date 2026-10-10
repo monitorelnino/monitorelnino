@@ -736,7 +736,7 @@ window.__miniGauge = miniGauge;   // barraResposta (escopo de módulo) reutiliza
 function animarGauges(root){
   if (window.MonitorMapas && MonitorMapas.animarGauges) MonitorMapas.animarGauges(root);
 }
-const STATUS_HUMANO = {NOVO:'plano estadual novo, específico para o El Niño', READ:'plano recorrente readaptado para o ciclo',
+const STATUS_ROTULO = {NOVO:'plano estadual novo, específico para o El Niño', READ:'plano recorrente readaptado para o ciclo',
   VIG:'instrumento recorrente, sem menção nominal ao El Niño', ELAB:'plano estadual ainda em elaboração', LAC:'sem plano estadual nominal para o El Niño'};
 const nrm = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
 
@@ -1006,7 +1006,7 @@ function gerarRelatorioCidadao(uf, municipio){
 
   // ---- 3. O que já existe ----
   secao('O que já existe');
-  item('Estado: ' + STATUS_HUMANO[v.status_estadual] + (v.status_estadual !== 'LAC' && d.doc ? ' — ' + d.doc + (d.data ? ' (' + d.data + ')' : '') : '') + '.');
+  item('Estado: ' + STATUS_ROTULO[v.status_estadual] + (v.status_estadual !== 'LAC' && d.doc ? ' — ' + d.doc + (d.data ? ' (' + d.data + ')' : '') : '') + '.');
   if (FIN && FIN[uf] && FIN[uf].status === 'localizado')
     item('Recurso preventivo estadual: ' + FIN[uf].instrumento + ' (' + FIN[uf].norma + '), repassado antes do dano, condicionado a ' + FIN[uf].condicionalidade + '.');
   if (municipio) {

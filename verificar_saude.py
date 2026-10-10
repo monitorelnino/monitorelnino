@@ -204,7 +204,7 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
                     if None not in (_n2, _p2, _d2) and _n2 != _p2 + _d2: erros.append(f"(t) ses_pb_arboviroses {_se} {_ag}: notificados ≠ prováveis + descartados")
         if (_sd / "gatilhos.json").exists():
             for g in json.load(open(_sd / "gatilhos.json", encoding="utf-8")).get("gatilhos", []):
-                if g.get("status_monitor") not in ("computavel", "computavel_parcial", "leitura_humana", "sem_coleta", "nao_publico"): erros.append(f"(o) gatilho com status fora do vocabulário: {g.get('id')}")
+                if g.get("status_monitor") not in ("computavel", "computavel_parcial", "sem_acesso_automatico", "sem_coleta", "nao_publico"): erros.append(f"(o) gatilho com status fora do vocabulário: {g.get('id')}")
         for l in _np.get("leituras", []):
             if l.get("categoria") not in range(0, 6): erros.append(f"(n) saude_no_plano: categoria fora de 0–5 em {l.get('municipio') or l.get('uf')}")
             if not (l.get("hash") and l.get("paginas") and l.get("documento")): erros.append(f"(n) saude_no_plano: leitura sem hash/página/documento em {l.get('municipio') or l.get('uf')}")

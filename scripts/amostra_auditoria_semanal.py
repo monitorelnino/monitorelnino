@@ -46,7 +46,7 @@ FRACAO = 0.10
 COLUNAS_CEGAS = ["pista_id", "municipio", "uf", "ibge", "url", "codebook",
                  "trecho_1_identidade", "trecho_2_citacao", "trecho_3_autoridade",
                  "trecho_4_natureza", "trecho_5_familia", "trecho_6_categoria",
-                 "humano_promove", "humano_categoria", "humano_motivo", "humano_observacao"]
+                 "errata_promove", "errata_categoria", "errata_motivo", "errata_observacao"]
 COLUNAS_GABARITO = ["pista_id", "juiz_promove", "juiz_categoria", "juiz_motivo", "juiz_data",
                     "juiz_natureza", "juiz_familia", "hash_evidencia"]
 
@@ -84,7 +84,7 @@ def linha_cega(d: dict) -> dict:
             "trecho_1_identidade": tr("1_identidade"), "trecho_2_citacao": tr("2_citacao"),
             "trecho_3_autoridade": tr("3_autoridade"), "trecho_4_natureza": tr("4_natureza"),
             "trecho_5_familia": tr("5_familia_de_risco"), "trecho_6_categoria": tr("6_categoria"),
-            "humano_promove": "", "humano_categoria": "", "humano_motivo": "", "humano_observacao": ""}
+            "errata_promove": "", "errata_categoria": "", "errata_motivo": "", "errata_observacao": ""}
 
 
 def linha_gabarito(d: dict) -> dict:
@@ -133,8 +133,8 @@ def autoteste() -> int:
     casos.append(("a planilha é CEGA: nenhuma coluna revela a decisão do juiz",
                   not any(k.startswith("juiz") for k in l)
                   and "promove" not in l and "categoria" not in l and "motivo" not in l))
-    casos.append(("as colunas humanas vêm vazias",
-                  all(l[k] == "" for k in ("humano_promove", "humano_categoria", "humano_motivo"))))
+    casos.append(("as colunas de errata vêm vazias",
+                  all(l[k] == "" for k in ("errata_promove", "errata_categoria", "errata_motivo"))))
     casos.append(("o trecho de cada critério viaja para a planilha",
                   l["trecho_1_identidade"] == "nomeia M0"))
     g = linha_gabarito(decisoes[0])

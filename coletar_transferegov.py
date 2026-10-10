@@ -216,8 +216,8 @@ def coletar() -> int:
     # fila de revisão
     gravar("transferegov_el_nino_revisar.json", {
         "_governanca": ("Instrumentos 2025–2026 (convênios/contratos de repasse a municípios) cujo OBJETO cita o ciclo "
-                        "(defesa civil, desastre, estiagem, enchente, contingência…). FILA DE REVISÃO HUMANA: nada aqui é "
-                        "publicado como 'recurso do El Niño' sem leitura; a palavra-chave só ordena. Fonte: TransfereGov — "
+                        "(defesa civil, desastre, estiagem, enchente, contingência…). FILA DE REVISÃO AUTOMÁTICA: nada aqui é "
+                        "publicado como 'recurso do El Niño' sem leitura do objeto (na dúvida, abstenção registrada); a palavra-chave só ordena. Fonte: TransfereGov — "
                         f"Dados Abertos, carga {carga}."),
         "gerado_em": hoje, "carga_da_fonte": carga, "n": len(itens), "itens": sorted(itens, key=lambda x: x.get("assinatura") or "", reverse=True)})
     # fundo a fundo 2026 (API sem chave)
