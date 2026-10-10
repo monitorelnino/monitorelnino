@@ -82,6 +82,9 @@ function renderContadorResposta(){
   el('respBadge').innerHTML = '<span class="gfaixa-pill">' + esc(N.n_municipios.toLocaleString('pt-BR')) + ' municípios · ' + esc(fm.toFixed(1).replace('.', ',')) + '% dos municípios</span>';
   const fill = el('respFill'); fill.dataset.alvo = Math.max(ir, N.n_municipios ? 0.6 : 0).toFixed(2); fill.style.setProperty('--galvo', String(Math.max(ir, 0.1)));
   fill.style.width = fill.dataset.alvo + '%';
+  // O rótulo acessível diz o MESMO número exibido, não o do HTML de reserva (A4-27).
+  const trilho = fill.closest('.gauge-track');
+  if (trilho) trilho.setAttribute('aria-label', 'Barra de progresso: índice de resposta em ' + el('respNum').textContent + ' de 100 (população em municípios sob decreto)');
   MonitorMapas.credito('respFonte', {fontes: ['DOU/SEDEC (S2iD)', 'diários oficiais estaduais e municipais'], data: RESP.gerado_em});
 }
 async function __load(){
@@ -533,7 +536,9 @@ function selectUF(uf, tileEl){
       // juízo: a leitura vive no texto narrativo, não no cartão (portão 19).
       const m = (typeof MARE !== 'undefined' && MARE[d.uf]) || null;
       if (!m || m.instrumento === undefined) return '';
-      return `<div class="field"><div class="k">Componentes (um terço cada)</div><div class="v">instrumento operacional ${m.instrumento} · estrutura de coordenação ${m.estrutura} · cobertura populacional ${m.cobertura_pop}</div></div>`;
+      // Vírgula decimal em texto público (A4-16).
+      const numBR = v => (v == null || isNaN(Number(v))) ? '—' : Number(v).toLocaleString('pt-BR', {maximumFractionDigits: 1});
+      return `<div class="field"><div class="k">Componentes (um terço cada)</div><div class="v">instrumento operacional ${numBR(m.instrumento)} · estrutura de coordenação ${numBR(m.estrutura)} · cobertura populacional ${numBR(m.cobertura_pop)}</div></div>`;
     })()}
     ${(function(){ // INDICADOR, não componente: não entra na nota. Vazio quando não há data completa
       // do primeiro ato — mês solto e "Recorrente" não viram dia, e lacuna declarada é melhor do

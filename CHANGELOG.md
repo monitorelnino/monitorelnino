@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-10 · #PR · ajustes de página do relatório D (A4-02, A4-16, A4-21, A4-22, A4-25, A4-27)
+
+Saúde: `ST_COORD` volta a ser declarado (a ficha do estado lançava ReferenceError) e pontos decimais saem com vírgula, como na inicial. Riscos: sai a montagem morta de `#cTipos`. Saúde pede `sindrome_gripal_serie.json` no lugar do inexistente `sg_serie.json`; `mudancas.html` deixa de pedir catálogo que não existe. Financiamento: portaria sem número não mostra traço solto. Inicial: aria-label do medidor de resposta segue o valor exibido. Em `assets/js/` e nas páginas.
+
 ## 2026-10-10 · #PR · a semana sai em datas, e o juiz de saúde ganha as quatro travas (absorve #582)
 
 Absorve o #582. O leitor lê "na semana de 16 a 22 de agosto de 2026", nunca "semana epidemiológica 33"; acumulados em datas e eixos semanais em meses (`assets/semana.js`, regra do Ministério da Saúde; portão `verificar_semana_epidemiologica.js`). Lote 6.1-A: `julgar_saude.py` deixa de creditar o que não é (A5-01 a A5-04). "mediana"/"p90" saem da legenda.

@@ -107,6 +107,9 @@ def montar(modelo: str, changelog: str) -> str:
     # A página não entra no menu: a decisão foi explícita. O item ativo do menu some com ela.
     pagina = pagina.replace('<span class="ativa" aria-current="page">Blog do MARÉ</span>',
                             '<a href="blog.html">Blog do MARÉ</a>')
+    # 10/10/2026 (A4-22): o leitor do catálogo veio junto com o modelo e pedia
+    # `conteudo/mudancas.json`, que não existe (404 no console). A página não tem texto de catálogo.
+    pagina = re.sub(r'<script src="assets/catalogo\.js[^"]*"[^>]*></script>\n?', '', pagina)
     return pagina
 
 
