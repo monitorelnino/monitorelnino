@@ -10,7 +10,8 @@ Cinco regras herdadas de `coletar_sinais_risco.py` e da transferência conceitua
 1. **Nada inventado.** Fonte fora do ar, endpoint não confirmado ou parser sem
    correspondência → lacuna declarada (`registrar_lacuna`), nunca valor estimado.
 2. **Descoberta ≠ registro.** O que os coletores acham vai para atos de resposta
-   (peso zero) ou para filas de pista; promover pista a registro é humano.
+   (peso zero) ou para filas de pista; promover pista a registro é do juiz
+   automático, com documento oficial lido (R7, METODOLOGIA §106).
 3. **Log estruturado v2** (§3.1): toda consulta gera entrada com data, canal,
    camada, UF/município quando couber, strings, decisão, executor e hash.
 4. **Preservação de evidência** (§3.8): todo documento citado ganha cópia em

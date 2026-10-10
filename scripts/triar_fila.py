@@ -17,7 +17,7 @@ OS DESFECHOS, todos registrados na própria pista
     coberta pela fonte oficial     · o fato já consta da base oficial (decreto registrado)
     sem documento oficial localizado · duas tentativas de busca dirigida, ou 21 dias na fila
     recusada pelo juiz (motivo)    · leu e não serve, com o critério que falhou
-    para humano (motivo)           · consórcio, atribuição por proximidade, autoridade duvidosa
+    abstenção registrada (motivo)  · consórcio, atribuição por proximidade, autoridade duvidosa
 
 PRAZO DE VIDA. Duas tentativas sem documento, ou 21 dias, fecham a pista — e ela **reabre sozinha**
 se surgir evidência nova para o mesmo município e assunto. Fechar não é apagar: o registro fica, e
@@ -48,7 +48,7 @@ DIAS_DE_VIDA = 21
 TENTATIVAS_MAXIMAS = 2
 
 DESFECHOS = ("promovida", "coberta pela fonte oficial", "sem documento oficial localizado",
-             "recusada pelo juiz", "para humano")
+             "recusada pelo juiz", "abstenção registrada")
 
 
 def grupo_de_prioridade(pista: dict, prioritarios: set, capitais: set) -> int:
@@ -191,8 +191,8 @@ def _autoteste() -> int:
        not reabre({"status": "pista", "alvo": "9"}, {"alvo": "9", "url_final": "u"}))
 
     ok("o resumo conta por desfecho",
-       resumo(["promovida", "promovida", "para humano"])
-       == {"promovida": 2, "para humano": 1})
+       resumo(["promovida", "promovida", "abstenção registrada"])
+       == {"promovida": 2, "abstenção registrada": 1})
     ok("desfecho que não ocorreu não aparece no resumo", "recusada pelo juiz" not in resumo([]))
     ok("os cinco desfechos do handover estão declarados", len(DESFECHOS) == 5)
 

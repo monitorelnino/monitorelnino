@@ -11,7 +11,7 @@
 # O QUE ELE NÃO FAZ: não promove nada ao banco. Os coletores têm trava estrutural (autoteste lê o
 # próprio fonte e reprova se aparecer escrita em estados.json/municipios.json/indice.json/...). O que
 # sai daqui são filas de pistas — data/pistas_painel_am.json e data/pistas_paineis.json — mais o nível
-# de verificação no livro de fontes. Promoção segue humana.
+# de verificação no livro de fontes. Promoção é do juiz automático (R7, §106).
 #
 # O ARTEFATO É METADE DO VALOR. O renderizador sobe o JSON bruto E o HTML renderizado do painel como
 # artefato da execução. Se a grade do Power BI não vier como o extrator espera (papéis ARIA), é esse
@@ -99,12 +99,12 @@ jobs:
       - name: Coletar (baixa documento por município, preserva evidência, lê nº e data do ato)
         if: (inputs.alvo == 'painel_am' || inputs.alvo == 'ambos') && steps.render.outcome == 'success'
         run: python3 coletar_painel_am.py --de-arquivo /tmp/render_am.json
-      # Se o painel não renderizou, ainda assim é melhor ter a leitura humana de 22/09 na fila do
+      # Se o painel não renderizou, ainda assim é melhor ter a leitura registrada de 22/09 na fila do
       # que não ter nada — a semeadura é offline e não inventa documento nenhum.
-      - name: Semear da leitura humana (só se o render falhou)
+      - name: Semear da leitura registrada (só se o render falhou)
         if: (inputs.alvo == 'painel_am' || inputs.alvo == 'ambos') && steps.render.outcome != 'success'
         run: |
-          echo "::warning::render do painel não concluiu — semeando a leitura humana de 22/09 (0 documentados)"
+          echo "::warning::render do painel não concluiu — semeando a leitura registrada de 22/09 (0 documentados)"
           python3 coletar_painel_am.py --semear-da-sonda
 
       - name: Sonda de camada nas 27 UFs (Tarefa B)
@@ -139,7 +139,7 @@ jobs:
           print(f"fila: {len(d.get('itens', []))} item(ns) · origem: {r.get('origem', 'rodada renderizada')}")
           for k in ("documentado", "declarado", "sem_plano_declarado", "sem_codigo_ibge", "no_ciclo"):
               print(f"  {k}: {r.get(k)}")
-          print("\nNenhum item entra no banco sem promoção humana (R7).")
+          print("\nNenhum item entra no banco sem o juiz automático com documento oficial lido (R7, METODOLOGIA §106).")
           PY
 
       - name: Commit com rebase (mesmo padrão do atualizar.yml)

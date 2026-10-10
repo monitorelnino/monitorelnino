@@ -7,8 +7,9 @@ encontrado (pedido de Patricia, 31/08/2026): lê as pistas que
 monitorar_imprensa_regional.py já descobre toda semana, busca o documento
 em si (não só a notícia sobre ele), classifica com classificador_natureza.py
 e, quando confiante, aplica DIRETO no banco — sem esperar uma sessão humana.
-Só cai para revisão humana quando o classificador está em dúvida, ou quando
-faltam número/data para citar a fonte corretamente.
+Quando o classificador está em dúvida, ou faltam número/data para citar a fonte
+corretamente, a decisão é ABSTENCAO: não aplica, motivo gravado (10/10/2026 —
+antes, fila para pessoa).
 
 O QUE CONTINUA IGUAL (trava de fonte, não mudou): só processa pistas cujo
 domínio já é reconhecido como oficial (.gov.br/.leg.br/Diário Oficial/Querido
@@ -16,7 +17,7 @@ Diário — mesmos padrões de sempre, PADROES_FONTE_PROVAVEL_OFICIAL). A
 diferença é que esse sinal, que antes só servia para ORDENAR a fila para um
 humano olhar primeiro, agora é parte de um portão real: fonte oficial +
 citação completa (número e data) + classificador confiante = aplica sozinho.
-Qualquer um desses três faltando = fila humana, exatamente como era antes.
+Qualquer um desses três faltando = abstenção registrada (ABSTENCAO).
 
 FLUXO POR PISTA:
   1. Só pistas com fonte_provavel_oficial=True são candidatas a julgamento
@@ -25,21 +26,21 @@ FLUXO POR PISTA:
      que não abrir fica pendente, tentada de novo na próxima execução).
   3. classificador_natureza.classificar(texto) → EX_ANTE / RESPOSTA / DUVIDA.
   4. RESPOSTA → nunca pontua (Correção B); pista marcada resolvida, log.
-  5. DUVIDA, ou citação incompleta (sem número+data extraíveis) → fica na
-     fila para revisão humana, sem mudar nada no banco.
+  5. DUVIDA, ou citação incompleta (sem número+data extraíveis) → ABSTENCAO,
+     motivo gravado, sem mudar nada no banco.
   6. EX_ANTE + citação completa:
        - Estadual (rótulo A-lac/C-estado-amplo): verificar_recorrencia_uf
          decide se é reedição (aplica régua 40/30/20 conforme cobertura de
          risco §18 addendum — o padrão fica em NEUTRO/30 quando o texto não
          permite confirmar cobertura COBRE/DIFERE com segurança, ficando
-         registrado para ajuste humano posterior se necessário) ou instrumento
+         registrado para errata por linha se necessário) ou instrumento
          genuinamente novo (NOVO se a UF não tinha nada; READ se substitui
          algo existente; antecipação 100).
        - Municipal (rótulo B-capital/D-municipio-prioritario): categoria
          "plano", direto.
      Em qualquer caso: mescla no arquivo certo, recalcula o índice
      (recalcular_mare.py --write) e roda os TRÊS portões. Se qualquer portão
-     falhar, DESFAZ a mudança em disco e devolve a pista para a fila humana
+     falhar, DESFAZ a mudança em disco e devolve a pista à fila do juiz
      com o erro anexado — nada quebrado é publicado, nunca.
   7. Toda decisão (aplicada ou não) vira uma linha em data/log_buscas.json,
      igual ao padrão já usado nas correções manuais desta sessão.
@@ -342,7 +343,7 @@ def sincronizar_areas(uf, risco_texto):
     risco_lower = risco_texto.lower()
     grupos_alvo = [i for i, palavras in GRUPOS_AREAS_PALAVRAS if any(p in risco_lower for p in palavras)]
     if not grupos_alvo:
-        return False, f"nenhuma palavra-chave de grupo reconhecida em '{risco_texto}' — revisão humana decide o grupo"
+        return False, f"nenhuma palavra-chave de grupo reconhecida em '{risco_texto}' — abstenção registrada (grupo não se infere)"
     objetos = re.findall(r"\{label:'[^']*', cor:'[^']*', ufs:\[[^\]]*\]\}", bloco)
     if len(objetos) != 4:
         return False, f"esperava 4 grupos em AREAS, achei {len(objetos)}"
@@ -378,7 +379,7 @@ def aplicar_estadual(uf, texto, numero, data, url, hoje):
         justificativa = (f"Recorrência detectada automaticamente ({sim:.0%} de semelhança com "
                           f"{uf}/{match_antigo['ano']}, ato {match_antigo['numero']}) — antecipação "
                           f"aplicada no nível NEUTRO (30) da régua §18 addendum por padrão de segurança; "
-                          f"revisão humana pode ajustar para COBRE/DIFERE se a cobertura do risco "
+                          f"o juiz automático pode ajustar para COBRE/DIFERE se a cobertura do risco "
                           f"projetado for confirmada por leitura completa do texto.")
     else:
         status_novo = "NOVO" if status_anterior == "LAC" else "READ"
@@ -497,12 +498,12 @@ def aplicar_municipal(nome, uf, texto, numero, data, url, hoje, veredito):
         return False, f"{nome}/{uf} sem categoria no veredito — o banco não recebe registro sem ela"
     lat, lon = buscar_lat_lon(nome, uf)
     if lat is None:
-        return False, f"{nome}/{uf} não consta na referência do IBGE — não dá pra posicionar no mapa, fila humana"
+        return False, f"{nome}/{uf} não consta na referência do IBGE — não dá pra posicionar no mapa — abstenção registrada"
 
     mun_path = RAIZ / "data" / "municipios.json"
     municipios = json.load(open(mun_path, encoding="utf-8"))
     if any(m["nome"] == nome and m["uf"] == uf for m in municipios):
-        return False, f"{nome}/{uf} já consta na base — não duplicar (revisão humana decide se é atualização)"
+        return False, f"{nome}/{uf} já consta na base — não duplicar (abstenção registrada: atualização não se presume)"
     canal, fonte_base = canal_e_fonte(url)
     doc = ementa(texto, numero, data)
     from aplicar_promocoes_do_juiz import preservar_o_documento
@@ -533,12 +534,12 @@ def aplicar_municipal(nome, uf, texto, numero, data, url, hoje, veredito):
 # 28/09/2026: a decisão do aplicador vira execução do log v2 pela porta canônica.
 # O vocabulário é fechado, e o mapeamento diz o que cada saída significa de fato:
 #   APLICADA    entrou no banco                     -> registro
-#   FILA_HUMANA continua pista, para leitura humana  -> pista
+#   ABSTENCAO   não aplica; continua pista, motivo gravado (até 09/10/2026 chamada FILA_HUMANA) -> pista
 #   DESCARTADA  documento lido, não era plano        -> consultado sem achado
 #   REVERTIDA   aplicada e desfeita pelos portões    -> erro
 # "nada localizado" NUNCA entra aqui: aquele valor é da bateria municipal completa (§2.1), e usá-lo
 # afirmaria ausência de plano a partir de uma pista só.
-DECISAO_NO_LOG = {"APLICADA": "registro", "FILA_HUMANA": "pista",
+DECISAO_NO_LOG = {"APLICADA": "registro", "ABSTENCAO": "pista",
                   "DESCARTADA": "consultado sem achado", "REVERTIDA": "erro"}
 
 
@@ -616,7 +617,7 @@ def aplicar_resposta(uf, texto, numero, data, url, hoje):
     conseguir identificar COM SEGURANÇA qual município o texto descreve."""
     municipio = extrair_municipio_do_texto(texto, uf)
     if municipio is None:
-        return False, f"não foi possível identificar qual município de {uf} o texto descreve — fila humana"
+        return False, f"não foi possível identificar qual município de {uf} o texto descreve — abstenção registrada"
 
     atos_path = RAIZ / "data" / "atos_resposta.json"
     atos = json.load(open(atos_path, encoding="utf-8"))
@@ -725,13 +726,13 @@ def processar_pista(pista, hoje, buscar=buscar_texto):
     """Processa uma pista: busca, classifica, decide. Retorna um relatório dict.
     `buscar` é injetável para permitir fixtures no self-test, sem rede real."""
     if str(pista.get("alvo", "")).startswith("manutencao/"):
-        return {"decisao": "FILA_HUMANA", "motivo": "pista de manutenção de vigia (não é ato) — triagem humana"}
+        return {"decisao": "ABSTENCAO", "motivo": "pista de manutenção de vigia (não é ato) — abstenção registrada"}
     if not pista.get("fonte_provavel_oficial"):
-        return {"decisao": "FILA_HUMANA", "motivo": "fonte não reconhecida como oficial (sem mudança)"}
+        return {"decisao": "ABSTENCAO", "motivo": "fonte não reconhecida como oficial (sem mudança)"}
 
     texto = buscar(pista["url"])
     if texto is None:
-        return {"decisao": "FILA_HUMANA", "motivo": "falha ao buscar o documento (tentar de novo na próxima execução)"}
+        return {"decisao": "ABSTENCAO", "motivo": "falha ao buscar o documento (tentar de novo na próxima execução)"}
     # Este caminho não tem `trecho` para recortar: lê o que lia antes do lote 2.2 (A1-20).
     texto = texto[:20000]
 
@@ -751,7 +752,7 @@ def processar_pista(pista, hoje, buscar=buscar_texto):
         backup = backup_dados()
         aplicado, motivo_ap = aplicar_resposta(uf, texto, numero, data, pista["url"], hoje)
         if not aplicado:
-            return {"decisao": "FILA_HUMANA", "motivo": motivo_ap, "natureza": "resposta"}
+            return {"decisao": "ABSTENCAO", "motivo": motivo_ap, "natureza": "resposta"}
         ok_portoes, saida_portoes = rodar_portoes()
         if not ok_portoes:
             restaurar_dados(backup)
@@ -761,7 +762,7 @@ def processar_pista(pista, hoje, buscar=buscar_texto):
 
     if decisao == "DUVIDA" or not citacao_ok:
         motivo_completo = motivo if decisao == "DUVIDA" else f"citação incompleta (número={numero}, data={data})"
-        return {"decisao": "FILA_HUMANA", "motivo": motivo_completo}
+        return {"decisao": "ABSTENCAO", "motivo": motivo_completo}
 
     # EX_ANTE + citação completa — aplicar, com backup real para rollback se os
     # portões falharem depois (achado no teste de ponta a ponta de 31/08/2026:
@@ -772,7 +773,7 @@ def processar_pista(pista, hoje, buscar=buscar_texto):
     else:
         nome_mun = pista["alvo"].split("/", 1)[1].rsplit("/", 1)[0] if rotulo.startswith("D-") else None
         if nome_mun is None:
-            return {"decisao": "FILA_HUMANA", "motivo": "não foi possível determinar o nome do município a partir do alvo"}
+            return {"decisao": "ABSTENCAO", "motivo": "não foi possível determinar o nome do município a partir do alvo"}
         # 27/09/2026 (PR 2 do juiz automático): o juiz de `juiz.py` entra aqui como barreira
         # ADICIONAL, nunca como substituto. Ele só pode recusar o que este caminho já aprovou — as
         # etapas que ele acrescenta (identidade do ente, autoridade do Executivo, família de risco
@@ -781,14 +782,14 @@ def processar_pista(pista, hoje, buscar=buscar_texto):
         # testados desde 31/08/2026.
         veredito = juiz.julgar(texto, nome=nome_mun, uf=uf, url=pista["url"])
         if not veredito["promove"]:
-            return {"decisao": "FILA_HUMANA",
+            return {"decisao": "ABSTENCAO",
                     "motivo": f"juiz {veredito['codebook']}: {veredito['motivo']}",
                     "juiz": veredito}
         aplicado, motivo_ap = aplicar_municipal(nome_mun, uf, texto, numero, data,
                                                 pista["url"], hoje, veredito)
 
     if not aplicado:
-        return {"decisao": "FILA_HUMANA", "motivo": motivo_ap}
+        return {"decisao": "ABSTENCAO", "motivo": motivo_ap}
 
     # recalcular ANTES de checar os portões — checar antes disso sempre reprovaria
     # (o índice ainda não sabe da mudança que acabou de entrar em estados/municipios.json).
@@ -828,26 +829,26 @@ def self_test():
                               buscar=lambda u: "Decreto nº 9/2026, de 01/01/2026, declara situação de "
                                                 "emergência em razão dos danos causados pela estiagem que "
                                                 "atingiu o município. Reconhecimento federal concedido.")
-        assert r1["decisao"] == "FILA_HUMANA", r1
+        assert r1["decisao"] == "ABSTENCAO", r1
         print("✓ self-test OK — resposta sem município identificável vai para fila, nunca aplica às cegas")
 
         # Fixture 2: fonte não oficial — vai pra fila sem tocar em nada
         r2 = processar_pista({"alvo": "C-estado-amplo/XX", "url": "https://blog.exemplo.com",
                                "fonte_provavel_oficial": False}, "31/08/2026")
-        assert r2["decisao"] == "FILA_HUMANA" and "oficial" in r2["motivo"]
+        assert r2["decisao"] == "ABSTENCAO" and "oficial" in r2["motivo"]
         print("✓ self-test OK — fonte não reconhecida como oficial vai para fila, sem julgar")
 
         # Fixture 3: falha de rede — vai pra fila, tenta de novo depois
         r3 = processar_pista({"alvo": "C-estado-amplo/XX", "url": "https://xx.gov.br/indisponivel",
                                "fonte_provavel_oficial": True}, "31/08/2026", buscar=lambda u: None)
-        assert r3["decisao"] == "FILA_HUMANA" and "buscar" in r3["motivo"]
+        assert r3["decisao"] == "ABSTENCAO" and "buscar" in r3["motivo"]
         print("✓ self-test OK — falha ao buscar o documento vai para fila (tentada de novo depois)")
 
         # Fixture 4: DUVIDA — texto ambíguo, sem padrão claro
         r4 = processar_pista({"alvo": "C-estado-amplo/XX", "url": "https://xx.gov.br/ambiguo",
                                "fonte_provavel_oficial": True}, "31/08/2026",
                               buscar=lambda u: "Governo do Estado publica novo decreto sobre o clima.")
-        assert r4["decisao"] == "FILA_HUMANA"
+        assert r4["decisao"] == "ABSTENCAO"
         print("✓ self-test OK — texto ambíguo (dúvida do classificador) vai para fila")
 
         # Fixture 5: citação incompleta — EX_ANTE mas sem número+data extraíveis
@@ -855,7 +856,7 @@ def self_test():
                                "fonte_provavel_oficial": True}, "31/08/2026",
                               buscar=lambda u: "Plano de Contingência estadual em caráter preventivo, "
                                                 "com base nas projeções do Painel El Niño.")
-        assert r5["decisao"] == "FILA_HUMANA" and "citação incompleta" in r5["motivo"]
+        assert r5["decisao"] == "ABSTENCAO" and "citação incompleta" in r5["motivo"]
         print("✓ self-test OK — EX_ANTE confiante mas sem número/data vai para fila (citação incompleta)")
 
         # 09/10/2026 (A1-15): a categoria do registro vem do VEREDITO, nunca fixa em "plano".
@@ -896,7 +897,7 @@ def self_test():
     assert "nada localizado" not in DECISAO_NO_LOG.values(), (
         "'nada localizado' é da bateria municipal completa (§2.1); usá-lo aqui afirmaria ausência "
         "de plano a partir de uma pista só")
-    assert DECISAO_NO_LOG["APLICADA"] == "registro" and DECISAO_NO_LOG["FILA_HUMANA"] == "pista"
+    assert DECISAO_NO_LOG["APLICADA"] == "registro" and DECISAO_NO_LOG["ABSTENCAO"] == "pista"
     import inspect as _insp
     _fonte = _insp.getsource(registrar_log)
     assert "log_busca(" in _fonte, "o aplicador tem de escrever pela porta canônica"
@@ -980,7 +981,7 @@ if __name__ == "__main__":
     total_pendentes = len(pendentes)
     if args.limite is not None:
         pendentes = pendentes[:args.limite]
-    resultados = {"APLICADA": 0, "DESCARTADA": 0, "FILA_HUMANA": 0, "REVERTIDA": 0}
+    resultados = {"APLICADA": 0, "DESCARTADA": 0, "ABSTENCAO": 0, "REVERTIDA": 0}
     for pista in pendentes:
         r = processar_pista(pista, hoje)
         resultados[r["decisao"]] += 1

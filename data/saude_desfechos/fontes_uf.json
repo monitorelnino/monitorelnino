@@ -1,5 +1,5 @@
 {
- "_governanca": "Onde cada Secretaria Estadual de Saúde publica os desfechos do ciclo (boletim/painel/informe Cievs), com URL, periodicidade e status (máquina/leitura humana/defeso). Semeado em 09/09/2026 com os instrumentos já verificados na bateria estadual; cada linha a confirmar uma a uma. Peso zero. Varredura de 10/09/2026: 8 UFs com fonte confirmada e ativa (SP, MG[defeso], CE, BA, DF, PB, PE, MS); MS é a mais forte — boletim semanal por município, estruturado, atualizado até a SE corrente.",
+ "_governanca": "Onde cada Secretaria Estadual de Saúde publica os desfechos do ciclo (boletim/painel/informe Cievs), com URL, periodicidade e status (máquina/sem acesso automático/defeso). Semeado em 09/09/2026 com os instrumentos já verificados na bateria estadual; cada linha a confirmar uma a uma. Peso zero. Varredura de 10/09/2026: 8 UFs com fonte confirmada e ativa (SP, MG[defeso], CE, BA, DF, PB, PE, MS); MS é a mais forte — boletim semanal por município, estruturado, atualizado até a SE corrente.",
  "registrado_em": "02/10/2026",
  "uf": {
   "AC": {
@@ -198,10 +198,10 @@
    "defeso": false,
    "canais_instrumento": null,
    "canais_instrumento_lacuna": "01/10/2026: saude.pb.gov.br redireciona para paraiba.pb.gov.br/diretas/saude/, que serve muro de robo (desafio no corpo, HTTP 200) - recusa, e se respeita",
-   "canais_instrumento_humano": {
+   "canais_instrumento_sem_acesso_automatico": {
     "url": "https://paraiba.pb.gov.br/diretas/saude",
-    "modo_acesso": "humano",
-    "motivo": "saude.pb.gov.br redireciona para este endereco, que serve muro de robo ao cliente do projeto (desafio no corpo, HTTP 200) — recusa respeitada; a verificacao desta rota e humana, e conta como canal consultado",
+    "modo_acesso": "sem_acesso_automatico",
+    "motivo": "saude.pb.gov.br redireciona para este endereco, que serve muro de robo ao cliente do projeto (desafio no corpo, HTTP 200) — recusa respeitada; rota sem acesso automático — lacuna declarada, não conta como canal consultado (10/10/2026)",
     "em": "02/10/2026"
    },
    "canal4_declarado": [
@@ -256,10 +256,10 @@
    "defeso": null,
    "canais_instrumento": null,
    "canais_instrumento_lacuna": "02/10/2026: saude.rj.gov.br serve um intersticio de 935 bytes (so imagem e estilo, sem link navegavel) e www.rj.gov.br/saude responde HTTP 503. Pela regra da editoria, 503 pode ser transitorio: repetir em TRES DIAS DISTINTOS antes de concluir. Medicoes: 01/10 (503), 02/10 (503).",
-   "canais_instrumento_humano": {
+   "canais_instrumento_sem_acesso_automatico": {
     "url": "https://www.rj.gov.br/saude",
-    "modo_acesso": "humano",
-    "motivo": "HTTP 503 em 01/10 e 02/10/2026; terceira medicao pendente, e ate ela o canal 3 e verificacao humana",
+    "modo_acesso": "sem_acesso_automatico",
+    "motivo": "HTTP 503 em 01/10 e 02/10/2026; terceira medicao pendente; rota sem acesso automático — lacuna declarada, não conta como canal consultado (10/10/2026)",
     "em": "02/10/2026",
     "medicoes": [
      "01/10/2026: 503",

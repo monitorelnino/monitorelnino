@@ -111,7 +111,7 @@ def main():
     ap.add_argument("--arquivo", required=True, help="Arquivo fila_contribuicoes/fila_AAAA-MM-DD.json")
     ap.add_argument("--indice", type=int, required=True, help="Posição do item na lista 'fila' (1 = primeiro, como no .md)")
     ap.add_argument("--categoria", required=True, choices=sorted(CATEGORIAS_VALIDAS),
-                     help="Categoria — decisão humana após abrir o documento, nunca inferida")
+                     help="Categoria — declarada na errata por linha, com o documento oficial aberto; nunca inferida")
     ap.add_argument("--saida", default=str(DATA / "instrumentos_revisar.json"),
                      help="Arquivo de revisão de destino (padrão: data/instrumentos_revisar.json, o mesmo do Canal A)")
     args = ap.parse_args()

@@ -1,8 +1,8 @@
 {
- "_governanca": "Canal 2 desta unidade. Quando a rota de edição não foi achada em duas tentativas, o canal 2 passa a ser verificação humana registrada, com o motivo medido — e isso conta como consultado (definição fechada de 02/10/2026).",
+ "_governanca": "Canal 2 desta unidade. Quando a rota de edição não foi achada em duas tentativas, o canal 2 fica como rota sem acesso automático, com o motivo medido — lacuna declarada, que não conta como consultado (A5-08, 10/10/2026).",
  "canal2": {
-  "modo": "verificacao_humana",
-  "conta_como_consultado": true,
+  "modo": "sem_acesso_automatico",
+  "conta_como_consultado": false,
   "motivo": "nenhum endereço de diário registrado",
   "em": "02/10/2026",
   "tentativas": 0

@@ -49,12 +49,12 @@ CANAIS = {
     "canais": ("link(s) de canal", "fontes_uf.json", "secretaria"),
     "fontes": ("fonte(s) lida(s)", "nenhuma fonte"),
 }
-# Canal 2 por VERIFICAÇÃO HUMANA: quando a edição não pode ser baixada por limitação técnica de
+# Canal 2 SEM ACESSO AUTOMÁTICO: quando a edição não pode ser baixada por limitação técnica de
 # terceiro documentada (401, 403, captcha, muro de robô), o localizador grava
-# `canal2.modo = "verificacao_humana"` com o motivo, e isso CONTA como canal consultado. É a regra
-# da Paraíba, generalizada pela editoria em 02/10/2026: nenhuma unidade da federação fica "não
-# verificada" para sempre por causa de uma limitação que não é nossa e que está escrita.
-MODOS_DE_CANAL2_QUE_CONTAM = ("padrao_por_data", "listagem", "verificacao_humana")
+# `canal2.modo = "sem_acesso_automatico"` com o motivo — lacuna declarada, que NÃO conta como canal
+# consultado (A5-08, 10/10/2026). Até 09/10 a regra da Paraíba (02/10/2026) contava essa rota como
+# consultada; fonte que a máquina não leu não sustenta "não localizado".
+MODOS_DE_CANAL2_QUE_CONTAM = ("padrao_por_data", "listagem")
 # Decisões que contam como "o canal rodou e a fonte respondeu". `erro` nunca conta: é motor doente,
 # fonte fora do ar ou canal indisponível, e nenhuma das três autoriza falar de ausência.
 DECISOES_SAUDAVEIS = ("consultado sem achado", "pista", "registro")
@@ -68,8 +68,8 @@ def ler(p, padrao=None):
 
 
 # O coletor DIZ o canal na linha, desde 02/10/2026: "canal 3 · ..." e "canal 4 · ...". A marca por
-# palavra fica como reserva, para as linhas antigas do mês — e ela errava: "raiz da secretaria por
-# verificação humana", escrita pelo canal 4, casava com a marca "secretaria" do canal 3, e a
+# palavra fica como reserva, para as linhas antigas do mês — e ela errava: a nota de "raiz da
+# secretaria" sem acesso automático, escrita pelo canal 4, casava com a marca "secretaria" do canal 3, e a
 # Paraíba aparecia com o canal 4 em erro tendo sido consultada.
 ETIQUETAS = {"canal 1 ·": "aberta", "canal 2 ·": "doe", "canal 3 ·": "canais", "canal 4 ·": "fontes"}
 
@@ -107,7 +107,8 @@ def canal2_do_localizador(registros: dict) -> dict:
     """{uf: decisão do canal 2} a partir dos registros do localizador de edições. Função pura.
 
     `registros` é {uf: conteúdo de data/doe_edicoes/<UF>.json}. Uma UF entra como consultada
-    quando o localizador leu edição no período **ou** quando gravou verificação humana com motivo.
+    quando o localizador leu edição no período. Rota sem acesso automático não entra: é lacuna
+    declarada, e o canal fica não consultado.
     Edição baixada e sem o termo é "consultado sem achado" — que é consulta, e não ausência de
     documento.
     """
@@ -117,8 +118,7 @@ def canal2_do_localizador(registros: dict) -> dict:
             continue
         c2 = r.get("canal2") or {}
         modo = c2.get("modo")
-        if modo == "verificacao_humana" and c2.get("motivo"):
-            fora[uf] = "consultado sem achado"
+        if modo == "sem_acesso_automatico":
             continue
         edicoes = (r.get("edicoes") or {}).values()
         lidas = [e for e in edicoes if isinstance(e, dict) and e.get("decisao") == "lida"]
@@ -285,6 +285,9 @@ def autoteste() -> int:
            canais["AC"] == {"aberta": "consultado sem achado", "doe": "consultado sem achado",
                             "canais": "consultado sem achado", "fontes": "consultado sem achado"})
     checar("linha fora da bateria não entra", "MT" not in canais)
+    checar("canal 2 sem acesso automático não conta como consultado (A5-08)",
+           canal2_do_localizador({"AC": {"canal2": {"modo": "sem_acesso_automatico",
+                                                    "motivo": "HTTP 403"}, "edicoes": {}}}) == {})
     checar("UF que não existe não entra", "ZZ" not in canais)
     checar("quatro canais saudáveis autorizam 'não localizado'",
            pode_dizer_nao_localizado(canais["AC"]))

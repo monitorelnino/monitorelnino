@@ -134,7 +134,7 @@ def classificar(texto: str, documento: str = "") -> dict:
         return {"classe": "indeterminado", "pontos": pontos, "concorrente": segundo,
                 "citacao": citacoes.get(melhor),
                 "motivo": f"empate técnico entre {melhor} ({p1}) e {segundo} ({p2}) — "
-                          f"a margem exigida é {MARGEM}; leitura humana decide"}
+                          f"a margem exigida é {MARGEM}; abstenção registrada (indeterminado)"}
     return {"classe": melhor, "pontos": pontos, "concorrente": segundo if p2 else None,
             "citacao": citacoes.get(melhor),
             "motivo": f"{melhor} por {p1} contra {p2} da segunda classe"}
@@ -174,8 +174,8 @@ def gerar() -> int:
         "_governanca": (
             "ARQUIVO DE REVISÃO (§203) — proposta de classificação dos planos municipais na escada do "
             "§202, feita a partir do TEXTO PRESERVADO de cada documento. NADA AQUI ESTÁ APLICADO: "
-            "promoção é R7. Cada proposta traz o trecho que a sustenta, para a leitura humana "
-            "conferir a EVIDÊNCIA e não a conclusão. `indeterminado` mantém o registro onde está, "
+            "promoção é R7 (juiz automático, §106). Cada proposta traz o trecho que a sustenta, para o "
+            "juiz conferir a EVIDÊNCIA e não a conclusão. `indeterminado` mantém o registro onde está, "
             "valendo 1,00 — o robô não classifica no escuro, e 'não sei' nunca vira nota."),
         "regua": "plano_novo 1,00 · plano_readaptado 0,65 · plano_recorrente 0,45 (§202)",
         "margem_exigida": MARGEM,
@@ -187,7 +187,7 @@ def gerar() -> int:
     gravar_em(destino, doc)   # §229
     print(f"{len(propostas)} plano(s) com texto lido · {len(propostas) - indet} proposta(s) · "
           f"{indet} indeterminado(s) · {sem_texto} sem texto preservado")
-    print(f"→ data/{SAIDA} (revisão humana; nada aplicado)")
+    print(f"→ data/{SAIDA} (proposta; nada aplicado — abstenção registrada)")
     return 0
 
 

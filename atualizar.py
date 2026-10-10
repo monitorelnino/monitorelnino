@@ -310,8 +310,8 @@ def main():
         print("\n[aviso] a varredura de repositórios estaduais ficou INCOMPLETA (ver mensagens acima).")
         print("        Os dados publicados seguem válidos, mas esta rodada não confirma ausência de novidades.")
     if revisar_p.exists():
-        print(f"\n[aviso] {revisar_p.relative_to(RAIZ)} tem proposta(s) pendente(s) de revisão humana.")
-        print("        Revise o arquivo e rode: python3 aplicar_revisao.py --arquivo", revisar_p.relative_to(RAIZ))
+        print(f"\n[aviso] {revisar_p.relative_to(RAIZ)} tem proposta(s) não aplicada(s) — abstenção registrada;")
+        print("        nada entra no banco sem o juiz automático (§106).")
 
     # 03/09/2026 (achado do ensaio): coletores legados que rodavam DEPOIS dos portões, no workflow,
     # passam para cá — antes dos derivados e dos portões (nunca mais dado gravado sem portão).

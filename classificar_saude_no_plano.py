@@ -67,7 +67,7 @@ def texto_para_leitura_automatica(item: dict):
 def rodar() -> int:
     idx = ler("evidencias.json", {"itens": {}}); itens = idx.get("itens") or {}
     saida = ler("saude_no_plano_auto.json", {"_governanca": "Leitura AUTOMÁTICA de como o plano trata a saúde (§10.1): degraus 1/2/3/5 por regra com página citada; degrau 4 nunca automático. Publicada como 'leitura automática'; vira saude_no_plano (confirmada) só pela fila R7 com revisado_por e data. Peso zero; nunca lida pelo motor.", "itens": {}}) or {}
-    fila = ler("saude_no_plano_revisar.json", {"_governanca": "Fila R7 (§10.1): pré-classificações automáticas de saude_no_plano aguardando confirmação humana na sessão semanal, a partir do texto já extraído.", "fila": []}) or {}
+    fila = ler("saude_no_plano_revisar.json", {"_governanca": "Fila R7 (§10.1): pré-classificações automáticas de saude_no_plano pendentes do juiz automático, a partir do texto já extraído; na dúvida, abstenção registrada (§106).", "fila": []}) or {}
     n = 0
     for h, it in itens.items():
         ta = texto_para_leitura_automatica(it)

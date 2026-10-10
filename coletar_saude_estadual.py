@@ -146,16 +146,19 @@ ACRESCIMOS_DE_CANAL4 = {
     "PA": ["https://www.saude.pa.gov.br/wp-content/uploads/2026/02/plano-emergencias-_26.02.pdf"],
 }
 # Raiz alternativa, quando a raiz padrão da SES não respondeu e a editoria indicou outra. O modo de
-# acesso fica declarado: `humano` quer dizer que o sítio serve muro de robô ao cliente do projeto, e
-# que a verificação daquela rota é humana — não que o endereço seja secreto.
+# acesso fica declarado: `sem_acesso_automatico` quer dizer que o sítio serve muro de robô (ou erro)
+# ao cliente do projeto — a máquina não consulta a rota, e ela entra como lacuna declarada, nunca
+# como consulta feita (A5-08, 10/10/2026). Não quer dizer que o endereço seja secreto.
+MODO_SEM_ACESSO = "sem_acesso_automatico"
 RAIZ_ALTERNATIVA = {
     # 02/10/2026 (item 6.2): o endereço da secretaria do Rio de Janeiro responde 503 em duas
     # medições (01/10 e 02/10). A editoria mandou repetir em TRÊS dias distintos antes de concluir;
-    # até a terceira medição, o canal 3 é verificação humana — e conta como consultado.
-    "RJ": {"url": "https://www.rj.gov.br/saude", "modo_acesso": "humano",
+    # desde 10/10/2026 (A5-08) a rota sem acesso automático é lacuna declarada e não conta como
+    # consultada.
+    "RJ": {"url": "https://www.rj.gov.br/saude", "modo_acesso": MODO_SEM_ACESSO,
            "motivo": "HTTP 503 em 01/10 e 02/10/2026; terceira medição pendente, pela regra da "
                      "editoria de repetir em três dias distintos antes de concluir"},
-    "PB": {"url": "https://paraiba.pb.gov.br/diretas/saude", "modo_acesso": "humano",
+    "PB": {"url": "https://paraiba.pb.gov.br/diretas/saude", "modo_acesso": MODO_SEM_ACESSO,
            "motivo": "saude.pb.gov.br redireciona para este endereço, que serve muro de robô ao "
                      "cliente do projeto (desafio no corpo, HTTP 200) — recusa respeitada"},
 }
@@ -173,10 +176,10 @@ def fontes_de(uf: str, canais=None, acrescimos=None, alternativas=None) -> dict:
     raiz = cfg.get("canais_instrumento")
     if raiz:
         enderecos.append(raiz)
-    elif alternativa.get("url") and alternativa.get("modo_acesso") != "humano":
+    elif alternativa.get("url") and alternativa.get("modo_acesso") != MODO_SEM_ACESSO:
         enderecos.append(alternativa["url"])
     elif alternativa.get("url"):
-        notas.append(f"raiz da secretaria por verificação humana: {alternativa['url']} — "
+        notas.append(f"raiz da secretaria sem acesso automático (lacuna declarada): {alternativa['url']} — "
                      + str(alternativa.get("motivo") or ""))
     else:
         notas.append("raiz da secretaria sem endereço confirmado: "
@@ -435,25 +438,25 @@ def canais_ses(uf: str) -> dict:
     raiz = cfg.get("canais_instrumento")
     if not raiz:
         motivo = cfg.get("canais_instrumento_lacuna") or "endereço da secretaria não confirmado"
-        # Regra do canal 3 (02/10/2026): quando a raiz da secretaria não pode ser visitada pelo
-        # cliente do projeto, mas a editoria indicou o endereço e o modo de acesso é HUMANO, o
-        # canal conta como CONSULTADO, com o motivo técnico gravado — é a regra da Paraíba. Nenhuma
-        # unidade fica sem canal 3 por limitação documentada de terceiro. Sem endereço nenhum, a
-        # decisão continua sendo "canal não declarado": aí ninguém procurou.
-        humana = RAIZ_ALTERNATIVA.get(uf) or {}
-        if humana.get("url") and humana.get("modo_acesso") == "humano":
+        # Regra do canal 3 (10/10/2026, A5-08, METODOLOGIA §106): quando a raiz da secretaria não
+        # pode ser visitada pelo cliente do projeto, o endereço indicado fica registrado como rota
+        # SEM ACESSO AUTOMÁTICO — lacuna declarada com o motivo técnico, e o canal NÃO conta como
+        # consultado (decisão `canal_nao_disponivel`). Até 09/10 essa rota contava como consultada
+        # (regra da Paraíba, 02/10/2026); a abstenção é a opção conservadora.
+        alternativa = RAIZ_ALTERNATIVA.get(uf) or {}
+        if alternativa.get("url") and alternativa.get("modo_acesso") == MODO_SEM_ACESSO:
             registrar_lacuna(f"funil_saude/{uf}",
-                             f"canal 3 por verificação humana: {humana['url']} — "
-                             + str(humana.get("motivo") or motivo),
+                             f"canal 3 sem acesso automático (não consultado): {alternativa['url']} — "
+                             + str(alternativa.get("motivo") or motivo),
                              canal="orgao_estadual", camada=1, uf=uf, nivel="estadual",
-                             strings=[humana["url"]])
-            log_busca("orgao_estadual", 1, [humana["url"]],
-                      DECISAO_NO_LOG["canais_sem_pista"], uf=uf, nivel="estadual", n_resultados=0,
-                      resultados=(f"canal 3 · funil_saude/{uf}: link(s) de canal por verificação humana em "
-                                  f"{humana['url']} · modo de acesso humano · "
-                                  + str(humana.get("motivo") or motivo)))
+                             strings=[alternativa["url"]])
+            log_busca("orgao_estadual", 1, [alternativa["url"]],
+                      DECISAO_NO_LOG["canal_nao_disponivel"], uf=uf, nivel="estadual", n_resultados=0,
+                      resultados=(f"canal 3 · funil_saude/{uf}: rota sem acesso automático em "
+                                  f"{alternativa['url']} · lacuna declarada, não conta como consulta · "
+                                  + str(alternativa.get("motivo") or motivo)))
             return {"uf": uf, "links": 0, "pistas": 0, "novas": 0,
-                    "decisao": "canais_sem_pista", "modo_acesso": "humano"}
+                    "decisao": "canal_nao_disponivel", "modo_acesso": MODO_SEM_ACESSO}
         registrar_lacuna(f"funil_saude/{uf}", motivo, canal="orgao_estadual", camada=1, uf=uf,
                          nivel="estadual")
         log_busca("orgao_estadual", 1, [ARQUIVO_CANAIS], DECISAO_NO_LOG["canal_nao_declarado"],
@@ -628,9 +631,9 @@ def autoteste() -> int:
             lambda: any("não resolve" in n for n in fontes_de(
                 "RO", {"uf": {"RO": {"canais_instrumento": None,
                                      "canais_instrumento_lacuna": "não resolve no DNS"}}})["notas"]),
-        "raiz de acesso humano não é visitada pelo robô, e fica declarada":
+        "raiz sem acesso automático não é visitada pelo robô, e fica declarada":
             lambda: (fontes_de("PB", {"uf": {"PB": {"canais_instrumento": None}}})["enderecos"] == []
-                     and any("verificação humana" in n for n in fontes_de(
+                     and any("sem acesso automático" in n for n in fontes_de(
                          "PB", {"uf": {"PB": {"canais_instrumento": None}}})["notas"])),
         "acréscimo nominal entra depois da raiz":
             lambda: fontes_de("PA", {"uf": {"PA": {"canais_instrumento": "https://www.saude.pa.gov.br/"}}})

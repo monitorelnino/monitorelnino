@@ -708,8 +708,8 @@ def main() -> int:
                         **{f"recusa_{m}": n for m, n in c["por_motivo"].items() if n})
         registro = ler(PROMOCOES) or {"_governanca": (
             "Registro de toda decisão do juiz automático (§ do CHANGELOG de 27/09/2026). Uma linha "
-            "por pista julgada, com os critérios 1-6 e o trecho que satisfez cada um. Errata humana "
-            "reverte com uma linha. Este arquivo é o que alimenta a auditoria amostral semanal."),
+            "por pista julgada, com os critérios 1-6 e o trecho que satisfez cada um. Errata por linha "
+            "reverte a decisão. Este arquivo é o que alimenta a auditoria amostral semanal."),
             "decisoes": []}
         registro["decisoes"] = (registro.get("decisoes") or []) + vereditos
         gravar_em(DATA / PROMOCOES, registro)

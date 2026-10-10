@@ -208,8 +208,8 @@ def main() -> int:
         alvo = json.loads(amostra.read_text(encoding="utf-8")).get("municipios", [])
         print(f"medindo {len(alvo)} município(s) da amostra manual do item D")
         r_am = medir(alvo, buscar_searxng, relevante, consultas_de, pausa=time.sleep)
-        partes += ["", tabela(r_am, "População: amostra manual do item D (sem coluna humana ainda)"),
-                   "", "A coluna humana do item D ainda não foi preenchida: os números acima dizem o que cada",
+        partes += ["", tabela(r_am, "População: amostra manual do item D (sem coluna de gabarito ainda)"),
+                   "", "A coluna de gabarito do item D ainda não foi preenchida: os números acima dizem o que cada",
                    "string TROUXE, não o que ela deixou de achar."]
     else:
         partes += ["", "A amostra do item D não foi encontrada; medida apenas a população de registrados."]

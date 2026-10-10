@@ -19,9 +19,9 @@ promove nada a registro: promoção é do `julgar_saude.py`, com documento prim�
 **Travas.** As três do projeto, mais a regra da recusa:
 - o cliente é o do projeto, declarado, e o robots.txt é lido e respeitado com o rastro do §185;
 - recusa de acesso real (401, 403, 429, 451), captcha e muro de robô servido com 200 **param** a UF
-  e são gravados como `verificacao_humana`, com o motivo técnico — e, pela regra da Paraíba, isso
-  **conta como canal 2 consultado** no fechamento: limitação documentada de terceiro não deixa um
-  estado "não verificado" para sempre;
+  e são gravados como `sem_acesso_automatico`, com o motivo técnico — lacuna declarada que **não
+  conta como canal 2 consultado** no fechamento (A5-08, 10/10/2026; até 09/10 a regra da Paraíba
+  contava essa rota como consultada);
 - nada é escrito no banco (`BANCO_PROIBIDO`), e o autoteste offline confere isso lendo o próprio
   código-fonte.
 
@@ -109,7 +109,7 @@ PADROES = {
     # sempre com o mesmo arquivo de 2.016 bytes e uma página — página de erro servida como PDF. O
     # portal do Amapá serve a edição por ID (`/portal/edicoes/download/{id}`), e a listagem que
     # liga data a ID é montada por JavaScript. Entra quando a listagem for lida; até então o canal
-    # 2 do AP é verificação humana, com este motivo gravado.
+    # 2 do AP é rota sem acesso automático (lacuna declarada), com este motivo gravado.
     "AP": {"listagem": "https://diofe.portal.ap.gov.br/portal/edicoes",
            "nota": "edição por ID; a listagem que liga data a ID exige leitura da página"},
 }
@@ -273,20 +273,28 @@ def decidir_edicao(status: int, bytes_lidos: int, paginas_com_texto: int,
     return "lida"
 
 
+# Rota de edição que a máquina não alcança (muro de robô, 401/403/429/451, sem padrão nem listagem):
+# lacuna declarada com o motivo medido, e NÃO conta como canal consultado (A5-08, 10/10/2026).
+MODO_SEM_ACESSO = "sem_acesso_automatico"
+GOVERNANCA_CANAL2 = ("Canal 2 desta unidade. Quando a rota de edição não foi achada em duas tentativas, "
+                     "o canal 2 fica como rota sem acesso automático, com o motivo medido — lacuna "
+                     "declarada, que não conta como consultado (A5-08, 10/10/2026).")
+
+
 def situacao_do_canal2(uf: str, padroes=None, adaptadores=None, registro=None) -> dict:
     """Como o canal 2 é feito nesta UF. Função pura.
 
     Quatro modos, na ordem em que valem: `padrao_por_data` (baixa a edição pelo endereço),
     `listagem` (o número ou o id da edição vem de uma página de listagem), `busca_no_diario` (a
-    UF é uma das que oferecem busca, e o adaptador já existia) e `verificacao_humana` (limitação
-    técnica de terceiro documentada — conta como consultado, regra da Paraíba). Sem nenhum deles,
+    UF é uma das que oferecem busca, e o adaptador já existia) e `sem_acesso_automatico` (limitação
+    técnica de terceiro documentada — lacuna declarada, não conta como consultado). Sem nenhum deles,
     `a_descobrir`: é ausência de **rota**, não ausência de diário.
     """
     p = (padroes if padroes is not None else PADROES).get(uf)
     reg = (registro or {}).get("canal2") or {}
-    if reg.get("modo") == "verificacao_humana" and reg.get("motivo"):
-        return {"uf": uf, "modo": "verificacao_humana", "detalhe": reg["motivo"],
-                "nota": "conta como canal consultado"}
+    if reg.get("modo") == MODO_SEM_ACESSO and reg.get("motivo"):
+        return {"uf": uf, "modo": MODO_SEM_ACESSO, "detalhe": reg["motivo"],
+                "nota": "lacuna declarada — não conta como canal consultado"}
     if p and p.get("padrao"):
         return {"uf": uf, "modo": "padrao_por_data", "detalhe": p["padrao"], "nota": p.get("nota")}
     if p and p.get("listagem"):
@@ -406,20 +414,20 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
             if bruto is None:
                 raise erro if erro else FileNotFoundError(url)
         except MuroDeRobo as e:
-            registro["canal2"] = {"modo": "verificacao_humana", "motivo": f"muro de robô: {str(e)[:140]}",
-                                  "em": hoje, "conta_como_consultado": True}
+            registro["canal2"] = {"modo": MODO_SEM_ACESSO, "motivo": f"muro de robô: {str(e)[:140]}",
+                                  "em": hoje, "conta_como_consultado": False}
             registrar_lacuna(f"DOE-{uf} (canal 2)", f"muro de robô em {url[:90]}", canal="DOE", camada=1)
-            print(f"  {uf}: muro de robô — canal 2 por verificação humana, e conta como consultado")
+            print(f"  {uf}: muro de robô — canal 2 sem acesso automático, lacuna declarada (não conta como consultado)")
             break
         except Exception as e:  # noqa: BLE001
             status = getattr(e, "code", None) or 0
             if status in (401, 403, 429, 451):
-                registro["canal2"] = {"modo": "verificacao_humana",
+                registro["canal2"] = {"modo": MODO_SEM_ACESSO,
                                       "motivo": f"HTTP {status} na edição de {data} — recusa respeitada",
-                                      "em": hoje, "conta_como_consultado": True}
+                                      "em": hoje, "conta_como_consultado": False}
                 registrar_lacuna(f"DOE-{uf} (canal 2)", f"HTTP {status} — recusa respeitada",
                                  canal="DOE", camada=1)
-                print(f"  {uf}: HTTP {status} — canal 2 por verificação humana, e conta como consultado")
+                print(f"  {uf}: HTTP {status} — canal 2 sem acesso automático, lacuna declarada (não conta como consultado)")
                 break
             edicoes[data] = {"decisao": decidir_edicao(status, 0, 0), "em": hoje,
                              "motivo": f"{type(e).__name__}: {str(e)[:90]}"}
@@ -489,15 +497,15 @@ def moldes_para(base: str) -> list:
 def veredito_da_descoberta(achou_padrao: bool, achou_listagem: bool, motivo: str) -> dict:
     """O que registrar depois das duas tentativas. Funcao pura.
 
-    Sem padrao e sem listagem legivel, o canal 2 passa a ser verificacao humana — e isso CONTA como
-    consultado, pela definicao fechada de 02/10/2026. O motivo medido vai junto, sempre: sem ele,
-    "verificacao humana" seria desculpa, e nao medicao.
+    Sem padrao e sem listagem legivel, o canal 2 passa a ser rota sem acesso automatico — lacuna
+    declarada, que NAO conta como consultado (A5-08, 10/10/2026). O motivo medido vai junto, sempre:
+    sem ele, a lacuna seria desculpa, e nao medicao.
     """
     if achou_padrao:
         return {"modo": "padrao_por_data", "conta_como_consultado": True}
     if achou_listagem:
         return {"modo": "listagem", "conta_como_consultado": True}
-    return {"modo": "verificacao_humana", "conta_como_consultado": True,
+    return {"modo": MODO_SEM_ACESSO, "conta_como_consultado": False,
             "motivo": motivo or "duas tentativas sem padrão de endereço nem listagem legível"}
 
 
@@ -630,19 +638,19 @@ def _autoteste() -> int:
        veredito_da_descoberta(True, False, "")["modo"] == "padrao_por_data")
     ok("listagem achada conta como consultado",
        veredito_da_descoberta(False, True, "")["modo"] == "listagem")
-    ok("sem rota, o canal 2 é verificação humana E conta como consultado",
+    ok("sem rota, o canal 2 é lacuna sem acesso automático e NÃO conta como consultado",
        veredito_da_descoberta(False, False, "404 em tudo") == {
-           "modo": "verificacao_humana", "conta_como_consultado": True, "motivo": "404 em tudo"})
-    ok("verificação humana sem motivo recebe o motivo padrão",
+           "modo": MODO_SEM_ACESSO, "conta_como_consultado": False, "motivo": "404 em tudo"})
+    ok("lacuna sem motivo recebe o motivo padrão",
        "duas tentativas" in veredito_da_descoberta(False, False, "")["motivo"])
     ok("UF sem rota fica 'a descobrir', e não 'sem diário'",
        situacao_do_canal2("XX")["modo"] == "a_descobrir")
     ok("UF com adaptador de busca entra como busca no diário",
        situacao_do_canal2("XX", {}, {"XX": {"adaptador": "apifront"}})["modo"] == "busca_no_diario")
-    ok("verificação humana registrada vence, e conta como consultado",
+    ok("rota sem acesso automático registrada vence, e não conta como consultado",
        situacao_do_canal2("XX", {}, {"XX": {"adaptador": "apifront"}},
-                          {"canal2": {"modo": "verificacao_humana", "motivo": "HTTP 401"}})["modo"]
-       == "verificacao_humana")
+                          {"canal2": {"modo": MODO_SEM_ACESSO, "motivo": "HTTP 401"}})["modo"]
+       == MODO_SEM_ACESSO)
 
     fonte = pathlib.Path(__file__).read_text(encoding="utf-8")
     escritas = [l.strip() for l in fonte.splitlines() if l.strip().startswith("gravar(")]
@@ -695,9 +703,7 @@ def main() -> int:
             (RAIZ / "data" / PASTA).mkdir(parents=True, exist_ok=True)
             reg = ler(arquivo, {}) or {}
             reg.setdefault("_governanca", (
-                "Canal 2 desta unidade. Quando a rota de edição não foi achada em duas tentativas, "
-                "o canal 2 passa a ser verificação humana registrada, com o motivo medido — e isso "
-                "conta como consultado (definição fechada de 02/10/2026)."))
+                GOVERNANCA_CANAL2))
             reg["canal2"] = dict(v, em=hoje, tentativas=r.get("tentativas"))
             if r.get("molde"):
                 reg["canal2"]["molde_descoberto"] = r["molde"]

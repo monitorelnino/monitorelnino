@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-10 · #PR · zero etapa humana no código ativo
+
+Rotas, status, filas e mensagens que esperavam pessoa viram abstenção registrada (`ABSTENCAO`), lacuna sem acesso automático ou pendência do juiz (D7, §106). A5-08: canal 2 e canal 3 sem acesso automático deixam de contar como consultados. Dados legados migrados por `scripts/migrar_zero_humano.py`; `contar_filas_humanas.py` vira `contar_filas.py`. O portão `verificar_fila_nao_humana.py` passa a reprovar humano/humana em código ativo de *.py/*.js/*.yml, com cinco exceções declaradas.
+
 ## 2026-10-10 · #PR · o DOU não reacrescenta o reconhecimento que o MIDR acabou de gravar
 
 Na rodada dos diários de 10/10, o canal do DOU decidiu por chaves montadas antes do canal do MIDR rodar e acrescentou de novo 44 reconhecimentos federais (mesma portaria, URL `http` × `https`); `verificar_consistencia.py` reprovou a `main`. `incorporar_ato_dou` lê o banco como está e casa também por IBGE, causa e portaria; os 44 pares viram um evento, com o decreto municipal somado. Em `coletar_s2id.py`.
