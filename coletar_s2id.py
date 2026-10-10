@@ -247,6 +247,40 @@ def encaixar_reconhecimento(eventos: list, novo: dict) -> str:
     return "acrescentado"
 
 
+CAMPOS_DO_ATO_DOU = ("decreto_municipal", "data_decreto_municipal", "desastre")
+
+
+def incorporar_ato_dou(eventos: list, ev: dict) -> str:
+    """Leva ao banco o reconhecimento lido no ato do DOU — e diz o que fez.
+
+    10/10/2026. O canal do DOU decidia por um conjunto de chaves montado ANTES do canal do MIDR
+    rodar; o que o MIDR acrescentava na mesma rodada não estava no conjunto, e o DOU acrescentava
+    de novo o mesmo ato (44 pares em 10/10, mesma portaria, URL `http` × `https`). A régua agora
+    lê o banco como está:
+    - mesmo município, data e causa, ou mesmo IBGE, causa e números de portaria → é o mesmo ato:
+      preenche os campos que só o ato traz (decreto municipal, classe do desastre), sem
+      sobrescrever nada, e devolve "enriquecido" (ou "descartado", se não havia o que somar);
+    - nada disso → `encaixar_reconhecimento` decide (acrescenta, ou substitui um lote).
+    """
+    chave = (ev.get("nome"), ev.get("uf"), ev.get("data"), ev.get("causa"))
+    nums = numeros_de_portaria(ev.get("portaria") or ev.get("decreto"))
+    ibge = str(ev.get("ibge") or "")
+    for e in eventos:
+        mesmo = (e.get("nome"), e.get("uf"), e.get("data"), e.get("causa")) == chave
+        if not mesmo and ibge and nums and str(e.get("ibge") or "") == ibge and e.get("causa") == ev.get("causa"):
+            mesmo = numeros_de_portaria(e.get("portaria") or e.get("decreto")) == nums
+        if not mesmo:
+            continue
+        somou = False
+        for campo in CAMPOS_DO_ATO_DOU:
+            if ev.get(campo) and not e.get(campo):
+                e[campo] = ev[campo]
+                somou = True
+        return "enriquecido" if somou else "descartado"
+    return encaixar_reconhecimento(eventos, ev)
+
+
+
 def parse_noticia_midr(html_txt: str) -> dict:
     """Da notícia do MIDR: links de portarias no DOU (número + data no endereço) e pares município/UF do texto."""
     texto = re.sub(r"\s+", " ", _html.unescape(re.sub(r"<[^>]+>", " ", html_txt)))
@@ -467,24 +501,6 @@ def _coletar(desde: str, ate: str) -> int:
                       uf=it["uf"], nivel="nacional", hash_evidencia=h)
             continue
         ref = por_cod[cod]
-        chave = (ref["nome"], it["uf"], it["data"], "reconhecimento federal")
-        if chave in vistos:
-            # 25/09/2026: o evento já está no banco pelo canal do MIDR, que chega antes — e a
-            # primeira rodada com o canal do DOU consertado leu 618 reconhecimentos e criou ZERO,
-            # o que é a melhor notícia possível (os dois canais independentes concordam). Só que
-            # o ato traz o que a notícia do MIDR não tem: o número e a data do decreto MUNICIPAL
-            # e a classe do desastre. Descartar isso seria jogar fora dado por causa do que já
-            # sabíamos. O acréscimo é ADITIVO e sob a MESMA chave que já serve para deduplicar:
-            # preenche campo ausente, nunca sobrescreve campo existente.
-            for e in atos["eventos"]:
-                if (e.get("nome"), e.get("uf"), e.get("data"), e.get("causa")) != chave:
-                    continue
-                for campo in ("decreto_municipal", "data_decreto_municipal", "desastre"):
-                    if it.get(campo) and not e.get(campo):
-                        e[campo] = it[campo]
-                        enriquecidos.add(chave)
-                break
-            continue
         # `decreto`/`data` seguem sendo a PORTARIA e a data dela, como sempre foram; o decreto
         # MUNICIPAL que a tabela do ato passou a declarar entra em campo próprio, para não
         # mudar o significado de campo que o banco já usa.
@@ -494,12 +510,19 @@ def _coletar(desde: str, ate: str) -> int:
               "fonte": "DOU (portaria SEDEC/MIDR)", "url": it["url"],
               "lat": ref["lat"], "lon": ref["lon"], "canal": "DOU",
               "hash_evidencia": h}
-        for campo in ("decreto_municipal", "data_decreto_municipal", "desastre"):
+        for campo in CAMPOS_DO_ATO_DOU:
             if it.get(campo):
                 ev[campo] = it[campo]
-        atos["eventos"].append(ev)
+        # 10/10/2026: a decisão vem do banco como está AGORA, não do conjunto `vistos` montado
+        # antes do canal do MIDR — o que o MIDR acabara de acrescentar nesta rodada não estava
+        # nele, e 44 reconhecimentos entraram duas vezes (portões vermelhos na `main`).
+        o_que = incorporar_ato_dou(atos["eventos"], ev)
+        if o_que == "enriquecido":
+            enriquecidos.add((ref["nome"], it["uf"], it["data"]))
+        if o_que in ("enriquecido", "descartado"):
+            continue
         marcar_fato_municipal(cod, "decreto_reconhecido", True)
-        vistos.add(chave); novos += 1
+        novos += o_que == "acrescentado"
     gravar("atos_resposta.json", carimbar_atos(atos))
     # (03/09/2026) a consulta textual do DOU é COMPLEMENTAR: não confere nível — o nível nacional vem do RSS do MIDR lido
     log_busca("DOU", 1, [url], "registro" if (novos or enriquecidos) else "pista",
@@ -579,6 +602,22 @@ def autoteste() -> int:
         ev = [dict(LOTE)]
         outro = dict(EXATO, ibge="2307700", nome="Monsenhor Tabosa")
         return encaixar_reconhecimento(ev, outro) == "acrescentado" and len(ev) == 2
+
+    def t27():
+        """10/10/2026: o MIDR acrescenta na rodada e o DOU lê o mesmo ato (URL http × https)."""
+        midr = dict(EXATO, url="http://www.in.gov.br/web/dou/-/portaria-2731")
+        dou = dict(EXATO, url="https://www.in.gov.br/web/dou/-/portaria-2731",
+                   decreto_municipal="234", desastre="Estiagem - 1.4.1.1.0")
+        ev = []
+        encaixar_reconhecimento(ev, midr)
+        r = incorporar_ato_dou(ev, dou)
+        return (r == "enriquecido" and len(ev) == 1 and ev[0]["decreto_municipal"] == "234"
+                and ev[0]["url"].startswith("http://"))
+
+    def t28():
+        """Mesmo ato com data diferente (lote antigo já substituído) também não duplica."""
+        ev = [dict(EXATO, data="23/08/2026")]
+        return incorporar_ato_dou(ev, dict(EXATO)) == "descartado" and len(ev) == 1
 
     def t1():
         r = parse_dou_html(FIXTURE_HTML); return len(r) == 2 and r[0]["url"].endswith("portaria-2659")
@@ -711,7 +750,9 @@ def autoteste() -> int:
                             "o evento que fica é o do ato exato, com data, URL e hash do documento": t23,
                             "o mesmo ato lido duas vezes não entra duas vezes": t24,
                             "o lote que chega depois do ato exato é descartado": t25,
-                            "município diferente na mesma portaria é acrescentado": t26})
+                            "município diferente na mesma portaria é acrescentado": t26,
+                            "o DOU não reacrescenta o que o MIDR acabou de acrescentar": t27,
+                            "mesma portaria com data diferente não duplica": t28})
 
 
 if __name__ == "__main__":
