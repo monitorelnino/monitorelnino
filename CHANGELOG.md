@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-10 · #PR · ajustes de página do relatório D, segunda leva (A4-06, A4-15, A4-18, A4-23, A4-35)
+
+Saúde: item não verificado aparece como "ainda não verificado", não como "não localizado até o corte"; as buscas por município contam só códigos da referência IBGE (saem Lagoa Mirim e Lagoa dos Patos, 5.573 → 5.571); "boletins nº 1 a 3" fixo sai; "antecipação" sai do texto público. Financiamento: portarias com data dd/mm/aaaa e finalidade rotulada. Em `assets/js/` e `saude.html`.
+
 ## 2026-10-10 · #PR · o ensaio real não conta marcador da noite de verdade
 
 O ramo do ensaio nascia da `main` com os `.feito` da noite de hoje e via "juiz feito" sem rodar o juiz (F34, 2º ensaio, 16:34 UTC). Agora o ramo começa sem `data/noite/<noite>/`, e o veredito só aceita marcador escrito por run do próprio ensaio.
