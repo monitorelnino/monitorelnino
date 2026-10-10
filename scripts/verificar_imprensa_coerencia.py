@@ -85,6 +85,33 @@ DE_AGORA = ("municipios_alerta_cemaden", "municipios_aviso_inmet", "decreto_e_al
 MULTIPLICADOR = {"mil": 1e3, "mi": 1e6, "bi": 1e9, "milhão": 1e6, "milhões": 1e6}
 
 
+
+MESES = ("janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro",
+         "outubro", "novembro", "dezembro")
+MES_CURTO = ("jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez")
+
+
+def semana_em_datas(ano: int, n: int) -> list:
+    """As formas com que a página escreve a semana `n` do `ano`. Função pura.
+
+    Mesma regra de `assets/semana.js` (Ministério da Saúde): domingo a sábado, e a semana 1 é a que
+    tem a quarta-feira entre 1 e 7 de janeiro. Devolve a forma por extenso (sem preposição) e a curta.
+    """
+    import datetime as _dt
+    base = next(_dt.date(ano, 1, d) - _dt.timedelta(days=3) for d in range(1, 8)
+                if _dt.date(ano, 1, d).weekday() == 2)
+    ini = base + _dt.timedelta(days=7 * (n - 1))
+    fim = ini + _dt.timedelta(days=6)
+    if ini.year != fim.year:
+        ext = f"{ini.day} de {MESES[ini.month - 1]} de {ini.year} a {fim.day} de {MESES[fim.month - 1]} de {fim.year}"
+    elif ini.month != fim.month:
+        ext = f"{ini.day} de {MESES[ini.month - 1]} a {fim.day} de {MESES[fim.month - 1]} de {ini.year}"
+    else:
+        ext = f"{ini.day} a {fim.day} de {MESES[ini.month - 1]} de {ini.year}"
+    curta = (f"{ini.day}–{fim.day}/{MES_CURTO[ini.month - 1]}" if ini.month == fim.month
+             else f"{ini.day}/{MES_CURTO[ini.month - 1]}–{fim.day}/{MES_CURTO[fim.month - 1]}")
+    return [ext, curta]
+
 def numero_do_texto(texto: str):
     """O número que o texto publica, com a escala que ele declara. Função pura.
 
@@ -186,7 +213,12 @@ def divergencias(cartoes: dict, indices: dict, numeros: dict, textos: dict,
         alvo = (textos.get(pagina) or "").lower()
         se = re.search(r"\b(\d{4})-(\d{2})\b", ref)
         if se:
-            if f"semana epidemiológica {se.group(2)}" not in alvo:  # alvo já em minúsculas
+            # 10/10/2026 (absorção do #582): a página de origem escreve a semana em DATAS ("de 16
+            # a 22 de agosto de 2026", ou "16–22/ago" no eixo), pela mesma regra de
+            # `assets/semana.js`. A forma antiga ("semana epidemiológica 33") segue aceita para a
+            # página que ainda não migrou.
+            formas = [f"semana epidemiológica {se.group(2)}"] + semana_em_datas(int(se.group(1)), int(se.group(2)))
+            if not any(f in alvo for f in formas):  # alvo já em minúsculas
                 ruins.append(f"{ident}: a Imprensa declara a semana {se.group(2)} e {pagina} não "
                              f"a publica")
         else:
@@ -248,6 +280,10 @@ def _autoteste() -> int:
     d = divergencias(ruim, {}, numeros, textos, mapa, ())
     ok("valor divergente reprova", any("482" in x for x in d))
     ok("semana divergente reprova", any("semana 37" in x for x in d))
+    ok("a semana 33 de 2026 é de 16 a 22 de agosto (regra do Ministério da Saúde)",
+       semana_em_datas(2026, 33) == ["16 a 22 de agosto de 2026", "16–22/ago"])
+    ok("a semana 1 de 2025 começa em 29 de dezembro de 2024",
+       semana_em_datas(2025, 1)[0] == "29 de dezembro de 2024 a 4 de janeiro de 2025")
     sem = dict(cartoes); sem["desembolsado_no_mes"] = {"valor": None, "sem_coleta": True}
     ok("'sem dado' na Imprensa com número na origem reprova",
        any("sem dado" in x for x in divergencias(sem, {}, numeros, textos, mapa, ())))

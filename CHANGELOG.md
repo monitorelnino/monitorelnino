@@ -32,6 +32,9 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-10 · #PR · a semana sai em datas, e o juiz de saúde ganha as quatro travas (absorve #582)
+
+Absorve o #582. O leitor lê "na semana de 16 a 22 de agosto de 2026", nunca "semana epidemiológica 33"; acumulados em datas e eixos semanais em meses (`assets/semana.js`, regra do Ministério da Saúde; portão `verificar_semana_epidemiologica.js`). Lote 6.1-A: `julgar_saude.py` deixa de creditar o que não é (A5-01 a A5-04). "mediana"/"p90" saem da legenda.
 ## 2026-10-10 · #PR · catálogo das falhas da noite e checagem pré-noite
 
 `config/falhas_da_noite.json` (e `docs/FALHAS_DA_NOITE.md`, gerado) registra as 31 falhas de 03 a 10/10 com causa, prova e o caso de teste que as reproduz; o portão `catalogo_de_falhas.py` reprova caso inexistente. `checagem_pre_noite.yml` (22:53 e 23:43 UTC) confere main verde, mesclagem tardia, fila, relógios, segredos e ensaio real; vermelho abre Issue. Ensaio 15: `env.` lida sem exportar.

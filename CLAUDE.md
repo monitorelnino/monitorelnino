@@ -432,8 +432,9 @@ status, rotina ou texto "para humano / revisão / leitura humana / a aprovar" en
 portão `scripts/verificar_fila_nao_humana.py` reprova. Contribuição pública vira pista pela porta
 única e segue o juiz (D7). Dúvida vira a opção mais conservadora, registrada, nunca uma pergunta.
 
-**"Semana epidemiológica" é proibida em texto público.** A semana sai sempre em datas, pela função
-`scripts/semana_epidemiologica.py` ("na semana de 16 a 22 de agosto de 2026"); eixos em meses.
+**"Semana epidemiológica" é proibida em texto público.** A semana sai sempre em datas, pela conversão
+`assets/semana.js` ("na semana de 16 a 22 de agosto de 2026"; regra do Ministério da Saúde); eixos em
+meses. Portão: `scripts/verificar_semana_epidemiologica.js`, que lê o texto renderizado.
 
 ## Regras editoriais que o código não pode violar
 
