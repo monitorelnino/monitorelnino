@@ -96,9 +96,18 @@ for (const id of ["mapaMonitor", "mapaDengueUF", "mapaChikUF", "mapaCalor"]) {
   };
   const brDen = Object.fromEntries(Object.entries(DEN.serie.BR).filter(([k]) => k.startsWith(String(DEN.ano_corrente))));
   const seDen = ultimaFechada(brDen);
-  teste("cartão de dengue: valor e semana da última fechada, do SINAN",
+  // 08/10/2026 (item 0): a cobrança muda de FORMA junto com a página, e não afrouxa. Antes
+  // exigia "semana epidemiológica {n}"; agora exige o INTERVALO DE DATAS daquela mesma semana,
+  // calculado aqui de forma independente pelo utilitário, para o teste continuar sabendo qual
+  // semana a página deveria estar mostrando.
+  const SEM = require("../assets/semana.js");
+  const datasDe = (chave) => SEM.porExtenso(Number(String(chave).split("-")[0]),
+                                            Number(String(chave).split("-")[1]), true);
+  teste("cartão de dengue: valor e datas da última semana fechada, do SINAN",
     txt("nDengueSE").replace(/\./g, "") === String(brDen[seDen])
-    && new RegExp("semana epidemiológica " + seDen.split("-")[1]).test(txt("rotuloDengueSE")));
+    && txt("rotuloDengueSE").includes(datasDe(seDen)));
+  teste("cartão de dengue: o rótulo não traz a semana como número",
+    !/semana epidemiológica|\bSE ?\d/.test(txt("rotuloDengueSE")));
   teste("cartão de dengue: diz que é notificação, não caso confirmado",
     /notificaç/i.test(txt("fonteDengueSE")));
   teste("cartões de casos trazem a ressalva de parcialidade e a frase do El Niño", (() => {
@@ -143,9 +152,10 @@ for (const id of ["mapaMonitor", "mapaDengueUF", "mapaChikUF", "mapaCalor"]) {
   // As séries do SINAN: frase do dado, gráfico contra a faixa e mapa por 100 mil.
   for (const [frase, mapa, dl] of [["fraseDengue", "mapaDengueUF", "dlDengueUF"],
                                    ["fraseChik", "mapaChikUF", "dlChikUF"]]) {
-    teste(`${frase}: frase gerada do dado, com semana e posição na faixa`,
-      /notificações de \w+ na semana epidemiológica \d+/.test(txt(frase))
-      && /faixa esperada para a época/.test(txt(frase)));
+    teste(`${frase}: frase gerada do dado, com as datas da semana e a posição na faixa`,
+      /notificações de \w+ na semana de \d{1,2}[^.]{0,60}\d{4}/.test(txt(frase))
+      && /faixa esperada para a época/.test(txt(frase))
+      && !/semana epidemiológica|\bSE ?\d/.test(txt(frase)));
     teste(`${mapa}: 27 estados e legenda com 'sem coleta'`,
       q(mapa).querySelectorAll("path").length === 27 && /sem coleta/.test(txt(mapa.replace("mapa", "leg"))));
     teste(`${dl}: lista por estado com a taxa e o total`,

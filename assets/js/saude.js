@@ -1,5 +1,61 @@
 // ===== saude.html · bloco 1 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
 let BR_GEOJSON, SUF, SSIN, SINAIS, MARE, MSAUDE, DESF, DESF_CANAL, DESF_COMP, PAINEL_LISTA, SRAG;
+
+/* A SEMANA VIRA DATA — item 0 do handover de 07/10/2026, regra da editoria para o site inteiro.
+ *
+ * O dado do SINAN e do InfoDengue é por semana epidemiológica, e continua sendo: isso é da fonte.
+ * O que não chega ao leitor é a palavra. Ele lê "na semana de 16 a 22 de agosto de 2026", que é
+ * como se pensa uma data; "semana epidemiológica 33" exige saber o que é e contar no calendário.
+ *
+ * A conversão mora em `assets/semana.js`, com a regra do Ministério da Saúde e um autoteste
+ * conferido contra o calendário publicado em quatro anos de virada diferente. Aqui ficam só os
+ * três ajudantes que traduzem a chave "2026-33" que os arquivos de série usam.
+ *
+ * Sem o utilitário carregado, as funções devolvem vazio em vez de a chave crua: a página perde a
+ * data, e não ganha um "2026-33" na cara do leitor. */
+function semanaEmDatas(ano, chave, curta) {
+  if (!window.MonitorSemana || !chave) return '';
+  const n = Number(String(chave).split('-')[1]);
+  const a = Number(ano || String(chave).split('-')[0]);
+  if (!a || !n) return '';
+  // COM a preposição: quem chama escreve "na semana " e a função completa "de 16 a 22 de
+  // agosto de 2026". Sem ela saía "na semana 16 a 22", que tropeça na leitura.
+  return (curta ? MonitorSemana.curta(a, n) : MonitorSemana.porExtenso(a, n, true)) || '';
+}
+/* O rótulo do eixo: o nome do mês na PRIMEIRA semana dele, vazio nas outras. */
+function rotulosDeMes(ano, chaves) {
+  let ultimo = null;
+  return (chaves || []).map(k => {
+    const mes = window.MonitorSemana
+      ? MonitorSemana.mesDaSemana(Number(ano), Number(String(k).split('-')[1])) : null;
+    if (!mes || mes === ultimo) return '';
+    ultimo = mes;
+    return mes;
+  });
+}
+/* O eixo de um gráfico semanal: rótulo de mês na primeira semana de cada mês, e o título do
+ * tooltip com o intervalo de datas da semana. Recebe os números de semana ("01", "02", …) que os
+ * três gráficos de série já montam, e devolve as duas listas na mesma ordem. */
+function eixoDeMeses(ano, semanas) {
+  const labels = rotulosDeMes(ano, (semanas || []).map(w => ano + '-' + w));
+  const titulos = (semanas || []).map(w => semanaEmDatas(ano, ano + '-' + w, true));
+  return {labels: labels, titulos: titulos};
+}
+/* As opções de eixo e tooltip que acompanham `eixoDeMeses`, para os três não divergirem. */
+function opcoesDeEixoSemanal(titulos, extra) {
+  const base = {ticks: {autoSkip: false, maxRotation: 0}};
+  return {x: Object.assign(base, extra || {}),
+          tooltipTitulo: itens => (itens && itens[0] ? (titulos[itens[0].dataIndex] || '') : '')};
+}
+
+/* O começo do período coberto, por extenso, da primeira semana que tem valor. */
+function primeiraSemanaComValor(ano, comValor) {
+  if (!window.MonitorSemana || !comValor || !comValor.length) return null;
+  const r = MonitorSemana.semanaParaDatas(Number(ano), Number(comValor[0].split('-')[1]));
+  if (!r) return null;
+  return r.inicio.getUTCDate() + ' de ' + MonitorSemana.MESES[r.inicio.getUTCMonth()]
+         + ' de ' + r.inicio.getUTCFullYear();
+}
 // 14/09/2026: chikungunya — mesmos quatro arquivos do painel, com prefixo chik_ (coletar_desfechos_saude.py --doenca chikungunya).
 // Nulos enquanto o coletor não rodar: o comparador e o mapa declaram lacuna, nunca preenchem.
 let DESF_CHIK = null, DESF_CANAL_CHIK = null;
@@ -259,9 +315,15 @@ function __init(){
       const cores = MonitorMapas.PALETA.anos;
       const ds = Object.keys(SER.anos).sort().reverse().map(ano => ({label: ano, data: semanas.map(w => SER.anos[ano][w] ?? null),
         borderColor: cores[ano] || MonitorMapas.PALETA.serie[1], backgroundColor: 'transparent', borderWidth: ano === '2026' ? 2.5 : 1.5, pointRadius: 0, tension: .25, spanGaps: false}));
-      const chart = new Chart(document.getElementById('cDesfAcum'), {type: 'line', data: {labels: semanas.map(w => 'SE ' + w), datasets: ds},
-        options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}},
-                  scales: {x: {ticks: {maxTicksLimit: 13}}, y: {title: {display: true, text: 'casos estimados · 27 capitais'}}}}});
+      // Item 0: o eixo era "SE 01 … SE 52". Passa a ser de meses, e o tooltip diz as datas.
+      // O ano aqui é o corrente, porque é a série dele que ancora o calendário; as outras linhas
+      // são anos anteriores sobrepostos na mesma posição de semana, que é o que o gráfico compara.
+      const eixoAcum = eixoDeMeses(String(new Date().getUTCFullYear()), semanas);
+      const opAcum = opcoesDeEixoSemanal(eixoAcum.titulos);
+      const chart = new Chart(document.getElementById('cDesfAcum'), {type: 'line', data: {labels: eixoAcum.labels, datasets: ds},
+        options: {animation: false, responsive: true, maintainAspectRatio: false,
+                  plugins: {legend: {display: false}, tooltip: {callbacks: {title: opAcum.tooltipTitulo}}},
+                  scales: {x: opAcum.x, y: {title: {display: true, text: 'casos estimados · 27 capitais'}}}}});
       MonitorMapas.legenda('legDesfAcum', Object.keys(cores).map(a => ({cor: cores[a], rotulo: a})));
       fonteFigura('boxDesfAcum', {fontes: ['InfoDengue (Fiocruz/FGV)', 'soma das 27 capitais'], data: SER.coletado_em});
       return chart;
@@ -415,14 +477,18 @@ function renderDesfechos(doenca, ids){
         if (c[ss]) { soma.med[ss] = (soma.med[ss] || 0) + c[ss].mediana; soma.p75[ss] = (soma.p75[ss] || 0) + c[ss].p75; soma.p90[ss] = (soma.p90[ss] || 0) + c[ss].p90; }
         const n = (m.nowcasting || {})[k]; if (n && n.est_min != null) { soma.nmin[ss] = (soma.nmin[ss] || 0) + n.est_min; soma.nmax[ss] = (soma.nmax[ss] || 0) + n.est_max; } }); });
     const ate = Math.max(...Object.keys(soma.casos).concat(Object.keys(soma.nmax)).map(Number)); const labels = semanas.slice(0, ate);
-    const chart = new Chart(document.getElementById(ids.canvas), {type: 'bar', data: {labels: labels.map(w => 'SE ' + w), datasets: [
+    const eixoInfo = eixoDeMeses(String(new Date().getUTCFullYear()), labels);
+    const opInfo = opcoesDeEixoSemanal(eixoInfo.titulos);
+    const chart = new Chart(document.getElementById(ids.canvas), {type: 'bar', data: {labels: eixoInfo.labels, datasets: [
         {type: 'bar', label: '2026 (consolidado)', data: labels.map(w => soma.casos[w] ?? null), backgroundColor: MonitorMapas.PALETA.anos['2026'], order: 3},
         {type: 'line', label: 'nowcasting (máx.)', data: labels.map(w => soma.nmax[w] ?? null), borderColor: MonitorMapas.PALETA.anos['2026'], borderDash: [4, 3], borderWidth: 1, pointRadius: 0, order: 2, spanGaps: false},
         {type: 'line', label: 'nowcasting (mín.)', data: labels.map(w => soma.nmin[w] ?? null), borderColor: MonitorMapas.PALETA.anos['2026'], borderDash: [4, 3], borderWidth: 1, pointRadius: 0, order: 2, spanGaps: false},
         {type: 'line', label: 'mediana 2019–2025', data: labels.map(w => soma.med[w] ?? null), borderColor: MonitorMapas.PALETA.anos.canal, borderWidth: 2, pointRadius: 0, order: 1},
         {type: 'line', label: 'p75', data: labels.map(w => soma.p75[w] ?? null), borderColor: MonitorMapas.PALETA.anos.p75, borderWidth: 1.5, pointRadius: 0, order: 1},
         {type: 'line', label: 'p90', data: labels.map(w => soma.p90[w] ?? null), borderColor: MonitorMapas.PALETA.anos.p90, borderWidth: 1.5, pointRadius: 0, order: 1}]},
-      options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {x: {ticks: {maxTicksLimit: 13}}, y: {beginAtZero: true, title: {display: true, text: 'casos notificados de ' + cfg.rotulo + ' · painel'}}}}});
+      options: {animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {legend: {display: false}, tooltip: {callbacks: {title: opInfo.tooltipTitulo}}},
+        scales: {x: opInfo.x, y: {beginAtZero: true, title: {display: true, text: 'casos notificados de ' + cfg.rotulo + ' · painel'}}}}});
     MonitorMapas.legenda(ids.legSerie, [{cor: MonitorMapas.PALETA.anos['2026'], rotulo: '2026 consolidado (últimas 4 semanas excluídas)'}, {cor: MonitorMapas.PALETA.anos['2026'], opacidade: .5, rotulo: 'faixa de nowcasting (tracejado)'}, {cor: MonitorMapas.PALETA.anos.canal, rotulo: 'mediana 2019–2025 (2024 à parte)'}, {cor: MonitorMapas.PALETA.anos.p75, rotulo: 'p75'}, {cor: MonitorMapas.PALETA.anos.p90, rotulo: 'p90'}]);
     fonteFigura(ids.boxSerie, credito);
     return chart;
@@ -516,19 +582,24 @@ function renderSerieNacional(cfg, ids){
   const ate = Math.max(...Object.keys(br).concat(Object.keys(seg)).filter(k => k.startsWith(String(ano))).map(k => +k.split('-')[1]));
   const labels = semanas.slice(0, ate);
   MonitorMapas.padraoGraficos(window.Chart);
-  __serieCharts[ids.canvas] = new Chart(cv, {data: {labels: labels.map(w => 'SE ' + w), datasets: [
+  const eixoSerie = eixoDeMeses(String(ano), labels);
+  const opSerie = opcoesDeEixoSemanal(eixoSerie.titulos);
+  __serieCharts[ids.canvas] = new Chart(cv, {data: {labels: eixoSerie.labels, datasets: [
       {type: 'bar', label: 'consolidado', data: labels.map(w => (br[ano + '-' + w] ?? null)), backgroundColor: MonitorMapas.PALETA.anos['2026'] || MonitorMapas.PALETA.anos.canal, order: 2},
       {type: 'bar', label: cfg.segunda, data: labels.map(w => (seg[ano + '-' + w] ?? null)), backgroundColor: MonitorMapas.PALETA.anos['2024'], order: 2},
       {type: 'line', label: 'mediana 2019–2025', data: labels.map(w => (canal[w] || {}).mediana ?? null), borderColor: MonitorMapas.PALETA.anos.canal, borderWidth: 2, pointRadius: 0, order: 1},
       {type: 'line', label: 'p90', data: labels.map(w => (canal[w] || {}).p90 ?? null), borderColor: MonitorMapas.PALETA.anos.p90, borderWidth: 1.5, pointRadius: 0, order: 1}]},
-    options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {x: {ticks: {maxTicksLimit: 13}}, y: {beginAtZero: true, title: {display: true, text: cfg.eixo}}}}});
+    options: {animation: false, responsive: true, maintainAspectRatio: false,
+      plugins: {legend: {display: false}, tooltip: {callbacks: {title: opSerie.tooltipTitulo}}},
+      scales: {x: opSerie.x, y: {beginAtZero: true, title: {display: true, text: cfg.eixo}}}}});
   // Entrada de legenda sem rótulo é quadradinho de cor sem nome: a legenda deixa de explicar e
   // passa a decorar. Indicador sem segunda barra simplesmente não a declara.
+  // Item 8: "mediana" e "p90" saem da legenda — são o nome do cálculo, não o do que se vê.
   MonitorMapas.legenda(ids.leg, [
     {cor: MonitorMapas.PALETA.anos['2026'] || MonitorMapas.PALETA.anos.canal, rotulo: 'consolidado'},
     ...(cfg.segunda ? [{cor: MonitorMapas.PALETA.anos['2024'], rotulo: cfg.segunda}] : []),
-    {cor: MonitorMapas.PALETA.anos.canal, rotulo: 'mediana 2019–2025'},
-    {cor: MonitorMapas.PALETA.anos.p90, rotulo: 'p90'}]);
+    {cor: MonitorMapas.PALETA.anos.canal, rotulo: 'faixa habitual para a época: menor valor esperado'},
+    {cor: MonitorMapas.PALETA.anos.p90, rotulo: 'faixa habitual para a época: maior valor esperado'}]);
   ids.credito({fontes: cfg.fonte, data: D.gerado_em, url: D.fonte});
 }
 function renderSRAG(ind){
@@ -571,7 +642,7 @@ function titulosFatoSaude(){
     const alto = Object.values(M).filter(m => m.ultima_se === se && (m.nivel_ultima_se === 3 || m.nivel_ultima_se === 4)).length;
     const rot = doenca === 'chikungunya' ? 'Chikungunya' : 'Dengue';
     const mun = alto === 1 ? 'município' : 'municípios';
-    titulo(box, `${rot}: ${n(alto)} ${mun} em alerta laranja ou vermelho na semana ${String(se || '').replace('2026-', 'SE ')} de 2026 (painel amostral)`);
+    titulo(box, `${rot}: ${n(alto)} ${mun} em alerta laranja ou vermelho na semana ${semanaEmDatas(String(se || '').split('-')[0], se)} (painel amostral)`);
   } catch (e) {} };
   tituloDoenca('dengue', 'boxDesfMapa'); tituloDoenca('chikungunya', 'boxChikMapa');
 }
@@ -646,7 +717,8 @@ const AREAS = [
     if (!m) return `<li>${rotulo}: município não acompanhado nesta série</li>`;
     const nv = m.nivel_ultima_se;
     if (nv == null) return `<li>${rotulo}: sem semana consolidada até o corte</li>`;
-    return `<li>${rotulo}: ${esc(NIVEL[nv] || ('nível ' + nv))} na semana ${esc(m.ultima_se || '—')}</li>`;
+    const quando = m.ultima_se ? semanaEmDatas(String(m.ultima_se).split('-')[0], m.ultima_se) : null;
+    return `<li>${rotulo}: ${esc(NIVEL[nv] || ('nível ' + nv))}${quando ? ' na semana ' + esc(quando) : ''}</li>`;
   }
 
   function mostrar(){
@@ -684,8 +756,8 @@ const AREAS = [
     if (!u) { if (el('nDengueSE')) el('nDengueSE').textContent = 'sem coleta'; return; }
     if (el('nDengueSE')) el('nDengueSE').textContent = n(u.valor);
     if (el('rotuloDengueSE')) {
-      el('rotuloDengueSE').textContent = 'notificações de dengue na semana epidemiológica '
-        + u.se.split('-')[1];
+      el('rotuloDengueSE').textContent = 'notificações de dengue na semana '
+        + semanaEmDatas(u.se.split('-')[0], u.se);
     }
     if (el('fonteDengueSE')) el('fonteDengueSE').textContent = 'SINAN (Ministério da Saúde) · '
       + (D.conta === 'notificacoes' ? 'notificações, não casos confirmados' : '') ;
@@ -714,7 +786,7 @@ const AREAS = [
     if (el('nSragSE')) el('nSragSE').textContent = n(u.valor);
     if (el('rotuloSragSE')) {
       el('rotuloSragSE').textContent = 'internações por síndrome respiratória grave na semana '
-        + 'epidemiológica ' + u.se.split('-')[1];
+        + semanaEmDatas(u.se.split('-')[0], u.se);
     }
     if (el('fonteSragSE')) el('fonteSragSE').textContent = 'SIVEP-Gripe (Ministério da Saúde)';
   }).catch(() => {});
@@ -831,12 +903,17 @@ const AREAS = [
                : (v >= f.mediana ? 'dentro da faixa esperada para a época, acima da mediana'
                   : 'dentro da faixa esperada para a época'));
           el(cfg.frase).textContent = n(v) + ' notificações de ' + cfg.rotulo + ' na semana '
-            + 'epidemiológica ' + ultima.split('-')[1] + ' de ' + ano + ', ' + posicao + '. As '
+            + semanaEmDatas(ano, ultima) + ', ' + posicao + '. As '
             + 'semanas seguintes ainda recebem notificações e aparecem sem valor.';
         }
         if (el(cfg.linha)) {
-          el(cfg.linha).textContent = comValor.length + ' semana(s) fechada(s) de ' + ano
-            + ' · gerado em ' + (D.gerado_em || '—');
+          // Era "{n} semana(s) fechada(s) de {ano}": contava semanas, trazia o "(s)" que o item 2
+          // proíbe e não dizia ao leitor de quando é o dado. Agora diz o período coberto.
+          const ini = primeiraSemanaComValor(ano, comValor);
+          el(cfg.linha).textContent = (ini && ultima)
+            ? 'de ' + ini + ' a ' + (window.MonitorSemana
+                ? MonitorSemana.fimPorExtenso(Number(ano), Number(ultima.split('-')[1])) : '')
+            : '';
         }
 
         const cv = el(cfg.canvas);
@@ -844,16 +921,29 @@ const AREAS = [
           MonitorMapas.padraoGraficos(window.Chart);
           const med = ses.map(k => { const f = faixa(br, anos, k.split('-')[1]); return f ? f.mediana : null; });
           const p90 = ses.map(k => { const f = faixa(br, anos, k.split('-')[1]); return f ? f.p90 : null; });
-          new Chart(cv, {data: {labels: rotulos, datasets: [
+          // EIXO DE MESES, não de números de semana (item 0). O rótulo aparece só na primeira
+          // semana de cada mês; nas outras fica vazio, e assim o eixo se lê como um calendário
+          // em vez de uma régua de 1 a 52. Quem precisa da semana exata tem o tooltip, que diz o
+          // intervalo de datas — que é como a leitora pensa a data, e não "a semana 33".
+          const rotulosMes = rotulosDeMes(ano, ses);
+          const titulosData = ses.map(k => semanaEmDatas(ano, k, true));
+          new Chart(cv, {data: {labels: rotulosMes, datasets: [
             {type: 'line', label: 'p90 de 2019–2025', data: p90, borderColor: MonitorMapas.PALETA.anos.p90, backgroundColor: MonitorMapas.PALETA.anos.p90, fill: false, pointRadius: 0, borderWidth: 1},
             {type: 'line', label: 'mediana de 2019–2025', data: med, borderColor: MonitorMapas.PALETA.anos.canal, backgroundColor: MonitorMapas.PALETA.anos.canal, fill: false, pointRadius: 0, borderWidth: 1},
             {type: 'bar', label: 'notificações de ' + ano, data: ses.map(k => br[k]), backgroundColor: MonitorMapas.PALETA.anos['2026'] || MonitorMapas.PALETA.serie[0]},
           ]}, options: {animation: false, responsive: true, maintainAspectRatio: false,
-            plugins: {legend: {display: false}}, scales: {y: {beginAtZero: true, title: {display: true, text: 'notificações'}}, x: {title: {display: true, text: 'semana epidemiológica'}}}}});
+            plugins: {legend: {display: false},
+              tooltip: {callbacks: {title: itens => (itens && itens[0] ? titulosData[itens[0].dataIndex] : '')}}},
+            scales: {y: {beginAtZero: true, title: {display: true, text: 'notificações'}},
+                     x: {ticks: {autoSkip: false, maxRotation: 0}}}}});
+          // "mediana" e "p90" saem da legenda (item 8): são o nome do cálculo, não o nome do
+          // que o leitor vê. O cálculo fica na metodologia; aqui fica o que as duas linhas
+          // delimitam, que é uma faixa de valores habituais para aquela época do ano.
+          const faixaAnos = anos.length ? ' (' + anos[0] + ' a ' + anos[anos.length - 1] + ')' : '';
           MonitorMapas.legenda(cfg.leg, [
             {cor: MonitorMapas.PALETA.anos['2026'] || MonitorMapas.PALETA.serie[0], rotulo: 'notificações de ' + ano},
-            {cor: MonitorMapas.PALETA.anos.canal, rotulo: 'mediana de 2019–2025'},
-            {cor: MonitorMapas.PALETA.anos.p90, rotulo: 'p90 de 2019–2025'}]);
+            {cor: MonitorMapas.PALETA.anos.canal, rotulo: 'faixa habitual para a época' + faixaAnos + ': menor valor esperado'},
+            {cor: MonitorMapas.PALETA.anos.p90, rotulo: 'faixa habitual para a época' + faixaAnos + ': maior valor esperado'}]);
         }
 
 
@@ -896,8 +986,10 @@ const AREAS = [
           }
         }
         if (el(cfg.linhaMapa)) {
-          el(cfg.linhaMapa).textContent = 'acumulado de ' + ano + ' até a semana '
-            + (ultima ? ultima.split('-')[1] : '—');
+          const ate = ultima && window.MonitorSemana
+            ? MonitorSemana.fimPorExtenso(Number(ano), Number(ultima.split('-')[1])) : null;
+          // Rótulo vazio em vez de "—" (item 2): sem data, a linha não aparece.
+          el(cfg.linhaMapa).textContent = ate ? 'de 1º de janeiro a ' + ate : '';
         }
         if (el(cfg.dl)) {
           const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

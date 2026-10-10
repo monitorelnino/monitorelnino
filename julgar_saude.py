@@ -40,6 +40,7 @@ import io
 import json
 import pathlib
 import re
+import unicodedata
 import sys
 import urllib.parse
 
@@ -79,8 +80,19 @@ RE_F2_ESTRUTURA_INTERSETORIAL = re.compile(
     r"(comit[êe]\s+(?:intersetorial|interinstitucional|estadual|gestor)"
     r"|sala\s+de\s+governo|gabinete\s+(?:de\s+crise|integrado)"
     r"|grupo\s+de\s+trabalho\s+intersetorial|c[âa]mara\s+t[ée]cnica)", re.I)
-RE_F2_SAUDE_CITADA = re.compile(
-    r"(secretaria\s+(?:de\s+estado\s+)?d[ae]\s+sa[úu]de|SES(?:-[A-Z]{2})?\b|setor\s+sa[úu]de)", re.I)
+# A5-02 (08/10/2026): esta regex era UMA só, com `re.I` e sem borda inicial na sigla — e por
+# isso `SES\b` casava o FIM de qualquer palavra terminada em "ses": "meses", "fases", "doses",
+# "interesses", "bases". Medido: um comitê que não nomeia a saúde pontuava F2 = 100 porque o ato
+# dizia "a cada dois meses". A sigla é sigla: só casa em CAIXA ALTA, e por isso são duas regex.
+RE_F2_SAUDE_POR_EXTENSO = re.compile(
+    r"(secretaria\s+(?:de\s+estado\s+)?(?:estadual\s+)?d[ae]\s+sa[úu]de"
+    r"|setor\s+sa[úu]de|pasta\s+d[ae]\s+sa[úu]de)", re.I)
+RE_F2_SAUDE_SIGLA = re.compile(r"(\bSES(?:[-/\s]?[A-Z]{2})?\b|\bSESA[UB]?\b|\bSESAP[A-Z]?\b)")
+
+
+def cita_saude(texto: str):
+    """O match da menção à saúde, por extenso ou pela sigla em caixa alta. Função pura."""
+    return RE_F2_SAUDE_POR_EXTENSO.search(texto or "") or RE_F2_SAUDE_SIGLA.search(texto or "")
 RE_F2_DEFESA_CIVIL = re.compile(
     r"(defesa\s+civil|prote[çc][ãa]o\s+e\s+defesa\s+civil|coordenadoria\s+estadual\s+de\s+defesa)", re.I)
 # A atribuicao DEFINIDA e o que separa 100 de 50: nome numa lista de composicao nao e funcao.
@@ -124,9 +136,8 @@ def degrau_f2(texto: str) -> tuple:
     """
     t = texto or ""
     corpo = corpo_do_ato(t)
-    tem_atribuicao = bool(RE_F2_ATRIBUICAO.search(corpo))
     # direção 1: estrutura intersetorial do estado que cita a saúde
-    de_fora = bool(RE_F2_ESTRUTURA_INTERSETORIAL.search(corpo) and RE_F2_SAUDE_CITADA.search(corpo))
+    de_fora = bool(RE_F2_ESTRUTURA_INTERSETORIAL.search(corpo) and cita_saude(corpo))
     # direção 2: estrutura da própria saúde que integra a defesa civil NA COMPOSIÇÃO. A proximidade
     # importa: a palavra solta no meio do ato não diz que o órgão é membro.
     de_dentro = False
@@ -147,9 +158,42 @@ def degrau_f2(texto: str) -> tuple:
         return "LAC", "o ato não liga o setor saúde à coordenação do estado"
     onde = ("estrutura intersetorial do estado com a saúde citada" if de_fora
             else "estrutura da saúde que integra a defesa civil na composição")
+    # A direção 2 só vale quando o ato é da saúde — e aí o colegiado é dela.
+    tem_atribuicao = atribuicao_da_saude(corpo, estrutura_da_saude=(de_dentro and ato_e_da_saude(t)))
     if tem_atribuicao:
         return "NOMEADA_COM_ATRIBUICAO", f"{onde}, com atribuição escrita no ato"
     return "LISTADA_SEM_ATRIBUICAO", f"{onde}, sem atribuição escrita"
+
+
+# "Compete ao comitê coordenar" é atribuição DO COMITÊ, não da saúde — e era contada como da
+# saúde (A5-02). Duas travas: o verbo tem de estar perto de uma menção à saúde, e o sujeito dele
+# não pode ser o próprio colegiado. A janela de 300 caracteres é a do relatório.
+JANELA_DE_ATRIBUICAO = 300
+RE_SUJEITO_COLEGIADO = re.compile(
+    r"(compete|caber[áa]|incumbe)\s+a?o?\s*(comit[êe]|grupo|c[âa]mara|gabinete|conselho|colegiado)", re.I)
+
+
+def atribuicao_da_saude(corpo: str, estrutura_da_saude: bool = False) -> bool:
+    """Há verbo de atribuição ligado ao setor saúde, e não ao próprio colegiado. Função pura.
+
+    `estrutura_da_saude` distingue as DUAS direções do §91.3, e a distinção importa:
+
+    - direção 1, o comitê do GOVERNO que cita a saúde: "compete ao comitê coordenar" é
+      competência do comitê, não da saúde, e não conta. É o defeito A5-02.
+    - direção 2, a estrutura da PRÓPRIA saúde que integra a defesa civil: ali o colegiado **é** o
+      órgão de saúde, e "compete-lhe coordenar" atribui à saúde. Aplicar a trava da direção 1 aqui
+      recusaria o ato da Paraíba, que é justamente o caso que o degrau cheio existe para medir.
+    """
+    for m in RE_F2_ATRIBUICAO.finditer(corpo or ""):
+        trecho = corpo[max(0, m.start() - 40):m.end() + 60]
+        if RE_SUJEITO_COLEGIADO.search(trecho) and not estrutura_da_saude:
+            continue                       # a competência é do comitê, não da saúde
+        if estrutura_da_saude:
+            return True
+        perto = corpo[max(0, m.start() - JANELA_DE_ATRIBUICAO):m.end() + JANELA_DE_ATRIBUICAO]
+        if cita_saude(perto):
+            return True
+    return False
 
 
 def atribuicao_citada(texto: str) -> str:
@@ -212,11 +256,51 @@ def dominio_de_saude_estadual(url: str, texto: str) -> bool:
     if not oficial(url):
         return False
     host = urllib.parse.urlparse(url or "").netloc.lower()
-    partes = host.split(".")
-    # `saude.ma.gov.br` → ['saude','ma','gov','br'] = 4; `saude.goiania.go.gov.br` → 5. Mais de
-    # quatro partes antes de `gov.br` significa um ente dentro do estado, isto é, um município.
-    estadual = len(partes) <= 4 or (len(partes) == 5 and partes[0] in ("www", "portal"))
+    # A5-01, causa (e): isto contava PARTES do host, e por isso recusava o domínio do instrumento
+    # vigente do ES — `mosquito.saude.es.gov.br` tem cinco. Recusava também `cvs.saude.sp.gov.br`
+    # e `antigo.saude.sc.gov.br`, que são estaduais. O que distingue estado de município não é o
+    # número de pontos: é o sufixo `.<uf>.gov.br` e a ausência de nome de município daquela UF.
+    estadual = bool(re.search(r"\.[a-z]{2}\.gov\.br$", host)) and not host_de_municipio(host)
     return estadual and bool(RE_ORGAO_SAUDE.search(texto or "") or RE_ORGAO_SAUDE.search(host))
+
+
+_MUNICIPIOS_CACHE = None
+
+
+def nomes_de_municipio() -> set:
+    """Os nomes de município normalizados, da referência do IBGE. Lido uma vez."""
+    global _MUNICIPIOS_CACHE
+    if _MUNICIPIOS_CACHE is None:
+        _MUNICIPIOS_CACHE = set()
+        try:
+            caminho = pathlib.Path(__file__).resolve().parent / "data" / "municipios_ibge_referencia.json"
+            for m in json.loads(caminho.read_text(encoding="utf-8")):
+                nome = unicodedata.normalize("NFD", str(m.get("nome", "")).lower())
+                nome = "".join(c for c in nome if unicodedata.category(c) != "Mn")
+                nome = re.sub(r"[^a-z]", "", nome)
+                # Nome curto demais vira falso positivo em subdomínio ("ses" é sigla, "una" é
+                # município de MG e pedaço de palavra). O corte é por tamanho, e é declarado.
+                if len(nome) >= 5:
+                    _MUNICIPIOS_CACHE.add(nome)
+        except Exception:
+            _MUNICIPIOS_CACHE = set()
+    return _MUNICIPIOS_CACHE
+
+
+# Palavras que nomeiam a FUNÇÃO do subdomínio, e que por acaso também são nome de município.
+# Medido em 08/10/2026: existe o município de **Saúde**, na Bahia, e sem esta lista o cache do
+# IBGE fazia `saude.es.gov.br` — o subdomínio da secretaria de saúde de QUALQUER estado — ser
+# lido como domínio municipal. A regra seria recusar exatamente o que ela existe para aceitar.
+SERVICO_NAO_E_MUNICIPIO = {"saude", "portal", "transparencia", "servicos", "cidadao", "legisla",
+                           "imprensa", "diario", "sistemas", "central", "progresso", "capital"}
+
+
+def host_de_municipio(host: str) -> bool:
+    """O host nomeia um município? Função pura sobre o cache. `saude.goiania.go.gov.br` → True."""
+    partes = [p for p in (host or "").split(".")
+              if p not in ("gov", "br", "www", "portal") and p not in SERVICO_NAO_E_MUNICIPIO]
+    nomes = nomes_de_municipio()
+    return any(p in nomes for p in partes)
 
 
 def identifica_orgao_titulo_e_ano(texto: str) -> tuple:
@@ -276,11 +360,48 @@ def o_que_institui(texto: str) -> set:
     índice, e o mesmo documento sustenta os dois. A Portaria 0195/2026 de MT é exatamente esse
     caso — institui o processo de elaboração do plano E a sala de situação permanente."""
     achados = set()
-    if RE_COORDENACAO.search(texto or ""):
+    # A5-03 (08/10/2026): "coordenacao" era marcada por "comitê gestor|de crise|de enfrentamento",
+    # "gabinete de crise" e "sala de situação" em QUALQUER texto — e F1 é, pelo §91, estrutura da
+    # SECRETARIA DE SAÚDE. Com isso o decreto de MG (Sala de Situação da Defesa Civil) saía
+    # F1 = CRIADO_CICLO (100), e o despacho de SP (comitê de mudanças climáticas) saía
+    # F1 = PERMANENTE (45). Um terço do componente creditado a estrutura que não é da saúde.
+    # Comitê de governo é F2; F1 exige que o ato seja da saúde.
+    if RE_COORDENACAO.search(texto or "") and estrutura_e_da_saude(texto or ""):
         achados.add("coordenacao")
     if RE_PLANO.search(texto or ""):
         achados.add("instrumento")
     return achados
+
+
+# A AUTORIA do ato, que é mais larga que o nome do órgão: um ato assinado por "O SECRETÁRIO DE
+# ESTADO DE SAÚDE" é da saúde, e `RE_ORGAO_SAUDE` só conhecia a forma feminina ("secretaria").
+# Medido ao escrever a trava do A5-03: ela recusava a Portaria 0666/2024, que é da própria SES e
+# está assinada assim. Entram também as siglas de gabinete que os atos usam (GS/SES, GBSES).
+RE_AUTORIA_SAUDE = re.compile(
+    r"(secret[áa]ri[oa]\s+(?:de\s+estado\s+)?(?:d[aeo]\s+)?sa[úu]de"
+    r"|\bGB?S?/?SES\b|\bGBSES\b|\bGS/SES\b)", re.I)
+
+
+def ato_e_da_saude(texto: str) -> bool:
+    """O ato é da secretaria de saúde — pelo órgão ou por quem o assina. Função pura."""
+    return bool(RE_ORGAO_SAUDE.search(texto or "") or RE_AUTORIA_SAUDE.search(texto or ""))
+
+
+def estrutura_e_da_saude(texto: str) -> bool:
+    """A estrutura de coordenação é da secretaria de saúde? Função pura.
+
+    Duas formas de provar, as duas do relatório: o ato é da saúde (o órgão aparece no cabeçalho ou
+    na assinatura, isto é, nos primeiros ou nos últimos 1.200 caracteres), ou a estrutura é criada
+    "no âmbito da Secretaria de Estado da Saúde" — o órgão a menos de 300 caracteres dela."""
+    t = texto or ""
+    cabeca, pe = t[:1200], t[-1200:]
+    if ato_e_da_saude(cabeca) or ato_e_da_saude(pe):
+        return True
+    for m in RE_COORDENACAO.finditer(t):
+        perto = t[max(0, m.start() - JANELA_DE_ATRIBUICAO):m.end() + JANELA_DE_ATRIBUICAO]
+        if ato_e_da_saude(perto):
+            return True
+    return False
 
 
 def degrau_coordenacao(texto: str, data: str) -> tuple:
@@ -353,6 +474,28 @@ def trata_de_risco_do_ciclo(titulo: str) -> tuple:
     estadual. Não é demérito do documento; é escopo do índice."""
     achados = sorted({m.group(0).lower() for m in RE_RISCO_DO_CICLO.finditer(titulo or "")})
     return bool(achados), ", ".join(achados[:6])
+
+
+# A5-37: `etapa2`/`extrair_data` tomavam a PRIMEIRA data do texto, e o preâmbulo de um ato cita
+# as normas em que ele se apoia. A Resolução SESA 680/2008 do PR saiu com data 03/06/1987 — a da
+# lei citada no "considerando". A data do ato está no cabeçalho dele, junto do número.
+RE_CABECALHO_DE_ATO = re.compile(
+    r"((?:portaria|decreto|resolu[çc][ãa]o|delibera[çc][ãa]o|instru[çc][ãa]o\s+normativa)"
+    r"[^\n]{0,120}?\bn?[ºo°]?\s*[\d.]+[^\n]{0,60}?"
+    r"\bde\s+(\d{1,2})\s+de\s+([a-zç]+)\s+de\s+(\d{4}))", re.I)
+MESES_PT = {"janeiro": 1, "fevereiro": 2, "marco": 3, "março": 3, "abril": 4, "maio": 5,
+            "junho": 6, "julho": 7, "agosto": 8, "setembro": 9, "outubro": 10,
+            "novembro": 11, "dezembro": 12}
+
+
+def data_do_cabecalho(texto: str):
+    """dd/mm/aaaa do cabeçalho do ato, ou None. Função pura."""
+    m = RE_CABECALHO_DE_ATO.search(texto or "")
+    if not m:
+        return None
+    dia, mes, ano = m.group(2), m.group(3).lower(), m.group(4)
+    n = MESES_PT.get(mes)
+    return f"{int(dia):02d}/{n:02d}/{ano}" if n else None
 
 
 def titulo_do_documento(texto: str, titulo_da_pista: str, url: str) -> str:
@@ -561,7 +704,11 @@ def autoteste() -> int:
               "o enfrentamento das Mudanças Climáticas. O SECRETÁRIO DE ESTADO DE SAÚDE resolve:")
     t_plano = ("RESOLUÇÃO Nº 10 — Aprova o Plano Estadual de Contingência das Arboviroses. "
                "O SECRETÁRIO resolve:")
-    t_dois = ("PORTARIA Nº 0195/2026 — Institui o processo de elaboração do Plano Estadual de "
+    # 08/10/2026 (A5-03): os fixtures passam a trazer o CABEÇALHO REAL do ato. A régua agora
+    # exige que a estrutura seja da saúde, e trecho mínimo sem autoria não prova isso — nem
+    # deveria. O cabeçalho abaixo é o do ato de MT: "GBSES" é o gabinete do secretário.
+    t_dois = ("PORTARIA Nº 0195/2026/GBSES — Secretaria de Estado de Saúde de Mato Grosso. "
+              "Institui o processo de elaboração do Plano Estadual de "
               "Preparação e Resposta a Emergências em Saúde Pública, a sala de situação permanente "
               "e o centro de operações de emergência temporário.")
     t_ciclo = ("PORTARIA Nº 9/2026 — Institui o Centro de Operações de Emergência para o "
@@ -633,12 +780,16 @@ def autoteste() -> int:
                     == "NOMEADA_COM_ATRIBUICAO",
         # O termo que faltava, com o ato real da Paraíba.
         "grupo condutor é estrutura de coordenação":
-            lambda: o_que_institui("Fica criado o Grupo Condutor El Niño/PB") == {"coordenacao"},
+            lambda: o_que_institui("PORTARIA Nº 764/2026 – GS/SES/PB. Fica criado, no âmbito da "
+                                   "Secretaria de Estado da Saúde, o Grupo Condutor El Niño/PB")
+                    == {"coordenacao"},
         "F1 do ato da Paraíba: criado para o ciclo":
             lambda: degrau_coordenacao("Fica criado, no âmbito da Secretaria de Estado da Saúde, "
                                        "o Grupo Condutor El Niño/PB", "03/09/2026")[0] == "CRIADO_CICLO",
         "F2 do ato da Paraíba: a saúde integra a defesa civil, com atribuição":
-            lambda: degrau_f2("Grupo Condutor El Niño/PB. Art. 2º Compete coordenar. Art. 5º "
+            lambda: degrau_f2("PORTARIA Nº 764/2026 – GS/SES/PB. RESOLVE: Grupo Condutor El "
+                              "Niño/PB, no âmbito da Secretaria de Estado da Saúde. Art. 2º "
+                              "Compete à Secretaria de Estado da Saúde coordenar. Art. 5º "
                               "Composto por: Defesa Civil Estadual; AESA.")[0]
                     == "NOMEADA_COM_ATRIBUICAO",
         # MEDIDO em 02/10/2026 nos dois atos: menção no considerando e menção como convidado não
@@ -655,10 +806,50 @@ def autoteste() -> int:
                               "participar, na condição de convidados, representantes da Defesa "
                               "Civil. Compete coordenar.")[0] == "LISTADA_SEM_ATRIBUICAO",
         "F2: defesa civil na composição, com atribuição, é o degrau cheio (PB 764/2026)":
-            lambda: degrau_f2("RESOLVE: Art. 1º Fica criado o Grupo Condutor. Art. 2º Compete-lhe "
+            lambda: degrau_f2("PORTARIA Nº 764/2026 – GS/SES/PB. Secretaria de Estado da Saúde. "
+                              "RESOLVE: Art. 1º Fica criado o Grupo Condutor. Art. 2º Compete-lhe "
                               "coordenar. Art. 5º Será "
                               "composto por: XIX - Defesa Civil Estadual; XX - AESA.")[0]
                     == "NOMEADA_COM_ATRIBUICAO",
+        # ── A5-02, A5-03, A5-37 e o domínio (08/10/2026): os NEGATIVOS que provam as travas.
+        # Sem eles, as correções passariam a existir sem nada que mostrasse o que elas impedem.
+        "A5-02: a sigla SES não casa o fim de 'meses', 'fases', 'doses', 'interesses'":
+            lambda: not any(cita_saude(x) for x in
+                            ("nos últimos meses", "fases do plano", "doses", "interesses")),
+        "A5-02: SES e SESAU em caixa alta são a saúde; 'ses' minúsculo solto não é":
+            lambda: bool(cita_saude("Resolução SES-PB")) and bool(cita_saude("a SESAU informa"))
+                    and not cita_saude("os reveses do ano"),
+        "A5-02: comitê que NÃO nomeia a saúde não cumpre F2, nem com 'a cada dois meses'":
+            lambda: degrau_f2("DECRETA: Art. 1º Fica instituído o Comitê Estadual de Enfrentamento. "
+                              "Art. 2º Compete ao Comitê coordenar. Art. 3º O Comitê reunir-se-á a "
+                              "cada dois meses. Composto por: Casa Civil; Defesa Civil.")[0] == "LAC",
+        "A5-02: 'compete ao comitê' não é atribuição da saúde — degrau do meio, não o cheio":
+            lambda: degrau_f2("DECRETA: Fica instituído o Comitê Estadual. Compete ao Comitê "
+                              "coordenar as ações. Composição: Casa Civil; Secretaria de Estado "
+                              "da Saúde; Defesa Civil.")[0] == "LISTADA_SEM_ATRIBUICAO",
+        "A5-03: sala de situação da Defesa Civil NÃO é estrutura da saúde (F1 não entra)":
+            lambda: o_que_institui("DECRETO Nº 49.283 — Institui a Sala de Situação Integrada da "
+                                   "Coordenadoria Estadual de Defesa Civil e o Comitê Gestor da "
+                                   "Convivência com a Seca.") == set(),
+        "A5-03: comitê de governo sobre clima NÃO é F1":
+            lambda: o_que_institui("Despacho do Governador — Comitê Gestor da Política Estadual de "
+                                   "Mudanças Climáticas. Designa representantes.") == set(),
+        "A5-03: a mesma estrutura, no âmbito da SES, É F1":
+            lambda: o_que_institui("PORTARIA — Fica instituída, no âmbito da Secretaria de Estado "
+                                   "da Saúde, a Sala de Situação.") == {"coordenacao"},
+        "A5-37: a data é a do cabeçalho do ato, não a da lei citada no preâmbulo":
+            lambda: data_do_cabecalho("Considerando a Lei nº 7.498, de 03 de junho de 1987; "
+                                      "RESOLUÇÃO SESA nº 680, de 15 de dezembro de 2008. "
+                                      "O Secretário resolve:") == "15/12/2008",
+        "domínio: o subdomínio do instrumento vigente do ES é estadual (cinco partes)":
+            lambda: dominio_de_saude_estadual("https://mosquito.saude.es.gov.br/p.pdf",
+                                              "Secretaria de Estado da Saúde") is True,
+        "domínio: Goiânia é município, e não entra na camada estadual":
+            lambda: dominio_de_saude_estadual("https://saude.goiania.go.gov.br/p.pdf",
+                                              "Secretaria de Saúde") is False,
+        "domínio: existe o município de Saúde (BA), e ele não pode derrubar saude.XX.gov.br":
+            lambda: dominio_de_saude_estadual("https://saude.ma.gov.br/p.pdf",
+                                              "Secretaria de Estado da Saúde") is True,
         "o preâmbulo fica de fora da leitura do dispositivo":
             lambda: "Instituir" in corpo_do_ato("CONSIDERANDO x; RESOLVE: Art. 1º Instituir")
                     and "CONSIDERANDO" not in corpo_do_ato("CONSIDERANDO x; RESOLVE: Art. 1º Instituir"),
