@@ -1,4 +1,4 @@
-# Ensaio real da noite — no GitHub de verdade, de dia, num ramo `ensaio/<data>-<run>`.
+# Ensaio real da noite — no GitHub de verdade, de dia, num ramo `ensaio-real/<data>-<run>`.
 #
 # 10/10/2026 (item 2-bis.2 da janela A). O `ensaio_da_noite.py` simula o GitHub e passa verde; as
 # falhas das noites de 04→10/10 foram comportamento real da plataforma (catálogo
@@ -44,7 +44,7 @@ jobs:
         env:
           ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
         run: |
-          RAMO="ensaio/$(date -u +%F)-${{ github.run_id }}"
+          RAMO="ensaio-real/$(date -u +%F)-${{ github.run_id }}"
           NOITE="$(python3 scripts/janela_da_noite.py --noite)"
           mkdir -p ~/.ssh && printf '%s\n' "$ROBO_DEPLOY_KEY" > ~/.ssh/robo && chmod 600 ~/.ssh/robo
           ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null

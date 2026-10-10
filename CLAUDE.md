@@ -335,7 +335,7 @@ que a reprova — regra sem portão volta a ser esquecimento.
    esquema que para a publicação. **Mudança na corrente sem ensaio verde não entra.**
    **Desde 10/10/2026 (central, item 2-bis), são dois ensaios:** o simulado (`ensaio_da_noite.py`)
    e o **real** (`ensaio_real_da_noite.yml`, diário às 18:13 UTC e por disparo), que roda os mesmos
-   workflows no GitHub num ramo `ensaio/<data>-<run>`, sem rede, provocando dois pendentes e um
+   workflows no GitHub num ramo `ensaio-real/<data>-<run>`, sem rede, provocando dois pendentes e um
    empurrão concorrente. Mudança na corrente entra com o simulado verde no PR **e** um ensaio real
    verde disparado no ramo depois do merge, antes da noite; vermelho é reverter ou consertar antes
    das 23:30 UTC. Catálogo das falhas: `config/falhas_da_noite.json` — falha nova vira linha nova.
