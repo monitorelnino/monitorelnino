@@ -69,7 +69,10 @@ jobs:
           mkdir -p /tmp/registro/relatorios
           cp /tmp/relatorio.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_publicar_previa.txt"
           cd /tmp/registro && git config user.name "monitor-el-nino-bot" && git config user.email "bot@users.noreply.github.com"
-          git add -A && git commit -q -m "publicar_previa ${GITHUB_SHA::7}" && git push -q
+          git add -A && git commit -q -m "publicar_previa ${GITHUB_SHA::7}"
+          # 10/10/2026: o push corria com outros escritores do robo-registro e falhava com
+          # "fetch first" (run 38074123643) — a prévia publicava e o job ficava vermelho.
+          for i in 1 2 3; do git push -q && break; git pull -q --rebase; sleep $((i * 5)); done
       - name: Resultado
         run: |
           [ "$DEPLOY_OK" = "1" ] && echo "Prévia publicada." || { echo "::error::Deploy da prévia falhou — ver robo-registro"; exit 1; }
