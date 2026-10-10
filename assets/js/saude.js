@@ -169,7 +169,7 @@ function __init(){
     const cartaoCobertura = '<div class="cartao"><h3 class="figura-titulo">Cobertura do dado</h3>'
       + '<p class="card-body">Sinal de dengue: só a capital, não o estado inteiro. Documento estadual: ' + (m.verificado ? 'verificado' : 'ainda não verificado') + '.</p></div>';
     const cartaoInstitucional = '<div class="cartao"><h3 class="figura-titulo">Contexto secundário: prontidão institucional</h3>'
-      + (m.prontidao != null ? '<p class="card-body">' + decBR(m.prontidao) + '/100 · ' + esc(m.faixa || '—') + ' — mede documento e antecipação, não o estado de saúde da população.</p>' : '<p class="card-body u-muted">Ainda não verificado.</p>') + '</div>';
+      + (m.prontidao != null ? '<p class="card-body">' + decBR(m.prontidao) + '/100 · ' + esc(m.faixa || '—') + ' — mede documento e quando o ato saiu, não o estado de saúde da população.</p>' : '<p class="card-body u-muted">Ainda não verificado.</p>') + '</div>';
     alvo.innerHTML = '<h3 class="figura-titulo u-largura-total">' + esc(NOME_UF[uf] || uf) + '</h3>' + cartaoCondicoes + cartaoSinal + cartaoCobertura + cartaoInstitucional;
     alvo.hidden = false;
   }
@@ -182,7 +182,7 @@ function __init(){
     desenharMapa('mapaMonitor', 'legMonitor', uf => FX[(M[uf] || {}).faixa] || FX['não verificado'],
       uf => { const m = M[uf] || {}; if (!m.verificado) return '<em>ainda não verificado</em> — sem número'; const i = m.instrumento || {}, a = m.antecipacao || {};
         const c = m.cobertura || {};
-        return '<em>' + esc(m.faixa) + ' · ' + esc(decBR(m.prontidao)) + '</em><br>instrumento ' + esc(decBR(i.pontos)) + ' (' + esc(ST_H[i.status] || i.status) + ')' + (i.data ? ' · ' + esc(i.data) : '') + '<br>cobertura sanitária ' + esc(decBR(c.pontos) ?? '—') + ' (' + esc(c.planos_lidos ?? 0) + ' plano(s) lido(s) · ' + esc(c.planos_sem_leitura ?? 0) + ' sem leitura)' + '<br>antecipação ' + esc(decBR(a.pontos)) + (i.temporada ? ' (edição ' + esc(i.temporada) + ')' : ''); },
+        return '<em>' + esc(m.faixa) + ' · ' + esc(decBR(m.prontidao)) + '</em><br>instrumento ' + esc(decBR(i.pontos)) + ' (' + esc(ST_H[i.status] || i.status) + ')' + (i.data ? ' · ' + esc(i.data) : '') + '<br>cobertura sanitária ' + esc(decBR(c.pontos) ?? '—') + ' (' + esc(c.planos_lidos ?? 0) + ' plano(s) lido(s) · ' + esc(c.planos_sem_leitura ?? 0) + ' sem leitura)' + '<br>quando o ato saiu em relação ao primeiro boletim ' + esc(decBR(a.pontos)) + (i.temporada ? ' (edição ' + esc(i.temporada) + ')' : ''); },
       []);
     const R = (MSAUDE && MSAUDE.resumo) || {}; const pf = R.por_faixa || {};
     MonitorMapas.legenda('legMonitor', [
@@ -1064,11 +1064,15 @@ const AREAS = [
       const u = (SUFd.uf || {})[uf] || {};
       const inst = ((u.instrumentos || [])[0]) || {};
       const c = uf04[uf] || {};
+      /* Não verificado não é "não localizado": sem bateria executada, o rótulo é o de "ainda não
+       * verificado", o mesmo do resto da página; "não localizado até o corte" só depois de verificar. */
+      const f1 = (c.coordenacao || {}).f1 || c.coordenacao, f2 = (c.coordenacao || {}).f2;
+      const nv = o => !o || o.status === 'NAO_VERIFICADO';
       const linhas = [
-        ['Plano de saúde', doc(inst)],
-        ['Coordenação na saúde', doc((c.coordenacao || {}).f1 || c.coordenacao)],
-        ['Ligação com o governo do estado', doc((c.coordenacao || {}).f2)],
-      ].map(([rot, v]) => rot + ': ' + (v || 'não localizado até o corte'));
+        ['Plano de saúde', doc(inst), nv(inst) ? 'ainda não verificado' : null],
+        ['Coordenação na saúde', doc(f1), nv(f1) ? 'ainda não verificada' : null],
+        ['Ligação com o governo do estado', doc(f2), nv(f2) ? 'ainda não verificada' : null],
+      ].map(([rot, v, semVerif]) => rot + ': ' + (v || semVerif || 'não localizado até o corte'));
       return '<dt>' + esc(uf) + '</dt><dd>' + linhas.join('<br>') + '</dd>';
     }).join('');
     const linha = el('linhaVerificacaoUF');
@@ -1111,8 +1115,9 @@ const AREAS = [
         + esc((((SUFd.uf || {})[uf] || {}).risco_sanitario_projetado || ['sem risco previsto registrado']).join('; '))
         + '</dd>').join('');
     }
-    if (el('linhaRiscoSan')) el('linhaRiscoSan').textContent = 'boletins nº 1 a 3 do Painel El Niño';
-    MonitorMapas.credito('boxRiscoSan', {fontes: ['Painel El Niño 2026-2027 (CEMADEN/INPE)', 'boletins nº 1 a 3'], data: SUFd.corte});
+    // O dado não traz a numeração dos boletins lidos: a frase não a fixa (nº 1 a 3 envelhecia).
+    if (el('linhaRiscoSan')) el('linhaRiscoSan').textContent = 'boletins do Painel El Niño';
+    MonitorMapas.credito('boxRiscoSan', {fontes: ['Painel El Niño 2026-2027 (CEMADEN/INPE)'], data: SUFd.corte});
   }).catch(() => {});
 
   /* 4 · Síndrome respiratória grave por estado, por 100 mil habitantes. */
@@ -1256,8 +1261,14 @@ const AREAS = [
     return '<p class="u-mb-0">' + esc(NIVEL[m.nivel_ultima_se] || ('nível ' + m.nivel_ultima_se))
       + ' na semana ' + esc(m.ultima_se || '—') + '.</p>';
   };
+  /* Conta só chaves que são município da referência IBGE: a malha do painel de calor traz
+   * 4300001 e 4300002 (Lagoa Mirim e Lagoa dos Patos), que têm código mas não são município. */
+  const contarMunicipios = (base, ref) => {
+    const codigos = new Set(ref.map(m => String(m.codigo_ibge).padStart(7, '0')));
+    return Object.keys(base.municipios).filter(k => codigos.has(String(k).padStart(7, '0'))).length;
+  };
   const contarAlerta = (base, ref) => ((base && base.municipios)
-    ? Object.keys(base.municipios).length.toLocaleString('pt-BR') + ' municípios acompanhados de '
+    ? contarMunicipios(base, ref).toLocaleString('pt-BR') + ' municípios acompanhados de '
       + ref.length.toLocaleString('pt-BR') + ' no país'
     : 'Série sem coleta até o corte.');
 
@@ -1276,7 +1287,7 @@ const AREAS = [
       return '<p class="u-mb-0">Classe ' + esc(String(classe)) + ' na consulta de ' + esc(base.data || '—') + '.</p>';
     },
     (base, ref) => (base && base.municipios)
-      ? Object.keys(base.municipios).length.toLocaleString('pt-BR') + ' municípios lidos na consulta mais recente'
+      ? contarMunicipios(base, ref).toLocaleString('pt-BR') + ' municípios lidos na consulta mais recente'
       : 'Painel sem coleta até o corte.',
     ['Painel Nacional de Excesso de Calor (Ministério da Saúde)']);
 
