@@ -102,7 +102,25 @@ def coletas_perdidas(artefatos: list, ids_do_ensaio: set) -> list:
     return fora
 
 
-def veredito(arquivos, noite, runs, artefatos) -> dict:
+def marcadores_de_outro_run(conteudos: dict, ids_do_ensaio: set) -> list:
+    """Marcadores cujo run (`... · run <id>`) não é do ensaio. Função pura.
+
+    10/10/2026 (F34): o ramo nasce da `main`, com os marcadores da noite de hoje; marcador que não
+    foi escrito por um run do ensaio não prova nada sobre o ensaio."""
+    import re as _re
+    fora = []
+    ids = {str(i) for i in ids_do_ensaio}
+    for caminho, texto in sorted((conteudos or {}).items()):
+        m = _re.search(r"run (\d+)", str(texto or ""))
+        if not m or m.group(1) not in ids:
+            fora.append(caminho)
+    return fora
+
+
+def veredito(arquivos, noite, runs, artefatos, conteudos=None) -> dict:
+    alheios = set(marcadores_de_outro_run(conteudos, {r.get("databaseId") for r in runs or []})) \
+        if conteudos is not None else set()
+    arquivos = [a for a in (arquivos or []) if a not in alheios]
     faltam = marcadores_que_faltam(arquivos, noite)
     canc = cancelados_sem_refazer(runs)
     perd = coletas_perdidas(artefatos, {r.get("databaseId") for r in runs or []})
@@ -124,6 +142,16 @@ def arquivos_do_ramo(ramo: str) -> list:
     r = subprocess.run(["git", "ls-tree", "-r", "--name-only", "FETCH_HEAD", "--", "data/noite/"],
                        cwd=RAIZ, capture_output=True, text=True, timeout=60)
     return [l.strip() for l in r.stdout.splitlines() if l.strip()]
+
+
+def conteudos_dos_marcadores(arquivos: list) -> dict:
+    out = {}
+    for a in arquivos or []:
+        if a.endswith(".feito"):
+            r = subprocess.run(["git", "show", f"FETCH_HEAD:{a}"], cwd=RAIZ, capture_output=True,
+                               text=True, timeout=30)
+            out[a] = r.stdout
+    return out
 
 
 def runs_do_ensaio(desde: str, ramo: str) -> list:
@@ -179,6 +207,11 @@ def autoteste() -> int:
        proximo_a_disparar({e for e, _ in CORRENTE}, set()) is None)
     ok("o prefixo do ramo do ensaio não colide com ramo existente",
        PREFIXO == "ensaio-real/" and not any(r == PREFIXO.rstrip("/") for r in RAMOS_QUE_EXISTEM))
+    ok("marcador escrito por run que não é do ensaio não conta (F34)",
+       marcadores_de_outro_run({"a.feito": "juiz · 2026-10-10T02:31Z · run 38017346691"}, {99}) == ["a.feito"]
+       and marcadores_de_outro_run({"a.feito": "juiz · x · run 99"}, {99}) == [])
+    vv = veredito(todos, n, [{"databaseId": 7}], [], {t: "x · run 7" for t in todos[:-1]} | {todos[-1]: "x · run 1"})
+    ok("veredito descarta o marcador alheio e nomeia o elo", vv["elos_sem_marcador"] == ["triagem"])
     v = veredito(todos, n, [], [])
     ok("ensaio completo é verde", v["verde"])
     ok("ensaio com elo faltando é vermelho", not veredito(todos[:3], n, [], [])["verde"])
@@ -215,7 +248,8 @@ def main() -> int:
                 print(f"  → disparado {wf} no ramo {ramo}")
             time.sleep(60)
         return 0
-    v = veredito(arquivos_do_ramo(ramo), noite, runs_do_ensaio(desde, ramo), artefatos())
+    arqs = arquivos_do_ramo(ramo)
+    v = veredito(arqs, noite, runs_do_ensaio(desde, ramo), artefatos(), conteudos_dos_marcadores(arqs))
     pathlib.Path("ensaio_real.json").write_text(json.dumps(v, ensure_ascii=False, indent=1) + "\n",
                                                 encoding="utf-8", newline="\n")
     print(json.dumps(v, ensure_ascii=False, indent=1))
