@@ -35,6 +35,9 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-10 · #PR · ajustes de página do relatório D, segunda leva (A4-06, A4-15, A4-18, A4-23, A4-35)
 
 Saúde: item não verificado aparece como "ainda não verificado", não como "não localizado até o corte"; as buscas por município contam só códigos da referência IBGE (saem Lagoa Mirim e Lagoa dos Patos, 5.573 → 5.571); "boletins nº 1 a 3" fixo sai; "antecipação" sai do texto público. Financiamento: portarias com data dd/mm/aaaa e finalidade rotulada. Em `assets/js/` e `saude.html`.
+## 2026-10-10 · #PR · os sinais físicos voltam a começar (permissão do job `vez`)
+
+O job `vez` do coletor pede `actions: read`, e três chamadores não concediam: `noturno_sinais` caía em `startup_failure` desde 14:06 de 10/10, e os semanais de sinais e de ESPIN/links cairiam no domingo. O ensaio real viu (F35). Os três passam a conceder; ensaio 17 reprova chamador que não conceda.
 
 ## 2026-10-10 · #PR · coletores: retry, Retry-After e código do erro HTTP (A1-27, A6-08, A6-14, A6-25)
 

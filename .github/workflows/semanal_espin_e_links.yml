@@ -16,6 +16,7 @@ on:
 
 permissions:
   contents: read
+  actions: read        # o job `vez` do coletor pede `actions: read`; sem ela o run nem começa (F35)
 
 jobs:
   espin_e_links:
