@@ -32,6 +32,9 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-10 · #PR · catálogo das falhas da noite e checagem pré-noite
+
+`config/falhas_da_noite.json` (e `docs/FALHAS_DA_NOITE.md`, gerado) registra as 31 falhas de 03 a 10/10 com causa, prova e o caso de teste que as reproduz; o portão `catalogo_de_falhas.py` reprova caso inexistente. `checagem_pre_noite.yml` (22:53 e 23:43 UTC) confere main verde, mesclagem tardia, fila, relógios, segredos e ensaio real; vermelho abre Issue. Ensaio 15: `env.` lida sem exportar.
 ## 2026-10-10 · #PR · planos estaduais pontuados ganham o link do documento
 
 31 dos 41 instrumentos estaduais pontuados passam a ter endereço oficial (Diário Oficial, portal da Defesa Civil ou do governo), achado por busca dirigida e registrado com o grau de conferência em `data/proveniencia_estadual.json`; os 10 sem documento rastreável ficam como defeito de prova declarado, sem mudar nota. O juiz passa a gravar o endereço que leu. Portão: pontuado sem endereço nem defeito declarado reprova.

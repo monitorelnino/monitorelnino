@@ -152,6 +152,14 @@ jobs:
           python3 scripts/vez_na_noite.py --autoteste
           # assunto: dado
           python3 scripts/orcamento_da_noite.py --autoteste
+          # 10/10/2026 (item 2-bis): catálogo das falhas da noite — toda falha com causa, prova e
+          # o caso de teste que a reproduz (que tem de existir na árvore) — e a checagem pré-noite.
+          # assunto: dado
+          python3 scripts/catalogo_de_falhas.py
+          # assunto: dado
+          python3 scripts/catalogo_de_falhas.py --autoteste
+          # assunto: dado
+          python3 scripts/checagem_pre_noite.py --autoteste
           # assunto: dado
           python3 scripts/painel_dos_temporizadores.py --autoteste
           # 04/10/2026 (20:30): o GitHub rejeitou dois workflows por cinco horas, e nenhum
