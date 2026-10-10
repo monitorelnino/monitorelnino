@@ -674,6 +674,31 @@ def ensaio_pendente_cancelado_pela_fila_e_refeito(diz) -> bool:
     return ok
 
 
+def ensaio_env_usada_e_exportada(diz) -> bool:
+    """15. Toda `env.X` lida pelo coletor foi exportada antes.
+
+    10/10/2026 (F31 do catálogo): o passo do artefato lia `${{ env.NOITE }}` e nenhum passo
+    escrevia `NOITE` em `$GITHUB_ENV` — o artefato `feito-<elo>-<noite>` nunca existiu, e o ensaio
+    11 passou verde com o defeito porque testava a função, não o workflow. Reprova variável de
+    `env.` usada em `.github/workflows/_coletor.yml` sem `X=` gravado em `$GITHUB_ENV` nem bloco
+    `env:` que a declare.
+    """
+    import pathlib
+    import re as _re
+
+    fonte = (pathlib.Path(__file__).resolve().parents[1] / ".github/workflows/_coletor.yml"
+             ).read_text(encoding="utf-8")
+    usadas = set(_re.findall(r"\$\{\{\s*env\.([A-Z_][A-Z0-9_]*)", fonte))
+    exportadas = set(_re.findall(r"echo\s+\"?([A-Z_][A-Z0-9_]*)=[^\n]*>>\s*\"?\$GITHUB_ENV", fonte))
+    declaradas = set(_re.findall(r"^\s+([A-Z_][A-Z0-9_]*):\s", fonte, _re.M))
+    faltam = sorted(usadas - exportadas - declaradas)
+    if faltam:
+        diz("   ✗ `env.` lida sem ter sido exportada no coletor: " + ", ".join(faltam))
+        return False
+    diz(f"   ✓ as {len(usadas)} variável(is) `env.` lidas pelo coletor são exportadas antes")
+    return True
+
+
 ENSAIOS = (
     ("dois elos em paralelo: zero conflito, zero perda", ensaio_dois_elos_em_paralelo),
     ("disparo duplicado: o segundo sai sem trabalho", ensaio_disparo_duplicado),
@@ -696,6 +721,7 @@ ENSAIOS = (
     ("13. o despachante tem observador fora do cron do GitHub",
      ensaio_despachante_nao_depende_do_cron),
     ("14. pendente cancelado pela fila é refeito", ensaio_pendente_cancelado_pela_fila_e_refeito),
+    ("15. toda `env.` lida pelo coletor é exportada antes", ensaio_env_usada_e_exportada),
 )
 
 

@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-10 · #PR · catálogo das falhas da noite e checagem pré-noite
+
+`config/falhas_da_noite.json` (e `docs/FALHAS_DA_NOITE.md`, gerado) registra as 31 falhas de 03 a 10/10 com causa, prova e o caso de teste que as reproduz; o portão `catalogo_de_falhas.py` reprova caso inexistente. `checagem_pre_noite.yml` (22:53 e 23:43 UTC) confere main verde, mesclagem tardia, fila, relógios, segredos e ensaio real; vermelho abre Issue. Ensaio 15: `env.` lida sem exportar.
+
 ## 2026-10-10 · #PR · elo cancelado na fila é refeito, e a fila deixa de cancelar
 
 O grupo `noturno` guardava um só pendente: na abertura de 10/10 o pendente seguinte cancelou `diarios / coletar`, e o despachante contou o cancelado como execução. Agora cada elo tem grupo próprio e espera a vez por ordem de chegada (`vez_na_noite.py`); run cancelado/pulado não conta; a reserva refaz elo sem `.feito`; o artefato do marcador passa a existir (`NOITE` exportado). Ensaio 14.
