@@ -941,7 +941,11 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
         + muns.length + ' município(s)';
     }
 
-    /* A série por semana, pelas finalidades que a fonte tem. */
+    /* A série por semana, pelas finalidades que a fonte tem. A finalidade chega como código
+     * ('recuperacao'); a página mostra o rótulo, e a data sai em dd/mm/aaaa (MonitorMapas.dataBR). */
+    const FINALIDADE = {recuperacao: 'recuperação', resposta: 'resposta', outra: 'outra'};
+    const finalidade = f => FINALIDADE[f] || String(f || '').replace(/_/g, ' ');
+    const dataAto = d => (window.MonitorMapas && MonitorMapas.dataBR(d)) || 'sem data informada';
     const semana = d => {
       const x = new Date(d + 'T00:00:00');
       const inicio = new Date('2026-06-29T00:00:00');
@@ -962,14 +966,14 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       MonitorMapas.padraoGraficos(window.Chart);
       new Chart(cv, {type: 'bar', data: {
           labels: semanas.map(k => 'semana ' + (k + 1)),
-          datasets: finalidades.map((f, i) => ({label: f,
+          datasets: finalidades.map((f, i) => ({label: finalidade(f),
             data: semanas.map(k => +(((serie[k] || {})[f] || 0) / 1e6).toFixed(2)),
             backgroundColor: cores[i % cores.length]}))},
         options: {animation: false, responsive: true, maintainAspectRatio: false,
           plugins: {legend: {display: false}},
           scales: {x: {stacked: true}, y: {stacked: true, beginAtZero: true,
                    title: {display: true, text: 'R$ milhões autorizados'}}}}});
-      MonitorMapas.legenda('legSerieSemanal', finalidades.map((f, i) => ({cor: cores[i % cores.length], rotulo: f})));
+      MonitorMapas.legenda('legSerieSemanal', finalidades.map((f, i) => ({cor: cores[i % cores.length], rotulo: finalidade(f)})));
       MonitorMapas.credito('boxSerieSemanal', {fontes: ['Portarias da defesa civil federal no Diário Oficial da União'], data: (R || {}).atualizado_em});
       if (el('linhaSerieSemanal')) {
         el('linhaSerieSemanal').textContent = semanas.length + ' semana(s) com portaria desde 29/06/2026';
@@ -987,7 +991,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
         const rot = a.portaria ? 'Portaria ' + esc(a.portaria) : 'Portaria sem número informado';
         const link = a.url ? '<a href="' + esc(a.url) + '" target="_blank" rel="noopener">' + rot + '</a>' : rot;
         return '<dt>' + link + '</dt><dd>' + esc(nome[a.cod] || a.municipio || '') + ' · '
-          + esc(a.data || '') + ' · ' + esc(a.acao || '') + ' · ' + reais(a.valor_autorizado) + '</dd>';
+          + esc(dataAto(a.data)) + ' · ' + esc(finalidade(a.acao)) + ' · ' + reais(a.valor_autorizado) + '</dd>';
       }).join('');
       if (el('linhaPortariasRecentes')) {
         el('linhaPortariasRecentes').textContent = atos.length + ' portaria(s) desde 29/06/2026';
@@ -1029,7 +1033,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
           + reais(m.total_autorizado) + ' autorizados</p><ul class="u-mb-0">'
           + (m.atos || []).map(a => '<li>' + (a.url
               ? '<a href="' + esc(a.url) + '" target="_blank" rel="noopener">Portaria ' + esc(a.portaria) + '</a>'
-              : 'Portaria ' + esc(a.portaria)) + ' · ' + esc(a.data || '') + ' · ' + esc(a.acao || '')
+              : 'Portaria ' + esc(a.portaria)) + ' · ' + esc(dataAto(a.data)) + ' · ' + esc(finalidade(a.acao))
               + ' · ' + reais(a.valor_autorizado) + '</li>').join('') + '</ul>';
       };
       ent.addEventListener('change', mostrar);
