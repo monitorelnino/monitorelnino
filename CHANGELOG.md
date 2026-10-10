@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-10 · #PR · elo fora da `main` não empurra para a `main`; token do Netlify sai da URL
+
+`_coletor.yml` partia da `main` e empurrava `HEAD:main` em qualquer ramo: um elo disparado no ramo de ensaio gravaria na `main` de dia (F32, ensaio 16). Agora, fora da `main`, o commit não é empurrado. `verificar_contribuicoes.py` passa o token do Netlify no cabeçalho `Authorization`, não na URL (A6-31).
+
 ## 2026-10-10 · #PR · catálogo das falhas da noite e checagem pré-noite
 
 `config/falhas_da_noite.json` (e `docs/FALHAS_DA_NOITE.md`, gerado) registra as 31 falhas de 03 a 10/10 com causa, prova e o caso de teste que as reproduz; o portão `catalogo_de_falhas.py` reprova caso inexistente. `checagem_pre_noite.yml` (22:53 e 23:43 UTC) confere main verde, mesclagem tardia, fila, relógios, segredos e ensaio real; vermelho abre Issue. Ensaio 15: `env.` lida sem exportar.

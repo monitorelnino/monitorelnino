@@ -699,6 +699,28 @@ def ensaio_env_usada_e_exportada(diz) -> bool:
     return True
 
 
+def ensaio_fora_da_main_nao_empurra(diz) -> bool:
+    """16. Elo disparado fora da `main` não empurra para a `main`.
+
+    10/10/2026 (F32 do catálogo): o `_coletor.yml` partia da `main` e empurrava `HEAD:main` em
+    qualquer ramo, e a guarda da janela não barra fora da `main` — um disparo no ramo `ensaio`
+    gravaria na `main` de dia. Reprova se o passo de commit não sair antes do `git push` quando o
+    ramo não é a `main`.
+    """
+    import pathlib
+
+    fonte = (pathlib.Path(__file__).resolve().parents[1] / ".github/workflows/_coletor.yml"
+             ).read_text(encoding="utf-8")
+    i_commit = fonte.find("- name: Commit com rebase-e-push")
+    i_push = fonte.find("git push", i_commit)
+    trecho = fonte[i_commit:i_push] if i_commit >= 0 and i_push > i_commit else ""
+    if '"${GITHUB_REF_NAME}" != "main"' not in trecho or "exit 0" not in trecho:
+        diz("   ✗ o commit do coletor empurra para a `main` mesmo quando o elo roda em outro ramo")
+        return False
+    diz("   ✓ fora da `main`, o coletor não empurra nada para a `main`")
+    return True
+
+
 ENSAIOS = (
     ("dois elos em paralelo: zero conflito, zero perda", ensaio_dois_elos_em_paralelo),
     ("disparo duplicado: o segundo sai sem trabalho", ensaio_disparo_duplicado),
@@ -722,6 +744,7 @@ ENSAIOS = (
      ensaio_despachante_nao_depende_do_cron),
     ("14. pendente cancelado pela fila é refeito", ensaio_pendente_cancelado_pela_fila_e_refeito),
     ("15. toda `env.` lida pelo coletor é exportada antes", ensaio_env_usada_e_exportada),
+    ("16. elo fora da `main` não empurra para a `main`", ensaio_fora_da_main_nao_empurra),
 )
 
 

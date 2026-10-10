@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-10. 31 falhas; 25 com caso de teste que as reproduz; 6 sem, com o que falta dito.
+Atualizado em 2026-10-10. 32 falhas; 26 com caso de teste que as reproduz; 6 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -284,3 +284,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** comentário de 10/10 em `.github/workflows/_coletor.yml`
 - **Correção:** PR #627 (`echo "NOITE=$NOITE" >> "$GITHUB_ENV"`)
 - **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_env_usada_e_exportada`
+
+## F32 · Elo fora da `main` empurrava para a `main`
+
+- **Noite:** 2026-10-10
+- **Sintoma:** Um elo disparado no ramo `ensaio` (ou em qualquer ramo) partia da `main` e empurrava `HEAD:main`; como a guarda da janela não barra fora da `main`, o commit chegaria à `main` de dia.
+- **Causa:** `_coletor.yml` fazia `git fetch ... main` + `git push ... HEAD:main` sem olhar o ramo do disparo.
+- **Prova:** `.github/workflows/_coletor.yml`, passo "Commit com rebase-e-push" (achado ao desenhar o ensaio real, 10/10); F15 (corrente da `main` disparada pelo ramo de ensaio, 06→07/10)
+- **Correção:** PR deste item: o passo de commit sai antes do push quando `GITHUB_REF_NAME` não é `main`
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_fora_da_main_nao_empurra`
