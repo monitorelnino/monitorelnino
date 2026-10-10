@@ -160,6 +160,11 @@ jobs:
           python3 scripts/catalogo_de_falhas.py --autoteste
           # assunto: dado
           python3 scripts/checagem_pre_noite.py --autoteste
+          # 10/10/2026 (item 2-bis.2): o ensaio real da noite (veredito e condução) e o elo de ensaio.
+          # assunto: dado
+          python3 scripts/ensaio_real.py --autoteste
+          # assunto: dado
+          python3 scripts/elo_de_ensaio.py --autoteste
           # assunto: dado
           python3 scripts/painel_dos_temporizadores.py --autoteste
           # 04/10/2026 (20:30): o GitHub rejeitou dois workflows por cinco horas, e nenhum

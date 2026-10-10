@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-10. 32 falhas; 26 com caso de teste que as reproduz; 6 sem, com o que falta dito.
+Atualizado em 2026-10-10. 33 falhas; 27 com caso de teste que as reproduz; 6 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -291,5 +291,14 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Sintoma:** Um elo disparado no ramo `ensaio` (ou em qualquer ramo) partia da `main` e empurrava `HEAD:main`; como a guarda da janela não barra fora da `main`, o commit chegaria à `main` de dia.
 - **Causa:** `_coletor.yml` fazia `git fetch ... main` + `git push ... HEAD:main` sem olhar o ramo do disparo.
 - **Prova:** `.github/workflows/_coletor.yml`, passo "Commit com rebase-e-push" (achado ao desenhar o ensaio real, 10/10); F15 (corrente da `main` disparada pelo ramo de ensaio, 06→07/10)
-- **Correção:** PR deste item: o passo de commit sai antes do push quando `GITHUB_REF_NAME` não é `main`
+- **Correção:** PR #632 (o passo de commit não empurra para a `main` fora dela) e PR do ensaio real (cada ramo `ensaio-real/` empurra para si mesmo)
 - **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_fora_da_main_nao_empurra`
+
+## F33 · O ensaio real não criou o próprio ramo
+
+- **Noite:** 2026-10-10
+- **Sintoma:** O primeiro ensaio real (run 38066288496, 16:06 UTC) falhou no primeiro passo: o push do ramo `ensaio/2026-10-10-38066288496` foi recusado com `directory file conflict`.
+- **Causa:** Já existe o ramo `ensaio` (campanha de dia); o git não aceita `ensaio/...` ao lado de `ensaio`.
+- **Prova:** run 38066288496; Issue robo-registro#49
+- **Correção:** Prefixo `ensaio-real/` em todo o mecanismo (`_coletor.yml`, `ensaio_real_da_noite.yml`, `elo_de_ensaio.py`, `ensaio_real.py`)
+- **Caso de teste:** `scripts/ensaio_real.py --autoteste: o prefixo do ramo do ensaio não colide com ramo existente`
