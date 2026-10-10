@@ -227,6 +227,130 @@ def t_timeout_repete_como_conexao():
     return cb.buscar("u", buscar_fn=fn, dormir=esperas.append) == b"ok" and esperas == [5]
 
 
+def t_connectionerror_e_incompleteread_repetem_como_conexao():
+    """A6-08: reset no meio da leitura e corpo cortado são a conexão que não completou. Repetem
+    como URLError — uma vez, depois de 5 s — e sobem com o próprio tipo se persistirem."""
+    import http.client
+    for erro in (ConnectionResetError("reset"), http.client.IncompleteRead(b"meio", 10)):
+        tentativas, esperas = [], []
+
+        def fn(url, timeout=None, erro=erro):
+            tentativas.append(url)
+            if len(tentativas) < 2:
+                raise erro
+            return b"ok"
+
+        if not (cb.buscar("u", buscar_fn=fn, dormir=esperas.append) == b"ok" and esperas == [5]):
+            return False
+        tentativas2, esperas2 = [], []
+
+        def morto(url, timeout=None, erro=erro):
+            tentativas2.append(url)
+            raise erro
+        try:
+            cb.buscar("u", buscar_fn=morto, dormir=esperas2.append)
+            return False
+        except type(erro):
+            if len(tentativas2) != 2 or esperas2 != [5]:
+                return False
+    return True
+
+
+def _http_com_retry_after(codigo, valor):
+    import email.message
+    cab = email.message.Message()
+    if valor is not None:
+        cab["Retry-After"] = valor
+    return urllib.error.HTTPError("u", codigo, "erro", cab, None)
+
+
+def t_retry_after_e_respeitado_com_teto():
+    """A6-25: 429/503 com `Retry-After` em segundos esperam o que a fonte pede, com teto de 120 s;
+    sem cabeçalho, ou com data HTTP, fica a espera da tabela. O número de tentativas não muda."""
+    if not (cb.retry_after_segundos(_http_com_retry_after(429, "45")) == 45
+            and cb.retry_after_segundos(_http_com_retry_after(503, "9999")) == cb.RETRY_AFTER_TETO == 120
+            and cb.retry_after_segundos(_http_com_retry_after(503, "Wed, 21 Oct 2026 07:28:00 GMT")) is None
+            and cb.retry_after_segundos(_http_com_retry_after(503, None)) is None
+            and cb.retry_after_segundos(_http_com_retry_after(500, "45")) is None):
+        return False
+    for codigo, valor, esperado in ((429, "45", [45]), (503, "7", [7, 7]), (503, "600", [120, 120]),
+                                    (503, None, [5, 15])):
+        tentativas, esperas = [], []
+
+        def fn(url, timeout=None, codigo=codigo, valor=valor):
+            tentativas.append(url)
+            raise _http_com_retry_after(codigo, valor)
+        try:
+            cb.buscar("u", buscar_fn=fn, dormir=esperas.append)
+            return False
+        except urllib.error.HTTPError:
+            if esperas != esperado or len(tentativas) != len(esperado) + 1:
+                print(f"    {codigo} {valor}: esperas {esperas}")
+                return False
+    return True
+
+
+def t_corpo_vazio_com_200_nao_e_conteudo():
+    """A6-25: 200 sem corpo não é documento. `buscar_uma_vez` levanta CorpoVazio (sem rede: o
+    urlopen e o robots são falsos), e a espera o trata como conexão — repete uma vez."""
+    import contextlib
+    if cb.exigir_corpo("u", 200, b"x") != b"x" or cb.exigir_corpo("u", 204, b"") != b"":
+        return False
+
+    class Resp:
+        status = 200
+        headers = {}
+
+        def read(self):
+            return b""
+
+    host = "vazio.exemplo.invalid"
+    salvo_urlopen, salvo_cache = cb.urllib.request.urlopen, cb._ROBOTS_CACHE.get(host)
+    cb._ROBOTS_CACHE[host] = {"status": "sem_robots", "crawl_delay": None, "rp": None}
+    cb.urllib.request.urlopen = lambda *a, **k: contextlib.nullcontext(Resp())
+    try:
+        cb.buscar_uma_vez(f"https://{host}/doc")
+        return False
+    except cb.CorpoVazio:
+        pass
+    finally:
+        cb.urllib.request.urlopen = salvo_urlopen
+        if salvo_cache is None:
+            cb._ROBOTS_CACHE.pop(host, None)
+    tentativas, esperas = [], []
+
+    def fn(url, timeout=None):
+        tentativas.append(url)
+        if len(tentativas) < 2:
+            raise cb.CorpoVazio(url)
+        return b"ok"
+    return cb.buscar("u", buscar_fn=fn, dormir=esperas.append) == b"ok" and esperas == [5]
+
+
+def t_lacuna_de_httperror_leva_o_codigo():
+    """A6-14: coletor que registra `type(e).__name__` de um HTTPError gravava só "HTTPError". O
+    ponto central é `registrar_lacuna`: dentro do except, o código entra no motivo. Sem escrever
+    no log — `log_busca` é trocado por um falso durante o teste."""
+    e503 = urllib.error.HTTPError("u", 503, "Service Unavailable", None, None)
+    if not (cb.motivo_com_codigo_http("HTTPError", e503) == "HTTPError 503"
+            and cb.motivo_com_codigo_http("HTTPError: HTTP Error 503: x", e503) == "HTTPError: HTTP Error 503: x"
+            and cb.motivo_com_codigo_http("URLError", e503) == "URLError"
+            and cb.motivo_com_codigo_http("HTTPError", None) == "HTTPError"):
+        return False
+    gravados = []
+    salvo = cb.log_busca
+    cb.log_busca = lambda *a, **k: gravados.append(k.get("resultados"))
+    try:
+        try:
+            raise e503
+        except urllib.error.HTTPError as e:
+            cb.registrar_lacuna("Fonte X", type(e).__name__, canal="DOU", camada=1)
+        cb.registrar_lacuna("Fonte Y", "HTTPError", canal="DOU", camada=1)   # fora do except
+    finally:
+        cb.log_busca = salvo
+    return gravados == ["Fonte X: HTTPError 503", "Fonte Y: HTTPError"]
+
+
 if __name__ == "__main__":
     sys.exit(rodar_autoteste({
         "tabela de esperas por status é pura": t_esperas_para_e_pura,
@@ -243,4 +367,8 @@ if __name__ == "__main__":
         "conexão morta repete UMA vez só — custo de varredura": t_conexao_morta_repete_uma_vez_so,
         "HTTPError não cai no ramo de conexão (ordem dos except)": t_httperror_nao_cai_no_ramo_de_conexao,
         "timeout repete como conexão, não como resposta da fonte": t_timeout_repete_como_conexao,
+        "ConnectionError e IncompleteRead repetem como conexão (A6-08)": t_connectionerror_e_incompleteread_repetem_como_conexao,
+        "Retry-After de 429/503 é respeitado, com teto de 120 s (A6-25)": t_retry_after_e_respeitado_com_teto,
+        "negativo: 200 com corpo vazio não é conteúdo (A6-25)": t_corpo_vazio_com_200_nao_e_conteudo,
+        "lacuna de HTTPError leva o código (A6-14)": t_lacuna_de_httperror_leva_o_codigo,
     }))

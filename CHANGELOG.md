@@ -36,6 +36,9 @@ não pontuados permanecem na versão corrente.
 
 Saúde: item não verificado aparece como "ainda não verificado", não como "não localizado até o corte"; as buscas por município contam só códigos da referência IBGE (saem Lagoa Mirim e Lagoa dos Patos, 5.573 → 5.571); "boletins nº 1 a 3" fixo sai; "antecipação" sai do texto público. Financiamento: portarias com data dd/mm/aaaa e finalidade rotulada. Em `assets/js/` e `saude.html`.
 
+## 2026-10-10 · #PR · coletores: retry, Retry-After e código do erro HTTP (A1-27, A6-08, A6-14, A6-25)
+
+`com_espera` repete também `ConnectionError` e `IncompleteRead` e respeita `Retry-After` de 429/503 (teto 120 s); 200 com corpo vazio levanta `CorpoVazio` em `buscar_uma_vez`/`enviar_uma_vez`; `registrar_lacuna` acrescenta o código ao motivo "HTTPError". `RE_DATA` de `busca_dirigida_do_ato.py` lia o ano por referência ao grupo 2. Autotestes offline em `testar_espera_de_rede.py` e no script. Onde: `coletores_base.py`, `scripts/`. `verificar_conformidade.py` passa a reprovar exceção incompleta em `layout/excecoes.json` (A7-26).
 ## 2026-10-10 · #PR · o ensaio real não conta marcador da noite de verdade
 
 O ramo do ensaio nascia da `main` com os `.feito` da noite de hoje e via "juiz feito" sem rodar o juiz (F34, 2º ensaio, 16:34 UTC). Agora o ramo começa sem `data/noite/<noite>/`, e o veredito só aceita marcador escrito por run do próprio ensaio.
