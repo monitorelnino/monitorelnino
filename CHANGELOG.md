@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-10 · #PR · o ensaio real usa ramos `ensaio-real/`
+
+O primeiro ensaio real (16:06 UTC) não criou o ramo: `ensaio/...` colide com o ramo `ensaio` que já existe ("directory file conflict"). O mecanismo inteiro passa ao prefixo `ensaio-real/` (F33 no catálogo).
+
 ## 2026-10-10 · #PR · ensaio real da noite, no GitHub de verdade
 
 `ensaio_real_da_noite.yml` (18:13 UTC e por disparo) roda os workflows da noite num ramo `ensaio/<data>-<run>`, sem rede: dois pendentes (diários ×2 + triagem) e um empurrão concorrente; a corrente é conduzida elo a elo por `scripts/ensaio_real.py`. `_coletor.yml` parte do ramo do disparo e empurra para ele. Veredito: seis `.feito`, nenhum cancelado sem refazer, nenhum push perdido; vermelho abre Issue.

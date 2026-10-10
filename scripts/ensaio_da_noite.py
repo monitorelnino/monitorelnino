@@ -714,9 +714,9 @@ def ensaio_fora_da_main_nao_empurra(diz) -> bool:
     i_commit = fonte.find("- name: Commit com rebase-e-push")
     i_push = fonte.find("git push", i_commit)
     trecho = fonte[i_commit:i_push] if i_commit >= 0 and i_push > i_commit else ""
-    # 10/10/2026 (2-bis.2): o ramo é `RAMO` (o do disparo); a `main` e os ramos `ensaio/` empurram
+    # 10/10/2026 (2-bis.2): o ramo é `RAMO` (o do disparo); a `main` e os ramos `ensaio-real/` empurram
     # para o PRÓPRIO ramo, qualquer outro não empurra. O empurrão tem de ir para `HEAD:${RAMO}`.
-    guarda = '"${RAMO}" != "main"' in trecho and "ensaio/*" in trecho and "exit 0" in trecho
+    guarda = '"${RAMO}" != "main"' in trecho and "ensaio-real/*" in trecho and "exit 0" in trecho
     alvo = 'HEAD:${RAMO}' in fonte[i_push:i_push + 200] or '"HEAD:${RAMO}"' in fonte[i_commit:]
     codigo = "\n".join(l for l in fonte[i_commit:].split("- name:", 2)[1].splitlines()
                        if not l.strip().startswith("#"))

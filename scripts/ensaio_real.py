@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-scripts/ensaio_real.py — a noite ensaiada no GitHub de verdade, de dia, num ramo `ensaio/...`
+scripts/ensaio_real.py — a noite ensaiada no GitHub de verdade, de dia, num ramo `ensaio-real/...`
 =============================================================================================
 Item 2-bis.2 da janela A (central, 10/10/2026 09:50 UTC; editoria, 06:45 BRT). O
 `ensaio_da_noite.py` passa verde e a noite falha, porque ele SIMULA o GitHub num repositório
@@ -10,7 +10,7 @@ concorrente com o ramo andando (catálogo `config/falhas_da_noite.json`, F21, F2
 
 O ensaio real dispara os MESMOS workflows da noite (`ensaio_real_da_noite.yml`), com os mesmos
 grupos de concorrência, o mesmo job `vez`, o mesmo laço de rebase-e-push e o mesmo marcador, num
-ramo `ensaio/<data>-<run>`: o `_coletor.yml` parte desse ramo e empurra para ele, e a coleta é
+ramo `ensaio-real/<data>-<run>`: o `_coletor.yml` parte desse ramo e empurra para ele, e a coleta é
 trocada por `scripts/elo_de_ensaio.py` (sem rede). A corrente é CONDUZIDA por este script — cada
 elo disparado no ramo quando o anterior deixa o marcador — e não por `workflow_run`: o run disparado
 por evento roda sempre no ramo padrão, e alargar o filtro `branches: [main]` dos elos levaria a
@@ -26,7 +26,7 @@ cancelado sem um sucesso depois, no mesmo workflow; nenhum artefato `coleta-perd
 ensaio (push perdido). Vermelho sai 1 — e a checagem pré-noite lê a conclusão deste workflow.
 
 USO
-  python3 scripts/ensaio_real.py --veredito --ramo ensaio/2026-10-10-1 --noite 2026-10-10 --desde 2026-10-10T18:07:00Z
+  python3 scripts/ensaio_real.py --veredito --ramo ensaio-real/2026-10-10-1 --noite 2026-10-10 --desde 2026-10-10T18:07:00Z
   python3 scripts/ensaio_real.py --conduzir --ramo ... --noite ... --teto-min 110
   python3 scripts/ensaio_real.py --autoteste
 """
@@ -43,6 +43,11 @@ ELOS = ("diarios", "descoberta", "evidencias", "juiz", "sinais-fisicos", "triage
 WORKFLOWS = ("noturno_diarios.yml", "noturno_descoberta.yml", "noturno_evidencias.yml",
              "noturno_juiz.yml", "noturno_sinais.yml", "noturno_triagem.yml")
 
+
+# 10/10/2026 (F33): `ensaio/` colidia com o ramo `ensaio` que já existe (o git recusa
+# `ensaio/x` ao lado de `ensaio`: "directory file conflict").
+PREFIXO = "ensaio-real/"
+RAMOS_QUE_EXISTEM = ("main", "ensaio", "relogio")
 
 CORRENTE = (("diarios", "noturno_diarios.yml"), ("descoberta", "noturno_descoberta.yml"),
             ("evidencias", "noturno_evidencias.yml"), ("juiz", "noturno_juiz.yml"),
@@ -172,6 +177,8 @@ def autoteste() -> int:
        proximo_a_disparar(set(), {"noturno_diarios.yml"}) is None)
     ok("corrente inteira feita: nada a disparar",
        proximo_a_disparar({e for e, _ in CORRENTE}, set()) is None)
+    ok("o prefixo do ramo do ensaio não colide com ramo existente",
+       PREFIXO == "ensaio-real/" and not any(r == PREFIXO.rstrip("/") for r in RAMOS_QUE_EXISTEM))
     v = veredito(todos, n, [], [])
     ok("ensaio completo é verde", v["verde"])
     ok("ensaio com elo faltando é vermelho", not veredito(todos[:3], n, [], [])["verde"])
@@ -188,8 +195,8 @@ def main() -> int:
         return argv[argv.index(k) + 1] if k in argv else padrao
 
     ramo, noite, desde = arg("--ramo"), arg("--noite"), arg("--desde")
-    if not ramo.startswith("ensaio/"):
-        print("✗ o ensaio real só roda em ramo ensaio/")
+    if not ramo.startswith("ensaio-real/"):
+        print("✗ o ensaio real só roda em ramo ensaio-real/")
         return 2
     if "--conduzir" in argv:
         teto = float(arg("--teto-min", "110"))

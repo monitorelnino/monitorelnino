@@ -70,7 +70,7 @@ jobs:
   publicar_lote:
     needs: evidencias
     # 10/10/2026 (item 2-bis.2): o ensaio real não publica Release.
-    if: always() && !startsWith(github.ref_name, 'ensaio/')
+    if: always() && !startsWith(github.ref_name, 'ensaio-real/')
     runs-on: ubuntu-latest
     defaults:
       run:

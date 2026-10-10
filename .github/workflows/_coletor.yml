@@ -60,7 +60,7 @@ on:
       ramo:
         description: >-
           Ramo de onde o elo parte e para onde empurra. Vazio = o ramo do disparo (`main` na noite;
-          `ensaio/<data>-<run>` no ensaio real, que dispara cada elo no próprio ramo). 10/10/2026,
+          `ensaio-real/<data>-<run>` no ensaio real, que dispara cada elo no próprio ramo). 10/10/2026,
           item 2-bis.2.
         required: false
         default: ""
@@ -116,7 +116,7 @@ jobs:
         shell: bash
     timeout-minutes: ${{ inputs.timeout_minutos }}
     env:
-      # O ramo do elo (ver `inputs.ramo`). Na noite é `main`; no ensaio real, `ensaio/<data>-<run>`.
+      # O ramo do elo (ver `inputs.ramo`). Na noite é `main`; no ensaio real, `ensaio-real/<data>-<run>`.
       RAMO: ${{ inputs.ramo != '' && inputs.ramo || github.ref_name }}
     # Fila, não cancelamento: uma coleta interrompida no meio perde o que já achou. Só o publicador
     # cancela o anterior, porque publicar duas vezes o mesmo estado não tem valor.
@@ -237,7 +237,7 @@ jobs:
       # Idempotente pelo marcador `.reaplicado`; `continue-on-error` porque reaplicar nao e a
       # tarefa do elo, e falha aqui nao derruba a coleta.
       - name: Reaplicar o que a noite perdeu
-        if: steps.janela.outputs.pode == '1' && !startsWith(env.RAMO, 'ensaio/')
+        if: steps.janela.outputs.pode == '1' && !startsWith(env.RAMO, 'ensaio-real/')
         continue-on-error: true
         timeout-minutes: 10
         env:
@@ -254,7 +254,7 @@ jobs:
         run: |
           # 10/10/2026 (item 2-bis.2): no ensaio real a coleta é mínima e não vai à rede — o que se
           # ensaia é a mecânica do GitHub (fila, `workflow_run`, empurrão concorrente, marcador).
-          if [[ "${RAMO}" == ensaio/* ]]; then
+          if [[ "${RAMO}" == ensaio-real/* ]]; then
             python3 scripts/elo_de_ensaio.py --elo "${{ inputs.nome }}" --ramo "${RAMO}"
             exit 0
           fi
@@ -352,9 +352,9 @@ jobs:
           # `HEAD:main` — um disparo no ramo `ensaio` gravaria na `main` de dia, porque a guarda da
           # janela não barra fora da `main` (é lá que o ensaio roda). Fora da `main`, nada se
           # empurra: a coleta fica no runner e o marcador no artefato.
-          # Item 2-bis.2: o ensaio real empurra para o PRÓPRIO ramo `ensaio/...`, nunca para a `main`.
-          if [ "${RAMO}" != "main" ] && [[ "${RAMO}" != ensaio/* ]]; then
-            echo "ramo ${RAMO}: nada é empurrado (só a main e os ramos ensaio/ recebem o commit do elo)"
+          # Item 2-bis.2: o ensaio real empurra para o PRÓPRIO ramo `ensaio-real/...`, nunca para a `main`.
+          if [ "${RAMO}" != "main" ] && [[ "${RAMO}" != ensaio-real/* ]]; then
+            echo "ramo ${RAMO}: nada é empurrado (só a main e os ramos ensaio-real/ recebem o commit do elo)"
             echo "houve=0" >> "$GITHUB_OUTPUT"; exit 0
           fi
           # 29/09/2026: `evidencias/` ENTRA no commit. Sem ela, todo coletor que chama

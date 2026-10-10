@@ -447,8 +447,22 @@
     "`.github/workflows/_coletor.yml`, passo \"Commit com rebase-e-push\" (achado ao desenhar o ensaio real, 10/10)",
     "F15 (corrente da `main` disparada pelo ramo de ensaio, 06→07/10)"
    ],
-   "correcao": "PR #632 (o passo de commit não empurra para a `main` fora dela) e PR do ensaio real (cada ramo `ensaio/` empurra para si mesmo)",
+   "correcao": "PR #632 (o passo de commit não empurra para a `main` fora dela) e PR do ensaio real (cada ramo `ensaio-real/` empurra para si mesmo)",
    "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_fora_da_main_nao_empurra",
+   "falta": null
+  },
+  {
+   "id": "F33",
+   "noite": "2026-10-10",
+   "titulo": "O ensaio real não criou o próprio ramo",
+   "sintoma": "O primeiro ensaio real (run 38066288496, 16:06 UTC) falhou no primeiro passo: o push do ramo `ensaio/2026-10-10-38066288496` foi recusado com `directory file conflict`.",
+   "causa": "Já existe o ramo `ensaio` (campanha de dia); o git não aceita `ensaio/...` ao lado de `ensaio`.",
+   "prova": [
+    "run 38066288496",
+    "Issue robo-registro#49"
+   ],
+   "correcao": "Prefixo `ensaio-real/` em todo o mecanismo (`_coletor.yml`, `ensaio_real_da_noite.yml`, `elo_de_ensaio.py`, `ensaio_real.py`)",
+   "caso_de_teste": "scripts/ensaio_real.py --autoteste: o prefixo do ramo do ensaio não colide com ramo existente",
    "falta": null
   }
  ]
