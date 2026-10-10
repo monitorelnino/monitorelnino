@@ -7,7 +7,7 @@
   "mare_legal": 40.1,
   "mare_saude": 31.8,
   "saude_verificadas": 21,
-  "decretaram_no_ciclo": 796
+  "decretaram_no_ciclo": 861
  },
  "cartoes": [
   {
@@ -114,7 +114,7 @@
    "id": "decretos_na_semana",
    "grupo": "emergencias",
    "rotulo": "Municípios que decretaram emergência ou calamidade na semana",
-   "valor": 0,
+   "valor": 25,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
@@ -134,7 +134,7 @@
    "id": "populacao_decretos_na_semana",
    "grupo": "emergencias",
    "rotulo": "Pessoas que vivem nos municípios que decretaram na semana",
-   "valor": 23078217,
+   "valor": 959766,
    "unidade": "pessoas",
    "sem_coleta": false,
    "periodo": null,
@@ -154,7 +154,7 @@
    "id": "reconhecimentos_na_semana",
    "grupo": "emergencias",
    "rotulo": "Municípios que tiveram a emergência reconhecida pelo governo federal na semana",
-   "valor": 0,
+   "valor": 37,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
@@ -214,7 +214,7 @@
    "id": "decreto_e_alerta_ao_mesmo_tempo",
    "grupo": "risco_agora",
    "rotulo": "Municípios com decreto de emergência e alerta ao mesmo tempo",
-   "valor": 704,
+   "valor": 755,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
@@ -440,7 +440,7 @@
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "para 68 município(s) com ato no ciclo",
+   "nota": "para 70 município(s) com ato no ciclo",
    "secundaria": null,
    "lista": [],
    "pagina_de_origem": "financiamento.html"
@@ -555,5 +555,5 @@
    "por_que_nao": "depende do campo `escopo` em data/calendario/fontes_suspensas.json, que hoje é nulo nos 38 registros (bloco E do pedido de 27/09, não executado)."
   }
  ],
- "texto_pronto": "Edição de 10/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,1 de 100; o MARÉ Saúde, em 31,8 de 100, média dos 21 estados verificados. Na semana, nenhum município publicou plano para o ciclo e nenhum município decretou situação de emergência ou calamidade; 23,1 milhões de pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde o início do ciclo, em 29 de junho, 6 de 27 capitais têm plano localizado e 796 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação da Futura Evidence Lab."
+ "texto_pronto": "Edição de 10/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,1 de 100; o MARÉ Saúde, em 31,8 de 100, média dos 21 estados verificados. Na semana, nenhum município publicou plano para o ciclo e 25 municípios decretaram situação de emergência ou calamidade; 959.766 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde o início do ciclo, em 29 de junho, 6 de 27 capitais têm plano localizado e 861 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação da Futura Evidence Lab."
 }

@@ -9,11 +9,10 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-03 a 2026-10-10 (572 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-03 a 2026-10-10 (581 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
-- consultar_querido_diario.py: erro em 4 rodadas seguidas — urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>
 - monitorar_imprensa_saude.py: erro em 14 rodadas seguidas — KeyError: 'hash'
 - monitorar_politica_por_inteiro.py: erro em 10 rodadas seguidas — NameError: name 'ler' is not defined. Did you mean: 'len'?
 
@@ -21,17 +20,17 @@ Janela: 2026-10-03 a 2026-10-10 (572 execução(ões) registrada(s), 7 dias de h
 
 | script | papel | última execução | duração | itens | status | erro |
 |---|---|---|---|---:|---|---|
-| `recalcular_mare.py` | essencial | 2026-10-10 09:11 | 3 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-10 09:17 | 4 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-09 02:31 | 1 s | — | ok | — |
-| `coletar_diarios_consorciados.py` | coletor | 2026-10-09 02:54 | 3561 s | 30 | ok | — |
-| `coletar_diarios_municipais.py` | coletor | 2026-10-08 02:51 | 174 s | 50 | ok | — |
-| `coletar_doe.py` | coletor | 2026-10-09 03:53 | 813 s | — | ok | — |
-| `coletar_recursos_resposta.py` | coletor | 2026-10-09 04:22 | 111 s | — | ok | — |
-| `coletar_s2id.py` | coletor | 2026-10-09 04:07 | 939 s | — | ok | — |
+| `coletar_diarios_consorciados.py` | coletor | 2026-10-10 07:28 | 4019 s | 38 | ok | — |
+| `coletar_diarios_municipais.py` | coletor | 2026-10-10 07:27 | 47 s | 50 | ok | — |
+| `coletar_doe.py` | coletor | 2026-10-10 08:35 | 847 s | — | ok | — |
+| `coletar_recursos_resposta.py` | coletor | 2026-10-10 09:07 | 158 s | — | ok | — |
+| `coletar_s2id.py` | coletor | 2026-10-10 08:49 | 1105 s | — | ok | — |
 | `coletar_sg_esus.py` | coletor | 2026-10-04 14:20 | 9 s | — | ok | — |
 | `coletar_sinais_risco.py` | coletor | 2026-10-09 01:11 | 106 s | — | ok | — |
 | `coletar_srag_sivep.py` | coletor | 2026-10-04 14:19 | 40 s | — | ok | — |
-| `consultar_querido_diario.py` | coletor | 2026-10-08 02:34 | 670 s | — | **erro** (4 seguidas) | urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)> |
+| `consultar_querido_diario.py` | coletor | 2026-10-10 07:01 | 1283 s | 12 | ok | — |
 | `descobrir_planos.py` | coletor | 2026-10-09 08:27 | 1059 s | 42 | ok | — |
 | `detectar_marcos_federais.py` | coletor | 2026-10-09 08:27 | 2 s | 0 | ok | — |
 | `julgar_e_aplicar_descobertas.py` | coletor | 2026-10-09 02:21 | 627 s | — | ok | — |
