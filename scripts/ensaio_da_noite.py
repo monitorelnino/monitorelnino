@@ -727,6 +727,35 @@ def ensaio_fora_da_main_nao_empurra(diz) -> bool:
     return True
 
 
+def ensaio_chamador_do_coletor_concede_o_que_ele_pede(diz) -> bool:
+    """17. Todo workflow que chama o `_coletor.yml` concede as permissões que os jobs dele pedem.
+
+    10/10/2026 (F35 do catálogo): o job `vez` do coletor (#627) declara `actions: read`; workflow
+    reutilizável não pode pedir mais do que o chamador concede, e o GitHub recusa o run inteiro
+    (`startup_failure`, zero jobs). `noturno_sinais`, `semanal_espin_e_links` e
+    `semanal_sinais_e_links` concediam só `contents: read` — os sinais físicos pararam às 14:06 de
+    10/10, e o ensaio real (run 38071990034) foi quem viu. Reprova chamador sem `actions: read`.
+    """
+    import pathlib
+    import re as _re
+
+    pasta = pathlib.Path(__file__).resolve().parents[1] / ".github/workflows"
+    pede = "actions: read" in (pasta / "_coletor.yml").read_text(encoding="utf-8")
+    faltam = []
+    for p in sorted(pasta.glob("*.yml")):
+        t = p.read_text(encoding="utf-8")
+        if "uses: ./.github/workflows/_coletor.yml" not in t:
+            continue
+        bloco = _re.search(r"^permissions:\n((?:[ \t]+.*\n)+)", t, _re.M)
+        if pede and not (bloco and _re.search(r"^\s+actions:\s*(read|write)", bloco.group(1), _re.M)):
+            faltam.append(p.name)
+    if faltam:
+        diz("   ✗ chamador do coletor sem `actions: read` (o run nem começa): " + ", ".join(faltam))
+        return False
+    diz("   ✓ todo chamador do coletor concede o que os jobs dele pedem")
+    return True
+
+
 ENSAIOS = (
     ("dois elos em paralelo: zero conflito, zero perda", ensaio_dois_elos_em_paralelo),
     ("disparo duplicado: o segundo sai sem trabalho", ensaio_disparo_duplicado),
@@ -751,6 +780,7 @@ ENSAIOS = (
     ("14. pendente cancelado pela fila é refeito", ensaio_pendente_cancelado_pela_fila_e_refeito),
     ("15. toda `env.` lida pelo coletor é exportada antes", ensaio_env_usada_e_exportada),
     ("16. elo fora da `main` não empurra para a `main`", ensaio_fora_da_main_nao_empurra),
+    ("17. chamador do coletor concede o que ele pede", ensaio_chamador_do_coletor_concede_o_que_ele_pede),
 )
 
 

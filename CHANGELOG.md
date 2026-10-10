@@ -35,6 +35,10 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-10 · #PR · zero não é ausência no financiamento; corte do dado, não do relógio (A6-22, A3-20, A6-13)
 
 Valor vazio virava 0.0 nos coletores de financiamento, TransfereGov e execução das MPs: agora é `None`, a soma usa só o presente e tudo vazio é lacuna. `gerar_financiamento_semana.py` lia o relógio da parede; o corte vem de `meta.json`. O mês corrente da coleta das MPs sai marcado `parcial` e não vira "último mês" no cartão nem na lista mensal. Nenhum número exibido muda hoje. Onde: os três coletores, o gerador, `financiamento.js`.
+## 2026-10-10 · #PR · os sinais físicos voltam a começar (permissão do job `vez`)
+
+O job `vez` do coletor pede `actions: read`, e três chamadores não concediam: `noturno_sinais` caía em `startup_failure` desde 14:06 de 10/10, e os semanais de sinais e de ESPIN/links cairiam no domingo. O ensaio real viu (F35). Os três passam a conceder; ensaio 17 reprova chamador que não conceda.
+
 ## 2026-10-10 · #PR · coletores: retry, Retry-After e código do erro HTTP (A1-27, A6-08, A6-14, A6-25)
 
 `com_espera` repete também `ConnectionError` e `IncompleteRead` e respeita `Retry-After` de 429/503 (teto 120 s); 200 com corpo vazio levanta `CorpoVazio` em `buscar_uma_vez`/`enviar_uma_vez`; `registrar_lacuna` acrescenta o código ao motivo "HTTPError". `RE_DATA` de `busca_dirigida_do_ato.py` lia o ano por referência ao grupo 2. Autotestes offline em `testar_espera_de_rede.py` e no script. Onde: `coletores_base.py`, `scripts/`. `verificar_conformidade.py` passa a reprovar exceção incompleta em `layout/excecoes.json` (A7-26).
