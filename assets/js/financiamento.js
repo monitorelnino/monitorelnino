@@ -978,7 +978,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       });
       const recentes = atos.slice().sort((a, b) => String(b.data || '').localeCompare(String(a.data || ''))).slice(0, 25);
       el('dlPortariasRecentes').innerHTML = recentes.map(a => {
-        const rot = 'Portaria ' + esc(a.portaria || '—');
+        const rot = a.portaria ? 'Portaria ' + esc(a.portaria) : 'Portaria sem número informado';
         const link = a.url ? '<a href="' + esc(a.url) + '" target="_blank" rel="noopener">' + rot + '</a>' : rot;
         return '<dt>' + link + '</dt><dd>' + esc(nome[a.cod] || a.municipio || '') + ' · '
           + esc(a.data || '') + ' · ' + esc(a.acao || '') + ' · ' + reais(a.valor_autorizado) + '</dd>';
