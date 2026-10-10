@@ -57,6 +57,14 @@ on:
         required: false
         default: false
         type: boolean
+      ramo:
+        description: >-
+          Ramo de onde o elo parte e para onde empurra. Vazio = o ramo do disparo (`main` na noite;
+          `ensaio/<data>-<run>` no ensaio real, que dispara cada elo no próprio ramo). 10/10/2026,
+          item 2-bis.2.
+        required: false
+        default: ""
+        type: string
       precisa_searxng:
         description: "true quando algum comando consulta o metabuscador (busca web, perfis oficiais)"
         required: false
@@ -85,6 +93,8 @@ jobs:
   vez:
     runs-on: ubuntu-latest
     timeout-minutes: 330
+    env:
+      RAMO: ${{ inputs.ramo != '' && inputs.ramo || github.ref_name }}
     permissions:
       contents: read
       actions: read
@@ -96,7 +106,7 @@ jobs:
         if: inputs.grupo_de_concorrencia == 'noturno'
         env:
           GH_TOKEN: ${{ github.token }}
-        run: python3 scripts/vez_na_noite.py --esperar --run-id "${{ github.run_id }}" --ramo "${GITHUB_REF_NAME}" --teto-min 300
+        run: python3 scripts/vez_na_noite.py --esperar --run-id "${{ github.run_id }}" --ramo "${RAMO}" --teto-min 300
 
   coletar:
     needs: [vez]
@@ -105,6 +115,9 @@ jobs:
       run:
         shell: bash
     timeout-minutes: ${{ inputs.timeout_minutos }}
+    env:
+      # O ramo do elo (ver `inputs.ramo`). Na noite é `main`; no ensaio real, `ensaio/<data>-<run>`.
+      RAMO: ${{ inputs.ramo != '' && inputs.ramo || github.ref_name }}
     # Fila, não cancelamento: uma coleta interrompida no meio perde o que já achou. Só o publicador
     # cancela o anterior, porque publicar duas vezes o mesmo estado não tem valor.
     # 10/10/2026: `noturno` vira `noturno-<elo>` — um pendente só é substituído por outro run do
@@ -118,13 +131,13 @@ jobs:
 
       # Partir do main REAL, não do SHA fixado no disparo (§148): com vários jobs noturnos e a
       # editoria mesclando de dia, o SHA do disparo envelhece entre a fila e a execução.
-      - name: Partir do main atual
+      - name: Partir do ramo atual (main, na noite)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git fetch --quiet --depth=50 "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" main
+          git fetch --quiet --depth=50 "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "${RAMO}"
           git reset --hard FETCH_HEAD
-          echo "main atual: $(git rev-parse --short HEAD)"
+          echo "${RAMO} atual: $(git rev-parse --short HEAD)"
 
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
@@ -194,7 +207,7 @@ jobs:
           # O `if` existe por causa do `-e`: com `shell: bash` o Actions roda `bash -eo
           # pipefail`, e `cmd; rc=$?` aborta no proprio cmd que falha, antes de ler o rc.
           rc=0
-          python3 scripts/guarda_da_janela.py --ramo "${GITHUB_REF_NAME}" --elo "${{ inputs.nome }}" > /tmp/guarda.txt 2>&1 || rc=$?
+          python3 scripts/guarda_da_janela.py --ramo "${RAMO}" --elo "${{ inputs.nome }}" > /tmp/guarda.txt 2>&1 || rc=$?
           cat /tmp/guarda.txt | tee -a "$GITHUB_STEP_SUMMARY"
           if [ "$rc" -eq 0 ]; then
             echo "pode=1" >> "$GITHUB_OUTPUT"
@@ -224,7 +237,7 @@ jobs:
       # Idempotente pelo marcador `.reaplicado`; `continue-on-error` porque reaplicar nao e a
       # tarefa do elo, e falha aqui nao derruba a coleta.
       - name: Reaplicar o que a noite perdeu
-        if: steps.janela.outputs.pode == '1'
+        if: steps.janela.outputs.pode == '1' && !startsWith(env.RAMO, 'ensaio/')
         continue-on-error: true
         timeout-minutes: 10
         env:
@@ -239,6 +252,12 @@ jobs:
       - name: Coletar
         if: steps.janela.outputs.pode == '1'
         run: |
+          # 10/10/2026 (item 2-bis.2): no ensaio real a coleta é mínima e não vai à rede — o que se
+          # ensaia é a mecânica do GitHub (fila, `workflow_run`, empurrão concorrente, marcador).
+          if [[ "${RAMO}" == ensaio/* ]]; then
+            python3 scripts/elo_de_ensaio.py --elo "${{ inputs.nome }}" --ramo "${RAMO}"
+            exit 0
+          fi
           while IFS= read -r cmd; do
             [ -z "$(echo "$cmd" | tr -d '[:space:]')" ] && continue
             echo "::group::$cmd"
@@ -333,8 +352,9 @@ jobs:
           # `HEAD:main` — um disparo no ramo `ensaio` gravaria na `main` de dia, porque a guarda da
           # janela não barra fora da `main` (é lá que o ensaio roda). Fora da `main`, nada se
           # empurra: a coleta fica no runner e o marcador no artefato.
-          if [ "${GITHUB_REF_NAME}" != "main" ]; then
-            echo "ramo ${GITHUB_REF_NAME}: nada vai à \`main\` (só a \`main\` recebe o commit da noite)"
+          # Item 2-bis.2: o ensaio real empurra para o PRÓPRIO ramo `ensaio/...`, nunca para a `main`.
+          if [ "${RAMO}" != "main" ] && [[ "${RAMO}" != ensaio/* ]]; then
+            echo "ramo ${RAMO}: nada é empurrado (só a main e os ramos ensaio/ recebem o commit do elo)"
             echo "houve=0" >> "$GITHUB_OUTPUT"; exit 0
           fi
           # 29/09/2026: `evidencias/` ENTRA no commit. Sem ela, todo coletor que chama
@@ -356,7 +376,7 @@ jobs:
           SSH="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes"
           EMPURROU=0
           for TENTATIVA in 1 2 3 4 5; do
-            GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
+            GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git "${RAMO}" || true
             if ! git rebase FETCH_HEAD; then
               # 05/10/2026 (item 2 do handover da noite confiável) — A UNIÃO, NÃO O DESCARTE.
               #
@@ -409,7 +429,7 @@ jobs:
               git diff --cached --quiet || git commit --amend --no-edit
             fi
 
-            if GIT_SSH_COMMAND="$SSH" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main; then
+            if GIT_SSH_COMMAND="$SSH" git push git@github.com:${GITHUB_REPOSITORY}.git "HEAD:${RAMO}"; then
               EMPURROU=1; echo "empurrado na tentativa $TENTATIVA"; break
             fi
             echo "tentativa $TENTATIVA: push recusado (main avançou); nova tentativa"

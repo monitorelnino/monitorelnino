@@ -442,6 +442,29 @@
     "a editoria (Issue antes da noite)"
    ],
    "gravidade": "media"
+  },
+  {
+   "id": "ensaio-real-da-noite",
+   "workflow": "ensaio_real_da_noite.yml",
+   "finalidade": "roda a corrente de verdade no GitHub, num ramo ensaio/, sem rede, e provoca dois pendentes e um empurrão concorrente",
+   "cron_primario": "13 18 * * *",
+   "janela": {
+    "inicio_utc": "18:00",
+    "fim_utc": "21:00"
+   },
+   "devido_quando": "uma vez por dia, antes da checagem pré-noite (22:53 UTC)",
+   "tolerancia_atraso_min": 90,
+   "idempotencia": "cada execução cria o próprio ramo ensaio/<data>-<run> e o apaga no fim; nada vai à main",
+   "orcamento_min": 150,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "a checagem pré-noite",
+    "a editoria (Issue no vermelho)"
+   ],
+   "gravidade": "media"
   }
  ]
 }
