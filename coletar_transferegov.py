@@ -63,12 +63,18 @@ def _csv_do_zip(bruto: bytes):
 
 
 # ----------------------------- funções puras (testadas) -----------------------------
-def numero(v) -> float:
-    """'1134,75' → 1134.75; '' → 0.0."""
+def numero(v):
+    """'1134,75' → 1134.75; '' ou ilegível → None.
+
+    10/10/2026 (A6-22): vazio virava 0.0, e repasse não declarado entrava na série como zero
+    medido. Zero é dado; célula vazia é ausência."""
+    t = str(v if v is not None else "").strip()
+    if not t:
+        return None
     try:
-        return float(str(v or "0").replace(".", "").replace(",", ".")) if "," in str(v) else float(str(v or "0") or 0)
+        return float(t.replace(".", "").replace(",", ".")) if "," in t else float(t)
     except ValueError:
-        return 0.0
+        return None
 
 
 def data_br(v: str):
@@ -135,7 +141,7 @@ def cruzar_convenios(linhas, propostas: dict, ano_serie: int = 2026) -> tuple:
             continue
         assinatura = data_br(r.get("DIA_ASSIN_CONV"))
         repasse = numero(r.get("VL_REPASSE_CONV")); desembolsado = numero(r.get("VL_DESEMBOLSADO_CONV"))
-        if assinatura and assinatura.year == ano_serie:
+        if assinatura and assinatura.year == ano_serie and repasse is not None:
             semanas[semana_de(assinatura)] += repasse
             por_uf[p["uf"]] += repasse
         if p["el_nino"]:
@@ -259,7 +265,12 @@ def autoteste() -> int:
         lin = montar_serie({"2026-08-10": 590038.0}, ["r1", "r5", "rE"]); s = next(l for l in lin if l["semana"] == "2026-08-10")
         return s["r5"] == 590038.0 and s["r1"] == 0 and s["total"] == 590038.0 and all(l["total"] == sum(float(l[r]) for r in ("r1", "r5", "rE")) for l in lin)
     def t6():  # negativo: números e datas malformados não quebram
-        return numero("abc") == 0.0 and data_br("31/02/2026") is None and data_br(None) is None and filtrar_propostas([{"ANO_PROP": "x"}]) == {}
+        return numero("abc") is None and numero("") is None and numero(None) is None and numero("0") == 0.0 and data_br("31/02/2026") is None and data_br(None) is None and filtrar_propostas([{"ANO_PROP": "x"}]) == {}
+    def t9():  # A6-22: repasse vazio é ausência — fica fora da soma e chega à fila como None, nunca 0.0
+        C2 = C + [{"NR_CONVENIO": "104", "ID_PROPOSTA": "1", "DIA_ASSIN_CONV": "11/08/2026", "VL_REPASSE_CONV": "", "VL_DESEMBOLSADO_CONV": ""}]
+        s, u, it = cruzar_convenios(C2, filtrar_propostas(P))
+        i104 = next(i for i in it if i["nr_convenio"] == "104")
+        return s == {"2026-08-10": 590038.0} and u["SP"] == 490038.0 and i104["vl_repasse"] is None and i104["vl_desembolsado"] is None
     def t8():  # nome do município não é assunto: 'Rancho Queimado' fora; 'queimadas' no objeto dentro
         return (not objeto_cita_ciclo("Ampliação do pavilhão de eventos no Município de Rancho Queimado", "RANCHO QUEIMADO")
                 and objeto_cita_ciclo("Aquisição de equipamentos para combate a queimadas", "RANCHO QUEIMADO")
@@ -271,7 +282,8 @@ def autoteste() -> int:
                             "cruzamento: soma por semana/UF só do ano da série": t3, "fila El Niño: só objeto do ciclo, valores com vírgula": t4,
                             "série: total = soma das rotas (reconciliação)": t5, "negativo: malformados não quebram": t6,
                             "fundo a fundo: só programas do ciclo": t7,
-                            "negativo: nome do município não vira assunto": t8})
+                            "negativo: nome do município não vira assunto": t8,
+                            "repasse vazio é ausência, fora da soma (A6-22)": t9})
 
 
 if __name__ == "__main__":

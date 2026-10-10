@@ -26,7 +26,7 @@ import pathlib
 import sys
 from datetime import datetime, timedelta
 
-from coletores_base import gravar, hoje_editorial, ler
+from coletores_base import data_do_corte, gravar, ler
 
 JANELA = 7
 MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto",
@@ -78,6 +78,17 @@ def na_janela(atos: list, corte: datetime, dias: int = JANELA) -> list:
     return dentro
 
 
+def corte_do_dado(meta: dict):
+    """A data de corte declarada em `meta.json` (dd/mm/aaaa ou ISO); sem ela, `data_do_corte()`."""
+    bruta = str((meta or {}).get("corte") or "").strip()[:10]
+    for fmt in ("%d/%m/%Y", "%Y-%m-%d"):
+        try:
+            return datetime.strptime(bruta, fmt).date()
+        except ValueError:
+            continue
+    return data_do_corte()
+
+
 def cartao(ident: str, valor, unidade: str, periodo: str, fonte: str, url_fonte=None,
            detalhe=None) -> dict:
     return {"id": ident, "valor": valor, "unidade": unidade, "periodo": periodo,
@@ -112,13 +123,19 @@ def cartao_pago(mps: dict) -> dict:
         return sem_coleta("pago_periodo_mp", "reais",
                           "a execução das medidas provisórias não foi coletada até o corte",
                           "Portal da Transparência, Execução da Despesa")
-    por_mes = {}
+    # 10/10/2026 (A6-22, A6-13): pago vazio é ausência e fica fora da soma; mês em que nenhuma
+    # origem declarou o pago não vira R$ 0,00. Mês marcado `parcial` não é o "último mês".
+    por_mes, parciais = {}, set()
     for e in coletadas:
         for mes, v in (e.get("por_mes") or {}).items():
-            por_mes.setdefault(mes, 0.0)
-            por_mes[mes] += float((v or {}).get("pago") or 0.0)
-    if por_mes:
-        mes = max(por_mes)
+            pago = (v or {}).get("pago")
+            if isinstance(v, dict) and v.get("parcial"):
+                parciais.add(mes)
+            if isinstance(pago, (int, float)):
+                por_mes[mes] = por_mes.get(mes, 0.0) + float(pago)
+    fechados = [m for m in por_mes if m not in parciais]
+    if fechados:
+        mes = max(fechados)
         return cartao("pago_periodo_mp", round(por_mes[mes], 2), "reais",
                       f"mês de {mes_legivel(mes)}",
                       "Portal da Transparência, Execução da Despesa (arquivos mensais abertos)",
@@ -130,7 +147,12 @@ def cartao_pago(mps: dict) -> dict:
                                "O valor inclui a dotação ordinária da ação. É teto, não a execução "
                                "do crédito"))
     meses = sorted({m for e in coletadas for m in (e.get("meses") or [])})
-    total = round(sum(float(e.get("pago") or 0.0) for e in coletadas), 2)
+    pagos = [float(e["pago"]) for e in coletadas if isinstance(e.get("pago"), (int, float))]
+    if not pagos:
+        return sem_data_na_origem("pago_periodo_mp", "reais",
+                                  "a execução foi lida e a origem não declarou o valor pago",
+                                  "Portal da Transparência, Execução da Despesa")
+    total = round(sum(pagos), 2)
     janela = (f"meses de {mes_legivel(meses[0])} a {mes_legivel(meses[-1])}"
               if len(meses) > 1 else (f"mês de {mes_legivel(meses[0])}" if meses else "ciclo"))
     return cartao("pago_periodo_mp", total, "reais", janela,
@@ -261,6 +283,21 @@ def _autoteste() -> int:
     ok("pago cai no acumulado sem quebra, e NAO vira sem dado",
        c["valor"] == 10.0 and not c["sem_coleta"] and "junho" in c["periodo"])
     ok("pago sem coleta declara lacuna", cartao_pago({"mps": [{}]})["sem_coleta"] is True)
+    c = cartao_pago({"mps": [{"execucao": {"status": "coletado", "pago": 10.0,
+                                           "por_mes": {"202608": {"pago": 6.0},
+                                                       "202609": {"pago": 1.0, "parcial": True}}}}]})
+    ok("pago ignora o mes parcial (A6-13)", c["valor"] == 6.0 and "agosto" in c["periodo"])
+    c = cartao_pago({"mps": [{"execucao": {"status": "coletado", "pago": 4.0,
+                                           "por_mes": {"202608": {"pago": 4.0}}}},
+                             {"execucao": {"status": "coletado", "pago": None,
+                                           "por_mes": {"202608": {"pago": None}}}}]})
+    ok("pago vazio fica fora da soma (A6-22)", c["valor"] == 4.0)
+    c = cartao_pago({"mps": [{"execucao": {"status": "coletado", "pago": None,
+                                           "por_mes": {"202608": {"pago": None}}}}]})
+    ok("pago todo vazio e lacuna, nunca zero (A6-22)", c["valor"] is None and not c["sem_coleta"])
+    ok("corte vem do meta.json (A3-20)",
+       corte_do_dado({"corte": "02/10/2026"}).isoformat() == "2026-10-02"
+       and corte_do_dado({"corte": "2026-10-03"}).isoformat() == "2026-10-03")
 
     c = cartao_transferido({"meses_lidos": {"202608": {"soma": 5.5, "municipios_casados": 3},
                                             "202609": {"soma": 1.0, "parcial": True}}})
@@ -317,7 +354,10 @@ def _autoteste() -> int:
 def main() -> int:
     if "--autoteste" in sys.argv:
         return _autoteste()
-    corte = hoje_editorial()
+    # 10/10/2026 (A3-20): o corte vem do DADO (meta.json, o corte da edição), não do relógio da
+    # parede — gerador de derivado que lê o relógio muda sozinho na virada do dia. Sem meta, o
+    # relógio fixado da cadeia (SOURCE_DATE_EPOCH), como os demais geradores.
+    corte = corte_do_dado(ler("meta.json", {}) or {})
     d = montar(ler("financiamento/mps_2026.json", {}) or {},
                ler("financiamento/municipios/transferencias_uniao.json", {}) or {},
                ler("resposta/recursos_liberados.json", {}) or {},

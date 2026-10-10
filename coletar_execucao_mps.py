@@ -36,11 +36,36 @@ ALVOS = {
 }
 
 
-def numero(v) -> float:
+def numero(v):
+    """'1.000,50' → 1000.5; vazio ou ilegível → None (A6-22, 10/10/2026: virava 0.0, e célula
+    vazia entrava na soma como execução zero medida)."""
+    t = str(v if v is not None else "").strip()
+    if not t:
+        return None
     try:
-        return float(str(v or "0").replace(".", "").replace(",", "."))
+        return float(t.replace(".", "").replace(",", "."))
     except ValueError:
-        return 0.0
+        return None
+
+
+def somar(a, b):
+    """Soma só o que está presente: None + None = None (lacuna), None + x = x."""
+    if a is None:
+        return b
+    return a if b is None else a + b
+
+
+def arred(v):
+    return None if v is None else round(v, 2)
+
+
+def _fmt(v) -> str:
+    return "sem valor declarado" if v is None else f"{v:,.0f}"
+
+
+def mes_parcial(mes: str, hoje) -> bool:
+    """O mês corrente na data da coleta: o Portal ainda está preenchendo o arquivo (A6-13)."""
+    return mes == f"{hoje.year}{hoje.month:02d}"
 
 
 def uf_da_linha(row: dict) -> str:
@@ -97,9 +122,9 @@ def modalidade_da_linha(row: dict) -> str:
 def agregar(linhas, alvos: dict = ALVOS) -> dict:
     """{mp: {'orgaos': {codigo: {empenhado, liquidado, pago}}, 'por_uf_pago': {UF: v}, 'empenhado','liquidado','pago'}}
     Só linhas cujo (órgão, ação) está nos alvos. Função pura, testável."""
-    out = {mp: {"orgaos": {c: {"empenhado": 0.0, "liquidado": 0.0, "pago": 0.0} for c in a["orgaos"]},
+    out = {mp: {"orgaos": {c: {"empenhado": None, "liquidado": None, "pago": None} for c in a["orgaos"]},
                 "por_uf_pago": defaultdict(float), "por_modalidade_pago": defaultdict(float),
-                "empenhado": 0.0, "liquidado": 0.0, "pago": 0.0} for mp, a in alvos.items()}
+                "empenhado": None, "liquidado": None, "pago": None} for mp, a in alvos.items()}
     for row in linhas:
         cod_sub = (row.get("Código Órgão Subordinado") or "").strip(); cod_sup = (row.get("Código Órgão Superior") or "").strip()
         acao = (row.get("Código Ação") or "").strip()
@@ -107,8 +132,9 @@ def agregar(linhas, alvos: dict = ALVOS) -> dict:
             for cod_org, spec in a["orgaos"].items():
                 if acao in spec["acoes"] and (cod_sub == cod_org or (cod_org == "55000" and cod_sup == "55000")):
                     e, l, p = numero(row.get("Valor Empenhado (R$)")), numero(row.get("Valor Liquidado (R$)")), numero(row.get("Valor Pago (R$)"))
-                    o = out[mp]["orgaos"][cod_org]; o["empenhado"] += e; o["liquidado"] += l; o["pago"] += p
-                    out[mp]["empenhado"] += e; out[mp]["liquidado"] += l; out[mp]["pago"] += p
+                    o = out[mp]["orgaos"][cod_org]
+                    for k, v in (("empenhado", e), ("liquidado", l), ("pago", p)):
+                        o[k] = somar(o[k], v); out[mp][k] = somar(out[mp][k], v)
                     if p:   # só o que foi pago entra no destino (estornos e empenhos sem pagamento não desenham mapa)
                         out[mp]["por_uf_pago"][uf_da_linha(row)] += p
                         out[mp]["por_modalidade_pago"][modalidade_da_linha(row)] += p
@@ -116,9 +142,9 @@ def agregar(linhas, alvos: dict = ALVOS) -> dict:
         out[mp]["por_uf_pago"] = {k: round(v, 2) for k, v in out[mp]["por_uf_pago"].items()}
         out[mp]["por_modalidade_pago"] = {k: round(v, 2)
                                           for k, v in out[mp]["por_modalidade_pago"].items()}
-        for k in ("empenhado", "liquidado", "pago"): out[mp][k] = round(out[mp][k], 2)
+        for k in ("empenhado", "liquidado", "pago"): out[mp][k] = arred(out[mp][k])
         for o in out[mp]["orgaos"].values():
-            for k in o: o[k] = round(o[k], 2)
+            for k in o: o[k] = arred(o[k])
     return out
 
 
@@ -147,9 +173,10 @@ def coletar() -> int:
     # 02/10/2026 (item 4 do contrato de layout): alem do acumulado, guarda-se a quebra POR MES.
     # O Portal publica execucao por mes, e o cartao do topo do Financiamento diz "no mes de X":
     # sem esta quebra o gerador so teria o acumulado do ciclo e o cartao ficaria sem dado.
-    acumulado = {mp: {"orgaos": {c: {"empenhado": 0.0, "liquidado": 0.0, "pago": 0.0} for c in a["orgaos"]}, "por_uf_pago": defaultdict(float),
+    acumulado = {mp: {"orgaos": {c: {"empenhado": None, "liquidado": None, "pago": None} for c in a["orgaos"]}, "por_uf_pago": defaultdict(float),
                       "por_mes": {}, "por_modalidade_pago": defaultdict(float),
-                      "empenhado": 0.0, "liquidado": 0.0, "pago": 0.0} for mp, a in ALVOS.items()}
+                      "empenhado": None, "liquidado": None, "pago": None} for mp, a in ALVOS.items()}
+    dia = hoje_editorial()
     meses_lidos, hashes = [], {}
     for mes in meses_ate_hoje(primeiro):
         try:
@@ -163,11 +190,15 @@ def coletar() -> int:
         for mp, a in ALVOS.items():
             if mes < a["primeiro_mes"]:
                 continue
-            for k in ("empenhado", "liquidado", "pago"): acumulado[mp][k] += parcial[mp][k]
-            acumulado[mp]["por_mes"][mes] = {k: round(parcial[mp][k], 2)
+            for k in ("empenhado", "liquidado", "pago"): acumulado[mp][k] = somar(acumulado[mp][k], parcial[mp][k])
+            acumulado[mp]["por_mes"][mes] = {k: arred(parcial[mp][k])
                                              for k in ("empenhado", "liquidado", "pago")}
+            # A6-13: o mês corrente é lido com o arquivo ainda sendo preenchido; marca-se parcial
+            # para nenhum consumidor o apresentar como mês fechado.
+            if mes_parcial(mes, dia):
+                acumulado[mp]["por_mes"][mes]["parcial"] = True
             for c, o in parcial[mp]["orgaos"].items():
-                for k in o: acumulado[mp]["orgaos"][c][k] += o[k]
+                for k in o: acumulado[mp]["orgaos"][c][k] = somar(acumulado[mp]["orgaos"][c][k], o[k])
             for uf, v in parcial[mp]["por_uf_pago"].items(): acumulado[mp]["por_uf_pago"][uf] += v
             for m_, v in parcial[mp]["por_modalidade_pago"].items():
                 acumulado[mp]["por_modalidade_pago"][m_] += v
@@ -189,14 +220,15 @@ def coletar() -> int:
         a = acumulado.get(mp["id"]);
         if not a: continue
         mp["execucao"] = {"status": "coletado", "fonte": "Portal da Transparência — Execução da Despesa (arquivos mensais abertos)",
-                          "empenhado": round(a["empenhado"], 2), "liquidado": round(a["liquidado"], 2), "pago": round(a["pago"], 2),
+                          "empenhado": arred(a["empenhado"]), "liquidado": arred(a["liquidado"]), "pago": arred(a["pago"]),
                           "meses": [m for m in meses_lidos if m >= ALVOS[mp["id"]]["primeiro_mes"]], "atualizado_em": hoje,
+                          "meses_parciais": [m for m in meses_lidos if m >= ALVOS[mp["id"]]["primeiro_mes"] and mes_parcial(m, dia)],
                           "por_mes": dict(sorted(a["por_mes"].items())),
                           "limite": "execução das AÇÕES reforçadas pela MP desde o mês de publicação — inclui a dotação ordinária da ação; teto, não a execução do crédito"}
         for org in mp["orgaos"]:
             cod = next((c for c, s in ALVOS[mp["id"]]["orgaos"].items() if s["nome"] == org["nome"]), None)
             if cod:
-                org["execucao_empenhado"] = round(a["orgaos"][cod]["empenhado"], 2); org["execucao_pago"] = round(a["orgaos"][cod]["pago"], 2)
+                org["execucao_empenhado"] = arred(a["orgaos"][cod]["empenhado"]); org["execucao_pago"] = arred(a["orgaos"][cod]["pago"])
                 org["acoes"] = sorted(ALVOS[mp["id"]]["orgaos"][cod]["acoes"])
         # A forma de aplicação é o que o cartão "Como os recursos estão sendo aplicados" lê. Ela
         # responde "a quem o dinheiro foi", e é diferente de `destino`, que diz onde o pagamento foi
@@ -212,8 +244,8 @@ def coletar() -> int:
     mps["gerado_em"] = hoje; mps["hashes_arquivos_mensais"] = hashes
     gravar("financiamento/mps_2026.json", mps)
     log_busca("DOU", 1, [BASE + m for m in meses_lidos], "registro", nivel="nacional", n_resultados=len(meses_lidos),
-              resultados="Execução das ações das MPs 1.367 e 1.384: " + "; ".join(f"{mp['numero']} pago R$ {mp['execucao']['pago']:,.0f} ({', '.join(mp['execucao']['meses'])})" for mp in mps["mps"]))
-    print("execucao_mps:", "; ".join(f"{mp['numero']}: empenhado {mp['execucao']['empenhado']:,.0f} pago {mp['execucao']['pago']:,.0f}" for mp in mps["mps"]))
+              resultados="Execução das ações das MPs 1.367 e 1.384: " + "; ".join(f"{mp['numero']} pago R$ {_fmt(mp['execucao']['pago'])} ({', '.join(mp['execucao']['meses'])})" for mp in mps["mps"]))
+    print("execucao_mps:", "; ".join(f"{mp['numero']}: empenhado {_fmt(mp['execucao']['empenhado'])} pago {_fmt(mp['execucao']['pago'])}" for mp in mps["mps"]))
     return 0
 
 
@@ -243,13 +275,27 @@ def autoteste() -> int:
         com = agregar([dict(L[0], **{"Código Modalidade de Aplicação": "41"})])["mp1367"]
         return (round(sum(sem.values()), 2) == r["mp1367"]["pago"]
                 and "transferidos aos municípios" in com["por_modalidade_pago"])
-    def t6(): return meses_ate_hoje("202606")[0] == "202606" and all(len(m) == 6 for m in meses_ate_hoje("202606")) and numero("abc") == 0.0
+    def t6(): return meses_ate_hoje("202606")[0] == "202606" and all(len(m) == 6 for m in meses_ate_hoje("202606")) and numero("abc") is None
+    def t10():
+        # A6-22: célula vazia é ausência — fica fora da soma; tudo vazio dá None (lacuna), não 0.0
+        vazio = dict(L[0], **{"Valor Empenhado (R$)": "", "Valor Liquidado (R$)": "", "Valor Pago (R$)": ""})
+        so_vazio = agregar([vazio])["mp1367"]
+        com = agregar([vazio, L[2]])["mp1367"]
+        return (numero("") is None and numero("0,00") == 0.0 and somar(None, None) is None and somar(None, 2.0) == 2.0
+                and so_vazio["pago"] is None and so_vazio["orgaos"]["20701"]["empenhado"] is None
+                and com["pago"] == 300.0 and com["orgaos"]["20701"]["pago"] is None)
+    def t11():
+        # A6-13: o mês corrente da coleta é parcial; o anterior, não
+        from datetime import date as _d
+        return mes_parcial("202610", _d(2026, 10, 10)) and not mes_parcial("202609", _d(2026, 10, 10))
     return rodar_autoteste({"agrega por MP e órgão (empenhado/pago)": t1, "destino por UF (nome da UG ou coluna)": t2,
                             "MP 1.384: MDS por órgão superior, Conab por subordinado": t3, "negativo: ação fora dos alvos ignorada": t4,
                             "UF: sufixo '/UF' e fallback BR": t5, "meses e números malformados": t6,
                             "modalidade pelo código do orçamento": t7,
                             "modalidade ilegível não inventa categoria": t8,
-                            "o agregado guarda o desembolsado por modalidade": t9})
+                            "o agregado guarda o desembolsado por modalidade": t9,
+                            "valor vazio é ausência, soma só os presentes (A6-22)": t10,
+                            "mês corrente da coleta é parcial (A6-13)": t11})
 
 
 if __name__ == "__main__":
