@@ -124,7 +124,7 @@ def main() -> int:
         return autoteste()
     cat = json.loads(FONTE.read_text(encoding="utf-8"))
     if "--gerar-doc" in argv:
-        DOC.write_text(gerar_doc(cat), encoding="utf-8")
+        DOC.write_text(gerar_doc(cat), encoding="utf-8", newline="\n")
         print(f"docs/FALHAS_DA_NOITE.md regravado ({len(cat.get('falhas') or [])} falhas)")
         return 0
     ruins = problemas(cat, _ler)

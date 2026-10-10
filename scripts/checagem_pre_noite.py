@@ -220,7 +220,7 @@ def main() -> int:
     doc = {"noite": noite, "conferido_em": agora.strftime("%Y-%m-%dT%H:%M:%SZ"),
            "verde": not vermelhos, "perguntas": resultado}
     saida = argv[argv.index("--saida") + 1] if "--saida" in argv else f"preflight-{noite}.json"
-    pathlib.Path(saida).write_text(json.dumps(doc, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    pathlib.Path(saida).write_text(json.dumps(doc, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
     for x in resultado:
         print(f"  {'✓' if x['ok'] else '✗'} {x['pergunta']} — {x['detalhe']}")
     print(f"{'✓ PRÉ-NOITE VERDE' if not vermelhos else '✗ PRÉ-NOITE VERMELHA'} · noite de {noite}")
