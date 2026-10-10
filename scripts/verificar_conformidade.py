@@ -77,6 +77,21 @@ def excecoes_de(pagina: str, excecoes: dict) -> set:
     return fora
 
 
+def excecoes_invalidas(excecoes: dict) -> list:
+    """Exceções declaradas sem regra, página, motivo, data ou quem decidiu. Função pura.
+
+    10/10/2026 (A7-26): a exceção incompleta era só ignorada — a regra continuava valendo, mas o
+    arquivo mostrava uma "exceção" que não existia, e ninguém sabia. O CLAUDE.md diz que exceção sem
+    registro é vermelho: agora é.
+    """
+    fora = []
+    for i, e in enumerate((excecoes or {}).get("excecoes") or []):
+        faltam = [k for k in ("regra", "pagina", "motivo", "data", "decidido_por") if not (e or {}).get(k)]
+        if faltam:
+            fora.append(f"layout/excecoes.json, exceção {i + 1}: falta {', '.join(faltam)}")
+    return fora
+
+
 # ── (B) tipografia ──────────────────────────────────────────────────────────────────────────
 def problemas_de_tipografia(amostras: list, regras: dict) -> list:
     """Divergências de família, peso e tamanho. Função pura."""
@@ -362,6 +377,9 @@ def _autoteste() -> int:
     ok("exceção sem motivo não vale",
        excecoes_de("y.html", {"excecoes": [{"regra": "cor", "pagina": "y.html"}]}) == set())
     ok("exceção de outra página não vale aqui", excecoes_de("z.html", exc) == set())
+    ok("exceção incompleta é acusada (A7-26)",
+       len(excecoes_invalidas({"excecoes": [{"regra": "cor", "pagina": "y.html"}]})) == 1)
+    ok("exceção completa não é acusada", excecoes_invalidas(exc) == [])
 
     # trava estrutural: o portão não escreve
     import dis
@@ -387,6 +405,12 @@ def main() -> int:
 
     regras = ler_json(REGRAS) or {}
     excecoes = ler_json(EXCECOES) or {}
+    invalidas = excecoes_invalidas(excecoes)
+    if invalidas and "--so-texto-proibido" not in sys.argv:
+        for x in invalidas:
+            print(f"  ✗ {x}")
+        print("✗ CONFORMIDADE: exceção sem registro completo é vermelho (CLAUDE.md, hierarquia das regras).")
+        return 1
 
     # 08/10/2026 (A2-14): `--so-texto-proibido` roda SÓ a regra de texto proibido, sobre o texto
     # visível das páginas, sem abrir navegador e sem julgar layout. Ela existe porque essa regra é
