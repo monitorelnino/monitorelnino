@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-10 · #PR · o DOU não reacrescenta o reconhecimento que o MIDR acabou de gravar
+
+Na rodada dos diários de 10/10, o canal do DOU decidiu por chaves montadas antes do canal do MIDR rodar e acrescentou de novo 44 reconhecimentos federais (mesma portaria, URL `http` × `https`); `verificar_consistencia.py` reprovou a `main`. `incorporar_ato_dou` lê o banco como está e casa também por IBGE, causa e portaria; os 44 pares viram um evento, com o decreto municipal somado. Em `coletar_s2id.py`.
+
 ## 2026-10-09 · #PR · ESPIN e links ganham rotina semanal própria
 
 `coletar_espin.py` e `verificar_links.py` saem do fim de `semanal_sinais_e_links.yml` para `semanal_espin_e_links.yml` (domingo, 3h15 de Brasília, teto de 45 min). As duas últimas execuções da rotina de sinais foram canceladas no teto de 150 min antes de chegar a eles: o ESPIN não era reconferido e os links não eram verificados. Temporizador registrado em `config/temporizadores.json`.
