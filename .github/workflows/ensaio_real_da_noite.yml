@@ -1,0 +1,125 @@
+# Ensaio real da noite — no GitHub de verdade, de dia, num ramo `ensaio-real/<data>-<run>`.
+#
+# 10/10/2026 (item 2-bis.2 da janela A). O `ensaio_da_noite.py` simula o GitHub e passa verde; as
+# falhas das noites de 04→10/10 foram comportamento real da plataforma (catálogo
+# `config/falhas_da_noite.json`). Aqui os MESMOS workflows da noite rodam de verdade — grupos de
+# concorrência, job `vez`, laço de rebase-e-push, marcador e artefato —, num ramo próprio, com a
+# corrente conduzida por `scripts/ensaio_real.py --conduzir` (não por `workflow_run`, que levaria o
+# ensaio para a `main` — F15), e sem ir à rede (`scripts/elo_de_ensaio.py` no lugar da coleta; o `_coletor.yml` parte
+# do ramo do ensaio e empurra para ele, nunca para a `main`). Provoca: dois pendentes (diários
+# duas vezes + triagem, juntos) e um empurrão concorrente no ramo enquanto os elos rodam. Não
+# provoca cancelamento: a regra 4 do CLAUDE.md proíbe script que cancele run de outro.
+# Critério em `scripts/ensaio_real.py --veredito`. Vermelho abre Issue no `robo-registro`; a
+# checagem pré-noite (22:53 UTC) lê a conclusão deste workflow.
+name: Ensaio real da noite
+
+on:
+  schedule:
+    - cron: "13 18 * * *"   # 15h13 de Brasília — termina bem antes da checagem pré-noite
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: ensaio-real-da-noite
+  cancel-in-progress: false
+
+jobs:
+  ensaiar:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with: { persist-credentials: false, fetch-depth: 1 }
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with: { python-version: "3.12" }
+
+      - name: Criar o ramo do ensaio
+        id: ramo
+        env:
+          ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+        run: |
+          RAMO="ensaio-real/$(date -u +%F)-${{ github.run_id }}"
+          NOITE="$(python3 scripts/janela_da_noite.py --noite)"
+          mkdir -p ~/.ssh && printf '%s\n' "$ROBO_DEPLOY_KEY" > ~/.ssh/robo && chmod 600 ~/.ssh/robo
+          ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" \
+            git push git@github.com:${GITHUB_REPOSITORY}.git "HEAD:refs/heads/${RAMO}"
+          echo "ramo=${RAMO}" >> "$GITHUB_OUTPUT"
+          echo "noite=${NOITE}" >> "$GITHUB_OUTPUT"
+          echo "desde=$(date -u +%FT%TZ)" >> "$GITHUB_OUTPUT"
+          echo "ramo do ensaio: ${RAMO} · noite ${NOITE}"
+
+      - name: Provocar dois pendentes (diários ×2 + triagem, juntos)
+        env:
+          # Disparo com o token do robô, como o despachante faz.
+          GH_TOKEN: ${{ secrets.ROBO_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          R="${{ steps.ramo.outputs.ramo }}"
+          gh workflow run noturno_diarios.yml --ref "$R" &
+          gh workflow run noturno_diarios.yml --ref "$R" &
+          gh workflow run noturno_triagem.yml --ref "$R" &
+          wait
+
+      - name: Empurrão concorrente no ramo enquanto os elos rodam
+        env:
+          ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+        run: |
+          sleep 150
+          R="${{ steps.ramo.outputs.ramo }}"
+          git config user.name "monitor-el-nino-bot"; git config user.email "bot@users.noreply.github.com"
+          SSH="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes"
+          GIT_SSH_COMMAND="$SSH" git fetch -q --depth=5 git@github.com:${GITHUB_REPOSITORY}.git "$R"
+          git checkout -q FETCH_HEAD
+          mkdir -p "data/noite/${{ steps.ramo.outputs.noite }}"
+          date -u +%FT%TZ > "data/noite/${{ steps.ramo.outputs.noite }}/ensaio-empurrao-concorrente.txt"
+          git add -A data/noite && git commit -q -m "ensaio real: empurrão concorrente"
+          GIT_SSH_COMMAND="$SSH" git push git@github.com:${GITHUB_REPOSITORY}.git "HEAD:$R" || echo "::warning::o empurrão concorrente foi recusado"
+
+      - name: Conduzir a corrente no ramo (cada elo quando o anterior deixa o marcador)
+        env:
+          GH_TOKEN: ${{ secrets.ROBO_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/ensaio_real.py --conduzir --ramo "${{ steps.ramo.outputs.ramo }}" \
+            --noite "${{ steps.ramo.outputs.noite }}" --teto-min 110
+
+      - name: Veredito
+        id: veredito
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          rc=0
+          python3 scripts/ensaio_real.py --veredito --ramo "${{ steps.ramo.outputs.ramo }}" \
+            --noite "${{ steps.ramo.outputs.noite }}" --desde "${{ steps.ramo.outputs.desde }}" \
+            > /tmp/veredito.txt 2>&1 || rc=$?
+          cat /tmp/veredito.txt | tee -a "$GITHUB_STEP_SUMMARY"
+          exit "$rc"
+
+      - name: Guardar o veredito
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
+        with:
+          name: ensaio-real-${{ github.run_id }}
+          path: ensaio_real.json
+          retention-days: 30
+          if-no-files-found: warn
+
+      - name: Abrir Issue quando vermelho
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.ROBO_TOKEN }}
+        run: |
+          gh issue create --repo monitorelnino/robo-registro \
+            --title "Ensaio real da noite vermelho ($(date -u +%d/%m/%Y))" \
+            --body "$(printf 'O ensaio real reprovou antes da noite.\n\n```\n%s\n```\n\nRun: %s/%s/actions/runs/%s\n' "$(cat /tmp/veredito.txt 2>/dev/null | tail -40)" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID")" || true
+
+      - name: Apagar o ramo do ensaio
+        if: always() && steps.ramo.outputs.ramo != ''
+        run: |
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" \
+            git push git@github.com:${GITHUB_REPOSITORY}.git --delete "${{ steps.ramo.outputs.ramo }}" || true

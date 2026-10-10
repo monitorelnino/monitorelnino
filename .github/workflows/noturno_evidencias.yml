@@ -69,7 +69,8 @@ jobs:
   # desaparecer com o runner — é ele que torna o `.gitignore` seguro.
   publicar_lote:
     needs: evidencias
-    if: always()
+    # 10/10/2026 (item 2-bis.2): o ensaio real não publica Release.
+    if: always() && !startsWith(github.ref_name, 'ensaio-real/')
     runs-on: ubuntu-latest
     defaults:
       run:
