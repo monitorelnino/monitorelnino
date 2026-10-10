@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-10 · #PR · ensaio real da noite, no GitHub de verdade
+
+`ensaio_real_da_noite.yml` (18:13 UTC e por disparo) roda os workflows da noite num ramo `ensaio/<data>-<run>`, sem rede: dois pendentes (diários ×2 + triagem) e um empurrão concorrente; a corrente é conduzida elo a elo por `scripts/ensaio_real.py`. `_coletor.yml` parte do ramo do disparo e empurra para ele. Veredito: seis `.feito`, nenhum cancelado sem refazer, nenhum push perdido; vermelho abre Issue.
+
 ## 2026-10-10 · #PR · elo fora da `main` não empurra para a `main`; token do Netlify sai da URL
 
 `_coletor.yml` partia da `main` e empurrava `HEAD:main` em qualquer ramo: um elo disparado no ramo de ensaio gravaria na `main` de dia (F32, ensaio 16). Agora, fora da `main`, o commit não é empurrado. `verificar_contribuicoes.py` passa o token do Netlify no cabeçalho `Authorization`, não na URL (A6-31).

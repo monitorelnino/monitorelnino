@@ -291,5 +291,5 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Sintoma:** Um elo disparado no ramo `ensaio` (ou em qualquer ramo) partia da `main` e empurrava `HEAD:main`; como a guarda da janela não barra fora da `main`, o commit chegaria à `main` de dia.
 - **Causa:** `_coletor.yml` fazia `git fetch ... main` + `git push ... HEAD:main` sem olhar o ramo do disparo.
 - **Prova:** `.github/workflows/_coletor.yml`, passo "Commit com rebase-e-push" (achado ao desenhar o ensaio real, 10/10); F15 (corrente da `main` disparada pelo ramo de ensaio, 06→07/10)
-- **Correção:** PR deste item: o passo de commit sai antes do push quando `GITHUB_REF_NAME` não é `main`
+- **Correção:** PR #632 (o passo de commit não empurra para a `main` fora dela) e PR do ensaio real (cada ramo `ensaio/` empurra para si mesmo)
 - **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_fora_da_main_nao_empurra`

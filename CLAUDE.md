@@ -333,6 +333,12 @@ que a reprova — regra sem portão volta a ser esquecimento.
    temporário, e reprovam quando qualquer uma das quatro causas volta: conflito entre elos que perde
    pista, disparo duplicado que duplica trabalho, elo cancelado que não é refeito, pista fora do
    esquema que para a publicação. **Mudança na corrente sem ensaio verde não entra.**
+   **Desde 10/10/2026 (central, item 2-bis), são dois ensaios:** o simulado (`ensaio_da_noite.py`)
+   e o **real** (`ensaio_real_da_noite.yml`, diário às 18:13 UTC e por disparo), que roda os mesmos
+   workflows no GitHub num ramo `ensaio/<data>-<run>`, sem rede, provocando dois pendentes e um
+   empurrão concorrente. Mudança na corrente entra com o simulado verde no PR **e** um ensaio real
+   verde disparado no ramo depois do merge, antes da noite; vermelho é reverter ou consertar antes
+   das 23:30 UTC. Catálogo das falhas: `config/falhas_da_noite.json` — falha nova vira linha nova.
 
 ## O que barra a publicação de dado, e o que não barra (editoria, 06/10/2026)
 
