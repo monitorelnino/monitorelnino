@@ -32,6 +32,9 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-10 · #PR · elo cancelado na fila é refeito, e a fila deixa de cancelar
+
+O grupo `noturno` guardava um só pendente: na abertura de 10/10 o pendente seguinte cancelou `diarios / coletar`, e o despachante contou o cancelado como execução. Agora cada elo tem grupo próprio e espera a vez por ordem de chegada (`vez_na_noite.py`); run cancelado/pulado não conta; a reserva refaz elo sem `.feito`; o artefato do marcador passa a existir (`NOITE` exportado). Ensaio 14.
 ## 2026-10-10 · #PR · o DOU não reacrescenta o reconhecimento que o MIDR acabou de gravar
 
 Na rodada dos diários de 10/10, o canal do DOU decidiu por chaves montadas antes do canal do MIDR rodar e acrescentou de novo 44 reconhecimentos federais (mesma portaria, URL `http` × `https`); `verificar_consistencia.py` reprovou a `main`. `incorporar_ato_dou` lê o banco como está e casa também por IBGE, causa e portaria; os 44 pares viram um evento, com o decreto municipal somado. Em `coletar_s2id.py`.
