@@ -359,7 +359,7 @@ def sincronizar_areas(uf, risco_texto):
     return True, "atualizado"
 
 
-def aplicar_estadual(uf, texto, numero, data, url, hoje):
+def aplicar_estadual(uf, texto, numero, data, url, hoje, hash_evidencia=None):
     """Mescla um instrumento estadual EX_ANTE confiante em estados.json. Retorna
     (aplicado: bool, motivo: str, status_aplicado: str|None, antecipacao: int|None)."""
     estados_path = RAIZ / "data" / "estados.json"
@@ -397,6 +397,26 @@ def aplicar_estadual(uf, texto, numero, data, url, hoje):
     else:
         alvo["sem_ato_de_aprovacao"] = True
     alvo["data"] = data
+    # 10/10/2026 (item 2b): PROVENIÊNCIA NA ORIGEM. O juiz lia o documento num endereço e o
+    # guardava só dentro da justificativa em prosa — e o cartão do estado ficava sem link (0 de 54
+    # instrumentos com `url` em 09/10). Quem julga grava o endereço que leu, a data e o hash, no
+    # campo que o cartão lê e no instrumento operacional que o espelha.
+    if url:
+        try:
+            consultado = datetime.datetime.strptime(hoje, "%d/%m/%Y").date().isoformat()
+        except (TypeError, ValueError):
+            consultado = str(hoje)
+        prov = {"url": url, "consultado_em": consultado}
+        if hash_evidencia:
+            prov["hash_evidencia"] = hash_evidencia
+        alvo.update(prov)
+        alvo.pop("endereco_lacuna", None)
+        for ins in alvo.get("instrumentos") or []:
+            if ins.get("tipo") == "instrumento_operacional":
+                ins.update(prov)
+                ins.update({"status": status_novo, "doc": alvo["doc"], "data": data})
+                ins.pop("endereco_lacuna", None)
+                ins.pop("defeito_de_prova", None)
     alvo["natureza_doc"] = "ex-ante"
     alvo["justificativa_ex_ante"] = (
         f"Classificado automaticamente por classificador_natureza.py em {hoje} "
@@ -769,7 +789,8 @@ def processar_pista(pista, hoje, buscar=buscar_texto):
     # a primeira versão dizia "revertida" sem de fato desfazer nada em disco).
     backup = backup_dados()
     if eh_estadual(rotulo):
-        aplicado, motivo_ap, status, antecip = aplicar_estadual(uf, texto, numero, data, pista["url"], hoje)
+        aplicado, motivo_ap, status, antecip = aplicar_estadual(uf, texto, numero, data, pista["url"], hoje,
+                                                               hash_evidencia=pista.get("hash_evidencia"))
     else:
         nome_mun = pista["alvo"].split("/", 1)[1].rsplit("/", 1)[0] if rotulo.startswith("D-") else None
         if nome_mun is None:

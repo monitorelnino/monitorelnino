@@ -622,6 +622,58 @@ def ensaio_despachante_nao_depende_do_cron(diz) -> bool:
     return ok
 
 
+def ensaio_pendente_cancelado_pela_fila_e_refeito(diz) -> bool:
+    """14. Pendente cancelado pela fila é refeito — e a fila deixa de cancelar.
+
+    Abertura de 09→10/10: às 01:09–01:10 o despachante disparou vários elos do grupo `noturno`; a
+    triagem entrou, os diários ficaram pendentes, e o pendente seguinte os CANCELOU às 01:14, sem
+    passo executado (o GitHub guarda um só pendente por grupo). O despachante das 02:26 contou o
+    run cancelado como "houve execução na janela" e não refez; os diários só rodaram às 07:42.
+
+    Reprova se: (a) um run cancelado/pulado voltar a contar para o temporizador; (b) a reserva
+    deixar de refazer o elo sem marcador cujo run foi cancelado, ou refizer por cima de tentativa
+    aberta; (c) a vez na noite deixar três elos simultâneos sem rodar os três, em ordem.
+    """
+    import datetime as dt
+    from despachar_temporizadores import esta_devido, plano_da_reserva
+    from vez_na_noite import quem_vem_antes
+
+    ok = True
+    agora = dt.datetime(2026, 10, 10, 2, 26)
+    t = {"id": "abertura-da-noite", "workflow": "noturno_diarios.yml",
+         "janela": {"inicio_utc": "01:00", "fim_utc": "09:00"}, "cron_primario": "7 1 * * *"}
+    cancelado = {"createdAt": "2026-10-10T01:10:45Z", "status": "completed",
+                 "conclusion": "cancelled"}
+    if not esta_devido(t, [cancelado], agora):
+        diz("   ✗ o temporizador conta o run cancelado na fila como execução da janela")
+        ok = False
+    r = plano_da_reserva({"noturno_diarios.yml": [cancelado]}, set(), agora)
+    if [x.get("elo") for x in r] != ["diarios"]:
+        diz("   ✗ a reserva não refaz o elo sem marcador cujo run foi cancelado na fila")
+        ok = False
+    aberto = {"createdAt": "2026-10-10T02:20:00Z", "status": "queued"}
+    if plano_da_reserva({"noturno_diarios.yml": [cancelado, aberto]}, set(), agora):
+        diz("   ✗ a reserva refaria por cima de tentativa ainda na fila")
+        ok = False
+    fila = [{"databaseId": 38012115315, "status": "in_progress"},      # triagem
+            {"databaseId": 38012085139 + 10**6, "status": "queued"},     # diários
+            {"databaseId": 38012085139 + 2 * 10**6, "status": "queued"}]  # o terceiro
+    rodaram = []
+    while fila:
+        livres = [x for x in fila if not quem_vem_antes(x["databaseId"], fila)]
+        if not livres:
+            diz("   ✗ a vez na noite entrou em impasse")
+            return False
+        rodaram.append(livres[0]["databaseId"])
+        fila = [x for x in fila if x is not livres[0]]
+    if len(rodaram) != 3 or rodaram != sorted(rodaram):
+        diz("   ✗ três elos simultâneos não rodam os três, por ordem de chegada")
+        ok = False
+    if ok:
+        diz("   ✓ pendente cancelado pela fila é refeito; a vez na noite roda os três sem cancelar")
+    return ok
+
+
 ENSAIOS = (
     ("dois elos em paralelo: zero conflito, zero perda", ensaio_dois_elos_em_paralelo),
     ("disparo duplicado: o segundo sai sem trabalho", ensaio_disparo_duplicado),
@@ -643,6 +695,7 @@ ENSAIOS = (
      ensaio_coleta_perdida_volta_para_dentro),
     ("13. o despachante tem observador fora do cron do GitHub",
      ensaio_despachante_nao_depende_do_cron),
+    ("14. pendente cancelado pela fila é refeito", ensaio_pendente_cancelado_pela_fila_e_refeito),
 )
 
 

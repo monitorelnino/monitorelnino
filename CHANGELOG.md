@@ -36,6 +36,13 @@ não pontuados permanecem na versão corrente.
 
 Rotas, status, filas e mensagens que esperavam pessoa viram abstenção registrada (`ABSTENCAO`), lacuna sem acesso automático ou pendência do juiz (D7, §106). A5-08: canal 2 e canal 3 sem acesso automático deixam de contar como consultados. Dados legados migrados por `scripts/migrar_zero_humano.py`; `contar_filas_humanas.py` vira `contar_filas.py`. O portão `verificar_fila_nao_humana.py` passa a reprovar humano/humana em código ativo de *.py/*.js/*.yml, com cinco exceções declaradas.
 
+## 2026-10-10 · #PR · planos estaduais pontuados ganham o link do documento
+
+31 dos 41 instrumentos estaduais pontuados passam a ter endereço oficial (Diário Oficial, portal da Defesa Civil ou do governo), achado por busca dirigida e registrado com o grau de conferência em `data/proveniencia_estadual.json`; os 10 sem documento rastreável ficam como defeito de prova declarado, sem mudar nota. O juiz passa a gravar o endereço que leu. Portão: pontuado sem endereço nem defeito declarado reprova.
+
+## 2026-10-10 · #PR · elo cancelado na fila é refeito, e a fila deixa de cancelar
+
+O grupo `noturno` guardava um só pendente: na abertura de 10/10 o pendente seguinte cancelou `diarios / coletar`, e o despachante contou o cancelado como execução. Agora cada elo tem grupo próprio e espera a vez por ordem de chegada (`vez_na_noite.py`); run cancelado/pulado não conta; a reserva refaz elo sem `.feito`; o artefato do marcador passa a existir (`NOITE` exportado). Ensaio 14.
 ## 2026-10-10 · #PR · o DOU não reacrescenta o reconhecimento que o MIDR acabou de gravar
 
 Na rodada dos diários de 10/10, o canal do DOU decidiu por chaves montadas antes do canal do MIDR rodar e acrescentou de novo 44 reconhecimentos federais (mesma portaria, URL `http` × `https`); `verificar_consistencia.py` reprovou a `main`. `incorporar_ato_dou` lê o banco como está e casa também por IBGE, causa e portaria; os 44 pares viram um evento, com o decreto municipal somado. Em `coletar_s2id.py`.

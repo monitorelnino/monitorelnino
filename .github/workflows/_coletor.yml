@@ -75,7 +75,31 @@ permissions:
   contents: read
 
 jobs:
+  # 10/10/2026 (janela A, item 2): A VEZ NA NOITE. O grupo `noturno` era um grupo de concorrência
+  # só, e o GitHub guarda nele um run em execução e UM pendente — o terceiro cancela o pendente,
+  # com `cancel-in-progress: false` ou sem. Foi o que matou `diarios / coletar` às 01:14 de 10/10
+  # (pendente, zero passos). Agora cada elo tem o seu grupo (`noturno-<elo>`), e a exclusão mútua
+  # entre os escritores das filas é este job: espera, por ordem de chegada (id do run), que nenhum
+  # run anterior dos workflows do antigo grupo esteja aberto. Ninguém é cancelado, ninguém escreve
+  # ao mesmo tempo. Fora do grupo `noturno` o job sai na hora.
+  vez:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        if: inputs.grupo_de_concorrencia == 'noturno'
+        with: { persist-credentials: false, sparse-checkout: scripts }
+      - name: Esperar a vez na noite
+        if: inputs.grupo_de_concorrencia == 'noturno'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/vez_na_noite.py --esperar --run-id "${{ github.run_id }}" --ramo "${GITHUB_REF_NAME}" --teto-min 300
+
   coletar:
+    needs: [vez]
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -83,8 +107,10 @@ jobs:
     timeout-minutes: ${{ inputs.timeout_minutos }}
     # Fila, não cancelamento: uma coleta interrompida no meio perde o que já achou. Só o publicador
     # cancela o anterior, porque publicar duas vezes o mesmo estado não tem valor.
+    # 10/10/2026: `noturno` vira `noturno-<elo>` — um pendente só é substituído por outro run do
+    # MESMO elo; a exclusão mútua entre elos diferentes é o job `vez`, acima.
     concurrency:
-      group: ${{ inputs.grupo_de_concorrencia != '' && inputs.grupo_de_concorrencia || format('coletor-{0}', inputs.nome) }}
+      group: ${{ inputs.grupo_de_concorrencia == 'noturno' && format('noturno-{0}', inputs.nome) || (inputs.grupo_de_concorrencia != '' && inputs.grupo_de_concorrencia || format('coletor-{0}', inputs.nome)) }}
       cancel-in-progress: false
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -236,6 +262,10 @@ jobs:
           mkdir -p "data/noite/$NOITE"
           echo "${{ inputs.nome }} · $(date -u +%FT%TZ) · run ${{ github.run_id }}" \
             > "data/noite/$NOITE/${{ inputs.nome }}.feito"
+          # 10/10/2026: o passo seguinte lê `env.NOITE`, e ninguém o exportava — o artefato saía
+          # como `feito-<elo>-` com caminho `data/noite//<elo>.feito`, ou seja, não saía. A
+          # segunda prova do marcador (`marcador_de_elo.py`) nunca existiu de fato.
+          echo "NOITE=$NOITE" >> "$GITHUB_ENV"
           echo "feito=1" >> "$GITHUB_OUTPUT"
           echo "marcador: data/noite/$NOITE/${{ inputs.nome }}.feito"
 

@@ -145,7 +145,68 @@ def esta_devido(temporizador: dict, execucoes: list, agora: dt.datetime) -> bool
     if not e_dia_previsto(temporizador.get("cron_primario"), agora):
         return False
     desde = inicio_da_janela(agora, janela)
-    return not any(str(e.get("createdAt") or "") >= desde for e in (execucoes or []))
+    # 10/10/2026: execução cancelada, pulada ou estourada NÃO conta (regra 3 do CLAUDE.md). Na
+    # abertura de 10/10 o `diarios / coletar` foi cancelado na fila às 01:14, sem passo executado,
+    # e o despachante das 02:26 viu "houve execução na janela" e não redisparou: os diários só
+    # rodaram às 07:42, pelo cron do próprio elo, e entraram na `main` às 09:11.
+    return not any(str(e.get("createdAt") or "") >= desde and not nao_trabalhou(e)
+                   for e in (execucoes or []))
+
+
+NAO_TRABALHARAM = ("cancelled", "skipped", "timed_out", "startup_failure")
+
+
+def nao_trabalhou(execucao: dict) -> bool:
+    """A execução terminou sem trabalhar (cancelada, pulada, estourada)? Função pura."""
+    return (str(execucao.get("status") or "").lower() == "completed"
+            and str(execucao.get("conclusion") or "").lower() in NAO_TRABALHARAM)
+
+
+# 10/10/2026 (janela A, item 2): A RESERVA DOS ELOS. O temporizador só conhece o elo que tem cron;
+# descoberta, evidências e juiz são acionados pelo término do anterior, e quando o run deles é
+# cancelado na fila ou pulado (porque o anterior não terminou em sucesso) ninguém os refazia.
+# Elo, workflow, e o elo que precisa ter trabalhado antes dele.
+ELOS_DA_RESERVA = (
+    ("diarios", "noturno_diarios.yml", None),
+    ("descoberta", "noturno_descoberta.yml", "diarios"),
+    ("evidencias", "noturno_evidencias.yml", "descoberta"),
+    ("juiz", "noturno_juiz.yml", "evidencias"),
+    ("triagem", "noturno_triagem.yml", None),
+)
+TENTATIVAS_DA_RESERVA = 3
+ULTIMO_DISPARO_DA_RESERVA = "08:00"   # depois disso o elo não termina antes das 09:00 UTC
+ABERTOS = ("queued", "requested", "waiting", "pending", "in_progress")
+
+
+def plano_da_reserva(execucoes_por_workflow: dict, feitos: set, agora: dt.datetime,
+                     ja_no_plano=(), elos=ELOS_DA_RESERVA) -> list:
+    """No máximo UM elo da corrente a refazer agora. Função pura.
+
+    Refaz o primeiro elo, na ordem da corrente, que: não tem marcador `.feito` nesta noite; já foi
+    tentado na janela e nenhuma tentativa está aberta (na fila ou rodando); tem o elo anterior
+    feito; e ainda não gastou as tentativas. Um por vez, porque o seguinte depende do anterior —
+    e o próprio término do refeito aciona o seguinte pela corrente.
+    """
+    if not na_janela(agora, {"inicio_utc": "01:00", "fim_utc": ULTIMO_DISPARO_DA_RESERVA}):
+        return []
+    desde = inicio_da_janela(agora, {"inicio_utc": "01:00", "fim_utc": "09:00"})
+    for elo, workflow, anterior in elos:
+        if elo in feitos or workflow in set(ja_no_plano):
+            continue
+        if anterior and anterior not in feitos:
+            continue
+        na_noite = [e for e in (execucoes_por_workflow or {}).get(workflow) or []
+                    if str(e.get("createdAt") or "") >= desde]
+        if not na_noite:
+            continue          # nunca tentado: é do temporizador ou da corrente, não da reserva
+        if any(str(e.get("status") or "").lower() in ABERTOS for e in na_noite):
+            continue
+        if len(na_noite) >= TENTATIVAS_DA_RESERVA:
+            continue
+        return [{"id": f"reserva-{elo}", "workflow": workflow, "entradas": {},
+                 "chave": f"reserva-{elo}@{desde}", "atraso_min": 0,
+                 "alem_da_tolerancia": False, "gravidade": "alta", "elo": elo}]
+    return []
 
 
 def atraso_min(temporizador: dict, agora: dt.datetime) -> int:
@@ -272,6 +333,17 @@ def execucoes_de(workflow: str, limite: int = 20) -> list:
     return bruto
 
 
+def elos_feitos(agora: dt.datetime) -> set:
+    """Os elos com marcador nesta noite — na árvore ou no artefato (`marcador_de_elo.py`)."""
+    sys.path.insert(0, str(RAIZ / "scripts"))
+    from janela_da_noite import noite_de
+    from marcador_de_elo import artefatos_do_repositorio, trabalhou
+    noite = noite_de(agora)
+    artefatos = artefatos_do_repositorio()
+    return {elo for elo, _, _ in ELOS_DA_RESERVA
+            if trabalhou(elo, noite, lambda c: (RAIZ / c).is_file(), artefatos)[0]}
+
+
 def disparar(item: dict, origem: str) -> bool:
     """Dispara o workflow por workflow_dispatch. Devolve se o comando foi aceito."""
     args = ["workflow", "run", item["workflow"]]
@@ -395,6 +467,44 @@ def _autoteste() -> int:
     ok("dois temporizadores no mesmo workflow se distinguem pela janela",
        [x["id"] for x in plano2] == ["noite"])
 
+    ok("execução CANCELADA na janela não conta: o temporizador volta a estar devido",
+       esta_devido(t, [{"createdAt": "2026-10-04T01:10:00Z", "status": "completed",
+                        "conclusion": "cancelled"}], agora))
+    ok("execução pulada também não conta",
+       esta_devido(t, [{"createdAt": "2026-10-04T01:10:00Z", "status": "completed",
+                        "conclusion": "skipped"}], agora))
+    ok("execução que falhou conta (pode ter coletado; o marcador decide na reserva)",
+       not esta_devido(t, [{"createdAt": "2026-10-04T01:10:00Z", "status": "completed",
+                            "conclusion": "failure"}], agora))
+    canc = {"createdAt": "2026-10-10T01:10:45Z", "status": "completed", "conclusion": "cancelled"}
+    aberto = {"createdAt": "2026-10-10T02:00:00Z", "status": "queued", "conclusion": ""}
+    t_r = d(2026, 10, 10, 2, 26)    # a hora real do despachante que não refez os diários
+    r1 = plano_da_reserva({"noturno_diarios.yml": [canc]}, set(), t_r)
+    ok("pendente cancelado pela fila é refeito pela reserva (abertura de 10/10)",
+       [x["elo"] for x in r1] == ["diarios"])
+    ok("a reserva não duplica o que o temporizador já vai disparar",
+       plano_da_reserva({"noturno_diarios.yml": [canc]}, set(), t_r,
+                        ja_no_plano=["noturno_diarios.yml"]) == [])
+    ok("elo com marcador não é refeito",
+       plano_da_reserva({"noturno_diarios.yml": [canc]}, {"diarios"}, t_r) == [])
+    ok("elo com tentativa aberta (na fila) não é refeito por cima",
+       plano_da_reserva({"noturno_diarios.yml": [canc, aberto]}, set(), t_r) == [])
+    pulada = {"createdAt": "2026-10-10T01:14:46Z", "status": "completed", "conclusion": "skipped"}
+    ok("elo da corrente pulado só é refeito depois de o anterior ter trabalhado",
+       plano_da_reserva({"noturno_descoberta.yml": [pulada]}, set(), t_r) == []
+       and [x["elo"] for x in plano_da_reserva({"noturno_descoberta.yml": [pulada]},
+                                               {"diarios"}, t_r)] == ["descoberta"])
+    ok("um elo por vez, na ordem da corrente",
+       [x["elo"] for x in plano_da_reserva({"noturno_diarios.yml": [canc],
+                                            "noturno_triagem.yml": [canc]}, set(), t_r)]
+       == ["diarios"])
+    ok("a reserva desiste depois de três tentativas",
+       plano_da_reserva({"noturno_diarios.yml": [canc] * 3}, set(), t_r) == [])
+    ok("a reserva não dispara depois das 08:00 UTC (não terminaria na janela)",
+       plano_da_reserva({"noturno_diarios.yml": [canc]}, set(), d(2026, 10, 10, 8, 30)) == [])
+    ok("elo nunca tentado não é da reserva",
+       plano_da_reserva({}, {"diarios"}, t_r) == [])
+
     ok("relógio sem tique é silencioso", relogio_silencioso("", agora))
     ok("tique de 10 minutos não é silêncio",
        not relogio_silencioso("2026-10-04T02:30:00", agora))
@@ -425,7 +535,7 @@ def _autoteste() -> int:
     nomes = set()
     for nome_obj, obj in list(globals().items()):
         if nome_obj in ("_autoteste", "main", "disparar", "abrir_issue", "execucoes_de", "_gh",
-                        "despachar"):
+                        "despachar", "elos_feitos"):
             continue
         codigo = getattr(obj, "__code__", None)
         if codigo is not None:
@@ -441,9 +551,12 @@ def _autoteste() -> int:
 def despachar(origem: str, relatorio: bool = False, silencioso: bool = False) -> int:
     agora = dt.datetime.now(dt.timezone.utc).replace(tzinfo=None)
     reg = json.loads(REGISTRO.read_text(encoding="utf-8"))
-    workflows = sorted({t.get("workflow") for t in reg.get("temporizadores") or []})
+    workflows = sorted({t.get("workflow") for t in reg.get("temporizadores") or []}
+                       | {w for _, w, _ in ELOS_DA_RESERVA})
     execucoes = {w: execucoes_de(w) for w in workflows if w}
     plano = plano_de_disparo(reg, execucoes, agora)
+    plano += plano_da_reserva(execucoes, elos_feitos(agora), agora,
+                              ja_no_plano=[x["workflow"] for x in plano])
 
     if not silencioso:
         print(f"despachante · {hora_utc(agora)} UTC · origem {origem} · "
