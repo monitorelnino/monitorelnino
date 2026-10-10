@@ -52,7 +52,7 @@ DOCUMENTOS = [
      # Decisão da central em 02/10/2026 (item 6.3): o plano não cita o El Niño nem o ciclo, é de
      # 2026 e cobre o risco previsto para o Pará — degrau de plano revisado, 55.
      "esperado": {"f1": None, "f2": None, "plano": "VIG_REVISADO"},
-     "nota": "domínio oficial da SESPA; verificação humana da central, relido aqui"},
+     "nota": "domínio oficial da SESPA; indicado pela central, relido aqui pela máquina"},
     {"uf": "MT", "doc": "Portaria nº 0195/2026/GBSES",
      "data": "01/01/2026", "numero": "0195/2026",
      "url": "https://www.saude.mt.gov.br/storage/files/MmMbtQx9n43VPO23mMookK6LdUyD6h4QfMOvqx44.pdf",

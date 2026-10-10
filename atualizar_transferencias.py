@@ -311,7 +311,7 @@ def autoteste() -> int:
         "504 persistente: desiste DECLARANDO a lacuna com código e município": t2,
         "429 termina — a versão anterior era laço infinito": t3,
         "negativo: 404 não repete e não dorme": t4,
-        "palavra-chave filtra o que vai à revisão humana": t5,
+        "palavra-chave filtra o que vai à fila de revisão automática": t5,
     })
 
 

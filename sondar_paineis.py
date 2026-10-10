@@ -112,8 +112,8 @@ def carregar_fila():
         "Fila de pistas de CAMADA (sondar_paineis.py, 22/09/2026): referências a painéis "
         "e hospedagens de terceiros achadas no HTML de sítios oficiais. Motivada pelo "
         "painel Power BI da Defesa Civil do AM, público e nunca alcançado pela varredura "
-        "textual. TRAVA ABSOLUTA: nada aqui entra no banco sem confirmação humana do "
-        "documento primário (promoção = regra R7). Um item nesta fila NÃO é plano: é um "
+        "textual. TRAVA ABSOLUTA: nada aqui entra no banco sem o juiz automático ler o "
+        "documento primário (promoção = regra R7, §106). Um item nesta fila NÃO é plano: é um "
         "lugar onde ainda não olhamos."),
         "itens": []})
 
@@ -379,7 +379,7 @@ def main() -> int:
             print(f"  + {uf}/{setor}: {n['tipo']} — {n['url'][:100]}")
     gravar(FILA, fila)
     print(f"\n{total} pista(s) de camada nova(s); fila com {len(fila['itens'])} item(ns).")
-    print("Nenhuma entra no banco sem abertura em navegador e confirmação humana.")
+    print("Nenhuma entra no banco sem o documento primário lido pela máquina (juiz automático, §106).")
     return 0
 
 

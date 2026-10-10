@@ -1636,7 +1636,7 @@ def funil_da_noite(data=None) -> str:
          f"**{c.get('nao_resolvidas_por_orcamento', 0)}**",
          f"- lidas: **{c.get('lidas', 0)}** · inacessíveis: **{c.get('inacessiveis', 0)}** · "
          f"não lidas por orçamento: **{c.get('nao_lidas_por_orcamento', 0)}**",
-         f"- exibíveis: **{c.get('exibiveis', 0)}** (limiar da amostra humana: "
+         f"- exibíveis: **{c.get('exibiveis', 0)}** (limiar da amostra de auditoria: "
          f"{EXIBIVEIS_PARA_AMOSTRA})",
          f"- entradas automáticas na lista de veículos: **{len(cresc.get('entraram') or [])}** "
          f"de {cresc.get('candidatos', 0)} candidatos"]

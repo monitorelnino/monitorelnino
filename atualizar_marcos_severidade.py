@@ -173,7 +173,7 @@ MODELO_MANUAL = {
         "Preencha t_monitor (DD/MM/AAAA) para cada UF onde o risco atingiu o patamar "
         "de 12.3.1, verificando a fonte ao vivo (CEMADEN, INMET ou o boletim Infoqueima "
         "do INPE). Deixe null enquanto o patamar não tiver sido atingido no ciclo. "
-        "Isto é uma ENTRADA HUMANA — nada aqui é gerado automaticamente."
+        "Isto é uma ENTRADA DECLARADA, com fonte — nada aqui é gerado automaticamente; errata por linha (§106)."
     ),
     "deslizamento": {}, "enchente": {}, "inundacao": {}, "chuvas_intensas": {}, "incendio": {},
 }

@@ -376,7 +376,7 @@ def _varrer(alvo, por_cod, desde, atos, pistas, vistos, vistos_pistas):
         cobertura_qd(cod, desde, resposta_com_diario=True)   # com excertos = coberto, sem gastar outra chamada
         log_busca("DOM", 1, TERMOS_RESPOSTA + TERMOS_PISTA, "registro" if decretos else "com_excerto", uf=ref["uf"],
                   municipio=ref["nome"], ibge=cod, n_resultados=dados.get("total_gazettes"), hash_evidencia=h,
-                  resultados=f"{len(decretos)} decretos, {len(pist)} pistas (com_excerto: pista para a fila humana; R7)")
+                  resultados=f"{len(decretos)} decretos, {len(pist)} pistas (com_excerto: pista pendente do juiz automático; R7)")
         n_ok += 1
         if n_ok % 250 == 0:
             # Salvamento parcial: descarrega os lotes e grava o banco. Uma varredura nacional não

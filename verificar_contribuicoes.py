@@ -82,7 +82,7 @@ def main() -> int:
               {"gerada_em": hoje, "fila": fila, "incompletas": incompletas})   # §229
 
     md = [f"# Fila de conferência de contribuições · {hoje}",
-          f"\n{len(fila)} para verificação humana · {len(incompletas)} incompletas\n"]
+          f"\n{len(fila)} não aplicada(s) — abstenção registrada · {len(incompletas)} incompletas\n"]
     for i, it in enumerate(fila, 1):
         t = it["triagem"]
         md.append(f"## {i}. {it['municipio']}/{it['uf']} · {it['tipo']} · recebida {it['recebida_em']}")
@@ -93,7 +93,7 @@ def main() -> int:
                   f" · já no banco: {t['ja_no_banco'] or 'não'}")
         md.append("- [ ] URL abre e é fonte oficial  [ ] Ato confere (nº/data)  [ ] Categoria correta  [ ] Entrar no banco com canal de origem\n")
     open(destino / f"fila_{hoje}.md", "w", encoding="utf-8", newline="\n").write("\n".join(md))
-    print(f"✓ Fila de conferência: {len(fila)} item(ns) para verificação humana, {len(incompletas)} incompleto(s) → fila_contribuicoes/fila_{hoje}.md")
+    print(f"✓ Fila de conferência: {len(fila)} item(ns) não aplicado(s) (abstenção registrada), {len(incompletas)} incompleto(s) → fila_contribuicoes/fila_{hoje}.md")
     if "--limpar" in sys.argv:
         import shutil
         shutil.rmtree(destino, ignore_errors=True)

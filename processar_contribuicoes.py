@@ -10,12 +10,11 @@ Regras de aprovação automática (todas obrigatórias):
   R1  Campos completos e válidos (UF real, tipo reconhecido, URL https).
   R2  Município existe na malha IBGE (casamento exato normalizado — sem
       adivinhação por similaridade: nome ambíguo é recusa, não palpite).
-  R7  Reserva de julgamento humano (27/08/2026): tipo "plano" (move o índice)
-      e QUALQUER contribuição sobre capital (o maior município da UF — a maior
-      alavanca populacional individual do componente de cobertura, v2.2) nunca
-      são auto-aplicados — ficam para a fila humana (verificar_contribuicoes →
-      converter_contribuicao → aplicar_revisao), onde a categoria é decisão
-      humana após leitura do documento. O caminho automático fica restrito,
+  R7  Reserva (27/08/2026): tipo "plano" (move o índice) e QUALQUER contribuição
+      sobre capital (o maior município da UF — a maior alavanca populacional
+      individual do componente de cobertura, v2.2) nunca são auto-aplicados.
+      Desde 08/10/2026 (D7, METODOLOGIA §106) não há fila para pessoa: o item
+      fica não aplicado, com abstenção registrada. O caminho automático fica restrito,
       por construção, a decretos de não-capitais — neutros ao escore pela
       Correção B. Após aplicar, este script roda recalcular_mare.py --write
       para regravar percentual_uf.json derivado; o portão de consistência do
@@ -243,26 +242,25 @@ def main():
         if chave not in ref:
             recusa(sid, uf, municipio, "município não reconhecido na malha IBGE — grafia precisa ser exata (R2)"); continue
         # AUTOAPLICAÇÃO SUSPENSA (auditoria externa de 02/09/2026, AUD-02/AUD-03): até a
-        # editoria reativar por escrito, toda contribuição vai para a fila humana. Reativar =
+        # editoria reativar por escrito, toda contribuição fica não aplicada (abstenção registrada). Reativar =
         # AUTOAPLICAR = True, somente após os testes negativos de XSS/SSRF passarem no CI.
         if not AUTOAPLICAR:
             reservadas += 1
-            print(f"  ◷ {municipio}/{uf}: reservada à revisão humana (autoaplicação suspensa — auditoria 02/09/2026)")
+            print(f"  ◷ {municipio}/{uf}: não aplicada — abstenção registrada (autoaplicação suspensa — auditoria 02/09/2026)")
             continue
-        # v2.2.4 (§7.6): "plano_saude" NUNCA é automatizável — cai sempre na fila humana,
+        # v2.2.4 (§7.6): "plano_saude" NUNCA é automatizável — abstenção registrada,
         # como todo tipo fora do par ("plano", "decreto").
         if tipo not in ("plano", "decreto"):
             # R3 (corrigida em 27/08/2026): tipos não-automáticos NÃO são recusados —
-            # ficam RESERVADOS à análise editorial, visíveis na fila humana até o
-            # julgamento (mesmo mecanismo da R7). Cobre: plano_elaboracao,
-            # plano_antigo, ato_antecipatorio (exige teste do objeto §5.2.1),
-            # outro_ato e correcao. A categoria final é SEMPRE julgamento humano
-            # (converter_contribuicao.py --categoria, obrigatório).
+            # ficam não aplicados, com abstenção registrada (mesmo mecanismo da R7).
+            # Cobre: plano_elaboracao, plano_antigo, ato_antecipatorio (exige teste do
+            # objeto §5.2.1), outro_ato e correcao. Categoria nunca se infere: só por
+            # errata por linha (converter_contribuicao.py --categoria, obrigatório).
             reservadas += 1
             print(f"  ◷ {municipio or '?'}/{uf or '?'}: reservada à análise editorial (tipo '{tipo}'"
                   + (" — aplicar teste do objeto §5.2.1" if tipo == "ato_antecipatorio" else "") + ")")
             continue
-        # R7 — reserva de julgamento humano: "plano" move o índice; capital é
+        # R7 — reserva: "plano" move o índice; capital é
         # maior alavanca populacional individual da UF (v2.2). Nenhum é auto-aplicável.
 # Classificação de atos em forma de decreto na revisão humana: TESTE DO OBJETO
 # (METODOLOGIA §5.2.1) — objeto ex-ante sem declarar dano + gatilho de previsão
@@ -272,12 +270,12 @@ def main():
 # estado na revisão humana, rodar busca pelo NOME DO ENTE × dicionário completo
 # e registrar (data, motor, strings, resultados). Denominação atípica achada →
 # entra no dicionário com origem e data.
-        # NÃO marca como processada nem recusada: a submissão permanece visível
-        # na fila humana (verificar_contribuicoes.py) até ser julgada; depois de
+        # NÃO marca como processada nem recusada: a submissão permanece não aplicada
+        # (abstenção registrada, verificar_contribuicoes.py lista); depois de
         # aplicada via aplicar_revisao.py, a R6 a encerra aqui como duplicata.
         if tipo == "plano" or CAPITAIS.get(ref[chave]["nome"]) == uf:
             reservadas += 1
-            print(f"  ◷ {ref[chave]['nome']}/{uf}: reservada à revisão humana (R7 — "
+            print(f"  ◷ {ref[chave]['nome']}/{uf}: não aplicada — abstenção registrada (R7 — "
                   + ("plano move o índice" if tipo == "plano" else "capital"), end=")\n")
             continue
         ok_host, host, motivo = host_oficial(url)
@@ -339,11 +337,11 @@ def main():
     # processadas é o que impede a MESMA contribuição de entrar duas vezes.
     gravar(ARQ_PROC.name, sorted(processadas))
     gravar(ARQ_REC.name, recusadas)
-    print(f"Contribuições: {aprovadas} aprovada(s) · {reservadas} reservada(s) à revisão humana (R7) · "
+    print(f"Contribuições: {aprovadas} aprovada(s) · {reservadas} não aplicada(s) — abstenção registrada (R7) · "
           f"{len(recusadas)} recusada(s) acumuladas no log.")
     if reservadas:
-        print("  → itens reservados aguardam na fila humana: rode verificar_contribuicoes.py, revise a fila,")
-        print("    converta os aprovados com converter_contribuicao.py e aplique com aplicar_revisao.py.")
+        print("  → itens não aplicados ficam sem efeito no índice (abstenção registrada); correção, só por")
+        print("    errata por linha (METODOLOGIA §106).")
     return 0
 
 

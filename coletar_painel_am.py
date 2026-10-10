@@ -533,8 +533,8 @@ def gravar_fila(saida: dict, url: str) -> dict:
         "A tabela do painel é DECLARAÇÃO DO ESTADO: traz o ano, não o número e a data do "
         "ato. Camada 'declarado' entra com o desconto da metodologia; 'documentado' só "
         "para município cujo link abriu o documento e cujo ato teve número e data lidos do "
-        "próprio documento. TRAVA ABSOLUTA: nada aqui entra no banco sem promoção humana "
-        "(regra R7). Ano 2026 no painel NÃO prova antecipação."),
+        "próprio documento. TRAVA ABSOLUTA: nada aqui entra no banco sem o juiz automático com "
+        "documento oficial lido (regra R7, §106). Ano 2026 no painel NÃO prova antecipação."),
         "itens": []})
     fila["fonte"] = url
     fila["atualizado_em"] = hoje()
@@ -570,7 +570,7 @@ def semear_da_sonda(efeitos: "Efeitos | None" = None) -> dict:
         ef.lacuna("leitura do painel do AM em data/pistas_paineis.json",
                   "caso do AM sem sub_painel_municipios.tabela — nada a semear",
                   "painel AM", 1, uf="AM")
-        return {"itens": [], "resumo": {"erro": "tabela da leitura humana ausente"}}
+        return {"itens": [], "resumo": {"erro": "tabela da leitura registrada ausente"}}
 
     sub = caso["sub_painel_municipios"]
     por_cod, por_nome = referencia_ibge()
@@ -593,21 +593,21 @@ def semear_da_sonda(efeitos: "Efeitos | None" = None) -> dict:
             "municipio_no_painel": nome, "calha": linha.get("calha"),
             "ano_do_plano": linha.get("ano_do_plano"),
             "url_do_link": None,
-            "como_obtido": "leitura humana do painel em 22/09/2026 — links por município não capturados",
+            "como_obtido": "leitura registrada do painel em 22/09/2026 — links por município não capturados",
             "indice_no_painel": linha.get("indice"),
             "uf": "AM", "ibge": cod, "casamento_ibge": como,
             "nome_ibge": (por_cod.get(cod) or {}).get("nome") if cod else None,
             "camada": "declarado" if tem_plano else "sem_plano_declarado",
             "ato": None, "hash_evidencia": None,
             "documento_oficial_confirmado": None, "promovivel": False,
-            "origem": "leitura_humana_22-09-2026",
+            "origem": "leitura_registrada_22-09-2026",
             "lido_em": sub.get("lido_em") or "2026-09-22",
             "observacao": ("o painel declara o ano; número e data do ato exigem abrir o link "
                            "de cada município numa rodada renderizada")
             if tem_plano else "painel não declara plano para este município",
         })
     if ibges:
-        ef.marcar(ibges, "painel Power BI da Defesa Civil do AM (leitura humana 22/09/2026)",
+        ef.marcar(ibges, "painel Power BI da Defesa Civil do AM (leitura registrada 22/09/2026)",
                   "estadual", resultado="consultada")
     resumo = {"n_linhas_lidas": len(itens),
               "documentado": 0,
@@ -615,10 +615,10 @@ def semear_da_sonda(efeitos: "Efeitos | None" = None) -> dict:
               "sem_plano_declarado": sum(1 for i in itens if i["camada"] == "sem_plano_declarado"),
               "sem_codigo_ibge": sum(1 for i in itens if not i["ibge"]),
               "no_ciclo": 0,
-              "origem": "leitura_humana_22-09-2026"}
+              "origem": "leitura_registrada_22-09-2026"}
     ef.log("painel AM", 1, [sub.get("url", "")], "pista", uf="AM", nivel="estadual",
            n_resultados=len(itens),
-           resultados=(f"semeadura da leitura humana: {resumo['declarado']} declarado(s), "
+           resultados=(f"semeadura da leitura registrada: {resumo['declarado']} declarado(s), "
                        f"{resumo['sem_plano_declarado']} sem plano; 0 documentado"))
     return {"itens": itens, "resumo": resumo}
 
@@ -1064,7 +1064,7 @@ def autoteste() -> int:
         "render falho vira lacuna declarada, não ausência": t_render_falho_vira_lacuna,
         "trava de campo: nasce não promovível": t_trava_de_campo,
         "autoteste é offline e não escreve em data/": t_autoteste_nao_toca_em_data,
-        "semeadura da leitura humana nunca vira documentado": t_semeadura_nunca_produz_documentado,
+        "semeadura da leitura registrada nunca vira documentado": t_semeadura_nunca_produz_documentado,
         "semeadura casa os 62 municípios com IBGE (51/11)": t_semeadura_casa_os_62_com_ibge,
         "Careiro Castanho casa por eliminação, e fica marcado": t_careiro_casa_por_eliminacao_e_fica_marcado,
         "eliminação não dispara com dois sem par (seria chute)": t_eliminacao_nao_dispara_com_dois_sem_par,
@@ -1127,7 +1127,7 @@ def main() -> int:
         print(f"  documentos lidos em captura de arquivo:        {r['documentos_de_captura']}"
               "  ← a fonte não respondeu; o documento é o arquivado")
     print(f"\nFila: data/{FILA} ({len(fila['itens'])} item(ns)).")
-    print("Nada entra no banco sem promoção humana (R7). Ano no painel não prova antecipação.")
+    print("Nada entra no banco sem o juiz automático com documento oficial lido (R7, METODOLOGIA §106). Ano no painel não prova antecipação.")
     return 0
 
 

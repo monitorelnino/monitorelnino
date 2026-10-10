@@ -129,7 +129,7 @@ def gerar():
                     "status": "a_enviar", "protocolo": None, "data_envio": None, "prazo_legal": None, "prorrogacao": None,
                     "data_resposta": None, "resultado": None, "url_evidencia": None})
     reg = {"formato": "§3.7 do doc de redesenho 02/09/2026 — registro público dos pedidos de LAI do Monitor; "
-                      "'a_enviar' = texto gerado, envio humano pendente (Fala.BR exige pessoa física identificada)",
+                      "'a_enviar' = texto gerado, ainda não protocolado (o Fala.BR exige pessoa física identificada)",
            "gerado_em": hoje_editorial().isoformat(), "pedidos": pedidos}
     json.dump(reg, open(SAIDA.parent / "lai_pedidos.json", "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
     print(f"LAI: {len(pedidos)} pedidos gerados em {SAIDA} (27 defesa civil + 27 saúde + 1 Carro-Pipa + 1 Cadastro Nacional); registro em data/lai_pedidos.json")

@@ -110,7 +110,7 @@ def main():
           f"{limite} consultadas nesta execução (posição {pos}→{(pos+limite) % len(universo)}).")
     if total_novas:
         print(f"[PISTAS NOVAS] {total_novas} para julgamento automático "
-              f"(julgar_e_aplicar_descobertas.py) ou triagem humana:")
+              f"(julgar_e_aplicar_descobertas.py; na dúvida, abstenção registrada):")
         for p in fila["pistas"][-total_novas:]:
             marca = " [parece oficial]" if p["fonte_provavel_oficial"] else ""
             print(f"  · [{p['alvo']}]{marca} {p['titulo'][:100]}")

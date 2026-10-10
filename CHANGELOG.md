@@ -35,6 +35,9 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-10 · #PR · elo fora da `main` não empurra para a `main`; token do Netlify sai da URL
 
 `_coletor.yml` partia da `main` e empurrava `HEAD:main` em qualquer ramo: um elo disparado no ramo de ensaio gravaria na `main` de dia (F32, ensaio 16). Agora, fora da `main`, o commit não é empurrado. `verificar_contribuicoes.py` passa o token do Netlify no cabeçalho `Authorization`, não na URL (A6-31).
+## 2026-10-10 · #PR · zero etapa humana no código ativo
+
+Rotas, status, filas e mensagens que esperavam pessoa viram abstenção registrada (`ABSTENCAO`), lacuna sem acesso automático ou pendência do juiz (D7, §106). A5-08: canal 2 e canal 3 sem acesso automático deixam de contar como consultados. Dados legados migrados por `scripts/migrar_zero_humano.py`; `contar_filas_humanas.py` vira `contar_filas.py`. O portão `verificar_fila_nao_humana.py` passa a reprovar humano/humana em código ativo de *.py/*.js/*.yml, com cinco exceções declaradas.
 
 ## 2026-10-10 · #PR · a semana sai em datas, e o juiz de saúde ganha as quatro travas (absorve #582)
 

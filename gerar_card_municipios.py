@@ -164,7 +164,7 @@ def autoteste():
             "sem_ato_de_aprovacao": True}]
     pis = [{"ibge": "3529005", "municipio": "Marília", "uf": "SP", "status": "pista — promover…", "nivel_confianca": "B", "titulo": "Marília prepara plano", "url": "https://www.marilianoticia.com.br/a", "data": "15/09/2026"},
            {"ibge": "3529005", "municipio": "Marília", "uf": "SP", "status": "pista — promover…", "nivel_confianca": "C", "titulo": "ruído", "url": "https://x", "data": "16/09/2026"},
-           {"ibge": "3529005", "municipio": "Marília", "uf": "SP", "status": "rejeitada_humana", "nivel_confianca": "A", "titulo": "rejeitada", "url": "https://y", "data": "17/09/2026"},
+           {"ibge": "3529005", "municipio": "Marília", "uf": "SP", "status": "rejeitada_pelo_juiz", "nivel_confianca": "A", "titulo": "rejeitada", "url": "https://y", "data": "17/09/2026"},
            {"ibge": "4301602", "municipio": "Bagé", "uf": "RS", "status": "pista — promover…", "nivel_confianca": "A", "titulo": "Bagé lança plano", "url": "https://g1.globo.com/b", "data": "01/09/2026"}]
     c = montar(ref, prior, mun, pis, dsp)
 

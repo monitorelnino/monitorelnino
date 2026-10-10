@@ -448,9 +448,9 @@ def _autoteste() -> int:
             ok("sincronizar não perde o que está só no disco",
                len(falso[FILA_PADRAO]["pistas"]) == 3)
             ok("sincronizar mescla o estado que a memória tocou",
-               (memoria["pistas"][0].__setitem__("triagem", "humana"),
+               (memoria["pistas"][0].__setitem__("triagem", "automatica"),
                 sincronizar(FILA_PADRAO, memoria),
-                falso[FILA_PADRAO]["pistas"][0].get("triagem") == "humana")[2])
+                falso[FILA_PADRAO]["pistas"][0].get("triagem") == "automatica")[2])
             ok("sincronizar deixa a memória igual ao disco",
                memoria["pistas"] is falso[FILA_PADRAO]["pistas"]
                or len(memoria["pistas"]) == len(falso[FILA_PADRAO]["pistas"]))
