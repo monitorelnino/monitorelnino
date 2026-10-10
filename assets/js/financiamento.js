@@ -862,14 +862,20 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
         data: (M || {}).gerado_em || (C || {}).revisado_em});
     }
     /* O desembolsado mês a mês, somando as origens que têm quebra por mês. */
-    const porMes = {};
+    /* Pago vazio é ausência, não zero (A6-22): fica fora da soma; mês sem nenhum valor declarado
+       sai como lacuna. Mês corrente da coleta vem marcado `parcial` (A6-13). */
+    const porMes = {}, mesParcial = {};
     origens.forEach(o => Object.entries(o.por_mes).forEach(([k, v]) => {
-      porMes[k] = (porMes[k] || 0) + Number((v || {}).pago || 0);
+      const pago = (v || {}).pago;
+      if (!(k in porMes)) porMes[k] = null;
+      if (typeof pago === 'number') porMes[k] = (porMes[k] || 0) + pago;
+      if ((v || {}).parcial) mesParcial[k] = true;
     }));
     if (el('dlOrigensMes')) {
       const meses = Object.keys(porMes).sort();
       el('dlOrigensMes').innerHTML = meses.map(k => '<dt>' + esc(mesLegivel(k)) + '</dt><dd>'
-        + reais(porMes[k]) + ' desembolsados</dd>').join('')
+        + (porMes[k] == null ? 'valor pago não declarado pela fonte' : reais(porMes[k]) + ' desembolsados')
+        + (mesParcial[k] ? ' <em>(mês parcial no Portal)</em>' : '') + '</dd>').join('')
         + origens.map(o => '<dt>' + esc(o.rotulo) + '</dt><dd>anunciado ' + reais(o.anunciado)
           + ' · empenhado ' + (o.empenhado == null ? 'sem execução coletada' : reais(o.empenhado))
           + ' · desembolsado ' + (o.desembolsado == null ? 'sem execução coletada' : reais(o.desembolsado))

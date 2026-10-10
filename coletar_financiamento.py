@@ -167,12 +167,23 @@ def parse_transferencias(dados) -> list:
     return out
 
 
+def _valor_ou_none(v):
+    """Número declarado, ou `None` quando a fonte não declarou (A6-22, 10/10/2026: `float(v or 0)`
+    transformava campo ausente em R$ 0,00)."""
+    if v in (None, ""):
+        return None
+    try:
+        return float(v)
+    except (TypeError, ValueError):
+        return None
+
+
 def parse_emendas(dados) -> list:
     out = []
     for it in (dados or []):
         it = limpar_autor(it)
         out.append({"rota": "r6" if "especial" in str(it.get("tipoEmenda") or "").lower() else "r5",
-                    "valor_empenhado": float(it.get("valorEmpenhado") or 0), "valor_pago": float(it.get("valorPago") or 0), "ano": it.get("ano"),
+                    "valor_empenhado": _valor_ou_none(it.get("valorEmpenhado")), "valor_pago": _valor_ou_none(it.get("valorPago")), "ano": it.get("ano"),
                     "uf": it.get("uf") or (it.get("localidadeDoGasto") or "")[-2:], "funcao": it.get("funcao"), "codigo_emenda": it.get("codigoEmenda")})
     return out
 
@@ -244,12 +255,18 @@ def autoteste():
                 and ilegivel["valor"] is None and ilegivel.get("valor_ausente") is True)
     def t4(): p = parse_emendas(FIX_E); return p[0]["rota"] == "r6" and "BELTRANO" not in json.dumps(p) and "nomeAutor" not in json.dumps(p)
     def t5(): return parse_transferencias(None) == [] and parse_emendas([]) == []
+    def t5b():
+        """A6-22: emenda sem valor declarado é ausência (None), nunca R$ 0,00; zero declarado é zero."""
+        e = parse_emendas([{"tipoEmenda": "Individual", "valorEmpenhado": "", "valorPago": None},
+                           {"tipoEmenda": "Individual", "valorEmpenhado": "0", "valorPago": "12.5"}])
+        return (e[0]["valor_empenhado"] is None and e[0]["valor_pago"] is None
+                and e[1]["valor_empenhado"] == 0.0 and e[1]["valor_pago"] == 12.5)
     def t6(): u = _l("por_uf.json")["uf"]; return len(u) == 27 and u["RS"]["fundo_a_fundo_preventivo"].get("precedente_E12") is True
     def t7(): return (FIN / "consultas.json").read_bytes() == _SNAP if _SNAP else True
     _SNAP = (FIN / "consultas.json").read_bytes() if (FIN / "consultas.json").exists() else b""
     return rodar_autoteste({"semear cria os 6 registros, sem tocar dados reais": t1, "8 rotas em ordem, cores únicas": t2, "parser transferências descarta autor (E10)": t3,
                             "§219 valor ausente não é zero": t3b,
-                            "parser emendas descarta autor (E10)": t4, "negativo: resposta nula": t5, "por_uf: 27 UFs, Prepara RS como precedente": t6,
+                            "parser emendas descarta autor (E10)": t4, "negativo: resposta nula": t5, "emenda sem valor é ausência (A6-22)": t5b, "por_uf: 27 UFs, Prepara RS como precedente": t6,
                             "negativo: autoteste não altera dados reais": t7})
 
 
