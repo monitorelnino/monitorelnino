@@ -1,0 +1,441 @@
+{
+ "_governanca": "Catálogo interno das falhas da corrente noturna de 04/10 a 10/10/2026, montado das notas do robo-registro e dos comentários datados do código; toda falha nova vira linha nova, com causa, prova e o caso de teste que a reproduz.",
+ "atualizado_em": "2026-10-10",
+ "falhas": [
+  {
+   "id": "F01",
+   "noite": "2026-10-03→2026-10-04",
+   "titulo": "A abertura por cron não disparou",
+   "sintoma": "O cron das 01:00 UTC de `noturno_diarios` e os da busca web não dispararam, e a corrente só abriu à mão às 02:40 UTC de 04/10 (já em 30/09 o cron atrasara 5h30).",
+   "causa": "O cron do GitHub é de melhor esforço e descarta ou atrasa agendamentos em horário de pico (:00, :10, :30), e a abertura dependia só dele.",
+   "prova": [
+    "run 37171775015 (diários, disparo manual 02:40:26 UTC)",
+    "run 37171798170 (busca web, disparo manual 02:40:55 UTC)",
+    "atraso de 5h30 medido em 30/09"
+   ],
+   "correcao": "PR #544 (minuto fora do pico, reserva às 01:37, vigia às 02:07) e PR #553 (despachante e relógio da nuvem)",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_despachante_nao_depende_do_cron",
+   "falta": null
+  },
+  {
+   "id": "F02",
+   "noite": "2026-10-03→2026-10-04",
+   "titulo": "Publicação parada por 10 pistas fora do esquema",
+   "sintoma": "`Publicar dados` falhou às 04:51 e às 05:16 UTC de 04/10 e nenhum dado novo foi publicado naquela noite.",
+   "causa": "O portão `verificar_esquema_de_pista.py` bloqueava a publicação inteira por 10 pistas malformadas, em vez de pô-las em quarentena.",
+   "prova": [
+    "Publicar dados 04/10 04:51 UTC e 05:16 UTC, passo Portões"
+   ],
+   "correcao": "PR #545 (parcial; o defeito voltou em F07) e PR #555 (quarentena pelo próprio portão)",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_pista_invalida_nao_para_a_publicacao",
+   "falta": null
+  },
+  {
+   "id": "F03",
+   "noite": "2026-10-03→2026-10-06",
+   "titulo": "29 publicações reprovadas por derivado obsoleto",
+   "sintoma": "29 das 33 falhas do publicador entre 03 e 06/10 foram o portão de derivado obsoleto, com o dado certo; o site chegou a ficar com dado de 05/10 em 06/10.",
+   "causa": "Gerador não idempotente (CODEMAP) regenerava diferente no publicador, e um portão de código barrava a publicação de dado.",
+   "prova": [
+    "Publicar dados 37467174563 (06/10, portões)",
+    "contagem de 03–06/10 no handover de publicação definitiva"
+   ],
+   "correcao": "PR #567 (fase 0, causa A) e PR #570 (idempotência vira portão de PR; perfil `publicacao`)",
+   "caso_de_teste": "scripts/verificar_idempotencia_dos_derivados.py",
+   "falta": null
+  },
+  {
+   "id": "F04",
+   "noite": "2026-10-03→2026-10-06",
+   "titulo": "3 publicações reprovadas pela corrida do medidor",
+   "sintoma": "Três publicações reprovaram por \"texto ausente\" no medidor de layout, com o dado certo.",
+   "causa": "`_layout_dump.js` media com `networkidle` mais 1,5 s, antes de o `fetch` de `financiamento.js` escrever a frase exigida pelo contrato.",
+   "prova": [
+    "contagem de 03–06/10 no handover de publicação definitiva"
+   ],
+   "correcao": "PR #570 (espera pela condição do contrato, até 20 s, e duas renderizações); em 08/10 a página deixou de buscar `compromissos_federais.json` quatro vezes",
+   "caso_de_teste": "scripts/testar_corrida_do_medidor.js",
+   "falta": null
+  },
+  {
+   "id": "F05",
+   "noite": "2026-10-04",
+   "titulo": "Despachante mudo: dois workflows rejeitados pelo GitHub",
+   "sintoma": "`busca_web_cadencia.yml` e `auditoria_seguranca.yml` apareciam com o caminho no lugar do nome, e cada push na `main` gerava um run `failure` com zero jobs; a busca web não rodaria na noite.",
+   "causa": "O tique oportunista do #552 foi inserido no meio do `actions/setup-python`, deixando um passo com `run` e `with` ao mesmo tempo, o que só o GitHub rejeita (actionlint e o validador local passavam).",
+   "prova": [
+    "run 37220698605",
+    "commit 5bd3119a (PR #552)"
+   ],
+   "correcao": "PR #553 (`with` devolvido ao setup-python; trava em `validar_workflows.py`; `verificar_workflow_aceito.py`; despachante trata rejeição como gravidade alta)",
+   "caso_de_teste": "scripts/verificar_workflow_aceito.py",
+   "falta": null
+  },
+  {
+   "id": "F06",
+   "noite": "2026-10-04",
+   "titulo": "Pacote do blog com credencial errada",
+   "sintoma": "O workflow `Pacote do blog` falhou às 19:08 BRT de 04/10 (e de novo às 22:08 UTC) com `Repository not found` ao gravar no repositório privado.",
+   "causa": "O passo usava `ROBO_DEPLOY_KEY` por SSH, que não alcança o repositório privado, enquanto os outros gravadores usam `ROBO_TOKEN` por HTTPS.",
+   "prova": [
+    "Pacote do blog 04/10 19:08 BRT",
+    "Pacote do blog 04/10 22:08:28 UTC"
+   ],
+   "correcao": "PR #554 (o clone avisa e segue), PR #555 (credencial dos outros gravadores) e PR #557 (passo removido: o pacote fica no artefato, por decisão da editoria)",
+   "caso_de_teste": null,
+   "falta": "Nenhum teste reprova workflow que grave no repositório privado com credencial diferente da dos demais gravadores; hoje o risco não volta só porque o passo saiu (#557)."
+  },
+  {
+   "id": "F07",
+   "noite": "2026-10-04→2026-10-05",
+   "titulo": "Oito publicações reprovadas pelo esquema de pista",
+   "sintoma": "A publicação reprovou oito vezes entre 21:23 e 03:57 BRT e o site ficou com dado de 04/10.",
+   "causa": "Coletores não migrados ao esquema de 03/10 (sobretudo `rede_social_oficial`) gravavam a fila direto, sem `url_final`, `tipo`, `alvo` e `nivel`, e o portão de esquema bloqueava a publicação inteira.",
+   "prova": [
+    "8 runs de Publicar dados 21:23→03:57 BRT",
+    "primeira publicação depois da correção: run 37289714404 (05/10 09:42 UTC)"
+   ],
+   "correcao": "PR #555 (`scripts/pistas.py` como porta única, oito coletores migrados, quarentena no portão)",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_pista_invalida_nao_para_a_publicacao",
+   "falta": null
+  },
+  {
+   "id": "F08",
+   "noite": "2026-10-04→2026-10-05",
+   "titulo": "Diários cancelados e contados como noite aberta",
+   "sintoma": "O job `diarios / coletar` foi cancelado às 01:14:09 UTC, dois minutos depois de começar, e as tentativas das 03:56 e 04:38 BRT saíram sem trabalhar.",
+   "causa": "A guarda \"esta noite já abriu?\" contava qualquer run criado na janela, inclusive cancelado, então reserva e despachante não refizeram a coleta.",
+   "prova": [
+    "run 37250382122"
+   ],
+   "correcao": "PR #556 (marcador `.feito`; `painel_da_noite.trabalhou`; `janela_da_noite.ja_abriu` exige trabalho)",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_elo_cancelado_e_recuperado",
+   "falta": null
+  },
+  {
+   "id": "F09",
+   "noite": "2026-10-04→2026-10-05",
+   "titulo": "Triagem pendente cancelada pelo grupo `noturno`",
+   "sintoma": "A triagem criada às 01:14:08 UTC foi cancelada sem rodar quando a descoberta chegou às 01:14:12.",
+   "causa": "Todos os elos dividiam o grupo de concorrência `noturno`, e o GitHub guarda um só pendente por grupo: o pendente novo cancela o anterior mesmo com `cancel-in-progress: false`.",
+   "prova": [
+    "relatório do PR #556 (triagem 01:14:08 × descoberta 01:14:12)"
+   ],
+   "correcao": "PR #627: grupo `noturno-<elo>`, fila por ordem de chegada (`scripts/vez_na_noite.py`) e reserva dos elos no despachante",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_pendente_cancelado_pela_fila_e_refeito",
+   "falta": null
+  },
+  {
+   "id": "F10",
+   "noite": "2026-10-04→2026-10-05",
+   "titulo": "Conflito de rebase perdeu 114 min de busca web",
+   "sintoma": "A busca web trabalhou 114 minutos e falhou no passo \"Commit com rebase\" depois de quatro tentativas, descartando a rodada.",
+   "causa": "Vários elos gravavam em paralelo `pistas_imprensa.json`, `pistas_revisao.json` e o manifesto, e `_coletor.yml` resolvia com `git rebase -X theirs`, que apaga o lado perdedor em vez de unir.",
+   "prova": [
+    "mensagem `could not apply 446b1b8… Busca web automática` (4 tentativas)"
+   ],
+   "correcao": "PR #556 (classe `FILAS_DE_PISTA` em `unir_conflito_de_rodada.py`; `config/escritores.json`; trabalho recusado sai como artefato)",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_dois_elos_em_paralelo",
+   "falta": null
+  },
+  {
+   "id": "F11",
+   "noite": "2026-10-04→2026-10-08",
+   "titulo": "Painel da noite só mostrava sucesso",
+   "sintoma": "O painel tinha 138 linhas desde 04/10, todas `success`, e os seis elos perdidos de 07→08 não tinham linha.",
+   "causa": "A linha do painel só era escrita quando o elo terminava o próprio commit; run cancelado ou com push perdido não deixava rastro.",
+   "prova": [
+    "medição do lote 0 (#583)"
+   ],
+   "correcao": "PR #583 (30 linhas recuperadas da API: descoberta failure ×3, publicar cancelled ×3, elos fora da janela)",
+   "caso_de_teste": null,
+   "falta": "Nenhum caso reprova painel sem linha para run cancelado ou com push perdido; os autotestes de `painel_da_noite.py` cobrem só a decisão `trabalhou`."
+  },
+  {
+   "id": "F12",
+   "noite": "2026-10-05→2026-10-08",
+   "titulo": "Busca web seguiu morrendo no commit",
+   "sintoma": "11 de 20 runs da busca web desde 05/10 morreram no passo \"Commit com rebase\", com 2 a 3 horas de busca cada.",
+   "causa": "A busca web tem workflow próprio, fora do `_coletor.yml`, e não recebeu a união pela base comum nem o artefato de trabalho perdido do #556.",
+   "prova": [
+    "medição do lote 0 (#583): 11 de 20 runs desde 05/10"
+   ],
+   "correcao": "PR #583 (guarda, união, artefato e deploy próprio removido na busca web)",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_dois_elos_em_paralelo",
+   "falta": "O ensaio exercita a união, não o workflow da busca web; levá-la para o `_coletor.yml` (item 5.4) segue pendente."
+  },
+  {
+   "id": "F13",
+   "noite": "2026-10-06",
+   "titulo": "Fila de pistas passou de 100 MB",
+   "sintoma": "`data/pistas_imprensa.json` foi de 104,79 MB para 187,53 MB em 23 minutos, e todo elo que gravava o arquivo falhou no push (limite GH001 de 100 MB).",
+   "causa": "O laço de tentativas do commit fundia de novo o que já estava fundido, multiplicando as pistas.",
+   "prova": [
+    "triagem 37462427876 (ramo ensaio)",
+    "sinais 37465646681 (ramo ensaio)",
+    "publicar 37463752432"
+   ],
+   "correcao": "Handover parte 3 (causa C), consolidador de escritor único e trava de tamanho (PR #583)",
+   "caso_de_teste": "scripts/verificar_tamanho_dos_dados.py --autoteste: o arquivo de 187 MB seria barrado",
+   "falta": "O caso barra o sintoma (tamanho); nenhum caso reproduz o laço que fundia o já fundido."
+  },
+  {
+   "id": "F14",
+   "noite": "2026-10-06",
+   "titulo": "Domínio reposto sobre árvore reprovada",
+   "sintoma": "O publicador repôs o domínio depois de o portão de dado reprovar, com \"Portões=failure | Repor=success\".",
+   "causa": "O passo \"Repor o site\" tinha `if: always()` e rodava mesmo com portão vermelho ou push cancelado.",
+   "prova": [
+    "4 runs de 06/10",
+    "run 37732159332 (08/10)"
+   ],
+   "correcao": "PR #583 (achado A2-04: deploy só depois do push e com portão verde)",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_portao_vermelho_nao_repoe_o_dominio",
+   "falta": null
+  },
+  {
+   "id": "F15",
+   "noite": "2026-10-06→2026-10-07",
+   "titulo": "Corrente da `main` disparada pelo ramo de ensaio",
+   "sintoma": "A publicação da fase 0 e os elos do `ensaio` puxaram a corrente antiga na `main` de dia (juiz e evidências falharam no commit em 06/10; quatro descobertas em 07/10, uma cancelando a triagem pendente).",
+   "causa": "`workflow_run` dispara para run do workflow nomeado em qualquer ramo, e os elos não filtravam `branches: [main]`.",
+   "prova": [
+    "juiz 37518704648",
+    "evidências 37517687385",
+    "artefatos coleta-perdida-juiz-37518704648 e coleta-perdida-evidencias-37517687385"
+   ],
+   "correcao": "PR #569 (guarda da janela) e PR #583 (achado A2-05: `branches: [main]` nos `workflow_run`)",
+   "caso_de_teste": null,
+   "falta": "Nenhum portão ou ensaio reprova `workflow_run` sem `branches: [main]` num elo que grava na `main`."
+  },
+  {
+   "id": "F16",
+   "noite": "2026-10-06→2026-10-08",
+   "titulo": "Guarda da janela nunca barrou: 96 commits de dia",
+   "sintoma": "96 commits de coletor entraram na `main` fora de 01:00–09:00 UTC entre 05 e 08/10, todos com o passo da guarda verde.",
+   "causa": "`if ! guarda | tee` rodava em `bash -e` sem `pipefail` e lia o status do `tee`, sempre 0.",
+   "prova": [
+    "run 37637363692 (juiz 07/10 14:31 UTC, guarda success e Coletar executado)",
+    "prova do conserto: run 37781162237 (08/10 13:02 UTC, Coletar skipped)"
+   ],
+   "correcao": "PR #583 (`shell: bash` e `|| rc=$?` nos passos que decidem; portão de encanamento)",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_guarda_com_o_shell_do_actions",
+   "falta": null
+  },
+  {
+   "id": "F17",
+   "noite": "2026-10-06→2026-10-07",
+   "titulo": "Quatro elos perderam o commit no rebase",
+   "sintoma": "Sinais físicos (duas vezes) e descoberta (duas vezes) perderam o commit no passo de rebase-e-push.",
+   "causa": "Não registrada nas notas para esta noite; a noite seguinte mostrou o resolvedor recusando o carimbo de `saude_pipeline.json` (F19).",
+   "prova": [
+    "conferência da central de 07/10 08:50 UTC"
+   ],
+   "correcao": "PR #583 (item 0.2, se a causa for a mesma de F19)",
+   "caso_de_teste": null,
+   "falta": "Falta o diagnóstico desta noite, com o arquivo que conflitou, antes de se poder apontar um caso."
+  },
+  {
+   "id": "F18",
+   "noite": "2026-10-07",
+   "titulo": "Fila de recusas dobrou e barrou a publicação",
+   "sintoma": "`data/pistas_rejeitadas.json` foi de 4,8 MB para 9,0 MB numa execução, e a trava de tamanho reprovou a publicação na prévia.",
+   "causa": "`pistas.rejeitar` empilhava registro idêntico a cada reencontro, e o deduplicador pulava o arquivo de recusas porque a lista se chama `rejeitadas`.",
+   "prova": [
+    "commit 44332410"
+   ],
+   "correcao": "commit 44332410 (campo `vezes`; deduplicador atende os dois formatos)",
+   "caso_de_teste": "scripts/deduplicar_fila_de_pistas.py --autoteste: recusa repetida sai, recusa de outro motivo fica",
+   "falta": null
+  },
+  {
+   "id": "F19",
+   "noite": "2026-10-07→2026-10-08",
+   "titulo": "Carimbo que recusava a noite",
+   "sintoma": "Seis elos perderam o commit (diários com 2h23 de coleta, descoberta, juiz e dois sinais) e foram para artefato `coleta-perdida-*`.",
+   "causa": "Todo elo commita `data/saude_pipeline.json` com a sua hora, e o resolvedor recusava divergência em qualquer escalar; o laço tentava cinco vezes e desistia.",
+   "prova": [
+    "37711273308",
+    "37711285165",
+    "37723194156",
+    "37727858615",
+    "37742559024",
+    "37746774655"
+   ],
+   "correcao": "PR #583 (item 0.2: o carimbo maior vence em `unir_log`) e PR #584 (reaplicação da noite)",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_carimbo_nao_recusa_a_noite",
+   "falta": null
+  },
+  {
+   "id": "F20",
+   "noite": "2026-10-08→2026-10-09",
+   "titulo": "Vigia viu `queued` como noite não aberta",
+   "sintoma": "Às 01:11 o vigia contou zero execuções na janela e disparou a corrente de novo, com os diários ainda à espera de runner.",
+   "causa": "O filtro do vigia, da guarda de abertura e de `painel_da_noite.trabalhou` só aceitava `in_progress`, `success` e `failure`.",
+   "prova": [
+    "run 37868393670 (diários)",
+    "run 37868726158 (triagem)"
+   ],
+   "correcao": "PR #607 (`queued`, `requested`, `waiting` e `pending` contam como noite aberta; vigia só age após 25 min)",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_fila_de_runner_nao_e_falha",
+   "falta": null
+  },
+  {
+   "id": "F21",
+   "noite": "2026-10-08→2026-10-09",
+   "titulo": "Diários e triagem cancelados na fila",
+   "sintoma": "`diarios / coletar` foi cancelado às 01:13:32 e a triagem por `workflow_run` às 01:16:09, os dois sem passo executado e sem `.feito`.",
+   "causa": "O terceiro disparo (F20) entrou como pendente novo no grupo `noturno` compartilhado, e o GitHub cancelou o pendente anterior.",
+   "prova": [
+    "run 37868393670",
+    "run 37868726158"
+   ],
+   "correcao": "PR #627: grupo `noturno-<elo>`, fila por ordem de chegada (`scripts/vez_na_noite.py`) e reserva dos elos no despachante",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_pendente_cancelado_pela_fila_e_refeito",
+   "falta": null
+  },
+  {
+   "id": "F22",
+   "noite": "2026-10-08→2026-10-09",
+   "titulo": "Despachante mudo: cron pulado, reserva não refez",
+   "sintoma": "Não houve run do despachante entre 00:29 e 06:43 nem do vigia depois de 01:10; os diários só foram redisparados à mão, às 02:32.",
+   "causa": "Três dos quatro observadores do despachante dependiam do cron do GitHub, que pulou 01:07, 01:27, 01:47, 02:07 e 02:27, e o `relogio.yml` declarado não existia.",
+   "prova": [
+    "redisparo de 02:32 com triggering_actor do dono do repositório",
+    "Relógio da nuvem rodou 01:08 e 02:08 sem redisparar"
+   ],
+   "correcao": "PR #612 (`relogio.yml`: push no ramo `relogio` chama o despachante)",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_despachante_nao_depende_do_cron",
+   "falta": null
+  },
+  {
+   "id": "F23",
+   "noite": "2026-10-08→2026-10-09",
+   "titulo": "Perda de push no passo 1a",
+   "sintoma": "Os diários coletaram de 02:33 a 04:24 e o passo \"Commit com rebase-e-push (item 1a)\" falhou em 11 s; o juiz das 04:27 também; os artefatos ficaram sem reaplicação até o dia seguinte.",
+   "causa": "A `main` andou durante a coleta (merges e publicações) e a união pela base comum não cobriu o conflito; `reaplicar_noite.py` existia e nada o chamava.",
+   "prova": [
+    "run 37875038703 (coleta-perdida-diarios-37875038703, 18,7 MB)",
+    "run 37883961718 (coleta-perdida-juiz-37883961718, 18,7 MB)"
+   ],
+   "correcao": "PR #612 (todo elo reaplica no começo; artefatos de 08→09 reaplicados)",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_coleta_perdida_volta_para_dentro",
+   "falta": "O arquivo que conflitou nas cinco tentativas não foi identificado nem coberto em `unir_conflito_de_rodada.py`: o conserto reaplica depois, não evita a perda."
+  },
+  {
+   "id": "F24",
+   "noite": "2026-10-08→2026-10-09",
+   "titulo": "`.feito` perdido junto com o push",
+   "sintoma": "Diários e juiz trabalharam, mas a `main` ficou sem `diarios.feito` e sem o `juiz.feito` novo.",
+   "causa": "O marcador era gravado na árvore e chegava à `main` no mesmo commit do dado, então morreu com o push perdido.",
+   "prova": [
+    "run 37875038703",
+    "run 37883961718",
+    "data/noite/2026-10-09 só com juiz.feito e sinais-fisicos.feito às 06:05"
+   ],
+   "correcao": "PR #612 (artefato `feito-<elo>-<noite>` antes do commit; dono `scripts/marcador_de_elo.py`)",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_marcador_sobrevive_ao_push",
+   "falta": null
+  },
+  {
+   "id": "F25",
+   "noite": "2026-10-09",
+   "titulo": "`main` vermelha no portão de layout durante a noite",
+   "sintoma": "\"Portões\" no push da `main` reprovou em todo push de 02:57 a 06:06 UTC, no portão de layout.",
+   "causa": "O cartão de atos federais do Financiamento dizia \"sem coleta\" sobre uma série em disco cuja origem não data os atos, ausência de outra classe.",
+   "prova": [
+    "83db187 (#598)",
+    "e4a718e (#599)",
+    "f5f7850 (#600)",
+    "28e88c5 (#602)",
+    "9a72f76"
+   ],
+   "correcao": "PR #604 (classe `sem_data_na_origem`)",
+   "caso_de_teste": "scripts/verificar_financiamento_coerencia.py --autoteste: classe de ausencia declarada passa, e sem exigir periodo",
+   "falta": null
+  },
+  {
+   "id": "F26",
+   "noite": "2026-10-09→2026-10-10",
+   "titulo": "Diários cancelados na fila e contados pelo despachante",
+   "sintoma": "`diarios / coletar` ficou na fila de 01:10:45 a 01:14:44 e foi cancelado sem passo; o despachante das 02:26 não redisparou, e os diários só rodaram às 07:42, com commit às 09:11.",
+   "causa": "Pendente substituído no grupo de concorrência `noturno`, e o despachante contava run cancelado como execução da janela.",
+   "prova": [
+    "run 38012085139",
+    "descoberta 38012418805 skipped"
+   ],
+   "correcao": "PR #627: grupo `noturno-<elo>`, fila por ordem de chegada (`scripts/vez_na_noite.py`) e reserva dos elos no despachante",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_pendente_cancelado_pela_fila_e_refeito",
+   "falta": null
+  },
+  {
+   "id": "F27",
+   "noite": "2026-10-09→2026-10-10",
+   "titulo": "Triagem duplicada por `workflow_run`",
+   "sintoma": "Além da triagem por disparo manual, que rodou de 01:10 a 01:35, uma segunda triagem por `workflow_run` entrou na fila e foi cancelada sem passo.",
+   "causa": "A triagem tem dois gatilhos na mesma noite (disparo do despachante e término dos sinais físicos) e nada impede a segunda; o cancelamento veio da fila do grupo.",
+   "prova": [
+    "run 38012414909 (workflow_run, cancelada)",
+    "run 38012115315 (dispatch, success)"
+   ],
+   "correcao": "PR #627 (grupo por elo: a duplicata da triagem não cancela outro elo; a vez serializa)",
+   "caso_de_teste": null,
+   "falta": "Nenhum caso reprova dois runs do mesmo elo na mesma noite por gatilhos diferentes; falta um ensaio em que o segundo saia sem trabalho quando o primeiro já gravou `.feito`."
+  },
+  {
+   "id": "F28",
+   "noite": "2026-10-09→2026-10-10",
+   "titulo": "Portões vermelhos no push às 01:12 e 01:14",
+   "sintoma": "Dois runs de \"Portões\" no push da `main` falharam na abertura da noite.",
+   "causa": "Não diagnosticada nas notas.",
+   "prova": [
+    "run 38012291473",
+    "run 38012410116"
+   ],
+   "correcao": "nenhuma registrada",
+   "caso_de_teste": null,
+   "falta": "Falta o diagnóstico (portão e saída) antes de se poder escrever o caso."
+  },
+  {
+   "id": "F29",
+   "noite": "2026-10-09→2026-10-10",
+   "titulo": "Descoberta e evidências sem `.feito`",
+   "sintoma": "Descoberta (07:43 e 09:12) e evidências (09:14 e 09:16) rodaram e não gravaram marcador em `data/noite/2026-10-10/`.",
+   "causa": "Os dois esperaram no grupo atrás dos diários (que só rodaram às 07:42) e chegaram à coleta depois das 09:00 UTC, quando a guarda da janela adia a coleta na `main`.",
+   "prova": [
+    "balanço da central de 10/10 09:30 UTC"
+   ],
+   "correcao": "PR #627 (reserva dos elos refaz dentro da janela o elo sem `.feito`)",
+   "caso_de_teste": "scripts/despachar_temporizadores.py --autoteste: elo da corrente pulado só é refeito depois de o anterior ter trabalhado",
+   "falta": null
+  },
+  {
+   "id": "F30",
+   "noite": "2026-10-10",
+   "titulo": "Portões vermelhos após o commit dos diários",
+   "sintoma": "\"Portões\" no push da `main` reprovou desde 09:12 no passo de dado e coleta, depois do commit dos diários.",
+   "causa": "Em `coletar_s2id.py` o canal do DOU decidia por chaves montadas antes de o MIDR gravar na mesma rodada e reacrescentou 44 reconhecimentos federais (mesma portaria, `http` × `https`).",
+   "prova": [
+    "`verificar_consistencia.py` vermelho desde 09:12",
+    "`atos_resposta.json` 1122 → 1078",
+    "push 20272a72 verde às 10:59"
+   ],
+   "correcao": "PR #626 (`incorporar_ato_dou` em `coletar_s2id.py`)",
+   "caso_de_teste": "coletar_s2id.py --autoteste: o DOU não reacrescenta o que o MIDR acabou de acrescentar",
+   "falta": null
+  },
+  {
+   "id": "F31",
+   "noite": "2026-10-10",
+   "titulo": "Artefato do marcador nunca existiu",
+   "sintoma": "O artefato `feito-<elo>-<noite>` saía como `feito-<elo>-` com caminho `data/noite//<elo>.feito`, ou seja, não subia; a segunda prova do marcador nunca funcionou.",
+   "causa": "O passo de upload lia `env.NOITE`, e o passo que grava o marcador não exportava `NOITE` para `$GITHUB_ENV`.",
+   "prova": [
+    "comentário de 10/10 em `.github/workflows/_coletor.yml`"
+   ],
+   "correcao": "PR #627 (`echo \"NOITE=$NOITE\" >> \"$GITHUB_ENV\"`)",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_env_usada_e_exportada",
+   "falta": null
+  }
+ ]
+}

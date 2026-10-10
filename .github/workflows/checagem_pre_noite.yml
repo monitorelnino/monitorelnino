@@ -1,0 +1,68 @@
+# Checagem pré-noite — 23h UTC (20h de Brasília), antes de a corrente abrir às 01:07 UTC.
+#
+# 10/10/2026 (item 2-bis.3 da janela A). As falhas das noites de 04→10/10 eram, várias, visíveis
+# antes da abertura: `main` vermelha, fila de runs entupida, despachante parado. Esta checagem faz
+# as seis perguntas de `scripts/checagem_pre_noite.py` e, se alguma reprovar, abre Issue no
+# `robo-registro` — o GitHub avisa a editoria por e-mail — enquanto ainda há tempo de consertar.
+# Não commita nada (regra de 27/09: nenhum commit automático na `main` de dia); o resultado vai
+# como artefato `preflight-<noite>` e no resumo do job. Duas chances, fora do minuto de pico.
+name: Checagem pré-noite
+
+on:
+  schedule:
+    - cron: "53 22 * * *"   # 19h53 de Brasília
+    - cron: "43 23 * * *"   # 20h43, depois do corte de mesclagem das 23:30 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: checagem-pre-noite
+  cancel-in-progress: false
+
+jobs:
+  conferir:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with: { persist-credentials: false }
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with: { python-version: "3.12" }
+      - name: Tique oportunista
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.ROBO_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/despachar_temporizadores.py --origem oportunista \
+            --so-ler-e-despachar || true
+      - name: As seis perguntas
+        id: checar
+        env:
+          GH_TOKEN: ${{ secrets.ROBO_TOKEN || secrets.GITHUB_TOKEN }}
+          # Só a PRESENÇA de cada segredo, nunca o valor.
+          TEM_ROBO_TOKEN: ${{ secrets.ROBO_TOKEN != '' }}
+          TEM_ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY != '' }}
+          TEM_NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN != '' }}
+          TEM_NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID != '' }}
+        run: |
+          mkdir -p preflight
+          rc=0
+          python3 scripts/checagem_pre_noite.py --saida preflight/preflight.json --abrir-issue \
+            > /tmp/preflight.txt 2>&1 || rc=$?
+          cat /tmp/preflight.txt | tee -a "$GITHUB_STEP_SUMMARY"
+          echo "noite=$(python3 -c "import json;print(json.load(open('preflight/preflight.json'))['noite'])")" >> "$GITHUB_OUTPUT"
+          exit "$rc"
+      - name: Guardar o resultado
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
+        with:
+          name: preflight-${{ steps.checar.outputs.noite || github.run_id }}-${{ github.run_attempt }}-${{ github.run_number }}
+          path: preflight/preflight.json
+          retention-days: 30
+          if-no-files-found: warn

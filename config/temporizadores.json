@@ -420,6 +420,28 @@
     "todos os temporizadores"
    ],
    "gravidade": "alta"
+  },
+  {
+   "id": "checagem-pre-noite",
+   "workflow": "checagem_pre_noite.yml",
+   "finalidade": "confere, antes da abertura, main verde, mesclagem tardia, fila de runs, despachante/relógio vivos, segredos e ensaio real",
+   "cron_primario": "53 22 * * *",
+   "janela": {
+    "inicio_utc": "22:40",
+    "fim_utc": "23:59"
+   },
+   "devido_quando": "uma vez por noite, antes da abertura das 01:07 UTC",
+   "tolerancia_atraso_min": 60,
+   "idempotencia": "só lê a API e sobe artefato; repetir não muda nada",
+   "orcamento_min": 10,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "a editoria (Issue antes da noite)"
+   ],
+   "gravidade": "media"
   }
  ]
 }
