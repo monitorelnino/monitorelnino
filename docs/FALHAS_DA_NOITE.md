@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-10. 33 falhas; 27 com caso de teste que as reproduz; 6 sem, com o que falta dito.
+Atualizado em 2026-10-10. 34 falhas; 28 com caso de teste que as reproduz; 6 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -302,3 +302,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** run 38066288496; Issue robo-registro#49
 - **Correção:** Prefixo `ensaio-real/` em todo o mecanismo (`_coletor.yml`, `ensaio_real_da_noite.yml`, `elo_de_ensaio.py`, `ensaio_real.py`)
 - **Caso de teste:** `scripts/ensaio_real.py --autoteste: o prefixo do ramo do ensaio não colide com ramo existente`
+
+## F34 · O ensaio real via marcadores da noite de verdade
+
+- **Noite:** 2026-10-10
+- **Sintoma:** No 2º ensaio real (run 38068199849, 16:34 UTC) o ramo nasceu da `main` com `juiz.feito`, `sinais-fisicos.feito`, `triagem.feito` e `diarios.feito` da noite de 09→10; o ensaio os contaria como feitos sem rodar o juiz e os sinais.
+- **Causa:** O ramo do ensaio é criado a partir da `main`, e a noite do ensaio (de dia) tem a mesma data da noite que acabou.
+- **Prova:** run 38068199849; ramo ensaio-real/2026-10-10-38068199849, pasta data/noite/2026-10-10/
+- **Correção:** O ramo começa sem `data/noite/<noite>/`, e o veredito só aceita marcador cujo `run <id>` é de um run do ensaio
+- **Caso de teste:** `scripts/ensaio_real.py --autoteste: marcador escrito por run que não é do ensaio não conta (F34)`

@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-10 · #PR · o ensaio real não conta marcador da noite de verdade
+
+O ramo do ensaio nascia da `main` com os `.feito` da noite de hoje e via "juiz feito" sem rodar o juiz (F34, 2º ensaio, 16:34 UTC). Agora o ramo começa sem `data/noite/<noite>/`, e o veredito só aceita marcador escrito por run do próprio ensaio.
+
 ## 2026-10-10 · #PR · ajustes de página do relatório D (A4-02, A4-16, A4-21, A4-22, A4-25, A4-27)
 
 Saúde: `ST_COORD` volta a ser declarado (a ficha do estado lançava ReferenceError) e pontos decimais saem com vírgula, como na inicial. Riscos: sai a montagem morta de `#cTipos`. Saúde pede `sindrome_gripal_serie.json` no lugar do inexistente `sg_serie.json`; `mudancas.html` deixa de pedir catálogo que não existe. Financiamento: portaria sem número não mostra traço solto. Inicial: aria-label do medidor de resposta segue o valor exibido. Em `assets/js/` e nas páginas.

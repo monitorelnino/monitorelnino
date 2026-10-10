@@ -464,6 +464,20 @@
    "correcao": "Prefixo `ensaio-real/` em todo o mecanismo (`_coletor.yml`, `ensaio_real_da_noite.yml`, `elo_de_ensaio.py`, `ensaio_real.py`)",
    "caso_de_teste": "scripts/ensaio_real.py --autoteste: o prefixo do ramo do ensaio não colide com ramo existente",
    "falta": null
+  },
+  {
+   "id": "F34",
+   "noite": "2026-10-10",
+   "titulo": "O ensaio real via marcadores da noite de verdade",
+   "sintoma": "No 2º ensaio real (run 38068199849, 16:34 UTC) o ramo nasceu da `main` com `juiz.feito`, `sinais-fisicos.feito`, `triagem.feito` e `diarios.feito` da noite de 09→10; o ensaio os contaria como feitos sem rodar o juiz e os sinais.",
+   "causa": "O ramo do ensaio é criado a partir da `main`, e a noite do ensaio (de dia) tem a mesma data da noite que acabou.",
+   "prova": [
+    "run 38068199849",
+    "ramo ensaio-real/2026-10-10-38068199849, pasta data/noite/2026-10-10/"
+   ],
+   "correcao": "O ramo começa sem `data/noite/<noite>/`, e o veredito só aceita marcador cujo `run <id>` é de um run do ensaio",
+   "caso_de_teste": "scripts/ensaio_real.py --autoteste: marcador escrito por run que não é do ensaio não conta (F34)",
+   "falta": null
   }
  ]
 }

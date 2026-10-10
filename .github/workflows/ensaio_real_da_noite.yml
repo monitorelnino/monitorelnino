@@ -48,6 +48,13 @@ jobs:
           NOITE="$(python3 scripts/janela_da_noite.py --noite)"
           mkdir -p ~/.ssh && printf '%s\n' "$ROBO_DEPLOY_KEY" > ~/.ssh/robo && chmod 600 ~/.ssh/robo
           ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
+          # 10/10/2026 (F34): o ramo nasce da `main`, que já traz os marcadores da noite de hoje
+          # (`data/noite/<noite>/`); sem apagá-los, o ensaio veria "juiz feito" sem ter rodado o
+          # juiz. Primeiro commit do ramo: a pasta da noite sai.
+          git config user.name "monitor-el-nino-bot"; git config user.email "bot@users.noreply.github.com"
+          if [ -d "data/noite/${NOITE}" ]; then
+            git rm -rq "data/noite/${NOITE}" && git commit -qm "ensaio real: o ramo começa sem os marcadores da noite"
+          fi
           GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" \
             git push git@github.com:${GITHUB_REPOSITORY}.git "HEAD:refs/heads/${RAMO}"
           echo "ramo=${RAMO}" >> "$GITHUB_OUTPUT"
