@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-10 · #PR · a semana sai em datas, e o juiz de saúde ganha as quatro travas (absorve #582)
+
+Absorve o #582. O leitor lê "na semana de 16 a 22 de agosto de 2026", nunca "semana epidemiológica 33"; acumulados em datas e eixos semanais em meses (`assets/semana.js`, regra do Ministério da Saúde; portão `verificar_semana_epidemiologica.js`). Lote 6.1-A: `julgar_saude.py` deixa de creditar o que não é (A5-01 a A5-04). "mediana"/"p90" saem da legenda.
+
 ## 2026-10-10 · #PR · elo cancelado na fila é refeito, e a fila deixa de cancelar
 
 O grupo `noturno` guardava um só pendente: na abertura de 10/10 o pendente seguinte cancelou `diarios / coletar`, e o despachante contou o cancelado como execução. Agora cada elo tem grupo próprio e espera a vez por ordem de chegada (`vez_na_noite.py`); run cancelado/pulado não conta; a reserva refaz elo sem `.feito`; o artefato do marcador passa a existir (`NOITE` exportado). Ensaio 14.
