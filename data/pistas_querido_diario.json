@@ -1,5 +1,141 @@
 {
- "_governanca": "Fila de pistas do Querido Diário (reativada em 28/09/2026 por decisão da editoria; a suspensão de 06/09 cai). Toda pista daqui passa pelo juiz automático (etapas 0-7) e NUNCA entra direto no banco. Descoberta, nunca registro.",
- "_nota_de_construcao": "28/09/2026: uma primeira tentativa montou a fila a partir da EVIDÊNCIA PRESERVADA dos 169 municípios com excerto no diário. Medido antes de confiar: o excerto guardado não é a menção ao plano — a preservação manteve uma gazeta por consulta e o primeiro excerto dela, que pode ser sobre licitação, hectares ou qualquer outro assunto da edição. Fila descartada. A fila certa vem de consulta NOVA ao Querido Diário, por município e por termo de plano, que é o que consultar_querido_diario.py faz.",
- "pistas": []
+ "execucao": {
+  "data": "2026-10-10",
+  "janela_desde": "2026-01-01",
+  "termos": [
+   "plano de contingência",
+   "PLANCON",
+   "PLACON",
+   "plano de enfrentamento",
+   "protocolo de alerta e enfrentamento",
+   "plano preventivo",
+   "operação estiagem"
+  ],
+  "alvos": 40,
+  "ufs_varridas": [
+   "AL",
+   "AP",
+   "DF",
+   "PA",
+   "PB",
+   "RN",
+   "SE"
+  ]
+ },
+ "pistas": [
+  {
+   "nome": "Marechal Deodoro",
+   "uf": "AL",
+   "codigo_ibge": "2704708",
+   "cobertura_qd": true,
+   "termo": "plano de contingência",
+   "data_diario": "2026-10-05",
+   "edicao": "2906",
+   "url_pdf": "https://data.queridodiario.ok.org.br/2700000/2026-10-05/8e3eb60f57b80a1eef6637d054171564cacb0e5a.pdf",
+   "excerto": "nota \nfiscal eletrônica e cadastros de fornecedores; \nIII – continuidade e contingência: manutenção de plano de \ncontinuidade do serviço e de plano de contingência operacional; \nIV – auditorias: permissão para realização de auditorias periódicas de \nsegurança, integridade e desempenho; \nV – avaliação de",
+   "hash_evidencia": "5ade71a70e495fcb5f699f0a2c0ab05f3b953b477d304d2649c51dd78d015986",
+   "status_triagem": "pendente_julgamento"
+  },
+  {
+   "nome": "São Miguel dos Milagres",
+   "uf": "AL",
+   "codigo_ibge": "2708709",
+   "cobertura_qd": true,
+   "termo": "plano de contingência",
+   "data_diario": "2026-08-28",
+   "edicao": "2881",
+   "url_pdf": "https://data.queridodiario.ok.org.br/2700000/2026-08-28/9c698d867e9339d6d38c56d8f5ae388662311a4a.pdf",
+   "excerto": "desafios; definir providências. \n\nInstrumento; visitas; planilhas; \n\norçamento. \nEquipe Técnica da Secretaria Municipal de Educação \n\n7 Atualizar o plano de contingência. \nAnalisar riscos; definir continuidade pedagógica, comunicação, \n\nmateriais e acompanhamento em emergências. \n\nPlano; orientações MEC; canais;",
+   "hash_evidencia": "bab871d9ffcc792b010efb2d159cda534623c8b7c756f5dde7594ae65a5ed617",
+   "status_triagem": "pendente_julgamento"
+  },
+  {
+   "nome": "Banzaê",
+   "uf": "BA",
+   "codigo_ibge": "2902658",
+   "cobertura_qd": true,
+   "termo": "plano de contingência",
+   "data_diario": "2026-06-19",
+   "edicao": "5.535",
+   "url_pdf": "https://data.queridodiario.ok.org.br/2902658/2026-06-19/bddd049c60dec4dbbc6217bc56f8a6978d8c3c85.pdf",
+   "excerto": "visível de fácil acesso, os relatórios de manutenção preventiva nos equipamentos, inspeção da integridade física, estanqueidade dos tanques e o plano de \ncontingência para situações de perigo e emergências, e informar imediatamente a SECRETARIA MUNICIPAL DE AGRICULTURA, MEIO AMBIENTE, TURISMO E COMÉRCIO,",
+   "hash_evidencia": "c24fbd06a42d36db8a26b9d102e0d8dac01347f0d8362062d1072c034aeca365",
+   "status_triagem": "pendente_julgamento"
+  },
+  {
+   "nome": "Correntina",
+   "uf": "BA",
+   "codigo_ibge": "2909307",
+   "cobertura_qd": true,
+   "termo": "plano de contingência",
+   "data_diario": "2026-04-20",
+   "edicao": "8.208",
+   "url_pdf": "https://data.queridodiario.ok.org.br/2909307/2026-04-20/4838652bfc6a17a89ae59c56c821df179fc198c3.pdf",
+   "excerto": "as ações do Sistema Nacional de Proteção e Defesa Civil – SINPDEC, no âmbito \nlocal, em articulação com a União e o Estado; \n\nIII - Elaborar Plano de Contingência de Proteção e Defesa Civil e instituir órgãos municipais \n\nde proteção e defesa civil, de acordo com os procedimentos estabelecidos pelo órgão",
+   "hash_evidencia": "31b35bce3b98099305465aba94173383d63c1cd07db29ccd6e45f1b5edddc51b",
+   "status_triagem": "pendente_julgamento"
+  },
+  {
+   "nome": "Formosa do Rio Preto",
+   "uf": "BA",
+   "codigo_ibge": "2911105",
+   "cobertura_qd": true,
+   "termo": "plano de contingência",
+   "data_diario": "2026-05-08",
+   "edicao": "1.459",
+   "url_pdf": "https://data.queridodiario.ok.org.br/2911105/2026-05-08/bd3b285915ed0a4ff1cf4fec17c9c01239839eb3.pdf",
+   "excerto": "totalmente os sistemas de informação entre todas as secretarias e setores \nenvolvidos na resposta a emergências. \n\n➢ Desenvolver protocolos para o Plano de Contingência intersetorial visando ações \ncoordenadas e respostas rápidas. \n\n➢ Utilizar plataformas digitais avançadas para facilitar a colaboração e comunicação",
+   "hash_evidencia": "f3b93e46da060bdb824985d3bbdf4fddf2b198003b8077ce136469bd87eef746",
+   "status_triagem": "pendente_julgamento"
+  },
+  {
+   "nome": "Mascote",
+   "uf": "BA",
+   "codigo_ibge": "2920908",
+   "cobertura_qd": true,
+   "termo": "plano de contingência",
+   "data_diario": "2026-04-06",
+   "edicao": "2.218",
+   "url_pdf": "https://data.queridodiario.ok.org.br/2920908/2026-04-06/be3fb3aa6ece4abf8d41c8bf4a16c83c2a72368e.pdf",
+   "excerto": "Objetivo 2: Implementar e fortalecer as ações previstas no Plano de Contingência Municipal \n\nvoltado ao enfrentamento da COVID-19 e demais emergências em saúde pública. \nMETA: Garantir 100% da implementação das ações previstas no Plano de Contingência Municipal \npara enfrentamento da COVID-19 e demais emergências",
+   "hash_evidencia": "973a7af8acb6abc2083f88b9022a1c6526abff9c7ac4f98016ecfe511b56d84b",
+   "status_triagem": "pendente_julgamento"
+  },
+  {
+   "uf": "AL",
+   "escopo": "uf_completa",
+   "cobertura_qd": false,
+   "nota": "nenhum dos 102 municípios de AL coberto no QD — ausência NÃO é evidência negativa"
+  },
+  {
+   "uf": "AP",
+   "escopo": "uf_completa",
+   "cobertura_qd": false,
+   "nota": "nenhum dos 16 municípios de AP coberto no QD — ausência NÃO é evidência negativa"
+  },
+  {
+   "uf": "PA",
+   "escopo": "uf_completa",
+   "cobertura_qd": false,
+   "nota": "nenhum dos 144 municípios de PA coberto no QD — ausência NÃO é evidência negativa"
+  },
+  {
+   "uf": "PB",
+   "escopo": "uf_completa",
+   "cobertura_qd": false,
+   "nota": "nenhum dos 223 municípios de PB coberto no QD — ausência NÃO é evidência negativa"
+  },
+  {
+   "uf": "RN",
+   "escopo": "uf_completa",
+   "cobertura_qd": false,
+   "nota": "nenhum dos 167 municípios de RN coberto no QD — ausência NÃO é evidência negativa"
+  },
+  {
+   "uf": "SE",
+   "escopo": "uf_completa",
+   "cobertura_qd": false,
+   "nota": "nenhum dos 75 municípios de SE coberto no QD — ausência NÃO é evidência negativa"
+  }
+ ]
 }

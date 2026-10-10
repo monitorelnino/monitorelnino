@@ -257,7 +257,7 @@
    "nome": "Novo Cruzeiro",
    "uf": "MG",
    "por_acao": {
-    "recuperacao": 1212999.83
+    "recuperacao": 2324824.78
    },
    "atos": [
     {
@@ -270,9 +270,20 @@
      "valor_autorizado": 1212999.83,
      "processo_sei": "59053.024260/2026-45",
      "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.209-de-24-de-setembro-de-2026-735110196"
+    },
+    {
+     "municipio": "Novo Cruzeiro",
+     "uf": "MG",
+     "portaria": "3.396",
+     "data": "2026-10-05",
+     "acao": "recuperacao",
+     "acao_no_ato": "Recuperação",
+     "valor_autorizado": 1111824.95,
+     "processo_sei": "59053.009617/2023-12",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.396-de-5-de-outubro-de-2026-736938670"
     }
    ],
-   "total_autorizado": 1212999.83
+   "total_autorizado": 2324824.78
   },
   "1508407": {
    "nome": "Xinguara",
@@ -1595,32 +1606,74 @@
     }
    ],
    "total_autorizado": 2848120.67
+  },
+  "4308003": {
+   "nome": "Faxinal do Soturno",
+   "uf": "RS",
+   "por_acao": {
+    "recuperacao": 404000.0
+   },
+   "atos": [
+    {
+     "municipio": "Faxinal do Soturno",
+     "uf": "RS",
+     "portaria": "3.389",
+     "data": "2026-10-05",
+     "acao": "recuperacao",
+     "acao_no_ato": "Recuperação",
+     "valor_autorizado": 404000.0,
+     "processo_sei": "59053.018591/2024-84",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.389-de-5-de-outubro-de-2026-736942093"
+    }
+   ],
+   "total_autorizado": 404000.0
+  },
+  "2926509": {
+   "nome": "Ribeira do Amparo",
+   "uf": "BA",
+   "por_acao": {
+    "recuperacao": 751291.15
+   },
+   "atos": [
+    {
+     "municipio": "Ribeira do Amparo",
+     "uf": "BA",
+     "portaria": "3.398",
+     "data": "2026-10-05",
+     "acao": "recuperacao",
+     "acao_no_ato": "Recuperação",
+     "valor_autorizado": 751291.15,
+     "processo_sei": "59053.022791/2025-12",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.398-de-5-de-outubro-de-2026-736941990"
+    }
+   ],
+   "total_autorizado": 751291.15
   }
  },
  "nao_casados": {
   "BA|Cacequi": 9226995.1
  },
  "janela_lida": {
-  "desde": "2026-09-26",
-  "ate": "2026-10-04",
-  "atos_na_busca": 61,
+  "desde": "2026-09-27",
+  "ate": "2026-10-10",
+  "atos_na_busca": 66,
   "janelas_incompletas": []
  },
  "recusas": {
   "fora_do_orgao": 0,
-  "prorrogacao_de_prazo": 32,
+  "prorrogacao_de_prazo": 33,
   "sem_municipio_legivel": 7,
-  "sem_valor_declarado": 8,
+  "sem_valor_declarado": 9,
   "ato_nao_lido": 0
  },
- "atos_novos_nesta_rodada": 0,
- "atualizado_em": "04/10/2026",
+ "atos_novos_nesta_rodada": 3,
+ "atualizado_em": "10/10/2026",
  "total_por_acao": {
-  "recuperacao": 191304394.45,
+  "recuperacao": 193571510.55,
   "resposta": 7021172.66,
   "outra": 13878788.0
  },
- "municipios_com_ato": 68,
+ "municipios_com_ato": 70,
  "_governanca": "Recursos federais de defesa civil AUTORIZADOS por município, lidos das portarias da Secretaria Nacional de Proteção e Defesa Civil no DOU (consulta \"Autoriza a transferência de recursos\"). `valor_autorizado` é o que a portaria autoriza transferir — a saída do dinheiro é outro fato, e quem o registra é o Portal da Transparência: a página diz 'liberado', nunca 'pago'. As ações de RESPOSTA e de RECUPERAÇÃO ficam separadas em `por_acao`, com o rótulo que o próprio ato usou, porque somá-las num cartão de resposta inflaria o número com dinheiro de outra finalidade. Ato sem valor declarado não vira zero: entra em `recusas.sem_valor_declarado`. Município que não casa com a referência do IBGE entra em `nao_casados`, com o nome como o ato o escreveu. Derivado de coletar_recursos_resposta.py — não se edita à mão.",
  "frase_c18": "Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, a)."
 }
