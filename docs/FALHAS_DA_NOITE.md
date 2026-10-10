@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-10. 34 falhas; 28 com caso de teste que as reproduz; 6 sem, com o que falta dito.
+Atualizado em 2026-10-10. 35 falhas; 29 com caso de teste que as reproduz; 6 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -311,3 +311,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** run 38068199849; ramo ensaio-real/2026-10-10-38068199849, pasta data/noite/2026-10-10/
 - **Correção:** O ramo começa sem `data/noite/<noite>/`, e o veredito só aceita marcador cujo `run <id>` é de um run do ensaio
 - **Caso de teste:** `scripts/ensaio_real.py --autoteste: marcador escrito por run que não é do ensaio não conta (F34)`
+
+## F35 · Sinais físicos e semanais sem começar (permissão do job `vez`)
+
+- **Noite:** 2026-10-10
+- **Sintoma:** `noturno_sinais.yml` terminou em `startup_failure` com zero jobs a partir de 14:06 de 10/10 (cron) e no ensaio real (run 38073694723); os semanais de sinais e de ESPIN/links teriam o mesmo destino.
+- **Causa:** O job `vez` do `_coletor.yml` (#627) pede `actions: read`, e três chamadores concediam só `contents: read`; workflow reutilizável não pode pedir mais do que o chamador concede.
+- **Prova:** run 38058307837 (sinais, 14:06, startup_failure); run 38073694723 (sinais no ensaio real)
+- **Correção:** `actions: read` em `noturno_sinais.yml`, `semanal_espin_e_links.yml` e `semanal_sinais_e_links.yml`
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_chamador_do_coletor_concede_o_que_ele_pede`

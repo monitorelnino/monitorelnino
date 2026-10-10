@@ -478,6 +478,20 @@
    "correcao": "O ramo começa sem `data/noite/<noite>/`, e o veredito só aceita marcador cujo `run <id>` é de um run do ensaio",
    "caso_de_teste": "scripts/ensaio_real.py --autoteste: marcador escrito por run que não é do ensaio não conta (F34)",
    "falta": null
+  },
+  {
+   "id": "F35",
+   "noite": "2026-10-10",
+   "titulo": "Sinais físicos e semanais sem começar (permissão do job `vez`)",
+   "sintoma": "`noturno_sinais.yml` terminou em `startup_failure` com zero jobs a partir de 14:06 de 10/10 (cron) e no ensaio real (run 38073694723); os semanais de sinais e de ESPIN/links teriam o mesmo destino.",
+   "causa": "O job `vez` do `_coletor.yml` (#627) pede `actions: read`, e três chamadores concediam só `contents: read`; workflow reutilizável não pode pedir mais do que o chamador concede.",
+   "prova": [
+    "run 38058307837 (sinais, 14:06, startup_failure)",
+    "run 38073694723 (sinais no ensaio real)"
+   ],
+   "correcao": "`actions: read` em `noturno_sinais.yml`, `semanal_espin_e_links.yml` e `semanal_sinais_e_links.yml`",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_chamador_do_coletor_concede_o_que_ele_pede",
+   "falta": null
   }
  ]
 }
