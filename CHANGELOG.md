@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-10 · #PR · planos estaduais pontuados ganham o link do documento
+
+31 dos 41 instrumentos estaduais pontuados passam a ter endereço oficial (Diário Oficial, portal da Defesa Civil ou do governo), achado por busca dirigida e registrado com o grau de conferência em `data/proveniencia_estadual.json`; os 10 sem documento rastreável ficam como defeito de prova declarado, sem mudar nota. O juiz passa a gravar o endereço que leu. Portão: pontuado sem endereço nem defeito declarado reprova.
+
 ## 2026-10-10 · #PR · elo cancelado na fila é refeito, e a fila deixa de cancelar
 
 O grupo `noturno` guardava um só pendente: na abertura de 10/10 o pendente seguinte cancelou `diarios / coletar`, e o despachante contou o cancelado como execução. Agora cada elo tem grupo próprio e espera a vez por ordem de chegada (`vez_na_noite.py`); run cancelado/pulado não conta; a reserva refaz elo sem `.feito`; o artefato do marcador passa a existir (`NOITE` exportado). Ensaio 14.

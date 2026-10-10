@@ -1,0 +1,450 @@
+{
+ "_governanca": "Registro de proveniência dos instrumentos estaduais: o endereço oficial do documento que sustenta cada status, com como foi achado e o grau de conferência. `scripts/proveniencia_estadual.py --aplicar` leva o endereço a data/estados.json. Endereço só de domínio oficial (governo do estado, imprensa oficial, gov.br). `defeitos_de_prova`: instrumento pontuado sem documento rastreável — registrado no relatório D, sem mudar nota (nota é decisão da editoria). Busca dirigida de 10/10/2026 (item 2b de AJUSTES_09-10).",
+ "atualizado_em": "2026-10-10",
+ "achados": [
+  {
+   "uf": "AC",
+   "tipo": "estrutura_coordenacao",
+   "url": "https://agencia.ac.gov.br/estado-antecipa-acoes-e-mobiliza-gabinete-de-crise-para-mitigar-impactos-de-seca-extrema-em-2026/",
+   "tipo_fonte": "noticia_oficial",
+   "verificacao": "titulo_conferido",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "Estado antecipa ações e mobiliza gabinete de crise para mitigar impactos de seca extrema em 2026",
+   "trecho": "(título do resultado de busca) Estado antecipa ações e mobiliza gabinete de crise para mitigar impactos de seca extrema em 2026",
+   "como_achou": "WebSearch restrito a ac.gov.br",
+   "nota": "agencia.ac.gov.br e legis.ac.gov.br bloqueiam o WebFetch (robots). Ato do Decreto 11.899 no DOE-AC não localizado em busca; título não cita o número do decreto — conferir."
+  },
+  {
+   "uf": "AM",
+   "tipo": "estrutura_coordenacao",
+   "url": "https://legisla.imprensaoficial.am.gov.br/diario_am/41534/2026/6/19165",
+   "tipo_fonte": "diario_oficial",
+   "verificacao": "conteudo_conferido",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "DECRETO N.º 54.274, DE 1º DE JUNHO DE 2026",
+   "trecho": "DECLARA, em caráter preventivo, Estado de Emergência Climática e Ambiental no Estado do Amazonas, em razão das projeções meteorológicas associadas ao fenômeno El Niño, estabelece medidas cautelares de proteção e defesa civil a serem adotadas e dá outras providências",
+   "como_achou": "WebSearch restrito a am.gov.br",
+   "nota": "Mesmo ato do item instrumento_operacional AM; Operação Amazonas+Verde não conferida nesta página."
+  },
+  {
+   "uf": "AM",
+   "tipo": "instrumento_operacional",
+   "url": "https://legisla.imprensaoficial.am.gov.br/diario_am/41534/2026/6/19165",
+   "tipo_fonte": "diario_oficial",
+   "verificacao": "conteudo_conferido",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "DECRETO N.º 54.274, DE 1º DE JUNHO DE 2026",
+   "trecho": "DECLARA, em caráter preventivo, Estado de Emergência Climática e Ambiental no Estado do Amazonas, em razão das projeções meteorológicas associadas ao fenômeno El Niño, estabelece medidas cautelares de proteção e defesa civil",
+   "como_achou": "WebSearch restrito a am.gov.br",
+   "nota": "Imprensa Oficial do AM (legisla)."
+  },
+  {
+   "uf": "AP",
+   "tipo": "instrumento_operacional",
+   "url": "https://www.portal.ap.gov.br/noticia/2404/governo-do-amapa-institui-novo-plano-de-prevencao-e-controle-do-desmatamento-queimadas-e-incendios-florestais",
+   "tipo_fonte": "noticia_oficial",
+   "verificacao": "titulo_conferido",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "Portal Governo do Amapá - Governo do Amapá institui novo Plano de Prevenção e Controle do Desmatamento, Queimadas e Incêndios Florestais",
+   "trecho": "(título do resultado de busca) Governo do Amapá institui novo Plano de Prevenção e Controle do Desmatamento, Queimadas e Incêndios Florestais",
+   "como_achou": "WebSearch restrito a ap.gov.br",
+   "nota": "portal.ap.gov.br bloqueia WebFetch (robots); vigência 2026-2030 não conferida. Comitê do Decreto 5.677/2024: pista em https://sema.portal.ap.gov.br/noticia/2507/governador-clecio-luis-instistui-decreto-para-prevenir-impactos-da-estiagem-e-combater-incendios-florestais-no-amapa (também bloqueada); at"
+  },
+  {
+   "uf": "PA",
+   "tipo": "estrutura_coordenacao",
+   "url": "https://ioepa.com.br/pages/2026/2026.08.25.DOE.pdf",
+   "tipo_fonte": "diario_oficial",
+   "verificacao": "conteudo_conferido",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "DIÁRIO OFICIAL Nº 36.743, Terça-feira, 25 de AGOSTO de 2026",
+   "trecho": "GABINETE DO GOVERNADOR DECRETO Nº 5.606, DE 24 DE AGOSTO DE 2026 — Declara, em caráter preventivo, situação de alerta climático e ambiental em todo o Estado do Pará, em razão das projeções meteorológicas associadas ao fenômeno El Niño 2026/2027.",
+   "como_achou": "WebSearch \"5.606\" restrito a ioepa/pa.gov.br",
+   "nota": "Mesmo ato do instrumento_operacional PA. ioepa.com.br é a Imprensa Oficial do Pará."
+  },
+  {
+   "uf": "PA",
+   "tipo": "instrumento_operacional",
+   "url": "https://ioepa.com.br/pages/2026/2026.08.25.DOE.pdf",
+   "tipo_fonte": "diario_oficial",
+   "verificacao": "conteudo_conferido",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "DIÁRIO OFICIAL Nº 36.743, Terça-feira, 25 de AGOSTO de 2026",
+   "trecho": "GABINETE DO GOVERNADOR DECRETO Nº 5.606, DE 24 DE AGOSTO DE 2026 — Declara, em caráter preventivo, situação de alerta climático e ambiental em todo o Estado do Pará, em razão das projeções meteorológicas associadas ao fenômeno El Niño 2026/2027.",
+   "como_achou": "WebSearch \"5.606\" restrito a ioepa/pa.gov.br",
+   "nota": "Decreto datado de 24/08/2026, publicado no DOE de 25/08/2026."
+  },
+  {
+   "uf": "RO",
+   "tipo": "estrutura_coordenacao",
+   "url": "https://rondonia.ro.gov.br/wp-content/uploads/2024/09/SEI_0041416310_Decreto_N__28.811_-1.pdf",
+   "tipo_fonte": "portal_governo",
+   "verificacao": "conteudo_conferido",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "SEI 0041416310 Decreto Nº 28.811",
+   "trecho": "DECRETO N° 28.811, DE 17 DE JANEIRO DE 2024. Constitui Comitê Estadual de Prevenção e Combate a Incêndios Florestais - CEPCIF e revoga o Decreto n° 11.054, de 28 de maio de 2004.",
+   "como_achou": "WebSearch pelo número do decreto",
+   "nota": "PDF do decreto no portal do governo de RO; mobilização de 2026 não está neste documento."
+  },
+  {
+   "uf": "RO",
+   "tipo": "instrumento_operacional",
+   "url": "https://rondonia.ro.gov.br/wp-content/uploads/2024/09/SEI_0041416310_Decreto_N__28.811_-1.pdf",
+   "tipo_fonte": "portal_governo",
+   "verificacao": "correspondencia_aproximada",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "SEI 0041416310 Decreto Nº 28.811",
+   "trecho": "DECRETO N° 28.811, DE 17 DE JANEIRO DE 2024. Constitui Comitê Estadual de Prevenção e Combate a Incêndios Florestais - CEPCIF e revoga o Decreto n° 11.054, de 28 de maio de 2004.",
+   "como_achou": "WebSearch pelo número do decreto",
+   "nota": "O decreto não menciona POTIF; documento do POTIF-RO 2026 não localizado."
+  },
+  {
+   "uf": "RR",
+   "tipo": "estrutura_coordenacao",
+   "url": "https://portal.rr.gov.br/governo-de-roraima-lanca-operacao-verao-sem-fogo-para-ciclo-2025-2026/",
+   "tipo_fonte": "noticia_oficial",
+   "verificacao": "titulo_conferido",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "Governo de Roraima lança Operação Verão Sem Fogo para ciclo 2025/2026 - GOVERNO DE RORAIMA",
+   "trecho": "(título do resultado de busca) Governo de Roraima lança Operação Verão Sem Fogo para ciclo 2025/2026",
+   "como_achou": "WebSearch restrito a rr.gov.br",
+   "nota": "WebFetch devolveu erro. Gabinete Integrado da Operação El Niño 2026-2027: nenhum ato ou notícia oficial localizado (só imprensa privada). Ciclo 2026/2027 da operação não localizado."
+  },
+  {
+   "uf": "RR",
+   "tipo": "instrumento_operacional",
+   "url": "https://portal.rr.gov.br/governo-de-roraima-lanca-operacao-verao-sem-fogo-para-ciclo-2025-2026/",
+   "tipo_fonte": "noticia_oficial",
+   "verificacao": "titulo_conferido",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "Governo de Roraima lança Operação Verão Sem Fogo para ciclo 2025/2026 - GOVERNO DE RORAIMA",
+   "trecho": "(título do resultado de busca) Governo de Roraima lança Operação Verão Sem Fogo para ciclo 2025/2026",
+   "como_achou": "WebSearch restrito a rr.gov.br",
+   "nota": "WebFetch devolveu erro; é o ciclo 2025/2026 (o de 2026/2027 não localizado)."
+  },
+  {
+   "uf": "CE",
+   "tipo": "instrumento_operacional",
+   "url": "https://www.srh.ce.gov.br/comite-integrado-de-seguranca-hidrica-lista-demandas-de-abastecimento-do-ceara-ao-midr/",
+   "tipo_fonte": "noticia_oficial",
+   "verificacao": "correspondencia_aproximada",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "Comitê Integrado de Segurança Hídrica lista demandas de abastecimento do Ceará ao MIDR - SRH",
+   "trecho": "O grupo, formado por nove órgãos estaduais, é responsável por coordenar as atividades e ações",
+   "como_achou": "WebSearch restrito a ce.gov.br",
+   "nota": "Notícia de 21/03/2024 (comitê recorrente). Notícia de criação: https://www.ce.gov.br/2024/01/12/governo-do-estado-cria-comite-integrado-de-seguranca-hidrica/ (WebFetch falhou). Nenhum ato de 2026 ligado a El Niño localizado."
+  },
+  {
+   "uf": "MA",
+   "tipo": "estrutura_coordenacao",
+   "url": "https://cbm.ssp.ma.gov.br/2026/05/26/corpo-de-bombeiros-alinha-diretrizes-para-operacao-maranhao-sem-queimadas/",
+   "tipo_fonte": "noticia_oficial",
+   "verificacao": "conteudo_conferido",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "Corpo de Bombeiros alinha diretrizes para operação Maranhão Sem Queimadas",
+   "trecho": "Na sexta edição da operação Maranhão Sem Queimadas, ano passado, o Corpo de Bombeiros alcançou 100 municípios (a edição de 2026 é a sétima, a partir de junho)",
+   "como_achou": "WebSearch restrito a ma.gov.br",
+   "nota": "Notícia do CBMMA de 26/05/2026. Decreto do período proibitivo: pista em https://www.sema.ma.gov.br/noticias/maranhao-sem-queimadas-governo-estabelece-periodo-proibitivo-para-uso-do-fogo-no-estado (não aberta)."
+  },
+  {
+   "uf": "MA",
+   "tipo": "instrumento_operacional",
+   "url": "https://cbm.ssp.ma.gov.br/2026/05/26/corpo-de-bombeiros-alinha-diretrizes-para-operacao-maranhao-sem-queimadas/",
+   "tipo_fonte": "noticia_oficial",
+   "verificacao": "conteudo_conferido",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "Corpo de Bombeiros alinha diretrizes para operação Maranhão Sem Queimadas",
+   "trecho": "Na sexta edição da operação Maranhão Sem Queimadas, ano passado, o Corpo de Bombeiros alcançou 100 municípios (a edição de 2026 é a sétima, a partir de junho)",
+   "como_achou": "WebSearch restrito a ma.gov.br",
+   "nota": "Data bate com a do alvo (26/05/2026)."
+  },
+  {
+   "uf": "DF",
+   "tipo": "estrutura_coordenacao",
+   "url": "https://www.sinj.df.gov.br/sinj/Diario/c1684a96-a84a-3ea4-8a50-f50e08588e94/visualizar-pdf%2010.pdf",
+   "tipo_fonte": "diario_oficial",
+   "verificacao": "conteudo_conferido",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "DODF nº 88, sexta-feira, 15 de maio de 2026 — Seção I",
+   "trecho": "DECRETO Nº 48.599, DE 14 DE MAIO DE 2026. Declara estado de emergência ambiental no Distrito Federal e dá outras providências. (art. 2º: Plano de Prevenção e Combate a Incêndios Florestais do Distrito Federal, instituído pelo Decreto nº 37.549, de 15 de agosto de 2016)",
+   "como_achou": "WebSearch \"48.599\" restrito a df.gov.br (SINJ-DF)",
+   "nota": "Mesmo ato do instrumento_operacional DF."
+  },
+  {
+   "uf": "DF",
+   "tipo": "instrumento_operacional",
+   "url": "https://www.sinj.df.gov.br/sinj/Diario/c1684a96-a84a-3ea4-8a50-f50e08588e94/visualizar-pdf%2010.pdf",
+   "tipo_fonte": "diario_oficial",
+   "verificacao": "conteudo_conferido",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "DODF nº 88, sexta-feira, 15 de maio de 2026 — Seção I",
+   "trecho": "DECRETO Nº 48.599, DE 14 DE MAIO DE 2026. Declara estado de emergência ambiental no Distrito Federal e dá outras providências.",
+   "como_achou": "WebSearch \"48.599\" restrito a df.gov.br (SINJ-DF)",
+   "nota": "Texto não usa a sigla PPCIF, mas cita o plano e o Decreto 37.549/2016."
+  },
+  {
+   "uf": "MT",
+   "tipo": "estrutura_coordenacao",
+   "url": "https://www.sema.mt.gov.br/site/phocadownload/CEGF/DECRETO%20N%202.015%202026.pdf",
+   "tipo_fonte": "portal_governo",
+   "verificacao": "conteudo_conferido",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "DECRETO Nº 2.015, DE 28 DE ABRIL DE 2026 (Diário Oficial nº 29.222)",
+   "trecho": "DECRETO Nº 2.015, DE 28 DE ABRIL DE 2026 ... Art. 4º Fica instituída a Sala de Situação Central (SSC) [Temporada de Incêndios Florestais, 1º/07 a 30/11/2026, coordenação-geral do CBMMT]",
+   "como_achou": "WebSearch pelo número do decreto",
+   "nota": "Cópia do DOE na Sema-MT. Matéria no IOMAT (não aberta): https://www.iomat.mt.gov.br/apifront/portal/edicoes/imprimir_materia/1830005/19059 (Protocolo 1807114, 29/04/2026)."
+  },
+  {
+   "uf": "MT",
+   "tipo": "instrumento_operacional",
+   "url": "https://www.sema.mt.gov.br/site/phocadownload/CEGF/DECRETO%20N%202.015%202026.pdf",
+   "tipo_fonte": "portal_governo",
+   "verificacao": "correspondencia_aproximada",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "DECRETO Nº 2.015, DE 28 DE ABRIL DE 2026",
+   "trecho": "DECRETO Nº 2.015, DE 28 DE ABRIL DE 2026 — declara estado de emergência ambiental, define o período proibitivo de queimadas e institui a Sala de Situação Central (Temporada de Incêndios Florestais de 2026)",
+   "como_achou": "WebSearch",
+   "nota": "O decreto não cita um 'Plano de Combate a Incêndios'. Notícia oficial do plano (SESP-MT, bloqueia WebFetch, data não conferida): https://www.sesp.mt.gov.br/en/-/plano-de-combate-a-inc%C3%AAndios-florestais-em-mt-prev%C3%AA-amplia%C3%A7%C3%A3o-de-efetivo-estrutura-e-novas-a%C3%A7%C3%B5es"
+  },
+  {
+   "uf": "MS",
+   "tipo": "estrutura_coordenacao",
+   "url": "https://www.semadesc.ms.gov.br/wp-content/uploads/2026/06/Decreto-Emergencia-Ambiental-2026.pdf",
+   "tipo_fonte": "portal_governo",
+   "verificacao": "conteudo_conferido",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "Decreto Emergência Ambiental 2026 (Semadesc-MS)",
+   "trecho": "Decreto “E” nº 44, de 2 de junho de 2026. Declara “Estado de Emergência Ambiental”, pelo prazo de 180 (cento e oitenta) dias, para todo o Estado de Mato Grosso do Sul (art. 4º: CICOE; níveis Atenção e Alerta do Cemtec)",
+   "como_achou": "WebSearch (busca sobre emergência ambiental 2026)",
+   "nota": "Número do decreto: 'E' nº 44/2026. Mesmo ato do instrumento_operacional MS. DOE-MS de 03/06/2026 não entre os preservados."
+  },
+  {
+   "uf": "MS",
+   "tipo": "instrumento_operacional",
+   "url": "https://www.semadesc.ms.gov.br/wp-content/uploads/2026/06/Decreto-Emergencia-Ambiental-2026.pdf",
+   "tipo_fonte": "portal_governo",
+   "verificacao": "conteudo_conferido",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "Decreto Emergência Ambiental 2026 (Semadesc-MS)",
+   "trecho": "Decreto “E” nº 44, de 2 de junho de 2026. Declara “Estado de Emergência Ambiental”, pelo prazo de 180 (cento e oitenta) dias, para todo o Estado de Mato Grosso do Sul",
+   "como_achou": "WebSearch",
+   "nota": "Caráter preventivo e base nos alertas do Cemtec confirmados no texto."
+  },
+  {
+   "uf": "ES",
+   "tipo": "estrutura_coordenacao",
+   "url": "https://defesacivil.es.gov.br/GrupodeArquivos/pepdec-plano-estadual-de-protecao-e-defesa-civil-do-espirito-santo",
+   "tipo_fonte": "portal_defesa_civil",
+   "verificacao": "correspondencia_aproximada",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "Plano Estadual de Proteção e Defesa Civil do Espírito Santo",
+   "trecho": "17 - PEPDEC - Dezembro 2025 (atualizado em 19/01/2026) · 16 - PEPDEC - Dezembro_2024 · 15 - PEPDEC - Outubro de 2023",
+   "como_achou": "WebSearch restrito a es.gov.br",
+   "nota": "O ES não publica 'plano de verão' com esse nome; o PEPDEC é o plano estadual revisado a cada ciclo (versão dez/2025, atualizada em 19/01/2026). A página não usa as palavras 'verão' ou 'período chuvoso'. A página de planos de contingência lista só planos municipais."
+  },
+  {
+   "uf": "ES",
+   "tipo": "instrumento_operacional",
+   "url": "https://defesacivil.es.gov.br/GrupodeArquivos/pepdec-plano-estadual-de-protecao-e-defesa-civil-do-espirito-santo",
+   "tipo_fonte": "portal_defesa_civil",
+   "verificacao": "correspondencia_aproximada",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "Plano Estadual de Proteção e Defesa Civil do Espírito Santo",
+   "trecho": "17 - PEPDEC - Dezembro 2025 (atualizado em 19/01/2026)",
+   "como_achou": "WebSearch restrito a es.gov.br",
+   "nota": "Correspondência aproximada (plano estadual por ciclo, não 'plano de verão' nominal)."
+  },
+  {
+   "uf": "MG",
+   "tipo": "estrutura_coordenacao",
+   "url": "https://www.mg.gov.br/defesacivil/noticias/governo-de-minas-lanca-plano-estadual-de-enfrentamento-ao-periodo-chuvoso",
+   "tipo_fonte": "noticia_oficial",
+   "verificacao": "correspondencia_aproximada",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "Governo de Minas lança Plano Estadual de Enfrentamento ao Período Chuvoso",
+   "trecho": "Governo de Minas lança Plano Estadual de Enfrentamento ao Período Chuvoso ... que estabelece diretrizes para fortalecer a articulação entre Estado e municípios",
+   "como_achou": "WebSearch restrito a mg.gov.br",
+   "nota": "Notícia da Defesa Civil MG de 08/10/2025 (lançamento em 06/10/2025); plano com horizonte 2025-2031."
+  },
+  {
+   "uf": "MG",
+   "tipo": "instrumento_operacional",
+   "url": "https://www.mg.gov.br/defesacivil/noticias/governo-de-minas-lanca-plano-estadual-de-enfrentamento-ao-periodo-chuvoso",
+   "tipo_fonte": "noticia_oficial",
+   "verificacao": "correspondencia_aproximada",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "Governo de Minas lança Plano Estadual de Enfrentamento ao Período Chuvoso",
+   "trecho": "Governo de Minas lança Plano Estadual de Enfrentamento ao Período Chuvoso ... que estabelece diretrizes para fortalecer a articulação entre Estado e municípios",
+   "como_achou": "WebSearch restrito a mg.gov.br",
+   "nota": "PDF do plano não localizado; ciclo 2025-2031."
+  },
+  {
+   "uf": "RJ",
+   "tipo": "estrutura_coordenacao",
+   "url": "https://defesacivil.rj.gov.br/index.php/para-municipios/plano-de-contingencias-dc",
+   "tipo_fonte": "portal_defesa_civil",
+   "verificacao": "conteudo_conferido",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "PLANO DE CONTINGÊNCIAS DO ESTADO DO RIO DE JANEIRO 2025/2026",
+   "trecho": "PLANO DE CONTINGÊNCIAS DO ESTADO DO RIO DE JANEIRO 2025/2026 — Plano de Contingência para chuvas intensas (PDF) + planos setoriais das secretarias",
+   "como_achou": "WebSearch restrito a rj.gov.br; também em cand_evid.json (RJ)",
+   "nota": "PDF principal: https://defesacivil.rj.gov.br/images/2025/PLACON-2025-2026---DEFESA-CIVIL.pdf (preservado no projeto sem arquivo). Notícia: https://www.defesacivil.rj.gov.br/index.php/noticias-da-defesa-civil/defesa-civil-rj-atualiza-plano-de-contingencia-para-chuvas-intensas-2025-2026. Versão 2026/2"
+  },
+  {
+   "uf": "RJ",
+   "tipo": "instrumento_operacional",
+   "url": "https://defesacivil.rj.gov.br/images/2025/PLACON-2025-2026---DEFESA-CIVIL.pdf",
+   "tipo_fonte": "portal_defesa_civil",
+   "verificacao": "titulo_conferido",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "Plano de Contingência para chuvas intensas 2025/2026 (link na página 'PLANO DE CONTINGÊNCIAS DO ESTADO DO RIO DE JANEIRO 2025/2026')",
+   "trecho": "Plano de Contingência para Respostas aos Desastres Ocasionados pelas Chuvas Intensas versão 2025/2026",
+   "como_achou": "Link listado na página oficial aberta com WebFetch; coincide com candidato de cand_evid.json",
+   "nota": "PDF não aberto diretamente; trecho vem da notícia oficial da Defesa Civil RJ (13/10/2025)."
+  },
+  {
+   "uf": "SP",
+   "tipo": "estrutura_coordenacao",
+   "url": "https://www.defesacivil.sp.gov.br/sec_defesa_civil/noticias/operacao_chuvas_2526",
+   "tipo_fonte": "portal_defesa_civil",
+   "verificacao": "correspondencia_aproximada",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "SP Sempre Alerta – Operação Chuvas 2025/2026 encerra com ampliação de ações de prevenção de desastres e rápida resposta",
+   "trecho": "SP Sempre Alerta – Operação Chuvas 2025/2026 ... Entre os dias 1º de dezembro e 31 de março, foram registradas 480 ocorrências em 212 municípios.",
+   "como_achou": "WebSearch restrito a sp.gov.br",
+   "nota": "Notícia de encerramento (01/04/2026) do ciclo 1º/12/2025–31/03/2026; ciclo 2026/2027 não localizado."
+  },
+  {
+   "uf": "SP",
+   "tipo": "instrumento_operacional",
+   "url": "https://www.defesacivil.sp.gov.br/sec_defesa_civil/noticias/operacao_chuvas_2526",
+   "tipo_fonte": "portal_defesa_civil",
+   "verificacao": "correspondencia_aproximada",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "SP Sempre Alerta – Operação Chuvas 2025/2026 encerra com ampliação de ações de prevenção de desastres e rápida resposta",
+   "trecho": "SP Sempre Alerta – Operação Chuvas 2025/2026 ... Entre os dias 1º de dezembro e 31 de março, foram registradas 480 ocorrências em 212 municípios.",
+   "como_achou": "WebSearch restrito a sp.gov.br",
+   "nota": "Documento do plano (decreto/resolução) não localizado; página da Defesa Civil SP."
+  },
+  {
+   "uf": "PR",
+   "tipo": "estrutura_coordenacao",
+   "url": "https://www.defesacivil.pr.gov.br/sites/defesa-civil/arquivos_restritos/files/documento/2026-08/nota_tecnicandeg005_2026.pdf",
+   "tipo_fonte": "portal_defesa_civil",
+   "verificacao": "conteudo_conferido",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "NOTA TÉCNICA CONJUNTA Nº05/2026 DEFESA CIVIL PR / SIMEPAR",
+   "trecho": "NOTA TÉCNICA CONJUNTA Nº05/2026 ... Curitiba, 14 de agosto de 2026. O Oceano Pacífico Equatorial encontra-se em constante aquecimento e em situação de El Niño FORTE (+1.8°C). (cita Chefe do CEGERD e os Núcleos de Atuação Regional — NARDCs)",
+   "como_achou": "WebSearch restrito a pr.gov.br; também em cand_evid.json (PR, arquivo preservado)",
+   "nota": "Estrutura permanente (CEGERD/NARDCs) citada na própria nota."
+  },
+  {
+   "uf": "PR",
+   "tipo": "instrumento_operacional",
+   "url": "https://www.defesacivil.pr.gov.br/Pagina/NOTAS-TECNICA-CONJUNTA-EL-NINO-OSCILACAO-SUL-ENOS-2026",
+   "tipo_fonte": "portal_defesa_civil",
+   "verificacao": "conteudo_conferido",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "NOTAS TÉCNICA CONJUNTA EL NIÑO OSCILAÇÃO SUL-ENOS 2026 | COORDENADORIA ESTADUAL DA DEFESA CIVIL",
+   "trecho": "Nota Técnica Conjunta Nº 04/2026: 23 de junho de 2026 · Nº 03/2026: 18 de junho de 2026 · Nº 02/2026: 21 de maio de 2026 · Nº 01/2026: 15 abril de 2026 — Monitoramento e Projeções do Fenômeno El Niño 2026/2027 e Impactos no Paraná",
+   "como_achou": "WebSearch restrito a pr.gov.br; também em cand_evid.json (PR)",
+   "nota": "Página da série; na leitura ainda listava até a nº 04. A nº 05 (14/08/2026): https://www.defesacivil.pr.gov.br/sites/defesa-civil/arquivos_restritos/files/documento/2026-08/nota_tecnicandeg005_2026.pdf (aberta)."
+  },
+  {
+   "uf": "RS",
+   "tipo": "estrutura_coordenacao",
+   "url": "https://defesacivil.rs.gov.br/upload/arquivos/202606/18093624-decreto-n-58-838-de-17-de-junho-de-2026.pdf",
+   "tipo_fonte": "portal_defesa_civil",
+   "verificacao": "correspondencia_aproximada",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "Decreto nº 58.838, de 17 de junho de 2026",
+   "trecho": "DECRETO Nº 58.838, DE 17 DE JUNHO DE 2026. Institui Programa Estadual de Preparação para Eventos Extremos - PREPARA RS, destinado à preparação do Estado para os potenciais impactos associados ao fenômeno El Niño no período 2026/2027.",
+   "como_achou": "WebSearch (apareceu em busca sobre El Niño 2026-2027)",
+   "nota": "Governança: art. 4º atribui ao COEPDEC a governança estratégica; cita o GIGED. Texto não menciona 'Plano Rio Grande'."
+  },
+  {
+   "uf": "RS",
+   "tipo": "instrumento_operacional",
+   "url": "https://defesacivil.rs.gov.br/upload/arquivos/202606/18093624-decreto-n-58-838-de-17-de-junho-de-2026.pdf",
+   "tipo_fonte": "portal_defesa_civil",
+   "verificacao": "correspondencia_aproximada",
+   "consultado_em": "2026-10-10",
+   "titulo_da_pagina": "Decreto nº 58.838, de 17 de junho de 2026",
+   "trecho": "DECRETO Nº 58.838, DE 17 DE JUNHO DE 2026. Institui Programa Estadual de Preparação para Eventos Extremos - PREPARA RS, destinado à preparação do Estado para os potenciais impactos associados ao fenômeno El Niño no período 2026/2027.",
+   "como_achou": "WebSearch",
+   "nota": "Cópia também em https://sistemas.defesacivil.rs.gov.br/documentos/fundec/Decreto_58.838_17_de_junho_2026.pdf (não aberta)."
+  }
+ ],
+ "defeitos_de_prova": [
+  {
+   "uf": "TO",
+   "tipo": "estrutura_coordenacao",
+   "motivo": "documento oficial não localizado em página oficial acessível até o corte; o instrumento foi julgado sem endereço registrado",
+   "pistas": "Nome exato (imprensa privada Conexão Tocantins, 10/06/2026, aberta): 'Plano Integrado de Prevenção e Combate aos Incêndios Florestais 2025/2026' — com 'aos' e 'Florestais'; Defesa Civil Estadual, Semarh, Cigma e o 'Comitê Estadual de Combate aos Incêndios Florestais e Controle de Queimadas' (mais de 30 instituições); 600+ brigadistas a partir de 01/07. Nenhuma página oficial com o nome apareceu em",
+   "registrado_em": "2026-10-10"
+  },
+  {
+   "uf": "TO",
+   "tipo": "instrumento_operacional",
+   "motivo": "documento oficial não localizado em página oficial acessível até o corte; o instrumento foi julgado sem endereço registrado",
+   "pistas": "Nome exato (imprensa privada Conexão Tocantins, 10/06/2026, aberta): 'Plano Integrado de Prevenção e Combate aos Incêndios Florestais 2025/2026' — com 'aos' e 'Florestais'; Defesa Civil Estadual, Semarh, Cigma e o 'Comitê Estadual de Combate aos Incêndios Florestais e Controle de Queimadas' (mais de 30 instituições); 600+ brigadistas a partir de 01/07. Nenhuma página oficial com o nome apareceu em",
+   "registrado_em": "2026-10-10"
+  },
+  {
+   "uf": "AL",
+   "tipo": "estrutura_coordenacao",
+   "motivo": "documento oficial não localizado em página oficial acessível até o corte; o instrumento foi julgado sem endereço registrado",
+   "pistas": "Pista (Gazetaweb, aberta): 'Decreto nº 110.661', assinado em 24/08/2026 e publicado no DOE-AL de 25/08/2026; 'Comitê El Niño' interinstitucional coordenado pela Semarh, parte técnica da Superintendência de Prevenção em Desastres Naturais. Edição do DOE-AL de 25/08 não apareceu em busca (só a de 19/08, id 51777, com o parecer PGE sobre a minuta). semarh.al.gov.br bloqueia WebFetch (robots). Data no",
+   "registrado_em": "2026-10-10"
+  },
+  {
+   "uf": "PI",
+   "tipo": "instrumento_operacional",
+   "motivo": "documento oficial não localizado em página oficial acessível até o corte; o instrumento foi julgado sem endereço registrado",
+   "pistas": "Nenhuma página oficial de 2026 liga antecipação de PAA/PAS/Garantia-Safra ao El Niño ou à estiagem. Abertas e descartadas: Garantia-Safra R$ 80 mi (18/03/2026, sem El Niño nem antecipação); Operação Água e Vida El Niño (17/02/2024); PAA e PAS (02/05/2024); plano de saúde El Niño Sesapi 2026 (sem PAA/PAS/Garantia-Safra). Pista privada (Conecta Piauí, 24/08/2026): reunião com o MDS sobre El Niño, co",
+   "registrado_em": "2026-10-10"
+  },
+  {
+   "uf": "SE",
+   "tipo": "estrutura_coordenacao",
+   "motivo": "documento oficial não localizado em página oficial acessível até o corte; o instrumento foi julgado sem endereço registrado",
+   "pistas": "Cegec não aparece em nenhum resultado (nem em imprensa privada). Home defesacivil.se.gov.br e ?page_id=671 abertas: sem El Niño/Cegec. Relatório SEMAC 2023 (se.gov.br anexo 8661) aberto: sem Cegec.",
+   "registrado_em": "2026-10-10"
+  },
+  {
+   "uf": "SE",
+   "tipo": "instrumento_operacional",
+   "motivo": "documento oficial não localizado em página oficial acessível até o corte; o instrumento foi julgado sem endereço registrado",
+   "pistas": "PDF https://defesacivil.se.gov.br/wp-content/uploads/2026/08/Plancon-edicao-2026.pdf de novo recusado (PROVENANCE_REQUIRED: só abre se a editoria colar a URL). Não surgiu em resultado de busca. 'Sergipe Resiliente' sem nenhum resultado. Imprensa privada (RO Acontece, 06/10/2026) cita só fortalecimento dos planos municipais de contingência pela Defesa Civil estadual.",
+   "registrado_em": "2026-10-10"
+  },
+  {
+   "uf": "GO",
+   "tipo": "estrutura_coordenacao",
+   "motivo": "documento oficial não localizado em página oficial acessível até o corte; o instrumento foi julgado sem endereço registrado",
+   "pistas": "'Gabinete de Ações Integradas (GAI)', coordenado pelo CBMGO/Codec, só em imprensa privada (Portal 6, 18/08/2026; A Redação; Jornal Opção); nenhum ato de criação citado. DOE-GO de 21/08/2026 aberto: sem o ato (leitura pode ter sido parcial). Páginas oficiais abertas e descartadas: goias.gov.br/abc 'Gabinete de Gestão Integrada' (13/09/2024) e Casa Civil (Cefig, jul/2025).",
+   "registrado_em": "2026-10-10"
+  },
+  {
+   "uf": "GO",
+   "tipo": "instrumento_operacional",
+   "motivo": "documento oficial não localizado em página oficial acessível até o corte; o instrumento foi julgado sem endereço registrado",
+   "pistas": "'PLANCON Estiagem 2026' não aparece em nenhum resultado, nem em imprensa privada nesta rodada. Correlato oficial aberto: https://goias.gov.br/abc/corpo-de-bombeiros-lanca-a-operacao-cerrado-vivo-2026/ (atualizada 18/06/2026; cita 'previsão do fenômeno climático Super El Niño' e atuação 'durante a estiagem'), mas não é o PLANCON.",
+   "registrado_em": "2026-10-10"
+  },
+  {
+   "uf": "SC",
+   "tipo": "estrutura_coordenacao",
+   "motivo": "documento oficial não localizado em página oficial acessível até o corte; o instrumento foi julgado sem endereço registrado",
+   "pistas": "Não é o Plano de Contingência El Niño (20/08/2026); é o decreto de alerta que ativa o Comitê de Gestão de Crise. Notícia oficial do comitê (título literal em busca, robots bloqueia WebFetch): https://www.defesacivil.sc.gov.br/2026/06/22/comite-de-gestao-de-crise-se-reune-para-alinhar-acoes-preventivas-diante-da-confirmacao-do-el-nino-em-santa-catarina/",
+   "registrado_em": "2026-10-10"
+  },
+  {
+   "uf": "SC",
+   "tipo": "instrumento_operacional",
+   "motivo": "documento oficial não localizado em página oficial acessível até o corte; o instrumento foi julgado sem endereço registrado",
+   "pistas": "Nome exato (imprensa privada RCO, 20/08/2026): 'Plano de Contingência para Atuação do El Niño em Santa Catarina 2026'. Nenhuma página oficial com esse nome apareceu em busca; categoria El Niño da SDC bloqueia WebFetch (robots). Ofício SDC 416/2026 (ALESC gZ49p, 11/06) diz que a atuação 'não está estruturada exclusivamente para um fenômeno climático específico'.",
+   "registrado_em": "2026-10-10"
+  }
+ ]
+}
