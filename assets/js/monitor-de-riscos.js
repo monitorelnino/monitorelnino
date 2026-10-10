@@ -1360,28 +1360,8 @@ if (document.getElementById('wrapPlume')) {
   credito('boxPlume', 'iri_plume');
 }
 
-// ---- Gráfico 3: estados por tipo de risco ----
-// 17/09/2026 (pedido da editoria): a barra "Misto" só informava uma contagem, sem dizer do quê — o
-// gráfico não comunicava nada além de "N estados têm mais de um risco". Cada estado com risco misto
-// passa a contar em CADA risco que o compõe (um estado com estiagem + incêndios soma nas duas barras),
-// não numa categoria à parte. A soma das barras pode passar de 27 — é o esperado, não um erro: um
-// mesmo estado pode aparecer em mais de uma barra. O mapa não muda (mesma cor "misto" nos estados com
-// mais de um risco); só o gráfico ao lado e o texto do mouse sobre o mapa mudam.
-const TIPOS_CONTAVEIS = ['estiagem', 'chuvas', 'incendios', 'sem_sinal'];
-const contagemPorTipo = {};
-TIPOS_CONTAVEIS.forEach(t => contagemPorTipo[t] = 0);
-UFS.forEach(uf => {
-  const r = RISCO(uf); if (!r) return;
-  if (r.tipo === 'misto' && r.componentes && r.componentes.length) r.componentes.forEach(c => { if (c in contagemPorTipo) contagemPorTipo[c]++; });
-  else if (r.tipo in contagemPorTipo) contagemPorTipo[r.tipo]++;
-});
-const ordemTipos = TIPOS_CONTAVEIS.filter(t => contagemPorTipo[t] > 0);
-const contagem = ordemTipos.map(t => contagemPorTipo[t]);
-new Chart(document.getElementById('cTipos'), {type:'bar', data:{
-    labels: ordemTipos.map(t => TIPO_CURTO[t]),
-    datasets:[{data:contagem, backgroundColor:ordemTipos.map(t => TIPO_COR[t]), borderWidth:0}]},
-  options:{...SEM_ANIM, indexAxis:'y', plugins:{legend:{display:false}},
-    scales:{x:{title:{display:true, text:'estados (um estado com mais de um risco conta em cada um)'}, ticks:{precision:0}}}}});
+// O gráfico de estados por tipo de risco (#cTipos) saiu da página em 27/09/2026 com o risco projetado;
+// a montagem que sobrou aqui mirava um canvas inexistente e foi retirada (A4-21, 10/10/2026).
 // 15/09/2026: a contagem por família mora na figura dupla boxTipoRisco (mapa + gráfico, uma legenda) — o crédito é o da figura.
 // 17/09/2026: o cruzamento "tipo de risco × estágio" (que morava na home, #cCruz) saiu do site — pedido da editoria.
 
