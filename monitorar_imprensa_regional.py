@@ -234,11 +234,11 @@ def carregar_fila():
     if FILA.exists():
         return json.load(open(FILA, encoding="utf-8"))
     return {"_governanca": (
-        "Fila de DESCOBERTA em imprensa para triagem humana (METODOLOGIA §17). "
+        "Fila de DESCOBERTA em imprensa para o juiz automático (METODOLOGIA §17, §106). "
         "TRAVA ABSOLUTA: nenhuma pista entra no banco (estados.json/municipios.json/"
-        "indice.json) sem que um humano preencha documento_oficial_confirmado com a "
-        "URL do documento primário (Protocolo de Busca v2, camada 1) e registre a "
-        "promoção em data/log_buscas.json, pelo fluxo manual normal. Este arquivo "
+        "indice.json) sem que o juiz automático leia o documento primário em fonte "
+        "oficial (Protocolo de Busca v2, camada 1), preencha documento_oficial_confirmado "
+        "e registre a promoção em data/log_buscas.json; na dúvida, abstenção. Este arquivo "
         "não é, em nenhuma circunstância, lido por recalcular_mare.py."),
         "pistas": []}
 
@@ -413,7 +413,7 @@ def main():
     print(f"Universo de busca: {len(universo)} alvos (camadas A/B/C); "
           f"{limite} consultados nesta execução (posição {pos}→{(pos+limite) % len(universo)}).")
     if total_novas:
-        print(f"[PISTAS NOVAS] {total_novas} para triagem humana (status pendente_confirmacao_documento):")
+        print(f"[PISTAS NOVAS] {total_novas} para o juiz automático (status pendente_confirmacao_documento):")
         for p in fila["pistas"][-total_novas:]:
             marca = " [parece oficial]" if p["fonte_provavel_oficial"] else ""
             print(f"  · [{p['alvo']}]{marca} {p['titulo'][:100]}")

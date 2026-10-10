@@ -161,10 +161,10 @@ def _hash_pista(p: dict) -> str:
 
 def carregar_fila():
     return ler("pistas_descobertas.json", {"_governanca": (
-        "Fila de DESCOBERTA automática (via API WordPress, §11) para triagem humana. "
+        "Fila de DESCOBERTA automática (via API WordPress, §11) para o juiz automático. "
         "TRAVA ABSOLUTA: nenhum item entra no banco (estados.json/saude_uf.json/"
-        "municipios.json/indice.json/monitor_saude.json) sem confirmação humana do "
-        "documento primário, pelo fluxo manual normal (promoção = regra R7). Criado "
+        "municipios.json/indice.json/monitor_saude.json) sem o juiz automático ler o "
+        "documento primário (promoção = regra R7, §106; na dúvida, abstenção). Criado "
         "18/09/2026 (handover ponto cego saúde, §3.4; especificado em "
         "INSTRUCOES_diarios_defeso_LAI_06-09-2026.md §11)."),
         "itens": []})
@@ -497,7 +497,7 @@ def main() -> int:
                          f"fila com {len(fila['itens'])} item(ns)")
     print(f"Descoberta via wp-json: {consultas} alvo(s) consultado(s) ({'/'.join(setores)}).")
     if total_novos:
-        print(f"[ACHADOS NOVOS] {total_novos} para triagem humana (status pendente_confirmacao_documento):")
+        print(f"[ACHADOS NOVOS] {total_novos} para o juiz automático (status pendente_confirmacao_documento):")
         for p in fila["itens"][-total_novos:]:
             print(f"  · [{p['uf']}/{p['setor']}] {p['titulo'][:80] or p['url']}")
         print("  → NENHUM foi confirmado nem é promovível — trava absoluta. Ver data/pistas_descobertas.json.")

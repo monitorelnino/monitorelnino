@@ -1296,7 +1296,7 @@ def coletar_fonte(chave: str):
     """Executa o adaptador de rede da fonte indicada e devolve (payload, rótulo do documento); levanta exceção em qualquer falha, tratada por quem chama."""
     fonte = FONTES[chave]
     if not fonte["endpoint"]:
-        raise RuntimeError("fonte sem endpoint automático — entra por leitura humana (--semear)")
+        raise RuntimeError("fonte sem endpoint automático — sem acesso automático, lacuna declarada (só entra por --semear, com fonte)")
 
     # Fonte com credencial declarada: sem a credencial no ambiente, nem tenta a rede. Bater na
     # porta para levar 401 gastaria a fonte e sujaria o log com uma recusa que já é conhecida.
@@ -1788,7 +1788,7 @@ def semear(registro: dict) -> dict:
     registro["fontes"]["painel_el_nino"].update({
         "status": "coletado", "consultado_em": hoje(), "documento": documento,
         "detalhe": "Risco projetado por UF conforme registro curado em data/consist.json, "
-                   "derivado da leitura humana dos boletins do Painel.",
+                   "derivado da leitura registrada dos boletins do Painel.",
     })
     return registro
 

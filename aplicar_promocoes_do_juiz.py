@@ -382,7 +382,7 @@ def main() -> int:
             recusados.append((v, "veredito sem território — não dá para posicionar"))
             continue
         if ja_no_banco(municipios, v["municipio"], v["uf"]):
-            recusados.append((v, "já consta no banco — a revisão humana decide se é atualização"))
+            recusados.append((v, "já consta no banco — abstenção registrada (atualização não se presume)"))
             continue
         lat, lon = buscar_lat_lon(v["municipio"], v["uf"])
         if lat is None:

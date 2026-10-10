@@ -208,7 +208,7 @@ def rodar(alvos=None, ufs=None):
     # "está encontrando?" se responda sem abrir o código. Contagem não decide nada.
     funil.registrar("querido_diario", entradas=len(pistas), com_cobertura=n_cob,
                     ufs_varridas=len(execucao["ufs_varridas"]))
-    print(f"✓ {len(pistas)} entradas ({n_cob} com cobertura) → {DESTINO.name} — triagem humana pendente")
+    print(f"✓ {len(pistas)} entradas ({n_cob} com cobertura) → {DESTINO.name} — pendente da triagem automática")
     return 0
 
 
@@ -267,7 +267,7 @@ def main():
         # processo, que no runner é UTC.
         gravar_em(RAIZ / "data" / "termos_candidatos_qd.json",
                   {"execucao": hoje_editorial().isoformat(), "sementes": sementes, "achados": achados})
-        print(f"OK {len(achados)} excertos nacionais colhidos -> termos_candidatos_qd.json (triagem humana)")
+        print(f"OK {len(achados)} excertos nacionais colhidos -> termos_candidatos_qd.json (triagem automática)")
         return 0
     if "--alvos" in sys.argv:
         # 28/09/2026 (decisão da editoria, item 1): a primeira fila do juiz é uma LISTA DE ALVOS —

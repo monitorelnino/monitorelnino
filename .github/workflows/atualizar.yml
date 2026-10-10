@@ -304,9 +304,9 @@ jobs:
           # pypdf agora vem de requirements.txt (AUD-11)
           python processar_contribuicoes.py
         # Aprova sozinho apenas o que passa nas regras R1-R7. A R7 (27/08/2026)
-        # reserva ao julgamento humano tudo que move o índice: tipo "plano" e
-        # qualquer capital (maior alavanca populacional individual, v2.2) — esses ficam na fila humana (verificar_contribuicoes
-        # → converter_contribuicao → aplicar_revisao). O caminho automático fica
+        # não autoaplica nada que move o índice: tipo "plano" e qualquer capital
+        # (maior alavanca populacional individual, v2.2) — desde 08/10/2026 (D7, §106)
+        # isso é abstenção registrada, sem fila para pessoa. O caminho automático fica
         # restrito a decretos de não-capitais, neutros ao escore pela Correção B;
         # após aplicar, o script regrava índice/percentual derivados (--write).
         # Recusas ficam em data/contribuicoes_recusadas.json com motivo.
@@ -316,7 +316,7 @@ jobs:
         # regressão trava o job e nada é publicado.
 
       # §15 (29/08/2026): vigia de sinais federais novos (DOU, ADPF 743) —
-      # descoberta para triagem humana, nunca classificação.
+      # descoberta para triagem automática, nunca classificação.
       # 30/09/2026: a checagem de prazos federais saiu junto com o calendário (decisão da editoria).
       - name: Vigiar sinais federais novos (descoberta; informativa)
         if: steps.janela.outputs.pode == '1'
@@ -359,8 +359,8 @@ jobs:
 
       # §17 (29/08/2026): vigia de imprensa nacional (Google News RSS) por
       # possíveis instrumentos ainda não registrados — descoberta pura, com
-      # trava absoluta (nenhuma pista entra no banco sem confirmação humana
-      # em documento oficial). Limite alto pois a rede da Action é aberta.
+      # trava absoluta (nenhuma pista entra no banco sem o juiz automático ler
+      # o documento oficial, §106). Limite alto pois a rede da Action é aberta.
       - name: Vigiar imprensa nacional por novos instrumentos (descoberta; informativa)
         if: steps.janela.outputs.pode == '1'
         continue-on-error: true
@@ -413,8 +413,8 @@ jobs:
       # agora é automático quando o classificador está confiante: ex-ante com
       # citação completa aplica em estados.json/municipios.json; resposta com
       # município identificável aplica em data/atos_resposta.json (o mapa).
-      # Continua exigindo revisão humana em qualquer outro caso — sem mudança
-      # nessa parte. Roda com rede aberta (busca o documento de verdade, não só
+      # Em qualquer outro caso, abstenção registrada (ABSTENCAO, motivo gravado;
+      # 10/10/2026 — antes, fila para pessoa). Roda com rede aberta (busca o documento de verdade, não só
       # a notícia sobre ele); no ambiente de edição, sem rede para .gov.br, essa
       # etapa não tem o que buscar e não faz nada (degrada graciosamente).
       - name: Vigiar o painel El Niño da Política Por Inteiro (agregador terceiro; descoberta; informativa)
@@ -518,11 +518,11 @@ jobs:
             echo "--- etapas executadas ---"
             grep -c "^=== " /tmp/atualizar.log 2>/dev/null || echo "?"
             # 21/09/2026: absorve o que a "rotina diária" (sessão manual separada, sem definição
-            # formal no repositório) cobria de único e a Action ainda não tocava — filas humanas
-            # e branches parados. A rotina diária como prática separada é descontinuada a partir
+            # formal no repositório) cobria de único e a Action ainda não tocava — contagem das
+            # filas e branches parados. A rotina diária como prática separada é descontinuada a partir
             # de hoje (decisão editorial); isto é o substituto, automático, sempre nesta rodada.
-            echo "--- filas humanas (contagem) ---"
-            python3 scripts/contar_filas_humanas.py 2>/dev/null || echo "  (falhou ao contar)"
+            echo "--- filas (contagem) ---"
+            python3 scripts/contar_filas.py 2>/dev/null || echo "  (falhou ao contar)"
             echo "--- branches sem commit há mais de 14 dias (exclui main/publico) ---"
             git for-each-ref --sort=committerdate refs/remotes/origin --format='%(committerdate:short) %(refname:short)' 2>/dev/null | \
               awk -v d="$(date -u -d '14 days ago' +%Y-%m-%d)" '$1 < d && $2 !~ /origin\/(main|publico|HEAD)$/' | head -20 || echo "  (nenhum ou falhou)"
@@ -556,20 +556,20 @@ jobs:
         # cada atualização garante que o documento público nunca envelhece
         # em relação à base (o defeito clássico de PDF montado à mão).
 
-      - name: Avisar sobre propostas pendentes de revisão humana
+      - name: Avisar sobre propostas não aplicadas (abstenção registrada)
         # A guarda NAO condiciona este passo (08/10/2026): ele repoe o dominio, e tem
         # de rodar mesmo quando um passo anterior falhou. `testar_reposicao_dominio.py`
         # cobra exatamente isso.
         if: always()
         run: |
           if [ -f data/instrumentos_revisar.json ]; then
-            echo "::warning::Há propostas em data/instrumentos_revisar.json aguardando revisão humana (não aplicadas automaticamente)."
+            echo "::warning::Há propostas em data/instrumentos_revisar.json não aplicadas — abstenção registrada (nada entra no banco sem o juiz automático, §106)."
           fi
           if [ -f data/pistas_imprensa.json ]; then
-            python3 -c "import json; f = json.load(open('data/pistas_imprensa.json', encoding='utf-8')); pendentes = [p for p in f['pistas'] if p.get('status') == 'pendente_confirmacao_documento']; print(f'::warning::{len(pendentes)} pista(s) de imprensa aguardando revisão humana em data/pistas_imprensa.json (dúvida do classificador, citação incompleta, ou fonte não confirmada como oficial).') if pendentes else None"
+            python3 -c "import json; f = json.load(open('data/pistas_imprensa.json', encoding='utf-8')); pendentes = [p for p in f['pistas'] if p.get('status') == 'pendente_confirmacao_documento']; print(f'::warning::{len(pendentes)} pista(s) de imprensa pendentes do juiz automático em data/pistas_imprensa.json (dúvida do classificador, citação incompleta, ou fonte não confirmada como oficial — abstenção registrada).') if pendentes else None"
           fi
 
-      - name: Verificar links externos (informativa; nunca remove link — decisão humana)
+      - name: Verificar links externos (informativa; nunca remove link sozinha)
         # A guarda NAO condiciona este passo (08/10/2026): ele repoe o dominio, e tem
         # de rodar mesmo quando um passo anterior falhou. `testar_reposicao_dominio.py`
         # cobra exatamente isso.

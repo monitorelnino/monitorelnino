@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-10 · #PR · zero etapa humana no código ativo
+
+Rotas, status, filas e mensagens que esperavam pessoa viram abstenção registrada (`ABSTENCAO`), lacuna sem acesso automático ou pendência do juiz (D7, §106). A5-08: canal 2 e canal 3 sem acesso automático deixam de contar como consultados. Dados legados migrados por `scripts/migrar_zero_humano.py`; `contar_filas_humanas.py` vira `contar_filas.py`. O portão `verificar_fila_nao_humana.py` passa a reprovar humano/humana em código ativo de *.py/*.js/*.yml, com cinco exceções declaradas.
+
 ## 2026-10-10 · #PR · a semana sai em datas, e o juiz de saúde ganha as quatro travas (absorve #582)
 
 Absorve o #582. O leitor lê "na semana de 16 a 22 de agosto de 2026", nunca "semana epidemiológica 33"; acumulados em datas e eixos semanais em meses (`assets/semana.js`, regra do Ministério da Saúde; portão `verificar_semana_epidemiologica.js`). Lote 6.1-A: `julgar_saude.py` deixa de creditar o que não é (A5-01 a A5-04). "mediana"/"p90" saem da legenda.

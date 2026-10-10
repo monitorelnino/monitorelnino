@@ -39,6 +39,11 @@ def fora_do_esquema(e: dict) -> bool:
     return any(k not in e for k in OBRIGATORIOS)
 
 
+# Nome histórico (28/09/2026) da decisão que o aplicador hoje grava como ABSTENCAO. As execuções
+# antigas do log o carregam, e este conserto as traduz pelo mesmo vocabulário.
+DECISAO_LEGADA = "FILA_HUMANA"
+
+
 def converter(e: dict, executor: str, municipio_uf, mapa_decisao: dict) -> dict:
     """A execução antiga no esquema v2, sem perder nada do que ela dizia."""
     municipio, uf = municipio_uf(e.get("alvo"))
@@ -54,11 +59,11 @@ def converter(e: dict, executor: str, municipio_uf, mapa_decisao: dict) -> dict:
 
 def autoteste() -> int:
     casos = []
-    mapa = {"APLICADA": "registro", "FILA_HUMANA": "pista",
+    mapa = {"APLICADA": "registro", DECISAO_LEGADA: "pista",
             "DESCARTADA": "consultado sem achado", "REVERTIDA": "erro"}
     mu = lambda a: (("Camaçari", "BA") if str(a).endswith("/BA") else (None, None))  # noqa: E731
     velha = {"data": "28/09/2026", "canal": "julgamento_automatico",
-             "alvo": "D-municipio-prioritario/Camaçari/BA", "decisao": "FILA_HUMANA",
+             "alvo": "D-municipio-prioritario/Camaçari/BA", "decisao": DECISAO_LEGADA,
              "motivo": "fonte não reconhecida como oficial (sem mudança)"}
     nova = converter(velha, "robô", mu, mapa)
 
@@ -107,7 +112,8 @@ def main() -> int:
         return 0
 
     for i in alvos:
-        execucoes[i] = converter(execucoes[i], EXECUTOR, municipio_uf_do_alvo, DECISAO_NO_LOG)
+        execucoes[i] = converter(execucoes[i], EXECUTOR, municipio_uf_do_alvo,
+                                 {**DECISAO_NO_LOG, DECISAO_LEGADA: DECISAO_NO_LOG["ABSTENCAO"]})
     restantes = [i for i, e in enumerate(execucoes) if fora_do_esquema(e)]
     if restantes:
         print(f"X {len(restantes)} continuam fora do esquema depois da conversão — nada escrito")

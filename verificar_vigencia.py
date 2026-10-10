@@ -71,7 +71,7 @@ def main():
     gravar("municipios.json", mun)
     velho = RAIZ / "data" / "vigencia_revisar.json"
     if velho.exists(): velho.unlink()
-    print(f"OK vigência automática: {ativo} ativos · {vencido} prazo típico vencido · {indet} indeterminadas (fila humana extinta)")
+    print(f"OK vigência automática: {ativo} ativos · {vencido} prazo típico vencido · {indet} indeterminadas (sem fila manual)")
     return 0
 
 

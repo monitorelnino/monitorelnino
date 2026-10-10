@@ -377,7 +377,7 @@ def reconferir(limite: int = 200) -> int:
             alt += 1; hoje = hoje_editorial().strftime("%d/%m/%Y")
             it = idx["itens"].setdefault(h, {}); it["alterado_em"] = hoje; it["hash_novo"] = h2; it["municipio"] = f"{m['nome']}/{m['uf']}"
             log_busca(m.get("canal") or "DOM", 2, [m["url"]], "pista", uf=m["uf"], municipio=m["nome"],
-                      resultados=f"documento-fonte alterado em {hoje}: hash {h[:12]}… → {h2[:12]}… (categoria mantida; julgamento humano)")
+                      resultados=f"documento-fonte alterado em {hoje}: hash {h[:12]}… → {h2[:12]}… (categoria mantida até novo julgamento automático)")
     gravar("evidencias.json", idx)
     print(f"reconferência: {n} documento(s) rebaixado(s) e comparado(s), {alt} alterado(s), {falhas} inacessível(is)")
     return 0

@@ -117,10 +117,10 @@ def carregar_fila():
     """Carrega a fila de pistas (ou inicializa vazia com o cabeçalho de governança)."""
     if FILA.exists():
         return json.load(open(FILA, encoding="utf-8"))
-    return {"_governanca": ("Fila de DESCOBERTA para triagem humana (METODOLOGIA §15). Nada aqui é "
+    return {"_governanca": ("Fila de DESCOBERTA para triagem automática (METODOLOGIA §15). Nada aqui é "
                             "classificação, marco ou dado do banco; a promoção de uma pista a marco em "
-                            "data/marcos_prazos.json ou a registro do banco é sempre ato humano, pelo "
-                            "protocolo padrão (busca, canal, log)."),
+                            "data/marcos_prazos.json ou a registro do banco exige documento oficial lido pela "
+                            "máquina, pelo protocolo padrão (busca, canal, log); na dúvida, abstenção."),
             "pistas": []}
 
 
@@ -182,7 +182,7 @@ def main():
     except Exception:
         pass
     if novas:
-        print(f"[PISTAS NOVAS] {len(novas)} para triagem humana:")
+        print(f"[PISTAS NOVAS] {len(novas)} para triagem automática:")
         for p in novas[:20]:
             print(f"  · [{p['fonte']}] {p['titulo'][:110]}")
         print("  → triagem pelo protocolo padrão; nada foi classificado nem registrado como marco.")

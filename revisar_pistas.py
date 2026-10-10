@@ -72,7 +72,7 @@ def citacao_do_trecho(p: dict):
 
 # ---------------------------------------------------------------- portão automático (§156)
 # Decisão editorial de 22/09/2026: a máquina só pontua com o ATO publicado, lido e verificado — nunca notícia,
-# nem notícia em portal oficial. Condições CUMULATIVAS; falhou uma, vai para a fila humana (nada é descartado).
+# nem notícia em portal oficial. Condições CUMULATIVAS; falhou uma, abstenção registrada (nada é descartado).
 # Calibrado contra casos reais da rodada #6 e da preparação local de 22/09: "Lei nº 14.133" (lei federal de
 # licitações citada no texto) em Sátiro Dias/BA e Itapirapuã Paulista/SP; decreto de 2021 em Andradina/SP; lei
 # municipal de 2021 em Guaraniaçu/PR; "Lei 17 · 2026" sem data completa; PDF de 2024 em Nova Iguaçu/RJ.
@@ -112,7 +112,7 @@ def portao_automatico(p: dict, prep: dict, janela: str):
     except ValueError:
         return False, f"data do ato inválida ({prep.get('data_ato')})"
     if d_ato.year < ANO_MIN_AUTOMATICO:
-        return False, f"ato de {m.group(3)} — pode ser edição anterior; decisão humana"
+        return False, f"ato de {m.group(3)} — pode ser edição anterior; abstenção registrada"
     hoje_d = hoje_editorial()
     if d_ato > hoje_d:
         return False, f"data do ato no futuro ({prep.get('data_ato')}) — leitura errada provável"
@@ -222,10 +222,10 @@ def preparar(fila: dict, hoje: str, buscar=juiz.buscar_texto, processar=juiz.pro
             elif r.get("decisao") == "REVERTIDA":
                 p["status"] = "revertida_erro_portao"; res["revertida"] += 1
             else:
-                res["fila_humana"] += 1
+                res["abstencao"] += 1
         else:
-            prep["juiz"] = {"decisao": "FILA_HUMANA", "motivo": f"portão automático: {motivo_auto}"}
-            res["fila_humana"] += 1
+            prep["juiz"] = {"decisao": "ABSTENCAO", "motivo": f"portão automático: {motivo_auto}"}
+            res["abstencao"] += 1
         prep["resultado"] = "preparada"; p["preparacao"] = prep
     res["preparadas"] = feitas
     return dict(res)
@@ -248,19 +248,19 @@ def autoteste():
     def t_preparar_so_A_e_B_e_nunca_descarta():
         f = fila_falsa(); garantir_ids(f)
         r = preparar(f, "22/09/2026", buscar=lambda u: "DECRETO Nº 12, DE 10 DE JULHO DE 2026. Fica instituído o Plano de Contingência",
-                     processar=lambda pj, h, **kw: {"decisao": "FILA_HUMANA", "motivo": "teste"})
+                     processar=lambda pj, h, **kw: {"decisao": "ABSTENCAO", "motivo": "teste"})
         c = [p for p in f["pistas"] if p["nivel_confianca"] == "C"][0]
         return r["preparadas"] == 2 and "preparacao" not in c and all(pendente(p) for p in f["pistas"])
 
     def t_preparar_oficial_delega_e_nao_oficial_nao():
         f = fila_falsa(); garantir_ids(f); chamadas = []
         preparar(f, "22/09/2026", buscar=lambda u: "DECRETO Nº 12, DE 10 DE JULHO DE 2026. Institui o Plano de Contingência de Proteção e Defesa Civil do Município de Bagé para chuvas e enchentes. O Prefeito Municipal de Bagé, no uso de suas atribuições, DECRETA: Art. 1º Fica instituído o Plano de Contingência.",
-                 processar=lambda pj, h, **kw: (chamadas.append(pj["alvo"]) or {"decisao": "FILA_HUMANA", "motivo": "m"}))
+                 processar=lambda pj, h, **kw: (chamadas.append(pj["alvo"]) or {"decisao": "ABSTENCAO", "motivo": "m"}))
         return chamadas == ["D-municipal/Bagé/RS"]   # só a fonte oficial (.gov.br) chega ao juiz
 
     def t_preparar_documento_nao_obtido_nao_quebra():
         f = fila_falsa(); garantir_ids(f)
-        r = preparar(f, "22/09/2026", buscar=lambda u: None, processar=lambda pj, h, **kw: {"decisao": "FILA_HUMANA"})
+        r = preparar(f, "22/09/2026", buscar=lambda u: None, processar=lambda pj, h, **kw: {"decisao": "ABSTENCAO"})
         return r["nao_obtido"] == 2 and all(pendente(p) for p in f["pistas"])
 
     def t_citacao_do_trecho_sem_rede():
@@ -327,9 +327,9 @@ def autoteste():
 
     def t_preparacao_antiga_e_refeita_uma_vez():
         f = fila_falsa(); garantir_ids(f)
-        f["pistas"][0]["preparacao"] = {"natureza": "DUVIDA", "juiz": {"decisao": "FILA_HUMANA"}}   # versão 1, sem foco
-        n1 = preparar(f, "22/09/2026", buscar=lambda u: "x", processar=lambda pj, h, **kw: {"decisao": "FILA_HUMANA"})["preparadas"]
-        n2 = preparar(f, "22/09/2026", buscar=lambda u: "x", processar=lambda pj, h, **kw: {"decisao": "FILA_HUMANA"})["preparadas"]
+        f["pistas"][0]["preparacao"] = {"natureza": "DUVIDA", "juiz": {"decisao": "ABSTENCAO"}}   # versão 1, sem foco
+        n1 = preparar(f, "22/09/2026", buscar=lambda u: "x", processar=lambda pj, h, **kw: {"decisao": "ABSTENCAO"})["preparadas"]
+        n2 = preparar(f, "22/09/2026", buscar=lambda u: "x", processar=lambda pj, h, **kw: {"decisao": "ABSTENCAO"})["preparadas"]
         return n1 == 2 and n2 == 0 and f["pistas"][0]["preparacao"]["versao"] == PREP_VERSAO
 
     return rodar_autoteste({
