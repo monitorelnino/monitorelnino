@@ -329,6 +329,14 @@ jobs:
         run: |
           git config user.name "monitor-el-nino-bot"
           git config user.email "bot@users.noreply.github.com"
+          # 10/10/2026 (F32 do catálogo): elo disparado em outro ramo partia da `main` e empurrava
+          # `HEAD:main` — um disparo no ramo `ensaio` gravaria na `main` de dia, porque a guarda da
+          # janela não barra fora da `main` (é lá que o ensaio roda). Fora da `main`, nada se
+          # empurra: a coleta fica no runner e o marcador no artefato.
+          if [ "${GITHUB_REF_NAME}" != "main" ]; then
+            echo "ramo ${GITHUB_REF_NAME}: nada vai à \`main\` (só a \`main\` recebe o commit da noite)"
+            echo "houve=0" >> "$GITHUB_OUTPUT"; exit 0
+          fi
           # 29/09/2026: `evidencias/` ENTRA no commit. Sem ela, todo coletor que chama
           # `preservar_evidencia` gravava o índice em `data/evidencias.json` e deixava o
           # arquivo para trás no runner — o índice afirmando cópia preservada que não existe.

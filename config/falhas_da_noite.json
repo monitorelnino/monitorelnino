@@ -436,6 +436,20 @@
    "correcao": "PR #627 (`echo \"NOITE=$NOITE\" >> \"$GITHUB_ENV\"`)",
    "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_env_usada_e_exportada",
    "falta": null
+  },
+  {
+   "id": "F32",
+   "noite": "2026-10-10",
+   "titulo": "Elo fora da `main` empurrava para a `main`",
+   "sintoma": "Um elo disparado no ramo `ensaio` (ou em qualquer ramo) partia da `main` e empurrava `HEAD:main`; como a guarda da janela não barra fora da `main`, o commit chegaria à `main` de dia.",
+   "causa": "`_coletor.yml` fazia `git fetch ... main` + `git push ... HEAD:main` sem olhar o ramo do disparo.",
+   "prova": [
+    "`.github/workflows/_coletor.yml`, passo \"Commit com rebase-e-push\" (achado ao desenhar o ensaio real, 10/10)",
+    "F15 (corrente da `main` disparada pelo ramo de ensaio, 06→07/10)"
+   ],
+   "correcao": "PR deste item: o passo de commit sai antes do push quando `GITHUB_REF_NAME` não é `main`",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_fora_da_main_nao_empurra",
+   "falta": null
   }
  ]
 }

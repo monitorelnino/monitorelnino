@@ -32,9 +32,12 @@ def main() -> int:
     if not (token and site):
         print("[aviso] NETLIFY_AUTH_TOKEN/NETLIFY_SITE_ID ausentes; conferência de contribuições pulada.")
         return 0
-    url = f"https://api.netlify.com/api/v1/sites/{site}/submissions?access_token={token}"
+    # 10/10/2026 (A6-31): o token ia na URL (`?access_token=`) — e a URL aparece em mensagem de
+    # erro e em log de proxy. Vai no cabeçalho `Authorization`, como a API do Netlify aceita.
+    url = f"https://api.netlify.com/api/v1/sites/{site}/submissions"
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": ua_de("verificação de contribuições")})
+        req = urllib.request.Request(url, headers={"User-Agent": ua_de("verificação de contribuições"),
+                                                   "Authorization": f"Bearer {token}"})
         subs = json.load(urllib.request.urlopen(req, timeout=30))
     except Exception as e:
         print(f"[aviso] falha ao consultar a API do Netlify: {e}")
