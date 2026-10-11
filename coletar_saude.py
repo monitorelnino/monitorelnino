@@ -317,6 +317,34 @@ LACUNAS_DECLARADAS = {
 }
 
 
+LIMITE_DIAS_DADO = 9
+
+
+def vencer_calor(sinais: dict, fonte: dict, motivo: str, hoje) -> dict:
+    """Coleta do calor falhou: dado de mais de 9 dias deixa de ser "a consulta mais recente".
+
+    11/10/2026 (HANDOVER_SAUDE, item 1.6): o painel do MS parou de responder em 25/09 e a página
+    seguiu mostrando aquela fotografia como "consulta mais recente" por 16 dias. Passado o
+    limite, o retrato sai de `calor_excesso` (a página passa a dizer que não há coleta) e fica
+    guardado em `calor_excesso_anterior`; a fonte vira lacuna declarada, com o motivo e a data
+    da última coleta boa. Função pura sobre os dicionários (só os altera)."""
+    from datetime import datetime
+    cal = sinais.get("calor_excesso") or {}
+    ultima = fonte.get("ultima_coleta_ok") or cal.get("coletado_em")
+    if ultima:
+        fonte["ultima_coleta_ok"] = ultima
+    try:
+        idade = (hoje - datetime.strptime(str(ultima)[:10], "%d/%m/%Y").date()).days
+    except (TypeError, ValueError):
+        idade = None
+    if idade is not None and idade > LIMITE_DIAS_DADO:
+        sinais["calor_excesso_anterior"] = cal
+        sinais.pop("calor_excesso", None)
+        fonte["status"] = "lacuna"
+        fonte["motivo"] = f"painel do MS sem resposta legível desde a coleta de {ultima}: {motivo}"[:300]
+    return sinais
+
+
 def declarar_lacunas(fontes: dict) -> dict:
     """Troca "a verificar" pela lacuna declarada com motivo. Função pura sobre o dicionário."""
     for nome, motivo in LACUNAS_DECLARADAS.items():
@@ -400,6 +428,8 @@ def coletar():
         fonte_calor["motivo_da_falha"] = motivo
         if not sinais.get("calor_excesso"):
             fonte_calor["status"] = "aguardando_primeira_coleta"
+        else:
+            vencer_calor(sinais, fonte_calor, motivo, hoje_editorial())
         registrar_lacuna("Painel de Excesso de Calor (MS)", motivo, canal="DOU", camada=1,
                          strings=[CALOR_MS_SITIO])
         print(f"[aviso] excesso de calor (MS) não coletado — {motivo}")
@@ -538,6 +568,19 @@ def autoteste():
         f = declarar_lacunas({"sisagua": {"status": "a_verificar"}, "infodengue": {"status": "coletado"}})
         return (f["sisagua"]["status"] == "lacuna" and "sem coletor" in f["sisagua"]["motivo"]
                 and f["infodengue"] == {"status": "coletado"})
+    def t15():  # calor que falha há mais de 9 dias vira lacuna e sai da "consulta mais recente"
+        from datetime import date
+        ss = {"calor_excesso": {"coletado_em": "25/09/2026", "resumo": {}}}
+        f = {"status": "coletado"}
+        vencer_calor(ss, f, "ValueError: x", date(2026, 10, 11))
+        recente = {"calor_excesso": {"coletado_em": "08/10/2026"}}
+        g = {"status": "coletado"}
+        vencer_calor(recente, g, "x", date(2026, 10, 11))
+        return ("calor_excesso" not in ss and ss["calor_excesso_anterior"]["coletado_em"] == "25/09/2026"
+                and f["status"] == "lacuna" and "25/09/2026" in f["motivo"]
+                and f["ultima_coleta_ok"] == "25/09/2026"
+                and "calor_excesso" in recente and g["status"] == "coletado"
+                and g["ultima_coleta_ok"] == "08/10/2026")
     import coletores_base as cb
     _SNAP = (cb.DATA / "saude_sinais.json").read_bytes() if (cb.DATA / "saude_sinais.json").exists() else b""
     return rodar_autoteste({"parser InfoDengue: última SE": t1, "negativo: resposta vazia/malformada": t2,
@@ -550,7 +593,8 @@ def autoteste():
                             "MS calor negativo: UF inválida e código IBGE inválido não entram": t11,
                             "MS calor: 200 com corpo vazio é RECUSA, não ausência": t12,
                             "MS calor: descoberta valida por CONTEÚDO, não por nome minificado": t13,
-                            "fonte sem coletor vira lacuna declarada com motivo": t14})
+                            "fonte sem coletor vira lacuna declarada com motivo": t14,
+                            "calor parado há mais de 9 dias vira lacuna, não 'consulta mais recente'": t15})
 
 
 if __name__ == "__main__":

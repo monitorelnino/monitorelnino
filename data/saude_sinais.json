@@ -56,11 +56,13 @@
    "orgao": "Ministério da Saúde",
    "papel": "classe de excesso de calor por município (índice EHF), no vocabulário do MS",
    "url_publica": "https://clima.saude.gov.br/",
-   "status": "coletado",
+   "status": "lacuna",
    "consultado_em": "11/10/2026",
    "documento": "Painel Nacional de Excesso de Calor, dia 2026-09-25",
    "ultima_tentativa_falhou": "11/10/2026",
-   "motivo_da_falha": "ValueError: nenhum dos 5 handlers do painel do MS devolveu o agregado de calor"
+   "motivo_da_falha": "ValueError: nenhum dos 5 handlers do painel do MS devolveu o agregado de calor",
+   "ultima_coleta_ok": "25/09/2026",
+   "motivo": "painel do MS sem resposta legível desde a coleta de 25/09/2026: ValueError: nenhum dos 5 handlers do painel do MS devolveu o agregado de calor"
   }
  },
  "dengue_capitais": {
@@ -595,7 +597,7 @@
   "peso_no_indice": "nenhum",
   "nota": "Ato de RESPOSTA: declarar emergência é posterior ao dano e não entra na nota. Nada aqui entra no banco sem o juiz automático com documento oficial lido (R7, §106); o que está em dúvida fica pendente de leitura automática, não vai ao registro."
  },
- "calor_excesso": {
+ "calor_excesso_anterior": {
   "data": "2026-09-25",
   "janela": {
    "minDate": "2009-01-01",
