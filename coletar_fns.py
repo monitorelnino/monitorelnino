@@ -211,7 +211,7 @@ def processar(corpo: bytes, mes: str, hash_evidencia=None) -> dict:
 def _zip_de_teste(linhas: list) -> bytes:
     cab = list(COLUNAS) + ["TIPO FAVORECIDO"]
     buf = io.StringIO()
-    w = csv.writer(buf, delimiter=";")
+    w = csv.writer(buf, delimiter=";", lineterminator="\n")
     w.writerow(cab)
     for l in linhas:
         w.writerow(l + ["Administração Pública"])
