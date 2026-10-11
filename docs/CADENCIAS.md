@@ -51,6 +51,7 @@ O formato de cada linha é fixo e lido por máquina:
 | `coletar_transferencias_municipais.py` | diaria | encadeado | noturno_sinais | transferências da União a cada município (e repasses do FNS, por `coletar_fns.py`), do download de dados abertos do Portal da Transparência; desde 11/10/2026 (F38) |
 | `coletar_saude.py` | diaria | 05:50 UTC | noturno_saude | sinais de saúde: InfoDengue, ESPIN, painel de calor do MS e lacunas declaradas; desde 11/10/2026 (F40) |
 | `coletar_espin.py` | semanal | encadeado | semanal_espin_e_links | emergências em saúde pública no DOU |
+| `buscar_protocolo_calor.py` | semanal | encadeado | semanal_espin_e_links | Protocolo Nacional de Calor Extremo no DOU: candidatos a ler, ou não localizado até a data |
 | `coletar_desfechos_saude.py` | diaria | encadeado | noturno_saude | séries de dengue e chikungunya por UF (InfoDengue) |
 | `coletar_dda.py` | diaria | encadeado | noturno_saude | doença diarreica aguda |
 | `coletar_boletim_ms_dengue.py` | diaria | encadeado | noturno_saude | boletim de arboviroses do Ministério da Saúde |
