@@ -9,22 +9,23 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-03 a 2026-10-10 (594 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-04 a 2026-10-11 (570 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
-- monitorar_imprensa_saude.py: erro em 14 rodadas seguidas — KeyError: 'hash'
+- monitorar_imprensa_saude.py: erro em 13 rodadas seguidas — KeyError: 'hash'
 - monitorar_politica_por_inteiro.py: erro em 10 rodadas seguidas — NameError: name 'ler' is not defined. Did you mean: 'len'?
 
 ## Última execução de cada script
 
 | script | papel | última execução | duração | itens | status | erro |
 |---|---|---|---|---:|---|---|
-| `recalcular_mare.py` | essencial | 2026-10-10 01:18 | 3 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-11 03:14 | 2 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-09 02:31 | 1 s | — | ok | — |
 | `coletar_diarios_consorciados.py` | coletor | 2026-10-10 07:28 | 4019 s | 38 | ok | — |
 | `coletar_diarios_municipais.py` | coletor | 2026-10-10 07:27 | 47 s | 50 | ok | — |
 | `coletar_doe.py` | coletor | 2026-10-10 08:35 | 847 s | — | ok | — |
+| `coletar_espin.py` | coletor | 2026-10-10 01:12 | 92 s | — | ok | — |
 | `coletar_recursos_resposta.py` | coletor | 2026-10-10 09:07 | 158 s | — | ok | — |
 | `coletar_s2id.py` | coletor | 2026-10-10 08:49 | 1105 s | — | ok | — |
 | `coletar_sg_esus.py` | coletor | 2026-10-04 14:20 | 9 s | — | ok | — |
@@ -37,7 +38,7 @@ Janela: 2026-10-03 a 2026-10-10 (594 execução(ões) registrada(s), 7 dias de h
 | `julgar_filas.py` | coletor | 2026-10-09 01:48 | 1963 s | — | ok | — |
 | `monitorar_atos_resposta.py` | coletor | 2026-10-09 08:24 | 124 s | 3416 | ok | — |
 | `monitorar_imprensa_regional.py` | coletor | 2026-10-09 08:22 | 164 s | 40 | ok | — |
-| `monitorar_imprensa_saude.py` | coletor | 2026-10-09 08:24 | 1 s | — | **erro** (14 seguidas) | KeyError: 'hash' |
+| `monitorar_imprensa_saude.py` | coletor | 2026-10-09 08:24 | 1 s | — | **erro** (13 seguidas) | KeyError: 'hash' |
 | `monitorar_politica_por_inteiro.py` | coletor | 2026-10-09 08:26 | 13 s | 3416 | **erro** (10 seguidas) | NameError: name 'ler' is not defined. Did you mean: 'len'? |
 | `monitorar_redes_oficiais.py` | coletor | 2026-10-09 08:44 | 1287 s | — | ok | — |
 | `monitorar_sinais_federais.py` | coletor | 2026-10-09 08:27 | 4 s | 10 | ok | — |
@@ -50,4 +51,5 @@ Janela: 2026-10-03 a 2026-10-10 (594 execução(ões) registrada(s), 7 dias de h
 | `scripts/verificar_esquema_de_pista.py` | coletor | 2026-10-09 01:34 | 3 s | — | ok | — |
 | `seguir_pistas.py` | coletor | 2026-10-09 09:06 | 23 s | — | ok | — |
 | `triar_confianca_pistas.py` | coletor | 2026-10-09 09:06 | 3 s | — | ok | — |
+| `verificar_links.py` | coletor | 2026-10-10 01:14 | 208 s | — | **erro** | erro: HTTPSConnectionPool(host='www.defesacivil.sc.gov.br', port=443): Max retries exceeded with url: /2026/08/14/chuva- |
 | `verificar_pista_imprensa.py` | coletor | 2026-10-09 09:06 | 59 s | — | ok | — |
