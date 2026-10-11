@@ -37,7 +37,6 @@ O formato de cada linha é fixo e lido por máquina:
 | `coletar_edicoes_doe.py` | quinzenal | dias 1 e 15, encadeado | noturno_saude_estadual | canal 2 do MARE Saude: baixa a edicao do diario oficial do estado por data, extrai o texto e indexa as ocorrencias dos termos de saude |
 | `julgar_saude.py` | quinzenal | dias 1 e 15, encadeado | noturno_saude_estadual | promove pista de saude a registro, com documento primario lido; classifica as duas funcoes da coordenacao |
 | `scripts/fechar_saude.py` | quinzenal | dias 1 e 15, encadeado | noturno_saude_estadual | mede quantas UFs podem ser marcadas "nao localizado", so onde os quatro canais rodaram |
-| `coletar_transferencias_municipais.py` | mensal | 05 do mês, 03:00 UTC | semanal_sinais_e_links | transferências da União a cada município, por mês e por rota |
 | `triar_confianca_pistas.py` | diaria | encadeado | noturno_descoberta | confiança de cada pista |
 | `preservar_evidencias.py` | diaria | encadeado | noturno_evidencias | cópia e hash dos documentos |
 | `scripts/preservar_textos_integrais.py` | diaria | encadeado | noturno_evidencias | texto integral dos atos |
@@ -49,6 +48,21 @@ O formato de cada linha é fixo e lido por máquina:
 | `monitorar_sinais_federais.py` | diaria | encadeado | noturno_sinais | sinais e boletins federais |
 | `detectar_marcos_federais.py` | diaria | encadeado | noturno_sinais | marcos federais do ciclo |
 | `monitorar_atos_resposta.py` | diaria | encadeado | noturno_sinais | decretos de emergência e calamidade |
+| `coletar_transferencias_municipais.py` | diaria | encadeado | noturno_sinais | transferências da União a cada município (e repasses do FNS, por `coletar_fns.py`), do download de dados abertos do Portal da Transparência; desde 11/10/2026 (F38) |
+| `coletar_saude.py` | diaria | 05:50 UTC | noturno_saude | sinais de saúde: InfoDengue, ESPIN, painel de calor do MS e lacunas declaradas; desde 11/10/2026 (F40) |
+| `coletar_espin.py` | semanal | encadeado | semanal_espin_e_links | emergências em saúde pública no DOU |
+| `coletar_desfechos_saude.py` | diaria | encadeado | noturno_saude | séries de dengue e chikungunya por UF (InfoDengue) |
+| `coletar_dda.py` | diaria | encadeado | noturno_saude | doença diarreica aguda |
+| `coletar_boletim_ms_dengue.py` | diaria | encadeado | noturno_saude | boletim de arboviroses do Ministério da Saúde |
+| `coletar_boletim_df_arboviroses.py` | diaria | encadeado | noturno_saude | boletim de arboviroses do DF |
+| `coletar_boletim_pe_arboviroses.py` | diaria | encadeado | noturno_saude | boletim de arboviroses de PE |
+| `coletar_boletim_pb_arboviroses.py` | diaria | encadeado | noturno_saude | boletim de arboviroses da PB |
+| `coletar_arboviroses_sinan.py` | diaria | encadeado | noturno_saude | dengue e chikungunya pelo SINAN; desde 11/10/2026 (F38) |
+| `coletar_obitos_registro_civil.py` | diaria | encadeado | noturno_saude | óbitos em cartório por UF e mês; desde 11/10/2026 (F38) |
+| `classificar_saude_no_plano.py` | diaria | encadeado | noturno_saude | saúde nos planos municipais lidos |
+| `scripts/triar_fila.py` | diaria | encadeado (abertura); 08:30 UTC de rede | noturno_triagem | triagem da fila de pistas na abertura da noite |
+| `scripts/verificar_esquema_de_pista.py` | diaria | encadeado | noturno_triagem | quarentena de pista fora do esquema |
+| `scripts/corrigir_atribuicao_por_dominio.py` | diaria | encadeado | noturno_juiz | atribuição de pista pelo domínio do documento |
 
 ## Busca web e imprensa
 
@@ -70,8 +84,6 @@ O formato de cada linha é fixo e lido por máquina:
 | `coletar_prioritarios_mma.py` | semanal | dom 07:30 UTC | semanal_sinais_e_links | prioritários do MMA |
 | `coletar_srag_sivep.py` | semanal | domingo, 08:30 UTC | semanal_respiratorias | SRAG pelo SIVEP-Gripe |
 | `coletar_sg_esus.py` | semanal | domingo, 08:30 UTC | semanal_respiratorias | síndrome gripal (e-SUS Notifica): hoje mede e declara a lacuna — API 401, CSV 403 |
-| `coletar_arboviroses_sinan.py` | semanal | dom 07:30 UTC | semanal_sinais_e_links | dengue e chikungunya pelo SINAN |
-| `coletar_obitos_registro_civil.py` | semanal | dom 07:30 UTC | semanal_sinais_e_links | óbitos em cartório por UF e mês |
 | `scripts/sondar_boletim_infogripe.py` | semanal | dom 07:30 UTC | semanal_sinais_e_links | acesso ao InfoGripe voltou? |
 | `descobrir_dominios.py` | semanal | dom 07:30 UTC | semanal_sinais_e_links | domínio oficial de cada ente |
 | `coletar_painel_am.py` | semanal | dom 07:30 UTC | semanal_sinais_e_links | painel amostral |

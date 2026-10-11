@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-11 · #PR · cadências declaradas dos coletores que mudaram de rotina
+
+Doze scripts rodavam sem cadência declarada, e três estavam declarados na rotina errada depois do F38 e do F40: transferências (agora diária, nos sinais), SINAN e óbitos (agora diários, no elo da saúde). Entram as linhas do `noturno_saude` e de três etapas da triagem e do juiz; sem cadência não há certificação. Onde: `docs/CADENCIAS.md`.
+
 ## 2026-10-11 · #PR · plural de verdade no texto das páginas (A4-17)
 
 "município(s)", "mês(es)", "lido(s)" e afins saem do texto público: 24 frases montadas em JavaScript escolhem singular ou plural pelo número, e o molde do topo do Financiamento usa o plural do catálogo. Relatório D, A4-17. Onde: `assets/js/` (financiamento, saúde, início, riscos, proveniência) e `conteudo/financiamento.json`.
