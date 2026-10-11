@@ -77,6 +77,8 @@
   "cartao_figura_um_titulo": true,
   "faixas_dos_mapas": {
     "_governanca": "09/10/2026 (ajustes 5 e 6): previsto separado de observado. Ordem: 'Previsto pelo boletim' (boxRiscoPrevisto, sozinho e maior) → 'Observado' (boxSecas, boxFogo) → 'Agora, nas capitais e nos estados' (boxAr, boxTemperatura, boxAvisos). Um título por mapa, sem sobretítulo; lista de UFs na descrição acessível e em 'Ver estados'. Conferido por scripts/verificar_grades_de_numeros.py e scripts/verificar_dicas_dos_mapas.js.",
+    "_mudanca_11_10": "11/10/2026 (editoria, janela B): previsto e observado na MESMA fila — boxRiscoPrevisto, boxSecas e boxFogo numa só `.grade-figuras--3` (`grade-mapas--faixas`), sem bloco novo. A distinção fica como informação: os dois selos ('Previsto pelo boletim' sobre a 1ª coluna, 'Observado' sobre a 2ª e a 3ª) são uma faixa alinhada às colunas dentro da grade, e não sobretítulo de cartão (o ajuste 6 de 09/10 tirou o sobretítulo). Numa coluna só, a ordem do HTML: selo previsto → previsto → selo observado → seca → fogo. Supera o 'sozinho e maior' de 09/10. Títulos, datas e fontes dos mapas não mudam.",
+    "grade_unica": ["boxRiscoPrevisto", "boxSecas", "boxFogo"],
     "ordem": [
       "boxRiscoPrevisto",
       "boxSecas",
