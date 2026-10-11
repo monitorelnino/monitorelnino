@@ -65,6 +65,16 @@ def gravar_texto(h: str, paginas: list) -> str:
     return hashlib.sha256(txt.encode("utf-8")).hexdigest()
 
 
+def precisa_leitura(it: dict) -> bool:
+    """O item do índice entra na fila de leitura de PDF? Função pura.
+
+    Só PDF sem texto lido, sem texto manual e sem texto integral: os três moram em
+    `evidencias/<h>.txt`, e ler de novo sobrescreveria o arquivo sob o mesmo nome (F41)."""
+    return (str(it.get("url", "")).lower().split("?")[0].endswith(".pdf")
+            and not it.get("texto_arquivo") and not it.get("texto_manual")
+            and not it.get("texto_integral"))
+
+
 def filtrar_alvos(alvos: list, trecho: str | None) -> list:
     """Restringe a fila ao que casa com um trecho da URL (§187): a fila tem dezenas de alvos, e
     esperar a vez de um documento específico gasta rede em quem já foi lido. Sem trecho, devolve
@@ -83,7 +93,10 @@ def ler_pdfs(limite: int = 40, alvo: str | None = None) -> int:
     # 11/09/2026: `not it.get("texto_arquivo")` já exclui itens de texto manual (texto_manual), que registram
     # texto_arquivo apontando para o próprio arquivo preservado — reextrair sobrescreveria evidencias/<h>.txt sob
     # o mesmo nome e violaria o portão de integridade (sha256(arquivo) == chave). Explicitado por segurança.
-    alvos = [(h, it) for h, it in itens.items() if str(it.get("url", "")).lower().split("?")[0].endswith(".pdf") and not it.get("texto_arquivo") and not it.get("texto_manual")]
+    # 11/10/2026 (F41): nem item com `texto_integral`. O texto integral do diário (Querido Diário)
+    # mora em `evidencias/<h>.txt` — o MESMO nome que a leitura daria ao PDF —, e a leitura das 06:36
+    # de 11/10 sobrescreveu seis deles com o texto do PDF, deixando `texto_integral_hash` mentindo.
+    alvos = [(h, it) for h, it in itens.items() if precisa_leitura(it)]
     # registros estaduais/municipais com URL .pdf ainda sem hash
     for reg, fonte in ((ler("estados.json", {}).get("ufs") or [], "estados"), (ler("municipios.json", []) or [], "municipios")):
         for r in reg:
@@ -318,6 +331,12 @@ def autoteste_ocr() -> int:
         "d" * 64: {"url": "http://x/pagina.html", "texto_arquivo": "evidencias/d.txt", "caracteres": 0},
         "e" * 64: {"url": "http://x/p.pdf", "texto_arquivo": "evidencias/e.txt", "caracteres": 199},
     }
+    # 0. (F41) a leitura de PDF não sobrescreve o texto integral do diário
+    if precisa_leitura({"url": "https://data.queridodiario.ok.org.br/x.pdf",
+                        "texto_integral": "evidencias/q.txt", "texto_integral_hash": "0" * 64}):
+        falhas.append("item com texto integral entrou na fila de leitura — sobrescreveria o .txt (F41)")
+    if not precisa_leitura({"url": "http://x/p.pdf"}):
+        falhas.append("PDF sem texto saiu da fila de leitura")
     fila = {h for h, _ in alvos_ocr(itens)}
     if fila != {"a" * 64, "e" * 64}:
         falhas.append(f"alvos_ocr devolveu {sorted(x[:1] for x in fila)}, esperado o escaneado e o abaixo do piso")

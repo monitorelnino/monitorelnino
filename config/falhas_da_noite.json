@@ -504,7 +504,7 @@
     "run 38131168911 (Portões push, FRESCOR DO FINANCIAMENTO)"
    ],
    "correcao": "Prazo da coleta no `_coletor.yml` (teto − margem, contado do início do job): `saude_pipeline.py --prazo` pula o comando que não caberia e interrompe o que passa, restaurando JSON ilegível; longos no fim da fila semanal; transferências no elo diário dos sinais; válvula `coleta-dia/*` para recuperar de dia por PR.",
-   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_fila_longa_ainda_commita; scripts/saude_pipeline.py --autoteste (prazo)",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_fila_longa_ainda_commita",
    "falta": null
   },
   {
@@ -517,7 +517,21 @@
     "run 38118915381, job 114409430097"
    ],
    "correcao": "O laço pula comentário; `import pathlib` na sonda.",
-   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_fila_longa_ainda_commita (laço rodado no bash)",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_fila_longa_ainda_commita",
+   "falta": null
+  },
+  {
+   "id": "F41",
+   "noite": "2026-10-11",
+   "titulo": "Leitura de PDF sobrescreve o texto integral do diário",
+   "sintoma": "`verificar_evidencias.py` reprova seis itens: `texto_integral` não bate com `texto_integral_hash` (escondido na `main` porque o frescor do Financiamento reprovava antes).",
+   "causa": "`preservar_evidencias.py --ler` escolhia itens com URL de PDF sem `texto_arquivo`, inclusive os do Querido Diário que já tinham `texto_integral` em `evidencias/<h>.txt`, e gravava o texto do PDF sob o mesmo nome.",
+   "prova": [
+    "commit f8a6ff77 (evidencias automático 11/10 06:36)",
+    "evidencias/5ade71a70e49….txt e mais cinco"
+   ],
+   "correcao": "A fila de leitura exclui item com `texto_integral` (`precisa_leitura`); os seis `.txt` voltam ao conteúdo selado e os campos da leitura saem do índice.",
+   "caso_de_teste": "preservar_evidencias.py --autoteste: (F41)",
    "falta": null
   }
  ]

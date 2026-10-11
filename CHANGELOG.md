@@ -32,9 +32,9 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-11 · #PR · a fila semanal longa volta a commitar; transferências no elo diário (F38, F39)
+## 2026-10-11 · #PR · a fila semanal longa volta a commitar; transferências no elo diário (F38, F39, F41)
 
-A rotina semanal de sinais estourou o teto de 150 min quatro vezes sem commitar, e o arquivo de transferências passou dos 9 dias do portão de frescor (`main` vermelha). A coleta ganha prazo: comando que não cabe é pulado, o que passa é interrompido, e o commit sempre acontece. Longos no fim da fila; transferências no elo diário dos sinais; comentário da fila não roda; sonda do InfoGripe consertada. Onde: `_coletor.yml`, `saude_pipeline.py`, dois workflows.
+A rotina semanal de sinais estourou o teto quatro vezes sem commitar; transferências passou dos 9 dias do frescor (`main` vermelha). A coleta ganha prazo: comando que não cabe é pulado, o que passa é interrompido, e o commit sempre acontece. Longos no fim da fila; transferências no elo diário dos sinais; comentário da fila não roda; sonda do InfoGripe consertada; leitura de PDF não sobrescreve mais o texto integral do diário (seis restaurados). Onde: `_coletor.yml`, `saude_pipeline.py`, dois workflows.
 
 ## 2026-10-10 · #PR · zero não é ausência no financiamento; corte do dado, não do relógio (A6-22, A3-20, A6-13)
 

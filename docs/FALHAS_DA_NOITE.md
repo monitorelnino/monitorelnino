@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-10. 35 falhas; 29 com caso de teste que as reproduz; 6 sem, com o que falta dito.
+Atualizado em 2026-10-11. 38 falhas; 32 com caso de teste que as reproduz; 6 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -320,3 +320,30 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** run 38058307837 (sinais, 14:06, startup_failure); run 38073694723 (sinais no ensaio real)
 - **Correção:** `actions: read` em `noturno_sinais.yml`, `semanal_espin_e_links.yml` e `semanal_sinais_e_links.yml`
 - **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_chamador_do_coletor_concede_o_que_ele_pede`
+
+## F38 · Fila semanal longa estoura o teto e não commita nada
+
+- **Noite:** 2026-10-11
+- **Sintoma:** `Semanal — sinais climáticos e links` cancelado no teto de 150 min em 04/10 e três vezes em 11/10 (01:10, 03:42, 06:42), sem commit; `transferencias_uniao.json` parado em 01/10 e Portões no push da `main` vermelhos desde 11/10 (frescor do Financiamento, 10 dias > 9).
+- **Causa:** O teto do job mata também os passos de commit; a fila somava cobertura do QD 56 min + clima municipal 41 min + domínios > 47 min, e o que os comandos curtos já tinham gravado morria junto.
+- **Prova:** runs 37205422226, 38100963895, 38109274967, 38118915381 (cancelled); run 38131168911 (Portões push, FRESCOR DO FINANCIAMENTO)
+- **Correção:** Prazo da coleta no `_coletor.yml` (teto − margem, contado do início do job): `saude_pipeline.py --prazo` pula o comando que não caberia e interrompe o que passa, restaurando JSON ilegível; longos no fim da fila semanal; transferências no elo diário dos sinais; válvula `coleta-dia/*` para recuperar de dia por PR.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_fila_longa_ainda_commita`
+
+## F39 · Comentário da fila virava comando; sonda do InfoGripe quebrada
+
+- **Noite:** 2026-10-11
+- **Sintoma:** Cada linha `# …` de `comandos` rodava como `saude_pipeline.py --rodar '#' …` (FileNotFoundError no log, dezenas por run); `scripts/sondar_boletim_infogripe.py` saía com NameError antes de sondar.
+- **Causa:** O laço só pulava linha vazia; a sonda usava `pathlib` sem importar.
+- **Prova:** run 38118915381, job 114409430097
+- **Correção:** O laço pula comentário; `import pathlib` na sonda.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_fila_longa_ainda_commita`
+
+## F41 · Leitura de PDF sobrescreve o texto integral do diário
+
+- **Noite:** 2026-10-11
+- **Sintoma:** `verificar_evidencias.py` reprova seis itens: `texto_integral` não bate com `texto_integral_hash` (escondido na `main` porque o frescor do Financiamento reprovava antes).
+- **Causa:** `preservar_evidencias.py --ler` escolhia itens com URL de PDF sem `texto_arquivo`, inclusive os do Querido Diário que já tinham `texto_integral` em `evidencias/<h>.txt`, e gravava o texto do PDF sob o mesmo nome.
+- **Prova:** commit f8a6ff77 (evidencias automático 11/10 06:36); evidencias/5ade71a70e49….txt e mais cinco
+- **Correção:** A fila de leitura exclui item com `texto_integral` (`precisa_leitura`); os seis `.txt` voltam ao conteúdo selado e os campos da leitura saem do índice.
+- **Caso de teste:** `preservar_evidencias.py --autoteste: (F41)`
