@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-11 · #PR · plural de verdade no texto das páginas (A4-17)
+
+"município(s)", "mês(es)", "lido(s)" e afins saem do texto público: 24 frases montadas em JavaScript escolhem singular ou plural pelo número, e o molde do topo do Financiamento usa o plural do catálogo. Relatório D, A4-17. Onde: `assets/js/` (financiamento, saúde, início, riscos, proveniência) e `conteudo/financiamento.json`.
+
 ## 2026-10-11 · #PR · união de conflito regera o painel de saúde em vez de recusá-lo
 
 `docs/SAUDE_PIPELINE.md` é derivado de `data/saude_pipeline.json`, fora da cadeia canônica, e o resolvedor o recusava: foi o conflito mais frequente dos PRs de 11/10, porque cada publicação reescreve o painel. Agora ele é regerado pelo próprio gerador depois que a fonte é unida pela base comum; se o gerador falha, recusa. Onde: `scripts/unir_conflito_de_rodada.py`.

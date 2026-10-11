@@ -77,7 +77,7 @@ function renderContadores(){
     if (preventivo.length) {
       partes.push(preventivo.map(([uf, c]) => {
         const m = c.municipios_cobertos;
-        return esc(uf) + ': ' + esc(m.preventivo) + ' município(s) com recurso preventivo' + (m.preventivo_valor ? ' (R$ ' + esc((m.preventivo_valor / 1e6).toFixed(1).replace('.', ',')) + ' mi)' : '');
+        return esc(uf) + ': ' + esc(m.preventivo) + (Number(m.preventivo) === 1 ? ' município com recurso preventivo' : ' municípios com recurso preventivo') + (m.preventivo_valor ? ' (R$ ' + esc((m.preventivo_valor / 1e6).toFixed(1).replace('.', ',')) + ' mi)' : '');
       }).join(' · '));
     } else {
       partes.push('Municípios com recurso preventivo: sem coleta em nenhuma UF até o corte.');
@@ -393,7 +393,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
         .concat(temParcial ? [{cor: MonitorMapas.PALETA.semDado, rotulo: 'mês ainda sendo preenchido pela fonte'}] : []));
       MonitorMapas.credito('boxSerie', {fontes: ['Portal da Transparência — Transferências de Recursos (dados abertos)'], data: T.atualizado_em});
       const linha = document.getElementById('linhaSerie');
-      if (linha) linha.textContent = chaves.length + ' mês(es) lido(s) de 2026';
+      if (linha) linha.textContent = chaves.length + (chaves.length === 1 ? ' mês lido de 2026' : ' meses lidos de 2026');
     } else if (document.getElementById('legSerie')) {
       MonitorMapas.legenda('legSerie', [{cor: MonitorMapas.NEUTRA, rotulo: 'série por mês sem coleta até o corte'}]);
     }
@@ -512,7 +512,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
   const meses = Object.keys(T.meses_lidos || {}).sort();
   if (conta) {
     conta.textContent = `${Object.keys(T.municipios).length.toLocaleString('pt-BR')} municípios com registro, `
-      + `${meses.length} mês(es) lido(s)` + (parciais.length ? ` · ${parciais.length} marcado(s) como parcial` : '')
+      + `${meses.length} ${meses.length === 1 ? 'mês lido' : 'meses lidos'}` + (parciais.length ? ` · ${parciais.length} ${parciais.length === 1 ? 'marcado como parcial' : 'marcados como parciais'}` : '')
       + ` · atualizado em ${T.atualizado_em || '—'}`;
   }
 
@@ -533,7 +533,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     if (!reg) {
       /* Sem registro NÃO é zero: é ausência de registro no período lido, e o cartão diz isso. */
       saida.innerHTML = `<p class="u-mb-0"><strong>${esc(entrada.value)} (${esc(sel.value)})</strong>: `
-        + `nenhuma transferência da União registrada nos ${meses.length} mês(es) lidos.</p>`;
+        + `nenhuma transferência da União registrada ${meses.length === 1 ? 'no mês lido' : 'nos ' + meses.length + ' meses lidos'}.</p>`;
       return;
     }
     const rotas = Object.entries(reg.por_rota || {}).sort((a, b) => b[1] - a[1]);
@@ -541,7 +541,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     const temParcial = ultimos.some(([m]) => parciais.includes(m));
     saida.innerHTML =
       `<p class="u-mb-2"><strong>${esc(entrada.value)} (${esc(sel.value)})</strong> recebeu `
-      + `<strong>${reais(reg.total)}</strong> da União nos ${meses.length} mês(es) lidos de 2026.</p>`
+      + `<strong>${reais(reg.total)}</strong> da União ${meses.length === 1 ? 'no mês lido' : 'nos ' + meses.length + ' meses lidos'} de 2026.</p>`
       + '<p class="u-mb-1">Por caminho:</p><ul class="u-mb-2">'
       + rotas.map(([r, v]) => `<li>${esc(ROTULO[r] || r)}: ${reais(v)}</li>`).join('')
       + '</ul><p class="u-mb-1">Últimos meses:</p><ul class="u-mb-2">'
@@ -937,8 +937,8 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
         + (porUF[uf] ? reais(porUF[uf]) + ' autorizados' : 'sem registro') + '</dd>').join('');
     }
     if (el('linhaRespostaUF')) {
-      el('linhaRespostaUF').textContent = Object.keys(porUF).length + ' estado(s) com registro · '
-        + muns.length + ' município(s)';
+      el('linhaRespostaUF').textContent = Object.keys(porUF).length + (Object.keys(porUF).length === 1 ? ' estado com registro · ' : ' estados com registro · ')
+        + muns.length + (muns.length === 1 ? ' município' : ' municípios');
     }
 
     /* A série por semana, pelas finalidades que a fonte tem. A finalidade chega como código
@@ -976,7 +976,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       MonitorMapas.legenda('legSerieSemanal', finalidades.map((f, i) => ({cor: cores[i % cores.length], rotulo: finalidade(f)})));
       MonitorMapas.credito('boxSerieSemanal', {fontes: ['Portarias da defesa civil federal no Diário Oficial da União'], data: (R || {}).atualizado_em});
       if (el('linhaSerieSemanal')) {
-        el('linhaSerieSemanal').textContent = semanas.length + ' semana(s) com portaria desde 29/06/2026';
+        el('linhaSerieSemanal').textContent = semanas.length + (semanas.length === 1 ? ' semana com portaria' : ' semanas com portaria') + ' desde 29/06/2026';
       }
     }
 
@@ -994,7 +994,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
           + esc(dataAto(a.data)) + ' · ' + esc(finalidade(a.acao)) + ' · ' + reais(a.valor_autorizado) + '</dd>';
       }).join('');
       if (el('linhaPortariasRecentes')) {
-        el('linhaPortariasRecentes').textContent = atos.length + ' portaria(s) desde 29/06/2026';
+        el('linhaPortariasRecentes').textContent = atos.length + (atos.length === 1 ? ' portaria' : ' portarias') + ' desde 29/06/2026';
       }
       if (window.MonitorMapas) {
         MonitorMapas.legenda('legPortariasRecentes', [{cor: MonitorMapas.NEUTRA, rotulo: 'autorizado por portaria; a saída do dinheiro é outro registro'}]);
@@ -1091,7 +1091,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     }
     if (el('linhaGastoProprioUF')) {
       el('linhaGastoProprioUF').textContent = comLancamento.length.toLocaleString('pt-BR')
-        + ' município(s) com lançamento · exercício ' + ((D || {}).exercicio || '');
+        + (comLancamento.length === 1 ? ' município com lançamento' : ' municípios com lançamento') + ' · exercício ' + ((D || {}).exercicio || '');
     }
     if (el('comoLerGastoContagem')) {
       el('comoLerGastoContagem').textContent = comLancamento.length.toLocaleString('pt-BR')
