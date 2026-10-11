@@ -247659,7 +247659,8 @@
    "municipios_casados": 5569,
    "nao_casados": 0,
    "valor_nao_casado": 0,
-   "sem_municipio_na_fonte": 0
+   "sem_municipio_na_fonte": 0,
+   "hash_evidencia": "391993a56ec40df8acd82772b8de9ff4c68bd703d7fec7546ac50b81a8ecec8d"
   },
   "202602": {
    "linhas_municipais": 51243,
@@ -247667,7 +247668,8 @@
    "municipios_casados": 5569,
    "nao_casados": 0,
    "valor_nao_casado": 0,
-   "sem_municipio_na_fonte": 0
+   "sem_municipio_na_fonte": 0,
+   "hash_evidencia": "80b3b97ad270aaf57beb19bb72c4c9ada4eda56e5e0d18a89e756e974a9597fc"
   },
   "202603": {
    "linhas_municipais": 45522,
@@ -247675,7 +247677,8 @@
    "municipios_casados": 5569,
    "nao_casados": 0,
    "valor_nao_casado": 0,
-   "sem_municipio_na_fonte": 0
+   "sem_municipio_na_fonte": 0,
+   "hash_evidencia": "30ba02e4cfeae76c2368b438eacdc5ee971c1e4d303b9324534e0de827542fae"
   },
   "202604": {
    "linhas_municipais": 58023,
@@ -247683,7 +247686,8 @@
    "municipios_casados": 5569,
    "nao_casados": 0,
    "valor_nao_casado": 0,
-   "sem_municipio_na_fonte": 4860201.11
+   "sem_municipio_na_fonte": 4860201.11,
+   "hash_evidencia": "93d3a53344f3ba16c3a2c1e351e9a893bcc2be70e7777b253bec58ec061a2f61"
   },
   "202605": {
    "linhas_municipais": 55171,
@@ -247691,7 +247695,8 @@
    "municipios_casados": 5569,
    "nao_casados": 0,
    "valor_nao_casado": 0,
-   "sem_municipio_na_fonte": 0
+   "sem_municipio_na_fonte": 0,
+   "hash_evidencia": "6bacec2036465a86b1046fc8bec4c0cdaeeb6ea66a2b4e0d2d28360758f6095f"
   },
   "202606": {
    "linhas_municipais": 49364,
@@ -247699,7 +247704,8 @@
    "municipios_casados": 5569,
    "nao_casados": 0,
    "valor_nao_casado": 0,
-   "sem_municipio_na_fonte": 1536366.78
+   "sem_municipio_na_fonte": 1536366.78,
+   "hash_evidencia": "f74e6e7d2454d0b045cdc6ce9d71f052b67d211be3fdcf89a6088e829e654409"
   },
   "202607": {
    "linhas_municipais": 55407,
@@ -247707,7 +247713,8 @@
    "municipios_casados": 5569,
    "nao_casados": 0,
    "valor_nao_casado": 0,
-   "sem_municipio_na_fonte": 11741873.98
+   "sem_municipio_na_fonte": 11741873.98,
+   "hash_evidencia": "61f0c42a2aa7c3175837764d424a0c22a518d79db0036fe32ca507dd006586a7"
   },
   "202608": {
    "linhas_municipais": 47568,
@@ -247715,7 +247722,8 @@
    "municipios_casados": 5569,
    "nao_casados": 0,
    "valor_nao_casado": 0,
-   "sem_municipio_na_fonte": 2645198.05
+   "sem_municipio_na_fonte": 2645198.05,
+   "hash_evidencia": "18b17811bdf94d8bdca38d0f2e737763c2086cf0745ef0ea9460da005c7e1caf"
   },
   "202609": {
    "linhas_municipais": 19437,
@@ -247725,15 +247733,16 @@
    "valor_nao_casado": 0,
    "sem_municipio_na_fonte": 3535398.07,
    "parcial": true,
-   "parcial_porque": "19437 linha(s) contra mediana de 51243 nos outros meses — arquivo do Portal ainda sendo preenchido"
+   "parcial_porque": "19437 linha(s) contra mediana de 51243 nos outros meses — arquivo do Portal ainda sendo preenchido",
+   "hash_evidencia": "c9f7ce1973f10dc259b129cdb417ee6c1297a7d0d15d01dc19009388dddf27e2"
   }
  },
  "nao_casados": {},
  "sem_municipio_na_fonte": {
-  "CE": 9720402.22,
-  "GO": 33399181.66,
-  "PE": 228096.0,
-  "SP": 5290396.1
+  "CE": 4860201.11,
+  "GO": 16699590.83,
+  "PE": 114048.0,
+  "SP": 2645198.05
  },
  "_formato": "Transferências da União a municípios, por mês e por rota, do download de DADOS ABERTOS do Portal da Transparência (sem chave de API: a API exige `chave-api-dados` e chave está proibida neste repositório). Só `TIPO FAVORECIDO = Administração Pública Municipal`. A rota é derivação declarada dos códigos de função e subfunção — constitucional (FPM, cotas, royalties) · saúde (função 10) · assistência social (função 08) · defesa civil (subfunção 182) · outras. Linha municipal SEM MUNICÍPIO identificado na fonte vive em `sem_municipio_na_fonte`, por UF, separada de `nao_casados`: não foi dito e não consegui ler são coisas diferentes. Mês muito abaixo da mediana de linhas dos demais é marcado `parcial`, porque o Portal publica o arquivo do mês e continua enchendo. EMENDA PARLAMENTAR NÃO É IDENTIFICÁVEL nesta fonte e por isso não existe como rota aqui. A chave do arquivo é o código SIAFI e o site é indexado por IBGE: o casamento é por UF e nome normalizado, e o que não casa fica em `nao_casados`, com o valor, nunca descartado. PESO ZERO: nunca lido por recalcular_mare.py nem por gerar_monitor_saude.py.",
  "fonte": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
@@ -247744,5 +247753,38 @@
   "assistencia_social",
   "defesa_civil",
   "outras"
- ]
+ ],
+ "nao_casados_por_mes": {
+  "202601": {},
+  "202602": {},
+  "202603": {},
+  "202604": {},
+  "202605": {},
+  "202606": {},
+  "202607": {},
+  "202608": {},
+  "202609": {}
+ },
+ "sem_municipio_por_mes": {
+  "202601": {},
+  "202602": {},
+  "202603": {},
+  "202604": {
+   "CE": 4860201.11
+  },
+  "202605": {},
+  "202606": {
+   "GO": 1536366.78
+  },
+  "202607": {
+   "GO": 11741873.98
+  },
+  "202608": {
+   "SP": 2645198.05
+  },
+  "202609": {
+   "GO": 3421350.07,
+   "PE": 114048.0
+  }
+ }
 }
