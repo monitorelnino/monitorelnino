@@ -234,6 +234,14 @@ jobs:
           cat /tmp/quarentena.txt | tee -a "$GITHUB_STEP_SUMMARY"
           exit $rc
 
+      # 11/10/2026 (Relatório D, A4-31): o HTML estático (o que lê quem não roda JavaScript, leitor de
+      # tela e indexador) mostrava 02/10/2026 e o índice de resposta 10,5 com o dado em 11/10 e 12,4.
+      # `preencher_fallback_estatico.py` só era chamado por `atualizar.py`, o monólito que não roda
+      # desde 08/10 (F40). O publicador é quem traz a página em dia com o dado; passa a chamá-lo.
+      - name: Preencher o texto estático das páginas com o dado publicado
+        timeout-minutes: 3
+        run: python3 preencher_fallback_estatico.py
+
       - name: Regenerar a cadeia canônica de derivados
         timeout-minutes: 8
         # 04/10/2026: era `--idempotencia`, que mede determinismo e não comparação
