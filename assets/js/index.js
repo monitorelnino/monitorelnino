@@ -47,7 +47,9 @@ function faceTile(uf){
 // ladrilho escreve "capital não verificada" — nunca travessão.
 function temData(v){
   const s = String(v == null ? '' : v).trim();
-  return s !== '' && s !== '—' && s !== '-' && s !== 'Recorrente';
+  // 11/10/2026 (A4-19): texto como "Em elaboração (lançado 12/05/2025)" passava por data e
+  // repetia o status na face e na ficha. Data começa por dígito (dia ou ano).
+  return /^\d/.test(s);
 }
 function barraResposta(uf){
   const r = RESP && RESP.uf && RESP.uf[uf]; if (!r) return '';
@@ -780,7 +782,9 @@ const PLANO_ESTADUAL = ['coberto_estadual'];
 // 08/10/2026: vazio, travessao e "Recorrente" nao sao data (A4-13).
 function temData(v){
   const s = String(v == null ? '' : v).trim();
-  return s !== '' && s !== '—' && s !== '-' && s !== 'Recorrente';
+  // 11/10/2026 (A4-19): texto como "Em elaboração (lançado 12/05/2025)" passava por data e
+  // repetia o status na face e na ficha. Data começa por dígito (dia ou ano).
+  return /^\d/.test(s);
 }
 // Data COMPLETA, para a frase que diz "em {data}": "em 2026" nao e informacao de data, e o campo
 // as vezes guarda so o ano (A4-07, medido em Parari/PB).
@@ -838,6 +842,17 @@ function renderMinha(){
     // uma frase mínima, sem o resto do cartão.
     html += `<p>Há municípios com esse nome em mais de um estado (${esc([...new Set(matches.map(x => x.uf))].join(', '))}); selecione o seu ao lado.</p>`;
     card.innerHTML = html; card.hidden = false; return;
+  }
+
+  // 11/10/2026 (Relatório D, A4-20): texto que não é município da lista do IBGE ("cubat") ganhava
+  // o cartão inteiro com o nome digitado, como se fosse um município não verificado.
+  if (!m && uf && !nomeOficialDe(uf, q)){
+    // Ainda digitando um nome que existe: sem cartão até casar (o evento é `input`).
+    if ((MUN_REF[uf] || []).some(n => nrm(n).startsWith(q))){ card.hidden = true; card.innerHTML = ''; return; }
+    html = `<p class="note"><a href="#" id="trocarMun">← consultar outro município</a></p>`
+      + `<p>Não encontramos “${esc(nomeDigitado)}” na lista de municípios do IBGE para ${esc(uf)}. Confira a grafia ou escolha o nome na lista.</p>`;
+    card.innerHTML = html; card.hidden = false;
+    return;
   }
 
   const status = m ? statusDoPlano(m.categoria) : 'nao_encontrado';

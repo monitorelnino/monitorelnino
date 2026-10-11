@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-11 · #PR · Início: nome que não é município e status repetido na ficha (A4-20, A4-19)
+
+Texto que não está na lista de municípios do IBGE do estado deixa de ganhar o cartão inteiro: a página diz que não encontrou o nome e pede para conferir a grafia (enquanto o texto ainda começa um nome da lista, nada aparece). "Em elaboração (lançado …)" deixa de passar por data e repetir o status na face e na ficha do estado. Onde: `assets/js/index.js`.
+
 ## 2026-10-11 · #PR · união de conflito regera o painel de saúde em vez de recusá-lo
 
 `docs/SAUDE_PIPELINE.md` é derivado de `data/saude_pipeline.json`, fora da cadeia canônica, e o resolvedor o recusava: foi o conflito mais frequente dos PRs de 11/10, porque cada publicação reescreve o painel. Agora ele é regerado pelo próprio gerador depois que a fonte é unida pela base comum; se o gerador falha, recusa. Onde: `scripts/unir_conflito_de_rodada.py`.
