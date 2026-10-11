@@ -32,6 +32,13 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-11 · #PR · portões em três jobs paralelos (estrutura, navegador, dado)
+
+O job único levava 15 a 25 min por PR. Agora `estrutura`, `navegador` e `dado` rodam lado a lado e o
+job `portoes` (mesmo nome do check) exige os três verdes. Mesmos 266 comandos: `--listar` antes e
+depois dá o mesmo conjunto; `portoes_locais.py` lê os passos de todos os jobs. Onde:
+`.github/workflows/portoes.yml`, `scripts/portoes_locais.py`.
+
 ## 2026-10-11 · #PR · Monitor de riscos: os três mapas de "Os riscos no Brasil" numa só fila
 
 Risco previsto, seca e fogo passam a ficar lado a lado no desktop, no componente `.grade-figuras--3`, a pedido da editoria. Previsto e observado seguem distintos: os selos "Previsto pelo boletim" e "Observado" formam uma faixa alinhada às colunas da grade. No celular, empilham na ordem previsto → seca → fogo. Nenhum título, data ou fonte muda. Onde: `monitor-de-riscos.html`, `assets/base.css`, contrato da página.

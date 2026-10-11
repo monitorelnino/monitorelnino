@@ -18,7 +18,13 @@ permissions:
   contents: read
 
 jobs:
-  portoes:
+  # 11/10/2026 (central, 14:00: "design mais rápido"): a suíte era UM job de ~15 min (página) a
+  # ~25 min (dado). Agora são três jobs em paralelo — estrutura, navegador e dado — com os MESMOS
+  # comandos, na mesma ordem dentro de cada um (`portoes_locais.py --listar` bate antes e depois), e
+  # o job `portoes` só junta o veredito: é ele a checagem obrigatória do ruleset, e ele reprova se
+  # qualquer um dos três não terminar em sucesso. Cada job detecta o que mudou por conta própria.
+  estrutura:
+    name: portoes · estrutura
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -356,99 +362,104 @@ jobs:
           python3 scripts/verificar_cadencia_sinais.py
           # assunto: texto rapido
           python3 scripts/verificar_cadencia_sinais.py --autoteste
-      - name: Portões — dado e coleta (só se dado mudou)
-        if: steps.diff.outputs.dado_mudou == 'true'
+      # Antes do portão 12, porque ele explica a falha que o 12 mostraria sem causa: derivado
+      # que carimba pelo relógio da parede muda sozinho na virada do dia, e o 12 acusa "obsoleto"
+      # sem dizer por quê. Em 05 para 06/10 isso derrubou nove publicações seguidas.
+      - name: Relógio dos derivados — nenhum carimbo pela parede
+        timeout-minutes: 3
         run: |
-          set -e
-          python3 verificar_consistencia.py
-          python3 recalcular_mare.py --check
-          python3 verificar_sinais.py
-          python3 verificar_saude.py
-          python3 verificar_evidencias.py
-          python3 verificar_financiamento.py
-          python3 verificar_painel.py
-          python3 scripts/testar_detector_defeso.py
-          # §182 (23/09/2026): a reavaliação de suspensão por defeso tem régua própria — evidência
-          # truncada não reabre fonte, e notícia institucional suspensa não fecha o canal de documento.
-          python3 scripts/reavaliar_fontes_suspensas.py --autoteste
-          python3 verificar_resposta.py
-          # §255 (27/09/2026): os cartões "Esta semana em números" da Imprensa. Trava paridade
-          # (o que a página mostra é o que o dado diz), período em todo cartão de janela, zero
-          # que não é "sem coleta", ausência de variação enquanto não houver edição anterior,
-          # frase pronta sem cláusula de valor zero, e peso zero nos índices. Trava também que
-          # TODA data de dados-abertos/atos_resposta.csv seja legível: o arquivo tem 740 datas em
-          # dd/mm/aaaa e 71 em ISO, e um parser de um formato só mediu "71 decretos sem data" —
-          # quase virou lacuna falsa no CHANGELOG.
-          python3 scripts/verificar_imprensa.py
-          python3 scripts/verificar_imprensa.py --autoteste
-          # O portão de COERÊNCIA da imprensa precisa de navegador (ele compara o número da
-          # imprensa com o número renderizado na página de origem), e por isso vive no portão de
-          # layout, depois da instalação do Chromium. Aqui fica só o autoteste dele, que é offline.
-          python3 scripts/verificar_imprensa_coerencia.py --autoteste
-          python3 gerar_imprensa_semana.py --autoteste
-          # §256 (27/09/2026): paridade entre data/cobertura_qd.json e o bloco
-          # varredura_diarios de data/verificacao_resumo.json. Os dois contam a MESMA coisa —
-          # municípios com diário indexado no Querido Diário — e nada garantia que concordassem.
-          # Pendência aberta desde 14/09 e cobrada pelo T1 do preprint: o número entra lá como
-          # limitação quantificada do E6, e uma divergência viraria duas afirmações incompatíveis
-          # publicadas no mesmo trabalho. Reprova também zero indexado: 5.571 em false é falha
-          # de coleta, não um fato.
-          python3 scripts/verificar_paridade_cobertura_qd.py
-          python3 scripts/verificar_paridade_cobertura_qd.py --autoteste
-          # Errata C29 (01/10/2026): imprensa DESCOBRE, nunca REGISTRA. A auditoria pedida
-          # pela editoria encontrou Curitiba pontuando como `plano` com URL de jornal e fonte
-          # "via imprensa regional" — 2,8 pontos de PR apoiados em notícia, desfeitos por errata
-          # pública. A pista de notícia é legítima; o registro que pontua tem de apontar para o
-          # documento primário.
-          python3 scripts/verificar_imprensa_nao_registra.py
-          # §283 (28/09/2026): frescor — compara o que foi coletado com o que foi publicado.
-          # O autoteste é offline e puro; o vigia com rede vive em verificar_publicado.yml.
-          python3 scripts/frescor.py --autoteste
-          python3 scripts/corrigir_log_do_aplicador.py --autoteste
-          python3 scripts/rejulgar_decisoes_do_juiz.py --autoteste
-          python3 aplicar_promocoes_do_juiz.py --autoteste
-          python3 coletar_srag_sivep.py --autoteste
-          python3 coletar_sg_esus.py --autoteste
-          python3 saude_opendatasus.py
-          python3 coletar_arboviroses_sinan.py --autoteste
-          python3 coletar_obitos_registro_civil.py --autoteste
-          python3 verificar_pista_imprensa.py --autoteste
-          python3 coletar_cadastro_prioritarios.py --autoteste
-          python3 scripts/busca_dirigida_do_ato.py --autoteste
-          python3 coletar_prioritarios_mma.py --autoteste
-          # Bloco A do MARÉ Saúde (01/10/2026): o funil dos planos de saúde estaduais. O
-          # autoteste é offline e puro; a trava que ele cobra é a que importa aqui — zero
-          # resultado de motor NUNCA pode produzir a decisão que autoriza "não localizado".
-          python3 coletar_saude_estadual.py --autoteste
-          # Bloco B do MARÉ Saúde (01/10/2026): a v0.4, calculada em paralelo. O autoteste cobra
-          # a trava central — sem coordenação verificada a UF NÃO recebe número, porque somar um
-          # terço de zero afirmaria ausência de sala de situação por ausência de busca — e a trava
-          # estrutural de que este gerador não escreve no índice nem no arquivo que a página lê.
-          python3 gerar_monitor_saude_v04.py --autoteste
-          # O juiz da saúde (01/10/2026). O autoteste cobra a classificação do que o ato
-          # institui, o degrau de coordenação — ato de 2026 que NÃO nomeia o ciclo é permanente,
-          # não criado para ele — e que o degrau nunca conclua ausência: este juiz só vê
-          # documentos que existem, e marcar ausência exige bateria completa, que é outro passo.
-          python3 julgar_saude.py --autoteste
-          python3 scripts/fechar_saude.py --autoteste
-          python3 trocar_para_v04.py --autoteste
-          # O coletor de transferências por município (01/10/2026). O autoteste cobra as
-          # travas que importam: só linha de administração MUNICIPAL entra (as outras inflariam o
-          # número da cidade), valor ilegível levanta em vez de virar zero, município que não casa
-          # fica declarado com o valor, reler o mesmo mês é idempotente, e o mês em curso não é
-          # coletado — o Portal publica o arquivo fechado.
-          python3 coletar_transferencias_municipais.py --autoteste
-          # Regra de sincronia do "Para gestores" (01/10/2026): a seção de recursos é só
-          # ponteiro para o Financiamento, e ponteiro quebra em SILÊNCIO — link para arquivo
-          # inexistente o navegador acusa, âncora para `id` inexistente não. Já aconteceu duas
-          # vezes: a seção do período eleitoral apontando para um calendário apagado, e a imprensa
-          # prometendo um modelo de LAI que saiu do site.
-          python3 scripts/verificar_ancoras_internas.py
-          python3 scripts/verificar_ancoras_internas.py --autoteste
-          python3 coletar_normais_inmet.py --autoteste
-          python3 scripts/gerar_enquadramento_card.py --autoteste
-          python3 scripts/verificar_cadencia_coletores.py --autoteste
-          python3 coletar_semiarido_sudene.py --autoteste
+          # assunto: dado rapido
+          python3 scripts/verificar_relogio_dos_derivados.py --autoteste
+          # assunto: dado rapido
+          python3 scripts/verificar_relogio_dos_derivados.py
+
+      # Causa F: a regra "nenhum commit automatico na `main` de dia" passa a ter guarda no codigo.
+      - name: Janela da noite — a guarda da coleta na `main`
+        timeout-minutes: 2
+        run: |
+          # assunto: dado rapido
+          python3 scripts/guarda_da_janela.py --autoteste
+      # O navegador do Playwright era baixado a cada execução. O cache o guarda por versão.
+      # 07/10/2026: este passo rodava SO quando a pagina mudava, e o portao da corrida do medidor
+      # roda SEMPRE. Num PR que nao toca pagina -- um de documentacao, por exemplo -- o cache nao
+      # era restaurado, o `playwright install` do passo da corrida baixava tudo do zero e gastava
+      # os 8 minutos inteiros do teto: o processo era morto como orfao e o teste nem chegava a
+      # rodar. Reprovava por infraestrutura, com a mensagem de tempo esgotado, que nao se parece
+      # com a causa. Restaurar o cache nao depende de a pagina ter mudado; depende de alguem
+      # precisar do navegador, e quem precisa roda sempre. Sem a condicao, o `install` dos passos
+      # abaixo vira no-op.
+      - name: Cache do navegador (Playwright)
+        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684  # v4.2.3
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json', 'package.json') }}
+          restore-keys: playwright-${{ runner.os }}-
+
+      # Item 3 (06/10/2026): a IDEMPOTENCIA vira portao de PR, que e onde o gerador muda. No
+      # publicador, regenerar e a funcao -- "havia derivado obsoleto" nao pode barrar a publicacao
+      # de dado. Entre 03 e 06/10 foram 29 publicacoes perdidas por essa confusao.
+      # Item 2: o teste que reproduz a corrida. O medidor antigo tem de reprovar; o novo, passar.
+      - name: Corrida do medidor — espera por condição, não por relógio
+        timeout-minutes: 8
+        run: |
+          # O passo roda sempre. Com o cache restaurado (acima, tambem sempre desde 07/10/2026)
+          # esta instalacao e no-op; ela fica porque a primeira execucao depois de uma troca de
+          # versao do Playwright ainda precisa dela.
+          npx playwright install --with-deps chromium >/dev/null 2>&1 || npx playwright install chromium
+          # assunto: texto
+          node scripts/testar_corrida_do_medidor.js
+
+  navegador:
+    name: portoes · navegador
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with: { persist-credentials: false, fetch-depth: 0 }
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with: { python-version: "3.12", cache: pip }
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with: { node-version: "22", cache: npm }
+      - run: pip install -r requirements.txt --quiet
+      - run: npm ci --silent
+      - name: Detectar se a mudança envolve dado/coleta (evita rodar portões de dado em edição só de página)
+        id: diff
+        run: |
+          # 21/09/2026 (pedido editorial: PRs de texto/gráfico/estrutura demoravam o mesmo que PRs
+          # de dado — a suíte inteira sempre rodava, sem olhar o que mudou de fato). Convenção já
+          # em uso no projeto: .py na raiz/scripts é coleta/verificação de DADO; .js em scripts/ é
+          # verificação de PÁGINA (roda a página em jsdom/Chromium). data/, requirements.txt e o
+          # workflow semanal também sinalizam dado. Falso positivo (marcar como "mudou dado" um PR
+          # que na verdade só mexeu em página) é seguro — só roda a suíte inteira à toa; falso
+          # negativo seria o risco real, por isso o padrão é amplo de propósito.
+          BASE="${{ github.event.pull_request.base.sha }}"
+          if [ -z "$BASE" ]; then
+            echo "sem contexto de PR (disparo manual) — suíte completa por segurança"
+            echo "dado_mudou=true" >> "$GITHUB_OUTPUT"
+            echo "pagina_mudou=true" >> "$GITHUB_OUTPUT"
+          else
+            ARQUIVOS=$(git diff --name-only "$BASE" "${{ github.sha }}")
+            echo "arquivos alterados:"; echo "$ARQUIVOS"
+            if echo "$ARQUIVOS" | grep -qE '(^|/)data/|\.py$|^requirements\.txt$|^\.github/workflows/atualizar\.yml$|^\.github/workflows/portoes\.yml$|^package(-lock)?\.json$'; then
+              echo "dado_mudou=true" >> "$GITHUB_OUTPUT"; echo "→ dado/coleta mudou: suíte completa"
+            else
+              echo "dado_mudou=false" >> "$GITHUB_OUTPUT"; echo "→ só página/estrutura: pulando portões de dado"
+            fi
+            # 30/09/2026 (§316, item 3 do handover de otimização): a segunda pergunta. Os portões de
+            # TEXTO (legendas, vocabulário, voz, fichas, figuras) e os dois de navegador custam ~4
+            # min juntos e só podem ser afetados por página, folha de estilo, script de página ou
+            # ficha semântica. Um PR que só toca `.py` de coletor não abre navegador nem varre
+            # legenda. O padrão é amplo de propósito: falso positivo custa tempo, falso negativo
+            # custa um defeito no ar.
+            if echo "$ARQUIVOS" | grep -qE '\.html$|^assets/|^docs/fichas_semanticas\.json$|^scripts/verificar_(legendas|vocabulario_publico|voz_editorial|fichas_semanticas|figuras|movel|consistencia_visual)\.js$'; then
+              echo "pagina_mudou=true" >> "$GITHUB_OUTPUT"; echo "→ página/estilo mudou: portões de texto e de navegador entram"
+            else
+              echo "pagina_mudou=false" >> "$GITHUB_OUTPUT"; echo "→ nenhuma página tocada: pulando portões de texto e de navegador"
+            fi
+          fi
       # 30/09/2026 (§316): os cinco portões de TEXTO saíram do bloco "sempre". Eles leem páginas,
       # folhas e fichas — um PR que só toca `.py` de coletor não tem como afetá-los, e eles custam
       # cerca de 100 s. Continuam bloqueantes onde podem falhar.
@@ -567,37 +578,151 @@ jobs:
           path: capturas-ci/
           if-no-files-found: ignore
           retention-days: 30
-      # Antes do portão 12, porque ele explica a falha que o 12 mostraria sem causa: derivado
-      # que carimba pelo relógio da parede muda sozinho na virada do dia, e o 12 acusa "obsoleto"
-      # sem dizer por quê. Em 05 para 06/10 isso derrubou nove publicações seguidas.
-      - name: Relógio dos derivados — nenhum carimbo pela parede
-        timeout-minutes: 3
-        run: |
-          # assunto: dado rapido
-          python3 scripts/verificar_relogio_dos_derivados.py --autoteste
-          # assunto: dado rapido
-          python3 scripts/verificar_relogio_dos_derivados.py
 
-      # Causa F: a regra "nenhum commit automatico na `main` de dia" passa a ter guarda no codigo.
-      - name: Janela da noite — a guarda da coleta na `main`
-        timeout-minutes: 2
+  dado:
+    name: portoes · dado
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with: { persist-credentials: false, fetch-depth: 0 }
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with: { python-version: "3.12", cache: pip }
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with: { node-version: "22", cache: npm }
+      - run: pip install -r requirements.txt --quiet
+      - run: npm ci --silent
+      - name: Detectar se a mudança envolve dado/coleta (evita rodar portões de dado em edição só de página)
+        id: diff
         run: |
-          # assunto: dado rapido
-          python3 scripts/guarda_da_janela.py --autoteste
-
-      # Item 3 (06/10/2026): a IDEMPOTENCIA vira portao de PR, que e onde o gerador muda. No
-      # publicador, regenerar e a funcao -- "havia derivado obsoleto" nao pode barrar a publicacao
-      # de dado. Entre 03 e 06/10 foram 29 publicacoes perdidas por essa confusao.
-      # Item 2: o teste que reproduz a corrida. O medidor antigo tem de reprovar; o novo, passar.
-      - name: Corrida do medidor — espera por condição, não por relógio
-        timeout-minutes: 8
+          # 21/09/2026 (pedido editorial: PRs de texto/gráfico/estrutura demoravam o mesmo que PRs
+          # de dado — a suíte inteira sempre rodava, sem olhar o que mudou de fato). Convenção já
+          # em uso no projeto: .py na raiz/scripts é coleta/verificação de DADO; .js em scripts/ é
+          # verificação de PÁGINA (roda a página em jsdom/Chromium). data/, requirements.txt e o
+          # workflow semanal também sinalizam dado. Falso positivo (marcar como "mudou dado" um PR
+          # que na verdade só mexeu em página) é seguro — só roda a suíte inteira à toa; falso
+          # negativo seria o risco real, por isso o padrão é amplo de propósito.
+          BASE="${{ github.event.pull_request.base.sha }}"
+          if [ -z "$BASE" ]; then
+            echo "sem contexto de PR (disparo manual) — suíte completa por segurança"
+            echo "dado_mudou=true" >> "$GITHUB_OUTPUT"
+            echo "pagina_mudou=true" >> "$GITHUB_OUTPUT"
+          else
+            ARQUIVOS=$(git diff --name-only "$BASE" "${{ github.sha }}")
+            echo "arquivos alterados:"; echo "$ARQUIVOS"
+            if echo "$ARQUIVOS" | grep -qE '(^|/)data/|\.py$|^requirements\.txt$|^\.github/workflows/atualizar\.yml$|^\.github/workflows/portoes\.yml$|^package(-lock)?\.json$'; then
+              echo "dado_mudou=true" >> "$GITHUB_OUTPUT"; echo "→ dado/coleta mudou: suíte completa"
+            else
+              echo "dado_mudou=false" >> "$GITHUB_OUTPUT"; echo "→ só página/estrutura: pulando portões de dado"
+            fi
+            # 30/09/2026 (§316, item 3 do handover de otimização): a segunda pergunta. Os portões de
+            # TEXTO (legendas, vocabulário, voz, fichas, figuras) e os dois de navegador custam ~4
+            # min juntos e só podem ser afetados por página, folha de estilo, script de página ou
+            # ficha semântica. Um PR que só toca `.py` de coletor não abre navegador nem varre
+            # legenda. O padrão é amplo de propósito: falso positivo custa tempo, falso negativo
+            # custa um defeito no ar.
+            if echo "$ARQUIVOS" | grep -qE '\.html$|^assets/|^docs/fichas_semanticas\.json$|^scripts/verificar_(legendas|vocabulario_publico|voz_editorial|fichas_semanticas|figuras|movel|consistencia_visual)\.js$'; then
+              echo "pagina_mudou=true" >> "$GITHUB_OUTPUT"; echo "→ página/estilo mudou: portões de texto e de navegador entram"
+            else
+              echo "pagina_mudou=false" >> "$GITHUB_OUTPUT"; echo "→ nenhuma página tocada: pulando portões de texto e de navegador"
+            fi
+          fi
+      - name: Portões — dado e coleta (só se dado mudou)
+        if: steps.diff.outputs.dado_mudou == 'true'
         run: |
-          # O passo roda sempre. Com o cache restaurado (acima, tambem sempre desde 07/10/2026)
-          # esta instalacao e no-op; ela fica porque a primeira execucao depois de uma troca de
-          # versao do Playwright ainda precisa dela.
-          npx playwright install --with-deps chromium >/dev/null 2>&1 || npx playwright install chromium
-          # assunto: texto
-          node scripts/testar_corrida_do_medidor.js
+          set -e
+          python3 verificar_consistencia.py
+          python3 recalcular_mare.py --check
+          python3 verificar_sinais.py
+          python3 verificar_saude.py
+          python3 verificar_evidencias.py
+          python3 verificar_financiamento.py
+          python3 verificar_painel.py
+          python3 scripts/testar_detector_defeso.py
+          # §182 (23/09/2026): a reavaliação de suspensão por defeso tem régua própria — evidência
+          # truncada não reabre fonte, e notícia institucional suspensa não fecha o canal de documento.
+          python3 scripts/reavaliar_fontes_suspensas.py --autoteste
+          python3 verificar_resposta.py
+          # §255 (27/09/2026): os cartões "Esta semana em números" da Imprensa. Trava paridade
+          # (o que a página mostra é o que o dado diz), período em todo cartão de janela, zero
+          # que não é "sem coleta", ausência de variação enquanto não houver edição anterior,
+          # frase pronta sem cláusula de valor zero, e peso zero nos índices. Trava também que
+          # TODA data de dados-abertos/atos_resposta.csv seja legível: o arquivo tem 740 datas em
+          # dd/mm/aaaa e 71 em ISO, e um parser de um formato só mediu "71 decretos sem data" —
+          # quase virou lacuna falsa no CHANGELOG.
+          python3 scripts/verificar_imprensa.py
+          python3 scripts/verificar_imprensa.py --autoteste
+          # O portão de COERÊNCIA da imprensa precisa de navegador (ele compara o número da
+          # imprensa com o número renderizado na página de origem), e por isso vive no portão de
+          # layout, depois da instalação do Chromium. Aqui fica só o autoteste dele, que é offline.
+          python3 scripts/verificar_imprensa_coerencia.py --autoteste
+          python3 gerar_imprensa_semana.py --autoteste
+          # §256 (27/09/2026): paridade entre data/cobertura_qd.json e o bloco
+          # varredura_diarios de data/verificacao_resumo.json. Os dois contam a MESMA coisa —
+          # municípios com diário indexado no Querido Diário — e nada garantia que concordassem.
+          # Pendência aberta desde 14/09 e cobrada pelo T1 do preprint: o número entra lá como
+          # limitação quantificada do E6, e uma divergência viraria duas afirmações incompatíveis
+          # publicadas no mesmo trabalho. Reprova também zero indexado: 5.571 em false é falha
+          # de coleta, não um fato.
+          python3 scripts/verificar_paridade_cobertura_qd.py
+          python3 scripts/verificar_paridade_cobertura_qd.py --autoteste
+          # Errata C29 (01/10/2026): imprensa DESCOBRE, nunca REGISTRA. A auditoria pedida
+          # pela editoria encontrou Curitiba pontuando como `plano` com URL de jornal e fonte
+          # "via imprensa regional" — 2,8 pontos de PR apoiados em notícia, desfeitos por errata
+          # pública. A pista de notícia é legítima; o registro que pontua tem de apontar para o
+          # documento primário.
+          python3 scripts/verificar_imprensa_nao_registra.py
+          # §283 (28/09/2026): frescor — compara o que foi coletado com o que foi publicado.
+          # O autoteste é offline e puro; o vigia com rede vive em verificar_publicado.yml.
+          python3 scripts/frescor.py --autoteste
+          python3 scripts/corrigir_log_do_aplicador.py --autoteste
+          python3 scripts/rejulgar_decisoes_do_juiz.py --autoteste
+          python3 aplicar_promocoes_do_juiz.py --autoteste
+          python3 coletar_srag_sivep.py --autoteste
+          python3 coletar_sg_esus.py --autoteste
+          python3 saude_opendatasus.py
+          python3 coletar_arboviroses_sinan.py --autoteste
+          python3 coletar_obitos_registro_civil.py --autoteste
+          python3 verificar_pista_imprensa.py --autoteste
+          python3 coletar_cadastro_prioritarios.py --autoteste
+          python3 scripts/busca_dirigida_do_ato.py --autoteste
+          python3 coletar_prioritarios_mma.py --autoteste
+          # Bloco A do MARÉ Saúde (01/10/2026): o funil dos planos de saúde estaduais. O
+          # autoteste é offline e puro; a trava que ele cobra é a que importa aqui — zero
+          # resultado de motor NUNCA pode produzir a decisão que autoriza "não localizado".
+          python3 coletar_saude_estadual.py --autoteste
+          # Bloco B do MARÉ Saúde (01/10/2026): a v0.4, calculada em paralelo. O autoteste cobra
+          # a trava central — sem coordenação verificada a UF NÃO recebe número, porque somar um
+          # terço de zero afirmaria ausência de sala de situação por ausência de busca — e a trava
+          # estrutural de que este gerador não escreve no índice nem no arquivo que a página lê.
+          python3 gerar_monitor_saude_v04.py --autoteste
+          # O juiz da saúde (01/10/2026). O autoteste cobra a classificação do que o ato
+          # institui, o degrau de coordenação — ato de 2026 que NÃO nomeia o ciclo é permanente,
+          # não criado para ele — e que o degrau nunca conclua ausência: este juiz só vê
+          # documentos que existem, e marcar ausência exige bateria completa, que é outro passo.
+          python3 julgar_saude.py --autoteste
+          python3 scripts/fechar_saude.py --autoteste
+          python3 trocar_para_v04.py --autoteste
+          # O coletor de transferências por município (01/10/2026). O autoteste cobra as
+          # travas que importam: só linha de administração MUNICIPAL entra (as outras inflariam o
+          # número da cidade), valor ilegível levanta em vez de virar zero, município que não casa
+          # fica declarado com o valor, reler o mesmo mês é idempotente, e o mês em curso não é
+          # coletado — o Portal publica o arquivo fechado.
+          python3 coletar_transferencias_municipais.py --autoteste
+          # Regra de sincronia do "Para gestores" (01/10/2026): a seção de recursos é só
+          # ponteiro para o Financiamento, e ponteiro quebra em SILÊNCIO — link para arquivo
+          # inexistente o navegador acusa, âncora para `id` inexistente não. Já aconteceu duas
+          # vezes: a seção do período eleitoral apontando para um calendário apagado, e a imprensa
+          # prometendo um modelo de LAI que saiu do site.
+          python3 scripts/verificar_ancoras_internas.py
+          python3 scripts/verificar_ancoras_internas.py --autoteste
+          python3 coletar_normais_inmet.py --autoteste
+          python3 scripts/gerar_enquadramento_card.py --autoteste
+          python3 scripts/verificar_cadencia_coletores.py --autoteste
+          python3 coletar_semiarido_sudene.py --autoteste
 
       - name: Idempotência dos derivados — o gerador dá sempre o mesmo resultado
         if: steps.diff.outputs.dado_mudou == 'true'
@@ -851,3 +976,20 @@ jobs:
           python3 scripts/verificar_rede_social_nao_e_fonte.py --autoteste
           python3 scripts/verificar_rede_social_nao_e_fonte.py
           python3 scripts/empacotar_evidencias.py --autoteste
+
+
+  portoes:
+    name: portoes
+    needs: [estrutura, navegador, dado]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Veredito dos três jobs
+        env:
+          ESTRUTURA: ${{ needs.estrutura.result }}
+          NAVEGADOR: ${{ needs.navegador.result }}
+          DADO: ${{ needs.dado.result }}
+        run: |
+          echo "estrutura=$ESTRUTURA navegador=$NAVEGADOR dado=$DADO"
+          [ "$ESTRUTURA" = success ] && [ "$NAVEGADOR" = success ] && [ "$DADO" = success ]
