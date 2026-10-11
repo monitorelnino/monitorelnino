@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-11 · #PR · a saúde volta a ser coletada todo dia (F40)
+
+O monólito semanal terminava verde sem coletar nada desde 08/10: o passo da janela estava no job vizinho, e a saúde (InfoDengue, calor do MS, desfechos, SINAN, boletins das SES) parou em 26/09. A camada vira elo diário próprio; o validador de workflows reprova passo lido que não existe no job; portão de frescor da Saúde (9 dias); fonte sem coletor vira lacuna com motivo; data do calor em dd/mm/aaaa. Onde: `noturno_saude.yml`, `atualizar.yml`, `saude.js`.
+
 ## 2026-10-11 · #PR · checagem pré-noite sem cegueira; triagem uma vez na abertura (F36, F37, F27)
 
 A checagem pré-noite dizia "fila vazia" com seis elos rodando: pedia ao `gh` um campo que não existe e o erro virava lista vazia. Agora lê a fila pela API e erro de consulta reprova com nome. Cron atrasado para dentro da janela não julga mais a noite seguinte. O despachante deixa de disparar a triagem na abertura, que a corrente já chama. Onde: `checagem_pre_noite.py`, `despachar_temporizadores.py`, registro de temporizadores.

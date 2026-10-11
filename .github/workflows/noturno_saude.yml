@@ -37,6 +37,10 @@ jobs:
         coletar_boletim_df_arboviroses.py
         coletar_boletim_pe_arboviroses.py
         coletar_boletim_pb_arboviroses.py
+        # Contagem de dengue e chikungunya pela fonte primária (SINAN) e óbitos registrados em
+        # cartório, por UF e mês: vinham da rotina semanal de sinais, que não commitava (F38).
+        coletar_arboviroses_sinan.py
+        coletar_obitos_registro_civil.py
         classificar_saude_no_plano.py
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
