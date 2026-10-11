@@ -520,6 +520,47 @@
    "correcao": "Runs abertos pela API REST (`/actions/runs?status=…`, que traz `path`); erro do `gh` anotado e virando a pergunta vermelha \"as consultas ao GitHub responderam\".",
    "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_checagem_pre_noite_nao_e_cega",
    "falta": null
+  },
+  {
+   "id": "F38",
+   "noite": "2026-10-11",
+   "titulo": "Fila semanal longa estoura o teto e não commita nada",
+   "sintoma": "`Semanal — sinais climáticos e links` cancelado no teto de 150 min em 04/10 e três vezes em 11/10 (01:10, 03:42, 06:42), sem commit; `transferencias_uniao.json` parado em 01/10 e Portões no push da `main` vermelhos desde 11/10 (frescor do Financiamento, 10 dias > 9).",
+   "causa": "O teto do job mata também os passos de commit; a fila somava cobertura do QD 56 min + clima municipal 41 min + domínios > 47 min, e o que os comandos curtos já tinham gravado morria junto.",
+   "prova": [
+    "runs 37205422226, 38100963895, 38109274967, 38118915381 (cancelled)",
+    "run 38131168911 (Portões push, FRESCOR DO FINANCIAMENTO)"
+   ],
+   "correcao": "Prazo da coleta no `_coletor.yml` (teto − margem, contado do início do job): `saude_pipeline.py --prazo` pula o comando que não caberia e interrompe o que passa, restaurando JSON ilegível; longos no fim da fila semanal; transferências no elo diário dos sinais; válvula `coleta-dia/*` para recuperar de dia por PR.",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_fila_longa_ainda_commita",
+   "falta": null
+  },
+  {
+   "id": "F39",
+   "noite": "2026-10-11",
+   "titulo": "Comentário da fila virava comando; sonda do InfoGripe quebrada",
+   "sintoma": "Cada linha `# …` de `comandos` rodava como `saude_pipeline.py --rodar '#' …` (FileNotFoundError no log, dezenas por run); `scripts/sondar_boletim_infogripe.py` saía com NameError antes de sondar.",
+   "causa": "O laço só pulava linha vazia; a sonda usava `pathlib` sem importar.",
+   "prova": [
+    "run 38118915381, job 114409430097"
+   ],
+   "correcao": "O laço pula comentário; `import pathlib` na sonda.",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_fila_longa_ainda_commita",
+   "falta": null
+  },
+  {
+   "id": "F41",
+   "noite": "2026-10-11",
+   "titulo": "Leitura de PDF sobrescreve o texto integral do diário",
+   "sintoma": "`verificar_evidencias.py` reprova seis itens: `texto_integral` não bate com `texto_integral_hash` (escondido na `main` porque o frescor do Financiamento reprovava antes).",
+   "causa": "`preservar_evidencias.py --ler` escolhia itens com URL de PDF sem `texto_arquivo`, inclusive os do Querido Diário que já tinham `texto_integral` em `evidencias/<h>.txt`, e gravava o texto do PDF sob o mesmo nome.",
+   "prova": [
+    "commit f8a6ff77 (evidencias automático 11/10 06:36)",
+    "evidencias/5ade71a70e49….txt e mais cinco"
+   ],
+   "correcao": "A fila de leitura exclui item com `texto_integral` (`precisa_leitura`); os seis `.txt` voltam ao conteúdo selado e os campos da leitura saem do índice.",
+   "caso_de_teste": "preservar_evidencias.py --autoteste: (F41)",
+   "falta": null
   }
  ]
 }

@@ -28,17 +28,31 @@ sem alteração, para que o log do Actions continue legível.
 coletores: "N consultados", "N pistas novas", "N municípios"); quando não traz, fica nulo — nulo é
 "não medido", nunca zero.
 
+PRAZO DO ELO (11/10/2026, F38 do catálogo)
+--------------------------------------------
+    python3 scripts/saude_pipeline.py --prazo <epoch> --rodar coletar_x.py
+
+O teto do job do GitHub mata o job inteiro, e com ele o commit: em 04/10 e três vezes em 11/10 a
+rotina semanal de sinais coletou duas horas e meia e não gravou nada, porque o último comando da
+fila ainda rodava quando o teto chegou. Com `--prazo`, o comando que COMEÇARIA depois do prazo é
+pulado (linha `pulado`), e o que ainda roda no prazo é interrompido (SIGINT ao grupo, 60 s de
+cortesia, SIGKILL) — o job chega vivo ao commit e grava o que os outros comandos acharam. JSON
+de `data/` que a interrupção deixe ilegível volta à versão do git: dado pela metade não sobe.
+
 USO
-  python3 scripts/saude_pipeline.py --rodar <script> [args...]
+  python3 scripts/saude_pipeline.py [--prazo <epoch>] --rodar <script> [args...]
   python3 scripts/saude_pipeline.py --listar
   python3 scripts/saude_pipeline.py --autoteste
 """
 import datetime
 import json
 import pathlib
+import os
 import re
+import signal
 import subprocess
 import sys
+import time
 
 RAIZ = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(RAIZ))
@@ -123,22 +137,93 @@ def registrar(script: str, inicio: str, duracao_s: float, itens, status: str, er
     return doc
 
 
-def rodar(argv: list) -> int:
-    """Invólucro: cronometra, registra e devolve o MESMO código de saída do comando."""
+# Comando que começaria com menos de um minuto até o prazo não começa: não chegaria a fazer nada
+# útil, e a interrupção dele só custaria a cortesia de 60 s ao commit.
+MINIMO_PARA_COMECAR_S = 60
+CORTESIA_S = 60
+CODIGO_PRAZO = 124   # o mesmo do `timeout` do coreutils
+
+
+def decidir_prazo(prazo, agora: float, minimo: float = MINIMO_PARA_COMECAR_S):
+    """('pular', 0) | ('rodar', segundos ou None). Função pura."""
+    if prazo is None:
+        return "rodar", None
+    resta = float(prazo) - float(agora)
+    if resta < minimo:
+        return "pular", 0
+    return "rodar", resta
+
+
+def json_ilegiveis(caminhos, ler_texto) -> list:
+    """Os `.json` da lista que não se leem mais. Função pura: `ler_texto` é injetada."""
+    ruins = []
+    for c in caminhos:
+        if not str(c).endswith(".json"):
+            continue
+        try:
+            json.loads(ler_texto(c))
+        except (OSError, ValueError):
+            ruins.append(c)
+    return ruins
+
+
+def _restaurar_json_quebrado() -> list:
+    """Depois de uma interrupção: devolve ao git todo JSON de `data/` que ficou ilegível."""
+    try:
+        mudados = subprocess.run(["git", "diff", "--name-only", "--", "data/"], cwd=RAIZ,
+                                 capture_output=True, text=True, check=False).stdout.split()
+    except OSError:
+        return []
+    ruins = json_ilegiveis(mudados, lambda c: (RAIZ / c).read_text(encoding="utf-8"))
+    for c in ruins:
+        subprocess.run(["git", "checkout", "--", c], cwd=RAIZ, check=False)
+        print(f"[saude] {c}: ilegível depois da interrupção — volta à versão do git", flush=True)
+    return ruins
+
+
+def rodar(argv: list, prazo=None, minimo: float = MINIMO_PARA_COMECAR_S,
+          restaurar: bool = True) -> int:
+    """Invólucro: cronometra, registra e devolve o MESMO código de saída do comando.
+
+    Com `prazo` (epoch): pula o comando que começaria tarde demais e interrompe o que passa dele.
+    """
     inicio_dt = datetime.datetime.now().replace(microsecond=0)
+    decisao, resta = decidir_prazo(prazo, time.time(), minimo)
+    if decisao == "pular":
+        registrar(script=argv[0], inicio=inicio_dt.isoformat(), duracao_s=0, itens=None,
+                  status="pulado", erro="prazo do elo esgotado antes de começar")
+        print(f"[saude] {argv[0]}: pulado — prazo do elo esgotado antes de começar", flush=True)
+        return 0
     # script .py roda com o mesmo interpretador; qualquer outro comando roda como está
     comando = ([sys.executable] + argv) if argv[0].endswith(".py") else list(argv)
-    proc = subprocess.run(comando, cwd=RAIZ, capture_output=True, text=True,
-                          encoding="utf-8", errors="replace")
-    saida = (proc.stdout or "") + (proc.stderr or "")
+    proc = subprocess.Popen(comando, cwd=RAIZ, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                            text=True, encoding="utf-8", errors="replace",
+                            start_new_session=True)
+    interrompido = False
+    try:
+        saida, _ = proc.communicate(timeout=resta)
+    except subprocess.TimeoutExpired:
+        interrompido = True
+        os.killpg(proc.pid, signal.SIGINT)
+        try:
+            saida, _ = proc.communicate(timeout=CORTESIA_S)
+        except subprocess.TimeoutExpired:
+            os.killpg(proc.pid, signal.SIGKILL)
+            saida, _ = proc.communicate()
+    saida = saida or ""
     print(saida, end="" if saida.endswith("\n") else "\n")
     duracao = (datetime.datetime.now() - inicio_dt).total_seconds()
+    codigo = CODIGO_PRAZO if interrompido else proc.returncode
+    if interrompido and restaurar:
+        _restaurar_json_quebrado()
     registrar(script=argv[0], inicio=inicio_dt.isoformat(), duracao_s=duracao,
-              itens=contar_itens(saida), status="ok" if proc.returncode == 0 else "erro",
-              erro="" if proc.returncode == 0 else resumir_erro(saida))
+              itens=contar_itens(saida), status="ok" if codigo == 0 else "erro",
+              erro=("interrompido pelo prazo do elo" if interrompido
+                    else "" if codigo == 0 else resumir_erro(saida)))
     print(f"[saude] {argv[0]}: {duracao:.0f}s, status "
-          f"{'ok' if proc.returncode == 0 else 'erro'}", flush=True)
-    return proc.returncode
+          f"{'ok' if codigo == 0 else ('interrompido pelo prazo' if interrompido else 'erro')}",
+          flush=True)
+    return codigo
 
 
 def listar() -> int:
@@ -193,6 +278,37 @@ def autoteste() -> int:
                   not (ARQUIVO.exists() and json.loads(ARQUIVO.read_text(encoding="utf-8"))
                        .get("execucoes", [{}])[-1].get("script") == "x.py")))
 
+    # prazo do elo (F38)
+    casos.append(("sem prazo, roda sem teto", decidir_prazo(None, 100.0) == ("rodar", None)))
+    casos.append(("prazo distante, roda com o que resta",
+                  decidir_prazo(1000.0, 100.0) == ("rodar", 900.0)))
+    casos.append(("menos de um minuto até o prazo, pula",
+                  decidir_prazo(150.0, 100.0) == ("pular", 0)))
+    casos.append(("prazo vencido, pula", decidir_prazo(50.0, 100.0) == ("pular", 0)))
+    textos = {"data/a.json": '{"x": 1}', "data/b.json": '{"x": ', "data/c.txt": "{"}
+    casos.append(("JSON pela metade é achado; texto e JSON inteiro não",
+                  json_ilegiveis(list(textos), textos.__getitem__) == ["data/b.json"]))
+    import tempfile
+    with tempfile.TemporaryDirectory() as tmp:
+        lento = pathlib.Path(tmp) / "lento.py"
+        lento.write_text("import time\nprint('3 itens')\ntime.sleep(30)\n", encoding="utf-8", newline="\n")
+        original = globals()["registrar"]
+        linhas = []
+        globals()["registrar"] = lambda **k: linhas.append(k)
+        try:
+            t0 = time.time()
+            rc = rodar([str(lento)], prazo=time.time() + 2, minimo=0, restaurar=False)
+            dur = time.time() - t0
+            rc_pulado = rodar([str(lento)], prazo=time.time())
+        finally:
+            globals()["registrar"] = original
+        casos.append(("comando que passa do prazo é interrompido e sai com 124",
+                      rc == CODIGO_PRAZO and dur < 20))
+        casos.append(("a interrupção fica registrada como erro de prazo",
+                      linhas and linhas[0]["erro"] == "interrompido pelo prazo do elo"))
+        casos.append(("comando sem tempo para começar é pulado, não falha",
+                      rc_pulado == 0 and linhas[-1]["status"] == "pulado"))
+
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
         print(f"  {'OK  ' if ok else 'FALHA'} {n}")
@@ -214,7 +330,15 @@ def main() -> int:
         if not alvo:
             print("✗ --rodar exige o comando a rodar")
             return 1
-        return rodar(alvo)
+        prazo = None
+        antes = sys.argv[1:i]
+        if "--prazo" in antes:
+            bruto = (antes[antes.index("--prazo") + 1:] or [""])[0]
+            try:
+                prazo = float(bruto) if bruto else None
+            except ValueError:
+                print(f"[saude] --prazo ilegível ({bruto!r}); rodando sem prazo", flush=True)
+        return rodar(alvo, prazo=prazo)
     print(__doc__.strip().split("USO")[-1].strip())
     return 0
 
