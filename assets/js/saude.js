@@ -826,10 +826,11 @@ const AREAS = [
     const C = (SS || {}).calor_excesso || null;
     const r = (C || {}).resumo || null;
     if (!r) {
-      if (el('nCalorMun')) el('nCalorMun').textContent = 'sem coleta';
-      /* 11/10/2026: retrato com mais de 9 dias sai do ar (coletar_saude.vencer_calor); a fonte diz
-         desde quando não há leitura, em vez de mostrar o retrato velho como o mais recente. */
+      /* 11/10/2026: retrato com mais de 9 dias sai do ar (coletar_saude.vencer_calor); o cartão e a
+         fonte dizem desde quando não há leitura, em vez de mostrar o retrato velho como o mais recente. */
       const ult = (((SS || {}).fontes || {}).painel_calor_ms || {}).ultima_coleta_ok;
+      if (el('nCalorMun')) el('nCalorMun').textContent = ult
+        ? 'sem leitura desde ' + String(MonitorMapas.dataBR(ult) || ult).slice(0, 5) : 'sem coleta';
       if (el('fonteCalorMun')) el('fonteCalorMun').textContent = 'Painel Nacional de Excesso de Calor (Ministério da Saúde) · '
         + (ult ? 'nenhum município lido desde a coleta de ' + (MonitorMapas.dataBR(ult) || ult) : 'nenhum município lido até o corte');
       return;
