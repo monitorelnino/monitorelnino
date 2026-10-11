@@ -4,9 +4,9 @@
  "cartoes": [
   {
    "id": "dengue_casos_se",
-   "valor": 8146,
-   "referencia": "2026-33",
-   "rotulo": "notificações de dengue na semana epidemiológica 33",
+   "valor": 7013,
+   "referencia": "2026-35",
+   "rotulo": "notificações de dengue na semana epidemiológica 35",
    "fonte": "Ministério da Saúde (Sinan)",
    "sem_coleta": false,
    "nota": "notificações, não casos confirmados; as últimas semanas são parciais e sobem com as notificações atrasadas; este número não indica relação com o El Niño"
@@ -28,19 +28,19 @@
    "fonte": "InfoDengue (Fiocruz e FGV)",
    "sem_coleta": false,
    "lista": [
-    "CE",
     "PB",
-    "PE"
+    "PE",
+    "SP"
    ],
    "nota": "nível calculado pelo InfoDengue; o estado entra quando ao menos um município acompanhado está em nível 3 ou 4"
   },
   {
    "id": "calor_municipios_severo",
-   "valor": 26,
-   "referencia": "2026-09-25",
+   "valor": null,
+   "referencia": null,
    "rotulo": "municípios em nível severo ou extremo de calor",
    "fonte": "Ministério da Saúde (Painel Nacional de Excesso de Calor)",
-   "sem_coleta": false
+   "sem_coleta": true
   },
   {
    "id": "emergencias_saude_ciclo",
@@ -52,7 +52,7 @@
   },
   {
    "id": "mare_saude_indice",
-   "valor": 31.8,
+   "valor": 31.9,
    "referencia": "11/10/2026",
    "rotulo": "MARÉ Saúde",
    "unidades_verificadas": 21,

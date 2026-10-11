@@ -825,13 +825,22 @@ const AREAS = [
   fetch('data/saude_sinais.json').then(r => r.ok ? r.json() : null).then(SS => {
     const C = (SS || {}).calor_excesso || null;
     const r = (C || {}).resumo || null;
-    if (!r) { if (el('nCalorMun')) el('nCalorMun').textContent = 'sem coleta'; return; }
+    if (!r) {
+      /* 11/10/2026: retrato com mais de 9 dias sai do ar (coletar_saude.vencer_calor); o cartão e a
+         fonte dizem desde quando não há leitura, em vez de mostrar o retrato velho como o mais recente. */
+      const ult = (((SS || {}).fontes || {}).painel_calor_ms || {}).ultima_coleta_ok;
+      if (el('nCalorMun')) el('nCalorMun').textContent = ult
+        ? 'sem leitura desde ' + String(MonitorMapas.dataBR(ult) || ult).slice(0, 5) : 'sem coleta';
+      if (el('fonteCalorMun')) el('fonteCalorMun').textContent = 'Painel Nacional de Excesso de Calor (Ministério da Saúde) · '
+        + (ult ? 'nenhum município lido desde a coleta de ' + (MonitorMapas.dataBR(ult) || ult) : 'nenhum município lido até o corte');
+      return;
+    }
     const acima = Number(r.severo || 0) + Number(r.extremo || 0);
     if (el('nCalorMun')) el('nCalorMun').textContent = n(acima);
     if (el('fonteCalorMun')) {
       const lidos = C.municipios_lidos || Object.keys(C.municipios || {}).length;
       el('fonteCalorMun').textContent = 'Painel Nacional de Excesso de Calor (Ministério da Saúde) · '
-        + n(lidos) + ' município(s) lido(s)' + (C.data ? ' · consulta de ' + C.data : '');
+        + n(lidos) + ' município(s) lido(s)' + (C.data ? ' · consulta de ' + (MonitorMapas.dataBR(C.data) || C.data) : '');
     }
   }).catch(() => {});
 
@@ -1175,6 +1184,7 @@ const AREAS = [
     const leg = el('legCalorSerie');
     if (!r) {
       if (leg) leg.innerHTML = '<span class="escala">Painel de excesso de calor sem coleta até o corte.</span>';
+      if (window.MonitorMapas) MonitorMapas.credito('boxCalorSerie', {fontes: ['Painel Nacional de Excesso de Calor (Ministério da Saúde)'], data: null});
       return;
     }
     const classes = [['Normal', r.normal || 0], ['Baixo', r.baixo || 0], ['Severo', r.severo || 0],
@@ -1193,7 +1203,7 @@ const AREAS = [
     }
     if (el('linhaCalorSerie')) {
       el('linhaCalorSerie').textContent = n(C.municipios_lidos || 0) + ' município(s) lido(s)'
-        + (C.data ? ' · consulta de ' + C.data : '');
+        + (C.data ? ' · consulta de ' + (MonitorMapas.dataBR(C.data) || C.data) : '');
     }
     if (el('fraseCalor')) {
       el('fraseCalor').textContent = n((r.severo || 0) + (r.extremo || 0))
@@ -1284,7 +1294,7 @@ const AREAS = [
       const m = base && base.municipios && base.municipios[cod];
       if (!m) return '<p class="u-mb-0">Município não lido na consulta mais recente.</p>';
       const classe = m.classe || m.nivel || m;
-      return '<p class="u-mb-0">Classe ' + esc(String(classe)) + ' na consulta de ' + esc(base.data || '—') + '.</p>';
+      return '<p class="u-mb-0">Classe ' + esc(String(classe)) + ' na consulta de ' + esc(MonitorMapas.dataBR(base.data) || base.data || '—') + '.</p>';
     },
     (base, ref) => (base && base.municipios)
       ? contarMunicipios(base, ref).toLocaleString('pt-BR') + ' municípios lidos na consulta mais recente'

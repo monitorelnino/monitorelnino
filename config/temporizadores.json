@@ -123,6 +123,30 @@
    "gravidade": "alta"
   },
   {
+   "id": "saude_diaria",
+   "workflow": "noturno_saude.yml",
+   "finalidade": "camada observada de saúde (InfoDengue, painel de calor do MS, desfechos, DDA, boletins das SES), uma vez por noite",
+   "cron_primario": "50 5 * * *",
+   "janela": {
+    "inicio_utc": "01:00",
+    "fim_utc": "09:00"
+   },
+   "devido_quando": "não há execução da saúde nesta janela",
+   "tolerancia_atraso_min": 120,
+   "idempotencia": "cada coletor reescreve o instantâneo da sua fonte; rodar duas vezes dá o mesmo arquivo",
+   "orcamento_min": 60,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "saude.html",
+    "pacote do blog (saúde)"
+   ],
+   "gravidade": "alta",
+   "_nota": "11/10/2026 (F40): saiu do monólito semanal, que não coletava nada desde 08/10; saude_sinais.json estava em 26/09."
+  },
+  {
    "id": "triagem_da_fila",
    "workflow": "noturno_triagem.yml",
    "finalidade": "tria a fila de pistas antes do publicador",
