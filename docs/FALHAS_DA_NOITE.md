@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-10. 35 falhas; 29 com caso de teste que as reproduz; 6 sem, com o que falta dito.
+Atualizado em 2026-10-11. 37 falhas; 32 com caso de teste que as reproduz; 5 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -245,9 +245,9 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Noite:** 2026-10-09→2026-10-10
 - **Sintoma:** Além da triagem por disparo manual, que rodou de 01:10 a 01:35, uma segunda triagem por `workflow_run` entrou na fila e foi cancelada sem passo.
 - **Causa:** A triagem tem dois gatilhos na mesma noite (disparo do despachante e término dos sinais físicos) e nada impede a segunda; o cancelamento veio da fila do grupo.
-- **Prova:** run 38012414909 (workflow_run, cancelada); run 38012115315 (dispatch, success)
-- **Correção:** PR #627 (grupo por elo: a duplicata da triagem não cancela outro elo; a vez serializa)
-- **Caso de teste:** nenhum — falta: Nenhum caso reprova dois runs do mesmo elo na mesma noite por gatilhos diferentes; falta um ensaio em que o segundo saia sem trabalho quando o primeiro já gravou `.feito`.
+- **Prova:** run 38012414909 (workflow_run, cancelada); run 38012115315 (dispatch, success); noite 10→11: runs 38100940441 (despachante, 01:10) e 38101135888 (workflow_run, 01:13), ambos em `triagem / vez`
+- **Correção:** PR #627 (grupo por elo: a duplicata da triagem não cancela outro elo; a vez serializa); 11/10: `nao_antes_do_cron` no temporizador da triagem — o despachante não a dispara antes das 08:30, e na abertura só a corrente a chama
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_triagem_uma_vez_na_abertura`
 
 ## F28 · Portões vermelhos no push às 01:12 e 01:14
 
@@ -320,3 +320,21 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** run 38058307837 (sinais, 14:06, startup_failure); run 38073694723 (sinais no ensaio real)
 - **Correção:** `actions: read` em `noturno_sinais.yml`, `semanal_espin_e_links.yml` e `semanal_sinais_e_links.yml`
 - **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_chamador_do_coletor_concede_o_que_ele_pede`
+
+## F36 · Checagem pré-noite atrasada julga a noite seguinte
+
+- **Noite:** 2026-10-11
+- **Sintoma:** Cron 22:53/23:43 chegou às 01:20 e 02:10 (≈2h27 de atraso) e a checagem saiu vermelha julgando a noite de 12/10, com o ensaio real verde das 21:44 de 10/10 tido como "não é de hoje".
+- **Causa:** `noite_seguinte` só tratava hora < 1 como a noite corrente, e o ensaio "do dia" era comparado com a data do relógio, não com a véspera da noite.
+- **Prova:** runs 38101488701, 38104258410 (vermelhos); run 38092479085 (22:43, dispatch, verde)
+- **Correção:** Dentro da janela (01:00–09:00) a checagem está atrasada: sai verde sem veredito, com o motivo; a noite é a corrente até 09:00; o ensaio vale se é da véspera da noite.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_checagem_pre_noite_nao_e_cega`
+
+## F37 · Checagem pré-noite cega: fila "vazia" com seis elos rodando
+
+- **Noite:** 2026-10-11
+- **Sintoma:** Às 02:11 a pergunta 3 afirmou "fila de runs vazia — nenhum run aberto" com diários, duas triagens, busca web e dois semanais em curso.
+- **Causa:** `gh run list --json workflowName,status,path` — `path` não é campo do `gh run list`; `_gh_json` devolvia None calado e quem chamava fazia `or []`.
+- **Prova:** run 38104258410 vs. runs 38100911938, 38100940441, 38101135888 `in_progress`
+- **Correção:** Runs abertos pela API REST (`/actions/runs?status=…`, que traz `path`); erro do `gh` anotado e virando a pergunta vermelha "as consultas ao GitHub responderam".
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_checagem_pre_noite_nao_e_cega`

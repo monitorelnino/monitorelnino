@@ -380,7 +380,7 @@
     "noite 10→11: runs 38100940441 (despachante, 01:10) e 38101135888 (workflow_run, 01:13), ambos em `triagem / vez`"
    ],
    "correcao": "PR #627 (grupo por elo: a duplicata da triagem não cancela outro elo; a vez serializa); 11/10: `nao_antes_do_cron` no temporizador da triagem — o despachante não a dispara antes das 08:30, e na abertura só a corrente a chama",
-   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_triagem_uma_vez_na_abertura; scripts/despachar_temporizadores.py --autoteste (F27)",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_triagem_uma_vez_na_abertura",
    "falta": null
   },
   {
@@ -505,7 +505,7 @@
     "run 38092479085 (22:43, dispatch, verde)"
    ],
    "correcao": "Dentro da janela (01:00–09:00) a checagem está atrasada: sai verde sem veredito, com o motivo; a noite é a corrente até 09:00; o ensaio vale se é da véspera da noite.",
-   "caso_de_teste": "scripts/checagem_pre_noite.py --autoteste (F36); scripts/ensaio_da_noite.py::ensaio_checagem_pre_noite_nao_e_cega",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_checagem_pre_noite_nao_e_cega",
    "falta": null
   },
   {
@@ -518,7 +518,7 @@
     "run 38104258410 vs. runs 38100911938, 38100940441, 38101135888 `in_progress`"
    ],
    "correcao": "Runs abertos pela API REST (`/actions/runs?status=…`, que traz `path`); erro do `gh` anotado e virando a pergunta vermelha \"as consultas ao GitHub responderam\".",
-   "caso_de_teste": "scripts/checagem_pre_noite.py --autoteste (F37, com a resposta real da API e o erro real do gh); scripts/ensaio_da_noite.py::ensaio_checagem_pre_noite_nao_e_cega",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_checagem_pre_noite_nao_e_cega",
    "falta": null
   }
  ]
