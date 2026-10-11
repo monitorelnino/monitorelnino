@@ -488,9 +488,22 @@ try:
               and e.get("decisao") not in _DEC_DOM]
     if _ruins: erro(f"log DOM com decisão fora do conjunto do canal ({', '.join(_DEC_DOM)}) em {len(_ruins)} execução(ões) desde 06/09 — ex.: {_ruins[0].get('decisao')!r} {str(_ruins[0].get('resultados'))[:60]!r}")
     # 'nada localizado' municipal exige cobertura confirmada (cobertura_qd = true) ou bateria completa (§4.1.2)
+    # 11/10/2026 (A3-15 do relatório D): a checagem lia `nivel_verificacao == "municipal_completo"`,
+    # `cobertura_qd` e `bateria_completa` do registro — campos que o arquivo não tem desde a
+    # reestruturação (níveis hoje: nacional, estadual, municipal; cobertura em cobertura_qd.json).
+    # Nunca disparava. Agora lê o esquema em vigor: vocabulário fechado, e negativa municipal
+    # ("não localizado") só com diário indexado no Querido Diário.
     _vm = _j0.load(open(RAIZ / "data" / "verificacao_municipal.json", encoding="utf-8"))
-    _nl = [r for r in _vm if r.get("nivel_verificacao") == "municipal_completo" and r.get("cobertura_qd") is False and not r.get("bateria_completa")]
-    if _nl: erro(f"{len(_nl)} município(s) 'municipal_completo' com diário não indexado e sem bateria completa — 'nada localizado' proibido sem cobertura (§1.6)")
+    _cqd = (_j0.load(open(RAIZ / "data" / "cobertura_qd.json", encoding="utf-8")).get("municipios") or {})
+    _NIVEIS = ("nacional", "estadual", "municipal")
+    _ACHADOS = (None, "decreto", "plano", "coberto_estadual", "plano_antigo", "nao_el_nino", "estrutura")
+    _NEGATIVAS = ("nao_localizado", "nada_localizado")
+    _fora = [r.get("ibge") for r in _vm if r.get("nivel_verificacao") not in _NIVEIS
+             or (r.get("plano_localizado") not in _ACHADOS and r.get("plano_localizado") not in _NEGATIVAS)]
+    if _fora: erro(f"{len(_fora)} registro(s) de verificacao_municipal com nível ou achado fora do vocabulário — ex.: {_fora[:3]}")
+    _nl = [r for r in _vm if r.get("plano_localizado") in _NEGATIVAS
+           and not (_cqd.get(str(r.get("ibge"))) or {}).get("cobertura_qd")]
+    if _nl: erro(f"{len(_nl)} município(s) com 'não localizado' e diário não indexado — 'nada localizado' proibido sem cobertura (§1.6)")
     # execuções em sítio estadual/municipal depois do detector devem ter fonte_suspensa_defeso preenchido (bool), nunca null
     _sem = [e for e in _lg.get("execucoes", []) if e.get("canal") in ("site_municipal", "orgao_estadual", "imprensa_oficial") and (e.get("data") or "") >= "2026-09-07" and not isinstance(e.get("fonte_suspensa_defeso"), bool)]
     if _sem: erro(f"{len(_sem)} execução(ões) de sítio público sem fonte_suspensa_defeso booleano desde 06/09 (§1.6)")
