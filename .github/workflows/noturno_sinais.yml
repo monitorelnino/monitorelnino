@@ -71,6 +71,11 @@ jobs:
         # Avisos do INMET, focos do INPE, seca, ONI/RONI e anomalia — tudo o que o Monitor de riscos
         # desenha. Sem `--municipios`: esse recorte é do clima municipal, que fica no atualizar.yml.
         coletar_sinais_risco.py
+        # 11/10/2026 (F38): transferências da União a municípios, do download de dados abertos do
+        # Portal da Transparência. Saiu da rotina semanal de sinais, que estourou o teto quatro vezes
+        # seguidas sem commitar — e o arquivo envelheceu além dos 9 dias do portão de frescor do
+        # Financiamento. Aqui custa ~1 min por noite; reler um mês é idempotente.
+        coletar_transferencias_municipais.py --ano 2026
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       # 08/10/2026 (A2-28): sem o `ROBO_TOKEN`, o tique oportunista roda com o
