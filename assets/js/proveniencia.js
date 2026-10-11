@@ -217,7 +217,7 @@ function renderTable(){
      `if` que nunca é verdadeiro. A página arquivada de Pesquisadores tem o próprio script. */
   { const fm = document.getElementById('fontesMonit'); if (fm) fm.innerHTML = (TRANSFERENCIAS.fontes_monitoramento || []).map(f => '<li><a href="' + esc(f.url) + '" target="_blank" rel="noopener">' + esc(String(f.nome || '').replace(/ — /g, ' · ')) + '</a></li>').join(''); }
   { const cons = (CONSULTAS && CONSULTAS.consultas) || []; if (document.querySelector('#tblConsultas tbody')) {
-  if (cons.length) { (document.getElementById('notaConsultas')||{}).textContent = cons.length + ' consulta(s) registrada(s).'; document.querySelector('#tblConsultas tbody').innerHTML = cons.slice(-50).map(c => '<tr><td>' + esc(c.endpoint) + '</td><td>' + esc(JSON.stringify(c.parametros)) + '</td><td>' + esc(c.data) + '</td><td>' + c.itens + '</td><td><code>' + esc(String(c.hash_resposta).slice(0,12)) + '…</code></td></tr>').join(''); }
+  if (cons.length) { (document.getElementById('notaConsultas')||{}).textContent = cons.length + (cons.length === 1 ? ' consulta registrada.' : ' consultas registradas.'); document.querySelector('#tblConsultas tbody').innerHTML = cons.slice(-50).map(c => '<tr><td>' + esc(c.endpoint) + '</td><td>' + esc(JSON.stringify(c.parametros)) + '</td><td>' + esc(c.data) + '</td><td>' + c.itens + '</td><td><code>' + esc(String(c.hash_resposta).slice(0,12)) + '…</code></td></tr>').join(''); }
   }
   MonitorMapas.credito('boxConsultas', {fontes: ['MARÉ', 'consultas registradas'], data: cons.length ? (META.atualizado_em || META.corte) : null}); }
   MonitorMapas.credito('boxFontesMonit', {fontes: 'as listadas', data: '25/08/2026'});
@@ -240,7 +240,7 @@ function renderTable(){
   fetch('data/verificacao_resumo.json').then(r => r.ok ? r.json() : null).then(v => { if (!(v && v.por_uf) || !document.querySelector('#tblLog tbody')) return;
     document.querySelector('#tblLog tbody').innerHTML = Object.keys(v.por_uf).sort().map(uf => { const n = v.por_uf[uf]; return '<tr><td><strong>' + esc(uf) + '</strong></td><td>' + (n.nacional || 0) + '</td><td>' + (n.estadual || 0) + '</td><td>' + (n.municipal_parcial || 0) + '</td><td>' + (n.municipal_completo || 0) + '</td><td>' + (n.nao_verificado || 0) + '</td></tr>'; }).join(''); });
   fetch('data/cobertura_qd.json').then(r => r.ok ? r.json() : null).then(c => { const m = (c && c.municipios) || {}; const t = Object.values(m); if (!el('pqCobertura')) return; el('pqCobertura').textContent = t.length ? t.filter(x => x.cobertura_qd === true).length + ' indexados · ' + t.filter(x => x.cobertura_qd === false).length + ' não indexados · ' + (5571 - t.length) + ' ainda não testados' : 'ainda não testada (a rotina preenche a partir da próxima rodada)'; });
-  fetch('data/calendario/fontes_suspensas.json').then(r => r.ok ? r.json() : null).then(f => { const n = f ? Object.values(f.fontes || {}).filter(x => x.suspensa).length : 0; if (!el('pqSuspensas')) return; el('pqSuspensas').textContent = n + ' fonte(s) suspensa(s) detectada(s)'; });
+  fetch('data/calendario/fontes_suspensas.json').then(r => r.ok ? r.json() : null).then(f => { const n = f ? Object.values(f.fontes || {}).filter(x => x.suspensa).length : 0; if (!el('pqSuspensas')) return; el('pqSuspensas').textContent = n + (n === 1 ? ' fonte suspensa detectada' : ' fontes suspensas detectadas'); });
   // 13/09/2026 (proposta de enxugamento, Manus AI): detalhamento completo das MPs — fetch próprio
   // de BR_GEOJSON (mapa geográfico) e MPS, independente de financiamento.js.
   try {

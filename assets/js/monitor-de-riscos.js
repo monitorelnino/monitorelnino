@@ -590,7 +590,7 @@ credito('boxAr', 'open_meteo_ar', 'openaq');
   const el = document.getElementById('linhaAlertas');
   if(!el || !ALERTAS || !ALERTAS.resumo) return;
   const r = ALERTAS.resumo;
-  el.innerHTML = r.municipios_inmet + ' município(s) sob aviso do INMET e ' + r.municipios_cemaden
+  el.innerHTML = r.municipios_inmet + (Number(r.municipios_inmet) === 1 ? ' município' : ' municípios') + ' sob aviso do INMET e ' + r.municipios_cemaden
     + ' sob alerta do CEMADEN, em ' + esc(MonitorMapas.dataBR(ALERTAS.gerado_em) || '')
     + ' · <a href="defesa-civil.html#alertas">Defesa civil</a>';
 })();
