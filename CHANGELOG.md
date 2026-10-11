@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-11 · #PR · Saúde: boletim sem sinal deixa de virar risco de chuvas (A5-16)
+
+ES e RJ, com "Sem sinal elevado no trimestre" no boletim, apareciam no mapa de risco previsto da Saúde com a família de chuvas (leptospirose, diarreias, hepatite A). A derivação caía em "chuvas" quando não achava sinal. Agora, sem sinal de seca nem de chuva, a lista fica vazia e o mapa diz "sem risco previsto registrado". Onde: `coletar_saude.py`, `data/saude_uf.json`.
+
 ## 2026-10-11 · #PR · cadências declaradas dos coletores que mudaram de rotina
 
 Doze scripts rodavam sem cadência declarada, e três estavam declarados na rotina errada depois do F38 e do F40: transferências (agora diária, nos sinais), SINAN e óbitos (agora diários, no elo da saúde). Entram as linhas do `noturno_saude` e de três etapas da triagem e do juiz; sem cadência não há certificação. Onde: `docs/CADENCIAS.md`.
