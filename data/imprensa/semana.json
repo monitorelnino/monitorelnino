@@ -1,9 +1,9 @@
 {
  "_governanca": "Cartões 'Esta semana em números' da página Imprensa. Peso ZERO nos índices. 02/10/2026 (handover do redesenho): a Imprensa NÃO recalcula número que outra página publica — ela lê o instantâneo do topo de cada página (Financiamento, MARÉ Saúde, Defesa civil, Monitor de riscos), e cada cartão declara a sua `pagina_de_origem`. Zero só quando a coleta rodou; sem coleta é `sem_coleta: true`, o cartão SAI da grade e o rótulo entra na linha 'Sem dado nesta edição'. Derivado de gerar_imprensa_semana.py — não se edita à mão.",
- "gerado_em": "2026-10-10",
+ "gerado_em": "2026-10-11",
  "janela_dias": 7,
  "indices": {
-  "edicao": "10/10/2026",
+  "edicao": "11/10/2026",
   "mare_legal": 40.1,
   "mare_saude": 31.8,
   "saude_verificadas": 21,
@@ -17,8 +17,8 @@
    "valor": 0,
    "sem_coleta": false,
    "periodo": {
-    "ini": "2026-10-03",
-    "fim": "2026-10-10"
+    "ini": "2026-10-04",
+    "fim": "2026-10-11"
    },
    "fonte": "Diários oficiais municipais e sítios das prefeituras (via MARÉ)",
    "url_fonte": null,
@@ -174,14 +174,14 @@
    "id": "municipios_alerta_cemaden",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob alerta do Cemaden",
-   "valor": 42,
+   "valor": 7,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "09/10/2026 22:13",
+   "referencia": "10/10/2026 22:13",
    "fonte": "Cemaden",
    "url_fonte": "https://www.gov.br/cemaden/pt-br",
-   "consultado_em": "09/10/2026 22:13",
+   "consultado_em": "10/10/2026 22:13",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -194,14 +194,14 @@
    "id": "municipios_aviso_inmet",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob aviso do Inmet",
-   "valor": 3916,
+   "valor": 4368,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "09/10/2026 22:13",
+   "referencia": "10/10/2026 22:13",
    "fonte": "Inmet",
    "url_fonte": "https://portal.inmet.gov.br/",
-   "consultado_em": "09/10/2026 22:13",
+   "consultado_em": "10/10/2026 22:13",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -214,14 +214,14 @@
    "id": "decreto_e_alerta_ao_mesmo_tempo",
    "grupo": "risco_agora",
    "rotulo": "Municípios com decreto de emergência e alerta ao mesmo tempo",
-   "valor": 755,
+   "valor": 706,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "09/10/2026 22:13",
+   "referencia": "10/10/2026 22:13",
    "fonte": "MARÉ (cruzamento das duas consultas)",
    "url_fonte": null,
-   "consultado_em": "09/10/2026 22:13",
+   "consultado_em": "10/10/2026 22:13",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -234,113 +234,61 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 57608,
+   "valor": 426,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
    "url_fonte": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
-   "consultado_em": "09/10/2026",
+   "consultado_em": "10/10/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "Focos do dia — focos_diario_br_20261009.csv",
+   "nota": "Focos do dia — focos_diario_br_20261011.csv",
    "secundaria": null,
    "lista": [
     {
      "uf": "PA",
-     "valor": 20212
+     "valor": 217
     },
     {
      "uf": "AM",
-     "valor": 8799
-    },
-    {
-     "uf": "BA",
-     "valor": 7221
-    },
-    {
-     "uf": "PI",
-     "valor": 4437
-    },
-    {
-     "uf": "TO",
-     "valor": 3869
+     "valor": 54
     },
     {
      "uf": "MA",
-     "valor": 3727
+     "valor": 48
     },
     {
-     "uf": "MG",
-     "valor": 2843
+     "uf": "BA",
+     "valor": 41
     },
     {
      "uf": "MT",
-     "valor": 2533
-    },
-    {
-     "uf": "GO",
-     "valor": 1130
+     "valor": 34
     },
     {
      "uf": "RR",
-     "valor": 630
-    },
-    {
-     "uf": "AP",
-     "valor": 533
-    },
-    {
-     "uf": "RO",
-     "valor": 432
-    },
-    {
-     "uf": "CE",
-     "valor": 397
-    },
-    {
-     "uf": "AC",
-     "valor": 292
-    },
-    {
-     "uf": "PE",
-     "valor": 145
-    },
-    {
-     "uf": "DF",
-     "valor": 113
-    },
-    {
-     "uf": "RN",
-     "valor": 86
-    },
-    {
-     "uf": "PB",
-     "valor": 65
-    },
-    {
-     "uf": "ES",
-     "valor": 57
-    },
-    {
-     "uf": "SP",
-     "valor": 31
-    },
-    {
-     "uf": "AL",
      "valor": 24
     },
     {
-     "uf": "MS",
-     "valor": 18
-    },
-    {
-     "uf": "SE",
-     "valor": 11
-    },
-    {
-     "uf": "RJ",
+     "uf": "PI",
      "valor": 3
+    },
+    {
+     "uf": "PB",
+     "valor": 2
+    },
+    {
+     "uf": "CE",
+     "valor": 1
+    },
+    {
+     "uf": "GO",
+     "valor": 1
+    },
+    {
+     "uf": "MG",
+     "valor": 1
     }
    ],
    "pagina_de_origem": null,
@@ -351,18 +299,18 @@
    "id": "temperatura_desvio_capital",
    "grupo": "risco_agora",
    "rotulo": "A maior diferença de temperatura máxima em relação ao normal, em grau Celsius",
-   "valor": 6.5,
+   "valor": 6.3,
    "unidade": "°C",
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "09/10/2026",
+   "referencia": "10/10/2026",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "url_fonte": null,
-   "consultado_em": "09/10/2026",
+   "consultado_em": "10/10/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "máxima prevista de 33.0 °C contra a média de 26.5 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 35.0 °C contra a média de 28.7 °C do mês; 24 capital(is) com normal publicada",
    "secundaria": null,
    "lista": [],
    "pagina_de_origem": "monitor-de-riscos.html"
@@ -371,7 +319,7 @@
    "id": "capitais_ar_ruim_ou_pior",
    "grupo": "risco_agora",
    "rotulo": "Capitais com o ar na faixa ruim ou acima dela",
-   "valor": 17,
+   "valor": 16,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
@@ -386,6 +334,7 @@
    "secundaria": null,
    "lista": [
     "AC",
+    "AL",
     "AM",
     "BA",
     "DF",
@@ -393,13 +342,11 @@
     "MG",
     "MS",
     "MT",
-    "PA",
     "PI",
-    "PR",
     "RJ",
     "RO",
-    "RS",
     "SC",
+    "SE",
     "SP",
     "TO"
    ],
@@ -555,5 +502,5 @@
    "por_que_nao": "depende do campo `escopo` em data/calendario/fontes_suspensas.json, que hoje é nulo nos 38 registros (bloco E do pedido de 27/09, não executado)."
   }
  ],
- "texto_pronto": "Edição de 10/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,1 de 100; o MARÉ Saúde, em 31,8 de 100, média dos 21 estados verificados. Na semana, nenhum município publicou plano para o ciclo e 25 municípios decretaram situação de emergência ou calamidade; 959.766 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde o início do ciclo, em 29 de junho, 6 de 27 capitais têm plano localizado e 861 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação da Futura Evidence Lab."
+ "texto_pronto": "Edição de 11/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,1 de 100; o MARÉ Saúde, em 31,8 de 100, média dos 21 estados verificados. Na semana, nenhum município publicou plano para o ciclo e 25 municípios decretaram situação de emergência ou calamidade; 959.766 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde o início do ciclo, em 29 de junho, 6 de 27 capitais têm plano localizado e 861 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação da Futura Evidence Lab."
 }

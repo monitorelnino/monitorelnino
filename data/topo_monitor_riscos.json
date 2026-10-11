@@ -4,24 +4,25 @@
  "cartoes": [
   {
    "id": "temperatura_desvio_capital",
-   "valor": 6.5,
-   "referencia": "09/10/2026",
-   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em São Paulo",
-   "capital": "São Paulo",
-   "uf": "SP",
+   "valor": 6.3,
+   "referencia": "10/10/2026",
+   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Belo Horizonte",
+   "capital": "Belo Horizonte",
+   "uf": "MG",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "sem_coleta": false,
-   "nota": "máxima prevista de 33.0 °C contra a média de 26.5 °C do mês; 24 capital(is) com normal publicada"
+   "nota": "máxima prevista de 35.0 °C contra a média de 28.7 °C do mês; 24 capital(is) com normal publicada"
   },
   {
    "id": "capitais_ar_ruim_ou_pior",
-   "valor": 17,
+   "valor": 16,
    "referencia": "leitura mais recente",
    "rotulo": "capitais com o ar na faixa ruim ou acima dela",
    "fonte": "Copernicus (CAMS), via Open-Meteo",
    "sem_coleta": false,
    "lista": [
     "AC",
+    "AL",
     "AM",
     "BA",
     "DF",
@@ -29,13 +30,11 @@
     "MG",
     "MS",
     "MT",
-    "PA",
     "PI",
-    "PR",
     "RJ",
     "RO",
-    "RS",
     "SC",
+    "SE",
     "SP",
     "TO"
    ],

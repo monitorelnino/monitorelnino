@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-03 a 2026-10-10 (592 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-03 a 2026-10-10 (594 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -20,7 +20,7 @@ Janela: 2026-10-03 a 2026-10-10 (592 execução(ões) registrada(s), 7 dias de h
 
 | script | papel | última execução | duração | itens | status | erro |
 |---|---|---|---|---:|---|---|
-| `recalcular_mare.py` | essencial | 2026-10-10 01:12 | 4 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-10 01:18 | 3 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-09 02:31 | 1 s | — | ok | — |
 | `coletar_diarios_consorciados.py` | coletor | 2026-10-10 07:28 | 4019 s | 38 | ok | — |
 | `coletar_diarios_municipais.py` | coletor | 2026-10-10 07:27 | 47 s | 50 | ok | — |
@@ -28,7 +28,7 @@ Janela: 2026-10-03 a 2026-10-10 (592 execução(ões) registrada(s), 7 dias de h
 | `coletar_recursos_resposta.py` | coletor | 2026-10-10 09:07 | 158 s | — | ok | — |
 | `coletar_s2id.py` | coletor | 2026-10-10 08:49 | 1105 s | — | ok | — |
 | `coletar_sg_esus.py` | coletor | 2026-10-04 14:20 | 9 s | — | ok | — |
-| `coletar_sinais_risco.py` | coletor | 2026-10-09 01:11 | 106 s | — | ok | — |
+| `coletar_sinais_risco.py` | coletor | 2026-10-10 01:12 | 69 s | — | ok | — |
 | `coletar_srag_sivep.py` | coletor | 2026-10-04 14:19 | 40 s | — | ok | — |
 | `consultar_querido_diario.py` | coletor | 2026-10-10 07:01 | 1283 s | 12 | ok | — |
 | `descobrir_planos.py` | coletor | 2026-10-09 08:27 | 1059 s | 42 | ok | — |
