@@ -66,9 +66,9 @@ setTimeout(() => {
      transferências gerais ("Quanto chegou a cada estado", "A sua cidade"), a grade dos 27 quadros e
      a seção "Dois casos" separada — os dois casos viraram cartões dentro do bloco recolhido dos
      caminhos. Quem define a ordem é layout/contratos/financiamento.json. */
-  teste("ordem da página: números, dinheiro do ciclo, defesa civil, gasto próprio, caminhos",
+  teste("ordem da página: números, dinheiro do ciclo, defesa civil, gasto próprio, saúde (FNS), caminhos",
     JSON.stringify(secoes.slice(1)) === JSON.stringify(["dinheiroElNino", "defesaCivil",
-                                                        "gastoProprio", "caminhosSecao"]));
+                                                        "gastoProprio", "saudeFNS", "caminhosSecao"]));
   teste("saíram da página: transferências gerais, a grade dos 27 e a seção de casos",
     !q("porEstado") && !q("suaCidade") && !q("regionsFin") && !q("casos")
     && !q("boxTransfUF") && !q("boxListaEstadosFin") && !q("mapaMPsUF") && !q("boxRotaMPs"));
@@ -194,7 +194,8 @@ setTimeout(() => {
   // A contagem vem do contrato: nove cartões de mapa, três por seção nas três seções de
   // figura, mais o diagrama dos caminhos no bloco recolhido. Quem define é
   // layout/contratos/financiamento.json.
-  teste(`nove figuras no cartão de mapa padrão (${cartoes.length})`, cartoes.length === 9);
+  // 11/10/2026 (HANDOVER_FINANCIAMENTO_SAUDE): +2 da seção do FNS (mapa por UF e "como ler").
+  teste(`onze figuras no cartão de mapa padrão (${cartoes.length})`, cartoes.length === 11);
   teste("todo cartão de mapa tem faixa de família e sobretítulo do componente",
     cartoes.every(c => c.querySelector(".cartao-mapa-familia") && c.querySelector(".cartao-mapa-boletim")));
   teste("toda figura tem crédito de fonte",
