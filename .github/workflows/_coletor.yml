@@ -126,6 +126,11 @@ jobs:
       group: ${{ inputs.grupo_de_concorrencia == 'noturno' && format('noturno-{0}', inputs.nome) || (inputs.grupo_de_concorrencia != '' && inputs.grupo_de_concorrencia || format('coletor-{0}', inputs.nome)) }}
       cancel-in-progress: false
     steps:
+      # 11/10/2026 (F38): o relógio do job começa aqui. O prazo da coleta é contado dele, e não do
+      # início do passo Coletar, porque o teto do GitHub também é contado do início do job.
+      - name: Marcar o início do job
+        run: echo "JOB_INICIO_EPOCH=$(date -u +%s)" >> "$GITHUB_ENV"
+
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with: { persist-credentials: false }
 
@@ -258,10 +263,24 @@ jobs:
             python3 scripts/elo_de_ensaio.py --elo "${{ inputs.nome }}" --ramo "${RAMO}"
             exit 0
           fi
+          # 11/10/2026 (F38): PRAZO DA COLETA. O teto do job mata tudo, inclusive o commit: a rotina
+          # semanal de sinais coletou 2h28 três vezes em 11/10 (e uma em 04/10) e não gravou nada,
+          # porque o último comando ainda rodava no teto. A coleta tem prazo = teto do job menos a
+          # margem dos passos que vêm depois (derivados, painéis, commit); comando que começaria
+          # depois do prazo é pulado, e o que passa dele é interrompido pelo invólucro.
+          TETO=${{ inputs.timeout_minutos }}
+          MARGEM=15
+          if [ "$TETO" -lt 60 ]; then MARGEM=$(( TETO / 4 )); [ "$MARGEM" -lt 5 ] && MARGEM=5; fi
+          PRAZO=$(( ${JOB_INICIO_EPOCH:-$(date -u +%s)} + (TETO - MARGEM) * 60 ))
+          echo "prazo da coleta: $(date -u -d "@$PRAZO" +%H:%M) UTC (teto ${TETO} min, margem ${MARGEM} min)"
           while IFS= read -r cmd; do
-            [ -z "$(echo "$cmd" | tr -d '[:space:]')" ] && continue
-            echo "::group::$cmd"
-            python3 scripts/saude_pipeline.py --rodar $cmd || true
+            # Linha só de espaço e linha de comentário não são comando (F39: em 11/10 cada
+            # comentário da fila virava `saude_pipeline.py --rodar '#' ...` e um traceback no log).
+            linha="${cmd#"${cmd%%[![:space:]]*}"}"
+            [ -z "$linha" ] && continue
+            case "$linha" in "#"*) continue ;; esac
+            echo "::group::$linha"
+            python3 scripts/saude_pipeline.py --prazo "$PRAZO" --rodar $linha || true
             echo "::endgroup::"
           done <<'COMANDOS'
           ${{ inputs.comandos }}
@@ -273,8 +292,10 @@ jobs:
       # um elo cancelado antes de coletar não trabalhou, e tem de ser refeito. Medido na noite de
       # 04→05/10: `diarios / coletar` foi cancelado dois minutos depois de começar, a guarda contou
       # aquele run como abertura da noite, e ninguém refez a coleta perdida.
+      # Em `coleta-dia/*` não há noite: marcador ali chegaria à `main` pelo PR e diria à reserva
+      # que um elo da noite já trabalhou.
       - name: Marcar que este elo trabalhou
-        if: steps.janela.outputs.pode == '1'
+        if: steps.janela.outputs.pode == '1' && !startsWith(env.RAMO, 'coleta-dia/')
         id: feito
         run: |
           NOITE="$(python3 scripts/janela_da_noite.py --noite)"
@@ -319,6 +340,7 @@ jobs:
       # O painel da NOITE é outro: ele não resume os comandos, resume os ELOS — um por noite, com
       # início, fim e "terminou dentro da janela". `inputs.nome` é o nome do elo.
       - name: Registrar o elo no painel da noite
+        if: ${{ !startsWith(env.RAMO, 'coleta-dia/') }}
         continue-on-error: true
         timeout-minutes: 2
         env:
@@ -353,8 +375,11 @@ jobs:
           # janela não barra fora da `main` (é lá que o ensaio roda). Fora da `main`, nada se
           # empurra: a coleta fica no runner e o marcador no artefato.
           # Item 2-bis.2: o ensaio real empurra para o PRÓPRIO ramo `ensaio-real/...`, nunca para a `main`.
-          if [ "${RAMO}" != "main" ] && [[ "${RAMO}" != ensaio-real/* ]]; then
-            echo "ramo ${RAMO}: nada é empurrado (só a main e os ramos ensaio-real/ recebem o commit do elo)"
+          # 11/10/2026 (F38): `coleta-dia/*` também recebe o próprio commit. É a válvula de
+          # recuperação de dia: o elo roda no ramo de um PR, empurra para ESSE ramo, e o dado só
+          # chega à `main` pelo PR, com portões — nunca commit automático na `main` de dia.
+          if [ "${RAMO}" != "main" ] && [[ "${RAMO}" != ensaio-real/* ]] && [[ "${RAMO}" != coleta-dia/* ]]; then
+            echo "ramo ${RAMO}: nada é empurrado (só a main e os ramos ensaio-real/ e coleta-dia/ recebem o commit do elo)"
             echo "houve=0" >> "$GITHUB_OUTPUT"; exit 0
           fi
           # 29/09/2026: `evidencias/` ENTRA no commit. Sem ela, todo coletor que chama

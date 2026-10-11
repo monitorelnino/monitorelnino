@@ -756,6 +756,52 @@ def ensaio_chamador_do_coletor_concede_o_que_ele_pede(diz) -> bool:
     return True
 
 
+def ensaio_fila_longa_ainda_commita(diz) -> bool:
+    """18. Fila que passa do teto ainda chega ao commit; comentário não é comando.
+
+    11/10/2026 (F38 e F39 do catálogo): a rotina semanal de sinais estourou o teto de 150 min
+    quatro vezes seguidas (runs 37205422226, 38100963895, 38109274967, 38118915381) e não
+    commitou nada — o arquivo de transferências ficou com 10 dias e a `main` vermelha. E cada linha
+    de comentário da fila virava `saude_pipeline.py --rodar '#'`. Reprova se o passo Coletar não
+    passar o prazo ao invólucro, se o prazo não for contado do início do job, ou se o laço, rodado
+    de verdade no bash, tratar comentário como comando.
+    """
+    import pathlib
+    import re as _re
+    import subprocess as _sp
+
+    raiz = pathlib.Path(__file__).resolve().parents[1]
+    fonte = (raiz / ".github/workflows/_coletor.yml").read_text(encoding="utf-8")
+    ok = True
+    if 'JOB_INICIO_EPOCH=$(date -u +%s)" >> "$GITHUB_ENV"' not in fonte:
+        diz("   ✗ o início do job não é marcado — o prazo não teria de onde contar")
+        ok = False
+    if '--prazo "$PRAZO" --rodar' not in fonte:
+        diz("   ✗ o passo Coletar não passa o prazo ao invólucro")
+        ok = False
+    m = _re.search(r"(          while IFS= read -r cmd; do\n.*?\n          done) <<'COMANDOS'", fonte, _re.S)
+    if not m:
+        diz("   ✗ laço de comandos do coletor não encontrado")
+        return False
+    laco = "\n".join(l[10:] for l in m.group(1).splitlines()).replace(
+        "python3 scripts/saude_pipeline.py", "echo RODOU")
+    script = ("PRAZO=0\n" + laco + " <<'COMANDOS'\n"
+              "  # comentário da fila\n\n  coletar_a.py --x 1\n#outro\n  coletar_b.py\nCOMANDOS\n")
+    saida = _sp.run(["bash", "-e", "-o", "pipefail", "-c", script], capture_output=True, text=True)
+    rodou = [l for l in saida.stdout.splitlines() if l.startswith("RODOU")]
+    if rodou != ['RODOU --prazo 0 --rodar coletar_a.py --x 1', 'RODOU --prazo 0 --rodar coletar_b.py']:
+        diz(f"   ✗ o laço rodou {rodou!r} (esperado: só os dois comandos, sem comentário)")
+        ok = False
+    sys.path.insert(0, str(raiz / "scripts"))
+    import saude_pipeline as _sp_mod
+    if _sp_mod.decidir_prazo(100.0, 90.0)[0] != "pular":
+        diz("   ✗ comando que começaria sem tempo não é pulado")
+        ok = False
+    if ok:
+        diz("   ✓ a coleta tem prazo contado do início do job, e só comando de verdade roda")
+    return ok
+
+
 ENSAIOS = (
     ("dois elos em paralelo: zero conflito, zero perda", ensaio_dois_elos_em_paralelo),
     ("disparo duplicado: o segundo sai sem trabalho", ensaio_disparo_duplicado),
@@ -781,6 +827,7 @@ ENSAIOS = (
     ("15. toda `env.` lida pelo coletor é exportada antes", ensaio_env_usada_e_exportada),
     ("16. elo fora da `main` não empurra para a `main`", ensaio_fora_da_main_nao_empurra),
     ("17. chamador do coletor concede o que ele pede", ensaio_chamador_do_coletor_concede_o_que_ele_pede),
+    ("18. fila longa ainda commita; comentário não é comando", ensaio_fila_longa_ainda_commita),
 )
 
 

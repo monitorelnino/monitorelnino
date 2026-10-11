@@ -1,6 +1,6 @@
 {
  "_governanca": "Catálogo interno das falhas da corrente noturna de 04/10 a 10/10/2026, montado das notas do robo-registro e dos comentários datados do código; toda falha nova vira linha nova, com causa, prova e o caso de teste que a reproduz.",
- "atualizado_em": "2026-10-10",
+ "atualizado_em": "2026-10-11",
  "falhas": [
   {
    "id": "F01",
@@ -491,6 +491,33 @@
    ],
    "correcao": "`actions: read` em `noturno_sinais.yml`, `semanal_espin_e_links.yml` e `semanal_sinais_e_links.yml`",
    "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_chamador_do_coletor_concede_o_que_ele_pede",
+   "falta": null
+  },
+  {
+   "id": "F38",
+   "noite": "2026-10-11",
+   "titulo": "Fila semanal longa estoura o teto e não commita nada",
+   "sintoma": "`Semanal — sinais climáticos e links` cancelado no teto de 150 min em 04/10 e três vezes em 11/10 (01:10, 03:42, 06:42), sem commit; `transferencias_uniao.json` parado em 01/10 e Portões no push da `main` vermelhos desde 11/10 (frescor do Financiamento, 10 dias > 9).",
+   "causa": "O teto do job mata também os passos de commit; a fila somava cobertura do QD 56 min + clima municipal 41 min + domínios > 47 min, e o que os comandos curtos já tinham gravado morria junto.",
+   "prova": [
+    "runs 37205422226, 38100963895, 38109274967, 38118915381 (cancelled)",
+    "run 38131168911 (Portões push, FRESCOR DO FINANCIAMENTO)"
+   ],
+   "correcao": "Prazo da coleta no `_coletor.yml` (teto − margem, contado do início do job): `saude_pipeline.py --prazo` pula o comando que não caberia e interrompe o que passa, restaurando JSON ilegível; longos no fim da fila semanal; transferências no elo diário dos sinais; válvula `coleta-dia/*` para recuperar de dia por PR.",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_fila_longa_ainda_commita; scripts/saude_pipeline.py --autoteste (prazo)",
+   "falta": null
+  },
+  {
+   "id": "F39",
+   "noite": "2026-10-11",
+   "titulo": "Comentário da fila virava comando; sonda do InfoGripe quebrada",
+   "sintoma": "Cada linha `# …` de `comandos` rodava como `saude_pipeline.py --rodar '#' …` (FileNotFoundError no log, dezenas por run); `scripts/sondar_boletim_infogripe.py` saía com NameError antes de sondar.",
+   "causa": "O laço só pulava linha vazia; a sonda usava `pathlib` sem importar.",
+   "prova": [
+    "run 38118915381, job 114409430097"
+   ],
+   "correcao": "O laço pula comentário; `import pathlib` na sonda.",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_fila_longa_ainda_commita (laço rodado no bash)",
    "falta": null
   }
  ]
