@@ -756,6 +756,61 @@ def ensaio_chamador_do_coletor_concede_o_que_ele_pede(diz) -> bool:
     return True
 
 
+def ensaio_triagem_uma_vez_na_abertura(diz) -> bool:
+    """19. Na abertura, a triagem nasce só da corrente — o despachante não dispara outra.
+
+    11/10/2026 (F27 do catálogo): às 01:10 o despachante disparou a triagem (run 38100940441, "nenhuma
+    triagem na janela") e às 01:13 o fim dos sinais disparou outra (38101135888). Reprova se o
+    workflow da triagem tem gatilho de corrente e o registro deixa o despachante dispará-la antes do
+    horário primário.
+    """
+    import datetime as _dt
+    import json as _json
+    import pathlib
+
+    raiz = pathlib.Path(__file__).resolve().parents[1]
+    sys.path.insert(0, str(raiz / "scripts"))
+    import despachar_temporizadores as dp
+    wf = (raiz / ".github/workflows/noturno_triagem.yml").read_text(encoding="utf-8")
+    reg = _json.loads((raiz / "config/temporizadores.json").read_text(encoding="utf-8"))
+    tri = [t for t in reg["temporizadores"] if t.get("workflow") == "noturno_triagem.yml"]
+    if "workflow_run:" in wf and any(dp.esta_devido(t, [], _dt.datetime(2026, 10, 11, 1, 10)) for t in tri):
+        diz("   ✗ a triagem é elo da corrente e o despachante ainda a dispara na abertura")
+        return False
+    diz("   ✓ na abertura, só a corrente chama a triagem; o despachante espera o horário dela")
+    return True
+
+
+def ensaio_checagem_pre_noite_nao_e_cega(diz) -> bool:
+    """20. A checagem pré-noite não afirma fila vazia quando o `gh` falha, nem julga a noite errada.
+
+    11/10/2026 (F36, F37): runs 38101488701 e 38104258410 (cron atrasado para 01:20 e 02:10) julgaram
+    a noite de 12/10 e disseram "nenhum run aberto" com seis elos rodando — `gh run list` não tem o
+    campo `path`, e o erro virava lista vazia.
+    """
+    import datetime as _dt
+    import pathlib
+
+    raiz = pathlib.Path(__file__).resolve().parents[1]
+    sys.path.insert(0, str(raiz / "scripts"))
+    import checagem_pre_noite as cp
+
+    class _R:
+        returncode, stdout, stderr = 1, "", 'Unknown JSON field: "path"'
+    erros = []
+    cp._gh_json(["run", "list"], erros, executar=lambda *a, **k: _R())
+    fatos = {"portoes_main": {"conclusion": "success"}, "merges": [], "runs_abertos": [],
+             "ultimo_run": {}, "segredos": {}, "ensaio_real": None, "erros_de_consulta": erros}
+    cega = [x for x in cp.avaliar(fatos, _dt.datetime(2026, 10, 10, 23, 0))
+            if x["pergunta"].startswith("as consultas")]
+    ok = bool(cega) and not cega[0]["ok"]
+    ok = ok and cp.atrasada(_dt.datetime(2026, 10, 11, 1, 20)) \
+        and cp.noite_seguinte(_dt.datetime(2026, 10, 11, 1, 20)) == "2026-10-11"
+    diz("   ✓ erro do `gh` deixa a checagem vermelha e nomeada; cron atrasado não julga a noite seguinte"
+        if ok else "   ✗ a checagem pré-noite ainda é cega ao erro do `gh` ou julga a noite errada")
+    return ok
+
+
 def ensaio_fila_longa_ainda_commita(diz) -> bool:
     """18. Fila que passa do teto ainda chega ao commit; comentário não é comando.
 
@@ -828,6 +883,8 @@ ENSAIOS = (
     ("16. elo fora da `main` não empurra para a `main`", ensaio_fora_da_main_nao_empurra),
     ("17. chamador do coletor concede o que ele pede", ensaio_chamador_do_coletor_concede_o_que_ele_pede),
     ("18. fila longa ainda commita; comentário não é comando", ensaio_fila_longa_ainda_commita),
+    ("19. na abertura, a triagem nasce só da corrente", ensaio_triagem_uma_vez_na_abertura),
+    ("20. a checagem pré-noite não é cega nem julga a noite errada", ensaio_checagem_pre_noite_nao_e_cega),
 )
 
 

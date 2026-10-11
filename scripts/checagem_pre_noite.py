@@ -53,9 +53,26 @@ def _iso(s: str):
         return None
 
 
+FIM_DA_JANELA_H = 9   # a janela da noite é 01:00–09:00 UTC
+
+
 def noite_seguinte(agora: dt.datetime) -> str:
-    """A noite que esta checagem antecede (a janela abre às 01:00 UTC). Função pura."""
-    return (agora.date() if agora.hour < 1 else agora.date() + dt.timedelta(days=1)).isoformat()
+    """A noite que esta checagem antecede — ou, de madrugada, a que já está em curso. Função pura.
+
+    11/10/2026 (F36): era "hora < 1 → hoje"; o cron das 22:53 chegou às 01:20 (2h27 de atraso do
+    GitHub) e a checagem julgou a noite de AMANHÃ, com a de hoje aberta debaixo dela.
+    """
+    return (agora.date() if agora.hour < FIM_DA_JANELA_H
+            else agora.date() + dt.timedelta(days=1)).isoformat()
+
+
+def atrasada(agora: dt.datetime) -> bool:
+    """A checagem chegou com a janela já aberta (cron atrasado)? Então não julga. Função pura.
+
+    Pré-noite depois de a noite abrir não é pré-noite: a fila está cheia de elos rodando, o
+    despachante e o relógio já trabalharam, e "vermelho" ali só confunde quem lê de manhã.
+    """
+    return 1 <= agora.hour < FIM_DA_JANELA_H
 
 
 def avaliar(fatos: dict, agora: dt.datetime) -> list:
@@ -104,55 +121,99 @@ def avaliar(fatos: dict, agora: dt.datetime) -> list:
                            f"{len(SEGREDOS_DA_NOITE)} presentes (só presença, nunca valor)"})
 
     er = fatos.get("ensaio_real")
+    # O ensaio "do dia" é o da VÉSPERA da noite (o real roda às 18:13 UTC), não o da data do
+    # relógio: à 00:20 a data já virou e o ensaio verde das 21:44 parecia "não é de hoje" (F36).
+    vespera = dt.date.fromisoformat(noite_seguinte(agora)) - dt.timedelta(days=1)
     if er is None:
         out.append({"pergunta": "ensaio real do dia verde", "ok": True, "aviso": True,
                     "detalhe": "o ensaio real ainda não existe neste repositório — não avaliado"})
     else:
-        de_hoje = (_iso(er.get("createdAt")) or dt.datetime.min).date() == agora.date()
+        de_hoje = (_iso(er.get("createdAt")) or dt.datetime.min).date() == vespera
         out.append({"pergunta": "ensaio real do dia verde",
                     "ok": de_hoje and er.get("conclusion") == "success",
                     "detalhe": f"último: {er.get('conclusion') or 'em curso'} em {er.get('createdAt')}"
                                + ("" if de_hoje else " (não é de hoje)")})
+
+    erros = fatos.get("erros_de_consulta") or []
+    out.append({"pergunta": "as consultas ao GitHub responderam", "ok": not erros,
+                "detalhe": ("; ".join(erros[:4])) if erros else "todas responderam"})
     return out
 
 
-def _gh_json(args: list):
-    try:
-        r = subprocess.run(["gh"] + args, cwd=RAIZ, capture_output=True, text=True, timeout=90)
-        return json.loads(r.stdout) if r.returncode == 0 and r.stdout.strip() else None
-    except (OSError, subprocess.SubprocessError, json.JSONDecodeError):
+class ErroDoGh(RuntimeError):
+    pass
+
+
+def _gh_json(args: list, erros: list = None, executar=subprocess.run):
+    """JSON do `gh`, ou None — e o ERRO fica anotado em `erros`.
+
+    11/10/2026 (F37): devolvia None calado em qualquer falha, e quem chamava fazia `or []`. Um
+    campo inexistente no `--json` virou "fila de runs vazia" às 02:11, com seis elos rodando.
+    Resposta vazia legítima (`[]`) continua sendo resposta; erro do `gh` nunca é.
+    """
+    def anotar(motivo: str):
+        if erros is not None:
+            erros.append(f"gh {' '.join(str(a) for a in args[:2])}: {motivo}"[:200])
         return None
+    try:
+        r = executar(["gh"] + args, cwd=RAIZ, capture_output=True, text=True, timeout=90)
+    except (OSError, subprocess.SubprocessError) as e:
+        return anotar(type(e).__name__)
+    if r.returncode != 0:
+        ultima = [l for l in (r.stderr or "").splitlines() if l.strip()]
+        return anotar(ultima[-1] if ultima else f"código {r.returncode}")
+    if not (r.stdout or "").strip():
+        return anotar("resposta vazia")
+    try:
+        return json.loads(r.stdout)
+    except json.JSONDecodeError:
+        return anotar("resposta não é JSON")
+
+
+def abertos_da_api(respostas: list) -> list:
+    """Runs abertos a partir das respostas de `GET /actions/runs?status=…`. Função pura.
+
+    A API REST traz `path` (`.github/workflows/x.yml`); o `gh run list --json` não tem esse campo.
+    """
+    vistos, out = set(), []
+    for resp in respostas or []:
+        for r in (resp or {}).get("workflow_runs") or []:
+            if r.get("id") in vistos:
+                continue
+            vistos.add(r.get("id"))
+            out.append({"workflow": pathlib.Path(str(r.get("path") or "")).name or r.get("name"),
+                        "status": r.get("status")})
+    return out
 
 
 def coletar_fatos(agora: dt.datetime) -> dict:
+    erros = []
     portoes = _gh_json(["run", "list", "--workflow", "portoes.yml", "--branch", "main", "--event",
                         "push", "--status", "completed", "--limit", "1",
-                        "--json", "conclusion,headSha"]) or []
+                        "--json", "conclusion,headSha"], erros) or []
     desde = (agora - dt.timedelta(days=1)).strftime("%Y-%m-%dT%H:%M:%SZ")
-    commits = _gh_json(["api", f"repos/{{owner}}/{{repo}}/commits?sha=main&since={desde}&per_page=100"]) or []
+    commits = _gh_json(["api", f"repos/{{owner}}/{{repo}}/commits?sha=main&since={desde}&per_page=100"],
+                       erros) or []
     merges = [c["commit"]["committer"]["date"] for c in commits
               if len(c.get("parents") or []) > 1
               and str(c["commit"].get("message", "")).startswith("Merge pull request")]
-    abertos = []
-    for st in ("queued", "in_progress", "waiting", "pending", "requested"):
-        for r in _gh_json(["run", "list", "--status", st, "--limit", "50",
-                           "--json", "workflowName,status,path"]) or []:
-            abertos.append({"workflow": pathlib.Path(str(r.get("path") or "")).name or r.get("workflowName"),
-                            "status": r.get("status")})
+    abertos = abertos_da_api([
+        _gh_json(["api", f"repos/{{owner}}/{{repo}}/actions/runs?status={st}&per_page=100"], erros)
+        for st in ("queued", "in_progress", "waiting", "pending", "requested")])
     ultimo = {}
     for wf in ("despachante.yml", "relogio.yml"):
-        rr = _gh_json(["run", "list", "--workflow", wf, "--limit", "1", "--json", "createdAt"]) or []
+        rr = _gh_json(["run", "list", "--workflow", wf, "--limit", "1", "--json", "createdAt"], erros) or []
         ultimo[wf] = rr[0]["createdAt"] if rr else None
     ensaio = None
     if (RAIZ / ".github" / "workflows" / "ensaio_real_da_noite.yml").exists():
         rr = _gh_json(["run", "list", "--workflow", "ensaio_real_da_noite.yml", "--limit", "1",
-                       "--json", "conclusion,createdAt"]) or []
+                       "--json", "conclusion,createdAt"], erros) or []
         ensaio = rr[0] if rr else {"conclusion": None, "createdAt": None}
     segredos = {s: os.environ.get(f"TEM_{s}", "").strip().lower() == "true" for s in SEGREDOS_DA_NOITE}
     return {"portoes_main": {"conclusion": (portoes[0] if portoes else {}).get("conclusion"),
                              "sha": (portoes[0] if portoes else {}).get("headSha")},
             "merges": merges, "runs_abertos": abertos, "ultimo_run": ultimo,
-            "segredos": segredos, "ensaio_real": ensaio}
+            "segredos": segredos, "ensaio_real": ensaio, "erros_de_consulta": erros}
 
 
 def abrir_issue(noite: str, vermelhos: list) -> None:
@@ -179,7 +240,7 @@ def autoteste() -> int:
            "ultimo_run": {"despachante.yml": "2026-10-10T22:47:00Z", "relogio.yml": "2026-10-10T22:10:00Z"},
            "segredos": {s: True for s in SEGREDOS_DA_NOITE}, "ensaio_real": None}
     r = avaliar(bom, agora)
-    ok("noite saudável: as seis perguntas verdes", all(x["ok"] for x in r) and len(r) == 7)
+    ok("noite saudável: as perguntas verdes", all(x["ok"] for x in r) and len(r) == 8)
     ok("ensaio real ausente é aviso, não vermelho", any(x.get("aviso") for x in r))
     ok("main vermelha reprova (10/10, 09:12 → 10:59)",
        not avaliar(dict(bom, portoes_main={"conclusion": "failure"}), agora)[0]["ok"])
@@ -202,6 +263,40 @@ def autoteste() -> int:
     ok("ensaio real verde de ontem não vale por hoje", not velho[6]["ok"])
     ok("a noite seguinte às 23h é a de amanhã", noite_seguinte(agora) == "2026-10-11")
     ok("a noite seguinte às 00:20 é a de hoje", noite_seguinte(dt.datetime(2026, 10, 11, 0, 20)) == "2026-10-11")
+    # F36: o cron das 22:53 chegou às 01:20 e às 02:10 de 11/10 e julgou a noite de 12/10.
+    ok("às 01:20 a noite é a que está em curso (F36)",
+       noite_seguinte(dt.datetime(2026, 10, 11, 1, 20)) == "2026-10-11")
+    ok("às 01:20 a checagem está atrasada e não julga; às 23:00 e à 00:20, julga",
+       atrasada(dt.datetime(2026, 10, 11, 1, 20)) and not atrasada(agora)
+       and not atrasada(dt.datetime(2026, 10, 11, 0, 20)))
+    meia_noite = avaliar(dict(bom, ensaio_real={"conclusion": "success",
+                                                "createdAt": "2026-10-10T21:44:00Z"}),
+                         dt.datetime(2026, 10, 11, 0, 20))
+    ok("à 00:20, o ensaio verde das 21:44 da véspera vale pela noite (F36)", meia_noite[6]["ok"])
+    # F37: a resposta real da API (forma de GET /actions/runs) e o erro real do `gh`.
+    api = [{"total_count": 2, "workflow_runs": [
+        {"id": 1, "name": "Noturno — triagem da fila", "path": ".github/workflows/noturno_triagem.yml",
+         "status": "in_progress"},
+        {"id": 2, "name": "Despachante", "path": ".github/workflows/despachante.yml", "status": "in_progress"}]},
+        None]
+    fila = avaliar(dict(bom, runs_abertos=abertos_da_api(api)), agora)
+    ok("run aberto lido da API reprova a fila; o despachante não (F37)",
+       not fila[2]["ok"] and "noturno_triagem.yml" in fila[2]["detalhe"]
+       and "despachante" not in fila[2]["detalhe"])
+
+    class _R:
+        def __init__(self, rc, out="", err=""):
+            self.returncode, self.stdout, self.stderr = rc, out, err
+    erros = []
+    falho = _gh_json(["run", "list", "--json", "workflowName,status,path"], erros,
+                     executar=lambda *a, **k: _R(1, "", 'Unknown JSON field: "path"'))
+    ok("erro do `gh` fica anotado, não vira lista vazia (F37)",
+       falho is None and erros and "Unknown JSON field" in erros[0])
+    vazio = _gh_json(["api", "x"], erros, executar=lambda *a, **k: _R(0, "[]"))
+    ok("resposta vazia legítima (`[]`) é resposta", vazio == [] and len(erros) == 1)
+    cega = avaliar(dict(bom, erros_de_consulta=erros), agora)
+    ok("consulta que falhou deixa a checagem vermelha e nomeada (F37)",
+       not cega[7]["ok"] and "Unknown JSON field" in cega[7]["detalhe"])
     import inspect
     ok("trava: `avaliar` não lê disco nem vai à rede",
        not any(x in inspect.getsource(avaliar) for x in ("open(", "subprocess", "_gh_json")))
@@ -215,6 +310,17 @@ def main() -> int:
         return autoteste()
     agora = dt.datetime.now(dt.timezone.utc).replace(tzinfo=None)
     noite = noite_seguinte(agora)
+    if atrasada(agora) and "--forcar" not in argv:
+        # F36: cron atrasado para dentro da janela. Sai em silêncio e verde, com o motivo escrito:
+        # a noite já abriu, e quem a julga agora é a conferência da abertura, não a pré-noite.
+        doc = {"noite": noite, "conferido_em": agora.strftime("%Y-%m-%dT%H:%M:%SZ"),
+               "verde": True, "atrasada": True, "perguntas": []}
+        saida = argv[argv.index("--saida") + 1] if "--saida" in argv else f"preflight-{noite}.json"
+        pathlib.Path(saida).write_text(json.dumps(doc, ensure_ascii=False, indent=1) + "\n",
+                                       encoding="utf-8", newline="\n")
+        print(f"· pré-noite ATRASADA ({agora.strftime('%H:%M')} UTC, noite de {noite} já aberta)"
+              " — sem veredito; a abertura é conferida por quem confere a abertura")
+        return 0
     resultado = avaliar(coletar_fatos(agora), agora)
     vermelhos = [x for x in resultado if not x["ok"]]
     doc = {"noite": noite, "conferido_em": agora.strftime("%Y-%m-%dT%H:%M:%SZ"),
