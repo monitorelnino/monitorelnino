@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-11 · #PR · Início: nome que não é município e status repetido na ficha (A4-20, A4-19)
+
+Texto que não está na lista de municípios do IBGE do estado deixa de ganhar o cartão inteiro: a página diz que não encontrou o nome e pede para conferir a grafia (enquanto o texto ainda começa um nome da lista, nada aparece). "Em elaboração (lançado …)" deixa de passar por data e repetir o status na face e na ficha do estado. Onde: `assets/js/index.js`.
+
 ## 2026-10-11 · #PR · plural de verdade no texto das páginas (A4-17)
 
 "município(s)", "mês(es)", "lido(s)" e afins saem do texto público: 24 frases montadas em JavaScript escolhem singular ou plural pelo número, e o molde do topo do Financiamento usa o plural do catálogo. Relatório D, A4-17. Onde: `assets/js/` (financiamento, saúde, início, riscos, proveniência) e `conteudo/financiamento.json`.
