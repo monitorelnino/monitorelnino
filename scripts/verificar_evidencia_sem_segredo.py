@@ -42,10 +42,15 @@ def arquivos_do_diff(contra: str = None) -> list:
         cmd = ["git", "diff", "--name-only", "--diff-filter=AM", f"{contra}...HEAD"]
     else:
         cmd = ["git", "diff", "--name-only", "--diff-filter=AM", "--cached", "HEAD"]
+    # 11/10/2026 (A7-20 do relatório D): erro do `git diff` (ref inexistente, clone raso sem a base)
+    # devolvia lista vazia — e o portão dizia verde sem ter olhado nada. Erro agora levanta.
     try:
-        saida = subprocess.run(cmd, cwd=RAIZ, capture_output=True, text=True, timeout=120).stdout
-    except (OSError, subprocess.SubprocessError):
-        return []
+        r = subprocess.run(cmd, cwd=RAIZ, capture_output=True, text=True, timeout=120)
+    except (OSError, subprocess.SubprocessError) as e:
+        raise RuntimeError(f"git diff não rodou: {type(e).__name__}: {e}") from e
+    if r.returncode != 0:
+        raise RuntimeError(f"git diff falhou ({r.returncode}): {(r.stderr or '').strip()[:200]}")
+    saida = r.stdout
     return [l.strip() for l in saida.splitlines()
             if l.strip().startswith("evidencias/")
             and pathlib.Path(l.strip()).suffix.lower() in EXTENSOES]
@@ -101,10 +106,20 @@ def _autoteste() -> int:
         ok("arquivo já redigido passa", problemas(["evidencias/redigido.html"], d) == [])
         ok("caminho que não existe não quebra nem reprova",
            problemas(["evidencias/nao_existe.html"], d) == [])
-        ok("o estado atual do repositório passa", problemas(arquivos_do_diff("origin/main")) == [])
+        try:
+            atuais = arquivos_do_diff("origin/main")
+        except RuntimeError:
+            atuais = None   # clone sem `origin/main`: não há base para comparar aqui
+        if atuais is not None:
+            ok("o estado atual do repositório passa", problemas(atuais) == [])
+            ok("só extensão de texto entra no diff",
+               all(pathlib.Path(c).suffix.lower() in EXTENSOES for c in atuais))
 
-    ok("só extensão de texto entra no diff",
-       all(pathlib.Path(c).suffix.lower() in EXTENSOES for c in arquivos_do_diff("origin/main")))
+    try:
+        arquivos_do_diff("ref-que-nao-existe-a7-20")
+        ok("erro do git diff levanta, não vira lista vazia (A7-20)", False)
+    except RuntimeError:
+        ok("erro do git diff levanta, não vira lista vazia (A7-20)", True)
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
           else f"✓ AUTOTESTE OK — {len(_casos_contados)} casos, sem rede e sem escrita.")
@@ -122,7 +137,11 @@ def main() -> int:
         contra = None
         if "--contra" in argv:
             contra = argv[argv.index("--contra") + 1]
-        caminhos = arquivos_do_diff(contra)
+        try:
+            caminhos = arquivos_do_diff(contra)
+        except RuntimeError as e:
+            print(f"✗ EVIDÊNCIA SEM SEGREDO: não deu para listar o que mudou — {e}")
+            return 1
     p = problemas(caminhos)
     if p:
         print(f"✗ EVIDÊNCIA COM SEGREDO: {len(p)} arquivo(s):")

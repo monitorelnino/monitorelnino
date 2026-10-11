@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-11 · #PR · Relatório D, leva 3: três portões que falhavam calados ou devagar
+
+`verificar_evidencia_sem_segredo` reprova quando o `git diff` falha, em vez de conferir zero arquivos (A7-20). `verificar_pagina_arquivada` poda `.git`, `node_modules`, `evidencias/` e `arquivo/` na varredura: de ~4 min para menos de 1 s (A7-24). `verificar_consistencia` lê o esquema atual de `verificacao_municipal.json` (A3-15).
+
 ## 2026-10-11 · #PR · portões em três jobs paralelos (estrutura, navegador, dado)
 
 O job único levava 15 a 25 min por PR. Agora `estrutura`, `navegador` e `dado` rodam lado a lado e o

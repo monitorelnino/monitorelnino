@@ -70,13 +70,26 @@ def referencia_em_atributo(nome: str) -> str:
             + r"|url\(\s*[\"']?[^)]*" + n)
 
 
+# 11/10/2026 (A7-24 do relatório D): `rglob` descia por `evidencias/` (4 GB, 16 mil arquivos) a cada
+# execução — minutos por PR. Cópia preservada de página de terceiro não linka página nossa
+# arquivada; a poda é de diretório inteiro, antes de descer.
+PODAR_SEMPRE = {".git", "node_modules"}
+PODAR_NA_RAIZ = {"evidencias", "arquivo"}
+
+
 def html_publicado():
-    """Todo HTML que o deploy serve, menos o que está sob `arquivo/`."""
-    for p in sorted(RAIZ.rglob("*.html")):
-        rel = p.relative_to(RAIZ).as_posix()
-        if rel.startswith("arquivo/") or "/node_modules/" in rel or rel.startswith("node_modules/"):
-            continue
-        yield rel, p
+    """Todo HTML que o deploy serve, menos `arquivo/` e as cópias de terceiros em `evidencias/`."""
+    import os
+    achados = []
+    for raiz, dirs, arquivos in os.walk(RAIZ):
+        na_raiz = pathlib.Path(raiz) == RAIZ
+        dirs[:] = sorted(d for d in dirs
+                         if d not in PODAR_SEMPRE and not (na_raiz and d in PODAR_NA_RAIZ))
+        for nome in arquivos:
+            if nome.endswith(".html"):
+                achados.append(pathlib.Path(raiz) / nome)
+    for p in sorted(achados):
+        yield p.relative_to(RAIZ).as_posix(), p
 
 
 def problemas() -> tuple[list[str], list[str]]:
