@@ -143,8 +143,12 @@
          descrição acessível e para "Ver estados". Mesma moldura, mesma borda, fundo branco; só o
          mapa de fogo fica escuro, porque ponto luminoso sobre fundo escuro é o que torna visível um
          foco pequeno (exceção declarada no contrato). -->
-    <p class="selo faixa-selo" data-conteudo="monitor-de-riscos.riscos.faixa_previsto">Previsto pelo boletim</p>
-    <div class="grade-figuras grade-figuras--1 grade-mapas grade-mapas--previsto">
+    <!-- 11/10/2026 (editoria): os três mapas na mesma fila, no componente `.grade-figuras--3`. Os
+         selos "Previsto pelo boletim" e "Observado" são uma faixa alinhada às colunas, na própria
+         grade: no desktop o primeiro fica sobre o mapa previsto e o segundo sobre os dois
+         observados; numa coluna só, cada selo vem antes do(s) seu(s) mapa(s), na ordem do HTML. -->
+    <div class="grade-figuras grade-figuras--3 grade-mapas grade-mapas--faixas">
+      <p class="selo faixa-selo faixa-selo--previsto" data-conteudo="monitor-de-riscos.riscos.faixa_previsto">Previsto pelo boletim</p>
       <figure class="figura figura--mapa cartao-mapa" id="boxRiscoPrevisto">
         <h3 class="figura-titulo" id="tituloRiscoPrevisto">Risco previsto por estado, até março de 2027</h3>
         <p class="figura-sub" id="riscoPrevistoSub">Risco previsto até março de 2027 · por estado</p>
@@ -160,9 +164,7 @@
         </details>
         </div>
       </figure>
-    </div>
-    <p class="selo faixa-selo" data-conteudo="monitor-de-riscos.riscos.faixa_observado">Observado</p>
-    <div class="grade-figuras grade-figuras--2 grade-mapas">
+      <p class="selo faixa-selo faixa-selo--observado" data-conteudo="monitor-de-riscos.riscos.faixa_observado">Observado</p>
       <figure class="figura figura--mapa cartao-mapa" id="boxSecas">
         <h3 class="figura-titulo" id="tituloSecas">Seca observada</h3>
         <p class="figura-sub" id="secasSub">Categoria de seca em pelo menos metade da área do estado</p>
