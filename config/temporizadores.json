@@ -142,7 +142,9 @@
    "quem_depende": [
     "fila de pistas"
    ],
-   "gravidade": "media"
+   "gravidade": "media",
+   "nao_antes_do_cron": true,
+   "_nota_nao_antes_do_cron": "11/10/2026 (F27): a triagem também nasce do fim dos sinais (workflow_run). O despachante não a dispara antes das 08:30 — antes disso, quem a chama é a corrente."
   },
   {
    "id": "vigia_da_abertura",

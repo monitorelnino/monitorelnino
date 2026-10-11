@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-11 · #PR · checagem pré-noite sem cegueira; triagem uma vez na abertura (F36, F37, F27)
+
+A checagem pré-noite dizia "fila vazia" com seis elos rodando: pedia ao `gh` um campo que não existe e o erro virava lista vazia. Agora lê a fila pela API e erro de consulta reprova com nome. Cron atrasado para dentro da janela não julga mais a noite seguinte. O despachante deixa de disparar a triagem na abertura, que a corrente já chama. Onde: `checagem_pre_noite.py`, `despachar_temporizadores.py`, registro de temporizadores.
+
 ## 2026-10-10 · #PR · zero não é ausência no financiamento; corte do dado, não do relógio (A6-22, A3-20, A6-13)
 
 Valor vazio virava 0.0 nos coletores de financiamento, TransfereGov e execução das MPs: agora é `None`, a soma usa só o presente e tudo vazio é lacuna. `gerar_financiamento_semana.py` lia o relógio da parede; o corte vem de `meta.json`. O mês corrente da coleta das MPs sai marcado `parcial` e não vira "último mês" no cartão nem na lista mensal. Nenhum número exibido muda hoje. Onde: os três coletores, o gerador, `financiamento.js`.

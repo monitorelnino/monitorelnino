@@ -144,6 +144,12 @@ def esta_devido(temporizador: dict, execucoes: list, agora: dt.datetime) -> bool
         return False
     if not e_dia_previsto(temporizador.get("cron_primario"), agora):
         return False
+    # 11/10/2026 (F27 do catálogo): temporizador que é TAMBÉM elo da corrente (a triagem nasce do
+    # fim dos sinais) não é devido antes do próprio horário. Sem isto, o despachante das 01:10 via
+    # "nenhuma triagem na janela" e disparava uma, e o fim dos sinais às 01:13 disparava outra —
+    # duas triagens na mesma noite, uma esperando a outra na vez. Quem declara é o registro.
+    if temporizador.get("nao_antes_do_cron") and not _passou_do_horario(temporizador, agora):
+        return False
     desde = inicio_da_janela(agora, janela)
     # 10/10/2026: execução cancelada, pulada ou estourada NÃO conta (regra 3 do CLAUDE.md). Na
     # abertura de 10/10 o `diarios / coletar` foi cancelado na fila às 01:14, sem passo executado,
@@ -151,6 +157,14 @@ def esta_devido(temporizador: dict, execucoes: list, agora: dt.datetime) -> bool
     # rodaram às 07:42, pelo cron do próprio elo, e entraram na `main` às 09:11.
     return not any(str(e.get("createdAt") or "") >= desde and not nao_trabalhou(e)
                    for e in (execucoes or []))
+
+
+def _passou_do_horario(temporizador: dict, agora: dt.datetime) -> bool:
+    """O horário primário de hoje já chegou? Função pura (o minuto exato conta como chegado)."""
+    partes = str(temporizador.get("cron_primario") or "").split()
+    if len(partes) < 2 or not (partes[0].isdigit() and partes[1].isdigit()):
+        return True
+    return (agora.hour, agora.minute) >= (int(partes[1]), int(partes[0]))
 
 
 NAO_TRABALHARAM = ("cancelled", "skipped", "timed_out", "startup_failure")
@@ -480,6 +494,14 @@ def _autoteste() -> int:
     aberto = {"createdAt": "2026-10-10T02:00:00Z", "status": "queued", "conclusion": ""}
     t_r = d(2026, 10, 10, 2, 26)    # a hora real do despachante que não refez os diários
     r1 = plano_da_reserva({"noturno_diarios.yml": [canc]}, set(), t_r)
+    tri = {"id": "triagem_da_fila", "workflow": "noturno_triagem.yml", "cron_primario": "30 8 * * *",
+           "janela": {"inicio_utc": "01:00", "fim_utc": "09:00"}, "nao_antes_do_cron": True}
+    ok("triagem não é devida às 01:10, antes do horário (F27, abertura de 11/10)",
+       not esta_devido(tri, [], dt.datetime(2026, 10, 11, 1, 10)))
+    ok("triagem sem run é devida às 08:35",
+       esta_devido(tri, [], dt.datetime(2026, 10, 11, 8, 35)))
+    ok("sem a declaração, o comportamento antigo fica (devido na abertura)",
+       esta_devido(dict(tri, nao_antes_do_cron=False), [], dt.datetime(2026, 10, 11, 1, 10)))
     ok("pendente cancelado pela fila é refeito pela reserva (abertura de 10/10)",
        [x["elo"] for x in r1] == ["diarios"])
     ok("a reserva não duplica o que o temporizador já vai disparar",
