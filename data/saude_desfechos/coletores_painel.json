@@ -24,6 +24,30 @@
    "em": "2026-10-04",
    "resultado": "lacuna",
    "motivo": "e-SUS Notifica recusa acesso automatizado nas duas rotas que o portal declara — API: HTTPError: HTTP Error 403: Forbidden; CSV: HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+   "coletor": "coletar_srag_sivep",
+   "em": "2026-10-11",
+   "anos_lidos": [
+    2025,
+    2026
+   ],
+   "anos_reusados_do_cache": [
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024
+   ],
+   "anos_republicados_por_falha": [],
+   "falhas": {}
+  },
+  {
+   "coletor": "coletar_sg_esus",
+   "em": "2026-10-11",
+   "resultado": "lacuna",
+   "motivo": "e-SUS Notifica recusa acesso automatizado nas duas rotas que o portal declara — API: HTTPError: HTTP Error 403: Forbidden; CSV: HTTPError: HTTP Error 403: Forbidden"
   }
  ]
 }

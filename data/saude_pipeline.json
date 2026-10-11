@@ -5130,7 +5130,133 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-10",
+   "script": "consultar_querido_diario.py",
+   "inicio": "2026-10-11T01:13:15",
+   "duracao_s": 31.9,
+   "itens": null,
+   "status": "erro",
+   "erro": "urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "data": "2026-10-10",
+   "script": "coletar_diarios_municipais.py",
+   "inicio": "2026-10-11T01:13:47",
+   "duracao_s": 631.4,
+   "itens": 49,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-10",
+   "script": "coletar_diarios_municipais.py",
+   "inicio": "2026-10-11T01:24:18",
+   "duracao_s": 758.8,
+   "itens": 49,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-10",
+   "script": "coletar_diarios_municipais.py",
+   "inicio": "2026-10-11T01:36:56",
+   "duracao_s": 425.2,
+   "itens": 50,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-10",
+   "script": "coletar_diarios_consorciados.py",
+   "inicio": "2026-10-11T01:44:01",
+   "duracao_s": 3147.8,
+   "itens": 34,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-10",
+   "script": "coletar_doe.py",
+   "inicio": "2026-10-11T02:36:28",
+   "duracao_s": 845.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-11",
+   "script": "coletar_s2id.py",
+   "inicio": "2026-10-11T02:50:33",
+   "duracao_s": 1030.1,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-11",
+   "script": "coletar_recursos_resposta.py",
+   "inicio": "2026-10-11T03:07:43",
+   "duracao_s": 9.3,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-11",
+   "script": "scripts/triar_fila.py",
+   "inicio": "2026-10-11T03:11:03",
+   "duracao_s": 1.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-11",
+   "script": "julgar_filas.py",
+   "inicio": "2026-10-11T03:11:04",
+   "duracao_s": 1371.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-11",
+   "script": "aplicar_promocoes_do_juiz.py",
+   "inicio": "2026-10-11T03:33:55",
+   "duracao_s": 0.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-11",
+   "script": "scripts/verificar_esquema_de_pista.py",
+   "inicio": "2026-10-11T03:33:55",
+   "duracao_s": 2.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-11",
+   "script": "coletar_srag_sivep.py",
+   "inicio": "2026-10-11T03:36:44",
+   "duracao_s": 33.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-11",
+   "script": "coletar_sg_esus.py",
+   "inicio": "2026-10-11T03:37:17",
+   "duracao_s": 8.1,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
   }
  ],
- "atualizado_em": "2026-10-11T03:14:53"
+ "atualizado_em": "2026-10-11T03:37:17"
 }
