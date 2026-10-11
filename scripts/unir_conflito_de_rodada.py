@@ -103,6 +103,14 @@ REGENERAVEIS = (
     "data/municipios_card.json",
 )
 
+# 11/10/2026: derivados que NÃO estão na cadeia canônica (§273) e têm gerador próprio. Resolvem-se
+# regerando a partir do arquivo-fonte já unido, aqui mesmo — "versão de cima e a cadeia regenera"
+# não serve, porque a cadeia não os regera e `gerar_saude_pipeline.py --check` cobraria a diferença.
+# Foi o conflito mais frequente dos PRs de 11/10: cada publicação reescreve o painel.
+DERIVADOS_COM_GERADOR = {
+    "docs/SAUDE_PIPELINE.md": ("data/saude_pipeline.json", ("scripts/gerar_saude_pipeline.py",)),
+}
+
 # §252 (27/09/2026): prefixos que o PRÓPRIO projeto já declara derivados, em
 # `.claude/hooks/bloquear_derivados.py`: `dados-abertos/.+`, `feeds/.+\.xml`, `selos/.+\.svg`.
 # Medido na rodada de 27/09 às 08h29: o resolvedor recusou
@@ -444,7 +452,7 @@ def unir_log(caminho, chave, base_txt, nosso_txt, deles_txt):
 def resolver(repo=None, escrever=True):
     """Resolve o que sabe. Devolve (resolvidos, regenerar, recusados)."""
     raiz = pathlib.Path(repo or RAIZ)
-    resolvidos, regenerar, recusados = [], [], []
+    resolvidos, regenerar, recusados, adiados = [], [], [], []
 
     for caminho in em_conflito(repo=repo):
         norm = caminho.replace("\\", "/")
@@ -502,6 +510,10 @@ def resolver(repo=None, escrever=True):
                 resolvidos.append(f"{norm}: {a} + {b} → {t} pista(s), {m} mesclada(s) "
                                   f"(união pela base comum, política de scripts/pistas.py)")
 
+            elif norm in DERIVADOS_COM_GERADOR:
+                adiados.append(norm)
+                continue
+
             elif e_regeneravel(norm):
                 de_cima = estagio(norm, 2, repo=repo)
                 if de_cima is None:
@@ -520,6 +532,19 @@ def resolver(repo=None, escrever=True):
         except (json.JSONDecodeError, RuntimeError) as e:
             recusados.append(f"{norm}: {type(e).__name__}: {e}")
 
+    # Os derivados com gerador próprio vêm por último: a fonte deles já está unida acima.
+    for norm in adiados:
+        fonte, gerador = DERIVADOS_COM_GERADOR[norm]
+        if any(f"{fonte}:" in r for r in recusados) or fonte in em_conflito(repo=repo):
+            recusados.append(f"{norm}: a fonte {fonte} não foi unida; o derivado não se regera")
+            continue
+        if escrever:
+            r = subprocess.run([sys.executable, *gerador], cwd=raiz, capture_output=True, text=True)
+            if r.returncode != 0:
+                recusados.append(f"{norm}: o gerador {gerador[0]} falhou (rc={r.returncode})")
+                continue
+            git("add", "--", norm, repo=repo)
+        resolvidos.append(f"{norm}: regerado de {fonte} já unido ({gerador[0]})")
     return resolvidos, regenerar, recusados
 
 
@@ -796,6 +821,26 @@ def autoteste() -> int:
                == "a\nDE_CIMA\n")
         checar("derivado é nomeado para regeneração",
                reg == ["docs/MANIFEST_SHA256.txt"])
+
+    # 6b. derivado com gerador próprio (11/10/2026): regera a partir da fonte já unida
+    with tempfile.TemporaryDirectory() as t:
+        r = _repo_com_conflito(t, "docs/SAUDE_PIPELINE.md", "a\n", "a\nNOSSO\n", "a\nDELES\n")
+        (r / "scripts").mkdir(exist_ok=True)
+        (r / "scripts" / "gerar_saude_pipeline.py").write_text(
+            "import pathlib\npathlib.Path('docs/SAUDE_PIPELINE.md').write_text('REGERADO\\n', "
+            "encoding='utf-8', newline='\\n')\n", encoding="utf-8", newline="\n")
+        res, reg, rec = resolver(repo=r)
+        checar("painel de saúde é REGERADO, não escolhido de um lado",
+               not rec and (r / "docs/SAUDE_PIPELINE.md").read_text(encoding="utf-8") == "REGERADO\n"
+               and not em_conflito(repo=r))
+    with tempfile.TemporaryDirectory() as t:
+        r = _repo_com_conflito(t, "docs/SAUDE_PIPELINE.md", "a\n", "a\nNOSSO\n", "a\nDELES\n")
+        (r / "scripts").mkdir(exist_ok=True)
+        (r / "scripts" / "gerar_saude_pipeline.py").write_text(
+            "raise SystemExit(3)\n", encoding="utf-8", newline="\n")
+        res, reg, rec = resolver(repo=r)
+        checar("gerador que falha RECUSA o derivado (não adivinha)",
+               len(rec) == 1 and "falhou" in rec[0])
 
     # 7. a base pode não existir (arquivo criado dos dois lados) e ainda assim unir
     with tempfile.TemporaryDirectory() as t:
