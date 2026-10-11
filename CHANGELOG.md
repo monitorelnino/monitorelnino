@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-11 · #PR · cadências declaradas dos coletores que mudaram de rotina
+
+Doze scripts rodavam sem cadência declarada, e três estavam declarados na rotina errada depois do F38 e do F40: transferências (agora diária, nos sinais), SINAN e óbitos (agora diários, no elo da saúde). Entram as linhas do `noturno_saude` e de três etapas da triagem e do juiz; sem cadência não há certificação. Onde: `docs/CADENCIAS.md`.
+
 ## 2026-10-11 · #PR · Início: nome que não é município e status repetido na ficha (A4-20, A4-19)
 
 Texto que não está na lista de municípios do IBGE do estado deixa de ganhar o cartão inteiro: a página diz que não encontrou o nome e pede para conferir a grafia (enquanto o texto ainda começa um nome da lista, nada aparece). "Em elaboração (lançado …)" deixa de passar por data e repetir o status na face e na ficha do estado. Onde: `assets/js/index.js`.
