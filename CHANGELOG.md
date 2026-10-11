@@ -36,6 +36,16 @@ não pontuados permanecem na versão corrente.
 
 `verificar_evidencia_sem_segredo` reprova quando o `git diff` falha, em vez de conferir zero arquivos (A7-20). `verificar_pagina_arquivada` poda `.git`, `node_modules`, `evidencias/` e `arquivo/` na varredura: de ~4 min para menos de 1 s (A7-24). `verificar_consistencia` lê o esquema atual de `verificacao_municipal.json` (A3-15).
 
+## 2026-10-11 · #PR · portões em três jobs paralelos (estrutura, navegador, dado)
+
+O job único levava 15 a 25 min por PR. Agora `estrutura`, `navegador` e `dado` rodam lado a lado e o
+job `portoes` (mesmo nome do check) exige os três verdes. Mesmos 268 comandos: `--listar` antes e
+depois dá o mesmo conjunto; `portoes_locais.py` lê os passos de todos os jobs. Onde:
+`.github/workflows/portoes.yml`, `scripts/portoes_locais.py`. Também: sai o link `node_modules` que o #643 versionou por engano; `.gitignore` passa a cobrir link.
+
+## 2026-10-11 · #PR · a saúde volta a ser coletada todo dia (F40)
+
+O monólito semanal terminava verde sem coletar nada desde 08/10: o passo da janela estava no job vizinho, e a saúde (InfoDengue, calor do MS, desfechos, SINAN, boletins das SES) parou em 26/09. A camada vira elo diário próprio; o validador de workflows reprova passo lido que não existe no job; portão de frescor da Saúde (9 dias); fonte sem coletor vira lacuna com motivo; data do calor em dd/mm/aaaa. Onde: `noturno_saude.yml`, `atualizar.yml`, `saude.js`.
 ## 2026-10-11 · #PR · Monitor de riscos: os três mapas de "Os riscos no Brasil" numa só fila
 
 Risco previsto, seca e fogo passam a ficar lado a lado no desktop, no componente `.grade-figuras--3`, a pedido da editoria. Previsto e observado seguem distintos: os selos "Previsto pelo boletim" e "Observado" formam uma faixa alinhada às colunas da grade. No celular, empilham na ordem previsto → seca → fogo. Nenhum título, data ou fonte muda. Onde: `monitor-de-riscos.html`, `assets/base.css`, contrato da página.

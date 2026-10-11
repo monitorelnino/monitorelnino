@@ -84,21 +84,6 @@ jobs:
       group: repor-dominio-manual
       cancel-in-progress: false
     steps:
-      # 08/10/2026 (A2-18): o monolito semanal rodava sem guarda — em 04/10 saiu às 09:37 UTC,
-      # 6 h 27 depois do cron, FORA da janela, e commitou na `main` de dia. Migrar o que resta
-      # dele para elos é o item 5.4; até lá, a guarda vale aqui como vale para todo elo.
-      - name: Janela da noite — na `main`, só de noite
-        id: janela
-        timeout-minutes: 3
-        run: |
-          rc=0
-          python3 scripts/guarda_da_janela.py --ramo "${GITHUB_REF_NAME}" --elo atualizar > /tmp/guarda.txt 2>&1 || rc=$?
-          cat /tmp/guarda.txt | tee -a "$GITHUB_STEP_SUMMARY"
-          if [ "$rc" -eq 0 ]; then
-            echo "pode=1" >> "$GITHUB_OUTPUT"
-          else
-            echo "pode=0" >> "$GITHUB_OUTPUT"
-          fi
 
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: Repor o site completo no domínio (main atual), atrás de senha
@@ -168,6 +153,26 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with: { persist-credentials: false }   # AUD-11: sem credencial git na árvore; o push é pela API com o GITHUB_TOKEN só no passo final
+      # 08/10/2026 (A2-18): o monolito semanal rodava sem guarda — em 04/10 saiu às 09:37 UTC,
+      # 6 h 27 depois do cron, FORA da janela, e commitou na `main` de dia. Migrar o que resta
+      # dele para elos é o item 5.4; até lá, a guarda vale aqui como vale para todo elo.
+      # 11/10/2026 (F40 do catálogo): este passo estava no job `repor_dominio_manual`, ANTES do
+      # checkout (o script nem existia ali) — e o job `atualizar`, que lê `steps.janela` em todo
+      # passo de coleta, não tinha passo `janela`. Expressão de passo inexistente resolve vazio:
+      # desde 08/10 todo passo de coleta saiu `skipped`, com o run verde. A rodada de 11/10 01:10
+      # (run 38100952269) não coletou nada; coletar_saude.py não roda desde 26/09.
+      - name: Janela da noite — na `main`, só de noite
+        id: janela
+        timeout-minutes: 3
+        run: |
+          rc=0
+          python3 scripts/guarda_da_janela.py --ramo "${GITHUB_REF_NAME}" --elo atualizar > /tmp/guarda.txt 2>&1 || rc=$?
+          cat /tmp/guarda.txt | tee -a "$GITHUB_STEP_SUMMARY"
+          if [ "$rc" -eq 0 ]; then
+            echo "pode=1" >> "$GITHUB_OUTPUT"
+          else
+            echo "pode=0" >> "$GITHUB_OUTPUT"
+          fi
       # 22/09/2026 (causa raiz do run #117, falha em "Commit das alterações"): workflow_dispatch e
       # schedule fixam head_sha no MOMENTO DO DISPARO. Se outra rodada estava em andamento (fila do
       # concurrency), esta parte de um main já antigo; as duas mudam data/busca_web_estado.json e

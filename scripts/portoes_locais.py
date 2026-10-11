@@ -67,9 +67,12 @@ def comandos_do_workflow():
     no próprio workflow. Mesma disciplina: o perfil rápido não é escolhido aqui, é declarado lá."""
     import yaml
     wf = yaml.safe_load(WORKFLOW.read_text(encoding="utf-8"))
-    job = next(iter(wf["jobs"].values()))
+    # 11/10/2026: a suíte virou três jobs paralelos (estrutura, navegador, dado) e um de veredito.
+    # Os passos são lidos de TODOS os jobs, na ordem do arquivo; passo repetido entre jobs (o
+    # cache do navegador) não tem comando de portão e não duplica nada.
+    passos = [ps for job in wf["jobs"].values() for ps in (job.get("steps") or [])]
     saida = []
-    for passo in job.get("steps", []):
+    for passo in passos:
         nome = passo.get("name") or ""
         run = passo.get("run")
         if not run or PASSOS_IGNORADOS.search(nome):
