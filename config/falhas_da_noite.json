@@ -549,6 +549,20 @@
    "falta": null
   },
   {
+   "id": "F40",
+   "noite": "2026-10-11",
+   "titulo": "Monólito semanal verde sem coletar nada; saúde parada desde 26/09",
+   "sintoma": "`Atualização semanal de dados` (run 38100952269, 11/10 01:10, dentro da janela) terminou `success` com todos os passos de coleta `skipped`; `saude_sinais.json` com `gerado_em` 26/09, InfoDengue e calor de 25/09.",
+   "causa": "Em 08/10 (A2-18) o passo `janela` foi posto no job `repor_dominio_manual`, antes do checkout; o job `atualizar` lê `steps.janela` em todo passo e não tinha esse passo — expressão de passo inexistente resolve vazio. A camada de saúde só rodava dentro de `atualizar.py`.",
+   "prova": [
+    "run 38100952269 (jobs: 37 passos skipped)",
+    "data/saude_sinais.json gerado_em 26/09/2026"
+   ],
+   "correcao": "Passo `janela` no job `atualizar`, depois do checkout; camada de saúde em elo diário próprio (`noturno_saude.yml`); `validar_workflows.py` reprova `steps.<id>` sem passo no mesmo job; portão de frescor da Saúde (9 dias).",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_passo_condicionado_existe_no_job",
+   "falta": null
+  },
+  {
    "id": "F41",
    "noite": "2026-10-11",
    "titulo": "Leitura de PDF sobrescreve o texto integral do diário",

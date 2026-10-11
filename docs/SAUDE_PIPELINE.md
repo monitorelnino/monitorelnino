@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-04 a 2026-10-11 (666 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-04 a 2026-10-11 (679 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -20,14 +20,24 @@ Janela: 2026-10-04 a 2026-10-11 (666 execução(ões) registrada(s), 7 dias de h
 
 | script | papel | última execução | duração | itens | status | erro |
 |---|---|---|---|---:|---|---|
-| `recalcular_mare.py` | essencial | 2026-10-11 15:03 | 3 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-11 15:33 | 4 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-11 07:08 | 30 s | 1 | ok | — |
+| `classificar_saude_no_plano.py` | coletor | 2026-10-11 13:41 | 4 s | — | ok | — |
+| `coletar_arboviroses_sinan.py` | coletor | 2026-10-11 13:39 | 61 s | — | ok | — |
+| `coletar_boletim_df_arboviroses.py` | coletor | 2026-10-11 13:27 | 506 s | — | ok | — |
+| `coletar_boletim_ms_dengue.py` | coletor | 2026-10-11 13:27 | 24 s | — | ok | — |
+| `coletar_boletim_pb_arboviroses.py` | coletor | 2026-10-11 13:36 | 193 s | — | ok | — |
+| `coletar_boletim_pe_arboviroses.py` | coletor | 2026-10-11 13:36 | 9 s | — | ok | — |
+| `coletar_dda.py` | coletor | 2026-10-11 13:26 | 58 s | — | ok | — |
+| `coletar_desfechos_saude.py` | coletor | 2026-10-11 13:18 | 491 s | — | ok | — |
 | `coletar_diarios_consorciados.py` | coletor | 2026-10-10 01:44 | 3148 s | 34 | ok | — |
 | `coletar_diarios_municipais.py` | coletor | 2026-10-10 01:36 | 425 s | 50 | ok | — |
 | `coletar_doe.py` | coletor | 2026-10-10 02:36 | 846 s | — | ok | — |
 | `coletar_espin.py` | coletor | 2026-10-10 01:12 | 92 s | — | ok | — |
+| `coletar_obitos_registro_civil.py` | coletor | 2026-10-11 13:40 | 41 s | — | ok | — |
 | `coletar_recursos_resposta.py` | coletor | 2026-10-11 03:07 | 9 s | — | ok | — |
 | `coletar_s2id.py` | coletor | 2026-10-11 02:50 | 1030 s | — | ok | — |
+| `coletar_saude.py` | coletor | 2026-10-11 13:03 | 414 s | — | ok | — |
 | `coletar_sg_esus.py` | coletor | 2026-10-11 03:37 | 8 s | — | ok | — |
 | `coletar_sinais_risco.py` | coletor | 2026-10-11 11:03 | 70 s | — | ok | — |
 | `coletar_srag_sivep.py` | coletor | 2026-10-11 03:36 | 34 s | — | ok | — |
