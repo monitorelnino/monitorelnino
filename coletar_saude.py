@@ -45,6 +45,20 @@ RISCO_SANITARIO = {
 }
 
 
+
+def risco_projetado(texto: str) -> list:
+    """Riscos sanitários derivados do campo "risco" do boletim (consist.json), sem projeção nova.
+
+    11/10/2026 (Relatório D, A5-16): boletim sem sinal ("Sem sinal elevado no trimestre", ES e RJ)
+    caía em "chuvas", e risco vazio em "multi" — risco que o boletim não projeta. Sem sinal de seca
+    nem de chuva, a lista fica vazia e a página diz "sem risco previsto registrado". Função pura."""
+    r = str(texto or "").lower()
+    tem_seca = any(k in r for k in ("seca", "estiagem", "incêndio", "incendio", "calor"))
+    tem_chuva = any(k in r for k in ("chuva", "enchente", "inunda", "alagamento"))
+    tipo = "multi" if tem_seca and tem_chuva else "seca" if tem_seca else "chuvas" if tem_chuva else None
+    return list(RISCO_SANITARIO[tipo]) if tipo else []
+
+
 def semear():
     hoje = hoje_editorial().strftime("%d/%m/%Y")
     federal = {"_governanca": "Camada federal de saúde (§9.1). Reproduz documentos oficiais com órgão, data e "
@@ -76,14 +90,10 @@ def semear():
     ufs = {}
     for uf in UFS:
         c = consist.get(uf, {}) if isinstance(consist, dict) else {}
-        risco = str(c.get("risco", "")).lower() if isinstance(c, dict) else ""
-        # derivação declarada do campo "risco" de consist.json (texto dos boletins): sem projeção nova
-        tem_seca = any(k in risco for k in ("seca", "estiagem", "incêndio", "incendio", "calor"))
-        tem_chuva = any(k in risco for k in ("chuva", "enchente", "inunda", "alagamento"))
-        tipo = "multi" if (tem_seca and tem_chuva) or not risco else "seca" if tem_seca else "chuvas"
+        risco = str(c.get("risco", "")) if isinstance(c, dict) else ""
         ufs[uf] = {"status": "NAO_VERIFICADO", "orgao": None, "doc": None, "numero": None, "data": None, "url": None,
                    "hash_evidencia": None, "natureza_doc": "nenhum", "justificativa_ex_ante": None,
-                   "risco_sanitario_projetado": RISCO_SANITARIO[tipo], "consist": "NEUTRO",
+                   "risco_sanitario_projetado": risco_projetado(risco), "consist": "NEUTRO",
                    "data_verificacao": None, "log_ref": None}
     saude_uf = {"_governanca": "Camada estadual de saúde (§9.2, C1). Vocabulário fechado: NOVO · READ · VIG · ELAB · "
                                "LAC (bateria datada) · NAO_VERIFICADO. NUNCA lida por recalcular_mare.py (portão). "
@@ -491,6 +501,11 @@ def autoteste():
         finally:
             for n, b in antes.items():
                 if b is not None: (cb.DATA / n).write_bytes(b)
+    def t4b():  # A5-16: sem sinal → lista vazia; seca, chuva e as duas → família certa
+        return (risco_projetado("Sem sinal elevado no trimestre") == [] and risco_projetado("") == []
+                and risco_projetado("Seca em intensificação") == RISCO_SANITARIO["seca"]
+                and risco_projetado("Chuvas acima da média") == RISCO_SANITARIO["chuvas"]
+                and risco_projetado("Seca no norte e chuvas no sul") == RISCO_SANITARIO["multi"])
     def t4(): f = ler("saude_federal.json"); return all(c["url"] is None or c["url"].startswith("https://www.gov.br/") for c in f["cartoes"])
     def t7():  # série: SE AAAASS → 'AAAA-SS'; soma de capitais por semana; malformado ignorado
         a = parse_serie_infodengue([{"SE": 202601, "casos_est": 10.5}, {"SE": 202602, "casos_est": 2}, {"SE": "x", "casos_est": 1}, {"SE": 202601}])
@@ -584,7 +599,7 @@ def autoteste():
     import coletores_base as cb
     _SNAP = (cb.DATA / "saude_sinais.json").read_bytes() if (cb.DATA / "saude_sinais.json").exists() else b""
     return rodar_autoteste({"parser InfoDengue: última SE": t1, "negativo: resposta vazia/malformada": t2,
-                            "semear: 27 UFs NAO_VERIFICADO (sem tocar os dados reais)": t3, "cartões federais: nenhum link fora de gov.br": t4,
+                            "semear: 27 UFs NAO_VERIFICADO (sem tocar os dados reais)": t3, "cartões federais: nenhum link fora de gov.br": t4, "A5-16: boletim sem sinal não vira risco de chuvas": t4b,
                             "negativo: autoteste não altera dados reais": t5, "status: falha de rede não rebaixa coleta válida": t6,
                             "série 2024–2026: parse e soma das capitais": t7,
                             "MS calor: decodifica a serialização própria do app": t8,

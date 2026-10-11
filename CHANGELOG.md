@@ -36,6 +36,10 @@ não pontuados permanecem na versão corrente.
 
 Quem lê o site sem JavaScript (leitor de tela, indexador) via "Última checagem em 02/10/2026" e o índice de resposta 10,5 com o dado em 11/10 e 12,4: o preenchimento do HTML estático só rodava no monólito semanal, parado desde 08/10. O publicador passa a fazê-lo a cada publicação. Onde: `publicar_dados.yml`; `index.html` e `saude.html` em dia.
 
+## 2026-10-11 · #PR · Saúde: boletim sem sinal deixa de virar risco de chuvas (A5-16)
+
+ES e RJ, com "Sem sinal elevado no trimestre" no boletim, apareciam no mapa de risco previsto da Saúde com a família de chuvas (leptospirose, diarreias, hepatite A). A derivação caía em "chuvas" quando não achava sinal. Agora, sem sinal de seca nem de chuva, a lista fica vazia e o mapa diz "sem risco previsto registrado". Onde: `coletar_saude.py`, `data/saude_uf.json`.
+
 ## 2026-10-11 · #PR · série do TransfereGov: semana sem carga da fonte deixa de ser R$ 0 (A6-03)
 
 A fonte parou na carga de 17/07, e as onze semanas seguintes iam para a série como zero, como se nenhum convênio tivesse sido assinado. Agora ficam sem valor; as rotas que este coletor não lê também deixam de ser zero. Dentro do período carregado, semana sem instrumento segue zero, que é o fato. Onde: `coletar_transferegov.py`, `data/financiamento/serie_nacional.json`.
