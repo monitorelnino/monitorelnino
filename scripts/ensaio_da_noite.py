@@ -808,6 +808,9 @@ def ensaio_checagem_pre_noite_nao_e_cega(diz) -> bool:
         and cp.noite_seguinte(_dt.datetime(2026, 10, 11, 1, 20)) == "2026-10-11"
     diz("   ✓ erro do `gh` deixa a checagem vermelha e nomeada; cron atrasado não julga a noite seguinte"
         if ok else "   ✗ a checagem pré-noite ainda é cega ao erro do `gh` ou julga a noite errada")
+    return ok
+
+
 def ensaio_fila_longa_ainda_commita(diz) -> bool:
     """18. Fila que passa do teto ainda chega ao commit; comentário não é comando.
 
