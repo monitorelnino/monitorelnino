@@ -815,6 +815,7 @@ jobs:
           # por isso não entra na rotina automatizada: entra como portão, para que a estrutura de
           # data/financiamento_uf.json e o vocabulário de status continuem válidos.
           python3 coletar_espin.py --autoteste
+          python3 buscar_protocolo_calor.py --autoteste
           python3 coletar_siconfi_182.py --autoteste
           python3 buscar_financiamento_preventivo.py --check
           # §209 (24/09/2026): leitor único da página de consulta do DOU. O DOU trocou o

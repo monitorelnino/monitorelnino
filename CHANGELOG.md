@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-11 · #PR · busca semanal do Protocolo Nacional de Calor Extremo (HANDOVER_SAUDE 3.4)
+
+O documento anunciado pelo Ministério da Saúde em 16/09 não foi localizado até 11/10. A busca passa a rodar toda semana no DOU, com rastro: termos, janela, itens lidos e candidatos (ato da Saúde que cita calor e protocolo, diretriz, plano ou portaria). Candidato é ato a ler; nada entra no índice. Onde: `buscar_protocolo_calor.py`, `semanal_espin_e_links.yml`.
+
 ## 2026-10-11 · #PR · texto estático das páginas volta a acompanhar o dado (A4-31)
 
 Quem lê o site sem JavaScript (leitor de tela, indexador) via "Última checagem em 02/10/2026" e o índice de resposta 10,5 com o dado em 11/10 e 12,4: o preenchimento do HTML estático só rodava no monólito semanal, parado desde 08/10. O publicador passa a fazê-lo a cada publicação. Onde: `publicar_dados.yml`; `index.html` e `saude.html` em dia.
