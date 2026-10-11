@@ -65,17 +65,22 @@ jobs:
     if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
     uses: ./.github/workflows/_coletor.yml
     with:
-      nome: sinais-fisicos
-      timeout_minutos: 30
+      nome: saude
+      timeout_minutos: 60
       comandos: |
-        # Avisos do INMET, focos do INPE, seca, ONI/RONI e anomalia — tudo o que o Monitor de riscos
-        # desenha. Sem `--municipios`: esse recorte é do clima municipal, que fica no atualizar.yml.
-        coletar_sinais_risco.py
-        # 11/10/2026 (F38): transferências da União a municípios, do download de dados abertos do
-        # Portal da Transparência. Saiu da rotina semanal de sinais, que estourou o teto quatro vezes
-        # seguidas sem commitar — e o arquivo envelheceu além dos 9 dias do portão de frescor do
-        # Financiamento. Aqui custa ~1 min por noite; reler um mês é idempotente.
-        coletar_transferencias_municipais.py --ano 2026
+        coletar_saude.py
+        coletar_desfechos_saude.py
+        coletar_desfechos_saude.py --doenca chikungunya
+        coletar_dda.py
+        coletar_boletim_ms_dengue.py
+        coletar_boletim_df_arboviroses.py
+        coletar_boletim_pe_arboviroses.py
+        coletar_boletim_pb_arboviroses.py
+        # Contagem de dengue e chikungunya pela fonte primária (SINAN) e óbitos registrados em
+        # cartório, por UF e mês: vinham da rotina semanal de sinais, que não commitava (F38).
+        coletar_arboviroses_sinan.py
+        coletar_obitos_registro_civil.py
+        classificar_saude_no_plano.py
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       # 08/10/2026 (A2-28): sem o `ROBO_TOKEN`, o tique oportunista roda com o
