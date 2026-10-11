@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-11 · #PR · união de conflito regera o painel de saúde em vez de recusá-lo
+
+`docs/SAUDE_PIPELINE.md` é derivado de `data/saude_pipeline.json`, fora da cadeia canônica, e o resolvedor o recusava: foi o conflito mais frequente dos PRs de 11/10, porque cada publicação reescreve o painel. Agora ele é regerado pelo próprio gerador depois que a fonte é unida pela base comum; se o gerador falha, recusa. Onde: `scripts/unir_conflito_de_rodada.py`.
+
 ## 2026-10-11 · #PR · repasses do FNS em 2026 e os ligados a emergência (Financiamento)
 
 O fundo a fundo do SUS está no mesmo download de transferências do Portal, com o favorecido "Administração Pública" (o fundo de saúde), que o recorte municipal não lia. `coletar_fns.py` lê esse recorte: por estado, esfera, programa e município, marcando como ligado a emergência só o que o nome da ação ou do plano orçamentário cita. Seção nova na página; plano do SUS para o El Niño entre os compromissos, sem valor. Também: não casados deixam de somar a cada leitura (A6-12).
