@@ -756,6 +756,107 @@ def ensaio_chamador_do_coletor_concede_o_que_ele_pede(diz) -> bool:
     return True
 
 
+def ensaio_triagem_uma_vez_na_abertura(diz) -> bool:
+    """19. Na abertura, a triagem nasce só da corrente — o despachante não dispara outra.
+
+    11/10/2026 (F27 do catálogo): às 01:10 o despachante disparou a triagem (run 38100940441, "nenhuma
+    triagem na janela") e às 01:13 o fim dos sinais disparou outra (38101135888). Reprova se o
+    workflow da triagem tem gatilho de corrente e o registro deixa o despachante dispará-la antes do
+    horário primário.
+    """
+    import datetime as _dt
+    import json as _json
+    import pathlib
+
+    raiz = pathlib.Path(__file__).resolve().parents[1]
+    sys.path.insert(0, str(raiz / "scripts"))
+    import despachar_temporizadores as dp
+    wf = (raiz / ".github/workflows/noturno_triagem.yml").read_text(encoding="utf-8")
+    reg = _json.loads((raiz / "config/temporizadores.json").read_text(encoding="utf-8"))
+    tri = [t for t in reg["temporizadores"] if t.get("workflow") == "noturno_triagem.yml"]
+    if "workflow_run:" in wf and any(dp.esta_devido(t, [], _dt.datetime(2026, 10, 11, 1, 10)) for t in tri):
+        diz("   ✗ a triagem é elo da corrente e o despachante ainda a dispara na abertura")
+        return False
+    diz("   ✓ na abertura, só a corrente chama a triagem; o despachante espera o horário dela")
+    return True
+
+
+def ensaio_checagem_pre_noite_nao_e_cega(diz) -> bool:
+    """20. A checagem pré-noite não afirma fila vazia quando o `gh` falha, nem julga a noite errada.
+
+    11/10/2026 (F36, F37): runs 38101488701 e 38104258410 (cron atrasado para 01:20 e 02:10) julgaram
+    a noite de 12/10 e disseram "nenhum run aberto" com seis elos rodando — `gh run list` não tem o
+    campo `path`, e o erro virava lista vazia.
+    """
+    import datetime as _dt
+    import pathlib
+
+    raiz = pathlib.Path(__file__).resolve().parents[1]
+    sys.path.insert(0, str(raiz / "scripts"))
+    import checagem_pre_noite as cp
+
+    class _R:
+        returncode, stdout, stderr = 1, "", 'Unknown JSON field: "path"'
+    erros = []
+    cp._gh_json(["run", "list"], erros, executar=lambda *a, **k: _R())
+    fatos = {"portoes_main": {"conclusion": "success"}, "merges": [], "runs_abertos": [],
+             "ultimo_run": {}, "segredos": {}, "ensaio_real": None, "erros_de_consulta": erros}
+    cega = [x for x in cp.avaliar(fatos, _dt.datetime(2026, 10, 10, 23, 0))
+            if x["pergunta"].startswith("as consultas")]
+    ok = bool(cega) and not cega[0]["ok"]
+    ok = ok and cp.atrasada(_dt.datetime(2026, 10, 11, 1, 20)) \
+        and cp.noite_seguinte(_dt.datetime(2026, 10, 11, 1, 20)) == "2026-10-11"
+    diz("   ✓ erro do `gh` deixa a checagem vermelha e nomeada; cron atrasado não julga a noite seguinte"
+        if ok else "   ✗ a checagem pré-noite ainda é cega ao erro do `gh` ou julga a noite errada")
+    return ok
+
+
+def ensaio_fila_longa_ainda_commita(diz) -> bool:
+    """18. Fila que passa do teto ainda chega ao commit; comentário não é comando.
+
+    11/10/2026 (F38 e F39 do catálogo): a rotina semanal de sinais estourou o teto de 150 min
+    quatro vezes seguidas (runs 37205422226, 38100963895, 38109274967, 38118915381) e não
+    commitou nada — o arquivo de transferências ficou com 10 dias e a `main` vermelha. E cada linha
+    de comentário da fila virava `saude_pipeline.py --rodar '#'`. Reprova se o passo Coletar não
+    passar o prazo ao invólucro, se o prazo não for contado do início do job, ou se o laço, rodado
+    de verdade no bash, tratar comentário como comando.
+    """
+    import pathlib
+    import re as _re
+    import subprocess as _sp
+
+    raiz = pathlib.Path(__file__).resolve().parents[1]
+    fonte = (raiz / ".github/workflows/_coletor.yml").read_text(encoding="utf-8")
+    ok = True
+    if 'JOB_INICIO_EPOCH=$(date -u +%s)" >> "$GITHUB_ENV"' not in fonte:
+        diz("   ✗ o início do job não é marcado — o prazo não teria de onde contar")
+        ok = False
+    if '--prazo "$PRAZO" --rodar' not in fonte:
+        diz("   ✗ o passo Coletar não passa o prazo ao invólucro")
+        ok = False
+    m = _re.search(r"(          while IFS= read -r cmd; do\n.*?\n          done) <<'COMANDOS'", fonte, _re.S)
+    if not m:
+        diz("   ✗ laço de comandos do coletor não encontrado")
+        return False
+    laco = "\n".join(l[10:] for l in m.group(1).splitlines()).replace(
+        "python3 scripts/saude_pipeline.py", "echo RODOU")
+    script = ("PRAZO=0\n" + laco + " <<'COMANDOS'\n"
+              "  # comentário da fila\n\n  coletar_a.py --x 1\n#outro\n  coletar_b.py\nCOMANDOS\n")
+    saida = _sp.run(["bash", "-e", "-o", "pipefail", "-c", script], capture_output=True, text=True)
+    rodou = [l for l in saida.stdout.splitlines() if l.startswith("RODOU")]
+    if rodou != ['RODOU --prazo 0 --rodar coletar_a.py --x 1', 'RODOU --prazo 0 --rodar coletar_b.py']:
+        diz(f"   ✗ o laço rodou {rodou!r} (esperado: só os dois comandos, sem comentário)")
+        ok = False
+    sys.path.insert(0, str(raiz / "scripts"))
+    import saude_pipeline as _sp_mod
+    if _sp_mod.decidir_prazo(100.0, 90.0)[0] != "pular":
+        diz("   ✗ comando que começaria sem tempo não é pulado")
+        ok = False
+    if ok:
+        diz("   ✓ a coleta tem prazo contado do início do job, e só comando de verdade roda")
+    return ok
+
+
 def ensaio_passo_condicionado_existe_no_job(diz) -> bool:
     """21. Todo `steps.<id>` lido num job aponta para um passo do PRÓPRIO job.
 
@@ -804,6 +905,9 @@ ENSAIOS = (
     ("15. toda `env.` lida pelo coletor é exportada antes", ensaio_env_usada_e_exportada),
     ("16. elo fora da `main` não empurra para a `main`", ensaio_fora_da_main_nao_empurra),
     ("17. chamador do coletor concede o que ele pede", ensaio_chamador_do_coletor_concede_o_que_ele_pede),
+    ("18. fila longa ainda commita; comentário não é comando", ensaio_fila_longa_ainda_commita),
+    ("19. na abertura, a triagem nasce só da corrente", ensaio_triagem_uma_vez_na_abertura),
+    ("20. a checagem pré-noite não é cega nem julga a noite errada", ensaio_checagem_pre_noite_nao_e_cega),
     ("21. todo passo condicionado existe no próprio job", ensaio_passo_condicionado_existe_no_job),
 )
 

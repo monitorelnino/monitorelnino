@@ -831,7 +831,7 @@ const AREAS = [
     if (el('fonteCalorMun')) {
       const lidos = C.municipios_lidos || Object.keys(C.municipios || {}).length;
       el('fonteCalorMun').textContent = 'Painel Nacional de Excesso de Calor (Ministério da Saúde) · '
-        + n(lidos) + ' município(s) lido(s)' + (C.data ? ' · consulta de ' + C.data : '');
+        + n(lidos) + ' município(s) lido(s)' + (C.data ? ' · consulta de ' + (MonitorMapas.dataBR(C.data) || C.data) : '');
     }
   }).catch(() => {});
 
@@ -1193,7 +1193,7 @@ const AREAS = [
     }
     if (el('linhaCalorSerie')) {
       el('linhaCalorSerie').textContent = n(C.municipios_lidos || 0) + ' município(s) lido(s)'
-        + (C.data ? ' · consulta de ' + C.data : '');
+        + (C.data ? ' · consulta de ' + (MonitorMapas.dataBR(C.data) || C.data) : '');
     }
     if (el('fraseCalor')) {
       el('fraseCalor').textContent = n((r.severo || 0) + (r.extremo || 0))
@@ -1284,7 +1284,7 @@ const AREAS = [
       const m = base && base.municipios && base.municipios[cod];
       if (!m) return '<p class="u-mb-0">Município não lido na consulta mais recente.</p>';
       const classe = m.classe || m.nivel || m;
-      return '<p class="u-mb-0">Classe ' + esc(String(classe)) + ' na consulta de ' + esc(base.data || '—') + '.</p>';
+      return '<p class="u-mb-0">Classe ' + esc(String(classe)) + ' na consulta de ' + esc(MonitorMapas.dataBR(base.data) || base.data || '—') + '.</p>';
     },
     (base, ref) => (base && base.municipios)
       ? contarMunicipios(base, ref).toLocaleString('pt-BR') + ' municípios lidos na consulta mais recente'

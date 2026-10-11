@@ -8,7 +8,7 @@ Serve a uma pergunta só: **por onde começar a ler** quando um pedido chega. An
 
 **Regra de página: contrato + componentes** (editoria, 02/10/2026). A forma de uma página não vive no HTML: vive em `layout/contratos/<pagina>.json`, que declara seções, ordem, cartões, grades e texto proibido. O HTML e o JavaScript se conformam ao contrato, e `scripts/verificar_layout.py` reprova a divergência — nenhum PR de página com contrato é mesclado com ele vermelho. Cartão de número é `.cartao-numero` em `.grade-numeros--3`; figura é `.cartao-mapa` em `.grade-figuras--3`; nada de ajuste de pixel por cartão.
 
-Atualizado em 10/10/2026.
+Atualizado em 11/10/2026.
 
 **A coluna `importado por`** (05/10/2026) diz quantos arquivos do repositório importam aquele — é a resposta curta para "o que a minha mudança alcança". Ela não substitui o portão de runtime, mas evita a surpresa: `coletores_base.py` tem 169 importadores, e os dois acidentes de isolamento de 02 e 05/10 custaram 907 atos e seis execuções de log por mexer ali sem ver esse número.
 
@@ -184,7 +184,7 @@ Atualizado em 10/10/2026.
 | `scripts/registrar_faixas.py` | — | `historico_faixas.json` | — | 1 | não |
 | `scripts/remediar_cpf_evidencias.py` | — | `evidencias.json` | — | — | não |
 | `scripts/remediar_segredos_evidencias.py` | — | `evidencias.json` | — | 1 | não |
-| `scripts/saude_pipeline.py` | — | `saude_pipeline.json` | — | 1 | não |
+| `scripts/saude_pipeline.py` | — | `a.json`, `b.json`, `saude_pipeline.json` | — | 2 | não |
 | `scripts/sondar_dda_zenodo.py` | — | `saude_desfechos/completude.json`, `saude_desfechos/serie_painel.json` | — | — | não |
 | `scripts/sondar_rotas_doe.py` | — | `fontes_doe.json` | — | — | não |
 | `scripts/testar_escrita_atomica.py` | — | `w.json`, `x.json`, `y.json`, `z.json` | — | — | não |
