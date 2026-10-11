@@ -575,6 +575,19 @@
    "correcao": "A fila de leitura exclui item com `texto_integral` (`precisa_leitura`); os seis `.txt` voltam ao conteúdo selado e os campos da leitura saem do índice.",
    "caso_de_teste": "preservar_evidencias.py --autoteste: (F41)",
    "falta": null
+  },
+  {
+   "id": "F42",
+   "noite": "2026-10-11",
+   "titulo": "Reposição do domínio falha e o passo sai verde",
+   "sintoma": "Domínio parado no estado de ~10:00 UTC de 11/10; todo `Publicar dados` verde até 18:00.",
+   "causa": "O passo \"Repor o site no domínio\" procurava \"Deploy is live\" e, sem ele, só emitia `::warning::` — o Netlify respondia \"Unauthorized: could not retrieve site\" a cada deploy.",
+   "prova": [
+    "run 38160933469 (17:48 UTC): passo de reposição success com \"Error: Unauthorized: could not retrieve site\""
+   ],
+   "correcao": "O passo termina com `::error::` e `exit 1` (publicar_dados.yml e atualizar.yml, depois de empurrar o dado e registrar o relatório); `validar_workflows.py` reprova deploy que só avisa, salvo exceção declarada `f42-aviso-ok:`.",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_deploy_falho_e_vermelho",
+   "falta": "a credencial do Netlify (editoria): enquanto não voltar, o publicador fica vermelho no passo do domínio, com o dado publicado no repositório."
   }
  ]
 }

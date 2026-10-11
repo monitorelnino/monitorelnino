@@ -268,6 +268,7 @@ jobs:
           printf '/*\n  X-Robots-Tag: noindex, nofollow\n' > /tmp/cortina_inicio/_headers
           npx --yes netlify-cli@17 deploy --prod --dir=/tmp/cortina_inicio \
             --message "Em atualização (início da rodada) — commit ${GITHUB_SHA::7}" > /tmp/cortina_out.txt 2>&1
+          # f42-aviso-ok: a cortina de início é cosmética; o passo final repõe o estado e é vermelho se falhar.
           if grep -q "Deploy is live" /tmp/cortina_out.txt; then
             echo "Cortina 'em atualização' publicada no domínio."
           else
@@ -834,14 +835,19 @@ jobs:
           } > /tmp/repor_relatorio.txt 2>&1
           sed -i "s/${NETLIFY_AUTH_TOKEN}/[TOKEN]/g" /tmp/repor_relatorio.txt
           [ -n "$PREVIA_BASIC_AUTH" ] && sed -i "s/${PREVIA_BASIC_AUTH}/[SENHA]/g" /tmp/repor_relatorio.txt
+          # 11/10/2026 (F42): a falha era só um aviso e o passo saía verde. Agora o relatório
+          # vai ao robo-registro e o passo termina vermelho.
+          REPOS=1
           if grep -q "Deploy is live" /tmp/repor_relatorio.txt; then
             echo "Domínio reposto com o site completo, atrás de senha."
           else
-            echo "::warning::Reposição falhou — o domínio pode ter ficado na cortina. Ver robo-registro."
+            echo "::error::Reposição do domínio falhou (sem 'Deploy is live'). Ver robo-registro."
+            REPOS=0
           fi
           git clone -q "https://x-access-token:${ROBO_TOKEN}@github.com/monitorelnino/robo-registro.git" /tmp/reg_repor 2>/dev/null
           mkdir -p /tmp/reg_repor/relatorios && cp /tmp/repor_relatorio.txt "/tmp/reg_repor/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_repor_dominio.txt"
           cd /tmp/reg_repor && git config user.name "monitor-el-nino-bot" && git config user.email "bot@users.noreply.github.com" && git add -A && git commit -q -m "repor dominio ${GITHUB_SHA::7}" && git push -q
+          [ "$REPOS" = "1" ]
 
       # ── VIGIA DO DESFECHO (§254, 27/09/2026) ─────────────────────────────────────────────
       # Por que este passo existe. Em 27/09 mediu-se que o último commit automático de dados
