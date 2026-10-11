@@ -1,11 +1,11 @@
 {
  "_governanca": "Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. `prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). `imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o leitor peça o documento ao gestor. Só municípios com algo a dizer; ausência = nada localizado. `defesa_civil_orcamento` (§207) = despesa liquidada na subfunção 06.182 declarada ao SICONFI, peso ZERO; classe de ausência nunca vira zero.",
  "gerado_em": "2026-10-11",
- "total": 2197,
+ "total": 2199,
  "com_registro": 274,
- "com_imprensa": 137,
+ "com_imprensa": 140,
  "prioritarios": 2095,
- "com_despesa_182": 2197,
+ "com_despesa_182": 2199,
  "municipios": {
   "1100023": {
    "nome": "Ariquemes",
@@ -25502,6 +25502,30 @@
    },
    "categoria": "nao_localizado"
   },
+  "4103354": {
+   "nome": "BRAGANEY",
+   "uf": "PR",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "preparação \ne resposta às situações de emergência e desastres no âmbito \nmunicipal. \nArtigo 2º - O Plano de Contingência Municipal de Prote",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118201_2026-10-08_82709c82be94ce11459bc55a310d0b32.pdf",
+     "data": "09/10/2026",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_localizado"
+  },
   "4103701": {
    "nome": "Cambé",
    "uf": "PR",
@@ -26087,6 +26111,30 @@
    "nome": "Ivaiporã",
    "uf": "PR",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_localizado"
+  },
+  "4111605": {
+   "nome": "IVATUBA",
+   "uf": "PR",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "tores de saúde aos eventos climáticos \nextremos e aos impactos dos fenômenos ambientais através do \nPlano Municipal de Contingência para Des",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118200_2026-10-07_d69f6eb1ead14aa9af8654142af77d29.pdf",
+     "data": "2026-10-08",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -35718,6 +35766,15 @@
    "nome": "Quirinópolis",
    "uf": "GO",
    "prioritario": true,
+   "imprensa": [
+    {
+     "titulo": "rvidor(a) designado(a): \nI – Coordenar a consolidação, revisão e atualização contínua das \nações do Plano de Contingência; \n  \nII – Monitora",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=907&i=publicado_115660_2026-10-07_84c061f954d22fd1af217ce245c0c6f8.pdf",
+     "data": "2026-10-08",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
