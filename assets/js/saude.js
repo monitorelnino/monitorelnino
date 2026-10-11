@@ -1183,6 +1183,7 @@ const AREAS = [
     const leg = el('legCalorSerie');
     if (!r) {
       if (leg) leg.innerHTML = '<span class="escala">Painel de excesso de calor sem coleta até o corte.</span>';
+      if (window.MonitorMapas) MonitorMapas.credito('boxCalorSerie', {fontes: ['Painel Nacional de Excesso de Calor (Ministério da Saúde)'], data: null});
       return;
     }
     const classes = [['Normal', r.normal || 0], ['Baixo', r.baixo || 0], ['Severo', r.severo || 0],
