@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-11 · #PR · Relatório D, leva 3: três portões que falhavam calados ou devagar
+
+`verificar_evidencia_sem_segredo` reprova quando o `git diff` falha, em vez de conferir zero arquivos (A7-20). `verificar_pagina_arquivada` poda `.git`, `node_modules`, `evidencias/` e `arquivo/` na varredura: de ~4 min para menos de 1 s (A7-24). `verificar_consistencia` lê o esquema atual de `verificacao_municipal.json` (A3-15).
+
 ## 2026-10-11 · #PR · Monitor de riscos: os três mapas de "Os riscos no Brasil" numa só fila
 
 Risco previsto, seca e fogo passam a ficar lado a lado no desktop, no componente `.grade-figuras--3`, a pedido da editoria. Previsto e observado seguem distintos: os selos "Previsto pelo boletim" e "Observado" formam uma faixa alinhada às colunas da grade. No celular, empilham na ordem previsto → seca → fogo. Nenhum título, data ou fonte muda. Onde: `monitor-de-riscos.html`, `assets/base.css`, contrato da página.
