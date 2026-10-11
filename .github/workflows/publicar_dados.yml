@@ -419,9 +419,15 @@ jobs:
           sed -i "s/${NETLIFY_AUTH_TOKEN}/[TOKEN]/g" /tmp/repor_relatorio.txt
           [ -n "$PREVIA_BASIC_AUTH" ] && sed -i "s/${PREVIA_BASIC_AUTH}/[SENHA]/g" /tmp/repor_relatorio.txt
           cat /tmp/repor_relatorio.txt
-          grep -q "Deploy is live" /tmp/repor_relatorio.txt \
-            && echo "Domínio reposto com o site completo, atrás de senha." \
-            || echo "::warning::Reposição falhou — ver o relatório acima."
+          # 11/10/2026 (F42): era `::warning::` e o passo saía verde — o domínio ficou parado das
+          # 10:00 às 18:00 UTC com "Unauthorized: could not retrieve site" e todo publicador verde.
+          # O commit do dado já foi empurrado no passo anterior; o vermelho aqui é só do domínio.
+          if grep -q "Deploy is live" /tmp/repor_relatorio.txt; then
+            echo "Domínio reposto com o site completo, atrás de senha."
+          else
+            echo "::error::Reposição do domínio falhou (sem 'Deploy is live') — ver o relatório acima."
+            exit 1
+          fi
 
       # A linha do elo `publicar` no painel da noite, com a conclusão do job. Falha aqui é
       # diferente de ausência: "publicou e reprovou no portão" tem conserto (o portão diz qual) e

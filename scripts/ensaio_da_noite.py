@@ -880,6 +880,28 @@ def ensaio_passo_condicionado_existe_no_job(diz) -> bool:
     return True
 
 
+def ensaio_deploy_falho_e_vermelho(diz) -> bool:
+    """22. Deploy sem "Deploy is live" termina vermelho, não com aviso.
+
+    11/10/2026 (F42 do catálogo): de 10:00 às 18:00 UTC o Netlify respondeu "Unauthorized: could not
+    retrieve site" a cada publicação, e o passo de reposição do domínio só emitia aviso — publicador
+    verde, domínio parado. Reprova se o validador de workflows acusar deploy que só avisa.
+    """
+    import pathlib
+    import subprocess as _sp
+
+    raiz = pathlib.Path(__file__).resolve().parents[1]
+    r = _sp.run([sys.executable, "scripts/validar_workflows.py"], cwd=raiz, capture_output=True,
+                text=True)
+    ruins = [l.strip() for l in r.stdout.splitlines() if "(F42)" in l]
+    if ruins:
+        for l in ruins[:5]:
+            diz("   " + l)
+        return False
+    diz('   ✓ todo deploy sem "Deploy is live" termina vermelho')
+    return True
+
+
 ENSAIOS = (
     ("dois elos em paralelo: zero conflito, zero perda", ensaio_dois_elos_em_paralelo),
     ("disparo duplicado: o segundo sai sem trabalho", ensaio_disparo_duplicado),
@@ -909,6 +931,7 @@ ENSAIOS = (
     ("19. na abertura, a triagem nasce só da corrente", ensaio_triagem_uma_vez_na_abertura),
     ("20. a checagem pré-noite não é cega nem julga a noite errada", ensaio_checagem_pre_noite_nao_e_cega),
     ("21. todo passo condicionado existe no próprio job", ensaio_passo_condicionado_existe_no_job),
+    ("22. deploy falho é vermelho, não aviso", ensaio_deploy_falho_e_vermelho),
 )
 
 

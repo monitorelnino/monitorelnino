@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-11. 41 falhas; 36 com caso de teste que as reproduz; 5 sem, com o que falta dito.
+Atualizado em 2026-10-11. 42 falhas; 37 com caso de teste que as reproduz; 5 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -374,3 +374,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** commit f8a6ff77 (evidencias automático 11/10 06:36); evidencias/5ade71a70e49….txt e mais cinco
 - **Correção:** A fila de leitura exclui item com `texto_integral` (`precisa_leitura`); os seis `.txt` voltam ao conteúdo selado e os campos da leitura saem do índice.
 - **Caso de teste:** `preservar_evidencias.py --autoteste: (F41)`
+
+## F42 · Reposição do domínio falha e o passo sai verde
+
+- **Noite:** 2026-10-11
+- **Sintoma:** Domínio parado no estado de ~10:00 UTC de 11/10; todo `Publicar dados` verde até 18:00.
+- **Causa:** O passo "Repor o site no domínio" procurava "Deploy is live" e, sem ele, só emitia `::warning::` — o Netlify respondia "Unauthorized: could not retrieve site" a cada deploy.
+- **Prova:** run 38160933469 (17:48 UTC): passo de reposição success com "Error: Unauthorized: could not retrieve site"
+- **Correção:** O passo termina com `::error::` e `exit 1` (publicar_dados.yml e atualizar.yml, depois de empurrar o dado e registrar o relatório); `validar_workflows.py` reprova deploy que só avisa, salvo exceção declarada `f42-aviso-ok:`.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_deploy_falho_e_vermelho`

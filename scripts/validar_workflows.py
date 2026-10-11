@@ -403,8 +403,26 @@ for f, wf in carregados.items():
                       f"a expressão resolve vazio e o passo que depende dela nunca roda.")
                 erros += 1
 
+# DEPLOY SEM "Deploy is live" É VERMELHO (11/10/2026, F42 do catálogo).
+#
+# A reposição do domínio conferia o "Deploy is live" e, sem ele, só emitia `::warning::`: o passo
+# saía verde. De 10:00 às 18:00 UTC de 11/10 o Netlify respondeu "Unauthorized: could not retrieve
+# site" a cada publicação, e o publicador ficou verde o dia todo com o domínio parado. Reprova o
+# passo que, logo depois de procurar "Deploy is live", só avisa. Exceção declarada no próprio passo:
+# um comentário `f42-aviso-ok: <motivo>` (hoje só a cortina de início da rodada semanal).
+_RE_DEPLOY_SO_AVISA = _re.compile(r'Deploy is live[^\n]*\n(?:[^\n]*\n){0,3}?[^\n]*::warning::')
+for f, wf in carregados.items():
+    for _nome_job, _job in ((wf or {}).get("jobs") or {}).items():
+        for _p in (_job or {}).get("steps") or []:
+            _run = (_p or {}).get("run") if isinstance(_p, dict) else None
+            if _run and _RE_DEPLOY_SO_AVISA.search(_run) and "f42-aviso-ok:" not in _run:
+                print(f"  ✗ {f}: job `{_nome_job}`, passo `{_p.get('name')}`: deploy sem "
+                      f"\"Deploy is live\" só emite aviso — o passo sai verde com o site parado (F42).")
+                erros += 1
+
 print("✓ WORKFLOWS OK — YAML válido, sem chave duplicada, todo job com teto de tempo, "
       "todo portão de página com assunto declarado, reposição do domínio fora da fila da rodada, "
-      "nenhum script cancelando run de outro, nenhuma expressão de contexto vazia."
+      "nenhum script cancelando run de outro, nenhuma expressão de contexto vazia, "
+      "nenhum deploy falho saindo verde."
       if not erros else f"✗ WORKFLOWS: {erros} problema(s).")
 sys.exit(1 if erros else 0)
