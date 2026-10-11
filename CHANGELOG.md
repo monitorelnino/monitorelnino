@@ -32,6 +32,13 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-11 · #PR · portões em três jobs paralelos (estrutura, navegador, dado)
+
+O job único levava 15 a 25 min por PR. Agora `estrutura`, `navegador` e `dado` rodam lado a lado e o
+job `portoes` (mesmo nome do check) exige os três verdes. Mesmos 268 comandos: `--listar` antes e
+depois dá o mesmo conjunto; `portoes_locais.py` lê os passos de todos os jobs. Onde:
+`.github/workflows/portoes.yml`, `scripts/portoes_locais.py`. Também: sai o link `node_modules` que o #643 versionou por engano; `.gitignore` passa a cobrir link.
+
 ## 2026-10-11 · #PR · a saúde volta a ser coletada todo dia (F40)
 
 O monólito semanal terminava verde sem coletar nada desde 08/10: o passo da janela estava no job vizinho, e a saúde (InfoDengue, calor do MS, desfechos, SINAN, boletins das SES) parou em 26/09. A camada vira elo diário próprio; o validador de workflows reprova passo lido que não existe no job; portão de frescor da Saúde (9 dias); fonte sem coletor vira lacuna com motivo; data do calor em dd/mm/aaaa. Onde: `noturno_saude.yml`, `atualizar.yml`, `saude.js`.
