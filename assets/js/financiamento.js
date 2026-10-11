@@ -1133,6 +1133,68 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     }
   }).catch(() => {});
 
+  /* 6b · Saúde: repasses do FNS ligados a emergência, por estado (11/10/2026). "Ligado a
+     emergência" é o texto do ato na fonte (`coletar_fns.py`), nunca suposição; sem coleta, a
+     figura diz que não há coleta — nunca R$ 0. */
+  Promise.all([
+    fetch('data/financiamento/fns_2026.json').then(r => r.ok ? r.json() : null),
+    fetch('data/geo_uf.json').then(r => r.ok ? r.json() : null),
+  ]).then(([F, GEO]) => {
+    const meses = Object.keys((F || {}).meses || {}).sort();
+    if (!meses.length) {
+      if (el('legFnsEmergenciaUF')) el('legFnsEmergenciaUF').innerHTML = '<span class="escala">Repasses do FNS sem coleta até o corte.</span>';
+      if (el('comoLerFnsContagem')) el('comoLerFnsContagem').textContent = 'Repasses do FNS sem coleta até o corte.';
+      if (window.MonitorMapas) ['boxFnsEmergenciaUF', 'boxComoLerFns'].forEach(id => MonitorMapas.credito(id, {
+        fontes: ['Portal da Transparência, transferências (Fundo Nacional de Saúde)'], data: null}));
+      return;
+    }
+    const emerg = {}, total = {};
+    let somaEmerg = 0, somaTotal = 0, linhasEmerg = 0;
+    meses.forEach(m => {
+      const mes = F.meses[m];
+      Object.entries(mes.por_uf || {}).forEach(([uf, u]) => {
+        const t = Number(u.municipal || 0) + Number(u.estadual || 0) + Number(u.outros || 0);
+        total[uf] = (total[uf] || 0) + t; somaTotal += t;
+        emerg[uf] = (emerg[uf] || 0) + Number(u.emergencia || 0); somaEmerg += Number(u.emergencia || 0);
+      });
+      linhasEmerg += (mes.emergencia || []).length;
+    });
+    const nomeMes = m => ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto',
+      'setembro', 'outubro', 'novembro', 'dezembro'][Number(m.slice(4, 6)) - 1] + ' de ' + m.slice(0, 4);
+    const janela = nomeMes(meses[0]) + ' a ' + nomeMes(meses[meses.length - 1]);
+    if (el('mapaFnsEmergenciaUF') && GEO && window.MonitorMapas) {
+      const ctx = MonitorMapas.contexto(GEO, 480, 460);
+      const rampa = MonitorMapas.PALETA.rampaPreparo;
+      const max = Math.max(...Object.values(emerg), 1);
+      MonitorMapas.ufs(ctx, 'mapaFnsEmergenciaUF',
+        uf => !emerg[uf] ? MonitorMapas.NEUTRA
+          : rampa[Math.min(rampa.length - 1, Math.floor(emerg[uf] / max * rampa.length))],
+        uf => !emerg[uf] ? uf + ': nenhum repasse ligado a emergência no período'
+          : uf + ': ' + reais(emerg[uf]) + ' ligados a emergência');
+      MonitorMapas.legenda('legFnsEmergenciaUF', [
+        {cor: rampa[0], rotulo: 'menor valor'},
+        {cor: rampa[rampa.length - 1], rotulo: 'até ' + reais(max)},
+        {cor: MonitorMapas.NEUTRA, rotulo: 'nenhum repasse ligado a emergência'}]);
+      MonitorMapas.credito('boxFnsEmergenciaUF', {
+        fontes: ['Portal da Transparência, transferências (Fundo Nacional de Saúde)'], data: F.atualizado_em});
+    }
+    if (el('dlFnsEmergenciaUF')) {
+      el('dlFnsEmergenciaUF').innerHTML = UFS.map(uf => '<dt>' + esc(uf) + '</dt><dd>'
+        + (!emerg[uf] ? 'nenhum repasse ligado a emergência' : reais(emerg[uf]) + ' ligados a emergência')
+        + ' · ' + reais(total[uf] || 0) + ' no total</dd>').join('');
+    }
+    if (el('linhaFnsEmergenciaUF')) el('linhaFnsEmergenciaUF').textContent = janela;
+    if (el('linhaComoLerFns')) el('linhaComoLerFns').textContent = janela;
+    if (el('comoLerFnsContagem')) {
+      el('comoLerFnsContagem').textContent = reais(somaEmerg) + ' em linhas ligadas a emergência, de '
+        + reais(somaTotal) + ' repassados pelo FNS de ' + janela + '.';
+    }
+    if (window.MonitorMapas) {
+      MonitorMapas.legenda('legComoLerFns', [{cor: MonitorMapas.NEUTRA, rotulo: 'sem o termo no nome, não é contado'}]);
+      MonitorMapas.credito('boxComoLerFns', {fontes: ['Portal da Transparência, transferências (Fundo Nacional de Saúde)'], data: F.atualizado_em});
+    }
+  }).catch(() => {});
+
   /* 7 · O texto do Rio Grande do Sul, com os números do dado. */
   Promise.all([
     fetch('data/financiamento/por_uf.json').then(r => r.ok ? r.json() : null),

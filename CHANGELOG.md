@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-11 · #PR · repasses do FNS em 2026 e os ligados a emergência (Financiamento)
+
+O fundo a fundo do SUS está no mesmo download de transferências do Portal, com o favorecido "Administração Pública" (o fundo de saúde), que o recorte municipal não lia. `coletar_fns.py` lê esse recorte: por estado, esfera, programa e município, marcando como ligado a emergência só o que o nome da ação ou do plano orçamentário cita. Seção nova na página; plano do SUS para o El Niño entre os compromissos, sem valor. Também: não casados deixam de somar a cada leitura (A6-12).
+
 ## 2026-10-11 · #PR · reposição do domínio que falha fica vermelha (F42)
 
 O passo que repõe o domínio só avisava quando o Netlify não respondia "Deploy is live", e o publicador ficou verde o dia todo com o domínio parado ("Unauthorized"). Agora termina vermelho, depois de empurrar o dado e registrar o relatório. `validar_workflows.py` reprova deploy que só avisa; ensaio simulado nº 22. Onde: `publicar_dados.yml`, `atualizar.yml`.

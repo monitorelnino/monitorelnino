@@ -116,6 +116,28 @@
       "ultima_linha_incompleta": true
     },
     {
+      "id": "saudeFNS",
+      "h2": "Saúde: repasses do SUS ligados a emergência",
+      "tipo": "figuras",
+      "grade": ".grade-figuras--3",
+      "ultima_linha_incompleta": true,
+      "cartoes": [
+        {
+          "id": "mapa_uf_fns_emergencia",
+          "tipo": "mapa",
+          "el": "boxFnsEmergenciaUF",
+          "chave": "financiamento/fns_2026.json"
+        },
+        {
+          "id": "como_ler_fns",
+          "tipo": "lista",
+          "el": "boxComoLerFns",
+          "chave": "financiamento/fns_2026.json"
+        }
+      ],
+      "_nota": "11/10/2026 (HANDOVER_FINANCIAMENTO_SAUDE, item 3): repasses do FNS ligados a emergência pelo texto do ato; mesmo molde da seção do gasto próprio."
+    },
+    {
       "id": "caminhosSecao",
       "h2": null,
       "tipo": "recolhido",

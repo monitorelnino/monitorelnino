@@ -270,6 +270,7 @@ culpa, confira com `/e-da-main`: carimbo obsoleto já deixou a `main` vermelha s
 | `data/pistas_imprensa.json` | **~26 MB** |
 | `data/fontes_consultadas.json` | ~12 MB |
 | `data/financiamento/municipios/transferencias_uniao.json` | ~5 MB, e cresce todo mês |
+| `data/financiamento/municipios/fns_municipios_2026.json` | ~0,3 MB por mês de 2026, cresce todo mês (11/10/2026) |
 | `data/verificacao_municipal.json` | ~3 MB |
 | `data/log_buscas.json` | ~1 MB (o volume migrou para `data/log_buscas/`) |
 

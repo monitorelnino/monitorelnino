@@ -810,6 +810,34 @@
       ],
       "funcao_narrativa": "o ciclo em curso lido contra os episódios que o próprio dado define",
       "acao_relacionada": null
+    },
+    "financiamento.html#boxFnsEmergenciaUF": {
+      "tipo": "mapa coroplético por unidade da federação, com lista",
+      "pergunta_que_responde": "Quanto o Fundo Nacional de Saúde repassou em 2026, em cada estado, em linhas ligadas a emergência?",
+      "universo": "repasses fundo a fundo do Fundo Nacional de Saúde (função Saúde) a fundos estaduais e municipais de saúde em 2026",
+      "unidade_de_analise": "unidade da federação",
+      "territorio": "Brasil",
+      "periodo": "meses de 2026 publicados no Portal da Transparência",
+      "variavel_principal": "valor repassado em linhas cujo nome de ação ou de plano orçamentário cita emergência, calamidade, El Niño, seca, estiagem, calor, crédito extraordinário, ESPIN ou a Força Nacional do SUS",
+      "fonte": "Portal da Transparência, download de dados abertos de transferências",
+      "metodologia": "Soma por estado das linhas do FNS cujo nome de ação ou de plano orçamentário, tal como a fonte o escreve, contém um dos termos. Estado sem linha assim aparece sem registro, nunca como R$ 0. Peso zero no índice.",
+      "conclusoes_permitidas": "comparar entre estados o valor repassado em linhas nomeadas como de emergência",
+      "conclusoes_nao_permitidas": "ler o total como todo o dinheiro da saúde para o El Niño; ler ausência de linha como ausência de gasto",
+      "funcao_narrativa": "mostra onde o dinheiro federal da saúde identificado como de emergência chegou no ano"
+    },
+    "financiamento.html#boxComoLerFns": {
+      "tipo": "lista de leitura (texto curto)",
+      "pergunta_que_responde": "Como ler os repasses do Fundo Nacional de Saúde nesta página?",
+      "universo": "repasses fundo a fundo do Fundo Nacional de Saúde em 2026",
+      "unidade_de_analise": "linha de repasse",
+      "territorio": "Brasil",
+      "periodo": "meses de 2026 publicados no Portal da Transparência",
+      "variavel_principal": "critério de leitura das linhas de repasse",
+      "fonte": "Portal da Transparência, download de dados abertos de transferências",
+      "metodologia": "Explica o recorte: favorecido fundo de saúde, esfera pelo nome do favorecido, ligação a emergência só pelo nome da ação ou do plano orçamentário.",
+      "conclusoes_permitidas": "entender o que entra e o que não entra no recorte",
+      "conclusoes_nao_permitidas": "tirar do recorte conclusão sobre gasto total em saúde",
+      "funcao_narrativa": "orienta a leitura do mapa do FNS"
     }
   }
 }

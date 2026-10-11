@@ -313,14 +313,24 @@ def fundir(anterior: dict, mes: str, por_ibge: dict, nao_casados: dict, sem_muni
                         "valor_nao_casado": round(sum(nao_casados.values()), 2),
                         "sem_municipio_na_fonte": round(sum(sem_municipio.values()), 2)}
     saida["meses_lidos"] = marcar_parciais({m: meses_lidos[m] for m in sorted(meses_lidos)})
-    pendentes = dict(saida.get("nao_casados") or {})
-    for (uf, nome), v in nao_casados.items():
-        pendentes[f"{uf}|{nome}"] = round(pendentes.get(f"{uf}|{nome}", 0.0) + v, 2)
-    saida["nao_casados"] = {k: pendentes[k] for k in sorted(pendentes)}
-    sem = dict(saida.get("sem_municipio_na_fonte") or {})
-    for uf, v in sem_municipio.items():
-        sem[uf] = round(sem.get(uf, 0.0) + v, 2)
-    saida["sem_municipio_na_fonte"] = {k: sem[k] for k in sorted(sem)}
+    # 11/10/2026 (A6-12 do relatório D): `nao_casados` e `sem_municipio_na_fonte` SOMAVAM a cada
+    # leitura — reler o mesmo mês dobrava o valor, e com a coleta diária ele cresceria trinta vezes
+    # por mês. Agora cada mês guarda o seu, e o total é a soma dos meses: reler substitui.
+    por_mes_nc = dict(saida.get("nao_casados_por_mes") or {})
+    por_mes_nc[mes] = {f"{uf}|{nome}": round(v, 2) for (uf, nome), v in sorted(nao_casados.items())}
+    saida["nao_casados_por_mes"] = {m: por_mes_nc[m] for m in sorted(por_mes_nc)}
+    por_mes_sem = dict(saida.get("sem_municipio_por_mes") or {})
+    por_mes_sem[mes] = {uf: round(v, 2) for uf, v in sorted(sem_municipio.items())}
+    saida["sem_municipio_por_mes"] = {m: por_mes_sem[m] for m in sorted(por_mes_sem)}
+
+    def somar(por_mes):
+        tot = {}
+        for itens in por_mes.values():
+            for k, v in itens.items():
+                tot[k] = round(tot.get(k, 0.0) + v, 2)
+        return {k: tot[k] for k in sorted(tot)}
+    saida["nao_casados"] = somar(saida["nao_casados_por_mes"])
+    saida["sem_municipio_na_fonte"] = somar(saida["sem_municipio_por_mes"])
     return saida
 
 
@@ -332,6 +342,27 @@ def meses_do_ano(ano: int, hoje=None) -> list:
     h = hoje or hoje_editorial()
     ultimo = 12 if ano < h.year else h.month - 1
     return [f"{ano}{m:02d}" for m in range(1, max(0, ultimo) + 1)]
+
+
+def mesmo_conteudo(anterior_mes: dict, linhas: int, soma: float) -> bool:
+    """O mês lido agora tem o mesmo conteúdo da leitura anterior? Função pura."""
+    a = anterior_mes or {}
+    return a.get("linhas_municipais") == linhas and round(float(a.get("soma") or -1), 2) == round(soma, 2)
+
+
+def copia_ja_preservada(anterior: dict, mes: str, linhas: int, soma: float, url: str):
+    """Hash da cópia já preservada deste mês quando o conteúdo não mudou; senão None."""
+    ant = ((anterior or {}).get("meses_lidos") or {}).get(mes) or {}
+    if not mesmo_conteudo(ant, linhas, soma):
+        return None
+    if ant.get("hash_evidencia"):
+        return ant["hash_evidencia"]
+    # Leitura de antes deste campo: a cópia mais recente do mesmo endereço, se estiver em disco.
+    idx = (ler("evidencias.json", {}) or {}).get("itens") or {}
+    for h, it in reversed(list(idx.items())):
+        if it.get("url") == url and it.get("arquivo") and (RAIZ / it["arquivo"]).exists():
+            return h
+    return None
 
 
 def coletar(mes: str) -> dict:
@@ -348,8 +379,17 @@ def coletar(mes: str) -> dict:
         registrar_lacuna("portal_transferencias", f"{mes}: {type(e).__name__}: {e}",
                          canal="DOU", camada=1, strings=[url])
         return {}
-    h = preservar_evidencia(corpo, url, "zip", "coletar_transferencias_municipais")
     por_ibge, nao_casados, sem_municipio, linhas, soma = ler_mes(corpo, chave)
+    anterior = {}
+    if SAIDA.exists():
+        import json
+        anterior = json.loads(SAIDA.read_text(encoding="utf-8"))
+    # 11/10/2026: o ZIP do Portal muda de bytes a cada download (carimbo interno), mesmo com o mês
+    # fechado e o conteúdo igual. Com a coleta diária, isso seriam ~21 MB de cópias idênticas em
+    # `evidencias/` por noite. Mês com o mesmo conteúdo lido reaproveita a cópia já preservada.
+    h = copia_ja_preservada(anterior, mes, linhas, soma, url)
+    if h is None:
+        h = preservar_evidencia(corpo, url, "zip", "coletar_transferencias_municipais")
     # Zero linha municipal NÃO é "nada foi transferido": é formato mudado ou arquivo vazio.
     if linhas == 0:
         registrar_lacuna("portal_transferencias", f"{mes}: zero linha municipal no arquivo",
@@ -357,11 +397,18 @@ def coletar(mes: str) -> dict:
         log_busca("DOU", 1, [url], "erro", resultados=f"{mes}: zero linha municipal",
                   hash_evidencia=h)
         return {}
-    anterior = {}
-    if SAIDA.exists():
-        import json
-        anterior = json.loads(SAIDA.read_text(encoding="utf-8"))
     dados = fundir(anterior, mes, por_ibge, nao_casados, sem_municipio, linhas, soma)
+    dados["meses_lidos"][mes]["hash_evidencia"] = h
+    # 11/10/2026 (HANDOVER_FINANCIAMENTO_SAUDE, item 1): o fundo a fundo do SUS está no MESMO
+    # arquivo, com o favorecido classificado como "Administração Pública" (o fundo de saúde), que o
+    # recorte acima não lê. `coletar_fns.py` lê o mesmo ZIP com o recorte do FNS; falha dele vira
+    # lacuna declarada e não derruba as transferências.
+    try:
+        import coletar_fns
+        coletar_fns.processar(corpo, mes, h)
+    except Exception as e:  # noqa: BLE001
+        registrar_lacuna("portal_transferencias/FNS", f"{mes}: {type(e).__name__}: {e}"[:300],
+                         canal="DOU", camada=1, strings=[url], hash_evidencia=h)
     dados["_formato"] = (
         "Transferências da União a municípios, por mês e por rota, do download de DADOS ABERTOS do "
         "Portal da Transparência (sem chave de API: a API exige `chave-api-dados` e chave está "
@@ -448,6 +495,16 @@ def autoteste() -> int:
         # As duas regras gerais e a tabela, com os casos REAIS que as criaram.
         "o sufixo do nome antigo do SIAFI sai antes de comparar":
             lambda: RE_SUFIXO_EX.sub("", "CAMPO GRANDE  EX AUGUSTO SEVERO").strip() == "CAMPO GRANDE",
+        "reler o mesmo mês não soma de novo os não casados nem o sem município (A6-12)":
+            lambda: (lambda d: d["nao_casados"] == {"PE|X": 5.0} and d["sem_municipio_na_fonte"] == {"PE": 2.0})(
+                fundir(fundir({}, "202601", {}, {("PE", "X"): 5.0}, {"PE": 2.0}, 1, 7.0),
+                       "202601", {}, {("PE", "X"): 5.0}, {"PE": 2.0}, 1, 7.0)),
+        "mês com o mesmo conteúdo reaproveita a cópia preservada; mudado, não":
+            lambda: (copia_ja_preservada({"meses_lidos": {"202601": {"linhas_municipais": 5, "soma": 10.0,
+                                          "hash_evidencia": "h1"}}}, "202601", 5, 10.0, "u") == "h1"
+                     and copia_ja_preservada({"meses_lidos": {"202601": {"linhas_municipais": 5, "soma": 10.0,
+                                              "hash_evidencia": "h1"}}}, "202601", 6, 10.0, "u") is None
+                     and mesmo_conteudo({"linhas_municipais": 5, "soma": 10.004}, 5, 10.0)),
         "o município é indexado por todos os seus nomes":
             lambda: nomes_do_municipio("Januário Cicco (Boa Saúde)") == {"JANUARIO CICCO BOA SAUDE",
                                                                          "JANUARIO CICCO", "BOA SAUDE"},
