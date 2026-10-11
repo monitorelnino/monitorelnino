@@ -22,10 +22,12 @@ O QUE ELE NÃO FAZ
   3.3). Excerto do DOU não é o ato.
 
 TRAVAS
-  1. Rede: `buscar` do coletores_base (cliente identificado, espera e nova tentativa).
-  2. Formato: página sem a estrutura de resultados → lacuna declarada e NADA é sobrescrito
-     (lista vazia afirmaria "não há", e o que houve foi leitura quebrada).
-  3. Recorte: janela do DOU que não coube é declarada; nunca se apresenta recorte como varredura.
+  1. Estrutural: nunca escreve em estados.json, saude_uf.json, municipios.json, indice.json nem
+     monitor_saude.json (o autoteste lê o próprio fonte).
+  2. De campo: todo candidato sai com `documento_oficial_confirmado: None` e `promovivel: False`.
+  3. De qualidade: rede ou formato quebrado, ou zero item nas três consultas → lacuna declarada e
+     NADA é sobrescrito; janela do DOU que não coube → "varredura_incompleta", nunca
+     "nao_localizado". Cliente identificado e ritmo de 2 s por domínio vêm do coletores_base.
 
 USO
   python3 buscar_protocolo_calor.py
@@ -59,13 +61,21 @@ def candidatos(itens: list) -> list:
         if it.get("url") in vistos:
             continue
         vistos.add(it.get("url"))
-        out.append({k: it.get(k) for k in ("titulo", "url", "data", "orgao", "trecho")})
+        c = {k: it.get(k) for k in ("titulo", "url", "data", "orgao", "trecho")}
+        # Trava de campo: excerto do DOU não é o ato. Ninguém promove candidato sem ler o documento.
+        c.update({"documento_oficial_confirmado": None, "promovivel": False})
+        out.append(c)
     return out
 
 
 def montar(anterior: dict, consultas: list, achados: list, hoje: str) -> dict:
-    """O arquivo novo a partir do anterior. O histórico só cresce. Função pura."""
-    estado = "candidatos_a_ler" if achados else "nao_localizado"
+    """O arquivo novo a partir do anterior. O histórico só cresce. Função pura.
+
+    Janela do DOU que não coube é recorte, não varredura: sem candidato e com janela incompleta,
+    o estado é "varredura_incompleta", nunca "nao_localizado"."""
+    incompleta = any(c.get("janelas_incompletas") for c in consultas or [])
+    estado = ("candidatos_a_ler" if achados else
+              "varredura_incompleta" if incompleta else "nao_localizado")
     historico = list((anterior or {}).get("historico") or [])
     historico.append({"data": hoje, "estado": estado, "candidatos": len(achados),
                       "consultas": len(consultas)})
@@ -82,44 +92,62 @@ def montar(anterior: dict, consultas: list, achados: list, hoje: str) -> dict:
     }
 
 
-def coletar() -> int:
-    hoje_d = hoje_editorial()
+def coletar(buscar_fn=None, gravar_fn=None, ler_fn=None, preservar_fn=None, lacuna_fn=None,
+            log_fn=None, hoje_d=None) -> int:
+    """A coleta. As dependências de rede e de disco são injetáveis: o autoteste exercita este
+    caminho inteiro com dublês, sem rede e sem tocar `data/`."""
+    buscar_fn = buscar_fn or buscar
+    gravar_fn = gravar_fn or gravar
+    ler_fn = ler_fn or ler
+    preservar_fn = preservar_fn or preservar_evidencia
+    lacuna_fn = lacuna_fn or registrar_lacuna
+    log_fn = log_fn or log_busca
+    hoje_d = hoje_d or hoje_editorial()
     hoje = hoje_d.strftime("%d/%m/%Y")
     consultas, todos = [], []
     for termo in TERMOS:
         paginas = []
 
         def _buscar_pagina(u, _p=paginas):
-            b = buscar(u, timeout=45, origem="buscar_protocolo_calor")
+            b = buscar_fn(u, timeout=45, origem="buscar_protocolo_calor")
             _p.append((b, u))
             return b
 
         try:
-            itens, faltando = varrer_busca_dou(termo, INICIO_CICLO, hoje_d, buscar_fn=_buscar_pagina)
+            itens, faltando = varrer_busca_dou(termo, INICIO_CICLO, hoje_d, buscar_fn=_buscar_pagina,
+                                               pausa=0 if buscar_fn is not buscar else 2.0)
         except FormatoDoDOUMudou as e:
-            registrar_lacuna(f"DOU/protocolo de calor {termo}",
-                             f"página sem a estrutura de resultados ({e}); arquivo anterior mantido",
-                             canal="DOU", camada=1, strings=[termo])
+            lacuna_fn(f"DOU/protocolo de calor {termo}",
+                      f"página sem a estrutura de resultados ({e}); arquivo anterior mantido",
+                      canal="DOU", camada=1, strings=[termo])
             print(f"buscar_protocolo_calor: formato do DOU mudou em {termo} — nada sobrescrito")
             return 0
         except Exception as e:  # noqa: BLE001
-            registrar_lacuna(f"DOU/protocolo de calor {termo}",
-                             f"{type(e).__name__}; arquivo anterior mantido",
-                             canal="DOU", camada=1, strings=[termo])
+            lacuna_fn(f"DOU/protocolo de calor {termo}", f"{type(e).__name__}; arquivo anterior mantido",
+                      canal="DOU", camada=1, strings=[termo])
             print(f"buscar_protocolo_calor: {type(e).__name__} em {termo} — nada sobrescrito")
             return 0
         h = None
         for bruto, u in paginas:
-            h = preservar_evidencia(bruto, u, "html", "buscar_protocolo_calor") or h
+            h = preservar_fn(bruto, u, "html", "buscar_protocolo_calor") or h
         consultas.append({"termo": termo, "de": INICIO_CICLO.isoformat(), "ate": hoje_d.isoformat(),
                           "itens": len(itens), "janelas_incompletas": faltando, "hash_evidencia": h})
         todos += itens
+    # Trava de qualidade: os três termos sem um único item em quatro meses de DOU é leitura vazia,
+    # não fato. Declara-se a lacuna e o arquivo anterior fica.
+    if not todos:
+        lacuna_fn("DOU/protocolo de calor", "as três consultas voltaram sem nenhum item; leitura "
+                  "suspeita, arquivo anterior mantido", canal="DOU", camada=1, strings=list(TERMOS))
+        print("buscar_protocolo_calor: zero itens nas três consultas — nada sobrescrito")
+        return 0
     achados = candidatos(todos)
-    gravar(ARQUIVO, montar(ler(ARQUIVO, {}) or {}, consultas, achados, hoje))
-    if not achados:
-        log_busca("DOU", 1, list(TERMOS), "consultado sem achado",
-                  resultados="nenhum ato do Ministério da Saúde com calor e protocolo/diretriz/plano")
-    print(f"buscar_protocolo_calor: {len(todos)} itens lidos, {len(achados)} candidato(s) a ler")
+    novo = montar(ler_fn(ARQUIVO, {}) or {}, consultas, achados, hoje)
+    gravar_fn(ARQUIVO, novo)
+    if novo["estado"] == "nao_localizado":
+        log_fn("DOU", 1, list(TERMOS), "consultado sem achado",
+               resultados="nenhum ato do Ministério da Saúde com calor e protocolo/diretriz/plano")
+    print(f"buscar_protocolo_calor: {len(todos)} itens lidos, {len(achados)} candidato(s) a ler, "
+          f"estado {novo['estado']}")
     return 0
 
 
@@ -151,7 +179,60 @@ def autoteste() -> int:
     def t4():  # entrada malformada não quebra
         return candidatos(None) == [] and candidatos([{}]) == []
 
+    def t5():  # trava de campo: candidato nunca é promovível nem confirmado
+        return all(c["promovivel"] is False and c["documento_oficial_confirmado"] is None
+                   for c in candidatos(itens))
+
+    def t6():  # recorte não é varredura
+        a = montar({}, [{"janelas_incompletas": [{"de": "x"}]}], [], "11/10/2026")
+        return a["estado"] == "varredura_incompleta"
+
+    import json as _json
+
+    def _pagina(lista, total=None):
+        dados = _json.dumps({"jsonArray": [{"title": i["titulo"], "urlTitle": i["url"], "pubDate": i["data"],
+                                             "hierarchyStr": i["orgao"], "content": i["trecho"]} for i in lista]})
+        from coletores_base import _ID_BUSCA_DOU
+        return (f'<script id="{_ID_BUSCA_DOU}" type="application/json">{dados}</script>'
+                + (f" {total} resultados" if total is not None else "")).encode()
+
+    def _rodar(resposta):
+        gravados, lacunas, logs = {}, [], []
+        rc = coletar(buscar_fn=lambda u, **k: resposta(u),
+                     gravar_fn=lambda n, o: gravados.__setitem__(n, o),
+                     ler_fn=lambda n, p=None: {"historico": [{"data": "04/10/2026"}]},
+                     preservar_fn=lambda *a, **k: "h",
+                     lacuna_fn=lambda *a, **k: lacunas.append(a),
+                     log_fn=lambda *a, **k: logs.append(a), hoje_d=date(2026, 10, 11))
+        return rc, gravados, lacunas, logs
+
+    def t7():  # caminho inteiro com dublês: grava candidato, histórico cresce, sem tocar data/
+        rc, g, lac, logs = _rodar(lambda u: _pagina(itens[:1], 1))
+        a = g.get(ARQUIVO) or {}
+        return rc == 0 and a.get("estado") == "candidatos_a_ler" and len(a["historico"]) == 2 and not lac
+
+    def t8():  # zero item nas três consultas: lacuna, nada gravado
+        rc, g, lac, logs = _rodar(lambda u: _pagina([], 0))
+        return rc == 0 and g == {} and len(lac) == 1
+
+    def t9():  # formato do DOU mudou: lacuna, nada gravado
+        rc, g, lac, logs = _rodar(lambda u: b"<html>sem resultados</html>")
+        return rc == 0 and g == {} and len(lac) == 1
+
+    def t10():  # trava estrutural: este coletor não escreve nos arquivos do índice
+        import pathlib
+        fonte = pathlib.Path(__file__).read_text(encoding="utf-8")
+        trecho = fonte[fonte.index("from __future__"):fonte.index("def autoteste")]  # código, sem a docstring
+        proibidos = ("estados.json", "saude_uf.json", "municipios.json", "indice.json", "monitor_saude.json")
+        return not any(x in trecho for x in proibidos)
+
     return rodar_autoteste({
+        "trava de campo: candidato não é promovível": t5,
+        "recorte não é varredura": t6,
+        "caminho inteiro com dublês (sem rede, sem data/)": t7,
+        "zero item: lacuna e nada gravado": t8,
+        "formato do DOU mudou: lacuna e nada gravado": t9,
+        "trava estrutural: nada escreve nos arquivos do índice": t10,
         "candidato: Saúde + calor + instrumento; repetido uma vez": t1,
         "sem candidato é 'nao_localizado'": t2,
         "histórico só cresce": t3,
