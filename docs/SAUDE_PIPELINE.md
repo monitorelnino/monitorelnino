@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-04 a 2026-10-11 (650 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-04 a 2026-10-11 (655 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -20,7 +20,7 @@ Janela: 2026-10-04 a 2026-10-11 (650 execução(ões) registrada(s), 7 dias de h
 
 | script | papel | última execução | duração | itens | status | erro |
 |---|---|---|---|---:|---|---|
-| `recalcular_mare.py` | essencial | 2026-10-11 08:58 | 4 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-11 09:06 | 4 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-11 07:08 | 30 s | 1 | ok | — |
 | `coletar_diarios_consorciados.py` | coletor | 2026-10-10 01:44 | 3148 s | 34 | ok | — |
 | `coletar_diarios_municipais.py` | coletor | 2026-10-10 01:36 | 425 s | 50 | ok | — |
@@ -42,11 +42,11 @@ Janela: 2026-10-04 a 2026-10-11 (650 execução(ões) registrada(s), 7 dias de h
 | `monitorar_politica_por_inteiro.py` | coletor | 2026-10-11 08:06 | 3 s | 3464 | **erro** (13 seguidas) | NameError: name 'ler' is not defined. Did you mean: 'len'? |
 | `monitorar_redes_oficiais.py` | coletor | 2026-10-11 08:24 | 1271 s | — | ok | — |
 | `monitorar_sinais_federais.py` | coletor | 2026-10-11 08:06 | 4 s | 10 | ok | — |
-| `preservar_evidencias.py` | coletor | 2026-10-11 08:52 | 46 s | — | ok | — |
+| `preservar_evidencias.py` | coletor | 2026-10-11 08:59 | 48 s | — | ok | — |
 | `revisar_pistas.py` | coletor | 2026-10-11 06:42 | 1 s | — | ok | — |
 | `scripts/amostra_auditoria_semanal.py` | coletor | 2026-10-11 07:09 | 0 s | — | ok | — |
 | `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-10-11 06:42 | 7 s | — | ok | — |
-| `scripts/preservar_textos_integrais.py` | coletor | 2026-10-11 08:52 | 1 s | — | ok | — |
+| `scripts/preservar_textos_integrais.py` | coletor | 2026-10-11 09:00 | 1 s | — | ok | — |
 | `scripts/triar_fila.py` | coletor | 2026-10-11 03:41 | 2 s | — | ok | — |
 | `scripts/verificar_esquema_de_pista.py` | coletor | 2026-10-11 04:01 | 3 s | — | ok | — |
 | `seguir_pistas.py` | coletor | 2026-10-11 08:45 | 77 s | — | ok | — |
