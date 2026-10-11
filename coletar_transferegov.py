@@ -152,16 +152,29 @@ def cruzar_convenios(linhas, propostas: dict, ano_serie: int = 2026) -> tuple:
     return dict(semanas), dict(por_uf), itens
 
 
-def montar_serie(semanas: dict, rotas_ids: list, ano: int = 2026) -> list:
-    """Uma linha por semana do ano (segunda a segunda) com todas as rotas: r5 coletada, demais 0; total = soma."""
+def montar_serie(semanas: dict, rotas_ids: list, ano: int = 2026, carga: date = None) -> list:
+    """Uma linha por semana do ano (segunda a segunda) com todas as rotas.
+
+    11/10/2026 (Relatório D, A6-03): zero não é ausência. Só a r5 é coletada aqui; as demais rotas
+    vão como None (não coletadas por este coletor), nunca 0. E a r5 só tem valor até a semana da
+    CARGA da fonte: a fonte parou em 17/07, e as semanas seguintes eram publicadas como R$ 0 —
+    "nenhum convênio assinado" — quando o que há é "a fonte ainda não trouxe". Dentro do período
+    carregado, semana sem instrumento assinado é zero de verdade. `total` soma o que existe; sem
+    nada coletado na semana, None."""
     out = []
     d = date(ano, 1, 1); d -= timedelta(days=d.weekday())
     hoje = hoje_editorial()
     while d.year <= ano and d <= hoje:
         linha = {"semana": d.isoformat()}
         for rid in rotas_ids:
-            linha[rid] = round(semanas.get(d.isoformat(), 0.0), 2) if rid == "r5" else 0
-        linha["total"] = round(sum(float(linha[rid]) for rid in rotas_ids), 2)
+            if rid != "r5":
+                linha[rid] = None
+            elif carga is not None and d > carga:
+                linha[rid] = None
+            else:
+                linha[rid] = round(semanas.get(d.isoformat(), 0.0), 2)
+        valores = [float(linha[rid]) for rid in rotas_ids if linha[rid] is not None]
+        linha["total"] = round(sum(valores), 2) if valores else None
         out.append(linha); d += timedelta(days=7)
     return out
 
@@ -208,10 +221,11 @@ def coletar() -> int:
     rotas = ler("financiamento/rotas.json", {}) or {}
     ids = [r["id"] for r in rotas.get("rotas", [])] or ["r1","r2","r3","r4","r5","r6","r7","rE"]
     serie = ler("financiamento/serie_nacional.json", {}) or {}
-    serie.update({"semanas": montar_serie(semanas, ids, 2026), "status": "coletado", "corte": hoje,
+    serie.update({"semanas": montar_serie(semanas, ids, 2026, data_br(carga[:10]) if carga else None),
+                  "status": "coletado", "corte": hoje,
                   "fonte": "TransfereGov — Dados Abertos, módulo Discricionárias e Legais (convênios e contratos de repasse a municípios, por data de assinatura)",
                   "carga_da_fonte": carga, "rotas_coletadas": ["r5"],
-                  "nota": "r5 = valor de repasse dos instrumentos assinados na semana; demais rotas em 0 até coleta própria (r2 fundo a fundo, r6 especiais)."})
+                  "nota": "r5 = valor de repasse dos instrumentos assinados na semana, até a semana da carga da fonte; depois dela, sem valor (a fonte ainda não trouxe). Demais rotas sem valor: não coletadas por este coletor."})
     gravar("financiamento/serie_nacional.json", serie)
     # por UF
     puf = ler("financiamento/por_uf.json", {}) or {}
@@ -261,9 +275,14 @@ def autoteste() -> int:
         s, u, it = cruzar_convenios(C, filtrar_propostas(P)); return s == {"2026-08-10": 590038.0} and u == {"SP": 490038.0, "PR": 100000.0}
     def t4():  # fila El Niño: só objetos do ciclo, inclusive de outros anos; valores com vírgula lidos
         _, _, it = cruzar_convenios(C, filtrar_propostas(P)); return {i["nr_convenio"] for i in it} == {"100", "102"} and any(i["vl_desembolsado"] == 1134.75 for i in it)
-    def t5():  # série: total = soma das rotas (reconciliação do portão), r5 preenchida, demais 0
+    def t5():  # série: total = soma do que existe; r5 preenchida; demais rotas None, nunca 0 (A6-03)
         lin = montar_serie({"2026-08-10": 590038.0}, ["r1", "r5", "rE"]); s = next(l for l in lin if l["semana"] == "2026-08-10")
-        return s["r5"] == 590038.0 and s["r1"] == 0 and s["total"] == 590038.0 and all(l["total"] == sum(float(l[r]) for r in ("r1", "r5", "rE")) for l in lin)
+        return (s["r5"] == 590038.0 and s["r1"] is None and s["rE"] is None and s["total"] == 590038.0
+                and all(l["total"] == l["r5"] for l in lin))
+    def t5b():  # A6-03: semana depois da carga da fonte é None, não R$ 0; dentro da carga, zero é zero
+        lin = montar_serie({"2026-07-06": 10.0}, ["r1", "r5"], 2026, date(2026, 7, 17))
+        dentro = next(l for l in lin if l["semana"] == "2026-07-13"); depois = next(l for l in lin if l["semana"] == "2026-07-20")
+        return dentro["r5"] == 0.0 and dentro["total"] == 0.0 and depois["r5"] is None and depois["total"] is None
     def t6():  # negativo: números e datas malformados não quebram
         return numero("abc") is None and numero("") is None and numero(None) is None and numero("0") == 0.0 and data_br("31/02/2026") is None and data_br(None) is None and filtrar_propostas([{"ANO_PROP": "x"}]) == {}
     def t9():  # A6-22: repasse vazio é ausência — fica fora da soma e chega à fila como None, nunca 0.0
@@ -280,7 +299,7 @@ def autoteste() -> int:
         return len(f) == 1 and f[0]["nome"].startswith("Apoio")
     return rodar_autoteste({"propostas: municipal, ≥2025, objeto do ciclo marcado": t1, "semana ISO (segunda-feira)": t2,
                             "cruzamento: soma por semana/UF só do ano da série": t3, "fila El Niño: só objeto do ciclo, valores com vírgula": t4,
-                            "série: total = soma das rotas (reconciliação)": t5, "negativo: malformados não quebram": t6,
+                            "série: total = soma das rotas (reconciliação)": t5, "A6-03: semana depois da carga é None, não R$ 0": t5b, "negativo: malformados não quebram": t6,
                             "fundo a fundo: só programas do ciclo": t7,
                             "negativo: nome do município não vira assunto": t8,
                             "repasse vazio é ausência, fora da soma (A6-22)": t9})
