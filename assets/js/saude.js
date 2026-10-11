@@ -109,7 +109,7 @@ async function __load(){
       if (el('nPlanoSaude')) {
         el('nPlanoSaude').textContent = n(comPlano) + ' de 27';
         el('fontePlanoSaude').textContent = 'Documento oficial lido em cada estado · '
-          + (faltam > 0 ? faltam + ' estado(s) ainda não verificado(s)' : 'as 27 verificadas');
+          + (faltam > 0 ? faltam + (faltam === 1 ? ' estado ainda não verificado' : ' estados ainda não verificados') : 'as 27 verificadas');
       }
       if (el('nCoordSaude')) {
         /* A coordenação vive no arquivo da v0.4, que é quem a mede. Sem ele, o cartão diz que não
@@ -182,7 +182,7 @@ function __init(){
     desenharMapa('mapaMonitor', 'legMonitor', uf => FX[(M[uf] || {}).faixa] || FX['não verificado'],
       uf => { const m = M[uf] || {}; if (!m.verificado) return '<em>ainda não verificado</em> — sem número'; const i = m.instrumento || {}, a = m.antecipacao || {};
         const c = m.cobertura || {};
-        return '<em>' + esc(m.faixa) + ' · ' + esc(decBR(m.prontidao)) + '</em><br>instrumento ' + esc(decBR(i.pontos)) + ' (' + esc(ST_H[i.status] || i.status) + ')' + (i.data ? ' · ' + esc(i.data) : '') + '<br>cobertura sanitária ' + esc(decBR(c.pontos) ?? '—') + ' (' + esc(c.planos_lidos ?? 0) + ' plano(s) lido(s) · ' + esc(c.planos_sem_leitura ?? 0) + ' sem leitura)' + '<br>quando o ato saiu em relação ao primeiro boletim ' + esc(decBR(a.pontos)) + (i.temporada ? ' (edição ' + esc(i.temporada) + ')' : ''); },
+        return '<em>' + esc(m.faixa) + ' · ' + esc(decBR(m.prontidao)) + '</em><br>instrumento ' + esc(decBR(i.pontos)) + ' (' + esc(ST_H[i.status] || i.status) + ')' + (i.data ? ' · ' + esc(i.data) : '') + '<br>cobertura sanitária ' + esc(decBR(c.pontos) ?? '—') + ' (' + esc(c.planos_lidos ?? 0) + (Number(c.planos_lidos ?? 0) === 1 ? ' plano lido · ' : ' planos lidos · ') + esc(c.planos_sem_leitura ?? 0) + ' sem leitura)' + '<br>quando o ato saiu em relação ao primeiro boletim ' + esc(decBR(a.pontos)) + (i.temporada ? ' (edição ' + esc(i.temporada) + ')' : ''); },
       []);
     const R = (MSAUDE && MSAUDE.resumo) || {}; const pf = R.por_faixa || {};
     MonitorMapas.legenda('legMonitor', [
@@ -192,7 +192,7 @@ function __init(){
     // tabela alternativa
     const tb = document.querySelector('#tblMonitor tbody');
     if (tb) tb.innerHTML = UFS.map(uf => { const m = M[uf] || {}, i = m.instrumento || {}, a = m.antecipacao || {}, r = m.risco_atual || {};
-      return '<tr><td><strong>' + uf + '</strong></td><td>' + (m.verificado ? esc(decBR(m.prontidao)) : '—') + '</td><td>' + esc(m.faixa || '') + '</td><td>' + esc(ST_H[i.status] || '') + (i.data ? ' · ' + esc(i.data) : '') + '</td><td>' + esc(decBR((m.cobertura || {}).pontos) ?? '—') + ' · ' + esc((m.cobertura || {}).planos_lidos ?? 0) + ' lido(s) / ' + esc((m.cobertura || {}).planos_sem_leitura ?? 0) + ' sem leitura</td><td>' + esc(decBR(a.pontos) ?? '—') + (i.temporada ? ' · ' + esc(i.temporada) : '') + '</td><td>' + (r.dengue_capital_nivel ? 'nível ' + esc(r.dengue_capital_nivel) + ' (' + esc(r.dengue_capital) + ')' : '—') + '</td><td>' + esc((m.risco_projetado || []).join('; ')) + '</td></tr>'; }).join('');
+      return '<tr><td><strong>' + uf + '</strong></td><td>' + (m.verificado ? esc(decBR(m.prontidao)) : '—') + '</td><td>' + esc(m.faixa || '') + '</td><td>' + esc(ST_H[i.status] || '') + (i.data ? ' · ' + esc(i.data) : '') + '</td><td>' + esc(decBR((m.cobertura || {}).pontos) ?? '—') + ' · ' + esc((m.cobertura || {}).planos_lidos ?? 0) + (Number((m.cobertura || {}).planos_lidos ?? 0) === 1 ? ' lido / ' : ' lidos / ') + esc((m.cobertura || {}).planos_sem_leitura ?? 0) + ' sem leitura</td><td>' + esc(decBR(a.pontos) ?? '—') + (i.temporada ? ' · ' + esc(i.temporada) : '') + '</td><td>' + (r.dengue_capital_nivel ? 'nível ' + esc(r.dengue_capital_nivel) + ' (' + esc(r.dengue_capital) + ')' : '—') + '</td><td>' + esc((m.risco_projetado || []).join('; ')) + '</td></tr>'; }).join('');
     // 13/09/2026 (auditoria de visualizações, consolidação): #monitorBarras retirado do HTML —
     // duplicava a tabela alternativa de boxMonitor. Bloco guardado por ausência do elemento.
     // 02/10/2026 (bloco A.5): o medidor do MARÉ Saúde saiu do topo da página — o número de
@@ -257,7 +257,7 @@ function __init(){
       if(!c) return 'Sem coleta até o corte';
       return 'Severo: ' + (c.severo || 0) + ' · Extremo: ' + (c.extremo || 0)
            + '<br>Baixo: ' + (c.baixo || 0) + ' · Normal: ' + (c.normal || 0)
-           + '<br>' + (c.total || 0) + ' município(s) lido(s)'; },
+           + '<br>' + (c.total || 0) + (Number(c.total || 0) === 1 ? ' município lido' : ' municípios lidos'); },
     [{cor:CAL[0], rotulo:'nenhum município em severo ou extremo'}, {cor:CAL[1], rotulo:'1'},
      {cor:CAL[2], rotulo:'2'}, {cor:CAL[3], rotulo:'3 ou mais'}, {cor:NEUTRA, rotulo:'sem coleta até o corte'}]);
   fonteFigura('boxCalor', {fontes: fCalor.nome || 'Painel Nacional de Excesso de Calor',
@@ -277,7 +277,7 @@ function __init(){
     if(!el) return;
     if(CALOR && CALOR.resumo){
       const r = CALOR.resumo;
-      el.textContent = (r.severo || 0) + ' município(s) em classe severa e ' + (r.extremo || 0)
+      el.textContent = (r.severo || 0) + (Number(r.severo || 0) === 1 ? ' município' : ' municípios') + ' em classe severa e ' + (r.extremo || 0)
         + ' em extrema, de ' + (CALOR.municipios_lidos || Object.keys(CALOR.municipios || {}).length)
         + ' lidos no dia ' + (CALOR.data || '') + ', segundo o Ministério da Saúde.';
       return;
@@ -387,7 +387,7 @@ function abrirDetalheSaude(uf){
      * componente, e o que o número mede é quando o ato saiu em relação ao primeiro boletim. */
     + (m.verificado ? linha('Como o número é formado', 'documento estadual ' + esc(decBR(i.pontos))
         + ' · cobertura sanitária ' + esc(decBR(c.pontos) ?? '—') + ' (' + esc(c.planos_lidos ?? 0)
-        + ' plano(s) municipal(is) lido(s), ' + esc(c.planos_sem_leitura ?? 0) + ' sem leitura)'
+        + (Number(c.planos_lidos ?? 0) === 1 ? ' plano municipal lido, ' : ' planos municipais lidos, ') + esc(c.planos_sem_leitura ?? 0) + ' sem leitura)'
         + ' · quando o ato saiu em relação ao primeiro boletim ' + esc(decBR(a.pontos))
         + ' → média ' + String(m.prontidao).replace('.', ',') + ' (pesos iguais)') : '')
     + (m.camada === 'adaptacao' ? linha('Plano decenal de adaptação', 'registrado como estrutura; não pontua') : '')
@@ -846,7 +846,7 @@ const AREAS = [
     if (el('fonteCalorMun')) {
       const lidos = C.municipios_lidos || Object.keys(C.municipios || {}).length;
       el('fonteCalorMun').textContent = 'Painel Nacional de Excesso de Calor (Ministério da Saúde) · '
-        + n(lidos) + ' município(s) lido(s)' + (C.data ? ' · consulta de ' + (MonitorMapas.dataBR(C.data) || C.data) : '');
+        + n(lidos) + (Number(lidos) === 1 ? ' município lido' : ' municípios lidos') + (C.data ? ' · consulta de ' + (MonitorMapas.dataBR(C.data) || C.data) : '');
     }
   }).catch(() => {});
 
@@ -1216,12 +1216,12 @@ const AREAS = [
       MonitorMapas.credito('boxCalorSerie', {fontes: ['Painel Nacional de Excesso de Calor (Ministério da Saúde)'], data: C.data});
     }
     if (el('linhaCalorSerie')) {
-      el('linhaCalorSerie').textContent = n(C.municipios_lidos || 0) + ' município(s) lido(s)'
+      el('linhaCalorSerie').textContent = n(C.municipios_lidos || 0) + (Number(C.municipios_lidos || 0) === 1 ? ' município lido' : ' municípios lidos')
         + (C.data ? ' · consulta de ' + (MonitorMapas.dataBR(C.data) || C.data) : '');
     }
     if (el('fraseCalor')) {
       el('fraseCalor').textContent = n((r.severo || 0) + (r.extremo || 0))
-        + ' município(s) em classe severa ou extrema de excesso de calor na consulta mais recente, '
+        + ((r.severo || 0) + (r.extremo || 0) === 1 ? ' município' : ' municípios') + ' em classe severa ou extrema de excesso de calor na consulta mais recente, '
         + 'de ' + n(C.municipios_lidos || 0) + ' lidos. O vocabulário das classes é o do Ministério '
         + 'da Saúde.';
     }

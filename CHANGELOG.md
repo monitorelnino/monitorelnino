@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-11 · #PR · plural de verdade no texto das páginas (A4-17)
+
+"município(s)", "mês(es)", "lido(s)" e afins saem do texto público: 24 frases montadas em JavaScript escolhem singular ou plural pelo número, e o molde do topo do Financiamento usa o plural do catálogo. Relatório D, A4-17. Onde: `assets/js/` (financiamento, saúde, início, riscos, proveniência) e `conteudo/financiamento.json`.
+
 ## 2026-10-11 · #PR · Saúde: lista federal, frases dos blocos e estado das fontes (HANDOVER_SAUDE item 2)
 
 A lista "O que o governo federal publicou" dizia "nenhum documento" com oito no arquivo: a página procurava o campo errado. O que foi anunciado e não localizado diz até quando. As frases de Respiratórias e de Calor deixam de mostrar "—"; o calor diz desde quando não há leitura. O estado das fontes chama lacuna de lacuna. Onde: `assets/js/saude.js`.

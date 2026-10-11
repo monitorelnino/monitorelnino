@@ -55,7 +55,7 @@ function barraResposta(uf){
   return `<div class="field"><div class="k">Resposta · o índice</div><div class="v">
     ${typeof window.__miniGauge === 'function' ? window.__miniGauge(ir, 'Resposta · população sob decreto', 'resposta') : ''}
     <strong>${n}</strong> de ${r.total_municipios} municípios · <strong>${Math.round(100 * r.fracao_populacao)}%</strong> da população${r.primeiro_decreto ? ' · primeiro decreto municipal em ' + r.primeiro_decreto : ''}<br>
-    <span class="fv u-muted">${rec} reconhecido(s) pela União · ${dec} decretado(s) sem reconhecimento</span></div></div>`;
+    <span class="fv u-muted">${rec} ${Number(rec) === 1 ? 'reconhecido' : 'reconhecidos'} pela União · ${dec} ${Number(dec) === 1 ? 'decretado' : 'decretados'} sem reconhecimento</span></div></div>`;
 }
 // AUD-02 revisto (07/10/2026): o escape acontece UMA VEZ, na saida. Escapar na carga e de novo
 // na saida dava "Olho d&amp;#39;Agua das Flores" no cartao, e fazia o nome do banco nao casar com o

@@ -2,7 +2,7 @@
  "_governanca": "CATÁLOGO DE CONTEÚDO (handover de 05/10/2026). Todo texto público desta página vive aqui, com identificador estável `pagina.secao.elemento.funcao`. A página lê este arquivo; o HTML não contém texto público. Edição pequena passa por `robo-registro/edicoes/*.md` aprovado e `scripts/aplicar_edicoes.py` — não se edita este arquivo à mão numa rodada de edição. Mudar identificador exige entrada em `conteudo/_renomeacoes.json`.",
  "pagina": "financiamento.html",
  "textos": {
-  "financiamento.dc-topo.topo_resposta_municipios.molde_com_portaria": "autorizados pela defesa civil federal nos últimos sete dias, para {n_semana} município(s) · {n_total} municípios com recursos autorizados desde 29 de junho",
+  "financiamento.dc-topo.topo_resposta_municipios.molde_com_portaria": "autorizados pela defesa civil federal nos últimos sete dias, para {n_semana|nenhum município|1 município|{n_semana} municípios} · {n_total} municípios com recursos autorizados desde 29 de junho",
   "financiamento.dc-topo.topo_resposta_municipios.molde_sem_portaria": "nenhuma portaria nos últimos sete dias · {n_total} municípios com recursos autorizados desde 29 de junho",
   "financiamento.dc-topo.topo_resposta_municipios.molde_do_painel": "autorizado em portarias de resposta nos últimos sete dias{detalhe}",
   "financiamento.abertura": "O dinheiro público para o El Niño: de onde vêm os recursos, quanto já foi desembolsado, como está sendo aplicado e quanto a defesa civil federal autorizou para prevenção e resposta, estado a estado e município a município.",
