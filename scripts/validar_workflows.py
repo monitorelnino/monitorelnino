@@ -386,6 +386,23 @@ for _p in sorted((_pl.Path(__file__).resolve().parent.parent / '.github' / 'work
                       f'o passo falha por "No such file" e o workflow pode seguir verde.')
                 erros += 1
 
+# PASSO REFERENCIADO TEM DE EXISTIR NO MESMO JOB (11/10/2026, F40 do catálogo).
+#
+# `steps.<id>` só enxerga passos do PRÓPRIO job; id de outro job, ou que não existe, resolve vazio
+# e a condição é sempre falsa. O passo `janela` do monólito semanal foi parar no job vizinho em
+# 08/10, e todo passo de coleta do job `atualizar` saiu `skipped` com o run verde — coletar_saude.py
+# parou em 26/09 sem um vermelho sequer.
+for f, wf in carregados.items():
+    for _nome_job, _job in ((wf or {}).get("jobs") or {}).items():
+        _passos = (_job or {}).get("steps") or []
+        _ids = {str(_p.get("id")) for _p in _passos if isinstance(_p, dict) and _p.get("id")}
+        _texto = yaml.safe_dump(_job, allow_unicode=True)
+        for _ref in sorted(set(_re.findall(r"\bsteps\.([A-Za-z_][\w-]*)\.", _texto))):
+            if _ref not in _ids:
+                print(f"  ✗ {f}: job `{_nome_job}` lê `steps.{_ref}` e não tem passo com esse id — "
+                      f"a expressão resolve vazio e o passo que depende dela nunca roda.")
+                erros += 1
+
 print("✓ WORKFLOWS OK — YAML válido, sem chave duplicada, todo job com teto de tempo, "
       "todo portão de página com assunto declarado, reposição do domínio fora da fila da rodada, "
       "nenhum script cancelando run de outro, nenhuma expressão de contexto vazia."

@@ -857,6 +857,29 @@ def ensaio_fila_longa_ainda_commita(diz) -> bool:
     return ok
 
 
+def ensaio_passo_condicionado_existe_no_job(diz) -> bool:
+    """21. Todo `steps.<id>` lido num job aponta para um passo do PRÓPRIO job.
+
+    11/10/2026 (F40 do catálogo): o passo `janela` do monólito semanal ficou no job vizinho, e todo
+    passo de coleta do job `atualizar` saiu `skipped` com o run verde desde 08/10 — a saúde parou em
+    26/09 sem nenhum vermelho. Reprova se o validador de workflows acusar referência a passo
+    inexistente no job.
+    """
+    import pathlib
+    import subprocess as _sp
+
+    raiz = pathlib.Path(__file__).resolve().parents[1]
+    r = _sp.run([sys.executable, "scripts/validar_workflows.py"], cwd=raiz, capture_output=True,
+                text=True)
+    ruins = [l.strip() for l in r.stdout.splitlines() if "lê `steps." in l]
+    if ruins:
+        for l in ruins[:5]:
+            diz("   " + l)
+        return False
+    diz("   ✓ nenhum job lê passo que não tem — condição de passo nunca resolve vazio calada")
+    return True
+
+
 ENSAIOS = (
     ("dois elos em paralelo: zero conflito, zero perda", ensaio_dois_elos_em_paralelo),
     ("disparo duplicado: o segundo sai sem trabalho", ensaio_disparo_duplicado),
@@ -885,6 +908,7 @@ ENSAIOS = (
     ("18. fila longa ainda commita; comentário não é comando", ensaio_fila_longa_ainda_commita),
     ("19. na abertura, a triagem nasce só da corrente", ensaio_triagem_uma_vez_na_abertura),
     ("20. a checagem pré-noite não é cega nem julga a noite errada", ensaio_checagem_pre_noite_nao_e_cega),
+    ("21. todo passo condicionado existe no próprio job", ensaio_passo_condicionado_existe_no_job),
 )
 
 
