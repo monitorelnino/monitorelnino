@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-11 · #PR · repasses do FNS em 2026 e os ligados a emergência (Financiamento)
+
+O fundo a fundo do SUS está no mesmo download de transferências do Portal, com o favorecido "Administração Pública" (o fundo de saúde), que o recorte municipal não lia. `coletar_fns.py` lê esse recorte: por estado, esfera, programa e município, marcando como ligado a emergência só o que o nome da ação ou do plano orçamentário cita. Seção nova na página; plano do SUS para o El Niño entre os compromissos, sem valor. Também: não casados deixam de somar a cada leitura (A6-12).
+
 ## 2026-10-11 · #PR · checagem pré-noite sem cegueira; triagem uma vez na abertura (F36, F37, F27)
 
 A checagem pré-noite dizia "fila vazia" com seis elos rodando: pedia ao `gh` um campo que não existe e o erro virava lista vazia. Agora lê a fila pela API e erro de consulta reprova com nome. Cron atrasado para dentro da janela não julga mais a noite seguinte. O despachante deixa de disparar a triagem na abertura, que a corrente já chama. Onde: `checagem_pre_noite.py`, `despachar_temporizadores.py`, registro de temporizadores.

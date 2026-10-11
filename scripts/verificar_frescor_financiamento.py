@@ -42,6 +42,7 @@ DE_COLETOR = (
     "financiamento/por_uf.json",
     "financiamento/programas_faf_2026.json",
     "financiamento/municipios/transferencias_uniao.json",
+    "financiamento/fns_2026.json",               # 11/10/2026: repasses do FNS (coletar_fns.py)
     "financiamento/municipios/despesa_182.json",
     "resposta/recursos_liberados.json",
     "financiamento/semana.json",
