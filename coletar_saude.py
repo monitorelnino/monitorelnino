@@ -306,6 +306,27 @@ def somar_series(series: list) -> dict:
     return tot
 
 
+# 11/10/2026 (HANDOVER_SAUDE, item 1.4): fonte "a verificar" há semanas não é fonte exibida, é
+# pendência sem prazo. As duas abaixo não têm coletor, e o motivo é este — dito, não escondido.
+LACUNAS_DECLARADAS = {
+    "painel_arboviroses_ms": "sem coletor: o MS publica microdado do Sinan, não a série semanal do "
+                             "painel; a contagem de casos da página vem do Sinan agregado "
+                             "(coletar_arboviroses_sinan.py) e do InfoDengue, com crédito",
+    "sisagua": "sem coletor automático: não há endereço público estável da série de intermitência "
+               "por município localizado até o corte",
+}
+
+
+def declarar_lacunas(fontes: dict) -> dict:
+    """Troca "a verificar" pela lacuna declarada com motivo. Função pura sobre o dicionário."""
+    for nome, motivo in LACUNAS_DECLARADAS.items():
+        f = fontes.get(nome)
+        if isinstance(f, dict) and f.get("status") in ("a_verificar", None, ""):
+            f["status"] = "lacuna"
+            f["motivo"] = motivo
+    return fontes
+
+
 def coletar():
     _, por_nome = referencia_ibge()
     sinais = ler("saude_sinais.json"); ano = hoje_editorial().year; ok = lac = 0
@@ -367,7 +388,7 @@ def coletar():
             "url": CALOR_MS_SITIO, "coletado_em": hoje_br,
             "hash_evidencia": preservar_evidencia(bruto_calor.encode("utf-8"), url_calor, "json", "coletar_saude"),
         }
-        fonte_calor.update({"status": "coletado", "consultado_em": hoje_br,
+        fonte_calor.update({"status": "coletado", "consultado_em": hoje_br, "ultima_coleta_ok": hoje_br,
                             "documento": sinais["calor_excesso"]["documento"]})
         fonte_calor.pop("ultima_tentativa_falhou", None)
         fonte_calor.pop("motivo_da_falha", None)
@@ -383,6 +404,7 @@ def coletar():
                          strings=[CALOR_MS_SITIO])
         print(f"[aviso] excesso de calor (MS) não coletado — {motivo}")
 
+    declarar_lacunas(sinais["fontes"])
     sinais["gerado_em"] = hoje_editorial().strftime("%d/%m/%Y")
     gravar("saude_sinais.json", sinais)
     print(f"InfoDengue: {ok} capitais coletadas, {lac} lacunas")
@@ -512,6 +534,10 @@ def autoteste():
         bruto, url = descobrir_calor_ms(buscar_fn=falso, data="2026-09-24")
         return bom in url and parse_calor_ms(bruto)["por_uf"]["MG"]["normal"] == 853
 
+    def t14():  # "a verificar" vira lacuna com motivo; fonte coletada não é tocada
+        f = declarar_lacunas({"sisagua": {"status": "a_verificar"}, "infodengue": {"status": "coletado"}})
+        return (f["sisagua"]["status"] == "lacuna" and "sem coletor" in f["sisagua"]["motivo"]
+                and f["infodengue"] == {"status": "coletado"})
     import coletores_base as cb
     _SNAP = (cb.DATA / "saude_sinais.json").read_bytes() if (cb.DATA / "saude_sinais.json").exists() else b""
     return rodar_autoteste({"parser InfoDengue: última SE": t1, "negativo: resposta vazia/malformada": t2,
@@ -523,7 +549,8 @@ def autoteste():
                             "MS calor negativo: resposta sem as marcas do agregado não vira dado": t10,
                             "MS calor negativo: UF inválida e código IBGE inválido não entram": t11,
                             "MS calor: 200 com corpo vazio é RECUSA, não ausência": t12,
-                            "MS calor: descoberta valida por CONTEÚDO, não por nome minificado": t13})
+                            "MS calor: descoberta valida por CONTEÚDO, não por nome minificado": t13,
+                            "fonte sem coletor vira lacuna declarada com motivo": t14})
 
 
 if __name__ == "__main__":

@@ -270,15 +270,9 @@ def main():
            "--ate", hoje_editorial().isoformat()])
     rodar([sys.executable, "preservar_evidencias.py"])                 # idempotente; §3.8
     rodar([sys.executable, "preservar_evidencias.py", "--reconferir"])  # §3.8-bis: rebaixa e compara o hash; alteração vira evento
-    rodar([sys.executable, "coletar_saude.py"])                         # §9: camada observada (InfoDengue); peso zero
-    rodar([sys.executable, "coletar_desfechos_saude.py"])               # 07/09/2026 (§8): desfechos — InfoDengue 2019–2026 para o painel; peso zero
-    rodar([sys.executable, "coletar_desfechos_saude.py", "--doenca", "chikungunya"])   # 14/09/2026: mesmo coletor, disease=chikungunya → chik_*.json; peso zero
+    # 11/10/2026 (F40): a camada observada de saúde saiu daqui para o elo diário
+    # `.github/workflows/noturno_saude.yml` — mesmos coletores, mesma ordem, um escritor só.
     rodar([sys.executable, "coletar_srag_gripe.py"])                      # 09/09/2026 (§36): SRAG/SG nacional e por UF, InfoGripe; peso zero
-    rodar([sys.executable, "coletar_dda.py"])                             # 14/09/2026 (§39): DDA nacional e por UF, Sivep-DDA via LAI (Zenodo); peso zero
-    rodar([sys.executable, "coletar_boletim_ms_dengue.py"])           # 10/09/2026 (§36): dengue por município, boletim semanal da SES-MS; peso zero
-    rodar([sys.executable, "coletar_boletim_df_arboviroses.py"])      # 10/09/2026 (§36): arboviroses por Região de Saúde, informe semanal da SES-DF; peso zero
-    rodar([sys.executable, "coletar_boletim_pe_arboviroses.py"])      # 10/09/2026 (§36): arboviroses, TOTAIS ESTADUAIS, informe semanal do CIEVS-PE (tabela municipal é imagem); peso zero
-    rodar([sys.executable, "coletar_boletim_pb_arboviroses.py"])      # 10/09/2026 (§36): arboviroses por Região de Saúde, boletim numerado da SES-PB; peso zero
     # §234 (26/09/2026): dois coletores que existiam, tinham autoteste e NÃO eram invocados por
     # nada — nem aqui, nem em workflow, nem na lista de autotestes do portão. `coletar_espin`
     # foi escrito no §209 exatamente para resolver o que o próprio cabeçalho dele descreve:
@@ -290,8 +284,6 @@ def main():
     # que é justamente o que não acontecia com ele fora da rotina.
     rodar([sys.executable, "coletar_siconfi_182.py", "--lote", "300"])  # §234: DCA/SICONFI, retomável por lote
     rodar([sys.executable, "preservar_evidencias.py", "--ler", "--limite", "40"])   # 07/09/2026 (§10.1): texto por página dos PDFs de planos
-    rodar([sys.executable, "classificar_saude_no_plano.py"])            # 07/09/2026 (§10.1): leitura automática de saúde no plano → fila R7
-    rodar([sys.executable, "gerar_monitor_saude.py"])                   # 05/09/2026: Monitor Saúde v0.1 (§31), derivado da camada de saúde; peso zero
     rodar([sys.executable, "gerar_resposta.py"])                        # 06/09/2026 (v3.1 §3): contador de resposta; peso zero (verificar_resposta.py)
     rodar([sys.executable, "gerar_prioritarios.py"])                    # 15/09/2026: municípios prioritários (aproximação populacional), fonte única do mapa e da busca
     rodar([sys.executable, "gerar_contadores_financiamento.py"])       # 06/09/2026 (v3.1 §11): quatro contadores por UF; peso zero

@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-10. 35 falhas; 29 com caso de teste que as reproduz; 6 sem, com o que falta dito.
+Atualizado em 2026-10-11. 36 falhas; 30 com caso de teste que as reproduz; 6 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -320,3 +320,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** run 38058307837 (sinais, 14:06, startup_failure); run 38073694723 (sinais no ensaio real)
 - **Correção:** `actions: read` em `noturno_sinais.yml`, `semanal_espin_e_links.yml` e `semanal_sinais_e_links.yml`
 - **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_chamador_do_coletor_concede_o_que_ele_pede`
+
+## F40 · Monólito semanal verde sem coletar nada; saúde parada desde 26/09
+
+- **Noite:** 2026-10-11
+- **Sintoma:** `Atualização semanal de dados` (run 38100952269, 11/10 01:10, dentro da janela) terminou `success` com todos os passos de coleta `skipped`; `saude_sinais.json` com `gerado_em` 26/09, InfoDengue e calor de 25/09.
+- **Causa:** Em 08/10 (A2-18) o passo `janela` foi posto no job `repor_dominio_manual`, antes do checkout; o job `atualizar` lê `steps.janela` em todo passo e não tinha esse passo — expressão de passo inexistente resolve vazio. A camada de saúde só rodava dentro de `atualizar.py`.
+- **Prova:** run 38100952269 (jobs: 37 passos skipped); data/saude_sinais.json gerado_em 26/09/2026
+- **Correção:** Passo `janela` no job `atualizar`, depois do checkout; camada de saúde em elo diário próprio (`noturno_saude.yml`); `validar_workflows.py` reprova `steps.<id>` sem passo no mesmo job; portão de frescor da Saúde (9 dias).
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_passo_condicionado_existe_no_job`

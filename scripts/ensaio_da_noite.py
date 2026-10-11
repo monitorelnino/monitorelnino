@@ -756,6 +756,29 @@ def ensaio_chamador_do_coletor_concede_o_que_ele_pede(diz) -> bool:
     return True
 
 
+def ensaio_passo_condicionado_existe_no_job(diz) -> bool:
+    """21. Todo `steps.<id>` lido num job aponta para um passo do PRÓPRIO job.
+
+    11/10/2026 (F40 do catálogo): o passo `janela` do monólito semanal ficou no job vizinho, e todo
+    passo de coleta do job `atualizar` saiu `skipped` com o run verde desde 08/10 — a saúde parou em
+    26/09 sem nenhum vermelho. Reprova se o validador de workflows acusar referência a passo
+    inexistente no job.
+    """
+    import pathlib
+    import subprocess as _sp
+
+    raiz = pathlib.Path(__file__).resolve().parents[1]
+    r = _sp.run([sys.executable, "scripts/validar_workflows.py"], cwd=raiz, capture_output=True,
+                text=True)
+    ruins = [l.strip() for l in r.stdout.splitlines() if "lê `steps." in l]
+    if ruins:
+        for l in ruins[:5]:
+            diz("   " + l)
+        return False
+    diz("   ✓ nenhum job lê passo que não tem — condição de passo nunca resolve vazio calada")
+    return True
+
+
 ENSAIOS = (
     ("dois elos em paralelo: zero conflito, zero perda", ensaio_dois_elos_em_paralelo),
     ("disparo duplicado: o segundo sai sem trabalho", ensaio_disparo_duplicado),
@@ -781,6 +804,7 @@ ENSAIOS = (
     ("15. toda `env.` lida pelo coletor é exportada antes", ensaio_env_usada_e_exportada),
     ("16. elo fora da `main` não empurra para a `main`", ensaio_fora_da_main_nao_empurra),
     ("17. chamador do coletor concede o que ele pede", ensaio_chamador_do_coletor_concede_o_que_ele_pede),
+    ("21. todo passo condicionado existe no próprio job", ensaio_passo_condicionado_existe_no_job),
 )
 
 
