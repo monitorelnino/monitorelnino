@@ -297,7 +297,7 @@ function __init(){
                    [/\bSRAG\b/g, 'síndrome respiratória grave'],
                    [/\bMDDA\b/g, 'vigilância das diarreicas']];
   const semSigla = t => PUBLICO.reduce((x, [re, por]) => String(x).replace(re, por), t || '');
-  (function(){ const f = SSIN.fontes || {}; const c = Object.entries(f).map(([k, v]) => semSigla(v.nome || k) + ': ' + (v.consultado_em ? 'consultado em ' + v.consultado_em : (v.status === 'reuso' ? 'reuso da página de sinais' : 'ainda não consultado')));
+  (function(){ const f = SSIN.fontes || {}; const c = Object.entries(f).map(([k, v]) => semSigla(v.nome || k) + ': ' + (v.status === 'lacuna' ? 'lacuna declarada' + (v.ultima_coleta_ok ? ', sem leitura desde ' + v.ultima_coleta_ok : '') : (v.consultado_em ? 'consultado em ' + v.consultado_em : (v.status === 'reuso' ? 'reuso da página de sinais' : 'ainda não consultado'))));
     const el = document.getElementById('carimboSaude'); if (el) el.textContent = 'Estado das fontes: ' + c.join(' · ') + '.'; })();
 
   // 13/09/2026 (proposta de enxugamento, Manus AI): quadrante 'Defesa civil × saúde' retirado —
@@ -802,6 +802,12 @@ const AREAS = [
         + semanaEmDatas(u.se.split('-')[0], u.se);
     }
     if (el('fonteSragSE')) el('fonteSragSE').textContent = 'SIVEP-Gripe (Ministério da Saúde)';
+    // 11/10/2026 (HANDOVER_SAUDE item 2): a frase do dado de Respiratórias ficava em "—".
+    if (el('fraseResp')) {
+      el('fraseResp').textContent = n(u.valor) + ' internações por síndrome respiratória grave na semana '
+        + semanaEmDatas(u.se.split('-')[0], u.se) + ', a última com dado no SIVEP-Gripe. As semanas '
+        + 'seguintes ainda recebem notificações e aparecem sem valor.';
+    }
   }).catch(() => {});
 
   /* Estados com dengue em nível de alerta: a régua é do InfoDengue (níveis 3 e 4) e a agregação por
@@ -1183,7 +1189,15 @@ const AREAS = [
     const r = (C || {}).resumo || null;
     const leg = el('legCalorSerie');
     if (!r) {
-      if (leg) leg.innerHTML = '<span class="escala">Painel de excesso de calor sem coleta até o corte.</span>';
+      // 11/10/2026 (HANDOVER_SAUDE item 2): lacuna diz desde quando, e a frase do bloco deixa de ser "—".
+      const ult = (((SS || {}).fontes || {}).painel_calor_ms || {}).ultima_coleta_ok;
+      const desde = ult ? (MonitorMapas.dataBR(ult) || ult) : null;
+      if (leg) leg.innerHTML = '<span class="escala">' + esc(desde
+        ? 'Painel de excesso de calor sem leitura desde a coleta de ' + desde + '.'
+        : 'Painel de excesso de calor sem coleta até o corte.') + '</span>';
+      if (el('fraseCalor')) el('fraseCalor').textContent = desde
+        ? 'O Painel Nacional de Excesso de Calor, do Ministério da Saúde, não devolve leitura desde a coleta de ' + desde + '.'
+        : 'O Painel Nacional de Excesso de Calor, do Ministério da Saúde, ainda não foi lido até o corte.';
       if (window.MonitorMapas) MonitorMapas.credito('boxCalorSerie', {fontes: ['Painel Nacional de Excesso de Calor (Ministério da Saúde)'], data: null});
       return;
     }
@@ -1305,16 +1319,21 @@ const AREAS = [
   fetch('data/saude_federal.json').then(r => r.ok ? r.json() : null).then(F => {
     const alvo = el('listaFederalSaude');
     if (!alvo) return;
-    const itens = (F && (F.itens || F.documentos)) || [];
+    // 11/10/2026 (HANDOVER_SAUDE item 2): o arquivo guarda a lista em `cartoes`; a página procurava
+    // `itens`/`documentos` e dizia "nenhum documento localizado" com oito no arquivo.
+    const itens = (F && (F.cartoes || F.itens || F.documentos)) || [];
     if (!itens.length) {
       alvo.innerHTML = '<li>Nenhum documento federal localizado até o corte.</li>';
       return;
     }
     alvo.innerHTML = itens.map(x => {
-      const nome = esc(x.nome || x.titulo || x.documento || 'documento');
-      const meta = [x.orgao, x.data].filter(Boolean).map(esc).join(' · ');
+      // Travessão como pontuação reprova no portão 19; no título do documento vira dois-pontos.
+      const nome = esc(String(x.nome || x.titulo || x.documento || 'documento').replace(/\s+—\s+/g, ': '));
+      const meta = [x.orgao, x.data].filter(v => v && v !== '—').map(esc).join(' · ');
       const alvoTxt = x.url ? '<a href="' + esc(x.url) + '" target="_blank" rel="noopener">' + nome + '</a>' : nome;
-      return '<li>' + alvoTxt + (meta ? ' <span class="u-muted">(' + meta + ')</span>' : '') + '</li>';
+      const nl = x.status === 'anunciado_nao_localizado'
+        ? '. Anunciado; documento não localizado até ' + esc(F.corte || 'o corte') + '.' : '';
+      return '<li>' + alvoTxt + (meta ? ' <span class="u-muted">(' + meta + ')</span>' : '') + nl + '</li>';
     }).join('');
   }).catch(() => {});
 })();

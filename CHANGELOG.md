@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-11 · #PR · Saúde: lista federal, frases dos blocos e estado das fontes (HANDOVER_SAUDE item 2)
+
+A lista "O que o governo federal publicou" dizia "nenhum documento" com oito no arquivo: a página procurava o campo errado. O que foi anunciado e não localizado diz até quando. As frases de Respiratórias e de Calor deixam de mostrar "—"; o calor diz desde quando não há leitura. O estado das fontes chama lacuna de lacuna. Onde: `assets/js/saude.js`.
+
 ## 2026-10-11 · #PR · repasses do FNS em 2026 e os ligados a emergência (Financiamento)
 
 O fundo a fundo do SUS está no mesmo download de transferências do Portal, com o favorecido "Administração Pública" (o fundo de saúde), que o recorte municipal não lia. `coletar_fns.py` lê esse recorte: por estado, esfera, programa e município, marcando como ligado a emergência só o que o nome da ação ou do plano orçamentário cita. Seção nova na página; plano do SUS para o El Niño entre os compromissos, sem valor. Também: não casados deixam de somar a cada leitura (A6-12).
