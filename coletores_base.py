@@ -1489,18 +1489,28 @@ def preservar_evidencia(conteudo: bytes, url: str, ext: str, origem: str) -> str
     `segredos_redigidos` e `hash_antes_da_redacao`, para a cópia nunca se dizer byte a byte quando
     não é. Binário (PDF) não passa por aqui: não se edita PDF preservado."""
     redigidos = 0
+    cpfs = 0
     hash_bruto = None
     if ext.lstrip(".").lower() in tuple(e.lstrip(".") for e in EXTENSOES_DE_TEXTO_EM_EVIDENCIA):
+        # A6-11 (12/10/2026): página em latin-1 (comum em sítio municipal) passava SEM redação,
+        # porque a decodificação estrita falhava e o texto ficava None; e o CPF não era redigido
+        # aqui, só em `gravar_texto`. Agora: utf-8, senão latin-1 (re-codificado no mesmo
+        # encoding), e CPF redigido junto com a credencial.
+        codificacao = "utf-8"
         try:
             texto = conteudo.decode("utf-8")
         except UnicodeDecodeError:
-            texto = None
-        if texto is not None:
-            limpo, redigidos = redigir_segredos(texto)
+            codificacao = "latin-1"
+            texto = conteudo.decode("latin-1")
+        limpo, redigidos = redigir_segredos(texto)
+        limpo, cpfs = redigir_dados_pessoais(limpo)
+        if redigidos or cpfs:
+            hash_bruto = sha256(conteudo)
+            conteudo = limpo.encode(codificacao)
             if redigidos:
-                hash_bruto = sha256(conteudo)
-                conteudo = limpo.encode("utf-8")
                 print(f"  [redação] {redigidos} credencial(is) de terceiro removida(s) antes de preservar")
+            if cpfs:
+                print(f"  [redação] {cpfs} CPF(s) removido(s) antes de preservar")
     h = sha256(conteudo)
     idx = ler("evidencias.json", {"_governanca": "Índice de evidências preservadas (§3.8, v2.2.4). "
                                    "Chave = sha256 do documento; nunca lido pelo cálculo do índice.",
@@ -1511,6 +1521,9 @@ def preservar_evidencia(conteudo: bytes, url: str, ext: str, origem: str) -> str
             "arquivo": None, "wayback": None}
     if redigidos:
         item["segredos_redigidos"] = redigidos
+    if cpfs:
+        item["cpfs_redigidos"] = cpfs
+    if redigidos or cpfs:
         item["hash_antes_da_redacao"] = hash_bruto
     if len(conteudo) <= LIMITE_EVIDENCIA:
         EVID.mkdir(exist_ok=True)
