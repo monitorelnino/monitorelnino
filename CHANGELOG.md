@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · cartão de número segue a régua: zero por extenso, vírgula decimal (A7-14)
+
+Duas regras de números do `layout/regras.json` só existiam no papel: zero em cartão por extenso e decimal com vírgula. A conformidade passa a reprová-las; o cartão de emergências da Saúde, que mostrava "0", passa a mostrar "zero" — e ausência de dado nele vira "sem dado", nunca zero. Onde: `scripts/verificar_conformidade.py`, `assets/js/saude.js`, `saude.html`.
+
 ## 2026-10-12 · #PR · cartão por município sem "não localizado" indevido (A3-13)
 
 O derivado por município marcava "não localizado" para 1.916 municípios verificados só em nível nacional ou estadual — o teto público de ausência exige a bateria municipal completa. Sem registro, passa a ser "não verificado" (1.950 hoje); a contagem de municípios com registro deixa de somá-los. Onde: `gerar_card_municipios.py`, `data/municipios_card.json`.
