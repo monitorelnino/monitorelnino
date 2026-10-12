@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · texto de cinco páginas no catálogo (A4-34)
+
+Início, Saúde, Proteja-se, Prefeituras e Obrigado passam a ler o texto público de `conteudo/<pagina>.json` (124 entradas), por migração mecânica: texto renderizado idêntico com e sem catálogo. O migrador deixa de fora elemento que o JS da página reescreve (em Saúde, cinco rótulos com a semana) — migrado, o catálogo sobrescrevia o dado (`scripts/migrar_para_catalogo.py`). O contador de palavras volta a ignorar legenda com `data-conteudo`.
+
 ## 2026-10-12 · #PR · log de buscas com data ISO e decisão do vocabulário (A6-27)
 
 150 execuções de 28/09 no monólito tinham data `dd/mm/aaaa` e 14 de 27–29/08 tinham a decisão em prosa. Migração única: datas em ISO; decisão vira `consultado`, com o texto original em `resultados`. Nenhuma execução sai ou entra (74.311). Novo portão `verificar_esquema_do_log.py` impede que voltem.
