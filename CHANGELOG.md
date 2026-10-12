@@ -36,6 +36,10 @@ não pontuados permanecem na versão corrente.
 
 150 execuções de 28/09 no monólito tinham data `dd/mm/aaaa` e 14 de 27–29/08 tinham a decisão em prosa. Migração única: datas em ISO; decisão vira `consultado`, com o texto original em `resultados`. Nenhuma execução sai ou entra (74.311). Novo portão `verificar_esquema_do_log.py` impede que voltem.
 
+## 2026-10-12 · #PR · reconhecimento federal: consultado e não localizado é `false` (A3-17)
+
+`verificacao_municipal.json` gravava `null` para 4.858 municípios já consultados no DOU/MIDR, confundindo "consultado e não localizado" com "não coletado". Agora é `false` quando há nível nacional ou acima e data de consulta no livro; sem consulta datada segue `null` (`recalcular_mare.py`, handover 1.16). Decreto não pontua; nenhuma página exibe o campo.
+
 ## 2026-10-12 · #PR · vigência de decreto com data só de ano (A3-29)
 
 28 decretos com data "2026" ou "2025/2026" ficavam "indeterminada". `verificar_vigencia.py` passa a decidir pelo intervalo possível do ano (ativo, prazo vencido ou `sem_data_de_dia` quando o ano não decide), tira `vigencia` de registro que não é decreto, grava `vigencia_em` só quando a vigência muda e ganha autoteste no portão. Nenhuma página exibe o campo.
