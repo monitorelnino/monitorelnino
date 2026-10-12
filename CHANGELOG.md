@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · idempotência dos derivados confere de verdade (A7-22)
+
+O portão de idempotência comparava só o que o `git status` mostrava e, com a árvore em dia, conferia zero arquivos. Passa a comparar tudo o que o manifesto sela (581 hoje) e roda a segunda regeneração noutro fuso (UTC+14), para pegar gerador que lê a data local em vez da data do corte. Onde: `scripts/verificar_idempotencia_dos_derivados.py`.
+
 ## 2026-10-12 · #PR · vocabulário público ganha regras de forma (A7-03)
 
 O portão de vocabulário só conhecia palavras que já tinham aparecido. Passa a reprovar também a forma do vazamento: data ISO fora de endereço, `undefined`/`NaN`/objeto, chave de molde `{x}` não preenchida, "rascunho/handover/placeholder/a aprovar/texto interno" e decimal com ponto antes de unidade. Roda no PR, sem barrar a publicação do dia; as páginas de hoje passam limpas. Onde: `scripts/verificar_vocabulario_publico.js`.
