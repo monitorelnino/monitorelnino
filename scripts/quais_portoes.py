@@ -26,30 +26,49 @@ import sys
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 
-RE_DADO = re.compile(r"(^|/)data/|\.py$|^requirements\.txt$|^\.github/workflows/")
-RE_PAGINA = re.compile(r"\.html$|^assets/|^docs/fichas_semanticas\.json$"
-                       r"|^scripts/verificar_(legendas|vocabulario_publico|voz_editorial"
-                       r"|fichas_semanticas|figuras|movel|consistencia_visual)\.js$")
+WORKFLOW = RAIZ / ".github" / "workflows" / "portoes.yml"
+# A7-10 (12/10/2026): este script tinha a QUARTA lista de portões escrita à mão — 19 comandos dos
+# 217 — e uma regex de disparo copiada da CI. As duas agora são LIDAS de `portoes.yml`: a regex do
+# primeiro `grep -qE` é a de dado, a do segundo é a de página; os comandos são os dos passos do
+# workflow, classificados pelo `if:` do passo (sem `if` → sempre; `pagina_mudou` → página;
+# `dado_mudou` → dado). Lista paralela sai de sincronia — foi assim que ela nasceu errada.
+_RE_GREP = re.compile(r"grep -qE '([^']+)'")
 
-SEMPRE = ["python3 scripts/verificar_marcadores_de_conflito.py",
-          "python3 scripts/validar_workflows.py",
-          "node scripts/verificar_estrutura.js",
-          "node scripts/verificar_runtime.js",
-          "node scripts/verificar_acessibilidade.js",
-          "node scripts/verificar_seguranca.js",
-          "node scripts/verificar_palavras.js"]
-DE_PAGINA = ["node scripts/verificar_vocabulario_publico.js",
-             "node scripts/verificar_voz_editorial.js",
-             "node scripts/verificar_figuras.js",
-             "node scripts/verificar_fichas_semanticas.js",
-             "node scripts/verificar_legendas.js",
-             "node scripts/verificar_movel.js",
-             "node scripts/verificar_consistencia_visual.js"]
-DE_DADO = ["python3 scripts/verificar_paridade_cobertura_qd.py",
-           "python3 scripts/testar_contador_varredura.py",
-           "python3 scripts/verificar_cliente_identificado.py",
-           "python3 scripts/verificar_escrita_portavel.py",
-           "bash scripts/verificar_derivados.sh --pode-regenerar"]
+
+def regexes_do_workflow(texto: str) -> tuple:
+    """(regex_de_dado, regex_de_pagina) lidas do YAML. Função pura."""
+    achadas = _RE_GREP.findall(texto or "")
+    if len(achadas) < 2:
+        raise ValueError("portoes.yml sem as duas regex de disparo (dado, página)")
+    return re.compile(achadas[0]), re.compile(achadas[1])
+
+
+def comandos_por_condicao(wf: dict) -> dict:
+    """{'sempre': [...], 'pagina': [...], 'dado': [...]} na ordem do workflow. Função pura."""
+    sys.path.insert(0, str(RAIZ / "scripts"))
+    from portoes_locais import INICIOS, PASSOS_IGNORADOS
+    fora = {"sempre": [], "pagina": [], "dado": []}
+    for job in (wf.get("jobs") or {}).values():
+        for passo in job.get("steps") or []:
+            run, cond = passo.get("run"), str(passo.get("if") or "")
+            if not run or PASSOS_IGNORADOS.search(str(passo.get("name") or "")):
+                continue
+            grupo = "dado" if "dado_mudou" in cond else "pagina" if "pagina_mudou" in cond else "sempre"
+            for linha in run.splitlines():
+                linha = linha.strip()
+                if linha.startswith(INICIOS) and linha not in fora[grupo]:
+                    fora[grupo].append(linha)
+    return fora
+
+
+def _do_workflow():
+    import yaml
+    texto = WORKFLOW.read_text(encoding="utf-8")
+    return regexes_do_workflow(texto), comandos_por_condicao(yaml.safe_load(texto))
+
+
+(RE_DADO, RE_PAGINA), _CMDS = _do_workflow()
+SEMPRE, DE_PAGINA, DE_DADO = _CMDS["sempre"], _CMDS["pagina"], _CMDS["dado"]
 
 
 def classificar(arquivos: list) -> dict:
@@ -110,16 +129,23 @@ def autoteste() -> int:
     casos.append(("o sempre roda em qualquer caso",
                   all(c in portoes({"dado": False, "pagina": False}) for c in SEMPRE)))
     casos.append(("sem página, nada de navegador",
-                  not any("movel" in c or "consistencia" in c
+                  not any("verificar_movel.js" in c or "verificar_consistencia_visual.js" in c
                           for c in portoes({"dado": True, "pagina": False}))))
     casos.append(("sem dado, nada de paridade",
                   not any("paridade" in c for c in portoes({"dado": False, "pagina": True}))))
     casos.append(("os baratos vêm antes dos de navegador",
                   portoes({"dado": True, "pagina": True}).index("node scripts/verificar_estrutura.js")
                   < portoes({"dado": True, "pagina": True}).index("node scripts/verificar_movel.js")))
-    casos.append(("o portão 12 entra no modo do PR",
-                  "bash scripts/verificar_derivados.sh --pode-regenerar"
-                  in portoes({"dado": True, "pagina": False})))
+    # A7-10 (12/10/2026): as listas vêm do workflow, e o que muda layout/conteúdo aciona página.
+    import yaml
+    _todos = sum(comandos_por_condicao(yaml.safe_load(WORKFLOW.read_text(encoding="utf-8"))).values(), [])
+    casos.append(("A7-10: com dado e página, a lista é a do workflow inteiro (sem lista à mão)",
+                  len(portoes({"dado": True, "pagina": True})) == len(set(_todos)) and len(_todos) > 100))
+    casos.append(("A7-10: catálogo de conteúdo, contrato de layout e regras acionam página",
+                  all(classificar([a])["pagina"] for a in
+                      ("conteudo/saude.json", "layout/contratos/index.json", "layout/regras.json",
+                       "scripts/_layout_dump.js", "netlify.toml"))))
+    casos.append(("A7-10: config/ aciona dado", classificar(["config/escritores.json"])["dado"] is True))
 
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
