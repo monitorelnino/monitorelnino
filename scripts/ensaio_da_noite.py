@@ -784,6 +784,9 @@ def ensaio_triagem_uma_vez_na_abertura(diz) -> bool:
 def ensaio_checagem_pre_noite_nao_e_cega(diz) -> bool:
     """20. A checagem pré-noite não afirma fila vazia quando o `gh` falha, nem julga a noite errada.
 
+    F43: nem conta ramo `ensaio-real/*`/`coleta-dia/*` como fila, nem dá despachante morto quando o
+    despacho rodou dentro do `relogio.yml`.
+
     11/10/2026 (F36, F37): runs 38101488701 e 38104258410 (cron atrasado para 01:20 e 02:10) julgaram
     a noite de 12/10 e disseram "nenhum run aberto" com seis elos rodando — `gh run list` não tem o
     campo `path`, e o erro virava lista vazia.
@@ -806,6 +809,14 @@ def ensaio_checagem_pre_noite_nao_e_cega(diz) -> bool:
     ok = bool(cega) and not cega[0]["ok"]
     ok = ok and cp.atrasada(_dt.datetime(2026, 10, 11, 1, 20)) \
         and cp.noite_seguinte(_dt.datetime(2026, 10, 11, 1, 20)) == "2026-10-11"
+    # F43 (11/10/2026): ramo de ensaio não é fila; despacho dentro do relógio é despachante vivo.
+    ok = ok and cp.abertos_da_api([{"workflow_runs": [
+        {"id": 1, "path": ".github/workflows/noturno_juiz.yml", "status": "queued",
+         "head_branch": "ensaio-real/2026-10-11-9"}]}]) == []
+    viva = [x for x in cp.avaliar(dict(fatos, erros_de_consulta=[], ultimo_run={
+        "despachante.yml": "2026-10-11T19:06:00Z", "relogio.yml": "2026-10-11T20:08:00Z"}),
+        _dt.datetime(2026, 10, 11, 20, 20)) if x["pergunta"].startswith("despachante")]
+    ok = ok and bool(viva) and viva[0]["ok"]
     diz("   ✓ erro do `gh` deixa a checagem vermelha e nomeada; cron atrasado não julga a noite seguinte"
         if ok else "   ✗ a checagem pré-noite ainda é cega ao erro do `gh` ou julga a noite errada")
     return ok
