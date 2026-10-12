@@ -202,7 +202,7 @@ Atualizado em 12/10/2026.
 | `verificar_contribuicoes.py` | — | — | — | — | não |
 | `verificar_evidencias.py` | — | — | — | — | não |
 | `verificar_financiamento.py` | — | `financiamento/x.json` | — | — | não |
-| `verificar_links.py` | — | — | — | — | não |
+| `verificar_links.py` | — | `links_historico.json` | — | — | não |
 | `verificar_painel.py` | — | `painel/lista.json` | — | — | não |
 | `verificar_pista_imprensa.py` | — | `veiculos_imprensa.json` | — | 2 | não |
 | `verificar_recorrencia_uf.py` | — | — | — | 1 | não |
