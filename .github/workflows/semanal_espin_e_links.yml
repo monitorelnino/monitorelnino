@@ -23,7 +23,8 @@ jobs:
     uses: ./.github/workflows/_coletor.yml
     with:
       nome: espin-e-links
-      # `coletar_espin.py` escreve em data/saude_sinais.json; `verificar_links.py` só lê.
+      # `coletar_espin.py` escreve em data/saude_sinais.json; `verificar_links.py --historico`, em
+      # data/links_historico.json.
       timeout_minutos: 45
       comandos: |
         coletar_espin.py
@@ -34,6 +35,8 @@ jobs:
         # script só rodava como autoteste. Toda semana ele volta à fonte e decide pelo corpo atual;
         # falha de rede mantém o estado (§170).
         scripts/reavaliar_fontes_suspensas.py --refazer-busca
-        verificar_links.py
+        # 12/10/2026 (A6-18): o elo grava `data/links_historico.json` (quebrado desde quando); é o
+        # único escritor dele — a rodada diária chama o mesmo script sem `--historico`.
+        verificar_links.py --historico
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
