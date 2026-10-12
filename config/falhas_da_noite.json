@@ -602,6 +602,20 @@
    "correcao": "Sem corte no produtor; o painel une em multiconjunto de linhas inteiras (base + o que cada lado tem a mais) no resolvedor, na reaplicação e na consolidação; as 16 linhas podadas voltam do histórico.",
    "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_painel_cheio_nao_perde_o_commit",
    "falta": null
+  },
+  {
+   "id": "F45",
+   "noite": "2026-10-12",
+   "titulo": "Reaplicação ignora arquivo de dono único e marca o artefato como reaplicado",
+   "sintoma": "Semanal de sinais (run 38206236236) perdeu o commit pelo F44; a reaplicação das 07:36 (2795810d) trouxe pistas e logs, e cadastro federal, enquadramento, clima municipal e cobertura do QD ficaram para trás, com `sinais-e-links.reaplicado` gravado.",
+   "causa": "`reaplicar_noite.porta_de` só conhecia fila, jsonl, log, contador, evidências e marcador; o resto do artefato caía em \"não reaplica\" sem aviso.",
+   "prova": [
+    "commit 2795810d (12/10 07:36): sinais-e-links.reaplicado sem data/enquadramento_federal.json",
+    "data/saude_pipeline.json: coletar_prioritarios_mma.py ok às 05:08"
+   ],
+   "correcao": "O elo grava base e arquivos alterados no artefato (`data/.coleta_perdida.json`); a reaplicação copia o arquivo de dono único quando a árvore está como na base, e recusa nomeado quando outro escritor mexeu.",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_coleta_perdida_de_dono_unico_volta",
+   "falta": null
   }
  ]
 }
