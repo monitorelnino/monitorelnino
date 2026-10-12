@@ -129,7 +129,7 @@
    "papel": "Focos ativos nas últimas 24 h por UF (contagem publicada pelo INPE).",
    "status": "coletado",
    "consultado_em": "11/10/2026",
-   "documento": "Focos do dia — focos_diario_br_20261011.csv",
+   "documento": "Focos do dia — focos_diario_br_20261012.csv",
    "detalhe": "Focos ativos nas últimas 24 h por UF (contagem publicada pelo INPE)."
   },
   "cemaden_alertas": {
@@ -6033,12 +6033,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
-    "focos_24h": 56,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
@@ -6047,7 +6047,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "Rio Branco",
@@ -6063,17 +6063,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 49,
-     "hora": "2026-10-11T23:00",
+     "valor": 47,
+     "hora": "2026-10-11T08:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 25.0,
-     "pm10": 26.2,
-     "ozone": 52.1,
-     "nitrogen_dioxide": 2.4,
+     "pm2_5": 21.6,
+     "pm10": 22.8,
+     "ozone": 44.5,
+     "nitrogen_dioxide": 1.9,
      "carbon_monoxide": 290.2
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -6102,7 +6102,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": {
     "codigo": "A104",
@@ -6115,16 +6115,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 33.3,
+     "tmax": 36.3,
      "tmin": 23.6,
-     "umin_pct": 53.0,
+     "umin_pct": 36.0,
      "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-11"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-11",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "ar_medido": null
   },
@@ -6177,12 +6177,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
-    "focos_24h": 12,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
@@ -6191,7 +6191,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "Maceió",
@@ -6214,10 +6214,10 @@
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 11.8,
-     "pm10": 17.6,
-     "ozone": 56.7,
-     "nitrogen_dioxide": 2.2,
+     "pm2_5": 11.1,
+     "pm10": 16.2,
+     "ozone": 56.8,
+     "nitrogen_dioxide": 2.3,
      "carbon_monoxide": 94.3
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -6246,7 +6246,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": {
     "codigo": "A303",
@@ -6259,16 +6259,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 30.7,
+     "tmax": 30.9,
      "tmin": 21.5,
-     "umin_pct": 52.0,
+     "umin_pct": 46.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-11"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-11",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "ar_medido": null
   },
@@ -6322,12 +6322,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
-    "focos_24h": 1769,
+    "focos_24h": 21,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
@@ -6336,7 +6336,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "Manaus",
@@ -6352,17 +6352,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 106,
+     "valor": 98,
      "hora": "2026-10-11T23:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 78.5,
-     "pm10": 81.1,
-     "ozone": 125.0,
-     "nitrogen_dioxide": 9.1,
+     "pm2_5": 71.1,
+     "pm10": 73.5,
+     "ozone": 109.8,
+     "nitrogen_dioxide": 8.8,
      "carbon_monoxide": 672.2
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -6391,7 +6391,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": {
     "codigo": "A101",
@@ -6404,16 +6404,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 33.3,
+     "tmax": 37.0,
      "tmin": 29.3,
-     "umin_pct": 49.0,
+     "umin_pct": 39.0,
      "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-11"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-11",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "ar_medido": null
   },
@@ -6462,12 +6462,12 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
-    "focos_24h": 110,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
@@ -6476,7 +6476,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "Macapá",
@@ -6492,16 +6492,16 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 38,
-     "hora": "2026-10-11T17:00",
+     "valor": 37,
+     "hora": "2026-10-11T18:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 8.0,
-     "pm10": 10.4,
-     "ozone": 42.8,
+     "pm2_5": 7.3,
+     "pm10": 9.4,
+     "ozone": 43.1,
      "nitrogen_dioxide": 1.4,
      "carbon_monoxide": 132.9
     },
@@ -6531,7 +6531,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": {
     "codigo": "A249",
@@ -6544,16 +6544,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 33.1,
+     "tmax": 34.1,
      "tmin": 25.4,
-     "umin_pct": 55.0,
+     "umin_pct": 49.0,
      "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-11"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-11",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "ar_medido": null
   },
@@ -6598,22 +6598,21 @@
     "consultado_em": "11/10/2026"
    },
    "avisos_inmet": {
-    "total": 2,
+    "total": 1,
     "graus": {
-     "Perigo Potencial": 1,
-     "Perigo": 1
+     "Perigo Potencial": 1
     },
     "exemplos": [
      "Baixa Umidade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
-    "focos_24h": 1659,
+    "focos_24h": 27,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
@@ -6622,7 +6621,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "Salvador",
@@ -6645,10 +6644,10 @@
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 10.6,
-     "pm10": 14.4,
-     "ozone": 51.7,
-     "nitrogen_dioxide": 4.2,
+     "pm2_5": 10.2,
+     "pm10": 13.8,
+     "ozone": 50.8,
+     "nitrogen_dioxide": 4.3,
      "carbon_monoxide": 100.2
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -6677,7 +6676,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": {
     "codigo": "A401",
@@ -6690,16 +6689,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 30.1,
+     "tmax": 31.3,
      "tmin": 23.9,
-     "umin_pct": 54.0,
+     "umin_pct": 49.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-11"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-11",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "ar_medido": null
   },
@@ -6743,22 +6742,21 @@
     "consultado_em": "11/10/2026"
    },
    "avisos_inmet": {
-    "total": 2,
+    "total": 1,
     "graus": {
-     "Perigo Potencial": 1,
-     "Perigo": 1
+     "Perigo Potencial": 1
     },
     "exemplos": [
      "Baixa Umidade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
-    "focos_24h": 41,
+    "focos_24h": 9,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
@@ -6767,7 +6765,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "Fortaleza",
@@ -6783,16 +6781,16 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 41,
-     "hora": "2026-10-11T22:00",
+     "valor": 39,
+     "hora": "2026-10-11T20:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 13.6,
-     "pm10": 23.2,
-     "ozone": 68.4,
+     "pm2_5": 12.7,
+     "pm10": 21.7,
+     "ozone": 68.2,
      "nitrogen_dioxide": 0.5,
      "carbon_monoxide": 112.5
     },
@@ -6822,7 +6820,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": null,
    "ar_medido": null
@@ -6876,12 +6874,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
-    "focos_24h": 21,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
@@ -6890,7 +6888,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "Brasília",
@@ -6906,17 +6904,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 61,
-     "hora": "2026-10-11T10:00",
+     "valor": 62,
+     "hora": "2026-10-11T14:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 10.5,
-     "pm10": 10.9,
-     "ozone": 88.0,
-     "nitrogen_dioxide": 11.2,
+     "pm2_5": 8.8,
+     "pm10": 9.0,
+     "ozone": 86.8,
+     "nitrogen_dioxide": 12.6,
      "carbon_monoxide": 229.6
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -6945,7 +6943,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": {
     "codigo": "A001",
@@ -6958,16 +6956,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 31.9,
-     "tmin": 18.2,
-     "umin_pct": 20.0,
+     "tmax": 32.8,
+     "tmin": 18.7,
+     "umin_pct": 37.0,
      "pmax_mm": 0.0,
-     "marcado_pela_fonte": true,
+     "marcado_pela_fonte": false,
      "data": "2026-10-11"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-11",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "ar_medido": null
   },
@@ -7014,12 +7012,12 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
-    "focos_24h": 40,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
@@ -7028,7 +7026,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "Vitória",
@@ -7044,17 +7042,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 28,
-     "hora": "2026-10-11T15:00",
+     "valor": 26,
+     "hora": "2026-10-11T13:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 6.7,
-     "pm10": 9.4,
-     "ozone": 46.4,
-     "nitrogen_dioxide": 4.8,
+     "pm2_5": 5.8,
+     "pm10": 8.0,
+     "ozone": 45.7,
+     "nitrogen_dioxide": 4.9,
      "carbon_monoxide": 271.1
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -7083,7 +7081,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": {
     "codigo": "A612",
@@ -7096,16 +7094,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 32.3,
+     "tmax": 33.1,
      "tmin": 22.8,
-     "umin_pct": 48.0,
+     "umin_pct": 44.0,
      "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-11"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-11",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "ar_medido": null
   },
@@ -7150,10 +7148,9 @@
     "consultado_em": "11/10/2026"
    },
    "avisos_inmet": {
-    "total": 3,
+    "total": 2,
     "graus": {
-     "Perigo Potencial": 2,
-     "Perigo": 1
+     "Perigo Potencial": 2
     },
     "exemplos": [
      "Tempestade",
@@ -7161,12 +7158,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
-    "focos_24h": 452,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
@@ -7175,7 +7172,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "Goiânia",
@@ -7191,17 +7188,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 64,
-     "hora": "2026-10-11T15:00",
+     "valor": 66,
+     "hora": "2026-10-11T14:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 6.6,
-     "pm10": 6.6,
-     "ozone": 98.0,
-     "nitrogen_dioxide": 4.9,
+     "pm2_5": 3.5,
+     "pm10": 3.5,
+     "ozone": 97.7,
+     "nitrogen_dioxide": 5.5,
      "carbon_monoxide": 198.8
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -7230,7 +7227,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": {
     "codigo": "A002",
@@ -7243,16 +7240,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 35.2,
+     "tmax": 36.9,
      "tmin": 20.8,
-     "umin_pct": 25.0,
+     "umin_pct": 19.0,
      "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-11"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-11",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "ar_medido": null
   },
@@ -7297,22 +7294,21 @@
     "consultado_em": "11/10/2026"
    },
    "avisos_inmet": {
-    "total": 2,
+    "total": 1,
     "graus": {
-     "Perigo Potencial": 1,
-     "Perigo": 1
+     "Perigo Potencial": 1
     },
     "exemplos": [
      "Baixa Umidade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
-    "focos_24h": 868,
+    "focos_24h": 47,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
@@ -7321,7 +7317,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "São Luís",
@@ -7338,15 +7334,15 @@
     "indice": {
      "escala": "EAQI",
      "valor": 32,
-     "hora": "2026-10-11T21:00",
+     "hora": "2026-10-11T23:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 7.8,
-     "pm10": 12.6,
-     "ozone": 56.3,
+     "pm2_5": 7.9,
+     "pm10": 12.7,
+     "ozone": 55.6,
      "nitrogen_dioxide": 1.3,
      "carbon_monoxide": 108.5
     },
@@ -7376,7 +7372,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": null,
    "ar_medido": null
@@ -7421,10 +7417,10 @@
     "consultado_em": "11/10/2026"
    },
    "avisos_inmet": {
-    "total": 4,
+    "total": 3,
     "graus": {
      "Perigo Potencial": 2,
-     "Perigo": 2
+     "Perigo": 1
     },
     "exemplos": [
      "Tempestade",
@@ -7432,25 +7428,25 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
-    "focos_24h": 583,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
     "total": 1,
     "niveis": {
-     "Cessar": 1
+     "Moderado": 1
     },
     "municipios": [
      "JUIZ DE FORA"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "Belo Horizonte",
@@ -7466,17 +7462,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 47,
+     "valor": 53,
      "hora": "2026-10-11T14:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 6.9,
-     "pm10": 7.8,
-     "ozone": 67.0,
-     "nitrogen_dioxide": 6.6,
+     "pm2_5": 6.7,
+     "pm10": 7.6,
+     "ozone": 68.7,
+     "nitrogen_dioxide": 7.1,
      "carbon_monoxide": 151.2
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -7505,7 +7501,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": {
     "codigo": "A572",
@@ -7518,16 +7514,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 30.5,
+     "tmax": 32.5,
      "tmin": 21.4,
-     "umin_pct": 36.0,
+     "umin_pct": 30.0,
      "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-11"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-11",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "ar_medido": null
   },
@@ -7582,12 +7578,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
@@ -7596,7 +7592,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "Campo Grande",
@@ -7612,17 +7608,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 40,
-     "hora": "2026-10-11T13:00",
+     "valor": 39,
+     "hora": "2026-10-11T14:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 6.2,
-     "pm10": 6.5,
-     "ozone": 60.8,
-     "nitrogen_dioxide": 6.8,
+     "pm2_5": 5.7,
+     "pm10": 6.0,
+     "ozone": 60.7,
+     "nitrogen_dioxide": 6.5,
      "carbon_monoxide": 178.7
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -7651,7 +7647,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": {
     "codigo": "A702",
@@ -7664,16 +7660,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 26.4,
+     "tmax": 27.8,
      "tmin": 20.4,
-     "umin_pct": 62.0,
+     "umin_pct": 56.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-11"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-11",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "ar_medido": null
   },
@@ -7727,12 +7723,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
-    "focos_24h": 438,
+    "focos_24h": 12,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
@@ -7741,7 +7737,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "Cuiabá",
@@ -7757,17 +7753,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 39,
-     "hora": "2026-10-11T17:00",
+     "valor": 59,
+     "hora": "2026-10-11T16:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 7.7,
-     "pm10": 7.9,
-     "ozone": 69.2,
-     "nitrogen_dioxide": 5.5,
+     "pm2_5": 7.5,
+     "pm10": 7.7,
+     "ozone": 78.2,
+     "nitrogen_dioxide": 5.3,
      "carbon_monoxide": 205.6
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -7796,7 +7792,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": {
     "codigo": "A901",
@@ -7809,16 +7805,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 27.2,
+     "tmax": 31.7,
      "tmin": 20.3,
-     "umin_pct": 64.0,
+     "umin_pct": 47.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-11"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-11",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "ar_medido": null
   },
@@ -7872,12 +7868,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
-    "focos_24h": 7509,
+    "focos_24h": 149,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
@@ -7886,7 +7882,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "Belém",
@@ -7902,16 +7898,16 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 34,
-     "hora": "2026-10-11T16:00",
+     "valor": 31,
+     "hora": "2026-10-11T13:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 7.5,
-     "pm10": 10.3,
-     "ozone": 47.2,
+     "pm2_5": 7.2,
+     "pm10": 10.1,
+     "ozone": 46.7,
      "nitrogen_dioxide": 2.3,
      "carbon_monoxide": 145.1
     },
@@ -7941,7 +7937,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": {
     "codigo": "A201",
@@ -7963,7 +7959,7 @@
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-11",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "ar_medido": null
   },
@@ -8016,12 +8012,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
-    "focos_24h": 8,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
@@ -8030,7 +8026,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "João Pessoa",
@@ -8053,10 +8049,10 @@
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 10.6,
-     "pm10": 17.8,
-     "ozone": 66.0,
-     "nitrogen_dioxide": 0.7,
+     "pm2_5": 9.7,
+     "pm10": 16.1,
+     "ozone": 68.1,
+     "nitrogen_dioxide": 0.8,
      "carbon_monoxide": 122.4
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -8085,7 +8081,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": {
     "codigo": "A320",
@@ -8098,16 +8094,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 31.6,
+     "tmax": 31.7,
      "tmin": 25.5,
-     "umin_pct": 42.0,
+     "umin_pct": 41.0,
      "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-11"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-11",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "ar_medido": null
   },
@@ -8151,22 +8147,21 @@
     "consultado_em": "11/10/2026"
    },
    "avisos_inmet": {
-    "total": 2,
+    "total": 1,
     "graus": {
-     "Perigo Potencial": 1,
-     "Perigo": 1
+     "Perigo Potencial": 1
     },
     "exemplos": [
      "Baixa Umidade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
-    "focos_24h": 37,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
@@ -8175,7 +8170,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "Recife",
@@ -8191,16 +8186,16 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 35,
-     "hora": "2026-10-11T09:00",
+     "valor": 34,
+     "hora": "2026-10-11T08:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 10.4,
-     "pm10": 17.3,
-     "ozone": 67.1,
+     "pm2_5": 9.2,
+     "pm10": 15.3,
+     "ozone": 67.9,
      "nitrogen_dioxide": 1.1,
      "carbon_monoxide": 107.2
     },
@@ -8230,7 +8225,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": {
     "codigo": "A301",
@@ -8243,16 +8238,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 31.2,
+     "tmax": 31.3,
      "tmin": 25.2,
-     "umin_pct": 40.0,
+     "umin_pct": 37.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-11"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-11",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "ar_medido": null
   },
@@ -8297,22 +8292,21 @@
     "consultado_em": "11/10/2026"
    },
    "avisos_inmet": {
-    "total": 2,
+    "total": 1,
     "graus": {
-     "Perigo Potencial": 1,
-     "Perigo": 1
+     "Perigo Potencial": 1
     },
     "exemplos": [
      "Baixa Umidade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
-    "focos_24h": 874,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
@@ -8321,7 +8315,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "Teresina",
@@ -8337,17 +8331,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 46,
+     "valor": 48,
      "hora": "2026-10-11T22:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 13.0,
-     "pm10": 15.6,
-     "ozone": 68.4,
-     "nitrogen_dioxide": 3.6,
+     "pm2_5": 13.7,
+     "pm10": 16.5,
+     "ozone": 68.0,
+     "nitrogen_dioxide": 3.9,
      "carbon_monoxide": 157.4
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -8376,7 +8370,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": {
     "codigo": "A312",
@@ -8389,16 +8383,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 36.9,
+     "tmax": 39.2,
      "tmin": 23.7,
-     "umin_pct": 32.0,
+     "umin_pct": 22.0,
      "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-11"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-11",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "ar_medido": null
   },
@@ -8452,12 +8446,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
@@ -8471,7 +8465,7 @@
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "Curitiba",
@@ -8494,10 +8488,10 @@
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 10.1,
-     "pm10": 10.5,
-     "ozone": 48.5,
-     "nitrogen_dioxide": 13.3,
+     "pm2_5": 11.1,
+     "pm10": 11.3,
+     "ozone": 41.8,
+     "nitrogen_dioxide": 14.8,
      "carbon_monoxide": 207.5
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -8526,7 +8520,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": {
     "codigo": "A807",
@@ -8539,16 +8533,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 20.7,
+     "tmax": 20.9,
      "tmin": 16.4,
-     "umin_pct": 79.0,
+     "umin_pct": 77.0,
      "pmax_mm": 20.2,
      "marcado_pela_fonte": true,
      "data": "2026-10-11"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-11",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "ar_medido": null
   },
@@ -8600,12 +8594,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
@@ -8614,7 +8608,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "Rio de Janeiro",
@@ -8630,17 +8624,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 167,
-     "hora": "2026-10-11T15:00",
+     "valor": 108,
+     "hora": "2026-10-11T17:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 28.0,
-     "pm10": 29.6,
-     "ozone": 131.6,
-     "nitrogen_dioxide": 18.2,
+     "pm2_5": 22.1,
+     "pm10": 24.1,
+     "ozone": 104.8,
+     "nitrogen_dioxide": 17.4,
      "carbon_monoxide": 249.3
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -8669,7 +8663,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": {
     "codigo": "A652",
@@ -8691,7 +8685,7 @@
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-11",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "ar_medido": null
   },
@@ -8744,12 +8738,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
-    "focos_24h": 9,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
@@ -8758,7 +8752,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "Natal",
@@ -8774,16 +8768,16 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 36,
-     "hora": "2026-10-11T10:00",
+     "valor": 34,
+     "hora": "2026-10-11T08:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 11.6,
-     "pm10": 19.3,
-     "ozone": 67.2,
+     "pm2_5": 10.8,
+     "pm10": 17.8,
+     "ozone": 68.3,
      "nitrogen_dioxide": 0.9,
      "carbon_monoxide": 107.2
     },
@@ -8813,7 +8807,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": {
     "codigo": "A304",
@@ -8835,7 +8829,7 @@
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-11",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "ar_medido": null
   },
@@ -8889,12 +8883,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
-    "focos_24h": 389,
+    "focos_24h": 15,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
@@ -8903,7 +8897,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "Porto Velho",
@@ -8919,16 +8913,16 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 70,
-     "hora": "2026-10-11T15:00",
+     "valor": 74,
+     "hora": "2026-10-11T09:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 53.5,
-     "pm10": 55.9,
-     "ozone": 89.6,
+     "pm2_5": 58.7,
+     "pm10": 61.2,
+     "ozone": 86.0,
      "nitrogen_dioxide": 1.6,
      "carbon_monoxide": 335.7
     },
@@ -8958,7 +8952,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": {
     "codigo": "A925",
@@ -8971,16 +8965,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 34.0,
+     "tmax": 36.2,
      "tmin": 24.2,
-     "umin_pct": 54.0,
+     "umin_pct": 44.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-11"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-11",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "ar_medido": null
   },
@@ -9029,12 +9023,12 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
-    "focos_24h": 267,
+    "focos_24h": 2,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
@@ -9043,7 +9037,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "Boa Vista",
@@ -9066,10 +9060,10 @@
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 10.2,
-     "pm10": 11.5,
-     "ozone": 50.9,
-     "nitrogen_dioxide": 1.7,
+     "pm2_5": 12.2,
+     "pm10": 13.7,
+     "ozone": 52.6,
+     "nitrogen_dioxide": 1.6,
      "carbon_monoxide": 144.2
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -9098,7 +9092,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": null,
    "ar_medido": null
@@ -9153,29 +9147,27 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
-    "total": 4,
+    "total": 3,
     "niveis": {
-     "Alto": 3,
-     "Cessar": 1
+     "Alto": 3
     },
     "municipios": [
-     "CACHOEIRA DO SUL",
      "ITAQUI",
      "SÃO BORJA",
      "URUGUAIANA"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "Porto Alegre",
@@ -9198,10 +9190,10 @@
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 6.1,
-     "pm10": 8.1,
-     "ozone": 51.4,
-     "nitrogen_dioxide": 4.2,
+     "pm2_5": 5.8,
+     "pm10": 7.6,
+     "ozone": 51.8,
+     "nitrogen_dioxide": 4.4,
      "carbon_monoxide": 109.8
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -9230,7 +9222,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": {
     "codigo": "A801",
@@ -9243,16 +9235,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 18.9,
+     "tmax": 19.4,
      "tmin": 15.9,
-     "umin_pct": 75.0,
+     "umin_pct": 72.0,
      "pmax_mm": 1.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-11"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-11",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "ar_medido": null
   },
@@ -9306,12 +9298,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
@@ -9324,7 +9316,7 @@
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "Florianópolis",
@@ -9347,9 +9339,9 @@
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 7.1,
-     "pm10": 10.6,
-     "ozone": 63.6,
+     "pm2_5": 6.0,
+     "pm10": 9.0,
+     "ozone": 63.8,
      "nitrogen_dioxide": 1.6,
      "carbon_monoxide": 104.9
     },
@@ -9379,7 +9371,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": {
     "codigo": "A806",
@@ -9393,7 +9385,7 @@
     "natureza": "medição",
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-11",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "ar_medido": null
   },
@@ -9446,12 +9438,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
@@ -9460,7 +9452,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "Aracaju",
@@ -9483,10 +9475,10 @@
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 10.0,
-     "pm10": 14.6,
-     "ozone": 51.2,
-     "nitrogen_dioxide": 4.0,
+     "pm2_5": 9.9,
+     "pm10": 14.4,
+     "ozone": 51.6,
+     "nitrogen_dioxide": 4.1,
      "carbon_monoxide": 147.4
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -9515,7 +9507,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": null,
    "ar_medido": null
@@ -9570,21 +9562,26 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
-    "focos_24h": 12,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
-    "total": 0,
-    "niveis": {},
-    "municipios": [],
+    "total": 2,
+    "niveis": {
+     "Moderado": 2
+    },
+    "municipios": [
+     "CAMPINAS",
+     "ESTIVA GERBI"
+    ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "São Paulo",
@@ -9600,17 +9597,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 105,
+     "valor": 128,
      "hora": "2026-10-11T11:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 24.7,
-     "pm10": 24.9,
-     "ozone": 86.8,
-     "nitrogen_dioxide": 23.2,
+     "pm2_5": 22.5,
+     "pm10": 22.9,
+     "ozone": 85.1,
+     "nitrogen_dioxide": 22.5,
      "carbon_monoxide": 275.0
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -9639,7 +9636,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": {
     "codigo": "A701",
@@ -9653,7 +9650,7 @@
     "natureza": "medição",
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-11",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "ar_medido": null
   },
@@ -9698,22 +9695,21 @@
     "consultado_em": "11/10/2026"
    },
    "avisos_inmet": {
-    "total": 2,
+    "total": 1,
     "graus": {
-     "Perigo Potencial": 1,
-     "Perigo": 1
+     "Perigo Potencial": 1
     },
     "exemplos": [
      "Baixa Umidade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "fogo": {
-    "focos_24h": 459,
+    "focos_24h": 8,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261011.csv",
+    "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "11/10/2026"
    },
    "alertas_cemaden": {
@@ -9722,7 +9718,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "11/10/2026 12:36"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura": {
     "capital": "Palmas",
@@ -9738,17 +9734,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 60,
-     "hora": "2026-10-11T10:00",
+     "valor": 56,
+     "hora": "2026-10-11T09:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 18.8,
-     "pm10": 20.5,
-     "ozone": 87.1,
-     "nitrogen_dioxide": 5.8,
+     "pm2_5": 15.4,
+     "pm10": 16.8,
+     "ozone": 89.0,
+     "nitrogen_dioxide": 5.5,
      "carbon_monoxide": 202.4
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -9777,7 +9773,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "temperatura_medida": {
     "codigo": "A009",
@@ -9799,7 +9795,7 @@
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-11",
-    "consultado_em": "11/10/2026 12:37"
+    "consultado_em": "11/10/2026 22:14"
    },
    "ar_medido": null
   }
