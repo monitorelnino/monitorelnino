@@ -17,7 +17,11 @@ o que é binário e se anuncia pelo caminho e pela linha, para que o conserto se
 
 USO
   python3 scripts/verificar_marcadores_de_conflito.py
+  python3 scripts/verificar_marcadores_de_conflito.py --preparados   # só o que vai no commit (hook)
   python3 scripts/verificar_marcadores_de_conflito.py --autoteste
+
+A7-23 (12/10/2026): `--preparados` é o que `.githooks/pre-commit` roda — a CI pegava o marcador no
+PR, mas só depois do commit e do push; o hook recusa o commit na hora.
 """
 import pathlib
 import subprocess
@@ -35,6 +39,15 @@ EXCECOES = {"scripts/verificar_marcadores_de_conflito.py"}
 
 def arquivos_rastreados() -> list:
     saida = subprocess.run(["git", "ls-files", "-z"], cwd=RAIZ, capture_output=True, text=True)
+    return [c for c in saida.stdout.split("\0") if c]
+
+
+def arquivos_preparados() -> list:
+    """Os caminhos que o próximo commit leva (acrescentados, copiados ou modificados). Só lê."""
+    saida = subprocess.run(["git", "diff", "--cached", "--name-only", "--diff-filter=ACM", "-z"],
+                           cwd=RAIZ, capture_output=True, text=True)
+    if saida.returncode != 0:
+        raise RuntimeError("git diff --cached falhou: " + (saida.stderr or "").strip()[:200])
     return [c for c in saida.stdout.split("\0") if c]
 
 
@@ -95,7 +108,8 @@ def autoteste() -> int:
 def main() -> int:
     if "--autoteste" in sys.argv:
         return autoteste()
-    achados = achar(arquivos_rastreados())
+    caminhos = arquivos_preparados() if "--preparados" in sys.argv else arquivos_rastreados()
+    achados = achar(caminhos)
     if achados:
         print("✗ MARCADORES DE CONFLITO: arquivo versionado com merge não resolvido:")
         for rel, n, m in achados[:40]:
@@ -103,7 +117,7 @@ def main() -> int:
         print("   `git add` marca como resolvido mesmo com os marcadores dentro; una os dois lados e "
               "confira pela ausência de marcador.")
         return 1
-    print(f"✓ MARCADORES OK — nenhum dos {len(arquivos_rastreados())} arquivos versionados tem merge "
+    print(f"✓ MARCADORES OK — nenhum dos {len(caminhos)} arquivos conferidos tem merge "
           f"não resolvido.")
     return 0
 

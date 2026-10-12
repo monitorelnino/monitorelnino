@@ -181,6 +181,18 @@ def t_repeticao_nao_expulsa_consulta_antiga():
     return any(x["fonte"].startswith("Querido Diário") for x in r) and len(r) == 2
 
 
+def t_marcar_sem_municipio_nao_grava_a6_16():
+    """A6-16: marcar fonte para lista vazia não regrava o livro."""
+    gravou = []
+    real = cb._gravar_livro
+    cb._gravar_livro = lambda livro: gravou.append(1)
+    try:
+        cb.marcar_fonte_consultada([], "DOM consorciado", "nao_verificado", resultado="x")
+    finally:
+        cb._gravar_livro = real
+    return gravou == []
+
+
 def t_teto_da_janela_vale_para_distintas():
     """Com mais de 12 dias da mesma fonte, ficam os 12 mais recentes — o teto continua existindo."""
     entradas = [{"fonte": "DOU/SEDEC", "data": f"2026-09-{i:02d}", "resultado": "x"}
@@ -223,5 +235,6 @@ if __name__ == "__main__":
         "§216 repetição da mesma fonte no dia não expulsa consulta de outra fonte": t_repeticao_nao_expulsa_consulta_antiga,
         "o teto da janela continua valendo para as consultas distintas": t_teto_da_janela_vale_para_distintas,
         "A6-05: a última consulta de cada fonte fica": t_ultima_de_cada_fonte_fica_a6_05,
+        "A6-16: marcar fonte sem município não regrava o livro": t_marcar_sem_municipio_nao_grava_a6_16,
         "contraste: o log NÃO deduplica, e isso é proposital": t_o_log_nao_deduplica_e_isso_e_proposital,
     }))
