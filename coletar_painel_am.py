@@ -31,7 +31,7 @@ TRAVA ABSOLUTA (idêntica à de descobrir_planos.py e sondar_paineis.py):
      indice.json ou monitor_saude.json (garantido por autoteste que lê o próprio fonte).
   2. DE CAMPO: todo item nasce com "documento_oficial_confirmado": null e
      "promovivel": false.
-  3. DE PROCESSO: sai em fila própria, nunca no banco. Promoção é humana (regra R7).
+  3. DE PROCESSO: sai em fila própria, nunca no banco. Promoção só pelo juiz automático, com documento oficial (D7, 08/10/2026; antes, regra R7).
 Link que não abre, PDF ilegível ou painel fora do ar = LACUNA DECLARADA (registrar_lacuna),
 jamais valor estimado.
 ===========================================================================
