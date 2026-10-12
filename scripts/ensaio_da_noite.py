@@ -957,6 +957,36 @@ def ensaio_painel_cheio_nao_perde_o_commit(diz) -> bool:
         return True
 
 
+def ensaio_coleta_perdida_de_dono_unico_volta(diz) -> bool:
+    """24. Arquivo de dono único da coleta perdida volta pela regra de três vias (F45).
+
+    12/10/2026: a reaplicação ignorava todo arquivo sem porta própria e marcava o artefato como
+    reaplicado — clima municipal, enquadramento federal e cobertura do QD da rotina semanal de
+    sinais se perderam em silêncio. Reprova se o `_coletor.yml` não escrever o manifesto da perda
+    antes de subir o artefato, ou se a regra de três vias copiar por cima de outro escritor.
+    """
+    import pathlib
+    import yaml
+    import reaplicar_noite as rn
+    raiz = pathlib.Path(__file__).resolve().parents[1]
+    wf = yaml.safe_load((raiz / ".github/workflows/_coletor.yml").read_text(encoding="utf-8"))
+    passos = [x for j in (wf.get("jobs") or {}).values() for x in (j.get("steps") or [])]
+    nomes = [str(x.get("name") or "") for x in passos]
+    i_man = next((i for i, n in enumerate(nomes) if n.startswith("Escrever o manifesto da coleta")), -1)
+    i_art = next((i for i, n in enumerate(nomes) if n.startswith("Guardar as saídas")), -1)
+    commit = next((str(x.get("run") or "") for x in passos if x.get("id") == "commit"), "")
+    if not (0 <= i_man < i_art) or "alterados_do_elo" not in commit:
+        diz("  ✗ o artefato da coleta perdida sobe sem o manifesto (base + alterados) — F45 de volta")
+        return False
+    alt = ["data/clima.json"]
+    ok = (rn.decidir_dono_unico("data/clima.json", alt, b"v1", b"v1", b"v2") == "copiar"
+          and rn.decidir_dono_unico("data/clima.json", alt, b"v3", b"v1", b"v2").startswith("recusa")
+          and rn.decidir_dono_unico("data/outro.json", alt, b"v1", b"v1", b"v2") == "fora")
+    diz("  ✓ manifesto da perda antes do artefato; dono único volta, e nunca por cima de outro escritor"
+        if ok else "  ✗ a regra de três vias da reaplicação copia por cima de outro escritor")
+    return ok
+
+
 ENSAIOS = (
     ("dois elos em paralelo: zero conflito, zero perda", ensaio_dois_elos_em_paralelo),
     ("disparo duplicado: o segundo sai sem trabalho", ensaio_disparo_duplicado),
@@ -988,6 +1018,8 @@ ENSAIOS = (
     ("21. todo passo condicionado existe no próprio job", ensaio_passo_condicionado_existe_no_job),
     ("22. deploy falho é vermelho, não aviso", ensaio_deploy_falho_e_vermelho),
     ("23. painel cheio não perde o commit", ensaio_painel_cheio_nao_perde_o_commit),
+    ("24. coleta perdida de dono único volta (três vias)",
+     ensaio_coleta_perdida_de_dono_unico_volta),
 )
 
 
