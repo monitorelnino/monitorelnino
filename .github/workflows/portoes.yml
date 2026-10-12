@@ -97,6 +97,12 @@ jobs:
           # assunto: texto rapido
           # barra_publicacao: sim
           python3 scripts/verificar_escrita_portavel.py
+          # A7-11 (12/10/2026): credencial e CPF nas linhas acrescentadas pelo PR, fora de
+          # `evidencias/` (que tem portão próprio). Repositório público, publicado pela raiz.
+          # assunto: texto rapido
+          python3 scripts/verificar_segredos.py --autoteste
+          # assunto: texto rapido
+          python3 scripts/verificar_segredos.py --contra origin/main
           # assunto: cor texto rapido
           node scripts/verificar_estrutura.js
           # assunto: cor texto

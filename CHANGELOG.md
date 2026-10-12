@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · portão de segredo no diff do PR (A7-11)
+
+Nenhum portão procurava credencial ou CPF fora de `evidencias/`: um token colado num JSON de `data/` ou num script de página iria ao ar com tudo verde. `verificar_segredos.py` lê as linhas acrescentadas pelo PR e reprova credencial com prefixo e chave privada em qualquer arquivo, e atribuição de chave e CPF em conteúdo publicado. Roda sempre, no job de estrutura.
+
 ## 2026-10-12 · #PR · portões: a lista local é a do workflow (A7-10)
 
 `quais_portoes.py` tinha uma lista própria de 19 portões e uma cópia da regra de disparo; agora lê as duas de `portoes.yml` — os 267 comandos, classificados pelo `if` de cada passo. A regra de disparo da CI passa a reconhecer catálogo de conteúdo, contratos e regras de layout, o medidor e o `netlify.toml` como mudança de página, e `config/` como mudança de dado.
