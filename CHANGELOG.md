@@ -36,6 +36,10 @@ não pontuados permanecem na versão corrente.
 
 Início, Saúde, Proteja-se, Prefeituras e Obrigado passam a ler o texto público de `conteudo/<pagina>.json` (124 entradas), por migração mecânica: texto renderizado idêntico com e sem catálogo. O migrador deixa de fora elemento que o JS da página reescreve (em Saúde, cinco rótulos com a semana) — migrado, o catálogo sobrescrevia o dado (`scripts/migrar_para_catalogo.py`). O contador de palavras volta a ignorar legenda com `data-conteudo`.
 
+## 2026-10-12 · #PR · log de buscas com data ISO e decisão do vocabulário (A6-27)
+
+150 execuções de 28/09 no monólito tinham data `dd/mm/aaaa` e 14 de 27–29/08 tinham a decisão em prosa. Migração única: datas em ISO; decisão vira `consultado`, com o texto original em `resultados`. Nenhuma execução sai ou entra (74.311). Novo portão `verificar_esquema_do_log.py` impede que voltem.
+
 ## 2026-10-12 · #PR · reconhecimento federal: consultado e não localizado é `false` (A3-17)
 
 `verificacao_municipal.json` gravava `null` para 4.858 municípios já consultados no DOU/MIDR, confundindo "consultado e não localizado" com "não coletado". Agora é `false` quando há nível nacional ou acima e data de consulta no livro; sem consulta datada segue `null` (`recalcular_mare.py`, handover 1.16). Decreto não pontua; nenhuma página exibe o campo.
