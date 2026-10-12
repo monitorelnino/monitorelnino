@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · log de buscas com data ISO e decisão do vocabulário (A6-27)
+
+150 execuções de 28/09 no monólito tinham data `dd/mm/aaaa` e 14 de 27–29/08 tinham a decisão em prosa. Migração única: datas em ISO; decisão vira `consultado`, com o texto original em `resultados`. Nenhuma execução sai ou entra (74.311). Novo portão `verificar_esquema_do_log.py` impede que voltem.
+
 ## 2026-10-12 · #PR · vigência de decreto com data só de ano (A3-29)
 
 28 decretos com data "2026" ou "2025/2026" ficavam "indeterminada". `verificar_vigencia.py` passa a decidir pelo intervalo possível do ano (ativo, prazo vencido ou `sem_data_de_dia` quando o ano não decide), tira `vigencia` de registro que não é decreto, grava `vigencia_em` só quando a vigência muda e ganha autoteste no portão. Nenhuma página exibe o campo.
