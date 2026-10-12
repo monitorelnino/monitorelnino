@@ -9,21 +9,22 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-05 a 2026-10-12 (720 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-05 a 2026-10-12 (749 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
 - consultar_querido_diario.py: erro em 2 rodadas seguidas — urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>
-- monitorar_imprensa_saude.py: erro em 16 rodadas seguidas — KeyError: 'hash'
-- monitorar_politica_por_inteiro.py: erro em 14 rodadas seguidas — NameError: name 'ler' is not defined. Did you mean: 'len'?
+- monitorar_imprensa_saude.py: erro em 18 rodadas seguidas — KeyError: 'hash'
+- monitorar_politica_por_inteiro.py: erro em 16 rodadas seguidas — NameError: name 'ler' is not defined. Did you mean: 'len'?
+- monitorar_redes_oficiais.py: erro em 3 rodadas seguidas — interrompido pelo prazo do elo
 - verificar_links.py: erro em 3 rodadas seguidas — erro: HTTPSConnectionPool(host='www.defesacivil.sc.gov.br', port=443): Max retries exceeded with url: /2026/08/14/chuva-forte-deixa-danos-em-municipios-de-santa-catarina-e-risco-de-temporais-segue-alto-ate-sabado/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.defesacivil.sc.gov.br', port
 
 ## Última execução de cada script
 
 | script | papel | última execução | duração | itens | status | erro |
 |---|---|---|---|---:|---|---|
-| `recalcular_mare.py` | essencial | 2026-10-12 09:06 | 3 s | — | ok | — |
-| `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-12 05:18 | 0 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-12 09:51 | 2 s | — | ok | — |
+| `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-12 09:14 | 0 s | — | ok | — |
 | `buscar_protocolo_calor.py` | coletor | 2026-10-12 07:33 | 11 s | 3 | ok | — |
 | `classificar_planos_municipais.py` | coletor | 2026-10-12 05:24 | 0 s | — | ok | — |
 | `classificar_saude_no_plano.py` | coletor | 2026-10-11 01:43 | 1 s | — | ok | — |
@@ -57,25 +58,25 @@ Janela: 2026-10-05 a 2026-10-12 (720 execução(ões) registrada(s), 7 dias de h
 | `coletar_transferencias_municipais.py` | coletor | 2026-10-12 05:21 | 67 s | — | ok | — |
 | `consultar_querido_diario.py` | coletor | 2026-10-11 01:14 | 781 s | — | **erro** (2 seguidas) | urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)> |
 | `descobrir_dominios.py` | coletor | 2026-10-12 06:49 | 1682 s | — | **erro** | interrompido pelo prazo do elo |
-| `descobrir_planos.py` | coletor | 2026-10-12 03:27 | 915 s | 42 | ok | — |
-| `detectar_marcos_federais.py` | coletor | 2026-10-12 03:27 | 1 s | 0 | ok | — |
-| `julgar_e_aplicar_descobertas.py` | coletor | 2026-10-12 05:06 | 695 s | — | ok | — |
-| `julgar_filas.py` | coletor | 2026-10-12 05:05 | 73 s | — | ok | — |
-| `monitorar_atos_resposta.py` | coletor | 2026-10-12 03:25 | 93 s | 3478 | ok | — |
-| `monitorar_imprensa_regional.py` | coletor | 2026-10-12 03:21 | 245 s | 40 | ok | — |
-| `monitorar_imprensa_saude.py` | coletor | 2026-10-12 03:25 | 1 s | — | **erro** (16 seguidas) | KeyError: 'hash' |
-| `monitorar_politica_por_inteiro.py` | coletor | 2026-10-12 03:26 | 2 s | 3478 | **erro** (14 seguidas) | NameError: name 'ler' is not defined. Did you mean: 'len'? |
-| `monitorar_redes_oficiais.py` | coletor | 2026-10-12 03:42 | 1294 s | — | **erro** | interrompido pelo prazo do elo |
-| `monitorar_sinais_federais.py` | coletor | 2026-10-12 03:27 | 4 s | 10 | ok | — |
+| `descobrir_planos.py` | coletor | 2026-10-12 08:11 | 900 s | 42 | ok | — |
+| `detectar_marcos_federais.py` | coletor | 2026-10-12 08:11 | 1 s | 0 | ok | — |
+| `julgar_e_aplicar_descobertas.py` | coletor | 2026-10-12 08:55 | 1148 s | — | ok | — |
+| `julgar_filas.py` | coletor | 2026-10-12 08:54 | 28 s | — | ok | — |
+| `monitorar_atos_resposta.py` | coletor | 2026-10-12 08:09 | 80 s | 3478 | ok | — |
+| `monitorar_imprensa_regional.py` | coletor | 2026-10-12 08:08 | 104 s | 40 | ok | — |
+| `monitorar_imprensa_saude.py` | coletor | 2026-10-12 08:09 | 1 s | — | **erro** (18 seguidas) | KeyError: 'hash' |
+| `monitorar_politica_por_inteiro.py` | coletor | 2026-10-12 08:11 | 4 s | 3478 | **erro** (16 seguidas) | NameError: name 'ler' is not defined. Did you mean: 'len'? |
+| `monitorar_redes_oficiais.py` | coletor | 2026-10-12 08:26 | 1456 s | — | **erro** (3 seguidas) | interrompido pelo prazo do elo |
+| `monitorar_sinais_federais.py` | coletor | 2026-10-12 08:11 | 4 s | 10 | ok | — |
 | `preservar_evidencias.py` | coletor | 2026-10-12 04:57 | 1 s | — | ok | — |
-| `revisar_pistas.py` | coletor | 2026-10-12 05:05 | 2 s | — | ok | — |
-| `scripts/amostra_auditoria_semanal.py` | coletor | 2026-10-12 05:18 | 0 s | — | ok | — |
-| `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-10-12 05:05 | 9 s | — | ok | — |
+| `revisar_pistas.py` | coletor | 2026-10-12 08:54 | 2 s | — | ok | — |
+| `scripts/amostra_auditoria_semanal.py` | coletor | 2026-10-12 09:14 | 0 s | — | ok | — |
+| `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-10-12 08:54 | 12 s | — | ok | — |
 | `scripts/preservar_textos_integrais.py` | coletor | 2026-10-12 04:58 | 2 s | — | ok | — |
 | `scripts/sondar_boletim_infogripe.py` | coletor | 2026-10-12 05:13 | 366 s | — | ok | — |
 | `scripts/triar_fila.py` | coletor | 2026-10-11 02:55 | 1 s | — | ok | — |
 | `scripts/verificar_esquema_de_pista.py` | coletor | 2026-10-12 03:18 | 1 s | — | ok | — |
-| `seguir_pistas.py` | coletor | 2026-10-12 04:03 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `triar_confianca_pistas.py` | coletor | 2026-10-12 04:03 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `seguir_pistas.py` | coletor | 2026-10-12 08:50 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `triar_confianca_pistas.py` | coletor | 2026-10-12 08:50 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `verificar_links.py` | coletor | 2026-10-12 07:33 | 163 s | — | **erro** (3 seguidas) | erro: HTTPSConnectionPool(host='www.defesacivil.sc.gov.br', port=443): Max retries exceeded with url: /2026/08/14/chuva- |
-| `verificar_pista_imprensa.py` | coletor | 2026-10-12 04:03 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `verificar_pista_imprensa.py` | coletor | 2026-10-12 08:50 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
