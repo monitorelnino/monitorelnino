@@ -74,12 +74,28 @@ def _git(*args):
                           timeout=300)
 
 
+def caminhos_do_manifesto(texto: str) -> list:
+    """Os caminhos que o manifesto sela (`<sha256>  <caminho>`). Função pura."""
+    fora = []
+    for linha in str(texto or "").splitlines():
+        partes = linha.strip().split(None, 1)
+        if len(partes) == 2 and len(partes[0]) == 64 and not linha.startswith("#"):
+            fora.append(partes[1].strip())
+    return fora
+
+
 def _ler_arvore() -> dict:
-    """{caminho: conteúdo} dos arquivos que a cadeia mexeu. Lê disco; não escreve."""
+    """{caminho: conteúdo} do que a cadeia pode mexer. Lê disco; não escreve.
+
+    A7-22 (12/10/2026): lia só o `git status`, e em árvore em dia comparava ZERO arquivos ("✓ … 0
+    arquivo(s) conferido(s)"). Agora compara tudo o que o manifesto sela, mais o que mudou.
+    """
+    manifesto = RAIZ / "docs" / "MANIFEST_SHA256.txt"
+    selados = caminhos_do_manifesto(manifesto.read_text(encoding="utf-8")) if manifesto.exists() else []
     mudados = [l[3:] for l in (_git("status", "--porcelain").stdout or "").splitlines()
                if len(l) > 3]
     fora = {}
-    for rel in mudados:
+    for rel in sorted(set(mudados) | set(selados) | {"docs/MANIFEST_SHA256.txt"}):
         arq = RAIZ / rel.strip()
         if not arq.exists() or arq.is_dir():
             continue
@@ -117,6 +133,9 @@ def _autoteste() -> int:
        "linha 2" in primeira_divergencia(a, b))
     ok("textos iguais não têm divergência", primeira_divergencia("x\ny", "x\ny") == "")
     ok("tamanho diferente é divergência", "tamanho" in primeira_divergencia("x", "x\ny"))
+    _m = ("# cabeçalho\n" + "a" * 64 + "  data/indice.json\n" + "b" * 64 + "  CODEMAP.md\n")
+    ok("A7-22: os caminhos selados saem do manifesto",
+       caminhos_do_manifesto(_m) == ["data/indice.json", "CODEMAP.md"])
 
     import dis
     nomes = set()
@@ -143,9 +162,13 @@ def main(argv: list) -> int:
         print(f"✗ {CADEIA.relative_to(RAIZ)} não existe")
         return 1
 
-    def regenerar():
+    def regenerar(fuso=None):
+        import os
+        env = dict(os.environ)
+        if fuso:
+            env["TZ"] = fuso
         return subprocess.run(["bash", str(CADEIA), "--regenerar-para-commit"],
-                              cwd=str(RAIZ), capture_output=True, text=True, timeout=1800)
+                              cwd=str(RAIZ), capture_output=True, text=True, timeout=1800, env=env)
 
     r1 = regenerar()
     if r1.returncode != 0:
@@ -154,7 +177,9 @@ def main(argv: list) -> int:
         return 1
     antes = _ler_arvore()
 
-    r2 = regenerar()
+    # A7-22: a segunda passagem roda noutro fuso (UTC+14). Gerador que lê a data local da parede
+    # em vez da data do corte muda aqui — é a virada de dia que derrubou nove publicações em 06/10.
+    r2 = regenerar("Pacific/Kiritimati")
     if r2.returncode != 0:
         print("✗ IDEMPOTÊNCIA: a segunda regeneração FALHOU:")
         print((r2.stderr or r2.stdout or "").strip()[-600:])
