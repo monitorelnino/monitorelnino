@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · vigência de decreto com data só de ano (A3-29)
+
+28 decretos com data "2026" ou "2025/2026" ficavam "indeterminada". `verificar_vigencia.py` passa a decidir pelo intervalo possível do ano (ativo, prazo vencido ou `sem_data_de_dia` quando o ano não decide), tira `vigencia` de registro que não é decreto, grava `vigencia_em` só quando a vigência muda e ganha autoteste no portão. Nenhuma página exibe o campo.
+
 ## 2026-10-12 · #PR · figura dos caminhos sem vazio; alvo de toque dos contatos (A4-24, A4-26)
 
 A figura dos caminhos do dinheiro em `financiamento.html` tinha 570 px de branco (a mídia herdava proporção fixa) e rótulos que vazavam da faixa. Agora a mídia do cartão largo segue a altura do desenho e cada rótulo quebra em linhas pela largura da faixa, que cresce com ele (`assets/base.css`, `assets/js/financiamento.js`). Telefone, e-mail e portal dos contatos de Proteja-se passam de 17 para 44 px de alvo.
