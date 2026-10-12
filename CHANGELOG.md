@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · contribuição pública vira pista e segue o juiz (A6-19)
+
+Com a autoaplicação suspensa, toda contribuição parava como abstenção e nenhuma chegava ao índice. Pela decisão D7, a de documento (plano, estrutura, decreto) passa por fonte oficial (R4) e campo livre (R4-bis) e entra na fila pela porta única, origem `contribuicao`, nível C; o juiz lê o documento (`processar_contribuicoes.py`, `schemas/pista.json`).
+
 ## 2026-10-12 · #PR · portão compara a grade da Saúde com o dado (A7-02, A4-33)
 
 A grade dos 27 estados em `saude.html` chegou a mostrar 0,0 em 21 cartões e nenhum portão comparava o número escrito com `monitor_saude.json`. `verificar_runtime_saude.js` passa a exigir que cada estado verificado escreva a sua prontidão e que o não verificado diga isso, sem número; provado por mutação (sem a animação, reprova). E abre as 27 fichas, não só a de GO (A4-33).

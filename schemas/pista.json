@@ -6,7 +6,7 @@
     "alvo": "Código IBGE do município ou sigla da UF. Sem alvo identificável, a pista é descartada com motivo — 'notícia sobre municípios' não é pista de município.",
     "nivel": "A | B | C, pelo mesmo critério de confiança já em uso.",
     "data": "Data do achado, em AAAA-MM-DD.",
-    "origem": "Qual coletor gravou: busca_web | imprensa | rede_social | diario | diario_consorciado | descoberta | querido_diario | doe | revisao."
+    "origem": "Qual coletor gravou: busca_web | imprensa | rede_social | diario | diario_consorciado | descoberta | querido_diario | doe | revisao | contribuicao."
   },
   "opcionais": {
     "titulo": "Título do item, quando a fonte o dá.",
@@ -37,7 +37,8 @@
     "querido_diario",
     "doe",
     "revisao",
-    "desconhecida"
+    "desconhecida",
+    "contribuicao"
   ],
   "regras": {
     "teto_por_municipio_e_assunto": 5,
@@ -46,5 +47,6 @@
     "dominio_oficial_vai_direto_ao_juiz": true,
     "deduplicacao_na_entrada": "url_final + alvo + assunto; repetida incrementa `repeticoes` na existente"
   },
-  "_por_que_desconhecida": "09/10/2026: 10.018 das 13.503 pistas da fila ativa entraram ANTES da porta de 03/10 e não têm origem nenhuma. A origem dessas não se adivinha pela fila em que a pista mora — isso seria inventar proveniência. Elas recebem `desconhecida`, que é lacuna declarada e aparece como tal em qualquer leitura por origem. Pista NOVA nunca recebe este valor: a porta exige origem de coletor, e origem fora desta lista é recusada com motivo."
+  "_por_que_desconhecida": "09/10/2026: 10.018 das 13.503 pistas da fila ativa entraram ANTES da porta de 03/10 e não têm origem nenhuma. A origem dessas não se adivinha pela fila em que a pista mora — isso seria inventar proveniência. Elas recebem `desconhecida`, que é lacuna declarada e aparece como tal em qualquer leitura por origem. Pista NOVA nunca recebe este valor: a porta exige origem de coletor, e origem fora desta lista é recusada com motivo.",
+  "_por_que_contribuicao": "12/10/2026 (A6-19, decisão D7 de 08/10): contribuição pública vira pista pela porta única e segue o juiz automático. Até aqui ela ficava parada como 'abstenção registrada' — nenhum caminho a levava ao índice. `processar_contribuicoes.py` grava com origem `contribuicao`, nível C."
 }
