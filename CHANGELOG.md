@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · juiz da Saúde usa a data do cabeçalho do ato (A5-37)
+
+`data_do_cabecalho` existia e só o autoteste a chamava: o juiz da camada de Saúde registrava a data, o tipo e o número do primeiro ato citado no preâmbulo (Res. SESA 680/2008 do PR saía como lei de 03/06/1987). Quando o cabeçalho traz a data por extenso, é ela, com tipo e número, que vale (`julgar_saude.com_data_do_cabecalho`).
+
 ## 2026-10-12 · #PR · log de buscas com data ISO e decisão do vocabulário (A6-27)
 
 150 execuções de 28/09 no monólito tinham data `dd/mm/aaaa` e 14 de 27–29/08 tinham a decisão em prosa. Migração única: datas em ISO; decisão vira `consultado`, com o texto original em `resultados`. Nenhuma execução sai ou entra (74.311). Novo portão `verificar_esquema_do_log.py` impede que voltem.
