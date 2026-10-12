@@ -351,6 +351,35 @@ def t_lacuna_de_httperror_leva_o_codigo():
     return gravados == ["Fonte X: HTTPError 503", "Fonte Y: HTTPError"]
 
 
+def t_muro_com_503_e_nomeado_e_nao_repete():
+    """A6-09: página do Cloudflare servida com 503 é muro, não indisponibilidade."""
+    import io
+    pedidos, dormidas = [], []
+    corpo = b"<html><title>Just a moment...</title><body>Checking your browser</body></html>"
+
+    def falha(url, timeout=None):
+        pedidos.append(url)
+        raise urllib.error.HTTPError(url, 503, "erro", None, io.BytesIO(corpo))
+    try:
+        cb.buscar("https://x.gov.br/a", buscar_fn=falha, dormir=dormidas.append)
+        return False
+    except cb.MuroDeRobo as m:
+        return len(pedidos) == 1 and not dormidas and "x.gov.br" in str(m)
+
+
+def t_503_sem_muro_continua_esperando():
+    """A6-09, negativo: 503 com corpo comum segue a espera de indisponibilidade."""
+    import io
+    pedidos, dormidas = [], []
+
+    def falha(url, timeout=None):
+        pedidos.append(url)
+        if len(pedidos) == 1:
+            raise urllib.error.HTTPError(url, 503, "erro", None, io.BytesIO(b"Service Unavailable"))
+        return b"ok"
+    return cb.buscar("u", buscar_fn=falha, dormir=dormidas.append) == b"ok" and len(dormidas) == 1
+
+
 if __name__ == "__main__":
     sys.exit(rodar_autoteste({
         "tabela de esperas por status é pura": t_esperas_para_e_pura,
@@ -371,4 +400,6 @@ if __name__ == "__main__":
         "Retry-After de 429/503 é respeitado, com teto de 120 s (A6-25)": t_retry_after_e_respeitado_com_teto,
         "negativo: 200 com corpo vazio não é conteúdo (A6-25)": t_corpo_vazio_com_200_nao_e_conteudo,
         "lacuna de HTTPError leva o código (A6-14)": t_lacuna_de_httperror_leva_o_codigo,
+        "muro servido com 503 é nomeado e não repete (A6-09)": t_muro_com_503_e_nomeado_e_nao_repete,
+        "negativo: 503 sem muro segue esperando (A6-09)": t_503_sem_muro_continua_esperando,
     }))

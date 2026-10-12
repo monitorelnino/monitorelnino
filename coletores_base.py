@@ -1348,6 +1348,22 @@ def buscar(url: str, timeout: int = 40, origem: str = None, buscar_fn=None, dorm
     return com_espera(uma_vez, dormir=dormir)
 
 
+def muro_no_erro(e) -> str | None:
+    """Marca do muro no CORPO de um HTTPError, ou None (A6-09). Lê no máximo 60 kB do corpo; erro
+    de leitura não é muro. O corpo lido fica guardado no próprio erro, para quem o ler depois."""
+    corpo = getattr(e, "_corpo_lido", None)
+    if corpo is None:
+        try:
+            corpo = e.read(60001) if getattr(e, "fp", None) is not None else b""
+        except Exception:  # noqa: BLE001 — corpo ilegível não é muro
+            corpo = b""
+        try:
+            e._corpo_lido = corpo
+        except Exception:  # noqa: BLE001
+            pass
+    return detectar_muro_de_robo(corpo or b"")
+
+
 def com_espera(uma_vez, dormir=None):
     """A espera do §226 em volta de UMA tentativa qualquer. Função de ordem superior.
 
@@ -1363,6 +1379,12 @@ def com_espera(uma_vez, dormir=None):
         except urllib.error.HTTPError as e:
             # HTTPError é subclasse de URLError: tem de vir ANTES, senão todo status viraria
             # "erro de conexão" e perderia a distinção entre recusa e indisponibilidade.
+            # A6-09 (12/10/2026): muro de robô servido com 403/503 também é muro — nomeado, sem
+            # repetir. Antes, um 503 do Cloudflare era "indisponibilidade" e ganhava espera.
+            marca = muro_no_erro(e)
+            if marca:
+                raise MuroDeRobo(getattr(e, "url", None) or getattr(e, "filename", "") or "",
+                                 marca) from e
             if restantes is None:
                 restantes = list(esperas_para(e.code))
             if not restantes:
@@ -1956,7 +1978,8 @@ JANELA_FONTES = 12      # quantas consultas DISTINTAS cada município guarda no 
 
 
 def janela_de_fontes(entradas) -> list:
-    """As últimas `JANELA_FONTES` consultas DISTINTAS (fonte, dia). Função pura.
+    """As últimas `JANELA_FONTES` consultas DISTINTAS (fonte, dia), mais a última de cada fonte.
+    Função pura.
 
     25/09/2026, medido: a janela era das últimas 12 ENTRADAS, e 38.434 delas eram repetição da
     mesma fonte no mesmo dia — cada município guardava 12 registros para apenas 5 ou 6 consultas
@@ -1974,7 +1997,15 @@ def janela_de_fontes(entradas) -> list:
         por_chave[(e.get("fonte"), e.get("data"))] = e      # a última de cada par vence
     distintas = list(por_chave.values())
     distintas.sort(key=lambda e: e.get("data") or "")        # estável: empate mantém a ordem
-    return distintas[-JANELA_FONTES:]
+    # A6-05 (12/10/2026): o teto de 12 vale para a REPETIÇÃO de fonte, nunca para a fonte. Com a
+    # marca diária do DOU, doze dias bastavam para expulsar a última consulta ao Querido Diário, e
+    # o município voltava a "não consultado". A última consulta de cada fonte fica sempre.
+    janela = distintas[-JANELA_FONTES:]
+    ultima_de_cada = {}
+    for e in distintas:
+        ultima_de_cada[e.get("fonte")] = e
+    fica = {id(e) for e in janela} | {id(e) for e in ultima_de_cada.values()}
+    return [e for e in distintas if id(e) in fica]
 
 
 def marcar_fonte_consultada(ibges, fonte: str, nivel: str, resultado: str = "consultada"):
