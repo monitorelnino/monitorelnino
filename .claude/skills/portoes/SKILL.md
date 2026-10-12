@@ -6,7 +6,9 @@ disable-model-invocation: false
 
 # Portões locais
 
-Roda `python3 scripts/portoes_locais.py $ARGUMENTS` (padrão: `tudo`).
+Roda `bash scripts/instalar_hooks.sh` (uma vez por clone: liga `.githooks/pre-commit`, que recusa
+commit com marcador de conflito — A7-23) e depois `python3 scripts/portoes_locais.py $ARGUMENTS`
+(padrão: `tudo`).
 
 ## Por que passar por aqui, e não rodar os portões à mão
 

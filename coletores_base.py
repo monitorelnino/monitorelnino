@@ -2036,8 +2036,14 @@ def janela_de_fontes(entradas) -> list:
 
 def marcar_fonte_consultada(ibges, fonte: str, nivel: str, resultado: str = "consultada"):
     """Registra que `fonte` foi consultada para cada município em `ibges`, com o nível
-    que essa fonte confere (§2.2). Nunca rebaixa um nível já alcançado."""
+    que essa fonte confere (§2.2). Nunca rebaixa um nível já alcançado.
+
+    A6-16 (12/10/2026): lista vazia não grava nada. O diário consorciado chamava com `[]` por dia
+    e por fonte — 144 regravações de 12 MB por noite sem um município marcado."""
     assert nivel in NIVEIS
+    ibges = list(ibges or [])
+    if not ibges:
+        return
     livro = _LOTE_LIVRO if _LOTE_LIVRO is not None else _livro_de_fontes()
     ordem = {n: i for i, n in enumerate(NIVEIS)}
     for cod in ibges:
