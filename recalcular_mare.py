@@ -590,6 +590,20 @@ def calcular(versao="v3.1"):
     media_publicada = round(sum(v["total"] for v in saida.values()) / len(saida), 1)
     return saida, media_publicada, pct, robustez
 
+def _decreto_reconhecido(lv, nivel):
+    """A3-17 (12/10/2026, handover 1.16): `True` vem do livro (o coletor do DOU/MIDR achou a
+    portaria). Município de nível >= nacional, com data de consulta no livro e sem portaria achada,
+    é `False` — consultado até a data de `ultima_verificacao` e não localizado. Sem consulta
+    datada segue `None` (não coletado). Zero, ausência e não coletado não se confundem.
+    Função pura."""
+    v = (lv or {}).get("decreto_reconhecido")
+    if v is not None:
+        return v
+    if nivel in ("nacional", "estadual", "municipal_completo") and (lv or {}).get("ultima_verificacao"):
+        return False
+    return None
+
+
 def _recomputar_verificacao_em_memoria():
     """v2.2.4 (§3.3): data/verificacao_municipal.json é ARTEFATO DERIVADO de
     municipios.json + log_buscas.json + municipios_ibge_referencia.json —
@@ -630,7 +644,7 @@ def _recomputar_verificacao_em_memoria():
             "nivel_verificacao": nivel,
             "ultima_verificacao": lv.get("ultima_verificacao"),
             "fontes_consultadas": sorted({f["fonte"] for f in lv.get("fontes", [])}),
-            "decreto_reconhecido": lv.get("decreto_reconhecido"), "decreto_homologado": lv.get("decreto_homologado"),
+            "decreto_reconhecido": _decreto_reconhecido(lv, nivel), "decreto_homologado": lv.get("decreto_homologado"),
             "plano_declarado_munic": lv.get("plano_declarado_munic"), "plano_declarado_icm": lv.get("plano_declarado_icm"),
             "plano_localizado": (reg["categoria"] if reg and reg["categoria"] in PONT else None)})
     return out
