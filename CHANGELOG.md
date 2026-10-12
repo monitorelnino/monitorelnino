@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · toda regra de layout diz quem a julga (A7-14)
+
+`layout/regras.json` ganha `_verificacao`: para cada uma das 55 regras, o portão que a julga ou, com franqueza, "só texto" (17, dívida declarada). `verificar_conformidade.py --regras-cobertas` reprova regra nova sem dono ou dono inexistente. E passa a cobrar milhões com uma casa decimal em cartão ("12,3 milhões").
+
 ## 2026-10-12 · #PR · ADPF 743: "não localizado" com a data da verificação (A3-22, parte)
 
 Na ficha do estado, "resultado após 25/07 não localizado" era frase fixa do código, sem data, havia 73 dias. Passa a levar o limite da verificação, do dado: "não localizado até 05/09/2026" (`adpf743.resultado_verificado_em`, ou `registrado_em`), como pede o teto de ausência (`assets/js/index.js`). URL e hash dos 54 instrumentos estaduais seguem pendentes.

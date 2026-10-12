@@ -195,6 +195,11 @@ def problemas_de_vocabulario(texto: str, pagina: str, regras: dict, contrato: di
 _RE_DECIMAL_COM_PONTO = re.compile(r"(?<![\d.])\d+\.\d{1,2}(?![\d.])")
 
 
+# A7-14 (12/10/2026): "12,3 milhões" — uma casa, vírgula. "12 milhões" e "12,34 milhões" reprovam.
+_RE_MILHOES = re.compile(r"\d[\d.,]*\s*milh(?:ão|ões)\b", re.I)
+_RE_MILHOES_UMA_CASA = re.compile(r"(?<![\d.,])\d{1,3},\d\s*milh(?:ão|ões)\b", re.I)
+
+
 def problemas_de_numero(numeros: list, regras: dict, travessoes: list = None) -> list:
     """Travessão e vazio em cartão de número — e em todo elemento que só tem travessão.
 
@@ -216,6 +221,9 @@ def problemas_de_numero(numeros: list, regras: dict, travessoes: list = None) ->
             p.append(f"cartão de número '{nome}' mostra '0' — zero em cartão se escreve por extenso")
         elif str(r.get("formato") or "") == "pt-BR" and _RE_DECIMAL_COM_PONTO.search(valor):
             p.append(f"cartão de número '{nome}' com ponto decimal ('{valor}') — no site, vírgula")
+        elif r.get("populacao_em_milhoes_uma_casa") and _RE_MILHOES.search(valor) \
+                and not _RE_MILHOES_UMA_CASA.search(valor):
+            p.append(f"cartão de número '{nome}' com milhões fora de uma casa decimal ('{valor}')")
     for e in travessoes or []:
         p.append(f"elemento '{e.get('classe')}' em {e.get('perto_de') or 'seção sem id'} só com "
                  f"travessão — ausência se escreve em palavras")
@@ -273,6 +281,26 @@ def problemas(pagina: str, despejo: dict, regras: dict, contrato: dict, excecoes
     return p
 
 
+def regras_sem_verificador(regras: dict, existe=lambda caminho: True) -> list:
+    """A7-14 (12/10/2026): cada regra de `regras.json` declara em `_verificacao` quem a julga —
+    o caminho do portão, ou "só texto…" com franqueza. Devolve as faltas. Função pura: quem diz
+    se o caminho existe é `existe`, que o chamador passa."""
+    mapa = (regras or {}).get("_verificacao") or {}
+    faltas = []
+    for secao, corpo in (regras or {}).items():
+        if secao.startswith("_") or not isinstance(corpo, dict):
+            continue
+        for chave in corpo:
+            if chave.startswith("_") or chave == "fonte":
+                continue
+            quem = mapa.get(f"{secao}.{chave}")
+            if not quem:
+                faltas.append(f"{secao}.{chave}: sem entrada em _verificacao (diga o portão, ou 'só texto')")
+            elif not str(quem).startswith("só texto") and not existe(str(quem)):
+                faltas.append(f"{secao}.{chave}: verificador {quem} não existe")
+    return faltas
+
+
 def _autoteste() -> int:
     falhas = []
     # O total era um literal e envelhecia calado: dizia cobrir mais casos do que
@@ -286,6 +314,18 @@ def _autoteste() -> int:
             falhas.append(nome)
 
     regras = ler_json(REGRAS) or {}
+    _r = {"numeros": {"fonte": "x", "formato": "pt-BR", "_nota": "n"}, "_verificacao": {}}
+    _nr = {"numeros": {"travessao_em_cartao_proibido": True, "populacao_em_milhoes_uma_casa": True}}
+    ok("A7-14: '12,3 milhões' passa", problemas_de_numero([{"id": "p", "valor": "12,3 milhões"}], _nr) == [])
+    ok("A7-14: '12 milhões' reprova", len(problemas_de_numero([{"id": "p", "valor": "12 milhões"}], _nr)) == 1)
+    ok("A7-14: '12,34 milhões' reprova", len(problemas_de_numero([{"id": "p", "valor": "12,34 milhões"}], _nr)) == 1)
+    ok("A7-14: regra sem entrada em _verificacao reprova",
+       regras_sem_verificador(_r) == ["numeros.formato: sem entrada em _verificacao (diga o portão, ou 'só texto')"])
+    _r["_verificacao"]["numeros.formato"] = "só texto até hoje"
+    ok("A7-14: 'só texto' declarado passa", regras_sem_verificador(_r) == [])
+    _r["_verificacao"]["numeros.formato"] = "scripts/inexistente.py"
+    ok("A7-14: verificador que não existe reprova",
+       len(regras_sem_verificador(_r, existe=lambda c: False)) == 1)
     ok("contrato de modelo é reconhecido pela marca",
        (ler_json(CONTRATOS / "blog-post.json", {}) or {}).get("modelo") is True)
     ok("as regras existem e declaram a hierarquia",
@@ -432,6 +472,18 @@ def main() -> int:
     # visível das páginas, sem abrir navegador e sem julgar layout. Ela existe porque essa regra é
     # de DADO — palavra proibida que chega por dado externo —, e por isso barra a publicação, ao
     # contrário do resto da conformidade, que mede código e só avisa (regra de 06/10).
+    if "--regras-cobertas" in sys.argv:
+        faltas = regras_sem_verificador(regras, existe=lambda c: (RAIZ / c).exists())
+        mapa = regras.get("_verificacao") or {}
+        so_texto = sorted(k for k, v in mapa.items() if not k.startswith("_") and str(v).startswith("só texto"))
+        if faltas:
+            print(f"✗ REGRAS COBERTAS: {len(faltas)} falta(s):")
+            for f in faltas:
+                print("   - " + f)
+            return 1
+        print(f"✓ REGRAS COBERTAS OK — toda regra de layout/regras.json diz quem a julga; "
+              f"{len(so_texto)} ainda só texto (dívida declarada): {', '.join(so_texto)}")
+        return 0
     if "--so-texto-proibido" in sys.argv:
         # A regra é a MESMA de `problemas_de_vocabulario`, e de propósito: reescrevê-la aqui
         # produziu, na primeira tentativa, dois falsos positivos — "Antecipação" dentro do nome do
