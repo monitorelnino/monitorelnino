@@ -467,6 +467,11 @@ def main() -> int:
         paginas = argumentos
     elif "--todas" in sys.argv:
         paginas = [p for p in regras.get("paginas_publicas") or [] if (RAIZ / p).exists()]
+        # A7-06 (12/10/2026): página listada que não existe saía da conta em silêncio
+        # (`metodologia.html` ficou listada sem existir; a metodologia pública é o PDF).
+        for p in regras.get("paginas_publicas") or []:
+            if not (RAIZ / p).exists():
+                print(f"⚠ {p} está em paginas_publicas e não existe na árvore — não medida")
     else:
         # Contrato de MODELO (`modelo: true`) não é página: ele vale para cada página gerada a
         # partir dele, e quem o cobra é o gerador. Tentar renderizá-lo servia um 404 e reprovava
