@@ -154,6 +154,18 @@ for (const id of ["mapaMonitor", "mapaDengueUF", "mapaChikUF", "mapaCalor"]) {
       return isFinite(escrito) && Math.abs(escrito - Number(m.prontidao)) < 0.06;
     });
   })());
+  // A4-33 (12/10/2026): o portão abria só a ficha de GO, e MS, MT e PB lançavam ReferenceError
+  // ao abrir (A4-02) com o portão verde. Agora abre as 27 e cobra conteúdo e nenhum erro novo.
+  teste("as 27 fichas de estado abrem, sem erro de script", (() => {
+    const antes = erros.length;
+    const tiles = [...d.querySelectorAll("#regionsSaude .tile")];
+    const vazias = [];
+    for (const t of tiles) {
+      try { t.click(); } catch (e) { erros.push(String(e)); }
+      if ((q("detailSaudeConteudo").textContent || "").length <= 40) vazias.push(t.dataset.uf);
+    }
+    return tiles.length === 27 && vazias.length === 0 && erros.length === antes;
+  })());
   /* Bloco B.3 do handover de 02/10/2026: a coordenação aparece na ficha em DUAS linhas, em
      linguagem de leitor, e a palavra interna "antecipação" não aparece. Função não procurada diz
      "ainda não verificada" — nunca ausência de estrutura. */
