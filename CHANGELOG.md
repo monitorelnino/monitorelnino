@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · textos do blog e índice de conteúdo entram nos portões de texto (A7-15)
+
+Os portões de vocabulário, voz editorial e legendas liam uma lista de páginas escrita à mão, sem os textos do blog nem o índice de conteúdo. Passam a ler `blog/*.html` da pasta e o índice; todos passam limpos. O registro técnico de mudanças fica fora de propósito: nomeia arquivos e portões para quem audita. Onde: `scripts/verificar_{vocabulario_publico,voz_editorial}.js`, `scripts/verificar_legendas.js`.
+
 ## 2026-10-12 · #PR · erro de página deixa de ser engolido (A7-17)
 
 Trinta e dois `.catch(() => {})` em Saúde, Financiamento e Imprensa escondiam o erro do bloco que não renderizava, inclusive dos portões de runtime. Cada um passa a relatar ao console com o lugar (`saude:123`), sem mudar o que o leitor vê; o portão de estrutura reprova a forma silenciosa. Onde: `assets/js/{saude,financiamento,imprensa}.js`, `scripts/verificar_estrutura.js`.
