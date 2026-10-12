@@ -255,8 +255,26 @@ const COLETA = () => {
         }, ALVOS);
       }
     }
-    // A folga final fica, para o que o contrato nao declara (numero de cartao, figura).
-    await page.waitForTimeout(1500);
+    // A7-18 (12/10/2026): a folga final era 1.500 ms de relogio, para o que o contrato nao declara
+    // (numero de cartao, figura). Agora e CONDICAO: a pagina parou de mudar — texto do <main>,
+    // figuras (svg, canvas, img) e numeros de cartao iguais em tres leituras seguidas, 250 ms
+    // entre elas, ate 10 s. "Medidor espera condicao, nunca relogio" (CLAUDE.md, 06/10/2026).
+    await page.waitForFunction(() => {
+      const m = document.querySelector("main") || document.body;
+      const assinatura = [
+        (m.innerText || "").length,
+        document.querySelectorAll("svg *, canvas, img").length,
+        Array.from(document.querySelectorAll(".cartao-numero-valor, [data-valor]"))
+          .map((e) => e.textContent).join("|"),
+      ].join("#");
+      if (window.__medidor_assinatura === assinatura) {
+        window.__medidor_estavel = (window.__medidor_estavel || 0) + 1;
+      } else {
+        window.__medidor_assinatura = assinatura;
+        window.__medidor_estavel = 0;
+      }
+      return window.__medidor_estavel >= 2;
+    }, null, { polling: 250, timeout: 10000 }).catch(() => {});
     const dados = await page.evaluate(COLETA);
     dados.erros_de_runtime = erros;
     if (incompleto.length) dados.render_incompleto = incompleto;
