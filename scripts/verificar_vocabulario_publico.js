@@ -10,7 +10,13 @@ const RAIZ = path.join(__dirname, ".."); const listar = process.argv.includes("-
 const comForma = process.argv.includes("--forma");
   // 30/09/2026 (§309): "calendario-eleitoral.html" saiu desta lista — a página foi apagada do
   // código, com as outras duas telas de calendário (decisão da editoria).
-const PAGINAS = ["index.html", "defesa-civil.html", "monitor-de-riscos.html", "saude.html", "financiamento.html", "proteja-se.html", "prefeituras.html", "obrigado.html", "imprensa.html", "blog.html"].filter(p => fs.existsSync(path.join(RAIZ, p)));
+const PAGINAS = ["index.html", "defesa-civil.html", "monitor-de-riscos.html", "saude.html", "financiamento.html", "proteja-se.html", "prefeituras.html", "obrigado.html", "imprensa.html", "blog.html"]
+  // A7-15 (12/10/2026): os textos do blog (`blog/*.html`) estavam fora da lista escrita à mão.
+  // Ficam fora DE PROPÓSITO: `mudancas.html` (registro técnico, para quem audita — decisão de
+  // 03/10/2026) e `indice-de-conteudo.html` (página interna, `noindex`, que mostra os moldes).
+  .concat(fs.existsSync(path.join(RAIZ, "blog")) ? fs.readdirSync(path.join(RAIZ, "blog"))
+    .filter((b) => b.endsWith(".html")).sort().map((b) => "blog/" + b) : [])
+  .filter(p => fs.existsSync(path.join(RAIZ, p)));
 const PROIBIDOS = [
   [/\b(?!datapackage\b)[\w-]+\.(py|json|js|yml|sh)\b/g, "nome de arquivo/script (os .csv dos dados abertos são permitidos)"],
   [/\bdata\/[\w./-]+/g, "caminho de dados"],

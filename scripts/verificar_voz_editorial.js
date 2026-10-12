@@ -16,7 +16,13 @@ const listar = process.argv.includes("--listar");
   // código, com as outras duas telas de calendário (decisão da editoria).
 const PAGINAS = ["index.html", "defesa-civil.html",
   "monitor-de-riscos.html", "saude.html", "financiamento.html", "proteja-se.html", "prefeituras.html",
-  "obrigado.html", "imprensa.html", "blog.html"].filter(p => fs.existsSync(path.join(RAIZ, p)));
+  "obrigado.html", "imprensa.html", "blog.html"]
+  // A7-15 (12/10/2026): os textos do blog (`blog/*.html`) estavam fora da lista escrita à mão.
+  // Ficam fora DE PROPÓSITO: `mudancas.html` (registro técnico, para quem audita — decisão de
+  // 03/10/2026) e `indice-de-conteudo.html` (página interna, `noindex`, que mostra os moldes).
+  .concat(fs.existsSync(path.join(RAIZ, "blog")) ? fs.readdirSync(path.join(RAIZ, "blog"))
+    .filter((b) => b.endsWith(".html")).sort().map((b) => "blog/" + b) : [])
+  .filter(p => fs.existsSync(path.join(RAIZ, p)));
 
 // Frases-marcador de ressalva metodológica que só devem aparecer uma vez por página (na
 // ficha ou numa nota dedicada) — não em cada legenda de figura. Lista curta e literal de
