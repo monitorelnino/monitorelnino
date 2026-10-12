@@ -26,10 +26,10 @@ O QUE ESTE SCRIPT FAZ (e o que NÃO faz):
     calamidade, estiagem, seca, enchente, El Niño) para reduzir ruído.
   - Grava um relatório bruto (data/transferencias_api_raw.json) com TUDO que a API
     retornou, para auditoria — nunca decide sozinho o que "conta" como recurso do
-    El Niño; isso fica para revisão humana antes de entrar em transferencias.json.
-  - NÃO publica automaticamente no transferencias.json final — gera um arquivo de
-    revisão (transferencias_revisar.json) que você aprova manualmente. Isso é
-    proposital: a mesma regra de "nunca inventar/presumir" vale para automação.
+    El Niño; sem documento oficial julgado, nada entra em transferencias.json.
+  - NÃO publica no transferencias.json final — gera uma lista de auditoria
+    (transferencias_revisar.json) que nada consome: desde 08/10/2026 não há etapa de pessoa,
+    e o que não foi julgado por documento oficial fica como abstenção registrada (A6-20).
 
 ANTES DE RODAR EM ESCALA:
   - Confirme os nomes exatos dos parâmetros no Swagger oficial:
@@ -223,10 +223,11 @@ def main():
 
     print(f"\nConcluído. {len(bruto)} registros brutos salvos em data/transferencias_api_raw.json")
     print(f"{len(revisar)} registros relevantes (palavras-chave) salvos em data/transferencias_revisar.json")
-    print("\nPRÓXIMO PASSO (manual, obrigatório):")
-    print("  Revise data/transferencias_revisar.json e só então incorpore as linhas")
-    print("  aprovadas em data/transferencias.json e/ou data/municipios.json,")
-    print("  seguindo o vocabulário controlado e as regras de fonte do README.")
+    # A6-20 (12/10/2026): não há etapa de pessoa (editoria, 08/10). A lista é de AUDITORIA: a
+    # palavra-chave só ordena, nada dela entra no banco por este script, e o que não foi julgado
+    # por documento oficial fica como abstenção registrada.
+    print("  Lista de auditoria: nada dela entra em transferencias.json nem em municipios.json por")
+    print("  este script — sem documento oficial julgado, abstenção registrada (D7).")
 
 
 class _RespostaFalsa:

@@ -14,7 +14,9 @@ Regras de aprovação automática (todas obrigatórias):
       sobre capital (o maior município da UF — a maior alavanca populacional
       individual do componente de cobertura, v2.2) nunca são auto-aplicados.
       Desde 08/10/2026 (D7, METODOLOGIA §106) não há fila para pessoa: o item
-      fica não aplicado, com abstenção registrada. O caminho automático fica restrito,
+      fica não aplicado, com abstenção registrada. Desde 12/10/2026 (A6-19), com a
+      autoaplicação suspensa, a contribuição de documento vira PISTA (origem `contribuicao`,
+      nível C) e segue o juiz automático. O caminho automático fica restrito,
       por construção, a decretos de não-capitais — neutros ao escore pela
       Correção B. Após aplicar, este script roda recalcular_mare.py --write
       para regravar percentual_uf.json derivado; o portão de consistência do
@@ -45,7 +47,7 @@ Variáveis de ambiente: NETLIFY_AUTH_TOKEN e NETLIFY_SITE_ID. Sem elas, o
 script pula com aviso e código 0 (não bloqueia o job).
 """
 import datetime, json, os, pathlib, re, sys, unicodedata, urllib.request
-from coletores_base import ua_de, hoje_editorial, gravar  # noqa: E402  (§228: um cliente só, com propósito)
+from coletores_base import ua_de, hoje_editorial, gravar, ler  # noqa: E402  (§228: um cliente só, com propósito)
 
 RAIZ = pathlib.Path(__file__).parent
 ARQ_MUN = RAIZ / "data" / "municipios.json"
@@ -169,6 +171,28 @@ def canal_do_dominio(host, uf):
     return "site_municipal"
 
 
+# A6-19 (12/10/2026, decisão D7 de 08/10): o tipo declarado pelo leitor vira o `tipo` da pista. O
+# que não é plano, estrutura nem decreto ("correção", "outro ato") não é pista de documento: fica
+# não aplicado, com abstenção registrada, como antes.
+TIPO_DA_PISTA = {"plano": "plano", "plano_elaboracao": "plano", "plano_antigo": "plano",
+                 "plano_saude": "plano", "decreto": "decreto", "ato_antecipatorio": "decreto",
+                 "estrutura": "estrutura"}
+
+
+def pista_da_contribuicao(dados: dict, ibge: str, hoje_iso: str):
+    """A pista que a contribuição vira, ou None quando o tipo não é de documento. Função pura.
+
+    Nível C: o leitor não é fonte; o documento é, e quem o lê é o juiz, como para qualquer pista.
+    Nenhum campo livre do formulário entra além do endereço, do tipo e do município."""
+    tipo = TIPO_DA_PISTA.get((dados.get("tipo") or "").strip())
+    url = (dados.get("link_oficial") or "").strip()
+    if not tipo or not url.startswith("https://") or not ibge:
+        return None
+    return {"url_final": url, "tipo": tipo, "alvo": str(ibge).zfill(7), "nivel": "C",
+            "data": hoje_iso, "origem": "contribuicao",
+            "titulo": f"Contribuição de leitor ({tipo})"}
+
+
 def autoteste() -> int:
     """Autoteste PURO (A6-26, 08/10/2026): sem rede, sem ler `data/`, sem escrever nada.
 
@@ -190,6 +214,20 @@ def autoteste() -> int:
          canal_do_dominio("defesacivil.se.gov.br", "SE") == "orgao_estadual"),
         ("prefeitura vira site municipal",
          canal_do_dominio("aracaju.se.gov.br", "SE") == "site_municipal"),
+    ]
+    _p = pista_da_contribuicao({"tipo": "plano", "link_oficial": "https://x.se.gov.br/p.pdf"},
+                               "2800308", "2026-10-12")
+    casos += [
+        ("A6-19: contribuição de plano vira pista C da origem `contribuicao`",
+         _p == {"url_final": "https://x.se.gov.br/p.pdf", "tipo": "plano", "alvo": "2800308",
+                "nivel": "C", "data": "2026-10-12", "origem": "contribuicao",
+                "titulo": "Contribuição de leitor (plano)"}),
+        ("A6-19: 'correção' não vira pista",
+         pista_da_contribuicao({"tipo": "correcao", "link_oficial": "https://x.gov.br"}, "2800308",
+                               "2026-10-12") is None),
+        ("A6-19: sem https não vira pista",
+         pista_da_contribuicao({"tipo": "decreto", "link_oficial": "http://x.gov.br"}, "2800308",
+                               "2026-10-12") is None),
     ]
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
@@ -221,6 +259,7 @@ def main():
     ref = {(norm(r["nome"]), r["uf"]): r for r in json.load(open(ARQ_REF))}
     hoje = hoje_editorial().strftime("%d/%m/%Y")
     aprovadas = mudou = reservadas = 0
+    novas_pistas = []
 
     def recusa(sid, uf, municipio, motivo):
         """Registra a recusa de um item da fila com o motivo (regra R1-R6 aplicada), sem excluir o registro do histórico de contribuições."""
@@ -245,8 +284,23 @@ def main():
         # editoria reativar por escrito, toda contribuição fica não aplicada (abstenção registrada). Reativar =
         # AUTOAPLICAR = True, somente após os testes negativos de XSS/SSRF passarem no CI.
         if not AUTOAPLICAR:
+            # A6-19 (12/10/2026, D7): com a autoaplicação suspensa, a contribuição de documento vira
+            # PISTA pela porta única e segue o juiz automático — que lê o documento oficial, como
+            # para qualquer pista. Antes ela parava aqui, como abstenção, e nunca chegava ao índice.
+            # As travas da porta de entrada valem antes: fonte oficial (R4) e campo livre (R4-bis).
+            ok_host, _host, motivo_host = host_oficial(url)
+            if not ok_host:
+                recusa(sid, uf, municipio, motivo_host + " (R4)"); continue
+            if d.get("numero_data") and not numero_data_valido(d.get("numero_data")):
+                recusa(sid, uf, municipio, "campo número/data com marcação ou tamanho inválido (R4-bis, AUD-02)"); continue
+            pista = pista_da_contribuicao(d, ref[chave].get("codigo_ibge"), hoje_editorial().isoformat())
+            if pista:
+                novas_pistas.append(pista)
+                processadas.add(sid)
+                print(f"  → {ref[chave]['nome']}/{uf}: vira pista ({pista['tipo']}) para o juiz automático (D7)")
+                continue
             reservadas += 1
-            print(f"  ◷ {municipio}/{uf}: não aplicada — abstenção registrada (autoaplicação suspensa — auditoria 02/09/2026)")
+            print(f"  ◷ {municipio}/{uf}: não aplicada — abstenção registrada (tipo '{tipo}' não é de documento)")
             continue
         # v2.2.4 (§7.6): "plano_saude" NUNCA é automatizável — abstenção registrada,
         # como todo tipo fora do par ("plano", "decreto").
@@ -333,6 +387,11 @@ def main():
         if r.returncode != 0:
             print("  ✗ recálculo derivado falhou — abortando para bloquear a publicação.")
             return 1
+    if novas_pistas:
+        # A6-19: uma escrita só, pela porta (`scripts/pistas.py`), com o par ler/gravar DESTE módulo.
+        from scripts.pistas import gravar_lote
+        r = gravar_lote(novas_pistas, origem="contribuicao", ler_fn=ler, gravar_fn=gravar)
+        print(f"  → pistas de contribuição: {r['gravadas']} gravada(s), {r['recusadas']} recusada(s) pela porta")
     # §229: as duas listas de controle da contribuição pública também atomicamente. A de
     # processadas é o que impede a MESMA contribuição de entrar duas vezes.
     gravar(ARQ_PROC.name, sorted(processadas))
