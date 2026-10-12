@@ -44,6 +44,7 @@ QUEM_PODE_ESTAR_RODANDO = ("checagem_pre_noite.yml", "despachante.yml", "relogio
                            "vigia_da_abertura.yml")
 ABERTOS = ("queued", "requested", "waiting", "pending", "in_progress")
 REPOSITORIO_PRIVADO = "monitorelnino/robo-registro"
+RAMOS_FORA_DA_FILA = ("ensaio-real/", "coleta-dia/")
 
 
 def _iso(s: str):
@@ -108,7 +109,15 @@ def avaliar(fatos: dict, agora: dt.datetime) -> list:
                            or "nenhum run aberto"})
 
     for wf, nome in (("despachante.yml", "despachante"), ("relogio.yml", "relógio")):
-        quando = _iso((fatos.get("ultimo_run") or {}).get(wf))
+        ultimos = fatos.get("ultimo_run") or {}
+        # F43 (11/10/2026): o despacho também roda dentro de `relogio.yml`
+        # (`despachar_temporizadores.py --origem relogio-claude`); despachante vivo é o mais recente
+        # dos dois. O relógio continua julgado sozinho.
+        quando = _iso(ultimos.get(wf))
+        if wf == "despachante.yml":
+            datas = [d for d in (_iso(ultimos.get("despachante.yml")),
+                                 _iso(ultimos.get("relogio.yml"))) if d]
+            quando = max(datas) if datas else None
         idade = None if quando is None else int((agora - quando).total_seconds() // 60)
         out.append({"pergunta": f"{nome} vivo (último run há menos de {VIVO_MIN} min)",
                     "ok": idade is not None and idade < VIVO_MIN,
@@ -181,6 +190,10 @@ def abertos_da_api(respostas: list) -> list:
             if r.get("id") in vistos:
                 continue
             vistos.add(r.get("id"))
+            # F43 (11/10/2026): run de ramo de ensaio ou de coleta de dia não ocupa a fila da
+            # noite — o 1º disparo da checagem de 11/10 deu ✗ só por contar `ensaio-real/*`.
+            if str(r.get("head_branch") or "").startswith(RAMOS_FORA_DA_FILA):
+                continue
             out.append({"workflow": pathlib.Path(str(r.get("path") or "")).name or r.get("name"),
                         "status": r.get("status")})
     return out
@@ -283,6 +296,17 @@ def autoteste() -> int:
     ok("run aberto lido da API reprova a fila; o despachante não (F37)",
        not fila[2]["ok"] and "noturno_triagem.yml" in fila[2]["detalhe"]
        and "despachante" not in fila[2]["detalhe"])
+    _f43 = abertos_da_api([{"workflow_runs": [
+        {"id": 7, "path": ".github/workflows/noturno_diarios.yml", "status": "in_progress",
+         "head_branch": "ensaio-real/2026-10-11-1"},
+        {"id": 8, "path": ".github/workflows/noturno_sinais.yml", "status": "queued",
+         "head_branch": "coleta-dia/2026-10-11-protocolo"}]}])
+    ok("F43: run de ensaio-real/* e coleta-dia/* não entra na fila", _f43 == [])
+    _ag = dt.datetime(2026, 10, 11, 20, 20)
+    _r43 = avaliar(dict(bom, ultimo_run={"despachante.yml": "2026-10-11T19:06:00Z",
+                                         "relogio.yml": "2026-10-11T20:08:00Z"}), _ag)
+    ok("F43: despachante dentro do relógio conta como despachante vivo",
+       [x for x in _r43 if x["pergunta"].startswith("despachante")][0]["ok"])
 
     class _R:
         def __init__(self, rc, out="", err=""):
