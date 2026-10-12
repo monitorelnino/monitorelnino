@@ -9,58 +9,59 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-04 a 2026-10-11 (690 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-05 a 2026-10-12 (673 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
+- consultar_querido_diario.py: erro em 2 rodadas seguidas — urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>
 - monitorar_imprensa_saude.py: erro em 16 rodadas seguidas — KeyError: 'hash'
-- monitorar_politica_por_inteiro.py: erro em 13 rodadas seguidas — NameError: name 'ler' is not defined. Did you mean: 'len'?
+- monitorar_politica_por_inteiro.py: erro em 14 rodadas seguidas — NameError: name 'ler' is not defined. Did you mean: 'len'?
 
 ## Última execução de cada script
 
 | script | papel | última execução | duração | itens | status | erro |
 |---|---|---|---|---:|---|---|
-| `recalcular_mare.py` | essencial | 2026-10-11 02:59 | 2 s | — | ok | — |
-| `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-11 07:08 | 30 s | 1 | ok | — |
-| `classificar_saude_no_plano.py` | coletor | 2026-10-11 13:41 | 4 s | — | ok | — |
-| `coletar_arboviroses_sinan.py` | coletor | 2026-10-11 13:39 | 61 s | — | ok | — |
-| `coletar_boletim_df_arboviroses.py` | coletor | 2026-10-11 13:27 | 506 s | — | ok | — |
-| `coletar_boletim_ms_dengue.py` | coletor | 2026-10-11 13:27 | 24 s | — | ok | — |
-| `coletar_boletim_pb_arboviroses.py` | coletor | 2026-10-11 13:36 | 193 s | — | ok | — |
-| `coletar_boletim_pe_arboviroses.py` | coletor | 2026-10-11 13:36 | 9 s | — | ok | — |
-| `coletar_dda.py` | coletor | 2026-10-11 13:26 | 58 s | — | ok | — |
-| `coletar_desfechos_saude.py` | coletor | 2026-10-11 13:18 | 491 s | — | ok | — |
-| `coletar_diarios_consorciados.py` | coletor | 2026-10-10 01:44 | 3148 s | 34 | ok | — |
-| `coletar_diarios_municipais.py` | coletor | 2026-10-10 01:36 | 425 s | 50 | ok | — |
-| `coletar_doe.py` | coletor | 2026-10-10 02:36 | 846 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-12 04:07 | 3 s | — | ok | — |
+| `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-12 03:17 | 28 s | 2 | ok | — |
+| `classificar_saude_no_plano.py` | coletor | 2026-10-11 01:43 | 1 s | — | ok | — |
+| `coletar_arboviroses_sinan.py` | coletor | 2026-10-11 01:42 | 60 s | — | ok | — |
+| `coletar_boletim_df_arboviroses.py` | coletor | 2026-10-11 01:31 | 446 s | — | ok | — |
+| `coletar_boletim_ms_dengue.py` | coletor | 2026-10-11 01:31 | 20 s | — | ok | — |
+| `coletar_boletim_pb_arboviroses.py` | coletor | 2026-10-11 01:38 | 193 s | — | ok | — |
+| `coletar_boletim_pe_arboviroses.py` | coletor | 2026-10-11 01:38 | 8 s | — | ok | — |
+| `coletar_dda.py` | coletor | 2026-10-11 01:30 | 54 s | — | ok | — |
+| `coletar_desfechos_saude.py` | coletor | 2026-10-11 01:23 | 414 s | — | ok | — |
+| `coletar_diarios_consorciados.py` | coletor | 2026-10-11 01:49 | 2028 s | 34 | ok | — |
+| `coletar_diarios_municipais.py` | coletor | 2026-10-11 01:47 | 109 s | 50 | ok | — |
+| `coletar_doe.py` | coletor | 2026-10-11 02:22 | 841 s | — | ok | — |
 | `coletar_espin.py` | coletor | 2026-10-10 01:12 | 92 s | — | ok | — |
-| `coletar_obitos_registro_civil.py` | coletor | 2026-10-11 13:40 | 41 s | — | ok | — |
-| `coletar_recursos_resposta.py` | coletor | 2026-10-11 03:07 | 9 s | — | ok | — |
-| `coletar_s2id.py` | coletor | 2026-10-11 02:50 | 1030 s | — | ok | — |
-| `coletar_saude.py` | coletor | 2026-10-11 13:03 | 414 s | — | ok | — |
+| `coletar_obitos_registro_civil.py` | coletor | 2026-10-11 01:43 | 35 s | — | ok | — |
+| `coletar_recursos_resposta.py` | coletor | 2026-10-11 02:52 | 9 s | — | ok | — |
+| `coletar_s2id.py` | coletor | 2026-10-11 02:36 | 916 s | — | ok | — |
+| `coletar_saude.py` | coletor | 2026-10-11 01:12 | 196 s | — | ok | — |
 | `coletar_sg_esus.py` | coletor | 2026-10-11 03:37 | 8 s | — | ok | — |
 | `coletar_sinais_risco.py` | coletor | 2026-10-11 01:13 | 80 s | — | ok | — |
 | `coletar_srag_sivep.py` | coletor | 2026-10-11 03:36 | 34 s | — | ok | — |
 | `coletar_transferencias_municipais.py` | coletor | 2026-10-11 01:14 | 74 s | — | ok | — |
-| `consultar_querido_diario.py` | coletor | 2026-10-10 01:13 | 32 s | — | **erro** | urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)> |
-| `descobrir_planos.py` | coletor | 2026-10-11 08:06 | 1051 s | 42 | ok | — |
-| `detectar_marcos_federais.py` | coletor | 2026-10-11 08:06 | 2 s | 0 | ok | — |
+| `consultar_querido_diario.py` | coletor | 2026-10-11 01:14 | 781 s | — | **erro** (2 seguidas) | urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)> |
+| `descobrir_planos.py` | coletor | 2026-10-12 03:27 | 915 s | 42 | ok | — |
+| `detectar_marcos_federais.py` | coletor | 2026-10-12 03:27 | 1 s | 0 | ok | — |
 | `julgar_e_aplicar_descobertas.py` | coletor | 2026-10-11 06:58 | 632 s | — | ok | — |
-| `julgar_filas.py` | coletor | 2026-10-11 06:42 | 935 s | — | ok | — |
-| `monitorar_atos_resposta.py` | coletor | 2026-10-11 08:04 | 118 s | 3464 | ok | — |
-| `monitorar_imprensa_regional.py` | coletor | 2026-10-11 08:01 | 166 s | 40 | ok | — |
-| `monitorar_imprensa_saude.py` | coletor | 2026-10-11 08:04 | 1 s | — | **erro** (16 seguidas) | KeyError: 'hash' |
-| `monitorar_politica_por_inteiro.py` | coletor | 2026-10-11 08:06 | 3 s | 3464 | **erro** (13 seguidas) | NameError: name 'ler' is not defined. Did you mean: 'len'? |
-| `monitorar_redes_oficiais.py` | coletor | 2026-10-11 08:24 | 1271 s | — | ok | — |
-| `monitorar_sinais_federais.py` | coletor | 2026-10-11 08:06 | 4 s | 10 | ok | — |
+| `julgar_filas.py` | coletor | 2026-10-12 02:55 | 1361 s | — | ok | — |
+| `monitorar_atos_resposta.py` | coletor | 2026-10-12 03:25 | 93 s | 3478 | ok | — |
+| `monitorar_imprensa_regional.py` | coletor | 2026-10-12 03:21 | 245 s | 40 | ok | — |
+| `monitorar_imprensa_saude.py` | coletor | 2026-10-12 03:25 | 1 s | — | **erro** (16 seguidas) | KeyError: 'hash' |
+| `monitorar_politica_por_inteiro.py` | coletor | 2026-10-12 03:26 | 2 s | 3478 | **erro** (14 seguidas) | NameError: name 'ler' is not defined. Did you mean: 'len'? |
+| `monitorar_redes_oficiais.py` | coletor | 2026-10-12 03:42 | 1294 s | — | **erro** | interrompido pelo prazo do elo |
+| `monitorar_sinais_federais.py` | coletor | 2026-10-12 03:27 | 4 s | 10 | ok | — |
 | `preservar_evidencias.py` | coletor | 2026-10-11 08:59 | 48 s | — | ok | — |
 | `revisar_pistas.py` | coletor | 2026-10-11 06:42 | 1 s | — | ok | — |
 | `scripts/amostra_auditoria_semanal.py` | coletor | 2026-10-11 07:09 | 0 s | — | ok | — |
 | `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-10-11 06:42 | 7 s | — | ok | — |
 | `scripts/preservar_textos_integrais.py` | coletor | 2026-10-11 09:00 | 1 s | — | ok | — |
-| `scripts/triar_fila.py` | coletor | 2026-10-11 03:41 | 2 s | — | ok | — |
-| `scripts/verificar_esquema_de_pista.py` | coletor | 2026-10-11 04:01 | 3 s | — | ok | — |
-| `seguir_pistas.py` | coletor | 2026-10-11 08:45 | 77 s | — | ok | — |
-| `triar_confianca_pistas.py` | coletor | 2026-10-11 08:46 | 3 s | — | ok | — |
+| `scripts/triar_fila.py` | coletor | 2026-10-11 02:55 | 1 s | — | ok | — |
+| `scripts/verificar_esquema_de_pista.py` | coletor | 2026-10-12 03:18 | 1 s | — | ok | — |
+| `seguir_pistas.py` | coletor | 2026-10-12 04:03 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `triar_confianca_pistas.py` | coletor | 2026-10-12 04:03 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `verificar_links.py` | coletor | 2026-10-10 01:14 | 208 s | — | **erro** | erro: HTTPSConnectionPool(host='www.defesacivil.sc.gov.br', port=443): Max retries exceeded with url: /2026/08/14/chuva- |
-| `verificar_pista_imprensa.py` | coletor | 2026-10-11 08:46 | 77 s | — | ok | — |
+| `verificar_pista_imprensa.py` | coletor | 2026-10-12 04:03 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
