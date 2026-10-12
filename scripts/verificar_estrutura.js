@@ -270,6 +270,20 @@ for (const arq of arquivos) {
   }
 }
 
+// A7-17 (12/10/2026): `.catch(() => {})` engolia o erro do bloco que não renderizava — a mutação da
+// auditoria (variável inexistente dentro do `.then` da grade de estados da Saúde) passava em todos os
+// portões de runtime. Erro de página vai ao console com o lugar (`_erroSaude("saude:123")` e afins).
+{
+  const jsDir = path.join(RAIZ, "assets", "js");
+  const ENGOLE = /\.catch\(\s*\(\s*\w*\s*\)\s*=>\s*\{\s*\}\s*\)/;
+  for (const arq of fs.readdirSync(jsDir).filter(f => f.endsWith(".js"))) {
+    const linhas = fs.readFileSync(path.join(jsDir, arq), "utf-8").split("\n");
+    linhas.forEach((l, i) => {
+      if (ENGOLE.test(l)) falha(`assets/js/${arq}:${i + 1}: \`.catch(() => {})\` engole o erro — relate ao console com o lugar (A7-17)`);
+    });
+  }
+}
+
 if (falhas) {
   console.log(`\n✗ ESTRUTURA: ${falhas} problema(s) em ${arquivos.length} página(s). Publicação bloqueada.`);
   process.exit(1);

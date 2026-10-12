@@ -1,3 +1,6 @@
+/* A7-17 (12/10/2026): erro de bloco que não renderiza não é engolido em silêncio — vai ao
+   console com o lugar, onde o portão de runtime e quem abre o DevTools o veem. */
+function _erroFin(onde) { return function (e) { try { console.error("[MARÉ] falha em " + onde + ":", e); } catch (_) {} }; }
 // ===== financiamento.html · bloco 1 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
 let BR_GEOJSON, ROTAS, PORUF, EMENDAS, CONSULTAS, TRANSF, ATOS, POP, MPS, CONTADORES, RESP_FIN = null;
 
@@ -631,7 +634,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
         el('topoAtosSemanaFonte').textContent = atos.fonte + (atos.detalhe ? ' · ' + atos.detalhe : '');
       }
     }
-  }).catch(() => {});
+  }).catch(_erroFin("financiamento:634"));
 
   /* O anunciado vira CONTEXTO, nao cartao: ele nao muda a cada coleta. */
   compromissosFederais().then(C => {
@@ -643,7 +646,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
         + ' anunciados para o ciclo. Anúncio não é pagamento, e o valor anunciado não muda a cada '
         + 'coleta.';
     }
-  }).catch(() => {});
+  }).catch(_erroFin("financiamento:646"));
 })();
 
 /* ===== Quanto chegou a cada estado (bloco B.2) =====
@@ -728,7 +731,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     } else if (el('topoAtosSemana')) {
       el('topoAtosSemana').textContent = 'sem coleta';
     }
-  }).catch(() => {});
+  }).catch(_erroFin("financiamento:731"));
 
   /* O número de municípios com recursos autorizados: do dado, no rótulo e desde 29 de junho. */
   fetch('data/resposta/recursos_liberados.json').then(r => r.ok ? r.json() : null).then(R => {
@@ -754,7 +757,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
                    { n_total: muns.length });
       }
     });
-  }).catch(() => {});
+  }).catch(_erroFin("financiamento:757"));
 
   /* O contexto do anunciado, com as duas frases do handover. */
   compromissosFederais().then(C => {
@@ -764,7 +767,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       el('finContexto').textContent = 'Os atos federais do ciclo anunciam ' + reais(anunciado)
         + '. O valor anunciado é o que consta nos atos; o desembolsado é o que já saiu do caixa.';
     }
-  }).catch(() => {});
+  }).catch(_erroFin("financiamento:767"));
 
   /* 2 · Como os recursos estão sendo aplicados: pela modalidade do orçamento federal. */
   fetch('data/financiamento/mps_2026.json').then(r => r.ok ? r.json() : null).then(M => {
@@ -816,7 +819,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     if (el('linhaFormaAplicacao')) {
       el('linhaFormaAplicacao').textContent = 'ciclo 2026/2027 · ' + reais(total) + ' desembolsados';
     }
-  }).catch(() => {});
+  }).catch(_erroFin("financiamento:819"));
 
   /* 3 · Anunciado, empenhado e desembolsado por origem; e o desembolsado mês a mês. */
   Promise.all([
@@ -900,7 +903,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
                                                  data: (C || {}).revisado_em || (M || {}).gerado_em});
       }
     }
-  }).catch(() => {});
+  }).catch(_erroFin("financiamento:903"));
 
   /* 5 · Defesa civil: mapa por estado, série por semana e as portarias recentes. */
   Promise.all([
@@ -1039,7 +1042,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       ent.addEventListener('change', mostrar);
       ent.addEventListener('input', () => { if ((ent.value || '').length > 2) mostrar(); });
     }
-  }).catch(() => {});
+  }).catch(_erroFin("financiamento:1042"));
 
   /* 6 · O gasto próprio: mapa por estado e a busca por município. */
   Promise.all([
@@ -1131,7 +1134,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       ent.addEventListener('change', mostrar);
       ent.addEventListener('input', () => { if ((ent.value || '').length > 2) mostrar(); });
     }
-  }).catch(() => {});
+  }).catch(_erroFin("financiamento:1134"));
 
   /* 6b · Saúde: repasses do FNS ligados a emergência, por estado (11/10/2026). "Ligado a
      emergência" é o texto do ato na fonte (`coletar_fns.py`), nunca suposição; sem coleta, a
@@ -1193,7 +1196,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       MonitorMapas.legenda('legComoLerFns', [{cor: MonitorMapas.NEUTRA, rotulo: 'sem o termo no nome, não é contado'}]);
       MonitorMapas.credito('boxComoLerFns', {fontes: ['Portal da Transparência, transferências (Fundo Nacional de Saúde)'], data: F.atualizado_em});
     }
-  }).catch(() => {});
+  }).catch(_erroFin("financiamento:1196"));
 
   /* 7 · O texto do Rio Grande do Sul, com os números do dado. */
   Promise.all([
@@ -1217,7 +1220,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
          + n(rec || 0) + ' foram reconhecidos pela União.' : '')
       + ' Até ' + ((PORUF || {}).corte || 'o corte') + ', a lista nominal dos ' + n(rs.repasses)
       + ' municípios não havia sido publicada pelo estado.';
-  }).catch(() => {});
+  }).catch(_erroFin("financiamento:1220"));
 
   /* 7b · A FIGURA DOS CAMINHOS, LARGA (04/10/2026, item 7 aprovado pela editoria).
    *
@@ -1382,7 +1385,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
         + '</dt><dd>' + esc(v.base_legal || 'base legal não localizada até o corte')
         + (v.exige ? ' · abre com: ' + esc(v.exige) : '') + '</dd>').join('');
     }
-  }).catch(() => {});
+  }).catch(_erroFin("financiamento:1385"));
 
   /* 8 · As âncoras abrem o bloco recolhido e rolam até o ponto. */
   (function ancoras(){
