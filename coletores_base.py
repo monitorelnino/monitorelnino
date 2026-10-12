@@ -479,7 +479,9 @@ _MARCAS_DE_NOTICIA = ("noticia", "noticias", "publicidade institucional", "propa
 _MARCAS_DE_SITIO = ("esta pagina esta indisponivel", "este portal", "deste portal", "conteudo deste",
                     "suspensao temporaria", "conteudo indisponivel", "site esta indisponivel",
                     "portal encontra-se", "pagina indisponivel", "temporariamente indisponivel",
-                    "conteudo temporariamente")
+                    "conteudo temporariamente",
+                    # A6-30 (12/10/2026): as frases do aviso que `eh_suspensao_defeso` reconhecia.
+                    "conteudo suspenso", "temporariamente suspenso", "site suspenso")
 
 
 def classificar_defeso(texto: str) -> tuple:
@@ -1906,11 +1908,12 @@ def varrer_busca_dou(q: str, de, ate, secao: str = "do1", buscar_fn=None, pausa:
 
 
 def eh_suspensao_defeso(html: str) -> bool:
-    """Heurística declarada (§3.1): aviso de período eleitoral, ou página institucional
-    esvaziada. Só rotula; nunca infere conteúdo."""
-    t = html.lower()
-    return any(k in t for k in ("período eleitoral", "periodo eleitoral", "legislação eleitoral",
-                                "lei 9.504", "lei nº 9.504", "vedação eleitoral", "defeso eleitoral"))
+    """Aviso de defeso eleitoral que suspende o PRÓPRIO sítio. Só rotula; nunca infere conteúdo.
+
+    A6-30 (12/10/2026): era substring ("lei 9.504", "período eleitoral"…), e qualquer ato do DOU
+    que citasse a lei eleitoral marcava a fonte inteira como suspensa. Agora é o mesmo classificador
+    do §182 que `buscar` usa — uma regra só, que distingue sítio suspenso de notícia suspensa."""
+    return detectar_defeso(html or "") is not None
 
 
 def registrar_lacuna(fonte: str, motivo: str, canal: str, camada: int, strings=None, **kw):

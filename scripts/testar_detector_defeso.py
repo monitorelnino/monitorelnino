@@ -61,6 +61,14 @@ def t10():
     return detectar_defeso('<html><body><div class="aviso-periodo-eleitoral-2026">'
                            '<a href="/legislacao-eleitoral">Documentos</a>'
                            '<p>Plano de contingência 2026 publicado.</p></div></body></html>') is None
+def t14():
+    """A6-30: `eh_suspensao_defeso` usa o classificador do §182, não substring."""
+    from coletores_base import eh_suspensao_defeso
+    return (not eh_suspensao_defeso("PORTARIA Nº 12 — nos termos da Lei nº 9.504, de 1997, vedação eleitoral")
+            and eh_suspensao_defeso("Conteúdo suspenso em razão do período eleitoral")
+            and not eh_suspensao_defeso("Notícias: conteúdo suspenso em razão do período eleitoral"))
+
+
 sys.exit(rodar_autoteste({"fixture SUDEC/BA: detecta": t1, "negativo: página normal e vazia": t2, "negativo: 'eleição' em notícia não é defeso": t3,
                           "indisponível + contexto eleitoral: detecta; manutenção: não": t4, "domínio público vs API": t5,
                           "§182 alt de imagem não suspende o portal (saude.pi.gov.br)": t6,
@@ -70,4 +78,5 @@ sys.exit(rodar_autoteste({"fixture SUDEC/BA: detecta": t1, "negativo: página no
                           "§182 classe de CSS e href não são declaração ao leitor": t10,
                           "§182 notícia institucional suspensa não fecha o canal (MT, SP)": t11,
                           "§182 nome de banner não é suspensão (saude.sc.gov.br)": t12,
-                          "§182 sítio inteiro fora do ar é o caso que fecha o canal (MA, MG)": t13}))
+                          "§182 sítio inteiro fora do ar é o caso que fecha o canal (MA, MG)": t13,
+                          "A6-30 ato que cita a Lei 9.504 não suspende a fonte; aviso do sítio sim": t14}))
