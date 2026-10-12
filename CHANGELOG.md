@@ -32,9 +32,9 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-12 · #PR · textos do blog e índice de conteúdo entram nos portões de texto (A7-15)
+## 2026-10-12 · #PR · textos do blog entram nos portões de texto (A7-15)
 
-Os portões de vocabulário, voz editorial e legendas liam uma lista de páginas escrita à mão, sem os textos do blog nem o índice de conteúdo. Passam a ler `blog/*.html` da pasta e o índice; todos passam limpos. O registro técnico de mudanças fica fora de propósito: nomeia arquivos e portões para quem audita. Onde: `scripts/verificar_{vocabulario_publico,voz_editorial}.js`, `scripts/verificar_legendas.js`.
+Os portões de vocabulário, voz editorial e legendas liam uma lista de páginas escrita à mão, sem os textos do blog. Passam a ler `blog/*.html` da pasta; todos passam limpos. Ficam fora de propósito o registro técnico de mudanças (nomeia arquivos para quem audita) e o índice interno de conteúdo (mostra os moldes). Onde: `scripts/verificar_{vocabulario_publico,voz_editorial}.js`, `scripts/verificar_legendas.js`.
 
 ## 2026-10-12 · #PR · vocabulário público ganha regras de forma (A7-03)
 

@@ -20,10 +20,10 @@ const RAIZ = path.join(__dirname, ".."); const listar = process.argv.includes("-
   // 30/09/2026 (§309): "calendario-eleitoral.html" saiu desta lista — a página foi apagada do
   // código, com as outras duas telas de calendário (decisão da editoria).
 const PAGINAS = ["index.html", "defesa-civil.html", "saude.html", "financiamento.html", "monitor-de-riscos.html", 
-  "imprensa.html", "prefeituras.html", "proteja-se.html", "obrigado.html", "blog.html", "indice-de-conteudo.html"]
-  // A7-15 (12/10/2026): os textos do blog (`blog/*.html`) e o índice de conteúdo estavam fora
-  // da lista escrita à mão. `mudancas.html` fica fora DE PROPÓSITO: é o registro técnico das
-  // mudanças, para quem audita (decisão da editoria de 03/10/2026), e nomeia arquivos e portões.
+  "imprensa.html", "prefeituras.html", "proteja-se.html", "obrigado.html", "blog.html"]
+  // A7-15 (12/10/2026): os textos do blog (`blog/*.html`) estavam fora da lista escrita à mão.
+  // Ficam fora DE PROPÓSITO: `mudancas.html` (registro técnico, para quem audita — decisão de
+  // 03/10/2026) e `indice-de-conteudo.html` (página interna, `noindex`, que mostra os moldes).
   .concat(fs.existsSync(path.join(RAIZ, "blog")) ? fs.readdirSync(path.join(RAIZ, "blog"))
     .filter((b) => b.endsWith(".html")).sort().map((b) => "blog/" + b) : [])
   .filter(p => fs.existsSync(path.join(RAIZ, p)));
