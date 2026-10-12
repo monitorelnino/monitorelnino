@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · checagem pré-noite sem falso alarme (F43)
+
+A checagem das 23h acusava despachante parado quando o despacho rodara dentro do relógio, e fila cheia por runs de ramos de ensaio e de coleta de dia. Despachante vivo passa a ser o mais recente dos dois; `ensaio-real/*` e `coleta-dia/*` saem da fila. Onde: `checagem_pre_noite.py`, ensaio nº 20. Junto: o `sitemap.xml` deixa de anunciar o pacote de dados (A7-25).
+
 ## 2026-10-12 · #PR · coleta perdida volta inteira (F45)
 
 A reaplicação de artefato trazia só filas, logs e contadores; arquivo com um escritor só (clima municipal, enquadramento federal, cobertura do Querido Diário) ficava para trás, em silêncio. O elo passa a gravar base e arquivos alterados no artefato, e a reaplicação copia quando ninguém mexeu depois, recusando nomeado quando mexeu. Onde: `_coletor.yml`, `reaplicar_noite.py`, ensaio nº 24.
