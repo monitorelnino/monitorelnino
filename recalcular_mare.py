@@ -485,6 +485,8 @@ def calcular(versao="v3.1"):
     ufs = sorted(ESTADOS)
     consist = _consist()
     datas_dos_atos = _datas_dos_atos()
+    # A3-27 (12/10/2026): lido uma vez, não 27 — a função relia dois arquivos a cada UF.
+    declarado_nacional = _declarado_nacional_uf()
     comp = []
     for uf in ufs:
         c = cnt.get(uf, {})
@@ -496,7 +498,7 @@ def calcular(versao="v3.1"):
         cobertura, _camadas = cobertura_de_uf(
             uf, c, w, mediana_uf[uf], pop_uf[uf],
             pct[uf].get("declarado_plano", 0) or 0, pct[uf].get("declarado_antigo", 0) or 0,
-            _declarado_nacional_uf().get(uf, 0), totais.get(uf, 0) or 0)
+            declarado_nacional.get(uf, 0), totais.get(uf, 0) or 0)
         st, ant, conf = ESTADOS[uf]
         if versao == "v3.1":
             # Três componentes sem sobreposição: instrumento, estrutura e cobertura. A estrutura
