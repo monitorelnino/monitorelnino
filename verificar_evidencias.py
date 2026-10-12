@@ -14,7 +14,8 @@ NÃO é prova, embora tenha contado como se fosse até 22/09/2026). Regime decla
 Também confere a integridade dos arquivos preservados: sha256 do binário = chave, e
 sha256 do texto extraído = `texto_hash` (§175 — o do texto não era conferido).
 """
-import hashlib, json, pathlib, sys
+import hashlib
+import re, json, pathlib, sys
 from datetime import date
 
 RAIZ = pathlib.Path(__file__).parent
@@ -106,6 +107,9 @@ LACUNA_BLOQUEIA_A_PARTIR = date(2026, 10, 31)
 LACUNA_DECLARADA = {}
 
 
+_RE_CAPTURA = re.compile(r"/web/\d{8,14}[a-z_]*/")
+
+
 def prova_preservada(item: dict) -> bool:
     """Há prova mesmo, e não só a anotação de que a tentativa falhou? (§174, 22/09/2026)
 
@@ -129,7 +133,10 @@ def prova_preservada(item: dict) -> bool:
     if item.get("ocr_arquivo") and (item.get("ocr_caracteres") or 0) >= MIN_CARACTERES_TEXTO:
         return True
     wb = item.get("wayback")
-    return isinstance(wb, str) and wb.startswith("http")
+    # A6-29 (12/10/2026): `preservar_evidencia` grava o MOLDE de busca `…/web/*/<url>` depois de
+    # pedir o snapshot, sem confirmar que ele existe. Molde não é prova: só conta endereço de
+    # captura com data (`/web/<aaaammdd…>/`).
+    return isinstance(wb, str) and wb.startswith("http") and bool(_RE_CAPTURA.search(wb))
 
 
 def autoteste_prova() -> list:
@@ -142,7 +149,9 @@ def autoteste_prova() -> list:
         ({"arquivo": "evidencias/x.pdf", "wayback": None}, True),
         ({"arquivo": None, "texto_arquivo": "evidencias/x.txt", "caracteres": 9407,
           "wayback": "tentativa falhou (X)"}, True),
-        ({"arquivo": None, "wayback": "https://web.archive.org/web/*/http://x"}, True),
+        # A6-29: o molde de busca não é captura; a captura com data é.
+        ({"arquivo": None, "wayback": "https://web.archive.org/web/*/http://x"}, False),
+        ({"arquivo": None, "wayback": "https://web.archive.org/web/20261012101500/http://x"}, True),
         # PDF escaneado: o .txt existe, com marcadores de página e nada dentro — não é prova.
         ({"arquivo": None, "texto_arquivo": "evidencias/x.txt", "caracteres": 0}, False),
         ({"arquivo": None, "texto_arquivo": "evidencias/x.txt"}, False),
