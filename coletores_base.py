@@ -878,13 +878,16 @@ MARCAS_DE_MURO_NO_CODIGO = (
 
 
 def detectar_muro_de_robo(corpo: bytes, tamanho_maximo: int = 60000) -> str | None:
-    """Marca do muro, ou None. Só olha respostas PEQUENAS: muro é página curta, e varrer um PDF de
-    20 MB em busca de frase de bloqueio custa caro e acha falso positivo em documento que cite o
-    assunto. Função pura."""
-    if not corpo or len(corpo) > tamanho_maximo:
+    """Marca do muro, ou None. PDF nunca é muro; acima de `tamanho_maximo` só página HTML é lida
+    (A6-10), e `texto_declarativo` olha título e texto visível, não o documento citado. Função pura."""
+    if not corpo or corpo[:5] == b"%PDF-":
         return None
-    if corpo[:5] == b"%PDF-":
-        return None
+    # A6-10 (12/10/2026): o teto de 60 kB deixava passar o muro do Cloudflare com JavaScript inline
+    # (61 kB medido). Acima do teto, só HTML é lido — documento grande que não é página não é muro.
+    if len(corpo) > tamanho_maximo:
+        cabeca = corpo[:2048].lstrip().lower()
+        if not (cabeca.startswith(b"<!doctype") or b"<html" in cabeca):
+            return None
     try:
         cru = corpo.decode("utf-8", "replace")
         texto = _plano(texto_declarativo(cru))

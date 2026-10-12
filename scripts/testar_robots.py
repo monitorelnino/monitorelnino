@@ -170,10 +170,17 @@ def t_muro_de_robo_e_recusa_nao_conteudo():
 
 
 def t_muro_nao_acusa_pdf_nem_documento_grande():
-    """PDF e resposta grande ficam fora: muro é página curta, e varrer documento acharia falso positivo."""
-    grande = b"<html><body>" + b"pardon our interruption " * 5000 + b"</body></html>"
+    """PDF e resposta grande que não é página ficam fora; muro grande em HTML é muro (A6-10).
+
+    12/10/2026 (A6-10): o teto de 60 kB deixava passar o desafio do Cloudflare com JavaScript
+    inline (61 kB medido). Acima do teto só página HTML é lida."""
+    grande_texto = b"relatorio;pardon our interruption\n" * 5000
+    muro_grande = MURO_CLOUDFLARE.replace(b"</body>", b"<!-- " + b"x" * 61000 + b" --></body>")
+    doc_grande = DOCUMENTO.replace(b"</body>", b"<p>" + b"Plano de contingencia " * 4000 + b"</p></body>")
     return (cb.detectar_muro_de_robo(b"%PDF-1.7 pardon our interruption") is None
-            and cb.detectar_muro_de_robo(grande) is None)
+            and cb.detectar_muro_de_robo(grande_texto) is None
+            and cb.detectar_muro_de_robo(muro_grande) is not None
+            and cb.detectar_muro_de_robo(doc_grande) is None)
 
 
 def t_geobloqueio_com_200_e_recusa():
@@ -366,7 +373,7 @@ if __name__ == "__main__":
         "buscar() consulta o robots, respeita o ritmo e registra": t_buscar_consulta_robots_respeita_ritmo_e_registra,
         "o canal renderizado também deixa rastro": t_canal_renderizado_tambem_deixa_rastro,
         "§186 muro de robô com HTTP 200 é recusa, não conteúdo": t_muro_de_robo_e_recusa_nao_conteudo,
-        "§186 muro não acusa PDF nem resposta grande": t_muro_nao_acusa_pdf_nem_documento_grande,
+        "§186/A6-10 muro não acusa PDF nem resposta grande que não é página; muro grande é muro": t_muro_nao_acusa_pdf_nem_documento_grande,
         "§187 geobloqueio com HTTP 200 é recusa": t_geobloqueio_com_200_e_recusa,
         "§232 desafio do F5/Shape sem texto declarativo é recusa": t_muro_f5_sem_texto_declarativo_e_recusa,
         "§232 negativo: quem só CITA o produto em prosa não é muro": t_muro_f5_nao_acusa_quem_so_cita_o_produto,
