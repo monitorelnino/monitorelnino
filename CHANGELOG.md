@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · toda regra de layout diz quem a julga (A7-14)
+
+`layout/regras.json` ganha `_verificacao`: para cada uma das 55 regras, o portão que a julga ou, com franqueza, "só texto" (17, dívida declarada). `verificar_conformidade.py --regras-cobertas` reprova regra nova sem dono ou dono inexistente. E passa a cobrar milhões com uma casa decimal em cartão ("12,3 milhões").
+
 ## 2026-10-12 · #PR · contribuição pública vira pista e segue o juiz (A6-19)
 
 Com a autoaplicação suspensa, toda contribuição parava como abstenção e nenhuma chegava ao índice. Pela decisão D7, a de documento (plano, estrutura, decreto) passa por fonte oficial (R4) e campo livre (R4-bis) e entra na fila pela porta única, origem `contribuicao`, nível C; o juiz lê o documento (`processar_contribuicoes.py`, `schemas/pista.json`).
