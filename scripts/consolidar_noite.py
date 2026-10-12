@@ -281,7 +281,12 @@ def _aplicar(dir_artefatos: pathlib.Path, aplicar: bool, importacao: bool) -> in
                         da = json.loads(destino.read_text(encoding="utf-8")) if destino.exists() else {}
                         do = json.loads(origem.read_text(encoding="utf-8"))
                         fundido = dict(do)
-                        fundido[chave] = unir_log(da.get(chave) or [], do.get(chave) or [])
+                        if rel == "data/painel_da_noite.json":
+                            # F44 (12/10/2026): o painel une por (elo, noite, inicio).
+                            from painel_da_noite import unir_paineis
+                            fundido[chave] = unir_paineis(da.get(chave) or [], do.get(chave) or [])
+                        else:
+                            fundido[chave] = unir_log(da.get(chave) or [], do.get(chave) or [])
                         destino.parent.mkdir(parents=True, exist_ok=True)
                         # §229: porta atômica. O consolidador é o ÚNICO escritor — escrita direta
                         # aqui deixaria o banco pela metade se a rodada morresse no meio, e não há

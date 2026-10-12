@@ -60,3 +60,6 @@ wt-*/
 # como artefato do run, que é o que o CLAUDE.md diz que elas são.
 capturas-ci/
 .cache/
+
+# 12/10/2026: temporário da escrita atômica (coletores_base.gravar_em) nunca entra no commit.
+*.tmp[0-9]*

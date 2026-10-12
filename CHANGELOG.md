@@ -36,6 +36,14 @@ não pontuados permanecem na versão corrente.
 
 Muro de robô com 403/503 é nomeado e não repetido; o livro de fontes guarda sempre a última consulta de cada fonte; a fila de OCR registra falha por item e põe na frente quem falhou menos; evidência de texto (inclusive latin-1) sai sem CPF; PDF que mudou ganha hash próprio; ato que cita a lei eleitoral não suspende mais a fonte; fonte suspensa é reavaliada toda semana; plano sem ato leva a data da capa. Onde: `coletores_base.py`, `preservar_evidencias.py`, `juiz.py`.
 
+## 2026-10-12 · #PR · coleta perdida volta inteira (F45)
+
+A reaplicação de artefato trazia só filas, logs e contadores; arquivo com um escritor só (clima municipal, enquadramento federal, cobertura do Querido Diário) ficava para trás, em silêncio. O elo passa a gravar base e arquivos alterados no artefato, e a reaplicação copia quando ninguém mexeu depois, recusando nomeado quando mexeu. Onde: `_coletor.yml`, `reaplicar_noite.py`, ensaio nº 24.
+
+## 2026-10-12 · #PR · painel da noite cheio não perde mais o commit (F44)
+
+O painel cortava em 400 linhas; ao encher, podava a cabeça e o resolvedor recusava a união — saúde, diários e triagem foram para artefato na noite 11→12. Sem corte; o painel une em multiconjunto (resolvedor, reaplicação, consolidação); 16 linhas podadas voltam do histórico; temporário da escrita atômica não entra mais no commit. Onde: `painel_da_noite.py`, `unir_conflito_de_rodada.py`, ensaio nº 23.
+
 ## 2026-10-11 · #PR · busca semanal do Protocolo Nacional de Calor Extremo (HANDOVER_SAUDE 3.4)
 
 O documento anunciado pelo Ministério da Saúde em 16/09 não foi localizado até 11/10. A busca passa a rodar toda semana no DOU, com rastro: termos, janela, itens lidos e candidatos (ato da Saúde que cita calor e protocolo, diretriz, plano ou portaria). Candidato é ato a ler; nada entra no índice. Onde: `buscar_protocolo_calor.py`, `semanal_espin_e_links.yml`.
