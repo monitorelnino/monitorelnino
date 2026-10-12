@@ -534,7 +534,7 @@ function selectUF(uf, tileEl){
       const lidos = ((VRESUMO && VRESUMO.varredura_diarios && VRESUMO.varredura_diarios.por_uf) || {})[d.uf] || 0;
       return tot ? `<div class="field"><div class="k">Diários municipais consultados</div><div class="v">${lidos} de ${tot}</div></div>` : '';
     })()}
-    ${d.adpf743 ? '<div class="field"><div class="k">ADPF 743 (STF)</div><div class="v"><span class="pill-nivel">' + ({homologado:'plano homologado', ajustes_exigidos:'ajustes exigidos em 30 dias', ajustes_exigidos_car:'ajustes exigidos (CAR)', apresentado:'plano apresentado'}[d.adpf743.status] || esc(d.adpf743.status)) + '</span> intimado em ' + esc(d.adpf743.intimado_em) + ' · decisão de ' + esc(d.adpf743.decisao) + (d.adpf743.status !== 'homologado' ? ' · resultado após 25/07 não localizado' : '') + '</div></div>' : ''}
+    ${d.adpf743 ? '<div class="field"><div class="k">ADPF 743 (STF)</div><div class="v"><span class="pill-nivel">' + ({homologado:'plano homologado', ajustes_exigidos:'ajustes exigidos em 30 dias', ajustes_exigidos_car:'ajustes exigidos (CAR)', apresentado:'plano apresentado'}[d.adpf743.status] || esc(d.adpf743.status)) + '</span> intimado em ' + esc(d.adpf743.intimado_em) + ' · decisão de ' + esc(d.adpf743.decisao) + (d.adpf743.status !== 'homologado' ? ' · resultado após 25/07 não localizado' + ((d.adpf743.resultado_verificado_em || d.adpf743.registrado_em) ? ' até ' + esc(d.adpf743.resultado_verificado_em || d.adpf743.registrado_em) : '') : '') + '</div></div>' : ''}
     ${barraResposta(d.uf)}
     ${(function(){ // v3.1 (30/09/2026): três componentes com um terço cada, nomeados pelo que são.
       // Na v3.0 estrutura e instrumento eram metades de um componente só; agora cada um vale por si,

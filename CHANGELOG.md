@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · ADPF 743: "não localizado" com a data da verificação (A3-22, parte)
+
+Na ficha do estado, "resultado após 25/07 não localizado" era frase fixa do código, sem data, havia 73 dias. Passa a levar o limite da verificação, do dado: "não localizado até 05/09/2026" (`adpf743.resultado_verificado_em`, ou `registrado_em`), como pede o teto de ausência (`assets/js/index.js`). URL e hash dos 54 instrumentos estaduais seguem pendentes.
+
 ## 2026-10-12 · #PR · portão compara a grade da Saúde com o dado (A7-02, A4-33)
 
 A grade dos 27 estados em `saude.html` chegou a mostrar 0,0 em 21 cartões e nenhum portão comparava o número escrito com `monitor_saude.json`. `verificar_runtime_saude.js` passa a exigir que cada estado verificado escreva a sua prontidão e que o não verificado diga isso, sem número; provado por mutação (sem a animação, reprova). E abre as 27 fichas, não só a de GO (A4-33).
