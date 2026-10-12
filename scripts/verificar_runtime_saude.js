@@ -138,6 +138,22 @@ for (const id of ["mapaMonitor", "mapaDengueUF", "mapaChikUF", "mapaCalor"]) {
     tiles.find(t => t.dataset.uf === "GO").click();
     return q("detailSaudeConteudo").textContent.length > 40;
   })());
+  // A7-02 (12/10/2026): a grade mostrava 0,0 em 21 cartões (o número ficava só no
+  // `data-contar`) e nenhum portão comparava o cartão com o dado. Agora: todo estado verificado
+  // ESCREVE a prontidão de `monitor_saude.json`, e o não verificado diz isso, sem número.
+  teste("grade: cada cartão escreve a prontidão do dado, não 0,0", (() => {
+    const U = MSd2.ufs || {};
+    const tiles = [...d.querySelectorAll("#regionsSaude .tile")];
+    if (tiles.length !== 27) return false;
+    return tiles.every(t => {
+      const m = U[t.dataset.uf] || {};
+      const s = t.querySelector(".tile-score");
+      if (!s) return false;
+      if (!m.verificado) return /não verificado/.test(s.textContent);
+      const escrito = parseFloat((s.textContent || "").replace(",", "."));
+      return isFinite(escrito) && Math.abs(escrito - Number(m.prontidao)) < 0.06;
+    });
+  })());
   /* Bloco B.3 do handover de 02/10/2026: a coordenação aparece na ficha em DUAS linhas, em
      linguagem de leitor, e a palavra interna "antecipação" não aparece. Função não procurada diz
      "ainda não verificada" — nunca ausência de estrutura. */

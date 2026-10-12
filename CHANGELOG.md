@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · portão compara a grade da Saúde com o dado (A7-02)
+
+A grade dos 27 estados em `saude.html` chegou a mostrar 0,0 em 21 cartões e nenhum portão comparava o número escrito com `monitor_saude.json`. `verificar_runtime_saude.js` passa a exigir que cada estado verificado escreva a sua prontidão e que o não verificado diga isso, sem número; provado por mutação (sem a animação, reprova).
+
 ## 2026-10-12 · #PR · juiz da Saúde usa a data do cabeçalho do ato (A5-37)
 
 `data_do_cabecalho` existia e só o autoteste a chamava: o juiz da camada de Saúde registrava a data, o tipo e o número do primeiro ato citado no preâmbulo (Res. SESA 680/2008 do PR saía como lei de 03/06/1987). Quando o cabeçalho traz a data por extenso, é ela, com tipo e número, que vale (`julgar_saude.com_data_do_cabecalho`).
