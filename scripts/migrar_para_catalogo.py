@@ -122,7 +122,7 @@ def texto_limpo(bruto: str) -> str:
     return re.sub(r"\s+", " ", bruto or "").strip()
 
 
-def extrair(html: str, pagina: str) -> tuple:
+def extrair(html: str, pagina: str, ids_do_js: frozenset = frozenset()) -> tuple:
     """(entradas, html_novo) — o catálogo e a página com `data-conteudo`. Função pura.
 
     `entradas` é {identificador: texto}. `html_novo` é o mesmo HTML com o atributo acrescentado nos
@@ -209,6 +209,11 @@ def extrair(html: str, pagina: str) -> tuple:
         funcao = funcao_de(classes, tag)
         secao = secao_em(m.start())
         id_proprio = (re.search(r'id="([\w-]+)"', attrs) or [None, ""])[1]
+        if id_proprio and id_proprio in ids_do_js:
+            # A4-34 (12/10/2026): elemento que o JS da página reescreve (`rotuloDengueSE` troca
+            # "na última semana com dado fechado" pelas datas da semana) é camada de DADO com texto
+            # de reserva. Migrado, o catálogo sobrescrevia o que o JS acabara de escrever.
+            continue
         elemento = ("" if funcao in ("titulo_da_secao", "abertura")
                     else elemento_em(m.start(), id_proprio, funcao))
         chave = (secao, elemento, funcao)
@@ -300,6 +305,9 @@ def _autoteste() -> int:
 
     ok("a página ganha data-conteudo em cada migrado",
        novo.count("data-conteudo=") == len(ents))
+    _e, _n = extrair('<main><section id="s"><p class="cartao-numero-rotulo" id="rotuloX">na semana</p>'
+                     '</section></main>', "p", frozenset({"rotuloX"}))
+    ok("elemento que o JS reescreve fica fora do catálogo (A4-34)", _e == {} and "data-conteudo" not in _n)
     ok("o texto do HTML NÃO muda — só o atributo entra",
        "O título da figura</h3>" in novo and "Período · unidade · recorte</p>" in novo)
     ok("a quebra de linha do fonte fica intacta no HTML",
@@ -329,6 +337,16 @@ def _autoteste() -> int:
     return 1 if falhas else 0
 
 
+def ids_escritos_pelo_js() -> frozenset:
+    """Todo `id` citado entre aspas no JS das páginas (`assets/**/*.js`, fora de `vendor/`)."""
+    citados = set()
+    for js in (RAIZ / "assets").rglob("*.js"):
+        if "vendor" in js.parts:
+            continue
+        citados.update(re.findall(r"""['"]([A-Za-z][\w-]*)['"]""", js.read_text(encoding="utf-8")))
+    return frozenset(citados)
+
+
 def main() -> int:
     argv = sys.argv[1:]
     if "--autoteste" in argv:
@@ -342,7 +360,7 @@ def main() -> int:
         print(f"✗ {arquivo.name} não existe")
         return 1
     html = arquivo.read_text(encoding="utf-8")
-    entradas, novo = extrair(html, pagina)
+    entradas, novo = extrair(html, pagina, ids_escritos_pelo_js())
     print(f"{pagina}.html · {len(entradas)} identificador(es) de texto público")
     for ident, texto in entradas.items():
         print(f"  {ident}\n      {texto[:92]}")

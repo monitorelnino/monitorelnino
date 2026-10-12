@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · texto de cinco páginas no catálogo (A4-34)
+
+Início, Saúde, Proteja-se, Prefeituras e Obrigado passam a ler o texto público de `conteudo/<pagina>.json` (124 entradas), por migração mecânica: texto renderizado idêntico com e sem catálogo. O migrador deixa de fora elemento que o JS da página reescreve (em Saúde, cinco rótulos com a semana) — migrado, o catálogo sobrescrevia o dado (`scripts/migrar_para_catalogo.py`).
+
 ## 2026-10-12 · #PR · reconhecimento federal: consultado e não localizado é `false` (A3-17)
 
 `verificacao_municipal.json` gravava `null` para 4.858 municípios já consultados no DOU/MIDR, confundindo "consultado e não localizado" com "não coletado". Agora é `false` quando há nível nacional ou acima e data de consulta no livro; sem consulta datada segue `null` (`recalcular_mare.py`, handover 1.16). Decreto não pontua; nenhuma página exibe o campo.
