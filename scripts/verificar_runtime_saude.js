@@ -121,8 +121,10 @@ for (const id of ["mapaMonitor", "mapaDengueUF", "mapaChikUF", "mapaCalor"]) {
   // Lê do DISCO: o `MSAUDE` do portão é declarado mais abaixo, e usá-lo aqui quebraria por ordem
   // de declaração — o mesmo tropeço do portão do Financiamento, e a mesma correção.
   const MSd2 = JSON.parse(fs.readFileSync(path.join(raiz, "data", "monitor_saude.json"), "utf8"));
+  // A7-14 (12/10/2026): zero medido aparece por extenso no cartão ("zero"), pela régua de números.
+  const _emerg = MSd2.resposta.emergencias;
   teste("cartão de emergências: do agregado de resposta",
-    txt("nEmergSaude") === String(MSd2.resposta.emergencias));
+    txt("nEmergSaude") === (_emerg === 0 ? "zero" : Number(_emerg).toLocaleString("pt-BR")));
 
   // Um mapa só por estado, e a grade com ficha.
   // Tres cartoes na secao do estado, pelo contrato: prontidao, o que foi localizado em cada um e

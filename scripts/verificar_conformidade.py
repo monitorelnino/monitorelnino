@@ -191,6 +191,10 @@ def problemas_de_vocabulario(texto: str, pagina: str, regras: dict, contrato: di
 
 
 # ── (E) números e (F) acessibilidade ────────────────────────────────────────────────────────
+# "31.8" é decimal em inglês; "1.234" é milhar em pt-BR (três dígitos depois do ponto) e passa.
+_RE_DECIMAL_COM_PONTO = re.compile(r"(?<![\d.])\d+\.\d{1,2}(?![\d.])")
+
+
 def problemas_de_numero(numeros: list, regras: dict, travessoes: list = None) -> list:
     """Travessão e vazio em cartão de número — e em todo elemento que só tem travessão.
 
@@ -204,8 +208,14 @@ def problemas_de_numero(numeros: list, regras: dict, travessoes: list = None) ->
         return p
     for n in numeros or []:
         valor = (n.get("valor") or "").strip()
+        nome = n.get('id') or n.get('valor_id')
         if valor in ("", "—", "-"):
-            p.append(f"cartão de número '{n.get('id') or n.get('valor_id')}' em travessão ou vazio")
+            p.append(f"cartão de número '{nome}' em travessão ou vazio")
+        # A7-14 (12/10/2026): duas regras de `numeros` que só existiam no JSON.
+        elif r.get("zero_por_extenso_em_cartao") and valor == "0":
+            p.append(f"cartão de número '{nome}' mostra '0' — zero em cartão se escreve por extenso")
+        elif str(r.get("formato") or "") == "pt-BR" and _RE_DECIMAL_COM_PONTO.search(valor):
+            p.append(f"cartão de número '{nome}' com ponto decimal ('{valor}') — no site, vírgula")
     for e in travessoes or []:
         p.append(f"elemento '{e.get('classe')}' em {e.get('perto_de') or 'seção sem id'} só com "
                  f"travessão — ausência se escreve em palavras")
@@ -357,6 +367,12 @@ def _autoteste() -> int:
     ok("cartão em travessão reprova",
        len(problemas_de_numero([{"id": "a", "valor": "—"}], regras)) == 1)
     ok("cartão vazio reprova", len(problemas_de_numero([{"id": "a", "valor": ""}], regras)) == 1)
+    ok("A7-14: '0' em cartão reprova; 'zero' passa",
+       len(problemas_de_numero([{"id": "a", "valor": "0"}], regras)) == 1
+       and problemas_de_numero([{"id": "a", "valor": "zero"}], regras) == [])
+    ok("A7-14: ponto decimal reprova; milhar pt-BR e vírgula passam",
+       len(problemas_de_numero([{"id": "a", "valor": "31.8"}], regras)) == 1
+       and problemas_de_numero([{"id": "a", "valor": "1.234"}, {"id": "b", "valor": "31,8%"}], regras) == [])
     ok("alvo de toque pequeno reprova",
        any("alvo de toque" in x for x in problemas_de_acessibilidade(
            {"alvos_de_toque": [{"tag": "button", "texto": "Ver", "altura": 30}]}, regras)))
