@@ -770,7 +770,9 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 .contato-lista{display:grid; grid-template-columns:auto minmax(0, 1fr); gap:var(--sp-1) var(--sp-3); margin:0; font-size:var(--fs-small); line-height:var(--lh-small);}
 .contato-lista dt{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-small); letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--muted);}
 .contato-lista dd{margin:0; overflow-wrap:anywhere;}
-.contato-lista a{color:var(--ink); font-weight:var(--peso-medio);}
+/* A4-26 (12/10/2026): telefone, e-mail e portal tinham alvo de toque de 17 px (altura da linha). */
+.contato-lista a{color:var(--ink); font-weight:var(--peso-medio); display:inline-flex; align-items:center; min-height:var(--alvo-toque);}
+.contato-lista dt{align-self:center;}
 .contato-lista a[href^="tel:"]{white-space:nowrap;}
 
 /* ===== 15. Pesquisadores e Enviar dados ===== */
@@ -1243,7 +1245,9 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
    um diagrama de 960 de largura num cartão de 1/3 da coluna não é um diagrama menor, é um diagrama
    ilegível — a figura dos caminhos passou três dias assim. */
 .cartao-mapa--largo{grid-column:1 / -1; width:100%;}
-.cartao-mapa--largo .figura-midia{width:100%;}
+/* A4-24 (12/10/2026): a proporção de mapa (480/460) do `.figura-midia` deixava 570 px de vazio sob
+   o diagrama (1052 px de caixa para 483 de desenho). O diagrama largo mede o que o desenho mede. */
+.cartao-mapa--largo .figura-midia{width:100%; aspect-ratio:auto; min-height:0;}
 .cartao-mapa--largo .figura-midia svg{width:100%; height:auto;}
 .diag-caixa{font-family:var(--font-texto); font-size:var(--fs-small); font-weight:600; fill:var(--bg);}
 .diag-caixa-sub{font-family:var(--font-dado); font-size:var(--fs-caption); fill:var(--bg);}
