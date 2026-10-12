@@ -391,12 +391,22 @@ def gravar_em(p, obj, compacto: bool = False):
     # para o clima municipal — só que lá o arquivo era escrito por fora desta função, e por isso
     # ficava sem a escrita atômica e sem a espera do cadeado do Windows. Agora é a mesma porta.
     tmp = p.with_name(f"{p.name}.tmp{os.getpid()}")
-    with open(tmp, "w", encoding="utf-8", newline="\n") as f:
-        if compacto:
-            json.dump(obj, f, ensure_ascii=False, separators=(",", ":"))
-        else:
-            json.dump(obj, f, ensure_ascii=False, indent=_indent_de(p))
-        f.write("\n")
+    # 12/10/2026: um `.tmp<pid>` de 1,5 MB (`pistas_rejeitadas.json.tmp4182`) entrou no commit da
+    # descoberta de 04:04: a escrita falhou no meio e o `git add -A` do elo levou o resto. Falha na
+    # escrita apaga o temporário; morte do processo fica coberta pelo `.gitignore` (`*.tmp[0-9]*`).
+    try:
+        with open(tmp, "w", encoding="utf-8", newline="\n") as f:
+            if compacto:
+                json.dump(obj, f, ensure_ascii=False, separators=(",", ":"))
+            else:
+                json.dump(obj, f, ensure_ascii=False, indent=_indent_de(p))
+            f.write("\n")
+    except BaseException:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        raise
     # 24/09/2026: no Windows, os.replace() falha com PermissionError (WinError 5) quando OUTRO
     # processo tem o destino aberto — o indexador do sistema e o antivírus abrem os JSON grandes
     # de data/ sozinhos, por um instante. Derrubou o `coletar_s2id` no meio da rodada nacional,

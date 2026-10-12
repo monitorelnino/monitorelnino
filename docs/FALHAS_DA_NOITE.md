@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-11. 42 falhas; 37 com caso de teste que as reproduz; 5 sem, com o que falta dito.
+Atualizado em 2026-10-12. 43 falhas; 38 com caso de teste que as reproduz; 5 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -383,3 +383,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** run 38160933469 (17:48 UTC): passo de reposição success com "Error: Unauthorized: could not retrieve site"
 - **Correção:** O passo termina com `::error::` e `exit 1` (publicar_dados.yml e atualizar.yml, depois de empurrar o dado e registrar o relatório); `validar_workflows.py` reprova deploy que só avisa, salvo exceção declarada `f42-aviso-ok:`.
 - **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_deploy_falho_e_vermelho`
+
+## F44 · Painel da noite cheio poda a cabeça e o resolvedor recusa
+
+- **Noite:** 2026-10-12
+- **Sintoma:** Saúde (01:44), diários (02:52) e triagem (03:18) perderam o commit; trabalho em artefatos `coleta-perdida-*`.
+- **Causa:** `painel_da_noite.py` cortava `noites[-400:]` em `registrar` e `recuperar_da_api`; com 400 linhas cada escrita podava a cabeça, os lados deixavam de começar com a base e `unir_conflito_de_rodada.py` recusava ("o lado nosso não começa com a base item a item").
+- **Prova:** run 38190909909 (saúde), job 114623279805, 01:44:06 UTC; commit a30b4a32 (painel 394 → 400, cabeça de 04/10 podada)
+- **Correção:** Sem corte no produtor; o painel une em multiconjunto de linhas inteiras (base + o que cada lado tem a mais) no resolvedor, na reaplicação e na consolidação; as 16 linhas podadas voltam do histórico.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_painel_cheio_nao_perde_o_commit`

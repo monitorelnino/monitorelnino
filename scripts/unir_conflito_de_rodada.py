@@ -78,6 +78,13 @@ LOGS_QUE_SO_CRESCEM = {
     "data/painel_da_noite.json": "noites",
 }
 
+# 12/10/2026 (F44): o painel une em MULTICONJUNTO de linhas inteiras, não pelo prefixo. Até 11/10 o
+# produtor cortava o painel em 400 linhas; na noite 11→12 o corte começou a podar a cabeça, os
+# lados deixaram de começar com a base e esta união recusou — saúde, diários e triagem perderam o
+# commit. Base + o que cada lado tem a mais que a base: nenhuma linha de nenhum lado (nem da base)
+# se perde, e duas execuções no mesmo minuto continuam duas linhas.
+LOGS_POR_CHAVE = {"data/painel_da_noite.json": "noites"}
+
 # JSONL que so cresce: uma linha por registro, uniao pela base comum nas LINHAS.
 # `data/log_buscas/<ano-mes>.jsonl` e o volume que saiu de `data/log_buscas.json` -- a mesma regra
 # append-only, em outro formato, e ate hoje sem classe: ele recusava e parava a rodada.
@@ -387,6 +394,30 @@ def unir_jsonl(caminho, base_txt, nosso_txt, deles_txt):
     return "\n".join(fundido) + "\n", len(ln), len(ld), len(fundido)
 
 
+def unir_painel(chave, base_txt, nosso_txt, deles_txt):
+    """Painel da noite: base + o que nosso e deles têm a mais (F44). Tolera cabeça podada."""
+    if nosso_txt is None or deles_txt is None:
+        raise Recusa("um dos lados não tem o arquivo; isto não é acréscimo dos dois lados")
+    if str(RAIZ / "scripts") not in sys.path:
+        sys.path.insert(0, str(RAIZ / "scripts"))
+    from painel_da_noite import unir_paineis
+    nosso, deles = json.loads(nosso_txt), json.loads(deles_txt)
+    base = json.loads(base_txt) if base_txt is not None else {chave: []}
+    for nome, d in (("nosso", nosso), ("deles", deles), ("base", base)):
+        if not isinstance(d, dict) or not isinstance(d.get(chave), list):
+            raise Recusa(f"o lado {nome} não tem a lista '{chave}' no formato esperado")
+    try:
+        uniao = unir_paineis(nosso[chave], deles[chave], base=base[chave])
+    except ValueError as e:
+        raise Recusa(f"painel da noite: {e}")
+    fundido = dict(deles)
+    for k in CARIMBOS:
+        if k in nosso and k in deles:
+            fundido[k] = max(str(nosso[k]), str(deles[k]))
+    fundido[chave] = uniao
+    return fundido, len(nosso[chave]), len(deles[chave]), len(uniao)
+
+
 def unir_log(caminho, chave, base_txt, nosso_txt, deles_txt):
     """Une pela base comum: base + nossos_novos + deles_novos. Recusa se não for append-only."""
     if nosso_txt is None or deles_txt is None:
@@ -457,7 +488,19 @@ def resolver(repo=None, escrever=True):
     for caminho in em_conflito(repo=repo):
         norm = caminho.replace("\\", "/")
         try:
-            if norm in LOGS_QUE_SO_CRESCEM:
+            if norm in LOGS_POR_CHAVE:
+                chave = LOGS_POR_CHAVE[norm]
+                fundido, a, b, t = unir_painel(
+                    chave, estagio(norm, 1, repo=repo), estagio(norm, 2, repo=repo),
+                    estagio(norm, 3, repo=repo))
+                if escrever:
+                    (raiz / norm).write_text(
+                        json.dumps(fundido, ensure_ascii=False, separators=(",", ":")),
+                        encoding="utf-8", newline="")
+                    git("add", "--", norm, repo=repo)
+                resolvidos.append(f"{norm}: {a} + {b} → {t} (união do painel, tolera cabeça podada)")
+
+            elif norm in LOGS_QUE_SO_CRESCEM:
                 chave = LOGS_QUE_SO_CRESCEM[norm]
                 fundido, a, b, t = unir_log(
                     norm, chave,
@@ -793,6 +836,21 @@ def autoteste() -> int:
         checar("campo fora de etapas divergente e RECUSADO", True)
     checar("o painel da noite e log que so cresce, pela chave `noites`",
            LOGS_QUE_SO_CRESCEM.get("data/painel_da_noite.json") == "noites")
+    checar("F44: o painel une por chave antes da classe de log",
+           LOGS_POR_CHAVE.get("data/painel_da_noite.json") == "noites")
+    # F44: os dois lados podaram a cabeça da base (o corte de 400): une, e a base não se perde.
+    with tempfile.TemporaryDirectory() as t:
+        _l = lambda e, n, i: {"elo": e, "noite": n, "inicio": i}
+        _base = [_l("a", "2026-10-11", "01:00"), _l("b", "2026-10-11", "01:10")]
+        r = _repo_com_conflito(
+            t, "data/painel_da_noite.json",
+            json.dumps({"noites": _base}),
+            json.dumps({"noites": _base[1:] + [_l("c", "2026-10-12", "01:05")]}),
+            json.dumps({"noites": _base[1:] + [_l("d", "2026-10-12", "01:44")]}))
+        res, reg, rec = resolver(repo=r)
+        _f = json.loads((r / "data/painel_da_noite.json").read_text(encoding="utf-8"))["noites"]
+        checar("F44: painel com cabeça podada nos dois lados é UNIDO, não recusado",
+               not rec and [x["elo"] for x in _f] == ["a", "b", "c", "d"])
     checar("o resumo do log e o card de municipios sao regeneraveis",
            e_regeneravel("data/log_buscas_resumo.json") and e_regeneravel("data/municipios_card.json"))
 

@@ -902,6 +902,61 @@ def ensaio_deploy_falho_e_vermelho(diz) -> bool:
     return True
 
 
+def ensaio_painel_cheio_nao_perde_o_commit(diz) -> bool:
+    """23. Painel da noite com 400+ linhas: nenhum corte, e a cabeça podada não recusa a união.
+
+    12/10/2026 (F44 do catálogo): `painel_da_noite.py` cortava o painel em 400 linhas. Na noite
+    11→12 ele chegou a 400, cada escrita passou a podar a cabeça, os lados deixaram de começar com
+    a base e o resolvedor recusou — saúde, diários e triagem perderam o commit. Este ensaio monta o
+    conflito com os dois lados podados (o pior caso, que é o do código antigo) e exige união sem
+    perda; e lê o produtor para exigir que o corte não volte.
+    """
+    import inspect
+    import painel_da_noite as pn
+    import unir_conflito_de_rodada as u
+    fonte = inspect.getsource(pn.registrar) + inspect.getsource(pn.recuperar_da_api)
+    if "[-4" in fonte:
+        diz("  ✗ o produtor do painel voltou a cortar a lista — é o F44 de volta")
+        return False
+    with tempfile.TemporaryDirectory() as t:
+        tmp = pathlib.Path(t)
+        g = _repo(tmp)
+        caminho = tmp / "data" / "painel_da_noite.json"
+        caminho.parent.mkdir(parents=True, exist_ok=True)
+
+        def l(i, elo="x"):
+            return {"noite": "2026-10-%02d" % (1 + i // 40), "elo": elo, "inicio": "%02d:%02d" % (
+                1 + (i // 60) % 8, i % 60), "conclusao": "success"}
+
+        def doc(linhas):
+            return json.dumps({"_governanca": "g", "noites": linhas}, ensure_ascii=False,
+                              indent=1) + "\n"
+
+        base = [l(i) for i in range(400)]
+        caminho.write_text(doc(base), encoding="utf-8", newline="\n")
+        g("add", "-A"); g("commit", "-qm", "painel cheio")
+        g("checkout", "-qb", "saude")
+        caminho.write_text(doc((base + [l(500, "saude")])[-400:]), encoding="utf-8", newline="\n")
+        g("add", "-A"); g("commit", "-qm", "saude")
+        g("checkout", "-q", "main")
+        caminho.write_text(doc((base + [l(501, "sinais"), l(502, "sinais")])[-400:]),
+                           encoding="utf-8", newline="\n")
+        g("add", "-A"); g("commit", "-qm", "sinais")
+        if g("merge", "saude", "-m", "colisao", pode_falhar=True) == 0:
+            diz("  ✗ o ensaio não produziu conflito: ele não está medindo o que diz medir")
+            return False
+        _, _, recusados = u.resolver(repo=tmp)
+        if recusados:
+            diz(f"  ✗ o resolvedor RECUSOU o painel podado — é o F44 de volta: {recusados[0]}")
+            return False
+        d = json.loads(caminho.read_text(encoding="utf-8"))["noites"]
+        if len(d) != 403 or d[:400] != base:
+            diz(f"  ✗ perda na união do painel: {len(d)} linhas (esperadas 403, base inteira)")
+            return False
+        diz("  ✓ painel com 400 linhas e cabeça podada nos dois lados: 403 linhas, nenhuma perdida")
+        return True
+
+
 ENSAIOS = (
     ("dois elos em paralelo: zero conflito, zero perda", ensaio_dois_elos_em_paralelo),
     ("disparo duplicado: o segundo sai sem trabalho", ensaio_disparo_duplicado),
@@ -932,6 +987,7 @@ ENSAIOS = (
     ("20. a checagem pré-noite não é cega nem julga a noite errada", ensaio_checagem_pre_noite_nao_e_cega),
     ("21. todo passo condicionado existe no próprio job", ensaio_passo_condicionado_existe_no_job),
     ("22. deploy falho é vermelho, não aviso", ensaio_deploy_falho_e_vermelho),
+    ("23. painel cheio não perde o commit", ensaio_painel_cheio_nao_perde_o_commit),
 )
 
 

@@ -52,8 +52,7 @@
   },
   "data/painel_da_noite.json": {
    "escritor": "qualquer_elo",
-   "por_que": "Cada elo registra a SUA linha, por `scripts/painel_da_noite.py --registrar <elo>`; nenhum elo reescreve a linha de outro. Mas o arquivo não é append-only — o elo ATUALIZA a entrada da noite em curso —, então o resolvedor não o cobre e o conflito ainda cai na recusa.",
-   "pendente": "dar ao resolvedor uma classe para o painel: unir por elo dentro da noite, nunca por noite inteira. Entra no PR do ensaio da noite (item 5), que é onde o comportamento pode ser provado."
+   "por_que": "Cada elo acrescenta a SUA linha, por `scripts/painel_da_noite.py --registrar <elo>`; nenhum elo reescreve a de outro. Desde 12/10/2026 (F44) o produtor não corta o painel e o resolvedor une em multiconjunto de linhas inteiras (`LOGS_POR_CHAVE` → `unir_painel`), tolerando cabeça podada."
   },
   "data/saude_pipeline.json": {
    "escritor": "qualquer_elo",

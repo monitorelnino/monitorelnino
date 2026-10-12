@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · painel da noite cheio não perde mais o commit (F44)
+
+O painel cortava em 400 linhas; ao encher, podava a cabeça e o resolvedor recusava a união — saúde, diários e triagem foram para artefato na noite 11→12. Sem corte; o painel une em multiconjunto (resolvedor, reaplicação, consolidação); 16 linhas podadas voltam do histórico; temporário da escrita atômica não entra mais no commit. Onde: `painel_da_noite.py`, `unir_conflito_de_rodada.py`, ensaio nº 23.
+
 ## 2026-10-11 · #PR · busca semanal do Protocolo Nacional de Calor Extremo (HANDOVER_SAUDE 3.4)
 
 O documento anunciado pelo Ministério da Saúde em 16/09 não foi localizado até 11/10. A busca passa a rodar toda semana no DOU, com rastro: termos, janela, itens lidos e candidatos (ato da Saúde que cita calor e protocolo, diretriz, plano ou portaria). Candidato é ato a ler; nada entra no índice. Onde: `buscar_protocolo_calor.py`, `semanal_espin_e_links.yml`.

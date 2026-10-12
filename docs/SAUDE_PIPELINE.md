@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-05 a 2026-10-12 (712 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-05 a 2026-10-12 (718 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -32,7 +32,7 @@ Janela: 2026-10-05 a 2026-10-12 (712 execução(ões) registrada(s), 7 dias de h
 | `coletar_boletim_ms_dengue.py` | coletor | 2026-10-11 01:31 | 20 s | — | ok | — |
 | `coletar_boletim_pb_arboviroses.py` | coletor | 2026-10-11 01:38 | 193 s | — | ok | — |
 | `coletar_boletim_pe_arboviroses.py` | coletor | 2026-10-11 01:38 | 8 s | — | ok | — |
-| `coletar_cadastro_prioritarios.py` | coletor | 2026-10-12 05:04 | 262 s | — | **erro** | urllib.error.URLError: <urlopen error [Errno 101] Network is unreachable> |
+| `coletar_cadastro_prioritarios.py` | coletor | 2026-10-12 07:42 | 29 s | — | ok | — |
 | `coletar_cobertura_qd.py` | coletor | 2026-10-12 05:24 | 2562 s | — | ok | — |
 | `coletar_dda.py` | coletor | 2026-10-11 01:30 | 54 s | — | ok | — |
 | `coletar_desfechos_saude.py` | coletor | 2026-10-11 01:23 | 414 s | — | ok | — |
@@ -40,17 +40,20 @@ Janela: 2026-10-05 a 2026-10-12 (712 execução(ões) registrada(s), 7 dias de h
 | `coletar_diarios_municipais.py` | coletor | 2026-10-11 01:47 | 109 s | 50 | ok | — |
 | `coletar_doe.py` | coletor | 2026-10-11 02:22 | 841 s | — | ok | — |
 | `coletar_espin.py` | coletor | 2026-10-12 07:31 | 97 s | — | ok | — |
+| `coletar_execucao_mps.py` | coletor | 2026-10-12 07:51 | 16 s | — | ok | — |
 | `coletar_normais_inmet.py` | coletor | 2026-10-12 05:08 | 291 s | — | **erro** | urllib.error.URLError: <urlopen error [Errno 110] Connection timed out> |
 | `coletar_obitos_registro_civil.py` | coletor | 2026-10-11 01:43 | 35 s | — | ok | — |
-| `coletar_prioritarios_mma.py` | coletor | 2026-10-12 05:08 | 4 s | — | ok | — |
+| `coletar_prioritarios_mma.py` | coletor | 2026-10-12 07:43 | 2 s | — | ok | — |
 | `coletar_recursos_resposta.py` | coletor | 2026-10-11 02:52 | 9 s | — | ok | — |
 | `coletar_s2id.py` | coletor | 2026-10-11 02:36 | 916 s | — | ok | — |
 | `coletar_saude.py` | coletor | 2026-10-11 01:12 | 196 s | — | ok | — |
-| `coletar_semiarido_sudene.py` | coletor | 2026-10-12 05:13 | 3 s | — | ok | — |
+| `coletar_semiarido_sudene.py` | coletor | 2026-10-12 07:43 | 4 s | — | ok | — |
 | `coletar_sg_esus.py` | coletor | 2026-10-11 03:37 | 8 s | — | ok | — |
+| `coletar_siconfi_182.py` | coletor | 2026-10-12 07:51 | 1 s | 5571 | ok | — |
 | `coletar_sinais_risco.py` | coletor | 2026-10-12 06:07 | 2538 s | — | ok | — |
 | `coletar_srag_gripe.py` | coletor | 2026-10-12 05:19 | 282 s | — | ok | — |
 | `coletar_srag_sivep.py` | coletor | 2026-10-11 03:36 | 34 s | — | ok | — |
+| `coletar_transferegov.py` | coletor | 2026-10-12 07:50 | 36 s | — | ok | — |
 | `coletar_transferencias_municipais.py` | coletor | 2026-10-12 05:21 | 67 s | — | ok | — |
 | `consultar_querido_diario.py` | coletor | 2026-10-11 01:14 | 781 s | — | **erro** (2 seguidas) | urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)> |
 | `descobrir_dominios.py` | coletor | 2026-10-12 06:49 | 1682 s | — | **erro** | interrompido pelo prazo do elo |
