@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · portões: a lista local é a do workflow (A7-10)
+
+`quais_portoes.py` tinha uma lista própria de 19 portões e uma cópia da regra de disparo; agora lê as duas de `portoes.yml` — os 267 comandos, classificados pelo `if` de cada passo. A regra de disparo da CI passa a reconhecer catálogo de conteúdo, contratos e regras de layout, o medidor e o `netlify.toml` como mudança de página, e `config/` como mudança de dado.
+
 ## 2026-10-12 · #PR · Relatório D, leva 6: hook de conflito e diário consorciado (A6-16, A7-23)
 
 Commit com marcador de conflito passa a ser recusado na hora, por um hook versionado (`.githooks/pre-commit`, ligado por `scripts/instalar_hooks.sh`); a sessão do diário consorciado passa pela espera de rede e pelo detector de muro, e marcar fonte sem município deixa de regravar o livro de fontes. Onde: `verificar_marcadores_de_conflito.py --preparados`, `coletar_diarios_consorciados.py`, `coletores_base.py`.
