@@ -6132,22 +6132,337 @@
   },
   {
    "data": "2026-10-12",
-   "script": "preservar_evidencias.py",
-   "inicio": "2026-10-12T04:57:15",
-   "duracao_s": 48.7,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-12",
    "script": "scripts/preservar_textos_integrais.py",
    "inicio": "2026-10-12T04:58:03",
    "duracao_s": 1.6,
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-10-12T05:04:29",
+   "duracao_s": 4.1,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "scripts/corrigir_atribuicao_por_dominio.py",
+   "inicio": "2026-10-12T05:05:04",
+   "duracao_s": 9.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "revisar_pistas.py",
+   "inicio": "2026-10-12T05:05:13",
+   "duracao_s": 1.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "julgar_filas.py",
+   "inicio": "2026-10-12T05:05:14",
+   "duracao_s": 72.6,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "julgar_e_aplicar_descobertas.py",
+   "inicio": "2026-10-12T05:06:26",
+   "duracao_s": 695.1,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "aplicar_promocoes_do_juiz.py",
+   "inicio": "2026-10-12T05:18:01",
+   "duracao_s": 0.3,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "scripts/amostra_auditoria_semanal.py",
+   "inicio": "2026-10-12T05:18:01",
+   "duracao_s": 0.4,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-10-12T05:21:04",
+   "duracao_s": 3.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "coletar_sinais_risco.py",
+   "inicio": "2026-10-12T05:20:59",
+   "duracao_s": 58.4,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "coletar_transferencias_municipais.py",
+   "inicio": "2026-10-12T05:21:57",
+   "duracao_s": 66.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-10-12T07:17:47",
+   "duracao_s": 3.3,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-10-12T07:24:28",
+   "duracao_s": 3.4,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "coletar_cadastro_prioritarios.py",
+   "inicio": "2026-10-12T05:04:27",
+   "duracao_s": 261.7,
+   "itens": null,
+   "status": "erro",
+   "erro": "urllib.error.URLError: <urlopen error [Errno 101] Network is unreachable>"
+  },
+  {
+   "data": "2026-10-12",
+   "script": "coletar_prioritarios_mma.py",
+   "inicio": "2026-10-12T05:08:48",
+   "duracao_s": 3.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "coletar_normais_inmet.py",
+   "inicio": "2026-10-12T05:08:51",
+   "duracao_s": 291.0,
+   "itens": null,
+   "status": "erro",
+   "erro": "urllib.error.URLError: <urlopen error [Errno 110] Connection timed out>"
+  },
+  {
+   "data": "2026-10-12",
+   "script": "coletar_semiarido_sudene.py",
+   "inicio": "2026-10-12T05:13:42",
+   "duracao_s": 2.7,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "scripts/sondar_boletim_infogripe.py",
+   "inicio": "2026-10-12T05:13:44",
+   "duracao_s": 366.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "coletar_srag_gripe.py",
+   "inicio": "2026-10-12T05:19:50",
+   "duracao_s": 282.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "classificar_planos_municipais.py",
+   "inicio": "2026-10-12T05:24:32",
+   "duracao_s": 0.4,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "coletar_cobertura_qd.py",
+   "inicio": "2026-10-12T05:24:32",
+   "duracao_s": 2561.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "coletar_sinais_risco.py",
+   "inicio": "2026-10-12T06:07:13",
+   "duracao_s": 2537.7,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "descobrir_dominios.py",
+   "inicio": "2026-10-12T06:49:30",
+   "duracao_s": 1682.1,
+   "itens": null,
+   "status": "erro",
+   "erro": "interrompido pelo prazo do elo"
+  },
+  {
+   "data": "2026-10-12",
+   "script": "coletar_espin.py",
+   "inicio": "2026-10-12T07:22:34",
+   "duracao_s": 92.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "buscar_protocolo_calor.py",
+   "inicio": "2026-10-12T07:24:06",
+   "duracao_s": 8.6,
+   "itens": 3,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "verificar_links.py",
+   "inicio": "2026-10-12T07:24:14",
+   "duracao_s": 213.5,
+   "itens": null,
+   "status": "erro",
+   "erro": "erro: HTTPSConnectionPool(host='www.defesacivil.sc.gov.br', port=443): Max retries exceeded with url: /2026/08/14/chuva-forte-deixa-danos-em-municipios-de-santa-catarina-e-risco-de-temporais-segue-alto-ate-sabado/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.defesacivil.sc.gov.br', port"
+  },
+  {
+   "data": "2026-10-12",
+   "script": "coletar_espin.py",
+   "inicio": "2026-10-12T07:31:47",
+   "duracao_s": 97.4,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "buscar_protocolo_calor.py",
+   "inicio": "2026-10-12T07:33:24",
+   "duracao_s": 10.7,
+   "itens": 3,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "verificar_links.py",
+   "inicio": "2026-10-12T07:33:34",
+   "duracao_s": 163.3,
+   "itens": null,
+   "status": "erro",
+   "erro": "erro: HTTPSConnectionPool(host='www.defesacivil.sc.gov.br', port=443): Max retries exceeded with url: /2026/08/14/chuva-forte-deixa-danos-em-municipios-de-santa-catarina-e-risco-de-temporais-segue-alto-ate-sabado/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.defesacivil.sc.gov.br', port"
+  },
+  {
+   "data": "2026-10-12",
+   "script": "coletar_cadastro_prioritarios.py",
+   "inicio": "2026-10-12T07:42:52",
+   "duracao_s": 28.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "coletar_prioritarios_mma.py",
+   "inicio": "2026-10-12T07:43:20",
+   "duracao_s": 1.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "coletar_semiarido_sudene.py",
+   "inicio": "2026-10-12T07:43:21",
+   "duracao_s": 3.6,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "coletar_transferegov.py",
+   "inicio": "2026-10-12T07:50:56",
+   "duracao_s": 36.4,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "coletar_execucao_mps.py",
+   "inicio": "2026-10-12T07:51:32",
+   "duracao_s": 15.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "coletar_siconfi_182.py",
+   "inicio": "2026-10-12T07:51:47",
+   "duracao_s": 1.1,
+   "itens": 5571,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-10-12T07:59:53",
+   "duracao_s": 4.1,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-10-12T08:11:00",
+   "duracao_s": 4.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
   }
  ],
- "atualizado_em": "2026-10-12T04:58:03"
+ "atualizado_em": "2026-10-12T08:11:00"
 }

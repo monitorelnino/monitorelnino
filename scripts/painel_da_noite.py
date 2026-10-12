@@ -165,6 +165,45 @@ def elos_que_faltaram(linhas: list, noite: str, elos=ELOS) -> list:
     return [e for e in elos if e not in presentes]
 
 
+def unir_paineis(*listas, base=None) -> list:
+    """União de várias versões de `noites` que tolera cabeça podada. Função pura.
+
+    A linha é comparada INTEIRA (não por elo/noite/início: duas execuções do publicador podem
+    começar no mesmo minuto, uma cancelada e outra não — são duas linhas reais) e em MULTICONJUNTO:
+    linha repetida dentro de um lado continua repetida.
+    - Com `base` (o resolvedor, que tem o ancestral comum): base + o que cada lado tem a MAIS que a
+      base. Linha que um lado podou não sai — a base a guarda.
+    - Sem `base` (reaplicação, consolidação): cada linha entra tantas vezes quanto no lado que mais
+      a tem.
+    Ordem de primeira aparição. O resultado nunca é menor que nenhum lado (12/10/2026, F44).
+    """
+    from collections import Counter
+
+    def k(item):
+        return json.dumps(item, ensure_ascii=False, sort_keys=True)
+
+    if base is not None:
+        fora, cb = list(base), Counter(k(x) for x in base)
+        for lado in listas:
+            c = Counter()
+            for item in lado or []:
+                c[k(item)] += 1
+                if c[k(item)] > cb[k(item)]:
+                    fora.append(item)
+    else:
+        fora, maximo = [], Counter()
+        for lado in listas:
+            c = Counter()
+            for item in lado or []:
+                c[k(item)] += 1
+                if c[k(item)] > maximo[k(item)]:
+                    maximo[k(item)] = c[k(item)]
+                    fora.append(item)
+    if any(len(fora) < len(l or []) for l in listas + ((base,) if base is not None else ())):
+        raise ValueError("a união do painel ficou menor que um dos lados")
+    return fora
+
+
 def _autoteste() -> int:
     falhas = []
     # O total era um literal e envelhecia calado: dizia cobrir mais casos do que
@@ -177,6 +216,22 @@ def _autoteste() -> int:
         if not cond:
             falhas.append(nome)
 
+    # F44 (12/10/2026): o painel não tem corte, e a união tolera cabeça podada.
+    import inspect as _insp
+    _fonte = _insp.getsource(registrar) + _insp.getsource(recuperar_da_api)
+    ok("F44: registrar e recuperar_da_api não cortam o painel", "[-4" not in _fonte)
+    _a = {"elo": "a", "noite": "2026-10-11", "inicio": "01:00"}
+    _b = {"elo": "b", "noite": "2026-10-11", "inicio": "01:10"}
+    _c = {"elo": "c", "noite": "2026-10-12", "inicio": "01:05"}
+    _d = {"elo": "d", "noite": "2026-10-12", "inicio": "01:20"}
+    ok("F44: lados com cabeça podada não perdem a cabeça da base",
+       unir_paineis([_b, _c], [_b, _d], base=[_a, _b]) == [_a, _b, _c, _d])
+    ok("F44: sem base, a cabeça que só um lado tem entra", unir_paineis([_a, _b], [_b, _c]) == [_a, _b, _c])
+    _p1 = {"elo": "publicar", "noite": "2026-10-11", "inicio": "09:12", "conclusao": "cancelled"}
+    _p2 = dict(_p1, conclusao="success")
+    ok("F44: duas execuções no mesmo minuto são duas linhas", len(unir_paineis([_p1, _p2], [_p1, _p2])) == 2)
+    ok("F44: linha repetida num lado continua repetida", unir_paineis([_a, _a], [_a]) == [_a, _a])
+    ok("F44: acréscimo dos dois lados entra", unir_paineis([_a, _c], [_a, _d], base=[_a]) == [_a, _c, _d])
     ok("minutos no mesmo dia", minutos_entre("01:00", "04:47") == 227)
     ok("minutos virando a meia-noite", minutos_entre("23:30", "00:15") == 45)
     ok("hora ilegível não quebra", minutos_entre("x", "01:00") is None)
@@ -340,7 +395,6 @@ def recuperar_da_api(noite: str = "", listar=None) -> dict:
         print(f"· painel em dia para a noite de {noite or 'corrente'}")
         return doc
     doc.setdefault("noites", []).extend(faltam)
-    doc["noites"] = doc["noites"][-400:]
     gravar(ARQUIVO, doc)
     for l in faltam:
         print(f"  + {l['elo']} · {l['noite']} · {l['conclusao']} · trabalhou={l.get('trabalhou')}")
@@ -395,8 +449,11 @@ def registrar(elo: str, inicio: str, conclusao: str, feito: bool = None) -> dict
     doc = ler(ARQUIVO) or {"_governanca": GOV, "noites": []}
     doc.setdefault("_governanca", GOV)
     nova = linha(elo, noite, inicio or fim, fim, conclusao, feito)
+    # 12/10/2026 (F44): havia aqui um corte em 400 linhas. Na noite 11→12 o painel chegou a 400,
+    # cada escrita passou a descartar a cabeça, o arquivo deixou de ser append-only e o resolvedor
+    # recusou o conflito: saúde, diários e triagem perderam o commit. O painel só cresce (~10
+    # linhas por noite); quem quiser janela, recorta na LEITURA.
     doc.setdefault("noites", []).append(nova)
-    doc["noites"] = doc["noites"][-400:]
     gravar(ARQUIVO, doc)
     return nova
 

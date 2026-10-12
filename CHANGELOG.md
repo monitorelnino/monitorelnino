@@ -36,6 +36,14 @@ não pontuados permanecem na versão corrente.
 
 A checagem das 23h acusava despachante parado quando o despacho rodara dentro do relógio, e fila cheia por runs de ramos de ensaio e de coleta de dia. Despachante vivo passa a ser o mais recente dos dois; `ensaio-real/*` e `coleta-dia/*` saem da fila. Onde: `checagem_pre_noite.py`, ensaio nº 20. Junto: o `sitemap.xml` deixa de anunciar o pacote de dados (A7-25).
 
+## 2026-10-12 · #PR · coleta perdida volta inteira (F45)
+
+A reaplicação de artefato trazia só filas, logs e contadores; arquivo com um escritor só (clima municipal, enquadramento federal, cobertura do Querido Diário) ficava para trás, em silêncio. O elo passa a gravar base e arquivos alterados no artefato, e a reaplicação copia quando ninguém mexeu depois, recusando nomeado quando mexeu. Onde: `_coletor.yml`, `reaplicar_noite.py`, ensaio nº 24.
+
+## 2026-10-12 · #PR · painel da noite cheio não perde mais o commit (F44)
+
+O painel cortava em 400 linhas; ao encher, podava a cabeça e o resolvedor recusava a união — saúde, diários e triagem foram para artefato na noite 11→12. Sem corte; o painel une em multiconjunto (resolvedor, reaplicação, consolidação); 16 linhas podadas voltam do histórico; temporário da escrita atômica não entra mais no commit. Onde: `painel_da_noite.py`, `unir_conflito_de_rodada.py`, ensaio nº 23.
+
 ## 2026-10-11 · #PR · busca semanal do Protocolo Nacional de Calor Extremo (HANDOVER_SAUDE 3.4)
 
 O documento anunciado pelo Ministério da Saúde em 16/09 não foi localizado até 11/10. A busca passa a rodar toda semana no DOU, com rastro: termos, janela, itens lidos e candidatos (ato da Saúde que cita calor e protocolo, diretriz, plano ou portaria). Candidato é ato a ler; nada entra no índice. Onde: `buscar_protocolo_calor.py`, `semanal_espin_e_links.yml`.
