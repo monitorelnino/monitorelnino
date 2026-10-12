@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · coleta: muro nomeado, livro de fontes e fila de OCR (Relatório D, A6-05/06/09)
+
+Muro de robô servido com 403/503 passa a ser nomeado e não repetido; o livro de fontes guarda sempre a última consulta de cada fonte (doze dias de DOU não apagam o Querido Diário); a fila de OCR registra falha por item e põe na frente quem falhou menos. Onde: `coletores_base.py`, `preservar_evidencias.py`.
+
 ## 2026-10-11 · #PR · busca semanal do Protocolo Nacional de Calor Extremo (HANDOVER_SAUDE 3.4)
 
 O documento anunciado pelo Ministério da Saúde em 16/09 não foi localizado até 11/10. A busca passa a rodar toda semana no DOU, com rastro: termos, janela, itens lidos e candidatos (ato da Saúde que cita calor e protocolo, diretriz, plano ou portaria). Candidato é ato a ler; nada entra no índice. Onde: `buscar_protocolo_calor.py`, `semanal_espin_e_links.yml`.
