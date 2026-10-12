@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · conformidade diária reprova por código de saída (A7-06)
+
+A conformidade diária só reprovava pela frase "Publicação bloqueada": um erro de programa saía verde sem ter medido nada. Agora reprova também pelo código do comando, com mensagem própria. `metodologia.html` sai de `paginas_publicas` (não existe; a metodologia pública é o PDF) e página listada ausente passa a ser avisada (`conformidade_diaria.yml`, `layout/regras.json`, `scripts/verificar_conformidade.py`).
+
 ## 2026-10-12 · #PR · cartão de número segue a régua: zero por extenso, vírgula decimal (A7-14)
 
 Duas regras de números do `layout/regras.json` só existiam no papel: zero em cartão por extenso e decimal com vírgula. A conformidade passa a reprová-las; o cartão de emergências da Saúde, que mostrava "0", passa a mostrar "zero" — e ausência de dado nele vira "sem dado", nunca zero. Onde: `scripts/verificar_conformidade.py`, `assets/js/saude.js`, `saude.html`.

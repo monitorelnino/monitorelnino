@@ -91,9 +91,18 @@ jobs:
           if-no-files-found: ignore
       - name: Vermelho reprova o run
         if: always()
+        env:
+          CODIGO: ${{ steps.passe.outputs.codigo }}
         run: |
+          # A7-06 (12/10/2026): reprova pelo CÓDIGO do comando, não só pela frase. Um erro de
+          # programa (exceção, renderizador ausente) saía sem "Publicação bloqueada" e o run ficava
+          # verde sem ter medido nada.
           if grep -q "Publicação bloqueada" /tmp/conformidade.txt; then
             echo "::error::conformidade vermelha no site publicado — ver o resumo do run"
+            exit 1
+          fi
+          if [ "${CODIGO:-sem-codigo}" != "0" ]; then
+            echo "::error::o verificador de conformidade não terminou (código ${CODIGO:-ausente}) — erro de programa, não violação; nada foi medido"
             exit 1
           fi
           echo "conformidade verde"
