@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · figura dos caminhos sem vazio; alvo de toque dos contatos (A4-24, A4-26)
+
+A figura dos caminhos do dinheiro em `financiamento.html` tinha 570 px de branco (a mídia herdava proporção fixa) e rótulos que vazavam da faixa. Agora a mídia do cartão largo segue a altura do desenho e cada rótulo quebra em linhas pela largura da faixa, que cresce com ele (`assets/base.css`, `assets/js/financiamento.js`). Telefone, e-mail e portal dos contatos de Proteja-se passam de 17 para 44 px de alvo.
+
 ## 2026-10-12 · #PR · pacote do blog traz os atos legais citados
 
 `gerar_pacote_blog.py` (linha `tipos_de_evento`) passa a incluir, como fatos com fonte e endereço, os atos que o texto de 06/10 cita (Portaria MIDR 260/2022, Portarias Interministeriais 1/2012 e 2/2015, Lei 15.143/2025, Decreto 13.013/2026); o dispositivo exato segue como lacuna. O verificador reprovava esses números: pacote incompleto. Novo `--hoje` regera o pacote de um dia passado sobre a árvore daquele dia.

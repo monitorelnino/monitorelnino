@@ -1276,11 +1276,31 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       || MonitorMapas.NEUTRA;
     const tracoDe = v => TRACO_DO_GRUPO[v.grupo] || {dash: null, largura: 3, nome: v.grupo};
 
-    const L = 960, A = 30 + vias.length * 44 + 40;
-    const xOrigem = 112, xBarra = 330, larguraBarra = 380, xMunicipio = 862;
+    /* A4-24 (12/10/2026): os rótulos dos caminhos vazavam da faixa (até 303 de 380 unidades a
+       mais). Cada rótulo é quebrado por palavra na largura da faixa, e a faixa cresce com as
+       linhas — nenhum texto sai da caixa, nenhum é cortado. */
+    const L = 960;
+    const xOrigem = 112, xBarra = 330, larguraBarra = 440, xMunicipio = 862;
+    const LINHA = 17, MAX_CARAC = Math.floor((larguraBarra - 24) / 7.4);
+    const quebrar = (t) => {
+      const fora = []; let linha = '';
+      String(t || '').split(' ').forEach(p => {
+        if (linha && (linha + ' ' + p).length > MAX_CARAC) { fora.push(linha); linha = p; }
+        else linha = linha ? linha + ' ' + p : p;
+      });
+      if (linha) fora.push(linha);
+      return fora;
+    };
+    let topo = 44;
+    const posicao = vias.map(v => {
+      const linhas = quebrar(ROTULO_DO_CAMINHO[v.id] || v.nome);
+      const h = Math.max(26, linhas.length * LINHA + 10);
+      const y = topo + h / 2;
+      topo += h + 10;
+      return {...v, y, h, linhas};
+    });
+    const A = topo + 40;
     const yUniao = 90, yEstado = A - 90;
-    const passo = (A - 70) / vias.length;
-    const posicao = vias.map((v, i) => ({...v, y: 44 + passo * i + passo / 2}));
     const partes = [];
 
     /* As curvas: cada caminho sai da sua origem (a União, ou o Estado no caminho estadual) e
@@ -1336,13 +1356,16 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
 
     posicao.forEach(v => {
       const cor = corDe(v);
-      const h = Math.max(26, passo - 10);
+      const h = v.h;
       partes.push('<rect x="' + xBarra + '" y="' + (v.y - h / 2) + '" width="' + larguraBarra
         + '" height="' + h + '" rx="5" fill="' + cor + '" fill-opacity="0.2" stroke="' + cor
         + '"></rect>');
-      partes.push('<text x="' + (xBarra + 12) + '" y="' + (v.y + 1) + '"'
+      const y0 = v.y - ((v.linhas.length - 1) * LINHA) / 2 + 1;
+      partes.push('<text x="' + (xBarra + 12) + '" y="' + y0 + '"'
         + ' dominant-baseline="middle" class="diag-via">'
-        + esc(ROTULO_DO_CAMINHO[v.id] || v.nome) + '</text>');
+        + v.linhas.map((l, i) => '<tspan x="' + (xBarra + 12) + '"' + (i ? ' dy="' + LINHA + '"' : '')
+          + '>' + esc(l) + '</tspan>').join('')
+        + '</text>');
     });
 
     svg.setAttribute('viewBox', '0 0 ' + L + ' ' + A);
