@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-05 a 2026-10-12 (752 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-05 a 2026-10-12 (753 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -23,7 +23,7 @@ Janela: 2026-10-05 a 2026-10-12 (752 execução(ões) registrada(s), 7 dias de h
 
 | script | papel | última execução | duração | itens | status | erro |
 |---|---|---|---|---:|---|---|
-| `recalcular_mare.py` | essencial | 2026-10-12 17:03 | 3 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-12 17:13 | 3 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-12 09:14 | 0 s | — | ok | — |
 | `buscar_protocolo_calor.py` | coletor | 2026-10-12 07:33 | 11 s | 3 | ok | — |
 | `classificar_planos_municipais.py` | coletor | 2026-10-12 05:24 | 0 s | — | ok | — |
