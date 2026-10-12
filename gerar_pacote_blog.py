@@ -370,6 +370,49 @@ def fatos_de_saude(topo: dict, hoje: dt.date) -> tuple:
 # tipo de evento" (as portarias trazem a AÇÃO — resposta, recuperação, outra —, não o evento).
 INICIO_DO_CICLO = dt.date(2026, 6, 29)
 
+# 12/10/2026 (janela B, pedido 2b-i): os atos legais que o texto de 06/10 cita e que a curadoria
+# de `caminhos.json` não traz. O verificador reprovava 260, 2012, 2015 e 2025 com os quatro atos
+# impressos no próprio pacote como lacuna — pacote incompleto, que se corrige aqui, nunca no texto.
+# Cada um entra pela IDENTIFICAÇÃO conferida no documento oficial (número, data, publicação,
+# ementa), com fonte e endereço. O DISPOSITIVO exato continua não auditado e segue como lacuna.
+ATOS_CITADOS = (
+    {"id": "ato_portaria_midr_260_2022",
+     "texto": "Portaria nº 260, de 2 de fevereiro de 2022, do Ministério do Desenvolvimento "
+              "Regional: estabelece procedimentos e critérios para o reconhecimento federal de "
+              "situação de emergência ou estado de calamidade pública",
+     "data": "2022-02-04", "fonte": "Diário Oficial da União, edição 25, seção 1, página 21",
+     "url": "https://defesacivil.rs.gov.br/upload/arquivos/202203/"
+            "28160052-portaria-n-260-de-2-de-fevereiro-de-2022-dou.pdf"},
+    {"id": "ato_portaria_interministerial_1_2012",
+     "texto": "Portaria Interministerial nº 1/MI/MD, de 25 de julho de 2012, dos ministérios da "
+              "Integração Nacional e da Defesa: cooperação para a Operação Carro-Pipa, "
+              "distribuição emergencial de água potável às populações rurais atingidas por "
+              "estiagem e seca",
+     "data": "2012-07-26", "fonte": "Diário Oficial da União nº 144, seção 1",
+     "url": "https://7rm.eb.mil.br/images/7rm/OPPIPA/2023/PORTARIA_INTERMINISTERIAL_01_02_MI_MD2.pdf"},
+    {"id": "ato_portaria_interministerial_2_2015",
+     "texto": "Portaria Interministerial nº 2, de 27 de março de 2015, que altera a Portaria "
+              "Interministerial nº 1/MI/MD, de 2012 (Operação Carro-Pipa)",
+     "data": "2015-03-27", "fonte": "Ministério da Integração e do Desenvolvimento Regional, plano "
+              "de trabalho da Operação Carro-Pipa (TED 1/2025), seção 3",
+     "url": "https://www.gov.br/mdr/pt-br/assuntos/outros-programas-e-projetos/"
+            "termos-de-descentralizacao-de-credito/PlanoTrabalhoTED012025OCP2025_.pdf"},
+    {"id": "ato_lei_15143_2025",
+     "texto": "Lei nº 15.143, de 5 de junho de 2025: dispensa de convênio nas transferências do "
+              "Fundo Nacional do Meio Ambiente a estados e municípios para ações contra "
+              "incêndios florestais",
+     "data": "2025-06-06", "fonte": "Diário Oficial da União, seção 1, página 1; Legislação "
+              "Informatizada da Câmara dos Deputados",
+     "url": "https://www2.camara.leg.br/legin/fed/lei/2025/"
+            "lei-15143-5-junho-2025-797554-norma-pl.html"},
+    {"id": "ato_decreto_13013_2026",
+     "texto": "Decreto nº 13.013, de 10 de junho de 2026, que altera o Decreto nº 10.224, de 2020, "
+              "regulamento do Fundo Nacional do Meio Ambiente",
+     "data": "2026-06-10", "fonte": "Presidência da República, Planalto",
+     "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2026/decreto/d13013.htm"},
+)
+CONSULTA_DOS_ATOS = "2026-10-12"
+
 TIPOS_PUBLICOS = {
     "seca": "seca ou estiagem",
     "chuva": "chuva",
@@ -518,13 +561,16 @@ def fatos_de_tipos(atos: list, recursos: dict, caminhos: dict, ocp: dict, hoje: 
                           f"{via.get('nome')}: {base}", None, None,
                           "curadoria do MARÉ sobre os atos citados, em "
                           "data/financiamento/caminhos.json", None, para_iso(revisado), hoje_iso))
-    for falta in ("Fundo Nacional do Meio Ambiente (Lei 15.143/2025; Decreto 13.013/2026)",
-                  "Política Nacional de Manejo Integrado do Fogo (Lei 14.944/2024)",
-                  "Portaria MIDR 260/2022 (reconhecimento e recursos de resposta)",
-                  "Portarias Interministeriais MI/MD nº 1/2012 e nº 2/2015 (Operação Carro-Pipa)"):
-        lacunas.append(f"base legal não auditada na curadoria do repositório: {falta} — o "
-                       f"dispositivo exato e o link não estão conferidos, e o handover proíbe "
-                       f"publicar dispositivo não conferido")
+    for a in ATOS_CITADOS:
+        fatos.append(fato(a["id"], "base_legal", a["texto"], None, None, a["fonte"], a["url"],
+                          a["data"], CONSULTA_DOS_ATOS))
+    lacunas.append("atos citados (Portaria MIDR 260/2022; Portarias Interministeriais MI/MD nº "
+                   "1/2012 e nº 2/2015; Lei 15.143/2025; Decreto 13.013/2026): a identificação "
+                   "está conferida no documento oficial; o dispositivo exato não está auditado na "
+                   "curadoria de caminhos, e o handover proíbe publicar dispositivo não conferido")
+    lacunas.append("base legal não auditada na curadoria do repositório: Política Nacional de "
+                   "Manejo Integrado do Fogo (Lei 14.944/2024) — o dispositivo exato e o link não "
+                   "estão conferidos")
     lacunas.append("municípios prioritários do MMA e recursos da MP 1.367 (incêndios): sem coleta "
                    "até o corte")
 
@@ -686,6 +732,14 @@ def _autoteste() -> int:
     ok("os números permitidos saem dos fatos", "3" in pac["numeros_permitidos"])
     ok("o contexto do ciclo conta para os números permitidos, e não só para a leitura",
        "2027" in pac["numeros_permitidos"])
+    ft, lt = fatos_de_tipos([], {}, {}, {}, d(2026, 10, 5))
+    perm_t = numeros_permitidos(ft)
+    ok("os atos legais citados entram com número e ano (260, 2012, 2015, 2025, 13.013)",
+       all(x in perm_t for x in ("260", "2022", "2012", "2015", "2025", "15.143", "13.013")))
+    ok("cada ato citado tem fonte e endereço",
+       all(f["fonte"] and f["url"] for f in ft if f["id"].startswith("ato_")))
+    ok("o dispositivo não auditado dos atos segue como lacuna",
+       any("dispositivo exato não está auditado" in x for x in lt))
     md = em_markdown(pac)
     ok("o markdown diz a regra à central em letra de forma",
        "Número fora do pacote não entra" in md)
@@ -707,10 +761,14 @@ def _autoteste() -> int:
     return 1 if falhas else 0
 
 
-def gerar(linha: str, fim_da_semana: dt.date = None, saida: pathlib.Path = None) -> dict:
-    """Monta e grava o pacote. Escreve em `robo-registro/blog/pacotes/`."""
+def gerar(linha: str, fim_da_semana: dt.date = None, saida: pathlib.Path = None,
+          hoje: dt.date = None) -> dict:
+    """Monta e grava o pacote. Escreve em `robo-registro/blog/pacotes/`.
+
+    `hoje` fixa o corte: o pacote é função do corte e dos dados, então regerar o pacote de um dia
+    passado é rodar sobre a árvore daquele dia com `--hoje` daquele dia."""
     from coletores_base import ler, hoje_editorial
-    hoje = hoje_editorial()
+    hoje = hoje or hoje_editorial()
     if fim_da_semana:
         inicio, fim = fim_da_semana - dt.timedelta(days=6), fim_da_semana
     else:
@@ -763,7 +821,8 @@ def main() -> int:
     if "--semana" in argv:
         fim = dt.date.fromisoformat(argv[argv.index("--semana") + 1])
     saida = pathlib.Path(argv[argv.index("--saida") + 1]) if "--saida" in argv else None
-    gerar(linha, fim, saida)
+    hoje = dt.date.fromisoformat(argv[argv.index("--hoje") + 1]) if "--hoje" in argv else None
+    gerar(linha, fim, saida, hoje)
     return 0
 
 

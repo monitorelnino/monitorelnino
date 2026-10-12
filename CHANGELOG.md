@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · pacote do blog traz os atos legais citados
+
+`gerar_pacote_blog.py` (linha `tipos_de_evento`) passa a incluir, como fatos com fonte e endereço, os atos que o texto de 06/10 cita (Portaria MIDR 260/2022, Portarias Interministeriais 1/2012 e 2/2015, Lei 15.143/2025, Decreto 13.013/2026); o dispositivo exato segue como lacuna. O verificador reprovava esses números: pacote incompleto. Novo `--hoje` regera o pacote de um dia passado sobre a árvore daquele dia.
+
 ## 2026-10-12 · #PR · textos do blog entram nos portões de texto (A7-15)
 
 Os portões de vocabulário, voz editorial e legendas liam uma lista de páginas escrita à mão, sem os textos do blog. Passam a ler `blog/*.html` da pasta; todos passam limpos. Ficam fora de propósito o registro técnico de mudanças (nomeia arquivos para quem audita) e o índice interno de conteúdo (mostra os moldes). Onde: `scripts/verificar_{vocabulario_publico,voz_editorial}.js`, `scripts/verificar_legendas.js`.
