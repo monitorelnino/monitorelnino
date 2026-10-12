@@ -36,6 +36,10 @@ não pontuados permanecem na versão corrente.
 
 O portão de idempotência comparava só o que o `git status` mostrava e, com a árvore em dia, conferia zero arquivos. Passa a comparar tudo o que o manifesto sela (581 hoje) e roda a segunda regeneração noutro fuso (UTC+14), para pegar gerador que lê a data local em vez da data do corte. E o endereço-molde do Wayback (`/web/*/`) deixa de contar como evidência preservada; só captura com data conta. Onde: `scripts/verificar_idempotencia_dos_derivados.py`, `verificar_evidencias.py`.
 
+## 2026-10-12 · #PR · textos do blog entram nos portões de texto (A7-15)
+
+Os portões de vocabulário, voz editorial e legendas liam uma lista de páginas escrita à mão, sem os textos do blog. Passam a ler `blog/*.html` da pasta; todos passam limpos. Ficam fora de propósito o registro técnico de mudanças (nomeia arquivos para quem audita) e o índice interno de conteúdo (mostra os moldes). Onde: `scripts/verificar_{vocabulario_publico,voz_editorial}.js`, `scripts/verificar_legendas.js`.
+
 ## 2026-10-12 · #PR · vocabulário público ganha regras de forma (A7-03)
 
 O portão de vocabulário só conhecia palavras que já tinham aparecido. Passa a reprovar também a forma do vazamento: data ISO fora de endereço, `undefined`/`NaN`/objeto, chave de molde `{x}` não preenchida, "rascunho/handover/placeholder/a aprovar/texto interno" e decimal com ponto antes de unidade. Roda no PR, sem barrar a publicação do dia; as páginas de hoje passam limpas. Onde: `scripts/verificar_vocabulario_publico.js`.
