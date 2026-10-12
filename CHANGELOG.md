@@ -36,6 +36,10 @@ não pontuados permanecem na versão corrente.
 
 Nenhum portão procurava credencial ou CPF fora de `evidencias/`: um token colado num JSON de `data/` ou num script de página iria ao ar com tudo verde. `verificar_segredos.py` lê as linhas acrescentadas pelo PR e reprova credencial com prefixo e chave privada em qualquer arquivo, e atribuição de chave e CPF em conteúdo publicado. Roda sempre, no job de estrutura.
 
+## 2026-10-12 · #PR · medidor sem relógio (A7-18)
+
+A última folga do medidor de layout era 1,5 s fixos, para número de cartão e figura que o contrato não declara. Passa a ser condição: o medidor lê a página até ela parar de mudar (texto, figuras e números iguais em três leituras seguidas, até 10 s). O teste da corrida reprova se a espera por relógio voltar. Onde: `scripts/_layout_dump.js`, `scripts/testar_corrida_do_medidor.js`.
+
 ## 2026-10-12 · #PR · portões: a lista local é a do workflow (A7-10)
 
 `quais_portoes.py` tinha uma lista própria de 19 portões e uma cópia da regra de disparo; agora lê as duas de `portoes.yml` — os 267 comandos, classificados pelo `if` de cada passo. A regra de disparo da CI passa a reconhecer catálogo de conteúdo, contratos e regras de layout, o medidor e o `netlify.toml` como mudança de página, e `config/` como mudança de dado.

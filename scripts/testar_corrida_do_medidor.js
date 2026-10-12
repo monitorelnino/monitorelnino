@@ -137,6 +137,15 @@ async function medir(porta, esperarPorCondicao) {
 }
 
 (async () => {
+  // A7-18 (12/10/2026): o medidor de verdade nao tem mais folga de relogio. Se `waitForTimeout`
+  // voltar a `_layout_dump.js`, o defeito que este teste reproduz volta com ela.
+  const fonteDoMedidor = require("fs").readFileSync(require("path").join(__dirname, "_layout_dump.js"), "utf-8")
+    .split("\n").filter((l) => !l.trim().startsWith("//")).join("\n");
+  if (/waitForTimeout\s*\(/.test(fonteDoMedidor)) {
+    console.log("  ✗ _layout_dump.js voltou a esperar relogio (waitForTimeout) — A7-18");
+    process.exit(1);
+  }
+  console.log("  ✓ _layout_dump.js nao espera relogio (A7-18)");
   const srv = servidor();
   await new Promise(r => srv.listen(0, "127.0.0.1", r));
   const porta = srv.address().port;
