@@ -356,20 +356,37 @@ def _elos_que_commitaram(caminho: str, dias: int = 7) -> set:
         try:
             saida = subprocess.run(
                 ["git", "log", f"--since={dias} days ago", "--name-only",
-                 "--pretty=format:%x01%s"],
+                 "--pretty=format:%x01%H %s"],
                 cwd=RAIZ, capture_output=True, text=True, timeout=120).stdout
         except (OSError, subprocess.SubprocessError):
             saida = ""
-        assunto = ""
+        rasos = _commits_de_borda_rasa()
+        assunto, na_borda = "", False
         for linha in saida.split("\n"):
             if linha.startswith("\x01"):
-                assunto = linha[1:].strip()
+                sha, _, assunto = linha[1:].strip().partition(" ")
+                # 12/10/2026: em clone raso o commit da borda aparece "criando" a árvore inteira,
+                # e o portão acusava `data/publicacao.json` escrito pela descoberta (janela B,
+                # 11/10). A borda não diz quem escreveu nada; fica fora.
+                na_borda = sha in rasos
                 continue
             arq = linha.strip()
-            if arq:
+            if arq and not na_borda:
                 _HISTORICO.setdefault(arq, set()).add(_workflow_do_assunto(assunto))
         _HISTORICO.setdefault("_lido", set()).add("sim")
     return {x for x in _HISTORICO.get(str(caminho), set()) if x}
+
+
+def _commits_de_borda_rasa() -> set:
+    """Os commits da borda de um clone raso (`.git/shallow`). Só lê."""
+    import subprocess
+    try:
+        cam = subprocess.run(["git", "rev-parse", "--git-path", "shallow"], cwd=RAIZ,
+                             capture_output=True, text=True, timeout=30).stdout.strip()
+        arq = (RAIZ / cam) if cam and not pathlib.Path(cam).is_absolute() else pathlib.Path(cam)
+        return set(arq.read_text(encoding="utf-8").split()) if cam and arq.exists() else set()
+    except (OSError, subprocess.SubprocessError):
+        return set()
 
 
 def _workflow_do_assunto(assunto: str) -> str:
