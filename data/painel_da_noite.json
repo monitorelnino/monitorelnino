@@ -2,225 +2,82 @@
  "_governanca": "Painel da noite (item A.5 do handover de 03/10/2026): uma linha por elo por noite, com início, fim e se terminou dentro da janela de 22h às 06h. Append-only. Serve para que elo que NÃO rodou apareça — foi o que faltou na noite de 02→03/10, quando as evidências não rodaram e nada acusou.",
  "noites": [
   {
-   "noite": "2026-10-04",
-   "elo": "diarios",
-   "inicio": "02:41",
-   "fim": "05:15",
-   "minutos": 154,
+   "noite": "2026-10-06",
+   "elo": "descoberta",
+   "inicio": "07:33",
+   "fim": "08:17",
+   "minutos": 44,
    "dentro_da_janela": true,
-   "conclusao": "success"
+   "conclusao": "success",
+   "trabalhou": true
   },
   {
-   "noite": "2026-10-04",
+   "noite": "2026-10-06",
    "elo": "evidencias",
-   "inicio": "06:18",
-   "fim": "06:19",
+   "inicio": "08:19",
+   "fim": "08:20",
    "minutos": 1,
    "dentro_da_janela": true,
-   "conclusao": "success"
+   "conclusao": "success",
+   "trabalhou": true
   },
   {
-   "noite": "2026-10-04",
-   "elo": "sinais-fisicos",
-   "inicio": "10:11",
-   "fim": "10:12",
+   "noite": "2026-10-06",
+   "elo": "evidencias",
+   "inicio": "09:04",
+   "fim": "09:06",
+   "minutos": 2,
+   "dentro_da_janela": false,
+   "conclusao": "success",
+   "trabalhou": true
+  },
+  {
+   "noite": "2026-10-06",
+   "elo": "juiz",
+   "inicio": "09:12",
+   "fim": "09:14",
+   "minutos": 2,
+   "dentro_da_janela": false,
+   "conclusao": "success",
+   "trabalhou": true
+  },
+  {
+   "noite": "2026-10-06",
+   "elo": "evidencias",
+   "inicio": "12:09",
+   "fim": "12:10",
    "minutos": 1,
    "dentro_da_janela": false,
-   "conclusao": "success"
+   "conclusao": "success",
+   "trabalhou": true
   },
   {
-   "noite": "2026-10-04",
-   "elo": "triagem",
-   "inicio": "10:14",
-   "fim": "10:20",
+   "noite": "2026-10-06",
+   "elo": "juiz",
+   "inicio": "12:18",
+   "fim": "12:24",
    "minutos": 6,
    "dentro_da_janela": false,
-   "conclusao": "success"
+   "conclusao": "success",
+   "trabalhou": true
   },
   {
-   "noite": "2026-10-04",
+   "noite": "2026-10-06",
    "elo": "sinais-fisicos",
-   "inicio": "13:35",
-   "fim": "13:37",
-   "minutos": 2,
+   "inicio": "12:26",
+   "fim": "12:27",
+   "minutos": 1,
    "dentro_da_janela": false,
-   "conclusao": "success"
+   "conclusao": "success",
+   "trabalhou": true
   },
   {
-   "noite": "2026-10-04",
+   "noite": "2026-10-06",
    "elo": "triagem",
-   "inicio": "13:39",
-   "fim": "13:42",
+   "inicio": "12:54",
+   "fim": "12:57",
    "minutos": 3,
    "dentro_da_janela": false,
-   "conclusao": "success"
-  },
-  {
-   "noite": "2026-10-04",
-   "elo": "triagem",
-   "inicio": "14:13",
-   "fim": "14:13",
-   "minutos": 0,
-   "dentro_da_janela": false,
-   "conclusao": "success"
-  },
-  {
-   "noite": "2026-10-04",
-   "elo": "respiratorias",
-   "inicio": "14:19",
-   "fim": "14:20",
-   "minutos": 1,
-   "dentro_da_janela": false,
-   "conclusao": "success"
-  },
-  {
-   "noite": "2026-10-05",
-   "elo": "triagem",
-   "inicio": "01:12",
-   "fim": "01:20",
-   "minutos": 8,
-   "dentro_da_janela": true,
-   "conclusao": "success"
-  },
-  {
-   "noite": "2026-10-05",
-   "elo": "descoberta",
-   "inicio": "01:22",
-   "fim": "02:14",
-   "minutos": 52,
-   "dentro_da_janela": true,
-   "conclusao": "success"
-  },
-  {
-   "noite": "2026-10-05",
-   "elo": "evidencias",
-   "inicio": "02:17",
-   "fim": "02:18",
-   "minutos": 1,
-   "dentro_da_janela": true,
-   "conclusao": "success"
-  },
-  {
-   "noite": "2026-10-05",
-   "elo": "juiz",
-   "inicio": "02:22",
-   "fim": "03:50",
-   "minutos": 88,
-   "dentro_da_janela": true,
-   "conclusao": "success"
-  },
-  {
-   "noite": "2026-10-05",
-   "elo": "descoberta",
-   "inicio": "06:59",
-   "fim": "07:52",
-   "minutos": 53,
-   "dentro_da_janela": true,
-   "conclusao": "success"
-  },
-  {
-   "noite": "2026-10-05",
-   "elo": "evidencias",
-   "inicio": "07:54",
-   "fim": "07:55",
-   "minutos": 1,
-   "dentro_da_janela": true,
-   "conclusao": "success"
-  },
-  {
-   "noite": "2026-10-05",
-   "elo": "descoberta",
-   "inicio": "07:54",
-   "fim": "08:40",
-   "minutos": 46,
-   "dentro_da_janela": true,
-   "conclusao": "success"
-  },
-  {
-   "noite": "2026-10-05",
-   "elo": "juiz",
-   "inicio": "08:43",
-   "fim": "09:45",
-   "minutos": 62,
-   "dentro_da_janela": false,
-   "conclusao": "success"
-  },
-  {
-   "noite": "2026-10-05",
-   "elo": "juiz",
-   "inicio": "09:48",
-   "fim": "09:50",
-   "minutos": 2,
-   "dentro_da_janela": false,
-   "conclusao": "success"
-  },
-  {
-   "noite": "2026-10-05",
-   "elo": "sinais-fisicos",
-   "inicio": "18:47",
-   "fim": "18:49",
-   "minutos": 2,
-   "dentro_da_janela": false,
-   "conclusao": "success",
-   "trabalhou": true
-  },
-  {
-   "noite": "2026-10-05",
-   "elo": "triagem",
-   "inicio": "19:14",
-   "fim": "19:29",
-   "minutos": 15,
-   "dentro_da_janela": false,
-   "conclusao": "success",
-   "trabalhou": true
-  },
-  {
-   "noite": "2026-10-06",
-   "elo": "triagem",
-   "inicio": "01:12",
-   "fim": "01:13",
-   "minutos": 1,
-   "dentro_da_janela": true,
-   "conclusao": "success",
-   "trabalhou": true
-  },
-  {
-   "noite": "2026-10-06",
-   "elo": "triagem",
-   "inicio": "02:52",
-   "fim": "02:52",
-   "minutos": 0,
-   "dentro_da_janela": true,
-   "conclusao": "success",
-   "trabalhou": true
-  },
-  {
-   "noite": "2026-10-06",
-   "elo": "descoberta",
-   "inicio": "02:54",
-   "fim": "03:37",
-   "minutos": 43,
-   "dentro_da_janela": true,
-   "conclusao": "success",
-   "trabalhou": true
-  },
-  {
-   "noite": "2026-10-06",
-   "elo": "evidencias",
-   "inicio": "03:39",
-   "fim": "03:40",
-   "minutos": 1,
-   "dentro_da_janela": true,
-   "conclusao": "success",
-   "trabalhou": true
-  },
-  {
-   "noite": "2026-10-06",
-   "elo": "juiz",
-   "inicio": "03:45",
-   "fim": "03:50",
-   "minutos": 5,
-   "dentro_da_janela": true,
    "conclusao": "success",
    "trabalhou": true
   },
@@ -3707,28 +3564,8 @@
   {
    "noite": "2026-10-11",
    "elo": "publicar",
-   "inicio": "09:12",
-   "fim": "09:14",
-   "minutos": 2,
-   "dentro_da_janela": false,
-   "conclusao": "success",
-   "trabalhou": false
-  },
-  {
-   "noite": "2026-10-11",
-   "elo": "publicar",
    "inicio": "09:04",
    "fim": "09:10",
-   "minutos": 6,
-   "dentro_da_janela": false,
-   "conclusao": "success",
-   "trabalhou": false
-  },
-  {
-   "noite": "2026-10-11",
-   "elo": "publicar",
-   "inicio": "11:37",
-   "fim": "11:43",
    "minutos": 6,
    "dentro_da_janela": false,
    "conclusao": "success",
@@ -4025,6 +3862,96 @@
    "trabalhou": false
   },
   {
+   "noite": "2026-10-04",
+   "elo": "triagem",
+   "inicio": "10:14",
+   "fim": "10:20",
+   "minutos": 6,
+   "dentro_da_janela": false,
+   "conclusao": "success"
+  },
+  {
+   "noite": "2026-10-04",
+   "elo": "sinais-fisicos",
+   "inicio": "13:35",
+   "fim": "13:37",
+   "minutos": 2,
+   "dentro_da_janela": false,
+   "conclusao": "success"
+  },
+  {
+   "noite": "2026-10-04",
+   "elo": "triagem",
+   "inicio": "13:39",
+   "fim": "13:42",
+   "minutos": 3,
+   "dentro_da_janela": false,
+   "conclusao": "success"
+  },
+  {
+   "noite": "2026-10-04",
+   "elo": "triagem",
+   "inicio": "14:13",
+   "fim": "14:13",
+   "minutos": 0,
+   "dentro_da_janela": false,
+   "conclusao": "success"
+  },
+  {
+   "noite": "2026-10-04",
+   "elo": "respiratorias",
+   "inicio": "14:19",
+   "fim": "14:20",
+   "minutos": 1,
+   "dentro_da_janela": false,
+   "conclusao": "success"
+  },
+  {
+   "noite": "2026-10-05",
+   "elo": "triagem",
+   "inicio": "01:12",
+   "fim": "01:20",
+   "minutos": 8,
+   "dentro_da_janela": true,
+   "conclusao": "success"
+  },
+  {
+   "noite": "2026-10-05",
+   "elo": "descoberta",
+   "inicio": "01:22",
+   "fim": "02:14",
+   "minutos": 52,
+   "dentro_da_janela": true,
+   "conclusao": "success"
+  },
+  {
+   "noite": "2026-10-05",
+   "elo": "evidencias",
+   "inicio": "02:17",
+   "fim": "02:18",
+   "minutos": 1,
+   "dentro_da_janela": true,
+   "conclusao": "success"
+  },
+  {
+   "noite": "2026-10-05",
+   "elo": "juiz",
+   "inicio": "02:22",
+   "fim": "03:50",
+   "minutos": 88,
+   "dentro_da_janela": true,
+   "conclusao": "success"
+  },
+  {
+   "noite": "2026-10-05",
+   "elo": "descoberta",
+   "inicio": "06:59",
+   "fim": "07:52",
+   "minutos": 53,
+   "dentro_da_janela": true,
+   "conclusao": "success"
+  },
+  {
    "noite": "2026-10-12",
    "elo": "saude",
    "inicio": "01:12",
@@ -4143,6 +4070,159 @@
    "dentro_da_janela": true,
    "conclusao": "success",
    "trabalhou": true
+  },
+  {
+   "noite": "2026-10-04",
+   "elo": "diarios",
+   "inicio": "02:41",
+   "fim": "05:15",
+   "minutos": 154,
+   "dentro_da_janela": true,
+   "conclusao": "success"
+  },
+  {
+   "noite": "2026-10-04",
+   "elo": "evidencias",
+   "inicio": "06:18",
+   "fim": "06:19",
+   "minutos": 1,
+   "dentro_da_janela": true,
+   "conclusao": "success"
+  },
+  {
+   "noite": "2026-10-04",
+   "elo": "sinais-fisicos",
+   "inicio": "10:11",
+   "fim": "10:12",
+   "minutos": 1,
+   "dentro_da_janela": false,
+   "conclusao": "success"
+  },
+  {
+   "noite": "2026-10-05",
+   "elo": "evidencias",
+   "inicio": "07:54",
+   "fim": "07:55",
+   "minutos": 1,
+   "dentro_da_janela": true,
+   "conclusao": "success"
+  },
+  {
+   "noite": "2026-10-05",
+   "elo": "descoberta",
+   "inicio": "07:54",
+   "fim": "08:40",
+   "minutos": 46,
+   "dentro_da_janela": true,
+   "conclusao": "success"
+  },
+  {
+   "noite": "2026-10-05",
+   "elo": "juiz",
+   "inicio": "08:43",
+   "fim": "09:45",
+   "minutos": 62,
+   "dentro_da_janela": false,
+   "conclusao": "success"
+  },
+  {
+   "noite": "2026-10-05",
+   "elo": "juiz",
+   "inicio": "09:48",
+   "fim": "09:50",
+   "minutos": 2,
+   "dentro_da_janela": false,
+   "conclusao": "success"
+  },
+  {
+   "noite": "2026-10-05",
+   "elo": "sinais-fisicos",
+   "inicio": "18:47",
+   "fim": "18:49",
+   "minutos": 2,
+   "dentro_da_janela": false,
+   "conclusao": "success",
+   "trabalhou": true
+  },
+  {
+   "noite": "2026-10-05",
+   "elo": "triagem",
+   "inicio": "19:14",
+   "fim": "19:29",
+   "minutos": 15,
+   "dentro_da_janela": false,
+   "conclusao": "success",
+   "trabalhou": true
+  },
+  {
+   "noite": "2026-10-06",
+   "elo": "triagem",
+   "inicio": "01:12",
+   "fim": "01:13",
+   "minutos": 1,
+   "dentro_da_janela": true,
+   "conclusao": "success",
+   "trabalhou": true
+  },
+  {
+   "noite": "2026-10-06",
+   "elo": "triagem",
+   "inicio": "02:52",
+   "fim": "02:52",
+   "minutos": 0,
+   "dentro_da_janela": true,
+   "conclusao": "success",
+   "trabalhou": true
+  },
+  {
+   "noite": "2026-10-06",
+   "elo": "descoberta",
+   "inicio": "02:54",
+   "fim": "03:37",
+   "minutos": 43,
+   "dentro_da_janela": true,
+   "conclusao": "success",
+   "trabalhou": true
+  },
+  {
+   "noite": "2026-10-06",
+   "elo": "evidencias",
+   "inicio": "03:39",
+   "fim": "03:40",
+   "minutos": 1,
+   "dentro_da_janela": true,
+   "conclusao": "success",
+   "trabalhou": true
+  },
+  {
+   "noite": "2026-10-06",
+   "elo": "juiz",
+   "inicio": "03:45",
+   "fim": "03:50",
+   "minutos": 5,
+   "dentro_da_janela": true,
+   "conclusao": "success",
+   "trabalhou": true
+  },
+  {
+   "noite": "2026-10-11",
+   "elo": "publicar",
+   "inicio": "09:12",
+   "fim": "09:14",
+   "minutos": 2,
+   "dentro_da_janela": false,
+   "conclusao": "success",
+   "trabalhou": false
+  },
+  {
+   "noite": "2026-10-11",
+   "elo": "publicar",
+   "inicio": "11:37",
+   "fim": "11:43",
+   "minutos": 6,
+   "dentro_da_janela": false,
+   "conclusao": "success",
+   "trabalhou": false
   }
  ]
 }
