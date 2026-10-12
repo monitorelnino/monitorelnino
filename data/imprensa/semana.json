@@ -178,10 +178,10 @@
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "11/10/2026 22:14",
+   "referencia": "12/10/2026 02:21",
    "fonte": "Cemaden",
    "url_fonte": "https://www.gov.br/cemaden/pt-br",
-   "consultado_em": "11/10/2026 22:14",
+   "consultado_em": "12/10/2026 02:21",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -198,10 +198,10 @@
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "11/10/2026 22:14",
+   "referencia": "12/10/2026 02:21",
    "fonte": "Inmet",
    "url_fonte": "https://portal.inmet.gov.br/",
-   "consultado_em": "11/10/2026 22:14",
+   "consultado_em": "12/10/2026 02:21",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -218,10 +218,10 @@
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "11/10/2026 22:14",
+   "referencia": "12/10/2026 02:21",
    "fonte": "MARÉ (cruzamento das duas consultas)",
    "url_fonte": null,
-   "consultado_em": "11/10/2026 22:14",
+   "consultado_em": "12/10/2026 02:21",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -234,12 +234,12 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 290,
+   "valor": 2740,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
    "url_fonte": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
-   "consultado_em": "11/10/2026",
+   "consultado_em": "12/10/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -248,38 +248,62 @@
    "lista": [
     {
      "uf": "PA",
-     "valor": 149
-    },
-    {
-     "uf": "MA",
-     "valor": 47
-    },
-    {
-     "uf": "BA",
-     "valor": 27
+     "valor": 1759
     },
     {
      "uf": "AM",
-     "valor": 21
-    },
-    {
-     "uf": "RO",
-     "valor": 15
+     "valor": 256
     },
     {
      "uf": "MT",
-     "valor": 12
+     "valor": 181
+    },
+    {
+     "uf": "MA",
+     "valor": 165
+    },
+    {
+     "uf": "BA",
+     "valor": 160
+    },
+    {
+     "uf": "RR",
+     "valor": 51
+    },
+    {
+     "uf": "RO",
+     "valor": 50
+    },
+    {
+     "uf": "PI",
+     "valor": 39
+    },
+    {
+     "uf": "GO",
+     "valor": 29
+    },
+    {
+     "uf": "TO",
+     "valor": 21
     },
     {
      "uf": "CE",
      "valor": 9
     },
     {
-     "uf": "TO",
-     "valor": 8
+     "uf": "MG",
+     "valor": 9
     },
     {
-     "uf": "RR",
+     "uf": "AC",
+     "valor": 5
+    },
+    {
+     "uf": "AP",
+     "valor": 4
+    },
+    {
+     "uf": "AL",
      "valor": 2
     }
    ],
@@ -291,18 +315,18 @@
    "id": "temperatura_desvio_capital",
    "grupo": "risco_agora",
    "rotulo": "A maior diferença de temperatura máxima em relação ao normal, em grau Celsius",
-   "valor": 5.3,
+   "valor": 5.0,
    "unidade": "°C",
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "11/10/2026",
+   "referencia": "12/10/2026",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "url_fonte": null,
-   "consultado_em": "11/10/2026",
+   "consultado_em": "12/10/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "máxima prevista de 34.0 °C contra a média de 28.7 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 39.0 °C contra a média de 34.0 °C do mês; 24 capital(is) com normal publicada",
    "secundaria": null,
    "lista": [],
    "pagina_de_origem": "monitor-de-riscos.html"
@@ -311,7 +335,7 @@
    "id": "capitais_ar_ruim_ou_pior",
    "grupo": "risco_agora",
    "rotulo": "Capitais com o ar na faixa ruim ou acima dela",
-   "valor": 13,
+   "valor": 12,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
@@ -327,13 +351,12 @@
    "lista": [
     "AC",
     "AM",
-    "BA",
     "DF",
     "GO",
     "MG",
+    "MS",
     "MT",
     "PI",
-    "PR",
     "RJ",
     "RO",
     "SP",

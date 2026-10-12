@@ -4,56 +4,56 @@
   "efeito_no_indice": "NENHUM — peso zero, como todo sinal de risco.",
   "escrito_por": "coletar_sinais_risco.py"
  },
- "gerado_em": "11/10/2026 22:14",
+ "gerado_em": "12/10/2026 02:21",
  "consultas": [
   {
    "fonte": "inmet_avisos",
    "url": "https://apiprevmet3.inmet.gov.br/avisos/ativos",
-   "consultado_em": "11/10/2026 22:14",
-   "bytes": 603642,
-   "sha256": "8f610ac579a5ea52589cf5ae6aeb6466f22de2ea0b59d50dbfeae0dbe404614f"
+   "consultado_em": "12/10/2026 02:21",
+   "bytes": 455146,
+   "sha256": "28bd35263839dd2dc6025cd5c4deff1adf85d4baa5240efac114a4aae811787b"
   },
   {
    "fonte": "cemaden_alertas",
    "url": "https://gsc.cemaden.gov.br/geoserver/cemaden_dev/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=cemaden_dev:alertas_vigentes_siaden&outputFormat=application/json&count=3000",
-   "consultado_em": "11/10/2026 22:14",
+   "consultado_em": "12/10/2026 02:21",
    "bytes": 499653,
-   "sha256": "e58b22953eb0d83b12638ddea535403589daf589e665f5b5c09e7126a1cc8750"
+   "sha256": "7da3cb14073246d259d55f6ccd9d86b12a3d45ff589f288c35a489fb16bcbbaf"
   },
   {
    "fonte": "open_meteo_tempo",
    "url": "https://api.open-meteo.com/v1/forecast?latitude=-9.9750,-9.6660,-3.1187,0.0349,-12.9718,-3.7166,-15.7795,-20.3155,-16.6864,-2.5387,-19.9102,-20.4486,-15.6010,-1.4554,-7.1151,-8.0467,-5.0919,-25.4195,-22.9129,-5.7936,-8.7608,2.8238,-30.0318,-27.5945,-10.9091,-23.5329,-10.2400&longitude=-67.8243,-35.7350,-60.0212,-51.0694,-38.5011,-38.5423,-47.9297,-40.3128,-49.2643,-44.2825,-43.9266,-54.6295,-56.0974,-48.4898,-34.8641,-34.8771,-42.8034,-49.2646,-43.2003,-35.1986,-63.8999,-60.6753,-51.2065,-48.5477,-37.0677,-46.6395,-48.3558&daily=temperature_2m_max,temperature_2m_min,apparent_temperature_max&timezone=America%2FSao_Paulo&past_days=1&forecast_days=4",
-   "consultado_em": "11/10/2026 22:14",
-   "bytes": 15149,
-   "sha256": "e8e5436e2b9b3a181d1392db8f63ad0b0bf530f61d2c57a84eb437d7432f4f6e"
+   "consultado_em": "12/10/2026 02:21",
+   "bytes": 15159,
+   "sha256": "b2bbed5a7cc92643d7a76f8a4d2bf7589ae7cd449eab2786471126d7cc927611"
   },
   {
    "fonte": "inmet_previsao_capitais",
    "url": "https://apiprevmet3.inmet.gov.br/previsao/capitais",
-   "consultado_em": "11/10/2026 22:14",
-   "bytes": 6734362,
-   "sha256": "df5b6b874378434503530147e7460bcbf33e6e728e2829415810a7f06edc38af"
+   "consultado_em": "12/10/2026 02:21",
+   "bytes": 6219695,
+   "sha256": "690b24b94d45986fa3ae41a731c2b24331dfe6a456f0938dc6eeed4498b76a8c"
   },
   {
    "fonte": "open_meteo_ar",
    "url": "https://air-quality-api.open-meteo.com/v1/air-quality?latitude=-9.9750,-9.6660,-3.1187,0.0349,-12.9718,-3.7166,-15.7795,-20.3155,-16.6864,-2.5387,-19.9102,-20.4486,-15.6010,-1.4554,-7.1151,-8.0467,-5.0919,-25.4195,-22.9129,-5.7936,-8.7608,2.8238,-30.0318,-27.5945,-10.9091,-23.5329,-10.2400&longitude=-67.8243,-35.7350,-60.0212,-51.0694,-38.5011,-38.5423,-47.9297,-40.3128,-49.2643,-44.2825,-43.9266,-54.6295,-56.0974,-48.4898,-34.8641,-34.8771,-42.8034,-49.2646,-43.2003,-35.1986,-63.8999,-60.6753,-51.2065,-48.5477,-37.0677,-46.6395,-48.3558&hourly=pm2_5,pm10,ozone,nitrogen_dioxide,carbon_monoxide,european_aqi&timezone=America%2FSao_Paulo&forecast_days=1&domains=cams_global",
-   "consultado_em": "11/10/2026 22:14",
-   "bytes": 42729,
-   "sha256": "690158efe0fdf01a85e618b5fc3a6e5044d4013207fca1ded3108dc4c2bf3b09"
+   "consultado_em": "12/10/2026 02:21",
+   "bytes": 42975,
+   "sha256": "21b76c011b66f28c2a4d2390121be8a6533b68affd7860813634b7582cbef1d2"
   },
   {
    "fonte": "inmet_estacoes",
    "url": "https://apitempo.inmet.gov.br/estacoes/T",
-   "consultado_em": "11/10/2026 22:14",
+   "consultado_em": "12/10/2026 02:21",
    "bytes": 262134,
    "sha256": "8c5b6d58e0a96457184f96ffc0268125af4b38fcc2eeb9031161d6a9df0bdb42"
   },
   {
    "fonte": "inmet_estacoes",
-   "url": "https://apitempo.inmet.gov.br/condicao/capitais/2026-10-11",
-   "consultado_em": "11/10/2026 22:14",
-   "bytes": 2351,
-   "sha256": "82c49eb2cd93aba728db3032d26c9b1ab9b5dcbb47165f6172db3327e1e8676d"
+   "url": "https://apitempo.inmet.gov.br/condicao/capitais/2026-10-12",
+   "consultado_em": "12/10/2026 02:21",
+   "bytes": 2310,
+   "sha256": "551a03160aa5e7b26468f9e6e664c6a3071ca36d405e1d9b614fc179c6cc33b7"
   }
  ]
 }
