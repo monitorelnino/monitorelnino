@@ -36,6 +36,18 @@ não pontuados permanecem na versão corrente.
 
 `gerar_pacote_blog.py` (linha `tipos_de_evento`) passa a incluir, como fatos com fonte e endereço, os atos que o texto de 06/10 cita (Portaria MIDR 260/2022, Portarias Interministeriais 1/2012 e 2/2015, Lei 15.143/2025, Decreto 13.013/2026); o dispositivo exato segue como lacuna. O verificador reprovava esses números: pacote incompleto. Novo `--hoje` regera o pacote de um dia passado sobre a árvore daquele dia.
 
+## 2026-10-12 · #PR · cartão por município sem "não localizado" indevido (A3-13)
+
+O derivado por município marcava "não localizado" para 1.916 municípios verificados só em nível nacional ou estadual — o teto público de ausência exige a bateria municipal completa. Sem registro, passa a ser "não verificado" (1.950 hoje); a contagem de municípios com registro deixa de somá-los. Onde: `gerar_card_municipios.py`, `data/municipios_card.json`.
+
+## 2026-10-12 · #PR · o ano do ato do MMA no cartão vem da publicação (A4-32)
+
+O cartão do município citava "(MMA, ano)" com o ano da nossa consulta quando o arquivo não trazia a data do ato — em janeiro, o ano mudaria sozinho. O cartão passa a receber a data de publicação da portaria; sem ela, o ano declarado no próprio instrumento; sem nenhum, nenhum ano. Hoje continua "2026". Onde: `scripts/gerar_enquadramento_card.py`, `assets/js/index.js`.
+
+## 2026-10-12 · #PR · idempotência dos derivados confere de verdade; molde do Wayback não é prova (A7-22, A6-29)
+
+O portão de idempotência comparava só o que o `git status` mostrava e, com a árvore em dia, conferia zero arquivos. Passa a comparar tudo o que o manifesto sela (581 hoje) e roda a segunda regeneração noutro fuso (UTC+14), para pegar gerador que lê a data local em vez da data do corte. E o endereço-molde do Wayback (`/web/*/`) deixa de contar como evidência preservada; só captura com data conta. Onde: `scripts/verificar_idempotencia_dos_derivados.py`, `verificar_evidencias.py`.
+
 ## 2026-10-12 · #PR · textos do blog entram nos portões de texto (A7-15)
 
 Os portões de vocabulário, voz editorial e legendas liam uma lista de páginas escrita à mão, sem os textos do blog. Passam a ler `blog/*.html` da pasta; todos passam limpos. Ficam fora de propósito o registro técnico de mudanças (nomeia arquivos para quem audita) e o índice interno de conteúdo (mostra os moldes). Onde: `scripts/verificar_{vocabulario_publico,voz_editorial}.js`, `scripts/verificar_legendas.js`.

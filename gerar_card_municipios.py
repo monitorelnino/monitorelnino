@@ -8,7 +8,7 @@ prefeituras.html. Um objeto por código IBGE, SÓ para municípios com algo a di
 localizado, não prioritário" por ausência, sem inflar o arquivo.
 
 Campos: nome, uf, prioritario (aproximação populacional do Cadastro Nacional — mesmo
-proxy de gerar_prioritarios.py), categoria no MARÉ (municipios.json; ausente = nao_localizado),
+proxy de gerar_prioritarios.py), categoria no MARÉ (municipios.json; ausente = nao_verificado — A3-13),
 documento/url/data quando há registro, e `imprensa`: até 3 pistas pendentes de nível A/B
 (título, url, data, veículo = host), mais novas primeiro.
 
@@ -121,7 +121,9 @@ def montar(referencia, prioritarios, municipios, pistas, despesa_182=None):
         if "imprensa" in c:
             c["imprensa"].sort(key=lambda x: _data_key(x.get("data")), reverse=True)
             c["imprensa"] = c["imprensa"][:MAX_IMPRENSA]
-        c.setdefault("categoria", "nao_localizado")
+        # A3-13 (12/10/2026): "nao_localizado" é o teto público de ausência e exige a bateria
+        # municipal completa (§2.1) — nenhum município a tem. Sem registro, é "nao_verificado".
+        c.setdefault("categoria", "nao_verificado")
     return {str(k): v for k, v in sorted(cards.items())}
 
 
@@ -135,11 +137,12 @@ def gerar():
     out = {"_governanca": ("Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. "
                            "`prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). "
                            "`imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o "
-                           "leitor peça o documento ao gestor. Só municípios com algo a dizer; ausência = nada localizado. "
+                           "leitor peça o documento ao gestor. Só municípios com algo a dizer; sem registro = não verificado. "
                            "`defesa_civil_orcamento` (§207) = despesa liquidada na subfunção 06.182 declarada ao SICONFI, "
                            "peso ZERO; classe de ausência nunca vira zero."),
            "gerado_em": data_de_geracao(), "total": len(cards),
-           "com_registro": sum(1 for c in cards.values() if c.get("categoria") != "nao_localizado"),
+           "com_registro": sum(1 for c in cards.values()
+                               if c.get("categoria") not in ("nao_localizado", "nao_verificado")),
            "com_imprensa": sum(1 for c in cards.values() if c.get("imprensa")),
            "prioritarios": sum(1 for c in cards.values() if c.get("prioritario")),
            "com_despesa_182": sum(1 for c in cards.values() if c.get("defesa_civil_orcamento")),
@@ -168,7 +171,7 @@ def autoteste():
            {"ibge": "4301602", "municipio": "Bagé", "uf": "RS", "status": "pista — promover…", "nivel_confianca": "A", "titulo": "Bagé lança plano", "url": "https://g1.globo.com/b", "data": "01/09/2026"}]
     c = montar(ref, prior, mun, pis, dsp)
 
-    def t_prioritario_sozinho_entra(): return c["1301803"]["prioritario"] is True and c["1301803"]["categoria"] == "nao_localizado"
+    def t_prioritario_sozinho_entra(): return c["1301803"]["prioritario"] is True and c["1301803"]["categoria"] == "nao_verificado"
     def t_sem_nada_nao_entra(): return "3500001" not in c
 
     def t_despesa_182_entra_com_a_ressalva():
@@ -186,8 +189,8 @@ def autoteste():
         """Município que só tem despesa e nada mais não passa a existir no card por causa dela."""
         return "9999999" not in c
     def t_registro_e_tag(): return c["4301602"]["categoria"] == "plano" and c["4301602"]["prioritario"] is False and c["4301602"]["url"]
-    def t_imprensa_so_A_B_pendentes(): return [x["titulo"] for x in c["3529005"]["imprensa"]] == ["Marília prepara plano"] and c["3529005"]["categoria"] == "nao_localizado"
-    def t_imprensa_nao_vira_categoria(): return c["3529005"].get("categoria") == "nao_localizado"   # peso zero, por construção
+    def t_imprensa_so_A_B_pendentes(): return [x["titulo"] for x in c["3529005"]["imprensa"]] == ["Marília prepara plano"] and c["3529005"]["categoria"] == "nao_verificado"
+    def t_imprensa_nao_vira_categoria(): return c["3529005"].get("categoria") == "nao_verificado"   # peso zero, por construção
     def t_veiculo_sem_www(): return c["3529005"]["imprensa"][0]["veiculo"] == "marilianoticia.com.br"
     def t_registro_mantem_imprensa_como_proveniencia(): return c["4301602"]["imprensa"][0]["veiculo"] == "g1.globo.com"
     def t_carimbo_segue_o_relogio_fixado():
@@ -210,7 +213,7 @@ def autoteste():
 
     return rodar_autoteste({
         "§193 carimbo do derivado segue o relógio fixado, não o da parede": t_carimbo_segue_o_relogio_fixado,
-        "prioritário sem registro entra, categoria nao_localizado": t_prioritario_sozinho_entra,
+        "prioritário sem registro entra, categoria nao_verificado (A3-13)": t_prioritario_sozinho_entra,
         "município sem nada não entra (ausência = nada localizado)": t_sem_nada_nao_entra,
         "registro no MARÉ + tag prioritário false": t_registro_e_tag,
         "imprensa: só pistas pendentes de nível A/B (C e rejeitadas ficam fora)": t_imprensa_so_A_B_pendentes,

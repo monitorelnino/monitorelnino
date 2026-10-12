@@ -149,6 +149,10 @@ def fontes_de(casa_civil: dict, enquadramento: dict) -> dict:
         if origem:
             fora[familia] = {"instrumento": origem.get("instrumento"), "url": origem.get("url"),
                              "consultado_em": origem.get("consultado_em")}
+            # A4-32 (12/10/2026): o ano que o texto do cartão cita é o da PUBLICAÇÃO do ato, não o
+            # da nossa consulta — sem este campo a página caía no `consultado_em`.
+            if origem.get("publicada_em"):
+                fora[familia]["publicada_em"] = origem.get("publicada_em")
     return fora
 
 
@@ -211,6 +215,11 @@ def autoteste() -> int:
         ("a fonte de chuva vem do arquivo da Casa Civil", f["chuva"]["consultado_em"] == "2026-09-30"),
         ("a fonte de seca vem do instrumento gravado", f["seca"]["instrumento"] == "Sudene"),
         ("família sem coletor não inventa fonte", "fogo" not in fontes_de(cc, {"fontes": {}})),
+        ("A4-32: a data de publicação do ato passa ao cartão",
+         fontes_de(cc, {"fontes": {"mma_desmatamento": {"instrumento": "P", "url": "u",
+                                                        "consultado_em": "2027-01-02",
+                                                        "publicada_em": "2026-06-23"}}})
+         ["fogo"].get("publicada_em") == "2026-06-23"),
         ("sem base da Casa Civil não há fonte de chuva", "chuva" not in fontes_de({}, enq)),
     ]
 
