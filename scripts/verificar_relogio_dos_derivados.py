@@ -44,7 +44,9 @@ RAIZ = pathlib.Path(__file__).resolve().parent.parent
 CADEIA = RAIZ / "scripts" / "verificar_derivados.sh"
 
 # As formas de perguntar as horas à parede.
-_RE_RELOGIO = re.compile(r"\b(hoje_editorial|date\.today|datetime\.now|time\.time)\s*\(")
+# A7-22 (12/10/2026): `utcnow`, `time.strftime` e `time.localtime` também perguntam à parede.
+_RE_RELOGIO = re.compile(r"\b(hoje_editorial|date\.today|datetime\.now|datetime\.utcnow|time\.time|"
+                         r"time\.strftime|time\.localtime)\s*\(")
 # A forma de honrar o relógio fixado — direta ou pela função que a encapsula.
 _RE_FIXADO = re.compile(r"SOURCE_DATE_EPOCH|data_do_corte")
 # Um passo da cadeia: `python3 <script> …`, com ou sem comentário depois.
@@ -72,7 +74,10 @@ def usa_relogio_da_parede(fonte: str) -> list:
     Função pura. Devolve [] quando o arquivo menciona `SOURCE_DATE_EPOCH` ou `data_do_corte`: aí a
     decisão está tomada no próprio arquivo, e é ela que vale.
     """
-    if _RE_FIXADO.search(fonte or ""):
+    # A7-22 (12/10/2026): a menção que dispensa tem de estar no CÓDIGO — um comentário dizendo
+    # "honra SOURCE_DATE_EPOCH" dispensava o gerador sem que ele honrasse nada.
+    codigo = "\n".join(l.split("#")[0] for l in str(fonte or "").splitlines())
+    if _RE_FIXADO.search(codigo):
         return []
     fora = []
     for n, linha in enumerate(str(fonte or "").splitlines(), start=1):
@@ -126,6 +131,11 @@ def _autoteste() -> int:
     ok("chamada só em comentário não é acusada",
        usa_relogio_da_parede("# nunca use hoje_editorial() aqui") == [])
     ok("arquivo sem relógio passa", usa_relogio_da_parede("x = 1") == [])
+    ok("A7-22: menção só em comentário não dispensa",
+       usa_relogio_da_parede("# honra SOURCE_DATE_EPOCH\nx = datetime.now()") != [])
+    ok("A7-22: `utcnow` e `time.strftime` são acusados",
+       usa_relogio_da_parede("x = datetime.utcnow()") != []
+       and usa_relogio_da_parede("x = time.strftime('%Y')") != [])
 
     ok("o defeito de 06/10 seria pego",
        problemas("python3 scripts/gerar_codemap.py\n",

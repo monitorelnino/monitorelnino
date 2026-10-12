@@ -187,8 +187,9 @@ def cobertura_qd(cod: str, desde: str, resposta_com_diario: bool = False):
     querystring), False se não, None se o teste falhou. Cache em data/cobertura_qd.json (uma vez por janela).
     Também grava cobertura_qd/data_teste_cobertura em verificacao_municipal.json."""
     cache = ler("cobertura_qd.json", {"_governanca": "Cobertura do Querido Diário por município (PR-N0 §1.2): true = diário indexado; false = não indexado; testado sem querystring, size=1. Uma vez por janela.", "janela": desde, "municipios": {}}) or {}
-    if cache.get("janela") != desde:
-        cache = {"_governanca": cache.get("_governanca", ""), "janela": desde, "municipios": {}}
+    # A6-17 (12/10/2026): a troca de `--desde` zerava o retrato inteiro (5.571 municípios do
+    # `coletar_cobertura_qd.py`). Edição indexada não desaparece: o retrato não se zera, e a linha
+    # do município é ATUALIZADA, preservando os campos do outro escritor (`nivel_qd`, `ultima_falha`).
     mun = cache.setdefault("municipios", {})
     hoje = hoje_editorial().isoformat()
     # 25/09/2026 (§212, terceiro arquivo): o acerto em cache NÃO pode gravar. Antes, toda chamada
@@ -197,16 +198,17 @@ def cobertura_qd(cod: str, desde: str, resposta_com_diario: bool = False):
     # nada. Agora só grava quem mudou.
     anterior = dict(mun.get(cod) or {})
     if resposta_com_diario:
-        mun[cod] = {"cobertura_qd": True, "data_teste": hoje}
+        mun[cod] = {**anterior, "cobertura_qd": True, "data_teste": hoje}
     elif cod in mun and mun[cod].get("cobertura_qd") is not None:
         pass
     else:
         try:
             time.sleep(PAUSA_ENTRE_CONSULTAS)
             d = json.loads(consultar_qd(urllib.parse.urlencode({"territory_ids": cod, "size": 1}), timeout=30).decode("utf-8", "replace"))
-            mun[cod] = {"cobertura_qd": (d.get("total_gazettes", 0) or 0) > 0, "data_teste": hoje}
+            mun[cod] = {**anterior, "cobertura_qd": (d.get("total_gazettes", 0) or 0) > 0,
+                        "data_teste": hoje}
         except Exception:  # noqa: BLE001
-            mun[cod] = {"cobertura_qd": None, "data_teste": hoje}
+            mun[cod] = {**anterior, "cobertura_qd": None, "data_teste": hoje}
     if mun.get(cod) != anterior:
         gravar("cobertura_qd.json", cache)
     # Espelho em verificacao_municipal.json (campo público). A data que vai para lá é a do TESTE,
@@ -497,6 +499,27 @@ def autoteste() -> int:
         return (r is True and gravados == []
                 and vm[0]["data_teste_cobertura"] == "2026-09-20")
 
+    def t11b():
+        """A6-17 (12/10/2026): `--desde` diferente não zera o retrato, e a resposta com diário
+        preserva os campos do outro escritor."""
+        gravados = []
+        cache = {"janela": "2026-06-29", "municipios": {
+            "1100015": {"cobertura_qd": False, "data_teste": "2026-09-29", "nivel_qd": "x"},
+            "1100023": {"cobertura_qd": True, "data_teste": "2026-09-29", "nivel_qd": "y"},
+            "1100031": {"cobertura_qd": True, "data_teste": "2026-09-29"}}}
+        real = {n: globals()[n] for n in ("ler", "gravar", "consultar_qd")}
+        globals()["ler"] = lambda nome, padrao=None: cache if nome == "cobertura_qd.json" else (padrao or [])
+        globals()["gravar"] = lambda nome, obj: gravados.append((nome, obj))
+        globals()["consultar_qd"] = lambda *a, **k: (_ for _ in ()).throw(AssertionError("rede"))
+        try:
+            cobertura_qd("1100015", "2026-07-01", resposta_com_diario=True)
+        finally:
+            for n, f in real.items():
+                globals()[n] = f
+        final = [o for n, o in gravados if n == "cobertura_qd.json"][-1]["municipios"]
+        return (len(final) == 3 and final["1100015"]["cobertura_qd"] is True
+                and final["1100015"].get("nivel_qd") == "x" and final["1100023"].get("nivel_qd") == "y")
+
     def t12():
         """25/09/2026: 503 é "tente mais tarde", e a resposta certa é esperar — a reserva de
         domínio não resolve, porque serve o mesmo serviço. 4xx continua subindo na hora."""
@@ -615,6 +638,7 @@ def autoteste() -> int:
                             "regressão 21/09: rodar duas vezes sobre o mesmo achado não duplica a pista": t9,
                             "toda decisão deste coletor cabe no vocabulário fechado do log": t10,
                             "acerto em cache não grava, e o espelho leva a data do teste": t11,
+                            "A6-17 troca de janela não zera o retrato; campos do outro escritor ficam": t11b,
                             "503 espera e repete; 429 espera uma vez; 4xx sobe na hora": t12})
 
 
