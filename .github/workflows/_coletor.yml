@@ -78,6 +78,8 @@ on:
         required: false
       ROBO_DEPLOY_KEY:
         required: true
+      PORTAL_TRANSPARENCIA_API_KEY:
+        required: false
 
 permissions:
   contents: read
@@ -256,6 +258,8 @@ jobs:
       # deliberado: coletor que falha não derruba os outros nem impede o commit do que já foi achado.
       - name: Coletar
         if: steps.janela.outputs.pode == '1'
+        env:
+          PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
         run: |
           # 10/10/2026 (item 2-bis.2): no ensaio real a coleta é mínima e não vai à rede — o que se
           # ensaia é a mecânica do GitHub (fila, `workflow_run`, empurrão concorrente, marcador).
