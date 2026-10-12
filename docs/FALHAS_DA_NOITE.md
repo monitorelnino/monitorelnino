@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-12. 43 falhas; 38 com caso de teste que as reproduz; 5 sem, com o que falta dito.
+Atualizado em 2026-10-12. 44 falhas; 39 com caso de teste que as reproduz; 5 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -392,3 +392,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** run 38190909909 (saúde), job 114623279805, 01:44:06 UTC; commit a30b4a32 (painel 394 → 400, cabeça de 04/10 podada)
 - **Correção:** Sem corte no produtor; o painel une em multiconjunto de linhas inteiras (base + o que cada lado tem a mais) no resolvedor, na reaplicação e na consolidação; as 16 linhas podadas voltam do histórico.
 - **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_painel_cheio_nao_perde_o_commit`
+
+## F45 · Reaplicação ignora arquivo de dono único e marca o artefato como reaplicado
+
+- **Noite:** 2026-10-12
+- **Sintoma:** Semanal de sinais (run 38206236236) perdeu o commit pelo F44; a reaplicação das 07:36 (2795810d) trouxe pistas e logs, e cadastro federal, enquadramento, clima municipal e cobertura do QD ficaram para trás, com `sinais-e-links.reaplicado` gravado.
+- **Causa:** `reaplicar_noite.porta_de` só conhecia fila, jsonl, log, contador, evidências e marcador; o resto do artefato caía em "não reaplica" sem aviso.
+- **Prova:** commit 2795810d (12/10 07:36): sinais-e-links.reaplicado sem data/enquadramento_federal.json; data/saude_pipeline.json: coletar_prioritarios_mma.py ok às 05:08
+- **Correção:** O elo grava base e arquivos alterados no artefato (`data/.coleta_perdida.json`); a reaplicação copia o arquivo de dono único quando a árvore está como na base, e recusa nomeado quando outro escritor mexeu.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_coleta_perdida_de_dono_unico_volta`

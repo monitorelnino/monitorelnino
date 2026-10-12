@@ -82,6 +82,49 @@ def porta_de(caminho: str) -> str:
     return ""
 
 
+MANIFESTO_DA_PERDA = "data/.coleta_perdida.json"
+# Função de outro dado: a cadeia canônica os regera, e copiá-los do artefato seria trazer um derivado
+# velho por cima do novo.
+NAO_COPIAR = ("docs/MANIFEST_SHA256.txt", "docs/SAUDE_PIPELINE.md", "data/pistas_revisao.json",
+              "data/log_buscas_resumo.json", "data/municipios_card.json", MANIFESTO_DA_PERDA)
+
+
+def decidir_dono_unico(rel: str, alterados, da_arvore, da_base, do_artefato) -> str:
+    """O que fazer com um arquivo SEM porta própria que o elo perdido alterou (F45). Função pura.
+
+    12/10/2026 (F45): a reaplicação só conhecia fila, log, contador, evidências e marcador; todo o
+    resto do artefato era ignorado, e o artefato era marcado `.reaplicado` — perda silenciosa. Na
+    noite 11→12 a rotina semanal de sinais coletou clima municipal, enquadramento federal e
+    cobertura do Querido Diário, perdeu o commit pelo F44, e a reaplicação das 07:36 trouxe só as
+    pistas e os logs. Regra de três vias, sem adivinhar:
+      · o elo não alterou o arquivo, ou ele é derivado                        → "fora";
+      · a árvore está como na base do elo (ninguém mexeu depois)              → "copiar";
+      · a árvore já é igual ao artefato                                        → "igual";
+      · a árvore mudou desde a base (outro escritor)                          → "recusa: …".
+    `da_base` None quando a base não está no histórico: recusa, nomeada.
+    """
+    if rel in NAO_COPIAR or rel not in set(alterados or ()):
+        return "fora"
+    if da_arvore == do_artefato:
+        return "igual"
+    if da_arvore is None and da_base is None:
+        return "copiar"                  # arquivo novo do elo, que ninguém criou depois
+    if da_base is None:
+        return "recusa: a base do elo não está no histórico desta árvore"
+    if da_arvore == da_base:
+        return "copiar"
+    return "recusa: o arquivo mudou na árvore depois da base do elo — dois escritores"
+
+
+def _na_base(base: str, rel: str):
+    """Conteúdo de `rel` no commit `base`, ou None (sem a base ou sem o arquivo). Só lê."""
+    import subprocess
+    if not base:
+        return None
+    r = subprocess.run(["git", "show", f"{base}:{rel}"], cwd=RAIZ, capture_output=True)
+    return r.stdout if r.returncode == 0 else None
+
+
 def unir_por_sha(da_arvore: list, do_artefato: list, existe) -> tuple:
     """União do índice de evidências por `sha256`, só para arquivo que EXISTE. Função pura.
 
@@ -275,9 +318,33 @@ def main(argv: list) -> int:
             recusados.append(f"{a['nome']}: não baixou (artefato expirado ou acesso recusado)")
             continue
         n_portas = {}
+        perda = {}
+        _m = destino / MANIFESTO_DA_PERDA
+        if _m.exists():
+            try:
+                perda = json.loads(_m.read_text(encoding="utf-8"))
+            except ValueError:
+                perda = {}
         for q in arquivos:
             rel = str(q.relative_to(destino)).replace("\\", "/")
             porta = porta_de(rel)
+            if not porta and perda:
+                # F45: arquivo de dono único que o elo alterou entra pela regra de três vias.
+                arv = (RAIZ / rel).read_bytes() if (RAIZ / rel).exists() else None
+                dec = decidir_dono_unico(rel, perda.get("alterados"), arv,
+                                         _na_base(perda.get("base", ""), rel), q.read_bytes())
+                n_portas["dono_unico:" + dec.split(":")[0]] = \
+                    n_portas.get("dono_unico:" + dec.split(":")[0], 0) + 1
+                if dec == "copiar":
+                    import os
+                    alvo = RAIZ / rel
+                    alvo.parent.mkdir(parents=True, exist_ok=True)
+                    tmp = alvo.with_name(f"{alvo.name}.tmp{os.getpid()}")
+                    tmp.write_bytes(q.read_bytes())
+                    os.replace(tmp, alvo)            # §229: troca atômica
+                elif dec.startswith("recusa"):
+                    recusados.append(f"{a['nome']} → {rel}: {dec}")
+                continue
             n_portas[porta or "(não reaplica)"] = n_portas.get(porta or "(não reaplica)", 0) + 1
             if not porta:
                 continue
@@ -408,6 +475,20 @@ def _autoteste() -> int:
     def ok(nome, cond):
         casos.append((nome, bool(cond)))
 
+    # F45 (12/10/2026): arquivo de dono único que o elo perdido alterou
+    _alt = ["data/enquadramento_federal.json", "docs/MANIFEST_SHA256.txt"]
+    ok("F45: árvore como na base → copia o do artefato",
+       decidir_dono_unico("data/enquadramento_federal.json", _alt, b"v1", b"v1", b"v2") == "copiar")
+    ok("F45: outro escritor mexeu depois → recusa nomeada",
+       decidir_dono_unico("data/enquadramento_federal.json", _alt, b"v3", b"v1", b"v2").startswith("recusa"))
+    ok("F45: sem a base no histórico → recusa nomeada",
+       decidir_dono_unico("data/enquadramento_federal.json", _alt, b"v1", None, b"v2").startswith("recusa"))
+    ok("F45: arquivo que o elo não alterou fica fora",
+       decidir_dono_unico("data/x.json", _alt, b"v1", b"v1", b"v2") == "fora")
+    ok("F45: derivado nunca é copiado do artefato",
+       decidir_dono_unico("docs/MANIFEST_SHA256.txt", _alt, b"a", b"a", b"b") == "fora")
+    ok("F45: arquivo novo do elo entra", decidir_dono_unico("data/novo.json", ["data/novo.json"],
+                                                          None, None, b"x") == "copiar")
     ok("elo e run saem do nome", elo_e_run("coleta-perdida-diarios-37711273308")
        == ("diarios", "37711273308"))
     ok("elo com hífen não se parte", elo_e_run("coleta-perdida-sinais-fisicos-37711285165")

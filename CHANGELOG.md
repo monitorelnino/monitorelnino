@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · coleta perdida volta inteira (F45)
+
+A reaplicação de artefato trazia só filas, logs e contadores; arquivo com um escritor só (clima municipal, enquadramento federal, cobertura do Querido Diário) ficava para trás, em silêncio. O elo passa a gravar base e arquivos alterados no artefato, e a reaplicação copia quando ninguém mexeu depois, recusando nomeado quando mexeu. Onde: `_coletor.yml`, `reaplicar_noite.py`, ensaio nº 24.
+
 ## 2026-10-12 · #PR · painel da noite cheio não perde mais o commit (F44)
 
 O painel cortava em 400 linhas; ao encher, podava a cabeça e o resolvedor recusava a união — saúde, diários e triagem foram para artefato na noite 11→12. Sem corte; o painel une em multiconjunto (resolvedor, reaplicação, consolidação); 16 linhas podadas voltam do histórico; temporário da escrita atômica não entra mais no commit. Onde: `painel_da_noite.py`, `unir_conflito_de_rodada.py`, ensaio nº 23.
