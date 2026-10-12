@@ -36,6 +36,10 @@ não pontuados permanecem na versão corrente.
 
 Trinta e dois `.catch(() => {})` em Saúde, Financiamento e Imprensa escondiam o erro do bloco que não renderizava, inclusive dos portões de runtime. Cada um passa a relatar ao console com o lugar (`saude:123`), sem mudar o que o leitor vê; o portão de estrutura reprova a forma silenciosa. Onde: `assets/js/{saude,financiamento,imprensa}.js`, `scripts/verificar_estrutura.js`.
 
+## 2026-10-12 · #PR · portão de segredo no diff do PR (A7-11)
+
+Nenhum portão procurava credencial ou CPF fora de `evidencias/`: um token colado num JSON de `data/` ou num script de página iria ao ar com tudo verde. `verificar_segredos.py` lê as linhas acrescentadas pelo PR e reprova credencial com prefixo e chave privada em qualquer arquivo, e atribuição de chave e CPF em conteúdo publicado. Roda sempre, no job de estrutura.
+
 ## 2026-10-12 · #PR · medidor sem relógio (A7-18)
 
 A última folga do medidor de layout era 1,5 s fixos, para número de cartão e figura que o contrato não declara. Passa a ser condição: o medidor lê a página até ela parar de mudar (texto, figuras e números iguais em três leituras seguidas, até 10 s). O teste da corrida reprova se a espera por relógio voltar. Onde: `scripts/_layout_dump.js`, `scripts/testar_corrida_do_medidor.js`.
