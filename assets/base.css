@@ -1243,7 +1243,9 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
    um diagrama de 960 de largura num cartão de 1/3 da coluna não é um diagrama menor, é um diagrama
    ilegível — a figura dos caminhos passou três dias assim. */
 .cartao-mapa--largo{grid-column:1 / -1; width:100%;}
-.cartao-mapa--largo .figura-midia{width:100%;}
+/* A4-24 (12/10/2026): a proporção de mapa (480/460) do `.figura-midia` deixava 570 px de vazio sob
+   o diagrama (1052 px de caixa para 483 de desenho). O diagrama largo mede o que o desenho mede. */
+.cartao-mapa--largo .figura-midia{width:100%; aspect-ratio:auto; min-height:0;}
 .cartao-mapa--largo .figura-midia svg{width:100%; height:auto;}
 .diag-caixa{font-family:var(--font-texto); font-size:var(--fs-small); font-weight:600; fill:var(--bg);}
 .diag-caixa-sub{font-family:var(--font-dado); font-size:var(--fs-caption); fill:var(--bg);}

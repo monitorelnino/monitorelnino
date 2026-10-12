@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · figura dos caminhos sem vazio e rótulos dentro das faixas (A4-24)
+
+A figura dos caminhos do dinheiro em `financiamento.html` tinha 570 px de branco (a mídia herdava proporção fixa) e rótulos que vazavam da faixa. Agora a mídia do cartão largo segue a altura do desenho e cada rótulo quebra em linhas pela largura da faixa, que cresce com ele (`assets/base.css`, `assets/js/financiamento.js`).
+
 ## 2026-10-12 · #PR · cartão por município sem "não localizado" indevido (A3-13)
 
 O derivado por município marcava "não localizado" para 1.916 municípios verificados só em nível nacional ou estadual — o teto público de ausência exige a bateria municipal completa. Sem registro, passa a ser "não verificado" (1.950 hoje); a contagem de municípios com registro deixa de somá-los. Onde: `gerar_card_municipios.py`, `data/municipios_card.json`.
