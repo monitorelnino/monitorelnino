@@ -1,3 +1,6 @@
+/* A7-17 (12/10/2026): erro de bloco que não renderiza não é engolido em silêncio — vai ao
+   console com o lugar, onde o portão de runtime e quem abre o DevTools o veem. */
+function _erroSaude(onde) { return function (e) { try { console.error("[MARÉ] falha em " + onde + ":", e); } catch (_) {} }; }
 // ===== saude.html · bloco 1 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
 let BR_GEOJSON, SUF, SSIN, SINAIS, MARE, MSAUDE, DESF, DESF_CANAL, DESF_COMP, PAINEL_LISTA, SRAG;
 /* Número em texto público com vírgula decimal (A4-16); não-número passa como veio ("—", nulo). */
@@ -122,7 +125,7 @@ async function __load(){
           el('nCoordSaude').textContent = n(comCoord) + ' de 27';
           el('fonteCoordSaude').textContent = 'Ato de criação ou de ativação lido em cada estado · '
             + 'sala de situação ou centro de operações de emergência';
-        }).catch(() => {});
+        }).catch(_erroSaude("saude:125"));
       }
       if (el('nEmergSaude')) {
         const r = (MSAUDE && MSAUDE.resposta) || {};
@@ -437,7 +440,7 @@ function cartoesEstadosSaude(){
     });
     GradeEstados.legendaDasBarras('legendaRegionsSaude', 'MARÉ Saúde');
     if (window.MonitorMapas && MonitorMapas.animarGauges) MonitorMapas.animarGauges(wrap);
-  }).catch(() => {});
+  }).catch(_erroSaude("saude:440"));
 }
 __load().then(cartoesEstadosSaude).catch(err => { const m = document.getElementById('subSaude'); if (m) m.insertAdjacentHTML('afterend', '<p class="note u-rust">Erro ao carregar os dados: '+esc(err.message)+'</p>'); });
 
@@ -774,7 +777,7 @@ const AREAS = [
     }
     if (el('fonteDengueSE')) el('fonteDengueSE').textContent = 'SINAN (Ministério da Saúde) · '
       + (D.conta === 'notificacoes' ? 'notificações, não casos confirmados' : '') ;
-  }).catch(() => {});
+  }).catch(_erroSaude("saude:777"));
 
   fetch('data/saude_desfechos/srag_serie.json').then(r => r.ok ? r.json() : null).then(S => {
     const serie = (S || {}).serie;
@@ -808,7 +811,7 @@ const AREAS = [
         + semanaEmDatas(u.se.split('-')[0], u.se) + ', a última com dado no SIVEP-Gripe. As semanas '
         + 'seguintes ainda recebem notificações e aparecem sem valor.';
     }
-  }).catch(() => {});
+  }).catch(_erroSaude("saude:811"));
 
   /* Estados com dengue em nível de alerta: a régua é do InfoDengue (níveis 3 e 4) e a agregação por
    * estado é nossa — a nota diz qual é, porque o InfoDengue não publica um nível por estado. */
@@ -822,7 +825,7 @@ const AREAS = [
       el('fonteUFsAlerta').textContent = 'InfoDengue (Fiocruz/FGV) · o estado entra quando ao menos '
         + 'um município acompanhado está em nível 3 ou 4';
     }
-  }).catch(() => {});
+  }).catch(_erroSaude("saude:825"));
 
   /* O calor vem de `calor_excesso`, que é onde o coletor o escreve: `resumo` com as quatro classes
    * do vocabulário do Ministério da Saúde e `municipios_lidos`. A primeira versão deste cartão
@@ -848,7 +851,7 @@ const AREAS = [
       el('fonteCalorMun').textContent = 'Painel Nacional de Excesso de Calor (Ministério da Saúde) · '
         + n(lidos) + (Number(lidos) === 1 ? ' município lido' : ' municípios lidos') + (C.data ? ' · consulta de ' + (MonitorMapas.dataBR(C.data) || C.data) : '');
     }
-  }).catch(() => {});
+  }).catch(_erroSaude("saude:851"));
 
   fetch('data/monitor_saude.json').then(r => r.ok ? r.json() : null).then(MS => {
     const r = ((MS || {}).resposta) || {};
@@ -857,7 +860,7 @@ const AREAS = [
       el('fonteEmergSaude').textContent = 'Desde ' + (r.desde || '—')
         + ' · emergência em saúde pública de importância nacional e decretos estaduais';
     }
-  }).catch(() => {});
+  }).catch(_erroSaude("saude:860"));
 })();
 
 /* ===== Dengue e chikungunya pela fonte primária (bloco A.3) =====
@@ -1024,9 +1027,9 @@ const AREAS = [
           el(cfg.dl).innerHTML = Object.keys(taxa).sort((a, b) => taxa[b] - taxa[a]).map(uf =>
             '<dt>' + esc(uf) + '</dt><dd>' + umaCasa(taxa[uf]) + ' por 100 mil habitantes · ' + n(acum[uf]) + ' notificações</dd>').join('');
         }
-      }).catch(() => {});
+      }).catch(_erroSaude("saude:1027"));
     });
-  }).catch(() => {});
+  }).catch(_erroSaude("saude:1029"));
 })();
 
 
@@ -1063,7 +1066,7 @@ const AREAS = [
       el('fonteIndiceSaude').textContent = 'MARÉ, sobre documentos oficiais lidos · '
         + (res.verificadas || 0) + ' de 27 estados verificados';
     }
-  }).catch(() => {});
+  }).catch(_erroSaude("saude:1066"));
 
   /* 2 · O que foi localizado em cada estado: plano, coordenação na saúde e ligação com o governo
    * do estado. Em linguagem de leitor — o leitor não precisa saber que internamente são F1 e F2. */
@@ -1100,7 +1103,7 @@ const AREAS = [
     if (window.MonitorMapas) {
       MonitorMapas.credito('boxVerificacaoUF', {fontes: ['MARÉ, sobre diários oficiais e portais das secretarias'], data: SUFd.corte});
     }
-  }).catch(() => {});
+  }).catch(_erroSaude("saude:1103"));
 
   /* 3 · Risco previsto por estado — famílias derivadas dos boletins do Painel El Niño. */
   Promise.all([
@@ -1133,7 +1136,7 @@ const AREAS = [
     // O dado não traz a numeração dos boletins lidos: a frase não a fixa (nº 1 a 3 envelhecia).
     if (el('linhaRiscoSan')) el('linhaRiscoSan').textContent = 'boletins do Painel El Niño';
     MonitorMapas.credito('boxRiscoSan', {fontes: ['Painel El Niño 2026-2027 (CEMADEN/INPE)'], data: SUFd.corte});
-  }).catch(() => {});
+  }).catch(_erroSaude("saude:1136"));
 
   /* 4 · Síndrome respiratória grave por estado, por 100 mil habitantes. */
   Promise.all([
@@ -1180,7 +1183,7 @@ const AREAS = [
         '<dt>' + esc(uf) + '</dt><dd>' + umaCasa(taxa[uf]) + ' por 100 mil habitantes · ' + n(acum[uf]) + ' internações</dd>').join('');
     }
     if (el('linhaSragUF')) el('linhaSragUF').textContent = 'acumulado de ' + ano + ' · ' + Object.keys(taxa).length + ' estados com dado';
-  }).catch(() => {});
+  }).catch(_erroSaude("saude:1183"));
 
   /* 5 · Calor: a distribuição por classe. O Painel do MS publica FOTOGRAFIA por município, não
    * série — e o cartão mostra o que a fonte tem, em vez de fingir uma série semanal. */
@@ -1225,7 +1228,7 @@ const AREAS = [
         + 'de ' + n(C.municipios_lidos || 0) + ' lidos. O vocabulário das classes é o do Ministério '
         + 'da Saúde.';
     }
-  }).catch(() => {});
+  }).catch(_erroSaude("saude:1228"));
 
   /* 6 · As três buscas por município. Mesma trava nas três: cidade fora do que a fonte cobre
    * aparece como NÃO ACOMPANHADA, nunca como zero — e a lista oferecida é a do IBGE inteira, para
@@ -1273,7 +1276,7 @@ const AREAS = [
       };
       ent.addEventListener('change', mostrar);
       ent.addEventListener('input', () => { if ((ent.value || '').length > 2) mostrar(); });
-    }).catch(() => {});
+    }).catch(_erroSaude("saude:1276"));
   }
 
   const NIVEL = {1: 'nível 1 (baixa atividade)', 2: 'nível 2 (atenção)', 3: 'nível 3 (alerta)',
@@ -1335,5 +1338,5 @@ const AREAS = [
         ? '. Anunciado; documento não localizado até ' + esc(F.corte || 'o corte') + '.' : '';
       return '<li>' + alvoTxt + (meta ? ' <span class="u-muted">(' + meta + ')</span>' : '') + nl + '</li>';
     }).join('');
-  }).catch(() => {});
+  }).catch(_erroSaude("saude:1338"));
 })();

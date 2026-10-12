@@ -1,3 +1,6 @@
+/* A7-17 (12/10/2026): erro de bloco que não renderiza não é engolido em silêncio — vai ao
+   console com o lugar, onde o portão de runtime e quem abre o DevTools o veem. */
+function _erroImp(onde) { return function (e) { try { console.error("[MARÉ] falha em " + onde + ":", e); } catch (_) {} }; }
 const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 // ===== imprensa.html · release da edição (handover de 01/10/2026) =====
 // O release é o texto aprovado, e todo número dele vem do banco — inclusive os da SEMANA, que são
@@ -55,7 +58,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
   fetch('data/meta.json').then(r => r.ok ? r.json() : null).then(M => {
     if (!M) return;
     ['relData', 'relData2', 'relDataRelease'].forEach(i => põe(i, M.atualizado_em || M.corte));
-  }).catch(() => {});
+  }).catch(_erroImp("imprensa:58"));
 
   // "Acesso em" é a data de HOJE, de quem está lendo — é isso que uma referência pede.
   const hoje = new Date();
@@ -73,7 +76,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       const antes = b.textContent;
       b.textContent = 'Texto copiado';
       setTimeout(() => { b.textContent = antes; }, 2000);
-    }).catch(() => {});
+    }).catch(_erroImp("imprensa:76"));
   });
 })();
 
@@ -124,12 +127,12 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
         ? ''
         : (C.texto('imprensa.calculo.saude_parcial', { n: verificadas }) || '');
       comValores(document.getElementById('calculoSaude'), { parcial: parcial });
-    }).catch(() => {});
+    }).catch(_erroImp("imprensa:127"));
 
     fetch('data/cadencia_publicacao.json').then(r => r.ok ? r.json() : null).then(cad => {
       const vezes = (cad || {}).publicacoes_por_dia;
       if (!vezes) return;                     /* zero nao vira frase: fica o texto de reserva */
       comValores(document.getElementById('perguntaFrequencia'), { n: vezes });
-    }).catch(() => {});
+    }).catch(_erroImp("imprensa:133"));
   });
 })();

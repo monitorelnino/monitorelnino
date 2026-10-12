@@ -36,6 +36,10 @@ não pontuados permanecem na versão corrente.
 
 O portão de vocabulário só conhecia palavras que já tinham aparecido. Passa a reprovar também a forma do vazamento: data ISO fora de endereço, `undefined`/`NaN`/objeto, chave de molde `{x}` não preenchida, "rascunho/handover/placeholder/a aprovar/texto interno" e decimal com ponto antes de unidade. Roda no PR, sem barrar a publicação do dia; as páginas de hoje passam limpas. Onde: `scripts/verificar_vocabulario_publico.js`.
 
+## 2026-10-12 · #PR · erro de página deixa de ser engolido (A7-17)
+
+Trinta e dois `.catch(() => {})` em Saúde, Financiamento e Imprensa escondiam o erro do bloco que não renderizava, inclusive dos portões de runtime. Cada um passa a relatar ao console com o lugar (`saude:123`), sem mudar o que o leitor vê; o portão de estrutura reprova a forma silenciosa. Onde: `assets/js/{saude,financiamento,imprensa}.js`, `scripts/verificar_estrutura.js`.
+
 ## 2026-10-12 · #PR · portão de segredo no diff do PR (A7-11)
 
 Nenhum portão procurava credencial ou CPF fora de `evidencias/`: um token colado num JSON de `data/` ou num script de página iria ao ar com tudo verde. `verificar_segredos.py` lê as linhas acrescentadas pelo PR e reprova credencial com prefixo e chave privada em qualquer arquivo, e atribuição de chave e CPF em conteúdo publicado. Roda sempre, no job de estrutura.
