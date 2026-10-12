@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · o ano do ato do MMA no cartão vem da publicação (A4-32)
+
+O cartão do município citava "(MMA, ano)" com o ano da nossa consulta quando o arquivo não trazia a data do ato — em janeiro, o ano mudaria sozinho. O cartão passa a receber a data de publicação da portaria; sem ela, o ano declarado no próprio instrumento; sem nenhum, nenhum ano. Hoje continua "2026". Onde: `scripts/gerar_enquadramento_card.py`, `assets/js/index.js`.
+
 ## 2026-10-12 · #PR · idempotência dos derivados confere de verdade; molde do Wayback não é prova (A7-22, A6-29)
 
 O portão de idempotência comparava só o que o `git status` mostrava e, com a árvore em dia, conferia zero arquivos. Passa a comparar tudo o que o manifesto sela (581 hoje) e roda a segunda regeneração noutro fuso (UTC+14), para pegar gerador que lê a data local em vez da data do corte. E o endereço-molde do Wayback (`/web/*/`) deixa de contar como evidência preservada; só captura com data conta. Onde: `scripts/verificar_idempotencia_dos_derivados.py`, `verificar_evidencias.py`.

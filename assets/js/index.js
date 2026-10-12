@@ -262,12 +262,16 @@ const ENQ_TEXTO = {
 // Os tipos que a nota tecnica nomeia, pelos nomes da fonte, em ordem alfabetica.
 const ENQ_TIPO = {d: 'deslizamento', e: 'enxurrada', i: 'inundação'};
 
-// O ano do instrumento, para o texto que o cita. Vem da data gravada na fonte; sem data, o texto
-// fica sem o parenteses em vez de inventar ano.
+// O ano do instrumento, para o texto que o cita. Vem da data de PUBLICACAO do ato (A4-32,
+// 12/10/2026: caia no `consultado_em`, que e a data da nossa consulta e vira o ano em janeiro);
+// sem ela, do ano que o proprio instrumento declara ("de 19 de junho de 2026"); sem nenhum dos
+// dois, o texto fica sem o parenteses em vez de inventar ano.
 function anoDaFonte(fam){
   const f = (ENQ_FONTES || {})[fam] || {};
-  const m = /(\d{4})/.exec(String(f.publicada_em || f.consultado_em || ''));
-  return m ? m[1] : '';
+  const pub = /(\d{4})/.exec(String(f.publicada_em || ''));
+  if (pub) return pub[1];
+  const doAto = /\bde\s+\d{1,2}\s+de\s+[a-zç]+\s+de\s+(\d{4})/i.exec(String(f.instrumento || ''));
+  return doAto ? doAto[1] : '';
 }
 
 // Bloco do cartão do município. Vazio quando não se sabe DE QUE município se trata: "não consta de
