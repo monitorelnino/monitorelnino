@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · cartão de número segue a régua: zero por extenso, vírgula decimal (A7-14)
+
+Duas regras de números do `layout/regras.json` só existiam no papel: zero em cartão por extenso e decimal com vírgula. A conformidade passa a reprová-las; o cartão de emergências da Saúde, que mostrava "0", passa a mostrar "zero" — e ausência de dado nele vira "sem dado", nunca zero. Onde: `scripts/verificar_conformidade.py`, `assets/js/saude.js`, `saude.html`.
+
 ## 2026-10-12 · #PR · idempotência dos derivados confere de verdade; molde do Wayback não é prova (A7-22, A6-29)
 
 O portão de idempotência comparava só o que o `git status` mostrava e, com a árvore em dia, conferia zero arquivos. Passa a comparar tudo o que o manifesto sela (581 hoje) e roda a segunda regeneração noutro fuso (UTC+14), para pegar gerador que lê a data local em vez da data do corte. E o endereço-molde do Wayback (`/web/*/`) deixa de contar como evidência preservada; só captura com data conta. Onde: `scripts/verificar_idempotencia_dos_derivados.py`, `verificar_evidencias.py`.

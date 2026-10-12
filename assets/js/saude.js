@@ -1,6 +1,14 @@
 /* A7-17 (12/10/2026): erro de bloco que não renderiza não é engolido em silêncio — vai ao
    console com o lugar, onde o portão de runtime e quem abre o DevTools o veem. */
 function _erroSaude(onde) { return function (e) { try { console.error("[MARÉ] falha em " + onde + ":", e); } catch (_) {} }; }
+/* A7-14 (12/10/2026): número de cartão pela régua de `layout/regras.json` (numeros) — zero medido
+   se escreve por extenso, e ausência de dado nunca vira zero. */
+function _qtdCartao(v) {
+  if (v === null || v === undefined || v === '') return 'sem dado';
+  const x = Number(v);
+  if (!Number.isFinite(x)) return 'sem dado';
+  return x === 0 ? 'zero' : x.toLocaleString('pt-BR');
+}
 // ===== saude.html · bloco 1 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
 let BR_GEOJSON, SUF, SSIN, SINAIS, MARE, MSAUDE, DESF, DESF_CANAL, DESF_COMP, PAINEL_LISTA, SRAG;
 /* Número em texto público com vírgula decimal (A4-16); não-número passa como veio ("—", nulo). */
@@ -129,7 +137,7 @@ async function __load(){
       }
       if (el('nEmergSaude')) {
         const r = (MSAUDE && MSAUDE.resposta) || {};
-        el('nEmergSaude').textContent = n(r.emergencias);
+        el('nEmergSaude').textContent = _qtdCartao(r.emergencias);
         el('fonteEmergSaude').textContent = 'Desde ' + (r.desde || '—')
           + ' · emergência em saúde pública de importância nacional e decretos estaduais';
       }
@@ -855,7 +863,7 @@ const AREAS = [
 
   fetch('data/monitor_saude.json').then(r => r.ok ? r.json() : null).then(MS => {
     const r = ((MS || {}).resposta) || {};
-    if (el('nEmergSaude')) el('nEmergSaude').textContent = n(r.emergencias);
+    if (el('nEmergSaude')) el('nEmergSaude').textContent = _qtdCartao(r.emergencias);
     if (el('fonteEmergSaude')) {
       el('fonteEmergSaude').textContent = 'Desde ' + (r.desde || '—')
         + ' · emergência em saúde pública de importância nacional e decretos estaduais';
