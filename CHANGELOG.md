@@ -34,7 +34,7 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-12 · #PR · vocabulário público ganha regras de forma (A7-03)
 
-O portão de vocabulário só conhecia palavras que já tinham aparecido. Passa a reprovar também a forma do vazamento: data ISO fora de endereço, `undefined`/`NaN`/objeto, chave de molde `{x}` não preenchida, "rascunho/handover/placeholder/a aprovar/texto interno" e decimal com ponto antes de unidade. As páginas de hoje passam limpas. Onde: `scripts/verificar_vocabulario_publico.js`.
+O portão de vocabulário só conhecia palavras que já tinham aparecido. Passa a reprovar também a forma do vazamento: data ISO fora de endereço, `undefined`/`NaN`/objeto, chave de molde `{x}` não preenchida, "rascunho/handover/placeholder/a aprovar/texto interno" e decimal com ponto antes de unidade. Roda no PR, sem barrar a publicação do dia; as páginas de hoje passam limpas. Onde: `scripts/verificar_vocabulario_publico.js`.
 
 ## 2026-10-12 · #PR · portão de segredo no diff do PR (A7-11)
 

@@ -7,6 +7,7 @@
  * Uso: node scripts/verificar_vocabulario_publico.js [--listar] */
 const fs = require("fs"), path = require("path"); const { JSDOM, VirtualConsole } = require("jsdom"); const { inlinePageJs } = require("./_inline_js");
 const RAIZ = path.join(__dirname, ".."); const listar = process.argv.includes("--listar");
+const comForma = process.argv.includes("--forma");
   // 30/09/2026 (§309): "calendario-eleitoral.html" saiu desta lista — a página foi apagada do
   // código, com as outras duas telas de calendário (decisão da editoria).
 const PAGINAS = ["index.html", "defesa-civil.html", "monitor-de-riscos.html", "saude.html", "financiamento.html", "proteja-se.html", "prefeituras.html", "obrigado.html", "imprensa.html", "blog.html"].filter(p => fs.existsSync(path.join(RAIZ, p)));
@@ -25,8 +26,12 @@ const PROIBIDOS = [
   [/pedidos? de acesso à informação enviados?/gi, "registro de pedidos de LAI (nunca no site)"],
   [/\bsess[ãa]o (metodológica|paralela|de construção)\b/gi, "'sessão' interna"],
   [/\bTODO\b|\bFIXME\b|\bXXX\b/g, "marcador de pendência"],
-  // A7-03 (12/10/2026): regras de FORMA, não só de palavra — a classe do "texto interno vazado em
-  // saude.html" de 07/10. Lista fechada de palavras não pega o que nunca apareceu.
+];
+// A7-03 (12/10/2026): regras de FORMA, não só de palavra — a classe do "texto interno vazado em
+// saude.html" de 07/10. Lista fechada de palavras não pega o que nunca apareceu. Rodam com
+// `--forma` (no PR, que não barra a publicação): dado externo com data ISO ou ponto decimal não
+// pode parar o site do dia — quem corrige a forma é o PR do código que a desenha.
+const FORMA = [
   // (a data dentro de um endereço — o slug do texto do blog — não é data ao leitor)
   [/(?<![\/\w-])20\d{2}-[01]\d-[0-3]\d(?![\w-])/g, "data ISO (no site: dd/mm/aaaa ou por extenso)"],
   [/\b(?:undefined|NaN|\[object Object\])\b/g, "valor de programa vazado (undefined/NaN/objeto)"],
@@ -55,9 +60,10 @@ let total = 0;
     const textoDeProva = provas.map(e => e.textContent).join(" ").replace(/\s+/g, " ");
     provas.forEach(e => e.remove());
     const texto = d.body.textContent.replace(/\s+/g, " ");
-    const REGRAS_PROVA = PROIBIDOS.filter(([, rot]) => !/nome de arquivo|caminho de dados/.test(rot));
+    const REGRAS = comForma ? PROIBIDOS.concat(FORMA) : PROIBIDOS;
+    const REGRAS_PROVA = REGRAS.filter(([, rot]) => !/nome de arquivo|caminho de dados/.test(rot));
     const achados = [];
-    for (const [re, motivo] of PROIBIDOS) { const m = texto.match(re); if (m) achados.push([motivo, [...new Set(m)].slice(0, 6)]); }
+    for (const [re, motivo] of REGRAS) { const m = texto.match(re); if (m) achados.push([motivo, [...new Set(m)].slice(0, 6)]); }
     for (const [re, motivo] of REGRAS_PROVA) { const m = textoDeProva.match(re); if (m) achados.push([motivo + " (bloco de prova)", [...new Set(m)].slice(0, 6)]); }
     if (achados.length) { total += achados.length; console.log(`  ✗ ${p}:`); achados.forEach(([mo, ex]) => console.log(`      ${mo}: ${ex.join(" | ")}`)); }
     else if (listar) console.log(`  ✓ ${p}`);
