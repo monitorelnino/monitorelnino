@@ -6390,7 +6390,34 @@
    "itens": null,
    "status": "erro",
    "erro": "erro: HTTPSConnectionPool(host='www.defesacivil.sc.gov.br', port=443): Max retries exceeded with url: /2026/08/14/chuva-forte-deixa-danos-em-municipios-de-santa-catarina-e-risco-de-temporais-segue-alto-ate-sabado/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.defesacivil.sc.gov.br', port"
+  },
+  {
+   "data": "2026-10-12",
+   "script": "coletar_transferegov.py",
+   "inicio": "2026-10-12T07:50:56",
+   "duracao_s": 36.4,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "coletar_execucao_mps.py",
+   "inicio": "2026-10-12T07:51:32",
+   "duracao_s": 15.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-12",
+   "script": "coletar_siconfi_182.py",
+   "inicio": "2026-10-12T07:51:47",
+   "duracao_s": 1.1,
+   "itens": 5571,
+   "status": "ok",
+   "erro": ""
   }
  ],
- "atualizado_em": "2026-10-12T07:33:34"
+ "atualizado_em": "2026-10-12T07:51:47"
 }
