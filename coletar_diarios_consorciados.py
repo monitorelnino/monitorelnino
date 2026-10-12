@@ -342,19 +342,36 @@ def nova_sessao():
     return urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar)), jar
 
 
-def sessao_get(opener, url: str, timeout: int = 40) -> bytes:
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "*/*"})
-    with opener.open(req, timeout=timeout) as r:
-        return r.read()
+def _pela_porta_da_rede(url: str, uma_vez, dormir=None) -> bytes:
+    """A6-16 (12/10/2026): a sessão com cookie do SIGPub passava por fora de `buscar` — sem a
+    espera do §226 (503 e reset viravam falha) e sem o detector de muro (página de bloqueio virava
+    conteúdo). A tentativa continua sendo a do opener com cookie; a espera e o muro são os de todos."""
+    import coletores_base as _cb
+    corpo = _cb.com_espera(uma_vez, dormir=dormir)
+    marca = _cb.detectar_muro_de_robo(corpo)
+    if marca:
+        raise _cb.MuroDeRobo(url, marca)
+    return corpo
 
 
-def sessao_post(opener, url: str, campos: dict, timeout: int = 40) -> bytes:
+def sessao_get(opener, url: str, timeout: int = 40, dormir=None) -> bytes:
+    def uma_vez():
+        req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "*/*"})
+        with opener.open(req, timeout=timeout) as r:
+            return r.read()
+    return _pela_porta_da_rede(url, uma_vez, dormir=dormir)
+
+
+def sessao_post(opener, url: str, campos: dict, timeout: int = 40, dormir=None) -> bytes:
     corpo = urllib.parse.urlencode(campos).encode("utf-8")
-    req = urllib.request.Request(url, data=corpo, headers={
-        "User-Agent": UA, "Accept": "*/*", "Content-Type": "application/x-www-form-urlencoded",
-        "X-Requested-With": "XMLHttpRequest"})
-    with opener.open(req, timeout=timeout) as r:
-        return r.read()
+
+    def uma_vez():
+        req = urllib.request.Request(url, data=corpo, headers={
+            "User-Agent": UA, "Accept": "*/*", "Content-Type": "application/x-www-form-urlencoded",
+            "X-Requested-With": "XMLHttpRequest"})
+        with opener.open(req, timeout=timeout) as r:
+            return r.read()
+    return _pela_porta_da_rede(url, uma_vez, dormir=dormir)
 
 
 CAMINHO_SCRIPT_TOKEN = str(pathlib.Path(__file__).parent / "scripts" / "obter_token_sigpub.js")
@@ -925,8 +942,40 @@ def autoteste() -> int:
         return (len(decretos) == 1 and decretos[0]["ibge"] == "2707107"
                 and str(decretos[0]["municipio"]).upper().startswith("PIRANHAS"))
 
+    def t_sessao_pela_porta_da_rede():
+        """A6-16: 503 na sessão repete com espera; muro na sessão é recusa nomeada."""
+        import urllib.error as ue
+        import coletores_base as _cb
+
+        class _Resp:
+            def __init__(self, b): self.b = b
+            def __enter__(self): return self
+            def __exit__(self, *a): return False
+            def read(self): return self.b
+
+        class _Op:
+            def __init__(self, seq): self.seq, self.n = list(seq), 0
+            def open(self, req, timeout=None):
+                self.n += 1
+                x = self.seq.pop(0)
+                if isinstance(x, int):
+                    raise ue.HTTPError(req.full_url, x, "erro", None, None)
+                return _Resp(x)
+        esperas = []
+        op = _Op([503, b"<html>edicao</html>"])
+        ok1 = sessao_get(op, "https://x/a", dormir=esperas.append) == b"<html>edicao</html>" and op.n == 2
+        muro = (b"<html><title>Just a moment...</title><body>Checking your browser before "
+                b"accessing</body></html>")
+        try:
+            sessao_post(_Op([muro]), "https://x/b", {"a": 1}, dormir=esperas.append)
+            ok2 = False
+        except _cb.MuroDeRobo:
+            ok2 = True
+        return ok1 and ok2 and len(esperas) == 1
+
     return rodar_autoteste({
         "A6-01: o decreto e do municipio em cujo cabecalho ele esta": t_posicao_do_decreto,
+        "A6-16 a sessão do SIGPub passa pela espera e pelo detector de muro": t_sessao_pela_porta_da_rede,
         "§276 janela corrida: --desde-dias, com --desde vencendo e recusa do inválido": t_janela_desde,
         "a chave de deduplicação é a mesma que o registro grava (14 duplicatas em 29/09)": t_chave_de_dedup_e_a_do_registro,
         "§222 o canal deste coletor existe no vocabulário de canais": t_canal_no_vocabulario,
