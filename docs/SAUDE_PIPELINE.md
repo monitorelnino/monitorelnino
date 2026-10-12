@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-04 a 2026-10-11 (686 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-04 a 2026-10-11 (689 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -20,7 +20,7 @@ Janela: 2026-10-04 a 2026-10-11 (686 execução(ões) registrada(s), 7 dias de h
 
 | script | papel | última execução | duração | itens | status | erro |
 |---|---|---|---|---:|---|---|
-| `recalcular_mare.py` | essencial | 2026-10-11 01:12 | 4 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-11 01:18 | 4 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-11 07:08 | 30 s | 1 | ok | — |
 | `classificar_saude_no_plano.py` | coletor | 2026-10-11 13:41 | 4 s | — | ok | — |
 | `coletar_arboviroses_sinan.py` | coletor | 2026-10-11 13:39 | 61 s | — | ok | — |
@@ -39,9 +39,9 @@ Janela: 2026-10-04 a 2026-10-11 (686 execução(ões) registrada(s), 7 dias de h
 | `coletar_s2id.py` | coletor | 2026-10-11 02:50 | 1030 s | — | ok | — |
 | `coletar_saude.py` | coletor | 2026-10-11 13:03 | 414 s | — | ok | — |
 | `coletar_sg_esus.py` | coletor | 2026-10-11 03:37 | 8 s | — | ok | — |
-| `coletar_sinais_risco.py` | coletor | 2026-10-11 15:36 | 70 s | — | ok | — |
+| `coletar_sinais_risco.py` | coletor | 2026-10-11 01:13 | 80 s | — | ok | — |
 | `coletar_srag_sivep.py` | coletor | 2026-10-11 03:36 | 34 s | — | ok | — |
-| `coletar_transferencias_municipais.py` | coletor | 2026-10-11 15:37 | 58 s | — | ok | — |
+| `coletar_transferencias_municipais.py` | coletor | 2026-10-11 01:14 | 74 s | — | ok | — |
 | `consultar_querido_diario.py` | coletor | 2026-10-10 01:13 | 32 s | — | **erro** | urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)> |
 | `descobrir_planos.py` | coletor | 2026-10-11 08:06 | 1051 s | 42 | ok | — |
 | `detectar_marcos_federais.py` | coletor | 2026-10-11 08:06 | 2 s | 0 | ok | — |
