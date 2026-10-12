@@ -57,7 +57,7 @@ jobs:
           else
             ARQUIVOS=$(git diff --name-only "$BASE" "${{ github.sha }}")
             echo "arquivos alterados:"; echo "$ARQUIVOS"
-            if echo "$ARQUIVOS" | grep -qE '(^|/)data/|\.py$|^requirements\.txt$|^\.github/workflows/atualizar\.yml$|^\.github/workflows/portoes\.yml$|^package(-lock)?\.json$'; then
+            if echo "$ARQUIVOS" | grep -qE '(^|/)data/|\.py$|^requirements\.txt$|^\.github/workflows/atualizar\.yml$|^\.github/workflows/portoes\.yml$|^package(-lock)?\.json$|^config/'; then
               echo "dado_mudou=true" >> "$GITHUB_OUTPUT"; echo "→ dado/coleta mudou: suíte completa"
             else
               echo "dado_mudou=false" >> "$GITHUB_OUTPUT"; echo "→ só página/estrutura: pulando portões de dado"
@@ -68,7 +68,10 @@ jobs:
             # ficha semântica. Um PR que só toca `.py` de coletor não abre navegador nem varre
             # legenda. O padrão é amplo de propósito: falso positivo custa tempo, falso negativo
             # custa um defeito no ar.
-            if echo "$ARQUIVOS" | grep -qE '\.html$|^assets/|^docs/fichas_semanticas\.json$|^scripts/verificar_(legendas|vocabulario_publico|voz_editorial|fichas_semanticas|figuras|movel|consistencia_visual)\.js$'; then
+            # A7-10 (12/10/2026): catálogo de conteúdo, contratos e regras de layout, o medidor e
+            # o netlify.toml mudam a página; `config/` muda a corrente. `quais_portoes.py` LÊ estas
+            # duas regex daqui — não há cópia.
+            if echo "$ARQUIVOS" | grep -qE '\.html$|^assets/|^docs/fichas_semanticas\.json$|^scripts/[^/]+\.js$|^conteudo/|^layout/|^netlify\.toml$'; then
               echo "pagina_mudou=true" >> "$GITHUB_OUTPUT"; echo "→ página/estilo mudou: portões de texto e de navegador entram"
             else
               echo "pagina_mudou=false" >> "$GITHUB_OUTPUT"; echo "→ nenhuma página tocada: pulando portões de texto e de navegador"
@@ -447,7 +450,7 @@ jobs:
           else
             ARQUIVOS=$(git diff --name-only "$BASE" "${{ github.sha }}")
             echo "arquivos alterados:"; echo "$ARQUIVOS"
-            if echo "$ARQUIVOS" | grep -qE '(^|/)data/|\.py$|^requirements\.txt$|^\.github/workflows/atualizar\.yml$|^\.github/workflows/portoes\.yml$|^package(-lock)?\.json$'; then
+            if echo "$ARQUIVOS" | grep -qE '(^|/)data/|\.py$|^requirements\.txt$|^\.github/workflows/atualizar\.yml$|^\.github/workflows/portoes\.yml$|^package(-lock)?\.json$|^config/'; then
               echo "dado_mudou=true" >> "$GITHUB_OUTPUT"; echo "→ dado/coleta mudou: suíte completa"
             else
               echo "dado_mudou=false" >> "$GITHUB_OUTPUT"; echo "→ só página/estrutura: pulando portões de dado"
@@ -458,7 +461,7 @@ jobs:
             # ficha semântica. Um PR que só toca `.py` de coletor não abre navegador nem varre
             # legenda. O padrão é amplo de propósito: falso positivo custa tempo, falso negativo
             # custa um defeito no ar.
-            if echo "$ARQUIVOS" | grep -qE '\.html$|^assets/|^docs/fichas_semanticas\.json$|^scripts/verificar_(legendas|vocabulario_publico|voz_editorial|fichas_semanticas|figuras|movel|consistencia_visual)\.js$'; then
+            if echo "$ARQUIVOS" | grep -qE '\.html$|^assets/|^docs/fichas_semanticas\.json$|^scripts/[^/]+\.js$|^conteudo/|^layout/|^netlify\.toml$'; then
               echo "pagina_mudou=true" >> "$GITHUB_OUTPUT"; echo "→ página/estilo mudou: portões de texto e de navegador entram"
             else
               echo "pagina_mudou=false" >> "$GITHUB_OUTPUT"; echo "→ nenhuma página tocada: pulando portões de texto e de navegador"
@@ -617,7 +620,7 @@ jobs:
           else
             ARQUIVOS=$(git diff --name-only "$BASE" "${{ github.sha }}")
             echo "arquivos alterados:"; echo "$ARQUIVOS"
-            if echo "$ARQUIVOS" | grep -qE '(^|/)data/|\.py$|^requirements\.txt$|^\.github/workflows/atualizar\.yml$|^\.github/workflows/portoes\.yml$|^package(-lock)?\.json$'; then
+            if echo "$ARQUIVOS" | grep -qE '(^|/)data/|\.py$|^requirements\.txt$|^\.github/workflows/atualizar\.yml$|^\.github/workflows/portoes\.yml$|^package(-lock)?\.json$|^config/'; then
               echo "dado_mudou=true" >> "$GITHUB_OUTPUT"; echo "→ dado/coleta mudou: suíte completa"
             else
               echo "dado_mudou=false" >> "$GITHUB_OUTPUT"; echo "→ só página/estrutura: pulando portões de dado"
@@ -628,7 +631,7 @@ jobs:
             # ficha semântica. Um PR que só toca `.py` de coletor não abre navegador nem varre
             # legenda. O padrão é amplo de propósito: falso positivo custa tempo, falso negativo
             # custa um defeito no ar.
-            if echo "$ARQUIVOS" | grep -qE '\.html$|^assets/|^docs/fichas_semanticas\.json$|^scripts/verificar_(legendas|vocabulario_publico|voz_editorial|fichas_semanticas|figuras|movel|consistencia_visual)\.js$'; then
+            if echo "$ARQUIVOS" | grep -qE '\.html$|^assets/|^docs/fichas_semanticas\.json$|^scripts/[^/]+\.js$|^conteudo/|^layout/|^netlify\.toml$'; then
               echo "pagina_mudou=true" >> "$GITHUB_OUTPUT"; echo "→ página/estilo mudou: portões de texto e de navegador entram"
             else
               echo "pagina_mudou=false" >> "$GITHUB_OUTPUT"; echo "→ nenhuma página tocada: pulando portões de texto e de navegador"
