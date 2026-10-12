@@ -144,6 +144,14 @@ def ler_pdfs(limite: int = 40, alvo: str | None = None) -> int:
             if it.get("_reg") is not None: it["_reg"]["hash_evidencia"] = h
         elif h_novo != h:
             registrar_lacuna(f"leitura de PDF {u[:60]}", f"documento mudou desde o hash registrado ({h[:12]}… → {h_novo[:12]}…)", canal="DOM", camada=2, strings=[u])
+            # A6-23 (12/10/2026): o texto do documento NOVO ia para `evidencias/<hash antigo>.txt`
+            # — a cópia de um documento passava a dizer o conteúdo de outro. Agora o novo é
+            # preservado com o hash dele, e o antigo aponta para onde a URL foi.
+            h_antigo, h = h, h_novo
+            preservar_evidencia(bruto, u, "pdf", it.get("origem"))
+            if h_antigo in itens:
+                itens[h_antigo]["documento_mudou_para"] = h
+            it = itens.get(h, it)
         paginas = extrair_texto_por_pagina(bruto)
         if not paginas:
             falhas += 1; registrar_lacuna(f"leitura de PDF {u[:60]}", "PDF sem texto extraível (imagem?)", canal="DOM", camada=2, strings=[u]); continue
@@ -363,6 +371,11 @@ def autoteste_ocr() -> int:
     fila = {h for h, _ in alvos_ocr(itens)}
     if fila != {"a" * 64, "e" * 64}:
         falhas.append(f"alvos_ocr devolveu {sorted(x[:1] for x in fila)}, esperado o escaneado e o abaixo do piso")
+    # 1a. (A6-23) documento que mudou ganha hash próprio; o texto não vai para o hash antigo
+    import inspect as _insp
+    _src = _insp.getsource(ler_pdfs)
+    if "h_antigo, h = h, h_novo" not in _src or "documento_mudou_para" not in _src:
+        falhas.append("A6-23: documento que mudou grava o texto novo sob o hash antigo")
     # 1b. (A6-06) a fila anda: quem falhou hoje espera; quem falhou menos vai primeiro
     _al = [("x", {"ocr_tentativas": 3, "ocr_ultima_falha": "2026-10-10"}),
            ("y", {"ocr_tentativas": 1, "ocr_ultima_falha": "2026-10-12"}),
