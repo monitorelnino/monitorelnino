@@ -34,7 +34,7 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-12 · #PR · texto de cinco páginas no catálogo (A4-34)
 
-Início, Saúde, Proteja-se, Prefeituras e Obrigado passam a ler o texto público de `conteudo/<pagina>.json` (124 entradas), por migração mecânica: texto renderizado idêntico com e sem catálogo. O migrador deixa de fora elemento que o JS da página reescreve (em Saúde, cinco rótulos com a semana) — migrado, o catálogo sobrescrevia o dado (`scripts/migrar_para_catalogo.py`).
+Início, Saúde, Proteja-se, Prefeituras e Obrigado passam a ler o texto público de `conteudo/<pagina>.json` (124 entradas), por migração mecânica: texto renderizado idêntico com e sem catálogo. O migrador deixa de fora elemento que o JS da página reescreve (em Saúde, cinco rótulos com a semana) — migrado, o catálogo sobrescrevia o dado (`scripts/migrar_para_catalogo.py`). O contador de palavras volta a ignorar legenda com `data-conteudo`.
 
 ## 2026-10-12 · #PR · reconhecimento federal: consultado e não localizado é `false` (A3-17)
 
