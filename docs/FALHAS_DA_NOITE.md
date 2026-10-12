@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-11. 42 falhas; 37 com caso de teste que as reproduz; 5 sem, com o que falta dito.
+Atualizado em 2026-10-11. 43 falhas; 38 com caso de teste que as reproduz; 5 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -383,3 +383,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** run 38160933469 (17:48 UTC): passo de reposição success com "Error: Unauthorized: could not retrieve site"
 - **Correção:** O passo termina com `::error::` e `exit 1` (publicar_dados.yml e atualizar.yml, depois de empurrar o dado e registrar o relatório); `validar_workflows.py` reprova deploy que só avisa, salvo exceção declarada `f42-aviso-ok:`.
 - **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_deploy_falho_e_vermelho`
+
+## F43 · Checagem pré-noite com dois falsos alarmes
+
+- **Noite:** 2026-10-11
+- **Sintoma:** Dispatch 38171285483: ✗ "despachante vivo (74 min)"; dispatch 38169379684: ✗ "fila vazia".
+- **Causa:** O despacho roda também dentro de `relogio.yml` (`--origem relogio-claude`), que a pergunta não contava; e a fila contava runs de ramos `ensaio-real/*` e `coleta-dia/*`, que não disputam a noite.
+- **Prova:** run 38171285483 (20:13 UTC, 11/10); run 38169379684 (19:52 UTC, 11/10)
+- **Correção:** Despachante vivo = o mais recente entre `despachante.yml` e `relogio.yml`; runs de `ensaio-real/*` e `coleta-dia/*` fora da fila.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_checagem_pre_noite_nao_e_cega`
