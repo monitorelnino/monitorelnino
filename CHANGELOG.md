@@ -36,6 +36,10 @@ não pontuados permanecem na versão corrente.
 
 Os portões de vocabulário, voz editorial e legendas liam uma lista de páginas escrita à mão, sem os textos do blog nem o índice de conteúdo. Passam a ler `blog/*.html` da pasta e o índice; todos passam limpos. O registro técnico de mudanças fica fora de propósito: nomeia arquivos e portões para quem audita. Onde: `scripts/verificar_{vocabulario_publico,voz_editorial}.js`, `scripts/verificar_legendas.js`.
 
+## 2026-10-12 · #PR · vocabulário público ganha regras de forma (A7-03)
+
+O portão de vocabulário só conhecia palavras que já tinham aparecido. Passa a reprovar também a forma do vazamento: data ISO fora de endereço, `undefined`/`NaN`/objeto, chave de molde `{x}` não preenchida, "rascunho/handover/placeholder/a aprovar/texto interno" e decimal com ponto antes de unidade. Roda no PR, sem barrar a publicação do dia; as páginas de hoje passam limpas. Onde: `scripts/verificar_vocabulario_publico.js`.
+
 ## 2026-10-12 · #PR · erro de página deixa de ser engolido (A7-17)
 
 Trinta e dois `.catch(() => {})` em Saúde, Financiamento e Imprensa escondiam o erro do bloco que não renderizava, inclusive dos portões de runtime. Cada um passa a relatar ao console com o lugar (`saude:123`), sem mudar o que o leitor vê; o portão de estrutura reprova a forma silenciosa. Onde: `assets/js/{saude,financiamento,imprensa}.js`, `scripts/verificar_estrutura.js`.
