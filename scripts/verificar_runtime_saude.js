@@ -138,6 +138,34 @@ for (const id of ["mapaMonitor", "mapaDengueUF", "mapaChikUF", "mapaCalor"]) {
     tiles.find(t => t.dataset.uf === "GO").click();
     return q("detailSaudeConteudo").textContent.length > 40;
   })());
+  // A7-02 (12/10/2026): a grade mostrava 0,0 em 21 cartões (o número ficava só no
+  // `data-contar`) e nenhum portão comparava o cartão com o dado. Agora: todo estado verificado
+  // ESCREVE a prontidão de `monitor_saude.json`, e o não verificado diz isso, sem número.
+  teste("grade: cada cartão escreve a prontidão do dado, não 0,0", (() => {
+    const U = MSd2.ufs || {};
+    const tiles = [...d.querySelectorAll("#regionsSaude .tile")];
+    if (tiles.length !== 27) return false;
+    return tiles.every(t => {
+      const m = U[t.dataset.uf] || {};
+      const s = t.querySelector(".tile-score");
+      if (!s) return false;
+      if (!m.verificado) return /não verificado/.test(s.textContent);
+      const escrito = parseFloat((s.textContent || "").replace(",", "."));
+      return isFinite(escrito) && Math.abs(escrito - Number(m.prontidao)) < 0.06;
+    });
+  })());
+  // A4-33 (12/10/2026): o portão abria só a ficha de GO, e MS, MT e PB lançavam ReferenceError
+  // ao abrir (A4-02) com o portão verde. Agora abre as 27 e cobra conteúdo e nenhum erro novo.
+  teste("as 27 fichas de estado abrem, sem erro de script", (() => {
+    const antes = erros.length;
+    const tiles = [...d.querySelectorAll("#regionsSaude .tile")];
+    const vazias = [];
+    for (const t of tiles) {
+      try { t.click(); } catch (e) { erros.push(String(e)); }
+      if ((q("detailSaudeConteudo").textContent || "").length <= 40) vazias.push(t.dataset.uf);
+    }
+    return tiles.length === 27 && vazias.length === 0 && erros.length === antes;
+  })());
   /* Bloco B.3 do handover de 02/10/2026: a coordenação aparece na ficha em DUAS linhas, em
      linguagem de leitor, e a palavra interna "antecipação" não aparece. Função não procurada diz
      "ainda não verificada" — nunca ausência de estrutura. */

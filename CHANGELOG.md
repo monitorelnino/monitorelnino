@@ -36,6 +36,14 @@ não pontuados permanecem na versão corrente.
 
 Na ficha do estado, "resultado após 25/07 não localizado" era frase fixa do código, sem data, havia 73 dias. Passa a levar o limite da verificação, do dado: "não localizado até 05/09/2026" (`adpf743.resultado_verificado_em`, ou `registrado_em`), como pede o teto de ausência (`assets/js/index.js`). URL e hash dos 54 instrumentos estaduais seguem pendentes.
 
+## 2026-10-12 · #PR · portão compara a grade da Saúde com o dado (A7-02, A4-33)
+
+A grade dos 27 estados em `saude.html` chegou a mostrar 0,0 em 21 cartões e nenhum portão comparava o número escrito com `monitor_saude.json`. `verificar_runtime_saude.js` passa a exigir que cada estado verificado escreva a sua prontidão e que o não verificado diga isso, sem número; provado por mutação (sem a animação, reprova). E abre as 27 fichas, não só a de GO (A4-33).
+
+## 2026-10-12 · #PR · juiz da Saúde usa a data do cabeçalho do ato (A5-37)
+
+`data_do_cabecalho` existia e só o autoteste a chamava: o juiz da camada de Saúde registrava a data, o tipo e o número do primeiro ato citado no preâmbulo (Res. SESA 680/2008 do PR saía como lei de 03/06/1987). Quando o cabeçalho traz a data por extenso, é ela, com tipo e número, que vale (`julgar_saude.com_data_do_cabecalho`).
+
 ## 2026-10-12 · #PR · texto de cinco páginas no catálogo (A4-34)
 
 Início, Saúde, Proteja-se, Prefeituras e Obrigado passam a ler o texto público de `conteudo/<pagina>.json` (124 entradas), por migração mecânica: texto renderizado idêntico com e sem catálogo. O migrador deixa de fora elemento que o JS da página reescreve (em Saúde, cinco rótulos com a semana) — migrado, o catálogo sobrescrevia o dado (`scripts/migrar_para_catalogo.py`). O contador de palavras volta a ignorar legenda com `data-conteudo`.

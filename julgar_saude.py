@@ -498,6 +498,21 @@ def data_do_cabecalho(texto: str):
     return f"{int(dia):02d}/{n:02d}/{ano}" if n else None
 
 
+def com_data_do_cabecalho(texto: str, dados: dict) -> dict:
+    """`dados` da etapa 2 com a data do cabeçalho do ato, quando há uma e difere. Função pura."""
+    cabecalho = data_do_cabecalho(texto)
+    if not cabecalho or cabecalho == (dados or {}).get("data"):
+        return dados
+    novo = {**(dados or {}), "data": cabecalho, "data_de": "cabeçalho do ato"}
+    # O tipo e o número também são os do cabeçalho: a etapa 2 lera os da lei citada.
+    m = RE_CABECALHO_DE_ATO.search(texto or "")
+    num = re.search(r"\bn?[ºo°]?\s*(\d[\d.]*)", m.group(1)) if m else None
+    if m and num:
+        novo["tipo"] = m.group(1).split()[0].lower()
+        novo["numero"] = num.group(1).rstrip(".")
+    return novo
+
+
 def titulo_do_documento(texto: str, titulo_da_pista: str, url: str) -> str:
     """O título que vai para o registro público. Função pura.
 
@@ -543,6 +558,11 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
         v["motivo"] = motivo; return v
 
     ok, motivo, dados = juiz.etapa2_citacao(texto, plano_tecnico)
+    # A5-37 (12/10/2026): `data_do_cabecalho` existia e só o autoteste a chamava — o juiz seguia
+    # com a data da janela depois do PRIMEIRO número de ato, que no preâmbulo é a lei citada
+    # (Res. SESA 680/2008 do PR saía com 03/06/1987). Quando o cabeçalho do ato traz a data por
+    # extenso, é ela que vale.
+    dados = com_data_do_cabecalho(texto, dados)
     v["criterios"]["2_citacao"] = {"ok": ok, "trecho": dados.get("trecho", ""), "dados": dados}
     v["data"] = dados.get("data")
     v["numero"] = dados.get("numero")
@@ -841,6 +861,19 @@ def autoteste() -> int:
             lambda: data_do_cabecalho("Considerando a Lei nº 7.498, de 03 de junho de 1987; "
                                       "RESOLUÇÃO SESA nº 680, de 15 de dezembro de 2008. "
                                       "O Secretário resolve:") == "15/12/2008",
+        "A5-37: o juiz da camada usa a data do cabeçalho, não a da etapa 2 (lei citada)":
+            lambda: com_data_do_cabecalho(
+                "Considerando a Lei nº 7.498, de 03 de junho de 1987; RESOLUÇÃO SESA nº 680, de "
+                "15 de dezembro de 2008. O Secretário resolve:",
+                juiz.etapa2_citacao("Considerando a Lei nº 7.498, de 03 de junho de 1987; "
+                                    "RESOLUÇÃO SESA nº 680, de 15 de dezembro de 2008. "
+                                    "O Secretário resolve:")[2]) == {
+                    "tipo": "resolução", "numero": "680", "data": "15/12/2008",
+                    "data_de": "cabeçalho do ato",
+                    "trecho": "Considerando a Lei nº 7.498, de 03 de junho de 1987; RESOLUÇÃO SESA "
+                              "nº 680, de 15 de dezembro de 2008. O Secretário resolve:"},
+        "A5-37: sem cabeçalho por extenso, a data da etapa 2 fica":
+            lambda: com_data_do_cabecalho("Portaria 12/2026", {"data": "01/02/2026"})["data"] == "01/02/2026",
         "domínio: o subdomínio do instrumento vigente do ES é estadual (cinco partes)":
             lambda: dominio_de_saude_estadual("https://mosquito.saude.es.gov.br/p.pdf",
                                               "Secretaria de Estado da Saúde") is True,
