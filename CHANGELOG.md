@@ -36,6 +36,10 @@ não pontuados permanecem na versão corrente.
 
 `verificacao_municipal.json` gravava `null` para 4.858 municípios já consultados no DOU/MIDR, confundindo "consultado e não localizado" com "não coletado". Agora é `false` quando há nível nacional ou acima e data de consulta no livro; sem consulta datada segue `null` (`recalcular_mare.py`, handover 1.16). Decreto não pontua; nenhuma página exibe o campo.
 
+## 2026-10-12 · #PR · vigência de decreto com data só de ano (A3-29)
+
+28 decretos com data "2026" ou "2025/2026" ficavam "indeterminada". `verificar_vigencia.py` passa a decidir pelo intervalo possível do ano (ativo, prazo vencido ou `sem_data_de_dia` quando o ano não decide), tira `vigencia` de registro que não é decreto, grava `vigencia_em` só quando a vigência muda e ganha autoteste no portão. Nenhuma página exibe o campo.
+
 ## 2026-10-12 · #PR · verificação de links cobre todas as páginas públicas (A6-18, parte)
 
 `verificar_links.py` conferia links de 5 páginas fixas; saúde, financiamento, imprensa, monitor de riscos e blog ficavam de fora. A lista passa a vir de `paginas_publicas` em `layout/regras.json`, mais `obrigado.html`. O histórico de "quebrado desde quando" segue pendente.
