@@ -144,6 +144,14 @@ def ler_pdfs(limite: int = 40, alvo: str | None = None) -> int:
             if it.get("_reg") is not None: it["_reg"]["hash_evidencia"] = h
         elif h_novo != h:
             registrar_lacuna(f"leitura de PDF {u[:60]}", f"documento mudou desde o hash registrado ({h[:12]}… → {h_novo[:12]}…)", canal="DOM", camada=2, strings=[u])
+            # A6-23 (12/10/2026): o texto do documento NOVO ia para `evidencias/<hash antigo>.txt`
+            # — a cópia de um documento passava a dizer o conteúdo de outro. Agora o novo é
+            # preservado com o hash dele, e o antigo aponta para onde a URL foi.
+            h_antigo, h = h, h_novo
+            preservar_evidencia(bruto, u, "pdf", it.get("origem"))
+            if h_antigo in itens:
+                itens[h_antigo]["documento_mudou_para"] = h
+            it = itens.get(h, it)
         paginas = extrair_texto_por_pagina(bruto)
         if not paginas:
             falhas += 1; registrar_lacuna(f"leitura de PDF {u[:60]}", "PDF sem texto extraível (imagem?)", canal="DOM", camada=2, strings=[u]); continue
@@ -264,6 +272,22 @@ def alvos_ocr(itens: dict) -> list:
             and not it.get("ocr_arquivo") and not it.get("texto_manual")]
 
 
+def ordenar_alvos_ocr(alvos: list, hoje: str) -> list:
+    """A6-06 (12/10/2026): a fila de OCR anda. Quem já falhou HOJE espera o dia seguinte, e entre os
+    demais vai primeiro quem falhou menos e há mais tempo. Antes, os mesmos 6 PDFs do AM falhavam
+    3×/dia no topo da fila e os outros nunca chegavam a ser lidos. Função pura."""
+    fora = [(h, it) for h, it in alvos if str(it.get("ocr_ultima_falha") or "")[:10] != hoje]
+    return sorted(fora, key=lambda a: (int(a[1].get("ocr_tentativas") or 0),
+                                       str(a[1].get("ocr_ultima_falha") or "")))
+
+
+def _falhou_ocr(it: dict, motivo: str, hoje: str) -> None:
+    """Registra a falha no próprio item, para a fila andar (A6-06)."""
+    it["ocr_tentativas"] = int(it.get("ocr_tentativas") or 0) + 1
+    it["ocr_ultima_falha"] = hoje
+    it["ocr_motivo_falha"] = motivo[:200]
+
+
 def ocr_pdfs(limite: int = 10, paginas_max: int = 0, alvo: str | None = None) -> int:
     """§177: cópia legível por OCR dos PDFs escaneados, para que a prova deixe de ser inexistente.
 
@@ -272,7 +296,10 @@ def ocr_pdfs(limite: int = 10, paginas_max: int = 0, alvo: str | None = None) ->
     from datetime import date
     exe = tesseract_disponivel()
     idx = ler("evidencias.json", {"itens": {}}); itens = idx.setdefault("itens", {})
+    hoje = hoje_editorial().isoformat()
     alvos = filtrar_alvos(alvos_ocr(itens), alvo)
+    if not alvo:
+        alvos = ordenar_alvos_ocr(alvos, hoje)
     if not exe:
         registrar_lacuna("OCR de PDF escaneado", "Tesseract não instalado nesta máquina",
                          canal="DOM", camada=2, strings=[a[0] for a in alvos[:5]])
@@ -286,10 +313,12 @@ def ocr_pdfs(limite: int = 10, paginas_max: int = 0, alvo: str | None = None) ->
             bruto = buscar(u, timeout=120)
         except Exception as e:  # noqa: BLE001
             falhas += 1
+            _falhou_ocr(it, type(e).__name__, hoje)
             registrar_lacuna(f"OCR de {u[:60]}", type(e).__name__, canal="DOM", camada=2, strings=[u])
             continue
         if hashlib.sha256(bruto).hexdigest() != h:
             falhas += 1
+            _falhou_ocr(it, "documento mudou desde o hash registrado", hoje)
             registrar_lacuna(f"OCR de {u[:60]}", "documento mudou desde o hash registrado", canal="DOM", camada=2, strings=[u])
             continue
         try:
@@ -297,11 +326,13 @@ def ocr_pdfs(limite: int = 10, paginas_max: int = 0, alvo: str | None = None) ->
             textos = [ocr_pagina(png, exe, idioma) for png in imagens]
         except Exception as e:  # noqa: BLE001
             falhas += 1
+            _falhou_ocr(it, f"rasterização/OCR falhou ({type(e).__name__})", hoje)
             registrar_lacuna(f"OCR de {u[:60]}", f"rasterização/OCR falhou ({type(e).__name__})", canal="DOM", camada=2, strings=[u])
             continue
         caracteres = sum(len(t) for t in textos)
         if caracteres < OCR_MIN_CARACTERES:
             falhas += 1
+            _falhou_ocr(it, f"OCR devolveu {caracteres} caractere(s)", hoje)
             registrar_lacuna(f"OCR de {u[:60]}", f"OCR devolveu {caracteres} caractere(s) — abaixo do piso de {OCR_MIN_CARACTERES}",
                              canal="DOM", camada=2, strings=[u])
             continue
@@ -340,6 +371,21 @@ def autoteste_ocr() -> int:
     fila = {h for h, _ in alvos_ocr(itens)}
     if fila != {"a" * 64, "e" * 64}:
         falhas.append(f"alvos_ocr devolveu {sorted(x[:1] for x in fila)}, esperado o escaneado e o abaixo do piso")
+    # 1a. (A6-23) documento que mudou ganha hash próprio; o texto não vai para o hash antigo
+    import inspect as _insp
+    _src = _insp.getsource(ler_pdfs)
+    if "h_antigo, h = h, h_novo" not in _src or "documento_mudou_para" not in _src:
+        falhas.append("A6-23: documento que mudou grava o texto novo sob o hash antigo")
+    # 1b. (A6-06) a fila anda: quem falhou hoje espera; quem falhou menos vai primeiro
+    _al = [("x", {"ocr_tentativas": 3, "ocr_ultima_falha": "2026-10-10"}),
+           ("y", {"ocr_tentativas": 1, "ocr_ultima_falha": "2026-10-12"}),
+           ("z", {}), ("w", {"ocr_tentativas": 1, "ocr_ultima_falha": "2026-10-09"})]
+    if [h for h, _ in ordenar_alvos_ocr(_al, "2026-10-12")] != ["z", "w", "x"]:
+        falhas.append("A6-06: a fila de OCR não anda — quem falhou hoje ou mais vezes ficou na frente")
+    _it = {}
+    _falhou_ocr(_it, "HTTPError", "2026-10-12"); _falhou_ocr(_it, "HTTPError", "2026-10-13")
+    if _it.get("ocr_tentativas") != 2 or _it.get("ocr_ultima_falha") != "2026-10-13":
+        falhas.append("A6-06: a falha de OCR não fica registrada no item")
     # 2. o arquivo de OCR tem nome próprio e não sobrescreve a camada de texto do documento
     import tempfile
     global EVID

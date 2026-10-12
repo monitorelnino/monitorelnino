@@ -115,6 +115,29 @@ def _autoteste() -> int:
             ok("só extensão de texto entra no diff",
                all(pathlib.Path(c).suffix.lower() in EXTENSOES for c in atuais))
 
+    # A6-11 (12/10/2026): a porta de preservação redige CPF e não pula página latin-1.
+    import coletores_base as cb
+    with tempfile.TemporaryDirectory() as t:
+        d = pathlib.Path(t)
+        salvo = (cb.EVID, cb.RAIZ, cb.ler, cb.gravar)
+        banco = {}
+        try:
+            cb.EVID, cb.RAIZ = d / "evidencias", d
+            cb.ler = lambda nome, padrao=None: banco.get(nome, padrao)
+            cb.gravar = lambda nome, obj, **k: banco.__setitem__(nome, obj)
+            pag = ("<p>Edição: CPF 123.456.789-09 - São João</p>"
+                   '<script>var f={api_key: "4a01c0deadbeef1234567890"};</script>').encode("latin-1")
+            h = cb.preservar_evidencia(pag, "https://x.gov.br/p", "html", "autoteste")
+            disco = (d / "evidencias" / f"{h}.html").read_bytes().decode("latin-1")
+            item = banco["evidencias.json"]["itens"][h]
+            ok("A6-11: página latin-1 sai sem CPF e sem credencial",
+               "123.456.789-09" not in disco and "4a01c0de" not in disco and "São João" in disco)
+            ok("A6-11: o índice diz o que foi redigido e o hash de antes",
+               item.get("cpfs_redigidos") == 1 and item.get("segredos_redigidos") == 1
+               and len(item.get("hash_antes_da_redacao") or "") == 64)
+        finally:
+            cb.EVID, cb.RAIZ, cb.ler, cb.gravar = salvo
+
     try:
         arquivos_do_diff("ref-que-nao-existe-a7-20")
         ok("erro do git diff levanta, não vira lista vazia (A7-20)", False)

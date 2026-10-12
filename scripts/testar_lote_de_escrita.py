@@ -182,10 +182,20 @@ def t_repeticao_nao_expulsa_consulta_antiga():
 
 
 def t_teto_da_janela_vale_para_distintas():
-    """Com mais de 12 consultas distintas, ficam as 12 mais recentes — o teto continua existindo."""
-    entradas = [{"fonte": f"f{i}", "data": f"2026-09-{i:02d}", "resultado": "x"} for i in range(1, 21)]
+    """Com mais de 12 dias da mesma fonte, ficam os 12 mais recentes — o teto continua existindo."""
+    entradas = [{"fonte": "DOU/SEDEC", "data": f"2026-09-{i:02d}", "resultado": "x"}
+                for i in range(1, 21)]
     r = cb.janela_de_fontes(entradas)
-    return len(r) == cb.JANELA_FONTES and r[-1]["fonte"] == "f20" and r[0]["fonte"] == "f9"
+    return len(r) == cb.JANELA_FONTES and r[-1]["data"] == "2026-09-20" and r[0]["data"] == "2026-09-09"
+
+
+def t_ultima_de_cada_fonte_fica_a6_05():
+    """A6-05: doze dias de DOU não expulsam a última consulta ao Querido Diário."""
+    qd = {"fonte": "Querido Diário (diário municipal)", "data": "2026-09-01", "resultado": "ok"}
+    entradas = [qd] + [{"fonte": "DOU/SEDEC", "data": f"2026-09-{i:02d}", "resultado": "n"}
+                       for i in range(2, 21)]
+    r = cb.janela_de_fontes(entradas)
+    return r[0] is qd and len(r) == cb.JANELA_FONTES + 1
 
 
 def t_o_log_nao_deduplica_e_isso_e_proposital():
@@ -212,5 +222,6 @@ if __name__ == "__main__":
         "§216 a janela do livro guarda consultas DISTINTAS, não entradas": t_janela_guarda_consultas_distintas,
         "§216 repetição da mesma fonte no dia não expulsa consulta de outra fonte": t_repeticao_nao_expulsa_consulta_antiga,
         "o teto da janela continua valendo para as consultas distintas": t_teto_da_janela_vale_para_distintas,
+        "A6-05: a última consulta de cada fonte fica": t_ultima_de_cada_fonte_fica_a6_05,
         "contraste: o log NÃO deduplica, e isso é proposital": t_o_log_nao_deduplica_e_isso_e_proposital,
     }))

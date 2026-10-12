@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · coleta: muro nomeado, livro de fontes, fila de OCR, CPF e defeso (Relatório D, A1-28, A6-05/06/09/11/15/23/30)
+
+Muro de robô com 403/503 é nomeado e não repetido; o livro de fontes guarda sempre a última consulta de cada fonte; a fila de OCR registra falha por item e põe na frente quem falhou menos; evidência de texto (inclusive latin-1) sai sem CPF; PDF que mudou ganha hash próprio; ato que cita a lei eleitoral não suspende mais a fonte; fonte suspensa é reavaliada toda semana; plano sem ato leva a data da capa. Onde: `coletores_base.py`, `preservar_evidencias.py`, `juiz.py`.
+
 ## 2026-10-12 · #PR · checagem pré-noite sem falso alarme (F43)
 
 A checagem das 23h acusava despachante parado quando o despacho rodara dentro do relógio, e fila cheia por runs de ramos de ensaio e de coleta de dia. Despachante vivo passa a ser o mais recente dos dois; `ensaio-real/*` e `coleta-dia/*` saem da fila. Onde: `checagem_pre_noite.py`, ensaio nº 20. Junto: o `sitemap.xml` deixa de anunciar o pacote de dados (A7-25).

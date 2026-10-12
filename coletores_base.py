@@ -489,7 +489,9 @@ _MARCAS_DE_NOTICIA = ("noticia", "noticias", "publicidade institucional", "propa
 _MARCAS_DE_SITIO = ("esta pagina esta indisponivel", "este portal", "deste portal", "conteudo deste",
                     "suspensao temporaria", "conteudo indisponivel", "site esta indisponivel",
                     "portal encontra-se", "pagina indisponivel", "temporariamente indisponivel",
-                    "conteudo temporariamente")
+                    "conteudo temporariamente",
+                    # A6-30 (12/10/2026): as frases do aviso que `eh_suspensao_defeso` reconhecia.
+                    "conteudo suspenso", "temporariamente suspenso", "site suspenso")
 
 
 def classificar_defeso(texto: str) -> tuple:
@@ -1358,6 +1360,22 @@ def buscar(url: str, timeout: int = 40, origem: str = None, buscar_fn=None, dorm
     return com_espera(uma_vez, dormir=dormir)
 
 
+def muro_no_erro(e) -> str | None:
+    """Marca do muro no CORPO de um HTTPError, ou None (A6-09). Lê no máximo 60 kB do corpo; erro
+    de leitura não é muro. O corpo lido fica guardado no próprio erro, para quem o ler depois."""
+    corpo = getattr(e, "_corpo_lido", None)
+    if corpo is None:
+        try:
+            corpo = e.read(60001) if getattr(e, "fp", None) is not None else b""
+        except Exception:  # noqa: BLE001 — corpo ilegível não é muro
+            corpo = b""
+        try:
+            e._corpo_lido = corpo
+        except Exception:  # noqa: BLE001
+            pass
+    return detectar_muro_de_robo(corpo or b"")
+
+
 def com_espera(uma_vez, dormir=None):
     """A espera do §226 em volta de UMA tentativa qualquer. Função de ordem superior.
 
@@ -1373,6 +1391,12 @@ def com_espera(uma_vez, dormir=None):
         except urllib.error.HTTPError as e:
             # HTTPError é subclasse de URLError: tem de vir ANTES, senão todo status viraria
             # "erro de conexão" e perderia a distinção entre recusa e indisponibilidade.
+            # A6-09 (12/10/2026): muro de robô servido com 403/503 também é muro — nomeado, sem
+            # repetir. Antes, um 503 do Cloudflare era "indisponibilidade" e ganhava espera.
+            marca = muro_no_erro(e)
+            if marca:
+                raise MuroDeRobo(getattr(e, "url", None) or getattr(e, "filename", "") or "",
+                                 marca) from e
             if restantes is None:
                 restantes = list(esperas_para(e.code))
             if not restantes:
@@ -1477,18 +1501,28 @@ def preservar_evidencia(conteudo: bytes, url: str, ext: str, origem: str) -> str
     `segredos_redigidos` e `hash_antes_da_redacao`, para a cópia nunca se dizer byte a byte quando
     não é. Binário (PDF) não passa por aqui: não se edita PDF preservado."""
     redigidos = 0
+    cpfs = 0
     hash_bruto = None
     if ext.lstrip(".").lower() in tuple(e.lstrip(".") for e in EXTENSOES_DE_TEXTO_EM_EVIDENCIA):
+        # A6-11 (12/10/2026): página em latin-1 (comum em sítio municipal) passava SEM redação,
+        # porque a decodificação estrita falhava e o texto ficava None; e o CPF não era redigido
+        # aqui, só em `gravar_texto`. Agora: utf-8, senão latin-1 (re-codificado no mesmo
+        # encoding), e CPF redigido junto com a credencial.
+        codificacao = "utf-8"
         try:
             texto = conteudo.decode("utf-8")
         except UnicodeDecodeError:
-            texto = None
-        if texto is not None:
-            limpo, redigidos = redigir_segredos(texto)
+            codificacao = "latin-1"
+            texto = conteudo.decode("latin-1")
+        limpo, redigidos = redigir_segredos(texto)
+        limpo, cpfs = redigir_dados_pessoais(limpo)
+        if redigidos or cpfs:
+            hash_bruto = sha256(conteudo)
+            conteudo = limpo.encode(codificacao)
             if redigidos:
-                hash_bruto = sha256(conteudo)
-                conteudo = limpo.encode("utf-8")
                 print(f"  [redação] {redigidos} credencial(is) de terceiro removida(s) antes de preservar")
+            if cpfs:
+                print(f"  [redação] {cpfs} CPF(s) removido(s) antes de preservar")
     h = sha256(conteudo)
     idx = ler("evidencias.json", {"_governanca": "Índice de evidências preservadas (§3.8, v2.2.4). "
                                    "Chave = sha256 do documento; nunca lido pelo cálculo do índice.",
@@ -1499,6 +1533,9 @@ def preservar_evidencia(conteudo: bytes, url: str, ext: str, origem: str) -> str
             "arquivo": None, "wayback": None}
     if redigidos:
         item["segredos_redigidos"] = redigidos
+    if cpfs:
+        item["cpfs_redigidos"] = cpfs
+    if redigidos or cpfs:
         item["hash_antes_da_redacao"] = hash_bruto
     if len(conteudo) <= LIMITE_EVIDENCIA:
         EVID.mkdir(exist_ok=True)
@@ -1881,11 +1918,12 @@ def varrer_busca_dou(q: str, de, ate, secao: str = "do1", buscar_fn=None, pausa:
 
 
 def eh_suspensao_defeso(html: str) -> bool:
-    """Heurística declarada (§3.1): aviso de período eleitoral, ou página institucional
-    esvaziada. Só rotula; nunca infere conteúdo."""
-    t = html.lower()
-    return any(k in t for k in ("período eleitoral", "periodo eleitoral", "legislação eleitoral",
-                                "lei 9.504", "lei nº 9.504", "vedação eleitoral", "defeso eleitoral"))
+    """Aviso de defeso eleitoral que suspende o PRÓPRIO sítio. Só rotula; nunca infere conteúdo.
+
+    A6-30 (12/10/2026): era substring ("lei 9.504", "período eleitoral"…), e qualquer ato do DOU
+    que citasse a lei eleitoral marcava a fonte inteira como suspensa. Agora é o mesmo classificador
+    do §182 que `buscar` usa — uma regra só, que distingue sítio suspenso de notícia suspensa."""
+    return detectar_defeso(html or "") is not None
 
 
 def registrar_lacuna(fonte: str, motivo: str, canal: str, camada: int, strings=None, **kw):
@@ -1966,7 +2004,8 @@ JANELA_FONTES = 12      # quantas consultas DISTINTAS cada município guarda no 
 
 
 def janela_de_fontes(entradas) -> list:
-    """As últimas `JANELA_FONTES` consultas DISTINTAS (fonte, dia). Função pura.
+    """As últimas `JANELA_FONTES` consultas DISTINTAS (fonte, dia), mais a última de cada fonte.
+    Função pura.
 
     25/09/2026, medido: a janela era das últimas 12 ENTRADAS, e 38.434 delas eram repetição da
     mesma fonte no mesmo dia — cada município guardava 12 registros para apenas 5 ou 6 consultas
@@ -1984,7 +2023,15 @@ def janela_de_fontes(entradas) -> list:
         por_chave[(e.get("fonte"), e.get("data"))] = e      # a última de cada par vence
     distintas = list(por_chave.values())
     distintas.sort(key=lambda e: e.get("data") or "")        # estável: empate mantém a ordem
-    return distintas[-JANELA_FONTES:]
+    # A6-05 (12/10/2026): o teto de 12 vale para a REPETIÇÃO de fonte, nunca para a fonte. Com a
+    # marca diária do DOU, doze dias bastavam para expulsar a última consulta ao Querido Diário, e
+    # o município voltava a "não consultado". A última consulta de cada fonte fica sempre.
+    janela = distintas[-JANELA_FONTES:]
+    ultima_de_cada = {}
+    for e in distintas:
+        ultima_de_cada[e.get("fonte")] = e
+    fica = {id(e) for e in janela} | {id(e) for e in ultima_de_cada.values()}
+    return [e for e in distintas if id(e) in fica]
 
 
 def marcar_fonte_consultada(ibges, fonte: str, nivel: str, resultado: str = "consultada"):

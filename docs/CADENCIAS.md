@@ -52,6 +52,7 @@ O formato de cada linha é fixo e lido por máquina:
 | `coletar_saude.py` | diaria | 05:50 UTC | noturno_saude | sinais de saúde: InfoDengue, ESPIN, painel de calor do MS e lacunas declaradas; desde 11/10/2026 (F40) |
 | `coletar_espin.py` | semanal | encadeado | semanal_espin_e_links | emergências em saúde pública no DOU |
 | `buscar_protocolo_calor.py` | semanal | encadeado | semanal_espin_e_links | Protocolo Nacional de Calor Extremo no DOU: candidatos a ler, ou não localizado até a data |
+| `reavaliar_fontes_suspensas.py` | semanal | encadeado | semanal_espin_e_links | reabre fonte suspensa por defeso quando o sítio volta (busca nova; falha de rede mantém o estado) |
 | `coletar_desfechos_saude.py` | diaria | encadeado | noturno_saude | séries de dengue e chikungunya por UF (InfoDengue) |
 | `coletar_dda.py` | diaria | encadeado | noturno_saude | doença diarreica aguda |
 | `coletar_boletim_ms_dengue.py` | diaria | encadeado | noturno_saude | boletim de arboviroses do Ministério da Saúde |
