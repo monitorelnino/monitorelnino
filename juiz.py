@@ -213,6 +213,25 @@ def e_o_proprio_plano(texto: str, url: str = None) -> tuple:
                       "estrutura": sorted(estrutura)[:4]}
 
 
+JANELA_DA_DATA_DO_PLANO = 600
+
+
+def data_junto_ao_titulo(texto: str, titulo, ano: str):
+    """Data completa (dd/mm/aaaa) logo depois do título do plano, do mesmo ano; senão None.
+
+    12/10/2026 (A1-21 → A1-28 do relatório D): o plano sem ato gravava só o ano, mesmo quando a
+    capa trazia a data. A data vem da JANELA do título, nunca da primeira do documento — num plano
+    de sessenta páginas a primeira data pode ser de uma referência bibliográfica — e só vale se for
+    do mesmo ano que o documento declara. Função pura."""
+    if not titulo or not texto:
+        return None
+    janela = texto[titulo.start(): titulo.end() + JANELA_DA_DATA_DO_PLANO]
+    d = extrair_data(janela)
+    if d and re.fullmatch(r"\d{1,2}[/-]\d{1,2}[/-]\d{4}", d) and str(ano or "") and d.endswith(str(ano)):
+        return d
+    return None
+
+
 def plano_sem_ato(texto: str, url: str = None) -> tuple:
     """(ok, motivo, dados) do caminho "plano publicado sem ato de aprovação localizado". PURA.
 
@@ -242,10 +261,11 @@ def plano_sem_ato(texto: str, url: str = None) -> tuple:
     if faltam:
         return False, "plano_sem_identificacao", {
             "detalhe": "o documento não identifica: " + ", ".join(faltam)}
+    ano_txt = (ano.group(1) if ano.lastindex else None) or ano.group(0)
     return True, "", {
         "tipo": "plano publicado sem ato de aprovação localizado",
         "numero": None,
-        "data": (ano.group(1) if ano.lastindex else None) or ano.group(0),
+        "data": data_junto_ao_titulo(texto, titulo, ano_txt) or ano_txt,
         "sem_ato_de_aprovacao": True,
         "orgao": orgao.group(0),
         "titulo": titulo.group(0),
@@ -1120,6 +1140,16 @@ def autoteste() -> int:
                               f" (motivo={v.get('motivo')!r})")
         marca = "OK  " if all(v.get(k) == x for k, x in esperado.items()) else "FALHA"
         print(f"  {marca} {nome_canario}: promove={v['promove']} categoria={v['categoria']} motivo={v['motivo']}")
+
+    # A1-28 (12/10/2026): plano sem ato leva a data da capa, nunca a de uma referência
+    _t = ("PREFEITURA MUNICIPAL DE X\nPLANO MUNICIPAL DE CONTINGÊNCIA El Niño 2026\n"
+          "Aprovado em 14/08/2026\n" + "x " * 400 + "Referência: Lei de 12/03/2012")
+    _tit = RE_TITULO_DE_PLANO.search(_t)
+    if data_junto_ao_titulo(_t, _tit, "2026") != "14/08/2026":
+        falhas.append("A1-28: data da capa do plano sem ato não foi lida")
+    if data_junto_ao_titulo("PLANO DE CONTINGÊNCIA 2026\n" + "x " * 400 + "de 12/03/2012",
+                            RE_TITULO_DE_PLANO.search("PLANO DE CONTINGÊNCIA 2026"), "2026") is not None:
+        falhas.append("A1-28: data longe do título ou de outro ano virou data do plano")
 
     # travas que não são canário de documento
     checagens = [

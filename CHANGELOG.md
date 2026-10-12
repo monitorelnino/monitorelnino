@@ -32,9 +32,9 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-12 · #PR · coleta: muro nomeado, livro de fontes, fila de OCR, CPF e defeso (Relatório D, A6-05/06/09/11/15/23/30)
+## 2026-10-12 · #PR · coleta: muro nomeado, livro de fontes, fila de OCR, CPF e defeso (Relatório D, A1-28, A6-05/06/09/11/15/23/30)
 
-Muro de robô servido com 403/503 passa a ser nomeado e não repetido; o livro de fontes guarda sempre a última consulta de cada fonte; a fila de OCR registra falha por item e põe na frente quem falhou menos; evidência de texto (inclusive latin-1) sai sem CPF; PDF que mudou ganha hash próprio; ato que cita a lei eleitoral não suspende mais a fonte, e fonte suspensa é reavaliada toda semana. Onde: `coletores_base.py`, `preservar_evidencias.py`.
+Muro de robô com 403/503 é nomeado e não repetido; o livro de fontes guarda sempre a última consulta de cada fonte; a fila de OCR registra falha por item e põe na frente quem falhou menos; evidência de texto (inclusive latin-1) sai sem CPF; PDF que mudou ganha hash próprio; ato que cita a lei eleitoral não suspende mais a fonte; fonte suspensa é reavaliada toda semana; plano sem ato leva a data da capa. Onde: `coletores_base.py`, `preservar_evidencias.py`, `juiz.py`.
 
 ## 2026-10-11 · #PR · busca semanal do Protocolo Nacional de Calor Extremo (HANDOVER_SAUDE 3.4)
 
