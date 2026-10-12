@@ -46,7 +46,7 @@ from pathlib import Path
 
 RAIZ = Path(__file__).parent
 sys.path.insert(0, str(RAIZ))
-from coletores_base import ua_de, detectar_muro_de_robo  # noqa: E402  (§232)
+from coletores_base import ua_de, detectar_muro_de_robo, ler, gravar, hoje_editorial  # noqa: E402  (§232)
 
 DATA = RAIZ / "data"
 # A6-18 (12/10/2026): a lista fixa tinha 5 páginas e deixava saúde, financiamento, imprensa,
@@ -211,6 +211,31 @@ def rodar_verificacao(links: dict, workers=8):
     return resultados
 
 
+HISTORICO = "links_historico.json"
+
+
+def atualizar_historico(anterior: dict, resultados: dict, hoje_iso: str) -> dict:
+    """A6-18 (12/10/2026): "quebrado desde quando?" — o histórico por URL. Função pura.
+
+    `resultados` é {url: (status, codigo, detalhe)}. Link quebrado guarda o dia em que quebrou e
+    o mantém enquanto continuar quebrado; voltou a responder, o campo se apaga. URL que não foi
+    verificada nesta rodada fica como estava (rede falhou ≠ link mudou)."""
+    links = {u: dict(v) for u, v in ((anterior or {}).get("links") or {}).items()}
+    for url, (status, codigo, _detalhe) in sorted((resultados or {}).items()):
+        antes = links.get(url) or {}
+        quebrado_desde = None
+        if status == "QUEBRADO":
+            quebrado_desde = antes.get("quebrado_desde") if antes.get("status") == "QUEBRADO" else hoje_iso
+            quebrado_desde = quebrado_desde or hoje_iso
+        links[url] = {"status": status, "codigo": codigo, "verificado_em": hoje_iso,
+                      "quebrado_desde": quebrado_desde}
+    return {"_governanca": ("Histórico da verificação semanal de links (`verificar_links.py`, elo "
+                            "espin-e-links). `quebrado_desde` é o primeiro dia de uma sequência de "
+                            "verificações QUEBRADO; BLOQUEADO (recusa de robô com 200) não é quebrado. "
+                            "Interno: nenhuma página lê."),
+            "atualizado_em": hoje_iso, "links": links}
+
+
 def relatorio(links: dict, resultados: dict, titulo: str):
     """Formata os resultados da verificação em relatório de terminal, agrupado por status."""
     linhas = [f"\n=== {titulo} ({len(links)} link(s) únicos) ==="]
@@ -334,6 +359,19 @@ def self_test():
     print(f"  {'✓' if ok2 else '✗'} extraiu {len(links_banco)} url(s) únicas do banco real")
     falhas += not (ok1 and ok2)
 
+    print("\n=== A6-18: histórico de quebrados (função pura) ===")
+    h1 = atualizar_historico({}, {"https://a.gov.br": ("QUEBRADO", 404, "x"),
+                                  "https://b.gov.br": ("OK", 200, "y")}, "2026-10-05")
+    h2 = atualizar_historico(h1, {"https://a.gov.br": ("QUEBRADO", 404, "x")}, "2026-10-12")
+    h3 = atualizar_historico(h2, {"https://a.gov.br": ("OK", 200, "x")}, "2026-10-19")
+    ok_h = (h2["links"]["https://a.gov.br"]["quebrado_desde"] == "2026-10-05"
+            and h2["links"]["https://b.gov.br"]["verificado_em"] == "2026-10-05"
+            and h3["links"]["https://a.gov.br"]["quebrado_desde"] is None
+            and atualizar_historico(h1, {"https://b.gov.br": ("BLOQUEADO", 200, "z")}, "2026-10-12")
+                ["links"]["https://b.gov.br"]["quebrado_desde"] is None)
+    print(f"  {'✓' if ok_h else '✗'} quebrado guarda o primeiro dia; voltou, apaga; não verificado fica; recusa não é quebrado")
+    falhas += not ok_h
+
     print(f"\n{'✓ TODOS OS TESTES PASSARAM' if not falhas else f'✗ {falhas} teste(s) falharam'}")
     return 1 if falhas else 0
 
@@ -345,18 +383,23 @@ def main():
                     action="store_true")
     ap.add_argument("--so-marcacao", action="store_true")
     ap.add_argument("--so-banco", action="store_true")
+    # A6-18: só o elo semanal grava o histórico (um escritor por arquivo); a rodada diária, que
+    # também chama este script, só relata.
+    ap.add_argument("--historico", action="store_true")
     args = ap.parse_args()
 
     if args.autoteste:
         return self_test()
 
     todos_quebrados = []
+    verificados = {}
     if not args.so_banco:
         links = extrair_links_marcacao()
         print(f"Verificando {len(links)} link(s) únicos da marcação (pode levar alguns minutos)...")
         try:
             res = rodar_verificacao(links)
-            texto, quebrados = relatorio(links, res, "Links na marcação (HTML das 5 páginas)")
+            texto, quebrados = relatorio(links, res, "Links na marcação (HTML das páginas públicas)")
+            verificados.update(res)
             print(texto)
             todos_quebrados += quebrados
         except Exception as e:
@@ -370,6 +413,7 @@ def main():
         try:
             res = rodar_verificacao(links)
             texto, quebrados = relatorio(links, res, "URLs em JS (portais, diários, guias, PDF) e estados.json")
+            verificados.update(res)
             print(texto)
             todos_quebrados += quebrados
         except Exception as e:
@@ -381,11 +425,19 @@ def main():
         try:
             res = rodar_verificacao(links)
             texto, quebrados = relatorio(links, res, "URLs em municipios.json (documentos municipais)")
+            verificados.update(res)
             print(texto)
             todos_quebrados += quebrados
         except Exception as e:
             print(f"[FALHA] não foi possível verificar a rede: {e}")
 
+    if verificados and args.historico:
+        # A6-18: só com rede de verdade — sem resultado, o histórico não muda.
+        hist = atualizar_historico(ler(HISTORICO) or {}, verificados, hoje_editorial().isoformat())
+        gravar(HISTORICO, hist)
+        antigos = sorted((v["quebrado_desde"], u) for u, v in hist["links"].items() if v.get("quebrado_desde"))
+        if antigos:
+            print(f"\nQuebrados há mais tempo: " + "; ".join(f"{u} desde {d}" for d, u in antigos[:5]))
     if todos_quebrados:
         print(f"\n[ATENÇÃO] {len(todos_quebrados)} link(s) quebrado(s) — confirme com uma fonte independente "
               "antes de agir (muito .gov.br bloqueia tráfego automatizado sem estar fora do ar); com evidência "

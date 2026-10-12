@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · links quebrados com data (A6-18)
+
+A verificação semanal de links não guardava histórico: "quebrado desde quando?" não tinha resposta. `verificar_links.py --historico`, só no elo semanal, grava `data/links_historico.json` por URL (status, verificado em, quebrado desde); recusa de robô não conta como quebrado e link não verificado fica como estava. A rodada diária segue só relatando.
+
 ## 2026-10-12 · #PR · toda regra de layout diz quem a julga (A7-14)
 
 `layout/regras.json` ganha `_verificacao`: para cada uma das 55 regras, o portão que a julga ou, com franqueza, "só texto" (17, dívida declarada). `verificar_conformidade.py --regras-cobertas` reprova regra nova sem dono ou dono inexistente. E passa a cobrar milhões com uma casa decimal em cartão ("12,3 milhões").
