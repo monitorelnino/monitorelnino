@@ -1,11 +1,11 @@
 {
  "_governanca": "Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. `prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). `imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o leitor peça o documento ao gestor. Só municípios com algo a dizer; ausência = nada localizado. `defesa_civil_orcamento` (§207) = despesa liquidada na subfunção 06.182 declarada ao SICONFI, peso ZERO; classe de ausência nunca vira zero.",
  "gerado_em": "2026-10-12",
- "total": 2199,
+ "total": 2198,
  "com_registro": 274,
- "com_imprensa": 140,
+ "com_imprensa": 126,
  "prioritarios": 2095,
- "com_despesa_182": 2199,
+ "com_despesa_182": 2198,
  "municipios": {
   "1100023": {
    "nome": "Ariquemes",
@@ -8319,37 +8319,6 @@
    "nome": "São Paulo do Potengi",
    "uf": "RN",
    "prioritario": true,
-   "defesa_civil_orcamento": {
-    "exercicio": 2025,
-    "classe": "sem_lancamento_182",
-    "rs_hab": null,
-    "liquidada": null,
-    "fonte": "SICONFI (Tesouro Nacional)",
-    "ressalva": "inclui preparação e resposta",
-    "peso_no_indice": "nenhum"
-   },
-   "categoria": "nao_localizado"
-  },
-  "2413003": {
-   "nome": "São Vicente",
-   "uf": "RN",
-   "prioritario": false,
-   "imprensa": [
-    {
-     "titulo": "São Vicente reforça preparação para o El Niño - Santa Portal",
-     "url": "https://santaportal.com.br/baixada/sao-vicente-reforca-preparacao-para-o-el-nino/",
-     "data": "23/09/2026",
-     "veiculo": "santaportal.com.br",
-     "nivel": "A"
-    },
-    {
-     "titulo": "São Vicente reforça drenagem como prevenção ao El Niño - Jornal ...",
-     "url": "https://jornaldaorla.com.br/noticias/sao-vicente-reforca-drenagem-como-prevencao-ao-el-nino/",
-     "data": "23/09/2026",
-     "veiculo": "jornaldaorla.com.br",
-     "nivel": "A"
-    }
-   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -20829,22 +20798,6 @@
    "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/S%C3%83O%20MATEUS%20-%20PLANO%20DE%20CONTINGE%CC%82NCIA%20-%202025.pdf",
    "data": "2025",
    "fonte": "CEPDEC/ES — repositório estadual de planos de contingência municipais",
-   "imprensa": [
-    {
-     "titulo": "São Mateus do Sul: reunião sobre o Plano de Contingência para o ...",
-     "url": "https://portalrdx.com.br/21/07/2026/sao-mateus-do-sul-reuniao-sobre-o-plano-de-contingencia-para-o-el-nino-acontece-nesta-terca-21/",
-     "data": "24/09/2026",
-     "veiculo": "portalrdx.com.br",
-     "nivel": "A"
-    },
-    {
-     "titulo": "São Mateus do Sul apresenta Plano de Contingência e reforça ...",
-     "url": "https://folhadeirati.com.br/sao-mateus-do-sul-apresenta-plano-de-contingencia-e-reforca-preparacao-para-possiveis-cheias/",
-     "data": "24/09/2026",
-     "veiculo": "folhadeirati.com.br",
-     "nivel": "A"
-    }
-   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
@@ -21025,15 +20978,6 @@
    "url": "https://defesacivil.es.gov.br/Media/DefesaCivil/Plano%20de%20Contingência%20atualizado/2026/VILA%20VELHA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf",
    "data": "2025",
    "fonte": "CEPDEC/ES — repositório estadual de planos de contingência municipais",
-   "imprensa": [
-    {
-     "titulo": "Vila Velha apresenta plano de contingência com foco no El Niño ...",
-     "url": "https://eshoje.com.br/meio-ambiente/2026/08/vila-velha-apresenta-plano-de-contingencia-com-foco-no-el-nino/",
-     "data": "24/09/2026",
-     "veiculo": "eshoje.com.br",
-     "nivel": "A"
-    }
-   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
@@ -23041,15 +22985,6 @@
    "nome": "Cubatão",
    "uf": "SP",
    "prioritario": true,
-   "imprensa": [
-    {
-     "titulo": "El Niño em Cubatão: prefeitura cria comissão após cobrança do MP",
-     "url": "https://g1.globo.com/sp/santos-regiao/noticia/2026/07/24/cubatao-cria-comissao-para-enfrentar-efeitos-do-el-nino-apos-cobranca-de-mp-sp.ghtml",
-     "data": "22/09/2026",
-     "veiculo": "g1.globo.com",
-     "nivel": "A"
-    }
-   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
@@ -23170,15 +23105,6 @@
    "nome": "Franca",
    "uf": "SP",
    "prioritario": true,
-   "imprensa": [
-    {
-     "titulo": "CPFL faz Plano de Contingência em Franca para casos eventuais ...",
-     "url": "https://www.jornaldafranca.com.br/cpfl-apresenta-plano-de-contingencia-para-o-periodo-de-calor-com-el-nino-2026-2027/",
-     "data": "22/09/2026",
-     "veiculo": "jornaldafranca.com.br",
-     "nivel": "A"
-    }
-   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
@@ -25868,15 +25794,6 @@
    "nome": "Foz do Iguaçu",
    "uf": "PR",
    "prioritario": true,
-   "imprensa": [
-    {
-     "titulo": "Câmara de Foz do Iguaçu cobra plano de contingência para efeitos ...",
-     "url": "https://portaliguacu.com.br/camara-de-foz-do-iguacu-cobra-plano-de-contingencia-para-efeitos-do-el-nino/",
-     "data": "22/09/2026",
-     "veiculo": "portaliguacu.com.br",
-     "nivel": "A"
-    }
-   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
@@ -25991,11 +25908,11 @@
      "nivel": "B"
     },
     {
-     "titulo": "Guaratuba reforça plano de ação para enfrentar o El Niño",
-     "url": "https://guaratuba.portaldacidade.com/noticias/cidade/guaratuba-reforca-plano-de-acao-para-enfrentar-o-el-nino-0745",
+     "titulo": "Alerta El Niño: Guaratuba prepara plano de emergência e mapeia ...",
+     "url": "https://guaratuba.portaldacidade.com/noticias/cidade/alerta-el-nino-guaratuba-prepara-plano-de-emergencia-e-mapeia-riscos-5241",
      "data": "22/09/2026",
      "veiculo": "guaratuba.portaldacidade.com",
-     "nivel": "A"
+     "nivel": "B"
     }
    ],
    "defesa_civil_orcamento": {
@@ -26961,22 +26878,6 @@
    "nome": "São Mateus do Sul",
    "uf": "PR",
    "prioritario": true,
-   "imprensa": [
-    {
-     "titulo": "São Mateus do Sul: reunião sobre o Plano de Contingência para o ...",
-     "url": "https://portalrdx.com.br/21/07/2026/sao-mateus-do-sul-reuniao-sobre-o-plano-de-contingencia-para-o-el-nino-acontece-nesta-terca-21/",
-     "data": "22/09/2026",
-     "veiculo": "portalrdx.com.br",
-     "nivel": "A"
-    },
-    {
-     "titulo": "São Mateus do Sul apresenta Plano de Contingência e reforça ...",
-     "url": "https://folhadeirati.com.br/sao-mateus-do-sul-apresenta-plano-de-contingencia-e-reforca-preparacao-para-possiveis-cheias/",
-     "data": "22/09/2026",
-     "veiculo": "folhadeirati.com.br",
-     "nivel": "A"
-    }
-   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
@@ -27456,22 +27357,6 @@
    "nome": "Balneário Camboriú",
    "uf": "SC",
    "prioritario": true,
-   "imprensa": [
-    {
-     "titulo": "Balneário Camboriú reforça plano de ação para enfrentar impactos ...",
-     "url": "https://portaldafoz.com.br/noticia/5566/balneario-camboriu-reforca-plano-de-acao-para-enfrentar-impactos-do-el-nino.html",
-     "data": "24/09/2026",
-     "veiculo": "portaldafoz.com.br",
-     "nivel": "A"
-    },
-    {
-     "titulo": "Plano de Contingência de Balneário Camboriú entra em consulta ...",
-     "url": "https://pagina3.com.br/cidade/plano-de-contingencia-de-balneario-camboriu-entra-em-consulta-publica-nesta-terca-feira/",
-     "data": "24/09/2026",
-     "veiculo": "pagina3.com.br",
-     "nivel": "A"
-    }
-   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
@@ -27743,15 +27628,6 @@
    "url": null,
    "data": "2026",
    "fonte": "Prefeitura de Brusque",
-   "imprensa": [
-    {
-     "titulo": "BRUSQUE: Preparativos para o El Niño e plano de contingência de ...",
-     "url": "https://araguaiabrusque.com.br/brusque-preparativos-para-o-el-nino-e-plano-de-contingencia-de-produtos-perigosos/",
-     "data": "24/09/2026",
-     "veiculo": "araguaiabrusque.com.br",
-     "nivel": "A"
-    }
-   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
@@ -27819,13 +27695,6 @@
      "data": "24/09/2026",
      "veiculo": "instagram.com",
      "nivel": "B"
-    },
-    {
-     "titulo": "Balneário Camboriú reforça plano de ação para enfrentar impactos ...",
-     "url": "https://portaldafoz.com.br/noticia/5566/balneario-camboriu-reforca-plano-de-acao-para-enfrentar-impactos-do-el-nino.html",
-     "data": "24/09/2026",
-     "veiculo": "portaldafoz.com.br",
-     "nivel": "A"
     }
    ],
    "defesa_civil_orcamento": {
@@ -27918,15 +27787,6 @@
    "nome": "Canoinhas",
    "uf": "SC",
    "prioritario": true,
-   "imprensa": [
-    {
-     "titulo": "Trabalho preventivo da prefeitura reduz impactos do El Niño em ...",
-     "url": "https://diariodoplanalto.com.br/geral/trabalho-preventivo-da-prefeitura-reduz-impactos-do-el-nino-em-canoinhas.15484817",
-     "data": "24/09/2026",
-     "veiculo": "diariodoplanalto.com.br",
-     "nivel": "A"
-    }
-   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
@@ -28782,13 +28642,6 @@
      "data": "27/09/2026",
      "veiculo": "instagram.com",
      "nivel": "B"
-    },
-    {
-     "titulo": "Super El Niño acende alerta em Itajaí e mobiliza estrutura para ...",
-     "url": "https://ndmais.com.br/tempo/super-el-nino-acende-alerta-em-itajai-e-mobiliza-estrutura-para-possiveis-resgates/",
-     "data": "24/09/2026",
-     "veiculo": "ndmais.com.br",
-     "nivel": "A"
     }
    ],
    "defesa_civil_orcamento": {
@@ -29505,15 +29358,6 @@
    "nome": "Ouro",
    "uf": "SC",
    "prioritario": true,
-   "imprensa": [
-    {
-     "titulo": "Ouro apresenta Plano de Contingência da Defesa Civil e reforça preparação para eventos climáticos. Jardel Martinazzo; 23/06/2026 21:40.",
-     "url": "https://capinzalfm.com.br/noticia/ouro-apresenta-plano-de-contingencia-da-defesa-civil-e-reforca-preparacao-para-eventos-climaticos",
-     "data": "22/09/2026",
-     "veiculo": "capinzalfm.com.br",
-     "nivel": "A"
-    }
-   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
@@ -29694,15 +29538,6 @@
    "nome": "Pedras Grandes",
    "uf": "SC",
    "prioritario": true,
-   "imprensa": [
-    {
-     "titulo": "Jul 30, 2026 ... Pedras Grandes tem um Plano de Contingência de Proteção e Defesa Civil que estabelece os protocolos para monitorar, alertar",
-     "url": "https://folharegionalwebtv.com/cotidiano/com-alerta-de-el-nino-pedras-grandes-amplia-obras-de-desassoreamento-de-rios-e-corregos-93671",
-     "data": "22/09/2026",
-     "veiculo": "folharegionalwebtv.com",
-     "nivel": "A"
-    }
-   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -30796,15 +30631,6 @@
    "nome": "Tubarão",
    "uf": "SC",
    "prioritario": true,
-   "imprensa": [
-    {
-     "titulo": "Jun 24, 2026 ... Tubarão tem um Plano de Contingência de Proteção e Defesa Civil que estabelece os protocolos para monitorar, alertar e resp",
-     "url": "https://folharegionalwebtv.com/tubarao-sc/el-nino-tubarao-reforca-acoes-para-minimizar-efeitos-das-chuvas-intensas-91446",
-     "data": "22/09/2026",
-     "veiculo": "folharegionalwebtv.com",
-     "nivel": "A"
-    }
-   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
@@ -30910,22 +30736,6 @@
    "nome": "Videira",
    "uf": "SC",
    "prioritario": true,
-   "imprensa": [
-    {
-     "titulo": "Videira intensifica ações para enfrentar o El Niño e reduzir riscos",
-     "url": "https://portalrbv.com.br/noticias/seguranca/videira-intensifica-acoes-para-enfrentar-o-el-nino-e-reduzir-riscos-de-enchentes-ej/",
-     "data": "24/09/2026",
-     "veiculo": "portalrbv.com.br",
-     "nivel": "A"
-    },
-    {
-     "titulo": "Jun 19, 2026 ... Celesc reforça plano de contingência para enfrentar possíveis impactos do El Niño ... Videira Notícias – 11/09/2026. 1 hora",
-     "url": "https://portalrbv.com.br/noticias/seguranca/videira-intensifica-acoes-para-enfrentar-o-el-nino-e-reduzir-riscos-de-enchentes-ej/",
-     "data": "22/09/2026",
-     "veiculo": "portalrbv.com.br",
-     "nivel": "A"
-    }
-   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",

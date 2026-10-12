@@ -3,9 +3,9 @@
  "formato_versao": 1,
  "etapas": {
   "funil_recursos_resposta": {
-   "consultas": 1,
-   "com_resultado_bruto": 1,
-   "pistas": 3
+   "consultas": 2,
+   "com_resultado_bruto": 2,
+   "pistas": 6
   },
   "juiz": {
    "pistas_recebidas": 460,
@@ -40,7 +40,24 @@
    "consultas": 27,
    "com_resultado_bruto": 27,
    "municipios": 150363
+  },
+  "diario_consorciado": {
+   "fontes": 16,
+   "pistas": 34,
+   "decretos_novos": 0,
+   "bloqueadas": 0,
+   "fora_do_ar": 0
+  },
+  "diario_municipal": {
+   "consultados": 150,
+   "lacunas": 0,
+   "decretos_novos": 0,
+   "pistas": 0
+  },
+  "doe": {
+   "ufs_consultadas": 27,
+   "ufs_com_resultado": 27
   }
  },
- "atualizado_em": "2026-10-12T01:15:45"
+ "atualizado_em": "2026-10-12T02:52:15"
 }
