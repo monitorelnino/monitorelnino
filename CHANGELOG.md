@@ -32,9 +32,9 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-12 · #PR · figura dos caminhos sem vazio e rótulos dentro das faixas (A4-24)
+## 2026-10-12 · #PR · figura dos caminhos sem vazio; alvo de toque dos contatos (A4-24, A4-26)
 
-A figura dos caminhos do dinheiro em `financiamento.html` tinha 570 px de branco (a mídia herdava proporção fixa) e rótulos que vazavam da faixa. Agora a mídia do cartão largo segue a altura do desenho e cada rótulo quebra em linhas pela largura da faixa, que cresce com ele (`assets/base.css`, `assets/js/financiamento.js`).
+A figura dos caminhos do dinheiro em `financiamento.html` tinha 570 px de branco (a mídia herdava proporção fixa) e rótulos que vazavam da faixa. Agora a mídia do cartão largo segue a altura do desenho e cada rótulo quebra em linhas pela largura da faixa, que cresce com ele (`assets/base.css`, `assets/js/financiamento.js`). Telefone, e-mail e portal dos contatos de Proteja-se passam de 17 para 44 px de alvo.
 
 ## 2026-10-12 · #PR · cartão por município sem "não localizado" indevido (A3-13)
 

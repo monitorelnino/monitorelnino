@@ -770,7 +770,9 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 .contato-lista{display:grid; grid-template-columns:auto minmax(0, 1fr); gap:var(--sp-1) var(--sp-3); margin:0; font-size:var(--fs-small); line-height:var(--lh-small);}
 .contato-lista dt{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-small); letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--muted);}
 .contato-lista dd{margin:0; overflow-wrap:anywhere;}
-.contato-lista a{color:var(--ink); font-weight:var(--peso-medio);}
+/* A4-26 (12/10/2026): telefone, e-mail e portal tinham alvo de toque de 17 px (altura da linha). */
+.contato-lista a{color:var(--ink); font-weight:var(--peso-medio); display:inline-flex; align-items:center; min-height:var(--alvo-toque);}
+.contato-lista dt{align-self:center;}
 .contato-lista a[href^="tel:"]{white-space:nowrap;}
 
 /* ===== 15. Pesquisadores e Enviar dados ===== */
