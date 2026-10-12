@@ -34,7 +34,7 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-12 · #PR · checagem pré-noite sem falso alarme (F43)
 
-A checagem das 23h acusava despachante parado quando o despacho rodara dentro do relógio, e fila cheia por runs de ramos de ensaio e de coleta de dia. Despachante vivo passa a ser o mais recente dos dois; `ensaio-real/*` e `coleta-dia/*` saem da fila. Onde: `checagem_pre_noite.py`, ensaio nº 20.
+A checagem das 23h acusava despachante parado quando o despacho rodara dentro do relógio, e fila cheia por runs de ramos de ensaio e de coleta de dia. Despachante vivo passa a ser o mais recente dos dois; `ensaio-real/*` e `coleta-dia/*` saem da fila. Onde: `checagem_pre_noite.py`, ensaio nº 20. Junto: o `sitemap.xml` deixa de anunciar o pacote de dados (A7-25).
 
 ## 2026-10-11 · #PR · busca semanal do Protocolo Nacional de Calor Extremo (HANDOVER_SAUDE 3.4)
 
