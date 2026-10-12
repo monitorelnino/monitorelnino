@@ -32,6 +32,14 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-12 · #PR · verificação de links cobre todas as páginas públicas (A6-18, parte)
+
+`verificar_links.py` conferia links de 5 páginas fixas; saúde, financiamento, imprensa, monitor de riscos e blog ficavam de fora. A lista passa a vir de `paginas_publicas` em `layout/regras.json`, mais `obrigado.html`. O histórico de "quebrado desde quando" segue pendente.
+
+## 2026-10-12 · #PR · conformidade diária reprova por código de saída (A7-06)
+
+A conformidade diária só reprovava pela frase "Publicação bloqueada": um erro de programa saía verde sem ter medido nada. Agora reprova também pelo código do comando, com mensagem própria. `metodologia.html` sai de `paginas_publicas` (não existe; a metodologia pública é o PDF) e página listada ausente passa a ser avisada (`conformidade_diaria.yml`, `layout/regras.json`, `scripts/verificar_conformidade.py`).
+
 ## 2026-10-12 · #PR · figura dos caminhos sem vazio; alvo de toque dos contatos (A4-24, A4-26)
 
 A figura dos caminhos do dinheiro em `financiamento.html` tinha 570 px de branco (a mídia herdava proporção fixa) e rótulos que vazavam da faixa. Agora a mídia do cartão largo segue a altura do desenho e cada rótulo quebra em linhas pela largura da faixa, que cresce com ele (`assets/base.css`, `assets/js/financiamento.js`). Telefone, e-mail e portal dos contatos de Proteja-se passam de 17 para 44 px de alvo.
