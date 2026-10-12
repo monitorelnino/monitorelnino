@@ -340,6 +340,17 @@ def _aplicar_um(rel: str, origem: pathlib.Path, porta: str):
             da_arvore = destino.read_text(encoding="utf-8")
             if da_arvore == do_artefato:
                 return None                      # nada a fazer, e dizer isso não é recusa
+            if rel == "data/painel_da_noite.json":
+                # F44 (12/10/2026): por chave (elo, noite, inicio) duas execuções do mesmo minuto
+                # viravam uma. O painel une por linha inteira, em multiconjunto.
+                from painel_da_noite import unir_paineis
+                doc = json.loads(da_arvore)
+                novo_doc = json.loads(do_artefato)
+                antes = len(doc.get("noites") or [])
+                doc["noites"] = unir_paineis(doc.get("noites") or [], novo_doc.get("noites") or [])
+                gravar_em(destino, doc)
+                print(f"     {rel}: {antes} → {len(doc['noites'])} (união do painel)")
+                return True
             if rel in CHAVE_POR_ITEM:
                 campo, campos = CHAVE_POR_ITEM[rel]
                 doc = json.loads(da_arvore)
