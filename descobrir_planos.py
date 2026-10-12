@@ -378,7 +378,7 @@ def descobrir_renderizado(uf: str, setor: str, url: str, fila: dict, rodar=None)
     identificado), preserva o HTML renderizado como evidência, e registra na MESMA fila do canal 1
     o texto visível e cada link candidato. O que NÃO faz: decidir que existe plano. As três travas
     do módulo continuam valendo — nada entra no banco, todo item nasce `promovivel: false`, e a
-    promoção é humana (R7)."""
+    promoção só pelo juiz automático, com documento oficial (D7)."""
     import json as _json
     import subprocess as _sub
     rodar = rodar or (lambda cmd: _sub.run(cmd, capture_output=True, text=True, timeout=180, encoding="utf-8"))

@@ -33,7 +33,7 @@ TRAVA ABSOLUTA (idêntica à de descobrir_planos.py) — três camadas independe
   2. DE CAMPO: todo achado nasce com "documento_oficial_confirmado": null e
      "promovivel": false.
   3. DE PROCESSO: achados vão para data/pistas_paineis.json (fila própria) — nunca
-     direto no banco. Promoção é humana (regra R7).
+     direto no banco. Promoção só pelo juiz automático, com documento oficial (D7, 08/10/2026; antes, regra R7).
 ===========================================================================
 
 REGRAS herdadas do §11: cliente identificado (coletores_base.UA); no máximo 1 requisição

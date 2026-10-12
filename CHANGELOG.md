@@ -36,6 +36,10 @@ não pontuados permanecem na versão corrente.
 
 Com a autoaplicação suspensa, toda contribuição parava como abstenção e nenhuma chegava ao índice. Pela decisão D7, a de documento (plano, estrutura, decreto) passa por fonte oficial (R4) e campo livre (R4-bis) e entra na fila pela porta única, origem `contribuicao`, nível C; o juiz lê o documento (`processar_contribuicoes.py`, `schemas/pista.json`).
 
+## 2026-10-12 · #PR · listas de auditoria sem etapa de pessoa (A6-20)
+
+`atualizar_transferencias.py` ainda mandava "revisar e incorporar à mão" a lista `transferencias_revisar.json`, e três coletores diziam "promoção é humana". Não há etapa de pessoa desde 08/10: a lista é de auditoria, nada dela entra no banco por esse caminho, e promoção é só pelo juiz automático com documento oficial (D7).
+
 ## 2026-10-12 · #PR · ADPF 743: "não localizado" com a data da verificação (A3-22, parte)
 
 Na ficha do estado, "resultado após 25/07 não localizado" era frase fixa do código, sem data, havia 73 dias. Passa a levar o limite da verificação, do dado: "não localizado até 05/09/2026" (`adpf743.resultado_verificado_em`, ou `registrado_em`), como pede o teto de ausência (`assets/js/index.js`). URL e hash dos 54 instrumentos estaduais seguem pendentes.
