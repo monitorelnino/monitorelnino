@@ -25,6 +25,14 @@ const PROIBIDOS = [
   [/pedidos? de acesso à informação enviados?/gi, "registro de pedidos de LAI (nunca no site)"],
   [/\bsess[ãa]o (metodológica|paralela|de construção)\b/gi, "'sessão' interna"],
   [/\bTODO\b|\bFIXME\b|\bXXX\b/g, "marcador de pendência"],
+  // A7-03 (12/10/2026): regras de FORMA, não só de palavra — a classe do "texto interno vazado em
+  // saude.html" de 07/10. Lista fechada de palavras não pega o que nunca apareceu.
+  // (a data dentro de um endereço — o slug do texto do blog — não é data ao leitor)
+  [/(?<![\/\w-])20\d{2}-[01]\d-[0-3]\d(?![\w-])/g, "data ISO (no site: dd/mm/aaaa ou por extenso)"],
+  [/\b(?:undefined|NaN|\[object Object\])\b/g, "valor de programa vazado (undefined/NaN/objeto)"],
+  [/\{[a-z_][a-z0-9_]*\}/g, "chave de molde não preenchida ({x})"],
+  [/\b(?:rascunho|handover|placeholder|a aprovar|texto interno|nota interna)\b/gi, "texto interno"],
+  [/(?<![\d.,])\d{1,3}\.\d{1,2}(?![\d.])\s*(?:%|mil\b|milh|bilh|mm\b|°C|graus)/g, "decimal com ponto (no site: vírgula)"],
 ];
 let total = 0;
 (async () => {
