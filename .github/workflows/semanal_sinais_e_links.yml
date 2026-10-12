@@ -24,7 +24,7 @@ jobs:
       # 02/10/2026: os dois coletores de respiratórias saíram para `semanal_respiratorias.yml`.
       # A primeira execução real desta rotina bateu no teto de 150 min e foi cancelada, sem
       # chegar ao fim da fila — fila longa não é cadência.
-      timeout_minutos: 150
+      timeout_minutos: 30
       # §279 (item 5 da decisão da editoria, 28/09/2026): os três scripts que só rodavam na CI entram
       # aqui. Eles produzem dado que a rodada USA — `dominios_oficiais.json` alimenta
       # `descobrir_planos.py`, `saude_sinais.json` alimenta a camada de saúde — e rodar só quando um PR
@@ -35,50 +35,8 @@ jobs:
       # afins) direto por HTTP, e decide pela resposta e pelo título. Subir instância aqui seria
       # dependência inventada, que é o erro que eu cometi três vezes nestes dois dias.
       comandos: |
-        # 30/09/2026: cadastro federal de municípios suscetíveis a enxurradas e inundações (Casa
-        # Civil). Semanal porque a nota técnica muda por decreto, não por dia; o coletor recusa
-        # gravar se a contagem não fechar 2.086 + 9 = 2.095.
         coletar_cadastro_prioritarios.py
-        # 30/09/2026 (PR 3 do enquadramento federal de risco): municípios prioritários do MMA.
-        # Semanal porque a portaria é anual; o coletor só preserva evidência quando o TEXTO do ato
-        # muda, e avisa em voz alta quando a janela da atualização anual passou sem mudança.
         coletar_prioritarios_mma.py
-        # 01/10/2026 (R10): normais climatológicas 1991–2020 do Inmet, para o desvio do mapa
-        # de calor. Por documento: a normal só muda quando o Inmet publica outra, e o
-        # coletor não grava nada quando o hash do arquivo é o mesmo.
-        coletar_normais_inmet.py
-        # 30/09/2026 (PR 2 do enquadramento federal de risco): delimitação do Semiárido. Semanal
-        # porque a delimitação muda por resolução, não por dia; o próprio script pula a gravação
-        # quando o hash do arquivo do IBGE não mudou e a última conferência tem menos de 7 dias.
         coletar_semiarido_sudene.py
-        # Sondas do InfoGripe, as duas: a série da Fiocruz volta a ser fonte complementar se o
-        # acesso voltar, e são elas que avisam. Nenhuma escreve série.
-        #
-        # ERRATA (29/09/2026): o §291 afirmou que `sondar_boletim_infogripe.py` "não existe no
-        # repositório". Ele existe, em `scripts/` — eu procurei na raiz e concluí demais do que
-        # não achei. Ele estava ligado só ao `diagnostico_sinais.yml`, que roda por botão; o
-        # bloco 4 pediu sonda SEMANAL, e é isto aqui.
-        scripts/sondar_boletim_infogripe.py
-        # A outra sonda cobre o que a primeira não vê: os endpoints do CSV no GitLab. O modo
-        # padrão de `coletar_srag_gripe.py` passou a ser sondar — ele não escreve mais série.
-        # 11/10/2026 (F40): SINAN de arboviroses e óbitos do registro civil foram para o elo diário
-        # da saúde (`noturno_saude.yml`), um escritor só.
-        coletar_srag_gripe.py
-        # 09/10/2026: `coletar_espin.py` e `verificar_links.py` saíram para `semanal_espin_e_links.yml`
-        # — no fim desta fila, eles nunca chegavam a rodar antes do teto de 150 min.
-        classificar_planos_municipais.py
-        # 11/10/2026 (F38): OS LONGOS NO FIM. Medido no run 38118915381: cobertura do Querido Diário
-        # 56 min, clima municipal 41 min, domínios mais de 47 min — a fila passava do teto e o job
-        # morria sem commit. Os curtos vêm antes; os longos entram depois e param no prazo da
-        # coleta (`_coletor.yml`), e o que eles já gravaram sobe no commit.
-        # 30/09/2026 (§312, item 6 da fila viva): cobertura do Querido Diário, semanal, acoplada ao
-        # ciclo de atualização. O acervo do Querido Diário CRESCE — cidades entram ao longo do tempo
-        # —, e o retrato antigo era de uma busca com janela de data, que envelhecia sem avisar: em
-        # 30/09 o arquivo ainda trazia 1.859 municípios testados em 09/09. A rotina reconsulta só os
-        # que ainda não têm diário indexado, que é onde a mudança acontece: quem já está coberto não
-        # volta à fila, porque edição indexada não desaparece. Por isso ela fica barata com o tempo.
-        coletar_cobertura_qd.py
-        coletar_sinais_risco.py --municipios
-        descobrir_dominios.py
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
