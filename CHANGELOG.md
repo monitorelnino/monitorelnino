@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-13 · #PR · ficha do estado: onde se procurou e quando (A3-18)
+
+A ficha de cada estado na inicial passa a dizer "Procurado em {canais}, última verificação em {data}", com os canais que o log registra como verificados (decisão da central, 13/10). `cobertura_declarada_uf.json` estava parado em 23/09 por não estar na cadeia de derivados; entra nela, datado pelo próprio log. Frase no catálogo.
+
 ## 2026-10-13 · #PR · blog: texto de 06/10 publicado
 
 Entra o texto aprovado "Seca, fogo e chuva: três caminhos diferentes para o dinheiro chegar" (Legal e financiamento), com a troca de "por antecipação" por "antes do vencimento" feita pela central no original aprovado. Verificador do blog verde (números no pacote de 05/10). `blog/posts/`.
