@@ -700,6 +700,19 @@
    "correcao": "Os logs que só crescem unem por multiconjunto (base + o que cada lado tem a mais), a mesma regra que o painel da noite já usava desde o F44; `unir_painel` e a classe à parte saem.",
    "caso_de_teste": "scripts/unir_conflito_de_rodada.py --autoteste: F50: ramo que ja uniu a main uma vez une de novo",
    "falta": null
+  },
+  {
+   "id": "F51",
+   "noite": "2026-10-13",
+   "titulo": "Diários municipais consultam sempre os mesmos 50 municípios",
+   "sintoma": "Em outubro, o canal do diário municipal (Querido Diário) consultou 50 municípios distintos no mês inteiro: os mesmos 50 em toda noite, nas três chamadas da noite.",
+   "causa": "`noturno_diarios.yml` chama `coletar_diarios_municipais.py --tamanho 50` três vezes sem `--lote`; o padrão era lote 1, ou seja `ordem[0:50]` sempre. A rotação só existia com `--pendentes-desde`, usado pelo `atualizar.py`.",
+   "prova": [
+    "data/log_buscas/2026-10.jsonl, canal DOM: 50 ibge por dia em 01–12/10, interseção de 50 entre noites seguidas, 50 distintos no mês"
+   ],
+   "correcao": "Sem `--lote`, a rodada toma os próximos da ordem de prioridade sem consulta ao Querido Diário nos últimos 45 dias (`pendentes_na_janela`, que já existia); 150 por noite cobrem os 5.571 numa volta.",
+   "caso_de_teste": "coletar_diarios_municipais.py --autoteste: F51: sem --lote a fila anda",
+   "falta": null
   }
  ]
 }
