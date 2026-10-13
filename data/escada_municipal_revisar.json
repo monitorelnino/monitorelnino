@@ -1,12 +1,12 @@
 {
- "_governanca": "ARQUIVO DE REVISÃO (§203) — proposta de classificação dos planos municipais na escada do §202, feita a partir do TEXTO PRESERVADO de cada documento. NADA AQUI ESTÁ APLICADO: promoção é R7. Cada proposta traz o trecho que a sustenta, para a leitura humana conferir a EVIDÊNCIA e não a conclusão. `indeterminado` mantém o registro onde está, valendo 1,00 — o robô não classifica no escuro, e 'não sei' nunca vira nota.",
+ "_governanca": "ARQUIVO DE REVISÃO (§203) — proposta de classificação dos planos municipais na escada do §202, feita a partir do TEXTO PRESERVADO de cada documento. NADA AQUI ESTÁ APLICADO: promoção é R7 (juiz automático, §106). Cada proposta traz o trecho que a sustenta, para o juiz conferir a EVIDÊNCIA e não a conclusão. `indeterminado` mantém o registro onde está, valendo 1,00 — o robô não classifica no escuro, e 'não sei' nunca vira nota.",
  "regua": "plano_novo 1,00 · plano_readaptado 0,65 · plano_recorrente 0,45 (§202)",
  "margem_exigida": 2,
  "resumo": {
-  "com_texto": 82,
-  "sem_texto_preservado": 40,
-  "indeterminados": 74,
-  "propostos": 8
+  "com_texto": 88,
+  "sem_texto_preservado": 5,
+  "indeterminados": 79,
+  "propostos": 9
  },
  "propostas": [
   {
@@ -66,7 +66,7 @@
    "categoria_hoje": "plano",
    "documento": "PLANCON edição 2026 (repositório estadual)",
    "proposta": "indeterminado",
-   "motivo": "empate técnico entre plano_recorrente (2) e plano_novo (1) — a margem exigida é 2; leitura humana decide",
+   "motivo": "empate técnico entre plano_recorrente (2) e plano_novo (1) — a margem exigida é 2; abstenção registrada (indeterminado)",
    "pontos": {
     "plano_novo": 1,
     "plano_readaptado": 0,
@@ -202,7 +202,7 @@
    "categoria_hoje": "plano",
    "documento": "PLANCON edição 2026 (repositório estadual)",
    "proposta": "indeterminado",
-   "motivo": "empate técnico entre plano_novo (1) e plano_readaptado (0) — a margem exigida é 2; leitura humana decide",
+   "motivo": "empate técnico entre plano_novo (1) e plano_readaptado (0) — a margem exigida é 2; abstenção registrada (indeterminado)",
    "pontos": {
     "plano_novo": 1,
     "plano_readaptado": 0,
@@ -287,7 +287,7 @@
    "categoria_hoje": "plano",
    "documento": "PLANCON edição 2025 (repositório estadual)",
    "proposta": "indeterminado",
-   "motivo": "empate técnico entre plano_readaptado (1) e plano_novo (0) — a margem exigida é 2; leitura humana decide",
+   "motivo": "empate técnico entre plano_readaptado (1) e plano_novo (0) — a margem exigida é 2; abstenção registrada (indeterminado)",
    "pontos": {
     "plano_novo": 0,
     "plano_readaptado": 1,
@@ -389,7 +389,7 @@
    "categoria_hoje": "plano",
    "documento": "PLANCON edição 2025 (repositório estadual)",
    "proposta": "indeterminado",
-   "motivo": "empate técnico entre plano_readaptado (1) e plano_novo (0) — a margem exigida é 2; leitura humana decide",
+   "motivo": "empate técnico entre plano_readaptado (1) e plano_novo (0) — a margem exigida é 2; abstenção registrada (indeterminado)",
    "pontos": {
     "plano_novo": 0,
     "plano_readaptado": 1,
@@ -831,7 +831,7 @@
    "categoria_hoje": "plano",
    "documento": "PLANCON edição 2025 (repositório estadual)",
    "proposta": "indeterminado",
-   "motivo": "empate técnico entre plano_readaptado (1) e plano_novo (0) — a margem exigida é 2; leitura humana decide",
+   "motivo": "empate técnico entre plano_readaptado (1) e plano_novo (0) — a margem exigida é 2; abstenção registrada (indeterminado)",
    "pontos": {
     "plano_novo": 0,
     "plano_readaptado": 1,
@@ -865,7 +865,7 @@
    "categoria_hoje": "plano",
    "documento": "PLANCON edição 2026 (repositório estadual)",
    "proposta": "indeterminado",
-   "motivo": "empate técnico entre plano_novo (1) e plano_readaptado (0) — a margem exigida é 2; leitura humana decide",
+   "motivo": "empate técnico entre plano_novo (1) e plano_readaptado (0) — a margem exigida é 2; abstenção registrada (indeterminado)",
    "pontos": {
     "plano_novo": 1,
     "plano_readaptado": 0,
@@ -1200,6 +1200,23 @@
    "url": "https://www.novaiguacu.rj.gov.br/smdc/wp-content/uploads/sites/27/2024/12/plancon-2024-2025.pdf"
   },
   {
+   "nome": "Rio das Ostras",
+   "uf": "RJ",
+   "categoria_hoje": "plano_antigo",
+   "documento": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON ALAGAMENTOS Acúmulo de água nas ruas e nos perímetros urbanos, ",
+   "proposta": "indeterminado",
+   "motivo": "nenhum sinal das três classes no texto preservado",
+   "pontos": {
+    "plano_novo": 0,
+    "plano_readaptado": 0,
+    "plano_recorrente": 0
+   },
+   "classe_concorrente": null,
+   "citacao_que_sustenta": null,
+   "evidencia": "evidencias/fe2875b4834be4bfcad66b5b1873a1aa70da87c1b0e0c950168ce401e0018130.txt",
+   "url": "https://www.riodasostras.rj.gov.br/wp-content/uploads/2024/10/plancon-alagamentos-2024.pdf"
+  },
+  {
    "nome": "São Gonçalo",
    "uf": "RJ",
    "categoria_hoje": "plano",
@@ -1215,6 +1232,23 @@
    "citacao_que_sustenta": null,
    "evidencia": "evidencias/be30bc74a3100c99084811d745f0bd8614e550e9884afdd46578f7b40b33589c.txt",
    "url": "https://www.pmsg.rj.gov.br/wp-content/uploads/2025/12/PLAMCON-2025-2026.pdf"
+  },
+  {
+   "nome": "Celso Ramos",
+   "uf": "SC",
+   "categoria_hoje": "plano_antigo",
+   "documento": "Plano de contingência municipal — Prefeitura de Celso Ramos, 2022",
+   "proposta": "indeterminado",
+   "motivo": "nenhum sinal das três classes no texto preservado",
+   "pontos": {
+    "plano_novo": 0,
+    "plano_readaptado": 0,
+    "plano_recorrente": 0
+   },
+   "classe_concorrente": null,
+   "citacao_que_sustenta": null,
+   "evidencia": "evidencias/09a785787ba29c646fe7b52c9d018cd8e350699e671a6103ec04ceb85f063acf.txt",
+   "url": "https://celsoramos.sc.gov.br/uploads/sites/408/2026/07/E0sHEoaT41QWSDWXVHtynGs9.pdf"
   },
   {
    "nome": "Itajaí",
@@ -1234,6 +1268,40 @@
    "url": "https://defesacivil.itajai.sc.gov.br/wp-content/uploads/2025/12/Plano-de-Contingencia-de-Inundacao-ALTERADO-EM-22-12-25.pdf"
   },
   {
+   "nome": "Taió",
+   "uf": "SC",
+   "categoria_hoje": "plano",
+   "documento": "PLANO DE CONTINGÊNCIA Proteção e Defesa Civil de Taió-SC | 01/2026 Taió-SC COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA ",
+   "proposta": "indeterminado",
+   "motivo": "nenhum sinal das três classes no texto preservado",
+   "pontos": {
+    "plano_novo": 0,
+    "plano_readaptado": 0,
+    "plano_recorrente": 0
+   },
+   "classe_concorrente": null,
+   "citacao_que_sustenta": null,
+   "evidencia": "evidencias/6250d3d09e73cb93fcff1d50257dcbf2f951cb3d7b32a554ce0f43d400b0d533.txt",
+   "url": "https://defesacivil.taio.sc.gov.br/wp-content/uploads/2026/01/PLANO-DE-CONTINGENCIA-TAIO-JAN-2026.pdf"
+  },
+  {
+   "nome": "Tijucas",
+   "uf": "SC",
+   "categoria_hoje": "plano_antigo",
+   "documento": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL Deslizamentos de grande impacto, inundações bruscas ou processos geológ",
+   "proposta": "indeterminado",
+   "motivo": "nenhum sinal das três classes no texto preservado",
+   "pontos": {
+    "plano_novo": 0,
+    "plano_readaptado": 0,
+    "plano_recorrente": 0
+   },
+   "classe_concorrente": null,
+   "citacao_que_sustenta": null,
+   "evidencia": "evidencias/627c508d007331fc54b4b664b383949b16f9037b7f364c7481278cd37548f897.txt",
+   "url": "https://tijucas.sc.gov.br/conteudo/paginas/58/plano-de-contingencia-atualizado-sheila.pdf"
+  },
+  {
    "nome": "Lagarto",
    "uf": "SE",
    "categoria_hoje": "plano",
@@ -1249,6 +1317,23 @@
    "citacao_que_sustenta": null,
    "evidencia": "evidencias/ab3dfb7912b771b59f8c209cc161704c7a75c1b5fa16800b01c703b61714d0aa.txt",
    "url": "https://defesacivil.se.gov.br/wp-content/uploads/2026/08/Plancon-edicao-2026.pdf"
+  },
+  {
+   "nome": "Itanhaém",
+   "uf": "SP",
+   "categoria_hoje": "plano",
+   "documento": "PLANCON PLANO DE CONTIGÊNCIA 2024-2025 — Prefeitura de Itanhaém, 2024",
+   "proposta": "indeterminado",
+   "motivo": "nenhum sinal das três classes no texto preservado",
+   "pontos": {
+    "plano_novo": 0,
+    "plano_readaptado": 0,
+    "plano_recorrente": 0
+   },
+   "classe_concorrente": null,
+   "citacao_que_sustenta": null,
+   "evidencia": "evidencias/f342874478fa6a3a4937cac7ef9c14d69a635604516ce48035e1e11c03448cc5.txt",
+   "url": "https://transparencia.itanhaem.sp.gov.br/wp-content/uploads/2024/12/Plano-de-contigencia2025-1.pdf"
   },
   {
    "nome": "Votuporanga",
@@ -1351,6 +1436,23 @@
    "citacao_que_sustenta": "aria n8900, 14 de janeiro de 2025 plancon versao: 03 ultima atualizacao: 03/2026. compdec coordenadoria municipal de protecao e defesa civil sao domin",
    "evidencia": "evidencias/06d1514ffc288587c1e65898bff8083eb1166f4dc4a5c3e246a81d967d72009e.txt",
    "url": "https://defesacivil.es.gov.br/Media/DefesaCivil/Plano%20de%20Contingência%20atualizado/2026/S%C3%83O%20DOMINGOS%20DO%20NORTE%20-%20PLANO%20DE%20CONTIG%C3%8ANCIA%20-%202026.pdf"
+  },
+  {
+   "nome": "Umuarama",
+   "uf": "PR",
+   "categoria_hoje": "plano",
+   "documento": "Plano de contingência do município de Umuarama - PR — Prefeitura de Umuarama, 2026",
+   "proposta": "plano_readaptado",
+   "motivo": "plano_readaptado por 3 contra 0 da segunda classe",
+   "pontos": {
+    "plano_novo": 0,
+    "plano_readaptado": 3,
+    "plano_recorrente": 0
+   },
+   "classe_concorrente": null,
+   "citacao_que_sustenta": ", .enxurradas, granizos, vendavais e tempestades versao 60, atualizado em 11/08/2026 plano de contingencia do municipio de umuarama - pr 11/08/2026 pa",
+   "evidencia": "evidencias/3dfe856b13074b7980ec51d31fc84eb248e264f025ba8226c2722299f9a23826.txt",
+   "url": "https://umuarama.pr.gov.br/files/ArquivoDiversos/arquivo/1786533277.pdf"
   },
   {
    "nome": "Castelo",
