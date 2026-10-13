@@ -32,9 +32,15 @@ não pontuados permanecem na versão corrente.
 
 
 
+<<<<<<< HEAD
 ## 2026-10-13 · #PR · fila de pendentes: três voltas em falso saem
 
 A fila de 3.970 pendentes não andava por três causas. O encaminhamento gastava as 200 resoluções da noite em link de jornal, cujo destino o veículo do feed já decide; a recusa de notícia voltava ao juiz como falha técnica (534 em dois dias); e a busca dirigida procurava o ato do município "resposta". Corrigido em `julgar_e_aplicar_descobertas.py`, `julgar_filas.py` e `scripts/busca_dirigida_do_ato.py`.
+=======
+## 2026-10-13 · #PR · portão 12 em todo PR
+
+O manifesto sela todo arquivo versionado, mas o portão 12 só rodava no PR que tocava dado; o #698 (página) passou verde e deixou a `main` vermelha. O passo roda em todo PR, e o `CLAUDE.md` deixa de dizer que PR de página não resela. `.github/workflows/portoes.yml`.
+>>>>>>> origin/main
 
 ## 2026-10-13 · #PR · calor do MS: "sem leitura desde 25/09", não "sem coleta"
 

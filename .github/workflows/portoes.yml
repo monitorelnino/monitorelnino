@@ -765,17 +765,18 @@ jobs:
 
       - name: Portão 12 — a cadeia de derivados regenera sem erro
         id: p12
-        if: steps.diff.outputs.dado_mudou == 'true'
         continue-on-error: true
         run: |
           if [ "${{ github.event_name }}" = "push" ]; then
             # Na `main`: comparação estrita com o git — derivado obsoleto é bloqueio.
+            # assunto: dado
             bash scripts/verificar_derivados.sh
           else
+            # assunto: dado
             bash scripts/verificar_derivados.sh --pode-regenerar
           fi
       - name: Diagnóstico do portão 12 (relatório no repositório privado)
-        if: steps.diff.outputs.dado_mudou == 'true' && steps.p12.outcome == 'failure'
+        if: steps.p12.outcome == 'failure'
         env:
           ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
         run: |
