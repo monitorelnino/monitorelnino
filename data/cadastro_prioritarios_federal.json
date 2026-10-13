@@ -1,7 +1,7 @@
 {
  "_governanca": "Cadastro federal de municípios suscetíveis a ENXURRADAS E INUNDAÇÕES, publicado pela SEPAC/Casa Civil (Decreto 12.444/2025, regulamento do art. 50 da Lei 11.445/2007). NÃO é o 'Cadastro Nacional de Municípios com Áreas Suscetíveis' do art. 3º-A da Lei 12.340, que é de inscrição voluntária, inclui deslizamentos e gera o dever de plano de contingência — esse outro não tem fonte pública e depende do pedido de LAI ao MIDR/SEDEC, que continua de pé. Camada de contexto, PESO ZERO: não pontua e não entra no índice.",
  "fonte": "https://www.gov.br/casacivil/pt-br/assuntos/cadastro-de-municipios-suscetiveis-a-eventos-de-enxurradas-e-inundacoes/",
- "coletado_em": "2026-10-12",
+ "coletado_em": "2026-10-13",
  "documentos": {
   "nt2_2025": "https://www.gov.br/casacivil/pt-br/assuntos/cadastro-de-municipios-suscetiveis-a-eventos-de-enxurradas-e-inundacoes/copy2_of_NotaTecnica2.2025_SADJVISEPAC.pdf",
   "nt1_2025": "https://www.gov.br/casacivil/pt-br/assuntos/cadastro-de-municipios-suscetiveis-a-eventos-de-enxurradas-e-inundacoes/NotaTecnica1.2025_SADJVISEPACCCeAnexoI.pdf",
@@ -29931,6 +29931,19 @@
    ],
    "cadastro_nacional_art3A": null
   },
+  "1504307": {
+   "codigo_ibge": "1504307",
+   "uf": "",
+   "municipio": "",
+   "tipos_de_risco": [
+    "deslizamento"
+   ],
+   "cadastro_nacional_art3A": null,
+   "prioritario_2095": true,
+   "cadastro_casa_civil_2086": false,
+   "apenas_deslizamento": true,
+   "acrescido_em": 2025
+  },
   "3143153": {
    "codigo_ibge": "3143153",
    "uf": "",
@@ -29944,8 +29957,8 @@
    "apenas_deslizamento": true,
    "acrescido_em": null
   },
-  "5200308": {
-   "codigo_ibge": "5200308",
+  "3501152": {
+   "codigo_ibge": "3501152",
    "uf": "",
    "municipio": "",
    "tipos_de_risco": [
@@ -29970,6 +29983,19 @@
    "apenas_deslizamento": true,
    "acrescido_em": null
   },
+  "5200308": {
+   "codigo_ibge": "5200308",
+   "uf": "",
+   "municipio": "",
+   "tipos_de_risco": [
+    "deslizamento"
+   ],
+   "cadastro_nacional_art3A": null,
+   "prioritario_2095": true,
+   "cadastro_casa_civil_2086": false,
+   "apenas_deslizamento": true,
+   "acrescido_em": null
+  },
   "3521309": {
    "codigo_ibge": "3521309",
    "uf": "",
@@ -29982,32 +30008,6 @@
    "cadastro_casa_civil_2086": false,
    "apenas_deslizamento": true,
    "acrescido_em": null
-  },
-  "3528403": {
-   "codigo_ibge": "3528403",
-   "uf": "",
-   "municipio": "",
-   "tipos_de_risco": [
-    "deslizamento"
-   ],
-   "cadastro_nacional_art3A": null,
-   "prioritario_2095": true,
-   "cadastro_casa_civil_2086": false,
-   "apenas_deslizamento": true,
-   "acrescido_em": null
-  },
-  "1504307": {
-   "codigo_ibge": "1504307",
-   "uf": "",
-   "municipio": "",
-   "tipos_de_risco": [
-    "deslizamento"
-   ],
-   "cadastro_nacional_art3A": null,
-   "prioritario_2095": true,
-   "cadastro_casa_civil_2086": false,
-   "apenas_deslizamento": true,
-   "acrescido_em": 2025
   },
   "3130101": {
    "codigo_ibge": "3130101",
@@ -30022,6 +30022,19 @@
    "apenas_deslizamento": true,
    "acrescido_em": 2025
   },
+  "3528403": {
+   "codigo_ibge": "3528403",
+   "uf": "",
+   "municipio": "",
+   "tipos_de_risco": [
+    "deslizamento"
+   ],
+   "cadastro_nacional_art3A": null,
+   "prioritario_2095": true,
+   "cadastro_casa_civil_2086": false,
+   "apenas_deslizamento": true,
+   "acrescido_em": null
+  },
   "1502103": {
    "codigo_ibge": "1502103",
    "uf": "",
@@ -30034,19 +30047,6 @@
    "cadastro_casa_civil_2086": false,
    "apenas_deslizamento": true,
    "acrescido_em": 2025
-  },
-  "3501152": {
-   "codigo_ibge": "3501152",
-   "uf": "",
-   "municipio": "",
-   "tipos_de_risco": [
-    "deslizamento"
-   ],
-   "cadastro_nacional_art3A": null,
-   "prioritario_2095": true,
-   "cadastro_casa_civil_2086": false,
-   "apenas_deslizamento": true,
-   "acrescido_em": null
   }
  }
 }
