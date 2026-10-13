@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-13 · #PR · um verificador de texto público (consolidação, item 3)
+
+`verificar_vocabulario_publico.js` e `verificar_voz_editorial.js` renderizavam as mesmas páginas para olhar o mesmo texto; viram `verificar_texto_publico.js`, uma renderização por página, com as regras (jargão interno, forma, refrões) em `layout/regras.json → texto_publico`. Mesma cobertura; casos de teste em `--autoteste`. O padrão de "robô" não casava a palavra acentuada (\b depois de ô) e passa a casar.
+
 ## 2026-10-13 · #PR · ato de resposta classificado da imprensa leva a URL
 
 `aplicar_resposta` gravava o evento com a URL só dentro do texto de `fonte`; o portão de resposta (g) exige `url` ou hash, e o caminho só foi exercitado hoje, quando a resolução do link de veículo oficial passou a funcionar (#701): 10 eventos reprovaram o lote 3 (#711). O evento passa a levar `url`. Em `julgar_e_aplicar_descobertas.py`.

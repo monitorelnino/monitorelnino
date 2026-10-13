@@ -106,7 +106,7 @@ def main() -> int:
         passos = [["python3", "recalcular_mare.py", "--write"], ["python3", "gerar_painel.py", "--fichas"], ["python3", "gerar_selos.py"], ["python3", "gerar_feeds.py"], ["python3", "gerar_dados_abertos.py"],
                   ["node", "scripts/verificar_estrutura.js"], ["python3", "verificar_consistencia.py"], ["python3", "recalcular_mare.py", "--check"], ["python3", "verificar_sinais.py"], ["python3", "verificar_saude.py"],
                   ["python3", "verificar_financiamento.py"], ["python3", "verificar_painel.py"], ["node", "scripts/verificar_runtime.js"], ["node", "scripts/verificar_runtime_mapas.js"], ["node", "scripts/verificar_runtime_sinais.js"],
-                  ["node", "scripts/verificar_runtime_saude.js"], ["node", "scripts/verificar_runtime_financiamento.js"], ["node", "scripts/verificar_acessibilidade.js"], ["node", "scripts/verificar_vocabulario_publico.js"]]
+                  ["node", "scripts/verificar_runtime_saude.js"], ["node", "scripts/verificar_runtime_financiamento.js"], ["node", "scripts/verificar_acessibilidade.js"], ["node", "scripts/verificar_texto_publico.js"]]
         falhas = []
         for cmd in passos:
             r = subprocess.run(cmd, cwd=R, env=env, capture_output=True, text=True)
