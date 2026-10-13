@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-13 · #PR · saúde estadual reverifica toda semana
+
+A bateria estadual de saúde passa de quinzenal a semanal (quarta, 03:40 UTC), por decisão da central; e o juiz da saúde carimba a data da verificação ao aplicar — a página dizia "atualizado em 02/10" depois de cada reverificação. `julgar_saude.py`, `noturno_saude_estadual.yml`, `config/temporizadores.json`.
+
 ## 2026-10-13 · #PR · diários municipais: a fila anda (F51)
 
 O canal do Querido Diário consultava os mesmos 50 municípios toda noite (50 distintos em outubro): as três chamadas da noite não passavam `--lote` e o padrão era o primeiro lote. Sem lote, a rodada toma os próximos da ordem de prioridade sem consulta nos últimos 45 dias. Também: `medir_revocacao_das_consultas.py` lê `municipios.json` como lista. `coletar_diarios_municipais.py`.
