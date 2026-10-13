@@ -83,8 +83,12 @@ jobs:
       # gasta busca na rede para recusar por identidade. Na arvore de hoje ele corrige 4 de 13.503
       # pistas, duas delas so depois de `prefeitura.<nome>` passar a resolver.
       comandos: |
+        scripts/corrigir_atribuicao_por_dominio.py --aplicar
+        revisar_pistas.py --preparar
+        julgar_filas.py --aplicar --limite 150
         julgar_e_aplicar_descobertas.py --limite 150
-        julgar_filas.py --aplicar --limite 1000
+        aplicar_promocoes_do_juiz.py --aplicar
+        scripts/amostra_auditoria_semanal.py
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       # 08/10/2026 (A2-28): sem o `ROBO_TOKEN`, o tique oportunista roda com o
