@@ -6735,6 +6735,87 @@
   },
   {
    "data": "2026-10-13",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-13T07:26:24",
+   "duracao_s": 2088.3,
+   "itens": 150,
+   "status": "erro",
+   "erro": "✗ busca web: 93% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-10-13",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-13T08:01:12",
+   "duracao_s": 2084.1,
+   "itens": 150,
+   "status": "erro",
+   "erro": "✗ busca web: 98% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-10-13",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-13T08:35:56",
+   "duracao_s": 2089.4,
+   "itens": 150,
+   "status": "erro",
+   "erro": "✗ busca web: 95% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-10-13",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-13T09:10:45",
+   "duracao_s": 1703.1,
+   "itens": null,
+   "status": "erro",
+   "erro": "interrompido pelo prazo do elo"
+  },
+  {
+   "data": "2026-10-13",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-13T09:39:08",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-13",
+   "script": "seguir_pistas.py",
+   "inicio": "2026-10-13T09:39:08",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-13",
+   "script": "triar_confianca_pistas.py",
+   "inicio": "2026-10-13T09:39:08",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-13",
+   "script": "revisar_pistas.py",
+   "inicio": "2026-10-13T09:39:08",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-13",
+   "script": "motores_busca.py",
+   "inicio": "2026-10-13T09:39:08",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-13",
    "script": "recalcular_mare.py",
    "inicio": "2026-10-13T07:38:45",
    "duracao_s": 2.5,
