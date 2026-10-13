@@ -397,7 +397,7 @@ def _workflow_do_assunto(assunto: str) -> str:
                       ("descoberta", "noturno_descoberta.yml"),
                       ("sinais", "noturno_sinais.yml"), ("triagem", "noturno_triagem.yml"),
                       ("diarios", "noturno_diarios.yml"), ("diários", "noturno_diarios.yml"),
-                      ("busca web", "busca_web_cadencia.yml"),
+                      ("busca", "busca_web_cadencia.yml"),
                       ("publicação", "publicar_dados.yml"), ("publicacao", "publicar_dados.yml"),
                       ("consolidacao", "consolidar_noite.yml"),
                       ("painel do am", "coletar_painel_am.yml")):

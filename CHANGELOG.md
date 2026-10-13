@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-13 · #PR · busca web pelo caminho de coleta comum (F48)
+
+A busca web tinha caminho de coleta próprio e não recebeu o prazo do F38: de 08 a 13/10 toda execução da noite morreu no teto sem commitar. `busca_web_cadencia.yml` passa a chamar o `_coletor.yml` (prazo, janela, marcador, artefato, reaplicação, commit) e os derivados vêm da cadeia canônica. 278 → 47 linhas. Ensaio 26.
+
 ## 2026-10-13 · #PR · calor do MS segue lacuna na segunda falha (F46)
 
 Na segunda noite sem o painel de calor do Ministério da Saúde, o coletor rebaixava a lacuna declarada para "aguardando primeira coleta" e a `main` ficou vermelha no frescor. `falha_calor` (em `coletar_saude.py`) só deixa "aguardando" quem nunca coletou; o resto segue lacuna com a última coleta boa (25/09). Estado reposto; ensaio 25 e F46 no catálogo.

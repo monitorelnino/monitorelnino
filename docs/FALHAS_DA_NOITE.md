@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-13. 46 falhas; 41 com caso de teste que as reproduz; 5 sem, com o que falta dito.
+Atualizado em 2026-10-13. 47 falhas; 42 com caso de teste que as reproduz; 5 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -419,3 +419,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** run 38332550145, job estrutura, 01:31 UTC; commit dab6ad2f: lacuna → aguardando_primeira_coleta com ultima_coleta_ok 25/09/2026
 - **Correção:** `falha_calor`: só fonte que nunca coletou fica "aguardando"; a que já coletou segue `vencer_calor` (lacuna com a última coleta boa), sem sobrescrever o retrato guardado. Estado da `main` reposto no mesmo PR.
 - **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_segunda_falha_do_calor_mantem_a_lacuna`
+
+## F48 · Busca web, monólito à parte, morre no teto sem commitar desde 08/10
+
+- **Noite:** 2026-10-13
+- **Sintoma:** Canal `busca_web` com zero execuções gravadas de 09 a 13/10; runs da noite cancelados no teto de 150 min (11/10 01:10; 12/10 01:10, 04:06, 07:17; 13/10 01:00, 03:53) com sincronizar e commit `skipped`.
+- **Causa:** `busca_web_cadencia.yml` tinha caminho de coleta próprio (guarda, rodadas, sincronização, commit, artefato copiados à mão) e não recebeu o prazo da coleta do F38, posto só no `_coletor.yml`.
+- **Prova:** run 38330051297: passo das rodadas cancelled 01:02→03:30; run 38343789380: passo das rodadas cancelled 03:54→06:23
+- **Correção:** A busca web vira chamador do `_coletor.yml` (um caminho de coleta: prazo, janela, `.feito`, artefato, reaplicação, commit); derivados pela cadeia canônica. 278 → 47 linhas.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_busca_web_pelo_coletor`
