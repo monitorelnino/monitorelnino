@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-13 · #PR · calor do MS volta: lido da página do painel
+
+O painel de excesso de calor não respondia desde 25/09: os cinco endereços de função interna devolvem 200 vazio desde o build novo do MS. A página que o leitor recebe já traz o agregado do dia (27 UFs, 5.571 municípios, totais); o coletor passa a lê-la, e saem a descoberta por bundle e o decodificador próprio. Medido no runner em 13/10. `coletar_saude.py`.
+
 ## 2026-10-13 · #PR · saúde estadual reverifica toda semana
 
 A bateria estadual de saúde passa de quinzenal a semanal (quarta, 03:40 UTC), por decisão da central; e o juiz da saúde carimba a data da verificação ao aplicar — a página dizia "atualizado em 02/10" depois de cada reverificação. `julgar_saude.py`, `noturno_saude_estadual.yml`, `config/temporizadores.json`.
