@@ -130,7 +130,7 @@ async function __load(){
   renderContadorResposta();
   // PR-N0 §1.2: cobertura do diário por município (arquivo pequeno; ausente = rótulo 'ainda não testada')
   // A3-18 (central, 13/10/2026): em que canais se procurou cada estado, e quando (ficha do estado).
-  fetch('data/cobertura_declarada_uf.json').then(r => r.ok ? r.json() : null).then(d => { COBERTURA_UF = d; }).catch(() => {});
+  fetch('data/cobertura_declarada_uf.json').then(r => r.ok ? r.json() : null).then(d => { COBERTURA_UF = d; }).catch(() => { COBERTURA_UF = null; });
   fetch('data/cobertura_qd.json').then(r => r.ok ? r.json() : null).then(d => {
     VMUN = {}; Object.entries((d && d.municipios) || {}).forEach(([k, v]) => { VMUN[String(k).padStart(7, '0')] = v.cobertura_qd; });
   }).catch(() => { VMUN = {}; });
