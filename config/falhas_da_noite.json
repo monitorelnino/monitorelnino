@@ -713,6 +713,19 @@
    "correcao": "Sem `--lote`, a rodada toma os próximos da ordem de prioridade sem consulta ao Querido Diário nos últimos 45 dias (`pendentes_na_janela`, que já existia); 150 por noite cobrem os 5.571 numa volta.",
    "caso_de_teste": "coletar_diarios_municipais.py --autoteste: F51: sem --lote a fila anda",
    "falta": null
+  },
+  {
+   "id": "F52",
+   "noite": "2026-10-13",
+   "titulo": "Busca web pede só motores que não respondem do runner",
+   "sintoma": "A busca web voltou a rodar (F48) mas rendeu 1 pista em 560 consultas: 532 `motor_sem_resposta` e resultados alheios à consulta (wikipedia, reddit).",
+   "causa": "O disjuntor de `motores_busca.py` só conhecia seis motores (duckduckgo, bing, brave, mojeek, startpage, qwant); desligava os mudos e o piso de dois trazia de volta os que respondiam lixo. O único motor que responde do runner, `google cse`, nunca era pedido.",
+   "prova": [
+    "medir_revocacao.yml run 38433496633: 15 municípios com plano × 9 strings, revocação 60%, 761 de 761 candidatos de `google cse`; duckduckgo CAPTCHA/403, brave 429"
+   ],
+   "correcao": "Sai o disjuntor (sentinela, contagem, desligamento, piso, arquivo de estado); a lista de motores é a medida — hoje só `google cse` — e muda por medição, com registro.",
+   "caso_de_teste": "motores_busca.py --autoteste: lista de motores declarada e não vazia",
+   "falta": null
   }
  ]
 }

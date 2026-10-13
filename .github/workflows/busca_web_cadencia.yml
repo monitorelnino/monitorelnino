@@ -42,7 +42,6 @@ jobs:
         seguir_pistas.py --limite 20
         triar_confianca_pistas.py
         revisar_pistas.py --preparar --limite 30
-        motores_busca.py --estado
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
