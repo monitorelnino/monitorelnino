@@ -78,12 +78,6 @@ LOGS_QUE_SO_CRESCEM = {
     "data/painel_da_noite.json": "noites",
 }
 
-# 12/10/2026 (F44): o painel une em MULTICONJUNTO de linhas inteiras, não pelo prefixo. Até 11/10 o
-# produtor cortava o painel em 400 linhas; na noite 11→12 o corte começou a podar a cabeça, os
-# lados deixaram de começar com a base e esta união recusou — saúde, diários e triagem perderam o
-# commit. Base + o que cada lado tem a mais que a base: nenhuma linha de nenhum lado (nem da base)
-# se perde, e duas execuções no mesmo minuto continuam duas linhas.
-LOGS_POR_CHAVE = {"data/painel_da_noite.json": "noites"}
 
 
 def gravar_no_formato_do_produtor(caminho, doc) -> None:
@@ -375,13 +369,28 @@ def e_jsonl_que_so_cresce(caminho: str) -> bool:
             and str(caminho).endswith(".jsonl"))
 
 
-def unir_jsonl(caminho, base_txt, nosso_txt, deles_txt):
-    """União pela base comum em LINHAS: base + nossas_novas + delas_novas. Função pura.
+def _multiconjunto(base, nosso, deles) -> list:
+    """base + o que cada lado tem A MAIS que a base, contando repetição (F50, 13/10/2026).
 
-    Mesma regra do log em JSON, no formato em que o volume da busca passou a ser gravado. E a mesma
-    trava: os dois lados têm de COMEÇAR com a base, linha a linha. Se não começarem, alguém
-    reescreveu ou removeu histórico, e unir aqui esconderia isso — foi assim que uma união por
-    conteúdo apagou quase 3.000 execuções em 23/09/2026.
+    Era "os dois lados começam com a base, item a item". Um ramo que já tinha unido a `main` uma
+    vez deixava de começar com a base da segunda união (as linhas da `main` ficavam depois das
+    dele) e era recusado; o dado de coleta de dia tinha de ser unido à mão. Por multiconjunto a
+    ordem não importa, repetição continua contando (duas execuções idênticas são duas) e linha que
+    um lado perdeu volta pela base: o resultado nunca é menor que nenhum lado."""
+    if str(RAIZ / "scripts") not in sys.path:
+        sys.path.insert(0, str(RAIZ / "scripts"))
+    from painel_da_noite import unir_paineis
+    try:
+        return unir_paineis(nosso, deles, base=base)
+    except ValueError as e:
+        raise Recusa(str(e))
+
+
+def unir_jsonl(caminho, base_txt, nosso_txt, deles_txt):
+    """União pela base comum em LINHAS, por multiconjunto (`_multiconjunto`). Função pura.
+
+    Mesma regra do log em JSON, no formato em que o volume da busca passou a ser gravado. Nunca
+    deduplica por conteúdo: foi assim que uma união apagou quase 3.000 execuções em 23/09/2026.
     """
     if nosso_txt is None or deles_txt is None:
         raise Recusa("um dos lados não tem o arquivo; isto não é acréscimo dos dois lados")
@@ -391,46 +400,12 @@ def unir_jsonl(caminho, base_txt, nosso_txt, deles_txt):
 
     lb = linhas(base_txt) if base_txt is not None else []
     ln, ld = linhas(nosso_txt), linhas(deles_txt)
-    n = len(lb)
-    for nome, lado in (("nosso", ln), ("deles", ld)):
-        if len(lado) < n:
-            raise Recusa(f"o lado {nome} tem {len(lado)} linha(s), menos que a base ({n}) — "
-                         f"houve remoção, e isto não é acréscimo")
-        if lado[:n] != lb:
-            raise Recusa(f"o lado {nome} não começa pela base — houve reescrita de histórico")
-
-    fundido = lb + ln[n:] + ld[n:]
-    if len(fundido) < max(len(ln), len(ld)):
-        raise Recusa("a união ficou MENOR que um dos lados; isto é perda, não união")
+    fundido = _multiconjunto(lb, ln, ld)
     return "\n".join(fundido) + "\n", len(ln), len(ld), len(fundido)
 
 
-def unir_painel(chave, base_txt, nosso_txt, deles_txt):
-    """Painel da noite: base + o que nosso e deles têm a mais (F44). Tolera cabeça podada."""
-    if nosso_txt is None or deles_txt is None:
-        raise Recusa("um dos lados não tem o arquivo; isto não é acréscimo dos dois lados")
-    if str(RAIZ / "scripts") not in sys.path:
-        sys.path.insert(0, str(RAIZ / "scripts"))
-    from painel_da_noite import unir_paineis
-    nosso, deles = json.loads(nosso_txt), json.loads(deles_txt)
-    base = json.loads(base_txt) if base_txt is not None else {chave: []}
-    for nome, d in (("nosso", nosso), ("deles", deles), ("base", base)):
-        if not isinstance(d, dict) or not isinstance(d.get(chave), list):
-            raise Recusa(f"o lado {nome} não tem a lista '{chave}' no formato esperado")
-    try:
-        uniao = unir_paineis(nosso[chave], deles[chave], base=base[chave])
-    except ValueError as e:
-        raise Recusa(f"painel da noite: {e}")
-    fundido = dict(deles)
-    for k in CARIMBOS:
-        if k in nosso and k in deles:
-            fundido[k] = max(str(nosso[k]), str(deles[k]))
-    fundido[chave] = uniao
-    return fundido, len(nosso[chave]), len(deles[chave]), len(uniao)
-
-
 def unir_log(caminho, chave, base_txt, nosso_txt, deles_txt):
-    """Une pela base comum: base + nossos_novos + deles_novos. Recusa se não for append-only."""
+    """Une pela base comum, por multiconjunto. Recusa mudança de formato fora da lista."""
     if nosso_txt is None or deles_txt is None:
         raise Recusa("um dos lados não tem o arquivo; isto não é acréscimo dos dois lados")
 
@@ -441,24 +416,7 @@ def unir_log(caminho, chave, base_txt, nosso_txt, deles_txt):
             raise Recusa(f"o lado {nome} não tem a lista '{chave}' no formato esperado")
 
     lb, ln, ld = base[chave], nosso[chave], deles[chave]
-    n = len(lb)
-
-    # A trava que importa: os dois lados PRECISAM começar com a base, item a item. Se não
-    # começarem, alguém reescreveu ou removeu histórico, e unir aqui esconderia isso.
-    for nome, lado in (("nosso", ln), ("deles", ld)):
-        if len(lado) < n:
-            raise Recusa(f"o lado {nome} tem {len(lado)} itens, menos que a base ({n}) — "
-                         f"houve remoção, e isto não é acréscimo")
-        if lado[:n] != lb:
-            raise Recusa(f"o lado {nome} não começa com a base item a item — o arquivo não se "
-                         f"comportou como append-only nesta ocasião")
-
-    uniao = lb + ln[n:] + ld[n:]
-
-    # A trava de 23/09: o total NUNCA pode ser menor que qualquer um dos lados.
-    if len(uniao) < max(len(ln), len(ld)):
-        raise Recusa(f"a união deu {len(uniao)}, menor que um dos lados "
-                     f"({len(ln)} e {len(ld)}) — recusado")
+    uniao = _multiconjunto(lb, ln, ld)
 
     # Os escalares do topo: vêm do lado de quem reaplica (deles), que é a rodada.
     #
@@ -499,17 +457,7 @@ def resolver(repo=None, escrever=True):
     for caminho in em_conflito(repo=repo):
         norm = caminho.replace("\\", "/")
         try:
-            if norm in LOGS_POR_CHAVE:
-                chave = LOGS_POR_CHAVE[norm]
-                fundido, a, b, t = unir_painel(
-                    chave, estagio(norm, 1, repo=repo), estagio(norm, 2, repo=repo),
-                    estagio(norm, 3, repo=repo))
-                if escrever:
-                    gravar_no_formato_do_produtor(raiz / norm, fundido)
-                    git("add", "--", norm, repo=repo)
-                resolvidos.append(f"{norm}: {a} + {b} → {t} (união do painel, tolera cabeça podada)")
-
-            elif norm in LOGS_QUE_SO_CRESCEM:
+            if norm in LOGS_QUE_SO_CRESCEM:
                 chave = LOGS_QUE_SO_CRESCEM[norm]
                 fundido, a, b, t = unir_log(
                     norm, chave,
@@ -704,7 +652,7 @@ def autoteste() -> int:
         res, reg, rec = resolver(repo=r)
         checar("mudança de formato continua recusada", bool(rec) and not res)
 
-    # 2. NEGATIVO: um lado ENCURTOU a lista — é o estrago de 23/09, tem de recusar
+    # 2. Um lado ENCURTOU a lista (o estrago de 23/09): a base devolve o que ele perdeu (F50)
     with tempfile.TemporaryDirectory() as t:
         r = _repo_com_conflito(
             t, P,
@@ -712,10 +660,11 @@ def autoteste() -> int:
             _log("execucoes", [{"i": 1}], **E),                       # nosso: PERDEU dois
             _log("execucoes", [{"i": 1}, {"i": 2}, {"i": 3}, {"i": 9}], **E))
         res, reg, rec = resolver(repo=r)
-        checar("lado que encurtou a lista é RECUSADO, não unido",
-               not res and len(rec) == 1 and "menos que a base" in rec[0])
+        checar("lado que encurtou a lista não apaga nada: a base devolve o que ele perdeu",
+               not rec and [x["i"] for x in json.loads((r / P).read_text(encoding="utf-8"))["execucoes"]]
+               == [1, 2, 3, 9])
 
-    # 3. NEGATIVO: um lado reescreveu item da base — não é append-only, tem de recusar
+    # 3. Um lado reescreveu item da base: o original fica (a base) e o reescrito também (F50)
     with tempfile.TemporaryDirectory() as t:
         r = _repo_com_conflito(
             t, P,
@@ -723,8 +672,9 @@ def autoteste() -> int:
             _log("execucoes", [{"i": 1}, {"i": 99}, {"i": 3}], **E),   # reescreveu o 2
             _log("execucoes", [{"i": 1}, {"i": 2}, {"i": 4}], **E))
         res, reg, rec = resolver(repo=r)
-        checar("lado que reescreveu item da base é RECUSADO",
-               not res and len(rec) == 1 and "append-only" in rec[0])
+        checar("item reescrito não apaga o original: os dois ficam",
+               not rec and [x["i"] for x in json.loads((r / P).read_text(encoding="utf-8"))["execucoes"]]
+               == [1, 2, 99, 3, 4])
 
     # 4. NEGATIVO: caminho sem política decidida NÃO é adivinhado
     with tempfile.TemporaryDirectory() as t:
@@ -807,16 +757,10 @@ def autoteste() -> int:
     _u = unir_jsonl("x.jsonl", "a\nb\n", "a\nb\nc\n", "a\nb\nd\n")
     checar("JSONL une pela base comum", _u[0] == "a\nb\nc\nd\n" and _u[3] == 4)
     checar("JSONL unido nunca e menor que um lado", _u[3] >= max(_u[1], _u[2]))
-    try:
-        unir_jsonl("x.jsonl", "a\nb\n", "a\n", "a\nb\nd\n")
-        checar("JSONL com remocao e RECUSADO", False)
-    except Recusa:
-        checar("JSONL com remocao e RECUSADO", True)
-    try:
-        unir_jsonl("x.jsonl", "a\nb\n", "z\nb\nc\n", "a\nb\nd\n")
-        checar("JSONL que nao comeca pela base e RECUSADO", False)
-    except Recusa:
-        checar("JSONL que nao comeca pela base e RECUSADO", True)
+    checar("JSONL com remocao nao apaga: a base devolve a linha",
+           unir_jsonl("x.jsonl", "a\nb\n", "a\n", "a\nb\nd\n")[0] == "a\nb\nd\n")
+    checar("F50: ramo que ja uniu a main uma vez une de novo (ordem nao importa)",
+           unir_jsonl("x.jsonl", "a\nm1\n", "a\nn1\nm1\n", "a\nm1\nm2\n")[0] == "a\nm1\nn1\nm2\n")
     checar("o funil do dia tem classe", e_contador_que_so_cresce("data/funil/2026-10-05.json"))
     checar("outro json nao entra como contador", not e_contador_que_so_cresce("data/meta.json"))
     _b = '{"data":"2026-10-05","formato_versao":1,"etapas":{"juiz":{"recebidas":10}}}'
@@ -843,8 +787,6 @@ def autoteste() -> int:
         checar("campo fora de etapas divergente e RECUSADO", True)
     checar("o painel da noite e log que so cresce, pela chave `noites`",
            LOGS_QUE_SO_CRESCEM.get("data/painel_da_noite.json") == "noites")
-    checar("F44: o painel une por chave antes da classe de log",
-           LOGS_POR_CHAVE.get("data/painel_da_noite.json") == "noites")
     # F44: os dois lados podaram a cabeça da base (o corte de 400): une, e a base não se perde.
     with tempfile.TemporaryDirectory() as t:
         _l = lambda e, n, i: {"elo": e, "noite": n, "inicio": i}

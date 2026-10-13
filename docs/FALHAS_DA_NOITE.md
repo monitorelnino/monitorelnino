@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-13. 49 falhas; 44 com caso de teste que as reproduz; 5 sem, com o que falta dito.
+Atualizado em 2026-10-13. 50 falhas; 45 com caso de teste que as reproduz; 5 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -446,3 +446,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** commits 7d7d101e (juiz, 0 linhas) e ff8b1df1 (publicação, 6.756 linhas) de data/saude_pipeline.json; commits 45434034 (diários, 0) e 9f90cc09 (descoberta, 5.188) de data/painel_da_noite.json
 - **Correção:** A união grava pela mesma porta dos produtores (`gravar_em`); o formato deixa de depender de quem commitou por último.
 - **Caso de teste:** `scripts/unir_conflito_de_rodada.py --autoteste: a união grava no formato do produtor`
+
+## F50 · União recusa o ramo que já uniu a main uma vez
+
+- **Noite:** 2026-10-13
+- **Sintoma:** Os PRs de dado de `coleta-dia/*` (#693, #694) recusaram `saude_pipeline.json` e `log_buscas/2026-10.jsonl` na segunda vez que trouxeram a `main` ("o lado nosso não começa pela base"); a união teve de ser feita à mão.
+- **Causa:** `unir_log` e `unir_jsonl` exigiam que cada lado começasse com a base, item a item. Depois da primeira união, as linhas da `main` ficam depois das do ramo, e a base da segunda união deixa de ser prefixo.
+- **Prova:** PR #693: saude_pipeline.json recusado no segundo merge da main (13/10 09:45); PR #694: log_buscas/2026-10.jsonl recusado no segundo merge da main (13/10 10:05)
+- **Correção:** Os logs que só crescem unem por multiconjunto (base + o que cada lado tem a mais), a mesma regra que o painel da noite já usava desde o F44; `unir_painel` e a classe à parte saem.
+- **Caso de teste:** `scripts/unir_conflito_de_rodada.py --autoteste: F50: ramo que ja uniu a main uma vez une de novo`
