@@ -10,13 +10,6 @@ const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt
    números" SAÍRAM da Imprensa. O que muda toda semana vive no boletim do blog, escrito pela
    editoria; aqui fica o PONTEIRO — a data da edição, três números congelados nela e o caminho.
    O motor da semana continua existindo: é dele que o boletim tira os números. */
-/* 04/10/2026 (handover da rotina semanal): o ponteiro do boletim vira o ponteiro dos TEXTOS. Dois
-   links, título e data, um por linha da rotina. Sem número: o que muda toda semana é o texto, e
-   número repetido aqui seria uma terceira cópia a conferir. */
-/* 05/10/2026 (handover da preparacao programatica, item 7): `ponteiroDosTextos` SAIU. O bloco
-   "Textos desta semana" deixou a pagina de imprensa -- o blog e o menu, e o ponteiro era uma
-   terceira copia a conferir. O codigo sai junto com o elemento: script que escreve num `id` que
-   nao existe mais e codigo morto, e foi assim que `listaNaoSuspenso` ficou orfao em 03/10. */
 
 
 // 03/10/2026: os blocos que escreviam em `listaNaoSuspenso` e `listaSuspenso` saíram. Os dois

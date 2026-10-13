@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-13 · #PR · blog sem faixa de extensão; verificador lê o vocabulário da página
+
+Decisão da editoria (13/10): a faixa de 250 a 450 palavras deixa de ser regra do blog — sai do verificador, não vira exceção. O verificador do blog passa a cobrar também o vocabulário que a conformidade reprova na página do blog, para nenhum texto aprovado reprovar só no navegador. A Imprensa perde a conferência de um ponteiro que saiu da página em 05/10.
+
 ## 2026-10-13 · #PR · logs da noite unem por multiconjunto (F50)
 
 A união de conflito recusava o ramo que já tinha trazido a `main` uma vez: exigia que cada lado começasse pela base, e depois da primeira união isso deixa de valer. Os logs que só crescem passam a unir como o painel da noite já unia (base + o que cada lado tem a mais, contando repetição); a classe à parte do painel sai. Nada se perde: o que um lado apagou volta pela base.
