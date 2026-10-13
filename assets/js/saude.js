@@ -272,7 +272,7 @@ function __init(){
     [{cor:CAL[0], rotulo:'nenhum município em severo ou extremo'}, {cor:CAL[1], rotulo:'1'},
      {cor:CAL[2], rotulo:'2'}, {cor:CAL[3], rotulo:'3 ou mais'}, {cor:NEUTRA, rotulo:'sem coleta até o corte'}]);
   fonteFigura('boxCalor', {fontes: fCalor.nome || 'Painel Nacional de Excesso de Calor',
-                           url: fCalor.url_publica, data: CALOR ? CALOR.coletado_em : null});
+                           url: fCalor.url_publica, data: CALOR ? CALOR.coletado_em : fCalor.ultima_coleta_ok});
   (function listaCalor(){
     const corpo = document.querySelector('#tblCalor tbody');
     if(!corpo) return;
@@ -296,7 +296,7 @@ function __init(){
     /* Sem coleta, a seção diz POR QUE não há número. O painel do MS não publica API: o endereço é
        função interna do aplicativo e, medido em 24/09/2026, responde HTTP 200 com corpo vazio
        quando recusa. Recusa servida com 200 é recusa, nunca "nenhum município em excesso de calor". */
-    el.textContent = 'Classe de excesso de calor por município: sem coleta até o corte.'
+    el.textContent = 'Classe de excesso de calor por município: ' + (fCalor.ultima_coleta_ok ? 'sem leitura desde a coleta de ' + fCalor.ultima_coleta_ok + '.' : 'sem coleta até o corte.')
       + (fCalor.ultima_tentativa_falhou ? ' Última tentativa em ' + fCalor.ultima_tentativa_falhou + '.' : '');
   })();
   /* 01/10/2026 (bloco D): sigla traduzida no texto visível. O rótulo vem do arquivo de sinais, que
@@ -1209,7 +1209,7 @@ const AREAS = [
       if (el('fraseCalor')) el('fraseCalor').textContent = desde
         ? 'O Painel Nacional de Excesso de Calor, do Ministério da Saúde, não devolve leitura desde a coleta de ' + desde + '.'
         : 'O Painel Nacional de Excesso de Calor, do Ministério da Saúde, ainda não foi lido até o corte.';
-      if (window.MonitorMapas) MonitorMapas.credito('boxCalorSerie', {fontes: ['Painel Nacional de Excesso de Calor (Ministério da Saúde)'], data: null});
+      if (window.MonitorMapas) MonitorMapas.credito('boxCalorSerie', {fontes: ['Painel Nacional de Excesso de Calor (Ministério da Saúde)'], data: ult});
       return;
     }
     const classes = [['Normal', r.normal || 0], ['Baixo', r.baixo || 0], ['Severo', r.severo || 0],
@@ -1314,7 +1314,7 @@ const AREAS = [
     () => fetch('data/saude_desfechos/chik_serie_painel.json').then(r => r.ok ? r.json() : null),
     respostaAlerta, contarAlerta, ['InfoDengue (Fiocruz/FGV)']);
   buscaPorMunicipio('CalorMunicipios',
-    () => fetch('data/saude_sinais.json').then(r => r.ok ? r.json() : null).then(SS => (SS || {}).calor_excesso || null),
+    () => fetch('data/saude_sinais.json').then(r => r.ok ? r.json() : null).then(SS => (SS || {}).calor_excesso || {data: (((SS || {}).fontes || {}).painel_calor_ms || {}).ultima_coleta_ok}),
     (base, cod) => {
       const m = base && base.municipios && base.municipios[cod];
       if (!m) return '<p class="u-mb-0">Município não lido na consulta mais recente.</p>';
@@ -1323,7 +1323,7 @@ const AREAS = [
     },
     (base, ref) => (base && base.municipios)
       ? contarMunicipios(base, ref).toLocaleString('pt-BR') + ' municípios lidos na consulta mais recente'
-      : 'Painel sem coleta até o corte.',
+      : (base && base.data ? 'Painel sem leitura desde a coleta de ' + base.data + '.' : 'Painel sem coleta até o corte.'),
     ['Painel Nacional de Excesso de Calor (Ministério da Saúde)']);
 
   /* 7 · A lista do governo federal, sem cartão (o contrato pede lista simples). */
