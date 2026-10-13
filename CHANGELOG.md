@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-13 · #PR · scripts sem uso apagados; dois órfãos religados (consolidação, item 4)
+
+Oito scripts sem nenhuma referência saem (`_p3–_p5`, captura de tela, cartão social, ciclo de mudança, encanamento de portão, LAI AM/RO já incorporada). Dois órfãos faziam falta: o tipo de evento dos atos passa a nascer em `carimbar_atos`, a porta de todo coletor (98 atos estavam sem ele), e a cadência de publicação entra na cadeia de derivados, que o juiz passa a ler do próprio `verificar_derivados.sh` em vez de manter uma cópia.
+
 ## 2026-10-13 · #PR · medida do código (consolidação, item 1)
 
 Linha de base da consolidação pedida pela editoria: `scripts/medir_codigo.py` mede linhas de .py/.js por pasta, os maiores arquivos, funções de mesmo nome em arquivos distintos e portões por perfil; `docs/MEDIDA_DO_CODIGO.md` guarda a medida (13/10: ~101 mil linhas, 357 arquivos, 274 comandos). Roda no PR como relatório, sem reprovar.
