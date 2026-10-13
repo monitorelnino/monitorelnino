@@ -289,11 +289,11 @@ _EXCERTOS_DO_QD = {}
 
 
 def _web_para_busca_dirigida(consulta):
-    """Rotas 2 e 3: o metabuscador da rodada, com o mesmo disjuntor por motor de origem."""
+    """Rotas 2 e 3: o metabuscador da rodada, com os mesmos motores medidos."""
     try:
-        import motores_busca
+        from motores_busca import MOTORES
         from monitorar_busca_web import buscar_searxng
-        motores = motores_busca.ativos(motores_busca.ler_estado(), motores_busca.agora_iso())
+        motores = list(MOTORES)
     except Exception:  # noqa: BLE001
         return []
     try:

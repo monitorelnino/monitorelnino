@@ -32,9 +32,37 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-13 · #PR · saúde estadual reverifica toda semana
+
+A bateria estadual de saúde passa de quinzenal a semanal (quarta, 03:40 UTC), por decisão da central; e o juiz da saúde carimba a data da verificação ao aplicar — a página dizia "atualizado em 02/10" depois de cada reverificação. `julgar_saude.py`, `noturno_saude_estadual.yml`, `config/temporizadores.json`.
+
+## 2026-10-13 · #PR · ficha do estado: onde se procurou e quando (A3-18)
+
+A ficha de cada estado na inicial passa a dizer "Procurado em {canais}, última verificação em {data}", com os canais que o log registra como verificados (decisão da central, 13/10). `cobertura_declarada_uf.json` estava parado em 23/09 por não estar na cadeia de derivados; entra nela, datado pelo próprio log. Frase no catálogo.
+
+## 2026-10-13 · #PR · busca web pede o motor que responde (F52)
+
+Medido do runner: dos 761 candidatos em 15 municípios com plano, todos vieram de `google cse`, que a busca web nunca pedia; duckduckgo, brave e bing não respondem ou respondem lixo. Sai o disjuntor por motor (sentinela, desligamento, piso de dois, arquivo de estado); a lista é a medida e muda por medição. `motores_busca.py`.
+
+## 2026-10-13 · #PR · diários municipais: a fila anda (F51)
+
+O canal do Querido Diário consultava os mesmos 50 municípios toda noite (50 distintos em outubro): as três chamadas da noite não passavam `--lote` e o padrão era o primeiro lote. Sem lote, a rodada toma os próximos da ordem de prioridade sem consulta nos últimos 45 dias. Também: `medir_revocacao_das_consultas.py` lê `municipios.json` como lista. `coletar_diarios_municipais.py`.
+
+## 2026-10-13 · #PR · decisões da central: prioritários, mudanças, painel de calor
+
+Três decisões de 13/10: decreto deixa de marcar município prioritário como "publicado" (A3-14; 144 → 91, aproximação populacional mantida e rotulada); `mudancas.html` sai do sitemap e vira página interna (A4-10); o Painel Nacional de Excesso de Calor passa a "localizado" na lista federal da Saúde, com endereço e leitura até 25/09 (VigiAR e GeoRisk seguem anunciados).
+
+## 2026-10-13 · #PR · blog: texto de 06/10 publicado
+
+Entra o texto aprovado "Seca, fogo e chuva: três caminhos diferentes para o dinheiro chegar" (Legal e financiamento), com a troca de "por antecipação" por "antes do vencimento" feita pela central no original aprovado. Verificador do blog verde (números no pacote de 05/10). `blog/posts/`.
+
 ## 2026-10-13 · #PR · fila de pendentes: três voltas em falso saem
 
 A fila de 3.970 pendentes não andava por três causas. O encaminhamento gastava as 200 resoluções da noite em link de jornal, cujo destino o veículo do feed já decide; a recusa de notícia voltava ao juiz como falha técnica (534 em dois dias); e a busca dirigida procurava o ato do município "resposta". Corrigido em `julgar_e_aplicar_descobertas.py`, `julgar_filas.py` e `scripts/busca_dirigida_do_ato.py`.
+
+## 2026-10-13 · #PR · portão 12 em todo PR
+
+O manifesto sela todo arquivo versionado, mas o portão 12 só rodava no PR que tocava dado; o #698 (página) passou verde e deixou a `main` vermelha. O passo roda em todo PR, e o `CLAUDE.md` deixa de dizer que PR de página não resela. `.github/workflows/portoes.yml`.
 
 ## 2026-10-13 · #PR · calor do MS: "sem leitura desde 25/09", não "sem coleta"
 
