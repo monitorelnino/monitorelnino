@@ -6033,10 +6033,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
-    "focos_24h": 5,
+    "focos_24h": 74,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "12/10/2026"
@@ -6047,12 +6047,12 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "Rio Branco",
     "data": "12/10/2026",
-    "tmax": 34.0,
+    "tmax": 37.0,
     "tmin": 24.0,
     "resumo": "Muitas nuvens com pancadas de chuva isoladas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
@@ -6063,17 +6063,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 58,
-     "hora": "2026-10-12T10:00",
+     "valor": 49,
+     "hora": "2026-10-12T22:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 32.8,
-     "pm10": 34.3,
-     "ozone": 55.1,
-     "nitrogen_dioxide": 3.4,
+     "pm2_5": 20.0,
+     "pm10": 20.6,
+     "ozone": 56.0,
+     "nitrogen_dioxide": 4.2,
      "carbon_monoxide": 300.7
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -6102,7 +6102,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": {
     "codigo": "A104",
@@ -6116,15 +6116,15 @@
     "natureza": "medição",
     "medida": {
      "tmax": 27.7,
-     "tmin": 26.1,
+     "tmin": 23.6,
      "umin_pct": 72.0,
-     "pmax_mm": null,
+     "pmax_mm": 10.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-12"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-12",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "ar_medido": null
   },
@@ -6177,10 +6177,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
-    "focos_24h": 2,
+    "focos_24h": 50,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "12/10/2026"
@@ -6191,13 +6191,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "Maceió",
     "data": "12/10/2026",
     "tmax": 31.0,
-    "tmin": 22.0,
+    "tmin": 21.0,
     "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -6207,17 +6207,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 38,
-     "hora": "2026-10-12T22:00",
+     "valor": 40,
+     "hora": "2026-10-12T23:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 11.3,
-     "pm10": 17.2,
-     "ozone": 61.4,
-     "nitrogen_dioxide": 2.0,
+     "pm2_5": 11.7,
+     "pm10": 17.7,
+     "ozone": 59.8,
+     "nitrogen_dioxide": 2.3,
      "carbon_monoxide": 96.0
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -6246,7 +6246,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": {
     "codigo": "A303",
@@ -6259,16 +6259,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 23.1,
-     "tmin": 21.6,
-     "umin_pct": 94.0,
+     "tmax": 30.8,
+     "tmin": 20.6,
+     "umin_pct": 59.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-12"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-12",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "ar_medido": null
   },
@@ -6322,10 +6322,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
-    "focos_24h": 256,
+    "focos_24h": 1826,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "12/10/2026"
@@ -6336,12 +6336,12 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "Manaus",
     "data": "12/10/2026",
-    "tmax": 39.0,
+    "tmax": 37.0,
     "tmin": 27.0,
     "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
@@ -6352,17 +6352,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 106,
-     "hora": "2026-10-12T02:00",
+     "valor": 119,
+     "hora": "2026-10-12T13:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 95.8,
-     "pm10": 98.5,
-     "ozone": 114.0,
-     "nitrogen_dioxide": 10.7,
+     "pm2_5": 85.5,
+     "pm10": 87.6,
+     "ozone": 143.0,
+     "nitrogen_dioxide": 6.0,
      "carbon_monoxide": 1027.0
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -6391,7 +6391,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": {
     "codigo": "A101",
@@ -6404,16 +6404,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 31.0,
-     "tmin": 29.3,
-     "umin_pct": 62.0,
-     "pmax_mm": null,
+     "tmax": 36.3,
+     "tmin": 26.9,
+     "umin_pct": 44.0,
+     "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-12"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-12",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "ar_medido": null
   },
@@ -6462,10 +6462,10 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
-    "focos_24h": 4,
+    "focos_24h": 403,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "12/10/2026"
@@ -6476,13 +6476,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "Macapá",
     "data": "12/10/2026",
-    "tmax": 36.0,
-    "tmin": 24.0,
+    "tmax": 35.0,
+    "tmin": 25.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -6492,17 +6492,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 33,
-     "hora": "2026-10-12T15:00",
+     "valor": 39,
+     "hora": "2026-10-12T14:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 7.6,
-     "pm10": 10.3,
-     "ozone": 46.2,
-     "nitrogen_dioxide": 1.5,
+     "pm2_5": 8.9,
+     "pm10": 12.6,
+     "ozone": 45.2,
+     "nitrogen_dioxide": 1.3,
      "carbon_monoxide": 129.2
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -6531,7 +6531,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": {
     "codigo": "A249",
@@ -6544,16 +6544,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 27.7,
-     "tmin": 26.1,
-     "umin_pct": 78.0,
-     "pmax_mm": null,
+     "tmax": 33.8,
+     "tmin": 25.4,
+     "umin_pct": 51.0,
+     "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-12"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-12",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "ar_medido": null
   },
@@ -6607,10 +6607,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
-    "focos_24h": 160,
+    "focos_24h": 2980,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "12/10/2026"
@@ -6621,13 +6621,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "Salvador",
     "data": "12/10/2026",
-    "tmax": 32.0,
-    "tmin": 21.0,
+    "tmax": 31.0,
+    "tmin": 23.0,
     "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -6637,17 +6637,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 40,
-     "hora": "2026-10-12T21:00",
+     "valor": 36,
+     "hora": "2026-10-12T22:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 11.5,
-     "pm10": 16.8,
-     "ozone": 54.4,
-     "nitrogen_dioxide": 4.6,
+     "pm2_5": 9.5,
+     "pm10": 13.6,
+     "ozone": 55.1,
+     "nitrogen_dioxide": 4.2,
      "carbon_monoxide": 120.9
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -6676,7 +6676,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": {
     "codigo": "A401",
@@ -6689,16 +6689,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 25.0,
-     "tmin": 24.0,
-     "umin_pct": 80.0,
+     "tmax": 31.6,
+     "tmin": 23.8,
+     "umin_pct": 48.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-12"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-12",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "ar_medido": null
   },
@@ -6751,10 +6751,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
-    "focos_24h": 9,
+    "focos_24h": 521,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "12/10/2026"
@@ -6765,7 +6765,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "Fortaleza",
@@ -6781,17 +6781,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 39,
+     "valor": 38,
      "hora": "2026-10-12T00:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 12.7,
-     "pm10": 21.7,
-     "ozone": 65.2,
-     "nitrogen_dioxide": 0.6,
+     "pm2_5": 12.5,
+     "pm10": 21.4,
+     "ozone": 63.7,
+     "nitrogen_dioxide": 0.7,
      "carbon_monoxide": 123.4
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -6820,7 +6820,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": null,
    "ar_medido": null
@@ -6874,10 +6874,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 3,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "12/10/2026"
@@ -6888,13 +6888,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "Brasília",
     "data": "12/10/2026",
     "tmax": 33.0,
-    "tmin": 19.0,
+    "tmin": 20.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -6904,17 +6904,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 69,
-     "hora": "2026-10-12T10:00",
+     "valor": 79,
+     "hora": "2026-10-12T13:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 13.1,
-     "pm10": 13.5,
-     "ozone": 94.1,
-     "nitrogen_dioxide": 15.6,
+     "pm2_5": 15.1,
+     "pm10": 15.3,
+     "ozone": 104.8,
+     "nitrogen_dioxide": 10.1,
      "carbon_monoxide": 269.9
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -6943,7 +6943,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": {
     "codigo": "A001",
@@ -6956,16 +6956,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 22.1,
-     "tmin": 20.2,
-     "umin_pct": 39.0,
-     "pmax_mm": null,
-     "marcado_pela_fonte": true,
+     "tmax": 29.3,
+     "tmin": 20.0,
+     "umin_pct": 48.0,
+     "pmax_mm": 0.0,
+     "marcado_pela_fonte": false,
      "data": "2026-10-12"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-12",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "ar_medido": null
   },
@@ -7012,10 +7012,10 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 57,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "12/10/2026"
@@ -7026,13 +7026,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "Vitória",
     "data": "12/10/2026",
-    "tmax": 32.0,
-    "tmin": 23.0,
+    "tmax": 33.0,
+    "tmin": 21.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -7042,17 +7042,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 35,
-     "hora": "2026-10-12T14:00",
+     "valor": 37,
+     "hora": "2026-10-12T13:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 8.3,
-     "pm10": 11.6,
-     "ozone": 52.0,
-     "nitrogen_dioxide": 6.2,
+     "pm2_5": 7.2,
+     "pm10": 9.8,
+     "ozone": 53.3,
+     "nitrogen_dioxide": 6.4,
      "carbon_monoxide": 314.7
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -7081,7 +7081,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": {
     "codigo": "A612",
@@ -7094,16 +7094,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 24.5,
-     "tmin": 22.0,
-     "umin_pct": 84.0,
-     "pmax_mm": null,
+     "tmax": 32.7,
+     "tmin": 21.0,
+     "umin_pct": 44.0,
+     "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-12"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-12",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "ar_medido": null
   },
@@ -7158,10 +7158,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
-    "focos_24h": 29,
+    "focos_24h": 179,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "12/10/2026"
@@ -7172,12 +7172,12 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "Goiânia",
     "data": "12/10/2026",
-    "tmax": 35.0,
+    "tmax": 36.0,
     "tmin": 21.0,
     "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
@@ -7188,17 +7188,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 65,
-     "hora": "2026-10-12T14:00",
+     "valor": 57,
+     "hora": "2026-10-12T12:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 5.9,
-     "pm10": 6.0,
-     "ozone": 94.2,
-     "nitrogen_dioxide": 10.3,
+     "pm2_5": 2.4,
+     "pm10": 2.5,
+     "ozone": 87.4,
+     "nitrogen_dioxide": 6.1,
      "carbon_monoxide": 287.0
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -7227,7 +7227,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": {
     "codigo": "A002",
@@ -7240,16 +7240,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 25.5,
-     "tmin": 23.7,
+     "tmax": 28.2,
+     "tmin": 21.7,
      "umin_pct": 49.0,
-     "pmax_mm": null,
+     "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-12"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-12",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "ar_medido": null
   },
@@ -7303,10 +7303,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
-    "focos_24h": 165,
+    "focos_24h": 1452,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "12/10/2026"
@@ -7317,13 +7317,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "São Luís",
     "data": "12/10/2026",
-    "tmax": 33.0,
-    "tmin": 26.0,
+    "tmax": 32.0,
+    "tmin": 25.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -7333,16 +7333,16 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 39,
+     "valor": 35,
      "hora": "2026-10-12T19:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 12.1,
-     "pm10": 19.6,
-     "ozone": 64.7,
+     "pm2_5": 10.3,
+     "pm10": 16.8,
+     "ozone": 61.4,
      "nitrogen_dioxide": 1.4,
      "carbon_monoxide": 118.8
     },
@@ -7372,7 +7372,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": null,
    "ar_medido": null
@@ -7417,10 +7417,9 @@
     "consultado_em": "12/10/2026"
    },
    "avisos_inmet": {
-    "total": 3,
+    "total": 2,
     "graus": {
-     "Perigo Potencial": 2,
-     "Perigo": 1
+     "Perigo Potencial": 2
     },
     "exemplos": [
      "Tempestade",
@@ -7428,10 +7427,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
-    "focos_24h": 9,
+    "focos_24h": 1098,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "12/10/2026"
@@ -7439,20 +7438,20 @@
    "alertas_cemaden": {
     "total": 1,
     "niveis": {
-     "Moderado": 1
+     "Cessar": 1
     },
     "municipios": [
      "JUIZ DE FORA"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "Belo Horizonte",
     "data": "12/10/2026",
     "tmax": 31.0,
-    "tmin": 18.0,
+    "tmin": 17.0,
     "resumo": "Muitas nuvens com pancadas de chuva",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -7462,17 +7461,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 63,
-     "hora": "2026-10-12T14:00",
+     "valor": 66,
+     "hora": "2026-10-12T15:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 10.0,
-     "pm10": 11.6,
-     "ozone": 69.1,
-     "nitrogen_dioxide": 11.2,
+     "pm2_5": 7.1,
+     "pm10": 7.6,
+     "ozone": 71.2,
+     "nitrogen_dioxide": 9.0,
      "carbon_monoxide": 187.7
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -7501,7 +7500,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": {
     "codigo": "A572",
@@ -7514,16 +7513,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 24.1,
-     "tmin": 22.0,
-     "umin_pct": 48.0,
-     "pmax_mm": null,
+     "tmax": 31.8,
+     "tmin": 20.7,
+     "umin_pct": 28.0,
+     "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-12"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-12",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "ar_medido": null
   },
@@ -7578,10 +7577,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 6,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "12/10/2026"
@@ -7592,13 +7591,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "Campo Grande",
     "data": "12/10/2026",
-    "tmax": 35.0,
-    "tmin": 20.0,
+    "tmax": 31.0,
+    "tmin": 19.0,
     "resumo": "Muitas nuvens com pancadas de chuva",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -7608,17 +7607,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 52,
+     "valor": 48,
      "hora": "2026-10-12T13:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 8.4,
-     "pm10": 8.6,
-     "ozone": 61.3,
-     "nitrogen_dioxide": 11.7,
+     "pm2_5": 4.9,
+     "pm10": 5.1,
+     "ozone": 67.0,
+     "nitrogen_dioxide": 8.2,
      "carbon_monoxide": 192.4
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -7647,7 +7646,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": {
     "codigo": "A702",
@@ -7660,16 +7659,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 22.1,
-     "tmin": 21.0,
-     "umin_pct": 76.0,
-     "pmax_mm": null,
+     "tmax": 31.8,
+     "tmin": 19.1,
+     "umin_pct": 40.0,
+     "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-12"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-12",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "ar_medido": null
   },
@@ -7723,10 +7722,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
-    "focos_24h": 181,
+    "focos_24h": 1104,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "12/10/2026"
@@ -7737,13 +7736,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "Cuiabá",
     "data": "12/10/2026",
     "tmax": 35.0,
-    "tmin": 23.0,
+    "tmin": 24.0,
     "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -7753,17 +7752,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 65,
+     "valor": 52,
      "hora": "2026-10-12T12:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 10.8,
-     "pm10": 11.0,
-     "ozone": 64.6,
-     "nitrogen_dioxide": 14.8,
+     "pm2_5": 4.5,
+     "pm10": 4.7,
+     "ozone": 65.1,
+     "nitrogen_dioxide": 12.6,
      "carbon_monoxide": 289.4
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -7792,7 +7791,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": {
     "codigo": "A901",
@@ -7805,16 +7804,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 27.4,
-     "tmin": 25.6,
-     "umin_pct": 68.0,
-     "pmax_mm": null,
+     "tmax": 37.2,
+     "tmin": 23.8,
+     "umin_pct": 27.0,
+     "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-12"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-12",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "ar_medido": null
   },
@@ -7868,10 +7867,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
-    "focos_24h": 1759,
+    "focos_24h": 9969,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "12/10/2026"
@@ -7882,13 +7881,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "Belém",
     "data": "12/10/2026",
-    "tmax": 35.0,
-    "tmin": 23.0,
+    "tmax": 34.0,
+    "tmin": 25.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -7898,17 +7897,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 39,
-     "hora": "2026-10-12T14:00",
+     "valor": 37,
+     "hora": "2026-10-12T15:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 8.5,
-     "pm10": 11.5,
-     "ozone": 55.7,
-     "nitrogen_dioxide": 3.0,
+     "pm2_5": 8.9,
+     "pm10": 12.5,
+     "ozone": 50.3,
+     "nitrogen_dioxide": 3.1,
      "carbon_monoxide": 143.6
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -7937,7 +7936,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": {
     "codigo": "A201",
@@ -7950,16 +7949,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 26.4,
+     "tmax": 34.7,
      "tmin": 26.0,
-     "umin_pct": 83.0,
+     "umin_pct": 52.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-12"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-12",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "ar_medido": null
   },
@@ -8012,10 +8011,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 58,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "12/10/2026"
@@ -8026,13 +8025,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "João Pessoa",
     "data": "12/10/2026",
     "tmax": 31.0,
-    "tmin": 23.0,
+    "tmin": 24.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -8042,17 +8041,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 38,
-     "hora": "2026-10-12T18:00",
+     "valor": 37,
+     "hora": "2026-10-12T23:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 11.9,
-     "pm10": 19.7,
-     "ozone": 66.7,
-     "nitrogen_dioxide": 1.3,
+     "pm2_5": 10.4,
+     "pm10": 17.3,
+     "ozone": 66.0,
+     "nitrogen_dioxide": 1.2,
      "carbon_monoxide": 135.8
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -8081,7 +8080,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": {
     "codigo": "A320",
@@ -8094,16 +8093,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 25.4,
-     "tmin": 24.8,
-     "umin_pct": 73.0,
-     "pmax_mm": null,
-     "marcado_pela_fonte": true,
+     "tmax": 31.8,
+     "tmin": 22.1,
+     "umin_pct": 61.0,
+     "pmax_mm": 0.0,
+     "marcado_pela_fonte": false,
      "data": "2026-10-12"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-12",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "ar_medido": null
   },
@@ -8156,10 +8155,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 135,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "12/10/2026"
@@ -8170,13 +8169,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "Recife",
     "data": "12/10/2026",
     "tmax": 31.0,
-    "tmin": 21.0,
+    "tmin": 22.0,
     "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -8186,17 +8185,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 38,
-     "hora": "2026-10-12T21:00",
+     "valor": 36,
+     "hora": "2026-10-12T05:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 11.7,
-     "pm10": 19.2,
-     "ozone": 69.7,
-     "nitrogen_dioxide": 1.6,
+     "pm2_5": 10.4,
+     "pm10": 17.2,
+     "ozone": 68.4,
+     "nitrogen_dioxide": 1.5,
      "carbon_monoxide": 114.2
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -8225,7 +8224,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": {
     "codigo": "A301",
@@ -8238,16 +8237,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 23.6,
-     "tmin": 22.2,
-     "umin_pct": 79.0,
-     "pmax_mm": null,
+     "tmax": 31.0,
+     "tmin": 21.6,
+     "umin_pct": 49.0,
+     "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-12"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-12",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "ar_medido": null
   },
@@ -8301,10 +8300,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
-    "focos_24h": 39,
+    "focos_24h": 2563,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "12/10/2026"
@@ -8315,7 +8314,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "Teresina",
@@ -8331,17 +8330,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 46,
+     "valor": 44,
      "hora": "2026-10-12T00:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 14.8,
-     "pm10": 18.2,
-     "ozone": 67.6,
-     "nitrogen_dioxide": 6.5,
+     "pm2_5": 10.9,
+     "pm10": 14.1,
+     "ozone": 66.0,
+     "nitrogen_dioxide": 5.2,
      "carbon_monoxide": 171.2
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -8370,7 +8369,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": {
     "codigo": "A312",
@@ -8383,16 +8382,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 28.5,
-     "tmin": 26.4,
-     "umin_pct": 62.0,
-     "pmax_mm": null,
+     "tmax": 39.6,
+     "tmin": 24.6,
+     "umin_pct": 20.0,
+     "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-12"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-12",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "ar_medido": null
   },
@@ -8446,26 +8445,28 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 1,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "12/10/2026"
    },
    "alertas_cemaden": {
-    "total": 2,
+    "total": 5,
     "niveis": {
-     "Moderado": 2
+     "Moderado": 5
     },
     "municipios": [
      "CAPITÃO LEÔNIDAS MARQUES",
-     "FOZ DO IGUAÇU"
+     "FOZ DO IGUAÇU",
+     "GUARANIAÇU",
+     "SÃO MIGUEL DO IGUAÇU"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "Curitiba",
@@ -8481,17 +8482,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 33,
-     "hora": "2026-10-12T13:00",
+     "valor": 37,
+     "hora": "2026-10-12T14:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 3.5,
-     "pm10": 3.7,
-     "ozone": 46.6,
-     "nitrogen_dioxide": 10.8,
+     "pm2_5": 4.9,
+     "pm10": 5.2,
+     "ozone": 53.8,
+     "nitrogen_dioxide": 10.3,
      "carbon_monoxide": 212.3
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -8520,7 +8521,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": {
     "codigo": "A807",
@@ -8533,16 +8534,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 14.5,
-     "tmin": 14.0,
-     "umin_pct": 96.0,
-     "pmax_mm": null,
+     "tmax": 22.9,
+     "tmin": 13.6,
+     "umin_pct": 67.0,
+     "pmax_mm": 5.4,
      "marcado_pela_fonte": true,
      "data": "2026-10-12"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-12",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "ar_medido": null
   },
@@ -8584,20 +8585,19 @@
     "consultado_em": "12/10/2026"
    },
    "avisos_inmet": {
-    "total": 2,
+    "total": 1,
     "graus": {
-     "Perigo Potencial": 1,
-     "Perigo": 1
+     "Perigo Potencial": 1
     },
     "exemplos": [
      "Tempestade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 1,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "12/10/2026"
@@ -8608,13 +8608,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "Rio de Janeiro",
     "data": "12/10/2026",
-    "tmax": 30.0,
-    "tmin": 20.0,
+    "tmax": 28.0,
+    "tmin": 22.0,
     "resumo": "Muitas nuvens com pancadas de chuva",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -8624,17 +8624,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 160,
+     "valor": 163,
      "hora": "2026-10-12T12:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 26.2,
-     "pm10": 28.9,
-     "ozone": 117.2,
-     "nitrogen_dioxide": 23.4,
+     "pm2_5": 32.8,
+     "pm10": 35.2,
+     "ozone": 120.0,
+     "nitrogen_dioxide": 24.4,
      "carbon_monoxide": 324.4
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -8663,7 +8663,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": {
     "codigo": "A652",
@@ -8676,16 +8676,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 23.8,
-     "tmin": 22.8,
-     "umin_pct": 88.0,
+     "tmax": 27.4,
+     "tmin": 22.3,
+     "umin_pct": 69.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-12"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-12",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "ar_medido": null
   },
@@ -8738,10 +8738,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 94,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "12/10/2026"
@@ -8752,13 +8752,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "Natal",
     "data": "12/10/2026",
-    "tmax": 31.0,
-    "tmin": 26.0,
+    "tmax": 30.0,
+    "tmin": 25.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -8768,17 +8768,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 34,
-     "hora": "2026-10-12T07:00",
+     "valor": 35,
+     "hora": "2026-10-12T22:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 10.9,
-     "pm10": 17.8,
-     "ozone": 63.0,
-     "nitrogen_dioxide": 1.4,
+     "pm2_5": 10.5,
+     "pm10": 17.3,
+     "ozone": 61.8,
+     "nitrogen_dioxide": 1.3,
      "carbon_monoxide": 111.5
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -8807,7 +8807,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": {
     "codigo": "A304",
@@ -8820,16 +8820,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 25.9,
-     "tmin": 25.6,
-     "umin_pct": 75.0,
-     "pmax_mm": null,
+     "tmax": 29.9,
+     "tmin": 25.3,
+     "umin_pct": 71.0,
+     "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-12"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-12",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "ar_medido": null
   },
@@ -8883,10 +8883,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
-    "focos_24h": 50,
+    "focos_24h": 260,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "12/10/2026"
@@ -8897,7 +8897,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "Porto Velho",
@@ -8913,17 +8913,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 65,
-     "hora": "2026-10-12T15:00",
+     "valor": 63,
+     "hora": "2026-10-12T14:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 40.6,
-     "pm10": 41.8,
-     "ozone": 89.5,
-     "nitrogen_dioxide": 2.3,
+     "pm2_5": 26.2,
+     "pm10": 27.0,
+     "ozone": 77.3,
+     "nitrogen_dioxide": 1.9,
      "carbon_monoxide": 441.6
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -8952,7 +8952,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": {
     "codigo": "A925",
@@ -8965,16 +8965,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 24.9,
-     "tmin": 24.2,
-     "umin_pct": 97.0,
+     "tmax": 36.7,
+     "tmin": 22.9,
+     "umin_pct": 35.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-12"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-12",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "ar_medido": null
   },
@@ -9023,10 +9023,10 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
-    "focos_24h": 51,
+    "focos_24h": 288,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "12/10/2026"
@@ -9037,12 +9037,12 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "Boa Vista",
     "data": "12/10/2026",
-    "tmax": 38.0,
+    "tmax": 37.0,
     "tmin": 26.0,
     "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
@@ -9053,17 +9053,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 40,
-     "hora": "2026-10-12T21:00",
+     "valor": 48,
+     "hora": "2026-10-12T20:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 9.2,
-     "pm10": 10.0,
-     "ozone": 51.0,
-     "nitrogen_dioxide": 3.1,
+     "pm2_5": 12.6,
+     "pm10": 13.1,
+     "ozone": 56.1,
+     "nitrogen_dioxide": 3.7,
      "carbon_monoxide": 142.0
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -9092,7 +9092,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": null,
    "ar_medido": null
@@ -9147,7 +9147,7 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
     "focos_24h": 0,
@@ -9167,13 +9167,13 @@
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "Porto Alegre",
     "data": "12/10/2026",
-    "tmax": 16.0,
-    "tmin": 12.0,
+    "tmax": 19.0,
+    "tmin": 13.0,
     "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -9183,17 +9183,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 21,
-     "hora": "2026-10-12T18:00",
+     "valor": 24,
+     "hora": "2026-10-12T20:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 4.5,
-     "pm10": 5.7,
-     "ozone": 48.5,
-     "nitrogen_dioxide": 6.2,
+     "pm2_5": 5.0,
+     "pm10": 6.4,
+     "ozone": 48.8,
+     "nitrogen_dioxide": 5.9,
      "carbon_monoxide": 134.2
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -9222,7 +9222,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": {
     "codigo": "A801",
@@ -9235,16 +9235,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 14.9,
-     "tmin": 14.5,
-     "umin_pct": 85.0,
-     "pmax_mm": null,
+     "tmax": 19.2,
+     "tmin": 13.8,
+     "umin_pct": 63.0,
+     "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-12"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-12",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "ar_medido": null
   },
@@ -9298,7 +9298,7 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
     "focos_24h": 0,
@@ -9309,19 +9309,19 @@
    "alertas_cemaden": {
     "total": 1,
     "niveis": {
-     "Alto": 1
+     "Moderado": 1
     },
     "municipios": [
      "OTACÍLIO COSTA"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "Florianópolis",
     "data": "12/10/2026",
-    "tmax": 20.0,
+    "tmax": 19.0,
     "tmin": 16.0,
     "resumo": "Muitas nuvens com pancadas de chuva",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
@@ -9332,17 +9332,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 32,
+     "valor": 33,
      "hora": "2026-10-12T12:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 9.5,
-     "pm10": 15.3,
-     "ozone": 64.1,
-     "nitrogen_dioxide": 2.0,
+     "pm2_5": 8.8,
+     "pm10": 14.2,
+     "ozone": 64.2,
+     "nitrogen_dioxide": 1.9,
      "carbon_monoxide": 130.5
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -9371,7 +9371,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": {
     "codigo": "A806",
@@ -9385,7 +9385,7 @@
     "natureza": "medição",
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-12",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "ar_medido": null
   },
@@ -9438,10 +9438,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 7,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "12/10/2026"
@@ -9452,12 +9452,12 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "Aracaju",
     "data": "12/10/2026",
-    "tmax": 31.0,
+    "tmax": 29.0,
     "tmin": 24.0,
     "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
@@ -9468,17 +9468,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 37,
-     "hora": "2026-10-12T21:00",
+     "valor": 34,
+     "hora": "2026-10-12T23:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 9.2,
-     "pm10": 14.1,
-     "ozone": 56.3,
-     "nitrogen_dioxide": 2.9,
+     "pm2_5": 8.3,
+     "pm10": 12.5,
+     "ozone": 56.4,
+     "nitrogen_dioxide": 3.0,
      "carbon_monoxide": 110.8
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -9507,7 +9507,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": null,
    "ar_medido": null
@@ -9552,42 +9552,43 @@
     "consultado_em": "12/10/2026"
    },
    "avisos_inmet": {
-    "total": 2,
+    "total": 1,
     "graus": {
-     "Perigo Potencial": 1,
-     "Perigo": 1
+     "Perigo Potencial": 1
     },
     "exemplos": [
      "Tempestade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 8,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "12/10/2026"
    },
    "alertas_cemaden": {
-    "total": 2,
+    "total": 3,
     "niveis": {
-     "Moderado": 2
+     "Cessar": 2,
+     "Moderado": 1
     },
     "municipios": [
+     "ATIBAIA",
      "CAMPINAS",
      "ESTIVA GERBI"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "São Paulo",
     "data": "12/10/2026",
-    "tmax": 27.0,
-    "tmin": 17.0,
+    "tmax": 24.0,
+    "tmin": 16.0,
     "resumo": "Muitas nuvens com pancadas de chuva",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -9597,17 +9598,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 106,
+     "valor": 80,
      "hora": "2026-10-12T14:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 15.1,
-     "pm10": 15.4,
-     "ozone": 84.9,
-     "nitrogen_dioxide": 26.9,
+     "pm2_5": 13.6,
+     "pm10": 13.8,
+     "ozone": 70.0,
+     "nitrogen_dioxide": 29.0,
      "carbon_monoxide": 408.8
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -9636,7 +9637,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": {
     "codigo": "A701",
@@ -9650,7 +9651,7 @@
     "natureza": "medição",
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-12",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "ar_medido": null
   },
@@ -9704,10 +9705,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "fogo": {
-    "focos_24h": 21,
+    "focos_24h": 702,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261012.csv",
     "consultado_em": "12/10/2026"
@@ -9718,12 +9719,12 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura": {
     "capital": "Palmas",
     "data": "12/10/2026",
-    "tmax": 35.0,
+    "tmax": 34.0,
     "tmin": 23.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
@@ -9734,17 +9735,17 @@
    "qualidade_ar": {
     "indice": {
      "escala": "EAQI",
-     "valor": 66,
-     "hora": "2026-10-12T14:00",
+     "valor": 63,
+     "hora": "2026-10-12T12:00",
      "publicado_por": "Open-Meteo (Copernicus CAMS)",
      "criterio": "maior valor horário do dia"
     },
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 17.1,
-     "pm10": 18.3,
-     "ozone": 92.7,
-     "nitrogen_dioxide": 5.8,
+     "pm2_5": 10.2,
+     "pm10": 10.9,
+     "ozone": 86.1,
+     "nitrogen_dioxide": 6.1,
      "carbon_monoxide": 213.9
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -9773,7 +9774,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "temperatura_medida": {
     "codigo": "A009",
@@ -9786,16 +9787,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 25.9,
-     "tmin": 24.9,
-     "umin_pct": 84.0,
-     "pmax_mm": null,
+     "tmax": 35.9,
+     "tmin": 23.1,
+     "umin_pct": 40.0,
+     "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-12"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-12",
-    "consultado_em": "12/10/2026 02:21"
+    "consultado_em": "12/10/2026 22:03"
    },
    "ar_medido": null
   }
