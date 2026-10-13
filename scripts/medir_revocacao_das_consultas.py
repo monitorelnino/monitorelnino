@@ -66,6 +66,7 @@ def medir(municipios: list, buscar, relevante, consultas_de, pausa=None) -> dict
     por_string = {}
     recuperados_por_alguma = 0
     sem_resposta = 0
+    por_motor = {}   # 13/10/2026 (HANDOVER_DESCOBERTA item 1): candidato por motor de origem
     for m in municipios:
         nome = m.get("nome") or m.get("municipio")
         uf = m.get("uf")
@@ -87,6 +88,9 @@ def medir(municipios: list, buscar, relevante, consultas_de, pausa=None) -> dict
             alvo["brutos"] += len(crus)
             candidatos = [r for r in crus if relevante(r, nome)]
             alvo["candidatos"] += len(candidatos)
+            for r in candidatos:
+                for motor in r.get("engines") or [r.get("engine") or "?"]:
+                    por_motor[motor] = por_motor.get(motor, 0) + 1
             if candidatos:
                 alvo["municipios_com_candidato"] += 1
                 achou_alguma = True
@@ -96,7 +100,7 @@ def medir(municipios: list, buscar, relevante, consultas_de, pausa=None) -> dict
             sem_resposta += 1
     return {"n_municipios": len(municipios), "por_string": por_string,
             "municipios_recuperados_pelo_conjunto": recuperados_por_alguma,
-            "municipios_sem_resposta_do_motor": sem_resposta}
+            "municipios_sem_resposta_do_motor": sem_resposta, "candidatos_por_motor": por_motor}
 
 
 def tabela(resultado: dict, titulo: str) -> str:
@@ -114,6 +118,8 @@ def tabela(resultado: dict, titulo: str) -> str:
         linhas.append(f"| `{ident}` | {c['municipios_com_candidato']} | "
                       f"{100 * c['municipios_com_candidato'] / n:.0f}% | {c['brutos']} | "
                       f"{c['candidatos']} | {c['falhas']} |")
+    motores = sorted(resultado.get("candidatos_por_motor", {}).items(), key=lambda kv: -kv[1])
+    linhas += ["", "Candidatos por motor de origem: " + (", ".join(f"{m} {n}" for m, n in motores) or "nenhum")]
     return "\n".join(linhas)
 
 
