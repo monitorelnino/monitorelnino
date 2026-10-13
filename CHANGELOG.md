@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-13 · #PR · frescor dos alertas medido no fuso da redação
+
+`verificar_frescor_defesa_civil.py` montava o "agora" com a data de Brasília e a hora do runner (UTC), enquanto `gerado_em` é gravado em Brasília: a idade do alerta ganhava três horas e o portão reprovou toda a CI a partir das 22:03 UTC (#717). Agora data e hora vêm de `FUSO_EDITORIAL`.
+
 ## 2026-10-13 · #PR · população sob decreto sempre com uma casa decimal
 
 `toLocaleString('pt-BR')` sem casas fixas mostrava "28 milhões" quando o arredondado caía em inteiro (28.004.406 → 28,0); a regra `populacao_em_milhoes_uma_casa` reprovou a `main` após o #714. Formatação com uma casa fixa em `assets/js/defesa-civil.js`; o portão de navegador não roda em PR só de dado, por isso só a `main` viu.
