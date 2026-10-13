@@ -627,7 +627,7 @@ def aplicar_resposta(uf, texto, numero, data, url, hoje):
         "decreto": f"ato de resposta — {numero}" if numero else "situação de emergência (número não localizado no texto)",
         "danos": "não extraído automaticamente — ver fonte",
         "fonte": f"classificado automaticamente ({hoje}) a partir de {url}",
-        "lat": municipio["lat"], "lon": municipio["lon"], "canal": "imprensa",
+        "url": url, "lat": municipio["lat"], "lon": municipio["lon"], "canal": "imprensa",
     })
     gravar_em(atos_path, atos)
     return True, "aplicado"
@@ -931,6 +931,9 @@ def self_test():
                                 "fonte_provavel_oficial": False}, "2026-10-09") == STATUS_RESPOSTA_SEM_FONTE
     assert encaminhar_pendente({"url": "https://x.ce.gov.br/d.pdf", "alvo": "B-capital/CE",
                                 "fonte_provavel_oficial": True}, "2026-10-09") is None
+    import inspect as _i2
+    assert '"url": url' in _i2.getsource(aplicar_resposta), (
+        "o evento de resposta leva a URL da fonte: verificar_resposta.py (g) exige url ou hash")
     ordem = sorted([{"data_publicacao": "Tue, 25 Aug 2026 07:00:00 GMT"},
                     {"data_publicacao": "01/10/2026"}, {"data_publicacao": "lixo"}], key=_quando, reverse=True)
     assert [_quando(o) for o in ordem] == ["2026-10-01", "2026-08-25", ""], ordem
