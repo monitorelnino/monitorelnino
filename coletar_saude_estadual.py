@@ -331,8 +331,7 @@ def pista_de(resultado: dict, uf: str, ident: str, query: str) -> dict:
 
 def bateria(uf: str) -> dict:
     """Roda a busca aberta para uma UF e devolve o resumo. Precisa de SearXNG."""
-    estado = motores_busca.ler_estado(ler)
-    ativos = motores_busca.ativos(estado, motores_busca.agora_iso())
+    ativos = list(motores_busca.MOTORES)
     brutos, achadas = 0, []
     for ident, query in consultas_de(uf):
         try:
