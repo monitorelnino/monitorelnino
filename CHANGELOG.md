@@ -36,6 +36,10 @@ não pontuados permanecem na versão corrente.
 
 Oito scripts sem nenhuma referência saem (`_p3–_p5`, captura de tela, cartão social, ciclo de mudança, encanamento de portão, LAI AM/RO já incorporada). Dois órfãos faziam falta: o tipo de evento dos atos passa a nascer em `carimbar_atos`, a porta de todo coletor (98 atos estavam sem ele), e a cadência de publicação entra na cadeia de derivados, que o juiz passa a ler do próprio `verificar_derivados.sh` em vez de manter uma cópia.
 
+## 2026-10-13 · #PR · medida do código (consolidação, item 1)
+
+Linha de base da consolidação pedida pela editoria: `scripts/medir_codigo.py` mede linhas de .py/.js por pasta, os maiores arquivos, funções de mesmo nome em arquivos distintos e portões por perfil; `docs/MEDIDA_DO_CODIGO.md` guarda a medida (13/10: ~101 mil linhas, 357 arquivos, 274 comandos). Roda no PR como relatório, sem reprovar.
+
 ## 2026-10-13 · #PR · busca web pelo caminho de coleta comum (F48)
 
 A busca web tinha caminho de coleta próprio e não recebeu o prazo do F38: de 08 a 13/10 toda execução da noite morreu no teto sem commitar. `busca_web_cadencia.yml` passa a chamar o `_coletor.yml` (prazo, janela, marcador, artefato, reaplicação, commit) e os derivados vêm da cadeia canônica. 278 → 47 linhas. Ensaio 27.
@@ -230,6 +234,7 @@ depois dá o mesmo conjunto; `portoes_locais.py` lê os passos de todos os jobs.
 ## 2026-10-11 · #PR · a saúde volta a ser coletada todo dia (F40)
 
 O monólito semanal terminava verde sem coletar nada desde 08/10: o passo da janela estava no job vizinho, e a saúde (InfoDengue, calor do MS, desfechos, SINAN, boletins das SES) parou em 26/09. A camada vira elo diário próprio; o validador de workflows reprova passo lido que não existe no job; portão de frescor da Saúde (9 dias); fonte sem coletor vira lacuna com motivo; data do calor em dd/mm/aaaa. Onde: `noturno_saude.yml`, `atualizar.yml`, `saude.js`.
+
 ## 2026-10-11 · #PR · Monitor de riscos: os três mapas de "Os riscos no Brasil" numa só fila
 
 Risco previsto, seca e fogo passam a ficar lado a lado no desktop, no componente `.grade-figuras--3`, a pedido da editoria. Previsto e observado seguem distintos: os selos "Previsto pelo boletim" e "Observado" formam uma faixa alinhada às colunas da grade. No celular, empilham na ordem previsto → seca → fogo. Nenhum título, data ou fonte muda. Onde: `monitor-de-riscos.html`, `assets/base.css`, contrato da página.
@@ -237,6 +242,7 @@ Risco previsto, seca e fogo passam a ficar lado a lado no desktop, no componente
 ## 2026-10-11 · #PR · checagem pré-noite sem cegueira; triagem uma vez na abertura (F36, F37, F27)
 
 A checagem pré-noite dizia "fila vazia" com seis elos rodando: pedia ao `gh` um campo que não existe e o erro virava lista vazia. Agora lê a fila pela API e erro de consulta reprova com nome. Cron atrasado para dentro da janela não julga mais a noite seguinte. O despachante deixa de disparar a triagem na abertura, que a corrente já chama. Onde: `checagem_pre_noite.py`, `despachar_temporizadores.py`, registro de temporizadores.
+
 ## 2026-10-11 · #PR · a fila semanal longa volta a commitar; transferências no elo diário (F38, F39, F41)
 
 A rotina semanal de sinais estourou o teto quatro vezes sem commitar; transferências passou dos 9 dias do frescor (`main` vermelha). A coleta ganha prazo: comando que não cabe é pulado, o que passa é interrompido, e o commit sempre acontece. Longos no fim da fila; transferências no elo diário dos sinais; comentário da fila não roda; sonda do InfoGripe consertada; leitura de PDF não sobrescreve mais o texto integral do diário (seis restaurados). Onde: `_coletor.yml`, `saude_pipeline.py`, dois workflows.
@@ -244,9 +250,11 @@ A rotina semanal de sinais estourou o teto quatro vezes sem commitar; transferê
 ## 2026-10-10 · #PR · zero não é ausência no financiamento; corte do dado, não do relógio (A6-22, A3-20, A6-13)
 
 Valor vazio virava 0.0 nos coletores de financiamento, TransfereGov e execução das MPs: agora é `None`, a soma usa só o presente e tudo vazio é lacuna. `gerar_financiamento_semana.py` lia o relógio da parede; o corte vem de `meta.json`. O mês corrente da coleta das MPs sai marcado `parcial` e não vira "último mês" no cartão nem na lista mensal. Nenhum número exibido muda hoje. Onde: os três coletores, o gerador, `financiamento.js`.
+
 ## 2026-10-10 · #PR · ajustes de página do relatório D, segunda leva (A4-06, A4-15, A4-18, A4-23, A4-35)
 
 Saúde: item não verificado aparece como "ainda não verificado", não como "não localizado até o corte"; as buscas por município contam só códigos da referência IBGE (saem Lagoa Mirim e Lagoa dos Patos, 5.573 → 5.571); "boletins nº 1 a 3" fixo sai; "antecipação" sai do texto público. Financiamento: portarias com data dd/mm/aaaa e finalidade rotulada. Em `assets/js/` e `saude.html`.
+
 ## 2026-10-10 · #PR · os sinais físicos voltam a começar (permissão do job `vez`)
 
 O job `vez` do coletor pede `actions: read`, e três chamadores não concediam: `noturno_sinais` caía em `startup_failure` desde 14:06 de 10/10, e os semanais de sinais e de ESPIN/links cairiam no domingo. O ensaio real viu (F35). Os três passam a conceder; ensaio 17 reprova chamador que não conceda.
@@ -254,6 +262,7 @@ O job `vez` do coletor pede `actions: read`, e três chamadores não concediam: 
 ## 2026-10-10 · #PR · coletores: retry, Retry-After e código do erro HTTP (A1-27, A6-08, A6-14, A6-25)
 
 `com_espera` repete também `ConnectionError` e `IncompleteRead` e respeita `Retry-After` de 429/503 (teto 120 s); 200 com corpo vazio levanta `CorpoVazio` em `buscar_uma_vez`/`enviar_uma_vez`; `registrar_lacuna` acrescenta o código ao motivo "HTTPError". `RE_DATA` de `busca_dirigida_do_ato.py` lia o ano por referência ao grupo 2. Autotestes offline em `testar_espera_de_rede.py` e no script. Onde: `coletores_base.py`, `scripts/`. `verificar_conformidade.py` passa a reprovar exceção incompleta em `layout/excecoes.json` (A7-26).
+
 ## 2026-10-10 · #PR · o ensaio real não conta marcador da noite de verdade
 
 O ramo do ensaio nascia da `main` com os `.feito` da noite de hoje e via "juiz feito" sem rodar o juiz (F34, 2º ensaio, 16:34 UTC). Agora o ramo começa sem `data/noite/<noite>/`, e o veredito só aceita marcador escrito por run do próprio ensaio.
@@ -261,6 +270,7 @@ O ramo do ensaio nascia da `main` com os `.feito` da noite de hoje e via "juiz f
 ## 2026-10-10 · #PR · ajustes de página do relatório D (A4-02, A4-16, A4-21, A4-22, A4-25, A4-27)
 
 Saúde: `ST_COORD` volta a ser declarado (a ficha do estado lançava ReferenceError) e pontos decimais saem com vírgula, como na inicial. Riscos: sai a montagem morta de `#cTipos`. Saúde pede `sindrome_gripal_serie.json` no lugar do inexistente `sg_serie.json`; `mudancas.html` deixa de pedir catálogo que não existe. Financiamento: portaria sem número não mostra traço solto. Inicial: aria-label do medidor de resposta segue o valor exibido. Em `assets/js/` e nas páginas.
+
 ## 2026-10-10 · #PR · o ensaio real usa ramos `ensaio-real/`
 
 O primeiro ensaio real (16:06 UTC) não criou o ramo: `ensaio/...` colide com o ramo `ensaio` que já existe ("directory file conflict"). O mecanismo inteiro passa ao prefixo `ensaio-real/` (F33 no catálogo).
@@ -272,6 +282,7 @@ O primeiro ensaio real (16:06 UTC) não criou o ramo: `ensaio/...` colide com o 
 ## 2026-10-10 · #PR · elo fora da `main` não empurra para a `main`; token do Netlify sai da URL
 
 `_coletor.yml` partia da `main` e empurrava `HEAD:main` em qualquer ramo: um elo disparado no ramo de ensaio gravaria na `main` de dia (F32, ensaio 16). Agora, fora da `main`, o commit não é empurrado. `verificar_contribuicoes.py` passa o token do Netlify no cabeçalho `Authorization`, não na URL (A6-31).
+
 ## 2026-10-10 · #PR · zero etapa humana no código ativo
 
 Rotas, status, filas e mensagens que esperavam pessoa viram abstenção registrada (`ABSTENCAO`), lacuna sem acesso automático ou pendência do juiz (D7, §106). A5-08: canal 2 e canal 3 sem acesso automático deixam de contar como consultados. Dados legados migrados por `scripts/migrar_zero_humano.py`; `contar_filas_humanas.py` vira `contar_filas.py`. O portão `verificar_fila_nao_humana.py` passa a reprovar humano/humana em código ativo de *.py/*.js/*.yml, com cinco exceções declaradas.
@@ -279,9 +290,11 @@ Rotas, status, filas e mensagens que esperavam pessoa viram abstenção registra
 ## 2026-10-10 · #PR · a semana sai em datas, e o juiz de saúde ganha as quatro travas (absorve #582)
 
 Absorve o #582. O leitor lê "na semana de 16 a 22 de agosto de 2026", nunca "semana epidemiológica 33"; acumulados em datas e eixos semanais em meses (`assets/semana.js`, regra do Ministério da Saúde; portão `verificar_semana_epidemiologica.js`). Lote 6.1-A: `julgar_saude.py` deixa de creditar o que não é (A5-01 a A5-04). "mediana"/"p90" saem da legenda.
+
 ## 2026-10-10 · #PR · catálogo das falhas da noite e checagem pré-noite
 
 `config/falhas_da_noite.json` (e `docs/FALHAS_DA_NOITE.md`, gerado) registra as 31 falhas de 03 a 10/10 com causa, prova e o caso de teste que as reproduz; o portão `catalogo_de_falhas.py` reprova caso inexistente. `checagem_pre_noite.yml` (22:53 e 23:43 UTC) confere main verde, mesclagem tardia, fila, relógios, segredos e ensaio real; vermelho abre Issue. Ensaio 15: `env.` lida sem exportar.
+
 ## 2026-10-10 · #PR · planos estaduais pontuados ganham o link do documento
 
 31 dos 41 instrumentos estaduais pontuados passam a ter endereço oficial (Diário Oficial, portal da Defesa Civil ou do governo), achado por busca dirigida e registrado com o grau de conferência em `data/proveniencia_estadual.json`; os 10 sem documento rastreável ficam como defeito de prova declarado, sem mudar nota. O juiz passa a gravar o endereço que leu. Portão: pontuado sem endereço nem defeito declarado reprova.
@@ -289,6 +302,7 @@ Absorve o #582. O leitor lê "na semana de 16 a 22 de agosto de 2026", nunca "se
 ## 2026-10-10 · #PR · elo cancelado na fila é refeito, e a fila deixa de cancelar
 
 O grupo `noturno` guardava um só pendente: na abertura de 10/10 o pendente seguinte cancelou `diarios / coletar`, e o despachante contou o cancelado como execução. Agora cada elo tem grupo próprio e espera a vez por ordem de chegada (`vez_na_noite.py`); run cancelado/pulado não conta; a reserva refaz elo sem `.feito`; o artefato do marcador passa a existir (`NOITE` exportado). Ensaio 14.
+
 ## 2026-10-10 · #PR · o DOU não reacrescenta o reconhecimento que o MIDR acabou de gravar
 
 Na rodada dos diários de 10/10, o canal do DOU decidiu por chaves montadas antes do canal do MIDR rodar e acrescentou de novo 44 reconhecimentos federais (mesma portaria, URL `http` × `https`); `verificar_consistencia.py` reprovou a `main`. `incorporar_ato_dou` lê o banco como está e casa também por IBGE, causa e portaria; os 44 pares viram um evento, com o decreto municipal somado. Em `coletar_s2id.py`.
