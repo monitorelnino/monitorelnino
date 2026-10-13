@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-13 · #PR · ficha do estado: onde se procurou e quando (A3-18)
+
+A ficha de cada estado na inicial passa a dizer "Procurado em {canais}, última verificação em {data}", com os canais que o log registra como verificados (decisão da central, 13/10). `cobertura_declarada_uf.json` estava parado em 23/09 por não estar na cadeia de derivados; entra nela, datado pelo próprio log. Frase no catálogo.
+
 ## 2026-10-13 · #PR · busca web pede o motor que responde (F52)
 
 Medido do runner: dos 761 candidatos em 15 municípios com plano, todos vieram de `google cse`, que a busca web nunca pedia; duckduckgo, brave e bing não respondem ou respondem lixo. Sai o disjuntor por motor (sentinela, desligamento, piso de dois, arquivo de estado); a lista é a medida e muda por medição. `motores_busca.py`.

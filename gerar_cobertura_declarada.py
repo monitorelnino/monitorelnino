@@ -29,7 +29,7 @@ Uso: python3 gerar_cobertura_declarada.py [--saida data/cobertura_declarada_uf.j
 import sys
 from collections import defaultdict
 
-from coletores_base import hoje, ler, gravar, rodar_autoteste, ler_log
+from coletores_base import ler, gravar, rodar_autoteste, ler_log
 
 SAIDA = "cobertura_declarada_uf.json"
 
@@ -135,9 +135,10 @@ def construir() -> dict:
             "Serve para que 'não localizamos até o corte' passe a ter escopo explícito: o "
             "leitor vê em que canais se procurou e quando. Canal com verificado=false NUNCA "
             "pode ser apresentado como ausência de plano. O canal 'lai' guarda só data e "
-            "status, jamais texto ou registro de pedido (regra editorial). ESTRUTURA INERTE: "
-            "nenhuma página lê este arquivo até a editoria escrever a nota pública."),
-        "gerado_em": hoje(),
+            "status, jamais texto ou registro de pedido (regra editorial). A ficha do estado "
+            "(index) lê os canais verificados; a frase vive no catálogo (A3-18, 13/10/2026)."),
+        # Data do dado, não do relógio: o derivado regenera igual em qualquer dia (portão 12).
+        "gerado_em": max((c["ultima_tentativa"] or "" for v in ufs.values() for c in v["canais"].values()), default=None),
         "fonte": "data/log_buscas.json (log v2)",
         # Em branco de propósito: a frase que vai à ficha do estado é da editoria.
         "nota_publica": None,
@@ -232,7 +233,6 @@ def main() -> int:
     nunca = [uf for uf, v in d["ufs"].items() if v["n_canais_verificados"] == 0]
     print(f"\nUFs sem nenhum canal verificado: {len(nunca)}"
           + (f" ({', '.join(nunca)})" if nunca else ""))
-    print("nota_publica segue null: a redação da nota na ficha do estado é da editoria.")
     return 0
 
 

@@ -63,7 +63,7 @@ function barraResposta(uf){
 // na saida dava "Olho d&amp;#39;Agua das Flores" no cartao, e fazia o nome do banco nao casar com o
 // da lista de referencia, que nao e escapada.
 const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let BR_GEOJSON, PCT_POR_UF, MAP_POINTS, TABELA_MUNICIPIOS, MARE, DATA, TRANSFERENCIAS, MUN_REF, META, POP_CENSO, RECURSOS, FIN, CONSIST, ATOS_RESPOSTA, VRESUMO, MUN_COD = {}, POP_UF = {}, MUN_LATLON = {};
+let BR_GEOJSON, PCT_POR_UF, MAP_POINTS, TABELA_MUNICIPIOS, MARE, DATA, TRANSFERENCIAS, MUN_REF, META, POP_CENSO, RECURSOS, FIN, CONSIST, ATOS_RESPOSTA, VRESUMO, COBERTURA_UF, MUN_COD = {}, POP_UF = {}, MUN_LATLON = {};
 function nivelVerificacao(uf, nome){
   // v2.2.4 (§2.2): padrão é "não verificado"; níveis acima vêm do resumo derivado.
   const cod = MUN_COD[uf + '|' + nome];
@@ -129,6 +129,8 @@ async function __load(){
   __init();
   renderContadorResposta();
   // PR-N0 §1.2: cobertura do diário por município (arquivo pequeno; ausente = rótulo 'ainda não testada')
+  // A3-18 (central, 13/10/2026): em que canais se procurou cada estado, e quando (ficha do estado).
+  fetch('data/cobertura_declarada_uf.json').then(r => r.ok ? r.json() : null).then(d => { COBERTURA_UF = d; }).catch(() => { COBERTURA_UF = null; });
   fetch('data/cobertura_qd.json').then(r => r.ok ? r.json() : null).then(d => {
     VMUN = {}; Object.entries((d && d.municipios) || {}).forEach(([k, v]) => { VMUN[String(k).padStart(7, '0')] = v.cobertura_qd; });
   }).catch(() => { VMUN = {}; });
@@ -527,6 +529,15 @@ function selectUF(uf, tileEl){
       return d.nota_lai ? `<div class="card-note">${esc(d.nota_lai)}</div>` : '';
     })()}
     <div class="field"><div class="k">Órgão responsável</div><div class="v">${esc(d.orgao)}</div></div>
+    ${(function(){ // A3-18: canais verificados no log, nunca canal só tentado (verificado=false não é ausência).
+      const c = ((COBERTURA_UF && COBERTURA_UF.ufs) || {})[d.uf]; const cat = window.MonitorCatalogo;
+      if (!c || !cat) return '';
+      const vistos = Object.entries(c.canais || {}).filter(([k, v]) => v.verificado && cat.texto('index.ficha.canal.' + k));
+      if (!vistos.length) return '';
+      const data = vistos.map(([, v]) => v.ultima_verificacao).sort().pop();
+      const t = cat.texto('index.ficha.procurado_em.molde', {canais: vistos.map(([k]) => cat.texto('index.ficha.canal.' + k)).join(', '), data: data.split('-').reverse().join('/')});
+      return t ? `<div class="card-note">${esc(t)}</div>` : '';
+    })()}
     ${(function(){ // 26/09/2026: a face da célula não comporta este campo, e ele NÃO existia no
       // detalhe — sem isto, o alcance da varredura sumiria da interface inteira.
       const niv = (typeof VRESUMO !== 'undefined' && VRESUMO && VRESUMO.por_uf && VRESUMO.por_uf[d.uf]) || {};
