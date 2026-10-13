@@ -139,7 +139,7 @@ e são a única reserva de julgamento humano que Claude **nunca** executa sozinh
 14. node   scripts/verificar_runtime_financiamento.js
 15. python verificar_painel.py                   (painel amostral: lista imutável por hash, 313, sem capitais,
                                                   fichas com fonte e data, marcadores arquivados, motor intacto)
-16. node   scripts/verificar_vocabulario_publico.js (texto visível sem jargão interno: nomes de arquivo, códigos de
+16. node   scripts/verificar_texto_publico.js (texto visível sem jargão interno: nomes de arquivo, códigos de
                                                   decisão, "portão", "robô", PR, auditoria, registro de LAI)
 17. python scripts/verificar_robustez_atualizacao.py (só no CI: perturba 6 famílias de dados numa cópia, regenera
                                                   os derivados e exige todos os runtimes verdes — atualização não quebra

@@ -245,7 +245,7 @@ da Imprensa. Resumo: descreve o que está sendo mostrado, nunca avalia, dramatiz
 não demonstrada ou repete a mesma ressalva metodológica mais de uma vez por página — a lista
 completa dos hábitos proibidos e as exceções (Proteja-se, Para gestores) estão só lá, para não
 haver duas versões da mesma regra. Portões: `scripts/verificar_legendas.js` (19) e
-`scripts/verificar_voz_editorial.js`.
+`scripts/verificar_texto_publico.js`.
 
 ## SEO (07/09/2026)
 

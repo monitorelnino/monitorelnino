@@ -197,6 +197,139 @@
     "_nota_por_pagina": "A lista de cada página fica no contrato dela, e é lá que o portão a lê. Esta cópia existe para a lista ser visível num lugar só; o contrato prevalece, porque é ele que declara as divergências.",
     "_nota_regra_1": "03/10/2026 (regra 1 da editoria): dizemos o que disponibilizamos; nunca o que não disponibilizamos. Nenhuma frase sobre código, base de dados ou licença de dados entra no texto público — nem para dizer que existe, nem para dizer que não existe. A metodologia é o único material técnico público, e ela se anuncia numa frase: 'A metodologia é pública.'"
   },
+  "texto_publico": {
+    "fonte": "scripts/verificar_texto_publico.js (13/10/2026: fusão de verificar_vocabulario_publico.js e verificar_voz_editorial.js, consolidação item 3)",
+    "jargao_interno": [
+      {
+        "padrao": "\\b(?!datapackage\\b)[\\w-]+\\.(py|json|js|yml|sh)\\b",
+        "flags": "g",
+        "motivo": "nome de arquivo/script (os .csv dos dados abertos são permitidos)"
+      },
+      {
+        "padrao": "\\bdata\\/[\\w./-]+",
+        "flags": "g",
+        "motivo": "caminho de dados"
+      },
+      {
+        "padrao": "\\bdecis(ão|ões) ?(editorial)? ?[CE]\\d{1,2}\\b",
+        "flags": "gi",
+        "motivo": "referência a decisão interna"
+      },
+      {
+        "padrao": "\\((?:E|C)\\d{1,2}(?:[,–\\-/ ]+(?:E|C)?\\d{1,2})*\\)",
+        "flags": "g",
+        "motivo": "código de decisão entre parênteses"
+      },
+      {
+        "padrao": "\\bregra E\\d{1,2}\\b",
+        "flags": "gi",
+        "motivo": "código de decisão"
+      },
+      {
+        "padrao": "\\bport(ão|ões)\\b",
+        "flags": "gi",
+        "motivo": "'portão' (jargão interno)"
+      },
+      {
+        "padrao": "\\brob[ôo](?![\\wÀ-ÿ])",
+        "flags": "gi",
+        "motivo": "'robô' (dizer 'rotina automática')"
+      },
+      {
+        "padrao": "\\bPR #\\d+\\b",
+        "flags": "g",
+        "motivo": "número de PR"
+      },
+      {
+        "padrao": "\\bAUD-\\d+\\b",
+        "flags": "g",
+        "motivo": "código de auditoria"
+      },
+      {
+        "padrao": "\\bClaude\\b",
+        "flags": "g",
+        "motivo": "nome do assistente"
+      },
+      {
+        "padrao": "documento de redesenho",
+        "flags": "gi",
+        "motivo": "documento interno"
+      },
+      {
+        "padrao": "pedidos? de acesso à informação enviados?",
+        "flags": "gi",
+        "motivo": "registro de pedidos de LAI (nunca no site)"
+      },
+      {
+        "padrao": "\\bsess[ãa]o (metodológica|paralela|de construção)\\b",
+        "flags": "gi",
+        "motivo": "'sessão' interna"
+      },
+      {
+        "padrao": "\\bTODO\\b|\\bFIXME\\b|\\bXXX\\b",
+        "flags": "g",
+        "motivo": "marcador de pendência"
+      }
+    ],
+    "_nota_jargao": "Texto visível renderizado, com dados. Dentro de bloco `data-proveniencia=\"1\"` nome de arquivo e caminho de dados são o assunto (v3.1 §9) e não reprovam. Barra a publicação.",
+    "forma": [
+      {
+        "padrao": "(?<![\\/\\w-])20\\d{2}-[01]\\d-[0-3]\\d(?![\\w-])",
+        "flags": "g",
+        "motivo": "data ISO (no site: dd/mm/aaaa ou por extenso)"
+      },
+      {
+        "padrao": "\\b(?:undefined|NaN|\\[object Object\\])\\b",
+        "flags": "g",
+        "motivo": "valor de programa vazado (undefined/NaN/objeto)"
+      },
+      {
+        "padrao": "\\{[a-z_][a-z0-9_]*\\}",
+        "flags": "g",
+        "motivo": "chave de molde não preenchida ({x})"
+      },
+      {
+        "padrao": "\\b(?:rascunho|handover|placeholder|a aprovar|texto interno|nota interna)\\b",
+        "flags": "gi",
+        "motivo": "texto interno"
+      },
+      {
+        "padrao": "(?<![\\d.,])\\d{1,3}\\.\\d{1,2}(?![\\d.])\\s*(?:%|mil\\b|milh|bilh|mm\\b|°C|graus)",
+        "flags": "g",
+        "motivo": "decimal com ponto (no site: vírgula)"
+      }
+    ],
+    "_nota_forma": "A7-03 (12/10/2026): regras de FORMA, com `--forma`, só no PR — dado externo com data ISO ou ponto decimal não para o site do dia.",
+    "refraos": [
+      {
+        "padrao": "peso zero",
+        "flags": "gi",
+        "motivo": "ressalva metodológica"
+      },
+      {
+        "padrao": "não atribui(mos)? (casos |eventos )?ao El Niño",
+        "flags": "gi",
+        "motivo": "ressalva metodológica"
+      },
+      {
+        "padrao": "nunca se somam?",
+        "flags": "gi",
+        "motivo": "ressalva metodológica"
+      },
+      {
+        "padrao": "nunca (se )?combinam?",
+        "flags": "gi",
+        "motivo": "ressalva metodológica"
+      },
+      {
+        "padrao": "não é tarefa",
+        "flags": "gi",
+        "motivo": "ressalva metodológica"
+      }
+    ],
+    "refrao_a_partir_de": 3,
+    "_nota_refraos": "Voz editorial (16/09/2026, docs/VOZ_EDITORIAL.md): a ressalva mora uma vez por página; 3+ vezes em .hint, .note, .card-body é refrão. Barra a publicação."
+  },
   "numeros": {
     "fonte": "handover da Imprensa (02/10/2026) e CLAUDE.md (regras editoriais)",
     "formato": "pt-BR",
@@ -344,6 +477,10 @@
     "blog.palavras_de_corpo_que_exigem_explicacao": "scripts/verificar_texto_blog.py",
     "blog.frases_obrigatorias_de_saude": "só texto até 12/10/2026 (A7-14): nenhum portão a julga ainda",
     "blog.palavras_por_texto": "scripts/verificar_texto_blog.py",
-    "blog.numero_so_do_pacote": "scripts/verificar_texto_blog.py"
+    "blog.numero_so_do_pacote": "scripts/verificar_texto_blog.py",
+    "texto_publico.jargao_interno": "scripts/verificar_texto_publico.js",
+    "texto_publico.forma": "scripts/verificar_texto_publico.js",
+    "texto_publico.refraos": "scripts/verificar_texto_publico.js",
+    "texto_publico.refrao_a_partir_de": "scripts/verificar_texto_publico.js"
   }
 }
