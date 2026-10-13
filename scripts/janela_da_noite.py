@@ -282,7 +282,7 @@ def _autoteste() -> int:
        noite_fixada("ensaio-real/x", "lixo") == "")
     with tempfile.TemporaryDirectory() as t:
         tp = pathlib.Path(t)
-        (tp / NOITE_DO_ENSAIO).write_text("2026-10-12", encoding="utf-8")
+        (tp / NOITE_DO_ENSAIO).write_text("2026-10-12", encoding="utf-8", newline="\n")
         ok("F47: noite_corrente lê o arquivo do ramo de ensaio e ignora na main",
            noite_corrente(d(2026, 10, 13, 1, 30), "ensaio-real/r", tp) == "2026-10-12"
            and noite_corrente(d(2026, 10, 13, 1, 30), "main", tp) == "2026-10-13")

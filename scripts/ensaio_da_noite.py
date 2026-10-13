@@ -1040,7 +1040,7 @@ def ensaio_ensaio_real_fixa_a_noite(diz) -> bool:
     estrutura = (jn.NOITE_DO_ENSAIO in wf and "--ensaio-pode-comecar" in wf)
     with tempfile.TemporaryDirectory() as t:
         tp = pathlib.Path(t)
-        (tp / jn.NOITE_DO_ENSAIO).write_text("2026-10-12\n", encoding="utf-8")
+        (tp / jn.NOITE_DO_ENSAIO).write_text("2026-10-12\n", encoding="utf-8", newline="\n")
         depois = dt.datetime(2026, 10, 13, 1, 1)
         fixa = (jn.noite_corrente(depois, "ensaio-real/2026-10-13-38328343011", tp) == "2026-10-12"
                 and jn.noite_corrente(depois, "main", tp) == "2026-10-13")
