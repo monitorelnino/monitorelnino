@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-13 · #PR · medida do código (consolidação, item 1)
+
+Linha de base da consolidação pedida pela editoria: `scripts/medir_codigo.py` mede linhas de .py/.js por pasta, os maiores arquivos, funções de mesmo nome em arquivos distintos e portões por perfil; `docs/MEDIDA_DO_CODIGO.md` guarda a medida de 13/10 (100.710 linhas, 356 arquivos, 274 comandos). Roda no PR como relatório, sem reprovar.
+
 ## 2026-10-13 · #PR · calor do MS segue lacuna na segunda falha (F46)
 
 Na segunda noite sem o painel de calor do Ministério da Saúde, o coletor rebaixava a lacuna declarada para "aguardando primeira coleta" e a `main` ficou vermelha no frescor. `falha_calor` (em `coletar_saude.py`) só deixa "aguardando" quem nunca coletou; o resto segue lacuna com a última coleta boa (25/09). Estado reposto; ensaio 25 e F46 no catálogo.

@@ -39,6 +39,10 @@ jobs:
         with: { node-version: "22", cache: npm }
       - run: pip install -r requirements.txt --quiet
       - run: npm ci --silent
+      # 13/10/2026 (consolidação, item 1): informação, não portão — o nome casa PASSOS_IGNORADOS.
+      - name: Relatório da medida do código
+        continue-on-error: true
+        run: python3 scripts/medir_codigo.py >> "$GITHUB_STEP_SUMMARY"
       - name: Detectar se a mudança envolve dado/coleta (evita rodar portões de dado em edição só de página)
         id: diff
         run: |
