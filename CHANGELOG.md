@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-13 · #PR · ato de resposta classificado da imprensa leva a URL
+
+`aplicar_resposta` gravava o evento com a URL só dentro do texto de `fonte`; o portão de resposta (g) exige `url` ou hash, e o caminho só foi exercitado hoje, quando a resolução do link de veículo oficial passou a funcionar (#701): 10 eventos reprovaram o lote 3 (#711). O evento passa a levar `url`. Em `julgar_e_aplicar_descobertas.py`.
+
 ## 2026-10-13 · #PR · cartão de número com data na fonte
 
 A fonte de todo cartão de número (Defesa civil, Monitor de riscos, Saúde, Financiamento) passa a ser a mesma linha das figuras — "Fonte: … · Atualização: dd/mm/aaaa" —, escrita pela mesma função (`MonitorMapas.credito`); a regra entra em `layout/regras.json` e o portão de conformidade a cobra no cartão renderizado. Decisão da central, 13/10. Saem escritas duplicadas da mesma fonte em Saúde e Financiamento.
