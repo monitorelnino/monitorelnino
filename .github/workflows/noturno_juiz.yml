@@ -47,7 +47,7 @@ jobs:
       nome: juiz
       # Escreve em data/pistas_*.json — grupo compartilhado da noite (seção G1).
       grupo_de_concorrencia: noturno
-      timeout_minutos: 270
+      timeout_minutos: 90
       precisa_node: true
       # 28/09/2026 (bloco das 17:20): a busca dirigida do ato consulta o metabuscador nas
       # rotas 2 e 3. Ligar o coletor sem a instância que ele consulta produziria lacuna
@@ -83,11 +83,12 @@ jobs:
       # gasta busca na rede para recusar por identidade. Na arvore de hoje ele corrige 4 de 13.503
       # pistas, duas delas so depois de `prefeitura.<nome>` passar a resolver.
       comandos: |
+        scripts/corrigir_atribuicao_por_dominio.py --aplicar
+        revisar_pistas.py --preparar
+        julgar_filas.py --aplicar --limite 150
         julgar_e_aplicar_descobertas.py --limite 150
-        julgar_filas.py --aplicar --limite 2400
-        julgar_filas.py --aplicar --limite 2400
-        julgar_filas.py --aplicar --limite 2400
         aplicar_promocoes_do_juiz.py --aplicar
+        scripts/amostra_auditoria_semanal.py
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       # 08/10/2026 (A2-28): sem o `ROBO_TOKEN`, o tique oportunista roda com o
