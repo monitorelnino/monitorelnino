@@ -640,7 +640,9 @@ def aplicar_resposta(uf, texto, numero, data, url, hoje):
 # agregador não se resolvia, `processar_pista` devolvia "fonte não reconhecida", o status voltava o
 # mesmo, e o teto de 150 da noite era gasto nas MESMAS 150 primeiras da lista. Antes de julgar, cada
 # pendente é encaminhada:
-#   - link de agregador: resolve-se (HTTP, URL embutida, busca no veículo pelo título); sem resolver
+#   - link de agregador: resolve-se (URL embutida, busca no veículo pelo título) só quando o veículo
+#     que o feed declara é oficial ou falta — veículo não oficial tem o mesmo destino com ou sem a
+#     URL final (13/10/2026: a rodada gastava as 200 resoluções em notícia de jornal); sem resolver
 #     em duas noites, fecha com o veículo e o título no motivo (reabre se a URL surgir por outra rota);
 #   - fonte que não é oficial: sai daqui para a fila do juiz (`julgar_filas`), que recusa por
 #     documento primário e faz a busca dirigida do ato — é lá que notícia vira documento;
@@ -664,12 +666,19 @@ def status_agregador_fechado(p) -> str:
             f"{veiculo}; título: {titulo}")
 
 
+def pede_resolucao(p) -> bool:
+    """Link de agregador cuja URL final decide o destino: veículo oficial, ou não declarado no feed."""
+    from verificar_pista_imprensa import eh_agregador
+    from monitorar_imprensa_regional import parece_fonte_oficial
+    return eh_agregador(p.get("url")) and (not p.get("veiculo_dominio")
+                                           or parece_fonte_oficial(p["veiculo_dominio"]))
+
+
 def encaminhar_pendente(p, hoje_iso, resolver=None):
     """None: a pista segue para `processar_pista`. "": fica pendente, sem julgar nesta rodada.
     Texto: o status novo. Mexe só nos campos de resolução da própria pista."""
-    from verificar_pista_imprensa import eh_agregador
     from monitorar_imprensa_regional import parece_fonte_oficial
-    if eh_agregador(p.get("url")):
+    if pede_resolucao(p):
         final, como = resolver(p) if resolver else (None, "nao_tentado")
         if final:
             p["url_do_agregador"] = p["url"]
@@ -914,6 +923,10 @@ def self_test():
         "fora do orçamento não conta noite"
     assert encaminhar_pendente({"url": "https://g1.globo.com/x", "alvo": "B-capital/CE",
                                 "fonte_provavel_oficial": False}, "2026-10-09") == STATUS_PISTA_DO_JUIZ
+    jornal = dict(gn, veiculo_dominio="https://g1.globo.com", alvo="resposta/TO", fonte_provavel_oficial=False)
+    assert not pede_resolucao(jornal) and pede_resolucao(gn) and pede_resolucao(dict(gn, veiculo_dominio=""))
+    assert encaminhar_pendente(jornal, "2026-10-13", None) == STATUS_RESPOSTA_SEM_FONTE \
+        and "noites_sem_resolver_agregador" not in jornal, "veículo não oficial não gasta resolução nem noite"
     assert encaminhar_pendente({"url": "https://g1.globo.com/x", "alvo": "resposta/CE",
                                 "fonte_provavel_oficial": False}, "2026-10-09") == STATUS_RESPOSTA_SEM_FONTE
     assert encaminhar_pendente({"url": "https://x.ce.gov.br/d.pdf", "alvo": "B-capital/CE",
@@ -957,8 +970,7 @@ if __name__ == "__main__":
     a_julgar = []
     for p in pendentes:
         usa_rede = resolucoes < RESOLUCOES_POR_RODADA
-        from verificar_pista_imprensa import eh_agregador
-        if eh_agregador(p.get("url")) and usa_rede:
+        if pede_resolucao(p) and usa_rede:
             resolucoes += 1
         novo = encaminhar_pendente(p, hoje_iso, resolver if usa_rede else None)
         if novo is None:
