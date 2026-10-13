@@ -34,7 +34,7 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-13 · #PR · scripts sem uso apagados; dois órfãos religados (consolidação, item 4)
 
-Oito scripts sem nenhuma referência saem (`_p3–_p5`, captura de tela, cartão social, ciclo de mudança, encanamento de portão, LAI AM/RO já incorporada). Dois órfãos faziam falta: o tipo de evento dos atos passa a nascer em `carimbar_atos`, a porta de todo coletor (98 atos estavam sem ele), e a cadência de publicação entra na cadeia de derivados.
+Oito scripts sem nenhuma referência saem (`_p3–_p5`, captura de tela, cartão social, ciclo de mudança, encanamento de portão, LAI AM/RO já incorporada). Dois órfãos faziam falta: o tipo de evento dos atos passa a nascer em `carimbar_atos`, a porta de todo coletor (98 atos estavam sem ele), e a cadência de publicação entra na cadeia de derivados, que o juiz passa a ler do próprio `verificar_derivados.sh` em vez de manter uma cópia.
 
 ## 2026-10-13 · #PR · busca web pelo caminho de coleta comum (F48)
 
