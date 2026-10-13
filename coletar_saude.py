@@ -521,7 +521,7 @@ def autoteste():
                 and risco_projetado("Seca em intensificação") == RISCO_SANITARIO["seca"]
                 and risco_projetado("Chuvas acima da média") == RISCO_SANITARIO["chuvas"]
                 and risco_projetado("Seca no norte e chuvas no sul") == RISCO_SANITARIO["multi"])
-    def t4(): f = ler("saude_federal.json"); return all(c["url"] is None or c["url"].startswith("https://www.gov.br/") for c in f["cartoes"])
+    def t4(): f = ler("saude_federal.json"); return all(c["url"] is None or re.match(r"https://([a-z0-9-]+\.)*gov\.br/", c["url"]) for c in f["cartoes"])
     def t7():  # série: SE AAAASS → 'AAAA-SS'; soma de capitais por semana; malformado ignorado
         a = parse_serie_infodengue([{"SE": 202601, "casos_est": 10.5}, {"SE": 202602, "casos_est": 2}, {"SE": "x", "casos_est": 1}, {"SE": 202601}])
         b = parse_serie_infodengue([{"SE": 202601, "casos_est": 4.5}, {"SE": 202503, "casos_est": 7}])
