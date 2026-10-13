@@ -672,6 +672,20 @@
    "correcao": "A busca web vira chamador do `_coletor.yml` (um caminho de coleta: prazo, janela, `.feito`, artefato, reaplicação, commit); derivados pela cadeia canônica. 278 → 47 linhas.",
    "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_busca_web_pelo_coletor",
    "falta": null
+  },
+  {
+   "id": "F49",
+   "noite": "2026-10-13",
+   "titulo": "União de conflito grava os logs compactos e os produtores, indentados",
+   "sintoma": "Cada commit da noite reescreve `saude_pipeline.json` e `painel_da_noite.json` inteiros (0 ↔ 5–7 mil linhas), alternando entre o commit do elo (união) e o da publicação (produtor).",
+   "causa": "`unir_conflito_de_rodada.py` escrevia `LOGS_QUE_SO_CRESCEM` e o painel com `separators=(\",\", \":\")`, supondo que o produtor gravasse compacto; os produtores gravam por `coletores_base.gravar_em`, indentado.",
+   "prova": [
+    "commits 7d7d101e (juiz, 0 linhas) e ff8b1df1 (publicação, 6.756 linhas) de data/saude_pipeline.json",
+    "commits 45434034 (diários, 0) e 9f90cc09 (descoberta, 5.188) de data/painel_da_noite.json"
+   ],
+   "correcao": "A união grava pela mesma porta dos produtores (`gravar_em`); o formato deixa de depender de quem commitou por último.",
+   "caso_de_teste": "scripts/unir_conflito_de_rodada.py --autoteste: a união grava no formato do produtor",
+   "falta": null
   }
  ]
 }

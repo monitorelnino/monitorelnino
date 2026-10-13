@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-13. 48 falhas; 43 com caso de teste que as reproduz; 5 sem, com o que falta dito.
+Atualizado em 2026-10-13. 49 falhas; 44 com caso de teste que as reproduz; 5 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -437,3 +437,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** run 38330051297: passo das rodadas cancelled 01:02→03:30; run 38343789380: passo das rodadas cancelled 03:54→06:23
 - **Correção:** A busca web vira chamador do `_coletor.yml` (um caminho de coleta: prazo, janela, `.feito`, artefato, reaplicação, commit); derivados pela cadeia canônica. 278 → 47 linhas.
 - **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_busca_web_pelo_coletor`
+
+## F49 · União de conflito grava os logs compactos e os produtores, indentados
+
+- **Noite:** 2026-10-13
+- **Sintoma:** Cada commit da noite reescreve `saude_pipeline.json` e `painel_da_noite.json` inteiros (0 ↔ 5–7 mil linhas), alternando entre o commit do elo (união) e o da publicação (produtor).
+- **Causa:** `unir_conflito_de_rodada.py` escrevia `LOGS_QUE_SO_CRESCEM` e o painel com `separators=(",", ":")`, supondo que o produtor gravasse compacto; os produtores gravam por `coletores_base.gravar_em`, indentado.
+- **Prova:** commits 7d7d101e (juiz, 0 linhas) e ff8b1df1 (publicação, 6.756 linhas) de data/saude_pipeline.json; commits 45434034 (diários, 0) e 9f90cc09 (descoberta, 5.188) de data/painel_da_noite.json
+- **Correção:** A união grava pela mesma porta dos produtores (`gravar_em`); o formato deixa de depender de quem commitou por último.
+- **Caso de teste:** `scripts/unir_conflito_de_rodada.py --autoteste: a união grava no formato do produtor`
