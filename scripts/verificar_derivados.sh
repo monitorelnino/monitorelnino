@@ -23,6 +23,7 @@ python3 recalcular_mare.py --write >/dev/null
 python3 gerar_monitor_saude.py >/dev/null
 python3 gerar_resposta.py >/dev/null
 python3 gerar_prioritarios.py >/dev/null
+python3 gerar_cobertura_declarada.py >/dev/null   # A3-18: a ficha do estado lê os canais verificados
 python3 gerar_contadores_financiamento.py >/dev/null
 python3 gerar_feeds.py >/dev/null
 python3 gerar_dados_abertos.py >/dev/null
@@ -53,7 +54,7 @@ python3 scripts/gerar_resumo_do_log.py >/dev/null   # item 4: resumo do log para
 python3 scripts/gerar_manifesto.py >/dev/null
 if [ "$MODO" = "--idempotencia" ]; then
   ANTES="$(git ls-files -z | xargs -0 sha256sum 2>/dev/null | sha256sum)"
-  python3 scripts/gerar_mudancas.py >/dev/null; python3 recalcular_mare.py --write >/dev/null; python3 gerar_monitor_saude.py >/dev/null; python3 gerar_resposta.py >/dev/null; python3 gerar_prioritarios.py >/dev/null; python3 gerar_contadores_financiamento.py >/dev/null; python3 gerar_feeds.py >/dev/null; python3 gerar_dados_abertos.py >/dev/null; python3 gerar_card_municipios.py >/dev/null; python3 scripts/gerar_enquadramento_card.py >/dev/null
+  python3 scripts/gerar_mudancas.py >/dev/null; python3 recalcular_mare.py --write >/dev/null; python3 gerar_monitor_saude.py >/dev/null; python3 gerar_resposta.py >/dev/null; python3 gerar_prioritarios.py >/dev/null; python3 gerar_cobertura_declarada.py >/dev/null; python3 gerar_contadores_financiamento.py >/dev/null; python3 gerar_feeds.py >/dev/null; python3 gerar_dados_abertos.py >/dev/null; python3 gerar_card_municipios.py >/dev/null; python3 scripts/gerar_enquadramento_card.py >/dev/null
   python3 gerar_pdf_indice.py >/dev/null; python3 gerar_pdf_metodologia.py >/dev/null; python3 scripts/carimbar_assets.py >/dev/null; python3 gerar_blog.py >/dev/null; python3 scripts/gerar_resumo_do_log.py >/dev/null; python3 scripts/gerar_manifesto.py >/dev/null
   python3 gerar_pdf_indice.py >/dev/null; python3 gerar_pdf_metodologia.py >/dev/null; python3 scripts/carimbar_assets.py >/dev/null; python3 gerar_blog.py >/dev/null; python3 scripts/gerar_manifesto.py >/dev/null
   DEPOIS="$(git ls-files -z | xargs -0 sha256sum 2>/dev/null | sha256sum)"
