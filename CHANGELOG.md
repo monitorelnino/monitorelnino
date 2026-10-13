@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-13 · #PR · saúde estadual reverifica toda semana
+
+A bateria estadual de saúde passa de quinzenal a semanal (quarta, 03:40 UTC), por decisão da central; e o juiz da saúde carimba a data da verificação ao aplicar — a página dizia "atualizado em 02/10" depois de cada reverificação. `julgar_saude.py`, `noturno_saude_estadual.yml`, `config/temporizadores.json`.
+
 ## 2026-10-13 · #PR · ficha do estado: onde se procurou e quando (A3-18)
 
 A ficha de cada estado na inicial passa a dizer "Procurado em {canais}, última verificação em {data}", com os canais que o log registra como verificados (decisão da central, 13/10). `cobertura_declarada_uf.json` estava parado em 23/09 por não estar na cadeia de derivados; entra nela, datado pelo próprio log. Frase no catálogo.

@@ -12,7 +12,7 @@
 # Ele saiu dessa corrente em 02/10/2026: roda por calendário próprio, nos dias 1 e 15, e processa
 # a fila pendente independentemente do que aconteceu na noite anterior — rodada perdida não leva a
 # seguinte junto.
-name: Quinzenal — funil de saúde estadual
+name: Semanal — funil de saúde estadual
 
 on:
   # 02/10/2026 (bloco C.3 do handover de coordenação): a cadência passa a ser QUINZENAL, e o
@@ -22,7 +22,7 @@ on:
   # rodada a cada duas semanas. O `workflow_dispatch` fica, para rodar à mão quando a editoria
   # pedir.
   schedule:
-    - cron: "40 3 1,15 * *"
+    - cron: "40 3 * * 3"
   workflow_dispatch:
 
 permissions:
