@@ -138,45 +138,9 @@ const ler = p => JSON.parse(fs.readFileSync(path.join(RAIZ, p), "utf-8"));
     }
   }
 
-  /* 04/10/2026 — O PONTEIRO É DOS TEXTOS, NÃO DO BOLETIM.
-   *
-   * O handover da rotina semanal trocou "O boletim desta semana" por "Textos desta semana": dois
-   * links, título e data, um por linha da rotina, e **sem números** — os números vivem nas páginas
-   * do Monitor e no pacote interno, e um número aqui seria uma terceira cópia a conferir toda
-   * semana. O que a regra 0 cobra, então, é que cada link mostrado exista em `posts.json` com
-   * aquele título: nada escrito à mão, nada que envelheça em silêncio.
-   *
-   * Sem texto de nenhuma das duas linhas, a LISTA é escondida pelo próprio script e a seção fica
-   * com o título e o ponteiro permanente para o blog. Esse caso não é falha: é a página dizendo
-   * menos, que é o certo quando não há o que dizer.
-   */
-  try {
-    const dados = ler("data/blog/posts.json");
-    const posts = Array.isArray(dados) ? dados : (dados.posts || []);
-    const LINHAS = ["Legal e financiamento", "Saúde"];
-    const esperados = LINHAS
-      .map(linha => posts.filter(p => (p.etiqueta || "") === linha)[0])
-      .filter(Boolean);
-    const itens = d.querySelectorAll("#textosDaSemana li");
-    if (itens.length !== esperados.length) {
-      falhas.push(`${PAGINA}: o ponteiro mostra ${itens.length} texto(s) e as duas linhas da `
-                  + `rotina têm ${esperados.length} publicado(s)`);
-    }
-    const mostrado = txt("textosDaSemana");
-    for (const p of esperados) {
-      if (!mostrado.includes(p.titulo)) {
-        falhas.push(`${PAGINA}: o texto "${p.titulo}" não aparece no ponteiro`);
-      }
-      if (p.data_br && !mostrado.includes(p.data_br)) {
-        falhas.push(`${PAGINA}: a data ${p.data_br} do texto não aparece no ponteiro`);
-      }
-    }
-    // A trava do que SAIU: número no ponteiro significa que o cartão numérico voltou.
-    if (/\d{1,3}(\.\d{3})+|\b\d{3,}\b/.test(mostrado)) {
-      falhas.push(`${PAGINA}: o ponteiro dos textos mostra número — os números vivem nas páginas `
-                  + `e no pacote, não aqui (handover de 04/10/2026)`);
-    }
-  } catch (e) { falhas.push(`${PAGINA}: posts.json ilegível: ${e.message}`); }
+  // 13/10/2026: a conferência do ponteiro "Textos desta semana" saiu — o bloco deixou a página em
+  // 05/10 e o portão continuou cobrando um `#textosDaSemana` que não existe; passava só enquanto
+  // nenhum texto das duas linhas da rotina estava publicado.
 
   if (falhas.length) {
     console.log("✗ IMPRENSA (regra 0 — nada à mão que dependa do dado):");
