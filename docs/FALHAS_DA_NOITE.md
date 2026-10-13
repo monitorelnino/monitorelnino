@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-13. 51 falhas; 46 com caso de teste que as reproduz; 5 sem, com o que falta dito.
+Atualizado em 2026-10-13. 52 falhas; 47 com caso de teste que as reproduz; 5 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -464,3 +464,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** data/log_buscas/2026-10.jsonl, canal DOM: 50 ibge por dia em 01–12/10, interseção de 50 entre noites seguidas, 50 distintos no mês
 - **Correção:** Sem `--lote`, a rodada toma os próximos da ordem de prioridade sem consulta ao Querido Diário nos últimos 45 dias (`pendentes_na_janela`, que já existia); 150 por noite cobrem os 5.571 numa volta.
 - **Caso de teste:** `coletar_diarios_municipais.py --autoteste: F51: sem --lote a fila anda`
+
+## F52 · Busca web pede só motores que não respondem do runner
+
+- **Noite:** 2026-10-13
+- **Sintoma:** A busca web voltou a rodar (F48) mas rendeu 1 pista em 560 consultas: 532 `motor_sem_resposta` e resultados alheios à consulta (wikipedia, reddit).
+- **Causa:** O disjuntor de `motores_busca.py` só conhecia seis motores (duckduckgo, bing, brave, mojeek, startpage, qwant); desligava os mudos e o piso de dois trazia de volta os que respondiam lixo. O único motor que responde do runner, `google cse`, nunca era pedido.
+- **Prova:** medir_revocacao.yml run 38433496633: 15 municípios com plano × 9 strings, revocação 60%, 761 de 761 candidatos de `google cse`; duckduckgo CAPTCHA/403, brave 429
+- **Correção:** Sai o disjuntor (sentinela, contagem, desligamento, piso, arquivo de estado); a lista de motores é a medida — hoje só `google cse` — e muda por medição, com registro.
+- **Caso de teste:** `motores_busca.py --autoteste: lista de motores declarada e não vazia`

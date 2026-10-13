@@ -268,34 +268,9 @@ def rodar(lote: str | None, tamanho: int) -> int:
 
     alvo = ordem[(lote_n - 1) * tamanho: lote_n * tamanho]
 
-    # ITEM 7b: o disjuntor por motor de origem. A sentinela é uma busca fixa que qualquer motor vivo
-    # responde — se vier vazia, o motor está mudo, e isso não se confunde com "o município não tem
-    # plano". Motor mudo em duas rodadas seguidas, ou com mais de 50% de falhas numa rodada, fica 24 h
-    # desligado e volta sozinho. Nunca menos de dois ativos.
-    estado_motores = motores_busca.ler_estado()
-    agora_utc = motores_busca.agora_iso()
-    motores = motores_busca.ativos(estado_motores, agora_utc)
-    print(f"motores ativos nesta rodada: {', '.join(motores)}")
-    for motor in motores:
-        try:
-            resposta = buscar_searxng(motores_busca.SENTINELA, timeout=15, motores=[motor])
-            muda = not (resposta.get("results") or [])
-        except Exception:  # noqa: BLE001 — sentinela que estoura é sentinela muda
-            muda = True
-        motores_busca.contabilizar(estado_motores, motor, sentinela_muda=muda)
-        if muda:
-            print(f"  sentinela muda: {motor}")
-        time.sleep(espera_do_ritmo(0))
-    saudaveis = motores_busca.livres(estado_motores, agora_utc)
-    if len(motores) < motores_busca.MINIMO_ATIVOS or len(saudaveis) < motores_busca.MINIMO_ATIVOS:
-        # menos de dois motores é pouco para afirmar ausência: a rodada não pergunta de verdade.
-        # 09/10/2026 (lote 2.7, A1-11): o piso não ressuscita motor morto. Se para ter dois foi
-        # preciso trazer de volta um motor desligado (100 % de falhas), a rodada não pergunta.
-        print(f"✗ busca web: só {len(motores)} motor(es) ativo(s); a rodada encerra sem afirmar "
-              f"ausência de nada")
-        motores_busca.aplicar_disjuntor(estado_motores, agora_utc)
-        gravar(motores_busca.ARQUIVO, estado_motores)
-        return 1
+    # 13/10/2026: o motor que responde do runner, medido (motores_busca.py). Sem disjuntor.
+    motores = list(motores_busca.MOTORES)
+    print(f"motores desta rodada: {', '.join(motores)}")
 
     # 05/10/2026 (item 1 do handover da noite confiável): este coletor não abre mais
     # `data/pistas_imprensa.json` para escrita. Junta os achados e entrega a
@@ -332,16 +307,7 @@ def rodar(lote: str | None, tamanho: int) -> int:
                 falhas_de_rede += 1
                 if sinal_de_limite_de_taxa(erro=erro):
                     backoff[0] += 1   # 429/CAPTCHA: o próximo intervalo é 10 s, 30 s, 90 s
-                # consulta que estourou conta como falha para TODOS os motores pedidos: não há como
-                # saber qual barrou quando a resposta não chega.
-                for motor in motores:
-                    motores_busca.contabilizar(estado_motores, motor, consultas=1, falhas=1)
                 continue
-            # quem não respondeu está no próprio corpo da resposta (`unresponsive_engines`)
-            fora = motores_busca.falhas_por_motor(dados)
-            for motor in motores:
-                motores_busca.contabilizar(estado_motores, motor, consultas=1,
-                                           falhas=1 if motor in fora else 0)
             crus = dados.get("results") or []
             brutos_por_consulta[ident] += len(crus)
             if sinal_de_limite_de_taxa(dados=dados):
@@ -431,12 +397,6 @@ def rodar(lote: str | None, tamanho: int) -> int:
               f"data/pistas_rejeitadas.json: {balanco['motivos']}")
     gravar("busca_web_espera.json", {"municipios": espera["municipios"],
                                      "atualizado_em": hoje_editorial().isoformat()})
-    estado_motores, caidos, motivos = motores_busca.aplicar_disjuntor(estado_motores, agora_utc)
-    gravar(motores_busca.ARQUIVO, estado_motores)
-    if caidos:
-        print(f"disjuntor: {len(caidos)} motor(es) desligado(s) por 24 h — "
-              + "; ".join(f"{m} ({motivos[m]})" for m in caidos))
-    print(motores_busca.resumo(estado_motores, agora_utc))
     funil.registrar("busca_web", consultas=n_ok + n_lac, com_resultado_bruto=n_com_bruto,
                     motor_sem_resposta=n_motor_sem_resposta, pistas=npist,
                     coberto_sem_mencao=n_coberto, nao_localizado_ate_o_momento=n_esperando,

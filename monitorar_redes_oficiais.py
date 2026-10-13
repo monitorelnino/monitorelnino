@@ -22,7 +22,7 @@ COMO ELE BUSCA, E POR QUE ASSIM
 -------------------------------
 Sem chave e sem produto pago (regra do repositório): a consulta vai pela instância efêmera do SearXNG
 que a rodada já sobe, restrita ao perfil confirmado, com os termos de plano. Isso reusa **o mesmo
-disjuntor por motor de origem** (`motores_busca.py`) e **os mesmos contadores** (`funil.py`) que a
+lista de motores medida** (`motores_busca.py`) e **os mesmos contadores** (`funil.py`) que a
 editoria pediu — não há um segundo caminho de rede a manter.
 
 O ALCANCE É DECLARADO, NÃO ESCONDIDO
@@ -202,12 +202,7 @@ def rodar(limite: int = LIMITE_PADRAO) -> int:
     print(f"{len(alvos)} ente(s) com domínio oficial conhecido nesta rodada "
           f"(alcance declarado: só onde o domínio é conhecido)")
 
-    estado_motores = motores_busca.ler_estado()
-    agora = motores_busca.agora_iso()
-    motores = motores_busca.ativos(estado_motores, agora)
-    if len(motores) < motores_busca.MINIMO_ATIVOS:
-        print(f"✗ só {len(motores)} motor(es) ativo(s) — a rodada não pergunta de verdade")
-        return 1
+    motores = list(motores_busca.MOTORES)
 
     # 05/10/2026 (item 1 do handover da noite confiável): este coletor NÃO abre mais
     # `data/pistas_imprensa.json` para escrita. Ele junta os achados da rodada e entrega a
@@ -241,13 +236,7 @@ def rodar(limite: int = LIMITE_PADRAO) -> int:
                 try:
                     dados = buscar_searxng(consulta_do_perfil(rede, ident, termo), motores=motores)
                 except Exception:  # noqa: BLE001
-                    for m in motores:
-                        motores_busca.contabilizar(estado_motores, m, consultas=1, falhas=1)
                     continue
-                fora = motores_busca.falhas_por_motor(dados)
-                for m in motores:
-                    motores_busca.contabilizar(estado_motores, m, consultas=1,
-                                               falhas=1 if m in fora else 0)
                 for r in (dados.get("results") or [])[:3]:
                     pista = montar_pista(rotulo, uf, rede, ident, url_perfil, r, dominio)
                     if (pista["url"], pista["trecho"]) in vistos:
@@ -264,8 +253,6 @@ def rodar(limite: int = LIMITE_PADRAO) -> int:
     if balanco["recusadas"]:
         print(f"  {balanco['recusadas']} achado(s) recusado(s) pela fila, com motivo em "
               f"data/pistas_rejeitadas.json: {balanco['motivos']}")
-    estado_motores, caidos, motivos = motores_busca.aplicar_disjuntor(estado_motores, agora)
-    gravar(motores_busca.ARQUIVO, estado_motores)
     funil.registrar("rede_social", entes_consultados=len(alvos), perfis_confirmados=n_perfis,
                     pistas=n_pistas, sem_perfil=n_sem_perfil, lacunas=n_lacunas)
     print(f"redes oficiais: {n_perfis} perfil(is) confirmado(s), {n_pistas} pista(s) nova(s), "
