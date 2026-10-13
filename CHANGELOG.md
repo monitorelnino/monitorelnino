@@ -36,6 +36,10 @@ não pontuados permanecem na versão corrente.
 
 A ficha de cada estado na inicial passa a dizer "Procurado em {canais}, última verificação em {data}", com os canais que o log registra como verificados (decisão da central, 13/10). `cobertura_declarada_uf.json` estava parado em 23/09 por não estar na cadeia de derivados; entra nela, datado pelo próprio log. Frase no catálogo.
 
+## 2026-10-13 · #PR · busca web pede o motor que responde (F52)
+
+Medido do runner: dos 761 candidatos em 15 municípios com plano, todos vieram de `google cse`, que a busca web nunca pedia; duckduckgo, brave e bing não respondem ou respondem lixo. Sai o disjuntor por motor (sentinela, desligamento, piso de dois, arquivo de estado); a lista é a medida e muda por medição. `motores_busca.py`.
+
 ## 2026-10-13 · #PR · diários municipais: a fila anda (F51)
 
 O canal do Querido Diário consultava os mesmos 50 municípios toda noite (50 distintos em outubro): as três chamadas da noite não passavam `--lote` e o padrão era o primeiro lote. Sem lote, a rodada toma os próximos da ordem de prioridade sem consulta nos últimos 45 dias. Também: `medir_revocacao_das_consultas.py` lê `municipios.json` como lista. `coletar_diarios_municipais.py`.

@@ -95,7 +95,7 @@ Atualizado em 13/10/2026.
 | `coletar_srag_sivep.py` | — | `saude_desfechos/srag_serie.json`, `saude_desfechos/srag_sivep_agregados.json` | — | — | não |
 | `coletar_transferegov.py` | — | `financiamento/consultas.json`, `financiamento/por_uf.json`, `financiamento/programas_faf_2026.json`, `financiamento/serie_nacional.json`, `transferegov_el_nino_revisar.json` | — | — | não |
 | `coletar_transferencias_municipais.py` | — | `estados.json`, `indice.json`, `monitor_saude.json`, `municipios.json`, `saude_uf.json`, `transferencias_uniao.json` | — | 1 | não |
-| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `evidencias.json`, `fontes_consultadas.json`, `log_buscas.json`, `robots_registro.json` (+1) | — | **184** | não |
+| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `evidencias.json`, `fontes_consultadas.json`, `log_buscas.json`, `robots_registro.json` (+1) | — | **183** | não |
 | `consultar_querido_diario.py` | — | `pistas_querido_diario.json` | — | 1 | não |
 | `converter_contribuicao.py` | — | — | — | — | SIM |
 | `descobrir_dominios.py` | — | `dominios_oficiais.json` | — | — | não |
@@ -135,7 +135,7 @@ Atualizado em 13/10/2026.
 | `monitorar_politica_por_inteiro.py` | — | — | — | — | não |
 | `monitorar_redes_oficiais.py` | — | — | — | — | não |
 | `monitorar_sinais_federais.py` | — | — | — | 1 | não |
-| `motores_busca.py` | — | `busca_web_motores.json` | — | 4 | não |
+| `motores_busca.py` | — | — | — | 4 | não |
 | `pagina_completa.py` | — | — | — | 6 | não |
 | `preencher_fallback_estatico.py` | — | — | — | — | não |
 | `preservar_evidencias.py` | — | `evidencias.json`, `municipios.json` | — | 6 | não |
