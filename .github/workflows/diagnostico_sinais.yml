@@ -28,6 +28,10 @@ jobs:
           st, ct, casca = get(cs.CALOR_MS_SITIO)
           print("casca", st, ct, len(casca))
           print("scripts:", re.findall(r'src="([^"]+\.js)"', casca)[:10])
+          lido = cs.parse_calor_ms(casca)
+          print("PARSE data", lido.get("data"), "ufs", len(lido.get("por_uf", {})), "municipios", len(lido.get("municipios", {})), "resumo", lido.get("resumo"), "lidos", lido.get("municipios_lidos"), "janela", lido.get("janela"))
+          print("PARSE PA", lido.get("por_uf", {}).get("PA"), "RJ3303906", lido.get("municipios", {}).get("3303906"))
+          raise SystemExit(0)
           for marca in ("ufData", "mapaData", "operationalWindow", "totalMunicipios", "sigla_uf", "classification", "$_TSR", "dehydrat", "__TSR"):
               k = casca.find(marca); print("casca marca", marca, casca.count(marca), repr(casca[max(0,k-150):k+250]) if k >= 0 else "")
           st, ct, js0 = get(cs.CALOR_MS_SITIO + re.findall(r"(assets/index-[\w-]+\.js)", casca)[0])
