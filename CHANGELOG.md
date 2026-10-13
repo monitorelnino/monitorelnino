@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-13 · #PR · blog: texto de 06/10 publicado
+
+Entra o texto aprovado "Seca, fogo e chuva: três caminhos diferentes para o dinheiro chegar" (Legal e financiamento), com a troca de "por antecipação" por "antes do vencimento" feita pela central no original aprovado. Verificador do blog verde (números no pacote de 05/10). `blog/posts/`.
+
 ## 2026-10-13 · #PR · portão 12 em todo PR
 
 O manifesto sela todo arquivo versionado, mas o portão 12 só rodava no PR que tocava dado; o #698 (página) passou verde e deixou a `main` vermelha. O passo roda em todo PR, e o `CLAUDE.md` deixa de dizer que PR de página não resela. `.github/workflows/portoes.yml`.
