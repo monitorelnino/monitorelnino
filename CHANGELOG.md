@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-13 · #PR · fila de pendentes: três voltas em falso saem
+
+A fila de 3.970 pendentes não andava por três causas. O encaminhamento gastava as 200 resoluções da noite em link de jornal, cujo destino o veículo do feed já decide; a recusa de notícia voltava ao juiz como falha técnica (534 em dois dias); e a busca dirigida procurava o ato do município "resposta". Corrigido em `julgar_e_aplicar_descobertas.py`, `julgar_filas.py` e `scripts/busca_dirigida_do_ato.py`.
+
 ## 2026-10-13 · #PR · calor do MS: "sem leitura desde 25/09", não "sem coleta"
 
 Na Saúde, as figuras e a busca de calor diziam "sem coleta até o corte" depois que o retrato de 25/09 saiu por ter mais de 9 dias. Havia coleta; a fonte é que parou de responder. A página passa a ler `ultima_coleta_ok` da fonte, como a legenda já fazia: crédito com a data da última leitura e "sem leitura desde a coleta de". `assets/js/saude.js`.
