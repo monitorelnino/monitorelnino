@@ -336,13 +336,13 @@
   {
    "id": "saude_estadual",
    "workflow": "noturno_saude_estadual.yml",
-   "finalidade": "planos e estruturas de saúde estaduais, duas vezes por mês",
-   "cron_primario": "40 3 1,15 * *",
+   "finalidade": "planos e estruturas de saúde estaduais, toda semana (central, 13/10/2026)",
+   "cron_primario": "40 3 * * 3",
    "janela": {
     "inicio_utc": "01:00",
     "fim_utc": "09:00"
    },
-   "devido_quando": "não há execução concluída nesta quinzena",
+   "devido_quando": "não há execução concluída nesta quarta",
    "tolerancia_atraso_min": 1440,
    "idempotencia": "o juiz não promove duas vezes o mesmo documento",
    "orcamento_min": 60,

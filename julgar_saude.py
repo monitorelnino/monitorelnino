@@ -1018,6 +1018,9 @@ def main() -> int:
     if mudancas:
         print("mudanças: " + " · ".join(mudancas))
     if "--aplicar" in args:
+        # 13/10/2026 (central, item 9): a bateria rodou, a verificação é de hoje — sem isto a página
+        # dizia "atualizado em 02/10" depois de cada reverificação (só registrar_saude_central carimbava).
+        su["corte"] = hoje_editorial().strftime("%d/%m/%Y")
         gravar(ALVO, su)
         gravar(FILA, fila)
         print(f"data/{ALVO} e data/{FILA} gravados")
