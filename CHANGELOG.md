@@ -36,6 +36,10 @@ não pontuados permanecem na versão corrente.
 
 Decisão da editoria (13/10): a faixa de 250 a 450 palavras deixa de ser regra do blog — sai do verificador, não vira exceção. Com isso entra o texto aprovado "Seca, fogo e chuva: três caminhos diferentes para o dinheiro chegar" (Legal e financiamento, 06/10), conferido contra o pacote de 05/10.
 
+## 2026-10-13 · #PR · logs da noite unem por multiconjunto (F50)
+
+A união de conflito recusava o ramo que já tinha trazido a `main` uma vez: exigia que cada lado começasse pela base, e depois da primeira união isso deixa de valer. Os logs que só crescem passam a unir como o painel da noite já unia (base + o que cada lado tem a mais, contando repetição); a classe à parte do painel sai. Nada se perde: o que um lado apagou volta pela base.
+
 ## 2026-10-13 · #PR · união de conflito no formato do produtor (F49)
 
 A união de conflito gravava os logs da noite compactos e os coletores, indentados: cada commit reescrevia `saude_pipeline.json` e `painel_da_noite.json` inteiros, de um formato para o outro, inflando histórico e conflitos. A união passa a gravar pela mesma porta dos coletores (`gravar_em`). F49 no catálogo, com caso no autoteste da união.
