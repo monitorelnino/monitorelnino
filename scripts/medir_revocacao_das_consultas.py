@@ -194,7 +194,7 @@ def main() -> int:
         print("  A instância é efêmera e sobe dentro do job da Action. Rode lá, ou suba o contêiner local.")
         return 1
 
-    registrados = sortear_registrados((ler("municipios.json") or {}).get("municipios", []), n)
+    registrados = sortear_registrados(ler("municipios.json") or [], n)
     print(f"medindo {len(registrados)} município(s) com plano registrado × {len(consultas_de('x', 'SP'))} strings")
     r_reg = medir(registrados, buscar_searxng, relevante, consultas_de, pausa=time.sleep)
 
