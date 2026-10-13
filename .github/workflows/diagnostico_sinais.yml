@@ -28,6 +28,15 @@ jobs:
           st, ct, casca = get(cs.CALOR_MS_SITIO)
           print("casca", st, ct, len(casca))
           print("scripts:", re.findall(r'src="([^"]+\.js)"', casca)[:10])
+          for marca in ("ufData", "mapaData", "operationalWindow", "totalMunicipios", "sigla_uf", "classification", "$_TSR", "dehydrat", "__TSR"):
+              k = casca.find(marca); print("casca marca", marca, casca.count(marca), repr(casca[max(0,k-150):k+250]) if k >= 0 else "")
+          st, ct, js0 = get(cs.CALOR_MS_SITIO + re.findall(r"(assets/index-[\w-]+\.js)", casca)[0])
+          k = js0.find("function Fo("); print("FO:", js0[k:k+1500] if k >= 0 else "sem Fo")
+          for m in re.finditer(r"headers", js0[max(0,k-3000):k+6000]):
+              pass
+          for kw in ("x-tsr", "tss", "serverFn", "content-type"):
+              for m in list(re.finditer(re.escape(kw), js0, re.I))[:3]:
+                  print("KW", kw, repr(js0[max(0,m.start()-120):m.start()+200]))
           bundles = re.findall(r"(assets/[\w./-]+\.js)", casca)
           print("bundles:", bundles[:10])
           for b in bundles[:3]:
