@@ -220,6 +220,7 @@
   /** Crédito de figura — formato ÚNICO do site (auditoria de 07/09/2026):
    *    "Fonte: órgão · documento · Atualização: dd/mm/aaaa"   ou   "… · Atualização: sem coleta até o corte".
    *  credito(caixaId, { fontes: 'INMET' | ['DOU', 'S2iD'], data: '07/09/2026' | null, url: 'https://…' (opcional, no 1º nome) })
+   *  `caixaId` pode ser o `.cartao-numero-fonte` de um cartão de número: a linha vai nele.
    *  Sem explicações, sem instruções, sem "por que está vazio". Uma linha por figura ou cartão; nunca duplica.
    *  Portões: verificar_figuras.js (texto) e verificar_consistencia_visual.js (estilo computado). */
   function credito(caixaId, spec) {
@@ -229,8 +230,11 @@
     const fontes = (Array.isArray(spec.fontes) ? spec.fontes : [spec.fontes]).filter(Boolean).map(esc);
     if (spec.url && fontes.length) fontes[0] = '<a href="' + esc(spec.url) + '" target="_blank" rel="noopener">' + fontes[0] + '</a>';
     const data = dataBR(spec.data);
+    const linha = '<span class="fonte-k">Fonte:</span> ' + fontes.join(' · ') + ' · <span class="fonte-k">Atualização:</span> ' + (data || 'sem coleta até o corte');
+    // 13/10/2026 (decisão 9 da central): o cartão de número leva a mesma linha, no próprio elemento de fonte.
+    if (caixa.classList.contains('cartao-numero-fonte')) { caixa.innerHTML = linha; caixa.setAttribute('data-conteudo-fixado', '1'); return; }
     const d = document.createElement('div'); d.className = 'fonte-figura';
-    d.innerHTML = '<span class="fonte-k">Fonte:</span> ' + fontes.join(' · ') + ' · <span class="fonte-k">Atualização:</span> ' + (data || 'sem coleta até o corte');
+    d.innerHTML = linha;
     let pe = caixa.querySelector(':scope > .figura-pe');
     if (!pe) { pe = document.createElement('div'); pe.className = 'figura-pe'; caixa.appendChild(pe); }
     pe.insertBefore(d, pe.firstChild);   // crédito antes do número da figura

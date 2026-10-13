@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-13 · #PR · cartão de número com data na fonte
+
+A fonte de todo cartão de número (Defesa civil, Monitor de riscos, Saúde, Financiamento) passa a ser a mesma linha das figuras — "Fonte: … · Atualização: dd/mm/aaaa" —, escrita pela mesma função (`MonitorMapas.credito`); a regra entra em `layout/regras.json` e o portão de conformidade a cobra no cartão renderizado. Decisão da central, 13/10. Saem escritas duplicadas da mesma fonte em Saúde e Financiamento.
+
 ## 2026-10-13 · #PR · calor do MS volta: lido da página do painel
 
 O painel de excesso de calor não respondia desde 25/09: os cinco endereços de função interna devolvem 200 vazio desde o build novo do MS. A página que o leitor recebe já traz o agregado do dia (27 UFs, 5.571 municípios, totais); o coletor passa a lê-la, e saem a descoberta por bundle e o decodificador próprio. Medido no runner em 13/10. `coletar_saude.py`.

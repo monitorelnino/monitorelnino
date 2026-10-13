@@ -204,6 +204,8 @@
     "populacao_em_milhoes_uma_casa": true,
     "travessao_em_cartao_proibido": true,
     "sem_dado_nunca_e_zero": true,
+    "fonte_com_data_em_cartao": true,
+    "_nota_fonte_com_data": "Decisão da central, 13/10/2026: a fonte do cartão de número é a mesma linha da figura — \"Fonte: … · Atualização: dd/mm/aaaa\" (ou \"sem coleta até o corte\"), escrita por MonitorMapas.credito.",
     "_nota": "Zero medido e ausência de dado são coisas distintas, e nenhuma das duas é travessão. O portão confere o cartão RENDERIZADO: vazio ou '—' reprova, e 'sem dado' com a série em disco também."
   },
   "dados_na_pagina": {
@@ -318,6 +320,7 @@
     "numeros.zero_por_extenso_em_cartao": "scripts/verificar_conformidade.py",
     "numeros.populacao_em_milhoes_uma_casa": "scripts/verificar_conformidade.py",
     "numeros.travessao_em_cartao_proibido": "scripts/verificar_conformidade.py",
+    "numeros.fonte_com_data_em_cartao": "scripts/verificar_conformidade.py",
     "numeros.sem_dado_nunca_e_zero": "só texto até 12/10/2026 (A7-14): nenhum portão a julga ainda",
     "dados_na_pagina.estados_em_mapa": "só texto até 12/10/2026 (A7-14): nenhum portão a julga ainda",
     "dados_na_pagina.municipios_em_lista_com_busca": "só texto até 12/10/2026 (A7-14): nenhum portão a julga ainda",
