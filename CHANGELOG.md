@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-13 · #PR · sai o workflow manual duplicado das evidências (consolidação, item 2)
+
+`preservar_evidencias.yml` fazia, por botão e com commit direto na `main` a qualquer hora (sem a guarda da janela), o mesmo `preservar_textos_integrais.py` que o elo noturno das evidências roda toda noite pelo caminho de coleta comum. Último uso em 10/09. Sai, com a entrada dele em `config/escritores.json` e no gatilho do publicador.
+
 ## 2026-10-13 · #PR · blog sem faixa de extensão; verificador lê o vocabulário da página
 
 Decisão da editoria (13/10): a faixa de 250 a 450 palavras deixa de ser regra do blog — sai do verificador, não vira exceção. O verificador do blog passa a cobrar também o vocabulário que a conformidade reprova na página do blog, para nenhum texto aprovado reprovar só no navegador. A Imprensa perde a conferência de um ponteiro que saiu da página em 05/10.
