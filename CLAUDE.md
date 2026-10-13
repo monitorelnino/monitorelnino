@@ -222,8 +222,9 @@ Cada PR paga cerca de dez minutos de custo fixo — abrir, esperar a fila, mescl
 existem para não pagar isso à toa, e nenhuma delas afrouxa verificação:
 
 - **Não reexplorar o repositório** quando o `CODEMAP.md` responde.
-- **Não regenerar derivado dentro de PR de página**: o portão 12 no PR só confere que a cadeia
-  regenera; quem sela o manifesto é o push para a `main`.
+- **Todo PR resela o manifesto**: ele sela todo arquivo versionado (inclusive `CHANGELOG.md` e o
+  carimbo `?v=` das páginas). Antes do push, `bash scripts/verificar_derivados.sh` e commit; o
+  portão 12 roda em todo PR e reprova manifesto obsoleto (o #698 deixou a `main` vermelha assim).
 - **Não rodar portão que a mudança não pode afetar** — `scripts/quais_portoes.py` diz quais são.
 - **Não escrever CHANGELOG longo**: 80 palavras, chave por data e PR. Fundamentação vai para a
   `METODOLOGIA.md`.
