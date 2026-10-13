@@ -679,7 +679,6 @@ function __init(){
      na etapa nos últimos sete dias. Os cartões de AGORA não têm variação porque a página não guarda
      retrato do que estava em vigor há sete dias — comparar com o que não foi medido seria inventar. */
   const N = (RESP && RESP.nacional) || {};
-  const fonteAgora = alertasVelhos ? semAtualizacao : 'Consulta de ' + carimbo;
   /* A VARIAÇÃO DA SEMANA vem do instantâneo `resposta/topo_defesa_civil.json`, escrito por
      `scripts/gerar_topo_das_paginas.py`. Ela não é recalculada aqui, e a razão é medida: a página
      contava pela data do ato em `atos_resposta.json` (22 na semana) e o instantâneo conta pela data
@@ -703,16 +702,17 @@ function __init(){
   }
 
   texto('topoCemaden', alertasVelhos ? semAtualizacao : n(rAl.municipios_cemaden));
-  texto('topoCemadenFonte', 'Cemaden · ' + fonteAgora);
+  const cred = (id, fontes, data) => MonitorMapas.credito(id, {fontes: fontes, data: data});
+  cred('topoCemadenFonte', ['Cemaden'], carimbo);
   texto('topoInmet', alertasVelhos ? semAtualizacao : n(rAl.municipios_inmet));
-  texto('topoInmetFonte', 'Inmet · ' + fonteAgora);
+  cred('topoInmetFonte', ['Inmet'], carimbo);
   const cruzados = decretados.filter(m => codsAlerta.has(m.cod));
   texto('topoCruzamento', alertasVelhos ? semAtualizacao : n(cruzados.length));
-  texto('topoCruzamentoFonte', 'MARÉ · ' + fonteAgora);
+  cred('topoCruzamentoFonte', ['MARÉ, sobre os alertas do Cemaden e do Inmet'], carimbo);
 
   const inicio = (RESP && RESP.inicio_ciclo) || '29/06/2026';
   texto('topoDecretaram', decretados.length ? n(decretados.length) : (N.n_municipios != null ? n(N.n_municipios) : '—'));
-  texto('topoDecretaramFonte', FONTE_DECRETO + ' · desde ' + inicio);
+  cred('topoDecretaramFonte', [FONTE_DECRETO, 'desde ' + inicio], RESP && RESP.gerado_em);
   variacao('topoDecretaramVariacao', variacaoDoInstantaneo('municipios_decretaram'), 'na semana');
 
   /* A população que entrou na semana também vem do instantâneo, pela mesma razão. */
@@ -723,10 +723,10 @@ function __init(){
   texto('topoPopulacao', pop != null
     ? (pop >= 1e6 ? (Math.round(pop / 1e5) / 10).toLocaleString('pt-BR') + ' milhões' : n(pop))
     : '—');
-  texto('topoPopulacaoFonte', 'Censo 2022, do IBGE · municípios com decreto no ciclo');
+  cred('topoPopulacaoFonte', ['Censo 2022, do IBGE', 'municípios com decreto no ciclo'], RESP && RESP.gerado_em);
 
   texto('topoReconhecidos', decretados.length ? n(reconhecidos.length) : (N.reconhecidos != null ? n(N.reconhecidos) : '—'));
-  texto('topoReconhecidosFonte', FONTE_DECRETO + ' · desde ' + inicio);
+  cred('topoReconhecidosFonte', [FONTE_DECRETO, 'desde ' + inicio], RESP && RESP.gerado_em);
   variacao('topoReconhecidosVariacao', variacaoDoInstantaneo('reconhecidos_pelo_governo_federal'), 'na semana');
 }
 

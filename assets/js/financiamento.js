@@ -600,17 +600,15 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     const escrever = (ident, idValor, idRotulo, idFonte, formata, rotuloBase) => {
       const c = por[ident];
       if (!c) { porDado(el(idValor), 'sem coleta'); return; }
+      const cred = partes => MonitorMapas.credito(idFonte, {fontes: partes.filter(Boolean), data: S.corte});
       if (c.sem_coleta) {
         porDado(el(idValor), 'sem coleta');
-        porDado(el(idFonte), c.detalhe || '');
+        cred([c.fonte, c.detalhe]);
         return;
       }
       porDado(el(idValor), formata(c.valor));
       if (idRotulo) porDado(el(idRotulo), rotuloBase + ', no ' + c.periodo);
-      if (el(idFonte)) {
-        const exato = typeof c.valor === 'number' && c.unidade === 'reais' ? reais(c.valor) + ' · ' : '';
-        porDado(el(idFonte), exato + c.fonte + (c.detalhe ? ' · ' + c.detalhe : ''));
-      }
+      cred([c.fonte, typeof c.valor === 'number' && c.unidade === 'reais' ? reais(c.valor) : '', c.detalhe]);
     };
     escrever('pago_periodo_mp', 'topoPagoMes', 'topoPagoMesRotulo', 'topoPagoMesFonte', reaisCurto,
              'pago pelas ações reforçadas pelas medidas provisórias');
@@ -630,9 +628,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     if (atos && !atos.sem_coleta && Number(atos.valor) > 0) {
       if (el('cartaoAtosSemana')) el('cartaoAtosSemana').hidden = false;
       if (el('topoAtosSemana')) el('topoAtosSemana').textContent = n(atos.valor);
-      if (el('topoAtosSemanaFonte')) {
-        el('topoAtosSemanaFonte').textContent = atos.fonte + (atos.detalhe ? ' · ' + atos.detalhe : '');
-      }
+      MonitorMapas.credito('topoAtosSemanaFonte', {fontes: [atos.fonte, atos.detalhe].filter(Boolean), data: S.corte});
     }
   }).catch(_erroFin("financiamento:634"));
 
@@ -692,18 +688,13 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
         el('topoPagoMesRotulo').textContent = 'em recursos oriundos das medidas federais do El Niño, '
           + 'desembolsados no ' + pago.periodo;
       }
-      if (el('topoPagoMesFonte')) {
-        el('topoPagoMesFonte').textContent = reais(pago.valor) + ' · ' + pago.fonte;
-      }
     } else if (el('topoPagoMes')) {
       el('topoPagoMes').textContent = 'sem coleta';
-      if (el('topoPagoMesFonte')) el('topoPagoMesFonte').textContent = (pago || {}).detalhe || '';
     }
 
     const resp = por['resposta_liberado_semana'];
     if (resp && !resp.sem_coleta) {
       if (el('topoRespostaSemana')) el('topoRespostaSemana').textContent = curto(resp.valor);
-      if (el('topoRespostaFonte')) el('topoRespostaFonte').textContent = reais(resp.valor) + ' · ' + resp.fonte;
     } else if (el('topoRespostaSemana')) {
       el('topoRespostaSemana').textContent = 'sem coleta';
     }
@@ -718,7 +709,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
         el('topoAtosRotulo').textContent = 'os atos federais de financiamento lidos nao trazem '
           + 'data de publicacao na origem, e sem data nao ha janela de sete dias para medir';
       }
-      if (el('topoAtosSemanaFonte')) el('topoAtosSemanaFonte').textContent = atos.fonte;
+      MonitorMapas.credito('topoAtosSemanaFonte', {fontes: [atos.fonte], data: S.corte});
     } else if (atos && !atos.sem_coleta) {
       /* Zero é ZERO, com a janela dita — o handover proíbe travessão aqui. */
       if (el('topoAtosSemana')) el('topoAtosSemana').textContent = n(atos.valor);
@@ -727,7 +718,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
           ? 'nenhum ato federal de financiamento publicado nos últimos sete dias'
           : 'atos federais de financiamento publicados nos últimos sete dias';
       }
-      if (el('topoAtosSemanaFonte')) el('topoAtosSemanaFonte').textContent = atos.fonte;
+      MonitorMapas.credito('topoAtosSemanaFonte', {fontes: [atos.fonte], data: S.corte});
     } else if (el('topoAtosSemana')) {
       el('topoAtosSemana').textContent = 'sem coleta';
     }

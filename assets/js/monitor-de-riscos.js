@@ -882,7 +882,7 @@ function põeCat(elId, id, valores, reserva){
     if (antes) põeCat('stRoniVariacao', I + 'roni.molde_variacao',
       {variacao: PAC.num(u.anomalia - antes.anomalia), anterior: PAC.periodo(antes)});
     const f = fonte('noaa_roni');
-    põeCat('stRoniFonte', I + 'roni.molde_fonte', {orgao: f.orgao, data: f.consultado_em});
+    MonitorMapas.credito('stRoniFonte', {fontes: [f.orgao], data: f.consultado_em});
   }
 
   // 3 — a probabilidade do IRI/CPC (09/10/2026, ajuste 3: o valor cabe numa linha — "99%" — e o
@@ -904,7 +904,7 @@ function põeCat(elId, id, valores, reserva){
     põeCat('stDuracaoValor', I + 'duracao.molde_valor_curto', {probabilidade: Math.round(marco.el_nino)});
     if (fim !== marco) põeCat('stDuracaoVariacao', I + 'duracao.molde_variacao',
       {probabilidade_final: Math.round(fim.el_nino), trimestre_final: fim.periodo});
-    põeCat('stDuracaoFonte', I + 'duracao.molde_fonte', {orgao: f.orgao, data: f.consultado_em});
+    MonitorMapas.credito('stDuracaoFonte', {fontes: [f.orgao], data: f.consultado_em});
   }
 
   // 4 — a previsão da NOAA/CPC entra no MESMO cartão, como linha de apoio com fonte própria
@@ -943,13 +943,11 @@ function põeCat(elId, id, valores, reserva){
     põeCat('stBrasilFogo', I + 'brasil.molde_numero', {n: conta.incendios});
     põeCat('stBrasilSeca', I + 'brasil.molde_numero', {n: conta.estiagem});
     const pe = document.getElementById('stBrasilFonte');
-    const base = txtCat(I + 'brasil.molde_fonte', {orgao: f.orgao, data: f.consultado_em}, null);
     const ponte = txtCat(I + 'brasil.ponte', null, null);
-    if (pe && base && ponte) {
-      pe.textContent = base;
+    MonitorMapas.credito('stBrasilFonte', {fontes: [f.orgao], data: f.consultado_em});
+    if (pe && ponte) {
       const a = document.createElement('a'); a.href = '#riscos'; a.textContent = ponte;
-      pe.appendChild(a);
-      pe.setAttribute('data-conteudo-fixado', '1');
+      pe.append(' · ', a);
     }
   })();
 })();

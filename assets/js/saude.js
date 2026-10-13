@@ -138,8 +138,7 @@ async function __load(){
       if (el('nEmergSaude')) {
         const r = (MSAUDE && MSAUDE.resposta) || {};
         el('nEmergSaude').textContent = _qtdCartao(r.emergencias);
-        el('fonteEmergSaude').textContent = 'Desde ' + (r.desde || '—')
-          + ' · emergência em saúde pública de importância nacional e decretos estaduais';
+        MonitorMapas.credito('fonteEmergSaude', {fontes: ['Diário Oficial da União e diários oficiais estaduais', 'emergência em saúde pública de importância nacional e decretos estaduais', r.desde ? 'desde ' + r.desde : ''].filter(Boolean), data: (MSAUDE || {}).gerado_em});
       }
     })();
 
@@ -784,8 +783,7 @@ const AREAS = [
       el('rotuloDengueSE').textContent = 'notificações de dengue na semana '
         + semanaEmDatas(u.se.split('-')[0], u.se);
     }
-    if (el('fonteDengueSE')) el('fonteDengueSE').textContent = 'SINAN (Ministério da Saúde) · '
-      + (D.conta === 'notificacoes' ? 'notificações, não casos confirmados' : '') ;
+    MonitorMapas.credito('fonteDengueSE', {fontes: ['SINAN (Ministério da Saúde)', D.conta === 'notificacoes' ? 'notificações, não casos confirmados' : ''].filter(Boolean), data: D.gerado_em});
   }).catch(_erroSaude("saude:777"));
 
   fetch('data/saude_desfechos/srag_serie.json').then(r => r.ok ? r.json() : null).then(S => {
@@ -813,7 +811,7 @@ const AREAS = [
       el('rotuloSragSE').textContent = 'internações por síndrome respiratória grave na semana '
         + semanaEmDatas(u.se.split('-')[0], u.se);
     }
-    if (el('fonteSragSE')) el('fonteSragSE').textContent = 'SIVEP-Gripe (Ministério da Saúde)';
+    MonitorMapas.credito('fonteSragSE', {fontes: ['SIVEP-Gripe (Ministério da Saúde)'], data: S.gerado_em});
     // 11/10/2026 (HANDOVER_SAUDE item 2): a frase do dado de Respiratórias ficava em "—".
     if (el('fraseResp')) {
       el('fraseResp').textContent = n(u.valor) + ' internações por síndrome respiratória grave na semana '
@@ -830,10 +828,7 @@ const AREAS = [
     const ufs = new Set();
     Object.values(M).forEach(m => { if ((m.nivel_ultima_se || 0) >= 3 && m.uf) ufs.add(m.uf); });
     if (el('nUFsAlerta')) el('nUFsAlerta').textContent = ufs.size + ' de 27';
-    if (el('fonteUFsAlerta')) {
-      el('fonteUFsAlerta').textContent = 'InfoDengue (Fiocruz/FGV) · o estado entra quando ao menos '
-        + 'um município acompanhado está em nível 3 ou 4';
-    }
+    MonitorMapas.credito('fonteUFsAlerta', {fontes: ['InfoDengue (Fiocruz/FGV)', 'o estado entra quando ao menos um município acompanhado está em nível 3 ou 4'], data: P.gerado_em});
   }).catch(_erroSaude("saude:825"));
 
   /* O calor vem de `calor_excesso`, que é onde o coletor o escreve: `resumo` com as quatro classes
@@ -849,27 +844,15 @@ const AREAS = [
       const ult = (((SS || {}).fontes || {}).painel_calor_ms || {}).ultima_coleta_ok;
       if (el('nCalorMun')) el('nCalorMun').textContent = ult
         ? 'sem leitura desde ' + String(MonitorMapas.dataBR(ult) || ult).slice(0, 5) : 'sem coleta';
-      if (el('fonteCalorMun')) el('fonteCalorMun').textContent = 'Painel Nacional de Excesso de Calor (Ministério da Saúde) · '
-        + (ult ? 'nenhum município lido desde a coleta de ' + (MonitorMapas.dataBR(ult) || ult) : 'nenhum município lido até o corte');
+      MonitorMapas.credito('fonteCalorMun', {fontes: ['Painel Nacional de Excesso de Calor (Ministério da Saúde)', ult ? 'nenhum município lido desde então' : 'nenhum município lido até o corte'], data: ult});
       return;
     }
     const acima = Number(r.severo || 0) + Number(r.extremo || 0);
     if (el('nCalorMun')) el('nCalorMun').textContent = n(acima);
-    if (el('fonteCalorMun')) {
-      const lidos = C.municipios_lidos || Object.keys(C.municipios || {}).length;
-      el('fonteCalorMun').textContent = 'Painel Nacional de Excesso de Calor (Ministério da Saúde) · '
-        + n(lidos) + (Number(lidos) === 1 ? ' município lido' : ' municípios lidos') + (C.data ? ' · consulta de ' + (MonitorMapas.dataBR(C.data) || C.data) : '');
-    }
+    const lidos = C.municipios_lidos || Object.keys(C.municipios || {}).length;
+    MonitorMapas.credito('fonteCalorMun', {fontes: ['Painel Nacional de Excesso de Calor (Ministério da Saúde)', n(lidos) + (Number(lidos) === 1 ? ' município lido' : ' municípios lidos')], data: C.data});
   }).catch(_erroSaude("saude:851"));
 
-  fetch('data/monitor_saude.json').then(r => r.ok ? r.json() : null).then(MS => {
-    const r = ((MS || {}).resposta) || {};
-    if (el('nEmergSaude')) el('nEmergSaude').textContent = _qtdCartao(r.emergencias);
-    if (el('fonteEmergSaude')) {
-      el('fonteEmergSaude').textContent = 'Desde ' + (r.desde || '—')
-        + ' · emergência em saúde pública de importância nacional e decretos estaduais';
-    }
-  }).catch(_erroSaude("saude:860"));
 })();
 
 /* ===== Dengue e chikungunya pela fonte primária (bloco A.3) =====
@@ -1071,10 +1054,7 @@ const AREAS = [
         ? 'de 100, na preparação publicada em saúde'
         : 'de 100, média dos ' + res.verificadas + ' estados verificados';
     }
-    if (el('fonteIndiceSaude')) {
-      el('fonteIndiceSaude').textContent = 'MARÉ, sobre documentos oficiais lidos · '
-        + (res.verificadas || 0) + ' de 27 estados verificados';
-    }
+    MonitorMapas.credito('fonteIndiceSaude', {fontes: ['MARÉ, sobre documentos oficiais lidos', (res.verificadas || 0) + ' de 27 estados verificados'], data: (MS || {}).corte});
   }).catch(_erroSaude("saude:1066"));
 
   /* 2 · O que foi localizado em cada estado: plano, coordenação na saúde e ligação com o governo

@@ -198,6 +198,7 @@ _RE_DECIMAL_COM_PONTO = re.compile(r"(?<![\d.])\d+\.\d{1,2}(?![\d.])")
 # A7-14 (12/10/2026): "12,3 milhões" — uma casa, vírgula. "12 milhões" e "12,34 milhões" reprovam.
 _RE_MILHOES = re.compile(r"\d[\d.,]*\s*milh(?:ão|ões)\b", re.I)
 _RE_MILHOES_UMA_CASA = re.compile(r"(?<![\d.,])\d{1,3},\d\s*milh(?:ão|ões)\b", re.I)
+_RE_ATUALIZACAO = re.compile(r"Atualização: (\d{2}/\d{2}/\d{4}|sem coleta até o corte)")
 
 
 def problemas_de_numero(numeros: list, regras: dict, travessoes: list = None) -> list:
@@ -224,6 +225,8 @@ def problemas_de_numero(numeros: list, regras: dict, travessoes: list = None) ->
         elif r.get("populacao_em_milhoes_uma_casa") and _RE_MILHOES.search(valor) \
                 and not _RE_MILHOES_UMA_CASA.search(valor):
             p.append(f"cartão de número '{nome}' com milhões fora de uma casa decimal ('{valor}')")
+        if r.get("fonte_com_data_em_cartao") and not _RE_ATUALIZACAO.search(n.get("fonte") or ""):
+            p.append(f"cartão de número '{nome}' sem data na fonte (\"Atualização: dd/mm/aaaa\")")
     for e in travessoes or []:
         p.append(f"elemento '{e.get('classe')}' em {e.get('perto_de') or 'seção sem id'} só com "
                  f"travessão — ausência se escreve em palavras")
@@ -316,6 +319,11 @@ def _autoteste() -> int:
     regras = ler_json(REGRAS) or {}
     _r = {"numeros": {"fonte": "x", "formato": "pt-BR", "_nota": "n"}, "_verificacao": {}}
     _nr = {"numeros": {"travessao_em_cartao_proibido": True, "populacao_em_milhoes_uma_casa": True}}
+    _nf = {"numeros": {"travessao_em_cartao_proibido": True, "fonte_com_data_em_cartao": True}}
+    ok("fonte de cartão sem data reprova",
+       len(problemas_de_numero([{"id": "f", "valor": "3", "fonte": "SINAN (Ministério da Saúde)"}], _nf)) == 1)
+    ok("fonte de cartão com a linha da figura passa",
+       problemas_de_numero([{"id": "f", "valor": "3", "fonte": "Fonte: SINAN · Atualização: 12/10/2026"}], _nf) == [])
     ok("A7-14: '12,3 milhões' passa", problemas_de_numero([{"id": "p", "valor": "12,3 milhões"}], _nr) == [])
     ok("A7-14: '12 milhões' reprova", len(problemas_de_numero([{"id": "p", "valor": "12 milhões"}], _nr)) == 1)
     ok("A7-14: '12,34 milhões' reprova", len(problemas_de_numero([{"id": "p", "valor": "12,34 milhões"}], _nr)) == 1)
@@ -396,7 +404,8 @@ def _autoteste() -> int:
            problemas_de_vocabulario("Backlog da fila", "x.html", regras, {"texto_proibido": ["Backlog"]})))
 
     # (E) e (F)
-    ok("cartão com valor passa", problemas_de_numero([{"id": "a", "valor": "749"}], regras) == [])
+    _F = "Fonte: x · Atualização: 13/10/2026"
+    ok("cartão com valor passa", problemas_de_numero([{"id": "a", "valor": "749", "fonte": _F}], regras) == [])
     # 08/10/2026 (A4-13): os três lugares novos da varredura.
     ok("elemento só com travessão reprova",
        len(problemas_de_numero([], regras,
@@ -405,14 +414,14 @@ def _autoteste() -> int:
        len(problemas_de_numero([], regras, [{"classe": "tile-face span"}])) == 1)
     ok("sem travessão nenhum passa", problemas_de_numero([], regras, []) == [])
     ok("cartão em travessão reprova",
-       len(problemas_de_numero([{"id": "a", "valor": "—"}], regras)) == 1)
-    ok("cartão vazio reprova", len(problemas_de_numero([{"id": "a", "valor": ""}], regras)) == 1)
+       len(problemas_de_numero([{"id": "a", "valor": "—", "fonte": _F}], regras)) == 1)
+    ok("cartão vazio reprova", len(problemas_de_numero([{"id": "a", "valor": "", "fonte": _F}], regras)) == 1)
     ok("A7-14: '0' em cartão reprova; 'zero' passa",
-       len(problemas_de_numero([{"id": "a", "valor": "0"}], regras)) == 1
-       and problemas_de_numero([{"id": "a", "valor": "zero"}], regras) == [])
+       len(problemas_de_numero([{"id": "a", "valor": "0", "fonte": _F}], regras)) == 1
+       and problemas_de_numero([{"id": "a", "valor": "zero", "fonte": _F}], regras) == [])
     ok("A7-14: ponto decimal reprova; milhar pt-BR e vírgula passam",
-       len(problemas_de_numero([{"id": "a", "valor": "31.8"}], regras)) == 1
-       and problemas_de_numero([{"id": "a", "valor": "1.234"}, {"id": "b", "valor": "31,8%"}], regras) == [])
+       len(problemas_de_numero([{"id": "a", "valor": "31.8", "fonte": _F}], regras)) == 1
+       and problemas_de_numero([{"id": "a", "valor": "1.234", "fonte": _F}, {"id": "b", "valor": "31,8%", "fonte": _F}], regras) == [])
     ok("alvo de toque pequeno reprova",
        any("alvo de toque" in x for x in problemas_de_acessibilidade(
            {"alvos_de_toque": [{"tag": "button", "texto": "Ver", "altura": 30}]}, regras)))
