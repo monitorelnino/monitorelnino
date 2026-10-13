@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-13 · #PR · calor do MS: "sem leitura desde 25/09", não "sem coleta"
+
+Na Saúde, as figuras e a busca de calor diziam "sem coleta até o corte" depois que o retrato de 25/09 saiu por ter mais de 9 dias. Havia coleta; a fonte é que parou de responder. A página passa a ler `ultima_coleta_ok` da fonte, como a legenda já fazia: crédito com a data da última leitura e "sem leitura desde a coleta de". `assets/js/saude.js`.
+
 ## 2026-10-13 · #PR · sai o workflow manual duplicado das evidências (consolidação, item 2)
 
 `preservar_evidencias.yml` fazia, por botão e com commit direto na `main` a qualquer hora (sem a guarda da janela), o mesmo `preservar_textos_integrais.py` que o elo noturno das evidências roda toda noite pelo caminho de coleta comum. Último uso em 10/09. Sai, com a entrada dele em `config/escritores.json` e no gatilho do publicador.
