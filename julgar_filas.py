@@ -203,7 +203,9 @@ def classe_da_recusa(v: dict) -> str:
     """'tecnica' | 'criterio' | '' (quando promove). A classe decide o destino, não o motivo."""
     if v.get("promove"):
         return ""
-    if v.get("motivo") in MOTIVOS_TECNICOS or not v.get("leu_documento", True):
+    # 13/10/2026: só o motivo decide. "Não leu" também é a URL fora do padrão oficial, que desde o
+    # A1-19 nem se baixa — e 534 notícias voltavam pelo back-off como se a fonte estivesse fora do ar.
+    if v.get("motivo") in MOTIVOS_TECNICOS:
         return "tecnica"
     return "criterio"
 
@@ -492,7 +494,7 @@ def autoteste() -> int:
                                     "leu_documento": True}) == "criterio"))
     casos.append(("url que não é fonte oficial é recusa POR CRITÉRIO (a url é o que é)",
                   classe_da_recusa({"promove": False, "motivo": "sem_documento_primario",
-                                    "leu_documento": True}) == "criterio"))
+                                    "leu_documento": False}) == "criterio"))
     casos.append(("promoção não tem classe de recusa",
                   classe_da_recusa({"promove": True}) == ""))
 

@@ -35,6 +35,9 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-13 · #PR · blog: texto de 06/10 publicado
 
 Entra o texto aprovado "Seca, fogo e chuva: três caminhos diferentes para o dinheiro chegar" (Legal e financiamento), com a troca de "por antecipação" por "antes do vencimento" feita pela central no original aprovado. Verificador do blog verde (números no pacote de 05/10). `blog/posts/`.
+## 2026-10-13 · #PR · fila de pendentes: três voltas em falso saem
+
+A fila de 3.970 pendentes não andava por três causas. O encaminhamento gastava as 200 resoluções da noite em link de jornal, cujo destino o veículo do feed já decide; a recusa de notícia voltava ao juiz como falha técnica (534 em dois dias); e a busca dirigida procurava o ato do município "resposta". Corrigido em `julgar_e_aplicar_descobertas.py`, `julgar_filas.py` e `scripts/busca_dirigida_do_ato.py`.
 
 ## 2026-10-13 · #PR · portão 12 em todo PR
 
