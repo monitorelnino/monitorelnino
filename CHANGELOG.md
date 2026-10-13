@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-13 · #PR · população sob decreto sempre com uma casa decimal
+
+`toLocaleString('pt-BR')` sem casas fixas mostrava "28 milhões" quando o arredondado caía em inteiro (28.004.406 → 28,0); a regra `populacao_em_milhoes_uma_casa` reprovou a `main` após o #714. Formatação com uma casa fixa em `assets/js/defesa-civil.js`; o portão de navegador não roda em PR só de dado, por isso só a `main` viu.
+
 ## 2026-10-13 · #PR · um verificador de texto público (consolidação, item 3)
 
 `verificar_vocabulario_publico.js` e `verificar_voz_editorial.js` renderizavam as mesmas páginas para olhar o mesmo texto; viram `verificar_texto_publico.js`, uma renderização por página, com as regras (jargão interno, forma, refrões) em `layout/regras.json → texto_publico`. Mesma cobertura; casos de teste em `--autoteste`. O padrão de "robô" não casava a palavra acentuada (\b depois de ô) e passa a casar.

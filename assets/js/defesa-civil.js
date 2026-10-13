@@ -721,7 +721,7 @@ function __init(){
   /* População arredondada em milhões, com uma casa: o número inteiro dá precisão que o recorte não
      tem, e a editoria pediu o arredondado. */
   texto('topoPopulacao', pop != null
-    ? (pop >= 1e6 ? (Math.round(pop / 1e5) / 10).toLocaleString('pt-BR') + ' milhões' : n(pop))
+    ? (pop >= 1e6 ? (Math.round(pop / 1e5) / 10).toLocaleString('pt-BR', {minimumFractionDigits: 1, maximumFractionDigits: 1}) + ' milhões' : n(pop))
     : '—');
   cred('topoPopulacaoFonte', ['Censo 2022, do IBGE', 'municípios com decreto no ciclo'], RESP && RESP.gerado_em);
 
