@@ -55,7 +55,7 @@
   },
   "https://defesacivil.ma.gov.br/": {
    "primeira_deteccao": "2026-09-23",
-   "ultima_deteccao": "2026-09-23",
+   "ultima_deteccao": "2026-10-13",
    "padrao": "periodo eleitoral",
    "hash": "b2262cd13dde6a0980771fd7251da2b3143b2c6e0e32cc19de03d41439448dc6",
    "amostra": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <meta name=\"robots\" content=\"noindex, nofollow\">\n    <title>Suspensão Temporária | Período Eleitoral 2026</title>\n    <link rel=\"icon\" type=\"image/png\" href=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABOYAAATmCAIAAAAKnjl9AABxm2NhQlgAAHGbanVtYgAAAB5qdW1kYzJwYQARABCAAACqADibcQNjMnBhAAAAcXVqdW1iAAAAR2p1bWRjMm1hABEAEIAAAKoAOJtxA3VybjpjMnBhOjgwNjlhOTU",
@@ -464,6 +464,15 @@
    "padrao": "periodo eleitoral",
    "hash": "5ed0642d177dae3a58e08579acf3d50e827e14b01dc40224c38f188f17b74e44",
    "amostra": "<!DOCTYPE html>\n<html lang=\"pt-br\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\">\n  <head>\n    <style>\n      .no-js {\n        visibility: visible;\n      }\n    </style>\n    <meta charset=\"utf-8\" />\n<noscript><style>form.antibot > * { display: none !important; } form.antibot noscript { display: block !important; }</style>\n</noscript><style>/* @see https://github.com/aFarkas/lazysizes#broken-image-symbol */.js img.lazyload:not([src]) { visibility: hidden; }/* @see https://github.com/aFarkas/lazysizes#a",
+   "suspensa": true,
+   "setor": "defesa_civil"
+  },
+  "https://www.pa.gov.br/": {
+   "primeira_deteccao": "2026-10-13",
+   "ultima_deteccao": "2026-10-13",
+   "padrao": "periodo eleitoral",
+   "hash": "2590b77c0d5cf36863e12325ede8556ea7b82cdeadb878bd695c2b95ad6e13b5",
+   "amostra": "\n<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n<!-- Google tag (gtag.js) -->\r\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=G-Y17L3LVR0K\"></script>\r\n<script>\r\n  window.dataLayer = window.dataLayer || [];\r\n  function gtag(){dataLayer.push(arguments);}\r\n  gtag('js', new Date());\r\n\r\n  gtag('config', 'G-Y17L3LVR0K');\r\n</script>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n<title>Governo",
    "suspensa": true,
    "setor": "defesa_civil"
   }

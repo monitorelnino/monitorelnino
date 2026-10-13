@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y17L3LVR0K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y17L3LVR0K');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Governo do Estado do Pará — Portal Institucional</title>
+<meta name="description" content="Portal institucional do Governo do Estado do Pará. Estrutura de Governo e serviços essenciais ao cidadão.">
+<link rel="icon" href="/img/brasao_govpara_2026_vertical.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Spectral:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/institucional.css?v=20260132314">
+
+</head>
+<body>
+
+<a class="skip-link" href="#conteudo" accesskey="1">Ir para o conteúdo</a>
+<a class="skip-link" href="#menu" accesskey="2">Ir para o menu</a>
+<a class="skip-link" href="/busca" accesskey="3">Ir para a busca</a>
+<a class="skip-link" href="#rodape" accesskey="4">Ir para o rodapé</a>
+
+<div class="acc-bar">
+  <div class="container d-flex flex-wrap align-items-center justify-content-between gap-3 py-2">
+    <div class="acc-links d-flex flex-wrap align-items-center gap-3">
+      <a href="/acessibilidade"><i class="fa-solid fa-universal-access me-1"></i>Acessibilidade</a>
+      <button type="button" data-contraste><i class="fa-solid fa-circle-half-stroke me-1"></i>Alto Contraste</button>
+      <a href="/mapadosite"><i class="fa-solid fa-sitemap me-1"></i>Mapa do Site</a>
+    </div>
+    <div class="d-flex align-items-center gap-3">
+      <div class="font-btns d-flex align-items-center gap-1" role="group" aria-label="Tamanho da fonte">
+        <button type="button" data-font="up" aria-label="Aumentar fonte">A+</button>
+        <button type="button" data-font="reset" aria-label="Fonte padrão">A</button>
+        <button type="button" data-font="down" aria-label="Diminuir fonte">A-</button>
+      </div>
+      <!--<a class="pill d-none d-md-inline-flex" href="https://www.dados.pa.gov.br" target="_blank" rel="noopener"><i class="fa-solid fa-database"></i>Dados Abertos</a>-->
+      <a class="pill d-none d-md-inline-flex" href="https://www.sistemas.pa.gov.br/portaltransparencia/" target="_blank" rel="noopener"><i class="fa-solid fa-magnifying-glass-chart"></i>Transparência</a>
+      <a class="pill d-none d-md-inline-flex" href="https://www.sistemas.pa.gov.br/esic/public/main/index.xhtml" target="_blank" rel="noopener"><i class="fa-solid fa-circle-info"></i>SIC</a>
+      <a class="pill d-none d-md-inline-flex" href="https://sistemas.pa.gov.br/sigo/#/" target="_blank" rel="noopener"><i class="fa-solid fa-headset"></i>SIGO</a>
+    </div>
+  </div>
+</div>
+
+<header class="site-head">
+  <div class="container py-3">
+    <div class="row align-items-center g-3">
+      <div class="col-lg-6 col-md-7">
+        <a class="brand" href="/">
+          <img src="/img/brasao_govpara_2026.png" alt="Brasão do Estado do Pará — Governo do Estado do Pará">
+        </a>
+      </div>
+      <div class="col-lg-6 col-md-5">
+        <form class="head-search d-flex" role="search" action="/busca" method="get">
+          <label class="visually-hidden" for="q">Buscar no portal</label>
+          <input class="form-control" type="search" id="q" name="q" placeholder="Busque por órgãos e serviços" aria-label="Busca" autocomplete="off" min="3" maxlength="50">
+          <button class="btn" type="submit" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="mainnav navbar navbar-expand-lg" id="menu" aria-label="Menu principal">
+  <div class="container">
+    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navmain" aria-controls="navmain" aria-expanded="false" aria-label="Abrir menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navmain">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Início</a></li>
+        <li class="nav-item"><a class="nav-link" href="/orgao">O Governo</a></li>
+        <li class="nav-item"><a class="nav-link" href="/servicos">Serviços</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Transparência Pública</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://www.sistemas.pa.gov.br/portaltransparencia/" target="_blank" rel="noopener">Portal da Transparência</a></li>
+            <!--<li><a class="dropdown-item" href="https://www.dados.pa.gov.br" target="_blank" rel="noopener">Dados Abertos</a></li>-->
+            <li><a class="dropdown-item" href="https://sistemas.pa.gov.br/sigo/#/" target="_blank" rel="noopener">Ouvidoria (SIGO)</a></li>
+            <li><a class="dropdown-item" href="https://www.sistemas.pa.gov.br/esic/public/main/index.xhtml" target="_blank" rel="noopener">Acesso à Informação (SIC)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main id="conteudo">
+
+
+<section class="py-block">
+  <div class="container">
+    <div class="aviso p-4 p-lg-5">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-9">
+          <span class="tag mb-3"><i class="fa-solid fa-circle-info"></i>Aviso — Período Eleitoral 2026</span>
+          <h1 class="mb-3" style="font-size:clamp(1.6rem,3.2vw,2.2rem)">Portal em versão institucional reduzida</h1>
+          <p class="text-suave" style="max-width:70ch">Em respeito à legislação eleitoral, as publicações deste portal estão temporariamente suspensas até o encerramento das eleições de 2026. Permanecem disponíveis apenas a <strong class="text-marca">estrutura de Governo</strong>, os <strong class="text-marca">serviços essenciais</strong> ao cidadão e as informações de interesse público obrigatório, como o Portal da Transparência.</p>
+		  <p class="mb-0 text-suave" style="max-width:70ch">O perfil do X <a class="text-secondary" href="https://x.com/govpara" target="_blank" rel="noopener noreferrer" aria-label="Abrir o perfil @govpara no X">@govpara</a> foi criado para divulgar informações de utilidade pública somente neste período.</p>
+        </div>
+        <div class="col-lg-3 text-lg-center">
+          <img src="/img/brasao_govpara_2026_vertical.png" alt="Brasão do Estado do Pará" style="max-height:150px;width:auto">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-block bg-alt border-top border-bottom" style="border-color:var(--cor-borda)!important">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">O Governo</div>
+      <h2>Estrutura de Governo</h2>
+      <div class="rule"></div>
+    </div>
+    <p class="text-suave mb-4" style="max-width:75ch">Conheça a organização administrativa do Estado do Pará: secretarias, órgãos de segurança, autarquias, fundações e demais entidades. Selecione um grupo para ver a lista completa de órgãos e seus dados de contato.</p>
+    <div class="row g-3">
+      <div class="col-lg-4 col-md-6"><div class="card-gov"><a class="grupo-card" href="/orgao#executivo"><span class="g-ico"><i class="fa-solid fa-landmark-flag"></i></span><h3>Poder Executivo</h3><span class="g-count">1 órgãos</span><span class="g-go">Ver Poder Executivo <i class="fa-solid fa-arrow-right"></i></span></a></div></div>
+      <div class="col-lg-4 col-md-6"><div class="card-gov"><a class="grupo-card" href="/orgao#secretarias"><span class="g-ico"><i class="fa-solid fa-landmark"></i></span><h3>Secretarias de Estado</h3><span class="g-count">29 órgãos</span><span class="g-go">Ver secretarias <i class="fa-solid fa-arrow-right"></i></span></a></div></div>
+      <div class="col-lg-4 col-md-6"><div class="card-gov"><a class="grupo-card" href="/orgao#seguranca"><span class="g-ico"><i class="fa-solid fa-shield-halved"></i></span><h3>Órgãos de Segurança</h3><span class="g-count">5 órgãos</span><span class="g-go">Ver órgãos <i class="fa-solid fa-arrow-right"></i></span></a></div></div>
+      <div class="col-lg-4 col-md-6"><div class="card-gov"><a class="grupo-card" href="/orgao#autarquias"><span class="g-ico"><i class="fa-solid fa-building-columns"></i></span><h3>Autarquias</h3><span class="g-count">7 órgãos</span><span class="g-go">Ver autarquias <i class="fa-solid fa-arrow-right"></i></span></a></div></div>
+      <div class="col-lg-4 col-md-6"><div class="card-gov"><a class="grupo-card" href="/orgao#fundacoes"><span class="g-ico"><i class="fa-solid fa-hand-holding-heart"></i></span><h3>Fundações</h3><span class="g-count">12 órgãos</span><span class="g-go">Ver fundações <i class="fa-solid fa-arrow-right"></i></span></a></div></div>
+      <div class="col-lg-4 col-md-6"><div class="card-gov"><a class="grupo-card" href="/orgao#sociedades"><span class="g-ico"><i class="fa-solid fa-scale-balanced"></i></span><h3>Soc. de Economia Mista</h3><span class="g-count">2 órgãos</span><span class="g-go">Ver entidades <i class="fa-solid fa-arrow-right"></i></span></a></div></div>
+      <div class="col-lg-4 col-md-6"><div class="card-gov"><a class="grupo-card" href="/orgao#empresas"><span class="g-ico"><i class="fa-solid fa-industry"></i></span><h3>Empresas Públicas</h3><span class="g-count">6 órgãos</span><span class="g-go">Ver empresas <i class="fa-solid fa-arrow-right"></i></span></a></div></div>
+      <div class="col-lg-4 col-md-6"><div class="card-gov"><a class="grupo-card" href="/orgao#outros"><span class="g-ico"><i class="fa-solid fa-sitemap"></i></span><h3>Outros Órgãos</h3><span class="g-count">36 órgãos</span><span class="g-go">Ver órgãos <i class="fa-solid fa-arrow-right"></i></span></a></div></div>
+    </div>
+    <div class="mt-4"><a class="btn-inst-outline" href="/orgao">Ver organograma completo <i class="fa-solid fa-arrow-right ms-1"></i></a></div>
+  </div>
+</section>
+
+<section class="py-block" id="servicos">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Atendimento ao público</div>
+      <h2>Serviços do Estado</h2>
+      <div class="rule"></div>
+    </div>
+    <p class="text-suave mb-4" style="max-width:75ch">Selecione o seu perfil para ver os serviços disponíveis. O portal de serviços é a alternativa on-line de atendimento — reúne serviços e informações das diversas áreas do Governo do Estado do Pará.</p>
+
+    <ul class="nav svc-tabs mb-4" id="svcTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="tab-cidadao" data-bs-toggle="tab" data-bs-target="#p-cidadao" type="button" role="tab" aria-controls="p-cidadao" aria-selected="true">
+          <span class="t-ico"><i class="fa-solid fa-users"></i></span><span>Cidadão<span class="t-sub">Pessoa física</span></span>
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tab-empresas" data-bs-toggle="tab" data-bs-target="#p-empresas" type="button" role="tab" aria-controls="p-empresas" aria-selected="false">
+          <span class="t-ico"><i class="fa-solid fa-building"></i></span><span>Empresas<span class="t-sub">Pessoa jurídica</span></span>
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tab-servidores" data-bs-toggle="tab" data-bs-target="#p-servidores" type="button" role="tab" aria-controls="p-servidores" aria-selected="false">
+          <span class="t-ico"><i class="fa-solid fa-user-tie"></i></span><span>Servidores<span class="t-sub">Servidor público</span></span>
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tab-turistas" data-bs-toggle="tab" data-bs-target="#p-turistas" type="button" role="tab" aria-controls="p-turistas" aria-selected="false">
+          <span class="t-ico"><i class="fa-solid fa-signs-post"></i></span><span>Turistas<span class="t-sub">Visitantes</span></span>
+        </button>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="svcTabContent">
+      <div class="tab-pane fade show active" id="p-cidadao" role="tabpanel" aria-labelledby="tab-cidadao">
+        <div class="row g-3">
+
+          <div class="col-lg-4 col-md-6"><div class="card-gov"><a class="svc-card" href="http://www.transparencia.pa.gov.br/" target="_blank" rel="noopener"><span class="s-ico"><i class="fas fa-search-dollar"></i></span><span class="s-title">Portal da Transparência</span><span class="s-ext"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></a></div></div>
+
+          <div class="col-lg-4 col-md-6"><div class="card-gov"><a class="svc-card" href="https://app.sefa.pa.gov.br/antecipacao-ipva/autenticacao.action" target="_blank" rel="noopener"><span class="s-ico"><i class="fas fa-file-contract"></i></span><span class="s-title">Antecipação do IPVA</span><span class="s-ext"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></a></div></div>
+
+          <div class="col-lg-4 col-md-6"><div class="card-gov"><a class="svc-card" href="https://sistemas-renach.detran.pa.gov.br/renach/renach-web/servicos/consultaPontuacao/indexConsultaPontuacao.jsf" target="_blank" rel="noopener"><span class="s-ico"><i class="fas fa-car-side"></i></span><span class="s-title">Consulta de Pontuação CNH</span><span class="s-ext"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></a></div></div>
+
+          <div class="col-lg-4 col-md-6"><div class="card-gov"><a class="svc-card" href="http://www.ioepa.com.br/portal/" target="_blank" rel="noopener"><span class="s-ico"><i class="far fa-newspaper"></i></span><span class="s-title">Diário Oficial</span><span class="s-ext"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></a></div></div>
+
+          <div class="col-lg-4 col-md-6"><div class="card-gov"><a class="svc-card" href="http://www.sefa.pa.gov.br/" target="_blank" rel="noopener"><span class="s-ico"><i class="fas fa-university"></i></span><span class="s-title">Secretaria Estadual da Fazenda</span><span class="s-ext"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></a></div></div>
+
+          <div class="col-lg-4 col-md-6"><div class="card-gov"><a class="svc-card" href="https://www.sistemas.pa.gov.br/esic/public/main/index.xhtml" target="_blank" rel="noopener"><span class="s-ico"><i class="fa-solid fa-circle-info"></i></span><span class="s-title">SIC.PA - Serviço de Informação ao Cidadão</span><span class="s-ext"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></a></div></div>
+
+          <div class="col-lg-4 col-md-6"><div class="card-gov"><a class="svc-card" href="https://sistemas.pa.gov.br/sigo/#/" target="_blank" rel="noopener"><span class="s-ico"><i class="fas fa-question-circle"></i></span><span class="s-title">SIGO - Sistema Integrado de Ouvidoria</span><span class="s-ext"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></a></div></div>
+
+        </div>
+      </div>
+      <div class="tab-pane fade" id="p-empresas" role="tabpanel" aria-labelledby="tab-empresas">
+        <div class="row g-3">
+
+          <div class="col-lg-4 col-md-6"><div class="card-gov"><a class="svc-card" href="http://www.transparencia.pa.gov.br/?q=node/45" target="_blank" rel="noopener"><span class="s-ico"><i class="fas fa-gavel"></i></span><span class="s-title">Licitações e Editais</span><span class="s-ext"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></a></div></div>
+
+          <div class="col-lg-4 col-md-6"><div class="card-gov"><a class="svc-card" href="http://www.jucepa.pa.gov.br/auto-atendimento" target="_blank" rel="noopener"><span class="s-ico"><i class="fas fa-building"></i></span><span class="s-title">Auto atendimento Jucepa</span><span class="s-ext"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></a></div></div>
+
+          <div class="col-lg-4 col-md-6"><div class="card-gov"><a class="svc-card" href="http://www.sefa.pa.gov.br/" target="_blank" rel="noopener"><span class="s-ico"><i class="fas fa-university"></i></span><span class="s-title">Secretaria Estadual da Fazenda</span><span class="s-ext"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></a></div></div>
+
+        </div>
+      </div>
+      <div class="tab-pane fade" id="p-servidores" role="tabpanel" aria-labelledby="tab-servidores">
+        <div class="row g-3">
+
+          <div class="col-lg-4 col-md-6"><div class="card-gov"><a class="svc-card" href="http://www.portaldoservidor.pa.gov.br/" target="_blank" rel="noopener"><span class="s-ico"><i class="far fa-address-card"></i></span><span class="s-title">Portal do servidor</span><span class="s-ext"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></a></div></div>
+
+          <div class="col-lg-4 col-md-6"><div class="card-gov"><a class="svc-card" href="https://www.sistemas.pa.gov.br/portaldoservidor/form_login.php?s=Y29udHJhY2hlcXVl" target="_blank" rel="noopener"><span class="s-ico"><i class="fas fa-comment-dollar"></i></span><span class="s-title">Consulta ao Contracheque</span><span class="s-ext"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></a></div></div>
+
+          <div class="col-lg-4 col-md-6"><div class="card-gov"><a class="svc-card" href="http://www.ioepa.com.br/" target="_blank" rel="noopener"><span class="s-ico"><i class="far fa-newspaper"></i></span><span class="s-title">Diário Oficial do Estado</span><span class="s-ext"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></a></div></div>
+
+        </div>
+      </div>
+      <div class="tab-pane fade" id="p-turistas" role="tabpanel" aria-labelledby="tab-turistas">
+        <div class="row g-3">
+
+          <div class="col-lg-4 col-md-6"><div class="card-gov"><a class="svc-card" href="http://visitealterdochao.com/" target="_blank" rel="noopener"><span class="s-ico"><i class="fa-solid fa-signs-post"></i></span><span class="s-title">Visite Alter do Chão</span><span class="s-ext"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></a></div></div>
+
+          <div class="col-lg-4 col-md-6"><div class="card-gov"><a class="svc-card" href="http://visitemarajo.com/" target="_blank" rel="noopener"><span class="s-ico"><i class="fa-solid fa-signs-post"></i></span><span class="s-title">Visite o Marajó</span><span class="s-ext"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></a></div></div>
+
+          <div class="col-lg-4 col-md-6"><div class="card-gov"><a class="svc-card" href="http://www.paraturismo.pa.gov.br/" target="_blank" rel="noopener"><span class="s-ico"><i class="fas fa-suitcase"></i></span><span class="s-title">Portal de Turismo no Pará</span><span class="s-ext"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></a></div></div>
+
+          <div class="col-lg-4 col-md-6"><div class="card-gov"><a class="svc-card" href="http://www.paraturismo.pa.gov.br/vejamais_gastronomia" target="_blank" rel="noopener"><span class="s-ico"><i class="fas fa-utensils"></i></span><span class="s-title">Gastronomia do Pará</span><span class="s-ext"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></a></div></div>
+
+          <div class="col-lg-4 co
