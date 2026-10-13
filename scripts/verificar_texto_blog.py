@@ -38,7 +38,6 @@ DIR_PACOTES = RAIZ.parent / "robo-registro" / "blog" / "pacotes"
 SEM_PACOTE_POR_DECISAO = {"2026-10-04-reconhecimentos-da-semana.md"}
 CABECALHO = ("titulo", "abertura", "etiqueta", "data", "fontes", "aprovado")
 ETIQUETAS = ("Legal e financiamento", "Saúde", "Acontecimento")
-PALAVRAS_MIN, PALAVRAS_MAX = 250, 450
 
 # O vocabulário proibido do guia de redação. `nota` e `apenas` entram como palavra inteira: "notas"
 # e "apenasado" não existem, mas "anotação" e "apenas" sim, e o teste de substring pegaria a
@@ -107,11 +106,6 @@ def problemas_de_prosa(corpo: str) -> list:
     return fora
 
 
-def contar_palavras(corpo: str) -> int:
-    """Palavras do corpo. Função pura."""
-    return len(re.sub(r"<[^>]+>", " ", corpo or "").split())
-
-
 def avisos(corpo: str, etiqueta: str) -> list:
     """O que merece um olhar, sem bloquear. Função pura."""
     fora = []
@@ -152,10 +146,6 @@ def problemas(meta: dict, corpo: str, pacote: dict, exige_pacote: bool = True,
         fora.append(f"etiqueta {etiqueta!r} fora de {list(ETIQUETAS)}")
     if exige_pacote and not (meta or {}).get("pacote"):
         fora.append("cabeçalho sem `pacote`: o texto só pode afirmar o que está no pacote da semana")
-
-    n = contar_palavras(corpo)
-    if not (PALAVRAS_MIN <= n <= PALAVRAS_MAX):
-        fora.append(f"{n} palavras, fora de {PALAVRAS_MIN}–{PALAVRAS_MAX}")
 
     marcas = problemas_de_prosa(corpo)
     if marcas:
@@ -224,13 +214,13 @@ def _autoteste() -> int:
     ok("pacote ausente com a pasta FORA de alcance nao reprova",
        problemas(meta, corpo, sem_pac, pacotes_ao_alcance=False) == [])
     ok("fora de alcance nao afrouxa as outras travas",
-       any("palavras" in x for x in problemas(meta, "curto", sem_pac, pacotes_ao_alcance=False)))
+       any("etiqueta" in x for x in problemas(dict(meta, etiqueta="Boletim"), corpo, sem_pac,
+                                               pacotes_ao_alcance=False)))
     ok("etiqueta fora da lista bloqueia",
        any("etiqueta" in x for x in problemas(dict(meta, etiqueta="Boletim"), corpo, pac)))
 
-    ok("texto curto bloqueia", any("palavras" in x for x in problemas(meta, "curto", pac)))
-    ok("texto longo bloqueia",
-       any("palavras" in x for x in problemas(meta, "palavra " * 500, pac)))
+    # 13/10/2026 (editoria, DECISÃO 2b-FINAL): a extensão deixou de ser regra do blog.
+    ok("extensão não bloqueia", not any("palavras" in x for x in problemas(meta, "curto", pac)))
 
     ok("lista no corpo bloqueia", problemas_de_prosa("texto\n- item") == ["-"])
     ok("subtítulo no corpo bloqueia", "#" in str(problemas_de_prosa("texto\n## titulo")))
@@ -319,7 +309,7 @@ def conferir(caminhos: list) -> int:
                 print(f"      · {x}")
         else:
             extra = "" if exige else " (sem pacote, por exceção declarada de 04/10/2026)"
-            print(f"  ✓ {nome}: {contar_palavras(corpo)} palavras, números conferidos{extra}")
+            print(f"  ✓ {nome}: números conferidos{extra}")
         for x in a:
             print(f"      ⚠ {x}")
     if reprovados:
