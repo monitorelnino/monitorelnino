@@ -17,9 +17,10 @@
    "papel": "nível de alerta e série municipal semanal (modelo); crédito obrigatório 'modelo InfoDengue (Fiocruz/FGV)'",
    "url_publica": "https://info.dengue.mat.br",
    "status": "coletado",
-   "consultado_em": "11/10/2026",
+   "consultado_em": "12/10/2026",
    "regra_divergencia": "divergência com o painel do MS → exibe o MS e loga a diferença (C2)",
-   "ultima_coleta_ok": "11/10/2026"
+   "ultima_coleta_ok": "11/10/2026",
+   "ultima_tentativa_falhou": "12/10/2026"
   },
   "inmet_calor": {
    "nome": "Avisos de calor",
@@ -56,10 +57,10 @@
    "orgao": "Ministério da Saúde",
    "papel": "classe de excesso de calor por município (índice EHF), no vocabulário do MS",
    "url_publica": "https://clima.saude.gov.br/",
-   "status": "lacuna",
-   "consultado_em": "11/10/2026",
+   "status": "aguardando_primeira_coleta",
+   "consultado_em": "12/10/2026",
    "documento": "Painel Nacional de Excesso de Calor, dia 2026-09-25",
-   "ultima_tentativa_falhou": "11/10/2026",
+   "ultima_tentativa_falhou": "12/10/2026",
    "motivo_da_falha": "ValueError: nenhum dos 5 handlers do painel do MS devolveu o agregado de calor",
    "ultima_coleta_ok": "25/09/2026",
    "motivo": "painel do MS sem resposta legível desde a coleta de 25/09/2026: ValueError: nenhum dos 5 handlers do painel do MS devolveu o agregado de calor"
