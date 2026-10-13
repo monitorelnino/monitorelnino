@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-12. 45 falhas; 40 com caso de teste que as reproduz; 5 sem, com o que falta dito.
+Atualizado em 2026-10-13. 48 falhas; 43 com caso de teste que as reproduz; 5 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -410,3 +410,30 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** commit 2795810d (12/10 07:36): sinais-e-links.reaplicado sem data/enquadramento_federal.json; data/saude_pipeline.json: coletar_prioritarios_mma.py ok às 05:08
 - **Correção:** O elo grava base e arquivos alterados no artefato (`data/.coleta_perdida.json`); a reaplicação copia o arquivo de dono único quando a árvore está como na base, e recusa nomeado quando outro escritor mexeu.
 - **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_coleta_perdida_de_dono_unico_volta`
+
+## F46 · Segunda noite sem o painel de calor rebaixa a lacuna para "aguardando primeira coleta"
+
+- **Noite:** 2026-10-13
+- **Sintoma:** Portões no push da `main` vermelhos desde 01:31 (frescor da saúde: `painel_calor_ms` em `aguardando_primeira_coleta`).
+- **Causa:** `vencer_calor` (item 1.6) tira `calor_excesso` e guarda em `calor_excesso_anterior`; na noite seguinte o `except` testava só `calor_excesso` e gravava `aguardando_primeira_coleta`, sem olhar `ultima_coleta_ok`.
+- **Prova:** run 38332550145, job estrutura, 01:31 UTC; commit dab6ad2f: lacuna → aguardando_primeira_coleta com ultima_coleta_ok 25/09/2026
+- **Correção:** `falha_calor`: só fonte que nunca coletou fica "aguardando"; a que já coletou segue `vencer_calor` (lacuna com a última coleta boa), sem sobrescrever o retrato guardado. Estado da `main` reposto no mesmo PR.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_segunda_falha_do_calor_mantem_a_lacuna`
+
+## F47 · Ensaio real atravessa a virada da noite e espera o marcador na noite errada
+
+- **Noite:** 2026-10-13
+- **Sintoma:** Ensaio real 38328343011 (cron das 18:13 chegou às 00:39) esperou desde 01:02 até o teto de 110 min: veredito vermelho e Issue falsos.
+- **Causa:** Cada elo do ramo calculava a noite pelo relógio (`janela_da_noite.py --noite`); o ramo nasceu com 2026-10-12 e o juiz, às 01:01, gravou em `data/noite/2026-10-13/`. Nada impedia o cron atrasado de começar em cima da noite.
+- **Prova:** run 38328343011, ramo ensaio-real/2026-10-13-38328343011; juiz.feito em data/noite/2026-10-13/ no ramo; condutor esperando 2026-10-12
+- **Correção:** O workflow grava `.noite_do_ensaio` no primeiro commit do ramo; `noite_corrente` a usa só em `ensaio-real/*` (CLI `--noite` e `marcador_de_elo`). Cron a menos de 120 min da janela ou dentro dela: "pulado, fora de hora".
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_ensaio_real_fixa_a_noite`
+
+## F48 · Busca web, monólito à parte, morre no teto sem commitar desde 08/10
+
+- **Noite:** 2026-10-13
+- **Sintoma:** Canal `busca_web` com zero execuções gravadas de 09 a 13/10; runs da noite cancelados no teto de 150 min (11/10 01:10; 12/10 01:10, 04:06, 07:17; 13/10 01:00, 03:53) com sincronizar e commit `skipped`.
+- **Causa:** `busca_web_cadencia.yml` tinha caminho de coleta próprio (guarda, rodadas, sincronização, commit, artefato copiados à mão) e não recebeu o prazo da coleta do F38, posto só no `_coletor.yml`.
+- **Prova:** run 38330051297: passo das rodadas cancelled 01:02→03:30; run 38343789380: passo das rodadas cancelled 03:54→06:23
+- **Correção:** A busca web vira chamador do `_coletor.yml` (um caminho de coleta: prazo, janela, `.feito`, artefato, reaplicação, commit); derivados pela cadeia canônica. 278 → 47 linhas.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_busca_web_pelo_coletor`

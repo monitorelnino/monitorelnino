@@ -348,11 +348,26 @@ def vencer_calor(sinais: dict, fonte: dict, motivo: str, hoje) -> dict:
     except (TypeError, ValueError):
         idade = None
     if idade is not None and idade > LIMITE_DIAS_DADO:
-        sinais["calor_excesso_anterior"] = cal
+        if cal:  # F46: na 2ª falha seguida o retrato já está guardado; não sobrescrever com {}
+            sinais["calor_excesso_anterior"] = cal
         sinais.pop("calor_excesso", None)
         fonte["status"] = "lacuna"
         fonte["motivo"] = f"painel do MS sem resposta legível desde a coleta de {ultima}: {motivo}"[:300]
     return sinais
+
+
+def falha_calor(sinais: dict, fonte: dict, motivo: str, hoje) -> dict:
+    """Coleta do calor falhou. "Aguardando primeira coleta" só quando NUNCA houve coleta boa.
+
+    F46 (13/10/2026): depois de `vencer_calor` tirar `calor_excesso`, a falha da noite seguinte
+    testava só `calor_excesso` e rebaixava a lacuna declarada para "aguardando primeira coleta",
+    apagando a data da última coleta boa da leitura da página. Função pura sobre os dicionários."""
+    ja_coletou = (sinais.get("calor_excesso") or sinais.get("calor_excesso_anterior")
+                  or fonte.get("ultima_coleta_ok"))
+    if not ja_coletou:
+        fonte["status"] = "aguardando_primeira_coleta"
+        return sinais
+    return vencer_calor(sinais, fonte, motivo, hoje)
 
 
 def declarar_lacunas(fontes: dict) -> dict:
@@ -436,10 +451,7 @@ def coletar():
         fonte_calor["consultado_em"] = hoje_br
         fonte_calor["ultima_tentativa_falhou"] = hoje_br
         fonte_calor["motivo_da_falha"] = motivo
-        if not sinais.get("calor_excesso"):
-            fonte_calor["status"] = "aguardando_primeira_coleta"
-        else:
-            vencer_calor(sinais, fonte_calor, motivo, hoje_editorial())
+        falha_calor(sinais, fonte_calor, motivo, hoje_editorial())
         registrar_lacuna("Painel de Excesso de Calor (MS)", motivo, canal="DOU", camada=1,
                          strings=[CALOR_MS_SITIO])
         print(f"[aviso] excesso de calor (MS) não coletado — {motivo}")
@@ -596,6 +608,21 @@ def autoteste():
                 and f["ultima_coleta_ok"] == "25/09/2026"
                 and "calor_excesso" in recente and g["status"] == "coletado"
                 and g["ultima_coleta_ok"] == "08/10/2026")
+    def t16():  # F46: segunda falha seguida depois de vencer mantém a lacuna, não volta a "aguardando"
+        from datetime import date
+        ss = {"calor_excesso": {"coletado_em": "25/09/2026", "resumo": {}}}
+        f = {"status": "coletado"}
+        falha_calor(ss, f, "1ª", date(2026, 10, 11))
+        falha_calor(ss, f, "2ª", date(2026, 10, 12))
+        g = {"status": "lacuna", "ultima_coleta_ok": "25/09/2026"}   # estado já rebaixado: se repõe
+        sg = {"calor_excesso_anterior": {"coletado_em": "25/09/2026"}}
+        falha_calor(sg, g, "3ª", date(2026, 10, 13))
+        nunca = {}; n = {"status": "aguardando_primeira_coleta"}
+        falha_calor(nunca, n, "x", date(2026, 10, 13))
+        return (f["status"] == "lacuna" and "2ª" in f["motivo"] and f["ultima_coleta_ok"] == "25/09/2026"
+                and ss["calor_excesso_anterior"]["coletado_em"] == "25/09/2026" and "calor_excesso" not in ss
+                and g["status"] == "lacuna" and sg["calor_excesso_anterior"]["coletado_em"] == "25/09/2026"
+                and n["status"] == "aguardando_primeira_coleta" and "calor_excesso_anterior" not in nunca)
     import coletores_base as cb
     _SNAP = (cb.DATA / "saude_sinais.json").read_bytes() if (cb.DATA / "saude_sinais.json").exists() else b""
     return rodar_autoteste({"parser InfoDengue: última SE": t1, "negativo: resposta vazia/malformada": t2,
@@ -609,7 +636,8 @@ def autoteste():
                             "MS calor: 200 com corpo vazio é RECUSA, não ausência": t12,
                             "MS calor: descoberta valida por CONTEÚDO, não por nome minificado": t13,
                             "fonte sem coletor vira lacuna declarada com motivo": t14,
-                            "calor parado há mais de 9 dias vira lacuna, não 'consulta mais recente'": t15})
+                            "calor parado há mais de 9 dias vira lacuna, não 'consulta mais recente'": t15,
+                            "F46: 2ª falha seguida mantém a lacuna com a última coleta boa": t16})
 
 
 if __name__ == "__main__":

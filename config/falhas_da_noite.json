@@ -1,6 +1,6 @@
 {
  "_governanca": "Catálogo interno das falhas da corrente noturna de 04/10 a 10/10/2026, montado das notas do robo-registro e dos comentários datados do código; toda falha nova vira linha nova, com causa, prova e o caso de teste que a reproduz.",
- "atualizado_em": "2026-10-12",
+ "atualizado_em": "2026-10-13",
  "falhas": [
   {
    "id": "F01",
@@ -629,6 +629,48 @@
    ],
    "correcao": "O elo grava base e arquivos alterados no artefato (`data/.coleta_perdida.json`); a reaplicação copia o arquivo de dono único quando a árvore está como na base, e recusa nomeado quando outro escritor mexeu.",
    "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_coleta_perdida_de_dono_unico_volta",
+   "falta": null
+  },
+  {
+   "id": "F46",
+   "noite": "2026-10-13",
+   "titulo": "Segunda noite sem o painel de calor rebaixa a lacuna para \"aguardando primeira coleta\"",
+   "sintoma": "Portões no push da `main` vermelhos desde 01:31 (frescor da saúde: `painel_calor_ms` em `aguardando_primeira_coleta`).",
+   "causa": "`vencer_calor` (item 1.6) tira `calor_excesso` e guarda em `calor_excesso_anterior`; na noite seguinte o `except` testava só `calor_excesso` e gravava `aguardando_primeira_coleta`, sem olhar `ultima_coleta_ok`.",
+   "prova": [
+    "run 38332550145, job estrutura, 01:31 UTC",
+    "commit dab6ad2f: lacuna → aguardando_primeira_coleta com ultima_coleta_ok 25/09/2026"
+   ],
+   "correcao": "`falha_calor`: só fonte que nunca coletou fica \"aguardando\"; a que já coletou segue `vencer_calor` (lacuna com a última coleta boa), sem sobrescrever o retrato guardado. Estado da `main` reposto no mesmo PR.",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_segunda_falha_do_calor_mantem_a_lacuna",
+   "falta": null
+  },
+  {
+   "id": "F47",
+   "noite": "2026-10-13",
+   "titulo": "Ensaio real atravessa a virada da noite e espera o marcador na noite errada",
+   "sintoma": "Ensaio real 38328343011 (cron das 18:13 chegou às 00:39) esperou desde 01:02 até o teto de 110 min: veredito vermelho e Issue falsos.",
+   "causa": "Cada elo do ramo calculava a noite pelo relógio (`janela_da_noite.py --noite`); o ramo nasceu com 2026-10-12 e o juiz, às 01:01, gravou em `data/noite/2026-10-13/`. Nada impedia o cron atrasado de começar em cima da noite.",
+   "prova": [
+    "run 38328343011, ramo ensaio-real/2026-10-13-38328343011",
+    "juiz.feito em data/noite/2026-10-13/ no ramo; condutor esperando 2026-10-12"
+   ],
+   "correcao": "O workflow grava `.noite_do_ensaio` no primeiro commit do ramo; `noite_corrente` a usa só em `ensaio-real/*` (CLI `--noite` e `marcador_de_elo`). Cron a menos de 120 min da janela ou dentro dela: \"pulado, fora de hora\".",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_ensaio_real_fixa_a_noite",
+   "falta": null
+  },
+  {
+   "id": "F48",
+   "noite": "2026-10-13",
+   "titulo": "Busca web, monólito à parte, morre no teto sem commitar desde 08/10",
+   "sintoma": "Canal `busca_web` com zero execuções gravadas de 09 a 13/10; runs da noite cancelados no teto de 150 min (11/10 01:10; 12/10 01:10, 04:06, 07:17; 13/10 01:00, 03:53) com sincronizar e commit `skipped`.",
+   "causa": "`busca_web_cadencia.yml` tinha caminho de coleta próprio (guarda, rodadas, sincronização, commit, artefato copiados à mão) e não recebeu o prazo da coleta do F38, posto só no `_coletor.yml`.",
+   "prova": [
+    "run 38330051297: passo das rodadas cancelled 01:02→03:30",
+    "run 38343789380: passo das rodadas cancelled 03:54→06:23"
+   ],
+   "correcao": "A busca web vira chamador do `_coletor.yml` (um caminho de coleta: prazo, janela, `.feito`, artefato, reaplicação, commit); derivados pela cadeia canônica. 278 → 47 linhas.",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_busca_web_pelo_coletor",
    "falta": null
   }
  ]

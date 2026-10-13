@@ -1,278 +1,48 @@
 # busca_web_cadencia.yml — cadência automática da busca web (§148, 22/09/2026)
 # =============================================================================
-# Pedido editorial: rodar a busca web (SearXNG efêmero, 150 municípios por rodada, prioritários
-# primeiro — §143) a cada 2 horas ATÉ cobrir todos os 5.571 municípios pelo menos uma vez; depois
-# disso, 4 vezes ao dia, até a editoria mandar parar. A fase é lida de data/busca_web_estado.json
-# (`ciclos_completos`, gravado por monitorar_busca_web.py): 0 = fase 1; ≥1 = fase 2.
+# Cinco rodadas de 150 municípios por execução (SearXNG efêmero, prioritários primeiro — §143), em
+# paralelo à corrente: a busca web não depende dos diários (item A.2, 03/10/2026), por isso tem grupo
+# próprio e não espera a vez do grupo `noturno`; a segurança do commit simultâneo vem da união pela
+# base comum no `_coletor.yml`.
 #
-# Só a busca web roda aqui — não o pipeline inteiro (atualizar.yml continua semanal + diário para
-# todas as outras fontes; rodar TUDO a cada 2h martelaria fontes que não mudam nesse ritmo). Depois
-# da coleta: sincroniza o índice (verificacao_municipal.json depende de fontes_consultadas.json — §142),
-# regenera derivados/manifesto, commita com rebase e repõe o domínio atrás de senha.
-#
-# CONCORRÊNCIA (24/09/2026, pedido editorial): grupo PRÓPRIO. Até hoje esta rodada dividia o grupo
-# `atualizar-dados` com o atualizar.yml, que leva de 1h43 a 2h43 por execução — enquanto ele rodava,
-# a busca de 2h ficava na fila, e uma execução pendente é cancelada quando a seguinte chega. A coleta
-# parava por atividade alheia. Com grupo próprio ela nunca espera por outro workflow; a segurança do
-# commit simultâneo passa a vir do laço de rebase-e-push abaixo, que é onde ela deve estar.
-# 30/09/2026 (item 7 da rodada 2 — certificação dos coletores). O cron do GitHub é de MELHOR
-# ESFORÇO: atrasa sob carga e descarta. Medido em 30/09: `noturno_diarios`, com cron de 01:30 UTC,
-# começou às 06:59 (5h30 de atraso) e morreu no teto; a busca web, com cinco crons por noite, rodou
-# duas vezes por dia, uma delas às 13:22 UTC — dentro do horário de trabalho da editoria, que é
-# justamente o que a janela noturna existe para evitar.
-#
-# A noite passa a ser UMA CORRENTE: um disparo cedo (00:05 UTC) e cada elo acionado quando o
-# anterior TERMINA. Cinco horários independentes davam cinco oportunidades de atrasar; um disparo e
-# uma corrente dão uma. A ordem é:
-#
-#   diários → descoberta → busca web → evidências → juiz → sinais
-#
-# RECUPERAÇÃO, de propósito: o gatilho NÃO filtra por conclusão. Se o elo anterior falhou ou foi
-# cancelado, o seguinte roda assim mesmo — cada coletor processa a fila pendente independentemente
-# do horário, e uma noite perdida não pode levar a seguinte junto. `workflow_dispatch` continua em
-# todos, para rodar à mão quando preciso.
+# 13/10/2026 (F48, correção pela raiz): era um monólito com caminho de coleta próprio — guarda,
+# rodadas, sincronização, commit e artefato copiados à mão — e não recebeu o prazo do F38. De 08/10
+# a 13/10 todas as execuções da noite morreram no teto de 150 min sem commitar. Agora é chamador do
+# `_coletor.yml`: um caminho de coleta só (prazo, janela, `.feito`, artefato, reaplicação, commit);
+# a cadeia de derivados (índice, cartão por município, manifesto) é a do `verificar_derivados.sh`.
 name: Busca web — cadência automática
 on:
-  # 03/10/2026 (item A.2 do handover da corrente noturna): a busca web deixa de ser ELO da corrente
-  # e passa a ter as suas **cinco rodadas distribuídas na janela**, em paralelo aos diários. A razão
-  # é de dependência: a busca web não precisa do que os diários produzem, e pendurá-la na corrente
-  # fazia as cinco rodadas começarem só depois de 3h47 de diários — quando a janela já estava no
-  # fim. Cada rodada respeita o disjuntor e a cascata que já existem.
-  #
-  # A janela é 22h–06h de Brasília (01:00–09:00 UTC). Cinco rodadas, de duas em duas horas:
+  # Janela 01:00–09:00 UTC; horários fora dos minutos de pico (04/10/2026).
   schedule:
-    # 04/10/2026: os cinco horários saem dos minutos de pico (:10 e :40) pelo mesmo motivo da
-    # abertura — medido duas vezes, o cron de minuto redondo não disparou. As cinco rodadas
-    # continuam de duas em duas horas dentro da janela.
     - cron: "23 1 * * *"   # 22h23
     - cron: "23 3 * * *"   #  0h23
     - cron: "41 5 * * *"   #  2h41
     - cron: "41 7 * * *"   #  4h41
     - cron: "53 8 * * *"   #  5h53, a última antes de fechar a janela
   workflow_dispatch:
-    inputs:
-      forcar:
-        description: "true = ignora a regra de fase e roda agora (útil para teste)"
-        required: false
-        default: "false"
+
 permissions:
   contents: read
-concurrency:
-  group: busca-web-cadencia
-  cancel-in-progress: false
+  actions: read
+
 jobs:
   busca_web:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-    # 30/09/2026: cinco rodadas num job só pedem teto maior. 150 min é teto CLARO, não
-    # aberto: cinco rodadas medidas em ~20 min cada, mais folga para a instância subir.
-    timeout-minutes: 150   # §153: --preparar pode acionar o juiz (portões) em pistas de fonte oficial
-    steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
-        with: { persist-credentials: false }
-      # Mesma correção estrutural do atualizar.yml (§148): partir do main REAL, não do SHA fixado no
-      # disparo — com rodada a cada 2h e cada uma levando minutos, a anterior pode ter acabado de commitar.
-      - name: Partir do main atual
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git fetch --quiet --depth=50 "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" main
-          git reset --hard FETCH_HEAD
-      # 08/10/2026 (A2-03): a busca web não tinha guarda nenhuma — commitava na `main` de dia,
-      # como os três commits de 05/10 (10:37, 12:37, 16:22 UTC) mostram.
-      - name: Janela da noite — na `main`, só de noite
-        id: janela
-        timeout-minutes: 3
-        run: |
-          rc=0
-          python3 scripts/guarda_da_janela.py --ramo "${GITHUB_REF_NAME}" --elo busca_web > /tmp/guarda.txt 2>&1 || rc=$?
-          cat /tmp/guarda.txt | tee -a "$GITHUB_STEP_SUMMARY"
-          if [ "$rc" -eq 0 ]; then
-            echo "pode=1" >> "$GITHUB_OUTPUT"
-          else
-            echo "pode=0" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Decidir a fase (2h em 2h até cobrir todos; depois 4x/dia)
-        id: fase
-        if: steps.janela.outputs.pode == '1' 
-        run: |
-          CICLOS=$(python3 -c "import json;print(int((json.load(open('data/busca_web_estado.json')) if __import__('os').path.exists('data/busca_web_estado.json') else {}).get('ciclos_completos',0)))")
-          HORA=$(date -u +%H)
-          FORCAR="${{ github.event.inputs.forcar }}"
-          echo "ciclos_completos=$CICLOS hora_utc=$HORA forcar=${FORCAR:-false}"
-          if [ "$FORCAR" = "true" ]; then echo "rodar=1" >> "$GITHUB_OUTPUT"; echo "forçado: roda agora"; exit 0; fi
-          # 24/09/2026 (pedido editorial): a cadência volta a ser de 2 em 2 horas, SEM parar, em
-          # qualquer fase. A regra anterior caía para 4x/dia assim que `ciclos_completos` chegava a 1
-          # — e chegou em 24/09 —, de modo que a busca passava a pular oito das doze rodadas do dia.
-          # `ciclos_completos` continua sendo gravado e continua servindo de relatório de cobertura;
-          # o que ele não faz mais é decidir se a rodada acontece.
-          echo "ciclos_completos=$CICLOS (informativo) · cadência de 2h em qualquer fase: roda"
-          echo "rodar=1" >> "$GITHUB_OUTPUT"
-      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
-
-        if: steps.fase.outputs.rodar == '1'
-        with: { python-version: "3.12", cache: pip }
-      # 04/10/2026 (item 2c do handover dos temporizadores): OBSERVADOR OPORTUNISTA.
-      # Cada execução de qualquer coisa vira um tique de relógio. São segundos, sem job extra, e é
-      # o observador mais barato que existe: se este workflow conseguiu rodar, o agendador está
-      # vivo o suficiente para despachar o que estiver devido. `|| true` porque o despachante é
-      # auxiliar — a falha dele não pode derrubar a coleta que ia rodar.
-      - name: Tique oportunista
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ secrets.ROBO_TOKEN || secrets.GITHUB_TOKEN }}
-        run: |
-          python3 scripts/despachar_temporizadores.py --origem oportunista \
-            --so-ler-e-despachar || true
-      - run: pip install -r requirements.txt --quiet
-        if: steps.fase.outputs.rodar == '1'
-      # 22/09/2026 (§156, achado na rodada #6): o juiz roda os portões em Node após aplicar; sem node_modules,
-      # verificar_estrutura.js falha com MODULE_NOT_FOUND e TODA aplicação automática é revertida (6 planos reais).
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
-        if: steps.fase.outputs.rodar == '1'
-        with: { node-version: "22", cache: npm }
-      - run: npm ci
-        if: steps.fase.outputs.rodar == '1'
-      - name: Subir SearXNG efêmero
-        if: steps.fase.outputs.rodar == '1'
-        id: searxng
-        continue-on-error: true
-        run: |
-          docker run -d --name searxng -p 127.0.0.1:8080:8080 \
-            -v "$PWD/scripts/searxng_settings.yml:/etc/searxng/settings.yml:ro" \
-            searxng/searxng:latest
-          ok=""
-          for i in $(seq 1 30); do
-            if curl -sf "http://127.0.0.1:8080/search?q=teste&format=json" > /dev/null 2>&1; then ok=1; break; fi
-            sleep 2
-          done
-          [ -n "$ok" ] && echo "pronto=1" >> "$GITHUB_OUTPUT" || echo "SearXNG não subiu a tempo"
-      # 30/09/2026 (item 7 da rodada 2): as CINCO rodadas da noite acontecem AQUI, em sequência,
-      # dentro do mesmo job. Antes eram cinco crons (01,03,05,07,09 UTC) — e cinco crons davam cinco
-      # oportunidades de o agendador atrasar ou descartar: medido em 30/09, saíram duas rodadas por
-      # dia, uma delas às 13h22 UTC. Cinco rodadas em sequência num job disparado uma vez por noite
-      # entregam as 750 consultas que a cadência promete, com o mesmo tamanho de lote e o mesmo
-      # disjuntor de antes.
-      #
-      # Cada rodada é independente: a que falhar não derruba as seguintes, porque o estado da
-      # rotação está em disco e a rodada seguinte continua de onde a anterior parou. Por isso o
-      # `|| true` — aqui ele não esconde erro, ele impede que uma fonte fora do ar custe as outras
-      # quatro rodadas da noite.
-      - name: Busca web — cinco rodadas da noite (150 municípios cada, rotação automática)
-        if: steps.fase.outputs.rodar == '1' && steps.searxng.outputs.pronto == '1'
-        run: |
-          for rodada in 1 2 3 4 5; do
-            echo "::group::rodada $rodada de 5"
-            python3 monitorar_busca_web.py --tamanho 150 2>&1 | tee -a /tmp/busca_web.log || true
-            echo "::endgroup::"
-          done
-
-      # 27/09/2026 (PR 1c item 5): quais motores de origem devolveram 429/CAPTCHA. A decisão de
-      # desligar motor exige evidência, e a evidência estava só dentro do contêiner, que morre com o
-      # job. Sem isto, a escolha de motores seria adivinhação.
-      - name: Saúde da instância (motores que barraram)
-        if: always() && steps.searxng.outputs.pronto == '1'
-        continue-on-error: true
-        run: |
-          echo "### Disjuntor por motor de origem (item 7b)" >> "$GITHUB_STEP_SUMMARY"
-          python3 motores_busca.py --estado >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || true
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "### SearXNG — motores com erro nesta rodada" >> "$GITHUB_STEP_SUMMARY"
-          docker logs searxng 2>&1 | grep -iE "error|429|captcha|timeout|blocked|too many" | sort | uniq -c | sort -rn | head -40 | tee -a "$GITHUB_STEP_SUMMARY"
-          docker logs searxng 2>&1 | grep -iE "error|429|captcha|timeout|blocked|too many" | sort | uniq -c | sort -rn | head -40 | tee -a "$GITHUB_STEP_SUMMARY"
-      - name: Sincronizar índice e derivados
-        if: steps.fase.outputs.rodar == '1' && steps.searxng.outputs.pronto == '1'
-        run: |
-          export SOURCE_DATE_EPOCH="$(python3 -c "import json,datetime;d=json.load(open('data/meta.json'))['corte'];dd,mm,aa=d.split('/');print(int(datetime.datetime(int(aa),int(mm),int(dd),tzinfo=datetime.timezone.utc).timestamp()))")"
-          python3 seguir_pistas.py --limite 20   # §159: notícia → documento (links, Querido Diário, busca no domínio oficial); SearXNG ainda no ar
-          python3 triar_confianca_pistas.py   # §150: anota nível A/B/C e regenera a fila de revisão por município
-          python3 revisar_pistas.py --preparar --limite 30   # §153: leitura assistida (busca doc, extrai nº/data, classifica); 09/10 (lote 2.9): sem FILA_PISTAS.md
-          python3 recalcular_mare.py --write
-          python3 recalcular_mare.py --check
-          python3 gerar_dados_abertos.py
-          python3 gerar_card_municipios.py   # §155
-          python3 scripts/carimbar_assets.py
-          python3 scripts/gerar_manifesto.py
-          python3 verificar_consistencia.py
-      - name: Commit com rebase, união pela base comum e artefato quando recusa
-        id: commit
-        if: steps.fase.outputs.rodar == '1' && steps.searxng.outputs.pronto == '1'
-        env:
-          ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
-        run: |
-          git config user.name "monitor-el-nino-bot"
-          git config user.email "bot@users.noreply.github.com"
-          git add data/ *.html selos/ dados-abertos/ docs/MANIFEST_SHA256.txt
-          if git diff --cached --quiet; then
-            echo "Sem alterações."; echo "houve=0" >> "$GITHUB_OUTPUT"; exit 0
-          fi
-          git commit -m "Busca web automatica ($(date -u +%d/%m/%Y\ %H:%M) UTC)"
-          echo "houve=1" >> "$GITHUB_OUTPUT"
-          git checkout -- . 2>/dev/null || true
-          mkdir -p ~/.ssh && printf '%s\n' "$ROBO_DEPLOY_KEY" > ~/.ssh/robo && chmod 600 ~/.ssh/robo
-          ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
-          SSH="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes"
-          EMPURROU=0
-          for TENTATIVA in 1 2 3 4 5; do
-            GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
-            if ! git rebase FETCH_HEAD; then
-              # 08/10/2026 (A2-03): era `rebase --abort; sleep; continue`, seis vezes, sem unir e
-              # sem artefato — 11 de 20 runs desde 05/10 morreram exatamente aqui, cada um com
-              # 2–3 h de busca dentro. A união é a mesma do `_coletor.yml`, pela base comum, e a
-              # recusa sai na primeira, com o trabalho no artefato.
-              echo "tentativa $TENTATIVA: rebase conflitou; unindo pela base comum"
-              if ! python3 scripts/unir_conflito_de_rodada.py; then
-                git rebase --abort || true
-                echo "::error::a união RECUSOU um caminho — o trabalho vai no artefato"
-                break
-              fi
-              bash scripts/verificar_derivados.sh --regenerar-para-commit || true
-              git add -A data/ dados-abertos/ feeds/ selos/ docs/MANIFEST_SHA256.txt 2>/dev/null || true
-              if ! GIT_EDITOR=true git rebase --continue; then
-                git rebase --abort || true
-                echo "::warning::a união resolveu mas o rebase não seguiu; nova tentativa"
-                sleep $((TENTATIVA * 10)); continue
-              fi
-            fi
-            if GIT_SSH_COMMAND="$SSH" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main; then
-              EMPURROU=1; echo "empurrado na tentativa $TENTATIVA"; break
-            fi
-            echo "tentativa $TENTATIVA: push recusado (main avançou); nova tentativa"
-            sleep $((TENTATIVA * 10))
-          done
-          rm -f ~/.ssh/robo
-          if [ "$EMPURROU" != "1" ]; then
-            echo "::error::rodada não comitada; o trabalho sai no artefato abaixo"
-            echo "perdeu=1" >> "$GITHUB_OUTPUT"
-            exit 1
-          fi
-
-      # O trabalho que o push não levou não se perde: sai como artefato, e
-      # `scripts/reaplicar_noite.py` o reaplica pela porta de cada arquivo.
-      - name: Guardar a coleta que o push não levou
-        if: failure() && steps.commit.outputs.houve == '1'
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-        with:
-          name: coleta-perdida-busca_web-${{ github.run_id }}
-          path: |
-            data/
-            docs/MANIFEST_SHA256.txt
-          retention-days: 14
-          if-no-files-found: warn
-
-      - name: Relatório no repositório privado (sempre)
-        if: always() && steps.fase.outputs.rodar == '1'
-        env:
-          ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
-        run: |
-          {
-            echo "workflow=busca_web_cadencia execucao=$(date -u +%Y-%m-%dT%H:%M:%SZ) fase_rodou=${{ steps.fase.outputs.rodar }} searxng=${{ steps.searxng.outputs.pronto }} houve_alteracao=${HOUVE:-?}"
-            echo "--- estado da rotação ---"; cat data/busca_web_estado.json 2>/dev/null
-            echo "--- saída da busca ---"; cat /tmp/busca_web.log 2>/dev/null | tail -20
-          } > /tmp/rel.txt 2>&1
-          git clone -q "https://x-access-token:${ROBO_TOKEN}@github.com/monitorelnino/robo-registro.git" /tmp/reg
-          mkdir -p /tmp/reg/relatorios && cp /tmp/rel.txt "/tmp/reg/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_busca_web_cadencia.txt"
-          cd /tmp/reg && git config user.name monitor-el-nino-bot && git config user.email bot@users.noreply.github.com && git add -A && git commit -q -m "busca web cadencia" && git push -q
+    uses: ./.github/workflows/_coletor.yml
+    with:
+      nome: busca_web
+      timeout_minutos: 150
+      precisa_searxng: true
+      precisa_node: true     # §156: `revisar_pistas.py --preparar` aciona o juiz, que roda portões em Node
+      comandos: |
+        monitorar_busca_web.py --tamanho 150
+        monitorar_busca_web.py --tamanho 150
+        monitorar_busca_web.py --tamanho 150
+        monitorar_busca_web.py --tamanho 150
+        monitorar_busca_web.py --tamanho 150
+        seguir_pistas.py --limite 20
+        triar_confianca_pistas.py
+        revisar_pistas.py --preparar --limite 30
+        motores_busca.py --estado
+    secrets:
+      ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+      ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
