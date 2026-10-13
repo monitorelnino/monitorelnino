@@ -32,6 +32,9 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-13 · #PR · calor do MS segue lacuna na segunda falha (F46)
+
+Na segunda noite sem o painel de calor do Ministério da Saúde, o coletor rebaixava a lacuna declarada para "aguardando primeira coleta" e a `main` ficou vermelha no frescor. `falha_calor` (em `coletar_saude.py`) só deixa "aguardando" quem nunca coletou; o resto segue lacuna com a última coleta boa (25/09). Estado reposto; ensaio 25 e F46 no catálogo.
 ## 2026-10-13 · #PR · ensaio real fixa a noite e respeita a hora (F47)
 
 O cron do ensaio real chegou às 00:39 e o ensaio atravessou a virada: elos gravaram o marcador na noite nova e o condutor esperou na antiga até o teto, com vermelho falso. A noite agora é fixada no ramo (`.noite_do_ensaio`, lida só em `ensaio-real/*`), e cron a menos de duas horas da noite vira "pulado, fora de hora". Ensaio 26.

@@ -998,6 +998,31 @@ def ensaio_coleta_perdida_de_dono_unico_volta(diz) -> bool:
     return ok
 
 
+def ensaio_segunda_falha_do_calor_mantem_a_lacuna(diz) -> bool:
+    """25. Duas noites seguidas sem o painel de calor do MS mantêm a lacuna declarada (F46).
+
+    13/10/2026: na 2ª noite de falha depois de `vencer_calor`, o coletor da saúde rebaixou
+    `painel_calor_ms` de `lacuna` para `aguardando_primeira_coleta` e o portão de frescor deixou
+    a `main` vermelha. Reprova se uma fonte que já coletou voltar a "aguardando primeira coleta".
+    """
+    import pathlib
+    import sys as _sys
+    from datetime import date
+    raiz = pathlib.Path(__file__).resolve().parents[1]
+    if str(raiz) not in _sys.path:
+        _sys.path.insert(0, str(raiz))
+    from coletar_saude import falha_calor
+    ss = {"calor_excesso": {"coletado_em": "25/09/2026"}}
+    f = {"status": "coletado"}
+    for dia in (11, 12, 13):
+        falha_calor(ss, f, "sem resposta", date(2026, 10, dia))
+    ok = (f["status"] == "lacuna" and f.get("ultima_coleta_ok") == "25/09/2026"
+          and (ss.get("calor_excesso_anterior") or {}).get("coletado_em") == "25/09/2026")
+    diz("  ✓ terceira noite sem o painel segue lacuna com a última coleta boa" if ok
+        else "  ✗ fonte que já coletou voltou a \"aguardando primeira coleta\" — F46 de volta")
+    return ok
+
+
 def ensaio_ensaio_real_fixa_a_noite(diz) -> bool:
     """26. O ensaio real fixa a noite no começo e não começa perto da noite de verdade (F47).
 
@@ -1060,6 +1085,7 @@ ENSAIOS = (
     ("23. painel cheio não perde o commit", ensaio_painel_cheio_nao_perde_o_commit),
     ("24. coleta perdida de dono único volta (três vias)",
      ensaio_coleta_perdida_de_dono_unico_volta),
+    ("25. segunda falha do calor mantém a lacuna", ensaio_segunda_falha_do_calor_mantem_a_lacuna),
     ("26. o ensaio real fixa a noite e respeita a hora", ensaio_ensaio_real_fixa_a_noite),
 )
 

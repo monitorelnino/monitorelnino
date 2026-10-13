@@ -632,6 +632,20 @@
    "falta": null
   },
   {
+   "id": "F46",
+   "noite": "2026-10-13",
+   "titulo": "Segunda noite sem o painel de calor rebaixa a lacuna para \"aguardando primeira coleta\"",
+   "sintoma": "Portões no push da `main` vermelhos desde 01:31 (frescor da saúde: `painel_calor_ms` em `aguardando_primeira_coleta`).",
+   "causa": "`vencer_calor` (item 1.6) tira `calor_excesso` e guarda em `calor_excesso_anterior`; na noite seguinte o `except` testava só `calor_excesso` e gravava `aguardando_primeira_coleta`, sem olhar `ultima_coleta_ok`.",
+   "prova": [
+    "run 38332550145, job estrutura, 01:31 UTC",
+    "commit dab6ad2f: lacuna → aguardando_primeira_coleta com ultima_coleta_ok 25/09/2026"
+   ],
+   "correcao": "`falha_calor`: só fonte que nunca coletou fica \"aguardando\"; a que já coletou segue `vencer_calor` (lacuna com a última coleta boa), sem sobrescrever o retrato guardado. Estado da `main` reposto no mesmo PR.",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_segunda_falha_do_calor_mantem_a_lacuna",
+   "falta": null
+  },
+  {
    "id": "F47",
    "noite": "2026-10-13",
    "titulo": "Ensaio real atravessa a virada da noite e espera o marcador na noite errada",
