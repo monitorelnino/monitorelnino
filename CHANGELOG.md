@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-13 · #PR · ensaio real fixa a noite e respeita a hora (F47)
+
+O cron do ensaio real chegou às 00:39 e o ensaio atravessou a virada: elos gravaram o marcador na noite nova e o condutor esperou na antiga até o teto, com vermelho falso. A noite agora é fixada no ramo (`.noite_do_ensaio`, lida só em `ensaio-real/*`), e cron a menos de duas horas da noite vira "pulado, fora de hora". Ensaio 26.
+
 ## 2026-10-12 · #PR · links quebrados com data (A6-18)
 
 A verificação semanal de links não guardava histórico: "quebrado desde quando?" não tinha resposta. `verificar_links.py --historico`, só no elo semanal, grava `data/links_historico.json` por URL (status, verificado em, quebrado desde); recusa de robô não conta como quebrado e link não verificado fica como estava. A rodada diária segue só relatando.

@@ -1,6 +1,6 @@
 {
  "_governanca": "Catálogo interno das falhas da corrente noturna de 04/10 a 10/10/2026, montado das notas do robo-registro e dos comentários datados do código; toda falha nova vira linha nova, com causa, prova e o caso de teste que a reproduz.",
- "atualizado_em": "2026-10-12",
+ "atualizado_em": "2026-10-13",
  "falhas": [
   {
    "id": "F01",
@@ -629,6 +629,20 @@
    ],
    "correcao": "O elo grava base e arquivos alterados no artefato (`data/.coleta_perdida.json`); a reaplicação copia o arquivo de dono único quando a árvore está como na base, e recusa nomeado quando outro escritor mexeu.",
    "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_coleta_perdida_de_dono_unico_volta",
+   "falta": null
+  },
+  {
+   "id": "F47",
+   "noite": "2026-10-13",
+   "titulo": "Ensaio real atravessa a virada da noite e espera o marcador na noite errada",
+   "sintoma": "Ensaio real 38328343011 (cron das 18:13 chegou às 00:39) esperou desde 01:02 até o teto de 110 min: veredito vermelho e Issue falsos.",
+   "causa": "Cada elo do ramo calculava a noite pelo relógio (`janela_da_noite.py --noite`); o ramo nasceu com 2026-10-12 e o juiz, às 01:01, gravou em `data/noite/2026-10-13/`. Nada impedia o cron atrasado de começar em cima da noite.",
+   "prova": [
+    "run 38328343011, ramo ensaio-real/2026-10-13-38328343011",
+    "juiz.feito em data/noite/2026-10-13/ no ramo; condutor esperando 2026-10-12"
+   ],
+   "correcao": "O workflow grava `.noite_do_ensaio` no primeiro commit do ramo; `noite_corrente` a usa só em `ensaio-real/*` (CLI `--noite` e `marcador_de_elo`). Cron a menos de 120 min da janela ou dentro dela: \"pulado, fora de hora\".",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_ensaio_real_fixa_a_noite",
    "falta": null
   }
  ]
