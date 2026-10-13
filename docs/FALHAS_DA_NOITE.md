@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-12. 45 falhas; 40 com caso de teste que as reproduz; 5 sem, com o que falta dito.
+Atualizado em 2026-10-13. 46 falhas; 41 com caso de teste que as reproduz; 5 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -410,3 +410,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** commit 2795810d (12/10 07:36): sinais-e-links.reaplicado sem data/enquadramento_federal.json; data/saude_pipeline.json: coletar_prioritarios_mma.py ok às 05:08
 - **Correção:** O elo grava base e arquivos alterados no artefato (`data/.coleta_perdida.json`); a reaplicação copia o arquivo de dono único quando a árvore está como na base, e recusa nomeado quando outro escritor mexeu.
 - **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_coleta_perdida_de_dono_unico_volta`
+
+## F46 · Segunda noite sem o painel de calor rebaixa a lacuna para "aguardando primeira coleta"
+
+- **Noite:** 2026-10-13
+- **Sintoma:** Portões no push da `main` vermelhos desde 01:31 (frescor da saúde: `painel_calor_ms` em `aguardando_primeira_coleta`).
+- **Causa:** `vencer_calor` (item 1.6) tira `calor_excesso` e guarda em `calor_excesso_anterior`; na noite seguinte o `except` testava só `calor_excesso` e gravava `aguardando_primeira_coleta`, sem olhar `ultima_coleta_ok`.
+- **Prova:** run 38332550145, job estrutura, 01:31 UTC; commit dab6ad2f: lacuna → aguardando_primeira_coleta com ultima_coleta_ok 25/09/2026
+- **Correção:** `falha_calor`: só fonte que nunca coletou fica "aguardando"; a que já coletou segue `vencer_calor` (lacuna com a última coleta boa), sem sobrescrever o retrato guardado. Estado da `main` reposto no mesmo PR.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_segunda_falha_do_calor_mantem_a_lacuna`

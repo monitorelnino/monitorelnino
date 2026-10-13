@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-13 · #PR · calor do MS segue lacuna na segunda falha (F46)
+
+Na segunda noite sem o painel de calor do Ministério da Saúde, o coletor rebaixava a lacuna declarada para "aguardando primeira coleta" e a `main` ficou vermelha no frescor. `falha_calor` (em `coletar_saude.py`) só deixa "aguardando" quem nunca coletou; o resto segue lacuna com a última coleta boa (25/09). Estado reposto; ensaio 25 e F46 no catálogo.
+
 ## 2026-10-12 · #PR · links quebrados com data (A6-18)
 
 A verificação semanal de links não guardava histórico: "quebrado desde quando?" não tinha resposta. `verificar_links.py --historico`, só no elo semanal, grava `data/links_historico.json` por URL (status, verificado em, quebrado desde); recusa de robô não conta como quebrado e link não verificado fica como estava. A rodada diária segue só relatando.
