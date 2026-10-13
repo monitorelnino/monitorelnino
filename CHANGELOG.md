@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-13 · #PR · scripts sem uso apagados; dois órfãos religados (consolidação, item 4)
+
+Oito scripts sem nenhuma referência saem (`_p3–_p5`, captura de tela, cartão social, ciclo de mudança, encanamento de portão, LAI AM/RO já incorporada). Dois órfãos faziam falta: o tipo de evento dos atos passa a nascer em `carimbar_atos`, a porta de todo coletor (98 atos estavam sem ele), e a cadência de publicação entra na cadeia de derivados.
+
 ## 2026-10-13 · #PR · busca web pelo caminho de coleta comum (F48)
 
 A busca web tinha caminho de coleta próprio e não recebeu o prazo do F38: de 08 a 13/10 toda execução da noite morreu no teto sem commitar. `busca_web_cadencia.yml` passa a chamar o `_coletor.yml` (prazo, janela, marcador, artefato, reaplicação, commit) e os derivados vêm da cadeia canônica. 278 → 47 linhas. Ensaio 27.

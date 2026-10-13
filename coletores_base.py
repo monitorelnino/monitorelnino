@@ -371,6 +371,11 @@ def carimbar_atos(atos: dict) -> dict:
     """
     atos = dict(atos or {})
     atos["atualizado_em"] = hoje_editorial().strftime("%d/%m/%Y")
+    # 13/10/2026: o tipo de evento nasce aqui, na porta por onde todo coletor grava. Antes vinha de
+    # um script que nenhum workflow chamava, e 98 dos 1.078 atos estavam sem `tipo_evento`.
+    from scripts.tipo_de_evento_dos_atos import tipo_ou_sem_informacao
+    for e in atos.get("eventos") or []:
+        e["tipo_evento"] = tipo_ou_sem_informacao(e)
     return atos
 
 
