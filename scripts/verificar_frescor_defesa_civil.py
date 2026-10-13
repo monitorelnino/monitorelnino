@@ -184,8 +184,8 @@ def main() -> int:
             return None
 
     sys.path.insert(0, str(RAIZ))
-    from coletores_base import hoje_editorial
-    agora = hoje_editorial().isoformat() + " " + dt.datetime.now().strftime("%H:%M")
+    from coletores_base import FUSO_EDITORIAL
+    agora = dt.datetime.now(FUSO_EDITORIAL).strftime("%Y-%m-%d %H:%M")
     arquivos = {n: (ler(n), False) for n in SEMANAIS}
     arquivos.update({n: (ler(n), True) for n in DE_AGORA})
     ruins = problemas(arquivos, agora)
