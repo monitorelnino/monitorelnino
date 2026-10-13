@@ -32,9 +32,9 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-13 · #PR · blog sem faixa de extensão; texto de 06/10 publicado
+## 2026-10-13 · #PR · blog sem faixa de extensão; verificador lê o vocabulário da página
 
-Decisão da editoria (13/10): a faixa de 250 a 450 palavras deixa de ser regra do blog — sai do verificador, não vira exceção. Com isso entra o texto aprovado "Seca, fogo e chuva: três caminhos diferentes para o dinheiro chegar" (Legal e financiamento, 06/10), conferido contra o pacote de 05/10.
+Decisão da editoria (13/10): a faixa de 250 a 450 palavras deixa de ser regra do blog — sai do verificador, não vira exceção. O verificador do blog passa a cobrar também o vocabulário que a conformidade reprova na página do blog, para nenhum texto aprovado reprovar só no navegador. A Imprensa perde a conferência de um ponteiro que saiu da página em 05/10.
 
 ## 2026-10-13 · #PR · logs da noite unem por multiconjunto (F50)
 

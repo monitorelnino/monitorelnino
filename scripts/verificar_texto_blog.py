@@ -126,6 +126,15 @@ def avisos(corpo: str, etiqueta: str) -> list:
     return fora
 
 
+def vocabulario_da_pagina(corpo: str) -> list:
+    """O vocabulário que a conformidade reprova em `blog.html` (regras + contrato do blog)."""
+    sys.path.insert(0, str(RAIZ / "scripts"))
+    from verificar_conformidade import problemas_de_vocabulario
+    regras = json.loads((RAIZ / "layout" / "regras.json").read_text(encoding="utf-8"))
+    contrato = json.loads((RAIZ / "layout" / "contratos" / "blog.json").read_text(encoding="utf-8"))
+    return problemas_de_vocabulario(re.sub(r"<[^>]+>", " ", corpo or ""), "blog.html", regras, contrato)
+
+
 def problemas(meta: dict, corpo: str, pacote: dict, exige_pacote: bool = True,
               pacotes_ao_alcance: bool = True) -> list:
     """Os problemas BLOQUEANTES do texto. Função pura — é ela que o autoteste exercita.
@@ -154,6 +163,10 @@ def problemas(meta: dict, corpo: str, pacote: dict, exige_pacote: bool = True,
     proibidas = vocabulario_proibido(corpo)
     if proibidas:
         fora.append(f"vocabulário proibido pelo guia: {', '.join(proibidas)}")
+    # 13/10/2026: o texto aprovado de 06/10 passou aqui e reprovou na página (`antecipação`, proibida
+    # pelo contrato do blog). O vocabulário da PÁGINA é o mesmo que o portão de conformidade cobra —
+    # lido de lá, para o texto não chegar aprovado ao PR e reprovar só no navegador.
+    fora += vocabulario_da_pagina(corpo)
 
     if pacote:
         sobrando = fora_do_pacote(corpo, (pacote or {}).get("numeros_permitidos"))
@@ -228,6 +241,8 @@ def _autoteste() -> int:
     ok("prosa limpa passa", problemas_de_prosa("um texto corrido, com vírgulas.") == [])
 
     ok("palavra proibida bloqueia", vocabulario_proibido("houve um desastre") == ["desastre"])
+    ok("vocabulário proibido na PÁGINA do blog bloqueia aqui também",
+       any("antecipação" in x for x in problemas(meta, "renovado por antecipação", pac)))
     ok("palavra proibida DENTRO de citação não bloqueia",
        vocabulario_proibido('a lei diz "é obrigatório o plano"') == [])
     ok("palavra que só CONTÉM a proibida não bloqueia",
