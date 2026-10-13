@@ -1052,6 +1052,23 @@ def ensaio_ensaio_real_fixa_a_noite(diz) -> bool:
     return ok
 
 
+def ensaio_busca_web_pelo_coletor(diz) -> bool:
+    """27. A busca web coleta pelo `_coletor.yml`, com o prazo e o commit de todos (F48).
+
+    08→13/10/2026: monólito com caminho próprio, sem o prazo do F38 — toda execução da noite
+    morreu no teto sem commitar. Reprova se a busca web voltar a ter caminho de coleta próprio.
+    """
+    import pathlib
+    import yaml
+    raiz = pathlib.Path(__file__).resolve().parents[1]
+    wf = yaml.safe_load((raiz / ".github/workflows/busca_web_cadencia.yml").read_text(encoding="utf-8"))
+    jobs = list((wf.get("jobs") or {}).values())
+    ok = bool(jobs) and all(str(j.get("uses") or "").endswith("/_coletor.yml") for j in jobs)
+    diz("  ✓ busca web pelo `_coletor.yml` (prazo, janela, marcador, artefato, commit)" if ok
+        else "  ✗ a busca web tem caminho de coleta próprio — F48 de volta")
+    return ok
+
+
 ENSAIOS = (
     ("dois elos em paralelo: zero conflito, zero perda", ensaio_dois_elos_em_paralelo),
     ("disparo duplicado: o segundo sai sem trabalho", ensaio_disparo_duplicado),
@@ -1087,6 +1104,7 @@ ENSAIOS = (
      ensaio_coleta_perdida_de_dono_unico_volta),
     ("25. segunda falha do calor mantém a lacuna", ensaio_segunda_falha_do_calor_mantem_a_lacuna),
     ("26. o ensaio real fixa a noite e respeita a hora", ensaio_ensaio_real_fixa_a_noite),
+    ("27. a busca web coleta pelo `_coletor.yml`", ensaio_busca_web_pelo_coletor),
 )
 
 

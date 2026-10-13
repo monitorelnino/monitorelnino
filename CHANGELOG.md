@@ -34,7 +34,11 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-13 · #PR · medida do código (consolidação, item 1)
 
-Linha de base da consolidação pedida pela editoria: `scripts/medir_codigo.py` mede linhas de .py/.js por pasta, os maiores arquivos, funções de mesmo nome em arquivos distintos e portões por perfil; `docs/MEDIDA_DO_CODIGO.md` guarda a medida de 13/10 (100.917 linhas, 357 arquivos, 274 comandos). Roda no PR como relatório, sem reprovar.
+Linha de base da consolidação pedida pela editoria: `scripts/medir_codigo.py` mede linhas de .py/.js por pasta, os maiores arquivos, funções de mesmo nome em arquivos distintos e portões por perfil; `docs/MEDIDA_DO_CODIGO.md` guarda a medida (13/10: ~101 mil linhas, 357 arquivos, 274 comandos). Roda no PR como relatório, sem reprovar.
+
+## 2026-10-13 · #PR · busca web pelo caminho de coleta comum (F48)
+
+A busca web tinha caminho de coleta próprio e não recebeu o prazo do F38: de 08 a 13/10 toda execução da noite morreu no teto sem commitar. `busca_web_cadencia.yml` passa a chamar o `_coletor.yml` (prazo, janela, marcador, artefato, reaplicação, commit) e os derivados vêm da cadeia canônica. 278 → 47 linhas. Ensaio 27.
 
 ## 2026-10-13 · #PR · calor do MS segue lacuna na segunda falha (F46)
 
