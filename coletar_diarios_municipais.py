@@ -22,7 +22,7 @@ USO
   python coletar_diarios_municipais.py --lote 1 --tamanho 150 --desde 2026-06-29
 """
 import json, math, re, sys, time, urllib.parse, urllib.error
-from datetime import date
+from datetime import date, timedelta
 import funil
 from coletores_base import (carimbar_atos, buscar, preservar_evidencia, preservar_texto_integral, log_busca,
                             registrar_lacuna, marcar_fonte_consultada, referencia_ibge, ler, gravar,
@@ -35,6 +35,7 @@ from classificar_pista_civil import triagem_completa
 
 FONTE_QD = "Querido Diário (diário municipal)"
 PAUSA_ENTRE_CONSULTAS = 0.25   # segundos; cortesia com a API pública
+JANELA_ROTACAO = 45            # dias; 3 × 50 por noite × 45 > 5.571 — a fila inteira cabe numa volta (F51)
 
 # 21/09/2026: o Querido Diário migrou de domínio. O host antigo (queridodiario.ok.org.br/api)
 # ainda resolve, mas responde 302 para api.queridodiario.org.br a cada chamada — verificado nesta
@@ -271,8 +272,14 @@ def coletar_lote(lote: int, tamanho: int, desde: str, pendentes_desde: str = "",
             tamanho = tamanho_para_cobrir(len(pend), hoje_editorial().isoformat(), ate or hoje_editorial().isoformat(), tamanho)
             alvo = pend[:tamanho]
             print(f"varredura integral: {len(pend)} pendentes desde {pendentes_desde}; hoje {len(alvo)} (fim previsto {ate or 'hoje'})")
-    else:
+    elif lote:
         alvo = ordem[(lote - 1) * tamanho: lote * tamanho]
+    else:
+        # 13/10/2026 (F51): sem `--lote`, a rodada da noite pegava sempre `ordem[0:50]` — os mesmos 50
+        # municípios em toda chamada e toda noite (50 distintos em outubro inteiro). Sem lote, a fila
+        # anda: os próximos da ordem sem consulta ao Querido Diário nos últimos JANELA_ROTACAO dias.
+        desde_rotacao = (hoje_editorial() - timedelta(days=JANELA_ROTACAO)).isoformat()
+        alvo = pendentes_na_janela(ordem, ler("fontes_consultadas.json", {}), desde_rotacao)[:tamanho]
     atos = ler("atos_resposta.json"); pistas = ler("pistas_imprensa.json", {"_governanca": "", "pistas": []})
     pistas.setdefault("pistas", [])
     vistos = {(e["nome"], e["uf"], e["data"], e.get("causa")) for e in atos["eventos"]}
@@ -626,6 +633,26 @@ def autoteste() -> int:
         finally:
             for n, f in real.items():
                 globals()[n] = f
+    def t13():  # F51 (13/10/2026): sem --lote a fila anda — quem foi consultado na janela sai da vez
+        hoje = hoje_editorial().isoformat()
+        ref = {"0000001": {"nome": "A", "uf": "MG"}, "0000002": {"nome": "B", "uf": "MG"}}
+        livro = {"municipios": {"0000001": {"fontes": [{"fonte": FONTE_QD, "data": hoje}]}}}
+        visto = []
+        nomes = ("referencia_ibge", "ler", "gravar", "_varrer", "sincronizar_pistas", "funil",
+                 "abrir_lote_log", "fechar_lote_log", "abrir_lote_livro", "fechar_lote_livro")
+        real = {n: globals()[n] for n in nomes}
+        globals().update(referencia_ibge=lambda: (ref, {}), gravar=lambda *a, **k: None,
+                         ler=lambda n, p=None: livro if n == "fontes_consultadas.json" else (
+                             {"eventos": []} if n == "atos_resposta.json" else p),
+                         _varrer=lambda alvo, *a: visto.extend(alvo) or (0, 0, 0, 0),
+                         sincronizar_pistas=lambda *a, **k: None,
+                         funil=type("F", (), {"registrar": staticmethod(lambda *a, **k: None)}),
+                         **{n: (lambda *a, **k: 0) for n in nomes[6:]})
+        try:
+            coletar_lote(0, 1, "2026-08-01")
+            return visto == ["0000002"]
+        finally:
+            globals().update(real)
     return rodar_autoteste({"classifica decreto com nº e pista de plano": t1, "negativo: decreto sem número": t2,
                             "prioridade: UF do cadastro, depois população": t3,
                             "negativo: UF fora da lista curada entra por percentual, não em balde indefinido": t3b,
@@ -639,14 +666,15 @@ def autoteste() -> int:
                             "toda decisão deste coletor cabe no vocabulário fechado do log": t10,
                             "acerto em cache não grava, e o espelho leva a data do teste": t11,
                             "A6-17 troca de janela não zera o retrato; campos do outro escritor ficam": t11b,
-                            "503 espera e repete; 429 espera uma vez; 4xx sobe na hora": t12})
+                            "503 espera e repete; 429 espera uma vez; 4xx sobe na hora": t12,
+                            "F51: sem --lote a fila anda": t13})
 
 
 if __name__ == "__main__":
     if "--autoteste" in sys.argv:
         sys.exit(autoteste())
     a = sys.argv
-    lote = int(a[a.index("--lote") + 1]) if "--lote" in a else 1
+    lote = int(a[a.index("--lote") + 1]) if "--lote" in a else 0
     tam = int(a[a.index("--tamanho") + 1]) if "--tamanho" in a else 150
     desde = a[a.index("--desde") + 1] if "--desde" in a else "2026-06-29"
     pend = a[a.index("--pendentes-desde") + 1] if "--pendentes-desde" in a else ""

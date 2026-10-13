@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-13 · #PR · diários municipais: a fila anda (F51)
+
+O canal do Querido Diário consultava os mesmos 50 municípios toda noite (50 distintos em outubro): as três chamadas da noite não passavam `--lote` e o padrão era o primeiro lote. Sem lote, a rodada toma os próximos da ordem de prioridade sem consulta nos últimos 45 dias. Também: `medir_revocacao_das_consultas.py` lê `municipios.json` como lista. `coletar_diarios_municipais.py`.
+
 ## 2026-10-13 · #PR · portão 12 em todo PR
 
 O manifesto sela todo arquivo versionado, mas o portão 12 só rodava no PR que tocava dado; o #698 (página) passou verde e deixou a `main` vermelha. O passo roda em todo PR, e o `CLAUDE.md` deixa de dizer que PR de página não resela. `.github/workflows/portoes.yml`.
