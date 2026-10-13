@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-13 · #PR · portão 12 em todo PR
+
+O manifesto sela todo arquivo versionado, mas o portão 12 só rodava no PR que tocava dado; o #698 (página) passou verde e deixou a `main` vermelha. O passo roda em todo PR, e o `CLAUDE.md` deixa de dizer que PR de página não resela. `.github/workflows/portoes.yml`.
+
 ## 2026-10-13 · #PR · calor do MS: "sem leitura desde 25/09", não "sem coleta"
 
 Na Saúde, as figuras e a busca de calor diziam "sem coleta até o corte" depois que o retrato de 25/09 saiu por ter mais de 9 dias. Havia coleta; a fonte é que parou de responder. A página passa a ler `ultima_coleta_ok` da fonte, como a legenda já fazia: crédito com a data da última leitura e "sem leitura desde a coleta de". `assets/js/saude.js`.
