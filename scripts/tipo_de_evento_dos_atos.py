@@ -120,6 +120,11 @@ def _autoteste() -> int:
     ok("estiagem é seca", tipo_de_evento("estiagem prolongada") == "seca")
     ok("incêndio é fogo", tipo_de_evento("incêndio em vegetação") == "fogo")
     ok("vendaval é vendaval", tipo_de_evento("vendaval com destelhamentos") == "vendaval")
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
+    from coletores_base import carimbar_atos
+    ok("a porta de gravação dos atos (carimbar_atos) põe o tipo em todo evento",
+       [e["tipo_evento"] for e in carimbar_atos({"eventos": [{"causa": "estiagem"}, {}]})["eventos"]]
+       == ["seca", "sem_tipo_informado"])
     ok("granizo é tempestade, não chuva acumulada",
        tipo_de_evento("Granizo - 1.3.2.1.3") == "vendaval")
     ok("enxurrada é chuva", tipo_de_evento("Enxurradas - 1.2.2.0.0") == "chuva")

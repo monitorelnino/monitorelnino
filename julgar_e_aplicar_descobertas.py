@@ -144,32 +144,9 @@ def eh_estadual(rotulo):
     return rotulo.startswith("A-lac") or rotulo.startswith("C-estado-amplo")
 
 
-# Cadeia canônica de derivados (§163, 22/09/2026). FONTE DE VERDADE: scripts/verificar_derivados.sh
-# — o portão 12 roda exatamente esta sequência e cobra `git diff --exit-code`. Manter as duas em
-# sincronia não é disciplina: é self-test (ver cenário 6 em self_test()).
-CADEIA_DERIVADOS = (
-    ("recalcular_mare.py", "--write"),
-    ("gerar_monitor_saude.py",),
-    ("gerar_resposta.py",),
-    ("gerar_prioritarios.py",),
-    ("gerar_contadores_financiamento.py",),
-    ("gerar_feeds.py",),
-    ("gerar_dados_abertos.py",),
-    ("scripts/gerar_enquadramento_card.py",),
-    ("gerar_card_municipios.py",),
-    ("gerar_pdf_indice.py",),
-    ("gerar_pdf_metodologia.py",),
-    ("scripts/carimbar_assets.py",),
-    ("gerar_blog.py",),
-    # 06/10/2026 (causa A): o CODEMAP saiu desta cadeia — é documentação de código, e cobrá-lo na
-    # publicação de DADO reprovava toda publicação. Quem o cobra é o portão de PR.
-    ("scripts/gerar_mudancas.py",),
-    # item 4 (28/09/2026): o resumo do log é derivado e entra na cadeia. Esta constante tem de ser
-    # IDÊNTICA à de scripts/verificar_derivados.sh — o autoteste compara as duas, e a divergência
-    # deixou o portão 12 vermelho na main em 22/09/2026.
-    ("scripts/gerar_resumo_do_log.py",),
-    ("scripts/gerar_manifesto.py",),
-)
+# Cadeia canônica de derivados (§163): a fonte de verdade é scripts/verificar_derivados.sh, lida
+# por `cadeia_do_portao12()`. 13/10/2026: a cópia em constante saiu — ela divergia a cada gerador
+# novo e um self-test existia só para cobrar a cópia.
 
 
 def cadeia_do_portao12():
@@ -197,8 +174,7 @@ def sincronizar_derivados():
     gerar_card_municipios. gerar_prioritarios, gerar_feeds e os demais rodam ANTES do juiz, em
     atualizar.py, e nunca mais depois: quando o juiz aplicava um município, o histórico público,
     os feeds e a contagem de prioritários ficavam para trás e o portão 12 ficava vermelho na main.
-    Agora a lista é a cadeia canônica inteira (CADEIA_DERIVADOS), conferida contra
-    scripts/verificar_derivados.sh pelo self-test — divergência é erro, não silêncio."""
+    Agora a lista é a cadeia canônica inteira, lida de scripts/verificar_derivados.sh."""
     import os, datetime as _dt
     env = dict(os.environ)
     try:
@@ -207,7 +183,7 @@ def sincronizar_derivados():
     except Exception:  # noqa: BLE001
         pass
     saida = []
-    for passo in CADEIA_DERIVADOS:
+    for passo in cadeia_do_portao12():
         if not (RAIZ / passo[0]).exists():
             continue
         cmd = [sys.executable, *passo]
@@ -893,16 +869,10 @@ def self_test():
         print("✓ self-test OK — aplicacao municipal usa a categoria do veredito e carrega "
               "proveniencia")
 
-    # 6) §163: a cadeia que o juiz regenera tem de ser a MESMA que o portão 12 cobra.
-    #    Divergência aqui foi a causa do portão 12 vermelho na main em 22/09/2026 (histórico
-    #    público, feeds e prioritários parados depois que o juiz aplicou Feira de Santana/BA).
+    # 6) §163: a cadeia que o juiz regenera é lida do portão 12 — e tem de ser legível.
     do_portao = cadeia_do_portao12()
-    assert do_portao, "não consegui ler a cadeia de scripts/verificar_derivados.sh"
-    assert CADEIA_DERIVADOS == do_portao, (
-        "cadeia do juiz diferente da do portão 12:\n"
-        f"  juiz   : {[' '.join(p) for p in CADEIA_DERIVADOS]}\n"
-        f"  portão : {[' '.join(p) for p in do_portao]}")
-    print(f"✓ self-test OK — cadeia de derivados do juiz idêntica à do portão 12 ({len(do_portao)} passos)")
+    assert do_portao and do_portao[-1] == ("scripts/gerar_manifesto.py",), do_portao
+    print(f"✓ self-test OK — cadeia de derivados lida do portão 12 ({len(do_portao)} passos)")
 
     # 28/09/2026: o log do aplicador. As 150 linhas da primeira noite saíram sem `strings` e sem
     # `executor` e reprovaram `verificar_consistencia.py`; estas travas provam o esquema e o

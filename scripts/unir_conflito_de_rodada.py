@@ -85,6 +85,17 @@ LOGS_QUE_SO_CRESCEM = {
 # se perde, e duas execuções no mesmo minuto continuam duas linhas.
 LOGS_POR_CHAVE = {"data/painel_da_noite.json": "noites"}
 
+
+def gravar_no_formato_do_produtor(caminho, doc) -> None:
+    """Escreve a união pela mesma porta que os produtores (`coletores_base.gravar_em`).
+
+    13/10/2026: a união gravava estes logs compactos e os produtores, indentados; cada commit da
+    noite reescrevia o arquivo inteiro de um formato para o outro (`saude_pipeline.json`,
+    `painel_da_noite.json`: 0 ↔ 5–7 mil linhas), inflando o histórico e os conflitos."""
+    sys.path.insert(0, str(RAIZ))
+    from coletores_base import gravar_em
+    gravar_em(caminho, doc)
+
 # JSONL que so cresce: uma linha por registro, uniao pela base comum nas LINHAS.
 # `data/log_buscas/<ano-mes>.jsonl` e o volume que saiu de `data/log_buscas.json` -- a mesma regra
 # append-only, em outro formato, e ate hoje sem classe: ele recusava e parava a rodada.
@@ -494,9 +505,7 @@ def resolver(repo=None, escrever=True):
                     chave, estagio(norm, 1, repo=repo), estagio(norm, 2, repo=repo),
                     estagio(norm, 3, repo=repo))
                 if escrever:
-                    (raiz / norm).write_text(
-                        json.dumps(fundido, ensure_ascii=False, separators=(",", ":")),
-                        encoding="utf-8", newline="")
+                    gravar_no_formato_do_produtor(raiz / norm, fundido)
                     git("add", "--", norm, repo=repo)
                 resolvidos.append(f"{norm}: {a} + {b} → {t} (união do painel, tolera cabeça podada)")
 
@@ -507,11 +516,7 @@ def resolver(repo=None, escrever=True):
                     estagio(norm, 1, repo=repo), estagio(norm, 2, repo=repo),
                     estagio(norm, 3, repo=repo))
                 if escrever:
-                    # Compacto e sem espaço, como o produtor grava — o formato do arquivo não
-                    # é assunto deste script, e reescrevê-lo mudaria 20 MB de diff.
-                    (raiz / norm).write_text(
-                        json.dumps(fundido, ensure_ascii=False, separators=(",", ":")),
-                        encoding="utf-8", newline="")
+                    gravar_no_formato_do_produtor(raiz / norm, fundido)
                     git("add", "--", norm, repo=repo)
                 resolvidos.append(f"{norm}: {a} + {b} → {t} (união pela base comum)")
 
@@ -686,6 +691,8 @@ def autoteste() -> int:
                d.get("atualizado_em") == "2026-10-08T02:40:00")
         checar("nenhuma execução se perdeu na união",
                [x["i"] for x in d["execucoes"]] == [1, 2, 3, 4])
+        checar("a união grava no formato do produtor (indentado), não compacto",
+               (r / S).read_text(encoding="utf-8").startswith('{\n "'))
 
     # 1-c. Divergência que NÃO é carimbo continua sendo recusa: ali é mudança de formato.
     with tempfile.TemporaryDirectory() as t3:

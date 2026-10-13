@@ -43,9 +43,6 @@ Atualizado em 13/10/2026.
 | `assets/js/proveniencia.js` | financiamento.html, monitor-de-riscos.html, saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+36) | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_publicado_navegador.js`, `verificar_semana_epidemiologica.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
 | `assets/js/saude.js` | saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+42) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_publicado_navegador.js`, `verificar_semana_epidemiologica.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
 | `assets/semana.js` | saude.html | — | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_fichas_semanticas.js`, `verificar_figuras.js`, `verificar_legendas.js`, `verificar_publicado_navegador.js`, `verificar_semana_epidemiologica.js`, `verificar_vocabulario_publico.js`, `verificar_voz_editorial.js` | — | não |
-| `_p3.py` | — | — | — | — | não |
-| `_p4.py` | — | — | — | — | não |
-| `_p5.py` | — | — | — | — | não |
 | `analisar_decretos.py` | — | — | — | — | não |
 | `analise_sensibilidade.py` | — | — | — | 2 | não |
 | `aplicar_c10_imprensa.py` | — | — | — | — | não |
@@ -98,7 +95,7 @@ Atualizado em 13/10/2026.
 | `coletar_srag_sivep.py` | — | `saude_desfechos/srag_serie.json`, `saude_desfechos/srag_sivep_agregados.json` | — | — | não |
 | `coletar_transferegov.py` | — | `financiamento/consultas.json`, `financiamento/por_uf.json`, `financiamento/programas_faf_2026.json`, `financiamento/serie_nacional.json`, `transferegov_el_nino_revisar.json` | — | — | não |
 | `coletar_transferencias_municipais.py` | — | `estados.json`, `indice.json`, `monitor_saude.json`, `municipios.json`, `saude_uf.json`, `transferencias_uniao.json` | — | 1 | não |
-| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `evidencias.json`, `fontes_consultadas.json`, `log_buscas.json`, `robots_registro.json` (+1) | — | **185** | não |
+| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `evidencias.json`, `fontes_consultadas.json`, `log_buscas.json`, `robots_registro.json` (+1) | — | **184** | não |
 | `consultar_querido_diario.py` | — | `pistas_querido_diario.json` | — | 1 | não |
 | `converter_contribuicao.py` | — | — | — | — | SIM |
 | `descobrir_dominios.py` | — | `dominios_oficiais.json` | — | — | não |
@@ -165,11 +162,9 @@ Atualizado em 13/10/2026.
 | `scripts/gerar_prioridade_municipios.py` | — | `prioridade_municipios.json` | — | — | não |
 | `scripts/gerar_resumo_do_log.py` | — | `log_buscas_resumo.json` | — | — | não |
 | `scripts/gerar_topo_das_paginas.py` | — | `resposta/topo_defesa_civil.json`, `saude_desfechos/topo_saude.json`, `topo_monitor_riscos.json` | — | — | não |
-| `scripts/incorporar_lai_am_ro.py` | — | `notas_lai.json` | — | — | não |
 | `scripts/incorporar_respostas_lai.py` | — | `atos_resposta.json`, `estados.json`, `notas_lai.json` | — | — | não |
 | `scripts/ingerir_ocp_midr.py` | — | `ocp_2026.json` | — | — | não |
 | `scripts/limpar_fila_de_pistas.py` | — | `pistas_imprensa.json` | — | 2 | não |
-| `scripts/medir_ciclo_de_mudanca.py` | — | `indice.json`, `saude_pipeline.json` | — | — | não |
 | `scripts/migrar_fim_da_etapa_humana.py` | — | `decretos_conteudo_revisar.json`, `pistas_imprensa.json` | — | — | não |
 | `scripts/migrar_pistas_para_o_esquema.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json` | — | — | não |
 | `scripts/migrar_sobras_do_doe.py` | — | `pistas_doe.json` | — | — | não |
@@ -191,7 +186,7 @@ Atualizado em 13/10/2026.
 | `scripts/sondar_rotas_doe.py` | — | `fontes_doe.json` | — | — | não |
 | `scripts/testar_escrita_atomica.py` | — | `w.json`, `x.json`, `y.json`, `z.json` | — | — | não |
 | `scripts/testar_reposicao_dominio.py` | — | `publicacao.json` | — | — | não |
-| `scripts/tipo_de_evento_dos_atos.py` | — | `atos_resposta.json` | — | — | não |
+| `scripts/tipo_de_evento_dos_atos.py` | — | `atos_resposta.json` | — | 1 | não |
 | `scripts/triar_fila.py` | — | `pistas_imprensa.json` | — | — | não |
 | `scripts/unir_conflito_de_rodada.py` | — | `fontes_consultadas.json`, `funil/2026-10-05.json`, `funil/x.json`, `historico_mudancas.json`, `log_buscas.json`, `log_buscas/2026-10.json` (+12) | — | 3 | não |
 | `seguir_pistas.py` | — | — | — | — | não |
