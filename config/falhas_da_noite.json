@@ -686,6 +686,20 @@
    "correcao": "A união grava pela mesma porta dos produtores (`gravar_em`); o formato deixa de depender de quem commitou por último.",
    "caso_de_teste": "scripts/unir_conflito_de_rodada.py --autoteste: a união grava no formato do produtor",
    "falta": null
+  },
+  {
+   "id": "F50",
+   "noite": "2026-10-13",
+   "titulo": "União recusa o ramo que já uniu a main uma vez",
+   "sintoma": "Os PRs de dado de `coleta-dia/*` (#693, #694) recusaram `saude_pipeline.json` e `log_buscas/2026-10.jsonl` na segunda vez que trouxeram a `main` (\"o lado nosso não começa pela base\"); a união teve de ser feita à mão.",
+   "causa": "`unir_log` e `unir_jsonl` exigiam que cada lado começasse com a base, item a item. Depois da primeira união, as linhas da `main` ficam depois das do ramo, e a base da segunda união deixa de ser prefixo.",
+   "prova": [
+    "PR #693: saude_pipeline.json recusado no segundo merge da main (13/10 09:45)",
+    "PR #694: log_buscas/2026-10.jsonl recusado no segundo merge da main (13/10 10:05)"
+   ],
+   "correcao": "Os logs que só crescem unem por multiconjunto (base + o que cada lado tem a mais), a mesma regra que o painel da noite já usava desde o F44; `unir_painel` e a classe à parte saem.",
+   "caso_de_teste": "scripts/unir_conflito_de_rodada.py --autoteste: F50: ramo que ja uniu a main uma vez une de novo",
+   "falta": null
   }
  ]
 }
