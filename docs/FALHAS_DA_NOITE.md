@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-13. 46 falhas; 41 com caso de teste que as reproduz; 5 sem, com o que falta dito.
+Atualizado em 2026-10-13. 47 falhas; 42 com caso de teste que as reproduz; 5 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -419,3 +419,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** run 38332550145, job estrutura, 01:31 UTC; commit dab6ad2f: lacuna → aguardando_primeira_coleta com ultima_coleta_ok 25/09/2026
 - **Correção:** `falha_calor`: só fonte que nunca coletou fica "aguardando"; a que já coletou segue `vencer_calor` (lacuna com a última coleta boa), sem sobrescrever o retrato guardado. Estado da `main` reposto no mesmo PR.
 - **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_segunda_falha_do_calor_mantem_a_lacuna`
+
+## F47 · Ensaio real atravessa a virada da noite e espera o marcador na noite errada
+
+- **Noite:** 2026-10-13
+- **Sintoma:** Ensaio real 38328343011 (cron das 18:13 chegou às 00:39) esperou desde 01:02 até o teto de 110 min: veredito vermelho e Issue falsos.
+- **Causa:** Cada elo do ramo calculava a noite pelo relógio (`janela_da_noite.py --noite`); o ramo nasceu com 2026-10-12 e o juiz, às 01:01, gravou em `data/noite/2026-10-13/`. Nada impedia o cron atrasado de começar em cima da noite.
+- **Prova:** run 38328343011, ramo ensaio-real/2026-10-13-38328343011; juiz.feito em data/noite/2026-10-13/ no ramo; condutor esperando 2026-10-12
+- **Correção:** O workflow grava `.noite_do_ensaio` no primeiro commit do ramo; `noite_corrente` a usa só em `ensaio-real/*` (CLI `--noite` e `marcador_de_elo`). Cron a menos de 120 min da janela ou dentro dela: "pulado, fora de hora".
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_ensaio_real_fixa_a_noite`

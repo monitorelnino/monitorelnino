@@ -135,8 +135,8 @@ def main() -> int:
         return 2
     if not noite:
         import datetime as dt
-        from janela_da_noite import noite_de
-        noite = noite_de(dt.datetime.now(dt.timezone.utc).replace(tzinfo=None))
+        from janela_da_noite import noite_corrente
+        noite = noite_corrente(dt.datetime.now(dt.timezone.utc).replace(tzinfo=None))
     feito, prova = trabalhou(elo, noite, lambda c: (RAIZ / c).is_file(),
                              artefatos_do_repositorio())
     print(f"{elo} · noite de {noite} · trabalhou={'sim' if feito else 'nao'} · {prova}")
