@@ -1,5 +1,5 @@
 {
- "_governanca": "Municípios prioritários — aproximação populacional do Cadastro Nacional de Municípios com Áreas Suscetíveis a Desastres (MIDR/SEDEC, Lei 12.608/2012). A lista nome a nome do Cadastro não é pública sem acesso autenticado; para cada UF, esta lista toma os N municípios mais populosos (N = contagem pública do Cadastro por UF), rotulada em toda superfície como aproximação, nunca como a lista oficial. 'publicado' = já tem instrumento (plano, decreto ou estrutura) localizado até o corte. Fonte única de gerar_prioritarios.py; mapa (defesa-civil.html) e busca (prefeituras.html) leem este arquivo — nunca recomputam.",
+ "_governanca": "Municípios prioritários — aproximação populacional do Cadastro Nacional de Municípios com Áreas Suscetíveis a Desastres (MIDR/SEDEC, Lei 12.608/2012). A lista nome a nome do Cadastro não é pública sem acesso autenticado; para cada UF, esta lista toma os N municípios mais populosos (N = contagem pública do Cadastro por UF), rotulada em toda superfície como aproximação, nunca como a lista oficial. 'publicado' = já tem instrumento (plano ou estrutura; decreto não conta, A3-14) localizado até o corte. Fonte única de gerar_prioritarios.py; mapa (defesa-civil.html) e busca (prefeituras.html) leem este arquivo — nunca recomputam.",
  "cadastro_uf_n": {
   "AC": 20,
   "AL": 47,
@@ -30,7 +30,7 @@
   "TO": 18
  },
  "total": 2095,
- "publicados": 144,
+ "publicados": 91,
  "municipios": [
   {
    "nome": "Acrelândia",
@@ -38,7 +38,7 @@
    "codigo_ibge": 1200013,
    "lat": -9.82581,
    "lon": -66.8972,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Brasiléia",
@@ -46,7 +46,7 @@
    "codigo_ibge": 1200104,
    "lat": -10.995,
    "lon": -68.7497,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Bujari",
@@ -54,7 +54,7 @@
    "codigo_ibge": 1200138,
    "lat": -9.81528,
    "lon": -67.955,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Capixaba",
@@ -62,7 +62,7 @@
    "codigo_ibge": 1200179,
    "lat": -10.566,
    "lon": -67.686,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Cruzeiro do Sul",
@@ -70,7 +70,7 @@
    "codigo_ibge": 1200203,
    "lat": -7.62762,
    "lon": -72.6756,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Epitaciolândia",
@@ -78,7 +78,7 @@
    "codigo_ibge": 1200252,
    "lat": -11.0188,
    "lon": -68.7341,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Feijó",
@@ -86,7 +86,7 @@
    "codigo_ibge": 1200302,
    "lat": -8.17054,
    "lon": -70.351,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Jordão",
@@ -94,7 +94,7 @@
    "codigo_ibge": 1200328,
    "lat": -9.1908,
    "lon": -71.9503,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Manoel Urbano",
@@ -102,7 +102,7 @@
    "codigo_ibge": 1200344,
    "lat": -8.83291,
    "lon": -69.2679,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Marechal Thaumaturgo",
@@ -110,7 +110,7 @@
    "codigo_ibge": 1200351,
    "lat": -8.93898,
    "lon": -72.7997,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Mâncio Lima",
@@ -118,7 +118,7 @@
    "codigo_ibge": 1200336,
    "lat": -7.61657,
    "lon": -72.8997,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Plácido de Castro",
@@ -126,7 +126,7 @@
    "codigo_ibge": 1200385,
    "lat": -10.2806,
    "lon": -67.1371,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Porto Acre",
@@ -134,7 +134,7 @@
    "codigo_ibge": 1200807,
    "lat": -9.58138,
    "lon": -67.5478,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Porto Walter",
@@ -142,7 +142,7 @@
    "codigo_ibge": 1200393,
    "lat": -8.26323,
    "lon": -72.7537,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Rio Branco",
@@ -158,7 +158,7 @@
    "codigo_ibge": 1200427,
    "lat": -7.73864,
    "lon": -72.661,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Sena Madureira",
@@ -166,7 +166,7 @@
    "codigo_ibge": 1200500,
    "lat": -9.06596,
    "lon": -68.6571,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Senador Guiomard",
@@ -174,7 +174,7 @@
    "codigo_ibge": 1200450,
    "lat": -10.1497,
    "lon": -67.7362,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Tarauacá",
@@ -182,7 +182,7 @@
    "codigo_ibge": 1200609,
    "lat": -8.15697,
    "lon": -70.7722,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Xapuri",
@@ -190,7 +190,7 @@
    "codigo_ibge": 1200708,
    "lat": -10.6516,
    "lon": -68.4969,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Arapiraca",
@@ -286,7 +286,7 @@
    "codigo_ibge": 2702900,
    "lat": -9.88404,
    "lon": -36.8316,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Igaci",
@@ -374,7 +374,7 @@
    "codigo_ibge": 2705002,
    "lat": -9.11824,
    "lon": -37.7323,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Matriz de Camaragibe",
@@ -398,7 +398,7 @@
    "codigo_ibge": 2705705,
    "lat": -9.53686,
    "lon": -37.2971,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Palmeira dos Índios",
@@ -942,7 +942,7 @@
    "codigo_ibge": 1303601,
    "lat": -0.41082,
    "lon": -65.0092,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Santo Antônio do Içá",
@@ -3774,7 +3774,7 @@
    "codigo_ibge": 2100832,
    "lat": -1.45862,
    "lon": -45.0864,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Araioses",
@@ -3854,7 +3854,7 @@
    "codigo_ibge": 2101905,
    "lat": -2.44162,
    "lon": -44.7842,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Bom Jardim",
@@ -7102,7 +7102,7 @@
    "codigo_ibge": 5001102,
    "lat": -20.4666,
    "lon": -55.7868,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Bataguassu",
@@ -7166,7 +7166,7 @@
    "codigo_ibge": 5003207,
    "lat": -19.0077,
    "lon": -57.651,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Costa Rica",
@@ -7230,7 +7230,7 @@
    "codigo_ibge": 5005202,
    "lat": -19.0089,
    "lon": -57.5973,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Maracaju",
@@ -7246,7 +7246,7 @@
    "codigo_ibge": 5005608,
    "lat": -20.2355,
    "lon": -56.3746,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Naviraí",
@@ -7446,7 +7446,7 @@
    "codigo_ibge": 5102504,
    "lat": -16.0764,
    "lon": -57.6818,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Diamantino",
@@ -7558,7 +7558,7 @@
    "codigo_ibge": 5106505,
    "lat": -16.266,
    "lon": -56.6261,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Pontes e Lacerda",
@@ -8078,7 +8078,7 @@
    "codigo_ibge": 1504604,
    "lat": -2.5831,
    "lon": -49.5042,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Moju",
@@ -8102,7 +8102,7 @@
    "codigo_ibge": 1504802,
    "lat": -1.99768,
    "lon": -54.0724,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Muaná",
@@ -8246,7 +8246,7 @@
    "codigo_ibge": 1506203,
    "lat": -0.63082,
    "lon": -47.3465,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Salvaterra",
@@ -8430,7 +8430,7 @@
    "codigo_ibge": 1505106,
    "lat": -1.90107,
    "lon": -55.5208,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Alagoa Grande",
@@ -8502,7 +8502,7 @@
    "codigo_ibge": 2503001,
    "lat": -7.51351,
    "lon": -34.9055,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Cabedelo",
@@ -8534,7 +8534,7 @@
    "codigo_ibge": 2504306,
    "lat": -6.34062,
    "lon": -37.747,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Conceição",
@@ -8726,7 +8726,7 @@
    "codigo_ibge": 2513703,
    "lat": -7.11724,
    "lon": -34.9753,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Sapé",
@@ -8750,7 +8750,7 @@
    "codigo_ibge": 2516201,
    "lat": -6.75148,
    "lon": -38.2311,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "São Bento",
@@ -11502,7 +11502,7 @@
    "codigo_ibge": 2411502,
    "lat": -6.31195,
    "lon": -35.4739,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "São Gonçalo do Amarante",
@@ -11670,7 +11670,7 @@
    "codigo_ibge": 1400050,
    "lat": 2.98858,
    "lon": -61.3072,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Boa Vista",
@@ -11702,7 +11702,7 @@
    "codigo_ibge": 1400472,
    "lat": 0.93996,
    "lon": -60.4389,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Agudo",
@@ -13574,7 +13574,7 @@
    "codigo_ibge": 4202602,
    "lat": -27.799,
    "lon": -49.487,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Bombinhas",
@@ -13934,7 +13934,7 @@
    "codigo_ibge": 4206504,
    "lat": -26.4688,
    "lon": -49.0026,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Guarujá do Sul",
@@ -14262,7 +14262,7 @@
    "codigo_ibge": 4210308,
    "lat": -26.3709,
    "lon": -50.3266,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Maracajá",
@@ -14430,7 +14430,7 @@
    "codigo_ibge": 4212205,
    "lat": -26.3777,
    "lon": -50.1419,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Paraíso",
@@ -14734,7 +14734,7 @@
    "codigo_ibge": 4217402,
    "lat": -26.4116,
    "lon": -49.074,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Seara",
@@ -14942,7 +14942,7 @@
    "codigo_ibge": 4218251,
    "lat": -26.6127,
    "lon": -50.6607,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Treze Tílias",
@@ -15118,7 +15118,7 @@
    "codigo_ibge": 2801207,
    "lat": -9.64882,
    "lon": -37.7923,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Capela",
@@ -15174,7 +15174,7 @@
    "codigo_ibge": 2804508,
    "lat": -10.2158,
    "lon": -37.4211,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Nossa Senhora do Socorro",
@@ -15190,7 +15190,7 @@
    "codigo_ibge": 2805604,
    "lat": -9.91626,
    "lon": -37.2842,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Poço Redondo",
@@ -15198,7 +15198,7 @@
    "codigo_ibge": 2805406,
    "lat": -9.80616,
    "lon": -37.6833,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Propriá",
@@ -15230,7 +15230,7 @@
    "codigo_ibge": 2807402,
    "lat": -11.1798,
    "lon": -37.9995,
-   "publicado": true
+   "publicado": false
   },
   {
    "nome": "Agudos",

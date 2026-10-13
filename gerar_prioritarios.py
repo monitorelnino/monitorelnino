@@ -31,7 +31,7 @@ RAIZ = Path(__file__).resolve().parent
 CADASTRO_UF_N = {"AC": 20, "AL": 47, "AM": 59, "AP": 14, "BA": 144, "CE": 80, "DF": 1, "ES": 71, "GO": 25, "MA": 113,
                  "MG": 306, "MS": 33, "MT": 40, "PA": 97, "PB": 43, "PE": 108, "PI": 47, "PR": 84, "RJ": 76, "RN": 32,
                  "RO": 14, "RR": 5, "RS": 206, "SC": 218, "SE": 17, "SP": 177, "TO": 18}
-CATS_PUBLICADO = {"plano", "plano_antigo", "plano_elaboracao", "estrutura", "decreto", "coberto_estadual"}
+CATS_PUBLICADO = {"plano", "plano_antigo", "plano_elaboracao", "estrutura", "coberto_estadual"}
 
 
 def municipios_prioritarios(referencia: list, populacao: dict, pontos_mapa: list) -> list:
@@ -73,7 +73,7 @@ def gerar() -> int:
                          "Cadastro não é pública sem acesso autenticado; para cada UF, esta lista toma os N "
                          "municípios mais populosos (N = contagem pública do Cadastro por UF), rotulada em toda "
                          "superfície como aproximação, nunca como a lista oficial. 'publicado' = já tem instrumento "
-                         "(plano, decreto ou estrutura) localizado até o corte. Fonte única de gerar_prioritarios.py; "
+                         "(plano ou estrutura; decreto não conta, A3-14) localizado até o corte. Fonte única de gerar_prioritarios.py; "
                          "mapa (defesa-civil.html) e busca (prefeituras.html) leem este arquivo — nunca recomputam."),
         "cadastro_uf_n": CADASTRO_UF_N, "total": len(lista), "publicados": publicados,
         "municipios": lista,

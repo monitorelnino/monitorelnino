@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-13 · #PR · decisões da central: prioritários, mudanças, painel de calor
+
+Três decisões de 13/10: decreto deixa de marcar município prioritário como "publicado" (A3-14; 144 → 91, aproximação populacional mantida e rotulada); `mudancas.html` sai do sitemap e vira página interna (A4-10); o Painel Nacional de Excesso de Calor passa a "localizado" na lista federal da Saúde, com endereço e leitura até 25/09 (VigiAR e GeoRisk seguem anunciados).
+
 ## 2026-10-13 · #PR · blog: texto de 06/10 publicado
 
 Entra o texto aprovado "Seca, fogo e chuva: três caminhos diferentes para o dinheiro chegar" (Legal e financiamento), com a troca de "por antecipação" por "antes do vencimento" feita pela central no original aprovado. Verificador do blog verde (números no pacote de 05/10). `blog/posts/`.
