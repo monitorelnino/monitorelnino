@@ -78,8 +78,10 @@ def _partes_do_alvo(alvo):
 
 
 def _municipio_do_alvo(alvo):
+    # Três partes: camada/município/UF. Em `resposta/BA` ou `B-capital/TO` a penúltima é a camada da
+    # busca, e procurar o ato de "resposta" custava quatro consultas por pista (13/10/2026).
     p = _partes_do_alvo(alvo)
-    return p[-2] if len(p) >= 2 and len(p[-1]) == 2 and p[-1].isalpha() else None
+    return p[-2] if len(p) >= 3 and len(p[-1]) == 2 and p[-1].isalpha() else None
 
 
 def _uf_do_alvo(alvo):
@@ -235,6 +237,10 @@ def autoteste() -> int:
     casos.append(("extrai tipo e número do ato", (i["tipo"], i["numero"]) == ("decreto", "1.482")))
     casos.append(("extrai o nome do plano", i["nome_do_plano"].lower().startswith("plano de conting")))
     casos.append(("extrai município e UF do alvo", (i["municipio"], i["uf"]) == ("Bonito", "MS")))
+    so_camada = identificadores({"titulo": "Estado decreta emergência", "alvo": "resposta/BA"})
+    casos.append(("camada da busca não é município; a UF fica",
+                  (so_camada["municipio"], so_camada["uf"]) == (None, "BA")
+                  and consultas_dirigidas(so_camada) == []))
 
     vazio = identificadores({"titulo": "Chuva alaga bairro na capital"})
     casos.append(("sem ato no texto, não inventa número",
