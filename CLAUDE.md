@@ -75,6 +75,17 @@ Documentos canônicos:
 > - **Portão vermelho não é parada.** Diagnostica-se e corrige-se sozinho; só vira pergunta se o
 >   impedimento persistir **depois** de diagnóstico razoável — condição que já está na lista abaixo.
 
+> # CORREÇÃO PELA RAIZ, CÓDIGO MENOR OU IGUAL (editoria, 13/10/2026 — permanente)
+>
+> **Toda correção começa pela causa raiz e termina com o código menor ou igual.** Não se acrescenta
+> camada de proteção, portão, resolvedor, exceção ou "guarda" para contornar um sintoma. Encontrado o
+> erro: (1) nomear a causa raiz com prova; (2) corrigir **no lugar onde ela nasce**; (3) remover o
+> remendo que a escondia, se houver; (4) só então perguntar se um portão existente já cobriria a
+> regressão — portão novo só quando nenhum existente cobre, e de preferência substituindo um que
+> ficou redundante. Cada PR declara **linhas líquidas** (+/−) no relatório; PR de correção com saldo
+> positivo tem de dizer por quê, em uma linha. Plano da consolidação:
+> `robo-registro/notas/HANDOVER_CONSOLIDACAO_13-10-2026.md`.
+
 Responder à editoria em português do Brasil. Estilo de fala: o *output style* `caveman`
 (`.claude/output-styles/caveman.md`), ligado por `outputStyle` em `.claude/settings.json`
 — permanente, em toda sessão, sem invocar skill. Desligar só a pedido da editoria, por PR.

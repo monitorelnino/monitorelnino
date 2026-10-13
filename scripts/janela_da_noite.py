@@ -87,6 +87,52 @@ def inicio_da_janela(agora: dt.datetime, janela=JANELA_UTC) -> str:
                                dt.time(hour=janela[0])).isoformat() + "Z"
 
 
+NOITE_DO_ENSAIO = ".noite_do_ensaio"
+"""Arquivo que só existe no ramo `ensaio-real/*`: a noite que o ensaio fixou ao começar.
+
+13/10/2026 (F47). O ensaio real de 12/10 (cron das 18:13 chegou às 00:39) criou o ramo com a noite
+2026-10-12; os elos que rodaram depois das 01:00 UTC gravaram o marcador em `data/noite/2026-10-13/`
+e o condutor esperou na noite errada até o teto. A noite do ensaio é decidida uma vez, no começo,
+e todo elo do ramo a lê daqui. Fora de `ensaio-real/*` o arquivo é ignorado, mesmo que exista."""
+
+MARGEM_ANTES_DA_JANELA_MIN = 120
+"""O ensaio real dura até ~2 h (teto 110 min no condutor). Começar a menos disso da abertura é
+atravessar a virada da noite e competir com a corrente de verdade (F47)."""
+
+
+def noite_fixada(ramo: str, conteudo) -> str:
+    """A noite fixada pelo ensaio, se este for um ramo de ensaio com o arquivo. Função pura."""
+    if not str(ramo or "").startswith("ensaio-real/") or not conteudo:
+        return ""
+    v = str(conteudo).strip()[:10]
+    try:
+        dt.date.fromisoformat(v)
+    except ValueError:
+        return ""
+    return v
+
+
+def noite_corrente(agora: dt.datetime, ramo: str = None, raiz: pathlib.Path = RAIZ) -> str:
+    """A noite deste instante — ou a que o ensaio fixou, no ramo `ensaio-real/*` (F47)."""
+    import os
+    if ramo is None:
+        ramo = os.environ.get("GITHUB_REF_NAME", "")
+    arq = raiz / NOITE_DO_ENSAIO
+    fixa = noite_fixada(ramo, arq.read_text(encoding="utf-8") if arq.is_file() else "")
+    return fixa or noite_de(agora)
+
+
+def ensaio_pode_comecar(agora: dt.datetime, janela=JANELA_UTC,
+                        margem_min: int = MARGEM_ANTES_DA_JANELA_MIN) -> bool:
+    """O ensaio real cabe antes da noite? Dentro da janela ou a menos da margem dela: não. Pura."""
+    if dentro_da_janela(agora, janela):
+        return False
+    abre = dt.datetime.combine(agora.date(), dt.time(hour=janela[0]))
+    if abre <= agora:
+        abre += dt.timedelta(days=1)
+    return (abre - agora).total_seconds() / 60 >= margem_min
+
+
 def dentro_da_janela(agora: dt.datetime, janela=JANELA_UTC) -> bool:
     """O instante está na janela noturna? Função pura."""
     inicio, fim = janela
@@ -227,6 +273,26 @@ def _autoteste() -> int:
     ok("fora da janela o vigia nunca dispara, mesmo sem abertura",
        not precisa_abrir([], d(2026, 10, 4, 14, 0)))
 
+    import tempfile
+    ok("F47: ramo de ensaio com a noite fixada usa a noite fixada, mesmo depois da virada",
+       noite_fixada("ensaio-real/2026-10-13-1", "2026-10-12\n") == "2026-10-12")
+    ok("F47: fora de `ensaio-real/*` a noite fixada é ignorada",
+       noite_fixada("main", "2026-10-12") == "" and noite_fixada("coleta-dia/x", "2026-10-12") == "")
+    ok("F47: conteúdo que não é data não fixa nada",
+       noite_fixada("ensaio-real/x", "lixo") == "")
+    with tempfile.TemporaryDirectory() as t:
+        tp = pathlib.Path(t)
+        (tp / NOITE_DO_ENSAIO).write_text("2026-10-12", encoding="utf-8", newline="\n")
+        ok("F47: noite_corrente lê o arquivo do ramo de ensaio e ignora na main",
+           noite_corrente(d(2026, 10, 13, 1, 30), "ensaio-real/r", tp) == "2026-10-12"
+           and noite_corrente(d(2026, 10, 13, 1, 30), "main", tp) == "2026-10-13")
+    ok("F47: cron das 18:13 cabe; 00:39 (atrasado) e 23:30 não",
+       ensaio_pode_comecar(d(2026, 10, 12, 18, 13))
+       and not ensaio_pode_comecar(d(2026, 10, 13, 0, 39))
+       and not ensaio_pode_comecar(d(2026, 10, 12, 23, 30))
+       and not ensaio_pode_comecar(d(2026, 10, 13, 3, 0))
+       and ensaio_pode_comecar(d(2026, 10, 12, 22, 59)))
+
     import dis
     nomes = set()
     for nome_obj, obj in list(globals().items()):
@@ -249,8 +315,13 @@ def main() -> int:
         return _autoteste()
     agora = dt.datetime.now(dt.timezone.utc).replace(tzinfo=None)
     if "--noite" in argv:
-        print(noite_de(agora))
+        print(noite_corrente(agora))
         return 0
+    if "--ensaio-pode-comecar" in argv:
+        pode = ensaio_pode_comecar(agora)
+        print("sim" if pode else f"nao · {agora:%H:%M} UTC está a menos de "
+              f"{MARGEM_ANTES_DA_JANELA_MIN} min da noite ou dentro dela")
+        return 0 if pode else 1
     if "--inicio-da-janela" in argv:
         print(inicio_da_janela(agora))
         return 0
