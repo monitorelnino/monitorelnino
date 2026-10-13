@@ -2,7 +2,7 @@
  "_governanca": "Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. `prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). `imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o leitor peça o documento ao gestor. Só municípios com algo a dizer; sem registro = não verificado. `defesa_civil_orcamento` (§207) = despesa liquidada na subfunção 06.182 declarada ao SICONFI, peso ZERO; classe de ausência nunca vira zero.",
  "gerado_em": "2026-10-13",
  "total": 2197,
- "com_registro": 248,
+ "com_registro": 250,
  "com_imprensa": 122,
  "prioritarios": 2095,
  "com_despesa_182": 2197,
@@ -2891,6 +2891,11 @@
    "nome": "Primavera",
    "uf": "PA",
    "prioritario": false,
+   "categoria": "plano_antigo",
+   "documento": "Plano de contingência municipal — Prefeitura de Primavera, 2020",
+   "url": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/e/emergencias-climaticas/notas-tecnicas-e-informativas/nota-tecnica-no-101-2026-cggi-dpni-svsa-ms",
+   "data": "13/11/2020",
+   "fonte": "Portal oficial (www.gov.br) — ato lido e classificado pelo juiz automático em 13/10/2026 (codebook 1.4 (09/10/2026)); cr",
    "imprensa": [
     {
      "titulo": "A primavera começa nesta terça-feira (22) com influência do El Niño ...",
@@ -2922,8 +2927,7 @@
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
-   },
-   "categoria": "nao_verificado"
+   }
   },
   "1506138": {
    "nome": "Redenção",
@@ -33802,6 +33806,12 @@
    "nome": "Trindade do Sul",
    "uf": "RS",
    "prioritario": true,
+   "categoria": "plano_antigo",
+   "documento": "– Cep:99615-000 Trindade do Sul - RS “O Plano de Contingência analisa os cenários de risco de desastres e estabelece os procedimentos para ações de monitoramento (acompanhamento…",
+   "url": "https://www.trindadedosul.rs.gov.br/wp-content/uploads/2025/06/Plano-de-Contingencia.pdf",
+   "data": "28/05/2025",
+   "fonte": "Portal oficial (www.trindadedosul.rs.gov.br) — plano publicado em domínio oficial do ente, lido e classificado pelo juiz",
+   "sem_ato_de_aprovacao": true,
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -33810,8 +33820,7 @@
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
-   },
-   "categoria": "nao_verificado"
+   }
   },
   "4322004": {
    "nome": "Triunfo",
