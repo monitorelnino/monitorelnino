@@ -175,7 +175,7 @@ Atualizado em 14/10/2026.
 | `scripts/preservar_textos_integrais.py` | — | `evidencias.json` | — | — | não |
 | `scripts/proveniencia_estadual.py` | — | `estados.json` | — | — | não |
 | `scripts/quais_portoes.py` | — | `indice.json` | — | — | não |
-| `scripts/reaplicar_noite.py` | — | `.coleta_perdida.json`, `enquadramento_federal.json`, `evidencias.json`, `funil/2026-10-08.json`, `historico_mudancas.json`, `log_buscas.json` (+11) | — | 1 | não |
+| `scripts/reaplicar_noite.py` | — | `coleta_perdida.json`, `enquadramento_federal.json`, `evidencias.json`, `funil/2026-10-08.json`, `historico_mudancas.json`, `log_buscas.json` (+11) | — | 1 | não |
 | `scripts/reavaliar_fontes_suspensas.py` | — | `calendario/fontes_suspensas.json` | — | — | não |
 | `scripts/registrar_faixas.py` | — | `historico_faixas.json` | — | 1 | não |
 | `scripts/remediar_cpf_evidencias.py` | — | `evidencias.json` | — | — | não |
