@@ -5295,15 +5295,6 @@
   },
   {
    "data": "2026-10-13",
-   "script": "preservar_evidencias.py",
-   "inicio": "2026-10-13T03:56:08",
-   "duracao_s": 45.7,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-13",
    "script": "scripts/preservar_textos_integrais.py",
    "inicio": "2026-10-13T03:56:53",
    "duracao_s": 1.6,
@@ -6096,33 +6087,6 @@
   },
   {
    "data": "2026-10-14",
-   "script": "monitorar_busca_web.py",
-   "inicio": "2026-10-14T03:24:52",
-   "duracao_s": 0.0,
-   "itens": null,
-   "status": "pulado",
-   "erro": "prazo do elo esgotado antes de começar"
-  },
-  {
-   "data": "2026-10-14",
-   "script": "monitorar_busca_web.py",
-   "inicio": "2026-10-14T03:24:52",
-   "duracao_s": 0.0,
-   "itens": null,
-   "status": "pulado",
-   "erro": "prazo do elo esgotado antes de começar"
-  },
-  {
-   "data": "2026-10-14",
-   "script": "monitorar_busca_web.py",
-   "inicio": "2026-10-14T03:24:52",
-   "duracao_s": 0.0,
-   "itens": null,
-   "status": "pulado",
-   "erro": "prazo do elo esgotado antes de começar"
-  },
-  {
-   "data": "2026-10-14",
    "script": "seguir_pistas.py",
    "inicio": "2026-10-14T03:24:52",
    "duracao_s": 0.0,
@@ -6336,7 +6300,160 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-14",
+   "script": "scripts/corrigir_atribuicao_por_dominio.py",
+   "inicio": "2026-10-14T04:25:44",
+   "duracao_s": 7.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-14",
+   "script": "revisar_pistas.py",
+   "inicio": "2026-10-14T04:25:51",
+   "duracao_s": 22.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-14",
+   "script": "julgar_filas.py",
+   "inicio": "2026-10-14T04:26:13",
+   "duracao_s": 1416.1,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-14",
+   "script": "julgar_e_aplicar_descobertas.py",
+   "inicio": "2026-10-14T04:49:49",
+   "duracao_s": 621.3,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-14",
+   "script": "aplicar_promocoes_do_juiz.py",
+   "inicio": "2026-10-14T05:00:10",
+   "duracao_s": 23.2,
+   "itens": 1,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-14",
+   "script": "scripts/amostra_auditoria_semanal.py",
+   "inicio": "2026-10-14T05:00:33",
+   "duracao_s": 0.4,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-14",
+   "script": "monitorar_imprensa_regional.py",
+   "inicio": "2026-10-14T05:07:30",
+   "duracao_s": 374.3,
+   "itens": 40,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-14",
+   "script": "monitorar_imprensa_saude.py",
+   "inicio": "2026-10-14T05:13:44",
+   "duracao_s": 0.8,
+   "itens": null,
+   "status": "erro",
+   "erro": "KeyError: 'hash'"
+  },
+  {
+   "data": "2026-10-14",
+   "script": "monitorar_atos_resposta.py",
+   "inicio": "2026-10-14T05:13:44",
+   "duracao_s": 108.8,
+   "itens": 3511,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-14",
+   "script": "monitorar_politica_por_inteiro.py",
+   "inicio": "2026-10-14T05:15:32",
+   "duracao_s": 3.0,
+   "itens": 3511,
+   "status": "erro",
+   "erro": "NameError: name 'ler' is not defined. Did you mean: 'len'?"
+  },
+  {
+   "data": "2026-10-14",
+   "script": "monitorar_sinais_federais.py",
+   "inicio": "2026-10-14T05:15:35",
+   "duracao_s": 3.3,
+   "itens": 10,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-14",
+   "script": "detectar_marcos_federais.py",
+   "inicio": "2026-10-14T05:15:38",
+   "duracao_s": 1.5,
+   "itens": 0,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-14",
+   "script": "descobrir_planos.py",
+   "inicio": "2026-10-14T05:15:39",
+   "duracao_s": 1129.9,
+   "itens": 42,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-14",
+   "script": "monitorar_redes_oficiais.py",
+   "inicio": "2026-10-14T05:34:28",
+   "duracao_s": 935.1,
+   "itens": null,
+   "status": "erro",
+   "erro": "interrompido pelo prazo do elo"
+  },
+  {
+   "data": "2026-10-14",
+   "script": "seguir_pistas.py",
+   "inicio": "2026-10-14T05:50:03",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-14",
+   "script": "triar_confianca_pistas.py",
+   "inicio": "2026-10-14T05:50:03",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-14",
+   "script": "verificar_pista_imprensa.py",
+   "inicio": "2026-10-14T05:50:04",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
   }
  ],
- "atualizado_em": "2026-10-14T04:25:02"
+ "atualizado_em": "2026-10-14T05:50:04"
 }
