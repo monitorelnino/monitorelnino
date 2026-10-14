@@ -470,17 +470,14 @@ def main() -> int:
             print(f"  · [{n['uf']}/{n['setor']}] {str(n.get('titulo'))[:70]} — {n['url'][:80]}")
         print("  → NENHUMA é promovível — trava absoluta (R7).")
         return 0
+    # 14/10/2026: a fatia gira por hora. A ordem fixa com --limite 20 consultava sempre os mesmos
+    # 20 alvos (saúde das 20 primeiras UFs); a defesa civil e 7 UFs nunca eram consultadas.
+    alvos = [(uf, setor) for setor in setores for uf in ufs]
+    inicio = (int(time.time() // 3600) * limite) % len(alvos)
     total_novos = 0
-    consultas = 0
-    for setor in setores:
-        for uf in ufs:
-            if consultas >= limite:
-                break
-            novos = descobrir(uf, setor, fila)
-            total_novos += len(novos)
-            consultas += 1
-        if consultas >= limite:
-            break
+    consultas = min(limite, len(alvos))
+    for uf, setor in (alvos[inicio:] + alvos[:inicio])[:consultas]:
+        total_novos += len(descobrir(uf, setor, fila))
 
     sincronizar_pistas("pistas_descobertas.json", fila, origem="descoberta", ler_fn=ler, gravar_fn=gravar)
     # Item B do handover da auditoria do funil (27/09/2026): a rodada conta por etapa, para que

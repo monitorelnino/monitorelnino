@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · Descoberta de planos gira a fatia de alvos
+
+Com `--limite 20` e ordem fixa, `descobrir_planos.py` consultava sempre a saúde das 20 primeiras UFs: a defesa civil e sete UFs nunca eram consultadas (as 18 pistas da fila são todas de saúde). A fatia agora gira por hora sobre os 54 alvos. Onde: `descobrir_planos.py`.
+
 ## 2026-10-14 · #PR · saem três scripts sem uso (consolidação, item 4)
 
 Sem nenhuma chamada na árvore: `contar_filas.py` (era do relatório do monólito semanal, que saiu no #721), `comitar_via_api.py` (os elos empurram pela chave do robô) e `sincronizar_single_file.py` (prévia de chat que não existe mais). `cobertura_docstrings.py`, também sem chamada, fica: é a fonte declarada de um número da auditoria de código.
