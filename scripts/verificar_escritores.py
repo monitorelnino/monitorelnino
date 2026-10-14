@@ -87,7 +87,8 @@ def classes_do_resolvedor() -> set:
     except ImportError:
         return set()
     return (set(u.LOGS_QUE_SO_CRESCEM) | set(u.REGENERAVEIS)
-            | set(getattr(u, "FILAS_DE_PISTA", ())) | set(u.PREFIXOS_REGENERAVEIS))
+            | set(getattr(u, "FILAS_DE_PISTA", ())) | set(u.PREFIXOS_REGENERAVEIS)
+            | set(getattr(u, "INDICES_POR_CHAVE", ())))
 
 
 def resolvido_pelo_resolvedor(caminho: str, classes: set) -> bool:

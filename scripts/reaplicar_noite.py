@@ -125,31 +125,22 @@ def _na_base(base: str, rel: str):
     return r.stdout if r.returncode == 0 else None
 
 
-def unir_por_sha(da_arvore: list, do_artefato: list, existe) -> tuple:
-    """União do índice de evidências por `sha256`, só para arquivo que EXISTE. Função pura.
+def unir_por_sha(da_arvore: dict, do_artefato: dict, existe) -> tuple:
+    """União do índice de evidências (`itens`, por sha256), só para arquivo que EXISTE. Função pura.
 
-    `existe(caminho)` é injetado: o índice que cita arquivo ausente mente, e preferir mentir a
-    perder é a troca que este projeto não faz. Devolve (união, quantos_entraram, quantos_sem_arquivo).
-    """
-    por_sha, ordem = {}, []
-    for item in list(da_arvore or []):
-        k = str((item or {}).get("sha256") or "")
-        if k and k not in por_sha:
-            por_sha[k] = dict(item)
-            ordem.append(k)
-    novos, sem_arquivo = 0, 0
-    for item in list(do_artefato or []):
-        k = str((item or {}).get("sha256") or "")
-        if not k or k in por_sha:
+    `existe(caminho)` é injetado: o índice que cita arquivo ausente mente. A árvore vence no que já
+    tem. Devolve (união, quantos_entraram, quantos_sem_arquivo). F55 (14/10/2026): lia a lista
+    `evidencias`, que está vazia — o índice vive em `itens` —, e nenhuma entrada voltava."""
+    uniao, novos, sem_arquivo = dict(da_arvore or {}), 0, 0
+    for k, item in (do_artefato or {}).items():
+        if k in uniao:
             continue
-        caminho = str((item or {}).get("arquivo") or (item or {}).get("caminho") or "")
-        if caminho and not existe(caminho):
+        if not existe(str((item or {}).get("arquivo") or "")):
             sem_arquivo += 1
             continue
-        por_sha[k] = dict(item)
-        ordem.append(k)
+        uniao[k] = item
         novos += 1
-    return ([por_sha[k] for k in ordem], novos, sem_arquivo)
+    return uniao, novos, sem_arquivo
 
 
 def unir_linhas(da_arvore: list, do_artefato: list) -> list:
@@ -442,11 +433,9 @@ def _aplicar_um(rel: str, origem: pathlib.Path, porta: str):
         if porta == "evidencias":
             doc = json.loads(destino.read_text(encoding="utf-8")) if destino.exists() else {}
             novo = json.loads(origem.read_text(encoding="utf-8"))
-            lista = doc.get("evidencias") if isinstance(doc.get("evidencias"), list) else []
-            entrando = novo.get("evidencias") if isinstance(novo.get("evidencias"), list) else []
-            uniao, n, sem = unir_por_sha(lista, entrando,
-                                         lambda c: (RAIZ / c).exists())
-            doc["evidencias"] = uniao
+            uniao, n, sem = unir_por_sha(doc.get("itens"), novo.get("itens"),
+                                         lambda c: bool(c) and (RAIZ / c).exists())
+            doc["itens"] = uniao
             from coletores_base import gravar_em
             gravar_em(destino, doc)
             print(f"     evidencias: +{n} no índice, {sem} sem arquivo preservado (fora)")
@@ -510,14 +499,13 @@ def _autoteste() -> int:
        and porta_de("docs/MANIFEST_SHA256.txt") == "")
 
     uniao, n, sem = unir_por_sha(
-        [{"sha256": "a", "arquivo": "evidencias/a.pdf"}],
-        [{"sha256": "b", "arquivo": "evidencias/b.pdf"},
-         {"sha256": "c", "arquivo": "evidencias/sumiu.pdf"}],
+        {"a": {"arquivo": "evidencias/a.pdf"}},
+        {"b": {"arquivo": "evidencias/b.pdf"}, "c": {"arquivo": "evidencias/sumiu.pdf"}},
         lambda c: c != "evidencias/sumiu.pdf")
-    ok("evidência com arquivo entra", n == 1 and len(uniao) == 2)
+    ok("F55: evidência com arquivo entra no índice `itens`", n == 1 and len(uniao) == 2)
     ok("evidência sem arquivo fica fora — índice não mente", sem == 1)
     ok("evidência repetida por sha não duplica",
-       unir_por_sha([{"sha256": "a"}], [{"sha256": "a"}], lambda c: True)[0] == [{"sha256": "a"}])
+       unir_por_sha({"a": {"x": 1}}, {"a": {"x": 2}}, lambda c: True)[0] == {"a": {"x": 1}})
 
     ok("linhas unem pela base comum",
        unir_linhas(["1", "2", "3"], ["1", "2", "4"]) == ["1", "2", "3", "4"])
