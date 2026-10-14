@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · Domínios oficiais: o mais antigo primeiro
+
+`descobrir_dominios.py` recomeçava sempre do AC e era cortado pelo prazo do elo semanal: 22 dos 54 alvos não eram reverificados desde 23/09. A fila agora começa pelo alvo verificado há mais tempo; saem `--continuar` e `--refazer-sem-dominio`, sem uso. Onde: `descobrir_dominios.py`.
+
 ## 2026-10-14 · #PR · saem três scripts sem uso (consolidação, item 4)
 
 Sem nenhuma chamada na árvore: `contar_filas.py` (era do relatório do monólito semanal, que saiu no #721), `comitar_via_api.py` (os elos empurram pela chave do robô) e `sincronizar_single_file.py` (prévia de chat que não existe mais). `cobertura_docstrings.py`, também sem chamada, fica: é a fonte declarada de um número da auditoria de código.
