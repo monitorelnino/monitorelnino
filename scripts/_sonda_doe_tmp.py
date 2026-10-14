@@ -1,22 +1,20 @@
-"""Sonda temporária (ramo diag): formulários de busca AC/PI e WordPress RO."""
-import sys, re, json, urllib.request, urllib.parse
+"""Sonda temporária (ramo diag): estrutura do resultado AC/PI, busca WP RO."""
+import sys, re, urllib.request, urllib.parse
 sys.path.insert(0, ".")
 from coletores_base import buscar
-def mostra(rot, f):
-    try:
-        b = f(); t = b.decode("latin-1", "replace")
-        print(json.dumps({"rot": rot, "ok": True, "bytes": len(b), "inicio": t[:300],
-                          "inputs": re.findall(r"<(?:input|select)[^>]*>", t, re.I)[:20],
-                          "pdfs": sorted(set(re.findall(r'href="([^"]*(?:download|\.pdf)[^"]*)"', t, re.I)))[:8],
-                          "conta": t.lower().count("homolog")}, ensure_ascii=False))
-    except Exception as e:
-        print(json.dumps({"rot": rot, "ok": False, "erro": f"{type(e).__name__}: {str(e)[:200]}"}, ensure_ascii=False))
+UA = {"User-Agent": "MonitorElNino/1.0 (+https://monitorelnino.com.br)"}
 def post(url, campos):
-    req = urllib.request.Request(url, data=urllib.parse.urlencode(campos).encode(), headers={"User-Agent": "MonitorElNino/1.0 (+https://monitorelnino.com.br)"})
-    return urllib.request.urlopen(req, timeout=40).read()
-mostra("AC home", lambda: buscar("https://diario.ac.gov.br/", timeout=40))
-mostra("AC post palavra", lambda: post("https://diario.ac.gov.br/", {"palavra": "homologa", "ano_palavra": "2026"}))
-mostra("RO wp search", lambda: buscar("https://diof.ro.gov.br/wp-json/wp/v2/search?search=homologa&per_page=10", timeout=40))
-mostra("RO wp types", lambda: buscar("https://diof.ro.gov.br/wp-json/wp/v2/types", timeout=40))
-mostra("RO busca form", lambda: buscar("https://diof.ro.gov.br/busca/", timeout=40))
-mostra("PI post", lambda: post("http://www.diariooficial.pi.gov.br/busca_diario.php", {"ocorrencia": "homologa"}))
+    return urllib.request.urlopen(urllib.request.Request(url, data=urllib.parse.urlencode(campos).encode(), headers=UA), timeout=40).read()
+def trecho(rot, b, ancora):
+    t = b.decode("latin-1", "replace"); i = t.find(ancora)
+    print(f"=== {rot} bytes={len(b)} idx={i}")
+    print(re.sub(r"\s+", " ", t[max(0, i - 1500): i + 2500]))
+for rot, f, a in [
+    ("AC", lambda: post("https://diario.ac.gov.br/", {"palavra": "situação de emergência".encode("latin-1"), "ano_palavra": "2026", "tipoBusca": "0", "paginaIni": "0"}), "download.php"),
+    ("PI", lambda: post("http://www.diariooficial.pi.gov.br/busca_diario.php", {"ocorrencia": "situação de emergência".encode("latin-1")}), "diario/20"),
+    ("RO", lambda: buscar("https://diof.ro.gov.br/?s=homologa", timeout=40), "homolog"),
+]:
+    try:
+        trecho(rot, f(), a)
+    except Exception as e:
+        print(rot, "ERRO", type(e).__name__, e)
