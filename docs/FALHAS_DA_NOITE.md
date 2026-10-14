@@ -462,8 +462,8 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Sintoma:** Em outubro, o canal do diário municipal (Querido Diário) consultou 50 municípios distintos no mês inteiro: os mesmos 50 em toda noite, nas três chamadas da noite.
 - **Causa:** `noturno_diarios.yml` chama `coletar_diarios_municipais.py --tamanho 50` três vezes sem `--lote`; o padrão era lote 1, ou seja `ordem[0:50]` sempre. A rotação só existia com `--pendentes-desde`, usado pelo `atualizar.py`.
 - **Prova:** data/log_buscas/2026-10.jsonl, canal DOM: 50 ibge por dia em 01–12/10, interseção de 50 entre noites seguidas, 50 distintos no mês
-- **Correção:** Sem `--lote`, a rodada toma os próximos da ordem de prioridade sem consulta ao Querido Diário nos últimos 45 dias (`pendentes_na_janela`, que já existia); 150 por noite cobrem os 5.571 numa volta.
-- **Caso de teste:** `coletar_diarios_municipais.py --autoteste: F51: sem --lote a fila anda`
+- **Correção:** Sem `--lote`, a rodada toma os próximos da ordem de prioridade sem consulta ao Querido Diário nos últimos 45 dias (`pendentes_na_janela`, que já existia); 150 por noite cobrem os 5.571 numa volta. Em 14/10/2026 a rotação de 45 dias deu lugar à varredura semanal dos municípios com diário indexado no Querido Diário (decisão da editoria).
+- **Caso de teste:** `coletar_diarios_municipais.py --autoteste: F51: sem --lote, todo indexado pendente na semana`
 
 ## F52 · Busca web pede só motores que não respondem do runner
 
