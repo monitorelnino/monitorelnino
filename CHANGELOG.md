@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · juiz 1.5: nome como palavra inteira e autoridade do próprio ente
+
+A identidade casava o município por substring sem caixa ("primavera", a estação, nomeava Primavera/PA) e a autoridade aceitava "secretário de" de qualquer esfera (uma nota técnica do MS virou ato municipal). Agora o nome casa como palavra inteira com inicial maiúscula e a autoridade tem de ser da esfera do ente. Só aperta; METODOLOGIA §106.
+
 ## 2026-10-13 · #PR · frescor dos alertas medido no fuso da redação
 
 `verificar_frescor_defesa_civil.py` montava o "agora" com a data de Brasília e a hora do runner (UTC), enquanto `gerado_em` é gravado em Brasília: a idade do alerta ganhava três horas e o portão reprovou toda a CI a partir das 22:03 UTC (#717). Agora data e hora vêm de `FUSO_EDITORIAL`.
