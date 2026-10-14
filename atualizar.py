@@ -166,27 +166,6 @@ def main():
     hoje_iso = hoje_editorial().isoformat()
     dia_semana = hoje_editorial().weekday()  # no fuso da redação, nunca no do runner (ver topo)
     em_intensivo = bool(intensivo) and intensivo_de <= hoje_iso <= intensivo
-    if os.environ.get("ENSAIO"):
-        print("[ensaio] execução de ensaio: tudo roda como no dia da semana intensiva; NADA será comitado nem publicado.")
-        em_intensivo = True
-
-    # RODADA COMPLETA SOB DEMANDA (23/09/2026, pedido da editoria). Diferente do ensaio:
-    # roda tudo E comita, fora do dia de publicação. Existe porque a alternativa era mexer
-    # nas variáveis INTENSIVO_DE/INTENSIVO_ATE do repositório, que valem também para os três
-    # crons — uma edição fora de hora viraria uma semana inteira de rodadas completas, e
-    # ninguém lembraria de desfazer.
-    #
-    # É destrava DECLARADA, não atalho: sai no log, exige disparo manual com o botão, e a
-    # edição publicada leva a data de HOJE. Isso é consequência editorial real — a cadência
-    # semanal é compromisso público (obrigado.html, pesquisadores.html dizem ao leitor
-    # quando o banco muda), e uma edição fora do dia declarado é decisão da editoria,
-    # tomada a cada disparo, nunca herdada de uma configuração esquecida.
-    if os.environ.get("FORCAR_RODADA_COMPLETA"):
-        print(f"[cadência] RODADA COMPLETA SOB DEMANDA: hoje é "
-              f"{hoje_editorial():%d/%m/%Y} e o dia de publicação declarado é "
-              f"{NOME_DIA_PUBLICACAO}. Rodando tudo e comitando por pedido explícito da "
-              f"editoria; a edição levará a data de hoje.")
-        em_intensivo = True
 
     # Sinais oficiais de risco (01/09/2026, METODOLOGIA §23): coleta as três camadas
     # para monitor-de-riscos.html. NÃO é bloqueante e NÃO toca no índice — fonte fora do
@@ -217,7 +196,7 @@ def main():
 
     # Guarda contra rodada completa duplicada no mesmo dia editorial (ver topo):
     # o cron diário e o cron semanal caem ambos no dia de publicação.
-    if not em_intensivo and not os.environ.get("ENSAIO") and ja_publicou_hoje():
+    if not em_intensivo and ja_publicou_hoje():
         print(f"[cadência] a edição de {hoje_editorial():%d/%m/%Y} já foi publicada nesta "
               f"data (data/meta.json); execução encerra sem recoletar nem comitar.")
         return 0
@@ -242,12 +221,7 @@ def main():
             lote = str(max(1, min(7, decorridos + 1)))  # D0 = lote 1 … D6+ = lote 7
         else:
             lote = "1"
-    if em_intensivo and os.environ.get("FINALIZAR_VARREDURA_HOJE") == "1":
-        # 03/09/2026: pedido editorial pontual — encerrar a varredura integral HOJE, numa rodada só,
-        # em vez de seguir o ritmo por dias restantes. Ativado só pelo input manual do workflow.
-        rodar([sys.executable, "coletar_diarios_municipais.py", "--pendentes-desde", intensivo_de,
-               "--ate", intensivo, "--tamanho", os.environ.get("TAMANHO_LOTE", "150"), "--tudo"])
-    elif em_intensivo and not os.environ.get("LOTE_DIARIOS"):
+    if em_intensivo and not os.environ.get("LOTE_DIARIOS"):
         # 03/09/2026 (decisão editorial): varredura INTEGRAL — todos os 5.571 municípios até INTENSIVO_ATE.
         # Cada dia consulta os próximos ainda não consultados na janela; o tamanho é recalculado a cada
         # rodada para caber nos dias que restam (mínimo TAMANHO_LOTE). Consulta não é verificação (§4.1.2).
