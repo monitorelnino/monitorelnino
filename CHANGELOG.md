@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · painel de saúde mede a cobertura de 15 dias
+
+Meta da editoria: todo município verificado a cada 15 dias. O painel (`docs/SAUDE_PIPELINE.md`) passa a dizer quantos dos 5.571 têm verificação real nos 15 dias até a data mais nova do livro de fontes, por canal (web, Querido Diário, consorciado, DOE). Não conta motor mudo, ruído de antes de 13/10, diário não indexado nem DOU/SEDEC. Medida de hoje: 1.209.
+
 ## 2026-10-14 · #PR · rodada semanal vira chamador do coletor (decisão 2)
 
 `atualizar.yml` (884 linhas) passa a chamar `_coletor.yml` com a mesma fila de comandos: janela, prazo, `.feito`, commit com união e coleta perdida vêm de lá. Saem, por decisão da editoria, a cortina "em atualização", a reposição própria (o publicador repõe), o contador da cortina, o vigia do desfecho e três disparos manuais; fica a reposição urgente. O coletor ganha as chaves opcionais no passo Coletar; sai o portão de tetos por passo, que o prazo do coletor tornou redundante.
