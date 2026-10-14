@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · evidência dos instrumentos estaduais (A3-22)
+
+Nenhum dos 54 instrumentos estaduais tinha cópia preservada: o laço que devia achá-los lia o endereço no registro da UF, e o endereço mora em cada instrumento. A preservação noturna passa a incluir todo instrumento estadual pontuado com endereço (31 hoje) e grava o hash nele; o laço que nunca achava nada sai.
+
 ## 2026-10-14 · #PR · OCR: PDF fora do alcance segue o back-off das filas
 
 PDFs escaneados acima de 5 MB do domínio da Defesa Civil do AM, que o runner não alcança, eram retentados no OCR toda noite para sempre (18 lacunas por noite). A fila de OCR passa a usar o mesmo back-off da fila do juiz (1, 3, 7 dias; cinco tentativas e sai, com o motivo no item), que sobe para `coletores_base`.
