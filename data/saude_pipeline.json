@@ -6615,7 +6615,106 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-14",
+   "script": "monitorar_imprensa_regional.py",
+   "inicio": "2026-10-14T06:31:39",
+   "duracao_s": 76.6,
+   "itens": 40,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-14",
+   "script": "monitorar_imprensa_saude.py",
+   "inicio": "2026-10-14T06:32:55",
+   "duracao_s": 1.0,
+   "itens": null,
+   "status": "erro",
+   "erro": "KeyError: 'hash'"
+  },
+  {
+   "data": "2026-10-14",
+   "script": "monitorar_atos_resposta.py",
+   "inicio": "2026-10-14T06:32:56",
+   "duracao_s": 78.9,
+   "itens": 3511,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-14",
+   "script": "monitorar_politica_por_inteiro.py",
+   "inicio": "2026-10-14T06:34:14",
+   "duracao_s": 3.1,
+   "itens": 3511,
+   "status": "erro",
+   "erro": "NameError: name 'ler' is not defined. Did you mean: 'len'?"
+  },
+  {
+   "data": "2026-10-14",
+   "script": "monitorar_sinais_federais.py",
+   "inicio": "2026-10-14T06:34:17",
+   "duracao_s": 4.3,
+   "itens": 10,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-14",
+   "script": "detectar_marcos_federais.py",
+   "inicio": "2026-10-14T06:34:21",
+   "duracao_s": 1.2,
+   "itens": 0,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-14",
+   "script": "descobrir_planos.py",
+   "inicio": "2026-10-14T06:34:22",
+   "duracao_s": 1166.1,
+   "itens": 42,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-14",
+   "script": "monitorar_redes_oficiais.py",
+   "inicio": "2026-10-14T06:53:48",
+   "duracao_s": 1182.9,
+   "itens": null,
+   "status": "erro",
+   "erro": "NameError: name 'caidos' is not defined. Did you mean: 'dados'?"
+  },
+  {
+   "data": "2026-10-14",
+   "script": "seguir_pistas.py",
+   "inicio": "2026-10-14T07:13:30",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-14",
+   "script": "triar_confianca_pistas.py",
+   "inicio": "2026-10-14T07:13:31",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-14",
+   "script": "verificar_pista_imprensa.py",
+   "inicio": "2026-10-14T07:13:31",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
   }
  ],
- "atualizado_em": "2026-10-14T06:42:25"
+ "atualizado_em": "2026-10-14T07:13:31"
 }

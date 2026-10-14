@@ -2,35 +2,42 @@
  "data": "2026-10-14",
  "formato_versao": 1,
  "etapas": {
+  "descobrir_planos": {
+   "achados_novos": 0,
+   "alvos_consultados": 40,
+   "fila_acumulada": 84
+  },
   "funil_saude_estadual": {
-   "consultas": 35,
    "com_resultado_bruto": 25,
+   "consultas": 35,
    "pistas": 102
   },
   "juiz": {
-   "pistas_recebidas": 380,
    "com_documento": 62,
+   "pistas_recebidas": 380,
    "promovidas": 3,
-   "recusa_documento_inacessivel": 62,
-   "recusa_texto_nao_extraivel": 18,
-   "recusa_ente_nao_confirmado": 36,
-   "recusa_citacao_incompleta": 7,
    "recusa_autoridade_nao_confirmada": 9,
+   "recusa_citacao_incompleta": 7,
+   "recusa_documento_inacessivel": 62,
+   "recusa_ente_nao_confirmado": 36,
    "recusa_natureza_duvidosa": 5,
    "recusa_plano_sem_identificacao": 1,
    "recusa_resposta": 1,
-   "recusa_sem_documento_primario": 238
+   "recusa_sem_documento_primario": 238,
+   "recusa_texto_nao_extraivel": 18
   },
-  "descobrir_planos": {
-   "alvos_consultados": 20,
-   "achados_novos": 0,
-   "fila_acumulada": 42
+  "rede_social": {
+   "entes_consultados": 20,
+   "lacunas": 0,
+   "perfis_confirmados": 64,
+   "pistas": 5,
+   "sem_perfil": 3
   },
   "transferencias_municipais": {
-   "consultas": 9,
    "com_resultado_bruto": 9,
+   "consultas": 9,
    "municipios": 50121
   }
  },
- "atualizado_em": "2026-10-14T06:32:45"
+ "atualizado_em": "2026-10-14T07:13:30"
 }
