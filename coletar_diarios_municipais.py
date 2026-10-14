@@ -29,7 +29,7 @@ from coletores_base import (carimbar_atos, buscar, preservar_evidencia, preserva
                             DECISOES_LOG,
                             abrir_lote_log, fechar_lote_log, descarregar_lote_log,
                             abrir_lote_livro, fechar_lote_livro, descarregar_lote_livro,
-                            rodar_autoteste, hoje_editorial)
+                            rodar_autoteste, hoje_editorial, pendentes_na_janela)
 from scripts.pistas import sincronizar as sincronizar_pistas  # 05/10/2026: a fila tem UMA porta
 from classificar_pista_civil import triagem_completa
 
@@ -77,17 +77,6 @@ def ordem_prioridade(por_cod: dict, cadastro: dict, pop: dict) -> list:
     rank_uf = {uf: i for i, uf in enumerate(ufs)}
     fim = len(ufs)
     return sorted(por_cod, key=lambda c: (rank_uf.get(por_cod[c]["uf"], fim), -int(pop.get(c, 0) or 0)))
-
-
-def pendentes_na_janela(ordem: list, livro: dict, desde_janela: str) -> list:
-    """Municípios, na ordem de prioridade, SEM consulta ao Querido Diário datada >= desde_janela.
-    Varredura integral (03/09/2026): cada dia consome os próximos ainda não consultados —
-    nunca repete quem já foi visto na janela e nunca pula ninguém."""
-    mun = (livro or {}).get("municipios", {})
-    def consultado(cod):
-        return any(f.get("fonte") == FONTE_QD and (f.get("data") or "") >= desde_janela
-                   for f in mun.get(str(cod).zfill(7), {}).get("fontes", []))
-    return [c for c in ordem if not consultado(c)]
 
 
 def tamanho_para_cobrir(n_pendentes: int, hoje_iso: str, ate_iso: str, minimo: int, maximo: int = 1500) -> int:
@@ -260,7 +249,7 @@ def coletar_lote(lote: int, tamanho: int, desde: str, pendentes_desde: str = "",
     cadastro = ler("cadastro_prioritarios.json", {}) or {}
     ordem = ordem_prioridade(por_cod, cadastro, pop)
     if pendentes_desde:
-        pend = pendentes_na_janela(ordem, ler("fontes_consultadas.json", {}), pendentes_desde)
+        pend = pendentes_na_janela(ordem, ler("fontes_consultadas.json", {}), FONTE_QD, pendentes_desde)
         if tudo:
             # 03/09/2026: pedido editorial de encerrar a varredura HOJE — consulta TODOS os
             # pendentes numa rodada só, ignorando o ritmo por dias restantes (só usado sob pedido
@@ -282,7 +271,7 @@ def coletar_lote(lote: int, tamanho: int, desde: str, pendentes_desde: str = "",
         # consultas em município sem diário no QD.
         cobertura = (ler("cobertura_qd.json", {}) or {}).get("municipios", {})
         desde_semana = (hoje_editorial() - timedelta(days=JANELA_SEMANAL)).isoformat()
-        alvo = [c for c in pendentes_na_janela(ordem, ler("fontes_consultadas.json", {}), desde_semana)
+        alvo = [c for c in pendentes_na_janela(ordem, ler("fontes_consultadas.json", {}), FONTE_QD, desde_semana)
                 if (cobertura.get(c) or {}).get("cobertura_qd") is not False]
     atos = ler("atos_resposta.json"); pistas = ler("pistas_imprensa.json", {"_governanca": "", "pistas": []})
     pistas.setdefault("pistas", [])
@@ -451,7 +440,7 @@ def autoteste() -> int:
     def t5():  # varredura integral: quem já foi consultado na janela sai da fila; quem foi antes da janela volta
         livro = {"municipios": {"0000001": {"fontes": [{"fonte": FONTE_QD, "data": "2026-09-03"}]},
                                 "0000002": {"fontes": [{"fonte": FONTE_QD, "data": "2026-08-20"}]}}}
-        return pendentes_na_janela(["1", "2", "3"], livro, "2026-09-03") == ["2", "3"]
+        return pendentes_na_janela(["1", "2", "3"], livro, FONTE_QD, "2026-09-03") == ["2", "3"]
     def t6():  # dimensionamento: 5.421 pendentes em 8 dias → 678/dia; nunca abaixo do mínimo; teto respeitado
         return (tamanho_para_cobrir(5421, "2026-09-03", "2026-09-10", 150) == 678
                 and tamanho_para_cobrir(100, "2026-09-03", "2026-09-10", 150) == 150
@@ -464,7 +453,7 @@ def autoteste() -> int:
         return decisao_para_vazio(True, True) == "coberto_sem_mencao" and decisao_para_vazio(False) == "sem_cobertura_qd" and decisao_para_vazio(None) == "erro"
     def t7():  # --tudo: alvo é a fila inteira de pendentes, sem fatiar por tamanho/dias restantes
         livro = {"municipios": {"1": {"fontes": [{"fonte": FONTE_QD, "data": "2026-08-20"}]}}}  # fora da janela: pendente
-        pend = pendentes_na_janela(["1", "2", "3"], livro, "2026-09-03")
+        pend = pendentes_na_janela(["1", "2", "3"], livro, FONTE_QD, "2026-09-03")
         return pend == ["1", "2", "3"]  # os três pendentes; --tudo (testado no fluxo real) os consultaria todos, não só um fatiamento
     def t10():
         """25/09/2026: TODA decisão que este coletor inventa tem de caber no vocabulário fechado

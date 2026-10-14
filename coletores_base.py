@@ -2066,6 +2066,19 @@ def marcar_fonte_consultada(ibges, fonte: str, nivel: str, resultado: str = "con
     _gravar_livro(livro)
 
 
+def pendentes_na_janela(ordem: list, livro: dict, fonte: str, desde: str) -> list:
+    """Municípios, na ordem dada, SEM entrada de `fonte` no livro datada >= `desde`. Função pura.
+
+    Como o livro só marca resposta real (14/10/2026), quem a fonte não respondeu volta primeiro, e
+    quem ela já viu na janela sai da vez — sem cursor nem rotação à parte. Nasceu no canal dos
+    diários municipais (varredura integral, 03/09/2026) e serve a todo canal que roda em fila."""
+    mun = (livro or {}).get("municipios", {})
+    def consultado(cod):
+        return any(f.get("fonte") == fonte and (f.get("data") or "") >= desde
+                   for f in mun.get(str(cod).zfill(7), {}).get("fontes", []))
+    return [c for c in ordem if not consultado(c)]
+
+
 def marcar_fato_municipal(ibge, campo: str, valor):
     """Fatos binários por município (§3.3): decreto_reconhecido, decreto_homologado,
     plano_declarado_munic, plano_declarado_icm."""
