@@ -441,7 +441,7 @@ def coletar_fonte(uf: str, slug: str, nome_fonte: str, desde_iso: str, ate_iso: 
     primeiro: mais barato, e cobre o dia (improvável, mas não impossível) em que o site volte a
     servir o token no próprio HTML."""
     candidatos = candidatos_da_uf(por_cod, uf)
-    pistas_todas, decretos_todos = [], []
+    pistas_todas, decretos_todos, lidos = [], [], set()
     dias_com_edicao = dias_com_erro = dias_ilegiveis = uteis_sem_edicao = 0
     opener, jar = nova_sessao()
     # Caminho barato primeiro: GET simples + extrair_token(). Normalmente devolve o placeholder
@@ -511,6 +511,10 @@ def coletar_fonte(uf: str, slug: str, nome_fonte: str, desde_iso: str, ate_iso: 
                                  canal="DOM-consorciado", camada=2, uf=uf, strings=[ed["url_pdf"]])
                 continue
             h = preservar_evidencia(pdf_bytes, ed["url_pdf"], "pdf", "coletar_diarios_consorciados")
+            # 14/10/2026: o município cujo cabeçalho está na edição lida teve os atos lidos — é ele,
+            # e só ele, que o livro de fontes marca (antes o canal não marcava município nenhum).
+            lidos.update(candidatos[n] for n in (normalizar_nome(m.group(1))
+                                                 for m in PAD_CABECALHO.finditer(texto)) if n in candidatos)
             decretos, pistas = classificar_trechos_consorciado(texto, candidatos)
             for d in decretos:
                 # 08/10/2026 (A3-08): toda data sai pela porta, em dd/mm/aaaa. `data_publicacao`
@@ -536,8 +540,8 @@ def coletar_fonte(uf: str, slug: str, nome_fonte: str, desde_iso: str, ate_iso: 
             dias_com_edicao += 1
         if not edicoes and dia.weekday() < 5:
             uteis_sem_edicao += 1
-        marcar_fonte_consultada([], nome_fonte, "nao_verificado",
-                                resultado=f"{dia.isoformat()}: {len(edicoes)} edição(ões)")
+    marcar_fonte_consultada(sorted(lidos), nome_fonte, "nao_verificado",
+                            resultado=f"atos lidos em {dias_com_edicao} edição(ões), {desde_iso} a {ate_iso}")
     # 25/09/2026: um diário de associação municipal publica em dia útil. Nenhuma edição em
     # `TETO_UTEIS_SEM_EDICAO` dias úteis não é "não publicaram": é a fonte fora do ar, ou o slug
     # que mudou. Medido: os dois slugs da Bahia erram em TODA data testada, enquanto MG, GO, CE,

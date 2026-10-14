@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · livro de fontes marca só resposta real
+
+Prova de cobertura por município e canal (central, 14/10): a busca web deixa de marcar consulta com motor mudo; o Querido Diário marca só município indexado consultado (não "não indexado" nem erro); o diário consorciado passa a marcar os municípios cujo cabeçalho estava nas edições lidas — antes não marcava nenhum. O DOE já marcava só a UF lida.
+
 ## 2026-10-14 · #PR · rodada semanal vira chamador do coletor (decisão 2)
 
 `atualizar.yml` (884 linhas) passa a chamar `_coletor.yml` com a mesma fila de comandos: janela, prazo, `.feito`, commit com união e coleta perdida vêm de lá. Saem, por decisão da editoria, a cortina "em atualização", a reposição própria (o publicador repõe), o contador da cortina, o vigia do desfecho e três disparos manuais; fica a reposição urgente. O coletor ganha as chaves opcionais no passo Coletar; sai o portão de tetos por passo, que o prazo do coletor tornou redundante.
