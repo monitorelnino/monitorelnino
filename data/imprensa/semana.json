@@ -178,10 +178,10 @@
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "13/10/2026 22:13",
+   "referencia": "14/10/2026 03:31",
    "fonte": "Cemaden",
    "url_fonte": "https://www.gov.br/cemaden/pt-br",
-   "consultado_em": "13/10/2026 22:13",
+   "consultado_em": "14/10/2026 03:31",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -194,14 +194,14 @@
    "id": "municipios_aviso_inmet",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob aviso do Inmet",
-   "valor": 3656,
+   "valor": 3712,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "13/10/2026 22:13",
+   "referencia": "14/10/2026 03:31",
    "fonte": "Inmet",
    "url_fonte": "https://portal.inmet.gov.br/",
-   "consultado_em": "13/10/2026 22:13",
+   "consultado_em": "14/10/2026 03:31",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -214,14 +214,14 @@
    "id": "decreto_e_alerta_ao_mesmo_tempo",
    "grupo": "risco_agora",
    "rotulo": "Municípios com decreto de emergência e alerta ao mesmo tempo",
-   "valor": 616,
+   "valor": 546,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "13/10/2026 22:13",
+   "referencia": "14/10/2026 03:31",
    "fonte": "MARÉ (cruzamento das duas consultas)",
    "url_fonte": null,
-   "consultado_em": "13/10/2026 22:13",
+   "consultado_em": "14/10/2026 03:31",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -234,12 +234,12 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 431,
+   "valor": 4295,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
    "url_fonte": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
-   "consultado_em": "13/10/2026",
+   "consultado_em": "14/10/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -248,54 +248,66 @@
    "lista": [
     {
      "uf": "PA",
-     "valor": 256
-    },
-    {
-     "uf": "RR",
-     "valor": 31
-    },
-    {
-     "uf": "BA",
-     "valor": 25
-    },
-    {
-     "uf": "MA",
-     "valor": 24
-    },
-    {
-     "uf": "MT",
-     "valor": 22
-    },
-    {
-     "uf": "AP",
-     "valor": 20
+     "valor": 2136
     },
     {
      "uf": "PI",
-     "valor": 19
+     "valor": 417
+    },
+    {
+     "uf": "MA",
+     "valor": 390
+    },
+    {
+     "uf": "BA",
+     "valor": 386
+    },
+    {
+     "uf": "AP",
+     "valor": 258
+    },
+    {
+     "uf": "TO",
+     "valor": 208
     },
     {
      "uf": "MG",
-     "valor": 11
+     "valor": 181
+    },
+    {
+     "uf": "MT",
+     "valor": 129
+    },
+    {
+     "uf": "RR",
+     "valor": 78
     },
     {
      "uf": "GO",
-     "valor": 10
+     "valor": 55
     },
     {
      "uf": "RO",
-     "valor": 5
+     "valor": 23
     },
     {
      "uf": "AM",
-     "valor": 4
+     "valor": 19
+    },
+    {
+     "uf": "AL",
+     "valor": 9
     },
     {
      "uf": "AC",
      "valor": 2
     },
     {
-     "uf": "AL",
+     "uf": "RN",
+     "valor": 2
+    },
+    {
+     "uf": "CE",
      "valor": 1
     },
     {
@@ -311,18 +323,18 @@
    "id": "temperatura_desvio_capital",
    "grupo": "risco_agora",
    "rotulo": "A maior diferença de temperatura máxima em relação ao normal, em grau Celsius",
-   "valor": 6.0,
+   "valor": 4.9,
    "unidade": "°C",
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "13/10/2026",
+   "referencia": "14/10/2026",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "url_fonte": null,
-   "consultado_em": "13/10/2026",
+   "consultado_em": "14/10/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "máxima prevista de 40.0 °C contra a média de 34.0 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 38.0 °C contra a média de 33.1 °C do mês; 24 capital(is) com normal publicada",
    "secundaria": null,
    "lista": [],
    "pagina_de_origem": "monitor-de-riscos.html"
@@ -345,15 +357,15 @@
    "nota": "faixa da própria escala europeia, acima de 40; 27 capital(is) com leitura",
    "secundaria": null,
    "lista": [
-    "AC",
     "AM",
-    "BA",
     "DF",
+    "ES",
     "GO",
     "MG",
     "MS",
     "MT",
     "PI",
+    "PR",
     "RJ",
     "RO",
     "RR",
