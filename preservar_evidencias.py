@@ -12,7 +12,7 @@ não altera nenhum campo de julgamento — só acrescenta prova.
 """
 import hashlib, io, mimetypes, re, sys, urllib.error
 from pathlib import Path
-from coletores_base import (buscar, buscar_com_procedencia, preservar_evidencia, ler, gravar,
+from coletores_base import (buscar, buscar_com_procedencia, preservar_evidencia, ler, gravar, proxima_tentativa,
                             registrar_lacuna, log_busca, EVID, redigir_dados_pessoais, hoje_editorial)
 
 LIMITE_PDF_COPIA = 5 * 1024 * 1024   # cópia do binário só até 5 MB; o TEXTO extraído é guardado sempre
@@ -275,10 +275,18 @@ def alvos_ocr(itens: dict) -> list:
 
 
 def ordenar_alvos_ocr(alvos: list, hoje: str) -> list:
-    """A6-06 (12/10/2026): a fila de OCR anda. Quem já falhou HOJE espera o dia seguinte, e entre os
-    demais vai primeiro quem falhou menos e há mais tempo. Antes, os mesmos 6 PDFs do AM falhavam
-    3×/dia no topo da fila e os outros nunca chegavam a ser lidos. Função pura."""
-    fora = [(h, it) for h, it in alvos if str(it.get("ocr_ultima_falha") or "")[:10] != hoje]
+    """A6-06 (12/10/2026): a fila de OCR anda, e vai primeiro quem falhou menos e há mais tempo.
+    14/10/2026: quem falhou espera o back-off das filas (`proxima_tentativa`: 1, 3, 7 dias) e, na
+    quinta falha, sai da fila — o item guarda as tentativas e o motivo. Antes, um PDF fora do alcance
+    do runner era retentado todo dia para sempre (18 lacunas por noite do mesmo domínio). Função pura."""
+    from datetime import date
+    def na_vez(it):
+        if not it.get("ocr_ultima_falha"):
+            return True
+        prox = proxima_tentativa(int(it.get("ocr_tentativas") or 0),
+                                 date.fromisoformat(str(it["ocr_ultima_falha"])[:10]))
+        return prox is not None and prox.isoformat() <= hoje
+    fora = [(h, it) for h, it in alvos if na_vez(it)]
     return sorted(fora, key=lambda a: (int(a[1].get("ocr_tentativas") or 0),
                                        str(a[1].get("ocr_ultima_falha") or "")))
 
@@ -382,8 +390,12 @@ def autoteste_ocr() -> int:
     _al = [("x", {"ocr_tentativas": 3, "ocr_ultima_falha": "2026-10-10"}),
            ("y", {"ocr_tentativas": 1, "ocr_ultima_falha": "2026-10-12"}),
            ("z", {}), ("w", {"ocr_tentativas": 1, "ocr_ultima_falha": "2026-10-09"})]
-    if [h for h, _ in ordenar_alvos_ocr(_al, "2026-10-12")] != ["z", "w", "x"]:
+    if [h for h, _ in ordenar_alvos_ocr(_al, "2026-10-12")] != ["z", "w"]:   # x espera 7 dias
         falhas.append("A6-06: a fila de OCR não anda — quem falhou hoje ou mais vezes ficou na frente")
+    if [h for h, _ in ordenar_alvos_ocr([("v", {"ocr_tentativas": 5, "ocr_ultima_falha": "2026-09-01"}),
+                                          ("u", {"ocr_tentativas": 2, "ocr_ultima_falha": "2026-10-11"})],
+                                         "2026-10-12")] != []:
+        falhas.append("OCR: a quinta falha não tirou o item da fila, ou o back-off de 3 dias não esperou")
     # 1c. (A3-22) o instrumento estadual pontuado com endereço entra na fila de preservação
     _regs = registros_a_preservar([], {"ufs": [{"uf": "AC", "instrumentos": [
         {"status": "READ", "url": "https://ac.gov.br/x", "tipo": "plano"},

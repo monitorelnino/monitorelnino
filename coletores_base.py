@@ -2066,6 +2066,20 @@ def marcar_fonte_consultada(ibges, fonte: str, nivel: str, resultado: str = "con
     _gravar_livro(livro)
 
 
+BACKOFF_DIAS = (1, 3, 7)
+TENTATIVAS_ATE_PERSISTENTE = 5
+
+
+def proxima_tentativa(n_feitas: int, hoje):
+    """A data da próxima tentativa técnica depois de `n_feitas`, ou None quando esgotou. Função pura.
+
+    1, 3 e depois 7 dias; na quinta tentativa não há próxima. Nasceu na fila do juiz (pista cujo
+    documento não se lê); serve a toda fila que tenta de novo uma fonte fora do alcance."""
+    if n_feitas >= TENTATIVAS_ATE_PERSISTENTE:
+        return None
+    return hoje + timedelta(days=BACKOFF_DIAS[min(max(n_feitas, 1) - 1, len(BACKOFF_DIAS) - 1)])
+
+
 def pendentes_na_janela(ordem: list, livro: dict, fonte: str, desde: str) -> list:
     """Municípios, na ordem dada, SEM entrada de `fonte` no livro datada >= `desde`. Função pura.
 
