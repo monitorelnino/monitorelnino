@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · DOE do Acre entra na busca
+
+O DOE-AC busca por formulário (POST) e lista data, número e PDF da edição; o do PI também, mas o índice dele para em 2021. A busca do TO vira `itens_por_busca`, comum ao TO e ao AC: só a edição da janela desce ao PDF, a mais nova primeiro. Saúde estadual usa o mesmo mapa de adaptadores. Onde: `coletar_doe.py`, `coletar_saude_estadual.py`, `data/fontes_doe.json`.
+
 ## 2026-10-14 · #PR · Domínios oficiais: o mais antigo primeiro
 
 `descobrir_dominios.py` recomeçava sempre do AC e era cortado pelo prazo do elo semanal: 22 dos 54 alvos não eram reverificados desde 23/09. A fila agora começa pelo alvo verificado há mais tempo; saem `--continuar` e `--refazer-sem-dominio`, sem uso. Onde: `descobrir_dominios.py`.
