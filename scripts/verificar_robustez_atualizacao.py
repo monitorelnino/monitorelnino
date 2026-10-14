@@ -13,7 +13,8 @@ alterar, regenera os derivados como a rotina faz e exige todos os runtimes verde
   4. saúde: 2 UFs passam a NOVO/READ com documento e data → mapas e quadrantes;
   5. financiamento: série semanal de 8 semanas em 8 rotas + valores por UF em 3 rotas → gráfico
      empilhado, coroplético, seletor;
-  6. sinais: aviso INMET e ONI coletados → mapas de sinais e cartões.
+  6. sinais: aviso INMET e ONI coletados → mapas de sinais e cartões;
+  7. alertas: coleta de avisos com mais de 24 horas → a página declara a parada (F28).
 Depois, roda: recalcular --write, gerar_painel --fichas, feeds, dados abertos, e os seis runtimes
 + estrutura + acessibilidade + vocabulário público. Nada é gravado no repositório real.
 """
@@ -95,6 +96,8 @@ def perturbar(T: pathlib.Path):
         sr["uf"]["SC"]["avisos_inmet"] = {"fonte": "inmet_avisos", "documento": "Avisos meteorológicos vigentes (INMET)", "url": "https://alertas2.inmet.gov.br/", "consultado_em": "06/09/2026",
                                           "lista": [{"tipo": "Onda de calor", "nivel": "laranja"}, {"tipo": "Chuvas intensas", "nivel": "amarelo"}], "n": 2, "texto": "2 avisos vigentes"}
     w(D / "sinais_risco.json", sr)
+    # 7. alertas vencidos — toda noite a coleta passa das 24 horas antes do elo de sinais (F28)
+    al = j(D / "alertas" / "vigentes.json"); al["gerado_em"] = "01/09/2026 00:00"; w(D / "alertas" / "vigentes.json", al)
 
 def main() -> int:
     T = pathlib.Path(tempfile.mkdtemp(prefix="robustez_"))
@@ -115,7 +118,7 @@ def main() -> int:
         for cmd, out in falhas: print("     ---", " ".join(cmd[1:]), "---"); print("     " + out.replace("\n", "\n     "))
         media = json.load(open(R / "data" / "indice.json", encoding="utf-8"))
         print(f"  (média após a perturbação: {sum(v['total'] for k, v in media.items() if len(k) == 2) / 27:.1f}; repositório real intocado)")
-        print("✓ ROBUSTEZ OK — atualização simulada em 6 famílias de dados: derivados regenerados e todos os runtimes verdes." if not falhas else f"✗ ROBUSTEZ: {len(falhas)} verificação(ões) quebrou(aram) com dados atualizados.")
+        print("✓ ROBUSTEZ OK — atualização simulada em 7 famílias de dados: derivados regenerados e todos os runtimes verdes." if not falhas else f"✗ ROBUSTEZ: {len(falhas)} verificação(ões) quebrou(aram) com dados atualizados.")
         return 1 if falhas else 0
     finally:
         shutil.rmtree(T, ignore_errors=True)

@@ -123,6 +123,8 @@ def numero_do_texto(texto: str):
     if texto is None:
         return None
     t = str(texto).strip().replace(" ", " ")
+    # Data não é número publicado: "Sem atualização desde 12/10/2026 22:03" não publica 12 (F28).
+    t = re.sub(r"\d{1,2}/\d{1,2}/\d{4}(?:\s+\d{1,2}:\d{2})?", " ", t)
     m = re.search(r"(-?\d[\d.  ]*(?:,\d+)?)", t)
     if not m:
         return None
@@ -184,8 +186,13 @@ def divergencias(cartoes: dict, indices: dict, numeros: dict, textos: dict,
             ruins.append(f"{ident}: {pagina} não publica o número em #{elemento}")
             continue
         lido = numero_do_texto(na_pagina)
+        # Alerta é informação de agora: se a página já renderiza uma consulta mais nova que a que a
+        # Imprensa leu, a diferença — de número ou de "sem dado" — é do relógio, não divergência.
+        ref_imprensa = str(c.get("referencia") or "")
+        retrato_velho = (ident in DE_AGORA and ref_imprensa
+                         and ref_imprensa not in (textos.get(pagina) or ""))
         if c.get("sem_coleta"):
-            if lido is not None:
+            if lido is not None and not retrato_velho:
                 ruins.append(f"{ident}: a Imprensa diz 'sem dado' e {pagina} publica "
                              f"{na_pagina!r}")
             continue
@@ -195,16 +202,11 @@ def divergencias(cartoes: dict, indices: dict, numeros: dict, textos: dict,
                          f"número ({na_pagina!r})")
             continue
         if not mesmo_numero(c.get("valor"), na_pagina):
-            if ident in DE_AGORA:
-                # A referência da imprensa é a consulta que ela leu; a da página está no texto
-                # visível. Se a página já tem consulta MAIS NOVA, a divergência é do relógio.
-                ref_imprensa = str(c.get("referencia") or "")
-                alvo = (textos.get(pagina) or "")
-                if ref_imprensa and ref_imprensa not in alvo:
-                    print(f"   [nota] {ident}: a Imprensa publica a consulta de {ref_imprensa} "
-                          f"({c.get('valor')!r}) e {pagina} já renderiza uma consulta mais nova "
-                          f"({na_pagina!r}) — informação de agora, retrato datado")
-                    continue
+            if retrato_velho:
+                print(f"   [nota] {ident}: a Imprensa publica a consulta de {ref_imprensa} "
+                      f"({c.get('valor')!r}) e {pagina} já renderiza uma consulta mais nova "
+                      f"({na_pagina!r}) — informação de agora, retrato datado")
+                continue
             ruins.append(f"{ident}: a Imprensa diz {c.get('valor')!r} e {pagina} diz "
                          f"{na_pagina!r}")
         ref = str(c.get("referencia") or "")
@@ -314,6 +316,15 @@ def _autoteste() -> int:
                         {}, {"defesa-civil.html": {"topoCemaden": "16"}},
                         {"defesa-civil.html": "consulta de 03/10/2026 09:40"},
                         (("municipios_alerta_cemaden", "defesa-civil.html", "topoCemaden"),), ())) == 1)
+    alerta = (("municipios_alerta_cemaden", "defesa-civil.html", "topoCemaden"),)
+    vencido = {"municipios_alerta_cemaden": {"valor": None, "sem_coleta": True,
+                                             "referencia": "12/10/2026 22:03"}}
+    ok("F28: coleta vencida nas duas páginas — a data da parada não é número",
+       divergencias(vencido, {}, {"defesa-civil.html": {"topoCemaden": "Sem atualização desde 12/10/2026 22:03"}},
+                    {"defesa-civil.html": "sem atualização desde 12/10/2026 22:03"}, alerta, ()) == [])
+    ok("F28: 'sem dado' de consulta vencida com a página já em consulta nova é nota, não falha",
+       divergencias(vencido, {}, {"defesa-civil.html": {"topoCemaden": "8"}},
+                    {"defesa-civil.html": "consulta de 14/10/2026 03:31"}, alerta, ()) == [])
     ok("a semana da Imprensa é a variação do instantâneo",
        divergencias_de_variacao({"decretos_na_semana": {"valor": 69, "sem_coleta": False}},
                                 {"cartoes": [{"id": "municipios_decretaram", "variacao": 69}]}) == [])

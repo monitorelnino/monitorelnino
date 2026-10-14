@@ -169,8 +169,8 @@ setTimeout(() => {
     "contador do Cemaden = resumo do arquivo de alertas");
   contadorDeAlerta("topoInmet", (ALERTAS.resumo || {}).municipios_inmet,
     "contador do Inmet = resumo do arquivo de alertas");
-  teste("contador do cruzamento = decreto no ciclo e alerta agora",
-    numero("topoCruzamento") === cruzados.length);
+  contadorDeAlerta("topoCruzamento", cruzados.length,
+    "contador do cruzamento = decreto no ciclo e alerta agora");
   teste("contador de quem decretou = municípios com decreto no consolidado",
     numero("topoDecretaram") === decretados.length);
   teste("contador de reconhecidos = municípios reconhecidos no consolidado",
@@ -199,7 +199,9 @@ setTimeout(() => {
 
   // ── busca por município em todo cartão (pedido da editoria, 01/10/2026) ────────────────────
   const campos = [...d.querySelectorAll(".busca-mun input")];
-  const cartoes = [...d.querySelectorAll("#conteudo .cartao-mapa")];
+  // Cartão de alerta com a coleta vencida declara a parada e não tem lista para buscar (F28).
+  const cartoes = [...d.querySelectorAll("#conteudo .cartao-mapa")]
+    .filter(c => !(vencido && SEM_ATUALIZACAO.test(c.textContent)));
   teste(`busca por município em todos os ${cartoes.length} cartões`, campos.length === cartoes.length);
   teste("todo campo de busca tem rótulo associado e visível",
     campos.every(i => {
@@ -231,7 +233,7 @@ setTimeout(() => {
   // ── harmonização dos mapas (padrão único) ─────────────────────────────────────────────────
   const mapasSvg = [...d.querySelectorAll('#conteudo svg[id^="map"]')].filter(s => s.querySelector("path"));
   teste(`padrão de mapas: ${mapasSvg.length} mapa(s) com as 27 siglas de UF`,
-    mapasSvg.length === (cemadenEmTexto ? 5 : 6) && mapasSvg.every(s => s.querySelectorAll("g.siglas text").length === 27));
+    mapasSvg.length === mapasCobrados.length && mapasSvg.every(s => s.querySelectorAll("g.siglas text").length === 27));
   const legendas = [...d.querySelectorAll(".map-legend")].filter(l => l.children.length);
   teste(`padrão de legendas: ${legendas.length} legenda(s) no formato <span><i></i>rótulo</span>`,
     legendas.every(l => [...l.children].every(c => c.tagName === "SPAN"

@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-13. 52 falhas; 47 com caso de teste que as reproduz; 5 sem, com o que falta dito.
+Atualizado em 2026-10-13. 52 falhas; 48 com caso de teste que as reproduz; 4 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -249,14 +249,14 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Correção:** PR #627 (grupo por elo: a duplicata da triagem não cancela outro elo; a vez serializa); 11/10: `nao_antes_do_cron` no temporizador da triagem — o despachante não a dispara antes das 08:30, e na abertura só a corrente a chama
 - **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_triagem_uma_vez_na_abertura`
 
-## F28 · Portões vermelhos no push às 01:12 e 01:14
+## F28 · Portões vermelhos no push da abertura: coleta de alertas vencida
 
 - **Noite:** 2026-10-09→2026-10-10
-- **Sintoma:** Dois runs de "Portões" no push da `main` falharam na abertura da noite.
-- **Causa:** Não diagnosticada nas notas.
-- **Prova:** run 38012291473; run 38012410116
-- **Correção:** nenhuma registrada
-- **Caso de teste:** nenhum — falta: Falta o diagnóstico (portão e saída) antes de se poder escrever o caso.
+- **Sintoma:** Portões no push da `main` reprovam na abertura (01:12 e 01:14 em 10/10 e em 14/10) e voltam a verde minutos depois, sem mudança de código.
+- **Causa:** A coleta de alertas roda uma vez por noite e passa das 24 horas antes do elo de sinais; a página entra no modo "Sem atualização desde" e três verificações de `verificar_runtime_mapas.js` (cruzamento, busca, contagem de mapas) e a coerência da Imprensa (que lia a data da parada como número e não tinha a tolerância do relógio para "sem dado") não conheciam esse modo; o cartão de tipos de alerta não declarava a parada (id morto).
+- **Prova:** run 38012291473; run 38012410116; run 38494501765 (5c6d1448, reproduzido local); run 38494711100 (8a87e861, reproduzido local)
+- **Correção:** Verificadores julgam o modo vencido com a regra que já existia (`contadorDeAlerta`, `mapasCobrados`, `SEM_ATUALIZACAO`); a coerência não lê data como número e aplica o retrato datado também a "sem dado"; o cartão de tipos declara a parada pelo seu subtítulo. O portão de robustez passa a envelhecer os alertas (perturbação 7) e reprova a regressão.
+- **Caso de teste:** `scripts/verificar_imprensa_coerencia.py --autoteste: F28: coleta vencida nas duas páginas`
 
 ## F29 · Descoberta e evidências sem `.feito`
 
