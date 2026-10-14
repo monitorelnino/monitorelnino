@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · Imprensa de saúde volta a rodar (F53)
+
+`monitorar_imprensa_saude.py` caía com `KeyError: 'hash'` havia 19 rodadas: desde 01/10 a fila recebe pistas de `coletar_saude_estadual.py` sem `hash`. A dedução passa a usar só quem tem `hash`, como o monitor regional. Onde: `monitorar_imprensa_saude.py`, F53 no catálogo.
+
 ## 2026-10-14 · #PR · saem três scripts sem uso (consolidação, item 4)
 
 Sem nenhuma chamada na árvore: `contar_filas.py` (era do relatório do monólito semanal, que saiu no #721), `comitar_via_api.py` (os elos empurram pela chave do robô) e `sincronizar_single_file.py` (prévia de chat que não existe mais). `cobertura_docstrings.py`, também sem chamada, fica: é a fonte declarada de um número da auditoria de código.

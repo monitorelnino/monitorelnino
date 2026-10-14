@@ -246,7 +246,7 @@ def carregar_fila():
 
 def registrar(fila, novas):
     """Deduplica por hash e anexa pistas inéditas com os campos de trava absoluta."""
-    vistos = {p["hash"] for p in fila["pistas"]}
+    vistos = {p["hash"] for p in fila["pistas"] if "hash" in p}   # F53: a fila tem outro produtor, sem hash
     ineditas = []
     for p in novas:
         p["hash"] = _hash(p)
@@ -287,16 +287,16 @@ def self_test():
     assert parece_fonte_oficial(itens[1]["url"]) is False, "portalnoticias.com.br não deveria parecer oficial"
     print("✓ parser RSS e heurística de fonte provável OK")
 
-    fila = {"_governanca": "x", "pistas": []}
+    fila = {"_governanca": "x", "pistas": [{"alvo": "funil-saude/AC", "url": "u"}]}   # F53: pista de outro produtor, sem hash
     alvo_fx = [{"alvo": "TESTE/UF", **i} for i in itens]
     a = registrar(fila, alvo_fx)
     b = registrar(fila, alvo_fx)
     assert len(a) == 2 and len(b) == 0, "dedup por hash falhou"
-    for p in fila["pistas"]:
+    for p in a:
         assert p["documento_oficial_confirmado"] is None, "TRAVA VIOLADA: pista nasceu confirmada"
         assert p["promovivel"] is False, "TRAVA VIOLADA: pista nasceu promovível"
         assert p["status"] == "pendente_confirmacao_documento"
-    print("✓ dedup e trava absoluta (campos de nascença) OK")
+    print("✓ dedup e trava absoluta (campos de nascença) OK — F53: pista de outro produtor sem hash")
 
     universo_fx = {"uf": {
         "AC": {"status": "NAO_VERIFICADO", "data_verificacao": None},
