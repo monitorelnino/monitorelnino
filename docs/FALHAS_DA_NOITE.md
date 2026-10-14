@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-13. 55 falhas; 51 com caso de teste que as reproduz; 4 sem, com o que falta dito.
+Atualizado em 2026-10-13. 56 falhas; 51 com caso de teste que as reproduz; 5 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -500,3 +500,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** git log ce2e450c..main até 02:52 UTC: só 19db929b toca arquivos fora das classes — evidencias.json, robots_registro.json e cobertura_declarada_uf.json (este, mesclado pelo git no elo seguinte); run 38494227421: 'evidencias: +0 no índice'
 - **Correção:** `unir_conflito_de_rodada.py` une os dois índices pela base comum (`INDICES_POR_CHAVE`); a reaplicação une `itens` por sha256. Os dois entram em `config/escritores.json`.
 - **Caso de teste:** `scripts/unir_conflito_de_rodada.py --autoteste: F55: índice de evidências une`
+
+## F57 · Ensaio real vermelho por disparo que falhou e contou como feito
+
+- **Noite:** 2026-10-14
+- **Sintoma:** Ensaio real 38584779850: 'faltam: descoberta, evidencias, juiz, sinais-fisicos' por 107 minutos; veredito vermelho e Issue #182 no robo-registro, sem nenhum elo ter falhado.
+- **Causa:** `scripts/ensaio_real.py --conduzir` registrava o elo como disparado mesmo quando o `gh workflow run` falhava. A API devolveu 'could not create workflow dispatch event: HTTP 500' para a descoberta às 15:00:38, e o condutor nunca tentou de novo.
+- **Prova:** log do run 38584779850, passo 'Conduzir a corrente': 'HTTP 500 (…/workflows/368685439/dispatches)' seguido de '→ disparado noturno_descoberta.yml'
+- **Correção:** O elo só conta como disparado quando o `gh` sai com 0; a volta seguinte, um minuto depois, repete.
+- **Caso de teste:** nenhum — falta: reproduzir exige a API do GitHub devolvendo 500 no disparo; o ensaio simulado não dispara workflow

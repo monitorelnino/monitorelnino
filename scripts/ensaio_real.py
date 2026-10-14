@@ -243,9 +243,11 @@ def main() -> int:
                 return 0
             wf = proximo_a_disparar(feitos, disparados)
             if wf:
-                subprocess.run(["gh", "workflow", "run", wf, "--ref", ramo], cwd=RAIZ, timeout=60)
-                disparados.add(wf)
-                print(f"  → disparado {wf} no ramo {ramo}")
+                # 14/10/2026: disparo que falhou não conta como disparado — a próxima volta tenta de novo.
+                r = subprocess.run(["gh", "workflow", "run", wf, "--ref", ramo], cwd=RAIZ, timeout=60)
+                if r.returncode == 0:
+                    disparados.add(wf)
+                print(f"  → {'disparado' if r.returncode == 0 else 'disparo falhou, repete em 1 min:'} {wf} no ramo {ramo}")
             time.sleep(60)
         return 0
     arqs = arquivos_do_ramo(ramo)
