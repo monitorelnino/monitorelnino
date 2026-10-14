@@ -192,11 +192,9 @@ def julgar_uma(p: dict, buscar, preservar=None) -> dict:
 # igual apaga pista por causa de uma noite ruim de rede — foi o que o desenho de `leu_documento`
 # evitou na primeira passada real, poupando 32 pistas.
 MOTIVOS_TECNICOS = ("documento_inacessivel", "texto_nao_extraivel")
-# Back-off entre tentativas. Cinco tentativas, e então `inacessivel_persistente` — que continua
-# VISÍVEL no arquivo: pista que ninguém consegue ler é um fato sobre a fonte, e some do processo,
-# não do registro.
-BACKOFF_DIAS = (1, 3, 7)
-TENTATIVAS_ATE_PERSISTENTE = 5
+# Back-off entre tentativas técnicas: `coletores_base.proxima_tentativa` (1, 3, 7 dias; na quinta,
+# `inacessivel_persistente`, que continua VISÍVEL no arquivo — some do processo, não do registro).
+from coletores_base import proxima_tentativa  # noqa: E402
 
 
 def classe_da_recusa(v: dict) -> str:
@@ -208,19 +206,6 @@ def classe_da_recusa(v: dict) -> str:
     if v.get("motivo") in MOTIVOS_TECNICOS:
         return "tecnica"
     return "criterio"
-
-
-def proxima_tentativa(n_feitas: int, hoje):
-    """A data da próxima leitura, depois de `n_feitas` tentativas técnicas. None quando esgotou.
-
-    1, 3 e depois 7 dias; na quinta tentativa não há próxima, e a pista vira
-    `inacessivel_persistente`. O primeiro retorno é a espera **depois da primeira** tentativa — a
-    versão anterior indexava pelo número de tentativas e pulava o 1 dia inteiro."""
-    import datetime
-    if n_feitas >= TENTATIVAS_ATE_PERSISTENTE:
-        return None
-    return hoje + datetime.timedelta(days=BACKOFF_DIAS[min(max(n_feitas, 1) - 1,
-                                                           len(BACKOFF_DIAS) - 1)])
 
 
 # Recusas que a busca dirigida ataca: as duas em que o problema é o DOCUMENTO, não o conteúdo dele.

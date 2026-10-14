@@ -32,6 +32,30 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · verificador do blog lê as regras de onde elas moram
+
+`verificar_texto_blog.py` tinha cópia à mão das etiquetas, do vocabulário proibido e dos termos que exigem explicação; passa a lê-los de `layout/regras.json → blog`. A regra das frases obrigatórias de saúde, que o script já julgava, deixa de constar como "só texto" (relatório D, A7-14: 17 → 16).
+
+## 2026-10-14 · #PR · DOE: estado real e leitura por edição conta no livro
+
+Vinte diários estaduais estavam "a_verificar" havia 42 dias — já tentados, sem adaptador de busca. O estado passa a dizer isso. E o canal que lê o diário edição por edição (Paraíba e Mato Grosso do Sul) passa a registrar no livro de fontes a leitura, como a busca no diário já registrava: é verificação real por DOE, que a meta de 15 dias conta.
+
+## 2026-10-14 · #PR · evidência dos instrumentos estaduais (A3-22)
+
+Nenhum dos 54 instrumentos estaduais tinha cópia preservada: o laço que devia achá-los lia o endereço no registro da UF, e o endereço mora em cada instrumento. A preservação noturna passa a incluir todo instrumento estadual pontuado com endereço (31 hoje) e grava o hash nele; o laço que nunca achava nada sai.
+
+## 2026-10-14 · #PR · OCR: PDF fora do alcance segue o back-off das filas
+
+PDFs escaneados acima de 5 MB do domínio da Defesa Civil do AM, que o runner não alcança, eram retentados no OCR toda noite para sempre (18 lacunas por noite). A fila de OCR passa a usar o mesmo back-off da fila do juiz (1, 3, 7 dias; cinco tentativas e sai, com o motivo no item), que sobe para `coletores_base`.
+
+## 2026-10-14 · #PR · busca web: fila pela resposta real e parada no motor mudo
+
+Na noite 13→14 a busca web gastou 133 min para ~60 municípios: depois que o motor emudecia, esperava 90 s por consulta até o prazo, e a "sonda" que devia encerrar a rodada só marcava uma variável. Agora a rodada para quando o motor recusa a escada de espera, e a fila são os sem resposta real nos últimos 15 dias — sai o cursor de lote, que avançava sem consultar.
+
+## 2026-10-14 · #PR · painel de saúde mede a cobertura de 15 dias
+
+Meta da editoria: todo município verificado a cada 15 dias. O painel (`docs/SAUDE_PIPELINE.md`) passa a dizer quantos dos 5.571 têm verificação real nos 15 dias até a data mais nova do livro de fontes, por canal (web, Querido Diário, consorciado, DOE). Não conta motor mudo, ruído de antes de 13/10, diário não indexado nem DOU/SEDEC. Medida de hoje: 1.209.
+
 ## 2026-10-14 · #PR · livro de fontes marca só resposta real
 
 Prova de cobertura por município e canal (central, 14/10): a busca web deixa de marcar consulta com motor mudo; o Querido Diário marca só município indexado consultado (não "não indexado" nem erro); o diário consorciado passa a marcar os municípios cujo cabeçalho estava nas edições lidas — antes não marcava nenhum. O DOE já marcava só a UF lida.

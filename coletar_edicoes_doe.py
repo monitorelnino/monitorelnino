@@ -461,6 +461,13 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
         if achado and decisao == "lida":
             ancoras_vivas[data] = int(achado.group(1))
 
+    if lidas:
+        # 14/10/2026 (ciclo de 15 dias): o diário da UF foi LIDO, edição por edição — é verificação
+        # real por DOE, e o livro de fontes a registra como o canal 1 já registra (`DOE/<UF>`).
+        from coletores_base import marcar_fonte_consultada, referencia_ibge
+        por_cod, _ = referencia_ibge()
+        marcar_fonte_consultada([c for c, r in por_cod.items() if r["uf"] == uf], f"DOE/{uf}", "estadual",
+                                resultado=f"{lidas} edição(ões) lida(s) por data (canal 2)")
     registro.setdefault("canal2", {"modo": "padrao_por_data", "em": hoje,
                                    "conta_como_consultado": True})
     registro["atualizado_em"] = hoje
