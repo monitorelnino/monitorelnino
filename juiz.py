@@ -63,7 +63,10 @@ RAIZ = pathlib.Path(__file__).resolve().parent
 # porque o critério mudou, e porque `pendente()` usa a versão para decidir o que volta à fila: subir
 # aqui devolve ao juiz toda pista já julgada sob a regra frouxa — inclusive as quatro que ela
 # promoveu por engano.
-CODEBOOK_VERSAO = "1.4 (09/10/2026)"
+CODEBOOK_VERSAO = "1.5 (14/10/2026)"
+# 1.5 (14/10/2026, régua da central): o nome do ente casa como palavra inteira com inicial maiúscula
+# (etapa 1), e a autoridade do ato tem de ser da esfera do ente (etapa 3). Só aperta: o que o 1.4
+# recusou continua recusado; o que promoveu é rejulgado (Primavera/PA).
 # 1.4 (09/10/2026, lote 2): atribuição pelo domínio do ente (2.1), classificação com fronteira de
 # palavra e instrução normativa numa régua só (2.3), recorte do ato no texto colapsado e corte de
 # 20.000 depois do recorte (2.2). A versão sobe para que `pendente()` devolva ao juiz tudo o que o
@@ -108,11 +111,16 @@ RE_TIPO_E_NUMERO = re.compile(
     r"[^\n\d]{0,40}?(\d{1,6}(?:[.\s]\d{3})*(?:/\d{2,4})?)", re.I)
 
 # --- Etapa 3 ---------------------------------------------------------------------------------
-# Autoridade do Executivo. Assinatura ou fórmula de promulgação.
-RE_AUTORIDADE_EXECUTIVO = re.compile(
-    r"\b(prefeit[oa]\s+municipal|prefeit[oa]|governador[a]?|secret[áa]ri[oa]\s+(?:municipal|estadual|de)|"
-    r"coordenador[ia]*\s+(?:municipal|estadual)\s+de\s+(?:prote[çc][ãa]o\s+e\s+)?defesa\s+civil|"
-    r"compdec|comdec|cedec|cepdec)\b", re.I)
+# Autoridade do Executivo DO ENTE DA PISTA (14/10/2026, régua da central): documento federal ou de
+# outra esfera não vale como ato do município — "Secretaria de Vigilância em Saúde" casava o genérico
+# "secretári[oa] de" e fez de uma nota técnica do MS o ato de Primavera/PA. Na dúvida, não classifica.
+RE_AUTORIDADE_EXECUTIVO = {
+    "municipal": re.compile(
+        r"\b(prefeit[oa]|secret[áa]ri[oa]\s+municipal|coordenador[ia]*\s+municipal\s+de\s+"
+        r"(?:prote[çc][ãa]o\s+e\s+)?defesa\s+civil|compdec|comdec)\b", re.I),
+    "estadual": re.compile(
+        r"\b(governador[a]?|secret[áa]ri[oa]\s+(?:estadual|de\s+estado)|coordenador[ia]*\s+estadual\s+de\s+"
+        r"(?:prote[çc][ãa]o\s+e\s+)?defesa\s+civil|cedec|cepdec)\b", re.I)}
 RE_TEXTO_ARTICULADO = re.compile(r"\bart(?:\.|igo)\s*1\s*[ºo°]?\b", re.I)
 RE_FORMULA_EXECUTIVO = re.compile(
     r"no\s+uso\s+d[aeo]s?\s+(?:suas\s+)?atribui[çc][õo]es|"
@@ -136,13 +144,17 @@ RE_MINUTA = re.compile(
     r"n[ãa]o\s+aprovado)\b", re.I)
 # Condição 2, primeira parte: o documento identifica o ÓRGÃO do ente. Publicação em domínio oficial
 # é ato do ente (etapa 0 já exige o domínio); aqui se exige que o documento diga de quem é.
-RE_ORGAO_DO_ENTE = re.compile(
-    r"\b(prefeitura\s+municipal|prefeitura\s+d[aeo]|munic[íi]pio\s+d[aeo]|"
-    r"coordenadoria\s+(?:municipal|estadual)\s+de\s+(?:prote[çc][ãa]o\s+e\s+)?defesa\s+civil|"
-    r"coordenadoria\s+de\s+(?:prote[çc][ãa]o\s+e\s+)?defesa\s+civil|"
-    r"compdec|comdec|cedec|cepdec|defesa\s+civil\s+(?:de|do|da|municipal|estadual)|"
-    r"secretaria\s+(?:municipal|de\s+estado|estadual)|governo\s+do\s+estado|"
-    r"estado\s+d[aeo]\s+\w+)\b", re.I)
+RE_ORGAO_DA_ESFERA = {
+    "municipal": r"prefeitura\s+municipal|prefeitura\s+d[aeo]|munic[íi]pio\s+d[aeo]|"
+                 r"coordenadoria\s+municipal\s+de\s+(?:prote[çc][ãa]o\s+e\s+)?defesa\s+civil|"
+                 r"compdec|comdec|defesa\s+civil\s+municipal|secretaria\s+municipal",
+    "estadual": r"coordenadoria\s+estadual\s+de\s+(?:prote[çc][ãa]o\s+e\s+)?defesa\s+civil|cedec|cepdec|"
+                r"defesa\s+civil\s+estadual|secretaria\s+(?:de\s+estado|estadual)|governo\s+do\s+estado|"
+                r"estado\s+d[aeo]\s+\w+"}
+RE_ORGAO_DO_ENTE = {e: re.compile(r"\b(" + p + r")\b", re.I) for e, p in RE_ORGAO_DA_ESFERA.items()}
+# Identificação do órgão na etapa 2 (o plano diz de quem é): qualquer esfera; quem confere que é o
+# ente da pista é a etapa 3.
+RE_ORGAO_IDENTIFICADO = re.compile(r"\b(" + "|".join(RE_ORGAO_DA_ESFERA.values()) + r")\b", re.I)
 # Condição 2, segunda parte: o TÍTULO é de plano, e não de outro documento qualquer.
 RE_TITULO_DE_PLANO = re.compile(
     r"\bplano\s+(?:municipal\s+|estadual\s+)?(?:de\s+)?"
@@ -253,7 +265,7 @@ def plano_sem_ato(texto: str, url: str = None) -> tuple:
             "detalhe": "o documento se declara minuta, rascunho, versão para consulta ou "
                        "apresentação",
             "trecho": trecho_em_volta(texto, RE_MINUTA.search(texto))}
-    orgao = RE_ORGAO_DO_ENTE.search(texto or "")
+    orgao = RE_ORGAO_IDENTIFICADO.search(texto or "")
     titulo = RE_TITULO_DE_PLANO.search(texto or "")
     ano = RE_ANO_OU_CICLO.search(texto or "")
     faltam = [nome for nome, achado in (("órgão", orgao), ("título de plano", titulo),
@@ -571,6 +583,22 @@ def nomes_homonimos() -> set:
     return _HOMONIMOS
 
 
+def mencao_do_ente(texto: str, nome: str):
+    """A primeira menção do nome como PALAVRA INTEIRA com inicial maiúscula no original. Função pura.
+
+    14/10/2026 (régua da central): a comparação era substring sem caixa — "o inverno e a primavera"
+    nomeava Primavera/PA, e todo município de nome comum (Saúde, Central, União, Natal) passava com
+    qualquer texto. O acento continua não contando (OCR o perde); a caixa e a fronteira da palavra
+    contam. Devolve o `re.Match` sobre o texto original, ou None."""
+    texto = str(texto or "")
+    dobrado = "".join(normalizar(c)[:1] or c for c in texto)  # mesmo comprimento do original
+    palavras = normalizar(nome).split()
+    if not palavras:
+        return None
+    padrao = r"(?<![a-z0-9])" + r"\s+".join(map(re.escape, palavras)) + r"(?![a-z0-9])"
+    return next((m for m in re.finditer(padrao, dobrado, re.I) if texto[m.start()].isupper()), None)
+
+
 def etapa1_identidade(texto: str, nome: str, uf: str, homonimos=None) -> tuple:
     """O documento nomeia o ente, e o nome bate com a pista. Homônimo se resolve pela UF.
 
@@ -581,7 +609,8 @@ def etapa1_identidade(texto: str, nome: str, uf: str, homonimos=None) -> tuple:
     n = normalizar(nome)
     if not n:
         return False, "ente_nao_confirmado", "pista sem nome de município"
-    if n not in t:
+    achado = mencao_do_ente(texto, nome)
+    if not achado:
         return False, "ente_nao_confirmado", f'o texto não nomeia "{nome}"'
     # homônimos: o nome aparece, mas a UF da pista não.
     #
@@ -598,7 +627,7 @@ def etapa1_identidade(texto: str, nome: str, uf: str, homonimos=None) -> tuple:
                 f'"{nome}" existe em mais de uma UF e o texto não cita {uf}')
     if sem_uf:
         return True, "", f'nomeia "{nome}" (UF não citada no texto; identidade pelo nome)'
-    return True, "", trecho_em_volta(texto, re.search(re.escape(nome), texto, re.I)) or f'nomeia "{nome}"'
+    return True, "", trecho_em_volta(texto, achado) or f'nomeia "{nome}"'
 
 
 # =============================================================================================
@@ -654,7 +683,8 @@ def etapa2_citacao(texto: str, eh_plano_tecnico: bool = False, url: str = None) 
 # =============================================================================================
 # Etapa 3 — autoridade do ato (§5.2.1)
 # =============================================================================================
-def etapa3_autoridade(texto: str, sem_ato_de_aprovacao: bool = False) -> tuple:
+def etapa3_autoridade(texto: str, sem_ato_de_aprovacao: bool = False,
+                      esfera: str = "municipal") -> tuple:
     """(ok, motivo, trecho). Ato do Poder Executivo, não aprovação por colegiado.
 
     Aprovação por Conselho de Saúde ou Câmara devolve `executivo_pendente`: o documento pode ser
@@ -670,15 +700,14 @@ def etapa3_autoridade(texto: str, sem_ato_de_aprovacao: bool = False) -> tuple:
     """
     if sem_ato_de_aprovacao:
         tem_colegiado = RE_COLEGIADO.search(texto)
-        if tem_colegiado and RE_APROVACAO_COLEGIADA.search(texto) \
-                and not RE_ORGAO_DO_ENTE.search(texto):
+        orgao = RE_ORGAO_DO_ENTE[esfera].search(texto)
+        if tem_colegiado and RE_APROVACAO_COLEGIADA.search(texto) and not orgao:
             return False, "executivo_pendente", trecho_em_volta(texto, tem_colegiado)
-        orgao = RE_ORGAO_DO_ENTE.search(texto)
         if not orgao:
             return False, "plano_sem_identificacao", "o documento não identifica o órgão do ente"
         return True, "", trecho_em_volta(texto, orgao)
     tem_colegiado = RE_COLEGIADO.search(texto)
-    tem_executivo = RE_AUTORIDADE_EXECUTIVO.search(texto)
+    tem_executivo = RE_AUTORIDADE_EXECUTIVO[esfera].search(texto)
     tem_forma = RE_TEXTO_ARTICULADO.search(texto) or RE_FORMULA_EXECUTIVO.search(texto)
     if tem_colegiado and not tem_executivo:
         return False, "executivo_pendente", trecho_em_volta(texto, tem_colegiado)
@@ -891,7 +920,8 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
     # estado que o plano conta, e que o ato de aprovação não foi localizado.
     sem_ato = bool(dados.get("sem_ato_de_aprovacao"))
     veredito["sem_ato_de_aprovacao"] = sem_ato
-    ok, motivo, trecho = etapa3_autoridade(texto, sem_ato_de_aprovacao=sem_ato)
+    ok, motivo, trecho = etapa3_autoridade(texto, sem_ato_de_aprovacao=sem_ato,
+                                           esfera="estadual" if eh_estadual else "municipal")
     veredito["criterios"]["3_autoridade"] = {"ok": ok, "trecho": trecho}
     if not ok:
         veredito["motivo"] = motivo
@@ -1168,6 +1198,21 @@ def autoteste() -> int:
         ("nome homônimo COM a UF no texto passa",
          etapa1_identidade("decreto de Bom Jesus - PI declara emergência", "Bom Jesus", "PI",
                            homonimos={"bom jesus"})[0] is True),
+        ("F-Primavera: estação do ano em minúscula não nomeia o município",
+         etapa1_identidade("no inverno e na primavera de 2026", "Primavera", "PA",
+                           homonimos=set())[:2] == (False, "ente_nao_confirmado")),
+        ("nome dentro de outra palavra não nomeia o município",
+         etapa1_identidade("Prefeitura de Mataraca", "Mata", "RS", homonimos=set())[0] is False),
+        ("nome em caixa alta e sem acento nomeia o município",
+         etapa1_identidade("PREFEITURA MUNICIPAL DE IRAUCUBA", "Irauçuba", "CE",
+                           homonimos=set())[0] is True),
+        ("ato de outra esfera não é autoridade do município",
+         etapa3_autoridade("O Secretário de Vigilância em Saúde, no uso de suas atribuições, "
+                           "resolve: Art. 1º")[1] == "autoridade_nao_confirmada"),
+        ("ato do governador vale para a esfera estadual, não para a municipal",
+         etapa3_autoridade("O Governador do Estado, no uso de suas atribuições, decreta: Art. 1º",
+                           esfera="estadual")[0] is True
+         and etapa3_autoridade("O Governador do Estado, no uso de suas atribuições, decreta: Art. 1º")[0] is False),
         ("nome único sem a UF segue passando pelo nome",
          etapa1_identidade("decreto de Irauçuba declara emergência", "Irauçuba", "CE",
                            homonimos={"bom jesus"})[0] is True),

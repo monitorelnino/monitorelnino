@@ -320,7 +320,7 @@ def autoridade_de_saude(texto: str, url: str) -> tuple:
 
     Primeiro tenta a régua normal: ato do Executivo com fórmula de promulgação passa por ela e nem
     chega aqui. Só então, e só para plano publicado em domínio de SES, aplica a exceção."""
-    ok, motivo, trecho = juiz.etapa3_autoridade(texto)
+    ok, motivo, trecho = juiz.etapa3_autoridade(texto, esfera="estadual")
     if ok:
         return True, "", trecho
     if motivo != "autoridade_nao_confirmada":
