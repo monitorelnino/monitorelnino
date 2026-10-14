@@ -37,17 +37,19 @@ duas entradas só porque a rodada rodou de novo.
 Prioridade dos lotes: reusa `ordem_prioridade()` de `coletar_diarios_municipais.py`
 (UF por percentual do cadastro, população decrescente dentro da UF), com os 2.095
 municípios prioritários (mesmo proxy do resto do site, data/municipios_prioritarios.json)
-adiantados para o início — ciclo dos que mais importam: ~93 → ~35 semanas.
+adiantados para o início. Cada rodada pega os próximos sem resposta real nos últimos 15 dias
+(o livro de fontes diz quem foi visto) e para quando o motor recusa a escada de espera.
 
 USO
   python monitorar_busca_web.py --autoteste
-  python monitorar_busca_web.py --lote 1 --tamanho 60
+  python monitorar_busca_web.py --tamanho 150            # a fila da noite
+  python monitorar_busca_web.py --lote 1 --tamanho 60    # recorte manual
 """
 import json, random, sys, time, urllib.parse, urllib.request
-from datetime import date
+from datetime import date, timedelta
 import funil
 import motores_busca
-from coletores_base import log_busca, registrar_lacuna, marcar_fonte_consultada, referencia_ibge, ler, gravar, rodar_autoteste, ua_de, hoje_editorial
+from coletores_base import log_busca, registrar_lacuna, marcar_fonte_consultada, referencia_ibge, ler, gravar, rodar_autoteste, ua_de, hoje_editorial, pendentes_na_janela
 from classificar_pista_civil import triagem_completa
 from coletar_diarios_municipais import ordem_prioridade
 
@@ -93,10 +95,8 @@ TETO_MOTOR_SEM_RESPOSTA = 0.25   # PR 1 item 3: acima disso a rodada não conta 
 INTERVALO_MINIMO = 3.0
 JITTER = 1.0
 BACKOFF = (10, 30, 90)
-# Sonda dos primeiros municípios: se o mudo passar do teto, pausa e retoma; se passar de novo,
-# encerra a rodada e o lote volta ao topo da fila da próxima (item 3).
-SONDA_MUNICIPIOS = 20
-PAUSA_DA_SONDA = 600
+# Recusa depois da escada inteira encerra a rodada (14/10/2026; saiu a sonda dos 20 primeiros).
+JANELA_DO_CICLO = 15   # dias: todo município com resposta real da busca web a cada 15 dias (editoria)
 
 
 def consultas_de(nome: str, uf: str) -> list:
@@ -215,29 +215,6 @@ def relevante(resultado: dict, nome_municipio: str) -> bool:
     return tem_municipio and tem_termo_plano
 
 
-def proximo_lote_automatico(total_lotes: int) -> int:
-    """21/09/2026: sem isto, a rodada semanal batia sempre nos mesmos 60 primeiros
-    municípios (lote 1 fixo no workflow) — nunca avançava, nunca cobria os outros
-    5.511. Estado mínimo persistido em data/busca_web_estado.json: só o número do
-    PRÓXIMO lote. Cada rodada automática avança um; ao passar do último, volta ao 1
-    (cobertura cíclica: depois de ~93 semanas, todos os municípios já foram tentados
-    pelo menos uma vez, e o ciclo recomeça).
-    22/09/2026 (pedido editorial, §148): registra `ciclos_completos` — quantas vezes a
-    rotação já deu a volta inteira. A cadência automática (busca_web_cadencia.yml) lê
-    isso: 0 ciclos = fase 1, a cada 2h até cobrir todos; ≥1 = fase 2, 4x/dia."""
-    estado = ler("busca_web_estado.json") or {"proximo_lote": 1}
-    lote = ((estado.get("proximo_lote", 1) - 1) % total_lotes) + 1
-    ciclos = int(estado.get("ciclos_completos", 0) or 0)
-    if lote == total_lotes:
-        ciclos += 1   # este lote fecha a volta: todos os municípios tentados pelo menos uma vez
-    gravar("busca_web_estado.json", {"proximo_lote": (lote % total_lotes) + 1,
-                                     "ultimo_lote_rodado": lote,
-                                     "total_lotes": total_lotes,
-                                     "ciclos_completos": ciclos,
-                                     "atualizado_em": hoje_editorial().isoformat()})
-    return lote
-
-
 def rodar(lote: str | None, tamanho: int) -> int:
     por_cod, _ = referencia_ibge()
     cadastro = ler("cadastro_prioritarios.json") or {}
@@ -255,18 +232,20 @@ def rodar(lote: str | None, tamanho: int) -> int:
     prioritarios_cod = {str(m["codigo_ibge"]).zfill(7) for m in (ler("municipios_prioritarios.json") or {}).get("municipios", [])}
     ordem = [c for c in ordem_base if c in prioritarios_cod] + [c for c in ordem_base if c not in prioritarios_cod]
 
-    total_lotes = max(1, -(-len(ordem) // tamanho))  # arredonda para cima
-
     if lote is None:
-        lote_n = proximo_lote_automatico(total_lotes)  # rotação automática, avança o estado
+        # 14/10/2026 (editoria: todo município verificado a cada 15 dias): os próximos sem resposta
+        # real da busca web na janela, na ordem de prioridade. O livro só marca resposta real, então
+        # o município de motor mudo volta primeiro; sai o cursor de lote, que avançava mesmo quando
+        # o lote não tinha sido consultado.
+        desde = (hoje_editorial() - timedelta(days=JANELA_DO_CICLO - 1)).isoformat()
+        alvo = pendentes_na_janela(ordem, ler("fontes_consultadas.json") or {}, FONTE_BUSCA_WEB, desde)[:tamanho]
     else:
         try:
-            lote_n = int(lote)  # override manual/teste — não mexe no estado da rotação
+            lote_n = int(lote)  # override manual/teste
         except ValueError:
             registrar_lacuna(FONTE_BUSCA_WEB, f"--lote inválido: {lote!r}", canal="busca_web", camada=4)
             return 1
-
-    alvo = ordem[(lote_n - 1) * tamanho: lote_n * tamanho]
+        alvo = ordem[(lote_n - 1) * tamanho: lote_n * tamanho]
 
     # 13/10/2026: o motor que responde do runner, medido (motores_busca.py). Sem disjuntor.
     motores = list(motores_busca.MOTORES)
@@ -286,10 +265,16 @@ def rodar(lote: str | None, tamanho: int) -> int:
     brutos_por_consulta = {ident: 0 for ident, _ in CONSULTAS}
     # estado do ritmo, em lista para poder ser mutado dentro do laço interno
     backoff = [0]
-    pausas_da_sonda = 0
-    encerrada_pela_sonda = False
 
     for cod in alvo:
+        if backoff[0] > len(BACKOFF):
+            # 14/10/2026: o motor recusou a escada inteira (10, 30, 90 s). Seguir era esperar 90 s
+            # por consulta até o prazo do elo — 133 min para ~60 municípios na noite 13→14, e as
+            # outras rodadas da noite perdidas na fila. Para aqui; os não consultados não ficam
+            # marcados no livro e são os primeiros da próxima rodada, num runner novo.
+            print(f"  motor mudo depois da escada de espera — rodada encerrada em {n_ok + n_lac} "
+                  f"de {len(alvo)} municípios", flush=True)
+            break
         ref_mun = por_cod[cod]
         nome, uf = ref_mun["nome"], ref_mun["uf"]
         consultas = consultas_de(nome, uf)
@@ -347,22 +332,6 @@ def rodar(lote: str | None, tamanho: int) -> int:
             vistos_pistas.add(chave_pista)
             npist += 1
 
-        # SONDA (PR 1c item 3): nos primeiros 20 municípios, se o mudo passar do teto, pausa 10 min
-        # e retoma; se passar de novo, encerra a rodada — o restante do lote fica `motor_sem_resposta`
-        # e o lote volta ao topo da fila da próxima rodada.
-        if n_ok + n_lac == SONDA_MUNICIPIOS:
-            mudos = n_motor_sem_resposta + n_lac
-            if mudos / max(1, SONDA_MUNICIPIOS) > TETO_MOTOR_SEM_RESPOSTA:
-                if pausas_da_sonda == 0:
-                    print(f"  sonda: {mudos}/{SONDA_MUNICIPIOS} mudos — pausa de "
-                          f"{PAUSA_DA_SONDA // 60} min e retoma", flush=True)
-                    pausas_da_sonda += 1
-                    time.sleep(PAUSA_DA_SONDA)
-                else:
-                    print(f"  sonda: {mudos}/{SONDA_MUNICIPIOS} mudos de novo — rodada encerrada; "
-                          f"o lote volta ao topo da fila da próxima", flush=True)
-                    encerrada_pela_sonda = True
-
         rodadas_sem_pista = int((espera["municipios"].get(cod) or {}).get("rodadas_com_bruto_sem_pista", 0) or 0)
         n_nomeiam = sum(1 for r in resultados_brutos if nomeia_municipio(r, nome))
         decisao = decidir(len(resultados_brutos), len(achados), rodadas_sem_pista, n_nomeiam)
@@ -404,7 +373,7 @@ def rodar(lote: str | None, tamanho: int) -> int:
                     lacunas=n_lac, **{f"brutos_{ident}": n for ident, n in brutos_por_consulta.items()})
     tentadas = n_ok + n_lac
     doentes = n_motor_sem_resposta + n_lac
-    print(f"busca web lote {lote_n}/{total_lotes}: {n_ok} municípios consultados, {n_lac} lacunas, {npist} pistas novas")
+    print(f"busca web: {n_ok} municípios consultados, {n_lac} lacunas, {npist} pistas novas")
     print(f"  motor sem resposta: {doentes}/{tentadas}" + (f" ({100 * doentes / tentadas:.0f}%)" if tentadas else ""))
     if tentadas and doentes / tentadas > TETO_MOTOR_SEM_RESPOSTA:
         # PR 1 item 3: acima do teto o motor está doente e a rodada não conta como verificação.
@@ -541,10 +510,9 @@ def autoteste():
         nada = not sinal_de_limite_de_taxa()
         return all((quatro_vinte_nove, captcha, proibido, vazio, com_resultado, timeout_nao_e, nada))
 
-    def t17_valores_da_sonda():
-        """Trava de unidade: a pausa é em SEGUNDOS. 10 aqui viraria 10 segundos, não 10 minutos."""
-        return (SONDA_MUNICIPIOS == 20 and PAUSA_DA_SONDA == 600
-                and BACKOFF == (10, 30, 90) and INTERVALO_MINIMO >= 1.0)
+    def t17_valores_do_ritmo():
+        """Trava de unidade: a escada é em SEGUNDOS, e o ciclo em dias."""
+        return BACKOFF == (10, 30, 90) and INTERVALO_MINIMO >= 1.0 and JANELA_DO_CICLO == 15
 
     def t18_consulta_restringe_motores():
         """A URL da consulta leva `engines=` com os motores ativos, e só com eles.
@@ -576,25 +544,13 @@ def autoteste():
         chave = ("0000001", "https://x.gov.br/a", "trecho x")
         return chave in vistos
 
-    def t6_rotacao_avanca_e_da_a_volta():
-        # 21/09/2026: mesmo padrão de mock já usado em coletar_diarios_municipais.py
-        # (trocar ler/gravar globalmente, testar, restaurar) — sem isto, o teste
-        # tocaria data/busca_web_estado.json de verdade.
-        estado_falso = {}
-        def ler_falso(nome, padrao=None): return estado_falso.get(nome, padrao)
-        def gravar_falso(nome, obj): estado_falso[nome] = obj
-        globals_mod = sys.modules[__name__]
-        real_ler, real_gravar = globals_mod.ler, globals_mod.gravar
-        globals_mod.ler, globals_mod.gravar = ler_falso, gravar_falso
-        try:
-            l1 = proximo_lote_automatico(3)  # total_lotes=3, estado vazio => começa em 1
-            l2 = proximo_lote_automatico(3)
-            l3 = proximo_lote_automatico(3)
-            c_apos_volta = estado_falso["busca_web_estado.json"]["ciclos_completos"]  # 3º lote fecha a volta
-            l4 = proximo_lote_automatico(3)  # depois do 3º, deve voltar pro 1º
-            return [l1, l2, l3, l4] == [1, 2, 3, 1] and c_apos_volta == 1
-        finally:
-            globals_mod.ler, globals_mod.gravar = real_ler, real_gravar
+    def t6_fila_pela_resposta_real():
+        """Quem a busca web respondeu na janela sai da vez; mudo e antigo voltam, na ordem dada."""
+        livro = {"municipios": {"0000001": {"fontes": [{"fonte": FONTE_BUSCA_WEB, "data": "2026-10-14"}]},
+                                "0000002": {"fontes": [{"fonte": FONTE_BUSCA_WEB, "data": "2026-09-01"}]},
+                                "0000003": {"fontes": [{"fonte": "DOE/SC", "data": "2026-10-14"}]}}}
+        return pendentes_na_janela(["0000001", "0000002", "0000003", "0000004"], livro,
+                                   FONTE_BUSCA_WEB, "2026-09-30") == ["0000002", "0000003", "0000004"]
 
     def t7_prioritarios_vem_primeiro_e_ninguem_some():
         # 21/09/2026 (pedido editorial de velocidade): contra o dado real — é só leitura,
@@ -627,9 +583,9 @@ def autoteste():
         "a rodada usa três strings em cascata, e o leque fica para a medição": t14_cascata_provisoria,
         "o ritmo tem intervalo mínimo com jitter e back-off exponencial": t15_ritmo_e_backoff,
         "429, CAPTCHA e corpo vazio são lidos como limite de taxa": t16_sinais_de_limite,
-        "a sonda e a pausa têm valores de segundo, não de minuto": t17_valores_da_sonda,
+        "a escada de espera é em segundos e o ciclo em dias": t17_valores_do_ritmo,
         "dedup: mesma chave (ibge,url,trecho) é reconhecida como vista": t5_dedup_mesma_chave,
-        "rotação automática: avança 1→2→3 e volta para 1 (cobertura cíclica)": t6_rotacao_avanca_e_da_a_volta,
+        "fila pela resposta real: respondido na janela sai, mudo e antigo voltam": t6_fila_pela_resposta_real,
         "prioritários vêm primeiro, cobertura total preservada (nada some)": t7_prioritarios_vem_primeiro_e_ninguem_some,
     })
 
