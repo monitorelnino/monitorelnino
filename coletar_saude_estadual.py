@@ -371,7 +371,7 @@ def doe_saude(uf: str, desde: str) -> dict:
     cfg = ((ler("fontes_doe.json") or {}).get("ufs") or {}).get(uf) or {}
     adaptador = cfg.get("adaptador")
     base = cfg.get("url") or coletar_doe.HOSTS_APIFRONT.get(uf)
-    if adaptador not in ("apifront", "dodf", "busca_to") or not base:
+    if adaptador not in ("apifront", "dodf", *coletar_doe.EDICOES_POR_BUSCA) or not base:
         registrar_lacuna(f"funil_saude/{uf}", "diário estadual sem rota de busca confirmada",
                          canal="repositorio_estadual", camada=1, uf=uf, nivel="estadual")
         log_busca("repositorio_estadual", 1, list(TERMOS_DOE_SAUDE),
@@ -380,14 +380,14 @@ def doe_saude(uf: str, desde: str) -> dict:
         return {"uf": uf, "brutos": 0, "pistas": 0, "novas": 0, "decisao": "canal_nao_disponivel"}
     ate = hoje_editorial().isoformat()
     brutos, achadas = 0, []
-    if adaptador in ("dodf", "busca_to"):
+    if adaptador in ("dodf", *coletar_doe.EDICOES_POR_BUSCA):
         try:
             if adaptador == "dodf":
                 itens, _totais = coletar_doe.itens_dodf(uf, desde, ate,
                                                         termos=TERMOS_DOE_SAUDE)
             else:
-                itens, _totais = coletar_doe.itens_busca_to(uf, desde, ate,
-                                                            termos=TERMOS_DOE_SAUDE)
+                itens, _totais = coletar_doe.itens_por_busca(
+                    uf, desde, coletar_doe.EDICOES_POR_BUSCA[adaptador](desde, ate), termos=TERMOS_DOE_SAUDE)
         except Exception as e:  # noqa: BLE001
             registrar_lacuna(f"funil_saude/{uf}", f"{type(e).__name__}: {e}",
                              canal="repositorio_estadual", camada=1, uf=uf, nivel="estadual",
@@ -678,9 +678,9 @@ def autoteste() -> int:
                     and "plano de contingência" in TERMOS_DOE_SAUDE,
         # O canal 2 reconhece TODO adaptador direto declarado, e não só o da plataforma comum:
         # foi o que limitou a primeira varredura a cinco UFs.
-        "o canal 2 reconhece os três adaptadores diretos do diário":
-            lambda: all(f'"{a}"' in fonte_do_coletor()
-                        for a in ("apifront", "dodf", "busca_to")),
+        "o canal 2 reconhece todos os adaptadores diretos do diário":
+            lambda: all(f'"{a}"' in fonte_do_coletor() for a in ("apifront", "dodf"))
+                    and "coletar_doe.EDICOES_POR_BUSCA" in fonte_do_coletor(),
         "todo canal novo tem tradução no vocabulário do log":
             lambda: set(DECISAO_NO_LOG) >= {"doe_sem_pista", "canais_sem_pista",
                                             "canal_nao_disponivel", "canal_nao_declarado",

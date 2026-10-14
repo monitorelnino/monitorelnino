@@ -96,6 +96,11 @@ TETO_PAGINAS_DODF = 20
 # PDF **só das edições que a busca apontou**: é a diferença entre ler 2 edições e ler as 65 da
 # janela.
 BUSCA_TO = "https://diariooficial.to.gov.br/busca"
+# AC (14/10/2026, run 38576857903): a busca é um POST (`palavra`, `ano_palavra`) que devolve, da
+# mais nova para a mais antiga, dez edições por página com data, número e PDF. Lê-se a primeira
+# página: a rodada é diária e o diário publica bem menos de dez edições por dia com cada termo.
+# (O PI também busca por POST, mas o índice dele para em 21/05/2021 — medido no mesmo dia.)
+BUSCA_AC = "https://diario.ac.gov.br/"
 TETO_EDICOES_TO = 12
 
 APIFRONT_SEM_BUSCA = {
@@ -408,6 +413,14 @@ def parse_busca_to(html: str) -> list:
     return saida
 
 
+def parse_busca_ac(html: str) -> list:
+    """[{edicao, data, url}] da tabela de resultado do DOE-AC. Função pura."""
+    return [{"edicao": n, "data": f"{a}-{m}-{d}", "url": href}
+            for d, m, a, href, n in re.findall(
+                r'<td>\s*(\d{2})/(\d{2})/(\d{4})\s*</td>\s*<td>\s*<a href="([^"]*download\.php[^"]*)"[^>]*>[^<]*?N\S*\s*(\d+)',
+                html or "")]
+
+
 def paginas_com_termo(pdf: bytes, termo: str, extrair_fn=None) -> list:
     """[(página, texto)] do PDF em que o termo aparece. Função pura dado o extrator.
 
@@ -422,22 +435,17 @@ def paginas_com_termo(pdf: bytes, termo: str, extrair_fn=None) -> list:
     return saida
 
 
-def itens_busca_to(uf: str, desde: str, ate: str, buscar_fn=None, termos=None,
-                   pausa: float = RITMO_APIFRONT_S, dormir=None) -> tuple:
-    """(itens, totais por termo) na busca do DOE-TO, descendo ao PDF só das edições apontadas."""
+def itens_por_busca(uf: str, desde: str, edicoes_fn, termos=None, buscar_fn=None,
+                    pausa: float = RITMO_APIFRONT_S, dormir=None) -> tuple:
+    """(itens, totais por termo) de uma busca que aponta edições (TO, AC), descendo ao PDF só das
+    edições apontadas na janela. `edicoes_fn(termo)` devolve [{edicao, data, url}]."""
     _buscar = buscar_fn or buscar
     _dormir = dormir or time.sleep
     itens, totais = [], {}
-    primeira = True
-    for termo in (termos or TERMOS_APIFRONT):
-        if not primeira:
+    for n, termo in enumerate(termos or TERMOS_APIFRONT):
+        if n:
             _dormir(pausa)
-        primeira = False
-        url = BUSCA_TO + "?" + urllib.parse.urlencode(
-            {"por": "texto", "texto": termo, "data-inicial": desde, "data-final": ate})
-        bruto = _buscar(url, timeout=120, origem="coletar_doe")
-        html = bruto.decode("utf-8", "replace") if isinstance(bruto, bytes) else bruto
-        edicoes = parse_busca_to(html)
+        edicoes = sorted((e for e in edicoes_fn(termo) if e["data"] >= desde), key=lambda e: e["data"], reverse=True)
         totais[termo] = len(edicoes)
         for e in edicoes[:TETO_EDICOES_TO]:
             _dormir(pausa)
@@ -453,10 +461,28 @@ def itens_busca_to(uf: str, desde: str, ate: str, buscar_fn=None, termos=None,
                 # A busca aponta a edição e o PDF não confirma o termo: isso é divergência da
                 # fonte, e entra como o que é — edição apontada, trecho não localizado nela.
                 itens.append({"data": e["data"], "pagina": None, "paginas": None, "url": e["url"],
-                              "trechos": [f"edição nº {e['edicao']} apontada pela busca para "
-                                          f"\"{termo}\"; o termo não foi localizado no PDF"],
+                              "trechos": [f"edição {('nº ' + e['edicao']) if e['edicao'] else 'de ' + e['data']} "
+                                          f"apontada pela busca para \"{termo}\"; o termo não foi localizado no PDF"],
                               "territorio": uf})
     return itens, totais
+
+
+def edicoes_to(desde: str, ate: str):
+    def fn(termo):
+        bruto = buscar(BUSCA_TO + "?" + urllib.parse.urlencode(
+            {"por": "texto", "texto": termo, "data-inicial": desde, "data-final": ate}), timeout=120, origem="coletar_doe")
+        return parse_busca_to(bruto.decode("utf-8", "replace") if isinstance(bruto, bytes) else bruto)
+    return fn
+
+
+def edicoes_ac(desde: str, ate: str):
+    def fn(termo):
+        bruto = enviar(BUSCA_AC, {"palavra": termo, "ano_palavra": ate[:4]}, timeout=120, origem="coletar_doe")
+        return parse_busca_ac(bruto.decode("latin-1", "replace"))
+    return fn
+
+
+EDICOES_POR_BUSCA = {"busca_to": edicoes_to, "busca_ac": edicoes_ac}
 
 
 def itens_apifront(uf: str, base: str, desde: str, ate: str, buscar_fn=None, pausa: float = RITMO_APIFRONT_S) -> tuple:
@@ -540,14 +566,14 @@ def coletar_uf(uf: str, desde: str, cfg: dict) -> str:
         # 14/10/2026: "a_verificar" por 42 dias era lacuna não declarada — já se tentou, e o que
         # falta é o adaptador. O estado diz isso; a sondagem ao lado diz por onde começar.
         f["status"] = "sem adaptador de busca"; return "lacuna"
-    if f["adaptador"] in ("dodf", "busca_to"):
+    if f["adaptador"] in ("dodf", *EDICOES_POR_BUSCA):
         # Mesma forma do apifront: a evidência é o conjunto de trechos como a BUSCA OFICIAL os
         # serviu, com o endereço citável de cada um.
         try:
             if f["adaptador"] == "dodf":
                 itens, totais = itens_dodf(uf, desde, hoje)
             else:
-                itens, totais = itens_busca_to(uf, desde, hoje)
+                itens, totais = itens_por_busca(uf, desde, EDICOES_POR_BUSCA[f["adaptador"]](desde, hoje))
         except FormatoDaBuscaMudou as e:
             registrar_lacuna(f"DOE/{uf}", f"formato da busca mudou: {e}", canal="repositorio_estadual",
                              camada=1, uf=uf, strings=[f["url"]])
@@ -670,6 +696,10 @@ FIXTURE_DODF = json.dumps({
 }, ensure_ascii=False).encode("utf-8")
 
 # Recorte REAL da tabela de resultado do DOE-TO, 01/10/2026.
+FIXTURE_BUSCA_AC = """<p>Quantidade de resultados encontrados: 2</p> <table cellspacing="0"><tbody>
+<tr id="trId1_5827" onmouseover="ativarDesativarId(true, 'trId2_5827')"> <td>14/10/2026</td> <td> <a href="https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzkxOTgyNTkyMjMxMy5wZGY=" title="Fazer download"> Diário Oficial N° 14372 - Caderno Único </a> </td> <td class="txtright">26.79 MB</td> </tr>
+<tr id="trId2_5827"> <td colspan="3"> <p>...Declara <span class="destaque">situação de emergência</span> nas áreas...</p> </td> </tr>
+<tr id="trId1_5501"> <td>20/08/2026</td> <td> <a href="https://diario.ac.gov.br/download.php?arquivo=QUJD" title="Fazer download"> Diário Oficial N° 14100 - Caderno Único </a> </td> <td class="txtright">20.01 MB</td> </tr>"""
 FIXTURE_BUSCA_TO = """<h5 class="center-align">Resultados da busca</h5> <table class="responsive-table">
  <thead><tr><th>Edição</th><th>Publicado em</th><th>Páginas</th></tr></thead><tbody>
  <tr><td>Nº 7154</td><td>30/09/2026</td><td>71 pág.</td>
@@ -885,6 +915,16 @@ def autoteste() -> int:
             lambda: all(r["edicao"] for r in parse_busca_to(FIXTURE_BUSCA_TO)),
         "DOE-TO: página sem a tabela não produz resultado, e não quebra":
             lambda: parse_busca_to("<html>nada aqui</html>") == [] and parse_busca_to("") == [],
+        "DOE-AC: a tabela entrega número, data em ISO e PDF":
+            lambda: parse_busca_ac(FIXTURE_BUSCA_AC) == [
+                {"edicao": "14372", "data": "2026-10-14",
+                 "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzkxOTgyNTkyMjMxMy5wZGY="},
+                {"edicao": "14100", "data": "2026-08-20",
+                 "url": "https://diario.ac.gov.br/download.php?arquivo=QUJD"}],
+        "DOE-AC: só edição da janela desce ao PDF, a mais nova primeiro":
+            lambda: itens_por_busca("AC", "2026-09-01", lambda t: parse_busca_ac(FIXTURE_BUSCA_AC), termos=["x"],
+                                    buscar_fn=lambda u, **k: (_ for _ in ()).throw(OSError(u)),
+                                    dormir=lambda s: None) == ([], {"x": 1}),
         "DOE-TO: só as páginas do PDF em que o termo aparece entram":
             lambda: paginas_com_termo(b"x", "emergência",
                                       extrair_fn=lambda _: ["nada", "SITUAÇÃO DE EMERGÊNCIA aqui",
