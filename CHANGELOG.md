@@ -36,6 +36,10 @@ não pontuados permanecem na versão corrente.
 
 Vinte diários estaduais estavam "a_verificar" havia 42 dias — já tentados, sem adaptador de busca. O estado passa a dizer isso. E o canal que lê o diário edição por edição (Paraíba e Mato Grosso do Sul) passa a registrar no livro de fontes a leitura, como a busca no diário já registrava: é verificação real por DOE, que a meta de 15 dias conta.
 
+## 2026-10-14 · #PR · busca web: fila pela resposta real e parada no motor mudo
+
+Na noite 13→14 a busca web gastou 133 min para ~60 municípios: depois que o motor emudecia, esperava 90 s por consulta até o prazo, e a "sonda" que devia encerrar a rodada só marcava uma variável. Agora a rodada para quando o motor recusa a escada de espera, e a fila são os sem resposta real nos últimos 15 dias — sai o cursor de lote, que avançava sem consultar.
+
 ## 2026-10-14 · #PR · painel de saúde mede a cobertura de 15 dias
 
 Meta da editoria: todo município verificado a cada 15 dias. O painel (`docs/SAUDE_PIPELINE.md`) passa a dizer quantos dos 5.571 têm verificação real nos 15 dias até a data mais nova do livro de fontes, por canal (web, Querido Diário, consorciado, DOE). Não conta motor mudo, ruído de antes de 13/10, diário não indexado nem DOU/SEDEC. Medida de hoje: 1.209.
