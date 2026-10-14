@@ -36,6 +36,10 @@ não pontuados permanecem na versão corrente.
 
 Na noite 13→14 a busca web gastou 133 min para ~60 municípios: depois que o motor emudecia, esperava 90 s por consulta até o prazo, e a "sonda" que devia encerrar a rodada só marcava uma variável. Agora a rodada para quando o motor recusa a escada de espera, e a fila são os sem resposta real nos últimos 15 dias — sai o cursor de lote, que avançava sem consultar.
 
+## 2026-10-14 · #PR · painel de saúde mede a cobertura de 15 dias
+
+Meta da editoria: todo município verificado a cada 15 dias. O painel (`docs/SAUDE_PIPELINE.md`) passa a dizer quantos dos 5.571 têm verificação real nos 15 dias até a data mais nova do livro de fontes, por canal (web, Querido Diário, consorciado, DOE). Não conta motor mudo, ruído de antes de 13/10, diário não indexado nem DOU/SEDEC. Medida de hoje: 1.209.
+
 ## 2026-10-14 · #PR · livro de fontes marca só resposta real
 
 Prova de cobertura por município e canal (central, 14/10): a busca web deixa de marcar consulta com motor mudo; o Querido Diário marca só município indexado consultado (não "não indexado" nem erro); o diário consorciado passa a marcar os municípios cujo cabeçalho estava nas edições lidas — antes não marcava nenhum. O DOE já marcava só a UF lida.

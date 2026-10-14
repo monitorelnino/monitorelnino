@@ -35,6 +35,7 @@ RAIZ = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(RAIZ))
 
 ENTRADA = RAIZ / "data" / "saude_pipeline.json"
+LIVRO = RAIZ / "data" / "fontes_consultadas.json"
 SAIDA = RAIZ / "docs" / "SAUDE_PIPELINE.md"
 
 # Essencial: o que, errando, publica um estado que não corresponde ao dado.
@@ -94,6 +95,40 @@ def conferir(doc: dict) -> tuple:
     return falhas, alertas
 
 
+def canal_com_resposta(f: dict):
+    """O canal de uma entrada do livro de fontes, só se ela é verificação REAL. Função pura.
+
+    14/10/2026 (editoria: todo município verificado a cada 15 dias). Não conta: motor mudo, a busca
+    web antes de 13/10 (os motores devolviam ruído — F52), diário não indexado nem teste de cobertura
+    que falhou. DOU/SEDEC cobre resposta, não plano, e fica fora."""
+    fonte, res, data = str(f.get("fonte") or ""), str(f.get("resultado") or ""), str(f.get("data") or "")
+    if fonte == "Busca web (SearXNG)":
+        return "web" if data >= "2026-10-13" and "motor_sem_resposta" not in res else None
+    if fonte == "Querido Diário (diário municipal)":
+        return None if res.startswith(("sem_cobertura_qd", "cobertura a confirmar")) else "QD"
+    if fonte.startswith("Diário Oficial dos Municípios"):
+        return "consorciado"
+    return "DOE" if fonte.startswith("DOE/") else None
+
+
+def cobertura_15d(livro: dict) -> tuple:
+    """(municípios com verificação real nos 15 dias até a data mais nova do livro, {canal: n}, fim).
+    A janela se mede pelo próprio livro, não pelo relógio: o painel é função do dado."""
+    mun = (livro or {}).get("municipios") or {}
+    fim = max((str(f.get("data") or "") for m in mun.values() for f in m.get("fontes") or []), default="")
+    if not fim:
+        return 0, {}, ""
+    from datetime import date, timedelta
+    inicio = (date.fromisoformat(fim) - timedelta(days=14)).isoformat()
+    por_canal, todos = {}, set()
+    for cod, m in mun.items():
+        canais = {canal_com_resposta(f) for f in m.get("fontes") or [] if str(f.get("data") or "") >= inicio}
+        for c in canais - {None}:
+            por_canal[c] = por_canal.get(c, 0) + 1
+            todos.add(cod)
+    return len(todos), por_canal, fim
+
+
 def tabela(doc: dict) -> str:
     grupos = por_script(doc.get("execucoes") or [])
     if not grupos:
@@ -116,7 +151,7 @@ def tabela(doc: dict) -> str:
     return "\n".join(linhas) + "\n"
 
 
-def documento(doc: dict) -> str:
+def documento(doc: dict, livro: dict = None) -> str:
     falhas, alertas = conferir(doc)
     execucoes = doc.get("execucoes") or []
     dias = sorted({str(e.get("data")) for e in execucoes})
@@ -143,6 +178,12 @@ def documento(doc: dict) -> str:
     if not falhas and not alertas:
         partes += ["Nenhum script essencial com erro e nenhum coletor errando duas rodadas seguidas.",
                    ""]
+    if livro is not None:
+        n, canais, fim = cobertura_15d(livro)
+        total = len((livro or {}).get("municipios") or {})
+        partes += ["## Cobertura em 15 dias", "",
+                   f"cobertura 15d: {n}/{total} com verificação real até {fim or '—'} · por canal: "
+                   + " · ".join(f"{c} {canais.get(c, 0)}" for c in ("web", "QD", "consorciado", "DOE")), ""]
     partes += ["## Última execução de cada script", "", tabela(doc)]
     return "\n".join(partes)
 
@@ -192,6 +233,17 @@ def autoteste() -> int:
     casos.append(("itens nulo aparece como travessão, não como zero",
                   "| — |" in documento({"execucoes": [linha("coletar_doe.py", "ok", itens=None)]})))
     casos.append(("o painel diz que é derivado", "não se edita à mão" in texto))
+    livro = {"municipios": {
+        "1": {"fontes": [{"fonte": "Busca web (SearXNG)", "data": "2026-10-14", "resultado": "decisão pista"}]},
+        "2": {"fontes": [{"fonte": "Busca web (SearXNG)", "data": "2026-10-14", "resultado": "decisão motor_sem_resposta"},
+                         {"fonte": "Querido Diário (diário municipal)", "data": "2026-10-14", "resultado": "sem_cobertura_qd: x"}]},
+        "3": {"fontes": [{"fonte": "DOE/SC", "data": "2026-09-20", "resultado": "9 edição(ões)"}]},
+        "4": {"fontes": [{"fonte": "Diário Oficial dos Municípios Mineiros (AMM-MG)", "data": "2026-10-10"},
+                         {"fonte": "Busca web (SearXNG)", "data": "2026-10-05", "resultado": "decisão coberto_sem_mencao"}]}}}
+    n, canais, fim = cobertura_15d(livro)
+    casos.append(("cobertura 15d conta só resposta real, na janela do livro (sem motor mudo, sem "
+                  "não indexado, sem ruído de antes de 13/10, sem o que passou de 15 dias)",
+                  n == 2 and canais == {"web": 1, "consorciado": 1} and fim == "2026-10-14"))
 
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
@@ -223,7 +275,8 @@ def main() -> int:
         return 0
 
     SAIDA.parent.mkdir(parents=True, exist_ok=True)
-    texto = documento(doc)
+    livro = json.loads(LIVRO.read_text(encoding="utf-8")) if LIVRO.exists() else None
+    texto = documento(doc, livro)
     tmp = SAIDA.with_suffix(".md.tmp")
     tmp.write_text(texto, encoding="utf-8", newline="\n")
     tmp.replace(SAIDA)

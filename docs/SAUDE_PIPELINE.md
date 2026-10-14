@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-07 a 2026-10-14 (800 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-07 a 2026-10-14 (801 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -19,11 +19,15 @@ Janela: 2026-10-07 a 2026-10-14 (800 execução(ões) registrada(s), 7 dias de h
 - monitorar_redes_oficiais.py: erro em 4 rodadas seguidas — NameError: name 'caidos' is not defined. Did you mean: 'dados'?
 - verificar_links.py: erro em 3 rodadas seguidas — erro: HTTPSConnectionPool(host='www.defesacivil.sc.gov.br', port=443): Max retries exceeded with url: /2026/08/14/chuva-forte-deixa-danos-em-municipios-de-santa-catarina-e-risco-de-temporais-segue-alto-ate-sabado/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.defesacivil.sc.gov.br', port
 
+## Cobertura em 15 dias
+
+cobertura 15d: 1209/5571 com verificação real até 2026-10-14 · por canal: web 190 · QD 1 · consorciado 0 · DOE 1021
+
 ## Última execução de cada script
 
 | script | papel | última execução | duração | itens | status | erro |
 |---|---|---|---|---:|---|---|
-| `recalcular_mare.py` | essencial | 2026-10-14 11:08 | 3 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-14 11:14 | 3 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-14 08:47 | 1 s | — | ok | — |
 | `buscar_protocolo_calor.py` | coletor | 2026-10-12 07:33 | 11 s | 3 | ok | — |
 | `classificar_planos_municipais.py` | coletor | 2026-10-13 06:56 | 1 s | — | ok | — |
