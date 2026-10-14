@@ -37,16 +37,15 @@ DIR_PACOTES = RAIZ.parent / "robo-registro" / "blog" / "pacotes"
 # Vive aqui, e nao em cada chamador, porque duplicada ela sai de sincronia sem ninguem notar.
 SEM_PACOTE_POR_DECISAO = {"2026-10-04-reconhecimentos-da-semana.md"}
 CABECALHO = ("titulo", "abertura", "etiqueta", "data", "fontes", "aprovado")
-ETIQUETAS = ("Legal e financiamento", "Saúde", "Acontecimento")
-
-# O vocabulário proibido do guia de redação. `nota` e `apenas` entram como palavra inteira: "notas"
-# e "apenasado" não existem, mas "anotação" e "apenas" sim, e o teste de substring pegaria a
-# primeira. Medido no primeiro texto aprovado, que diz "anotação" em nenhum lugar mas diz
-# "apenas" em nenhum — o cuidado é para o próximo.
-PROIBIDAS = ("desastre", "pago", "pagos", "pagamento", "apenas", "graças a",
-             "obrigatório", "deve", "dever")
-TERMOS_TECNICOS = ("reconhecimento", "homologação", "decreto", "aviso", "alerta",
-                   "semana epidemiológica", "faixa esperada", "S2iD", "Sinan")
+# 14/10/2026: etiquetas, vocabulário proibido e termos que exigem explicação vêm de
+# `layout/regras.json → blog`, onde a regra mora; eram uma cópia à mão aqui. As palavras proibidas
+# entram como palavra inteira ("anotação" não é "nota", "deveras" não é "deve").
+_BLOG = json.loads((RAIZ / "layout" / "regras.json").read_text(encoding="utf-8"))["blog"]
+ETIQUETAS = tuple(_BLOG["etiquetas"])
+PROIBIDAS = tuple(_BLOG["palavras_do_corpo_proibidas"])
+TERMOS_TECNICOS = tuple(_BLOG["palavras_de_corpo_que_exigem_explicacao"])
+# O núcleo das duas frases obrigatórias de saúde (`frases_obrigatorias_de_saude`): a redação pode
+# variar ("as semanas recentes são parciais"), o que se exige é que as duas afirmações estejam lá.
 FRASES_DE_SAUDE = ("parciais", "não indica")
 MARCAS_DE_LISTA = ("\n- ", "\n* ", "\n1. ", "\n#", "<ul", "<ol", "<table", "cartao")
 
