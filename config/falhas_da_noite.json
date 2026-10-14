@@ -712,8 +712,8 @@
    "prova": [
     "data/log_buscas/2026-10.jsonl, canal DOM: 50 ibge por dia em 01–12/10, interseção de 50 entre noites seguidas, 50 distintos no mês"
    ],
-   "correcao": "Sem `--lote`, a rodada toma os próximos da ordem de prioridade sem consulta ao Querido Diário nos últimos 45 dias (`pendentes_na_janela`, que já existia); 150 por noite cobrem os 5.571 numa volta.",
-   "caso_de_teste": "coletar_diarios_municipais.py --autoteste: F51: sem --lote a fila anda",
+   "correcao": "Sem `--lote`, a rodada toma os próximos da ordem de prioridade sem consulta ao Querido Diário nos últimos 45 dias (`pendentes_na_janela`, que já existia); 150 por noite cobrem os 5.571 numa volta. Em 14/10/2026 a rotação de 45 dias deu lugar à varredura semanal dos municípios com diário indexado no Querido Diário (decisão da editoria).",
+   "caso_de_teste": "coletar_diarios_municipais.py --autoteste: F51: sem --lote, todo indexado pendente na semana",
    "falta": null
   },
   {

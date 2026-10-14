@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · Querido Diário: todo município indexado, uma vez por semana
+
+Decisão da editoria: 93% das consultas do canal municipal iam a município sem diário no Querido Diário. Sem `--lote`, o coletor consulta todo indexado (527) sem consulta nos últimos sete dias, sem corte; o não indexado fica fora. As três chamadas de 50 viram uma. Sai a rotação de 45 dias (F51). METODOLOGIA §106.
+
 ## 2026-10-14 · #PR · juiz 1.5: nome como palavra inteira e autoridade do próprio ente
 
 A identidade casava o município por substring sem caixa ("primavera", a estação, nomeava Primavera/PA) e a autoridade aceitava "secretário de" de qualquer esfera (uma nota técnica do MS virou ato municipal). Agora o nome casa como palavra inteira com inicial maiúscula e a autoridade tem de ser da esfera do ente. Só aperta; METODOLOGIA §106.
