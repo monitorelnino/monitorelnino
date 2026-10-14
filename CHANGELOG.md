@@ -36,6 +36,10 @@ não pontuados permanecem na versão corrente.
 
 Sem nenhuma chamada na árvore: `contar_filas.py` (era do relatório do monólito semanal, que saiu no #721), `comitar_via_api.py` (os elos empurram pela chave do robô) e `sincronizar_single_file.py` (prévia de chat que não existe mais). `cobertura_docstrings.py`, também sem chamada, fica: é a fonte declarada de um número da auditoria de código.
 
+## 2026-10-14 · #PR · verificador do blog lê as regras de onde elas moram
+
+`verificar_texto_blog.py` tinha cópia à mão das etiquetas, do vocabulário proibido e dos termos que exigem explicação; passa a lê-los de `layout/regras.json → blog`. A regra das frases obrigatórias de saúde, que o script já julgava, deixa de constar como "só texto" (relatório D, A7-14: 17 → 16).
+
 ## 2026-10-14 · #PR · DOE: estado real e leitura por edição conta no livro
 
 Vinte diários estaduais estavam "a_verificar" havia 42 dias — já tentados, sem adaptador de busca. O estado passa a dizer isso. E o canal que lê o diário edição por edição (Paraíba e Mato Grosso do Sul) passa a registrar no livro de fontes a leitura, como a busca no diário já registrava: é verificação real por DOE, que a meta de 15 dias conta.
