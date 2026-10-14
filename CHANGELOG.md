@@ -36,6 +36,10 @@ não pontuados permanecem na versão corrente.
 
 `verificar_texto_blog.py` tinha cópia à mão das etiquetas, do vocabulário proibido e dos termos que exigem explicação; passa a lê-los de `layout/regras.json → blog`. A regra das frases obrigatórias de saúde, que o script já julgava, deixa de constar como "só texto" (relatório D, A7-14: 17 → 16).
 
+## 2026-10-14 · #PR · DOE: estado real e leitura por edição conta no livro
+
+Vinte diários estaduais estavam "a_verificar" havia 42 dias — já tentados, sem adaptador de busca. O estado passa a dizer isso. E o canal que lê o diário edição por edição (Paraíba e Mato Grosso do Sul) passa a registrar no livro de fontes a leitura, como a busca no diário já registrava: é verificação real por DOE, que a meta de 15 dias conta.
+
 ## 2026-10-14 · #PR · evidência dos instrumentos estaduais (A3-22)
 
 Nenhum dos 54 instrumentos estaduais tinha cópia preservada: o laço que devia achá-los lia o endereço no registro da UF, e o endereço mora em cada instrumento. A preservação noturna passa a incluir todo instrumento estadual pontuado com endereço (31 hoje) e grava o hash nele; o laço que nunca achava nada sai.

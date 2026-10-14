@@ -535,9 +535,11 @@ def coletar_uf(uf: str, desde: str, cfg: dict) -> str:
         # 03/09, um terço de todos os erros do log, sobre um fato que não muda de duas em duas horas.
         # Registro que não distingue novidade de repetição deixa de informar e passa a esconder.
         if not ja_registrada_hoje:
-            registrar_lacuna(f"DOE/{uf}", "adaptador não confirmado (a_verificar)", canal="repositorio_estadual",
+            registrar_lacuna(f"DOE/{uf}", "sem adaptador de busca neste diário", canal="repositorio_estadual",
                              camada=1, uf=uf)
-        f["status"] = "a_verificar"; return "lacuna"
+        # 14/10/2026: "a_verificar" por 42 dias era lacuna não declarada — já se tentou, e o que
+        # falta é o adaptador. O estado diz isso; a sondagem ao lado diz por onde começar.
+        f["status"] = "sem adaptador de busca"; return "lacuna"
     if f["adaptador"] in ("dodf", "busca_to"):
         # Mesma forma do apifront: a evidência é o conjunto de trechos como a BUSCA OFICIAL os
         # serviu, com o endereço citável de cada um.
