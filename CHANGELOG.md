@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · Juiz grava o que julgou quando o prazo do elo chega
+
+`julgar_filas.py` só gravava fila, registro e log ao fim do laço: interrompido pelo prazo do elo (SIGINT, 60 s de cortesia), perdia a rodada inteira — lote 7 da janela C, 2 h de busca dirigida. O laço vira `julgar_lista`, função pura que devolve o julgado até a interrupção; o resto fica pendente e volta na rodada seguinte. Autoteste com juiz que cai no meio.
+
 ## 2026-10-14 · #PR · Ensaio real repete o disparo que falhou (F57)
 
 O condutor do ensaio real contava o elo como disparado mesmo com o `gh workflow run` devolvendo HTTP 500; o ensaio 38584779850 esperou 107 minutos por uma descoberta que nunca rodou e ficou vermelho sem falha da corrente. Agora só conta o disparo aceito. Onde: `scripts/ensaio_real.py`.
