@@ -96,9 +96,11 @@ TETO_PAGINAS_DODF = 20
 # PDF **só das edições que a busca apontou**: é a diferença entre ler 2 edições e ler as 65 da
 # janela.
 BUSCA_TO = "https://diariooficial.to.gov.br/busca"
-# PI (14/10/2026, run 38573384857): a busca é um POST com o termo em latin-1 e devolve, do acervo
-# inteiro e em ordem crescente, "Data: DD/MM/AAAA - Página N" com o PDF da edição. Só HTTP.
-BUSCA_PI = "http://www.diariooficial.pi.gov.br/busca_diario.php"
+# AC (14/10/2026, run 38576857903): a busca é um POST (`palavra`, `ano_palavra`) que devolve, da
+# mais nova para a mais antiga, dez edições por página com data, número e PDF. Lê-se a primeira
+# página: a rodada é diária e o diário publica bem menos de dez edições por dia com cada termo.
+# (O PI também busca por POST, mas o índice dele para em 21/05/2021 — medido no mesmo dia.)
+BUSCA_AC = "https://diario.ac.gov.br/"
 TETO_EDICOES_TO = 12
 
 APIFRONT_SEM_BUSCA = {
@@ -411,11 +413,12 @@ def parse_busca_to(html: str) -> list:
     return saida
 
 
-def parse_busca_pi(html: str) -> list:
-    """[{edicao, data, url}] da lista de resultado do DOE-PI. Função pura."""
-    return [{"edicao": "", "data": f"{a}-{m}-{d}", "url": urllib.parse.urljoin(BUSCA_PI, href)}
-            for href, d, m, a in re.findall(r'href="(diario/[^"]+\.pdf)"[^>]*>\s*Data:\s*(\d{2})/(\d{2})/(\d{4})',
-                                            html or "")]
+def parse_busca_ac(html: str) -> list:
+    """[{edicao, data, url}] da tabela de resultado do DOE-AC. Função pura."""
+    return [{"edicao": n, "data": f"{a}-{m}-{d}", "url": href}
+            for d, m, a, href, n in re.findall(
+                r'<td>\s*(\d{2})/(\d{2})/(\d{4})\s*</td>\s*<td>\s*<a href="([^"]*download\.php[^"]*)"[^>]*>[^<]*?N\S*\s*(\d+)',
+                html or "")]
 
 
 def paginas_com_termo(pdf: bytes, termo: str, extrair_fn=None) -> list:
@@ -434,7 +437,7 @@ def paginas_com_termo(pdf: bytes, termo: str, extrair_fn=None) -> list:
 
 def itens_por_busca(uf: str, desde: str, edicoes_fn, termos=None, buscar_fn=None,
                     pausa: float = RITMO_APIFRONT_S, dormir=None) -> tuple:
-    """(itens, totais por termo) de uma busca que aponta edições (TO, PI), descendo ao PDF só das
+    """(itens, totais por termo) de uma busca que aponta edições (TO, AC), descendo ao PDF só das
     edições apontadas na janela. `edicoes_fn(termo)` devolve [{edicao, data, url}]."""
     _buscar = buscar_fn or buscar
     _dormir = dormir or time.sleep
@@ -472,14 +475,14 @@ def edicoes_to(desde: str, ate: str):
     return fn
 
 
-def edicoes_pi(desde: str, ate: str):
+def edicoes_ac(desde: str, ate: str):
     def fn(termo):
-        bruto = enviar(BUSCA_PI, {"ocorrencia": termo.encode("latin-1")}, timeout=120, origem="coletar_doe")
-        return parse_busca_pi(bruto.decode("latin-1", "replace"))
+        bruto = enviar(BUSCA_AC, {"palavra": termo, "ano_palavra": ate[:4]}, timeout=120, origem="coletar_doe")
+        return parse_busca_ac(bruto.decode("latin-1", "replace"))
     return fn
 
 
-EDICOES_POR_BUSCA = {"busca_to": edicoes_to, "busca_pi": edicoes_pi}
+EDICOES_POR_BUSCA = {"busca_to": edicoes_to, "busca_ac": edicoes_ac}
 
 
 def itens_apifront(uf: str, base: str, desde: str, ate: str, buscar_fn=None, pausa: float = RITMO_APIFRONT_S) -> tuple:
@@ -693,9 +696,10 @@ FIXTURE_DODF = json.dumps({
 }, ensure_ascii=False).encode("utf-8")
 
 # Recorte REAL da tabela de resultado do DOE-TO, 01/10/2026.
-FIXTURE_BUSCA_PI = """<p>Buscando por <b> situação de emergência </b><br>Encontradas <b>2</b> ocorrências</p><br>
-<div class="diario_link"><a href="diario/200911/DIARIO10_5e1c4be93a.pdf" target="_blank" style="color:#000">Data: 09/11/2009 - Página 14</a><br>
-<a href="diario/202609/DIARIO30_0a1b2c3d4e.pdf" target="_blank" style="color:#000">Data: 30/09/2026 - Página 3</a><br>"""
+FIXTURE_BUSCA_AC = """<p>Quantidade de resultados encontrados: 2</p> <table cellspacing="0"><tbody>
+<tr id="trId1_5827" onmouseover="ativarDesativarId(true, 'trId2_5827')"> <td>14/10/2026</td> <td> <a href="https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzkxOTgyNTkyMjMxMy5wZGY=" title="Fazer download"> Diário Oficial N° 14372 - Caderno Único </a> </td> <td class="txtright">26.79 MB</td> </tr>
+<tr id="trId2_5827"> <td colspan="3"> <p>...Declara <span class="destaque">situação de emergência</span> nas áreas...</p> </td> </tr>
+<tr id="trId1_5501"> <td>20/08/2026</td> <td> <a href="https://diario.ac.gov.br/download.php?arquivo=QUJD" title="Fazer download"> Diário Oficial N° 14100 - Caderno Único </a> </td> <td class="txtright">20.01 MB</td> </tr>"""
 FIXTURE_BUSCA_TO = """<h5 class="center-align">Resultados da busca</h5> <table class="responsive-table">
  <thead><tr><th>Edição</th><th>Publicado em</th><th>Páginas</th></tr></thead><tbody>
  <tr><td>Nº 7154</td><td>30/09/2026</td><td>71 pág.</td>
@@ -911,14 +915,14 @@ def autoteste() -> int:
             lambda: all(r["edicao"] for r in parse_busca_to(FIXTURE_BUSCA_TO)),
         "DOE-TO: página sem a tabela não produz resultado, e não quebra":
             lambda: parse_busca_to("<html>nada aqui</html>") == [] and parse_busca_to("") == [],
-        "DOE-PI: a lista entrega data em ISO e o PDF em endereço absoluto":
-            lambda: parse_busca_pi(FIXTURE_BUSCA_PI) == [
-                {"edicao": "", "data": "2009-11-09",
-                 "url": "http://www.diariooficial.pi.gov.br/diario/200911/DIARIO10_5e1c4be93a.pdf"},
-                {"edicao": "", "data": "2026-09-30",
-                 "url": "http://www.diariooficial.pi.gov.br/diario/202609/DIARIO30_0a1b2c3d4e.pdf"}],
-        "DOE-PI: só edição da janela desce ao PDF, a mais nova primeiro":
-            lambda: itens_por_busca("PI", "2026-09-01", lambda t: parse_busca_pi(FIXTURE_BUSCA_PI), termos=["x"],
+        "DOE-AC: a tabela entrega número, data em ISO e PDF":
+            lambda: parse_busca_ac(FIXTURE_BUSCA_AC) == [
+                {"edicao": "14372", "data": "2026-10-14",
+                 "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzkxOTgyNTkyMjMxMy5wZGY="},
+                {"edicao": "14100", "data": "2026-08-20",
+                 "url": "https://diario.ac.gov.br/download.php?arquivo=QUJD"}],
+        "DOE-AC: só edição da janela desce ao PDF, a mais nova primeiro":
+            lambda: itens_por_busca("AC", "2026-09-01", lambda t: parse_busca_ac(FIXTURE_BUSCA_AC), termos=["x"],
                                     buscar_fn=lambda u, **k: (_ for _ in ()).throw(OSError(u)),
                                     dormir=lambda s: None) == ([], {"x": 1}),
         "DOE-TO: só as páginas do PDF em que o termo aparece entram":

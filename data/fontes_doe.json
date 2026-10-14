@@ -2,8 +2,8 @@
  "_governanca": "Cobertura dos 27 DOEs (v2.2.4, §4.2). 'a_verificar' = adaptador não confirmado; a Action registra o resultado da tentativa. Nunca inferir cobertura. §231: seis UFs usam o adaptador 'apifront' (plataforma comum, rotas medidas contra produção em 26/09/2026).",
  "ufs": {
   "AC": {
-   "adaptador": null,
-   "url": "https://diario.ac.gov.br",
+   "adaptador": "busca_ac",
+   "url": "https://diario.ac.gov.br/",
    "status": "a_verificar",
    "ultima_tentativa": "2026-10-12",
    "sondagem": {
@@ -232,8 +232,8 @@
    }
   },
   "PI": {
-   "adaptador": "busca_pi",
-   "url": "http://www.diariooficial.pi.gov.br/busca_diario.php",
+   "adaptador": null,
+   "url": "https://www.diariooficial.pi.gov.br",
    "status": "a_verificar",
    "ultima_tentativa": "2026-10-12",
    "sondagem": {

@@ -32,9 +32,9 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-14 · #PR · DOE do Piauí entra na busca
+## 2026-10-14 · #PR · DOE do Acre entra na busca
 
-O DOE-PI busca por formulário (POST, latin-1) e lista data e PDF da edição. A busca do TO vira `itens_por_busca`, comum às duas UFs: só a edição da janela desce ao PDF, a mais nova primeiro. Saúde estadual usa o mesmo mapa de adaptadores. Onde: `coletar_doe.py`, `coletar_saude_estadual.py`, `data/fontes_doe.json`.
+O DOE-AC busca por formulário (POST) e lista data, número e PDF da edição; o do PI também, mas o índice dele para em 2021. A busca do TO vira `itens_por_busca`, comum ao TO e ao AC: só a edição da janela desce ao PDF, a mais nova primeiro. Saúde estadual usa o mesmo mapa de adaptadores. Onde: `coletar_doe.py`, `coletar_saude_estadual.py`, `data/fontes_doe.json`.
 
 ## 2026-10-14 · #PR · Descoberta de planos gira a fatia de alvos
 
