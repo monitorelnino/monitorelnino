@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · DOE: estado real e leitura por edição conta no livro
+
+Vinte diários estaduais estavam "a_verificar" havia 42 dias — já tentados, sem adaptador de busca. O estado passa a dizer isso. E o canal que lê o diário edição por edição (Paraíba e Mato Grosso do Sul) passa a registrar no livro de fontes a leitura, como a busca no diário já registrava: é verificação real por DOE, que a meta de 15 dias conta.
+
 ## 2026-10-14 · #PR · painel de saúde mede a cobertura de 15 dias
 
 Meta da editoria: todo município verificado a cada 15 dias. O painel (`docs/SAUDE_PIPELINE.md`) passa a dizer quantos dos 5.571 têm verificação real nos 15 dias até a data mais nova do livro de fontes, por canal (web, Querido Diário, consorciado, DOE). Não conta motor mudo, ruído de antes de 13/10, diário não indexado nem DOU/SEDEC. Medida de hoje: 1.209.
