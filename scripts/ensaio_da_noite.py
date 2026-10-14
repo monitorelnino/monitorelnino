@@ -986,7 +986,9 @@ def ensaio_coleta_perdida_de_dono_unico_volta(diz) -> bool:
     i_man = next((i for i, n in enumerate(nomes) if n.startswith("Escrever o manifesto da coleta")), -1)
     i_art = next((i for i, n in enumerate(nomes) if n.startswith("Guardar as saídas")), -1)
     commit = next((str(x.get("run") or "") for x in passos if x.get("id") == "commit"), "")
-    if not (0 <= i_man < i_art) or "alterados_do_elo" not in commit:
+    # F54: o upload-artifact v4 descarta arquivo oculto; manifesto com "." no nome nunca subia.
+    if (not (0 <= i_man < i_art) or "alterados_do_elo" not in commit
+            or any(p.startswith(".") for p in rn.MANIFESTO_DA_PERDA.split("/"))):
         diz("  ✗ o artefato da coleta perdida sobe sem o manifesto (base + alterados) — F45 de volta")
         return False
     alt = ["data/clima.json"]

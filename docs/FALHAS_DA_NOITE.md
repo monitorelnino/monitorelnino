@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-13. 53 falhas; 49 com caso de teste que as reproduz; 4 sem, com o que falta dito.
+Atualizado em 2026-10-13. 54 falhas; 50 com caso de teste que as reproduz; 4 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -482,3 +482,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** docs/SAUDE_PIPELINE.md (14/10): 'monitorar_imprensa_saude.py: erro em 19 rodadas seguidas — KeyError: 'hash''; data/pistas_imprensa_saude.json (14/10): 694 de 728 pistas sem `hash`, todas `funil_saude_estadual`, a primeira de 01/10/2026
 - **Correção:** A dedução usa só quem tem `hash`, como o monitor regional já faz; a pista do outro produtor fica intacta. O autoteste passa a ter uma pista sem `hash` na fila.
 - **Caso de teste:** `monitorar_imprensa_saude.py --autoteste: F53: pista de outro produtor sem hash`
+
+## F54 · A reaplicação nunca recebia o manifesto da coleta perdida
+
+- **Noite:** 2026-10-14
+- **Sintoma:** O elo dos diários perdeu o push (run 38494173602: a união recusou 2 caminhos) e a reaplicação das 04:07 (run 38494227421) trouxe só filas, logs e evidências: `portas: (não reaplica)=199`, nenhuma decisão de dono único. DOE, atos de resposta e S2iD da noite ficaram só no artefato.
+- **Causa:** O manifesto do F45 era `data/.coleta_perdida.json`. O `actions/upload-artifact` v4 descarta arquivo oculto por padrão; o manifesto nunca entrou no artefato, e sem ele a regra de três vias não roda.
+- **Prova:** run 38494227421, passo 'Reaplicar o que a noite perdeu': 'portas: (não reaplica)=199, contador=17, evidencias=1, feito=51, fila=8, jsonl=3, log=4' — nenhuma porta `dono_unico:`; _coletor.yml: upload-artifact@ea165f8 (v4.6.2), sem `include-hidden-files`
+- **Correção:** O manifesto passa a ser `data/coleta_perdida.json`, visível ao upload. O ensaio do F45 reprova manifesto com nome oculto.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_coleta_perdida_de_dono_unico_volta`

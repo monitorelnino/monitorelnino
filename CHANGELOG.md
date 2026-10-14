@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · Manifesto da coleta perdida volta ao artefato (F54)
+
+O `upload-artifact` v4 descarta arquivo oculto: `data/.coleta_perdida.json` nunca subia, e a reaplicação do F45 não sabia o que o elo alterara (diários de 13→14: DOE e atos ficaram só no artefato). O manifesto vira `data/coleta_perdida.json`; o ensaio reprova nome oculto. Onde: `_coletor.yml`, `scripts/reaplicar_noite.py`.
+
 ## 2026-10-14 · #PR · Domínios oficiais: o mais antigo primeiro
 
 `descobrir_dominios.py` recomeçava sempre do AC e era cortado pelo prazo do elo semanal: 22 dos 54 alvos não eram reverificados desde 23/09. A fila agora começa pelo alvo verificado há mais tempo; saem `--continuar` e `--refazer-sem-dominio`, sem uso. Onde: `descobrir_dominios.py`.
