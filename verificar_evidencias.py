@@ -61,16 +61,13 @@ def checar_preservacao_na_cadencia() -> list:
     if not wf.exists():
         return []   # fora do repositório completo (cópia parcial), não é falha do dado
     texto = wf.read_text(encoding="utf-8")
-    # A chamada pode estar num `run:` de uma linha só ou num bloco `run: |`; o que importa é
-    # existir uma linha que execute o script e não esteja comentada.
+    # A chamada é uma linha da fila de `comandos` do coletor (desde 14/10/2026) ou um `run:`; o que
+    # importa é existir uma linha que execute o script e não esteja comentada.
     def executa(linha: str) -> bool:
         corpo = linha.strip()
-        for prefixo in ("- run:", "run:"):
-            if corpo.startswith(prefixo):
-                corpo = corpo[len(prefixo):].strip()
-                break
-        return (corpo.startswith("python3 ") and "preservar_evidencias.py" in corpo
-                and not corpo.startswith("#"))
+        for prefixo in ("- run:", "run:", "python3 "):
+            corpo = corpo.removeprefix(prefixo).strip()
+        return corpo.startswith("preservar_evidencias.py")
 
     linhas = [l for l in texto.splitlines() if executa(l)]
     if not linhas:
@@ -85,7 +82,7 @@ def checar_preservacao_na_cadencia() -> list:
         return ["a cadência chama preservar_evidencias.py mas não no modo --ocr — o PDF escaneado "
                 "acima de 5 MB continua sem prova de espécie alguma, que é a lacuna declarada do "
                 "§174 e o que o §177 fecha"]
-    if not any("tesseract-ocr-por" in l for l in texto.splitlines()):
+    if "precisa_tesseract: true" not in texto:   # o coletor instala tesseract-ocr-por
         return ["a cadência roda --ocr mas não instala tesseract-ocr-por — com o modelo em inglês o "
                 "OCR troca acento no português e a cópia legível sai pior do que precisa (§177)"]
     return []
