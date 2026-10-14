@@ -339,6 +339,27 @@ def _hoje_iso() -> str:
     return hoje_editorial().isoformat()
 
 
+def julgar_lista(alvo: list, julgar_fn, aplicar: bool, vereditos: list, feitos: dict) -> bool:
+    """Julga `alvo` até o fim ou até o prazo do elo. Devolve True se foi interrompida.
+
+    14/10/2026 (janela C, lote 7): o prazo do elo interrompe o comando com SIGINT e dá 60 s de
+    cortesia; o juiz morria no meio do laço sem gravar nada e perdia a rodada inteira (2 h de
+    busca dirigida). O que foi julgado até a interrupção segue para a gravação; o resto fica
+    pendente e volta na rodada seguinte. `julgar_fn(p) -> veredito` é injetado."""
+    try:
+        for p in alvo:
+            v = julgar_fn(p)
+            vereditos.append(v)
+            if not aplicar:
+                continue   # relatório não escreve nem no objeto em memória que será gravado
+            feitos[aplicar_no_objeto(p, v)] += 1
+    except KeyboardInterrupt:
+        print(f"interrompido pelo prazo do elo: {len(vereditos)} julgada(s); o julgado é gravado, "
+              f"o resto fica pendente")
+        return True
+    return False
+
+
 def contar(vereditos: list) -> dict:
     """Contagens do relatório: promovidas, recusadas por critério, resposta, fora do objeto."""
     c = {"pistas": len(vereditos), "com_documento": 0, "promovidas": 0,
@@ -524,7 +545,7 @@ def autoteste() -> int:
     # sobre o CÓDIGO de main(), porque exercitar main() de verdade tocaria o banco real.
     import inspect
     import re as _re
-    fonte = inspect.getsource(main)
+    fonte = inspect.getsource(main) + inspect.getsource(julgar_lista)
     # a docstring de `hash_do_texto` CITA preservar_evidencia para explicar por que não a usa;
     # a trava tem de procurar a CHAMADA, não a palavra.
     nao_preserva = not _re.search(r"preservar_evidencia\s*\(", fonte)
@@ -534,6 +555,30 @@ def autoteste() -> int:
                   nao_preserva))
     casos.append(("o modo relatório não marca a pista em memória", bool(guarda_pista)))
     casos.append(("a fila só é gravada sob --aplicar", bool(grava_fila_sob_guarda)))
+
+    # o prazo do elo (14/10/2026): interrompida no meio, a lista grava o que julgou
+    def _juiz_que_cai(n):
+        def f(p):
+            if p["id"] == n:
+                raise KeyboardInterrupt
+            return dict(v_recusa)
+        return f
+    _vs, _feitos = [], {"promovida": 0, "recusada": 0, "adiada": 0, "inacessivel": 0}
+    _alvo = [{"id": i, "status": "pista — promover a registro exige documento primário"}
+             for i in ("a", "b", "c", "d")]
+    casos.append(("interrompida pelo prazo, devolve True com o que julgou até ali",
+                  julgar_lista(_alvo, _juiz_que_cai("c"), True, _vs, _feitos) is True
+                  and len(_vs) == 2 and _feitos["recusada"] == 2
+                  and "juiz" in _alvo[1] and "juiz" not in _alvo[2]))
+    _vs2, _feitos2 = [], {"promovida": 0, "recusada": 0, "adiada": 0, "inacessivel": 0}
+    casos.append(("sem interrupção, julga tudo e devolve False",
+                  julgar_lista(_alvo[2:], lambda p: dict(v_recusa), True, _vs2, _feitos2) is False
+                  and len(_vs2) == 2))
+    _vs3, _feitos3 = [], {"promovida": 0, "recusada": 0, "adiada": 0, "inacessivel": 0}
+    _alvo3 = [{"id": "r", "status": "pista — promover"}]
+    casos.append(("em modo relatório a lista não marca a pista",
+                  julgar_lista(_alvo3, lambda p: dict(v_recusa), False, _vs3, _feitos3) is False
+                  and "juiz" not in _alvo3[0] and sum(_feitos3.values()) == 0))
 
     # os filtros do garimpo (03/10/2026)
     amostra = [{"id": "aaa111", "url": "https://franca.sp.gov.br/plano.pdf"},
@@ -649,6 +694,15 @@ def main() -> int:
         from coletores_base import sha256
         return sha256(texto.encode("utf-8")) if texto else None
 
+    def julgar_fn(p):
+        v = julgar_uma(p, buscar_texto, hash_do_texto)
+        # 28/09/2026 (bloco das 17:20): a recusa por falta de documento primário não encerra a
+        # pista antes de PROCURAR o ato. 176 das 250 primeiras recusas foram esta: a pista
+        # aponta a notícia, e a notícia não é o ato — mas diz que ele existe e onde procurar.
+        if dirigida and v.get("motivo") in MOTIVOS_QUE_PEDEM_BUSCA_DIRIGIDA:
+            v = tentar_busca_dirigida(p, v, buscar_texto, hash_do_texto)
+        return v
+
     vereditos, por_fila = [], {}
     feitos = {"promovida": 0, "recusada": 0, "adiada": 0, "inacessivel": 0}
     for nome_fila in FILAS:
@@ -662,19 +716,11 @@ def main() -> int:
             alvo = alvo[:max(0, limite - len(vereditos))]
         por_fila[nome_fila] = len(alvo)
         print(f"{nome_fila}: {len(alvo)} pendente(s) de {len(lista)}")
-        for p in alvo:
-            v = julgar_uma(p, buscar_texto, hash_do_texto)
-            # 28/09/2026 (bloco das 17:20): a recusa por falta de documento primário não encerra a
-            # pista antes de PROCURAR o ato. 176 das 250 primeiras recusas foram esta: a pista
-            # aponta a notícia, e a notícia não é o ato — mas diz que ele existe e onde procurar.
-            if dirigida and v.get("motivo") in MOTIVOS_QUE_PEDEM_BUSCA_DIRIGIDA:
-                v = tentar_busca_dirigida(p, v, buscar_texto, hash_do_texto)
-            vereditos.append(v)
-            if not aplicar:
-                continue   # relatório não escreve nem no objeto em memória que será gravado
-            feitos[aplicar_no_objeto(p, v)] += 1
+        interrompido = julgar_lista(alvo, julgar_fn, aplicar, vereditos, feitos)
         if aplicar:
             gravar_em(DATA / nome_fila, doc)
+        if interrompido:
+            break
 
     c = contar(vereditos)
     por_categoria = {}
