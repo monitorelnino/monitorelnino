@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · Domínios oficiais: o mais antigo primeiro
+
+`descobrir_dominios.py` recomeçava sempre do AC e era cortado pelo prazo do elo semanal: 22 dos 54 alvos não eram reverificados desde 23/09. A fila agora começa pelo alvo verificado há mais tempo; saem `--continuar` e `--refazer-sem-dominio`, sem uso. Onde: `descobrir_dominios.py`.
+
 ## 2026-10-14 · #PR · Imprensa de saúde volta a rodar (F53)
 
 `monitorar_imprensa_saude.py` caía com `KeyError: 'hash'` havia 19 rodadas: desde 01/10 a fila recebe pistas de `coletar_saude_estadual.py` sem `hash`. A dedução passa a usar só quem tem `hash`, como o monitor regional. Onde: `monitorar_imprensa_saude.py`, F53 no catálogo.
