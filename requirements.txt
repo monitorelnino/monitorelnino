@@ -27,3 +27,5 @@ Markdown==3.10.2
 # do pacote de raízes decide QUAIS FONTES a coleta consegue verificar, e faixa aberta significaria
 # cobertura variando com a máquina. Não afrouxa verificação nenhuma: só amplia o conjunto de raízes.
 certifi==2026.7.22
+# 14/10/2026 (F56): `scripts/verificar_scripts_dos_workflows.py` reprova nome usado sem definição.
+pyflakes==3.4.0

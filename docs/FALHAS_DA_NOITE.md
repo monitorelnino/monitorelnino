@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-13. 55 falhas; 51 com caso de teste que as reproduz; 4 sem, com o que falta dito.
+Atualizado em 2026-10-13. 56 falhas; 52 com caso de teste que as reproduz; 4 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -500,3 +500,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** git log ce2e450c..main até 02:52 UTC: só 19db929b toca arquivos fora das classes — evidencias.json, robots_registro.json e cobertura_declarada_uf.json (este, mesclado pelo git no elo seguinte); run 38494227421: 'evidencias: +0 no índice'
 - **Correção:** `unir_conflito_de_rodada.py` une os dois índices pela base comum (`INDICES_POR_CHAVE`); a reaplicação une `itens` por sha256. Os dois entram em `config/escritores.json`.
 - **Caso de teste:** `scripts/unir_conflito_de_rodada.py --autoteste: F55: índice de evidências une`
+
+## F56 · Dois coletores da descoberta morrem com NameError toda rodada
+
+- **Noite:** 2026-10-14
+- **Sintoma:** `monitorar_politica_por_inteiro.py`: erro em 19 rodadas seguidas (`NameError: name 'ler'`); `monitorar_redes_oficiais.py`: erro em 4 (`NameError: name 'caidos'`), depois de gravar as pistas.
+- **Causa:** `ler` usado sem import; `caidos`/`motivos` sobraram do disjuntor removido no F52 (#706). Nenhum portão lia nome sem definição: o autoteste não passa pelo `main` desses coletores.
+- **Prova:** docs/SAUDE_PIPELINE.md (14/10): as duas linhas de erro com a contagem; pyflakes em todo .py versionado: 4 nomes sem definição (os dois acima, `gravar_em` em aplicar_c10_imprensa.py, `time` em coletar_sinais_risco.py)
+- **Correção:** Import de `ler`; sai o bloco do disjuntor; os outros dois imports. `verificar_scripts_dos_workflows.py` (portão que já cobria script de workflow) passa a reprovar nome sem definição em todo .py, pelo pyflakes.
+- **Caso de teste:** `scripts/verificar_scripts_dos_workflows.py --autoteste: nome usado sem import reprova (F56)`
