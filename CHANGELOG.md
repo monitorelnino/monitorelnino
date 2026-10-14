@@ -32,6 +32,18 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · DOE do Piauí entra na busca
+
+O DOE-PI busca por formulário (POST, latin-1) e lista data e PDF da edição. A busca do TO vira `itens_por_busca`, comum às duas UFs: só a edição da janela desce ao PDF, a mais nova primeiro. Saúde estadual usa o mesmo mapa de adaptadores. Onde: `coletar_doe.py`, `coletar_saude_estadual.py`, `data/fontes_doe.json`.
+
+## 2026-10-14 · #PR · Descoberta de planos gira a fatia de alvos
+
+Com `--limite 20` e ordem fixa, `descobrir_planos.py` consultava sempre a saúde das 20 primeiras UFs: a defesa civil e sete UFs nunca eram consultadas (as 18 pistas da fila são todas de saúde). A fatia agora gira por hora sobre os 54 alvos. Onde: `descobrir_planos.py`.
+
+## 2026-10-14 · #PR · saem três scripts sem uso (consolidação, item 4)
+
+Sem nenhuma chamada na árvore: `contar_filas.py` (era do relatório do monólito semanal, que saiu no #721), `comitar_via_api.py` (os elos empurram pela chave do robô) e `sincronizar_single_file.py` (prévia de chat que não existe mais). `cobertura_docstrings.py`, também sem chamada, fica: é a fonte declarada de um número da auditoria de código.
+
 ## 2026-10-14 · #PR · verificador do blog lê as regras de onde elas moram
 
 `verificar_texto_blog.py` tinha cópia à mão das etiquetas, do vocabulário proibido e dos termos que exigem explicação; passa a lê-los de `layout/regras.json → blog`. A regra das frases obrigatórias de saúde, que o script já julgava, deixa de constar como "só texto" (relatório D, A7-14: 17 → 16).
