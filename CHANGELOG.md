@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · OCR: PDF fora do alcance segue o back-off das filas
+
+PDFs escaneados acima de 5 MB do domínio da Defesa Civil do AM, que o runner não alcança, eram retentados no OCR toda noite para sempre (18 lacunas por noite). A fila de OCR passa a usar o mesmo back-off da fila do juiz (1, 3, 7 dias; cinco tentativas e sai, com o motivo no item), que sobe para `coletores_base`.
+
 ## 2026-10-14 · #PR · painel de saúde mede a cobertura de 15 dias
 
 Meta da editoria: todo município verificado a cada 15 dias. O painel (`docs/SAUDE_PIPELINE.md`) passa a dizer quantos dos 5.571 têm verificação real nos 15 dias até a data mais nova do livro de fontes, por canal (web, Querido Diário, consorciado, DOE). Não conta motor mudo, ruído de antes de 13/10, diário não indexado nem DOU/SEDEC. Medida de hoje: 1.209.
