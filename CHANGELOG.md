@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · Descoberta de planos: uma tentativa por consulta
+
+`descobrir_planos.py` levava 47–58 s por alvo (14/10: 20 alvos em 932–1.166 s) porque cada consulta ao `wp-json` repetia em host mudo; o elo da descoberta esgotava o prazo e pulava `seguir_pistas` e `verificar_pista_imprensa`. Não ser WordPress é o caso comum: uma tentativa, 15 s. Onde: `descobrir_planos.py`.
+
 ## 2026-10-14 · #PR · Manifesto da coleta perdida volta ao artefato (F54)
 
 O `upload-artifact` v4 descarta arquivo oculto: `data/.coleta_perdida.json` nunca subia, e a reaplicação do F45 não sabia o que o elo alterara (diários de 13→14: DOE e atos ficaram só no artefato). O manifesto vira `data/coleta_perdida.json`; o ensaio reprova nome oculto. Onde: `_coletor.yml`, `scripts/reaplicar_noite.py`.
