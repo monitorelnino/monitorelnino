@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-07 a 2026-10-14 (725 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-07 a 2026-10-14 (732 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -23,8 +23,8 @@ Janela: 2026-10-07 a 2026-10-14 (725 execução(ões) registrada(s), 7 dias de h
 
 | script | papel | última execução | duração | itens | status | erro |
 |---|---|---|---|---:|---|---|
-| `recalcular_mare.py` | essencial | 2026-10-14 06:12 | 3 s | — | ok | — |
-| `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-14 05:00 | 23 s | 1 | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-14 06:31 | 2 s | — | ok | — |
+| `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-14 06:27 | 1 s | — | ok | — |
 | `buscar_protocolo_calor.py` | coletor | 2026-10-12 07:33 | 11 s | 3 | ok | — |
 | `classificar_planos_municipais.py` | coletor | 2026-10-13 06:56 | 1 s | — | ok | — |
 | `classificar_saude_no_plano.py` | coletor | 2026-10-13 01:33 | 0 s | — | ok | — |
@@ -62,8 +62,8 @@ Janela: 2026-10-07 a 2026-10-14 (725 execução(ões) registrada(s), 7 dias de h
 | `descobrir_dominios.py` | coletor | 2026-10-13 08:05 | 3546 s | — | **erro** (2 seguidas) | interrompido pelo prazo do elo |
 | `descobrir_planos.py` | coletor | 2026-10-14 05:15 | 1130 s | 42 | ok | — |
 | `detectar_marcos_federais.py` | coletor | 2026-10-14 05:15 | 2 s | 0 | ok | — |
-| `julgar_e_aplicar_descobertas.py` | coletor | 2026-10-14 04:49 | 621 s | — | ok | — |
-| `julgar_filas.py` | coletor | 2026-10-14 04:26 | 1416 s | — | ok | — |
+| `julgar_e_aplicar_descobertas.py` | coletor | 2026-10-14 06:14 | 797 s | — | ok | — |
+| `julgar_filas.py` | coletor | 2026-10-14 06:02 | 741 s | — | ok | — |
 | `julgar_saude.py` | coletor | 2026-10-14 04:07 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `monitorar_atos_resposta.py` | coletor | 2026-10-14 05:13 | 109 s | 3511 | ok | — |
 | `monitorar_busca_web.py` | coletor | 2026-10-14 03:24 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
@@ -74,9 +74,9 @@ Janela: 2026-10-07 a 2026-10-14 (725 execução(ões) registrada(s), 7 dias de h
 | `monitorar_sinais_federais.py` | coletor | 2026-10-14 05:15 | 3 s | 10 | ok | — |
 | `motores_busca.py` | coletor | 2026-10-13 09:39 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `preservar_evidencias.py` | coletor | 2026-10-14 05:53 | 44 s | — | ok | — |
-| `revisar_pistas.py` | coletor | 2026-10-14 04:25 | 23 s | — | ok | — |
-| `scripts/amostra_auditoria_semanal.py` | coletor | 2026-10-14 05:00 | 0 s | — | ok | — |
-| `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-10-14 04:25 | 7 s | — | ok | — |
+| `revisar_pistas.py` | coletor | 2026-10-14 06:01 | 25 s | — | ok | — |
+| `scripts/amostra_auditoria_semanal.py` | coletor | 2026-10-14 06:27 | 1 s | — | ok | — |
+| `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-10-14 06:01 | 10 s | — | ok | — |
 | `scripts/fechar_saude.py` | coletor | 2026-10-14 04:07 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `scripts/preservar_textos_integrais.py` | coletor | 2026-10-14 05:54 | 1 s | — | ok | — |
 | `scripts/sondar_boletim_infogripe.py` | coletor | 2026-10-13 06:52 | 86 s | — | ok | — |
