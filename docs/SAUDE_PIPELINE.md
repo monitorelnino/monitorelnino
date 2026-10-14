@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-06 a 2026-10-13 (806 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-06 a 2026-10-13 (811 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -23,7 +23,7 @@ Janela: 2026-10-06 a 2026-10-13 (806 execução(ões) registrada(s), 7 dias de h
 
 | script | papel | última execução | duração | itens | status | erro |
 |---|---|---|---|---:|---|---|
-| `recalcular_mare.py` | essencial | 2026-10-13 16:52 | 2 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-13 01:11 | 3 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-13 04:16 | 1 s | — | ok | — |
 | `buscar_protocolo_calor.py` | coletor | 2026-10-12 07:33 | 11 s | 3 | ok | — |
 | `classificar_planos_municipais.py` | coletor | 2026-10-13 06:56 | 1 s | — | ok | — |
@@ -60,8 +60,8 @@ Janela: 2026-10-06 a 2026-10-13 (806 execução(ões) registrada(s), 7 dias de h
 | `descobrir_dominios.py` | coletor | 2026-10-13 08:05 | 3546 s | — | **erro** (2 seguidas) | interrompido pelo prazo do elo |
 | `descobrir_planos.py` | coletor | 2026-10-13 08:34 | 1205 s | 42 | ok | — |
 | `detectar_marcos_federais.py` | coletor | 2026-10-13 08:34 | 2 s | 0 | ok | — |
-| `julgar_e_aplicar_descobertas.py` | coletor | 2026-10-13 04:06 | 638 s | — | ok | — |
-| `julgar_filas.py` | coletor | 2026-10-13 04:03 | 134 s | — | ok | — |
+| `julgar_e_aplicar_descobertas.py` | coletor | 2026-10-13 19:36 | 930 s | — | ok | — |
+| `julgar_filas.py` | coletor | 2026-10-13 21:10 | 2300 s | — | ok | — |
 | `monitorar_atos_resposta.py` | coletor | 2026-10-13 08:32 | 101 s | 3488 | ok | — |
 | `monitorar_busca_web.py` | coletor | 2026-10-13 09:39 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `monitorar_imprensa_regional.py` | coletor | 2026-10-13 08:30 | 128 s | 40 | ok | — |

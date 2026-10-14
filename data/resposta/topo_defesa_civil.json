@@ -5,31 +5,31 @@
  "cartoes": [
   {
    "id": "municipios_alerta_cemaden",
-   "valor": 9,
+   "valor": null,
    "referencia": "12/10/2026 22:03",
    "rotulo": "municípios sob alerta do Cemaden",
    "fonte": "Cemaden",
-   "sem_coleta": false
+   "sem_coleta": true
   },
   {
    "id": "municipios_aviso_inmet",
-   "valor": 3667,
+   "valor": null,
    "referencia": "12/10/2026 22:03",
    "rotulo": "municípios sob aviso do Inmet",
    "fonte": "Inmet",
-   "sem_coleta": false
+   "sem_coleta": true
   },
   {
    "id": "decreto_e_alerta_ao_mesmo_tempo",
-   "valor": 612,
+   "valor": null,
    "referencia": "12/10/2026 22:03",
    "rotulo": "municípios com decreto de emergência e alerta ao mesmo tempo",
    "fonte": "MARÉ (cruzamento das duas consultas)",
-   "sem_coleta": false
+   "sem_coleta": true
   },
   {
    "id": "municipios_decretaram",
-   "valor": 861,
+   "valor": 863,
    "referencia": "desde 29/06/2026",
    "variacao": 16,
    "rotulo": "municípios que decretaram emergência ou calamidade",
@@ -38,7 +38,7 @@
   },
   {
    "id": "populacao_sob_decreto",
-   "valor": 25134576,
+   "valor": 28004406,
    "referencia": "desde 29/06/2026",
    "variacao": 591753,
    "rotulo": "pessoas que vivem nos municípios que decretaram",
