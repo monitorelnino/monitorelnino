@@ -36,6 +36,10 @@ não pontuados permanecem na versão corrente.
 
 `atualizar.yml` (884 linhas) passa a chamar `_coletor.yml` com a mesma fila de comandos: janela, prazo, `.feito`, commit com união e coleta perdida vêm de lá. Saem, por decisão da editoria, a cortina "em atualização", a reposição própria (o publicador repõe), o contador da cortina, o vigia do desfecho e três disparos manuais; fica a reposição urgente. O coletor ganha as chaves opcionais no passo Coletar; sai o portão de tetos por passo, que o prazo do coletor tornou redundante.
 
+## 2026-10-14 · #PR · juiz 1.5: nome como palavra inteira e autoridade do próprio ente
+
+A identidade casava o município por substring sem caixa ("primavera", a estação, nomeava Primavera/PA) e a autoridade aceitava "secretário de" de qualquer esfera (uma nota técnica do MS virou ato municipal). Agora o nome casa como palavra inteira com inicial maiúscula e a autoridade tem de ser da esfera do ente. Só aperta; METODOLOGIA §106.
+
 ## 2026-10-14 · #PR · coleta de alertas vencida não reprova mais a abertura (F28)
 
 Quando os alertas passam das 24 horas, a Defesa civil declara a parada; `verificar_runtime_mapas.js` e a coerência da Imprensa não conheciam esse modo e reprovavam toda abertura da noite. Agora julgam com a regra existente, a data da parada não é lida como número, e o cartão de tipos declara a parada. Caso: perturbação 7 do portão de robustez.
