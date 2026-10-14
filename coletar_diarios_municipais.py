@@ -356,7 +356,8 @@ def _varrer(alvo, por_cod, desde, atos, pistas, vistos, vistos_pistas):
                 "erro": ("cobertura a confirmar (teste de cobertura falhou)",
                          "Querido Diário: 0 resultados e teste de cobertura sem resposta"),
             }[decisao]
-            marcar_fonte_consultada([cod], FONTE_QD, "nao_verificado", resultado=MOTIVO[0])
+            if decisao in ("sem_edicao_no_periodo", "coberto_sem_mencao"):   # 14/10: só resposta real
+                marcar_fonte_consultada([cod], FONTE_QD, "nao_verificado", resultado=MOTIVO[0])
             log_busca("DOM", 1, TERMOS_RESPOSTA + TERMOS_PISTA, decisao, uf=ref["uf"], municipio=ref["nome"], ibge=cod,
                       n_resultados=0, resultados=MOTIVO[1])
             n_ok += 1; continue

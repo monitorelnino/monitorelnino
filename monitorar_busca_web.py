@@ -372,8 +372,9 @@ def rodar(lote: str | None, tamanho: int) -> int:
         elif decisao in ("nao_localizado_ate_o_momento", "coberto_sem_mencao"):
             espera["municipios"][cod] = {"rodadas_com_bruto_sem_pista": rodadas_sem_pista + 1,
                                         "ultima_rodada": hoje_editorial().isoformat()}
-        marcar_fonte_consultada([cod], FONTE_BUSCA_WEB, "nao_verificado",
-                                resultado=f"{len(achados)} pista(s) via busca web; decisão {decisao}")
+        if decisao != "motor_sem_resposta":   # 14/10/2026: o livro marca só resposta real
+            marcar_fonte_consultada([cod], FONTE_BUSCA_WEB, "nao_verificado",
+                                    resultado=f"{len(achados)} pista(s) via busca web; decisão {decisao}")
         log_busca("busca_web", 4, strings, decisao,
                   uf=uf, municipio=nome, ibge=cod, n_resultados=len(resultados_brutos),
                   extra={"n_nomeiam": n_nomeiam, "hosts_brutos": hosts_brutos(resultados_brutos)},
