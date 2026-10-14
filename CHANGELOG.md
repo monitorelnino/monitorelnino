@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · Querido Diário: todo município indexado, uma vez por semana
+
+Decisão da editoria: 93% das consultas do canal municipal iam a município sem diário no Querido Diário. Sem `--lote`, o coletor consulta todo indexado (527) sem consulta nos últimos sete dias, sem corte; o não indexado fica fora. As três chamadas de 50 viram uma. Sai a rotação de 45 dias (F51). METODOLOGIA §106.
+
 ## 2026-10-14 · #PR · rodada semanal vira chamador do coletor (decisão 2)
 
 `atualizar.yml` (884 linhas) passa a chamar `_coletor.yml` com a mesma fila de comandos: janela, prazo, `.feito`, commit com união e coleta perdida vêm de lá. Saem, por decisão da editoria, a cortina "em atualização", a reposição própria (o publicador repõe), o contador da cortina, o vigia do desfecho e três disparos manuais; fica a reposição urgente. O coletor ganha as chaves opcionais no passo Coletar; sai o portão de tetos por passo, que o prazo do coletor tornou redundante.
