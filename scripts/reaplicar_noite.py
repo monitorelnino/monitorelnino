@@ -82,7 +82,7 @@ def porta_de(caminho: str) -> str:
     return ""
 
 
-MANIFESTO_DA_PERDA = "data/.coleta_perdida.json"
+MANIFESTO_DA_PERDA = "data/coleta_perdida.json"
 # Função de outro dado: a cadeia canônica os regera, e copiá-los do artefato seria trazer um derivado
 # velho por cima do novo.
 NAO_COPIAR = ("docs/MANIFEST_SHA256.txt", "docs/SAUDE_PIPELINE.md", "data/pistas_revisao.json",

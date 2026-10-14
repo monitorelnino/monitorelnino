@@ -744,6 +744,20 @@
    "falta": null
   },
   {
+   "id": "F54",
+   "noite": "2026-10-14",
+   "titulo": "A reaplicação nunca recebia o manifesto da coleta perdida",
+   "sintoma": "O elo dos diários perdeu o push (run 38494173602: a união recusou 2 caminhos) e a reaplicação das 04:07 (run 38494227421) trouxe só filas, logs e evidências: `portas: (não reaplica)=199`, nenhuma decisão de dono único. DOE, atos de resposta e S2iD da noite ficaram só no artefato.",
+   "causa": "O manifesto do F45 era `data/.coleta_perdida.json`. O `actions/upload-artifact` v4 descarta arquivo oculto por padrão; o manifesto nunca entrou no artefato, e sem ele a regra de três vias não roda.",
+   "prova": [
+    "run 38494227421, passo 'Reaplicar o que a noite perdeu': 'portas: (não reaplica)=199, contador=17, evidencias=1, feito=51, fila=8, jsonl=3, log=4' — nenhuma porta `dono_unico:`",
+    "_coletor.yml: upload-artifact@ea165f8 (v4.6.2), sem `include-hidden-files`"
+   ],
+   "correcao": "O manifesto passa a ser `data/coleta_perdida.json`, visível ao upload. O ensaio do F45 reprova manifesto com nome oculto.",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_coleta_perdida_de_dono_unico_volta",
+   "falta": null
+  },
+  {
    "id": "F55",
    "noite": "2026-10-14",
    "titulo": "Push dos diários recusado por dois índices que todo elo escreve",
