@@ -192,7 +192,6 @@ requisitos de rede em `docs/COMO_RODAR_E_PENDENCIAS.md`). Em resumo:
 
 **Quando a etapa 2 encontrar propostas:** revise `data/instrumentos_revisar.json` (apague o que não deve entrar) e rode `python3 aplicar_revisao.py --arquivo data/instrumentos_revisar.json` — esse script mescla a revisão aprovada em `municipios.json`/`pontos_mapa.json`, chama `recalcular_mare.py --write`, atualiza o corte e roda os três portões (4/5/7 acima) de ponta a ponta. Nada é publicado automaticamente sem essa aprovação.
 
-**Prévia single-file (fora deste pipeline):** o arquivo de prévia usado para revisão fora do site publicado (não é commitado nem servido) tem seus dados embutidos como constantes e precisa ser resincronizado manualmente após qualquer mudança em `data/`, com `python3 scripts/sincronizar_single_file.py --arquivo <caminho-da-prévia> --tambem-pacote index.html`.
 
 **Execução local:** `python atualizar.py` (os três portões já rodam dentro dele).
 
