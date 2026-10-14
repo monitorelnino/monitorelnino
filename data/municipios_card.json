@@ -1,11 +1,11 @@
 {
  "_governanca": "Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. `prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). `imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o leitor peça o documento ao gestor. Só municípios com algo a dizer; sem registro = não verificado. `defesa_civil_orcamento` (§207) = despesa liquidada na subfunção 06.182 declarada ao SICONFI, peso ZERO; classe de ausência nunca vira zero.",
  "gerado_em": "2026-10-14",
- "total": 2196,
+ "total": 2197,
  "com_registro": 249,
- "com_imprensa": 121,
+ "com_imprensa": 124,
  "prioritarios": 2095,
- "com_despesa_182": 2196,
+ "com_despesa_182": 2197,
  "municipios": {
   "1100023": {
    "nome": "Ariquemes",
@@ -180,6 +180,30 @@
    "nome": "Vilhena",
    "uf": "RO",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "1100320": {
+   "nome": "SÃO MIGUEL DO GUAPORÉ",
+   "uf": "RO",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "e Defesa Civil; \n- à Secretaria de Estado do Desenvolvimento Ambiental - SEDAM. \nParágrafo único. O Plano de Contingência, após aprovado, se",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=269&i=publicado_116170_2026-10-09_147ec84cf4bb8fc592c7b535219905df.pdf",
+     "data": "2026-10-13",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -1171,6 +1195,15 @@
    "nome": "Manaquiri",
    "uf": "AM",
    "prioritario": true,
+   "imprensa": [
+    {
+     "titulo": "suas alterações; \n  \nCONSIDERANDO o Decreto Municipal nº 028 de 31 de março de \n2026, qu e aprova o Plano de Contingenciamento Municipal –",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118964_2026-10-12_3bd6d8bcab95c4a18a2bb9576fee9bd6.pdf",
+     "data": "2026-10-13",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "A"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
@@ -1533,6 +1566,15 @@
    "nome": "Uarini",
    "uf": "AM",
    "prioritario": true,
+   "imprensa": [
+    {
+     "titulo": "ão  de mapas \ntemáticos, reconhecimento de áreas atingidas por cheias e vazantes, e \nimplantação do Plano de Contingência (PLANCON) para pre",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118964_2026-10-12_3bd6d8bcab95c4a18a2bb9576fee9bd6.pdf",
+     "data": "2026-10-13",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
