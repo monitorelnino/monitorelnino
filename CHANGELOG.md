@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · coleta de alertas vencida não reprova mais a abertura (F28)
+
+Quando os alertas passam das 24 horas, a Defesa civil declara a parada; `verificar_runtime_mapas.js` e a coerência da Imprensa não conheciam esse modo e reprovavam toda abertura da noite. Agora julgam com a regra existente, a data da parada não é lida como número, e o cartão de tipos declara a parada. Caso: perturbação 7 do portão de robustez.
+
 ## 2026-10-13 · #PR · frescor dos alertas medido no fuso da redação
 
 `verificar_frescor_defesa_civil.py` montava o "agora" com a data de Brasília e a hora do runner (UTC), enquanto `gerado_em` é gravado em Brasília: a idade do alerta ganhava três horas e o portão reprovou toda a CI a partir das 22:03 UTC (#717). Agora data e hora vêm de `FUSO_EDITORIAL`.
