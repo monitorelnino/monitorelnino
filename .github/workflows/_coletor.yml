@@ -501,7 +501,7 @@ jobs:
       - name: Escrever o manifesto da coleta perdida
         if: failure() && steps.commit.outputs.houve == '1'
         run: |
-          python3 -c "import json,os,pathlib; t=os.environ['RUNNER_TEMP']; b=pathlib.Path(t,'base_do_elo.txt'); a=pathlib.Path(t,'alterados_do_elo.txt'); pathlib.Path('data/.coleta_perdida.json').write_text(json.dumps({'base': b.read_text().strip() if b.exists() else '', 'alterados': a.read_text().split() if a.exists() else []}, ensure_ascii=False) + chr(10), encoding='utf-8', newline=chr(10))" || true
+          python3 -c "import json,os,pathlib; t=os.environ['RUNNER_TEMP']; b=pathlib.Path(t,'base_do_elo.txt'); a=pathlib.Path(t,'alterados_do_elo.txt'); pathlib.Path('data/coleta_perdida.json').write_text(json.dumps({'base': b.read_text().strip() if b.exists() else '', 'alterados': a.read_text().split() if a.exists() else []}, ensure_ascii=False) + chr(10), encoding='utf-8', newline=chr(10))" || true
       - name: Guardar as saídas quando o commit se perde
         if: failure() && steps.commit.outputs.houve == '1'
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
