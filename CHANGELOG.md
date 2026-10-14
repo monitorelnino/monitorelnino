@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · painel de saúde mede a cobertura de 15 dias
+
+Meta da editoria: todo município verificado a cada 15 dias. O painel (`docs/SAUDE_PIPELINE.md`) passa a dizer quantos dos 5.571 têm verificação real nos 15 dias até a data mais nova do livro de fontes, por canal (web, Querido Diário, consorciado, DOE). Não conta motor mudo, ruído de antes de 13/10, diário não indexado nem DOU/SEDEC. Medida de hoje: 1.209.
+
 ## 2026-10-14 · #PR · livro de fontes marca só resposta real
 
 Prova de cobertura por município e canal (central, 14/10): a busca web deixa de marcar consulta com motor mudo; o Querido Diário marca só município indexado consultado (não "não indexado" nem erro); o diário consorciado passa a marcar os municípios cujo cabeçalho estava nas edições lidas — antes não marcava nenhum. O DOE já marcava só a UF lida.
