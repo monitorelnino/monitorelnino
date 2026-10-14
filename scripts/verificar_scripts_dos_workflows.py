@@ -14,6 +14,11 @@ qualquer `.github/workflows/*.yml`, inclusive dentro do bloco `comandos:` que o 
 reparte. Caminho com variável de ambiente (`$X/foo.py`) fica de fora de propósito: ele só se
 resolve em execução, e adivinhar aqui produziria vermelho falso.
 
+14/10/2026: existir não basta — o script tem de rodar até o fim. `monitorar_politica_por_inteiro.py`
+(`ler` sem import) e `monitorar_redes_oficiais.py` (`caidos`, sobra do disjuntor do F52) morreram
+com NameError em 19 e 4 rodadas seguidas, e nenhum portão viu. Todo `.py` versionado passa agora
+pelo pyflakes, e só o nome indefinido reprova.
+
 USO
     python3 scripts/verificar_scripts_dos_workflows.py
     python3 scripts/verificar_scripts_dos_workflows.py --autoteste
@@ -68,6 +73,18 @@ def declarados_em_listas() -> list:
     return fora
 
 
+def nomes_indefinidos(fonte: str, nome: str = "<fonte>") -> list:
+    """[(linha, nome)] usados sem definição. Função pura."""
+    import ast
+    from pyflakes import checker, messages
+    try:
+        arvore = ast.parse(fonte, filename=nome)
+    except SyntaxError as e:
+        return [(e.lineno or 0, f"SyntaxError: {e.msg}")]
+    return [(m.lineno, m.message_args[0]) for m in checker.Checker(arvore, filename=nome).messages
+            if isinstance(m, messages.UndefinedName)]
+
+
 def autoteste() -> int:
     falhas = []
 
@@ -94,7 +111,10 @@ def autoteste() -> int:
     ok("as listas de escritor de pista são lidas e apontam para arquivos reais",
        all((RAIZ / c).is_file() for c in declarados_em_listas()))
     ok("há declaração a conferir nas listas", len(declarados_em_listas()) >= 10)
-    print(f"autoteste: {9 - len(falhas)}/9")
+    ok("nome usado sem import reprova (F56)",
+       nomes_indefinidos("import json\nler('x')\n") == [(2, "ler")])
+    ok("nome importado passa", nomes_indefinidos("from os import path\npath.join('a')\n") == [])
+    print(f"autoteste: {11 - len(falhas)}/11")
     return 1 if falhas else 0
 
 
@@ -109,10 +129,15 @@ def main() -> int:
         if not (RAIZ / c).is_file():
             fora.append(("verificar_escritor_de_pista.py (ESCRITORES/MANUTENCAO)", c))
     total += len(declarados)
+    import subprocess
+    for c in subprocess.run(["git", "ls-files", "*.py"], cwd=RAIZ, capture_output=True,
+                            text=True).stdout.split():
+        for linha, nome in nomes_indefinidos((RAIZ / c).read_text(encoding="utf-8"), c):
+            fora.append((f"{c}:{linha}", f"o nome {nome!r}, sem definição"))
     if fora:
-        print(f"VERMELHO: {len(fora)} script(s) citado(s) por workflow e ausente(s) na árvore:")
+        print(f"VERMELHO: {len(fora)} script ausente ou nome sem definição:")
         for w, c in fora:
-            print(f"  · {w} chama {c}, que não existe")
+            print(f"  · {w}: {c}" if "sem definição" in c else f"  · {w} chama {c}, que não existe")
         return 1
     print(f"ok: {total} citação(ões) de script em {len(mapa)} workflow(s); todas existem na árvore")
     return 0

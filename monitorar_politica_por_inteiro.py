@@ -40,7 +40,7 @@ import sys
 import unicodedata
 import urllib.request
 from pathlib import Path
-from coletores_base import ua_de, gravar  # noqa: E402  (§228: um cliente só, com propósito)
+from coletores_base import ua_de, gravar, ler  # noqa: E402  (§228: um cliente só, com propósito)
 from scripts.pistas import sincronizar as sincronizar_pistas  # 05/10/2026: a fila tem UMA porta
 
 RAIZ = Path(__file__).parent
