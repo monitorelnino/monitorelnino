@@ -67340,15 +67340,26 @@
    "ibge": "3304524",
    "nome": "Rio das Ostras",
    "uf": "RJ",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "27/02/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (14/10/2026) a partir de https://www.riodasostras.rj.gov.br/prefeitura-decreta-situacao-de-emergencia/",
+     "url": "https://www.riodasostras.rj.gov.br/prefeitura-decreta-situacao-de-emergencia/",
+     "data": "27/02/2026",
+     "decreto": "ato de resposta — Decreto nº 4.608",
+     "hash": null
+    }
+   ],
+   "n_eventos": 1
   },
   "3544004": {
    "ibge": "3544004",
