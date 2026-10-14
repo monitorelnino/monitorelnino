@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · evidência dos instrumentos estaduais (A3-22)
+
+Nenhum dos 54 instrumentos estaduais tinha cópia preservada: o laço que devia achá-los lia o endereço no registro da UF, e o endereço mora em cada instrumento. A preservação noturna passa a incluir todo instrumento estadual pontuado com endereço (31 hoje) e grava o hash nele; o laço que nunca achava nada sai.
+
 ## 2026-10-14 · #PR · busca web: fila pela resposta real e parada no motor mudo
 
 Na noite 13→14 a busca web gastou 133 min para ~60 municípios: depois que o motor emudecia, esperava 90 s por consulta até o prazo, e a "sonda" que devia encerrar a rodada só marcava uma variável. Agora a rodada para quando o motor recusa a escada de espera, e a fila são os sem resposta real nos últimos 15 dias — sai o cursor de lote, que avançava sem consultar.
