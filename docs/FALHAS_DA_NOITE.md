@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-13. 56 falhas; 52 com caso de teste que as reproduz; 4 sem, com o que falta dito.
+Atualizado em 2026-10-13. 57 falhas; 52 com caso de teste que as reproduz; 5 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -509,3 +509,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** docs/SAUDE_PIPELINE.md (14/10): as duas linhas de erro com a contagem; pyflakes em todo .py versionado: 4 nomes sem definição (os dois acima, `gravar_em` em aplicar_c10_imprensa.py, `time` em coletar_sinais_risco.py)
 - **Correção:** Import de `ler`; sai o bloco do disjuntor; os outros dois imports. `verificar_scripts_dos_workflows.py` (portão que já cobria script de workflow) passa a reprovar nome sem definição em todo .py, pelo pyflakes.
 - **Caso de teste:** `scripts/verificar_scripts_dos_workflows.py --autoteste: nome usado sem import reprova (F56)`
+
+## F57 · Ensaio real vermelho por disparo que falhou e contou como feito
+
+- **Noite:** 2026-10-14
+- **Sintoma:** Ensaio real 38584779850: 'faltam: descoberta, evidencias, juiz, sinais-fisicos' por 107 minutos; veredito vermelho e Issue #182 no robo-registro, sem nenhum elo ter falhado.
+- **Causa:** `scripts/ensaio_real.py --conduzir` registrava o elo como disparado mesmo quando o `gh workflow run` falhava. A API devolveu 'could not create workflow dispatch event: HTTP 500' para a descoberta às 15:00:38, e o condutor nunca tentou de novo.
+- **Prova:** log do run 38584779850, passo 'Conduzir a corrente': 'HTTP 500 (…/workflows/368685439/dispatches)' seguido de '→ disparado noturno_descoberta.yml'
+- **Correção:** O elo só conta como disparado quando o `gh` sai com 0; a volta seguinte, um minuto depois, repete.
+- **Caso de teste:** nenhum — falta: reproduzir exige a API do GitHub devolvendo 500 no disparo; o ensaio simulado não dispara workflow

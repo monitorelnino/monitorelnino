@@ -784,6 +784,19 @@
    "correcao": "Import de `ler`; sai o bloco do disjuntor; os outros dois imports. `verificar_scripts_dos_workflows.py` (portão que já cobria script de workflow) passa a reprovar nome sem definição em todo .py, pelo pyflakes.",
    "caso_de_teste": "scripts/verificar_scripts_dos_workflows.py --autoteste: nome usado sem import reprova (F56)",
    "falta": null
+  },
+  {
+   "id": "F57",
+   "noite": "2026-10-14",
+   "titulo": "Ensaio real vermelho por disparo que falhou e contou como feito",
+   "sintoma": "Ensaio real 38584779850: 'faltam: descoberta, evidencias, juiz, sinais-fisicos' por 107 minutos; veredito vermelho e Issue #182 no robo-registro, sem nenhum elo ter falhado.",
+   "causa": "`scripts/ensaio_real.py --conduzir` registrava o elo como disparado mesmo quando o `gh workflow run` falhava. A API devolveu 'could not create workflow dispatch event: HTTP 500' para a descoberta às 15:00:38, e o condutor nunca tentou de novo.",
+   "prova": [
+    "log do run 38584779850, passo 'Conduzir a corrente': 'HTTP 500 (…/workflows/368685439/dispatches)' seguido de '→ disparado noturno_descoberta.yml'"
+   ],
+   "correcao": "O elo só conta como disparado quando o `gh` sai com 0; a volta seguinte, um minuto depois, repete.",
+   "caso_de_teste": null,
+   "falta": "reproduzir exige a API do GitHub devolvendo 500 no disparo; o ensaio simulado não dispara workflow"
   }
  ]
 }

@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · Ensaio real repete o disparo que falhou (F57)
+
+O condutor do ensaio real contava o elo como disparado mesmo com o `gh workflow run` devolvendo HTTP 500; o ensaio 38584779850 esperou 107 minutos por uma descoberta que nunca rodou e ficou vermelho sem falha da corrente. Agora só conta o disparo aceito. Onde: `scripts/ensaio_real.py`.
+
 ## 2026-10-14 · #PR · Nome sem definição reprova no portão (F56)
 
 `monitorar_politica_por_inteiro.py` e `monitorar_redes_oficiais.py` morriam com NameError havia 19 e 4 rodadas. Corrigidos, com mais dois casos latentes. `verificar_scripts_dos_workflows.py` passa a reprovar nome sem definição em todo .py (pyflakes, versão travada). Onde: os quatro scripts, o portão, `requirements.txt`.
