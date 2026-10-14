@@ -69,7 +69,6 @@ Linguagens: Python 3.12 (pipeline; única dependência de cálculo é NumPy), Ja
 | `verificar_links.py` | Auditoria de URLs do banco (paralela, `concurrent.futures`). | não |
 | `scripts/verificar_estrutura.js` | Portão 1 — árvore HTML das 4 páginas (jsdom). | não |
 | `scripts/verificar_runtime.js` | Portão 4 — site executado em navegador simulado: 12 checagens (mapas, tabela, seletor, tooltip). | não |
-| `scripts/sincronizar_single_file.py` | Utilitário da prévia single-file de revisão em chat — **fora do pacote publicado**; nunca roda em CI. | não |
 | `gerar_tese.js` | Ferramenta de sessão: gera o DOCX da tese a partir do código vivo (dep. `docx` via `npm install --no-save docx`) — fora do pipeline, da selagem e do CI (C8). | não |
 
 ### 2.4 CI e configuração
