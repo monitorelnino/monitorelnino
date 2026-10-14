@@ -50,7 +50,7 @@ import time
 import urllib.parse
 
 import funil
-from coletores_base import (RAIZ, buscar, preservar_evidencia, ler, gravar,
+from coletores_base import (RAIZ, buscar, buscar_uma_vez, preservar_evidencia, ler, gravar,
                              log_busca, registrar_lacuna, registrar_acesso_contra_robots, robots_permite,
                              rodar_autoteste, setor_da_url)
 from scripts.pistas import sincronizar as sincronizar_pistas  # 05/10/2026: a fila tem UMA porta
@@ -133,11 +133,15 @@ def dominio_para(uf: str, setor: str) -> str:
 
 def consultar_wp_json(dominio: str, termo: str) -> list:
     """Consulta /wp-json/wp/v2/media (PDFs) do domínio. Devolve [] em qualquer falha
-    (site fora do ar, não é WordPress, API desabilitada) — nunca levanta exceção."""
+    (site fora do ar, não é WordPress, API desabilitada) — nunca levanta exceção.
+
+    14/10/2026: UMA tentativa, 15 s. Não ser WordPress é o caso comum, e a repetição de `buscar`
+    (30 s + 5 s + 30 s por host mudo) levava 47–58 s por alvo: 20 alvos comiam o elo e o
+    `seguir_pistas`/`verificar_pista_imprensa` eram pulados pelo prazo."""
     q = urllib.parse.quote(termo)
     url = f"https://{dominio}/wp-json/wp/v2/media?search={q}&mime_type=application/pdf&per_page=10"
     try:
-        corpo = buscar(url, timeout=30)
+        corpo = buscar_uma_vez(url, timeout=15)
         dados = json.loads(corpo)
         if not isinstance(dados, list):
             return []
@@ -226,13 +230,13 @@ def autoteste() -> int:
              "title": {"rendered": "não é PDF"}, "date": "2026-08-15T10:00:00"},
         ])
         import unittest.mock as mock
-        with mock.patch(f"{__name__}.buscar", return_value=fx.encode()):
+        with mock.patch(f"{__name__}.buscar_uma_vez", return_value=fx.encode()):
             achados = consultar_wp_json("saude.xx.gov.br", "plano")
         return len(achados) == 1 and achados[0]["url"].endswith(".pdf")
 
     def t_wp_json_tolerante_a_falha():
         import unittest.mock as mock
-        with mock.patch(f"{__name__}.buscar", side_effect=RuntimeError("timeout")):
+        with mock.patch(f"{__name__}.buscar_uma_vez", side_effect=RuntimeError("timeout")):
             achados = consultar_wp_json("naoexiste.xx.gov.br", "plano")
         return achados == []
 
