@@ -36,6 +36,10 @@ não pontuados permanecem na versão corrente.
 
 Vinte diários estaduais estavam "a_verificar" havia 42 dias — já tentados, sem adaptador de busca. O estado passa a dizer isso. E o canal que lê o diário edição por edição (Paraíba e Mato Grosso do Sul) passa a registrar no livro de fontes a leitura, como a busca no diário já registrava: é verificação real por DOE, que a meta de 15 dias conta.
 
+## 2026-10-14 · #PR · OCR: PDF fora do alcance segue o back-off das filas
+
+PDFs escaneados acima de 5 MB do domínio da Defesa Civil do AM, que o runner não alcança, eram retentados no OCR toda noite para sempre (18 lacunas por noite). A fila de OCR passa a usar o mesmo back-off da fila do juiz (1, 3, 7 dias; cinco tentativas e sai, com o motivo no item), que sobe para `coletores_base`.
+
 ## 2026-10-14 · #PR · busca web: fila pela resposta real e parada no motor mudo
 
 Na noite 13→14 a busca web gastou 133 min para ~60 municípios: depois que o motor emudecia, esperava 90 s por consulta até o prazo, e a "sonda" que devia encerrar a rodada só marcava uma variável. Agora a rodada para quando o motor recusa a escada de espera, e a fila são os sem resposta real nos últimos 15 dias — sai o cursor de lote, que avançava sem consultar.
