@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · Índices de evidências e de robots se unem no conflito (F55)
+
+Na noite 13→14 o push dos diários foi recusado: `evidencias.json` e `robots_registro.json`, escritos por todo elo, não tinham classe no resolvedor. Agora se unem pela base comum; a reaplicação passa a unir `itens` (lia uma lista vazia). Onde: `scripts/unir_conflito_de_rodada.py`, `scripts/reaplicar_noite.py`, `config/escritores.json`.
+
 ## 2026-10-14 · #PR · Manifesto da coleta perdida volta ao artefato (F54)
 
 O `upload-artifact` v4 descarta arquivo oculto: `data/.coleta_perdida.json` nunca subia, e a reaplicação do F45 não sabia o que o elo alterara (diários de 13→14: DOE e atos ficaram só no artefato). O manifesto vira `data/coleta_perdida.json`; o ensaio reprova nome oculto. Onde: `_coletor.yml`, `scripts/reaplicar_noite.py`.

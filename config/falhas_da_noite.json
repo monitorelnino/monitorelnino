@@ -756,6 +756,20 @@
    "correcao": "O manifesto passa a ser `data/coleta_perdida.json`, visível ao upload. O ensaio do F45 reprova manifesto com nome oculto.",
    "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_coleta_perdida_de_dono_unico_volta",
    "falta": null
+  },
+  {
+   "id": "F55",
+   "noite": "2026-10-14",
+   "titulo": "Push dos diários recusado por dois índices que todo elo escreve",
+   "sintoma": "Run 38494173602 (diários, 01:09–02:51 UTC): 'Commit com rebase-e-push' falhou com '2 caminho(s) sem resolução conhecida; a rodada não comita'. DOE, atos de resposta e S2iD da noite não chegaram à main; `fontes_doe.json` segue com a tentativa de 12/10.",
+   "causa": "Entre a base do elo e o push, a main mudou `data/evidencias.json` e `data/robots_registro.json` (commit 19db929b, 01:33). Nenhum dos dois tinha classe no resolvedor, e todo coletor os escreve. A reaplicação, por sua vez, unia a lista `evidencias` do índice, que está vazia: o índice vive em `itens`.",
+   "prova": [
+    "git log ce2e450c..main até 02:52 UTC: só 19db929b toca arquivos fora das classes — evidencias.json, robots_registro.json e cobertura_declarada_uf.json (este, mesclado pelo git no elo seguinte)",
+    "run 38494227421: 'evidencias: +0 no índice'"
+   ],
+   "correcao": "`unir_conflito_de_rodada.py` une os dois índices pela base comum (`INDICES_POR_CHAVE`); a reaplicação une `itens` por sha256. Os dois entram em `config/escritores.json`.",
+   "caso_de_teste": "scripts/unir_conflito_de_rodada.py --autoteste: F55: índice de evidências une",
+   "falta": null
   }
  ]
 }
