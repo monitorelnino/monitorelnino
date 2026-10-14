@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-13. 52 falhas; 48 com caso de teste que as reproduz; 4 sem, com o que falta dito.
+Atualizado em 2026-10-13. 53 falhas; 49 com caso de teste que as reproduz; 4 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -473,3 +473,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** medir_revocacao.yml run 38433496633: 15 municípios com plano × 9 strings, revocação 60%, 761 de 761 candidatos de `google cse`; duckduckgo CAPTCHA/403, brave 429
 - **Correção:** Sai o disjuntor (sentinela, contagem, desligamento, piso, arquivo de estado); a lista de motores é a medida — hoje só `google cse` — e muda por medição, com registro.
 - **Caso de teste:** `motores_busca.py --autoteste: lista de motores declarada e não vazia`
+
+## F53 · Monitor de imprensa (saúde) cai ao ler pista de outro produtor
+
+- **Noite:** 2026-10-13
+- **Sintoma:** `monitorar_imprensa_saude.py` termina com `KeyError: 'hash'` em 19 rodadas seguidas; nenhuma pista nova de imprensa de saúde entra na fila.
+- **Causa:** A fila `pistas_imprensa_saude.json` tem dois produtores. Desde 01/10, `coletar_saude_estadual.py` (origem `funil_saude_estadual`) grava pela porta única pistas sem o campo `hash`, que só o monitor escreve; a dedução do monitor lia `p["hash"]` de toda pista.
+- **Prova:** docs/SAUDE_PIPELINE.md (14/10): 'monitorar_imprensa_saude.py: erro em 19 rodadas seguidas — KeyError: 'hash''; data/pistas_imprensa_saude.json (14/10): 694 de 728 pistas sem `hash`, todas `funil_saude_estadual`, a primeira de 01/10/2026
+- **Correção:** A dedução usa só quem tem `hash`, como o monitor regional já faz; a pista do outro produtor fica intacta. O autoteste passa a ter uma pista sem `hash` na fila.
+- **Caso de teste:** `monitorar_imprensa_saude.py --autoteste: F53: pista de outro produtor sem hash`

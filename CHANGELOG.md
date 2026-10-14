@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · Imprensa de saúde volta a rodar (F53)
+
+`monitorar_imprensa_saude.py` caía com `KeyError: 'hash'` havia 19 rodadas: desde 01/10 a fila recebe pistas de `coletar_saude_estadual.py` sem `hash`. A dedução passa a usar só quem tem `hash`, como o monitor regional. Onde: `monitorar_imprensa_saude.py`, F53 no catálogo.
+
 ## 2026-10-14 · #PR · Descoberta de planos gira a fatia de alvos
 
 Com `--limite 20` e ordem fixa, `descobrir_planos.py` consultava sempre a saúde das 20 primeiras UFs: a defesa civil e sete UFs nunca eram consultadas (as 18 pistas da fila são todas de saúde). A fatia agora gira por hora sobre os 54 alvos. Onde: `descobrir_planos.py`.

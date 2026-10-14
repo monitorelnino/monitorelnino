@@ -728,6 +728,20 @@
    "correcao": "Sai o disjuntor (sentinela, contagem, desligamento, piso, arquivo de estado); a lista de motores é a medida — hoje só `google cse` — e muda por medição, com registro.",
    "caso_de_teste": "motores_busca.py --autoteste: lista de motores declarada e não vazia",
    "falta": null
+  },
+  {
+   "id": "F53",
+   "noite": "2026-10-13",
+   "titulo": "Monitor de imprensa (saúde) cai ao ler pista de outro produtor",
+   "sintoma": "`monitorar_imprensa_saude.py` termina com `KeyError: 'hash'` em 19 rodadas seguidas; nenhuma pista nova de imprensa de saúde entra na fila.",
+   "causa": "A fila `pistas_imprensa_saude.json` tem dois produtores. Desde 01/10, `coletar_saude_estadual.py` (origem `funil_saude_estadual`) grava pela porta única pistas sem o campo `hash`, que só o monitor escreve; a dedução do monitor lia `p[\"hash\"]` de toda pista.",
+   "prova": [
+    "docs/SAUDE_PIPELINE.md (14/10): 'monitorar_imprensa_saude.py: erro em 19 rodadas seguidas — KeyError: 'hash''",
+    "data/pistas_imprensa_saude.json (14/10): 694 de 728 pistas sem `hash`, todas `funil_saude_estadual`, a primeira de 01/10/2026"
+   ],
+   "correcao": "A dedução usa só quem tem `hash`, como o monitor regional já faz; a pista do outro produtor fica intacta. O autoteste passa a ter uma pista sem `hash` na fila.",
+   "caso_de_teste": "monitorar_imprensa_saude.py --autoteste: F53: pista de outro produtor sem hash",
+   "falta": null
   }
  ]
 }
