@@ -24,7 +24,6 @@ domínio a cada 2 s, e 403 é recusa que se respeita (§170) — anotada, nunca 
 
   python3 descobrir_dominios.py                 # todas as UFs, os dois setores
   python3 descobrir_dominios.py --uf PR --setor defesa_civil
-  python3 descobrir_dominios.py --continuar     # retoma sem re-sondar quem já está registrado
   python3 descobrir_dominios.py --autoteste     # offline, sem rede
 """
 import re
@@ -294,29 +293,26 @@ def main() -> int:
                                      "Insumo de descobrir_planos.dominio_para(); nunca lido pelo cálculo "
                                      "da nota.", "alvos": {}})
     achados = faltando = 0
-    continuar = "--continuar" in sys.argv   # retoma de onde parou: alvo já registrado não é re-sondado
-    refazer_faltantes = "--refazer-sem-dominio" in sys.argv
-    for uf in ufs:
-        for setor in setores:
-            registrado = d["alvos"].get(f"{uf}/{setor}")
-            if refazer_faltantes and registrado and registrado.get("dominio"):
-                continue
-            if continuar and registrado and not refazer_faltantes:
-                continue
-            r = buscar_uf(uf, setor)
-            d["alvos"][f"{uf}/{setor}"] = r
-            if r["dominio"]:
-                achados += 1
-                print(f"  ✓ {uf}/{setor:12s} {r['dominio']:34s} [{r['confianca']}] {str(r['titulo'])[:48]}")
-            else:
-                faltando += 1
-                print(f"  — {uf}/{setor:12s} sem domínio: {r['motivo_sem_dominio']}")
-            log_busca("busca ativa de domínio", 1, [t["dominio"] for t in r["tentativas"]],
-                      "pista" if r["dominio"] else "consultado sem achado", uf=uf,
-                      resultados=(f"{r['dominio']} (confiança {r['confianca']})" if r["dominio"]
-                                  else r["motivo_sem_dominio"]),
-                      n_resultados=1 if r["dominio"] else 0)
-            gravar(ARQUIVO, d)          # grava a cada alvo: rodada interrompida não perde o que achou
+    # 14/10/2026: o mais antigo primeiro. A rodada é cortada pelo prazo do elo e recomeçava sempre
+    # do AC: 22 dos 54 alvos não eram reverificados desde 23/09. Saem --continuar e
+    # --refazer-sem-dominio, sem uso: a ordem já retoma de onde a rodada anterior parou.
+    fila = sorted(((uf, setor) for uf in ufs for setor in setores),
+                  key=lambda a: (d["alvos"].get(f"{a[0]}/{a[1]}") or {}).get("verificado_em") or "")
+    for uf, setor in fila:
+        r = buscar_uf(uf, setor)
+        d["alvos"][f"{uf}/{setor}"] = r
+        if r["dominio"]:
+            achados += 1
+            print(f"  ✓ {uf}/{setor:12s} {r['dominio']:34s} [{r['confianca']}] {str(r['titulo'])[:48]}")
+        else:
+            faltando += 1
+            print(f"  — {uf}/{setor:12s} sem domínio: {r['motivo_sem_dominio']}")
+        log_busca("busca ativa de domínio", 1, [t["dominio"] for t in r["tentativas"]],
+                  "pista" if r["dominio"] else "consultado sem achado", uf=uf,
+                  resultados=(f"{r['dominio']} (confiança {r['confianca']})" if r["dominio"]
+                              else r["motivo_sem_dominio"]),
+                  n_resultados=1 if r["dominio"] else 0)
+        gravar(ARQUIVO, d)          # grava a cada alvo: rodada interrompida não perde o que achou
     print(f"\n{achados} domínio(s) identificado(s), {faltando} sem domínio (lacuna declarada).")
     return 0
 
