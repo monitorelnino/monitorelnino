@@ -267,10 +267,7 @@ function __init(){
   if (alertasVelhos){
     /* Nada de mapa e nada de contagem: a seção declara a parada. Desenhar o retrato de ontem como
        "em vigor" é o único erro desta página que pode machucar alguém. */
-    ['linhaAlertas', 'linhaCemaden', 'linhaAlertasTipo'].forEach(id => texto(id, semAtualizacao));
-    texto('dcTopoConsulta', semAtualizacao);
-    texto('subAlertas', semAtualizacao + ' · a coleta de avisos e alertas roda a cada publicação');
-    texto('subCemaden', semAtualizacao + ' · a coleta de avisos e alertas roda a cada publicação');
+    ['dcTopoConsulta', 'subAlertas', 'subCemaden', 'subAlertasTipo'].forEach(id => texto(id, semAtualizacao));
     ['legAlertas', 'legCemaden', 'legAlertasTipo'].forEach(id =>
       MonitorMapas.legenda(id, [{cor: MonitorMapas.cor('sem-dado'), rotulo: 'sem atualização'}]));
     ['boxAlertas', 'boxCemaden', 'boxAlertasTipo'].forEach(id =>
@@ -281,9 +278,6 @@ function __init(){
     const quando = dm[1] ? dm[1] + (dm[2] ? ', ' + dm[2] : '') : carimbo;
     texto('tituloAlertas', 'Avisos e alertas em vigor · consulta de ' + quando);
     texto('dcTopoConsulta', 'Consulta de ' + quando);
-    texto('linhaAlertas', 'Consulta de ' + carimbo);
-    texto('linhaCemaden', 'Consulta de ' + carimbo);
-    texto('linhaAlertasTipo', 'Consulta de ' + carimbo);
 
     // ---- 1a. aviso ou alerta em vigor, por estado ----
     const porUFAviso = contarPorUF();
