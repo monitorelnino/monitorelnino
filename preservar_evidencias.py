@@ -98,7 +98,9 @@ def ler_pdfs(limite: int = 40, alvo: str | None = None) -> int:
     # de 11/10 sobrescreveu seis deles com o texto do PDF, deixando `texto_integral_hash` mentindo.
     alvos = [(h, it) for h, it in itens.items() if precisa_leitura(it)]
     # registros estaduais/municipais com URL .pdf ainda sem hash
-    for reg, fonte in ((ler("estados.json", {}).get("ufs") or [], "estados"), (ler("municipios.json", []) or [], "municipios")):
+    # 14/10/2026: só municípios aqui. O laço lia `url` no registro da UF, que não tem — o endereço
+    # mora em cada instrumento —, e nunca achou nada; o instrumento estadual é preservado por `main`.
+    for reg, fonte in ((ler("municipios.json", []) or [], "municipios"),):
         for r in reg:
             u = str(r.get("url") or ""); 
             if u.lower().split("?")[0].endswith(".pdf") and not r.get("hash_evidencia") and all(it.get("url") != u for it in itens.values()):
@@ -394,6 +396,12 @@ def autoteste_ocr() -> int:
                                           ("u", {"ocr_tentativas": 2, "ocr_ultima_falha": "2026-10-11"})],
                                          "2026-10-12")] != []:
         falhas.append("OCR: a quinta falha não tirou o item da fila, ou o back-off de 3 dias não esperou")
+    # 1c. (A3-22) o instrumento estadual pontuado com endereço entra na fila de preservação
+    _regs = registros_a_preservar([], {"ufs": [{"uf": "AC", "instrumentos": [
+        {"status": "READ", "url": "https://ac.gov.br/x", "tipo": "plano"},
+        {"status": "LAC", "url": "https://ac.gov.br/y"}, {"status": "NOVO"}]}]})
+    if [(r[0]["url"], r[2]) for r in _regs] != [("https://ac.gov.br/x", "AC")]:
+        falhas.append("A3-22: instrumento estadual pontuado com endereço fora da fila de preservação")
     _it = {}
     _falhou_ocr(_it, "HTTPError", "2026-10-12"); _falhou_ocr(_it, "HTTPError", "2026-10-13")
     if _it.get("ocr_tentativas") != 2 or _it.get("ocr_ultima_falha") != "2026-10-13":
@@ -460,11 +468,21 @@ def reconferir(limite: int = 200) -> int:
     return 0
 
 
+def registros_a_preservar(mun: list, estados: dict) -> list:
+    """(registro, nome, uf) pontuáveis com URL: os municípios e, desde 14/10/2026, cada instrumento
+    estadual pontuado (A3-22: 54 instrumentos, nenhum com cópia). Função pura."""
+    regs = [(m, m.get("nome"), m.get("uf")) for m in mun
+            if m.get("categoria") in PONT and str(m.get("url", "")).startswith("http")]
+    for e in (estados or {}).get("ufs") or []:
+        regs += [(i, f"instrumento estadual ({i.get('tipo')})", e.get("uf"))
+                 for i in e.get("instrumentos") or []
+                 if i.get("status") in ("NOVO", "READ", "VIG") and str(i.get("url", "")).startswith("http")]
+    return regs
+
+
 def main(limite: int = 200) -> int:
-    mun = ler("municipios.json"); feitos = pulados = falhas = 0
-    for m in mun:
-        if m.get("categoria") not in PONT or not str(m.get("url", "")).startswith("http"):
-            continue
+    mun = ler("municipios.json"); estados = ler("estados.json", {}); feitos = pulados = falhas = 0
+    for m, nome, uf in registros_a_preservar(mun, estados):
         h_ex = m.get("hash_evidencia")
         if h_ex:
             it = (ler("evidencias.json", {"itens": {}}).get("itens") or {}).get(h_ex, {})
@@ -476,17 +494,18 @@ def main(limite: int = 200) -> int:
         try:
             bruto = buscar(m["url"], timeout=45)
         except Exception as e:  # noqa: BLE001
-            registrar_lacuna(f"evidência {m['nome']}/{m['uf']}", f"{type(e).__name__}", canal=m.get("canal") or "DOM",
-                             camada=2, uf=m["uf"], municipio=m["nome"], strings=[m["url"]]); falhas += 1
+            registrar_lacuna(f"evidência {nome}/{uf}", f"{type(e).__name__}", canal=m.get("canal") or "DOM",
+                             camada=2, uf=uf, municipio=nome, strings=[m["url"]]); falhas += 1
             continue
         ext = (mimetypes.guess_extension(("application/pdf" if bruto[:4] == b"%PDF" else "text/html")) or ".bin").lstrip(".")
         h_novo = __import__("hashlib").sha256(bruto).hexdigest()
         if h_ex and h_novo != h_ex:
-            registrar_lacuna(f"evidência {m['nome']}/{m['uf']}", f"documento mudou desde o hash registrado ({h_ex[:12]}… → {h_novo[:12]}…)", canal=m.get("canal") or "DOM", camada=2, uf=m["uf"], municipio=m["nome"], strings=[m["url"]])
+            registrar_lacuna(f"evidência {nome}/{uf}", f"documento mudou desde o hash registrado ({h_ex[:12]}… → {h_novo[:12]}…)", canal=m.get("canal") or "DOM", camada=2, uf=uf, municipio=nome, strings=[m["url"]])
         idx = ler("evidencias.json", {"itens": {}}); idx["itens"].pop(h_ex, None) if h_ex and h_novo != h_ex else None; gravar("evidencias.json", idx)
         m["hash_evidencia"] = preservar_evidencia(bruto, m["url"], ext, "preservar_evidencias")
         feitos += 1
     gravar("municipios.json", mun)
+    gravar("estados.json", estados)
     print(f"evidências: {feitos} preservada(s), {pulados} já tinham hash, {falhas} falha(s) de rede (lacunas no log)")
     return 0
 
