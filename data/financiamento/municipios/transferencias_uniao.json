@@ -247746,7 +247746,7 @@
  },
  "_formato": "Transferências da União a municípios, por mês e por rota, do download de DADOS ABERTOS do Portal da Transparência (sem chave de API: a API exige `chave-api-dados` e chave está proibida neste repositório). Só `TIPO FAVORECIDO = Administração Pública Municipal`. A rota é derivação declarada dos códigos de função e subfunção — constitucional (FPM, cotas, royalties) · saúde (função 10) · assistência social (função 08) · defesa civil (subfunção 182) · outras. Linha municipal SEM MUNICÍPIO identificado na fonte vive em `sem_municipio_na_fonte`, por UF, separada de `nao_casados`: não foi dito e não consegui ler são coisas diferentes. Mês muito abaixo da mediana de linhas dos demais é marcado `parcial`, porque o Portal publica o arquivo do mês e continua enchendo. EMENDA PARLAMENTAR NÃO É IDENTIFICÁVEL nesta fonte e por isso não existe como rota aqui. A chave do arquivo é o código SIAFI e o site é indexado por IBGE: o casamento é por UF e nome normalizado, e o que não casa fica em `nao_casados`, com o valor, nunca descartado. PESO ZERO: nunca lido por recalcular_mare.py nem por gerar_monitor_saude.py.",
  "fonte": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
- "atualizado_em": "13/10/2026",
+ "atualizado_em": "14/10/2026",
  "rotas": [
   "constitucional",
   "saude",
