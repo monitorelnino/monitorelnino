@@ -257,6 +257,43 @@ def unir_fila_de_pistas(caminho, base_txt, nosso_txt, deles_txt):
     return fundido, len(ln), len(ld), len(uniao), mescladas
 
 
+# 14/10/2026 (F55): dois índices que todo elo escreve e que o resolvedor recusava — o push dos
+# diários da noite 13→14 caiu nos dois. O índice de evidências é endereçado pelo conteúdo: entrada
+# nova de um lado entra; a mesma entrada mudada nos dois lados segue a regra da pista (campo a campo).
+# O registro de robots é contador + trilha por host: os acessos se unem pela base comum (multiconjunto,
+# teto de 200 do produtor), o total soma o que cada lado acrescentou.
+INDICES_POR_CHAVE = {"data/evidencias.json": "itens", "data/robots_registro.json": "hosts"}
+
+
+def _unir_host(base: dict, nosso: dict, deles: dict) -> dict:
+    b = base or {}
+    acessos = _multiconjunto(b.get("acessos") or [], nosso.get("acessos") or [], deles.get("acessos") or [])
+    t0 = int(b.get("total_acessos") or 0)
+    return {**deles, **nosso, "acessos": acessos[-200:],
+            "total_acessos": int(nosso.get("total_acessos") or 0) + int(deles.get("total_acessos") or 0) - t0,
+            "ultimo_acesso": max(str(nosso.get("ultimo_acesso") or ""), str(deles.get("ultimo_acesso") or "")) or None,
+            "primeiro_acesso": min(x for x in (nosso.get("primeiro_acesso"), deles.get("primeiro_acesso")) if x)
+            if (nosso.get("primeiro_acesso") or deles.get("primeiro_acesso")) else None}
+
+
+def unir_indice(caminho, base_txt, nosso_txt, deles_txt):
+    """(doc, n_nosso, n_deles, n_uniao) do índice `{chave: {id: entrada}}`, pela base comum."""
+    chave = INDICES_POR_CHAVE[caminho]
+    if nosso_txt is None or deles_txt is None:
+        raise Recusa("um dos lados não tem o arquivo; isto não é acréscimo dos dois lados")
+    nosso, deles = json.loads(nosso_txt), json.loads(deles_txt)
+    base = (json.loads(base_txt) if base_txt is not None else {}).get(chave) or {}
+    a, b = nosso.get(chave) or {}, deles.get(chave) or {}
+    mesclar = _unir_host if chave == "hosts" else _mesclar_pista
+    uniao = dict(a)
+    for k, v in b.items():
+        if k not in a or a[k] == v:
+            uniao[k] = v
+        elif v != base.get(k):
+            uniao[k] = v if a[k] == base.get(k) else mesclar(base.get(k), a[k], v)
+    return {**deles, **nosso, chave: uniao}, len(a), len(b), len(uniao)
+
+
 class _Ausente:
     """O campo não existe neste lado — distinto de existir com valor nulo."""
     def __repr__(self):
@@ -505,6 +542,16 @@ def resolver(repo=None, escrever=True):
                     git("add", "--", norm, repo=repo)
                 resolvidos.append(f"{norm}: {a} + {b} → {t} pista(s), {m} mesclada(s) "
                                   f"(união pela base comum, política de scripts/pistas.py)")
+
+            elif norm in INDICES_POR_CHAVE:
+                fundido, a, b, t = unir_indice(
+                    norm,
+                    estagio(norm, 1, repo=repo), estagio(norm, 2, repo=repo),
+                    estagio(norm, 3, repo=repo))
+                if escrever:
+                    gravar_no_formato_do_produtor(raiz / norm, fundido)
+                    git("add", "--", norm, repo=repo)
+                resolvidos.append(f"{norm}: {a} + {b} → {t} entrada(s) (união pela base comum)")
 
             elif norm in DERIVADOS_COM_GERADOR:
                 adiados.append(norm)
@@ -901,6 +948,32 @@ def autoteste() -> int:
         iguais = sum(1 for x in d["execucoes"] if x.get("municipio") == "Recife")
         checar("duas execuções idênticas são DUAS tentativas, não uma "
                "(nunca deduzir por conteúdo)", len(d["execucoes"]) == 4 and iguais == 2)
+
+    # F55: os dois índices que todo elo escreve se unem; nada de um lado se perde.
+    def _doc(chave, d):
+        return json.dumps({"_governanca": "x", chave: d})
+    with tempfile.TemporaryDirectory() as t:
+        EV = "data/evidencias.json"
+        r = _repo_com_conflito(t, EV, _doc("itens", {"a": {"ocr": 0}}),
+                               _doc("itens", {"a": {"ocr": 1}, "b": {"x": 1}}),
+                               _doc("itens", {"a": {"ocr": 0}, "c": {"x": 2}}))
+        res, reg, rec = resolver(repo=r)
+        d = json.loads((r / EV).read_text(encoding="utf-8")) if not rec else {"itens": {}}
+        checar("F55: índice de evidências une as entradas novas e a mudança de um lado só",
+               not rec and d["itens"] == {"a": {"ocr": 1}, "b": {"x": 1}, "c": {"x": 2}})
+    with tempfile.TemporaryDirectory() as t:
+        RB = "data/robots_registro.json"
+        ac = lambda u: {"url": u, "quando": u}
+        h0 = {"total_acessos": 1, "acessos": [ac("0")], "ultimo_acesso": "2026-10-13", "primeiro_acesso": "2026-09-28"}
+        r = _repo_com_conflito(t, RB, _doc("hosts", {"x.br": h0}),
+                               _doc("hosts", {"x.br": {**h0, "total_acessos": 2, "acessos": [ac("0"), ac("1")], "ultimo_acesso": "2026-10-14"}}),
+                               _doc("hosts", {"x.br": {**h0, "total_acessos": 3, "acessos": [ac("0"), ac("2"), ac("3")]}, "y.br": h0}))
+        res, reg, rec = resolver(repo=r)
+        d = json.loads((r / RB).read_text(encoding="utf-8")) if not rec else {"hosts": {}}
+        x = d["hosts"].get("x.br") or {}
+        checar("F55: registro de robots soma os acessos dos dois lados, sem perder host",
+               not rec and x.get("total_acessos") == 4 and len(x.get("acessos") or []) == 4
+               and x.get("ultimo_acesso") == "2026-10-14" and "y.br" in d["hosts"])
 
     if falhas:
         print(f"\n✗ UNIÃO DE CONFLITO: {len(falhas)} falha(s).")

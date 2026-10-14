@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · Índices de evidências e de robots se unem no conflito (F55)
+
+Na noite 13→14 o push dos diários foi recusado: `evidencias.json` e `robots_registro.json`, escritos por todo elo, não tinham classe no resolvedor. Agora se unem pela base comum; a reaplicação passa a unir `itens` (lia uma lista vazia). Onde: `scripts/unir_conflito_de_rodada.py`, `scripts/reaplicar_noite.py`, `config/escritores.json`.
+
 ## 2026-10-14 · #PR · DOE do Acre entra na busca
 
 O DOE-AC busca por formulário (POST) e lista data, número e PDF da edição; o do PI também, mas o índice dele para em 2021. A busca do TO vira `itens_por_busca`, comum ao TO e ao AC: só a edição da janela desce ao PDF, a mais nova primeiro. Saúde estadual usa o mesmo mapa de adaptadores. Onde: `coletar_doe.py`, `coletar_saude_estadual.py`, `data/fontes_doe.json`.

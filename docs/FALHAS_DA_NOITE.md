@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-13. 53 falhas; 49 com caso de teste que as reproduz; 4 sem, com o que falta dito.
+Atualizado em 2026-10-13. 54 falhas; 50 com caso de teste que as reproduz; 4 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -482,3 +482,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** docs/SAUDE_PIPELINE.md (14/10): 'monitorar_imprensa_saude.py: erro em 19 rodadas seguidas — KeyError: 'hash''; data/pistas_imprensa_saude.json (14/10): 694 de 728 pistas sem `hash`, todas `funil_saude_estadual`, a primeira de 01/10/2026
 - **Correção:** A dedução usa só quem tem `hash`, como o monitor regional já faz; a pista do outro produtor fica intacta. O autoteste passa a ter uma pista sem `hash` na fila.
 - **Caso de teste:** `monitorar_imprensa_saude.py --autoteste: F53: pista de outro produtor sem hash`
+
+## F55 · Push dos diários recusado por dois índices que todo elo escreve
+
+- **Noite:** 2026-10-14
+- **Sintoma:** Run 38494173602 (diários, 01:09–02:51 UTC): 'Commit com rebase-e-push' falhou com '2 caminho(s) sem resolução conhecida; a rodada não comita'. DOE, atos de resposta e S2iD da noite não chegaram à main; `fontes_doe.json` segue com a tentativa de 12/10.
+- **Causa:** Entre a base do elo e o push, a main mudou `data/evidencias.json` e `data/robots_registro.json` (commit 19db929b, 01:33). Nenhum dos dois tinha classe no resolvedor, e todo coletor os escreve. A reaplicação, por sua vez, unia a lista `evidencias` do índice, que está vazia: o índice vive em `itens`.
+- **Prova:** git log ce2e450c..main até 02:52 UTC: só 19db929b toca arquivos fora das classes — evidencias.json, robots_registro.json e cobertura_declarada_uf.json (este, mesclado pelo git no elo seguinte); run 38494227421: 'evidencias: +0 no índice'
+- **Correção:** `unir_conflito_de_rodada.py` une os dois índices pela base comum (`INDICES_POR_CHAVE`); a reaplicação une `itens` por sha256. Os dois entram em `config/escritores.json`.
+- **Caso de teste:** `scripts/unir_conflito_de_rodada.py --autoteste: F55: índice de evidências une`
