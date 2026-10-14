@@ -1,9 +1,12 @@
-"""Sonda temporária (ramo diag): adaptador PI de ponta a ponta, do runner."""
-import sys, json
+"""Sonda temporária (ramo diag): alcance da busca PI no tempo."""
+import sys, re
 sys.path.insert(0, ".")
 import coletar_doe as c
-itens, totais = c.itens_por_busca("PI", "2026-07-01", c.EDICOES_POR_BUSCA["busca_pi"]("2026-07-01", "2026-10-14"))
-print("TOTAIS", totais, "itens", len(itens))
-for it in itens[:8]:
-    print(json.dumps({k: (v if k != "trechos" else [t[:200] for t in v]) for k, v in it.items()}, ensure_ascii=False))
-print("HOMOLOGACOES", [h for it in itens for t in it["trechos"] for h in c.homologacoes_no_texto(t)][:10])
+for t in ("situação de emergência", "emergência", "decreto", "homologa", "governador"):
+    try:
+        b = c.enviar(c.BUSCA_PI, {"ocorrencia": t.encode("latin-1")}, timeout=120).decode("latin-1", "replace")
+        ed = c.parse_busca_pi(b); tot = re.search(r"Encontradas <b>(\d+)", b)
+        ds = sorted(e["data"] for e in ed)
+        print(t, "| declaradas", tot and tot.group(1), "| na página", len(ed), "| min", ds[:1], "| max", ds[-3:], "| pag", re.findall(r'href="[^"]*busca[^"]*"', b)[:3])
+    except Exception as e:
+        print(t, "ERRO", type(e).__name__, e)
