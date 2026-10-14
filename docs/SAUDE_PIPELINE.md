@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-06 a 2026-10-13 (814 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-06 a 2026-10-13 (826 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -23,31 +23,31 @@ Janela: 2026-10-06 a 2026-10-13 (814 execução(ões) registrada(s), 7 dias de h
 
 | script | papel | última execução | duração | itens | status | erro |
 |---|---|---|---|---:|---|---|
-| `recalcular_mare.py` | essencial | 2026-10-13 01:17 | 3 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-13 02:58 | 3 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-13 04:16 | 1 s | — | ok | — |
 | `buscar_protocolo_calor.py` | coletor | 2026-10-12 07:33 | 11 s | 3 | ok | — |
 | `classificar_planos_municipais.py` | coletor | 2026-10-13 06:56 | 1 s | — | ok | — |
-| `classificar_saude_no_plano.py` | coletor | 2026-10-12 01:30 | 0 s | — | ok | — |
-| `coletar_arboviroses_sinan.py` | coletor | 2026-10-12 01:28 | 40 s | — | ok | — |
-| `coletar_boletim_df_arboviroses.py` | coletor | 2026-10-12 01:23 | 301 s | — | ok | — |
-| `coletar_boletim_ms_dengue.py` | coletor | 2026-10-12 01:23 | 16 s | — | ok | — |
-| `coletar_boletim_pb_arboviroses.py` | coletor | 2026-10-12 01:28 | 4 s | — | ok | — |
-| `coletar_boletim_pe_arboviroses.py` | coletor | 2026-10-12 01:28 | 6 s | — | ok | — |
+| `classificar_saude_no_plano.py` | coletor | 2026-10-13 01:33 | 0 s | — | ok | — |
+| `coletar_arboviroses_sinan.py` | coletor | 2026-10-13 01:31 | 61 s | — | ok | — |
+| `coletar_boletim_df_arboviroses.py` | coletor | 2026-10-13 01:25 | 335 s | — | ok | — |
+| `coletar_boletim_ms_dengue.py` | coletor | 2026-10-13 01:25 | 18 s | — | ok | — |
+| `coletar_boletim_pb_arboviroses.py` | coletor | 2026-10-13 01:31 | 3 s | — | ok | — |
+| `coletar_boletim_pe_arboviroses.py` | coletor | 2026-10-13 01:31 | 7 s | — | ok | — |
 | `coletar_cadastro_prioritarios.py` | coletor | 2026-10-13 06:52 | 31 s | — | ok | — |
 | `coletar_cobertura_qd.py` | coletor | 2026-10-13 06:56 | 2134 s | — | ok | — |
-| `coletar_dda.py` | coletor | 2026-10-12 01:22 | 56 s | — | ok | — |
-| `coletar_desfechos_saude.py` | coletor | 2026-10-12 01:15 | 405 s | — | ok | — |
+| `coletar_dda.py` | coletor | 2026-10-13 01:24 | 55 s | — | ok | — |
+| `coletar_desfechos_saude.py` | coletor | 2026-10-13 01:18 | 359 s | — | ok | — |
 | `coletar_diarios_consorciados.py` | coletor | 2026-10-12 01:33 | 1872 s | 34 | ok | — |
 | `coletar_diarios_municipais.py` | coletor | 2026-10-12 01:28 | 299 s | 50 | ok | — |
 | `coletar_doe.py` | coletor | 2026-10-12 02:04 | 841 s | — | ok | — |
 | `coletar_espin.py` | coletor | 2026-10-12 07:31 | 97 s | — | ok | — |
 | `coletar_execucao_mps.py` | coletor | 2026-10-12 07:51 | 16 s | — | ok | — |
 | `coletar_normais_inmet.py` | coletor | 2026-10-13 06:52 | 4 s | — | ok | — |
-| `coletar_obitos_registro_civil.py` | coletor | 2026-10-12 01:29 | 92 s | — | ok | — |
+| `coletar_obitos_registro_civil.py` | coletor | 2026-10-13 01:32 | 52 s | — | ok | — |
 | `coletar_prioritarios_mma.py` | coletor | 2026-10-13 06:52 | 4 s | — | ok | — |
 | `coletar_recursos_resposta.py` | coletor | 2026-10-12 02:32 | 8 s | — | ok | — |
 | `coletar_s2id.py` | coletor | 2026-10-12 02:18 | 871 s | — | ok | — |
-| `coletar_saude.py` | coletor | 2026-10-12 01:02 | 370 s | — | ok | — |
+| `coletar_saude.py` | coletor | 2026-10-13 01:11 | 74 s | — | ok | — |
 | `coletar_semiarido_sudene.py` | coletor | 2026-10-13 06:52 | 3 s | — | ok | — |
 | `coletar_sg_esus.py` | coletor | 2026-10-11 03:37 | 8 s | — | ok | — |
 | `coletar_siconfi_182.py` | coletor | 2026-10-12 07:51 | 1 s | 5571 | ok | — |
