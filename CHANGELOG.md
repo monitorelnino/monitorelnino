@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · Portões de código do publicador no Node 22
+
+O passo "Portões de código (avisam, não barram)" do publicador rodava em Node 20, e o `package.json` exige 22.14: o `undici` do `jsdom` caía em `verificar_estrutura.js` e abria Issue a cada publicação (robo-registro#181). Passa ao Node 22, o mesmo dos portões do PR. Onde: `publicar_dados.yml`.
+
 ## 2026-10-14 · #PR · Juiz grava o que julgou quando o prazo do elo chega
 
 `julgar_filas.py` só gravava fila, registro e log ao fim do laço: interrompido pelo prazo do elo (SIGINT, 60 s de cortesia), perdia a rodada inteira — lote 7 da janela C, 2 h de busca dirigida. O laço vira `julgar_lista`, função pura que devolve o julgado até a interrupção; o resto fica pendente e volta na rodada seguinte. Autoteste com juiz que cai no meio.
