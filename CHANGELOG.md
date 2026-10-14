@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · rodada semanal vira chamador do coletor (decisão 2)
+
+`atualizar.yml` (884 linhas) passa a chamar `_coletor.yml` com a mesma fila de comandos: janela, prazo, `.feito`, commit com união e coleta perdida vêm de lá. Saem, por decisão da editoria, a cortina "em atualização", a reposição própria (o publicador repõe), o contador da cortina, o vigia do desfecho e três disparos manuais; fica a reposição urgente. O coletor ganha as chaves opcionais só no passo Coletar.
+
 ## 2026-10-14 · #PR · coleta de alertas vencida não reprova mais a abertura (F28)
 
 Quando os alertas passam das 24 horas, a Defesa civil declara a parada; `verificar_runtime_mapas.js` e a coerência da Imprensa não conheciam esse modo e reprovavam toda abertura da noite. Agora julgam com a regra existente, a data da parada não é lida como número, e o cartão de tipos declara a parada. Caso: perturbação 7 do portão de robustez.

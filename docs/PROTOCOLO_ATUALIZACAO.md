@@ -40,7 +40,8 @@ espera a pista B. Isso é a governança automático × humano do projeto
 > mudança, o robô publica `progresso.json` no ramo `publico` (contador
 > operacional consultados/total) — a editoria acompanha pelo próprio domínio
 > (monitorelnino.com.br), sem precisar da prévia com senha. Script:
-> `scripts/atualizar_contador_cortina.py`.
+> `scripts/atualizar_contador_cortina.py`. *(Saiu em 14/10/2026, com a cortina da rodada: o
+> `atualizar.yml` passou a ser chamador do `_coletor.yml`, e quem repõe o domínio é o publicador.)*
 
 - **Gatilho:** domingos, 0h de Brasília (03h UTC — o cron é UTC) — compromisso semanal
   público; mais **quatro rodadas por dia, a cada 6 horas** (01h, 07h, 13h e 19h UTC = 22h,

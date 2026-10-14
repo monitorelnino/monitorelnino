@@ -78,6 +78,16 @@ on:
         required: false
       ROBO_DEPLOY_KEY:
         required: true
+      PORTAL_TRANSPARENCIA_API_KEY:
+        required: false
+      OPENAQ_API_KEY:
+        required: false
+      INMET_API_TOKEN:
+        required: false
+      NETLIFY_AUTH_TOKEN:
+        required: false
+      NETLIFY_SITE_ID:
+        required: false
 
 permissions:
   contents: read
@@ -256,6 +266,18 @@ jobs:
       # deliberado: coletor que falha não derruba os outros nem impede o commit do que já foi achado.
       - name: Coletar
         if: steps.janela.outputs.pode == '1'
+        # Chaves da coleta com chave (só o `atualizar.yml` as passa; vazias nos demais elos) e as
+        # variáveis da varredura intensiva que o `atualizar.py` lê. Só neste passo.
+        env:
+          PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
+          OPENAQ_API_KEY: ${{ secrets.OPENAQ_API_KEY }}
+          INMET_API_TOKEN: ${{ secrets.INMET_API_TOKEN }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          INTENSIVO_DE: ${{ vars.INTENSIVO_DE }}
+          INTENSIVO_ATE: ${{ vars.INTENSIVO_ATE }}
+          LOTE_DIARIOS: ${{ vars.LOTE_DIARIOS }}
+          TAMANHO_LOTE: ${{ vars.TAMANHO_LOTE }}
         run: |
           # 10/10/2026 (item 2-bis.2): no ensaio real a coleta é mínima e não vai à rede — o que se
           # ensaia é a mecânica do GitHub (fila, `workflow_run`, empurrão concorrente, marcador).
