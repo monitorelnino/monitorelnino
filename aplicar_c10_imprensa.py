@@ -9,7 +9,7 @@ import json, sys, datetime
 # §227: a data vem da REDAÇÃO, não do runner (que roda em UTC). A rodada de sábado 22h40
 # em Brasília já é domingo em UTC, e o carimbo gravado em data/ sairia um dia adiante do que o
 # leitor brasileiro viu.
-from coletores_base import hoje_editorial  # noqa: E402
+from coletores_base import hoje_editorial, gravar_em  # noqa: E402
 D = "data/"; PONT = {"plano", "plano_antigo", "plano_elaboracao", "coberto_estadual",
         "plano_novo", "plano_readaptado", "plano_recorrente"}  # §202: escada municipal
 def j(n): return json.load(open(D + n, encoding="utf-8"))

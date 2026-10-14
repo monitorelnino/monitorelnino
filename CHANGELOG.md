@@ -36,6 +36,10 @@ não pontuados permanecem na versão corrente.
 
 O condutor do ensaio real contava o elo como disparado mesmo com o `gh workflow run` devolvendo HTTP 500; o ensaio 38584779850 esperou 107 minutos por uma descoberta que nunca rodou e ficou vermelho sem falha da corrente. Agora só conta o disparo aceito. Onde: `scripts/ensaio_real.py`.
 
+## 2026-10-14 · #PR · Nome sem definição reprova no portão (F56)
+
+`monitorar_politica_por_inteiro.py` e `monitorar_redes_oficiais.py` morriam com NameError havia 19 e 4 rodadas. Corrigidos, com mais dois casos latentes. `verificar_scripts_dos_workflows.py` passa a reprovar nome sem definição em todo .py (pyflakes, versão travada). Onde: os quatro scripts, o portão, `requirements.txt`.
+
 ## 2026-10-14 · #PR · Descoberta de planos: uma tentativa por consulta
 
 `descobrir_planos.py` levava 47–58 s por alvo (14/10: 20 alvos em 932–1.166 s) porque cada consulta ao `wp-json` repetia em host mudo; o elo da descoberta esgotava o prazo e pulava `seguir_pistas` e `verificar_pista_imprensa`. Não ser WordPress é o caso comum: uma tentativa, 15 s. Onde: `descobrir_planos.py`.

@@ -257,9 +257,6 @@ def rodar(limite: int = LIMITE_PADRAO) -> int:
                     pistas=n_pistas, sem_perfil=n_sem_perfil, lacunas=n_lacunas)
     print(f"redes oficiais: {n_perfis} perfil(is) confirmado(s), {n_pistas} pista(s) nova(s), "
           f"{n_sem_perfil} domínio(s) sem perfil, {n_lacunas} lacuna(s)")
-    if caidos:
-        print(f"disjuntor: {len(caidos)} motor(es) desligado(s) — "
-              + "; ".join(f"{m} ({motivos[m]})" for m in caidos))
     return 0
 
 
