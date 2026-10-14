@@ -145,13 +145,9 @@ jobs:
       timeout_minutos: 240
       comandos: |
         consultar_querido_diario.py --alvos data/fila_qd_169.json --limite 40
-        # 30/09/2026 (item 7): o lote de 150 num comando só era o que estourava o teto. Três lotes
-        # de 50, cada um como comando próprio, passam pelo invólucro de saúde um a um — e o
-        # invólucro grava a linha de saúde de cada um. Se o terceiro não couber na noite, os dois
-        # primeiros já entraram, e a fila continua de onde parou na noite seguinte.
-        coletar_diarios_municipais.py --tamanho 50
-        coletar_diarios_municipais.py --tamanho 50
-        coletar_diarios_municipais.py --tamanho 50
+        # 14/10/2026 (editoria): todo indexado no Querido Diário sem consulta na semana (~527 na
+        # 1ª noite, ~9 min; nas seguintes, só o que faltou). Quem estourava o teto eram os consorciados.
+        coletar_diarios_municipais.py
         # 28/09/2026 (§276): a janela era `--desde 2026-06-29`, ou seja TRÊS MESES revarridos a cada
         # noite — 87 dos 90 min do teto, e o job cancelado a segundos do fim. O orquestrador sempre
         # usou oito dias corridos (`atualizar.py`, linha 250), e é isso que faz sentido para um coletor
