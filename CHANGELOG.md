@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · verificador do blog lê as regras de onde elas moram
+
+`verificar_texto_blog.py` tinha cópia à mão das etiquetas, do vocabulário proibido e dos termos que exigem explicação; passa a lê-los de `layout/regras.json → blog`. A regra das frases obrigatórias de saúde, que o script já julgava, deixa de constar como "só texto" (relatório D, A7-14: 17 → 16).
+
 ## 2026-10-14 · #PR · OCR: PDF fora do alcance segue o back-off das filas
 
 PDFs escaneados acima de 5 MB do domínio da Defesa Civil do AM, que o runner não alcança, eram retentados no OCR toda noite para sempre (18 lacunas por noite). A fila de OCR passa a usar o mesmo back-off da fila do juiz (1, 3, 7 dias; cinco tentativas e sai, com o motivo no item), que sobe para `coletores_base`.
