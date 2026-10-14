@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-14 · #PR · DOE do Piauí entra na busca
+
+O DOE-PI busca por formulário (POST, latin-1) e lista data e PDF da edição. A busca do TO vira `itens_por_busca`, comum às duas UFs: só a edição da janela desce ao PDF, a mais nova primeiro. Saúde estadual usa o mesmo mapa de adaptadores. Onde: `coletar_doe.py`, `coletar_saude_estadual.py`, `data/fontes_doe.json`.
+
 ## 2026-10-14 · #PR · Descoberta de planos gira a fatia de alvos
 
 Com `--limite 20` e ordem fixa, `descobrir_planos.py` consultava sempre a saúde das 20 primeiras UFs: a defesa civil e sete UFs nunca eram consultadas (as 18 pistas da fila são todas de saúde). A fatia agora gira por hora sobre os 54 alvos. Onde: `descobrir_planos.py`.
