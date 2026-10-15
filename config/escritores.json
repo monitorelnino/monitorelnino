@@ -38,8 +38,7 @@
   },
   "data/fontes_consultadas.json": {
    "escritor": "qualquer_elo",
-   "por_que": "Conflito nele é RECUSADO de propósito pelo resolvedor: os dois lados alteram `ultima_verificacao` e `fontes` dos mesmos municípios, e qual vence é política que a editoria não decidiu. A recusa é o comportamento certo — o elo desiste da tentativa e o trabalho sai como artefato.",
-   "pendente": "a editoria decide a política de mesclagem, ou o arquivo passa a ter escritor único"
+   "por_que": "Livro de consultas por município: diários, busca web e outros coletores escrevem fontes diferentes do mesmo município. O resolvedor une pela regra do produtor (`INDICES_POR_CHAVE` → `_unir_municipio_do_livro`) desde 15/10/2026 (F58): janela de fontes dos dois lados, nível que não rebaixa, a verificação mais recente."
   },
   "data/publicacao.json": {
    "escritor": "ninguem",

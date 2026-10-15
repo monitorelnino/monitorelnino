@@ -175,7 +175,8 @@ def decisao_para_vazio(coberto, edicoes_no_periodo=None) -> str:
 def cobertura_qd(cod: str, desde: str, resposta_com_diario: bool = False):
     """PR-N0 §1.2: True se o território tem diário indexado no Querido Diário (total_gazettes>0 sem
     querystring), False se não, None se o teste falhou. Cache em data/cobertura_qd.json (uma vez por janela).
-    Também grava cobertura_qd/data_teste_cobertura em verificacao_municipal.json."""
+    15/10/2026: não escreve mais em verificacao_municipal.json — o arquivo é derivado
+    (`recalcular_mare.py --write`), que apagava o espelho a cada publicação."""
     cache = ler("cobertura_qd.json", {"_governanca": "Cobertura do Querido Diário por município (PR-N0 §1.2): true = diário indexado; false = não indexado; testado sem querystring, size=1. Uma vez por janela.", "janela": desde, "municipios": {}}) or {}
     # A6-17 (12/10/2026): a troca de `--desde` zerava o retrato inteiro (5.571 municípios do
     # `coletar_cobertura_qd.py`). Edição indexada não desaparece: o retrato não se zera, e a linha
@@ -201,21 +202,6 @@ def cobertura_qd(cod: str, desde: str, resposta_com_diario: bool = False):
             mun[cod] = {**anterior, "cobertura_qd": None, "data_teste": hoje}
     if mun.get(cod) != anterior:
         gravar("cobertura_qd.json", cache)
-    # Espelho em verificacao_municipal.json (campo público). A data que vai para lá é a do TESTE,
-    # não a de hoje: num acerto em cache o teste não aconteceu hoje, e carimbá-lo com a data de
-    # hoje afirmaria uma verificação que não houve. Grava só quando valor ou data mudam.
-    try:
-        valor, quando = mun[cod]["cobertura_qd"], mun[cod]["data_teste"]
-        vm = ler("verificacao_municipal.json", []) or []
-        if isinstance(vm, list):
-            for reg in vm:
-                if str(reg.get("ibge")).zfill(7) == str(cod).zfill(7):
-                    if reg.get("cobertura_qd") != valor or reg.get("data_teste_cobertura") != quando:
-                        reg["cobertura_qd"] = valor; reg["data_teste_cobertura"] = quando
-                        gravar("verificacao_municipal.json", vm)
-                    break
-    except Exception:  # noqa: BLE001
-        pass
     return mun[cod]["cobertura_qd"]
 
 
@@ -474,16 +460,11 @@ def autoteste() -> int:
         mesmo quando o teste tinha sido feito dias antes, afirmando uma verificação que não houve.
         """
         gravados = []
-        vm = [{"ibge": "1100015", "cobertura_qd": True, "data_teste_cobertura": "2026-09-20"}]
         cache = {"janela": "2026-06-29",
                  "municipios": {"1100015": {"cobertura_qd": True, "data_teste": "2026-09-20"}}}
 
         def ler_falso(nome, padrao=None):
-            if nome == "cobertura_qd.json":
-                return cache
-            if nome == "verificacao_municipal.json":
-                return vm
-            return padrao
+            return cache if nome == "cobertura_qd.json" else padrao
 
         def consultar_proibido(*a, **kw):
             raise AssertionError("acerto em cache não pode consultar a rede")
@@ -497,8 +478,7 @@ def autoteste() -> int:
         finally:
             for n, f in real.items():
                 globals()[n] = f
-        return (r is True and gravados == []
-                and vm[0]["data_teste_cobertura"] == "2026-09-20")
+        return r is True and gravados == []
 
     def t11b():
         """A6-17 (12/10/2026): `--desde` diferente não zera o retrato, e a resposta com diário
@@ -660,7 +640,7 @@ def autoteste() -> int:
                             "resposta vazia → sem_cobertura_qd / coberto_sem_mencao / erro (nunca 'nada localizado')": t8,
                             "regressão 21/09: rodar duas vezes sobre o mesmo achado não duplica a pista": t9,
                             "toda decisão deste coletor cabe no vocabulário fechado do log": t10,
-                            "acerto em cache não grava, e o espelho leva a data do teste": t11,
+                            "acerto em cache não grava": t11,
                             "A6-17 troca de janela não zera o retrato; campos do outro escritor ficam": t11b,
                             "503 espera e repete; 429 espera uma vez; 4xx sobe na hora": t12,
                             "F51: sem --lote, todo indexado pendente na semana, sem corte": t13})

@@ -88,20 +88,31 @@ def ensaio_dois_elos_em_paralelo(diz) -> bool:
         caminho = tmp / "data" / "pistas_imprensa.json"
         caminho.parent.mkdir(parents=True)
 
+        # 15/10/2026 (F58): o livro de fontes também — cada elo marca a SUA fonte no mesmo município.
+        livro = tmp / "data" / "fontes_consultadas.json"
+
+        def marca(*fontes):
+            return json.dumps({"municipios": {"5002704": {"nivel_verificacao": "nacional",
+                               "ultima_verificacao": "2026-10-15", "fontes": [
+                                   {"fonte": f, "data": "2026-10-15", "resultado": "r"} for f in fontes]}}})
+
         base = _pista("base1", "5002209")
         caminho.write_text(_fila(base), encoding="utf-8", newline="\n")
+        livro.write_text(marca("DOU"), encoding="utf-8", newline="\n")
         g("add", "-A"); g("commit", "-qm", "a fila de ontem")
 
         # O elo B (diários) grava e empurra primeiro.
         g("checkout", "-qb", "elo_b")
         do_b = _pista("diarios1", "5002704")
         caminho.write_text(_fila(base, do_b), encoding="utf-8", newline="\n")
+        livro.write_text(marca("DOU", "QD"), encoding="utf-8", newline="\n")
         g("add", "-A"); g("commit", "-qm", "diarios")
 
         # O elo A (busca web) estava correndo em paralelo e grava a SUA pista.
         g("checkout", "-q", "main")
         do_a = _pista("buscaweb1", "5003207")
         caminho.write_text(_fila(base, do_a), encoding="utf-8", newline="\n")
+        livro.write_text(marca("DOU", "Busca web"), encoding="utf-8", newline="\n")
         g("add", "-A"); g("commit", "-qm", "busca web")
 
         # O push do elo A é recusado e ele rebasa — é aqui que a noite perdeu o trabalho.
@@ -119,8 +130,20 @@ def ensaio_dois_elos_em_paralelo(diz) -> bool:
         if ids != ["base1", "buscaweb1", "diarios1"]:
             diz(f"  ✗ perda de pista na união: ficaram {ids}")
             return False
+        fontes = sorted(f["fonte"] for f in json.loads(livro.read_text(encoding="utf-8"))
+                        ["municipios"]["5002704"]["fontes"])
+        if fontes != ["Busca web", "DOU", "QD"]:
+            diz(f"  ✗ o livro de fontes perdeu consulta na união: {fontes} (F58)")
+            return False
+        # F59: entre a união e o `rebase --continue` não se regenera nada — derivado fora do
+        # `git add` deixava a árvore suja e o rebase recusava nas cinco tentativas.
+        wf = (pathlib.Path(__file__).resolve().parents[1] / ".github/workflows/_coletor.yml").read_text(encoding="utf-8")
+        trecho = wf.split("if python3 scripts/unir_conflito_de_rodada.py; then", 1)[-1].split("git rebase --continue", 1)[0]
+        if "verificar_derivados" in trecho:
+            diz("  ✗ o coletor regenera derivados entre a união e o `rebase --continue` (F59)")
+            return False
         diz(f"  ✓ dois elos em paralelo: conflito real, união pela base comum, "
-            f"3 pistas preservadas ({', '.join(ids)}) — zero perda")
+            f"3 pistas e as 3 consultas do livro preservadas — zero perda")
         return True
 
 

@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-13. 57 falhas; 52 com caso de teste que as reproduz; 5 sem, com o que falta dito.
+Atualizado em 2026-10-15. 59 falhas; 54 com caso de teste que as reproduz; 5 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -518,3 +518,21 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** log do run 38584779850, passo 'Conduzir a corrente': 'HTTP 500 (…/workflows/368685439/dispatches)' seguido de '→ disparado noturno_descoberta.yml'
 - **Correção:** O elo só conta como disparado quando o `gh` sai com 0; a volta seguinte, um minuto depois, repete.
 - **Caso de teste:** nenhum — falta: reproduzir exige a API do GitHub devolvendo 500 no disparo; o ensaio simulado não dispara workflow
+
+## F58 · Diários perdem o commit: o resolvedor recusa o livro de fontes e dois derivados
+
+- **Noite:** 2026-10-15
+- **Sintoma:** Run 38664144535 (diários, 3h10 de coleta): 'RECUSADO data/cobertura_declarada_uf.json, data/fontes_consultadas.json, data/verificacao_municipal.json: caminho sem resolução conhecida'; o trabalho foi para o artefato.
+- **Causa:** Desde 14/10 (#723, #725) diários e busca web marcam fontes diferentes no livro dos mesmos municípios, e o livro estava declarado 'pendente' no resolvedor. `verificacao_municipal.json` e `cobertura_declarada_uf.json` são regerados pela cadeia, mas não estavam entre os regeneráveis; e o coletor dos diários ainda escrevia em `verificacao_municipal.json` um espelho que `recalcular_mare.py --write` apagava a cada publicação (0 de 5.571 registros com o campo na main).
+- **Prova:** log do run 38664144535, passo 22: as três linhas RECUSADO
+- **Correção:** O livro une pela regra do produtor (janela de fontes, nível que não rebaixa, verificação mais recente); os dois derivados resolvem com a versão de cima e a cadeia regera; sai o espelho morto.
+- **Caso de teste:** `scripts/unir_conflito_de_rodada.py --autoteste: F58: livro de fontes une as consultas dos dois lados; nível não rebaixa`
+
+## F59 · Triagem e descoberta perdem o commit: árvore suja depois da união
+
+- **Noite:** 2026-10-15
+- **Sintoma:** Runs 38664701838 (triagem) e 38681351792 (descoberta): a união resolve, e o `rebase --continue` responde 'You must edit all merge conflicts' nas cinco tentativas.
+- **Causa:** Depois da união o coletor rodava a cadeia de derivados, que reescreve `MARE_Indice_Documentacao.pdf` (fora da lista do `git add`); o `rebase --continue` recusa árvore com alteração não indexada.
+- **Prova:** log dos dois runs: 'DERIVADOS: … MARE_Indice_Documentacao.pdf' seguido de 'You must edit all merge conflicts'; reprodução local: arquivo rastreado sujo faz `git rebase --continue` sair 1 com a mesma mensagem
+- **Correção:** A união segue direto para o `rebase --continue`; quem regenera é o bloco A2-09, depois do rebase, que agora indexa `data/` e descarta o que o elo não comita.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_dois_elos_em_paralelo`

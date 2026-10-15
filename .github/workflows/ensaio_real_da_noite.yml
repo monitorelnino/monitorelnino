@@ -107,7 +107,9 @@ jobs:
           git checkout -q FETCH_HEAD
           mkdir -p "data/noite/${{ steps.ramo.outputs.noite }}"
           date -u +%FT%TZ > "data/noite/${{ steps.ramo.outputs.noite }}/ensaio-empurrao-concorrente.txt"
-          git add -A data/noite && git commit -q -m "ensaio real: empurrão concorrente"
+          # F58/F59 (15/10/2026): o empurrão também marca o livro de fontes, que os elos escrevem.
+          python3 -c "import coletores_base as c; c.marcar_fonte_consultada(['5002704'], 'Ensaio real', 'nacional')"
+          git add -A data/noite data/fontes_consultadas.json && git commit -q -m "ensaio real: empurrão concorrente"
           GIT_SSH_COMMAND="$SSH" git push git@github.com:${GITHUB_REPOSITORY}.git "HEAD:$R" || echo "::warning::o empurrão concorrente foi recusado"
 
       - name: Conduzir a corrente no ramo (cada elo quando o anterior deixa o marcador)

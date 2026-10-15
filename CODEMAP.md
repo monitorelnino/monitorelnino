@@ -8,7 +8,7 @@ Serve a uma pergunta só: **por onde começar a ler** quando um pedido chega. An
 
 **Regra de página: contrato + componentes** (editoria, 02/10/2026). A forma de uma página não vive no HTML: vive em `layout/contratos/<pagina>.json`, que declara seções, ordem, cartões, grades e texto proibido. O HTML e o JavaScript se conformam ao contrato, e `scripts/verificar_layout.py` reprova a divergência — nenhum PR de página com contrato é mesclado com ele vermelho. Cartão de número é `.cartao-numero` em `.grade-numeros--3`; figura é `.cartao-mapa` em `.grade-figuras--3`; nada de ajuste de pixel por cartão.
 
-Atualizado em 14/10/2026.
+Atualizado em 15/10/2026.
 
 **A coluna `importado por`** (05/10/2026) diz quantos arquivos do repositório importam aquele — é a resposta curta para "o que a minha mudança alcança". Ela não substitui o portão de runtime, mas evita a surpresa: `coletores_base.py` tem 169 importadores, e os dois acidentes de isolamento de 02 e 05/10 custaram 907 atos e seis execuções de log por mexer ali sem ver esse número.
 
@@ -72,7 +72,7 @@ Atualizado em 14/10/2026.
 | `coletar_declarado_nacional.py` | — | `declarado_nacional.json`, `fontes_consultadas.json`, `fontes_declarado.json` | — | — | não |
 | `coletar_desfechos_saude.py` | — | — | — | — | não |
 | `coletar_diarios_consorciados.py` | — | `atos_resposta.json` | — | — | não |
-| `coletar_diarios_municipais.py` | — | `atos_resposta.json`, `cobertura_qd.json`, `verificacao_municipal.json` | — | 5 | não |
+| `coletar_diarios_municipais.py` | — | `atos_resposta.json`, `cobertura_qd.json` | — | 5 | não |
 | `coletar_doe.py` | — | `atos_resposta.json`, `estados.json`, `fontes_doe.json`, `indice.json`, `monitor_saude.json`, `municipios.json` (+1) | — | 2 | não |
 | `coletar_edicoes_doe.py` | — | `doe_ocorrencias.json` | — | 2 | não |
 | `coletar_espin.py` | — | `espin_revisar.json`, `saude_sinais.json` | — | — | não |
@@ -187,7 +187,7 @@ Atualizado em 14/10/2026.
 | `scripts/testar_reposicao_dominio.py` | — | `publicacao.json` | — | — | não |
 | `scripts/tipo_de_evento_dos_atos.py` | — | `atos_resposta.json` | — | 1 | não |
 | `scripts/triar_fila.py` | — | `pistas_imprensa.json` | — | — | não |
-| `scripts/unir_conflito_de_rodada.py` | — | `evidencias.json`, `fontes_consultadas.json`, `funil/2026-10-05.json`, `funil/x.json`, `historico_mudancas.json`, `log_buscas.json` (+14) | — | 3 | não |
+| `scripts/unir_conflito_de_rodada.py` | — | `cobertura_declarada_uf.json`, `evidencias.json`, `fontes_consultadas.json`, `funil/2026-10-05.json`, `funil/x.json`, `historico_mudancas.json` (+16) | — | 3 | não |
 | `seguir_pistas.py` | — | — | — | — | não |
 | `sondar_paineis.py` | — | `pistas_paineis.json` | — | — | não |
 | `triar_confianca_pistas.py` | — | `pistas_imprensa.json` | — | — | não |
