@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-15 · #PR · Blog sem a linha "Também no feed"
+
+Sai a frase visível do fim de `blog.html`, a pedido da editoria; o feed segue no `<link rel="alternate">` e no `<noscript>`. O contrato deixa de exigir "feed Atom".
+
 ## 2026-10-15 · #749 · Um seguidor de pistas (F61)
 
 `seguir_pistas.py` sai da busca web de cadência e da rodada semanal e fica só na descoberta, dentro da vez da noite. Dois seguidores em paralelo gravavam `seguimento` diferente na mesma pista, a porta recusava e a rodada da busca web de 15/10 se perdeu. Ensaio 27 e catálogo F61.
