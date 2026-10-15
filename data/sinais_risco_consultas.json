@@ -4,56 +4,49 @@
   "efeito_no_indice": "NENHUM — peso zero, como todo sinal de risco.",
   "escrito_por": "coletar_sinais_risco.py"
  },
- "gerado_em": "14/10/2026 03:31",
+ "gerado_em": "14/10/2026 22:13",
  "consultas": [
   {
    "fonte": "inmet_avisos",
    "url": "https://apiprevmet3.inmet.gov.br/avisos/ativos",
-   "consultado_em": "14/10/2026 03:31",
-   "bytes": 315662,
-   "sha256": "5a0eb94bc437a0ec31ed3540b3b0b05684d630a92d4fa050e3a35bd6c970add7"
+   "consultado_em": "14/10/2026 22:12",
+   "bytes": 631441,
+   "sha256": "c985f9932c69443437fd49721bf6bb437dd8ac5097865b83cf6f8101f2410226"
   },
   {
    "fonte": "cemaden_alertas",
    "url": "https://gsc.cemaden.gov.br/geoserver/cemaden_dev/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=cemaden_dev:alertas_vigentes_siaden&outputFormat=application/json&count=3000",
-   "consultado_em": "14/10/2026 03:31",
-   "bytes": 528603,
-   "sha256": "28561152d477ff0ce4428b96af5109d627ee2e57a2eb0629b9845ea38ed837e4"
-  },
-  {
-   "fonte": "open_meteo_tempo",
-   "url": "https://api.open-meteo.com/v1/forecast?latitude=-9.9750,-9.6660,-3.1187,0.0349,-12.9718,-3.7166,-15.7795,-20.3155,-16.6864,-2.5387,-19.9102,-20.4486,-15.6010,-1.4554,-7.1151,-8.0467,-5.0919,-25.4195,-22.9129,-5.7936,-8.7608,2.8238,-30.0318,-27.5945,-10.9091,-23.5329,-10.2400&longitude=-67.8243,-35.7350,-60.0212,-51.0694,-38.5011,-38.5423,-47.9297,-40.3128,-49.2643,-44.2825,-43.9266,-54.6295,-56.0974,-48.4898,-34.8641,-34.8771,-42.8034,-49.2646,-43.2003,-35.1986,-63.8999,-60.6753,-51.2065,-48.5477,-37.0677,-46.6395,-48.3558&daily=temperature_2m_max,temperature_2m_min,apparent_temperature_max&timezone=America%2FSao_Paulo&past_days=1&forecast_days=4",
-   "consultado_em": "14/10/2026 03:31",
-   "bytes": 15138,
-   "sha256": "57c874871d40133f705f8fc7d5db06e30282cbab1f6577f0c4eb1a6239c05b25"
+   "consultado_em": "14/10/2026 22:12",
+   "bytes": 1189662,
+   "sha256": "3db49d8a1794c8b93e59fa4d7e5c934a87018e0ac3c99886c7bd377d76932915"
   },
   {
    "fonte": "inmet_previsao_capitais",
    "url": "https://apiprevmet3.inmet.gov.br/previsao/capitais",
-   "consultado_em": "14/10/2026 03:31",
-   "bytes": 6140115,
-   "sha256": "e6fb6aa1e69726a62c1f4fb33ab185341628299fd53f47b83c507b70dd38eb39"
+   "consultado_em": "14/10/2026 22:13",
+   "bytes": 6689886,
+   "sha256": "ea45e46b60f5c13aaac137d8f4b739327ffa264fdcb7b5c84eb767c94f1d01be"
   },
   {
    "fonte": "open_meteo_ar",
    "url": "https://air-quality-api.open-meteo.com/v1/air-quality?latitude=-9.9750,-9.6660,-3.1187,0.0349,-12.9718,-3.7166,-15.7795,-20.3155,-16.6864,-2.5387,-19.9102,-20.4486,-15.6010,-1.4554,-7.1151,-8.0467,-5.0919,-25.4195,-22.9129,-5.7936,-8.7608,2.8238,-30.0318,-27.5945,-10.9091,-23.5329,-10.2400&longitude=-67.8243,-35.7350,-60.0212,-51.0694,-38.5011,-38.5423,-47.9297,-40.3128,-49.2643,-44.2825,-43.9266,-54.6295,-56.0974,-48.4898,-34.8641,-34.8771,-42.8034,-49.2646,-43.2003,-35.1986,-63.8999,-60.6753,-51.2065,-48.5477,-37.0677,-46.6395,-48.3558&hourly=pm2_5,pm10,ozone,nitrogen_dioxide,carbon_monoxide,european_aqi&timezone=America%2FSao_Paulo&forecast_days=1&domains=cams_global",
-   "consultado_em": "14/10/2026 03:31",
-   "bytes": 43071,
-   "sha256": "76fe3dfeb48f5762d659be6dc10f751f8b6d461e120939b40212134fc7d9484b"
+   "consultado_em": "14/10/2026 22:13",
+   "bytes": 43002,
+   "sha256": "c813cb80733f1a0895e59396652d554695223bcc195870e4495263cac1e243d8"
   },
   {
    "fonte": "inmet_estacoes",
    "url": "https://apitempo.inmet.gov.br/estacoes/T",
-   "consultado_em": "14/10/2026 03:31",
-   "bytes": 261801,
-   "sha256": "10dd9524bc6fc5220a18341ff289ea9ed94df244699c115d303799a83d1afc9c"
+   "consultado_em": "14/10/2026 22:13",
+   "bytes": 261414,
+   "sha256": "1c96bafcc9376a5f52d6adb469223b1362c6466f5689d5abeb7daf3a451425df"
   },
   {
    "fonte": "inmet_estacoes",
    "url": "https://apitempo.inmet.gov.br/condicao/capitais/2026-10-14",
-   "consultado_em": "14/10/2026 03:31",
-   "bytes": 2326,
-   "sha256": "927b8cd2fcfe4f25b1efacd037f3f5b5e9e2d801197c4fdffb42873ccd66d8bb"
+   "consultado_em": "14/10/2026 22:13",
+   "bytes": 2339,
+   "sha256": "ad60a408cad5eaff621215d8198eae5e0acb41d2be9cb186f9c770d984b48fdc"
   }
  ]
 }
