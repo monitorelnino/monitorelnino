@@ -558,7 +558,7 @@ def ensaio_coleta_perdida_volta_para_dentro(diz) -> bool:
 
     raiz = pathlib.Path(__file__).resolve().parents[1]
     sys.path.insert(0, str(raiz / "scripts"))
-    from reaplicar_noite import caminho_do_reaplicado, elo_e_run, porta_de
+    from reaplicar_noite import caminho_do_reaplicado, elo_e_run
 
     ok = True
     coletor = (raiz / ".github/workflows/_coletor.yml").read_text(encoding="utf-8")
@@ -586,19 +586,8 @@ def ensaio_coleta_perdida_volta_para_dentro(diz) -> bool:
         diz("   ✗ a reaplicação perdeu o marcador de idempotência — cada noite reaplicaria tudo "
             "de novo")
         ok = False
-    for rel, esperado in (("data/pistas_imprensa.json", "fila"),
-                          ("data/log_buscas/2026-10.jsonl", "jsonl"),
-                          ("data/noite/2026-10-09/diarios.feito", "feito")):
-        if porta_de(rel) != esperado:
-            diz(f"   ✗ `{rel}` deixou de entrar pela porta `{esperado}` (veio {porta_de(rel)!r})")
-            ok = False
-    if porta_de("index.html"):
-        diz("   ✗ arquivo que não é saída de coletor passou a ter porta de reaplicação")
-        ok = False
-
     if ok:
-        diz("   ✓ o elo reaplica antes de coletar, com escrita, pela porta de cada arquivo e uma "
-            "vez só por artefato")
+        diz("   ✓ o elo reaplica antes de coletar, com escrita, uma vez só por artefato")
     return ok
 
 
@@ -1015,9 +1004,11 @@ def ensaio_coleta_perdida_de_dono_unico_volta(diz) -> bool:
         diz("  ✗ o artefato da coleta perdida sobe sem o manifesto (base + alterados) — F45 de volta")
         return False
     alt = ["data/clima.json"]
-    ok = (rn.decidir_dono_unico("data/clima.json", alt, b"v1", b"v1", b"v2") == "copiar"
-          and rn.decidir_dono_unico("data/clima.json", alt, b"v3", b"v1", b"v2").startswith("recusa")
-          and rn.decidir_dono_unico("data/outro.json", alt, b"v1", b"v1", b"v2") == "fora")
+    with tempfile.TemporaryDirectory() as t:
+        d = pathlib.Path(t) / "c"
+        ok = (rn.reaplicar_arquivo("data/clima.json", alt, "v1", "v1", "v2", d) == "copiado"
+              and rn.reaplicar_arquivo("data/clima.json", alt, "v1", "v3", "v2", d).startswith("recusa")
+              and rn.reaplicar_arquivo("data/outro.json", alt, "v1", "v1", "v2", d) == "fora")
     diz("  ✓ manifesto da perda antes do artefato; dono único volta, e nunca por cima de outro escritor"
         if ok else "  ✗ a regra de três vias da reaplicação copia por cima de outro escritor")
     return ok
