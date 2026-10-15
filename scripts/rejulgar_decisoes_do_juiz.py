@@ -56,7 +56,9 @@ def caminho_da_evidencia(hash_evidencia, pasta=None):
     pasta = pasta or EVIDENCIAS
     if not hash_evidencia:
         return None
-    achados = sorted(pasta.glob(str(hash_evidencia) + ".*"))
+    # O texto extraído (.txt) é o que o juiz julgou; o .pdf ao lado é o byte original (15/10/2026:
+    # a ordem alfabética entregava o PDF cru, e o rejulgamento recusava por "ente não confirmado").
+    achados = sorted(pasta.glob(str(hash_evidencia) + ".*"), key=lambda a: a.suffix != ".txt")
     return achados[0] if achados else None
 
 
@@ -85,6 +87,8 @@ def autoteste() -> int:
         pasta = pathlib.Path(d)
         (pasta / ("a" * 64 + ".txt")).write_text("x", encoding="utf-8")  # escrita-nao-portavel-ok: arquivo de um caractere em diretório temporário do autoteste, nunca versionado
         casos.append(("acha a evidência pelo hash", caminho_da_evidencia("a" * 64, pasta) is not None))
+        (pasta / ("a" * 64 + ".pdf")).write_text("%PDF", encoding="utf-8")  # escrita-nao-portavel-ok: diretório temporário do autoteste
+        casos.append(("com .pdf ao lado, entrega o texto", caminho_da_evidencia("a" * 64, pasta).suffix == ".txt"))
         casos.append(("hash sem arquivo devolve None", caminho_da_evidencia("b" * 64, pasta) is None))
         casos.append(("hash vazio devolve None", caminho_da_evidencia(None, pasta) is None))
 

@@ -52,18 +52,23 @@ USO
 import json
 import pathlib
 import re
+import sys
 import unicodedata
 
 from classificador_natureza import classificar as classificar_natureza
 from classificador_natureza import citacao_completa, data_do_ato, extrair_data
 
 RAIZ = pathlib.Path(__file__).resolve().parent
+sys.path.insert(0, str(RAIZ / "scripts"))   # municipio_do_dominio (etapa 3, 1.6)
 
 # 1.1 (28/09/2026): a Etapa 4 passou a exigir VERBO e INSTRUMENTO na mesma vizinhança. A versão sobe
 # porque o critério mudou, e porque `pendente()` usa a versão para decidir o que volta à fila: subir
 # aqui devolve ao juiz toda pista já julgada sob a regra frouxa — inclusive as quatro que ela
 # promoveu por engano.
-CODEBOOK_VERSAO = "1.5 (14/10/2026)"
+CODEBOOK_VERSAO = "1.6 (15/10/2026)"
+# 1.6 (15/10/2026, central): plano sem ato vale só no domínio do PRÓPRIO município (etapa 3; caso
+# Cubatão/SP, relatório do BNDES), e plano de contingência de setor — rede de ensino, escola,
+# unidade de saúde, hospital — não é o plano do município (etapa 5; caso Toledo/PR, METODOLOGIA §222).
 # 1.5 (14/10/2026, régua da central): o nome do ente casa como palavra inteira com inicial maiúscula
 # (etapa 1), e a autoridade do ato tem de ser da esfera do ente (etapa 3). Só aperta: o que o 1.4
 # recusou continua recusado; o que promoveu é rejulgado (Primavera/PA).
@@ -389,6 +394,11 @@ FAMILIAS_DE_RISCO = {
 # Fora do objeto: visível, nunca pontua, nunca apagado (§5.2.1 e §9).
 FORA_DO_OBJETO = ("geada", "frio", "onda de frio", "friagem", "arbovirose", "dengue",
                   "chikungunya", "zika", "influenza", "gripe", "covid", "sarampo")
+# Instrumento de um SETOR não é o plano do município (METODOLOGIA §222, caso Quissamã; Toledo/PR).
+RE_INSTRUMENTO_SETORIAL = re.compile(
+    r"plano\s+de\s+conting[êe]ncia\s+(?:d[aeo]s?\s+)?(?:rede\s+(?:p[úu]blica\s+)?(?:municipal\s+)?"
+    r"de\s+(?:ensino|educa[çc][ãa]o|sa[úu]de)|escola|unidades?\s+(?:escola|de\s+sa[úu]de|b[áa]sica)|"
+    r"hospita|creche|ensino)", re.I)
 
 # --- Etapa 6 ---------------------------------------------------------------------------------
 BOLETIM_1 = "29/06/2026"   # §3: marco do ciclo
@@ -684,7 +694,7 @@ def etapa2_citacao(texto: str, eh_plano_tecnico: bool = False, url: str = None) 
 # Etapa 3 — autoridade do ato (§5.2.1)
 # =============================================================================================
 def etapa3_autoridade(texto: str, sem_ato_de_aprovacao: bool = False,
-                      esfera: str = "municipal") -> tuple:
+                      esfera: str = "municipal", url: str = None, ente: tuple = None) -> tuple:
     """(ok, motivo, trecho). Ato do Poder Executivo, não aprovação por colegiado.
 
     Aprovação por Conselho de Saúde ou Câmara devolve `executivo_pendente`: o documento pode ser
@@ -699,6 +709,13 @@ def etapa3_autoridade(texto: str, sem_ato_de_aprovacao: bool = False,
     aprovação de um conselho não é o plano publicado pelo Executivo.
     """
     if sem_ato_de_aprovacao:
+        if url and ente:
+            # 1.6: o ato do ente É a publicação no domínio dele; em domínio de outro (BNDES, estado,
+            # vizinho) não há ato do Executivo municipal (`ente` = (nome, uf)).
+            from municipio_do_dominio import municipio_de
+            dono = municipio_de(url) or {}
+            if (normalizar(dono.get("nome", "")), dono.get("uf")) != (normalizar(ente[0]), str(ente[1]).upper()):
+                return False, "autoridade_nao_confirmada", f"plano sem ato fora do domínio do ente: {url}"
         tem_colegiado = RE_COLEGIADO.search(texto)
         orgao = RE_ORGAO_DO_ENTE[esfera].search(texto)
         if tem_colegiado and RE_APROVACAO_COLEGIADA.search(texto) and not orgao:
@@ -792,6 +809,9 @@ def etapa5_familia_de_risco(texto: str) -> tuple:
     Ordem deliberada: primeiro procura família do ciclo; só então considera `fora_do_objeto`. Um
     plano multirrisco que menciona arbovirose numa lista de riscos não é um plano de arbovirose —
     foi assim que Salvador travou num teste de 03/09/2026."""
+    setorial = RE_INSTRUMENTO_SETORIAL.search(texto)
+    if setorial:
+        return False, "fora_do_objeto", trecho_em_volta(texto, setorial)
     t = texto.lower()
     achadas = []
     for familia, termos in FAMILIAS_DE_RISCO.items():
@@ -921,7 +941,8 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
     sem_ato = bool(dados.get("sem_ato_de_aprovacao"))
     veredito["sem_ato_de_aprovacao"] = sem_ato
     ok, motivo, trecho = etapa3_autoridade(texto, sem_ato_de_aprovacao=sem_ato,
-                                           esfera="estadual" if eh_estadual else "municipal")
+                                           esfera="estadual" if eh_estadual else "municipal",
+                                           url=url, ente=None if eh_estadual else (nome, uf))
     veredito["criterios"]["3_autoridade"] = {"ok": ok, "trecho": trecho}
     if not ok:
         veredito["motivo"] = motivo
@@ -1278,6 +1299,17 @@ def autoteste() -> int:
                            "para emergências. Assessoria de Comunicação. Leia também.",
                            "https://toledo.pr.gov.br/noticia/prefeitura-apresenta-plano")[1]
          == "noticia_institucional_nao_e_o_plano"),
+        # 15/10/2026, codebook 1.6: os dois documentos reais (Toledo/PR, IN 17/2026-SMED; Cubatão/SP,
+        # relatório do BNDES servido em bndes.gov.br).
+        ("plano de contingência da rede de ensino NÃO é o plano do município (Toledo/PR)",
+         etapa5_familia_de_risco("Plano \nde Contingência da Rede Pública \nMunicipal de Ensino de "
+                                 "Toledo para prevenção de inundação")[1] == "fora_do_objeto"),
+        ("plano sem ato em domínio federal NÃO é ato do município (Cubatão/SP)",
+         etapa3_autoridade(PLANO_PUBLICADO_SEM_ATO, True, url="https://www.bndes.gov.br/r.pdf",
+                           ente=("Taió", "SC"))[1] == "autoridade_nao_confirmada"),
+        ("plano sem ato no domínio do próprio município continua valendo",
+         etapa3_autoridade(PLANO_PUBLICADO_SEM_ATO, True, url=URL_PDF_DE_PLANO,
+                           ente=("Taió", "SC"))[0] is True),
         ("página sem estrutura de plano NÃO é o plano",
          e_o_proprio_plano("Prefeitura Municipal de X — Plano de Contingência 2026. Acesse aqui.",
                            "https://x.sp.gov.br/pagina/plano")[1]
