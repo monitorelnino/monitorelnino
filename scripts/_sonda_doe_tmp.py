@@ -48,40 +48,25 @@ def get(uf, u, modo="html", grep=None, timeout=30):
     return b
 
 
-# AM: o id da listagem é o do download?
-get("AM", "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18242", timeout=120)
-get("AM", "https://diario.imprensaoficial.am.gov.br/apifront/portal/edicoes/edicoes_from_data/2026-10-13.json", "json")
-# CE: o 5º caderno não existe (fim da iteração)
-get("CE", "https://imagens.seplag.ce.gov.br/PDF/20261014/do20261014p05.pdf")
-get("CE", "https://imagens.seplag.ce.gov.br/PDF/20261013/do20261013p01.pdf")
-# SP: a API de busca — estrutura inteira de 2 itens, e a listagem de edições por data
-get("SP", "https://do-api-web-search.doe.sp.gov.br/v2/advanced-search/publications?PageNumber=1&PageSize=2&Terms[0]=situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia&FromDate=2026-10-01&ToDate=2026-10-14", "json")
-get("SP", "https://do-api-web-search.doe.sp.gov.br/v2/advanced-search/publications?PageNumber=1&PageSize=2&Terms[0]=homologa&FromDate=2026-09-01&ToDate=2026-10-14", "json")
-get("SP", "https://do-api-web-search.doe.sp.gov.br/v2/journals?Date=2026-10-14", "json")
-get("SP", "https://do-api-web-search.doe.sp.gov.br/v2/summary?Date=2026-10-14&JournalId=d65936d7-1ca8-4267-934e-1dea132fa237", "json")
-# PI: a página do dia — todos os endereços
-get("PI", "http://www.diariooficial.pi.gov.br/diarios.php?dia=20261014", "hrefs")
-get("PI", "http://www.diariooficial.pi.gov.br/diarios.php?dia=20261014", "corpo")
-# RO: resultado da busca → posts → PDF
-b = get("RO", "https://diof.ro.gov.br/?s=situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia", "hrefs")
-if b:
-    t = b.decode("utf-8", "replace")
-    posts = [h for h in RE_HREF.findall(t) if h.startswith("https://diof.ro.gov.br/") and re.search(r"/\d{4}/\d{2}/|/diario|edicao|doe", h, re.I)]
-    arts = re.findall(r'<article[^>]*>.*?</article>', t, re.S)[:3]
-    print(json.dumps({"uf": "RO", "posts": posts[:15], "n_articles": len(re.findall(r"<article", t)), "article1": " ".join(arts[0].split())[:1500] if arts else None}, ensure_ascii=False), flush=True)
-    if posts:
-        get("RO", posts[0], "hrefs")
-# RJ: a página do conteúdo online
-get("RJ", "https://www.ioerj.com.br/portal/modules/conteudoonline/index.php", "hrefs")
-# SPAs: onde fica a API
-get("MG", "https://www.jornalminasgerais.mg.gov.br/main-A77B4DKJ.js", "urls_js", r"api|edic|public|jornal|diario")
-get("RS", "https://www.diariooficial.rs.gov.br/main-WOM4SM2S.js", "urls_js", r"api|edic|diario|materia")
-get("AL", "http://diario.imprensaoficial.al.gov.br/assets/index-344f66e8.js", "urls_js", r"api|edic|diario|busca")
-get("PE", "https://diariooficial.cepe.com.br/diariooficialweb/app/app.config.js", "corpo")
-get("SC", "https://doe.sea.sc.gov.br/", "corpo")
-get("RR", "https://www.imprensaoficial.rr.gov.br/_inicial/", "hrefs")
-get("MA", "https://www.diariooficial.ma.gov.br/", "corpo")
-get("BA", "https://www.egba.ba.gov.br/", "hrefs")
-get("BA", "http://dool.egba.ba.gov.br/", "corpo", timeout=20)
-get("PA", "https://www.ioepa.com.br/", "hrefs")
-get("RN", "http://www.diariooficial.rn.gov.br/dei/dorn3", "corpo")
+# SP: o texto integral da publicação
+get("SP", "https://doe.sp.gov.br/executivo/casa-civil/despacho-do-secretario-de-2-de-outubro-de-2026-20261002111012042179446", "corpo")
+get("SP", "https://do-api-web-search.doe.sp.gov.br/v2/publications/dbeb0429-e167-4e3c-b76c-08df1efd0e0c", "json")
+get("SP", "https://do-api-web-search.doe.sp.gov.br/v2/advanced-search/publications?PageNumber=1&PageSize=3&Terms[0]=homologa%20o%20decreto&FromDate=2026-07-01&ToDate=2026-10-15", "json")
+get("SP", "https://do-api-web-search.doe.sp.gov.br/v2/advanced-search/publications?PageNumber=1&PageSize=3&Terms[0]=situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia&FromDate=2026-07-01&ToDate=2026-10-15&JournalId=d65936d7-1ca8-4267-934e-1dea132fa237", "json")
+# RR: as rotas expostas
+get("RR", "https://www.imprensaoficial.rr.gov.br/_visualizar-doe/", "hrefs")
+get("RR", "https://www.imprensaoficial.rr.gov.br/_visualizar-mes/?ano=2026&mes=10", "hrefs")
+get("RR", "https://www.imprensaoficial.rr.gov.br/_buscar/", "corpo")
+# PI: o host atual
+get("PI", "https://www.diario.pi.gov.br/doe/", "hrefs")
+get("PI", "https://diario.pi.gov.br/", "hrefs")
+# MG: a API v1
+for r in ("", "edicoes", "publicacoes", "jornal/ultimas-edicoes", "edicao/ultima"):
+    get("MG", "https://www.jornalminasgerais.mg.gov.br/api/v1/" + r, "json")
+# PE/RN: a plataforma sdoe
+for r in ("", "edicoes", "api/edicoes", "diarios", "edicao/ultima"):
+    get("PE", "https://diariooficial.cepe.com.br/diariooficial/" + r, "json")
+get("RN", "https://deirn.sdoe.com.br/diariooficialweb/", "hrefs")
+get("RN", "https://deirn.sdoe.com.br/diariooficial/edicoes", "json")
+# SC
+get("SC", "https://portal.doe.sea.sc.gov.br/v2.44.07/", "hrefs")
