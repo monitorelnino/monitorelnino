@@ -39,7 +39,6 @@ jobs:
         monitorar_busca_web.py --tamanho 150
         monitorar_busca_web.py --tamanho 150
         monitorar_busca_web.py --tamanho 150
-        seguir_pistas.py --limite 20
         triar_confianca_pistas.py
         revisar_pistas.py --preparar --limite 30
     secrets:

@@ -1085,7 +1085,12 @@ def ensaio_busca_web_pelo_coletor(diz) -> bool:
     ok = bool(jobs) and all(str(j.get("uses") or "").endswith("/_coletor.yml") for j in jobs)
     diz("  ✓ busca web pelo `_coletor.yml` (prazo, janela, marcador, artefato, commit)" if ok
         else "  ✗ a busca web tem caminho de coleta próprio — F48 de volta")
-    return ok
+    # F61 (15/10/2026): dois `seguir_pistas.py` em paralelo seguem as mesmas pistas e gravam
+    # `seguimento` com valores diferentes; a porta recusa e a rodada inteira se perde. Um seguidor.
+    seguem = [w.name for w in (raiz / ".github/workflows").glob("*.yml")
+              if "seguir_pistas.py --limite" in w.read_text(encoding="utf-8")]
+    diz(f"  {'✓' if seguem == ['noturno_descoberta.yml'] else '✗'} quem segue pistas: {seguem} (F61)")
+    return ok and seguem == ["noturno_descoberta.yml"]
 
 
 ENSAIOS = (

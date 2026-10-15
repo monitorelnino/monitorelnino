@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-15 · #749 · Um seguidor de pistas (F61)
+
+`seguir_pistas.py` sai da busca web de cadência e da rodada semanal e fica só na descoberta, dentro da vez da noite. Dois seguidores em paralelo gravavam `seguimento` diferente na mesma pista, a porta recusava e a rodada da busca web de 15/10 se perdeu. Ensaio 27 e catálogo F61.
+
 ## 2026-10-15 · #PR · Reaplicação no próprio commit (F60)
 
 Dois elos reaplicavam o mesmo artefato de coleta perdida e levavam o resultado no commit da coleta; a união somava as linhas duas vezes (log de buscas com +6.100 linhas repetidas em 15/10). A reaplicação passa a ir ao ramo no seu próprio commit, antes da coleta, recomeçando do zero se o ramo andou. Onde: `_coletor.yml`.
