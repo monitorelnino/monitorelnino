@@ -1,11 +1,11 @@
 {
  "_governanca": "Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. `prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). `imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o leitor peça o documento ao gestor. Só municípios com algo a dizer; sem registro = não verificado. `defesa_civil_orcamento` (§207) = despesa liquidada na subfunção 06.182 declarada ao SICONFI, peso ZERO; classe de ausência nunca vira zero.",
  "gerado_em": "2026-10-15",
- "total": 2197,
+ "total": 2258,
  "com_registro": 249,
- "com_imprensa": 124,
+ "com_imprensa": 185,
  "prioritarios": 2095,
- "com_despesa_182": 2197,
+ "com_despesa_182": 2258,
  "municipios": {
   "1100023": {
    "nome": "Ariquemes",
@@ -12585,6 +12585,116 @@
     "peso_no_indice": "nenhum"
    }
   },
+  "2900108": {
+   "nome": "Abaíra",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "MINISTÉRIO PÚBLICO PROCURADORIA GERAL DE JUSTIÇA ...",
+     "url": "https://www.mpba.mp.br/sites/default/files/biblioteca/diariojustica/20200402.pdf",
+     "data": "2026-10-14",
+     "veiculo": "mpba.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO",
+     "url": "https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2022/DMPF-EXTRAJUDICIAL-2022-10-10.pdf",
+     "data": "2026-10-14",
+     "veiculo": "transparencia.mpf.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "ACM NETO - 2026 - PLANO DE GOVERNO.indd - A TARDE",
+     "url": "https://cdn.atarde.com.br/img/attachmentinline/1390000/plano-de-governo-veja-propostas-de-acm-neto-para-a0139704500202607301128.pdf?xid=7159251",
+     "data": "2026-10-14",
+     "veiculo": "cdn.atarde.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2900306": {
+   "nome": "Acajutiba",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Raio Laser - Tribuna da Bahia",
+     "url": "https://www.trbn.com.br/materia/I163746/raio-laser-1514",
+     "data": "2026-10-14",
+     "veiculo": "trbn.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2900405": {
+   "nome": "Água Fria",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO DE CONTINGÊNCIA PARA EMERGÊNCIA DE INTERESSE ...",
+     "url": "https://vports.com.br/wp-content/uploads/2024/01/ANEXO-IV_Plano-de-Contingencia-Sanitarias-e-de-Saude-Publica.pdf",
+     "data": "2026-10-14",
+     "veiculo": "vports.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2900603": {
+   "nome": "Aiquara",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Plano de Contingência para Desastres Naturais ... - Cievs Recife",
+     "url": "https://cievsrecife.wordpress.com/wp-content/uploads/2025/07/plano-de-contingencia_desastres_sesau_2025.pdf",
+     "data": "2026-10-14",
+     "veiculo": "cievsrecife.wordpress.com",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "2900702": {
    "nome": "Alagoinhas",
    "uf": "BA",
@@ -12645,6 +12755,44 @@
    },
    "categoria": "nao_verificado"
   },
+  "2901155": {
+   "nome": "América Dourada",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO",
+     "url": "https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2021/DMPF-EXTRAJUDICIAL-2021-03-16.pdf",
+     "data": "2026-10-14",
+     "veiculo": "transparencia.mpf.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "MINISTÉRIO PÚBLICO CONSELHO SUPERIOR DO ... - MPBA",
+     "url": "https://www.mpba.mp.br/sites/default/files/biblioteca/diariojustica/20210813.pdf",
+     "data": "2026-10-14",
+     "veiculo": "mpba.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "MINISTÉRIO PÚBLICO COLÉGIO DE PROCURADORES - MPBA",
+     "url": "https://www.mpba.mp.br/sites/default/files/biblioteca/diariojustica/20221123.pdf",
+     "data": "2026-10-14",
+     "veiculo": "mpba.mp.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "2901205": {
    "nome": "Anagé",
    "uf": "BA",
@@ -12652,6 +12800,161 @@
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_declaracao",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2901353": {
+   "nome": "Andorinha",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Diego Cabral apresenta novo Plano de Contingências de desastres ...",
+     "url": "https://falape.com/diego-cabral-apresenta-novo-plano-de-contingencias-de-desastres-e-28-novos-integrantes-nos-nucleos-de-protecao-e-defesa-civil-nupdecs-de-camaragibe/",
+     "data": "2026-10-14",
+     "veiculo": "falape.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Plano Municipal de Saúde 2022 – 2025 VERSÃO ATUALIZADA",
+     "url": "https://www.acessoinformacao.com.br/transparencia/arquivos/download/cb1e18149e8022540bc8dbf6fad3516b5f42339d.pdf",
+     "data": "2026-10-14",
+     "veiculo": "acessoinformacao.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2901403": {
+   "nome": "Angical",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PROMOTORIA DE JUSTIÇA DA COMARCA DE ANGICAL - MPBA",
+     "url": "https://www.mpba.mp.br/sites/default/files/biblioteca/moralidade-administrativa/coronavirus_-_material_tecnico/recomendacao-01-20-madrededeus.pdf",
+     "data": "2026-10-14",
+     "veiculo": "mpba.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "ministério público órgão especial do colégio de procuradores - MPBA",
+     "url": "https://www.mpba.mp.br/sites/default/files/biblioteca/diariojustica/20261008.pdf",
+     "data": "2026-10-14",
+     "veiculo": "mpba.mp.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2901601": {
+   "nome": "Antas",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "DE PROTEÇÃO - Prefeitura de Porto Alegre",
+     "url": "https://prefeitura.poa.br/sites/default/files/usu_doc/sites/defesa-civil/PLACON%20Vers%C3%A3o%20Completa%20-%202025.pdf",
+     "data": "2026-10-14",
+     "veiculo": "prefeitura.poa.br",
+     "nivel": "A"
+    },
+    {
+     "titulo": "Potencial de SIG participativos na Gestão de Riscos de Desastres e ...",
+     "url": "https://www.scielosp.org/pdf/sdeb/2020.v44nspe2/214-229/pt",
+     "data": "2026-10-14",
+     "veiculo": "scielosp.org",
+     "nivel": "B"
+    },
+    {
+     "titulo": "especialistas avaliam ações preventivas contra desastres - G1 - Globo",
+     "url": "https://g1.globo.com/rs/rio-grande-do-sul/noticia/2023/09/09/ciclone-no-rs-especialistas-avaliam-acoes-preventivas-contra-desastres.ghtml",
+     "data": "2026-10-14",
+     "veiculo": "g1.globo.com",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2901957": {
+   "nome": "Apuarema",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "MINISTÉRIO PÚBLICO PROCURADORIA GERAL DE JUSTIÇA ...",
+     "url": "https://www.mpba.mp.br/sites/default/files/biblioteca/diariojustica/20200402.pdf",
+     "data": "2026-10-14",
+     "veiculo": "mpba.mp.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2902005": {
+   "nome": "Aracatu",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Instrução Normativa INEMA Nº 5 DE 15/08/2022 - Estadual - Bahia",
+     "url": "https://www.legisweb.com.br/legislacao/?id=435257",
+     "data": "2026-10-14",
+     "veiculo": "legisweb.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "MINISTÉRIO PÚBLICO ÓRGÃO ESPECIAL DO COLÉGIO ... - MPBA",
+     "url": "https://www.mpba.mp.br/sites/default/files/biblioteca/diariojustica/20230215.pdf",
+     "data": "2026-10-14",
+     "veiculo": "mpba.mp.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
     "rs_hab": null,
     "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
@@ -12720,10 +13023,141 @@
    },
    "categoria": "nao_verificado"
   },
+  "2903003": {
+   "nome": "Barra do Mendes",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO DE MIRANGABA",
+     "url": "https://2017.cbhsaofrancisco.org.br/2017//box/uploads/2017/11/P5_MIRANGABA_REV0C.pdf",
+     "data": "2026-10-14",
+     "veiculo": "2017.cbhsaofrancisco.org.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "MINISTÉRIO PÚBLICO ÓRGÃO ESPECIAL DO COLÉGIO ... - MPBA",
+     "url": "https://www.mpba.mp.br/sites/default/files/biblioteca/diariojustica/20230215.pdf",
+     "data": "2026-10-14",
+     "veiculo": "mpba.mp.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "2903201": {
    "nome": "Barreiras",
    "uf": "BA",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2903276": {
+   "nome": "Barrocas",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Secretária de Saúde de Barrocas anuncia ações e pede apoio da ...",
+     "url": "http://www.jornalanossavoz.com.br/2024/02/secretaria-de-saude-de-barrocas-anuncia.html",
+     "data": "2026-10-14",
+     "veiculo": "jornalanossavoz.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Mapeamento de áreas suscetíveis à inundação, enxurrada e ...",
+     "url": "https://periodicos.ufpe.br/revistas/rbgfe/article/view/264722",
+     "data": "2026-10-14",
+     "veiculo": "periodicos.ufpe.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Mestre De Manutencao Industrial De Maquinas em Barrocas (BA)",
+     "url": "https://salariosbrasil.com.br/quanto-ganha/mestre-de-manutencao-industrial-de-maquinas-910105?estado=ba&cidade=barrocas",
+     "data": "2026-10-14",
+     "veiculo": "salariosbrasil.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2903300": {
+   "nome": "Barro Preto",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO",
+     "url": "https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2026/DMPF-EXTRAJUDICIAL-2026-03-06.pdf",
+     "data": "2026-10-14",
+     "veiculo": "transparencia.mpf.mp.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2903706": {
+   "nome": "Boa Nova",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO",
+     "url": "https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2025/DMPF-EXTRAJUDICIAL-2025-06-12.pdf",
+     "data": "2026-10-14",
+     "veiculo": "transparencia.mpf.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "ATA DA SEXCENTÉSIMA QUINQUAGÉSIMA SÉTIMA SESSÃO ...",
+     "url": "https://www.mpf.mp.br/atuacao/ccr4/revisao/sessoes/ata-da-657a-so",
+     "data": "2026-10-14",
+     "veiculo": "mpf.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "RELATÓRIO E CONTAS - Hospital de São João",
+     "url": "https://portal-chsj.min-saude.pt/portalchsj/uploads/document/file/928/R_C_2020.pdf",
+     "data": "2026-10-14",
+     "veiculo": "portal-chsj.min-saude.pt",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -12754,6 +13188,68 @@
    "nome": "Brumado",
    "uf": "BA",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2904704": {
+   "nome": "Buerarema",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Plano Municipal de Saneamento Básico Município de Itamaraju",
+     "url": "https://www.acessoinformacao.com.br/ba/itamaraju/wp-includes/ExternalApps/downloader.php?hurl=aHR0cDovL2RvZW0ub3JnLmJyL2JhL2l0YW1hcmFqdS9hcnF1aXZvcy9kb3dubG9hZC9kNDIwYjQwN2RhNzgyNTA0NmVmYTk1MWJkNTU4MzI2My9ERUNSRVRPIE7CuiA2NS0yMDE5IC0gQVBST1ZBIE8gUExBTk8gTVVOSUNJUEFMIERFIFNBTkVBTUVOTO8gQsOBU0lDTyBERSBJVEFNQVJBSlUucGRm",
+     "data": "2026-10-14",
+     "veiculo": "acessoinformacao.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Campus Uruçuca » page_todosdocumentos - IF Baiano",
+     "url": "https://www.ifbaiano.edu.br/unidades/urucuca/page_todosdocumentos/",
+     "data": "2026-10-14",
+     "veiculo": "ifbaiano.edu.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2904803": {
+   "nome": "Caatiba",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "RELATÓRIO EXPURGO CAATIBA NOVEMBRO 2020 Nº 2020-08",
+     "url": "https://www.neoenergia.com/documents/d/bahia/relatorio-expurgo-ise-caatiba-novembro-2020-n-2020-08-coelba_compressed-pdf?download=true",
+     "data": "2026-10-14",
+     "veiculo": "neoenergia.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "ACM NETO - 2026 - PLANO DE GOVERNO.indd - A TARDE",
+     "url": "https://cdn.atarde.com.br/img/attachmentinline/1390000/plano-de-governo-veja-propostas-de-acm-neto-para-a0139704500202607301128.pdf?xid=7159251",
+     "data": "2026-10-14",
+     "veiculo": "cdn.atarde.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -13095,6 +13591,37 @@
    },
    "categoria": "nao_verificado"
   },
+  "2908804": {
+   "nome": "Contendas do Sincorá",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE SAÚDE 2022 – 2025 - procede",
+     "url": "https://publicacoes.procedebahia.com.br/2024-10/documentos/PRXSKBSYULYJW-20240515-122334--%21--Final_PMS_20222025.pdf",
+     "data": "2026-10-14",
+     "veiculo": "publicacoes.procedebahia.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Instrução Normativa INEMA Nº 5 DE 15/08/2022 - Estadual - Bahia",
+     "url": "https://www.legisweb.com.br/legislacao/?id=435257",
+     "data": "2026-10-14",
+     "veiculo": "legisweb.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "2908903": {
    "nome": "Coração de Maria",
    "uf": "BA",
@@ -13110,10 +13637,82 @@
    },
    "categoria": "nao_verificado"
   },
+  "2909000": {
+   "nome": "Cordeiros",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Criação de ovinos: o que saber para criar carneiros e ovelhas",
+     "url": "https://noticias.broto.com.br/pecuaria/criacao-de-ovinos/",
+     "data": "2026-10-14",
+     "veiculo": "noticias.broto.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2909109": {
+   "nome": "Coribe",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE SAÚDE 2022 – 2025 - procede",
+     "url": "https://publicacoes.procedebahia.com.br/2024-10/documentos/PRXSKBSYULYJW-20240515-122334--%21--Final_PMS_20222025.pdf",
+     "data": "2026-10-14",
+     "veiculo": "publicacoes.procedebahia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "2909307": {
    "nome": "Correntina",
    "uf": "BA",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2909703": {
+   "nome": "Cristópolis",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "El Niño em alerta: AMUSUH orienta municípios a redobrarem a ...",
+     "url": "https://amusuh.org.br/el-nino-em-alerta-amusuh-orienta-municipios-a-redobrarem-a-atencao-diante-dos-efeitos-climaticos/",
+     "data": "2026-10-14",
+     "veiculo": "amusuh.org.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -13159,6 +13758,44 @@
    "nome": "Dias d'Ávila",
    "uf": "BA",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2910206": {
+   "nome": "Dom Macedo Costa",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "ministério público órgão especial do colégio de procuradores - MPBA",
+     "url": "https://www.mpba.mp.br/sites/default/files/biblioteca/diariojustica/20261008.pdf",
+     "data": "2026-10-14",
+     "veiculo": "mpba.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "MINISTÉRIO PÚBLICO CONSELHO SUPERIOR DO ... - MPBA",
+     "url": "https://www.mpba.mp.br/sites/default/files/biblioteca/diariojustica/20240301.pdf",
+     "data": "2026-10-14",
+     "veiculo": "mpba.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO",
+     "url": "https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2024/DMPF-EXTRAJUDICIAL-2024-06-05.pdf",
+     "data": "2026-10-14",
+     "veiculo": "transparencia.mpf.mp.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -13230,6 +13867,44 @@
    },
    "categoria": "nao_verificado"
   },
+  "2910776": {
+   "nome": "Feira da Mata",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Ideb - Tag - Bahia Notícias",
+     "url": "https://www.bahianoticias.com.br/tags/ideb",
+     "data": "2026-10-14",
+     "veiculo": "bahianoticias.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "PLANO MUNICIPAL DE SAÚDE 2022 – 2025 - procede",
+     "url": "https://publicacoes.procedebahia.com.br/2024-10/documentos/PRXSKBSYULYJW-20240515-122334--%21--Final_PMS_20222025.pdf",
+     "data": "2026-10-14",
+     "veiculo": "publicacoes.procedebahia.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "ATA DA SEXCENTÉSIMA QUADRAGÉSIMA TERCEIRA SESSÃO ...",
+     "url": "https://www.mpf.mp.br/atuacao/ccr4/revisao/sessoes/sessoes-anteriores/2024/arquivos/643-ata-publicada.pdf",
+     "data": "2026-10-14",
+     "veiculo": "mpf.mp.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "2910800": {
    "nome": "Feira de Santana",
    "uf": "BA",
@@ -13268,6 +13943,54 @@
    "nome": "Gandu",
    "uf": "BA",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2911253": {
+   "nome": "Gavião",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO DE AÇÃO DE EMERGÊNCIA - Votorantim Cimentos",
+     "url": "https://www.votorantimcimentos.com.br/wp-content/uploads/2025/08/1234-PCV-RT-PAE-0003-0-LGPD.pdf",
+     "data": "2026-10-14",
+     "veiculo": "votorantimcimentos.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2911501": {
+   "nome": "Gongogi",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO",
+     "url": "https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2024/DMPF-EXTRAJUDICIAL-2024-06-05.pdf",
+     "data": "2026-10-14",
+     "veiculo": "transparencia.mpf.mp.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -13324,10 +14047,96 @@
    },
    "categoria": "nao_verificado"
   },
+  "2912301": {
+   "nome": "Ibicuí",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Mapa do El Niño: companhias de saneamento estão prontas? -",
+     "url": "https://saneamentopro.com.br/mapa-do-el-nino-companhias-de-saneamento-estao-prontas/",
+     "data": "2026-10-14",
+     "veiculo": "saneamentopro.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "ministério público órgão especial do colégio de procuradores - MPBA",
+     "url": "https://www.mpba.mp.br/sites/default/files/biblioteca/diariojustica/20261008.pdf",
+     "data": "2026-10-14",
+     "veiculo": "mpba.mp.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2912509": {
+   "nome": "Ibipitanga",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "MINISTÉRIO PÚBLICO ÓRGÃO ESPECIAL DO COLÉGIO ... - MPBA",
+     "url": "https://www.mpba.mp.br/sites/default/files/biblioteca/diariojustica/20230215.pdf",
+     "data": "2026-10-14",
+     "veiculo": "mpba.mp.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "2912707": {
    "nome": "Ibirapitanga",
    "uf": "BA",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2913002": {
+   "nome": "Ibitiara",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "MINISTÉRIO PÚBLICO CONSELHO SUPERIOR DO ... - MPBA",
+     "url": "https://www.mpba.mp.br/sites/default/files/biblioteca/diariojustica/20260929.pdf",
+     "data": "2026-10-14",
+     "veiculo": "mpba.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Plano de Contingência para Desastres Naturais ... - Cievs Recife",
+     "url": "https://cievsrecife.wordpress.com/wp-content/uploads/2025/07/plano-de-contingencia_desastres_sesau_2025.pdf",
+     "data": "2026-10-14",
+     "veiculo": "cievsrecife.wordpress.com",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -13348,6 +14157,37 @@
     "classe": "com_lancamento",
     "rs_hab": 6.093645,
     "liquidada": 160317.7,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2913309": {
+   "nome": "Ichu",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Prefeitura de Ichu (@prefichu) • Instagram photos and videos",
+     "url": "https://www.instagram.com/prefichu/?hl=en",
+     "data": "2026-10-14",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Última noite do São João de ichu, confira os melhores momentos.",
+     "url": "https://www.instagram.com/reel/C8qXj8uNZ_4/?hl=en",
+     "data": "2026-10-14",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -13403,6 +14243,37 @@
    "nome": "Ipirá",
    "uf": "BA",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2914208": {
+   "nome": "Irajuba",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "MP-BA recomenda plano de contingência para abastecimento de ...",
+     "url": "https://www.bahianoticias.com.br/justica/noticia/74484-mp-ba-recomenda-plano-de-contingencia-para-abastecimento-de-agua-em-irajuba",
+     "data": "2026-10-14",
+     "veiculo": "bahianoticias.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Irajuba - Tag - Bahia Notícias",
+     "url": "https://www.bahianoticias.com.br/tags/irajuba",
+     "data": "2026-10-14",
+     "veiculo": "bahianoticias.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -13519,6 +14390,92 @@
    },
    "categoria": "nao_verificado"
   },
+  "2915106": {
+   "nome": "Itagi",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "ministério público órgão especial do colégio de procuradores - MPBA",
+     "url": "https://www.mpba.mp.br/sites/default/files/biblioteca/diariojustica/20261008.pdf",
+     "data": "2026-10-14",
+     "veiculo": "mpba.mp.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2915205": {
+   "nome": "Itagibá",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "ACM NETO - 2026 - PLANO DE GOVERNO.indd - A TARDE",
+     "url": "https://cdn.atarde.com.br/img/attachmentinline/1390000/plano-de-governo-veja-propostas-de-acm-neto-para-a0139704500202607301128.pdf?xid=7159251",
+     "data": "2026-10-14",
+     "veiculo": "cdn.atarde.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "MINISTÉRIO PÚBLICO CONSELHO SUPERIOR DO ... - MPBA",
+     "url": "https://www.mpba.mp.br/sites/default/files/biblioteca/diariojustica/20260929.pdf",
+     "data": "2026-10-14",
+     "veiculo": "mpba.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Instrução Normativa INEMA Nº 5 DE 15/08/2022 - Estadual - Bahia",
+     "url": "https://www.legisweb.com.br/legislacao/?id=435257",
+     "data": "2026-10-14",
+     "veiculo": "legisweb.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 3.828883,
+    "liquidada": 58620.2,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2915403": {
+   "nome": "Itaju do Colônia",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "cooperativa de crédito sicoob coopec ltda",
+     "url": "https://www.sicoob.com.br/documents/3074559/70200988/2025.1+-+Demonstra%C3%A7%C3%B5es+Financeiras.pdf/771b819e-52f8-21d6-0d99-cd232a4bfb16?t=1759410015389&download=true",
+     "data": "2026-10-14",
+     "veiculo": "sicoob.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "2915601": {
    "nome": "Itamaraju",
    "uf": "BA",
@@ -13609,6 +14566,44 @@
    },
    "categoria": "nao_verificado"
   },
+  "2917409": {
+   "nome": "Jacaraci",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Plano Setorial de Saneamento Básico - PROCEDE",
+     "url": "https://publicacoes.procedebahia.com.br/documentos/PRXUQXVQGEII2-20191021-081218--!--Plano_Setorial_de_Saneamento_Jacaraci.pdf",
+     "data": "2026-10-14",
+     "veiculo": "publicacoes.procedebahia.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Jacaraci - Agora Sudoeste",
+     "url": "https://www.agorasudoeste.com.br/categoria/jacaraci",
+     "data": "2026-10-14",
+     "veiculo": "agorasudoeste.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Governo do Estado anuncia uso de fumacê em cidades baianas ...",
+     "url": "https://www.bahianoticias.com.br/saude/noticia/31336-governo-do-estado-anuncia-uso-de-fumace-em-cidades-baianas-para-combater-a-dengue",
+     "data": "2026-10-14",
+     "veiculo": "bahianoticias.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "2917508": {
    "nome": "Jacobina",
    "uf": "BA",
@@ -13684,6 +14679,68 @@
    },
    "categoria": "nao_verificado"
   },
+  "2918209": {
+   "nome": "Jiquiriçá",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "RESOLUÇÃO Nº 003 /2021 O Presidente do Conselho Universitário",
+     "url": "https://ufrb.edu.br/soc/components/com_chronoforms5/chronoforms/uploads/documento/20210719113554_ilovepdf_merged.pdf",
+     "data": "2026-10-14",
+     "veiculo": "ufrb.edu.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "MINISTÉRIO PÚBLICO COLÉGIO DE PROCURADORES - MPBA",
+     "url": "https://www.mpba.mp.br/sites/default/files/biblioteca/diariojustica/20221123.pdf",
+     "data": "2026-10-14",
+     "veiculo": "mpba.mp.br",
+     "nivel": "A"
+    },
+    {
+     "titulo": "Neoenergia Coelba triplica equipes no Baixo Sul e Vale do Jiquiriçá ...",
+     "url": "https://www.neoenergia.com/web/bahia/w/equipes-baixo-sul-vale-jiquirica-coelba",
+     "data": "2026-10-14",
+     "veiculo": "neoenergia.com",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2918308": {
+   "nome": "Jitaúna",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO",
+     "url": "https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2021/DMPF-EXTRAJUDICIAL-2021-03-16.pdf",
+     "data": "2026-10-14",
+     "veiculo": "transparencia.mpf.mp.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "2918357": {
    "nome": "João Dourado",
    "uf": "BA",
@@ -13703,6 +14760,175 @@
    "nome": "Juazeiro",
    "uf": "BA",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2918555": {
+   "nome": "Jussari",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Itabuna/BA - FGV Repositório Institucional Acadêmico",
+     "url": "https://repositorio.fgv.br/bitstreams/8ddd17c0-abb1-4c3a-b139-f110b217ee91/download",
+     "data": "2026-10-14",
+     "veiculo": "repositorio.fgv.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "PLANO MUNICIPAL DE SAÚDE 2022-2025 - Amazon S3",
+     "url": "https://s3.amazonaws.com/el.com.br/portal/uploads/683/arquivos/B163CFCA7795E01DFB7769F7408309C7.pdf",
+     "data": "2026-10-14",
+     "veiculo": "s3.amazonaws.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "ministério público órgão especial do colégio de procuradores - MPBA",
+     "url": "https://www.mpba.mp.br/sites/default/files/biblioteca/diariojustica/20261008.pdf",
+     "data": "2026-10-14",
+     "veiculo": "mpba.mp.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2918605": {
+   "nome": "Jussiape",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Governo contrata quase 20 GW em 'maior leilão da história', mas ...",
+     "url": "https://conteudos.xpi.com.br/acoes/relatorios/governo-contrata-quase-20-gw-em-maior-leilao-da-historia-mas-efeito-na-tarifa-preocupa-veja-o-radar-energia-xp-marco/",
+     "data": "2026-10-14",
+     "veiculo": "conteudos.xpi.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO",
+     "url": "https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2022/DMPF-EXTRAJUDICIAL-2022-10-10.pdf",
+     "data": "2026-10-14",
+     "veiculo": "transparencia.mpf.mp.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2918704": {
+   "nome": "Lafaiete Coutinho",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Defesa Civil de Jequié apresentou plano de contingência contra ...",
+     "url": "https://juniormascote.com.br/noticias/defesa-civil-de-jequic-apresentou-plano-de-contingncia-contra-desastres-naturais/",
+     "data": "2026-10-14",
+     "veiculo": "juniormascote.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Instrução Normativa INEMA Nº 5 DE 15/08/2022 - Estadual - Bahia",
+     "url": "https://www.legisweb.com.br/legislacao/?id=435257",
+     "data": "2026-10-14",
+     "veiculo": "legisweb.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2918753": {
+   "nome": "Lagoa Real",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE SAÚDE 2022 – 2025 - procede",
+     "url": "https://publicacoes.procedebahia.com.br/2024-10/documentos/PRXSKBSYULYJW-20240515-122334--%21--Final_PMS_20222025.pdf",
+     "data": "2026-10-14",
+     "veiculo": "publicacoes.procedebahia.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Arraias entra em plano para ampliar pesquisa e exploração de ...",
+     "url": "https://www.jornaldotocantins.com.br/cidades/arraias-entra-em-plano-para-ampliar-pesquisa-e-explorac-o-de-uranio-no-brasil-1.3454666",
+     "data": "2026-10-14",
+     "veiculo": "jornaldotocantins.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2918902": {
+   "nome": "Lajedão",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Plano Municipal de Saneamento Básico Município de Itamaraju",
+     "url": "https://www.acessoinformacao.com.br/ba/itamaraju/wp-includes/ExternalApps/downloader.php?hurl=aHR0cDovL2RvZW0ub3JnLmJyL2JhL2l0YW1hcmFqdS9hcnF1aXZvcy9kb3dubG9hZC9kNDIwYjQwN2RhNzgyNTA0NmVmYTk1MWJkNTU4MzI2My9ERUNSRVRPIE7CuiA2NS0yMDE5IC0gQVBST1ZBIE8gUExBTk8gTVVOSUNJUEFMIERFIFNBTkVBTUVOTO8gQsOBU0lDTyBERSBJVEFNQVJBSlUucGRm",
+     "data": "2026-10-14",
+     "veiculo": "acessoinformacao.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Governo do Estado anuncia uso de fumacê em cidades baianas ...",
+     "url": "https://www.bahianoticias.com.br/saude/noticia/31336-governo-do-estado-anuncia-uso-de-fumace-em-cidades-baianas-para-combater-a-dengue",
+     "data": "2026-10-14",
+     "veiculo": "bahianoticias.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "MINISTÉRIO PÚBLICO ÓRGÃO ESPECIAL DO COLÉGIO ... - MPBA",
+     "url": "https://www.mpba.mp.br/sites/default/files/biblioteca/diariojustica/20230215.pdf",
+     "data": "2026-10-14",
+     "veiculo": "mpba.mp.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -13793,6 +15019,99 @@
    "nome": "Macaúbas",
    "uf": "BA",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2919900": {
+   "nome": "Macururé",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "MINISTÉRIO PÚBLICO CONSELHO SUPERIOR DO ... - MPBA",
+     "url": "https://www.mpba.mp.br/sites/default/files/biblioteca/diariojustica/20260929.pdf",
+     "data": "2026-10-14",
+     "veiculo": "mpba.mp.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2919959": {
+   "nome": "Maetinga",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "ALERTA NO SUDOESTE BAIANO Fortes chuvas ... - Instagram",
+     "url": "https://www.instagram.com/p/DWM6LQxkd9V/?hl=en",
+     "data": "2026-10-14",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO",
+     "url": "https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2022/DMPF-EXTRAJUDICIAL-2022-10-10.pdf",
+     "data": "2026-10-14",
+     "veiculo": "transparencia.mpf.mp.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2920403": {
+   "nome": "Manoel Vitorino",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Bahia tem apenas 16 municípios com planos de contingência no ...",
+     "url": "https://www.bahianoticias.com.br/noticia/287326-bahia-tem-apenas-16-municipios-com-planos-de-contingencia-no-sistema-integrado-de-informacoes-sobre-desastres-saiba-mais",
+     "data": "2026-10-14",
+     "veiculo": "bahianoticias.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "As fortes chuvas dos dias 26 e 27 de setembro provocaram danos ...",
+     "url": "https://www.instagram.com/p/DeALkNFllJN/",
+     "data": "2026-10-14",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
+     "url": "https://www.tvjequie.com.br/noticia/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico",
+     "data": "2026-10-14",
+     "veiculo": "tvjequie.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -13939,6 +15258,37 @@
    },
    "categoria": "nao_verificado"
   },
+  "2922201": {
+   "nome": "Muniz Ferreira",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "ministério público órgão especial do colégio de procuradores - MPBA",
+     "url": "https://www.mpba.mp.br/sites/default/files/biblioteca/diariojustica/20261008.pdf",
+     "data": "2026-10-14",
+     "veiculo": "mpba.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Greve da Caixa na Bahi - Voz da Bahia",
+     "url": "https://vozdabahia.com.br/oab-ba-cobra-medidas-caixa-greve/",
+     "data": "2026-10-14",
+     "veiculo": "vozdabahia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "2922300": {
    "nome": "Muritiba",
    "uf": "BA",
@@ -13963,6 +15313,54 @@
     "classe": "sem_lancamento_182",
     "rs_hab": null,
     "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2922706": {
+   "nome": "Nova Canaã",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Após 2 anos das enchentes que deixaram municípios do Sudoeste ...",
+     "url": "https://sitecoreto.com/apos-2-anos-das-enchentes-que-deixaram-municipios-do-sudoeste-baiano-em-estado-de-emergencia-cidades-seguem-sem-medidas-preventivas-e-planejamento-para-enfrentar-novas-chuvas/",
+     "data": "2026-10-14",
+     "veiculo": "sitecoreto.com",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2922854": {
+   "nome": "Nova Redenção",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://smastr20.blob.core.windows.net/conesan/Itapolis_RS_2014.pdf",
+     "data": "2026-10-14",
+     "veiculo": "smastr20.blob.core.windows.net",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 1.505954,
+    "liquidada": 11351.88,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -14059,10 +15457,117 @@
    },
    "categoria": "nao_verificado"
   },
+  "2924108": {
+   "nome": "Pedrão",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Plano de Contingência Nipepe 2022/2023 | PDF | Enchente - Scribd",
+     "url": "https://pt.scribd.com/document/599095490/Plano-de-Contingencia-NIPEPE-2022-2023",
+     "data": "2026-10-14",
+     "veiculo": "pt.scribd.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Registro de Ocorrências de Desastres Naturais | PDF - Scribd",
+     "url": "https://it.scribd.com/document/707833656/VigidesastresVigidados-FormularioDeRegistroDeOcorrencias-A4-202308-IMPRESSORA",
+     "data": "2026-10-14",
+     "veiculo": "it.scribd.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Notificação Preliminar de Desastre | PDF - Scribd",
+     "url": "https://pt.scribd.com/doc/55958517/NOPRED-MODELO",
+     "data": "2026-10-14",
+     "veiculo": "pt.scribd.com",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2924207": {
+   "nome": "Pedro Alexandre",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Empreitada de Estabilização das Arribas da Nazaré, na Zona ... - APA",
+     "url": "https://apambiente.pt/sites/default/files/_A_APA/Informacao_institucional/Situacao_financeira/Projetos%20cofinanciados/DLPC/Nazar%C3%A9%20Relat%C3%B3rios%2023-24/11.%20Rel.%20APA_Nazar%C3%A9_Jan.23.pdf",
+     "data": "2026-10-14",
+     "veiculo": "apambiente.pt",
+     "nivel": "B"
+    },
+    {
+     "titulo": "II SÉRIE - Diário da República",
+     "url": "https://files.diariodarepublica.pt/gratuitos/2s/2022/01/2S003A0000S00.pdf",
+     "data": "2026-10-14",
+     "veiculo": "files.diariodarepublica.pt",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "2924405": {
    "nome": "Pilão Arcado",
    "uf": "BA",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2924504": {
+   "nome": "Pindaí",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "MINISTÉRIO PÚBLICO PROCURADORIA GERAL DE JUSTIÇA ...",
+     "url": "https://www.mpba.mp.br/sites/default/files/biblioteca/diariojustica/20200402.pdf",
+     "data": "2026-10-14",
+     "veiculo": "mpba.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "PLANO MUNICIPAL DE SAÚDE 2022 – 2025 - procede",
+     "url": "https://publicacoes.procedebahia.com.br/2024-10/documentos/PRXSKBSYULYJW-20240515-122334--%21--Final_PMS_20222025.pdf",
+     "data": "2026-10-14",
+     "veiculo": "publicacoes.procedebahia.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "ONS e EPE publicam Nota Técnica com requisitos mínimos para o ...",
+     "url": "https://conteudos.xpi.com.br/acoes/relatorios/ons-e-epe-publicam-nota-tecnica-com-requisitos-minimos-para-o-lrcap-de-armazenamento-de-2026-veja-o-radar-energia-xp-junho/",
+     "data": "2026-10-14",
+     "veiculo": "conteudos.xpi.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -14143,6 +15648,30 @@
     "classe": "com_lancamento",
     "rs_hab": 1.380453,
     "liquidada": 48320.0,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2925600": {
+   "nome": "Presidente Dutra",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "plano municipal de saneamento básico – água e esgoto rio de janeiro",
+     "url": "https://fundacaorioaguas.prefeitura.rio/wp-content/uploads/sites/48/2024/03/E7-Plano-de-Acoes-para-Emergencias-e-Contingencias-PMSB-AE.pdf",
+     "data": "2026-10-14",
+     "veiculo": "fundacaorioaguas.prefeitura.rio",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -14299,6 +15828,44 @@
    },
    "categoria": "nao_verificado"
   },
+  "2927309": {
+   "nome": "Salinas da Margarida",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO DE AÇÃO DE EMERGÊNCIA - Votorantim Cimentos",
+     "url": "https://www.votorantimcimentos.com.br/wp-content/uploads/2025/08/1234-PCV-RT-PAE-0003-0-LGPD.pdf",
+     "data": "2026-10-14",
+     "veiculo": "votorantimcimentos.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO",
+     "url": "https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2025/DMPF-EXTRAJUDICIAL-2025-08-25.pdf",
+     "data": "2026-10-14",
+     "veiculo": "transparencia.mpf.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Campus Itapetinga » Documentos - IF Baiano",
+     "url": "https://www.ifbaiano.edu.br/unidades/itapetinga/page_todosdocumentos/",
+     "data": "2026-10-14",
+     "veiculo": "ifbaiano.edu.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "2927408": {
    "nome": "Salvador",
    "uf": "BA",
@@ -14318,10 +15885,58 @@
     "peso_no_indice": "nenhum"
    }
   },
+  "2927606": {
+   "nome": "Santa Brígida",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "ministério público órgão especial do colégio de procuradores - MPBA",
+     "url": "https://www.mpba.mp.br/sites/default/files/biblioteca/diariojustica/20261008.pdf",
+     "data": "2026-10-14",
+     "veiculo": "mpba.mp.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "2927705": {
    "nome": "Santa Cruz Cabrália",
    "uf": "BA",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2927804": {
+   "nome": "Santa Cruz da Vitória",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO",
+     "url": "https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2022/DMPF-EXTRAJUDICIAL-2022-01-12.pdf",
+     "data": "2026-10-14",
+     "veiculo": "transparencia.mpf.mp.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -14342,6 +15957,44 @@
     "classe": "com_lancamento",
     "rs_hab": 5.020189,
     "liquidada": 189933.84,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2928059": {
+   "nome": "Santa Luzia",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Prefeitura de Contagem lança programa de contingência para o ...",
+     "url": "https://www.facebook.com/prefeituracontagem/posts/deu-na-m%C3%ADdia-prefeitura-de-contagem-lan%C3%A7a-programa-de-conting%C3%AAncia-para-o-per%C3%ADod/1260301152799354/",
+     "data": "2026-10-14",
+     "veiculo": "facebook.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "PLANO DE GESTÃO ESCOLA MUNICIPAL SANTA LUZIA.pptx",
+     "url": "https://pt.slideshare.net/slideshow/plano-de-gesto-escola-municipal-santa-luziapptx/255492769",
+     "data": "2026-10-14",
+     "veiculo": "pt.slideshare.net",
+     "nivel": "B"
+    },
+    {
+     "titulo": "A SUA COMUNIDADE TEM MUITO A CONTRIBUIR! 🏘️ As ...",
+     "url": "https://www.instagram.com/p/DdrKBnzxZ0M/",
+     "data": "2026-10-14",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -14472,6 +16125,37 @@
    "nome": "São Gonçalo dos Campos",
    "uf": "BA",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2929354": {
+   "nome": "São José da Vitória",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE SAÚDE 2022-2025 - Amazon S3",
+     "url": "https://s3.amazonaws.com/el.com.br/portal/uploads/683/arquivos/B163CFCA7795E01DFB7769F7408309C7.pdf",
+     "data": "2026-10-14",
+     "veiculo": "s3.amazonaws.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO",
+     "url": "https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2025/DMPF-EXTRAJUDICIAL-2025-10-06.pdf",
+     "data": "2026-10-14",
+     "veiculo": "transparencia.mpf.mp.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -14626,10 +16310,65 @@
    },
    "categoria": "nao_verificado"
   },
+  "2930766": {
+   "nome": "Sítio do Quinto",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO",
+     "url": "https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2022/DMPF-EXTRAJUDICIAL-2022-01-12.pdf",
+     "data": "2026-10-14",
+     "veiculo": "transparencia.mpf.mp.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "2930774": {
    "nome": "Sobradinho",
    "uf": "BA",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2931103": {
+   "nome": "Tanquinho",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Plano Municipal de Saúde 2022 – 2025 VERSÃO ATUALIZADA",
+     "url": "https://www.acessoinformacao.com.br/transparencia/arquivos/download/cb1e18149e8022540bc8dbf6fad3516b5f42339d.pdf",
+     "data": "2026-10-14",
+     "veiculo": "acessoinformacao.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Alternativa Av. Ipiranga - Prefeitura de Porto Alegre",
+     "url": "https://prefeitura.poa.br/sites/default/files/usu_doc/secretarias/smap/DLC/Memoriais%20descritivos%20TP%2024_2023.pdf",
+     "data": "2026-10-14",
+     "veiculo": "prefeitura.poa.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -14675,6 +16414,44 @@
    "nome": "Uauá",
    "uf": "BA",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2932457": {
+   "nome": "Umburanas",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Plano Municipal de Saúde 2022 – 2025 VERSÃO ATUALIZADA",
+     "url": "https://www.acessoinformacao.com.br/transparencia/arquivos/download/cb1e18149e8022540bc8dbf6fad3516b5f42339d.pdf",
+     "data": "2026-10-14",
+     "veiculo": "acessoinformacao.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "ACM NETO - 2026 - PLANO DE GOVERNO.indd - A TARDE",
+     "url": "https://cdn.atarde.com.br/img/attachmentinline/1390000/plano-de-governo-veja-propostas-de-acm-neto-para-a0139704500202607301128.pdf?xid=7159251",
+     "data": "2026-10-14",
+     "veiculo": "cdn.atarde.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "MINISTÉRIO PÚBLICO ÓRGÃO ESPECIAL DO COLÉGIO ... - MPBA",
+     "url": "https://www.mpba.mp.br/sites/default/files/biblioteca/diariojustica/20230215.pdf",
+     "data": "2026-10-14",
+     "veiculo": "mpba.mp.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -14754,10 +16531,72 @@
    },
    "categoria": "nao_verificado"
   },
+  "2933059": {
+   "nome": "Várzea da Roça",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Prefeitura Municipal de Várzea da Roça publica:",
+     "url": "https://impublicacoes.org/trdados/arquivos_agenda_2021/09/b1d7e47060bf766bcd6d7274c37748f561327faa1bd96.pdf",
+     "data": "2026-10-14",
+     "veiculo": "impublicacoes.org",
+     "nivel": "B"
+    },
+    {
+     "titulo": "PLANO DE AÇÃO DE EMERGÊNCIA - Votorantim Cimentos",
+     "url": "https://www.votorantimcimentos.com.br/wp-content/uploads/2025/08/1234-PCV-RT-PAE-0003-0-LGPD.pdf",
+     "data": "2026-10-14",
+     "veiculo": "votorantimcimentos.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "2933208": {
    "nome": "Vera Cruz",
    "uf": "BA",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "2933257": {
+   "nome": "Vereda",
+   "uf": "BA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Vertente; vereda; vegetais intermediários. - JurisWay",
+     "url": "https://jurisway.org.br/perguntas-e-respostas/28978-vertente-vereda-vegetais-intermediarios",
+     "data": "2026-10-14",
+     "veiculo": "jurisway.org.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Plano Municipal de Saneamento Básico Município de Itamaraju",
+     "url": "https://www.acessoinformacao.com.br/ba/itamaraju/wp-includes/ExternalApps/downloader.php?hurl=aHR0cDovL2RvZW0ub3JnLmJyL2JhL2l0YW1hcmFqdS9hcnF1aXZvcy9kb3dubG9hZC9kNDIwYjQwN2RhNzgyNTA0NmVmYTk1MWJkNTU4MzI2My9ERUNSRVRPIE7CuiA2NS0yMDE5IC0gQVBST1ZBIE8gUExBTk8gTVVOSUNJUEFMIERFIFNBTkVBTUVOTO8gQsOBU0lDTyBERSBJVEFNQVJBSlUucGRm",
+     "data": "2026-10-14",
+     "veiculo": "acessoinformacao.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -16190,6 +18029,37 @@
    "nome": "Curvelo",
    "uf": "MG",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3121209": {
+   "nome": "Delfinópolis",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PRODUTO TÉCNICO PLANO DE CONTINGÊNCIA A INCÊNDIOS ...",
+     "url": "https://www.bambui.ifmg.edu.br/portal/images/PDF/MPSTA/Cartilhas/Produto_t%C3%A9cnico_-_Elaine_Gon%C3%A7alves_da_Costa.pdf",
+     "data": "2026-10-14",
+     "veiculo": "bambui.ifmg.edu.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "COOPERATIVA DE CRÉDITO CREDICITRUS ESTATUTO SOCIAL ...",
+     "url": "https://sicoobcredicitrus.com.br/wp-content/uploads/2025/09/Estatuto-Social-Aprovado-pela-AGE-16.4.2025.pdf",
+     "data": "2026-10-14",
+     "veiculo": "sicoobcredicitrus.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",

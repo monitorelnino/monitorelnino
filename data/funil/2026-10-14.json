@@ -2,6 +2,18 @@
  "data": "2026-10-14",
  "formato_versao": 1,
  "etapas": {
+  "busca_web": {
+   "brutos_periodo_ou_seca": 0,
+   "brutos_plancon": 1620,
+   "brutos_siglas_e_variantes": 0,
+   "coberto_sem_mencao": 0,
+   "com_resultado_bruto": 81,
+   "consultas": 91,
+   "lacunas": 0,
+   "motor_sem_resposta": 10,
+   "nao_localizado_ate_o_momento": 0,
+   "pistas": 807
+  },
   "descobrir_planos": {
    "achados_novos": 0,
    "alvos_consultados": 60,
@@ -20,15 +32,15 @@
    "recusa_citacao_incompleta": 86,
    "recusa_documento_inacessivel": 83,
    "recusa_ente_nao_confirmado": 93,
+   "recusa_executivo_pendente": 10,
+   "recusa_fora_do_objeto": 2,
+   "recusa_minuta_ou_rascunho": 4,
    "recusa_natureza_duvidosa": 40,
+   "recusa_noticia_institucional_nao_e_o_plano": 6,
    "recusa_plano_sem_identificacao": 6,
    "recusa_resposta": 15,
    "recusa_sem_documento_primario": 2484,
-   "recusa_texto_nao_extraivel": 22,
-   "recusa_executivo_pendente": 10,
-   "recusa_minuta_ou_rascunho": 4,
-   "recusa_noticia_institucional_nao_e_o_plano": 6,
-   "recusa_fora_do_objeto": 2
+   "recusa_texto_nao_extraivel": 22
   },
   "rede_social": {
    "entes_consultados": 40,
@@ -43,5 +55,5 @@
    "municipios": 100242
   }
  },
- "atualizado_em": "2026-10-15T01:14:45"
+ "atualizado_em": "2026-10-15T01:44:35"
 }

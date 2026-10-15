@@ -7407,7 +7407,79 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-14",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-15T01:12:29",
+   "duracao_s": 665.7,
+   "itens": 83,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-14",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-15T01:23:34",
+   "duracao_s": 316.1,
+   "itens": 2,
+   "status": "erro",
+   "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-10-14",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-15T01:28:50",
+   "duracao_s": 315.5,
+   "itens": 2,
+   "status": "erro",
+   "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-10-14",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-15T01:34:05",
+   "duracao_s": 315.9,
+   "itens": 2,
+   "status": "erro",
+   "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-10-14",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-15T01:39:20",
+   "duracao_s": 316.0,
+   "itens": 2,
+   "status": "erro",
+   "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-10-14",
+   "script": "seguir_pistas.py",
+   "inicio": "2026-10-15T01:44:36",
+   "duracao_s": 160.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-14",
+   "script": "triar_confianca_pistas.py",
+   "inicio": "2026-10-15T01:47:16",
+   "duracao_s": 4.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-14",
+   "script": "revisar_pistas.py",
+   "inicio": "2026-10-15T01:47:20",
+   "duracao_s": 381.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
   }
  ],
- "atualizado_em": "2026-10-15T01:35:37"
+ "atualizado_em": "2026-10-15T01:47:20"
 }
