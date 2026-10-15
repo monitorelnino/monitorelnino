@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-15 · #PR · Reaplicação no próprio commit (F60)
+
+Dois elos reaplicavam o mesmo artefato de coleta perdida e levavam o resultado no commit da coleta; a união somava as linhas duas vezes (log de buscas com +6.100 linhas repetidas em 15/10). A reaplicação passa a ir ao ramo no seu próprio commit, antes da coleta, recomeçando do zero se o ramo andou. Onde: `_coletor.yml`.
+
 ## 2026-10-15 · #PR · Ato de resposta sem data completa não entra no mapa
 
 O juiz das 09:09 gravou um ato de resposta (Lagoa Seca/PB) com a data "2026": o esquema do ato reprovou e a publicação parou de novo. Sem data do ato em dd/mm/aaaa, o aplicador passa a se abster — antes gravava o ano solto ou a data de hoje. O evento sai do mapa. Onde: `julgar_e_aplicar_descobertas.py`, `data/atos_resposta.json`.

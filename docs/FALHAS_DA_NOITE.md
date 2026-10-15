@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-15. 59 falhas; 54 com caso de teste que as reproduz; 5 sem, com o que falta dito.
+Atualizado em 2026-10-15. 60 falhas; 55 com caso de teste que as reproduz; 5 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -536,3 +536,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** log dos dois runs: 'DERIVADOS: … MARE_Indice_Documentacao.pdf' seguido de 'You must edit all merge conflicts'; reprodução local: arquivo rastreado sujo faz `git rebase --continue` sair 1 com a mesma mensagem
 - **Correção:** A união segue direto para o `rebase --continue`; quem regenera é o bloco A2-09, depois do rebase, que agora indexa `data/` e descarta o que o elo não comita.
 - **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_dois_elos_em_paralelo`
+
+## F60 · Reaplicação concorrente duplica as linhas dos logs
+
+- **Noite:** 2026-10-15
+- **Sintoma:** Depois da reaplicação da manhã de 15/10: `data/log_buscas/2026-10.jsonl` 30.787 → 37.069 linhas com só +160 distintas; `saude_pipeline.json` com a mesma execução 7 vezes; `painel_da_noite.json` +244 linhas, +14 distintas.
+- **Causa:** Cada elo reaplicava os artefatos ainda sem marcador e levava o resultado no PRÓPRIO commit; dois elos (e a busca web de cadência, fora da vez) reaplicaram os mesmos artefatos, e a união pela base comum soma o que os dois lados acrescentaram. O artefato de um elo perdido levava junto o que ele tinha reaplicado, que voltava de novo na reaplicação seguinte.
+- **Prova:** data/log_buscas/2026-10.jsonl em 54b76676 (30.787/20.970 distintas) e 2b20b34e (37.069/21.130); data/saude_pipeline.json em 2b20b34e: 54 execuções repetidas, sete cópias cada
+- **Correção:** A reaplicação vai ao ramo no seu próprio commit, antes da coleta, e recomeça do zero (fetch + reset) se o push for recusado — nunca por união. O commit do elo e o artefato da perda partem da reaplicação já empurrada.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_coleta_perdida_volta_para_dentro`

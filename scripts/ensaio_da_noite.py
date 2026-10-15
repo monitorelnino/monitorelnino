@@ -570,13 +570,16 @@ def ensaio_coleta_perdida_volta_para_dentro(diz) -> bool:
             diz("   ✗ a reaplicação roda DEPOIS da coleta — o que voltou não entra no commit "
                 "desta noite")
             ok = False
-        chamadas = [l for l in coletor.splitlines()
-                    if "reaplicar_noite.py" in l and "run:" in l]
-        if not chamadas:
-            diz("   ✗ a reaplicação aparece só em comentário: nenhum passo a executa")
+        import yaml
+        passo = next((str(x.get("run") or "") for j in (yaml.safe_load(coletor).get("jobs") or {}).values()
+                      for x in (j.get("steps") or []) if x.get("name") == "Reaplicar o que a noite perdeu"), "")
+        if "reaplicar_noite.py --aplicar" not in passo:
+            diz("   ✗ nenhum passo executa a reaplicação com escrita")
             ok = False
-        elif not any("--aplicar" in l for l in chamadas):
-            diz("   ✗ a reaplicação roda em modo relatório: ela não escreve nada")
+        # F60 (15/10/2026): a reaplicação vai ao ramo no próprio commit e recomeça do zero se o ramo
+        # andou; levada no commit do elo, a união somava duas vezes o que dois elos reaplicaram.
+        elif "git push" not in passo or "reset -q --hard FETCH_HEAD" not in passo:
+            diz("   ✗ a reaplicação não vai ao ramo no próprio commit, recomeçando do zero (F60)")
             ok = False
 
     if elo_e_run("coleta-perdida-sinais-fisicos-37711285165") != ("sinais-fisicos", "37711285165"):
