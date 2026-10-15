@@ -113,7 +113,6 @@ jobs:
         preservar_evidencias.py --ler --limite 20
         preservar_evidencias.py --ocr --limite 6
         scripts/preservar_textos_integrais.py
-        seguir_pistas.py --limite 20
         triar_confianca_pistas.py
         revisar_pistas.py --preparar
     secrets:

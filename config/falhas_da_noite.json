@@ -838,6 +838,20 @@
    "correcao": "A reaplicação vai ao ramo no seu próprio commit, antes da coleta, e recomeça do zero (fetch + reset) se o push for recusado — nunca por união. O commit do elo e o artefato da perda partem da reaplicação já empurrada.",
    "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_coleta_perdida_volta_para_dentro",
    "falta": "o ensaio real não reaplica (ramo ensaio-real/); as linhas repetidas já na main ficam (não se deduplica log por conteúdo) — decisão da central"
+  },
+  {
+   "id": "F61",
+   "noite": "2026-10-15",
+   "titulo": "Dois seguidores de pistas em paralelo perdem a rodada da busca web",
+   "sintoma": "Busca web de cadência 38705589401 (08:25→09:14 UTC) coletou e perdeu o commit: 'RECUSADO data/pistas_imprensa.json: os dois lados mudaram o campo seguimento da mesma pista para valores diferentes'.",
+   "causa": "`seguir_pistas.py` rodava na descoberta, na busca web de cadência e na rodada semanal, fora de um grupo comum; dois seguiam as mesmas pistas no mesmo dia e gravavam `seguimento` com contagens diferentes — o caso que a porta recusa por regra.",
+   "prova": [
+    "log do passo de commit do job 116324104565: linha RECUSADO data/pistas_imprensa.json, campo 'seguimento'",
+    "descoberta 945e1140 (08:38) seguiu pistas durante a cadência"
+   ],
+   "correcao": "Um seguidor: `seguir_pistas.py` só na descoberta, dentro da vez da noite; sai da cadência e da rodada semanal.",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_busca_web_pelo_coletor",
+   "falta": "o artefato da cadência 38705589401 volta pela reaplicação da próxima noite; a fila segue 20 pistas por noite em vez de até 100"
   }
  ]
 }

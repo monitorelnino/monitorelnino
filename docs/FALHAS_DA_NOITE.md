@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-15. 60 falhas; 55 com caso de teste que as reproduz; 5 sem, com o que falta dito.
+Atualizado em 2026-10-15. 61 falhas; 56 com caso de teste que as reproduz; 5 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -545,3 +545,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** data/log_buscas/2026-10.jsonl em 54b76676 (30.787/20.970 distintas) e 2b20b34e (37.069/21.130); data/saude_pipeline.json em 2b20b34e: 54 execuções repetidas, sete cópias cada
 - **Correção:** A reaplicação vai ao ramo no seu próprio commit, antes da coleta, e recomeça do zero (fetch + reset) se o push for recusado — nunca por união. O commit do elo e o artefato da perda partem da reaplicação já empurrada.
 - **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_coleta_perdida_volta_para_dentro`
+
+## F61 · Dois seguidores de pistas em paralelo perdem a rodada da busca web
+
+- **Noite:** 2026-10-15
+- **Sintoma:** Busca web de cadência 38705589401 (08:25→09:14 UTC) coletou e perdeu o commit: 'RECUSADO data/pistas_imprensa.json: os dois lados mudaram o campo seguimento da mesma pista para valores diferentes'.
+- **Causa:** `seguir_pistas.py` rodava na descoberta, na busca web de cadência e na rodada semanal, fora de um grupo comum; dois seguiam as mesmas pistas no mesmo dia e gravavam `seguimento` com contagens diferentes — o caso que a porta recusa por regra.
+- **Prova:** log do passo de commit do job 116324104565: linha RECUSADO data/pistas_imprensa.json, campo 'seguimento'; descoberta 945e1140 (08:38) seguiu pistas durante a cadência
+- **Correção:** Um seguidor: `seguir_pistas.py` só na descoberta, dentro da vez da noite; sai da cadência e da rodada semanal.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_busca_web_pelo_coletor`
