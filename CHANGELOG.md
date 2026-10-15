@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-15 · #PR · Ato de resposta sem data completa não entra no mapa
+
+O juiz das 09:09 gravou um ato de resposta (Lagoa Seca/PB) com a data "2026": o esquema do ato reprovou e a publicação parou de novo. Sem data do ato em dd/mm/aaaa, o aplicador passa a se abster — antes gravava o ano solto ou a data de hoje. O evento sai do mapa. Onde: `julgar_e_aplicar_descobertas.py`, `data/atos_resposta.json`.
+
 ## 2026-10-15 · #PR · Documento sem título começa em maiúscula
 
 A forma de reserva do campo `documento` das promoções do juiz ("ato classificado como …") começava em minúscula, e o portão do documento publicado barrou a publicação desde 07:24 (Cubatão/SP). A forma passa a começar em maiúscula; o registro de Cubatão é corrigido. Onde: `aplicar_promocoes_do_juiz.py`, `data/municipios.json`.

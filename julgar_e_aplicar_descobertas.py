@@ -610,7 +610,12 @@ def extrair_causa(texto):
 def aplicar_resposta(uf, texto, numero, data, url, hoje):
     """Adiciona um evento a data/atos_resposta.json — NUNCA pontua no índice
     (Correção B); é só o registro do mapa de transparência. Recusa aplicar se não
-    conseguir identificar COM SEGURANÇA qual município o texto descreve."""
+    conseguir identificar COM SEGURANÇA qual município o texto descreve.
+
+    15/10/2026: sem a data do ato em dd/mm/aaaa, abstém. Gravava o ano solto ("2026", Lagoa Seca/PB),
+    que o esquema do ato reprova e barrou a publicação — ou a data de HOJE, inventada."""
+    if not re.fullmatch(r"\d{2}/\d{2}/\d{4}", str(data or "")):
+        return False, f"data do ato não localizada no texto ({data or 'nenhuma'}) — abstenção registrada"
     municipio = extrair_municipio_do_texto(texto, uf)
     if municipio is None:
         return False, f"não foi possível identificar qual município de {uf} o texto descreve — abstenção registrada"
@@ -623,7 +628,7 @@ def aplicar_resposta(uf, texto, numero, data, url, hoje):
         return False, f"{municipio['nome']}/{uf} já tem esse evento registrado (mesma data e causa) — não duplicar"
 
     atos["eventos"].append({
-        "nome": municipio["nome"], "uf": uf, "data": data or hoje, "causa": causa,
+        "nome": municipio["nome"], "uf": uf, "data": data, "causa": causa,
         "decreto": f"ato de resposta — {numero}" if numero else "situação de emergência (número não localizado no texto)",
         "danos": "não extraído automaticamente — ver fonte",
         "fonte": f"classificado automaticamente ({hoje}) a partir de {url}",
@@ -931,6 +936,8 @@ def self_test():
                                 "fonte_provavel_oficial": False}, "2026-10-09") == STATUS_RESPOSTA_SEM_FONTE
     assert encaminhar_pendente({"url": "https://x.ce.gov.br/d.pdf", "alvo": "B-capital/CE",
                                 "fonte_provavel_oficial": True}, "2026-10-09") is None
+    assert aplicar_resposta("PB", "", None, "2026", "u", "15/10/2026")[0] is False, \
+        "ato sem data completa não entra no mapa (ano solto barrou a publicação em 15/10)"
     import inspect as _i2
     assert '"url": url' in _i2.getsource(aplicar_resposta), (
         "o evento de resposta leva a URL da fonte: verificar_resposta.py (g) exige url ou hash")
