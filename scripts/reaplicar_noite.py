@@ -1,29 +1,24 @@
 #!/usr/bin/env python3
-"""Reaplica o trabalho que a noite perdeu — pela porta de cada arquivo (08/10/2026, A2-19).
+"""Reaplica o trabalho que a noite perdeu (08/10/2026, A2-19; pela união do resolvedor desde 15/10).
 
 Quando o push de um elo falha, o `_coletor.yml` sobe o que ele coletou como artefato
-`coleta-perdida-<elo>-<run>` e sai. Até aqui nada reaplicava aquilo: os seis artefatos da noite de
-07→08/10 (18 MB cada: diários com 2h23 de coleta, uma descoberta, um juiz e dois sinais) ficaram
-no GitHub, e a guarda, contando run `failure` como "trabalhou", impediu que alguém refizesse a
-coleta. Catorze dias depois eles expiram.
+`coleta-perdida-<elo>-<run>`, com o manifesto da perda (`data/coleta_perdida.json`: a base do elo
+e os arquivos que ele alterou). O elo seguinte reaplica, antes de coletar.
 
-POR QUE NÃO É `git checkout` do artefato
-    O artefato traz `data/` inteiro como estava no runner. Copiar por cima apagaria o que a `main`
-    recebeu depois. Cada arquivo entra pela SUA porta:
+TRÊS VIAS, A MESMA UNIÃO DO REBASE
+    Para cada arquivo que o elo alterou: base = o arquivo no commit de onde o elo partiu; nosso = a
+    árvore (que andou); deles = o artefato. Árvore igual à base → copia o do artefato; senão a
+    união é `unir_conflito_de_rodada.unir_e_gravar` — a mesma do conflito de rebase, classe por
+    classe (log, fila, contador, índice, livro). O que o resolvedor recusa sai nomeado. Derivado
+    não se copia: a cadeia o regera. Até 15/10 este arquivo tinha portas próprias (união de linhas,
+    contador pelo maior, união por chave, dono único) que repetiam o resolvedor com outra regra, e
+    recusavam o livro de fontes que o resolvedor já sabia unir.
 
-      · `data/pistas_*.json`      → `pistas.sincronizar` (a porta da fila; idempotente)
-      · `data/log_buscas/*.jsonl` → união pela base comum, linha a linha
-      · log e painel em JSON      → `unir_conflito_de_rodada.unir_log` (carimbo vence pelo maior)
-      · `data/funil/*.json`       → união de contadores
-      · `data/evidencias.json`    → união por `sha256`, SÓ para item cujo arquivo exista em
-                                    `evidencias/` — índice que cita arquivo ausente mente
-      · `data/noite/<n>/<elo>.feito` → cópia
-      · o resto                   → NÃO reaplica, e sai nomeado no relatório
+    `data/evidencias.json` tem uma regra a mais: o artefato não leva `evidencias/`, então entrada
+    nova cujo arquivo não está na árvore fica fora — índice que cita arquivo ausente mente.
 
 MARCADOR
-    Cada artefato reaplicado deixa `data/noite/<noite>/<elo>.reaplicado` com o `run_id`. Sem isso,
-    o elo seguinte reaplica os mesmos artefatos a cada noite — foi o defeito do `--reaplicar` do
-    PR #572.
+    Cada artefato reaplicado deixa `data/noite/<noite>/<elo>.reaplicado` com o `run_id`.
 
 USO
     python3 scripts/reaplicar_noite.py --noite 2026-10-08 --conferir
@@ -60,170 +55,47 @@ def elo_e_run(nome_do_artefato: str) -> tuple:
     return (elo, numero)
 
 
-def porta_de(caminho: str) -> str:
-    """Por qual porta este arquivo do artefato entra. Função pura.
-
-    "fila" · "jsonl" · "log" · "contador" · "evidencias" · "feito" · "" (não reaplica).
-    """
-    c = str(caminho or "").replace("\\", "/")
-    if c.startswith("data/pistas_") and c.endswith(".json"):
-        return "" if c == "data/pistas_rejeitadas.json" else "fila"
-    if c.startswith("data/log_buscas/") and c.endswith(".jsonl"):
-        return "jsonl"
-    if c in ("data/log_buscas.json", "data/historico_mudancas.json",
-             "data/saude_pipeline.json", "data/painel_da_noite.json"):
-        return "log"
-    if c.startswith("data/funil/") and c.endswith(".json"):
-        return "contador"
-    if c == "data/evidencias.json":
-        return "evidencias"
-    if c.startswith("data/noite/") and c.endswith(".feito"):
-        return "feito"
-    return ""
-
-
 MANIFESTO_DA_PERDA = "data/coleta_perdida.json"
-# Função de outro dado: a cadeia canônica os regera, e copiá-los do artefato seria trazer um derivado
-# velho por cima do novo.
-NAO_COPIAR = ("docs/MANIFEST_SHA256.txt", "docs/SAUDE_PIPELINE.md", "data/pistas_revisao.json",
-              "data/log_buscas_resumo.json", "data/municipios_card.json", MANIFESTO_DA_PERDA)
 
 
-def decidir_dono_unico(rel: str, alterados, da_arvore, da_base, do_artefato) -> str:
-    """O que fazer com um arquivo SEM porta própria que o elo perdido alterou (F45). Função pura.
+def reaplicar_arquivo(rel: str, alterados, base, arvore, artefato, destino, existe=None) -> str:
+    """Reaplica UM arquivo do artefato em `destino`, por três vias. Devolve o que fez.
 
-    12/10/2026 (F45): a reaplicação só conhecia fila, log, contador, evidências e marcador; todo o
-    resto do artefato era ignorado, e o artefato era marcado `.reaplicado` — perda silenciosa. Na
-    noite 11→12 a rotina semanal de sinais coletou clima municipal, enquadramento federal e
-    cobertura do Querido Diário, perdeu o commit pelo F44, e a reaplicação das 07:36 trouxe só as
-    pistas e os logs. Regra de três vias, sem adivinhar:
-      · o elo não alterou o arquivo, ou ele é derivado                        → "fora";
-      · a árvore está como na base do elo (ninguém mexeu depois)              → "copiar";
-      · a árvore já é igual ao artefato                                        → "igual";
-      · a árvore mudou desde a base (outro escritor)                          → "recusa: …".
-    `da_base` None quando a base não está no histórico: recusa, nomeada.
-    """
-    if rel in NAO_COPIAR or rel not in set(alterados or ()):
+    "fora" (o elo não o alterou, ou é derivado) · "igual" · "copiado" · a descrição da união ·
+    "recusa: …". `base`, `arvore`, `artefato` em texto (None = ausente). `existe(caminho)` filtra o
+    índice de evidências."""
+    import unir_conflito_de_rodada as u
+    if (rel == MANIFESTO_DA_PERDA or rel not in set(alterados or ()) or u.e_regeneravel(rel)
+            or rel in u.DERIVADOS_COM_GERADOR):
         return "fora"
-    if da_arvore == do_artefato:
+    if arvore == artefato:
         return "igual"
-    if da_arvore is None and da_base is None:
-        return "copiar"                  # arquivo novo do elo, que ninguém criou depois
-    if da_base is None:
+    if arvore == base:
+        pathlib.Path(destino).parent.mkdir(parents=True, exist_ok=True)
+        u._escrever(destino, artefato)
+        feito = "copiado"
+    elif base is None:
         return "recusa: a base do elo não está no histórico desta árvore"
-    if da_arvore == da_base:
-        return "copiar"
-    return "recusa: o arquivo mudou na árvore depois da base do elo — dois escritores"
+    else:
+        try:
+            feito = u.unir_e_gravar(rel, base, arvore, artefato, destino)
+        except (u.Recusa, ValueError) as e:
+            return f"recusa: {e}"
+    if rel == "data/evidencias.json" and existe:
+        doc = json.loads(pathlib.Path(destino).read_text(encoding="utf-8"))
+        ja = (json.loads(arvore) if arvore else {}).get("itens") or {}
+        doc["itens"] = {k: v for k, v in (doc.get("itens") or {}).items()
+                        if k in ja or existe(str((v or {}).get("arquivo") or ""))}
+        u.gravar_no_formato_do_produtor(destino, doc)
+    return feito
 
 
 def _na_base(base: str, rel: str):
     """Conteúdo de `rel` no commit `base`, ou None (sem a base ou sem o arquivo). Só lê."""
-    import subprocess
     if not base:
         return None
     r = subprocess.run(["git", "show", f"{base}:{rel}"], cwd=RAIZ, capture_output=True)
-    return r.stdout if r.returncode == 0 else None
-
-
-def unir_por_sha(da_arvore: dict, do_artefato: dict, existe) -> tuple:
-    """União do índice de evidências (`itens`, por sha256), só para arquivo que EXISTE. Função pura.
-
-    `existe(caminho)` é injetado: o índice que cita arquivo ausente mente. A árvore vence no que já
-    tem. Devolve (união, quantos_entraram, quantos_sem_arquivo). F55 (14/10/2026): lia a lista
-    `evidencias`, que está vazia — o índice vive em `itens` —, e nenhuma entrada voltava."""
-    uniao, novos, sem_arquivo = dict(da_arvore or {}), 0, 0
-    for k, item in (do_artefato or {}).items():
-        if k in uniao:
-            continue
-        if not existe(str((item or {}).get("arquivo") or "")):
-            sem_arquivo += 1
-            continue
-        uniao[k] = item
-        novos += 1
-    return uniao, novos, sem_arquivo
-
-
-def unir_linhas(da_arvore: list, do_artefato: list) -> list:
-    """Linhas de `.jsonl` pela base comum: prefixo comum + o que cada lado acrescentou. Pura."""
-    a = list(da_arvore or [])
-    b = list(do_artefato or [])
-    n = 0
-    for x, y in zip(a, b):
-        if x != y:
-            break
-        n += 1
-    uniao = a[:n] + a[n:] + b[n:]
-    assert len(uniao) >= max(len(a), len(b)), "união menor que um dos lados"
-    return uniao
-
-
-def nome_da_fila_de(caminho: str) -> str:
-    """O nome que a porta da fila espera: `pistas_imprensa.json`, com extensao. Funcao pura."""
-    return pathlib.Path(str(caminho or "")).name
-
-
-# Arquivos de log cuja identidade por item é conhecida: a união é por CHAVE, não por prefixo.
-# Fora desta lista vale a regra estrita (prefixo comum), que é a do resolvedor.
-CHAVE_POR_ITEM = {
-    "data/painel_da_noite.json": ("noites", ("elo", "noite", "inicio")),
-    "data/saude_pipeline.json": ("execucoes", ("data", "script", "inicio")),
-    # Cada evento tem `id` proprio (hash do conteudo), entao a identidade e exata: a arvore tinha
-    # 1.985 eventos e o artefato dos diarios 2.057 -- 72 que o push perdeu e que ninguem reporia.
-    "data/historico_mudancas.json": ("eventos", ("id",)),
-}
-
-
-def unir_contadores_pelo_maior(da_arvore: dict, do_artefato: dict) -> dict:
-    """Contador do dia: o maior por campo, em profundidade. Função pura.
-
-    Devolve o documento unido. Levanta `ValueError` quando um campo que não é número divirja —
-    isso não é contagem, e adivinhar ali seria inventar.
-    """
-    def juntar(a, b, caminho=""):
-        if isinstance(a, dict) and isinstance(b, dict):
-            fora = dict(a)
-            for k in sorted(set(a) | set(b)):
-                if k not in a:
-                    fora[k] = b[k]
-                elif k in b:
-                    fora[k] = juntar(a[k], b[k], f"{caminho}.{k}" if caminho else k)
-            return fora
-        if isinstance(a, bool) or isinstance(b, bool):
-            if a != b:
-                raise ValueError(f"{caminho}: booleano divergente ({a} vs {b})")
-            return a
-        if isinstance(a, (int, float)) and isinstance(b, (int, float)):
-            return max(a, b)
-        if a == b:
-            return a
-        # Carimbo de tempo vence pelo maior; qualquer outro texto divergente é recusa.
-        if caminho.split(".")[-1] in ("atualizado_em", "gerado_em"):
-            return max(str(a), str(b))
-        raise ValueError(f"{caminho}: campo que não é contagem divergiu ({a!r} vs {b!r})")
-
-    return juntar(dict(da_arvore or {}), dict(do_artefato or {}))
-
-
-def unir_por_chave(da_arvore: list, do_artefato: list, campos: tuple) -> list:
-    """Um item por chave, os dois lados preservados, ordem cronológica estável. Função pura."""
-    def k(item):
-        return tuple(str((item or {}).get(c) or "") for c in campos)
-
-    por_chave, ordem = {}, []
-    for item in list(da_arvore or []) + list(do_artefato or []):
-        chave = k(item)
-        if chave in por_chave:
-            for campo, valor in (item or {}).items():
-                if campo not in por_chave[chave] or por_chave[chave][campo] in (None, "", [], {}):
-                    por_chave[chave][campo] = valor
-            continue
-        por_chave[chave] = dict(item or {})
-        ordem.append(chave)
-    fora = [por_chave[c] for c in ordem]
-    assert len(fora) >= max(len(da_arvore or []), len(do_artefato or [])) - len(
-        set(k(x) for x in (da_arvore or [])) & set(k(x) for x in (do_artefato or []))), \
-        "a união por chave encolheu mais do que a interseção"
-    return fora
+    return r.stdout.decode("utf-8") if r.returncode == 0 else None
 
 
 def caminho_do_reaplicado(noite: str, elo: str) -> str:
@@ -308,7 +180,6 @@ def main(argv: list) -> int:
         if not arquivos:
             recusados.append(f"{a['nome']}: não baixou (artefato expirado ou acesso recusado)")
             continue
-        n_portas = {}
         perda = {}
         _m = destino / MANIFESTO_DA_PERDA
         if _m.exists():
@@ -316,32 +187,20 @@ def main(argv: list) -> int:
                 perda = json.loads(_m.read_text(encoding="utf-8"))
             except ValueError:
                 perda = {}
+        n_portas = {}
         for q in arquivos:
             rel = str(q.relative_to(destino)).replace("\\", "/")
-            porta = porta_de(rel)
-            if not porta and perda:
-                # F45: arquivo de dono único que o elo alterou entra pela regra de três vias.
-                arv = (RAIZ / rel).read_bytes() if (RAIZ / rel).exists() else None
-                dec = decidir_dono_unico(rel, perda.get("alterados"), arv,
-                                         _na_base(perda.get("base", ""), rel), q.read_bytes())
-                n_portas["dono_unico:" + dec.split(":")[0]] = \
-                    n_portas.get("dono_unico:" + dec.split(":")[0], 0) + 1
-                if dec == "copiar":
-                    import os
-                    alvo = RAIZ / rel
-                    alvo.parent.mkdir(parents=True, exist_ok=True)
-                    tmp = alvo.with_name(f"{alvo.name}.tmp{os.getpid()}")
-                    tmp.write_bytes(q.read_bytes())
-                    os.replace(tmp, alvo)            # §229: troca atômica
-                elif dec.startswith("recusa"):
-                    recusados.append(f"{a['nome']} → {rel}: {dec}")
+            arv = (RAIZ / rel).read_text(encoding="utf-8") if (RAIZ / rel).exists() else None
+            try:
+                art = q.read_text(encoding="utf-8")
+            except UnicodeDecodeError:
                 continue
-            n_portas[porta or "(não reaplica)"] = n_portas.get(porta or "(não reaplica)", 0) + 1
-            if not porta:
-                continue
-            aplicado = _aplicar_um(rel, q, porta)
-            if aplicado is False:
-                recusados.append(f"{a['nome']} → {rel}: a porta recusou")
+            feito = reaplicar_arquivo(rel, perda.get("alterados"), _na_base(perda.get("base", ""), rel),
+                                      arv, art, RAIZ / rel, lambda c: bool(c) and (RAIZ / c).exists())
+            classe = feito.split(":")[0] if feito.startswith("recusa") else feito.split(" ")[0]
+            n_portas[classe] = n_portas.get(classe, 0) + 1
+            if feito.startswith("recusa"):
+                recusados.append(f"{a['nome']} → {rel}: {feito}")
         print(f"     portas: " + ", ".join(f"{k}={v}" for k, v in sorted(n_portas.items())))
         marcador.parent.mkdir(parents=True, exist_ok=True)
         # §229: todo JSON de `data/` passa pela porta atomica — escrita direta deixa arquivo
@@ -359,125 +218,13 @@ def main(argv: list) -> int:
     return 0
 
 
-def _aplicar_um(rel: str, origem: pathlib.Path, porta: str):
-    """Aplica UM arquivo pela porta dele. ESCREVE. Devolve True/False/None."""
-    destino = RAIZ / rel
-    try:
-        if porta == "fila":
-            from pistas import sincronizar
-            doc = json.loads(origem.read_text(encoding="utf-8"))
-            # 09/10/2026: a reaplicacao passava "reaplicacao da noite" como ORIGEM da pista, e isso
-            # nao existe em `schemas/pista.json`: as duas pistas reaplicadas hoje entraram fora do
-            # esquema e o portao ia quarentena-las — a reaplicacao desfazendo o proprio trabalho.
-            # A origem e da PISTA, e ela ja vem no artefato, posta pelo coletor que a achou. O que
-            # a reaplicacao acrescenta e um RASTRO, em campo proprio, que nao disputa com a origem.
-            pistas = []
-            for bruta in (doc.get("pistas") or []):
-                if isinstance(bruta, dict):
-                    bruta = dict(bruta)
-                    bruta.setdefault("reaplicada_em", "reaplicacao da noite")
-                pistas.append(bruta)
-            sincronizar(nome_da_fila_de(rel), {"pistas": pistas})
-            return True
-        if porta == "jsonl":
-            a = destino.read_text(encoding="utf-8").splitlines() if destino.exists() else []
-            b = origem.read_text(encoding="utf-8").splitlines()
-            destino.parent.mkdir(parents=True, exist_ok=True)
-            destino.write_text("\n".join(unir_linhas(a, b)) + "\n",
-                               encoding="utf-8", newline="\n")
-            return True
-        if porta in ("log", "contador"):
-            from coletores_base import gravar_em
-            from unir_conflito_de_rodada import unir_log
-            do_artefato = origem.read_text(encoding="utf-8")
-            if not destino.exists():
-                # Arquivo que nem existe na árvore: o do artefato É o estado, e copiar é a união.
-                destino.parent.mkdir(parents=True, exist_ok=True)
-                gravar_em(destino, json.loads(do_artefato))
-                return True
-            da_arvore = destino.read_text(encoding="utf-8")
-            if da_arvore == do_artefato:
-                return None                      # nada a fazer, e dizer isso não é recusa
-            if rel == "data/painel_da_noite.json":
-                # F44 (12/10/2026): por chave (elo, noite, inicio) duas execuções do mesmo minuto
-                # viravam uma. O painel une por linha inteira, em multiconjunto.
-                from painel_da_noite import unir_paineis
-                doc = json.loads(da_arvore)
-                novo_doc = json.loads(do_artefato)
-                antes = len(doc.get("noites") or [])
-                doc["noites"] = unir_paineis(doc.get("noites") or [], novo_doc.get("noites") or [])
-                gravar_em(destino, doc)
-                print(f"     {rel}: {antes} → {len(doc['noites'])} (união do painel)")
-                return True
-            if rel in CHAVE_POR_ITEM:
-                campo, campos = CHAVE_POR_ITEM[rel]
-                doc = json.loads(da_arvore)
-                novo_doc = json.loads(do_artefato)
-                antes = len(doc.get(campo) or [])
-                juntos = unir_por_chave(doc.get(campo) or [], novo_doc.get(campo) or [], campos)
-                doc[campo] = juntos
-                gravar_em(destino, doc)
-                print(f"     {rel}: {antes} + {len(novo_doc.get(campo) or [])} → {len(juntos)} "
-                      f"(união por chave {campos})")
-                return True
-            # A BASE é o lado do artefato: o elo partiu dele, coletou e não conseguiu empurrar.
-            # Então "nosso" é a árvore (que andou) e "deles" é o artefato (o que se perdeu).
-            if porta == "contador":
-                # O maior por campo, não a soma: ver `unir_contadores_pelo_maior`.
-                fundido = unir_contadores_pelo_maior(json.loads(da_arvore),
-                                                     json.loads(do_artefato))
-            else:
-                fundido, *_ = unir_log(rel, _chave_de(rel), do_artefato, da_arvore, do_artefato)
-            gravar_em(destino, fundido)
-            return True
-        if porta == "evidencias":
-            doc = json.loads(destino.read_text(encoding="utf-8")) if destino.exists() else {}
-            novo = json.loads(origem.read_text(encoding="utf-8"))
-            uniao, n, sem = unir_por_sha(doc.get("itens"), novo.get("itens"),
-                                         lambda c: bool(c) and (RAIZ / c).exists())
-            doc["itens"] = uniao
-            from coletores_base import gravar_em
-            gravar_em(destino, doc)
-            print(f"     evidencias: +{n} no índice, {sem} sem arquivo preservado (fora)")
-            return True
-        if porta == "feito":
-            destino.parent.mkdir(parents=True, exist_ok=True)
-            destino.write_text(origem.read_text(encoding="utf-8"), encoding="utf-8", newline="\n")
-            return True
-    except Exception as erro:            # a recusa é dado: sai nomeada no relatório
-        print(f"     ⚠ {rel}: {type(erro).__name__}: {str(erro)[:120]}")
-        return False
-    return None
-
-
-def _chave_de(rel: str) -> str:
-    """A lista que só cresce dentro daquele JSON. Função pura."""
-    return {"data/log_buscas.json": "execucoes",
-            "data/historico_mudancas.json": "eventos",
-            "data/saude_pipeline.json": "execucoes",
-            "data/painel_da_noite.json": "noites"}.get(rel, "execucoes")
-
-
 def _autoteste() -> int:
+    import tempfile
     casos = []
 
     def ok(nome, cond):
         casos.append((nome, bool(cond)))
 
-    # F45 (12/10/2026): arquivo de dono único que o elo perdido alterou
-    _alt = ["data/enquadramento_federal.json", "docs/MANIFEST_SHA256.txt"]
-    ok("F45: árvore como na base → copia o do artefato",
-       decidir_dono_unico("data/enquadramento_federal.json", _alt, b"v1", b"v1", b"v2") == "copiar")
-    ok("F45: outro escritor mexeu depois → recusa nomeada",
-       decidir_dono_unico("data/enquadramento_federal.json", _alt, b"v3", b"v1", b"v2").startswith("recusa"))
-    ok("F45: sem a base no histórico → recusa nomeada",
-       decidir_dono_unico("data/enquadramento_federal.json", _alt, b"v1", None, b"v2").startswith("recusa"))
-    ok("F45: arquivo que o elo não alterou fica fora",
-       decidir_dono_unico("data/x.json", _alt, b"v1", b"v1", b"v2") == "fora")
-    ok("F45: derivado nunca é copiado do artefato",
-       decidir_dono_unico("docs/MANIFEST_SHA256.txt", _alt, b"a", b"a", b"b") == "fora")
-    ok("F45: arquivo novo do elo entra", decidir_dono_unico("data/novo.json", ["data/novo.json"],
-                                                          None, None, b"x") == "copiar")
     ok("elo e run saem do nome", elo_e_run("coleta-perdida-diarios-37711273308")
        == ("diarios", "37711273308"))
     ok("elo com hífen não se parte", elo_e_run("coleta-perdida-sinais-fisicos-37711285165")
@@ -485,81 +232,46 @@ def _autoteste() -> int:
     ok("nome fora do padrão devolve vazio", elo_e_run("saida-diarios-2026-10-08") == ("", ""))
     ok("run que não é número devolve vazio", elo_e_run("coleta-perdida-diarios-abc") == ("", ""))
     ok("nome nulo não quebra", elo_e_run(None) == ("", ""))
-
-    ok("fila de pista entra pela porta da fila", porta_de("data/pistas_imprensa.json") == "fila")
-    ok("recusas NÃO se reaplicam", porta_de("data/pistas_rejeitadas.json") == "")
-    ok("log mensal é jsonl", porta_de("data/log_buscas/2026-10.jsonl") == "jsonl")
-    ok("painel e saúde são log", porta_de("data/painel_da_noite.json") == "log"
-       and porta_de("data/saude_pipeline.json") == "log")
-    ok("funil é contador", porta_de("data/funil/2026-10-08.json") == "contador")
-    ok("índice de evidências tem porta própria",
-       porta_de("data/evidencias.json") == "evidencias")
-    ok("marcador de trabalho se copia", porta_de("data/noite/2026-10-08/diarios.feito") == "feito")
-    ok("o resto não se reaplica", porta_de("data/municipios.json") == ""
-       and porta_de("docs/MANIFEST_SHA256.txt") == "")
-
-    uniao, n, sem = unir_por_sha(
-        {"a": {"arquivo": "evidencias/a.pdf"}},
-        {"b": {"arquivo": "evidencias/b.pdf"}, "c": {"arquivo": "evidencias/sumiu.pdf"}},
-        lambda c: c != "evidencias/sumiu.pdf")
-    ok("F55: evidência com arquivo entra no índice `itens`", n == 1 and len(uniao) == 2)
-    ok("evidência sem arquivo fica fora — índice não mente", sem == 1)
-    ok("evidência repetida por sha não duplica",
-       unir_por_sha({"a": {"x": 1}}, {"a": {"x": 2}}, lambda c: True)[0] == {"a": {"x": 1}})
-
-    ok("linhas unem pela base comum",
-       unir_linhas(["1", "2", "3"], ["1", "2", "4"]) == ["1", "2", "3", "4"])
-    ok("a união de linhas nunca encolhe",
-       len(unir_linhas(["1", "2"], ["1", "2", "3", "4"])) >= 4)
-    ok("lado vazio não quebra", unir_linhas([], ["1"]) == ["1"])
-    # 08/10/2026: a primeira versao passava `Path(rel).stem` para a porta da fila, e a porta
-    # gravou `data/pistas_imprensa` SEM extensao -- arquivo novo, invisivel para todo portao e
-    # para todo leitor. O mesmo defeito estava em `consolidar_noite.py`, e os avisos de "caminho
-    # sem escritor declarado: data/pistas_imprensa" das rodadas de 07/10 eram ele.
-    ok("o nome da fila leva a extensao, nao o radical",
-       nome_da_fila_de("data/pistas_imprensa.json") == "pistas_imprensa.json")
-    ok("o radical sozinho nao serve de nome de fila",
-       nome_da_fila_de("data/pistas_doe.json").endswith(".json"))
-    ok("contador do dia une pelo maior por campo",
-       unir_contadores_pelo_maior({"etapas": {"a": {"n": 0}}, "data": "2026-10-08"},
-                                  {"etapas": {"a": {"n": 11}}, "data": "2026-10-08"})
-       == {"etapas": {"a": {"n": 11}}, "data": "2026-10-08"})
-    ok("campo que só um lado tem entra",
-       unir_contadores_pelo_maior({"etapas": {"a": 1}}, {"etapas": {"b": 2}})
-       == {"etapas": {"a": 1, "b": 2}})
-    ok("carimbo vence pelo maior",
-       unir_contadores_pelo_maior({"atualizado_em": "2026-10-08T03:00"},
-                                  {"atualizado_em": "2026-10-08T12:00"})["atualizado_em"]
-       == "2026-10-08T12:00")
-    try:
-        unir_contadores_pelo_maior({"data": "2026-10-08"}, {"data": "2026-10-07"})
-        ok("campo que não é contagem divergente RECUSA", False)
-    except ValueError:
-        ok("campo que não é contagem divergente RECUSA", True)
-    ok("união por chave preserva os dois lados",
-       len(unir_por_chave([{"elo": "juiz", "noite": "n", "inicio": "01:00"}],
-                          [{"elo": "diarios", "noite": "n", "inicio": "01:09"}],
-                          ("elo", "noite", "inicio"))) == 2)
-    ok("item repetido por chave não duplica",
-       len(unir_por_chave([{"elo": "juiz", "noite": "n", "inicio": "01:00"}],
-                          [{"elo": "juiz", "noite": "n", "inicio": "01:00", "x": 1}],
-                          ("elo", "noite", "inicio"))) == 1)
-    ok("a união por chave preenche campo que faltava",
-       unir_por_chave([{"elo": "juiz", "noite": "n", "inicio": "01:00"}],
-                      [{"elo": "juiz", "noite": "n", "inicio": "01:00", "trabalhou": True}],
-                      ("elo", "noite", "inicio"))[0].get("trabalhou") is True)
-    ok("os dois arquivos de log por chave estão declarados",
-       set(CHAVE_POR_ITEM) == {"data/painel_da_noite.json", "data/saude_pipeline.json",
-                               "data/historico_mudancas.json"})
     ok("o marcador tem caminho previsível",
        caminho_do_reaplicado("2026-10-08", "diarios") == "data/noite/2026-10-08/diarios.reaplicado")
 
-    import dis
-    nomes = set()
-    for fn in (elo_e_run, porta_de, unir_por_sha, unir_linhas, caminho_do_reaplicado):
-        nomes |= {i.argval for i in dis.get_instructions(fn.__code__) if isinstance(i.argval, str)}
-    ok("trava estrutural: as funções puras não leem disco, não escrevem e não vão à rede",
-       not ({"read_text", "write_text", "open", "urlopen", "exists", "subprocess"} & nomes))
+    with tempfile.TemporaryDirectory() as t:
+        d = pathlib.Path(t) / "x"
+
+        def r(rel, alt, base, arv, art, existe=None):
+            return reaplicar_arquivo(rel, alt, base, arv, art, d, existe)
+
+        def lido():
+            return d.read_text(encoding="utf-8")
+
+        ok("arquivo que o elo não alterou fica fora", r("data/x.json", [], "1", "1", "2") == "fora")
+        ok("derivado nunca vem do artefato",
+           r("docs/MANIFEST_SHA256.txt", ["docs/MANIFEST_SHA256.txt"], "a", "a", "b") == "fora")
+        ok("F45: árvore como na base → copia o do artefato",
+           r("data/clima.json", ["data/clima.json"], "v1", "v1", "v2") == "copiado" and lido() == "v2")
+        ok("arquivo novo do elo entra", r("data/novo.json", ["data/novo.json"], None, None, "n") == "copiado")
+        ok("F45: outro escritor sem classe de união → recusa nomeada",
+           r("data/clima.json", ["data/clima.json"], "v1", "v3", "v2").startswith("recusa"))
+        ok("sem a base no histórico → recusa nomeada",
+           r("data/log_buscas/2026-10.jsonl", ["data/log_buscas/2026-10.jsonl"], None, "a\n", "b\n")
+           .startswith("recusa"))
+        ok("log mensal une pela base comum (a do resolvedor)",
+           not r("data/log_buscas/2026-10.jsonl", ["data/log_buscas/2026-10.jsonl"],
+                 "a\n", "a\nb\n", "a\nc\n").startswith("recusa")
+           and sorted(lido().split()) == ["a", "b", "c"])
+        livro = lambda *f: json.dumps({"municipios": {"1": {"nivel_verificacao": "nacional",
+                                       "ultima_verificacao": "2026-10-15", "fontes": [
+                                           {"fonte": x, "data": "2026-10-15"} for x in f]}}})
+        r("data/fontes_consultadas.json", ["data/fontes_consultadas.json"],
+          livro("DOU"), livro("DOU", "Busca web"), livro("DOU", "QD"))
+        ok("F58: o livro de fontes volta com as consultas dos dois lados",
+           sorted(x["fonte"] for x in json.loads(lido())["municipios"]["1"]["fontes"])
+           == ["Busca web", "DOU", "QD"])
+        ev = lambda **i: json.dumps({"itens": {k: {"arquivo": v} for k, v in i.items()}})
+        r("data/evidencias.json", ["data/evidencias.json"], ev(a="e/a"), ev(a="e/a", b="e/b"),
+          ev(a="e/a", c="e/c", z="e/sumiu"), existe=lambda c: c != "e/sumiu")
+        ok("F55: evidência nova entra; sem arquivo preservado fica fora — índice não mente",
+           sorted(json.loads(lido())["itens"]) == ["a", "b", "c"])
 
     ruins = [n for n, bom in casos if not bom]
     for n, bom in casos:
@@ -567,7 +279,7 @@ def _autoteste() -> int:
     if ruins:
         print(f"✗ AUTOTESTE: {len(ruins)} caso(s) reprovado(s).")
         return 1
-    print(f"✓ AUTOTESTE OK — {len(casos)} casos, sem rede e sem escrita.")
+    print(f"✓ AUTOTESTE OK — {len(casos)} casos, sem rede.")
     return 0
 
 

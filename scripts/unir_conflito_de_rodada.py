@@ -508,94 +508,72 @@ def unir_log(caminho, chave, base_txt, nosso_txt, deles_txt):
     return fundido, len(ln), len(ld), len(uniao)
 
 
-def resolver(repo=None, escrever=True):
+def _escrever(destino, texto) -> None:
+    pathlib.Path(destino).write_text(texto, encoding="utf-8", newline="\n")
+
+
+def _json_indentado(doc) -> str:
+    # Indentado, como `coletores_base.gravar` grava fila e contador: o diff do robô continua legível.
+    return json.dumps(doc, ensure_ascii=False, indent=1) + "\n"
+
+
+def unir_e_gravar(norm, base_txt, nosso_txt, deles_txt, destino) -> str:
+    """Une `norm` pela base comum e grava em `destino`; devolve o que fez. Levanta `Recusa`.
+
+    15/10/2026: a MESMA união serve ao conflito de rebase (`resolver`) e à reaplicação da coleta
+    perdida (`scripts/reaplicar_noite.py`, base = a do elo, nosso = árvore, deles = artefato)."""
+    if norm in LOGS_QUE_SO_CRESCEM:
+        doc, a, b, t = unir_log(norm, LOGS_QUE_SO_CRESCEM[norm], base_txt, nosso_txt, deles_txt)
+        gravar_no_formato_do_produtor(destino, doc)
+        return f"{a} + {b} → {t} (união pela base comum)"
+    if e_contador_que_so_cresce(norm):
+        doc, a, b, t = unir_contadores(norm, base_txt, nosso_txt, deles_txt)
+        _escrever(destino, _json_indentado(doc))
+        return f"{a} + {b} etapa(s), {t} contagem(ns) somada(s) (união pela base comum)"
+    if e_jsonl_que_so_cresce(norm):
+        texto, a, b, t = unir_jsonl(norm, base_txt, nosso_txt, deles_txt)
+        _escrever(destino, texto)
+        return f"{a} + {b} → {t} linha(s) (união pela base comum)"
+    if norm in FILAS_DE_PISTA:
+        doc, a, b, t, m = unir_fila_de_pistas(norm, base_txt, nosso_txt, deles_txt)
+        _escrever(destino, _json_indentado(doc))
+        return (f"{a} + {b} → {t} pista(s), {m} mesclada(s) "
+                f"(união pela base comum, política de scripts/pistas.py)")
+    if norm in INDICES_POR_CHAVE:
+        doc, a, b, t = unir_indice(norm, base_txt, nosso_txt, deles_txt)
+        gravar_no_formato_do_produtor(destino, doc)
+        return f"{a} + {b} → {t} entrada(s) (união pela base comum)"
+    if e_regeneravel(norm):
+        if nosso_txt is None:
+            raise Recusa("o lado de cima não tem o arquivo")
+        _escrever(destino, nosso_txt)
+        return "versão de cima (derivado, será regenerado)"
+    raise Recusa("caminho sem resolução conhecida; a política de mesclagem dele não está decidida")
+
+
+def resolver(repo=None):
     """Resolve o que sabe. Devolve (resolvidos, regenerar, recusados)."""
     raiz = pathlib.Path(repo or RAIZ)
     resolvidos, regenerar, recusados, adiados = [], [], [], []
 
     for caminho in em_conflito(repo=repo):
         norm = caminho.replace("\\", "/")
+        if norm in DERIVADOS_COM_GERADOR:
+            adiados.append(norm)
+            continue
         try:
-            if norm in LOGS_QUE_SO_CRESCEM:
-                chave = LOGS_QUE_SO_CRESCEM[norm]
-                fundido, a, b, t = unir_log(
-                    norm, chave,
-                    estagio(norm, 1, repo=repo), estagio(norm, 2, repo=repo),
-                    estagio(norm, 3, repo=repo))
-                if escrever:
-                    gravar_no_formato_do_produtor(raiz / norm, fundido)
-                    git("add", "--", norm, repo=repo)
-                resolvidos.append(f"{norm}: {a} + {b} → {t} (união pela base comum)")
-
-            elif e_contador_que_so_cresce(norm):
-                fundido, a, b, t = unir_contadores(
-                    norm,
-                    estagio(norm, 1, repo=repo), estagio(norm, 2, repo=repo),
-                    estagio(norm, 3, repo=repo))
-                if escrever:
-                    (raiz / norm).write_text(
-                        json.dumps(fundido, ensure_ascii=False, indent=1) + "\n",
-                        encoding="utf-8", newline="\n")
-                    git("add", "--", norm, repo=repo)
-                resolvidos.append(f"{norm}: {a} + {b} etapa(s), {t} contagem(ns) somada(s) "
-                                  f"(união pela base comum)")
-
-            elif e_jsonl_que_so_cresce(norm):
-                fundido, a, b, t = unir_jsonl(
-                    norm,
-                    estagio(norm, 1, repo=repo), estagio(norm, 2, repo=repo),
-                    estagio(norm, 3, repo=repo))
-                if escrever:
-                    (raiz / norm).write_text(fundido, encoding="utf-8", newline="\n")
-                    git("add", "--", norm, repo=repo)
-                resolvidos.append(f"{norm}: {a} + {b} → {t} linha(s) (união pela base comum)")
-
-            elif norm in FILAS_DE_PISTA:
-                fundido, a, b, t, m = unir_fila_de_pistas(
-                    norm,
-                    estagio(norm, 1, repo=repo), estagio(norm, 2, repo=repo),
-                    estagio(norm, 3, repo=repo))
-                if escrever:
-                    # Indentado, como `coletores_base.gravar` grava a fila: o diff do robô tem de
-                    # continuar legível, e trocar o formato aqui mudaria o arquivo inteiro.
-                    (raiz / norm).write_text(
-                        json.dumps(fundido, ensure_ascii=False, indent=1) + "\n",
-                        encoding="utf-8", newline="\n")
-                    git("add", "--", norm, repo=repo)
-                resolvidos.append(f"{norm}: {a} + {b} → {t} pista(s), {m} mesclada(s) "
-                                  f"(união pela base comum, política de scripts/pistas.py)")
-
-            elif norm in INDICES_POR_CHAVE:
-                fundido, a, b, t = unir_indice(
-                    norm,
-                    estagio(norm, 1, repo=repo), estagio(norm, 2, repo=repo),
-                    estagio(norm, 3, repo=repo))
-                if escrever:
-                    gravar_no_formato_do_produtor(raiz / norm, fundido)
-                    git("add", "--", norm, repo=repo)
-                resolvidos.append(f"{norm}: {a} + {b} → {t} entrada(s) (união pela base comum)")
-
-            elif norm in DERIVADOS_COM_GERADOR:
-                adiados.append(norm)
-                continue
-
-            elif e_regeneravel(norm):
-                de_cima = estagio(norm, 2, repo=repo)
-                if de_cima is None:
-                    raise Recusa("o lado de cima não tem o arquivo")
-                if escrever:
-                    (raiz / norm).write_text(de_cima, encoding="utf-8", newline="\n")
-                    git("add", "--", norm, repo=repo)
-                resolvidos.append(f"{norm}: versão de cima (derivado, será regenerado)")
-                regenerar.append(norm)
-
-            else:
-                raise Recusa("caminho sem resolução conhecida; a política de mesclagem dele "
-                             "não está decidida")
+            feito = unir_e_gravar(norm, *(estagio(norm, n, repo=repo) for n in (1, 2, 3)),
+                                  raiz / norm)
         except Recusa as e:
             recusados.append(f"{norm}: {e}")
+            continue
         except (json.JSONDecodeError, RuntimeError) as e:
             recusados.append(f"{norm}: {type(e).__name__}: {e}")
+            continue
+        git("add", "--", norm, repo=repo)
+        resolvidos.append(f"{norm}: {feito}")
+        if e_regeneravel(norm):
+            regenerar.append(norm)
 
     # Os derivados com gerador próprio vêm por último: a fonte deles já está unida acima.
     for norm in adiados:
@@ -603,12 +581,11 @@ def resolver(repo=None, escrever=True):
         if any(f"{fonte}:" in r for r in recusados) or fonte in em_conflito(repo=repo):
             recusados.append(f"{norm}: a fonte {fonte} não foi unida; o derivado não se regera")
             continue
-        if escrever:
-            r = subprocess.run([sys.executable, *gerador], cwd=raiz, capture_output=True, text=True)
-            if r.returncode != 0:
-                recusados.append(f"{norm}: o gerador {gerador[0]} falhou (rc={r.returncode})")
-                continue
-            git("add", "--", norm, repo=repo)
+        r = subprocess.run([sys.executable, *gerador], cwd=raiz, capture_output=True, text=True)
+        if r.returncode != 0:
+            recusados.append(f"{norm}: o gerador {gerador[0]} falhou (rc={r.returncode})")
+            continue
+        git("add", "--", norm, repo=repo)
         resolvidos.append(f"{norm}: regerado de {fonte} já unido ({gerador[0]})")
     return resolvidos, regenerar, recusados
 
