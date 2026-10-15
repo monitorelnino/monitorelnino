@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-15 · #PR · Documento sem título começa em maiúscula
+
+A forma de reserva do campo `documento` das promoções do juiz ("ato classificado como …") começava em minúscula, e o portão do documento publicado barrou a publicação desde 07:24 (Cubatão/SP). A forma passa a começar em maiúscula; o registro de Cubatão é corrigido. Onde: `aplicar_promocoes_do_juiz.py`, `data/municipios.json`.
+
 ## 2026-10-15 · #PR · Reaplicação pela união do resolvedor
 
 A reaplicação da coleta perdida tinha portas próprias (linhas, contador pelo maior, união por chave, dono único) que repetiam o resolvedor com outra regra e recusavam o livro de fontes. Passa a usar `unir_e_gravar`, a mesma união do rebase, em três vias: base do elo, árvore, artefato. Consolidação (um resolvedor), −320 linhas. Onde: `reaplicar_noite.py`, `unir_conflito_de_rodada.py`.

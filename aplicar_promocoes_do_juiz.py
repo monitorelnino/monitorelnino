@@ -228,7 +228,7 @@ def documento_do_veredito(v: dict) -> str:
         ano = str(v.get("data") or "")[-4:]
         cauda = f", {ano}" if ano.isdigit() else ""
         return f"Plano de contingência municipal — Prefeitura de {v['municipio']}{cauda}"
-    return f"ato classificado como {v.get('categoria')} pelo juiz automático"
+    return f"Ato classificado como {v.get('categoria')} pelo juiz automático"
 
 
 def autoteste() -> int:
@@ -261,6 +261,11 @@ def autoteste() -> int:
                                                "ATUALIZAÇÃO DO PLANO A efetiva aplicação do "
                                                "Plano de Contingência decorre"}}})
                   == "Plano de contingência municipal — Prefeitura de Celso Ramos, 2022"))
+    # 15/10/2026: a forma sem título começava em minúscula, e `verificar_documento_publicado.py`
+    # barrou a publicação (Cubatão/SP, prova = relatório do BNDES).
+    casos.append(("sem título nem prova de plano: a classificação, começando em maiúscula",
+                  documento_do_veredito({"categoria": "plano_elaboracao", "criterios": {}})[:1]
+                  == "A"))
     sem_dono = lambda _u: None            # noqa: E731 — resolvedor nulo, para as travas puras
     casos.append(("veredito da versão em vigor é aplicável",
                   len(aplicaveis([base], V, resolver=sem_dono)) == 1))
