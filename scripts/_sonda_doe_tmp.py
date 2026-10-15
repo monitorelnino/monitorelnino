@@ -1,59 +1,10 @@
-"""Sonda temporária (ramo diag, não vai à main): rotas dos 19 DOEs sem adaptador, do runner.
-
-Uma requisição por candidato, sem repetição (buscar_uma_vez), 30 s. Imprime uma linha JSON por
-candidato: código, tipo, bytes, título, início, links com cara de edição/PDF/busca, scripts (para
-achar a API de SPA) e, para PDF, páginas e se há texto extraível + contagem dos termos do Legal.
-"""
-import io, json, re, sys, time, urllib.error, urllib.parse
+"""Sonda temporária 2 (ramo diag, não vai à main): confirmar os caminhos apontados pela sonda 1."""
+import io, json, re, sys, time, urllib.error
 sys.path.insert(0, ".")
-from coletores_base import buscar_uma_vez, enviar_uma_vez, UA  # noqa: E402
+from coletores_base import buscar_uma_vez  # noqa: E402
 
-D = "2026-10-14"; DC = "20261014"; DBR = "14/10/2026"
-T = urllib.parse.quote("situação de emergência")
-ROTAS = {
- "AL": ["http://diario.imprensaoficial.al.gov.br",
-        "http://diario.imprensaoficial.al.gov.br/apifront/portal/edicoes/edicoes_from_data/2026-10-14.json",
-        "http://diario.imprensaoficial.al.gov.br/busca/busca/buscar/query/0/di:2026-09-14/df:2026-10-14/?1=1&q=%22situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia%22"],
- "AM": ["https://diario.imprensaoficial.am.gov.br/apifront/portal/edicoes/edicoes_from_data/2026-10-14.json",
-        "https://diario.imprensaoficial.am.gov.br/apifront/portal/edicoes/edicoes_from_data/2026-10-09.json",
-        "https://diario.imprensaoficial.am.gov.br/portal/edicoes"],
- "BA": ["https://dool.egba.ba.gov.br/", "https://dool.egba.ba.gov.br/portal/edicoes/edicoes_from_data/2026-10-14.json",
-        "https://dool.egba.ba.gov.br/apifront/portal/edicoes/edicoes_from_data/2026-10-14.json",
-        "https://www.egba.ba.gov.br/diario-oficial"],
- "CE": [f"http://imagens.seplag.ce.gov.br/PDF/{DC}/do{DC}p01.pdf", f"http://imagens.seplag.ce.gov.br/PDF/{DC}/do{DC}p02.pdf",
-        f"http://imagens.seplag.ce.gov.br/PDF/{DC}/do{DC}p03.pdf", f"http://imagens.seplag.ce.gov.br/PDF/{DC}/do{DC}p04.pdf",
-        f"https://imagens.seplag.ce.gov.br/PDF/{DC}/do{DC}p01.pdf", "https://pesquisa.doe.seplag.ce.gov.br/doepesquisa/",
-        "http://pesquisa.doe.seplag.ce.gov.br/doepesquisa/sead.do?page=ultimasEdicoes&cmd=11&action=Ultimas"],
- "MA": ["https://www.diariooficial.ma.gov.br/", "https://diariooficial.ma.gov.br/public/index.jsf",
-        "https://www.diariooficial.ma.gov.br/public/diario.jsf", "https://diariooficial.ma.gov.br/"],
- "MG": ["https://www.jornalminasgerais.mg.gov.br/", "https://www.jornalminasgerais.mg.gov.br/api/publicacao/ultimas",
-        "https://www.jornalminasgerais.mg.gov.br/edicao-do-dia", "https://www.jornalminasgerais.mg.gov.br/api/edicoes?data=2026-10-14"],
- "MS": ["https://www.spdo.ms.gov.br/diariodoe/", "https://www.spdo.ms.gov.br/diariodoe/Index/Download/DO12299_14_10_2026"],
- "PA": ["https://www.ioepa.com.br/pages/2026/10/14/2026.10.14.DOE.pdf", "https://www.ioepa.com.br/pages/2026/10/14/",
-        "https://www.ioepa.com.br/pesquisa/", "https://www.ioepa.com.br/edicao/", "https://www.ioepa.com.br/diario/"],
- "PB": ["https://auniao.pb.gov.br/servicos/doe/2026/outubro/diario-oficial-14-10-2026-portal.pdf",
-        "https://auniao.pb.gov.br/servicos/doe/2026/outubro"],
- "PE": ["https://diariooficial.cepe.com.br/diariooficialweb/", "https://diariooficial.cepe.com.br/diariooficialweb/api/edicoes",
-        "https://diariooficial.cepe.com.br/diariooficialweb/rest/edicao/ultima", "https://diariooficial.cepe.com.br/diariooficialweb/scripts/app.js"],
- "PI": [f"http://www.diariooficial.pi.gov.br/diarios.php?dia={DC}", f"http://www.diariooficial.pi.gov.br/diario.php?dia={DC}",
-        "http://www.diariooficial.pi.gov.br/diario.php?dia=20261013"],
- "RJ": ["https://www.ioerj.com.br/portal/", "https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php",
-        "https://www.ioerj.com.br/portal/modules/conteudoonline/index.php", "https://doweb.rio.rj.gov.br/"],
- "RN": ["https://www.diariooficial.rn.gov.br", "http://diariooficial.rn.gov.br/dei/dorn3/", "https://diariooficial.rn.gov.br/dei/dorn3/docview.aspx",
-        "http://diariooficial.rn.gov.br/dei/dorn3/Search.aspx", "http://diariooficial.rn.gov.br/dei/dorn3/edicaovisualizar.aspx"],
- "RO": ["https://diof.ro.gov.br/2026/10/14/", f"https://diof.ro.gov.br/?s={T}", "https://diof.ro.gov.br/data-de-publicacao/2026/10/14/",
-        "https://diof.ro.gov.br/wp-json/wp/v2/posts?per_page=3", "https://diof.ro.gov.br/feed/"],
- "RR": ["https://www.imprensaoficial.rr.gov.br/", "https://www.imprensaoficial.rr.gov.br/api/", "https://www.imprensaoficial.rr.gov.br/app/",
-        "https://www.imprensaoficial.rr.gov.br/app/_edicoes/"],
- "RS": ["https://www.diariooficial.rs.gov.br/", "https://www.diariooficial.rs.gov.br/diario?pg=1", "https://www.diariooficial.rs.gov.br/api/",
-        "https://www.diariooficial.rs.gov.br/diario?data=14/10/2026", "https://www.diariooficial.rs.gov.br/materia?id=1"],
- "SC": ["https://doe.sea.sc.gov.br/", "https://doe.sea.sc.gov.br/edicoes", "https://portal.doe.sea.sc.gov.br/", "https://doe.sea.sc.gov.br/api/"],
- "SE": ["https://segrase.se.gov.br/portal/", "https://www.segrase.se.gov.br/", "https://doe.se.gov.br/", "https://diariooficial.se.gov.br/",
-        "http://www.se.gov.br/diario-oficial"],
- "SP": ["https://doe.sp.gov.br/", "https://do-api-web-search.doe.sp.gov.br/v2/advanced-search/publications?PageNumber=1&PageSize=5&Terms[0]=situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia&FromDate=2026-10-01&ToDate=2026-10-14",
-        "https://do-api-web-search.doe.sp.gov.br/v2/journals?Date=2026-10-14", "https://doe.sp.gov.br/api/"],
-}
-RE_L = re.compile(r'(?:href|src)="([^"]*(?:busca|pesquis|edic|diario|pdf|download|api|\.js)[^"]*)"', re.I)
+RE_URL = re.compile(r'https?://[^\s"\'<>\\]{8,160}')
+RE_HREF = re.compile(r'(?:href|src|action)="([^"]{4,200})"', re.I)
 
 
 def pdf_info(b):
@@ -62,37 +13,75 @@ def pdf_info(b):
         with pdfplumber.open(io.BytesIO(b)) as pdf:
             n = len(pdf.pages)
             txt = "\n".join((pdf.pages[i].extract_text() or "") for i in range(min(n, 6)))
-        return {"paginas": n, "texto_6pg": len(txt), "homologa": txt.lower().count("homologa"),
-                "emergencia": txt.lower().count("situação de emergência"), "inicio_texto": " ".join(txt.split())[:160]}
+        return {"paginas": n, "texto_6pg": len(txt), "inicio_texto": " ".join(txt.split())[:200]}
     except Exception as e:  # noqa: BLE001
         return {"pdf_erro": f"{type(e).__name__}: {str(e)[:80]}"}
 
 
-def sondar(uf, u, post=None):
+def get(uf, u, modo="html", grep=None, timeout=30):
     t0 = time.time()
     try:
-        b = enviar_uma_vez(u, post, timeout=30, origem="sonda DOE") if post else buscar_uma_vez(u, timeout=30, origem="sonda DOE")
-        s = {"uf": uf, "url": u, "ok": True, "bytes": len(b), "ms": int((time.time() - t0) * 1000)}
-        if b[:5] == b"%PDF-":
-            s.update(pdf_info(b)); return s
-        t = b[:60000].decode("utf-8", "replace")
-        tit = re.search(r"<title>(.*?)</title>", t, re.S | re.I)
-        s.update({"titulo": (tit.group(1).strip()[:100] if tit else None), "inicio": " ".join(t[:400].split()),
-                  "links": sorted(set(RE_L.findall(t)))[:25], "forms": re.findall(r"<form[^>]*>", t, re.I)[:4],
-                  "conta_emerg": t.lower().count("situação de emergência")})
-        return s
+        b = buscar_uma_vez(u, timeout=timeout, origem="sonda DOE")
     except urllib.error.HTTPError as e:
         corpo = b""
-        try: corpo = e.read()[:400]
+        try: corpo = e.read()[:600]
         except Exception: pass  # noqa: BLE001
-        return {"uf": uf, "url": u, "ok": False, "http": e.code, "local": e.headers.get("Location"), "corpo": corpo.decode("utf-8", "replace")}
+        print(json.dumps({"uf": uf, "url": u, "http": e.code, "corpo": corpo.decode("utf-8", "replace")}, ensure_ascii=False), flush=True); return None
     except Exception as e:  # noqa: BLE001
-        return {"uf": uf, "url": u, "ok": False, "erro": f"{type(e).__name__}: {str(e)[:200]}"}
+        print(json.dumps({"uf": uf, "url": u, "erro": f"{type(e).__name__}: {str(e)[:200]}"}, ensure_ascii=False), flush=True); return None
+    s = {"uf": uf, "url": u, "bytes": len(b), "ms": int((time.time() - t0) * 1000)}
+    if b[:5] == b"%PDF-":
+        s.update(pdf_info(b))
+    else:
+        t = b.decode("utf-8", "replace")
+        if modo == "json":
+            s["json"] = t[:3500]
+        elif modo == "hrefs":
+            s["hrefs"] = sorted(set(RE_HREF.findall(t)))[:80]
+        elif modo == "urls_js":
+            urls = sorted(set(RE_URL.findall(t)))
+            s["urls"] = [x for x in urls if grep is None or re.search(grep, x, re.I)][:60]
+            s["trechos_api"] = [t[max(0, m.start() - 60):m.end() + 60] for m in re.finditer(r"/api/|apifront|/rest/|/v[12]/", t)][:30]
+        elif modo == "corpo":
+            s["corpo"] = t[:4000]
+    print(json.dumps(s, ensure_ascii=False), flush=True)
+    return b
 
 
-ufs = sys.argv[1:] or list(ROTAS)
-for uf in ufs:
-    for u in ROTAS[uf]:
-        print(json.dumps(sondar(uf, u), ensure_ascii=False), flush=True)
-# PA: a busca é POST (form1 ASP.NET); PI: busca_diario.php por POST, já medida morta (índice até 2021).
-print(json.dumps(sondar("PA", "https://www.ioepa.com.br/pesquisa/resultado/QueryTexto", {"texto": "situação de emergência"}), ensure_ascii=False), flush=True)
+# AM: o id da listagem é o do download?
+get("AM", "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18242", timeout=120)
+get("AM", "https://diario.imprensaoficial.am.gov.br/apifront/portal/edicoes/edicoes_from_data/2026-10-13.json", "json")
+# CE: o 5º caderno não existe (fim da iteração)
+get("CE", "https://imagens.seplag.ce.gov.br/PDF/20261014/do20261014p05.pdf")
+get("CE", "https://imagens.seplag.ce.gov.br/PDF/20261013/do20261013p01.pdf")
+# SP: a API de busca — estrutura inteira de 2 itens, e a listagem de edições por data
+get("SP", "https://do-api-web-search.doe.sp.gov.br/v2/advanced-search/publications?PageNumber=1&PageSize=2&Terms[0]=situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia&FromDate=2026-10-01&ToDate=2026-10-14", "json")
+get("SP", "https://do-api-web-search.doe.sp.gov.br/v2/advanced-search/publications?PageNumber=1&PageSize=2&Terms[0]=homologa&FromDate=2026-09-01&ToDate=2026-10-14", "json")
+get("SP", "https://do-api-web-search.doe.sp.gov.br/v2/journals?Date=2026-10-14", "json")
+get("SP", "https://do-api-web-search.doe.sp.gov.br/v2/summary?Date=2026-10-14&JournalId=d65936d7-1ca8-4267-934e-1dea132fa237", "json")
+# PI: a página do dia — todos os endereços
+get("PI", "http://www.diariooficial.pi.gov.br/diarios.php?dia=20261014", "hrefs")
+get("PI", "http://www.diariooficial.pi.gov.br/diarios.php?dia=20261014", "corpo")
+# RO: resultado da busca → posts → PDF
+b = get("RO", "https://diof.ro.gov.br/?s=situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia", "hrefs")
+if b:
+    t = b.decode("utf-8", "replace")
+    posts = [h for h in RE_HREF.findall(t) if h.startswith("https://diof.ro.gov.br/") and re.search(r"/\d{4}/\d{2}/|/diario|edicao|doe", h, re.I)]
+    arts = re.findall(r'<article[^>]*>.*?</article>', t, re.S)[:3]
+    print(json.dumps({"uf": "RO", "posts": posts[:15], "n_articles": len(re.findall(r"<article", t)), "article1": " ".join(arts[0].split())[:1500] if arts else None}, ensure_ascii=False), flush=True)
+    if posts:
+        get("RO", posts[0], "hrefs")
+# RJ: a página do conteúdo online
+get("RJ", "https://www.ioerj.com.br/portal/modules/conteudoonline/index.php", "hrefs")
+# SPAs: onde fica a API
+get("MG", "https://www.jornalminasgerais.mg.gov.br/main-A77B4DKJ.js", "urls_js", r"api|edic|public|jornal|diario")
+get("RS", "https://www.diariooficial.rs.gov.br/main-WOM4SM2S.js", "urls_js", r"api|edic|diario|materia")
+get("AL", "http://diario.imprensaoficial.al.gov.br/assets/index-344f66e8.js", "urls_js", r"api|edic|diario|busca")
+get("PE", "https://diariooficial.cepe.com.br/diariooficialweb/app/app.config.js", "corpo")
+get("SC", "https://doe.sea.sc.gov.br/", "corpo")
+get("RR", "https://www.imprensaoficial.rr.gov.br/_inicial/", "hrefs")
+get("MA", "https://www.diariooficial.ma.gov.br/", "corpo")
+get("BA", "https://www.egba.ba.gov.br/", "hrefs")
+get("BA", "http://dool.egba.ba.gov.br/", "corpo", timeout=20)
+get("PA", "https://www.ioepa.com.br/", "hrefs")
+get("RN", "http://www.diariooficial.rn.gov.br/dei/dorn3", "corpo")
