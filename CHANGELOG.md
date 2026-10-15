@@ -35,6 +35,9 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-15 · #PR · CLAUDE.md só com regras em vigor
 
 `CLAUDE.md` cai de 664 para 227 linhas: cada regra em uma frase, com o portão que a prova. A história e os relatos de incidente vão, sem perder linha, para `docs/HISTORICO_DE_REGIMES.md`; a marca pessoal, para `docs/MARCA_PESSOAL.md` (skill e `layout/regras.json` apontam para lá). Pedido da central de 15/10, custo de leitura por sessão.
+## 2026-10-15 · #PR · Juiz de saúde estadual primeiro (F62)
+
+`julgar_saude.py` passa a ser o primeiro comando do elo de saúde estadual e grava o que julgou quando o prazo o interrompe, pela mesma `julgar_lista` do juiz do Legal. Último da lista, ele era pulado toda semana (14/10: `--fontes` 52 min em hosts mortos) e `saude_uf.json` parou em 02/10. Ensaio 27 e catálogo F62.
 
 ## 2026-10-15 · #PR · Blog sem a linha "Também no feed"
 

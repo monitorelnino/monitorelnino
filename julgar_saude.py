@@ -53,6 +53,7 @@ import juiz
 # exceção de domínio que alguém acrescentar a um dos arquivos.
 from coletar_saude_estadual import oficial
 from coletores_base import buscar, gravar, hoje_editorial, ler, preservar_evidencia, rodar_autoteste
+from julgar_filas import julgar_lista
 
 FILA = "pistas_imprensa_saude.json"
 ALVO = "saude_uf.json"
@@ -995,24 +996,30 @@ def main() -> int:
     print(f"{len(candidatas)} pista(s) oficial(is) a julgar"
           + (f" em {alvo}" if alvo else "") + f", de {len(pistas)} na fila")
     su = ler(ALVO, {}) or {}
-    promovidas, recusadas, mudancas = 0, {}, []
-    for p in candidatas:
-        v = julgar_pista(p)
+    recusadas, mudancas = {}, []
+
+    def passo(p, v):
         p["juiz"] = {k: v.get(k) for k in ("promove", "motivo", "codebook", "categoria", "data",
                                            "institui", "status_instrumento", "coordenacao")}
-        if v.get("promove"):
-            promovidas += 1
-            m = aplicar(su, v, v.get("titulo_do_documento") or p.get("titulo") or "", p.get("url"))
-            if m:
-                mudancas.append(f"{v['uf']}: {', '.join(m)}")
-                p["documento_oficial_confirmado"] = p.get("url")
-                p["promovivel"] = True
-                p["status"] = "promovido_pelo_juiz"
-            print(f"  ✓ {v['uf']} · {v.get('categoria')} · institui {v['institui']} · {m or 'sem mudança'}")
-        else:
+        if not v.get("promove"):
             recusadas[v.get("motivo")] = recusadas.get(v.get("motivo"), 0) + 1
             print(f"  ✗ {p.get('uf')} · {v.get('motivo')}")
-    print(f"\n{promovidas} promovida(s) · {len(candidatas) - promovidas} recusada(s)")
+            return "recusada"
+        m = aplicar(su, v, v.get("titulo_do_documento") or p.get("titulo") or "", p.get("url"))
+        if m:
+            mudancas.append(f"{v['uf']}: {', '.join(m)}")
+            p["documento_oficial_confirmado"] = p.get("url")
+            p["promovivel"] = True
+            p["status"] = "promovido_pelo_juiz"
+        print(f"  ✓ {v['uf']} · {v.get('categoria')} · institui {v['institui']} · {m or 'sem mudança'}")
+        return "promovida"
+
+    # O prazo do elo interrompe com SIGINT: o que foi julgado até ali é gravado (a mesma função do
+    # juiz do Legal, 15/10/2026). Antes, interrompido, o juiz de saúde não gravava nada.
+    feitos = {"promovida": 0, "recusada": 0}
+    julgar_lista(candidatas, julgar_pista, True, [], feitos, aplicar_fn=passo)
+    promovidas = feitos["promovida"]
+    print(f"\n{promovidas} promovida(s) · {feitos['recusada']} recusada(s)")
     for motivo, n in sorted(recusadas.items(), key=lambda x: -x[1]):
         print(f"   {n}× {motivo}")
     if mudancas:
