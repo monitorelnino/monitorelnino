@@ -808,7 +808,7 @@
     "log do run 38664144535, passo 22: as três linhas RECUSADO"
    ],
    "correcao": "O livro une pela regra do produtor (janela de fontes, nível que não rebaixa, verificação mais recente); os dois derivados resolvem com a versão de cima e a cadeia regera; sai o espelho morto.",
-   "caso_de_teste": "scripts/unir_conflito_de_rodada.py --autoteste (F58) e ensaio 1 de scripts/ensaio_da_noite.py; o empurrão concorrente do ensaio real marca o livro",
+   "caso_de_teste": "scripts/unir_conflito_de_rodada.py --autoteste: F58: livro de fontes une as consultas dos dois lados; nível não rebaixa",
    "falta": null
   },
   {
@@ -822,7 +822,7 @@
     "reprodução local: arquivo rastreado sujo faz `git rebase --continue` sair 1 com a mesma mensagem"
    ],
    "correcao": "A união segue direto para o `rebase --continue`; quem regenera é o bloco A2-09, depois do rebase, que agora indexa `data/` e descarta o que o elo não comita.",
-   "caso_de_teste": "ensaio 1 de scripts/ensaio_da_noite.py reprova regeneração entre a união e o `rebase --continue`",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_dois_elos_em_paralelo",
    "falta": null
   }
  ]
