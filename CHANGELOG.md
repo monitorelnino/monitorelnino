@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #PR · DOE por edição: CE e PB entram (NE)
+
+`coletar_doe.py` ganha o adaptador `edicao_<uf>`: sem busca, lê a edição em PDF por data (CE em cadernos, PB pelo padrão do canal 2), só páginas com termo viram item, e o lido não se relê (`lidas`, janela de 8 dias). Os três ramos de busca viram um. AL, BA, MA, PE, PI, RN e SE ficam `sem adaptador de busca` com o motivo medido do runner (15/10).
+
 ## 2026-10-15 · #PR · Ficha do estado fecha no componente; grade com espaço
 
 A ficha (`dialog.detail`) fecha pelo ×, pelo fundo ou por Esc num ouvinte só, em `grade-estados.js`; na saúde ela não fechava pelo × e a inicial tinha um bloco próprio, que sai. `.regions` ganha `--esp-secao` acima e `--sp-2` entre cartões, nas duas páginas. Divergência: ouvinte no documento, não parâmetro de `montar` — a inicial não usa `montar`.
