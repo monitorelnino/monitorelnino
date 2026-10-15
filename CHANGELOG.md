@@ -40,6 +40,9 @@ Sobre o adaptador de edição por data: AM pela rota (a) da plataforma comum (ed
 
 `coletar_doe.py` ganha o adaptador `edicao_<uf>`: sem busca, lê a edição em PDF por data (CE em cadernos, PB pelo padrão do canal 2), só páginas com termo viram item, e o lido não se relê (`lidas`, janela de 8 dias). Os três ramos de busca viram um. AL, BA, MA, PE, PI, RN e SE ficam `sem adaptador de busca` com o motivo medido do runner (15/10).
 
+## 2026-10-15 · #PR · CLAUDE.md só com regras em vigor
+
+`CLAUDE.md` cai de 664 para 227 linhas: cada regra em uma frase, com o portão que a prova. A história e os relatos de incidente vão, sem perder linha, para `docs/HISTORICO_DE_REGIMES.md`; a marca pessoal, para `docs/MARCA_PESSOAL.md` (skill e `layout/regras.json` apontam para lá). Pedido da central de 15/10, custo de leitura por sessão.
 ## 2026-10-15 · #PR · Ficha do estado fecha no componente; grade com espaço
 
 A ficha (`dialog.detail`) fecha pelo ×, pelo fundo ou por Esc num ouvinte só, em `grade-estados.js`; na saúde ela não fechava pelo × e a inicial tinha um bloco próprio, que sai. `.regions` ganha `--esp-secao` acima e `--sp-2` entre cartões, nas duas páginas. Divergência: ouvinte no documento, não parâmetro de `montar` — a inicial não usa `montar`.

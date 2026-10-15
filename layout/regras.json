@@ -26,7 +26,7 @@
   ],
   "_nota_paginas_internas": "Páginas que existem no repositório e NÃO são do público: material de trabalho da editoria, servido só no endereço reservado e fora do manifesto público. Elas ficam fora do portão de SEO (canônica, Open Graph, Twitter, JSON-LD e sitemap), porque cobrar isso seria cobrar que uma página interna se apresente como pública — a canônica apontaria o domínio e o `og:image` existiria para um compartilhamento que nunca acontece. `noindex` NÃO serve de critério: enquanto o domínio está na cortina toda página o tem, e ele deixaria de discriminar no dia do lançamento. Acrescentar uma página aqui é dizer, por escrito, que ela não é do público; o portão de integridade continua acusando se ela aparecer servida no domínio. `indice-de-conteudo.html` entrou em 05/10/2026 com o catálogo de conteúdo; `mudancas.html` em 13/10/2026 (A4-10, decisão da central: material de quem audita, fora do sitemap).",
   "tipografia": {
-    "fonte": "CLAUDE.md §4 (Tipografia) e AI_VISUAL_ART_DIRECTION.md",
+    "fonte": "docs/MARCA_PESSOAL.md §4 (Tipografia) e AI_VISUAL_ART_DIRECTION.md",
     "familias_permitidas": {
       "display": [
         "Fraunces",
@@ -93,7 +93,7 @@
     "_nota_h3_rotulo": "h3 com a classe `.ficha-rotulo` é RÓTULO de coluna, não título — \"Antes\", \"Durante\", \"Depois\" nas fichas do Proteja-se. Ali a família é a de dado, por desenho aprovado em 30/09/2026; a classe existe para que a exceção seja DECLARADA no HTML em vez de virar exceção silenciosa no portão."
   },
   "cor": {
-    "fonte": "CLAUDE.md §3 (Paleta) e assets/tokens.css",
+    "fonte": "docs/MARCA_PESSOAL.md §3 (Paleta) e assets/tokens.css",
     "hex_somente_em": [
       "assets/tokens.css",
       "assets/mapas.js"
@@ -350,7 +350,7 @@
     "nada_escrito_a_mao_que_dependa_do_dado": true
   },
   "acessibilidade": {
-    "fonte": "AI_VISUAL_ART_DIRECTION.md §23 e CLAUDE.md (marca pessoal, item 7 do checklist)",
+    "fonte": "AI_VISUAL_ART_DIRECTION.md §23 e docs/MARCA_PESSOAL.md (§7)",
     "alvo_de_toque_px": 44,
     "largura_de_celular_px": 390,
     "sem_rolagem_horizontal": true,
