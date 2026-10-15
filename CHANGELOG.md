@@ -35,6 +35,10 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-15 · #PR · CLAUDE.md só com regras em vigor
 
 `CLAUDE.md` cai de 664 para 227 linhas: cada regra em uma frase, com o portão que a prova. A história e os relatos de incidente vão, sem perder linha, para `docs/HISTORICO_DE_REGIMES.md`; a marca pessoal, para `docs/MARCA_PESSOAL.md` (skill e `layout/regras.json` apontam para lá). Pedido da central de 15/10, custo de leitura por sessão.
+## 2026-10-15 · #PR · Ficha do estado fecha no componente; grade com espaço
+
+A ficha (`dialog.detail`) fecha pelo ×, pelo fundo ou por Esc num ouvinte só, em `grade-estados.js`; na saúde ela não fechava pelo × e a inicial tinha um bloco próprio, que sai. `.regions` ganha `--esp-secao` acima e `--sp-2` entre cartões, nas duas páginas. Divergência: ouvinte no documento, não parâmetro de `montar` — a inicial não usa `montar`.
+
 ## 2026-10-15 · #PR · Juiz 1.6: domínio do ente e plano de setor
 
 Plano sem ato só vale no domínio do próprio município (Cubatão/SP: relatório do BNDES em `bndes.gov.br`), e plano de contingência de rede de ensino, escola ou unidade de saúde é `fora_do_objeto` (Toledo/PR, METODOLOGIA §222). Aplica a régua declarada; casos de teste com os dois documentos. O rejulgamento passa a ler o texto extraído, não o PDF cru.
