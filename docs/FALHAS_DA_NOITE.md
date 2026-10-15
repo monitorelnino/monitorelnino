@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-15. 61 falhas; 56 com caso de teste que as reproduz; 5 sem, com o que falta dito.
+Atualizado em 2026-10-15. 62 falhas; 57 com caso de teste que as reproduz; 5 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -553,4 +553,13 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Causa:** `seguir_pistas.py` rodava na descoberta, na busca web de cadência e na rodada semanal, fora de um grupo comum; dois seguiam as mesmas pistas no mesmo dia e gravavam `seguimento` com contagens diferentes — o caso que a porta recusa por regra.
 - **Prova:** log do passo de commit do job 116324104565: linha RECUSADO data/pistas_imprensa.json, campo 'seguimento'; descoberta 945e1140 (08:38) seguiu pistas durante a cadência
 - **Correção:** Um seguidor: `seguir_pistas.py` só na descoberta, dentro da vez da noite; sai da cadência e da rodada semanal.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_busca_web_pelo_coletor`
+
+## F62 · Juiz de saúde estadual pulado pelo prazo: saude_uf.json parado em 02/10
+
+- **Noite:** 2026-10-14
+- **Sintoma:** Elo saude-estadual 38494227421 (14/10 02:52→04:08): --fontes 52 min, --canais interrompido, e '--doe', 'julgar_saude.py --aplicar' e 'fechar_saude.py' 'pulado — prazo do elo esgotado antes de começar'. Página de saúde mostrava verificação de setembro.
+- **Causa:** O juiz, único comando que grava saude_uf.json, era o último da lista, depois de coletas que esperam timeout em hosts mortos (9 hosts com Errno 110); e, interrompido, não gravava nada do que julgara.
+- **Prova:** log do job 115654953384: '[saude] coletar_saude_estadual.py: 3142s' (--fontes) e 'julgar_saude.py: pulado — prazo do elo esgotado antes de começar'; data/pistas_imprensa_saude.json: 251 pistas oficiais sem veredito do juiz (15/10)
+- **Correção:** O juiz vem primeiro, sobre a fila acumulada, e usa `julgar_filas.julgar_lista`: interrompido pelo prazo, grava o que julgou.
 - **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_busca_web_pelo_coletor`
