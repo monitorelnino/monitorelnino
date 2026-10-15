@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-15 · #PR · Reaplicação pela união do resolvedor
+
+A reaplicação da coleta perdida tinha portas próprias (linhas, contador pelo maior, união por chave, dono único) que repetiam o resolvedor com outra regra e recusavam o livro de fontes. Passa a usar `unir_e_gravar`, a mesma união do rebase, em três vias: base do elo, árvore, artefato. Consolidação (um resolvedor), −320 linhas. Onde: `reaplicar_noite.py`, `unir_conflito_de_rodada.py`.
+
 ## 2026-10-15 · #PR · Noite sem commit perdido na união (F58, F59)
 
 Diários, triagem e descoberta da noite 14→15 coletaram e perderam o push. O resolvedor passa a unir o livro de fontes pela regra do produtor e a tratar `verificacao_municipal.json` e `cobertura_declarada_uf.json` como derivados; o coletor deixa de regenerar entre a união e o `rebase --continue`; sai o espelho morto dos diários. Onde: `unir_conflito_de_rodada.py`, `_coletor.yml`, `coletar_diarios_municipais.py`.
