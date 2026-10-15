@@ -9,14 +9,14 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-07 a 2026-10-14 (832 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-08 a 2026-10-15 (706 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
 - descobrir_dominios.py: erro em 2 rodadas seguidas — interrompido pelo prazo do elo
 - monitorar_busca_web.py: erro em 4 rodadas seguidas — ✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4
-- monitorar_imprensa_saude.py: erro em 19 rodadas seguidas — KeyError: 'hash'
-- monitorar_politica_por_inteiro.py: erro em 19 rodadas seguidas — NameError: name 'ler' is not defined. Did you mean: 'len'?
+- monitorar_imprensa_saude.py: erro em 18 rodadas seguidas — KeyError: 'hash'
+- monitorar_politica_por_inteiro.py: erro em 18 rodadas seguidas — NameError: name 'ler' is not defined. Did you mean: 'len'?
 - monitorar_redes_oficiais.py: erro em 4 rodadas seguidas — NameError: name 'caidos' is not defined. Did you mean: 'dados'?
 - verificar_links.py: erro em 3 rodadas seguidas — erro: HTTPSConnectionPool(host='www.defesacivil.sc.gov.br', port=443): Max retries exceeded with url: /2026/08/14/chuva-forte-deixa-danos-em-municipios-de-santa-catarina-e-risco-de-temporais-segue-alto-ate-sabado/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.defesacivil.sc.gov.br', port
 
@@ -28,7 +28,7 @@ cobertura 15d: 1371/5571 com verificação real até 2026-10-14 · por canal: we
 
 | script | papel | última execução | duração | itens | status | erro |
 |---|---|---|---|---:|---|---|
-| `recalcular_mare.py` | essencial | 2026-10-14 01:56 | 2 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-15 04:38 | 3 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-14 08:47 | 1 s | — | ok | — |
 | `buscar_protocolo_calor.py` | coletor | 2026-10-12 07:33 | 11 s | 3 | ok | — |
 | `classificar_planos_municipais.py` | coletor | 2026-10-13 06:56 | 1 s | — | ok | — |
@@ -73,8 +73,8 @@ cobertura 15d: 1371/5571 com verificação real até 2026-10-14 · por canal: we
 | `monitorar_atos_resposta.py` | coletor | 2026-10-14 07:18 | 94 s | 3516 | ok | — |
 | `monitorar_busca_web.py` | coletor | 2026-10-14 01:39 | 316 s | 2 | **erro** (4 seguidas) | ✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4 |
 | `monitorar_imprensa_regional.py` | coletor | 2026-10-14 07:17 | 114 s | 40 | ok | — |
-| `monitorar_imprensa_saude.py` | coletor | 2026-10-14 07:18 | 0 s | — | **erro** (19 seguidas) | KeyError: 'hash' |
-| `monitorar_politica_por_inteiro.py` | coletor | 2026-10-14 07:20 | 2 s | 3516 | **erro** (19 seguidas) | NameError: name 'ler' is not defined. Did you mean: 'len'? |
+| `monitorar_imprensa_saude.py` | coletor | 2026-10-14 07:18 | 0 s | — | **erro** (18 seguidas) | KeyError: 'hash' |
+| `monitorar_politica_por_inteiro.py` | coletor | 2026-10-14 07:20 | 2 s | 3516 | **erro** (18 seguidas) | NameError: name 'ler' is not defined. Did you mean: 'len'? |
 | `monitorar_redes_oficiais.py` | coletor | 2026-10-14 07:36 | 1288 s | — | **erro** (4 seguidas) | NameError: name 'caidos' is not defined. Did you mean: 'dados'? |
 | `monitorar_sinais_federais.py` | coletor | 2026-10-14 07:20 | 4 s | 10 | ok | — |
 | `motores_busca.py` | coletor | 2026-10-13 09:39 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
