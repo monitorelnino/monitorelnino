@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-15 · #PR · Noite sem commit perdido na união (F58, F59)
+
+Diários, triagem e descoberta da noite 14→15 coletaram e perderam o push. O resolvedor passa a unir o livro de fontes pela regra do produtor e a tratar `verificacao_municipal.json` e `cobertura_declarada_uf.json` como derivados; o coletor deixa de regenerar entre a união e o `rebase --continue`; sai o espelho morto dos diários. Onde: `unir_conflito_de_rodada.py`, `_coletor.yml`, `coletar_diarios_municipais.py`.
+
 ## 2026-10-14 · #PR · Portões de código do publicador no Node 22
 
 O passo "Portões de código (avisam, não barram)" do publicador rodava em Node 20, e o `package.json` exige 22.14: o `undici` do `jsdom` caía em `verificar_estrutura.js` e abria Issue a cada publicação (robo-registro#181). Passa ao Node 22, o mesmo dos portões do PR. Onde: `publicar_dados.yml`.

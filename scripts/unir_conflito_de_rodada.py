@@ -36,10 +36,8 @@ sumiram caladas. A regra do projeto nasceu daí: une-se pela BASE COMUM, nunca p
    com a versão de cima (a `main`) e a cadeia canônica regenera depois. O script os NOMEIA na
    saída, em `REGENERAR=`, para que quem chamou saiba que precisa regenerar.
 
-Tudo o mais é recusado com o nome do arquivo e o motivo. Hoje isso inclui, de propósito,
-`data/pistas_imprensa.json` e `data/fontes_consultadas.json`: os dois lados alteram os MESMOS
-registros (status de triagem num, `ultima_verificacao` e `fontes` por município no outro), e
-escolher qual vence é política de mesclagem — decisão da editoria, não deste script.
+Tudo o mais é recusado com o nome do arquivo e o motivo. (As filas de pista e o livro de fontes,
+recusados aqui até 05/10 e 15/10, unem-se hoje pela política dos seus produtores — ver abaixo.)
 
 ESTÁGIOS DO GIT, E A ARMADILHA QUE NÃO SE APLICA AQUI
 =====================================================
@@ -113,6 +111,10 @@ REGENERAVEIS = (
     # do comentario de `dados-abertos/` logo abaixo, e os dois pararam a triagem de 05/10.
     "data/log_buscas_resumo.json",
     "data/municipios_card.json",
+    # 15/10/2026: os dois são regerados pela cadeia (`recalcular_mare.py --write`,
+    # `gerar_cobertura_declarada.py`) e foram recusados no push dos diários da noite 14→15.
+    "data/verificacao_municipal.json",
+    "data/cobertura_declarada_uf.json",
 )
 
 # 11/10/2026: derivados que NÃO estão na cadeia canônica (§273) e têm gerador próprio. Resolvem-se
@@ -262,7 +264,27 @@ def unir_fila_de_pistas(caminho, base_txt, nosso_txt, deles_txt):
 # nova de um lado entra; a mesma entrada mudada nos dois lados segue a regra da pista (campo a campo).
 # O registro de robots é contador + trilha por host: os acessos se unem pela base comum (multiconjunto,
 # teto de 200 do produtor), o total soma o que cada lado acrescentou.
-INDICES_POR_CHAVE = {"data/evidencias.json": "itens", "data/robots_registro.json": "hosts"}
+# 15/10/2026: o livro de fontes (`data/fontes_consultadas.json`) por município, com a regra do
+# próprio produtor (`coletores_base.marcar_fonte_consultada`): consultas dos dois lados pela janela
+# de fontes, nível nunca rebaixa, a última verificação é a mais recente; fato binário mudado nos dois
+# lados para valores diferentes segue a regra da pista (recusa). Diários e busca web escrevem fontes
+# diferentes do mesmo município desde 14/10 — o push dos diários da noite 14→15 caiu nele.
+INDICES_POR_CHAVE = {"data/evidencias.json": "itens", "data/robots_registro.json": "hosts",
+                     "data/fontes_consultadas.json": "municipios"}
+
+
+def _unir_municipio_do_livro(base: dict, nosso: dict, deles: dict) -> dict:
+    if str(RAIZ) not in sys.path:
+        sys.path.insert(0, str(RAIZ))
+    from coletores_base import NIVEIS, janela_de_fontes
+    proprios = ("fontes", "nivel_verificacao", "ultima_verificacao")
+    resto = [{k: v for k, v in (x or {}).items() if k not in proprios} for x in (base, nosso, deles)]
+    datas = [x["ultima_verificacao"] for x in (nosso, deles) if x.get("ultima_verificacao")]
+    return {**_mesclar_pista(*resto),
+            "nivel_verificacao": max((x.get("nivel_verificacao") or NIVEIS[0] for x in (nosso, deles)),
+                                     key=NIVEIS.index),
+            "ultima_verificacao": max(datas) if datas else None,
+            "fontes": janela_de_fontes([f for x in (base, nosso, deles) for f in (x or {}).get("fontes") or []])}
 
 
 def _unir_host(base: dict, nosso: dict, deles: dict) -> dict:
@@ -284,7 +306,7 @@ def unir_indice(caminho, base_txt, nosso_txt, deles_txt):
     nosso, deles = json.loads(nosso_txt), json.loads(deles_txt)
     base = (json.loads(base_txt) if base_txt is not None else {}).get(chave) or {}
     a, b = nosso.get(chave) or {}, deles.get(chave) or {}
-    mesclar = _unir_host if chave == "hosts" else _mesclar_pista
+    mesclar = {"hosts": _unir_host, "municipios": _unir_municipio_do_livro}.get(chave, _mesclar_pista)
     uniao = dict(a)
     for k, v in b.items():
         if k not in a or a[k] == v:
@@ -922,11 +944,9 @@ def autoteste() -> int:
     # 10. NEGATIVO: caminho que NÃO é derivado nem log declarado segue recusado. O prefixo novo
     #     não pode ter virado uma porta larga.
     with tempfile.TemporaryDirectory() as t:
-        r = _repo_com_conflito(t, "data/fontes_consultadas.json",
-                               '{"municipios":{}}', '{"municipios":{"1":1}}',
-                               '{"municipios":{"2":2}}')
+        r = _repo_com_conflito(t, "data/municipios.json", '[]', '[1]', '[2]')
         res, reg, rec = resolver(repo=r)
-        checar("data/fontes_consultadas.json segue RECUSADO (política não decidida)",
+        checar("data/municipios.json segue RECUSADO (política não decidida)",
                not res and len(rec) == 1 and "não está decidida" in rec[0])
 
     # 8. O CASO DE 23/09, e o único que separa união-pela-base de dedução-por-conteúdo.
@@ -974,6 +994,20 @@ def autoteste() -> int:
         checar("F55: registro de robots soma os acessos dos dois lados, sem perder host",
                not rec and x.get("total_acessos") == 4 and len(x.get("acessos") or []) == 4
                and x.get("ultimo_acesso") == "2026-10-14" and "y.br" in d["hosts"])
+    with tempfile.TemporaryDirectory() as t:
+        LV = "data/fontes_consultadas.json"
+        f = lambda fonte, dia: {"fonte": fonte, "data": dia, "resultado": "r"}
+        m0 = {"nivel_verificacao": "nacional", "ultima_verificacao": "2026-10-13", "fontes": [f("DOU", "2026-10-13")]}
+        r = _repo_com_conflito(t, LV, _doc("municipios", {"1": m0}),
+                               _doc("municipios", {"1": {**m0, "ultima_verificacao": "2026-10-15",
+                                                         "fontes": m0["fontes"] + [f("QD", "2026-10-15")]}}),
+                               _doc("municipios", {"1": {**m0, "nivel_verificacao": "estadual", "ultima_verificacao": "2026-10-14",
+                                                         "fontes": m0["fontes"] + [f("Busca web", "2026-10-14")]}}))
+        res, reg, rec = resolver(repo=r)
+        m = json.loads((r / LV).read_text(encoding="utf-8"))["municipios"]["1"] if not rec else {}
+        checar("F58: livro de fontes une as consultas dos dois lados; nível não rebaixa",
+               [x["fonte"] for x in m.get("fontes", [])] == ["DOU", "Busca web", "QD"]
+               and m.get("nivel_verificacao") == "estadual" and m.get("ultima_verificacao") == "2026-10-15")
 
     if falhas:
         print(f"\n✗ UNIÃO DE CONFLITO: {len(falhas)} falha(s).")

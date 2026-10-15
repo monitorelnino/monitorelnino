@@ -447,9 +447,11 @@ jobs:
               # Só se a união recusar é que se desiste desta tentativa. Desistir aqui não perde o
               # trabalho: ele sai como artefato no passo abaixo.
               echo "tentativa $TENTATIVA: rebase conflitou; unindo pela base comum"
+              # 15/10/2026 (F59): sem regenerar aqui. A cadeia reescrevia derivado fora da lista do
+              # `git add` (MARE_Indice_Documentacao.pdf), e o `rebase --continue` recusava a árvore
+              # suja nas cinco tentativas — triagem e descoberta perderam o commit. Quem regenera é
+              # o bloco A2-09 abaixo, depois do rebase.
               if python3 scripts/unir_conflito_de_rodada.py; then
-                bash scripts/verificar_derivados.sh || true
-                git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt 2>/dev/null || true
                 if ! GIT_EDITOR=true git rebase --continue; then
                   git rebase --abort || true
                   echo "::warning::a união resolveu mas o rebase não seguiu; nova tentativa"
@@ -476,8 +478,9 @@ jobs:
             # tiver andado.
             if ! git diff --quiet FETCH_HEAD..HEAD -- data/; then
               bash scripts/verificar_derivados.sh --regenerar-para-commit || true
-              git add -A dados-abertos/ feeds/ selos/ docs/MANIFEST_SHA256.txt 2>/dev/null || true
+              git add -A data/ dados-abertos/ feeds/ selos/ docs/MANIFEST_SHA256.txt 2>/dev/null || true
               git diff --cached --quiet || git commit --amend --no-edit
+              git checkout -- . 2>/dev/null || true   # o que o elo não comita (PDF, páginas) não trava o próximo rebase
             fi
 
             if GIT_SSH_COMMAND="$SSH" git push git@github.com:${GITHUB_REPOSITORY}.git "HEAD:${RAMO}"; then
