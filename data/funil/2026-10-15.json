@@ -19,13 +19,13 @@
    "pistas": 3
   },
   "juiz": {
-   "pistas_recebidas": 230,
-   "com_documento": 118,
+   "pistas_recebidas": 380,
+   "com_documento": 119,
    "promovidas": 7,
-   "recusa_sem_documento_primario": 64,
-   "recusa_documento_inacessivel": 42,
+   "recusa_sem_documento_primario": 212,
+   "recusa_documento_inacessivel": 43,
    "recusa_texto_nao_extraivel": 6,
-   "recusa_ente_nao_confirmado": 43,
+   "recusa_ente_nao_confirmado": 44,
    "recusa_citacao_incompleta": 24,
    "recusa_executivo_pendente": 3,
    "recusa_autoridade_nao_confirmada": 28,
@@ -59,57 +59,5 @@
    "brutos_siglas_e_variantes": 0
   }
  },
- "atualizado_em": "2026-10-15T08:30:58",
- "verificador_imprensa": {
-  "na_fila": 16720,
-  "lidas": 40,
-  "exibiveis": 0,
-  "inacessiveis": 4,
-  "nao_lidas_por_orcamento": 0,
-  "resolucoes": 20,
-  "nao_resolvidas_por_orcamento": 4895,
-  "por_motivo": {
-   "inacessivel": 4,
-   "recusada_pelo_juiz": 2,
-   "ente_nao_confirmado": 10,
-   "genero_nao_noticia": 3,
-   "natureza_duvidosa": 3,
-   "fora_do_ciclo": 22,
-   "veiculo_nao_listado": 11690,
-   "sem_https": 71,
-   "redirecionamento_nao_resolvido": 20
-  },
-  "crescimento_da_lista": {
-   "candidatos": 824,
-   "avaliados_por_noite": 15,
-   "entraram": [],
-   "recusas": {
-    "sem_pagina_de_expediente": 1,
-    "sem_https": 2,
-    "nao_avaliado_por_orcamento": 12
-   },
-   "institucionais": []
-  },
-  "orcamento": {
-   "paginas_lidas": 44,
-   "por_host": {
-    "horacampinas.com.br": 1,
-    "vale360news.com.br": 2,
-    "plantaoguaruja.com.br": 1,
-    "abcdoabc.com.br": 1,
-    "upiara.com.br": 3,
-    "ndmais.com.br": 11,
-    "canoinhasonline.com.br": 22,
-    "nsctotal.com.br": 3
-   },
-   "recusas_por_host": {
-    "horacampinas.com.br": 1,
-    "nsctotal.com.br": 3
-   },
-   "hosts_desligados": [],
-   "teto_por_host": 40,
-   "teto_global": 600
-  },
-  "versao": "1.0 (29/09/2026)"
- }
+ "atualizado_em": "2026-10-15T09:01:21"
 }
