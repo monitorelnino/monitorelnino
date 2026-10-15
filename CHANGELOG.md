@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-15 · #PR · Juiz 1.6: domínio do ente e plano de setor
+
+Plano sem ato só vale no domínio do próprio município (Cubatão/SP: relatório do BNDES em `bndes.gov.br`), e plano de contingência de rede de ensino, escola ou unidade de saúde é `fora_do_objeto` (Toledo/PR, METODOLOGIA §222). Aplica a régua declarada; casos de teste com os dois documentos. O rejulgamento passa a ler o texto extraído, não o PDF cru.
+
 ## 2026-10-15 · #PR · Blog sem a linha "Também no feed"
 
 Sai a frase visível do fim de `blog.html`, a pedido da editoria; o feed segue no `<link rel="alternate">` e no `<noscript>`. O contrato deixa de exigir "feed Atom".
