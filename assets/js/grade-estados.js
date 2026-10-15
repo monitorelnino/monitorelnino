@@ -112,6 +112,14 @@
       '<span>Barra de baixo: resposta 0–100</span>';
   }
 
+  /* A ficha do estado (`dialog.detail`, aberta pelo clique no cartão) fecha igual em toda página:
+   * pelo ×, pelo clique no fundo ou por Esc (nativo do <dialog>). Um ouvinte, aqui no componente. */
+  document.addEventListener('click', function (e) {
+    var t = e.target, dlg = t && t.closest && t.closest('dialog.detail');
+    if (!dlg || (t !== dlg && !t.closest('.detail-fechar'))) return;
+    if (typeof dlg.close === 'function') dlg.close(); else dlg.open = false;
+  });
+
   /* `legendaDasBarras` e a legenda das DUAS BARRAS do cartao, e nao legenda de mapa: o motor
  * unico de legenda de figura e MonitorMapas.legenda, em assets/mapas.js, e o portao de
  * estrutura confere que ninguem o redefine. */

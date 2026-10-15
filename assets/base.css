@@ -528,7 +528,7 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
    A grade é a `br_states_grid1` do geofacet, publicada; as posições vivem em assets/js/index.js. */
 /* 30/09/2026 (pedido da editoria): os cartões estavam grandes demais — grade mais compacta
    (gap e padding menores, max-width reduzido) e sem a linha de risco (que saiu para a ficha). */
-.regions{display:grid; grid-template-columns:repeat(6, minmax(0,1fr)); gap:var(--sp-1); max-width:720px; margin:0 auto;}
+.regions{display:grid; grid-template-columns:repeat(6, minmax(0,1fr)); gap:var(--sp-2); max-width:720px; margin:var(--esp-secao) auto 0;}
 .regions > *{min-width:0;}
 .tile{display:block; text-align:center; border-radius:var(--radius); padding:var(--sp-1) var(--sp-2); cursor:pointer;
   font-family:var(--font-dado); font-size:var(--fs-small); line-height:var(--lh-small); font-weight:var(--peso-medio);

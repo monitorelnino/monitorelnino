@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-15 · #PR · Ficha do estado fecha no componente; grade com espaço
+
+A ficha (`dialog.detail`) fecha pelo ×, pelo fundo ou por Esc num ouvinte só, em `grade-estados.js`; na saúde ela não fechava pelo × e a inicial tinha um bloco próprio, que sai. `.regions` ganha `--esp-secao` acima e `--sp-2` entre cartões, nas duas páginas. Divergência: ouvinte no documento, não parâmetro de `montar` — a inicial não usa `montar`.
+
 ## 2026-10-15 · #PR · Blog sem a linha "Também no feed"
 
 Sai a frase visível do fim de `blog.html`, a pedido da editoria; o feed segue no `<link rel="alternate">` e no `<noscript>`. O contrato deixa de exigir "feed Atom".

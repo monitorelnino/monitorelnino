@@ -594,16 +594,6 @@ function selectUF(uf, tileEl){
     if (!dlg.open) { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.open = true; }
   });
 })();
-// 13/09/2026 (pedido de Patricia: quadro dos estados ocupa a página inteira, detalhe vira janela
-// popup): fechar pelo botão ×, por clique no fundo (::backdrop) ou por Esc (nativo do <dialog>).
-(function(){
-  const dlg = document.getElementById('detail');
-  if (!dlg) return;
-  const fechar = document.getElementById('detailFechar');
-  const fecharDialog = () => { if (typeof dlg.close === 'function') dlg.close(); else dlg.open = false; };
-  if (fechar) fechar.addEventListener('click', fecharDialog);
-  dlg.addEventListener('click', (evt) => { if (evt.target === dlg) fecharDialog(); });   // clique fora do conteúdo (::backdrop não recebe click em todo navegador)
-})();
 
 // ---- Infraestrutura compartilhada com a página Defesa civil (ex-mapas e gráficos): tooltip
 // (usado pela linha do tempo do herói) e HAB_SET (usado no cartão de cidade,
