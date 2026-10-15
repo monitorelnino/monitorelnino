@@ -251,13 +251,35 @@ jobs:
       # porta de cada arquivo, antes de coletar — o que voltou entra no commit desta noite.
       # Idempotente pelo marcador `.reaplicado`; `continue-on-error` porque reaplicar nao e a
       # tarefa do elo, e falha aqui nao derruba a coleta.
+      # 15/10/2026 (F60): a reaplicacao vai ao ramo no SEU commit, antes da coleta, e recomeca do
+      # zero se o ramo andou -- nunca por uniao. Ela ia junto com o commit do elo: dois elos que
+      # reaplicavam o mesmo artefato somavam as linhas duas vezes na uniao (log de buscas com
+      # +6.100 linhas repetidas em 15/10), e o artefato de um elo perdido levava o que ele tinha
+      # reaplicado, que voltava de novo na reaplicacao seguinte.
       - name: Reaplicar o que a noite perdeu
         if: steps.janela.outputs.pode == '1' && !startsWith(env.RAMO, 'ensaio-real/')
         continue-on-error: true
-        timeout-minutes: 10
+        timeout-minutes: 15
         env:
           GH_TOKEN: ${{ github.token }}
-        run: python3 scripts/reaplicar_noite.py --aplicar | tee -a "$GITHUB_STEP_SUMMARY" || true
+          ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+        run: |
+          git config user.name "monitor-el-nino-bot"; git config user.email "bot@users.noreply.github.com"
+          mkdir -p ~/.ssh && printf '%s\n' "$ROBO_DEPLOY_KEY" > ~/.ssh/robo && chmod 600 ~/.ssh/robo
+          ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
+          export GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes"
+          REMOTO="git@github.com:${GITHUB_REPOSITORY}.git"
+          for TENTATIVA in 1 2 3; do
+            git fetch --quiet --depth=50 "$REMOTO" "${RAMO}" && git reset -q --hard FETCH_HEAD
+            python3 scripts/reaplicar_noite.py --aplicar | tee -a "$GITHUB_STEP_SUMMARY" || true
+            git add -A data/ && git diff --cached --quiet && break
+            bash scripts/verificar_derivados.sh --regenerar-para-commit >/dev/null || true
+            git add -A data/ dados-abertos/ feeds/ selos/ docs/MANIFEST_SHA256.txt 2>/dev/null || true
+            git commit -qm "reaplicação da noite ($(date -u +%H:%M) UTC)"
+            git push -q "$REMOTO" "HEAD:${RAMO}" && break
+          done
+          git fetch --quiet --depth=50 "$REMOTO" "${RAMO}" && git reset -q --hard FETCH_HEAD
+          rm -f ~/.ssh/robo
 
       - name: Marcar o início do elo
         run: echo "ELO_INICIO=$(date -u +%H:%M)" >> "$GITHUB_ENV"

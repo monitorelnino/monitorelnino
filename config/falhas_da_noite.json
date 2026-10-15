@@ -824,6 +824,20 @@
    "correcao": "A união segue direto para o `rebase --continue`; quem regenera é o bloco A2-09, depois do rebase, que agora indexa `data/` e descarta o que o elo não comita.",
    "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_dois_elos_em_paralelo",
    "falta": null
+  },
+  {
+   "id": "F60",
+   "noite": "2026-10-15",
+   "titulo": "Reaplicação concorrente duplica as linhas dos logs",
+   "sintoma": "Depois da reaplicação da manhã de 15/10: `data/log_buscas/2026-10.jsonl` 30.787 → 37.069 linhas com só +160 distintas; `saude_pipeline.json` com a mesma execução 7 vezes; `painel_da_noite.json` +244 linhas, +14 distintas.",
+   "causa": "Cada elo reaplicava os artefatos ainda sem marcador e levava o resultado no PRÓPRIO commit; dois elos (e a busca web de cadência, fora da vez) reaplicaram os mesmos artefatos, e a união pela base comum soma o que os dois lados acrescentaram. O artefato de um elo perdido levava junto o que ele tinha reaplicado, que voltava de novo na reaplicação seguinte.",
+   "prova": [
+    "data/log_buscas/2026-10.jsonl em 54b76676 (30.787/20.970 distintas) e 2b20b34e (37.069/21.130)",
+    "data/saude_pipeline.json em 2b20b34e: 54 execuções repetidas, sete cópias cada"
+   ],
+   "correcao": "A reaplicação vai ao ramo no seu próprio commit, antes da coleta, e recomeça do zero (fetch + reset) se o push for recusado — nunca por união. O commit do elo e o artefato da perda partem da reaplicação já empurrada.",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_coleta_perdida_volta_para_dentro",
+   "falta": "o ensaio real não reaplica (ramo ensaio-real/); as linhas repetidas já na main ficam (não se deduplica log por conteúdo) — decisão da central"
   }
  ]
 }
