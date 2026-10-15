@@ -1,0 +1,115 @@
+{
+ "data": "2026-10-15",
+ "formato_versao": 1,
+ "etapas": {
+  "diario_consorciado": {
+   "fontes": 16,
+   "pistas": 40,
+   "decretos_novos": 12,
+   "bloqueadas": 0,
+   "fora_do_ar": 0
+  },
+  "doe": {
+   "ufs_consultadas": 27,
+   "ufs_com_resultado": 27
+  },
+  "funil_recursos_resposta": {
+   "consultas": 1,
+   "com_resultado_bruto": 1,
+   "pistas": 3
+  },
+  "juiz": {
+   "pistas_recebidas": 230,
+   "com_documento": 118,
+   "promovidas": 7,
+   "recusa_sem_documento_primario": 64,
+   "recusa_documento_inacessivel": 42,
+   "recusa_texto_nao_extraivel": 6,
+   "recusa_ente_nao_confirmado": 43,
+   "recusa_citacao_incompleta": 24,
+   "recusa_executivo_pendente": 3,
+   "recusa_autoridade_nao_confirmada": 28,
+   "recusa_natureza_duvidosa": 7,
+   "recusa_resposta": 3,
+   "recusa_noticia_institucional_nao_e_o_plano": 2,
+   "recusa_plano_sem_identificacao": 1
+  },
+  "descobrir_planos": {
+   "alvos_consultados": 20,
+   "achados_novos": 3,
+   "fila_acumulada": 42
+  },
+  "rede_social": {
+   "entes_consultados": 20,
+   "perfis_confirmados": 53,
+   "pistas": 1,
+   "sem_perfil": 1,
+   "lacunas": 4
+  },
+  "busca_web": {
+   "consultas": 91,
+   "com_resultado_bruto": 81,
+   "motor_sem_resposta": 10,
+   "pistas": 800,
+   "coberto_sem_mencao": 0,
+   "nao_localizado_ate_o_momento": 0,
+   "lacunas": 0,
+   "brutos_plancon": 1620,
+   "brutos_periodo_ou_seca": 0,
+   "brutos_siglas_e_variantes": 0
+  }
+ },
+ "atualizado_em": "2026-10-15T07:01:04",
+ "verificador_imprensa": {
+  "na_fila": 15834,
+  "lidas": 40,
+  "exibiveis": 0,
+  "inacessiveis": 4,
+  "nao_lidas_por_orcamento": 0,
+  "resolucoes": 20,
+  "nao_resolvidas_por_orcamento": 4894,
+  "por_motivo": {
+   "inacessivel": 4,
+   "recusada_pelo_juiz": 2,
+   "ente_nao_confirmado": 10,
+   "genero_nao_noticia": 3,
+   "natureza_duvidosa": 3,
+   "fora_do_ciclo": 22,
+   "veiculo_nao_listado": 10808,
+   "sem_https": 68,
+   "redirecionamento_nao_resolvido": 20
+  },
+  "crescimento_da_lista": {
+   "candidatos": 807,
+   "avaliados_por_noite": 15,
+   "entraram": [],
+   "recusas": {
+    "sem_pagina_de_expediente": 2,
+    "sem_https": 2,
+    "nao_avaliado_por_orcamento": 11
+   },
+   "institucionais": []
+  },
+  "orcamento": {
+   "paginas_lidas": 44,
+   "por_host": {
+    "horacampinas.com.br": 1,
+    "vale360news.com.br": 2,
+    "plantaoguaruja.com.br": 1,
+    "abcdoabc.com.br": 1,
+    "upiara.com.br": 3,
+    "ndmais.com.br": 11,
+    "canoinhasonline.com.br": 22,
+    "nsctotal.com.br": 3
+   },
+   "recusas_por_host": {
+    "horacampinas.com.br": 1,
+    "nsctotal.com.br": 3
+   },
+   "hosts_desligados": [],
+   "teto_por_host": 40,
+   "teto_global": 600
+  },
+  "versao": "1.0 (29/09/2026)"
+ }
+}
