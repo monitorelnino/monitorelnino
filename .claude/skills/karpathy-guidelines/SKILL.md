@@ -27,7 +27,7 @@ atrapalharia essa comparação.
 
 > **REVOGAÇÃO, 27/09/2026 (noite) — ler antes do resto desta seção.** O que vem abaixo registra a
 > decisão de **26/09** (§238), e a parte dela sobre **interação foi revogada no dia seguinte**: o
-> `CLAUDE.md` (§ "Histórico de regimes") diz que a editoria desfez o regime de 26/09 porque "o
+> `docs/HISTORICO_DE_REGIMES.md` (§ "Histórico de regimes") diz que a editoria desfez o regime de 26/09 porque "o
 > código conversava demais e pedia decisões que sabia tomar". A regra em vigor é **autonomia
 > decisória responsável**: analisar → decidir → implementar → testar → verificar → corrigir →
 > continuar, sem narrar e sem pedir permissão fora das paradas que o `CLAUDE.md` lista.

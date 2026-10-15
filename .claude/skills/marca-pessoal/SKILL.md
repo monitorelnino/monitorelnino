@@ -5,7 +5,7 @@ description: Aplica o sistema de marca pessoal "futurismo regenerativo encarnado
 
 # Marca pessoal: futurismo regenerativo encarnado
 
-Ler o `CLAUDE.md` na raiz do repositório (seções 2 a 5) antes de qualquer edição.
+Ler `docs/MARCA_PESSOAL.md` (seções 2 a 5) antes de qualquer edição.
 
 ## Checklist obrigatório antes de entregar
 1. Cores só da paleta em tokens (`--vazio`, `--abissal`, `--musgo`, `--osso`, `--areia`, `--argila`, `--ambar`, `--bioluz`, `--sintetico`, `--mineral`). Nenhum hex fora dela.
