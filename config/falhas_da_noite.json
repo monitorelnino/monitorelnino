@@ -852,6 +852,20 @@
    "correcao": "Um seguidor: `seguir_pistas.py` só na descoberta, dentro da vez da noite; sai da cadência e da rodada semanal.",
    "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_busca_web_pelo_coletor",
    "falta": "o artefato da cadência 38705589401 volta pela reaplicação da próxima noite; a fila segue 20 pistas por noite em vez de até 100"
+  },
+  {
+   "id": "F62",
+   "noite": "2026-10-14",
+   "titulo": "Juiz de saúde estadual pulado pelo prazo: saude_uf.json parado em 02/10",
+   "sintoma": "Elo saude-estadual 38494227421 (14/10 02:52→04:08): --fontes 52 min, --canais interrompido, e '--doe', 'julgar_saude.py --aplicar' e 'fechar_saude.py' 'pulado — prazo do elo esgotado antes de começar'. Página de saúde mostrava verificação de setembro.",
+   "causa": "O juiz, único comando que grava saude_uf.json, era o último da lista, depois de coletas que esperam timeout em hosts mortos (9 hosts com Errno 110); e, interrompido, não gravava nada do que julgara.",
+   "prova": [
+    "log do job 115654953384: '[saude] coletar_saude_estadual.py: 3142s' (--fontes) e 'julgar_saude.py: pulado — prazo do elo esgotado antes de começar'",
+    "data/pistas_imprensa_saude.json: 251 pistas oficiais sem veredito do juiz (15/10)"
+   ],
+   "correcao": "O juiz vem primeiro, sobre a fila acumulada, e usa `julgar_filas.julgar_lista`: interrompido pelo prazo, grava o que julgou.",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_busca_web_pelo_coletor",
+   "falta": "--fontes ainda espera timeout cheio em host morto (52 min); --doe e fechar_saude seguem sem tempo no elo"
   }
  ]
 }
