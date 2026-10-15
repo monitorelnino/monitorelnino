@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #PR · DOE-SP pela API própria da busca (SE)
+
+`coletar_doe.py` ganha `busca_sp`: a API que o sítio do DOE-SP chama (`do-api-web-search`, termos e janela de datas, paginada) aponta as publicações e cada uma é lida inteira em `/v2/publications/<id>`, sem HTML; endereço citável `doe.sp.gov.br/<slug>`. MG, RJ, RS e SC seguem `sem adaptador de busca` com o motivo medido (15/10); PI e RR têm rota exposta a medir.
+
 ## 2026-10-16 · #PR · DOE por edição: AM e MS entram (N e CO)
 
 Sobre o adaptador de edição por data: AM pela rota (a) da plataforma comum (edição do dia → id → PDF pela rota c), MS pela listagem de `spdo.ms.gov.br/diariodoe/`, que nomeia o PDF por número e data. PA, RO e RR seguem `sem adaptador de busca` com o motivo medido do runner (15/10); RR tem rota a medir.
