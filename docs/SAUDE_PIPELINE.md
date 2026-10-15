@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-07 a 2026-10-14 (807 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-07 a 2026-10-14 (809 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -27,7 +27,7 @@ cobertura 15d: 1290/5571 com verificação real até 2026-10-14 · por canal: we
 
 | script | papel | última execução | duração | itens | status | erro |
 |---|---|---|---|---:|---|---|
-| `recalcular_mare.py` | essencial | 2026-10-14 14:27 | 3 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-14 01:11 | 3 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-14 08:47 | 1 s | — | ok | — |
 | `buscar_protocolo_calor.py` | coletor | 2026-10-12 07:33 | 11 s | 3 | ok | — |
 | `classificar_planos_municipais.py` | coletor | 2026-10-13 06:56 | 1 s | — | ok | — |
@@ -67,7 +67,7 @@ cobertura 15d: 1290/5571 com verificação real até 2026-10-14 · por canal: we
 | `descobrir_planos.py` | coletor | 2026-10-14 07:20 | 932 s | 42 | ok | — |
 | `detectar_marcos_federais.py` | coletor | 2026-10-14 07:20 | 2 s | 0 | ok | — |
 | `julgar_e_aplicar_descobertas.py` | coletor | 2026-10-14 08:40 | 389 s | — | ok | — |
-| `julgar_filas.py` | coletor | 2026-10-14 08:40 | 3 s | — | ok | — |
+| `julgar_filas.py` | coletor | 2026-10-14 19:58 | 7986 s | — | **erro** | interrompido pelo prazo do elo |
 | `julgar_saude.py` | coletor | 2026-10-14 04:07 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `monitorar_atos_resposta.py` | coletor | 2026-10-14 07:18 | 94 s | 3516 | ok | — |
 | `monitorar_busca_web.py` | coletor | 2026-10-14 11:05 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
