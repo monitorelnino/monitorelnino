@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-15 · #PR · CLAUDE.md só com regras em vigor
+
+`CLAUDE.md` cai de 664 para 227 linhas: cada regra em uma frase, com o portão que a prova. A história e os relatos de incidente vão, sem perder linha, para `docs/HISTORICO_DE_REGIMES.md`; a marca pessoal, para `docs/MARCA_PESSOAL.md` (skill e `layout/regras.json` apontam para lá). Pedido da central de 15/10, custo de leitura por sessão.
+
 ## 2026-10-15 · #PR · Blog sem a linha "Também no feed"
 
 Sai a frase visível do fim de `blog.html`, a pedido da editoria; o feed segue no `<link rel="alternate">` e no `<noscript>`. O contrato deixa de exigir "feed Atom".
