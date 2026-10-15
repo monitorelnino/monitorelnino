@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-15 · #PR · Juiz de saúde estadual primeiro (F62)
+
+`julgar_saude.py` passa a ser o primeiro comando do elo de saúde estadual e grava o que julgou quando o prazo o interrompe, pela mesma `julgar_lista` do juiz do Legal. Último da lista, ele era pulado toda semana (14/10: `--fontes` 52 min em hosts mortos) e `saude_uf.json` parou em 02/10. Ensaio 27 e catálogo F62.
+
 ## 2026-10-15 · #PR · Blog sem a linha "Também no feed"
 
 Sai a frase visível do fim de `blog.html`, a pedido da editoria; o feed segue no `<link rel="alternate">` e no `<noscript>`. O contrato deixa de exigir "feed Atom".

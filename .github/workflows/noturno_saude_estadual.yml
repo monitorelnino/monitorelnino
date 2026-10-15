@@ -42,6 +42,9 @@ jobs:
       # menos do que isto, e cada canal registra a sua própria decisão: canal que não rodou é erro
       # no log, nunca "consultado sem achado".
       comandos: |
+        # 15/10/2026: o juiz vem PRIMEIRO, sobre a fila acumulada. Por último, era pulado pelo prazo
+        # toda semana (14/10: --fontes 52 min em hosts mortos) e saude_uf.json parou em 02/10.
+        julgar_saude.py --aplicar
         coletar_saude_estadual.py --bateria
         coletar_saude_estadual.py --fontes
         coletar_saude_estadual.py --canais
@@ -49,10 +52,8 @@ jobs:
         # 02/10/2026 (diretriz da central): o canal 2 e BAIXAR A EDICAO. O localizador roda
         # antes do juiz, porque e dele que sai o indice de ocorrencias que a campanha consome.
         coletar_edicoes_doe.py --recuperacao --desde 2026-06-29
-        # 01/10/2026 (bloco das 23h10): o juiz roda LOGO DEPOIS dos quatro canais, toda
-        # noite, e o fechamento mede quantas UFs podem ser marcadas "nao localizado" —
-        # so onde os quatro canais rodaram sem motor doente. Nada disso espera instrucao.
-        julgar_saude.py --aplicar
+        # O fechamento mede quantas UFs podem ser marcadas "nao localizado" — so onde os quatro
+        # canais rodaram sem motor doente.
         scripts/fechar_saude.py --aplicar
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}

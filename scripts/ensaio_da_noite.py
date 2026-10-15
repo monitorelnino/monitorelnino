@@ -1090,7 +1090,12 @@ def ensaio_busca_web_pelo_coletor(diz) -> bool:
     seguem = [w.name for w in (raiz / ".github/workflows").glob("*.yml")
               if "seguir_pistas.py --limite" in w.read_text(encoding="utf-8")]
     diz(f"  {'✓' if seguem == ['noturno_descoberta.yml'] else '✗'} quem segue pistas: {seguem} (F61)")
-    return ok and seguem == ["noturno_descoberta.yml"]
+    # F62 (15/10/2026): o juiz de saúde era o último comando e o prazo o pulava toda semana.
+    saude = yaml.safe_load((raiz / ".github/workflows/noturno_saude_estadual.yml").read_text(encoding="utf-8"))
+    primeiro = [l for l in saude["jobs"]["saude-estadual"]["with"]["comandos"].splitlines()
+                if l.strip() and not l.strip().startswith("#")][0].strip()
+    diz(f"  {'✓' if primeiro.startswith('julgar_saude.py') else '✗'} primeiro comando da saúde estadual: {primeiro} (F62)")
+    return ok and seguem == ["noturno_descoberta.yml"] and primeiro.startswith("julgar_saude.py")
 
 
 ENSAIOS = (

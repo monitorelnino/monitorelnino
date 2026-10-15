@@ -339,20 +339,22 @@ def _hoje_iso() -> str:
     return hoje_editorial().isoformat()
 
 
-def julgar_lista(alvo: list, julgar_fn, aplicar: bool, vereditos: list, feitos: dict) -> bool:
+def julgar_lista(alvo: list, julgar_fn, aplicar: bool, vereditos: list, feitos: dict,
+                 aplicar_fn=None) -> bool:
     """Julga `alvo` até o fim ou até o prazo do elo. Devolve True se foi interrompida.
 
     14/10/2026 (janela C, lote 7): o prazo do elo interrompe o comando com SIGINT e dá 60 s de
     cortesia; o juiz morria no meio do laço sem gravar nada e perdia a rodada inteira (2 h de
     busca dirigida). O que foi julgado até a interrupção segue para a gravação; o resto fica
-    pendente e volta na rodada seguinte. `julgar_fn(p) -> veredito` é injetado."""
+    pendente e volta na rodada seguinte. `julgar_fn(p) -> veredito` é injetado; `aplicar_fn(p, v)
+    -> chave de `feitos`` também (o juiz de saúde usa esta mesma função, 15/10/2026)."""
     try:
         for p in alvo:
             v = julgar_fn(p)
             vereditos.append(v)
             if not aplicar:
                 continue   # relatório não escreve nem no objeto em memória que será gravado
-            feitos[aplicar_no_objeto(p, v)] += 1
+            feitos[(aplicar_fn or aplicar_no_objeto)(p, v)] += 1
     except KeyboardInterrupt:
         print(f"interrompido pelo prazo do elo: {len(vereditos)} julgada(s); o julgado é gravado, "
               f"o resto fica pendente")
