@@ -29,7 +29,7 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-16 · #789 · Topo sem a linha "2026/2027 · Monitoramento independente…"; cidade troca sem botão
+## 2026-10-16 · #790 · Topo sem a linha "2026/2027 · Monitoramento independente…"; cidade troca sem botão
 
 Sai do topo de todas as páginas a linha "2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab" e a faixa logo abaixo dela; a informação segue no rodapé. No cartão da cidade sai o botão ×: ao clicar de novo no campo do município, a lista do estado volta inteira e o cartão anterior fica até a nova escolha (editoria, 16/10).
 
