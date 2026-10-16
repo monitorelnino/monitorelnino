@@ -1346,7 +1346,9 @@ O painel do MS **não publica API**: o endereço é função interna do aplicati
 
 **Precedência.** Medição prevalece sobre modelo: o índice europeu estimado pelo CAMS sai da página quando entra a figura do ar medido, e as duas nunca aparecem no mesmo mapa nem na mesma contagem. A regra das 36 horas (§41.4) vale para cada estação e cada sensor: medição mais velha vira lacuna com a data da última leitura, nunca valor atual. Fonte que não respondeu sai com status e lista vazia, nunca com a lista da noite anterior; cada resposta é preservada por hash.
 
-**Apoio técnico (16/10/2026).** Com a figura do ar medido, três fontes do catálogo dos sinais deixam de ser exibidas no Monitor de riscos e passam a apoio técnico: "Temperatura observada e prevista" e "Qualidade do ar estimada" (Open-Meteo e CAMS, modelo), e "Qualidade do ar medida" (lista de locais do OpenAQ, usada só para casar as estações oficiais em `data/ar_medido.json`).
+**Errata (16/10/2026, noite):** as duas fontes Open-Meteo — temperatura (sem figura desde 27/09, quando a previsão das capitais passou ao INMET) e índice europeu de ar (CAMS, sem figura desde a do ar medido) — saem do coletor, do arquivo de sinais e da coleta municipal de clima (`clima_municipios.json`, que nenhuma página lia).
+
+**Apoio técnico (16/10/2026).** Com a figura do ar medido, a fonte "Qualidade do ar medida" (lista de locais do OpenAQ) deixa de ser exibida no Monitor de riscos e passa a apoio técnico: é usada só para casar as estações oficiais em `data/ar_medido.json`.
 
 ### 41.8 Focos de calor: o satélite de referência como base de comparação (16/10/2026)
 

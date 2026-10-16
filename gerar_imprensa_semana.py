@@ -50,7 +50,6 @@ JANELA_SECUNDARIA = 14
 
 # Acima deste valor a escala europeia sai da faixa "bom/razoável". A banda é DA FONTE (EAQI), não
 # nossa — o cartão cita a escala e não adjetiva.
-EAQI_LIMIAR = 40
 
 
 def data_do_ato(valor) -> date | None:
@@ -289,35 +288,6 @@ def cartao_temperatura(sinais):
                   t.get("data"), lista=lista,
                   nota=f"{t.get('capital')} ({uf}), previsão para {t.get('data')}; "
                        f"critério: {t.get('criterio')}")
-
-
-def cartao_qualidade_ar(sinais):
-    """10 · Capitais com índice de qualidade do ar acima da faixa boa/razoável.
-
-    O handover pede PM2,5. A editoria removeu o PM2,5 do site em 27/09 (§244 trocou por ÍNDICE),
-    então o cartão usa o índice — que é o que interessa a quem lê, e vem pronto da fonte.
-    """
-    ufs = (sinais or {}).get("uf") or {}
-    linhas = []
-    for uf, u in ufs.items():
-        ind = ((u.get("qualidade_ar") or {}).get("indice") or {})
-        if ind.get("valor") is not None:
-            linhas.append((uf, ind))
-    if not linhas:
-        return cartao("qualidade_ar_indice",
-                      "Capitais com índice de qualidade do ar acima da faixa boa ou razoável",
-                      None, "Copernicus CAMS via Open-Meteo", None, sem_coleta=True)
-    acima = [(uf, i) for uf, i in linhas if i["valor"] > EAQI_LIMIAR]
-    escala = linhas[0][1].get("escala")
-    publicado = linhas[0][1].get("publicado_por")
-    lista = [{"uf": uf, "valor": i["valor"], "hora": i.get("hora")}
-             for uf, i in sorted(acima, key=lambda x: -x[1]["valor"])]
-    return cartao("qualidade_ar_indice",
-                  f"Capitais com índice {escala} acima de {EAQI_LIMIAR}",
-                  len(acima), publicado or "Copernicus CAMS via Open-Meteo",
-                  linhas[0][1].get("hora"), lista=lista,
-                  nota=(f"escala {escala}, faixas da própria fonte; {len(linhas)} capital(is) com "
-                        f"leitura; critério: {linhas[0][1].get('criterio')}"))
 
 
 # ── cartões que o handover pede e que NÃO são calculáveis hoje ──────────────────────────────
@@ -711,7 +681,8 @@ def cartoes_das_emergencias(dc):
 
 
 def cartoes_do_risco_agora(dc, riscos, sinais):
-    """Risco agora: seis cartoes. Tres da Defesa civil, dois do Monitor de riscos, um do fogo."""
+    """Risco agora: cinco cartoes. Tres da Defesa civil, um do Monitor de riscos, um do fogo.
+    16/10/2026: o das capitais com o ar ruim saiu com o indice europeu (CAMS) que o alimentava."""
     d, r = por_id(dc), por_id(riscos)
     # Os tres primeiros cartoes vem do instantaneo da Defesa civil, que desde 08/10/2026 ja
     # declara a parada das 24 horas (scripts/gerar_topo_das_paginas.alertas_pararam). A Imprensa
@@ -731,9 +702,6 @@ def cartoes_do_risco_agora(dc, riscos, sinais):
         importado("temperatura_desvio_capital",
                   "A maior diferença de temperatura máxima em relação ao normal, em grau Celsius",
                   r.get("temperatura_desvio_capital"), grupo="risco_agora", unidade="°C",
-                  origem="monitor-de-riscos.html"),
-        importado("capitais_ar_ruim_ou_pior", "Capitais com o ar na faixa ruim ou acima dela",
-                  r.get("capitais_ar_ruim_ou_pior"), grupo="risco_agora",
                   origem="monitor-de-riscos.html"),
     ]
     return cartoes
@@ -1052,7 +1020,7 @@ def autoteste() -> int:
     checar("todo cartão importado declara a página de origem",
            all(c["pagina_de_origem"] == "defesa-civil.html" for c in emerg))
     risco = cartoes_do_risco_agora(DC, RIS, {"uf": {"PA": {"fogo": {"focos_24h": 9, "consultado_em": "x"}}}})
-    checar("risco agora tem seis cartões", len(risco) == 6)
+    checar("risco agora tem cinco cartões", len(risco) == 5)
     checar("o calor da imprensa é o DESVIO, e vem do Monitor de riscos",
            risco[4]["valor"] == 2.9 and risco[4]["pagina_de_origem"] == "monitor-de-riscos.html")
     din = cartoes_do_dinheiro_importados(FIN, {"municipios_com_ato": 68})
@@ -1080,7 +1048,7 @@ def autoteste() -> int:
     checar("os cinco grupos existem na edição",
            {c["grupo"] for c in CARTOES_DO_TESTE} == {"preparacao", "emergencias", "risco_agora",
                                                       "dinheiro", "saude"})
-    for grupo, quantos in (("preparacao", 3), ("emergencias", 3), ("risco_agora", 6),
+    for grupo, quantos in (("preparacao", 3), ("emergencias", 3), ("risco_agora", 5),
                            ("dinheiro", 3), ("saude", 3)):
         checar(f"o grupo '{grupo}' tem {quantos} cartões",
                sum(1 for c in CARTOES_DO_TESTE if c["grupo"] == grupo) == quantos)

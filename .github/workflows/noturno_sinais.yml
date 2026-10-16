@@ -69,7 +69,7 @@ jobs:
       timeout_minutos: 30
       comandos: |
         # Avisos do INMET, focos do INPE, seca, ONI/RONI e anomalia — tudo o que o Monitor de riscos
-        # desenha. Sem `--municipios`: esse recorte é do clima municipal, que fica no atualizar.yml.
+        # desenha, mais o ar medido, os focos de referência, as manchas de seca e a consulta do município.
         coletar_sinais_risco.py
         # 11/10/2026 (F38): transferências da União a municípios, do download de dados abertos do
         # Portal da Transparência. Saiu da rotina semanal de sinais, que estourou o teto quatro vezes

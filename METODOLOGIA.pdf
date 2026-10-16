@@ -8163,7 +8163,7 @@ endstream
 endobj
 205 0 obj
 <<
-/Length 9706
+/Length 9628
 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -8265,9 +8265,9 @@ BT 1 0 0 1 0 53.7 Tm .30813 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Pr
 Q
 Q
 q
-1 0 0 1 57.02362 71.33543 cm
+1 0 0 1 57.02362 83.93543 cm
 q
-BT 1 0 0 1 0 41.1 Tm .459825 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Apoio t\351cnico \(16/10/2026\).) Tj /F1 9.3 Tf ( Com a figura do ar medido, tr\352s fontes do cat\341logo dos sinais deixam de ser exibidas) Tj T* 0 Tw .712809 Tw (no Monitor de riscos e passam a apoio t\351cnico: "Temperatura observada e prevista" e "Qualidade do ar estimada") Tj T* 0 Tw .925341 Tw (\(Open-Meteo e CAMS, modelo\), e "Qualidade do ar medida" \(lista de locais do OpenAQ, usada s\363 para casar as) Tj T* 0 Tw (esta\347\365es oficiais em data/ar_medido.json\).) Tj T* ET
+BT 1 0 0 1 0 28.5 Tm .13639 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Errata \(16/10/2026, noite\):) Tj /F1 9.3 Tf ( as duas fontes Open-Meteo \227 temperatura \(sem figura desde 27/09, quando a previs\343o) Tj T* 0 Tw 1.473577 Tw (das capitais passou ao INMET\) e \355ndice europeu de ar \(CAMS, sem figura desde a do ar medido\) \227 saem do) Tj T* 0 Tw (coletor, do arquivo de sinais e da coleta municipal de clima \(clima_municipios.json, que nenhuma p\341gina lia\).) Tj T* ET
 Q
 Q
  
@@ -8275,7 +8275,7 @@ endstream
 endobj
 206 0 obj
 <<
-/Length 8730
+/Length 8807
 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -8288,101 +8288,100 @@ BT 1 0 0 1 511.312 34.01575 Tm (p\341gina 68) Tj T* ET
 n 51.02362 45.35433 m 544.252 45.35433 l S
 Q
 q
-1 0 0 1 57.02362 777.9354 cm
+1 0 0 1 57.02362 752.7354 cm
+q
+BT 1 0 0 1 0 28.5 Tm 1.815558 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Apoio t\351cnico \(16/10/2026\).) Tj /F1 9.3 Tf ( Com a figura do ar medido, a fonte "Qualidade do ar medida" \(lista de locais do) Tj T* 0 Tw 1.032757 Tw (OpenAQ\) deixa de ser exibida no Monitor de riscos e passa a apoio t\351cnico: \351 usada s\363 para casar as esta\347\365es) Tj T* 0 Tw (oficiais em data/ar_medido.json.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 735.1354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (### 41.8 Focos de calor: o sat\351lite de refer\352ncia como base de compara\347\343o \(16/10/2026\)) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 709.9354 cm
+1 0 0 1 57.02362 667.1354 cm
 q
 BT 1 0 0 1 0 53.7 Tm 1.421962 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (O arquivo di\341rio do INPE traz a detec\347\343o de ) Tj /F2 9.3 Tf (todos) Tj /F1 9.3 Tf ( os sat\351lites, e o mesmo fogo aparece em v\341rios deles: em) Tj T* 0 Tw .484172 Tw (15/10/2026 foram 35.850 linhas no dia, 569 do sat\351lite de refer\352ncia \(AQUA_M-T\). Somar sat\351lites conta o mesmo) Tj T* 0 Tw .394136 Tw (fogo mais de uma vez e muda com o n\372mero de sat\351lites em \363rbita; por isso toda ) Tj /F2 9.3 Tf (compara\347\343o entre dias e entre) Tj T* 0 Tw .321619 Tw (anos) Tj /F1 9.3 Tf ( usa s\363 o sat\351lite de refer\352ncia, que \351 o que o INPE usa na sua pr\363pria s\351rie hist\363rica e o \372nico que o arquivo) Tj T* 0 Tw (anual de refer\352ncia traz.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 616.7354 cm
+1 0 0 1 57.02362 573.9354 cm
 q
 BT 1 0 0 1 0 78.9 Tm 2.30949 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (data/focos_referencia.json, escrito pelo elo dos sinais, guarda por dia \(hor\341rio GMT, como o INPE publica\) a) Tj T* 0 Tw .147464 Tw (contagem por UF, por bioma e por munic\355pio \(c\363digo IBGE\), numa s\351rie de 400 dias que cobre o mesmo dia do ano) Tj T* 0 Tw .639921 Tw (anterior; o ano anterior vem do arquivo anual de refer\352ncia, lido uma vez. M\352s e 30 dias s\343o somas dos dias com) Tj T* 0 Tw 1.107136 Tw (arquivo, e o n\372mero de dias vai junto: dia sem arquivo fica fora da soma, nunca vira zero. O dia corrente nunca) Tj T* 0 Tw .216339 Tw (entra, porque o arquivo dele nasce vazio e enche ao longo do dia. ) Tj /F2 9.3 Tf (Terra ind\355gena e unidade de conserva\347\343o n\343o) Tj T* 0 Tw -0.087842 Tw (v\352m na fonte) Tj /F1 9.3 Tf ( \(sondado em 16/10/2026\) e n\343o s\343o estimadas. O mapa de pontos agregados em grade continua com) Tj T* 0 Tw (todos os sat\351lites: ele mostra onde h\341 fogo, n\343o compara per\355odos.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 599.1354 cm
+1 0 0 1 57.02362 556.3354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (### 41.9 Manchas do Monitor de Secas: a geometria do mapa mensal \(16/10/2026\)) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 493.3354 cm
+1 0 0 1 57.02362 450.5354 cm
 q
 BT 1 0 0 1 0 91.5 Tm 2.065921 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (A API do Monitor de Secas entrega a tabela por UF \(\247 dos dados tabulares\) e as imagens do mapa, n\343o a) Tj T* 0 Tw 1.945879 Tw (geometria. O shapefile mensal est\341 no reposit\363rio p\372blico de arquivos do Monitor, com o nome que o pr\363prio) Tj T* 0 Tw .593042 Tw (aplicativo monta \(uploads/mapas/) Tj (<) Tj (m\352s) Tj (>) Tj (<) Tj (ano) Tj (>) Tj (.zip; o de setembro de 2026 foi publicado em 16/10/2026, 15,8 MB\).) Tj T* 0 Tw 1.322915 Tw (data/secas_manchas.json, escrito pelo elo dos sinais, guarda as manchas por categoria \(S0 a S4, no c\363digo da) Tj T* 0 Tw .09671 Tw (fonte; outro c\363digo fica s\363 como veio\), com an\351is simplificados para desenho \(Douglas-Peucker, toler\342ncia de 0,02\260,) Tj T* 0 Tw 1.503211 Tw (cerca de 2 km\) e o m\352s do mapa. O contorno oficial \351 o do arquivo original, identificado pelo hash no livro de) Tj T* 0 Tw -0.100093 Tw (consultas. O arquivo \351 baixado uma vez por m\352s: m\352s j\341 gravado n\343o \351 baixado de novo, e m\352s ainda n\343o publicado) Tj T* 0 Tw (cai para o anterior. A tabela por UF continua sendo a fonte dos n\372meros; a mancha \351 desenho.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 475.7354 cm
+1 0 0 1 57.02362 432.9354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (### 41.10 A consulta do munic\355pio no Monitor de riscos \(16/10/2026\)) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 382.5354 cm
+1 0 0 1 57.02362 339.7354 cm
 q
 BT 1 0 0 1 0 78.9 Tm .037189 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (data/riscos_municipio/) Tj (<) Tj (UF) Tj (>) Tj (.json, escrito pelo elo dos sinais depois dos demais arquivos dele, junta por c\363digo IBGE) Tj T* 0 Tw 1.032293 Tw (o que j\341 est\341 guardado: focos do sat\351lite de refer\352ncia em 30 dias \(zero s\363 quando a s\351rie tem os 30 dias; com) Tj T* 0 Tw .464992 Tw (menos, o campo fica vazio\), avisos do INMET e alertas do CEMADEN em vigor, os tr\352s decretos de resposta mais) Tj T* 0 Tw .491497 Tw (recentes do ciclo \(casados pelo nome e UF, como o registro de resposta guarda\), a esta\347\343o oficial de ar com IQAr) Tj T* 0 Tw .233422 Tw (vigente e o sensor com leitura mais pr\363ximos ) Tj /F2 9.3 Tf (at\351 50 km) Tj /F1 9.3 Tf (, com a dist\342ncia \(al\351m disso a esta\347\343o mede outra cidade,) Tj T* 0 Tw 1.231136 Tw (e o munic\355pio fica sem bloco de ar\), e a capital mais pr\363xima, com a dist\342ncia. Nada \351 recalculado. O plano do) Tj T* 0 Tw (munic\355pio continua no card do munic\355pio, que a consulta j\341 l\352.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 364.9354 cm
+1 0 0 1 57.02362 322.1354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (### 41.11 A consulta do munic\355pio na p\341gina de Sa\372de \(16/10/2026\)) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 271.7354 cm
+1 0 0 1 57.02362 228.9354 cm
 q
 BT 1 0 0 1 0 78.9 Tm -0.034885 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (data/saude_municipio/) Tj (<) Tj (UF) Tj (>) Tj (.json, escrito pelo elo da sa\372de depois dos coletores que ele l\352, junta por c\363digo IBGE: o) Tj T* 0 Tw .867339 Tw (n\355vel de alerta de dengue e de chikungunya do InfoDengue na semana mais recente que a fonte publica, com os) Tj T* 0 Tw .402991 Tw (casos estimados e a \372ltima semana com notifica\347\365es registradas \(a capital que a s\351rie municipal n\343o traz recebe o) Tj T* 0 Tw .434645 Tw (alerta por capital, da mesma fonte\); a classe de excesso de calor do Painel do Minist\351rio da Sa\372de, no vocabul\341rio) Tj T* 0 Tw 2.004414 Tw (dele; e o degrau de sa\372de do plano municipal na leitura autom\341tica \(\24710.1\), casado pela URL do documento) Tj T* 0 Tw -0.071871 Tw (registrado. Munic\355pio que a fonte n\343o leu fica sem o bloco, e a p\341gina diz que n\343o foi lido \227 nunca zero. Respirat\363ria) Tj T* 0 Tw (grave e MAR\311 Sa\372de s\343o do estado e a p\341gina os diz como do estado.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 254.1354 cm
+1 0 0 1 57.02362 211.3354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (## 42. O dinheiro pr\363prio do munic\355pio em defesa civil: tr\352s camadas, e a que existe para todos \(24/09/2026\)) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 223.9354 cm
+1 0 0 1 57.02362 181.1354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 15.9 Tm /F1 9.3 Tf 12.6 TL .362691 Tw (Peso zero nos dois \355ndices, provado por port\343o e pelo teste de estresse que renomeia data/financiamento/ inteira e) Tj T* 0 Tw (confere que o \355ndice recomputado \351 id\352ntico bit a bit.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 206.3354 cm
+1 0 0 1 57.02362 163.5354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (### 42.1 Por que tr\352s camadas, e n\343o uma) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 150.9354 cm
+1 0 0 1 57.02362 108.1354 cm
 q
 BT 1 0 0 1 0 41.1 Tm 1.153191 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (A pergunta da editoria foi "quantos reais por habitante existem nos fundos de defesa civil de cada munic\355pio". O) Tj T* 0 Tw 1.090539 Tw /F2 9.3 Tf (saldo do Fundo Municipal de Prote\347\343o e Defesa Civil n\343o \351 dado centralizado) Tj /F1 9.3 Tf (: existe s\363 no portal ou na lei) Tj T* 0 Tw .646922 Tw (or\347ament\341ria de cada munic\355pio, e muitos munic\355pios n\343o t\352m fundo. Perseguir s\363 isso produziria um mapa quase) Tj T* 0 Tw (vazio por muitos meses.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 120.7354 cm
+1 0 0 1 57.02362 77.93543 cm
 q
 BT 1 0 0 1 0 15.9 Tm -0.093009 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (Existe, por\351m, um dado irm\343o ) Tj /F2 9.3 Tf (centralizado para os 5.570) Tj /F1 9.3 Tf (: a despesa na subfun\347\343o ) Tj /F2 9.3 Tf (06.182 \(Defesa Civil\)) Tj /F1 9.3 Tf (, que todo) Tj T* 0 Tw (munic\355pio declara ao SICONFI na Declara\347\343o de Contas Anuais. Da\355 as tr\352s camadas:) Tj T* ET
-Q
-Q
-q
-1 0 0 1 57.02362 90.53543 cm
-q
-BT 1 0 0 1 4.251969 15.9 Tm /F1 10 Tf 12 TL .101961 .054902 .031373 rg (\177) Tj ET
-BT 1 0 0 1 17.00787 15.9 Tm .885787 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (A \227 despesa na subfun\347\343o 182, todos os munic\355pios.) Tj /F1 9.3 Tf ( Centralizada, anual, completa. \311 a que faz o mapa) Tj T* 0 Tw (nascer cheio.) Tj T* ET
 Q
 Q
  
@@ -8390,7 +8389,7 @@ endstream
 endobj
 207 0 obj
 <<
-/Length 9096
+/Length 9171
 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -8406,123 +8405,130 @@ q
 1 0 0 1 57.02362 765.3354 cm
 q
 BT 1 0 0 1 4.251969 15.9 Tm /F1 10 Tf 12 TL .101961 .054902 .031373 rg (\177) Tj ET
-BT 1 0 0 1 17.00787 15.9 Tm .006293 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (B \227 o munic\355pio tem fundo?) Tj /F1 9.3 Tf ( MUNIC/IBGE como camada declarada e a lei municipal que institui o fundo como) Tj T* 0 Tw (documento prim\341rio.) Tj T* ET
+BT 1 0 0 1 17.00787 15.9 Tm .885787 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (A \227 despesa na subfun\347\343o 182, todos os munic\355pios.) Tj /F1 9.3 Tf ( Centralizada, anual, completa. \311 a que faz o mapa) Tj T* 0 Tw (nascer cheio.) Tj T* ET
 Q
 Q
 q
 1 0 0 1 57.02362 737.1354 cm
 q
 BT 1 0 0 1 4.251969 15.9 Tm /F1 10 Tf 12 TL .101961 .054902 .031373 rg (\177) Tj ET
+BT 1 0 0 1 17.00787 15.9 Tm .006293 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (B \227 o munic\355pio tem fundo?) Tj /F1 9.3 Tf ( MUNIC/IBGE como camada declarada e a lei municipal que institui o fundo como) Tj T* 0 Tw (documento prim\341rio.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 708.9354 cm
+q
+BT 1 0 0 1 4.251969 15.9 Tm /F1 10 Tf 12 TL .101961 .054902 .031373 rg (\177) Tj ET
 BT 1 0 0 1 17.00787 15.9 Tm .372098 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (C \227 quanto h\341 no fundo, por amostragem.) Tj /F1 9.3 Tf ( Capitais primeiro, depois os 313 do painel, depois os priorit\341rios.) Tj T* 0 Tw (Fila pr\363pria, prioridade baixa, sem disputar com a rotina dos planos.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 721.5354 cm
+1 0 0 1 57.02362 693.3354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (### 42.2 A subfun\347\343o 182 e suas duas limita\347\365es, que a legenda \351 obrigada a dizer) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 666.1354 cm
+1 0 0 1 57.02362 637.9354 cm
 q
 BT 1 0 0 1 0 41.1 Tm .658741 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Ela soma prepara\347\343o e resposta) Tj /F1 9.3 Tf (, e a fonte n\343o separa as duas. Um munic\355pio que gastou tudo socorrendo uma) Tj T* 0 Tw 3.341973 Tw (enchente aparece igual a um que gastou tudo em plano e treinamento. Por isso a legenda p\372blica traz,) Tj T* 0 Tw .651572 Tw (obrigatoriamente, ") Tj /F2 9.3 Tf (inclui prepara\347\343o e resposta) Tj /F1 9.3 Tf (" \227 declarado no dado, exigido na p\341gina, e o port\343o reprova se) Tj T* 0 Tw (sair de qualquer um dos dois.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 623.3354 cm
+1 0 0 1 57.02362 595.1354 cm
 q
 BT 1 0 0 1 0 28.5 Tm 2.666227 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Parte dos munic\355pios lan\347a defesa civil em outra subfun\347\343o) Tj /F1 9.3 Tf ( \227 drenagem \(17.512\), urbanismo \(15.451\),) Tj T* 0 Tw .159185 Tw (seguran\347a p\372blica \(06.181\). Por isso a classe se chama sem_lancamento_182 e ) Tj /F2 9.3 Tf (n\343o) Tj /F1 9.3 Tf ( "sem gasto em defesa civil": \351) Tj T* 0 Tw (aus\352ncia de lan\347amento ) Tj /F3 9.3 Tf (naquela) Tj /F1 9.3 Tf ( subfun\347\343o, e dizer mais do que isso seria conclus\343o que o dado n\343o autoriza.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 605.7354 cm
+1 0 0 1 57.02362 577.5354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (### 42.3 Tr\352s classes de aus\352ncia, nenhuma delas zero) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 550.3354 cm
+1 0 0 1 57.02362 522.1354 cm
 q
 BT 1 0 0 1 0 41.1 Tm .27527 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (sem_lancamento_182 \(entregou a DCA e n\343o lan\347ou ali\) \267 sem_declaracao \(n\343o entregou o exerc\355cio\) \267 sem_coleta) Tj T* 0 Tw .602425 Tw (\(o Monitor ainda n\343o consultou\). Nenhuma tem valor por habitante, e o port\343o reprova se alguma tiver. A mediana) Tj T* 0 Tw .487078 Tw (publicada \351 calculada ) Tj /F2 9.3 Tf (s\363 sobre quem tem lan\347amento) Tj /F1 9.3 Tf (: incluir as aus\352ncias como zero rebaixaria a mediana com) Tj T* 0 Tw (n\343o-dado.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 494.9354 cm
+1 0 0 1 57.02362 466.7354 cm
 q
 BT 1 0 0 1 0 41.1 Tm .890725 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (E uma quarta armadilha, que o piloto das capitais produziu: ) Tj /F2 9.3 Tf (valor real pequeno n\343o \351 zero) Tj /F1 9.3 Tf (. Curitiba liquidou R$) Tj T* 0 Tw 1.029708 Tw (2.467,02 para 1,77 milh\343o de habitantes, o que arredondado a duas casas virava R$ 0,00 por habitante. O dado) Tj T* 0 Tw .473407 Tw (guarda seis casas e a exibi\347\343o diz "menos de R$ 0,01". Arredondar para zero um valor que existe \351 o mesmo erro) Tj T* 0 Tw (das classes de aus\352ncia, s\363 mais dif\355cil de ver.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 477.3354 cm
+1 0 0 1 57.02362 449.1354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (### 42.4 A exce\347\343o federativa do Distrito Federal) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 447.1354 cm
+1 0 0 1 57.02362 418.9354 cm
 q
 BT 1 0 0 1 0 15.9 Tm 2.26609 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (O DF ) Tj /F2 9.3 Tf (n\343o entrega DCA municipal porque n\343o \351 munic\355pio) Tj /F1 9.3 Tf (: declara como estado. Classific\341-lo como "n\343o) Tj T* 0 Tw (entregou" imputaria a ele uma falha que n\343o existe, e o registro carrega a nota da natureza federativa.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 429.5354 cm
+1 0 0 1 57.02362 401.3354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (### 42.5 Forma da fonte, medida com rede) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 361.5354 cm
+1 0 0 1 57.02362 333.3354 cm
 q
 BT 1 0 0 1 0 53.7 Tm .58425 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (Anexo DCA-Anexo I-E; a subfun\347\343o vem no campo conta, como "06.182 - Defesa Civil"; o campo coluna distingue) Tj T* 0 Tw .540787 Tw (empenhada, liquidada, paga e as duas de inscri\347\343o de restos a pagar, e a ) Tj /F2 9.3 Tf (liquidada) Tj /F1 9.3 Tf ( \351 a publicada, com as outras) Tj T* 0 Tw .242771 Tw (guardadas porque a diferen\347a entre elas \351 informa\347\343o. id_ente tem de ser o c\363digo IBGE exato, e consulta sem ele) Tj T* 0 Tw 1.117541 Tw (devolve zero itens: ) Tj /F2 9.3 Tf (n\343o existe consulta em lote) Tj /F1 9.3 Tf (, ent\343o s\343o 5.570 chamadas, o que cabe na cad\352ncia anual da) Tj T* 0 Tw (DCA. Cada registro guarda a URL consultada, a data e o hash da resposta.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 306.1354 cm
+1 0 0 1 57.02362 277.9354 cm
 q
 BT 1 0 0 1 0 41.1 Tm .125541 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (O c\341lculo \351 despesa liquidada na subfun\347\343o 06.182 \367 popula\347\343o do Censo 2022, com a f\363rmula declarada no dado.) Tj T* 0 Tw .460587 Tw (A popula\347\343o \351 ) Tj /F2 9.3 Tf (sempre) Tj /F1 9.3 Tf ( a do Censo 2022, nunca a estimativa que o pr\363prio SICONFI devolve \227 que fica guardada) Tj T* 0 Tw .142075 Tw (como contexto, e cuja diferen\347a muda o n\372mero publicado: no Rio de Janeiro, R$ 0,47 por habitante pela estimativa) Tj T* 0 Tw (do SICONFI contra R$ 0,50 pelo Censo.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 288.5354 cm
+1 0 0 1 57.02362 260.3354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (## 43. A rodada nacional e os tetos que as fontes imp\365em \(24/09/2026\)) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 270.9354 cm
+1 0 0 1 57.02362 242.7354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (Varrer os 5.571 munic\355pios n\343o \351 a mesma coisa que varrer 27 capitais, e o que muda n\343o \351 s\363 o tempo.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 253.3354 cm
+1 0 0 1 57.02362 225.1354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (### 43.1 O que a escala quebra, e que 27 n\343o mostram) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 197.9354 cm
+1 0 0 1 57.02362 169.7354 cm
 q
 BT 1 0 0 1 0 41.1 Tm 2.284855 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Entrada e sa\355da.) Tj /F1 9.3 Tf ( O livro de buscas \351 lido e regravado a cada execu\347\343o registrada. A 27 munic\355pios isso \351) Tj T* 0 Tw .670057 Tw (irrelevante; a 5.570, s\343o cerca de 180 GB de E/S e outras tantas janelas em que uma interrup\347\343o deixa o arquivo) Tj T* 0 Tw .326471 Tw (pela metade. Coletor de varredura nacional abre ) Tj /F2 9.3 Tf (lote) Tj /F1 9.3 Tf ( no log: acumula em mem\363ria e descarrega de 250 em 250 \227) Tj T* 0 Tw (teto que limita a E/S e tamb\351m o que se perde numa interrup\347\343o.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 129.9354 cm
+1 0 0 1 57.02362 101.7354 cm
 q
 BT 1 0 0 1 0 53.7 Tm .053002 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (E vale para todo arquivo grande escrito por item, n\343o s\363 o log \(25/09/2026\).) Tj /F1 9.3 Tf ( O livro de fontes consultadas tem o) Tj T* 0 Tw 1.264327 Tw (mesmo padr\343o de escrita e o mesmo tamanho de ordem de grandeza; a regra, portanto, \351 do padr\343o e n\343o do) Tj T* 0 Tw .002897 Tw (arquivo: ) Tj /F2 9.3 Tf (coletor que percorre munic\355pios n\343o grava arquivo grande por item) Tj /F1 9.3 Tf (, acumula e descarrega com teto. O) Tj T* 0 Tw .686864 Tw (teto \351 o que limita tanto a entrada e sa\355da quanto o que uma interrup\347\343o levaria embora, e o fechamento vai num) Tj T* 0 Tw (finally, porque perder milhares de registros por causa de uma interrup\347\343o \351 pior do que a E/S que o lote evita.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 74.53543 cm
+1 0 0 1 57.02362 71.53543 cm
 q
-BT 1 0 0 1 0 41.1 Tm .60832 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (Um detalhe do diagn\363stico merece registro, porque se repete: ) Tj /F2 9.3 Tf (o custo de escrever s\363 aparece quando a leitura) Tj T* 0 Tw .466764 Tw (volta a funcionar) Tj /F1 9.3 Tf (. Enquanto o canal do DOU lia zero por uma mudan\347a de formato da fonte, o la\347o que grava por) Tj T* 0 Tw .629291 Tw (munic\355pio nunca rodava; consertar a leitura foi o que exp\364s a escrita. Rodada que parece travada, portanto, n\343o \351) Tj T* 0 Tw .842866 Tw (sempre a fonte: medir por partes \227 varredura, leitura do documento, parser, la\347o de grava\347\343o \227 \351 o que separa) Tj T* 0 Tw ET
+BT 1 0 0 1 0 15.9 Tm .60832 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (Um detalhe do diagn\363stico merece registro, porque se repete: ) Tj /F2 9.3 Tf (o custo de escrever s\363 aparece quando a leitura) Tj T* 0 Tw .466764 Tw (volta a funcionar) Tj /F1 9.3 Tf (. Enquanto o canal do DOU lia zero por uma mudan\347a de formato da fonte, o la\347o que grava por) Tj T* 0 Tw ET
 Q
 Q
  
@@ -8530,7 +8536,7 @@ endstream
 endobj
 208 0 obj
 <<
-/Length 8944
+/Length 9071
 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -8543,111 +8549,104 @@ BT 1 0 0 1 511.312 34.01575 Tm (p\341gina 70) Tj T* ET
 n 51.02362 45.35433 m 544.252 45.35433 l S
 Q
 q
-1 0 0 1 57.02362 777.9354 cm
+1 0 0 1 57.02362 752.7354 cm
 q
-BT 1 0 0 1 0 3.3 Tm 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (rede de serializa\347\343o.) Tj T* ET
+BT 1 0 0 1 0 28.5 Tm .629291 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (munic\355pio nunca rodava; consertar a leitura foi o que exp\364s a escrita. Rodada que parece travada, portanto, n\343o \351) Tj T* 0 Tw .842866 Tw (sempre a fonte: medir por partes \227 varredura, leitura do documento, parser, la\347o de grava\347\343o \227 \351 o que separa) Tj T* 0 Tw (rede de serializa\347\343o.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 722.5354 cm
+1 0 0 1 57.02362 697.3354 cm
 q
 BT 1 0 0 1 0 41.1 Tm .216339 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Desenho.) Tj /F1 9.3 Tf ( Um ponto por munic\355pio com tratador de mouse \351 natural a 27 e insustent\341vel a 5.571: a p\341gina passava) Tj T* 0 Tw .057341 Tw (de cinco para catorze segundos. A varredura nacional usa ) Tj /F2 9.3 Tf (camada densa por classe) Tj /F1 9.3 Tf ( \227 um caminho por classe \227,) Tj T* 0 Tw .234184 Tw (e o detalhe por munic\355pio vive na lista, que \351 a alternativa can\364nica do site. A lista, por sua vez, \351 montada ) Tj /F2 9.3 Tf (quando) Tj T* 0 Tw (o leitor a abre) Tj /F1 9.3 Tf (: cinco mil entradas constru\355das no carregamento custam segundos que ningu\351m pediu.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 667.1354 cm
+1 0 0 1 57.02362 641.9354 cm
 q
 BT 1 0 0 1 0 41.1 Tm 1.670709 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Escala de cor.) Tj /F1 9.3 Tf ( Uma escala cont\355nua de zero ao m\341ximo funciona quando a distribui\347\343o \351 estreita. A despesa) Tj T* 0 Tw .050677 Tw (municipal em defesa civil vai de menos de um centavo a R$ 2.209,50 por habitante, com mediana de R$ 8,50: numa) Tj T* 0 Tw .412912 Tw (escala cont\355nua, 99 % do pa\355s cai na mesma cor e o mapa n\343o diz nada. Distribui\347\343o assim\351trica pede ) Tj /F2 9.3 Tf (classe por) Tj T* 0 Tw (quantil) Tj /F1 9.3 Tf (, com os limites escritos na legenda \227 cinco tons sem limite declarado n\343o significam nada.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 649.5354 cm
+1 0 0 1 57.02362 624.3354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (### 43.2 Os tetos das fontes s\343o regra, n\343o obst\341culo) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 581.5354 cm
+1 0 0 1 57.02362 556.3354 cm
 q
 BT 1 0 0 1 0 53.7 Tm 1.001484 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Teto por localidade.) Tj /F1 9.3 Tf ( O plano gratuito do Open-Meteo conta ) Tj /F2 9.3 Tf (por localidade) Tj /F1 9.3 Tf (, n\343o por requisi\347\343o: um pedido com) Tj T* 0 Tw .229908 Tw (cem coordenadas gasta cem. Os 5.570 munic\355pios em duas vari\341veis somam 11.140 \227 acima do teto di\341rio de dez) Tj T* 0 Tw -0.123097 Tw (mil. A consequ\352ncia \351 de m\351todo, n\343o de c\363digo: as vari\341veis s\343o coletadas em ) Tj /F2 9.3 Tf (rodadas separadas) Tj /F1 9.3 Tf (, alternando por) Tj T* 0 Tw .814476 Tw (dia, e o coletor ) Tj /F2 9.3 Tf (retoma) Tj /F1 9.3 Tf ( de onde parou. A cobertura de cada vari\341vel fica declarada na pr\363pria p\341gina, porque um) Tj T* 0 Tw (mapa com 5.570 pontos e outro com 1.700 parecem a mesma coisa.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 538.7354 cm
+1 0 0 1 57.02362 513.5354 cm
 q
 BT 1 0 0 1 0 28.5 Tm 1.104157 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Limite de taxa.) Tj /F1 9.3 Tf ( Varrer em rajada trouxe HTTP 429 em 39 de 56 lotes \227 e uma coleta pela metade que, sem o) Tj T* 0 Tw 1.460091 Tw (resumo por vari\341vel, teria passado por cobertura. Limite de taxa \351 regra de acesso da fonte: cumpri-lo significa) Tj T* 0 Tw /F2 9.3 Tf (pausa entre lotes e espera crescente) Tj /F1 9.3 Tf (, nunca insistir mais r\341pido.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 483.3354 cm
+1 0 0 1 57.02362 458.1354 cm
 q
 BT 1 0 0 1 0 41.1 Tm .581822 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Paralelismo, quando a fonte aceita.) Tj /F1 9.3 Tf ( Contra o Tesouro, medido: um trabalhador d\341 60 chamadas por minuto, oito) Tj T* 0 Tw .344978 Tw (d\343o 522, sem erro. Seis \351 o meio-termo adotado \227 corta a varredura de seis horas para vinte minutos sem tratar a) Tj T* 0 Tw .851872 Tw (fonte como se fosse nossa. E paraleliza-se ) Tj /F2 9.3 Tf (s\363 a rede) Tj /F1 9.3 Tf (: tudo o que muta estado corre numa thread s\363, em ordem,) Tj T* 0 Tw (porque uma corrida de dados no livro de buscas custa mais do que as horas economizadas.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 465.7354 cm
+1 0 0 1 57.02362 440.5354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (### 43.3 Recusa transit\363ria n\343o \351 aus\352ncia) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 397.7354 cm
+1 0 0 1 57.02362 372.5354 cm
 q
 BT 1 0 0 1 0 53.7 Tm 1.631408 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (Uma fonte pode responder, recusar e responder de novo no mesmo dia. O painel de excesso de calor do MS) Tj T* 0 Tw .451622 Tw (devolveu 5.573 munic\355pios numa consulta e 200 com corpo vazio minutos depois. Tratar a segunda resposta como) Tj T* 0 Tw 1.90153 Tw (aus\352ncia definitiva deixaria a fonte eternamente em "aguardando primeira coleta" por causa de uma janela de) Tj T* 0 Tw .762102 Tw (minutos. A regra que da\355 resulta: ) Tj /F2 9.3 Tf (recusa servida com 200 continua sendo recusa) Tj /F1 9.3 Tf ( \227 nunca vira zero \227, mas o) Tj T* 0 Tw (coletor espera e tenta de novo antes de desistir da rodada.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 342.3354 cm
+1 0 0 1 57.02362 317.1354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 41.1 Tm /F1 9.3 Tf 12.6 TL .045225 Tw (E h\341 a recusa que n\343o \351 transit\363ria, e essa se respeita sem insist\352ncia: 403 em tudo que n\343o seja a figura publicada) Tj T* 0 Tw .542647 Tw (\(probabilidades ENSO do IRI\), e tela de login servida com 200 \(s\351rie do InfoGripe\). Nos dois casos o que entra no) Tj T* 0 Tw .232916 Tw (site \351 lacuna declarada, com o que foi testado escrito por extenso \227 para que ningu\351m repita a busca e para que a) Tj T* 0 Tw (volta da fonte seja reconhecida quando acontecer.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 324.7354 cm
+1 0 0 1 57.02362 299.5354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (### 43.4 Quando o teto obriga a misturar dias, a data \351 por dado \(25/09/2026\)) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 281.9354 cm
+1 0 0 1 57.02362 256.7354 cm
 q
 BT 1 0 0 1 0 28.5 Tm .65246 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (Um teto que conta por localidade n\343o \351 s\363 um limite de volume: ele decide a ) Tj /F2 9.3 Tf (periodicidade poss\355vel) Tj /F1 9.3 Tf (. Com 5.570) Tj T* 0 Tw 1.293157 Tw (munic\355pios e duas vari\341veis contra um teto de dez mil por dia, renovar as duas no mesmo dia \351 imposs\355vel por) Tj T* 0 Tw (constru\347\343o \227 a rotina alterna a vari\341vel pelo dia, e o arquivo ter\341 sempre leituras de datas diferentes.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 226.5354 cm
+1 0 0 1 57.02362 201.3354 cm
 q
 BT 1 0 0 1 0 41.1 Tm .114019 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (Da\355 a regra: ) Tj /F2 9.3 Tf (quando o teto obriga a misturar dias, a data deixa de ser do arquivo e passa a ser do dado) Tj /F1 9.3 Tf (. Cada) Tj T* 0 Tw 1.219984 Tw (leitura carrega a data em que foi feita, o resumo conta por data, e a p\341gina diz de quando \351 cada vari\341vel. Um) Tj T* 0 Tw .121738 Tw (carimbo \372nico de "gerado em" sobre um arquivo de datas mistas afirma atualidade que o dado n\343o tem \227 e \351 o tipo) Tj T* 0 Tw (de afirma\347\343o que ningu\351m percebe, porque o n\372mero est\341 certo e s\363 a data est\341 errada.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 171.1354 cm
+1 0 0 1 57.02362 145.9354 cm
 q
 BT 1 0 0 1 0 41.1 Tm .631875 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (Disso decorre a separa\347\343o entre duas rodadas que parecem a mesma: ) Tj /F2 9.3 Tf (renovar) Tj /F1 9.3 Tf ( \(buscar quem n\343o tem o valor ou) Tj T* 0 Tw .46765 Tw (cujo valor \351 de outro dia\) e ) Tj /F2 9.3 Tf (preencher) Tj /F1 9.3 Tf ( \(buscar s\363 quem nunca teve leitura\). A primeira \351 a rotina; a segunda serve) Tj T* 0 Tw 2.065625 Tw (para fechar a cobertura nacional sem gastar o teto do dia renovando o que j\341 est\341 lido. Confundi-las produz) Tj T* 0 Tw (exatamente o defeito acima: cobertura que cresce enquanto a data mente.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 153.5354 cm
+1 0 0 1 57.02362 128.3354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (## 44. Ler uma fonte que mudou de forma: a diferen\347a entre "n\343o h\341" e "n\343o entendi" \(24/09/2026\)) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 98.13543 cm
+1 0 0 1 57.02362 72.93543 cm
 q
 BT 1 0 0 1 0 41.1 Tm .975458 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (O caso que originou esta se\347\343o est\341 no CHANGELOG.md \247210: a p\341gina de consulta do Di\341rio Oficial da Uni\343o) Tj T* 0 Tw .464409 Tw (trocou o transporte do resultado \227 de um <) Tj (input value="{json}") Tj (> para um <) Tj (script type="application/json") Tj (> \227 e dois) Tj T* 0 Tw .194709 Tw (coletores passaram a ler ) Tj /F2 9.3 Tf (lista vazia) Tj /F1 9.3 Tf ( em toda consulta, silenciosamente. Uma consulta com 132 resultados reais era) Tj T* 0 Tw (registrada como consulta bem-sucedida com zero achados.) Tj T* ET
-Q
-Q
-q
-1 0 0 1 57.02362 80.53543 cm
-q
-.101961 .054902 .031373 rg
-BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (### 44.1 Estrutura ausente levanta; lista vazia \351 resposta) Tj T* ET
 Q
 Q
  
@@ -8655,7 +8654,7 @@ endstream
 endobj
 209 0 obj
 <<
-/Length 8995
+/Length 9031
 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -8668,119 +8667,126 @@ BT 1 0 0 1 511.312 34.01575 Tm (p\341gina 71) Tj T* ET
 n 51.02362 45.35433 m 544.252 45.35433 l S
 Q
 q
-1 0 0 1 57.02362 740.1354 cm
+1 0 0 1 57.02362 777.9354 cm
+q
+.101961 .054902 .031373 rg
+BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (### 44.1 Estrutura ausente levanta; lista vazia \351 resposta) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 722.5354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 41.1 Tm /F1 9.3 Tf 12.6 TL 1.030225 Tw (O projeto j\341 separa quatro coisas que n\343o se confundem: zero, aus\352ncia de dado, dado indispon\355vel e dado n\343o) Tj T* 0 Tw .369925 Tw (coletado. O defeito mostrou que essa separa\347\343o n\343o pode depender de uma guarda que o autor do coletor precisa) Tj T* 0 Tw .695941 Tw (lembrar de escrever \227 a guarda existia \("jsonArray" in texto\) e passava, porque a string continuava na p\341gina em) Tj T* 0 Tw (outro contexto.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 684.7354 cm
+1 0 0 1 57.02362 667.1354 cm
 q
 BT 1 0 0 1 0 41.1 Tm .492402 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (A regra que substitui a lembran\347a: ) Tj /F2 9.3 Tf (o leitor de uma fonte estruturada levanta quando a estrutura n\343o est\341 l\341) Tj /F1 9.3 Tf (, e) Tj T* 0 Tw .982855 Tw (s\363 devolve cole\347\343o vazia quando a estrutura est\341 presente e vazia. Uma responde "a fonte disse que n\343o h\341"; a) Tj T* 0 Tw 1.325758 Tw (outra responde "a fonte respondeu e n\343o entendi". Devolver a mesma coisa nos dois casos \351 o que transforma) Tj T* 0 Tw (lacuna em afirma\347\343o.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 654.5354 cm
+1 0 0 1 57.02362 636.9354 cm
 q
 BT 1 0 0 1 0 15.9 Tm .579873 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (Corol\341rio: ) Tj /F2 9.3 Tf (leitor de fonte \351 \372nico) Tj /F1 9.3 Tf (. Duas c\363pias do mesmo parser em coletores diferentes n\343o s\343o redund\342ncia \227) Tj T* 0 Tw (s\343o duas chances de envelhecer em sil\352ncio, e s\363 uma de ser corrigida.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 636.9354 cm
+1 0 0 1 57.02362 619.3354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (### 44.2 Par\342metro que muda o recorte sem dar erro) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 581.5354 cm
+1 0 0 1 57.02362 563.9354 cm
 q
 BT 1 0 0 1 0 41.1 Tm 2.857826 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (A mesma consulta aceita a data em dois formatos e responde 200 nos dois, com ) Tj /F2 9.3 Tf (janelas diferentes) Tj /F1 9.3 Tf (: em) Tj T* 0 Tw .080827 Tw (dd-mm-aaaa, 132 resultados; em aaaa-mm-dd, tr\352s. Par\342metro errado que responde normalmente e devolve menos) Tj T* 0 Tw 1.233275 Tw (\351 mais perigoso do que par\342metro que falha, porque n\343o deixa rastro. Onde um formato de par\342metro decide o) Tj T* 0 Tw (tamanho do recorte, o formato \351 ) Tj /F2 9.3 Tf (travado em teste) Tj /F1 9.3 Tf (, e n\343o s\363 comentado.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 563.9354 cm
+1 0 0 1 57.02362 546.3354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (### 44.3 Recorte n\343o se apresenta como varredura) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 495.9354 cm
+1 0 0 1 57.02362 478.3354 cm
 q
 BT 1 0 0 1 0 53.7 Tm .696097 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (A consulta entrega no m\341ximo 50 resultados e n\343o pagina. Ler os 50 mais recentes de 132 e publicar o resultado) Tj T* 0 Tw -0.025118 Tw (como se fosse a varredura da janela seria afirma\347\343o sem prova. O m\351todo \351: comparar o total que a ) Tj /F2 9.3 Tf (pr\363pria p\341gina) Tj T* 0 Tw .926272 Tw (declara) Tj /F1 9.3 Tf ( com o que ela entregou e, quando n\343o bate, ) Tj /F2 9.3 Tf (estreitar a janela) Tj /F1 9.3 Tf ( at\351 caber. O que ainda n\343o couber volta) Tj T* 0 Tw .568687 Tw (declarado como leitura parcial, com a janela e os dois n\372meros \227 e entra no registro do coletor como lacuna, n\343o) Tj T* 0 Tw (como resultado.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 478.3354 cm
+1 0 0 1 57.02362 460.7354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (### 44.4 O excerto da busca n\343o \351 o documento) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 435.5354 cm
+1 0 0 1 57.02362 417.9354 cm
 q
 BT 1 0 0 1 0 28.5 Tm .737629 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (O que uma busca devolve na lista de resultados \351 excerto \227 aqui, ) Tj /F4 9.3 Tf 12.6 TL (\273) Tj /F1 9.3 Tf 12.6 TL (235 caracteres, com o termo embrulhado em) Tj T* 0 Tw .903487 Tw (marca\347\343o de destaque. Ele serve para localizar o documento e ) Tj /F2 9.3 Tf (n\343o) Tj /F1 9.3 Tf ( para extrair fato dele: corta o verbo do ato e) Tj T* 0 Tw (nunca alcan\347a o munic\355pio. Fato se extrai do documento, aberto pelo endere\347o que o resultado traz.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 380.1354 cm
-q
-BT 1 0 0 1 0 41.1 Tm .791038 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (E quando abrir custa uma requisi\347\343o por resultado, o crit\351rio de quais abrir vem da ) Tj /F2 9.3 Tf (compet\352ncia declarada pela) Tj T* 0 Tw .121438 Tw (fonte) Tj /F1 9.3 Tf (, n\343o de palpite sobre o t\355tulo: emerg\352ncia em sa\372de p\372blica de import\342ncia nacional \351 declarada pelo Ministro) Tj T* 0 Tw .189712 Tw (da Sa\372de \(Decreto 7.616/2011, art. 2\272\), ent\343o s\343o os atos do Minist\351rio que se abrem por inteiro. \323rg\343o que a fonte) Tj T* 0 Tw (n\343o declarou \351 lido, nunca descartado \227 sil\352ncio da fonte n\343o pode virar filtro.) Tj T* ET
-Q
-Q
-q
 1 0 0 1 57.02362 362.5354 cm
 q
-.101961 .054902 .031373 rg
-BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (### 44.5 Falha de leitura n\343o \351 aus\352ncia, e o classificador precisa de "n\343o sei") Tj T* ET
+BT 1 0 0 1 0 41.1 Tm .791038 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (E quando abrir custa uma requisi\347\343o por resultado, o crit\351rio de quais abrir vem da ) Tj /F2 9.3 Tf (compet\352ncia declarada pela) Tj T* 0 Tw .121438 Tw (fonte) Tj /F1 9.3 Tf (, n\343o de palpite sobre o t\355tulo: emerg\352ncia em sa\372de p\372blica de import\342ncia nacional \351 declarada pelo Ministro) Tj T* 0 Tw .189712 Tw (da Sa\372de \(Decreto 7.616/2011, art. 2\272\), ent\343o s\343o os atos do Minist\351rio que se abrem por inteiro. \323rg\343o que a fonte) Tj T* 0 Tw (n\343o declarou \351 lido, nunca descartado \227 sil\352ncio da fonte n\343o pode virar filtro.) Tj T* ET
 Q
 Q
 q
 1 0 0 1 57.02362 344.9354 cm
 q
 .101961 .054902 .031373 rg
+BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (### 44.5 Falha de leitura n\343o \351 aus\352ncia, e o classificador precisa de "n\343o sei") Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 327.3354 cm
+q
+.101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (Duas consequ\352ncias da mesma regra, encontradas na revis\343o do coletor novo.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 276.9354 cm
+1 0 0 1 57.02362 259.3354 cm
 q
 BT 1 0 0 1 0 53.7 Tm .621232 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Falha ao abrir o documento tem de aparecer no registro.) Tj /F1 9.3 Tf ( Um coletor que tenta abrir o ato, n\343o consegue e cai) Tj T* 0 Tw .155767 Tw (para o excerto \227 ou simplesmente descarta o resultado \227 produz um arquivo em que uma rodada com rede ruim \351) Tj T* 0 Tw .831308 Tw (indistingu\355vel de uma rodada sem achados. O documento que n\343o p\364de ser lido entra numa lista pr\363pria, muda a) Tj T* 0 Tw -0.058392 Tw (situa\347\343o declarada da coleta e vira lacuna com o endere\347o do documento. \311 a mesma distin\347\343o de sempre, aplicada) Tj T* 0 Tw (um n\355vel abaixo: entre "a fonte n\343o tem" e "n\343o conseguimos ler o que a fonte tem".) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 208.9354 cm
+1 0 0 1 57.02362 191.3354 cm
 q
 BT 1 0 0 1 0 53.7 Tm .137534 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (O classificador tem quatro respostas, e uma delas \351 a d\372vida.) Tj /F1 9.3 Tf ( Classificar \351 decidir, e decidir sempre \351 o defeito.) Tj T* 0 Tw .373025 Tw (A incerteza \351 declarada quando o texto sustenta mais de uma leitura \(dois verbos em trechos diferentes do mesmo) Tj T* 0 Tw .563307 Tw (ato\), quando o documento n\343o p\364de ser lido, e quando o ind\355cio veio de um excerto em vez do documento. O que) Tj T* 0 Tw .897441 Tw /F2 9.3 Tf (n\343o) Tj /F1 9.3 Tf ( \351 incerteza: um casamento mais espec\355fico que se sobrep\365e a um mais geral \227 "declara o encerramento" \351) Tj T* 0 Tw (uma frase s\363, e trat\341-la como duas decis\365es encheria a fila humana de trabalho que a m\341quina j\341 sabe fazer.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 191.3354 cm
+1 0 0 1 57.02362 173.7354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (### 44.6 Peso zero n\343o dispensa revis\343o humana) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 135.9354 cm
+1 0 0 1 57.02362 118.3354 cm
 q
 BT 1 0 0 1 0 41.1 Tm .05845 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg ("N\343o entra no \355ndice" e "pode ir ao ar sem confer\352ncia" s\343o coisas diferentes, e confundi-las \351 f\341cil quando o dado \351) Tj T* 0 Tw .645412 Tw (de peso zero. Sa\355da de classifica\347\343o autom\341tica vai para a fila de leitura humana \(R7\) e ) Tj /F2 9.3 Tf (n\343o) Tj /F1 9.3 Tf ( para o texto p\372blico.) Tj T* 0 Tw -0.046507 Tw (Enquanto houver item na fila, o que o site diz \351 o fato verific\341vel \227 que h\341 ato localizado em confer\352ncia \227, nunca o) Tj T* 0 Tw (resultado da classifica\347\343o como se fosse registro. O contador p\372blico vem sempre do banco, que \351 humano.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 118.3354 cm
+1 0 0 1 57.02362 100.7354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (## 45. Vocabul\341rio fechado s\363 funciona se quem escreve nele puder conferir \(25/09/2026\)) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 75.53543 cm
+1 0 0 1 57.02362 70.53543 cm
 q
-BT 1 0 0 1 0 28.5 Tm .387684 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (O log de buscas tem um vocabul\341rio ) Tj /F2 9.3 Tf (fechado) Tj /F1 9.3 Tf ( de decis\365es, garantido por asser\347\343o: registro, pista, nada localizado,) Tj T* 0 Tw .272426 Tw (consultado sem achado, fonte suspensa, erro, e as decis\365es de cobertura do di\341rio municipal. Fech\341-lo \351 a escolha) Tj T* 0 Tw 1.100329 Tw (certa \227 \351 o que impede que "n\343o achamos" e "n\343o procuramos" virem a mesma palavra por descuido de quem) Tj T* 0 Tw ET
+BT 1 0 0 1 0 15.9 Tm .387684 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (O log de buscas tem um vocabul\341rio ) Tj /F2 9.3 Tf (fechado) Tj /F1 9.3 Tf ( de decis\365es, garantido por asser\347\343o: registro, pista, nada localizado,) Tj T* 0 Tw .272426 Tw (consultado sem achado, fonte suspensa, erro, e as decis\365es de cobertura do di\341rio municipal. Fech\341-lo \351 a escolha) Tj T* 0 Tw ET
 Q
 Q
  
@@ -8788,7 +8794,7 @@ endstream
 endobj
 210 0 obj
 <<
-/Length 8962
+/Length 8937
 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -8801,95 +8807,95 @@ BT 1 0 0 1 511.312 34.01575 Tm (p\341gina 72) Tj T* ET
 n 51.02362 45.35433 m 544.252 45.35433 l S
 Q
 q
-1 0 0 1 57.02362 777.9354 cm
+1 0 0 1 57.02362 765.3354 cm
 q
-BT 1 0 0 1 0 3.3 Tm 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (escreve um coletor novo.) Tj T* ET
+BT 1 0 0 1 0 15.9 Tm 1.100329 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (certa \227 \351 o que impede que "n\343o achamos" e "n\343o procuramos" virem a mesma palavra por descuido de quem) Tj T* 0 Tw (escreve um coletor novo.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 722.5354 cm
+1 0 0 1 57.02362 709.9354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 41.1 Tm /F1 9.3 Tf 12.6 TL 6.903246 Tw (O caso que originou esta se\347\343o est\341 no CHANGELOG.md \247213: uma decis\343o nova e correta) Tj T* 0 Tw .48111 Tw (\(sem_edicao_no_periodo \227 di\341rio indexado, nenhuma edi\347\343o na janela\) foi criada num coletor e n\343o registrada no) Tj T* 0 Tw .287775 Tw (vocabul\341rio. A varredura nacional passou a morrer no primeiro munic\355pio daquele tipo e ficou parada um dia, com a) Tj T* 0 Tw (fila crescendo, sem que a causa aparecesse como problema de vocabul\341rio.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 704.9354 cm
+1 0 0 1 57.02362 692.3354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (Da\355 duas regras.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 611.7354 cm
+1 0 0 1 57.02362 599.1354 cm
 q
 BT 1 0 0 1 0 78.9 Tm .320178 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (A lista tem de ter nome, e uma s\363.) Tj /F1 9.3 Tf ( Vocabul\341rio escondido dentro de uma asser\347\343o \351 vis\355vel s\363 para quem abre a) Tj T* 0 Tw .928597 Tw (fun\347\343o \227 e, pior, tende a ser copiado: a mesma palavra que faltava na asser\347\343o faltava tamb\351m na c\363pia que o) Tj T* 0 Tw 1.27161 Tw (port\343o de consist\352ncia mantinha, e reprovou 86 execu\347\365es leg\355timas quando a decis\343o nova apareceu no dado.) Tj T* 0 Tw 2.65359 Tw (C\363pia de vocabul\341rio envelhece em sil\352ncio. O conjunto \351 declarado ) Tj /F2 9.3 Tf (onde as decis\365es s\343o produzidas) Tj /F1 9.3 Tf ( e) Tj T* 0 Tw .602425 Tw (importado por quem confere. Nomeado, ele pode ser importado \227 e o coletor que ) Tj /F2 9.3 Tf (inventa) Tj /F1 9.3 Tf ( uma decis\343o prova, no) Tj T* 0 Tw .057432 Tw (pr\363prio autoteste, que toda decis\343o que ele pode produzir cabe nela. A confer\352ncia passa do momento da execu\347\343o) Tj T* 0 Tw (para o momento do port\343o.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 581.5354 cm
+1 0 0 1 57.02362 568.9354 cm
 q
 BT 1 0 0 1 0 15.9 Tm 1.291658 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (O fechamento se prova pelos dois lados.) Tj /F1 9.3 Tf ( Um teste confere que toda palavra do vocabul\341rio \351 de fato aceita;) Tj T* 0 Tw (outro, que palavra de fora reprova. Sem o segundo, "fechado" \351 s\363 uma inten\347\343o escrita no coment\341rio.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 513.5354 cm
+1 0 0 1 57.02362 500.9354 cm
 q
 BT 1 0 0 1 0 53.7 Tm 1.580444 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Corol\341rio sobre testes.) Tj /F1 9.3 Tf ( O teste que guardava esse vocabul\341rio lia o ) Tj /F2 9.3 Tf (texto) Tj /F1 9.3 Tf ( da fun\347\343o procurando a palavra, e) Tj T* 0 Tw 2.550515 Tw (reprovou quando a lista virou constante \227 sem que nada tivesse mudado de comportamento. Teste que l\352) Tj T* 0 Tw .858246 Tw (c\363digo-fonte serve para regra estrutural \("nenhum script escreve neste arquivo"\); para regra de comportamento, o) Tj T* 0 Tw .544862 Tw (teste chama a fun\347\343o. Confundir os dois produz reprova\347\343o falsa na refatora\347\343o e, pior, aprova\347\343o falsa quando o) Tj T* 0 Tw (texto continua l\341 e o comportamento mudou.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 495.9354 cm
+1 0 0 1 57.02362 483.3354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (### 45.1 Contagem definida por exclus\343o \351 vocabul\341rio aberto com outro nome \(28/09/2026\)) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 427.9354 cm
+1 0 0 1 57.02362 415.3354 cm
 q
 BT 1 0 0 1 0 53.7 Tm .806765 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (A se\347\343o acima trata de vocabul\341rio de decis\365es. A mesma decis\343o sem_edicao_no_periodo ficou de fora de uma) Tj T* 0 Tw 1.430003 Tw (terceira lista, e essa n\343o era um vocabul\341rio: era uma ) Tj /F2 9.3 Tf (contagem publicada) Tj /F1 9.3 Tf (. O contador de men\347\365es no di\341rio) Tj T* 0 Tw 1.223214 Tw (municipal definia "com men\347\343o" por exclus\343o \227 era men\347\343o todo resultado que n\343o come\347asse por um de tr\352s) Tj T* 0 Tw .941479 Tw (prefixos conhecidos. A decis\343o nova, correta e criada num coletor, entrou na conta p\372blica de men\347\365es sem que) Tj T* 0 Tw (ningu\351m escrevesse uma linha: 347 munic\355pios publicados onde eram 260. O caso est\341 no CHANGELOG.md \247280.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 359.9354 cm
+1 0 0 1 57.02362 347.3354 cm
 q
 BT 1 0 0 1 0 53.7 Tm .312007 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (O lado de fora nunca pode ser o lado que afirma.) Tj /F1 9.3 Tf ( Uma classifica\347\343o por exclus\343o erra de novo a cada categoria) Tj T* 0 Tw 1.173484 Tw (nova que algu\351m criar, e sempre para o mesmo lado \227 o da afirma\347\343o, porque \351 onde cai o que o c\363digo n\343o) Tj T* 0 Tw .361297 Tw (conhece. A classifica\347\343o \351 positiva: cada classe tem o crit\351rio do que a caracteriza, e o que n\343o casa com nenhum) Tj T* 0 Tw -0.091368 Tw (crit\351rio cai num balde declarado de indefinido. Subdeclarar cobertura \351 erro tolerado; afirmar men\347\343o que n\343o se viu,) Tj T* 0 Tw (n\343o.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 304.5354 cm
+1 0 0 1 57.02362 291.9354 cm
 q
 BT 1 0 0 1 0 41.1 Tm .196453 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Contagem publicada precisa reconciliar com outro arquivo.) Tj /F1 9.3 Tf ( Uma conta que s\363 se confere contra si mesma est\341) Tj T* 0 Tw .803925 Tw (certa por constru\347\343o. O contador corrigido bate, na unidade, com o n\372mero de munic\355pios que o ) Tj /F2 9.3 Tf (log) Tj /F1 9.3 Tf ( registra com) Tj T* 0 Tw -0.053018 Tw (excerto ou registro no canal do di\341rio \227 outro arquivo, outro caminho de produ\347\343o \227, e essa igualdade \351 um port\343o.) Tj T* 0 Tw (Foi a discord\342ncia dela que denunciou uma primeira tentativa de corre\347\343o que estava errada na dire\347\343o contr\341ria.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 249.1354 cm
+1 0 0 1 57.02362 236.5354 cm
 q
 BT 1 0 0 1 0 41.1 Tm .63106 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Port\343o que confere assinatura n\343o confere propriedade.) Tj /F1 9.3 Tf ( O port\343o criado para impedir exatamente essa fam\355lia) Tj T* 0 Tw 1.100182 Tw (de erro \(\247121\) ficou verde sobre o defeito por oito dias, porque testava o caso extremo do erro anterior \227 "toda) Tj T* 0 Tw .56729 Tw (consulta contada como men\347\343o" \227 em vez da propriedade que importa. Assinatura de um defeito conhecido pega) Tj T* 0 Tw (aquele defeito; a propriedade pega a fam\355lia.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 231.5354 cm
+1 0 0 1 57.02362 218.9354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (## 46. Livro-raz\343o e janela: dois arquivos, duas perguntas, duas regras \(25/09/2026\)) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 188.7354 cm
+1 0 0 1 57.02362 176.1354 cm
 q
 BT 1 0 0 1 0 28.5 Tm -0.114192 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (O projeto tem uma regra forte e bem estabelecida: ) Tj /F2 9.3 Tf (o log de buscas nunca se deduplica) Tj /F1 9.3 Tf (. Duas execu\347\365es id\352nticas) Tj T* 0 Tw 2.885726 Tw (em dias diferentes s\343o duas tentativas reais, e uma uni\343o por conte\372do j\341 apagou quase 3.000 delas em) Tj T* 0 Tw (23/09/2026. A regra continua valendo integralmente.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 158.5354 cm
+1 0 0 1 57.02362 145.9354 cm
 q
 BT 1 0 0 1 0 15.9 Tm .087308 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (Ela vale para o log ) Tj /F2 9.3 Tf (porque o log responde a uma pergunta de contagem) Tj /F1 9.3 Tf (: ) Tj /F3 9.3 Tf (quantas tentativas houve, quando, com) Tj T* 0 Tw (que resultado) Tj /F1 9.3 Tf (. \311 livro-raz\343o: s\363 cresce, e cada linha \351 um evento.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 115.7354 cm
+1 0 0 1 57.02362 103.1354 cm
 q
 BT 1 0 0 1 0 28.5 Tm 1.061832 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (O fontes_consultadas.json parece o mesmo arquivo e n\343o \351. Ele responde a outra pergunta \227 ) Tj /F3 9.3 Tf (que fontes foram) Tj T* 0 Tw .910844 Tw (consultadas para este munic\355pio, e quando) Tj /F1 9.3 Tf ( \227 e guarda uma ) Tj /F2 9.3 Tf (janela) Tj /F1 9.3 Tf ( das \372ltimas consultas, n\343o o hist\363rico inteiro.) Tj T* 0 Tw (Nessa pergunta, a mesma fonte no mesmo dia, repetida, n\343o acrescenta resposta nenhuma: s\363 ocupa vaga.) Tj T* ET
 Q
@@ -8897,7 +8903,7 @@ Q
 q
 1 0 0 1 57.02362 72.93543 cm
 q
-BT 1 0 0 1 0 28.5 Tm .830791 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (Confundir os dois custou caro, e o caso est\341 no CHANGELOG.md \247216: a janela de doze entradas guardava, na) Tj T* 0 Tw .488241 Tw (pr\341tica, cinco ou seis consultas distintas, porque um coletor marca os 5.571 munic\355pios a cada rodada e roda mais) Tj T* 0 Tw 1.350041 Tw (de uma vez por dia. As repeti\347\365es empurraram para fora a consulta ao di\341rio municipal, e ) Tj /F2 9.3 Tf (1.896 munic\355pios j\341) Tj T* 0 Tw ET
+BT 1 0 0 1 0 15.9 Tm .830791 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (Confundir os dois custou caro, e o caso est\341 no CHANGELOG.md \247216: a janela de doze entradas guardava, na) Tj T* 0 Tw .488241 Tw (pr\341tica, cinco ou seis consultas distintas, porque um coletor marca os 5.571 munic\355pios a cada rodada e roda mais) Tj T* 0 Tw ET
 Q
 Q
  
@@ -8905,7 +8911,7 @@ endstream
 endobj
 211 0 obj
 <<
-/Length 8397
+/Length 8563
 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -8918,115 +8924,115 @@ BT 1 0 0 1 511.312 34.01575 Tm (p\341gina 73) Tj T* ET
 n 51.02362 45.35433 m 544.252 45.35433 l S
 Q
 q
-1 0 0 1 57.02362 765.3354 cm
+1 0 0 1 57.02362 752.7354 cm
 q
-BT 1 0 0 1 0 15.9 Tm 1.17117 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (consultados voltaram a aparecer como pendentes) Tj /F1 9.3 Tf ( \227 enquanto o log, corretamente, dizia que todos os 5.571) Tj T* 0 Tw (tinham sido consultados.) Tj T* ET
+BT 1 0 0 1 0 28.5 Tm 1.350041 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (de uma vez por dia. As repeti\347\365es empurraram para fora a consulta ao di\341rio municipal, e ) Tj /F2 9.3 Tf (1.896 munic\355pios j\341) Tj T* 0 Tw 1.17117 Tw (consultados voltaram a aparecer como pendentes) Tj /F1 9.3 Tf ( \227 enquanto o log, corretamente, dizia que todos os 5.571) Tj T* 0 Tw (tinham sido consultados.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 722.5354 cm
+1 0 0 1 57.02362 709.9354 cm
 q
 BT 1 0 0 1 0 28.5 Tm -0.059091 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (Da\355 a regra: ) Tj /F2 9.3 Tf (a janela guarda consultas distintas; o livro-raz\343o guarda eventos.) Tj /F1 9.3 Tf ( E o corol\341rio pr\341tico: quando dois) Tj T* 0 Tw 1.703532 Tw (arquivos respondem \340 mesma pergunta e discordam, o livro-raz\343o tem preced\352ncia \227 ele \351 o registro do que) Tj T* 0 Tw (aconteceu, e a janela \351 derivada dele.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 704.9354 cm
+1 0 0 1 57.02362 692.3354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (## 47. Bloqueio de fonte tem prazo de validade \(25/09/2026\)) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 662.1354 cm
+1 0 0 1 57.02362 649.5354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 28.5 Tm /F1 9.3 Tf 12.6 TL -0.079058 Tw (Quando uma fonte bloqueia, o projeto registra a lacuna com o que foi testado escrito por extenso \227 e essa disciplina) Tj T* 0 Tw 1.336456 Tw (existe para que ningu\351m repita a investiga\347\343o do zero. Ela tem um efeito colateral: a lacuna bem documentada) Tj T* 0 Tw (passa a parecer permanente.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 619.3354 cm
+1 0 0 1 57.02362 606.7354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 28.5 Tm /F1 9.3 Tf 12.6 TL .426697 Tw (O caso est\341 no CHANGELOG.md \247217. Um canal que alcan\347a a maioria dos munic\355pios sem di\341rio indexado ficou) Tj T* 0 Tw 1.37639 Tw (quatro dias fora com diagn\363stico completo \227 duas rodadas de investiga\347\343o, causa identificada no cliente, nada) Tj T* 0 Tw (suposto. Ao ser reverificado, funcionou de primeira, sem nenhuma mudan\347a de c\363digo.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 563.9354 cm
+1 0 0 1 57.02362 551.3354 cm
 q
 BT 1 0 0 1 0 41.1 Tm .956962 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (Da\355 a regra: ) Tj /F2 9.3 Tf (lacuna por bloqueio \351 datada, e reverificar \351 barato.) Tj /F1 9.3 Tf ( Antes de tratar um canal como perdido \227 e) Tj T* 0 Tw -0.102308 Tw (antes de construir um caminho alternativo mais caro para contorn\341-lo \227 a primeira coisa \351 repetir o teste. O custo de) Tj T* 0 Tw 1.223676 Tw (repetir \351 uma requisi\347\343o; o custo de n\343o repetir \351 um canal inteiro parado e uma rota substituta constru\355da sem) Tj T* 0 Tw (necessidade.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 521.1354 cm
+1 0 0 1 57.02362 508.5354 cm
 q
 BT 1 0 0 1 0 28.5 Tm .400778 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (O corol\341rio \351 sobre como se escreve a lacuna: ela registra ) Tj /F2 9.3 Tf (o que foi medido e quando) Tj /F1 9.3 Tf (, nunca "n\343o \351 poss\355vel". A) Tj T* 0 Tw -0.026513 Tw (diferen\347a entre "em 21/09 o token vinha como placeholder" e "o token n\343o \351 obt\355vel" \351 a mesma diferen\347a entre "n\343o) Tj T* 0 Tw (localizamos at\351 o corte" e "n\343o existe" \227 e vale para dentro de casa tamb\351m.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 503.5354 cm
+1 0 0 1 57.02362 490.9354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (## 48. Piso de sanidade em base de cobertura conhecida \(25/09/2026\)) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 448.1354 cm
+1 0 0 1 57.02362 435.5354 cm
 q
 BT 1 0 0 1 0 41.1 Tm .181614 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (Quando a fonte tem cobertura ) Tj /F2 9.3 Tf (conhecida) Tj /F1 9.3 Tf ( \227 uma base nacional que cobre os 5.570 munic\355pios, um arquivo mensal) Tj T* 0 Tw 1.479538 Tw (que cobre um conjunto fixo de \363rg\343os \227, o n\372mero de registros lidos \351, por si s\363, uma prova de que a leitura) Tj T* 0 Tw 2.400485 Tw (funcionou. Ler zero, ou ler dezenas onde se esperam milhares, n\343o \351 um resultado pequeno: \351 uma leitura) Tj T* 0 Tw (quebrada.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 392.7354 cm
+1 0 0 1 57.02362 380.1354 cm
 q
 BT 1 0 0 1 0 41.1 Tm .952508 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (Da\355 a regra: ) Tj /F2 9.3 Tf (toda leitura de base com cobertura conhecida declara um piso) Tj /F1 9.3 Tf (, e abaixo dele o resultado n\343o \351) Tj T* 0 Tw 1.984808 Tw (gravado \227 vira lacuna declarada, nomeando o que reverificar \(a aba, a coluna, o filtro\). O piso \351 folgado de) Tj T* 0 Tw -0.119048 Tw (prop\363sito. Ele n\343o serve para afinar recall; serve para separar "a fonte veio menor" de "n\343o consegui ler a fonte", que) Tj T* 0 Tw (s\343o coisas diferentes e hoje eram indistingu\355veis.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 362.5354 cm
+1 0 0 1 57.02362 349.9354 cm
 q
 BT 1 0 0 1 0 15.9 Tm .258067 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (O corol\341rio \351 sobre o que fazer quando o piso reprova: ) Tj /F2 9.3 Tf (n\343o se sobrescreve o que j\341 estava gravado) Tj /F1 9.3 Tf (. Uma leitura) Tj T* 0 Tw (quebrada n\343o tem autoridade para apagar uma leitura boa da rodada anterior.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 307.1354 cm
+1 0 0 1 57.02362 294.5354 cm
 q
 BT 1 0 0 1 0 41.1 Tm .162987 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (E um caso particular que merece nome pr\363prio, porque \351 a regra central do projeto aplicada a um campo: ) Tj /F2 9.3 Tf (aus\352ncia) Tj T* 0 Tw .165776 Tw (de valor n\343o \351 zero) Tj /F1 9.3 Tf (. valor or 0 transforma "a fonte n\343o declarou quanto" em "a fonte declarou que foi nada" \227 e as) Tj T* 0 Tw 1.521909 Tw (duas coisas viram o mesmo n\372mero no site. Campo monet\341rio ausente \351 aus\352ncia, com marca pr\363pria, e zero) Tj T* 0 Tw (continua sendo zero.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 289.5354 cm
+1 0 0 1 57.02362 276.9354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (## 49. Quem verifica o verificador \(25/09/2026\)) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 234.1354 cm
+1 0 0 1 57.02362 221.5354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 41.1 Tm /F1 9.3 Tf 12.6 TL 3.79129 Tw (Tr\352s regras deste projeto s\343o declaradas nos pr\363prios scripts e nunca eram conferidas por ningu\351m. O) Tj T* 0 Tw .52327 Tw (CHANGELOG.md \247220 mostra o custo: um autoteste que declarava "nunca toca dado real" gravou oito execu\347\365es) Tj T* 0 Tw .941719 Tw (no log de buscas, e o autoteste ficou verde \227 ele mockava a rede e os arquivos, e n\343o a fun\347\343o que grava tr\352s) Tj T* 0 Tw (chamadas abaixo.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 203.9354 cm
+1 0 0 1 57.02362 191.3354 cm
 q
 BT 1 0 0 1 0 15.9 Tm .150979 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Trava declarada no coment\341rio n\343o \351 trava.) Tj /F1 9.3 Tf ( Uma regra s\363 est\341 garantida quando existe algo que reprova quando) Tj T* 0 Tw (ela \351 violada. Enquanto isso n\343o existe, a regra \351 inten\347\343o \227 e inten\347\343o envelhece em sil\352ncio, como todo o resto.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 161.1354 cm
+1 0 0 1 57.02362 148.5354 cm
 q
 BT 1 0 0 1 0 28.5 Tm .124173 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Trava que l\352 o pr\363prio fonte tem alcance curto.) Tj /F1 9.3 Tf ( As travas estruturais do projeto procuram chamadas proibidas no) Tj T* 0 Tw -0.094103 Tw (texto do script, e por constru\347\343o n\343o enxergam o que acontece dentro de uma depend\352ncia. Elas continuam valendo) Tj T* 0 Tw (para o que veem; para o resto, o que prova \351 ) Tj /F2 9.3 Tf (executar e comparar o estado antes e depois) Tj /F1 9.3 Tf (.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 105.7354 cm
+1 0 0 1 57.02362 93.13543 cm
 q
 BT 1 0 0 1 0 41.1 Tm 1.392084 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Port\343o que grita sem motivo ensina a ignorar port\343o.) Tj /F1 9.3 Tf ( A primeira vers\343o deste port\343o comparava tamanho e) Tj T* 0 Tw 1.11041 Tw (carimbo, e acusou de "alterar dado" tr\352s autotestes que regravavam arquivos com conte\372do id\352ntico. Calibrar foi) Tj T* 0 Tw -0.129047 Tw (parte do trabalho, n\343o um detalhe: reescrever id\352ntico virou aviso, alterar conte\372do virou reprova\347\343o. Um port\343o com) Tj T* 0 Tw (falso positivo conhecido \351 pior do que n\343o ter port\343o, porque treina quem o l\352 a passar por cima.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 88.13543 cm
+1 0 0 1 57.02362 75.53543 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (## 50. Formata\347\343o \351 peso, e peso \351 acesso \(25/09/2026\)) Tj T* ET
@@ -24831,65 +24837,65 @@ xref
 0000620939 00000 n 
 0000630488 00000 n 
 0000639729 00000 n 
-0000649488 00000 n 
-0000658271 00000 n 
-0000667420 00000 n 
-0000676417 00000 n 
-0000685465 00000 n 
-0000694480 00000 n 
-0000702930 00000 n 
-0000712440 00000 n 
-0000721615 00000 n 
-0000732061 00000 n 
-0000742542 00000 n 
-0000752227 00000 n 
-0000761543 00000 n 
-0000771445 00000 n 
-0000780855 00000 n 
-0000790313 00000 n 
-0000799897 00000 n 
-0000809512 00000 n 
-0000820732 00000 n 
-0000830611 00000 n 
-0000839600 00000 n 
-0000849829 00000 n 
-0000859409 00000 n 
-0000868872 00000 n 
-0000881271 00000 n 
-0000891286 00000 n 
-0000901139 00000 n 
-0000911436 00000 n 
-0000920961 00000 n 
-0000930623 00000 n 
-0000939972 00000 n 
-0000949362 00000 n 
-0000958824 00000 n 
-0000968589 00000 n 
-0000977981 00000 n 
-0000987317 00000 n 
-0000996350 00000 n 
-0001006309 00000 n 
-0001017024 00000 n 
-0001026214 00000 n 
-0001035495 00000 n 
-0001044856 00000 n 
-0001053831 00000 n 
-0001063737 00000 n 
-0001073712 00000 n 
-0001082573 00000 n 
-0001091372 00000 n 
-0001100198 00000 n 
-0001109541 00000 n 
-0001119069 00000 n 
-0001128217 00000 n 
-0001137732 00000 n 
-0001147134 00000 n 
-0001156179 00000 n 
-0001165269 00000 n 
-0001174384 00000 n 
-0001183646 00000 n 
-0001193612 00000 n 
-0001202602 00000 n 
+0000649410 00000 n 
+0000658270 00000 n 
+0000667494 00000 n 
+0000676618 00000 n 
+0000685702 00000 n 
+0000694692 00000 n 
+0000703308 00000 n 
+0000712818 00000 n 
+0000721993 00000 n 
+0000732439 00000 n 
+0000742920 00000 n 
+0000752605 00000 n 
+0000761921 00000 n 
+0000771823 00000 n 
+0000781233 00000 n 
+0000790691 00000 n 
+0000800275 00000 n 
+0000809890 00000 n 
+0000821110 00000 n 
+0000830989 00000 n 
+0000839978 00000 n 
+0000850207 00000 n 
+0000859787 00000 n 
+0000869250 00000 n 
+0000881649 00000 n 
+0000891664 00000 n 
+0000901517 00000 n 
+0000911814 00000 n 
+0000921339 00000 n 
+0000931001 00000 n 
+0000940350 00000 n 
+0000949740 00000 n 
+0000959202 00000 n 
+0000968967 00000 n 
+0000978359 00000 n 
+0000987695 00000 n 
+0000996728 00000 n 
+0001006687 00000 n 
+0001017402 00000 n 
+0001026592 00000 n 
+0001035873 00000 n 
+0001045234 00000 n 
+0001054209 00000 n 
+0001064115 00000 n 
+0001074090 00000 n 
+0001082951 00000 n 
+0001091750 00000 n 
+0001100576 00000 n 
+0001109919 00000 n 
+0001119447 00000 n 
+0001128595 00000 n 
+0001138110 00000 n 
+0001147512 00000 n 
+0001156557 00000 n 
+0001165647 00000 n 
+0001174762 00000 n 
+0001184024 00000 n 
+0001193990 00000 n 
+0001202980 00000 n 
 trailer
 <<
 /ID 
@@ -24901,5 +24907,5 @@ trailer
 /Size 265
 >>
 startxref
-1209713
+1210091
 %%EOF
