@@ -439,7 +439,6 @@ function cartoesEstadosSaude(){
       },
       aoClicar: uf => abrirDetalheSaude(uf),
     });
-    GradeEstados.legendaDasBarras('legendaRegionsSaude', 'MARÉ Saúde');
     if (window.MonitorMapas && MonitorMapas.animarGauges) MonitorMapas.animarGauges(wrap);
   }).catch(_erroSaude("saude:440"));
 }

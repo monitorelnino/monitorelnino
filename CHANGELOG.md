@@ -31,10 +31,17 @@ não pontuados permanecem na versão corrente.
 
 
 
-
 ## 2026-10-16 · #PR · Saúde: a frase do dado não aparece vazia
 
 As quatro frases do dado da página de saúde (dengue, chikungunya, respiratórias e calor) nasciam com um travessão e ficavam assim quando a série não carregava. Agora nascem ocultas e só aparecem com texto, por uma função só.
+
+## 2026-10-16 · #785 · Inicial: sai a legenda das barras; barras sem régua; cartão da cidade branco e com um só componente
+
+Sai a legenda "Barra de cima… Barra de baixo…" e a linha acima dela, na inicial e na Saúde, com a função que a escrevia. A barra do MARÉ Legal perde o quadriculado de fundo (ficam as marcas 25, 50, 70); a dos decretos, sem marcas, fica mais alta. O cartão da cidade fica branco, sem o link "consultar outro município"; as listas federais usam o cartão da projeção, com o texto do cadastro nacional (Lei 12.340, art. 3º-A).
+
+## 2026-10-16 · #786 · Saúde: a tabela do índice com as colunas do leitor
+
+A tabela que acompanha o mapa do MARÉ Saúde passa a ter UF, nota, faixa, plano (situação e data), coordenação na saúde e ligação com o governo do estado. Saem as colunas de componente interno ("cobertura sanitária 0,1 · 1 lido / 1 sem leitura", antecedência, dengue na capital, risco) e o travessão em célula vazia.
 
 ## 2026-10-16 · #786 · Saúde: a tabela do índice com as colunas do leitor
 
