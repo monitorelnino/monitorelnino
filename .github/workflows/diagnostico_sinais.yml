@@ -35,4 +35,4 @@ jobs:
       - name: Sonda DOE PI e RR (ramo diag)
         env:
           OPENAQ_API_KEY: ${{ secrets.OPENAQ_API_KEY }}
-        run: python3 scripts/_sonda_doe_tmp.py
+        run: python3 scripts/_sonda_doe_tmp.py; python3 scripts/_sonda_secas_tmp.py
