@@ -1099,42 +1099,19 @@ const AREAS = [
     if (el('linhaSragUF')) el('linhaSragUF').textContent = 'acumulado de ' + ano + ' · ' + Object.keys(taxa).length + ' estados com dado';
   }).catch(_erroSaude("saude:1183"));
 
-  /* 5 · Calor: a distribuição por classe. O Painel do MS publica FOTOGRAFIA por município, não
-   * série — e o cartão mostra o que a fonte tem, em vez de fingir uma série semanal. */
+  /* 5 · Calor. O Painel do MS publica FOTOGRAFIA por município, não série. Lote 6, §5 (16/10/2026):
+   * o gráfico de barras "municípios por classe" saiu (5,5 mil em "normal" contra dezenas nas
+   * outras classes não informa nada); fica o mapa por estado, e a frase diz o total. */
   fetch('data/saude_sinais.json').then(r => r.ok ? r.json() : null).then(SS => {
     const C = ((SS || {}).calor_excesso) || null;
     const r = (C || {}).resumo || null;
-    const leg = el('legCalorSerie');
     if (!r) {
-      // 11/10/2026 (HANDOVER_SAUDE item 2): lacuna diz desde quando, e a frase do bloco deixa de ser "—".
       const ult = (((SS || {}).fontes || {}).painel_calor_ms || {}).ultima_coleta_ok;
       const desde = ult ? (MonitorMapas.dataBR(ult) || ult) : null;
-      if (leg) leg.innerHTML = '<span class="escala">' + esc(desde
-        ? 'Painel de excesso de calor sem leitura desde a coleta de ' + desde + '.'
-        : 'Painel de excesso de calor sem coleta até o corte.') + '</span>';
       if (el('fraseCalor')) mostrarFrase(el('fraseCalor'), desde
         ? 'O Painel Nacional de Excesso de Calor, do Ministério da Saúde, não devolve leitura desde a coleta de ' + desde + '.'
         : 'O Painel Nacional de Excesso de Calor, do Ministério da Saúde, ainda não foi lido até o corte.');
-      if (window.MonitorMapas) MonitorMapas.credito('boxCalorSerie', {fontes: ['Painel Nacional de Excesso de Calor (Ministério da Saúde)'], data: ult});
       return;
-    }
-    const classes = [['Normal', r.normal || 0], ['Baixo', r.baixo || 0], ['Severo', r.severo || 0],
-                     ['Extremo', r.extremo || 0]];
-    const cv = el('cCalorSerie');
-    if (cv && typeof Chart !== 'undefined' && window.MonitorMapas) {
-      MonitorMapas.padraoGraficos(window.Chart);
-      new Chart(cv, {type: 'bar', data: {labels: classes.map(c => c[0]),
-        datasets: [{label: 'municípios', data: classes.map(c => c[1]),
-                    backgroundColor: MonitorMapas.PALETA.ordinal4}]},
-        options: {animation: false, responsive: true, maintainAspectRatio: false,
-          plugins: {legend: {display: false}},
-          scales: {y: {beginAtZero: true, title: {display: true, text: 'municípios'}}}}});
-      MonitorMapas.legenda('legCalorSerie', classes.map((c, i) => ({cor: MonitorMapas.PALETA.ordinal4[i], rotulo: c[0].toLowerCase()})));
-      MonitorMapas.credito('boxCalorSerie', {fontes: ['Painel Nacional de Excesso de Calor (Ministério da Saúde)'], data: C.data});
-    }
-    if (el('linhaCalorSerie')) {
-      el('linhaCalorSerie').textContent = n(C.municipios_lidos || 0) + (Number(C.municipios_lidos || 0) === 1 ? ' município lido' : ' municípios lidos')
-        + (C.data ? ' · consulta de ' + (MonitorMapas.dataBR(C.data) || C.data) : '');
     }
     if (el('fraseCalor')) {
       mostrarFrase(el('fraseCalor'), n((r.severo || 0) + (r.extremo || 0))
