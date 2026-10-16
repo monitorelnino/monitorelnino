@@ -68,6 +68,8 @@ _LIVRO_CONSULTAS = []
 _DETALHE_ALERTAS = {"inmet": None, "cemaden": None}
 # 29/09/2026: pontos de foco agregados em grade, gravados em arquivo próprio ao fim da rodada.
 _PONTOS_FOCOS = {}
+# 16/10/2026: locais do OpenAQ lidos pela fonte `openaq`, reaproveitados pelo ar medido (uma chamada só).
+_AR_MEDIDO = {}
 
 RAIZ = pathlib.Path(__file__).parent
 REGISTRO = RAIZ / "data" / "sinais_risco.json"
@@ -223,9 +225,9 @@ FONTES = {
         # 27/09/2026 (decisão da editoria): a página passa a mostrar ÍNDICE de qualidade do ar, e
         # não PM2,5. O índice vem PRONTO da fonte (`european_aqi`), nunca calculado aqui: calcular
         # transformaria o índice numa afirmação do Monitor, e ele tem de ser evidência de terceiro.
-        # Não há índice nacional aberto — conferido em 27/09/2026: o Qualiar do MMA não resolve
-        # (HTTP 000), o QUALAR da CETESB cobre só São Paulo, e o WAQI exige token. Por isso a
-        # escala é a europeia, e a legenda diz isso com todas as letras.
+        # ERRATA 16/10/2026 (METODOLOGIA §41.7): em 27/09 este comentário dizia "não há índice
+        # nacional aberto". Há: o IQAr do MMA/MonitorAr, por estação (ver AR_FONTES). A sondagem
+        # de 27/09 bateu no aplicativo, não no serviço. Esta fonte sai da página com a figura nova.
         "papel": "Índice europeu de qualidade do ar (EAQI) e poluentes por capital, estimados por modelo.",
         "natureza": NATUREZA_MODELO,
         "licenca": "CC BY 4.0 — crédito obrigatório: Copernicus CAMS via Open-Meteo.com",
@@ -875,6 +877,14 @@ def parse_open_meteo_ar(dados, chaves) -> dict:
     return saida
 
 
+def dist_km(a, b):
+    """Distância plana em km entre (lat, lon): basta para tetos de metros a dezenas de km (sem
+    trigonometria esférica: a 30 km o erro do achatamento é menor que a resolução do monitor)."""
+    dy = (a[0] - b[0]) * 111.0
+    dx = (a[1] - b[1]) * 111.0 * math.cos(math.radians((a[0] + b[0]) / 2))
+    return math.hypot(dx, dy)
+
+
 def parse_openaq_locais(dados, por_uf_capital: dict) -> dict:
     """Lê as estações brasileiras do OpenAQ v3 e devolve {UF: {...}} só das que ficam NA CAPITAL.
 
@@ -882,13 +892,6 @@ def parse_openaq_locais(dados, por_uf_capital: dict) -> dict:
     creditada junto — ela vem em `provider`/`owner` e é guardada. A seleção é pela coordenada mais
     próxima da capital, com teto de 30 km: monitor a 200 km da capital medindo outra cidade não é
     "medição na capital", e aceitar por proximidade folgada produziria crédito falso. Função pura."""
-    def dist_km(a, b):
-        # distância plana suficiente para um teto de dezenas de km (sem trigonometria esférica:
-        # a 30 km o erro do achatamento é menor que a resolução do próprio monitor)
-        dy = (a[0] - b[0]) * 111.0
-        dx = (a[1] - b[1]) * 111.0 * math.cos(math.radians((a[0] + b[0]) / 2))
-        return math.hypot(dx, dy)
-
     itens = (dados or {}).get("results") if isinstance(dados, dict) else dados
     melhor = {}
     for loc in itens or []:
@@ -918,6 +921,189 @@ def parse_openaq_locais(dados, por_uf_capital: dict) -> dict:
                 "natureza": NATUREZA_MEDICAO,
             }
     return melhor
+
+
+# ---------------------------------------------------------------------------
+# AR MEDIDO POR ESTAÇÃO (HANDOVER_MONITORAR, 16/10/2026) → data/ar_medido.json
+# Três fontes, uma régua só de índice: o IQAr (CONAMA 506/2024) vem PRONTO do MMA/MonitorAr,
+# calculado pelo órgão, e nunca é recalculado aqui. OpenAQ dá a concentração (PM2,5, µg/m³) das
+# MESMAS estações oficiais, casadas por coordenada ou nome. IPAM/RedeAr dá PM2,5 de sensores de
+# baixo custo: concentração, nunca índice. Leitura com mais de VALIDADE_HORAS_SINAL vira lacuna.
+# ---------------------------------------------------------------------------
+NATUREZA_SENSOR = "sensor de baixo custo"
+AR_CASAMENTO_KM = 0.3      # estação MMA ↔ local OpenAQ: mesma estação a até 300 m
+FUSO_BR = ZoneInfo("America/Sao_Paulo")
+AR_FONTES = {
+    "monitorar": {
+        "orgao": "MMA · MonitorAr (redes estaduais)", "url_publica": "https://monitorar.mma.gov.br/",
+        "endpoint": "https://monitorar-backend.mma.gov.br/v1/estacao/todas",
+        "natureza": NATUREZA_MEDICAO,
+        "papel": "IQAr por estação oficial, calculado pelo órgão (CONAMA 506/2024); hora da fonte "
+                 "lida como horário de Brasília",
+    },
+    "openaq": {
+        "orgao": "OpenAQ (redes de origem)", "url_publica": "https://openaq.org/",
+        # A rota por parâmetro ignora `iso` (sondado em 16/10: 21.371 locais do mundo); a por local
+        # é chamada só para os monitores de referência brasileiros com PM2,5 recente.
+        "endpoint": "https://api.openaq.org/v3/locations/{id}/latest",
+        "natureza": NATUREZA_MEDICAO,
+        "papel": "PM2,5 em µg/m³ da última medição publicada da mesma estação oficial",
+    },
+    "redear": {
+        "orgao": "IPAM/RedeAr", "url_publica": "https://redear.org.br/",
+        # O host de produção (api.) respondeu em 16/10 com leituras de julho e sensores de teste;
+        # o de homologação traz o código IBGE e leituras do dia. O host usado fica no dado.
+        "endpoint": "https://hmg.api.redear.org.br/v1/sensors",
+        "natureza": NATUREZA_SENSOR,
+        "papel": "PM2,5 e PM10 em µg/m³ da leitura mais recente (média dos dois canais do sensor "
+                 "ótico, correção atmosférica `_env` da fonte); hora da fonte sem fuso declarado; "
+                 "não é estação regulatória e não gera IQAr",
+    },
+}
+
+
+def _idade_h(quando: datetime, agora_dt: datetime):
+    return (agora_dt - quando).total_seconds() / 3600 if quando else None
+
+
+def _num(v):
+    try:
+        return float(v)
+    except (TypeError, ValueError):
+        return None
+
+
+def parse_monitorar(dados, agora_dt: datetime) -> list:
+    """Estações do MonitorAr com o IQAr vigente como o órgão publica. Função pura.
+
+    `dtMedicao` vem sem fuso ("2025-06-16 20:00") e é lida como horário de Brasília. Medição com
+    mais de VALIDADE_HORAS_SINAL horas fica como lacuna (`iqar: null` + motivo): nunca valor velho
+    como atual."""
+    saida = []
+    for e in dados if isinstance(dados, list) else []:
+        mun = e.get("municipio") if isinstance(e, dict) else None
+        if not isinstance(mun, dict):
+            continue
+        atual = e.get("indiceQualidadeArAtual") or {}
+        med = atual.get("medicao") or {}
+        quando = None
+        try:
+            quando = datetime.strptime(str(med.get("dtMedicao")), "%Y-%m-%d %H:%M").replace(tzinfo=FUSO_BR)
+        except ValueError:
+            pass
+        idade = _idade_h(quando, agora_dt)
+        valor = _num(med.get("indiceQualidadeAr"))
+        item = {
+            "id": e.get("idEstacao"), "nome": e.get("noEstacao"), "rede": e.get("noFonteDados"),
+            "ibge": mun.get("idMunicipio"), "municipio": mun.get("noMunicipio"), "uf": mun.get("sgUf"),
+            "lat": _num(e.get("nuLatitude")), "lon": _num(e.get("nuLongitude")),
+            "categoria": (e.get("categoriaEstacao") or {}).get("descricao"),
+            "sem_informacao_mais_de_tres_dias": e.get("semInfoMaisDeTresDias"),
+            "iqar": None, "lacuna": None,
+        }
+        if valor is None or quando is None:
+            item["lacuna"] = "sem IQAr publicado pela fonte"
+        elif idade > VALIDADE_HORAS_SINAL:
+            item["lacuna"] = f"última medição da fonte com mais de {VALIDADE_HORAS_SINAL} h ({quando:%d/%m/%Y %H:%M})"
+        else:
+            item["iqar"] = {"valor": valor, "classificacao": (atual.get("classificacaoIqAr") or {}).get("noClassificacao"),
+                            "poluente": (atual.get("poluente") or {}).get("noPoluente"),
+                            "medido_em": quando.isoformat()}
+        saida.append(item)
+    return saida
+
+
+def parse_redear(dados, agora_dt: datetime) -> list:
+    """Sensores da RedeAr com PM2,5/PM10 da leitura mais recente. Função pura. Nunca AQI."""
+    def media(leitura, campo):
+        vals = [v for v in (_num(leitura.get(f"pms{c}_{campo}_env")) for c in (1, 2)) if v is not None and v >= 0]
+        return round(sum(vals) / len(vals), 1) if vals else None
+
+    saida = []
+    for s in dados if isinstance(dados, list) else []:
+        if not isinstance(s, dict) or not s.get("geocode_mun"):
+            continue                                  # sem município IBGE: sensor de teste ou sem lugar
+        coord = ((s.get("gps") or {}).get("coordinates") or [None, None])
+        leituras = sorted((x for x in s.get("readings") or [] if isinstance(x, dict) and x.get("datetime")),
+                          key=lambda x: x["datetime"], reverse=True)
+        item = {"id": s.get("sensor_id"), "nome": s.get("name"), "fonte": s.get("source"),
+                "ibge": s.get("geocode_mun"), "municipio": s.get("municipio"),
+                "uf_ibge": s.get("geocode_uf"), "bioma": s.get("bioma"),
+                "lat": _num(coord[1]), "lon": _num(coord[0]), "pm25": None, "lacuna": None}
+        quando = None
+        if leituras:
+            try:
+                quando = datetime.fromisoformat(leituras[0]["datetime"][:19]).replace(tzinfo=FUSO_BR)
+            except ValueError:
+                pass
+        if quando is None:
+            item["lacuna"] = "sem leitura publicada pela fonte"
+        elif _idade_h(quando, agora_dt) > VALIDADE_HORAS_SINAL:
+            item["lacuna"] = f"leitura mais recente com mais de {VALIDADE_HORAS_SINAL} h ({quando:%d/%m/%Y %H:%M})"
+        elif media(leituras[0], "pm2_5") is None:
+            item["lacuna"] = "leitura sem PM2,5"
+        else:
+            item["pm25"] = {"valor": media(leituras[0], "pm2_5"), "pm10": media(leituras[0], "pm10"),
+                            "unidade": "µg/m³", "lido_em": leituras[0]["datetime"][:19]}
+        saida.append(item)
+    return saida
+
+
+def locais_openaq_pm25(locais: list, agora_dt: datetime) -> dict:
+    """{id do local: ids dos sensores de PM2,5} dos MONITORES DE REFERÊNCIA (`isMonitor`) com última
+    medição a menos de VALIDADE_HORAS_SINAL. Sensor de baixo custo agregado pelo OpenAQ
+    (AirGradient, HabitatMap) não é estação oficial e não casa com uma. Função pura."""
+    saida = {}
+    for loc in locais or []:
+        if not isinstance(loc, dict) or loc.get("isMonitor") is not True:
+            continue
+        try:
+            ultima = datetime.fromisoformat(str((loc.get("datetimeLast") or {}).get("utc")).replace("Z", "+00:00"))
+        except ValueError:
+            continue
+        sensores = {x.get("id") for x in loc.get("sensors") or []
+                    if isinstance(x, dict) and (x.get("parameter") or {}).get("name") == "pm25"}
+        if sensores and _idade_h(ultima, agora_dt) <= VALIDADE_HORAS_SINAL:
+            saida[loc.get("id")] = sensores
+    return saida
+
+
+def casar_openaq(estacoes: list, locais: list, ultimas: list, agora_dt: datetime) -> int:
+    """Pendura em cada estação MMA o PM2,5 do local OpenAQ que é a MESMA estação: a até 300 m, ou
+    com o mesmo nome a até OPENAQ_RAIO_KM. Sem par, a estação diz que a fonte de concentrações não
+    tem o dado. Devolve quantas casaram. Função pura (altera só as estações recebidas)."""
+    por_local = {u.get("locationsId"): u for u in ultimas or []
+                 if isinstance(u, dict) and _num(u.get("value")) is not None}
+    pontos = []
+    for loc in locais or []:
+        c = (loc or {}).get("coordinates") or {}
+        if loc.get("id") in por_local and _num(c.get("latitude")) is not None:
+            pontos.append((loc, (c["latitude"], c["longitude"]), normalizar_nome(str(loc.get("name") or ""))))
+    casadas = 0
+    for e in estacoes:
+        e["pm25_openaq"] = None
+        if e["lat"] is None or e["lon"] is None:
+            continue
+        nome = normalizar_nome(str(e.get("nome") or ""))
+        par = None
+        for loc, xy, nome_loc in pontos:
+            d = dist_km((e["lat"], e["lon"]), xy)
+            if d <= AR_CASAMENTO_KM or (nome and nome == nome_loc and d <= OPENAQ_RAIO_KM):
+                par = (d, loc) if par is None or d < par[0] else par
+        if not par:
+            continue
+        u = por_local[par[1]["id"]]
+        quando = (u.get("datetime") or {}).get("utc")
+        try:
+            idade = _idade_h(datetime.fromisoformat(str(quando).replace("Z", "+00:00")), agora_dt)
+        except ValueError:
+            idade = None
+        if idade is None or idade > VALIDADE_HORAS_SINAL:
+            continue
+        e["pm25_openaq"] = {"valor": round(_num(u["value"]), 1), "unidade": "µg/m³", "medido_em": quando,
+                            "local_openaq": par[1]["id"], "distancia_m": round(par[0] * 1000)}
+        casadas += 1
+    return casadas
 
 
 # A rota devolve o valor como TEXTO, e três formas aparecem: "28.8" (número limpo), "29.6*"
@@ -993,11 +1179,6 @@ def parse_estacoes_inmet(dados, por_uf_capital: dict) -> dict:
         MIRANTE", "BELO HORIZONTE - PAMPULHA", e Fortaleza não tem estação com o nome da cidade.
     Por isso a escolha é por COORDENADA, com teto, e `CD_SITUACAO` tem de ser "Operante": estação
     em pane devolveria série vazia que pareceria ausência de calor. Função pura."""
-    def dist_km(a, b):
-        dy = (a[0] - b[0]) * 111.0
-        dx = (a[1] - b[1]) * 111.0 * math.cos(math.radians((a[0] + b[0]) / 2))
-        return math.hypot(dx, dy)
-
     melhor = {}
     for e in dados or []:
         if not isinstance(e, dict) or str(e.get("CD_SITUACAO", "")).strip() != "Operante":
@@ -1309,7 +1490,8 @@ def coletar_fonte(chave: str):
         capitais = {c["uf"]: c for c in resolver_capitais()}
         bruto = _buscar_registrado(chave, fonte["endpoint"],
                                    extra={"X-API-Key": credencial_de(chave)})
-        locais = parse_openaq_locais(json.loads(bruto), capitais)
+        _AR_MEDIDO["openaq_locais"] = (json.loads(bruto) or {}).get("results") or []
+        locais = parse_openaq_locais({"results": _AR_MEDIDO["openaq_locais"]}, capitais)
         if not locais:
             raise ValueError("OpenAQ respondeu sem monitor de PM2,5 a menos de "
                              f"{OPENAQ_RAIO_KM:.0f} km de nenhuma capital — recusada")
@@ -1940,6 +2122,62 @@ def gravar(registro: dict) -> None:
     print(f"→ {REGISTRO.relative_to(RAIZ)} gravado.")
 
 
+def gravar_ar_medido(agora_dt: datetime = None) -> None:
+    """Coleta MonitorAr, RedeAr e as últimas medições do OpenAQ e grava data/ar_medido.json.
+
+    Cada fonte falha sozinha: a que não respondeu sai com status e lista vazia (lacuna declarada),
+    nunca com a lista da rodada anterior como se fosse de hoje. Se nenhuma respondeu, o arquivo
+    anterior fica, com a data dele. Resposta bruta preservada por hash (`preservar_evidencia`)."""
+    from coletores_base import preservar_evidencia
+    agora_dt = agora_dt or datetime.now(FUSO_BR)
+    fontes, dados = {}, {}
+    for chave, f in AR_FONTES.items():
+        meta = {k: f[k] for k in ("orgao", "url_publica", "endpoint", "natureza", "papel")}
+        fontes[chave] = meta
+        extra = None
+        if chave == "openaq":
+            if not credencial_de("openaq"):
+                meta["status"] = "aguardando_credencial"
+                continue
+            extra = {"X-API-Key": credencial_de("openaq")}
+        try:
+            if chave == "openaq":            # uma chamada por monitor candidato; bruto = as respostas juntas
+                if not _AR_MEDIDO.get("openaq_locais"):
+                    raise RuntimeError("lista de locais do OpenAQ não lida nesta rodada")
+                alvos = locais_openaq_pm25(_AR_MEDIDO.get("openaq_locais"), agora_dt)
+                respostas = [json.loads(_buscar_registrado(chave, f["endpoint"].format(id=i), extra=extra))
+                             for i in sorted(alvos, key=str)]
+                bruto = json.dumps(respostas, ensure_ascii=False)
+                dados[chave] = [u for r, i in zip(respostas, sorted(alvos, key=str))
+                                for u in (r or {}).get("results") or [] if u.get("sensorsId") in alvos[i]]
+            else:
+                bruto = _buscar_registrado(chave, f["endpoint"], extra=extra)
+                dados[chave] = json.loads(bruto)
+            meta.update(status="coletado", consultado_em=agora(),
+                        evidencia_sha256=preservar_evidencia(bruto.encode("utf-8"), f["endpoint"], "json", "coletar_sinais_risco.py"))
+        except Exception as e:  # noqa: BLE001 — fonte externa: vira lacuna declarada
+            meta["status"] = "falha_de_rede"
+            print(f"[aviso] ar medido: {chave} falhou ({type(e).__name__}: {str(e)[:120]})")
+    if "monitorar" not in dados and "redear" not in dados:
+        print("[aviso] ar medido: MonitorAr e RedeAr sem resposta — data/ar_medido.json mantido.")
+        return
+    estacoes = parse_monitorar(dados.get("monitorar"), agora_dt)
+    if "openaq" in dados:
+        fontes["openaq"]["estacoes_casadas"] = casar_openaq(
+            estacoes, _AR_MEDIDO.get("openaq_locais"), dados["openaq"], agora_dt)
+    sensores = parse_redear(dados.get("redear"), agora_dt)
+    escrever_json(RAIZ / "data" / "ar_medido.json", {
+        "_governanca": ("Ar medido por estação e sensor. IQAr calculado pelo órgão (MMA/MonitorAr, "
+                        "CONAMA 506/2024), nunca recalculado aqui; PM2,5 do OpenAQ só para a mesma "
+                        "estação oficial; sensores de baixo custo (IPAM/RedeAr) só em concentração, "
+                        f"nunca índice. Medição com mais de {VALIDADE_HORAS_SINAL} h é lacuna. Peso "
+                        "zero, sinal físico."),
+        "gerado_em": agora(), "fontes": fontes, "estacoes": estacoes, "sensores": sensores,
+    })
+    print(f"→ data/ar_medido.json: {sum(1 for e in estacoes if e['iqar'])}/{len(estacoes)} estação(ões) "
+          f"com IQAr, {sum(1 for x in sensores if x['pm25'])}/{len(sensores)} sensor(es) com PM2,5.")
+
+
 def gravar_pontos_de_foco() -> None:
     """Grava data/focos_pontos.json com os focos agregados em grade.
 
@@ -2425,6 +2663,56 @@ def autoteste() -> int:
     checar("OpenAQ negativo: resposta vazia devolve vazio",
            parse_openaq_locais({}, _caps) == {} and parse_openaq_locais({"results": []}, _caps) == {})
 
+    # ── Ar medido (16/10/2026): IQAr do órgão, 36 h, casamento com OpenAQ, sensor sem índice ──
+    _agora = datetime(2026, 10, 16, 12, 0, tzinfo=FUSO_BR)
+    _mun = {"idMunicipio": 5300108, "noMunicipio": "Brasília", "sgUf": "DF"}
+    _mma = parse_monitorar([
+        {"idEstacao": 1, "noEstacao": "Fercal", "noFonteDados": "IBRAM", "nuLatitude": "-15.6",
+         "nuLongitude": "-47.87", "municipio": _mun, "categoriaEstacao": {"descricao": "Regulatória"},
+         "indiceQualidadeArAtual": {"poluente": {"noPoluente": "MP₁₀"}, "classificacaoIqAr": {"noClassificacao": "Moderada"},
+                                    "medicao": {"indiceQualidadeAr": 52.0, "dtMedicao": "2026-10-16 09:00"}}},
+        {"idEstacao": 2, "noEstacao": "Velha", "nuLatitude": "-15.7", "nuLongitude": "-47.9", "municipio": _mun,
+         "indiceQualidadeArAtual": {"medicao": {"indiceQualidadeAr": 30.0, "dtMedicao": "2025-06-16 20:00"}}},
+        {"idEstacao": 3, "noEstacao": "Sem índice", "nuLatitude": "-15.8", "nuLongitude": "-47.9", "municipio": _mun},
+        "lixo"], _agora)
+    checar("Ar: IQAr do órgão entra como publicado (valor, faixa, poluente)",
+           _mma[0]["iqar"]["valor"] == 52.0 and _mma[0]["iqar"]["classificacao"] == "Moderada"
+           and _mma[0]["ibge"] == 5300108 and _mma[0]["lat"] == -15.6)
+    checar("Ar: medição com mais de 36 h é lacuna, nunca valor velho como atual",
+           _mma[1]["iqar"] is None and "36 h" in _mma[1]["lacuna"])
+    checar("Ar: estação sem IQAr publicado é lacuna", _mma[2]["iqar"] is None and _mma[2]["lacuna"])
+    checar("Ar negativo: item malformado e resposta não-lista não quebram",
+           len(_mma) == 3 and parse_monitorar({"erro": 1}, _agora) == [])
+    _n = casar_openaq(_mma,
+                      [{"id": 10, "name": "FERCAL", "coordinates": {"latitude": -15.601, "longitude": -47.871}},
+                       {"id": 11, "name": "Outra", "coordinates": {"latitude": -15.7, "longitude": -47.9}}],
+                      [{"locationsId": 10, "value": 21.04, "datetime": {"utc": "2026-10-16T13:00:00Z"}},
+                       {"locationsId": 11, "value": 9.0, "datetime": {"utc": "2026-10-01T13:00:00Z"}}], _agora)
+    checar("Ar: OpenAQ casa a mesma estação a até 300 m e pendura o PM2,5",
+           _n == 1 and _mma[0]["pm25_openaq"]["valor"] == 21.0 and _mma[0]["pm25_openaq"]["distancia_m"] < 300)
+    checar("Ar: medição do OpenAQ com mais de 36 h não casa", _mma[1]["pm25_openaq"] is None)
+    _alvos = locais_openaq_pm25([
+        {"id": 10, "isMonitor": True, "datetimeLast": {"utc": "2026-10-16T13:00:00Z"},
+         "sensors": [{"id": 7, "parameter": {"name": "pm25"}}, {"id": 8, "parameter": {"name": "o3"}}]},
+        {"id": 12, "isMonitor": False, "datetimeLast": {"utc": "2026-10-16T13:00:00Z"},
+         "sensors": [{"id": 9, "parameter": {"name": "pm25"}}]},
+        {"id": 13, "isMonitor": True, "datetimeLast": {"utc": "2023-04-01T00:00:00Z"},
+         "sensors": [{"id": 5, "parameter": {"name": "pm25"}}]}], _agora)
+    checar("Ar: OpenAQ só consulta monitor de referência com PM2,5 recente (sensor de baixo custo e local parado ficam fora)",
+           _alvos == {10: {7}})
+    _sens = parse_redear([
+        {"sensor_id": 1, "source": "RedeAr", "name": "Carauari", "geocode_mun": 1301001, "geocode_uf": 13,
+         "gps": {"coordinates": [-67.17, -5.09]}, "readings": [
+             {"datetime": "2026-10-16T08:55:04", "pms1_pm2_5_env": 13, "pms2_pm2_5_env": 18, "pms1_pm10_env": 13, "pms2_pm10_env": 19},
+             {"datetime": "2026-10-16T09:51:04", "pms1_pm2_5_env": 10, "pms2_pm2_5_env": 12, "pms1_pm10_env": 11, "pms2_pm10_env": 13}]},
+        {"sensor_id": 2, "name": "teste sem município", "readings": []},
+        {"sensor_id": 3, "geocode_mun": 5300108, "readings": [{"datetime": "2026-07-06T15:11:04", "pms1_pm2_5_env": 5}]},
+    ], _agora)
+    checar("Ar: sensor usa a leitura MAIS RECENTE, média dos dois canais, em µg/m³ (nunca AQI)",
+           _sens[0]["pm25"] == {"valor": 11.0, "pm10": 12.0, "unidade": "µg/m³", "lido_em": "2026-10-16T09:51:04"})
+    checar("Ar: sensor sem código IBGE fica de fora; leitura velha é lacuna",
+           len(_sens) == 2 and _sens[1]["pm25"] is None and "36 h" in _sens[1]["lacuna"])
+
     _est = parse_estacoes_inmet([
         {"CD_ESTACAO": "A001", "DC_NOME": "BRASILIA", "SG_ESTADO": "DF", "CD_SITUACAO": "Operante",
          "VL_LATITUDE": "-15.7893", "VL_LONGITUDE": "-47.9257"},
@@ -2550,6 +2838,8 @@ def main() -> None:
     gravar(registro)
     gravar_pontos_de_foco()
     gravar_alertas_vigentes()
+    if "observado" in camadas:
+        gravar_ar_medido()
     gravar_consultas()
 
 

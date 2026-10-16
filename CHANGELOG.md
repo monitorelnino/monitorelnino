@@ -29,6 +29,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #PR · Ar medido por estação: IQAr do MMA, PM2,5 do OpenAQ e da RedeAr
+
+O elo dos sinais grava `data/ar_medido.json`: IQAr de cada estação do MonitorAr como o órgão publica, PM2,5 do OpenAQ casado à mesma estação (≤ 300 m), PM2,5 dos sensores IPAM/RedeAr sem índice. Medição com mais de 36 h é lacuna; resposta preservada por hash. METODOLOGIA §41.7 traz as três réguas e a errata do "não há índice nacional aberto". A figura vem depois.
+
 ## 2026-10-16 · #790 · Topo sem a linha "2026/2027 · Monitoramento independente…"; cidade troca sem botão
 
 Sai do topo de todas as páginas a linha "2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab" e a faixa logo abaixo dela; a informação segue no rodapé. No cartão da cidade sai o botão ×: ao clicar de novo no campo do município, a lista do estado volta inteira e o cartão anterior fica até a nova escolha (editoria, 16/10).
