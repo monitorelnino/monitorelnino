@@ -1,29 +1,39 @@
-"""Sonda pontual (diag 16/10): documentos federais de saúde (lote 6, 1.2) — título, data, hash."""
-import hashlib, re, sys, time, urllib.parse
+"""Sonda pontual (diag 16/10): MonitorAr/MMA e RedeAr/IPAM do runner — robots, código, tamanho, tempo, cabeçalhos."""
+import json, sys, time, urllib.request, urllib.error
 sys.path.insert(0, ".")
-from coletores_base import buscar
-URLS = [
- "https://www.gov.br/saude/pt-br/assuntos/noticias-ms/2026/junho/ministerio-da-saude-lanca-plano-para-preparar-sus-para-o-el-nino",
- "https://www.gov.br/saude/pt-br/assuntos/noticias-ms/2026/agosto/ministerio-da-saude-apresenta-a-secretarios-estaduais-plano-de-preparacao-para-o-el-nino-2026-2027",
- "https://www.gov.br/saude/pt-br/assuntos/noticias-ms/2026/setembro/ministerio-da-saude-detalha-acoes-do-adaptasus-para-enfrentar-impactos-do-fenomeno-el-nino",
-]
-def info(u):
+from coletores_base import UA
+def get(u, t=60):
+    t0 = time.time()
+    req = urllib.request.Request(u, headers={"User-Agent": UA, "Accept": "application/json, text/plain, */*"})
     try:
-        b = buscar(u, timeout=60)
+        with urllib.request.urlopen(req, timeout=t) as r:
+            b = r.read(); h = dict(r.headers)
+            return r.status, b, h, time.time() - t0
+    except urllib.error.HTTPError as e:
+        return e.code, e.read()[:300], dict(e.headers or {}), time.time() - t0
     except Exception as e:
-        print("ERRO", u, type(e).__name__, e); return None
-    t = b.decode("utf-8", "replace")
-    tit = re.search(r"<title>(.*?)</title>", t, re.S)
-    pub = re.search(r'(Publicado em[^<]{0,60})', t)
-    print("OK", u, "|", len(b), "|", hashlib.sha256(b).hexdigest()[:16], "|", (tit.group(1).strip() if tit else "")[:150], "|", pub.group(1) if pub else "")
-    return t
-for u in URLS:
-    info(u); time.sleep(3)
-for q in ("nota técnica conjunta 308/2026", "308/2026 El Niño"):
-    u = "https://www.gov.br/saude/pt-br/search?SearchableText=" + urllib.parse.quote(q)
-    t = info(u)
-    if t:
-        for m in re.finditer(r'href="(https://www\.gov\.br/saude[^"]+)"[^>]*>([^<]{5,200})<', t):
-            if re.search(r"308|nota", m.group(1) + m.group(2), re.I):
-                print("  ->", m.group(1), "|", m.group(2).strip()[:150])
-    time.sleep(3)
+        return f"ERRO {type(e).__name__}: {e}", b"", {}, time.time() - t0
+for u in ["https://monitorar-backend.mma.gov.br/robots.txt", "https://monitorar.mma.gov.br/robots.txt",
+          "https://monitorar-backend.mma.gov.br/v1/estacao/todas",
+          "https://redear.org.br/robots.txt", "https://hmg.api.redear.org.br/robots.txt",
+          "https://api.redear.org.br/v1/sensors", "https://hmg.api.redear.org.br/v1/sensors"]:
+    st, b, h, dt = get(u)
+    hh = {k: v for k, v in h.items() if k.lower() in ("content-type", "cache-control", "access-control-allow-origin", "server", "content-length", "date")}
+    print(f"\n== {u}\n   status={st} bytes={len(b)} tempo={dt:.1f}s cabeçalhos={hh}")
+    if u.endswith("robots.txt") and isinstance(st, int) and st == 200:
+        print("   robots:", b[:400].decode("utf-8", "replace").replace("\n", " | "))
+    elif isinstance(st, int) and st == 200:
+        try:
+            o = json.loads(b)
+            if isinstance(o, list):
+                print("   lista com", len(o), "itens; chaves do 1º:", list(o[0])[:25] if o else None)
+                if "estacao" in u:
+                    rec = [x for x in o if str((x.get("indiceQualidadeArAtual") or {}).get("dtMedicao") or x.get("dtUltimaAtualizacao") or "")[:7] == "2026-10"]
+                    print("   com dado em 2026-10:", len(rec))
+            elif isinstance(o, dict):
+                print("   dict, chaves:", list(o)[:15])
+                for k in ("data", "sensors", "items", "results"):
+                    if isinstance(o.get(k), list): print("   ", k, len(o[k]), list(o[k][0])[:20] if o[k] else None)
+        except Exception as e:
+            print("   não é JSON:", e, b[:200])
+    time.sleep(2)
