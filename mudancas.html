@@ -49,6 +49,10 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/10/2026 · DOE-SP: o texto da publicação é decodificado e a homologação paulista casa</dt>
+      <dd>A API do DOE-SP serve o ato com entidades HTML (`Situa&amp;ccedil;&amp;atilde;o`, `Pre&amp;shy;feito`); sem decodificar, nenhum padrão de homologação casava. A forma paulista (&quot;Homologa, por 180 dias, o decreto do Prefeito do Município de Guariba … Decreto municipal nº 5.019&quot;) entra como quarto padrão, com caso de teste do texto medido do Decreto 70.765.</dd>
+      <dt>16/10/2026 · Descoberta nos sítios oficiais: três noites cobrem os 54 alvos</dt>
+      <dd>A descoberta de planos nos sítios estaduais andava 6 alvos por noite e revia os mesmos; agora a fatia anda 20 por dia e os 54 (27 UFs, saúde e defesa civil) passam em três noites. O comando ganha prazo próprio de 12 minutos e grava o que achou ao ser interrompido; alvo só conta como verificado quando a API do sítio respondeu.</dd>
       <dt>16/10/2026 · A definição do índice tem dono, e o texto público é conferido contra ela</dt>
       <dd>O motor grava em `meta.json` os componentes, pesos e faixas do índice e que a antecedência está fora da nota. O portão de versão passa a ler o texto público do MARÉ Legal: antecedência como medida da nota e &quot;pesam igual&quot; escrito à mão reprovam. A inicial com os textos novos (#770) já passa sem exceção.</dd>
       <dt>16/10/2026 · &quot;Envie pelo formulário&quot; leva ao formulário</dt>
@@ -165,10 +169,6 @@
       <dd>`gerar_financiamento_semana.py` passa a rodar a cada publicação, logo depois dos números da imprensa, e o portão de coerência entre os dois entra na suíte. Sem isso a página mostraria o mês fechado da edição anterior. Em `.github/workflows/`.</dd>
       <dt>02/10/2026 · Coordenação do MARÉ Saúde em duas funções</dt>
       <dd>O componente &quot;coordenação&quot; passa a ser construto formativo de duas capacidades: comando interno da saúde (F1) e ligação com a coordenação do estado (F2), pesos iguais e média aritmética — falta de uma função reduz, não zera. Mede-se a função, não o órgão: um ato pode pontuar nas duas. O juiz classifica as duas e guarda o trecho que fundamenta cada uma. `robustez_saude.py` testa agregação, pesos e degrau. METODOLOGIA §91.</dd>
-      <dt>02/10/2026 · Coleta de doença respiratória confiável</dt>
-      <dd>O banco anual do SIVEP-Gripe passa a ser baixado com retomada por `Range`, três tentativas com espera crescente e conferência do tamanho declarado — conexão cortada entregava CSV truncado lido como série inteira. Ano que falha é republicado do último agregado bom, com a lacuna declarada; cada tentativa entra num painel de saúde dos coletores. Autoteste simula falha de rede. Em `coletores_base.py`, `coletar_srag_sivep.py`, `coletar_sg_esus.py`.</dd>
-      <dt>02/10/2026 · Financiamento ao contrato, com o recorte que a fonte permite</dt>
-      <dd>Página reconstruída ao contrato: três cartões por seção, listas no lugar do diagrama das rotas e dos mapas municipais, grade com os 27 estados. Os cartões do topo passam a vir de `gerar_financiamento_semana.py`: mês fechado onde o Portal publica por mês, sete dias onde o ato tem data — nada de &quot;sem dado&quot; com série em disco. Portão novo confere a coerência com a imprensa. Em `financiamento.html`, `assets/js/financiamento.js`, `scripts/`.</dd>
     </dl>
   </section>
 </main>

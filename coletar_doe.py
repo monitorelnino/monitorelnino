@@ -264,6 +264,13 @@ PAD_HOMOLOGA_EXARADO = re.compile(
     r"homologa\s+(?:o\s+)?decreto\s+municipal\s+n[ºo°\.]?\s*([\d\.\/-]+)[^.]{0,220}?"
     r"exarad[oa]\s+pel[oa]\s+(?:Prefeit[oa]|Chefe\s+do\s+Poder\s+Executivo)(?:\s+Municipal)?"
     r"\s+d[eo]\s+([A-ZÀ-Ú][^,;\.]{1,58})", re.I)
+# 16/10/2026, DOE-SP (Decreto 70.765, Guariba): "Homologa, por 180 (cento e oitenta) dias, o decreto
+# do Prefeito do Município de Guariba, que declarou Situação de Emergência … Artigo 1º - Fica
+# homologado, por 180 (…) dias, o Decreto municipal nº 5.019, de 24 de julho de 2026".
+PAD_HOMOLOGA_DECRETO_DO_PREFEITO = re.compile(
+    r"homologa,?\s+(?:por\s+[^,]{1,40}?dias,?\s+)?o\s+decreto\s+do\s+prefeito\s+do\s+munic[íi]pio"
+    r"\s+de\s+([A-ZÀ-Ú][^,;\.]{1,58})(?:.{0,500}?decreto\s+municipal\s+n[ºo°\.]?\s*([\d\.\/-]+\d))?",
+    re.I | re.S)
 PAD_HOMOLOGA_NO_MUNICIPIO = re.compile(
     r"homologa\s+(?:a\s+)?(?:situa[çc][ãa]o\s+de\s+emerg[êe]ncia|estado\s+de\s+calamidade\s+p[úu]blica)"
     r"\s+n[oa]\s+munic[íi]pio\s+de\s+([A-ZÀ-Ú][^,;\.]{1,58})", re.I)
@@ -325,6 +332,8 @@ def homologacoes_no_texto(texto: str) -> list:
         juntar(m.group(2), m.group(1), m.start())
     for m in PAD_HOMOLOGA_NO_MUNICIPIO.finditer(texto):
         juntar(m.group(1), None, m.start())
+    for m in PAD_HOMOLOGA_DECRETO_DO_PREFEITO.finditer(texto):
+        juntar(m.group(1), m.group(2), m.start())
     for m in PADRAO_HOMOLOGA.finditer(texto):
         juntar(m.group(2), m.group(1), m.start())
     return list(por_municipio.values())
@@ -463,11 +472,17 @@ def parse_busca_sp(bruto: bytes) -> tuple:
 
 
 def texto_da_publicacao_sp(bruto: bytes) -> str:
-    """O texto da publicação, sem a marcação HTML em que a API a serve. Função pura."""
+    """O texto da publicação, sem a marcação HTML em que a API a serve. Função pura.
+
+    16/10/2026: o conteúdo vem com entidades (`Situa&ccedil;&atilde;o`, `Pre&shy;feito`) e às vezes
+    com a folha de estilo escapada; sem decodificar, nenhum padrão de homologação casava (Guariba,
+    Decreto 70.765, medido do runner). Decodifica antes de tirar a marcação."""
+    import html as _html
     o = json.loads(bruto.decode("utf-8", "replace") if isinstance(bruto, bytes) else bruto)
-    html = (o or {}).get("content") or ""
-    html = re.sub(r"<(style|script|title)\b.*?</\1>", " ", html, flags=re.S | re.I)
-    return " ".join(re.sub(r"<[^>]+>", " ", html).split())
+    conteudo = _html.unescape((o or {}).get("content") or "").replace("\u00ad", "")
+    conteudo = re.sub(r"<(style|script|title)\b.*?</\1>", " ", conteudo, flags=re.S | re.I)
+    conteudo = re.sub(r"\{[^{}]*\}", " ", re.sub(r"<[^>]+>", " ", conteudo))
+    return " ".join(conteudo.split())
 
 
 def itens_sp(uf: str, desde: str, ate: str, termos=None, buscar_fn=None,
@@ -1095,8 +1110,16 @@ def autoteste() -> int:
                 "Art. 1º Homologa o Decreto Municipal nº 242, de 22 de setembro de 2026, exarado "
                 "pelo Prefeito de Cafezal do Sul, o qual declara Situação de Emergência.")
         r = homologacoes_no_texto(real)
+        sp = homologacoes_no_texto(texto_da_publicacao_sp(json.dumps({"content": (
+            "<p>DECRETO Nº 70.765, DE 24 DE JULHO DE 2026</p><p>Homologa, por 180 (cento e oi&shy;tenta) "
+            "dias, o decreto do Pre&shy;feito do Munic&iacute;pio de Guariba, que declarou Situa&ccedil;"
+            "&atilde;o de Emer&shy;g&ecirc;ncia em &aacute;reas do Munic&iacute;pio.</p><p>Artigo 1&ordm; - "
+            "Fica homologado, por 180 (cento e oitenta) dias, o Decreto municipal n&ordm; 5.019, de 24 de "
+            "julho de 2026, que declarou Situa&ccedil;&atilde;o de Emerg&ecirc;ncia.</p>")})))
         return (len(r) == 1 and r[0]["municipio"] == "Cafezal do Sul"
-                and r[0]["decreto_municipal"] == "242" and r[0]["decreto_estadual"] == "15.155")
+                and r[0]["decreto_municipal"] == "242" and r[0]["decreto_estadual"] == "15.155"
+                and len(sp) == 1 and sp[0]["municipio"] == "Guariba"
+                and sp[0]["decreto_municipal"] == "5.019" and sp[0]["decreto_estadual"] == "70.765")
 
     def t7():
         """Página indexada em ZERO, e para quando a página vem incompleta. Sem rede."""

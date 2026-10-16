@@ -40,7 +40,7 @@ cortesia, SIGKILL) — o job chega vivo ao commit e grava o que os outros comand
 de `data/` que a interrupção deixe ilegível volta à versão do git: dado pela metade não sobe.
 
 USO
-  python3 scripts/saude_pipeline.py [--prazo <epoch>] --rodar <script> [args...]
+  python3 scripts/saude_pipeline.py [--prazo <epoch>] --rodar [prazo=Nmin] <script> [args...]
   python3 scripts/saude_pipeline.py --listar
   python3 scripts/saude_pipeline.py --autoteste
 """
@@ -152,6 +152,17 @@ def decidir_prazo(prazo, agora: float, minimo: float = MINIMO_PARA_COMECAR_S):
     if resta < minimo:
         return "pular", 0
     return "rodar", resta
+
+
+def prazo_proprio(alvo: list, prazo, agora: float):
+    """`prazo=12min coletor.py …` na linha do elo dá ao comando um prazo PRÓPRIO, o menor entre ele
+    e o do elo, para que um canal não coma o tempo dos que vêm depois; o comando recebe o mesmo
+    SIGINT e grava o que achou (16/10/2026, HANDOVER_FONTES item 3). Devolve (prazo, comando)."""
+    proprio = re.fullmatch(r"prazo=(\d+)min", alvo[0]) if alvo else None
+    if not proprio or not alvo[1:]:
+        return prazo, alvo
+    fim = agora + int(proprio.group(1)) * 60
+    return min(prazo or fim, fim), alvo[1:]
 
 
 def json_ilegiveis(caminhos, ler_texto) -> list:
@@ -285,6 +296,12 @@ def autoteste() -> int:
     casos.append(("menos de um minuto até o prazo, pula",
                   decidir_prazo(150.0, 100.0) == ("pular", 0)))
     casos.append(("prazo vencido, pula", decidir_prazo(50.0, 100.0) == ("pular", 0)))
+    casos.append(("prazo=Nmin dá prazo próprio e sai do comando",
+                  prazo_proprio(["prazo=12min", "x.py", "-a"], None, 100.0) == (820.0, ["x.py", "-a"])))
+    casos.append(("prazo próprio nunca passa do prazo do elo",
+                  prazo_proprio(["prazo=12min", "x.py"], 500.0, 100.0) == (500.0, ["x.py"])))
+    casos.append(("linha sem prazo=Nmin fica como está",
+                  prazo_proprio(["x.py", "prazo=1min"], 9.0, 0.0) == (9.0, ["x.py", "prazo=1min"])))
     textos = {"data/a.json": '{"x": 1}', "data/b.json": '{"x": ', "data/c.txt": "{"}
     casos.append(("JSON pela metade é achado; texto e JSON inteiro não",
                   json_ilegiveis(list(textos), textos.__getitem__) == ["data/b.json"]))
@@ -338,6 +355,7 @@ def main() -> int:
                 prazo = float(bruto) if bruto else None
             except ValueError:
                 print(f"[saude] --prazo ilegível ({bruto!r}); rodando sem prazo", flush=True)
+        prazo, alvo = prazo_proprio(alvo, prazo, time.time())
         return rodar(alvo, prazo=prazo)
     print(__doc__.strip().split("USO")[-1].strip())
     return 0
