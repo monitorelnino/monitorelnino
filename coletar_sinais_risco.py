@@ -2286,7 +2286,9 @@ def gravar_focos_referencia() -> None:
         novos = {}
         for d in dias[:-1]:
             iso = f"{d[:4]}-{d[4:6]}-{d[6:]}"
-            if (fim - date.fromisoformat(iso)).days < FOCOS_DIAS_MUNICIPIO and (iso not in guardados or iso == ultimo):
+            idade = (fim - date.fromisoformat(iso)).days
+            # os dois últimos dias são relidos sempre: o INPE ainda pode completar o arquivo
+            if idade < FOCOS_DIAS_MUNICIPIO and (iso not in guardados or idade < 2):
                 novos.update(resumo_focos_ref(_buscar_registrado("inpe_fogo", f"{base}focos_diario_br_{d}.csv")))
         ano_antes = _ano_antes(fim)
         if ano_antes.isoformat() not in guardados:
