@@ -51,6 +51,8 @@
     <dl class="mudancas-lista">
       <dt>16/10/2026 · Duas regras de componente passam a ser julgadas</dt>
       <dd>O portão de conformidade passa a reprovar seção numerada (&quot;1.&quot;, &quot;II ·&quot;) e mais de uma figura larga por página; as duas regras só existiam no texto de `layout/regras.json`. Dívida declarada: 16 → 14 regras só texto.</dd>
+      <dt>16/10/2026 · Um medidor de frescor e um portão das fichas municipais (consolidação item 6)</dt>
+      <dd>`verificar_frescor.py` absorve os três portões de frescor (Financiamento, Defesa civil, Saúde): um leitor de carimbo, um relógio, três famílias declaradas, 33 casos. `verificar_fichas_municipais.py` absorve `documento_de_plano`, `documento_publicado`, `datas_de_instrumento` e `capital`: `data/municipios.json` lido uma vez, quatro réguas, 34 casos. Sete scripts saem; 125 → 120 comandos. Linhas .py/.yml −515.</dd>
       <dt>16/10/2026 · Saúde: títulos e subtítulos dizem o que a figura é</dt>
       <dd>O mapa do índice passa a &quot;MARÉ Saúde por estado, de 0 a 100&quot;, com o subtítulo do cálculo em uso; &quot;prontidão&quot; sai da página. Os semanais nomeiam o ano e os anos da faixa habitual (2019 a 2025). A cidade fora da leitura semanal aparece como &quot;não foi lido pelo MARÉ nesta semana&quot;. Sai a busca municipal antiga, sem elemento na página.</dd>
       <dt>16/10/2026 · Nenhum texto sobre feed no site</dt>
@@ -167,8 +169,6 @@
       <dd>Edições do ciclo baixadas e indexadas: 52 na Paraíba e 68 no Mato Grosso do Sul, de 70 dias úteis. Termo genérico passou a exigir contexto do ciclo — &quot;plano de contingência do sistema E-TFD&quot; não é pista de preparação ao El Niño. O índice de ocorrências ficou com cinco datas reais, e o registro por edição espelha o índice. Em `coletar_edicoes_doe.py`, `data/doe_edicoes/`.</dd>
       <dt>02/10/2026 · Localizador: do mais novo para o mais velho</dt>
       <dd>Onde o nome do arquivo pede o número da edição, o localizador percorre as datas do mais novo para o mais velho: a âncora de cada data passa a ser a vizinha, e a deriva por passo é de uma ou duas edições. Da outra ordem, a janela não alcançava dois meses de deriva e o Mato Grosso do Sul dava 404 em todas as datas. Em `coletar_edicoes_doe.py`.</dd>
-      <dt>02/10/2026 · Canal 2: baixar a edição do diário, não buscar nele</dt>
-      <dd>`coletar_edicoes_doe.py` baixa a edição por data, extrai o texto e indexa as ocorrências com trecho e página; a campanha consome o índice. Arquivo servido com 200 que não é diário e sigla sem contexto de saúde não contam. PB e MS registrados pelo documento relido, com F1 e F2. A coordenação passa a exigir as duas funções. METODOLOGIA §94. ## 2026-10-02 · #521b · Imprensa: capitais com plano e a série de faixas O cartão &quot;capitais com plano&quot; deixa de ser lacuna: a referência das 27 capitais por código IBGE já existia no repositório, e o número é 17 de 27. `scripts/registrar_faixas.py` passa a escrever a faixa de cada estado por edição, e o cartão &quot;mudaram de faixa&quot; lê de lá — a comparação começa na próxima edição. Em `gerar_imprensa_semana.py`, `scripts/`, `.github/workflows/`.</dd>
     </dl>
   </section>
 </main>
