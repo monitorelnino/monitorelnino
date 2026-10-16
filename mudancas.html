@@ -51,6 +51,8 @@
     <dl class="mudancas-lista">
       <dt>16/10/2026 · &quot;Envie pelo formulário&quot; leva ao formulário</dt>
       <dd>O convite do cartão da cidade apontava para &quot;Para gestores&quot;, sem formulário. Agora rola até o formulário da própria inicial e o preenche pela mesma função que lê os parâmetros do endereço. O portão de âncoras passa a ler também os links montados nos scripts — e achou uma nota de financiamento morta, que sai.</dd>
+      <dt>16/10/2026 · Portões: 131 comandos `--autoteste` redundantes saem (consolidação item 6)</dt>
+      <dd>`verificar_autotestes_isolados.py` já roda todo `.py` com `--autoteste` (210) e reprova em qualquer vermelho; os comandos repetidos um a um — todos os do job de dado, o laço dos coletores e os do bloco &quot;sempre&quot; cujo autoteste não abre arquivo real (medido com gancho de auditoria) — saem de `portoes.yml`. Ficam os que leem `layout/`, `conteudo/`, `schemas/`, página ou workflow, os em JavaScript e os `--self-test`/`--check`. 259 → 141 comandos, mesma cobertura.</dd>
       <dt>16/10/2026 · Um verificador de texto público (consolidação item 3)</dt>
       <dd>`verificar_texto_publico.js` absorve legendas e prosa (portão 19), semana epidemiológica, palavras por página, componente de figura, fichas semânticas, regra 0 da Imprensa, enquadramento federal, vocabulário dos scripts e o `--so-texto-proibido`: nove scripts que renderizavam as mesmas páginas (dois com a URL errada, lendo o texto de reserva) saem. Regras em `layout/regras.json`; 72 casos de mutação no autoteste. Linhas .py/.js/.yml: −842; portões 272 → 259.</dd>
       <dt>16/10/2026 · Inicial com os textos da editoria</dt>
@@ -167,8 +169,6 @@
       <dd>A forma de cada página passa a viver em `layout/contratos/&lt;pagina&gt;.json` — seções, ordem, cartões, grades e texto proibido — e um portão novo mede a página renderizada em 1280 e 390 px, reprovando a divergência. A editoria apontava o mesmo defeito cartão a cartão; a regra agora está num lugar só. Saúde reconstruída ao contrato. Em `layout/`, `scripts/`, `saude.html`, `assets/js/saude.js`, `CODEMAP.md`.</dd>
       <dt>02/10/2026 · Recursos federais de defesa civil por município</dt>
       <dd>Coletor novo: lê das portarias da SEDEC no DOU quanto a União autorizou transferir a cada município, com data, finalidade e valor. &quot;Liberado&quot; não é &quot;pago&quot; e resposta não é recuperação — o arquivo guarda as duas separadas, com o rótulo do próprio ato. Primeira carga: R$ 7,02 mi em resposta e R$ 191,3 mi em recuperação, 68 municípios. Prorrogação de prazo é recusada pelo nome. Em `METODOLOGIA.md` §85.</dd>
-      <dt>02/10/2026 · Financiamento reorganizado pela pergunta do leitor</dt>
-      <dd>A ordem passa a ser: o que mudou na semana, quanto chegou ao meu estado (mapa e grade por habitante, com ficha), de onde vem o dinheiro do ciclo, quanto chegou à minha cidade. Entra o cartão de recursos de resposta liberados na semana, com o número de municípios. Saem os dois mapas que pintavam o país com a parcela de 4%, o diagrama das rotas, a mediana e a faixa eleitoral. Em `METODOLOGIA.md` §86.</dd>
     </dl>
   </section>
 </main>
