@@ -32,9 +32,16 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-16 · #768 · Um verificador de texto público (consolidação item 3)
+## 2026-10-16 · #769 · Um verificador de texto público (consolidação item 3)
 
 `verificar_texto_publico.js` absorve legendas e prosa (portão 19), semana epidemiológica, palavras por página, componente de figura, fichas semânticas, regra 0 da Imprensa, enquadramento federal, vocabulário dos scripts e o `--so-texto-proibido`: nove scripts que renderizavam as mesmas páginas (dois com a URL errada, lendo o texto de reserva) saem. Regras em `layout/regras.json`; 72 casos de mutação no autoteste. Linhas .py/.js/.yml: −842; portões 272 → 259.
+## 2026-10-16 · #768 · Todo texto público no catálogo, com portão
+
+O portão do catálogo passa a reprovar texto público do `<main>` sem identificador (título, parágrafo, item, legenda, resumo), pela mesma regra do migrador; fora só formulário, diálogo, `noscript` e navegação (`layout/regras.json`). O migrador passa a levar texto com marcação e a não sobrescrever identificador existente. 138 trechos de dez páginas migrados sem mudar uma letra.
+
+## 2026-10-16 · #767 · Consolidação item 5: três funções copiadas viram uma
+
+`data_da_edicao()` (data de `meta.json`) sai de dez arquivos para `coletores_base` — em dois a reserva chamava `datetime._hoje()`, que não existe; a leitura de PDF com pdfplumber primeiro dos quatro boletins estaduais vira opção de `extrair_texto_por_pagina`; `_gh` dos quatro scripts de temporizador fica só no despachante. −144 linhas.
 
 ## 2026-10-16 · #764 · Saúde: sai o texto vazado
 

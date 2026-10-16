@@ -172,6 +172,18 @@ def data_do_ato_no_trecho(trecho: str, publicado_em: date, ano_minimo: int = 200
     return None
 
 
+def data_da_edicao() -> date:
+    """A data da última rodada que gravou dados (`atualizado_em` de `data/meta.json`), ou a data
+    editorial quando o meta não existe. Determinística: a cadeia de derivados reproduz o arquivo
+    byte a byte em qualquer dia. 16/10/2026: estava copiada em dez arquivos, e em dois a reserva
+    chamava `datetime._hoje()`, que não existe."""
+    try:
+        a = json.loads((RAIZ / "data" / "meta.json").read_text(encoding="utf-8")).get("atualizado_em")
+        return datetime.strptime(a, "%d/%m/%Y").date()
+    except Exception:  # noqa: BLE001
+        return hoje_editorial()
+
+
 def data_do_corte() -> date:
     """A data do RELÓGIO FIXADO da cadeia de derivados, ou a data editorial fora dela.
 

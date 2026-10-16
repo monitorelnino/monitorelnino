@@ -33,7 +33,8 @@ adivinha o link.
 import io, re, sys, unicodedata
 from pathlib import Path
 from urllib.parse import quote, urljoin
-from coletores_base import ler, gravar, buscar, buscar_com_reserva_wayback, registrar_lacuna, log_busca, rodar_autoteste, hoje_editorial
+from coletores_base import ler, gravar, buscar, buscar_com_reserva_wayback, registrar_lacuna, log_busca, rodar_autoteste, data_da_edicao
+from preservar_evidencias import extrair_texto_por_pagina
 
 RAIZ = Path(__file__).resolve().parent
 BASE = "https://portalcievs.saude.pe.gov.br"
@@ -44,30 +45,6 @@ RESSALVA = ("O Monitor não atribui casos ao El Niño; dados da SES-PE / CIEVS-P
             "Informe Epidemiológico semanal em PDF — dados parciais, sujeitos a alteração. Só totais estaduais: a tabela "
             "municipal do informe é imagem e não é lida por máquina.")
 
-
-def _texto_paginas(bruto: bytes) -> list:
-    """Texto por página. pdfplumber PRIMEIRO (11/09/2026): nestes PDFs-infográfico o pypdf extrai com espaço
-    entre caracteres ("1 1 . 2 4 1"), e nenhum padrão numérico casa; pdfplumber preserva o texto como os
-    parsers foram afinados. pypdf fica como reserva, para a leitura nunca depender de uma só biblioteca."""
-    try:
-        import io as _io, pdfplumber
-        with pdfplumber.open(_io.BytesIO(bruto)) as pdf:
-            pgs = [(pg.extract_text() or "") for pg in pdf.pages]
-        if sum(len(t) for t in pgs) > 200:
-            return pgs
-    except Exception:  # noqa: BLE001
-        pass
-    from preservar_evidencias import extrair_texto_por_pagina
-    return extrair_texto_por_pagina(bruto)
-
-
-def _hoje():
-    import datetime as _dt, json as _js
-    try:
-        a = _js.load(open(RAIZ / "data" / "meta.json", encoding="utf-8")).get("atualizado_em")
-        return _dt.datetime.strptime(a, "%d/%m/%Y").date()
-    except Exception:  # noqa: BLE001
-        return hoje_editorial()
 
 
 def _norm(s: str) -> str:
@@ -363,7 +340,7 @@ def parse_texto(texto: str, paginas: list = None) -> dict:
 
 
 def coletar() -> int:
-    hoje = _hoje()
+    hoje = data_da_edicao()
     try:
         # 12/09/2026: a listagem deu URLError numa rodada real, o mesmo tipo de falha que o DF tinha — usa a
         # mesma reserva via Wayback (coletores_base.py) para não depender de uma conexão direta que pode
@@ -388,7 +365,7 @@ def coletar() -> int:
             # 11/09/2026 (achado da rodada de 22h): pdfplumber NÃO está em requirements.txt — o coletor chegava
             # a localizar o PDF e morria com ModuleNotFoundError. A função canônica do projeto usa pypdf
             # (instalado) e só cai para pdfplumber se a extração vier vazia: funciona com ou sem o opcional.
-            paginas = [_norm(t) for t in _texto_paginas(bruto)]
+            paginas = [_norm(t) for t in extrair_texto_por_pagina(bruto, pdfplumber_primeiro=True)]
             pdf_url, se = url_c, se_c; break
         except Exception as e:  # noqa: BLE001
             anunciados_sem_arquivo.append(f"SE {se_c}: {type(e).__name__}"); continue

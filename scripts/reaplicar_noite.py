@@ -33,6 +33,7 @@ import sys
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
 sys.path.insert(0, str(RAIZ / "scripts"))
+from despachar_temporizadores import _gh  # noqa: E402
 
 PREFIXO = "coleta-perdida-"
 
@@ -104,21 +105,13 @@ def caminho_do_reaplicado(noite: str, elo: str) -> str:
 
 
 # ----------------------------------------------------------------- portas de I/O
-def _gh(args: list) -> str:
-    try:
-        r = subprocess.run(["gh"] + args, cwd=RAIZ, capture_output=True, text=True, timeout=600)
-        return r.stdout
-    except (OSError, subprocess.SubprocessError):
-        return ""
-
-
 def artefatos_da_noite(noite: str) -> list:
     """Os artefatos `coleta-perdida-*` não expirados, mais novos que a abertura da noite. ESCREVE
     nada; só lê a API."""
     saida = _gh(["api", "repos/{owner}/{repo}/actions/artifacts?per_page=100",
                  "--jq", '.artifacts[] | select(.expired == false) '
                          '| select(.name | startswith("' + PREFIXO + '")) '
-                         '| [.name, (.id|tostring), .created_at] | @tsv'])
+                         '| [.name, (.id|tostring), .created_at] | @tsv'], timeout=600)
     fora = []
     for linha in saida.splitlines():
         partes = linha.split("\t")
@@ -175,7 +168,7 @@ def main(argv: list) -> int:
             continue
         destino = pathlib.Path(RAIZ / ".cache" / "reaplicar" / a["nome"])
         destino.mkdir(parents=True, exist_ok=True)
-        baixou = _gh(["run", "download", a["run"], "--name", a["nome"], "--dir", str(destino)])
+        baixou = _gh(["run", "download", a["run"], "--name", a["nome"], "--dir", str(destino)], timeout=600)
         arquivos = sorted(q for q in destino.rglob("*") if q.is_file())
         if not arquivos:
             recusados.append(f"{a['nome']}: não baixou (artefato expirado ou acesso recusado)")
