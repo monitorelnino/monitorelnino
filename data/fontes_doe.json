@@ -26,9 +26,9 @@
    }
   },
   "AM": {
-   "adaptador": null,
+   "adaptador": "edicao_apifront",
    "url": "https://diario.imprensaoficial.am.gov.br",
-   "status": "sem adaptador de busca",
+   "status": "a_verificar",
    "ultima_tentativa": "2026-10-16",
    "sondagem": {
     "plataforma": null,
@@ -44,7 +44,9 @@
     ],
     "veredito": "pista_de_rota",
     "sondado_em": "02/10/2026"
-   }
+   },
+   "medido_em": "15/10/2026",
+   "caminho": "plataforma comum sem busca: edição do dia pela rota (a) e PDF pela rota (c) com o id (12,8 MB, 58 p. em 09/10, texto extraível)"
   },
   "AP": {
    "adaptador": "apifront",
@@ -63,7 +65,9 @@
     "links_de_busca": [],
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
-   }
+   },
+   "motivo": "a busca (ioepa.com.br/pesquisa) é POST multipart e devolveu 'Nenhum resultado' até para 'decreto' (14/10); nenhum endereço de edição por data respondeu (/pages/AAAA/MM/DD 404); portal ASP.NET com formulário de estado",
+   "medido_em": "15/10/2026"
   },
   "RO": {
    "adaptador": null,
@@ -102,7 +106,9 @@
     ],
     "veredito": "pista_de_rota",
     "sondado_em": "02/10/2026"
-   }
+   },
+   "motivo": "diof.ro.gov.br é WordPress com REST fechada (wp-json 401); a busca `?s=` devolveu 'Nenhum resultado encontrado' para 'situação de emergência' e não há arquivo por data (/2026/10/14/ 404)",
+   "medido_em": "15/10/2026"
   },
   "RR": {
    "adaptador": null,
@@ -115,7 +121,9 @@
     "links_de_busca": [],
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
-   }
+   },
+   "motivo": "www.imprensaoficial.rr.gov.br/_inicial/ expõe `_visualizar-doe/`, `_visualizar-mes/?ano&mes` e `_buscar/` — rota a medir na próxima sonda; a API e o PDF ainda não foram lidos",
+   "medido_em": "15/10/2026"
   },
   "TO": {
    "adaptador": "busca_to",
@@ -297,9 +305,9 @@
    "ultima_tentativa": "2026-10-16"
   },
   "MS": {
-   "adaptador": null,
-   "url": "https://www.spdo.ms.gov.br",
-   "status": "sem adaptador de busca",
+   "adaptador": "edicao_ms",
+   "url": "https://www.spdo.ms.gov.br/diariodoe/",
+   "status": "a_verificar",
    "ultima_tentativa": "2026-10-16",
    "sondagem": {
     "plataforma": null,
@@ -307,7 +315,9 @@
     "links_de_busca": [],
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
-   }
+   },
+   "medido_em": "15/10/2026",
+   "caminho": "listagem traz o PDF de cada edição recente com número e data no nome (DO12306_14_10_2026.pdf; suplementos _SUP_n); texto extraível (canal 2 lê desde 02/10)"
   },
   "MT": {
    "adaptador": "apifront",
