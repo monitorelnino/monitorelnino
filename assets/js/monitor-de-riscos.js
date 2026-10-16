@@ -461,11 +461,13 @@ if (AR) {
   if (leg) leg.insertAdjacentHTML('beforeend', '<span><i class="leg-losango"></i>Sensor de baixo custo (IPAM/RedeAr) · PM2,5 em µg/m³, média de 24 h</span>');
   const sub = document.getElementById('arSub');
   if (sub) sub.textContent = 'IQAr das estações oficiais, por cidade (cor: pior estação; tamanho: nº de estações) · sensores de PM2,5 em µg/m³';
+}
+(function creditoAr(){
   const fm = fontesAr.monitorar || {};
   MonitorMapas.credito('boxAr', {fontes: ['MMA · MonitorAr (IQAr das redes estaduais)', 'concentrações das estações oficiais: OpenAQ',
-    'sensores: IPAM/RedeAr'], url: fm.url_publica, data: fm.consultado_em || AR.gerado_em});
+    'sensores: IPAM/RedeAr'], url: fm.url_publica, data: AR ? (fm.consultado_em || AR.gerado_em) : null});
   const d = document.querySelector('#boxAr .fonte-figura'); if (d) d.dataset.credito = 'openaq';
-}
+})();
 
 
 // ---- Mapa 4: focos ativos, por POSIÇÃO (29/09/2026) ----
