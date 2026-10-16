@@ -21,7 +21,7 @@ vazadas até a completude do dado laboratorial, "o Monitor não atribui casos ao
 import json, csv, io, re, statistics, sys, unicodedata
 from collections import defaultdict
 from pathlib import Path
-from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rodar_autoteste, hoje_editorial
+from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rodar_autoteste, data_da_edicao
 
 RAIZ = Path(__file__).resolve().parent
 # ESTADO DA FONTE, medido em 24/09/2026 (§198) — os três hosts, um a um:
@@ -58,15 +58,6 @@ SIGLA = {"acre":"AC","alagoas":"AL","amapa":"AP","amazonas":"AM","bahia":"BA","c
          "maranhao":"MA","mato grosso":"MT","mato grosso do sul":"MS","minas gerais":"MG","para":"PA","paraiba":"PB","parana":"PR","pernambuco":"PE",
          "piaui":"PI","rio de janeiro":"RJ","rio grande do norte":"RN","rio grande do sul":"RS","rondonia":"RO","roraima":"RR","santa catarina":"SC",
          "sao paulo":"SP","sergipe":"SE","tocantins":"TO","brasil":"BR","pais":"BR"}
-
-
-def _hoje():
-    import datetime as _dt, json as _js
-    try:
-        a = _js.load(open(RAIZ / "data" / "meta.json", encoding="utf-8")).get("atualizado_em")
-        return _dt.datetime.strptime(a, "%d/%m/%Y").date()
-    except Exception:  # noqa: BLE001
-        return hoje_editorial()
 
 
 def _plano(t: str) -> str:
@@ -194,7 +185,7 @@ def _gravar_diagnostico(url_ok, cabecalho, disponiveis, erro_por_url):
     ajustar padrões sem precisar de rede. Nunca contém dado epidemiológico."""
     gravar("saude_desfechos/infogripe_diagnostico.json", {
         "_governanca": "Diagnóstico de formato do InfoGripe (14/09/2026): registro do que o coletor encontrou; sem dado epidemiológico.",
-        "gerado_em": _hoje().strftime("%d/%m/%Y"), "url_que_respondeu": url_ok, "cabecalho": cabecalho,
+        "gerado_em": data_da_edicao().strftime("%d/%m/%Y"), "url_que_respondeu": url_ok, "cabecalho": cabecalho,
         "valores_de_dado": sorted(disponiveis)[:60], "erro_por_url": erro_por_url})
 
 
@@ -287,7 +278,7 @@ def coletar() -> int:
         print(f"srag/sg: {e} — coletor não adivinha; ver data/saude_desfechos/infogripe_diagnostico.json")
         return 0
     _gravar_diagnostico(url_ok, list(cabecalho), disponiveis, erro_por_url)
-    hoje = _hoje().strftime("%d/%m/%Y"); ano_corrente = _hoje().year
+    hoje = data_da_edicao().strftime("%d/%m/%Y"); ano_corrente = data_da_edicao().year
     escritos = 0
     for chave, ind in INDICADORES.items():
         alvo = escolher_alvo(disponiveis, ind["padroes"])

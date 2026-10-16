@@ -29,7 +29,8 @@ a linha) e registra a divergência em `divergencia_fonte` — não silencia nem 
 """
 import io, re, sys
 from pathlib import Path
-from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rodar_autoteste, hoje_editorial, MuroDeRobo
+from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rodar_autoteste, MuroDeRobo, data_da_edicao
+from preservar_evidencias import extrair_texto_por_pagina
 
 RAIZ = Path(__file__).resolve().parent
 BASE = "https://paraiba.pb.gov.br"
@@ -42,30 +43,6 @@ ANO_ESPERADO = [2026]     # ajustado em tempo de execução por coletar(); lista
 RESSALVA = ("O Monitor não atribui casos ao El Niño; dados da SES-PB (Sinan Net, Sinan Online, e-SUS Sinan e GAL), "
             "extraídos do Boletim Epidemiológico de Arboviroses Urbanas em PDF — dados sujeitos a alteração.")
 
-
-def _texto_paginas(bruto: bytes) -> list:
-    """Texto por página. pdfplumber PRIMEIRO (11/09/2026): nestes PDFs-infográfico o pypdf extrai com espaço
-    entre caracteres ("1 1 . 2 4 1"), e nenhum padrão numérico casa; pdfplumber preserva o texto como os
-    parsers foram afinados. pypdf fica como reserva, para a leitura nunca depender de uma só biblioteca."""
-    try:
-        import io as _io, pdfplumber
-        with pdfplumber.open(_io.BytesIO(bruto)) as pdf:
-            pgs = [(pg.extract_text() or "") for pg in pdf.pages]
-        if sum(len(t) for t in pgs) > 200:
-            return pgs
-    except Exception:  # noqa: BLE001
-        pass
-    from preservar_evidencias import extrair_texto_por_pagina
-    return extrair_texto_por_pagina(bruto)
-
-
-def _hoje():
-    import datetime as _dt, json as _js
-    try:
-        a = _js.load(open(RAIZ / "data" / "meta.json", encoding="utf-8")).get("atualizado_em")
-        return _dt.datetime.strptime(a, "%d/%m/%Y").date()
-    except Exception:  # noqa: BLE001
-        return hoje_editorial()
 
 
 def destino_do_intersticio(corpo: bytes) -> str:
@@ -174,7 +151,7 @@ def parse_texto(texto: str) -> dict:
 
 
 def coletar() -> int:
-    hoje = _hoje(); ano = hoje.year
+    hoje = data_da_edicao(); ano = hoje.year
     ANO_ESPERADO[0] = ano
     pdf_url = bruto = None
     muro = None            # §232: nome da recusa, quando o host recusa
@@ -232,7 +209,7 @@ def coletar() -> int:
         # 11/09/2026 (achado da rodada de 22h): pdfplumber NÃO está em requirements.txt — o coletor chegava
         # a localizar o PDF e morria com ModuleNotFoundError. A função canônica do projeto usa pypdf
         # (instalado) e só cai para pdfplumber se a extração vier vazia: funciona com ou sem o opcional.
-        texto = "\n".join(_texto_paginas(bruto))
+        texto = "\n".join(extrair_texto_por_pagina(bruto, pdfplumber_primeiro=True))
     except Exception as e:  # noqa: BLE001
         registrar_lacuna(f"SES-PB boletim {pdf_url[-30:]}", type(e).__name__, canal="site_estadual", camada=2, strings=[pdf_url])
         print("boletim PB: falha ao ler o PDF — lacuna declarada"); return 0
