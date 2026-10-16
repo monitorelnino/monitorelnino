@@ -1352,6 +1352,10 @@ O arquivo diário do INPE traz a detecção de **todos** os satélites, e o mesm
 
 `data/focos_referencia.json`, escrito pelo elo dos sinais, guarda por dia (horário GMT, como o INPE publica) a contagem por UF, por bioma e por município (código IBGE), numa série de 400 dias que cobre o mesmo dia do ano anterior; o ano anterior vem do arquivo anual de referência, lido uma vez. Mês e 30 dias são somas dos dias com arquivo, e o número de dias vai junto: dia sem arquivo fica fora da soma, nunca vira zero. O dia corrente nunca entra, porque o arquivo dele nasce vazio e enche ao longo do dia. **Terra indígena e unidade de conservação não vêm na fonte** (sondado em 16/10/2026) e não são estimadas. O mapa de pontos agregados em grade continua com todos os satélites: ele mostra onde há fogo, não compara períodos.
 
+### 41.9 Manchas do Monitor de Secas: a geometria do mapa mensal (16/10/2026)
+
+A API do Monitor de Secas entrega a tabela por UF (§ dos dados tabulares) e as imagens do mapa, não a geometria. O shapefile mensal está no repositório público de arquivos do Monitor, com o nome que o próprio aplicativo monta (`uploads/mapas/<mês><ano>.zip`; o de setembro de 2026 foi publicado em 16/10/2026, 15,8 MB). `data/secas_manchas.json`, escrito pelo elo dos sinais, guarda as manchas por categoria (S0 a S4, no código da fonte; outro código fica só como veio), com anéis simplificados para desenho (Douglas-Peucker, tolerância de 0,02°, cerca de 2 km) e o mês do mapa. O contorno oficial é o do arquivo original, identificado pelo hash no livro de consultas. O arquivo é baixado uma vez por mês: mês já gravado não é baixado de novo, e mês ainda não publicado cai para o anterior. A tabela por UF continua sendo a fonte dos números; a mancha é desenho.
+
 ## 42. O dinheiro próprio do município em defesa civil: três camadas, e a que existe para todos (24/09/2026)
 
 Peso zero nos dois índices, provado por portão e pelo teste de estresse que renomeia `data/financiamento/` inteira e confere que o índice recomputado é idêntico bit a bit.

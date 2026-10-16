@@ -2393,7 +2393,10 @@ def gravar_secas_manchas() -> None:
         nomes = {n.lower(): n for n in z.namelist()}
         shps = [n for n in z.namelist() if n.lower().endswith(".shp") and "/" not in n
                 and "impact" not in n.lower() and n[:-4].lower() + ".dbf" in nomes]
-        shps.sort(key=lambda n: n.lower() != f"{ano}{mes:02d}_ms.shp")
+        # o pacote traz mais de um shapefile (16/10: `setembro26.shp`, `setembro26_isolado.shp`,
+        # `202609_MS_IMPACTOS.shp`, `Estados_monitor/`); o mapa é o que leva o nome do mês
+        preferidos = [f"{SECAS_MESES[mes - 1]}{ano % 100:02d}.shp", f"{ano}{mes:02d}_ms.shp"]
+        shps.sort(key=lambda n: preferidos.index(n.lower()) if n.lower() in preferidos else len(preferidos))
         for nome in shps:
             polis = ler_poligonos_shp(z.read(nome), z.read(nomes[nome[:-4].lower() + ".dbf"]), "uf_codigo")
             feats = manchas_de_seca(polis)
