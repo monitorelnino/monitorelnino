@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-16 · #801 · Monitor de riscos: risco previsto em faixa e bloco do fogo
+
+O mapa do risco previsto vira faixa de siglas por família, cada uma ligada à ficha do estado. Os blocos "Seca, fogo, ar e calor" e "Chuva forte" abrem com "Boletim prevê para". O fogo ocupa a largura inteira: hachura nos estados com fogo previsto, números do satélite de referência, 30 dias e tabelas por estado e bioma. HANDOVER_MONITOR_DE_RISCOS §2–§3.6.
+
 ## 2026-10-16 · #800 · Monitor de riscos: um só gráfico do Pacífico, na largura inteira
 
 Sai a série contínua do RONI (barras desde 1950) e o código que a desenhava; fica a comparação entre episódios, na largura inteira e com metade da altura, com a definição do RONI na nota. Sai também o bloco desativado do plume e o Chart.js da página. Abertura ajustada ao gráfico que fica. HANDOVER_MONITOR_DE_RISCOS §1.3.

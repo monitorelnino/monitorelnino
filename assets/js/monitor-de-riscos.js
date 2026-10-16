@@ -3,17 +3,9 @@
    Regra desta página: nenhum valor é calculado aqui. Tudo vem de
    data/sinais_risco.json, escrito por coletar_sinais_risco.py, com fonte,
    documento e data. Fonte não coletada vira lacuna declarada na tela. */
-let BR_GEOJSON, SINAIS, MARE, ALERTAS, CLIMA, FOCOS, NORMAIS;   // NORMAIS: normais do Inmet, para o DESVIO do mapa de calor
+let BR_GEOJSON, SINAIS, MARE, ALERTAS, CLIMA, FOCOS, NORMAIS, FOGO_REF;   // NORMAIS: normais do Inmet, para o DESVIO do mapa de calor
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
 const NEUTRA = MonitorMapas.cor('sem-dado');           // estado sem dado coletado
-const TIPO_COR = {estiagem:MonitorMapas.PALETA.risco.seca, chuvas:MonitorMapas.PALETA.risco.chuvas, incendios:MonitorMapas.PALETA.risco.fogo, misto:MonitorMapas.PALETA.risco.multi, sem_sinal:MonitorMapas.PALETA.risco.sem_sinal};   // paleta semântica única
-const FAIXAS = [
-  {nome:'Estágio inicial', cor:MonitorMapas.PALETA.faixas.inicial, teste:v => v < 25},
-  {nome:'Em construção',   cor:MonitorMapas.PALETA.faixas.construcao, teste:v => v < 50},
-  {nome:'Consolidado',     cor:MonitorMapas.PALETA.faixas.consolidado, teste:v => v < 70},
-  {nome:'Avançado',        cor:MonitorMapas.PALETA.faixas.avancado, teste:v => true},
-];
-const faixaDe = v => FAIXAS.find(f => f.teste(v));
 
 async function __load(){
   [BR_GEOJSON, SINAIS, MARE] = await Promise.all(
@@ -33,6 +25,8 @@ async function __load(){
      diz que não houve coleta; nunca desenha zero. */
   NORMAIS = await fetch('data/normais_capitais.json').then(r => r.ok ? r.json() : null).catch(() => null);
   FOCOS = await fetch('data/focos_pontos.json').then(r => r.ok ? r.json() : null).catch(() => null);
+  /* 16/10/2026: contagens do satélite de referência (dia, série, mês, UF, bioma). Ausente = lacuna. */
+  FOGO_REF = await fetch('data/focos_referencia.json').then(r => r.ok ? r.json() : null).catch(() => null);
   window.__refMunicipios = await fetch('data/municipios_ibge_referencia.json').then(r => r.ok ? r.json() : []).catch(() => []);
   /* 07/10/2026: o CATÁLOGO antes do desenho. O texto do topo e dos dois gráficos do Pacífico vive
      em conteudo/monitor-de-riscos.json, e `assets/catalogo.js` o carrega por conta própria, em
@@ -148,66 +142,45 @@ function semDadoNaCapital(uf, atm){
 }
 function __ctx(){ if (!window.__ctxCache) window.__ctxCache = MonitorMapas.contexto(BR_GEOJSON, 480, 460); return window.__ctxCache; }
 
-// ---- Mapa 1: tipo de risco projetado (dado coletado) ----
-const RISCO = uf => (SINAIS.uf[uf] || {}).risco_projetado;
-const TIPO_ROTULO = SINAIS._formato.tipos_de_risco;
-const TIPO_CURTO = SINAIS._formato.tipos_de_risco_curto;
-// 27/09/2026 (pedido da editoria): o mapa do tipo de risco projetado saiu daqui. O dado não
-// foi descartado — ele passou para o cartão de cada estado na página inicial, que é onde o
-// leitor procura o seu próprio estado. Ver assets/js/index.js.
-// ---- R6: o mapa nacional do risco PREVISTO (30/09/2026, volta à página por decisão da editoria)
-// Previsão, não observação — e a legenda diz isso em cada degrau. O detalhe de cada estado continua
-// na ficha, na inicial; aqui é o retrato nacional de uma vez só.
-//
-// As cores são as FAMÍLIAS do site (--seca, --fogo, --chuva, e âmbar para calor), as mesmas do
-// resto das páginas: quem leu "seca" na ficha do estado encontra a mesma cor aqui. "Mais de um
-// risco" não inventa cor nova — recebe o cinza-quente neutro e diz quais são no texto do mouse,
-// porque uma cor de mistura sugeriria um risco intermediário que não existe.
-const RISCO_FAMILIA_COR = {
-  estiagem: MonitorMapas.PALETA.familia.seca, seca: MonitorMapas.PALETA.familia.seca,
-  incendios: MonitorMapas.PALETA.familia.fogo, fogo: MonitorMapas.PALETA.familia.fogo,
-  chuvas: MonitorMapas.PALETA.familia.chuva, chuva: MonitorMapas.PALETA.familia.chuva,
-  calor: MonitorMapas.PALETA.familia.calor,
-};
-const RISCO_FAMILIA_ROTULO = {estiagem:'Seca', seca:'Seca', incendios:'Fogo', fogo:'Fogo',
-                              chuvas:'Chuva forte', chuva:'Chuva forte', calor:'Calor'};
-const COR_VARIOS = MonitorMapas.cor('cinza-quente');
+// ---- Risco previsto pelo boletim (Painel El Niño): famílias por estado ----
 const riscoDe = uf => (SINAIS.uf[uf] || {}).risco_projetado || null;
 const componentesDe = uf => {
   const r = riscoDe(uf); if (!r) return [];
   const c = (r.componentes && r.componentes.length ? r.componentes : [r.tipo]).filter(Boolean);
   return c.filter(x => x !== 'sem_sinal');
 };
-desenharMapa('mapaRiscoPrevisto', 'legRiscoPrevisto',
-  uf => { const c = componentesDe(uf);
-    if (!c.length) return MonitorMapas.PALETA.zero;
-    if (c.length === 1) return RISCO_FAMILIA_COR[c[0]] || MonitorMapas.PALETA.zero;
-    // 01/10/2026: duas famílias, as DUAS cores em hachura. O cinza liso de antes dizia "nenhuma
-    // das duas" — e era a categoria mais frequente do mapa virando mancha sem informação.
-    const cores = c.map(x => RISCO_FAMILIA_COR[x]).filter(Boolean);
-    return cores.length >= 2
-      ? MonitorMapas.hachura('mapaRiscoPrevisto', cores[0], cores[1])
-      : (cores[0] || MonitorMapas.PALETA.zero); },
-  uf => { const r = riscoDe(uf); const [d, o] = fonteLinha('painel_el_nino');
-    if (!r) return MonitorMapas.dica({semTitulo: true, linhas: ['Sem sinal elevado para este estado no boletim'], data: d, fonte: o});
-    const c = componentesDe(uf);
-    const nomes = c.map(x => RISCO_FAMILIA_ROTULO[x] || x).join(' e ');
-    return MonitorMapas.dica({semTitulo: true, linhas: ['Risco previsto: ' + (nomes || 'sem sinal elevado').toLowerCase(), r.texto], data: d, fonte: o}); },
-  [{cor: MonitorMapas.PALETA.familia.seca, rotulo:'Seca'},
-   {cor: MonitorMapas.PALETA.familia.fogo, rotulo:'Fogo'},
-   {cor: MonitorMapas.PALETA.familia.chuva, rotulo:'Chuva forte'},
-   {cor: MonitorMapas.PALETA.familia.calor, rotulo:'Calor'},
-   {cor: COR_VARIOS, rotulo:'Mais de um risco', hachura:true},
-   {cor: MonitorMapas.PALETA.zero, rotulo:'Sem sinal elevado'}], 'previsto');
-credito('boxRiscoPrevisto', 'painel_el_nino');
-
-(function tabelaRiscoPrevisto(){
-  const tb = document.querySelector('#tblRiscoPrevisto tbody'); if (!tb) return;
-  tb.innerHTML = Object.keys(SINAIS.uf).sort().map(uf => {
-    const c = componentesDe(uf);
-    const nomes = c.map(x => RISCO_FAMILIA_ROTULO[x] || x).join(' e ') || 'Sem sinal elevado';
-    return '<tr><td>' + esc(uf) + '</td><td>' + esc(nomes) + '</td></tr>';
+// 16/10/2026 (editoria, HANDOVER_MONITOR_DE_RISCOS §2): o risco previsto é uma FAIXA de etiquetas por
+// família, na ordem pedida; cada sigla abre a ficha do estado na inicial. Previsão, não observação.
+const FAMILIAS_PREVISTAS = [
+  ['Seca', c => c.length === 1 && c[0] === 'estiagem'],
+  ['Seca e fogo', c => c.includes('estiagem') && c.includes('incendios')],
+  ['Chuva forte', c => c.length === 1 && c[0] === 'chuvas'],
+  ['Chuva forte e fogo', c => c.includes('chuvas') && c.includes('incendios')],
+  ['Fogo', c => c.length === 1 && c[0] === 'incendios'],
+  ['Sem sinal elevado', c => !c.length],
+];
+const siglasLigadas = ufs => ufs.map(uf => '<a class="chip-risco" href="index.html#' + esc(uf) + '">'
+  + esc(uf) + '</a>').join('');
+const ufsCom = teste => UFS.filter(uf => SINAIS.uf[uf] && teste(componentesDe(uf)));
+(function faixaRiscoPrevisto(){
+  const dl = document.getElementById('faixaRiscoPrevisto'); if (!dl) return;
+  const pe = fonteDe('painel_el_nino');
+  if (pe.status !== 'coletado') { lacuna('faixaRiscoPrevisto', 'Sem coleta até o corte.'); return; }
+  const usados = new Set();
+  dl.innerHTML = FAMILIAS_PREVISTAS.map(([rotulo, teste]) => {
+    const ufs = ufsCom(teste).filter(uf => !usados.has(uf)); ufs.forEach(uf => usados.add(uf));
+    return ufs.length ? '<div><dt>' + esc(rotulo) + '</dt><dd class="chips">' + siglasLigadas(ufs) + '</dd></div>' : '';
   }).join('');
+  const doc = pe.documento ? String(pe.documento).replace(/^.*?(Boletim)/, '$1') : 'Boletim do Painel El Niño';
+  const sub = document.getElementById('riscoPrevistoSub');
+  if (sub) sub.textContent = doc + ' · até março de 2027 · previsão, não observação';
+  credito('boxRiscoPrevisto', 'painel_el_nino');
+  // "Boletim prevê para", ao lado do título de cada bloco de família.
+  const preve = (id, teste) => { const el = document.getElementById(id); if (!el) return;
+    const ufs = ufsCom(teste);
+    el.innerHTML = ufs.length ? '<span>Boletim prevê para:</span> <span class="chips">' + siglasLigadas(ufs) + '</span>' : ''; };
+  preve('preveSeca', c => c.includes('estiagem') || c.includes('incendios') || c.includes('calor'));
+  preve('preveChuva', c => c.includes('chuvas'));
 })();
 
 /* Alinhamento da grade de cartões (01/10/2026).
@@ -263,20 +236,10 @@ credito('boxRiscoPrevisto', 'painel_el_nino');
   // título com os anos é composto no bloco do Pacífico, que é quem tem a série em mão.
 
   // 09/10/2026 (ajustes 5 e 6): o TÍTULO diz o que é e quando; o subtítulo diz o critério e a fonte.
-  const pe = fonte('painel_el_nino');
-  põe('riscoPrevistoSub', 'Por estado'
-    + (pe.documento ? ' · ' + pe.documento : '')
-    + (pe.consultado_em ? ', ' + pe.consultado_em : ''));
 
   const algumaSeca = Object.keys(SINAIS.uf).map(uf => (SINAIS.uf[uf].secas || {}).mapa).find(Boolean);
   if (algumaSeca) põe('tituloSecas', 'Seca observada, ' + String(algumaSeca).toLowerCase());
   põe('secasSub', 'Categoria de seca em pelo menos metade da área do estado · mapa mensal');
-
-  const totalFocos = Object.keys(SINAIS.uf)
-    .reduce((soma, uf) => soma + (((SINAIS.uf[uf] || {}).fogo || {}).focos_24h || 0), 0);
-  const fFogo = fonte('inpe_fogo');
-  if (totalFocos) põe('fogoSub', 'Até ' + (fFogo.consultado_em || dia(SINAIS.gerado_em) || '')
-    + ' · ' + totalFocos.toLocaleString('pt-BR') + ' focos · cada ponto reúne os focos de uma área de cerca de 11 km');
 
   const fAr = fonte('open_meteo_ar');
   if (fAr.consultado_em) põe('tituloAr', 'Qualidade do ar nas capitais, ' + String(fAr.consultado_em).slice(0, 10));
@@ -618,7 +581,10 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
   /* O mapa base fica NEUTRO: é só o contorno onde os pontos se apoiam — mesmo padrão dos mapas de
      capital desta página. Sem ele os focos flutuavam sem país, e foi o portão de runtime que pegou:
      ele exige os 27 estados desenhados, e estava certo em exigir. */
-  desenharMapa('mapaFogo', 'legFogo', () => ATM.fogo.uf,
+  // Hachura = estado com fogo previsto pelo boletim (único significado da hachura no site).
+  const previstoFogo = uf => componentesDe(uf).includes('incendios');
+  const HACHURA_FOGO = MonitorMapas.hachura('mapaFogo', ATM.fogo.uf, ATM.fogo.contorno);
+  desenharMapa('mapaFogo', 'legFogo', uf => previstoFogo(uf) ? HACHURA_FOGO : ATM.fogo.uf,
     uf => { const f = fogo(uf); const n = f ? f.focos_24h : null; const [d, o] = fonteLinha('inpe_fogo');
             return MonitorMapas.dica({semTitulo: true, linhas: [n == null
               ? 'Sem dado do INPE para o estado na consulta'
@@ -653,25 +619,79 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
     {cor: ATM.fogo.rampa[0], rotulo: 'Poucos focos'},
     {cor: ATM.fogo.rampa[2], rotulo: 'Muitos focos'},
     {cor: ATM.fogo.nucleo, rotulo: 'Área com ' + NUCLEO_A_PARTIR_DE + ' focos ou mais'},
+    {cor: ATM.fogo.contorno, fundo: ATM.fogo.uf, rotulo: 'Fogo previsto pelo boletim', hachura: true},
   ]);
 })();
-/* "Ver em lista" com a contagem por UF — a via tabular que o handover manda preservar. */
-(function listaFocos(){
+/* 16/10/2026 (HANDOVER_MONITOR_DE_RISCOS §3.6): ao lado do mapa, os números do satélite de
+   referência — dia, mesma data do ano anterior, mês, estados — a série de 30 dias e as tabelas por
+   estado e por bioma. Tudo como o INPE publica; nada calculado além de diferença, soma e média. */
+(function painelFogo(){
+  const R = FOGO_REF && FOGO_REF.resumo;
+  const dl = document.getElementById('fogoNumeros');
+  if (!R || !R.dia || !dl) { const l = document.getElementById('fogoLado');
+    if (l) { l.innerHTML = ''; lacuna('fogoLado', 'Contagens do satélite de referência: sem coleta até o corte.'); } return; }
+  const fmt = n => Number(n).toLocaleString('pt-BR');
+  const sinal = n => (n > 0 ? '+' : n < 0 ? '−' : '') + fmt(Math.abs(n));
+  const dia = R.ultimo_dia, serie = FOGO_REF.serie || {};
+  const dias = Object.keys(serie).sort(), iDia = dias.indexOf(dia);
+  const ontem = iDia > 0 ? serie[dias[iDia - 1]] : null;
+  const ontemOk = ontem && dias[iDia - 1] === new Date(Date.parse(dia + 'T12:00:00Z') - 864e5).toISOString().slice(0, 10);
+  const dBR = MonitorMapas.dataBR;
+  const nUfs = Object.keys(R.dia.uf || {}).filter(uf => R.dia.uf[uf] > 0).length;
+  const ano = R.mesmo_dia_ano_anterior;
+  const itens = [
+    ['Focos em ' + dBR(dia), fmt(R.dia.total),
+     ontemOk ? sinal(R.dia.total - ontem.total) + ' em relação ao dia anterior' : 'dia anterior sem arquivo'],
+    ['Mesma data em ' + (ano ? ano.dia.slice(0, 4) : 'ano anterior'), ano ? fmt(ano.total) : 'sem arquivo',
+     ano && ano.total ? sinal(Math.round((R.dia.total - ano.total) / ano.total * 100)) + '% em relação a ' + ano.dia.slice(0, 4) : ''],
+    ['Acumulado do mês', R.mes ? fmt(R.mes.total) : 'sem arquivo',
+     R.mes && R.mes.dias_com_dado ? 'média de ' + fmt(Math.round(R.mes.total / R.mes.dias_com_dado)) + ' por dia em '
+       + R.mes.dias_com_dado + ' dias' : ''],
+    ['Estados com foco', fmt(nUfs), (27 - nUfs) + ' sem foco no dia'],
+  ];
+  dl.innerHTML = itens.map(([k, v, a]) => '<div><dt>' + esc(k) + '</dt><dd>' + esc(v) + '</dd>'
+    + (a ? '<dd class="lado-var">' + esc(a) + '</dd>' : '') + '</div>').join('');
+
+  // Série de 30 dias: linha simples, sem eixo Y numerado, datas nas pontas.
+  const pd = (R.ultimos_30_dias || {}).por_dia || [];
+  const alvo = document.getElementById('fogoSerie');
+  if (alvo && pd.length > 1) {
+    const W = 480, H = 72, max = Math.max(...pd.map(p => p[1])) || 1;
+    const x = i => 4 + i * (W - 8) / (pd.length - 1), y = v => H - 18 - v / max * (H - 26);
+    const pts = pd.map((p, i) => x(i).toFixed(1) + ',' + y(p[1]).toFixed(1)).join(' ');
+    alvo.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Focos por dia de '
+      + esc(dBR(pd[0][0])) + ' a ' + esc(dBR(pd[pd.length - 1][0])) + '"><polyline class="serie-linha" points="' + pts + '"/>'
+      + pd.map((p, i) => '<circle class="serie-alvo" r="5" cx="' + x(i).toFixed(1) + '" cy="' + y(p[1]).toFixed(1)
+        + '"><title>' + esc(dBR(p[0]) + ': ' + fmt(p[1]) + ' focos') + '</title></circle>').join('')
+      + '<text class="tk" x="4" y="' + (H - 2) + '">' + esc(dBR(pd[0][0]).slice(0, 5)) + '</text>'
+      + '<text class="tk" x="' + (W - 4) + '" y="' + (H - 2) + '" text-anchor="end">' + esc(dBR(pd[pd.length - 1][0]).slice(0, 5)) + '</text></svg>';
+  }
+
+  // Por estado: os seis com mais focos no dia (fato do dia), com dia anterior, mês e previsão.
+  const mesDe = uf => dias.filter(d => d.slice(0, 7) === dia.slice(0, 7))
+    .reduce((s, d) => s + (((serie[d] || {}).uf || {})[uf] || 0), 0);
   const corpo = document.querySelector('#tblFogo tbody');
-  if (!corpo) return;
-  /* A contagem vem do MESMO arquivo dos pontos: mapa e lista discordando na mesma figura é
-     defeito que ninguém percebe até alguém somar. Só se não houver, cai para sinais_risco.json. */
-  const porUf = (FOCOS && FOCOS.por_uf) || null;
-  const linhas = UFS.map(uf => [uf, porUf ? porUf[uf] : (fogo(uf) || {}).focos_24h])
-    .filter(l => l[1] != null).sort((a, b) => b[1] - a[1]);
-  /* `esc()` mesmo em número e sigla: o portão de segurança exige, e tem razão em não abrir exceção
-     por "aqui o dado é confiável" — a exceção é que envelhece, não a regra. */
-  corpo.innerHTML = linhas.length
-    ? linhas.map(l => '<tr><td>' + esc(l[0]) + '</td><td class="dado">'
-                    + esc(Number(l[1]).toLocaleString('pt-BR')) + '</td></tr>').join('')
-    : '<tr><td colspan="2">Sem coleta até o corte</td></tr>';
+  if (corpo) corpo.innerHTML = Object.entries(R.dia.uf || {}).sort((a, b) => b[1] - a[1]).slice(0, 6)
+    .map(([uf, n]) => '<tr><td>' + esc(uf) + '</td><td class="dado">' + esc(fmt(n)) + '</td><td class="dado">'
+      + esc(ontemOk ? fmt(((ontem.uf || {})[uf]) || 0) : '—') + '</td><td class="dado">' + esc(fmt(mesDe(uf)))
+      + '</td><td>' + (componentesDe(uf).includes('incendios') ? 'sim' : 'não') + '</td></tr>').join('');
+  const bio = document.querySelector('#tblFogoBioma tbody');
+  if (bio) bio.innerHTML = Object.entries(R.dia.bioma || {}).sort((a, b) => b[1] - a[1])
+    .map(([b, n]) => '<tr><td>' + esc(b) + '</td><td class="dado">' + esc(fmt(n)) + '</td><td class="dado">'
+      + esc(R.dia.total ? (n / R.dia.total * 100).toLocaleString('pt-BR', {maximumFractionDigits: 1}) : '—') + '</td></tr>').join('');
+
+  const sub = document.getElementById('fogoSub');
+  if (sub) sub.textContent = 'Números: dia ' + dBR(dia) + ', satélite de referência (Aqua, passagem da tarde)'
+    + (FOCOS && FOCOS.arquivo_de_origem ? ' · pontos: arquivo diário do INPE, todos os satélites' : '')
+    + ' · hachura: estados com fogo previsto pelo boletim';
 })();
-credito('boxFogo', 'inpe_fogo');
+(function creditoFogo(){
+  const f = FOGO_REF || fonteDe('inpe_fogo');
+  MonitorMapas.credito('boxFogo', {fontes: ['INPE · Programa Queimadas' + (FOGO_REF ? ' (BDQueimadas, satélite de referência Aqua M-T)' : ''),
+    'foco não é incêndio: um incêndio grande gera muitos focos, e queimadas autorizadas também entram'],
+    url: f.url_publica, data: f.consultado_em});
+  const d = document.querySelector('#boxFogo .fonte-figura'); if (d) d.dataset.credito = 'inpe_fogo';
+})();
 
 // ---- Mapa 5: avisos do INMET em vigor (29/09/2026) ----
 /* Estava só na Defesa civil, e o sinal é físico: é desta página. O grau e o nome do fenômeno são
@@ -1292,8 +1312,7 @@ creditoPacifico('boxEpisodios');
 // =============================  Tabela de fontes  =============================
 const CAMADA_ROTULO = {ciclo:'Ciclo', observado:'Observado', enos:'ENOS'};
 // "Ver estados" e descrição acessível de cada mapa (09/10/2026, ajuste 5), depois de todos desenhados.
-[['mapaRiscoPrevisto', 'estadosRiscoPrevisto'], ['mapaSecas', 'estadosSecas'], ['mapaFogo', 'estadosFogo'],
- ['mapaAr', 'estadosAr'], ['mapaTemperatura', 'estadosTemperatura'], ['mapaAvisos', 'estadosAvisos']]
+[['mapaSecas', 'estadosSecas'], ['mapaAr', 'estadosAr'], ['mapaTemperatura', 'estadosTemperatura'], ['mapaAvisos', 'estadosAvisos']]
   .forEach(([svg, alvo]) => { try { if (ROTULOS_DOS_MAPAS[svg]) escreverEstados(alvo, ROTULOS_DOS_MAPAS[svg]); } catch (e) {} });
 }
 __load();

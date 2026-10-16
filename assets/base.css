@@ -584,8 +584,9 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 .risco-box.r-fogo .k{color:var(--fogo);}
 .risco-box .k{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); text-transform:uppercase; letter-spacing:var(--ls-caps); margin:0 0 var(--sp-1);}
 .risco-box .v{font-size:var(--fs-body); line-height:var(--lh-body); margin:0 0 var(--sp-2);}
-.risco-box .chips{display:flex; flex-wrap:wrap; gap:var(--sp-1);}
-.risco-box .chip-risco{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); font-weight:var(--peso-semibold); padding:2px var(--sp-2); border-radius:999px; background:var(--branco); border:1px solid currentColor;}
+.chips{display:flex; flex-wrap:wrap; gap:var(--sp-1);}
+a.chip-risco{text-decoration:none;}
+.chip-risco{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); font-weight:var(--peso-semibold); padding:2px var(--sp-2); border-radius:999px; background:var(--branco); border:1px solid currentColor;}
 .risco-box .fonte{font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); margin:var(--sp-2) 0 0;}
 .meu-card{background:var(--branco); border:1px solid var(--line); border-radius:var(--radius); padding:var(--sp-4) var(--sp-5); margin-top:var(--sp-3); box-shadow:var(--sombra);}
 .meu-card ul{margin:var(--sp-2) 0 0; padding-left:var(--sp-4);}
@@ -1297,24 +1298,34 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
 .g-pac.foco .ep.acesa .l-contexto{opacity:1; stroke-width:2.4;}
 .g-pac .ep:focus-visible .l-contexto, .g-pac .ep:focus-visible .l-agora{stroke-width:3.4;}
 .g-pac .ann-ep{fill:var(--pacifico-serie-b); font-family:var(--font-dado); font-size:var(--fs-caption);}
-/* Ajuste 5 (09/10/2026): faixas "Previsto" e "Observado" no Monitor de riscos.
-   11/10/2026 (editoria): os três mapas numa só fila (`.grade-figuras--3`). Os selos entram na
-   própria grade, numa faixa alinhada às colunas — "Previsto" sobre a 1ª, "Observado" sobre a 2ª e
-   a 3ª, com um fio que marca a extensão de cada um. Numa coluna só, a ordem do HTML vale:
-   previsto → seca → fogo, cada selo antes do(s) seu(s) mapa(s). */
+/* 16/10/2026 (Monitor de riscos): selo de bloco de família, com "Boletim prevê para" ao lado. */
 .faixa-selo{margin:var(--sp-5) 0 var(--sp-3);}
-.grade-mapas--faixas{row-gap:var(--sp-3);}
-.grade-mapas--faixas > .faixa-selo{margin:var(--sp-5) 0 0; padding-bottom:var(--sp-2);
-  border-bottom:1px solid var(--linha); align-self:end;}
-.grade-mapas--faixas > .faixa-selo--previsto{grid-column:1; grid-row:1;}
-.grade-mapas--faixas > .faixa-selo--observado{grid-column:2 / span 2; grid-row:1;}
-.grade-mapas--faixas > .cartao-mapa{grid-row:2;}
-@media (max-width: 1020px){
-  .grade-mapas--faixas{row-gap:var(--esp-grade);}
-  .grade-mapas--faixas > .faixa-selo, .grade-mapas--faixas > .cartao-mapa{grid-column:auto; grid-row:auto;}
-  .grade-mapas--faixas > .faixa-selo{margin-bottom:calc(var(--sp-3) - var(--esp-grade));}
-  .grade-mapas--faixas > .faixa-selo--previsto{margin-top:0;}
-}
+.faixa-selo--familia{display:flex; flex-wrap:wrap; align-items:baseline; gap:var(--sp-2) var(--sp-4);
+  padding-bottom:var(--sp-2); border-bottom:1px solid var(--linha);}
+.faixa-selo--familia .selo{margin:0;}
+.boletim-preve{margin:0; display:flex; flex-wrap:wrap; align-items:baseline; gap:var(--sp-2);
+  font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);}
+/* Risco previsto em faixa: uma linha por família, siglas como etiquetas. */
+.faixa-previsto{margin:var(--sp-2) 0 0; display:grid; gap:var(--sp-2);}
+.faixa-previsto > div{display:grid; grid-template-columns:minmax(0, 12rem) minmax(0, 1fr); gap:var(--sp-3); align-items:baseline;
+  padding-bottom:var(--sp-2); border-bottom:1px solid var(--line);}
+.faixa-previsto dt{font-family:var(--font-dado); font-size:var(--fs-small); line-height:var(--lh-small); font-weight:var(--peso-semibold);}
+.faixa-previsto dd{margin:0;}
+@media (max-width: 640px){ .faixa-previsto > div{grid-template-columns:minmax(0, 1fr); gap:var(--sp-1);} }
+/* Cartão de mapa com dados ao lado (fogo) e cartão de tabela: a mídia não tem a proporção do mapa. */
+.cartao-mapa.figura--dupla .figura-midia, .cartao-mapa.figura--tabela .figura-midia{aspect-ratio:auto; overflow:visible; align-items:start;}
+.mapa-dupla > svg{width:100%; height:auto; display:block;}
+.lado-dados{display:grid; gap:var(--sp-3);}
+.lado-numeros{display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:var(--sp-3); margin:0;}
+.lado-numeros dt, .lado-rotulo{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption);
+  letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--muted); margin:0;}
+.lado-numeros dd{margin:0; font-family:var(--font-titulo); font-weight:var(--peso-display); font-size:var(--fs-h3); line-height:var(--lh-h3);
+  font-variant-numeric:tabular-nums;}
+.lado-numeros dd.lado-var{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);}
+.lado-serie svg{width:100%; height:auto; display:block;}
+.lado-serie .serie-linha{fill:none; stroke:var(--fogo); stroke-width:1.5;}
+.lado-serie .serie-alvo{fill:transparent;}
+.lado-serie .tk{font-family:var(--font-dado); font-size:var(--fs-caption); fill:var(--muted);}
 .dica-fonte{color:var(--muted); font-size:var(--fs-caption);}
 .lista-estados{margin:var(--sp-2) 0 0; padding-left:var(--sp-4); font-size:var(--fs-caption);
   line-height:var(--lh-caption); color:var(--ink);}
