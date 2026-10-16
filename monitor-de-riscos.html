@@ -189,6 +189,19 @@
     </div>
   </div>
 
+  <!-- 16/10/2026 (editoria, HANDOVER_MONITOR_DE_RISCOS §5): a consulta do município, com os mesmos
+       controles da inicial e uma tabela; o arquivo do estado é carregado só quando o estado é escolhido. -->
+  <div class="panel" id="consulta">
+    <h2 data-conteudo="monitor-de-riscos.consulta.titulo">Consulte o estado atual do seu município</h2>
+    <div class="tbl-controls">
+      <select id="consultaUF" aria-label="Estado"><option value="">1 · Seu estado…</option></select>
+      <input id="consultaMun" type="text" list="consultaLista" placeholder="2 · Seu município…" aria-label="Nome do município" autocomplete="off" disabled>
+      <datalist id="consultaLista"></datalist>
+    </div>
+    <div id="consultaCard" class="meu-card" aria-live="polite" hidden></div>
+    <p class="hint" data-conteudo="monitor-de-riscos.consulta.nota">Dado por estado vale para todo o estado; dado por município é do próprio município; ar e temperatura vêm da estação ou capital mais próxima, nomeada na linha.</p>
+  </div>
+
   <!-- 29/09/2026 (decisão da editoria): a seção "Fontes dos sinais de risco" saiu. A tabela de
        três camadas obrigava o leitor a sair da figura, procurar a linha e voltar — e a fonte de
        uma figura pertence à figura. Cada cartão desta página passou a trazer a sua, no mesmo

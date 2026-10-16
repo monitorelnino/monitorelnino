@@ -1153,6 +1153,63 @@ creditoPacifico('boxEpisodios');
 // 15/09/2026: a contagem por família mora na figura dupla boxTipoRisco (mapa + gráfico, uma legenda) — o crédito é o da figura.
 // 17/09/2026: o cruzamento "tipo de risco × estágio" (que morava na home, #cCruz) saiu do site — pedido da editoria.
 
+
+// ---- Consulta do município (16/10/2026, HANDOVER_MONITOR_DE_RISCOS §5) ----
+/* Estado → município, como na inicial; o arquivo `data/riscos_municipio/<UF>.json` é carregado só ao
+   escolher o estado. Uma tabela, uma linha por sinal, cada uma com a fonte e a data; o que é do estado
+   diz que é do estado; ausência no arquivo é dita como ausência, nunca como zero. */
+(function consultaMunicipio(){
+  const selUF = document.getElementById('consultaUF'), inp = document.getElementById('consultaMun');
+  const lista = document.getElementById('consultaLista'), card = document.getElementById('consultaCard');
+  if (!selUF || !inp || !card) return;
+  selUF.insertAdjacentHTML('beforeend', UFS.map(uf => '<option value="' + uf + '">' + esc(nomeUF(uf)) + '</option>').join(''));
+  const cache = {};
+  let dados = null;
+  const linha = (rotulo, valor, fonte) => '<tr><th scope="row">' + esc(rotulo) + '</th><td>' + valor + '</td><td class="dica-fonte">' + esc(fonte) + '</td></tr>';
+  const NOMES = {estiagem: 'seca', incendios: 'fogo', chuvas: 'chuva forte', calor: 'calor'};
+  const SECA_NOME = {'sem seca': 'sem seca em metade ou mais da área', S0: 'seca fraca', S1: 'seca moderada', S2: 'seca grave', S3: 'seca extrema', S4: 'seca excepcional'};
+  const hora = v => { const m = /(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})/.exec(String(v || '')); return m ? m[3] + '/' + m[2] + ' ' + m[4] + ':' + m[5] : ''; };
+  function mostrar(cod){
+    const uf = selUF.value, m = dados.municipios[cod], o = dados.origens || {};
+    const f = id => { const x = fonteDe(id); return (x.orgao || '') + (x.consultado_em ? ' · ' + x.consultado_em : ''); };
+    const r = componentesDe(uf), sc = (SINAIS.uf[uf] || {}).secas;
+    const est = m.ar_estacao && dados.estacoes[m.ar_estacao.indice], sen = m.ar_sensor && dados.sensores[m.ar_sensor.indice];
+    const ar = est && est.iqar ? 'IQAr ' + esc(est.iqar.classificacao) + ' · ' + esc(n1(Math.round(est.iqar.valor))) + ' — estação ' + esc(est.nome)
+        + ' (' + esc(est.municipio) + '), a ' + esc(String(m.ar_estacao.distancia_km)) + ' km' + (hora(est.iqar.medido_em) ? ', ' + esc(hora(est.iqar.medido_em)) : '')
+      : sen && sen.pm25 ? 'PM2,5 ' + esc(n1(sen.pm25.valor)) + ' µg/m³ — sensor ' + esc(sen.nome) + ' (IPAM/RedeAr, não gera IQAr), a ' + esc(String(m.ar_sensor.distancia_km)) + ' km'
+      : 'sem estação oficial nem sensor na rede até 50 km';
+    const cap = m.capital_mais_proxima || {}, t = (SINAIS.uf[cap.uf] || {}).temperatura;
+    const avisos = (m.avisos_inmet || []).map(i => dados.avisos_inmet[i]).filter(Boolean);
+    const cem = m.alertas_cemaden || [];
+    const dec = m.decretos || [];
+    card.innerHTML = '<h4>' + esc(m.nome) + ' · ' + esc(uf) + '</h4><div class="tbl-wrap"><table class="mun-table"><tbody>'
+      + linha('Risco previsto pelo boletim (estado)', esc(r.length ? r.map(c => NOMES[c] || c).join(' e ') : 'sem sinal elevado'), f('painel_el_nino'))
+      + linha('Seca observada (estado)', esc(sc && (sc.categoria_mediana || sc.categoria) ? SECA_NOME[sc.categoria_mediana || sc.categoria] + ', categoria que cobre pelo menos metade da área do estado' + (sc.mapa ? ' · mapa de ' + String(sc.mapa).toLowerCase() : '') : 'sem dado do Monitor de Secas para o estado'), f('monitor_secas'))
+      + linha('Focos de fogo no município, últimos 30 dias', esc(n1(m.focos_30_dias)), 'INPE, satélite de referência' + ((o.focos || {}).ultimo_dia ? ' · até ' + MonitorMapas.dataBR(o.focos.ultimo_dia) : ''))
+      + linha('Qualidade do ar (mais próxima)', ar, 'MMA/MonitorAr · IPAM/RedeAr' + ((o.ar || {}).gerado_em ? ' · ' + o.ar.gerado_em : ''))
+      + linha('Temperatura máxima prevista', esc(t && t.tmax != null ? n1(t.tmax) + ' °C em ' + (t.capital || cap.nome) + ', a ' + cap.distancia_km + ' km' + (t.data ? ', para ' + diaMes(t.data) : '') : 'sem previsão para a capital mais próxima'), f('inmet_previsao_capitais'))
+      + linha('Avisos de tempo severo que cobrem o município', esc(avisos.length ? avisos.map(a => a.tipo + ' · ' + a.severidade + (a.fim ? ' · até ' + hora(a.fim) : '')).join('; ') : 'nenhum aviso em vigor na consulta'), 'INMET' + ((o.avisos_e_alertas || {}).gerado_em ? ' · ' + o.avisos_e_alertas.gerado_em : ''))
+      + linha('Alerta do Cemaden', esc(cem.length ? cem.map(a => a.evento || (a.tipo + ' · ' + a.nivel)).join('; ') : 'nenhum alerta vigente na consulta'), 'Cemaden' + ((o.avisos_e_alertas || {}).gerado_em ? ' · ' + o.avisos_e_alertas.gerado_em : ''))
+      + linha('Situação de emergência desde 29/06/2026', dec.length ? dec.map(d => esc(d.data) + ' · ' + (d.url ? '<a href="' + esc(d.url) + '" target="_blank" rel="noopener">' + esc(d.decreto) + '</a>' : esc(d.decreto))).join('<br>') : 'não localizamos até o corte', 'DOU e diários oficiais' + ((o.decretos || {}).atualizado_em ? ' · ' + o.decretos.atualizado_em : ''))
+      + linha('Plano de contingência', '<a href="index.html#' + esc(uf) + '">Ver a situação na ficha do estado, na página inicial →</a>', 'MARÉ Legal')
+      + '</tbody></table></div>';
+    card.hidden = false;
+  }
+  selUF.addEventListener('change', async () => {
+    const uf = selUF.value; card.hidden = true; inp.value = ''; lista.innerHTML = ''; inp.disabled = true; dados = null;
+    if (!uf) return;
+    dados = cache[uf] = cache[uf] || await fetch('data/riscos_municipio/' + uf + '.json').then(r => r.ok ? r.json() : null).catch(() => null);
+    if (!dados) { card.innerHTML = '<p class="lacuna">Consulta do estado: sem coleta até o corte.</p>'; card.hidden = false; return; }
+    lista.innerHTML = Object.values(dados.municipios).map(m => '<option value="' + esc(m.nome) + '">').join('');
+    inp.disabled = false; inp.focus();
+  });
+  inp.addEventListener('input', () => {
+    if (!dados) return;
+    const alvo = inp.value.trim().toLowerCase();
+    const cod = Object.keys(dados.municipios).find(c => dados.municipios[c].nome.toLowerCase() === alvo);
+    if (cod) mostrar(cod);
+  });
+})();
 }
 __load();
 
