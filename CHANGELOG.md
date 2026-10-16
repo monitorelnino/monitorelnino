@@ -32,9 +32,13 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-16 · #PR · Juiz de saúde interrompido não avança o corte
+## 2026-10-16 · #761 · Juiz de saúde interrompido não avança o corte
 
 `julgar_saude.py` só carimba o corte de `saude_uf.json` quando julga a fila inteira; interrompido pelo prazo, grava o julgado e mantém o corte (F64). Entram os 17 vereditos do julgamento estadual de 15/10 (nenhuma promoção).
+
+## 2026-10-16 · #760 · Imprensa: páginas em cartões, perguntas em sanfona
+
+A Imprensa abre por "O que cada página responde", agora em cartões, um por página, com link; seguem o que é o MARÉ, o cálculo dos índices, as perguntas frequentes em sanfonas (a primeira de cada grupo aberta), como citar e o contato para redações. Fundo branco em tudo. Saem "Quem está mais preparado?", "A comparação é do leitor." e "Os estados são comparáveis entre si?": o site não convida a comparar entes. Redesenho aprovado pela editoria em 15/10.
 
 ## 2026-10-16 · #758 · DOE-SP pela API própria da busca (SE)
 

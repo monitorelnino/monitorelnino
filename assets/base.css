@@ -215,6 +215,7 @@ header.masthead{display:block; margin-bottom:var(--sp-6);}
 .hero h2{margin:0 0 var(--esp-titulo);}
 details.acc{border-top:1px solid var(--line); margin:0;}
 details.acc:last-of-type{border-bottom:1px solid var(--line);}
+details.acc + h3{margin-top:var(--esp-secao);}   /* grupo seguinte de sanfonas: o título não cola na linha */
 details.acc > .panel, details.acc > .cartao{border:none; border-radius:0; margin:0; padding:var(--sp-1) 0 var(--sp-5); box-shadow:none;}
 details.acc .acc-summary{list-style:none; cursor:pointer; padding:var(--sp-4) 0; font-family:var(--font-titulo); font-weight:var(--peso-display); font-size:var(--fs-h3); line-height:var(--lh-h3); color:var(--ink); display:flex; align-items:center; justify-content:space-between;}
 details.acc .acc-summary::-webkit-details-marker{display:none;}
