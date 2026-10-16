@@ -49,6 +49,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/10/2026 · Saúde: a tabela do índice com as colunas do leitor</dt>
+      <dd>A tabela que acompanha o mapa do MARÉ Saúde passa a ter UF, nota, faixa, plano (situação e data), coordenação na saúde e ligação com o governo do estado. Saem as colunas de componente interno (&quot;cobertura sanitária 0,1 · 1 lido / 1 sem leitura&quot;, antecedência, dengue na capital, risco) e o travessão em célula vazia.</dd>
       <dt>16/10/2026 · Duas regras de componente passam a ser julgadas</dt>
       <dd>O portão de conformidade passa a reprovar seção numerada (&quot;1.&quot;, &quot;II ·&quot;) e mais de uma figura larga por página; as duas regras só existiam no texto de `layout/regras.json`. Dívida declarada: 16 → 14 regras só texto.</dd>
       <dt>16/10/2026 · Triagem e preparação de pistas com um dono só (F66)</dt>
@@ -167,8 +169,6 @@
       <dd>A página passa a mostrar só dinheiro do ciclo: medidas federais e defesa civil federal. Saem as transferências gerais, a grade dos 27 quadros e a seção de casos; entram a forma de aplicação, as origens com os três valores e a defesa civil por estado, com município em lista dentro do cartão. Vocabulário fixo: desembolsado, não pago. METODOLOGIA §97.</dd>
       <dt>02/10/2026 · Coletores do Financiamento rodados, e o frescor por arquivo</dt>
       <dd>Todos os coletores da página rodaram hoje. `coletar_siconfi_182.py` estava morrendo com `TypeError` desde a migração do §229 — uma função local `gravar` sombreava a importada. A execução passou a coletar a modalidade de aplicação. Portão novo mede coletor pelo relógio (9 dias) e curadoria por declaração. METODOLOGIA §96.</dd>
-      <dt>02/10/2026 · Canais 3 e 4 nos 27, e F2 pela composição do ato</dt>
-      <dd>Regra mínima do canal 4 — raiz da secretaria mais diário do estado — vale para as 27, e o canal passou a ser dito na linha do log em vez de adivinhado. PA e MT registrados pelos endereços da editoria. F1 e F2 só saem de ato com dispositivo, e F2 exige o órgão na composição. Quatro canais: de 1 para 8 de 27. METODOLOGIA §95.</dd>
     </dl>
   </section>
 </main>
