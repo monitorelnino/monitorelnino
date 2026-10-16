@@ -31,7 +31,7 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-16 · #PR · Saúde: calor em uma medida por lugar
+## 2026-10-16 · #789 · Saúde: calor em uma medida por lugar
 
 Sai o gráfico de barras "municípios por classe" (5,5 mil em "normal" contra dezenas nas outras classes). Fica o mapa, agora "Municípios em classe severa ou extrema de excesso de calor, por estado", e uma linha fixa diz que a classe é do Ministério da Saúde, por município, e que a temperatura prevista nas capitais está no Monitor de riscos.
 
