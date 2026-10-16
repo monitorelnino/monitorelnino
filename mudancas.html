@@ -49,6 +49,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/10/2026 · DOE-SP pela API própria da busca (SE)</dt>
+      <dd>`coletar_doe.py` ganha `busca_sp`: a API que o sítio do DOE-SP chama (`do-api-web-search`, termos e janela de datas, paginada) aponta as publicações e cada uma é lida inteira em `/v2/publications/&lt;id&gt;`, sem HTML; endereço citável `doe.sp.gov.br/&lt;slug&gt;`. MG, RJ, RS e SC seguem `sem adaptador de busca` com o motivo medido (15/10); PI e RR têm rota exposta a medir.</dd>
       <dt>16/10/2026 · Data do ato nunca depois da edição que o publica</dt>
       <dd>- `data_do_ato_no_trecho` ignora data posterior à edição: a abertura de uma dispensa (21/10) virou `data_ato` do decreto de Santiago/RS e barrou a publicação desde 04:42. O evento perde a data errada (fica a de publicação); caso no autoteste do consorciado.</dd>
       <dt>16/10/2026 · Blog sem abertura; texto na coluna inteira</dt>
@@ -167,8 +169,6 @@
       <dd>A `main` reprovou o portão 12 em todas as rodadas do dia, de 15h52 a 22h15 UTC, pelas 30 imagens de `capturas-ci/`: captura de tela depende do renderizador, e a do runner nunca coincide com a de quem edita. Elas saem do índice e do diff estrito. Quem prova a página continua sendo o portão de navegador que as produz, e o `portoes.yml` já as sobe como artefato do run. Em `METODOLOGIA.md` §78.</dd>
       <dt>01/10/2026 · Adaptadores diretos de diário estadual</dt>
       <dd>Dois novos, medidos contra produção: `dodf` (API própria do DODF, 7 matérias na janela do ciclo) e `busca_to` (a busca aponta a edição; o trecho vem do PDF só dela). As outras vinte UFs deixam de ser `a_verificar` em branco e declaram host e motivo — não responde, sem busca por termo, busca do portal e não do diário, exige formulário ou JavaScript. O POST novo tem as travas do GET. Em `METODOLOGIA.md` §77.</dd>
-      <dt>01/10/2026 · Bateria de saúde pelos quatro canais</dt>
-      <dd>Os dois canais que faltavam ao MARÉ Saúde: `--doe` lê o diário oficial do estado com os termos da saúde (cinco UFs com rota confirmada, 22 declaradas indisponíveis) e `--canais` segue os links que a página da secretaria declara para CIEVS, sala de situação e COE (21 endereços sondados, 6 com lacuna medida). O juiz julgou 213 pistas e não promoveu nenhuma. Canal que não rodou entra no log como erro, nunca como &quot;consultado sem achado&quot;. Em `METODOLOGIA.md` §76.</dd>
     </dl>
   </section>
 </main>
