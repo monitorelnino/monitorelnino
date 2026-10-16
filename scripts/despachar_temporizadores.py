@@ -319,9 +319,10 @@ def precisa_alarmar(item: dict, tentou_recuperar: bool) -> bool:
 
 
 # ---------------------------------------------------------------- portas de I/O
-def _gh(args: list) -> str:
+def _gh(args: list, timeout: int = 120) -> str:
+    """A CLI do GitHub, uma vez; "" quando não há CLI ou ela falha. A única cópia (16/10/2026)."""
     try:
-        r = subprocess.run(["gh"] + args, cwd=RAIZ, capture_output=True, text=True, timeout=120)
+        r = subprocess.run(["gh"] + args, cwd=RAIZ, capture_output=True, text=True, timeout=timeout)
         return r.stdout
     except (OSError, subprocess.SubprocessError):
         return ""

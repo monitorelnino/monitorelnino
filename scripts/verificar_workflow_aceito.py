@@ -38,6 +38,8 @@ import sys
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
+sys.path.insert(0, str(RAIZ / "scripts"))
+from despachar_temporizadores import _gh  # noqa: E402
 
 
 def nome_e_o_caminho(workflow: dict) -> bool:
@@ -200,14 +202,6 @@ def _autoteste() -> int:
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
           else f"✓ AUTOTESTE OK — {len(_casos_contados)} casos, sem rede e sem escrita.")
     return 1 if falhas else 0
-
-
-def _gh(args: list) -> str:
-    try:
-        r = subprocess.run(["gh"] + args, cwd=RAIZ, capture_output=True, text=True, timeout=120)
-        return r.stdout
-    except (OSError, subprocess.SubprocessError):
-        return ""
 
 
 def _alterado_em(caminho: str) -> str:

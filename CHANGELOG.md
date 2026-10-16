@@ -35,6 +35,9 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-16 · #PRNUM · Inicial com os textos da editoria; nome "Medida"
 
 Inicial: título, metadescrição, introdução, abertura em quatro parágrafos (indicados pela União lidos do dado), "Como ler" e cartão da cidade com o texto da editoria; formulário diz que a conferência é automática. Nome por extenso volta a "Medida de Antecipação e Resposta" em todas as páginas, geradores e METODOLOGIA (§5.1, errata); `verificar_estrutura.js` passa a reprovar "Monitor de Antecipação". Teto de palavras da inicial 950 → 1.050.
+## 2026-10-16 · #767 · Consolidação item 5: três funções copiadas viram uma
+
+`data_da_edicao()` (data de `meta.json`) sai de dez arquivos para `coletores_base` — em dois a reserva chamava `datetime._hoje()`, que não existe; a leitura de PDF com pdfplumber primeiro dos quatro boletins estaduais vira opção de `extrair_texto_por_pagina`; `_gh` dos quatro scripts de temporizador fica só no despachante. −144 linhas.
 
 ## 2026-10-16 · #764 · Saúde: sai o texto vazado
 
