@@ -18,7 +18,7 @@ function baseCssParaBreakpoints() { if (__baseCss === null) __baseCss = fs.readF
 try { require("child_process").execSync("python3 scripts/validar_workflows.py", { cwd: RAIZ, stdio: "pipe" }); } catch (e) { console.log("  ✗ workflows inválidos: " + String(e.stdout || "")); process.exit(1); }
   // 30/09/2026 (§309): "calendario-eleitoral.html" saiu desta lista — a página foi apagada do
   // código, com as outras duas telas de calendário (decisão da editoria).
-const PADRAO = ["index.html", "proteja-se.html", "prefeituras.html", "obrigado.html", "defesa-civil.html", "monitor-de-riscos.html", "saude.html", "financiamento.html", "imprensa.html", "blog.html"]
+const PADRAO = ["index.html", "proteja-se.html", "prefeituras.html", "defesa-civil.html", "monitor-de-riscos.html", "saude.html", "financiamento.html", "imprensa.html", "blog.html"]
   .map(a => path.join(RAIZ, a));
 const arquivos = process.argv.length > 2 ? process.argv.slice(2) : PADRAO;
 
@@ -53,7 +53,7 @@ for (const arq of arquivos) {
     if (JSON.stringify(rotulos) !== JSON.stringify(NAV_ORDEM))
       falha(`${nome}: nav fora da ordem canônica (${rotulos.join(" · ")})`);
     const ativa = navM[1].match(/<span class="ativa(?: [^"]*)?"[^>]*>([^<]+)<\/span>/);
-    if (nome !== "obrigado.html" && !ativa) falha(`${nome}: nav sem item ativo`);
+    if (!ativa) falha(`${nome}: nav sem item ativo`);
   }
 
   // (2)–(4) auditoria da árvore como o navegador a enxerga
