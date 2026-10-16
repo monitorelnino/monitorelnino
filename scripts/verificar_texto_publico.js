@@ -221,8 +221,9 @@ function autoteste() {
   // texto que nasce em script (09/10/2026, ajuste 1)
   const vocabJs = (src) => textosDeMarcacao(src).flatMap((x) => vocabulario(x, "x.js", {}));
   c("scripts: o texto antigo do cartão reprova", vocabJs('<p class="note">Acompanhe: <a href="f.xml" type="application/atom+xml">feed de atualizações (Atom)</a> — x</p>').length > 0);
-  c("scripts: o texto novo passa", vocabJs('<p class="note"><a href="feeds/${d.uf}.xml">Feed de atualizações de ${esc(d.nome)}</a> — cada instrumento</p>').length === 0);
-  c("scripts: atributo type não é texto", vocabJs('<a type="application/atom+xml">Feed</a>').length === 0);
+  // 16/10/2026 (editoria): nenhum texto sobre feed no site — o link do cartão do estado saiu.
+  c("scripts: link com texto de feed reprova", vocabJs('<p class="note"><a href="feeds/${d.uf}.xml">Feed de atualizações de ${esc(d.nome)}</a></p>').length > 0);
+  c("scripts: atributo type não é texto", vocabJs('<a type="application/atom+xml">Documento</a>').length === 0);
   c("scripts: palavra dentro de outra não casa", vocabJs("<p>anatomia do dado</p>").length === 0);
   // semana: a conversão de assets/semana.js contra o calendário do MS (quatro viradas de ano) e os padrões
   [[2023, 1, "1 a 7 de janeiro de 2023"], [2024, 1, "31 de dezembro de 2023 a 6 de janeiro de 2024"], [2025, 1, "29 de dezembro de 2024 a 4 de janeiro de 2025"], [2026, 1, "4 a 10 de janeiro de 2026"]]
