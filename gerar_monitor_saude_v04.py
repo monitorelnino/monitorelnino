@@ -238,7 +238,7 @@ def montar() -> dict:
             "procurou — ou apagar o índice da página. Peso zero no MARÉ: nunca lido por "
             "recalcular_mare.py nem por gerar_monitor_saude.py."),
         "versao": v03.VERSAO_V04,
-        "gerado_em": v03._hoje().strftime("%d/%m/%Y"),
+        "gerado_em": v03.data_da_edicao().strftime("%d/%m/%Y"),
         "corte": su.get("corte"),
         "metodo": {
             "pesos": dict(v03.PESOS_V04),

@@ -27,7 +27,7 @@ import json, statistics, sys, time, urllib.parse
 from collections import defaultdict
 from datetime import date
 from pathlib import Path
-from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rodar_autoteste, preservar_evidencia, hoje_editorial
+from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rodar_autoteste, preservar_evidencia, data_da_edicao
 
 RAIZ = Path(__file__).resolve().parent
 # Doenças que o mesmo endpoint alertcity do InfoDengue serve com o parâmetro `disease`. A escolha vem da
@@ -46,15 +46,6 @@ def RESSALVA_TXT() -> str:
     return (f"O Monitor não atribui casos ao El Niño; a série de {_config()['rotulo']} é a do InfoDengue (Fiocruz/FGV), "
             "notificações do Sinan com estimativa de nowcasting nas semanas recentes.")
 RESSALVA = RESSALVA_TXT()   # mantido como constante de módulo para o autoteste e para quem importa
-
-
-def _hoje():
-    import datetime as _dt, json as _js
-    try:
-        a = _js.load(open(RAIZ / "data" / "meta.json", encoding="utf-8")).get("atualizado_em")
-        return _dt.datetime.strptime(a, "%d/%m/%Y").date()
-    except Exception:  # noqa: BLE001
-        return hoje_editorial()
 
 
 def parse_serie(dados) -> dict:
@@ -123,7 +114,7 @@ def coletar() -> int:
     mun = lista.get("municipios") if isinstance(lista, dict) else lista
     if not mun:
         print(f"desfechos ({rot}): painel amostral ausente"); return 0
-    hoje = _hoje().strftime("%d/%m/%Y"); serie_painel = {}; canal = {}; completude = {}; por_uf = defaultdict(lambda: defaultdict(lambda: {"casos": 0.0, "est": 0.0, "n": 0}))
+    hoje = data_da_edicao().strftime("%d/%m/%Y"); serie_painel = {}; canal = {}; completude = {}; por_uf = defaultdict(lambda: defaultdict(lambda: {"casos": 0.0, "est": 0.0, "n": 0}))
     ok = 0; falhas = []
     for m in mun:
         cod = str(m["ibge"]).zfill(7); url = API_URL(cod)
