@@ -9081,7 +9081,70 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-15",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-16T01:42:01",
+   "duracao_s": 634.9,
+   "itens": 83,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-15",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-16T01:52:35",
+   "duracao_s": 316.4,
+   "itens": 2,
+   "status": "erro",
+   "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-10-15",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-16T01:57:51",
+   "duracao_s": 314.5,
+   "itens": 2,
+   "status": "erro",
+   "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-10-15",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-16T02:03:05",
+   "duracao_s": 316.0,
+   "itens": 2,
+   "status": "erro",
+   "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-10-15",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-16T02:08:21",
+   "duracao_s": 315.6,
+   "itens": 2,
+   "status": "erro",
+   "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-10-15",
+   "script": "triar_confianca_pistas.py",
+   "inicio": "2026-10-16T02:13:36",
+   "duracao_s": 2.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-15",
+   "script": "revisar_pistas.py",
+   "inicio": "2026-10-16T02:13:38",
+   "duracao_s": 396.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
   }
  ],
- "atualizado_em": "2026-10-16T02:13:33"
+ "atualizado_em": "2026-10-16T02:13:38"
 }
