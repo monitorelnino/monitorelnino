@@ -7,45 +7,13 @@
 const N_PONTOS = require("../data/pontos_mapa.json").length;
 const INDICE = require("../data/indice.json");
 const INDICE_META = require("../data/meta.json");
-const { JSDOM, VirtualConsole } = require("jsdom"); const { inlinePageJs } = require("./_inline_js");
+const { inlinePageJs, renderizar } = require("./_inline_js");
 const fs = require("fs");
 const path = require("path");
 
 const raiz = path.join(__dirname, "..");
-const html = inlinePageJs(fs.readFileSync(path.join(raiz, "index.html"), "utf-8"), raiz);
-const erros = [];
-const vc = new VirtualConsole();
-vc.on("jsdomError", e => erros.push(e.detail && e.detail.stack ? e.detail.stack.split("\n")[0] : e.message));
 
-const dom = new JSDOM(html, {
-  url: "https://localhost/", runScripts: "dangerously", virtualConsole: vc,
-  beforeParse(w) {
-    global.window = w; global.document = w.document; global.navigator = w.navigator;
-    w.d3 = require("d3");
-    // módulo único de mapas (o <script src> externo não é carregado pelo jsdom sem resources)
-    w.eval(fs.readFileSync(path.join(raiz, "assets", "mapas.js"), "utf-8"));
-    class Chart { constructor(ctx, cfg) { w.__charts = (w.__charts || []).concat([{ ctx, cfg }]); } } Chart.defaults = { font: {}, color: "", plugins: { legend: { labels: {} }, tooltip: {} }, elements: {} };
-    w.Chart = Chart;
-    w.fetch = (rel) => {
-      const p = path.join(raiz, rel);
-      try {
-        const txt = fs.readFileSync(p, "utf-8");
-        return Promise.resolve({ ok: true, json: () => Promise.resolve(JSON.parse(txt)) });
-      } catch (e) { return Promise.resolve({ ok: false }); }
-    };
-    w.addEventListener("error", e => erros.push("onerror: " + e.message));
-    w.addEventListener("unhandledrejection", e =>
-      erros.push("unhandledrejection: " + (e.reason && e.reason.message || e.reason)));
-    // Correção C3 da auditoria de 29/08/2026 (limitação registrada em
-    // 27/08/2026, fechada nesta versão): o listener de "unhandledrejection"
-    // acima captura exceções lançadas no fluxo async de __load()/__init(),
-    // que antes eram engolidas silenciosamente e faziam o portão falhar só
-    // por ausência de conteúdo, sem mensagem — a causa exata do incidente do
-    // timelineData/MEDIA_NACIONAL, localizado à época por bisseção manual.
-    // Validado por teste negativo em 29/08/2026: ReferenceError assíncrono
-    // proposital acusado com mensagem clara (ver CHANGELOG v2.2.3).
-  },
-});
+const { dom, erros } = renderizar("index.html", raiz);
 
 // 600ms: tempo empírico para o __init() assíncrono (fetch local + d3 + Chart
 // simulado) terminar de popular o DOM antes de inspecioná-lo; não há um evento
@@ -183,12 +151,9 @@ setTimeout(() => {
   const secoes = ["Em emergência, ligue", "Risco projetado para ", "O que já existe", "O que ainda falta", "Como se proteger", "Links úteis"];   // 'Pedido de informação pronto' retirada em 13/09/2026 (pedido de Patricia)
   const posicoes = secoes.map(s => ger.indexOf("secao('" + s));
   teste("PDF do cidadão: as 6 seções existem, na ordem", posicoes.every((p, k) => p > 0 && (k === 0 || p > posicoes[k-1])));
-  // 15/09/2026 (§1.9): Proteja-se num JSDOM próprio — seletor de estado vindo do dado; guias em acordeões; a UF escolhida abre o guia do seu risco
+  // 15/09/2026 (§1.9): Proteja-se numa renderização própria — seletor de estado vindo do dado; guias em acordeões; a UF escolhida abre o guia do seu risco
   try {
-    const htmlP = inlinePageJs(fs.readFileSync(path.join(raiz, "proteja-se.html"), "utf-8"), raiz);
-    const domP = new JSDOM(htmlP, { url: "https://localhost/", runScripts: "dangerously", virtualConsole: vc, beforeParse(w) {
-      w.d3 = require("d3"); w.eval(fs.readFileSync(path.join(raiz, "assets", "mapas.js"), "utf-8")); class Chart { constructor() {} } Chart.defaults = { font: {}, color: "" }; w.Chart = Chart;
-      w.fetch = (rel) => { try { const txt = fs.readFileSync(path.join(raiz, rel), "utf-8"); return Promise.resolve({ ok: true, json: () => Promise.resolve(JSON.parse(txt)) }); } catch (e) { return Promise.resolve({ ok: false }); } }; } });
+    const domP = renderizar("proteja-se.html", raiz).dom;
     setTimeout(() => {
       const dP = domP.window.document, qP = id => dP.getElementById(id);
       // 30/09/2026 (item 10.3): os acordeões viraram ABAS — uma ficha por vez, escolhida por
