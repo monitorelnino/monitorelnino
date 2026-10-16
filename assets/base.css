@@ -1287,12 +1287,9 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
   font-size:var(--fs-h2); line-height:var(--lh-h2); font-variant-numeric:tabular-nums; white-space:nowrap;}
 .cartao-numero-trio .trio-legenda{font-family:var(--font-dado); font-size:var(--fs-caption);
   line-height:var(--lh-caption); color:var(--muted);}
-/* Ajuste 4 (09/10/2026): os dois cabeçalhos do Pacífico se alinham pelas LINHAS DA GRADE
-   (subgrid), e não por altura reservada — a reserva abria ~80 px entre título e subtítulo. */
-.grade-pacifico{grid-auto-rows:auto;}
-.grade-pacifico > .cartao-mapa{display:grid; grid-template-rows:subgrid; grid-row:span 8; row-gap:0;}
-.grade-pacifico > .cartao-mapa .figura-titulo, .grade-pacifico > .cartao-mapa .figura-sub,
-.grade-pacifico > .cartao-mapa .figura-nota{min-height:0;}
+/* Figura sozinha na fila não tem vizinha com quem alinhar: sem altura reservada no cabeçalho. */
+.grade-figuras--1 > .cartao-mapa .figura-titulo, .grade-figuras--1 > .cartao-mapa .figura-sub,
+.grade-figuras--1 > .cartao-mapa .figura-nota{min-height:0;}
 /* Episódios: ao passar o mouse, tocar ou focar uma linha, ela acende e as outras esmaecem. */
 .g-pac .hit-linha{fill:none; stroke:transparent; stroke-width:10; pointer-events:stroke;}
 .g-pac .ep{outline:none;}

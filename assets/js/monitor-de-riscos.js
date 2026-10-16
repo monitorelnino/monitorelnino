@@ -50,7 +50,6 @@ const showTip = MonitorMapas.showTip, hideTip = MonitorMapas.hideTip;
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
 function __init(){
-  MonitorMapas.padraoGraficos(window.Chart);
 const projection = __ctx().projection;
 const pathGen = __ctx().path;
 const fonteDe = id => (SINAIS.fontes || {})[id] || {};
@@ -972,22 +971,6 @@ function põeCat(elId, id, valores, reserva){
 // do ciclo' trazia informação nova (o nome do documento), agora em stDocumento acima, com a citação
 // combinada das três fontes substituindo os quatro créditos individuais.
 
-// =============================  Gráficos  =============================
-const SEM_ANIM = {animation:false, responsive:true, maintainAspectRatio:false};
-
-function canvasEm(wrapId, canvasId, rotulo){
-  const w = document.getElementById(wrapId);
-  const c = document.createElement('canvas'); c.id = canvasId;
-  /* Rótulo acessível na própria criação: gráfico sem rótulo é figura muda para quem usa leitor de
-     tela, e o portão de conformidade (03/10/2026) passou a cobrar. Sem rótulo dado, cai no título
-     da figura — que é a descrição que já está aprovada. */
-  const fig = w && w.closest('figure');
-  const titulo = fig && fig.querySelector('.figura-titulo');
-  c.setAttribute('role', 'img');
-  c.setAttribute('aria-label', rotulo || (titulo ? titulo.textContent.trim() : 'Gráfico'));
-  w.appendChild(c); return c;
-}
-
 // 30/09/2026 (handover do Monitor de riscos): os gráficos do ONI e da anomalia mensal
 // SAÍRAM da página. Eles medem a mesma coisa que o RONI com outra referência, e três
 // gráficos do mesmo fenômeno lado a lado pediam do leitor uma comparação técnica que
@@ -1005,7 +988,7 @@ function canvasEm(wrapId, canvasId, rotulo){
 //
 // Cor nenhuma aqui: tudo é classe de `assets/base.css`, que lê os tokens de `assets/tokens.css`.
 const SVGNS = 'http://www.w3.org/2000/svg';
-const RONI_MIN = -2.0, RONI_MAX = 2.5;            // a escala é a MESMA nos dois gráficos
+const RONI_MIN = -2.0, RONI_MAX = 2.5;
 const RONI_LIMIARES = [[0.5, 'marca_el_nino'], [-0.5, 'marca_la_nina']];
 
 function svgEl(nome, attrs, texto){
@@ -1051,7 +1034,8 @@ function geometriaPacifico(largura, baixo){
   const W = Math.max(280, Math.round(largura || 0) || 560);
   const estreito = W < 480;
   const L = 42, R = estreito ? 14 : 104, T = estreito ? 24 : 16, B = 36 + (baixo || 0);
-  const H = Math.max(260, Math.min(360, Math.round(W * 0.62))) + (baixo || 0);
+  // 16/10/2026 (editoria): na largura inteira, metade da altura de antes; no celular, a de antes.
+  const H = (estreito ? 260 : 200) + (baixo || 0);
   const pw = Math.max(40, W - L - R), ph = Math.max(40, H - T - B);
   return {W, H, L, R, T, B, pw, ph, estreito,
           y: v => T + (RONI_MAX - v) / (RONI_MAX - RONI_MIN) * ph};
@@ -1099,60 +1083,11 @@ function creditoPacifico(caixaId){
 if (PACIFICO.serie.length) {
   const serie = PACIFICO.serie;
   const primeiro = serie[0], ultimo = PACIFICO.ultimo;
-  const maximo = serie.reduce((a, b) => b.anomalia > a.anomalia ? b : a, serie[0]);
   // O título traz os anos DO DADO: quando a série passar a começar em 1950, ele diz 1950 sozinho.
   // ANO É RÓTULO, NÃO QUANTIDADE: o catálogo formata número em pt-BR, e `2026` chegaria à tela
   // como "2.026". Tudo o que é ano entra no molde já como texto.
   const anos = {inicio: String(primeiro.ano), fim: String(ultimo.ano)};
-  põeCat('roniTitulo', IP + 'roni.molde_titulo', anos);
-
-  // ---- Gráfico 1: a série inteira, em barras ----
-  desenharNaLargura('wrapRoni', 0,
-    txtCat(IP + 'roni.rotulo_acessivel', anos, 'Barras do RONI por trimestre'),
-    function (g, geo) {
-      const {L, T, pw, ph, y, estreito} = geo;
-      const n = serie.length, bw = pw / n;
-      // Um rótulo de ano a cada 2 anos na série curta e a cada 10 na série desde 1950 — e a cada
-      // 5 na coluna estreita, onde os rótulos se tocariam. O passo sai do TAMANHO da série.
-      const amplitude = ultimo.ano - primeiro.ano;
-      const passo = amplitude > 40 ? 10 : (estreito ? 5 : 2);
-      serie.forEach((pt, i) => {
-        const x = L + i * bw, v = pt.anomalia;
-        const y0 = Math.min(y(0), y(v)), y1 = Math.max(y(0), y(v));
-        const barra = svgEl('rect', {x: (x + 0.4).toFixed(2), y: y0.toFixed(2),
-          width: Math.max(bw - 0.8, 0.6).toFixed(2), height: Math.max(y1 - y0, 0.5).toFixed(2),
-          class: v >= 0 ? 'q' : 'f'});
-        g.appendChild(comValor(barra, PAC.periodo(pt) + ': ' + PAC.num(v) + ' °C'));
-        if (PAC.centro(pt) === 0 && pt.ano % passo === 0) {
-          g.appendChild(svgEl('line', {x1: x.toFixed(1), x2: x.toFixed(1), y1: T + ph, y2: T + ph + 5, class: 'tkl'}));
-          g.appendChild(svgEl('text', {x: x.toFixed(1), y: T + ph + 18, class: 'tk',
-                                       'text-anchor': 'middle'}, String(pt.ano)));
-        }
-      });
-      // Duas anotações literais, e nenhuma interpretação: o maior valor da série e o último.
-      const iMax = serie.indexOf(maximo);
-      const annMax = txtCat(IP + 'roni.molde_anotacao_maximo',
-        {periodo: PAC.periodo(maximo), valor: PAC.num(maximo.anomalia)}, null);
-      // Perto da borda direita a anotação sairia da figura: ela vira para a esquerda do pico.
-      const maxADireita = (iMax + 1) * bw > pw * 0.62;
-      if (annMax && !estreito) g.appendChild(svgEl('text', {
-        x: (L + (iMax + (maxADireita ? 0 : 1)) * bw + (maxADireita ? -6 : 6)).toFixed(1),
-        y: (y(maximo.anomalia) + 4).toFixed(1), class: 'ann',
-        'text-anchor': maxADireita ? 'end' : 'start'}, annMax));
-      const cx = L + (n - 0.5) * bw, cy = y(ultimo.anomalia);
-      g.appendChild(svgEl('circle', {cx: cx.toFixed(1), cy: cy.toFixed(1), r: 3.5, class: 'agora'}));
-      const annU = txtCat(IP + 'roni.molde_anotacao_ultimo',
-        {periodo: PAC.periodo(ultimo), valor: PAC.num(ultimo.anomalia)}, null);
-      if (annU && !estreito) g.appendChild(svgEl('text', {x: (cx - 8).toFixed(1),
-        y: (cy - 9).toFixed(1), class: 'ann ann-agora', 'text-anchor': 'end'}, annU));
-    });
-  // A frase sob o gráfico diz os dois mesmos valores por extenso — é ela que serve a quem não
-  // alcança a anotação dentro da figura, no celular.
-  põeCat('roniLeitura', IP + 'roni.molde_leitura', {
-    maximo: PAC.num(maximo.anomalia), maximo_periodo: PAC.periodo(maximo),
-    ultimo: PAC.num(ultimo.anomalia), ultimo_periodo: PAC.periodo(ultimo)});
-
-  // ---- Gráfico 2: o ciclo em curso e os episódios que o dado define ----
+  // ---- O gráfico: o ciclo em curso e os episódios que o dado define ----
   // A lista NUNCA é escrita à mão: sai do critério da NOAA/CPC aplicado à própria série.
   // O RECORTE, decidido em 07/10/2026 com a série desde 1950 já no registro: NENHUM episódio sai.
   // O critério da NOAA/CPC encontra 22 na série, e as três saídas possíveis se resolvem assim:
@@ -1345,33 +1280,9 @@ if (PACIFICO.serie.length) {
     if (el && texto) { el.textContent = texto; el.setAttribute('data-conteudo-fixado', '1'); }
   })();
 } else {
-  lacuna('wrapRoni', txtCat(IP + 'roni.lacuna', null, 'Sem coleta até o corte.'));
   lacuna('wrapEpisodios', txtCat(IP + 'episodios.lacuna', null, 'Sem coleta até o corte.'));
 }
-creditoPacifico('boxRoni');
 creditoPacifico('boxEpisodios');
-
-// ---- Gráfico 2: probabilidades ENOS ----
-// 13/09/2026: figura "Probabilidade por trimestre" retirada do HTML (ver comentário em
-// monitor-de-riscos.html, painel #graficos) — só mostrava "sem coleta". Bloco mantido desativado
-// (guarda por ausência de #wrapPlume), não apagado, para reativar quando o IRI/CPC for coletado.
-if (document.getElementById('wrapPlume')) {
-  if(prob && prob.trimestres && prob.trimestres.length){
-    const t = prob.trimestres.slice(0, 9);
-    new Chart(canvasEm('wrapPlume', 'cPlume'), {type:'bar', data:{
-        labels: t.map(p => p.trimestre),
-        datasets:[{label:'La Niña', data:t.map(p => p.la_nina), backgroundColor:MonitorMapas.PALETA.enso.la_nina},
-                  {label:'Neutro',  data:t.map(p => p.neutro),  backgroundColor:MonitorMapas.PALETA.enso.neutro},
-                  {label:'El Niño', data:t.map(p => p.el_nino), backgroundColor:MonitorMapas.PALETA.enso.el_nino}]},
-      options:{...SEM_ANIM, plugins:{legend:{position:'bottom'}},
-        scales:{x:{stacked:true}, y:{stacked:true, max:100, title:{display:true, text:'%'}}}}});
-  } else {
-    // enquanto o plume IRI/CPC não é coletado: a leitura oficial do CPC via CPTEC e do Painel, como itens de legenda (dado declarado, não gráfico)
-    const pg = SINAIS.enos.prognostico; const wp = document.getElementById('wrapPlume'); if (wp) wp.innerHTML = '';
-    if (pg && pg.enso) MonitorMapas.legenda('legPlume', [{cor: MonitorMapas.PALETA.enso.el_nino, rotulo: 'El Niño: > 90% para SON/2026 (CPC/NOAA, ago/2026)'}, {cor: MonitorMapas.PALETA.enso.el_nino, opacidade: .55, rotulo: '100% de permanência até início de 2027 (Boletim nº 3)'}, {cor: MonitorMapas.PALETA.semDado, rotulo: 'plume por trimestre: sem coleta'}]);
-  }
-  credito('boxPlume', 'iri_plume');
-}
 
 // O gráfico de estados por tipo de risco (#cTipos) saiu da página em 27/09/2026 com o risco projetado;
 // a montagem que sobrou aqui mirava um canvas inexistente e foi retirada (A4-21, 10/10/2026).

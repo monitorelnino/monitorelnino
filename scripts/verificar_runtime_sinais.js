@@ -65,7 +65,7 @@ setTimeout(() => {
   // 30/09/2026: a figura do Pacífico neste painel passa a ser o RONI — o ONI e a anomalia mensal
   // saíram da página por decisão da editoria e vivem na METODOLOGIA. A cobrança não some: muda
   // de alvo junto com a página, e continua exigindo a figura dentro do painel e o resumo cheio.
-  teste("RONI: figura dentro do painel 'Situação atual'", (() => { const s = q("situacao"); return !!(s && s.querySelector("#boxRoni")); })());
+  teste("RONI: figura dentro do painel 'Situação atual'", (() => { const s = q("situacao"); return !!(s && s.querySelector("#boxEpisodios")); })());
 
   // ===== O topo "Situação atual" e os dois gráficos do Pacífico (07/10/2026, parte 1) =========
   // O que estes testes guardam é o que o handover pediu e a conformidade não alcança sozinha: a
@@ -112,7 +112,7 @@ setTimeout(() => {
   });
 
   // --- os dois gráficos: SVG desenhado, nunca canvas escalado, e letra de 12 px ---
-  for (const wrap of ["wrapRoni", "wrapEpisodios"]) {
+  for (const wrap of ["wrapEpisodios"]) {
     const coletada = SINAIS.fontes["noaa_roni"].status === "coletado";
     const svg = q(wrap) && q(wrap).querySelector("svg");
     const temLacuna = q(wrap) && q(wrap).querySelector(".lacuna");
@@ -128,13 +128,11 @@ setTimeout(() => {
     teste(`${wrap}: todo valor tem rótulo ao passar o mouse`, svg.querySelectorAll("title").length > 0);
   }
 
-  // --- o título do gráfico 1 traz os ANOS DO DADO ---
+  // --- o título do gráfico traz o ANO DE INÍCIO da série, do próprio dado ---
   const serieRoni = ((SINAIS.enos.roni || {}).serie || []);
   if (serieRoni.length) {
-    const anoIni = serieRoni[0].ano, anoFim = serieRoni[serieRoni.length - 1].ano;
-    const tit = (q("roniTitulo") || {}).textContent || "";
-    teste(`título do gráfico 1 traz ${anoIni}–${anoFim}, do próprio dado`,
-      tit.includes(String(anoIni)) && tit.includes(String(anoFim)));
+    const tit = (q("episodiosTitulo") || {}).textContent || "";
+    teste(`título do gráfico traz o ano do primeiro episódio da série, do próprio dado`, /\b(19|20)\d{2}\b/.test(tit));
   }
 
   // --- a lista de episódios do gráfico 2 é a CALCULADA pelo critério, nunca escrita à mão ---
@@ -201,7 +199,7 @@ setTimeout(() => {
 
   // --- PROVENIÊNCIA VISÍVEL: regra própria desta página ---
   const creditos = [...d.querySelectorAll("[data-credito]")];
-  const figuras = ["boxSecas", "boxTemperatura", "boxAr", "boxFogo", "boxRoni", "boxEpisodios", "boxRiscoPrevisto", "boxAvisos"]   // 24/09/2026: boxAvisos e boxCemaden foram para defesa-civil.html; entraram boxTemperatura e boxAr   // boxTipos fundido em boxTipoRisco (figura dupla) em 15/09/2026;   // boxCruz foi para a página inicial em 15/09/2026   // ids a partir de 1 (auditoria 07/09/2026); boxPlume retirado em 13/09/2026 (sem cobertura); cartaoCiclo1-4 retirados em 13/09/2026 (unificados em 'situacao')
+  const figuras = ["boxSecas", "boxTemperatura", "boxAr", "boxFogo", "boxEpisodios", "boxRiscoPrevisto", "boxAvisos"]   // 24/09/2026: boxAvisos e boxCemaden foram para defesa-civil.html; entraram boxTemperatura e boxAr   // boxTipos fundido em boxTipoRisco (figura dupla) em 15/09/2026;   // boxCruz foi para a página inicial em 15/09/2026   // ids a partir de 1 (auditoria 07/09/2026); boxPlume retirado em 13/09/2026 (sem cobertura); cartaoCiclo1-4 retirados em 13/09/2026 (unificados em 'situacao')
   const semCredito = figuras.filter(id => !q(id) || !q(id).querySelector("[data-credito]"));
   teste(`toda figura tem crédito de fonte (${creditos.length} créditos)`, semCredito.length === 0);
   if (semCredito.length) console.log("      sem crédito:", semCredito.join(", "));

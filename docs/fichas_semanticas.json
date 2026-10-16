@@ -450,28 +450,6 @@
       "funcao_narrativa": "o que se espera do ciclo: previsão, não observação",
       "acao_relacionada": null
     },
-    "monitor-de-riscos.html#boxRoni": {
-      "tipo": "série temporal",
-      "pergunta_que_responde": "Quanto do aquecimento medido é do ENOS e quanto é do aquecimento médio do oceano tropical?",
-      "dimensao_da_preparacao": null,
-      "universo": "trimestres móveis da série do RONI guardada no registro",
-      "unidade_de_analise": "trimestre móvel",
-      "territorio": "região Niño 3.4",
-      "periodo": "do primeiro ao último trimestre móvel da série guardada",
-      "variavel_principal": "anomalia relativa da temperatura da superfície do mar (°C)",
-      "denominador": "média do oceano tropical",
-      "fonte": "NOAA/CPC",
-      "metodologia": "ONI descontado o aquecimento médio do oceano tropical",
-      "conclusoes_permitidas": [
-        "intensidade do episódio descontada a tendência de fundo"
-      ],
-      "conclusoes_nao_permitidas": [
-        "afirmar que a série cobre período maior do que o guardado no registro",
-        "classificar a intensidade do episódio por faixa própria: a NOAA/CPC define os limiares de +0,5 °C e de −0,5 °C, e não faixas de fraco, moderado ou forte"
-      ],
-      "funcao_narrativa": "contexto: qualifica a leitura do ONI",
-      "acao_relacionada": null
-    },
     "monitor-de-riscos.html#boxSecas": {
       "tipo": "mapa",
       "pergunta_que_responde": "Onde há seca observada, e em que categoria?",
