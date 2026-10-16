@@ -247,6 +247,8 @@ Toda decisão do juiz é registrada em `data/promocoes_automaticas.json` com a p
 
 **5.3 Cobertura municipal: documentada + declarada**
 
+Explicação em linguagem de leitor: §5.3.1.
+
 **Camada documentada — regra vigente (§12.4.2, desde 27/08/2026; créditos atualizados pelo §196 e pelo C28, errata de texto de 27/09/2026 — §257):** crédito populacional por categoria: plano preventivo 1,0 · **edição anterior 1,0** · em elaboração 0,45 · coberto pelo estado 0,3 · decreto 0 (Correção B) · nada localizado 0 · ainda não verificado 0 (§25) · ato alheio ao ciclo 0. A **escada municipal**, criada pelo C28 com as mesmas proporções da escada estadual: **plano do ciclo 1,0 · plano readaptado 0,65 · plano recorrente 0,45**; e o crédito de **estrutura de coordenação 0,45**. *O §196 pôs a edição anterior em 1,0 — plano vigente de ciclo anterior conta integral —, e até 27/09/2026 este parágrafo ainda grafava o 0,6 da redação anterior; o cálculo publicado sempre usou o valor decidido pela editoria.* *Histórico (v2.1, para auditoria): plano 1,0 · desatualizado 0,7 · decreto 0,4 — peso do decreto removido pela Correção B; o registro permanece no banco.* Agregados oficiais tipados entram quando há número verificado sem lista nominal, com o peso da sua categoria e descontando os municípios já nomeados individualmente: RO 38 planos apresentados ao MP-RO (1,0). *Os agregados tipo decreto — PB 146 e RN 166 — foram excluídos da pontuação pela Correção B (§12.4.1), pela mesma razão estrutural do peso individual do decreto: são atos de resposta, nunca ex-ante. Permanecem no banco e nas estatísticas de cobertura bruta (`percentual_uf.json`) como registro de transparência.*
 
 **Cobertura populacional:** cada município do banco contribui população_Censo2022 × crédito da categoria. Os créditos em vigor estão no parágrafo anterior e no código, em `recalcular_mare.CRED_POP`; este parágrafo não os repete — até 08/10/2026 ele grafava `plano_antigo 0,6`, revogado pelo §196 em 24/09, e a divergência chegou ao PDF público (A3-05, A3-16). Em 08/10/2026 entra `plano_nomeado 0` (§104, decisão D1). Fora da lista: decreto 0 (Correção B) · **nao_el_nino 0** (desvio declarado da letra do §12.4.2, que herdaria 0,1 da escala da capital: o vocabulário obrigatório do §4 veda crédito a ato alheio ao ciclo, e a simulação de 27/08/2026 demonstrou o vício — o AP ganharia 2,6 pontos de cobertura por emergência sanitária). Agregados sem lista nominal entram pelo excedente × **população municipal mediana da UF** × crédito (RO, 38 planos). Denominador: população total da UF no Censo 2022, validado por `atualizar_populacao.py` (5.570 municípios exatos, total exato da apuração oficial identificada, cinco sentinelas nominais). Boa Esperança do Norte/MT (instalado em 2025, pós-Censo) tem peso populacional 0, com seus habitantes contidos nos municípios de origem. A junção banco↔malha exige a grafia oficial IBGE; o motor falha em caso de não-casamento.
@@ -256,6 +258,46 @@ Toda decisão do juiz é registrada em `data/promocoes_automaticas.json` com a p
 **Regra de não dupla contagem (excedente):** a camada declarada aplica-se apenas ao excedente sobre os municípios já contados na camada documentada — max(declarados − documentados, 0) × 0,5 — de modo que um município documentado nunca pontua duas vezes; declarados-desatualizados entram integralmente a **0,5** por não se sobreporem à camada documentada nas fontes aceitas (errata de texto de 27/09/2026, §257: grafava 0,35).
 
 O desconto de 50% é uma escolha de calibração declarada, não uma derivação estatística. Seu fundamento empírico: no RS, 84,5% dos municípios atingidos declararam ter plano (MUNIC 2024), enquanto o levantamento do TCE-RS encontrou 17,9% sem plano algum e 215 planos desatualizados --- declaração superestima sistematicamente a qualidade. A regra-síntese: declaração vale metade do documento.
+
+**5.3.1 Do município ao estado: como a cobertura populacional compõe a nota (16/10/2026)**
+
+Explicação em linguagem de leitor do que §5.2–5.4 e `recalcular_mare.CRED_POP` já fazem; não muda regra, peso, crédito nem categoria. Números conferidos contra o motor (`CRED_POP`, `ESTADO_SCORE`, `INSTRUMENTO_SCORE_V31`) em 16/10/2026.
+
+O MARÉ Legal dá nota a estados, não a municípios. O município entra na conta de duas formas, e
+nenhuma delas é uma nota própria.
+
+Cada município recebe um **crédito** entre 0 e 1, pelo melhor documento que localizamos dele:
+plano feito para este El Niño, 1,0; plano preexistente readaptado por ato datado, 0,65; plano
+recorrente, do tipo que roda todo ano, 0,45; estrutura de coordenação própria (comitê, gabinete ou
+COMPDEC ativada por ato datado para este El Niño), 0,45; plano em elaboração, 0,45; município
+coberto apenas pelo plano do estado, 0,3; nada localizado, não verificado ou ato alheio ao El Niño,
+0. Plano localizado cujo tipo ainda não foi lido vale 1,0 até a leitura (não se desconta município
+porque ainda não lemos o documento dele); plano de edição anterior em vigor vale 1,0. Decreto de
+emergência vale 0: é resposta, não preparação. Quando o município tem mais de um documento,
+**vale o maior crédito, nunca a soma**: município com plano para este El Niño e gabinete continua
+em 1,0; município só com gabinete fica em 0,45.
+
+O crédito é multiplicado pela **população** do município (Censo 2022). A **cobertura populacional**
+do estado é a soma desses produtos dividida pela população total do estado, vezes 100. Um estado em
+que todos os municípios tivessem plano para este El Niño teria cobertura 100; um estado em que
+metade da população vivesse em municípios com plano recorrente e a outra metade sem plano
+localizado teria 22,5. A capital conta pela sua população real, como qualquer município.
+
+A cobertura populacional é **um terço** da nota do estado. Os outros dois terços são do próprio
+governo estadual: o **instrumento operacional estadual** (plano novo para este El Niño, 100;
+readaptado, 70; recorrente que cobre o risco anunciado, com revisão ou ativação datada em 2026, 55;
+recorrente sem revisão, 30; em elaboração, 20; recorrente que não cobre o risco, ou nada localizado,
+0) e a **estrutura de coordenação estadual** (comitê ou gabinete novo, 100; reativado por ato
+datado, 65; ativação recorrente, 45; em elaboração, 35; nada localizado, 0). A nota é a média
+simples dos três. Assim, o gabinete do **estado** vale por si um terço da nota; o gabinete de um
+**município** entra só pela cobertura, com 0,45 vezes a população dele, e só se não houver plano
+municipal que valha mais.
+
+Quando o plano saiu em relação ao primeiro boletim oficial não altera crédito nem nota desde a
+v3.1 (§51): o que a régua pergunta é se o documento existe, para que risco e de que tipo.
+Levantamentos de órgãos de controle que informam quantos municípios declararam ter plano, sem o
+documento, entram com metade do crédito e só pelo excedente sobre os municípios já documentados
+(§5.3, camada declarada).
 
 **5.4 Agregação, sensibilidade e confiança**
 
@@ -559,7 +601,7 @@ Regras 2 e 3 abaixo não alteram a nota antes de 26/10/2026 (§24). A regra 1 (c
 
    **1a. Por que "declarar" pesa menos que um documento primário — base legal (pesquisa de 21/09/2026).** A Lei nº 12.608/2012 tem duas camadas de obrigação, não uma só. Todo Município tem o dever geral de adotar medidas de redução de risco e as competências gerais do art. 8º (vistoriar áreas de risco, manter União/Estado informados sobre desastres, integrar o SINPDEC). A obrigação **específica** de elaborar o documento formal "Plano de Contingência de Proteção e Defesa Civil" (art. 3º-A, §2º, II, redação dada pela MP nº 547/2011 e pela Lei nº 12.608/2012) vale só para os municípios **inscritos no Cadastro Nacional de Municípios com Áreas Suscetíveis** (Decreto nº 10.692/2021) — inscrição de iniciativa do próprio município ou de outro ente, condicionada a comprovação de área de risco. Esse mesmo Decreto (art. 5º, III) exige o plano em até um ano da inscrição; a Lei nº 14.750/2023 fixou atualização a cada 2 anos, com avaliação e prestação de contas em audiência pública anual (art. 3º-A, §6º da Lei 12.608/2012). Um "sim" no censo MUNIC ou ICM não confirma nenhuma dessas três coisas — nem que o plano existe de fato, nem que passou pela audiência pública exigida, nem que está dentro do ciclo de atualização. O desconto de 50% é a proteção contra essa lacuna geral (não é calibrado especificamente para "adaptado ao El Niño" — cobre também plano inexistente apesar do "sim", plano de outro risco, ou plano nunca submetido à prestação de contas exigida por lei).
 
-   **1b. Quantos municípios têm a obrigação específica — o que sabemos e o que não sabemos.** O Cadastro Nacional em si (quem de fato se inscreveu) não tem consulta pública localizada até 21/09/2026 — a ferramenta do MDR (servicos.mdr.gov.br) é de autoinscrição, não de consulta. Na ausência desse dado primário, o MARÉ usa como proxy os **2.095 municípios "prioritários"** já publicados pelo Cemaden como suscetíveis a desastres geo-hidrológicos (mesma base da coluna "Municípios Prioritários" do ICM) — população de risco equivalente, mas não uma confirmação de quem completou a inscrição formal. Pedido de LAI com esse teor gerado em 21/09/2026 (texto pronto, envio humano via Fala.BR — exige pessoa física identificada, mesma regra de todo pedido de LAI do projeto — ainda pendente); registro público do pedido em `data/lai_pedidos.json` assim que enviado. Resultado, quando vier, corrige este proxy.
+   **1b. Quantos municípios têm a obrigação específica — o que sabemos e o que não sabemos.** O Cadastro Nacional em si (quem de fato se inscreveu) não tem consulta pública localizada até 21/09/2026 — a ferramenta do MDR (servicos.mdr.gov.br) é de autoinscrição, não de consulta. (Errata de 16/10/2026: a lista dos 2.095 é pública como a dos **indicados pela União** ao Cadastro Nacional — §107; o que não tem consulta pública é a dos inscritos.) Na ausência desse dado primário, o MARÉ usa como proxy os **2.095 municípios "prioritários"** já publicados pelo Cemaden como suscetíveis a desastres geo-hidrológicos (mesma base da coluna "Municípios Prioritários" do ICM) — população de risco equivalente, mas não uma confirmação de quem completou a inscrição formal. Pedido de LAI com esse teor gerado em 21/09/2026 (texto pronto, envio humano via Fala.BR — exige pessoa física identificada, mesma regra de todo pedido de LAI do projeto — ainda pendente); registro público do pedido em `data/lai_pedidos.json` assim que enviado. Resultado, quando vier, corrige este proxy.
 2. **Citação incompleta — decisão C11, REVOGADA em 08/10/2026 (decisão D3 da editoria).** A regra dizia que, a partir de 26/10/2026, registro pontuável sem número formal de ato **ou** sem data em dd/mm/aaaa sairia da pontuação. Ela nunca teve código que a aplicasse e, medida em 08/10/2026, tiraria **142 dos 151 registros pontuáveis** — 45,9 milhões de habitantes, concentrados em ES (72), SE (18), PR (10), SC (9), MA (6) e RJ (6) —, por ausência de número de ato em documento que o próprio site já leu. Isso contraria a decisão §101 (03/10/2026), que diz o oposto: plano publicado em domínio oficial do ente conta no degrau que a leitura indicar, mesmo sem o ato de aprovação localizado, e a ficha DIZ que o ato não foi localizado. Entre as duas, vale a de 03/10, que é posterior e editorial. O que a ausência de documento tira do crédito é tratado pela decisão D1 (§104): sem documento lido e preservado, o registro vai para `plano_nomeado`, crédito 0 — régua de prova, não de formato de citação. A fila `data/citacao_incompleta.json` deixa de ser prazo e passa a ser **informação de ficha**: ela diz o que falta em cada registro, é regenerada pela cadeia de derivados e não tem efeito em nota nenhuma.
 3. **Candidatos v2.4 (agenda, sem aplicação; designação corrigida em 02/09/2026 — a v2.3 é o redesenho da verificação):** alinhamento ao risco no crédito municipal (mesmo fator f_A do §12.4, em dois níveis) — **com a restrição ex-ante de 22/09/2026 (§5.2.1-3): o alinhamento municipal só pode ser medido contra a exposição do próprio município** (suscetibilidade geo-hidrológica por município do Cemaden; delimitação do Semiárido/SUDENE; Risco de Fogo do INPE por área; exposição costeira), **nunca contra o alerta ou a família dominante da UF** — o caso Salvador/BA torna qualquer versão estadual do fator incorreta por construção; degrau próprio para "em elaboração" na régua de antecipação; instrumento estadual composto por camadas setoriais (defesa civil + saúde + …), cujo insumo é a camada estadual de saúde (§27). Decisão da editoria após a recontagem pós-defeso (§29).
 
@@ -1611,6 +1653,8 @@ Registro do que foi conferido em 29–30/09/2026. Serve de limite ao que o site 
 - **Lei 12.608/2012** é a lei geral da Política Nacional de Proteção e Defesa Civil. Ela organiza o
   sistema e distribui competências; **não** fixa prazo nem periodicidade de plano de contingência
   municipal para um ciclo climático.
+> **Errata (16/10/2026, §107):** a página do MIDR, atualizada em 28/07/2026, publica a lista dos 2.095 municípios **indicados pela União** ao Cadastro Nacional — a mesma das três notas técnicas. O que segue sem fonte pública é a lista dos **inscritos**.
+
 - **Art. 3º-A da Lei 12.340/2010** cria o **Cadastro Nacional de Municípios com Áreas Suscetíveis**,
   de inscrição voluntária, e é dele que decorre o **dever de plano de contingência** e a obrigação de
   atualização anual, para o município cadastrado.
@@ -1991,6 +2035,8 @@ conferência integral depois.
 Existem **dois** cadastros federais de municípios suscetíveis a desastre, com fundamentos legais
 diferentes, conteúdos diferentes e consequências jurídicas diferentes. Tratá-los como um só já
 produziu, na página de Defesa civil, a afirmação de um dever que a lista usada não cria.
+
+> **Errata (16/10/2026, §107):** "a lista nominal não tem fonte pública" vale para os **inscritos**. A lista dos 2.095 **indicados pela União** ao Cadastro Nacional é pública (página do MIDR, 28/07/2026) e é a mesma do cadastro (2) abaixo, que dela parte; a "consequência redacional" deste parágrafo foi substituída: o site pode dizer "indicados pela União ao Cadastro Nacional" e nunca afirma inscrição ou dever.
 
 **(1) Cadastro Nacional de Municípios com Áreas Suscetíveis** — art. 3º-A da Lei nº 12.340/2010
 (incluído pela Lei nº 12.608/2012). Inscrição **voluntária** do município. Abrange deslizamentos de
@@ -4134,3 +4180,19 @@ CHANGELOG diz "decidida; implementada em paralelo", que é o que ela é.
 **As filas** (lotes 2.6, 2.7, 2.9 e A1-12). Pista de agregador (Google News) se resolve pela busca no próprio veículo, pelo título; sem resolver em duas noites, fecha com o veículo e o título no motivo. Notícia sem fonte oficial vai à fila do juiz, que procura o ato. Na busca web, resultado que não nomeia o município é "motor sem resposta", e "coberto sem menção" só se afirma com pelo menos três resultados que o nomeiam. As edições do Querido Diário entram na fila pela porta, com o excerto que recorta o ato. Nenhuma fila espera por pessoa: o portão `verificar_fila_nao_humana.py` reprova status que diga isso e, depois de 15/11/2026, pendente com mais de 21 dias.
 
 **MARÉ Saúde v0.4 (decidido; implementação no lote 6).** O juiz de saúde lê três objetos — o plano de saúde do ciclo, a coordenação na saúde (F1) e a ligação com o governo (F2) — com régua própria. Uma UF está **verificada** quando o documento foi lido ou quando, depois da campanha completa (com o diário oficial de fato lido ou a recusa de acesso medida), ele não foi localizado (decisão D9). A troca da v0.3 para a v0.4 acontece sozinha quando as 27 estiverem verificadas, com errata que diz quantas entram com zero; até lá, a média é dos verificados. O canal 2 (diário oficial) conta só com edição lida ou recusa medida.
+
+---
+
+## 107. O Cadastro Nacional do art. 3º-A: o MARÉ cobre a lista dos indicados pela União, não a dos inscritos (16/10/2026)
+
+Pedido da editoria (16/10/2026): registrar qual lista o MARÉ cobre e por quê. Corrige, sem reescrever, o que §54 e §66 diziam.
+
+**O que a página do MIDR diz.** A página do Ministério da Integração e do Desenvolvimento Regional sobre o **Cadastro Nacional de Municípios com Áreas Suscetíveis à Ocorrência de Deslizamentos de Grande Impacto, Inundações Bruscas ou Processos Geológicos ou Hidrológicos Correlatos** — o do art. 3º-A da Lei 12.340/2010, instituído pelo Decreto 10.692/2021 — foi publicada em 20/12/2021 e atualizada em 28/07/2026 (`https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/cadastro-nacional-de-municipios`; lida do runner em 16/10/2026, run 38893593267; o coletor a preserva por hash a cada rodada). Ela distingue dois atos. A **inscrição** no cadastro é voluntária, por iniciativa do município (Decreto 10.692, art. 3º, I), e é ela que gera as obrigações do art. 5º, entre elas o plano de contingência. A **indicação da União** é ato técnico que comunica ao município que ele atende aos critérios de suscetibilidade e depende de manifestação dele (art. 3º, § 4º): a União não inscreve o município por conta própria. A lista de indicados tem **2.095 municípios**, com base nas Notas Técnicas nº 1/2023/SAM/CC/PR, nº 1/2025/SADJ-VI/SEPAC/CC/PR e nº 2/2025/SEPAC/CC/PR — as mesmas três notas e o mesmo total que o MARÉ já lia da Casa Civil (1.942 + 153). Na página, a lista só aparece num painel embutido, sem arquivo; a lista nominal continua vindo das três notas. A página não informa quantos municípios se inscreveram.
+
+**O que o MARÉ cobre, e por quê.** Os **2.095 municípios indicados pela União** ao Cadastro Nacional. É a única lista nominal, pública e com código IBGE ligada ao cadastro que cria o dever de plano, e é a lista com que a própria União diz ao município que ele está sujeito. A página do MIDR entra no coletor como segunda fonte da mesma lista (`coletar_cadastro_prioritarios.py`, campo `fontes`): confere o total, as três notas e a data de atualização, sem lista nova nem campo novo por município. Dos 2.095, 2.086 compõem também o cadastro de enxurradas e inundações do Decreto 12.444/2025 (as duas políticas partem da mesma base técnica); os 9 restantes têm risco só de deslizamento.
+
+**O que não cobre, declarado como lacuna.** A lista dos **inscritos** — quem de fato se cadastrou e, por isso, tem o dever do art. 3º-A, § 2º. O pedido de acesso à informação ao MIDR/SEDEC continua de pé (§54). Até a resposta, o site nunca afirma que um município específico "tem o dever" de plano: afirma que a União o indicou. O portão `scripts/verificar_runtime_mapas.js` reprova "Cadastro Nacional" fora da forma "indicados pela União ao Cadastro Nacional" e reprova afirmação de inscrição ou de dever.
+
+**Outras listas federais, que não são esta.** Cemaden (1.037 municípios monitorados: monitoramento, não dever); Semiárido (Sudene, Res. 150/2021: seca, sem dever de plano); prioritários do MMA para desmatamento e incêndios (portaria vigente, §67); cadastro de enxurradas e inundações da Casa Civil (Decreto 12.444/2025: mesma base, finalidade de drenagem).
+
+**Busca e peso.** O MARÉ Legal procura plano nos 5.571 municípios, dentro e fora de qualquer lista. A lista é camada de contexto, **peso zero** (§66 continua valendo nisso).
