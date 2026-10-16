@@ -420,9 +420,38 @@ for f, wf in carregados.items():
                       f"\"Deploy is live\" só emite aviso — o passo sai verde com o site parado (F42).")
                 erros += 1
 
+# A CHAVE QUE O COLETOR LÊ CHEGA AO ELO (16/10/2026, F67 do catálogo).
+#
+# Segredo só entra num workflow reutilizável se o CHAMADOR o repassa. O `_coletor.yml` lê as chaves
+# opcionais no passo "Coletar", e o comentário dele dizia "só o atualizar.yml as passa" — mas o
+# `coletar_sinais_risco.py` foi para o elo `noturno_sinais.yml`, que repassava só a chave do robô: o
+# OpenAQ ficou três semanas em `aguardando_credencial` com a chave cadastrada. Reprova o chamador
+# do `_coletor.yml` cujo comando cita no fonte uma chave opcional que ele não repassa.
+_chaves = [k for k, v in ((((carregados.get(".github/workflows/_coletor.yml") or {}).get(True) or
+           (carregados.get(".github/workflows/_coletor.yml") or {}).get("on") or {}).get("workflow_call") or {})
+           .get("secrets") or {}).items() if not (v or {}).get("required")]
+for f, wf in carregados.items():
+    for _nome_job, _job in ((wf or {}).get("jobs") or {}).items():
+        if not str((_job or {}).get("uses") or "").endswith("/_coletor.yml"):
+            continue
+        _passados = (_job or {}).get("secrets")
+        if _passados == "inherit":
+            continue
+        for _linha in str(((_job.get("with") or {}).get("comandos")) or "").splitlines():
+            _tok = [t for t in _linha.split() if t.endswith(".py")]
+            if not _tok or _linha.strip().startswith("#") or not pathlib.Path(_tok[0]).exists():
+                continue
+            _fonte = pathlib.Path(_tok[0]).read_text(encoding="utf-8", errors="ignore")
+            for _k in _chaves:
+                if _k in _fonte and _k not in (_passados or {}):
+                    print(f"  ✗ {f}: job `{_nome_job}` roda `{_tok[0]}`, que lê `{_k}`, e não repassa o "
+                          f"segredo ao `_coletor.yml` — a fonte fica em `aguardando_credencial` com a "
+                          f"chave cadastrada (F67).")
+                    erros += 1
+
 print("✓ WORKFLOWS OK — YAML válido, sem chave duplicada, todo job com teto de tempo, "
       "todo portão de página com assunto declarado, reposição do domínio fora da fila da rodada, "
       "nenhum script cancelando run de outro, nenhuma expressão de contexto vazia, "
-      "nenhum deploy falho saindo verde."
+      "nenhum deploy falho saindo verde, toda chave lida por coletor repassada ao elo."
       if not erros else f"✗ WORKFLOWS: {erros} problema(s).")
 sys.exit(1 if erros else 0)

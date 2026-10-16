@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-16. 66 falhas; 60 com caso de teste que as reproduz; 6 sem, com o que falta dito.
+Atualizado em 2026-10-16. 67 falhas; 61 com caso de teste que as reproduz; 6 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -599,3 +599,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** log do passo de commit do job 116875901428: linha RECUSADO, campo nivel_confianca; busca_web 27678664 (08:35) mudou nivel_confianca de 6 pistas (B→C) triadas pela descoberta das 07:48 na mesma noite
 - **Correção:** Um dono por campo: triagem só na descoberta, preparação só no juiz; saem da busca web de cadência e da rodada semanal.
 - **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_busca_web_pelo_coletor`
+
+## F67 · A chave do OpenAQ não chegava ao elo dos sinais: medição do ar apagada três semanas
+
+- **Noite:** 2026-09-26→2026-10-16
+- **Sintoma:** data/sinais_risco.json: fontes.openaq.status = aguardando_credencial ('OPENAQ_API_KEY ausente no ambiente'); 27 UFs com ar_medido vazio, com a chave cadastrada e aceita na sonda de 26/09.
+- **Causa:** Segredo só entra num workflow reutilizável se o chamador o repassa. coletar_sinais_risco.py foi para noturno_sinais.yml (e roda em semanal_sinais_e_links.yml), que repassavam só ROBO_DEPLOY_KEY ao _coletor.yml; o comentário do _coletor.yml dizia que só o atualizar.yml passava chaves.
+- **Prova:** noturno_sinais.yml e semanal_sinais_e_links.yml: bloco secrets só com ROBO_DEPLOY_KEY; validar_workflows.py (regra nova) reprova os dois com a main de 16/10
+- **Correção:** Os dois chamadores repassam OPENAQ_API_KEY e INMET_API_TOKEN; validar_workflows.py reprova chamador do _coletor.yml cujo comando cita no fonte uma chave opcional que ele não repassa.
+- **Caso de teste:** `scripts/validar_workflows.py`
