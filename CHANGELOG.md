@@ -36,6 +36,10 @@ não pontuados permanecem na versão corrente.
 
 O juiz de 16/10 perdeu o commit porque a busca web de cadência, fora da vez da noite, regravou o nível de confiança de pistas que a descoberta já tinha triado. Triagem fica só na descoberta e preparação só no juiz; a cadência e a rodada semanal apenas acrescentam pistas. O ensaio da noite reprova um segundo dono.
 
+## 2026-10-16 · #779 · Saúde: títulos e subtítulos dizem o que a figura é
+
+O mapa do índice passa a "MARÉ Saúde por estado, de 0 a 100", com o subtítulo do cálculo em uso; "prontidão" sai da página. Os semanais nomeiam o ano e os anos da faixa habitual (2019 a 2025). A cidade fora da leitura semanal aparece como "não foi lido pelo MARÉ nesta semana". Sai a busca municipal antiga, sem elemento na página.
+
 ## 2026-10-16 · #780 · Nenhum texto sobre feed no site
 
 Sai do cartão de cada estado a linha do feed, e dos textos do blog o "· Feed" e a menção no aviso sem JavaScript (decisão da editoria de 16/10). "feed" entra no vocabulário proibido, que vale para a página, o catálogo e o texto escrito pelos scripts. Os arquivos do feed seguem no cabeçalho das páginas, para leitura por máquina.

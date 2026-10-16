@@ -51,6 +51,8 @@
     <dl class="mudancas-lista">
       <dt>16/10/2026 · Triagem e preparação de pistas com um dono só (F66)</dt>
       <dd>O juiz de 16/10 perdeu o commit porque a busca web de cadência, fora da vez da noite, regravou o nível de confiança de pistas que a descoberta já tinha triado. Triagem fica só na descoberta e preparação só no juiz; a cadência e a rodada semanal apenas acrescentam pistas. O ensaio da noite reprova um segundo dono.</dd>
+      <dt>16/10/2026 · Saúde: títulos e subtítulos dizem o que a figura é</dt>
+      <dd>O mapa do índice passa a &quot;MARÉ Saúde por estado, de 0 a 100&quot;, com o subtítulo do cálculo em uso; &quot;prontidão&quot; sai da página. Os semanais nomeiam o ano e os anos da faixa habitual (2019 a 2025). A cidade fora da leitura semanal aparece como &quot;não foi lido pelo MARÉ nesta semana&quot;. Sai a busca municipal antiga, sem elemento na página.</dd>
       <dt>16/10/2026 · Nenhum texto sobre feed no site</dt>
       <dd>Sai do cartão de cada estado a linha do feed, e dos textos do blog o &quot;· Feed&quot; e a menção no aviso sem JavaScript (decisão da editoria de 16/10). &quot;feed&quot; entra no vocabulário proibido, que vale para a página, o catálogo e o texto escrito pelos scripts. Os arquivos do feed seguem no cabeçalho das páginas, para leitura por máquina.</dd>
       <dt>16/10/2026 · DOE-SP: o texto da publicação é decodificado e a homologação paulista casa</dt>
@@ -167,8 +169,6 @@
       <dd>Onde o nome do arquivo pede o número da edição, o localizador percorre as datas do mais novo para o mais velho: a âncora de cada data passa a ser a vizinha, e a deriva por passo é de uma ou duas edições. Da outra ordem, a janela não alcançava dois meses de deriva e o Mato Grosso do Sul dava 404 em todas as datas. Em `coletar_edicoes_doe.py`.</dd>
       <dt>02/10/2026 · Canal 2: baixar a edição do diário, não buscar nele</dt>
       <dd>`coletar_edicoes_doe.py` baixa a edição por data, extrai o texto e indexa as ocorrências com trecho e página; a campanha consome o índice. Arquivo servido com 200 que não é diário e sigla sem contexto de saúde não contam. PB e MS registrados pelo documento relido, com F1 e F2. A coordenação passa a exigir as duas funções. METODOLOGIA §94. ## 2026-10-02 · #521b · Imprensa: capitais com plano e a série de faixas O cartão &quot;capitais com plano&quot; deixa de ser lacuna: a referência das 27 capitais por código IBGE já existia no repositório, e o número é 17 de 27. `scripts/registrar_faixas.py` passa a escrever a faixa de cada estado por edição, e o cartão &quot;mudaram de faixa&quot; lê de lá — a comparação começa na próxima edição. Em `gerar_imprensa_semana.py`, `scripts/`, `.github/workflows/`.</dd>
-      <dt>02/10/2026 · Ficha do estado com as duas linhas, e a sondagem das rotas de diário</dt>
-      <dd>A ficha de cada estado passa a mostrar a coordenação em duas linhas — na saúde e com o governo do estado —, com documento e data, e perde a palavra interna &quot;antecipação&quot;. `scripts/sondar_rotas_doe.py` mede e registra por que a campanha dos 27 está travada: das 20 unidades sem adaptador, 6 têm pista de rota, 12 sem busca na página inicial, 1 não responde, 1 sem endereço. Em `assets/js/saude.js`, `scripts/`.</dd>
     </dl>
   </section>
 </main>
