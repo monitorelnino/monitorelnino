@@ -12,7 +12,7 @@
  */
 const path = require("path"), fs = require("fs"), http = require("http");
 const RAIZ = path.join(__dirname, "..");
-const MAPAS = ["mapaRiscoPrevisto", "mapaSecas", "mapaFogo", "mapaAr", "mapaTemperatura", "mapaAvisos"];
+const MAPAS = ["mapaSecas", "mapaFogo", "mapaAr", "mapaTemperatura", "mapaAvisos"];
 const CAPITAIS = ["mapaTemperatura", "mapaAr"];
 
 function problemas(texto) {

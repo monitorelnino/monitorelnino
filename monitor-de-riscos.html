@@ -116,44 +116,40 @@
     <h2 data-conteudo="monitor-de-riscos.titulo_da_secao_2">Os riscos no Brasil</h2>
     <p class="hint" data-conteudo="monitor-de-riscos.abertura_2">Os quatro riscos que o boletim prevê para este El Niño. Cada mapa diz de quando é o dado.</p>
 
-    <!-- 01/10/2026 (pedido da editoria): UM COMPONENTE DE CARTÃO DE MAPA, SEIS VEZES.
-         O que estava errado: o mapa de risco previsto ocupava a largura toda e os outros cinco
-         ficavam pequenos embaixo; o nome da família e a linha do boletim viviam FORA do cartão,
-         com alturas diferentes, e por isso as molduras desalinhavam; as legendas tinham estilos
-         diferentes e itens que não são categoria do mapa; dois cartões tinham seletor dentro e
-         os outros não.
-
-         Agora os seis têm a mesma estrutura, na mesma ordem, com o mesmo tamanho de mapa. Os
-         seletores de camada saíram da grade: a camada exibida é a padrão, e o que a outra camada
-         tinha de valor vai para o "Ver em lista" do próprio cartão. "Como ler" e "Ver em lista"
-         ficam recolhidos, no mesmo estilo de link pequeno. -->
-    <!-- 09/10/2026 (ajustes 5 e 6, editoria): PREVISTO separado de OBSERVADO. Um título por mapa
-         (o que é e quando), sem sobretítulo nem a frase com a lista de UFs — ela vai para a
-         descrição acessível e para "Ver estados". Mesma moldura, mesma borda, fundo branco; só o
-         mapa de fogo fica escuro, porque ponto luminoso sobre fundo escuro é o que torna visível um
-         foco pequeno (exceção declarada no contrato). -->
-    <!-- 11/10/2026 (editoria): os três mapas na mesma fila, no componente `.grade-figuras--3`. Os
-         selos "Previsto pelo boletim" e "Observado" são uma faixa alinhada às colunas, na própria
-         grade: no desktop o primeiro fica sobre o mapa previsto e o segundo sobre os dois
-         observados; numa coluna só, cada selo vem antes do(s) seu(s) mapa(s), na ordem do HTML. -->
-    <div class="grade-figuras grade-figuras--3 grade-mapas grade-mapas--faixas">
-      <p class="selo faixa-selo faixa-selo--previsto" data-conteudo="monitor-de-riscos.riscos.faixa_previsto">Previsto pelo boletim</p>
-      <figure class="figura figura--mapa cartao-mapa" id="boxRiscoPrevisto">
-        <h3 class="figura-titulo" id="tituloRiscoPrevisto" data-conteudo="monitor-de-riscos.titulo_risco_previsto.titulo">Risco previsto por estado, até março de 2027</h3>
-        <p class="figura-sub" id="riscoPrevistoSub">Risco previsto até março de 2027 · por estado</p>
-        <div class="figura-midia"><svg id="mapaRiscoPrevisto" role="img" aria-describedby="estadosRiscoPrevisto" aria-label="Mapa do Brasil com o risco previsto pelo boletim do Painel El Niño para cada estado" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legRiscoPrevisto"></div>
-        <div class="cartao-mapa-rodape">
-        <details class="cartao-mapa-dados cartao-mapa-estados"><summary data-conteudo="monitor-de-riscos.estados_risco_previsto.resumo">Ver estados</summary><ul class="lista-estados" id="estadosRiscoPrevisto"></ul></details>
-        <details class="cartao-mapa-dados"><summary data-conteudo="monitor-de-riscos.estados_risco_previsto.resumo_2">Ver em lista</summary>
-          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblRiscoPrevisto"><thead><tr><th>UF</th><th>Risco previsto</th></tr></thead><tbody></tbody></table></div>
-        </details>
-        <details class="cartao-mapa-leitura"><summary data-conteudo="monitor-de-riscos.estados_risco_previsto.resumo_3">Como ler</summary>
-          <p class="figura-leitura" data-conteudo="monitor-de-riscos.estados_risco_previsto.texto">Trata-se de previsão, não de dados observados. O detalhe de cada estado está na ficha, na página inicial.</p>
-        </details>
+    <!-- 16/10/2026 (editoria, HANDOVER_MONITOR_DE_RISCOS §2–§3): o risco previsto deixa de ser mapa e
+         vira uma faixa de etiquetas por família; cada bloco de família abre com "Boletim prevê para".
+         O fogo ocupa a largura inteira, com os números ao lado do mapa; seca, ar e calor em três colunas. -->
+    <div class="grade-figuras grade-figuras--1">
+      <figure class="figura cartao-mapa" id="boxRiscoPrevisto">
+        <h3 class="figura-titulo" id="tituloRiscoPrevisto" data-conteudo="monitor-de-riscos.titulo_risco_previsto.titulo">Risco previsto por estado</h3>
+        <p class="figura-sub" id="riscoPrevistoSub">Boletim do Painel El Niño · até março de 2027</p>
+        <dl class="faixa-previsto" id="faixaRiscoPrevisto"></dl>
+      </figure>
+    </div>
+    <div class="faixa-selo faixa-selo--familia">
+      <p class="selo" data-conteudo="monitor-de-riscos.riscos.bloco_seca">Seca, fogo, ar e calor</p>
+      <p class="boletim-preve" id="preveSeca"></p>
+    </div>
+    <div class="grade-figuras grade-figuras--1">
+      <figure class="figura figura--mapa cartao-mapa cartao-mapa--lado" id="boxFogo">
+        <h3 class="figura-titulo" id="tituloFogo" data-conteudo="monitor-de-riscos.titulo_fogo.titulo">Focos de fogo nas últimas 24 horas</h3>
+        <p class="figura-sub" id="fogoSub">Últimas 24 horas · hachura: estados com fogo previsto pelo boletim</p>
+        <div class="cartao-mapa-lado">
+          <div>
+            <div class="figura-midia"><svg id="mapaFogo" role="img" aria-label="Mapa do Brasil com os focos de calor das últimas 24 horas na posição em que foram detectados, agrupados em células de cerca de 11 quilômetros, segundo o INPE" viewBox="0 0 480 460"></svg></div>
+            <div class="map-legend" id="legFogo"></div>
+          </div>
+          <div class="lado-dados" id="fogoLado">
+            <dl class="lado-numeros" id="fogoNumeros"></dl>
+            <p class="lado-rotulo" id="fogoSerieRotulo" data-conteudo="monitor-de-riscos.fogo.serie_rotulo">Últimos 30 dias, focos por dia</p>
+            <div class="lado-serie" id="fogoSerie"></div>
+            <div class="tbl-wrap" tabindex="0" role="region" aria-label="Focos por estado"><table class="mun-table" id="tblFogo"><thead><tr><th>UF</th><th>Focos em 24 h</th><th>Dia anterior</th><th>No mês</th><th>Previsto</th></tr></thead><tbody></tbody></table></div>
+            <div class="tbl-wrap" tabindex="0" role="region" aria-label="Focos por bioma"><table class="mun-table" id="tblFogoBioma"><thead><tr><th>Bioma</th><th>Focos em 24 h</th><th>% do total</th></tr></thead><tbody></tbody></table></div>
+          </div>
         </div>
       </figure>
-      <p class="selo faixa-selo faixa-selo--observado" data-conteudo="monitor-de-riscos.riscos.faixa_observado">Observado</p>
+    </div>
+    <div class="grade-figuras grade-figuras--3 grade-mapas">
       <figure class="figura figura--mapa cartao-mapa" id="boxSecas">
         <h3 class="figura-titulo" id="tituloSecas">Seca observada</h3>
         <p class="figura-sub" id="secasSub">Categoria de seca em pelo menos metade da área do estado</p>
@@ -166,24 +162,6 @@
         </details>
         </div>
       </figure>
-      <figure class="figura figura--mapa cartao-mapa" id="boxFogo">
-        <h3 class="figura-titulo" id="tituloFogo" data-conteudo="monitor-de-riscos.titulo_fogo.titulo">Focos de fogo nas últimas 24 horas</h3>
-        <p class="figura-sub" id="fogoSub">Últimas 24 horas · cada ponto reúne os focos de uma área de cerca de 11 km</p>
-        <div class="figura-midia"><svg id="mapaFogo" role="img" aria-describedby="estadosFogo" aria-label="Mapa do Brasil com os focos de calor das últimas 24 horas na posição em que foram detectados, agrupados em células de cerca de 11 quilômetros, segundo o INPE" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legFogo"></div>
-        <div class="cartao-mapa-rodape">
-        <details class="cartao-mapa-dados cartao-mapa-estados"><summary data-conteudo="monitor-de-riscos.estados_fogo.resumo">Ver estados</summary><ul class="lista-estados" id="estadosFogo"></ul></details>
-        <details class="cartao-mapa-dados"><summary data-conteudo="monitor-de-riscos.estados_fogo.resumo_2">Ver em lista</summary>
-          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblFogo"><thead><tr><th>UF</th><th>Focos em 24 h</th></tr></thead><tbody></tbody></table></div>
-        </details>
-        <details class="cartao-mapa-leitura"><summary data-conteudo="monitor-de-riscos.estados_fogo.resumo_3">Como ler</summary>
-          <p class="figura-leitura" data-conteudo="monitor-de-riscos.estados_fogo.texto">Foco não significa incêndio: um incêndio grande gera muitos focos, e queimadas controladas também entram.</p>
-        </details>
-        </div>
-      </figure>
-    </div>
-    <p class="selo faixa-selo" data-conteudo="monitor-de-riscos.riscos.faixa_agora">Agora, nas capitais e nos estados</p>
-    <div class="grade-figuras grade-figuras--3 grade-mapas">
       <figure class="figura figura--mapa cartao-mapa" id="boxAr">
         <h3 class="figura-titulo" id="tituloAr">Qualidade do ar nas capitais</h3>
         <p class="figura-sub" id="arSub">Uma capital por estado · estimativa por modelo</p>
@@ -214,6 +192,12 @@
         </details>
         </div>
       </figure>
+    </div>
+    <div class="faixa-selo faixa-selo--familia">
+      <p class="selo" data-conteudo="monitor-de-riscos.riscos.bloco_chuva">Chuva forte</p>
+      <p class="boletim-preve" id="preveChuva"></p>
+    </div>
+    <div class="grade-figuras grade-figuras--3 grade-mapas">
       <figure class="figura figura--mapa cartao-mapa" id="boxAvisos">
         <h3 class="figura-titulo" id="tituloAvisos">Avisos de tempo severo em vigor</h3>
         <p class="figura-sub" id="avisosSub">Avisos em vigor na consulta</p>
