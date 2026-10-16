@@ -42,6 +42,8 @@ jobs:
         coletar_arboviroses_sinan.py
         coletar_obitos_registro_civil.py
         classificar_saude_no_plano.py
+        # 16/10/2026 (HANDOVER_SAUDE_PAGINA §6b): a consulta do município, depois de tudo o que ela lê.
+        gerar_saude_municipio.py
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
