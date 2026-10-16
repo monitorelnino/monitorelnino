@@ -31,6 +31,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #787 · O envio do formulário fica na inicial; sai a página Obrigado
+
+O formulário da inicial passa a enviar sem trocar de página: depois do envio aparece "Recebido. Obrigado pela contribuição." no mesmo lugar. O texto que vivia em `obrigado.html` (a conferência automática e o que acontece com o documento) vai para o próprio formulário. `obrigado.html` sai, e endereços antigos levam ao formulário (decisão da editoria de 16/10).
+
 ## 2026-10-16 · #785 · Inicial: sai a legenda das barras; barras sem régua; cartão da cidade branco e com um só componente
 
 Sai a legenda "Barra de cima… Barra de baixo…" e a linha acima dela, na inicial e na Saúde, com a função que a escrevia. A barra do MARÉ Legal perde o quadriculado de fundo (ficam as marcas 25, 50, 70); a dos decretos, sem marcas, fica mais alta. O cartão da cidade fica branco, sem o link "consultar outro município"; as listas federais usam o cartão da projeção, com o texto do cadastro nacional (Lei 12.340, art. 3º-A).
@@ -49,14 +53,6 @@ O portão de conformidade passa a reprovar seção numerada ("1.", "II ·") e ma
 ## 2026-10-16 · #781 · Triagem e preparação de pistas com um dono só (F66)
 
 O juiz de 16/10 perdeu o commit porque a busca web de cadência, fora da vez da noite, regravou o nível de confiança de pistas que a descoberta já tinha triado. Triagem fica só na descoberta e preparação só no juiz; a cadência e a rodada semanal apenas acrescentam pistas. O ensaio da noite reprova um segundo dono.
-
-## 2026-10-16 · #786 · O envio do formulário fica na inicial; sai a página Obrigado
-
-O formulário da inicial passa a enviar sem trocar de página: depois do envio aparece "Recebido. Obrigado pela contribuição." no mesmo lugar. O texto que vivia em `obrigado.html` (a conferência automática e o que acontece com o documento) vai para o próprio formulário. `obrigado.html` sai, e endereços antigos levam ao formulário (decisão da editoria de 16/10).
-
-## 2026-10-16 · #785 · Inicial: sai a legenda das barras; barras sem régua; cartão da cidade branco e com um só componente
-
-Sai a legenda "Barra de cima… Barra de baixo…" e a linha acima dela, na inicial e na Saúde, com a função que a escrevia. A barra do MARÉ Legal perde o quadriculado de fundo (ficam as marcas 25, 50, 70); a dos decretos, sem marcas, fica mais alta. O cartão da cidade fica branco, sem o link "consultar outro município"; as listas federais usam o cartão da projeção, com o texto do cadastro nacional (Lei 12.340, art. 3º-A).
 
 ## 2026-10-16 · #783 · Inicial: links da abertura e sai a linha da checagem
 
