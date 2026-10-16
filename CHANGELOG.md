@@ -32,9 +32,13 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-16 · #PR · Consolidação item 5: três funções copiadas viram uma
+## 2026-10-16 · #767 · Consolidação item 5: três funções copiadas viram uma
 
 `data_da_edicao()` (data de `meta.json`) sai de dez arquivos para `coletores_base` — em dois a reserva chamava `datetime._hoje()`, que não existe; a leitura de PDF com pdfplumber primeiro dos quatro boletins estaduais vira opção de `extrair_texto_por_pagina`; `_gh` dos quatro scripts de temporizador fica só no despachante. −144 linhas.
+
+## 2026-10-16 · #764 · Saúde: sai o texto vazado
+
+Saem da página de saúde "Estado das fontes", "Bateria estadual executada em" e a versão "v0.3"; "não relaciona casos ao El Niño" fica uma vez. Na verificação por estado, cada linha diz título, órgão, data do documento e link; o que não é título vai para `nota_interna`, que nenhuma página mostra (notas, pontuação inalterada). O contrato reprova os termos vazados.
 
 ## 2026-10-16 · #765 · DOE-PI por edição; RR com o motivo medido
 
