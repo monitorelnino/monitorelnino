@@ -13,7 +13,7 @@
 const path = require("path"), fs = require("fs"), http = require("http");
 const RAIZ = path.join(__dirname, "..");
 const MAPAS = ["mapaSecas", "mapaFogo", "mapaAr", "mapaTemperatura"];
-const CAPITAIS = ["mapaTemperatura", "mapaAr"];
+const CAPITAIS = ["mapaTemperatura"];   // 16/10/2026: o ar é por cidade com estação, não por capital
 
 function problemas(texto) {
   const t = String(texto || "");

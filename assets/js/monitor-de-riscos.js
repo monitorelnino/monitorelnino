@@ -422,15 +422,15 @@ if (AR) {
     .on('mouseenter', (evt, s) => MonitorMapas.showTip(fichaSensor(s), evt)).on('mousemove', (evt, s) => MonitorMapas.showTip(fichaSensor(s), evt))
     .on('mouseleave', MonitorMapas.hideTip);
   const leg = document.getElementById('legAr');
-  if (leg) leg.insertAdjacentHTML('beforeend', '<span><i class="leg-losango"></i>Sensor de baixo custo (IPAM/RedeAr) · PM2,5 em µg/m³, média de 24 h</span>');
+  if (leg) leg.insertAdjacentHTML('beforeend', '<span><i class="leg-losango" style="background:transparent"></i>Sensor de baixo custo (IPAM/RedeAr) · PM2,5 em µg/m³, média de 24 h</span>');
   const sub = document.getElementById('arSub');
-  if (sub) sub.textContent = 'IQAr das estações oficiais, por cidade (cor: pior estação; tamanho: nº de estações) · sensores de PM2,5 em µg/m³';
+  if (sub) sub.textContent = 'IQAr das estações oficiais por cidade (cor: faixa mais alta da cidade; tamanho: nº de estações) · sensores de PM2,5, µg/m³';
 }
 (function creditoAr(){
   const fm = fontesAr.monitorar || {};
   MonitorMapas.credito('boxAr', {fontes: ['MMA · MonitorAr (IQAr das redes estaduais)', 'concentrações das estações oficiais: OpenAQ',
     'sensores: IPAM/RedeAr'], url: fm.url_publica, data: AR ? (fm.consultado_em || AR.gerado_em) : null});
-  const d = document.querySelector('#boxAr .fonte-figura'); if (d) d.dataset.credito = 'openaq';
+  const d = document.querySelector('#boxAr .fonte-figura'); if (d) d.dataset.credito = 'monitorar';
 })();
 
 
@@ -543,23 +543,21 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
     .reduce((s, d) => s + (((serie[d] || {}).uf || {})[uf] || 0), 0);
   const corpo = document.querySelector('#tblFogo tbody');
   if (corpo) corpo.innerHTML = Object.entries(R.dia.uf || {}).sort((a, b) => b[1] - a[1]).slice(0, 6)
-    .map(([uf, n]) => '<tr><td>' + esc(uf) + '</td><td class="dado">' + esc(fmt(n)) + '</td><td class="dado">'
-      + esc(ontemOk ? fmt(((ontem.uf || {})[uf]) || 0) : '—') + '</td><td class="dado">' + esc(fmt(mesDe(uf)))
-      + '</td><td>' + (componentesDe(uf).includes('incendios') ? 'sim' : 'não') + '</td></tr>').join('');
+    .map(([uf, n]) => '<tr><td>' + esc(uf) + '</td> <td>' + esc(fmt(n)) + '</td> <td>'
+      + esc(ontemOk ? fmt(((ontem.uf || {})[uf]) || 0) : '—') + '</td> <td>' + esc(fmt(mesDe(uf)))
+      + '</td> <td>' + (componentesDe(uf).includes('incendios') ? 'sim' : 'não') + '</td></tr>').join('');
   const bio = document.querySelector('#tblFogoBioma tbody');
   if (bio) bio.innerHTML = Object.entries(R.dia.bioma || {}).sort((a, b) => b[1] - a[1])
-    .map(([b, n]) => '<tr><td>' + esc(b) + '</td><td class="dado">' + esc(fmt(n)) + '</td><td class="dado">'
+    .map(([b, n]) => '<tr><td>' + esc(b) + '</td> <td>' + esc(fmt(n)) + '</td> <td>'
       + esc(R.dia.total ? (n / R.dia.total * 100).toLocaleString('pt-BR', {maximumFractionDigits: 1}) : '—') + '</td></tr>').join('');
 
   const sub = document.getElementById('fogoSub');
-  if (sub) sub.textContent = 'Números: dia ' + dBR(dia) + ', satélite de referência (Aqua, passagem da tarde)'
-    + (FOCOS && FOCOS.arquivo_de_origem ? ' · pontos: arquivo diário do INPE, todos os satélites' : '')
-    + ' · hachura: estados com fogo previsto pelo boletim';
+  if (sub) sub.textContent = 'Números: ' + dBR(dia) + ', satélite de referência (Aqua, tarde)'
+    + (FOCOS && FOCOS.arquivo_de_origem ? ' · pontos: todos os satélites' : '') + ' · hachura: fogo previsto pelo boletim';
 })();
 (function creditoFogo(){
   const f = FOGO_REF || fonteDe('inpe_fogo');
-  MonitorMapas.credito('boxFogo', {fontes: ['INPE · Programa Queimadas' + (FOGO_REF ? ' (BDQueimadas, satélite de referência Aqua M-T)' : ''),
-    'foco não é incêndio: um incêndio grande gera muitos focos, e queimadas autorizadas também entram'],
+  MonitorMapas.credito('boxFogo', {fontes: ['INPE · Programa Queimadas' + (FOGO_REF ? ' (BDQueimadas, Aqua M-T)' : '')],
     url: f.url_publica, data: f.consultado_em});
   const d = document.querySelector('#boxFogo .fonte-figura'); if (d) d.dataset.credito = 'inpe_fogo';
 })();
@@ -588,9 +586,9 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
       return [g, com.length, ufs, fen];
     });
     const comAviso = muns.filter(m => (m.inmet || []).length).length, total = (window.__refMunicipios || []).length;
-    document.querySelector('#tblAvisos tbody').innerHTML = linhas.map(([g, n, ufs, fen]) => '<tr><td>' + esc(g) + '</td><td class="dado">'
-        + esc(fmt(n)) + '</td><td>' + esc(ufs.join(', ') || '—') + '</td><td>' + esc(fen.join(', ') || '—') + '</td></tr>').join('')
-      + (total ? '<tr><td>Sem aviso</td><td class="dado">' + esc(fmt(total - comAviso)) + '</td><td>—</td><td>—</td></tr>' : '');
+    document.querySelector('#tblAvisos tbody').innerHTML = linhas.map(([g, n, ufs, fen]) => '<tr><td>' + esc(g) + '</td> <td>'
+        + esc(fmt(n)) + '</td> <td>' + esc(ufs.join(', ') || '—') + '</td> <td>' + esc(fen.join(', ') || '—') + '</td></tr>').join('')
+      + (total ? '<tr><td>Sem aviso</td><td>' + esc(fmt(total - comAviso)) + '</td><td>—</td><td>—</td></tr>' : '');
     const previstos = UFS.filter(uf => componentesDe(uf).includes('chuvas'));
     const ufsComAviso = new Set(muns.filter(m => (m.inmet || []).length).map(m => m.uf));
     const nAvisos = new Set(muns.flatMap(m => (m.inmet || []).map(x => x.id))).size;
@@ -607,7 +605,7 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
       (grupos[k] = grupos[k] || new Set()).add(m.nome); }));
     const chaves = Object.keys(grupos).sort();
     document.querySelector('#tblCemaden tbody').innerHTML = chaves.length
-      ? chaves.map(k => { const [nv, uf] = k.split('|'); return '<tr><td>' + esc(nv) + '</td><td>' + esc(uf) + '</td><td>'
+      ? chaves.map(k => { const [nv, uf] = k.split('|'); return '<tr><td>' + esc(nv) + '</td> <td>' + esc(uf) + '</td> <td>'
           + esc([...grupos[k]].sort().join(', ')) + '</td></tr>'; }).join('')
       : '<tr><td colspan="3">Nenhum alerta vigente nesta consulta</td></tr>';
     const r = AVISOS.resumo || {};
@@ -1108,7 +1106,7 @@ if (PACIFICO.serie.length) {
     // calendário (ano, pico e trimestre do pico), recolhida no mesmo link discreto dos mapas.
     if (linhas.some(l => !l.agora)) {
       const lin = linhas.filter(l => !l.agora && l.pico).slice().sort((a, b) => a.ano - b.ano)
-        .map(l => '<tr><td>' + esc(l.rotulo) + '</td><td>' + esc(PAC.num(l.pico.p.anomalia)) + ' °C</td><td>'
+        .map(l => '<tr><td>' + esc(l.rotulo) + '</td> <td>' + esc(PAC.num(l.pico.p.anomalia)) + ' °C</td><td>'
           + esc(PAC.periodoCurto(l.pico.p)) + '</td></tr>').join('');
       alvo.insertAdjacentHTML('beforeend', '<details class="cartao-mapa-dados lista-episodios"><summary>'
         + esc(txtCat(IP + 'episodios.ver_em_lista', null, 'Ver em lista')) + '</summary>'
