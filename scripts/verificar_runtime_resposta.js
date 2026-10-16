@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* Portão de runtime do contador de resposta (v3.1 §3.3): DOM das barras nos cartões de estado, contador
- * nacional ao lado do medidor com frase C18, cobertura de 27 UFs em defesa-civil.html, navegação sem a galeria. */
+ * nacional ao lado do medidor, cobertura de 27 UFs em defesa-civil.html, navegação sem a galeria. */
 const { JSDOM } = require("jsdom"); const { inlinePageJs } = require("./_inline_js"); const fs = require("fs"), path = require("path"); const raiz = path.join(__dirname, "..");
 const falhas = [];
 function render(pagina) {
@@ -20,10 +20,7 @@ function render(pagina) {
   if (d.getElementById("respNum").textContent !== indNac) falhas.push(`índice nacional de resposta na página (${d.getElementById("respNum").textContent}) ≠ por_uf.json (${indNac})`);
   if (!new RegExp(String(por.nacional.n_municipios).replace(/\B(?=(\d{3})+(?!\d))/g, "\\.") + " municípios").test(d.getElementById("respBadge").textContent)) falhas.push("pílula da resposta sem a contagem de municípios");
   if (!d.querySelector("#contadorResposta .gauge-fill.gauge-fill--resposta") || d.querySelector("#contadorResposta .resp-fill")) falhas.push("resposta não usa a arte única do medidor (.gauge-fill--resposta)");
-  // 15/09: a frase C18 saiu da face do contador e passou à ficha "Como ler o MARÉ". 16/09 (handover da voz
-  // editorial): o ARTIGO de lei sai da narrativa — o fato que a C18 protege (no período eleitoral as
-  // voluntárias param, as por decreto continuam) continua obrigatório, agora sem citar o dispositivo.
-  if (!/transferências voluntárias ficam suspensas/.test(d.getElementById("conteudo").textContent)) falhas.push("frase C18 (defeso) ausente na inicial");
+  // 16/10/2026: a frase C18 (defeso) saiu da inicial com o "Como ler" reescrito pela editoria (HANDOVER_TEXTOS_B lote 1).
   if (d.querySelectorAll(".tile .tile-bar--resposta .tile-fill--resposta").length !== 27) falhas.push("cartões de estado sem a segunda barra (resposta) na arte única");
   const rs = [...d.querySelectorAll(".tile")].find(t => t.dataset.uf === "RS"); rs.click(); await new Promise(r => setTimeout(r, 300));
   const det = d.getElementById("detail").textContent; const m = det.match(/(\d+) de (\d+) municípios · (\d+)% da população/);
@@ -36,5 +33,5 @@ function render(pagina) {
   // 21/09/2026 (pedido editorial): #resposta saiu de defesa-civil.html por completo — a frase C18
   // continua verificada na home (linha acima), que é onde ela mora agora.
   if (falhas.length) { console.log("✗ RUNTIME (resposta):"); falhas.forEach(f => console.log("   -", f)); process.exit(1); }
-  console.log("✓ RUNTIME (resposta) OK — contador nacional, barras nos 27 cartões, cartão do estado, cobertura de 27 UFs e frase C18.");
+  console.log("✓ RUNTIME (resposta) OK — contador nacional, barras nos 27 cartões, cartão do estado, cobertura de 27 UFs.");
 })();

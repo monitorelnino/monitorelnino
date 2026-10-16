@@ -149,6 +149,8 @@ const kpiUFsLAC = Object.entries(MARE).filter(([uf,v]) => v.status_estadual === 
   const el = id => document.getElementById(id); const n = v => Number(v).toLocaleString('pt-BR');
   const total = (VRESUMO && VRESUMO.total_municipios) || 5571;
   if (el('heroVerifFederal')) el('heroVerifFederal').textContent = n(total);
+  const C = window.MonitorCatalogo;   // cartão da cidade: "qualquer um dos {n_municipios} municípios"
+  if (C) C.pronto.then(() => C.escrever('cidadeAbertura', 'index.abertura_4', {n_municipios: total}));
   // 30/09/2026: o texto de abertura passou a ter UMA data só — a da última checagem. O "Dados até"
   // (corte) saiu: ele congelava com o arquivo de transferências e dizia ao leitor que o índice
   // estava parado quando não estava.
@@ -232,6 +234,8 @@ let ENQ_MUN = null, ENQ_FONTES = {};
 fetch('data/enquadramento_card.json').then(r => r.ok ? r.json() : null).catch(() => null).then(e => {
   if (!e || !e.municipios) return;
   ENQ_MUN = e.municipios; ENQ_FONTES = e.fontes || {};
+  const ind = document.getElementById('heroIndicadosUniao');   // indicados pela União ao cadastro (art. 3º-A)
+  if (ind) ind.textContent = Object.values(ENQ_MUN).filter(v => 'ch' in v || 'geo' in v).length.toLocaleString('pt-BR');
 });
 
 // Os quatro textos são LITERAIS, aprovados pela editoria em 30/09/2026, e não variam. Só o

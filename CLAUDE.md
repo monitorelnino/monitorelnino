@@ -25,7 +25,7 @@ AI_VISUAL_ART_DIRECTION.md             (direção de arte)
 
 ## O projeto
 
-MARÉ · Medida de Antecipação e Resposta ao El Niño (monitorelnino.com.br), jornalismo de dados de
+MARÉ · Monitor de Antecipação e Resposta ao El Niño (monitorelnino.com.br), jornalismo de dados de
 interesse público da Futura Evidence Lab. Site estático (HTML + JSON em `data/`), coleta em
 Python/Node, publicado pelo Netlify a partir da raiz (`netlify.toml`).
 

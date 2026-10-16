@@ -34,7 +34,7 @@ const PAGINAS = ["index.html", "defesa-civil.html", "saude.html", "financiamento
 // não é texto de figura nem juízo sobre dado: é o que o site declara não coletar, e a precisão do
 // "só" é justamente o ponto. A exceção é a frase inteira, não a palavra — assim ela não se alarga
 // para outros textos, e mudar a frase faz o portão voltar a reprovar.
-const FRASE_DE_PRIVACIDADE = /Não pedimos seu nome nem contato, só as informações sobre o documento\. A conferência é feita pela nossa equipe\./g;
+const FRASE_DE_PRIVACIDADE = /Não pedimos seu nome nem contato, só as informações sobre o documento\./g;   // 16/10/2026: sai a 2ª frase (regra "nenhuma etapa humana")
 // 30/09/2026 (Monitor de riscos). Três exceções NOMEADAS, cada uma amarrada a um texto que a
 // editoria aprovou como literal em 30/09/2026 — não são frouxidão da regra, que continua inteira
 // para todo o resto:
