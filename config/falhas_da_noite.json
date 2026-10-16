@@ -1,6 +1,6 @@
 {
  "_governanca": "Catálogo interno das falhas da corrente noturna de 04/10 a 10/10/2026, montado das notas do robo-registro e dos comentários datados do código; toda falha nova vira linha nova, com causa, prova e o caso de teste que a reproduz.",
- "atualizado_em": "2026-10-15",
+ "atualizado_em": "2026-10-16",
  "falhas": [
   {
    "id": "F01",
@@ -893,6 +893,19 @@
    "correcao": "O corte só avança quando `julgar_lista` termina a fila (devolve não-interrompido); o julgado grava sempre.",
    "caso_de_teste": null,
    "falta": "caso de teste exige fila sintética no main() de julgar_saude; julgar_lista (que devolve a interrupção) tem caso próprio em julgar_filas"
+  },
+  {
+   "id": "F65",
+   "noite": "2026-10-16",
+   "titulo": "Descoberta de planos revia os mesmos alvos e levava 9 noites para cobrir os 54",
+   "sintoma": "descobrir_planos.py --limite 20 no elo da descoberta: a fatia de alvos (27 UFs × 2 setores) girava pela hora do relógio; numa noite após a outra a janela recuava só 6 alvos.",
+   "causa": "Início da fatia = (hora desde a época × 20) mód 54 (#731). O elo roda numa hora quase fixa: 24 × 20 ≡ 48 (mód 54), passo de −6 alvos por noite.",
+   "prova": [
+    "aritmética do #731: (h+24)·20 − h·20 = 480 ≡ 48 (mód 54); 54/6 = 9 noites para a cobertura completa"
+   ],
+   "correcao": "fatia_da_noite: a fatia anda 20 alvos por dia (três noites cobrem os 54); prazo próprio de 12 min no elo (prazo=12min, saude_pipeline) com salvamento parcial no SIGINT.",
+   "caso_de_teste": "descobrir_planos.py --autoteste › fatia anda por noite e cobre os 54 alvos em 3 noites",
+   "falta": null
   }
  ]
 }

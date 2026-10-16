@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #776 · Descoberta nos sítios oficiais: três noites cobrem os 54 alvos
+
+A descoberta de planos nos sítios estaduais andava 6 alvos por noite e revia os mesmos; agora a fatia anda 20 por dia e os 54 (27 UFs, saúde e defesa civil) passam em três noites. O comando ganha prazo próprio de 12 minutos e grava o que achou ao ser interrompido; alvo só conta como verificado quando a API do sítio respondeu.
+
 ## 2026-10-16 · #769 · A definição do índice tem dono, e o texto público é conferido contra ela
 
 O motor grava em `meta.json` os componentes, pesos e faixas do índice e que a antecedência está fora da nota. O portão de versão passa a ler o texto público do MARÉ Legal: antecedência como medida da nota e "pesam igual" escrito à mão reprovam. A inicial com os textos novos (#770) já passa sem exceção.

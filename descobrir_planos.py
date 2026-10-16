@@ -52,7 +52,7 @@ import urllib.parse
 import funil
 from coletores_base import (RAIZ, buscar, buscar_uma_vez, preservar_evidencia, ler, gravar,
                              log_busca, registrar_lacuna, registrar_acesso_contra_robots, robots_permite,
-                             rodar_autoteste, setor_da_url)
+                             rodar_autoteste)
 from scripts.pistas import sincronizar as sincronizar_pistas  # 05/10/2026: a fila tem UMA porta
 
 FILA = RAIZ / "data" / "pistas_descobertas.json"
@@ -132,8 +132,9 @@ def dominio_para(uf: str, setor: str) -> str:
 
 
 def consultar_wp_json(dominio: str, termo: str) -> list:
-    """Consulta /wp-json/wp/v2/media (PDFs) do domínio. Devolve [] em qualquer falha
-    (site fora do ar, não é WordPress, API desabilitada) — nunca levanta exceção.
+    """Consulta /wp-json/wp/v2/media (PDFs) do domínio. Devolve (achados, respondeu): `respondeu`
+    só quando a API devolveu a lista dela — muro, 403, timeout ou "não é WordPress" é ([], False),
+    alvo NÃO verificado (HANDOVER_FONTES 16/10, item 3). Nunca levanta exceção.
 
     14/10/2026: UMA tentativa, 15 s. Não ser WordPress é o caso comum, e a repetição de `buscar`
     (30 s + 5 s + 30 s por host mudo) levava 47–58 s por alvo: 20 alvos comiam o elo e o
@@ -144,7 +145,7 @@ def consultar_wp_json(dominio: str, termo: str) -> list:
         corpo = buscar_uma_vez(url, timeout=15)
         dados = json.loads(corpo)
         if not isinstance(dados, list):
-            return []
+            return [], False
         achados = []
         for item in dados:
             src = (item.get("source_url") or "").strip()
@@ -152,10 +153,10 @@ def consultar_wp_json(dominio: str, termo: str) -> list:
             data_pub = (item.get("date") or "").strip()
             if src.lower().endswith(".pdf"):
                 achados.append({"url": src, "titulo": titulo, "data_publicacao": data_pub})
-        return achados
+        return achados, True
     except Exception as e:  # noqa: BLE001 — tolerante por design (ver docstring)
         print(f"[aviso] {dominio}: {type(e).__name__} ({e})")
-        return []
+        return [], False
 
 
 def _hash_pista(p: dict) -> str:
@@ -191,14 +192,17 @@ def registrar(fila: dict, achados: list) -> list:
     return ineditos
 
 
-def descobrir(uf: str, setor: str, fila: dict) -> list:
+def descobrir(uf: str, setor: str, fila: dict) -> tuple:
     """Consulta um alvo (UF + setor), preserva PDFs achados como evidência, registra na fila.
     Nunca levanta — falha vira `[]` (documento_nao_lido / acesso_recusado, sem distinção
-    fina nesta primeira versão; o hash_evidencia ausente já sinaliza 'não lido' a jusante)."""
+    fina nesta primeira versão; o hash_evidencia ausente já sinaliza 'não lido' a jusante).
+    Devolve (novos, respondeu): o alvo conta como verificado só se a API respondeu a um termo."""
     dominio = dominio_para(uf, setor)
-    achados_brutos = []
+    achados_brutos, respondeu = [], False
     for termo in TERMOS_BUSCA[setor][:2]:   # 2 termos por alvo, mesma disciplina de custo dos monitores de imprensa
-        achados_brutos.extend(consultar_wp_json(dominio, termo))
+        achados, ok = consultar_wp_json(dominio, termo)
+        achados_brutos.extend(achados)
+        respondeu = respondeu or ok
         time.sleep(2.0)   # backoff: nunca mais de 1 req/2s por domínio (§11)
     achados = []
     for a in achados_brutos:
@@ -210,8 +214,20 @@ def descobrir(uf: str, setor: str, fila: dict) -> list:
         except Exception as e:  # noqa: BLE001
             item["status_leitura"] = f"acesso_recusado ({type(e).__name__})"
         achados.append(item)
-    novos = registrar(fila, achados)
-    return novos
+    return registrar(fila, achados), respondeu
+
+
+def fatia_da_noite(alvos: list, limite: int, dia: int) -> list:
+    """Os `limite` alvos desta noite. A fatia anda `limite` a cada dia: os 54 alvos (27 UFs × 2
+    setores) passam todos em três noites, e o verificado há mais tempo vem primeiro.
+
+    16/10/2026: a fatia girava por HORA desde o #731. O elo roda numa hora quase fixa, 24 h × 20
+    ≡ 48 (mód 54): a janela recuava 6 alvos por noite e cobria os 54 em 9 noites, revendo os
+    mesmos 14 por noite."""
+    if not alvos:
+        return []
+    inicio = (dia * limite) % len(alvos)
+    return (alvos[inicio:] + alvos[:inicio])[:min(limite, len(alvos))]
 
 
 def autoteste() -> int:
@@ -231,14 +247,16 @@ def autoteste() -> int:
         ])
         import unittest.mock as mock
         with mock.patch(f"{__name__}.buscar_uma_vez", return_value=fx.encode()):
-            achados = consultar_wp_json("saude.xx.gov.br", "plano")
-        return len(achados) == 1 and achados[0]["url"].endswith(".pdf")
+            achados, respondeu = consultar_wp_json("saude.xx.gov.br", "plano")
+        return respondeu and len(achados) == 1 and achados[0]["url"].endswith(".pdf")
 
     def t_wp_json_tolerante_a_falha():
         import unittest.mock as mock
         with mock.patch(f"{__name__}.buscar_uma_vez", side_effect=RuntimeError("timeout")):
             achados = consultar_wp_json("naoexiste.xx.gov.br", "plano")
-        return achados == []
+        with mock.patch(f"{__name__}.buscar_uma_vez", return_value=b"<html>muro</html>"):
+            nao_wp = consultar_wp_json("naoexiste.xx.gov.br", "plano")
+        return achados == ([], False) and nao_wp == ([], False)
 
     def t_dedup_e_trava():
         fila = {"_governanca": "x", "itens": []}
@@ -300,13 +318,19 @@ def autoteste() -> int:
                 and "https://x/pagina" in urls and "https://y/plano.pdf" in urls
                 and "https://x/doc/nota_tecnica05.pdf" in urls)
 
+    def t_fatia_da_noite():
+        alvos = list(range(54))
+        tres = [x for d in (100, 101, 102) for x in fatia_da_noite(alvos, 20, d)]
+        return set(tres) == set(alvos) and fatia_da_noite([], 20, 1) == [] and len(fatia_da_noite(alvos, 99, 3)) == 54
+
     return rodar_autoteste({
         "§186 filtro de link aceita documento e recusa navegação": t_filtro_de_link_aceita_documento_e_recusa_navegacao,
         "§186 purga tira o ruído e preserva página e canal 1": t_purga_tira_ruido_e_preserva_pagina_e_canal_1,
         "domínio conhecido (BA/saúde)": t_dominio_conhecido,
         "domínio padrão (fallback declarado)": t_dominio_padrao,
         "wp-json: extrai só PDFs, com título e data": t_wp_json_parse,
-        "wp-json: falha de rede vira lista vazia, nunca exceção": t_wp_json_tolerante_a_falha,
+        "wp-json: falha, muro ou não-WordPress = vazio e NÃO verificado": t_wp_json_tolerante_a_falha,
+        "fatia anda por noite e cobre os 54 alvos em 3 noites": t_fatia_da_noite,
         "dedup por hash + trava absoluta (campos de nascença)": t_dedup_e_trava,
         "garantia estrutural: nunca escreve nos bancos": t_trava_estrutural,
     })
@@ -474,14 +498,18 @@ def main() -> int:
             print(f"  · [{n['uf']}/{n['setor']}] {str(n.get('titulo'))[:70]} — {n['url'][:80]}")
         print("  → NENHUMA é promovível — trava absoluta (R7).")
         return 0
-    # 14/10/2026: a fatia gira por hora. A ordem fixa com --limite 20 consultava sempre os mesmos
-    # 20 alvos (saúde das 20 primeiras UFs); a defesa civil e 7 UFs nunca eram consultadas.
     alvos = [(uf, setor) for setor in setores for uf in ufs]
-    inicio = (int(time.time() // 3600) * limite) % len(alvos)
-    total_novos = 0
-    consultas = min(limite, len(alvos))
-    for uf, setor in (alvos[inicio:] + alvos[:inicio])[:consultas]:
-        total_novos += len(descobrir(uf, setor, fila))
+    total_novos = consultas = responderam = 0
+    try:
+        for uf, setor in fatia_da_noite(alvos, limite, int(time.time() // 86400)):
+            novos, respondeu = descobrir(uf, setor, fila)
+            consultas += 1
+            responderam += respondeu
+            total_novos += len(novos)
+    except KeyboardInterrupt:
+        # Prazo próprio do comando (`prazo=Nmin` no elo, saude_pipeline): o SIGINT chega aqui, e o
+        # que já foi achado é gravado em vez de perdido (salvamento parcial, item 3 de 16/10).
+        print(f"[prazo] interrompido depois de {consultas} alvo(s); gravando o que foi achado.")
 
     sincronizar_pistas("pistas_descobertas.json", fila, origem="descoberta", ler_fn=ler, gravar_fn=gravar)
     # Item B do handover da auditoria do funil (27/09/2026): a rodada conta por etapa, para que
@@ -489,14 +517,17 @@ def main() -> int:
     # Defeito 3 da auditoria: este coletor está agendado 4x ao dia e tinha UMA execução em todo o
     # log_buscas.json — rodava e não registrava o que fazia, o que o tornava invisível ao
     # instrumento pelo qual se responde "está encontrando?".
-    funil.registrar("descobrir_planos", alvos_consultados=consultas, achados_novos=total_novos,
+    funil.registrar("descobrir_planos", alvos_consultados=consultas, alvos_verificados=responderam,
+                    achados_novos=total_novos,
                     fila_acumulada=len(fila["itens"]))
     log_busca("descobrir_planos", 3, [f"{len(setores)} setor(es)"],
               "pista" if total_novos else "consultado sem achado",
               n_resultados=total_novos,
-              resultados=f"{consultas} alvo(s) consultado(s); {total_novos} achado(s) inédito(s); "
+              resultados=f"{consultas} alvo(s) consultado(s), {responderam} com resposta da API; "
+                         f"{total_novos} achado(s) inédito(s); "
                          f"fila com {len(fila['itens'])} item(ns)")
-    print(f"Descoberta via wp-json: {consultas} alvo(s) consultado(s) ({'/'.join(setores)}).")
+    print(f"Descoberta via wp-json: {consultas} alvo(s) consultado(s), {responderam} verificado(s) "
+          f"— a API respondeu ({'/'.join(setores)}).")
     if total_novos:
         print(f"[ACHADOS NOVOS] {total_novos} para o juiz automático (status pendente_confirmacao_documento):")
         for p in fila["itens"][-total_novos:]:
