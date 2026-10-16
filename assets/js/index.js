@@ -935,11 +935,12 @@ selUF.addEventListener('change', () => {
   popularLista();
   renderMinha();
 });
-document.getElementById('cidadeInput').addEventListener('focus', (e) => e.target.select());
-document.getElementById('limparCidade').addEventListener('click', () => {
-  const inp = document.getElementById('cidadeInput');
-  inp.value = ''; renderMinha(); inp.focus();
-});
+// 16/10/2026 (editoria): trocar de município sem controle extra. Clicar no campo que já tem um
+// município escolhido o esvazia sem disparar `input`, para a lista inteira do estado aparecer em
+// qualquer navegador; o cartão anterior fica (com o nome no título) até o novo nome casar.
+['focus', 'click'].forEach(ev => document.getElementById('cidadeInput').addEventListener(ev, (e) => {
+  if (nomeOficialDe(selUF.value, nrm(e.target.value))) e.target.value = '';
+}));
 document.getElementById('meuCard').addEventListener('click', (e) => {
   // 16/10/2026: o formulário está nesta página (#formulario); o cartão o preenche pela mesma função
   // que lê `?uf=&mun=&tipo=` da URL, e a âncora rola até ele. O destino antigo era outra página.
