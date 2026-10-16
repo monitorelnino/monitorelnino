@@ -1054,7 +1054,9 @@ const AREAS = [
     const alvo = el('dlVerificacaoUF');
     if (!alvo || !SUFd) return;
     const uf04 = (V04 || {}).uf || {};
-    const doc = o => (o && o.doc) ? esc(o.doc) + (o.data ? ' · ' + esc(o.data) : '') : null;
+    /* Cada linha: título · órgão · data do documento · link. O que não é título vive em `nota_interna`. */
+    const doc = o => (o && o.doc) ? [esc(o.doc), o.orgao && esc(o.orgao), o.data ? esc(o.data) : 'sem data no documento',
+      o.url && '<a href="' + esc(o.url) + '" target="_blank" rel="noopener">Abrir o documento</a>'].filter(Boolean).join(' · ') : null;
     alvo.innerHTML = UFS.map(uf => {
       const u = (SUFd.uf || {})[uf] || {};
       const inst = ((u.instrumentos || [])[0]) || {};

@@ -32,9 +32,9 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-16 · #PR · Saúde: sai o texto vazado
+## 2026-10-16 · #764 · Saúde: sai o texto vazado
 
-Saem da página de saúde a linha "Estado das fontes", a nota "Bateria estadual executada em" e a versão "v0.3" na fonte do mapa; "Esta página não relaciona casos ao El Niño" fica uma vez, no início das doenças. O contrato da página passa a reprovar esses termos, "reuso", "ainda não consultado" e "(s)".
+Saem da página de saúde "Estado das fontes", "Bateria estadual executada em" e a versão "v0.3"; "não relaciona casos ao El Niño" fica uma vez. Na verificação por estado, cada linha diz título, órgão, data do documento e link; o que não é título vai para `nota_interna`, que nenhuma página mostra (notas, pontuação inalterada). O contrato reprova os termos vazados.
 
 ## 2026-10-16 · #762 · Relógio e despachante com checkout esparso (F63)
 
