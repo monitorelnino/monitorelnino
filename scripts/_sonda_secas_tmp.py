@@ -1,19 +1,26 @@
-"""Sonda pontual (diag 16/10): roda gravar_secas_manchas do ramo edicao/2026-10-16-secas-manchas sem gravar."""
-import json, subprocess, sys, pathlib, time, collections
-subprocess.run(["git", "fetch", "-q", "origin", "edicao/2026-10-16-secas-manchas"], check=True)
-pathlib.Path("_secas_tmp.py").write_text(subprocess.run(["git", "show", "FETCH_HEAD:coletar_sinais_risco.py"],
-                                         capture_output=True, text=True, check=True).stdout, encoding="utf-8")
+"""Sonda pontual (diag 16/10): previsão municipal do INMET (rota previsao/<geocode>)."""
+import json, sys, time, urllib.request
 sys.path.insert(0, ".")
-import _secas_tmp as c
-out = {}
-c.escrever_json = lambda caminho, obj, compacto=False: out.update(obj)
-t = time.time()
-c.gravar_secas_manchas()
-print(f"tempo {time.time()-t:.0f}s", c._LIVRO_CONSULTAS[-1] if c._LIVRO_CONSULTAS else None)
-print({k: v for k, v in out.items() if k not in ("features", "_governanca")})
-for f in out.get("features", []):
-    g = f["geometry"]["coordinates"]
-    print(f["properties"], "polígonos", len(g), "anéis", sum(len(p) for p in g), "pontos", sum(len(r) for p in g for r in p))
-print("tamanho compacto", len(json.dumps(out, ensure_ascii=False, separators=(",", ":"))))
-import zipfile, io, urllib.request
-print("membros:", [n for n in zipfile.ZipFile(io.BytesIO(urllib.request.urlopen(urllib.request.Request(out["url"], headers={"User-Agent": c.CABECALHO["User-Agent"]}), timeout=120).read())).namelist()])
+from coletores_base import UA
+for geo in ("5300108", "1505650", "4314902"):
+    u = f"https://apiprevmet3.inmet.gov.br/previsao/{geo}"
+    t = time.time()
+    try:
+        with urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": UA}), timeout=60) as f:
+            c = f.read(); st = f.status; h = dict(f.headers)
+    except urllib.error.HTTPError as e:
+        c = e.read()[:300]; st = e.code; h = {}
+    except Exception as e:
+        c = str(e).encode(); st = "erro"; h = {}
+    print("\n", u, st, len(c), f"{time.time()-t:.1f}s", h.get("Cache-Control"))
+    try:
+        d = json.loads(c)
+        print(json.dumps(d, ensure_ascii=False)[:1200])
+    except Exception:
+        print(c[:300])
+st = None
+try:
+    with urllib.request.urlopen(urllib.request.Request("https://apiprevmet3.inmet.gov.br/robots.txt", headers={"User-Agent": UA}), timeout=30) as f:
+        print("robots", f.status, f.read()[:300])
+except Exception as e:
+    print("robots", e)
