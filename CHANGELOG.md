@@ -33,6 +33,10 @@ não pontuados permanecem na versão corrente.
 
 A medição do ar estava apagada havia três semanas: o elo noturno dos sinais e a rotina semanal rodavam o coletor sem repassar as chaves do OpenAQ e do INMET ao invólucro dos coletores. Os dois passam a repassá-las, e o validador de workflows reprova quem roda coletor que lê uma chave sem repassá-la.
 
+## 2026-10-16 · #792 · Monitor de riscos: abertura nova e números de agora; textos longos sem colunas
+
+A abertura do Monitor de riscos passa ao texto da editoria, em quatro parágrafos. "Situação atual" ganha painel próprio com os números de agora: oceano, probabilidade, focos de fogo, estados com seca grave, maior diferença de calor numa capital e estados com aviso de tempo severo, cada um com órgão e data. Sai o cartão dos riscos previstos. Os textos longos deixam de ser divididos em duas colunas no site inteiro.
+
 ## 2026-10-16 · #790 · Topo sem a linha "2026/2027 · Monitoramento independente…"; cidade troca sem botão
 
 Sai do topo de todas as páginas a linha "2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab" e a faixa logo abaixo dela; a informação segue no rodapé. No cartão da cidade sai o botão ×: ao clicar de novo no campo do município, a lista do estado volta inteira e o cartão anterior fica até a nova escolha (editoria, 16/10).

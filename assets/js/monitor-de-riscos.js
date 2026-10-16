@@ -923,33 +923,48 @@ function põeCat(elId, id, valores, reserva){
        orgao: f.orgao || 'NOAA/CPC', emitido: pg.emitido_em});
   }
 
-  // 5 — o Brasil: os TRÊS riscos com a mesma hierarquia (ajuste 3). Um estado com mais de um risco
-  // conta em CADA um deles, como o resto do site já conta. Ordem alfabética: chuva, fogo, seca.
-  (function brasil(){
-    const conta = {estiagem: 0, chuvas: 0, incendios: 0};
-    UFS.forEach(uf => {
-      const r = (SINAIS.uf[uf] || {}).risco_projetado; if (!r) return;
-      const comps = (r.componentes && r.componentes.length) ? r.componentes : [r.tipo];
-      comps.forEach(c => { if (c in conta) conta[c]++; });
-    });
-    const f = fonte('painel_el_nino');
-    // O número do boletim sai do documento declarado pela fonte ("Boletins nº 1 e 3 …"): o mais
-    // alto é o que sustenta a previsão em vigor. Só os números que vêm DEPOIS do "nº".
-    const trecho = /n[ºo°]\s*([\d\s,eo]+)/i.exec(String(f.documento || ''));
-    const ns = trecho ? (trecho[1].match(/\d+/g) || []) : [];
-    if (ns.length) põeCat('stBrasilRotulo', I + 'brasil.molde_rotulo',
-      {boletim: String(Math.max.apply(null, ns.map(Number)))});
-    põeCat('stBrasilChuva', I + 'brasil.molde_numero', {n: conta.chuvas});
-    põeCat('stBrasilFogo', I + 'brasil.molde_numero', {n: conta.incendios});
-    põeCat('stBrasilSeca', I + 'brasil.molde_numero', {n: conta.estiagem});
-    const pe = document.getElementById('stBrasilFonte');
-    const ponte = txtCat(I + 'brasil.ponte', null, null);
-    MonitorMapas.credito('stBrasilFonte', {fontes: [f.orgao], data: f.consultado_em});
-    if (pe && ponte) {
-      const a = document.createElement('a'); a.href = '#riscos'; a.textContent = ponte;
-      pe.append(' · ', a);
-    }
-  })();
+  // 5 a 8 — os números de agora no Brasil (16/10/2026, lote 2 da editoria), do mesmo dado dos
+  // mapas abaixo. Só descrição: valor, data e órgão. Variação só com leitura anterior gravada —
+  // fogo, seca, calor e avisos ainda não a gravam, e o cartão não a inventa.
+  const credito = (id, k) => { const f = fonte(k); MonitorMapas.credito(id, {fontes: [f.orgao], data: f.consultado_em}); };
+  const porUf = campo => UFS.map(uf => [uf, (SINAIS.uf[uf] || {})[campo]]).filter(([, v]) => v);
+
+  const fogos = porUf('fogo').filter(([, v]) => typeof v.focos_24h === 'number');
+  if (fogos.length) {
+    const total = fogos.reduce((a, [, v]) => a + v.focos_24h, 0);
+    const [ufMax, vMax] = fogos.reduce((a, b) => b[1].focos_24h > a[1].focos_24h ? b : a);
+    põeCat('stFogoValor', I + 'fogo.molde_valor', {n: total});
+    if (vMax.focos_24h > 0) põeCat('stFogoApoio', I + 'fogo.molde_apoio', {uf: ufMax, n: vMax.focos_24h});
+    credito('stFogoFonte', 'inpe_fogo');
+  }
+
+  const secas = porUf('secas').filter(([, v]) => v.categoria_mediana);
+  if (secas.length) {
+    const graves = secas.filter(([, v]) => ['S2', 'S3', 'S4'].includes(v.categoria_mediana)).length;
+    const mapa = secas.map(([, v]) => v.mapa).find(Boolean);
+    if (mapa) põeCat('stSecaRotulo', I + 'seca.molde_rotulo', {mapa: String(mapa).toLowerCase()});
+    põeCat('stSecaValor', I + 'seca.molde_valor', {n: graves});
+    credito('stSecaFonte', 'monitor_secas');
+  }
+
+  const desvios = UFS.map(uf => [uf, desvioDe(uf)]).filter(([, v]) => v != null);
+  if (desvios.length) {
+    const [uf, dv] = desvios.reduce((a, b) => b[1] > a[1] ? b : a);
+    const t = temp(uf) || {};
+    põeCat('stCalorRotulo', I + 'calor.molde_rotulo', {data: diaMes(t.data)});
+    põeCat('stCalorValor', I + 'calor.molde_valor', {valor: (dv > 0 ? '+' : '') + n1(dv)});
+    põeCat('stCalorApoio', I + 'calor.molde_apoio', {capital: t.capital || uf, tmax: n1(t.tmax), normal: n1(normalDe(uf))});
+    credito('stCalorFonte', 'inmet_previsao_capitais');
+  }
+
+  if ((fonte('inmet_avisos').status || '') === 'coletado') {
+    const avisos = porUf('avisos_inmet');
+    const comAviso = avisos.filter(([, a]) => Number(a.total || 0) > 0);
+    const perigo = comAviso.filter(([, a]) => Object.keys(a.graus || {}).some(g => /perigo/i.test(g) && !/potencial/i.test(g)));
+    põeCat('stAvisosValor', I + 'avisos.molde_valor', {n: comAviso.length});
+    põeCat('stAvisosApoio', I + 'avisos.molde_apoio', {m: perigo.length});
+    credito('stAvisosFonte', 'inmet_avisos');
+  }
 })();
 
 // 13/09/2026: cartoesCiclo/cartaoCiclo1-4 removidos — três dos quatro cartões duplicavam valores já
