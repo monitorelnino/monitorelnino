@@ -29,7 +29,7 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-16 · #PR · Focos pelo satélite de referência; avisos por UF e grau
+## 2026-10-16 · #795 · Focos pelo satélite de referência; avisos por UF e grau
 
 O elo dos sinais grava `data/focos_referencia.json`: focos do satélite de referência do INPE por dia, UF, bioma e município (IBGE), série de 400 dias com o mesmo dia do ano anterior (arquivo anual de referência), mês e 30 dias com o número de dias com dado. `alertas/vigentes.json` ganha municípios sob aviso por UF e grau. METODOLOGIA §41.8.
 

@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/10/2026 · Focos pelo satélite de referência; avisos por UF e grau</dt>
+      <dd>O elo dos sinais grava `data/focos_referencia.json`: focos do satélite de referência do INPE por dia, UF, bioma e município (IBGE), série de 400 dias com o mesmo dia do ano anterior (arquivo anual de referência), mês e 30 dias com o número de dias com dado. `alertas/vigentes.json` ganha municípios sob aviso por UF e grau. METODOLOGIA §41.8.</dd>
       <dt>16/10/2026 · Ar medido por estação: IQAr do MMA, PM2,5 do OpenAQ e da RedeAr</dt>
       <dd>O elo dos sinais grava `data/ar_medido.json`: IQAr de cada estação do MonitorAr como o órgão publica, PM2,5 do OpenAQ casado à mesma estação (≤ 300 m), PM2,5 dos sensores IPAM/RedeAr sem índice. Medição com mais de 36 h é lacuna; resposta preservada por hash. METODOLOGIA §41.7 traz as três réguas e a errata do &quot;não há índice nacional aberto&quot;. A figura vem depois.</dd>
       <dt>16/10/2026 · A chave do OpenAQ chega ao elo dos sinais (F67)</dt>
@@ -165,8 +167,6 @@
       <dd>Alerta do GitHub de 01/10: 18 páginas salvas como prova traziam chave de API de terceiro (Flickr e Google Maps) e eram servidas pelo nosso domínio, porque o deploy publica a raiz. A redação passa a ser na porta de preservação, antes do hash; o passado foi redigido e rechaveado, com o hash anterior registrado; um portão barra a volta. Em `coletores_base.py`, `scripts/remediar_segredos_evidencias.py` e `scripts/verificar_evidencia_sem_segredo.py`.</dd>
       <dt>03/10/2026 · As respostas de LAI entram como o que são</dt>
       <dd>MT e RN responderam a pedidos de acesso à informação. Afirmação de órgão sem documento não pontua: vira nota com órgão e data (textos aprovados pela editoria), e tarefa de busca dirigida. Os três decretos que MT informou com número e data entram em `atos_resposta.json`, declarando que o documento ainda não foi localizado. O detalhe da UF, na home, passa a mostrar a nota do estado. Em `scripts/incorporar_respostas_lai.py`, `data/notas_lai.json` e `ler_caixa_lai.py` (leitura semanal da caixa, à espera da credencial).</dd>
-      <dt>03/10/2026 · O tipo de evento de cada decreto, e a divergência do cartão declarada</dt>
-      <dd>Dependência do handover do blog: os atos de resposta não tinham `tipo_evento`. Ele passa a vir da COBRADE do S2iD — 275 chuva, 327 seca, 66 vendaval, 4 fogo, 257 sem família — e não da `causa`, que nos registros federais diz o canal do ato, não o evento. O handover pedia um `.cartao-destaque` que não existe no sistema de design; os contratos do blog e da imprensa registram a divergência. Em `scripts/tipo_de_evento_dos_atos.py`.</dd>
     </dl>
   </section>
 </main>
