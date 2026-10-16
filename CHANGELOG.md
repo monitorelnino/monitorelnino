@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #PR · Imprensa: páginas em cartões, perguntas em sanfona
+
+A Imprensa abre por "O que cada página responde", agora em cartões, um por página, com link; seguem o que é o MARÉ, o cálculo dos índices, as perguntas frequentes em sanfonas (a primeira de cada grupo aberta), como citar e o contato para redações. Fundo branco em tudo. Saem "Quem está mais preparado?" e "A comparação é do leitor.": o site não convida a comparar entes. Redesenho aprovado pela editoria em 15/10.
+
 ## 2026-10-15 · #PR · CLAUDE.md só com regras em vigor
 
 `CLAUDE.md` cai de 664 para 227 linhas: cada regra em uma frase, com o portão que a prova. A história e os relatos de incidente vão, sem perder linha, para `docs/HISTORICO_DE_REGIMES.md`; a marca pessoal, para `docs/MARCA_PESSOAL.md` (skill e `layout/regras.json` apontam para lá). Pedido da central de 15/10, custo de leitura por sessão.

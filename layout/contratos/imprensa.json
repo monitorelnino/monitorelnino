@@ -10,6 +10,15 @@
  "_nota_componentes": "O handover nomeia `.cartao-destaque` e pede cada grupo em `.grade-figuras--3`. Duas divergências declaradas, pelas mesmas razões dos outros contratos: (1) `.cartao-destaque` não existe no repositório — o componente de número é `.cartao-numero`; (2) número não mora na grade de FIGURAS: a regra (i) do portão de layout cobra que cartão de número esteja dentro do componente de números, e `.grade-numeros--3` dá exatamente o mesmo ritmo de três colunas que o handover quer. Grupo de seis preenche duas linhas de três.",
  "secoes": [
   {
+   "id": "paginas",
+   "h2": "O que cada página responde",
+   "tipo": "lista_simples",
+   "exige_texto": [
+    "textos da editoria sobre o que está acontecendo no ciclo"
+   ],
+   "_nota": "Um `.cartao.cartao-mapa` por página em `.grade-figuras--3`: h3 com o nome, uma frase, link “Abrir a página →” (`.cartao-a`). Não é `.figura`: não há mídia, legenda nem fonte, e o portão de figuras cobraria as três. Fundo branco, como todo cartão."
+  },
+  {
    "id": "o-que-e",
    "h2": "O que é o MARÉ",
    "tipo": "lista_simples",
@@ -27,18 +36,10 @@
    "_nota": "A frase do MARÉ Saúde traz molde gerado: enquanto os 27 estados não estiverem verificados, ela diz de quantos é a média, e some quando os 27 estiverem."
   },
   {
-   "id": "paginas",
-   "h2": "O que cada página responde",
-   "tipo": "lista_simples",
-   "exige_texto": [
-    "os textos da editoria sobre o que está acontecendo no ciclo"
-   ]
-  },
-  {
    "id": "perguntas",
    "h2": "Perguntas frequentes",
    "tipo": "lista_simples",
-   "_nota": "Quatro grupos. As cinco primeiras perguntas abrem a seção, sem subtítulo; depois, em h3: Sobre o método · Sobre as fontes · O que se pode e o que não se pode concluir · Contato. A resposta sobre a frequência traz molde gerado, lido do gatilho do publicador."
+   "_nota": "Cada pergunta é `details.acc` nativo (pergunta no summary, resposta no parágrafo), a primeira de cada grupo aberta. As perguntas iniciais abrem a seção sem subtítulo; depois, em h3: Sobre o método · Sobre as fontes · O que se pode e o que não se pode concluir · Contato. A resposta sobre a frequência traz molde gerado, lido do gatilho do publicador."
   },
   {
    "id": "citar",
@@ -61,6 +62,7 @@
   }
  ],
  "texto_proibido": [
+  "A comparação é do leitor.",
   "Backlog",
   "CC BY",
   "Corte da edição",
@@ -70,6 +72,7 @@
   "Para entender o que está vendo",
   "Perguntas de fato",
   "Perguntas de repórter",
+  "Quem está mais preparado?",
   "Sobre o MARÉ e o contato",
   "Textos desta semana",
   "Todos os textos",
@@ -85,5 +88,6 @@
  ],
  "_nota_texto_proibido": "03/10/2026 (regra 1 da editoria): nenhuma frase sobre código, base de dados ou licença de dados entra no texto público — nem para dizer que existe, nem para dizer que não existe. A metodologia se anuncia numa frase, e é só. Em 05/10 entram os títulos revogados pelos itens 7 e 7-C: título revogado volta por hábito se nada o barrar. Na revisão da editoria de 05/10 entram os títulos revogados da seção de perguntas e as expressões da pergunta retirada: nenhuma menção a financiamento, recursos próprios ou vínculos entra no site.",
  "_divergencia_do_handover": "Divergência declarada (03/10/2026): o handover pedia um `.cartao-destaque` largo para o boletim. Essa classe não existe no sistema de design — não há uma linha dela em assets/base.css —, e a hierarquia de regras põe o sistema acima do handover. O boletim usa o componente que existe para isso, `.cartao cartao--status` com `.grade-numeros--3`, que é o mesmo de todo cartão de números do site. Criar uma classe nova para um só lugar é exatamente o 'ajuste manual' que o § Design proíbe.",
- "_nota_rotina_semanal": "04/10/2026: o ponteiro 'O boletim desta semana' virou 'Textos desta semana'. O Boletim saiu com a rotina de dois textos por semana."
+ "_nota_rotina_semanal": "04/10/2026: o ponteiro 'O boletim desta semana' virou 'Textos desta semana'. O Boletim saiu com a rotina de dois textos por semana.",
+ "_nota_15_10": "15/10/2026 (redesenho B aprovado pela editoria): ordem passa a ser O que cada página responde (cartões) · O que é o MARÉ · Como os índices são calculados · Perguntas frequentes (sanfonas) · Como citar · Para redações; fundo branco em tudo. Saem “A comparação é do leitor.” e “Quem está mais preparado?”: o site nunca convida a comparar entes. Divergência: o pedido mandava alinhar o cálculo à v3.2, mas a METODOLOGIA §105 diz que a v3.2 roda em paralelo e nenhuma página a lê (`versao_indice` v3.1); o texto do cálculo fica o da v3.1, em vigor."
 }
