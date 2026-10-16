@@ -90,20 +90,6 @@ function renderContadores(){
   }
 }
 
-// 13/09/2026 (proposta de enxugamento, Manus AI): detalhamento completo das MPs (fluxo MP → órgão →
-// uso, BR × UFs, mapa geográfico) migrou para pesquisadores.html — "na página principal, no máximo
-// um aviso curto quando a MP alterar uma rota". renderMpsUf/renderRotaMPs viraram esta nota curta.
-function renderNotaMPs(){
-  const mps = (MPS && MPS.mps) || [];
-  const brl = v => 'R$ ' + (v >= 1e9 ? (v/1e9).toFixed(2).replace('.', ',') + ' bi' : (v/1e6).toFixed(1).replace('.', ',') + ' mi');
-  const el = document.getElementById('notaMPs');
-  if (!el) return;
-  if (!mps.length) { el.textContent = 'MP 1.367 (incêndios) e MP 1.384 (alimentos): sem coleta até o corte.'; return; }
-  el.innerHTML = mps.map(mp => '<strong>' + mp.numero + '</strong> (' + mp.tema + ', ' + brl(mp.valor) + ')'
-    + (mp.execucao && mp.execucao.status === 'coletado' ? ': ' + brl(mp.execucao.pago) + ' pagos até ' + esc(mp.execucao.atualizado_em) : ': execução sem coleta até o corte')).join(' · ')
-    + '. Detalhamento completo (fluxo por órgão, execução por UF) em <a href="pesquisadores.html#mps-federais">Pesquisadores</a>.';
-}
-
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
 const NEUTRA = MonitorMapas.cor('sem-dado');
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -125,7 +111,6 @@ async function __load(){
   // o dado carrega a ordem e a chave; a cor é decisão de design e vale igual em todas as figuras.
   (ROTAS.rotas || []).forEach(r => { r.cor = MonitorMapas.PALETA.rotas[r.id] || r.cor; });
   renderContadores();
-  renderNotaMPs();
   __init();
 }
 function __init(){

@@ -184,6 +184,8 @@ def _autoteste() -> int:
 def main() -> int:
     if "--autoteste" in sys.argv[1:]:
         return _autoteste()
+    if _autoteste() != 0:   # 16/10/2026: o autoteste roda antes da conferência, num comando só
+        return 1
     if not REGISTRO.exists():
         print("✗ TEMPORIZADORES: config/temporizadores.json não existe")
         return 1

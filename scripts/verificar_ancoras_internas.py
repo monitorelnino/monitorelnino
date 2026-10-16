@@ -20,8 +20,8 @@ navegador abre a página no topo e ninguém percebe. Daí o portão.
 
 O QUE ELE CONFERE
 -----------------
-Para cada `href="pagina.html#ancora"` no HTML das páginas publicadas: o arquivo existe e tem um
-elemento com aquele `id`. Âncora para a própria página (`href="#x"`) também conta — é o mesmo
+Para cada `href="pagina.html#ancora"` no HTML das páginas publicadas **e nos scripts de
+`assets/js/`** (16/10/2026): o arquivo existe e tem um elemento com aquele `id`. Âncora para a própria página (`href="#x"`) também conta — é o mesmo
 defeito dentro de um arquivo só.
 
 Uso: python3 scripts/verificar_ancoras_internas.py
@@ -76,6 +76,23 @@ def conferir() -> list:
             if ancora not in cache[destino] and ancora not in IDS_EM_TEMPO_DE_EXECUCAO:
                 falhas.append(f"{pagina.name}: aponta para '{arquivo or pagina.name}#{ancora}' e "
                               f"não existe id='{ancora}' lá")
+    # 16/10/2026: link MONTADO EM JAVASCRIPT também é link. O "Envie pelo formulário" do cartão da
+    # cidade apontou um mês para a página errada porque este portão só lia o HTML. Âncora da própria
+    # página, num script, vale para as páginas que carregam o script.
+    for js in sorted((RAIZ / "assets" / "js").glob("*.js")):
+        texto = js.read_text(encoding="utf-8")
+        quem = [p for p in PAGINAS if f"assets/js/{js.name}" in p.read_text(encoding="utf-8")]
+        for arquivo, ancora in RE_LINK.findall(texto):
+            if "${" in arquivo + ancora or "'" in arquivo + ancora or ancora.startswith(("/", "http")) or ":" in ancora:
+                continue                  # destino montado por variável: não é literal
+            destinos = quem if not arquivo else [RAIZ / arquivo]
+            if arquivo and not destinos[0].exists():
+                falhas.append(f"assets/js/{js.name}: aponta para '{arquivo}#{ancora}' e o arquivo não existe")
+                continue
+            ids = set().union(*(cache.setdefault(d, ids_de(d)) for d in destinos)) if destinos else set()
+            if ancora not in ids and ancora not in IDS_EM_TEMPO_DE_EXECUCAO:
+                falhas.append(f"assets/js/{js.name}: aponta para '{arquivo}#{ancora}' e não existe "
+                              f"id='{ancora}' em {', '.join(d.name for d in destinos) or 'página nenhuma que o carregue'}")
     return falhas
 
 
@@ -117,6 +134,12 @@ def autoteste() -> int:
             lambda: PADRAO == ["prefeituras.html", "financiamento.html"],
         "a varredura é global, não só o par":
             lambda: len(PAGINAS) > len(PADRAO),
+        "o portão lê o link montado no JS, e o literal do cartão da cidade existe":
+            lambda: ("", "formulario") in RE_LINK.findall((RAIZ / "assets" / "js" / "index.js").read_text(encoding="utf-8"))
+            and "formulario" in ids_de(RAIZ / "index.html"),
+        "âncora inexistente num script reprova":
+            lambda: (lambda t: [a for _arq, a in RE_LINK.findall(t) if a not in ids_de(RAIZ / "index.html")])(
+                'html += `<a href="#nao-existe-aqui">x</a>`') == ["nao-existe-aqui"],
     }
     return rodar_autoteste(casos)
 
