@@ -1356,6 +1356,10 @@ O arquivo diário do INPE traz a detecção de **todos** os satélites, e o mesm
 
 A API do Monitor de Secas entrega a tabela por UF (§ dos dados tabulares) e as imagens do mapa, não a geometria. O shapefile mensal está no repositório público de arquivos do Monitor, com o nome que o próprio aplicativo monta (`uploads/mapas/<mês><ano>.zip`; o de setembro de 2026 foi publicado em 16/10/2026, 15,8 MB). `data/secas_manchas.json`, escrito pelo elo dos sinais, guarda as manchas por categoria (S0 a S4, no código da fonte; outro código fica só como veio), com anéis simplificados para desenho (Douglas-Peucker, tolerância de 0,02°, cerca de 2 km) e o mês do mapa. O contorno oficial é o do arquivo original, identificado pelo hash no livro de consultas. O arquivo é baixado uma vez por mês: mês já gravado não é baixado de novo, e mês ainda não publicado cai para o anterior. A tabela por UF continua sendo a fonte dos números; a mancha é desenho.
 
+### 41.10 A consulta do município no Monitor de riscos (16/10/2026)
+
+`data/riscos_municipio/<UF>.json`, escrito pelo elo dos sinais depois dos demais arquivos dele, junta por código IBGE o que já está guardado: focos do satélite de referência em 30 dias (zero só quando a série tem os 30 dias; com menos, o campo fica vazio), avisos do INMET e alertas do CEMADEN em vigor, os três decretos de resposta mais recentes do ciclo (casados pelo nome e UF, como o registro de resposta guarda), a estação oficial de ar com IQAr vigente e o sensor com leitura mais próximos **até 50 km**, com a distância (além disso a estação mede outra cidade, e o município fica sem bloco de ar), e a capital mais próxima, com a distância. Nada é recalculado. O plano do município continua no card do município, que a consulta já lê.
+
 ## 42. O dinheiro próprio do município em defesa civil: três camadas, e a que existe para todos (24/09/2026)
 
 Peso zero nos dois índices, provado por portão e pelo teste de estresse que renomeia `data/financiamento/` inteira e confere que o índice recomputado é idêntico bit a bit.

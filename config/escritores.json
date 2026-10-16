@@ -117,6 +117,10 @@
   "data/robots_registro.json": {
    "escritor": "qualquer_elo",
    "por_que": "Todo acesso registra o host. O resolvedor une por host, acessos pela base comum e total somado (`INDICES_POR_CHAVE` → `unir_indice`), desde 14/10/2026 (F55)."
+  },
+  "data/riscos_municipio/": {
+   "escritor": "noturno_sinais.yml",
+   "por_que": "Consulta do município no Monitor de riscos (HANDOVER_MONITOR_DE_RISCOS §6g): um arquivo por UF, escrito só pelo elo dos sinais (`coletar_sinais_risco.py` sem `--municipios`), a partir dos arquivos que o mesmo elo acabou de gravar."
   }
  },
  "_regra_do_portao": "Arquivo declarado com `escritor` igual a um workflow só pode aparecer no `git add` DAQUELE workflow. Arquivo com `escritor: ninguem` não aparece em nenhum. Arquivo com `escritor: qualquer_elo` exige que o resolvedor saiba resolvê-lo ou o recuse por escrito — e o portão confere que ele está numa das classes de `scripts/unir_conflito_de_rodada.py`, ou que o `pendente` explica por quê não."
