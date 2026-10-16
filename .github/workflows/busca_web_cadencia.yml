@@ -32,15 +32,16 @@ jobs:
       nome: busca_web
       timeout_minutos: 150
       precisa_searxng: true
-      precisa_node: true     # §156: `revisar_pistas.py --preparar` aciona o juiz, que roda portões em Node
+      # 16/10/2026 (F66): a cadência roda FORA da vez da noite, em paralelo com o juiz; aqui ela só
+      # acrescenta pistas. Triar e preparar regravam campos de pistas existentes (`nivel_confianca`,
+      # `preparacao`), e dois elos regravando o mesmo campo é o que a porta recusa — o juiz perdeu
+      # o commit das 09:22 de 16/10 assim. Triagem fica na descoberta; preparação, no juiz.
       comandos: |
         monitorar_busca_web.py --tamanho 150
         monitorar_busca_web.py --tamanho 150
         monitorar_busca_web.py --tamanho 150
         monitorar_busca_web.py --tamanho 150
         monitorar_busca_web.py --tamanho 150
-        triar_confianca_pistas.py
-        revisar_pistas.py --preparar --limite 30
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}

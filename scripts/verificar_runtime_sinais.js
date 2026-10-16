@@ -10,44 +10,14 @@
  */
 const SINAIS = require("../data/sinais_risco.json");
 const MARE = require("../data/indice.json");
-const { JSDOM, VirtualConsole } = require("jsdom"); const { inlinePageJs } = require("./_inline_js");
+const { renderizar } = require("./_inline_js");
 const fs = require("fs");
 const path = require("path");
 
 const raiz = path.join(__dirname, "..");
-const html = inlinePageJs(fs.readFileSync(path.join(raiz, "monitor-de-riscos.html"), "utf-8"), raiz);
-const erros = [];
-const vc = new VirtualConsole();
-vc.on("jsdomError", e => erros.push(e.detail && e.detail.stack ? e.detail.stack.split("\n")[0] : e.message));
 
-const graficos = [];  // toda instância de Chart criada pela página
 
-const dom = new JSDOM(html, {
-  // A URL É A DA PÁGINA, de propósito: `assets/catalogo.js` descobre qual arquivo de conteúdo
-  // pedir pelo `location.pathname`, e com "/" ele pedia `conteudo/index.json` — o portão
-  // renderizava a página com o texto de RESERVA do HTML e conferia outra coisa que não a que vai
-  // ao ar. É a mesma lição que o inlinador aprendeu em 05/10/2026, no outro extremo do caminho.
-  url: "https://localhost/monitor-de-riscos.html", runScripts: "dangerously", virtualConsole: vc,
-  beforeParse(w) {
-    global.window = w; global.document = w.document; global.navigator = w.navigator;
-    w.d3 = require("d3");
-    // módulo único de mapas (o <script src> externo não é carregado pelo jsdom sem resources)
-    w.eval(fs.readFileSync(path.join(raiz, "assets", "mapas.js"), "utf-8"));
-    class Chart { constructor(ctx, cfg) { graficos.push({ ctx, cfg }); } }
-    Chart.defaults = { font: {}, color: "" };
-    w.Chart = Chart;
-    w.fetch = (rel) => {
-      const p = path.join(raiz, String(rel).replace(/^\//, "").split("?")[0]);
-      try {
-        const txt = fs.readFileSync(p, "utf-8");
-        return Promise.resolve({ ok: true, json: () => Promise.resolve(JSON.parse(txt)) });
-      } catch (e) { return Promise.resolve({ ok: false }); }
-    };
-    w.addEventListener("error", e => erros.push("onerror: " + e.message));
-    w.addEventListener("unhandledrejection", e =>
-      erros.push("unhandledrejection: " + ((e.reason && e.reason.message) || e.reason)));
-  },
-});
+const { dom, erros, graficos } = renderizar("monitor-de-riscos.html", raiz);
 
 setTimeout(() => {
   const d = dom.window.document, q = id => d.getElementById(id);

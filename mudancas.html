@@ -49,6 +49,16 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/10/2026 · Inicial: sai a legenda das barras; barras sem régua; cartão da cidade branco e com um só componente</dt>
+      <dd>Sai a legenda &quot;Barra de cima… Barra de baixo…&quot; e a linha acima dela, na inicial e na Saúde, com a função que a escrevia. A barra do MARÉ Legal perde o quadriculado de fundo (ficam as marcas 25, 50, 70); a dos decretos, sem marcas, fica mais alta. O cartão da cidade fica branco, sem o link &quot;consultar outro município&quot;; as listas federais usam o cartão da projeção, com o texto do cadastro nacional (Lei 12.340, art. 3º-A).</dd>
+      <dt>16/10/2026 · Saúde: a tabela do índice com as colunas do leitor</dt>
+      <dd>A tabela que acompanha o mapa do MARÉ Saúde passa a ter UF, nota, faixa, plano (situação e data), coordenação na saúde e ligação com o governo do estado. Saem as colunas de componente interno (&quot;cobertura sanitária 0,1 · 1 lido / 1 sem leitura&quot;, antecedência, dengue na capital, risco) e o travessão em célula vazia.</dd>
+      <dt>16/10/2026 · Uma renderização de página para os portões de jsdom (consolidação item 6)</dt>
+      <dd>`_inline_js.renderizar` passa a montar o jsdom (d3, Chart simulado com rótulos, `fetch` do disco, erros da página) para os seis verificadores de runtime e o de texto público, sempre com a URL da página: quatro deles renderizavam com `/` e o catálogo servia o texto da inicial. Na Financiamento a URL `/` fica declarada: com a certa, o catálogo sobrescreve o rótulo do cartão de atos sem data (defeito da página, pedido à janela A). Linhas .js −137.</dd>
+      <dt>16/10/2026 · Duas regras de componente passam a ser julgadas</dt>
+      <dd>O portão de conformidade passa a reprovar seção numerada (&quot;1.&quot;, &quot;II ·&quot;) e mais de uma figura larga por página; as duas regras só existiam no texto de `layout/regras.json`. Dívida declarada: 16 → 14 regras só texto.</dd>
+      <dt>16/10/2026 · Triagem e preparação de pistas com um dono só (F66)</dt>
+      <dd>O juiz de 16/10 perdeu o commit porque a busca web de cadência, fora da vez da noite, regravou o nível de confiança de pistas que a descoberta já tinha triado. Triagem fica só na descoberta e preparação só no juiz; a cadência e a rodada semanal apenas acrescentam pistas. O ensaio da noite reprova um segundo dono.</dd>
       <dt>16/10/2026 · O envio do formulário fica na inicial; sai a página Obrigado</dt>
       <dd>O formulário da inicial passa a enviar sem trocar de página: depois do envio aparece &quot;Recebido. Obrigado pela contribuição.&quot; no mesmo lugar. O texto que vivia em `obrigado.html` (a conferência automática e o que acontece com o documento) vai para o próprio formulário. `obrigado.html` sai, e endereços antigos levam ao formulário (decisão da editoria de 16/10).</dd>
       <dt>16/10/2026 · Inicial: sai a legenda das barras; barras sem régua; cartão da cidade branco e com um só componente</dt>
@@ -159,16 +169,6 @@
       <dd>Garimpo pedido pela editoria: 13 documentos de plano em domínio oficial ao juiz. Nenhum promovido, e o relatório mostrou por quê — **nove estavam atribuídos ao município errado**, pelo nome que aparecia no trecho (o plano de Celso Ramos virou pista de Salete). `municipio_do_dominio.py` resolve o host no ente dono e `corrigir_atribuicao_por_dominio.py` reatribui e devolve ao juiz. Rejulgados com o ente certo, os 9 param na etapa 2 ou 3: o plano não é o ato.</dd>
       <dt>03/10/2026 · Conformidade permanente: as regras passam a ser verificadas, em toda página</dt>
       <dd>Hierarquia das regras no alto do CLAUDE.md, `layout/regras.json` com o que é verificável, contrato para as nove páginas públicas e `scripts/verificar_conformidade.py`, bloqueante, que incorpora o portão de layout. Rotina diária sobre o site inteiro. O primeiro passe achou 40 violações reais: alvo de toque de 40 px, numeração de figura e de seção que a editoria já havia revogado, duas figuras fora do componente, gráficos sem rótulo acessível e &quot;defeso&quot; em texto público. METODOLOGIA §100.</dd>
-      <dt>02/10/2026 · Defesa civil: a cadeia do aviso ao recurso, e a Imprensa lendo as páginas</dt>
-      <dd>Emergências por estado, com a cidade na lista e as três marcas da cadeia; série do decreto ao recurso; tipo de evento do ato; as três listas federais de risco juntas; alerta com portão de 24 horas. A Imprensa passa a LER o instantâneo de cada página, com portão que compara no navegador. Corrigidos: país somado duas vezes nas respiratórias (8.534 → 4.267) e autoteste que gravava no banco. O 40199 volta ao Proteja-se. METODOLOGIA §99.</dd>
-      <dt>02/10/2026 · MARÉ Saúde: quatro canais nas 27, e os 27 no componente da inicial</dt>
-      <dd>Canal 2 fechado com duas tentativas por unidade e verificação humana registrada na falta; canal 3 com o domínio atual de AM, AP, RN e RO, e o 503 do RJ agendado para a terceira medição. Quatro canais: de 8 para **27 de 27**. O plano do Pará entra como revisado em 2026; o MS confirmado em 50. Os 27 estados passam ao componente da inicial. METODOLOGIA §98.</dd>
-      <dt>02/10/2026 · Financiamento minimalista: só o dinheiro do ciclo</dt>
-      <dd>A página passa a mostrar só dinheiro do ciclo: medidas federais e defesa civil federal. Saem as transferências gerais, a grade dos 27 quadros e a seção de casos; entram a forma de aplicação, as origens com os três valores e a defesa civil por estado, com município em lista dentro do cartão. Vocabulário fixo: desembolsado, não pago. METODOLOGIA §97.</dd>
-      <dt>02/10/2026 · Coletores do Financiamento rodados, e o frescor por arquivo</dt>
-      <dd>Todos os coletores da página rodaram hoje. `coletar_siconfi_182.py` estava morrendo com `TypeError` desde a migração do §229 — uma função local `gravar` sombreava a importada. A execução passou a coletar a modalidade de aplicação. Portão novo mede coletor pelo relógio (9 dias) e curadoria por declaração. METODOLOGIA §96.</dd>
-      <dt>02/10/2026 · Canais 3 e 4 nos 27, e F2 pela composição do ato</dt>
-      <dd>Regra mínima do canal 4 — raiz da secretaria mais diário do estado — vale para as 27, e o canal passou a ser dito na linha do log em vez de adivinhado. PA e MT registrados pelos endereços da editoria. F1 e F2 só saem de ato com dispositivo, e F2 exige o órgão na composição. Quatro canais: de 1 para 8 de 27. METODOLOGIA §95.</dd>
     </dl>
   </section>
 </main>

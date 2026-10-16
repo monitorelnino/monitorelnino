@@ -13,43 +13,14 @@
  * toda fonte não coletada precisa aparecer como lacuna declarada.
  * Uso: node scripts/verificar_runtime_sinais.js
  */
-const { JSDOM, VirtualConsole } = require("jsdom"); const { inlinePageJs } = require("./_inline_js");
+const { renderizar } = require("./_inline_js");
 const fs = require("fs");
 const path = require("path");
 
 const raiz = path.join(__dirname, "..");
-const html = inlinePageJs(fs.readFileSync(path.join(raiz, "saude.html"), "utf-8"), raiz);
-const erros = [];
-const vc = new VirtualConsole();
-vc.on("jsdomError", e => erros.push(e.detail && e.detail.stack ? e.detail.stack.split("\n")[0] : e.message));
 
-const graficos = [];  // toda instância de Chart criada pela página
 
-const dom = new JSDOM(html, {
-  url: "https://localhost/", runScripts: "dangerously", virtualConsole: vc,
-  beforeParse(w) {
-    global.window = w; global.document = w.document; global.navigator = w.navigator;
-    w.d3 = require("d3");
-    // módulo único de mapas (o <script src> externo não é carregado pelo jsdom sem resources)
-    w.eval(fs.readFileSync(path.join(raiz, "assets", "mapas.js"), "utf-8"));
-    // 02/10/2026 (item 7): a grade dos 27 passou a ser um componente compartilhado, e o jsdom não
-    // carrega <script src> externo sem `resources`. Como `mapas.js`, ele entra aqui.
-    w.eval(fs.readFileSync(path.join(raiz, "assets", "js", "grade-estados.js"), "utf-8"));
-    class Chart { constructor(ctx, cfg) { graficos.push({ ctx, cfg }); } }
-    Chart.defaults = { font: {}, color: "" };
-    w.Chart = Chart;
-    w.fetch = (rel) => {
-      const p = path.join(raiz, rel);
-      try {
-        const txt = fs.readFileSync(p, "utf-8");
-        return Promise.resolve({ ok: true, json: () => Promise.resolve(JSON.parse(txt)) });
-      } catch (e) { return Promise.resolve({ ok: false }); }
-    };
-    w.addEventListener("error", e => erros.push("onerror: " + e.message));
-    w.addEventListener("unhandledrejection", e =>
-      erros.push("unhandledrejection: " + ((e.reason && e.reason.message) || e.reason)));
-  },
-});
+const { dom, erros, graficos } = renderizar("saude.html", raiz);
 
 setTimeout(() => {
   const d = dom.window.document, q = id => d.getElementById(id);
@@ -205,6 +176,10 @@ for (const id of ["mapaMonitor", "mapaDengueUF", "mapaChikUF", "mapaCalor"]) {
     // 16/10/2026 (lote 6, bloco 3): o título identifica o objeto — "MARÉ Saúde por estado, de 0
     // a 100" —, e quem não foi verificado é dito no subtítulo; "prontidão" sai da página.
     teste("saúde: o mapa do índice tem o título do catálogo, sem \"prontidão\"", q("boxMonitor").querySelector(".figura-titulo").textContent === "MARÉ Saúde por estado, de 0 a 100" && !/prontid/i.test(d.querySelector("main").textContent));
+    // Lote 6, §2: a tabela do mapa tem as seis colunas de leitor, uma linha por UF, sem travessão.
+    const linhasMon = [...d.querySelectorAll("#tblMonitor tbody tr")];
+    teste("saúde: tabela do índice com 27 linhas de 6 colunas, sem travessão nem componente interno",
+      linhasMon.length === 27 && linhasMon.every((tr) => tr.children.length === 6 && ![...tr.children].some((td) => td.textContent.trim() === "—") && !/lido\(s\)|cobertura sanit/.test(tr.textContent)));
     teste("saúde: interpretação fixa do InfoDengue fora da figura", /InfoDengue/.test(q("interpObservado").textContent));
     // Bloco das 23h20: a série respiratória não cita mais o InfoGripe como fonte dela.
     teste("respiratórias: a fonte declarada é o SIVEP-Gripe, não o InfoGripe",
