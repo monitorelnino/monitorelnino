@@ -1346,6 +1346,12 @@ O painel do MS **não publica API**: o endereço é função interna do aplicati
 
 **Precedência.** Medição prevalece sobre modelo: o índice europeu estimado pelo CAMS sai da página quando entra a figura do ar medido, e as duas nunca aparecem no mesmo mapa nem na mesma contagem. A regra das 36 horas (§41.4) vale para cada estação e cada sensor: medição mais velha vira lacuna com a data da última leitura, nunca valor atual. Fonte que não respondeu sai com status e lista vazia, nunca com a lista da noite anterior; cada resposta é preservada por hash.
 
+### 41.8 Focos de calor: o satélite de referência como base de comparação (16/10/2026)
+
+O arquivo diário do INPE traz a detecção de **todos** os satélites, e o mesmo fogo aparece em vários deles: em 15/10/2026 foram 35.850 linhas no dia, 569 do satélite de referência (`AQUA_M-T`). Somar satélites conta o mesmo fogo mais de uma vez e muda com o número de satélites em órbita; por isso toda **comparação entre dias e entre anos** usa só o satélite de referência, que é o que o INPE usa na sua própria série histórica e o único que o arquivo anual de referência traz.
+
+`data/focos_referencia.json`, escrito pelo elo dos sinais, guarda por dia (horário GMT, como o INPE publica) a contagem por UF, por bioma e por município (código IBGE), numa série de 400 dias que cobre o mesmo dia do ano anterior; o ano anterior vem do arquivo anual de referência, lido uma vez. Mês e 30 dias são somas dos dias com arquivo, e o número de dias vai junto: dia sem arquivo fica fora da soma, nunca vira zero. O dia corrente nunca entra, porque o arquivo dele nasce vazio e enche ao longo do dia. **Terra indígena e unidade de conservação não vêm na fonte** (sondado em 16/10/2026) e não são estimadas. O mapa de pontos agregados em grade continua com todos os satélites: ele mostra onde há fogo, não compara períodos.
+
 ## 42. O dinheiro próprio do município em defesa civil: três camadas, e a que existe para todos (24/09/2026)
 
 Peso zero nos dois índices, provado por portão e pelo teste de estresse que renomeia `data/financiamento/` inteira e confere que o índice recomputado é idêntico bit a bit.
