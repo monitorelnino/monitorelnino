@@ -147,7 +147,7 @@
     if (!el) return null;
     const t = texto(id, valores);
     if (t == null || t === "") return null;
-    el.textContent = t;
+    el[el.hasAttribute("data-conteudo-html") ? "innerHTML" : "textContent"] = t;
     el.setAttribute("data-conteudo-fixado", "1");
     return t;
   }
