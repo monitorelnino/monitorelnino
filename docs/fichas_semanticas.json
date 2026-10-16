@@ -623,6 +623,38 @@
       "conclusoes_nao_permitidas": "ler ausência de acompanhamento como ausência de dengue; comparar níveis como se fossem contagem de casos",
       "funcao_narrativa": "traz o dado nacional à escala de quem lê"
     },
+    "saude.html#boxDengueTemporadas": {
+     "tipo": "duas temporadas no mesmo eixo de semanas",
+     "pergunta_que_responde": "Quantas notificações de dengue houve em cada semana da temporada que começou em junho de 2026, ao lado das mesmas semanas da temporada que começou em junho de 2023?",
+     "dimensao_da_preparacao": "o que os órgãos de saúde registram",
+     "universo": "Brasil ou estado escolhido; notificações no SINAN",
+     "unidade_de_analise": "dengue",
+     "territorio": "Brasil e cada estado",
+     "periodo": "junho de 2023 a maio de 2024 e junho de 2026 a maio de 2027",
+     "variavel_principal": "notificações de dengue por semana de primeiros sintomas",
+     "denominador": "nenhum: é contagem",
+     "fonte": "SINAN (Ministério da Saúde)",
+     "metodologia": "Semanas de junho a maio de cada temporada, alinhadas pela posição na temporada; o Brasil é a chave BR do arquivo, conferida contra a soma das 27 UFs. As últimas quatro semanas ainda recebem notificação e ficam sem valor.",
+     "conclusoes_permitidas": "comparar a mesma semana das duas temporadas; dizer o pico da temporada 2023–24",
+     "conclusoes_nao_permitidas": "atribuir a diferença ao El Niño; tratar notificação como caso confirmado; ler as últimas semanas como queda",
+     "funcao_narrativa": "mostra o calendário das duas temporadas lado a lado, sem ligar ao El Niño"
+    },
+    "saude.html#boxChikTemporadas": {
+     "tipo": "duas temporadas no mesmo eixo de semanas",
+     "pergunta_que_responde": "Quantas notificações de chikungunya houve em cada semana da temporada que começou em junho de 2026, ao lado das mesmas semanas da temporada que começou em junho de 2023?",
+     "dimensao_da_preparacao": "o que os órgãos de saúde registram",
+     "universo": "Brasil ou estado escolhido; notificações no SINAN",
+     "unidade_de_analise": "chikungunya",
+     "territorio": "Brasil e cada estado",
+     "periodo": "junho de 2023 a maio de 2024 e junho de 2026 a maio de 2027",
+     "variavel_principal": "notificações de chikungunya por semana de primeiros sintomas",
+     "denominador": "nenhum: é contagem",
+     "fonte": "SINAN (Ministério da Saúde)",
+     "metodologia": "Semanas de junho a maio de cada temporada, alinhadas pela posição na temporada; o Brasil é a chave BR do arquivo, conferida contra a soma das 27 UFs. As últimas quatro semanas ainda recebem notificação e ficam sem valor.",
+     "conclusoes_permitidas": "comparar a mesma semana das duas temporadas; dizer o pico da temporada 2023–24",
+     "conclusoes_nao_permitidas": "atribuir a diferença ao El Niño; tratar notificação como caso confirmado; ler as últimas semanas como queda",
+     "funcao_narrativa": "mostra o calendário das duas temporadas lado a lado, sem ligar ao El Niño"
+    },
     "saude.html#boxDengueSemana": {
       "tipo": "série semanal com faixa esperada para a época",
       "pergunta_que_responde": "Quantas notificações de dengue foram registradas em cada semana de 2026, e como isso se compara às mesmas semanas de 2019 a 2025?",

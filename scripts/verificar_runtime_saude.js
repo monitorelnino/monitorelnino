@@ -180,6 +180,24 @@ for (const id of ["mapaMonitor", "mapaDengueUF", "mapaChikUF", "mapaCalor"]) {
     const linhasMon = [...d.querySelectorAll("#tblMonitor tbody tr")];
     teste("saúde: tabela do índice com 27 linhas de 6 colunas, sem travessão nem componente interno",
       linhasMon.length === 27 && linhasMon.every((tr) => tr.children.length === 6 && ![...tr.children].some((td) => td.textContent.trim() === "—") && !/lido\(s\)|cobertura sanit/.test(tr.textContent)));
+    // Lote 6, §6: as temporadas desenham, dizem a frase do dado e o Brasil bate com a soma das UFs.
+    for (const [box, arq] of [["Dengue", "dengue_sinan_serie.json"], ["Chik", "chik_sinan_serie.json"]]) {
+      const S = JSON.parse(fs.readFileSync(path.join(raiz, "data", "saude_desfechos", arq), "utf8")).serie;
+      const ufs = Object.keys(S).filter((u) => u !== "BR");
+      // Semanas das duas temporadas (jun/2023–mai/2024 e jun/2026 em diante), fora as oito mais
+      // recentes com valor: nelas a UF de residência ainda está sendo atribuída e o BR fica acima
+      // da soma (medido em 16/10: chikungunya 2026-34 e 2026-35, 0,7% e 4,5%).
+      const comValor = Object.keys(S.BR).filter((k) => S.BR[k] != null).sort();
+      const recentes = new Set(comValor.slice(-8));
+      const naTemporada = (k) => (k >= "2023-22" && k <= "2024-22") || k >= "2026-22";
+      const divergentes = comValor.filter((k) => naTemporada(k) && !recentes.has(k)).filter((k) => {
+        const soma = ufs.reduce((t, u) => t + (S[u][k] || 0), 0);
+        return Math.abs(soma - S.BR[k]) > 0.005 * Math.max(1, S.BR[k]);
+      });
+      teste(`saúde: temporadas de ${box.toLowerCase()} — gráfico, frase do dado e Brasil = soma das 27 UFs (±0,5%)`,
+        !!q(`c${box}Temporadas`) && /notificações em 2026, .* no mesmo período de 2023\. Pico da temporada 2023–24/.test(q(`frase${box}Temporadas`).textContent)
+        && !q(`frase${box}Temporadas`).hidden && q(`sel${box}Temporadas`).options.length === 28 && divergentes.length === 0);
+    }
     teste("saúde: interpretação fixa do InfoDengue fora da figura", /InfoDengue/.test(q("interpObservado").textContent));
     // Bloco das 23h20: a série respiratória não cita mais o InfoGripe como fonte dela.
     teste("respiratórias: a fonte declarada é o SIVEP-Gripe, não o InfoGripe",

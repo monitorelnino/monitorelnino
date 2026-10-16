@@ -947,6 +947,86 @@ const AREAS = [
   }).catch(_erroSaude("saude:1029"));
 })();
 
+/* Lote 6, §6 (16/10/2026): temporadas de dengue e chikungunya. Cada temporada vai de junho a maio —
+ * junho é o mês em que o El Niño foi declarado em 2023 e em 2026. Comparação de calendário: o
+ * gráfico põe as duas temporadas no mesmo eixo de semanas e não diz nada sobre causa. Dado: as
+ * séries do SINAN que a página já lê (BR e as 27 UFs); nenhum coletor novo. */
+(function temporadasDasArboviroses(){
+  const el = id => document.getElementById(id);
+  const n = v => Number(v || 0).toLocaleString('pt-BR');
+  const TEMPORADAS = [2023, 2026];
+  const UFS27 = ['AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN','RO','RR','RS','SC','SE','SP','TO'];
+  /* As semanas de uma temporada: as do ano Y que começam de junho em diante e as do ano Y+1 que
+   * começam até maio, na ordem. Função pura, dado o calendário de `assets/semana.js`. */
+  const semanasDaTemporada = y => {
+    const de = Date.UTC(y, 5, 1), ate = Date.UTC(y + 1, 5, 1), fora = [];
+    for (const ano of [y, y + 1]) {
+      for (let w = 1; w <= 53; w++) {
+        const r = MonitorSemana.semanaParaDatas(ano, w);
+        if (r && r.inicio.getTime() >= de && r.inicio.getTime() < ate) fora.push([ano, w]);
+      }
+    }
+    return fora;
+  };
+  [{rotulo: 'dengue', arquivo: 'data/saude_desfechos/dengue_sinan_serie.json', id: 'Dengue'},
+   {rotulo: 'chikungunya', arquivo: 'data/saude_desfechos/chik_sinan_serie.json', id: 'Chik'}].forEach(cfg => {
+    const canvas = el('c' + cfg.id + 'Temporadas'), sel = el('sel' + cfg.id + 'Temporadas');
+    if (!canvas || !window.MonitorSemana || typeof Chart === 'undefined') return;
+    fetch(cfg.arquivo).then(r => r.ok ? r.json() : null).then(D => {
+      const serie = (D || {}).serie || {};
+      if (!serie.BR) { mostrarFrase(el('frase' + cfg.id + 'Temporadas'), 'Série de ' + cfg.rotulo + ' ainda não coletada até o corte.'); return; }
+      const [antiga, atual] = TEMPORADAS.map(semanasDaTemporada);
+      const largura = Math.max(antiga.length, atual.length);
+      const chave = ([a, w]) => a + '-' + String(w).padStart(2, '0');
+      // As últimas semanas, que ainda recebem notificação, já vêm sem valor do coletor
+      // (`se_incompletas`): ficam fora da linha, como nos semanais.
+      const valores = (onde, semanas) => semanas.map(sw => { const v = (serie[onde] || {})[chave(sw)]; return v == null ? null : v; });
+      MonitorMapas.padraoGraficos(window.Chart);
+      const rotulos = Array.from({length: largura}, (_, i) => {
+        const sw = atual[i] || antiga[i];
+        const anterior = i ? (atual[i - 1] || antiga[i - 1]) : null;
+        const mes = MonitorSemana.mesDaSemana(sw[0], sw[1]);
+        return !anterior || MonitorSemana.mesDaSemana(anterior[0], anterior[1]) !== mes ? mes : '';
+      });
+      const titulo = i => {
+        const partes = [];
+        if (atual[i]) partes.push(MonitorSemana.curta(atual[i][0], atual[i][1]) + '/' + atual[i][0]);
+        if (antiga[i]) partes.push(MonitorSemana.curta(antiga[i][0], antiga[i][1]) + '/' + antiga[i][0]);
+        return partes.join(' · ');
+      };
+      let grafico = null;
+      const desenhar = onde => {
+        const a = valores(onde, antiga), b = valores(onde, atual);
+        if (grafico) grafico.destroy();
+        grafico = new Chart(canvas, {type: 'line', data: {labels: rotulos, datasets: [
+            {label: 'junho de 2026 a maio de 2027', data: b, borderColor: MonitorMapas.PALETA.anos['2026'], borderWidth: 2.5, pointRadius: 0, spanGaps: false},
+            {label: 'junho de 2023 a maio de 2024', data: a, borderColor: MonitorMapas.PALETA.anos['2024'], borderWidth: 1.5, pointRadius: 0, spanGaps: false}]},
+          options: {animation: false, responsive: true, maintainAspectRatio: false,
+            plugins: {legend: {display: false}, tooltip: {mode: 'index', intersect: false, callbacks: {title: itens => itens && itens[0] ? titulo(itens[0].dataIndex) : ''}}},
+            scales: {x: {ticks: {autoSkip: false, maxRotation: 0}}, y: {beginAtZero: true, title: {display: true, text: 'notificações de ' + cfg.rotulo}}}}});
+        // A frase do dado: de junho até a última semana fechada, as duas temporadas no mesmo trecho.
+        const ultimo = b.reduce((u, v, i) => v != null ? i : u, -1);
+        const soma = xs => xs.slice(0, ultimo + 1).reduce((t, v) => t + (v || 0), 0);
+        const pico = a.reduce((p, v, i) => v != null && (p < 0 || v > a[p]) ? i : p, -1);
+        mostrarFrase(el('frase' + cfg.id + 'Temporadas'), ultimo < 0 || pico < 0 ? '' :
+          'De junho a ' + MonitorSemana.fimPorExtenso(atual[ultimo][0], atual[ultimo][1]) + ': ' + n(soma(b))
+          + ' notificações em 2026, ' + n(soma(a)) + ' no mesmo período de 2023. Pico da temporada 2023–24: '
+          + n(a[pico]) + ', na semana ' + semanaEmDatas(antiga[pico][0], chave(antiga[pico])) + '.');
+      };
+      if (sel && !sel.options.length) {
+        sel.innerHTML = '<option value="BR">Brasil</option>' + UFS27.map(uf => '<option value="' + uf + '">' + uf + '</option>').join('');
+        sel.addEventListener('change', () => desenhar(sel.value));
+      }
+      desenhar('BR');
+      MonitorMapas.legenda('leg' + cfg.id + 'Temporadas', [
+        {cor: MonitorMapas.PALETA.anos['2026'], rotulo: 'junho de 2026 a maio de 2027'},
+        {cor: MonitorMapas.PALETA.anos['2024'], rotulo: 'junho de 2023 a maio de 2024'}]);
+      if (cfg.id === 'Dengue') MonitorMapas.credito('boxDengueTemporadas', {fontes: ['SINAN (Ministério da Saúde)'], data: D.gerado_em});
+      else MonitorMapas.credito('boxChikTemporadas', {fontes: ['SINAN (Ministério da Saúde)'], data: D.gerado_em});
+    }).catch(_erroSaude("saude:temporadas"));
+  });
+})();
+
 
 /* ===== Cartões e figuras criados pelo contrato de layout (02/10/2026) =====
  * Um só lugar para o que o contrato acrescentou: o número do índice no topo, a lista do que foi

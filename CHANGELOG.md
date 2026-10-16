@@ -31,6 +31,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #PR · Saúde: temporadas de dengue e chikungunya, 2023–24 e 2026–27
+
+Dois gráficos novos, um por doença: as notificações semanais de junho a maio das temporadas que começaram em junho de 2023 e em junho de 2026, no mesmo eixo, com seletor de estado e a frase do dado (acumulado até a última semana fechada e pico de 2023–24). Comparação de calendário, sem relação indicada com o El Niño.
+
 ## 2026-10-16 · #PR · Saúde: calor em uma medida por lugar
 
 Sai o gráfico de barras "municípios por classe" (5,5 mil em "normal" contra dezenas nas outras classes). Fica o mapa, agora "Municípios em classe severa ou extrema de excesso de calor, por estado", e uma linha fixa diz que a classe é do Ministério da Saúde, por município, e que a temperatura prevista nas capitais está no Monitor de riscos.
