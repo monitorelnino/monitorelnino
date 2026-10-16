@@ -49,6 +49,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/10/2026 · Um verificador de texto público (consolidação item 3)</dt>
+      <dd>`verificar_texto_publico.js` absorve legendas e prosa (portão 19), semana epidemiológica, palavras por página, componente de figura, fichas semânticas, regra 0 da Imprensa, enquadramento federal, vocabulário dos scripts e o `--so-texto-proibido`: nove scripts que renderizavam as mesmas páginas (dois com a URL errada, lendo o texto de reserva) saem. Regras em `layout/regras.json`; 72 casos de mutação no autoteste. Linhas .py/.js/.yml: −842; portões 272 → 259.</dd>
       <dt>16/10/2026 · Inicial com os textos da editoria</dt>
       <dd>Inicial: título, metadescrição, introdução, abertura em quatro parágrafos (indicados pela União lidos do dado), &quot;Como ler&quot; e cartão da cidade com o texto da editoria, tudo no catálogo; formulário diz que a conferência é automática. Nome por extenso segue &quot;Monitor&quot; (correção da central, 16/10); só `CLAUDE.md:28` acompanha. Teto de palavras da inicial 950 → 1.050. ## 2026-10-16 · #PR · Cadastro Nacional: o MARÉ cobre os indicados pela União A página do MIDR (28/07/2026) publica os 2.095 municípios indicados pela União ao Cadastro Nacional do art. 3º-A — a lista que o MARÉ já lia das notas técnicas — e entra no coletor como segunda fonte. Nova seção §107 e erratas em §54, §66 e §21; o portão passa a proibir afirmar inscrição ou dever. §5.3.1 explica como o município compõe a nota.</dd>
       <dt>16/10/2026 · Todo texto público no catálogo, com portão</dt>
@@ -167,8 +169,6 @@
       <dd>Cinco cartões dinâmicos no topo, da fonte primária; a situação de cada estado com um mapa só e a ficha; cada doença com a frase do dado, a série contra a faixa esperada e o mapa por estado em casos por 100 mil habitantes. Dengue e chikungunya passam ao SINAN; o InfoDengue fica só no nível de alerta. Saem o medidor de antecipação, dois mapas de estado, a amostra no mapa e a série duplicada. Em `METODOLOGIA.md` §87.</dd>
       <dt>02/10/2026 · O publicador passa a commitar o que ele mesmo regenera</dt>
       <dd>Terceira vez da mesma família: a cadeia canônica regenera `CITATION.cff` (o `date-released` sai de meta.json) e o `git add` do publicador não o alcançava — nem `blog/`, nem `assets/`. Desde que o carimbo do corte passou a andar todo dia, o arquivo muda em toda publicação, ficava regenerado e não commitado, e o portão de derivados reprovava a própria rodada. Em `METODOLOGIA.md` §79.</dd>
-      <dt>02/10/2026 · Catálogo de desfechos: série e lacuna são coisas diferentes</dt>
-      <dd>A SRAG passou a ser coletada (28 UFs por semana, do SIVEP-Gripe) e o catálogo ainda dizia `nao_coletado` — o portão de saúde reprovou, com razão. Ao corrigir, apareceu o caso oposto: o arquivo de síndrome gripal existe em disco e guarda **lacuna declarada**, não série. O portão passa a olhar o conteúdo: arquivo com série e status diferente de `coletado` reprova; arquivo de lacuna com status `coletado` também. Em `METODOLOGIA.md` §80.</dd>
     </dl>
   </section>
 </main>

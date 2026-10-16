@@ -117,8 +117,8 @@ def autoteste() -> int:
     casos.append(("mudança nos dois aciona os dois",
                   classificar(["index.html", "recalcular_mare.py"])
                   == {"dado": True, "pagina": True}))
-    casos.append(("o próprio portão de legendas aciona os de página",
-                  classificar(["scripts/verificar_legendas.js"])["pagina"] is True))
+    casos.append(("o próprio portão de texto público aciona os de página",
+                  classificar(["scripts/verificar_texto_publico.js"])["pagina"] is True))
     casos.append(("portão de dado em .py aciona os de dado",
                   classificar(["scripts/verificar_paridade_cobertura_qd.py"])["dado"] is True))
     casos.append(("arquivo desconhecido não aciona nada além do sempre",

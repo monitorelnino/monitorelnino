@@ -269,7 +269,13 @@ jobs:
           python3 scripts/verificar_tamanho_dos_dados.py --autoteste
           # assunto: texto
           # barra_publicacao: sim
-          python3 scripts/verificar_conformidade.py --so-texto-proibido
+          # 16/10/2026 (consolidação item 3): UM verificador de texto público, uma renderização por
+          # página — jargão, refrão, vocabulário proibido (global, por página, contrato e o que os scripts
+          # escrevem), semana epidemiológica, legendas e prosa (portão 19), componente de figura, fichas
+          # semânticas, palavras por página, enquadramento federal e a regra 0 da Imprensa. Roda SEMPRE
+          # porque é regra de DADO: palavra proibida e semana chegam por dado externo, e ele barra a
+          # publicação. Regras em layout/regras.json; o autoteste (72 mutações) roda antes das páginas.
+          node scripts/verificar_texto_publico.js
           # assunto: dado
           python3 scripts/pistas.py --autoteste
           # assunto: dado
@@ -330,9 +336,6 @@ jobs:
           python3 scripts/verificar_rotulo_canal_descoberta.py
           # assunto: cor texto
           node scripts/verificar_runtime_resposta.js
-          # assunto: texto rapido
-          # barra_publicacao: sim
-          node scripts/verificar_palavras.js
           # assunto: cor rapido
           # barra_publicacao: sim
           node scripts/verificar_seguranca.js
@@ -483,43 +486,21 @@ jobs:
               echo "pagina_mudou=false" >> "$GITHUB_OUTPUT"; echo "→ nenhuma página tocada: pulando portões de texto e de navegador"
             fi
           fi
-      # 30/09/2026 (§316): os cinco portões de TEXTO saíram do bloco "sempre". Eles leem páginas,
-      # folhas e fichas — um PR que só toca `.py` de coletor não tem como afetá-los, e eles custam
-      # cerca de 100 s. Continuam bloqueantes onde podem falhar.
+      # 30/09/2026 (§316): os portões de TEXTO saíram do bloco "sempre"; 16/10/2026: o verificador
+      # único de texto público voltou para lá (regra de dado, barra a publicação) e aqui fica só o
+      # que é de PR — a forma e as rampas.
       - name: Portões de texto (só se página, estilo ou ficha mudaram)
         if: steps.diff.outputs.pagina_mudou == 'true'
         run: |
           set -e
-          # assunto: texto
-          # barra_publicacao: sim
-          node scripts/verificar_texto_publico.js
-          # assunto: texto
-          node scripts/verificar_texto_publico.js --autoteste
-          # A7-03 (12/10/2026): regras de forma (data ISO, undefined, {x}, texto interno, ponto
-          # decimal). No PR, sem barrar a publicação do dia.
+          # A7-03 (12/10/2026): regras de FORMA (data ISO, undefined, {x}, texto interno, ponto
+          # decimal) só no PR, sem barrar a publicação do dia — o mesmo verificador, com `--forma`.
           # assunto: texto
           node scripts/verificar_texto_publico.js --forma
-          # assunto: texto — regra 0 da imprensa: nada escrito à mão que dependa do dado
-          node scripts/verificar_imprensa_do_dado.js
-          # assunto: texto — a semana epidemiologica nao chega ao leitor (editoria, 07/10/2026)
-          node scripts/verificar_semana_epidemiologica.js --autoteste
-          # assunto: texto
-          node scripts/verificar_semana_epidemiologica.js
           # assunto: cor — as rampas dos mapas passam em contraste e em daltonismo
           python3 scripts/verificar_rampas_dos_mapas.py
           # assunto: cor
           python3 scripts/verificar_rampas_dos_mapas.py --autoteste
-          # assunto: texto — as quatro frases do enquadramento federal são literais, aprovadas
-          # pela editoria, e nenhuma destas listas cria dever de plano para o município.
-          python3 scripts/verificar_textos_enquadramento.py
-          # assunto: texto
-          python3 scripts/verificar_textos_enquadramento.py --autoteste
-          # assunto: cor
-          node scripts/verificar_figuras.js
-          # assunto: texto
-          node scripts/verificar_fichas_semanticas.js
-          # assunto: texto
-          node scripts/verificar_legendas.js
       # O navegador do Playwright era baixado a cada execução. O cache o guarda por versão.
       # 07/10/2026: este passo rodava SO quando a pagina mudava, e o portao da corrida do medidor
       # roda SEMPRE. Num PR que nao toca pagina -- um de documentacao, por exemplo -- o cache nao
@@ -568,11 +549,6 @@ jobs:
           # assunto: cor texto
           # 09/10/2026 (ajuste 10): figuras de contagem da Defesa civil (Chromium real).
           node scripts/verificar_figuras_de_contagem.js
-          # assunto: texto
-          # 09/10/2026 (ajuste 1): vocabulário proibido no texto que os scripts das páginas escrevem.
-          python3 scripts/verificar_vocabulario_dos_scripts.py --autoteste
-          # assunto: texto
-          python3 scripts/verificar_vocabulario_dos_scripts.py
           # assunto: dado
           # 09/10/2026 (ajuste 2): todo documento pontuado aponta para o endereço, ou declara a lacuna.
           python3 scripts/verificar_proveniencia.py --autoteste
