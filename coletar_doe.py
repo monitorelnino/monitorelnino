@@ -12,7 +12,7 @@ com sucesso no período.
 Cobertura (§15, "a verificar por UF"): `data/fontes_doe.json` declara, por UF,
 `{"adaptador": ..., "url": ..., "status": ...}`. Adaptadores: `apifront` (plataforma comum,
 busca), `dodf` (DF, busca própria), `busca_to`/`busca_ac` (busca que aponta edições) e
-`edicao_<uf>`/`edicao_apifront` (sem busca: a edição em PDF por data — CE, PB, AM, MS) e `busca_sp`
+`edicao_<uf>`/`edicao_apifront` (sem busca: a edição em PDF por data — CE, PB, AM, MS, PI) e `busca_sp`
 (API própria do DOE-SP; 16/10/2026). UF sem adaptador →
 `sem adaptador de busca`, lacuna declarada com o motivo medido (nunca inferida).
 
@@ -654,8 +654,31 @@ def edicoes_ms(buscar_fn, base=None):
     return fn
 
 
+# PI (16/10/2026, runs 38878232356 e 38879265290): o diário atual (`www.diario.pi.gov.br/doe/`) lista as
+# edições do dia pela rota que a própria tabela chama — POST `Api/listardiarios.json` com `filter_data`
+# —, suplementar incluído; dia sem edição é `"data": []`. Cada linha aponta o PDF em
+# `files/diarios/anexo/<uuid>/<arquivo>.pdf` (texto extraível, 13 páginas na sonda).
+RE_PDF_PI = re.compile(r'href="\.\./doe/(files/diarios/anexo/[^"]+\.pdf)"')
+
+
+def edicoes_pi(buscar_fn, base, enviar_fn=None):
+    raiz = base.rstrip("/")
+
+    def fn(data):
+        o = json.loads((enviar_fn or enviar)(raiz + "/Api/listardiarios.json", {"draw": "1", "start": "0", "length": "20",
+                                              "filter_numero": "", "filter_data": data},
+                                             timeout=60, origem="coletar_doe").decode("utf-8", "replace"))
+        if not isinstance(o, dict) or not isinstance(o.get("data"), list):
+            raise FormatoDaBuscaMudou("listagem do DOE-PI sem a lista 'data'")
+        achados = [(RE_PDF_PI.search(str(linha[0])), linha) for linha in o["data"] if linha]
+        if any(m is None for m, _ in achados):
+            raise FormatoDaBuscaMudou("linha da listagem do DOE-PI sem o endereço do PDF")
+        return [{"edicao": " ".join(str(linha[1]).split()), "url": f"{raiz}/{m.group(1)}"} for m, linha in achados]
+    return fn
+
+
 EDICOES_POR_DATA = {"edicao_ce": edicoes_ce, "edicao_pb": edicoes_pb,
-                    "edicao_apifront": edicoes_apifront, "edicao_ms": edicoes_ms}
+                    "edicao_apifront": edicoes_apifront, "edicao_ms": edicoes_ms, "edicao_pi": edicoes_pi}
 
 
 def itens_por_edicao(uf: str, desde: str, ate: str, edicoes_fn, lidas: dict, termos=None,
@@ -982,6 +1005,14 @@ def _t_edicao_por_data() -> bool:
 
 
 # Recorte REAL da listagem do DOE-MS, 15/10/2026 (run 38820165075).
+# Recorte REAL da listagem do DOE-PI de 14/10/2026 (run 38879265290): edição e suplementar.
+FIXTURE_LISTAGEM_PI = (b'{"draw":1,"recordsTotal":2,"recordsFiltered":2,"data":[["<a href=\\"..\\/doe\\/files\\/diarios\\/anexo'
+                       b'\\/d714cae0-47e5-4560-a789-ac9d636518ef\\/e2052f2e-6ed8-4bcb-b399-5f48c77567b3.pdf\\" target=\\"_blank\\">'
+                       b'<\\/a>","197\\/2026  SUPLEMENTAR","14\\/10\\/2026","14\\/10\\/2026 21:34:53"],["<a href=\\"..\\/doe'
+                       b'\\/files\\/diarios\\/anexo\\/5cc561ff-8ff1-4435-a0a6-d8b59c3c6249\\/0d2588a1-8ba2-4926-a4f8-c2a257a45015.pdf'
+                       b'\\" target=\\"_blank\\"><\\/a>","197\\/2026  ","14\\/10\\/2026","14\\/10\\/2026 18:01:55"]]}')
+
+
 FIXTURE_LISTAGEM_MS = """<a href="https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/10/08/DO12302_08_10_2026.pdf">
 <a href="https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/10/08/DO12302_08_10_2026_SUP_1.pdf">
 <a href="https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/10/13/DO12304_13_10_2026.pdf">
@@ -1240,6 +1271,15 @@ def autoteste() -> int:
                      and r[1] == {"a": 1, "b": 1})(
                 itens_sp("SP", "2026-10-01", "2026-10-15", termos=["a", "b"], dormir=lambda s: None,
                          buscar_fn=lambda u, **k: FIXTURE_PUBLICACAO_SP if "/publications/" in u else FIXTURE_BUSCA_SP)),
+        "DOE-PI: a listagem do dia dá edição e suplementar com o PDF; dia sem edição é vazio; linha sem PDF LEVANTA":
+            lambda: (edicoes_pi(None, "https://www.diario.pi.gov.br/doe/", lambda u, d, **k: FIXTURE_LISTAGEM_PI)("2026-10-14") == [
+                         {"edicao": "197/2026 SUPLEMENTAR", "url": "https://www.diario.pi.gov.br/doe/files/diarios/anexo/"
+                          "d714cae0-47e5-4560-a789-ac9d636518ef/e2052f2e-6ed8-4bcb-b399-5f48c77567b3.pdf"},
+                         {"edicao": "197/2026", "url": "https://www.diario.pi.gov.br/doe/files/diarios/anexo/"
+                          "5cc561ff-8ff1-4435-a0a6-d8b59c3c6249/0d2588a1-8ba2-4926-a4f8-c2a257a45015.pdf"}]
+                     and edicoes_pi(None, "https://x/doe", lambda u, d, **k: b'{"draw":1,"data":[]}')("2026-10-11") == []
+                     and _levanta(lambda: edicoes_pi(None, "https://x/doe", lambda u, d, **k: b'{"data":[["sem link","1"]]}')("2026-10-14"), FormatoDaBuscaMudou)
+                     and _levanta(lambda: edicoes_pi(None, "https://x/doe", lambda u, d, **k: b'{"erro":1}')("2026-10-14"), FormatoDaBuscaMudou)),
         "DOE-PB: o endereço da edição é o padrão do canal 2, preenchido pela data":
             lambda: edicoes_pb(None)("2026-10-14") == [{"edicao": None, "url":
                 "https://auniao.pb.gov.br/servicos/doe/2026/outubro/diario-oficial-14-10-2026-portal.pdf"}],
