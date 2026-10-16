@@ -105,6 +105,8 @@ def autoteste() -> int:
 def main() -> int:
     if "--autoteste" in sys.argv:
         return autoteste()
+    if autoteste() != 0:   # 16/10/2026: o autoteste roda antes da conferência, num comando só
+        return 1
     ruins = problemas(ATUALIZAR.read_text(encoding="utf-8"))
     if ruins:
         print("✗ ORDEM DO CARIMBO:")

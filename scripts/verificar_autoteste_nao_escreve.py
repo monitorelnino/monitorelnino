@@ -146,6 +146,8 @@ def _autoteste() -> int:
 def main() -> int:
     if "--autoteste" in sys.argv:
         return _autoteste()
+    if _autoteste() != 0:   # 16/10/2026: o autoteste roda antes da conferência, num comando só
+        return 1
     ruins = []
     for coletor in COLETORES:
         antes = resumo(BANCO)

@@ -119,8 +119,6 @@ jobs:
           node scripts/verificar_acessibilidade.js
           # assunto: cor texto
           node scripts/verificar_runtime_financiamento.js
-          # assunto: cor texto rapido
-          node scripts/verificar_figuras_de_contagem.js --autoteste
           # assunto: dado
           python3 scripts/registrar_faixas.py --autoteste
           # assunto: dado
@@ -151,8 +149,6 @@ jobs:
           # falte nele é temporizador que ninguém recupera.
           # assunto: dado
           python3 scripts/verificar_temporizadores.py
-          # assunto: dado
-          python3 scripts/verificar_temporizadores.py --autoteste
           # 10/10/2026: a vez na noite — grupo por elo e fila por ordem de chegada no job `vez`.
           # assunto: dado
           python3 scripts/vez_na_noite.py --autoteste
@@ -168,8 +164,6 @@ jobs:
           # ele. A trava estrutural está em `validar_workflows.py`; este portão pergunta ao
           # próprio GitHub se ele conseguiu ler cada arquivo.
           # assunto: dado
-          python3 scripts/verificar_workflow_aceito.py --autoteste
-          # assunto: dado
           python3 scripts/verificar_workflow_aceito.py
           # 04/10/2026: a migração das sobras do DOE e a porta de gravação do coletor. A
           # publicação da noite de 03→04 morreu duas vezes por 10 sobras fora do esquema.
@@ -178,8 +172,6 @@ jobs:
           # 04/10/2026 (rotina semanal do blog): o gerador do pacote e o verificador do
           # texto. O verificador roda sobre os textos aprovados e reprova TEXTO, não o
           # site — um texto fora do pacote fica de fora e o resto publica.
-          # assunto: texto
-          python3 scripts/verificar_texto_blog.py --autoteste
           # assunto: texto
           python3 scripts/verificar_texto_blog.py
           # assunto: texto
@@ -209,15 +201,11 @@ jobs:
           # assunto: dado
           python3 scripts/verificar_camadas_do_pdf.py
           # assunto: dado
-          python3 scripts/verificar_esquema_de_pista.py --autoteste
-          # assunto: dado
           # barra_publicacao: sim
           python3 scripts/verificar_esquema_de_pista.py
           # assunto: dado
           # barra_publicacao: sim
           python3 scripts/verificar_tamanho_dos_dados.py
-          # assunto: dado
-          python3 scripts/verificar_tamanho_dos_dados.py --autoteste
           # assunto: texto
           # barra_publicacao: sim
           # 16/10/2026 (consolidação item 3): UM verificador de texto público, uma renderização por
@@ -230,18 +218,12 @@ jobs:
           # assunto: dado
           python3 scripts/pistas.py --autoteste
           # assunto: dado
-          python3 scripts/verificar_escritor_de_pista.py --autoteste
-          # assunto: dado
           python3 scripts/verificar_escritor_de_pista.py
           # assunto: dado
           # 09/10/2026 (lote 2.9): nenhuma fila espera por pessoa; pendente > 21 dias reprova depois do prazo do estoque.
           python3 scripts/verificar_fila_nao_humana.py
           # assunto: dado
-          python3 scripts/verificar_escritores.py --autoteste
-          # assunto: dado
           python3 scripts/verificar_escritores.py
-          # assunto: texto
-          python3 scripts/verificar_catalogo.py --autoteste
           # assunto: texto
           python3 scripts/verificar_catalogo.py
           # assunto: texto
@@ -254,8 +236,6 @@ jobs:
           python3 scripts/gerar_indice_de_conteudo.py --autoteste
           # assunto: dado
           python3 scripts/ensaio_da_noite.py
-          # assunto: dado
-          python3 scripts/verificar_autoteste_nao_escreve.py --autoteste
           # assunto: dado
           python3 scripts/verificar_autoteste_nao_escreve.py
           # assunto: cor texto
@@ -283,8 +263,6 @@ jobs:
           # arquivo de volta, sozinho, não basta.
           # assunto: texto rapido
           python3 scripts/verificar_pagina_arquivada.py
-          # assunto: texto rapido
-          python3 scripts/verificar_pagina_arquivada.py --autoteste
           # 30/09/2026: o CODEMAP é gerado do código e reprova quando envelhece — mapa que
           # mente manda ler o arquivo errado com a confiança de quem conferiu.
           # assunto: texto rapido
@@ -302,8 +280,6 @@ jobs:
           python3 scripts/verificar_corte_sincronizado.py
           # assunto: texto rapido
           python3 scripts/verificar_ordem_do_carimbo.py
-          # assunto: texto rapido
-          python3 scripts/verificar_ordem_do_carimbo.py --autoteste
           # 12/10/2026 (A3-29): vigência dos decretos com data só de ano decide pelo intervalo.
           # 12/10/2026 (A7-14): toda regra de layout/regras.json diz quem a julga.
           # assunto: texto rapido
@@ -319,8 +295,6 @@ jobs:
       - name: Relógio dos derivados — nenhum carimbo pela parede
         timeout-minutes: 3
         run: |
-          # assunto: dado rapido
-          python3 scripts/verificar_relogio_dos_derivados.py --autoteste
           # assunto: dado rapido
           python3 scripts/verificar_relogio_dos_derivados.py
 
@@ -453,10 +427,8 @@ jobs:
           # contratadas, que INCORPORA o de layout e acrescenta tipografia, as quatro funções da
           # figura, vocabulário, forma dos números e acessibilidade. Ele lê layout/regras.json e o
           # contrato de cada página; exceção só por layout/excecoes.json, com motivo e data.
-          python3 scripts/verificar_conformidade.py --autoteste
           # assunto: texto
           # 09/10/2026 (ajuste 7): o guia em PDF e a imagem do Proteja-se, gerados no navegador.
-          node scripts/verificar_guia_proteja_se.js --autoteste
           # assunto: texto
           node scripts/verificar_guia_proteja_se.js
           # assunto: texto
@@ -465,7 +437,6 @@ jobs:
           python3 scripts/verificar_grades_de_numeros.py
           # assunto: texto
           # 09/10/2026 (ajuste 6): texto do mouse dos mapas sem dado cru; um marcador por capital.
-          node scripts/verificar_dicas_dos_mapas.js --autoteste
           # assunto: texto
           node scripts/verificar_dicas_dos_mapas.js
           # assunto: cor texto

@@ -338,6 +338,8 @@ def main() -> int:
     argv = sys.argv[1:]
     if "--autoteste" in argv:
         return _autoteste()
+    if _autoteste() != 0:   # 16/10/2026: o autoteste roda antes da conferência, num comando só
+        return 1
     if "--texto" in argv:
         alvos = [argv[argv.index("--texto") + 1]]
     else:

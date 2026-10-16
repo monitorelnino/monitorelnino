@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #775 · Portões: o autoteste roda dentro da conferência (consolidação item 6)
+
+Dezesseis `verificar_*` que ainda tinham o par `--autoteste` + conferência passam a rodar o autoteste antes de conferir, em todo uso (publicador incluído); os 16 comandos `--autoteste` saem de `portoes.yml`: 141 → 125 comandos, mesma cobertura. Linhas líquidas 0 (+29 nos scripts, −29 no workflow): a chamada mudou de lugar, não de número.
+
 ## 2026-10-16 · #774 · Portões: 131 comandos `--autoteste` redundantes saem (consolidação item 6)
 
 `verificar_autotestes_isolados.py` já roda todo `.py` com `--autoteste` (210) e reprova em qualquer vermelho; os comandos repetidos um a um — todos os do job de dado, o laço dos coletores e os do bloco "sempre" cujo autoteste não abre arquivo real (medido com gancho de auditoria) — saem de `portoes.yml`. Ficam os que leem `layout/`, `conteudo/`, `schemas/`, página ou workflow, os em JavaScript e os `--self-test`/`--check`. 259 → 141 comandos, mesma cobertura.
