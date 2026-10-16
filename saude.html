@@ -185,25 +185,7 @@
         <details class="figura-dados" data-alternativa="dados"><summary data-conteudo="saude.observado.dengue_uf.resumo">Ver em lista</summary>
           <dl class="dl-dados" id="dlDengueUF"></dl>
         </details>
-      </figure>      <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxDengueMunicipios">
-        <p class="cartao-mapa-familia" data-conteudo="saude.observado.dengue_municipios.familia">Dengue</p>
-        <p class="cartao-mapa-boletim" id="linhaDengueMunicipios"></p>
-        <h3 class="figura-titulo" data-conteudo="saude.observado.dengue_municipios.titulo">Dengue na sua cidade</h3>
-        <p class="figura-sub" data-conteudo="saude.observado.dengue_municipios.legenda">Nível de alerta do InfoDengue na última semana consolidada · cidade não lida pelo MARÉ na semana aparece como não lida</p>
-        <div class="figura-midia">
-          <div class="busca-mun" id="buscaDengueMunicipios">
-            <label for="ufDengueMunicipios">Estado</label>
-            <select id="ufDengueMunicipios"><option value="">Escolha o estado…</option></select>
-            <label for="nomeDengueMunicipios">Município</label>
-            <input id="nomeDengueMunicipios" type="text" list="listaDengueMunicipios" autocomplete="off"
-                   spellcheck="false" placeholder="Digite o nome da cidade" disabled>
-            <datalist id="listaDengueMunicipios"></datalist>
-            <p class="busca-mun-conta" role="status" aria-live="polite" id="contaDengueMunicipios"></p>
-          </div>
-          <div id="resultadoDengueMunicipios" class="card-note" hidden></div>
-        </div>
-        <div class="map-legend" id="legDengueMunicipios"></div>
-      </figure>
+      </figure>      
     </div>
     <h3 class="u-mt-4" data-conteudo="saude.observado.dengue_municipios.titulo_2">Chikungunya</h3>
     <p class="note" id="fraseChik" hidden></p>
@@ -234,25 +216,7 @@
         <details class="figura-dados" data-alternativa="dados"><summary data-conteudo="saude.observado.chik_uf.resumo">Ver em lista</summary>
           <dl class="dl-dados" id="dlChikUF"></dl>
         </details>
-      </figure>      <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxChikMunicipios">
-        <p class="cartao-mapa-familia" data-conteudo="saude.observado.chik_municipios.familia">Chikungunya</p>
-        <p class="cartao-mapa-boletim" id="linhaChikMunicipios"></p>
-        <h3 class="figura-titulo" data-conteudo="saude.observado.chik_municipios.titulo">Chikungunya na sua cidade</h3>
-        <p class="figura-sub" data-conteudo="saude.observado.chik_municipios.legenda">Nível de alerta do InfoDengue na última semana consolidada · cidade não lida pelo MARÉ na semana aparece como não lida</p>
-        <div class="figura-midia">
-          <div class="busca-mun" id="buscaChikMunicipios">
-            <label for="ufChikMunicipios">Estado</label>
-            <select id="ufChikMunicipios"><option value="">Escolha o estado…</option></select>
-            <label for="nomeChikMunicipios">Município</label>
-            <input id="nomeChikMunicipios" type="text" list="listaChikMunicipios" autocomplete="off"
-                   spellcheck="false" placeholder="Digite o nome da cidade" disabled>
-            <datalist id="listaChikMunicipios"></datalist>
-            <p class="busca-mun-conta" role="status" aria-live="polite" id="contaChikMunicipios"></p>
-          </div>
-          <div id="resultadoChikMunicipios" class="card-note" hidden></div>
-        </div>
-        <div class="map-legend" id="legChikMunicipios"></div>
-      </figure>
+      </figure>      
     </div>
     <h3 class="u-mt-4" data-conteudo="saude.observado.chik_municipios.titulo_2">Respiratórias</h3>
     <p class="note" id="fraseResp" hidden></p>
@@ -275,13 +239,22 @@
           <dl class="dl-dados" id="dlSragUF"></dl>
         </details>
       </figure>
-<figure class="figura figura--grafico cartao-mapa r-chuva" id="boxSG">
-        <p class="cartao-mapa-familia" data-conteudo="saude.observado.sg.familia">Síndrome gripal</p>
-        <p class="cartao-mapa-boletim" id="linhaSG"></p>
-        <h3 class="figura-titulo" data-conteudo="saude.observado.sg.titulo">Síndrome gripal por semana · Brasil, sobre a faixa esperada para a época</h3>
-        <p class="figura-sub" data-conteudo="saude.observado.sg.legenda">Semanas de 2026, sem as 4 últimas ainda não consolidadas · nº de casos</p>
-        <div class="figura-midia canvas-wrap"><canvas id="cSG" aria-label="Casos de síndrome gripal por semana no Brasil, com a faixa habitual para a época do ano"></canvas><svg id="svgSGLacuna" viewBox="0 0 900 220" role="img" aria-label="Série ainda não coletada — lacuna declarada" hidden><text id="txtSGLacuna1" x="450" y="100" text-anchor="middle" font-size="15"></text><text id="txtSGLacuna2" x="450" y="126" text-anchor="middle" font-size="12.5"></text></svg></div>
-        <div class="map-legend" id="legSG"></div>
+<figure class="figura figura--tabela cartao-mapa r-chuva" id="boxSaudeCidade">
+        <p class="cartao-mapa-familia" data-conteudo="saude.observado.cidade.familia">Na sua cidade</p>
+        <h3 class="figura-titulo" data-conteudo="saude.observado.cidade.titulo">Saúde na sua cidade</h3>
+        <p class="figura-sub" data-conteudo="saude.observado.cidade.legenda">Dengue e chikungunya: nível de alerta do InfoDengue na última semana com dado · calor: classe do Painel do MS na consulta mais recente</p>
+        <div class="figura-midia">
+          <div class="busca-mun" id="buscaSaudeCidade">
+            <label for="ufSaudeCidade">Estado</label>
+            <select id="ufSaudeCidade"><option value="">Escolha o estado…</option></select>
+            <label for="nomeSaudeCidade">Município</label>
+            <input id="nomeSaudeCidade" type="text" list="listaSaudeCidade" autocomplete="off"
+                   spellcheck="false" placeholder="Digite o nome da cidade" disabled>
+            <datalist id="listaSaudeCidade"></datalist>
+            <p class="busca-mun-conta" role="status" aria-live="polite" id="contaSaudeCidade"></p>
+          </div>
+          <div id="resultadoSaudeCidade" class="card-note" hidden></div>
+        </div>
       </figure>    </div>
     <h3 class="u-mt-4" data-conteudo="saude.observado.sg.titulo_2">Calor</h3>
     <p class="note" id="fraseCalor" hidden></p>
@@ -297,25 +270,7 @@
         <details class="figura-dados" data-alternativa="dados"><summary data-conteudo="saude.observado.calor.resumo">Ver em lista</summary>
           <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblCalor"><thead><tr><th>UF</th><th>Normal</th><th>Baixo</th><th>Severo</th><th>Extremo</th><th>Lidos</th></tr></thead><tbody></tbody></table></div>
         </details>
-      </figure>      <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxCalorMunicipios">
-        <p class="cartao-mapa-familia" data-conteudo="saude.observado.calor_municipios.familia">Calor</p>
-        <p class="cartao-mapa-boletim" id="linhaCalorMunicipios"></p>
-        <h3 class="figura-titulo" data-conteudo="saude.observado.calor_municipios.titulo">Calor na sua cidade</h3>
-        <p class="figura-sub" data-conteudo="saude.observado.calor_municipios.legenda">Classe de excesso de calor do município na consulta mais recente · cidade não lida aparece como não lida</p>
-        <div class="figura-midia">
-          <div class="busca-mun" id="buscaCalorMunicipios">
-            <label for="ufCalorMunicipios">Estado</label>
-            <select id="ufCalorMunicipios"><option value="">Escolha o estado…</option></select>
-            <label for="nomeCalorMunicipios">Município</label>
-            <input id="nomeCalorMunicipios" type="text" list="listaCalorMunicipios" autocomplete="off"
-                   spellcheck="false" placeholder="Digite o nome da cidade" disabled>
-            <datalist id="listaCalorMunicipios"></datalist>
-            <p class="busca-mun-conta" role="status" aria-live="polite" id="contaCalorMunicipios"></p>
-          </div>
-          <div id="resultadoCalorMunicipios" class="card-note" hidden></div>
-        </div>
-        <div class="map-legend" id="legCalorMunicipios"></div>
-      </figure>
+      </figure>      
     </div>
     <p class="note u-mb-0" id="interpObservado" data-conteudo="saude.observado.interp_observado.nota">Nível de alerta: estimativa do InfoDengue (Fiocruz/FGV); as últimas semanas ainda recebem notificações.</p>
   </section>
@@ -336,7 +291,7 @@
 </div>
 
 <script src="assets/colunas.js?v=3669e58d" defer></script>
-<script src="assets/js/grade-estados.js?v=f8d4b27a" defer></script><script src="assets/js/saude.js?v=d2628e38" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
+<script src="assets/js/grade-estados.js?v=f8d4b27a" defer></script><script src="assets/js/saude.js?v=fdb4be5a" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

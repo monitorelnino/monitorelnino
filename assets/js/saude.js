@@ -1201,9 +1201,9 @@ const AREAS = [
     }
   }).catch(_erroSaude("saude:1228"));
 
-  /* 6 · As três buscas por município. Mesma trava nas três: cidade fora do que a fonte cobre
-   * aparece como NÃO ACOMPANHADA, nunca como zero — e a lista oferecida é a do IBGE inteira, para
-   * que a busca possa dizer que a cidade existe e não é coberta. */
+  /* 6 · A busca por município ("Saúde na sua cidade"). Cidade fora do que a fonte cobre aparece
+   * como NÃO LIDA, nunca como zero — e a lista oferecida é a do IBGE inteira, para que a busca
+   * possa dizer que a cidade existe e não foi lida. */
   function buscaPorMunicipio(sufixo, carregar, responder, contar, fontes) {
     const sel = el('uf' + sufixo), ent = el('nome' + sufixo), lista = el('lista' + sufixo),
           conta = el('conta' + sufixo), saida = el('resultado' + sufixo);
@@ -1227,9 +1227,7 @@ const AREAS = [
        * invisível para quem lê o código também. */
       if (window.MonitorMapas && fontes) {
         const quando = (base && (base.gerado_em || base.data)) || null;
-        if (sufixo === 'DengueMunicipios') MonitorMapas.credito('boxDengueMunicipios', {fontes: fontes, data: quando});
-        if (sufixo === 'ChikMunicipios') MonitorMapas.credito('boxChikMunicipios', {fontes: fontes, data: quando});
-        if (sufixo === 'CalorMunicipios') MonitorMapas.credito('boxCalorMunicipios', {fontes: fontes, data: quando});
+        if (sufixo === 'SaudeCidade') MonitorMapas.credito('boxSaudeCidade', {fontes: fontes, data: quando});
       }
       sel.addEventListener('change', () => {
         lista.innerHTML = (porUF[sel.value] || []).slice().sort((a, b) => a.localeCompare(b, 'pt-BR'))
@@ -1252,39 +1250,31 @@ const AREAS = [
 
   const NIVEL = {1: 'nível 1 (baixa atividade)', 2: 'nível 2 (atenção)', 3: 'nível 3 (alerta)',
                  4: 'nível 4 (emergência)'};
-  const respostaAlerta = (base, cod) => {
-    const m = base && base.municipios && base.municipios[cod];
-    if (!m) return '<p class="u-mb-0">Este município não foi lido pelo MARÉ nesta semana.</p>';
-    if (m.nivel_ultima_se == null) return '<p class="u-mb-0">Sem semana consolidada até o corte.</p>';
-    return '<p class="u-mb-0">' + esc(NIVEL[m.nivel_ultima_se] || ('nível ' + m.nivel_ultima_se))
-      + ' na semana ' + esc(m.ultima_se || '—') + '.</p>';
-  };
-  /* Conta só chaves que são município da referência IBGE: a malha do painel de calor traz
-   * 4300001 e 4300002 (Lagoa Mirim e Lagoa dos Patos), que têm código mas não são município. */
-  const contarMunicipios = (base, ref) => {
-    const codigos = new Set(ref.map(m => String(m.codigo_ibge).padStart(7, '0')));
-    return Object.keys(base.municipios).filter(k => codigos.has(String(k).padStart(7, '0'))).length;
-  };
-  const contarAlerta = base => ((base && base.municipios) ? '' : 'Série sem coleta até o corte.');
 
-  buscaPorMunicipio('DengueMunicipios',
-    () => fetch('data/saude_desfechos/serie_painel.json').then(r => r.ok ? r.json() : null),
-    respostaAlerta, contarAlerta, ['InfoDengue (Fiocruz/FGV)']);
-  buscaPorMunicipio('ChikMunicipios',
-    () => fetch('data/saude_desfechos/chik_serie_painel.json').then(r => r.ok ? r.json() : null),
-    respostaAlerta, contarAlerta, ['InfoDengue (Fiocruz/FGV)']);
-  buscaPorMunicipio('CalorMunicipios',
-    () => fetch('data/saude_sinais.json').then(r => r.ok ? r.json() : null).then(SS => (SS || {}).calor_excesso || {data: (((SS || {}).fontes || {}).painel_calor_ms || {}).ultima_coleta_ok}),
-    (base, cod) => {
-      const m = base && base.municipios && base.municipios[cod];
-      if (!m) return '<p class="u-mb-0">Município não lido na consulta mais recente.</p>';
-      const classe = m.classe || m.nivel || m;
-      return '<p class="u-mb-0">Classe ' + esc(String(classe)) + ' na consulta de ' + esc(MonitorMapas.dataBR(base.data) || base.data || '—') + '.</p>';
-    },
-    (base, ref) => (base && base.municipios)
-      ? contarMunicipios(base, ref).toLocaleString('pt-BR') + ' municípios lidos na consulta mais recente'
-      : (base && base.data ? 'Painel sem leitura desde a coleta de ' + base.data + '.' : 'Painel sem coleta até o corte.'),
-    ['Painel Nacional de Excesso de Calor (Ministério da Saúde)']);
+  /* Lote 6, bloco 4 (16/10/2026): um cartão só, "Saúde na sua cidade", no lugar das três buscas
+   * separadas — o leitor escolhe a cidade uma vez e lê dengue, chikungunya e calor juntos. */
+  const respostaCalor = (base, cod) => {
+    const m = base && base.municipios && base.municipios[cod];
+    if (!m) return 'não lido na consulta mais recente do Painel de Excesso de Calor';
+    return 'classe ' + esc(String(m.classe || m.nivel || m)) + ' na consulta de ' + esc(MonitorMapas.dataBR(base.data) || base.data || 'data não informada');
+  };
+  const linhaAlerta = (base, cod) => {
+    const m = base && base.municipios && base.municipios[cod];
+    if (!m) return 'este município não foi lido pelo MARÉ nesta semana';
+    if (m.nivel_ultima_se == null) return 'sem semana com dado até o corte';
+    return esc(NIVEL[m.nivel_ultima_se] || ('nível ' + m.nivel_ultima_se)) + ' na semana '
+      + esc(semanaEmDatas(String(m.ultima_se || '').split('-')[0], m.ultima_se) || 'sem data');
+  };
+  buscaPorMunicipio('SaudeCidade',
+    () => Promise.all([
+      fetch('data/saude_desfechos/serie_painel.json').then(r => r.ok ? r.json() : null),
+      fetch('data/saude_desfechos/chik_serie_painel.json').then(r => r.ok ? r.json() : null),
+      fetch('data/saude_sinais.json').then(r => r.ok ? r.json() : null).then(SS => (SS || {}).calor_excesso || null),
+    ]).then(([dengue, chik, calor]) => ({dengue, chik, calor, gerado_em: (dengue || {}).gerado_em})),
+    (b, cod) => '<ul class="u-mb-0"><li>Dengue: ' + linhaAlerta(b.dengue, cod) + '</li><li>Chikungunya: '
+      + linhaAlerta(b.chik, cod) + '</li><li>Calor: ' + respostaCalor(b.calor, cod) + '</li></ul>',
+    () => '',
+    ['InfoDengue (Fiocruz/FGV)', 'Painel Nacional de Excesso de Calor (Ministério da Saúde)']);
 
   /* 7 · A lista do governo federal, sem cartão (o contrato pede lista simples). */
   fetch('data/saude_federal.json').then(r => r.ok ? r.json() : null).then(F => {

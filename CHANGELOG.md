@@ -31,6 +31,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #PR · Saúde: um cartão só para a cidade
+
+"Saúde na sua cidade" substitui as três buscas separadas (dengue, chikungunya e calor): o leitor escolhe o estado e o município uma vez e lê o nível de alerta das duas doenças, com a semana em datas, e a classe de excesso de calor. Sai o cartão de síndrome gripal, sem dado desde que o e-SUS Notifica recusa o acesso.
+
 ## 2026-10-16 · #PR · Saúde: temporadas de dengue e chikungunya, 2023–24 e 2026–27
 
 Dois gráficos novos, um por doença: as notificações semanais de junho a maio das temporadas que começaram em junho de 2023 e em junho de 2026, no mesmo eixo, com seletor de estado e a frase do dado (acumulado até a última semana fechada e pico de 2023–24). Comparação de calendário, sem relação indicada com o El Niño.

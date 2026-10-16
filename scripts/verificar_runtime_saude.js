@@ -198,6 +198,19 @@ for (const id of ["mapaMonitor", "mapaDengueUF", "mapaChikUF", "mapaCalor"]) {
         !!q(`c${box}Temporadas`) && /notificações em 2026, .* no mesmo período de 2023\. Pico da temporada 2023–24/.test(q(`frase${box}Temporadas`).textContent)
         && !q(`frase${box}Temporadas`).hidden && q(`sel${box}Temporadas`).options.length === 28 && divergentes.length === 0);
     }
+    // Lote 6, bloco 4: um cartão só para a cidade, com as três leituras.
+    {
+      const sel = q("ufSaudeCidade"), ent = q("nomeSaudeCidade"), out = q("resultadoSaudeCidade");
+      let tres = false;
+      if (sel && ent && out) {
+        sel.value = "SP"; sel.dispatchEvent(new dom.window.Event("change"));
+        ent.value = "São Paulo"; ent.dispatchEvent(new dom.window.Event("change"));
+        tres = !out.hidden && out.querySelectorAll("li").length === 3 && /Dengue: .+Chikungunya: .+Calor: /s.test(out.textContent)
+          && !/\b20\d\d-\d\d\b/.test(out.textContent);
+      }
+      teste("saúde: \"Saúde na sua cidade\" responde dengue, chikungunya e calor numa consulta, semana em datas",
+        tres && !q("boxDengueMunicipios") && !q("boxChikMunicipios") && !q("boxCalorMunicipios") && !q("boxSG"));
+    }
     teste("saúde: interpretação fixa do InfoDengue fora da figura", /InfoDengue/.test(q("interpObservado").textContent));
     // Bloco das 23h20: a série respiratória não cita mais o InfoGripe como fonte dela.
     teste("respiratórias: a fonte declarada é o SIVEP-Gripe, não o InfoGripe",
