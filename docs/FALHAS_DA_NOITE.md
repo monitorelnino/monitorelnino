@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-15. 63 falhas; 57 com caso de teste que as reproduz; 6 sem, com o que falta dito.
+Atualizado em 2026-10-15. 64 falhas; 58 com caso de teste que as reproduz; 6 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -563,6 +563,15 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** log do job 115654953384: '[saude] coletar_saude_estadual.py: 3142s' (--fontes) e 'julgar_saude.py: pulado — prazo do elo esgotado antes de começar'; data/pistas_imprensa_saude.json: 251 pistas oficiais sem veredito do juiz (15/10)
 - **Correção:** O juiz vem primeiro, sobre a fila acumulada, e usa `julgar_filas.julgar_lista`: interrompido pelo prazo, grava o que julgou.
 - **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_busca_web_pelo_coletor`
+
+## F63 · Relógio da nuvem morreu no checkout da main na abertura da noite
+
+- **Noite:** 2026-10-16
+- **Sintoma:** Run 38833479557 (push em `relogio`, 01:08:21): actions/checkout de ref main de 01:08:25 a 01:13:24, cancelado pelo timeout-minutes: 5 do job; 'Despachar o que está devido' skipped. A abertura saiu 32 min atrasada pelo tique oportunista.
+- **Causa:** O relógio (e o despachante) faziam checkout completo da main — 7 GB de evidencias/ — para ler scripts/, config/ e data/noite/, num job de 5 min; os demais checkouts da noite levaram 50–72 s, este travou.
+- **Prova:** log do run 38833479557: checkout 01:08:25→01:13:24, job cancelado; run 38864675061 (relogio ef329f00, esparso): checkout em 8 s
+- **Correção:** Checkout esparso (scripts, config, data/noite) na cópia do ramo `relogio` (ef329f00), no espelho da main e no `despachante.yml`.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_despachante_nao_depende_do_cron`
 
 ## F64 · Juiz de saúde interrompido pelo prazo avançava o corte da verificação
 
