@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #PR · Saúde: a frase do dado não aparece vazia
+
+As quatro frases do dado da página de saúde (dengue, chikungunya, respiratórias e calor) nasciam com um travessão e ficavam assim quando a série não carregava. Agora nascem ocultas e só aparecem com texto, por uma função só.
+
 ## 2026-10-16 · #786 · Saúde: a tabela do índice com as colunas do leitor
 
 A tabela que acompanha o mapa do MARÉ Saúde passa a ter UF, nota, faixa, plano (situação e data), coordenação na saúde e ligação com o governo do estado. Saem as colunas de componente interno ("cobertura sanitária 0,1 · 1 lido / 1 sem leitura", antecedência, dengue na capital, risco) e o travessão em célula vazia.
