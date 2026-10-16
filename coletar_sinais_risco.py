@@ -2343,6 +2343,16 @@ def gravar_pontos_de_foco() -> None:
           f"{sum(p[2] for p in _PONTOS_FOCOS['pontos'])} foco(s).")
 
 
+def municipios_por_uf_e_grau(por_municipio: dict) -> dict:
+    """{UF: {grau: municípios}} dos avisos do INMET em vigor. Função pura."""
+    saida = {}
+    for v in por_municipio.values():
+        for grau in sorted({a.get("severidade") for a in v.get("inmet") or [] if a.get("severidade")}):
+            d = saida.setdefault(v.get("uf"), {})
+            d[grau] = d.get(grau, 0) + 1
+    return dict(sorted(saida.items()))
+
+
 def gravar_alertas_vigentes() -> None:
     """Grava data/alertas/vigentes.json: um registro por MUNICÍPIO sob aviso do INMET ou alerta
     do CEMADEN, com tipo, grau, início e fim.
@@ -2394,6 +2404,9 @@ def gravar_alertas_vigentes() -> None:
             "alertas_cemaden_devolvidos": len(cemaden),
             "alertas_cemaden_sem_codigo_ibge": len(sem_codigo),
             "campos_devolvidos_pelo_cemaden": campos_cemaden,
+            # 16/10/2026 (Monitor de riscos §6c): municípios sob aviso do INMET por UF e por grau,
+            # no vocabulário do órgão. Município sob dois graus conta nos dois — a lista preserva todos.
+            "municipios_inmet_por_uf_e_grau": municipios_por_uf_e_grau(por_municipio),
         },
         "municipios": {k: {c: v[c] for c in ("nome", "uf", "inmet", "cemaden")}
                        for k, v in sorted(por_municipio.items())},
@@ -2847,6 +2860,11 @@ def autoteste() -> int:
     checar("Ar: sensor sem código IBGE fica de fora; leitura velha é lacuna",
            len(_sens) == 2 and _sens[1]["pm25"] is None and "36 h" in _sens[1]["lacuna"])
 
+    checar("Avisos: municípios por UF e grau, município com dois graus conta nos dois",
+           municipios_por_uf_e_grau({"1": {"uf": "PA", "inmet": [{"severidade": "Perigo"}, {"severidade": "Perigo Potencial"}]},
+                                     "2": {"uf": "PA", "inmet": [{"severidade": "Perigo"}, {"severidade": "Perigo"}]},
+                                     "3": {"uf": "MA", "inmet": []}})
+           == {"PA": {"Perigo": 2, "Perigo Potencial": 1}})
     # ── Focos pelo satélite de referência (16/10/2026) ────────────────────────────────────
     _csv = ("id,lat,lon,data_hora_gmt,satelite,municipio,estado,municipio_id,bioma\n"
             "1,-3.5,-54.6,2026-10-15 17:00:00,AQUA_M-T,PLACAS,PARÁ,1505650,Amazônia\n"
