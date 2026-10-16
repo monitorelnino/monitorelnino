@@ -178,7 +178,7 @@ function __init(){
       + (dc.dengue_capital_nivel != null ? '<p class="card-body">Nível ' + dc.dengue_capital_nivel + ' (InfoDengue), ' + esc(dc.dengue_capital || '') + ', SE ' + esc(String(dc.dengue_se || '—')) + '.</p>' : '<p class="card-body u-muted">Ainda não coletado.</p>') + '</div>';
     const cartaoCobertura = '<div class="cartao"><h3 class="figura-titulo">Cobertura do dado</h3>'
       + '<p class="card-body">Sinal de dengue: só a capital, não o estado inteiro. Documento estadual: ' + (m.verificado ? 'verificado' : 'ainda não verificado') + '.</p></div>';
-    const cartaoInstitucional = '<div class="cartao"><h3 class="figura-titulo">Contexto secundário: prontidão institucional</h3>'
+    const cartaoInstitucional = '<div class="cartao"><h3 class="figura-titulo">MARÉ Saúde do estado</h3>'
       + (m.prontidao != null ? '<p class="card-body">' + decBR(m.prontidao) + '/100 · ' + esc(m.faixa || '—') + ' — mede documento e quando o ato saiu, não o estado de saúde da população.</p>' : '<p class="card-body u-muted">Ainda não verificado.</p>') + '</div>';
     alvo.innerHTML = '<h3 class="figura-titulo u-largura-total">' + esc(NOME_UF[uf] || uf) + '</h3>' + cartaoCondicoes + cartaoSinal + cartaoCobertura + cartaoInstitucional;
     alvo.hidden = false;
@@ -644,7 +644,6 @@ function titulosFatoSaude(){
     // `verificado` não existe em SUF.uf, e uma primeira tentativa de derivá-lo dali imprimiu
     // "0 de 27 estados verificados" numa página pública. Fato de título sai da fonte, nunca de palpite.
     const Rsa = (typeof MSAUDE !== 'undefined' && MSAUDE && MSAUDE.resumo) || {};
-    if (Rsa.verificadas != null) titulo('boxMonitor', `Prontidão sanitária por estado: ${Rsa.verificadas} de ${UFS.length} estados verificados`);
     titulo('boxStatus', `Plano de saúde por estado: ${c(['NOVO'])} para o ciclo, ${c(['VIG','READ'])} de todo ano, ${c(['NAO_VERIFICADO'])} não verificados`);
   } catch (e) {}
   // dengue: municípios em alerta laranja/vermelho na última semana consolidada (nível 3 = laranja, 4 = vermelho no InfoDengue)
@@ -675,74 +674,6 @@ const AREAS = [
   MonitorMapas.credito('boxAreas', {fontes: ['MARÉ', 'classificação COBRADE'], data: (typeof META !== 'undefined' && META && (META.atualizado_em || META.corte)) || null});
 })();
 
-
-/* Busca por município no nível de alerta (bloco C.3 do handover de 01/10/2026).
- *
- * Três travas, e as três existem porque a alternativa de cada uma seria afirmar o que não se sabe:
- *   - cidade FORA dos municípios acompanhados não aparece como nível 1 nem como zero: aparece como
- *     não acompanhada, que é ausência de observação e não ausência de casos;
- *   - cidade sem semana consolidada aparece sem nível, com a semana declarada;
- *   - a lista de cidades é a do IBGE inteira, de propósito: só assim a busca pode DIZER que a
- *     cidade existe e não é acompanhada. Listar apenas as acompanhadas esconderia a lacuna.
- */
-(async function buscaMunicipalSaude(){
-  const el = id => document.getElementById(id);
-  const sel = el('munUFSaude'), entrada = el('munNomeSaude'), lista = el('munListaSaude'),
-        conta = el('munContaSaude'), saida = el('munResultadoSaude');
-  if (!sel || !entrada || !lista || !saida) return;
-  const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const NIVEL = {1: 'nível 1 (baixa atividade)', 2: 'nível 2 (atenção)',
-                 3: 'nível 3 (alerta)', 4: 'nível 4 (emergência)'};
-  let REF, DEN, CHI;
-  try {
-    [REF, DEN, CHI] = await Promise.all([
-      fetch('data/municipios_ibge_referencia.json').then(r => r.ok ? r.json() : null),
-      fetch('data/saude_desfechos/serie_painel.json').then(r => r.ok ? r.json() : null),
-      fetch('data/saude_desfechos/chik_serie_painel.json').then(r => r.ok ? r.json() : null),
-    ]);
-  } catch (e) { REF = DEN = CHI = null; }
-  if (!REF) { conta.textContent = 'Lista de municípios sem coleta até o corte.'; return; }
-  const ref = Array.isArray(REF) ? REF : Object.values(REF);
-  const porUF = {}, codigo = {};
-  ref.forEach(m => {
-    const c = String(m.codigo_ibge).padStart(7, '0');
-    (porUF[m.uf] = porUF[m.uf] || []).push(m.nome);
-    codigo[m.uf + '|' + m.nome.toLowerCase()] = c;
-  });
-  Object.keys(porUF).sort().forEach(uf => sel.insertAdjacentHTML('beforeend', `<option value="${uf}">${uf}</option>`));
-  const acompanhados = new Set([...Object.keys((DEN && DEN.municipios) || {}),
-                                ...Object.keys((CHI && CHI.municipios) || {})]);
-  conta.textContent = `${acompanhados.size.toLocaleString('pt-BR')} municípios acompanhados de `
-    + `${ref.length.toLocaleString('pt-BR')} no país`;
-
-  sel.addEventListener('change', () => {
-    const nomes = porUF[sel.value] || [];
-    lista.innerHTML = nomes.slice().sort((a, b) => a.localeCompare(b, 'pt-BR'))
-      .map(x => `<option value="${esc(x)}"></option>`).join('');
-    entrada.disabled = !sel.value;
-    entrada.value = '';
-    saida.hidden = true;
-  });
-
-  function linha(rotulo, base, cod){
-    const m = base && base.municipios && base.municipios[cod];
-    if (!m) return `<li>${rotulo}: município não acompanhado nesta série</li>`;
-    const nv = m.nivel_ultima_se;
-    if (nv == null) return `<li>${rotulo}: sem semana consolidada até o corte</li>`;
-    const quando = m.ultima_se ? semanaEmDatas(String(m.ultima_se).split('-')[0], m.ultima_se) : null;
-    return `<li>${rotulo}: ${esc(NIVEL[nv] || ('nível ' + nv))}${quando ? ' na semana ' + esc(quando) : ''}</li>`;
-  }
-
-  function mostrar(){
-    const cod = codigo[sel.value + '|' + (entrada.value || '').trim().toLowerCase()];
-    if (!cod) { saida.hidden = true; return; }
-    saida.hidden = false;
-    saida.innerHTML = `<p class="u-mb-0"><strong>${esc(entrada.value)} (${esc(sel.value)})</strong></p>`
-      + `<ul class="u-mb-0">${linha('Dengue', DEN, cod)}${linha('Chikungunya', CHI, cod)}</ul>`;
-  }
-  entrada.addEventListener('change', mostrar);
-  entrada.addEventListener('input', () => { if ((entrada.value || '').length > 2) mostrar(); });
-})();
 
 
 /* ===== Cartões do topo (bloco A.1 do handover de 02/10/2026) =====
@@ -1262,7 +1193,7 @@ const AREAS = [
                  4: 'nível 4 (emergência)'};
   const respostaAlerta = (base, cod) => {
     const m = base && base.municipios && base.municipios[cod];
-    if (!m) return '<p class="u-mb-0">Município não acompanhado nesta série.</p>';
+    if (!m) return '<p class="u-mb-0">Este município não foi lido pelo MARÉ nesta semana.</p>';
     if (m.nivel_ultima_se == null) return '<p class="u-mb-0">Sem semana consolidada até o corte.</p>';
     return '<p class="u-mb-0">' + esc(NIVEL[m.nivel_ultima_se] || ('nível ' + m.nivel_ultima_se))
       + ' na semana ' + esc(m.ultima_se || '—') + '.</p>';
@@ -1273,10 +1204,7 @@ const AREAS = [
     const codigos = new Set(ref.map(m => String(m.codigo_ibge).padStart(7, '0')));
     return Object.keys(base.municipios).filter(k => codigos.has(String(k).padStart(7, '0'))).length;
   };
-  const contarAlerta = (base, ref) => ((base && base.municipios)
-    ? contarMunicipios(base, ref).toLocaleString('pt-BR') + ' municípios acompanhados de '
-      + ref.length.toLocaleString('pt-BR') + ' no país'
-    : 'Série sem coleta até o corte.');
+  const contarAlerta = base => ((base && base.municipios) ? '' : 'Série sem coleta até o corte.');
 
   buscaPorMunicipio('DengueMunicipios',
     () => fetch('data/saude_desfechos/serie_painel.json').then(r => r.ok ? r.json() : null),
