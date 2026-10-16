@@ -18,7 +18,9 @@ O QUE ELE CONFERE, por página
       (delegado a `verificar_layout.problemas_do_despejo`, que já tem autoteste próprio);
   (B) TIPOGRAFIA — família, peso e tamanho renderizados, contra `layout/regras.json`;
   (C) FIGURA — título, legenda que não repete o título, fonte, mídia rotulada;
-  (D) VOCABULÁRIO — global, por página, advérbio colado a número, locução de dever;
+  (D) VOCABULÁRIO — global, por página, advérbio colado a número, locução de dever (a mesma régua que
+      `scripts/verificar_texto_publico.js` aplica ao texto renderizado e `verificar_texto_blog.py` ao blog;
+      16/10/2026: o modo `--so-texto-proibido` saiu — quem barra a publicação por texto é o texto_publico);
   (E) NÚMEROS — travessão em cartão, "sem dado" com série em disco;
   (F) ACESSIBILIDADE — alvo de toque no celular, rolagem horizontal, texto invisível;
   (G) FUNDO — branco, que é decisão editorial declarada e já foi revertida por engano uma vez.
@@ -471,16 +473,12 @@ def main() -> int:
     regras = ler_json(REGRAS) or {}
     excecoes = ler_json(EXCECOES) or {}
     invalidas = excecoes_invalidas(excecoes)
-    if invalidas and "--so-texto-proibido" not in sys.argv:
+    if invalidas:
         for x in invalidas:
             print(f"  ✗ {x}")
         print("✗ CONFORMIDADE: exceção sem registro completo é vermelho (CLAUDE.md, hierarquia das regras).")
         return 1
 
-    # 08/10/2026 (A2-14): `--so-texto-proibido` roda SÓ a regra de texto proibido, sobre o texto
-    # visível das páginas, sem abrir navegador e sem julgar layout. Ela existe porque essa regra é
-    # de DADO — palavra proibida que chega por dado externo —, e por isso barra a publicação, ao
-    # contrário do resto da conformidade, que mede código e só avisa (regra de 06/10).
     if "--regras-cobertas" in sys.argv:
         faltas = regras_sem_verificador(regras, existe=lambda c: (RAIZ / c).exists())
         mapa = regras.get("_verificacao") or {}
@@ -493,30 +491,6 @@ def main() -> int:
         print(f"✓ REGRAS COBERTAS OK — toda regra de layout/regras.json diz quem a julga; "
               f"{len(so_texto)} ainda só texto (dívida declarada): {', '.join(so_texto)}")
         return 0
-    if "--so-texto-proibido" in sys.argv:
-        # A regra é a MESMA de `problemas_de_vocabulario`, e de propósito: reescrevê-la aqui
-        # produziu, na primeira tentativa, dois falsos positivos — "Antecipação" dentro do nome do
-        # projeto e "figura" minúsculo numa frase legítima. O que muda neste modo é só o ESCOPO:
-        # roda sobre o texto visível do HTML servido, sem abrir navegador e sem julgar layout,
-        # porque este portão barra a publicação e o resto da conformidade não.
-        import re as _re
-        ruins = []
-        paginas = [x for x in (regras.get("paginas_publicas") or []) if (RAIZ / x).exists()]
-        for pagina in paginas:
-            contrato = ler_json(CONTRATOS / (pagina.replace(".html", "") + ".json"), {})
-            fonte = (RAIZ / pagina).read_text(encoding="utf-8")
-            visivel = _re.sub(r"(?is)<(?:script|style)[^>]*>.*?</(?:script|style)>", " ", fonte)
-            visivel = _re.sub(r"(?s)<!--.*?-->", " ", visivel)
-            visivel = _re.sub(r"(?s)<[^>]+>", " ", visivel)
-            for problema in problemas_de_vocabulario(visivel, pagina, regras, contrato):
-                ruins.append(f"{pagina}: {problema}")
-        for r in ruins:
-            print(f"  ✗ {r}")
-        print(f"✗ TEXTO PROIBIDO: {len(ruins)} ocorrência(s) no texto visível." if ruins
-              else f"✓ TEXTO PROIBIDO OK — {len(paginas)} página(s), nenhum termo proibido no "
-                   f"texto visível.")
-        return 1 if ruins else 0
-
     argumentos = [a for a in sys.argv[1:] if not a.startswith("--")]
     despejo_pronto = None
     if "--despejo" in sys.argv:
