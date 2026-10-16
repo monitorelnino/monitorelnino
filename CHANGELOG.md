@@ -31,7 +31,7 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-16 · #PR · Saúde: a frase do dado não aparece vazia
+## 2026-10-16 · #787 · Saúde: a frase do dado não aparece vazia
 
 As quatro frases do dado da página de saúde (dengue, chikungunya, respiratórias e calor) nasciam com um travessão e ficavam assim quando a série não carregava. Agora nascem ocultas e só aparecem com texto, por uma função só.
 
