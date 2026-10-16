@@ -132,13 +132,11 @@ jobs:
           # assunto: dado
           python3 scripts/verificar_financiamento_coerencia.py
           # assunto: dado
-          python3 scripts/verificar_frescor_financiamento.py
+          # 16/10/2026 (consolidação item 6): um medidor de frescor para Financiamento, Defesa civil e
+          # Saúde — um leitor de carimbo, um relógio, três famílias declaradas; o autoteste roda dentro.
+          python3 scripts/verificar_frescor.py
           # assunto: dado
           python3 scripts/rodar_coletores_defesa_civil.py --autoteste
-          # assunto: dado
-          python3 scripts/verificar_frescor_defesa_civil.py
-          # assunto: dado
-          python3 scripts/verificar_frescor_saude.py
           # 04/10/2026: a janela da noite. Duas noites seguidas não abriram porque o cron do
           # GitHub não disparou, e a abertura passou a ter reserva e vigia — que só são
           # seguros porque esta função pura decide, sem adivinhar, se a noite já abriu.
@@ -180,22 +178,16 @@ jobs:
           python3 gerar_blog.py --autoteste
           # assunto: dado
           # barra_publicacao: sim
-          python3 scripts/verificar_datas_de_instrumento.py
-          # assunto: dado
-          # barra_publicacao: sim
-          python3 scripts/verificar_documento_publicado.py
+          # 16/10/2026 (consolidação item 6): as quatro réguas das fichas municipais (D1 documento lido e
+          # preservado, `documento` em forma de título, data do instrumento, capital com uma fonte) leem o
+          # banco uma vez; o autoteste (34 casos) roda dentro.
+          python3 scripts/verificar_fichas_municipais.py
           # assunto: dado
           # barra_publicacao: sim
           python3 scripts/verificar_esquema_de_ato.py
           # assunto: dado
           # barra_publicacao: sim
-          python3 scripts/verificar_documento_de_plano.py
-          # assunto: dado
-          # barra_publicacao: sim
           python3 scripts/verificar_camada_declarada.py
-          # assunto: dado
-          # barra_publicacao: sim
-          python3 scripts/verificar_capital.py
           # assunto: dado
           python3 scripts/verificar_versao_do_indice.py
           # assunto: dado
