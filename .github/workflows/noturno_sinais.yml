@@ -78,6 +78,10 @@ jobs:
         coletar_transferencias_municipais.py --ano 2026
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+      # F67 (16/10/2026): `coletar_sinais_risco.py` lê as duas chaves; sem repassar, o OpenAQ
+      # ficou três semanas em `aguardando_credencial` com a chave cadastrada.
+      OPENAQ_API_KEY: ${{ secrets.OPENAQ_API_KEY }}
+      INMET_API_TOKEN: ${{ secrets.INMET_API_TOKEN }}
       # 08/10/2026 (A2-28): sem o `ROBO_TOKEN`, o tique oportunista roda com o
       # `GITHUB_TOKEN`, que não alcança o `robo-registro`, e a Issue de alarme
       # falha em silêncio por causa do `|| true`.

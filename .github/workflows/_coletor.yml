@@ -288,7 +288,8 @@ jobs:
       # deliberado: coletor que falha não derruba os outros nem impede o commit do que já foi achado.
       - name: Coletar
         if: steps.janela.outputs.pode == '1'
-        # Chaves da coleta com chave (só o `atualizar.yml` as passa; vazias nos demais elos) e as
+        # Chaves da coleta com chave (chegam só do chamador que as repassa — `validar_workflows.py`
+        # reprova quem roda coletor que lê a chave sem repassá-la, F67) e as
         # variáveis da varredura intensiva que o `atualizar.py` lê. Só neste passo.
         env:
           PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}

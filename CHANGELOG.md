@@ -33,6 +33,14 @@ não pontuados permanecem na versão corrente.
 
 O elo dos sinais grava `data/ar_medido.json`: IQAr de cada estação do MonitorAr como o órgão publica, PM2,5 do OpenAQ casado à mesma estação (≤ 300 m), PM2,5 dos sensores IPAM/RedeAr sem índice. Medição com mais de 36 h é lacuna; resposta preservada por hash. METODOLOGIA §41.7 traz as três réguas e a errata do "não há índice nacional aberto". A figura vem depois.
 
+## 2026-10-16 · #793 · A chave do OpenAQ chega ao elo dos sinais (F67)
+
+A medição do ar estava apagada havia três semanas: o elo noturno dos sinais e a rotina semanal rodavam o coletor sem repassar as chaves do OpenAQ e do INMET ao invólucro dos coletores. Os dois passam a repassá-las, e o validador de workflows reprova quem roda coletor que lê uma chave sem repassá-la.
+
+## 2026-10-16 · #792 · Monitor de riscos: abertura nova e números de agora; textos longos sem colunas
+
+A abertura do Monitor de riscos passa ao texto da editoria, em quatro parágrafos. "Situação atual" ganha painel próprio com os números de agora: oceano, probabilidade, focos de fogo, estados com seca grave, maior diferença de calor numa capital e estados com aviso de tempo severo, cada um com órgão e data. Sai o cartão dos riscos previstos. Os textos longos deixam de ser divididos em duas colunas no site inteiro.
+
 ## 2026-10-16 · #790 · Topo sem a linha "2026/2027 · Monitoramento independente…"; cidade troca sem botão
 
 Sai do topo de todas as páginas a linha "2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab" e a faixa logo abaixo dela; a informação segue no rodapé. No cartão da cidade sai o botão ×: ao clicar de novo no campo do município, a lista do estado volta inteira e o cartão anterior fica até a nova escolha (editoria, 16/10).
@@ -52,10 +60,6 @@ As quatro frases do dado da página de saúde (dengue, chikungunya, respiratóri
 ## 2026-10-16 · #785 · Inicial: sai a legenda das barras; barras sem régua; cartão da cidade branco e com um só componente
 
 Sai a legenda "Barra de cima… Barra de baixo…" e a linha acima dela, na inicial e na Saúde, com a função que a escrevia. A barra do MARÉ Legal perde o quadriculado de fundo (ficam as marcas 25, 50, 70); a dos decretos, sem marcas, fica mais alta. O cartão da cidade fica branco, sem o link "consultar outro município"; as listas federais usam o cartão da projeção, com o texto do cadastro nacional (Lei 12.340, art. 3º-A).
-
-## 2026-10-16 · #786 · Saúde: a tabela do índice com as colunas do leitor
-
-A tabela que acompanha o mapa do MARÉ Saúde passa a ter UF, nota, faixa, plano (situação e data), coordenação na saúde e ligação com o governo do estado. Saem as colunas de componente interno ("cobertura sanitária 0,1 · 1 lido / 1 sem leitura", antecedência, dengue na capital, risco) e o travessão em célula vazia.
 
 ## 2026-10-16 · #786 · Saúde: a tabela do índice com as colunas do leitor
 

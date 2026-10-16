@@ -82,3 +82,7 @@ jobs:
         descobrir_dominios.py
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+      # F67 (16/10/2026): `coletar_sinais_risco.py` lê as duas chaves; sem repassar, o OpenAQ
+      # ficou três semanas em `aguardando_credencial` com a chave cadastrada.
+      OPENAQ_API_KEY: ${{ secrets.OPENAQ_API_KEY }}
+      INMET_API_TOKEN: ${{ secrets.INMET_API_TOKEN }}

@@ -30,7 +30,7 @@
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <script src="assets/mapas.js?v=c9350706"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=02c36ec9">
-<link rel="stylesheet" href="assets/base.css?v=5914d49b">
+<link rel="stylesheet" href="assets/base.css?v=7379a9be">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -49,6 +49,10 @@
     <dl class="mudancas-lista">
       <dt>16/10/2026 · Ar medido por estação: IQAr do MMA, PM2,5 do OpenAQ e da RedeAr</dt>
       <dd>O elo dos sinais grava `data/ar_medido.json`: IQAr de cada estação do MonitorAr como o órgão publica, PM2,5 do OpenAQ casado à mesma estação (≤ 300 m), PM2,5 dos sensores IPAM/RedeAr sem índice. Medição com mais de 36 h é lacuna; resposta preservada por hash. METODOLOGIA §41.7 traz as três réguas e a errata do &quot;não há índice nacional aberto&quot;. A figura vem depois.</dd>
+      <dt>16/10/2026 · A chave do OpenAQ chega ao elo dos sinais (F67)</dt>
+      <dd>A medição do ar estava apagada havia três semanas: o elo noturno dos sinais e a rotina semanal rodavam o coletor sem repassar as chaves do OpenAQ e do INMET ao invólucro dos coletores. Os dois passam a repassá-las, e o validador de workflows reprova quem roda coletor que lê uma chave sem repassá-la.</dd>
+      <dt>16/10/2026 · Monitor de riscos: abertura nova e números de agora; textos longos sem colunas</dt>
+      <dd>A abertura do Monitor de riscos passa ao texto da editoria, em quatro parágrafos. &quot;Situação atual&quot; ganha painel próprio com os números de agora: oceano, probabilidade, focos de fogo, estados com seca grave, maior diferença de calor numa capital e estados com aviso de tempo severo, cada um com órgão e data. Sai o cartão dos riscos previstos. Os textos longos deixam de ser divididos em duas colunas no site inteiro.</dd>
       <dt>16/10/2026 · Topo sem a linha &quot;2026/2027 · Monitoramento independente…&quot;; cidade troca sem botão</dt>
       <dd>Sai do topo de todas as páginas a linha &quot;2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab&quot; e a faixa logo abaixo dela; a informação segue no rodapé. No cartão da cidade sai o botão ×: ao clicar de novo no campo do município, a lista do estado volta inteira e o cartão anterior fica até a nova escolha (editoria, 16/10).</dd>
       <dt>16/10/2026 · O envio do formulário fica na inicial; sai a página Obrigado</dt>
@@ -59,8 +63,6 @@
       <dd>As quatro frases do dado da página de saúde (dengue, chikungunya, respiratórias e calor) nasciam com um travessão e ficavam assim quando a série não carregava. Agora nascem ocultas e só aparecem com texto, por uma função só.</dd>
       <dt>16/10/2026 · Inicial: sai a legenda das barras; barras sem régua; cartão da cidade branco e com um só componente</dt>
       <dd>Sai a legenda &quot;Barra de cima… Barra de baixo…&quot; e a linha acima dela, na inicial e na Saúde, com a função que a escrevia. A barra do MARÉ Legal perde o quadriculado de fundo (ficam as marcas 25, 50, 70); a dos decretos, sem marcas, fica mais alta. O cartão da cidade fica branco, sem o link &quot;consultar outro município&quot;; as listas federais usam o cartão da projeção, com o texto do cadastro nacional (Lei 12.340, art. 3º-A).</dd>
-      <dt>16/10/2026 · Saúde: a tabela do índice com as colunas do leitor</dt>
-      <dd>A tabela que acompanha o mapa do MARÉ Saúde passa a ter UF, nota, faixa, plano (situação e data), coordenação na saúde e ligação com o governo do estado. Saem as colunas de componente interno (&quot;cobertura sanitária 0,1 · 1 lido / 1 sem leitura&quot;, antecedência, dengue na capital, risco) e o travessão em célula vazia.</dd>
       <dt>16/10/2026 · Saúde: a tabela do índice com as colunas do leitor</dt>
       <dd>A tabela que acompanha o mapa do MARÉ Saúde passa a ter UF, nota, faixa, plano (situação e data), coordenação na saúde e ligação com o governo do estado. Saem as colunas de componente interno (&quot;cobertura sanitária 0,1 · 1 lido / 1 sem leitura&quot;, antecedência, dengue na capital, risco) e o travessão em célula vazia.</dd>
       <dt>16/10/2026 · Uma renderização de página para os portões de jsdom (consolidação item 6)</dt>
@@ -165,8 +167,6 @@
       <dd>MT e RN responderam a pedidos de acesso à informação. Afirmação de órgão sem documento não pontua: vira nota com órgão e data (textos aprovados pela editoria), e tarefa de busca dirigida. Os três decretos que MT informou com número e data entram em `atos_resposta.json`, declarando que o documento ainda não foi localizado. O detalhe da UF, na home, passa a mostrar a nota do estado. Em `scripts/incorporar_respostas_lai.py`, `data/notas_lai.json` e `ler_caixa_lai.py` (leitura semanal da caixa, à espera da credencial).</dd>
       <dt>03/10/2026 · O tipo de evento de cada decreto, e a divergência do cartão declarada</dt>
       <dd>Dependência do handover do blog: os atos de resposta não tinham `tipo_evento`. Ele passa a vir da COBRADE do S2iD — 275 chuva, 327 seca, 66 vendaval, 4 fogo, 257 sem família — e não da `causa`, que nos registros federais diz o canal do ato, não o evento. O handover pedia um `.cartao-destaque` que não existe no sistema de design; os contratos do blog e da imprensa registram a divergência. Em `scripts/tipo_de_evento_dos_atos.py`.</dd>
-      <dt>03/10/2026 · Dizemos o que disponibilizamos; o blog conta o ciclo</dt>
-      <dd>Duas regras para todo o site: nenhuma frase sobre código, base de dados ou licença de dados, e o blog só sobre acontecimentos do ciclo, em prosa escrita por pessoa. Saem a pasta de dados abertos, a planilha da edição e o release gerado; nasce `mudancas.html`, com as 57 entradas do CHANGELOG. Blog com boletim congelado por edição e aprovação obrigatória; imprensa só com o estável. METODOLOGIA §103.</dd>
     </dl>
   </section>
 </main>
@@ -178,7 +178,7 @@
   </footer>
 </div>
 
-<script src="assets/colunas.js?v=3669e58d" defer></script>
+<script src="assets/colunas.js?v=07ce0f22" defer></script>
 <script src="assets/js/blog.js?v=7f8a0ec2" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).

@@ -74,8 +74,6 @@ main{display:block;}
 .grade-figuras + .grade-figuras, .grade-cartoes + .grade-figuras, .grade-figuras + .grade-cartoes{margin-top:var(--esp-grade);}
 .comoler-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:0 var(--sp-6);}
 .comoler-grid p{margin:0 0 var(--sp-2);}
-.cols{column-count:2; column-gap:var(--sp-6); max-width:none !important; column-fill:balance;}
-.cols li{break-inside:avoid;}
 
 /* ===== 3. Tipografia =====
    Uma regra por degrau. Títulos em Fraunces peso regular (nunca bold); dado e versalete em Archivo Narrow. */
@@ -804,7 +802,6 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
   .passos{grid-template-columns:minmax(0, 1fr);}
   .figura--largo{grid-column:auto;}
   .comoler-grid{grid-template-columns:1fr;}
-  .cols{column-count:1;}
   .mast-top{gap:var(--sp-3) var(--sp-4);}
 }
 @media (max-width:640px){
