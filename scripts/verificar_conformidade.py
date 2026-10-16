@@ -248,6 +248,24 @@ def problemas_de_acessibilidade(d390: dict, regras: dict) -> list:
     return p
 
 
+# A7-14 (16/10/2026): duas regras de `componentes` que só existiam no JSON.
+_RE_NUMERACAO = re.compile(r"^\s*(?:\d+|[IVXL]+)\s*[.)·—–-]\s")
+
+
+def problemas_de_componentes(d1280: dict, regras: dict) -> list:
+    """Seção sem numeração; no máximo UMA figura larga por página. Função pura."""
+    c = (regras or {}).get("componentes") or {}
+    p = []
+    if c.get("secao_sem_numeracao"):
+        p += [f"seção numerada: {h!r}" for h in (d1280.get("h2") or []) if _RE_NUMERACAO.match(h)]
+    larga = (c.get("figura_larga") or {}).get("classe")
+    largas = [f.get("id") or "?" for f in (d1280.get("figuras") or [])
+              if larga and larga in (f.get("classes") or []) and f.get("visivel", True)]
+    if len(largas) > 1:
+        p.append(f"{len(largas)} figuras largas na página ({', '.join(largas)}); o teto é uma")
+    return p
+
+
 def problemas_de_fundo(d1280: dict, regras: dict) -> list:
     """O fundo do corpo é o declarado. Função pura."""
     esperado = ((regras or {}).get("cor") or {}).get("fundo_do_corpo")
@@ -278,6 +296,7 @@ def problemas(pagina: str, despejo: dict, regras: dict, contrato: dict, excecoes
                                         d1280.get("travessoes") or [])),
         ("acessibilidade", problemas_de_acessibilidade(d390, regras)),
         ("fundo", problemas_de_fundo(d1280, regras)),
+        ("componentes", problemas_de_componentes(d1280, regras)),
     ]
     for nome, achados in por_regra:
         if nome in dispensadas:
@@ -333,6 +352,13 @@ def _autoteste() -> int:
        regras_sem_verificador(_r) == ["numeros.formato: sem entrada em _verificacao (diga o portão, ou 'só texto')"])
     _r["_verificacao"]["numeros.formato"] = "só texto até hoje"
     ok("A7-14: 'só texto' declarado passa", regras_sem_verificador(_r) == [])
+    _c = {"componentes": {"secao_sem_numeracao": True, "figura_larga": {"classe": "cartao-mapa--largo"}}}
+    _larga = {"id": "a", "classes": ["cartao-mapa--largo"], "visivel": True}
+    ok("A7-14: seção numerada e duas figuras largas reprovam",
+       len(problemas_de_componentes({"h2": ["1. O índice", "II · Saúde"],
+                                     "figuras": [_larga, dict(_larga, id="b")]}, _c)) == 3)
+    ok("A7-14: seção sem número, '2026 em números' e uma figura larga passam",
+       problemas_de_componentes({"h2": ["O índice", "2026 em números"], "figuras": [_larga]}, _c) == [])
     _r["_verificacao"]["numeros.formato"] = "scripts/inexistente.py"
     ok("A7-14: verificador que não existe reprova",
        len(regras_sem_verificador(_r, existe=lambda c: False)) == 1)
