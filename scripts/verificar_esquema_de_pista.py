@@ -399,6 +399,8 @@ def _autoteste() -> int:
 def main() -> int:
     if "--autoteste" in sys.argv:
         return _autoteste()
+    if _autoteste() != 0:   # 16/10/2026: o autoteste roda antes da conferência, num comando só
+        return 1
     from coletores_base import ler, gravar, hoje_editorial
     esquema = ler_esquema()
     hoje = hoje_editorial().isoformat()

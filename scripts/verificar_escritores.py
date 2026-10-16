@@ -410,6 +410,8 @@ def _workflow_do_assunto(assunto: str) -> str:
 def main() -> int:
     if "--autoteste" in sys.argv[1:]:
         return _autoteste()
+    if _autoteste() != 0:   # 16/10/2026: o autoteste roda antes da conferência, num comando só
+        return 1
     declarados = ler_declaracao()
     if not declarados:
         print("✗ ESCRITORES: config/escritores.json não pôde ser lido")

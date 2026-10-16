@@ -172,6 +172,8 @@ def _autoteste() -> int:
 def main(argv: list) -> int:
     if "--autoteste" in argv:
         return _autoteste()
+    if _autoteste() != 0:   # 16/10/2026: o autoteste roda antes da conferência, num comando só
+        return 1
     if not CADEIA.exists():
         print(f"✗ {CADEIA.relative_to(RAIZ)} não existe")
         return 1

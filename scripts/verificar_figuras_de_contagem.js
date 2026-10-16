@@ -80,4 +80,5 @@ async function principal() {
   return falhas.length ? 1 : 0;
 }
 if (process.argv.includes("--autoteste")) process.exit(autoteste());
+if (autoteste() !== 0) process.exit(1);   // 16/10/2026: o autoteste roda antes das páginas, num comando só
 principal().then(c => process.exit(c)).catch(e => { console.error(e); process.exit(1); });

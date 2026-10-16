@@ -87,7 +87,6 @@ jobs:
           # assunto: cor texto rapido
           # 28/09/2026: `git add -A` marca o caminho como RESOLVIDO mesmo com           # commit passa sem reclamar — o CHANGELOG.md subiu assim duas vezes neste dia. Portão
           # barato, repositório inteiro, antes de qualquer outra coisa.
-          python3 scripts/verificar_marcadores_de_conflito.py --autoteste
           # assunto: cor texto rapido
           # barra_publicacao: sim
           python3 scripts/verificar_marcadores_de_conflito.py
@@ -103,8 +102,6 @@ jobs:
           python3 scripts/verificar_escrita_portavel.py
           # A7-11 (12/10/2026): credencial e CPF nas linhas acrescentadas pelo PR, fora de
           # `evidencias/` (que tem portão próprio). Repositório público, publicado pela raiz.
-          # assunto: texto rapido
-          python3 scripts/verificar_segredos.py --autoteste
           # assunto: texto rapido
           python3 scripts/verificar_segredos.py --contra origin/main
           # assunto: cor texto rapido
@@ -122,10 +119,6 @@ jobs:
           node scripts/verificar_acessibilidade.js
           # assunto: cor texto
           node scripts/verificar_runtime_financiamento.js
-          # assunto: cor texto rapido
-          node scripts/verificar_figuras_de_contagem.js --autoteste
-          # assunto: dado
-          python3 scripts/verificar_financiamento_coerencia.py --autoteste
           # assunto: dado
           python3 scripts/registrar_faixas.py --autoteste
           # assunto: dado
@@ -139,23 +132,13 @@ jobs:
           # assunto: dado
           python3 scripts/verificar_financiamento_coerencia.py
           # assunto: dado
-          python3 scripts/verificar_frescor_financiamento.py --autoteste
-          # assunto: dado
           python3 scripts/verificar_frescor_financiamento.py
-          # assunto: dado
-          python3 scripts/verificar_frescor_defesa_civil.py --autoteste
           # assunto: dado
           python3 scripts/rodar_coletores_defesa_civil.py --autoteste
           # assunto: dado
           python3 scripts/verificar_frescor_defesa_civil.py
           # assunto: dado
-          python3 scripts/verificar_frescor_saude.py --autoteste
-          # assunto: dado
           python3 scripts/verificar_frescor_saude.py
-          # assunto: dado
-          python3 scripts/gerar_topo_das_paginas.py --autoteste
-          # assunto: dado
-          python3 scripts/painel_da_noite.py --autoteste
           # 04/10/2026: a janela da noite. Duas noites seguidas não abriram porque o cron do
           # GitHub não disparou, e a abertura passou a ter reserva e vigia — que só são
           # seguros porque esta função pura decide, sem adivinhar, se a noite já abriu.
@@ -166,36 +149,20 @@ jobs:
           # falte nele é temporizador que ninguém recupera.
           # assunto: dado
           python3 scripts/verificar_temporizadores.py
-          # assunto: dado
-          python3 scripts/verificar_temporizadores.py --autoteste
-          # assunto: dado
-          python3 scripts/despachar_temporizadores.py --autoteste
           # 10/10/2026: a vez na noite — grupo por elo e fila por ordem de chegada no job `vez`.
           # assunto: dado
           python3 scripts/vez_na_noite.py --autoteste
-          # assunto: dado
-          python3 scripts/orcamento_da_noite.py --autoteste
           # 10/10/2026 (item 2-bis): catálogo das falhas da noite — toda falha com causa, prova e
           # o caso de teste que a reproduz (que tem de existir na árvore) — e a checagem pré-noite.
           # assunto: dado
           python3 scripts/catalogo_de_falhas.py
           # assunto: dado
-          python3 scripts/catalogo_de_falhas.py --autoteste
-          # assunto: dado
           python3 scripts/checagem_pre_noite.py --autoteste
           # 10/10/2026 (item 2-bis.2): o ensaio real da noite (veredito e condução) e o elo de ensaio.
-          # assunto: dado
-          python3 scripts/ensaio_real.py --autoteste
-          # assunto: dado
-          python3 scripts/elo_de_ensaio.py --autoteste
-          # assunto: dado
-          python3 scripts/painel_dos_temporizadores.py --autoteste
           # 04/10/2026 (20:30): o GitHub rejeitou dois workflows por cinco horas, e nenhum
           # portão viu — `run` e `with` no mesmo passo é válido para o YAML e inválido para
           # ele. A trava estrutural está em `validar_workflows.py`; este portão pergunta ao
           # próprio GitHub se ele conseguiu ler cada arquivo.
-          # assunto: dado
-          python3 scripts/verificar_workflow_aceito.py --autoteste
           # assunto: dado
           python3 scripts/verificar_workflow_aceito.py
           # 04/10/2026: a migração das sobras do DOE e a porta de gravação do coletor. A
@@ -206,91 +173,57 @@ jobs:
           # texto. O verificador roda sobre os textos aprovados e reprova TEXTO, não o
           # site — um texto fora do pacote fica de fora e o resto publica.
           # assunto: texto
-          python3 gerar_pacote_blog.py --autoteste
-          # assunto: texto
-          python3 scripts/verificar_texto_blog.py --autoteste
-          # assunto: texto
           python3 scripts/verificar_texto_blog.py
-          # assunto: dado
-          python3 scripts/gerar_boletim.py --autoteste
-          # assunto: texto
-          python3 scripts/gerar_mudancas.py --autoteste
           # assunto: texto
           python3 scripts/gerar_mudancas.py --check
           # assunto: texto
           python3 gerar_blog.py --autoteste
           # assunto: dado
-          python3 scripts/verificar_datas_de_instrumento.py --autoteste
-          # assunto: dado
           # barra_publicacao: sim
           python3 scripts/verificar_datas_de_instrumento.py
-          # assunto: dado
-          python3 scripts/verificar_documento_publicado.py --autoteste
           # assunto: dado
           # barra_publicacao: sim
           python3 scripts/verificar_documento_publicado.py
           # assunto: dado
-          python3 scripts/verificar_esquema_de_ato.py --autoteste
-          # assunto: dado
           # barra_publicacao: sim
           python3 scripts/verificar_esquema_de_ato.py
-          # assunto: dado
-          python3 scripts/verificar_documento_de_plano.py --autoteste
           # assunto: dado
           # barra_publicacao: sim
           python3 scripts/verificar_documento_de_plano.py
           # assunto: dado
-          python3 scripts/verificar_camada_declarada.py --autoteste
-          # assunto: dado
           # barra_publicacao: sim
           python3 scripts/verificar_camada_declarada.py
-          # assunto: dado
-          python3 scripts/verificar_capital.py --autoteste
           # assunto: dado
           # barra_publicacao: sim
           python3 scripts/verificar_capital.py
           # assunto: dado
-          python3 scripts/verificar_versao_do_indice.py --autoteste
-          # assunto: dado
           python3 scripts/verificar_versao_do_indice.py
           # assunto: dado
-          python3 scripts/verificar_camadas_do_pdf.py --autoteste
-          # assunto: dado
           python3 scripts/verificar_camadas_do_pdf.py
-          # assunto: dado
-          python3 scripts/verificar_esquema_de_pista.py --autoteste
           # assunto: dado
           # barra_publicacao: sim
           python3 scripts/verificar_esquema_de_pista.py
           # assunto: dado
           # barra_publicacao: sim
           python3 scripts/verificar_tamanho_dos_dados.py
-          # assunto: dado
-          python3 scripts/verificar_tamanho_dos_dados.py --autoteste
           # assunto: texto
           # barra_publicacao: sim
-          python3 scripts/verificar_conformidade.py --so-texto-proibido
+          # 16/10/2026 (consolidação item 3): UM verificador de texto público, uma renderização por
+          # página — jargão, refrão, vocabulário proibido (global, por página, contrato e o que os scripts
+          # escrevem), semana epidemiológica, legendas e prosa (portão 19), componente de figura, fichas
+          # semânticas, palavras por página, enquadramento federal e a regra 0 da Imprensa. Roda SEMPRE
+          # porque é regra de DADO: palavra proibida e semana chegam por dado externo, e ele barra a
+          # publicação. Regras em layout/regras.json; o autoteste (72 mutações) roda antes das páginas.
+          node scripts/verificar_texto_publico.js
           # assunto: dado
           python3 scripts/pistas.py --autoteste
           # assunto: dado
-          python3 scripts/verificar_escritor_de_pista.py --autoteste
-          # assunto: dado
           python3 scripts/verificar_escritor_de_pista.py
-          # assunto: dado
-          python3 scripts/verificar_fila_nao_humana.py --autoteste
           # assunto: dado
           # 09/10/2026 (lote 2.9): nenhuma fila espera por pessoa; pendente > 21 dias reprova depois do prazo do estoque.
           python3 scripts/verificar_fila_nao_humana.py
           # assunto: dado
-          python3 scripts/migrar_fim_da_etapa_humana.py --autoteste
-          # assunto: dado
-          python3 scripts/migrar_zero_humano.py --autoteste
-          # assunto: dado
-          python3 scripts/verificar_escritores.py --autoteste
-          # assunto: dado
           python3 scripts/verificar_escritores.py
-          # assunto: texto
-          python3 scripts/verificar_catalogo.py --autoteste
           # assunto: texto
           python3 scripts/verificar_catalogo.py
           # assunto: texto
@@ -304,35 +237,18 @@ jobs:
           # assunto: dado
           python3 scripts/ensaio_da_noite.py
           # assunto: dado
-          python3 scripts/triar_fila.py --autoteste
-          # assunto: dado
-          python3 scripts/limpar_fila_de_pistas.py --autoteste
-          # assunto: dado
-          python3 scripts/gerar_prioridade_municipios.py --autoteste
-          # assunto: dado
-          python3 scripts/ordem_de_coleta.py --autoteste
-          # assunto: dado
-          python3 scripts/verificar_autoteste_nao_escreve.py --autoteste
-          # assunto: dado
           python3 scripts/verificar_autoteste_nao_escreve.py
           # assunto: cor texto
           python3 scripts/verificar_layout.py --autoteste
-          # assunto: cor texto rapido
-          python3 classificar_planos_municipais.py --autoteste
           # assunto: texto rapido
           python3 scripts/verificar_ausencia_declarada.py
           # §281 (28/09/2026): canal de DESCOBERTA exibido como canal de registro. "imprensa"
           # serve para achar o documento, nunca para provar o ato (§5.2.1), e treze registros
           # traziam "via imprensa" ao lado de fonte descrita como oficial.
           # assunto: texto rapido
-          python3 scripts/verificar_rotulo_canal_descoberta.py --autoteste
-          # assunto: texto rapido
           python3 scripts/verificar_rotulo_canal_descoberta.py
           # assunto: cor texto
           node scripts/verificar_runtime_resposta.js
-          # assunto: texto rapido
-          # barra_publicacao: sim
-          node scripts/verificar_palavras.js
           # assunto: cor rapido
           # barra_publicacao: sim
           node scripts/verificar_seguranca.js
@@ -347,8 +263,6 @@ jobs:
           # arquivo de volta, sozinho, não basta.
           # assunto: texto rapido
           python3 scripts/verificar_pagina_arquivada.py
-          # assunto: texto rapido
-          python3 scripts/verificar_pagina_arquivada.py --autoteste
           # 30/09/2026: o CODEMAP é gerado do código e reprova quando envelhece — mapa que
           # mente manda ler o arquivo errado com a confiança de quem conferiu.
           # assunto: texto rapido
@@ -360,21 +274,13 @@ jobs:
           # 30/09/2026 (§317): entrada nova de CHANGELOG é curta e tem chave por data e PR.
           # assunto: texto rapido
           python3 scripts/verificar_changelog_curto.py
-          # assunto: texto rapido
-          python3 scripts/verificar_changelog_curto.py --autoteste
           # 30/09/2026: o corte é a data da rodada. Ele congelou 20 dias com o arquivo de
           # transferências, e o site dizia "dados até 10/09" com o índice recebendo planos todo dia.
           # assunto: texto rapido
           python3 scripts/verificar_corte_sincronizado.py
           # assunto: texto rapido
-          python3 scripts/verificar_corte_sincronizado.py --autoteste
-          # assunto: texto rapido
           python3 scripts/verificar_ordem_do_carimbo.py
-          # assunto: texto rapido
-          python3 scripts/verificar_ordem_do_carimbo.py --autoteste
           # 12/10/2026 (A3-29): vigência dos decretos com data só de ano decide pelo intervalo.
-          # assunto: dado
-          python3 verificar_vigencia.py --autoteste
           # 12/10/2026 (A7-14): toda regra de layout/regras.json diz quem a julga.
           # assunto: texto rapido
           python3 scripts/verificar_conformidade.py --regras-cobertas
@@ -383,16 +289,12 @@ jobs:
           # efeito colateral do desacoplamento — sem nada que reprovasse.
           # assunto: texto rapido
           python3 scripts/verificar_cadencia_sinais.py
-          # assunto: texto rapido
-          python3 scripts/verificar_cadencia_sinais.py --autoteste
       # Antes do portão 12, porque ele explica a falha que o 12 mostraria sem causa: derivado
       # que carimba pelo relógio da parede muda sozinho na virada do dia, e o 12 acusa "obsoleto"
       # sem dizer por quê. Em 05 para 06/10 isso derrubou nove publicações seguidas.
       - name: Relógio dos derivados — nenhum carimbo pela parede
         timeout-minutes: 3
         run: |
-          # assunto: dado rapido
-          python3 scripts/verificar_relogio_dos_derivados.py --autoteste
           # assunto: dado rapido
           python3 scripts/verificar_relogio_dos_derivados.py
 
@@ -483,43 +385,19 @@ jobs:
               echo "pagina_mudou=false" >> "$GITHUB_OUTPUT"; echo "→ nenhuma página tocada: pulando portões de texto e de navegador"
             fi
           fi
-      # 30/09/2026 (§316): os cinco portões de TEXTO saíram do bloco "sempre". Eles leem páginas,
-      # folhas e fichas — um PR que só toca `.py` de coletor não tem como afetá-los, e eles custam
-      # cerca de 100 s. Continuam bloqueantes onde podem falhar.
+      # 30/09/2026 (§316): os portões de TEXTO saíram do bloco "sempre"; 16/10/2026: o verificador
+      # único de texto público voltou para lá (regra de dado, barra a publicação) e aqui fica só o
+      # que é de PR — a forma e as rampas.
       - name: Portões de texto (só se página, estilo ou ficha mudaram)
         if: steps.diff.outputs.pagina_mudou == 'true'
         run: |
           set -e
-          # assunto: texto
-          # barra_publicacao: sim
-          node scripts/verificar_texto_publico.js
-          # assunto: texto
-          node scripts/verificar_texto_publico.js --autoteste
-          # A7-03 (12/10/2026): regras de forma (data ISO, undefined, {x}, texto interno, ponto
-          # decimal). No PR, sem barrar a publicação do dia.
+          # A7-03 (12/10/2026): regras de FORMA (data ISO, undefined, {x}, texto interno, ponto
+          # decimal) só no PR, sem barrar a publicação do dia — o mesmo verificador, com `--forma`.
           # assunto: texto
           node scripts/verificar_texto_publico.js --forma
-          # assunto: texto — regra 0 da imprensa: nada escrito à mão que dependa do dado
-          node scripts/verificar_imprensa_do_dado.js
-          # assunto: texto — a semana epidemiologica nao chega ao leitor (editoria, 07/10/2026)
-          node scripts/verificar_semana_epidemiologica.js --autoteste
-          # assunto: texto
-          node scripts/verificar_semana_epidemiologica.js
           # assunto: cor — as rampas dos mapas passam em contraste e em daltonismo
           python3 scripts/verificar_rampas_dos_mapas.py
-          # assunto: cor
-          python3 scripts/verificar_rampas_dos_mapas.py --autoteste
-          # assunto: texto — as quatro frases do enquadramento federal são literais, aprovadas
-          # pela editoria, e nenhuma destas listas cria dever de plano para o município.
-          python3 scripts/verificar_textos_enquadramento.py
-          # assunto: texto
-          python3 scripts/verificar_textos_enquadramento.py --autoteste
-          # assunto: cor
-          node scripts/verificar_figuras.js
-          # assunto: texto
-          node scripts/verificar_fichas_semanticas.js
-          # assunto: texto
-          node scripts/verificar_legendas.js
       # O navegador do Playwright era baixado a cada execução. O cache o guarda por versão.
       # 07/10/2026: este passo rodava SO quando a pagina mudava, e o portao da corrida do medidor
       # roda SEMPRE. Num PR que nao toca pagina -- um de documentacao, por exemplo -- o cache nao
@@ -549,37 +427,25 @@ jobs:
           # contratadas, que INCORPORA o de layout e acrescenta tipografia, as quatro funções da
           # figura, vocabulário, forma dos números e acessibilidade. Ele lê layout/regras.json e o
           # contrato de cada página; exceção só por layout/excecoes.json, com motivo e data.
-          python3 scripts/verificar_conformidade.py --autoteste
           # assunto: texto
           # 09/10/2026 (ajuste 7): o guia em PDF e a imagem do Proteja-se, gerados no navegador.
-          node scripts/verificar_guia_proteja_se.js --autoteste
           # assunto: texto
           node scripts/verificar_guia_proteja_se.js
           # assunto: texto
           # 09/10/2026 (ajustes 3 e 5): grade de números sem cartão órfão; figura com um título só.
-          python3 scripts/verificar_grades_de_numeros.py --autoteste
           # assunto: texto
           python3 scripts/verificar_grades_de_numeros.py
           # assunto: texto
           # 09/10/2026 (ajuste 6): texto do mouse dos mapas sem dado cru; um marcador por capital.
-          node scripts/verificar_dicas_dos_mapas.js --autoteste
           # assunto: texto
           node scripts/verificar_dicas_dos_mapas.js
           # assunto: cor texto
           # 09/10/2026 (ajuste 10): figuras de contagem da Defesa civil (Chromium real).
           node scripts/verificar_figuras_de_contagem.js
-          # assunto: texto
-          # 09/10/2026 (ajuste 1): vocabulário proibido no texto que os scripts das páginas escrevem.
-          python3 scripts/verificar_vocabulario_dos_scripts.py --autoteste
-          # assunto: texto
-          python3 scripts/verificar_vocabulario_dos_scripts.py
           # assunto: dado
           # 09/10/2026 (ajuste 2): todo documento pontuado aponta para o endereço, ou declara a lacuna.
-          python3 scripts/verificar_proveniencia.py --autoteste
           # assunto: dado
           python3 scripts/verificar_proveniencia.py
-          # assunto: dado
-          python3 scripts/proveniencia_estadual.py --autoteste
           # assunto: cor texto
           python3 scripts/verificar_conformidade.py
           # assunto: dado
@@ -671,10 +537,8 @@ jobs:
           python3 scripts/testar_detector_defeso.py
           # §182 (23/09/2026): a reavaliação de suspensão por defeso tem régua própria — evidência
           # truncada não reabre fonte, e notícia institucional suspensa não fecha o canal de documento.
-          python3 scripts/reavaliar_fontes_suspensas.py --autoteste
           python3 verificar_resposta.py
           # 12/10/2026 (A6-27): todo o log com data ISO e decisão do vocabulário fechado.
-          python3 scripts/verificar_esquema_do_log.py --autoteste
           python3 scripts/verificar_esquema_do_log.py
           # §255 (27/09/2026): os cartões "Esta semana em números" da Imprensa. Trava paridade
           # (o que a página mostra é o que o dado diz), período em todo cartão de janela, zero
@@ -684,12 +548,9 @@ jobs:
           # dd/mm/aaaa e 71 em ISO, e um parser de um formato só mediu "71 decretos sem data" —
           # quase virou lacuna falsa no CHANGELOG.
           python3 scripts/verificar_imprensa.py
-          python3 scripts/verificar_imprensa.py --autoteste
           # O portão de COERÊNCIA da imprensa precisa de navegador (ele compara o número da
           # imprensa com o número renderizado na página de origem), e por isso vive no portão de
           # layout, depois da instalação do Chromium. Aqui fica só o autoteste dele, que é offline.
-          python3 scripts/verificar_imprensa_coerencia.py --autoteste
-          python3 gerar_imprensa_semana.py --autoteste
           # §256 (27/09/2026): paridade entre data/cobertura_qd.json e o bloco
           # varredura_diarios de data/verificacao_resumo.json. Os dois contam a MESMA coisa —
           # municípios com diário indexado no Querido Diário — e nada garantia que concordassem.
@@ -698,7 +559,6 @@ jobs:
           # publicadas no mesmo trabalho. Reprova também zero indexado: 5.571 em false é falha
           # de coleta, não um fato.
           python3 scripts/verificar_paridade_cobertura_qd.py
-          python3 scripts/verificar_paridade_cobertura_qd.py --autoteste
           # Errata C29 (01/10/2026): imprensa DESCOBRE, nunca REGISTRA. A auditoria pedida
           # pela editoria encontrou Curitiba pontuando como `plano` com URL de jornal e fonte
           # "via imprensa regional" — 2,8 pontos de PR apoiados em notícia, desfeitos por errata
@@ -707,59 +567,34 @@ jobs:
           python3 scripts/verificar_imprensa_nao_registra.py
           # §283 (28/09/2026): frescor — compara o que foi coletado com o que foi publicado.
           # O autoteste é offline e puro; o vigia com rede vive em verificar_publicado.yml.
-          python3 scripts/frescor.py --autoteste
-          python3 scripts/corrigir_log_do_aplicador.py --autoteste
-          python3 scripts/rejulgar_decisoes_do_juiz.py --autoteste
-          python3 aplicar_promocoes_do_juiz.py --autoteste
-          python3 coletar_srag_sivep.py --autoteste
-          python3 coletar_sg_esus.py --autoteste
           python3 saude_opendatasus.py
-          python3 coletar_arboviroses_sinan.py --autoteste
-          python3 coletar_obitos_registro_civil.py --autoteste
-          python3 verificar_pista_imprensa.py --autoteste
-          python3 coletar_cadastro_prioritarios.py --autoteste
-          python3 scripts/busca_dirigida_do_ato.py --autoteste
-          python3 coletar_prioritarios_mma.py --autoteste
           # Bloco A do MARÉ Saúde (01/10/2026): o funil dos planos de saúde estaduais. O
           # autoteste é offline e puro; a trava que ele cobra é a que importa aqui — zero
           # resultado de motor NUNCA pode produzir a decisão que autoriza "não localizado".
-          python3 coletar_saude_estadual.py --autoteste
           # Bloco B do MARÉ Saúde (01/10/2026): a v0.4, calculada em paralelo. O autoteste cobra
           # a trava central — sem coordenação verificada a UF NÃO recebe número, porque somar um
           # terço de zero afirmaria ausência de sala de situação por ausência de busca — e a trava
           # estrutural de que este gerador não escreve no índice nem no arquivo que a página lê.
-          python3 gerar_monitor_saude_v04.py --autoteste
           # O juiz da saúde (01/10/2026). O autoteste cobra a classificação do que o ato
           # institui, o degrau de coordenação — ato de 2026 que NÃO nomeia o ciclo é permanente,
           # não criado para ele — e que o degrau nunca conclua ausência: este juiz só vê
           # documentos que existem, e marcar ausência exige bateria completa, que é outro passo.
-          python3 julgar_saude.py --autoteste
-          python3 scripts/fechar_saude.py --autoteste
-          python3 trocar_para_v04.py --autoteste
           # O coletor de transferências por município (01/10/2026). O autoteste cobra as
           # travas que importam: só linha de administração MUNICIPAL entra (as outras inflariam o
           # número da cidade), valor ilegível levanta em vez de virar zero, município que não casa
           # fica declarado com o valor, reler o mesmo mês é idempotente, e o mês em curso não é
           # coletado — o Portal publica o arquivo fechado.
-          python3 coletar_transferencias_municipais.py --autoteste
           # Regra de sincronia do "Para gestores" (01/10/2026): a seção de recursos é só
           # ponteiro para o Financiamento, e ponteiro quebra em SILÊNCIO — link para arquivo
           # inexistente o navegador acusa, âncora para `id` inexistente não. Já aconteceu duas
           # vezes: a seção do período eleitoral apontando para um calendário apagado, e a imprensa
           # prometendo um modelo de LAI que saiu do site.
           python3 scripts/verificar_ancoras_internas.py
-          python3 scripts/verificar_ancoras_internas.py --autoteste
-          python3 coletar_normais_inmet.py --autoteste
-          python3 scripts/gerar_enquadramento_card.py --autoteste
-          python3 scripts/verificar_cadencia_coletores.py --autoteste
-          python3 coletar_semiarido_sudene.py --autoteste
 
       - name: Idempotência dos derivados — o gerador dá sempre o mesmo resultado
         if: steps.diff.outputs.dado_mudou == 'true'
         timeout-minutes: 30
         run: |
-          # assunto: dado
-          python3 scripts/verificar_idempotencia_dos_derivados.py --autoteste
           # assunto: dado
           python3 scripts/verificar_idempotencia_dos_derivados.py
 
@@ -798,32 +633,20 @@ jobs:
           set -e
           python3 scripts/testar_cadencia_publicacao.py
           python3 scripts/testar_contador_varredura.py
-          python3 scripts/testar_contador_varredura.py --autoteste
           python3 scripts/testar_nivel_log_buscas.py
           python3 scripts/testar_reposicao_dominio.py
           python3 scripts/testar_ordem_prioridade_ufs.py
           # §127 (20/09/2026): sondas passam a ter autoteste bloqueante.
           # Não incluídos nos PRs #305/#306 para não conflitar com #303 (§123).
           pip install openpyxl==3.1.5 --break-system-packages -q
-          python3 scripts/sondar_enso_probabilidades.py --autoteste
-          python3 scripts/sondar_munic_ibge.py --autoteste
-          python3 scripts/sondar_credenciais.py --autoteste
       - name: Autotestes dos coletores
         if: steps.diff.outputs.dado_mudou == 'true'
         run: |
-          for c in coletar_s2id coletar_recursos_resposta coletar_doe coletar_declarado_nacional coletar_diarios_municipais coletar_diarios_consorciados coletar_saude coletar_financiamento gerar_lai gerar_painel coletar_cobertura_qd coletar_execucao_mps coletar_transferegov ler_caixa_lai; do python3 $c.py --autoteste; done
-          python3 scripts/ingerir_ocp_midr.py --autoteste
           python3 gerar_feeds.py --self-test
-          python3 triar_confianca_pistas.py --autoteste
-          python3 revisar_pistas.py --autoteste
-          python3 gerar_card_municipios.py --autoteste
-          python3 seguir_pistas.py --autoteste
           # §164 (22/09/2026): sonda de camada (painéis) — autoteste bloqueante desde a entrada.
-          python3 sondar_paineis.py --autoteste
           # §184 (23/09/2026): busca ativa de domínio por UF. O autoteste é offline (rede injetada) e
           # trava a ordem de prova — título > curadoria humana > corpo > palpite — mais a regra que
           # impede endereço que responde sem se identificar de virar domínio oficial.
-          python3 descobrir_dominios.py --autoteste
           # §185 (23/09/2026): a política de robots.txt decidida pela editoria — ler, respeitar o
           # Crawl-delay, acessar documento público com cliente identificado e DEIXAR RASTRO. O
           # autoteste roda sem rede e trava as quatro partes, inclusive o rastro do canal renderizado.
@@ -841,9 +664,6 @@ jobs:
           # auxílio humano (imprime os quatro gabaritos de busca de uma sessão de verificação), e
           # por isso não entra na rotina automatizada: entra como portão, para que a estrutura de
           # data/financiamento_uf.json e o vocabulário de status continuem válidos.
-          python3 coletar_espin.py --autoteste
-          python3 buscar_protocolo_calor.py --autoteste
-          python3 coletar_siconfi_182.py --autoteste
           python3 buscar_financiamento_preventivo.py --check
           # §209 (24/09/2026): leitor único da página de consulta do DOU. O DOU trocou o
           # <input value="{json}"> por um <script type="application/json"> e as duas cópias do
@@ -881,7 +701,6 @@ jobs:
           # mais importa é a de 23/09 — duas execuções idênticas são DUAS tentativas, não uma;
           # sem ela o autoteste passava com a dedução por conteúdo dentro, e foi assim que quase
           # 3.000 execuções sumiram caladas.
-          python3 scripts/unir_conflito_de_rodada.py --autoteste
           # §251 (27/09/2026): o registro de erros de LOCALIZAÇÃO e as sete fixtures de 27/09.
           # Entram aqui os dois AUTOTESTES, que passam. A CORRIDA das fixtures
           # (`scripts/testar_fixtures_localizacao.py --seco`) fica DE FORA de propósito: ela é
@@ -890,13 +709,10 @@ jobs:
           # evidência registrada, não erro a esconder. Pôr uma corrida vermelha na lista
           # derrubaria o CI e contrariaria "nada sobe com portão vermelho".
           # Ela entra na lista no PR que fizer as sete passarem — e só então.
-          python3 gerar_erros_localizacao.py --autoteste
-          python3 scripts/testar_fixtures_localizacao.py --autoteste
           # §226 (26/09/2026): o coletor de transferências do Portal da Transparência estava no
           # pipeline SEM autoteste e sem portão — o único assim entre os que pedem rede. O
           # autoteste trava os três defeitos corrigidos: 504 transitório perdia o município, 429
           # era laço infinito, e desistir era um print em vez de lacuna declarada.
-          python3 atualizar_transferencias.py --autoteste
           # §220 (25/09/2026): autoteste que escreve no banco não é autoteste offline. Um
           # deles gravou OITO execuções no log real — mockava rede e arquivos, e não
           # `registrar_lacuna`, que chama `log_busca`, que grava. As travas estruturais dos
@@ -904,15 +720,22 @@ jobs:
           # de coletores_base: só a execução mostra. Este portão roda os 51 autotestes e
           # compara data/ antes e depois, por CONTEÚDO — regravar idêntico é aviso, alterar
           # reprova. Achou também um autoteste vermelho que nenhum outro portão rodava.
+          # 16/10/2026 (consolidação item 6, janela D): este comando roda TODO `*.py` e `scripts/*.py`
+          # que aceita `--autoteste` (210 na data) e reprova em qualquer vermelho (§228). Por isso os
+          # 131 comandos `python3 <script>.py --autoteste` que a suíte repetia um a um — todos os do
+          # job de dado, o laço dos coletores e os do bloco "sempre" cujo autoteste não abre arquivo
+          # real nenhum (medido com gancho de auditoria do Python) — saíram: nenhum deles pegava
+          # regressão que este não pega, e autoteste de `.py` só muda quando um `.py` muda, o que
+          # aciona `dado_mudou`. Ficam no bloco "sempre" os autotestes que leem `layout/`,
+          # `conteudo/`, `schemas/`, página ou workflow de verdade (mudam sem `.py` mudar), os em
+          # JavaScript (fora deste comando) e os `--self-test`/`--check`.
           python3 scripts/verificar_autotestes_isolados.py
           # §165 (23/09/2026): coletor do painel do AM. O autoteste é offline por construção
           # (rede, evidência, log e livro de fontes injetados) e confere a regra que dá sentido
           # ao coletor: ano no painel é `declarado`, nunca `documentado`.
-          python3 coletar_painel_am.py --autoteste
           # §166 (23/09/2026): cobertura declarada por canal. Estrutura inerte (nenhuma página
           # a lê ainda); o autoteste trava a regra que lhe dá sentido: erro de acesso é
           # tentativa, nunca verificação — senão a nota de rodapé repetiria o erro que corrige.
-          python3 gerar_cobertura_declarada.py --autoteste
           # §163 (22/09/2026): o self-test do juiz passa a ser bloqueante. O cenário 6 confere que a
           # cadeia de derivados que ele regenera é a MESMA de scripts/verificar_derivados.sh —
           # divergir foi o que deixou o portão 12 vermelho na main.
@@ -921,84 +744,59 @@ jobs:
           # `texto_hash` — e o portão 6 nunca conferia o hash do texto, só o da cópia binária. O
           # autoteste trava as quatro regras: contagem sem marcadores, escrita em LF, reindexação pelo
           # arquivo em disco (que é a verdade) e `tamanho` intacto (ele descreve `arquivo`).
-          python3 scripts/remediar_cpf_evidencias.py --autoteste
           # §176 (23/09/2026): o texto integral do diário oficial não guardava hash nenhum (148 itens),
           # e quatro apontavam para um .txt que nunca entrou no commit da rodada. O autoteste trava as
           # duas regras: fila pelo índice (não só pelas pistas) e hash ausente selado, divergente acusado.
-          python3 scripts/preservar_textos_integrais.py --autoteste
           # §177 (23/09/2026): OCR do PDF escaneado. O autoteste roda sem rede e sem Tesseract, e trava
           # as regras que dão sentido ao recurso: a fila só chama escaneado, o texto de OCR tem arquivo
           # próprio (não sobrescreve a camada de texto), CPF redigido antes do hash, marcador e LF.
-          python3 preservar_evidencias.py --autoteste
           # 27/09/2026 (PR 1 do juiz automático): zero resultado bruto na busca web não é ausência.
           # O autoteste do coletor trava a regra de decisão (motor_sem_resposta, duas rodadas para
           # coberto_sem_mencao) e o conjunto de nove consultas; o portão do funil trava a contagem
           # por etapa da rodada, com o teto de 25% de motor sem resposta.
-          python3 funil.py --autoteste
-          python3 scripts/verificar_funil.py --autoteste
           python3 scripts/verificar_funil.py
-          python3 scripts/corrigir_zero_resultado_no_log.py --autoteste
-          python3 scripts/medir_revocacao_das_consultas.py --autoteste
           # 28/09/2026 (item 7b): o disjuntor por motor de origem. O autoteste trava o que dá sentido
           # a ele — o teto é "acima de 50%" e não "a partir de", uma sentinela muda não derruba e duas
           # derrubam, sucesso zera a sequência, e NUNCA sobram menos de dois motores ativos.
-          python3 motores_busca.py --autoteste
           # 27/09/2026 (PR 2 do juiz automático): a regra R7 revisada. Os dez canários são um
           # documento por desfecho — plano novo, readaptado, de elaboração, decreto de resposta,
           # aprovação por conselho, plano de geada, notícia sem documento, PDF ilegível, ente errado
           # e citação incompleta. Falso positivo é pior que falso negativo: é isso que eles travam.
-          python3 juiz.py --autoteste
-          python3 julgar_filas.py --autoteste
-          python3 scripts/amostra_auditoria_semanal.py --autoteste
           # 28/09/2026 (§265, itens 1 e 1a do desacoplamento): a linha de saúde por script. O
           # autoteste trava o que dá sentido a ela — itens nulo é "não medido" e nunca zero, o resumo
           # do erro é a linha decisiva e não o log inteiro, a poda mantém sete dias, e o próprio
           # autoteste não escreve em data/.
-          python3 scripts/saude_pipeline.py --autoteste
           # item 4 (28/09/2026): o log vira JSONL mensal. O portão de paridade é o que impede a perda
           # silenciosa — com o log fatiado, perder um arquivo de mês passaria sem ruído, porque o JSON
           # continuaria válido, só menor. Foi assim que uma união por conteúdo apagou quase 3.000
           # execuções em 23/09.
-          python3 scripts/migrar_log_para_jsonl.py --autoteste
-          python3 scripts/gerar_resumo_do_log.py --autoteste
-          python3 scripts/verificar_paridade_log.py --autoteste
           python3 scripts/verificar_paridade_log.py
           # §266: o painel que a editoria lê sem cavar log. O portão reprova script ESSENCIAL
           # com erro (recalcular, gerar_*) e apenas ALERTA quando um coletor erra duas rodadas
           # seguidas — fonte fora do ar é rotina; coletor quebrado não é.
-          python3 scripts/gerar_saude_pipeline.py --autoteste
           python3 scripts/gerar_saude_pipeline.py --check
           # item 3 (28/09/2026): binário novo de evidência não entra no git. O texto extraído
           # continua; o binário vai para o ativo de Release do mês. Extensão não declarada bloqueia —
           # a dúvida não passa calada.
-          python3 scripts/verificar_binario_novo_em_evidencias.py --autoteste
           # §275: informativo enquanto a trava do .gitignore está revertida — ela custou 1.496 páginas
           # de prova na primeira noite no ar, porque o lote de Release cobria só um dos caminhos que
           # preservam evidência.
           python3 scripts/verificar_binario_novo_em_evidencias.py --contra origin/main
-          python3 scripts/declarar_evidencia_perdida.py --autoteste
           # 03/10/2026 (alerta do GitHub de 01/10): credencial de TERCEIRO dentro da página
           # preservada. Eram 18 arquivos — chave do Flickr e do Google Maps —, servidos pelo
           # nosso domínio porque `publish = "."` publica a raiz. A redação agora é na porta de
           # preservação, antes do hash; este portão barra a volta pelo diff do PR.
-          python3 scripts/verificar_evidencia_sem_segredo.py --autoteste
           python3 scripts/verificar_evidencia_sem_segredo.py --contra origin/main
-          python3 scripts/remediar_segredos_evidencias.py --autoteste
           # 28/09/2026 (decisão da editoria, item 1): o Querido Diário volta ao funil. O autoteste do
           # juiz trava o recorte do ato — a pista do QD aponta a EDIÇÃO, e o documento primário do
           # §5.2.1 é o ATO. O da fila trava que ela gera ALVOS, não pistas: a primeira tentativa montou
           # pistas com o excerto errado, e a medição mostrou antes de confiar.
-          python3 scripts/fila_do_juiz_querido_diario.py --autoteste
           python3 consultar_querido_diario.py --check
-          python3 consultar_querido_diario.py --autoteste
           # 28/09/2026 (decisão da editoria, item 2): rede social é canal de DESCOBERTA. O portão cobra
           # a condição que a autoriza — nada de rede social como fonte de registro nem como fonte no
           # site. O autoteste dele pegou o buraco que eu deixei: fonte escrita à mão ("Instagram da
           # Prefeitura") não tem domínio, e a primeira versão olhava só o domínio.
-          python3 monitorar_redes_oficiais.py --autoteste
-          python3 scripts/verificar_rede_social_nao_e_fonte.py --autoteste
           python3 scripts/verificar_rede_social_nao_e_fonte.py
-          python3 scripts/empacotar_evidencias.py --autoteste
 
 
   portoes:

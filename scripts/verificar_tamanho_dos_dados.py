@@ -150,6 +150,8 @@ def _autoteste() -> int:
 def main(argv: list) -> int:
     if "--autoteste" in argv:
         return _autoteste()
+    if _autoteste() != 0:   # 16/10/2026: o autoteste roda antes da conferência, num comando só
+        return 1
     agora = tamanhos_em("HEAD")
     if not agora:
         print("✗ TAMANHO DOS DADOS: não consegui ler a árvore do git")
