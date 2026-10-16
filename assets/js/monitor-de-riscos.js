@@ -656,7 +656,7 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
   const pd = (R.ultimos_30_dias || {}).por_dia || [];
   const alvo = document.getElementById('fogoSerie');
   if (alvo && pd.length > 1) {
-    const W = 320, H = 64, max = Math.max(...pd.map(p => p[1])) || 1;
+    const W = 480, H = 72, max = Math.max(...pd.map(p => p[1])) || 1;
     const x = i => 4 + i * (W - 8) / (pd.length - 1), y = v => H - 18 - v / max * (H - 26);
     const pts = pd.map((p, i) => x(i).toFixed(1) + ',' + y(p[1]).toFixed(1)).join(' ');
     alvo.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Focos por dia de '

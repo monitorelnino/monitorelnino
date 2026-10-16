@@ -1311,10 +1311,10 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
   padding-bottom:var(--sp-2); border-bottom:1px solid var(--line);}
 .faixa-previsto dt{font-family:var(--font-dado); font-size:var(--fs-small); line-height:var(--lh-small); font-weight:var(--peso-semibold);}
 .faixa-previsto dd{margin:0;}
-@media (max-width: 560px){ .faixa-previsto > div{grid-template-columns:minmax(0, 1fr); gap:var(--sp-1);} }
-/* Cartão de mapa com dados ao lado (fogo): mapa à esquerda, números, série e tabelas à direita. */
-.cartao-mapa-lado{display:grid; grid-template-columns:minmax(0, 3fr) minmax(0, 2fr); gap:var(--esp-grade); align-items:start;}
-@media (max-width: 860px){ .cartao-mapa-lado{grid-template-columns:minmax(0, 1fr);} }
+@media (max-width: 640px){ .faixa-previsto > div{grid-template-columns:minmax(0, 1fr); gap:var(--sp-1);} }
+/* Cartão de mapa com dados ao lado (fogo) e cartão de tabela: a mídia não tem a proporção do mapa. */
+.cartao-mapa.figura--dupla .figura-midia, .cartao-mapa.figura--tabela .figura-midia{aspect-ratio:auto; overflow:visible; align-items:start;}
+.mapa-dupla > svg{width:100%; height:auto; display:block;}
 .lado-dados{display:grid; gap:var(--sp-3);}
 .lado-numeros{display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:var(--sp-3); margin:0;}
 .lado-numeros dt, .lado-rotulo{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption);
@@ -1325,7 +1325,7 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
 .lado-serie svg{width:100%; height:auto; display:block;}
 .lado-serie .serie-linha{fill:none; stroke:var(--fogo); stroke-width:1.5;}
 .lado-serie .serie-alvo{fill:transparent;}
-.lado-serie .tk{font-family:var(--font-dado); font-size:12px; fill:var(--muted);}
+.lado-serie .tk{font-family:var(--font-dado); font-size:var(--fs-caption); fill:var(--muted);}
 .dica-fonte{color:var(--muted); font-size:var(--fs-caption);}
 .lista-estados{margin:var(--sp-2) 0 0; padding-left:var(--sp-4); font-size:var(--fs-caption);
   line-height:var(--lh-caption); color:var(--ink);}

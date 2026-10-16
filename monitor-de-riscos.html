@@ -120,10 +120,10 @@
          vira uma faixa de etiquetas por família; cada bloco de família abre com "Boletim prevê para".
          O fogo ocupa a largura inteira, com os números ao lado do mapa; seca, ar e calor em três colunas. -->
     <div class="grade-figuras grade-figuras--1">
-      <figure class="figura cartao-mapa" id="boxRiscoPrevisto">
+      <figure class="figura figura--tabela cartao-mapa" id="boxRiscoPrevisto">
         <h3 class="figura-titulo" id="tituloRiscoPrevisto" data-conteudo="monitor-de-riscos.titulo_risco_previsto.titulo">Risco previsto por estado</h3>
         <p class="figura-sub" id="riscoPrevistoSub">Boletim do Painel El Niño · até março de 2027</p>
-        <dl class="faixa-previsto" id="faixaRiscoPrevisto"></dl>
+        <div class="figura-midia"><dl class="faixa-previsto" id="faixaRiscoPrevisto"></dl></div>
       </figure>
     </div>
     <div class="faixa-selo faixa-selo--familia">
@@ -131,14 +131,11 @@
       <p class="boletim-preve" id="preveSeca"></p>
     </div>
     <div class="grade-figuras grade-figuras--1">
-      <figure class="figura figura--mapa cartao-mapa cartao-mapa--lado" id="boxFogo">
+      <figure class="figura figura--mapa figura--dupla cartao-mapa" id="boxFogo">
         <h3 class="figura-titulo" id="tituloFogo" data-conteudo="monitor-de-riscos.titulo_fogo.titulo">Focos de fogo nas últimas 24 horas</h3>
         <p class="figura-sub" id="fogoSub">Últimas 24 horas · hachura: estados com fogo previsto pelo boletim</p>
-        <div class="cartao-mapa-lado">
-          <div>
-            <div class="figura-midia"><svg id="mapaFogo" role="img" aria-label="Mapa do Brasil com os focos de calor das últimas 24 horas na posição em que foram detectados, agrupados em células de cerca de 11 quilômetros, segundo o INPE" viewBox="0 0 480 460"></svg></div>
-            <div class="map-legend" id="legFogo"></div>
-          </div>
+        <div class="figura-midia">
+          <div class="mapa-dupla"><svg id="mapaFogo" role="img" aria-label="Mapa do Brasil com os focos de calor das últimas 24 horas na posição em que foram detectados, agrupados em células de cerca de 11 quilômetros, segundo o INPE" viewBox="0 0 480 460"></svg></div>
           <div class="lado-dados" id="fogoLado">
             <dl class="lado-numeros" id="fogoNumeros"></dl>
             <p class="lado-rotulo" id="fogoSerieRotulo" data-conteudo="monitor-de-riscos.fogo.serie_rotulo">Últimos 30 dias, focos por dia</p>
@@ -147,6 +144,7 @@
             <div class="tbl-wrap" tabindex="0" role="region" aria-label="Focos por bioma"><table class="mun-table" id="tblFogoBioma"><thead><tr><th>Bioma</th><th>Focos em 24 h</th><th>% do total</th></tr></thead><tbody></tbody></table></div>
           </div>
         </div>
+        <div class="map-legend" id="legFogo"></div>
       </figure>
     </div>
     <div class="grade-figuras grade-figuras--3 grade-mapas">
