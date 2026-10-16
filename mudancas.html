@@ -49,6 +49,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/10/2026 · Consolidação item 5: três funções copiadas viram uma</dt>
+      <dd>`data_da_edicao()` (data de `meta.json`) sai de dez arquivos para `coletores_base` — em dois a reserva chamava `datetime._hoje()`, que não existe; a leitura de PDF com pdfplumber primeiro dos quatro boletins estaduais vira opção de `extrair_texto_por_pagina`; `_gh` dos quatro scripts de temporizador fica só no despachante. −144 linhas.</dd>
       <dt>16/10/2026 · Saúde: sai o texto vazado</dt>
       <dd>Saem da página de saúde &quot;Estado das fontes&quot;, &quot;Bateria estadual executada em&quot; e a versão &quot;v0.3&quot;; &quot;não relaciona casos ao El Niño&quot; fica uma vez. Na verificação por estado, cada linha diz título, órgão, data do documento e link; o que não é título vai para `nota_interna`, que nenhuma página mostra (notas, pontuação inalterada). O contrato reprova os termos vazados.</dd>
       <dt>16/10/2026 · DOE-PI por edição; RR com o motivo medido</dt>
@@ -167,8 +169,6 @@
       <dd>Com a troca para a fonte primária, o indicador de síndrome respiratória grave perdeu os campos que descreviam o nowcasting do InfoGripe — e a legenda passou a emitir uma entrada sem rótulo: quadradinho de cor sem nome. O portão de runtime pegou, e só na CI, porque lá a série já existia. A SRAG volta a ter segunda barra, agora como &quot;parciais, sem estimativa&quot;, e o renderizador deixa de emitir entrada sem rótulo para qualquer indicador. Em `METODOLOGIA.md` §82.</dd>
       <dt>02/10/2026 · MARÉ Saúde: fechar os 27 sem nova instrução</dt>
       <dd>O juiz passa a rodar logo depois dos quatro canais, toda noite, e o fechamento mede, pelo log, em quais UFs os quatro rodaram sem motor doente — só nessas cabe &quot;não localizado&quot;. Medido: 0 de 27 hoje. A troca para a v0.4 acontece sozinha quando as 27 tiverem plano e coordenação, com errata encadeada; sem a condição, nada muda. O publicador imprime quantas faltam e por quê. Em `METODOLOGIA.md` §84.</dd>
-      <dt>02/10/2026 · Imprensa dinâmica: grade do dado, por grupo, com variação</dt>
-      <dd>16 cartões em cinco grupos, cada um com fonte, período e variação sobre a semana anterior — calculada do mesmo dado, deslocando a janela pela data do ato. &quot;Avisos&quot; vira &quot;municípios sob alerta&quot;, na unidade da Defesa civil. A grade sai do HTML e passa a ser desenhada do JSON. Quatro indicadores declaram por que não são calculáveis, em vez de mostrar zero. Portão de coerência novo. Em `METODOLOGIA.md` §83.</dd>
     </dl>
   </section>
 </main>
