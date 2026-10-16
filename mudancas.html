@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/10/2026 · Ar medido por estação: IQAr do MMA, PM2,5 do OpenAQ e da RedeAr</dt>
+      <dd>O elo dos sinais grava `data/ar_medido.json`: IQAr de cada estação do MonitorAr como o órgão publica, PM2,5 do OpenAQ casado à mesma estação (≤ 300 m), PM2,5 dos sensores IPAM/RedeAr sem índice. Medição com mais de 36 h é lacuna; resposta preservada por hash. METODOLOGIA §41.7 traz as três réguas e a errata do &quot;não há índice nacional aberto&quot;. A figura vem depois.</dd>
       <dt>16/10/2026 · Topo sem a linha &quot;2026/2027 · Monitoramento independente…&quot;; cidade troca sem botão</dt>
       <dd>Sai do topo de todas as páginas a linha &quot;2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab&quot; e a faixa logo abaixo dela; a informação segue no rodapé. No cartão da cidade sai o botão ×: ao clicar de novo no campo do município, a lista do estado volta inteira e o cartão anterior fica até a nova escolha (editoria, 16/10).</dd>
       <dt>16/10/2026 · O envio do formulário fica na inicial; sai a página Obrigado</dt>
@@ -165,8 +167,6 @@
       <dd>Dependência do handover do blog: os atos de resposta não tinham `tipo_evento`. Ele passa a vir da COBRADE do S2iD — 275 chuva, 327 seca, 66 vendaval, 4 fogo, 257 sem família — e não da `causa`, que nos registros federais diz o canal do ato, não o evento. O handover pedia um `.cartao-destaque` que não existe no sistema de design; os contratos do blog e da imprensa registram a divergência. Em `scripts/tipo_de_evento_dos_atos.py`.</dd>
       <dt>03/10/2026 · Dizemos o que disponibilizamos; o blog conta o ciclo</dt>
       <dd>Duas regras para todo o site: nenhuma frase sobre código, base de dados ou licença de dados, e o blog só sobre acontecimentos do ciclo, em prosa escrita por pessoa. Saem a pasta de dados abertos, a planilha da edição e o release gerado; nasce `mudancas.html`, com as 57 entradas do CHANGELOG. Blog com boletim congelado por edição e aprovação obrigatória; imprensa só com o estável. METODOLOGIA §103.</dd>
-      <dt>03/10/2026 · A corrente na janela, as listas federais primeiro, e a fila que para de crescer</dt>
-      <dd>Corrente às 22h, busca web com cinco rodadas em paralelo, evidências e OCR de volta ao elo, painel da noite com portão para elo que não roda. Prioridade de coleta pelas três listas federais (3.160 municípios), com cursor persistido. Fila de pistas: limpeza única fechou 8.025 com o motivo de cada uma (de 8.678 abertas para 654), esquema cobrado na gravação, e triagem como último elo de toda rodada. METODOLOGIA §102.</dd>
     </dl>
   </section>
 </main>
