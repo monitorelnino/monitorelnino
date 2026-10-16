@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #PR · Saúde: títulos e subtítulos dizem o que a figura é
+
+O mapa do índice passa a "MARÉ Saúde por estado, de 0 a 100", com o subtítulo do cálculo em uso; "prontidão" sai da página. Os semanais nomeiam o ano e os anos da faixa habitual (2019 a 2025). A cidade fora da leitura semanal aparece como "não foi lido pelo MARÉ nesta semana". Sai a busca municipal antiga, sem elemento na página.
+
 ## 2026-10-16 · #772 · Um verificador de texto público (consolidação item 3)
 
 `verificar_texto_publico.js` absorve legendas e prosa (portão 19), semana epidemiológica, palavras por página, componente de figura, fichas semânticas, regra 0 da Imprensa, enquadramento federal, vocabulário dos scripts e o `--so-texto-proibido`: nove scripts que renderizavam as mesmas páginas (dois com a URL errada, lendo o texto de reserva) saem. Regras em `layout/regras.json`; 72 casos de mutação no autoteste. Linhas .py/.js/.yml: −842; portões 272 → 259.
