@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #PR · Triagem e preparação de pistas com um dono só (F66)
+
+O juiz de 16/10 perdeu o commit porque a busca web de cadência, fora da vez da noite, regravou o nível de confiança de pistas que a descoberta já tinha triado. Triagem fica só na descoberta e preparação só no juiz; a cadência e a rodada semanal apenas acrescentam pistas. O ensaio da noite reprova um segundo dono.
+
 ## 2026-10-16 · #778 · DOE-SP: o texto da publicação é decodificado e a homologação paulista casa
 
 A API do DOE-SP serve o ato com entidades HTML (`Situa&ccedil;&atilde;o`, `Pre&shy;feito`); sem decodificar, nenhum padrão de homologação casava. A forma paulista ("Homologa, por 180 dias, o decreto do Prefeito do Município de Guariba … Decreto municipal nº 5.019") entra como quarto padrão, com caso de teste do texto medido do Decreto 70.765.
