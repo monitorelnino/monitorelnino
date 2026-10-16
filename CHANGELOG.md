@@ -32,7 +32,7 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-16 · #PR · DOE-SP: o texto da publicação é decodificado e a homologação paulista casa
+## 2026-10-16 · #778 · DOE-SP: o texto da publicação é decodificado e a homologação paulista casa
 
 A API do DOE-SP serve o ato com entidades HTML (`Situa&ccedil;&atilde;o`, `Pre&shy;feito`); sem decodificar, nenhum padrão de homologação casava. A forma paulista ("Homologa, por 180 dias, o decreto do Prefeito do Município de Guariba … Decreto municipal nº 5.019") entra como quarto padrão, com caso de teste do texto medido do Decreto 70.765.
 
