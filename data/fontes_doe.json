@@ -122,8 +122,8 @@
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
    },
-   "motivo": "www.imprensaoficial.rr.gov.br expõe `_buscar/?termos=&ano_pesquisa=&mes_pesquisa=` e `_visualizar-mes/`; `_visualizar-doe/` deu timeout — rota a medir na próxima sonda",
-   "medido_em": "15/10/2026"
+   "motivo": "a listagem do mês (`_visualizar-mes/`) traz o caminho de cada PDF (2026/10/doe-AAAAMMDD.pdf), mas o arquivo só sai por POST em `_visualizar-doe/`, que não responde ao runner (timeout de 60 s em três sondas, 15 e 16/10); o PDF não está em rota direta (8 caminhos, 404)",
+   "medido_em": "16/10/2026"
   },
   "TO": {
    "adaptador": "busca_to",
@@ -252,17 +252,17 @@
    "medido_em": "15/10/2026"
   },
   "PI": {
-   "adaptador": null,
-   "url": "https://www.diariooficial.pi.gov.br",
-   "status": "sem adaptador de busca",
+   "adaptador": "edicao_pi",
+   "url": "https://www.diario.pi.gov.br/doe/",
+   "status": "a_verificar",
    "ultima_tentativa": "2026-10-16",
    "sondagem": {
     "veredito": "nao_respondeu",
     "motivo": "URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>",
     "sondado_em": "02/10/2026"
    },
-   "motivo": "www.diariooficial.pi.gov.br está parado em 20/12/2022; o diário atual vive em www.diario.pi.gov.br/doe/ (jQuery/DataTables, `/doe/busca`) — rota a medir na próxima sonda",
-   "medido_em": "15/10/2026"
+   "medido_em": "16/10/2026",
+   "caminho": "POST Api/listardiarios.json com filter_data devolve as edições do dia (suplementar incluído) e o PDF de cada uma em files/diarios/anexo/; texto extraível (runs 38878232356, 38879265290)"
   },
   "RN": {
    "adaptador": null,

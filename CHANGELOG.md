@@ -36,6 +36,10 @@ não pontuados permanecem na versão corrente.
 
 Nome por extenso volta a "MARÉ · Medida de Antecipação e Resposta ao El Niño" em páginas, geradores e METODOLOGIA (errata §5.1); `verificar_estrutura.js` passa a reprovar "Monitor de Antecipação". Inicial com a abertura aprovada (indicados pela União lidos do dado) e metadescrição nova; Defesa civil e ficha do município dizem "indicados pela União", nunca inscrição ou dever (`verificar_runtime_mapas.js`).
 
+## 2026-10-16 · #765 · DOE-PI por edição; RR com o motivo medido
+
+`coletar_doe.py` ganha `edicao_pi`: a listagem do dia do diário atual do Piauí (`www.diario.pi.gov.br/doe/`, a mesma rota que a tabela do sítio chama) dá cada edição, suplementar incluído, e o PDF. RR segue `sem adaptador de busca`: o PDF só sai por POST numa rota que não responde ao runner.
+
 ## 2026-10-16 · #763 · Rodapé só com o e-mail de contato
 
 O rodapé de todas as páginas, inclusive as do blog (pelo gerador), traz só o e-mail de contato; sai o rótulo "Imprensa:". Na Imprensa, o rodapé traz o e-mail de imprensa, que vive só nessa página.
