@@ -36,6 +36,10 @@ não pontuados permanecem na versão corrente.
 
 O mapa do índice passa a "MARÉ Saúde por estado, de 0 a 100", com o subtítulo do cálculo em uso; "prontidão" sai da página. Os semanais nomeiam o ano e os anos da faixa habitual (2019 a 2025). A cidade fora da leitura semanal aparece como "não foi lido pelo MARÉ nesta semana". Sai a busca municipal antiga, sem elemento na página.
 
+## 2026-10-16 · #780 · Nenhum texto sobre feed no site
+
+Sai do cartão de cada estado a linha do feed, e dos textos do blog o "· Feed" e a menção no aviso sem JavaScript (decisão da editoria de 16/10). "feed" entra no vocabulário proibido, que vale para a página, o catálogo e o texto escrito pelos scripts. Os arquivos do feed seguem no cabeçalho das páginas, para leitura por máquina.
+
 ## 2026-10-16 · #778 · DOE-SP: o texto da publicação é decodificado e a homologação paulista casa
 
 A API do DOE-SP serve o ato com entidades HTML (`Situa&ccedil;&atilde;o`, `Pre&shy;feito`); sem decodificar, nenhum padrão de homologação casava. A forma paulista ("Homologa, por 180 dias, o decreto do Prefeito do Município de Guariba … Decreto municipal nº 5.019") entra como quarto padrão, com caso de teste do texto medido do Decreto 70.765.

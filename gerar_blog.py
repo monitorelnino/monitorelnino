@@ -237,7 +237,7 @@ def render_post(post: dict, cabecalho: str, rodape: str, scripts: str) -> str:
     <div class="post-corpo">
 {post['html']}
     </div>
-{_linha_de_fontes(post, "    ")}{_como_citar(post, "    ")}    <p class="post-volta"><a href="../blog.html">Todos os textos</a> · <a href="../feeds/blog.xml">Feed</a></p>
+{_linha_de_fontes(post, "    ")}{_como_citar(post, "    ")}    <p class="post-volta"><a href="../blog.html">Todos os textos</a></p>
   </article>
 </main>
 {rodape}
