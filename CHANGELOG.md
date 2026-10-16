@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-16 · #803 · Monitor de riscos: chuva forte em tabelas; saem as listas dos mapas
+## 2026-10-16 · #804 · Monitor de riscos: chuva forte em tabelas; saem as listas dos mapas
 
 O bloco "Chuva forte" troca o mapa de avisos por estado por duas tabelas: avisos do INMET por grau, com municípios cobertos, estados e fenômeno, e alertas do Cemaden por nível, com os municípios nomeados. Saem "Ver estados", "Ver em lista" e "Como ler" e o código morto que os montava. Ajustes que os portões pediriam com os dados da noite (fogo, ar). HANDOVER_MONITOR_DE_RISCOS §4 e §7.
 
