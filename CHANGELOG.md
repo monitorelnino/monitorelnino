@@ -32,7 +32,7 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-16 · #769 · Um verificador de texto público (consolidação item 3)
+## 2026-10-16 · #772 · Um verificador de texto público (consolidação item 3)
 
 `verificar_texto_publico.js` absorve legendas e prosa (portão 19), semana epidemiológica, palavras por página, componente de figura, fichas semânticas, regra 0 da Imprensa, enquadramento federal, vocabulário dos scripts e o `--so-texto-proibido`: nove scripts que renderizavam as mesmas páginas (dois com a URL errada, lendo o texto de reserva) saem. Regras em `layout/regras.json`; 72 casos de mutação no autoteste. Linhas .py/.js/.yml: −842; portões 272 → 259.
 ## 2026-10-16 · #768 · Todo texto público no catálogo, com portão
