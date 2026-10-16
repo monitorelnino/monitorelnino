@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-16 · #PR · Regra das quatro funções da figura passa a ter portão (A7-14)
+
+`figura.quatro_funcoes_separadas` (título, legenda, nota, fonte) deixa de ser só texto: quem a julga é `verificar_texto_publico.js`, que já reprova nota, dica ou parágrafo dentro da figura e exige um título, um subtítulo e um crédito. Restam 13 regras só texto.
+
 ## 2026-10-16 · #802 · Monitor de riscos: seca em manchas, ar medido e cartão do ar
 
 A seca observada passa a ser as manchas do mapa mensal do Monitor de Secas, com contorno dos estados e hachura onde o boletim prevê seca. O mapa do ar mostra o IQAr das estações oficiais por cidade (cores oficiais) e os sensores IPAM/RedeAr; sai o índice europeu e a camada municipal morta. Cartão "Ar" só com cidade em IQAr Ruim ou pior.
