@@ -1017,7 +1017,7 @@ def main() -> int:
     # O prazo do elo interrompe com SIGINT: o que foi julgado até ali é gravado (a mesma função do
     # juiz do Legal, 15/10/2026). Antes, interrompido, o juiz de saúde não gravava nada.
     feitos = {"promovida": 0, "recusada": 0}
-    julgar_lista(candidatas, julgar_pista, True, [], feitos, aplicar_fn=passo)
+    interrompido = julgar_lista(candidatas, julgar_pista, True, [], feitos, aplicar_fn=passo)
     promovidas = feitos["promovida"]
     print(f"\n{promovidas} promovida(s) · {feitos['recusada']} recusada(s)")
     for motivo, n in sorted(recusadas.items(), key=lambda x: -x[1]):
@@ -1025,9 +1025,11 @@ def main() -> int:
     if mudancas:
         print("mudanças: " + " · ".join(mudancas))
     if "--aplicar" in args:
-        # 13/10/2026 (central, item 9): a bateria rodou, a verificação é de hoje — sem isto a página
-        # dizia "atualizado em 02/10" depois de cada reverificação (só registrar_saude_central carimbava).
-        su["corte"] = hoje_editorial().strftime("%d/%m/%Y")
+        # 13/10/2026 (central, item 9): a bateria rodou, a verificação é de hoje. 16/10/2026: só se
+        # rodou INTEIRA — interrompida pelo prazo (17 de 251 em 15/10), o corte novo dizia verificado
+        # o que ficou pendente; o julgado grava, o corte fica.
+        if not interrompido:
+            su["corte"] = hoje_editorial().strftime("%d/%m/%Y")
         gravar(ALVO, su)
         gravar(FILA, fila)
         print(f"data/{ALVO} e data/{FILA} gravados")
