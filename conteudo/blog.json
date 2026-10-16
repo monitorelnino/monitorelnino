@@ -5,7 +5,8 @@
   "blog.anteriores.titulo_da_secao": "Textos anteriores",
   "blog.textos.rotulo_fontes": "Fontes: {fontes}",
   "blog.textos.como_citar": "Como citar: Editoria do MARÉ. {titulo}. Blog do MARÉ, {data}.",
-  "blog.textos.sem_texto": "Nenhum texto publicado até agora."
+  "blog.textos.sem_texto": "Nenhum texto publicado até agora.",
+  "blog.titulo_da_pagina": "Blog do MARÉ"
  },
  "_nota_rotulos_do_js": "`blog.textos.rotulo_fontes`, `blog.textos.como_citar` e `blog.textos.sem_texto` são escritos por `assets/js/blog.js`, não pelo HTML: o corpo dos textos chega de `data/blog/posts.json` e os rótulos que o envolvem vêm daqui. A linha do feed Atom continua no HTML porque leva um link dentro da frase, e o leitor do catálogo escreve texto, não marcação."
 }
