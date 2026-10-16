@@ -42,6 +42,7 @@ import pathlib
 import re
 import unicodedata
 import sys
+import urllib.error
 import urllib.parse
 
 RAIZ = pathlib.Path(__file__).resolve().parent
@@ -614,14 +615,29 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
     return v
 
 
+# 16/10/2026 (F68): host que não respondeu (rede, não HTTP) fica de fora do resto da rodada. Em
+# 15/10 as 16 pistas do AP bateram uma a uma no mesmo host morto, ~4,5 min cada com as repetições
+# de `buscar`, e o prazo do elo acabou na 17ª de 251 — e cada uma ficou RECUSADA para sempre por
+# uma queda de rede. Falha de rede agora é PENDENTE: não grava veredito e volta na rodada seguinte.
+_HOSTS_SEM_RESPOSTA = set()
+PAD_FALHA_DE_REDE = re.compile(r"^documento não baixado: (?!HTTPError)")
+
+
 def julgar_pista(p: dict, buscar_fn=None) -> dict:
     """Baixa, lê e julga uma pista. Devolve o veredito com o que o ato institui."""
     url = p.get("url")
     uf = p.get("uf")
+    host = urllib.parse.urlparse(url or "").netloc.lower()
+    if host in _HOSTS_SEM_RESPOSTA:
+        return {"promove": False, "pendente": True, "uf": uf,
+                "motivo": "documento não baixado: host sem resposta nesta rodada"}
     try:
         corpo = (buscar_fn or buscar)(url, timeout=150, origem="julgar_saude")
     except Exception as e:  # noqa: BLE001
-        return {"promove": False, "motivo": f"documento não baixado: {type(e).__name__}", "uf": uf}
+        if not isinstance(e, urllib.error.HTTPError):
+            _HOSTS_SEM_RESPOSTA.add(host)
+        return {"promove": False, "pendente": not isinstance(e, urllib.error.HTTPError), "uf": uf,
+                "motivo": f"documento não baixado: {type(e).__name__}"}
     texto = texto_do_documento(corpo, url)
     if not texto.strip():
         return {"promove": False, "motivo": "documento sem texto extraível (PDF sem OCR?)", "uf": uf}
@@ -970,6 +986,28 @@ def autoteste() -> int:
                 (t_sala, "03/10/2024"), (t_dois, "30/03/2026"), (t_ciclo, "15/07/2026"),
                 ("", ""), ("texto qualquer", "01/01/2020"))),
     }
+    # F68: falha de rede é pendente e derruba o host para o resto da rodada; HTTP é recusa.
+    chamadas = []
+
+    def cai(url, **kw):
+        chamadas.append(url)
+        raise urllib.error.URLError("sem rota")
+
+    def nega(url, **kw):
+        raise urllib.error.HTTPError(url, 404, "nao achado", None, None)
+
+    _HOSTS_SEM_RESPOSTA.clear()
+    v1 = julgar_pista({"url": "https://morto.ap.gov.br/a.pdf", "uf": "AP"}, buscar_fn=cai)
+    v2 = julgar_pista({"url": "https://morto.ap.gov.br/b.pdf", "uf": "AP"}, buscar_fn=cai)
+    v3 = julgar_pista({"url": "https://vivo.pa.gov.br/c.pdf", "uf": "PA"}, buscar_fn=nega)
+    _HOSTS_SEM_RESPOSTA.clear()
+    casos["F68: falha de rede é pendente e o host cai para o resto da rodada (uma chamada só)"] = (
+        lambda: v1["pendente"] and v2["pendente"] and len(chamadas) == 1)
+    casos["F68: HTTP 404 é recusa, não pendente, e não derruba o host"] = (
+        lambda: v3["pendente"] is False and "vivo.pa.gov.br" not in _HOSTS_SEM_RESPOSTA)
+    casos["F68: veredito antigo de queda de rede volta à fila; o de HTTP não"] = (
+        lambda: PAD_FALHA_DE_REDE.match("documento não baixado: URLError")
+        and not PAD_FALHA_DE_REDE.match("documento não baixado: HTTPError"))
     return rodar_autoteste(casos)
 
 
@@ -988,7 +1026,8 @@ def main() -> int:
     rejulgar = "--rejulgar" in args
     candidatas = [p for p in pistas
                   if p.get("oficial") and p.get("url")
-                  and (rejulgar or not p.get("juiz"))
+                  and (rejulgar or not p.get("juiz")
+                       or PAD_FALHA_DE_REDE.match(str((p.get("juiz") or {}).get("motivo") or "")))
                   and not (p.get("juiz") or {}).get("promove")
                   and (alvo is None or p.get("uf") == alvo)]
     if "--limite" in args:
@@ -999,6 +1038,10 @@ def main() -> int:
     recusadas, mudancas = {}, []
 
     def passo(p, v):
+        if v.get("pendente"):
+            p.pop("juiz", None)
+            print(f"  … {p.get('uf')} · {v.get('motivo')} (pendente)")
+            return "pendente"
         p["juiz"] = {k: v.get(k) for k in ("promove", "motivo", "codebook", "categoria", "data",
                                            "institui", "status_instrumento", "coordenacao")}
         if not v.get("promove"):
@@ -1016,10 +1059,10 @@ def main() -> int:
 
     # O prazo do elo interrompe com SIGINT: o que foi julgado até ali é gravado (a mesma função do
     # juiz do Legal, 15/10/2026). Antes, interrompido, o juiz de saúde não gravava nada.
-    feitos = {"promovida": 0, "recusada": 0}
+    feitos = {"promovida": 0, "recusada": 0, "pendente": 0}
     interrompido = julgar_lista(candidatas, julgar_pista, True, [], feitos, aplicar_fn=passo)
     promovidas = feitos["promovida"]
-    print(f"\n{promovidas} promovida(s) · {feitos['recusada']} recusada(s)")
+    print(f"\n{promovidas} promovida(s) · {feitos['recusada']} recusada(s) · {feitos['pendente']} pendente(s) por rede")
     for motivo, n in sorted(recusadas.items(), key=lambda x: -x[1]):
         print(f"   {n}× {motivo}")
     if mudancas:
@@ -1028,7 +1071,7 @@ def main() -> int:
         # 13/10/2026 (central, item 9): a bateria rodou, a verificação é de hoje. 16/10/2026: só se
         # rodou INTEIRA — interrompida pelo prazo (17 de 251 em 15/10), o corte novo dizia verificado
         # o que ficou pendente; o julgado grava, o corte fica.
-        if not interrompido:
+        if not interrompido and not feitos["pendente"]:
             su["corte"] = hoje_editorial().strftime("%d/%m/%Y")
         gravar(ALVO, su)
         gravar(FILA, fila)

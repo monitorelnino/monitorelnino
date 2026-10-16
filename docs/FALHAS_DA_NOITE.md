@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-16. 67 falhas; 61 com caso de teste que as reproduz; 6 sem, com o que falta dito.
+Atualizado em 2026-10-16. 68 falhas; 62 com caso de teste que as reproduz; 6 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -605,6 +605,15 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Noite:** 2026-09-26→2026-10-16
 - **Sintoma:** data/sinais_risco.json: fontes.openaq.status = aguardando_credencial ('OPENAQ_API_KEY ausente no ambiente'); 27 UFs com ar_medido vazio, com a chave cadastrada e aceita na sonda de 26/09.
 - **Causa:** Segredo só entra num workflow reutilizável se o chamador o repassa. coletar_sinais_risco.py foi para noturno_sinais.yml (e roda em semanal_sinais_e_links.yml), que repassavam só ROBO_DEPLOY_KEY ao _coletor.yml; o comentário do _coletor.yml dizia que só o atualizar.yml passava chaves.
-- **Prova:** noturno_sinais.yml e semanal_sinais_e_links.yml: bloco secrets só com ROBO_DEPLOY_KEY; validar_workflows.py (regra nova) reprova os dois com a main de 16/10
+- **Prova:** noturno_sinais.yml e semanal_sinais_e_links.yml: bloco secrets só com ROBO_DEPLOY_KEY; validar_workflows.py (regra nova) reprova os dois com a main de 16/10; coleta no executor 16/10 (coleta-dia/2026-10-16-ar, run 38937054359): fontes.openaq.status = coletado, 8 capitais
 - **Correção:** Os dois chamadores repassam OPENAQ_API_KEY e INMET_API_TOKEN; validar_workflows.py reprova chamador do _coletor.yml cujo comando cita no fonte uma chave opcional que ele não repassa.
 - **Caso de teste:** `scripts/validar_workflows.py`
+
+## F68 · Juiz da saúde estadual parou na 17ª de 251: host morto julgado pista a pista, e queda de rede virava recusa
+
+- **Noite:** 2026-10-15
+- **Sintoma:** julgar_saude.py --aplicar: 4.332 s, 17 julgadas (16× 'documento não baixado: URLError', todas do AP), interrompido pelo prazo; saude_uf.json com corte 02/10.
+- **Causa:** julgar_pista tentava cada URL com buscar (timeout 150 s e repetições, ~4,5 min) mesmo quando o host já tinha falhado na pista anterior; e a falha de rede gravava veredito de recusa, que tira a pista da fila para sempre.
+- **Prova:** log do run 38813432942 (coleta-dia/2026-10-15-saude-estadual): 16 URLError seguidas em editor.amapa.gov.br; fila de 16/10: 44 pistas pendentes e 16 recusadas por URLError no mesmo host
+- **Correção:** Host sem resposta de rede sai do resto da rodada; falha de rede é pendente (sem veredito, volta na rodada seguinte), HTTP continua recusa; veredito antigo de queda de rede volta à fila; o corte só avança sem pendente.
+- **Caso de teste:** `julgar_saude.py --autoteste (três casos F68)`
