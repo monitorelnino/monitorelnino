@@ -150,30 +150,19 @@
     <div class="grade-figuras grade-figuras--3 grade-mapas">
       <figure class="figura figura--mapa cartao-mapa" id="boxSecas">
         <h3 class="figura-titulo" id="tituloSecas">Seca observada</h3>
-        <p class="figura-sub" id="secasSub">Categoria de seca em pelo menos metade da área do estado</p>
-        <div class="figura-midia"><svg id="mapaSecas" role="img" aria-describedby="estadosSecas" aria-label="Mapa do Brasil pela categoria de seca observada no Monitor de Secas" viewBox="0 0 480 460"></svg></div>
+        <p class="figura-sub" id="secasSub">Manchas do Monitor de Secas · hachura: estados com seca prevista pelo boletim</p>
+        <div class="figura-midia"><svg id="mapaSecas" role="img" aria-describedby="estadosSecas" aria-label="Mapa do Brasil com as manchas de seca do mapa mensal do Monitor de Secas" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legSecas"></div>
         <div class="cartao-mapa-rodape">
         <details class="cartao-mapa-dados cartao-mapa-estados"><summary data-conteudo="monitor-de-riscos.estados_secas.resumo">Ver estados</summary><ul class="lista-estados" id="estadosSecas"></ul></details>
-        <details class="cartao-mapa-leitura"><summary data-conteudo="monitor-de-riscos.estados_secas.resumo_2">Como ler</summary>
-          <p class="figura-leitura" data-conteudo="monitor-de-riscos.estados_secas.texto">O mapa é mensal e sai com algumas semanas de atraso. Um estado aparece na categoria que cobre pelo menos metade do seu território.</p>
-        </details>
         </div>
       </figure>
       <figure class="figura figura--mapa cartao-mapa" id="boxAr">
-        <h3 class="figura-titulo" id="tituloAr">Qualidade do ar nas capitais</h3>
-        <p class="figura-sub" id="arSub">Uma capital por estado · estimativa por modelo</p>
-        <div class="figura-midia"><svg id="mapaAr" role="img" aria-describedby="estadosAr" aria-label="Mapa do Brasil pelo índice de qualidade do ar estimado na capital de cada estado" viewBox="0 0 480 460"></svg></div>
+        <h3 class="figura-titulo" id="tituloAr" data-conteudo="monitor-de-riscos.ar.titulo">Qualidade do ar medida</h3>
+        <p class="figura-sub" id="arSub">IQAr das estações oficiais, por cidade · sensores de PM2,5 em µg/m³</p>
+        <div class="figura-midia"><svg id="mapaAr" role="img" aria-label="Mapa do Brasil com o IQAr das estações oficiais por cidade e os sensores de baixo custo de PM2,5" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legAr"></div>
-        <div class="cartao-mapa-rodape">
-        <details class="cartao-mapa-dados cartao-mapa-estados"><summary data-conteudo="monitor-de-riscos.estados_ar.resumo">Ver estados</summary><ul class="lista-estados" id="estadosAr"></ul></details>
-        <details class="cartao-mapa-dados"><summary data-conteudo="monitor-de-riscos.estados_ar.resumo_2">Ver em lista</summary>
-          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblAr"><thead><tr><th>UF</th><th>Capital</th><th>Índice (EAQI)</th><th>PM2,5</th><th>PM10</th><th>Ozônio</th></tr></thead><tbody></tbody></table></div>
-        </details>
-        <details class="cartao-mapa-leitura"><summary data-conteudo="monitor-de-riscos.estados_ar.resumo_3">Como ler</summary>
-          <p class="figura-leitura" data-conteudo="monitor-de-riscos.estados_ar.texto">Nesta época, a piora da qualidade do ar costuma ser causada por fumaça de queimadas. Estimativa de modelos, válida para a capital de cada estado. O Brasil não tem índice nacional aberto de qualidade do ar, por isso usamos a escala europeia.</p>
-        </details>
-        </div>
+        <p class="figura-nota" data-conteudo="monitor-de-riscos.ar.nota">Sem ponto no mapa: cidade sem estação oficial nem sensor na rede — não significa ar limpo. Estação regulatória e sensor de baixo custo medem na mesma unidade, não com a mesma confiabilidade; o mapa não os compara entre si. Padrão brasileiro de PM2,5 (24 h): 50 µg/m³ (PI-1, CONAMA 506/2024).</p>
       </figure>
       <figure class="figura figura--mapa cartao-mapa" id="boxTemperatura">
         <h3 class="figura-titulo" id="tituloTemperatura">Temperatura máxima prevista nas capitais</h3>

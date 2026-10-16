@@ -1315,6 +1315,7 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
 /* Cartão de mapa com dados ao lado (fogo) e cartão de tabela: a mídia não tem a proporção do mapa. */
 .cartao-mapa.figura--dupla .figura-midia, .cartao-mapa.figura--tabela .figura-midia{aspect-ratio:auto; overflow:visible; align-items:start;}
 .mapa-dupla > svg{width:100%; height:auto; display:block;}
+.map-legend i.leg-losango{width:8px; height:8px; transform:rotate(45deg); border:1px solid var(--muted); background:none;}
 .lado-dados{display:grid; gap:var(--sp-3);}
 .lado-numeros{display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:var(--sp-3); margin:0;}
 .lado-numeros dt, .lado-rotulo{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption);
