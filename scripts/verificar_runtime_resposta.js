@@ -1,20 +1,11 @@
 #!/usr/bin/env node
 /* Portão de runtime do contador de resposta (v3.1 §3.3): DOM das barras nos cartões de estado, contador
  * nacional ao lado do medidor com frase C18, cobertura de 27 UFs em defesa-civil.html, navegação sem a galeria. */
-const { JSDOM } = require("jsdom"); const { inlinePageJs } = require("./_inline_js"); const fs = require("fs"), path = require("path"); const raiz = path.join(__dirname, "..");
+const { renderizar } = require("./_inline_js"); const fs = require("fs"), path = require("path"); const raiz = path.join(__dirname, "..");
 const falhas = [];
-function render(pagina) {
-  const html = inlinePageJs(fs.readFileSync(path.join(raiz, pagina), "utf-8"), raiz);
-  return new JSDOM(html, { url: "https://localhost/", runScripts: "dangerously", beforeParse(w) {
-    global.window = w; global.document = w.document; w.d3 = require("d3");
-    try { w.eval(fs.readFileSync(path.join(raiz, "assets", "mapas.js"), "utf-8")); } catch (e) {}
-    class Chart { constructor(el, cfg) { w.__charts = (w.__charts || []).concat([cfg.type]); } } Chart.defaults = { font: {}, color: "", plugins: { legend: { labels: {} }, tooltip: {} }, elements: {} }; w.Chart = Chart;
-    w.fetch = rel => { try { const t = fs.readFileSync(path.join(raiz, String(rel)), "utf-8"); return Promise.resolve({ ok: true, json: () => Promise.resolve(JSON.parse(t)) }); } catch (e) { return Promise.resolve({ ok: false }); } };
-  } });
-}
 (async () => {
   const por = JSON.parse(fs.readFileSync(path.join(raiz, "data", "resposta", "por_uf.json"), "utf-8"));
-  const ix = render("index.html"); await new Promise(r => setTimeout(r, 2500)); const d = ix.window.document;
+  const ix = renderizar("index.html", raiz).dom; await new Promise(r => setTimeout(r, 2500)); const d = ix.window.document;
   // 15/09/2026: a resposta é um ÍNDICE 0–100 (100 × fração da população em município sob decreto), com a mesma arte do medidor
   const indNac = por.nacional.indice.toFixed(1).replace(".", ",");
   if (d.getElementById("respNum").textContent !== indNac) falhas.push(`índice nacional de resposta na página (${d.getElementById("respNum").textContent}) ≠ por_uf.json (${indNac})`);

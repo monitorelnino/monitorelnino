@@ -12,7 +12,7 @@
  *   sem --forma: o que barra a publicação (jargão, refrão, vocabulário, semana, legendas, prosa, figura,
  *   fichas, palavras, enquadramento, imprensa); --forma acrescenta as regras de FORMA (A7-03: só no PR). */
 const fs = require("fs"), path = require("path");
-const { JSDOM, VirtualConsole } = require("jsdom"); const { inlinePageJs } = require("./_inline_js");
+const { renderizar } = require("./_inline_js");
 const S = require("../assets/semana.js");
 const RAIZ = path.join(__dirname, "..");
 const listar = process.argv.includes("--listar"), comForma = process.argv.includes("--forma");
@@ -106,28 +106,9 @@ const ESTADOS = rx(F.subtitulo_estados, "");
 const subtitulo = (s) => (s.length > F.subtitulo_maximo || (!s.includes("·") && !ESTADOS.some((r) => r.test(s)))) ? [`subtítulo fora do padrão (≤ ${F.subtitulo_maximo} caracteres, separado por "·") — "${s.slice(0, 60)}"`] : [];
 const fichaIncompleta = (ficha, obrigatorios) => (obrigatorios || []).filter((c) => { const v = (ficha || {})[c]; return v == null || (typeof v === "string" && !v.trim()) || (Array.isArray(v) && !v.length); });
 
-/* ── a renderização, uma por página ─────────────────────────────────────────────────────────────── */
-function renderizar(pagina) {
-  const html = inlinePageJs(fs.readFileSync(path.join(RAIZ, pagina), "utf-8"), RAIZ);
-  // A URL leva o NOME da página: `assets/catalogo.js` escolhe o catálogo pelo caminho, e com "/" ele servia
-  // o texto da inicial (ou o de reserva) em todas — portão que lê outra página não confere nada.
-  return new JSDOM(html, { url: "https://localhost/" + pagina, runScripts: "dangerously", virtualConsole: new VirtualConsole(), beforeParse(w) {
-    global.window = w; global.document = w.document; global.navigator = w.navigator; w.d3 = require("d3");
-    try { w.eval(fs.readFileSync(path.join(RAIZ, "assets", "mapas.js"), "utf-8")); } catch (e) {}
-    // Chart simulado: SÓ o que vira texto na tela entra na varredura da semana (rótulos do eixo, nomes das
-    // séries, títulos de eixo). Os valores não — '201447' é um número de casos, não ano+semana.
-    w.__rotulos = [];
-    class Chart { constructor(ctx, cfg) { const d = (cfg && cfg.data) || {}; try {
-      w.__rotulos.push((d.labels || []).join(" "), (d.datasets || []).map((s) => s && s.label).filter(Boolean).join(" "));
-      Object.values(((cfg && cfg.options) || {}).scales || {}).forEach((e) => { if (e && e.title && e.title.text) w.__rotulos.push(String(e.title.text)); }); } catch (e) {} } }
-    Chart.defaults = { font: {}, color: "", plugins: { legend: { labels: {} }, tooltip: {} }, elements: {} }; w.Chart = Chart;
-    w.fetch = (rel) => { try { const txt = fs.readFileSync(path.join(RAIZ, String(rel).replace(/^\.?\//, "").split("?")[0]), "utf-8");
-      return Promise.resolve({ ok: true, json: () => Promise.resolve(JSON.parse(txt)), text: () => Promise.resolve(txt) }); } catch (e) { return Promise.resolve({ ok: false, status: 404 }); } };
-  } });
-}
-
-function julgarPagina(pagina, dom, fichas, vistas) {
-  const d = dom.window.document, falhas = [], contrato = ler0("layout/contratos/" + (pagina.startsWith("blog/") ? "blog-post" : pagina.replace(".html", "")) + ".json");
+/* ── a renderização, uma por página, é a de `_inline_js.renderizar` (URL da página, Chart com rótulos) ── */
+function julgarPagina(pagina, r, fichas, vistas) {
+  const d = r.document, falhas = [], contrato = ler0("layout/contratos/" + (pagina.startsWith("blog/") ? "blog-post" : pagina.replace(".html", "")) + ".json");
   const f = (x) => falhas.push(`${pagina} › ${x}`);
   // (1) figuras: componente, portão 19 e fichas semânticas
   let figuras = 0, elementos = 0;
@@ -161,7 +142,7 @@ function julgarPagina(pagina, dom, fichas, vistas) {
     const a = prosa(s, { citacao: !!e.closest('[data-voz="citacao"]'), fichaOuLei: !!(e.closest('[data-voz="ficha"]') || e.closest('[data-voz="lei"]') || e.closest('[data-proveniencia="1"]') || e.closest('[data-voz="citacao"]')) });
     if (a.length) { const alvo = e.closest("[id]"); f(`prosa (${alvo ? alvo.id : "?"}): ${a.join(" · ")} — "${s.slice(0, 90)}"`); } });
   // (3) semana no texto que o leitor vê e nos rótulos do Chart
-  semana([(d.querySelector("main") || d.body).textContent, (dom.window.__rotulos || []).join(" ")].join("\n")).forEach((x) => f(`semana: ${x}`));
+  semana([(d.querySelector("main") || d.body).textContent, r.rotulos.join(" ")].join("\n")).forEach((x) => f(`semana: ${x}`));
   // (4) identidade (16/09/2026): "MARÉ Legal" na navegação; "MARÉ Saúde" no h1 da Saúde
   if (pagina === "index.html" && !new RegExp(L.identidade.nav_de_index_traz).test(t(d.querySelector(".mainnav")))) f(`nav não traz "${L.identidade.nav_de_index_traz}" (identidade do índice principal)`);
   if (pagina === "saude.html" && !new RegExp(L.identidade.h1_de_saude_traz).test(t(d.querySelector("h1")))) f('h1 não traz "MARÉ Saúde"');
@@ -279,8 +260,8 @@ if (process.argv.includes("--autoteste")) process.exit(autoteste());
   if (autoteste() !== 0) process.exit(1);
   const falhas = [], fichas = ler0(F.fichas), vistas = new Set(); let figuras = 0, elementos = 0;
   for (const p of PAGINAS) {
-    const dom = renderizar(p); await new Promise((r) => setTimeout(r, 2500));
-    const r = julgarPagina(p, dom, fichas.fichas ? fichas : null, vistas); dom.window.close();
+    const pg = renderizar(p, RAIZ); await new Promise((x) => setTimeout(x, 2500));
+    const r = julgarPagina(p, pg, fichas.fichas ? fichas : null, vistas); pg.window.close();
     figuras += r.figuras; elementos += r.elementos; falhas.push(...r.falhas);
     const html = fs.readFileSync(path.join(RAIZ, p), "utf-8"), lim = T.palavras_por_pagina[p];
     if (lim) { const n = palavras(html); if (n > lim[1]) falhas.push(`${p} › ${n} palavras estáticas (teto ${lim[1]})`); else if (n > lim[0]) console.log(`  ⚠ ${p}: ${n} palavras (meta §7: ${lim[0]}; teto ${lim[1]})`); }

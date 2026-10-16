@@ -2,17 +2,17 @@
 
 Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolidação (meta: ≤ 50 mil linhas de .py/.js, mesma proteção).
 
-- **98.133 linhas** em **330 arquivos** .py/.js; **33 workflows**.
-- **120 comandos de portão**: dados/portão 40, paginas/autoteste 20, paginas/portão 60.
+- **97.935 linhas** em **329 arquivos** .py/.js; **33 workflows**.
+- **119 comandos de portão**: dados/portão 40, paginas/autoteste 20, paginas/portão 59.
 - **151 nomes de função** definidos em mais de um arquivo.
 
 ## Por pasta
 
 | pasta | linhas |
 |---|---:|
-| `(raiz)` | 49289 |
-| `scripts` | 39824 |
-| `assets` | 8307 |
+| `(raiz)` | 49288 |
+| `scripts` | 39629 |
+| `assets` | 8305 |
 | `arquivo` | 445 |
 | `.claude` | 268 |
 
@@ -27,9 +27,9 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `assets/js/financiamento.js` | 1405 |
 | `assets/js/monitor-de-riscos.js` | 1377 |
 | `coletar_doe.py` | 1345 |
-| `assets/js/index.js` | 1311 |
+| `assets/js/index.js` | 1309 |
 | `assets/js/saude.js` | 1249 |
-| `scripts/ensaio_da_noite.py` | 1172 |
+| `scripts/ensaio_da_noite.py` | 1179 |
 | `gerar_imprensa_semana.py` | 1157 |
 | `coletar_painel_am.py` | 1135 |
 | `recalcular_mare.py` | 1049 |
@@ -50,7 +50,7 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 
 | função | arquivos | onde |
 |---|---:|---|
-| `problemas` | 32 | `coletar_cadastro_prioritarios.py`, `coletar_normais_inmet.py`, `coletar_prioritarios_mma.py`, `coletar_semiarido_sudene.py` … |
+| `problemas` | 31 | `coletar_cadastro_prioritarios.py`, `coletar_normais_inmet.py`, `coletar_prioritarios_mma.py`, `coletar_semiarido_sudene.py` … |
 | `coletar` | 22 | `buscar_protocolo_calor.py`, `coletar_boletim_df_arboviroses.py`, `coletar_boletim_ms_dengue.py`, `coletar_boletim_pb_arboviroses.py` … |
 | `self_test` | 15 | `atualizar_marcos_severidade.py`, `classificador_natureza.py`, `detectar_marcos_federais.py`, `gerar_dados_abertos.py` … |
 | `gerar` | 12 | `classificar_planos_municipais.py`, `gerar_blog.py`, `gerar_card_municipios.py`, `gerar_contadores_financiamento.py` … |
@@ -81,7 +81,7 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `j` | 4 | `aplicar_c10_imprensa.py`, `gerar_painel.py`, `migrar_v224_verificacao.py`, `scripts/verificar_robustez_atualizacao.py` |
 | `numero` | 4 | `coletar_execucao_mps.py`, `coletar_transferegov.py`, `scripts/cruzar_ocp_com_atos.py`, `scripts/ingerir_ocp_midr.py` |
 | `parse_texto` | 4 | `coletar_boletim_df_arboviroses.py`, `coletar_boletim_ms_dengue.py`, `coletar_boletim_pb_arboviroses.py`, `coletar_boletim_pe_arboviroses.py` |
-| `renderizar` | 4 | `coletar_painel_am.py`, `gerar_feeds.py`, `scripts/renderizar_figura.py`, `scripts/verificar_texto_publico.js` |
+| `renderizar` | 4 | `coletar_painel_am.py`, `gerar_feeds.py`, `scripts/_inline_js.js`, `scripts/renderizar_figura.py` |
 | `w` | 4 | `aplicar_c10_imprensa.py`, `gerar_painel.py`, `migrar_v224_verificacao.py`, `scripts/verificar_robustez_atualizacao.py` |
 | `_contexto_tls` | 3 | `coletar_sinais_risco.py`, `scripts/sondar_credenciais.py`, `scripts/sondar_munic_ibge.py` |
 | `_git` | 3 | `scripts/commit_do_elo.py`, `scripts/verificar_idempotencia_dos_derivados.py`, `scripts/verificar_tamanho_dos_dados.py` |

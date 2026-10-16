@@ -269,9 +269,8 @@ jobs:
           # 30/09/2026: o corte é a data da rodada. Ele congelou 20 dias com o arquivo de
           # transferências, e o site dizia "dados até 10/09" com o índice recebendo planos todo dia.
           # assunto: texto rapido
-          python3 scripts/verificar_corte_sincronizado.py
-          # assunto: texto rapido
-          python3 scripts/verificar_ordem_do_carimbo.py
+          # 16/10/2026 (consolidação item 6): o que o carimbo diz e quando é escrito, num portão só.
+          python3 scripts/verificar_carimbo_da_rodada.py
           # 12/10/2026 (A3-29): vigência dos decretos com data só de ano decide pelo intervalo.
           # 12/10/2026 (A7-14): toda regra de layout/regras.json diz quem a julga.
           # assunto: texto rapido

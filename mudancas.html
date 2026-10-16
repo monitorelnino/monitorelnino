@@ -51,6 +51,10 @@
     <dl class="mudancas-lista">
       <dt>16/10/2026 · Inicial: sai a legenda das barras; barras sem régua; cartão da cidade branco e com um só componente</dt>
       <dd>Sai a legenda &quot;Barra de cima… Barra de baixo…&quot; e a linha acima dela, na inicial e na Saúde, com a função que a escrevia. A barra do MARÉ Legal perde o quadriculado de fundo (ficam as marcas 25, 50, 70); a dos decretos, sem marcas, fica mais alta. O cartão da cidade fica branco, sem o link &quot;consultar outro município&quot;; as listas federais usam o cartão da projeção, com o texto do cadastro nacional (Lei 12.340, art. 3º-A).</dd>
+      <dt>16/10/2026 · Uma renderização de página para os portões de jsdom (consolidação item 6)</dt>
+      <dd>`_inline_js.renderizar` passa a montar o jsdom (d3, Chart simulado com rótulos, `fetch` do disco, erros da página) para os seis verificadores de runtime e o de texto público, sempre com a URL da página: quatro deles renderizavam com `/` e o catálogo servia o texto da inicial. Na Financiamento a URL `/` fica declarada: com a certa, o catálogo sobrescreve o rótulo do cartão de atos sem data (defeito da página, pedido à janela A). Linhas .js −137.</dd>
+      <dt>16/10/2026 · Duas regras de componente passam a ser julgadas</dt>
+      <dd>O portão de conformidade passa a reprovar seção numerada (&quot;1.&quot;, &quot;II ·&quot;) e mais de uma figura larga por página; as duas regras só existiam no texto de `layout/regras.json`. Dívida declarada: 16 → 14 regras só texto.</dd>
       <dt>16/10/2026 · Triagem e preparação de pistas com um dono só (F66)</dt>
       <dd>O juiz de 16/10 perdeu o commit porque a busca web de cadência, fora da vez da noite, regravou o nível de confiança de pistas que a descoberta já tinha triado. Triagem fica só na descoberta e preparação só no juiz; a cadência e a rodada semanal apenas acrescentam pistas. O ensaio da noite reprova um segundo dono.</dd>
       <dt>16/10/2026 · Inicial: links da abertura e sai a linha da checagem</dt>
@@ -165,10 +169,6 @@
       <dd>Canal 2 fechado com duas tentativas por unidade e verificação humana registrada na falta; canal 3 com o domínio atual de AM, AP, RN e RO, e o 503 do RJ agendado para a terceira medição. Quatro canais: de 8 para **27 de 27**. O plano do Pará entra como revisado em 2026; o MS confirmado em 50. Os 27 estados passam ao componente da inicial. METODOLOGIA §98.</dd>
       <dt>02/10/2026 · Financiamento minimalista: só o dinheiro do ciclo</dt>
       <dd>A página passa a mostrar só dinheiro do ciclo: medidas federais e defesa civil federal. Saem as transferências gerais, a grade dos 27 quadros e a seção de casos; entram a forma de aplicação, as origens com os três valores e a defesa civil por estado, com município em lista dentro do cartão. Vocabulário fixo: desembolsado, não pago. METODOLOGIA §97.</dd>
-      <dt>02/10/2026 · Coletores do Financiamento rodados, e o frescor por arquivo</dt>
-      <dd>Todos os coletores da página rodaram hoje. `coletar_siconfi_182.py` estava morrendo com `TypeError` desde a migração do §229 — uma função local `gravar` sombreava a importada. A execução passou a coletar a modalidade de aplicação. Portão novo mede coletor pelo relógio (9 dias) e curadoria por declaração. METODOLOGIA §96.</dd>
-      <dt>02/10/2026 · Canais 3 e 4 nos 27, e F2 pela composição do ato</dt>
-      <dd>Regra mínima do canal 4 — raiz da secretaria mais diário do estado — vale para as 27, e o canal passou a ser dito na linha do log em vez de adivinhado. PA e MT registrados pelos endereços da editoria. F1 e F2 só saem de ato com dispositivo, e F2 exige o órgão na composição. Quatro canais: de 1 para 8 de 27. METODOLOGIA §95.</dd>
     </dl>
   </section>
 </main>
