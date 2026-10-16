@@ -32,9 +32,13 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-16 · #PR · "Envie pelo formulário" leva ao formulário
+## 2026-10-16 · #773 · "Envie pelo formulário" leva ao formulário
 
 O convite do cartão da cidade apontava para "Para gestores", sem formulário. Agora rola até o formulário da própria inicial e o preenche pela mesma função que lê os parâmetros do endereço. O portão de âncoras passa a ler também os links montados nos scripts — e achou uma nota de financiamento morta, que sai.
+
+## 2026-10-16 · #770 · Inicial com os textos da editoria
+
+Inicial: título, metadescrição, introdução, abertura em quatro parágrafos (indicados pela União lidos do dado), "Como ler" e cartão da cidade com o texto da editoria, tudo no catálogo; formulário diz que a conferência é automática. Nome por extenso segue "Monitor" (correção da central, 16/10); só `CLAUDE.md:28` acompanha. Teto de palavras da inicial 950 → 1.050.
 
 ## 2026-10-16 · #PR · Cadastro Nacional: o MARÉ cobre os indicados pela União
 
