@@ -51,6 +51,8 @@
     <dl class="mudancas-lista">
       <dt>16/10/2026 · Rodapé só com o e-mail de contato</dt>
       <dd>O rodapé de todas as páginas, inclusive as do blog (pelo gerador), traz só o e-mail de contato; sai o rótulo &quot;Imprensa:&quot;. Na Imprensa, o rodapé traz o e-mail de imprensa, que vive só nessa página.</dd>
+      <dt>16/10/2026 · Juiz de saúde interrompido não avança o corte</dt>
+      <dd>`julgar_saude.py` só carimba o corte de `saude_uf.json` quando julga a fila inteira; interrompido pelo prazo, grava o julgado e mantém o corte (F64). Entram os 17 vereditos do julgamento estadual de 15/10 (nenhuma promoção).</dd>
       <dt>16/10/2026 · Imprensa: páginas em cartões, perguntas em sanfona</dt>
       <dd>A Imprensa abre por &quot;O que cada página responde&quot;, agora em cartões, um por página, com link; seguem o que é o MARÉ, o cálculo dos índices, as perguntas frequentes em sanfonas (a primeira de cada grupo aberta), como citar e o contato para redações. Fundo branco em tudo. Saem &quot;Quem está mais preparado?&quot;, &quot;A comparação é do leitor.&quot; e &quot;Os estados são comparáveis entre si?&quot;: o site não convida a comparar entes. Redesenho aprovado pela editoria em 15/10.</dd>
       <dt>16/10/2026 · DOE-SP pela API própria da busca (SE)</dt>
@@ -167,8 +169,6 @@
       <dd>O §79 corrigiu a ordem e a publicação seguiu falhando: faltava a colisão de regras. O carimbo do publicador escrevia só `atualizado_em` e declarava que `corte` nunca era tocado — regra revogada em 30/09, quando o corte passou a ser a data da rodada. Agora escreve as duas, do mesmo valor, por ordem da editoria. A data continua vindo do dado, nunca do relógio. Em `METODOLOGIA.md` §81.</dd>
       <dt>02/10/2026 · MARÉ Saúde: a página refeita (blocos C, D e E)</dt>
       <dd>A ordem inverteu: números, o que cada estado publicou, o que os órgãos de saúde registram e o que o governo federal publicou. As seis doenças viraram uma seção em grade de três, com busca por município que diz &quot;não acompanhada&quot; em vez de zero. Saem o backlog de fontes, o catálogo de desfechos, os gatilhos e as áreas COBRADE. Siglas traduzidas no texto visível. Em `METODOLOGIA.md` §82.</dd>
-      <dt>01/10/2026 · Publicação destravada: o carimbo antes dos portões</dt>
-      <dd>`Publicar dados` falhou nas quatro execuções do dia e o site ficou sem dado novo. O portão do corte sincronizado estava certo em parar: os coletores gravam `atualizado_em = hoje` durante a rodada e o `corte` só era escrito depois da bateria, então no meio do caminho as duas datas divergiam. O carimbo passa a vir antes dos derivados e dos portões, e um portão novo lê o `atualizar.py` e reprova se a ordem voltar a inverter. Em `METODOLOGIA.md` §79.</dd>
     </dl>
   </section>
 </main>
