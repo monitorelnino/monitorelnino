@@ -79,7 +79,7 @@ LD = ('<script type="application/ld+json">[{"@context": "https://schema.org", "@
       '"name": "Mudanças no MARÉ", "description": "O registro técnico do que mudou no Monitor El '
       'Niño: método, verificação, portões e correções.", "url": '
       '"https://monitorelnino.com.br/mudancas.html", "inLanguage": "pt-BR", "isPartOf": '
-      '{"@type": "WebSite", "name": "MARÉ · Monitor de Antecipação e Resposta ao El Niño", "url": '
+      '{"@type": "WebSite", "name": "MARÉ · Medida de Antecipação e Resposta ao El Niño", "url": '
       '"https://monitorelnino.com.br/", "publisher": {"@type": "Organization", "name": "Futura '
       'Evidence Lab", "url": "https://www.futuraevidencelab.com.br/"}}}]</script>')
 

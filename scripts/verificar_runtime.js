@@ -287,7 +287,7 @@ setTimeout(() => {
   teste("home: herói sem h2 e sem botão de consulta; abertura nova, com uma data só", (() => {
     const mast = d.querySelector(".mast-body"); const txt = mast ? mast.textContent : "";
     return !d.querySelector(".hero h2") && !d.querySelector('.hero a[href="#minhacidade"]')
-      && /27 estados e em todos os [\d.]+ municípios/.test(txt)
+      && /27 estados e nos [\d.]+ municípios/.test(txt)
       && /Última checagem em/.test(txt) && !/Dados até/.test(txt);
   })());
   // 15/09/2026: a linha de interpretação do medidor (contagens por categoria) saiu da inicial (pedido da editoria).
@@ -359,7 +359,7 @@ setTimeout(() => {
   // as três páginas com medidor/corte no cabeçalho.
   {
     const IDS_DADO = {
-      "index.html": ["heroVerifFederal", "metaUltimaVerif", "respNum", "metaAtualizado", "corteDados"],
+      "index.html": ["heroProcura", "metaUltimaVerif", "respNum", "metaAtualizado", "corteDados"],
       // 02/10/2026 (bloco A): os medidores e o corte saíram do topo; os cartões do topo são outros.
       "saude.html": ["nDengueSE", "nSragSE", "nUFsAlerta", "nCalorMun", "nEmergSaude"],
       // `notaFogoCorte` saiu com o painel da rota do fogo (bloco B, 01/10/2026).
