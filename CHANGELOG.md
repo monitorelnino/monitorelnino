@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 `topo_monitor_riscos.json` passa a trazer fogo, seca, avisos e probabilidade além do calor, cada cartão com `anterior` (valor e referência da leitura anterior). Avisos contam avisos distintos no país. A linha de fonte das listas federais nomeia MIDR e Casa Civil com a página do cadastro. Comentários sem `obrigado.html`.
 
+## 2026-10-16 · #803 · Regra das quatro funções da figura passa a ter portão (A7-14)
+
+`figura.quatro_funcoes_separadas` (título, legenda, nota, fonte) deixa de ser só texto: quem a julga é `verificar_texto_publico.js`, que já reprova nota, dica ou parágrafo dentro da figura e exige um título, um subtítulo e um crédito. Restam 13 regras só texto.
+
 ## 2026-10-16 · #805 · Saem as fontes Open-Meteo de tempo e de ar (main vermelha do #802)
 
 Nenhuma página as mostrava: temperatura vem do INMET desde 27/09, ar vem do MMA/OpenAQ/RedeAr desde o #802. Saem do coletor (catálogo, leitores, coleta em lote, clima municipal), do arquivo de sinais, do cartão europeu do topo e do cartão morto da Imprensa. METODOLOGIA §41.7 com errata.
