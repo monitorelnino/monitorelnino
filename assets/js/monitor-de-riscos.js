@@ -3,7 +3,7 @@
    Regra desta página: nenhum valor é calculado aqui. Tudo vem de
    data/sinais_risco.json, escrito por coletar_sinais_risco.py, com fonte,
    documento e data. Fonte não coletada vira lacuna declarada na tela. */
-let BR_GEOJSON, SINAIS, MARE, ALERTAS, CLIMA, FOCOS, NORMAIS, FOGO_REF, SECAS_MANCHAS, AR;   // NORMAIS: normais do Inmet, para o DESVIO do mapa de calor
+let BR_GEOJSON, SINAIS, MARE, FOCOS, NORMAIS, FOGO_REF, SECAS_MANCHAS, AR;   // NORMAIS: normais do Inmet, para o DESVIO do mapa de calor
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
 const NEUTRA = MonitorMapas.cor('sem-dado');           // estado sem dado coletado
 
@@ -14,12 +14,6 @@ async function __load(){
       return r.json();
     }))
   );
-  /* Os alertas por município moram na Defesa civil (24/09/2026); aqui entram só como contagem na
-     linha-fato. Arquivo ausente não derruba a página: a linha fica com o texto estático dela. */
-  ALERTAS = await fetch('data/alertas/vigentes.json').then(r => r.ok ? r.json() : null).catch(() => null);
-  /* §209: temperatura e PM2,5 dos 5.570, em arquivo próprio (compacto) — a série por capital
-     continua em sinais_risco.json. Ausente, a figura segue só com as capitais. */
-  CLIMA = await fetch('data/clima_municipios.json').then(r => r.ok ? r.json() : null).catch(() => null);
   /* 29/09/2026: focos do INPE agregados em grade, em arquivo próprio — são milhares de células
      e não cabem no arquivo de sinais, que toda página da seção carrega inteiro. Ausente, o mapa
      diz que não houve coleta; nunca desenha zero. */
@@ -414,10 +408,6 @@ MonitorMapas.pontos(__ctx(), 'mapaTemperatura',
 anelVazio('mapaTemperatura', UFS.filter(uf => coordCapital[uf] && desvioDe(uf) == null), ATM.calor,
           'anelTemp');
 credito('boxTemperatura', 'inmet_previsao_capitais', 'inmet_estacoes');
-// A visão MUNICIPAL da temperatura continua vindo do Open-Meteo (clima_municipios.json): o INMET
-// publica previsão por capital, não pelos 5.571 municípios. São duas fontes para duas granularidades,
-// e cada uma é creditada onde aparece.
-if (document.getElementById('boxTemperaturaMun')) credito('boxTemperaturaMun', 'open_meteo_tempo');
 preencherTabela('tblTemperatura', uf => { const t = temp(uf); if (!t) return null;
   const m = medidaDe(uf);
   return [t.capital || '', t.tmax != null ? n1(t.tmax) + ' \u00b0C' : 'sem valor',
@@ -478,117 +468,6 @@ if (AR) {
 }
 
 
-/* CAMADA MUNICIPAL (§209) — os mesmos dois fenômenos, nos 5.570 municípios.
-   Pergunta igual, recorte diferente: a camada de capitais traz a série e os demais poluentes; a
-   municipal traz um ponto por município. Cada uma com sua legenda e seu texto-fato; o seletor
-   troca as duas coisas junto, porque número de um recorte lido como se fosse do outro é erro que
-   parece dado. Município sem leitura NÃO é desenhado — ausência é ausência. */
-(function camadaMunicipal(){
-  if (!CLIMA || !CLIMA.municipios || !Object.keys(CLIMA.municipios).length) {
-    /* Sem coleta municipal, o seletor não pode oferecer uma camada vazia: ele sai, e a figura
-       segue sendo a de capitais, sem prometer o que não tem. */
-    ['selTemperatura','selAr'].forEach(id => { const s = document.getElementById(id); if (s) s.remove(); });
-    return;
-  }
-  const REF = window.__refMunicipios || [];
-  const coord = {};
-  REF.forEach(m => { coord[String(m.codigo_ibge).padStart(7,'0')] = [m.lon, m.lat]; });
-
-  const casos = [
-    {sel:'selTemperatura', svgCap:'mapaTemperatura', svgMun:'mapaTemperaturaMun',
-     legCap:'legTemperatura', legMun:'legTemperaturaMun', campo:'tmax', unidade:'°C',
-     rotulo: v => v.toFixed(0) + ' °C'},
-    {sel:'selAr', svgCap:'mapaAr', svgMun:'mapaArMun',
-     legCap:'legAr', legMun:'legArMun', campo:'pm25', unidade:'µg/m³',
-     rotulo: v => v.toFixed(0) + ' µg/m³'},
-  ];
-
-  casos.forEach(function(caso){
-    const itens = Object.entries(CLIMA.municipios)
-      .filter(par => typeof par[1][caso.campo] === 'number' && coord[par[0]])
-      .map(par => ({cod: par[0], v: par[1][caso.campo], ll: coord[par[0]]}));
-    const sel = document.getElementById(caso.sel);
-    if (!itens.length) { if (sel) sel.remove(); return; }
-
-    const vals = itens.map(m => m.v);
-    const vmin = Math.min.apply(null, vals), vmax = Math.max.apply(null, vals);
-    const escala = d3.scaleLinear().domain([vmin, vmax]).range(MonitorMapas.PALETA.rampaPerigo).clamp(true);
-
-    /* Cinco faixas iguais desenhadas como cinco camadas densas — um <path> por faixa, que é o que
-       torna 5 mil pontos baratos. Classe própria por faixa: `pontosDensos` remove a camada
-       anterior quando a classe se repete (achado do §208). */
-    const svg = d3.select('#' + caso.svgMun);
-    svg.append('g').selectAll('path').data(BR_GEOJSON.features).join('path')
-      .attr('d', pathGen).attr('fill', MonitorMapas.cor('zebra')).attr('class', 'uf-path');
-    const FAIXAS = 5;
-    for (let f = 0; f < FAIXAS; f++) {
-      const lo = vmin + (vmax - vmin) * f / FAIXAS, hi = vmin + (vmax - vmin) * (f + 1) / FAIXAS;
-      const naFaixa = itens.filter(m => m.v >= lo && (f === FAIXAS - 1 ? m.v <= hi : m.v < hi))
-                           .map(m => ({lon: m.ll[0], lat: m.ll[1]}));
-      if (naFaixa.length) {
-        MonitorMapas.pontosDensos(__ctx(), caso.svgMun, naFaixa, escala((lo + hi) / 2), 1.8, 0.85,
-                                  'densos-' + caso.campo + '-' + f);
-      }
-    }
-    MonitorMapas.siglas(__ctx(), svg);
-    MonitorMapas.legendaContinua(caso.legMun,
-      'linear-gradient(90deg,' + MonitorMapas.PALETA.rampaPerigo[0] + ',' + MonitorMapas.PALETA.rampaPerigo[1] + ')',
-      caso.rotulo(vmin), caso.rotulo(vmax),
-      [{cor: MonitorMapas.cor('zebra'), rotulo: 'sem leitura neste município'}]);
-
-    if (sel) {
-      sel.addEventListener('change', function(e){
-        const mun = e.target.value === 'municipios';
-        /* toggleAttribute, não `.hidden`: em SVG a propriedade não reflete no atributo (§208). */
-        [[caso.svgCap, !mun], [caso.svgMun, mun], [caso.legCap, !mun], [caso.legMun, mun]]
-          .forEach(par => { const el = document.getElementById(par[0]); if (el) el.toggleAttribute('hidden', !par[1]); });
-      });
-    }
-  });
-
-  /* Texto-fato da cobertura, uma vez, abaixo da seção: quantos municípios cada variável alcançou,
-     e de QUANDO é cada leitura. Sem a contagem, um mapa com 5.570 pontos e outro com 1.700
-     pareceriam a mesma coisa; sem a data, a data da coleta passaria por data de tudo — e o teto
-     diário da fonte não deixa renovar as duas variáveis no mesmo dia (25/09/2026). */
-  const r = CLIMA.resumo || {};
-  const linha = document.getElementById('linhaAlertas');
-  const datas = d => {
-    const e = Object.entries(d || {}).sort((a, b) => b[1] - a[1]);
-    if (!e.length) return '';
-    if (e.length === 1) return ', lida em ' + e[0][0];
-    return ', lida em ' + e.map(([dt, n]) => dt + ' (' + n.toLocaleString('pt-BR') + ')').join(' e ');
-  };
-  if (linha && r.municipios_no_pais) {
-    const extra = document.createElement('p');
-    extra.className = 'hint';
-    extra.id = 'coberturaClima';
-    const n = v => Number(v || 0).toLocaleString('pt-BR');
-    extra.textContent = 'Temperatura em ' + n(r.com_temperatura) + ' de ' + n(r.municipios_no_pais)
-      + ' municípios' + datas(r.temperatura_por_data)
-      + '; PM2,5 em ' + n(r.com_pm25) + datas(r.pm25_por_data) + '.';
-    linha.insertAdjacentElement('afterend', extra);
-  }
-})();
-
-/* CAMADA DE MEDIÇÃO (24/09/2026) — pontos de estação e de monitor sobre os dois mapas de modelo.
-   As duas fontes exigem credencial (OpenAQ v3 recusa com 401 sem chave; o endpoint de dados das
-   estações do INMET passou a exigir token). Enquanto a credencial não existir, a figura DIZ isso
-   na legenda, e nenhum ponto é desenhado: modelo e medição nunca compartilham a escala de cor, e
-   ausência de medição não é medição igual ao modelo. */
-/* 09/10/2026 (ajuste 6b): a CAMADA DE MEDIÇÃO saiu do mapa. Ela punha um segundo marcador ao lado
-   de cada capital, que dizia a distância da estação e nenhuma medida. A medição entra no texto do
-   mouse da capital e na lista; ela nunca muda a cor (modelo e medição não compartilham escala). */
-
-/* Linha-fato dos alertas: a contagem fica aqui, os alertas moram na Defesa civil. Só reescreve
-   quando o arquivo carregou — sem ele, o texto estático do HTML permanece, sem número inventado. */
-(function linhaDeAlertas(){
-  const el = document.getElementById('linhaAlertas');
-  if(!el || !ALERTAS || !ALERTAS.resumo) return;
-  const r = ALERTAS.resumo;
-  el.innerHTML = r.municipios_inmet + (Number(r.municipios_inmet) === 1 ? ' município' : ' municípios') + ' sob aviso do INMET e ' + r.municipios_cemaden
-    + ' sob alerta do CEMADEN, em ' + esc(MonitorMapas.dataBR(ALERTAS.gerado_em) || '')
-    + ' · <a href="defesa-civil.html#alertas">Defesa civil</a>';
-})();
 // ---- Mapa 4: focos ativos, por POSIÇÃO (29/09/2026) ----
 /* Era coroplético por UF: o estado inteiro pintado pela contagem. O CSV do INPE traz latitude e
    longitude de cada foco, e pintar a UF jogava fora justamente onde o fogo está — um foco no oeste

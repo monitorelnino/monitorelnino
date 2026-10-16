@@ -353,27 +353,26 @@
       "funcao_narrativa": "mostra o ritmo da autorização ao longo do ciclo"
     },
     "monitor-de-riscos.html#boxAr": {
-      "tipo": "mapa com seletor de camada e lista",
-      "pergunta_que_responde": "Qual a concentração estimada de material particulado fino — na capital de cada estado, ou em cada município?",
+      "tipo": "mapa de pontos",
+      "pergunta_que_responde": "Qual o IQAr medido nas estações oficiais de cada cidade, e o PM2,5 dos sensores de baixo custo, na última leitura?",
       "dimensao_da_preparacao": "fenômeno observado",
-      "universo": "27 capitais (camada 1) · os 5.570 municípios (camada 2, cobertura declarada na seção)",
-      "unidade_de_analise": "capital, ou município",
+      "universo": "estações oficiais com IQAr na consulta (MMA/MonitorAr) e sensores IPAM/RedeAr com leitura",
+      "unidade_de_analise": "cidade com estação oficial; sensor",
       "territorio": "Brasil",
-      "periodo": "média diária do dia da consulta, com hora",
-      "variavel_principal": "PM2,5 em µg/m³, média diária",
+      "periodo": "última leitura publicada pela fonte, com data e hora",
+      "variavel_principal": "IQAr (faixa e valor, calculado pelo órgão); PM2,5 em µg/m³",
       "denominador": null,
-      "fonte": "Copernicus CAMS via Open-Meteo",
-      "metodologia": "Estimativa de modelo, não medição. A API entrega série horária; a média diária é cálculo do Monitor. Linha de referência de 15 µg/m³ da OMS (2021), declarada no dado. A camada municipal traz só o PM2,5; os demais poluentes continuam por capital. Município sem leitura não é desenhado.",
+      "fonte": "MMA/MonitorAr; OpenAQ; IPAM/RedeAr",
+      "metodologia": "IQAr nunca recalculado (CONAMA 506/2024); cidade pela pior estação; PM2,5 do OpenAQ só da mesma estação oficial; sensor sem índice. METODOLOGIA §41.7.",
       "conclusoes_permitidas": [
-        "qual a média diária estimada de PM2,5 na capital",
-        "se o valor estimado está acima ou abaixo da linha de referência da OMS"
+        "a faixa do IQAr publicada pelo órgão em cada cidade com estação",
+        "o PM2,5 medido por sensor, com a natureza do sensor declarada"
       ],
       "conclusoes_nao_permitidas": [
-        "leitura como medição de monitor",
-        "efeito sobre a saúde de pessoas identificadas",
+        "comparar estação regulatória e sensor de baixo custo",
+        "que cidade sem ponto tenha ar limpo",
         "atribuição da poluição ao El Niño",
-        "qualidade do ar do estado inteiro",
-        "que município não desenhado tenha ar limpo — ele não foi lido"
+        "efeito sobre a saúde de pessoas identificadas"
       ],
       "funcao_narrativa": "evidência do agora",
       "acao_relacionada": null
