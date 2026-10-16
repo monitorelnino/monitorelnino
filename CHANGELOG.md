@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-16 · #803 · Monitor de riscos: chuva forte em tabelas; saem as listas dos mapas
+
+O bloco "Chuva forte" troca o mapa de avisos por estado por duas tabelas: avisos do INMET por grau, com municípios cobertos, estados e fenômeno, e alertas do Cemaden por nível, com os municípios nomeados. Saem "Ver estados", "Ver em lista" e "Como ler" de todas as figuras e o código morto que os montava. HANDOVER_MONITOR_DE_RISCOS §4 e §7.
+
 ## 2026-10-16 · #802 · Monitor de riscos: seca em manchas, ar medido e cartão do ar
 
 A seca observada passa a ser as manchas do mapa mensal do Monitor de Secas, com contorno dos estados e hachura onde o boletim prevê seca. O mapa do ar mostra o IQAr das estações oficiais por cidade (cores oficiais) e os sensores IPAM/RedeAr; sai o índice europeu e a camada municipal morta. Cartão "Ar" só com cidade em IQAr Ruim ou pior.

@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/10/2026 · Monitor de riscos: chuva forte em tabelas; saem as listas dos mapas</dt>
+      <dd>O bloco &quot;Chuva forte&quot; troca o mapa de avisos por estado por duas tabelas: avisos do INMET por grau, com municípios cobertos, estados e fenômeno, e alertas do Cemaden por nível, com os municípios nomeados. Saem &quot;Ver estados&quot;, &quot;Ver em lista&quot; e &quot;Como ler&quot; de todas as figuras e o código morto que os montava. HANDOVER_MONITOR_DE_RISCOS §4 e §7.</dd>
       <dt>16/10/2026 · Monitor de riscos: seca em manchas, ar medido e cartão do ar</dt>
       <dd>A seca observada passa a ser as manchas do mapa mensal do Monitor de Secas, com contorno dos estados e hachura onde o boletim prevê seca. O mapa do ar mostra o IQAr das estações oficiais por cidade (cores oficiais) e os sensores IPAM/RedeAr; sai o índice europeu e a camada municipal morta. Cartão &quot;Ar&quot; só com cidade em IQAr Ruim ou pior.</dd>
       <dt>16/10/2026 · Monitor de riscos: risco previsto em faixa e bloco do fogo</dt>
@@ -165,8 +167,6 @@
       <dd>A abertura da noite falhou três vezes em cinco dias. Entram o registro dos temporizadores com portão bloqueante, um despachante que dispara o que está devido e quatro observadores independentes — inclusive uma rotina na nuvem do Claude, cujo push é evento, não agendamento, e que já recuperou o despachante às 16:08 UTC. Abertura tardia ganha orçamento e cursor. A figura dos caminhos volta na largura da coluna.</dd>
       <dt>04/10/2026 · O primeiro texto no ar e a rotina semanal do blog</dt>
       <dd>O texto aprovado não ia ao ar: a porta do fluxo editorial nunca era chamada. Números conferidos contra o dado do dia — 59 reconhecimentos, 29 no Sul, 22 no Nordeste, 16 sem tipo. `tipo_evento` passa a vir da COBRADE, com granizo em tempestade. E entra a rotina: `gerar_pacote_blog.py`, o verificador que exige número do pacote, dois cartões de texto no blog e &quot;Textos desta semana&quot; na Imprensa.</dd>
-      <dt>04/10/2026 · Coleta de alerta vencida não impede a publicação</dt>
-      <dd>A publicação das 09:57 UTC morreu no portão de runtime: o arquivo de alertas completou 24h02 e a página, pela regra das 24 horas, escreveu &quot;Sem atualização desde…&quot; no lugar dos números — fazendo o que devia. O portão cobrava o número em todo caso; agora exige a declaração quando ela existe. A trava fica: alerta vencido nunca é apresentado como vigente.</dd>
     </dl>
   </section>
 </main>
