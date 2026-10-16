@@ -49,6 +49,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/10/2026 · Imprensa: páginas em cartões, perguntas em sanfona</dt>
+      <dd>A Imprensa abre por &quot;O que cada página responde&quot;, agora em cartões, um por página, com link; seguem o que é o MARÉ, o cálculo dos índices, as perguntas frequentes em sanfonas (a primeira de cada grupo aberta), como citar e o contato para redações. Fundo branco em tudo. Saem &quot;Quem está mais preparado?&quot;, &quot;A comparação é do leitor.&quot; e &quot;Os estados são comparáveis entre si?&quot;: o site não convida a comparar entes. Redesenho aprovado pela editoria em 15/10.</dd>
       <dt>16/10/2026 · DOE-SP pela API própria da busca (SE)</dt>
       <dd>`coletar_doe.py` ganha `busca_sp`: a API que o sítio do DOE-SP chama (`do-api-web-search`, termos e janela de datas, paginada) aponta as publicações e cada uma é lida inteira em `/v2/publications/&lt;id&gt;`, sem HTML; endereço citável `doe.sp.gov.br/&lt;slug&gt;`. MG, RJ, RS e SC seguem `sem adaptador de busca` com o motivo medido (15/10); PI e RR têm rota exposta a medir.</dd>
       <dt>16/10/2026 · Data do ato nunca depois da edição que o publica</dt>
@@ -167,8 +169,6 @@
       <dd>`Publicar dados` falhou nas quatro execuções do dia e o site ficou sem dado novo. O portão do corte sincronizado estava certo em parar: os coletores gravam `atualizado_em = hoje` durante a rodada e o `corte` só era escrito depois da bateria, então no meio do caminho as duas datas divergiam. O carimbo passa a vir antes dos derivados e dos portões, e um portão novo lê o `atualizar.py` e reprova se a ordem voltar a inverter. Em `METODOLOGIA.md` §79.</dd>
       <dt>01/10/2026 · Capturas de tela fora do índice</dt>
       <dd>A `main` reprovou o portão 12 em todas as rodadas do dia, de 15h52 a 22h15 UTC, pelas 30 imagens de `capturas-ci/`: captura de tela depende do renderizador, e a do runner nunca coincide com a de quem edita. Elas saem do índice e do diff estrito. Quem prova a página continua sendo o portão de navegador que as produz, e o `portoes.yml` já as sobe como artefato do run. Em `METODOLOGIA.md` §78.</dd>
-      <dt>01/10/2026 · Adaptadores diretos de diário estadual</dt>
-      <dd>Dois novos, medidos contra produção: `dodf` (API própria do DODF, 7 matérias na janela do ciclo) e `busca_to` (a busca aponta a edição; o trecho vem do PDF só dela). As outras vinte UFs deixam de ser `a_verificar` em branco e declaram host e motivo — não responde, sem busca por termo, busca do portal e não do diário, exige formulário ou JavaScript. O POST novo tem as travas do GET. Em `METODOLOGIA.md` §77.</dd>
     </dl>
   </section>
 </main>
