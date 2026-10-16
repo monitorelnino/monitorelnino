@@ -29,7 +29,7 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-16 · #PR · A chave do OpenAQ chega ao elo dos sinais (F67)
+## 2026-10-16 · #793 · A chave do OpenAQ chega ao elo dos sinais (F67)
 
 A medição do ar estava apagada havia três semanas: o elo noturno dos sinais e a rotina semanal rodavam o coletor sem repassar as chaves do OpenAQ e do INMET ao invólucro dos coletores. Os dois passam a repassá-las, e o validador de workflows reprova quem roda coletor que lê uma chave sem repassá-la.
 
