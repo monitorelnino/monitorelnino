@@ -31,7 +31,7 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-16 · #PR · Consulta do município na Saúde: um arquivo por UF
 
-O elo da saúde grava `data/saude_municipio/<UF>.json` (`gerar_saude_municipio.py`): por município, alerta de dengue e chikungunya do InfoDengue, classe de calor do MS e degrau de saúde do plano. Município não lido fica sem o bloco, nunca zero. METODOLOGIA §41.11.
+O elo da saúde grava `data/saude_municipio/<UF>.json` (`gerar_saude_municipio.py`): por município, alerta de dengue e chikungunya do InfoDengue, classe de calor do MS e degrau de saúde do plano. Município não lido fica sem o bloco, nunca zero. A resposta sanitária do `monitor_saude.json` passa a trazer a lista de eventos. METODOLOGIA §41.11.
 
 ## 2026-10-16 · #796 · Manchas do Monitor de Secas: o mapa mensal da ANA vira geometria
 
