@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/10/2026 · Consulta do município no Monitor de riscos: um arquivo por UF</dt>
+      <dd>O elo dos sinais grava `data/riscos_municipio/&lt;UF&gt;.json`: por município, focos de 30 dias, avisos e alertas em vigor, decretos de resposta recentes, estação de ar e sensor a até 50 km e capital mais próxima, com distância. Aviso e estação vão por índice. METODOLOGIA §41.10.</dd>
       <dt>16/10/2026 · Manchas do Monitor de Secas: o mapa mensal da ANA vira geometria</dt>
       <dd>O elo dos sinais grava `data/secas_manchas.json`: manchas S0–S4 do shapefile mensal do Monitor de Secas (repositório de arquivos da ANA), anéis simplificados a ~2 km, mês do mapa e hash do original. Baixa uma vez por mês. Leitor de .shp/.dbf sem dependência nova. METODOLOGIA §41.9.</dd>
       <dt>16/10/2026 · Focos pelo satélite de referência; avisos por UF e grau</dt>
@@ -165,8 +167,6 @@
       <dd>A publicação da noite de 03→04 falhou duas vezes por 10 sobras de homologação na forma anterior ao `schemas/pista.json`, e nenhum dado novo foi ao ar. A gravação em `coletar_doe.py` passa a nascer no esquema, com `destino: conferencia_resposta` — homologação é ato de resposta, não pista de plano. O portão bloqueia só a fila ativa; o que saiu dela avisa. As 55 sobras migraram sem perda.</dd>
       <dt>04/10/2026 · A noite abre mesmo quando o cron não dispara</dt>
       <dd>Duas noites seguidas não abriram: o cron de 01:00 UTC não disparou (1h40 de atraso em 04/10, 5h30 em 30/09). Os crons saem dos minutos de pico, a abertura ganha reserva às 01:37 e um vigia às 02:07 a dispara se preciso. Os três disparos não duplicam porque `scripts/janela_da_noite.py` decide se a noite já abriu. O painel mostra previsto × iniciado e acusa noite sem abertura.</dd>
-      <dt>03/10/2026 · Credencial de terceiro não fica na cópia preservada</dt>
-      <dd>Alerta do GitHub de 01/10: 18 páginas salvas como prova traziam chave de API de terceiro (Flickr e Google Maps) e eram servidas pelo nosso domínio, porque o deploy publica a raiz. A redação passa a ser na porta de preservação, antes do hash; o passado foi redigido e rechaveado, com o hash anterior registrado; um portão barra a volta. Em `coletores_base.py`, `scripts/remediar_segredos_evidencias.py` e `scripts/verificar_evidencia_sem_segredo.py`.</dd>
     </dl>
   </section>
 </main>

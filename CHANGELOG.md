@@ -29,7 +29,7 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-16 · #PR · Consulta do município no Monitor de riscos: um arquivo por UF
+## 2026-10-16 · #797 · Consulta do município no Monitor de riscos: um arquivo por UF
 
 O elo dos sinais grava `data/riscos_municipio/<UF>.json`: por município, focos de 30 dias, avisos e alertas em vigor, decretos de resposta recentes, estação de ar e sensor a até 50 km e capital mais próxima, com distância. Aviso e estação vão por índice. METODOLOGIA §41.10.
 
