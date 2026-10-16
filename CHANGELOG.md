@@ -29,6 +29,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #794 · Ar medido por estação: IQAr do MMA, PM2,5 do OpenAQ e da RedeAr
+
+O elo dos sinais grava `data/ar_medido.json`: IQAr de cada estação do MonitorAr como o órgão publica, PM2,5 do OpenAQ casado à mesma estação (≤ 300 m), PM2,5 dos sensores IPAM/RedeAr sem índice. Medição com mais de 36 h é lacuna; resposta preservada por hash. METODOLOGIA §41.7 traz as três réguas e a errata do "não há índice nacional aberto". A figura vem depois.
+
 ## 2026-10-16 · #793 · A chave do OpenAQ chega ao elo dos sinais (F67)
 
 A medição do ar estava apagada havia três semanas: o elo noturno dos sinais e a rotina semanal rodavam o coletor sem repassar as chaves do OpenAQ e do INMET ao invólucro dos coletores. Os dois passam a repassá-las, e o validador de workflows reprova quem roda coletor que lê uma chave sem repassá-la.

@@ -1332,6 +1332,20 @@ A troca revelou um defeito que estava no ar desde que a figura foi escrita: o c�
 O painel do MS **não publica API**: o endereço é função interna do aplicativo, com o caminho carimbado pelo build, de modo que o coletor o descobre a cada rodada e o valida **por conteúdo**, não por nome minificado. E, medido em 24/09/2026, esse endereço passa a responder `HTTP 200 com corpo vazio` depois de uma rajada de consultas — oito vezes em oito, também no navegador. Corpo vazio com 200 é **recusa** (§11, §186, §187), nunca "nenhum município em excesso de calor": sobe como falha, entra como lacuna declarada, e a seção diz ao leitor por que não há número.
 
 
+### 41.7 Ar medido: três réguas, um só índice exibido, e uma errata (16/10/2026)
+
+**Errata.** Em 27/09/2026 este documento e o coletor afirmaram que "não há índice nacional aberto de qualidade do ar". Havia: o **MonitorAr do MMA** publica, por estação das redes estaduais, o **IQAr** vigente com faixa, poluente determinante e hora (`monitorar-backend.mma.gov.br/v1/estacao/todas`, sondado do executor em 16/10/2026: 318 estações, 241 com medição de outubro). A sondagem de 27/09 bateu no aplicativo, não no serviço que o alimenta.
+
+**Três réguas, que não se misturam.** O **IQAr** (Resolução CONAMA 506/2024: cinco faixas, Boa a Péssima; médias de 24 h para material particulado, 8 h para O₃ e CO, 1 h para NO₂ e SO₂) é o índice legal brasileiro. O **EAQI** europeu (Copernicus CAMS: seis faixas, concentrações horárias, cortes próprios) e o **AQI da US EPA** (que a RedeAr calcula) têm cortes e janelas diferentes: a mesma estação pode cair em faixas diferentes na mesma hora. Por isso o site mostra **um só índice, o IQAr, como o órgão o calcula**, e nunca o recalcula; dos sensores e do OpenAQ mostra **concentração** (PM2,5 em µg/m³), nunca índice.
+
+**Fontes e papel** (`data/ar_medido.json`, escrito pelo elo dos sinais, uma leitura por noite):
+
+- **MMA · MonitorAr** — IQAr por estação oficial, com a rede estadual de origem no crédito. A hora vem sem fuso e é lida como horário de Brasília.
+- **OpenAQ** — PM2,5 da última medição publicada da **mesma** estação oficial, casada a até 300 m (ou pelo mesmo nome a até 30 km). Sem par, a estação mostra só o IQAr e a lacuna da concentração.
+- **IPAM/RedeAr** — PM2,5 e PM10 de sensores óticos de baixo custo: média dos dois canais do sensor na leitura mais recente, com a correção atmosférica que a própria fonte publica. Não é estação regulatória e não gera IQAr. O host de produção respondeu em 16/10 com leituras de julho e sensores de teste; o de homologação traz o código IBGE e leituras do dia, e é o usado, declarado no dado. Sensor sem código IBGE fica de fora.
+
+**Precedência.** Medição prevalece sobre modelo: o índice europeu estimado pelo CAMS sai da página quando entra a figura do ar medido, e as duas nunca aparecem no mesmo mapa nem na mesma contagem. A regra das 36 horas (§41.4) vale para cada estação e cada sensor: medição mais velha vira lacuna com a data da última leitura, nunca valor atual. Fonte que não respondeu sai com status e lista vazia, nunca com a lista da noite anterior; cada resposta é preservada por hash.
+
 ## 42. O dinheiro próprio do município em defesa civil: três camadas, e a que existe para todos (24/09/2026)
 
 Peso zero nos dois índices, provado por portão e pelo teste de estresse que renomeia `data/financiamento/` inteira e confere que o índice recomputado é idêntico bit a bit.

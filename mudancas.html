@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/10/2026 · Ar medido por estação: IQAr do MMA, PM2,5 do OpenAQ e da RedeAr</dt>
+      <dd>O elo dos sinais grava `data/ar_medido.json`: IQAr de cada estação do MonitorAr como o órgão publica, PM2,5 do OpenAQ casado à mesma estação (≤ 300 m), PM2,5 dos sensores IPAM/RedeAr sem índice. Medição com mais de 36 h é lacuna; resposta preservada por hash. METODOLOGIA §41.7 traz as três réguas e a errata do &quot;não há índice nacional aberto&quot;. A figura vem depois.</dd>
       <dt>16/10/2026 · A chave do OpenAQ chega ao elo dos sinais (F67)</dt>
       <dd>A medição do ar estava apagada havia três semanas: o elo noturno dos sinais e a rotina semanal rodavam o coletor sem repassar as chaves do OpenAQ e do INMET ao invólucro dos coletores. Os dois passam a repassá-las, e o validador de workflows reprova quem roda coletor que lê uma chave sem repassá-la.</dd>
       <dt>16/10/2026 · Monitor de riscos: abertura nova e números de agora; textos longos sem colunas</dt>
@@ -165,8 +167,6 @@
       <dd>MT e RN responderam a pedidos de acesso à informação. Afirmação de órgão sem documento não pontua: vira nota com órgão e data (textos aprovados pela editoria), e tarefa de busca dirigida. Os três decretos que MT informou com número e data entram em `atos_resposta.json`, declarando que o documento ainda não foi localizado. O detalhe da UF, na home, passa a mostrar a nota do estado. Em `scripts/incorporar_respostas_lai.py`, `data/notas_lai.json` e `ler_caixa_lai.py` (leitura semanal da caixa, à espera da credencial).</dd>
       <dt>03/10/2026 · O tipo de evento de cada decreto, e a divergência do cartão declarada</dt>
       <dd>Dependência do handover do blog: os atos de resposta não tinham `tipo_evento`. Ele passa a vir da COBRADE do S2iD — 275 chuva, 327 seca, 66 vendaval, 4 fogo, 257 sem família — e não da `causa`, que nos registros federais diz o canal do ato, não o evento. O handover pedia um `.cartao-destaque` que não existe no sistema de design; os contratos do blog e da imprensa registram a divergência. Em `scripts/tipo_de_evento_dos_atos.py`.</dd>
-      <dt>03/10/2026 · Dizemos o que disponibilizamos; o blog conta o ciclo</dt>
-      <dd>Duas regras para todo o site: nenhuma frase sobre código, base de dados ou licença de dados, e o blog só sobre acontecimentos do ciclo, em prosa escrita por pessoa. Saem a pasta de dados abertos, a planilha da edição e o release gerado; nasce `mudancas.html`, com as 57 entradas do CHANGELOG. Blog com boletim congelado por edição e aprovação obrigatória; imprensa só com o estável. METODOLOGIA §103.</dd>
     </dl>
   </section>
 </main>
