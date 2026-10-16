@@ -8568,7 +8568,106 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-16",
+   "script": "monitorar_imprensa_regional.py",
+   "inicio": "2026-10-16T06:03:23",
+   "duracao_s": 243.6,
+   "itens": 40,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-16",
+   "script": "monitorar_imprensa_saude.py",
+   "inicio": "2026-10-16T06:07:26",
+   "duracao_s": 109.0,
+   "itens": 27,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-16",
+   "script": "monitorar_atos_resposta.py",
+   "inicio": "2026-10-16T06:09:15",
+   "duracao_s": 832.3,
+   "itens": 5963,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-16",
+   "script": "monitorar_politica_por_inteiro.py",
+   "inicio": "2026-10-16T06:23:07",
+   "duracao_s": 3.9,
+   "itens": 5963,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-16",
+   "script": "monitorar_sinais_federais.py",
+   "inicio": "2026-10-16T06:23:10",
+   "duracao_s": 4.4,
+   "itens": 10,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-16",
+   "script": "detectar_marcos_federais.py",
+   "inicio": "2026-10-16T06:23:14",
+   "duracao_s": 1.6,
+   "itens": 0,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-16",
+   "script": "descobrir_planos.py",
+   "inicio": "2026-10-16T06:23:15",
+   "duracao_s": 376.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-16",
+   "script": "monitorar_redes_oficiais.py",
+   "inicio": "2026-10-16T06:29:31",
+   "duracao_s": 974.1,
+   "itens": null,
+   "status": "erro",
+   "erro": "interrompido pelo prazo do elo"
+  },
+  {
+   "data": "2026-10-16",
+   "script": "seguir_pistas.py",
+   "inicio": "2026-10-16T06:45:45",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-16",
+   "script": "triar_confianca_pistas.py",
+   "inicio": "2026-10-16T06:45:45",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-16",
+   "script": "verificar_pista_imprensa.py",
+   "inicio": "2026-10-16T06:45:45",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
   }
  ],
- "atualizado_em": "2026-10-16T06:04:58"
+ "atualizado_em": "2026-10-16T06:45:45"
 }
