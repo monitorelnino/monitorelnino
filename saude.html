@@ -31,7 +31,7 @@
 <script src="assets/catalogo.js?v=d4d42f5f"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=02c36ec9">
-<link rel="stylesheet" href="assets/base.css?v=4ed1f7d5">
+<link rel="stylesheet" href="assets/base.css?v=7379a9be">
 <script src="assets/mapas.js?v=c9350706"></script>
 <script src="assets/semana.js?v=f42ab28a"></script>
 </head>
@@ -43,9 +43,7 @@
     <p class="site-title site-title--logo"><span class="sr-only">MARÉ · Monitor de Antecipação e Resposta ao El Niño</span><svg viewBox="0 0 400 116" role="img" aria-hidden="true" focusable="false" data-marca-fixa="1"><defs><linearGradient id="mareLogoAgua" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#C04430"/><stop offset="100%" stop-color="#5E7C93"/></linearGradient></defs><line x1="28" y1="18" x2="28" y2="92" stroke="#5E7C93" stroke-width="0.75"/><line x1="28" y1="26" x2="38" y2="26" stroke="#5E7C93" stroke-width="1.2"/><line x1="28" y1="41" x2="33" y2="41" stroke="#5E7C93" stroke-width="0.7"/><line x1="28" y1="55" x2="38" y2="55" stroke="#5E7C93" stroke-width="1.2"/><line x1="28" y1="69" x2="33" y2="69" stroke="#5E7C93" stroke-width="0.7"/><line x1="28" y1="84" x2="38" y2="84" stroke="#5E7C93" stroke-width="1.2"/><text x="56" y="92" style="font-family:'Fraunces',Georgia,serif;font-weight:300;font-size:76px;letter-spacing:-1.14px;fill:#0E0F0D;font-optical-sizing:auto">MARÉ</text><path d="M22 106 C45.7 102.5,69.5 102.5,93.2 106 C116.9 109.5,140.7 109.5,164.4 106 C188.1 102.5,211.9 102.5,235.6 106 C259.3 109.5,283.1 109.5,306.8 106 C330.5 102.5,354.3 102.5,378.0 106" fill="none" stroke="url(#mareLogoAgua)" stroke-width="1.15" stroke-linecap="round"/></svg></p>
     <div class="mast-top">      <nav class="mainnav" aria-label="Páginas do site"><a href="index.html">MARÉ Legal</a><i class="nav-sep" aria-hidden="true"></i><a href="monitor-de-riscos.html">Monitor de riscos</a><i class="nav-sep" aria-hidden="true"></i><a href="proteja-se.html">Proteja-se</a><i class="nav-sep" aria-hidden="true"></i><a href="defesa-civil.html">Defesa civil</a><span class="ativa" aria-current="page">MARÉ Saúde</span><i class="nav-sep" aria-hidden="true"></i><a href="financiamento.html">Financiamento</a><i class="nav-sep" aria-hidden="true"></i><a class="btn-nav" href="prefeituras.html">Para gestores</a><i class="nav-sep" aria-hidden="true"></i><a href="blog.html">Blog do MARÉ</a><a href="imprensa.html">Imprensa</a></nav>
     </div>
-    <p class="kicker">2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab</p>
     
-    <div class="grad-line"></div>
   </header>
 <main id="conteudo">
   <p class="selo" data-conteudo="saude.texto">MARÉ · Saúde · a mesma medida do MARÉ Legal, aplicada à saúde</p>
@@ -268,18 +266,10 @@
     <h3 class="u-mt-4" data-conteudo="saude.observado.sg.titulo_2">Calor</h3>
     <p class="note" id="fraseCalor" hidden></p>
     <div class="grade-figuras grade-figuras--3 grade-mapas">
-      <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxCalorSerie">
-        <p class="cartao-mapa-familia" data-conteudo="saude.observado.calor_serie.familia">Calor</p>
-        <p class="cartao-mapa-boletim" id="linhaCalorSerie"></p>
-        <h3 class="figura-titulo" data-conteudo="saude.observado.calor_serie.titulo">Municípios por classe de excesso de calor</h3>
-        <p class="figura-sub" data-conteudo="saude.observado.calor_serie.legenda">Consulta mais recente · municípios em cada classe · Painel do MS · contagem</p>
-        <div class="figura-midia canvas-wrap"><canvas id="cCalorSerie" aria-label="Barras com o número de municípios em cada classe de excesso de calor"></canvas></div>
-        <div class="map-legend" id="legCalorSerie"></div>
-      </figure>
 <figure class="figura figura--mapa cartao-mapa r-chuva" id="boxCalor">
         <p class="cartao-mapa-familia" data-conteudo="saude.observado.calor.familia">Calor</p>
         <p class="cartao-mapa-boletim" id="linhaCalor"></p>
-        <h3 class="figura-titulo" data-conteudo="saude.observado.calor.titulo">Municípios em excesso de calor</h3>
+        <h3 class="figura-titulo" data-conteudo="saude.observado.calor.titulo">Municípios em classe severa ou extrema de excesso de calor, por estado</h3>
         <p class="figura-sub" data-conteudo="saude.observado.calor.legenda">Consulta mais recente · classe severa ou extrema · Painel do MS · contagem por UF</p>
         <div class="figura-midia"><svg id="mapaCalor" role="img" aria-label="Mapa do Brasil pelo número de municípios em classe severa ou extrema de excesso de calor segundo o Painel Nacional de Excesso de Calor do Ministério da Saúde" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legCalor"></div>
@@ -325,7 +315,7 @@
 </div>
 
 <script src="assets/colunas.js?v=07ce0f22" defer></script>
-<script src="assets/js/grade-estados.js?v=f8d4b27a" defer></script><script src="assets/js/saude.js?v=bcaadea9" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
+<script src="assets/js/grade-estados.js?v=f8d4b27a" defer></script><script src="assets/js/saude.js?v=c5f6913e" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

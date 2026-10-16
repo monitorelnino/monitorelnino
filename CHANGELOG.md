@@ -29,14 +29,21 @@ não pontuados permanecem na versão corrente.
 
 
 
-
 ## 2026-10-16 · #791 · Monitor de riscos: abertura nova e números de agora; textos longos sem colunas
 
 A abertura do Monitor de riscos passa ao texto da editoria, em quatro parágrafos. "Situação atual" ganha painel próprio com os números de agora: oceano, probabilidade, focos de fogo, estados com seca grave, maior diferença de calor numa capital e estados com aviso de tempo severo, cada um com órgão e data. Sai o cartão dos riscos previstos. Os textos longos deixam de ser divididos em duas colunas no site inteiro.
 
+## 2026-10-16 · #790 · Topo sem a linha "2026/2027 · Monitoramento independente…"; cidade troca sem botão
+
+Sai do topo de todas as páginas a linha "2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab" e a faixa logo abaixo dela; a informação segue no rodapé. No cartão da cidade sai o botão ×: ao clicar de novo no campo do município, a lista do estado volta inteira e o cartão anterior fica até a nova escolha (editoria, 16/10).
+
 ## 2026-10-16 · #788 · O envio do formulário fica na inicial; sai a página Obrigado
 
 O formulário da inicial passa a enviar sem trocar de página: depois do envio aparece "Recebido. Obrigado pela contribuição." no mesmo lugar. O texto que vivia em `obrigado.html` (a conferência automática e o que acontece com o documento) vai para o próprio formulário. `obrigado.html` sai, e endereços antigos levam ao formulário (decisão da editoria de 16/10).
+
+## 2026-10-16 · #789 · Saúde: calor em uma medida por lugar
+
+Sai o gráfico de barras "municípios por classe" (5,5 mil em "normal" contra dezenas nas outras classes). Fica o mapa, agora "Municípios em classe severa ou extrema de excesso de calor, por estado", e uma linha fixa diz que a classe é do Ministério da Saúde, por município, e que a temperatura prevista nas capitais está no Monitor de riscos.
 
 ## 2026-10-16 · #787 · Saúde: a frase do dado não aparece vazia
 

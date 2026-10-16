@@ -30,7 +30,7 @@
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <script src="assets/mapas.js?v=c9350706"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=02c36ec9">
-<link rel="stylesheet" href="assets/base.css?v=4ed1f7d5">
+<link rel="stylesheet" href="assets/base.css?v=7379a9be">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -39,9 +39,7 @@
     <p class="site-title site-title--logo"><span class="sr-only">MARÉ · Monitor de Antecipação e Resposta ao El Niño</span><svg viewBox="0 0 400 116" role="img" aria-hidden="true" focusable="false" data-marca-fixa="1"><defs><linearGradient id="mareLogoAgua" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#C04430"/><stop offset="100%" stop-color="#5E7C93"/></linearGradient></defs><line x1="28" y1="18" x2="28" y2="92" stroke="#5E7C93" stroke-width="0.75"/><line x1="28" y1="26" x2="38" y2="26" stroke="#5E7C93" stroke-width="1.2"/><line x1="28" y1="41" x2="33" y2="41" stroke="#5E7C93" stroke-width="0.7"/><line x1="28" y1="55" x2="38" y2="55" stroke="#5E7C93" stroke-width="1.2"/><line x1="28" y1="69" x2="33" y2="69" stroke="#5E7C93" stroke-width="0.7"/><line x1="28" y1="84" x2="38" y2="84" stroke="#5E7C93" stroke-width="1.2"/><text x="56" y="92" style="font-family:'Fraunces',Georgia,serif;font-weight:300;font-size:76px;letter-spacing:-1.14px;fill:#0E0F0D;font-optical-sizing:auto">MARÉ</text><path d="M22 106 C45.7 102.5,69.5 102.5,93.2 106 C116.9 109.5,140.7 109.5,164.4 106 C188.1 102.5,211.9 102.5,235.6 106 C259.3 109.5,283.1 109.5,306.8 106 C330.5 102.5,354.3 102.5,378.0 106" fill="none" stroke="url(#mareLogoAgua)" stroke-width="1.15" stroke-linecap="round"/></svg></p>
     <div class="mast-top">      <nav class="mainnav" aria-label="Páginas do site"><a href="index.html">MARÉ Legal</a><i class="nav-sep" aria-hidden="true"></i><a href="monitor-de-riscos.html">Monitor de riscos</a><i class="nav-sep" aria-hidden="true"></i><a href="proteja-se.html">Proteja-se</a><i class="nav-sep" aria-hidden="true"></i><a href="defesa-civil.html">Defesa civil</a><a href="saude.html">MARÉ Saúde</a><i class="nav-sep" aria-hidden="true"></i><a href="financiamento.html">Financiamento</a><i class="nav-sep" aria-hidden="true"></i><a class="btn-nav" href="prefeituras.html">Para gestores</a><i class="nav-sep" aria-hidden="true"></i><a href="blog.html">Blog do MARÉ</a><a href="imprensa.html">Imprensa</a></nav>
     </div>
-    <p class="kicker">2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab</p>
     
-    <div class="grad-line"></div>
   </header>
 <main id="conteudo">
   <h1>Mudanças no MARÉ</h1>
@@ -51,8 +49,12 @@
     <dl class="mudancas-lista">
       <dt>16/10/2026 · Monitor de riscos: abertura nova e números de agora; textos longos sem colunas</dt>
       <dd>A abertura do Monitor de riscos passa ao texto da editoria, em quatro parágrafos. &quot;Situação atual&quot; ganha painel próprio com os números de agora: oceano, probabilidade, focos de fogo, estados com seca grave, maior diferença de calor numa capital e estados com aviso de tempo severo, cada um com órgão e data. Sai o cartão dos riscos previstos. Os textos longos deixam de ser divididos em duas colunas no site inteiro.</dd>
+      <dt>16/10/2026 · Topo sem a linha &quot;2026/2027 · Monitoramento independente…&quot;; cidade troca sem botão</dt>
+      <dd>Sai do topo de todas as páginas a linha &quot;2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab&quot; e a faixa logo abaixo dela; a informação segue no rodapé. No cartão da cidade sai o botão ×: ao clicar de novo no campo do município, a lista do estado volta inteira e o cartão anterior fica até a nova escolha (editoria, 16/10).</dd>
       <dt>16/10/2026 · O envio do formulário fica na inicial; sai a página Obrigado</dt>
       <dd>O formulário da inicial passa a enviar sem trocar de página: depois do envio aparece &quot;Recebido. Obrigado pela contribuição.&quot; no mesmo lugar. O texto que vivia em `obrigado.html` (a conferência automática e o que acontece com o documento) vai para o próprio formulário. `obrigado.html` sai, e endereços antigos levam ao formulário (decisão da editoria de 16/10).</dd>
+      <dt>16/10/2026 · Saúde: calor em uma medida por lugar</dt>
+      <dd>Sai o gráfico de barras &quot;municípios por classe&quot; (5,5 mil em &quot;normal&quot; contra dezenas nas outras classes). Fica o mapa, agora &quot;Municípios em classe severa ou extrema de excesso de calor, por estado&quot;, e uma linha fixa diz que a classe é do Ministério da Saúde, por município, e que a temperatura prevista nas capitais está no Monitor de riscos.</dd>
       <dt>16/10/2026 · Saúde: a frase do dado não aparece vazia</dt>
       <dd>As quatro frases do dado da página de saúde (dengue, chikungunya, respiratórias e calor) nasciam com um travessão e ficavam assim quando a série não carregava. Agora nascem ocultas e só aparecem com texto, por uma função só.</dd>
       <dt>16/10/2026 · Inicial: sai a legenda das barras; barras sem régua; cartão da cidade branco e com um só componente</dt>
@@ -165,10 +167,6 @@
       <dd>Dependência do handover do blog: os atos de resposta não tinham `tipo_evento`. Ele passa a vir da COBRADE do S2iD — 275 chuva, 327 seca, 66 vendaval, 4 fogo, 257 sem família — e não da `causa`, que nos registros federais diz o canal do ato, não o evento. O handover pedia um `.cartao-destaque` que não existe no sistema de design; os contratos do blog e da imprensa registram a divergência. Em `scripts/tipo_de_evento_dos_atos.py`.</dd>
       <dt>03/10/2026 · Dizemos o que disponibilizamos; o blog conta o ciclo</dt>
       <dd>Duas regras para todo o site: nenhuma frase sobre código, base de dados ou licença de dados, e o blog só sobre acontecimentos do ciclo, em prosa escrita por pessoa. Saem a pasta de dados abertos, a planilha da edição e o release gerado; nasce `mudancas.html`, com as 57 entradas do CHANGELOG. Blog com boletim congelado por edição e aprovação obrigatória; imprensa só com o estável. METODOLOGIA §103.</dd>
-      <dt>03/10/2026 · A corrente na janela, as listas federais primeiro, e a fila que para de crescer</dt>
-      <dd>Corrente às 22h, busca web com cinco rodadas em paralelo, evidências e OCR de volta ao elo, painel da noite com portão para elo que não roda. Prioridade de coleta pelas três listas federais (3.160 municípios), com cursor persistido. Fila de pistas: limpeza única fechou 8.025 com o motivo de cada uma (de 8.678 abertas para 654), esquema cobrado na gravação, e triagem como último elo de toda rodada. METODOLOGIA §102.</dd>
-      <dt>03/10/2026 · Plano publicado sem ato de aprovação localizado conta no degrau da leitura</dt>
-      <dd>Decisão da editoria, sem degrau novo: plano em domínio oficial do ente conta nos dois índices, com três condições (domínio oficial; órgão, título e ano; não ser minuta) e a marca &quot;sem ato de aprovação localizado&quot; na ficha do município e do estado. Etapas 2, 3, 4 e 6 do codebook ajustadas, versão 1.2, que devolve à fila o que a régua antiga recusou. Variante de 70% do degrau entra na análise de incerteza dos dois índices. METODOLOGIA §101.</dd>
     </dl>
   </section>
 </main>

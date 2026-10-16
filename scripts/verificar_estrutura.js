@@ -198,7 +198,7 @@ for (const arq of arquivos) {
     if (/Chart\.defaults\./.test(html)) falha(`${nome}: define Chart.defaults localmente (padrão único em assets/mapas.js)`);
   }
   // nenhuma página pode redefinir os componentes da folha base
-  const NUCLEO = [".mainnav a, .mainnav span", ".mainnav .ativa, .mainnav .ativa:hover", "header.masthead", ".site-title", ".masthead--mini .site-title", ".kicker", ".map-box", ".chart-box", ".map-legend", ".map-tooltip", "footer.site-footer", ".skip", ".panel"];
+  const NUCLEO = [".mainnav a, .mainnav span", ".mainnav .ativa, .mainnav .ativa:hover", "header.masthead", ".site-title", ".masthead--mini .site-title", ".map-box", ".chart-box", ".map-legend", ".map-tooltip", "footer.site-footer", ".skip", ".panel"];
   { // 03/09/2026: o index também não pode redefinir o núcleo (a nav duplicada dele vencia a base)
     for (const sel of NUCLEO) {
       const re = new RegExp("(^|[\\s}])" + sel.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\s*\\{");

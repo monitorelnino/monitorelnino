@@ -30,10 +30,10 @@ const FAMILIAS = {
   "item de legenda": ".map-legend > span:not(.escala)",
   "crédito de figura": ".fonte-figura",
   "número de figura": ".figura-num",
-  "corpo (parágrafo de painel)": ".panel > p:not(.hint):not(.note):not(.selo):not(.kicker):not(.legenda-regioes)",
+  "corpo (parágrafo de painel)": ".panel > p:not(.hint):not(.note):not(.selo):not(.legenda-regioes)",
   "apoio (.hint)": "p.hint",
   "nota (.note)": "p.note, .note",
-  "versalete (.selo/.kicker)": ".selo, .kicker",
+  "versalete (.selo)": ".selo",
   "cabeçalho de tabela": ".mun-table thead th",
   "célula de tabela": ".mun-table td",
   "painel": ".panel",
@@ -44,7 +44,7 @@ const FAMILIAS = {
 };
 const PROPS = ["fontSize", "fontWeight", "lineHeight", "letterSpacing", "fontFamily", "marginTop", "marginBottom", "paddingTop", "paddingBottom", "paddingLeft", "paddingRight", "textTransform"];
 // prosa: o espaçamento é do contêiner (último parágrafo sem margem, utilitários de ritmo), por isso compara só a tipografia
-const SO_TIPOGRAFIA = new Set(["corpo (parágrafo de painel)", "apoio (.hint)", "nota (.note)", "versalete (.selo/.kicker)", "célula de tabela"]);
+const SO_TIPOGRAFIA = new Set(["corpo (parágrafo de painel)", "apoio (.hint)", "nota (.note)", "versalete (.selo)", "célula de tabela"]);
 const PROPS_TIPO = ["fontSize", "fontWeight", "lineHeight", "letterSpacing", "fontFamily", "textTransform"];
 const MIME = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", ".css": "text/css", ".json": "application/json", ".svg": "image/svg+xml", ".xml": "application/xml", ".png": "image/png", ".pdf": "application/pdf", ".md": "text/markdown" };
 const srv = http.createServer((req, res) => { const u = decodeURIComponent(req.url.split("?")[0]); const f = path.join(RAIZ, u === "/" ? "index.html" : u);
