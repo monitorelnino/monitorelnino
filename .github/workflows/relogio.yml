@@ -37,11 +37,17 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      # O código do despachante vive na `main`; este ramo só carrega o gatilho.
+      # O código do despachante vive na `main`; este ramo só carrega o gatilho. Esparso: o
+      # despachante lê scripts/, config/ e os marcadores da noite — a árvore inteira (7 GB de
+      # evidências) estourou os 5 min do job no tique das 01:08 de 16/10/2026.
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           ref: main
           persist-credentials: false
+          sparse-checkout: |
+            scripts
+            config
+            data/noite
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with: { python-version: "3.12" }
 
