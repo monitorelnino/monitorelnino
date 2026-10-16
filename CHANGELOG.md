@@ -29,6 +29,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #PR · Consulta do município no Monitor de riscos: um arquivo por UF
+
+O elo dos sinais grava `data/riscos_municipio/<UF>.json`: por município, focos de 30 dias, avisos e alertas em vigor, decretos de resposta recentes, estação de ar e sensor a até 50 km e capital mais próxima, com distância. Aviso e estação vão por índice. METODOLOGIA §41.10.
+
 ## 2026-10-16 · #795 · Focos pelo satélite de referência; avisos por UF e grau
 
 O elo dos sinais grava `data/focos_referencia.json`: focos do satélite de referência do INPE por dia, UF, bioma e município (IBGE), série de 400 dias com o mesmo dia do ano anterior (arquivo anual de referência), mês e 30 dias com o número de dias com dado. `alertas/vigentes.json` ganha municípios sob aviso por UF e grau. METODOLOGIA §41.8.
