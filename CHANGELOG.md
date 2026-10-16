@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #761 · Rodapé só com o e-mail de contato
+
+O rodapé de todas as páginas, inclusive as do blog (pelo gerador), traz só o e-mail de contato; sai o rótulo "Imprensa:". Na Imprensa, o rodapé traz o e-mail de imprensa, que vive só nessa página.
+
 ## 2026-10-16 · #760 · Imprensa: páginas em cartões, perguntas em sanfona
 
 A Imprensa abre por "O que cada página responde", agora em cartões, um por página, com link; seguem o que é o MARÉ, o cálculo dos índices, as perguntas frequentes em sanfonas (a primeira de cada grupo aberta), como citar e o contato para redações. Fundo branco em tudo. Saem "Quem está mais preparado?", "A comparação é do leitor." e "Os estados são comparáveis entre si?": o site não convida a comparar entes. Redesenho aprovado pela editoria em 15/10.
