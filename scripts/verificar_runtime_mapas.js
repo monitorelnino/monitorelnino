@@ -20,8 +20,8 @@
  *       municípios do Cemaden fora do mapa sem nenhuma mensagem de erro. Cada mapa tem a sua
  *       contagem esperada calculada aqui, do dado, nunca escrita à mão.
  *   (c) **A volta do que a editoria mandou sair.** Os blocos de auditoria e os mapas de preparação
- *       foram para `dados-abertos/` e para a METODOLOGIA; "Cadastro Nacional" saiu do site porque é
- *       o nome de outro cadastro, que cria dever que a lista da Casa Civil não cria.
+ *       foram para `dados-abertos/` e para a METODOLOGIA; "Cadastro Nacional" só entra como
+ *       indicação da União (§107): inscrição, que é o que cria dever, não tem fonte pública.
  *
  * Uso: node scripts/verificar_runtime_mapas.js
  */
@@ -264,12 +264,18 @@ setTimeout(() => {
   teste("material de auditoria e mapas de preparação continuam fora da página (01/10/2026)",
     voltou.length === 0);
   if (voltou.length) console.log("      voltaram:", voltou.join(", "));
-  /* "Cadastro Nacional" é o nome do cadastro do art. 3º-A da Lei 12.340 — voluntário, com
-     deslizamento, e que GERA O DEVER de plano de contingência. A lista desta página é a da Casa
-     Civil, que não cria esse dever. Usar um nome pelo outro afirma obrigação inexistente. */
+  /* "Cadastro Nacional" é o do art. 3º-A da Lei 12.340: a INSCRIÇÃO, voluntária, é que gera o dever
+     de plano. 16/10/2026 (METODOLOGIA §107): a lista desta página são os 2.095 INDICADOS pela União
+     ao Cadastro Nacional (página do MIDR, 28/07/2026); quem se inscreveu não tem fonte pública. A
+     página pode nomear o cadastro só como indicação da União; afirmar inscrição ou dever é afirmar
+     o que nenhuma fonte pública diz. */
   const visivel = d.getElementById("conteudo").textContent;
-  teste('o nome "Cadastro Nacional" não aparece na página (é outro cadastro)',
-    !/Cadastro Nacional/i.test(visivel));
+  const semIndicacao = [...visivel.matchAll(/Cadastro Nacional/gi)]
+    .filter(m => !/indicad[oa]s?\b[^.]{0,60}$/i.test(visivel.slice(Math.max(0, m.index - 70), m.index)));
+  teste('"Cadastro Nacional" só aparece como indicação da União',
+    semIndicacao.length === 0);
+  teste("a página não afirma inscrição no Cadastro Nacional nem dever de plano",
+    !/(inscrit[oa]s?|cadastrad[oa]s?)\b[^.]{0,40}Cadastro Nacional|t[êe]m o dever\b/i.test(visivel));
   teste("o cadastro é nomeado pela fonte certa (Casa Civil)",
     /suscet[íi]veis a enxurradas e inunda[çc][õo]es/i.test(visivel) && /Casa Civil/i.test(visivel));
 

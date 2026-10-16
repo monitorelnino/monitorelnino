@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #PR · Cadastro Nacional: o MARÉ cobre os indicados pela União
+
+A página do MIDR (28/07/2026) publica os 2.095 municípios indicados pela União ao Cadastro Nacional do art. 3º-A — a lista que o MARÉ já lia das notas técnicas — e entra no coletor como segunda fonte. Nova seção §107 e erratas em §54, §66 e §21; o portão passa a proibir afirmar inscrição ou dever. §5.3.1 explica como o município compõe a nota.
+
 ## 2026-10-16 · #768 · Todo texto público no catálogo, com portão
 
 O portão do catálogo passa a reprovar texto público do `<main>` sem identificador (título, parágrafo, item, legenda, resumo), pela mesma regra do migrador; fora só formulário, diálogo, `noscript` e navegação (`layout/regras.json`). O migrador passa a levar texto com marcação e a não sobrescrever identificador existente. 138 trechos de dez páginas migrados sem mudar uma letra.
