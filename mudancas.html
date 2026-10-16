@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/10/2026 · Ar medido: hora de medição no futuro vira lacuna</dt>
+      <dd>Na coleta das 15:46, 51 estações (INEA, CPRH, Ibram) traziam hora 4 a 5 h adiante da consulta e saíam como leitura atual. `parse_monitorar` passa a declarar lacuna quando a hora publicada passa da consulta em mais de 1 h (IQAr e sensores RedeAr); não se reinterpreta fuso que a fonte não declara. METODOLOGIA §41.7; autoteste novo.</dd>
       <dt>16/10/2026 · Juiz da saúde estadual: duas rodadas pela válvula (dado)</dt>
       <dd>Duas rodadas do juiz da saúde estadual com o código do #799: cerca de 140 pistas oficiais julgadas (contra 17 em 15/10), nenhuma promovida; 113 seguem pendentes, entre elas as do host do Amapá sem resposta. O corte da verificação segue 02/10, porque a fila não terminou.</dd>
       <dt>16/10/2026 · Monitor de riscos: números de agora com a leitura anterior; avisos distintos no país</dt>
@@ -165,8 +167,6 @@
       <dd>Comparado com o grafo de dependências, o mapa tinha um ponto cego: só via o nome do dado **literal na chamada**. Quem o guarda em constante — o estilo dos scripts novos — ficava invisível, e 23 arquivos subiram de 17 para 84 dependências declaradas; `coletores_base.py` aparecia sem `log_buscas.json`. Coluna nova `importado por`: ele tem 169 importadores, e era esse número que faltava antes dos dois acidentes de isolamento.</dd>
       <dt>05/10/2026 · O CODEMAP apontava três caminhos que não existem</dt>
       <dd>Ao comparar o mapa com a árvore, três scripts apareciam como `assets/js/acesso.js`, `assets/js/colunas.js` e `assets/js/mapas.js` — e os três vivem em `assets/`. A causa era uma compreensão sobre lista vazia no gerador, com o padrão errado vencendo sempre. Consertado, com trava que confere que todo caminho do mapa existe no disco. Os 19 scripts de `scripts/` que tocam `data/` entraram: 142 → 172 arquivos, incluindo a porta da fila de pistas.</dd>
-      <dt>05/10/2026 · Duas skills do projeto, e a tabela de arquivos grandes remedida</dt>
-      <dd>`regras-do-site` e `noite-e-coletores` reúnem, com ponteiros, as regras que já estavam espalhadas em seis documentos — nenhuma regra nova, auditado. A tabela de arquivos que nunca entram em contexto estava errada no que mais importa: `evidencias/` figurava com 380 MB e tem 4,1 GB, e `pistas_imprensa.json` (26 MB) nem constava. A skill `karpathy-guidelines` ganhou o aviso de que seu §1 foi revogado em 27/09.</dd>
     </dl>
   </section>
 </main>

@@ -1340,7 +1340,7 @@ O painel do MS **não publica API**: o endereço é função interna do aplicati
 
 **Fontes e papel** (`data/ar_medido.json`, escrito pelo elo dos sinais, uma leitura por noite):
 
-- **MMA · MonitorAr** — IQAr por estação oficial, com a rede estadual de origem no crédito. A hora vem sem fuso e é lida como horário de Brasília.
+- **MMA · MonitorAr** — IQAr por estação oficial, com a rede estadual de origem no crédito. A hora vem sem fuso e é lida como horário de Brasília. Hora de medição posterior à consulta em mais de 1 h não é lida como atual: vira lacuna ("hora da medição publicada pela fonte posterior à consulta"). Em 16/10/2026, 51 estações do INEA (RJ), da CPRH (PE) e do Ibram (DF) traziam hora 4 a 5 h adiante; a fonte não declara fuso e o desvio não é o do UTC, então não se adivinha.
 - **OpenAQ** — PM2,5 da última medição publicada da **mesma** estação oficial, casada a até 300 m (ou pelo mesmo nome a até 30 km). Sem par, a estação mostra só o IQAr e a lacuna da concentração.
 - **IPAM/RedeAr** — PM2,5 e PM10 de sensores óticos de baixo custo: média dos dois canais do sensor na leitura mais recente, com a correção atmosférica que a própria fonte publica. Não é estação regulatória e não gera IQAr. O host de produção respondeu em 16/10 com leituras de julho e sensores de teste; o de homologação traz o código IBGE e leituras do dia, e é o usado, declarado no dado. Sensor sem código IBGE fica de fora.
 
