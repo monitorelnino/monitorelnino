@@ -32,7 +32,7 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-16 · #PRNUM · Inicial com os textos da editoria; nome "Medida"
+## 2026-10-16 · #770 · Inicial com os textos da editoria; nome "Medida"
 
 Inicial: título, metadescrição, introdução, abertura em quatro parágrafos (indicados pela União lidos do dado), "Como ler" e cartão da cidade com o texto da editoria; formulário diz que a conferência é automática. Nome por extenso volta a "Medida de Antecipação e Resposta" em todas as páginas, geradores e METODOLOGIA (§5.1, errata); `verificar_estrutura.js` passa a reprovar "Monitor de Antecipação". Teto de palavras da inicial 950 → 1.050.
 
