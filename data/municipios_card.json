@@ -1,11 +1,11 @@
 {
  "_governanca": "Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. `prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). `imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o leitor peça o documento ao gestor. Só municípios com algo a dizer; sem registro = não verificado. `defesa_civil_orcamento` (§207) = despesa liquidada na subfunção 06.182 declarada ao SICONFI, peso ZERO; classe de ausência nunca vira zero.",
- "gerado_em": "2026-10-15",
- "total": 2324,
+ "gerado_em": "2026-10-16",
+ "total": 2451,
  "com_registro": 252,
- "com_imprensa": 249,
+ "com_imprensa": 379,
  "prioritarios": 2095,
- "com_despesa_182": 2324,
+ "com_despesa_182": 2451,
  "municipios": {
   "1100023": {
    "nome": "Ariquemes",
@@ -258,6 +258,30 @@
    "nome": "Buritis",
    "uf": "RO",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "1101005": {
+   "nome": "GOVERNADOR JORGE TEIXEIRA",
+   "uf": "RO",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "icípio de PORTO VELHO/RO, com a finalidade de participar \nda Oficina Regionalizada de Elaboração do Plano de Contingência de \nenfrentamento",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=269&i=publicado_116172_2026-10-14_dba3624201051063de23d63a79d638b5.pdf",
+     "data": "2026-10-15",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -766,6 +790,15 @@
    "nome": "Autazes",
    "uf": "AM",
    "prioritario": true,
+   "imprensa": [
+    {
+     "titulo": "s ervados os prazos e \nrequisitos aplicáveis. \n  \nArt. 11. Integram a fundamentação deste Decreto o Plano Municipal \nde Contingência para En",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118966_2026-10-14_321e782aa6f90b19bb55fcf3c22abcd7.pdf",
+     "data": "15/10/2026",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
@@ -1268,6 +1301,15 @@
    "nome": "Maués",
    "uf": "AM",
    "prioritario": true,
+   "imprensa": [
+    {
+     "titulo": "r/aam                                                                                66 \n \nFVS-RCP. Plano de Contingência para Eventos Climá",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118966_2026-10-14_321e782aa6f90b19bb55fcf3c22abcd7.pdf",
+     "data": "2026-10-15",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
@@ -16683,6 +16725,44 @@
    },
    "categoria": "nao_verificado"
   },
+  "3100401": {
+   "nome": "Acaiaca",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Relatório de Monitoramento Mensal - MPF",
+     "url": "https://www.mpf.mp.br/grandes-casos/caso-samarco/documentos/relatorios-ramboll/relatorio_junho20_v06_com_quadro.pdf",
+     "data": "2026-10-16",
+     "veiculo": "mpf.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "SRF II - SINDIPESA",
+     "url": "https://sindipesa.org.br/wp-content/uploads/2026/06/PORTARIA-No-4262-DE-26-DE-JUNHO-DE-2026.pdf",
+     "data": "2026-10-16",
+     "veiculo": "sindipesa.org.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Relatório Bienal - 2015-2016 - Samarco Mineração",
+     "url": "https://www.samarco.com/wp-content/uploads/2024/06/Samarco_Relatorio-Bienal-2015_16-08092017.pdf",
+     "data": "2026-10-16",
+     "veiculo": "samarco.com",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3100609": {
    "nome": "Água Boa",
    "uf": "MG",
@@ -16692,6 +16772,30 @@
     "classe": "com_lancamento",
     "rs_hab": 1.498136,
     "liquidada": 18860.04,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3100807": {
+   "nome": "Aguanil",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Segurança da Informação | Giga+ Fibra - Giga Mais",
+     "url": "https://www.gigamaisfibra.com.br/seguranca-da-informacao/",
+     "data": "2026-10-15",
+     "veiculo": "gigamaisfibra.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -16818,6 +16922,37 @@
    },
    "categoria": "nao_verificado"
   },
+  "3102209": {
+   "nome": "Alvarenga",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO - CEIVAP",
+     "url": "https://www.ceivap.org.br/mata/Merces.pdf",
+     "data": "2026-10-16",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Plano de ação de Emergência - PAE BARRAGEM MIGUELÃO",
+     "url": "https://www.anglogoldashanti.com.br/wp-content/uploads/2022/02/PAELM-PN0920-14-12-21-INFORMAC%CC%A7O%CC%83ES-DE-CONTATO-OCULTAS.pdf",
+     "data": "2026-10-16",
+     "veiculo": "anglogoldashanti.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3102308": {
    "nome": "Alvinópolis",
    "uf": "MG",
@@ -16827,6 +16962,61 @@
     "classe": "sem_lancamento_182",
     "rs_hab": null,
     "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3102407": {
+   "nome": "Alvorada de Minas",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "The Case of Conceição Do Mato Dentro (MG) - MDPI",
+     "url": "https://www.mdpi.com/2624-795x/6/2/21",
+     "data": "2026-10-15",
+     "veiculo": "mdpi.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "SEÇÃO I - Anglo American",
+     "url": "https://brasil.angloamerican.com/~/media/Files/A/Anglo-American-Group-v9/Brazil/barragem/paebms/dique-de-contencao-de-sedimentos-2-paebm-secao-1.pdf",
+     "data": "2026-10-15",
+     "veiculo": "brasil.angloamerican.com",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3102506": {
+   "nome": "Amparo do Serra",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Apostila Agente de Combate às Endemias Amparo do Serra MG 2026",
+     "url": "https://dominaconcursos.com.br/produto/apostila-agente-de-combate-as-endemias-amparo-do-serra-mg-2026/",
+     "data": "2026-10-15",
+     "veiculo": "dominaconcursos.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 1.453424,
+    "liquidada": 6600.0,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -17038,6 +17228,37 @@
    },
    "categoria": "nao_verificado"
   },
+  "3104809": {
+   "nome": "Augusto de Lima",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Plano Municipal de Saneamento Básico de Corinto - coresab",
+     "url": "https://coresab.com.br/wp-content/uploads/2019/08/P8_Corinto.pdf",
+     "data": "2026-10-15",
+     "veiculo": "coresab.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Direito do Trabalho - Guilherme Cobra | Sociedade de Advogados",
+     "url": "http://www.cobraadvogados.com.br/direito-do-trabalho-trabalhista/",
+     "data": "2026-10-15",
+     "veiculo": "cobraadvogados.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3104908": {
    "nome": "Baependi",
    "uf": "MG",
@@ -17092,6 +17313,37 @@
    },
    "categoria": "nao_verificado"
   },
+  "3105202": {
+   "nome": "Bandeira",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO DE CONTINGÊNCIA PERÍODO DE ESTIAGEM - QUEIMADAS",
+     "url": "https://pocosdecaldas.siscam.com.br/arquivo?Id=228470",
+     "data": "2026-10-15",
+     "veiculo": "pocosdecaldas.siscam.com.br",
+     "nivel": "A"
+    },
+    {
+     "titulo": "Aneel corrige patamar de bandeira vermelha e cobrança extra será ...",
+     "url": "https://movimentoeconomico.com.br/economia/energia/2024/09/04/aneel-corrige-patamar-de-bandeira-vermelha-e-cobranca-extra-sera-menor/",
+     "data": "2026-10-15",
+     "veiculo": "movimentoeconomico.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3105400": {
    "nome": "Barão de Cocais",
    "uf": "MG",
@@ -17110,6 +17362,30 @@
     "classe": "com_lancamento",
     "rs_hab": 3.955423,
     "liquidada": 121740.0,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3105509": {
+   "nome": "Barão de Monte Alto",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Energisa Reúne Órgãos Públicos em Cataguases para Alinhar ...",
+     "url": "https://cerqueirasnoticias.com.br/cataguases/energisa-reune-orgaos-publicos-em-cataguases-para-alinhar-estrategias-contra-eventos-climaticos-severos",
+     "data": "2026-10-15",
+     "veiculo": "cerqueirasnoticias.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 0.04025,
+    "liquidada": 199.8,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -17169,6 +17445,61 @@
    "nome": "Belo Oriente",
    "uf": "MG",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3106606": {
+   "nome": "Bertópolis",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Procedimento Administrativo MPe n. 34.16.0024.0404747.2026-85 ...",
+     "url": "https://www.mpmg.mp.br/data/files/DF/50/DD/DF/DCB10A109892510AAAA8F9C2/ajc%20pouso%20alegre.pdf",
+     "data": "2026-10-15",
+     "veiculo": "mpmg.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "MG PLANO MUNICIPAL DE SANEAMENTO BÁSICO (PMSB) DO ...",
+     "url": "https://www.cbhsuacui.org.br/wp-content/uploads/2015/07/P3_R0_CAMPAN%C3%81RIO.pdf",
+     "data": "2026-10-15",
+     "veiculo": "cbhsuacui.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3106655": {
+   "nome": "Berizal",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Parceria pela Barragem de Berizal! Estou na Codevasf, em Brasília ...",
+     "url": "https://www.instagram.com/reel/DQug5H2iWXj/",
+     "data": "2026-10-15",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -17273,6 +17604,44 @@
     "classe": "com_lancamento",
     "rs_hab": 1.065128,
     "liquidada": 55106.51,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3107604": {
+   "nome": "Bom Jesus da Penha",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-15",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Dia: 4 de março de 2026 - Jornal Panorama",
+     "url": "https://jornalpanoramaminas.com.br/2026/03/04/",
+     "data": "2026-10-15",
+     "veiculo": "jornalpanoramaminas.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "GUAXUPÉ/MG - agencia de desenvolvimento",
+     "url": "https://agenciadedesenvolvimento.com.br/arquivos/GUAXUP%C3%89%202050.pdf",
+     "data": "2026-10-15",
+     "veiculo": "agenciadedesenvolvimento.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -17446,6 +17815,44 @@
    },
    "categoria": "nao_verificado"
   },
+  "3108800": {
+   "nome": "Braúnas",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO DE AÇÃO DE EMERGÊNCIA (PAE) UHE Porto Estrela",
+     "url": "https://aliancaenergia.com.br/wp-content/uploads/2024/09/pae_uhe_porto-estrela.-rev-9-1.pdf",
+     "data": "2026-10-15",
+     "veiculo": "aliancaenergia.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "PLANO DE AÇÃO DE EMERGÊNCIA (PAE) UHE Porto Estrela",
+     "url": "https://aliancaenergia.com.br/wp-content/uploads/2022/11/PAE-Porto-Estrela.pdf",
+     "data": "2026-10-15",
+     "veiculo": "aliancaenergia.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "PLANO DE CONTINGÊNCIA PARA DESASTRES AMBIENTAIS",
+     "url": "https://revistaft.com.br/plano-de-contingencia-para-desastres-ambientais-uma-analise-da-publicidade-e-acesso-a-populacao-dos-municipios-da-regiao-metropolitana-do-vale-do-aco-rmva-e-do-seu-colar-metropolitano/",
+     "data": "2026-10-15",
+     "veiculo": "revistaft.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3108909": {
    "nome": "Brazópolis",
    "uf": "MG",
@@ -17476,6 +17883,44 @@
    },
    "categoria": "nao_verificado"
   },
+  "3109253": {
+   "nome": "Bugre",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "INMET e Defesa Civil alertam para risco hidrológico em cidades de ...",
+     "url": "https://g1.globo.com/mg/vales-mg/noticia/2026/01/20/inmet-e-defesa-civil-alertam-para-risco-hidrologico-em-governador-valadares.ghtml",
+     "data": "2026-10-16",
+     "veiculo": "g1.globo.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Relatório de Monitoramento Mensal - MPF",
+     "url": "https://www.mpf.mp.br/grandes-casos/caso-samarco/documentos/relatorios-ramboll/relatorio_junho20_v06_com_quadro.pdf",
+     "data": "2026-10-16",
+     "veiculo": "mpf.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Justiça Eleitoral de Ipatinga assume município de Bugre",
+     "url": "https://www.diariodoaco.com.br/noticia/0053955-justica-eleitoral-de-ipatinga-assume-municipio-de-bugre",
+     "data": "2026-10-16",
+     "veiculo": "diariodoaco.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 8.124657,
+    "liquidada": 32831.74,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3109303": {
    "nome": "Buritis",
    "uf": "MG",
@@ -17495,6 +17940,30 @@
    "nome": "Buritizeiro",
    "uf": "MG",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3109600": {
+   "nome": "Cachoeira da Prata",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-16",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -17641,6 +18110,30 @@
    },
    "categoria": "nao_verificado"
   },
+  "3111150": {
+   "nome": "Campo Azul",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Saiba como agir em casos de incêndio e acione os órgãos ...",
+     "url": "https://www.instagram.com/p/DQlxdjfk8Je/",
+     "data": "2026-10-16",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3111200": {
    "nome": "Campo Belo",
    "uf": "MG",
@@ -17686,6 +18179,30 @@
    },
    "categoria": "nao_verificado"
   },
+  "3111705": {
+   "nome": "Canaã",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "plano de contingência e atendimento à emergência - FIEG",
+     "url": "https://www.fieg.com.br/portais/files/3a956487-a9a5-4ee9-bb0b-88918796ce90.pdf?contentDisposition=inline",
+     "data": "2026-10-15",
+     "veiculo": "fieg.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 4.116422,
+    "liquidada": 19408.93,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3111903": {
    "nome": "Cana Verde",
    "uf": "MG",
@@ -17714,6 +18231,44 @@
    "nome": "Candeias",
    "uf": "MG",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3112059": {
+   "nome": "Cantagalo",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "GUANHÃES A Defesa Civil alerta para a previsão de tempestade ...",
+     "url": "https://www.instagram.com/p/DeAfhnABWob/",
+     "data": "2026-10-16",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Itaocara, Aperibé e Pádua recebem planos de contingência de ...",
+     "url": "https://www.serranewsrj.com.br/2020/07/itaocara-aperibe-e-padua-recebem-planos-de-contingencia-de-barragens.html",
+     "data": "2026-10-16",
+     "veiculo": "serranewsrj.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "EX-PREFEITO DE CANTAGALO, GUGA DE PAULA MORRE EM ...",
+     "url": "https://www.facebook.com/atualiza.itaperuna.2025/posts/ex-prefeito-de-cantagalo-guga-de-paula-morre-em-grave-acidente-de-carro-na-regi%C3%A3/1087026150634545/",
+     "data": "2026-10-16",
+     "veiculo": "facebook.com",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -17787,6 +18342,30 @@
     "classe": "com_lancamento",
     "rs_hab": 16.353232,
     "liquidada": 239656.61,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3112653": {
+   "nome": "Capitão Andrade",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "INMET e Defesa Civil alertam para risco hidrológico em cidades de ...",
+     "url": "https://g1.globo.com/mg/vales-mg/noticia/2026/01/20/inmet-e-defesa-civil-alertam-para-risco-hidrologico-em-governador-valadares.ghtml",
+     "data": "2026-10-15",
+     "veiculo": "g1.globo.com",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -17958,10 +18537,141 @@
    },
    "categoria": "nao_verificado"
   },
+  "3114600": {
+   "nome": "Carrancas",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "️ Defesa Civil informa! Alerta de chuva moderada com rajadas de ...",
+     "url": "https://www.instagram.com/p/DU82xdhk6RH/",
+     "data": "2026-10-16",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "️ RAIO, RELÂMPAGO E TROVÃO: O QUE É CADA UM? 🌩️ Tá ...",
+     "url": "https://www.instagram.com/reel/DH4Y6InxHLS/?hl=en",
+     "data": "2026-10-16",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "️ Defesa Civil informa! Alerta de risco iminente de deslizamentos ...",
+     "url": "https://www.instagram.com/p/DWHXnSVE86u/",
+     "data": "2026-10-16",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 1.611163,
+    "liquidada": 6523.6,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3114709": {
+   "nome": "Carvalhópolis",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-16",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3114808": {
+   "nome": "Carvalhos",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-15",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO",
+     "url": "https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2026/DMPF-EXTRAJUDICIAL-2026-03-06.pdf",
+     "data": "2026-10-15",
+     "veiculo": "transparencia.mpf.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Da emergência climática à resiliência territorial - CIM do Ave",
+     "url": "https://cim-ave.pt/wp-content/uploads/2020/10/PIAAC_CIM_do_Ave.pdf",
+     "data": "2026-10-15",
+     "veiculo": "cim-ave.pt",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3115102": {
    "nome": "Cássia",
    "uf": "MG",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3115201": {
+   "nome": "Conceição da Barra de Minas",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Saiba como agir em casos de incêndio e acione os órgãos ...",
+     "url": "https://www.instagram.com/p/DQlxdjfk8Je/",
+     "data": "2026-10-16",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Plano de contingência da Cemig reforça atendimento durante ...",
+     "url": "https://jornalpanoramaminas.com.br/plano-de-contingencia-da-cemig-reforca-atendimento-durante-tempestades-em-minas-gerais/",
+     "data": "2026-10-16",
+     "veiculo": "jornalpanoramaminas.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -18006,6 +18716,30 @@
     "classe": "com_lancamento",
     "rs_hab": 1.092501,
     "liquidada": 5979.26,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3115474": {
+   "nome": "Catuti",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-15",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -18060,6 +18794,37 @@
     "classe": "com_lancamento",
     "rs_hab": 17.117081,
     "liquidada": 211481.53,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3116407": {
+   "nome": "Claraval",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Procedimento Administrativo MPe n. 34.16.0024.0404747.2026-85 ...",
+     "url": "https://www.mpmg.mp.br/data/files/DF/50/DD/DF/DCB10A109892510AAAA8F9C2/ajc%20pouso%20alegre.pdf",
+     "data": "2026-10-15",
+     "veiculo": "mpmg.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-15",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -18128,6 +18893,37 @@
     "classe": "com_lancamento",
     "rs_hab": 4.579647,
     "liquidada": 129974.97,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3117405": {
+   "nome": "Conceição de Ipanema",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "INMET e Defesa Civil alertam para risco hidrológico em cidades de ...",
+     "url": "https://g1.globo.com/mg/vales-mg/noticia/2026/01/20/inmet-e-defesa-civil-alertam-para-risco-hidrologico-em-governador-valadares.ghtml",
+     "data": "2026-10-15",
+     "veiculo": "g1.globo.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO São José do ...",
+     "url": "https://www.cbhmanhuacu.org.br/wp-content/uploads/2014/04/P1_S%C3%A3o-Jos%C3%A9-do-Mantimento.pdf",
+     "data": "2026-10-15",
+     "veiculo": "cbhmanhuacu.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -18241,6 +19037,30 @@
    },
    "categoria": "nao_verificado"
   },
+  "3118106": {
+   "nome": "Congonhas do Norte",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-15",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3118304": {
    "nome": "Conselheiro Lafaiete",
    "uf": "MG",
@@ -18346,6 +19166,85 @@
    },
    "categoria": "nao_verificado"
   },
+  "3119708": {
+   "nome": "Coronel Xavier Chaves",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO",
+     "url": "https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2025/DMPF-EXTRAJUDICIAL-2025-08-25.pdf",
+     "data": "2026-10-16",
+     "veiculo": "transparencia.mpf.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-16",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 13.957186,
+    "liquidada": 48654.75,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3119906": {
+   "nome": "Córrego do Bom Jesus",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-15",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3120102": {
+   "nome": "Couto de Magalhães de Minas",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-15",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3120151": {
    "nome": "Crisólita",
    "uf": "MG",
@@ -18385,6 +19284,68 @@
    },
    "categoria": "nao_verificado"
   },
+  "3120409": {
+   "nome": "Cristiano Otoni",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO",
+     "url": "https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2026/DMPF-EXTRAJUDICIAL-2026-02-24.pdf",
+     "data": "2026-10-15",
+     "veiculo": "transparencia.mpf.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Relatório Anual do AGIR",
+     "url": "https://agircongonhas.com.br/wp-content/uploads/2026/05/Relatorio-AGIR-2025-final-REV3.pdf",
+     "data": "2026-10-15",
+     "veiculo": "agircongonhas.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-15",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3120706": {
+   "nome": "Cruzeiro da Fortaleza",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-16",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3120805": {
    "nome": "Cruzília",
    "uf": "MG",
@@ -18394,6 +19355,44 @@
     "classe": "com_lancamento",
     "rs_hab": 0.110663,
     "liquidada": 1700.0,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3120839": {
+   "nome": "Cuparaque",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO (PMSB) DE ...",
+     "url": "https://www.cbhsuacui.org.br/wp-content/uploads/2015/07/P3_R1_CUPARAQUE.pdf",
+     "data": "2026-10-16",
+     "veiculo": "cbhsuacui.org.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "O prefeito de Cafarnaum, Carlan Novais, visitou as obras do Instituto ...",
+     "url": "https://www.instagram.com/reel/DbF3XQ-oIXC/",
+     "data": "2026-10-16",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "INMET e Defesa Civil alertam para risco hidrológico em cidades de ...",
+     "url": "https://g1.globo.com/mg/vales-mg/noticia/2026/01/20/inmet-e-defesa-civil-alertam-para-risco-hidrologico-em-governador-valadares.ghtml",
+     "data": "2026-10-16",
+     "veiculo": "g1.globo.com",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -18477,6 +19476,44 @@
    },
    "categoria": "nao_verificado"
   },
+  "3121308": {
+   "nome": "Descoberto",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PRODUTO TÉCNICO PLANO DE CONTINGÊNCIA A INCÊNDIOS ...",
+     "url": "https://www.bambui.ifmg.edu.br/portal/images/PDF/MPSTA/Cartilhas/Produto_t%C3%A9cnico_-_Elaine_Gon%C3%A7alves_da_Costa.pdf",
+     "data": "2026-10-15",
+     "veiculo": "bambui.ifmg.edu.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "COOPERATIVA DE CRÉDITO CREDIMATA LTDA. - Sicoob",
+     "url": "https://www.sicoob.com.br/documents/d/sicoobcredimata/07-nota_explicativa_2025-1",
+     "data": "2026-10-15",
+     "veiculo": "sicoob.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Aviso de grande perigo atinge ampla área do Sudeste e inclui São ...",
+     "url": "https://difusorasjn.com.br/alerta-de-defesa-civil-sjn-240226-2/",
+     "data": "2026-10-15",
+     "veiculo": "difusorasjn.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3121407": {
    "nome": "Desterro de Entre Rios",
    "uf": "MG",
@@ -18538,6 +19575,37 @@
    },
    "categoria": "nao_verificado"
   },
+  "3122108": {
+   "nome": "Divino das Laranjeiras",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "INMET e Defesa Civil alertam para risco hidrológico em cidades de ...",
+     "url": "https://g1.globo.com/mg/vales-mg/noticia/2026/01/20/inmet-e-defesa-civil-alertam-para-risco-hidrologico-em-governador-valadares.ghtml",
+     "data": "2026-10-15",
+     "veiculo": "g1.globo.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-15",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3122306": {
    "nome": "Divinópolis",
    "uf": "MG",
@@ -18547,6 +19615,113 @@
     "classe": "com_lancamento",
     "rs_hab": 0.016119,
     "liquidada": 3724.99,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3122470": {
+   "nome": "Dom Bosco",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "plano de contingência de proteção e defesa civil - PreventionWeb",
+     "url": "https://www.preventionweb.net/media/73057/download",
+     "data": "2026-10-16",
+     "veiculo": "preventionweb.net",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Defesa Civil começa demolição de 16 casas no Dom Bosco, em ...",
+     "url": "https://globoplay.globo.com/v/15034286/",
+     "data": "2026-10-16",
+     "veiculo": "globoplay.globo.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "plano de contingência brumadinho / mg 2014 / 2015",
+     "url": "https://s3-apps-01.mgdata.com.br/portalbrumadinho/brumadinho/media%20-1694527277121.pdf",
+     "data": "2026-10-16",
+     "veiculo": "s3-apps-01.mgdata.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3122504": {
+   "nome": "Dom Cavati",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "INMET e Defesa Civil alertam para risco hidrológico em cidades de ...",
+     "url": "https://g1.globo.com/mg/vales-mg/noticia/2026/01/20/inmet-e-defesa-civil-alertam-para-risco-hidrologico-em-governador-valadares.ghtml",
+     "data": "2026-10-15",
+     "veiculo": "g1.globo.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Observatório das Metropolizações e IFMG lançam mapa inédito do ...",
+     "url": "https://www.diariodoaco.com.br/noticia/0094263-observatorio-das-metropolizacoes-e-ifmg-lancam-mapa-inedito-do-vale-do-aco",
+     "data": "2026-10-15",
+     "veiculo": "diariodoaco.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Guia prático de requisição de perícias ambientais",
+     "url": "https://www.cnmp.mp.br/portal/images/CMA/arquivos/MPMG/GuiaPratico_PericiasAmbientais.pdf",
+     "data": "2026-10-15",
+     "veiculo": "cnmp.mp.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3122603": {
+   "nome": "Dom Joaquim",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "The Case of Conceição Do Mato Dentro (MG) - MDPI",
+     "url": "https://www.mdpi.com/2624-795x/6/2/21",
+     "data": "2026-10-15",
+     "veiculo": "mdpi.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Lei Orgânica da Saúde completa 30 anos | Portal - MPMG",
+     "url": "https://www.mpmg.mp.br/portal/menu/comunicacao/campanhas/lei-organica-da-saude-completa-30-anos.shtml",
+     "data": "2026-10-15",
+     "veiculo": "mpmg.mp.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -18619,6 +19794,37 @@
    "nome": "Dores do Indaiá",
    "uf": "MG",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3123304": {
+   "nome": "Dores do Turvo",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Marilda Leôncio cobra apoio aos produtores de Miragaia e ...",
+     "url": "https://www.zonadamatanews.com.br/marilda-leoncio-cobra-apoio-aos-produtores-de-miragaia-e-esclarece-fala-sobre-plano-de-contingencia-de-uba",
+     "data": "2026-10-15",
+     "veiculo": "zonadamatanews.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-15",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -18797,6 +20003,30 @@
    },
    "categoria": "nao_verificado"
   },
+  "3125002": {
+   "nome": "Ewbank da Câmara",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Prefeitura Municipal de Ewbank Da Câmara on Instagram",
+     "url": "https://www.instagram.com/p/DMyPqWaPJ48/",
+     "data": "2026-10-16",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3125101": {
    "nome": "Extrema",
    "uf": "MG",
@@ -18942,6 +20172,61 @@
    },
    "categoria": "nao_verificado"
   },
+  "3126307": {
+   "nome": "Fortaleza de Minas",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO DE AÇÃO DE EMERGÊNCIA - PAE - Votorantim Cimentos",
+     "url": "https://www.votorantimcimentos.com.br/wp-content/uploads/2026/05/PAE_CGH-Santana_Usina_2025.LGPD_Rev1-2.pdf",
+     "data": "2026-10-16",
+     "veiculo": "votorantimcimentos.com.br",
+     "nivel": "A"
+    },
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-16",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 0.022048,
+    "liquidada": 76.66,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3126604": {
+   "nome": "Francisco Dumont",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO",
+     "url": "https://biblioteca.mpf.mp.br/server/api/core/bitstreams/28b48a6b-ad87-4d4d-be07-d4a9c4250cf4/content",
+     "data": "2026-10-15",
+     "veiculo": "biblioteca.mpf.mp.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3126703": {
    "nome": "Francisco Sá",
    "uf": "MG",
@@ -19005,6 +20290,37 @@
    },
    "categoria": "nao_verificado"
   },
+  "3126950": {
+   "nome": "Frei Lagonegro",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PREFEITURA MUNICIPAL DE FREI LAGONEGRO – MG",
+     "url": "https://www.cbhsuacui.org.br/wp-content/uploads/2015/07/P3_R1_FREI_LAGONEGRO.pdf",
+     "data": "2026-10-16",
+     "veiculo": "cbhsuacui.org.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "mg plano municipal de saneamento básico - CBH-Suaçuí",
+     "url": "https://www.cbhsuacui.org.br/wp-content/uploads/2015/07/P3_R1_S%C3%83O-JO%C3%83O-EVANGELISTA.pdf",
+     "data": "2026-10-16",
+     "veiculo": "cbhsuacui.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3127008": {
    "nome": "Fronteira",
    "uf": "MG",
@@ -19029,6 +20345,30 @@
    },
    "categoria": "nao_verificado"
   },
+  "3127073": {
+   "nome": "Fruta de Leite",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-15",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3127107": {
    "nome": "Frutal",
    "uf": "MG",
@@ -19038,6 +20378,144 @@
     "classe": "com_lancamento",
     "rs_hab": 28.775717,
     "liquidada": 1685911.7,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3127206": {
+   "nome": "Funilândia",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "A Defesa Civil de Pedro Leopoldo, em parceria com as equipes de ...",
+     "url": "https://www.instagram.com/p/DJ1mAfkxGT9/",
+     "data": "2026-10-15",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Plano de ação de Emergência - PAE BARRAGEM LAGOA GRANDE ...",
+     "url": "https://www.anglogoldashanti.com.br/wp-content/uploads/2024/01/PAELG-PN0151-Revisao-5_08.01.2024_tarjado_-LAGOA_GRANDE.pdf",
+     "data": "2026-10-15",
+     "veiculo": "anglogoldashanti.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3127339": {
+   "nome": "Gameleiras",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Plano de Contingenciamento de Abastecimento para a seca 2025 é ...",
+     "url": "https://codau.com.br/noticias/plano-de-contingenciamento-de-abastecimento-para-a-seca-2025-e-aprovado-pela-agencia-reguladora-da-codau",
+     "data": "2026-10-15",
+     "veiculo": "codau.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "plano de contingência de proteção e defesa civil - PreventionWeb",
+     "url": "https://www.preventionweb.net/media/73057/download",
+     "data": "2026-10-15",
+     "veiculo": "preventionweb.net",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Codau define plano de contingência em Uberaba - Paranaíba Mais",
+     "url": "https://paranaibamais.com.br/meio-ambiente/plano-de-contingencia-em-uberaba/",
+     "data": "2026-10-15",
+     "veiculo": "paranaibamais.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3127388": {
+   "nome": "Goianá",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Impactos das Inundações e Deslizamentos em Juiz de Fora e ...",
+     "url": "https://climaesaude.icict.fiocruz.br/sites/climaesaude.icict.fiocruz.br/files/NT_Juiz%20de%20Fora_2026.pdf",
+     "data": "2026-10-16",
+     "veiculo": "climaesaude.icict.fiocruz.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "APÓS EMOCIONANTE REENCONTRO COM O “CÃO PELÉ”, EX ...",
+     "url": "https://www.instagram.com/reel/DVqdbmGDhi9/",
+     "data": "2026-10-16",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3127404": {
+   "nome": "Gonçalves",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PRODUTO TÉCNICO PLANO DE CONTINGÊNCIA A INCÊNDIOS ...",
+     "url": "https://www.bambui.ifmg.edu.br/portal/images/PDF/MPSTA/Cartilhas/Produto_t%C3%A9cnico_-_Elaine_Gon%C3%A7alves_da_Costa.pdf",
+     "data": "2026-10-15",
+     "veiculo": "bambui.ifmg.edu.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "PLANO DE CONTINGÊNCIA PARA DESASTRES AMBIENTAIS",
+     "url": "https://revistaft.com.br/plano-de-contingencia-para-desastres-ambientais-uma-analise-da-publicidade-e-acesso-a-populacao-dos-municipios-da-regiao-metropolitana-do-vale-do-aco-rmva-e-do-seu-colar-metropolitano/",
+     "data": "2026-10-15",
+     "veiculo": "revistaft.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Desastres e omissão estatal: federalismo que não coopera - Conjur",
+     "url": "https://conjur.com.br/2026-mai-24/desastres-climaticos-e-omissao-estatal-custo-do-federalismo-que-nao-coopera-2/",
+     "data": "2026-10-15",
+     "veiculo": "conjur.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -19358,6 +20836,30 @@
    },
    "categoria": "nao_verificado"
   },
+  "3129905": {
+   "nome": "Ibitiúra de Minas",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Prefeitura Municipal de Poços de Caldas",
+     "url": "https://pocosdecaldas.siscam.com.br/arquivo?Id=129157",
+     "data": "2026-10-16",
+     "veiculo": "pocosdecaldas.siscam.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3130101": {
    "nome": "Igarapé",
    "uf": "MG",
@@ -19479,6 +20981,37 @@
    },
    "categoria": "nao_verificado"
   },
+  "3131406": {
+   "nome": "Ipiaçu",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-16",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Revista da Defensoria Pública do Estado de Minas Gerais",
+     "url": "https://gerais.defensoria.mg.def.br/file/service/download/UPLOAD/01c7bb0d-4075-4a83-b762-e8735cd76e77/publico",
+     "data": "2026-10-16",
+     "veiculo": "gerais.defensoria.mg.def.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3131703": {
    "nome": "Itabira",
    "uf": "MG",
@@ -19498,6 +21031,30 @@
    "nome": "Itabirito",
    "uf": "MG",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3132008": {
+   "nome": "Itacambira",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-15",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -19558,6 +21115,37 @@
    "nome": "Itamarandiba",
    "uf": "MG",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3132602": {
+   "nome": "Itamarati de Minas",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "CBA realiza simulado de emergência de barragem em Itamarati de ...",
+     "url": "https://www.conexaomineral.com.br/noticia/2300/cba-realiza-simulado-de-emergencia-de-barragem-em-itamarati-de-minas-e-mirai.html",
+     "data": "2026-10-16",
+     "veiculo": "conexaomineral.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "O Olaria venceu o Tupi, de Itamarati de Minas, em casa, no bairro ...",
+     "url": "https://www.instagram.com/p/DDsNag3S1j6/",
+     "data": "2026-10-16",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -19764,6 +21352,44 @@
    },
    "categoria": "nao_verificado"
   },
+  "3134509": {
+   "nome": "Itutinga",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Siga as orientações da defesa civil local e do plano de contingência ...",
+     "url": "https://www.instagram.com/p/DeVLucXObXp/",
+     "data": "2026-10-15",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Defesa Civil de Itutinga (@defesacivilitutinga) - Instagram",
+     "url": "https://www.instagram.com/defesacivilitutinga/",
+     "data": "2026-10-15",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Dicas de segurança com a Defesa Civil de Minas Gerais. - Instagram",
+     "url": "https://www.instagram.com/reel/DU6kDz6EXZx/",
+     "data": "2026-10-15",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3134608": {
    "nome": "Jaboticatubas",
    "uf": "MG",
@@ -19847,6 +21473,44 @@
    },
    "categoria": "nao_verificado"
   },
+  "3135076": {
+   "nome": "Jampruca",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PREFEITURA MUNICIPAL DE JAMPRUCA – MG PLANO ...",
+     "url": "https://www.cbhsuacui.org.br/wp-content/uploads/2015/07/P3_R1_JAMPRUCA.pdf",
+     "data": "2026-10-15",
+     "veiculo": "cbhsuacui.org.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "INMET e Defesa Civil alertam para risco hidrológico em cidades de ...",
+     "url": "https://g1.globo.com/mg/vales-mg/noticia/2026/01/20/inmet-e-defesa-civil-alertam-para-risco-hidrologico-em-governador-valadares.ghtml",
+     "data": "2026-10-15",
+     "veiculo": "g1.globo.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "RS: Resiliência & Sustentabilidade - FESPSP",
+     "url": "https://portal.fespsp.org.br/store/file_source/FESPSP/Documentos/RS/reflexao.pdf",
+     "data": "2026-10-15",
+     "veiculo": "portal.fespsp.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3135100": {
    "nome": "Janaúba",
    "uf": "MG",
@@ -19871,6 +21535,30 @@
     "classe": "com_lancamento",
     "rs_hab": 2.331228,
     "liquidada": 151832.85,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3135308": {
+   "nome": "Japaraíba",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "AS MUDANÇAS CLIMÁTICAS E OS MUNICÍPIOS DA REGIÃO DO ...",
+     "url": "https://www.ambientelegal.com.br/as-mudancas-climaticas-e-os-municipios-da-regiao-do-alto-sao-francisco-em-minas-gerais-acabou-se-o-tempo-das-palavras/",
+     "data": "2026-10-15",
+     "veiculo": "ambientelegal.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -19946,6 +21634,37 @@
    },
    "categoria": "nao_verificado"
   },
+  "3136108": {
+   "nome": "Joanésia",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO DE AÇÃO DE EMERGÊNCIA (PAE) UHE Porto Estrela",
+     "url": "https://aliancaenergia.com.br/wp-content/uploads/2024/09/pae_uhe_porto-estrela.-rev-9-1.pdf",
+     "data": "2026-10-15",
+     "veiculo": "aliancaenergia.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Observatório das Metropolizações e IFMG lançam mapa inédito do ...",
+     "url": "https://www.diariodoaco.com.br/noticia/0094263-observatorio-das-metropolizacoes-e-ifmg-lancam-mapa-inedito-do-vale-do-aco",
+     "data": "2026-10-15",
+     "veiculo": "diariodoaco.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3136207": {
    "nome": "João Monlevade",
    "uf": "MG",
@@ -19965,6 +21684,68 @@
    "nome": "João Pinheiro",
    "uf": "MG",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3136405": {
+   "nome": "Joaquim Felício",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-16",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Guia prático de requisição de perícias ambientais",
+     "url": "https://www.cnmp.mp.br/portal/images/CMA/arquivos/MPMG/GuiaPratico_PericiasAmbientais.pdf",
+     "data": "2026-10-16",
+     "veiculo": "cnmp.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Plano Municipal de Saneamento Básico de Jequitibá/MG - coresab",
+     "url": "https://coresab.com.br/wp-content/uploads/2021/03/P1_Plano-de-Trabalho-Jequitiba.pdf",
+     "data": "2026-10-16",
+     "veiculo": "coresab.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3136553": {
+   "nome": "José Raydan",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "GUANHÃES A Defesa Civil alerta para a previsão de tempestade ...",
+     "url": "https://www.instagram.com/p/DeAfhnABWob/",
+     "data": "2026-10-15",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -20006,6 +21787,30 @@
    },
    "categoria": "nao_verificado"
   },
+  "3136801": {
+   "nome": "Juramento",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "SES divulga plano de contingência para evitar colapso na saúde ...",
+     "url": "https://cremers.org.br/ses-duvulga-plano-de-contingencia-para-evitar-colapso-na-saude-apos-alerta-do-cremers/",
+     "data": "2026-10-16",
+     "veiculo": "cremers.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3137007": {
    "nome": "Ladainha",
    "uf": "MG",
@@ -20030,6 +21835,37 @@
     "classe": "com_lancamento",
     "rs_hab": 0.580506,
     "liquidada": 29844.95,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3137304": {
+   "nome": "Lagoa dos Patos",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "DEFESA CIVIL ALERTA PARA RISCO MUITO ALTO DE ... - Instagram",
+     "url": "https://www.instagram.com/p/DdnQhByEUsh/",
+     "data": "2026-10-16",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "RS: Resiliência & Sustentabilidade - FESPSP",
+     "url": "https://portal.fespsp.org.br/store/file_source/FESPSP/Documentos/RS/reflexao.pdf",
+     "data": "2026-10-16",
+     "veiculo": "portal.fespsp.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -20135,10 +21971,58 @@
    },
    "categoria": "nao_verificado"
   },
+  "3138351": {
+   "nome": "Leme do Prado",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-15",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3138401": {
    "nome": "Leopoldina",
    "uf": "MG",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3138500": {
+   "nome": "Liberdade",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "CGH Floresta - WCR · OEM",
+     "url": "https://wcroem.com.br/usinas/floresta/",
+     "data": "2026-10-15",
+     "veiculo": "wcroem.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -20348,10 +22232,103 @@
    },
    "categoria": "nao_verificado"
   },
+  "3140100": {
+   "nome": "Marilac",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "INMET e Defesa Civil alertam para risco hidrológico em cidades de ...",
+     "url": "https://g1.globo.com/mg/vales-mg/noticia/2026/01/20/inmet-e-defesa-civil-alertam-para-risco-hidrologico-em-governador-valadares.ghtml",
+     "data": "2026-10-15",
+     "veiculo": "g1.globo.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "mg plano municipal de saneamento básico - CBH-Suaçuí",
+     "url": "https://www.cbhsuacui.org.br/wp-content/uploads/2015/07/P3_R1_S%C3%83O-JO%C3%83O-EVANGELISTA.pdf",
+     "data": "2026-10-15",
+     "veiculo": "cbhsuacui.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3140159": {
    "nome": "Mário Campos",
    "uf": "MG",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3140209": {
+   "nome": "Maripá de Minas",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Plano Municipal de Saneamento Básico – Argirita/MG - CEIVAP",
+     "url": "https://www.ceivap.org.br/mata/Argirita.pdf",
+     "data": "2026-10-16",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3140308": {
+   "nome": "Marliéria",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Moradores de Jaguaraçu e Marliéria cobram solução para erosões ...",
+     "url": "https://www.diariodoaco.com.br/noticia/0134920-moradores-de-jaguaracu-e-marlieria-cobram-solucao-para-erosoes-a-margem-da-mg320",
+     "data": "2026-10-15",
+     "veiculo": "diariodoaco.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "ALERTA DE DEFESA CIVIL — TEMPESTADE SEVERA ... - Instagram",
+     "url": "https://www.instagram.com/p/DPwt4fKE_IX/",
+     "data": "2026-10-15",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Município de Marliéria obtém decisão judicial para recuperação ...",
+     "url": "https://www.diariodoaco.com.br/noticia/0131075-municipio-de-marlieria-obtem-decisao-judicial-para-recuperacao-emergencial-da-estrada-parque-dom-helvecio",
+     "data": "2026-10-15",
+     "veiculo": "diariodoaco.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -20402,6 +22379,30 @@
      "url": "https://www.instagram.com/reel/DZ6Mwf6O1sD/?hl=en",
      "data": "2026-10-15",
      "veiculo": "instagram.com",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3140605": {
+   "nome": "Materlândia",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Lei Orgânica da Saúde completa 30 anos | Portal - MPMG",
+     "url": "https://www.mpmg.mp.br/portal/menu/comunicacao/campanhas/lei-organica-da-saude-completa-30-anos.shtml",
+     "data": "2026-10-16",
+     "veiculo": "mpmg.mp.br",
      "nivel": "B"
     }
    ],
@@ -20485,6 +22486,68 @@
     "classe": "com_lancamento",
     "rs_hab": 26.045983,
     "liquidada": 979797.77,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3141207": {
+   "nome": "Matutina",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO",
+     "url": "https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2026/DMPF-EXTRAJUDICIAL-2026-02-24.pdf",
+     "data": "2026-10-16",
+     "veiculo": "transparencia.mpf.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Minas Gerais , 22 de Abril de 2026 • Diário Oficial dos Municípios ...",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118335_2026-04-20_2b1435c7e725d4eec9a6c5632652d234.pdf",
+     "data": "2026-10-16",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3141306": {
+   "nome": "Medeiros",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "plano de contingência brumadinho / mg 2014 / 2015",
+     "url": "https://s3-apps-01.mgdata.com.br/portalbrumadinho/brumadinho/media%20-1694527277121.pdf",
+     "data": "2026-10-16",
+     "veiculo": "s3-apps-01.mgdata.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "PRODUTO TÉCNICO PLANO DE CONTINGÊNCIA A INCÊNDIOS ...",
+     "url": "https://www.bambui.ifmg.edu.br/portal/images/PDF/MPSTA/Cartilhas/Produto_t%C3%A9cnico_-_Elaine_Gon%C3%A7alves_da_Costa.pdf",
+     "data": "2026-10-16",
+     "veiculo": "bambui.ifmg.edu.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -20583,6 +22646,30 @@
     "classe": "com_lancamento",
     "rs_hab": 5.878901,
     "liquidada": 80147.06,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3142254": {
+   "nome": "Miravânia",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-16",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -20722,6 +22809,30 @@
    "nome": "Monte Carmelo",
    "uf": "MG",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3143153": {
+   "nome": "Monte Formoso",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-15",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -20900,6 +23011,75 @@
    },
    "categoria": "nao_verificado"
   },
+  "3144375": {
+   "nome": "Natalândia",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-16",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Minas Gerais , 22 de Abril de 2026 • Diário Oficial dos Municípios ...",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118335_2026-04-20_2b1435c7e725d4eec9a6c5632652d234.pdf",
+     "data": "2026-10-16",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3144409": {
+   "nome": "Natércia",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Guia prático de requisição de perícias ambientais",
+     "url": "https://www.cnmp.mp.br/portal/images/CMA/arquivos/MPMG/GuiaPratico_PericiasAmbientais.pdf",
+     "data": "2026-10-15",
+     "veiculo": "cnmp.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "2.ª série - Diário da República",
+     "url": "https://files.diariodarepublica.pt/gratuitos/2s/2026/01/2S009A0000S00.pdf",
+     "data": "2026-10-15",
+     "veiculo": "files.diariodarepublica.pt",
+     "nivel": "B"
+    },
+    {
+     "titulo": "cooperativa de crédito de livre admissao do sul de minas ltda. - sicoob",
+     "url": "https://www.sicoob.com.br/documents/16856185/166099282/7+-+3169_NOTAS+EXPLICATIVAS.pdf/16f3400b-d027-2908-f825-7a634dd93abb?t=1693338236638&download=true",
+     "data": "2026-10-15",
+     "veiculo": "sicoob.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3144508": {
    "nome": "Nazareno",
    "uf": "MG",
@@ -20965,6 +23145,37 @@
    "nome": "Nova Lima",
    "uf": "MG",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3144904": {
+   "nome": "Nova Módica",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "INMET e Defesa Civil alertam para risco hidrológico em cidades de ...",
+     "url": "https://g1.globo.com/mg/vales-mg/noticia/2026/01/20/inmet-e-defesa-civil-alertam-para-risco-hidrologico-em-governador-valadares.ghtml",
+     "data": "2026-10-16",
+     "veiculo": "g1.globo.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO",
+     "url": "https://biblioteca.mpf.mp.br/repositorio/bitstreams/887ea063-45a0-4792-812a-f8cea143549f/download",
+     "data": "2026-10-16",
+     "veiculo": "biblioteca.mpf.mp.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -21082,6 +23293,37 @@
    },
    "categoria": "nao_verificado"
   },
+  "3145851": {
+   "nome": "Oratórios",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Relatório de Monitoramento Mensal - MPF",
+     "url": "https://www.mpf.mp.br/grandes-casos/caso-samarco/documentos/relatorios-ramboll/relatorio_junho20_v06_com_quadro.pdf",
+     "data": "2026-10-15",
+     "veiculo": "mpf.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Representantes - Geneze Sementes",
+     "url": "https://site.genezesementes.com.br/representantes",
+     "data": "2026-10-15",
+     "veiculo": "site.genezesementes.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 1.342282,
+    "liquidada": 6600.0,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3145901": {
    "nome": "Ouro Branco",
    "uf": "MG",
@@ -21155,6 +23397,44 @@
    "nome": "Padre Paraíso",
    "uf": "MG",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3146404": {
+   "nome": "Paineiras",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Apesar da previsão de trégua das chuvas em Juiz de Fora, a Defesa ...",
+     "url": "https://www.instagram.com/reel/DVT-PHKgMBi/?hl=en",
+     "data": "2026-10-15",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Descumprimento de normas urbanísticas e ambientais agravou ... - G1",
+     "url": "https://g1.globo.com/mg/zona-da-mata/noticia/2026/03/26/historico-de-descumprimento-de-normas-urbanisticas-e-ambientais-agravou-tragedia-da-chuva-em-juiz-de-fora-diz-ministerio-publico.ghtml",
+     "data": "2026-10-15",
+     "veiculo": "g1.globo.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Após chuvas em MG, mortes passam de 72 em Juiz de Fora e Ubá ...",
+     "url": "https://www.noticiasaominuto.com.br/brasil/2362484/apos-chuvas-em-mg-mortes-passam-de-70-em-juiz-de-fora-e-uba",
+     "data": "2026-10-15",
+     "veiculo": "noticiasaominuto.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -21334,6 +23614,30 @@
    },
    "categoria": "nao_verificado"
   },
+  "3147956": {
+   "nome": "Patis",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-15",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3148004": {
    "nome": "Patos de Minas",
    "uf": "MG",
@@ -21358,6 +23662,37 @@
     "classe": "com_lancamento",
     "rs_hab": 1.703549,
     "liquidada": 153022.98,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3148400": {
+   "nome": "Paulistas",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "A Defesa Civil é uma das forças que atua nos momentos ... - Instagram",
+     "url": "https://www.instagram.com/reel/DZuYwGjtjib/?hl=en",
+     "data": "2026-10-15",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Governo de SP lança plano para orientar cidades no enfrentamento ...",
+     "url": "https://g1.globo.com/sp/sao-jose-do-rio-preto-aracatuba/videos-tem-noticias-1-edicao/video/governo-de-sp-lanca-plano-para-orientar-cidades-no-enfrentamento-dos-impactos-do-el-nino-14928302.ghtml",
+     "data": "2026-10-15",
+     "veiculo": "g1.globo.com",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -21432,10 +23767,134 @@
    },
    "categoria": "nao_verificado"
   },
+  "3148806": {
+   "nome": "Pedra do Anta",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "MINISTÉRIO PÚBLICO FEDERAL PROCURADORIA GERAL DA ...",
+     "url": "https://www.mpf.mp.br/atuacao/ccr1/atos-e-publicacoes/atas-das-sessoes/atas-de-revisao/2026/ata-da-1a-sessao-ordinaria-da-1a-camara-2.pdf",
+     "data": "2026-10-16",
+     "veiculo": "mpf.mp.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3148905": {
+   "nome": "Pedra do Indaiá",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Temporal em MG deixa desabrigados e rios transbordam | G1 - Globo",
+     "url": "https://g1.globo.com/mg/centro-oeste/noticia/2026/01/24/temporal-no-centro-oeste-de-mg-tem-200-milimetros-em-24-horas-transbordamento-de-rios-e-desabrigados.ghtml",
+     "data": "2026-10-15",
+     "veiculo": "g1.globo.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "AS MUDANÇAS CLIMÁTICAS E OS MUNICÍPIOS DA REGIÃO DO ...",
+     "url": "https://www.ambientelegal.com.br/as-mudancas-climaticas-e-os-municipios-da-regiao-do-alto-sao-francisco-em-minas-gerais-acabou-se-o-tempo-das-palavras/",
+     "data": "2026-10-15",
+     "veiculo": "ambientelegal.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Período chuvoso é tema de reunião entre Forças de Segurança e ...",
+     "url": "https://tribunacentroeste.com.br/noticias/per-odo-chuvoso-tema-de-reuni-o-entre-for-as-de-seguran-a",
+     "data": "2026-10-15",
+     "veiculo": "tribunacentroeste.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3149309": {
    "nome": "Pedro Leopoldo",
    "uf": "MG",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3149507": {
+   "nome": "Pequeri",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Plano Municipal de Saneamento Básico – Pequeri/MG - CEIVAP",
+     "url": "https://www.ceivap.org.br/mata/Pequeri.pdf",
+     "data": "2026-10-16",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Relatório Anual do AGIR",
+     "url": "https://agircongonhas.com.br/wp-content/uploads/2026/05/Relatorio-AGIR-2025-final-REV3.pdf",
+     "data": "2026-10-16",
+     "veiculo": "agircongonhas.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3149606": {
+   "nome": "Pequi",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Montes Claros decreta emergência em saúde pública após ...",
+     "url": "https://pequinews.com.br/2026/04/16/montes-claros-decreta-emergencia-em-saude-publica-apos-aumento-de-casos-de-srag-e-doencas-virais/",
+     "data": "2026-10-15",
+     "veiculo": "pequinews.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "PLANO DE GOVERNO 2025-2028",
+     "url": "https://monitor-static.poder360.com.br/static?path=politicos_do_brasil%2Farquivos%2F2024%2F53597%2F130002160986%2FPlanodeGoverno.pdf",
+     "data": "2026-10-15",
+     "veiculo": "monitor-static.poder360.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -21492,6 +23951,37 @@
    },
    "categoria": "nao_verificado"
   },
+  "3150000": {
+   "nome": "Pescador",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Fernanda Santos Pescador - Escavador",
+     "url": "https://www.escavador.com/sobre/4257065/fernanda-santos-pescador",
+     "data": "2026-10-16",
+     "veiculo": "escavador.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Neoextrativismo e o desastre-crime do derramamento de petróleo ...",
+     "url": "https://cienciaesaudecoletiva.com.br/artigos/neoextrativismo-e-o-desastrecrime-do-derramamento-de-petroleo-no-brasil-implicacoes-na-saude-de-comunidades-pesqueiras/20014",
+     "data": "2026-10-16",
+     "veiculo": "cienciaesaudecoletiva.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3150109": {
    "nome": "Piau",
    "uf": "MG",
@@ -21516,6 +24006,30 @@
    },
    "categoria": "nao_verificado"
   },
+  "3150208": {
+   "nome": "Piedade de Ponte Nova",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Com uma trajetória marcada por conquistas, Elísio Cacildo recebe ...",
+     "url": "https://www.diariodoaco.com.br/noticia/0102156-com-uma-trajetoria-marcada-por-conquistas-elisio-cacildo-recebe-hoje-titulo-de-cidadao-honorario-de-ipatinga",
+     "data": "2026-10-16",
+     "veiculo": "diariodoaco.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 1.65996,
+    "liquidada": 6600.0,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3150406": {
    "nome": "Piedade dos Gerais",
    "uf": "MG",
@@ -21533,6 +24047,37 @@
      "url": "https://www.sicoob.com.br/documents/2424978/166105110/7.+NOTA+EXPLICATIVA.pdf/b514a41d-ca2c-62ed-26ef-de3b2fa90b98?version=1.0&t=1693337183104&download=true",
      "data": "2026-10-15",
      "veiculo": "sicoob.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3150539": {
+   "nome": "Pingo-d'Água",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "TJMG determina que município de Pingo-d'Água garanta o ...",
+     "url": "https://www.diariodoaco.com.br/noticia/0133281-tjmg-determina-que-municipio-de-pingodagua-garanta-o-funcionamento-integral-das-equipes-de-saude-da-familia",
+     "data": "2026-10-15",
+     "veiculo": "diariodoaco.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Novo edital para reforma da Ponte Queimada é publicado",
+     "url": "https://www.diariodoaco.com.br/noticia/0135252-novo-edital-para-reforma-da-ponte-queimada-e-publicado",
+     "data": "2026-10-15",
+     "veiculo": "diariodoaco.com.br",
      "nivel": "B"
     }
    ],
@@ -21767,6 +24312,85 @@
    },
    "categoria": "nao_verificado"
   },
+  "3153004": {
+   "nome": "Pratinha",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "MINISTÉRIO PÚBLICO FEDERAL PROCURADORIA GERAL DA ...",
+     "url": "https://www.mpf.mp.br/atuacao/ccr1/atos-e-publicacoes/atas-das-sessoes/atas-de-revisao/2026/ata-da-1a-sessao-ordinaria-da-1a-camara-2.pdf",
+     "data": "2026-10-16",
+     "veiculo": "mpf.mp.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3153103": {
+   "nome": "Presidente Bernardes",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "️09/03/2026. Cidades do Vale do Rio Doce também registraram ...",
+     "url": "https://www.instagram.com/reel/DVtCe-vErw5/",
+     "data": "2026-10-15",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-15",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 2.377443,
+    "liquidada": 11530.6,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3153202": {
+   "nome": "Presidente Juscelino",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Elaboração do Plano Municipal de Saneamento Básico ... - coresab",
+     "url": "https://coresab.com.br/wp-content/uploads/2019/08/PT_Presidente-Juscelino.pdf",
+     "data": "2026-10-16",
+     "veiculo": "coresab.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3153400": {
    "nome": "Presidente Olegário",
    "uf": "MG",
@@ -21867,6 +24491,37 @@
     "classe": "com_lancamento",
     "rs_hab": 0.017196,
     "liquidada": 5671.16,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3154705": {
+   "nome": "Ribeirão Vermelho",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Plano de ação de Emergência - PAE BARRAGEM LAGOA GRANDE ...",
+     "url": "https://www.anglogoldashanti.com.br/wp-content/uploads/2024/01/PAELG-PN0151-Revisao-5_08.01.2024_tarjado_-LAGOA_GRANDE.pdf",
+     "data": "2026-10-16",
+     "veiculo": "anglogoldashanti.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "plano municipal de - drenagem urbana",
+     "url": "https://smastr16.blob.core.windows.net/2001/2023/12/Osasco_DU_2016.pdf",
+     "data": "2026-10-16",
+     "veiculo": "smastr16.blob.core.windows.net",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -22101,6 +24756,61 @@
    },
    "categoria": "nao_verificado"
   },
+  "3156403": {
+   "nome": "Romaria",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Romeiros contam com barracas de apoio no caminho para Romaria",
+     "url": "https://globoplay.globo.com/v/14845524/",
+     "data": "2026-10-16",
+     "veiculo": "globoplay.globo.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Divinópolis atualiza plano de contingência para período chuvoso - G1",
+     "url": "https://g1.globo.com/mg/centro-oeste/videos-integracao-noticia/video/divinopolis-atualiza-plano-de-contingencia-para-periodo-chuvoso-14945010.ghtml",
+     "data": "2026-10-16",
+     "veiculo": "g1.globo.com",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3156452": {
+   "nome": "Rosário da Limeira",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Plano Municipal de Saneamento Básico – Rosário da Limeira/MG",
+     "url": "https://www.ceivap.org.br/mata/Rosario-da-Limeira.pdf",
+     "data": "2026-10-15",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3156700": {
    "nome": "Sabará",
    "uf": "MG",
@@ -22176,6 +24886,30 @@
    },
    "categoria": "nao_verificado"
   },
+  "3157302": {
+   "nome": "Santa Bárbara do Tugúrio",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "DEFESA CIVIL SP - SOLUÇÕES PARA OS IMPACTOS DAS ...",
+     "url": "https://www.instagram.com/reel/DUobllzEgNw/",
+     "data": "2026-10-15",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3157336": {
    "nome": "Santa Cruz de Minas",
    "uf": "MG",
@@ -22186,6 +24920,99 @@
      "url": "https://seer.ufu.br/index.php/caminhosdegeografia/article/download/40912/21635/170101",
      "data": "2026-10-15",
      "veiculo": "seer.ufu.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3157401": {
+   "nome": "Santa Cruz do Escalvado",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Plano de Ação de Emergência (PAE) UHE RISOLETA NEVES",
+     "url": "https://aliancaenergia.com.br/wp-content/uploads/2024/09/plano-de-acao-de-emergencia-pae-uhe-risoleta-neves.pdf",
+     "data": "2026-10-15",
+     "veiculo": "aliancaenergia.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "PREPARAÇÃO ÀS EMERGÊNCIAS AMBIENTAIS - MPF",
+     "url": "https://www.mpf.mp.br/grandes-casos/caso-samarco/documentos/relatorios-ramboll/folders-2020/pg034_folder_v13_19-10-2020.pdf",
+     "data": "2026-10-15",
+     "veiculo": "mpf.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Relatório Bienal - 2015-2016 - Samarco Mineração",
+     "url": "https://www.samarco.com/wp-content/uploads/2024/06/Samarco_Relatorio-Bienal-2015_16-08092017.pdf",
+     "data": "2026-10-15",
+     "veiculo": "samarco.com",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 95.342061,
+    "liquidada": 445533.45,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3157500": {
+   "nome": "Santa Efigênia de Minas",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "INMET e Defesa Civil alertam para risco hidrológico em cidades de ...",
+     "url": "https://g1.globo.com/mg/vales-mg/noticia/2026/01/20/inmet-e-defesa-civil-alertam-para-risco-hidrologico-em-governador-valadares.ghtml",
+     "data": "2026-10-16",
+     "veiculo": "g1.globo.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-16",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3157609": {
+   "nome": "Santa Fé de Minas",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-16",
+     "veiculo": "ceivap.org.br",
      "nivel": "B"
     }
    ],
@@ -22245,10 +25072,120 @@
    },
    "categoria": "nao_verificado"
   },
+  "3158102": {
+   "nome": "Santa Maria do Salto",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-15",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3158201": {
    "nome": "Santa Maria do Suaçuí",
    "uf": "MG",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3158409": {
+   "nome": "Santana de Cataguases",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Energisa Reúne Órgãos Públicos em Cataguases para Alinhar ...",
+     "url": "https://cerqueirasnoticias.com.br/cataguases/energisa-reune-orgaos-publicos-em-cataguases-para-alinhar-estrategias-contra-eventos-climaticos-severos",
+     "data": "2026-10-16",
+     "veiculo": "cerqueirasnoticias.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3158607": {
+   "nome": "Santana do Deserto",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PREPARAÇÃO ÀS EMERGÊNCIAS AMBIENTAIS - MPF",
+     "url": "https://www.mpf.mp.br/grandes-casos/caso-samarco/documentos/relatorios-ramboll/folders-2020/pg034_folder_v13_19-10-2020.pdf",
+     "data": "2026-10-16",
+     "veiculo": "mpf.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Mar de Espanha - PLANO MUNICIPAL DE SANEAMENTO BÁSICO",
+     "url": "https://www.ceivap.org.br/mata/Mar-de-Espanha.pdf",
+     "data": "2026-10-16",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "El Niño: Governo do Rio lança nova ferramenta que classifica riscos ...",
+     "url": "https://www.entreriosjornal.com/2026/08/el-nino-governo-do-rio-lanca-nova.html",
+     "data": "2026-10-16",
+     "veiculo": "entreriosjornal.com",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3158805": {
+   "nome": "Santana do Jacaré",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-15",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -22299,6 +25236,44 @@
    },
    "categoria": "nao_verificado"
   },
+  "3159100": {
+   "nome": "Santana dos Montes",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "August 31 - Instagram",
+     "url": "https://www.instagram.com/p/DctG9kgMQNk/",
+     "data": "2026-10-16",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "ATENÇÃO A Defesa Civil de Natividade da Serra informa seus ...",
+     "url": "https://www.instagram.com/p/DVJzPS_EZWo/?hl=en",
+     "data": "2026-10-16",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-16",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3159605": {
    "nome": "Santa Rita do Sapucaí",
    "uf": "MG",
@@ -22308,6 +25283,30 @@
     "classe": "com_lancamento",
     "rs_hab": 11.268863,
     "liquidada": 457910.24,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3159704": {
+   "nome": "Santa Rosa da Serra",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-16",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -22333,6 +25332,44 @@
    "nome": "Santo Antônio do Amparo",
    "uf": "MG",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3160108": {
+   "nome": "Santo Antônio do Grama",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "The Case of Conceição Do Mato Dentro (MG) - MDPI",
+     "url": "https://www.mdpi.com/2624-795x/6/2/21",
+     "data": "2026-10-15",
+     "veiculo": "mdpi.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "A Atuação do Ministério Público na Defesa do Meio Ambiente",
+     "url": "https://www.cnmp.mp.br/portal/images/Publicacoes/documentos/2021/A-ATUAO-DO-MINISTRIO-PBLICO-NA-DEFESA-DO-MEIO-AMBIENTE-Abordagem-Prtica-e-Resolutiva.pdf",
+     "data": "2026-10-15",
+     "veiculo": "cnmp.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Questões de Agente de Defesa Civil com Gabarito - Comentado",
+     "url": "https://gabarite.com.br/questoes-de-concursos/cargo/agente-de-defesa-civil",
+     "data": "2026-10-15",
+     "veiculo": "gabarite.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -22374,6 +25411,75 @@
    },
    "categoria": "nao_verificado"
   },
+  "3160801": {
+   "nome": "São Bento Abade",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PMGIRS Luminárias .docx",
+     "url": "https://visiteluminarias.com.br/wp-content/uploads/2024/11/PMGIRS_Luminarias_.docx.pdf",
+     "data": "2026-10-15",
+     "veiculo": "visiteluminarias.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "ESPECIFICAÇÃO TÉCNICA CO/PM-00054/2024",
+     "url": "https://app-compras.cemig.com.br/ver-documento/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjAsImF1Y3Rpb25JZCI6MjAzNTUsImRlc2NyaXB0aW9uIjoiRXNwZWNpZmljYVx1MDBlN1x1MDBlM28gVFx1MDBlOWNuaWNhIENPLVBNIDAwMDU0LTIwMjQgVjIucGRmIiwidGFyZ2V0VXJsIjoiaHR0cHM6XC9cL2FycXVpdm9zLWNvbXByYXMuY2VtaWcuY29tLmJyXC8yMDM1NV81YjllZTY4MS05ZWFhLTQ0NDEtODgwNC0wMDI2NzMxZjQ2NDQucGRmIiwiaWF0IjoxNzMzOTkwOTkwfQ.7r4W7KF9d6NN1lSRX3HjEI0qacuqusX_2RhIINEQ4uw",
+     "data": "2026-10-15",
+     "veiculo": "app-compras.cemig.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3160900": {
+   "nome": "São Brás do Suaçuí",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "MINISTÉRIO PÚBLICO FEDERAL PROCURADORIA GERAL DA ...",
+     "url": "https://www.mpf.mp.br/atuacao/ccr1/atos-e-publicacoes/atas-das-sessoes/atas-de-revisao/2026/ata-da-1a-sessao-ordinaria-da-1a-camara-2.pdf",
+     "data": "2026-10-16",
+     "veiculo": "mpf.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-16",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Charles Ianne Ferreira dos Santos | Escavador",
+     "url": "https://www.escavador.com/sobre/2492811/charles-ianne-ferreira-dos-santos",
+     "data": "2026-10-16",
+     "veiculo": "escavador.com",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3161007": {
    "nome": "São Domingos do Prata",
    "uf": "MG",
@@ -22393,6 +25499,75 @@
    "nome": "São Francisco",
    "uf": "MG",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3161403": {
+   "nome": "São Francisco do Glória",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Intervenção na subestação de Ipatinga deixará municípios sem ...",
+     "url": "https://www.diariodoaco.com.br/noticia/0087548-intervencao-na-subestacao-de-ipatinga-deixara-municipios-sem-energia-eletrica-no-domingo",
+     "data": "2026-10-15",
+     "veiculo": "diariodoaco.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Minas Gerais , 22 de Abril de 2026 • Diário Oficial dos Municípios ...",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118335_2026-04-20_2b1435c7e725d4eec9a6c5632652d234.pdf",
+     "data": "2026-10-15",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3161601": {
+   "nome": "São Geraldo da Piedade",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "prefeitura municipal de são geraldo da piedade – mg plano ...",
+     "url": "https://www.cbhsuacui.org.br/wp-content/uploads/2015/07/P8_R1_S%C3%83O_GERALDO_DA_PIEDADE.pdf",
+     "data": "2026-10-16",
+     "veiculo": "cbhsuacui.org.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "INMET e Defesa Civil alertam para risco hidrológico em cidades de ...",
+     "url": "https://g1.globo.com/mg/vales-mg/noticia/2026/01/20/inmet-e-defesa-civil-alertam-para-risco-hidrologico-em-governador-valadares.ghtml",
+     "data": "2026-10-16",
+     "veiculo": "g1.globo.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-16",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -22679,6 +25854,130 @@
    },
    "categoria": "nao_verificado"
   },
+  "3163003": {
+   "nome": "São José da Safira",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "INMET e Defesa Civil alertam para risco hidrológico em cidades de ...",
+     "url": "https://g1.globo.com/mg/vales-mg/noticia/2026/01/20/inmet-e-defesa-civil-alertam-para-risco-hidrologico-em-governador-valadares.ghtml",
+     "data": "2026-10-16",
+     "veiculo": "g1.globo.com",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3163102": {
+   "nome": "São José da Varginha",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "MINISTÉRIO PÚBLICO FEDERAL PROCURADORIA GERAL DA ...",
+     "url": "https://www.mpf.mp.br/atuacao/ccr1/atos-e-publicacoes/atas-das-sessoes/atas-de-revisao/2026/ata-da-1a-sessao-ordinaria-da-1a-camara-2.pdf",
+     "data": "2026-10-15",
+     "veiculo": "mpf.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "AS MUDANÇAS CLIMÁTICAS E OS MUNICÍPIOS DA REGIÃO DO ...",
+     "url": "https://www.ambientelegal.com.br/as-mudancas-climaticas-e-os-municipios-da-regiao-do-alto-sao-francisco-em-minas-gerais-acabou-se-o-tempo-das-palavras/",
+     "data": "2026-10-15",
+     "veiculo": "ambientelegal.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3163201": {
+   "nome": "São José do Alegre",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "cooperativa de crédito de livre admissao do sul de minas ltda. - sicoob",
+     "url": "https://www.sicoob.com.br/documents/16856185/166099282/7+-+3169_NOTAS+EXPLICATIVAS.pdf/16f3400b-d027-2908-f825-7a634dd93abb?t=1693338236638&download=true",
+     "data": "2026-10-15",
+     "veiculo": "sicoob.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-15",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Sindicato dos Hoteis, Bares e Restaurantes – sindicato patronal",
+     "url": "https://www.sindhbr.com.br/",
+     "data": "2026-10-15",
+     "veiculo": "sindhbr.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 1.174522,
+    "liquidada": 4854.3,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3163300": {
+   "nome": "São José do Divino",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "INMET e Defesa Civil alertam para risco hidrológico em cidades de ...",
+     "url": "https://g1.globo.com/mg/vales-mg/noticia/2026/01/20/inmet-e-defesa-civil-alertam-para-risco-hidrologico-em-governador-valadares.ghtml",
+     "data": "2026-10-16",
+     "veiculo": "g1.globo.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO",
+     "url": "https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2025/DMPF-EXTRAJUDICIAL-2025-08-25.pdf",
+     "data": "2026-10-16",
+     "veiculo": "transparencia.mpf.mp.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 16.796594,
+    "liquidada": 58183.4,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3163409": {
    "nome": "São José do Goiabal",
    "uf": "MG",
@@ -22714,6 +26013,30 @@
    "nome": "São Lourenço",
    "uf": "MG",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3163904": {
+   "nome": "São Pedro da União",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "GUAXUPÉ/MG - agencia de desenvolvimento",
+     "url": "https://agenciadedesenvolvimento.com.br/arquivos/GUAXUP%C3%89%202050.pdf",
+     "data": "2026-10-15",
+     "veiculo": "agenciadedesenvolvimento.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -22862,6 +26185,54 @@
    },
    "categoria": "nao_verificado"
   },
+  "3165909": {
+   "nome": "Senador Modestino Gonçalves",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Guia prático de requisição de perícias ambientais",
+     "url": "https://www.cnmp.mp.br/portal/images/CMA/arquivos/MPMG/GuiaPratico_PericiasAmbientais.pdf",
+     "data": "2026-10-16",
+     "veiculo": "cnmp.mp.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3166501": {
+   "nome": "Serra Azul de Minas",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "MG PLANO MUNICIPAL DE SANEAMENTO BÁSICO (PMSB) DO ...",
+     "url": "https://www.cbhsuacui.org.br/wp-content/uploads/2015/07/P3_R0_CAMPAN%C3%81RIO.pdf",
+     "data": "2026-10-16",
+     "veiculo": "cbhsuacui.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3166907": {
    "nome": "Serrania",
    "uf": "MG",
@@ -22879,6 +26250,37 @@
      "url": "https://smastr20.blob.core.windows.net/conesan/Sao%20Vicente_AE_DU_RS_2014.pdf",
      "data": "2026-10-15",
      "veiculo": "smastr20.blob.core.windows.net",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3166956": {
+   "nome": "Serranópolis de Minas",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-15",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "A Defesa Civil de Pedro Leopoldo realizou hoje, na Praça da ...",
+     "url": "https://www.instagram.com/reel/DLstBi8pxwT/",
+     "data": "2026-10-15",
+     "veiculo": "instagram.com",
      "nivel": "B"
     }
    ],
@@ -22985,6 +26387,99 @@
     "classe": "com_lancamento",
     "rs_hab": 0.935992,
     "liquidada": 30934.55,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3168051": {
+   "nome": "Taparuba",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "INMET e Defesa Civil alertam para risco hidrológico em cidades de ...",
+     "url": "https://g1.globo.com/mg/vales-mg/noticia/2026/01/20/inmet-e-defesa-civil-alertam-para-risco-hidrologico-em-governador-valadares.ghtml",
+     "data": "2026-10-16",
+     "veiculo": "g1.globo.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-16",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 13.821246,
+    "liquidada": 46812.56,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3168101": {
+   "nome": "Tapira",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Barragem C - Mosaic Fertilizantes",
+     "url": "http://dev.mosaicco.com.br/ckfinder/userfiles/files/WA06621000-1-RH-RTE-0146_se%C3%A7%C3%A3o%20I_UPM_C_Rev0.pdf",
+     "data": "2026-10-15",
+     "veiculo": "dev.mosaicco.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "ATA DA SEXCENTÉSIMA SEXAGÉSIMA SEGUNDA SESSÃO ... - MPF",
+     "url": "https://www.mpf.mp.br/atuacao/ccr4/revisao/sessoes/ata-da-662a-so",
+     "data": "2026-10-15",
+     "veiculo": "mpf.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "A Revista Digital de Tapira - Tapira Teen",
+     "url": "https://www.tapirateen.com.br/noticias.php?recordID=Sa%C3%BAde",
+     "data": "2026-10-15",
+     "veiculo": "tapirateen.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3168309": {
+   "nome": "Taquaraçu de Minas",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Plano de ação de Emergência - PAE BARRAGEM LAGOA GRANDE ...",
+     "url": "https://www.anglogoldashanti.com.br/wp-content/uploads/2024/01/PAELG-PN0151-Revisao-5_08.01.2024_tarjado_-LAGOA_GRANDE.pdf",
+     "data": "2026-10-15",
+     "veiculo": "anglogoldashanti.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -23121,6 +26616,30 @@
    },
    "categoria": "nao_verificado"
   },
+  "3169059": {
+   "nome": "Tocos do Moji",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-16",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3169307": {
    "nome": "Três Corações",
    "uf": "MG",
@@ -23196,6 +26715,44 @@
    },
    "categoria": "nao_verificado"
   },
+  "3169802": {
+   "nome": "Turvolândia",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-15",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO",
+     "url": "https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2025/DMPF-EXTRAJUDICIAL-2025-08-25.pdf",
+     "data": "2026-10-15",
+     "veiculo": "transparencia.mpf.mp.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "cooperativa de crédito de livre admissao do sul de minas ltda. - sicoob",
+     "url": "https://www.sicoob.com.br/documents/16856185/166099282/7+-+3169_NOTAS+EXPLICATIVAS.pdf/16f3400b-d027-2908-f825-7a634dd93abb?t=1693338236638&download=true",
+     "data": "2026-10-15",
+     "veiculo": "sicoob.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3169901": {
    "nome": "Ubá",
    "uf": "MG",
@@ -23265,6 +26822,30 @@
     "classe": "com_lancamento",
     "rs_hab": 0.616715,
     "liquidada": 53419.25,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3170438": {
+   "nome": "União de Minas",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS ...",
+     "url": "https://www.ceivap.org.br/saneamento/mg/chacara-produto7.pdf",
+     "data": "2026-10-16",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -23377,6 +26958,75 @@
    },
    "categoria": "nao_verificado"
   },
+  "3171105": {
+   "nome": "Veríssimo",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "plano de contingência de proteção e defesa civil - PreventionWeb",
+     "url": "https://www.preventionweb.net/media/73057/download",
+     "data": "2026-10-16",
+     "veiculo": "preventionweb.net",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Leia uma crônica de Veríssimo sobre a Velhinha de Taubaté - PSTU",
+     "url": "https://www.pstu.org.br/leia-uma-cronica-de-verissimo-sobre-a-velhinha-de-taubate/",
+     "data": "2026-10-16",
+     "veiculo": "pstu.org.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Clebson Veríssimo da Costa Pereira - Escavador",
+     "url": "https://www.escavador.com/sobre/12035695/clebson-verissimo-da-costa-pereira",
+     "data": "2026-10-16",
+     "veiculo": "escavador.com",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3171154": {
+   "nome": "Vermelho Novo",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "INMET e Defesa Civil alertam para risco hidrológico em cidades de ...",
+     "url": "https://g1.globo.com/mg/vales-mg/noticia/2026/01/20/inmet-e-defesa-civil-alertam-para-risco-hidrologico-em-governador-valadares.ghtml",
+     "data": "2026-10-15",
+     "veiculo": "g1.globo.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Médico Fábio Franco morre aos 87 anos | Portal Diário do Aço",
+     "url": "https://www.diariodoaco.com.br/noticia/0076954-medico-fabio-franco-morre-aos-87-anos",
+     "data": "2026-10-15",
+     "veiculo": "diariodoaco.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3171204": {
    "nome": "Vespasiano",
    "uf": "MG",
@@ -23407,10 +27057,65 @@
    },
    "categoria": "nao_verificado"
   },
+  "3171402": {
+   "nome": "Vieiras",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "BARRAGEM SAMAMBAIA 0 (ZERO) - Usiminas",
+     "url": "https://www.usiminas.com/wp-content/uploads/2023/09/MJ70B05070DRTP0007.pdf",
+     "data": "2026-10-16",
+     "veiculo": "usiminas.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Instrução Normativa IAT Nº 27 DE 19/08/2026 - Estadual - LegisWeb",
+     "url": "https://www.legisweb.com.br/legislacao/?id=499724",
+     "data": "2026-10-16",
+     "veiculo": "legisweb.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 10.420792,
+    "liquidada": 38556.93,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "3171600": {
    "nome": "Virgem da Lapa",
    "uf": "MG",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3171907": {
+   "nome": "Virgolândia",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "INMET e Defesa Civil alertam para risco hidrológico em cidades de ...",
+     "url": "https://g1.globo.com/mg/vales-mg/noticia/2026/01/20/inmet-e-defesa-civil-alertam-para-risco-hidrologico-em-governador-valadares.ghtml",
+     "data": "2026-10-15",
+     "veiculo": "g1.globo.com",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -23431,6 +27136,44 @@
     "classe": "com_lancamento",
     "rs_hab": 2.555028,
     "liquidada": 100054.89,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "3172103": {
+   "nome": "Volta Grande",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Plano de ação de Emergência (PAE) – UHE Igarapava.",
+     "url": "https://uhe-igarapava.com.br/assets/img/downloads/11006-PE-SB06-O0000_A-PAE_UHE_Igarapava_ass.pdf",
+     "data": "2026-10-15",
+     "veiculo": "uhe-igarapava.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Chuvas acendem alerta para montanha de escória se romper",
+     "url": "https://baiaviva.org.br/chuvas-acendem-alerta-para-montanha-de-escoria-se-romper/",
+     "data": "2026-10-15",
+     "veiculo": "baiaviva.org.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "ATA DA SEXCENTÉSIMA QUADRAGÉSIMA SEGUNDA SESSÃO ...",
+     "url": "https://www.mpf.mp.br/atuacao/ccr4/revisao/sessoes/sessoes-anteriores/2024/arquivos/ata-642.pdf",
+     "data": "2026-10-15",
+     "veiculo": "mpf.mp.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -30241,6 +33984,15 @@
    "nome": "Paiçandu",
    "uf": "PR",
    "prioritario": true,
+   "imprensa": [
+    {
+     "titulo": "rque, \npontos e tempos estimados serão organizados pelo setor do Transporte \nEscolar. \nIII - Haverá plano de contingência para períodos de c",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118205_2026-10-15_75bf707505eea8e552f0d75d9e89c9b4.pdf",
+     "data": "2026-10-16",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -30399,6 +34151,30 @@
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
    }
+  },
+  "4119251": {
+   "nome": "PINHAL DE SÃO BENTO",
+   "uf": "PR",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "18.  As medidas e stabelecidas neste Decreto deverão ser consideradas na atualização e execução do Plano de Contingência Municipal – \nPLANC",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118204_2026-10-14_c8dcbcbcde5f1e8494e0ee27ae67d020.pdf",
+     "data": "15/10/2026",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
   },
   "4119301": {
    "nome": "Pinhão",
@@ -30659,6 +34435,30 @@
    },
    "categoria": "nao_verificado"
   },
+  "4123303": {
+   "nome": "SANTA CRUZ DE MONTE CASTELO",
+   "uf": "PR",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "ASSISTENTE SOCIAL 1460/2026 1 65,00 0 0,00 65,00 MARINGÁ \nPARTICIPAR DE REUNIÃO/ORIENTAÇÃO \nSOBRE O PLANO DE CONTINGÊNCIA DE \nPREPARAÇÃO E R",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118204_2026-10-14_c8dcbcbcde5f1e8494e0ee27ae67d020.pdf",
+     "data": "2026-10-15",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_declaracao",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
   "4123501": {
    "nome": "Santa Helena",
    "uf": "PR",
@@ -30816,6 +34616,30 @@
      "titulo": "es municipais de proteção e defesa civil; \nIII – acompanhar a elaboração, atualização e execução do Plano \nMunicipal de Contingência – PLANC",
      "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118198_2026-10-05_b183f4de4172b1491121d83f7c8b4153.pdf",
      "data": "2026-10-06",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_verificado"
+  },
+  "4126504": {
+   "nome": "SERTANÓPOLIS",
+   "uf": "PR",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "icos do Município de Sertanópolis – Paraná, apresentado \nao Conselho Municipal de Saúde. \nArt. 2º O Plano de Contingência da Rede de Frio do",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118204_2026-10-14_c8dcbcbcde5f1e8494e0ee27ae67d020.pdf",
+     "data": "15/10/2026",
      "veiculo": "www-storage.voxtecnologia.com.br",
      "nivel": "B"
     }

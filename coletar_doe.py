@@ -10,9 +10,10 @@ livro de fontes consultadas para os municípios da UF quando o DOE da UF foi lid
 com sucesso no período.
 
 Cobertura (§15, "a verificar por UF"): `data/fontes_doe.json` declara, por UF,
-`{"adaptador": "querido_diario"|"direto"|null, "url": ..., "status": ...}`.
-UF sem adaptador confirmado → lacuna declarada (nunca inferida). Em 02/09/2026
-todas as 27 nascem `a_verificar`; a Action preenche o status ao tentar.
+`{"adaptador": ..., "url": ..., "status": ...}`. Adaptadores: `apifront` (plataforma comum,
+busca), `dodf` (DF, busca própria), `busca_to`/`busca_ac` (busca que aponta edições) e
+`edicao_<uf>` (sem busca: a edição em PDF por data — CE, PB; 16/10/2026). UF sem adaptador →
+`sem adaptador de busca`, lacuna declarada com o motivo medido (nunca inferida).
 
 USO
   python coletar_doe.py --autoteste
@@ -20,8 +21,12 @@ USO
   python coletar_doe.py --uf SC --desde 2026-06-29
 """
 import json, pathlib, re, sys, time, urllib.parse
-from datetime import date
+from datetime import date, timedelta
 import funil
+# 16/10/2026: o endereço da edição por data é o do canal 2 (saúde) — um padrão por UF, conferido
+# lá, lido aqui. Dois padrões para o mesmo PDF divergiriam na primeira mudança de endereço.
+from coletar_edicoes_doe import (PADROES as PADROES_CANAL2, MINIMO_BYTES_DE_EDICAO,
+                                 datas_do_periodo, endereco_da_data)
 from coletores_base import (carimbar_atos, buscar, enviar, preservar_evidencia, preservar_texto_integral, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, marcar_fato_municipal, referencia_ibge,
                             abrir_lote_log, fechar_lote_log, abrir_lote_livro, fechar_lote_livro,
@@ -428,9 +433,11 @@ def paginas_com_termo(pdf: bytes, termo: str, extrair_fn=None) -> list:
     inteira para provar duas linhas."""
     if extrair_fn is None:
         from preservar_evidencias import extrair_texto_por_pagina as extrair_fn
+    termos = [t.lower() for t in ((termo,) if isinstance(termo, str) else termo)]
     saida = []
     for i, texto in enumerate(extrair_fn(pdf) or [], start=1):
-        if termo.lower() in (texto or "").lower():
+        baixo = (texto or "").lower()
+        if any(t in baixo for t in termos):
             saida.append((i, texto))
     return saida
 
@@ -483,6 +490,87 @@ def edicoes_ac(desde: str, ate: str):
 
 
 EDICOES_POR_BUSCA = {"busca_to": edicoes_to, "busca_ac": edicoes_ac}
+
+
+# =============================================================================================
+# Edição por data — o DOE sem busca que publica a edição em PDF num endereço previsível
+# =============================================================================================
+# Medido do runner em 14 e 15/10/2026 (runs 38555616491 e 38820165075):
+#   CE  imagens.seplag.ce.gov.br/PDF/AAAAMMDD/doAAAAMMDDpNN.pdf — a edição sai em CADERNOS
+#       ("Caderno 1/4"; 3 em 13/10), um PDF por caderno, ~1 MB e 52–64 páginas cada, texto
+#       extraível. O caderno seguinte ao último responde HTTP 300 ("Multiple Choices", o servidor
+#       sugere os nomes parecidos) — e não 404; os dois encerram a edição. A busca
+#       (pesquisa.doe.seplag.ce.gov.br) não responde ao runner.
+#   PB  o padrão por data do canal 2 (`coletar_edicoes_doe.PADROES`): 40 páginas, texto extraível.
+# Sem busca, o custo é a edição inteira; por isso a janela é curta (os oito dias do elo) e o que já
+# foi lido não se relê — `fontes_doe.json` guarda, por UF, as datas lidas (`lidas`), podadas à janela.
+# Data sem edição (feriado, atraso) não entra em `lidas`: fica para a tentativa seguinte.
+JANELA_EDICOES_DIAS = 8
+TETO_CADERNOS = 8
+PDF_CE = "https://imagens.seplag.ce.gov.br/PDF/{dc}/do{dc}p{n:02d}.pdf"
+
+
+def edicoes_ce(buscar_fn):
+    """Os cadernos da edição do dia, do 1º ao último que existe — o seguinte responde 300 ou 404."""
+    def fn(data):
+        dc, saida = data.replace("-", ""), []
+        for n in range(1, TETO_CADERNOS + 1):
+            url = PDF_CE.format(dc=dc, n=n)
+            try:
+                pdf = buscar_fn(url, timeout=240, origem="coletar_doe")
+            except Exception as e:  # noqa: BLE001
+                if getattr(e, "code", None) in (300, 404):
+                    break
+                raise
+            saida.append({"edicao": f"caderno {n}", "url": url, "pdf": pdf})
+        return saida
+    return fn
+
+
+def edicoes_pb(buscar_fn):
+    padrao = PADROES_CANAL2["PB"]["padrao"]
+    return lambda data: [{"edicao": None, "url": endereco_da_data(padrao, data)}]
+
+
+EDICOES_POR_DATA = {"edicao_ce": edicoes_ce, "edicao_pb": edicoes_pb}
+
+
+def itens_por_edicao(uf: str, desde: str, ate: str, edicoes_fn, lidas: dict, termos=None,
+                     buscar_fn=None, pausa: float = RITMO_APIFRONT_S, dormir=None, extrair_fn=None) -> tuple:
+    """(itens, totais) das edições por data ainda não lidas na janela.
+
+    `edicoes_fn(data)` devolve [{edicao, url, pdf?}] — vazio quando não há edição na data. Só a
+    página em que um termo aparece vira item; a edição lida entra em `lidas[data]` e não se relê.
+    Edição que não baixa é lacuna de UMA edição (contada), não da UF; arquivo que não é PDF, ou é
+    pequeno demais para ser uma edição, é mudança de contrato e LEVANTA (§210)."""
+    _buscar = buscar_fn or buscar
+    _dormir = dormir or time.sleep
+    inicio = max(desde, (date.fromisoformat(ate) - timedelta(days=JANELA_EDICOES_DIAS)).isoformat())
+    itens, totais = [], {"edicoes_lidas": 0, "datas_sem_edicao": 0, "edicoes_nao_baixadas": 0}
+    for data in (d for d in datas_do_periodo(inicio, ate) if d not in lidas):
+        lidas_na_data = 0
+        for e in edicoes_fn(data):
+            _dormir(pausa)
+            try:
+                pdf = e.get("pdf") or _buscar(e["url"], timeout=240, origem="coletar_doe")
+            except Exception as ex:  # noqa: BLE001
+                if getattr(ex, "code", None) != 404:
+                    totais["edicoes_nao_baixadas"] += 1
+                continue
+            if pdf[:5] != b"%PDF-" or len(pdf) < MINIMO_BYTES_DE_EDICAO:
+                raise FormatoDaBuscaMudou(f"{e['url']} não é uma edição em PDF ({len(pdf)} bytes)")
+            for pag, texto in paginas_com_termo(pdf, termos or TERMOS_APIFRONT, extrair_fn):
+                itens.append({"data": data, "pagina": pag, "paginas": None, "url": e["url"],
+                              "trechos": [texto[:20000]], "territorio": uf})
+            lidas_na_data += 1
+        if lidas_na_data:
+            lidas[data] = lidas_na_data
+            totais["edicoes_lidas"] += lidas_na_data
+        else:
+            totais["datas_sem_edicao"] += 1
+    for d in [d for d in lidas if d < inicio]:
+        del lidas[d]
+    return itens, totais
 
 
 def itens_apifront(uf: str, base: str, desde: str, ate: str, buscar_fn=None, pausa: float = RITMO_APIFRONT_S) -> tuple:
@@ -566,49 +654,31 @@ def coletar_uf(uf: str, desde: str, cfg: dict) -> str:
         # 14/10/2026: "a_verificar" por 42 dias era lacuna não declarada — já se tentou, e o que
         # falta é o adaptador. O estado diz isso; a sondagem ao lado diz por onde começar.
         f["status"] = "sem adaptador de busca"; return "lacuna"
-    if f["adaptador"] in ("dodf", *EDICOES_POR_BUSCA):
-        # Mesma forma do apifront: a evidência é o conjunto de trechos como a BUSCA OFICIAL os
-        # serviu, com o endereço citável de cada um.
+    if f["adaptador"] in ("dodf", "apifront", *EDICOES_POR_BUSCA, *EDICOES_POR_DATA):
+        # A evidência é o conjunto de trechos como a FONTE OFICIAL os serviu — na busca, o endereço
+        # citável de cada acerto; na edição por data, a URL do PDF e a página. Preservar o PDF
+        # inteiro de cada acerto passaria de meio gigabyte por varredura e não acrescentaria prova.
+        url = f["url"]
         try:
             if f["adaptador"] == "dodf":
                 itens, totais = itens_dodf(uf, desde, hoje)
+            elif f["adaptador"] == "apifront":
+                # §231: a busca entrega o TEXTO INTEGRAL da página que casou — sem teto de 20 kB e
+                # sem baixar um PDF de dez megabytes por acerto.
+                itens, totais = itens_apifront(uf, url, desde, hoje)
+            elif f["adaptador"] in EDICOES_POR_DATA:
+                itens, totais = itens_por_edicao(uf, desde, hoje, EDICOES_POR_DATA[f["adaptador"]](buscar),
+                                                 f.setdefault("lidas", {}))
             else:
                 itens, totais = itens_por_busca(uf, desde, EDICOES_POR_BUSCA[f["adaptador"]](desde, hoje))
         except FormatoDaBuscaMudou as e:
             registrar_lacuna(f"DOE/{uf}", f"formato da busca mudou: {e}", canal="repositorio_estadual",
-                             camada=1, uf=uf, strings=[f["url"]])
-            f["status"] = "erro: formato"; return "erro"
-        except Exception as e:  # noqa: BLE001
-            registrar_lacuna(f"DOE/{uf}", f"{type(e).__name__}: {e}", canal="repositorio_estadual",
-                             camada=1, uf=uf, strings=[f["url"]])
-            f["status"] = f"erro: {type(e).__name__}"; return "erro"
-        url = f["url"]
-        corpo = json.dumps({"fonte": url, "janela": [desde, hoje], "totais_por_termo": totais,
-                            "paginas": itens}, ensure_ascii=False, indent=1).encode("utf-8")
-        h = preservar_evidencia(corpo, url, "json", "coletar_doe")
-        if any(eh_suspensao_defeso(t) for it in itens for t in it["trechos"]):
-            registrar_lacuna(f"DOE/{uf}", "aviso de período eleitoral na fonte", canal="repositorio_estadual",
-                             camada=1, uf=uf, strings=[url], suspensa=True, hash_evidencia=h)
-            f["status"] = "fonte suspensa (defeso)"; return "suspensa"
-    elif f["adaptador"] == "apifront":
-        # §231: a plataforma comum a seis UFs. A janela vai de `desde` até hoje, e a busca entrega
-        # o TEXTO INTEGRAL da página que casou — por isso não há teto de 20 kB aqui e não se baixa
-        # um PDF de dez megabytes por acerto para depois procurar dentro dele.
-        url = f["url"]
-        try:
-            itens, totais = itens_apifront(uf, url, desde, hoje)
-        except FormatoDaBuscaMudou as e:
-            registrar_lacuna(f"DOE/{uf}", f"formato da busca mudou: {e}", canal="repositorio_estadual",
                              camada=1, uf=uf, strings=[url])
             f["status"] = "erro: formato"; return "erro"
         except Exception as e:  # noqa: BLE001
             registrar_lacuna(f"DOE/{uf}", f"{type(e).__name__}: {e}", canal="repositorio_estadual",
                              camada=1, uf=uf, strings=[url])
             f["status"] = f"erro: {type(e).__name__}"; return "erro"
-        # A evidência é o conjunto de páginas como a BUSCA OFICIAL DO ESTADO as serviu, com a URL
-        # do PDF da edição e o número da página em cada uma — quem confere abre o PDF e vai à
-        # página. Preservar o PDF inteiro de cada acerto passaria de meio gigabyte por varredura e
-        # não acrescentaria prova: o texto é o mesmo, e a origem fica citável do mesmo jeito.
         corpo = json.dumps({"fonte": url, "janela": [desde, hoje], "totais_por_termo": totais,
                             "paginas": itens}, ensure_ascii=False, indent=1).encode("utf-8")
         h = preservar_evidencia(corpo, url, "json", "coletar_doe")
@@ -756,6 +826,45 @@ def _levanta(fn, excecao) -> bool:
     except Exception:  # noqa: BLE001
         return False
     return False
+
+
+def _erro_http(url, codigo=404):
+    import urllib.error
+    return urllib.error.HTTPError(url, codigo, "", {}, None)
+
+
+PDF_FALSO = b"%PDF-1.4 " + b"x" * MINIMO_BYTES_DE_EDICAO
+
+
+def _t_edicao_por_data() -> bool:
+    lidas = {"2026-10-08": 1, "2026-09-01": 1}
+    pedidos = []
+
+    def falso(url, **k):
+        pedidos.append(url)
+        if "2026-10-15" in url:
+            raise _erro_http(url)
+        return PDF_FALSO
+
+    itens, totais = itens_por_edicao(
+        "PB", "2026-06-29", "2026-10-15", lambda d: [{"edicao": None, "url": f"https://x/{d}.pdf"}], lidas,
+        buscar_fn=falso, dormir=lambda s: None,
+        extrair_fn=lambda _: ["nada", "Homologa situação de emergência no Município de Sobral."])
+    # janela de 8 dias a partir de 15/10: dias úteis 07, 08, 09, 12, 13, 14 e 15; o 08 já estava lido
+    return (len(pedidos) == 6 and len(itens) == 5 and all(i["pagina"] == 2 for i in itens)
+            and totais == {"edicoes_lidas": 5, "datas_sem_edicao": 1, "edicoes_nao_baixadas": 0}
+            and sorted(lidas) == ["2026-10-07", "2026-10-08", "2026-10-09", "2026-10-12", "2026-10-13", "2026-10-14"])
+
+
+def _t_cadernos_ce() -> bool:
+    def falso(url, **k):
+        if "p03" in url:
+            raise _erro_http(url, 300)      # medido em 15/10/2026: o caderno a mais responde 300
+        return PDF_FALSO
+    cadernos = edicoes_ce(falso)("2026-10-14")
+    return ([c["url"] for c in cadernos] == ["https://imagens.seplag.ce.gov.br/PDF/20261014/do20261014p01.pdf",
+                                             "https://imagens.seplag.ce.gov.br/PDF/20261014/do20261014p02.pdf"]
+            and all(c["pdf"] == PDF_FALSO for c in cadernos))
 
 
 def autoteste() -> int:
@@ -932,6 +1041,21 @@ def autoteste() -> int:
                 (2, "SITUAÇÃO DE EMERGÊNCIA aqui")],
         "DOE-TO: PDF sem o termo não produz página":
             lambda: paginas_com_termo(b"x", "emergência", extrair_fn=lambda _: ["a", "b"]) == [],
+        # Edição por data (CE, PB) — sem busca, lê-se a edição; só a página com termo vira item.
+        "edição por data: a tupla de termos acha a página que casa com qualquer um":
+            lambda: paginas_com_termo(b"x", ("emergência", "calamidade"),
+                                      extrair_fn=lambda _: ["a", "estado de CALAMIDADE pública", "b"]) == [
+                (2, "estado de CALAMIDADE pública")],
+        "edição por data: só a data da janela ainda não lida desce ao PDF; 404 é data sem edição; "
+        "data lida não se relê e a antiga sai de `lidas`": _t_edicao_por_data,
+        "DOE-CE: os cadernos do dia vão até o primeiro 300/404": _t_cadernos_ce,
+        "edição por data: arquivo que não é uma edição em PDF LEVANTA (§210)":
+            lambda: _levanta(lambda: itens_por_edicao(
+                "PB", "2026-10-14", "2026-10-14", lambda d: [{"edicao": None, "url": "u"}], {},
+                buscar_fn=lambda u, **k: b"<html>pagina de erro</html>", dormir=lambda s: None), FormatoDaBuscaMudou),
+        "DOE-PB: o endereço da edição é o padrão do canal 2, preenchido pela data":
+            lambda: edicoes_pb(None)("2026-10-14") == [{"edicao": None, "url":
+                "https://auniao.pb.gov.br/servicos/doe/2026/outubro/diario-oficial-14-10-2026-portal.pdf"}],
         # TRAVA ESTRUTURAL: este coletor escreve em atos_resposta, pistas_doe e fontes_doe, e em
         # nada mais. O teste confere o que ele PODE fazer, não só o que ele fez nesta versão.
         "o fonte não grava em nenhum arquivo do banco":

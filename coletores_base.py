@@ -155,19 +155,19 @@ def data_br_de(valor) -> "str | None":
     return f"{d.day:02d}/{d.month:02d}/{d.year:04d}"
 
 
-def data_do_ato_no_trecho(trecho: str, ano_minimo: int = 2000) -> "str | None":
+def data_do_ato_no_trecho(trecho: str, publicado_em: date, ano_minimo: int = 2000) -> "str | None":
     """A data do ATO, lida do trecho do próprio ato, em dd/mm/aaaa — ou `None`.
 
     O `data` do evento consorciado era a data da EDIÇÃO do diário, não a do decreto. As duas
     costumam diferir por dias, e é a do ato que a metodologia §32.6 manda publicar. Quando o
     trecho não traz data nenhuma, devolve `None` e quem chama fica com `data_publicacao`.
+    16/10/2026: data posterior à edição que publica o trecho não é a do ato (Santiago/RS: a
+    "Abertura: 21/10/2026" de uma dispensa que cita o decreto virou `data_ato` e barrou a main).
     """
-    if not trecho:
-        return None
     for regex in (RE_DATA_EXTENSO, RE_DATA_BR, RE_DATA_ISO):
-        for m in regex.finditer(trecho):
+        for m in regex.finditer(trecho or ""):
             br = data_br_de(m.group(0))
-            if br and int(br[-4:]) >= ano_minimo:
+            if br and ano_minimo <= int(br[-4:]) and datetime.strptime(br, "%d/%m/%Y").date() <= publicado_em:
                 return br
     return None
 

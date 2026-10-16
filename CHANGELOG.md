@@ -34,7 +34,18 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-16 · #PR · Imprensa: páginas em cartões, perguntas em sanfona
 
-A Imprensa abre por "O que cada página responde", agora em cartões, um por página, com link; seguem o que é o MARÉ, o cálculo dos índices, as perguntas frequentes em sanfonas (a primeira de cada grupo aberta), como citar e o contato para redações. Fundo branco em tudo. Saem "Quem está mais preparado?" e "A comparação é do leitor.": o site não convida a comparar entes. Redesenho aprovado pela editoria em 15/10.
+A Imprensa abre por "O que cada página responde", agora em cartões, um por página, com link; seguem o que é o MARÉ, o cálculo dos índices, as perguntas frequentes em sanfonas (a primeira de cada grupo aberta), como citar e o contato para redações. Fundo branco em tudo. Saem "Quem está mais preparado?", "A comparação é do leitor." e "Os estados são comparáveis entre si?": o site não convida a comparar entes. Redesenho aprovado pela editoria em 15/10.
+
+## 2026-10-16 · #759 · Data do ato nunca depois da edição que o publica
+- `data_do_ato_no_trecho` ignora data posterior à edição: a abertura de uma dispensa (21/10) virou `data_ato` do decreto de Santiago/RS e barrou a publicação desde 04:42. O evento perde a data errada (fica a de publicação); caso no autoteste do consorciado.
+
+## 2026-10-16 · #757 · Blog sem abertura; texto na coluna inteira
+
+Saem do blog o parágrafo de abertura e o título "Textos": os textos entram logo abaixo do título da página, e o corpo deixa o limite de 72 caracteres e ocupa a coluna inteira, no blog e em cada texto. Metadescrição atualizada. Pedido da editoria de 15/10.
+
+## 2026-10-16 · #755 · DOE por edição: CE e PB entram (NE)
+
+`coletar_doe.py` ganha o adaptador `edicao_<uf>`: sem busca, lê a edição em PDF por data (CE em cadernos, PB pelo padrão do canal 2), só páginas com termo viram item, e o lido não se relê (`lidas`, janela de 8 dias). Os três ramos de busca viram um. AL, BA, MA, PE, PI, RN e SE ficam `sem adaptador de busca` com o motivo medido do runner (15/10).
 
 ## 2026-10-15 · #PR · CLAUDE.md só com regras em vigor
 
