@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Cadastro federal de municípios suscetíveis a enxurradas e inundações — fonte: Casa Civil.
+"""Municípios indicados pela União ao Cadastro Nacional do art. 3º-A (2.095) — fontes: Casa Civil e MIDR.
+
+16/10/2026 (METODOLOGIA §107): a seção abaixo, de 30/09, dizia que esta lista "não é" o Cadastro
+Nacional. A página do MIDR (atualizada em 28/07/2026) publica a mesma lista — as mesmas três notas,
+o mesmo total — como a dos municípios INDICADOS pela União a ele. O que continua sem fonte pública é
+a lista dos INSCRITOS, que é onde recai o dever de plano. O histórico abaixo fica como registro.
 
 Tarefa A do handover de 30/09/2026.
 
@@ -55,6 +60,12 @@ FONTES = {
     "nt1_2025": BASE + "NotaTecnica1.2025_SADJVISEPACCCeAnexoI.pdf",
     "nt1_2023": BASE + "copy10_of_NotaTcnica01_2023_SAM_CC_PR_eAnexosIeII.pdf",
 }
+# 16/10/2026 (HANDOVER_CADASTRO): a página do MIDR publica a MESMA lista (2.095, as mesmas três notas)
+# como a dos municípios INDICADOS pela União ao Cadastro Nacional do art. 3º-A. Segunda fonte da
+# mesma lista — sem lista nova, sem campo novo por município. A lista nominal ali só existe num
+# painel embutido, sem arquivo; a nominal continua vindo das três notas técnicas.
+MIDR = "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/cadastro-nacional-de-municipios"
+NOTAS_CITADAS = ("1/2023", "1/2025", "2/2025")
 SAIDA = RAIZ / "data" / "cadastro_prioritarios_federal.json"
 MUNICIPIOS = RAIZ / "data" / "verificacao_municipal.json"
 
@@ -68,13 +79,27 @@ UFS = {"AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "
        "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"}
 
 GOVERNANCA = (
-    "Cadastro federal de municípios suscetíveis a ENXURRADAS E INUNDAÇÕES, publicado pela "
-    "SEPAC/Casa Civil (Decreto 12.444/2025, regulamento do art. 50 da Lei 11.445/2007). NÃO é o "
-    "'Cadastro Nacional de Municípios com Áreas Suscetíveis' do art. 3º-A da Lei 12.340, que é de "
-    "inscrição voluntária, inclui deslizamentos e gera o dever de plano de contingência — esse "
-    "outro não tem fonte pública e depende do pedido de LAI ao MIDR/SEDEC, que continua de pé. "
-    "Camada de contexto, PESO ZERO: não pontua e não entra no índice."
+    "Lista dos 2.095 municípios INDICADOS PELA UNIÃO ao Cadastro Nacional de Municípios com Áreas "
+    "Suscetíveis do art. 3º-A da Lei 12.340 (Notas Técnicas nº 1/2023/SAM/CC/PR, nº 1/2025 e nº "
+    "2/2025/SEPAC/CC/PR; publicada pela SEPAC/Casa Civil e pela página do MIDR). Dos 2.095, 2.086 "
+    "compõem também o cadastro de ENXURRADAS E INUNDAÇÕES do Decreto 12.444/2025 (art. 50 da Lei "
+    "11.445/2007). Indicação não é inscrição: a INSCRIÇÃO no Cadastro Nacional é voluntária, é ela "
+    "que gera o dever de plano de contingência, e a lista de inscritos não tem fonte pública — o "
+    "pedido de LAI ao MIDR/SEDEC continua de pé. Camada de contexto, PESO ZERO: não pontua e não "
+    "entra no índice (METODOLOGIA §107)."
 )
+
+
+def confirmacao_midr(html: str) -> dict:
+    """O que a página do MIDR confirma da lista das notas técnicas. Função pura.
+
+    Confere se a página cita o total (2.095) e as três notas, e lê a data de atualização que ela
+    declara. Não lê lista nenhuma: a página não traz arquivo, só o painel."""
+    t = re.sub(r"<[^>]+>", " ", html or "")
+    data = re.search(r"[Aa]tualizado em\D{0,80}?(\d{2}/\d{2}/\d{4})", t)
+    return {"cita_2095": bool(re.search(r"\b2\.?095\b", t)),
+            "notas_citadas": [n for n in NOTAS_CITADAS if f"nº {n}" in t or f"n° {n}" in t or f" {n}/" in t],
+            "atualizado_em": data.group(1) if data else None}
 
 
 def linhas_do_anexo(texto: str) -> list:
@@ -287,8 +312,16 @@ def autoteste() -> int:
     casos.append(("distribuição por UF fora do esperado reprova",
                   any("no cadastro, e a nota traz" in x for x in problemas(bom, set()))))
 
-    casos.append(("a governança diz que NÃO é o Cadastro Nacional do art. 3º-A",
-                  "NÃO é o 'Cadastro Nacional" in GOVERNANCA))
+    casos.append(("a governança diz que é a lista dos INDICADOS, e que indicação não é inscrição",
+                  "INDICADOS PELA UNIÃO" in GOVERNANCA and "Indicação não é inscrição" in GOVERNANCA))
+    pag = ('<p>a lista de <strong>2.095</strong> municípios prioritários, conforme as Notas Técnicas nº '
+           '1/2023/SAM/CC/PR, nº 1/2025/SADJ-VI/SEPAC/CC/PR e nº 2/2025/SEPAC/CC/PR</p>'
+           '<span>Atualizado em</span> <span class="documentModified">28/07/2026 17h02</span>')
+    c = confirmacao_midr(pag)
+    casos.append(("o MIDR confirma o total, as três notas e a data de atualização",
+                  c == {"cita_2095": True, "notas_citadas": list(NOTAS_CITADAS), "atualizado_em": "28/07/2026"}))
+    casos.append(("página sem a lista não confirma nada, e não inventa data",
+                  confirmacao_midr("<p>Cadastro</p>") == {"cita_2095": False, "notas_citadas": [], "atualizado_em": None}))
     casos.append(("e diz que a LAI continua de pé", "continua de pé" in GOVERNANCA))
     casos.append(("e declara peso zero", "PESO ZERO" in GOVERNANCA))
 
@@ -312,8 +345,21 @@ def main() -> int:
     if "--autoteste" in sys.argv:
         return autoteste()
 
-    from coletores_base import buscar, gravar_em, hoje_editorial, preservar_evidencia
+    from coletores_base import buscar, gravar_em, hoje_editorial, preservar_evidencia, registrar_lacuna
     hoje = hoje_editorial()
+    midr = {"orgao": "MIDR", "url": MIDR}
+    try:
+        pagina = buscar(MIDR, timeout=60, origem="coletar_cadastro_prioritarios")
+        midr.update({"evidencia": preservar_evidencia(pagina, MIDR, "html", "coletar_cadastro_prioritarios"),
+                     **confirmacao_midr(pagina.decode("utf-8", "replace"))})
+        if not (midr["cita_2095"] and len(midr["notas_citadas"]) == len(NOTAS_CITADAS)):
+            registrar_lacuna("MIDR (página do Cadastro Nacional)", "a página não cita mais o total "
+                             "2.095 e as três notas técnicas", canal="federal", camada=1, strings=[MIDR])
+    except Exception as e:  # noqa: BLE001 — a segunda fonte falhar não apaga a primeira
+        midr["erro"] = f"{type(e).__name__}: {e}"[:200]
+        registrar_lacuna("MIDR (página do Cadastro Nacional)", midr["erro"], canal="federal", camada=1,
+                         strings=[MIDR])
+    print(f"MIDR: {json.dumps({k: v for k, v in midr.items() if k != 'url'}, ensure_ascii=False)}")
     textos, hashes = {}, {}
     for nome, url in FONTES.items():
         corpo = buscar(url, timeout=120, origem="coletar_cadastro_prioritarios")
@@ -346,7 +392,9 @@ def main() -> int:
 
     # Os enderecos dos PDFs ficam gravados: o cartao cita a nota tecnica, e a citacao precisa do
     # link do documento lido, nao da pagina que o hospeda.
-    gravar_em(SAIDA, {"_governanca": GOVERNANCA, "fonte": BASE, "coletado_em": hoje.isoformat(),
+    gravar_em(SAIDA, {"_governanca": GOVERNANCA, "fonte": BASE,
+                      "fontes": [{"orgao": "SEPAC/Casa Civil", "url": BASE}, midr],
+                      "coletado_em": hoje.isoformat(),
                       "documentos": dict(FONTES), "evidencias": hashes, "totais": {"prioritarios_2095": TOTAL_PRIORITARIOS,
                                                        "cadastro_2086": TOTAL_CADASTRO,
                                                        "apenas_deslizamento": TOTAL_SO_DESLIZAMENTO},
