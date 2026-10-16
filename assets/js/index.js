@@ -843,7 +843,6 @@ function renderMinha(){
   const ufFinal = uf || (m ? m.uf : '');
   card.dataset.uf = ufFinal || '';
   const nomeDigitado = document.getElementById('cidadeInput').value.trim();
-  const linkFormulario = `prefeituras.html?uf=${encodeURIComponent(ufFinal)}&tipo=plano&mun=${encodeURIComponent(nomeDigitado)}`;
 
   let html = `<p class="note"><a href="#" id="trocarMun">← consultar outro município</a></p>
     <h4>${esc(nomeDigitado)}${ufFinal ? ' · ' + esc(ufFinal) : ''}</h4>`;
@@ -917,7 +916,7 @@ function renderMinha(){
       : esc(m.fonte);
     html += `<p class="fk">Onde o documento foi localizado</p><p class="fv">${fonte}</p>`;
   } else {
-    html += `<p class="note">Tem o documento da sua prefeitura? <a href="${linkFormulario}">Envie pelo formulário</a> — a conferência é automática: a rotina lê o documento e confere se a fonte é oficial.</p>`;
+    html += `<p class="note">Tem o documento da sua prefeitura? <a href="#formulario" id="enviarDoCartao" data-uf="${esc(ufFinal)}" data-mun="${esc(nomeDigitado)}">Envie pelo formulário</a> — a conferência é automática: a rotina lê o documento e confere se a fonte é oficial.</p>`;
   }
 
   card.innerHTML = html;
@@ -946,6 +945,11 @@ document.getElementById('limparCidade').addEventListener('click', () => {
   inp.value = ''; renderMinha(); inp.focus();
 });
 document.getElementById('meuCard').addEventListener('click', (e) => {
+  // 16/10/2026: o formulário está nesta página (#formulario); o cartão o preenche pela mesma função
+  // que lê `?uf=&mun=&tipo=` da URL, e a âncora rola até ele. O destino antigo era outra página.
+  if (e.target && e.target.id === 'enviarDoCartao' && window.preencherFormulario){
+    window.preencherFormulario(e.target.dataset.uf, e.target.dataset.mun, 'plano');
+  }
   if (e.target && e.target.id === 'trocarMun'){
     e.preventDefault();
     const inp = document.getElementById('cidadeInput');
@@ -1264,7 +1268,6 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
 (function(){
   const p = new URLSearchParams(location.search); if (!document.getElementById('cUF')) return;
   const set = (id, v) => { const el = document.getElementById(id); if (el && v) el.value = v; };
-  set('cUF', (p.get('uf') || '').toUpperCase());
   // Lista de municípios por UF (malha IBGE): carga preguiçosa, com degradação graciosa
   let __refMun = null;
   async function preencherMunicipios(){
@@ -1286,12 +1289,16 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     } catch (e) { dl.innerHTML = ''; /* offline/prévia sem dados: campo segue como texto livre */ }
   }
   document.getElementById('cUF').addEventListener('change', preencherMunicipios);
-  preencherMunicipios();
-  // Quando a URL traz `?uf=...&mun=...` (o convite do cartão do município), o campo precisa estar
-  // aberto antes de receber o valor.
-  if (p.get('uf')) { const c = document.getElementById('cMunicipio'); if (c) c.disabled = false; }
-  set('cMunicipio', p.get('mun') || '');
-  set('cTipo', p.get('tipo') || '');
+  // Uma função, dois chamadores: os parâmetros da URL e o convite do cartão da cidade (16/10/2026).
+  // Com estado, o campo de município abre antes de receber o valor.
+  window.preencherFormulario = function(uf, mun, tipo){
+    set('cUF', (uf || '').toUpperCase());
+    preencherMunicipios();
+    if (uf) { const c = document.getElementById('cMunicipio'); if (c) c.disabled = false; }
+    set('cMunicipio', mun || '');
+    set('cTipo', tipo || '');
+  };
+  window.preencherFormulario(p.get('uf'), p.get('mun'), p.get('tipo'));
   // Produção = domínio final OU o subdomínio temporário *.netlify.app (útil para testar
   //   nas Partes 2-3 do guia de publicação, antes do DNS do domínio próprio propagar).
   // Qualquer outro host (prévia local, file://, artefato de visualização) mantém o

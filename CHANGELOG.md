@@ -36,6 +36,26 @@ não pontuados permanecem na versão corrente.
 
 O mapa do índice passa a "MARÉ Saúde por estado, de 0 a 100", com o subtítulo do cálculo em uso; "prontidão" sai da página. Os semanais nomeiam o ano e os anos da faixa habitual (2019 a 2025). A cidade fora da leitura semanal aparece como "não foi lido pelo MARÉ nesta semana". Sai a busca municipal antiga, sem elemento na página.
 
+## 2026-10-16 · #776 · Descoberta nos sítios oficiais: três noites cobrem os 54 alvos
+
+A descoberta de planos nos sítios estaduais andava 6 alvos por noite e revia os mesmos; agora a fatia anda 20 por dia e os 54 (27 UFs, saúde e defesa civil) passam em três noites. O comando ganha prazo próprio de 12 minutos e grava o que achou ao ser interrompido; alvo só conta como verificado quando a API do sítio respondeu.
+
+## 2026-10-16 · #769 · A definição do índice tem dono, e o texto público é conferido contra ela
+
+O motor grava em `meta.json` os componentes, pesos e faixas do índice e que a antecedência está fora da nota. O portão de versão passa a ler o texto público do MARÉ Legal: antecedência como medida da nota e "pesam igual" escrito à mão reprovam. A inicial com os textos novos (#770) já passa sem exceção.
+
+## 2026-10-16 · #773 · "Envie pelo formulário" leva ao formulário
+
+O convite do cartão da cidade apontava para "Para gestores", sem formulário. Agora rola até o formulário da própria inicial e o preenche pela mesma função que lê os parâmetros do endereço. O portão de âncoras passa a ler também os links montados nos scripts — e achou uma nota de financiamento morta, que sai.
+
+## 2026-10-16 · #775 · Portões: o autoteste roda dentro da conferência (consolidação item 6)
+
+Dezesseis `verificar_*` que ainda tinham o par `--autoteste` + conferência passam a rodar o autoteste antes de conferir, em todo uso (publicador incluído); os 16 comandos `--autoteste` saem de `portoes.yml`: 141 → 125 comandos, mesma cobertura. Linhas líquidas 0 (+29 nos scripts, −29 no workflow): a chamada mudou de lugar, não de número.
+
+## 2026-10-16 · #774 · Portões: 131 comandos `--autoteste` redundantes saem (consolidação item 6)
+
+`verificar_autotestes_isolados.py` já roda todo `.py` com `--autoteste` (210) e reprova em qualquer vermelho; os comandos repetidos um a um — todos os do job de dado, o laço dos coletores e os do bloco "sempre" cujo autoteste não abre arquivo real (medido com gancho de auditoria) — saem de `portoes.yml`. Ficam os que leem `layout/`, `conteudo/`, `schemas/`, página ou workflow, os em JavaScript e os `--self-test`/`--check`. 259 → 141 comandos, mesma cobertura.
+
 ## 2026-10-16 · #772 · Um verificador de texto público (consolidação item 3)
 
 `verificar_texto_publico.js` absorve legendas e prosa (portão 19), semana epidemiológica, palavras por página, componente de figura, fichas semânticas, regra 0 da Imprensa, enquadramento federal, vocabulário dos scripts e o `--so-texto-proibido`: nove scripts que renderizavam as mesmas páginas (dois com a URL errada, lendo o texto de reserva) saem. Regras em `layout/regras.json`; 72 casos de mutação no autoteste. Linhas .py/.js/.yml: −842; portões 272 → 259.
@@ -43,7 +63,7 @@ O mapa do índice passa a "MARÉ Saúde por estado, de 0 a 100", com o subtítul
 
 Inicial: título, metadescrição, introdução, abertura em quatro parágrafos (indicados pela União lidos do dado), "Como ler" e cartão da cidade com o texto da editoria, tudo no catálogo; formulário diz que a conferência é automática. Nome por extenso segue "Monitor" (correção da central, 16/10); só `CLAUDE.md:28` acompanha. Teto de palavras da inicial 950 → 1.050.
 
-## 2026-10-16 · #PR · Cadastro Nacional: o MARÉ cobre os indicados pela União
+## 2026-10-16 · #771 · Cadastro Nacional: o MARÉ cobre os indicados pela União
 
 A página do MIDR (28/07/2026) publica os 2.095 municípios indicados pela União ao Cadastro Nacional do art. 3º-A — a lista que o MARÉ já lia das notas técnicas — e entra no coletor como segunda fonte. Nova seção §107 e erratas em §54, §66 e §21; o portão passa a proibir afirmar inscrição ou dever. §5.3.1 explica como o município compõe a nota.
 

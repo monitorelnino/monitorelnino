@@ -811,6 +811,17 @@ RE_DATA_BR_EXATA = re.compile(r"^\d{2}/\d{2}/\d{4}$")
 
 
 VERSAO_INDICE = "v3.1 (30/09/2026)"   # a régua que o motor aplica HOJE; v3.2 roda em paralelo
+# 16/10/2026 (central, 10:40): a DEFINIÇÃO do índice também tem dono, e é o motor. O texto público
+# sobre o índice se redige daqui; `scripts/verificar_versao_do_indice.py` reprova página que nomeie
+# o que a definição não tem. Mudou componente ou peso aqui, muda a versão (§12).
+DEFINICAO_INDICE = {
+    "componentes": [{"nome": "instrumento operacional estadual", "peso": "1/3"},
+                    {"nome": "estrutura de coordenação", "peso": "1/3"},
+                    {"nome": "cobertura populacional", "peso": "1/3"}],
+    "faixas": [[0, 25, "estágio inicial"], [25, 50, "em construção"],
+               [50, 70, "consolidado"], [70, 100, "avançado"]],
+    "antecipacao_fora_da_nota": True,
+}
 
 
 def calcular_paralelo_v32(corte=None) -> dict:
@@ -897,6 +908,7 @@ def regravar_versao_no_meta(versao: str = VERSAO_INDICE) -> str:
     caminho = RAIZ / "data" / "meta.json"
     meta = json.load(open(caminho, encoding="utf-8")) if caminho.exists() else {}
     meta["versao_indice"] = versao
+    meta["definicao_indice"] = DEFINICAO_INDICE
     gravar_em(caminho, meta)
     return versao
 
