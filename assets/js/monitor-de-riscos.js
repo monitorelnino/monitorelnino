@@ -67,18 +67,6 @@ function credito(caixaId, fonteId, apoioId){
   const d = document.querySelector('#' + caixaId + ' .fonte-figura'); if (d) d.dataset.credito = fonteId;
 }
 
-/* Alternativa em lista de uma figura por UF: `celulas(uf)` devolve o array de colunas depois da
-   sigla, ou null quando aquela UF não tem leitura — e aí a linha diz a lacuna, não zero. */
-function preencherTabela(tabelaId, celulas){
-  const corpo = document.querySelector('#' + tabelaId + ' tbody');
-  if(!corpo) return;
-  const nCols = (document.querySelectorAll('#' + tabelaId + ' thead th').length || 2) - 1;
-  corpo.innerHTML = UFS.map(uf => {
-    const cols = celulas(uf) || Array(nCols).fill('sem coleta até o corte');
-    return '<tr><td><strong>' + uf + '</strong></td>' + cols.map(c => '<td>' + esc(c) + '</td>').join('') + '</tr>';
-  }).join('');
-}
-
 /* Marca visualmente uma figura que espera a primeira coleta. */
 function lacuna(alvoId, texto){
   const alvo = document.getElementById(alvoId);
@@ -91,11 +79,8 @@ function lacuna(alvoId, texto){
 
 
 /* ---------- desenho genérico de mapa coroplético por UF (motor único em assets/mapas.js) ---------- */
-const ROTULOS_DOS_MAPAS = {};
-const desenharMapa = (svgId, legendaId, corDe, rotuloDe, itensLegenda, familia) => {
-  ROTULOS_DOS_MAPAS[svgId] = rotuloDe;
-  return MonitorMapas.desenharMapa(__ctx(), svgId, legendaId, corDe, rotuloDe, itensLegenda, familia);
-};
+const desenharMapa = (svgId, legendaId, corDe, rotuloDe, itensLegenda, familia) =>
+  MonitorMapas.desenharMapa(__ctx(), svgId, legendaId, corDe, rotuloDe, itensLegenda, familia);
 // 30/09/2026 (item 8): a atmosfera de cada família. As rampas são as aprovadas pela editoria;
 // elas vivem em assets/mapas.js, e aqui só se escolhe qual família o mapa é.
 const ATM = MonitorMapas.PALETA.atmosfera;
@@ -243,17 +228,6 @@ const ufsCom = teste => UFS.filter(uf => SINAIS.uf[uf] && teste(componentesDe(uf
 
 })();
 
-// ---- "Ver estados" (09/10/2026, ajuste 5): a lista que estava no texto visível do cartão vai
-// para a descrição acessível do mapa e para um "Ver estados" fechado. Ela é gerada do MESMO texto
-// do mouse de cada estado, sem as marcas: o leitor de tela e a lista dizem o que o mapa diz.
-function escreverEstados(alvoId, rotuloDe, filtro){
-  const el = document.getElementById(alvoId); if (!el) return;
-  const limpo = h => String(h || '').replace(/<span class="dica-fonte">.*?<\/span>/g, '')
-    .replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
-  const linhas = UFS.filter(uf => !filtro || filtro(uf)).map(uf => nomeUF(uf) + ': ' + limpo(rotuloDe(uf)));
-  el.innerHTML = linhas.map(l => '<li>' + esc(l) + '</li>').join('');
-}
-
 // ---- Mapa 2: seca observada ----
 // 15/09/2026: a fonte passou a ser o RPC de dados tabulares da ANA (fração cumulativa da área da UF em cada categoria
 // S0–S4, mapa mensal). O mapa mostra a categoria MEDIANA da área — a mais severa que cobre pelo menos metade da UF
@@ -263,9 +237,7 @@ function escreverEstados(alvoId, rotuloDe, filtro){
 // tinha quatro e obrigava dois deles a dividir tom com o vizinho.
 const SECA_COR = {'sem seca': ATM.seca.rampa[0], S0: ATM.seca.rampa[1], S1: ATM.seca.rampa[2],
                   S2: ATM.seca.rampa[3], S3: ATM.seca.rampa[4], S4: ATM.seca.rampa[5]};
-const SECA_ROTULO = {'sem seca':'sem seca em metade ou mais da área', S0:'S0 · seca fraca', S1:'S1 · seca moderada', S2:'S2 · seca grave', S3:'S3 · seca extrema', S4:'S4 · seca excepcional'};   // vocabulário do Monitor de Secas
 const seca = uf => (SINAIS.uf[uf] || {}).secas;
-const pct1 = v => String(Math.round(v * 10) / 10).replace('.', ',') + '%';
 // 16/10/2026 (HANDOVER_MONITOR_DE_RISCOS §3.8): as MANCHAS do mapa mensal do Monitor de Secas,
 // como a fonte publica, no lugar do estado pintado pela mediana. Estados em branco por baixo (o
 // texto do mouse continua dando a distribuição por estado); contorno dos 27 por cima, sempre, e
@@ -331,8 +303,6 @@ const coordCapital = {};
   if (t && t.capital && m.nome === t.capital && m.lat != null) coordCapital[m.uf] = {lat: m.lat, lon: m.lon};
 });
 const tmaxDe = uf => { const t = temp(uf); return t && typeof t.tmax === 'number' ? t.tmax : null; };
-const temps = UFS.map(tmaxDe).filter(v => v != null);
-const tMin = temps.length ? Math.min(...temps) : 0, tMax = temps.length ? Math.max(...temps) : 1;
 // 30/09/2026 (item 8): a rampa aprovada do calor, em quatro degraus. O ESTADO NUNCA É PINTADO —
 // o dado é da capital, e pintar a UF faria o leitor ler como se valesse para o território inteiro.
 /* 01/10/2026 (R10): a cor passa a ser o DESVIO contra a normal 1991–2020 do Inmet, e não a
@@ -407,11 +377,6 @@ MonitorMapas.pontos(__ctx(), 'mapaTemperatura',
 anelVazio('mapaTemperatura', UFS.filter(uf => coordCapital[uf] && desvioDe(uf) == null), ATM.calor,
           'anelTemp');
 credito('boxTemperatura', 'inmet_previsao_capitais', 'inmet_estacoes');
-preencherTabela('tblTemperatura', uf => { const t = temp(uf); if (!t) return null;
-  const m = medidaDe(uf);
-  return [t.capital || '', t.tmax != null ? n1(t.tmax) + ' \u00b0C' : 'sem valor',
-          t.tmin != null ? n1(t.tmin) + ' \u00b0C' : 'sem valor',
-          m && m.medida.tmax != null ? n1(m.medida.tmax) + ' \u00b0C' : 'sem medição']; });
 
 // ---- Qualidade do ar MEDIDA (16/10/2026, HANDOVER_MONITORAR §5) ----
 /* Três fontes, uma unidade: IQAr só onde é oficial (MMA/MonitorAr, calculado pelo órgão, nunca aqui);
@@ -654,10 +619,6 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
   const t = document.getElementById('tituloAvisos'); if (t && AVISOS) t.textContent = 'Avisos de tempo severo em vigor, ' + AVISOS.gerado_em;
 })();
 
-// =====================  Cartões do estado do ciclo  =====================
-const oni = SINAIS.enos.oni, prob = SINAIS.enos.probabilidades;
-const ultimoOni = oni && oni.serie && oni.serie.length ? oni.serie[oni.serie.length - 1] : null;
-const ultimaProb = prob && prob.trimestres && prob.trimestres.length ? prob.trimestres[0] : null;
 // ===== O topo "Situação atual" (07/10/2026, handover "Monitor de riscos, parte 1") ==========
 // SAIU A RÉGUA DE FORÇA. As faixas "fraco/moderado/forte/muito forte" que este bloco aplicava
 // (`cls()`) não são definição da NOAA/CPC: ela define os LIMIARES de El Niño (+0,5 °C) e de La
@@ -1194,11 +1155,6 @@ creditoPacifico('boxEpisodios');
 // 15/09/2026: a contagem por família mora na figura dupla boxTipoRisco (mapa + gráfico, uma legenda) — o crédito é o da figura.
 // 17/09/2026: o cruzamento "tipo de risco × estágio" (que morava na home, #cCruz) saiu do site — pedido da editoria.
 
-// =============================  Tabela de fontes  =============================
-const CAMADA_ROTULO = {ciclo:'Ciclo', observado:'Observado', enos:'ENOS'};
-// "Ver estados" e descrição acessível de cada mapa (09/10/2026, ajuste 5), depois de todos desenhados.
-[['mapaSecas', 'estadosSecas'], ['mapaAr', 'estadosAr'], ['mapaTemperatura', 'estadosTemperatura']]
-  .forEach(([svg, alvo]) => { try { if (ROTULOS_DOS_MAPAS[svg]) escreverEstados(alvo, ROTULOS_DOS_MAPAS[svg]); } catch (e) {} });
 }
 __load();
 
