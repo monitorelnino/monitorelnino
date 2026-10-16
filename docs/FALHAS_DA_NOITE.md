@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-16. 65 falhas; 59 com caso de teste que as reproduz; 6 sem, com o que falta dito.
+Atualizado em 2026-10-16. 66 falhas; 60 com caso de teste que as reproduz; 6 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -590,3 +590,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** aritmética do #731: (h+24)·20 − h·20 = 480 ≡ 48 (mód 54); 54/6 = 9 noites para a cobertura completa
 - **Correção:** fatia_da_noite: a fatia anda 20 alvos por dia (três noites cobrem os 54); prazo próprio de 12 min no elo (prazo=12min, saude_pipeline) com salvamento parcial no SIGINT.
 - **Caso de teste:** `descobrir_planos.py --autoteste › fatia anda por noite e cobre os 54 alvos em 3 noites`
+
+## F66 · Triagem e preparação de pistas em dois elos paralelos perdem o commit do juiz
+
+- **Noite:** 2026-10-16
+- **Sintoma:** Juiz 38864702454 (08:10→09:22 UTC) julgou 150 pistas e perdeu o commit: 'RECUSADO data/pistas_imprensa.json: os dois lados mudaram o campo nivel_confianca da mesma pista'; o trabalho foi para o artefato coleta-perdida-juiz-38864702454.
+- **Causa:** triar_confianca_pistas.py e revisar_pistas.py --preparar rodavam também na busca web de cadência e na rodada semanal, fora da vez da noite e em paralelo com descoberta e juiz; regravavam nivel_confianca e preparacao de pistas existentes.
+- **Prova:** log do passo de commit do job 116875901428: linha RECUSADO, campo nivel_confianca; busca_web 27678664 (08:35) mudou nivel_confianca de 6 pistas (B→C) triadas pela descoberta das 07:48 na mesma noite
+- **Correção:** Um dono por campo: triagem só na descoberta, preparação só no juiz; saem da busca web de cadência e da rodada semanal.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_busca_web_pelo_coletor`

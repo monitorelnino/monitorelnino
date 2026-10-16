@@ -35,6 +35,14 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-16 · #784 · Uma renderização de página para os portões de jsdom (consolidação item 6)
 
 `_inline_js.renderizar` passa a montar o jsdom (d3, Chart simulado com rótulos, `fetch` do disco, erros da página) para os seis verificadores de runtime e o de texto público, sempre com a URL da página: quatro deles renderizavam com `/` e o catálogo servia o texto da inicial. Na Financiamento a URL `/` fica declarada: com a certa, o catálogo sobrescreve o rótulo do cartão de atos sem data (defeito da página, pedido à janela A). Linhas .js −137.
+## 2026-10-16 · #782 · Duas regras de componente passam a ser julgadas
+
+O portão de conformidade passa a reprovar seção numerada ("1.", "II ·") e mais de uma figura larga por página; as duas regras só existiam no texto de `layout/regras.json`. Dívida declarada: 16 → 14 regras só texto.
+
+## 2026-10-16 · #781 · Triagem e preparação de pistas com um dono só (F66)
+
+O juiz de 16/10 perdeu o commit porque a busca web de cadência, fora da vez da noite, regravou o nível de confiança de pistas que a descoberta já tinha triado. Triagem fica só na descoberta e preparação só no juiz; a cadência e a rodada semanal apenas acrescentam pistas. O ensaio da noite reprova um segundo dono.
+
 ## 2026-10-16 · #783 · Inicial: links da abertura e sai a linha da checagem
 
 Na abertura do MARÉ Legal, "os municípios inscritos no cadastro nacional" leva ao cadastro do MDR e "a União já indicou … municípios" volta a levar ao mapa da Defesa civil (link perdido no #770). Sai a linha "Cada registro vem com a sua fonte · Última checagem em …" (editoria, 16/10), com o script, o fallback, o estilo e as checagens que a alimentavam.
