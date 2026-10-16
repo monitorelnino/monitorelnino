@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-16 · #805 · Saem as fontes Open-Meteo de tempo e de ar (main vermelha do #802)
+
+Nenhuma página as mostrava: temperatura vem do INMET desde 27/09, ar vem do MMA/OpenAQ/RedeAr desde o #802. Saem do coletor (catálogo, leitores, coleta em lote, clima municipal), do arquivo de sinais, do cartão europeu do topo e do cartão morto da Imprensa. METODOLOGIA §41.7 com errata.
+
 ## 2026-10-16 · #806 · Monitor de riscos: consulta do município
 
 Nova seção ao fim da página: estado e município, com os mesmos controles da inicial, e uma tabela com risco previsto e seca do estado, focos de 30 dias, ar e temperatura da estação ou capital mais próxima, avisos, alerta do Cemaden, emergência desde 29/06 e o link para o plano na ficha do estado. Cada linha com fonte e data; o arquivo do estado carrega só quando escolhido. HANDOVER_MONITOR_DE_RISCOS §5.
