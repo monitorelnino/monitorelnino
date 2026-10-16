@@ -5,27 +5,27 @@
  "cartoes": [
   {
    "id": "municipios_alerta_cemaden",
-   "valor": null,
-   "referencia": "14/10/2026 22:13",
+   "valor": 3,
+   "referencia": "15/10/2026 22:42",
    "rotulo": "municípios sob alerta do Cemaden",
    "fonte": "Cemaden",
-   "sem_coleta": true
+   "sem_coleta": false
   },
   {
    "id": "municipios_aviso_inmet",
-   "valor": null,
-   "referencia": "14/10/2026 22:13",
+   "valor": 3600,
+   "referencia": "15/10/2026 22:42",
    "rotulo": "municípios sob aviso do Inmet",
    "fonte": "Inmet",
-   "sem_coleta": true
+   "sem_coleta": false
   },
   {
    "id": "decreto_e_alerta_ao_mesmo_tempo",
-   "valor": null,
-   "referencia": "14/10/2026 22:13",
+   "valor": 462,
+   "referencia": "15/10/2026 22:42",
    "rotulo": "municípios com decreto de emergência e alerta ao mesmo tempo",
    "fonte": "MARÉ (cruzamento das duas consultas)",
-   "sem_coleta": true
+   "sem_coleta": false
   },
   {
    "id": "municipios_decretaram",

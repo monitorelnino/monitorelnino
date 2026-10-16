@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-08 a 2026-10-15 (995 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-08 a 2026-10-15 (998 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -25,7 +25,7 @@ cobertura 15d: 1452/5571 com verificação real até 2026-10-15 · por canal: we
 
 | script | papel | última execução | duração | itens | status | erro |
 |---|---|---|---|---:|---|---|
-| `recalcular_mare.py` | essencial | 2026-10-15 01:41 | 2 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-15 01:48 | 3 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-15 09:09 | 0 s | — | ok | — |
 | `buscar_protocolo_calor.py` | coletor | 2026-10-12 07:33 | 11 s | 3 | ok | — |
 | `classificar_planos_municipais.py` | coletor | 2026-10-13 06:56 | 1 s | — | ok | — |
@@ -55,11 +55,11 @@ cobertura 15d: 1452/5571 com verificação real até 2026-10-15 · por canal: we
 | `coletar_semiarido_sudene.py` | coletor | 2026-10-13 06:52 | 3 s | — | ok | — |
 | `coletar_sg_esus.py` | coletor | 2026-10-11 03:37 | 8 s | — | ok | — |
 | `coletar_siconfi_182.py` | coletor | 2026-10-12 07:51 | 1 s | 5571 | ok | — |
-| `coletar_sinais_risco.py` | coletor | 2026-10-14 01:11 | 98 s | — | ok | — |
+| `coletar_sinais_risco.py` | coletor | 2026-10-15 01:41 | 68 s | — | ok | — |
 | `coletar_srag_gripe.py` | coletor | 2026-10-13 06:54 | 144 s | — | ok | — |
 | `coletar_srag_sivep.py` | coletor | 2026-10-11 03:36 | 34 s | — | ok | — |
 | `coletar_transferegov.py` | coletor | 2026-10-12 07:50 | 36 s | — | ok | — |
-| `coletar_transferencias_municipais.py` | coletor | 2026-10-14 01:13 | 69 s | — | ok | — |
+| `coletar_transferencias_municipais.py` | coletor | 2026-10-15 01:42 | 40 s | — | ok | — |
 | `consultar_querido_diario.py` | coletor | 2026-10-14 01:12 | 952 s | 27 | ok | — |
 | `descobrir_dominios.py` | coletor | 2026-10-13 08:05 | 3546 s | — | **erro** (2 seguidas) | interrompido pelo prazo do elo |
 | `descobrir_planos.py` | coletor | 2026-10-15 07:20 | 487 s | 42 | ok | — |
