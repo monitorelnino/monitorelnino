@@ -51,6 +51,8 @@
     <dl class="mudancas-lista">
       <dt>16/10/2026 · Saúde: sai o texto vazado</dt>
       <dd>Saem da página de saúde &quot;Estado das fontes&quot;, &quot;Bateria estadual executada em&quot; e a versão &quot;v0.3&quot;; &quot;não relaciona casos ao El Niño&quot; fica uma vez. Na verificação por estado, cada linha diz título, órgão, data do documento e link; o que não é título vai para `nota_interna`, que nenhuma página mostra (notas, pontuação inalterada). O contrato reprova os termos vazados.</dd>
+      <dt>16/10/2026 · Rodapé só com o e-mail de contato</dt>
+      <dd>O rodapé de todas as páginas, inclusive as do blog (pelo gerador), traz só o e-mail de contato; sai o rótulo &quot;Imprensa:&quot;. Na Imprensa, o rodapé traz o e-mail de imprensa, que vive só nessa página.</dd>
       <dt>16/10/2026 · Relógio e despachante com checkout esparso (F63)</dt>
       <dd>O relógio da nuvem morreu no checkout completo da `main` (7 GB de evidências) dentro do teto de 5 min, na abertura de 16/10. Relógio (no ramo `relogio` e no espelho da `main`) e despachante passam a ler só `scripts/`, `config/` e `data/noite/`: checkout de 8 s. O ensaio 13 reprova checkout completo.</dd>
       <dt>16/10/2026 · Juiz de saúde interrompido não avança o corte</dt>
@@ -167,8 +169,6 @@
       <dd>16 cartões em cinco grupos, cada um com fonte, período e variação sobre a semana anterior — calculada do mesmo dado, deslocando a janela pela data do ato. &quot;Avisos&quot; vira &quot;municípios sob alerta&quot;, na unidade da Defesa civil. A grade sai do HTML e passa a ser desenhada do JSON. Quatro indicadores declaram por que não são calculáveis, em vez de mostrar zero. Portão de coerência novo. Em `METODOLOGIA.md` §83.</dd>
       <dt>02/10/2026 · Coletor de síndrome gripal (e-SUS Notifica)</dt>
       <dd>A síndrome gripal não tinha coletor em rotina nenhuma. Agora tem — e ele mediu que as duas rotas que o portal declara recusam acesso automatizado (API 401, CSV 403) e que o conjunto por ano vai de 2020 a 2024, sem o ano do ciclo. Nada de série inventada: ele declara a lacuna com o código de cada recusa, e agrega sem troca de rota quando a fonte abrir. Semanal, junto do SRAG. Em `METODOLOGIA.md` §80.</dd>
-      <dt>02/10/2026 · O carimbo do publicador escreve o corte</dt>
-      <dd>O §79 corrigiu a ordem e a publicação seguiu falhando: faltava a colisão de regras. O carimbo do publicador escrevia só `atualizado_em` e declarava que `corte` nunca era tocado — regra revogada em 30/09, quando o corte passou a ser a data da rodada. Agora escreve as duas, do mesmo valor, por ordem da editoria. A data continua vindo do dado, nunca do relógio. Em `METODOLOGIA.md` §81.</dd>
     </dl>
   </section>
 </main>
@@ -176,7 +176,7 @@
     <div class="grad-line"></div>
     <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
     <span class="rodape-linha">MARÉ · Monitor de Antecipação e Resposta ao El Niño</span>
-    <span class="rodape-legal">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="imprensa.html">Imprensa</a>: <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
+    <span class="rodape-legal">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
   </footer>
 </div>
 

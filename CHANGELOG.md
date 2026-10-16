@@ -36,6 +36,10 @@ não pontuados permanecem na versão corrente.
 
 Saem da página de saúde "Estado das fontes", "Bateria estadual executada em" e a versão "v0.3"; "não relaciona casos ao El Niño" fica uma vez. Na verificação por estado, cada linha diz título, órgão, data do documento e link; o que não é título vai para `nota_interna`, que nenhuma página mostra (notas, pontuação inalterada). O contrato reprova os termos vazados.
 
+## 2026-10-16 · #763 · Rodapé só com o e-mail de contato
+
+O rodapé de todas as páginas, inclusive as do blog (pelo gerador), traz só o e-mail de contato; sai o rótulo "Imprensa:". Na Imprensa, o rodapé traz o e-mail de imprensa, que vive só nessa página.
+
 ## 2026-10-16 · #762 · Relógio e despachante com checkout esparso (F63)
 
 O relógio da nuvem morreu no checkout completo da `main` (7 GB de evidências) dentro do teto de 5 min, na abertura de 16/10. Relógio (no ramo `relogio` e no espelho da `main`) e despachante passam a ler só `scripts/`, `config/` e `data/noite/`: checkout de 8 s. O ensaio 13 reprova checkout completo.
