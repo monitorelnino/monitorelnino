@@ -681,7 +681,8 @@ def cartoes_das_emergencias(dc):
 
 
 def cartoes_do_risco_agora(dc, riscos, sinais):
-    """Risco agora: seis cartoes. Tres da Defesa civil, dois do Monitor de riscos, um do fogo."""
+    """Risco agora: cinco cartoes. Tres da Defesa civil, um do Monitor de riscos, um do fogo.
+    16/10/2026: o das capitais com o ar ruim saiu com o indice europeu (CAMS) que o alimentava."""
     d, r = por_id(dc), por_id(riscos)
     # Os tres primeiros cartoes vem do instantaneo da Defesa civil, que desde 08/10/2026 ja
     # declara a parada das 24 horas (scripts/gerar_topo_das_paginas.alertas_pararam). A Imprensa
@@ -701,9 +702,6 @@ def cartoes_do_risco_agora(dc, riscos, sinais):
         importado("temperatura_desvio_capital",
                   "A maior diferença de temperatura máxima em relação ao normal, em grau Celsius",
                   r.get("temperatura_desvio_capital"), grupo="risco_agora", unidade="°C",
-                  origem="monitor-de-riscos.html"),
-        importado("capitais_ar_ruim_ou_pior", "Capitais com o ar na faixa ruim ou acima dela",
-                  r.get("capitais_ar_ruim_ou_pior"), grupo="risco_agora",
                   origem="monitor-de-riscos.html"),
     ]
     return cartoes
@@ -1022,7 +1020,7 @@ def autoteste() -> int:
     checar("todo cartão importado declara a página de origem",
            all(c["pagina_de_origem"] == "defesa-civil.html" for c in emerg))
     risco = cartoes_do_risco_agora(DC, RIS, {"uf": {"PA": {"fogo": {"focos_24h": 9, "consultado_em": "x"}}}})
-    checar("risco agora tem seis cartões", len(risco) == 6)
+    checar("risco agora tem cinco cartões", len(risco) == 5)
     checar("o calor da imprensa é o DESVIO, e vem do Monitor de riscos",
            risco[4]["valor"] == 2.9 and risco[4]["pagina_de_origem"] == "monitor-de-riscos.html")
     din = cartoes_do_dinheiro_importados(FIN, {"municipios_com_ato": 68})
@@ -1050,7 +1048,7 @@ def autoteste() -> int:
     checar("os cinco grupos existem na edição",
            {c["grupo"] for c in CARTOES_DO_TESTE} == {"preparacao", "emergencias", "risco_agora",
                                                       "dinheiro", "saude"})
-    for grupo, quantos in (("preparacao", 3), ("emergencias", 3), ("risco_agora", 6),
+    for grupo, quantos in (("preparacao", 3), ("emergencias", 3), ("risco_agora", 5),
                            ("dinheiro", 3), ("saude", 3)):
         checar(f"o grupo '{grupo}' tem {quantos} cartões",
                sum(1 for c in CARTOES_DO_TESTE if c["grupo"] == grupo) == quantos)
