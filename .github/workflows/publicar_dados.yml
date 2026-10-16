@@ -27,15 +27,15 @@ on:
     # cancela — os grupos de concorrência são separados —, mas põe o publicador lendo enquanto a busca
     # commita, que é o cenário de "main em movimento" que o laço de rebase-e-push do item 1a existe
     # para sobreviver. Cinco minutos custam nada e tiram a corrida do caminho. As HORAS não mudam:
-    # 06h e 22h são compromisso público declarado em obrigado.html e na METODOLOGIA.
+    # 06h e 22h são o compromisso declarado na METODOLOGIA.
     - cron: "5 9 * * *"    # 06h05 de Brasília — fecha a noite
     - cron: "5 1 * * *"    # 22h05 de Brasília — abre a noite, com o que a editoria mesclou de dia
   workflow_dispatch:
   # 28/09/2026 (item 2 do bloco de frescor): CONTRATO — toda coleta que muda dado termina em
   # publicação. Até aqui o publicador só tinha horário, e uma noite que commitava dado às 06h30
   # esperava até as 22h05 para aparecer; noite em que o publicador falhava, o dado esperava o dia
-  # seguinte, e ninguém era avisado. Os horários fixos continuam — eles são o compromisso público de
-  # obrigado.html e da METODOLOGIA, e cobrem o caso de nenhum coletor ter rodado.
+  # seguinte, e ninguém era avisado. Os horários fixos continuam — eles são o compromisso da
+  # METODOLOGIA, e cobrem o caso de nenhum coletor ter rodado.
   #
   # `cancel-in-progress: true` no grupo faz o trabalho pesado aqui: uma noite com cinco coletores
   # não gera cinco publicações: a mais nova substitui a mais velha, e a última publica tudo o que

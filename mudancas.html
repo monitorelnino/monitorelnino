@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/10/2026 · Monitor de riscos: números de agora com a leitura anterior; avisos distintos no país</dt>
+      <dd>`topo_monitor_riscos.json` passa a trazer fogo, seca, avisos e probabilidade além do calor, cada cartão com `anterior` (valor e referência da leitura anterior). Avisos contam avisos distintos no país. A linha de fonte das listas federais nomeia MIDR e Casa Civil com a página do cadastro. Comentários sem `obrigado.html`.</dd>
       <dt>16/10/2026 · Regra das quatro funções da figura passa a ter portão (A7-14)</dt>
       <dd>`figura.quatro_funcoes_separadas` (título, legenda, nota, fonte) deixa de ser só texto: quem a julga é `verificar_texto_publico.js`, que já reprova nota, dica ou parágrafo dentro da figura e exige um título, um subtítulo e um crédito. Restam 13 regras só texto.</dd>
       <dt>16/10/2026 · Saem as fontes Open-Meteo de tempo e de ar (main vermelha do #802)</dt>
@@ -165,8 +167,6 @@
       <dd>`regras-do-site` e `noite-e-coletores` reúnem, com ponteiros, as regras que já estavam espalhadas em seis documentos — nenhuma regra nova, auditado. A tabela de arquivos que nunca entram em contexto estava errada no que mais importa: `evidencias/` figurava com 380 MB e tem 4,1 GB, e `pistas_imprensa.json` (26 MB) nem constava. A skill `karpathy-guidelines` ganhou o aviso de que seu §1 foi revogado em 27/09.</dd>
       <dt>05/10/2026 · O pacote do blog fica no artefato, por decisão da editoria</dt>
       <dd>A editoria respondeu a pergunta de 04/10: o pacote não vai ao `robo-registro`. O passo que clonava o privado sai inteiro de `pacote_do_blog.yml`, e o pacote vive no artefato do run. Não é limitação contornada — `ROBO_TOKEN` já alcança o privado e o push sairia de graça; a decisão é dela. Quem precisar do pacote lá roda `gerar_pacote_blog.py` à mão. O artefato expira em 90 dias, e o gerador é função do corte, não do run.</dd>
-      <dt>05/10/2026 · Um escritor por arquivo, cancelado não é feito, e a noite passa a ser ensaiada</dt>
-      <dd>A busca web perdeu 114 min porque o rebase usava `-X theirs`, que num arquivo de fila apaga o lado perdedor. `unir_conflito_de_rodada.py` passa a unir as filas pela base comum, com a política da porta única. `config/escritores.json` declara quem commita cada arquivo. Elo cancelado deixa de contar como noite aberta: o marcador `.feito` vem antes do commit. `ensaio_da_noite.py` prova as quatro causas de dia, sem tocar a `main`.</dd>
     </dl>
   </section>
 </main>
