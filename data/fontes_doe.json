@@ -1,5 +1,5 @@
 {
- "_governanca": "Cobertura dos 27 DOEs (v2.2.4, §4.2). 'a_verificar' = adaptador não confirmado; a Action registra o resultado da tentativa. Nunca inferir cobertura. §231: seis UFs usam o adaptador 'apifront' (plataforma comum, rotas medidas contra produção em 26/09/2026).",
+ "_governanca": "Cobertura dos 27 DOEs (v2.2.4, §4.2). 'a_verificar' = adaptador não confirmado; a Action registra o resultado da tentativa. Nunca inferir cobertura. Adaptadores: apifront (plataforma comum, §231), dodf, busca_to, busca_ac, edicao_<uf> (edição em PDF por data, sem busca). UF sem adaptador traz 'motivo' medido do runner e a data da medida.",
  "ufs": {
   "AC": {
    "adaptador": "busca_ac",
@@ -134,7 +134,9 @@
     "links_de_busca": [],
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
-   }
+   },
+   "motivo": "o diário vive em diario.imprensaoficial.al.gov.br, SPA (React) que serve a mesma casca de 964 B para toda rota, inclusive /apifront e /busca; API não localizada",
+   "medido_em": "15/10/2026"
   },
   "BA": {
    "adaptador": null,
@@ -157,12 +159,14 @@
     ],
     "veredito": "pista_de_rota",
     "sondado_em": "02/10/2026"
-   }
+   },
+   "motivo": "dool.egba.ba.gov.br não responde ao runner (timeout em 3 rotas, 30 s); www.egba.ba.gov.br/diario-oficial e a busca Solr respondem 404",
+   "medido_em": "15/10/2026"
   },
   "CE": {
-   "adaptador": null,
-   "url": "https://www.saude.ce.gov.br",
-   "status": "sem adaptador de busca",
+   "adaptador": "edicao_ce",
+   "url": "https://imagens.seplag.ce.gov.br/PDF/",
+   "status": "a_verificar",
    "ultima_tentativa": "2026-10-16",
    "sondagem": {
     "plataforma": "wordpress",
@@ -170,7 +174,9 @@
     "links_de_busca": [],
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
-   }
+   },
+   "medido_em": "15/10/2026",
+   "caminho": "edição por data em cadernos (doAAAAMMDDpNN.pdf), 4 cadernos de 64 p. em 14/10, texto extraível; a busca (pesquisa.doe.seplag) não responde ao runner"
   },
   "MA": {
    "adaptador": null,
@@ -185,12 +191,14 @@
     ],
     "veredito": "pista_de_rota",
     "sondado_em": "02/10/2026"
-   }
+   },
+   "motivo": "diariooficial.ma.gov.br responde HTTP 500 em todas as rotas (raiz, /busca/, /public/index.jsf)",
+   "medido_em": "15/10/2026"
   },
   "PB": {
-   "adaptador": null,
-   "url": "https://auniao.pb.gov.br",
-   "status": "sem adaptador de busca",
+   "adaptador": "edicao_pb",
+   "url": "https://auniao.pb.gov.br/servicos/doe",
+   "status": "a_verificar",
    "ultima_tentativa": "2026-10-16",
    "sondagem": {
     "plataforma": "plone",
@@ -216,7 +224,9 @@
     ],
     "veredito": "pista_de_rota",
     "sondado_em": "02/10/2026"
-   }
+   },
+   "medido_em": "15/10/2026",
+   "caminho": "edição por data (padrão do canal 2), 40 p. em 14/10, texto extraível; a busca Plone (@@busca) devolve a página inicial"
   },
   "PE": {
    "adaptador": null,
@@ -229,7 +239,9 @@
     "links_de_busca": [],
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
-   }
+   },
+   "motivo": "diariooficial.cepe.com.br é SPA (AngularJS) de 1,6 kB em toda rota; API não localizada",
+   "medido_em": "15/10/2026"
   },
   "PI": {
    "adaptador": null,
@@ -240,7 +252,9 @@
     "veredito": "nao_respondeu",
     "motivo": "URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>",
     "sondado_em": "02/10/2026"
-   }
+   },
+   "motivo": "www.diariooficial.pi.gov.br está parado: a própria página diz 'último diário disponível 20/12/2022' e a busca por POST tem índice em 21/05/2021; responde só em http://. O diário atual vive em outro host, a medir",
+   "medido_em": "15/10/2026"
   },
   "RN": {
    "adaptador": null,
@@ -253,7 +267,9 @@
     "links_de_busca": [],
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
-   }
+   },
+   "motivo": "www.diariooficial.rn.gov.br redireciona para /dei/dorn3, que hoje é um Nextcloud (HTTP 400); o certificado https não vale para o host",
+   "medido_em": "15/10/2026"
   },
   "SE": {
    "adaptador": null,
@@ -264,7 +280,9 @@
     "veredito": "sem_endereco",
     "motivo": "nenhum endereço de diário registrado; os hosts conhecidos do diário de Sergipe (segrase.se.gov.br, doe.se.gov.br, diariooficial.se.gov.br) não resolvem na consulta de 02/10/2026. O portal do estado (www.se.gov.br) responde, mas portal de governo não é diário oficial e não entra como fonte.",
     "sondado_em": "02/10/2026"
-   }
+   },
+   "motivo": "nenhum host do diário resolve no DNS (segrase.se.gov.br, www.segrase, doe.se.gov.br, diariooficial.se.gov.br); www.se.gov.br inalcançável do runner",
+   "medido_em": "15/10/2026"
   },
   "DF": {
    "adaptador": "dodf",
