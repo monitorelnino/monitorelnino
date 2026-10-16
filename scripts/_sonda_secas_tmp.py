@@ -1,24 +1,25 @@
-"""Sonda pontual (diag 16/10): shapefile mensal do Monitor de Secas no S3 da ANA."""
-import io, re, sys, zipfile, urllib.request
+"""Sonda pontual (diag 16/10): conteúdo do shapefile mensal do Monitor de Secas (setembro/2026)."""
+import io, sys, zipfile, urllib.request, subprocess, json
+subprocess.run([sys.executable, "-m", "pip", "install", "-q", "pyshp"], check=True)
+import shapefile
 sys.path.insert(0, ".")
 from coletores_base import UA
-def get(u, metodo="GET"):
-    r = urllib.request.Request(u, headers={"User-Agent": UA}, method=metodo)
-    try:
-        with urllib.request.urlopen(r, timeout=120) as f:
-            return f.status, f.read(), dict(f.headers)
-    except urllib.error.HTTPError as e:
-        return e.code, b"", dict(e.headers or {})
-    except Exception as e:
-        return str(e)[:100], b"", {}
-st, c, h = get("https://monitordesecas.ana.gov.br/main-es2015.fa1ed2e57f145c927f52.js")
-js = c.decode("utf-8", "replace")
-i = js.find("uploads/mapas/${")
-print("CTX:", js[i - 900: i + 400])
-S3 = "https://ana-monitor-secas-files.s3.sa-east-1.amazonaws.com/uploads/mapas/"
-st, c, h = get(S3[:-1].rsplit("/uploads", 1)[0] + "/?prefix=uploads/mapas/&max-keys=50")
-print("\nLIST", st, c[:1500])
-for nome in ("Setembro2026", "Agosto2026", "setembro2026", "Set2026", "Setembro_2026"):
-    for ext in (".zip", ".gpkg", ".png"):
-        st, c, h = get(S3 + nome + ext, "HEAD")
-        print("HEAD", nome + ext, st, h.get("Content-Length"), h.get("Last-Modified"))
+u = "https://ana-monitor-secas-files.s3.sa-east-1.amazonaws.com/uploads/mapas/setembro2026.zip"
+with urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": UA}), timeout=120) as f:
+    z = zipfile.ZipFile(io.BytesIO(f.read()))
+for i in z.infolist():
+    print(i.filename, i.file_size)
+for nome in [i.filename for i in z.infolist() if i.filename.lower().endswith(".shp")]:
+    base = nome[:-4]
+    def abre(ext):
+        for n in z.namelist():
+            if n.lower() == (base + ext).lower():
+                return io.BytesIO(z.read(n))
+    r = shapefile.Reader(shp=abre(".shp"), dbf=abre(".dbf"), shx=abre(".shx"))
+    prj = abre(".prj")
+    print("\n##", nome, "tipo", r.shapeTypeName, "registros", len(r), "bbox", [round(x, 2) for x in r.bbox])
+    print(" campos:", r.fields[1:])
+    print(" prj:", prj.read()[:200] if prj else None)
+    for rec in r.records()[:8]:
+        print("  ", rec.as_dict())
+    print(" pontos totais:", sum(len(s.points) for s in r.shapes()))
