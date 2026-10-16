@@ -33,7 +33,7 @@ UF_NOME = {"AC": "Acre", "AL": "Alagoas", "AM": "Amazonas", "AP": "Amapá", "BA"
            "ES": "Espírito Santo", "GO": "Goiás", "MA": "Maranhão", "MG": "Minas Gerais", "MS": "Mato Grosso do Sul", "MT": "Mato Grosso",
            "PA": "Pará", "PB": "Paraíba", "PE": "Pernambuco", "PI": "Piauí", "PR": "Paraná", "RJ": "Rio de Janeiro", "RN": "Rio Grande do Norte",
            "RO": "Rondônia", "RR": "Roraima", "RS": "Rio Grande do Sul", "SC": "Santa Catarina", "SE": "Sergipe", "SP": "São Paulo", "TO": "Tocantins"}
-ASSINATURA = "Futura Evidence Lab — MARÉ · Medida de Antecipação e Resposta ao El Niño (monitorelnino.com.br)"
+ASSINATURA = "Futura Evidence Lab — MARÉ · Monitor de Antecipação e Resposta ao El Niño (monitorelnino.com.br)"
 
 # 24/09/2026 (§201): delimitação temporal e espacial em todo pedido. Goiás recusou pedido por
 # genérico, invocando o art. 11 da Lei estadual 18.025/2013 — e a recusa é evitável: basta

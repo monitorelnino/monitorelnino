@@ -2,7 +2,7 @@
 """
 gerar_resposta.py — Contador de RESPOSTA (v3.1 §3, 06/09/2026)
 ================================================================
-A outra metade do MARÉ (Medida de Antecipação e Resposta): o que foi DECRETADO depois.
+A outra metade do MARÉ (Monitor de Antecipação e Resposta): o que foi DECRETADO depois.
 Contagens, frações e datas — sem fórmula, sem faixa, sem peso, sem composto com o índice (C17).
 Peso ZERO: nada aqui é lido por recalcular_mare.py (portão verificar_resposta.py).
 

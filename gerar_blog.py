@@ -74,7 +74,7 @@ MARCA_DE_APROVACAO = "aprovado"
 CHAVES_OBRIGATORIAS = ("titulo", "data", "etiqueta", "abertura")
 # Sem `aprovado: sim` o texto não vai ao ar — é a trava do fluxo editorial de 03/10/2026.
 CHAVES_DE_APROVACAO = ("aprovado",)
-SITE = "MARÉ · Medida de Antecipação e Resposta ao El Niño"
+SITE = "MARÉ · Monitor de Antecipação e Resposta ao El Niño"
 
 
 def ler_post(caminho: Path) -> dict:
