@@ -452,7 +452,8 @@ def registrar_consulta(chave: str, url: str, bruto: str) -> None:
     _LIVRO_CONSULTAS.append({
         "fonte": chave, "url": url, "consultado_em": agora(),
         "bytes": len(bruto or ""),
-        "sha256": hashlib.sha256((bruto or "").encode("utf-8", errors="replace")).hexdigest(),
+        "sha256": hashlib.sha256(bruto if isinstance(bruto, bytes)
+                                 else (bruto or "").encode("utf-8", errors="replace")).hexdigest(),
     })
 
 
@@ -486,14 +487,15 @@ def _contexto_tls():
         return None
 
 
-def _buscar(url: str, extra: dict = None) -> str:
+def _buscar(url: str, extra: dict = None, binario: bool = False):
     """GET simples com cabeçalho identificado e tempo limite; erros sobem para quem chamou tratar.
 
     `extra` acrescenta cabeçalho (é por onde a chave do OpenAQ viaja). O User-Agent identificado
     NUNCA é substituído: disfarçar o cliente é proibido no projeto."""
     req = urllib.request.Request(url, headers={**CABECALHO, **(extra or {})})
     with urllib.request.urlopen(req, timeout=TEMPO_LIMITE, context=_contexto_tls()) as r:
-        return r.read().decode("utf-8", errors="replace")
+        corpo = r.read()
+    return corpo if binario else corpo.decode("utf-8", errors="replace")
 
 
 def _buscar_registrado(chave: str, url: str, extra: dict = None) -> str:
@@ -779,6 +781,89 @@ def escolher_csv_focos(html_indice: str) -> str:
     """Nome do CSV diário mais recente listado no diretório do INPE (focos_diario_br_AAAAMMDD.csv). Função pura."""
     nomes = re.findall(r'focos_diario_br_(\d{8})\.csv', html_indice or "")
     return f"focos_diario_br_{max(nomes)}.csv" if nomes else ""
+
+
+# ---------------------------------------------------------------------------
+# FOCOS PELO SATÉLITE DE REFERÊNCIA (HANDOVER_MONITOR_DE_RISCOS §6a, 16/10/2026) → data/focos_referencia.json
+# O CSV diário traz a detecção de todos os satélites; o mesmo fogo aparece em vários (15/10/2026:
+# 35.850 linhas, 569 do AQUA_M-T). Comparar dias e anos só faz sentido pelo satélite de referência
+# do INPE, que é o que o arquivo anual de referência traz. Bioma e município vêm da fonte; terra
+# indígena e unidade de conservação NÃO vêm (sondado em 16/10) e não são estimados.
+# ---------------------------------------------------------------------------
+SATELITE_REFERENCIA = "AQUA_M-T"
+FOCOS_DIAS_SERIE = 400        # cobre o mesmo dia do ano anterior
+FOCOS_DIAS_MUNICIPIO = 30
+FOCOS_ANUAL_REF = "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/anual/Brasil_sat_ref/focos_br_ref_{ano}.zip"
+
+
+def resumo_focos_ref(texto: str, filtrar_satelite: bool = True) -> dict:
+    """{dia ISO: {total, uf, bioma, municipio}} só do satélite de referência. Função pura.
+
+    O CSV diário traz `satelite`, `data_hora_gmt` e `municipio_id`; o anual de referência já vem
+    filtrado e traz `data_pas` e o nome do município, sem código — por isso `municipio` só existe
+    para o diário. O dia é o do horário GMT, como o INPE o publica."""
+    import csv
+    import io
+    saida = {}
+    for linha in csv.DictReader(io.StringIO(texto or "")):
+        if filtrar_satelite and (linha.get("satelite") or "").strip() != SATELITE_REFERENCIA:
+            continue
+        dia = str(linha.get("data_hora_gmt") or linha.get("data_pas") or "").strip()[:10]
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", dia):
+            continue
+        r = saida.setdefault(dia, {"total": 0, "uf": {}, "bioma": {}, "municipio": {}})
+        r["total"] += 1
+        uf = NOME_PARA_SIGLA.get((linha.get("estado") or "").strip().upper())
+        if uf:
+            r["uf"][uf] = r["uf"].get(uf, 0) + 1
+        bioma = (linha.get("bioma") or "").strip()
+        if bioma:
+            r["bioma"][bioma] = r["bioma"].get(bioma, 0) + 1
+        mun = (linha.get("municipio_id") or "").strip()
+        if mun.isdigit():
+            r["municipio"][mun] = r["municipio"].get(mun, 0) + 1
+    return saida
+
+
+def _ano_antes(dia: date) -> date:
+    try:
+        return dia.replace(year=dia.year - 1)
+    except ValueError:                                # 29/02 → 28/02
+        return dia.replace(year=dia.year - 1, day=28)
+
+
+def atualizar_focos_ref(anterior: dict, novos: dict, ultimo_dia: str) -> dict:
+    """Junta os dias novos à série guardada, apara as janelas e calcula o resumo do último dia
+    completo. Somas e contagens só; dia sem arquivo fica fora da soma e o número de dias com dado
+    vai junto. Função pura."""
+    serie = dict((anterior or {}).get("serie") or {})
+    por_mun = dict((anterior or {}).get("municipios_por_dia") or {})
+    for dia, r in (novos or {}).items():
+        serie[dia] = {"total": r["total"], "uf": r["uf"], "bioma": r["bioma"]}
+        if r.get("municipio"):
+            por_mun[dia] = r["municipio"]
+    fim = date.fromisoformat(ultimo_dia)
+    serie = {d: v for d, v in sorted(serie.items()) if 0 <= (fim - date.fromisoformat(d)).days < FOCOS_DIAS_SERIE}
+    por_mun = {d: v for d, v in sorted(por_mun.items()) if 0 <= (fim - date.fromisoformat(d)).days < FOCOS_DIAS_MUNICIPIO}
+    janela = [d for d in serie if (fim - date.fromisoformat(d)).days < FOCOS_DIAS_MUNICIPIO]
+    mes = [d for d in serie if d[:7] == ultimo_dia[:7]]
+    ano_antes = _ano_antes(fim).isoformat()
+    acumulado = {}
+    for m in por_mun.values():
+        for k, n in m.items():
+            acumulado[k] = acumulado.get(k, 0) + n
+    return {
+        "serie": serie, "municipios_por_dia": por_mun,
+        "resumo": {
+            "ultimo_dia": ultimo_dia,
+            "dia": serie.get(ultimo_dia),
+            "mesmo_dia_ano_anterior": {"dia": ano_antes, "total": serie[ano_antes]["total"]} if ano_antes in serie else None,
+            "mes": {"total": sum(serie[d]["total"] for d in mes), "dias_com_dado": len(mes)},
+            "ultimos_30_dias": {"total": sum(serie[d]["total"] for d in janela), "dias_com_dado": len(janela),
+                                "por_dia": [[d, serie[d]["total"]] for d in janela]},
+            "municipios_30_dias": dict(sorted(acumulado.items())),
+        },
+    }
 
 
 def parse_alertas_wfs_cemaden(dados) -> dict:
@@ -2178,6 +2263,55 @@ def gravar_ar_medido(agora_dt: datetime = None) -> None:
           f"com IQAr, {sum(1 for x in sensores if x['pm25'])}/{len(sensores)} sensor(es) com PM2,5.")
 
 
+def gravar_focos_referencia() -> None:
+    """Lê o último dia COMPLETO de focos (o penúltimo arquivo do diretório: o do dia corrente
+    nasce vazio e enche ao longo do dia), completa os dias que faltam na janela de 30 e, se faltar
+    o mesmo dia do ano anterior, o arquivo anual de referência daquele ano — uma vez, porque o ano
+    inteiro fica na série. Cada resposta deixa URL, hora e hash no livro de consultas. Fonte que não
+    responde deixa o arquivo anterior, com a data dele."""
+    import io
+    import zipfile
+    from datetime import timedelta
+    destino = RAIZ / "data" / "focos_referencia.json"
+    base = FONTES["inpe_fogo"]["endpoint"]
+    try:
+        indice = _buscar_registrado("inpe_fogo", base)
+        dias = sorted(set(re.findall(r"focos_diario_br_(\d{8})\.csv", indice)))
+        if len(dias) < 2:
+            raise ValueError("diretório sem dia completo")
+        ultimo = f"{dias[-2][:4]}-{dias[-2][4:6]}-{dias[-2][6:]}"
+        anterior = json.loads(destino.read_text(encoding="utf-8")) if destino.exists() else {}
+        guardados = set((anterior.get("serie") or {}))
+        fim = date.fromisoformat(ultimo)
+        novos = {}
+        for d in dias[:-1]:
+            iso = f"{d[:4]}-{d[4:6]}-{d[6:]}"
+            if (fim - date.fromisoformat(iso)).days < FOCOS_DIAS_MUNICIPIO and (iso not in guardados or iso == ultimo):
+                novos.update(resumo_focos_ref(_buscar_registrado("inpe_fogo", f"{base}focos_diario_br_{d}.csv")))
+        ano_antes = _ano_antes(fim)
+        if ano_antes.isoformat() not in guardados:
+            url = FOCOS_ANUAL_REF.format(ano=ano_antes.year)
+            bruto = _buscar(url, binario=True)
+            registrar_consulta("inpe_fogo", url, bruto)
+            z = zipfile.ZipFile(io.BytesIO(bruto))
+            anual = resumo_focos_ref(z.read(z.infolist()[0]).decode("utf-8", "replace"), filtrar_satelite=False)
+            novos.update({d: v for d, v in anual.items() if 0 <= (fim - date.fromisoformat(d)).days < FOCOS_DIAS_SERIE})
+    except Exception as e:  # noqa: BLE001 — fonte externa: o arquivo anterior fica, com a data dele
+        print(f"[aviso] focos de referência: {type(e).__name__}: {str(e)[:160]} — data/focos_referencia.json mantido.")
+        return
+    novos = {d: v for d, v in novos.items() if d <= ultimo}
+    escrever_json(destino, {
+        "_governanca": (f"Focos de calor do INPE pelo satélite de referência ({SATELITE_REFERENCIA}), "
+                        "por UF, bioma e município (código IBGE), como o INPE publica. Contagem por dia GMT; "
+                        "somas de dias com arquivo, com o número de dias. Terra indígena e unidade de "
+                        "conservação não vêm na fonte e não são estimadas. Peso zero, sinal físico."),
+        "gerado_em": hoje(), "consultado_em": agora(), "fonte": "INPE — Programa Queimadas (BDQueimadas)",
+        "url_publica": FONTES["inpe_fogo"]["url_publica"], "satelite_referencia": SATELITE_REFERENCIA,
+        **atualizar_focos_ref(anterior, novos, ultimo),
+    }, compacto=True)
+    print(f"→ data/focos_referencia.json: {ultimo}, {len(novos)} dia(s) lido(s) nesta rodada.")
+
+
 def gravar_pontos_de_foco() -> None:
     """Grava data/focos_pontos.json com os focos agregados em grade.
 
@@ -2713,6 +2847,31 @@ def autoteste() -> int:
     checar("Ar: sensor sem código IBGE fica de fora; leitura velha é lacuna",
            len(_sens) == 2 and _sens[1]["pm25"] is None and "36 h" in _sens[1]["lacuna"])
 
+    # ── Focos pelo satélite de referência (16/10/2026) ────────────────────────────────────
+    _csv = ("id,lat,lon,data_hora_gmt,satelite,municipio,estado,municipio_id,bioma\n"
+            "1,-3.5,-54.6,2026-10-15 17:00:00,AQUA_M-T,PLACAS,PARÁ,1505650,Amazônia\n"
+            "2,-3.5,-54.6,2026-10-15 17:01:00,NOAA-20,PLACAS,PARÁ,1505650,Amazônia\n"
+            "3,-9.0,-45.0,2026-10-15 16:00:00,AQUA_M-T,BALSAS,MARANHÃO,2101400,Cerrado\n"
+            "4,-9.0,-45.0,2026-10-14 16:00:00,AQUA_M-T,BALSAS,MARANHÃO,2101400,Cerrado\n")
+    _r = resumo_focos_ref(_csv)
+    checar("Focos ref: só o satélite de referência conta (o NOAA-20 do mesmo fogo fica fora)",
+           _r["2026-10-15"]["total"] == 2 and _r["2026-10-15"]["uf"] == {"PA": 1, "MA": 1}
+           and _r["2026-10-15"]["bioma"] == {"Amazônia": 1, "Cerrado": 1} and _r["2026-10-14"]["total"] == 1)
+    checar("Focos ref: município pelo código IBGE da fonte", _r["2026-10-15"]["municipio"] == {"1505650": 1, "2101400": 1})
+    _anual = resumo_focos_ref("id_bdq,data_pas,estado,municipio,bioma\n9,2025-10-15 16:52:00,PERNAMBUCO,SOLIDÃO,Caatinga\n",
+                              filtrar_satelite=False)
+    _f = atualizar_focos_ref({"serie": {"2024-01-01": {"total": 5, "uf": {}, "bioma": {}}}}, {**_r, **_anual}, "2026-10-15")
+    checar("Focos ref: mesmo dia do ano anterior vem do anual de referência",
+           _f["resumo"]["mesmo_dia_ano_anterior"] == {"dia": "2025-10-15", "total": 1})
+    checar("Focos ref: mês e 30 dias somam só dias com arquivo e dizem quantos",
+           _f["resumo"]["mes"] == {"total": 3, "dias_com_dado": 2}
+           and _f["resumo"]["ultimos_30_dias"]["dias_com_dado"] == 2
+           and _f["resumo"]["municipios_30_dias"] == {"1505650": 1, "2101400": 2})
+    checar("Focos ref: série apara o que passou de 400 dias", "2024-01-01" not in _f["serie"])
+    checar("Focos ref negativo: sem o ano anterior na série, o campo é lacuna (None), não zero",
+           atualizar_focos_ref({}, _r, "2026-10-15")["resumo"]["mesmo_dia_ano_anterior"] is None
+           and resumo_focos_ref("") == {})
+
     _est = parse_estacoes_inmet([
         {"CD_ESTACAO": "A001", "DC_NOME": "BRASILIA", "SG_ESTADO": "DF", "CD_SITUACAO": "Operante",
          "VL_LATITUDE": "-15.7893", "VL_LONGITUDE": "-47.9257"},
@@ -2840,6 +2999,7 @@ def main() -> None:
     gravar_alertas_vigentes()
     if "observado" in camadas:
         gravar_ar_medido()
+        gravar_focos_referencia()
     gravar_consultas()
 
 
