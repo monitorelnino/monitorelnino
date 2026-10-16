@@ -36,6 +36,10 @@ não pontuados permanecem na versão corrente.
 
 A API do DOE-SP serve o ato com entidades HTML (`Situa&ccedil;&atilde;o`, `Pre&shy;feito`); sem decodificar, nenhum padrão de homologação casava. A forma paulista ("Homologa, por 180 dias, o decreto do Prefeito do Município de Guariba … Decreto municipal nº 5.019") entra como quarto padrão, com caso de teste do texto medido do Decreto 70.765.
 
+## 2026-10-16 · #769 · A definição do índice tem dono, e o texto público é conferido contra ela
+
+O motor grava em `meta.json` os componentes, pesos e faixas do índice e que a antecedência está fora da nota. O portão de versão passa a ler o texto público do MARÉ Legal: antecedência como medida da nota e "pesam igual" escrito à mão reprovam. A inicial com os textos novos (#770) já passa sem exceção.
+
 ## 2026-10-16 · #773 · "Envie pelo formulário" leva ao formulário
 
 O convite do cartão da cidade apontava para "Para gestores", sem formulário. Agora rola até o formulário da própria inicial e o preenche pela mesma função que lê os parâmetros do endereço. O portão de âncoras passa a ler também os links montados nos scripts — e achou uma nota de financiamento morta, que sai.

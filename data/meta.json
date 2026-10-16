@@ -1,5 +1,44 @@
 {
   "corte": "16/10/2026",
   "atualizado_em": "16/10/2026",
-  "versao_indice": "v3.1 (30/09/2026)"
+  "versao_indice": "v3.1 (30/09/2026)",
+  "definicao_indice": {
+    "componentes": [
+      {
+        "nome": "instrumento operacional estadual",
+        "peso": "1/3"
+      },
+      {
+        "nome": "estrutura de coordenação",
+        "peso": "1/3"
+      },
+      {
+        "nome": "cobertura populacional",
+        "peso": "1/3"
+      }
+    ],
+    "faixas": [
+      [
+        0,
+        25,
+        "estágio inicial"
+      ],
+      [
+        25,
+        50,
+        "em construção"
+      ],
+      [
+        50,
+        70,
+        "consolidado"
+      ],
+      [
+        70,
+        100,
+        "avançado"
+      ]
+    ],
+    "antecipacao_fora_da_nota": true
+  }
 }
