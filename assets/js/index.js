@@ -579,7 +579,6 @@ function selectUF(uf, tileEl){
         return (dt >= ini && dt <= fim) ? `<div class="card-note">Publicado em ${esc(d.data)}, dentro do período eleitoral (04/07–25/10/2026), quando transferências voluntárias e publicidade institucional estão suspensas por lei — a publicação em diário oficial é ato oficial, não publicidade (METODOLOGIA §24).</div>` : '';
       })()}
     ${capitalBlock}
-    <p class="note"><a href="feeds/${d.uf}.xml">Feed de atualizações de ${esc(d.nome)}</a> — cada instrumento localizado, cada mudança no índice, com data.</p>
   `;
   const __dialogDetail = document.getElementById('detail');
   if (__dialogDetail) __dialogDetail.setAttribute('aria-label', 'Detalhe do estado');
