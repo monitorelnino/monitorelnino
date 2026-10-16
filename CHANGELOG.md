@@ -32,11 +32,18 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-16 · #PR · DOE por edição: AM e MS entram (N e CO)
+## 2026-10-16 · #759 · Data do ato nunca depois da edição que o publica
+- `data_do_ato_no_trecho` ignora data posterior à edição: a abertura de uma dispensa (21/10) virou `data_ato` do decreto de Santiago/RS e barrou a publicação desde 04:42. O evento perde a data errada (fica a de publicação); caso no autoteste do consorciado.
+
+## 2026-10-16 · #757 · Blog sem abertura; texto na coluna inteira
+
+Saem do blog o parágrafo de abertura e o título "Textos": os textos entram logo abaixo do título da página, e o corpo deixa o limite de 72 caracteres e ocupa a coluna inteira, no blog e em cada texto. Metadescrição atualizada. Pedido da editoria de 15/10.
+
+## 2026-10-16 · #756 · DOE por edição: AM e MS entram (N e CO)
 
 Sobre o adaptador de edição por data: AM pela rota (a) da plataforma comum (edição do dia → id → PDF pela rota c), MS pela listagem de `spdo.ms.gov.br/diariodoe/`, que nomeia o PDF por número e data. PA, RO e RR seguem `sem adaptador de busca` com o motivo medido do runner (15/10); RR tem rota a medir.
 
-## 2026-10-16 · #PR · DOE por edição: CE e PB entram (NE)
+## 2026-10-16 · #755 · DOE por edição: CE e PB entram (NE)
 
 `coletar_doe.py` ganha o adaptador `edicao_<uf>`: sem busca, lê a edição em PDF por data (CE em cadernos, PB pelo padrão do canal 2), só páginas com termo viram item, e o lido não se relê (`lidas`, janela de 8 dias). Os três ramos de busca viram um. AL, BA, MA, PE, PI, RN e SE ficam `sem adaptador de busca` com o motivo medido do runner (15/10).
 
