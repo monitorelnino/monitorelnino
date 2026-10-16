@@ -9,25 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-16 · #798 · Consulta do município na Saúde: um arquivo por UF
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+O elo da saúde grava `data/saude_municipio/<UF>.json` (`gerar_saude_municipio.py`): por município, alerta de dengue e chikungunya do InfoDengue, classe de calor do MS e degrau de saúde do plano. Município não lido fica sem o bloco, nunca zero. A resposta sanitária do `monitor_saude.json` passa a trazer a lista de eventos. METODOLOGIA §41.11.
 
 ## 2026-10-16 · #797 · Consulta do município no Monitor de riscos: um arquivo por UF
 
@@ -1468,7 +1452,6 @@ o calor deixa de colidir com a seca. Seletores de camada saem da grade.
 de cada mês por capital. O mapa de calor passa a pintar pelo desvio, não pela temperatura: 35 °C é
 normal em Cuiabá e muito quente em Porto Alegre. Vinte e quatro capitais têm normal; MS, RJ e RO
 ficam com anel vazio, com a razão escrita.
-
 
 ## 2026-10-01 · #486 · Monitor de riscos: a grade de três volta e o Niño 3.4 com ela
 

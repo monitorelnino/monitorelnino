@@ -1360,6 +1360,10 @@ A API do Monitor de Secas entrega a tabela por UF (§ dos dados tabulares) e as 
 
 `data/riscos_municipio/<UF>.json`, escrito pelo elo dos sinais depois dos demais arquivos dele, junta por código IBGE o que já está guardado: focos do satélite de referência em 30 dias (zero só quando a série tem os 30 dias; com menos, o campo fica vazio), avisos do INMET e alertas do CEMADEN em vigor, os três decretos de resposta mais recentes do ciclo (casados pelo nome e UF, como o registro de resposta guarda), a estação oficial de ar com IQAr vigente e o sensor com leitura mais próximos **até 50 km**, com a distância (além disso a estação mede outra cidade, e o município fica sem bloco de ar), e a capital mais próxima, com a distância. Nada é recalculado. O plano do município continua no card do município, que a consulta já lê.
 
+### 41.11 A consulta do município na página de Saúde (16/10/2026)
+
+`data/saude_municipio/<UF>.json`, escrito pelo elo da saúde depois dos coletores que ele lê, junta por código IBGE: o nível de alerta de dengue e de chikungunya do InfoDengue na semana mais recente que a fonte publica, com os casos estimados e a última semana com notificações registradas (a capital que a série municipal não traz recebe o alerta por capital, da mesma fonte); a classe de excesso de calor do Painel do Ministério da Saúde, no vocabulário dele; e o degrau de saúde do plano municipal na leitura automática (§10.1), casado pela URL do documento registrado. Município que a fonte não leu fica sem o bloco, e a página diz que não foi lido — nunca zero. Respiratória grave e MARÉ Saúde são do estado e a página os diz como do estado.
+
 ## 42. O dinheiro próprio do município em defesa civil: três camadas, e a que existe para todos (24/09/2026)
 
 Peso zero nos dois índices, provado por portão e pelo teste de estresse que renomeia `data/financiamento/` inteira e confere que o índice recomputado é idêntico bit a bit.

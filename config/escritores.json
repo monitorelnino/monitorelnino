@@ -121,6 +121,10 @@
   "data/riscos_municipio/": {
    "escritor": "noturno_sinais.yml",
    "por_que": "Consulta do município no Monitor de riscos (HANDOVER_MONITOR_DE_RISCOS §6g): um arquivo por UF, escrito só pelo elo dos sinais (`coletar_sinais_risco.py` sem `--municipios`), a partir dos arquivos que o mesmo elo acabou de gravar."
+  },
+  "data/saude_municipio/": {
+   "escritor": "noturno_saude.yml",
+   "por_que": "Consulta do município na página de Saúde (HANDOVER_SAUDE_PAGINA §6b): um arquivo por UF, escrito só pelo elo da saúde (`gerar_saude_municipio.py`), depois dos coletores que ele lê."
   }
  },
  "_regra_do_portao": "Arquivo declarado com `escritor` igual a um workflow só pode aparecer no `git add` DAQUELE workflow. Arquivo com `escritor: ninguem` não aparece em nenhum. Arquivo com `escritor: qualquer_elo` exige que o resolvedor saiba resolvê-lo ou o recuse por escrito — e o portão confere que ele está numa das classes de `scripts/unir_conflito_de_rodada.py`, ou que o `pendente` explica por quê não."

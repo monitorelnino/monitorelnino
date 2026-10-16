@@ -323,7 +323,10 @@ def gerar() -> int:
     emergencias = [e for e in ((ss.get("emergencias") or []) if isinstance(ss.get("emergencias"), list) else []) if isinstance(e, dict)]
     ufs_em = sorted({e.get("uf") for e in emergencias if e.get("uf") in UFS})
     pop_total = sum(pop_uf.values()); pop_em = sum(pop_uf.get(u, 0) for u in ufs_em)
-    resposta = {"emergencias": len(emergencias), "ufs": ufs_em, "pop_sob_emergencia": int(pop_em), "pop_total": int(pop_total),
+    # 16/10/2026 (HANDOVER_SAUDE_PAGINA §6c): a lista dos eventos vai junto da contagem — a linha e a
+    # marca da página leem a lista (UF, tipo, documento, data), e a contagem é o tamanho dela.
+    eventos = [{k: e.get(k) for k in ("uf", "tipo", "documento", "data", "url")} for e in emergencias]
+    resposta = {"emergencias": len(emergencias), "eventos": eventos, "ufs": ufs_em, "pop_sob_emergencia": int(pop_em), "pop_total": int(pop_total),
                 "indice": round(100.0 * pop_em / pop_total, 1) if pop_total else 0.0, "desde": "29/06/2026",
                 "fontes": ["DOU (ESPIN)", "diários oficiais estaduais"], "nota": "índice de resposta sanitária = parcela da população em estado com emergência sanitária declarada no ciclo; contagem de emergências ao lado; nunca somado à antecipação"}
     verificadas = [uf for uf in UFS if ufs[uf]["verificado"]]
