@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-16 · #800 · Monitor de riscos: um só gráfico do Pacífico, na largura inteira
+
+Sai a série contínua do RONI (barras desde 1950) e o código que a desenhava; fica a comparação entre episódios, na largura inteira e com metade da altura, com a definição do RONI na nota. Sai também o bloco desativado do plume e o Chart.js da página. Abertura ajustada ao gráfico que fica. HANDOVER_MONITOR_DE_RISCOS §1.3.
+
 ## 2026-10-16 · #799 · Juiz da saúde estadual: host morto sai da rodada; queda de rede fica pendente (F68)
 
 Em 15/10 o juiz gastou 72 minutos em 16 pistas do mesmo host morto e parou na 17ª de 251. Host sem resposta de rede sai do resto da rodada; queda de rede deixa a pista pendente, não recusada; recusas antigas por queda voltam à fila; o corte só avança sem pendente.

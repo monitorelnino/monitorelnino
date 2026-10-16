@@ -26,12 +26,11 @@
 <meta name="description" content="Situação atual do El Niño no Brasil: ONI, probabilidade, prognóstico trimestral, Monitor de Secas, temperatura e qualidade do ar nas capitais e focos de fogo por estado.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="assets/vendor/chart.umd.min.js?v=ecc3cd1e"></script>
 <script src="assets/vendor/d3.min.js?v=f2094bbf"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <script src="assets/catalogo.js?v=d4d42f5f"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=02c36ec9">
-<link rel="stylesheet" href="assets/base.css?v=7379a9be">
+<link rel="stylesheet" href="assets/base.css?v=47803954">
 <script src="assets/mapas.js?v=c9350706"></script>
 </head>
 <body class="pagina-dados">
@@ -47,7 +46,7 @@
 <main id="conteudo">
   <h1 data-conteudo="monitor-de-riscos.titulo_da_pagina">Monitor de riscos</h1>
   <p class="hint" data-conteudo="monitor-de-riscos.abertura.1">Esta página reúne o que os órgãos oficiais de clima e meio ambiente medem durante o El Niño 2026/2027, em duas partes.</p>
-  <p class="hint" data-conteudo="monitor-de-riscos.abertura.2">A primeira parte mostra o fenômeno em si. A situação atual diz se o El Niño está declarado pelos órgãos federais e desde quando. O gráfico do Índice Oceânico Niño mostra a temperatura do oceano Pacífico mês a mês, com os limiares a partir dos quais se declara El Niño ou La Niña, e o gráfico seguinte compara a evolução deste El Niño com a dos episódios anteriores, na mesma escala.</p>
+  <p class="hint" data-conteudo="monitor-de-riscos.abertura.2">A primeira parte mostra o fenômeno em si. A situação atual diz se o El Niño está declarado pelos órgãos federais e desde quando. O gráfico do Índice Oceânico Niño compara a evolução deste El Niño com a dos episódios anteriores, mês a mês e na mesma escala, com os limiares a partir dos quais se declara El Niño ou La Niña.</p>
   <p class="hint" data-conteudo="monitor-de-riscos.abertura.3">A segunda parte mostra o que já acontece no Brasil: o risco previsto para cada estado até março de 2027, segundo os boletins oficiais; a seca observada em cada estado; os focos de fogo das últimas 24 horas; a qualidade do ar medida nas capitais com estação oficial e a temperatura máxima prevista nas capitais; e os avisos de tempo severo em vigor. Cada mapa e gráfico traz o órgão que publicou o dado e a data da consulta.</p>
   <p class="hint" data-conteudo-html="monitor-de-riscos.abertura.4">Os alertas por município e os decretos de emergência estão em <a href="defesa-civil.html">Defesa civil</a>; o risco previsto para cada estado também aparece na ficha do estado, na <a href="index.html">página inicial</a>.</p>
 
@@ -97,25 +96,13 @@
       </div>
     </div>
 
-    <!-- 07/10/2026: os dois gráficos do Pacífico passam a medir O MESMO ÍNDICE (RONI), na mesma
-         escala e com o mesmo eixo. O da anomalia mensal da região Niño 3.4 SAIU da página — o
-         dado continua coletado —, e no lugar entra a comparação entre os episódios de El Niño
-         que o próprio dado define pelo critério da NOAA/CPC. Os dois são SVG desenhado na largura
-         real do contêiner, e não canvas escalado: é o que mantém a letra em 12 px no celular. -->
-    <div class="grade-figuras grade-figuras--2 grade-pacifico">
-      <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxRoni">
-        <h3 class="figura-titulo" id="roniTitulo" data-conteudo="monitor-de-riscos.pacifico.roni.titulo">Índice Oceânico Niño Relativo (RONI)</h3>
-        <p class="figura-sub" id="roniSub" data-conteudo="monitor-de-riscos.pacifico.roni.legenda">Médias móveis de três meses · °C · nas tracejadas, os limiares de El Niño (+0,5 °C) e de La Niña (−0,5 °C) da NOAA/CPC</p>
-        <p class="figura-nota" data-conteudo="monitor-de-riscos.pacifico.roni.nota">Anomalia da temperatura da superfície do mar na região Niño 3.4 (5°N–5°S, 170°W–120°W) menos a anomalia média da faixa tropical (20°N–20°S), período de referência 1991–2020.</p>
-        <p class="grafico-pacifico-eixo" data-conteudo="monitor-de-riscos.pacifico.eixo">RONI, °C</p>
-        <div class="figura-midia grafico-oceano grafico-pacifico" id="wrapRoni"></div>
-        <div class="leg-pacifico" id="legRoni"></div>
-        <p class="figura-leitura" id="roniLeitura"></p>
-      </figure>
+    <!-- 16/10/2026 (editoria, HANDOVER_MONITOR_DE_RISCOS §1.3): um só gráfico do Pacífico, a comparação
+         entre episódios, na largura inteira e mais baixo. A série contínua do RONI saiu da página. -->
+    <div class="grade-figuras grade-figuras--1">
       <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxEpisodios">
         <h3 class="figura-titulo" id="episodiosTitulo" data-conteudo="monitor-de-riscos.pacifico.episodios.titulo">RONI no ciclo em curso e nos episódios de El Niño anteriores</h3>
-        <p class="figura-sub" id="episodiosSub" data-conteudo="monitor-de-riscos.pacifico.episodios.legenda">Uma linha por episódio · de janeiro do ano de início a junho do ano seguinte · mesmo índice e mesma escala do gráfico ao lado</p>
-        <p class="figura-nota" id="episodiosNota" data-conteudo="monitor-de-riscos.pacifico.episodios.nota">Episódio: cinco ou mais médias trimestrais consecutivas acima de +0,5 °C, critério da NOAA/CPC. Rotulados os episódios com pico de +1,5 °C ou mais.</p>
+        <p class="figura-sub" id="episodiosSub" data-conteudo="monitor-de-riscos.pacifico.episodios.legenda">Uma linha por episódio · de janeiro do ano de início a junho do seguinte · médias de três meses, °C · tracejadas: limiares da NOAA/CPC</p>
+        <p class="figura-nota" id="episodiosNota" data-conteudo="monitor-de-riscos.pacifico.episodios.nota">RONI: anomalia da temperatura da superfície do mar na região Niño 3.4 (5°N–5°S, 170°W–120°W) menos a anomalia média da faixa tropical (20°N–20°S), referência 1991–2020. Episódio: cinco ou mais médias trimestrais consecutivas acima de +0,5 °C, critério da NOAA/CPC. Rotulados os episódios com pico de +1,5 °C ou mais.</p>
         <p class="grafico-pacifico-eixo" data-conteudo="monitor-de-riscos.pacifico.eixo">RONI, °C</p>
         <div class="figura-midia grafico-oceano grafico-pacifico" id="wrapEpisodios"></div>
         <div class="leg-pacifico" id="legEpisodios"></div>
@@ -260,7 +247,7 @@
 </div>
 
 <script src="assets/colunas.js?v=07ce0f22" defer></script>
-<script src="assets/js/monitor-de-riscos.js?v=a742554a" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
+<script src="assets/js/monitor-de-riscos.js?v=db9568fc" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
