@@ -172,8 +172,6 @@ const kpiUFsLAC = Object.entries(MARE).filter(([uf,v]) => v.status_estadual === 
   const elUfsMun = document.getElementById('metaUfsMun');
   if (elUfsMun) elUfsMun.textContent = Object.keys(MARE).length + ' UFs · ' + totalMun.toLocaleString('pt-BR') + ' municípios cadastrados';
   const dataRef = (META && META.atualizado_em) || (META && META.corte) || '';
-  const elVerif = document.getElementById('metaUltimaVerif');
-  if (elVerif && dataRef) elVerif.textContent = dataRef;
   const elFooter = document.getElementById('metaAtualizado');
   if (elFooter && dataRef) elFooter.textContent = dataRef;
 })();
