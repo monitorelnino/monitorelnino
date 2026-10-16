@@ -1090,15 +1090,22 @@ def ensaio_busca_web_pelo_coletor(diz) -> bool:
         else "  ✗ a busca web tem caminho de coleta próprio — F48 de volta")
     # F61 (15/10/2026): dois `seguir_pistas.py` em paralelo seguem as mesmas pistas e gravam
     # `seguimento` com valores diferentes; a porta recusa e a rodada inteira se perde. Um seguidor.
-    seguem = [w.name for w in (raiz / ".github/workflows").glob("*.yml")
-              if "seguir_pistas.py --limite" in w.read_text(encoding="utf-8")]
-    diz(f"  {'✓' if seguem == ['noturno_descoberta.yml'] else '✗'} quem segue pistas: {seguem} (F61)")
+    # F66 (16/10/2026): o mesmo vale para quem regrava `nivel_confianca` e `preparacao`.
+    donos = {"seguir_pistas.py --limite": ["noturno_descoberta.yml"],
+             "triar_confianca_pistas.py": ["noturno_descoberta.yml"],
+             "revisar_pistas.py --preparar": ["noturno_juiz.yml"]}
+    um_dono = True
+    for cmd, esperado in donos.items():
+        quem = sorted(w.name for w in (raiz / ".github/workflows").glob("*.yml")
+                      if any(l.strip().startswith(cmd) for l in w.read_text(encoding="utf-8").splitlines()))
+        um_dono = um_dono and quem == esperado
+        diz(f"  {'✓' if quem == esperado else '✗'} quem roda {cmd.split()[0]}: {quem} (F61/F66)")
     # F62 (15/10/2026): o juiz de saúde era o último comando e o prazo o pulava toda semana.
     saude = yaml.safe_load((raiz / ".github/workflows/noturno_saude_estadual.yml").read_text(encoding="utf-8"))
     primeiro = [l for l in saude["jobs"]["saude-estadual"]["with"]["comandos"].splitlines()
                 if l.strip() and not l.strip().startswith("#")][0].strip()
     diz(f"  {'✓' if primeiro.startswith('julgar_saude.py') else '✗'} primeiro comando da saúde estadual: {primeiro} (F62)")
-    return ok and seguem == ["noturno_descoberta.yml"] and primeiro.startswith("julgar_saude.py")
+    return ok and um_dono and primeiro.startswith("julgar_saude.py")
 
 
 ENSAIOS = (
