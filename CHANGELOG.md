@@ -35,6 +35,10 @@ não pontuados permanecem na versão corrente.
 
 Sai a legenda "Barra de cima… Barra de baixo…" e a linha acima dela, na inicial e na Saúde, com a função que a escrevia. A barra do MARÉ Legal perde o quadriculado de fundo (ficam as marcas 25, 50, 70); a dos decretos, sem marcas, fica mais alta. O cartão da cidade fica branco, sem o link "consultar outro município"; as listas federais usam o cartão da projeção, com o texto do cadastro nacional (Lei 12.340, art. 3º-A).
 
+## 2026-10-16 · #786 · Saúde: a tabela do índice com as colunas do leitor
+
+A tabela que acompanha o mapa do MARÉ Saúde passa a ter UF, nota, faixa, plano (situação e data), coordenação na saúde e ligação com o governo do estado. Saem as colunas de componente interno ("cobertura sanitária 0,1 · 1 lido / 1 sem leitura", antecedência, dengue na capital, risco) e o travessão em célula vazia.
+
 ## 2026-10-16 · #784 · Uma renderização de página para os portões de jsdom (consolidação item 6)
 
 `_inline_js.renderizar` passa a montar o jsdom (d3, Chart simulado com rótulos, `fetch` do disco, erros da página) para os seis verificadores de runtime e o de texto público, sempre com a URL da página: quatro deles renderizavam com `/` e o catálogo servia o texto da inicial. Na Financiamento a URL `/` fica declarada: com a certa, o catálogo sobrescreve o rótulo do cartão de atos sem data (defeito da página, pedido à janela A). Linhas .js −137.

@@ -201,8 +201,11 @@ function __init(){
     fonteFigura('boxMonitor', {fontes: ['MARÉ Saúde'], data: (MSAUDE || {}).gerado_em});
     // tabela alternativa
     const tb = document.querySelector('#tblMonitor tbody');
-    if (tb) tb.innerHTML = UFS.map(uf => { const m = M[uf] || {}, i = m.instrumento || {}, a = m.antecipacao || {}, r = m.risco_atual || {};
-      return '<tr><td><strong>' + uf + '</strong></td><td>' + (m.verificado ? esc(decBR(m.prontidao)) : '—') + '</td><td>' + esc(m.faixa || '') + '</td><td>' + esc(ST_H[i.status] || '') + (i.data ? ' · ' + esc(i.data) : '') + '</td><td>' + esc(decBR((m.cobertura || {}).pontos) ?? '—') + ' · ' + esc((m.cobertura || {}).planos_lidos ?? 0) + (Number((m.cobertura || {}).planos_lidos ?? 0) === 1 ? ' lido / ' : ' lidos / ') + esc((m.cobertura || {}).planos_sem_leitura ?? 0) + ' sem leitura</td><td>' + esc(decBR(a.pontos) ?? '—') + (i.temporada ? ' · ' + esc(i.temporada) : '') + '</td><td>' + (r.dengue_capital_nivel ? 'nível ' + esc(r.dengue_capital_nivel) + ' (' + esc(r.dengue_capital) + ')' : '—') + '</td><td>' + esc((m.risco_projetado || []).join('; ')) + '</td></tr>'; }).join('');
+    // Lote 6, §2 (16/10/2026): a tabela diz o que o mapa mostra — nota, faixa, plano, coordenação e
+    // ligação com o governo; componentes internos ("cobertura 0.1 · 1 lido(s)") saem.
+    const coord = o => (o && o.doc) ? esc(ST_COORD[o.status] || o.status || '') + (o.data ? ' · ' + esc(o.data) : '') : 'ainda não verificada';
+    if (tb) tb.innerHTML = UFS.map(uf => { const m = M[uf] || {}, i = m.instrumento || {}, co = ((SUF && SUF.uf && SUF.uf[uf]) || {}).coordenacao || {};
+      return '<tr><td><strong>' + uf + '</strong></td><td>' + (m.verificado ? esc(decBR(m.prontidao)) : 'sem número') + '</td><td>' + esc(m.faixa || 'ainda não verificado') + '</td><td>' + esc(ST_H[i.status] || 'ainda não verificado') + (i.data ? ' · ' + esc(i.data) : '') + '</td><td>' + coord(co.f1 || (co.status ? co : null)) + '</td><td>' + coord(co.f2) + '</td></tr>'; }).join('');
     // 13/09/2026 (auditoria de visualizações, consolidação): #monitorBarras retirado do HTML —
     // duplicava a tabela alternativa de boxMonitor. Bloco guardado por ausência do elemento.
     // 02/10/2026 (bloco A.5): o medidor do MARÉ Saúde saiu do topo da página — o número de
