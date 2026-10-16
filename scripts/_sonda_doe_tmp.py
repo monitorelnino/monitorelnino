@@ -1,30 +1,29 @@
-"""Sonda pontual (diag 16/10): texto real das homologações do DOE-SP (Guariba, Ribeirão Preto)."""
-import json, re, sys, time, urllib.parse
+"""Sonda pontual (diag 16/10): documentos federais de saúde (lote 6, 1.2) — título, data, hash."""
+import hashlib, re, sys, time, urllib.parse
 sys.path.insert(0, ".")
 from coletores_base import buscar
-B = ("https://do-api-web-search.doe.sp.gov.br/v2/advanced-search/publications"
-     "?PageNumber=1&PageSize=20&Terms[0]={t}&FromDate={de}&ToDate={ate}")
-P = "https://do-api-web-search.doe.sp.gov.br/v2/publications/{id}"
-def txt(b):
-    h = (json.loads(b) or {}).get("content") or ""
-    return " ".join(re.sub(r"<[^>]+>", " ", h).split())
-for termo, de, ate in (("Guariba", "2026-07-20", "2026-08-05"), ("Ribeirão Preto situação de emergência", "2026-07-20", "2026-08-05"),
-                       ("70.765", "2026-07-20", "2026-10-16"), ("homologa situação de emergência", "2026-07-20", "2026-08-05")):
+URLS = [
+ "https://www.gov.br/saude/pt-br/assuntos/noticias-ms/2026/junho/ministerio-da-saude-lanca-plano-para-preparar-sus-para-o-el-nino",
+ "https://www.gov.br/saude/pt-br/assuntos/noticias-ms/2026/agosto/ministerio-da-saude-apresenta-a-secretarios-estaduais-plano-de-preparacao-para-o-el-nino-2026-2027",
+ "https://www.gov.br/saude/pt-br/assuntos/noticias-ms/2026/setembro/ministerio-da-saude-detalha-acoes-do-adaptasus-para-enfrentar-impactos-do-fenomeno-el-nino",
+]
+def info(u):
     try:
-        o = json.loads(buscar(B.format(t=urllib.parse.quote(termo), de=de, ate=ate), timeout=60))
+        b = buscar(u, timeout=60)
     except Exception as e:
-        print("ERRO busca", termo, e); continue
-    print(f"\n=== {termo}: total {o.get('totalItems')}")
-    for it in (o.get("items") or [])[:8]:
-        print("-", it.get("date"), "|", it.get("title"), "|", it.get("hierarchy"), "|", it.get("slug"))
-        if not re.search(r"homolog|emerg", (it.get("title") or "") + (it.get("excerpt") or ""), re.I):
-            continue
-        time.sleep(2)
-        try:
-            t = txt(buscar(P.format(id=it["id"]), timeout=60))
-        except Exception as e:
-            print("  ERRO pub", e); continue
-        for m in re.finditer(r"homolog", t, re.I):
-            print("  >>", t[max(0, m.start()-250):m.start()+450])
-            break
-    time.sleep(2)
+        print("ERRO", u, type(e).__name__, e); return None
+    t = b.decode("utf-8", "replace")
+    tit = re.search(r"<title>(.*?)</title>", t, re.S)
+    pub = re.search(r'(Publicado em[^<]{0,60})', t)
+    print("OK", u, "|", len(b), "|", hashlib.sha256(b).hexdigest()[:16], "|", (tit.group(1).strip() if tit else "")[:150], "|", pub.group(1) if pub else "")
+    return t
+for u in URLS:
+    info(u); time.sleep(3)
+for q in ("nota técnica conjunta 308/2026", "308/2026 El Niño"):
+    u = "https://www.gov.br/saude/pt-br/search?SearchableText=" + urllib.parse.quote(q)
+    t = info(u)
+    if t:
+        for m in re.finditer(r'href="(https://www\.gov\.br/saude[^"]+)"[^>]*>([^<]{5,200})<', t):
+            if re.search(r"308|nota", m.group(1) + m.group(2), re.I):
+                print("  ->", m.group(1), "|", m.group(2).strip()[:150])
+    time.sleep(3)
