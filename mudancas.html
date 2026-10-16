@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/10/2026 · Monitor de riscos: números de agora com a leitura anterior; avisos distintos no país</dt>
+      <dd>`topo_monitor_riscos.json` passa a trazer fogo, seca, avisos e probabilidade além do calor, cada cartão com `anterior` (valor e referência da leitura anterior). Avisos contam avisos distintos no país. A linha de fonte das listas federais nomeia MIDR e Casa Civil com a página do cadastro. Comentários sem `obrigado.html`.</dd>
       <dt>16/10/2026 · Saem as fontes Open-Meteo de tempo e de ar (main vermelha do #802)</dt>
       <dd>Nenhuma página as mostrava: temperatura vem do INMET desde 27/09, ar vem do MMA/OpenAQ/RedeAr desde o #802. Saem do coletor (catálogo, leitores, coleta em lote, clima municipal), do arquivo de sinais, do cartão europeu do topo e do cartão morto da Imprensa. METODOLOGIA §41.7 com errata.</dd>
       <dt>16/10/2026 · Monitor de riscos: consulta do município</dt>
@@ -165,8 +167,6 @@
       <dd>A editoria respondeu a pergunta de 04/10: o pacote não vai ao `robo-registro`. O passo que clonava o privado sai inteiro de `pacote_do_blog.yml`, e o pacote vive no artefato do run. Não é limitação contornada — `ROBO_TOKEN` já alcança o privado e o push sairia de graça; a decisão é dela. Quem precisar do pacote lá roda `gerar_pacote_blog.py` à mão. O artefato expira em 90 dias, e o gerador é função do corte, não do run.</dd>
       <dt>05/10/2026 · Um escritor por arquivo, cancelado não é feito, e a noite passa a ser ensaiada</dt>
       <dd>A busca web perdeu 114 min porque o rebase usava `-X theirs`, que num arquivo de fila apaga o lado perdedor. `unir_conflito_de_rodada.py` passa a unir as filas pela base comum, com a política da porta única. `config/escritores.json` declara quem commita cada arquivo. Elo cancelado deixa de contar como noite aberta: o marcador `.feito` vem antes do commit. `ensaio_da_noite.py` prova as quatro causas de dia, sem tocar a `main`.</dd>
-      <dt>05/10/2026 · A fila de pistas tem uma porta, e o esquema não para mais a publicação</dt>
-      <dd>A publicação reprovou oito vezes entre 21:23 e 03:57 BRT de 04→05/10 por 655 pistas novas sem `url_final`, `tipo`, `alvo` nem `nivel` — de coletores que nunca foram migrados ao esquema de 03/10 e gravavam `data/pistas_*.json` direto. Agora só `scripts/pistas.py` escreve a fila (normaliza, classifica, valida, recusa com motivo em `pistas_rejeitadas.json`); oito coletores migrados; `verificar_escritor_de_pista.py` reprova escrita por fora; o portão do esquema quarentena em vez de bloquear.</dd>
     </dl>
   </section>
 </main>
