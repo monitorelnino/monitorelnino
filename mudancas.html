@@ -30,7 +30,7 @@
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <script src="assets/mapas.js?v=c9350706"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=02c36ec9">
-<link rel="stylesheet" href="assets/base.css?v=a6572867">
+<link rel="stylesheet" href="assets/base.css?v=c9ea0e06">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -51,6 +51,8 @@
     <dl class="mudancas-lista">
       <dt>16/10/2026 · Triagem e preparação de pistas com um dono só (F66)</dt>
       <dd>O juiz de 16/10 perdeu o commit porque a busca web de cadência, fora da vez da noite, regravou o nível de confiança de pistas que a descoberta já tinha triado. Triagem fica só na descoberta e preparação só no juiz; a cadência e a rodada semanal apenas acrescentam pistas. O ensaio da noite reprova um segundo dono.</dd>
+      <dt>16/10/2026 · Inicial: links da abertura e sai a linha da checagem</dt>
+      <dd>Na abertura do MARÉ Legal, &quot;os municípios inscritos no cadastro nacional&quot; leva ao cadastro do MDR e &quot;a União já indicou … municípios&quot; volta a levar ao mapa da Defesa civil (link perdido no #770). Sai a linha &quot;Cada registro vem com a sua fonte · Última checagem em …&quot; (editoria, 16/10), com o script, o fallback, o estilo e as checagens que a alimentavam.</dd>
       <dt>16/10/2026 · Um medidor de frescor e um portão das fichas municipais (consolidação item 6)</dt>
       <dd>`verificar_frescor.py` absorve os três portões de frescor (Financiamento, Defesa civil, Saúde): um leitor de carimbo, um relógio, três famílias declaradas, 33 casos. `verificar_fichas_municipais.py` absorve `documento_de_plano`, `documento_publicado`, `datas_de_instrumento` e `capital`: `data/municipios.json` lido uma vez, quatro réguas, 34 casos. Sete scripts saem; 125 → 120 comandos. Linhas .py/.yml −515.</dd>
       <dt>16/10/2026 · Saúde: títulos e subtítulos dizem o que a figura é</dt>
@@ -167,8 +169,6 @@
       <dd>Regra mínima do canal 4 — raiz da secretaria mais diário do estado — vale para as 27, e o canal passou a ser dito na linha do log em vez de adivinhado. PA e MT registrados pelos endereços da editoria. F1 e F2 só saem de ato com dispositivo, e F2 exige o órgão na composição. Quatro canais: de 1 para 8 de 27. METODOLOGIA §95.</dd>
       <dt>02/10/2026 · Recuperação do canal 2 desde 29/06, e contexto por termo</dt>
       <dd>Edições do ciclo baixadas e indexadas: 52 na Paraíba e 68 no Mato Grosso do Sul, de 70 dias úteis. Termo genérico passou a exigir contexto do ciclo — &quot;plano de contingência do sistema E-TFD&quot; não é pista de preparação ao El Niño. O índice de ocorrências ficou com cinco datas reais, e o registro por edição espelha o índice. Em `coletar_edicoes_doe.py`, `data/doe_edicoes/`.</dd>
-      <dt>02/10/2026 · Localizador: do mais novo para o mais velho</dt>
-      <dd>Onde o nome do arquivo pede o número da edição, o localizador percorre as datas do mais novo para o mais velho: a âncora de cada data passa a ser a vizinha, e a deriva por passo é de uma ou duas edições. Da outra ordem, a janela não alcançava dois meses de deriva e o Mato Grosso do Sul dava 404 em todas as datas. Em `coletar_edicoes_doe.py`.</dd>
     </dl>
   </section>
 </main>
