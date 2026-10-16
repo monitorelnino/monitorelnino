@@ -30,7 +30,7 @@
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <script src="assets/mapas.js?v=c9350706"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=02c36ec9">
-<link rel="stylesheet" href="assets/base.css?v=188503fb">
+<link rel="stylesheet" href="assets/base.css?v=a6572867">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -49,10 +49,14 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/10/2026 · DOE-SP pela API própria da busca (SE)</dt>
+      <dd>`coletar_doe.py` ganha `busca_sp`: a API que o sítio do DOE-SP chama (`do-api-web-search`, termos e janela de datas, paginada) aponta as publicações e cada uma é lida inteira em `/v2/publications/&lt;id&gt;`, sem HTML; endereço citável `doe.sp.gov.br/&lt;slug&gt;`. MG, RJ, RS e SC seguem `sem adaptador de busca` com o motivo medido (15/10); PI e RR têm rota exposta a medir.</dd>
       <dt>16/10/2026 · Data do ato nunca depois da edição que o publica</dt>
       <dd>- `data_do_ato_no_trecho` ignora data posterior à edição: a abertura de uma dispensa (21/10) virou `data_ato` do decreto de Santiago/RS e barrou a publicação desde 04:42. O evento perde a data errada (fica a de publicação); caso no autoteste do consorciado.</dd>
       <dt>16/10/2026 · Blog sem abertura; texto na coluna inteira</dt>
       <dd>Saem do blog o parágrafo de abertura e o título &quot;Textos&quot;: os textos entram logo abaixo do título da página, e o corpo deixa o limite de 72 caracteres e ocupa a coluna inteira, no blog e em cada texto. Metadescrição atualizada. Pedido da editoria de 15/10.</dd>
+      <dt>16/10/2026 · DOE por edição: AM e MS entram (N e CO)</dt>
+      <dd>Sobre o adaptador de edição por data: AM pela rota (a) da plataforma comum (edição do dia → id → PDF pela rota c), MS pela listagem de `spdo.ms.gov.br/diariodoe/`, que nomeia o PDF por número e data. PA, RO e RR seguem `sem adaptador de busca` com o motivo medido do runner (15/10); RR tem rota a medir.</dd>
       <dt>16/10/2026 · DOE por edição: CE e PB entram (NE)</dt>
       <dd>`coletar_doe.py` ganha o adaptador `edicao_&lt;uf&gt;`: sem busca, lê a edição em PDF por data (CE em cadernos, PB pelo padrão do canal 2), só páginas com termo viram item, e o lido não se relê (`lidas`, janela de 8 dias). Os três ramos de busca viram um. AL, BA, MA, PE, PI, RN e SE ficam `sem adaptador de busca` com o motivo medido do runner (15/10). ## 2026-10-15 · #PR · CLAUDE.md só com regras em vigor `CLAUDE.md` cai de 664 para 227 linhas: cada regra em uma frase, com o portão que a prova. A história e os relatos de incidente vão, sem perder linha, para `docs/HISTORICO_DE_REGIMES.md`; a marca pessoal, para `docs/MARCA_PESSOAL.md` (skill e `layout/regras.json` apontam para lá). Pedido da central de 15/10, custo de leitura por sessão. ## 2026-10-15 · #PR · Ficha do estado fecha no componente; grade com espaço A ficha (`dialog.detail`) fecha pelo ×, pelo fundo ou por Esc num ouvinte só, em `grade-estados.js`; na saúde ela não fechava pelo × e a inicial tinha um bloco próprio, que sai. `.regions` ganha `--esp-secao` acima e `--sp-2` entre cartões, nas duas páginas. Divergência: ouvinte no documento, não parâmetro de `montar` — a inicial não usa `montar`. ## 2026-10-15 · #PR · Juiz 1.6: domínio do ente e plano de setor Plano sem ato só vale no domínio do próprio município (Cubatão/SP: relatório do BNDES em `bndes.gov.br`), e plano de contingência de rede de ensino, escola ou unidade de saúde é `fora_do_objeto` (Toledo/PR, METODOLOGIA §222). Aplica a régua declarada; casos de teste com os dois documentos. O rejulgamento passa a ler o texto extraído, não o PDF cru. ## 2026-10-15 · #PR · Juiz de saúde estadual primeiro (F62) `julgar_saude.py` passa a ser o primeiro comando do elo de saúde estadual e grava o que julgou quando o prazo o interrompe, pela mesma `julgar_lista` do juiz do Legal. Último da lista, ele era pulado toda semana (14/10: `--fontes` 52 min em hosts mortos) e `saude_uf.json` parou em 02/10. Ensaio 27 e catálogo F62. ## 2026-10-15 · #PR · Blog sem a linha &quot;Também no feed&quot; Sai a frase visível do fim de `blog.html`, a pedido da editoria; o feed segue no `&lt;link rel=&quot;alternate&quot;&gt;` e no `&lt;noscript&gt;`. O contrato deixa de exigir &quot;feed Atom&quot;.</dd>
       <dt>15/10/2026 · Um seguidor de pistas (F61)</dt>
@@ -165,10 +169,6 @@
       <dd>A `main` reprovou o portão 12 em todas as rodadas do dia, de 15h52 a 22h15 UTC, pelas 30 imagens de `capturas-ci/`: captura de tela depende do renderizador, e a do runner nunca coincide com a de quem edita. Elas saem do índice e do diff estrito. Quem prova a página continua sendo o portão de navegador que as produz, e o `portoes.yml` já as sobe como artefato do run. Em `METODOLOGIA.md` §78.</dd>
       <dt>01/10/2026 · Adaptadores diretos de diário estadual</dt>
       <dd>Dois novos, medidos contra produção: `dodf` (API própria do DODF, 7 matérias na janela do ciclo) e `busca_to` (a busca aponta a edição; o trecho vem do PDF só dela). As outras vinte UFs deixam de ser `a_verificar` em branco e declaram host e motivo — não responde, sem busca por termo, busca do portal e não do diário, exige formulário ou JavaScript. O POST novo tem as travas do GET. Em `METODOLOGIA.md` §77.</dd>
-      <dt>01/10/2026 · Bateria de saúde pelos quatro canais</dt>
-      <dd>Os dois canais que faltavam ao MARÉ Saúde: `--doe` lê o diário oficial do estado com os termos da saúde (cinco UFs com rota confirmada, 22 declaradas indisponíveis) e `--canais` segue os links que a página da secretaria declara para CIEVS, sala de situação e COE (21 endereços sondados, 6 com lacuna medida). O juiz julgou 213 pistas e não promoveu nenhuma. Canal que não rodou entra no log como erro, nunca como &quot;consultado sem achado&quot;. Em `METODOLOGIA.md` §76.</dd>
-      <dt>01/10/2026 · Transferências da União por município, e a consulta por cidade</dt>
-      <dd>O coletor que faltava, pelo download de dados abertos do Portal — sem chave, porque a API exige uma e chave é proibida aqui. Nove meses de 2026, 5.569 de 5.569 municípios casados depois de duas regras e 17 equivalências. Setembro vem marcado parcial pela medição. O cartão &quot;Quanto chegou à sua cidade&quot; entra na página, e diz o que não sabe. METODOLOGIA §75.</dd>
     </dl>
   </section>
 </main>

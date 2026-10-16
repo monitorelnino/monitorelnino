@@ -12,7 +12,8 @@ com sucesso no período.
 Cobertura (§15, "a verificar por UF"): `data/fontes_doe.json` declara, por UF,
 `{"adaptador": ..., "url": ..., "status": ...}`. Adaptadores: `apifront` (plataforma comum,
 busca), `dodf` (DF, busca própria), `busca_to`/`busca_ac` (busca que aponta edições) e
-`edicao_<uf>` (sem busca: a edição em PDF por data — CE, PB; 16/10/2026). UF sem adaptador →
+`edicao_<uf>`/`edicao_apifront` (sem busca: a edição em PDF por data — CE, PB, AM, MS) e `busca_sp`
+(API própria do DOE-SP; 16/10/2026). UF sem adaptador →
 `sem adaptador de busca`, lacuna declarada com o motivo medido (nunca inferida).
 
 USO
@@ -112,7 +113,8 @@ APIFRONT_SEM_BUSCA = {
     "AM": {"url": "https://diario.imprensaoficial.am.gov.br",
            "medido": "26/09/2026: /apifront e /portal/edicoes/download respondem; "
                      "/busca/busca/buscar devolve HTTP 404 (a busca é outro aplicativo)",
-           "caminho": "edições por data (rota a) + leitura do PDF da edição (rota c)"},
+           "caminho": "edições por data (rota a) + leitura do PDF da edição (rota c) — adaptador "
+                      "`edicao_apifront`, 16/10/2026"},
 }
 
 
@@ -426,6 +428,78 @@ def parse_busca_ac(html: str) -> list:
                 html or "")]
 
 
+# =============================================================================================
+# SP — o DOE-SP tem API de busca PRÓPRIA, a que o próprio sítio (Next.js) chama
+# =============================================================================================
+# Medido do runner em 15/10/2026 (runs 38820165075 e 38825296534): a busca é um GET em
+# `do-api-web-search.doe.sp.gov.br/v2/advanced-search/publications` com `Terms[0]`, `FromDate`,
+# `ToDate`, `PageNumber` e `PageSize`, e devolve `items` (id, date, title, slug, excerpt, hierarchy),
+# `totalItems` e `hasNextPage`. A publicação inteira sai de `/v2/publications/<id>`, com `content` em
+# HTML — é o que se lê, porque o excerto tem 300 caracteres e o ato de homologação não cabe nele.
+# O endereço citável é `doe.sp.gov.br/<slug>`. O caderno "Municípios" publica atos das prefeituras.
+BUSCA_SP = ("https://do-api-web-search.doe.sp.gov.br/v2/advanced-search/publications"
+            "?PageNumber={pagina}&PageSize={tamanho}&Terms[0]={termo}&FromDate={de}&ToDate={ate}")
+PUBLICACAO_SP = "https://do-api-web-search.doe.sp.gov.br/v2/publications/{id}"
+PAGINA_SP = "https://doe.sp.gov.br/{slug}"
+TAMANHO_PAGINA_SP = 50
+TETO_PAGINAS_SP = 20
+
+
+def parse_busca_sp(bruto: bytes) -> tuple:
+    """(total declarado, [item], há próxima página) da resposta da busca do DOE-SP. Função pura.
+
+    Levanta `FormatoDaBuscaMudou` quando a estrutura some ou quando a fonte declara itens e a
+    lista vem vazia (§210)."""
+    try:
+        o = json.loads(bruto.decode("utf-8", "replace") if isinstance(bruto, bytes) else bruto)
+    except json.JSONDecodeError as e:
+        raise FormatoDaBuscaMudou(f"resposta não é JSON: {e}") from e
+    if not isinstance(o, dict) or not isinstance(o.get("items"), list) or "totalItems" not in o:
+        raise FormatoDaBuscaMudou("resposta sem 'items' ou sem 'totalItems'")
+    total = int(o["totalItems"] or 0)
+    if total > 0 and not o["items"]:
+        raise FormatoDaBuscaMudou(f"a fonte declara {total} item(ns) e a lista veio vazia")
+    return total, o["items"], bool(o.get("hasNextPage"))
+
+
+def texto_da_publicacao_sp(bruto: bytes) -> str:
+    """O texto da publicação, sem a marcação HTML em que a API a serve. Função pura."""
+    o = json.loads(bruto.decode("utf-8", "replace") if isinstance(bruto, bytes) else bruto)
+    html = (o or {}).get("content") or ""
+    html = re.sub(r"<(style|script|title)\b.*?</\1>", " ", html, flags=re.S | re.I)
+    return " ".join(re.sub(r"<[^>]+>", " ", html).split())
+
+
+def itens_sp(uf: str, desde: str, ate: str, termos=None, buscar_fn=None,
+             pausa: float = RITMO_APIFRONT_S, dormir=None) -> tuple:
+    """(itens, totais por termo) na API do DOE-SP: busca paginada, depois a publicação inteira de
+    cada acerto — uma leitura por publicação, mesmo quando dois termos a apontam."""
+    _buscar = buscar_fn or buscar
+    _dormir = dormir or time.sleep
+    itens, totais, vistos = [], {}, set()
+    for termo in (termos or TERMOS_APIFRONT):
+        pagina, proxima = 1, True
+        while proxima and pagina <= TETO_PAGINAS_SP:
+            if pagina > 1 or itens:
+                _dormir(pausa)
+            total, lista, proxima = parse_busca_sp(_buscar(BUSCA_SP.format(
+                pagina=pagina, tamanho=TAMANHO_PAGINA_SP, termo=urllib.parse.quote(termo), de=desde, ate=ate),
+                timeout=60, origem="coletar_doe"))
+            totais.setdefault(termo, total)
+            for it in lista:
+                if not it.get("id") or it["id"] in vistos:
+                    continue
+                vistos.add(it["id"])
+                _dormir(pausa)
+                texto = texto_da_publicacao_sp(_buscar(PUBLICACAO_SP.format(id=it["id"]), timeout=60, origem="coletar_doe"))
+                itens.append({"data": (it.get("date") or "")[:10], "pagina": None, "paginas": None,
+                              "url": PAGINA_SP.format(slug=it.get("slug") or it["id"]),
+                              "trechos": [f"{it.get('title') or ''} · {it.get('hierarchy') or ''}: {texto[:20000]}"],
+                              "territorio": uf})
+            pagina += 1
+    return itens, totais
+
+
 def paginas_com_termo(pdf: bytes, termo: str, extrair_fn=None) -> list:
     """[(página, texto)] do PDF em que o termo aparece. Função pura dado o extrator.
 
@@ -510,7 +584,7 @@ TETO_CADERNOS = 8
 PDF_CE = "https://imagens.seplag.ce.gov.br/PDF/{dc}/do{dc}p{n:02d}.pdf"
 
 
-def edicoes_ce(buscar_fn):
+def edicoes_ce(buscar_fn, base=None):
     """Os cadernos da edição do dia, do 1º ao último que existe — o seguinte responde 300 ou 404."""
     def fn(data):
         dc, saida = data.replace("-", ""), []
@@ -527,12 +601,61 @@ def edicoes_ce(buscar_fn):
     return fn
 
 
-def edicoes_pb(buscar_fn):
+def edicoes_pb(buscar_fn, base=None):
     padrao = PADROES_CANAL2["PB"]["padrao"]
     return lambda data: [{"edicao": None, "url": endereco_da_data(padrao, data)}]
 
 
-EDICOES_POR_DATA = {"edicao_ce": edicoes_ce, "edicao_pb": edicoes_pb}
+# AM (15/10/2026, runs 38820165075 e 38821475418): a plataforma comum sem busca (§231) serve a
+# edição do dia pela rota (a) — `{"erro": false, "itens": [{"id": 18246, "numero": 35804, ...}]}`
+# ou `{"erro": true, "msg": "Edição não existente!"}`, que é dia sem edição, não falha — e o PDF pela
+# rota (c) com o `id` da listagem (12,8 MB, 58 páginas, texto extraível). Vale para toda UF da
+# plataforma cuja busca não responda: a base vem do `fontes_doe.json`.
+EDICOES_APIFRONT = "{base}/apifront/portal/edicoes/edicoes_from_data/{data}.json"
+
+
+def edicoes_apifront(buscar_fn, base):
+    def fn(data):
+        o = json.loads(buscar_fn(EDICOES_APIFRONT.format(base=base.rstrip("/"), data=data),
+                                 timeout=60, origem="coletar_doe").decode("utf-8", "replace"))
+        if not isinstance(o, dict) or "itens" not in o:
+            raise FormatoDaBuscaMudou("listagem de edições sem a chave 'itens'")
+        return [{"edicao": str(it.get("numero") or ""), "url": PDF_APIFRONT.format(base=base.rstrip("/"), diario_id=it["id"])}
+                for it in (o.get("itens") or []) if it.get("id")]
+    return fn
+
+
+# MS (15/10/2026, run 38820165075): a listagem `spdo.ms.gov.br/diariodoe/` traz o endereço do PDF de
+# cada edição recente, e o nome do arquivo carrega número E data (DO12306_14_10_2026.pdf; suplemento
+# DO12302_08_10_2026_SUP_1.pdf). O canal 2 estima o número por âncoras para o histórico; aqui a
+# janela é de oito dias e a listagem cobre — lê-se uma vez por rodada.
+LISTAGEM_MS = "https://www.spdo.ms.gov.br/diariodoe/"
+RE_PDF_MS = re.compile(r'href="(https?://[^"]*?/DO(\d{4,6})_(\d{2})_(\d{2})_(\d{4})(?:_SUP_\d+)?\.pdf)"', re.I)
+
+
+def edicoes_ms_na_listagem(html: str) -> dict:
+    """{data ISO: [{edicao, url}]} lidos dos nomes de arquivo da listagem. Função pura."""
+    fora = {}
+    for url, num, dd, mm, aaaa in RE_PDF_MS.findall(html or ""):
+        fora.setdefault(f"{aaaa}-{mm}-{dd}", []).append({"edicao": num, "url": url})
+    return fora
+
+
+def edicoes_ms(buscar_fn, base=None):
+    lista = {}
+
+    def fn(data):
+        if not lista:
+            lista.update(edicoes_ms_na_listagem(
+                buscar_fn(base or LISTAGEM_MS, timeout=60, origem="coletar_doe").decode("utf-8", "replace")))
+            if not lista:
+                raise FormatoDaBuscaMudou("a listagem do DOE-MS não traz nenhum PDF nomeado por data")
+        return lista.get(data, [])
+    return fn
+
+
+EDICOES_POR_DATA = {"edicao_ce": edicoes_ce, "edicao_pb": edicoes_pb,
+                    "edicao_apifront": edicoes_apifront, "edicao_ms": edicoes_ms}
 
 
 def itens_por_edicao(uf: str, desde: str, ate: str, edicoes_fn, lidas: dict, termos=None,
@@ -654,7 +777,7 @@ def coletar_uf(uf: str, desde: str, cfg: dict) -> str:
         # 14/10/2026: "a_verificar" por 42 dias era lacuna não declarada — já se tentou, e o que
         # falta é o adaptador. O estado diz isso; a sondagem ao lado diz por onde começar.
         f["status"] = "sem adaptador de busca"; return "lacuna"
-    if f["adaptador"] in ("dodf", "apifront", *EDICOES_POR_BUSCA, *EDICOES_POR_DATA):
+    if f["adaptador"] in ("dodf", "apifront", "busca_sp", *EDICOES_POR_BUSCA, *EDICOES_POR_DATA):
         # A evidência é o conjunto de trechos como a FONTE OFICIAL os serviu — na busca, o endereço
         # citável de cada acerto; na edição por data, a URL do PDF e a página. Preservar o PDF
         # inteiro de cada acerto passaria de meio gigabyte por varredura e não acrescentaria prova.
@@ -666,8 +789,10 @@ def coletar_uf(uf: str, desde: str, cfg: dict) -> str:
                 # §231: a busca entrega o TEXTO INTEGRAL da página que casou — sem teto de 20 kB e
                 # sem baixar um PDF de dez megabytes por acerto.
                 itens, totais = itens_apifront(uf, url, desde, hoje)
+            elif f["adaptador"] == "busca_sp":
+                itens, totais = itens_sp(uf, desde, hoje)
             elif f["adaptador"] in EDICOES_POR_DATA:
-                itens, totais = itens_por_edicao(uf, desde, hoje, EDICOES_POR_DATA[f["adaptador"]](buscar),
+                itens, totais = itens_por_edicao(uf, desde, hoje, EDICOES_POR_DATA[f["adaptador"]](buscar, url),
                                                  f.setdefault("lidas", {}))
             else:
                 itens, totais = itens_por_busca(uf, desde, EDICOES_POR_BUSCA[f["adaptador"]](desde, hoje))
@@ -854,6 +979,36 @@ def _t_edicao_por_data() -> bool:
     return (len(pedidos) == 6 and len(itens) == 5 and all(i["pagina"] == 2 for i in itens)
             and totais == {"edicoes_lidas": 5, "datas_sem_edicao": 1, "edicoes_nao_baixadas": 0}
             and sorted(lidas) == ["2026-10-07", "2026-10-08", "2026-10-09", "2026-10-12", "2026-10-13", "2026-10-14"])
+
+
+# Recorte REAL da listagem do DOE-MS, 15/10/2026 (run 38820165075).
+FIXTURE_LISTAGEM_MS = """<a href="https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/10/08/DO12302_08_10_2026.pdf">
+<a href="https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/10/08/DO12302_08_10_2026_SUP_1.pdf">
+<a href="https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/10/13/DO12304_13_10_2026.pdf">
+<a href="https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/10/13/DO12305_13_10_2026.pdf">
+<a href="https://assets.imprensaoficial.ms.gov.br/public/assets/prd/app-assets/168049/_next/static/chunks/0-g1xzsskqha5.js">"""
+# Recortes REAIS da rota (a) do DOE-AM, 15/10/2026.
+FIXTURE_EDICOES_AM = (b'{"erro":false,"msg":"","data":"2026-10-13","numero":null,"ano":"","itens":[{"id":18246,'
+                      b'"data":"13\\/10\\/2026","suplemento":0,"numero":35804,"tipo_edicao_id":1,"capa":1,"paginas":48}]}')
+FIXTURE_EDICOES_AM_VAZIO = b'{"erro":true,"msg":"Edi\\u00e7\\u00e3o n\\u00e3o existente!","data":"2026-10-14","itens":[]}'
+
+
+# Recortes REAIS da API do DOE-SP, 15/10/2026 (run 38825296534; excerto encurtado).
+FIXTURE_BUSCA_SP = json.dumps({
+    "items": [{"isLegacy": False, "id": "dbeb0429-e167-4e3c-b76c-08df1efd0e0c", "date": "2026-10-05T01:03:00.8319626",
+               "title": "DESPACHO DO SECRETÁRIO, DE 2 DE OUTUBRO DE 2026",
+               "slug": "executivo/casa-civil/despacho-do-secretario-de-2-de-outubro-de-2026-20261002111012042179446",
+               "excerpt": "o Decreto nº 70.765, de 24 de julho de 2026, que homologou o decreto do Prefeito de Guariba",
+               "hierarchy": "Executivo > Atos Normativos > Casa Civil > Gabinete do Secretário", "totalTermsFound": 1}],
+    "currentPage": 1, "totalPages": 1, "totalItems": 1, "pageSize": 2, "hasPreviousPage": False, "hasNextPage": False},
+    ensure_ascii=False).encode("utf-8")
+FIXTURE_PUBLICACAO_SP = json.dumps({
+    "id": "dbeb0429-e167-4e3c-b76c-08df1efd0e0c", "title": "DESPACHO DO SECRETÁRIO, DE 2 DE OUTUBRO DE 2026",
+    "date": "2026-10-05", "journal": "Executivo",
+    "content": "<html><head><style type=\"text/css\">p.Citacao {font-size:10pt;}</style><title>SEI/GESP</title></head>"
+               "<body><p class=\"Estilo_DOE\">bem como o Decreto nº 70.765, de 24 de julho de 2026, que homologou o "
+               "decreto do Prefeito de Guariba, que declarou situação de emergência em áreas do Município</p></body></html>"},
+    ensure_ascii=False).encode("utf-8")
 
 
 def _t_cadernos_ce() -> bool:
@@ -1053,6 +1208,38 @@ def autoteste() -> int:
             lambda: _levanta(lambda: itens_por_edicao(
                 "PB", "2026-10-14", "2026-10-14", lambda d: [{"edicao": None, "url": "u"}], {},
                 buscar_fn=lambda u, **k: b"<html>pagina de erro</html>", dormir=lambda s: None), FormatoDaBuscaMudou),
+        "DOE-AM: a rota (a) dá número e id; o PDF é a rota (c) pelo id; dia sem edição é lista vazia":
+            lambda: (edicoes_apifront(lambda u, **k: FIXTURE_EDICOES_AM, "https://x.am.gov.br/")("2026-10-13") == [
+                        {"edicao": "35804", "url": "https://x.am.gov.br/portal/edicoes/download/18246"}]
+                     and edicoes_apifront(lambda u, **k: FIXTURE_EDICOES_AM_VAZIO, "https://x.am.gov.br")("2026-10-14") == []
+                     and _levanta(lambda: edicoes_apifront(lambda u, **k: b'{"outra": 1}', "https://x")("2026-10-14"),
+                                  FormatoDaBuscaMudou)),
+        "DOE-MS: a listagem dá o PDF por data, suplemento incluído; dia fora dela é lista vazia":
+            lambda: (edicoes_ms_na_listagem(FIXTURE_LISTAGEM_MS) == {
+                        "2026-10-08": [{"edicao": "12302", "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/10/08/DO12302_08_10_2026.pdf"},
+                                       {"edicao": "12302", "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/10/08/DO12302_08_10_2026_SUP_1.pdf"}],
+                        "2026-10-13": [{"edicao": "12304", "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/10/13/DO12304_13_10_2026.pdf"},
+                                       {"edicao": "12305", "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/10/13/DO12305_13_10_2026.pdf"}]}
+                     and edicoes_ms(lambda u, **k: FIXTURE_LISTAGEM_MS.encode("utf-8"))("2026-10-09") == []
+                     and _levanta(lambda: edicoes_ms(lambda u, **k: b"<html>nada</html>")("2026-10-09"), FormatoDaBuscaMudou)),
+        # SP — a API própria do DOE-SP: busca paginada e publicação inteira.
+        "DOE-SP: total, itens e 'há próxima' saem da resposta real; total sem lista LEVANTA (§210)":
+            lambda: (parse_busca_sp(FIXTURE_BUSCA_SP)[0] == 1 and len(parse_busca_sp(FIXTURE_BUSCA_SP)[1]) == 1
+                     and parse_busca_sp(FIXTURE_BUSCA_SP)[2] is False
+                     and _levanta(lambda: parse_busca_sp(b'{"items": [], "totalItems": 5}'), FormatoDaBuscaMudou)
+                     and _levanta(lambda: parse_busca_sp(b'{"outra": 1}'), FormatoDaBuscaMudou)
+                     and parse_busca_sp(b'{"items": [], "totalItems": 0}') == (0, [], False)),
+        "DOE-SP: o texto da publicação sai sem HTML, estilo e título do SEI":
+            lambda: (texto_da_publicacao_sp(FIXTURE_PUBLICACAO_SP).startswith("bem como o Decreto nº 70.765")
+                     and "font-size" not in texto_da_publicacao_sp(FIXTURE_PUBLICACAO_SP)
+                     and "<" not in texto_da_publicacao_sp(FIXTURE_PUBLICACAO_SP)),
+        "DOE-SP: cada publicação é lida uma vez, com data, endereço citável e texto; dois termos não dobram":
+            lambda: (lambda r: len(r[0]) == 1 and r[0][0]["data"] == "2026-10-05"
+                     and r[0][0]["url"] == "https://doe.sp.gov.br/executivo/casa-civil/despacho-do-secretario-de-2-de-outubro-de-2026-20261002111012042179446"
+                     and "homologou o decreto do Prefeito de Guariba" in r[0][0]["trechos"][0]
+                     and r[1] == {"a": 1, "b": 1})(
+                itens_sp("SP", "2026-10-01", "2026-10-15", termos=["a", "b"], dormir=lambda s: None,
+                         buscar_fn=lambda u, **k: FIXTURE_PUBLICACAO_SP if "/publications/" in u else FIXTURE_BUSCA_SP)),
         "DOE-PB: o endereço da edição é o padrão do canal 2, preenchido pela data":
             lambda: edicoes_pb(None)("2026-10-14") == [{"edicao": None, "url":
                 "https://auniao.pb.gov.br/servicos/doe/2026/outubro/diario-oficial-14-10-2026-portal.pdf"}],

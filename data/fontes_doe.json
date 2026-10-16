@@ -26,9 +26,9 @@
    }
   },
   "AM": {
-   "adaptador": null,
+   "adaptador": "edicao_apifront",
    "url": "https://diario.imprensaoficial.am.gov.br",
-   "status": "sem adaptador de busca",
+   "status": "a_verificar",
    "ultima_tentativa": "2026-10-16",
    "sondagem": {
     "plataforma": null,
@@ -44,7 +44,9 @@
     ],
     "veredito": "pista_de_rota",
     "sondado_em": "02/10/2026"
-   }
+   },
+   "medido_em": "15/10/2026",
+   "caminho": "plataforma comum sem busca: edição do dia pela rota (a) e PDF pela rota (c) com o id (12,8 MB, 58 p. em 09/10, texto extraível)"
   },
   "AP": {
    "adaptador": "apifront",
@@ -63,7 +65,9 @@
     "links_de_busca": [],
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
-   }
+   },
+   "motivo": "a busca (ioepa.com.br/pesquisa) é POST multipart e devolveu 'Nenhum resultado' até para 'decreto' (14/10); nenhum endereço de edição por data respondeu (/pages/AAAA/MM/DD 404); portal ASP.NET com formulário de estado",
+   "medido_em": "15/10/2026"
   },
   "RO": {
    "adaptador": null,
@@ -102,7 +106,9 @@
     ],
     "veredito": "pista_de_rota",
     "sondado_em": "02/10/2026"
-   }
+   },
+   "motivo": "diof.ro.gov.br é WordPress com REST fechada (wp-json 401); a busca `?s=` devolveu 'Nenhum resultado encontrado' para 'situação de emergência' e não há arquivo por data (/2026/10/14/ 404)",
+   "medido_em": "15/10/2026"
   },
   "RR": {
    "adaptador": null,
@@ -115,7 +121,9 @@
     "links_de_busca": [],
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
-   }
+   },
+   "motivo": "www.imprensaoficial.rr.gov.br expõe `_buscar/?termos=&ano_pesquisa=&mes_pesquisa=` e `_visualizar-mes/`; `_visualizar-doe/` deu timeout — rota a medir na próxima sonda",
+   "medido_em": "15/10/2026"
   },
   "TO": {
    "adaptador": "busca_to",
@@ -240,7 +248,7 @@
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
    },
-   "motivo": "diariooficial.cepe.com.br é SPA (AngularJS) de 1,6 kB em toda rota; API não localizada",
+   "motivo": "SPA AngularJS da plataforma sdoe; a REST (`/diariooficial/*`) responde HTTP 401 sem token — recusa respeitada",
    "medido_em": "15/10/2026"
   },
   "PI": {
@@ -253,7 +261,7 @@
     "motivo": "URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>",
     "sondado_em": "02/10/2026"
    },
-   "motivo": "www.diariooficial.pi.gov.br está parado: a própria página diz 'último diário disponível 20/12/2022' e a busca por POST tem índice em 21/05/2021; responde só em http://. O diário atual vive em outro host, a medir",
+   "motivo": "www.diariooficial.pi.gov.br está parado em 20/12/2022; o diário atual vive em www.diario.pi.gov.br/doe/ (jQuery/DataTables, `/doe/busca`) — rota a medir na próxima sonda",
    "medido_em": "15/10/2026"
   },
   "RN": {
@@ -268,7 +276,7 @@
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
    },
-   "motivo": "www.diariooficial.rn.gov.br redireciona para /dei/dorn3, que hoje é um Nextcloud (HTTP 400); o certificado https não vale para o host",
+   "motivo": "www.diariooficial.rn.gov.br redireciona para /dei/dorn3 (ASP.NET com estado de formulário); o publicador deirn.sdoe.com.br tem REST em HTTP 401 sem token — recusa respeitada",
    "medido_em": "15/10/2026"
   },
   "SE": {
@@ -297,9 +305,9 @@
    "ultima_tentativa": "2026-10-16"
   },
   "MS": {
-   "adaptador": null,
-   "url": "https://www.spdo.ms.gov.br",
-   "status": "sem adaptador de busca",
+   "adaptador": "edicao_ms",
+   "url": "https://www.spdo.ms.gov.br/diariodoe/",
+   "status": "a_verificar",
    "ultima_tentativa": "2026-10-16",
    "sondagem": {
     "plataforma": null,
@@ -307,7 +315,9 @@
     "links_de_busca": [],
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
-   }
+   },
+   "medido_em": "15/10/2026",
+   "caminho": "listagem traz o PDF de cada edição recente com número e data no nome (DO12306_14_10_2026.pdf; suplementos _SUP_n); texto extraível (canal 2 lê desde 02/10)"
   },
   "MT": {
    "adaptador": "apifront",
@@ -332,7 +342,9 @@
     "links_de_busca": [],
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
-   }
+   },
+   "motivo": "jornalminasgerais.mg.gov.br é SPA Angular; a API declarada no bundle (`/api/v1/`) responde 404 em toda rota tentada (raiz, edicoes, publicacoes); endpoints reais a ler no bundle",
+   "medido_em": "15/10/2026"
   },
   "RJ": {
    "adaptador": null,
@@ -345,12 +357,14 @@
     "links_de_busca": [],
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
-   }
+   },
+   "motivo": "ioerj.com.br/portal (XOOPS) — `conteudoonline/index.php` serve só o tema; `mostra_edicao.php` devolve 'Erro.' sem parâmetro de sessão; rota do PDF não localizada",
+   "medido_em": "15/10/2026"
   },
   "SP": {
-   "adaptador": null,
+   "adaptador": "busca_sp",
    "url": "https://doe.sp.gov.br",
-   "status": "sem adaptador de busca",
+   "status": "a_verificar",
    "ultima_tentativa": "2026-10-16",
    "sondagem": {
     "plataforma": null,
@@ -358,7 +372,9 @@
     "links_de_busca": [],
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
-   }
+   },
+   "medido_em": "15/10/2026",
+   "caminho": "API própria da busca (do-api-web-search.doe.sp.gov.br/v2): Terms + FromDate/ToDate paginado; publicação inteira em /v2/publications/<id> (content HTML); caderno 'Municípios' publica atos das prefeituras"
   },
   "PR": {
    "adaptador": "apifront",
@@ -377,7 +393,9 @@
     "links_de_busca": [],
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
-   }
+   },
+   "motivo": "diariooficial.rs.gov.br é SPA Angular (PROCERGS) que serve a mesma casca em toda rota; nenhuma URL de API no bundle (7,7 MB)",
+   "medido_em": "15/10/2026"
   },
   "SC": {
    "adaptador": null,
@@ -390,7 +408,9 @@
     "links_de_busca": [],
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
-   }
+   },
+   "motivo": "doe.sea.sc.gov.br redireciona por JavaScript para portal.doe.sea.sc.gov.br/v2.44.07/ (SPA Angular); API não localizada",
+   "medido_em": "15/10/2026"
   }
  },
  "_medicao_01_10_2026": "Varredura dos 22 diários sem adaptador: cada host foi sondado com o cliente do projeto, e o status de cada UF passou a dizer o que respondeu e o que falta. DF e TO ganharam adaptador direto. Host que não responde, busca que não existe e busca que cobre o portal em vez do diário são coisas diferentes, e agora estão nomeadas separadamente — nenhuma delas é ausência de ato.",
