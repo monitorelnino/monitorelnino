@@ -32,7 +32,7 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-16 · #761 · Rodapé só com o e-mail de contato
+## 2026-10-16 · #763 · Rodapé só com o e-mail de contato
 
 O rodapé de todas as páginas, inclusive as do blog (pelo gerador), traz só o e-mail de contato; sai o rótulo "Imprensa:". Na Imprensa, o rodapé traz o e-mail de imprensa, que vive só nessa página.
 
