@@ -31,7 +31,7 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-16 · #787 · O envio do formulário fica na inicial; sai a página Obrigado
+## 2026-10-16 · #788 · O envio do formulário fica na inicial; sai a página Obrigado
 
 O formulário da inicial passa a enviar sem trocar de página: depois do envio aparece "Recebido. Obrigado pela contribuição." no mesmo lugar. O texto que vivia em `obrigado.html` (a conferência automática e o que acontece com o documento) vai para o próprio formulário. `obrigado.html` sai, e endereços antigos levam ao formulário (decisão da editoria de 16/10).
 
