@@ -170,11 +170,12 @@
         <div class="map-legend" id="legDengueSemana"></div>
       </figure><figure class="figura figura--grafico cartao-mapa r-chuva" id="boxDengueTemporadas">
         <p class="cartao-mapa-familia" data-conteudo="saude.observado.dengue_temporadas.familia">Dengue</p>
+        <p class="cartao-mapa-boletim" id="linhaDengueTemporadas"></p>
         <h3 class="figura-titulo" data-conteudo="saude.observado.dengue_temporadas.titulo">Notificações semanais de dengue no Brasil, temporadas 2023–24 e 2026–27</h3>
         <p class="figura-sub" data-conteudo="saude.observado.dengue_temporadas.legenda">Notificações no SINAN, não casos confirmados · junho de 2023 a maio de 2024 e junho de 2026 a maio de 2027 · semanas de junho a maio</p>
-        <select class="seletor" id="selDengueTemporadas" aria-label="Brasil ou estado"></select>
         <div class="figura-midia canvas-wrap"><canvas id="cDengueTemporadas" aria-label="Notificações semanais de dengue no Brasil nas temporadas de junho de 2023 a maio de 2024 e de junho de 2026 a maio de 2027"></canvas></div>
         <div class="map-legend" id="legDengueTemporadas"></div>
+        <select class="seletor" id="selDengueTemporadas" aria-label="Brasil ou estado"></select>
       </figure><figure class="figura figura--mapa cartao-mapa r-chuva cartao-mapa r-chuva" id="boxDengueUF">
         <p class="cartao-mapa-familia" data-conteudo="saude.observado.dengue_uf.familia">Dengue</p>
         <p class="cartao-mapa-boletim" id="linhaDengueUF"></p>
@@ -201,11 +202,12 @@
         <div class="map-legend" id="legChikSemana"></div>
       </figure><figure class="figura figura--grafico cartao-mapa r-chuva" id="boxChikTemporadas">
         <p class="cartao-mapa-familia" data-conteudo="saude.observado.chik_temporadas.familia">Chikungunya</p>
+        <p class="cartao-mapa-boletim" id="linhaChikTemporadas"></p>
         <h3 class="figura-titulo" data-conteudo="saude.observado.chik_temporadas.titulo">Notificações semanais de chikungunya no Brasil, temporadas 2023–24 e 2026–27</h3>
         <p class="figura-sub" data-conteudo="saude.observado.chik_temporadas.legenda">Notificações no SINAN, não casos confirmados · junho de 2023 a maio de 2024 e junho de 2026 a maio de 2027 · semanas de junho a maio</p>
-        <select class="seletor" id="selChikTemporadas" aria-label="Brasil ou estado"></select>
         <div class="figura-midia canvas-wrap"><canvas id="cChikTemporadas" aria-label="Notificações semanais de chikungunya no Brasil nas temporadas de junho de 2023 a maio de 2024 e de junho de 2026 a maio de 2027"></canvas></div>
         <div class="map-legend" id="legChikTemporadas"></div>
+        <select class="seletor" id="selChikTemporadas" aria-label="Brasil ou estado"></select>
       </figure><figure class="figura figura--mapa cartao-mapa r-chuva cartao-mapa r-chuva" id="boxChikUF">
         <p class="cartao-mapa-familia" data-conteudo="saude.observado.chik_uf.familia">Chikungunya</p>
         <p class="cartao-mapa-boletim" id="linhaChikUF"></p>
@@ -241,8 +243,9 @@
       </figure>
 <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxSaudeCidade">
         <p class="cartao-mapa-familia" data-conteudo="saude.observado.cidade.familia">Na sua cidade</p>
+        <p class="cartao-mapa-boletim" id="linhaSaudeCidade"></p>
         <h3 class="figura-titulo" data-conteudo="saude.observado.cidade.titulo">Saúde na sua cidade</h3>
-        <p class="figura-sub" data-conteudo="saude.observado.cidade.legenda">Dengue e chikungunya: nível de alerta do InfoDengue na última semana com dado · calor: classe do Painel do MS na consulta mais recente</p>
+        <p class="figura-sub" data-conteudo="saude.observado.cidade.legenda">Dengue e chikungunya: nível do InfoDengue na última semana com dado · calor: classe do Painel do MS</p>
         <div class="figura-midia">
           <div class="busca-mun" id="buscaSaudeCidade">
             <label for="ufSaudeCidade">Estado</label>
@@ -291,7 +294,7 @@
 </div>
 
 <script src="assets/colunas.js?v=3669e58d" defer></script>
-<script src="assets/js/grade-estados.js?v=f8d4b27a" defer></script><script src="assets/js/saude.js?v=92677b25" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
+<script src="assets/js/grade-estados.js?v=f8d4b27a" defer></script><script src="assets/js/saude.js?v=32d28a16" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

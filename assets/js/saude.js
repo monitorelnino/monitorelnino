@@ -997,6 +997,7 @@ const AREAS = [
       let grafico = null;
       const desenhar = onde => {
         const a = valores(onde, antiga), b = valores(onde, atual);
+        if (el('linha' + cfg.id + 'Temporadas')) el('linha' + cfg.id + 'Temporadas').textContent = onde === 'BR' ? 'Brasil' : (NOME_UF[onde] || onde);
         if (grafico) grafico.destroy();
         grafico = new Chart(canvas, {type: 'line', data: {labels: rotulos, datasets: [
             {label: 'junho de 2026 a maio de 2027', data: b, borderColor: MonitorMapas.PALETA.anos['2026'], borderWidth: 2.5, pointRadius: 0, spanGaps: false},
@@ -1228,6 +1229,7 @@ const AREAS = [
       if (window.MonitorMapas && fontes) {
         const quando = (base && (base.gerado_em || base.data)) || null;
         if (sufixo === 'SaudeCidade') MonitorMapas.credito('boxSaudeCidade', {fontes: fontes, data: quando});
+        if (el('linha' + sufixo)) el('linha' + sufixo).textContent = ref.length.toLocaleString('pt-BR') + ' municípios na lista do IBGE';
       }
       sel.addEventListener('change', () => {
         lista.innerHTML = (porUF[sel.value] || []).slice().sort((a, b) => a.localeCompare(b, 'pt-BR'))
