@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-15. 64 falhas; 58 com caso de teste que as reproduz; 6 sem, com o que falta dito.
+Atualizado em 2026-10-16. 65 falhas; 59 com caso de teste que as reproduz; 6 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -581,3 +581,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** commit 1efeffc2: data/saude_uf.json só muda `corte` 02/10→15/10; data/saude_pipeline.json registra julgar_saude 'interrompido pelo prazo do elo'
 - **Correção:** O corte só avança quando `julgar_lista` termina a fila (devolve não-interrompido); o julgado grava sempre.
 - **Caso de teste:** nenhum — falta: caso de teste exige fila sintética no main() de julgar_saude; julgar_lista (que devolve a interrupção) tem caso próprio em julgar_filas
+
+## F65 · Descoberta de planos revia os mesmos alvos e levava 9 noites para cobrir os 54
+
+- **Noite:** 2026-10-16
+- **Sintoma:** descobrir_planos.py --limite 20 no elo da descoberta: a fatia de alvos (27 UFs × 2 setores) girava pela hora do relógio; numa noite após a outra a janela recuava só 6 alvos.
+- **Causa:** Início da fatia = (hora desde a época × 20) mód 54 (#731). O elo roda numa hora quase fixa: 24 × 20 ≡ 48 (mód 54), passo de −6 alvos por noite.
+- **Prova:** aritmética do #731: (h+24)·20 − h·20 = 480 ≡ 48 (mód 54); 54/6 = 9 noites para a cobertura completa
+- **Correção:** fatia_da_noite: a fatia anda 20 alvos por dia (três noites cobrem os 54); prazo próprio de 12 min no elo (prazo=12min, saude_pipeline) com salvamento parcial no SIGINT.
+- **Caso de teste:** `descobrir_planos.py --autoteste › fatia anda por noite e cobre os 54 alvos em 3 noites`
