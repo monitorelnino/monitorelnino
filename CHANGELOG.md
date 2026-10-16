@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-16 · #802 · Monitor de riscos: seca em manchas, ar medido e cartão do ar
+
+A seca observada passa a ser as manchas do mapa mensal do Monitor de Secas, com contorno dos estados e hachura onde o boletim prevê seca. O mapa do ar mostra o IQAr das estações oficiais por cidade (cores oficiais) e os sensores IPAM/RedeAr; sai o índice europeu e a camada municipal morta. Cartão "Ar" só com cidade em IQAr Ruim ou pior.
+
 ## 2026-10-16 · #801 · Monitor de riscos: risco previsto em faixa e bloco do fogo
 
 O mapa do risco previsto vira faixa de siglas por família, cada uma ligada à ficha do estado. Os blocos "Seca, fogo, ar e calor" e "Chuva forte" abrem com "Boletim prevê para". O fogo ocupa a largura inteira: hachura nos estados com fogo previsto, números do satélite de referência, 30 dias e tabelas por estado e bioma. HANDOVER_MONITOR_DE_RISCOS §2–§3.6.

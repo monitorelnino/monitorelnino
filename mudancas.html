@@ -28,9 +28,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/acesso.js?v=3d25b2e8"></script>
-<script src="assets/mapas.js?v=ffeb7eb3"></script>
-<link rel="stylesheet" href="assets/tokens.css?v=02c36ec9">
-<link rel="stylesheet" href="assets/base.css?v=91c6dbf5">
+<script src="assets/mapas.js?v=84a5d2dd"></script>
+<link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
+<link rel="stylesheet" href="assets/base.css?v=18a6c971">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/10/2026 · Monitor de riscos: seca em manchas, ar medido e cartão do ar</dt>
+      <dd>A seca observada passa a ser as manchas do mapa mensal do Monitor de Secas, com contorno dos estados e hachura onde o boletim prevê seca. O mapa do ar mostra o IQAr das estações oficiais por cidade (cores oficiais) e os sensores IPAM/RedeAr; sai o índice europeu e a camada municipal morta. Cartão &quot;Ar&quot; só com cidade em IQAr Ruim ou pior.</dd>
       <dt>16/10/2026 · Monitor de riscos: risco previsto em faixa e bloco do fogo</dt>
       <dd>O mapa do risco previsto vira faixa de siglas por família, cada uma ligada à ficha do estado. Os blocos &quot;Seca, fogo, ar e calor&quot; e &quot;Chuva forte&quot; abrem com &quot;Boletim prevê para&quot;. O fogo ocupa a largura inteira: hachura nos estados com fogo previsto, números do satélite de referência, 30 dias e tabelas por estado e bioma. HANDOVER_MONITOR_DE_RISCOS §2–§3.6.</dd>
       <dt>16/10/2026 · Monitor de riscos: um só gráfico do Pacífico, na largura inteira</dt>
@@ -165,8 +167,6 @@
       <dd>O texto aprovado não ia ao ar: a porta do fluxo editorial nunca era chamada. Números conferidos contra o dado do dia — 59 reconhecimentos, 29 no Sul, 22 no Nordeste, 16 sem tipo. `tipo_evento` passa a vir da COBRADE, com granizo em tempestade. E entra a rotina: `gerar_pacote_blog.py`, o verificador que exige número do pacote, dois cartões de texto no blog e &quot;Textos desta semana&quot; na Imprensa.</dd>
       <dt>04/10/2026 · Coleta de alerta vencida não impede a publicação</dt>
       <dd>A publicação das 09:57 UTC morreu no portão de runtime: o arquivo de alertas completou 24h02 e a página, pela regra das 24 horas, escreveu &quot;Sem atualização desde…&quot; no lugar dos números — fazendo o que devia. O portão cobrava o número em todo caso; agora exige a declaração quando ela existe. A trava fica: alerta vencido nunca é apresentado como vigente.</dd>
-      <dt>04/10/2026 · AM e RO: os quatro documentos lidos, e nada sobe nem desce</dt>
-      <dd>O juiz leu os planos de AM (estiagem e inundações), o plano operacional de RO e o ofício do CBMRO, com a proveniência de LAI que a etapa 0 passa a aceitar — órgão, data e hash. Os quatro recusam, cada um com seu motivo, e entram como documentos do estado, sem alterar os índices. As 30 respostas das COMPDECs viram nota e busca dirigida: 27 declaram plano, 3 não; nada pontua.</dd>
     </dl>
   </section>
 </main>

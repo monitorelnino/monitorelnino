@@ -37,9 +37,13 @@ setTimeout(() => {
   // continua lá como base, mas a cor agora vive nos círculos.
   for (const id of ["mapaSecas", "mapaFogo"]) {
     teste(`${id}: 27 estados desenhados`, q(id) && q(id).querySelectorAll("g.ufs path").length === 27);
-    teste(`${id}: legenda preenchida`, q(id.replace("mapa", "leg")) && q(id.replace("mapa", "leg")).children.length >= 2);
+    // 16/10/2026: sem o arquivo da fonte, a legenda tem um item só ("Sem coleta até o corte").
+    teste(`${id}: legenda preenchida`, q(id.replace("mapa", "leg")) && q(id.replace("mapa", "leg")).children.length >= 1);
   }
-  for (const [id, classe] of [["mapaTemperatura", "pontosTemp"], ["mapaAr", "pontosAr"]]) {
+  // 16/10/2026: o ar é MEDIDO por cidade com estação oficial (MMA), não por capital: pontos só com o arquivo.
+  teste("mapaAr: contorno das 27 UFs, sem pintura por UF", q("mapaAr") && q("mapaAr").querySelectorAll("g.ufs path").length === 27
+    && new Set([...q("mapaAr").querySelectorAll("g.ufs path")].map(x => x.getAttribute("fill"))).size === 1);
+  for (const [id, classe] of [["mapaTemperatura", "pontosTemp"]]) {
     teste(`${id}: contorno das 27 UFs como base`, q(id) && q(id).querySelectorAll("g.ufs path").length === 27);
     teste(`${id}: um ponto por capital com dado, e não pintura por UF`, (() => {
       const pts = q(id) && q(id).querySelectorAll(`g.${classe} circle`);
