@@ -29,7 +29,7 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-16 · #PR · Manchas do Monitor de Secas: o mapa mensal da ANA vira geometria
+## 2026-10-16 · #796 · Manchas do Monitor de Secas: o mapa mensal da ANA vira geometria
 
 O elo dos sinais grava `data/secas_manchas.json`: manchas S0–S4 do shapefile mensal do Monitor de Secas (repositório de arquivos da ANA), anéis simplificados a ~2 km, mês do mapa e hash do original. Baixa uma vez por mês. Leitor de .shp/.dbf sem dependência nova. METODOLOGIA §41.9.
 

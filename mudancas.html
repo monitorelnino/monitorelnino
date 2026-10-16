@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/10/2026 · Manchas do Monitor de Secas: o mapa mensal da ANA vira geometria</dt>
+      <dd>O elo dos sinais grava `data/secas_manchas.json`: manchas S0–S4 do shapefile mensal do Monitor de Secas (repositório de arquivos da ANA), anéis simplificados a ~2 km, mês do mapa e hash do original. Baixa uma vez por mês. Leitor de .shp/.dbf sem dependência nova. METODOLOGIA §41.9.</dd>
       <dt>16/10/2026 · Focos pelo satélite de referência; avisos por UF e grau</dt>
       <dd>O elo dos sinais grava `data/focos_referencia.json`: focos do satélite de referência do INPE por dia, UF, bioma e município (IBGE), série de 400 dias com o mesmo dia do ano anterior (arquivo anual de referência), mês e 30 dias com o número de dias com dado. `alertas/vigentes.json` ganha municípios sob aviso por UF e grau. METODOLOGIA §41.8.</dd>
       <dt>16/10/2026 · Ar medido por estação: IQAr do MMA, PM2,5 do OpenAQ e da RedeAr</dt>
@@ -165,8 +167,6 @@
       <dd>Duas noites seguidas não abriram: o cron de 01:00 UTC não disparou (1h40 de atraso em 04/10, 5h30 em 30/09). Os crons saem dos minutos de pico, a abertura ganha reserva às 01:37 e um vigia às 02:07 a dispara se preciso. Os três disparos não duplicam porque `scripts/janela_da_noite.py` decide se a noite já abriu. O painel mostra previsto × iniciado e acusa noite sem abertura.</dd>
       <dt>03/10/2026 · Credencial de terceiro não fica na cópia preservada</dt>
       <dd>Alerta do GitHub de 01/10: 18 páginas salvas como prova traziam chave de API de terceiro (Flickr e Google Maps) e eram servidas pelo nosso domínio, porque o deploy publica a raiz. A redação passa a ser na porta de preservação, antes do hash; o passado foi redigido e rechaveado, com o hash anterior registrado; um portão barra a volta. Em `coletores_base.py`, `scripts/remediar_segredos_evidencias.py` e `scripts/verificar_evidencia_sem_segredo.py`.</dd>
-      <dt>03/10/2026 · As respostas de LAI entram como o que são</dt>
-      <dd>MT e RN responderam a pedidos de acesso à informação. Afirmação de órgão sem documento não pontua: vira nota com órgão e data (textos aprovados pela editoria), e tarefa de busca dirigida. Os três decretos que MT informou com número e data entram em `atos_resposta.json`, declarando que o documento ainda não foi localizado. O detalhe da UF, na home, passa a mostrar a nota do estado. Em `scripts/incorporar_respostas_lai.py`, `data/notas_lai.json` e `ler_caixa_lai.py` (leitura semanal da caixa, à espera da credencial).</dd>
     </dl>
   </section>
 </main>
