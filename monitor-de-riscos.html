@@ -184,21 +184,18 @@
       <p class="selo" data-conteudo="monitor-de-riscos.riscos.bloco_chuva">Chuva forte</p>
       <p class="boletim-preve" id="preveChuva"></p>
     </div>
-    <div class="grade-figuras grade-figuras--3 grade-mapas">
-      <figure class="figura figura--mapa cartao-mapa" id="boxAvisos">
-        <h3 class="figura-titulo" id="tituloAvisos">Avisos de tempo severo em vigor</h3>
-        <p class="figura-sub" id="avisosSub">Avisos em vigor na consulta</p>
-        <div class="figura-midia"><svg id="mapaAvisos" role="img" aria-describedby="estadosAvisos" aria-label="Mapa do Brasil pelo maior grau de aviso meteorológico do INMET em vigor em cada estado" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legAvisos"></div>
-        <div class="cartao-mapa-rodape">
-        <details class="cartao-mapa-dados cartao-mapa-estados"><summary data-conteudo="monitor-de-riscos.estados_avisos.resumo">Ver estados</summary><ul class="lista-estados" id="estadosAvisos"></ul></details>
-        <details class="cartao-mapa-dados"><summary data-conteudo="monitor-de-riscos.estados_avisos.resumo_2">Ver em lista</summary>
-          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblAvisos"><thead><tr><th>UF</th><th>Avisos</th><th>Grau</th><th>Fenômeno</th></tr></thead><tbody></tbody></table></div>
-        </details>
-        <details class="cartao-mapa-leitura"><summary data-conteudo="monitor-de-riscos.estados_avisos.resumo_3">Como ler</summary>
-          <p class="figura-leitura" data-conteudo-html="monitor-de-riscos.estados_avisos.texto">O Inmet emite o aviso por área, e um aviso pode alcançar mais de um estado. Os avisos por município estão em <a href="defesa-civil.html">Defesa civil</a>.</p>
-        </details>
-        </div>
+    <div class="grade-figuras grade-figuras--2">
+      <figure class="figura figura--tabela cartao-mapa" id="boxAvisos">
+        <h3 class="figura-titulo" id="tituloAvisos" data-conteudo="monitor-de-riscos.avisos.titulo">Avisos de tempo severo em vigor</h3>
+        <p class="figura-sub" id="avisosSub" data-conteudo="monitor-de-riscos.avisos.sub">Por grau do aviso · municípios cobertos · INMET</p>
+        <div class="figura-midia" id="midiaAvisos"><div class="tbl-wrap" tabindex="0" role="region" aria-label="Avisos por grau"><table class="mun-table" id="tblAvisos"><thead><tr><th>Grau</th><th>Municípios</th><th>Estados</th><th>Fenômeno</th></tr></thead><tbody></tbody></table></div></div>
+        <p class="figura-nota" id="avisosRodape"></p>
+      </figure>
+      <figure class="figura figura--tabela cartao-mapa" id="boxCemaden">
+        <h3 class="figura-titulo" id="tituloCemaden" data-conteudo="monitor-de-riscos.cemaden.titulo">Alertas do Cemaden vigentes</h3>
+        <p class="figura-sub" id="cemadenSub" data-conteudo="monitor-de-riscos.cemaden.sub">Por nível do alerta · estado · municípios nomeados pelo Cemaden</p>
+        <div class="figura-midia" id="midiaCemaden"><div class="tbl-wrap" tabindex="0" role="region" aria-label="Alertas do Cemaden"><table class="mun-table" id="tblCemaden"><thead><tr><th>Nível</th><th>UF</th><th>Municípios</th></tr></thead><tbody></tbody></table></div></div>
+        <p class="figura-nota" id="cemadenRodape"></p>
       </figure>
     </div>
   </div>

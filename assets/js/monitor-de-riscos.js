@@ -3,7 +3,7 @@
    Regra desta página: nenhum valor é calculado aqui. Tudo vem de
    data/sinais_risco.json, escrito por coletar_sinais_risco.py, com fonte,
    documento e data. Fonte não coletada vira lacuna declarada na tela. */
-let BR_GEOJSON, SINAIS, MARE, FOCOS, NORMAIS, FOGO_REF, SECAS_MANCHAS, AR;   // NORMAIS: normais do Inmet, para o DESVIO do mapa de calor
+let BR_GEOJSON, SINAIS, MARE, AVISOS, FOCOS, NORMAIS, FOGO_REF, SECAS_MANCHAS, AR;   // NORMAIS: normais do Inmet, para o DESVIO do mapa de calor
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
 const NEUTRA = MonitorMapas.cor('sem-dado');           // estado sem dado coletado
 
@@ -17,6 +17,8 @@ async function __load(){
   /* 29/09/2026: focos do INPE agregados em grade, em arquivo próprio — são milhares de células
      e não cabem no arquivo de sinais, que toda página da seção carrega inteiro. Ausente, o mapa
      diz que não houve coleta; nunca desenha zero. */
+  /* Índice de avisos por município (o resumo traz os municípios por UF e grau). Ausente = lacuna. */
+  AVISOS = await fetch('data/alertas/vigentes.json').then(r => r.ok ? r.json() : null).catch(() => null);
   NORMAIS = await fetch('data/normais_capitais.json').then(r => r.ok ? r.json() : null).catch(() => null);
   FOCOS = await fetch('data/focos_pontos.json').then(r => r.ok ? r.json() : null).catch(() => null);
   /* 16/10/2026: contagens do satélite de referência (dia, série, mês, UF, bioma). Ausente = lacuna. */
@@ -239,9 +241,6 @@ const ufsCom = teste => UFS.filter(uf => SINAIS.uf[uf] && teste(componentesDe(uf
   if (diaPrev) põe('tituloTemperatura', 'Temperatura máxima prevista nas capitais, ' + String(diaPrev).slice(0, 10));
   põe('temperaturaSub', (diaPrev ? 'Para ' + diaMes(diaPrev) + ' · ' : '') + 'diferença para a normal 1991–2020 do mês · uma capital por estado');
 
-  const fAvisos = fonte('inmet_avisos');
-  if (fAvisos.consultado_em) põe('tituloAvisos', 'Avisos de tempo severo em vigor, ' + fAvisos.consultado_em);
-  põe('avisosSub', 'Maior grau de aviso do INMET em vigor · por estado');
 })();
 
 // ---- "Ver estados" (09/10/2026, ajuste 5): a lista que estava no texto visível do cartão vai
@@ -600,92 +599,59 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
   const d = document.querySelector('#boxFogo .fonte-figura'); if (d) d.dataset.credito = 'inpe_fogo';
 })();
 
-// ---- Mapa 5: avisos do INMET em vigor (29/09/2026) ----
-/* Estava só na Defesa civil, e o sinal é físico: é desta página. O grau e o nome do fenômeno são
-   os que o INMET escreve, sem tradução para escala própria (§23.3).
-   A distinção que este card precisa fazer, e que a página de Saúde pagou caro para aprender em
-   24/09: **corpo vazio servido com 200 é recusa da fonte, não ausência de aviso**. O coletor já
-   falha alto nesse caso e a fonte fica sem `status: coletado`; aqui, isso vira "a fonte não
-   respondeu" — nunca um mapa pintado de zero. Resposta válida com lista vazia tem texto próprio. */
-(function desenharAvisos(){
-  const avisos = uf => (SINAIS.uf[uf] || {}).avisos_inmet;
-  const respondeu = coletada('inmet_avisos');
-  const corpo = document.querySelector('#tblAvisos tbody');
-
-  if (!respondeu) {
-    MonitorMapas.legenda('legAvisos', [{cor: NEUTRA,
-      rotulo: 'A fonte não respondeu nesta consulta — não quer dizer que não haja aviso em vigor'}]);
-    if (corpo) corpo.innerHTML = '<tr><td colspan="4">A fonte não respondeu nesta consulta</td></tr>';
-    credito('boxAvisos', 'inmet_avisos');
-    return;
+// ---- Chuva forte (16/10/2026, HANDOVER_MONITOR_DE_RISCOS §4): duas tabelas, sem mapa por estado ----
+/* Avisos do INMET por grau, com os MUNICÍPIOS cobertos (do índice por município do coletor) e os
+   alertas do CEMADEN por nível, com os municípios nomeados. Grau e nível no vocabulário do órgão.
+   Fonte que não respondeu = lacuna; resposta válida sem aviso tem texto próprio. */
+(function chuvaForte(){
+  const GRAUS = ['Grande Perigo', 'Perigo', 'Perigo Potencial'];
+  const fmt = n => Number(n).toLocaleString('pt-BR');
+  const muns = Object.values((AVISOS || {}).municipios || {});
+  const lacunaEm = (tbl, midia, txt) => { const c = document.querySelector('#' + tbl);
+    if (c) c.closest('.tbl-wrap').remove(); lacuna(midia, txt); };
+  const creditoDe = (caixa, chave) => { const f = fonteDe(chave);
+    MonitorMapas.credito(caixa, {fontes: [f.orgao, f.nome].filter(Boolean).join(' · '), url: f.url_publica,
+      data: AVISOS ? AVISOS.gerado_em : f.consultado_em});
+    const d = document.querySelector('#' + caixa + ' .fonte-figura'); if (d) d.dataset.credito = chave; };
+  if (!AVISOS || !coletada('inmet_avisos')) {
+    lacunaEm('tblAvisos', 'midiaAvisos', 'A fonte não respondeu nesta consulta — não quer dizer que não haja aviso em vigor.');
+  } else {
+    const linhas = GRAUS.map(g => {
+      const com = muns.filter(m => (m.inmet || []).some(x => x.severidade === g));
+      const ufs = [...new Set(com.map(m => m.uf))].sort();
+      const fen = [...new Set(com.flatMap(m => m.inmet.filter(x => x.severidade === g).map(x => x.tipo)))].sort();
+      return [g, com.length, ufs, fen];
+    });
+    const comAviso = muns.filter(m => (m.inmet || []).length).length, total = (window.__refMunicipios || []).length;
+    document.querySelector('#tblAvisos tbody').innerHTML = linhas.map(([g, n, ufs, fen]) => '<tr><td>' + esc(g) + '</td><td class="dado">'
+        + esc(fmt(n)) + '</td><td>' + esc(ufs.join(', ') || '—') + '</td><td>' + esc(fen.join(', ') || '—') + '</td></tr>').join('')
+      + (total ? '<tr><td>Sem aviso</td><td class="dado">' + esc(fmt(total - comAviso)) + '</td><td>—</td><td>—</td></tr>' : '');
+    const previstos = UFS.filter(uf => componentesDe(uf).includes('chuvas'));
+    const ufsComAviso = new Set(muns.filter(m => (m.inmet || []).length).map(m => m.uf));
+    const nAvisos = new Set(muns.flatMap(m => (m.inmet || []).map(x => x.id))).size;
+    document.getElementById('avisosRodape').textContent = plural(nAvisos, 'aviso', 'avisos') + ' · '
+      + plural(comAviso, 'município', 'municípios') + ' · nos estados com chuva forte prevista: '
+      + (previstos.filter(uf => ufsComAviso.has(uf)).join(', ') || 'nenhum com aviso');
   }
-
-  const total = UFS.reduce((s, uf) => s + Number((avisos(uf) || {}).total || 0), 0);
-  const graus = {}, fenomenos = {};
-  UFS.forEach(uf => {
-    const a = avisos(uf) || {};
-    Object.entries(a.graus || {}).forEach(([g, n]) => { graus[g] = (graus[g] || 0) + Number(n || 0); });
-    (a.exemplos || []).forEach(f => { fenomenos[f] = (fenomenos[f] || 0) + 1; });
-  });
-
-  /* 30/09/2026 (R11 do handover): o estado passa a ser pintado pelo MAIOR GRAU de aviso em vigor,
-     não pela CONTAGEM. Contagem media outra coisa — dez avisos de perigo potencial pintavam mais
-     escuro do que um de grande perigo, e é o grande perigo que a leitora precisa ver primeiro. O
-     número de avisos continua no texto do mouse e na lista.
-
-     A ordem dos graus é a do próprio INMET, e a comparação é por posição nessa ordem: nada de
-     inventar escala numérica para um vocabulário que já é ordenado. */
-  const ORDEM_GRAU = ['Perigo Potencial', 'Perigo', 'Grande Perigo'];
-  const normGrau = g => {
-    const t = String(g || '').toLowerCase();
-    if (t.includes('grande')) return 'Grande Perigo';
-    if (t.includes('potencial')) return 'Perigo Potencial';
-    if (t.includes('perigo')) return 'Perigo';
-    return null;
-  };
-  const maiorGrau = uf => {
-    const g = Object.keys((avisos(uf) || {}).graus || {}).map(normGrau).filter(Boolean);
-    if (!g.length) return null;
-    return g.reduce((a, b) => ORDEM_GRAU.indexOf(b) > ORDEM_GRAU.indexOf(a) ? b : a);
-  };
-  // Três graus, três degraus da escala ordinal do site (a mesma da seca), na ordem do INMET.
-  // `rampaPerigo` tem dois extremos e serve a interpolação contínua — aqui o vocabulário é
-  // ordenado e fechado, e escala contínua para vocabulário fechado inventaria tons intermediários
-  // que o INMET não emite.
-  // 30/09/2026 (item 8): a rampa aprovada dos avisos, em ardósia. Os três graus do INMET mais o
-  // "sem aviso", que também é informação e por isso tem tom próprio em vez de ficar sem cor.
-  const COR_GRAU = {'Perigo Potencial': ATM.avisos.rampa[1],
-                    'Perigo': ATM.avisos.rampa[2],
-                    'Grande Perigo': ATM.avisos.rampa[3]};
-  const SEM_AVISO = ATM.avisos.rampa[0];
-  const ordena = o => Object.entries(o).sort((a, b) => b[1] - a[1]);
-  const legenda = [{cor: SEM_AVISO, rotulo: 'Sem aviso'},
-                   {cor: COR_GRAU['Perigo Potencial'], rotulo: 'Perigo potencial'},
-                   {cor: COR_GRAU['Perigo'], rotulo: 'Perigo'},
-                   {cor: COR_GRAU['Grande Perigo'], rotulo: 'Grande perigo'}]
-    .concat(total ? [] : [{cor: SEM_AVISO,
-      rotulo: 'Nenhum aviso em vigor nesta consulta'}]);
-  // 01/10/2026: a lista de fenômenos saiu da legenda — ela não é categoria do mapa, que pinta por
-  // GRAU. O fenômeno de cada estado continua no texto do mouse e na lista.
-  desenharMapa('mapaAvisos', 'legAvisos',
-    uf => COR_GRAU[maiorGrau(uf)] || SEM_AVISO,
-    uf => { const a = avisos(uf) || {}; const n = Number(a.total || 0); const g = maiorGrau(uf);
-            const [d, o] = fonteLinha('inmet_avisos');
-            return MonitorMapas.dica({semTitulo: true, linhas: n
-              ? ['Maior grau em vigor: ' + String(g || 'aviso').toLowerCase(), plural(n, 'aviso em vigor', 'avisos em vigor')
-                 + ((a.exemplos || []).length ? ': ' + a.exemplos.join(', ').toLowerCase() : '')]
-              : ['Nenhum aviso em vigor na consulta'], data: d, fonte: o}); },
-    legenda, 'avisos');
-  if (corpo) {
-    const linhas = UFS.map(uf => ({uf, a: avisos(uf) || {}}))
-      .filter(x => Number(x.a.total || 0) > 0)
-      .sort((a, b) => Number(b.a.total || 0) - Number(a.a.total || 0));
-    corpo.innerHTML = linhas.length
-      ? linhas.map(x => '<tr><td>' + x.uf + '</td><td class="dado">' + Number(x.a.total) + '</td><td>' +
-          esc(Object.keys(x.a.graus || {}).join(', ')) + '</td><td>' + esc((x.a.exemplos || []).join(', ')) + '</td></tr>').join('')
-      : '<tr><td colspan="4">Nenhum aviso em vigor nesta consulta</td></tr>';
+  creditoDe('boxAvisos', 'inmet_avisos');
+  if (!AVISOS || !coletada('cemaden_alertas')) {
+    lacunaEm('tblCemaden', 'midiaCemaden', 'A fonte não respondeu nesta consulta — não quer dizer que não haja alerta vigente.');
+  } else {
+    const grupos = {};
+    muns.forEach(m => (m.cemaden || []).forEach(x => { const k = x.nivel + '|' + m.uf;
+      (grupos[k] = grupos[k] || new Set()).add(m.nome); }));
+    const chaves = Object.keys(grupos).sort();
+    document.querySelector('#tblCemaden tbody').innerHTML = chaves.length
+      ? chaves.map(k => { const [nv, uf] = k.split('|'); return '<tr><td>' + esc(nv) + '</td><td>' + esc(uf) + '</td><td>'
+          + esc([...grupos[k]].sort().join(', ')) + '</td></tr>'; }).join('')
+      : '<tr><td colspan="3">Nenhum alerta vigente nesta consulta</td></tr>';
+    const r = AVISOS.resumo || {};
+    document.getElementById('cemadenRodape').textContent = plural(r.alertas_cemaden_em_vigor || 0, 'alerta', 'alertas')
+      + ' · ' + plural(r.municipios_cemaden || 0, 'município', 'municípios') + ' · '
+      + plural(new Set(chaves.map(k => k.split('|')[1])).size, 'estado', 'estados');
   }
-  credito('boxAvisos', 'inmet_avisos');
+  creditoDe('boxCemaden', 'cemaden_alertas');
+  const t = document.getElementById('tituloAvisos'); if (t && AVISOS) t.textContent = 'Avisos de tempo severo em vigor, ' + AVISOS.gerado_em;
 })();
 
 // =====================  Cartões do estado do ciclo  =====================
@@ -1231,7 +1197,7 @@ creditoPacifico('boxEpisodios');
 // =============================  Tabela de fontes  =============================
 const CAMADA_ROTULO = {ciclo:'Ciclo', observado:'Observado', enos:'ENOS'};
 // "Ver estados" e descrição acessível de cada mapa (09/10/2026, ajuste 5), depois de todos desenhados.
-[['mapaSecas', 'estadosSecas'], ['mapaAr', 'estadosAr'], ['mapaTemperatura', 'estadosTemperatura'], ['mapaAvisos', 'estadosAvisos']]
+[['mapaSecas', 'estadosSecas'], ['mapaAr', 'estadosAr'], ['mapaTemperatura', 'estadosTemperatura']]
   .forEach(([svg, alvo]) => { try { if (ROTULOS_DOS_MAPAS[svg]) escreverEstados(alvo, ROTULOS_DOS_MAPAS[svg]); } catch (e) {} });
 }
 __load();
