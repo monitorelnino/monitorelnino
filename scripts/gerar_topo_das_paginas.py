@@ -28,6 +28,7 @@ Uso:
 from __future__ import annotations
 
 import json
+import re
 import pathlib
 import sys
 
@@ -243,12 +244,86 @@ def cartoes_da_defesa_civil(alertas: dict, decretados: dict, por_uf: dict, hoje_
     ]
 
 
-GOV_RISCOS = ("INSTANTÂNEO dos dois números do Monitor de riscos que a Imprensa publica, para ela "
-              "ler em vez de recalcular (handover de 02/10/2026, item 1). Não é fonte de nada. O de "
+GOV_RISCOS = ("INSTANTÂNEO dos números de agora do Monitor de riscos, para a Imprensa e a página "
+              "lerem em vez de recalcular (handover de 02/10/2026, item 1; HANDOVER_TEXTOS_B §10.3). "
+              "Não é fonte de nada. Cada cartão guarda em `anterior` o valor e a referência da leitura "
+              "anterior; sem leitura anterior, o campo não existe. Avisos: avisos distintos no país. O de "
               "temperatura é o maior DESVIO em relação à normal 1991–2020 do Inmet, e não a máxima "
               "absoluta: 35 °C é normal em Cuiabá e muito quente em Porto Alegre, e publicar a "
               "máxima absoluta era publicar geografia como se fosse notícia — mesma régua do mapa "
               "de calor da página.")
+
+
+TRIMESTRES = {"DJF": 1, "JFM": 2, "FMA": 3, "MAM": 4, "AMJ": 5, "MJJ": 6, "JJA": 7, "JAS": 8,
+              "ASO": 9, "SON": 10, "OND": 11, "NDJ": 12}
+
+
+def cartoes_de_agora(sinais: dict, vigentes: dict) -> list:
+    """Os números de agora do Monitor de riscos que ainda não tinham instantâneo (HANDOVER_TEXTOS_B
+    §10.3): fogo, seca, avisos e probabilidade. Mesmas regras da faixa da página. Função pura.
+
+    Avisos: a contagem NACIONAL é de avisos DISTINTOS (um aviso que cobre três UFs conta um), lida
+    de `alertas/vigentes.json` pelo identificador do aviso; "perigo ou maior" é Perigo e Grande
+    Perigo, no vocabulário do INMET."""
+    ufs = (sinais or {}).get("uf") or {}
+    fontes = (sinais or {}).get("fontes") or {}
+    cartoes = []
+    focos = {uf: (u.get("fogo") or {}).get("focos_24h") for uf, u in ufs.items()}
+    focos = {uf: n for uf, n in focos.items() if isinstance(n, (int, float))}
+    ufmax = max(focos, key=lambda k: focos[k]) if focos else None
+    cartoes.append({"id": "fogo_focos_24h", "valor": sum(focos.values()) if focos else None,
+                    "referencia": (fontes.get("inpe_fogo") or {}).get("documento"),
+                    "uf_com_mais_focos": ufmax if ufmax and focos[ufmax] > 0 else None,
+                    "fonte": "Inpe", "sem_coleta": not focos})
+    secas = {uf: (u.get("secas") or {}) for uf, u in ufs.items() if (u.get("secas") or {}).get("categoria_mediana")}
+    cartoes.append({"id": "seca_estados_grave_ou_pior",
+                    "valor": sum(1 for v in secas.values() if v["categoria_mediana"] in ("S2", "S3", "S4")) if secas else None,
+                    "referencia": next((v.get("mapa") for v in secas.values() if v.get("mapa")), None),
+                    "fonte": "Monitor de Secas (ANA)", "sem_coleta": not secas})
+    avisos, perigo = set(), set()
+    for m in ((vigentes or {}).get("municipios") or {}).values():
+        for a in m.get("inmet") or []:
+            if a.get("id"):
+                avisos.add(a["id"])
+                if a.get("severidade") in ("Perigo", "Grande Perigo"):
+                    perigo.add(a["id"])
+    tem_avisos = bool((vigentes or {}).get("municipios"))
+    cartoes.append({"id": "avisos_inmet_distintos", "valor": len(avisos) if tem_avisos else None,
+                    "perigo_ou_maior": len(perigo) if tem_avisos else None,
+                    "referencia": (vigentes or {}).get("gerado_em"), "fonte": "Inmet",
+                    "sem_coleta": not tem_avisos})
+    trims = []
+    for t in (((sinais or {}).get("enos") or {}).get("probabilidades") or {}).get("trimestres") or []:
+        m = re.match(r"^([A-Z]{3})\s*(\d{4})$", str(t.get("trimestre") or "").strip().upper())
+        if m and m.group(1) in TRIMESTRES and t.get("el_nino") is not None:
+            trims.append((int(m.group(2)) * 12 + TRIMESTRES[m.group(1)], f"{m.group(1)} {m.group(2)}", t["el_nino"]))
+    trims.sort()
+    altos = [t for t in trims if t[2] >= 90]
+    marco = (altos[-1] if altos else trims[0]) if trims else None
+    cartoes.append({"id": "probabilidade_el_nino", "valor": round(marco[2]) if marco else None,
+                    "trimestre": marco[1] if marco else None,
+                    "referencia": (fontes.get("iri_plume") or {}).get("consultado_em"),
+                    "fonte": "IRI/CPC", "sem_coleta": marco is None})
+    return cartoes
+
+
+def com_anterior(novos: list, antigos: list) -> list:
+    """Põe em cada cartão o valor da leitura ANTERIOR, com a referência dela. Função pura.
+
+    Mesma referência que a gravada: é a mesma leitura, e o `anterior` que ela já tinha fica.
+    Referência nova: o valor gravado vira `anterior`. Sem leitura anterior, o campo não existe —
+    e a página diz "primeira leitura", nunca uma variação inventada."""
+    velhos = {c.get("id"): c for c in antigos or [] if isinstance(c, dict)}
+    for c in novos:
+        v = velhos.get(c["id"])
+        if not v or c.get("valor") is None:
+            continue
+        if v.get("referencia") == c.get("referencia"):
+            if v.get("anterior"):
+                c["anterior"] = v["anterior"]
+        elif v.get("valor") is not None:
+            c["anterior"] = {"valor": v["valor"], "referencia": v.get("referencia")}
+    return novos
 
 
 def cartoes_do_monitor_de_riscos(sinais: dict, normais: dict) -> list:
@@ -406,6 +481,31 @@ def _autoteste() -> int:
            {"capitais": {}})[0]["sem_coleta"] is True)
     ok("o índice europeu de ar saiu com a fonte (16/10/2026)", "capitais_ar_ruim_ou_pior" not in rid)
 
+    agora = {c["id"]: c for c in cartoes_de_agora(
+        {"uf": {"PA": {"fogo": {"focos_24h": 163}, "secas": {"categoria_mediana": "S2", "mapa": "Setembro/2026"}},
+                "AM": {"fogo": {"focos_24h": 188}, "secas": {"categoria_mediana": "S1"}}},
+         "fontes": {"inpe_fogo": {"documento": "focos_diario_br_20261015.csv"}},
+         "enos": {"probabilidades": {"trimestres": [{"trimestre": "OND 2026", "el_nino": 99},
+                                                    {"trimestre": "JFM 2027", "el_nino": 92},
+                                                    {"trimestre": "AMJ 2027", "el_nino": 60}]}}},
+        {"gerado_em": "16/10/2026 15:46", "municipios": {
+            "1": {"inmet": [{"id": "a", "severidade": "Perigo"}, {"id": "b", "severidade": "Perigo Potencial"}]},
+            "2": {"inmet": [{"id": "a", "severidade": "Perigo"}]}}})}
+    ok("fogo soma os focos e diz o estado com mais focos no dia",
+       agora["fogo_focos_24h"]["valor"] == 351 and agora["fogo_focos_24h"]["uf_com_mais_focos"] == "AM")
+    ok("seca conta estados com mediana S2 ou pior", agora["seca_estados_grave_ou_pior"]["valor"] == 1)
+    ok("avisos: o mesmo aviso em dois municípios conta um no país",
+       agora["avisos_inmet_distintos"]["valor"] == 2 and agora["avisos_inmet_distintos"]["perigo_ou_maior"] == 1)
+    ok("probabilidade: último trimestre com 90% ou mais", agora["probabilidade_el_nino"]["valor"] == 92
+       and agora["probabilidade_el_nino"]["trimestre"] == "JFM 2027")
+    ok("sem dado o cartão é sem_coleta, nunca zero",
+       all(c["sem_coleta"] and c["valor"] is None for c in cartoes_de_agora({}, {})))
+    v1 = com_anterior([{"id": "x", "valor": 5, "referencia": "d2"}], [{"id": "x", "valor": 3, "referencia": "d1"}])
+    v2 = com_anterior([{"id": "x", "valor": 5, "referencia": "d2"}], v1)
+    ok("leitura nova guarda a anterior com a referência dela; a mesma leitura mantém o anterior",
+       v1[0]["anterior"] == {"valor": 3, "referencia": "d1"} and v2[0]["anterior"] == {"valor": 3, "referencia": "d1"})
+    ok("sem leitura anterior não há campo anterior", "anterior" not in com_anterior([{"id": "x", "valor": 1}], [])[0])
+
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
           else f"✓ AUTOTESTE OK — {len(_casos_contados)} casos, sem rede e sem escrita em data/.")
     return 1 if falhas else 0
@@ -446,8 +546,11 @@ def main() -> int:
     gravar("resposta/topo_defesa_civil.json",
            {"_governanca": GOV_DC, "gerado_em": hoje.strftime("%d/%m/%Y"),
             "frase_c18": por_uf_arq.get("frase_c18"), "cartoes": dc})
-    riscos = cartoes_do_monitor_de_riscos(
-        ler("sinais_risco.json", {}) or {}, ler("normais_capitais.json", {}) or {})
+    sinais = ler("sinais_risco.json", {}) or {}
+    riscos = com_anterior(
+        cartoes_do_monitor_de_riscos(sinais, ler("normais_capitais.json", {}) or {})
+        + cartoes_de_agora(sinais, ler("alertas/vigentes.json", {}) or {}),
+        (ler("topo_monitor_riscos.json", {}) or {}).get("cartoes"))
     gravar("topo_monitor_riscos.json",
            {"_governanca": GOV_RISCOS, "gerado_em": hoje.strftime("%d/%m/%Y"), "cartoes": riscos})
     for nome, cartoes in (("MARÉ Saúde", saude), ("Defesa civil", dc), ("Monitor de riscos", riscos)):

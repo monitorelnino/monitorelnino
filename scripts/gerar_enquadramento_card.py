@@ -127,6 +127,10 @@ def registros(casa_civil: dict, enquadramento: dict) -> dict:
     return dict(sorted(fora.items()))
 
 
+PAGINA_DO_CADASTRO_MIDR = ("https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/"
+                           "cadastro-nacional-de-municipios")
+
+
 def fontes_de(casa_civil: dict, enquadramento: dict) -> dict:
     """O instrumento e a data de consulta de cada família, para a fonte por linha. Função pura."""
     fontes_enq = (enquadramento or {}).get("fontes") or {}
@@ -135,12 +139,15 @@ def fontes_de(casa_civil: dict, enquadramento: dict) -> dict:
         # A fonte e a nota tecnica que publica o anexo, e nao o decreto: quem nomeia municipio e
         # tipo de risco e a nota. Os dois PDFs vao como links, pela ordem em que foram lidos.
         documentos = casa_civil.get("documentos") or {}
+        # 16/10/2026 (HANDOVER_TEXTOS_B §8.5): a lista é do cadastro nacional do art. 3º-A, que o
+        # MIDR mantém com a Casa Civil; a linha de fonte nomeia os dois e leva à página do cadastro.
         fora["chuva"] = {
-            "instrumento": "Casa Civil, Nota Técnica nº 2/2025 e nº 1/2023",
-            "prefixo": "Casa Civil",
+            "instrumento": "MIDR e Casa Civil, Nota Técnica nº 2/2025 e nº 1/2023",
+            "prefixo": "MIDR e Casa Civil",
             "url": documentos.get("nt2_2025") or casa_civil.get("fonte"),
             "urls": [["Nota Técnica nº 2/2025", documentos.get("nt2_2025")],
-                     ["Nota Técnica nº 1/2023", documentos.get("nt1_2023")]],
+                     ["Nota Técnica nº 1/2023", documentos.get("nt1_2023")],
+                     ["cadastro nacional (MIDR)", PAGINA_DO_CADASTRO_MIDR]],
             "consultado_em": casa_civil.get("coletado_em"),
         }
         fora["chuva"]["urls"] = [par for par in fora["chuva"]["urls"] if par[1]]

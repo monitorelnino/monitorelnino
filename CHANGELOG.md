@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 Duas rodadas do juiz da saúde estadual com o código do #799: cerca de 140 pistas oficiais julgadas (contra 17 em 15/10), nenhuma promovida; 113 seguem pendentes, entre elas as do host do Amapá sem resposta. O corte da verificação segue 02/10, porque a fila não terminou.
 
+## 2026-10-16 · #807 · Monitor de riscos: números de agora com a leitura anterior; avisos distintos no país
+
+`topo_monitor_riscos.json` passa a trazer fogo, seca, avisos e probabilidade além do calor, cada cartão com `anterior` (valor e referência da leitura anterior). Avisos contam avisos distintos no país. A linha de fonte das listas federais nomeia MIDR e Casa Civil com a página do cadastro. Comentários sem `obrigado.html`.
+
 ## 2026-10-16 · #803 · Regra das quatro funções da figura passa a ter portão (A7-14)
 
 `figura.quatro_funcoes_separadas` (título, legenda, nota, fonte) deixa de ser só texto: quem a julga é `verificar_texto_publico.js`, que já reprova nota, dica ou parágrafo dentro da figura e exige um título, um subtítulo e um crédito. Restam 13 regras só texto.
