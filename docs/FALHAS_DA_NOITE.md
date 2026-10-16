@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-15. 63 falhas; 58 com caso de teste que as reproduz; 5 sem, com o que falta dito.
+Atualizado em 2026-10-15. 64 falhas; 58 com caso de teste que as reproduz; 6 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -572,3 +572,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** log do run 38833479557: checkout 01:08:25→01:13:24, job cancelado; run 38864675061 (relogio ef329f00, esparso): checkout em 8 s
 - **Correção:** Checkout esparso (scripts, config, data/noite) na cópia do ramo `relogio` (ef329f00), no espelho da main e no `despachante.yml`.
 - **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_despachante_nao_depende_do_cron`
+
+## F64 · Juiz de saúde interrompido pelo prazo avançava o corte da verificação
+
+- **Noite:** 2026-10-15
+- **Sintoma:** Run 38813432942 (ramo coleta-dia/2026-10-15-saude-estadual): julgar_saude.py interrompido pelo prazo do elo após 17 de 251 pistas; saude_uf.json saiu com corte 15/10/2026 sem nenhuma mudança de conteúdo.
+- **Causa:** julgar_saude.py --aplicar carimbava o corte com a data do dia sempre que gravava; desde o F62 ele grava também quando interrompido, e o carimbo passou a dizer verificado o que ficou pendente.
+- **Prova:** commit 1efeffc2: data/saude_uf.json só muda `corte` 02/10→15/10; data/saude_pipeline.json registra julgar_saude 'interrompido pelo prazo do elo'
+- **Correção:** O corte só avança quando `julgar_lista` termina a fila (devolve não-interrompido); o julgado grava sempre.
+- **Caso de teste:** nenhum — falta: caso de teste exige fila sintética no main() de julgar_saude; julgar_lista (que devolve a interrupção) tem caso próprio em julgar_filas
