@@ -1537,6 +1537,105 @@ def parse_dados_tabulares_secas(dados) -> dict:
             "categoria_mediana": mediana, "categoria_maxima": com_area[0] if com_area else "sem seca"}
 
 
+# ---------------------------------------------------------------------------
+# MANCHAS DO MONITOR DE SECAS (HANDOVER_MONITOR_DE_RISCOS §6b, 16/10/2026) → data/secas_manchas.json
+# A API da ANA só dá tabela por UF e PNG. O shapefile mensal está no repositório público de arquivos
+# do Monitor (S3 da ANA), com o nome que o próprio aplicativo monta: `uploads/mapas/<mês><ano>.zip`
+# (sondado: `setembro2026.zip`, 15,8 MB, publicado em 16/10/2026). Lido sem dependência nova: o
+# formato .shp/.dbf é público (ESRI, 1998) e só se usa polígono e um campo de texto.
+# ---------------------------------------------------------------------------
+SECAS_ZIP = "https://ana-monitor-secas-files.s3.sa-east-1.amazonaws.com/uploads/mapas/{mes}{ano}.zip"
+SECAS_MESES = ["janeiro", "fevereiro", "marco", "abril", "maio", "junho", "julho", "agosto",
+               "setembro", "outubro", "novembro", "dezembro"]
+SECAS_TOLERANCIA = 0.02     # grau (~2 km): Douglas-Peucker por anel; alvo ≤ 150 kB
+
+
+def ler_poligonos_shp(shp: bytes, dbf: bytes, campo: str) -> list:
+    """[(valor do campo, [anéis [[lon, lat], ...]])] de um .shp de polígonos com o seu .dbf. Função pura."""
+    import struct
+    n_reg, cab, tam = struct.unpack("<IHH", dbf[4:12])
+    campos, pos, desloc = [], 32, 1
+    while dbf[pos] != 0x0D:
+        nome = dbf[pos:pos + 11].split(b"\0")[0].decode("latin-1")
+        campos.append((nome, desloc, dbf[pos + 16]))
+        desloc += dbf[pos + 16]
+        pos += 32
+    alvo = next((c for c in campos if c[0].lower() == campo.lower()), None)
+    valores = [dbf[cab + i * tam + alvo[1]: cab + i * tam + alvo[1] + alvo[2]].decode("latin-1").strip()
+               if alvo else None for i in range(n_reg)]
+    saida, pos = [], 100
+    while pos + 8 <= len(shp):
+        n, tam_reg = struct.unpack(">ii", shp[pos:pos + 8])
+        corpo = shp[pos + 8: pos + 8 + tam_reg * 2]
+        pos += 8 + tam_reg * 2
+        if struct.unpack("<i", corpo[:4])[0] not in (5, 15, 25):
+            continue
+        n_partes, n_pontos = struct.unpack("<ii", corpo[36:44])
+        partes = list(struct.unpack(f"<{n_partes}i", corpo[44:44 + 4 * n_partes])) + [n_pontos]
+        xy = struct.unpack(f"<{2 * n_pontos}d", corpo[44 + 4 * n_partes: 44 + 4 * n_partes + 16 * n_pontos])
+        aneis = [[[xy[2 * k], xy[2 * k + 1]] for k in range(partes[j], partes[j + 1])] for j in range(n_partes)]
+        saida.append((valores[n - 1] if 0 < n <= len(valores) else None, aneis))
+    return saida
+
+
+def simplificar_anel(anel: list, tol: float) -> list:
+    """Douglas-Peucker iterativo; mantém primeiro e último ponto, arredonda a 3 casas. Função pura."""
+    if len(anel) < 5:
+        return [[round(x, 3), round(y, 3)] for x, y in anel]
+    manter, pilha = {0, len(anel) - 1}, [(0, len(anel) - 1)]
+    while pilha:
+        a, b = pilha.pop()
+        (x1, y1), (x2, y2) = anel[a], anel[b]
+        dx, dy = x2 - x1, y2 - y1
+        norma = math.hypot(dx, dy) or 1e-12
+        idx, dmax = None, tol
+        for k in range(a + 1, b):
+            d = abs(dy * (anel[k][0] - x1) - dx * (anel[k][1] - y1)) / norma if (dx or dy) else math.hypot(anel[k][0] - x1, anel[k][1] - y1)
+            if d > dmax:
+                idx, dmax = k, d
+        if idx is not None:
+            manter.add(idx)
+            pilha += [(a, idx), (idx, b)]
+    return [[round(anel[k][0], 3), round(anel[k][1], 3)] for k in sorted(manter)]
+
+
+def _area_assinada(anel: list) -> float:
+    return sum(anel[i][0] * anel[i + 1][1] - anel[i + 1][0] * anel[i][1] for i in range(len(anel) - 1)) / 2
+
+
+def _dentro(p: list, anel: list) -> bool:
+    dentro, j = False, len(anel) - 1
+    for i in range(len(anel)):
+        (xi, yi), (xj, yj) = anel[i], anel[j]
+        if (yi > p[1]) != (yj > p[1]) and p[0] < (xj - xi) * (p[1] - yi) / ((yj - yi) or 1e-12) + xi:
+            dentro = not dentro
+        j = i
+    return dentro
+
+
+def manchas_de_seca(poligonos: list, tol: float = SECAS_TOLERANCIA) -> list:
+    """Features GeoJSON (MultiPolygon) por categoria, anéis simplificados. Como no shapefile, anel
+    horário é externo e anti-horário é buraco; o buraco vai para o externo que o contém. Anel que cai
+    abaixo de 4 pontos sai. Categoria: `s0`…`s4` → S0…S4; outro código fica só como veio. Função pura."""
+    feats = []
+    for codigo, aneis in poligonos:
+        simples = [r for r in (simplificar_anel(a, tol) for a in aneis) if len(r) >= 4]
+        externos = [[r] for r in simples if _area_assinada(r) < 0]
+        for r in simples:
+            if _area_assinada(r) >= 0:
+                dono = next((p for p in externos if _dentro(r[0], p[0])), None)
+                if dono:
+                    dono.append(r)
+        if not externos:
+            continue
+        cod = (codigo or "").strip().lower()
+        feats.append({"type": "Feature",
+                      "properties": {"categoria": cod.upper() if re.fullmatch(r"s[0-4]", cod) else None,
+                                     "codigo_da_fonte": codigo},
+                      "geometry": {"type": "MultiPolygon", "coordinates": externos}})
+    return feats
+
+
 def parse_catalogo_secas(dados) -> dict:
     """Descobre no catálogo CKAN da ANA o recurso mais recente do Monitor de Secas, devolvendo {'titulo','url','atualizado_em'} ou {} se nada casar."""
     pacotes = (dados.get("result") or {}).get("results") or []
@@ -2263,6 +2362,62 @@ def gravar_ar_medido(agora_dt: datetime = None) -> None:
           f"com IQAr, {sum(1 for x in sensores if x['pm25'])}/{len(sensores)} sensor(es) com PM2,5.")
 
 
+def gravar_secas_manchas() -> None:
+    """Baixa o shapefile do mapa mensal mais recente do Monitor de Secas, simplifica e grava
+    data/secas_manchas.json. Mês já gravado não é baixado de novo; mês ainda não publicado (404) cai
+    para o anterior. O original fica identificado pelo hash no livro de consultas. Falha deixa o
+    arquivo anterior, com o mês dele."""
+    import io
+    import zipfile
+    destino = RAIZ / "data" / "secas_manchas.json"
+    anterior = json.loads(destino.read_text(encoding="utf-8")) if destino.exists() else {}
+    d = hoje_editorial()
+    for k in range(3):
+        ano, mes = (d.year, d.month - k) if d.month > k else (d.year - 1, d.month - k + 12)
+        chave, url = f"{ano}-{mes:02d}", SECAS_ZIP.format(mes=SECAS_MESES[mes - 1], ano=ano)
+        if anterior.get("mes") == chave:
+            print(f"[secas] mapa de {chave} já gravado — data/secas_manchas.json mantido.")
+            return
+        try:
+            bruto = _buscar(url, binario=True)
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                continue
+            print(f"[aviso] secas: HTTP {e.code} em {url} — arquivo anterior mantido.")
+            return
+        except Exception as e:  # noqa: BLE001 — fonte externa
+            print(f"[aviso] secas: {type(e).__name__} em {url} — arquivo anterior mantido.")
+            return
+        registrar_consulta("monitor_secas", url, bruto)
+        z = zipfile.ZipFile(io.BytesIO(bruto))
+        nomes = {n.lower(): n for n in z.namelist()}
+        shps = [n for n in z.namelist() if n.lower().endswith(".shp") and "/" not in n
+                and "impact" not in n.lower() and n[:-4].lower() + ".dbf" in nomes]
+        # o pacote traz mais de um shapefile (16/10: `setembro26.shp`, `setembro26_isolado.shp`,
+        # `202609_MS_IMPACTOS.shp`, `Estados_monitor/`); o mapa é o que leva o nome do mês
+        preferidos = [f"{SECAS_MESES[mes - 1]}{ano % 100:02d}.shp", f"{ano}{mes:02d}_ms.shp"]
+        shps.sort(key=lambda n: preferidos.index(n.lower()) if n.lower() in preferidos else len(preferidos))
+        for nome in shps:
+            polis = ler_poligonos_shp(z.read(nome), z.read(nomes[nome[:-4].lower() + ".dbf"]), "uf_codigo")
+            feats = manchas_de_seca(polis)
+            if feats and any(p for p, _ in polis):
+                break
+        else:
+            print(f"[aviso] secas: {url} sem polígono de categoria reconhecível — arquivo anterior mantido.")
+            return
+        escrever_json(destino, {
+            "_governanca": ("Manchas do mapa mensal do Monitor de Secas (ANA e parceiros), por categoria, "
+                            "como a fonte publica. Geometria simplificada para desenho (Douglas-Peucker, "
+                            f"tolerância {SECAS_TOLERANCIA}°, ~2 km): o contorno oficial é o do arquivo "
+                            "original, identificado pelo hash no livro de consultas. Peso zero, sinal físico."),
+            "gerado_em": hoje(), "consultado_em": agora(), "fonte": "Monitor de Secas — ANA",
+            "url_publica": FONTES["monitor_secas"]["url_publica"], "url": url, "arquivo": nome,
+            "mes": chave, "tolerancia_graus": SECAS_TOLERANCIA,
+            "type": "FeatureCollection", "features": feats,
+        }, compacto=True)
+        print(f"→ data/secas_manchas.json: mapa de {chave}, {len(feats)} categoria(s), {nome}.")
+        return
+    print("[aviso] secas: nenhum mapa publicado nos três últimos meses — arquivo anterior mantido.")
 def gravar_focos_referencia() -> None:
     """Lê o último dia COMPLETO de focos (o penúltimo arquivo do diretório: o do dia corrente
     nasce vazio e enche ao longo do dia), completa os dias que faltam na janela de 30 e, se faltar
@@ -2959,6 +3114,26 @@ def autoteste() -> int:
     checar("Ar: sensor sem código IBGE fica de fora; leitura velha é lacuna",
            len(_sens) == 2 and _sens[1]["pm25"] is None and "36 h" in _sens[1]["lacuna"])
 
+    # ── Manchas do Monitor de Secas (16/10/2026): leitor de .shp/.dbf, buraco, simplificação ──
+    import struct as _st
+    _ext = [[0, 0], [0, 5], [0, 10], [10, 10], [10, 0], [0, 0]]          # horário: externo
+    _bur = [[2, 2], [4, 2], [4, 4], [2, 4], [2, 2]]                       # anti-horário: buraco
+    _pts = _ext + _bur
+    _corpo = (_st.pack("<i4d2i", 5, 0, 0, 0, 0, 2, len(_pts)) + _st.pack("<2i", 0, len(_ext))
+              + b"".join(_st.pack("<2d", *p) for p in _pts))
+    _shp = b"\0" * 100 + _st.pack(">ii", 1, len(_corpo) // 2) + _corpo
+    _dbf = (bytes([3, 0, 0, 0]) + _st.pack("<IHH", 1, 65, 5) + b"\0" * 20
+            + b"uf_codigo".ljust(11, b"\0") + b"C" + b"\0" * 4 + bytes([4]) + b"\0" * 15 + b"\x0d" + b" s2  ")
+    _pol = ler_poligonos_shp(_shp, _dbf, "uf_codigo")
+    checar("Secas: lê polígono e categoria do .shp/.dbf", _pol[0][0] == "s2" and len(_pol[0][1]) == 2)
+    _man = manchas_de_seca(_pol)
+    checar("Secas: buraco fica dentro do externo (não vira mancha cheia) e categoria S2",
+           _man[0]["properties"]["categoria"] == "S2" and len(_man[0]["geometry"]["coordinates"]) == 1
+           and len(_man[0]["geometry"]["coordinates"][0]) == 2)
+    checar("Secas: simplificação tira ponto colinear e mantém o anel fechado",
+           [0.0, 5.0] not in _man[0]["geometry"]["coordinates"][0][0]
+           and _man[0]["geometry"]["coordinates"][0][0][0] == _man[0]["geometry"]["coordinates"][0][0][-1])
+    checar("Secas negativo: código fora de s0–s4 não vira categoria", manchas_de_seca([("si", [_ext])])[0]["properties"]["categoria"] is None)
     checar("Avisos: municípios por UF e grau, município com dois graus conta nos dois",
            municipios_por_uf_e_grau({"1": {"uf": "PA", "inmet": [{"severidade": "Perigo"}, {"severidade": "Perigo Potencial"}]},
                                      "2": {"uf": "PA", "inmet": [{"severidade": "Perigo"}, {"severidade": "Perigo"}]},
@@ -3140,6 +3315,7 @@ def main() -> None:
     gravar_alertas_vigentes()
     if "observado" in camadas:
         gravar_ar_medido()
+        gravar_secas_manchas()
         gravar_focos_referencia()
         gravar_riscos_municipio()
     gravar_consultas()
