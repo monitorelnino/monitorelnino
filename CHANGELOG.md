@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #PR · "Envie pelo formulário" leva ao formulário
+
+O convite do cartão da cidade apontava para "Para gestores", sem formulário. Agora rola até o formulário da própria inicial e o preenche pela mesma função que lê os parâmetros do endereço. O portão de âncoras passa a ler também os links montados nos scripts — e achou uma nota de financiamento morta, que sai.
+
 ## 2026-10-16 · #768 · Todo texto público no catálogo, com portão
 
 O portão do catálogo passa a reprovar texto público do `<main>` sem identificador (título, parágrafo, item, legenda, resumo), pela mesma regra do migrador; fora só formulário, diálogo, `noscript` e navegação (`layout/regras.json`). O migrador passa a levar texto com marcação e a não sobrescrever identificador existente. 138 trechos de dez páginas migrados sem mudar uma letra.
