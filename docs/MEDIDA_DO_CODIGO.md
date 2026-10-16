@@ -2,17 +2,17 @@
 
 Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolidação (meta: ≤ 50 mil linhas de .py/.js, mesma proteção).
 
-- **100.935 linhas** em **357 arquivos** .py/.js; **34 workflows**.
-- **274 comandos de portão**: dados/autoteste 77, dados/portão 43, paginas/autoteste 81, paginas/portão 73.
-- **156 nomes de função** definidos em mais de um arquivo.
+- **98.565 linhas** em **335 arquivos** .py/.js; **33 workflows**.
+- **259 comandos de portão**: dados/autoteste 76, dados/portão 40, paginas/autoteste 78, paginas/portão 65.
+- **153 nomes de função** definidos em mais de um arquivo.
 
 ## Por pasta
 
 | pasta | linhas |
 |---|---:|
-| `(raiz)` | 49293 |
-| `scripts` | 42508 |
-| `assets` | 8421 |
+| `(raiz)` | 49301 |
+| `scripts` | 40170 |
+| `assets` | 8381 |
 | `arquivo` | 445 |
 | `.claude` | 268 |
 
@@ -20,60 +20,58 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 
 | arquivo | linhas |
 |---|---:|
-| `coletar_sinais_risco.py` | 2556 |
-| `coletores_base.py` | 2089 |
+| `coletar_sinais_risco.py` | 2557 |
+| `coletores_base.py` | 2121 |
 | `verificar_pista_imprensa.py` | 1706 |
-| `assets/js/financiamento.js` | 1429 |
-| `assets/js/monitor-de-riscos.js` | 1379 |
-| `assets/js/saude.js` | 1350 |
-| `juiz.py` | 1345 |
-| `assets/js/index.js` | 1297 |
+| `juiz.py` | 1422 |
+| `assets/js/financiamento.js` | 1420 |
+| `assets/js/monitor-de-riscos.js` | 1377 |
+| `coletar_doe.py` | 1322 |
+| `assets/js/saude.js` | 1321 |
+| `assets/js/index.js` | 1298 |
+| `scripts/ensaio_da_noite.py` | 1172 |
 | `gerar_imprensa_semana.py` | 1157 |
-| `scripts/ensaio_da_noite.py` | 1140 |
 | `coletar_painel_am.py` | 1135 |
+| `julgar_saude.py` | 1042 |
+| `coletar_diarios_consorciados.py` | 1040 |
 | `recalcular_mare.py` | 1037 |
-| `coletar_diarios_consorciados.py` | 1031 |
-| `julgar_saude.py` | 1030 |
-| `julgar_e_aplicar_descobertas.py` | 1019 |
-| `scripts/unir_conflito_de_rodada.py` | 986 |
-| `coletar_doe.py` | 929 |
+| `scripts/unir_conflito_de_rodada.py` | 1019 |
+| `julgar_e_aplicar_descobertas.py` | 1011 |
 | `gerar_pacote_blog.py` | 830 |
+| `coletar_edicoes_doe.py` | 766 |
+| `julgar_filas.py` | 766 |
 | `coletar_s2id.py` | 762 |
-| `coletar_edicoes_doe.py` | 759 |
-| `assets/js/defesa-civil.js` | 744 |
-| `coletar_saude_estadual.py` | 739 |
-| `julgar_filas.py` | 731 |
+| `assets/js/defesa-civil.js` | 738 |
+| `coletar_saude_estadual.py` | 738 |
 | `scripts/pistas.py` | 701 |
-| `monitorar_busca_web.py` | 682 |
+| `coletar_diarios_municipais.py` | 659 |
 
 ## Funções de mesmo nome em arquivos distintos (as 40 mais repetidas)
 
 | função | arquivos | onde |
 |---|---:|---|
-| `problemas` | 41 | `coletar_cadastro_prioritarios.py`, `coletar_normais_inmet.py`, `coletar_prioritarios_mma.py`, `coletar_semiarido_sudene.py` … |
-| `coletar` | 23 | `buscar_protocolo_calor.py`, `coletar_boletim_df_arboviroses.py`, `coletar_boletim_ms_dengue.py`, `coletar_boletim_pb_arboviroses.py` … |
+| `problemas` | 38 | `coletar_cadastro_prioritarios.py`, `coletar_normais_inmet.py`, `coletar_prioritarios_mma.py`, `coletar_semiarido_sudene.py` … |
+| `coletar` | 22 | `buscar_protocolo_calor.py`, `coletar_boletim_df_arboviroses.py`, `coletar_boletim_ms_dengue.py`, `coletar_boletim_pb_arboviroses.py` … |
 | `self_test` | 15 | `atualizar_marcos_severidade.py`, `classificador_natureza.py`, `detectar_marcos_federais.py`, `gerar_dados_abertos.py` … |
 | `gerar` | 12 | `classificar_planos_municipais.py`, `gerar_blog.py`, `gerar_card_municipios.py`, `gerar_contadores_financiamento.py` … |
 | `classificar` | 11 | `classificador_natureza.py`, `classificar_planos_municipais.py`, `classificar_saude_no_plano.py`, `coletar_desfechos_saude.py` … |
 | `montar` | 11 | `buscar_protocolo_calor.py`, `gerar_card_municipios.py`, `gerar_erros_localizacao.py`, `gerar_financiamento_semana.py` … |
 | `_hoje` | 10 | `coletar_boletim_df_arboviroses.py`, `coletar_boletim_ms_dengue.py`, `coletar_boletim_pb_arboviroses.py`, `coletar_boletim_pe_arboviroses.py` … |
 | `_get` | 9 | `consultar_querido_diario.py`, `detectar_marcos_federais.py`, `monitorar_imprensa_regional.py`, `monitorar_imprensa_saude.py` … |
-| `conferir` | 9 | `scripts/gerar_saude_pipeline.py`, `scripts/verificar_ancoras_internas.py`, `scripts/verificar_ausencia_declarada.py`, `scripts/verificar_cliente_identificado.py` … |
 | `registrar` | 9 | `descobrir_planos.py`, `funil.py`, `gerar_lai.py`, `monitorar_imprensa_regional.py` … |
+| `conferir` | 8 | `scripts/gerar_saude_pipeline.py`, `scripts/verificar_ancoras_internas.py`, `scripts/verificar_ausencia_declarada.py`, `scripts/verificar_cliente_identificado.py` … |
 | `normalizar` | 8 | `classificar_pista_civil.py`, `classificar_planos_municipais.py`, `coletar_normais_inmet.py`, `coletar_sinais_risco.py` … |
 | `__load` | 7 | `arquivo/pesquisadores/pesquisadores.js`, `assets/js/defesa-civil.js`, `assets/js/financiamento.js`, `assets/js/index.js` … |
 | `carregar` | 7 | `aplicar_revisao.py`, `scripts/testar_fixtures_localizacao.py`, `scripts/testar_ordem_prioridade_ufs.py`, `scripts/validar_dicionario.py` … |
-| `renderizar` | 7 | `coletar_painel_am.py`, `gerar_feeds.py`, `scripts/renderizar_figura.py`, `scripts/verificar_fichas_semanticas.js` … |
 | `_norm` | 6 | `coletar_boletim_pe_arboviroses.py`, `coletar_painel_am.py`, `coletar_s2id.py`, `scripts/municipio_do_dominio.py` … |
 | `_plano` | 6 | `classificar_saude_no_plano.py`, `coletar_dda.py`, `coletar_srag_gripe.py`, `coletar_transferegov.py` … |
-| `aplicar` | 6 | `julgar_saude.py`, `scripts/aplicar_edicoes.py`, `scripts/incorporar_lai_am_ro.py`, `scripts/incorporar_respostas_lai.py` … |
 | `__init` | 5 | `assets/js/defesa-civil.js`, `assets/js/financiamento.js`, `assets/js/index.js`, `assets/js/monitor-de-riscos.js` … |
 | `_texto_paginas` | 5 | `coletar_boletim_df_arboviroses.py`, `coletar_boletim_ms_dengue.py`, `coletar_boletim_pb_arboviroses.py`, `coletar_boletim_pe_arboviroses.py` … |
+| `aplicar` | 5 | `julgar_saude.py`, `scripts/aplicar_edicoes.py`, `scripts/incorporar_respostas_lai.py`, `scripts/migrar_sobras_do_doe.py` … |
 | `carregar_fila` | 5 | `descobrir_planos.py`, `monitorar_imprensa_regional.py`, `monitorar_imprensa_saude.py`, `monitorar_sinais_federais.py` … |
 | `medir` | 5 | `scripts/cobertura_docstrings.py`, `scripts/diagnostico_fontes_saude.py`, `scripts/medir_codigo.py`, `scripts/medir_revocacao_das_consultas.py` … |
 | `norm` | 5 | `atualizar_instrumentos_estaduais.py`, `converter_contribuicao.py`, `processar_contribuicoes.py`, `scripts/fila_do_juiz_querido_diario.py` … |
 | `relatorio` | 5 | `coletar_cobertura_qd.py`, `scripts/busca_dirigida_do_ato.py`, `scripts/fechar_saude.py`, `scripts/medir_codigo.py` … |
-| `resumo` | 5 | `motores_busca.py`, `scripts/incorporar_lai_am_ro.py`, `scripts/medir_ciclo_de_mudanca.py`, `scripts/triar_fila.py` … |
 | `sondar` | 5 | `coletar_sg_esus.py`, `coletar_srag_gripe.py`, `scripts/sondar_enso_probabilidades.py`, `scripts/sondar_munic_ibge.py` … |
 | `_gh` | 4 | `scripts/despachar_temporizadores.py`, `scripts/painel_dos_temporizadores.py`, `scripts/reaplicar_noite.py`, `scripts/verificar_workflow_aceito.py` |
 | `_levanta` | 4 | `coletar_doe.py`, `coletar_sg_esus.py`, `coletar_transferencias_municipais.py`, `scripts/testar_busca_dou.py` |
@@ -86,7 +84,9 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `j` | 4 | `aplicar_c10_imprensa.py`, `gerar_painel.py`, `migrar_v224_verificacao.py`, `scripts/verificar_robustez_atualizacao.py` |
 | `numero` | 4 | `coletar_execucao_mps.py`, `coletar_transferegov.py`, `scripts/cruzar_ocp_com_atos.py`, `scripts/ingerir_ocp_midr.py` |
 | `parse_texto` | 4 | `coletar_boletim_df_arboviroses.py`, `coletar_boletim_ms_dengue.py`, `coletar_boletim_pb_arboviroses.py`, `coletar_boletim_pe_arboviroses.py` |
+| `renderizar` | 4 | `coletar_painel_am.py`, `gerar_feeds.py`, `scripts/renderizar_figura.py`, `scripts/verificar_texto_publico.js` |
 | `w` | 4 | `aplicar_c10_imprensa.py`, `gerar_painel.py`, `migrar_v224_verificacao.py`, `scripts/verificar_robustez_atualizacao.py` |
 | `_contexto_tls` | 3 | `coletar_sinais_risco.py`, `scripts/sondar_credenciais.py`, `scripts/sondar_munic_ibge.py` |
 | `_git` | 3 | `scripts/commit_do_elo.py`, `scripts/verificar_idempotencia_dos_derivados.py`, `scripts/verificar_tamanho_dos_dados.py` |
 | `_hash` | 3 | `monitorar_imprensa_regional.py`, `monitorar_imprensa_saude.py`, `monitorar_sinais_federais.py` |
+| `_n` | 3 | `coletar_boletim_df_arboviroses.py`, `coletar_boletim_pb_arboviroses.py`, `coletar_boletim_pe_arboviroses.py` |

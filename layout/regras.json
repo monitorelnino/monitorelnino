@@ -1,5 +1,5 @@
 {
-  "_governanca": "REGRAS DE CONFORMIDADE, legíveis por máquina (handover 'Conformidade permanente', 02/10/2026). Este arquivo NÃO cria regra: ele EXTRAI, na forma que um programa confere, o que já está decidido nos documentos-fonte. Onde divergir deles, vencem eles — e o campo `fonte` de cada regra diz onde ela mora. Quem verifica é scripts/verificar_conformidade.py, portão bloqueante. Exceção só por layout/excecoes.json, com motivo e data.",
+  "_governanca": "REGRAS DE CONFORMIDADE, legíveis por máquina (handover 'Conformidade permanente', 02/10/2026). Este arquivo NÃO cria regra: ele EXTRAI, na forma que um programa confere, o que já está decidido nos documentos-fonte. Onde divergir deles, vencem eles — e o campo `fonte` de cada regra diz onde ela mora. Quem verifica é scripts/verificar_conformidade.py (layout, tipografia, números, acessibilidade) e scripts/verificar_texto_publico.js (todo o texto público), portões bloqueantes. Exceção só por layout/excecoes.json, com motivo e data.",
   "hierarquia": [
     "AI_EDITORIAL_NARRATIVE_GOVERNANCE.md",
     "AI_VISUAL_ART_DIRECTION.md",
@@ -101,7 +101,7 @@
     "fundo_do_corpo": "rgb(255, 255, 255)",
     "_nota_fundo": "DESVIO DECLARADO do sistema de marca, já registrado no CLAUDE.md: o fundo deste site é BRANCO, por decisão editorial de 05/09/2026 reafirmada em 23/09/2026. A regra existe para impedir que uma rodada o reverta para escuro 'por fidelidade à marca'.",
     "cor_nunca_sozinha": true,
-    "_nota_cor_sozinha": "Nenhuma informação vive só na cor: todo degrau de legenda tem rótulo, e é o que verificar_legendas.js e verificar_rampas_dos_mapas.py já cobram. Aqui a regra fica declarada para que a razão não se perca."
+    "_nota_cor_sozinha": "Nenhuma informação vive só na cor: todo degrau de legenda tem rótulo, e é o que verificar_texto_publico.js (legendas) e verificar_rampas_dos_mapas.py já cobram. Aqui a regra fica declarada para que a razão não se perca."
   },
   "componentes": {
     "fonte": "CLAUDE.md §Design, contratos de layout, handovers de 01 e 02/10/2026",
@@ -194,11 +194,11 @@
         "Backlog"
       ]
     },
-    "_nota_por_pagina": "A lista de cada página fica no contrato dela, e é lá que o portão a lê. Esta cópia existe para a lista ser visível num lugar só; o contrato prevalece, porque é ele que declara as divergências.",
+    "_nota_por_pagina": "A lista de cada página fica no contrato dela, e é lá que o portão (scripts/verificar_texto_publico.js) a lê. Esta cópia existe para a lista ser visível num lugar só; o contrato prevalece, porque é ele que declara as divergências.",
     "_nota_regra_1": "03/10/2026 (regra 1 da editoria): dizemos o que disponibilizamos; nunca o que não disponibilizamos. Nenhuma frase sobre código, base de dados ou licença de dados entra no texto público — nem para dizer que existe, nem para dizer que não existe. A metodologia é o único material técnico público, e ela se anuncia numa frase: 'A metodologia é pública.'"
   },
   "texto_publico": {
-    "fonte": "scripts/verificar_texto_publico.js (13/10/2026: fusão de verificar_vocabulario_publico.js e verificar_voz_editorial.js, consolidação item 3)",
+    "fonte": "scripts/verificar_texto_publico.js — o único verificador de texto público (consolidação item 3, 13 e 16/10/2026): renderiza cada página uma vez e julga jargão, forma, refrão, vocabulário proibido, semana epidemiológica, legendas e prosa (portão 19), componente de figura, fichas semânticas, palavras por página, enquadramento federal e a regra 0 da Imprensa",
     "jargao_interno": [
       {
         "padrao": "\\b(?!datapackage\\b)[\\w-]+\\.(py|json|js|yml|sh)\\b",
@@ -328,7 +328,368 @@
       }
     ],
     "refrao_a_partir_de": 3,
-    "_nota_refraos": "Voz editorial (16/09/2026, docs/VOZ_EDITORIAL.md): a ressalva mora uma vez por página; 3+ vezes em .hint, .note, .card-body é refrão. Barra a publicação."
+    "_nota_refraos": "Voz editorial (16/09/2026, docs/VOZ_EDITORIAL.md): a ressalva mora uma vez por página; 3+ vezes em .hint, .note, .card-body é refrão. Barra a publicação.",
+    "paginas_extras": [
+      "obrigado.html",
+      "blog/*.html"
+    ],
+    "_nota_paginas": "As páginas julgadas são `paginas_publicas` mais estas; `mudancas.html` e `indice-de-conteudo.html` ficam fora de propósito (internas). `blog/*.html` são os textos publicados do blog.",
+    "semana": [
+      {
+        "nome": "semana epidemiológica",
+        "padrao": "semanas?\\s+epidemiol[óo]gicas?",
+        "flags": "i"
+      },
+      {
+        "nome": "semana fechada",
+        "padrao": "semanas?\\s*\\(?s?\\)?\\s+fechadas?",
+        "flags": "i"
+      },
+      {
+        "nome": "sigla SE com número",
+        "padrao": "\\bSE\\s?\\d{1,2}\\b",
+        "flags": ""
+      },
+      {
+        "nome": "ano+semana colados (202637)",
+        "padrao": "(?<![\\d/])20\\d{2}(?:0[1-9]|[1-4]\\d|5[0-3])(?![\\d/])",
+        "flags": ""
+      },
+      {
+        "nome": "“até a semana N”",
+        "padrao": "at[ée]\\s+a\\s+semana\\s+\\d{1,2}\\b",
+        "flags": "i"
+      }
+    ],
+    "_nota_semana": "Editoria, 07/10/2026, site inteiro: o leitor não sabe o que é semana epidemiológica; a semana sai em datas por assets/semana.js (cuja conversão o autoteste prova contra o calendário do MS). Procura no texto RENDERIZADO e nos rótulos que o Chart receberia (eixo, série, título de eixo — nunca os valores: '201447' é um número de casos). A guarda `(?<![\\d/])` nasceu de um falso positivo medido ('08/06/202652.4', data colada ao número).",
+    "legendas": {
+      "_nota": "Portão 19 (15/09/2026, regra permanente): título, subtítulo, item de legenda, crédito, resumo, rótulo na mídia e tooltip DESCREVEM; nunca avaliam, dramatizam, interpretam nem atribuem causa. Desde 16/09 (voz editorial §10) vale para toda a prosa (p, li, dd, summary, figcaption, dialog) das páginas em `prosa_em`; exceções declaradas no HTML: data-voz=\"ficha\" | \"lei\" | \"citacao\" e data-proveniencia=\"1\" (a de estilo — travessão — vale mesmo ali, salvo citação). As exceções abaixo são frases ou termos LITERAIS aprovados pela editoria (frase de privacidade do formulário, escada S0–S4 do Monitor de Secas da ANA, 'pior hora do dia' do EAQI, garantia 'nunca entram nos índices', nomes de doença e de alerta oficiais); mudar a frase faz o portão voltar a reprovar.",
+      "excecoes": [
+        {
+          "padrao": "nunca entram nos índices",
+          "flags": "gi"
+        },
+        {
+          "padrao": "^Pior hora do dia\\b",
+          "flags": ""
+        },
+        {
+          "padrao": "\\bpior hora do dia\\b",
+          "flags": "gi"
+        },
+        {
+          "padrao": "o Brasil não tem índice nacional aberto de qualidade do ar, por isso usamos a escala europeia",
+          "flags": "gi"
+        },
+        {
+          "padrao": "^(?:Grave|Extrema|Excepcional)$",
+          "flags": ""
+        },
+        {
+          "padrao": "Não pedimos seu nome nem contato, só as informações sobre o documento\\. A conferência é feita pela nossa equipe\\.",
+          "flags": "g"
+        },
+        {
+          "padrao": "síndrome respiratória aguda grave",
+          "flags": "gi"
+        },
+        {
+          "padrao": "aguda grave",
+          "flags": "gi"
+        },
+        {
+          "padrao": "síndrome respiratória grave",
+          "flags": "gi"
+        },
+        {
+          "padrao": "janela crítica",
+          "flags": "gi"
+        },
+        {
+          "padrao": "sinais de alarme",
+          "flags": "gi"
+        },
+        {
+          "padrao": "nível \\d \\((?:baixa atividade|atenção|alerta|emergência)\\)",
+          "flags": "gi"
+        },
+        {
+          "padrao": "alerta[s]? (?:hidrológic|geológic|meteorológic|vigente|de risco|nacional|laranja|vermelh)",
+          "flags": "gi"
+        },
+        {
+          "padrao": "nível de alerta",
+          "flags": "gi"
+        },
+        {
+          "padrao": "em alerta",
+          "flags": "gi"
+        },
+        {
+          "padrao": "avisos? meteorológic",
+          "flags": "gi"
+        },
+        {
+          "padrao": "alertas? (?:do|de) CEMADEN",
+          "flags": "gi"
+        },
+        {
+          "padrao": "restrição importante de transporte",
+          "flags": "gi"
+        },
+        {
+          "padrao": "grau de urgência",
+          "flags": "gi"
+        },
+        {
+          "padrao": "situação de emergência|estado de emergência|emergência sanitária|emergências sanitárias|decreto de emergência|decretos de emergência",
+          "flags": "gi"
+        },
+        {
+          "padrao": "grave e urgente necessidade pública",
+          "flags": "gi"
+        },
+        {
+          "padrao": "seca (?:fraca|moderada|grave|extrema|excepcional)",
+          "flags": "gi"
+        },
+        {
+          "padrao": "matéria urgente, relevante",
+          "flags": "gi"
+        },
+        {
+          "padrao": "risco de fogo",
+          "flags": "gi"
+        },
+        {
+          "padrao": "pior desfecho",
+          "flags": "gi"
+        },
+        {
+          "padrao": "melhor(?:es)? (?:esforços|estimativa)",
+          "flags": "gi"
+        }
+      ],
+      "avaliativo": [
+        "preocupant",
+        "alarmant",
+        "alarmism",
+        "impressionant",
+        "\\bsignificativ[oa]s?\\b",
+        "\\bgrave(s|mente)?\\b",
+        "\\bcrític[oa]s?\\b",
+        "\\bexpressiv[oa]s?\\b",
+        "chocant",
+        "surpreendent",
+        "lamentav",
+        "\\bfelizmente\\b",
+        "\\binfelizmente\\b",
+        "\\bdramátic",
+        "\\bassustador",
+        "\\benorme",
+        "\\bgigantesc",
+        "\\bdrástic",
+        "\\bfrágil\\b|\\bfragilidade",
+        "\\bdespreparad",
+        "\\bfracass",
+        "\\binsuficient",
+        "\\bprecári",
+        "\\binaceitáv",
+        "\\bescandal",
+        "\\burgent(e|íssim)",
+        "\\bpior(es)?\\b",
+        "\\bmelhor(es)?\\b",
+        "\\bpositiv[oa]s?\\b",
+        "\\bnegativ[oa]s?\\b",
+        "forte tendência",
+        "problema crescente",
+        "cenário preocupante",
+        "situação alarmante",
+        "avanço importante",
+        "\\bexemplar(es)?\\b",
+        "\\bnotáve(l|is)\\b"
+      ],
+      "interpretativo": [
+        "fica evidente",
+        "é importante destacar",
+        "merece atenção",
+        "não podemos ignorar",
+        "chama (a )?atenção",
+        "os números são claros",
+        "\\brevela(m|ndo)?\\b",
+        "\\bdemonstra(m|ndo)?\\b",
+        "\\bevidencia(m|ndo)?\\b",
+        "\\bcomprova(m|ndo)?\\b",
+        "\\bmostra(m)? que\\b",
+        "isso (mostra|revela|significa|indica)",
+        "o país enfrenta",
+        "se agrava",
+        "deteriora"
+      ],
+      "causal": [
+        "\\bprovoc(ou|a|am|aram|ando)\\b",
+        "\\bcausou\\b|\\bcausaram\\b|\\bcausa(m|ndo)? (o|a|um|uma)\\b",
+        "\\bpor causa d",
+        "\\bdevido a",
+        "\\bgraças a",
+        "\\blev(ou|aram) a\\b",
+        "\\bresult(ou|aram) em\\b",
+        "\\bexplica(m)?\\b",
+        "\\bem consequência\\b",
+        "\\bpor isso\\b"
+      ],
+      "teto": [
+        "\\bnão existe(m)?\\b",
+        "\\bnão (tem|têm) plano\\b",
+        "\\bsem (plano|instrumento|ato)s?\\b(?! (?:localizad|identificad|próprio|municipal próprio)|(?: (?:estadual|municipal|preventivo|do ciclo|para o ciclo))* (?:localizad|identificad))"
+      ],
+      "caixa_alta_palavra_maior_que": 5,
+      "leituras_aprovadas": [
+        "Nesta época, a piora da qualidade do ar costuma ser causada por fumaça de queimadas. Estimativa de modelos, válida para a capital de cada estado. O Brasil não tem índice nacional aberto de qualidade do ar, por isso usamos a escala europeia."
+      ],
+      "tamanhos": {
+        "titulo": 100,
+        "leitura_frases": 2,
+        "leitura": 240,
+        "item_de_legenda": 140
+      },
+      "tamanhos_por_figura": {
+        "monitor-de-riscos.html#boxEpisodios": {
+          "leitura_frases": 3,
+          "motivo": "a leitura é a soma de dois moldes do catálogo aprovado em 05/10/2026 (monitor-de-riscos.pacifico.episodios.molde_leitura + molde_contagem), três períodos; o portão antigo não via porque renderizava com a URL da inicial e lia o texto de reserva",
+          "registrado_em": "2026-10-16",
+          "decidido_por": "janela D (consolidação), registro provisório — a editoria decide se os três períodos ficam (a exceção vira decisão) ou se a contagem vai para a nota metodológica"
+        }
+      },
+      "_nota_tamanhos_por_figura": "Teto diferente para UMA figura, nomeada por página#id, com motivo, data e quem decidiu — mesma disciplina de layout/excecoes.json. Sem os três campos a exceção não vale.",
+      "indicadores": ".cartao--kpi, .contador-zone .note, .contador-zone .gauge-ends, .gauge-head .glabel, .gfaixa-badge, .map-legend:not(.figura .map-legend)",
+      "prosa_em": [
+        "index.html",
+        "monitor-de-riscos.html",
+        "defesa-civil.html",
+        "saude.html",
+        "financiamento.html",
+        "imprensa.html",
+        "proteja-se.html"
+      ],
+      "prosa": {
+        "enfase": "(?:^|[^a-zà-ÿ])(só|apenas|única|único|nunca|sempre)(?:[^a-zà-ÿ]|$)",
+        "lei": "\\bLei\\s+\\d|\\bart\\.\\s?\\d|\\bDecreto\\s+\\d|\\bADPF\\s+\\d",
+        "denuncia": "\\bdenuncia(m)?\\b|\\bexpõe(m)?\\b",
+        "autorreferencia": "\\bo Monitor não\\b|\\bo site não\\b|não é um ranking|não comparável|não atribui|peso zero",
+        "processo": "carregando",
+        "traco_vazio": "(?:^|[\\s:(])—\\s*(?:[.,;)]|$)",
+        "travessao_pontuacao": "[^\\s]\\s—\\s[^\\s]",
+        "glossario": [
+          "arcabouço público",
+          "instrumentos? ex-ante",
+          "escada da §",
+          "faixas do site",
+          "canal endêmico",
+          "painel amostral",
+          "última SE\\b",
+          "\\bLAI\\b"
+        ]
+      },
+      "identidade": {
+        "nav_de_index_traz": "MARÉ Legal",
+        "h1_de_saude_traz": "MARÉ.*Saúde"
+      }
+    },
+    "palavras_por_pagina": {
+      "index.html": [
+        500,
+        950
+      ],
+      "monitor-de-riscos.html": [
+        550,
+        700
+      ],
+      "defesa-civil.html": [
+        500,
+        560
+      ],
+      "saude.html": [
+        700,
+        900
+      ],
+      "financiamento.html": [
+        1000,
+        1600
+      ],
+      "proteja-se.html": [
+        800,
+        1150
+      ],
+      "imprensa.html": [
+        1500,
+        2300
+      ],
+      "prefeituras.html": [
+        600,
+        950
+      ],
+      "obrigado.html": [
+        100,
+        160
+      ],
+      "blog.html": [
+        250,
+        300
+      ]
+    },
+    "_nota_palavras": "[meta §7, teto] de palavras estáticas por página (v3.1 §7): teto bloqueia a publicação; acima da meta só avisa. Conta o texto fora de script, style, nav, rodapé, `.figura-sub` e blocos data-proveniencia=\"1\" (evidência, não prosa). As metas subiram com textos aprovados pela editoria (30/09 Monitor de riscos; 02/10 Defesa civil; 15/09 Saúde, Financiamento, Imprensa, Prefeituras); o teto continua existindo.",
+    "enquadramento": {
+      "arquivo": "assets/js/index.js",
+      "inicio": "const ENQ_TEXTO",
+      "funcao": "function enquadramentoBox",
+      "aprovados": {
+        "chuva": "Consta do cadastro federal de municípios suscetíveis a enxurradas e inundações.",
+        "geo": "Consta da lista federal de municípios suscetíveis a risco geo-hidrológico.",
+        "seca": "Integra a delimitação oficial do Semiárido brasileiro.",
+        "fogo": "Consta da lista federal de municípios prioritários para controle do desmatamento e dos incêndios florestais na Amazônia (MMA, {ano}).",
+        "nenhuma": "Não consta das listas federais de risco por município: enxurradas e inundações (Casa Civil), Semiárido (Sudene) e prioritários para desmatamento e incêndios (MMA)."
+      },
+      "complementos": [
+        "deslizamento",
+        "enxurrada",
+        "inundação"
+      ],
+      "dever": "\\b(deve|devem|deverá|deverão|dever|deveres|obrigad[oa]s?|obrigatóri[oa]s?|obrigatoriedade|obriga|obrigação|obrigações|recomenda|recomenda-se|recomendável|recomendação|recomendações|precisa|deveria|tem de|há de)\\b",
+      "_nota": "PR 4 do handover do enquadramento federal (editoria, 30/09/2026): as quatro frases do bloco são literais e aprovadas; nenhuma das listas federais cria dever de plano (o Cadastro Nacional do art. 3º-A não é nenhuma delas), e uma palavra de dever ali viraria afirmação jurídica falsa sobre 3.157 municípios. Confere o BLOCO do fonte, não o arquivo."
+    },
+    "figura_componente": {
+      "proibidos": "p, details, .note, .hint, summary",
+      "partes": [
+        "figura-sub",
+        "figura-nota",
+        "grafico-pacifico-eixo",
+        "figura-cat",
+        "figura-leitura",
+        "busca-mun-conta",
+        "cartao-mapa-familia",
+        "cartao-mapa-boletim",
+        "cartao-mapa-leitura",
+        "cartao-mapa-dados",
+        "cartao-mapa-rodape"
+      ],
+      "subtitulo_maximo": 140,
+      "credito_maximo": 160,
+      "credito": "^Fonte: .+ · Atualização: (\\d{2}/\\d{2}/\\d{4}|sem coleta até o corte)$",
+      "credito_explicacao": "por que|confira|enquanto isso|lacuna declarada|contrariaria|regra de prova|aguard",
+      "creditos_de_cartao": ".cartao .fonte-figura, .contador-zone .fonte-figura, #prazos .fonte-figura",
+      "fichas": "docs/fichas_semanticas.json",
+      "_nota": "04 e 07/09/2026: toda .figura traz título, UM subtítulo (≤ 140 caracteres, com '·'), mídia, legenda e UM crédito no formato único; nada de parágrafo, nota, dica ou details dentro dela (details com tabela ou data-alternativa=\"dados\" é alternativa acessível; as classes em `partes` são partes declaradas do componente). Fichas (§35 da governança, 23/09): toda figura renderizada tem ficha completa em `fichas`, nenhuma ficha é órfã e nenhuma frase de ficha vaza para o HTML."
+    },
+    "imprensa": {
+      "pagina": "imprensa.html",
+      "obrigatorios": [
+        "relData2",
+        "citarAcesso"
+      ],
+      "todas_as_ufs": 27,
+      "_nota": "Regra 0 da Imprensa (01/10/2026): nada escrito à mão que dependa do dado. Os ids em `obrigatorios` não podem ficar vazios nem em '—'; a versão do motor (data/indice.json, data/monitor_saude.json) NÃO aparece no texto (editoria, 05/10); a frase 'média dos N verificados' bate com monitor_saude.json e some aos 27; 'recalculados a cada publicação, N vezes por dia' bate com data/cadencia_publicacao.json."
+    }
   },
   "numeros": {
     "fonte": "handover da Imprensa (02/10/2026) e CLAUDE.md (regras editoriais)",
@@ -445,10 +806,10 @@
     "figura.legenda_nao_repete_titulo": "scripts/verificar_conformidade.py",
     "figura.legenda_maxima_caracteres": "scripts/verificar_conformidade.py",
     "figura.midia_rotulada": "scripts/verificar_conformidade.py",
-    "vocabulario_proibido.global": "scripts/verificar_conformidade.py",
-    "vocabulario_proibido.com_numero": "scripts/verificar_conformidade.py",
-    "vocabulario_proibido.dever": "scripts/verificar_conformidade.py",
-    "vocabulario_proibido.por_pagina": "scripts/verificar_conformidade.py",
+    "vocabulario_proibido.global": "scripts/verificar_texto_publico.js",
+    "vocabulario_proibido.com_numero": "scripts/verificar_texto_publico.js",
+    "vocabulario_proibido.dever": "scripts/verificar_texto_publico.js",
+    "vocabulario_proibido.por_pagina": "scripts/verificar_texto_publico.js",
     "numeros.formato": "scripts/verificar_conformidade.py",
     "numeros.zero_por_extenso_em_cartao": "scripts/verificar_conformidade.py",
     "numeros.populacao_em_milhoes_uma_casa": "scripts/verificar_conformidade.py",
@@ -481,6 +842,13 @@
     "texto_publico.jargao_interno": "scripts/verificar_texto_publico.js",
     "texto_publico.forma": "scripts/verificar_texto_publico.js",
     "texto_publico.refraos": "scripts/verificar_texto_publico.js",
-    "texto_publico.refrao_a_partir_de": "scripts/verificar_texto_publico.js"
+    "texto_publico.refrao_a_partir_de": "scripts/verificar_texto_publico.js",
+    "texto_publico.paginas_extras": "scripts/verificar_texto_publico.js",
+    "texto_publico.semana": "scripts/verificar_texto_publico.js",
+    "texto_publico.legendas": "scripts/verificar_texto_publico.js",
+    "texto_publico.palavras_por_pagina": "scripts/verificar_texto_publico.js",
+    "texto_publico.enquadramento": "scripts/verificar_texto_publico.js",
+    "texto_publico.figura_componente": "scripts/verificar_texto_publico.js",
+    "texto_publico.imprensa": "scripts/verificar_texto_publico.js"
   }
 }

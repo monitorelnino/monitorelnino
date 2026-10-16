@@ -125,9 +125,7 @@ BARRAM_A_PUBLICACAO = (
     "verificar_esquema_de_pista",      # integridade do dado: quarentena por arquivo
     "verificar_seguranca",             # segredo e dado pessoal
     "verificar_evidencia_sem_segredo",
-    "verificar_texto_publico",         # dado externo pode trazer palavra proibida; refrão de ressalva
-    "verificar_palavras",
-    "verificar_legendas",
+    "verificar_texto_publico",         # texto público inteiro: palavra proibida, semana, refrão, legendas, palavras
     "verificar_runtime",               # pagina que nao renderiza
     "verificar_tamanho_dos_dados",     # arquivo que estourou nao sobe
     "verificar_marcadores_de_conflito",
