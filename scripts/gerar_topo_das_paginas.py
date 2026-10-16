@@ -251,7 +251,7 @@ GOV_RISCOS = ("INSTANTÂNEO dos dois números do Monitor de riscos que a Imprens
               "de calor da página.")
 
 
-def cartoes_do_monitor_de_riscos(sinais: dict, normais: dict, limiar_ar: int = 40) -> list:
+def cartoes_do_monitor_de_riscos(sinais: dict, normais: dict) -> list:
     """Os dois números do Monitor de riscos que a Imprensa publica. Função pura.
 
     Capital sem normal publicada fica SEM desvio — nunca com desvio estimado. Zero significaria
@@ -291,25 +291,6 @@ def cartoes_do_monitor_de_riscos(sinais: dict, normais: dict, limiar_ar: int = 4
         "nota": (f"máxima prevista de {melhor['tmax']} °C contra a média de {melhor['normal']} °C "
                  f"do mês; {com_normal} capital(is) com normal publicada" if melhor else None),
     }]
-    acima = []
-    lidas = 0
-    for uf, u in ufs.items():
-        ind = ((u.get("qualidade_ar") or {}).get("indice") or {})
-        if ind.get("valor") is None:
-            continue
-        lidas += 1
-        if ind["valor"] > limiar_ar:
-            acima.append(uf)
-    cartoes.append({
-        "id": "capitais_ar_ruim_ou_pior",
-        "valor": len(acima) if lidas else None,
-        "referencia": "leitura mais recente",
-        "rotulo": "capitais com o ar na faixa ruim ou acima dela",
-        "fonte": "Copernicus (CAMS), via Open-Meteo", "sem_coleta": lidas == 0,
-        "lista": sorted(acima),
-        "nota": (f"faixa da própria escala europeia, acima de {limiar_ar}; {lidas} capital(is) "
-                 f"com leitura" if lidas else None),
-    })
     return cartoes
 
 
@@ -411,10 +392,8 @@ def _autoteste() -> int:
        cartoes_da_defesa_civil({}, {}, {}, "2026-10-02")[0]["sem_coleta"] is True)
 
     riscos = cartoes_do_monitor_de_riscos(
-        {"uf": {"SP": {"temperatura": {"capital": "São Paulo", "tmax": 30.0, "data": "02/10/2026"},
-                       "qualidade_ar": {"indice": {"valor": 55}}},
-                "MT": {"temperatura": {"capital": "Cuiabá", "tmax": 35.0, "data": "02/10/2026"},
-                       "qualidade_ar": {"indice": {"valor": 20}}}}},
+        {"uf": {"SP": {"temperatura": {"capital": "São Paulo", "tmax": 30.0, "data": "02/10/2026"}},
+                "MT": {"temperatura": {"capital": "Cuiabá", "tmax": 35.0, "data": "02/10/2026"}}}},
         {"capitais": {"SP": {"tmax": [0] * 9 + [26.5, 0, 0]},
                       "MT": {"tmax": [0] * 9 + [34.0, 0, 0]}}})
     rid = {c["id"]: c for c in riscos}
@@ -425,7 +404,7 @@ def _autoteste() -> int:
        cartoes_do_monitor_de_riscos(
            {"uf": {"RR": {"temperatura": {"tmax": 38.0, "data": "02/10/2026"}}}},
            {"capitais": {}})[0]["sem_coleta"] is True)
-    ok("o ar conta as capitais acima da faixa", rid["capitais_ar_ruim_ou_pior"]["valor"] == 1)
+    ok("o índice europeu de ar saiu com a fonte (16/10/2026)", "capitais_ar_ruim_ou_pior" not in rid)
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
           else f"✓ AUTOTESTE OK — {len(_casos_contados)} casos, sem rede e sem escrita em data/.")

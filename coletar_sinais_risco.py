@@ -30,7 +30,6 @@ USO
   python coletar_sinais_risco.py --semear      # (re)cria o registro a partir do que já é verificado no repositório
   python coletar_sinais_risco.py               # coleta as três camadas (precisa de rede aberta)
   python coletar_sinais_risco.py --camada enos # coleta só uma camada
-  python coletar_sinais_risco.py --municipios  # temperatura e PM2,5 dos 5.570 (§209)
 
 As três camadas (METODOLOGIA §23.2):
   ciclo      — Painel El Niño 2026-2027 (CEMADEN/INPE): risco projetado por UF
@@ -137,13 +136,6 @@ CAPITAL_IBGE = {
 MUNICIPIOS_REF = RAIZ / "data" / "municipios_ibge_referencia.json"
 CONSULTAS = RAIZ / "data" / "sinais_risco_consultas.json"
 ALERTAS = RAIZ / "data" / "alertas" / "vigentes.json"
-CLIMA = RAIZ / "data" / "clima_municipios.json"
-# Municípios por chamada. A API aceita lista de coordenadas; 100 mantém a URL curta e
-# o número de chamadas baixo (56 por fonte para os 5.570).
-CLIMA_LOTE = 100
-# Pausa entre lotes. O teto do Open-Meteo é por localidade e também por hora; sem pausa,
-# 39 de 56 lotes voltaram 429 em 24/09/2026.
-CLIMA_PAUSA_S = 12.0
 
 # ---------------------------------------------------------------------------
 # Catálogo de fontes. `url_publica` é o que a página mostra ao leitor (a página
@@ -191,18 +183,6 @@ FONTES = {
                       "&request=GetFeature&typeNames=cemaden_dev:alertas_vigentes_siaden&outputFormat=application/json&count=3000"),
         "papel": "Alertas vigentes emitidos aos municípios monitorados.",
     },
-    "open_meteo_tempo": {
-        "nome": "Temperatura observada e prevista", "orgao": "Open-Meteo (modelos ECMWF, DWD, NOAA)",
-        "camada": "observado",
-        "url_publica": "https://open-meteo.com/",
-        # Sonda de 24/09/2026 com rede real: várias coordenadas numa chamada devolvem uma LISTA
-        # na ORDEM pedida, e o lat/lon de volta é o do NÓ DA GRADE (-15.782 no lugar de -15.7939)
-        # — casar por índice, nunca por coordenada.
-        "endpoint": "https://api.open-meteo.com/v1/forecast",
-        "papel": "Máxima e mínima do dia anterior e dos próximos dias, por capital, em °C.",
-        "natureza": NATUREZA_MODELO,
-        "licenca": "CC BY 4.0 — crédito obrigatório: Weather data by Open-Meteo.com",
-    },
     "inmet_previsao_capitais": {
         # 27/09/2026 (pedido da editoria: "temperatura reportada por órgão competente, para a gente
         # referenciar um órgão de referência"). Até aqui a previsão vinha do Open-Meteo, que roda
@@ -214,23 +194,6 @@ FONTES = {
         "endpoint": "https://apiprevmet3.inmet.gov.br/previsao/capitais",
         "papel": "Máxima e mínima previstas para cada capital, pelo instituto oficial brasileiro.",
         "natureza": NATUREZA_MODELO,
-    },
-    "open_meteo_ar": {
-        "nome": "Qualidade do ar estimada", "orgao": "Copernicus CAMS via Open-Meteo",
-        "camada": "observado",
-        "url_publica": "https://open-meteo.com/en/docs/air-quality-api",
-        # A API entrega só série HORÁRIA (24 valores por dia, sonda de 24/09/2026); a média
-        # diária é cálculo nosso e está declarada como tal no dado.
-        "endpoint": "https://air-quality-api.open-meteo.com/v1/air-quality",
-        # 27/09/2026 (decisão da editoria): a página passa a mostrar ÍNDICE de qualidade do ar, e
-        # não PM2,5. O índice vem PRONTO da fonte (`european_aqi`), nunca calculado aqui: calcular
-        # transformaria o índice numa afirmação do Monitor, e ele tem de ser evidência de terceiro.
-        # ERRATA 16/10/2026 (METODOLOGIA §41.7): em 27/09 este comentário dizia "não há índice
-        # nacional aberto". Há: o IQAr do MMA/MonitorAr, por estação (ver AR_FONTES). A sondagem
-        # de 27/09 bateu no aplicativo, não no serviço. Esta fonte sai da página com a figura nova.
-        "papel": "Índice europeu de qualidade do ar (EAQI) e poluentes por capital, estimados por modelo.",
-        "natureza": NATUREZA_MODELO,
-        "licenca": "CC BY 4.0 — crédito obrigatório: Copernicus CAMS via Open-Meteo.com",
     },
     # ---------------------------------------------------------------------
     # CAMADA DE MEDIÇÃO. O que ela promete é o que nenhuma estimativa de modelo substitui, e por
@@ -506,13 +469,6 @@ def _buscar_registrado(chave: str, url: str, extra: dict = None) -> str:
     bruto = _buscar(url, extra)
     registrar_consulta(chave, url, bruto)
     return bruto
-
-
-def _coordenadas_em_lote(pontos: list) -> str:
-    """Monta o par latitude=…&longitude=… com as N coordenadas numa chamada só (a API aceita listas
-    separadas por vírgula e responde na mesma ordem)."""
-    return ("latitude=" + ",".join(f"{p['lat']:.4f}" for p in pontos)
-            + "&longitude=" + ",".join(f"{p['lon']:.4f}" for p in pontos))
 
 
 # ===========================================================================
@@ -891,75 +847,6 @@ def _media(valores) -> float:
     """Média aritmética dos valores numéricos; None se não houver nenhum — ausência não vira zero."""
     limpos = [v for v in (valores or []) if isinstance(v, (int, float))]
     return round(sum(limpos) / len(limpos), 1) if limpos else None
-
-
-def parse_open_meteo_tempo(dados, chaves) -> dict:
-    """Lê a resposta do Forecast do Open-Meteo para N coordenadas e devolve {chave: {...}}.
-
-    `chaves` é a lista de identificadores NA MESMA ORDEM em que as coordenadas foram pedidas: a
-    API devolve uma lista posicional e o lat/lon de volta é o do nó da grade, então casar por
-    coordenada erraria. Cada registro traz a série diária (ontem, hoje e os próximos), com a
-    unidade declarada pela própria API. Função pura."""
-    itens = dados if isinstance(dados, list) else [dados]
-    saida = {}
-    for chave, bloco in zip(chaves, itens):
-        d = (bloco or {}).get("daily") or {}
-        dias = d.get("time") or []
-        if not dias:
-            continue
-        unidade = ((bloco.get("daily_units") or {}).get("temperature_2m_max")) or "°C"
-
-        def _v(campo, i):
-            col = d.get(campo) or []
-            return col[i] if i < len(col) and isinstance(col[i], (int, float)) else None
-
-        serie = [{"data": dia, "maxima": _v("temperature_2m_max", i),
-                  "minima": _v("temperature_2m_min", i),
-                  "aparente_maxima": _v("apparent_temperature_max", i)}
-                 for i, dia in enumerate(dias)]
-        if all(p["maxima"] is None for p in serie):
-            continue                     # série sem nenhuma máxima é lacuna, não zero
-        saida[chave] = {"unidade": unidade, "serie": serie, "natureza": NATUREZA_MODELO,
-                        "no_da_grade": {"lat": bloco.get("latitude"), "lon": bloco.get("longitude")}}
-    return saida
-
-
-def parse_open_meteo_ar(dados, chaves) -> dict:
-    """Lê o Air Quality do Open-Meteo (Copernicus CAMS) para N coordenadas e devolve {chave: {...}}
-    com a média DIÁRIA de cada poluente calculada a partir das horas — a API entrega só horário.
-    Ordem posicional, como no Forecast. Sem PM2,5 o registro não entra: lacuna, nunca zero.
-    Função pura."""
-    itens = dados if isinstance(dados, list) else [dados]
-    campos = ("pm2_5", "pm10", "ozone", "nitrogen_dioxide", "carbon_monoxide")
-    # O ÍNDICE vem pronto da fonte. Guardamos o pior do dia (o máximo), que é como um índice de
-    # qualidade do ar se reporta — e também a hora em que ele ocorreu, para ser conferível.
-    saida = {}
-    for chave, bloco in zip(chaves, itens):
-        h = (bloco or {}).get("hourly") or {}
-        horas = h.get("time") or []
-        if not horas:
-            continue
-        unidades = bloco.get("hourly_units") or {}
-        medias = {c: _media(h.get(c)) for c in campos}
-        if medias.get("pm2_5") is None:
-            continue
-        serie_indice = h.get("european_aqi") or []
-        validos = [(i, v) for i, v in enumerate(serie_indice) if isinstance(v, (int, float))]
-        pior = max(validos, key=lambda x: x[1]) if validos else None
-        saida[chave] = {
-            "indice": ({"escala": "EAQI", "valor": pior[1], "hora": horas[pior[0]],
-                        "publicado_por": "Open-Meteo (Copernicus CAMS)",
-                        "criterio": "maior valor horário do dia"} if pior else None),
-            "horas_lidas": len(horas),
-            "media_diaria": medias,
-            "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-            "unidades": {c: unidades.get(c, "μg/m³") for c in campos},
-            "natureza": NATUREZA_MODELO,
-            "referencia_pm25": {"valor": REF_PM25_OMS_DIARIA, "unidade": "µg/m³",
-                                "documento": REF_PM25_DOCUMENTO},
-            "no_da_grade": {"lat": bloco.get("latitude"), "lon": bloco.get("longitude")},
-        }
-    return saida
 
 
 def dist_km(a, b):
@@ -1706,28 +1593,6 @@ def coletar_fonte(chave: str):
 
     # As duas fontes do Open-Meteo pedem as 27 coordenadas numa chamada só e tratam a resposta
     # posicionalmente; saem antes do GET genérico abaixo.
-    if chave in ("open_meteo_tempo", "open_meteo_ar"):
-        capitais = resolver_capitais()
-        chaves = [c["uf"] for c in capitais]
-        if chave == "open_meteo_tempo":
-            url = (f"{fonte['endpoint']}?{_coordenadas_em_lote(capitais)}"
-                   "&daily=temperature_2m_max,temperature_2m_min,apparent_temperature_max"
-                   "&timezone=America%2FSao_Paulo&past_days=1&forecast_days=4")
-            lido = parse_open_meteo_tempo(json.loads(_buscar_registrado(chave, url)), chaves)
-            if len(lido) < 20:
-                raise ValueError(f"temperatura cobriu só {len(lido)} de 27 capitais — recusada")
-            dias = sorted({p["data"] for v in lido.values() for p in v["serie"]})
-            return ({"por_uf": lido, "capitais": capitais},
-                    f"Open-Meteo Forecast — 27 capitais, {dias[0]} a {dias[-1]}")
-        url = (f"{fonte['endpoint']}?{_coordenadas_em_lote(capitais)}"
-               "&hourly=pm2_5,pm10,ozone,nitrogen_dioxide,carbon_monoxide,european_aqi"
-               "&timezone=America%2FSao_Paulo&forecast_days=1&domains=cams_global")
-        lido = parse_open_meteo_ar(json.loads(_buscar_registrado(chave, url)), chaves)
-        if len(lido) < 20:
-            raise ValueError(f"qualidade do ar cobriu só {len(lido)} de 27 capitais — recusada")
-        return ({"por_uf": lido, "capitais": capitais},
-                "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta")
-
     bruto = _buscar(fonte["endpoint"] + (str(IBGE_UF["RO"]) if chave == "monitor_secas" else ""))
     if chave == "noaa_oni":
         serie = parse_oni(bruto)
@@ -1842,210 +1707,6 @@ def coletar_fonte(chave: str):
     raise RuntimeError(f"adaptador ausente para {chave}")
 
 
-def _buscar_com_ritmo(url: str, tentativas: int = 4) -> str:
-    """GET que respeita o limite de taxa do Open-Meteo, com espera crescente.
-
-    Medido em 24/09/2026: o plano gratuito conta **por LOCALIDADE**, não por chamada — um pedido
-    com 100 coordenadas gasta 100 do teto. Varrer os 5.570 em rajada fez 39 de 56 lotes voltarem
-    com HTTP 429, e o resultado foi uma coleta pela metade. Limite de taxa é regra de acesso da
-    fonte e se respeita: aqui isso é esperar, não insistir mais rápido."""
-    import time
-    for i in range(tentativas):
-        try:
-            return _buscar(url)
-        except urllib.error.HTTPError as e:
-            if e.code not in (429, 503) or i == tentativas - 1:
-                raise
-            espera = 20 * (i + 1)
-            print(f"  [ritmo] HTTP {e.code} — esperando {espera}s antes de repetir.", flush=True)
-            time.sleep(espera)
-    raise RuntimeError("inalcançável")
-
-
-CARIMBO_CLIMA = {"tmax": "lido_tempo", "pm25": "lido_ar"}
-
-
-def precisa_ler(registro_do_municipio, campo: str, hoje: str, so_faltantes: bool = False) -> bool:
-    """Este município precisa ser consultado para esta variável? Função pura.
-
-    São duas rodadas diferentes, e confundi-las foi o defeito de 25/09/2026:
-      · RENOVAR (padrão): precisa ler quem não tem o valor OU cujo valor é de outro dia. É o que
-        a rotina diária faz, alternando a variável pelo dia, porque o teto da fonte não deixa
-        renovar as duas no mesmo dia.
-      · PREENCHER (`--preencher`): precisa ler só quem NUNCA teve leitura. Serve para fechar a
-        cobertura nacional sem gastar o teto renovando o que já está lido.
-    Sem a data, a segunda rodada deixava o valor de ontem no lugar e ainda assim carimbava o
-    arquivo com a data de hoje — o mapa diria "coleta de hoje" mostrando previsão de ontem."""
-    v = registro_do_municipio or {}
-    if campo not in v:
-        return True
-    return (not so_faltantes) and v.get(CARIMBO_CLIMA[campo]) != hoje
-
-
-def coletar_clima_municipal(args) -> int:
-    """Temperatura e PM2,5 para TODOS os municípios, em lotes de coordenadas, com ritmo.
-
-    A API aceita várias coordenadas por chamada e responde uma lista posicional (sonda de
-    24/09/2026), então os 5.570 cabem em ~56 chamadas por variável. O que NÃO cabe é o teto
-    diário do plano gratuito: ele conta por localidade, e 5.570 × 2 variáveis = 11.140 passa dos
-    10 mil. Por isso as duas variáveis são coletadas SEPARADAMENTE (`--apenas tempo|ar`) e o
-    registro é retomável: município já lido hoje não é pedido de novo.
-
-    Duas rodadas diferentes, e a diferença importa: sem argumento, RENOVA a variável (é o que a
-    rotina diária faz, alternando a variável pelo dia); com `--preencher`, só busca município que
-    NUNCA teve leitura — serve para completar a cobertura nacional sem gastar o teto do dia
-    renovando o que já está lido. Cada leitura carrega a data em que foi feita.
-
-    Grava parcial a cada dez lotes: uma varredura nacional não pode depender de terminar."""
-    import time
-    ref = json.loads(MUNICIPIOS_REF.read_text(encoding="utf-8"))
-    pontos = [{"ibge": str(m["codigo_ibge"]).zfill(7), "lat": float(m["lat"]), "lon": float(m["lon"])}
-              for m in ref if m.get("codigo_ibge") and m.get("lat") is not None and m.get("lon") is not None]
-    if "--limite" in args:
-        pontos = pontos[: int(args[args.index("--limite") + 1])]
-    tam = int(args[args.index("--lote") + 1]) if "--lote" in args else CLIMA_LOTE
-    pausa = float(args[args.index("--pausa") + 1]) if "--pausa" in args else CLIMA_PAUSA_S
-    quais = args[args.index("--apenas") + 1] if "--apenas" in args else "ambos"
-
-    registro = json.loads(CLIMA.read_text(encoding="utf-8")) if CLIMA.exists() else {
-        "_formato": {
-            "descricao": "Temperatura prevista e PM2,5 estimado por município, do Open-Meteo "
-                         "(modelos ECMWF/DWD/NOAA) e do Copernicus CAMS.",
-            "efeito_no_indice": "NENHUM — peso zero, como todo sinal de risco (METODOLOGIA §23).",
-            "natureza": NATUREZA_MODELO,
-            "campos": {"tmax": "máxima prevista para o dia seguinte, em °C",
-                       "tmin": "mínima prevista para o dia seguinte, em °C",
-                       "tmax_ontem": "máxima do dia anterior, em °C",
-                       "pm25": "média diária de PM2,5, em µg/m³",
-                       "lido_tempo": "data em que a temperatura daquele município foi lida",
-                       "lido_ar": "data em que o PM2,5 daquele município foi lido"},
-            "referencia_pm25_oms": {"valor": REF_PM25_OMS_DIARIA, "unidade": "µg/m³",
-                                    "documento": REF_PM25_DOCUMENTO},
-            "ausencia": "Município sem leitura não aparece aqui — ausência é ausência, e um "
-                        "registro com campos nulos seria lido como 'medimos e não há'.",
-            "limite_da_fonte": "O plano gratuito do Open-Meteo conta por LOCALIDADE: 5.570 × 2 "
-                               "variáveis passa do teto diário de 10 mil. As duas variáveis são "
-                               "coletadas em rodadas separadas, e a cobertura de cada uma fica "
-                               "declarada no resumo.",
-            "escrito_por": "coletar_sinais_risco.py --municipios",
-        },
-        "gerado_em": None, "municipios": {},
-    }
-    muns = registro["municipios"]
-
-    # 25/09/2026: `falta` só olhava se o campo EXISTIA. Numa segunda rodada, no dia seguinte,
-    # isso deixava o valor de ontem no lugar e ainda assim carimbava `gerado_em` com a data de
-    # hoje — o mapa diria "coleta de hoje" mostrando previsão de ontem. Agora cada variável
-    # carrega a data em que foi lida, e são duas coisas distintas: RENOVAR (o padrão, o que a
-    # rotina diária faz) e PREENCHER (`--preencher`, que só busca quem nunca teve leitura, para
-    # completar a cobertura nacional sem gastar o teto do dia renovando o que já está lido).
-    HOJE = hoje_editorial().strftime("%d/%m/%Y")
-    CARIMBO = CARIMBO_CLIMA
-    so_faltantes = "--preencher" in args
-
-    def falta(p, campo):
-        return precisa_ler(muns.get(p["ibge"]), campo, HOJE, so_faltantes)
-
-    def por_data(campo):
-        c = {}
-        for v in muns.values():
-            if campo in v:
-                c[v.get(CARIMBO[campo]) or "data não registrada"] = c.get(v.get(CARIMBO[campo]) or "data não registrada", 0) + 1
-        return dict(sorted(c.items(), key=lambda kv: -kv[1]))
-
-    def gravar_clima():
-        registro["gerado_em"] = agora()
-        registro["resumo"] = {
-            "municipios_no_pais": len(pontos),
-            "com_temperatura": sum(1 for v in muns.values() if "tmax" in v),
-            "com_pm25": sum(1 for v in muns.values() if "pm25" in v),
-            # O teto diário da fonte não deixa renovar as duas variáveis no mesmo dia, então o
-            # arquivo tem leituras de dias diferentes. Isso fica declarado aqui, e a página diz
-            # ao leitor — senão `gerado_em` passaria por data de tudo.
-            "temperatura_por_data": por_data("tmax"),
-            "pm25_por_data": por_data("pm25"),
-        }
-        # separators compacto: são milhares de registros num arquivo que a página carrega inteiro.
-        escrever_json(CLIMA, registro, compacto=True)
-
-    def varrer(nome, campo, monta_url, extrai):
-        pendentes = [p for p in pontos if falta(p, campo)]
-        print(f"{nome}: {len(pendentes)} município(s) pendente(s), lotes de {tam}, pausa de {pausa}s", flush=True)
-        falhas = 0
-        for i in range(0, len(pendentes), tam):
-            lote = pendentes[i:i + tam]
-            chaves = [p["ibge"] for p in lote]
-            try:
-                dados = json.loads(_buscar_com_ritmo(monta_url(lote)))
-            except Exception as e:  # noqa: BLE001
-                falhas += 1
-                print(f"  [aviso] {nome} lote {i//tam + 1}: {type(e).__name__} — sem leitura.", flush=True)
-                if falhas >= 5:
-                    print(f"  [aviso] {nome}: cinco lotes seguidos sem resposta — parando aqui; "
-                          "o que veio está gravado e a rodada seguinte retoma.", flush=True)
-                    break
-                continue
-            falhas = 0
-            for cod, valores in extrai(dados, chaves).items():
-                muns.setdefault(cod, {}).update({**valores, CARIMBO[campo]: HOJE})
-            if (i // tam) % 10 == 0:
-                gravar_clima()
-                print(f"  … {min(i + tam, len(pendentes))}/{len(pendentes)}", flush=True)
-            time.sleep(pausa)
-        gravar_clima()
-
-    if quais in ("ambos", "tempo"):
-        varrer("temperatura", "tmax",
-               lambda lote: (f"{FONTES['open_meteo_tempo']['endpoint']}?{_coordenadas_em_lote(lote)}"
-                             "&daily=temperature_2m_max,temperature_2m_min"
-                             "&timezone=America%2FSao_Paulo&past_days=1&forecast_days=3"),
-               lambda d, ch: {k: v for k, v in _so_temperatura(d, ch).items()})
-    if quais in ("ambos", "ar"):
-        varrer("qualidade do ar", "pm25",
-               lambda lote: (f"{FONTES['open_meteo_ar']['endpoint']}?{_coordenadas_em_lote(lote)}"
-                             "&hourly=pm2_5,european_aqi&timezone=America%2FSao_Paulo&forecast_days=1"
-                             "&domains=cams_global"),
-               lambda d, ch: {k: v for k, v in _so_pm25(d, ch).items()})
-
-    r = registro["resumo"]
-    kb = CLIMA.stat().st_size / 1024
-    def _datas(d):
-        return ", ".join(f"{n} em {dt}" for dt, n in d.items()) or "—"
-
-    print(f"→ {CLIMA.relative_to(RAIZ)}: {len(muns)} município(s), {kb:.0f} kB · "
-          f"temperatura {r['com_temperatura']}/{r['municipios_no_pais']} ({_datas(r['temperatura_por_data'])}) · "
-          f"PM2,5 {r['com_pm25']}/{r['municipios_no_pais']} ({_datas(r['pm25_por_data'])})")
-    return 0
-
-
-def _so_temperatura(dados, chaves) -> dict:
-    """Do Forecast, só o que o mapa municipal mostra: máxima e mínima de amanhã, máxima de ontem.
-    Função pura. A série inteira continua existindo por capital, em sinais_risco.json."""
-    saida = {}
-    for chave, bloco in parse_open_meteo_tempo(dados, chaves).items():
-        serie = bloco.get("serie") or []
-        amanha = serie[2] if len(serie) > 2 else (serie[-1] if serie else None)
-        ontem = serie[0] if serie else None
-        reg = {}
-        if amanha:
-            if amanha.get("maxima") is not None:
-                reg["tmax"] = amanha["maxima"]
-            if amanha.get("minima") is not None:
-                reg["tmin"] = amanha["minima"]
-        if ontem and ontem.get("maxima") is not None:
-            reg["tmax_ontem"] = ontem["maxima"]
-        if reg:
-            saida[chave] = reg
-    return saida
-
-
-def _so_pm25(dados, chaves) -> dict:
-    """Do Air Quality, só a média diária de PM2,5. Função pura."""
-    return {k: {"pm25": v["media_diaria"]["pm2_5"]}
-            for k, v in parse_open_meteo_ar(dados, chaves).items()
-            if (v.get("media_diaria") or {}).get("pm2_5") is not None}
-
-
 # ===========================================================================
 # REGISTRO
 # ===========================================================================
@@ -2084,7 +1745,7 @@ def esqueleto() -> dict:
         "enos": {"oni": None, "roni": None, "nino34_mensal": None, "probabilidades": None, "prognostico": None},
         "uf": {uf: {"risco_projetado": None, "secas": None, "avisos_inmet": None,
                     "fogo": None, "alertas_cemaden": None,
-                    "temperatura": None, "qualidade_ar": None,
+                    "temperatura": None,
                     "temperatura_medida": None, "ar_medido": None} for uf in UFS},
     }
 
@@ -2101,10 +1762,15 @@ def normalizar(registro: dict) -> dict:
             registro["fontes"][chave] = {**{k: v for k, v in dados.items() if k != "endpoint"},
                                          "status": "aguardando_primeira_coleta", "consultado_em": None,
                                          "documento": None, "detalhe": None}
+    # 16/10/2026: fonte que saiu do catálogo sai do arquivo (Open-Meteo de tempo e de ar, sem
+    # figura desde 27/09 e desde o #802); campo que só ela escrevia também.
+    for chave in [c for c in registro["fontes"] if c not in FONTES]:
+        del registro["fontes"][chave]
     for uf in UFS:
         bloco = registro.setdefault("uf", {}).setdefault(uf, {})
+        bloco.pop("qualidade_ar", None)
         for campo in ("risco_projetado", "secas", "avisos_inmet", "fogo", "alertas_cemaden",
-                      "temperatura", "qualidade_ar", "temperatura_medida", "ar_medido"):
+                      "temperatura", "temperatura_medida", "ar_medido"):
             bloco.setdefault(campo, None)
     # O catálogo do _formato também envelhece: campos declarativos novos entram sem tocar no resto.
     formato = registro.setdefault("_formato", {})
@@ -2239,16 +1905,6 @@ def coletar(registro: dict, camadas) -> dict:
                                                          "documento": documento, "consultado_em": agora()}
         # 24/09/2026: temperatura e ar são por CAPITAL, e a capital representa a UF no mapa —
         # o registro diz qual cidade foi medida, para que a legenda não sugira média estadual.
-        elif chave in ("open_meteo_tempo", "open_meteo_ar"):
-            campo = "temperatura" if chave == "open_meteo_tempo" else "qualidade_ar"
-            capital_de = {c["uf"]: c for c in payload["capitais"]}
-            for uf in UFS:
-                lido = payload["por_uf"].get(uf)
-                cap = capital_de.get(uf, {})
-                registro["uf"][uf][campo] = ({**lido, "capital": {k: cap.get(k) for k in ("nome", "ibge", "lat", "lon")},
-                                              "fonte": chave, "documento": documento,
-                                              "consultado_em": agora()}
-                                             if lido else None)   # capital sem leitura fica nula: lacuna, nunca zero
         # Camada de MEDIÇÃO: guarda a estação/monitor escolhido e a distância até a capital, para
         # que a figura possa dizer ONDE mediu. Sem isso, "medição" viraria um rótulo sem endereço.
         elif chave in ("openaq", "inmet_estacoes"):
@@ -2902,7 +2558,7 @@ def autoteste() -> int:
            all(f["status"] == "aguardando_primeira_coleta" for f in esq["fontes"].values()))
     checar("esqueleto: peso zero declarado no formato", "NENHUM" in esq["_formato"]["efeito_no_indice"])
     checar("esqueleto: temperatura e qualidade do ar existem como lacuna declarada",
-           all(esq["uf"][u]["temperatura"] is None and esq["uf"][u]["qualidade_ar"] is None for u in UFS))
+           all(esq["uf"][u]["temperatura"] is None and "qualidade_ar" not in esq["uf"][u] for u in UFS))
     checar("esqueleto: a linha da OMS e as duas naturezas estão declaradas NO DADO",
            esq["_formato"]["referencia_pm25_oms"]["valor"] == 15.0
            and set(esq["_formato"]["naturezas"]) == {NATUREZA_MODELO, NATUREZA_MEDICAO})
@@ -2913,42 +2569,6 @@ def autoteste() -> int:
 
     # A resposta devolve o lat/lon do NÓ DA GRADE, diferente do pedido — o teste usa valores
     # trocados de propósito para provar que o casamento é POSICIONAL e não por coordenada.
-    _tempo = parse_open_meteo_tempo([
-        {"latitude": -15.78, "longitude": -47.88, "daily_units": {"temperature_2m_max": "°C"},
-         "daily": {"time": ["2026-09-23", "2026-09-24"], "temperature_2m_max": [30.3, 31.1],
-                   "temperature_2m_min": [18.0, 19.2], "apparent_temperature_max": [32.0, 33.0]}},
-        {"latitude": -23.55, "longitude": -46.63, "daily_units": {"temperature_2m_max": "°C"},
-         "daily": {"time": ["2026-09-23", "2026-09-24"], "temperature_2m_max": [24.0, 25.5],
-                   "temperature_2m_min": [14.0, 15.0], "apparent_temperature_max": [25.0, 26.0]}},
-    ], ["DF", "SP"])
-    checar("Open-Meteo tempo: casa por POSIÇÃO, não por coordenada",
-           _tempo["DF"]["serie"][0]["maxima"] == 30.3 and _tempo["SP"]["serie"][1]["maxima"] == 25.5)
-    checar("Open-Meteo tempo: guarda ontem e os dias seguintes, com unidade da própria API",
-           len(_tempo["DF"]["serie"]) == 2 and _tempo["DF"]["unidade"] == "°C")
-    checar("Open-Meteo tempo: rotula a natureza no próprio dado",
-           _tempo["SP"]["natureza"] == NATUREZA_MODELO)
-    checar("Open-Meteo tempo negativo: série sem nenhuma máxima é lacuna, não zero",
-           parse_open_meteo_tempo([{"daily": {"time": ["2026-09-24"], "temperature_2m_max": [None]}}], ["DF"]) == {})
-    checar("Open-Meteo tempo negativo: resposta vazia não quebra",
-           parse_open_meteo_tempo([], ["DF"]) == {} and parse_open_meteo_tempo([{}], ["DF"]) == {})
-
-    _ar = parse_open_meteo_ar([
-        {"latitude": -15.78, "longitude": -47.88, "hourly_units": {"pm2_5": "μg/m³"},
-         "hourly": {"time": ["h1", "h2", "h3", "h4"], "pm2_5": [10.0, 20.0, None, 30.0],
-                    "pm10": [15.0, 25.0, 35.0, 45.0], "ozone": [None, None, None, None],
-                    "nitrogen_dioxide": [1.0, 1.0, 1.0, 1.0], "carbon_monoxide": [2.0, 2.0, 2.0, 2.0]}},
-    ], ["DF"])
-    checar("Open-Meteo ar: média diária é a média das horas, pulando as nulas (10+20+30)/3 = 20",
-           _ar["DF"]["media_diaria"]["pm2_5"] == 20.0)
-    checar("Open-Meteo ar: poluente só com nulos fica None, não zero",
-           _ar["DF"]["media_diaria"]["ozone"] is None)
-    checar("Open-Meteo ar: a linha da OMS viaja com o dado",
-           _ar["DF"]["referencia_pm25"]["valor"] == REF_PM25_OMS_DIARIA)
-    checar("Open-Meteo ar: declara que a média diária é cálculo nosso",
-           "média aritmética" in _ar["DF"]["media_diaria_calculada_por"])
-    checar("Open-Meteo ar negativo: sem PM2,5 o registro não entra (lacuna, nunca zero)",
-           parse_open_meteo_ar([{"hourly": {"time": ["h1"], "pm2_5": [None]}}], ["DF"]) == {})
-
     _caps = resolver_capitais()
     checar("capitais: as 27 resolvem em municipios_ibge_referencia.json, uma por UF",
            len(_caps) == 27 and {c["uf"] for c in _caps} == set(UFS))
@@ -2957,9 +2577,6 @@ def autoteste() -> int:
     checar("capitais: DF é Brasília e RJ é Rio de Janeiro (prova de que o código não trocou de cidade)",
            next(c["nome"] for c in _caps if c["uf"] == "DF") == "Brasília"
            and next(c["nome"] for c in _caps if c["uf"] == "RJ") == "Rio de Janeiro")
-    checar("lote: N coordenadas viram um par latitude=…&longitude=… na mesma ordem",
-           _coordenadas_em_lote([{"lat": -1.5, "lon": -2.5}, {"lat": -3.5, "lon": -4.5}])
-           == "latitude=-1.5000,-3.5000&longitude=-2.5000,-4.5000")
     checar("hora: consultado_em das fontes sub-diárias tem dd/mm/aaaa hh:mm",
            re.fullmatch(r"\d{2}/\d{2}/\d{4} \d{2}:\d{2}", agora()) is not None)
 
@@ -3270,20 +2887,6 @@ def autoteste() -> int:
     checar("esqueleto: a camada de medição nasce como lacuna nas 27 UFs",
            all(esq["uf"][u]["temperatura_medida"] is None and esq["uf"][u]["ar_medido"] is None for u in UFS))
 
-    # Clima municipal: renovar e preencher são rodadas diferentes (25/09/2026).
-    _sem = {}
-    _ontem = {"tmax": 30.1, "lido_tempo": "24/09/2026"}
-    _hoje = {"tmax": 31.2, "lido_tempo": "25/09/2026"}
-    checar("clima: município sem leitura é pedido nas duas rodadas",
-           precisa_ler(_sem, "tmax", "25/09/2026") and precisa_ler(_sem, "tmax", "25/09/2026", so_faltantes=True))
-    checar("clima: leitura de ontem é RENOVADA na rodada diária",
-           precisa_ler(_ontem, "tmax", "25/09/2026") is True)
-    checar("clima: leitura de ontem NÃO é refeita quando a rodada é só de preenchimento",
-           precisa_ler(_ontem, "tmax", "25/09/2026", so_faltantes=True) is False)
-    checar("clima: leitura de hoje não é pedida de novo",
-           precisa_ler(_hoje, "tmax", "25/09/2026") is False)
-    checar("clima: leitura sem carimbo de data conta como a renovar",
-           precisa_ler({"pm25": 9.0}, "pm25", "25/09/2026") is True)
 
     if falhas:
         print(f"\n✗ AUTOTESTE: {len(falhas)} falha(s).")
@@ -3297,8 +2900,6 @@ def main() -> None:
     args = sys.argv[1:]
     if "--autoteste" in args:
         sys.exit(autoteste())
-    if "--municipios" in args:
-        sys.exit(coletar_clima_municipal(args))
     registro = normalizar(json.loads(REGISTRO.read_text(encoding="utf-8"))) if REGISTRO.exists() else esqueleto()
     if "--semear" in args:
         registro = semear(esqueleto() if "--zerar" in args else registro)
