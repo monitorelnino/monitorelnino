@@ -16,3 +16,4 @@ for f in out.get("features", []):
     print(f["properties"], "polígonos", len(g), "anéis", sum(len(p) for p in g), "pontos", sum(len(r) for p in g for r in p))
 print("tamanho compacto", len(json.dumps(out, ensure_ascii=False, separators=(",", ":"))))
 import zipfile, io, urllib.request
+print("membros:", [n for n in zipfile.ZipFile(io.BytesIO(urllib.request.urlopen(urllib.request.Request(out["url"], headers={"User-Agent": c.CABECALHO["User-Agent"]}), timeout=120).read())).namelist()])
