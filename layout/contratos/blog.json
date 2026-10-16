@@ -10,7 +10,8 @@
   "secoes": [
     {
       "id": "textos",
-      "h2": "Textos",
+      "h2": null,
+      "_nota_15_10": "Editoria, 15/10/2026: sem abertura e sem o título “Textos”; os textos entram logo abaixo do h1 e o corpo ocupa a coluna inteira de `main`. Divergência: a metadescrição pedida pela central tinha 58 caracteres; o portão de SEO exige 70–170, e ela ganhou “onde, quando e com que fonte”, da abertura aprovada que saiu.",
       "tipo": "lista_simples",
       "_nota": "Cada texto em `article.panel.post`: `p.selo` com etiqueta, data e autoria; `h3` com o título ligado à página do texto; `p.hint.post-lede` com a abertura; `div.post-corpo` com a prosa; `p.post-fontes.spec`; `p.post-citar.spec` com o endereço permanente. Sem cartão e sem número no corpo."
     },
@@ -20,10 +21,6 @@
       "tipo": "lista_simples",
       "_nota": "Só existe a partir do décimo primeiro texto. Seção oculta enquanto não há o que listar — título de seção vazia afirma que existe algo ali."
     }
-  ],
-  "exige_texto": [
-    "Textos da editoria do MARÉ sobre o que está acontecendo no ciclo do El Niño",
-    "Os números vivos estão nas páginas do Monitor."
   ],
   "texto_proibido": [
     "FIGURA",

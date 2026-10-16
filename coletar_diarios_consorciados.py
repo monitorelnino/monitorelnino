@@ -525,7 +525,7 @@ def coletar_fonte(uf: str, slug: str, nome_fonte: str, desde_iso: str, ate_iso: 
                 d.update({"data": data_br_de(dia), "data_publicacao": data_br_de(dia),
                           "url": ed["url_pdf"], "hash_evidencia": h,
                           "fonte": nome_fonte, "uf": uf})
-                ato = data_do_ato_no_trecho(d.get("trecho") or "")
+                ato = data_do_ato_no_trecho(d.get("trecho"), dia)
                 if ato:
                     d["data_ato"] = ato
                 decretos_todos.append(d)
@@ -696,6 +696,10 @@ def autoteste() -> int:
     def t6():
         cand = candidatos_da_uf(FIX_REF, "MG")
         return cand == {"BELO HORIZONTE": "3106200", "UBERLANDIA": "3170206"}
+    def t17():  # 16/10/2026: data depois da edição (abertura de dispensa) não é data do ato
+        t = "conforme Decreto nº 090/2026 que declarou situação de emergência. Abertura: 21/10/2026"
+        return (data_do_ato_no_trecho(t, date(2026, 10, 16)) is None
+                and data_do_ato_no_trecho("de 05 de outubro de 2026. " + t, date(2026, 10, 16)) == "05/10/2026")
     def t7():  # ponta a ponta: PDF sintético -> texto -> pista com o município CORRETO (Uberlândia, não BH)
         texto = extrair_texto_pdf(_fixture_pdf_bytes())
         if "Conting" not in texto:
@@ -999,6 +1003,7 @@ def autoteste() -> int:
         "§130: navegador sucede -> token real usado no POST, cookie do navegador chega no jar": t13,
         "§130: GET simples já real -> navegador nunca é chamado (caminho barato)": t14,
         "26/09: as 27 UFs classificadas, nenhuma em duas gavetas, arquivo histórico fora do varrimento": t16,
+        "regressão 16/10: data posterior à edição não vira data_ato": t17,
     })
 
 
