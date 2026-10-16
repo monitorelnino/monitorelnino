@@ -30,16 +30,15 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #PR · Saúde: temporadas de dengue e chikungunya e um cartão só para a cidade
 
-## 2026-10-16 · #PR · Saúde: um cartão só para a cidade
+Dois gráficos novos mostram as notificações semanais de junho a maio das temporadas 2023–24 e 2026–27, no mesmo eixo, com seletor de estado e a frase do dado. "Saúde na sua cidade" substitui as três buscas separadas: dengue, chikungunya (semana em datas) e calor numa consulta. Sai o cartão de síndrome gripal, sem dado. Comparação de calendário, sem relação indicada com o El Niño.
 
-"Saúde na sua cidade" substitui as três buscas separadas (dengue, chikungunya e calor): o leitor escolhe o estado e o município uma vez e lê o nível de alerta das duas doenças, com a semana em datas, e a classe de excesso de calor. Sai o cartão de síndrome gripal, sem dado desde que o e-SUS Notifica recusa o acesso.
+## 2026-10-16 · #788 · O envio do formulário fica na inicial; sai a página Obrigado
 
-## 2026-10-16 · #PR · Saúde: temporadas de dengue e chikungunya, 2023–24 e 2026–27
+O formulário da inicial passa a enviar sem trocar de página: depois do envio aparece "Recebido. Obrigado pela contribuição." no mesmo lugar. O texto que vivia em `obrigado.html` (a conferência automática e o que acontece com o documento) vai para o próprio formulário. `obrigado.html` sai, e endereços antigos levam ao formulário (decisão da editoria de 16/10).
 
-Dois gráficos novos, um por doença: as notificações semanais de junho a maio das temporadas que começaram em junho de 2023 e em junho de 2026, no mesmo eixo, com seletor de estado e a frase do dado (acumulado até a última semana fechada e pico de 2023–24). Comparação de calendário, sem relação indicada com o El Niño.
-
-## 2026-10-16 · #PR · Saúde: calor em uma medida por lugar
+## 2026-10-16 · #789 · Saúde: calor em uma medida por lugar
 
 Sai o gráfico de barras "municípios por classe" (5,5 mil em "normal" contra dezenas nas outras classes). Fica o mapa, agora "Municípios em classe severa ou extrema de excesso de calor, por estado", e uma linha fixa diz que a classe é do Ministério da Saúde, por município, e que a temperatura prevista nas capitais está no Monitor de riscos.
 
@@ -50,10 +49,6 @@ As quatro frases do dado da página de saúde (dengue, chikungunya, respiratóri
 ## 2026-10-16 · #785 · Inicial: sai a legenda das barras; barras sem régua; cartão da cidade branco e com um só componente
 
 Sai a legenda "Barra de cima… Barra de baixo…" e a linha acima dela, na inicial e na Saúde, com a função que a escrevia. A barra do MARÉ Legal perde o quadriculado de fundo (ficam as marcas 25, 50, 70); a dos decretos, sem marcas, fica mais alta. O cartão da cidade fica branco, sem o link "consultar outro município"; as listas federais usam o cartão da projeção, com o texto do cadastro nacional (Lei 12.340, art. 3º-A).
-
-## 2026-10-16 · #786 · Saúde: a tabela do índice com as colunas do leitor
-
-A tabela que acompanha o mapa do MARÉ Saúde passa a ter UF, nota, faixa, plano (situação e data), coordenação na saúde e ligação com o governo do estado. Saem as colunas de componente interno ("cobertura sanitária 0,1 · 1 lido / 1 sem leitura", antecedência, dengue na capital, risco) e o travessão em célula vazia.
 
 ## 2026-10-16 · #786 · Saúde: a tabela do índice com as colunas do leitor
 

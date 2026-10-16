@@ -144,8 +144,8 @@
 
   <div class="panel" id="formulario">
     <h2 data-conteudo="index.titulo_da_secao_4">Você encontrou um plano ou decreto que ainda não está no MARÉ Legal?</h2>
-    <p class="hint" data-conteudo="index.formulario.abertura">Leva menos de um minuto. A conferência é automática: a rotina lê o documento e confere se a fonte é oficial.</p>
-    <form name="contribuicao" method="POST" action="/obrigado.html" data-netlify="true" netlify-honeypot="bot-field" id="formContrib">
+    <p class="hint" data-conteudo="index.formulario.abertura">Leva menos de um minuto. Não pedimos seu nome nem contato: pedimos as informações sobre o documento.</p>
+    <form name="contribuicao" method="POST" action="/#formulario" data-netlify="true" netlify-honeypot="bot-field" id="formContrib">
       <input type="hidden" name="form-name" value="contribuicao">
       <input type="hidden" name="subject" value="Novo documento indicado — %{formName} (%{submissionId})">
       <p hidden aria-hidden="true"><label>Não preencha este campo: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
@@ -171,7 +171,7 @@
         <label class="fld">Número e data do ato<input type="text" name="numero_data" placeholder="Ex.: Decreto nº 123, de 15/07/2026"></label>
         <label class="fld">Observações<textarea name="observacoes" rows="3"></textarea></label>
       </details>
-      <p class="note" data-conteudo="index.formulario.nota">Não pedimos seu nome nem contato: pedimos as informações sobre o documento.</p>
+      <p class="note" data-conteudo="index.formulario.nota">A conferência é automática: a rotina lê o documento indicado, confere se a fonte é oficial e se o conteúdo corresponde ao declarado. O que passa entra na publicação seguinte, com fonte e canal; o que não passa não é publicado, e o motivo fica registrado.</p>
       <button type="submit" class="btn">Enviar</button>
       <p class="note u-mt-2 u-mb-0" id="contribOffline"></p>
     </form>
@@ -194,7 +194,7 @@
 </div>
 
 <script src="assets/colunas.js?v=3669e58d" defer></script>
-<script src="assets/js/grade-estados.js?v=f8d4b27a" defer></script><script src="assets/js/index.js?v=59d6142f" defer></script>
+<script src="assets/js/grade-estados.js?v=f8d4b27a" defer></script><script src="assets/js/index.js?v=ef71bda4" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

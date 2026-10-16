@@ -681,7 +681,7 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>imprensa.titulo_da_pagina</code></td><td>Imprensa</td></tr>
 </table>
-<h2>index <small>(27 trechos)</small></h2>
+<h2>index <small>(29 trechos)</small></h2>
 <h3>intro</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>index.intro</code></td><td>O MARÉ reúne num só lugar como o Brasil se prepara para o El Niño 2026/2027 e como responde a ele. Dois índices, o MARÉ Legal e o MARÉ Saúde, mostram o que estados e municípios publicaram: planos de contingência, quem coordena a resposta, quanta gente está coberta. Ao lado deles, os sinais do fenômeno medidos pelos órgãos de clima, os alertas e as emergências declaradas, o dinheiro público que chega a cada lugar, o que os órgãos de saúde registram e o que fazer em cada tipo de alerta. Tudo vem de fonte oficial e é atualizado todos os dias. Uma publicação do Futura Evidence Lab para jornalistas, gestores, pesquisadores e cidadãos.</td></tr>
@@ -692,7 +692,7 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>abertura · lei.molde</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>index.abertura.lei.molde</code></td><td><span class="molde">A lei de proteção e defesa civil diz quem deve se preparar. Cada estado precisa ter um plano estadual, revisado a cada dois anos. Os municípios inscritos no cadastro nacional de áreas sujeitas a deslizamento e enchente precisam ter um plano de contingência, avaliado e atualizado todo ano; a União já indicou {indicados_uniao} municípios para esse cadastro. Para os demais municípios, e para seca, fogo e calor, a lei não fixa prazo nem plano específico: vale o dever geral de prevenção, que se aplica a todos os governos.</span><br><span class="ex">exemplo: A lei de proteção e defesa civil diz quem deve se preparar. Cada estado precisa ter um plano estadual, revisado a cada dois anos. Os municípios inscritos no cadastro nacional de áreas sujeitas a deslizamento e enchente precisam ter um plano de contingência, avaliado e atualizado todo ano; a União já indicou 3 municípios para esse cadastro. Para os demais municípios, e para seca, fogo e calor, a lei não fixa prazo nem plano específico: vale o dever geral de prevenção, que se aplica a todos os governos.</span></td></tr>
+<tr><td>texto</td><td><code>index.abertura.lei.molde</code></td><td><span class="molde">A lei de proteção e defesa civil diz quem deve se preparar. Cada estado precisa ter um plano estadual, revisado a cada dois anos. &lt;a href=&quot;https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/cadastro-nacional-de-municipios&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Os municípios inscritos no cadastro nacional de áreas sujeitas a deslizamento e enchente&lt;/a&gt; precisam ter um plano de contingência, avaliado e atualizado todo ano; &lt;a href=&quot;defesa-civil.html#boxRiscoEnchente&quot;&gt;a União já indicou {indicados_uniao} municípios para esse cadastro&lt;/a&gt;. Para os demais municípios, e para seca, fogo e calor, a lei não fixa prazo nem plano específico: vale o dever geral de prevenção, que se aplica a todos os governos.</span><br><span class="ex">exemplo: A lei de proteção e defesa civil diz quem deve se preparar. Cada estado precisa ter um plano estadual, revisado a cada dois anos. &lt;a href=&quot;https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/cadastro-nacional-de-municipios&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Os municípios inscritos no cadastro nacional de áreas sujeitas a deslizamento e enchente&lt;/a&gt; precisam ter um plano de contingência, avaliado e atualizado todo ano; &lt;a href=&quot;defesa-civil.html#boxRiscoEnchente&quot;&gt;a União já indicou 3 municípios para esse cadastro&lt;/a&gt;. Para os demais municípios, e para seca, fogo e calor, a lei não fixa prazo nem plano específico: vale o dever geral de prevenção, que se aplica a todos os governos.</span></td></tr>
 </table>
 <h3>abertura · procura.molde</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -739,8 +739,16 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>formulario</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>abertura</td><td><code>index.formulario.abertura</code></td><td>Leva menos de um minuto. A conferência é automática: a rotina lê o documento e confere se a fonte é oficial.</td></tr>
-<tr><td>nota</td><td><code>index.formulario.nota</code></td><td>Não pedimos seu nome nem contato: pedimos as informações sobre o documento.</td></tr>
+<tr><td>abertura</td><td><code>index.formulario.abertura</code></td><td>Leva menos de um minuto. Não pedimos seu nome nem contato, só as informações sobre o documento.</td></tr>
+<tr><td>nota</td><td><code>index.formulario.nota</code></td><td>A conferência é automática: a rotina lê o documento indicado, confere se a fonte é oficial e se o conteúdo corresponde ao declarado. O que passa entra na publicação seguinte, com fonte e canal; o que não passa não é publicado, e o motivo fica registrado.</td></tr>
+</table>
+<h3>formulario · recebido</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.formulario.recebido</code></td><td>Recebido. Obrigado pela contribuição.</td></tr>
+</table>
+<h3>formulario · erro</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.formulario.erro</code></td><td>O envio não foi concluído. Tente de novo em alguns minutos.</td></tr>
 </table>
 <h3>ficha · procurado_em.molde</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -1026,17 +1034,6 @@ font-size:12px}th:first-child{width:4rem}}
 <tr><td>resumo_2</td><td><code>monitor-de-riscos.estados_avisos.resumo_2</code></td><td>Ver em lista</td></tr>
 <tr><td>resumo_3</td><td><code>monitor-de-riscos.estados_avisos.resumo_3</code></td><td>Como ler</td></tr>
 <tr><td>texto</td><td><code>monitor-de-riscos.estados_avisos.texto</code></td><td>O Inmet emite o aviso por área, e um aviso pode alcançar mais de um estado. Os avisos por município estão em &lt;a href=&quot;defesa-civil.html&quot;&gt;Defesa civil&lt;/a&gt;.</td></tr>
-</table>
-<h2>obrigado <small>(4 trechos)</small></h2>
-<h3>página</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>abertura</td><td><code>obrigado.abertura</code></td><td>Seu envio entrou na fila de verificação do MARÉ. A conferência é automática: a rotina lê o documento indicado, confere se a fonte é oficial e se o conteúdo corresponde ao declarado. O que passa entra na publicação seguinte.</td></tr>
-<tr><td>texto</td><td><code>obrigado.texto</code></td><td>O documento que passa entra na publicação seguinte do mapa e do índice, com fonte e canal. O que não passa não é publicado, e o motivo fica registrado.</td></tr>
-<tr><td>texto_2</td><td><code>obrigado.texto_2</code></td><td>&lt;a href=&quot;./&quot;&gt;← Voltar ao monitor&lt;/a&gt;</td></tr>
-</table>
-<h3>titulo_da_pagina</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>obrigado.titulo_da_pagina</code></td><td>Contribuição recebida. Obrigado.</td></tr>
 </table>
 <h2>prefeituras <small>(30 trechos)</small></h2>
 <h3>página</h3>
@@ -1393,8 +1390,8 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>estadual · monitor</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>familia</td><td><code>saude.estadual.monitor.familia</code></td><td>MARÉ Saúde</td></tr>
-<tr><td>titulo</td><td><code>saude.estadual.monitor.titulo</code></td><td>Prontidão sanitária por estado</td></tr>
-<tr><td>legenda</td><td><code>saude.estadual.monitor.legenda</code></td><td>0 a 100 por UF verificada · média de instrumento, cobertura populacional e tempo de publicação</td></tr>
+<tr><td>titulo</td><td><code>saude.estadual.monitor.titulo</code></td><td>MARÉ Saúde por estado, de 0 a 100</td></tr>
+<tr><td>legenda</td><td><code>saude.estadual.monitor.legenda</code></td><td>Plano estadual para o ciclo, cobertura da população e antecedência, um terço cada · estado sem número ainda não verificado</td></tr>
 <tr><td>resumo</td><td><code>saude.estadual.monitor.resumo</code></td><td>Ver em tabela</td></tr>
 </table>
 <h3>estadual · verificacao_uf</h3>
@@ -1423,13 +1420,13 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>observado · dengue_semana</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>familia</td><td><code>saude.observado.dengue_semana.familia</code></td><td>Dengue</td></tr>
-<tr><td>titulo</td><td><code>saude.observado.dengue_semana.titulo</code></td><td>Notificações de dengue por semana, no país</td></tr>
-<tr><td>legenda</td><td><code>saude.observado.dengue_semana.legenda</code></td><td>Notificações no SINAN, não casos confirmados · faixa habitual para a época · as últimas quatro semanas ainda recebem notificações</td></tr>
+<tr><td>titulo</td><td><code>saude.observado.dengue_semana.titulo</code></td><td>Notificações de dengue por semana no Brasil, em 2026</td></tr>
+<tr><td>legenda</td><td><code>saude.observado.dengue_semana.legenda</code></td><td>Notificações no SINAN, não casos confirmados · faixa habitual para a época, 2019 a 2025 · últimas quatro semanas ainda em notificação</td></tr>
 </table>
 <h3>observado · dengue_uf</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>familia</td><td><code>saude.observado.dengue_uf.familia</code></td><td>Dengue</td></tr>
-<tr><td>titulo</td><td><code>saude.observado.dengue_uf.titulo</code></td><td>Notificações de dengue por estado, por 100 mil habitantes</td></tr>
+<tr><td>titulo</td><td><code>saude.observado.dengue_uf.titulo</code></td><td>Notificações de dengue por 100 mil habitantes, por estado</td></tr>
 <tr><td>legenda</td><td><code>saude.observado.dengue_uf.legenda</code></td><td>Acumulado do ano até a última semana com dado fechado · notificações no SINAN por 100 mil habitantes · Censo 2022</td></tr>
 <tr><td>resumo</td><td><code>saude.observado.dengue_uf.resumo</code></td><td>Ver em lista</td></tr>
 </table>
@@ -1437,19 +1434,19 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>familia</td><td><code>saude.observado.dengue_municipios.familia</code></td><td>Dengue</td></tr>
 <tr><td>titulo</td><td><code>saude.observado.dengue_municipios.titulo</code></td><td>Dengue na sua cidade</td></tr>
-<tr><td>legenda</td><td><code>saude.observado.dengue_municipios.legenda</code></td><td>Nível de alerta do InfoDengue na última semana consolidada · cidade fora dos municípios acompanhados aparece como não acompanhada</td></tr>
+<tr><td>legenda</td><td><code>saude.observado.dengue_municipios.legenda</code></td><td>Nível de alerta do InfoDengue na última semana consolidada · cidade não lida pelo MARÉ na semana aparece como não lida</td></tr>
 <tr><td>titulo_2</td><td><code>saude.observado.dengue_municipios.titulo_2</code></td><td>Chikungunya</td></tr>
 </table>
 <h3>observado · chik_semana</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>familia</td><td><code>saude.observado.chik_semana.familia</code></td><td>Chikungunya</td></tr>
-<tr><td>titulo</td><td><code>saude.observado.chik_semana.titulo</code></td><td>Notificações de chikungunya por semana, no país</td></tr>
-<tr><td>legenda</td><td><code>saude.observado.chik_semana.legenda</code></td><td>Notificações no SINAN, não casos confirmados · faixa habitual para a época · as últimas quatro semanas ainda recebem notificações</td></tr>
+<tr><td>titulo</td><td><code>saude.observado.chik_semana.titulo</code></td><td>Notificações de chikungunya por semana no Brasil, em 2026</td></tr>
+<tr><td>legenda</td><td><code>saude.observado.chik_semana.legenda</code></td><td>Notificações no SINAN, não casos confirmados · faixa habitual para a época, 2019 a 2025 · últimas quatro semanas ainda em notificação</td></tr>
 </table>
 <h3>observado · chik_uf</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>familia</td><td><code>saude.observado.chik_uf.familia</code></td><td>Chikungunya</td></tr>
-<tr><td>titulo</td><td><code>saude.observado.chik_uf.titulo</code></td><td>Notificações de chikungunya por estado, por 100 mil habitantes</td></tr>
+<tr><td>titulo</td><td><code>saude.observado.chik_uf.titulo</code></td><td>Notificações de chikungunya por 100 mil habitantes, por estado</td></tr>
 <tr><td>legenda</td><td><code>saude.observado.chik_uf.legenda</code></td><td>Acumulado do ano até a última semana com dado fechado · notificações no SINAN por 100 mil habitantes · Censo 2022</td></tr>
 <tr><td>resumo</td><td><code>saude.observado.chik_uf.resumo</code></td><td>Ver em lista</td></tr>
 </table>
@@ -1457,14 +1454,14 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>familia</td><td><code>saude.observado.chik_municipios.familia</code></td><td>Chikungunya</td></tr>
 <tr><td>titulo</td><td><code>saude.observado.chik_municipios.titulo</code></td><td>Chikungunya na sua cidade</td></tr>
-<tr><td>legenda</td><td><code>saude.observado.chik_municipios.legenda</code></td><td>Nível de alerta do InfoDengue na última semana consolidada · cidade fora dos municípios acompanhados aparece como não acompanhada</td></tr>
+<tr><td>legenda</td><td><code>saude.observado.chik_municipios.legenda</code></td><td>Nível de alerta do InfoDengue na última semana consolidada · cidade não lida pelo MARÉ na semana aparece como não lida</td></tr>
 <tr><td>titulo_2</td><td><code>saude.observado.chik_municipios.titulo_2</code></td><td>Respiratórias</td></tr>
 </table>
 <h3>observado · srag</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>familia</td><td><code>saude.observado.srag.familia</code></td><td>Respiratória grave</td></tr>
-<tr><td>titulo</td><td><code>saude.observado.srag.titulo</code></td><td>Internações respiratórias por semana, no país</td></tr>
-<tr><td>legenda</td><td><code>saude.observado.srag.legenda</code></td><td>Semanas de 2026 (últimas 4 excluídas do consolidado) · síndrome respiratória grave · Brasil · nº de casos</td></tr>
+<tr><td>titulo</td><td><code>saude.observado.srag.titulo</code></td><td>Internações respiratórias por semana no Brasil, em 2026</td></tr>
+<tr><td>legenda</td><td><code>saude.observado.srag.legenda</code></td><td>Síndrome respiratória grave, SIVEP-Gripe · faixa habitual para a época, 2019 a 2025 · últimas quatro semanas ainda em notificação</td></tr>
 </table>
 <h3>observado · srag_uf</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
