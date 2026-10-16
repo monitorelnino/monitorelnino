@@ -118,6 +118,10 @@
    "escritor": "qualquer_elo",
    "por_que": "Todo acesso registra o host. O resolvedor une por host, acessos pela base comum e total somado (`INDICES_POR_CHAVE` → `unir_indice`), desde 14/10/2026 (F55)."
   },
+  "data/riscos_municipio/": {
+   "escritor": "noturno_sinais.yml",
+   "por_que": "Consulta do município no Monitor de riscos (HANDOVER_MONITOR_DE_RISCOS §6g): um arquivo por UF, escrito só pelo elo dos sinais (`coletar_sinais_risco.py` sem `--municipios`), a partir dos arquivos que o mesmo elo acabou de gravar."
+  },
   "data/saude_municipio/": {
    "escritor": "noturno_saude.yml",
    "por_que": "Consulta do município na página de Saúde (HANDOVER_SAUDE_PAGINA §6b): um arquivo por UF, escrito só pelo elo da saúde (`gerar_saude_municipio.py`), depois dos coletores que ele lê."
