@@ -105,9 +105,6 @@ jobs:
         monitorar_atos_resposta.py --limite 10
         monitorar_politica_por_inteiro.py
         julgar_e_aplicar_descobertas.py
-        # Clima municipal: as duas variáveis na rodada semanal (alternavam por dia quando ela era diária).
-        coletar_sinais_risco.py --municipios --apenas tempo
-        coletar_sinais_risco.py --municipios --apenas ar
         atualizar.py
         preservar_evidencias.py --limite 20
         preservar_evidencias.py --ler --limite 20

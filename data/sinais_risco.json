@@ -198,32 +198,6 @@
    "documento": "Niño 3.4 mensal, último mês 08/2026",
    "detalhe": "Leitura mensal, sem a suavização de três meses que o ONI e o RONI aplicam."
   },
-  "open_meteo_tempo": {
-   "nome": "Temperatura observada e prevista",
-   "orgao": "Open-Meteo (modelos ECMWF, DWD, NOAA)",
-   "camada": "observado",
-   "url_publica": "https://open-meteo.com/",
-   "papel": "Máxima e mínima do dia anterior e dos próximos dias, por capital, em °C.",
-   "natureza": "estimativa de modelo",
-   "licenca": "CC BY 4.0 — crédito obrigatório: Weather data by Open-Meteo.com",
-   "status": "coletado",
-   "consultado_em": "15/10/2026",
-   "documento": "Open-Meteo Forecast — 27 capitais, 2026-10-14 a 2026-10-18",
-   "detalhe": "Máxima e mínima do dia anterior e dos próximos dias, por capital, em °C."
-  },
-  "open_meteo_ar": {
-   "nome": "Qualidade do ar estimada",
-   "orgao": "Copernicus CAMS via Open-Meteo",
-   "camada": "observado",
-   "url_publica": "https://open-meteo.com/en/docs/air-quality-api",
-   "papel": "PM2,5, PM10, ozônio, NO₂ e CO estimados por modelo, por capital, em µg/m³.",
-   "natureza": "estimativa de modelo",
-   "licenca": "CC BY 4.0 — crédito obrigatório: Copernicus CAMS via Open-Meteo.com",
-   "status": "coletado",
-   "consultado_em": "15/10/2026",
-   "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-   "detalhe": "Índice europeu de qualidade do ar (EAQI) e poluentes por capital, estimados por modelo."
-  },
   "openaq": {
    "nome": "Qualidade do ar medida",
    "orgao": "OpenAQ (agrega redes oficiais brasileiras)",
@@ -6060,50 +6034,6 @@
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
    },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 41,
-     "hora": "2026-10-15T21:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 7.1,
-     "pm10": 7.2,
-     "ozone": 27.5,
-     "nitrogen_dioxide": 2.9,
-     "carbon_monoxide": 221.8
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": -10.0,
-     "lon": -67.799995
-    },
-    "capital": {
-     "nome": "Rio Branco",
-     "ibge": 1200401,
-     "lat": -9.97499,
-     "lon": -67.8243
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
-   },
    "temperatura_medida": {
     "codigo": "A104",
     "nome": "RIO BRANCO",
@@ -6199,50 +6129,6 @@
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
-   },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 38,
-     "hora": "2026-10-15T04:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 11.8,
-     "pm10": 18.3,
-     "ozone": 54.9,
-     "nitrogen_dioxide": 1.6,
-     "carbon_monoxide": 140.9
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": -9.699997,
-     "lon": -35.699997
-    },
-    "capital": {
-     "nome": "Maceió",
-     "ibge": 2704302,
-     "lat": -9.66599,
-     "lon": -35.735
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
    },
    "temperatura_medida": {
     "codigo": "A303",
@@ -6345,50 +6231,6 @@
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
    },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 80,
-     "hora": "2026-10-15T09:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 51.9,
-     "pm10": 54.2,
-     "ozone": 76.6,
-     "nitrogen_dioxide": 6.1,
-     "carbon_monoxide": 402.7
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": -3.0999985,
-     "lon": -60.0
-    },
-    "capital": {
-     "nome": "Manaus",
-     "ibge": 1302603,
-     "lat": -3.11866,
-     "lon": -60.0212
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
-   },
    "temperatura_medida": {
     "codigo": "A101",
     "nome": "MANAUS",
@@ -6484,50 +6326,6 @@
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
-   },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 27,
-     "hora": "2026-10-15T15:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 6.5,
-     "pm10": 9.3,
-     "ozone": 42.1,
-     "nitrogen_dioxide": 1.2,
-     "carbon_monoxide": 143.8
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": 0.0,
-     "lon": -51.09999
-    },
-    "capital": {
-     "nome": "Macapá",
-     "ibge": 1600303,
-     "lat": 0.03493,
-     "lon": -51.0694
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
    },
    "temperatura_medida": {
     "codigo": "A249",
@@ -6631,50 +6429,6 @@
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
    },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 43,
-     "hora": "2026-10-15T12:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 10.1,
-     "pm10": 14.5,
-     "ozone": 64.6,
-     "nitrogen_dioxide": 4.4,
-     "carbon_monoxide": 146.2
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": -13.0,
-     "lon": -38.5
-    },
-    "capital": {
-     "nome": "Salvador",
-     "ibge": 2927408,
-     "lat": -12.9718,
-     "lon": -38.5011
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
-   },
    "temperatura_medida": {
     "codigo": "A401",
     "nome": "SALVADOR",
@@ -6771,50 +6525,6 @@
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
    },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 37,
-     "hora": "2026-10-15T23:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 11.9,
-     "pm10": 20.5,
-     "ozone": 54.7,
-     "nitrogen_dioxide": 0.7,
-     "carbon_monoxide": 135.2
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": -3.699997,
-     "lon": -38.5
-    },
-    "capital": {
-     "nome": "Fortaleza",
-     "ibge": 2304400,
-     "lat": -3.71664,
-     "lon": -38.5423
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
-   },
    "temperatura_medida": null,
    "ar_medido": null
   },
@@ -6894,50 +6604,6 @@
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
-   },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 49,
-     "hora": "2026-10-15T13:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 10.8,
-     "pm10": 10.8,
-     "ozone": 76.5,
-     "nitrogen_dioxide": 13.1,
-     "carbon_monoxide": 271.1
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": -15.799995,
-     "lon": -47.899994
-    },
-    "capital": {
-     "nome": "Brasília",
-     "ibge": 5300108,
-     "lat": -15.7795,
-     "lon": -47.9297
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
    },
    "temperatura_medida": {
     "codigo": "A001",
@@ -7037,50 +6703,6 @@
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
-   },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 71,
-     "hora": "2026-10-15T12:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 11.9,
-     "pm10": 13.9,
-     "ozone": 59.1,
-     "nitrogen_dioxide": 15.3,
-     "carbon_monoxide": 661.5
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": -20.299995,
-     "lon": -40.300003
-    },
-    "capital": {
-     "nome": "Vitória",
-     "ibge": 3205309,
-     "lat": -20.3155,
-     "lon": -40.3128
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
    },
    "temperatura_medida": {
     "codigo": "A612",
@@ -7184,50 +6806,6 @@
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
    },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 63,
-     "hora": "2026-10-15T13:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 8.9,
-     "pm10": 9.0,
-     "ozone": 83.0,
-     "nitrogen_dioxide": 9.9,
-     "carbon_monoxide": 300.7
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": -16.699997,
-     "lon": -49.300003
-    },
-    "capital": {
-     "nome": "Goiânia",
-     "ibge": 5208707,
-     "lat": -16.6864,
-     "lon": -49.2643
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
-   },
    "temperatura_medida": {
     "codigo": "A002",
     "nome": "GOIANIA",
@@ -7329,50 +6907,6 @@
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
    },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 31,
-     "hora": "2026-10-15T15:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 8.9,
-     "pm10": 14.2,
-     "ozone": 40.4,
-     "nitrogen_dioxide": 1.6,
-     "carbon_monoxide": 125.2
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": -2.5,
-     "lon": -44.300003
-    },
-    "capital": {
-     "nome": "São Luís",
-     "ibge": 2111300,
-     "lat": -2.53874,
-     "lon": -44.2825
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
-   },
    "temperatura_medida": null,
    "ar_medido": null
   },
@@ -7452,50 +6986,6 @@
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
-   },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 77,
-     "hora": "2026-10-15T12:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 11.1,
-     "pm10": 11.2,
-     "ozone": 76.4,
-     "nitrogen_dioxide": 26.8,
-     "carbon_monoxide": 527.5
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": -19.900002,
-     "lon": -43.899994
-    },
-    "capital": {
-     "nome": "Belo Horizonte",
-     "ibge": 3106200,
-     "lat": -19.9102,
-     "lon": -43.9266
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
    },
    "temperatura_medida": {
     "codigo": "A572",
@@ -7599,50 +7089,6 @@
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
    },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 32,
-     "hora": "2026-10-15T00:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 6.3,
-     "pm10": 6.8,
-     "ozone": 49.4,
-     "nitrogen_dioxide": 6.7,
-     "carbon_monoxide": 285.3
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": -20.400002,
-     "lon": -54.6
-    },
-    "capital": {
-     "nome": "Campo Grande",
-     "ibge": 5002704,
-     "lat": -20.4486,
-     "lon": -54.6295
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
-   },
    "temperatura_medida": {
     "codigo": "A702",
     "nome": "CAMPO GRANDE",
@@ -7743,50 +7189,6 @@
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
-   },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 49,
-     "hora": "2026-10-15T00:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 19.4,
-     "pm10": 19.8,
-     "ozone": 71.8,
-     "nitrogen_dioxide": 7.4,
-     "carbon_monoxide": 366.7
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": -15.599998,
-     "lon": -56.1
-    },
-    "capital": {
-     "nome": "Cuiabá",
-     "ibge": 5103403,
-     "lat": -15.601,
-     "lon": -56.0974
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
    },
    "temperatura_medida": {
     "codigo": "A901",
@@ -7889,50 +7291,6 @@
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
    },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 34,
-     "hora": "2026-10-15T16:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 9.3,
-     "pm10": 13.2,
-     "ozone": 43.9,
-     "nitrogen_dioxide": 2.7,
-     "carbon_monoxide": 142.7
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": -1.5,
-     "lon": -48.5
-    },
-    "capital": {
-     "nome": "Belém",
-     "ibge": 1501402,
-     "lat": -1.4554,
-     "lon": -48.4898
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
-   },
    "temperatura_medida": {
     "codigo": "A201",
     "nome": "BELEM",
@@ -8029,50 +7387,6 @@
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
    },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 34,
-     "hora": "2026-10-15T04:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 11.3,
-     "pm10": 19.2,
-     "ozone": 59.9,
-     "nitrogen_dioxide": 1.4,
-     "carbon_monoxide": 149.3
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": -7.0999985,
-     "lon": -34.899994
-    },
-    "capital": {
-     "nome": "João Pessoa",
-     "ibge": 2507507,
-     "lat": -7.11509,
-     "lon": -34.8641
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
-   },
    "temperatura_medida": {
     "codigo": "A320",
     "nome": "JOAO PESSOA",
@@ -8168,50 +7482,6 @@
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
-   },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 35,
-     "hora": "2026-10-15T08:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 11.8,
-     "pm10": 19.6,
-     "ozone": 60.4,
-     "nitrogen_dioxide": 1.9,
-     "carbon_monoxide": 140.2
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": -8.0,
-     "lon": -34.899994
-    },
-    "capital": {
-     "nome": "Recife",
-     "ibge": 2611606,
-     "lat": -8.04666,
-     "lon": -34.8771
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
    },
    "temperatura_medida": {
     "codigo": "A301",
@@ -8314,50 +7584,6 @@
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
    },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 55,
-     "hora": "2026-10-15T15:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 13.9,
-     "pm10": 16.1,
-     "ozone": 71.2,
-     "nitrogen_dioxide": 5.2,
-     "carbon_monoxide": 289.5
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": -5.0999985,
-     "lon": -42.800003
-    },
-    "capital": {
-     "nome": "Teresina",
-     "ibge": 2211001,
-     "lat": -5.09194,
-     "lon": -42.8034
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
-   },
    "temperatura_medida": {
     "codigo": "A312",
     "nome": "TERESINA",
@@ -8459,50 +7685,6 @@
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
    },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 56,
-     "hora": "2026-10-15T14:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 10.3,
-     "pm10": 10.4,
-     "ozone": 58.1,
-     "nitrogen_dioxide": 19.0,
-     "carbon_monoxide": 377.2
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": -25.400002,
-     "lon": -49.300003
-    },
-    "capital": {
-     "nome": "Curitiba",
-     "ibge": 4106902,
-     "lat": -25.4195,
-     "lon": -49.2646
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
-   },
    "temperatura_medida": {
     "codigo": "A807",
     "nome": "CURITIBA",
@@ -8602,50 +7784,6 @@
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
    },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 97,
-     "hora": "2026-10-15T13:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 24.3,
-     "pm10": 25.9,
-     "ozone": 96.0,
-     "nitrogen_dioxide": 30.9,
-     "carbon_monoxide": 359.9
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": -22.900002,
-     "lon": -43.199997
-    },
-    "capital": {
-     "nome": "Rio de Janeiro",
-     "ibge": 3304557,
-     "lat": -22.9129,
-     "lon": -43.2003
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
-   },
    "temperatura_medida": {
     "codigo": "A652",
     "nome": "RIO DE JANEIRO - FORTE DE COPACABANA",
@@ -8741,50 +7879,6 @@
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
-   },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 35,
-     "hora": "2026-10-15T07:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 11.1,
-     "pm10": 18.6,
-     "ozone": 58.2,
-     "nitrogen_dioxide": 1.4,
-     "carbon_monoxide": 126.6
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": -5.7999954,
-     "lon": -35.199997
-    },
-    "capital": {
-     "nome": "Natal",
-     "ibge": 2408102,
-     "lat": -5.79357,
-     "lon": -35.1986
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
    },
    "temperatura_medida": {
     "codigo": "A304",
@@ -8887,50 +7981,6 @@
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
    },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 53,
-     "hora": "2026-10-15T06:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 33.9,
-     "pm10": 34.9,
-     "ozone": 70.2,
-     "nitrogen_dioxide": 2.6,
-     "carbon_monoxide": 364.0
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": -8.799995,
-     "lon": -63.9
-    },
-    "capital": {
-     "nome": "Porto Velho",
-     "ibge": 1100205,
-     "lat": -8.76077,
-     "lon": -63.8999
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
-   },
    "temperatura_medida": {
     "codigo": "A925",
     "nome": "PORTO VELHO",
@@ -9027,50 +8077,6 @@
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
    },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 41,
-     "hora": "2026-10-15T08:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 11.2,
-     "pm10": 13.2,
-     "ozone": 44.9,
-     "nitrogen_dioxide": 4.5,
-     "carbon_monoxide": 216.2
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": 2.800003,
-     "lon": -60.699997
-    },
-    "capital": {
-     "nome": "Boa Vista",
-     "ibge": 1400100,
-     "lat": 2.82384,
-     "lon": -60.6753
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
-   },
    "temperatura_medida": null,
    "ar_medido": null
   },
@@ -9155,50 +8161,6 @@
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
-   },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 30,
-     "hora": "2026-10-15T13:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 4.5,
-     "pm10": 5.5,
-     "ozone": 51.8,
-     "nitrogen_dioxide": 8.2,
-     "carbon_monoxide": 196.6
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": -30.0,
-     "lon": -51.199997
-    },
-    "capital": {
-     "nome": "Porto Alegre",
-     "ibge": 4314902,
-     "lat": -30.0318,
-     "lon": -51.2065
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
    },
    "temperatura_medida": {
     "codigo": "A801",
@@ -9301,50 +8263,6 @@
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
    },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 37,
-     "hora": "2026-10-15T13:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 3.8,
-     "pm10": 5.0,
-     "ozone": 66.9,
-     "nitrogen_dioxide": 4.3,
-     "carbon_monoxide": 161.8
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": -27.599998,
-     "lon": -48.5
-    },
-    "capital": {
-     "nome": "Florianópolis",
-     "ibge": 4205407,
-     "lat": -27.5945,
-     "lon": -48.5477
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
-   },
    "temperatura_medida": {
     "codigo": "A806",
     "nome": "FLORIANOPOLIS",
@@ -9441,50 +8359,6 @@
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
    },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 40,
-     "hora": "2026-10-15T12:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 10.3,
-     "pm10": 14.8,
-     "ozone": 58.5,
-     "nitrogen_dioxide": 3.2,
-     "carbon_monoxide": 147.7
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": -10.900002,
-     "lon": -37.09999
-    },
-    "capital": {
-     "nome": "Aracaju",
-     "ibge": 2800308,
-     "lat": -10.9091,
-     "lon": -37.0677
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
-   },
    "temperatura_medida": null,
    "ar_medido": null
   },
@@ -9568,50 +8442,6 @@
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
-   },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 77,
-     "hora": "2026-10-15T10:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 24.8,
-     "pm10": 24.9,
-     "ozone": 73.2,
-     "nitrogen_dioxide": 43.8,
-     "carbon_monoxide": 519.2
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": -23.5,
-     "lon": -46.59999
-    },
-    "capital": {
-     "nome": "São Paulo",
-     "ibge": 3550308,
-     "lat": -23.5329,
-     "lon": -46.6395
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
    },
    "temperatura_medida": {
     "codigo": "A701",
@@ -9706,50 +8536,6 @@
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
     "documento": "INMET — previsão para 27 capital(is)"
-   },
-   "qualidade_ar": {
-    "indice": {
-     "escala": "EAQI",
-     "valor": 41,
-     "hora": "2026-10-15T00:00",
-     "publicado_por": "Open-Meteo (Copernicus CAMS)",
-     "criterio": "maior valor horário do dia"
-    },
-    "horas_lidas": 24,
-    "media_diaria": {
-     "pm2_5": 11.2,
-     "pm10": 12.6,
-     "ozone": 69.8,
-     "nitrogen_dioxide": 4.7,
-     "carbon_monoxide": 174.5
-    },
-    "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
-    "unidades": {
-     "pm2_5": "μg/m³",
-     "pm10": "μg/m³",
-     "ozone": "μg/m³",
-     "nitrogen_dioxide": "μg/m³",
-     "carbon_monoxide": "μg/m³"
-    },
-    "natureza": "estimativa de modelo",
-    "referencia_pm25": {
-     "valor": 15.0,
-     "unidade": "µg/m³",
-     "documento": "OMS, Global Air Quality Guidelines (2021) — média diária de PM2,5"
-    },
-    "no_da_grade": {
-     "lat": -10.199997,
-     "lon": -48.399994
-    },
-    "capital": {
-     "nome": "Palmas",
-     "ibge": 1721000,
-     "lat": -10.24,
-     "lon": -48.3558
-    },
-    "fonte": "open_meteo_ar",
-    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "15/10/2026 22:42"
    },
    "temperatura_medida": {
     "codigo": "A009",

@@ -50,7 +50,6 @@ JANELA_SECUNDARIA = 14
 
 # Acima deste valor a escala europeia sai da faixa "bom/razoável". A banda é DA FONTE (EAQI), não
 # nossa — o cartão cita a escala e não adjetiva.
-EAQI_LIMIAR = 40
 
 
 def data_do_ato(valor) -> date | None:
@@ -289,35 +288,6 @@ def cartao_temperatura(sinais):
                   t.get("data"), lista=lista,
                   nota=f"{t.get('capital')} ({uf}), previsão para {t.get('data')}; "
                        f"critério: {t.get('criterio')}")
-
-
-def cartao_qualidade_ar(sinais):
-    """10 · Capitais com índice de qualidade do ar acima da faixa boa/razoável.
-
-    O handover pede PM2,5. A editoria removeu o PM2,5 do site em 27/09 (§244 trocou por ÍNDICE),
-    então o cartão usa o índice — que é o que interessa a quem lê, e vem pronto da fonte.
-    """
-    ufs = (sinais or {}).get("uf") or {}
-    linhas = []
-    for uf, u in ufs.items():
-        ind = ((u.get("qualidade_ar") or {}).get("indice") or {})
-        if ind.get("valor") is not None:
-            linhas.append((uf, ind))
-    if not linhas:
-        return cartao("qualidade_ar_indice",
-                      "Capitais com índice de qualidade do ar acima da faixa boa ou razoável",
-                      None, "Copernicus CAMS via Open-Meteo", None, sem_coleta=True)
-    acima = [(uf, i) for uf, i in linhas if i["valor"] > EAQI_LIMIAR]
-    escala = linhas[0][1].get("escala")
-    publicado = linhas[0][1].get("publicado_por")
-    lista = [{"uf": uf, "valor": i["valor"], "hora": i.get("hora")}
-             for uf, i in sorted(acima, key=lambda x: -x[1]["valor"])]
-    return cartao("qualidade_ar_indice",
-                  f"Capitais com índice {escala} acima de {EAQI_LIMIAR}",
-                  len(acima), publicado or "Copernicus CAMS via Open-Meteo",
-                  linhas[0][1].get("hora"), lista=lista,
-                  nota=(f"escala {escala}, faixas da própria fonte; {len(linhas)} capital(is) com "
-                        f"leitura; critério: {linhas[0][1].get('criterio')}"))
 
 
 # ── cartões que o handover pede e que NÃO são calculáveis hoje ──────────────────────────────
