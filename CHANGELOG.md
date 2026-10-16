@@ -35,6 +35,14 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-16 · #777 · Um medidor de frescor e um portão das fichas municipais (consolidação item 6)
 
 `verificar_frescor.py` absorve os três portões de frescor (Financiamento, Defesa civil, Saúde): um leitor de carimbo, um relógio, três famílias declaradas, 33 casos. `verificar_fichas_municipais.py` absorve `documento_de_plano`, `documento_publicado`, `datas_de_instrumento` e `capital`: `data/municipios.json` lido uma vez, quatro réguas, 34 casos. Sete scripts saem; 125 → 120 comandos. Linhas .py/.yml −515.
+## 2026-10-16 · #778 · DOE-SP: o texto da publicação é decodificado e a homologação paulista casa
+
+A API do DOE-SP serve o ato com entidades HTML (`Situa&ccedil;&atilde;o`, `Pre&shy;feito`); sem decodificar, nenhum padrão de homologação casava. A forma paulista ("Homologa, por 180 dias, o decreto do Prefeito do Município de Guariba … Decreto municipal nº 5.019") entra como quarto padrão, com caso de teste do texto medido do Decreto 70.765.
+
+## 2026-10-16 · #776 · Descoberta nos sítios oficiais: três noites cobrem os 54 alvos
+
+A descoberta de planos nos sítios estaduais andava 6 alvos por noite e revia os mesmos; agora a fatia anda 20 por dia e os 54 (27 UFs, saúde e defesa civil) passam em três noites. O comando ganha prazo próprio de 12 minutos e grava o que achou ao ser interrompido; alvo só conta como verificado quando a API do sítio respondeu.
+
 ## 2026-10-16 · #769 · A definição do índice tem dono, e o texto público é conferido contra ela
 
 O motor grava em `meta.json` os componentes, pesos e faixas do índice e que a antecedência está fora da nota. O portão de versão passa a ler o texto público do MARÉ Legal: antecedência como medida da nota e "pesam igual" escrito à mão reprovam. A inicial com os textos novos (#770) já passa sem exceção.
