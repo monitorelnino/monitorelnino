@@ -227,7 +227,7 @@ FONTES = {
         # NOTA: a chave é gratuita e viaja em cabeçalho, nunca em URL — por isso não entra no
         # livro de consultas, que vai ao repositório público.
         "nome": "Qualidade do ar medida", "orgao": "OpenAQ (agrega redes oficiais brasileiras)",
-        "camada": "observado",
+        "camada": "apoio_tecnico",
         "url_publica": "https://openaq.org/",
         "endpoint": "https://api.openaq.org/v3/locations?iso=BR&limit=1000",
         "papel": "PM2,5 medido por monitor oficial, onde existir monitor.",

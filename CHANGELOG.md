@@ -17,6 +17,14 @@ não pontuados permanecem na versão corrente.
 
 Nenhuma página as mostrava: temperatura vem do INMET desde 27/09, ar vem do MMA/OpenAQ/RedeAr desde o #802. Saem do coletor (catálogo, leitores, coleta em lote, clima municipal), do arquivo de sinais, do cartão europeu do topo e do cartão morto da Imprensa. METODOLOGIA §41.7 com errata.
 
+## 2026-10-16 · #806 · Monitor de riscos: consulta do município
+
+Nova seção ao fim da página: estado e município, com os mesmos controles da inicial, e uma tabela com risco previsto e seca do estado, focos de 30 dias, ar e temperatura da estação ou capital mais próxima, avisos, alerta do Cemaden, emergência desde 29/06 e o link para o plano na ficha do estado. Cada linha com fonte e data; o arquivo do estado carrega só quando escolhido. HANDOVER_MONITOR_DE_RISCOS §5.
+
+## 2026-10-16 · #804 · Monitor de riscos: chuva forte em tabelas; saem as listas dos mapas
+
+O bloco "Chuva forte" troca o mapa de avisos por estado por duas tabelas: avisos do INMET por grau, com municípios cobertos, estados e fenômeno, e alertas do Cemaden por nível, com os municípios nomeados. Saem "Ver estados", "Ver em lista" e "Como ler" e o código morto que os montava. Open-Meteo e lista do OpenAQ passam a apoio técnico no catálogo (conserta a main do #802). HANDOVER_MONITOR_DE_RISCOS §4 e §7.
+
 ## 2026-10-16 · #802 · Monitor de riscos: seca em manchas, ar medido e cartão do ar
 
 A seca observada passa a ser as manchas do mapa mensal do Monitor de Secas, com contorno dos estados e hachura onde o boletim prevê seca. O mapa do ar mostra o IQAr das estações oficiais por cidade (cores oficiais) e os sensores IPAM/RedeAr; sai o índice europeu e a camada municipal morta. Cartão "Ar" só com cidade em IQAr Ruim ou pior.
