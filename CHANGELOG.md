@@ -36,6 +36,10 @@ não pontuados permanecem na versão corrente.
 
 `coletar_doe.py` ganha `edicao_pi`: a listagem do dia do diário atual do Piauí (`www.diario.pi.gov.br/doe/`, a mesma rota que a tabela do sítio chama) dá cada edição, suplementar incluído, e o PDF. RR segue `sem adaptador de busca`: o PDF só sai por POST numa rota que não responde ao runner.
 
+## 2026-10-16 · #762 · Relógio e despachante com checkout esparso (F63)
+
+O relógio da nuvem morreu no checkout completo da `main` (7 GB de evidências) dentro do teto de 5 min, na abertura de 16/10. Relógio (no ramo `relogio` e no espelho da `main`) e despachante passam a ler só `scripts/`, `config/` e `data/noite/`: checkout de 8 s. O ensaio 13 reprova checkout completo.
+
 ## 2026-10-16 · #761 · Juiz de saúde interrompido não avança o corte
 
 `julgar_saude.py` só carimba o corte de `saude_uf.json` quando julga a fila inteira; interrompido pelo prazo, grava o julgado e mantém o corte (F64). Entram os 17 vereditos do julgamento estadual de 15/10 (nenhuma promoção).

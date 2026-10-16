@@ -628,6 +628,9 @@ def ensaio_despachante_nao_depende_do_cron(diz) -> bool:
         diz("   ✗ o relógio não chama o despachante — tiquetaquear sozinho não dispara nada")
         ok = False
     despachante = (raiz / ".github/workflows/despachante.yml").read_text(encoding="utf-8")
+    if "sparse-checkout" not in fonte or "sparse-checkout" not in despachante:
+        diz("   ✗ relógio ou despachante sem checkout esparso: a árvore inteira estoura o job (F63)")
+        ok = False
     if "workflow_dispatch" not in despachante:
         diz("   ✗ o despachante não aceita disparo externo: nenhum observador o alcança")
         ok = False

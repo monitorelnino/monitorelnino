@@ -49,6 +49,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/10/2026 · Relógio e despachante com checkout esparso (F63)</dt>
+      <dd>O relógio da nuvem morreu no checkout completo da `main` (7 GB de evidências) dentro do teto de 5 min, na abertura de 16/10. Relógio (no ramo `relogio` e no espelho da `main`) e despachante passam a ler só `scripts/`, `config/` e `data/noite/`: checkout de 8 s. O ensaio 13 reprova checkout completo.</dd>
       <dt>16/10/2026 · Juiz de saúde interrompido não avança o corte</dt>
       <dd>`julgar_saude.py` só carimba o corte de `saude_uf.json` quando julga a fila inteira; interrompido pelo prazo, grava o julgado e mantém o corte (F64). Entram os 17 vereditos do julgamento estadual de 15/10 (nenhuma promoção).</dd>
       <dt>16/10/2026 · Imprensa: páginas em cartões, perguntas em sanfona</dt>
@@ -167,8 +169,6 @@
       <dd>O §79 corrigiu a ordem e a publicação seguiu falhando: faltava a colisão de regras. O carimbo do publicador escrevia só `atualizado_em` e declarava que `corte` nunca era tocado — regra revogada em 30/09, quando o corte passou a ser a data da rodada. Agora escreve as duas, do mesmo valor, por ordem da editoria. A data continua vindo do dado, nunca do relógio. Em `METODOLOGIA.md` §81.</dd>
       <dt>02/10/2026 · MARÉ Saúde: a página refeita (blocos C, D e E)</dt>
       <dd>A ordem inverteu: números, o que cada estado publicou, o que os órgãos de saúde registram e o que o governo federal publicou. As seis doenças viraram uma seção em grade de três, com busca por município que diz &quot;não acompanhada&quot; em vez de zero. Saem o backlog de fontes, o catálogo de desfechos, os gatilhos e as áreas COBRADE. Siglas traduzidas no texto visível. Em `METODOLOGIA.md` §82.</dd>
-      <dt>01/10/2026 · Publicação destravada: o carimbo antes dos portões</dt>
-      <dd>`Publicar dados` falhou nas quatro execuções do dia e o site ficou sem dado novo. O portão do corte sincronizado estava certo em parar: os coletores gravam `atualizado_em = hoje` durante a rodada e o `corte` só era escrito depois da bateria, então no meio do caminho as duas datas divergiam. O carimbo passa a vir antes dos derivados e dos portões, e um portão novo lê o `atualizar.py` e reprova se a ordem voltar a inverter. Em `METODOLOGIA.md` §79.</dd>
     </dl>
   </section>
 </main>
