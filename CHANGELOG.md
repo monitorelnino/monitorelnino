@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-16 · #PR · Juiz da saúde estadual: duas rodadas pela válvula (dado)
+## 2026-10-16 · #808 · Juiz da saúde estadual: duas rodadas pela válvula (dado)
 
 Duas rodadas do juiz da saúde estadual com o código do #799: cerca de 140 pistas oficiais julgadas (contra 17 em 15/10), nenhuma promovida; 113 seguem pendentes, entre elas as do host do Amapá sem resposta. O corte da verificação segue 02/10, porque a fila não terminou.
 
