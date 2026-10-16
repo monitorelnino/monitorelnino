@@ -11,6 +11,8 @@ function _qtdCartao(v) {
 }
 // ===== saude.html · bloco 1 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
 let BR_GEOJSON, SUF, SSIN, SINAIS, MARE, MSAUDE, DESF, DESF_CANAL, DESF_COMP, PAINEL_LISTA, SRAG;
+// Lote 6, §2: a frase do dado nasce oculta e só aparece com texto — nunca "—" nem linha vazia.
+const mostrarFrase = (alvo, texto) => { alvo.textContent = texto; alvo.hidden = !texto; };
 /* Número em texto público com vírgula decimal (A4-16); não-número passa como veio ("—", nulo). */
 const decBR = v => (v == null || v === '' || isNaN(Number(v))) ? v : Number(v).toLocaleString('pt-BR', {maximumFractionDigits: 1});
 
@@ -735,9 +737,9 @@ const AREAS = [
     MonitorMapas.credito('fonteSragSE', {fontes: ['SIVEP-Gripe (Ministério da Saúde)'], data: S.gerado_em});
     // 11/10/2026 (HANDOVER_SAUDE item 2): a frase do dado de Respiratórias ficava em "—".
     if (el('fraseResp')) {
-      el('fraseResp').textContent = n(u.valor) + ' internações por síndrome respiratória grave na semana '
+      mostrarFrase(el('fraseResp'), n(u.valor) + ' internações por síndrome respiratória grave na semana '
         + semanaEmDatas(u.se.split('-')[0], u.se) + ', a última com dado no SIVEP-Gripe. As semanas '
-        + 'seguintes ainda recebem notificações e aparecem sem valor.';
+        + 'seguintes ainda recebem notificações e aparecem sem valor.');
     }
   }).catch(_erroSaude("saude:811"));
 
@@ -826,7 +828,7 @@ const AREAS = [
         const legEl = el(cfg.leg);
         if (!serie || !serie.BR) {
           if (legEl) legEl.innerHTML = '<span class="escala">Série de ' + cfg.rotulo + ' ainda não coletada — lacuna declarada.</span>';
-          if (el(cfg.frase)) el(cfg.frase).textContent = 'Série de ' + cfg.rotulo + ' ainda não coletada até o corte.';
+          if (el(cfg.frase)) mostrarFrase(el(cfg.frase), 'Série de ' + cfg.rotulo + ' ainda não coletada até o corte.');
           return;
         }
         const ano = String(D.ano_corrente);
@@ -846,9 +848,9 @@ const AREAS = [
             : (v > f.p90 ? 'acima da faixa esperada para a época'
                : (v >= f.mediana ? 'dentro da faixa esperada para a época, acima da mediana'
                   : 'dentro da faixa esperada para a época'));
-          el(cfg.frase).textContent = n(v) + ' notificações de ' + cfg.rotulo + ' na semana '
+          mostrarFrase(el(cfg.frase), n(v) + ' notificações de ' + cfg.rotulo + ' na semana '
             + semanaEmDatas(ano, ultima) + ', ' + posicao + '. As '
-            + 'semanas seguintes ainda recebem notificações e aparecem sem valor.';
+            + 'semanas seguintes ainda recebem notificações e aparecem sem valor.');
         }
         if (el(cfg.linha)) {
           // Era "{n} semana(s) fechada(s) de {ano}": contava semanas, trazia o "(s)" que o item 2
@@ -1110,9 +1112,9 @@ const AREAS = [
       if (leg) leg.innerHTML = '<span class="escala">' + esc(desde
         ? 'Painel de excesso de calor sem leitura desde a coleta de ' + desde + '.'
         : 'Painel de excesso de calor sem coleta até o corte.') + '</span>';
-      if (el('fraseCalor')) el('fraseCalor').textContent = desde
+      if (el('fraseCalor')) mostrarFrase(el('fraseCalor'), desde
         ? 'O Painel Nacional de Excesso de Calor, do Ministério da Saúde, não devolve leitura desde a coleta de ' + desde + '.'
-        : 'O Painel Nacional de Excesso de Calor, do Ministério da Saúde, ainda não foi lido até o corte.';
+        : 'O Painel Nacional de Excesso de Calor, do Ministério da Saúde, ainda não foi lido até o corte.');
       if (window.MonitorMapas) MonitorMapas.credito('boxCalorSerie', {fontes: ['Painel Nacional de Excesso de Calor (Ministério da Saúde)'], data: ult});
       return;
     }
@@ -1135,10 +1137,10 @@ const AREAS = [
         + (C.data ? ' · consulta de ' + (MonitorMapas.dataBR(C.data) || C.data) : '');
     }
     if (el('fraseCalor')) {
-      el('fraseCalor').textContent = n((r.severo || 0) + (r.extremo || 0))
+      mostrarFrase(el('fraseCalor'), n((r.severo || 0) + (r.extremo || 0))
         + ((r.severo || 0) + (r.extremo || 0) === 1 ? ' município' : ' municípios') + ' em classe severa ou extrema de excesso de calor na consulta mais recente, '
         + 'de ' + n(C.municipios_lidos || 0) + ' lidos. O vocabulário das classes é o do Ministério '
-        + 'da Saúde.';
+        + 'da Saúde.');
     }
   }).catch(_erroSaude("saude:1228"));
 

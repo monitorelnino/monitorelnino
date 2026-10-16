@@ -51,8 +51,12 @@
     <dl class="mudancas-lista">
       <dt>16/10/2026 · O envio do formulário fica na inicial; sai a página Obrigado</dt>
       <dd>O formulário da inicial passa a enviar sem trocar de página: depois do envio aparece &quot;Recebido. Obrigado pela contribuição.&quot; no mesmo lugar. O texto que vivia em `obrigado.html` (a conferência automática e o que acontece com o documento) vai para o próprio formulário. `obrigado.html` sai, e endereços antigos levam ao formulário (decisão da editoria de 16/10).</dd>
+      <dt>16/10/2026 · Saúde: a frase do dado não aparece vazia</dt>
+      <dd>As quatro frases do dado da página de saúde (dengue, chikungunya, respiratórias e calor) nasciam com um travessão e ficavam assim quando a série não carregava. Agora nascem ocultas e só aparecem com texto, por uma função só.</dd>
       <dt>16/10/2026 · Inicial: sai a legenda das barras; barras sem régua; cartão da cidade branco e com um só componente</dt>
       <dd>Sai a legenda &quot;Barra de cima… Barra de baixo…&quot; e a linha acima dela, na inicial e na Saúde, com a função que a escrevia. A barra do MARÉ Legal perde o quadriculado de fundo (ficam as marcas 25, 50, 70); a dos decretos, sem marcas, fica mais alta. O cartão da cidade fica branco, sem o link &quot;consultar outro município&quot;; as listas federais usam o cartão da projeção, com o texto do cadastro nacional (Lei 12.340, art. 3º-A).</dd>
+      <dt>16/10/2026 · Saúde: a tabela do índice com as colunas do leitor</dt>
+      <dd>A tabela que acompanha o mapa do MARÉ Saúde passa a ter UF, nota, faixa, plano (situação e data), coordenação na saúde e ligação com o governo do estado. Saem as colunas de componente interno (&quot;cobertura sanitária 0,1 · 1 lido / 1 sem leitura&quot;, antecedência, dengue na capital, risco) e o travessão em célula vazia.</dd>
       <dt>16/10/2026 · Saúde: a tabela do índice com as colunas do leitor</dt>
       <dd>A tabela que acompanha o mapa do MARÉ Saúde passa a ter UF, nota, faixa, plano (situação e data), coordenação na saúde e ligação com o governo do estado. Saem as colunas de componente interno (&quot;cobertura sanitária 0,1 · 1 lido / 1 sem leitura&quot;, antecedência, dengue na capital, risco) e o travessão em célula vazia.</dd>
       <dt>16/10/2026 · Uma renderização de página para os portões de jsdom (consolidação item 6)</dt>
@@ -165,10 +169,6 @@
       <dd>Decisão da editoria, sem degrau novo: plano em domínio oficial do ente conta nos dois índices, com três condições (domínio oficial; órgão, título e ano; não ser minuta) e a marca &quot;sem ato de aprovação localizado&quot; na ficha do município e do estado. Etapas 2, 3, 4 e 6 do codebook ajustadas, versão 1.2, que devolve à fila o que a régua antiga recusou. Variante de 70% do degrau entra na análise de incerteza dos dois índices. METODOLOGIA §101.</dd>
       <dt>03/10/2026 · A pista de documento oficial pertence a quem é o domínio</dt>
       <dd>Garimpo pedido pela editoria: 13 documentos de plano em domínio oficial ao juiz. Nenhum promovido, e o relatório mostrou por quê — **nove estavam atribuídos ao município errado**, pelo nome que aparecia no trecho (o plano de Celso Ramos virou pista de Salete). `municipio_do_dominio.py` resolve o host no ente dono e `corrigir_atribuicao_por_dominio.py` reatribui e devolve ao juiz. Rejulgados com o ente certo, os 9 param na etapa 2 ou 3: o plano não é o ato.</dd>
-      <dt>03/10/2026 · Conformidade permanente: as regras passam a ser verificadas, em toda página</dt>
-      <dd>Hierarquia das regras no alto do CLAUDE.md, `layout/regras.json` com o que é verificável, contrato para as nove páginas públicas e `scripts/verificar_conformidade.py`, bloqueante, que incorpora o portão de layout. Rotina diária sobre o site inteiro. O primeiro passe achou 40 violações reais: alvo de toque de 40 px, numeração de figura e de seção que a editoria já havia revogado, duas figuras fora do componente, gráficos sem rótulo acessível e &quot;defeso&quot; em texto público. METODOLOGIA §100.</dd>
-      <dt>02/10/2026 · Defesa civil: a cadeia do aviso ao recurso, e a Imprensa lendo as páginas</dt>
-      <dd>Emergências por estado, com a cidade na lista e as três marcas da cadeia; série do decreto ao recurso; tipo de evento do ato; as três listas federais de risco juntas; alerta com portão de 24 horas. A Imprensa passa a LER o instantâneo de cada página, com portão que compara no navegador. Corrigidos: país somado duas vezes nas respiratórias (8.534 → 4.267) e autoteste que gravava no banco. O 40199 volta ao Proteja-se. METODOLOGIA §99.</dd>
     </dl>
   </section>
 </main>
