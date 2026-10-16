@@ -51,6 +51,8 @@
     <dl class="mudancas-lista">
       <dt>16/10/2026 · Inicial: sai a legenda das barras; barras sem régua; cartão da cidade branco e com um só componente</dt>
       <dd>Sai a legenda &quot;Barra de cima… Barra de baixo…&quot; e a linha acima dela, na inicial e na Saúde, com a função que a escrevia. A barra do MARÉ Legal perde o quadriculado de fundo (ficam as marcas 25, 50, 70); a dos decretos, sem marcas, fica mais alta. O cartão da cidade fica branco, sem o link &quot;consultar outro município&quot;; as listas federais usam o cartão da projeção, com o texto do cadastro nacional (Lei 12.340, art. 3º-A).</dd>
+      <dt>16/10/2026 · Triagem e preparação de pistas com um dono só (F66)</dt>
+      <dd>O juiz de 16/10 perdeu o commit porque a busca web de cadência, fora da vez da noite, regravou o nível de confiança de pistas que a descoberta já tinha triado. Triagem fica só na descoberta e preparação só no juiz; a cadência e a rodada semanal apenas acrescentam pistas. O ensaio da noite reprova um segundo dono.</dd>
       <dt>16/10/2026 · Inicial: links da abertura e sai a linha da checagem</dt>
       <dd>Na abertura do MARÉ Legal, &quot;os municípios inscritos no cadastro nacional&quot; leva ao cadastro do MDR e &quot;a União já indicou … municípios&quot; volta a levar ao mapa da Defesa civil (link perdido no #770). Sai a linha &quot;Cada registro vem com a sua fonte · Última checagem em …&quot; (editoria, 16/10), com o script, o fallback, o estilo e as checagens que a alimentavam.</dd>
       <dt>16/10/2026 · Um medidor de frescor e um portão das fichas municipais (consolidação item 6)</dt>
@@ -167,8 +169,6 @@
       <dd>Todos os coletores da página rodaram hoje. `coletar_siconfi_182.py` estava morrendo com `TypeError` desde a migração do §229 — uma função local `gravar` sombreava a importada. A execução passou a coletar a modalidade de aplicação. Portão novo mede coletor pelo relógio (9 dias) e curadoria por declaração. METODOLOGIA §96.</dd>
       <dt>02/10/2026 · Canais 3 e 4 nos 27, e F2 pela composição do ato</dt>
       <dd>Regra mínima do canal 4 — raiz da secretaria mais diário do estado — vale para as 27, e o canal passou a ser dito na linha do log em vez de adivinhado. PA e MT registrados pelos endereços da editoria. F1 e F2 só saem de ato com dispositivo, e F2 exige o órgão na composição. Quatro canais: de 1 para 8 de 27. METODOLOGIA §95.</dd>
-      <dt>02/10/2026 · Recuperação do canal 2 desde 29/06, e contexto por termo</dt>
-      <dd>Edições do ciclo baixadas e indexadas: 52 na Paraíba e 68 no Mato Grosso do Sul, de 70 dias úteis. Termo genérico passou a exigir contexto do ciclo — &quot;plano de contingência do sistema E-TFD&quot; não é pista de preparação ao El Niño. O índice de ocorrências ficou com cinco datas reais, e o registro por edição espelha o índice. Em `coletar_edicoes_doe.py`, `data/doe_edicoes/`.</dd>
     </dl>
   </section>
 </main>

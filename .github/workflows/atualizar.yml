@@ -113,8 +113,8 @@ jobs:
         preservar_evidencias.py --ler --limite 20
         preservar_evidencias.py --ocr --limite 6
         scripts/preservar_textos_integrais.py
-        triar_confianca_pistas.py
-        revisar_pistas.py --preparar
+        # F66 (16/10/2026): triagem e preparação das pistas só na descoberta e no juiz, dentro da
+        # vez da noite — esta rodada corre fora dela e regravaria os mesmos campos.
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}

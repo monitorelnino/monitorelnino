@@ -31,10 +31,13 @@ não pontuados permanecem na versão corrente.
 
 
 
-
 ## 2026-10-16 · #785 · Inicial: sai a legenda das barras; barras sem régua; cartão da cidade branco e com um só componente
 
 Sai a legenda "Barra de cima… Barra de baixo…" e a linha acima dela, na inicial e na Saúde, com a função que a escrevia. A barra do MARÉ Legal perde o quadriculado de fundo (ficam as marcas 25, 50, 70); a dos decretos, sem marcas, fica mais alta. O cartão da cidade fica branco, sem o link "consultar outro município"; as listas federais usam o cartão da projeção, com o texto do cadastro nacional (Lei 12.340, art. 3º-A).
+
+## 2026-10-16 · #781 · Triagem e preparação de pistas com um dono só (F66)
+
+O juiz de 16/10 perdeu o commit porque a busca web de cadência, fora da vez da noite, regravou o nível de confiança de pistas que a descoberta já tinha triado. Triagem fica só na descoberta e preparação só no juiz; a cadência e a rodada semanal apenas acrescentam pistas. O ensaio da noite reprova um segundo dono.
 
 ## 2026-10-16 · #783 · Inicial: links da abertura e sai a linha da checagem
 
