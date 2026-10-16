@@ -1,6 +1,30 @@
-"""Medida temporária (ramo diag): o coletor do cadastro com a segunda fonte (MIDR), sem commit."""
-import json, subprocess, sys
-r = subprocess.run([sys.executable, "coletar_cadastro_prioritarios.py"], capture_output=True, text=True, timeout=1800)
-print(r.stdout[-4000:]); print(r.stderr[-2000:])
-d = json.load(open("data/cadastro_prioritarios_federal.json"))
-print(json.dumps({k: d.get(k) for k in ("fontes", "coletado_em", "totais", "evidencias")}, ensure_ascii=False)[:3000])
+"""Sonda pontual (diag 16/10): texto real das homologações do DOE-SP (Guariba, Ribeirão Preto)."""
+import json, re, sys, time, urllib.parse
+sys.path.insert(0, ".")
+from coletores_base import buscar
+B = ("https://do-api-web-search.doe.sp.gov.br/v2/advanced-search/publications"
+     "?PageNumber=1&PageSize=20&Terms[0]={t}&FromDate={de}&ToDate={ate}")
+P = "https://do-api-web-search.doe.sp.gov.br/v2/publications/{id}"
+def txt(b):
+    h = (json.loads(b) or {}).get("content") or ""
+    return " ".join(re.sub(r"<[^>]+>", " ", h).split())
+for termo, de, ate in (("Guariba", "2026-07-20", "2026-08-05"), ("Ribeirão Preto situação de emergência", "2026-07-20", "2026-08-05"),
+                       ("70.765", "2026-07-20", "2026-10-16"), ("homologa situação de emergência", "2026-07-20", "2026-08-05")):
+    try:
+        o = json.loads(buscar(B.format(t=urllib.parse.quote(termo), de=de, ate=ate), timeout=60))
+    except Exception as e:
+        print("ERRO busca", termo, e); continue
+    print(f"\n=== {termo}: total {o.get('totalItems')}")
+    for it in (o.get("items") or [])[:8]:
+        print("-", it.get("date"), "|", it.get("title"), "|", it.get("hierarchy"), "|", it.get("slug"))
+        if not re.search(r"homolog|emerg", (it.get("title") or "") + (it.get("excerpt") or ""), re.I):
+            continue
+        time.sleep(2)
+        try:
+            t = txt(buscar(P.format(id=it["id"]), timeout=60))
+        except Exception as e:
+            print("  ERRO pub", e); continue
+        for m in re.finditer(r"homolog", t, re.I):
+            print("  >>", t[max(0, m.start()-250):m.start()+450])
+            break
+    time.sleep(2)
