@@ -49,6 +49,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/10/2026 · Todo texto público no catálogo, com portão</dt>
+      <dd>O portão do catálogo passa a reprovar texto público do `&lt;main&gt;` sem identificador (título, parágrafo, item, legenda, resumo), pela mesma regra do migrador; fora só formulário, diálogo, `noscript` e navegação (`layout/regras.json`). O migrador passa a levar texto com marcação e a não sobrescrever identificador existente. 138 trechos de dez páginas migrados sem mudar uma letra.</dd>
       <dt>16/10/2026 · Consolidação item 5: três funções copiadas viram uma</dt>
       <dd>`data_da_edicao()` (data de `meta.json`) sai de dez arquivos para `coletores_base` — em dois a reserva chamava `datetime._hoje()`, que não existe; a leitura de PDF com pdfplumber primeiro dos quatro boletins estaduais vira opção de `extrair_texto_por_pagina`; `_gh` dos quatro scripts de temporizador fica só no despachante. −144 linhas.</dd>
       <dt>16/10/2026 · Saúde: sai o texto vazado</dt>
@@ -167,8 +169,6 @@
       <dd>A SRAG passou a ser coletada (28 UFs por semana, do SIVEP-Gripe) e o catálogo ainda dizia `nao_coletado` — o portão de saúde reprovou, com razão. Ao corrigir, apareceu o caso oposto: o arquivo de síndrome gripal existe em disco e guarda **lacuna declarada**, não série. O portão passa a olhar o conteúdo: arquivo com série e status diferente de `coletado` reprova; arquivo de lacuna com status `coletado` também. Em `METODOLOGIA.md` §80.</dd>
       <dt>02/10/2026 · A legenda da série respiratória sem entrada vazia</dt>
       <dd>Com a troca para a fonte primária, o indicador de síndrome respiratória grave perdeu os campos que descreviam o nowcasting do InfoGripe — e a legenda passou a emitir uma entrada sem rótulo: quadradinho de cor sem nome. O portão de runtime pegou, e só na CI, porque lá a série já existia. A SRAG volta a ter segunda barra, agora como &quot;parciais, sem estimativa&quot;, e o renderizador deixa de emitir entrada sem rótulo para qualquer indicador. Em `METODOLOGIA.md` §82.</dd>
-      <dt>02/10/2026 · MARÉ Saúde: fechar os 27 sem nova instrução</dt>
-      <dd>O juiz passa a rodar logo depois dos quatro canais, toda noite, e o fechamento mede, pelo log, em quais UFs os quatro rodaram sem motor doente — só nessas cabe &quot;não localizado&quot;. Medido: 0 de 27 hoje. A troca para a v0.4 acontece sozinha quando as 27 tiverem plano e coordenação, com errata encadeada; sem a condição, nada muda. O publicador imprime quantas faltam e por quê. Em `METODOLOGIA.md` §84.</dd>
     </dl>
   </section>
 </main>

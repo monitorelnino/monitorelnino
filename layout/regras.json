@@ -197,6 +197,11 @@
     "_nota_por_pagina": "A lista de cada página fica no contrato dela, e é lá que o portão a lê. Esta cópia existe para a lista ser visível num lugar só; o contrato prevalece, porque é ele que declara as divergências.",
     "_nota_regra_1": "03/10/2026 (regra 1 da editoria): dizemos o que disponibilizamos; nunca o que não disponibilizamos. Nenhuma frase sobre código, base de dados ou licença de dados entra no texto público — nem para dizer que existe, nem para dizer que não existe. A metodologia é o único material técnico público, e ela se anuncia numa frase: 'A metodologia é pública.'"
   },
+  "catalogo": {
+    "fonte": "CLAUDE.md do robo-registro, 'Catálogo de conteúdo' (05/10/2026): texto público só em conteudo/<pagina>.json; central 16/10/2026 10:40",
+    "fora": ["form", "dialog", "noscript", "nav"],
+    "_nota": "Tags-ancestrais cujo texto não é editorial e fica fora do catálogo. Todo h1–h3, p, li, summary e figcaption do <main> de página pública fora delas precisa de data-conteudo (scripts/verificar_catalogo.py, regra f)."
+  },
   "texto_publico": {
     "fonte": "scripts/verificar_texto_publico.js (13/10/2026: fusão de verificar_vocabulario_publico.js e verificar_voz_editorial.js, consolidação item 3)",
     "jargao_interno": [
@@ -422,6 +427,7 @@
   },
   "_verificacao": {
     "_nota": "A7-14 (12/10/2026): toda regra deste arquivo diz QUEM a julga — o portão (caminho do script) ou, com franqueza, que ainda é só texto. `verificar_conformidade.py --regras-cobertas` reprova regra nova sem entrada aqui e caminho de script que não existe. Regra 'só texto' é dívida declarada, não verificação.",
+    "catalogo.fora": "scripts/verificar_catalogo.py",
     "tipografia.familias_permitidas": "scripts/verificar_conformidade.py",
     "tipografia.por_seletor": "scripts/verificar_conformidade.py",
     "tipografia.escala_px": "scripts/verificar_conformidade.py",

@@ -65,6 +65,11 @@ FUNCOES = (
 
 # O que o JS preenche: elemento cujo texto é só o travessão de espera.
 ESPERA = ("—", "-", "")
+# Bloco dentro do elemento: é contêiner, não texto.
+RE_BLOCO = re.compile(r"<(p|ul|ol|li|div|h[1-6]|figure|table|details|section|form|dl)\b")
+# Fora do catálogo por regra (`layout/regras.json` › `catalogo.fora`): o que não é texto editorial.
+FORA_DO_CATALOGO = tuple((json.loads((RAIZ / "layout" / "regras.json").read_text(encoding="utf-8"))
+                          .get("catalogo") or {}).get("fora") or ("form", "dialog", "noscript", "nav"))
 
 
 def funcao_de(classes: str, tag: str) -> str:
@@ -72,6 +77,10 @@ def funcao_de(classes: str, tag: str) -> str:
     for marca, nome in FUNCOES:
         if marca in (classes or "").split():
             return nome
+    if tag == "h1":
+        return "titulo_da_pagina"
+    if tag in ("li", "figcaption"):
+        return {"li": "item", "figcaption": "legenda"}[tag]
     if tag == "h2":
         return "titulo_da_secao"
     if tag == "h3":
@@ -122,7 +131,7 @@ def texto_limpo(bruto: str) -> str:
     return re.sub(r"\s+", " ", bruto or "").strip()
 
 
-def extrair(html: str, pagina: str, ids_do_js: frozenset = frozenset()) -> tuple:
+def extrair(html: str, pagina: str, ids_do_js: frozenset = frozenset(), existentes: frozenset = frozenset()) -> tuple:
     """(entradas, html_novo) — o catálogo e a página com `data-conteudo`. Função pura.
 
     `entradas` é {identificador: texto}. `html_novo` é o mesmo HTML com o atributo acrescentado nos
@@ -197,11 +206,22 @@ def extrair(html: str, pagina: str, ids_do_js: frozenset = frozenset()) -> tuple
     usados = {}
     pedacos = []
     ultimo = 0
-    alvo = re.compile(r"<(h2|h3|p|summary)([^>]*)>([^<]*)</\1>")
+    # 16/10/2026 (central, 10:40): TODO texto público do <main> vive no catálogo — título da página,
+    # item de lista e legenda inclusive. Texto com marcação de linha (`strong`, `a`, `em`) vai pelo
+    # `data-conteudo-html`; elemento com bloco dentro não é texto, é contêiner, e não migra. Fora do
+    # catálogo, só o que `layout/regras.json` › `catalogo.fora` declara (formulário, diálogo…).
+    fora = [(a.start(), corpo.find(f"</{a.group(1)}>", a.start()))
+            for a in re.finditer(r"<(%s)\b" % "|".join(FORA_DO_CATALOGO), corpo)]
+    alvo = re.compile(r"<(h1|h2|h3|p|summary|li|figcaption)(\s[^>]*)?>(.*?)</\1>", re.S)
     for m in alvo.finditer(corpo):
-        tag, attrs, bruto = m.group(1), m.group(2), m.group(3)
+        tag, attrs, bruto = m.group(1), m.group(2) or "", m.group(3)
+        if (RE_BLOCO.search(bruto) or any(i <= m.start() < f for i, f in fora)
+                or re.search(r"\b(id|data-conteudo(-html)?)=", bruto)):
+            continue                      # contêiner, região fora do catálogo, ou dado que o JS escreve
+        com_marcacao = "<" in bruto
         texto = texto_limpo(bruto)
-        if texto in ESPERA or "data-conteudo" in attrs:
+        if (re.sub(r"<[^>]+>", "", texto).strip() in ESPERA or "data-conteudo" in attrs
+                or re.search(r"\shidden(\s|=|$)", attrs)):
             continue
         classes = (re.search(r'class="([^"]*)"', attrs) or [None, ""])[1]
         if "sr-only" in (classes or ""):
@@ -218,10 +238,13 @@ def extrair(html: str, pagina: str, ids_do_js: frozenset = frozenset()) -> tuple
                     else elemento_em(m.start(), id_proprio, funcao))
         chave = (secao, elemento, funcao)
         ordem = usados.get(chave, 0)
-        usados[chave] = ordem + 1
         ident = identificador(pagina, secao, elemento, funcao, ordem)
+        while ident in existentes or ident in entradas:   # nunca sobrescreve entrada que já existe
+            ordem += 1
+            ident = identificador(pagina, secao, elemento, funcao, ordem)
+        usados[chave] = ordem + 1
         entradas[ident] = texto
-        novo_attrs = attrs.rstrip() + f' data-conteudo="{ident}"'
+        novo_attrs = attrs.rstrip() + (f' data-conteudo-html="{ident}"' if com_marcacao else f' data-conteudo="{ident}"')
         pedacos.append(corpo[ultimo:m.start()])
         pedacos.append(f"<{tag}{novo_attrs}>{bruto}</{tag}>")
         ultimo = m.end()
@@ -360,7 +383,9 @@ def main() -> int:
         print(f"✗ {arquivo.name} não existe")
         return 1
     html = arquivo.read_text(encoding="utf-8")
-    entradas, novo = extrair(html, pagina, ids_escritos_pelo_js())
+    destino = CATALOGO / f"{pagina}.json"
+    doc = json.loads(destino.read_text(encoding="utf-8")) if destino.exists() else {}
+    entradas, novo = extrair(html, pagina, ids_escritos_pelo_js(), frozenset(doc.get("textos") or {}))
     print(f"{pagina}.html · {len(entradas)} identificador(es) de texto público")
     for ident, texto in entradas.items():
         print(f"  {ident}\n      {texto[:92]}")
@@ -369,8 +394,6 @@ def main() -> int:
         return 0
 
     CATALOGO.mkdir(exist_ok=True)
-    destino = CATALOGO / f"{pagina}.json"
-    doc = json.loads(destino.read_text(encoding="utf-8")) if destino.exists() else {}
     doc.setdefault("_governanca", (
         "CATÁLOGO DE CONTEÚDO (handover de 05/10/2026). Todo texto público desta página vive aqui, "
         "com identificador estável `pagina.secao.elemento.funcao`. A página lê este arquivo; o HTML "

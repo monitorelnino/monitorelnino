@@ -23,6 +23,10 @@ O QUE ELE REPROVA
   (d) **Molde malformado**: marcador aberto e não fechado, ou ramo de plural com número de ramos
       diferente de três. Molde quebrado publica `{n}` para o leitor.
 
+  (f) **Texto público fora do catálogo** (16/10/2026): h1–h3, p, li, summary e figcaption do `<main>`
+      sem `data-conteudo`, pela mesma regra do `migrar_para_catalogo.py` (`extrair`); só fica fora o
+      que `layout/regras.json` › `catalogo.fora` declara. Antes a regra estava escrita e sem portão.
+
   (e) **Renomeação não registrada.** Identificador que sumiu do catálogo e não está em
       `conteudo/_renomeacoes.json` quebra o link de edição antiga — a editoria aponta um trecho
       pelo identificador, e identificador que muda em silêncio transforma o pedido dela em recusa.
@@ -46,6 +50,9 @@ RAIZ = pathlib.Path(__file__).resolve().parent.parent
 CATALOGO = RAIZ / "conteudo"
 REGRAS = RAIZ / "layout" / "regras.json"
 RENOMEACOES = CATALOGO / "_renomeacoes.json"
+
+sys.path.insert(0, str(RAIZ / "scripts"))
+from migrar_para_catalogo import extrair, ids_escritos_pelo_js  # noqa: E402
 
 RE_MARCADOR = re.compile(r"\{([^{}|]+)\}")
 RE_PLURAL = re.compile(r"\{(\w+)((?:\|[^|{}]*){1,})\}")
@@ -168,6 +175,13 @@ def _autoteste() -> int:
         if not cond:
             falhas.append(nome)
 
+    _f = ('<main><section id="s"><h1>Título</h1><p class="hint"><strong>Conta.</strong> O que conta.</p>'
+          '<p class="note" data-conteudo="p.s.nota">já no catálogo</p><p id="valorX">—</p>'
+          '<form><p>Não preencha</p></form></section></main>')
+    ok("(f) texto do <main> sem data-conteudo é achado; formulário, dado e catalogado não",
+       sorted(extrair(_f, "p")[0]) == ["p.s.abertura", "p.s.titulo_da_pagina"])
+    ok("(f) a migração não sobrescreve identificador que já existe",
+       "p.s.abertura_2" in extrair(_f, "p", existentes=frozenset({"p.s.abertura"}))[0])
     ok("lê os identificadores que a página pede",
        identificadores_da_pagina('<p data-conteudo="a.b.c">x</p><p data-conteudo-html="d.e">y</p>')
        == {"a.b.c", "d.e"})
@@ -278,6 +292,11 @@ def main() -> int:
             problemas += [f"{nome}: {x} pedido pela página e ausente do catálogo"
                           for x in ausentes(pedidos, textos, comum)]
             problemas += [f"{nome}: {x}" for x in sem_o_leitor(html, pedidos)]
+            # (f) 16/10/2026: texto público do <main> fora do catálogo. A regra é a do migrador — o
+            # mesmo `extrair` decide o que é texto público, e o que ele ainda acharia é o que falta.
+            problemas += [f"{nome}: {x} — texto público fora do catálogo (migrar_para_catalogo.py "
+                          f"--pagina {nome} --aplicar)" for x in sorted(extrair(
+                              html, nome, ids_escritos_pelo_js(), frozenset(textos))[0])]
 
         problemas += [f"{nome}: {x}" for x in vocabulario_proibido_em(
             textos, vocab.get("global") or [], vocab.get("por_pagina") or {},
