@@ -353,53 +353,74 @@
       "funcao_narrativa": "mostra o ritmo da autorização ao longo do ciclo"
     },
     "monitor-de-riscos.html#boxAr": {
-      "tipo": "mapa com seletor de camada e lista",
-      "pergunta_que_responde": "Qual a concentração estimada de material particulado fino — na capital de cada estado, ou em cada município?",
+      "tipo": "mapa de pontos",
+      "pergunta_que_responde": "Qual o IQAr medido nas estações oficiais de cada cidade, e o PM2,5 dos sensores de baixo custo, na última leitura?",
       "dimensao_da_preparacao": "fenômeno observado",
-      "universo": "27 capitais (camada 1) · os 5.570 municípios (camada 2, cobertura declarada na seção)",
-      "unidade_de_analise": "capital, ou município",
+      "universo": "estações oficiais com IQAr na consulta (MMA/MonitorAr) e sensores IPAM/RedeAr com leitura",
+      "unidade_de_analise": "cidade com estação oficial; sensor",
       "territorio": "Brasil",
-      "periodo": "média diária do dia da consulta, com hora",
-      "variavel_principal": "PM2,5 em µg/m³, média diária",
+      "periodo": "última leitura publicada pela fonte, com data e hora",
+      "variavel_principal": "IQAr (faixa e valor, calculado pelo órgão); PM2,5 em µg/m³",
       "denominador": null,
-      "fonte": "Copernicus CAMS via Open-Meteo",
-      "metodologia": "Estimativa de modelo, não medição. A API entrega série horária; a média diária é cálculo do Monitor. Linha de referência de 15 µg/m³ da OMS (2021), declarada no dado. A camada municipal traz só o PM2,5; os demais poluentes continuam por capital. Município sem leitura não é desenhado.",
+      "fonte": "MMA/MonitorAr; OpenAQ; IPAM/RedeAr",
+      "metodologia": "IQAr nunca recalculado (CONAMA 506/2024); cidade pela pior estação; PM2,5 do OpenAQ só da mesma estação oficial; sensor sem índice. METODOLOGIA §41.7.",
       "conclusoes_permitidas": [
-        "qual a média diária estimada de PM2,5 na capital",
-        "se o valor estimado está acima ou abaixo da linha de referência da OMS"
+        "a faixa do IQAr publicada pelo órgão em cada cidade com estação",
+        "o PM2,5 medido por sensor, com a natureza do sensor declarada"
       ],
       "conclusoes_nao_permitidas": [
-        "leitura como medição de monitor",
-        "efeito sobre a saúde de pessoas identificadas",
+        "comparar estação regulatória e sensor de baixo custo",
+        "que cidade sem ponto tenha ar limpo",
         "atribuição da poluição ao El Niño",
-        "qualidade do ar do estado inteiro",
-        "que município não desenhado tenha ar limpo — ele não foi lido"
+        "efeito sobre a saúde de pessoas identificadas"
       ],
       "funcao_narrativa": "evidência do agora",
       "acao_relacionada": null
     },
     "monitor-de-riscos.html#boxAvisos": {
-      "tipo": "mapa temático",
-      "pergunta_que_responde": "Quantos avisos meteorológicos do INMET estão em vigor agora, e de que grau e fenômeno, em cada estado?",
-      "dimensao_da_preparacao": null,
-      "universo": "avisos ativos no momento da consulta",
-      "unidade_de_analise": "unidade da federação alcançada pelo aviso",
-      "territorio": "Brasil, por UF",
-      "periodo": "momento da consulta",
-      "variavel_principal": "número de avisos em vigor",
+      "tipo": "tabela",
+      "pergunta_que_responde": "Quantos municípios estão cobertos por aviso de tempo severo do INMET em vigor, por grau do aviso?",
+      "dimensao_da_preparacao": "alerta em vigor",
+      "universo": "os municípios do Brasil, na consulta mais recente",
+      "unidade_de_analise": "município, agregado por grau",
+      "territorio": "Brasil",
+      "periodo": "consulta mais recente, com data e hora declaradas",
+      "variavel_principal": "número de municípios cobertos por aviso em vigor, por grau",
       "denominador": null,
-      "fonte": "INMET",
-      "metodologia": "contagem dos avisos ativos por UF alcançada; grau e fenômeno preservados como o INMET os nomeia, sem tradução para escala própria. Um aviso pode alcançar mais de uma UF, e a soma por UF é maior que o número de avisos emitidos",
+      "fonte": "INMET, avisos meteorológicos",
+      "metodologia": "Contagem direta dos municípios do arquivo de avisos vigentes com aviso de cada grau; um município com avisos de dois graus conta nos dois. Grau e fenômeno no vocabulário do INMET.",
       "conclusoes_permitidas": [
-        "onde há aviso meteorológico em vigor no momento da consulta",
-        "qual grau e qual fenômeno o INMET declarou"
+        "quantos municípios estão sob aviso de cada grau na consulta declarada",
+        "quais estados e fenômenos aparecem em cada grau"
       ],
       "conclusoes_nao_permitidas": [
-        "risco climático do ciclo El Niño",
-        "preparação do município ou do estado",
-        "ausência de aviso como ausência de risco"
+        "que o aviso mede dano ocorrido",
+        "comparação entre estados como medida de risco",
+        "que município sem aviso esteja seguro"
       ],
-      "funcao_narrativa": "observação: mostra o que os sistemas de monitoramento registram agora, antes de qualquer evidência de preparação",
+      "funcao_narrativa": "evidência do agora",
+      "acao_relacionada": null
+    },
+    "monitor-de-riscos.html#boxCemaden": {
+      "tipo": "tabela",
+      "pergunta_que_responde": "Quais municípios estão sob alerta do Cemaden em vigor agora, e em que nível?",
+      "dimensao_da_preparacao": "alerta em vigor",
+      "universo": "os municípios com alerta do Cemaden em vigor na consulta mais recente",
+      "unidade_de_analise": "município, agrupado por nível e estado",
+      "territorio": "Brasil",
+      "periodo": "consulta mais recente, com data e hora declaradas",
+      "variavel_principal": "nível do alerta e municípios nomeados",
+      "denominador": null,
+      "fonte": "Cemaden, alertas vigentes",
+      "metodologia": "Lista direta do arquivo de alertas vigentes; nível no vocabulário do Cemaden.",
+      "conclusoes_permitidas": [
+        "quais municípios estão sob alerta e em que nível, na consulta declarada"
+      ],
+      "conclusoes_nao_permitidas": [
+        "que o estado inteiro está sob alerta: o alerta é municipal",
+        "que a ausência de alerta indica segurança"
+      ],
+      "funcao_narrativa": "evidência do agora",
       "acao_relacionada": null
     },
     "monitor-de-riscos.html#boxFogo": {
@@ -448,28 +469,6 @@
         "comparar estados por gravidade do risco"
       ],
       "funcao_narrativa": "o que se espera do ciclo: previsão, não observação",
-      "acao_relacionada": null
-    },
-    "monitor-de-riscos.html#boxRoni": {
-      "tipo": "série temporal",
-      "pergunta_que_responde": "Quanto do aquecimento medido é do ENOS e quanto é do aquecimento médio do oceano tropical?",
-      "dimensao_da_preparacao": null,
-      "universo": "trimestres móveis da série do RONI guardada no registro",
-      "unidade_de_analise": "trimestre móvel",
-      "territorio": "região Niño 3.4",
-      "periodo": "do primeiro ao último trimestre móvel da série guardada",
-      "variavel_principal": "anomalia relativa da temperatura da superfície do mar (°C)",
-      "denominador": "média do oceano tropical",
-      "fonte": "NOAA/CPC",
-      "metodologia": "ONI descontado o aquecimento médio do oceano tropical",
-      "conclusoes_permitidas": [
-        "intensidade do episódio descontada a tendência de fundo"
-      ],
-      "conclusoes_nao_permitidas": [
-        "afirmar que a série cobre período maior do que o guardado no registro",
-        "classificar a intensidade do episódio por faixa própria: a NOAA/CPC define os limiares de +0,5 °C e de −0,5 °C, e não faixas de fraco, moderado ou forte"
-      ],
-      "funcao_narrativa": "contexto: qualifica a leitura do ONI",
       "acao_relacionada": null
     },
     "monitor-de-riscos.html#boxSecas": {

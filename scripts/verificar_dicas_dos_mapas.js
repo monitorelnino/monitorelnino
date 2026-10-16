@@ -12,8 +12,8 @@
  */
 const path = require("path"), fs = require("fs"), http = require("http");
 const RAIZ = path.join(__dirname, "..");
-const MAPAS = ["mapaRiscoPrevisto", "mapaSecas", "mapaFogo", "mapaAr", "mapaTemperatura", "mapaAvisos"];
-const CAPITAIS = ["mapaTemperatura", "mapaAr"];
+const MAPAS = ["mapaSecas", "mapaFogo", "mapaAr", "mapaTemperatura"];
+const CAPITAIS = ["mapaTemperatura"];   // 16/10/2026: o ar é por cidade com estação, não por capital
 
 function problemas(texto) {
   const t = String(texto || "");
@@ -53,7 +53,7 @@ async function principal() {
   const falhas = [];
   try {
     await page.goto(`http://127.0.0.1:${srv.address().port}/monitor-de-riscos.html`, { waitUntil: "networkidle" });
-    await page.waitForFunction(() => document.querySelectorAll("#mapaAvisos path.uf-path").length >= 27, null, { timeout: 20000 });
+    await page.waitForFunction(() => document.querySelectorAll("#mapaTemperatura path.uf-path").length >= 27, null, { timeout: 20000 });
     for (const id of MAPAS) {
       const textos = await page.evaluate((id) => {
         const svg = document.getElementById(id); if (!svg) return [];

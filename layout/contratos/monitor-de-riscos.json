@@ -7,13 +7,11 @@
   },
   "h2_esperados": [
     "Situação atual",
-    "Os riscos no Brasil"
+    "Os riscos no Brasil",
+    "Consulte o estado atual do seu município"
   ],
   "_nota_raiz": "Esta página não usa `<section>`: os blocos dela são `div` sem id, e o despejo não as vê como seção. O contrato declara então o que se pode provar sem reescrever a marcação: a ORDEM dos títulos (`h2_esperados`), as figuras que têm de existir e estar no componente, e o vocabulário proibido. Divergência declarada: é menos do que um contrato de seção prova, e reescrever a marcação de três páginas publicadas para ganhar o resto não era o pedido.",
   "figuras_esperadas": [
-    {
-      "el": "boxRoni"
-    },
     {
       "el": "boxEpisodios"
     },
@@ -34,6 +32,9 @@
     },
     {
       "el": "boxAvisos"
+    },
+    {
+      "el": "boxCemaden"
     }
   ],
   "exige_texto": [
@@ -79,21 +80,16 @@
   },
   "_nota_recorte_do_grafico_2": "07/10/2026 (decisão da editoria, delegada ao Code): com a série do RONI desde 1950 o critério da NOAA/CPC encontra 22 episódios. O recorte decidido foi NÃO recortar: todos são desenhados como contexto, no mesmo traço e no mesmo tom, e só o ciclo em curso é destacado e rotulado. As alternativas e por que caem: escolher os mais intensos é ranking ordinal, que `layout/regras.json/dados_na_pagina` proíbe; escolher os mais recentes é recorte nosso sem o dado pedir; nomear 22 numa legenda não se lê. A legenda passa a ter dois itens, com a contagem, e cada linha se nomeia ao passar o mouse, ao tocar e para o leitor de tela. Conferido por scripts/verificar_runtime_sinais.js.",
   "cartao_figura_um_titulo": true,
-  "faixas_dos_mapas": {
-    "_governanca": "09/10/2026 (ajustes 5 e 6): previsto separado de observado. Ordem: 'Previsto pelo boletim' (boxRiscoPrevisto, sozinho e maior) → 'Observado' (boxSecas, boxFogo) → 'Agora, nas capitais e nos estados' (boxAr, boxTemperatura, boxAvisos). Um título por mapa, sem sobretítulo; lista de UFs na descrição acessível e em 'Ver estados'. Conferido por scripts/verificar_grades_de_numeros.py e scripts/verificar_dicas_dos_mapas.js.",
-    "_mudanca_11_10": "11/10/2026 (editoria, janela B): previsto e observado na MESMA fila — boxRiscoPrevisto, boxSecas e boxFogo numa só `.grade-figuras--3` (`grade-mapas--faixas`), sem bloco novo. A distinção fica como informação: os dois selos ('Previsto pelo boletim' sobre a 1ª coluna, 'Observado' sobre a 2ª e a 3ª) são uma faixa alinhada às colunas dentro da grade, e não sobretítulo de cartão (o ajuste 6 de 09/10 tirou o sobretítulo). Numa coluna só, a ordem do HTML: selo previsto → previsto → selo observado → seca → fogo. Supera o 'sozinho e maior' de 09/10. Títulos, datas e fontes dos mapas não mudam.",
-    "grade_unica": [
-      "boxRiscoPrevisto",
-      "boxSecas",
-      "boxFogo"
-    ],
+  "blocos_de_familia": {
+    "_governanca": "16/10/2026 (editoria, HANDOVER_MONITOR_DE_RISCOS §2–§3): o risco previsto é uma faixa de etiquetas por família (boxRiscoPrevisto, sem mapa); depois, os blocos 'Seca, fogo, ar e calor' (boxFogo na largura inteira, com números ao lado; boxSecas, boxAr, boxTemperatura em três colunas) e 'Chuva forte' (boxAvisos e boxCemaden, tabelas por grau e por nível, sem mapa por estado). Sem 'Ver estados', 'Ver em lista' nem 'Como ler' em nenhuma figura (§7). Cada bloco abre com o selo da família e 'Boletim prevê para: <siglas>'. A hachura do mapa de fogo significa só 'fogo previsto pelo boletim'.",
     "ordem": [
       "boxRiscoPrevisto",
-      "boxSecas",
       "boxFogo",
+      "boxSecas",
       "boxAr",
       "boxTemperatura",
-      "boxAvisos"
+      "boxAvisos",
+      "boxCemaden"
     ]
   },
   "excecao_fundo_escuro": {

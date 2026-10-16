@@ -26,13 +26,12 @@
 <meta name="description" content="Situação atual do El Niño no Brasil: ONI, probabilidade, prognóstico trimestral, Monitor de Secas, temperatura e qualidade do ar nas capitais e focos de fogo por estado.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="assets/vendor/chart.umd.min.js?v=ecc3cd1e"></script>
 <script src="assets/vendor/d3.min.js?v=f2094bbf"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <script src="assets/catalogo.js?v=d4d42f5f"></script>
-<link rel="stylesheet" href="assets/tokens.css?v=02c36ec9">
-<link rel="stylesheet" href="assets/base.css?v=7379a9be">
-<script src="assets/mapas.js?v=c9350706"></script>
+<link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
+<link rel="stylesheet" href="assets/base.css?v=18a6c971">
+<script src="assets/mapas.js?v=84a5d2dd"></script>
 </head>
 <body class="pagina-dados">
 <div class="map-tooltip" id="mapTooltip"></div>
@@ -47,7 +46,7 @@
 <main id="conteudo">
   <h1 data-conteudo="monitor-de-riscos.titulo_da_pagina">Monitor de riscos</h1>
   <p class="hint" data-conteudo="monitor-de-riscos.abertura.1">Esta página reúne o que os órgãos oficiais de clima e meio ambiente medem durante o El Niño 2026/2027, em duas partes.</p>
-  <p class="hint" data-conteudo="monitor-de-riscos.abertura.2">A primeira parte mostra o fenômeno em si. A situação atual diz se o El Niño está declarado pelos órgãos federais e desde quando. O gráfico do Índice Oceânico Niño mostra a temperatura do oceano Pacífico mês a mês, com os limiares a partir dos quais se declara El Niño ou La Niña, e o gráfico seguinte compara a evolução deste El Niño com a dos episódios anteriores, na mesma escala.</p>
+  <p class="hint" data-conteudo="monitor-de-riscos.abertura.2">A primeira parte mostra o fenômeno em si. A situação atual diz se o El Niño está declarado pelos órgãos federais e desde quando. O gráfico do Índice Oceânico Niño compara a evolução deste El Niño com a dos episódios anteriores, mês a mês e na mesma escala, com os limiares a partir dos quais se declara El Niño ou La Niña.</p>
   <p class="hint" data-conteudo="monitor-de-riscos.abertura.3">A segunda parte mostra o que já acontece no Brasil: o risco previsto para cada estado até março de 2027, segundo os boletins oficiais; a seca observada em cada estado; os focos de fogo das últimas 24 horas; a qualidade do ar medida nas capitais com estação oficial e a temperatura máxima prevista nas capitais; e os avisos de tempo severo em vigor. Cada mapa e gráfico traz o órgão que publicou o dado e a data da consulta.</p>
   <p class="hint" data-conteudo-html="monitor-de-riscos.abertura.4">Os alertas por município e os decretos de emergência estão em <a href="defesa-civil.html">Defesa civil</a>; o risco previsto para cada estado também aparece na ficha do estado, na <a href="index.html">página inicial</a>.</p>
 
@@ -97,25 +96,13 @@
       </div>
     </div>
 
-    <!-- 07/10/2026: os dois gráficos do Pacífico passam a medir O MESMO ÍNDICE (RONI), na mesma
-         escala e com o mesmo eixo. O da anomalia mensal da região Niño 3.4 SAIU da página — o
-         dado continua coletado —, e no lugar entra a comparação entre os episódios de El Niño
-         que o próprio dado define pelo critério da NOAA/CPC. Os dois são SVG desenhado na largura
-         real do contêiner, e não canvas escalado: é o que mantém a letra em 12 px no celular. -->
-    <div class="grade-figuras grade-figuras--2 grade-pacifico">
-      <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxRoni">
-        <h3 class="figura-titulo" id="roniTitulo" data-conteudo="monitor-de-riscos.pacifico.roni.titulo">Índice Oceânico Niño Relativo (RONI)</h3>
-        <p class="figura-sub" id="roniSub" data-conteudo="monitor-de-riscos.pacifico.roni.legenda">Médias móveis de três meses · °C · nas tracejadas, os limiares de El Niño (+0,5 °C) e de La Niña (−0,5 °C) da NOAA/CPC</p>
-        <p class="figura-nota" data-conteudo="monitor-de-riscos.pacifico.roni.nota">Anomalia da temperatura da superfície do mar na região Niño 3.4 (5°N–5°S, 170°W–120°W) menos a anomalia média da faixa tropical (20°N–20°S), período de referência 1991–2020.</p>
-        <p class="grafico-pacifico-eixo" data-conteudo="monitor-de-riscos.pacifico.eixo">RONI, °C</p>
-        <div class="figura-midia grafico-oceano grafico-pacifico" id="wrapRoni"></div>
-        <div class="leg-pacifico" id="legRoni"></div>
-        <p class="figura-leitura" id="roniLeitura"></p>
-      </figure>
+    <!-- 16/10/2026 (editoria, HANDOVER_MONITOR_DE_RISCOS §1.3): um só gráfico do Pacífico, a comparação
+         entre episódios, na largura inteira e mais baixo. A série contínua do RONI saiu da página. -->
+    <div class="grade-figuras grade-figuras--1">
       <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxEpisodios">
         <h3 class="figura-titulo" id="episodiosTitulo" data-conteudo="monitor-de-riscos.pacifico.episodios.titulo">RONI no ciclo em curso e nos episódios de El Niño anteriores</h3>
-        <p class="figura-sub" id="episodiosSub" data-conteudo="monitor-de-riscos.pacifico.episodios.legenda">Uma linha por episódio · de janeiro do ano de início a junho do ano seguinte · mesmo índice e mesma escala do gráfico ao lado</p>
-        <p class="figura-nota" id="episodiosNota" data-conteudo="monitor-de-riscos.pacifico.episodios.nota">Episódio: cinco ou mais médias trimestrais consecutivas acima de +0,5 °C, critério da NOAA/CPC. Rotulados os episódios com pico de +1,5 °C ou mais.</p>
+        <p class="figura-sub" id="episodiosSub" data-conteudo="monitor-de-riscos.pacifico.episodios.legenda">Uma linha por episódio · de janeiro do ano de início a junho do seguinte · médias de três meses, °C · tracejadas: limiares da NOAA/CPC</p>
+        <p class="figura-nota" id="episodiosNota" data-conteudo="monitor-de-riscos.pacifico.episodios.nota">RONI: anomalia da temperatura da superfície do mar na região Niño 3.4 (5°N–5°S, 170°W–120°W) menos a anomalia média da faixa tropical (20°N–20°S), referência 1991–2020. Episódio: cinco ou mais médias trimestrais consecutivas acima de +0,5 °C, critério da NOAA/CPC. Rotulados os episódios com pico de +1,5 °C ou mais.</p>
         <p class="grafico-pacifico-eixo" data-conteudo="monitor-de-riscos.pacifico.eixo">RONI, °C</p>
         <div class="figura-midia grafico-oceano grafico-pacifico" id="wrapEpisodios"></div>
         <div class="leg-pacifico" id="legEpisodios"></div>
@@ -129,120 +116,90 @@
     <h2 data-conteudo="monitor-de-riscos.titulo_da_secao_2">Os riscos no Brasil</h2>
     <p class="hint" data-conteudo="monitor-de-riscos.abertura_2">Os quatro riscos que o boletim prevê para este El Niño. Cada mapa diz de quando é o dado.</p>
 
-    <!-- 01/10/2026 (pedido da editoria): UM COMPONENTE DE CARTÃO DE MAPA, SEIS VEZES.
-         O que estava errado: o mapa de risco previsto ocupava a largura toda e os outros cinco
-         ficavam pequenos embaixo; o nome da família e a linha do boletim viviam FORA do cartão,
-         com alturas diferentes, e por isso as molduras desalinhavam; as legendas tinham estilos
-         diferentes e itens que não são categoria do mapa; dois cartões tinham seletor dentro e
-         os outros não.
-
-         Agora os seis têm a mesma estrutura, na mesma ordem, com o mesmo tamanho de mapa. Os
-         seletores de camada saíram da grade: a camada exibida é a padrão, e o que a outra camada
-         tinha de valor vai para o "Ver em lista" do próprio cartão. "Como ler" e "Ver em lista"
-         ficam recolhidos, no mesmo estilo de link pequeno. -->
-    <!-- 09/10/2026 (ajustes 5 e 6, editoria): PREVISTO separado de OBSERVADO. Um título por mapa
-         (o que é e quando), sem sobretítulo nem a frase com a lista de UFs — ela vai para a
-         descrição acessível e para "Ver estados". Mesma moldura, mesma borda, fundo branco; só o
-         mapa de fogo fica escuro, porque ponto luminoso sobre fundo escuro é o que torna visível um
-         foco pequeno (exceção declarada no contrato). -->
-    <!-- 11/10/2026 (editoria): os três mapas na mesma fila, no componente `.grade-figuras--3`. Os
-         selos "Previsto pelo boletim" e "Observado" são uma faixa alinhada às colunas, na própria
-         grade: no desktop o primeiro fica sobre o mapa previsto e o segundo sobre os dois
-         observados; numa coluna só, cada selo vem antes do(s) seu(s) mapa(s), na ordem do HTML. -->
-    <div class="grade-figuras grade-figuras--3 grade-mapas grade-mapas--faixas">
-      <p class="selo faixa-selo faixa-selo--previsto" data-conteudo="monitor-de-riscos.riscos.faixa_previsto">Previsto pelo boletim</p>
-      <figure class="figura figura--mapa cartao-mapa" id="boxRiscoPrevisto">
-        <h3 class="figura-titulo" id="tituloRiscoPrevisto" data-conteudo="monitor-de-riscos.titulo_risco_previsto.titulo">Risco previsto por estado, até março de 2027</h3>
-        <p class="figura-sub" id="riscoPrevistoSub">Risco previsto até março de 2027 · por estado</p>
-        <div class="figura-midia"><svg id="mapaRiscoPrevisto" role="img" aria-describedby="estadosRiscoPrevisto" aria-label="Mapa do Brasil com o risco previsto pelo boletim do Painel El Niño para cada estado" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legRiscoPrevisto"></div>
-        <div class="cartao-mapa-rodape">
-        <details class="cartao-mapa-dados cartao-mapa-estados"><summary data-conteudo="monitor-de-riscos.estados_risco_previsto.resumo">Ver estados</summary><ul class="lista-estados" id="estadosRiscoPrevisto"></ul></details>
-        <details class="cartao-mapa-dados"><summary data-conteudo="monitor-de-riscos.estados_risco_previsto.resumo_2">Ver em lista</summary>
-          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblRiscoPrevisto"><thead><tr><th>UF</th><th>Risco previsto</th></tr></thead><tbody></tbody></table></div>
-        </details>
-        <details class="cartao-mapa-leitura"><summary data-conteudo="monitor-de-riscos.estados_risco_previsto.resumo_3">Como ler</summary>
-          <p class="figura-leitura" data-conteudo="monitor-de-riscos.estados_risco_previsto.texto">Trata-se de previsão, não de dados observados. O detalhe de cada estado está na ficha, na página inicial.</p>
-        </details>
-        </div>
-      </figure>
-      <p class="selo faixa-selo faixa-selo--observado" data-conteudo="monitor-de-riscos.riscos.faixa_observado">Observado</p>
-      <figure class="figura figura--mapa cartao-mapa" id="boxSecas">
-        <h3 class="figura-titulo" id="tituloSecas">Seca observada</h3>
-        <p class="figura-sub" id="secasSub">Categoria de seca em pelo menos metade da área do estado</p>
-        <div class="figura-midia"><svg id="mapaSecas" role="img" aria-describedby="estadosSecas" aria-label="Mapa do Brasil pela categoria de seca observada no Monitor de Secas" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legSecas"></div>
-        <div class="cartao-mapa-rodape">
-        <details class="cartao-mapa-dados cartao-mapa-estados"><summary data-conteudo="monitor-de-riscos.estados_secas.resumo">Ver estados</summary><ul class="lista-estados" id="estadosSecas"></ul></details>
-        <details class="cartao-mapa-leitura"><summary data-conteudo="monitor-de-riscos.estados_secas.resumo_2">Como ler</summary>
-          <p class="figura-leitura" data-conteudo="monitor-de-riscos.estados_secas.texto">O mapa é mensal e sai com algumas semanas de atraso. Um estado aparece na categoria que cobre pelo menos metade do seu território.</p>
-        </details>
-        </div>
-      </figure>
-      <figure class="figura figura--mapa cartao-mapa" id="boxFogo">
-        <h3 class="figura-titulo" id="tituloFogo" data-conteudo="monitor-de-riscos.titulo_fogo.titulo">Focos de fogo nas últimas 24 horas</h3>
-        <p class="figura-sub" id="fogoSub">Últimas 24 horas · cada ponto reúne os focos de uma área de cerca de 11 km</p>
-        <div class="figura-midia"><svg id="mapaFogo" role="img" aria-describedby="estadosFogo" aria-label="Mapa do Brasil com os focos de calor das últimas 24 horas na posição em que foram detectados, agrupados em células de cerca de 11 quilômetros, segundo o INPE" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legFogo"></div>
-        <div class="cartao-mapa-rodape">
-        <details class="cartao-mapa-dados cartao-mapa-estados"><summary data-conteudo="monitor-de-riscos.estados_fogo.resumo">Ver estados</summary><ul class="lista-estados" id="estadosFogo"></ul></details>
-        <details class="cartao-mapa-dados"><summary data-conteudo="monitor-de-riscos.estados_fogo.resumo_2">Ver em lista</summary>
-          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblFogo"><thead><tr><th>UF</th><th>Focos em 24 h</th></tr></thead><tbody></tbody></table></div>
-        </details>
-        <details class="cartao-mapa-leitura"><summary data-conteudo="monitor-de-riscos.estados_fogo.resumo_3">Como ler</summary>
-          <p class="figura-leitura" data-conteudo="monitor-de-riscos.estados_fogo.texto">Foco não significa incêndio: um incêndio grande gera muitos focos, e queimadas controladas também entram.</p>
-        </details>
-        </div>
+    <!-- 16/10/2026 (editoria, HANDOVER_MONITOR_DE_RISCOS §2–§3): o risco previsto deixa de ser mapa e
+         vira uma faixa de etiquetas por família; cada bloco de família abre com "Boletim prevê para".
+         O fogo ocupa a largura inteira, com os números ao lado do mapa; seca, ar e calor em três colunas. -->
+    <div class="grade-figuras grade-figuras--1">
+      <figure class="figura figura--tabela cartao-mapa" id="boxRiscoPrevisto">
+        <h3 class="figura-titulo" id="tituloRiscoPrevisto" data-conteudo="monitor-de-riscos.titulo_risco_previsto.titulo">Risco previsto por estado</h3>
+        <p class="figura-sub" id="riscoPrevistoSub">Boletim do Painel El Niño · até março de 2027</p>
+        <div class="figura-midia"><dl class="faixa-previsto" id="faixaRiscoPrevisto"></dl></div>
       </figure>
     </div>
-    <p class="selo faixa-selo" data-conteudo="monitor-de-riscos.riscos.faixa_agora">Agora, nas capitais e nos estados</p>
-    <div class="grade-figuras grade-figuras--3 grade-mapas">
-      <figure class="figura figura--mapa cartao-mapa" id="boxAr">
-        <h3 class="figura-titulo" id="tituloAr">Qualidade do ar nas capitais</h3>
-        <p class="figura-sub" id="arSub">Uma capital por estado · estimativa por modelo</p>
-        <div class="figura-midia"><svg id="mapaAr" role="img" aria-describedby="estadosAr" aria-label="Mapa do Brasil pelo índice de qualidade do ar estimado na capital de cada estado" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legAr"></div>
-        <div class="cartao-mapa-rodape">
-        <details class="cartao-mapa-dados cartao-mapa-estados"><summary data-conteudo="monitor-de-riscos.estados_ar.resumo">Ver estados</summary><ul class="lista-estados" id="estadosAr"></ul></details>
-        <details class="cartao-mapa-dados"><summary data-conteudo="monitor-de-riscos.estados_ar.resumo_2">Ver em lista</summary>
-          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblAr"><thead><tr><th>UF</th><th>Capital</th><th>Índice (EAQI)</th><th>PM2,5</th><th>PM10</th><th>Ozônio</th></tr></thead><tbody></tbody></table></div>
-        </details>
-        <details class="cartao-mapa-leitura"><summary data-conteudo="monitor-de-riscos.estados_ar.resumo_3">Como ler</summary>
-          <p class="figura-leitura" data-conteudo="monitor-de-riscos.estados_ar.texto">Nesta época, a piora da qualidade do ar costuma ser causada por fumaça de queimadas. Estimativa de modelos, válida para a capital de cada estado. O Brasil não tem índice nacional aberto de qualidade do ar, por isso usamos a escala europeia.</p>
-        </details>
+    <div class="faixa-selo faixa-selo--familia">
+      <p class="selo" data-conteudo="monitor-de-riscos.riscos.bloco_seca">Seca, fogo, ar e calor</p>
+      <p class="boletim-preve" id="preveSeca"></p>
+    </div>
+    <div class="grade-figuras grade-figuras--1">
+      <figure class="figura figura--mapa figura--dupla cartao-mapa" id="boxFogo">
+        <h3 class="figura-titulo" id="tituloFogo" data-conteudo="monitor-de-riscos.titulo_fogo.titulo">Focos de fogo nas últimas 24 horas</h3>
+        <p class="figura-sub" id="fogoSub">Últimas 24 horas · hachura: estados com fogo previsto pelo boletim</p>
+        <div class="figura-midia">
+          <div class="mapa-dupla"><svg id="mapaFogo" role="img" aria-label="Mapa do Brasil com os focos de calor das últimas 24 horas na posição em que foram detectados, agrupados em células de cerca de 11 quilômetros, segundo o INPE" viewBox="0 0 480 460"></svg></div>
+          <div class="lado-dados" id="fogoLado">
+            <dl class="lado-numeros" id="fogoNumeros"></dl>
+            <p class="figura-nota lado-rotulo" id="fogoSerieRotulo" data-conteudo="monitor-de-riscos.fogo.serie_rotulo">Últimos 30 dias, focos por dia</p>
+            <div class="lado-serie" id="fogoSerie"></div>
+            <div class="tbl-wrap" tabindex="0" role="region" aria-label="Focos por estado"><table class="mun-table" id="tblFogo"><thead><tr><th>UF</th><th>Focos em 24 h</th><th>Dia anterior</th><th>No mês</th><th>Previsto</th></tr></thead><tbody></tbody></table></div>
+            <div class="tbl-wrap" tabindex="0" role="region" aria-label="Focos por bioma"><table class="mun-table" id="tblFogoBioma"><thead><tr><th>Bioma</th><th>Focos em 24 h</th><th>% do total</th></tr></thead><tbody></tbody></table></div>
+          </div>
         </div>
+        <div class="map-legend" id="legFogo"></div>
+        <p class="figura-nota" data-conteudo="monitor-de-riscos.fogo.nota">Foco não é incêndio: um incêndio grande gera muitos focos, e queimadas autorizadas também entram.</p>
+      </figure>
+    </div>
+    <div class="grade-figuras grade-figuras--3 grade-mapas">
+      <figure class="figura figura--mapa cartao-mapa" id="boxSecas">
+        <h3 class="figura-titulo" id="tituloSecas">Seca observada</h3>
+        <p class="figura-sub" id="secasSub">Manchas do Monitor de Secas · hachura: estados com seca prevista pelo boletim</p>
+        <div class="figura-midia"><svg id="mapaSecas" role="img" aria-label="Mapa do Brasil com as manchas de seca do mapa mensal do Monitor de Secas" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legSecas"></div>
+      </figure>
+      <figure class="figura figura--mapa cartao-mapa" id="boxAr">
+        <h3 class="figura-titulo" id="tituloAr" data-conteudo="monitor-de-riscos.ar.titulo">Qualidade do ar medida</h3>
+        <p class="figura-sub" id="arSub">IQAr das estações oficiais, por cidade · sensores de PM2,5 em µg/m³</p>
+        <div class="figura-midia"><svg id="mapaAr" role="img" aria-label="Mapa do Brasil com o IQAr das estações oficiais por cidade e os sensores de baixo custo de PM2,5" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legAr"></div>
+        <p class="figura-nota" data-conteudo="monitor-de-riscos.ar.nota">Sem ponto no mapa: cidade sem estação oficial nem sensor na rede — não significa ar limpo. Estação regulatória e sensor de baixo custo medem na mesma unidade, não com a mesma confiabilidade; o mapa não os compara entre si. Padrão brasileiro de PM2,5 (24 h): 50 µg/m³ (PI-1, CONAMA 506/2024).</p>
       </figure>
       <figure class="figura figura--mapa cartao-mapa" id="boxTemperatura">
         <h3 class="figura-titulo" id="tituloTemperatura">Temperatura máxima prevista nas capitais</h3>
         <p class="figura-sub" id="temperaturaSub">Máxima prevista e diferença para a média histórica do mês · °C · uma capital por estado</p>
-        <div class="figura-midia"><svg id="mapaTemperatura" role="img" aria-describedby="estadosTemperatura" aria-label="Mapa do Brasil com a temperatura máxima prevista na capital de cada estado e quanto ela está acima da média histórica do mês" viewBox="0 0 480 460"></svg></div>
+        <div class="figura-midia"><svg id="mapaTemperatura" role="img" aria-label="Mapa do Brasil com a temperatura máxima prevista na capital de cada estado e quanto ela está acima da média histórica do mês" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legTemperatura"></div>
-        <div class="cartao-mapa-rodape">
-        <details class="cartao-mapa-dados cartao-mapa-estados"><summary data-conteudo="monitor-de-riscos.estados_temperatura.resumo">Ver estados</summary><ul class="lista-estados" id="estadosTemperatura"></ul></details>
-        <details class="cartao-mapa-dados"><summary data-conteudo="monitor-de-riscos.estados_temperatura.resumo_2">Ver em lista</summary>
-          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblTemperatura"><thead><tr><th>UF</th><th>Capital</th><th>Máxima prevista</th><th>Mínima prevista</th><th>Máxima medida (estação do INMET)</th></tr></thead><tbody></tbody></table></div>
-        </details>
-        <details class="cartao-mapa-leitura"><summary data-conteudo="monitor-de-riscos.estados_temperatura.resumo_3">Como ler</summary>
-          <p class="figura-leitura" data-conteudo="monitor-de-riscos.estados_temperatura.texto">O número ao lado de cada capital é a temperatura máxima prevista; a cor mostra quanto ela está acima da média histórica daquele mês. 35 °C é normal em Cuiabá e muito quente em Porto Alegre.</p>
-        </details>
-        </div>
-      </figure>
-      <figure class="figura figura--mapa cartao-mapa" id="boxAvisos">
-        <h3 class="figura-titulo" id="tituloAvisos">Avisos de tempo severo em vigor</h3>
-        <p class="figura-sub" id="avisosSub">Avisos em vigor na consulta</p>
-        <div class="figura-midia"><svg id="mapaAvisos" role="img" aria-describedby="estadosAvisos" aria-label="Mapa do Brasil pelo maior grau de aviso meteorológico do INMET em vigor em cada estado" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legAvisos"></div>
-        <div class="cartao-mapa-rodape">
-        <details class="cartao-mapa-dados cartao-mapa-estados"><summary data-conteudo="monitor-de-riscos.estados_avisos.resumo">Ver estados</summary><ul class="lista-estados" id="estadosAvisos"></ul></details>
-        <details class="cartao-mapa-dados"><summary data-conteudo="monitor-de-riscos.estados_avisos.resumo_2">Ver em lista</summary>
-          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblAvisos"><thead><tr><th>UF</th><th>Avisos</th><th>Grau</th><th>Fenômeno</th></tr></thead><tbody></tbody></table></div>
-        </details>
-        <details class="cartao-mapa-leitura"><summary data-conteudo="monitor-de-riscos.estados_avisos.resumo_3">Como ler</summary>
-          <p class="figura-leitura" data-conteudo-html="monitor-de-riscos.estados_avisos.texto">O Inmet emite o aviso por área, e um aviso pode alcançar mais de um estado. Os avisos por município estão em <a href="defesa-civil.html">Defesa civil</a>.</p>
-        </details>
-        </div>
       </figure>
     </div>
+    <div class="faixa-selo faixa-selo--familia">
+      <p class="selo" data-conteudo="monitor-de-riscos.riscos.bloco_chuva">Chuva forte</p>
+      <p class="boletim-preve" id="preveChuva"></p>
+    </div>
+    <div class="grade-figuras grade-figuras--2">
+      <figure class="figura figura--tabela cartao-mapa" id="boxAvisos">
+        <h3 class="figura-titulo" id="tituloAvisos" data-conteudo="monitor-de-riscos.avisos.titulo">Avisos de tempo severo em vigor</h3>
+        <p class="figura-sub" id="avisosSub" data-conteudo="monitor-de-riscos.avisos.sub">Por grau do aviso · municípios cobertos · INMET</p>
+        <div class="figura-midia" id="midiaAvisos"><div class="tbl-wrap" tabindex="0" role="region" aria-label="Avisos por grau"><table class="mun-table" id="tblAvisos"><thead><tr><th>Grau</th><th>Municípios</th><th>Estados</th><th>Fenômeno</th></tr></thead><tbody></tbody></table></div></div>
+        <p class="figura-nota" id="avisosRodape"></p>
+      </figure>
+      <figure class="figura figura--tabela cartao-mapa" id="boxCemaden">
+        <h3 class="figura-titulo" id="tituloCemaden" data-conteudo="monitor-de-riscos.cemaden.titulo">Alertas do Cemaden vigentes</h3>
+        <p class="figura-sub" id="cemadenSub" data-conteudo="monitor-de-riscos.cemaden.sub">Por nível do alerta · estado · municípios nomeados pelo Cemaden</p>
+        <div class="figura-midia" id="midiaCemaden"><div class="tbl-wrap" tabindex="0" role="region" aria-label="Alertas do Cemaden"><table class="mun-table" id="tblCemaden"><thead><tr><th>Nível</th><th>UF</th><th>Municípios</th></tr></thead><tbody></tbody></table></div></div>
+        <p class="figura-nota" id="cemadenRodape"></p>
+      </figure>
+    </div>
+  </div>
+
+  <!-- 16/10/2026 (editoria, HANDOVER_MONITOR_DE_RISCOS §5): a consulta do município, com os mesmos
+       controles da inicial e uma tabela; o arquivo do estado é carregado só quando o estado é escolhido. -->
+  <div class="panel" id="consulta">
+    <h2 data-conteudo="monitor-de-riscos.consulta.titulo">Consulte o estado atual do seu município</h2>
+    <div class="tbl-controls">
+      <select id="consultaUF" aria-label="Estado"><option value="">1 · Seu estado…</option></select>
+      <input id="consultaMun" type="text" list="consultaLista" placeholder="2 · Seu município…" aria-label="Nome do município" autocomplete="off" disabled>
+      <datalist id="consultaLista"></datalist>
+    </div>
+    <div id="consultaCard" class="meu-card" aria-live="polite" hidden></div>
+    <p class="hint" data-conteudo="monitor-de-riscos.consulta.nota">Dado por estado vale para todo o estado; dado por município é do próprio município; ar e temperatura vêm da estação ou capital mais próxima, nomeada na linha.</p>
   </div>
 
   <!-- 29/09/2026 (decisão da editoria): a seção "Fontes dos sinais de risco" saiu. A tabela de
@@ -260,7 +217,7 @@
 </div>
 
 <script src="assets/colunas.js?v=07ce0f22" defer></script>
-<script src="assets/js/monitor-de-riscos.js?v=a742554a" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
+<script src="assets/js/monitor-de-riscos.js?v=dd739790" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

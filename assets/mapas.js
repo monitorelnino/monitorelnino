@@ -165,7 +165,9 @@
   /** Legenda canônica: itens [{cor, rotulo}] → <span><i></i>rótulo</span>. */
   function legenda(elId, itens) {
     const el = document.getElementById(elId); if (!el) return;
-    el.innerHTML = itens.map(i => '<span><i style="background:' + i.cor + (i.opacidade != null ? ';opacity:' + i.opacidade : '') + '"></i>' + esc(i.rotulo) + '</span>').join('');
+    // `hachura`: amostra listrada, a mesma marca do mapa (cor das listras sobre `fundo`).
+    const fundo = i => i.hachura ? 'repeating-linear-gradient(45deg,' + i.cor + ' 0 3px,' + (i.fundo || 'transparent') + ' 3px 6px)' : i.cor;
+    el.innerHTML = itens.map(i => '<span><i style="background:' + fundo(i) + (i.opacidade != null ? ';opacity:' + i.opacidade : '') + '"></i>' + esc(i.rotulo) + '</span>').join('');
   }
 
   /** Mapa coroplético por UF + legenda, num só passo (consolidado 17/09/2026 — antes
@@ -303,6 +305,9 @@
     // 30/09/2026 (item 8, aprovado pela editoria): uma ATMOSFERA por família de risco. Mesmos
     // valores de assets/tokens.css; o motor os lê por nome e nenhuma página carrega cor solta.
     // `fundo` é a área do mapa, `uf`/`contorno` a malha, e a rampa é a marca do dado.
+    // 16/10/2026: as cinco faixas oficiais do IQAr (CONAMA 506/2024; cores nomeadas pelo MMA: verde,
+    // amarela, laranja, vermelha, roxa), na ordem Boa → Péssima. Espelho de --iqar-* em tokens.css.
+    iqar: ['#00E400', '#FFFF00', '#FF7E00', '#FF0000', '#8F3F97'],
     atmosfera: {
       fogo:  {fundo:'#15201A', uf:'#1E2B24', contorno:'#3A4A41',
               rampa:['#BC5029', '#D8621F', '#F29A38'], nucleo:'#FFE3A3', claro:false},

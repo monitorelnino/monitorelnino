@@ -28,9 +28,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/acesso.js?v=3d25b2e8"></script>
-<script src="assets/mapas.js?v=c9350706"></script>
-<link rel="stylesheet" href="assets/tokens.css?v=02c36ec9">
-<link rel="stylesheet" href="assets/base.css?v=7379a9be">
+<script src="assets/mapas.js?v=84a5d2dd"></script>
+<link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
+<link rel="stylesheet" href="assets/base.css?v=18a6c971">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -47,6 +47,18 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/10/2026 · Saem as fontes Open-Meteo de tempo e de ar (main vermelha do #802)</dt>
+      <dd>Nenhuma página as mostrava: temperatura vem do INMET desde 27/09, ar vem do MMA/OpenAQ/RedeAr desde o #802. Saem do coletor (catálogo, leitores, coleta em lote, clima municipal), do arquivo de sinais, do cartão europeu do topo e do cartão morto da Imprensa. METODOLOGIA §41.7 com errata.</dd>
+      <dt>16/10/2026 · Monitor de riscos: consulta do município</dt>
+      <dd>Nova seção ao fim da página: estado e município, com os mesmos controles da inicial, e uma tabela com risco previsto e seca do estado, focos de 30 dias, ar e temperatura da estação ou capital mais próxima, avisos, alerta do Cemaden, emergência desde 29/06 e o link para o plano na ficha do estado. Cada linha com fonte e data; o arquivo do estado carrega só quando escolhido. HANDOVER_MONITOR_DE_RISCOS §5.</dd>
+      <dt>16/10/2026 · Monitor de riscos: chuva forte em tabelas; saem as listas dos mapas</dt>
+      <dd>O bloco &quot;Chuva forte&quot; troca o mapa de avisos por estado por duas tabelas: avisos do INMET por grau, com municípios cobertos, estados e fenômeno, e alertas do Cemaden por nível, com os municípios nomeados. Saem &quot;Ver estados&quot;, &quot;Ver em lista&quot; e &quot;Como ler&quot; e o código morto que os montava. Open-Meteo e lista do OpenAQ passam a apoio técnico no catálogo (conserta a main do #802). HANDOVER_MONITOR_DE_RISCOS §4 e §7.</dd>
+      <dt>16/10/2026 · Monitor de riscos: seca em manchas, ar medido e cartão do ar</dt>
+      <dd>A seca observada passa a ser as manchas do mapa mensal do Monitor de Secas, com contorno dos estados e hachura onde o boletim prevê seca. O mapa do ar mostra o IQAr das estações oficiais por cidade (cores oficiais) e os sensores IPAM/RedeAr; sai o índice europeu e a camada municipal morta. Cartão &quot;Ar&quot; só com cidade em IQAr Ruim ou pior.</dd>
+      <dt>16/10/2026 · Monitor de riscos: risco previsto em faixa e bloco do fogo</dt>
+      <dd>O mapa do risco previsto vira faixa de siglas por família, cada uma ligada à ficha do estado. Os blocos &quot;Seca, fogo, ar e calor&quot; e &quot;Chuva forte&quot; abrem com &quot;Boletim prevê para&quot;. O fogo ocupa a largura inteira: hachura nos estados com fogo previsto, números do satélite de referência, 30 dias e tabelas por estado e bioma. HANDOVER_MONITOR_DE_RISCOS §2–§3.6.</dd>
+      <dt>16/10/2026 · Monitor de riscos: um só gráfico do Pacífico, na largura inteira</dt>
+      <dd>Sai a série contínua do RONI (barras desde 1950) e o código que a desenhava; fica a comparação entre episódios, na largura inteira e com metade da altura, com a definição do RONI na nota. Sai também o bloco desativado do plume e o Chart.js da página. Abertura ajustada ao gráfico que fica. HANDOVER_MONITOR_DE_RISCOS §1.3.</dd>
       <dt>16/10/2026 · Juiz da saúde estadual: host morto sai da rodada; queda de rede fica pendente (F68)</dt>
       <dd>Em 15/10 o juiz gastou 72 minutos em 16 pistas do mesmo host morto e parou na 17ª de 251. Host sem resposta de rede sai do resto da rodada; queda de rede deixa a pista pendente, não recusada; recusas antigas por queda voltam à fila; o corte só avança sem pendente.</dd>
       <dt>16/10/2026 · Consulta do município na Saúde: um arquivo por UF</dt>
@@ -155,18 +167,6 @@
       <dd>A busca web perdeu 114 min porque o rebase usava `-X theirs`, que num arquivo de fila apaga o lado perdedor. `unir_conflito_de_rodada.py` passa a unir as filas pela base comum, com a política da porta única. `config/escritores.json` declara quem commita cada arquivo. Elo cancelado deixa de contar como noite aberta: o marcador `.feito` vem antes do commit. `ensaio_da_noite.py` prova as quatro causas de dia, sem tocar a `main`.</dd>
       <dt>05/10/2026 · A fila de pistas tem uma porta, e o esquema não para mais a publicação</dt>
       <dd>A publicação reprovou oito vezes entre 21:23 e 03:57 BRT de 04→05/10 por 655 pistas novas sem `url_final`, `tipo`, `alvo` nem `nivel` — de coletores que nunca foram migrados ao esquema de 03/10 e gravavam `data/pistas_*.json` direto. Agora só `scripts/pistas.py` escreve a fila (normaliza, classifica, valida, recusa com motivo em `pistas_rejeitadas.json`); oito coletores migrados; `verificar_escritor_de_pista.py` reprova escrita por fora; o portão do esquema quarentena em vez de bloquear.</dd>
-      <dt>04/10/2026 · Nada depende de um único relógio, e a figura dos caminhos volta grande</dt>
-      <dd>A abertura da noite falhou três vezes em cinco dias. Entram o registro dos temporizadores com portão bloqueante, um despachante que dispara o que está devido e quatro observadores independentes — inclusive uma rotina na nuvem do Claude, cujo push é evento, não agendamento, e que já recuperou o despachante às 16:08 UTC. Abertura tardia ganha orçamento e cursor. A figura dos caminhos volta na largura da coluna.</dd>
-      <dt>04/10/2026 · O primeiro texto no ar e a rotina semanal do blog</dt>
-      <dd>O texto aprovado não ia ao ar: a porta do fluxo editorial nunca era chamada. Números conferidos contra o dado do dia — 59 reconhecimentos, 29 no Sul, 22 no Nordeste, 16 sem tipo. `tipo_evento` passa a vir da COBRADE, com granizo em tempestade. E entra a rotina: `gerar_pacote_blog.py`, o verificador que exige número do pacote, dois cartões de texto no blog e &quot;Textos desta semana&quot; na Imprensa.</dd>
-      <dt>04/10/2026 · Coleta de alerta vencida não impede a publicação</dt>
-      <dd>A publicação das 09:57 UTC morreu no portão de runtime: o arquivo de alertas completou 24h02 e a página, pela regra das 24 horas, escreveu &quot;Sem atualização desde…&quot; no lugar dos números — fazendo o que devia. O portão cobrava o número em todo caso; agora exige a declaração quando ela existe. A trava fica: alerta vencido nunca é apresentado como vigente.</dd>
-      <dt>04/10/2026 · AM e RO: os quatro documentos lidos, e nada sobe nem desce</dt>
-      <dd>O juiz leu os planos de AM (estiagem e inundações), o plano operacional de RO e o ofício do CBMRO, com a proveniência de LAI que a etapa 0 passa a aceitar — órgão, data e hash. Os quatro recusam, cada um com seu motivo, e entram como documentos do estado, sem alterar os índices. As 30 respostas das COMPDECs viram nota e busca dirigida: 27 declaram plano, 3 não; nada pontua.</dd>
-      <dt>04/10/2026 · O `git add` do publicador ignorava tudo porque `blog/` não existe mais</dt>
-      <dd>Três publicações morreram no portão 12 (07:41, 08:05 e 08:30 UTC) acusando 49 derivados obsoletos, depois de o passo de commit dizer &quot;sem alterações a publicar&quot;. A causa estava no `git add`: ele listava `blog/`, que saiu em 03/10, e um pathspec que não casa faz o comando inteiro falhar — com `|| true` engolindo o erro. Agora cada caminho é adicionado por conta própria e o que não existe é declarado no log.</dd>
-      <dt>04/10/2026 · O publicador deixa de reprovar a si mesmo</dt>
-      <dd>Duas publicações morreram no portão 12 com 49 derivados obsoletos, depois de o passo de commit dizer &quot;sem alterações a publicar&quot;. O publicador regenerava a cadeia em `--idempotencia`, que mede determinismo e não comparação com o git: a árvore ficava igual ao commit anterior, nada era commitado e a suíte, depois, achava a diferença. Passa a usar `--regenerar-para-commit`, que só regenera; quem compara é a suíte, depois do commit. Em `scripts/verificar_derivados.sh`.</dd>
     </dl>
   </section>
 </main>

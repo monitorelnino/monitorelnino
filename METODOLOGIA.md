@@ -1346,6 +1346,10 @@ O painel do MS **não publica API**: o endereço é função interna do aplicati
 
 **Precedência.** Medição prevalece sobre modelo: o índice europeu estimado pelo CAMS sai da página quando entra a figura do ar medido, e as duas nunca aparecem no mesmo mapa nem na mesma contagem. A regra das 36 horas (§41.4) vale para cada estação e cada sensor: medição mais velha vira lacuna com a data da última leitura, nunca valor atual. Fonte que não respondeu sai com status e lista vazia, nunca com a lista da noite anterior; cada resposta é preservada por hash.
 
+**Errata (16/10/2026, noite):** as duas fontes Open-Meteo — temperatura (sem figura desde 27/09, quando a previsão das capitais passou ao INMET) e índice europeu de ar (CAMS, sem figura desde a do ar medido) — saem do coletor, do arquivo de sinais e da coleta municipal de clima (`clima_municipios.json`, que nenhuma página lia).
+
+**Apoio técnico (16/10/2026).** Com a figura do ar medido, a fonte "Qualidade do ar medida" (lista de locais do OpenAQ) deixa de ser exibida no Monitor de riscos e passa a apoio técnico: é usada só para casar as estações oficiais em `data/ar_medido.json`.
+
 ### 41.8 Focos de calor: o satélite de referência como base de comparação (16/10/2026)
 
 O arquivo diário do INPE traz a detecção de **todos** os satélites, e o mesmo fogo aparece em vários deles: em 15/10/2026 foram 35.850 linhas no dia, 569 do satélite de referência (`AQUA_M-T`). Somar satélites conta o mesmo fogo mais de uma vez e muda com o número de satélites em órbita; por isso toda **comparação entre dias e entre anos** usa só o satélite de referência, que é o que o INPE usa na sua própria série histórica e o único que o arquivo anual de referência traz.
