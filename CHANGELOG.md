@@ -32,15 +32,12 @@ não pontuados permanecem na versão corrente.
 
 
 
-<<<<<<< HEAD
 ## 2026-10-16 · #784 · Uma renderização de página para os portões de jsdom (consolidação item 6)
 
 `_inline_js.renderizar` passa a montar o jsdom (d3, Chart simulado com rótulos, `fetch` do disco, erros da página) para os seis verificadores de runtime e o de texto público, sempre com a URL da página: quatro deles renderizavam com `/` e o catálogo servia o texto da inicial. Na Financiamento a URL `/` fica declarada: com a certa, o catálogo sobrescreve o rótulo do cartão de atos sem data (defeito da página, pedido à janela A). Linhas .js −137.
-=======
 ## 2026-10-16 · #783 · Inicial: links da abertura e sai a linha da checagem
 
 Na abertura do MARÉ Legal, "os municípios inscritos no cadastro nacional" leva ao cadastro do MDR e "a União já indicou … municípios" volta a levar ao mapa da Defesa civil (link perdido no #770). Sai a linha "Cada registro vem com a sua fonte · Última checagem em …" (editoria, 16/10), com o script, o fallback, o estilo e as checagens que a alimentavam.
->>>>>>> origin/main
 
 ## 2026-10-16 · #777 · Um medidor de frescor e um portão das fichas municipais (consolidação item 6)
 
