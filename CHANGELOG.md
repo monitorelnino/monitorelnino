@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #PR · Saúde: a tabela do índice com as colunas do leitor
+
+A tabela que acompanha o mapa do MARÉ Saúde passa a ter UF, nota, faixa, plano (situação e data), coordenação na saúde e ligação com o governo do estado. Saem as colunas de componente interno ("cobertura sanitária 0,1 · 1 lido / 1 sem leitura", antecedência, dengue na capital, risco) e o travessão em célula vazia.
+
 ## 2026-10-16 · #781 · Triagem e preparação de pistas com um dono só (F66)
 
 O juiz de 16/10 perdeu o commit porque a busca web de cadência, fora da vez da noite, regravou o nível de confiança de pistas que a descoberta já tinha triado. Triagem fica só na descoberta e preparação só no juiz; a cadência e a rodada semanal apenas acrescentam pistas. O ensaio da noite reprova um segundo dono.
