@@ -49,6 +49,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/10/2026 · Nenhum texto sobre feed no site</dt>
+      <dd>Sai do cartão de cada estado a linha do feed, e dos textos do blog o &quot;· Feed&quot; e a menção no aviso sem JavaScript (decisão da editoria de 16/10). &quot;feed&quot; entra no vocabulário proibido, que vale para a página, o catálogo e o texto escrito pelos scripts. Os arquivos do feed seguem no cabeçalho das páginas, para leitura por máquina.</dd>
       <dt>16/10/2026 · DOE-SP: o texto da publicação é decodificado e a homologação paulista casa</dt>
       <dd>A API do DOE-SP serve o ato com entidades HTML (`Situa&amp;ccedil;&amp;atilde;o`, `Pre&amp;shy;feito`); sem decodificar, nenhum padrão de homologação casava. A forma paulista (&quot;Homologa, por 180 dias, o decreto do Prefeito do Município de Guariba … Decreto municipal nº 5.019&quot;) entra como quarto padrão, com caso de teste do texto medido do Decreto 70.765.</dd>
       <dt>16/10/2026 · Descoberta nos sítios oficiais: três noites cobrem os 54 alvos</dt>
@@ -167,8 +169,6 @@
       <dd>A ficha de cada estado passa a mostrar a coordenação em duas linhas — na saúde e com o governo do estado —, com documento e data, e perde a palavra interna &quot;antecipação&quot;. `scripts/sondar_rotas_doe.py` mede e registra por que a campanha dos 27 está travada: das 20 unidades sem adaptador, 6 têm pista de rota, 12 sem busca na página inicial, 1 não responde, 1 sem endereço. Em `assets/js/saude.js`, `scripts/`.</dd>
       <dt>02/10/2026 · Os cartões do Financiamento entram na rodada</dt>
       <dd>`gerar_financiamento_semana.py` passa a rodar a cada publicação, logo depois dos números da imprensa, e o portão de coerência entre os dois entra na suíte. Sem isso a página mostraria o mês fechado da edição anterior. Em `.github/workflows/`.</dd>
-      <dt>02/10/2026 · Coordenação do MARÉ Saúde em duas funções</dt>
-      <dd>O componente &quot;coordenação&quot; passa a ser construto formativo de duas capacidades: comando interno da saúde (F1) e ligação com a coordenação do estado (F2), pesos iguais e média aritmética — falta de uma função reduz, não zera. Mede-se a função, não o órgão: um ato pode pontuar nas duas. O juiz classifica as duas e guarda o trecho que fundamenta cada uma. `robustez_saude.py` testa agregação, pesos e degrau. METODOLOGIA §91.</dd>
     </dl>
   </section>
 </main>

@@ -32,7 +32,7 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-16 · #PR · Nenhum texto sobre feed no site
+## 2026-10-16 · #780 · Nenhum texto sobre feed no site
 
 Sai do cartão de cada estado a linha do feed, e dos textos do blog o "· Feed" e a menção no aviso sem JavaScript (decisão da editoria de 16/10). "feed" entra no vocabulário proibido, que vale para a página, o catálogo e o texto escrito pelos scripts. Os arquivos do feed seguem no cabeçalho das páginas, para leitura por máquina.
 
