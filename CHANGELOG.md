@@ -35,6 +35,13 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-16 · #777 · Um medidor de frescor e um portão das fichas municipais (consolidação item 6)
 
 `verificar_frescor.py` absorve os três portões de frescor (Financiamento, Defesa civil, Saúde): um leitor de carimbo, um relógio, três famílias declaradas, 33 casos. `verificar_fichas_municipais.py` absorve `documento_de_plano`, `documento_publicado`, `datas_de_instrumento` e `capital`: `data/municipios.json` lido uma vez, quatro réguas, 34 casos. Sete scripts saem; 125 → 120 comandos. Linhas .py/.yml −515.
+## 2026-10-16 · #769 · A definição do índice tem dono, e o texto público é conferido contra ela
+
+O motor grava em `meta.json` os componentes, pesos e faixas do índice e que a antecedência está fora da nota. O portão de versão passa a ler o texto público do MARÉ Legal: antecedência como medida da nota e "pesam igual" escrito à mão reprovam. A inicial com os textos novos (#770) já passa sem exceção.
+
+## 2026-10-16 · #773 · "Envie pelo formulário" leva ao formulário
+
+O convite do cartão da cidade apontava para "Para gestores", sem formulário. Agora rola até o formulário da própria inicial e o preenche pela mesma função que lê os parâmetros do endereço. O portão de âncoras passa a ler também os links montados nos scripts — e achou uma nota de financiamento morta, que sai.
 
 ## 2026-10-16 · #775 · Portões: o autoteste roda dentro da conferência (consolidação item 6)
 
@@ -51,7 +58,7 @@ Dezesseis `verificar_*` que ainda tinham o par `--autoteste` + conferência pass
 
 Inicial: título, metadescrição, introdução, abertura em quatro parágrafos (indicados pela União lidos do dado), "Como ler" e cartão da cidade com o texto da editoria, tudo no catálogo; formulário diz que a conferência é automática. Nome por extenso segue "Monitor" (correção da central, 16/10); só `CLAUDE.md:28` acompanha. Teto de palavras da inicial 950 → 1.050.
 
-## 2026-10-16 · #PR · Cadastro Nacional: o MARÉ cobre os indicados pela União
+## 2026-10-16 · #771 · Cadastro Nacional: o MARÉ cobre os indicados pela União
 
 A página do MIDR (28/07/2026) publica os 2.095 municípios indicados pela União ao Cadastro Nacional do art. 3º-A — a lista que o MARÉ já lia das notas técnicas — e entra no coletor como segunda fonte. Nova seção §107 e erratas em §54, §66 e §21; o portão passa a proibir afirmar inscrição ou dever. §5.3.1 explica como o município compõe a nota.
 
