@@ -201,7 +201,7 @@
   "open_meteo_tempo": {
    "nome": "Temperatura observada e prevista",
    "orgao": "Open-Meteo (modelos ECMWF, DWD, NOAA)",
-   "camada": "observado",
+   "camada": "apoio_tecnico",
    "url_publica": "https://open-meteo.com/",
    "papel": "Máxima e mínima do dia anterior e dos próximos dias, por capital, em °C.",
    "natureza": "estimativa de modelo",
@@ -214,7 +214,7 @@
   "open_meteo_ar": {
    "nome": "Qualidade do ar estimada",
    "orgao": "Copernicus CAMS via Open-Meteo",
-   "camada": "observado",
+   "camada": "apoio_tecnico",
    "url_publica": "https://open-meteo.com/en/docs/air-quality-api",
    "papel": "PM2,5, PM10, ozônio, NO₂ e CO estimados por modelo, por capital, em µg/m³.",
    "natureza": "estimativa de modelo",
@@ -227,7 +227,7 @@
   "openaq": {
    "nome": "Qualidade do ar medida",
    "orgao": "OpenAQ (agrega redes oficiais brasileiras)",
-   "camada": "observado",
+   "camada": "apoio_tecnico",
    "url_publica": "https://openaq.org/",
    "papel": "PM2,5 medido por monitor oficial, onde existir monitor.",
    "natureza": "medição",
