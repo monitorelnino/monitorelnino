@@ -232,6 +232,8 @@ let ENQ_MUN = null, ENQ_FONTES = {};
 fetch('data/enquadramento_card.json').then(r => r.ok ? r.json() : null).catch(() => null).then(e => {
   if (!e || !e.municipios) return;
   ENQ_MUN = e.municipios; ENQ_FONTES = e.fontes || {};
+  const ind = document.getElementById('heroIndicadosUniao');   // indicados pela União: `ch` + `geo` (art. 3º-A)
+  if (ind) ind.textContent = Object.values(ENQ_MUN).filter(v => 'ch' in v || 'geo' in v).length.toLocaleString('pt-BR');
 });
 
 // Os quatro textos são LITERAIS, aprovados pela editoria em 30/09/2026, e não variam. Só o
@@ -249,17 +251,17 @@ const dataBR = s => {
   return m ? `${m[3]}/${m[2]}/${m[1]}` : String(s || '');
 };
 
-// Textos aprovados pela editoria em 07/10/2026 (C3 do handover dos cartoes). Nenhuma palavra de
-// dever, obrigacao ou recomendacao: duas destas listas nao criam dever nenhum para o municipio, e a
-// que cria (o cadastro do art. 3o-A da Lei 12.340) nao e nenhuma delas.
+// Textos aprovados pela editoria em 07/10/2026 e, na linha do art. 3o-A, em 16/10/2026. Nenhuma
+// palavra de dever, obrigacao ou recomendacao: a lista do art. 3o-A e a dos INDICADOS pela Uniao; o
+// dever recai sobre os INSCRITOS, lista que nao e publica (METODOLOGIA, HANDOVER_CADASTRO 16/10).
 // `scripts/verificar_textos_enquadramento.py` reprova se estes textos mudarem ou se palavra de
 // dever entrar aqui. O ano do MMA vem da portaria em vigor, gravada no dado — nao do codigo.
 const ENQ_TEXTO = {
-  chuva: 'Consta do cadastro federal de municípios suscetíveis a enxurradas e inundações.',
-  geo: 'Consta da lista federal de municípios suscetíveis a risco geo-hidrológico.',
+  chuva: 'Indicado pela União ao cadastro nacional de áreas suscetíveis (Lei 12.340, art. 3º-A).',
+  geo: 'Indicado pela União ao cadastro nacional de áreas suscetíveis (Lei 12.340, art. 3º-A); risco identificado: deslizamento.',
   seca: 'Integra a delimitação oficial do Semiárido brasileiro.',
   fogo: 'Consta da lista federal de municípios prioritários para controle do desmatamento e dos incêndios florestais na Amazônia (MMA, {ano}).',
-  nenhuma: 'Não consta das listas federais de risco por município: enxurradas e inundações (Casa Civil), Semiárido (Sudene) e prioritários para desmatamento e incêndios (MMA).',
+  nenhuma: 'Não consta das listas federais de risco por município: indicados pela União ao cadastro nacional (art. 3º-A), Semiárido (Sudene) e prioritários para desmatamento e incêndios (MMA).',
 };
 // Os tipos que a nota tecnica nomeia, pelos nomes da fonte, em ordem alfabetica.
 const ENQ_TIPO = {d: 'deslizamento', e: 'enxurrada', i: 'inundação'};
@@ -976,7 +978,7 @@ function gerarRelatorioCidadao(uf, municipio){
     doc.setFont('helvetica','bold'); doc.setFontSize(52); doc.setTextColor(60,60,60);
     doc.text('FUTURA · EVIDENCE LAB', W/2, H/2, {angle:45, align:'center'}); doc.restoreGraphicsState(); };
   const rod = () => { doc.setFont('helvetica','normal'); doc.setFontSize(8.5); doc.setTextColor(120,110,95);
-    doc.text('MARÉ · Monitor de Antecipação e Resposta ao El Niño · monitorelnino.com.br · Não substitui as orientações da Defesa Civil da sua cidade.', M, H-30);
+    doc.text('MARÉ · Medida de Antecipação e Resposta ao El Niño · monitorelnino.com.br · Não substitui as orientações da Defesa Civil da sua cidade.', M, H-30);
     doc.text('© 2026 Futura Evidence Lab. Dados verificados em fontes oficiais.', M, H-18);
     doc.text('Página ' + doc.internal.getNumberOfPages(), W-M, H-18, {align:'right'}); };
   const nova = () => { rod(); doc.addPage(); marca(); y = M; };
@@ -1001,7 +1003,7 @@ function gerarRelatorioCidadao(uf, municipio){
   marca();
   doc.addImage(LOGO_PDF, 'PNG', M, 42, 150, 56);
   doc.setFont('helvetica','bold'); doc.setFontSize(16); doc.setTextColor(...INK);
-  doc.text('MARÉ · Monitor de Antecipação e Resposta ao El Niño', M, 128);
+  doc.text('MARÉ · Medida de Antecipação e Resposta ao El Niño', M, 128);
   doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.setTextColor(...MUTED);
   const corte = (typeof META !== 'undefined' && META && META.corte) ? META.corte : '';
   doc.text('El Niño 2026/2027 · Corte dos dados: ' + corte + ' · Gerado em ' + new Date().toLocaleDateString('pt-BR'), M, 143);

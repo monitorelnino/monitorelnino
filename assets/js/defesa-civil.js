@@ -622,7 +622,7 @@ function __init(){
   const fontesEnq = (ENQ && ENQ.fontes) || {};
   const dataBR = v => MonitorMapas.dataBR(v) || null;
 
-  // ---- 3a. enxurradas e inundações (Casa Civil) ----
+  // ---- 3a. indicados pela União ao cadastro nacional do art. 3º-A (MIDR e Casa Civil) ----
   const cad = CADASTRO && CADASTRO.municipios
     ? Object.entries(CADASTRO.municipios).map(([cod, v]) => ({
         cod: cod, nome: v.municipio, uf: v.uf, tipos: v.tipos_de_risco || [],
@@ -631,10 +631,10 @@ function __init(){
   listaFederal({
     itens: cad, caixa: 'boxRiscoEnchente', mapa: 'mapRiscoEnchente', legenda: 'legRiscoEnchente',
     linha: 'linhaRiscoEnchente', familia: 'chuva_claro',
-    rotuloLinha: 'Cadastro de ', data: dataBR(CADASTRO && CADASTRO.coletado_em),
+    rotuloLinha: 'Lista de indicados de ', data: dataBR(CADASTRO && CADASTRO.coletado_em),
     fonte: 'Casa Civil, Nota Técnica nº 2/2025', url: CADASTRO && CADASTRO.fonte,
-    rotuloBusca: 'Buscar município do cadastro de enxurradas e inundações',
-    colunas: ['Município', 'UF', 'Risco no cadastro', 'Plano localizado'],
+    rotuloBusca: 'Buscar município indicado pela União',
+    colunas: ['Município', 'UF', 'Risco indicado', 'Plano localizado'],
     celulas: m => ['<strong>' + esc(m.nome) + '</strong>', esc(m.uf),
                    esc(m.tipos.join(', ') || '—'), m.plano ? 'sim' : 'não localizado até o corte'],
   });

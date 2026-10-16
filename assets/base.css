@@ -161,7 +161,7 @@ header.masthead{display:block; margin-bottom:var(--sp-6);}
    visualmente mostra o SVG do logotipo (fundo claro), embutido inline (não <img>) para herdar as
    fontes da página — um <img src="...svg"> não carrega fontes web referenciadas por @import. */
 .site-title--logo{margin:0 0 var(--sp-4);}
-/* 26/09/2026 (pedido da editoria): 320px → 420px. Junto, o descritor "· MONITOR DE ANTECIPAÇÃO
+/* 26/09/2026 (pedido da editoria): 320px → 420px. Junto, o descritor "· MEDIDA DE ANTECIPAÇÃO
    E RESPOSTA AO EL NIÑO" saiu de dentro do SVG, onde era desenhado a 9,5px do viewBox e chegava
    à tela a 7,6px — abaixo do piso de 12px da própria escala do site, e ilegível. Ele agora é
    texto de verdade (.site-nome), no tamanho da escala, selecionável e pesquisável. */

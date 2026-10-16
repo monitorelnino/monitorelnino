@@ -20,8 +20,8 @@
  *       municípios do Cemaden fora do mapa sem nenhuma mensagem de erro. Cada mapa tem a sua
  *       contagem esperada calculada aqui, do dado, nunca escrita à mão.
  *   (c) **A volta do que a editoria mandou sair.** Os blocos de auditoria e os mapas de preparação
- *       foram para `dados-abertos/` e para a METODOLOGIA; "Cadastro Nacional" saiu do site porque é
- *       o nome de outro cadastro, que cria dever que a lista da Casa Civil não cria.
+ *       foram para `dados-abertos/` e para a METODOLOGIA; "cadastro nacional" só aparece como lista
+ *       dos indicados pela União, sem afirmar inscrição nem dever (16/10/2026).
  *
  * Uso: node scripts/verificar_runtime_mapas.js
  */
@@ -264,14 +264,16 @@ setTimeout(() => {
   teste("material de auditoria e mapas de preparação continuam fora da página (01/10/2026)",
     voltou.length === 0);
   if (voltou.length) console.log("      voltaram:", voltou.join(", "));
-  /* "Cadastro Nacional" é o nome do cadastro do art. 3º-A da Lei 12.340 — voluntário, com
-     deslizamento, e que GERA O DEVER de plano de contingência. A lista desta página é a da Casa
-     Civil, que não cria esse dever. Usar um nome pelo outro afirma obrigação inexistente. */
+  /* Cadastro do art. 3º-A da Lei 12.340 (HANDOVER_CADASTRO, 16/10/2026): a lista desta página é a dos
+     municípios INDICADOS pela União; o dever de plano recai sobre os INSCRITOS, lista que não é
+     pública. Nomear o cadastro sem "indicados pela União", ou afirmar inscrição ou dever, afirma
+     obrigação que o dado não sustenta. */
   const visivel = d.getElementById("conteudo").textContent;
-  teste('o nome "Cadastro Nacional" não aparece na página (é outro cadastro)',
-    !/Cadastro Nacional/i.test(visivel));
-  teste("o cadastro é nomeado pela fonte certa (Casa Civil)",
-    /suscet[íi]veis a enxurradas e inunda[çc][õo]es/i.test(visivel) && /Casa Civil/i.test(visivel));
+  teste('"cadastro nacional" só aparece como "indicados pela União ao cadastro nacional"',
+    (visivel.match(/cadastro nacional/gi) || []).length === (visivel.match(/indicad[oa]s? pela União ao cadastro nacional/gi) || []).length
+    && /indicad[oa]s? pela União ao cadastro nacional/i.test(visivel));
+  teste("nenhuma afirmação de inscrição ou de dever",
+    !/inscritos? no cadastro nacional|\bcadastrad[oa]s?\b|t[êe]m o dever/i.test(visivel));
 
   if (falhas.length) { console.error(`\n✗ ${falhas.length} verificação(ões) falharam.`); process.exit(1); }
   console.log("\n✓ RUNTIME (Defesa civil) OK — todas as verificações passaram.");

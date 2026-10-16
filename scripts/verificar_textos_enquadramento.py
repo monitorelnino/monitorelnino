@@ -6,11 +6,11 @@ PR 4 do handover do enquadramento federal de risco (editoria, 30/09/2026).
 O QUE ELE EXISTE PARA BARRAR
 ----------------------------
 Os quatro textos do bloco foram aprovados pela editoria em 30/09/2026 como **literais, sem
-variação**. O risco não é alguém reescrevê-los de propósito: é a reescrita gentil — "deve elaborar
-plano", "recomenda-se", "está obrigado a" — entrando num bloco que fala de listas federais. Duas
-das três listas não criam dever nenhum para o município, e a que cria (o Cadastro Nacional do
-art. 3º-A da Lei 12.340) não é nenhuma delas. Uma palavra de dever aqui viraria afirmação jurídica
-falsa sobre 3.157 municípios.
+variação** (a linha do art. 3º-A, em 16/10/2026). O risco não é alguém reescrevê-los de propósito:
+é a reescrita gentil — "deve elaborar plano", "recomenda-se", "está obrigado a" — entrando num bloco
+que fala de listas federais. A lista do art. 3º-A da Lei 12.340 é a dos INDICADOS pela União; o
+dever recai sobre os INSCRITOS, lista que não é pública. Uma palavra de dever aqui viraria afirmação
+jurídica falsa sobre 3.157 municípios.
 
 Este portão confere as duas coisas: que as quatro frases estão lá, exatas, e que nenhuma palavra de
 dever, obrigação ou recomendação aparece no bloco.
@@ -27,13 +27,14 @@ RAIZ = pathlib.Path(__file__).resolve().parent.parent
 ARQUIVO = RAIZ / "assets" / "js" / "index.js"
 
 APROVADOS = {
-    "chuva": "Consta do cadastro federal de municípios suscetíveis a enxurradas e inundações.",
-    "geo": "Consta da lista federal de municípios suscetíveis a risco geo-hidrológico.",
+    "chuva": "Indicado pela União ao cadastro nacional de áreas suscetíveis (Lei 12.340, art. 3º-A).",
+    "geo": ("Indicado pela União ao cadastro nacional de áreas suscetíveis (Lei 12.340, art. 3º-A); "
+            "risco identificado: deslizamento."),
     "seca": "Integra a delimitação oficial do Semiárido brasileiro.",
     "fogo": ("Consta da lista federal de municípios prioritários para controle do desmatamento e "
              "dos incêndios florestais na Amazônia (MMA, {ano})."),
-    "nenhuma": ("Não consta das listas federais de risco por município: enxurradas e "
-                "inundações (Casa Civil), Semiárido (Sudene) e prioritários para desmatamento e "
+    "nenhuma": ("Não consta das listas federais de risco por município: indicados pela União ao "
+                "cadastro nacional (art. 3º-A), Semiárido (Sudene) e prioritários para desmatamento e "
                 "incêndios (MMA)."),
 }
 # Os tipos de risco agora aparecem pelos NOMES DA FONTE, e nao por complemento de frase: o cartao

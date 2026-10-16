@@ -249,7 +249,7 @@ for (const arq of arquivos) {
 for (const arq of arquivos) {
   const nome = path.basename(arq); if (!fs.existsSync(arq)) continue;
   const bruto = fs.readFileSync(arq, "utf-8"); const semTags = bruto.replace(/<[^>]+>/g, " ");
-  if (semTags.includes("Medida de Antecipação")) falha(`${nome}: "Medida de Antecipação" sobrevive (nome antigo; ver §79) — pode estar partido por tag`);
+  if (semTags.includes("Monitor de Antecipação")) falha(`${nome}: "Monitor de Antecipação" sobrevive (nome revogado em 16/10/2026; METODOLOGIA §5.1) — pode estar partido por tag`);
   if (semTags.includes("MARÉ · Defesa civil")) falha(`${nome}: "MARÉ · Defesa civil" sobrevive (nome revogado; MARÉ Legal, ver §79)`);
 }
 
