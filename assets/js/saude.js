@@ -198,7 +198,7 @@ function __init(){
     MonitorMapas.legenda('legMonitor', [
       ...['avançado', 'consolidado', 'em construção', 'estágio inicial'].map(f => ({cor: FX[f], rotulo: f + ' · ' + (pf[f] || 0) + ' UF' + ((pf[f] || 0) === 1 ? '' : 's')})),
       {cor: FX['não verificado'], rotulo: 'ainda não verificado · ' + (R.nao_verificadas ?? '—') + ' UFs (sem número)'}]);
-    fonteFigura('boxMonitor', {fontes: ['MARÉ', 'MARÉ Saúde v0.3'], data: (MSAUDE || {}).gerado_em});
+    fonteFigura('boxMonitor', {fontes: ['MARÉ Saúde'], data: (MSAUDE || {}).gerado_em});
     // tabela alternativa
     const tb = document.querySelector('#tblMonitor tbody');
     if (tb) tb.innerHTML = UFS.map(uf => { const m = M[uf] || {}, i = m.instrumento || {}, a = m.antecipacao || {}, r = m.risco_atual || {};
@@ -299,17 +299,6 @@ function __init(){
     el.textContent = 'Classe de excesso de calor por município: ' + semCalor + '.'
       + (fCalor.ultima_tentativa_falhou ? ' Última tentativa em ' + fCalor.ultima_tentativa_falhou + '.' : '');
   })();
-  /* 01/10/2026 (bloco D): sigla traduzida no texto visível. O rótulo vem do arquivo de sinais, que
-   * é escrito pelo coletor no vocabulário interno; traduzir na LEITURA, e não no dado, mantém o
-   * banco do jeito que o coletor o escreveu e o leitor sem sigla para decodificar. */
-  const PUBLICO = [[/\bESPIN\b/g, 'emergência em saúde pública de importância nacional'],
-                   [/\bCIEVS\b/g, 'centro de vigilância'],
-                   [/\bCOES?\b/g, 'centro de operações de emergência'],
-                   [/\bSRAG\b/g, 'síndrome respiratória grave'],
-                   [/\bMDDA\b/g, 'vigilância das diarreicas']];
-  const semSigla = t => PUBLICO.reduce((x, [re, por]) => String(x).replace(re, por), t || '');
-  (function(){ const f = SSIN.fontes || {}; const c = Object.entries(f).map(([k, v]) => semSigla(v.nome || k) + ': ' + (v.status === 'lacuna' ? 'lacuna declarada' + (v.ultima_coleta_ok ? ', sem leitura desde ' + v.ultima_coleta_ok : '') : (v.consultado_em ? 'consultado em ' + v.consultado_em : (v.status === 'reuso' ? 'reuso da página de sinais' : 'ainda não consultado'))));
-    const el = document.getElementById('carimboSaude'); if (el) el.textContent = 'Estado das fontes: ' + c.join(' · ') + '.'; })();
 
   // 13/09/2026 (proposta de enxugamento, Manus AI): quadrante 'Defesa civil × saúde' retirado —
   // "mistura prontidão documental com risco projetado e não mede efeito na população".
@@ -404,8 +393,7 @@ function abrirDetalheSaude(uf){
     + (m.camada === 'adaptacao' ? linha('Plano decenal de adaptação', 'registrado como estrutura; não pontua') : '')
     + linha('Resposta sanitária', ((RS || {}).ufs || []).includes(uf) ? 'emergência sanitária declarada no ciclo' : 'nenhuma emergência sanitária declarada localizada desde 29/06/2026')
     + linha('Risco sanitário projetado', (m.risco_projetado || []).length ? (m.risco_projetado || []).map(esc).join('; ') : 'sem registro')
-    + linha('Dengue na capital', dc.dengue_capital_nivel != null ? 'nível ' + esc(dc.dengue_capital_nivel) + ' (InfoDengue), ' + esc(dc.dengue_capital || '') + ', SE ' + esc(String(dc.dengue_se || '—')) : 'sem coleta')
-    + (u.data_verificacao ? '<p class="note">Bateria estadual executada em ' + esc(u.data_verificacao) + '.</p>' : '');
+    + linha('Dengue na capital', dc.dengue_capital_nivel != null ? 'nível ' + esc(dc.dengue_capital_nivel) + ' (InfoDengue), ' + esc(dc.dengue_capital || '') + ', SE ' + esc(String(dc.dengue_se || '—')) : 'sem coleta');
   const dlg = document.getElementById('detailSaude');
   if (!dlg) return;
   dlg.setAttribute('aria-label', 'Detalhe do estado');
@@ -1066,7 +1054,9 @@ const AREAS = [
     const alvo = el('dlVerificacaoUF');
     if (!alvo || !SUFd) return;
     const uf04 = (V04 || {}).uf || {};
-    const doc = o => (o && o.doc) ? esc(o.doc) + (o.data ? ' · ' + esc(o.data) : '') : null;
+    /* Cada linha: título · órgão · data do documento · link. O que não é título vive em `nota_interna`. */
+    const doc = o => (o && o.doc) ? [esc(o.doc), o.orgao && esc(o.orgao), o.data ? esc(o.data) : 'sem data no documento',
+      o.url && '<a href="' + esc(o.url) + '" target="_blank" rel="noopener">Abrir o documento</a>'].filter(Boolean).join(' · ') : null;
     alvo.innerHTML = UFS.map(uf => {
       const u = (SUFd.uf || {})[uf] || {};
       const inst = ((u.instrumentos || [])[0]) || {};
