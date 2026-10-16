@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #782 · Inicial: links da abertura e sai a linha da checagem
+
+Na abertura do MARÉ Legal, "os municípios inscritos no cadastro nacional" leva ao cadastro do MDR e "a União já indicou … municípios" volta a levar ao mapa da Defesa civil (link perdido no #770). Sai a linha "Cada registro vem com a sua fonte · Última checagem em …" (editoria, 16/10), com o script, o fallback, o estilo e as checagens que a alimentavam.
+
 ## 2026-10-16 · #780 · Nenhum texto sobre feed no site
 
 Sai do cartão de cada estado a linha do feed, e dos textos do blog o "· Feed" e a menção no aviso sem JavaScript (decisão da editoria de 16/10). "feed" entra no vocabulário proibido, que vale para a página, o catálogo e o texto escrito pelos scripts. Os arquivos do feed seguem no cabeçalho das páginas, para leitura por máquina.

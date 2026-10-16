@@ -95,7 +95,6 @@ def preencher_index():
     atualizado = meta.get("atualizado_em") or corte
 
     h = sub_id(h, "heroCorte", corte, n)
-    h = sub_id(h, "metaUltimaVerif", atualizado, n)
     h = sub_id(h, "metaAtualizado", atualizado, n)
     h = sub_id(h, "corteDados", corte, n)   # 16/09/2026: tirado o literal 26/08/2026 hardcoded
 
