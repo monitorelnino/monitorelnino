@@ -36,4 +36,35 @@ function inlinePageJs(html, raiz) {
     return fs.existsSync(p) ? "<script>\n" + fs.readFileSync(p, "utf-8") + "\n</script>" : m;
   });
 }
-module.exports = { inlinePageJs, TAG };
+
+/* 16/10/2026 (consolidação item 6): UMA renderização de página para todos os portões de jsdom. Até aqui
+ * sete scripts montavam o mesmo JSDOM, cada um com o seu Chart simulado, o seu `fetch` de disco e o seu
+ * captador de erro — e quatro deles com a URL `/`, de modo que `assets/catalogo.js` servia o catálogo da
+ * inicial (ou o texto de reserva) em toda página. A URL aqui é SEMPRE a da página.
+ * Devolve { dom, window, document, erros, graficos, rotulos }:
+ *   erros    — jsdomError, window.onerror e unhandledrejection (o fluxo async de __load/__init incluído);
+ *   graficos — toda instância de Chart criada pela página, como {ctx, cfg};
+ *   rotulos  — só o que o Chart escreveria na tela: rótulos do eixo, nomes das séries, títulos de eixo.
+ * `opcoes.url` troca a URL de propósito (declarado); `opcoes.aoCriar(w)` roda depois da montagem. */
+function renderizar(pagina, raiz, opcoes = {}) {
+  const { JSDOM, VirtualConsole } = require("jsdom");
+  const erros = [], graficos = [], rotulos = [], vc = new VirtualConsole();
+  vc.on("jsdomError", (e) => erros.push(e.detail && e.detail.stack ? e.detail.stack.split("\n")[0] : e.message));
+  const html = inlinePageJs(fs.readFileSync(path.join(raiz, pagina), "utf-8"), raiz);
+  const dom = new JSDOM(html, { url: opcoes.url || "https://localhost/" + pagina, runScripts: "dangerously", virtualConsole: vc, beforeParse(w) {
+    global.window = w; global.document = w.document; global.navigator = w.navigator; w.d3 = require("d3");
+    // módulo único de mapas (o <script src> externo não é carregado pelo jsdom sem resources)
+    try { w.eval(fs.readFileSync(path.join(raiz, "assets", "mapas.js"), "utf-8")); } catch (e) { erros.push("mapas.js: " + e.message); }
+    class Chart { constructor(ctx, cfg) { graficos.push({ ctx, cfg }); const d = (cfg && cfg.data) || {}; try {
+      rotulos.push((d.labels || []).join(" "), (d.datasets || []).map((s) => s && s.label).filter(Boolean).join(" "));
+      Object.values(((cfg && cfg.options) || {}).scales || {}).forEach((e) => { if (e && e.title && e.title.text) rotulos.push(String(e.title.text)); }); } catch (e) {} } }
+    Chart.defaults = { font: {}, color: "", plugins: { legend: { labels: {} }, tooltip: {} }, elements: {} }; w.Chart = Chart;
+    w.fetch = (rel) => { try { const txt = fs.readFileSync(path.join(raiz, String(rel).replace(/^\.?\//, "").split("?")[0]), "utf-8");
+      return Promise.resolve({ ok: true, json: () => Promise.resolve(JSON.parse(txt)), text: () => Promise.resolve(txt) }); } catch (e) { return Promise.resolve({ ok: false, status: 404 }); } };
+    w.addEventListener("error", (e) => erros.push("onerror: " + e.message));
+    w.addEventListener("unhandledrejection", (e) => erros.push("unhandledrejection: " + ((e.reason && e.reason.message) || e.reason)));
+    if (opcoes.aoCriar) opcoes.aoCriar(w);
+  } });
+  return { dom, window: dom.window, document: dom.window.document, erros, graficos, rotulos };
+}
+module.exports = { inlinePageJs, TAG, renderizar };
