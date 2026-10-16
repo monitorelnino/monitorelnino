@@ -199,7 +199,12 @@
   },
   "catalogo": {
     "fonte": "CLAUDE.md do robo-registro, 'Catálogo de conteúdo' (05/10/2026): texto público só em conteudo/<pagina>.json; central 16/10/2026 10:40",
-    "fora": ["form", "dialog", "noscript", "nav"],
+    "fora": [
+      "form",
+      "dialog",
+      "noscript",
+      "nav"
+    ],
     "_nota": "Tags-ancestrais cujo texto não é editorial e fica fora do catálogo. Todo h1–h3, p, li, summary e figcaption do <main> de página pública fora delas precisa de data-conteudo (scripts/verificar_catalogo.py, regra f)."
   },
   "texto_publico": {
@@ -679,6 +684,10 @@
         "cartao-mapa-rodape"
       ],
       "subtitulo_maximo": 140,
+      "subtitulo_estados": [
+        "^Sem atualização desde "
+      ],
+      "_nota_subtitulo_estados": "Forma de ESTADO do subtítulo, aceita literalmente: quando a fonte de alertas para por mais de 24 h, defesa-civil.js escreve 'Sem atualização desde dd/mm/aaaa hh:mm' no lugar de 'período · variável · unidade' (decisão de 02/10/2026, fuso explícito). Não é metadado e não leva '·'. O portão 17 (robustez) envelhece os alertas de propósito e exercita esta forma; o portão antigo não a via porque renderizava com a URL da inicial.",
       "credito_maximo": 160,
       "credito": "^Fonte: .+ · Atualização: (\\d{2}/\\d{2}/\\d{4}|sem coleta até o corte)$",
       "credito_explicacao": "por que|confira|enquanto isso|lacuna declarada|contrariaria|regra de prova|aguard",

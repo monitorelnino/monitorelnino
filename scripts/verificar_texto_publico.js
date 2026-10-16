@@ -102,7 +102,8 @@ function enquadramento(fonte) {
 const CREDITO = new RegExp(F.credito), CREDITO_EXPLICA = new RegExp(F.credito_explicacao, "i");
 const credito = (s) => (!CREDITO.test(s) ? [`crédito fora do formato "Fonte: … · Atualização: dd/mm/aaaa" — "${s.slice(0, 80)}"`] : [])
   .concat(s.length > F.credito_maximo ? [`crédito longo demais (${s.length} caracteres)`] : [], CREDITO_EXPLICA.test(s) ? [`crédito com explicação — "${s.slice(0, 80)}"`] : []);
-const subtitulo = (s) => (s.length > F.subtitulo_maximo || !s.includes("·")) ? [`subtítulo fora do padrão (≤ ${F.subtitulo_maximo} caracteres, separado por "·") — "${s.slice(0, 60)}"`] : [];
+const ESTADOS = rx(F.subtitulo_estados, "");
+const subtitulo = (s) => (s.length > F.subtitulo_maximo || (!s.includes("·") && !ESTADOS.some((r) => r.test(s)))) ? [`subtítulo fora do padrão (≤ ${F.subtitulo_maximo} caracteres, separado por "·") — "${s.slice(0, 60)}"`] : [];
 const fichaIncompleta = (ficha, obrigatorios) => (obrigatorios || []).filter((c) => { const v = (ficha || {})[c]; return v == null || (typeof v === "string" && !v.trim()) || (Array.isArray(v) && !v.length); });
 
 /* ── a renderização, uma por página ─────────────────────────────────────────────────────────────── */
@@ -256,6 +257,7 @@ function autoteste() {
   c("crédito no formato único passa", credito("Fonte: Cemaden · Atualização: 02/10/2026").length === 0 && credito("Fonte: INMET · Atualização: sem coleta até o corte").length === 0);
   c("crédito fora do formato ou com explicação reprova", credito("Cemaden, 2026").length === 1 && credito("Fonte: aguardamos o órgão · Atualização: 02/10/2026").length === 1);
   c("subtítulo sem '·' ou longo reprova", subtitulo("Período 2026").length === 1 && subtitulo("x".repeat(141) + " · y").length === 1 && subtitulo("2026 · municípios · contagem").length === 0);
+  c("subtítulo de estado 'Sem atualização desde …' passa (portão 17 o exercita)", subtitulo("Sem atualização desde 01/09/2026 00:00").length === 0 && subtitulo("Sem dado").length === 1);
   c("palavras: conta a prosa, não script, nav, rodapé, legenda ou prova", palavras('<nav class="mainnav">a b</nav><p>um dois três</p><p class="figura-sub">x y</p><script>z z</script><footer>f</footer>') === 3);
   c("enquadramento: bloco correto passa", enquadramento(bom).length === 0);
   c("enquadramento: arquivo sem o bloco reprova", enquadramento("var x = 1;").some((p) => p.includes("não encontrado")));
