@@ -138,24 +138,22 @@
           <div class="mapa-dupla"><svg id="mapaFogo" role="img" aria-label="Mapa do Brasil com os focos de calor das últimas 24 horas na posição em que foram detectados, agrupados em células de cerca de 11 quilômetros, segundo o INPE" viewBox="0 0 480 460"></svg></div>
           <div class="lado-dados" id="fogoLado">
             <dl class="lado-numeros" id="fogoNumeros"></dl>
-            <p class="lado-rotulo" id="fogoSerieRotulo" data-conteudo="monitor-de-riscos.fogo.serie_rotulo">Últimos 30 dias, focos por dia</p>
+            <p class="figura-nota lado-rotulo" id="fogoSerieRotulo" data-conteudo="monitor-de-riscos.fogo.serie_rotulo">Últimos 30 dias, focos por dia</p>
             <div class="lado-serie" id="fogoSerie"></div>
             <div class="tbl-wrap" tabindex="0" role="region" aria-label="Focos por estado"><table class="mun-table" id="tblFogo"><thead><tr><th>UF</th><th>Focos em 24 h</th><th>Dia anterior</th><th>No mês</th><th>Previsto</th></tr></thead><tbody></tbody></table></div>
             <div class="tbl-wrap" tabindex="0" role="region" aria-label="Focos por bioma"><table class="mun-table" id="tblFogoBioma"><thead><tr><th>Bioma</th><th>Focos em 24 h</th><th>% do total</th></tr></thead><tbody></tbody></table></div>
           </div>
         </div>
         <div class="map-legend" id="legFogo"></div>
+        <p class="figura-nota" data-conteudo="monitor-de-riscos.fogo.nota">Foco não é incêndio: um incêndio grande gera muitos focos, e queimadas autorizadas também entram.</p>
       </figure>
     </div>
     <div class="grade-figuras grade-figuras--3 grade-mapas">
       <figure class="figura figura--mapa cartao-mapa" id="boxSecas">
         <h3 class="figura-titulo" id="tituloSecas">Seca observada</h3>
         <p class="figura-sub" id="secasSub">Manchas do Monitor de Secas · hachura: estados com seca prevista pelo boletim</p>
-        <div class="figura-midia"><svg id="mapaSecas" role="img" aria-describedby="estadosSecas" aria-label="Mapa do Brasil com as manchas de seca do mapa mensal do Monitor de Secas" viewBox="0 0 480 460"></svg></div>
+        <div class="figura-midia"><svg id="mapaSecas" role="img" aria-label="Mapa do Brasil com as manchas de seca do mapa mensal do Monitor de Secas" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legSecas"></div>
-        <div class="cartao-mapa-rodape">
-        <details class="cartao-mapa-dados cartao-mapa-estados"><summary data-conteudo="monitor-de-riscos.estados_secas.resumo">Ver estados</summary><ul class="lista-estados" id="estadosSecas"></ul></details>
-        </div>
       </figure>
       <figure class="figura figura--mapa cartao-mapa" id="boxAr">
         <h3 class="figura-titulo" id="tituloAr" data-conteudo="monitor-de-riscos.ar.titulo">Qualidade do ar medida</h3>
@@ -167,38 +165,26 @@
       <figure class="figura figura--mapa cartao-mapa" id="boxTemperatura">
         <h3 class="figura-titulo" id="tituloTemperatura">Temperatura máxima prevista nas capitais</h3>
         <p class="figura-sub" id="temperaturaSub">Máxima prevista e diferença para a média histórica do mês · °C · uma capital por estado</p>
-        <div class="figura-midia"><svg id="mapaTemperatura" role="img" aria-describedby="estadosTemperatura" aria-label="Mapa do Brasil com a temperatura máxima prevista na capital de cada estado e quanto ela está acima da média histórica do mês" viewBox="0 0 480 460"></svg></div>
+        <div class="figura-midia"><svg id="mapaTemperatura" role="img" aria-label="Mapa do Brasil com a temperatura máxima prevista na capital de cada estado e quanto ela está acima da média histórica do mês" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legTemperatura"></div>
-        <div class="cartao-mapa-rodape">
-        <details class="cartao-mapa-dados cartao-mapa-estados"><summary data-conteudo="monitor-de-riscos.estados_temperatura.resumo">Ver estados</summary><ul class="lista-estados" id="estadosTemperatura"></ul></details>
-        <details class="cartao-mapa-dados"><summary data-conteudo="monitor-de-riscos.estados_temperatura.resumo_2">Ver em lista</summary>
-          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblTemperatura"><thead><tr><th>UF</th><th>Capital</th><th>Máxima prevista</th><th>Mínima prevista</th><th>Máxima medida (estação do INMET)</th></tr></thead><tbody></tbody></table></div>
-        </details>
-        <details class="cartao-mapa-leitura"><summary data-conteudo="monitor-de-riscos.estados_temperatura.resumo_3">Como ler</summary>
-          <p class="figura-leitura" data-conteudo="monitor-de-riscos.estados_temperatura.texto">O número ao lado de cada capital é a temperatura máxima prevista; a cor mostra quanto ela está acima da média histórica daquele mês. 35 °C é normal em Cuiabá e muito quente em Porto Alegre.</p>
-        </details>
-        </div>
       </figure>
     </div>
     <div class="faixa-selo faixa-selo--familia">
       <p class="selo" data-conteudo="monitor-de-riscos.riscos.bloco_chuva">Chuva forte</p>
       <p class="boletim-preve" id="preveChuva"></p>
     </div>
-    <div class="grade-figuras grade-figuras--3 grade-mapas">
-      <figure class="figura figura--mapa cartao-mapa" id="boxAvisos">
-        <h3 class="figura-titulo" id="tituloAvisos">Avisos de tempo severo em vigor</h3>
-        <p class="figura-sub" id="avisosSub">Avisos em vigor na consulta</p>
-        <div class="figura-midia"><svg id="mapaAvisos" role="img" aria-describedby="estadosAvisos" aria-label="Mapa do Brasil pelo maior grau de aviso meteorológico do INMET em vigor em cada estado" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legAvisos"></div>
-        <div class="cartao-mapa-rodape">
-        <details class="cartao-mapa-dados cartao-mapa-estados"><summary data-conteudo="monitor-de-riscos.estados_avisos.resumo">Ver estados</summary><ul class="lista-estados" id="estadosAvisos"></ul></details>
-        <details class="cartao-mapa-dados"><summary data-conteudo="monitor-de-riscos.estados_avisos.resumo_2">Ver em lista</summary>
-          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblAvisos"><thead><tr><th>UF</th><th>Avisos</th><th>Grau</th><th>Fenômeno</th></tr></thead><tbody></tbody></table></div>
-        </details>
-        <details class="cartao-mapa-leitura"><summary data-conteudo="monitor-de-riscos.estados_avisos.resumo_3">Como ler</summary>
-          <p class="figura-leitura" data-conteudo-html="monitor-de-riscos.estados_avisos.texto">O Inmet emite o aviso por área, e um aviso pode alcançar mais de um estado. Os avisos por município estão em <a href="defesa-civil.html">Defesa civil</a>.</p>
-        </details>
-        </div>
+    <div class="grade-figuras grade-figuras--2">
+      <figure class="figura figura--tabela cartao-mapa" id="boxAvisos">
+        <h3 class="figura-titulo" id="tituloAvisos" data-conteudo="monitor-de-riscos.avisos.titulo">Avisos de tempo severo em vigor</h3>
+        <p class="figura-sub" id="avisosSub" data-conteudo="monitor-de-riscos.avisos.sub">Por grau do aviso · municípios cobertos · INMET</p>
+        <div class="figura-midia" id="midiaAvisos"><div class="tbl-wrap" tabindex="0" role="region" aria-label="Avisos por grau"><table class="mun-table" id="tblAvisos"><thead><tr><th>Grau</th><th>Municípios</th><th>Estados</th><th>Fenômeno</th></tr></thead><tbody></tbody></table></div></div>
+        <p class="figura-nota" id="avisosRodape"></p>
+      </figure>
+      <figure class="figura figura--tabela cartao-mapa" id="boxCemaden">
+        <h3 class="figura-titulo" id="tituloCemaden" data-conteudo="monitor-de-riscos.cemaden.titulo">Alertas do Cemaden vigentes</h3>
+        <p class="figura-sub" id="cemadenSub" data-conteudo="monitor-de-riscos.cemaden.sub">Por nível do alerta · estado · municípios nomeados pelo Cemaden</p>
+        <div class="figura-midia" id="midiaCemaden"><div class="tbl-wrap" tabindex="0" role="region" aria-label="Alertas do Cemaden"><table class="mun-table" id="tblCemaden"><thead><tr><th>Nível</th><th>UF</th><th>Municípios</th></tr></thead><tbody></tbody></table></div></div>
+        <p class="figura-nota" id="cemadenRodape"></p>
       </figure>
     </div>
   </div>
@@ -218,7 +204,7 @@
 </div>
 
 <script src="assets/colunas.js?v=07ce0f22" defer></script>
-<script src="assets/js/monitor-de-riscos.js?v=86c2fddc" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
+<script src="assets/js/monitor-de-riscos.js?v=81a0ea3a" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

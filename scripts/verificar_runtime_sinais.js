@@ -15,6 +15,9 @@ const fs = require("fs");
 const path = require("path");
 
 const raiz = path.join(__dirname, "..");
+// 16/10/2026: o ar medido tem catálogo próprio (data/ar_medido.json); sem o arquivo, a fonte do MMA está "em espera".
+const AR = (() => { try { return JSON.parse(fs.readFileSync(path.join(raiz, "data/ar_medido.json"), "utf8")); } catch (e) { return null; } })();
+const FONTES = Object.assign({monitorar: {status: "aguardando_coleta"}}, SINAIS.fontes, (AR || {}).fontes || {});
 
 
 const { dom, erros, graficos } = renderizar("monitor-de-riscos.html", raiz);
@@ -209,14 +212,14 @@ setTimeout(() => {
   if (semCredito.length) console.log("      sem crédito:", semCredito.join(", "));
 
   const orgaosCitados = creditos.map(p => p.dataset.credito);
-  const fonteDesconhecida = orgaosCitados.filter(f => !SINAIS.fontes[f]);
+  const fonteDesconhecida = orgaosCitados.filter(f => !FONTES[f]);
   teste("todo crédito aponta para fonte do catálogo", fonteDesconhecida.length === 0);
 
-  const coletadasSemData = creditos.filter(p => SINAIS.fontes[p.dataset.credito].status === "coletado"
+  const coletadasSemData = creditos.filter(p => FONTES[p.dataset.credito].status === "coletado"
     && !/Atualização: \d{2}\/\d{2}\/\d{4}/.test(p.textContent));
   teste("crédito de fonte coletada traz a data de consulta", coletadasSemData.length === 0);
 
-  const esperaSemTeto = creditos.filter(p => SINAIS.fontes[p.dataset.credito].status !== "coletado"
+  const esperaSemTeto = creditos.filter(p => FONTES[p.dataset.credito].status !== "coletado"
     && !/Não localizamos|sem coleta até o corte/.test(p.textContent));   // 04/09/2026: crédito de uma linha
   teste("fonte em espera usa a linguagem-teto do projeto", esperaSemTeto.length === 0);
 

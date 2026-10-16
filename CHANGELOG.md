@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 `figura.quatro_funcoes_separadas` (título, legenda, nota, fonte) deixa de ser só texto: quem a julga é `verificar_texto_publico.js`, que já reprova nota, dica ou parágrafo dentro da figura e exige um título, um subtítulo e um crédito. Restam 13 regras só texto.
 
+## 2026-10-16 · #804 · Monitor de riscos: chuva forte em tabelas; saem as listas dos mapas
+
+O bloco "Chuva forte" troca o mapa de avisos por estado por duas tabelas: avisos do INMET por grau, com municípios cobertos, estados e fenômeno, e alertas do Cemaden por nível, com os municípios nomeados. Saem "Ver estados", "Ver em lista" e "Como ler" e o código morto que os montava. Open-Meteo e lista do OpenAQ passam a apoio técnico no catálogo (conserta a main do #802). HANDOVER_MONITOR_DE_RISCOS §4 e §7.
+
 ## 2026-10-16 · #802 · Monitor de riscos: seca em manchas, ar medido e cartão do ar
 
 A seca observada passa a ser as manchas do mapa mensal do Monitor de Secas, com contorno dos estados e hachura onde o boletim prevê seca. O mapa do ar mostra o IQAr das estações oficiais por cidade (cores oficiais) e os sensores IPAM/RedeAr; sai o índice europeu e a camada municipal morta. Cartão "Ar" só com cidade em IQAr Ruim ou pior.

@@ -31,6 +31,9 @@
     },
     {
       "el": "boxAvisos"
+    },
+    {
+      "el": "boxCemaden"
     }
   ],
   "exige_texto": [
@@ -77,14 +80,15 @@
   "_nota_recorte_do_grafico_2": "07/10/2026 (decisão da editoria, delegada ao Code): com a série do RONI desde 1950 o critério da NOAA/CPC encontra 22 episódios. O recorte decidido foi NÃO recortar: todos são desenhados como contexto, no mesmo traço e no mesmo tom, e só o ciclo em curso é destacado e rotulado. As alternativas e por que caem: escolher os mais intensos é ranking ordinal, que `layout/regras.json/dados_na_pagina` proíbe; escolher os mais recentes é recorte nosso sem o dado pedir; nomear 22 numa legenda não se lê. A legenda passa a ter dois itens, com a contagem, e cada linha se nomeia ao passar o mouse, ao tocar e para o leitor de tela. Conferido por scripts/verificar_runtime_sinais.js.",
   "cartao_figura_um_titulo": true,
   "blocos_de_familia": {
-    "_governanca": "16/10/2026 (editoria, HANDOVER_MONITOR_DE_RISCOS §2–§3): o risco previsto é uma faixa de etiquetas por família (boxRiscoPrevisto, sem mapa); depois, os blocos 'Seca, fogo, ar e calor' (boxFogo na largura inteira, com números ao lado; boxSecas, boxAr, boxTemperatura em três colunas) e 'Chuva forte' (boxAvisos). Cada bloco abre com o selo da família e 'Boletim prevê para: <siglas>'. A hachura do mapa de fogo significa só 'fogo previsto pelo boletim'.",
+    "_governanca": "16/10/2026 (editoria, HANDOVER_MONITOR_DE_RISCOS §2–§3): o risco previsto é uma faixa de etiquetas por família (boxRiscoPrevisto, sem mapa); depois, os blocos 'Seca, fogo, ar e calor' (boxFogo na largura inteira, com números ao lado; boxSecas, boxAr, boxTemperatura em três colunas) e 'Chuva forte' (boxAvisos e boxCemaden, tabelas por grau e por nível, sem mapa por estado). Sem 'Ver estados', 'Ver em lista' nem 'Como ler' em nenhuma figura (§7). Cada bloco abre com o selo da família e 'Boletim prevê para: <siglas>'. A hachura do mapa de fogo significa só 'fogo previsto pelo boletim'.",
     "ordem": [
       "boxRiscoPrevisto",
       "boxFogo",
       "boxSecas",
       "boxAr",
       "boxTemperatura",
-      "boxAvisos"
+      "boxAvisos",
+      "boxCemaden"
     ]
   },
   "excecao_fundo_escuro": {
