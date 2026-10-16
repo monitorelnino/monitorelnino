@@ -31,7 +31,7 @@
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <script src="assets/catalogo.js?v=d4d42f5f"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=02c36ec9">
-<link rel="stylesheet" href="assets/base.css?v=5914d49b">
+<link rel="stylesheet" href="assets/base.css?v=7379a9be">
 <script src="assets/mapas.js?v=c9350706"></script>
 </head>
 <body class="pagina-dados">
@@ -46,28 +46,17 @@
   </header>
 <main id="conteudo">
   <h1 data-conteudo="monitor-de-riscos.titulo_da_pagina">Monitor de riscos</h1>
-  <p class="hint" data-conteudo-html="monitor-de-riscos.abertura">O que os órgãos oficiais de clima estão medindo neste El Niño. Primeiro, o próprio fenômeno: a temperatura do oceano Pacífico, que define se há El Niño e com que força, e a chance de ele continuar. Depois, o que já está acontecendo no Brasil: seca, temperatura nas capitais, qualidade do ar, focos de fogo e avisos meteorológicos em vigor. Cada mapa e gráfico traz o órgão que publicou o dado e a data da consulta. Os alertas por município e os decretos de emergência estão em <a href="defesa-civil.html">Defesa civil</a>; o risco previsto para cada estado neste ciclo está na ficha do estado, na <a href="index.html#regions">página inicial</a>.</p>
+  <p class="hint" data-conteudo="monitor-de-riscos.abertura.1">Esta página reúne o que os órgãos oficiais de clima e meio ambiente medem durante o El Niño 2026/2027, em duas partes.</p>
+  <p class="hint" data-conteudo="monitor-de-riscos.abertura.2">A primeira parte mostra o fenômeno em si. A situação atual diz se o El Niño está declarado pelos órgãos federais e desde quando. O gráfico do Índice Oceânico Niño mostra a temperatura do oceano Pacífico mês a mês, com os limiares a partir dos quais se declara El Niño ou La Niña, e o gráfico seguinte compara a evolução deste El Niño com a dos episódios anteriores, na mesma escala.</p>
+  <p class="hint" data-conteudo="monitor-de-riscos.abertura.3">A segunda parte mostra o que já acontece no Brasil: o risco previsto para cada estado até março de 2027, segundo os boletins oficiais; a seca observada em cada estado; os focos de fogo das últimas 24 horas; a qualidade do ar medida nas capitais com estação oficial e a temperatura máxima prevista nas capitais; e os avisos de tempo severo em vigor. Cada mapa e gráfico traz o órgão que publicou o dado e a data da consulta.</p>
+  <p class="hint" data-conteudo-html="monitor-de-riscos.abertura.4">Os alertas por município e os decretos de emergência estão em <a href="defesa-civil.html">Defesa civil</a>; o risco previsto para cada estado também aparece na ficha do estado, na <a href="index.html">página inicial</a>.</p>
 
-  <div class="secao-aberta" id="situacao">
+  <!-- 16/10/2026 (editoria, lote 2): "Situação atual" em painel próprio, separada da abertura; a faixa
+       de números de agora (`.cartao-numero` em `.grade-numeros--3`, regra de layout/regras.json). Cada
+       número sai do dado já coletado, com órgão e data; variação só onde há leitura anterior gravada. -->
+  <div class="panel" id="situacao">
     <h2 data-conteudo="monitor-de-riscos.titulo_da_secao">Situação atual</h2>
-    <!-- 07/10/2026 (handover "Monitor de riscos, parte 1"): SAÍRAM os três quadros com ícone.
-         "Há El Niño agora?" não muda até o fim do ciclo, e os outros dois diziam "Forte" e "100%"
-         com uma régua que não é da NOAA. A RÉGUA DE FORÇA SAIU INTEIRA: a NOAA/CPC define os
-         limiares de El Niño (+0,5 °C) e de La Niña (−0,5 °C) e o critério de cinco médias
-         trimestrais seguidas — não define faixas de "fraco/moderado/forte/muito forte". A palavra
-         só aparece aqui entre aspas, dentro de uma frase atribuída à própria NOAA/CPC.
-
-         No lugar, quatro números, cada um gerado do dado e com fonte e data na linha de baixo.
-         DIVERGÊNCIA DECLARADA: o handover pediu o componente `.cartao-destaque`, que não existe
-         neste site; `layout/regras.json` manda número em `.cartao-numero` dentro de
-         `.grade-numeros--3`, e a regra vence o handover. São quatro cartões numa grade de três —
-         a última linha pode ficar incompleta, e a regra diz isso. -->
     <p class="hint" id="stResumo" data-conteudo="monitor-de-riscos.situacao.abertura" aria-live="polite">Condição de El Niño declarada pelos órgãos federais em 29/06/2026.</p>
-
-    <!-- 09/10/2026 (ajuste 3, editoria): TRÊS cartões numa linha. Sai o cartão "Previsão da
-         NOAA/CPC": a frase dela vira linha de apoio do cartão de probabilidade, com fonte própria.
-         O cartão do boletim mostra os três riscos com a mesma hierarquia, em ordem alfabética
-         (chuva, fogo, seca) — ordem neutra, escolhida pelo Code e registrada no contrato. -->
     <div class="grade-numeros grade-numeros--3 grade-numeros--empilha" id="situacaoGrade">
       <div class="cartao-numero cartao-numero--risco_agora" data-cartao="roni_mais_recente">
         <p class="cartao-numero-rotulo" id="stRoniRotulo" data-conteudo="monitor-de-riscos.situacao.roni.rotulo">RONI mais recente</p>
@@ -82,14 +71,29 @@
         <p class="cartao-numero-variacao" id="stPrevisaoVariacao"></p>
         <p class="cartao-numero-fonte" id="stDuracaoFonte"></p>
       </div>
-      <div class="cartao-numero cartao-numero--risco_agora cartao-numero--trio" data-cartao="brasil_painel_el_nino">
-        <p class="cartao-numero-rotulo" id="stBrasilRotulo" data-conteudo="monitor-de-riscos.situacao.brasil.rotulo">Painel El Niño · riscos previstos</p>
-        <div class="cartao-numero-valor cartao-numero-trio" id="stBrasilValor">
-          <p class="trio-item"><span class="trio-numero" id="stBrasilChuva">—</span><span class="trio-legenda" data-conteudo="monitor-de-riscos.situacao.brasil.legenda_chuva">chuva acima da média</span></p>
-          <p class="trio-item"><span class="trio-numero" id="stBrasilFogo">—</span><span class="trio-legenda" data-conteudo="monitor-de-riscos.situacao.brasil.legenda_fogo">risco de fogo</span></p>
-          <p class="trio-item"><span class="trio-numero" id="stBrasilSeca">—</span><span class="trio-legenda" data-conteudo="monitor-de-riscos.situacao.brasil.legenda_seca">seca</span></p>
-        </div>
-        <p class="cartao-numero-fonte" id="stBrasilFonte"></p>
+      <div class="cartao-numero cartao-numero--risco_agora" data-cartao="focos_24h">
+        <p class="cartao-numero-rotulo" id="stFogoRotulo" data-conteudo="monitor-de-riscos.situacao.fogo.rotulo">Focos de fogo no Brasil nas últimas 24 horas</p>
+        <p class="cartao-numero-valor" id="stFogoValor">sem coleta até o corte</p>
+        <p class="cartao-numero-variacao" id="stFogoApoio"></p>
+        <p class="cartao-numero-fonte" id="stFogoFonte"></p>
+      </div>
+      <div class="cartao-numero cartao-numero--risco_agora" data-cartao="seca_grave_estados">
+        <p class="cartao-numero-rotulo" id="stSecaRotulo" data-conteudo="monitor-de-riscos.situacao.seca.rotulo">Estados com seca grave, extrema ou excepcional em pelo menos metade da área</p>
+        <p class="cartao-numero-valor" id="stSecaValor">sem coleta até o corte</p>
+        <p class="cartao-numero-variacao" id="stSecaApoio"></p>
+        <p class="cartao-numero-fonte" id="stSecaFonte"></p>
+      </div>
+      <div class="cartao-numero cartao-numero--risco_agora" data-cartao="calor_desvio_capital">
+        <p class="cartao-numero-rotulo" id="stCalorRotulo" data-conteudo="monitor-de-riscos.situacao.calor.rotulo">Maior diferença entre a máxima prevista e o normal, numa capital</p>
+        <p class="cartao-numero-valor" id="stCalorValor">sem coleta até o corte</p>
+        <p class="cartao-numero-variacao" id="stCalorApoio"></p>
+        <p class="cartao-numero-fonte" id="stCalorFonte"></p>
+      </div>
+      <div class="cartao-numero cartao-numero--risco_agora" data-cartao="avisos_estados">
+        <p class="cartao-numero-rotulo" id="stAvisosRotulo" data-conteudo="monitor-de-riscos.situacao.avisos.rotulo">Estados com aviso de tempo severo em vigor</p>
+        <p class="cartao-numero-valor" id="stAvisosValor">sem coleta até o corte</p>
+        <p class="cartao-numero-variacao" id="stAvisosApoio"></p>
+        <p class="cartao-numero-fonte" id="stAvisosFonte"></p>
       </div>
     </div>
 
@@ -255,8 +259,8 @@
   </footer>
 </div>
 
-<script src="assets/colunas.js?v=3669e58d" defer></script>
-<script src="assets/js/monitor-de-riscos.js?v=8e987539" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
+<script src="assets/colunas.js?v=07ce0f22" defer></script>
+<script src="assets/js/monitor-de-riscos.js?v=a742554a" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
