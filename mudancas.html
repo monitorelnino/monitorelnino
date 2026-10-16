@@ -49,6 +49,12 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/10/2026 · Saúde: títulos e subtítulos dizem o que a figura é</dt>
+      <dd>O mapa do índice passa a &quot;MARÉ Saúde por estado, de 0 a 100&quot;, com o subtítulo do cálculo em uso; &quot;prontidão&quot; sai da página. Os semanais nomeiam o ano e os anos da faixa habitual (2019 a 2025). A cidade fora da leitura semanal aparece como &quot;não foi lido pelo MARÉ nesta semana&quot;. Sai a busca municipal antiga, sem elemento na página.</dd>
+      <dt>16/10/2026 · Nenhum texto sobre feed no site</dt>
+      <dd>Sai do cartão de cada estado a linha do feed, e dos textos do blog o &quot;· Feed&quot; e a menção no aviso sem JavaScript (decisão da editoria de 16/10). &quot;feed&quot; entra no vocabulário proibido, que vale para a página, o catálogo e o texto escrito pelos scripts. Os arquivos do feed seguem no cabeçalho das páginas, para leitura por máquina.</dd>
+      <dt>16/10/2026 · DOE-SP: o texto da publicação é decodificado e a homologação paulista casa</dt>
+      <dd>A API do DOE-SP serve o ato com entidades HTML (`Situa&amp;ccedil;&amp;atilde;o`, `Pre&amp;shy;feito`); sem decodificar, nenhum padrão de homologação casava. A forma paulista (&quot;Homologa, por 180 dias, o decreto do Prefeito do Município de Guariba … Decreto municipal nº 5.019&quot;) entra como quarto padrão, com caso de teste do texto medido do Decreto 70.765.</dd>
       <dt>16/10/2026 · Descoberta nos sítios oficiais: três noites cobrem os 54 alvos</dt>
       <dd>A descoberta de planos nos sítios estaduais andava 6 alvos por noite e revia os mesmos; agora a fatia anda 20 por dia e os 54 (27 UFs, saúde e defesa civil) passam em três noites. O comando ganha prazo próprio de 12 minutos e grava o que achou ao ser interrompido; alvo só conta como verificado quando a API do sítio respondeu.</dd>
       <dt>16/10/2026 · A definição do índice tem dono, e o texto público é conferido contra ela</dt>
@@ -163,12 +169,6 @@
       <dd>`coletar_edicoes_doe.py` baixa a edição por data, extrai o texto e indexa as ocorrências com trecho e página; a campanha consome o índice. Arquivo servido com 200 que não é diário e sigla sem contexto de saúde não contam. PB e MS registrados pelo documento relido, com F1 e F2. A coordenação passa a exigir as duas funções. METODOLOGIA §94. ## 2026-10-02 · #521b · Imprensa: capitais com plano e a série de faixas O cartão &quot;capitais com plano&quot; deixa de ser lacuna: a referência das 27 capitais por código IBGE já existia no repositório, e o número é 17 de 27. `scripts/registrar_faixas.py` passa a escrever a faixa de cada estado por edição, e o cartão &quot;mudaram de faixa&quot; lê de lá — a comparação começa na próxima edição. Em `gerar_imprensa_semana.py`, `scripts/`, `.github/workflows/`.</dd>
       <dt>02/10/2026 · Ficha do estado com as duas linhas, e a sondagem das rotas de diário</dt>
       <dd>A ficha de cada estado passa a mostrar a coordenação em duas linhas — na saúde e com o governo do estado —, com documento e data, e perde a palavra interna &quot;antecipação&quot;. `scripts/sondar_rotas_doe.py` mede e registra por que a campanha dos 27 está travada: das 20 unidades sem adaptador, 6 têm pista de rota, 12 sem busca na página inicial, 1 não responde, 1 sem endereço. Em `assets/js/saude.js`, `scripts/`.</dd>
-      <dt>02/10/2026 · Os cartões do Financiamento entram na rodada</dt>
-      <dd>`gerar_financiamento_semana.py` passa a rodar a cada publicação, logo depois dos números da imprensa, e o portão de coerência entre os dois entra na suíte. Sem isso a página mostraria o mês fechado da edição anterior. Em `.github/workflows/`.</dd>
-      <dt>02/10/2026 · Coordenação do MARÉ Saúde em duas funções</dt>
-      <dd>O componente &quot;coordenação&quot; passa a ser construto formativo de duas capacidades: comando interno da saúde (F1) e ligação com a coordenação do estado (F2), pesos iguais e média aritmética — falta de uma função reduz, não zera. Mede-se a função, não o órgão: um ato pode pontuar nas duas. O juiz classifica as duas e guarda o trecho que fundamenta cada uma. `robustez_saude.py` testa agregação, pesos e degrau. METODOLOGIA §91.</dd>
-      <dt>02/10/2026 · Coleta de doença respiratória confiável</dt>
-      <dd>O banco anual do SIVEP-Gripe passa a ser baixado com retomada por `Range`, três tentativas com espera crescente e conferência do tamanho declarado — conexão cortada entregava CSV truncado lido como série inteira. Ano que falha é republicado do último agregado bom, com a lacuna declarada; cada tentativa entra num painel de saúde dos coletores. Autoteste simula falha de rede. Em `coletores_base.py`, `coletar_srag_sivep.py`, `coletar_sg_esus.py`.</dd>
     </dl>
   </section>
 </main>

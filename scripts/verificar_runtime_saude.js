@@ -202,8 +202,9 @@ for (const id of ["mapaMonitor", "mapaDengueUF", "mapaChikUF", "mapaCalor"]) {
     // anterior contava estados por status de instrumento, que é o objeto da figura seguinte, e saía
     // quase igual ao dela. O princípio que este portão guarda continua o mesmo — o título vem do dado,
     // nunca digitado —, e a contagem agora sai do agregado autoritativo em monitor_saude.json.
-    const MSd = JSON.parse(fs.readFileSync(path.join(raiz, "data", "monitor_saude.json"), "utf8"));
-    teste("saúde: título-fato da prontidão com a contagem do dado", new RegExp(`^Prontidão sanitária por estado: ${MSd.resumo.verificadas} de ${UFS.length} estados verificados$`).test(q("boxMonitor").querySelector(".figura-titulo").textContent));
+    // 16/10/2026 (lote 6, bloco 3): o título identifica o objeto — "MARÉ Saúde por estado, de 0
+    // a 100" —, e quem não foi verificado é dito no subtítulo; "prontidão" sai da página.
+    teste("saúde: o mapa do índice tem o título do catálogo, sem \"prontidão\"", q("boxMonitor").querySelector(".figura-titulo").textContent === "MARÉ Saúde por estado, de 0 a 100" && !/prontid/i.test(d.querySelector("main").textContent));
     teste("saúde: interpretação fixa do InfoDengue fora da figura", /InfoDengue/.test(q("interpObservado").textContent));
     // Bloco das 23h20: a série respiratória não cita mais o InfoGripe como fonte dela.
     teste("respiratórias: a fonte declarada é o SIVEP-Gripe, não o InfoGripe",
