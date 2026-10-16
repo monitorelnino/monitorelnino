@@ -904,6 +904,10 @@ def parse_openaq_locais(dados, por_uf_capital: dict) -> dict:
 # ---------------------------------------------------------------------------
 NATUREZA_SENSOR = "sensor de baixo custo"
 AR_CASAMENTO_KM = 0.3      # estação MMA ↔ local OpenAQ: mesma estação a até 300 m
+# 16/10/2026: na coleta das 15:46 (Brasília) 51 estações do INEA (RJ), da CPRH (PE) e do Ibram (DF)
+# traziam hora de medição 4 a 5 h no FUTURO. A fonte não declara fuso e o desvio não é o do UTC;
+# não se adivinha: medição "do futuro" além da folga vira lacuna, nunca valor atual.
+AR_FOLGA_HORA_FUTURA = 1
 FUSO_BR = ZoneInfo("America/Sao_Paulo")
 AR_FONTES = {
     "monitorar": {
@@ -975,6 +979,8 @@ def parse_monitorar(dados, agora_dt: datetime) -> list:
         }
         if valor is None or quando is None:
             item["lacuna"] = "sem IQAr publicado pela fonte"
+        elif idade < -AR_FOLGA_HORA_FUTURA:
+            item["lacuna"] = f"hora da medição publicada pela fonte posterior à consulta ({quando:%d/%m/%Y %H:%M})"
         elif idade > VALIDADE_HORAS_SINAL:
             item["lacuna"] = f"última medição da fonte com mais de {VALIDADE_HORAS_SINAL} h ({quando:%d/%m/%Y %H:%M})"
         else:
@@ -1010,6 +1016,8 @@ def parse_redear(dados, agora_dt: datetime) -> list:
                 pass
         if quando is None:
             item["lacuna"] = "sem leitura publicada pela fonte"
+        elif _idade_h(quando, agora_dt) < -AR_FOLGA_HORA_FUTURA:
+            item["lacuna"] = f"hora da leitura publicada pela fonte posterior à consulta ({quando:%d/%m/%Y %H:%M})"
         elif _idade_h(quando, agora_dt) > VALIDADE_HORAS_SINAL:
             item["lacuna"] = f"leitura mais recente com mais de {VALIDADE_HORAS_SINAL} h ({quando:%d/%m/%Y %H:%M})"
         elif media(leituras[0], "pm2_5") is None:
@@ -2699,6 +2707,12 @@ def autoteste() -> int:
     checar("Ar: medição com mais de 36 h é lacuna, nunca valor velho como atual",
            _mma[1]["iqar"] is None and "36 h" in _mma[1]["lacuna"])
     checar("Ar: estação sem IQAr publicado é lacuna", _mma[2]["iqar"] is None and _mma[2]["lacuna"])
+    _fut = parse_monitorar([{"idEstacao": 9, "nuLatitude": "-22.9", "nuLongitude": "-43.2",
+                             "municipio": {"idMunicipio": 3304557, "sgUf": "RJ"},
+                             "indiceQualidadeArAtual": {"medicao": {"indiceQualidadeAr": 20.0,
+                                                                     "dtMedicao": "2026-10-16 17:00"}}}], _agora)
+    checar("Ar: hora de medição no futuro (além de 1 h) é lacuna, nunca valor atual",
+           _fut[0]["iqar"] is None and "posterior à consulta" in _fut[0]["lacuna"])
     checar("Ar negativo: item malformado e resposta não-lista não quebram",
            len(_mma) == 3 and parse_monitorar({"erro": 1}, _agora) == [])
     _n = casar_openaq(_mma,

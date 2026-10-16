@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-16 · #809 · Ar medido: hora de medição no futuro vira lacuna
+
+Na coleta das 15:46, 51 estações (INEA, CPRH, Ibram) traziam hora 4 a 5 h adiante da consulta e saíam como leitura atual. `parse_monitorar` passa a declarar lacuna quando a hora publicada passa da consulta em mais de 1 h (IQAr e sensores RedeAr); não se reinterpreta fuso que a fonte não declara. METODOLOGIA §41.7; autoteste novo.
+
 ## 2026-10-16 · #808 · Juiz da saúde estadual: duas rodadas pela válvula (dado)
 
 Duas rodadas do juiz da saúde estadual com o código do #799: cerca de 140 pistas oficiais julgadas (contra 17 em 15/10), nenhuma promovida; 113 seguem pendentes, entre elas as do host do Amapá sem resposta. O corte da verificação segue 02/10, porque a fila não terminou.
