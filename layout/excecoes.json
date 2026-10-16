@@ -1,4 +1,12 @@
 {
   "_governanca": "Exceções às regras de layout/regras.json. Uma linha por exceção, com regra, página, motivo, data e quem decidiu — e sem os três últimos campos ela NÃO vale: exceção que não se declara é regra desligada em silêncio. Quem lê é scripts/verificar_conformidade.py. Arquivo vazio é o estado desejado.",
-  "excecoes": []
+  "excecoes": [
+    {
+      "regra": "versao_do_indice.texto",
+      "pagina": "index.html",
+      "motivo": "\"Como ler o MARÉ Legal\" ainda descreve a v2 (antecedência como medida e \"os três pesam igual\" à mão); o texto novo sai na rodada conjunta de textos públicos da editoria (HANDOVER_TEXTOS_INICIAL_16-10-2026). Sai desta lista no PR que trocar o texto.",
+      "data": "16/10/2026",
+      "decidido_por": "central (LOTES 16/10 10:40) e editoria (10:00: textos públicos em conjunto)"
+    }
+  ]
 }
