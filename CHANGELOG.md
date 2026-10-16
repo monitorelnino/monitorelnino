@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #PR · Inicial: textos da editoria
+
+Abertura em quatro parágrafos (boletim, o que a lei pede, o que o MARÉ Legal procura, "não localizado"), com os indicados pela União lidos do dado; "Como ler o MARÉ Legal" reescrito; cartão da cidade e formulário com o texto novo (conferência automática). Metadescrição de 166 caracteres. Portões de runtime, palavras e legendas acompanham o texto; a frase do defeso sai da inicial.
+
 ## 2026-10-16 · #PR · Todo texto público no catálogo, com portão
 
 O portão do catálogo passa a reprovar texto público do `<main>` sem identificador (título, parágrafo, item, legenda, resumo), pela mesma regra do migrador; fora só formulário, diálogo, `noscript` e navegação (`layout/regras.json`). O migrador passa a levar texto com marcação e a não sobrescrever identificador existente. 138 trechos de dez páginas migrados sem mudar uma letra.
