@@ -32,6 +32,9 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #PR · Data do ato nunca depois da edição que o publica
+- `data_do_ato_no_trecho` ignora data posterior à edição: a abertura de uma dispensa (21/10) virou `data_ato` do decreto de Santiago/RS e barrou a publicação desde 04:42. O evento perde a data errada (fica a de publicação); caso no autoteste do consorciado.
+
 ## 2026-10-15 · #PR · CLAUDE.md só com regras em vigor
 
 `CLAUDE.md` cai de 664 para 227 linhas: cada regra em uma frase, com o portão que a prova. A história e os relatos de incidente vão, sem perder linha, para `docs/HISTORICO_DE_REGIMES.md`; a marca pessoal, para `docs/MARCA_PESSOAL.md` (skill e `layout/regras.json` apontam para lá). Pedido da central de 15/10, custo de leitura por sessão.
