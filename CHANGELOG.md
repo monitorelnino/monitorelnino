@@ -32,6 +32,29 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #760 · Imprensa: páginas em cartões, perguntas em sanfona
+
+A Imprensa abre por "O que cada página responde", agora em cartões, um por página, com link; seguem o que é o MARÉ, o cálculo dos índices, as perguntas frequentes em sanfonas (a primeira de cada grupo aberta), como citar e o contato para redações. Fundo branco em tudo. Saem "Quem está mais preparado?", "A comparação é do leitor." e "Os estados são comparáveis entre si?": o site não convida a comparar entes. Redesenho aprovado pela editoria em 15/10.
+
+## 2026-10-16 · #758 · DOE-SP pela API própria da busca (SE)
+
+`coletar_doe.py` ganha `busca_sp`: a API que o sítio do DOE-SP chama (`do-api-web-search`, termos e janela de datas, paginada) aponta as publicações e cada uma é lida inteira em `/v2/publications/<id>`, sem HTML; endereço citável `doe.sp.gov.br/<slug>`. MG, RJ, RS e SC seguem `sem adaptador de busca` com o motivo medido (15/10); PI e RR têm rota exposta a medir.
+
+## 2026-10-16 · #759 · Data do ato nunca depois da edição que o publica
+- `data_do_ato_no_trecho` ignora data posterior à edição: a abertura de uma dispensa (21/10) virou `data_ato` do decreto de Santiago/RS e barrou a publicação desde 04:42. O evento perde a data errada (fica a de publicação); caso no autoteste do consorciado.
+
+## 2026-10-16 · #757 · Blog sem abertura; texto na coluna inteira
+
+Saem do blog o parágrafo de abertura e o título "Textos": os textos entram logo abaixo do título da página, e o corpo deixa o limite de 72 caracteres e ocupa a coluna inteira, no blog e em cada texto. Metadescrição atualizada. Pedido da editoria de 15/10.
+
+## 2026-10-16 · #756 · DOE por edição: AM e MS entram (N e CO)
+
+Sobre o adaptador de edição por data: AM pela rota (a) da plataforma comum (edição do dia → id → PDF pela rota c), MS pela listagem de `spdo.ms.gov.br/diariodoe/`, que nomeia o PDF por número e data. PA, RO e RR seguem `sem adaptador de busca` com o motivo medido do runner (15/10); RR tem rota a medir.
+
+## 2026-10-16 · #755 · DOE por edição: CE e PB entram (NE)
+
+`coletar_doe.py` ganha o adaptador `edicao_<uf>`: sem busca, lê a edição em PDF por data (CE em cadernos, PB pelo padrão do canal 2), só páginas com termo viram item, e o lido não se relê (`lidas`, janela de 8 dias). Os três ramos de busca viram um. AL, BA, MA, PE, PI, RN e SE ficam `sem adaptador de busca` com o motivo medido do runner (15/10).
+
 ## 2026-10-15 · #PR · CLAUDE.md só com regras em vigor
 
 `CLAUDE.md` cai de 664 para 227 linhas: cada regra em uma frase, com o portão que a prova. A história e os relatos de incidente vão, sem perder linha, para `docs/HISTORICO_DE_REGIMES.md`; a marca pessoal, para `docs/MARCA_PESSOAL.md` (skill e `layout/regras.json` apontam para lá). Pedido da central de 15/10, custo de leitura por sessão.
