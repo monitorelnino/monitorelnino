@@ -34,11 +34,13 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-16 · #769 · A definição do índice tem dono, e o texto público é conferido contra ela
 
-O motor grava em `meta.json` os componentes, pesos e faixas do índice e que a antecedência está fora da nota. O portão de versão passa a ler o texto público do MARÉ Legal: antecedência como medida da nota e "pesam igual" escrito à mão reprovam. "Como ler" da inicial fica em exceção registrada até a rodada conjunta de textos.
+O motor grava em `meta.json` os componentes, pesos e faixas do índice e que a antecedência está fora da nota. O portão de versão passa a ler o texto público do MARÉ Legal: antecedência como medida da nota e "pesam igual" escrito à mão reprovam. A inicial com os textos novos (#770) já passa sem exceção.
 
-## 2026-10-16 · #769 · Todo texto público no catálogo, com portão
+## 2026-10-16 · #770 · Inicial com os textos da editoria
 
-## 2026-10-16 · #PR · Cadastro Nacional: o MARÉ cobre os indicados pela União
+Inicial: título, metadescrição, introdução, abertura em quatro parágrafos (indicados pela União lidos do dado), "Como ler" e cartão da cidade com o texto da editoria, tudo no catálogo; formulário diz que a conferência é automática. Nome por extenso segue "Monitor" (correção da central, 16/10); só `CLAUDE.md:28` acompanha. Teto de palavras da inicial 950 → 1.050.
+
+## 2026-10-16 · #771 · Cadastro Nacional: o MARÉ cobre os indicados pela União
 
 A página do MIDR (28/07/2026) publica os 2.095 municípios indicados pela União ao Cadastro Nacional do art. 3º-A — a lista que o MARÉ já lia das notas técnicas — e entra no coletor como segunda fonte. Nova seção §107 e erratas em §54, §66 e §21; o portão passa a proibir afirmar inscrição ou dever. §5.3.1 explica como o município compõe a nota.
 

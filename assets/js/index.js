@@ -148,7 +148,11 @@ const kpiUFsLAC = Object.entries(MARE).filter(([uf,v]) => v.status_estadual === 
 (function interpretacoes(){
   const el = id => document.getElementById(id); const n = v => Number(v).toLocaleString('pt-BR');
   const total = (VRESUMO && VRESUMO.total_municipios) || 5571;
-  if (el('heroVerifFederal')) el('heroVerifFederal').textContent = n(total);
+  const C = window.MonitorCatalogo;
+  if (C) C.pronto.then(() => {
+    C.escrever('heroProcura', 'index.abertura.procura.molde', {n_municipios: total});
+    C.escrever('cidadeAbertura', 'index.cidade.abertura.molde', {n_municipios: total});
+  });
   // 30/09/2026: o texto de abertura passou a ter UMA data só — a da última checagem. O "Dados até"
   // (corte) saiu: ele congelava com o arquivo de transferências e dizia ao leitor que o índice
   // estava parado quando não estava.
@@ -232,6 +236,9 @@ let ENQ_MUN = null, ENQ_FONTES = {};
 fetch('data/enquadramento_card.json').then(r => r.ok ? r.json() : null).catch(() => null).then(e => {
   if (!e || !e.municipios) return;
   ENQ_MUN = e.municipios; ENQ_FONTES = e.fontes || {};
+  // Indicados pela União ao cadastro nacional do art. 3º-A: quem tem `ch` ou `geo` (2.095 em 16/10).
+  const C = window.MonitorCatalogo, ind = Object.values(ENQ_MUN).filter(v => 'ch' in v || 'geo' in v).length;
+  if (C && ind) C.pronto.then(() => C.escrever('heroLei', 'index.abertura.lei.molde', {indicados_uniao: ind}));
 });
 
 // Os quatro textos são LITERAIS, aprovados pela editoria em 30/09/2026, e não variam. Só o
@@ -976,7 +983,7 @@ function gerarRelatorioCidadao(uf, municipio){
     doc.setFont('helvetica','bold'); doc.setFontSize(52); doc.setTextColor(60,60,60);
     doc.text('FUTURA · EVIDENCE LAB', W/2, H/2, {angle:45, align:'center'}); doc.restoreGraphicsState(); };
   const rod = () => { doc.setFont('helvetica','normal'); doc.setFontSize(8.5); doc.setTextColor(120,110,95);
-    doc.text('MARÉ · Monitor de Antecipação e Resposta ao El Niño · monitorelnino.com.br · Não substitui as orientações da Defesa Civil da sua cidade.', M, H-30);
+    doc.text('MARÉ · Medida de Antecipação e Resposta ao El Niño · monitorelnino.com.br · Não substitui as orientações da Defesa Civil da sua cidade.', M, H-30);
     doc.text('© 2026 Futura Evidence Lab. Dados verificados em fontes oficiais.', M, H-18);
     doc.text('Página ' + doc.internal.getNumberOfPages(), W-M, H-18, {align:'right'}); };
   const nova = () => { rod(); doc.addPage(); marca(); y = M; };
@@ -1001,7 +1008,7 @@ function gerarRelatorioCidadao(uf, municipio){
   marca();
   doc.addImage(LOGO_PDF, 'PNG', M, 42, 150, 56);
   doc.setFont('helvetica','bold'); doc.setFontSize(16); doc.setTextColor(...INK);
-  doc.text('MARÉ · Monitor de Antecipação e Resposta ao El Niño', M, 128);
+  doc.text('MARÉ · Medida de Antecipação e Resposta ao El Niño', M, 128);
   doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.setTextColor(...MUTED);
   const corte = (typeof META !== 'undefined' && META && META.corte) ? META.corte : '';
   doc.text('El Niño 2026/2027 · Corte dos dados: ' + corte + ' · Gerado em ' + new Date().toLocaleDateString('pt-BR'), M, 143);
