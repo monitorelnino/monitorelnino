@@ -109,8 +109,7 @@ async function get(url, tentativas = 3) {
     };
     // A TERCEIRA reescrita conhecida: o Netlify Forms. Onde a marcação declara
     // `data-netlify="true"`, o servidor REESCREVE o formulário — tira `data-netlify` e
-    // `netlify-honeypot`, reordena os atributos em ordem alfabética, troca `/obrigado.html` por
-    // `/obrigado` e injeta `<input name="form-name">`. É o mecanismo do recurso, não divergência;
+    // `netlify-honeypot`, reordena os atributos em ordem alfabética, pode reescrever o `action` e injeta `<input name="form-name">`. É o mecanismo do recurso, não divergência;
     // desfazê-lo com fidelidade exigiria reimplementar a reescrita do Netlify, e reimplementar
     // o que não controlamos é como o portão passa a provar a nossa cópia em vez do site.
     //

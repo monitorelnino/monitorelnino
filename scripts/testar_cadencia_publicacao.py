@@ -3,16 +3,15 @@
 com o texto público.
 
 Criado em 20/09/2026, quando a editoria moveu a publicação semanal de segunda-feira
-para sábado. O dia da rodada é compromisso declarado ao leitor (obrigado.html diz a
-quem envia documento quando eles entram no ar; pesquisadores.html declara a cadência
-do banco), então uma divergência entre o código e o texto público não é detalhe
+para sábado. O dia da rodada é compromisso declarado ao leitor (o texto do formulário da
+inicial diz a quem envia documento quando ele entra no ar), então uma divergência entre o código e o texto público não é detalhe
 interno: é o site prometendo uma coisa e fazendo outra.
 
 Verifica três coisas:
   1. `atualizar.py` decide a cadência pela constante DIA_PUBLICACAO, nunca por um
      literal solto — se alguém voltar a escrever `dia_semana != 0` o portão cai.
   2. DIA_PUBLICACAO e NOME_DIA_PUBLICACAO concordam entre si.
-  3. O texto público (obrigado.html, pesquisadores.html) nomeia o MESMO dia que o
+  3. O texto público (o formulário da inicial, no catálogo) nomeia o MESMO dia que o
      código executa.
 
 Uso: python3 scripts/testar_cadencia_publicacao.py
@@ -34,7 +33,8 @@ NOMES_POR_INDICE = {
 
 # Onde o dia aparece para o leitor. Cada par: arquivo e o trecho que cita a cadência.
 TEXTOS_PUBLICOS = [
-    ("obrigado.html", r"entra na atualização seguinte do mapa e do índice — normalmente (?:na|no) (\w+)"),
+    # 16/10/2026: `obrigado.html` saiu; a promessa a quem envia documento mora no formulário da inicial.
+    ("conteudo/index.json", r"entra na publicação seguinte[^\"]*?(?:na|no) (\w+)"),
     # §258 (27/09/2026): `pesquisadores.html` saiu daqui porque a página foi ARQUIVADA por decisão
     # da editoria (arquivo/pesquisadores/). Ela declarava "Atualização automática semanal (…)", e
     # era o segundo lugar em que o leitor via o dia prometido.
@@ -221,7 +221,7 @@ def main():
 
     print(f"✓ cadência coerente: DIA_PUBLICACAO={dia} ({nome_dia}) medido no fuso da redação; "
           f"portão usa a constante; cron semanal cai no dia certo em Brasília; "
-          f"nenhum texto público nomeia dia divergente (obrigado.html deixou de prometer dia em 09/10/2026; pesquisadores.html saiu no §258, arquivada)")
+          f"nenhum texto público nomeia dia divergente (o formulário da inicial não promete dia)")
     return 0
 
 

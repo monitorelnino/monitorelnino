@@ -344,13 +344,12 @@ setTimeout(() => {
 
   // Metadados do cabeçalho: nunca mais um nome de arquivo inventado (achado de
   // Patricia, 31/08/2026 — "BD_El_Nino_2026_2027_Brasil.xlsx" não existia no
-  // projeto); e a data de "última verificação" precisa vir de META, não de texto fixo.
+  // projeto).
   // Checagem sobre o CONTEÚDO RENDERIZADO (body, excluindo <script>/<style>, que
   // carregam o comentário-fonte da própria correção) — não o código-fonte bruto.
   const bodyClone = d.body.cloneNode(true);
   bodyClone.querySelectorAll("script, style").forEach(n => n.remove());
   teste("nenhum nome de arquivo .xlsx inventado na página renderizada", !/BD_El_Nino.*\.xlsx/i.test(bodyClone.innerHTML));
-  teste("data de última verificação bate com META", q("metaUltimaVerif").textContent === INDICE_META.atualizado_em);
   teste("rodapé 'última atualização' bate com META", q("metaAtualizado").textContent === INDICE_META.atualizado_em);
 
   // 16/09/2026 (handover urgente): os testes acima conferem o DOM depois que assets/js/index.js já
@@ -359,7 +358,7 @@ setTimeout(() => {
   // as três páginas com medidor/corte no cabeçalho.
   {
     const IDS_DADO = {
-      "index.html": ["heroProcura", "metaUltimaVerif", "respNum", "metaAtualizado", "corteDados"],
+      "index.html": ["heroProcura", "respNum", "metaAtualizado", "corteDados"],
       // 02/10/2026 (bloco A): os medidores e o corte saíram do topo; os cartões do topo são outros.
       "saude.html": ["nDengueSE", "nSragSE", "nUFsAlerta", "nCalorMun", "nEmergSaude"],
       // `notaFogoCorte` saiu com o painel da rota do fogo (bloco B, 01/10/2026).
@@ -367,7 +366,6 @@ setTimeout(() => {
       // nos cartões da semana). Campo que o portão cobra e a página não tem reprova para sempre.
       "financiamento.html": [],
     };
-    const CORTES_IGUAIS = { "index.html": [["metaUltimaVerif", "metaAtualizado"]] };
     for (const [pagina, ids] of Object.entries(IDS_DADO)) {
       const bruto = fs.readFileSync(path.join(raiz, pagina), "utf-8");
       const valorDe = (id) => {
@@ -379,10 +377,6 @@ setTimeout(() => {
       for (const id of ids) {
         const valor = valorDe(id);
         teste(`${pagina}: #${id} sem "—"/vazio no HTML estático (sem JS)`, valor !== null && valor !== "" && valor !== "—" && valor.toLowerCase() !== "null");
-      }
-      for (const grupo of (CORTES_IGUAIS[pagina] || [])) {
-        const valores = grupo.map(valorDe);
-        teste(`${pagina}: ${grupo.join(" = ")} (mesmo corte, mesmo valor no estático)`, valores.every(v => v === valores[0]));
       }
       // 16/09/2026: a versão ampla ("nenhuma data solta fora de um id") pegava falso positivo demais —
       // comentário HTML, placeholder de formulário, conteúdo já dinâmico sem id no <strong> interno,

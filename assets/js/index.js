@@ -168,12 +168,7 @@ const kpiUFsLAC = Object.entries(MARE).filter(([uf,v]) => v.status_estadual === 
 // que não existe em lugar nenhum do projeto; corrigido para apontar à seção real
 // de fontes verificadas, e os números/data passam a vir de META e MUN_REF.
 (function(){
-  const totalMun = Object.values(MUN_REF).reduce((s, arr) => s + arr.length, 0);
-  const elUfsMun = document.getElementById('metaUfsMun');
-  if (elUfsMun) elUfsMun.textContent = Object.keys(MARE).length + ' UFs · ' + totalMun.toLocaleString('pt-BR') + ' municípios cadastrados';
   const dataRef = (META && META.atualizado_em) || (META && META.corte) || '';
-  const elVerif = document.getElementById('metaUltimaVerif');
-  if (elVerif && dataRef) elVerif.textContent = dataRef;
   const elFooter = document.getElementById('metaAtualizado');
   if (elFooter && dataRef) elFooter.textContent = dataRef;
 })();
@@ -1303,9 +1298,24 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
   // Qualquer outro host (prévia local, file://, artefato de visualização) mantém o
   //   formulário desativado — Netlify Forms só funciona quando hospedado de fato.
   const ehProducao = /\.netlify\.app$/.test(location.hostname) || /(^|\.)monitorelnino\.com\.br$/.test(location.hostname);
-  if (!ehProducao){
-    const off = document.getElementById('contribOffline'); if (off) off.textContent = 'Nesta prévia local o envio fica desativado; na versão publicada, funciona.';
-    document.getElementById('formContrib').addEventListener('submit', (e) => { e.preventDefault();
-      alert('Prévia local: o envio do formulário funciona apenas na versão publicada do site.'); });
-  }
+  // O envio fica na página (editoria, 16/10/2026): POST ao Netlify Forms por fetch e, no lugar do
+  // formulário, a mensagem do catálogo. Sem JavaScript, o `action` devolve o leitor a #formulario.
+  const form = document.getElementById('formContrib'), aviso = document.getElementById('contribOffline');
+  if (!ehProducao && aviso) aviso.textContent = 'Nesta prévia local o envio fica desativado; na versão publicada, funciona.';
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!ehProducao) return;
+    const cat = window.MonitorCatalogo;
+    try {
+      const r = await fetch('/', {method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                                  body: new URLSearchParams(new FormData(form)).toString()});
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const msg = document.createElement('p');
+      msg.className = 'hint'; msg.setAttribute('role', 'status'); msg.setAttribute('data-conteudo', 'index.formulario.recebido');
+      msg.textContent = (cat && cat.texto && cat.texto('index.formulario.recebido')) || 'Recebido. Obrigado pela contribuição.';
+      form.replaceWith(msg);
+    } catch (err) {
+      if (aviso) aviso.textContent = (cat && cat.texto && cat.texto('index.formulario.erro')) || 'O envio não foi concluído; nada foi registrado.';
+    }
+  });
 })();

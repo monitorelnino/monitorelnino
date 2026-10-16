@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #PR · Inicial: links do cadastro, sem linha de checagem, sem legenda das barras, sem página "Obrigado"
+
+Abertura: link para o cadastro nacional do MDR e de volta ao mapa da Defesa civil. Saem a linha "Última checagem" (e quem a alimenta e cobra), a legenda das duas barras (inicial e Saúde, no componente) e `obrigado.html`: o envio do formulário fica na página, com a explicação da conferência no texto do formulário; links antigos redirecionam a `#formulario`.
+
 ## 2026-10-16 · #779 · Saúde: títulos e subtítulos dizem o que a figura é
 
 O mapa do índice passa a "MARÉ Saúde por estado, de 0 a 100", com o subtítulo do cálculo em uso; "prontidão" sai da página. Os semanais nomeiam o ano e os anos da faixa habitual (2019 a 2025). A cidade fora da leitura semanal aparece como "não foi lido pelo MARÉ nesta semana". Sai a busca municipal antiga, sem elemento na página.

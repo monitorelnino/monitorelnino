@@ -104,14 +104,6 @@
     return ufs.length;
   }
 
-  /* A legenda das duas barras, igual em toda página que usa o componente. */
-  function legendaDasBarras(alvoLegenda, rotuloIndice) {
-    var el = typeof alvoLegenda === 'string' ? document.getElementById(alvoLegenda) : alvoLegenda;
-    if (!el) return;
-    el.innerHTML = '<span>Barra de cima: ' + esc(rotuloIndice || 'índice') + ' 0–100</span>' +
-      '<span>Barra de baixo: resposta 0–100</span>';
-  }
-
   /* A ficha do estado (`dialog.detail`, aberta pelo clique no cartão) fecha igual em toda página:
    * pelo ×, pelo clique no fundo ou por Esc (nativo do <dialog>). Um ouvinte, aqui no componente. */
   document.addEventListener('click', function (e) {
@@ -120,8 +112,5 @@
     if (typeof dlg.close === 'function') dlg.close(); else dlg.open = false;
   });
 
-  /* `legendaDasBarras` e a legenda das DUAS BARRAS do cartao, e nao legenda de mapa: o motor
- * unico de legenda de figura e MonitorMapas.legenda, em assets/mapas.js, e o portao de
- * estrutura confere que ninguem o redefine. */
-global.GradeEstados = { montar: montar, legendaDasBarras: legendaDasBarras, GRADE_BR: GRADE_BR };
+global.GradeEstados = { montar: montar, GRADE_BR: GRADE_BR };
 })(window);

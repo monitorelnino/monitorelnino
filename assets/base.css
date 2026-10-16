@@ -553,15 +553,11 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
    barras. Eles vivem na janela de detalhe — inclusive "Diários municipais consultados", que ANTES
    desta mudança não existia lá e teria sumido da interface (ver assets/js/index.js). */
 .tile .tile-face{display:none;}
-.regions + .legend{max-width:720px; margin-left:auto; margin-right:auto; justify-content:center;}
-.legend{display:flex; flex-wrap:wrap; gap:var(--sp-2) var(--sp-3); margin-top:var(--sp-4); padding-top:var(--sp-4); border-top:1px solid var(--line); font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);}
 /* 13/09/2026: regra global — qualquer componente com display: explícito (flex/block/grid) sobrepõe
    [hidden] da UA stylesheet à mesma especificidade; !important garante que 'hidden' sempre esconda,
    sem precisar de uma regra [seletor][hidden] nova a cada componente novo (ver .detail[hidden] e
    .figura[hidden], mantidas como estavam). */
 [hidden]{display:none !important;}
-.legend span{display:flex; align-items:center; gap:var(--sp-2);}
-.legend i{width:10px; height:10px; border-radius:2px; display:inline-block;}
 /* 13/09/2026 (pedido de Patricia: quadro dos estados ocupa a página inteira, detalhe vira janela
    popup): .detail era .panel lado a lado com a grade (.layout, removida); agora é <dialog>, sem a
    classe .panel (regras próprias abaixo, mesma linguagem visual: fundo, borda, raio, sombra). */
@@ -662,7 +658,6 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 .calendario .cal-linha.vencido .cal-barra i{background:var(--cinza-quente); opacity:.5;}
 .calendario .cal-ponto{position:absolute; top:50%; left:var(--x0); transform:translate(-50%,-50%); width:10px; height:10px; border-radius:50%; background:var(--argila);}
 .calendario .cal-linha.futuro .cal-ponto{background:var(--branco); border:2px solid var(--argila);}
-.calendario + .legend{margin-top:var(--sp-3);}
 .calendario .cal-linha.prazo .cal-texto .cal-data{color:var(--rust);}
 .calendario .cal-linha.vencido > span{color:var(--muted);}
 .prazos-grade{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:var(--sp-4); margin:0;}

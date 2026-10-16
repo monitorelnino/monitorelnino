@@ -147,7 +147,8 @@
     if (!el) return null;
     const t = texto(id, valores);
     if (t == null || t === "") return null;
-    el.textContent = t;
+    // Entrada com marcação (link na prosa) declara-se no elemento, como no leitor acima.
+    if (el.hasAttribute("data-conteudo-html")) el.innerHTML = t; else el.textContent = t;
     el.setAttribute("data-conteudo-fixado", "1");
     return t;
   }

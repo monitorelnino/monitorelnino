@@ -28,7 +28,6 @@ Linguagens: Python 3.12 (pipeline; única dependência de cálculo é NumPy), Ja
 | `index.html` | Página principal: gauge do MARÉ, 5 mapas D3, tabela de auditoria (248 linhas), consulta municipal, detalhe por estado com relatório PDF próprio (gerarPDFEstado: veredito+faixa, componentes, capital, cobertura, cobranças), consulta com população Censo 2022 e relatório PDF municipal (gerarPDF, via card). `proteja-se.html`: guia exportável em PDF (gerarPDFGuia, mesma identidade) + quadro de descoberta dos três relatórios. Busca `data/*.json` em runtime (10 arquivos, incl. populacao_censo2022). O único valor de dados fixo no HTML é o veredito do herói (`gaugeNum`/`data-alvo`), cuja paridade com a média recomputada é imposta pelo portão de consistência (§8). |
 | `proteja-se.html` | Orientação à população por risco e o diretório "Quem chamar" (27 UFs). |
 | `envie-dados.html` | Formulário de contribuição (Netlify Forms, `data-netlify="true"`). A constante `ehProducao` só ativa o envio real em `monitorelnino.com.br` e `*.netlify.app`. |
-| `obrigado.html` | Confirmação pós-envio. |
 
 ### 2.2 Dados (`data/`, 10 arquivos)
 | Arquivo | Forma | Conteúdo |
