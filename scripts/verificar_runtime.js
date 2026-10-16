@@ -63,7 +63,7 @@ setTimeout(() => {
   try {
     teste("home sem atalhos .hero-links; link 'como ler o MARÉ Legal' abaixo da barra", d.querySelectorAll(".hero-links").length === 0 && !!d.querySelector(".gauge-zone #linkComoLer") && q("linkComoLer").textContent === "como ler o MARÉ Legal");
     q("linkComoLer").dispatchEvent(new dom.window.MouseEvent("click", { bubbles: true, cancelable: true }));
-    teste("clique abre a ficha 'Como ler o MARÉ' no dialog", q("detail").open && /Como ler o MARÉ/.test(q("detailConteudo").textContent) && /O que o índice não conta/.test(q("detailConteudo").textContent));
+    teste("clique abre a ficha 'Como ler o MARÉ' no dialog", q("detail").open && /Como ler o MARÉ/.test(q("detailConteudo").textContent) && /A nota não mede/.test(q("detailConteudo").textContent));
     q("detailFechar").dispatchEvent(new dom.window.Event("click", { bubbles: true }));
     teste("fechar pelo × devolve o estado inicial", !q("detail").open);
     // 14/09 (auditoria §1.6): o calendário volta à home só como "porta" explicativa, nunca como o antigo atalho "o que a lei deixa aberto"

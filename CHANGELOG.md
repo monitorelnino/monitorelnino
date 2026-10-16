@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #PRNUM · Inicial com os textos da editoria; nome "Medida"
+
+Inicial: título, metadescrição, introdução, abertura em quatro parágrafos (indicados pela União lidos do dado), "Como ler" e cartão da cidade com o texto da editoria; formulário diz que a conferência é automática. Nome por extenso volta a "Medida de Antecipação e Resposta" em todas as páginas, geradores e METODOLOGIA (§5.1, errata); `verificar_estrutura.js` passa a reprovar "Monitor de Antecipação". Teto de palavras da inicial 950 → 1.050.
+
 ## 2026-10-16 · #764 · Saúde: sai o texto vazado
 
 Saem da página de saúde "Estado das fontes", "Bateria estadual executada em" e a versão "v0.3"; "não relaciona casos ao El Niño" fica uma vez. Na verificação por estado, cada linha diz título, órgão, data do documento e link; o que não é título vai para `nota_interna`, que nenhuma página mostra (notas, pontuação inalterada). O contrato reprova os termos vazados.
