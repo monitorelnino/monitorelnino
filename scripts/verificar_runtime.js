@@ -287,7 +287,7 @@ setTimeout(() => {
   teste("home: herói sem h2 e sem botão de consulta; abertura nova, com uma data só", (() => {
     const mast = d.querySelector(".mast-body"); const txt = mast ? mast.textContent : "";
     return !d.querySelector(".hero h2") && !d.querySelector('.hero a[href="#minhacidade"]')
-      && /27 estados e em todos os [\d.]+ municípios/.test(txt)
+      && /27 estados e nos [\d.]+ municípios/.test(txt)   // abertura de 16/10/2026 (HANDOVER_CADASTRO §3.1)
       && /Última checagem em/.test(txt) && !/Dados até/.test(txt);
   })());
   // 15/09/2026: a linha de interpretação do medidor (contagens por categoria) saiu da inicial (pedido da editoria).
