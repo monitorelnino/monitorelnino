@@ -49,6 +49,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/10/2026 · Um medidor de frescor e um portão das fichas municipais (consolidação item 6)</dt>
+      <dd>`verificar_frescor.py` absorve os três portões de frescor (Financiamento, Defesa civil, Saúde): um leitor de carimbo, um relógio, três famílias declaradas, 33 casos. `verificar_fichas_municipais.py` absorve `documento_de_plano`, `documento_publicado`, `datas_de_instrumento` e `capital`: `data/municipios.json` lido uma vez, quatro réguas, 34 casos. Sete scripts saem; 125 → 120 comandos. Linhas .py/.yml −515.</dd>
       <dt>16/10/2026 · Portões: o autoteste roda dentro da conferência (consolidação item 6)</dt>
       <dd>Dezesseis `verificar_*` que ainda tinham o par `--autoteste` + conferência passam a rodar o autoteste antes de conferir, em todo uso (publicador incluído); os 16 comandos `--autoteste` saem de `portoes.yml`: 141 → 125 comandos, mesma cobertura. Linhas líquidas 0 (+29 nos scripts, −29 no workflow): a chamada mudou de lugar, não de número.</dd>
       <dt>16/10/2026 · Portões: 131 comandos `--autoteste` redundantes saem (consolidação item 6)</dt>
@@ -167,8 +169,6 @@
       <dd>A forma de cada página passa a viver em `layout/contratos/&lt;pagina&gt;.json` — seções, ordem, cartões, grades e texto proibido — e um portão novo mede a página renderizada em 1280 e 390 px, reprovando a divergência. A editoria apontava o mesmo defeito cartão a cartão; a regra agora está num lugar só. Saúde reconstruída ao contrato. Em `layout/`, `scripts/`, `saude.html`, `assets/js/saude.js`, `CODEMAP.md`.</dd>
       <dt>02/10/2026 · Recursos federais de defesa civil por município</dt>
       <dd>Coletor novo: lê das portarias da SEDEC no DOU quanto a União autorizou transferir a cada município, com data, finalidade e valor. &quot;Liberado&quot; não é &quot;pago&quot; e resposta não é recuperação — o arquivo guarda as duas separadas, com o rótulo do próprio ato. Primeira carga: R$ 7,02 mi em resposta e R$ 191,3 mi em recuperação, 68 municípios. Prorrogação de prazo é recusada pelo nome. Em `METODOLOGIA.md` §85.</dd>
-      <dt>02/10/2026 · Financiamento reorganizado pela pergunta do leitor</dt>
-      <dd>A ordem passa a ser: o que mudou na semana, quanto chegou ao meu estado (mapa e grade por habitante, com ficha), de onde vem o dinheiro do ciclo, quanto chegou à minha cidade. Entra o cartão de recursos de resposta liberados na semana, com o número de municípios. Saem os dois mapas que pintavam o país com a parcela de 4%, o diagrama das rotas, a mediana e a faixa eleitoral. Em `METODOLOGIA.md` §86.</dd>
     </dl>
   </section>
 </main>

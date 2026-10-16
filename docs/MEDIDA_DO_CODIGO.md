@@ -2,8 +2,8 @@
 
 Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolidação (meta: ≤ 50 mil linhas de .py/.js, mesma proteção).
 
-- **98.555 linhas** em **335 arquivos** .py/.js; **33 workflows**.
-- **125 comandos de portão**: dados/portão 40, paginas/autoteste 20, paginas/portão 65.
+- **97.792 linhas** em **329 arquivos** .py/.js; **33 workflows**.
+- **120 comandos de portão**: dados/portão 40, paginas/autoteste 20, paginas/portão 60.
 - **150 nomes de função** definidos em mais de um arquivo.
 
 ## Por pasta
@@ -11,7 +11,7 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | pasta | linhas |
 |---|---:|
 | `(raiz)` | 49223 |
-| `scripts` | 40231 |
+| `scripts` | 39468 |
 | `assets` | 8388 |
 | `arquivo` | 445 |
 | `.claude` | 268 |
@@ -50,7 +50,7 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 
 | função | arquivos | onde |
 |---|---:|---|
-| `problemas` | 38 | `coletar_cadastro_prioritarios.py`, `coletar_normais_inmet.py`, `coletar_prioritarios_mma.py`, `coletar_semiarido_sudene.py` … |
+| `problemas` | 32 | `coletar_cadastro_prioritarios.py`, `coletar_normais_inmet.py`, `coletar_prioritarios_mma.py`, `coletar_semiarido_sudene.py` … |
 | `coletar` | 22 | `buscar_protocolo_calor.py`, `coletar_boletim_df_arboviroses.py`, `coletar_boletim_ms_dengue.py`, `coletar_boletim_pb_arboviroses.py` … |
 | `self_test` | 15 | `atualizar_marcos_severidade.py`, `classificador_natureza.py`, `detectar_marcos_federais.py`, `gerar_dados_abertos.py` … |
 | `gerar` | 12 | `classificar_planos_municipais.py`, `gerar_blog.py`, `gerar_card_municipios.py`, `gerar_contadores_financiamento.py` … |
