@@ -468,6 +468,8 @@ def _autoteste() -> int:
 def main() -> int:
     if "--autoteste" in sys.argv:
         return _autoteste()
+    if _autoteste() != 0:   # 16/10/2026: o autoteste roda antes da conferência, num comando só
+        return 1
     import verificar_layout
 
     regras = ler_json(REGRAS) or {}

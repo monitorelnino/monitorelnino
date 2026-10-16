@@ -264,6 +264,8 @@ def autoteste() -> int:
 def main() -> int:
     if "--autoteste" in sys.argv[1:]:
         return autoteste()
+    if autoteste() != 0:   # 16/10/2026: o autoteste roda antes da conferência, num comando só
+        return 1
     p, notas = problemas()
     for n in notas:
         print(f"  [nota] {n}")
