@@ -1,8 +1,8 @@
 name: Atualização semanal de dados
 
 on:
-  # A rodada completa de domingo que o site promete ao leitor (`scripts/testar_cadencia_publicacao.py`
-  # cobra o dia contra `obrigado.html`). Desde 14/10/2026 (decisão 2 da editoria, consolidação item 2)
+  # A rodada completa de domingo (`scripts/testar_cadencia_publicacao.py` confere que a cadência é
+  # decidida por uma constante só; desde 16/10 nenhuma página promete dia). Desde 14/10/2026 (decisão 2 da editoria, consolidação item 2)
   # ela é um chamador do `_coletor.yml`, como todo elo: janela, prazo, `.feito`, commit com união pela
   # base comum e coleta perdida em artefato vêm de lá. Saíram a cortina "em atualização", a reposição
   # própria do domínio (o publicador repõe depois do commit, por `workflow_run`), o contador da
