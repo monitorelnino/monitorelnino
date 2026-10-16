@@ -30,7 +30,7 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-16 · #PR · Saúde: temporadas de dengue e chikungunya e um cartão só para a cidade
+## 2026-10-16 · #791 · Saúde: temporadas de dengue e chikungunya e um cartão só para a cidade
 
 Dois gráficos novos mostram as notificações semanais de junho a maio das temporadas 2023–24 e 2026–27, no mesmo eixo, com seletor de estado e a frase do dado. "Saúde na sua cidade" substitui as três buscas separadas: dengue, chikungunya (semana em datas) e calor numa consulta. Sai o cartão de síndrome gripal, sem dado. Comparação de calendário, sem relação indicada com o El Niño.
 
