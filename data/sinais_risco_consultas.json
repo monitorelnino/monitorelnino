@@ -4,49 +4,56 @@
   "efeito_no_indice": "NENHUM — peso zero, como todo sinal de risco.",
   "escrito_por": "coletar_sinais_risco.py"
  },
- "gerado_em": "14/10/2026 22:13",
+ "gerado_em": "15/10/2026 22:42",
  "consultas": [
   {
    "fonte": "inmet_avisos",
    "url": "https://apiprevmet3.inmet.gov.br/avisos/ativos",
-   "consultado_em": "14/10/2026 22:12",
-   "bytes": 631441,
-   "sha256": "c985f9932c69443437fd49721bf6bb437dd8ac5097865b83cf6f8101f2410226"
+   "consultado_em": "15/10/2026 22:42",
+   "bytes": 603772,
+   "sha256": "58286272aa0e0511e10825f71901461f3d5fb9467473561af9b99fdfd9b056fb"
   },
   {
    "fonte": "cemaden_alertas",
    "url": "https://gsc.cemaden.gov.br/geoserver/cemaden_dev/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=cemaden_dev:alertas_vigentes_siaden&outputFormat=application/json&count=3000",
-   "consultado_em": "14/10/2026 22:12",
-   "bytes": 1189662,
-   "sha256": "3db49d8a1794c8b93e59fa4d7e5c934a87018e0ac3c99886c7bd377d76932915"
+   "consultado_em": "15/10/2026 22:42",
+   "bytes": 405384,
+   "sha256": "483cb4f3ea336036f8045504267b4aa99e2420e8425d6af819ec1002ec43bcf9"
+  },
+  {
+   "fonte": "open_meteo_tempo",
+   "url": "https://api.open-meteo.com/v1/forecast?latitude=-9.9750,-9.6660,-3.1187,0.0349,-12.9718,-3.7166,-15.7795,-20.3155,-16.6864,-2.5387,-19.9102,-20.4486,-15.6010,-1.4554,-7.1151,-8.0467,-5.0919,-25.4195,-22.9129,-5.7936,-8.7608,2.8238,-30.0318,-27.5945,-10.9091,-23.5329,-10.2400&longitude=-67.8243,-35.7350,-60.0212,-51.0694,-38.5011,-38.5423,-47.9297,-40.3128,-49.2643,-44.2825,-43.9266,-54.6295,-56.0974,-48.4898,-34.8641,-34.8771,-42.8034,-49.2646,-43.2003,-35.1986,-63.8999,-60.6753,-51.2065,-48.5477,-37.0677,-46.6395,-48.3558&daily=temperature_2m_max,temperature_2m_min,apparent_temperature_max&timezone=America%2FSao_Paulo&past_days=1&forecast_days=4",
+   "consultado_em": "15/10/2026 22:42",
+   "bytes": 15154,
+   "sha256": "cb4236ea9379606dfcfc4aaec29e6c382e78451480ad9ab81400534605083afc"
   },
   {
    "fonte": "inmet_previsao_capitais",
    "url": "https://apiprevmet3.inmet.gov.br/previsao/capitais",
-   "consultado_em": "14/10/2026 22:13",
-   "bytes": 6689886,
-   "sha256": "ea45e46b60f5c13aaac137d8f4b739327ffa264fdcb7b5c84eb767c94f1d01be"
+   "consultado_em": "15/10/2026 22:42",
+   "bytes": 6680949,
+   "sha256": "991504d09b4d7f4cfb3a5279f5d19843a4183dc520de7da14934172e29dc52d3"
   },
   {
    "fonte": "open_meteo_ar",
    "url": "https://air-quality-api.open-meteo.com/v1/air-quality?latitude=-9.9750,-9.6660,-3.1187,0.0349,-12.9718,-3.7166,-15.7795,-20.3155,-16.6864,-2.5387,-19.9102,-20.4486,-15.6010,-1.4554,-7.1151,-8.0467,-5.0919,-25.4195,-22.9129,-5.7936,-8.7608,2.8238,-30.0318,-27.5945,-10.9091,-23.5329,-10.2400&longitude=-67.8243,-35.7350,-60.0212,-51.0694,-38.5011,-38.5423,-47.9297,-40.3128,-49.2643,-44.2825,-43.9266,-54.6295,-56.0974,-48.4898,-34.8641,-34.8771,-42.8034,-49.2646,-43.2003,-35.1986,-63.8999,-60.6753,-51.2065,-48.5477,-37.0677,-46.6395,-48.3558&hourly=pm2_5,pm10,ozone,nitrogen_dioxide,carbon_monoxide,european_aqi&timezone=America%2FSao_Paulo&forecast_days=1&domains=cams_global",
-   "consultado_em": "14/10/2026 22:13",
-   "bytes": 43002,
-   "sha256": "c813cb80733f1a0895e59396652d554695223bcc195870e4495263cac1e243d8"
+   "consultado_em": "15/10/2026 22:42",
+   "bytes": 42908,
+   "sha256": "59b40323e9e750789bef7e7d8fce6b61179953832c361eb970fd9a943980193c"
   },
   {
    "fonte": "inmet_estacoes",
    "url": "https://apitempo.inmet.gov.br/estacoes/T",
-   "consultado_em": "14/10/2026 22:13",
-   "bytes": 261414,
-   "sha256": "1c96bafcc9376a5f52d6adb469223b1362c6466f5689d5abeb7daf3a451425df"
+   "consultado_em": "15/10/2026 22:42",
+   "bytes": 261418,
+   "sha256": "3d258d838bf3b7985220029567131a6d8a43b49d60e90bc464e078df6ef47af0"
   },
   {
    "fonte": "inmet_estacoes",
-   "url": "https://apitempo.inmet.gov.br/condicao/capitais/2026-10-14",
-   "consultado_em": "14/10/2026 22:13",
-   "bytes": 2339,
-   "sha256": "ad60a408cad5eaff621215d8198eae5e0acb41d2be9cb186f9c770d984b48fdc"
+   "url": "https://apitempo.inmet.gov.br/condicao/capitais/2026-10-15",
+   "consultado_em": "15/10/2026 22:42",
+   "bytes": 2354,
+   "sha256": "6ef7357d4eacd7cb77d6c81196a702fef2ba09631e80351cb44df66817ed889d"
   }
  ]
 }

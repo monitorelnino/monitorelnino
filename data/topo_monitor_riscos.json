@@ -4,18 +4,18 @@
  "cartoes": [
   {
    "id": "temperatura_desvio_capital",
-   "valor": 4.9,
-   "referencia": "14/10/2026",
-   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Rio Branco",
-   "capital": "Rio Branco",
-   "uf": "AC",
+   "valor": 3.9,
+   "referencia": "15/10/2026",
+   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Belém",
+   "capital": "Belém",
+   "uf": "PA",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "sem_coleta": false,
-   "nota": "máxima prevista de 38.0 °C contra a média de 33.1 °C do mês; 24 capital(is) com normal publicada"
+   "nota": "máxima prevista de 37.0 °C contra a média de 33.1 °C do mês; 24 capital(is) com normal publicada"
   },
   {
    "id": "capitais_ar_ruim_ou_pior",
-   "valor": 14,
+   "valor": 15,
    "referencia": "leitura mais recente",
    "rotulo": "capitais com o ar na faixa ruim ou acima dela",
    "fonte": "Copernicus (CAMS), via Open-Meteo",
@@ -23,16 +23,17 @@
    "lista": [
     "AC",
     "AM",
+    "BA",
     "DF",
     "ES",
     "GO",
     "MG",
-    "MS",
     "MT",
     "PI",
     "PR",
     "RJ",
     "RO",
+    "RR",
     "SP",
     "TO"
    ],

@@ -32,6 +32,9 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #759 · Data do ato nunca depois da edição que o publica
+- `data_do_ato_no_trecho` ignora data posterior à edição: a abertura de uma dispensa (21/10) virou `data_ato` do decreto de Santiago/RS e barrou a publicação desde 04:42. O evento perde a data errada (fica a de publicação); caso no autoteste do consorciado.
+
 ## 2026-10-16 · #757 · Blog sem abertura; texto na coluna inteira
 
 Saem do blog o parágrafo de abertura e o título "Textos": os textos entram logo abaixo do título da página, e o corpo deixa o limite de 72 caracteres e ocupa a coluna inteira, no blog e em cada texto. Metadescrição atualizada. Pedido da editoria de 15/10.
