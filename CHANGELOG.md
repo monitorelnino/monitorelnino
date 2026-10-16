@@ -35,6 +35,10 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-16 · #777 · Um medidor de frescor e um portão das fichas municipais (consolidação item 6)
 
 `verificar_frescor.py` absorve os três portões de frescor (Financiamento, Defesa civil, Saúde): um leitor de carimbo, um relógio, três famílias declaradas, 33 casos. `verificar_fichas_municipais.py` absorve `documento_de_plano`, `documento_publicado`, `datas_de_instrumento` e `capital`: `data/municipios.json` lido uma vez, quatro réguas, 34 casos. Sete scripts saem; 125 → 120 comandos. Linhas .py/.yml −515.
+## 2026-10-16 · #780 · Nenhum texto sobre feed no site
+
+Sai do cartão de cada estado a linha do feed, e dos textos do blog o "· Feed" e a menção no aviso sem JavaScript (decisão da editoria de 16/10). "feed" entra no vocabulário proibido, que vale para a página, o catálogo e o texto escrito pelos scripts. Os arquivos do feed seguem no cabeçalho das páginas, para leitura por máquina.
+
 ## 2026-10-16 · #778 · DOE-SP: o texto da publicação é decodificado e a homologação paulista casa
 
 A API do DOE-SP serve o ato com entidades HTML (`Situa&ccedil;&atilde;o`, `Pre&shy;feito`); sem decodificar, nenhum padrão de homologação casava. A forma paulista ("Homologa, por 180 dias, o decreto do Prefeito do Município de Guariba … Decreto municipal nº 5.019") entra como quarto padrão, com caso de teste do texto medido do Decreto 70.765.

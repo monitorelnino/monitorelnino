@@ -11,8 +11,8 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | pasta | linhas |
 |---|---:|
 | `(raiz)` | 49289 |
-| `scripts` | 39822 |
-| `assets` | 8380 |
+| `scripts` | 39823 |
+| `assets` | 8379 |
 | `arquivo` | 445 |
 | `.claude` | 268 |
 
@@ -28,7 +28,7 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `assets/js/monitor-de-riscos.js` | 1377 |
 | `coletar_doe.py` | 1345 |
 | `assets/js/saude.js` | 1321 |
-| `assets/js/index.js` | 1312 |
+| `assets/js/index.js` | 1311 |
 | `scripts/ensaio_da_noite.py` | 1172 |
 | `gerar_imprensa_semana.py` | 1157 |
 | `coletar_painel_am.py` | 1135 |
