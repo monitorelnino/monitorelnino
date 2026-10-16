@@ -32,7 +32,7 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-16 · #PR · Data do ato nunca depois da edição que o publica
+## 2026-10-16 · #759 · Data do ato nunca depois da edição que o publica
 - `data_do_ato_no_trecho` ignora data posterior à edição: a abertura de uma dispensa (21/10) virou `data_ato` do decreto de Santiago/RS e barrou a publicação desde 04:42. O evento perde a data errada (fica a de publicação); caso no autoteste do consorciado.
 
 ## 2026-10-15 · #PR · CLAUDE.md só com regras em vigor
