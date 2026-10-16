@@ -284,11 +284,12 @@ setTimeout(() => {
   // do texto público porque congelava com o arquivo de transferências e dizia ao leitor que o
   // índice estava parado quando não estava. O portão acompanha: cobra a frase nova e a ausência
   // do corte, em vez de exigir o que a editoria mandou tirar.
-  teste("home: herói sem h2 e sem botão de consulta; abertura nova, com uma data só", (() => {
+  // 16/10/2026 (lote 1-bis): a linha "Última checagem" saiu por pedido da editoria; a data fica no rodapé.
+  teste("home: herói sem h2 e sem botão de consulta; abertura sem data", (() => {
     const mast = d.querySelector(".mast-body"); const txt = mast ? mast.textContent : "";
     return !d.querySelector(".hero h2") && !d.querySelector('.hero a[href="#minhacidade"]')
       && /27 estados e nos [\d.]+ municípios/.test(txt)
-      && /Última checagem em/.test(txt) && !/Dados até/.test(txt);
+      && !/Última checagem em|Dados até/.test(txt);
   })());
   // 15/09/2026: a linha de interpretação do medidor (contagens por categoria) saiu da inicial (pedido da editoria).
   // 17/09/2026 (pedido da editoria): o parágrafo de interpretação da resposta e o contador de tempo saíram do
