@@ -49,6 +49,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/10/2026 · A definição do índice tem dono, e o texto público é conferido contra ela</dt>
+      <dd>O motor grava em `meta.json` os componentes, pesos e faixas do índice e que a antecedência está fora da nota. O portão de versão passa a ler o texto público do MARÉ Legal: antecedência como medida da nota e &quot;pesam igual&quot; escrito à mão reprovam. A inicial com os textos novos (#770) já passa sem exceção.</dd>
       <dt>16/10/2026 · &quot;Envie pelo formulário&quot; leva ao formulário</dt>
       <dd>O convite do cartão da cidade apontava para &quot;Para gestores&quot;, sem formulário. Agora rola até o formulário da própria inicial e o preenche pela mesma função que lê os parâmetros do endereço. O portão de âncoras passa a ler também os links montados nos scripts — e achou uma nota de financiamento morta, que sai.</dd>
       <dt>16/10/2026 · Portões: o autoteste roda dentro da conferência (consolidação item 6)</dt>
@@ -167,8 +169,6 @@
       <dd>O banco anual do SIVEP-Gripe passa a ser baixado com retomada por `Range`, três tentativas com espera crescente e conferência do tamanho declarado — conexão cortada entregava CSV truncado lido como série inteira. Ano que falha é republicado do último agregado bom, com a lacuna declarada; cada tentativa entra num painel de saúde dos coletores. Autoteste simula falha de rede. Em `coletores_base.py`, `coletar_srag_sivep.py`, `coletar_sg_esus.py`.</dd>
       <dt>02/10/2026 · Financiamento ao contrato, com o recorte que a fonte permite</dt>
       <dd>Página reconstruída ao contrato: três cartões por seção, listas no lugar do diagrama das rotas e dos mapas municipais, grade com os 27 estados. Os cartões do topo passam a vir de `gerar_financiamento_semana.py`: mês fechado onde o Portal publica por mês, sete dias onde o ato tem data — nada de &quot;sem dado&quot; com série em disco. Portão novo confere a coerência com a imprensa. Em `financiamento.html`, `assets/js/financiamento.js`, `scripts/`.</dd>
-      <dt>02/10/2026 · Contrato de layout: a forma da página sai do HTML</dt>
-      <dd>A forma de cada página passa a viver em `layout/contratos/&lt;pagina&gt;.json` — seções, ordem, cartões, grades e texto proibido — e um portão novo mede a página renderizada em 1280 e 390 px, reprovando a divergência. A editoria apontava o mesmo defeito cartão a cartão; a regra agora está num lugar só. Saúde reconstruída ao contrato. Em `layout/`, `scripts/`, `saude.html`, `assets/js/saude.js`, `CODEMAP.md`.</dd>
     </dl>
   </section>
 </main>
