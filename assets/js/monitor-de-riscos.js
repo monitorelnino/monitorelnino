@@ -1165,7 +1165,7 @@ creditoPacifico('boxEpisodios');
   selUF.insertAdjacentHTML('beforeend', UFS.map(uf => '<option value="' + uf + '">' + esc(nomeUF(uf)) + '</option>').join(''));
   const cache = {};
   let dados = null;
-  const linha = (rotulo, valor, fonte) => '<tr><th scope="row">' + esc(rotulo) + '</th><td>' + valor + '</td><td class="dica-fonte">' + esc(fonte) + '</td></tr>';
+  const linha = (rotulo, valor, fonte) => '<tr><th scope="row">' + esc(rotulo) + '</th> <td>' + valor + '</td> <td class="dica-fonte">' + esc(fonte) + '</td></tr>';
   const NOMES = {estiagem: 'seca', incendios: 'fogo', chuvas: 'chuva forte', calor: 'calor'};
   const SECA_NOME = {'sem seca': 'sem seca em metade ou mais da área', S0: 'seca fraca', S1: 'seca moderada', S2: 'seca grave', S3: 'seca extrema', S4: 'seca excepcional'};
   const hora = v => { const m = /(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})/.exec(String(v || '')); return m ? m[3] + '/' + m[2] + ' ' + m[4] + ':' + m[5] : ''; };
