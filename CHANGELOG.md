@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #PR · Juiz de saúde interrompido não avança o corte
+
+`julgar_saude.py` só carimba o corte de `saude_uf.json` quando julga a fila inteira; interrompido pelo prazo, grava o julgado e mantém o corte (F64). Entram os 17 vereditos do julgamento estadual de 15/10 (nenhuma promoção).
+
 ## 2026-10-16 · #758 · DOE-SP pela API própria da busca (SE)
 
 `coletar_doe.py` ganha `busca_sp`: a API que o sítio do DOE-SP chama (`do-api-web-search`, termos e janela de datas, paginada) aponta as publicações e cada uma é lida inteira em `/v2/publications/<id>`, sem HTML; endereço citável `doe.sp.gov.br/<slug>`. MG, RJ, RS e SC seguem `sem adaptador de busca` com o motivo medido (15/10); PI e RR têm rota exposta a medir.
