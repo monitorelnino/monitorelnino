@@ -32,7 +32,7 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
         # `assets/js/proveniencia.js` está literalmente `const fonteFigura = MonitorMapas.credito`.
         # O JS que veio da página Pesquisadores arquivada usa as duas grafias, e exigir só a primeira
         # acusava três figuras creditadas (#boxAreas, #boxCatalogo, #boxGatilhos) como sem crédito.
-        # `verificar_figuras.js` confere o mesmo em tempo de execução, no DOM: lá as três passam.
+        # `verificar_texto_publico.js` (componente de figura) confere o mesmo em tempo de execução, no DOM: lá as três passam.
         if not any(f"{nome}('{cid}'" in html for nome in ("fonteFigura", "MonitorMapas.credito")):
             erros.append(f"(a) figura sem crédito de fonte: #{cid}")
     # (b) peso zero
