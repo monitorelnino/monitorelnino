@@ -559,21 +559,6 @@
       "conclusoes_nao_permitidas": "ler a classe como previsão; ler ausência de leitura como ausência de calor",
       "funcao_narrativa": "traz o sinal de calor à escala de quem lê"
     },
-    "saude.html#boxCalorSerie": {
-      "tipo": "gráfico de barras",
-      "pergunta_que_responde": "Como se distribuem os municípios pelas classes de excesso de calor na consulta mais recente?",
-      "dimensao_da_preparacao": "o sinal de calor a que a rede de saúde responde",
-      "universo": "municípios lidos no painel do Ministério da Saúde",
-      "unidade_de_analise": "município",
-      "territorio": "Brasil",
-      "periodo": "consulta mais recente ao painel",
-      "variavel_principal": "número de municípios em cada classe de excesso de calor",
-      "fonte": "Painel Nacional de Excesso de Calor (Ministério da Saúde)",
-      "metodologia": "Contagem por classe na fotografia mais recente. A fonte publica estado atual por município, não série semanal — e o cartão mostra a distribuição, não tendência.",
-      "conclusoes_permitidas": "dizer quantos municípios estão em cada classe na consulta mais recente",
-      "conclusoes_nao_permitidas": "ler tendência no tempo; somar classes num índice próprio",
-      "funcao_narrativa": "dimensiona o sinal de calor no país na data da consulta"
-    },
     "saude.html#boxChikMunicipios": {
       "tipo": "busca por município",
       "pergunta_que_responde": "Em que nível de alerta de chikungunya está a minha cidade na última semana consolidada?",
