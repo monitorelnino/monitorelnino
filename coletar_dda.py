@@ -28,7 +28,7 @@ Anos históricos são baixados uma vez e reaproveitados enquanto o MD5 publicado
 import csv, hashlib, io, json, re, sys, unicodedata, zipfile
 from collections import defaultdict
 from pathlib import Path
-from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rodar_autoteste, hoje_editorial
+from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rodar_autoteste, data_da_edicao
 from coletar_srag_gripe import canal_endemico, vazar_incompletas, ANOS_CANAL, SE_INCOMPLETAS
 
 RAIZ = Path(__file__).resolve().parent
@@ -45,15 +45,6 @@ RESSALVA = ("O Monitor não atribui casos ao El Niño; a série é a do Sivep-DD
             f"(processo {LAI}) e redistribuída no Zenodo por Raphael Saldanha (Fiocruz), CC BY 4.0; conta atendimentos "
             "em unidades sentinela (MDDA), não o total de casos.")
 UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"]
-
-
-def _hoje():
-    import datetime as _dt
-    try:
-        a = json.load(open(RAIZ / "data" / "meta.json", encoding="utf-8")).get("atualizado_em")
-        return _dt.datetime.strptime(a, "%d/%m/%Y").date()
-    except Exception:  # noqa: BLE001
-        return hoje_editorial()
 
 
 def _plano(t: str) -> str:
@@ -157,7 +148,7 @@ def gravar_compacto(nome, obj):
 
 
 def coletar() -> int:
-    hoje = _hoje().strftime("%d/%m/%Y")
+    hoje = data_da_edicao().strftime("%d/%m/%Y")
     cache = (ler(ARQUIVO_CACHE) or {}).get("arquivos") or {}
     try:
         recs = {chave: _registro(id_) for chave, id_ in REGISTROS.items()}

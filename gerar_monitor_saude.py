@@ -29,19 +29,10 @@ foram verificadas e quantas caem em cada faixa.
 import json, re, sys
 from datetime import date
 from pathlib import Path
-from coletores_base import ler, gravar, rodar_autoteste
+from coletores_base import ler, gravar, rodar_autoteste, data_da_edicao
 
 RAIZ = Path(__file__).resolve().parent
 
-def _hoje():
-    """Data determinística = 'atualizado_em' de data/meta.json (a última rodada que gravou dados), para que a
-    cadeia de derivados reproduza o arquivo byte a byte em qualquer dia; 'hoje' só se o meta não existir."""
-    import datetime as _dt, json as _js, pathlib as _pl
-    try:
-        a = _js.load(open(_pl.Path(__file__).resolve().parent / "data" / "meta.json", encoding="utf-8")).get("atualizado_em")
-        return _dt.datetime.strptime(a, "%d/%m/%Y").date()
-    except Exception:  # noqa: BLE001
-        return _dt._hoje()
 
 UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"]
 PONTOS_STATUS = {"NOVO": 100, "READ": 65, "VIG": 45, "ELAB": 35, "LAC": 0}
@@ -345,7 +336,7 @@ def gerar() -> int:
                         "crédito municipal do MARÉ × degrau/5 da leitura saude_no_plano; plano sem leitura = 0, contado) × antecipação. "
                         "Duas leituras de contexto (risco observado e projetado). UF não verificada não recebe número. Sem número nacional "
                         "enquanto houver UF não verificada. Metodologia §31."),
-        "versao": VERSAO, "gerado_em": _hoje().strftime("%d/%m/%Y"), "corte": su.get("corte"),
+        "versao": VERSAO, "gerado_em": data_da_edicao().strftime("%d/%m/%Y"), "corte": su.get("corte"),
         "metodo": {"pesos": dict(PESOS), "escada": PONTOS_STATUS,
                    "cobertura": {"formula": "100 × Σ(pop_mun × CRED_POP[categoria] × degrau/5) / pop_UF", "creditos_municipais": {k: CRED_POP[k] for k in CATEGORIAS_MUNICIPAIS},
                                  "degraus_saude_no_plano": {"0": "ausente", "1": "orgao_listado", "2": "resposta", "3": "vigilancia_pos", "4": "prevencao_epidemiologica", "5": "riscos_do_ciclo"},

@@ -18,8 +18,24 @@ from coletores_base import (buscar, buscar_com_procedencia, preservar_evidencia,
 LIMITE_PDF_COPIA = 5 * 1024 * 1024   # cópia do binário só até 5 MB; o TEXTO extraído é guardado sempre
 
 
-def extrair_texto_por_pagina(pdf_bytes: bytes) -> list:
-    """Lista de textos, um por página (pypdf; pdfplumber como reserva na página vazia). Função pura."""
+def _paginas_pdfplumber(pdf_bytes: bytes) -> list:
+    try:
+        import pdfplumber
+        with pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
+            return [(pg.extract_text() or "").strip() for pg in pdf.pages]
+    except Exception:  # noqa: BLE001
+        return []
+
+
+def extrair_texto_por_pagina(pdf_bytes: bytes, pdfplumber_primeiro: bool = False) -> list:
+    """Lista de textos, um por página (pypdf; pdfplumber como reserva na página vazia). Função pura.
+
+    `pdfplumber_primeiro` (11/09/2026, boletins estaduais): nos PDFs-infográfico o pypdf extrai com
+    espaço entre caracteres ("1 1 . 2 4 1") e nenhum padrão numérico casa."""
+    if pdfplumber_primeiro:
+        paginas = _paginas_pdfplumber(pdf_bytes)
+        if sum(len(t) for t in paginas) > 200:
+            return paginas
     paginas = []
     try:
         from pypdf import PdfReader
@@ -30,12 +46,7 @@ def extrair_texto_por_pagina(pdf_bytes: bytes) -> list:
     except Exception:  # noqa: BLE001
         return []
     if paginas and sum(len(t) for t in paginas) < 200:
-        try:
-            import pdfplumber
-            with pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
-                paginas = [(pg.extract_text() or "").strip() for pg in pdf.pages]
-        except Exception:  # noqa: BLE001
-            pass
+        paginas = _paginas_pdfplumber(pdf_bytes) or paginas
     return paginas
 
 

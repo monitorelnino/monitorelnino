@@ -32,6 +32,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #PR · Consolidação item 5: três funções copiadas viram uma
+
+`data_da_edicao()` (data de `meta.json`) sai de dez arquivos para `coletores_base` — em dois a reserva chamava `datetime._hoje()`, que não existe; a leitura de PDF com pdfplumber primeiro dos quatro boletins estaduais vira opção de `extrair_texto_por_pagina`; `_gh` dos quatro scripts de temporizador fica só no despachante. −144 linhas.
+
 ## 2026-10-16 · #763 · Rodapé só com o e-mail de contato
 
 O rodapé de todas as páginas, inclusive as do blog (pelo gerador), traz só o e-mail de contato; sai o rótulo "Imprensa:". Na Imprensa, o rodapé traz o e-mail de imprensa, que vive só nessa página.
