@@ -254,17 +254,16 @@ const dataBR = s => {
   return m ? `${m[3]}/${m[2]}/${m[1]}` : String(s || '');
 };
 
-// Textos aprovados pela editoria em 07/10/2026 (C3 do handover dos cartoes). Nenhuma palavra de
-// dever, obrigacao ou recomendacao: duas destas listas nao criam dever nenhum para o municipio, e a
-// que cria (o cadastro do art. 3o-A da Lei 12.340) nao e nenhuma delas.
-// `scripts/verificar_textos_enquadramento.py` reprova se estes textos mudarem ou se palavra de
+// Textos aprovados pela editoria (07/10/2026; cadastro do art. 3o-A da Lei 12.340 em 16/10/2026).
+// Nenhuma palavra de dever, obrigacao ou recomendacao. `verificar_texto_publico.js` (bloco
+// `enquadramento` de layout/regras.json) reprova se estes textos mudarem ou se palavra de
 // dever entrar aqui. O ano do MMA vem da portaria em vigor, gravada no dado — nao do codigo.
 const ENQ_TEXTO = {
-  chuva: 'Consta do cadastro federal de municípios suscetíveis a enxurradas e inundações.',
-  geo: 'Consta da lista federal de municípios suscetíveis a risco geo-hidrológico.',
+  chuva: 'Indicado pela União ao cadastro nacional de municípios com áreas suscetíveis a deslizamento e enchente (Lei 12.340, art. 3º-A).',
+  geo: 'Indicado pela União ao cadastro nacional de municípios com áreas suscetíveis a deslizamento (Lei 12.340, art. 3º-A).',
   seca: 'Integra a delimitação oficial do Semiárido brasileiro.',
   fogo: 'Consta da lista federal de municípios prioritários para controle do desmatamento e dos incêndios florestais na Amazônia (MMA, {ano}).',
-  nenhuma: 'Não consta das listas federais de risco por município: enxurradas e inundações (Casa Civil), Semiárido (Sudene) e prioritários para desmatamento e incêndios (MMA).',
+  nenhuma: 'Não consta das listas federais de risco por município: indicados ao cadastro nacional (MIDR e Casa Civil), Semiárido (Sudene) e prioritários para desmatamento e incêndios (MMA).',
 };
 // Os tipos que a nota tecnica nomeia, pelos nomes da fonte, em ordem alfabetica.
 const ENQ_TIPO = {d: 'deslizamento', e: 'enxurrada', i: 'inundação'};
@@ -310,7 +309,7 @@ function enquadramentoBox(uf, nome, codigo){
   };
   const tipos = String(marcas.tp || '').split('').map(l => ENQ_TIPO[l]).filter(Boolean).sort((a, b) => a.localeCompare(b, 'pt-BR'));
   const marcasTipo = tipos.length
-    ? `<p class="enq-tipos">${tipos.map(x => `<span class="chip-risco">${esc(x)}</span>`).join('')}</p>`
+    ? `<div class="chips">${tipos.map(x => `<span class="chip-risco">${esc(x)}</span>`).join('')}</div>`
     : '';
   // Ordem fixa chuva → geo-hidrológico → seca → fogo. Interseção mostra todas as linhas.
   const linhas = [];
@@ -318,13 +317,15 @@ function enquadramentoBox(uf, nome, codigo){
   if (marcas.geo) linhas.push({fam: 'chuva', texto: ENQ_TEXTO.geo, tipos: ''});
   if (marcas.sa) linhas.push({fam: 'seca', texto: ENQ_TEXTO.seca, tipos: ''});
   if (marcas.mma) linhas.push({fam: 'fogo', texto: ENQ_TEXTO.fogo.replace('{ano}', anoDaFonte('fogo')).replace(' (MMA, )', ' (MMA)'), tipos: ''});
-  const corpo = linhas.length
-    ? linhas.map(l => `<div class="enq-linha r-${l.fam}"><p class="v">${esc(l.texto)}</p>${l.tipos}${fonte(l.fam)}</div>`).join('')
-    : `<div class="enq-linha"><p class="v">${esc(ENQ_TEXTO.nenhuma)}</p>${fonte('chuva')}${fonte('seca')}${fonte('fogo')}</div>`;
-  return `<div class="enq-box">
+  // 16/10/2026: um cartão por lista, no mesmo componente do cartão de projeção (`.risco-box`, faixa
+  // de cor da família na borda esquerda).
+  const cartao = (fam, corpo) => `<div class="risco-box${fam ? ' r-' + fam : ''}">
     <p class="k">Este município nas listas federais de risco</p>
     ${corpo}
   </div>`;
+  return linhas.length
+    ? linhas.map(l => cartao(l.fam, `<p class="v">${esc(l.texto)}</p>${l.tipos}${fonte(l.fam)}`)).join('')
+    : cartao('', `<p class="v">${esc(ENQ_TEXTO.nenhuma)}</p>${fonte('chuva')}${fonte('seca')}${fonte('fogo')}`);
 }
 
 const regionsEl = document.getElementById('regions');
@@ -841,8 +842,7 @@ function renderMinha(){
   card.dataset.uf = ufFinal || '';
   const nomeDigitado = document.getElementById('cidadeInput').value.trim();
 
-  let html = `<p class="note"><a href="#" id="trocarMun">← consultar outro município</a></p>
-    <h4>${esc(nomeDigitado)}${ufFinal ? ' · ' + esc(ufFinal) : ''}</h4>`;
+  let html = `<h4>${esc(nomeDigitado)}${ufFinal ? ' · ' + esc(ufFinal) : ''}</h4>`;
 
   if (matches.length > 1){
     // Com o campo de município liberado só depois do estado e a lista já filtrada por UF, este
@@ -857,8 +857,7 @@ function renderMinha(){
   if (!m && uf && !nomeOficialDe(uf, q)){
     // Ainda digitando um nome que existe: sem cartão até casar (o evento é `input`).
     if ((MUN_REF[uf] || []).some(n => nrm(n).startsWith(q))){ card.hidden = true; card.innerHTML = ''; return; }
-    html = `<p class="note"><a href="#" id="trocarMun">← consultar outro município</a></p>`
-      + `<p>Não encontramos “${esc(nomeDigitado)}” na lista de municípios do IBGE para ${esc(uf)}. Confira a grafia ou escolha o nome na lista.</p>`;
+    html = `<p>Não encontramos “${esc(nomeDigitado)}” na lista de municípios do IBGE para ${esc(uf)}. Confira a grafia ou escolha o nome na lista.</p>`;
     card.innerHTML = html; card.hidden = false;
     return;
   }
@@ -913,7 +912,7 @@ function renderMinha(){
       : esc(m.fonte);
     html += `<p class="fk">Onde o documento foi localizado</p><p class="fv">${fonte}</p>`;
   } else {
-    html += `<p class="note">Tem o documento da sua prefeitura? <a href="#formulario" id="enviarDoCartao" data-uf="${esc(ufFinal)}" data-mun="${esc(nomeDigitado)}">Envie pelo formulário</a> — a conferência é automática: a rotina lê o documento e confere se a fonte é oficial.</p>`;
+    html += `<p class="note">Tem o documento da sua prefeitura? <a href="#formulario" id="enviarDoCartao" data-uf="${esc(ufFinal)}" data-mun="${esc(nomeDigitado)}">Envie pelo formulário</a>.</p>`;
   }
 
   card.innerHTML = html;
@@ -946,11 +945,6 @@ document.getElementById('meuCard').addEventListener('click', (e) => {
   // que lê `?uf=&mun=&tipo=` da URL, e a âncora rola até ele. O destino antigo era outra página.
   if (e.target && e.target.id === 'enviarDoCartao' && window.preencherFormulario){
     window.preencherFormulario(e.target.dataset.uf, e.target.dataset.mun, 'plano');
-  }
-  if (e.target && e.target.id === 'trocarMun'){
-    e.preventDefault();
-    const inp = document.getElementById('cidadeInput');
-    inp.value = ''; renderMinha(); inp.focus(); inp.scrollIntoView({behavior:'smooth', block:'center'});
   }
 });
 
