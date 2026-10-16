@@ -1,21 +1,24 @@
-"""Sonda pontual (diag 16/10): de onde vem a lista de mapas (com shapefile) do Monitor de Secas."""
-import re, sys, json, urllib.request
+"""Sonda pontual (diag 16/10): shapefile mensal do Monitor de Secas no S3 da ANA."""
+import io, re, sys, zipfile, urllib.request
 sys.path.insert(0, ".")
 from coletores_base import UA
-def get(u):
-    r = urllib.request.Request(u, headers={"User-Agent": UA})
+def get(u, metodo="GET"):
+    r = urllib.request.Request(u, headers={"User-Agent": UA}, method=metodo)
     try:
-        with urllib.request.urlopen(r, timeout=90) as f:
+        with urllib.request.urlopen(r, timeout=120) as f:
             return f.status, f.read(), dict(f.headers)
     except urllib.error.HTTPError as e:
-        return e.code, e.read()[:300], {}
+        return e.code, b"", dict(e.headers or {})
     except Exception as e:
         return str(e)[:100], b"", {}
 st, c, h = get("https://monitordesecas.ana.gov.br/main-es2015.fa1ed2e57f145c927f52.js")
 js = c.decode("utf-8", "replace")
-print("urls:", sorted(set(re.findall(r'https?://[A-Za-z0-9.\-]+(?:\.gov\.br|amazonaws\.com|funceme\.br)[A-Za-z0-9_./\-]*', js))))
-for pad in (r'.{0,140}["\'`/]mapas?[/"\'`?].{0,140}', r'.{0,160}shapefile.{0,160}', r'.{0,200}mapaFacade\.\w+\(.{0,80}', r'.{0,120}\.get\(.{0,200}'):
-    vistos = sorted(set(re.findall(pad, js)))[:14]
-    print("\n##", pad, len(vistos))
-    for v in vistos:
-        print("  ", v[:380])
+i = js.find("uploads/mapas/${")
+print("CTX:", js[i - 900: i + 400])
+S3 = "https://ana-monitor-secas-files.s3.sa-east-1.amazonaws.com/uploads/mapas/"
+st, c, h = get(S3[:-1].rsplit("/uploads", 1)[0] + "/?prefix=uploads/mapas/&max-keys=50")
+print("\nLIST", st, c[:1500])
+for nome in ("Setembro2026", "Agosto2026", "setembro2026", "Set2026", "Setembro_2026"):
+    for ext in (".zip", ".gpkg", ".png"):
+        st, c, h = get(S3 + nome + ext, "HEAD")
+        print("HEAD", nome + ext, st, h.get("Content-Length"), h.get("Last-Modified"))
