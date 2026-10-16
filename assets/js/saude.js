@@ -1014,7 +1014,7 @@ const AREAS = [
           + n(a[pico]) + ', na semana ' + semanaEmDatas(antiga[pico][0], chave(antiga[pico])) + '.');
       };
       if (sel && !sel.options.length) {
-        sel.innerHTML = '<option value="BR">Brasil</option>' + UFS27.map(uf => '<option value="' + uf + '">' + uf + '</option>').join('');
+        [['BR', 'Brasil'], ...UFS27.map(uf => [uf, uf])].forEach(([v, t]) => sel.add(new Option(t, v)));
         sel.addEventListener('change', () => desenhar(sel.value));
       }
       desenhar('BR');
