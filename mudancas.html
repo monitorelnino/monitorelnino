@@ -30,7 +30,7 @@
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <script src="assets/mapas.js?v=c9350706"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=02c36ec9">
-<link rel="stylesheet" href="assets/base.css?v=3c27570e">
+<link rel="stylesheet" href="assets/base.css?v=4ed1f7d5">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -49,6 +49,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/10/2026 · Monitor de riscos: abertura nova e números de agora; textos longos sem colunas</dt>
+      <dd>A abertura do Monitor de riscos passa ao texto da editoria, em quatro parágrafos. &quot;Situação atual&quot; ganha painel próprio com os números de agora: oceano, probabilidade, focos de fogo, estados com seca grave, maior diferença de calor numa capital e estados com aviso de tempo severo, cada um com órgão e data. Sai o cartão dos riscos previstos. Os textos longos deixam de ser divididos em duas colunas no site inteiro.</dd>
       <dt>16/10/2026 · O envio do formulário fica na inicial; sai a página Obrigado</dt>
       <dd>O formulário da inicial passa a enviar sem trocar de página: depois do envio aparece &quot;Recebido. Obrigado pela contribuição.&quot; no mesmo lugar. O texto que vivia em `obrigado.html` (a conferência automática e o que acontece com o documento) vai para o próprio formulário. `obrigado.html` sai, e endereços antigos levam ao formulário (decisão da editoria de 16/10).</dd>
       <dt>16/10/2026 · Saúde: a frase do dado não aparece vazia</dt>
@@ -167,8 +169,6 @@
       <dd>Corrente às 22h, busca web com cinco rodadas em paralelo, evidências e OCR de volta ao elo, painel da noite com portão para elo que não roda. Prioridade de coleta pelas três listas federais (3.160 municípios), com cursor persistido. Fila de pistas: limpeza única fechou 8.025 com o motivo de cada uma (de 8.678 abertas para 654), esquema cobrado na gravação, e triagem como último elo de toda rodada. METODOLOGIA §102.</dd>
       <dt>03/10/2026 · Plano publicado sem ato de aprovação localizado conta no degrau da leitura</dt>
       <dd>Decisão da editoria, sem degrau novo: plano em domínio oficial do ente conta nos dois índices, com três condições (domínio oficial; órgão, título e ano; não ser minuta) e a marca &quot;sem ato de aprovação localizado&quot; na ficha do município e do estado. Etapas 2, 3, 4 e 6 do codebook ajustadas, versão 1.2, que devolve à fila o que a régua antiga recusou. Variante de 70% do degrau entra na análise de incerteza dos dois índices. METODOLOGIA §101.</dd>
-      <dt>03/10/2026 · A pista de documento oficial pertence a quem é o domínio</dt>
-      <dd>Garimpo pedido pela editoria: 13 documentos de plano em domínio oficial ao juiz. Nenhum promovido, e o relatório mostrou por quê — **nove estavam atribuídos ao município errado**, pelo nome que aparecia no trecho (o plano de Celso Ramos virou pista de Salete). `municipio_do_dominio.py` resolve o host no ente dono e `corrigir_atribuicao_por_dominio.py` reatribui e devolve ao juiz. Rejulgados com o ente certo, os 9 param na etapa 2 ou 3: o plano não é o ato.</dd>
     </dl>
   </section>
 </main>
@@ -180,7 +180,7 @@
   </footer>
 </div>
 
-<script src="assets/colunas.js?v=3669e58d" defer></script>
+<script src="assets/colunas.js?v=07ce0f22" defer></script>
 <script src="assets/js/blog.js?v=7f8a0ec2" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).

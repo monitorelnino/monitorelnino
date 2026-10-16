@@ -30,6 +30,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-16 · #791 · Monitor de riscos: abertura nova e números de agora; textos longos sem colunas
+
+A abertura do Monitor de riscos passa ao texto da editoria, em quatro parágrafos. "Situação atual" ganha painel próprio com os números de agora: oceano, probabilidade, focos de fogo, estados com seca grave, maior diferença de calor numa capital e estados com aviso de tempo severo, cada um com órgão e data. Sai o cartão dos riscos previstos. Os textos longos deixam de ser divididos em duas colunas no site inteiro.
+
 ## 2026-10-16 · #788 · O envio do formulário fica na inicial; sai a página Obrigado
 
 O formulário da inicial passa a enviar sem trocar de página: depois do envio aparece "Recebido. Obrigado pela contribuição." no mesmo lugar. O texto que vivia em `obrigado.html` (a conferência automática e o que acontece com o documento) vai para o próprio formulário. `obrigado.html` sai, e endereços antigos levam ao formulário (decisão da editoria de 16/10).

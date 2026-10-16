@@ -55,10 +55,14 @@
     "cartoes": [
       "roni_mais_recente",
       "probabilidade_iri_cpc_com_noaa",
-      "brasil_painel_el_nino"
+      "focos_24h",
+      "seca_grave_estados",
+      "calor_desvio_capital",
+      "avisos_estados"
     ],
     "exige_fonte_e_data": true,
-    "_divergencia_09_10": "09/10/2026 (ajuste 3, editoria): de quatro para TRÊS cartões numa linha. O pedido de 07/10 (quatro cartões) fica superado: a previsão da NOAA/CPC deixou de ser cartão e virou linha de apoio do cartão de probabilidade. O cartão do boletim mostra os três riscos com a mesma hierarquia, em ordem alfabética (chuva, fogo, seca), escolhida pelo Code por ser neutra."
+    "_divergencia_09_10": "09/10/2026 (ajuste 3, editoria): de quatro para TRÊS cartões numa linha. O pedido de 07/10 (quatro cartões) fica superado: a previsão da NOAA/CPC deixou de ser cartão e virou linha de apoio do cartão de probabilidade. O cartão do boletim mostra os três riscos com a mesma hierarquia, em ordem alfabética (chuva, fogo, seca), escolhida pelo Code por ser neutra.",
+    "_mudanca_16_10": "16/10/2026 (editoria, lote 2): 'Situação atual' em painel próprio e a faixa de números de agora — oceano, probabilidade, fogo, seca, calor, avisos (o cartão 'Ar' entra quando a fonte do MMA chegar). Sai o cartão 'Painel El Niño · riscos previstos' (o mapa por estado faz isso). Variação só com leitura anterior gravada."
   },
   "secoes_texto_proibido": {
     "_governanca": "07/10/2026: a régua de força do ENOS não é definição da NOAA/CPC — ela define os limiares de El Niño (+0,5 °C) e de La Niña (−0,5 °C) e o critério de cinco médias trimestrais seguidas, e não faixas de fraco/moderado/forte. A proibição vale SÓ nestas seções: 'Chuva forte', na legenda dos mapas de 'Os riscos no Brasil', é outra coisa e fica.",
@@ -78,7 +82,11 @@
   "faixas_dos_mapas": {
     "_governanca": "09/10/2026 (ajustes 5 e 6): previsto separado de observado. Ordem: 'Previsto pelo boletim' (boxRiscoPrevisto, sozinho e maior) → 'Observado' (boxSecas, boxFogo) → 'Agora, nas capitais e nos estados' (boxAr, boxTemperatura, boxAvisos). Um título por mapa, sem sobretítulo; lista de UFs na descrição acessível e em 'Ver estados'. Conferido por scripts/verificar_grades_de_numeros.py e scripts/verificar_dicas_dos_mapas.js.",
     "_mudanca_11_10": "11/10/2026 (editoria, janela B): previsto e observado na MESMA fila — boxRiscoPrevisto, boxSecas e boxFogo numa só `.grade-figuras--3` (`grade-mapas--faixas`), sem bloco novo. A distinção fica como informação: os dois selos ('Previsto pelo boletim' sobre a 1ª coluna, 'Observado' sobre a 2ª e a 3ª) são uma faixa alinhada às colunas dentro da grade, e não sobretítulo de cartão (o ajuste 6 de 09/10 tirou o sobretítulo). Numa coluna só, a ordem do HTML: selo previsto → previsto → selo observado → seca → fogo. Supera o 'sozinho e maior' de 09/10. Títulos, datas e fontes dos mapas não mudam.",
-    "grade_unica": ["boxRiscoPrevisto", "boxSecas", "boxFogo"],
+    "grade_unica": [
+      "boxRiscoPrevisto",
+      "boxSecas",
+      "boxFogo"
+    ],
     "ordem": [
       "boxRiscoPrevisto",
       "boxSecas",
