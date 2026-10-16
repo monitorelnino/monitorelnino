@@ -1295,9 +1295,30 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
   // Qualquer outro host (prévia local, file://, artefato de visualização) mantém o
   //   formulário desativado — Netlify Forms só funciona quando hospedado de fato.
   const ehProducao = /\.netlify\.app$/.test(location.hostname) || /(^|\.)monitorelnino\.com\.br$/.test(location.hostname);
+  const form = document.getElementById('formContrib'), aviso = document.getElementById('contribOffline');
   if (!ehProducao){
-    const off = document.getElementById('contribOffline'); if (off) off.textContent = 'Nesta prévia local o envio fica desativado; na versão publicada, funciona.';
-    document.getElementById('formContrib').addEventListener('submit', (e) => { e.preventDefault();
+    if (aviso) aviso.textContent = 'Nesta prévia local o envio fica desativado; na versão publicada, funciona.';
+    form.addEventListener('submit', (e) => { e.preventDefault();
       alert('Prévia local: o envio do formulário funciona apenas na versão publicada do site.'); });
+    return;
   }
+  // 16/10/2026 (editoria): o envio não leva a outra página. O Netlify Forms recebe o POST em `/`
+  // com `form-name`; sucesso troca o formulário pela mensagem no mesmo painel, erro avisa e o
+  // formulário fica. Sem JavaScript, o `action` devolve o leitor a `#formulario`.
+  const C = window.MonitorCatalogo, msg = (id) => (C && C.texto(id)) || '';
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    try {
+      const r = await fetch('/', {method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: new URLSearchParams(new FormData(form)).toString()});
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const p = document.createElement('p'); p.className = 'hint'; p.setAttribute('role', 'status');
+      p.textContent = msg('index.formulario.recebido');
+      const painel = form.closest('.panel');
+      [...painel.children].forEach(el => { if (el.tagName !== 'H2') el.remove(); });
+      painel.appendChild(p);
+    } catch (_) {
+      if (aviso) { aviso.setAttribute('role', 'alert'); aviso.textContent = msg('index.formulario.erro'); }
+    }
+  });
 })();

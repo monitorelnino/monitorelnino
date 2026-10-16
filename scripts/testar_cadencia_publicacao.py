@@ -3,17 +3,13 @@
 com o texto público.
 
 Criado em 20/09/2026, quando a editoria moveu a publicação semanal de segunda-feira
-para sábado. O dia da rodada é compromisso declarado ao leitor (obrigado.html diz a
-quem envia documento quando eles entram no ar; pesquisadores.html declara a cadência
-do banco), então uma divergência entre o código e o texto público não é detalhe
-interno: é o site prometendo uma coisa e fazendo outra.
+para sábado. Até 16/10/2026 o portão também conferia o dia prometido no texto público; o último
+lugar que o nomeava (`obrigado.html`) saiu do site, e nenhuma página promete dia.
 
-Verifica três coisas:
+Verifica:
   1. `atualizar.py` decide a cadência pela constante DIA_PUBLICACAO, nunca por um
      literal solto — se alguém voltar a escrever `dia_semana != 0` o portão cai.
   2. DIA_PUBLICACAO e NOME_DIA_PUBLICACAO concordam entre si.
-  3. O texto público (obrigado.html, pesquisadores.html) nomeia o MESMO dia que o
-     código executa.
 
 Uso: python3 scripts/testar_cadencia_publicacao.py
 """
@@ -31,19 +27,6 @@ NOMES_POR_INDICE = {
     0: "segunda", 1: "terça", 2: "quarta", 3: "quinta",
     4: "sexta", 5: "sábado", 6: "domingo",
 }
-
-# Onde o dia aparece para o leitor. Cada par: arquivo e o trecho que cita a cadência.
-TEXTOS_PUBLICOS = [
-    ("obrigado.html", r"entra na atualização seguinte do mapa e do índice — normalmente (?:na|no) (\w+)"),
-    # §258 (27/09/2026): `pesquisadores.html` saiu daqui porque a página foi ARQUIVADA por decisão
-    # da editoria (arquivo/pesquisadores/). Ela declarava "Atualização automática semanal (…)", e
-    # era o segundo lugar em que o leitor via o dia prometido.
-    # Sobrou UM. O portão continua valendo: ele confere que o texto público nomeia o MESMO dia que
-    # a constante e que o cron, e um lugar basta para isso. Mas a redundância que existia — dois
-    # textos independentes tendo de concordar — deixou de existir, e isso é perda de cobertura, não
-    # simplificação. Quando a página voltar, ou quando a cadência for prometida em outro lugar, a
-    # promessa volta para esta lista.
-]
 
 falhas = []
 
@@ -91,34 +74,6 @@ def main():
     esperado = NOMES_POR_INDICE.get(dia)
     if esperado and esperado not in nome_dia.lower():
         falhas.append(f"DIA_PUBLICACAO={dia} é {esperado}, mas NOME_DIA_PUBLICACAO diz {nome_dia!r}")
-
-    # 4. O texto público nomeia o mesmo dia.
-    for arquivo, padrao in TEXTOS_PUBLICOS:
-        caminho = RAIZ / arquivo
-        if not caminho.exists():
-            falhas.append(f"{arquivo} não encontrado — o portão precisa saber onde o dia é prometido")
-            continue
-        texto = caminho.read_text(encoding="utf-8")
-        m = re.search(padrao, texto)
-        if not m:
-            # 09/10/2026: a pagina deixou de prometer dia ao leitor, e exigir a frase passou a
-            # reprovar texto correto. O que o portao cobra e a CONCORDANCIA: se a pagina nomear
-            # um dia da semana, ele tem de ser o dia da constante e do cron. Se ela nao nomear
-            # nenhum, nao ha promessa a conferir — mas tambem nao pode haver dia solto no texto,
-            # que e o jeito de a divergencia voltar sem o portao ver.
-            soltos = {d for d in NOMES_POR_INDICE.values()
-                      if re.search(r"\b" + d + r"s?\b", texto, re.IGNORECASE)}
-            if esperado:
-                soltos.discard(esperado)
-            if soltos:
-                falhas.append(
-                    f"{arquivo} nomeia {sorted(soltos)} ao leitor fora da frase de cadencia, "
-                    f"e o codigo publica em {esperado!r}")
-            continue
-        dito = m.group(1).lower().rstrip("s")
-        if esperado and not dito.startswith(esperado[:5]):
-            falhas.append(f"{arquivo} promete '{dito}' ao leitor, mas o código publica em "
-                          f"'{esperado}' — texto público divergente do comportamento real")
 
     # 5. A cadência é medida no fuso da redação, nunca no do runner (UTC).
     if "hoje_editorial()" not in fonte:
@@ -221,7 +176,7 @@ def main():
 
     print(f"✓ cadência coerente: DIA_PUBLICACAO={dia} ({nome_dia}) medido no fuso da redação; "
           f"portão usa a constante; cron semanal cai no dia certo em Brasília; "
-          f"nenhum texto público nomeia dia divergente (obrigado.html deixou de prometer dia em 09/10/2026; pesquisadores.html saiu no §258, arquivada)")
+          f"nenhuma página promete dia ao leitor")
     return 0
 
 

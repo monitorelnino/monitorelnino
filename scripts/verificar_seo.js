@@ -39,7 +39,7 @@ for (const p of paginas) {
   if (!/<html lang="pt-BR">/.test(h)) falhas.push(`${p}: sem lang="pt-BR"`);
 }
 const sm = fs.existsSync(path.join(RAIZ, "sitemap.xml")) ? fs.readFileSync(path.join(RAIZ, "sitemap.xml"), "utf-8") : "";
-for (const p of paginas) if (p !== "obrigado.html" && !sm.includes(BASE + (p === "index.html" ? "" : p) + "<")) falhas.push(`sitemap.xml sem ${p}`);
+for (const p of paginas) if (!sm.includes(BASE + (p === "index.html" ? "" : p) + "<")) falhas.push(`sitemap.xml sem ${p}`);
 const rb = fs.existsSync(path.join(RAIZ, "robots.txt")) ? fs.readFileSync(path.join(RAIZ, "robots.txt"), "utf-8") : "";
 if (!/Sitemap: https:\/\/monitorelnino\.com\.br\/sitemap\.xml/.test(rb)) falhas.push("robots.txt sem a linha Sitemap");
 // 14/09/2026 (§1.1 da auditoria editorial): até o lançamento (data/publicacao.json · indexar=false) TODA página leva

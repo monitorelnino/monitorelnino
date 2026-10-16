@@ -51,7 +51,7 @@ from coletores_base import ua_de, detectar_muro_de_robo, ler, gravar, hoje_edito
 DATA = RAIZ / "data"
 # A6-18 (12/10/2026): a lista fixa tinha 5 páginas e deixava saúde, financiamento, imprensa,
 # monitor de riscos e blog sem conferência de link. Agora são as páginas públicas declaradas em
-# `layout/regras.json` (a mesma lista da conformidade), mais `obrigado.html`.
+# `layout/regras.json` (a mesma lista da conformidade).
 def _paginas_publicas():
     try:
         regras = json.loads((RAIZ / "layout" / "regras.json").read_text(encoding="utf-8"))
@@ -59,7 +59,7 @@ def _paginas_publicas():
     except (OSError, ValueError):
         lista = []
     lista = lista or ["index.html", "defesa-civil.html", "proteja-se.html", "prefeituras.html"]
-    return lista + [x for x in ("obrigado.html",) if x not in lista]
+    return lista
 
 
 ARQUIVOS_HTML = _paginas_publicas()

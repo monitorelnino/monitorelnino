@@ -53,7 +53,6 @@ monitor-el-nino/
 ├── defesa-civil.html          ← antecipação (mapas e leituras) e resposta (contador); ex-"mapas-e-graficos" (301)
 ├── proteja-se.html            ← orientações oficiais, por risco projetado
 ├── envie-dados.html           ← formulário público de contribuição
-├── obrigado.html              ← confirmação da contribuição
 ├── data/                      ← ÚNICA fonte de verdade do site (28 arquivos)
 │   ├── estados.json           ← 27 UFs: status, órgão, documento, capital
 │   ├── municipios.json        ← registros municipais verificados (265)
