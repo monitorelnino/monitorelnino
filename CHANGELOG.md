@@ -32,7 +32,7 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-16 · #PR · A definição do índice tem dono, e o texto público é conferido contra ela
+## 2026-10-16 · #769 · A definição do índice tem dono, e o texto público é conferido contra ela
 
 O motor grava em `meta.json` os componentes, pesos e faixas do índice e que a antecedência está fora da nota. O portão de versão passa a ler o texto público do MARÉ Legal: antecedência como medida da nota e "pesam igual" escrito à mão reprovam. "Como ler" da inicial fica em exceção registrada até a rodada conjunta de textos.
 
