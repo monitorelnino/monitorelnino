@@ -29,6 +29,6 @@ jobs:
       # Válvula coleta-dia (janela A3, 17/10/2026): sondagem das rotas dos diários. Este ramo não vai à main.
       # Válvula coleta-dia (janela A3, 17/10/2026): sondagem das rotas dos diários. Este ramo não vai à main.
       comandos: |
-        scripts/sondar_rotas_doe.py --trecho https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-16|https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=16/10/2026|https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ListarEdicoesParaCalendario?MesPublicacao=9&AnoPublicacao=2026|https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterUltimaEdicao|https://www.jornalminasgerais.mg.gov.br/main-A77B4DKJ.js~formatDateToString(~ObterConteudoCadernoPorId
+        scripts/sondar_rotas_doe.py --trecho https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-09-10|https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-09-13|http://www.ioepa.com.br/pesquisa/resultado/QueryTexto~POST:InputTexto=decreto&InputDataInicial=01/10/2026&InputDataFinal=16/10/2026~pdf~href~Nenhum|https://www.imprensaoficial.rr.gov.br/app/_visualizar-mes/~pdf~doe-
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
