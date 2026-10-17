@@ -82,6 +82,17 @@ CONTEXTO_POR_TERMO = {
     "comitê intersetorial": r"(El\s*Ni[ñn]o|clim|estiagem|seca|chuva|desastre|emerg[êe]ncia)",
     "vigilância em saúde ambiental": r"(El\s*Ni[ñn]o|clim|estiagem|seca|chuva|calor|desastre)",
 }
+# 17/10/2026 (HANDOVER_RESPOSTA_SANITARIA §1.3): DECLARAÇÃO de emergência em saúde pública por
+# decreto do governador. Expressão com "saúde" exige "declar" em volta (o COE "de Emergência em Saúde
+# Pública" é citado sem declarar nada); a com "declara" exige saúde em volta (a seca também se declara).
+TERMOS_DE_DECLARACAO = {"situação de emergência em saúde pública": r"declar",
+                        "emergência em saúde pública": r"declar",
+                        "estado de emergência em saúde": r"declar",
+                        "declara situação de emergência": r"(sa[úu]de|epidemi|dengue|arbovir)"}
+CONTEXTO_POR_TERMO.update(TERMOS_DE_DECLARACAO)
+TERMOS = TERMOS + tuple(TERMOS_DE_DECLARACAO)
+# Edição lida com vocabulário anterior a esta data não procurou declaração: é relida.
+VERSAO_DOS_TERMOS = "2026-10-17"
 CONTEXTO_DE_SIGLA = {t: re.compile(r, re.I) for t, r in CONTEXTO_POR_TERMO.items()}
 JANELA_DE_CONTEXTO = 300
 
@@ -218,7 +229,8 @@ def ocorrencias_no_texto(texto: str, termos=TERMOS) -> list:
                 perto = t[max(0, m.start() - JANELA_DE_CONTEXTO):m.end() + JANELA_DE_CONTEXTO]
                 if not contexto.search(perto):
                     continue
-            fora.append({"termo": termo, "trecho": t[ini:m.end() + 220].strip()})
+            fora.append({"termo": termo, "trecho": t[ini:m.end() + 220].strip(),
+                         **({"classe": "declaracao"} if termo in TERMOS_DE_DECLARACAO else {})})
             break   # um trecho por termo por edição: o que importa é a edição ter o termo
     return fora
 
@@ -308,6 +320,29 @@ def situacao_do_canal2(uf: str, padroes=None, adaptadores=None, registro=None) -
             "nota": "a listagem de edições precisa ser lida para derivar o padrão"}
 
 
+def a_reler(item) -> bool:
+    """Edição lida antes dos termos de declaração tem de ser relida. Função pura."""
+    return isinstance(item, dict) and item.get("decisao") == "lida" and item.get("termos_versao") != VERSAO_DOS_TERMOS
+
+
+def busca_de_declaracao(uf: str, registro: dict) -> dict:
+    """A metade estadual da resposta sanitária nesta UF: `consultado_em` só quando as edições lidas
+    do ciclo foram todas lidas com os termos de declaração; senão `lacuna` com o motivo. Pura."""
+    sit = situacao_do_canal2(uf, registro=registro)
+    if sit["modo"] == MODO_SEM_ACESSO:
+        return {"lacuna": sit["detalhe"]}
+    todas = [e for e in (registro.get("edicoes") or {}).values() if isinstance(e, dict)]
+    lidas = [e for e in todas if e.get("decisao") == "lida"]
+    velhas = sum(1 for e in lidas if a_reler(e))
+    falhas = sum(1 for e in todas if e.get("decisao") in ("recusa", "vazio", "sem_texto_extraivel", "sem_numero_de_edicao"))
+    if velhas or falhas or not lidas:
+        return {"lacuna": (f"{velhas} edição(ões) ainda não relida(s) com os termos de declaração" if velhas
+                           else f"{falhas} edição(ões) do ciclo não lida(s)" if falhas
+                           else f"nenhuma edição lida por data ({sit['modo']})")}
+    em = max(dt.datetime.strptime(e["em"], "%d/%m/%Y").date() for e in lidas)
+    return {"consultado_em": em.strftime("%d/%m/%Y"), "edicoes_lidas": len(lidas)}
+
+
 # ── execução ───────────────────────────────────────────────────────────────────────────────────
 def _texto_paginas(bruto: bytes) -> list:
     """Texto por página, pela porta canônica do projeto."""
@@ -376,15 +411,15 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
         achado = re.search(r"DO(\d{4,6})_", str((item or {}).get("url") or ""))
         if achado and (item or {}).get("decisao") == "lida":
             ancoras_vivas[data_lida] = int(achado.group(1))
-    datas = [d for d in datas_do_periodo(desde, ate) if d not in edicoes][:TETO_EDICOES]
+    datas = [d for d in datas_do_periodo(desde, ate) if d not in edicoes or a_reler(edicoes[d])][:TETO_EDICOES]
     # Quando o nome do arquivo pede o NÚMERO da edição, percorre-se do mais novo para o mais velho:
     # a âncora de cada data passa a ser a vizinha, e a deriva por passo é de uma ou duas edições.
     # Da outra ordem, a janela de oito não alcançava dois meses de deriva e tudo dava 404.
     if "{edicao}" in p["padrao"]:
         datas = sorted(datas, reverse=True)
     lidas = com_termo = 0
-    vistos = {e.get("impressao") for e in edicoes.values()
-              if isinstance(e, dict) and e.get("impressao")}
+    vistos = {e.get("impressao") for d, e in edicoes.items()
+              if isinstance(e, dict) and e.get("impressao") and d not in datas}
     hoje = hoje_editorial().strftime("%d/%m/%Y")
     for data in datas:
         if "{edicao}" in p["padrao"]:
@@ -441,7 +476,8 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
         com_texto = sum(1 for x in paginas if (x or "").strip())
         decisao = decidir_edicao(status, len(bruto), com_texto, len(paginas) or None, repetido)
         item = {"decisao": decisao, "em": hoje, "bytes": len(bruto), "paginas": len(paginas),
-                "paginas_com_texto": com_texto, "url": url, "impressao": impressao}
+                "paginas_com_texto": com_texto, "url": url, "impressao": impressao,
+                "termos_versao": VERSAO_DOS_TERMOS}
         if decisao == "nao_e_edicao":
             item["motivo"] = ("mesmo arquivo de outra data" if repetido else
                               f"{len(bruto)} bytes e {len(paginas)} página(s) — não é uma edição")
@@ -658,6 +694,24 @@ def _autoteste() -> int:
        situacao_do_canal2("XX", {}, {"XX": {"adaptador": "apifront"}},
                           {"canal2": {"modo": MODO_SEM_ACESSO, "motivo": "HTTP 401"}})["modo"]
        == MODO_SEM_ACESSO)
+
+    dec = ocorrencias_no_texto("DECRETO Nº 1, DE 2026. O GOVERNADOR DO ESTADO declara situação de "
+                               "emergência em saúde pública em razão da epidemia de dengue.")
+    ok("declaração em saúde é indexada e marcada como declaração",
+       any(x.get("classe") == "declaracao" for x in dec))
+    ok("termo de declaração sem contexto de saúde não indexa",
+       ocorrencias_no_texto("O Governador declara situação de emergência em razão da estiagem prolongada.") == [])
+    ok("COE de emergência em saúde pública, sem declarar, não é declaração",
+       not any(x.get("classe") for x in ocorrencias_no_texto(
+           "Institui o Centro de Operações de Emergência em Saúde Pública para o ciclo")))
+    lida = {"decisao": "lida", "em": "02/10/2026"}
+    ok("edição lida antes dos termos de declaração é relida",
+       a_reler(lida) and not a_reler(dict(lida, termos_versao=VERSAO_DOS_TERMOS)))
+    ok("metade estadual só conta com todas as edições relidas",
+       "lacuna" in busca_de_declaracao("PB", {"edicoes": {"d": lida}})
+       and busca_de_declaracao("PB", {"edicoes": {"d": dict(lida, termos_versao=VERSAO_DOS_TERMOS)}})
+       == {"consultado_em": "02/10/2026", "edicoes_lidas": 1})
+    ok("UF sem rota é lacuna da metade estadual", "lacuna" in busca_de_declaracao("XX", {}))
 
     fonte = pathlib.Path(__file__).read_text(encoding="utf-8")
     escritas = [l.strip() for l in fonte.splitlines() if l.strip().startswith("gravar(")]

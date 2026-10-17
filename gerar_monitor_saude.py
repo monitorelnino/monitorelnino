@@ -281,6 +281,35 @@ def cobertura_sanitaria(municipios: list, referencia: list, populacao: dict, aut
     return saida
 
 
+def resposta_sanitaria(emergencias, busca: dict, pop_uf: dict) -> dict:
+    """Resposta sanitária a partir do que `saude_sinais` diz, sem inventar. Função pura.
+
+    17/10/2026 (HANDOVER_RESPOSTA_SANITARIA §1.2): `emergencias` ausente é "não coletado" (antes
+    virava lista vazia e índice 0,0); lista vazia só é 0 com as duas buscas datadas — federal (DOU)
+    e estadual nas 27 —; metade sem busca deixa o índice nulo e é nomeada. ESPIN (`BR`) cobre o país."""
+    pop_total = sum(pop_uf.values())
+    base = {"desde": "29/06/2026", "fontes": ["DOU (ESPIN)", "diários oficiais estaduais"], "pop_total": int(pop_total),
+            "nota": "índice de resposta sanitária = parcela da população em estado com emergência sanitária declarada no ciclo; contagem de emergências ao lado; nunca somado à antecipação"}
+    if not isinstance(emergencias, list):
+        return {**base, "situacao": "nao_coletado", "emergencias": None, "indice": None, "eventos": [], "ufs": [],
+                "pop_sob_emergencia": None, "faltam": ["federal (DOU)", "estadual (27 UFs)"]}
+    ev = [e for e in emergencias if isinstance(e, dict)]
+    ufs_em = list(UFS) if any(e.get("uf") == "BR" for e in ev) else sorted({e.get("uf") for e in ev if e.get("uf") in UFS})
+    fed, est = busca.get("federal") or {}, busca.get("estadual") or {}
+    sem_estadual = [u for u in UFS if not (est.get(u) or {}).get("consultado_em")]
+    faltam = ([] if fed.get("consultado_em") else ["federal (DOU)"]) + ([f"estadual: {', '.join(sem_estadual)}"] if sem_estadual else [])
+    completo = len(ufs_em) == len(UFS) or not faltam   # ESPIN: nenhuma UF fica de fora
+    pop_em = sum(pop_uf.get(u, 0) for u in ufs_em)
+    return {**base, "situacao": "verificado" if completo else "parcial",
+            "emergencias": len(ev) if completo else None,   # parcial: a lista vai em `eventos`, sem total
+            "indice": round(100.0 * pop_em / pop_total, 1) if completo and pop_total else None,
+            "eventos": [{k: e.get(k) for k in ("uf", "tipo", "documento", "data", "url")} for e in ev],
+            "ufs": ufs_em, "pop_sob_emergencia": int(pop_em) if completo else None, "faltam": faltam,
+            "consultado_em": {"federal": fed.get("consultado_em"),
+                              "estadual": {u: v.get("consultado_em") for u, v in sorted(est.items()) if v.get("consultado_em")}},
+            "lacunas_estaduais": {u: (est.get(u) or {}).get("lacuna") or "sem registro do canal 2" for u in sem_estadual}}
+
+
 def gerar() -> int:
     from migrar_saude_instrumentos import melhor_instrumento   # 18/09/2026: instrumentos[] é a fonte de
     # verdade agora (handover ponto cego saúde §3.2) — o campo de topo de cada UF deixa de ser lido
@@ -315,20 +344,12 @@ def gerar() -> int:
         }
     # 15/09/2026 (MARÉ Saúde espelha o MARÉ · Defesa civil): RESPOSTA sanitária como índice 0–100 = 100 × população (Censo 2022)
     # dos estados com emergência sanitária declarada no ciclo (ESPIN federal ou decreto estadual, saude_sinais.emergencias)
-    # sobre a população do país; contagem ao lado. Zero de verdade enquanto nenhuma for localizada — nunca imputado.
+    # sobre a população do país; contagem ao lado. Zero só com as duas buscas datadas (resposta_sanitaria).
     pop_censo = ler("populacao_censo2022.json", {}) or {}
     pop_uf = {}
     for m in (ler("municipios_ibge_referencia.json", []) or []):
         pop_uf[m["uf"]] = pop_uf.get(m["uf"], 0) + float(pop_censo.get(f"{int(m['codigo_ibge']):07d}", 0) or 0)
-    emergencias = [e for e in ((ss.get("emergencias") or []) if isinstance(ss.get("emergencias"), list) else []) if isinstance(e, dict)]
-    ufs_em = sorted({e.get("uf") for e in emergencias if e.get("uf") in UFS})
-    pop_total = sum(pop_uf.values()); pop_em = sum(pop_uf.get(u, 0) for u in ufs_em)
-    # 16/10/2026 (HANDOVER_SAUDE_PAGINA §6c): a lista dos eventos vai junto da contagem — a linha e a
-    # marca da página leem a lista (UF, tipo, documento, data), e a contagem é o tamanho dela.
-    eventos = [{k: e.get(k) for k in ("uf", "tipo", "documento", "data", "url")} for e in emergencias]
-    resposta = {"emergencias": len(emergencias), "eventos": eventos, "ufs": ufs_em, "pop_sob_emergencia": int(pop_em), "pop_total": int(pop_total),
-                "indice": round(100.0 * pop_em / pop_total, 1) if pop_total else 0.0, "desde": "29/06/2026",
-                "fontes": ["DOU (ESPIN)", "diários oficiais estaduais"], "nota": "índice de resposta sanitária = parcela da população em estado com emergência sanitária declarada no ciclo; contagem de emergências ao lado; nunca somado à antecipação"}
+    resposta = resposta_sanitaria(ss.get("emergencias"), ss.get("emergencias_busca") or {}, pop_uf)
     verificadas = [uf for uf in UFS if ufs[uf]["verificado"]]
     por_faixa = {}
     for uf in verificadas: por_faixa[ufs[uf]["faixa"]] = por_faixa.get(ufs[uf]["faixa"], 0) + 1
@@ -387,11 +408,25 @@ def autoteste() -> int:
         conf = [{"nivel": "municipal", "uf": "XX", "municipio": "A", "categoria": 5}]
         c = cobertura_sanitaria(muns, ref, pop, auto, conf, {"plano": 1.0, "plano_antigo": 0.6})
         return c["XX"]["cobertura"] == 40.0 and c["XX"]["planos_lidos"] == 2 and c["XX"]["planos_sem_leitura"] == 1 and c["XX"]["pop_coberta"] == 160
+    pop = {u: 10 for u in UFS}
+    todas = {"federal": {"consultado_em": "12/10/2026"}, "estadual": {u: {"consultado_em": "15/10/2026"} for u in UFS}}
+    def t12():
+        r = resposta_sanitaria(None, {}, pop); return r["situacao"] == "nao_coletado" and r["indice"] is None and r["emergencias"] is None
+    def t13():
+        r = resposta_sanitaria([], todas, pop); return r["situacao"] == "verificado" and r["indice"] == 0.0 and r["emergencias"] == 0
+    def t14():
+        r = resposta_sanitaria([], {"federal": todas["federal"], "estadual": {"PB": {"consultado_em": "15/10/2026"}}}, pop)
+        return r["indice"] is None and r["emergencias"] is None and "MS" in r["faltam"][0] and "PB" not in r["lacunas_estaduais"]
+    def t15():
+        r = resposta_sanitaria([{"uf": "BR", "tipo": "espin"}], {"federal": todas["federal"]}, pop)
+        return r["indice"] == 100.0 and r["situacao"] == "verificado" and len(r["ufs"]) == 27
     return rodar_autoteste({"temporada pelo título": t1, "temporada pela data": t2, "prontidão: VIG 2025/26 = 42,5; NOVO 27/08 = 75": t3,
                             "prontidão: edição antiga = 32,5; LAC = 0": t4, "não verificado não recebe número": t5,
                             "faixas nos limites": t6, "negativo: status inválido não pontua": t7,
                             "v0.2: âncoras do índice principal": t8, "v0.2: plano decenal não pontua": t9,
-                            "v0.3: três componentes, pesos iguais": t10, "v0.3: cobertura sanitária por população": t11})
+                            "v0.3: três componentes, pesos iguais": t10, "v0.3: cobertura sanitária por população": t11,
+                            "resposta: campo ausente é não coletado, nunca 0": t12, "resposta: lista vazia com as duas buscas é 0 verificado": t13,
+                            "resposta: metade estadual sem busca deixa o índice nulo e nomeada": t14, "resposta: ESPIN cobre 100% da população": t15})
 
 
 if __name__ == "__main__":

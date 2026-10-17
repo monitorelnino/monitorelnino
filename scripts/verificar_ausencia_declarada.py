@@ -58,6 +58,13 @@ def conferir(doc: dict) -> list:
     return falhas
 
 
+def zero_sem_busca(resposta: dict) -> list:
+    """5. a resposta sanitária só publica 0 com as duas buscas datadas (17/10/2026). Função pura."""
+    zero = 0 in (resposta.get("emergencias"), resposta.get("indice"), resposta.get("pop_sob_emergencia"))
+    return ["monitor_saude.resposta: 0 publicado sem as duas buscas (situacao "
+            f"{resposta.get('situacao')!r})"] if zero and resposta.get("situacao") != "verificado" else []
+
+
 def autoteste() -> int:
     bom = {"campos_obrigatorios": ["uf", "escopo", "orgao"],
            "itens": [{"uf": "MT", "escopo": "plano estadual", "orgao": "X", "resumo_publico": "curto"}]}
@@ -73,7 +80,9 @@ def autoteste() -> int:
          {**bom, "itens": [{**bom["itens"][0], "resumo_publico": "a" * (LIMITE_RESUMO + 1)}]}, 1),
         ("sem campos_obrigatorios reprova", {"itens": []}, 1),
     ]
-    falhou = False
+    falhou = not (zero_sem_busca({"emergencias": 0, "indice": 0.0}) and not zero_sem_busca(
+        {"emergencias": 0, "indice": 0.0, "situacao": "verificado"}) and not zero_sem_busca({"situacao": "nao_coletado"}))
+    print(f"  {'✗' if falhou else '✓'} resposta sanitária: 0 sem as duas buscas reprova")
     for rotulo, doc, esperado in casos:
         n = len(conferir(doc))
         ok = (n >= esperado) if esperado else (n == 0)
@@ -88,7 +97,9 @@ def main() -> int:
         print(f"✗ AUSÊNCIA DECLARADA: {ARQ.relative_to(RAIZ).as_posix()} ausente")
         return 1
     doc = json.loads(ARQ.read_text(encoding="utf-8"))
-    falhas = conferir(doc)
+    mon = RAIZ / "data" / "monitor_saude.json"
+    falhas = conferir(doc) + (zero_sem_busca(json.loads(mon.read_text(encoding="utf-8")).get("resposta") or {})
+                              if mon.exists() else ["data/monitor_saude.json ausente"])
     if falhas:
         print("✗ AUSÊNCIA DECLARADA: problemas encontrados:")
         for f in falhas:

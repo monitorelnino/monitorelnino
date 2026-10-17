@@ -73,8 +73,8 @@ Atualizado em 17/10/2026.
 | `coletar_diarios_consorciados.py` | — | `atos_resposta.json` | — | — | não |
 | `coletar_diarios_municipais.py` | — | `atos_resposta.json`, `cobertura_qd.json` | — | 5 | não |
 | `coletar_doe.py` | — | `atos_resposta.json`, `estados.json`, `fontes_doe.json`, `indice.json`, `monitor_saude.json`, `municipios.json` (+2) | — | 2 | não |
-| `coletar_edicoes_doe.py` | — | `doe_ocorrencias.json` | — | 3 | não |
-| `coletar_espin.py` | — | `espin_revisar.json`, `saude_sinais.json` | — | — | não |
+| `coletar_edicoes_doe.py` | — | `doe_ocorrencias.json` | — | 5 | não |
+| `coletar_espin.py` | — | `saude_sinais.json` | — | 1 | não |
 | `coletar_execucao_mps.py` | — | `financiamento/mps_2026.json` | — | — | não |
 | `coletar_financiamento.py` | — | `compromissos_federais.json`, `consultas.json`, `emendas.json`, `financiamento_uf.json`, `por_uf.json`, `recursos_uf.json` (+2) | — | — | não |
 | `coletar_fns.py` | — | `fns_2026.json` | — | 1 | não |
@@ -124,7 +124,7 @@ Atualizado em 17/10/2026.
 | `juiz.py` | — | — | — | 9 | SIM |
 | `julgar_e_aplicar_descobertas.py` | — | `atos_resposta.json`, `consist.json`, `decretos_historico_uf.json`, `estados.json`, `indice.json`, `municipios.json` (+2) | — | 4 | não |
 | `julgar_filas.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json`, `promocoes_automaticas.json` | — | 4 | não |
-| `julgar_saude.py` | — | `pistas_imprensa_saude.json`, `saude_uf.json` | — | 1 | não |
+| `julgar_saude.py` | — | `pistas_imprensa_saude.json`, `saude_uf.json` | — | 2 | não |
 | `ler_caixa_lai.py` | — | — | — | — | não |
 | `migrar_saude_instrumentos.py` | — | — | — | 4 | não |
 | `migrar_v224_verificacao.py` | — | `citacao_incompleta.json`, `erratas_v224.json`, `log_buscas.json`, `municipios.json`, `pontos_mapa.json` | — | — | não |
