@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 O workflow do ensaio chamava `verificar_autoteste_nao_escreve.py` (27 coletores, 12 arquivos de banco); passa a chamar `verificar_autotestes_isolados.py --rapido`, que cobre os mesmos coletores contra todo `data/`. Pedido da D, que remove o portão antigo em seguida.
 
+## 2026-10-17 · #843 · Consulta do município: a situação do plano numa função comum
+
+A classificação do plano de contingência do município (encontrado, estadual, citado, não localizado, decreto, em elaboração, outro ato, ainda não verificado) sai de `index.js` e vira `ConsultaMunicipio.situacaoDoPlano`, que a inicial já usa e Para gestores pode usar sem copiar. Nenhuma frase muda. Pedido da B2 (12:11).
+
 ## 2026-10-17 · #835 · Niño 3.4 semanal no coletor de sinais; o apoio técnico volta a ser coletado
 
 Fonte nova `noaa_nino34_semanal` (arquivo `wksst9120.for` do CPC) em `sinais_risco.json → enos.nino34_semanal`, de 2025 em diante, para o gráfico abaixo do RONI. Achado no caminho: desde 30/09 a rodada completa pulava a camada de apoio técnico, e ONI, Niño 3.4 mensal e a discussão do CPC estavam parados em 30/09. Voltam a ser coletados.
