@@ -725,7 +725,79 @@ def edicoes_apinova(buscar_fn, base):
     return fn
 
 
-EDICOES_POR_DATA = {"edicao_ce": edicoes_ce, "edicao_pb": edicoes_pb, "edicao_apinova": edicoes_apinova,
+def _tlv(b: bytes, i: int) -> tuple:
+    """(tag, construído, início do conteúdo, fim do conteúdo ou None se indefinido) de um TLV BER."""
+    tag, cons = b[i], bool(b[i] & 0x20)
+    i += 1
+    n = b[i]
+    i += 1
+    if n == 0x80:
+        return tag, cons, i, None
+    if n & 0x80:
+        k = n & 0x7F
+        n, i = int.from_bytes(b[i:i + k], "big"), i + k
+    return tag, cons, i, i + n
+
+
+def _filhos(b: bytes, ini: int, fim) -> list:
+    """Os TLV filhos de um construído, com o fim real de cada um (BER de tamanho indefinido incluso)."""
+    fora, i = [], ini
+    while (fim is None or i < fim) and i < len(b):
+        if fim is None and b[i:i + 2] == b"\x00\x00":
+            break
+        tag, cons, c_ini, c_fim = _tlv(b, i)
+        if c_fim is None:
+            netos = _filhos(b, c_ini, None)
+            c_fim = (netos[-1][4] if netos else c_ini) + 2
+            fora.append((tag, cons, c_ini, None, c_fim, netos))
+        else:
+            fora.append((tag, cons, c_ini, c_fim, c_fim, _filhos(b, c_ini, c_fim) if cons else []))
+        i = fora[-1][4]
+    return fora
+
+
+def conteudo_do_cms(der: bytes) -> bytes:
+    """O documento assinado de dentro de um envelope CMS/PKCS#7 (SignedData), em BER ou DER. Pura.
+
+    ContentInfo → [0] → SignedData → encapContentInfo → [0] → OCTET STRING, que em BER vem partido
+    em pedaços; os pedaços se juntam. Envelope que não tem essa forma LEVANTA, nunca devolve vazio."""
+    def octetos(no):
+        tag, cons, ini, fim, _, netos = no
+        return b"".join(octetos(n) for n in netos) if cons else der[ini:fim]
+    try:
+        info = _filhos(der, 0, None)[0]
+        signed = info[5][1][5][0]                  # [0] EXPLICIT → SignedData
+        encap = signed[5][2]                       # version, digestAlgorithms, encapContentInfo
+        return octetos(encap[5][1][5][0])          # eContentType, [0] EXPLICIT → OCTET STRING
+    except (IndexError, ValueError) as e:
+        raise FormatoDaBuscaMudou(f"envelope assinado sem o documento na forma CMS esperada: {e}") from e
+
+
+# MG (17/10/2026, janela A3, runs 39029434439 e 39030190359): a página do Jornal Minas Gerais chama
+# `api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=AAAA-MM-DD` (endereço declarado no
+# código dela). A resposta traz os cadernos do dia e o caderno principal — o Diário do Executivo,
+# onde sai o decreto do governador — como envelope assinado (CMS) em base64, com o PDF dentro.
+# Edição anterior à janela pública responde 401 (medido em 10/09); por isso a UF declara
+# `acesso_desde` no `fontes_doe.json` e a leitura não desce abaixo dele.
+EDICAO_MG = "{base}/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao={data}"
+
+
+def edicoes_mg(buscar_fn, base):
+    def fn(data):
+        url = EDICAO_MG.format(base=base.rstrip("/"), data=data)
+        o = json.loads(buscar_fn(url, timeout=120, origem="coletar_doe").decode("utf-8", "replace"))
+        if not isinstance(o, dict) or "dados" not in o:
+            raise FormatoDaBuscaMudou("resposta do Jornal Minas Gerais sem 'dados'")
+        arq = (o.get("dados") or {}).get("arquivoCadernoPrincipal") or {}
+        if not arq.get("arquivo"):
+            return []
+        import base64
+        return [{"edicao": arq.get("descricaoCaderno") or "caderno principal", "url": url,
+                 "pdf": conteudo_do_cms(base64.b64decode(arq["arquivo"]))}]
+    return fn
+
+
+EDICOES_POR_DATA = {"edicao_ce": edicoes_ce, "edicao_pb": edicoes_pb, "edicao_apinova": edicoes_apinova, "edicao_mg": edicoes_mg,
                     "edicao_apifront": edicoes_apifront, "edicao_ms": edicoes_ms, "edicao_pi": edicoes_pi}
 
 
@@ -1066,6 +1138,13 @@ def _t_edicao_por_data() -> bool:
 
 
 # Recorte REAL da listagem do DOE-MS, 15/10/2026 (run 38820165075).
+# Envelopes CMS mínimos com a forma do Jornal Minas Gerais (ContentInfo → SignedData → eContent):
+# o real começa por 30 80 06 09 2A 86 48 86 F7 0D 01 07 02 A0 80 (BER de tamanho indefinido).
+_OID_SD, _OID_DATA = b"\x06\x09\x2a\x86\x48\x86\xf7\x0d\x01\x07\x02", b"\x06\x09\x2a\x86\x48\x86\xf7\x0d\x01\x07\x01"
+CMS_BER = (b"\x30\x80" + _OID_SD + b"\xa0\x80\x30\x80\x02\x01\x01\x31\x00\x30\x80" + _OID_DATA
+           + b"\xa0\x80\x24\x80\x04\x08%PDF-abc\x04\x02de\x00\x00\x00\x00\x00\x00" + b"\x00\x00" * 3)
+CMS_DER = (b"\x30\x2c" + _OID_SD + b"\xa0\x1f\x30\x1d\x02\x01\x01\x31\x00\x30\x16" + _OID_DATA
+           + b"\xa0\x09\x04\x07%PDF-xy")
 # Recorte REAL da listagem do mês do DOE-AL, 17/10/2026 (run 39028133123).
 FIXTURE_APINOVA = (b'{"status":"success","editions":[{"id":51928,"number":2905,"edition_type_name":"Di\\u00e1rio Oficial '
                    b'do Estado de Alagoas","suplement":false,"publication_date":"2026-10-16T03:00:00.000000Z"},{"id":51929,'
@@ -1349,6 +1428,15 @@ def autoteste() -> int:
                      and r[1] == {"a": 1, "b": 1})(
                 itens_sp("SP", "2026-10-01", "2026-10-15", termos=["a", "b"], dormir=lambda s: None,
                          buscar_fn=lambda u, **k: FIXTURE_PUBLICACAO_SP if "/publications/" in u else FIXTURE_BUSCA_SP)),
+        "DOE-MG: o PDF sai de dentro do envelope assinado, em BER partido e em DER; envelope torto LEVANTA":
+            lambda: (conteudo_do_cms(CMS_BER) == b"%PDF-abcde" and conteudo_do_cms(CMS_DER) == b"%PDF-xy"
+                     and _levanta(lambda: conteudo_do_cms(b"\x30\x03\x02\x01\x01"), FormatoDaBuscaMudou)),
+        "DOE-MG: a edição do dia vem com o PDF; dia sem caderno é vazio; resposta sem 'dados' LEVANTA":
+            lambda: (edicoes_mg(lambda u, **k: json.dumps({"dados": {"arquivoCadernoPrincipal": {
+                         "arquivo": __import__("base64").b64encode(CMS_DER).decode(), "descricaoCaderno": "Diário do Executivo"}}}).encode(),
+                         "https://h")("2026-10-15")[0]["pdf"] == b"%PDF-xy"
+                     and edicoes_mg(lambda u, **k: b'{"dados": null, "erros": []}', "https://h")("2026-10-15") == []
+                     and _levanta(lambda: edicoes_mg(lambda u, **k: b'{"x": 1}', "https://h")("2026-10-15"), FormatoDaBuscaMudou)),
         "DOE-AL: a listagem do mês dá edição e suplemento da data; outra data é vazio; listagem sem a lista LEVANTA":
             lambda: (edicoes_apinova(lambda u, **k: FIXTURE_APINOVA, "https://h/")("2026-10-16") == [
                          {"edicao": "2905", "url": "https://h/apinova/api/editions/downloadPdf/51928"},
