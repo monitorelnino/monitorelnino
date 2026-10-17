@@ -77,23 +77,21 @@ def posta_json(url, corpo_json):
 
 
 if __name__ == "__main__":
-    print("=== RR ===")
-    ctx("https://www.imprensaoficial.rr.gov.br/_visualizar-mes/?ano=2026&mes=09", r"<form[^>]*>", 40, 3)
-    for u in ("https://www.imprensaoficial.rr.gov.br/_visualizar-doe/?doe=2026/09/doe-20260910.pdf",
-              "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/09/doe-20260910.pdf",
-              "https://www.imprensaoficial.rr.gov.br/app/_edicoes/2026/09/doe-20260910.pdf"):
-        corpo(u, 600)
-    print("=== SC ===")
-    for s in scripts("https://portal.doe.sea.sc.gov.br/v2.44.07/"):
-        if "main." in s:
-            ctx(s, r"restPrefix\+\"/jornal\"", 1200, 2)
-    corpo("https://portal.doe.sea.sc.gov.br/repositorio/2026/20261016/Jornal/22862.pdf")
-    print("=== RS ===")
-    corpo("https://secweb.procergs.com.br/doe/", 600)
+    RJ = "https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?session=VDBWR1JrNXFhM3BQUkZsMFQwUlNRazE1TURCTk1FMHpURlJzUlU5VlJYUk5ha0V6VFRCRk5VMXJXWGxSYTA1RVRWUmpOVTFxU1hwTlJFVjVUa0U5UFE9PQ=="
     print("=== RJ ===")
-    ctx("https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?session=VDBWR1JrNXFhM3BQUkZsMFQwUlNRazE1TURCTk1FMHpURlJzUlU5VlJYUk5ha0V6VFRCRk5VMXJXWGxSYTA1RVRWUmpOVTFxU1hwTlJFVjVUa0U5UFE9PQ==",
-        r"MudaEdicao|<script[^>]*src=[^>]*>|<iframe[^>]*>|\.php\?[^\"' ]{5,}", 300, 15)
-    print("=== MA ===")
-    corpo("https://www.diariooficial.ma.gov.br/", 400)
+    ctx(RJ, r"PDFView\.open|PDFJS\.|\.open\(|DEFAULT_URL|file\s*=|url\s*=|\.pdf", 250, 12)
+    ctx("https://www.ioerj.com.br/portal/modules/conteudoonline/include/pdfjs/web/viewer-min.js", r"DEFAULT_URL|session|mostra_edicao|\.php", 200, 10)
+    print("=== RS ===")
+    for s in scripts("https://www.diariooficial.rs.gov.br/"):
+        if "main-" in s:
+            ctx(s, r"getDoeEndpoint\(\)[^;]{0,200}", 200, 6)
     print("=== BA ===")
-    corpo("https://dool.egba.ba.gov.br/", 300)
+    for u in ("https://dool.egba.ba.gov.br/dool/", "http://www.egba.ba.gov.br/diario/", "https://www.ba.gov.br/egba/diario-oficial"):
+        corpo(u, 400)
+    print("=== LEGISLACAO ===")
+    for u in ("https://legis.alepe.pe.gov.br/", "https://dadosabertos.almg.gov.br/ws/legislacao/pesquisa/avancada?tipo=DEC&ano=2026&expressao=emerg%C3%AAncia&formato=json",
+              "https://www.almg.gov.br/legislacao-mineira/", "http://alerjln1.alerj.rj.gov.br/decest.nsf", "https://www.al.rs.gov.br/legis/",
+              "https://al.se.leg.br/", "https://www.al.ma.leg.br/", "https://legislacao.pe.gov.br/"):
+        corpo(u, 500)
+    print("=== MA ===")
+    corpo("https://www.diariooficial.ma.gov.br/", 300)
