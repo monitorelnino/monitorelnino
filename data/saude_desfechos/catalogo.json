@@ -14,7 +14,13 @@
    "sistema": "Sivep-DDA / Sinan (surtos DTHA); SISAB (atendimentos APS)",
    "periodicidade": "semanal",
    "fonte_aberta": "MDDA/SIVEP-DDA só por TabNet (consulta interativa); o OpenDataSUS hospeda apenas o módulo indígena (Siasi). O Zenodo que alimentava a série está parado.",
-   "status_coleta": "nao_coletavel_por_maquina"
+   "status_coleta": "nao_coletavel_por_maquina",
+   "rota": {
+    "sistema": "SISAB, relatório público de produção (formulário, sem login)",
+    "url": "https://sisab.saude.gov.br/paginas/acessoRestrito/relatorio/federal/saude/RelSauProducao.xhtml",
+    "provado_em": null,
+    "prova": "formulário lido em 17/10/2026: linha Estado, coluna Competência (jan/2023 a ago/2026), filtro CIAP/CID; consulta ainda não feita. TabNet do DATASUS sem página de DDA no índice público."
+   }
   },
   {
    "id": "dtha",
@@ -23,7 +29,14 @@
    "sistema": "Sinan (surto DTHA)",
    "periodicidade": "semanal",
    "fonte_aberta": "DTHA só por TabNet; busca no portal em 29/09/2026 devolveu zero conjuntos.",
-   "status_coleta": "nao_coletavel_por_maquina"
+   "status_coleta": "nao_coletavel_por_maquina",
+   "rota": {
+    "sistema": "SINAN surto DTA (.dbc no FTP do DATASUS)",
+    "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/",
+    "arquivos": "FINAIS/SDTA* (11), PRELIM/SDTA* (6)",
+    "provado_em": null,
+    "prova": "arquivos listados em 17/10/2026; ainda não decodificados"
+   }
   },
   {
    "id": "dengue",
@@ -52,7 +65,14 @@
    "sistema": "Sivep-Malária",
    "periodicidade": "semanal",
    "fonte_aberta": "SIVEP-Malária só por BI público e TabNet; nenhum conjunto no Portal de Dados Abertos (busca de 29/09/2026 devolveu zero).",
-   "status_coleta": "nao_coletavel_por_maquina"
+   "status_coleta": "nao_coletavel_por_maquina",
+   "rota": {
+    "sistema": "SINAN malária fora da Amazônia (.dbc no FTP do DATASUS)",
+    "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/",
+    "arquivos": "FINAIS/MALA* (20), PRELIM/MALA* (3)",
+    "provado_em": null,
+    "prova": "arquivos listados em 17/10/2026; a Amazônia é SIVEP-Malária, sem rota de máquina"
+   }
   },
   {
    "id": "lepto",
@@ -60,8 +80,16 @@
    "comprometimento": "água",
    "sistema": "Sinan",
    "periodicidade": "semanal",
-   "fonte_aberta": "Leptospirose no SINAN só por TabNet; no portal existe apenas indicador agregado da RIPSA, que não dá série por UF e semana.",
-   "status_coleta": "nao_coletavel_por_maquina"
+   "fonte_aberta": "SINAN, microdados .dbc no FTP do DATASUS (finais até 2024, preliminares 2025–2026); o TabNet dá o mesmo número.",
+   "status_coleta": "nao_coletavel_por_maquina",
+   "rota": {
+    "sistema": "SINAN (.dbc no FTP do DATASUS)",
+    "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/",
+    "arquivos": "FINAIS/LEPTBR19–24, PRELIM/LEPTBR25–26",
+    "provado_em": "17/10/2026",
+    "prova": "LEPTBR26 preliminar: 1.594 confirmados (CLASSI_FIN=1) por UF de residência = TabNet leptobr.def, 2026: 1.594; RS 180 = 180; as 27 UFs iguais",
+    "coletor": "coletar_datasus_dbc.py --desfecho leptospirose"
+   }
   },
   {
    "id": "desidratacao",
@@ -200,5 +228,79 @@
   "nao_coletado": "há coletor, e a fonte falhou ou não respondeu — lacuna declarada",
   "nao_coletavel_por_maquina": "a fonte pública existe só como consulta interativa (TabNet) ou atrás de autenticação; não há arquivo nem API aberta para ler",
   "fonte_desatualizada": "a fonte é legível por máquina, mas parou de publicar dado corrente"
- }
+ },
+ "abertura_saude_fontes": {
+  "_governanca": "Fonte nomeada de cada mecanismo do 1º parágrafo da abertura da Saúde (HANDOVER_SAUDE_PAGINA §1.1), lida pela máquina em 17/10/2026 (runner, válvula coleta-dia/2026-10-17-sonda-sus). Mecanismo sem fonte localizada sai da frase; a divergência fica registrada aqui.",
+  "mecanismos": [
+   {
+    "mecanismo": "seca e fogo trazem doenças respiratórias pela fumaça",
+    "fonte": "https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/svsa/vigilancia-ambiental/plano-de-contingencia-seca-e-estiagem.pdf",
+    "pagina": 10,
+    "trecho": "queimadas impactam diretamente a saúde da população, aumentando a incidência de diferentes agravos, principalmente doenças respiratórias e cardiovasculares, especialmente em grupos populacionais mais vulnerabilizados, como crianças, pessoas idosas e gestantes",
+    "lido_em": "17/10/2026"
+   },
+   {
+    "mecanismo": "falta de água tratada traz diarreias",
+    "fonte": "https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/svsa/vigilancia-ambiental/plano-de-contingencia-seca-e-estiagem.pdf",
+    "pagina": 17,
+    "trecho": "A falta de água e a necessidade de armazenar água podem […] Doenças diarreicas agudas",
+    "lido_em": "17/10/2026"
+   },
+   {
+    "mecanismo": "chuva forte traz leptospirose, diarreias e hepatite A",
+    "fonte": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/e/enchentes",
+    "pagina": null,
+    "trecho": "Muitas doenças podem ser transmitidas, como a leptospirose, o tétano, a hepatite A, doenças diarreicas agudas, entre outros.",
+    "lido_em": "17/10/2026"
+   },
+   {
+    "mecanismo": "o calor agrava doenças cardíacas e renais, sobretudo em idosos e crianças",
+    "fonte": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/c/calor",
+    "pagina": null,
+    "trecho": "os mais vulneráveis — como idosos, crianças, pessoas com problemas renais, cardíacos, respiratórios ou de circulação, diabéticos, gestantes e população em situação de rua",
+    "lido_em": "17/10/2026"
+   },
+   {
+    "mecanismo": "o calor favorece o mosquito da dengue e da chikungunya",
+    "fonte": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/a/aedes-aegypti",
+    "pagina": null,
+    "trecho": "A temperatura climática e pluviosidade são outros fatores importantes que influenciam na infestação pelo Aedes.",
+    "lido_em": "17/10/2026"
+   },
+   {
+    "mecanismo": "a água guardada em casa na estiagem ou parada depois das chuvas vira criadouro",
+    "fonte": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/a/aedes-aegypti",
+    "pagina": null,
+    "trecho": "Tampar e lavar reservatórios de água são ações importantes para o combate ao Aedes aegypti […] eliminar qualquer cantinho que acumule água",
+    "lido_em": "17/10/2026"
+   }
+  ],
+  "sem_fonte_localizada": [
+   {
+    "trecho_da_frase": "o calor acelera […] o vírus",
+    "procurado_em": [
+     "https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/svsa/vigilancia-ambiental/plano-de-contingencia-seca-e-estiagem.pdf",
+     "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/dengue",
+     "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/a/aedes-aegypti",
+     "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/c/chikungunya"
+    ],
+    "lido_em": "17/10/2026"
+   },
+   {
+    "trecho_da_frase": "e os planos das secretarias estaduais de saúde",
+    "nota": "não conferido pela leitura de 17/10/2026: as fontes acima são federais",
+    "lido_em": "17/10/2026"
+   }
+  ]
+ },
+ "sondagens": [
+  {
+   "data": "17/10/2026",
+   "janela": "E1",
+   "ftp_datasus": "anônimo, identificado pela senha 'monitorelnino.com.br'; SINAN PRELIM 357 arquivos, FINAIS 744; LEPTBR26 (723 KB) baixado em 2,5 s e decodificado em 0,5 s",
+   "tabnet": "leptobr.def responde ao POST de formulário (0,8 s); sem página de DDA no índice público",
+   "sisab": "RelSauProducao.xhtml público, 5,9 MB, ViewState JSF; robots.txt 404",
+   "opendatasus": "API de busca (package_search) sem resposta JSON em opendatasus.saude.gov.br; ckan-dadosabertos.saude.gov.br não resolve"
+  }
+ ]
 }

@@ -47,8 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
-      <dt>17/10/2026 · Defesa civil: evento declarado por município</dt>
-      <dd>`gerar_resposta.py` grava `evento_declarado` (famílias dos atos casados, pela função única do tipo), `dias_sem_reconhecimento` e, por UF, `eventos_declarados` e `evento_mais_declarado`. O nome do ato deixa de contar como &quot;outro declarado&quot; (380 atos passam a &quot;sem tipo informado&quot;). Soma por família = 1.202 atos casados. Metodologia §32.5.</dd>
+      <dt>17/10/2026 · Desfechos do SUS: arquivo comum e leitor `.dbc`</dt>
+      <dd>Nasce a forma comum dos desfechos novos em `data/saude_desfechos/` (`desfechos_sus.py`): série por UF, taxa por 100 mil, faixa habitual do canal endêmico, quintis de 2019–2025 congelados para o mapa, último valor, parcial e preliminar, quarentena para arquivo fora da forma. Leitor `.dbc` do DATASUS em Python puro; leptospirose do SINAN conferida contra o TabNet (1.594 = 1.594). Catálogo com a sondagem e as fontes da abertura da Saúde. Detalhe: METODOLOGIA §108.</dd>
       <dt>17/10/2026 · Pedidos da A3: muro da LexML e elo próprio para recuperar as edições dos diários</dt>
       <dd>`detectar_muro_de_robo` reconhece a &quot;Verificação de segurança — Senado Federal&quot;, que a LexML serve com HTTP 200: é recusa, não conteúdo. Novo chamador do coletor, só por disparo, `recuperar_edicoes_doe.yml` (300 min, prazo de 280, grupo da noite), para a recuperação do canal 2, que não cabe no elo da saúde estadual.</dd>
       <dt>17/10/2026 · Portões: 119 para 92 comandos</dt>
