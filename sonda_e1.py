@@ -61,7 +61,7 @@ def ckan():
             print(f"[ckan] {termo}: FALHA {type(e).__name__}: {e}")
 
 def sisab_html():
-    h = buscar(__import__("coletar_sisab").RELATORIO, timeout=90).decode("utf-8", "replace")
+    h = buscar(__import__("coletar_sisab").RELATORIO, timeout=180).decode("utf-8", "replace")
     i = h.find('id="j_idt44"')
     form = h[i:i + 400000]
     nomes = sorted(set(re.findall(r'name="([^"]+)"', form)))
