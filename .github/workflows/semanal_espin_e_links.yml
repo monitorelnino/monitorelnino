@@ -29,6 +29,6 @@ jobs:
       # Válvula coleta-dia (janela A3, 17/10/2026): sondagem das rotas dos diários. Este ramo não vai à main.
       # Válvula coleta-dia (janela A3, 17/10/2026): sondagem das rotas dos diários. Este ramo não vai à main.
       comandos: |
-        scripts/sondar_rotas_doe.py --trecho https://diario.imprensaoficial.al.gov.br/apinova/api/editions/published?page=1|https://diario.imprensaoficial.al.gov.br/apinova/api/editions/published?page=8|https://diario.imprensaoficial.al.gov.br/apinova/api/editions/published/2026/09|https://www.diariooficial.rs.gov.br/environments/environment.json|https://www.jornalminasgerais.mg.gov.br/main-A77B4DKJ.js~Gi.API~jornal/~caderno|https://www.lexml.gov.br/
+        scripts/sondar_rotas_doe.py --trecho https://doe-backend.pro.rs.gov.br/public/materias/?page=1&tipoDiario=doe&queryString=emerg%C3%AAncia%20em%20sa%C3%BAde%20p%C3%BAblica|https://doe-backend.pro.rs.gov.br/robots.txt|https://www.diariooficial.rs.gov.br/main-WOM4SM2S.js~ngbDateToUrl(F){~tiposDiario|https://www.jornalminasgerais.mg.gov.br/main-A77B4DKJ.js~.get("~.get(`~DataPublicacao(|https://www.jornalminasgerais.mg.gov.br/robots.txt|https://diario.imprensaoficial.al.gov.br/robots.txt
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
