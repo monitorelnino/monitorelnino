@@ -21,6 +21,7 @@ from collections import defaultdict
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from coletores_base import ler, gravar, rodar_autoteste, data_da_edicao
+from scripts.tipo_de_evento_dos_atos import tipo_ou_sem_informacao
 
 RAIZ = Path(__file__).resolve().parent
 
@@ -57,14 +58,17 @@ def _nrm(nome) -> str:
     return "".join(c for c in s if unicodedata.category(c) != "Mn").lower().strip()
 
 
-def consolidar_municipios(eventos: list, verificacao: list) -> dict:
-    """{ibge: {decreto, primeiro_decreto, tipos, reconhecido, decretado, evento_observado, fontes}} para os 5.571.
-    Reconhecido = DOU/SEDEC (reconhecimento federal) ou decreto_reconhecido em verificacao_municipal. Função pura."""
+def consolidar_municipios(eventos: list, verificacao: list, ref: date | None = None) -> dict:
+    """{ibge: {decreto, primeiro_decreto, tipos, reconhecido, decretado, evento_observado, evento_declarado,
+    dias_sem_reconhecimento, fontes}} para os 5.571. Reconhecido = DOU/SEDEC ou decreto_reconhecido em
+    verificacao_municipal. `evento_declarado`: as famílias dos atos casados, pela função única do tipo
+    (`tipo_ou_sem_informacao`); sem ato casado, `sem_tipo_informado`. Função pura."""
     out = {}
     for r in verificacao:
         out[str(r["ibge"]).zfill(7)] = {"ibge": str(r["ibge"]).zfill(7), "nome": r.get("nome"), "uf": r.get("uf"), "decreto": False,
                                        "primeiro_decreto": None, "primeiro_reconhecimento": None, "tipos": [], "reconhecido": bool(r.get("decreto_reconhecido")), "decretado": False,
-                                       "evento_observado": "em_classificacao", "fontes": [], "n_eventos": 0}
+                                       "evento_observado": "em_classificacao", "evento_declarado": [], "dias_sem_reconhecimento": None,
+                                       "fontes": [], "n_eventos": 0}
     # 08/10/2026 (A3-01): evento sem `ibge` era descartado em SILÊNCIO pelo `continue`. Oito
     # eventos de canal `orgao_estadual` não traziam o código, e três deles — Itaúba, Colniza e
     # Várzea Grande, todos MT — não tinham nenhum outro evento: sumiam do contador. MT publicava
@@ -109,6 +113,8 @@ def consolidar_municipios(eventos: list, verificacao: list) -> dict:
         if t == "reconhecimento_federal": m["reconhecido"] = True
         else: m["decretado"] = True
         if t not in m["tipos"]: m["tipos"].append(t)
+        fam = tipo_ou_sem_informacao(ev)
+        if fam not in m["evento_declarado"]: m["evento_declarado"].append(fam)
         if d and (m["primeiro_decreto"] is None or d < data_br(m["primeiro_decreto"])): m["primeiro_decreto"] = d.strftime("%d/%m/%Y")
         if t == "reconhecimento_federal" and d_rec and (
                 m.get("primeiro_reconhecimento") is None
@@ -123,6 +129,33 @@ def consolidar_municipios(eventos: list, verificacao: list) -> dict:
               f"(A6-01; voltam na recoleta)")
     for m in out.values():
         if m["reconhecido"] and not m["decreto"]: m["decreto"] = True     # reconhecido via S2iD sem evento no arquivo de atos
+        if not m["decreto"]: continue
+        # 17/10/2026 (HANDOVER_DEFESA_CIVIL §8): o tipo vem do ato; família real antes de
+        # "sem tipo", que só fica quando nenhum ato casado declara o evento.
+        fams = sorted(f for f in m["evento_declarado"] if f != "sem_tipo_informado")
+        m["evento_declarado"] = fams or ["sem_tipo_informado"]
+        if ref and not m["reconhecido"] and m["primeiro_decreto"]:
+            m["dias_sem_reconhecimento"] = (ref - data_br(m["primeiro_decreto"])).days
+    return out
+
+
+def eventos_por_uf(municipios: dict, eventos: list) -> dict:
+    """Por UF: atos casados por família e a família mais declarada (empate = lista). Conta o que
+    `consolidar_municipios` casou: mesmo filtro, mesma função do tipo. Função pura."""
+    ib_uf = {k: m["uf"] for k, m in municipios.items()}
+    por_nome = {(_nrm(m.get("nome")), str(m.get("uf") or "").upper()): k for k, m in municipios.items()}
+    cont = {uf: defaultdict(int) for uf in UFS}
+    for ev in eventos:
+        if ev.get("atribuicao_nao_conferida"): continue
+        ib = str(ev.get("ibge") or "").zfill(7)
+        if ib not in ib_uf: ib = por_nome.get((_nrm(ev.get("nome") or ev.get("municipio")), str(ev.get("uf") or "").upper()))
+        if ib in ib_uf and ib_uf[ib] in cont: cont[ib_uf[ib]][tipo_ou_sem_informacao(ev)] += 1
+    out = {}
+    for uf, c in cont.items():
+        reais = {k: v for k, v in c.items() if k != "sem_tipo_informado"}
+        topo = max(reais.values()) if reais else 0
+        out[uf] = {"eventos_declarados": dict(sorted(c.items())),
+                   "evento_mais_declarado": sorted(k for k, v in reais.items() if v == topo) if reais else None}
     return out
 
 
@@ -166,8 +199,9 @@ def gerar() -> int:
     atos = ler("atos_resposta.json", {"eventos": []}) or {"eventos": []}
     verificacao = ler("verificacao_municipal.json", []) or []
     pop = ler("populacao_censo2022.json", {}) or {}
-    mun = consolidar_municipios(atos["eventos"], verificacao)
+    mun = consolidar_municipios(atos["eventos"], verificacao, data_da_edicao())
     por = agregar_uf(mun, pop); serie = serie_semanal(mun)
+    for uf, v in eventos_por_uf(mun, atos["eventos"]).items(): por[uf].update(v)
     hoje = data_da_edicao().strftime("%d/%m/%Y")
     n_total = sum(v["n_municipios"] for v in por.values()); pop_total = sum(v["pop_uf"] for v in por.values()); pop_dec = sum(v["pop_sob_decreto"] for v in por.values())
     datas = [data_br(m["primeiro_decreto"]) for m in mun.values() if m["primeiro_decreto"] and data_br(m["primeiro_decreto"]) >= INICIO_CICLO]
@@ -207,7 +241,20 @@ def autoteste() -> int:
           "data_reconhecimento": "20/07/2026", "causa": "reconhecimento federal", "canal": "DOU",
           "fonte": "DOU", "url": "u"}]
     P = {"0000001": 100, "0000002": 300, "0000003": 600, "0000004": 50, "0000005": 20}
-    m = consolidar_municipios(E, V); por = agregar_uf(m, P)
+    E[0]["desastre"] = "Estiagem - 1.4.1.1.0"; E[1]["desastre"] = "Chuvas Intensas - 1.3.2.1.4"
+    m = consolidar_municipios(E, V, date(2026, 8, 9)); por = agregar_uf(m, P)
+    def t11():
+        """§8: evento do município = famílias dos atos casados; S2iD sem ato = sem tipo; soma por família = atos casados."""
+        epu = eventos_por_uf(m, E)
+        return (m["0000001"]["evento_declarado"] == ["chuva", "seca"] and m["0000002"]["evento_declarado"] == ["sem_tipo_informado"]
+                and m["0000005"]["evento_declarado"] == ["outro_declarado"] and m["0000003"]["evento_declarado"] == []
+                and epu["RS"] == {"eventos_declarados": {"chuva": 1, "seca": 1}, "evento_mais_declarado": ["chuva", "seca"]}
+                and epu["BA"]["evento_mais_declarado"] is None and sum(sum(v["eventos_declarados"].values()) for v in epu.values()) == 3)
+    def t12():
+        """§8: dias desde o primeiro decreto só para quem não tem reconhecimento."""
+        V2 = V + [{"ibge": "6", "nome": "F", "uf": "PR", "decreto_reconhecido": None}]
+        m2 = consolidar_municipios(E + [{"ibge": "6", "uf": "PR", "data": "30/07/2026", "causa": "situação de emergência", "canal": "DOE"}], V2, date(2026, 8, 9))
+        return m2["0000006"]["dias_sem_reconhecimento"] == 10 and m2["0000001"]["dias_sem_reconhecimento"] is None
     def t1(): return m["0000001"]["decreto"] and m["0000001"]["reconhecido"] and m["0000001"]["decretado"] and m["0000001"]["primeiro_decreto"] == "10/07/2026"
     def t2(): return m["0000002"]["decreto"] and m["0000002"]["reconhecido"] and not m["0000002"]["decretado"] and not m["0000003"]["decreto"]
     def t3(): return por["RS"]["n_municipios"] == 2 and por["RS"]["fracao_municipios"] == round(2/3, 4) and por["RS"]["fracao_populacao"] == 0.4 and por["RS"]["indice"] == 40.0 and por["BA"]["n_municipios"] == 0 and por["BA"]["indice"] == 0.0
@@ -230,7 +277,8 @@ def autoteste() -> int:
                             "A3-07: sem data de decreto, a do evento serve": t10,
                             "município: decretado + reconhecido, primeiro decreto": t1, "reconhecido só pelo S2iD conta; ibge fora do universo ignorado": t2,
                             "UF: fração de municípios e de população": t3, "fatias em_classificacao e tons": t4, "série desde 29/06 com defeso": t5,
-                            "C16: evento observado nunca imputado": t6, "frase C18 e semana ISO": t7})
+                            "C16: evento observado nunca imputado": t6, "frase C18 e semana ISO": t7,
+                            "§8: evento declarado pelo ato; soma por família = atos casados": t11, "§8: dias sem reconhecimento": t12})
 
 
 if __name__ == "__main__":
