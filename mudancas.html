@@ -28,9 +28,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/acesso.js?v=3d25b2e8"></script>
-<script src="assets/mapas.js?v=ea07b524"></script>
+<script src="assets/mapas.js?v=ed063f88"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
-<link rel="stylesheet" href="assets/base.css?v=18a6c971">
+<link rel="stylesheet" href="assets/base.css?v=4b3f1c71">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -73,6 +73,8 @@
       <dd>`julgar_filas` copiava `criterios` do veredito para cada pista, em duplicata com `promocoes_automaticas.json`, e não gravava `leu_documento`. O fechamento por prazo de 09/10 (A1-16), que lê `leu_documento` na pista, nunca o encontrava. Agora a pista guarda `leu_documento`, e as 7.333 cópias idênticas saem do dado. A fila de pistas cai de 44,2 para 40,9 MB antes de a fila reentrante julgar 14 mil pistas.</dd>
       <dt>17/10/2026 · Imprensa da saúde usa o parser, a fonte e o cursor da imprensa regional</dt>
       <dd>`monitorar_imprensa_saude.py` tinha cópias de `montar_url`, `extrair_itens_rss`, `parece_fonte_oficial`, `_hash` e do cursor de `monitorar_imprensa_regional.py`; passa a importá-las (o cursor recebe o caminho). As pistas da saúde ganham o domínio do veículo, que o parser regional já lia. Saem também três imports sem uso. Consolidação, item 5. −57 linhas.</dd>
+      <dt>17/10/2026 · Saúde: abertura aprovada, topo da inicial e consulta única</dt>
+      <dd>A página abre com os três parágrafos aprovados e com os dois medidores da inicial: preparação publicada na saúde (média das UFs verificadas) e emergências em saúde pública (índice nulo vira lacuna). Uma consulta do município, no componente comum, substitui as três buscas por bloco. O &quot;Como ler&quot; antigo sai; o link leva à metodologia até o texto novo da editoria. No Monitor de riscos, o subtítulo do mapa de focos passa ao satélite de referência.</dd>
       <dt>17/10/2026 · Mapa de fogo no satélite de referência; consulta do município com calor e reconhecimento</dt>
       <dd>Os pontos do mapa vinham de todos os satélites e do arquivo do dia corrente, enquanto os números saem do satélite de referência no último dia completo. `focos_pontos.json` passa a nascer do mesmo CSV e do mesmo satélite que `focos_referencia.json`, no mesmo coletor. METODOLOGIA §41.8. `riscos_municipio/&lt;UF&gt;.json` ganha a classe de calor do MS e o reconhecimento federal (Proteja-se §7.3).</dd>
       <dt>17/10/2026 · Fila de pistas reentrante: o juiz volta na noite até esvaziar</dt>
@@ -165,8 +167,6 @@
       <dd>`verificar_texto_publico.js` absorve legendas e prosa (portão 19), semana epidemiológica, palavras por página, componente de figura, fichas semânticas, regra 0 da Imprensa, enquadramento federal, vocabulário dos scripts e o `--so-texto-proibido`: nove scripts que renderizavam as mesmas páginas (dois com a URL errada, lendo o texto de reserva) saem. Regras em `layout/regras.json`; 72 casos de mutação no autoteste. Linhas .py/.js/.yml: −842; portões 272 → 259.</dd>
       <dt>16/10/2026 · Inicial com os textos da editoria</dt>
       <dd>Inicial: título, metadescrição, introdução, abertura em quatro parágrafos (indicados pela União lidos do dado), &quot;Como ler&quot; e cartão da cidade com o texto da editoria, tudo no catálogo; formulário diz que a conferência é automática. Nome por extenso segue &quot;Monitor&quot; (correção da central, 16/10); só `CLAUDE.md:28` acompanha. Teto de palavras da inicial 950 → 1.050.</dd>
-      <dt>16/10/2026 · Cadastro Nacional: o MARÉ cobre os indicados pela União</dt>
-      <dd>A página do MIDR (28/07/2026) publica os 2.095 municípios indicados pela União ao Cadastro Nacional do art. 3º-A — a lista que o MARÉ já lia das notas técnicas — e entra no coletor como segunda fonte. Nova seção §107 e erratas em §54, §66 e §21; o portão passa a proibir afirmar inscrição ou dever. §5.3.1 explica como o município compõe a nota.</dd>
     </dl>
   </section>
 </main>
