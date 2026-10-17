@@ -4736,7 +4736,7 @@
    "status_robots": "permite",
    "crawl_delay": 5.0,
    "primeiro_acesso": "2026-10-17",
-   "total_acessos": 4,
+   "total_acessos": 5,
    "acessos": [
     {
      "url": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&maximumRecords=20&query=emerg%C3%AAncia%20em%20sa%C3%BAde%20p%C3%BAblica",
@@ -4759,6 +4759,12 @@
     {
      "url": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&maximumRecords=20&query=decreto%20estadual%20emerg%C3%AAncia%20sa%C3%BAde%202026",
      "quando": "2026-10-17T10:58:27Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&maximumRecords=2&query=decreto",
+     "quando": "2026-10-17T11:05:58Z",
      "origem": "robo",
      "cliente": "MonitorElNinoBrasil/2.2.4"
     }
