@@ -114,6 +114,13 @@ PADROES = {
            "ancoras": {"2026-09-03": 12270, "2026-10-02": 12293},
            "janela": 12,
            "nota": "nome do arquivo pelo número da edição; âncoras conferidas em 02/10/2026"},
+    # 17/10/2026 (A3): o padrão foi LIDO nos links reais da página inicial (DOE-16-10-2026.pdf …
+    # DOE-29-09-2026.pdf) e a edição de 10/09/2026 baixou do runner (3,7 MB, PDF). A edição
+    # extraordinária e a suplementar têm outro nome (DOE-EXTRAORDINARIO-…, …-SUPLEMENTAR-1) e não
+    # entram por data: a leitura cobre a edição regular, e só ela.
+    "RO": {"padrao": "https://diof.ro.gov.br/data/uploads/{ano}/{mm}/DOE-{dd}-{mm}-{ano}.pdf",
+           "fora_da_leitura": "edições extraordinária e suplementar (outro nome de arquivo)",
+           "nota": "edição regular por data, lida na página inicial em 17/10/2026"},
 }
 
 
@@ -349,6 +356,8 @@ def busca_de_declaracao(uf: str, registro: dict, adaptadores=None) -> dict:
         return {"lacuna": (f"{velhas} edição(ões) ainda não relida(s) com os termos de declaração" if velhas
                            else f"{falhas} edição(ões) do ciclo não lida(s)" if falhas
                            else f"nenhuma edição lida por data ({sit['modo']})")}
+    if (PADROES.get(uf) or {}).get("fora_da_leitura"):   # edição que o padrão não alcança: a metade não fecha
+        return {"lacuna": f"{len(lidas)} edição(ões) lida(s); fora da leitura: {PADROES[uf]['fora_da_leitura']}"}
     em = max(dt.datetime.strptime(e["em"], "%d/%m/%Y").date() for e in lidas)
     return {"consultado_em": em.strftime("%d/%m/%Y"), "edicoes_lidas": len(lidas)}
 
@@ -650,6 +659,9 @@ def _autoteste() -> int:
     ok("o padrão da PB é preenchido com mês por nome",
        endereco_da_data(PADROES["PB"]["padrao"], "2026-09-09")
        == "https://auniao.pb.gov.br/servicos/doe/2026/setembro/diario-oficial-09-09-2026-portal.pdf")
+    ok("o padrão de RO é o nome lido na página inicial",
+       endereco_da_data(PADROES["RO"]["padrao"], "2026-09-10")
+       == "https://diof.ro.gov.br/data/uploads/2026/09/DOE-10-09-2026.pdf")
     ok("o padrão do MS é preenchido com mês por número",
        endereco_da_data(PADROES["MS"]["padrao"], "2026-09-03").endswith("/2026/09/03/DO_03_09_2026.pdf"))
 
