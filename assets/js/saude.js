@@ -197,8 +197,9 @@ function __init(){
         return '<em>' + esc(m.faixa) + ' · ' + esc(decBR(m.prontidao)) + '</em><br>instrumento ' + esc(decBR(i.pontos)) + ' (' + esc(ST_H[i.status] || i.status) + ')' + (i.data ? ' · ' + esc(i.data) : '') + '<br>cobertura sanitária ' + esc(decBR(c.pontos) ?? '—') + ' (' + esc(c.planos_lidos ?? 0) + (Number(c.planos_lidos ?? 0) === 1 ? ' plano lido · ' : ' planos lidos · ') + esc(c.planos_sem_leitura ?? 0) + ' sem leitura)' + '<br>quando o ato saiu em relação ao primeiro boletim ' + esc(decBR(a.pontos)) + (i.temporada ? ' (edição ' + esc(i.temporada) + ')' : ''); },
       []);
     const R = (MSAUDE && MSAUDE.resumo) || {}; const pf = R.por_faixa || {};
+    const lim = ((MSAUDE && MSAUDE.metodo) || {}).faixas || {};
     MonitorMapas.legenda('legMonitor', [
-      ...['avançado', 'consolidado', 'em construção', 'estágio inicial'].map(f => ({cor: FX[f], rotulo: f + ' · ' + (pf[f] || 0) + ' UF' + ((pf[f] || 0) === 1 ? '' : 's')})),
+      ...['avançado', 'consolidado', 'em construção', 'estágio inicial'].map(f => ({cor: FX[f], rotulo: f + (lim[f] ? ' (' + lim[f] + ')' : '') + ' · ' + (pf[f] || 0) + ' UF' + ((pf[f] || 0) === 1 ? '' : 's')})),
       {cor: FX['não verificado'], rotulo: 'ainda não verificado · ' + (R.nao_verificadas ?? '—') + ' UFs (sem número)'}]);
     fonteFigura('boxMonitor', {fontes: ['MARÉ Saúde'], data: (MSAUDE || {}).gerado_em});
     // tabela alternativa
@@ -407,36 +408,19 @@ function abrirDetalheSaude(uf){
 
 function cartoesEstadosSaude(){
   /* Item 7 do handover de 02/10/2026: os 27 estados no MESMO componente da inicial — o mapa de
-   * cartões, cada estado na sua posição geográfica, com sigla, nome, número e as duas barras. Antes
+   * cartões, cada estado na sua posição geográfica, com sigla, nome, número e uma barra (a resposta tem medidor próprio no topo). Antes
    * eram colunas por região, com outro desenho: dois componentes para a mesma coisa divergem na
    * primeira correção. A disposição, o teclado e o estilo vivem em assets/js/grade-estados.js.
    */
   const wrap = document.getElementById('regionsSaude'), dlg = document.getElementById('detailSaude');
   if (!wrap || !dlg || !window.GradeEstados) return;
   const M = (MSAUDE && MSAUDE.ufs) || {};
-  const RS = (MSAUDE && MSAUDE.resposta) || {ufs: []};
-  const ST_H = {NOVO: 'plano do ciclo', READ: 'readaptado', VIG_REVISADO: 'plano revisado em 2026',
-                VIG: 'plano de todo ano', ELAB: 'em elaboração', LAC: 'não localizado',
-                NAO_VERIFICADO: 'ainda não verificado'};
   fetch('data/estados.json').then(r => r.ok ? r.json() : null).then(E => {
     const lista = ((E && E.ufs) || []).map(u => ({uf: u.uf, nome: u.nome, status: u.status}));
     (E && E.ufs || []).forEach(u => { NOMES[u.uf] = u.nome; REG[u.uf] = u.regiao; });
     GradeEstados.montar({
       alvo: wrap, ufs: lista, rotulo: 'MARÉ Saúde',
       indice: uf => { const m = M[uf] || {}; return m.verificado ? m.prontidao : null; },
-      /* A barra de baixo é a mesma da inicial: resposta 0–100. Em saúde, a resposta registrada é a
-       * emergência em saúde pública declarada no ciclo — e onde não houve declaração o valor é
-       * ZERO medido, não ausência. */
-      resposta: uf => ((RS.ufs || []).includes(uf) ? 100 : 0),
-      extra: uf => {
-        const m = M[uf] || {}; const i = m.instrumento || {}; const dc = m.risco_atual || {};
-        return '<div class="tile-face"><span>'
-          + esc(ST_H[i.status] || i.status || 'ainda não verificado')
-          + (i.data ? ' · ' + esc(i.data) : '') + '</span><span>'
-          + (m.camada === 'adaptacao' ? 'plano decenal: estrutura'
-             : 'cobertura sanitária ' + esc(decBR((m.cobertura || {}).pontos) ?? '—'))
-          + '</span></div>';
-      },
       aoClicar: uf => abrirDetalheSaude(uf),
     });
     if (window.MonitorMapas && MonitorMapas.animarGauges) MonitorMapas.animarGauges(wrap);
@@ -1037,34 +1021,19 @@ const AREAS = [
     }
   }).catch(_erroSaude("saude:1103"));
 
-  /* 3 · Risco previsto por estado — famílias derivadas dos boletins do Painel El Niño. */
-  Promise.all([
-    fetch('data/geo_uf.json').then(r => r.ok ? r.json() : null),
-    fetch('data/saude_uf.json').then(r => r.ok ? r.json() : null),
-  ]).then(([GEO, SUFd]) => {
-    if (!el('mapaRiscoSan') || !GEO || !SUFd || !window.MonitorMapas) return;
-    const FAM = {seca: ['Seca, calor e fogo', MonitorMapas.PALETA.risco.seca],
-                 chuvas: ['Chuvas extremas', MonitorMapas.PALETA.risco.chuvas],
-                 multi: ['As duas famílias', MonitorMapas.PALETA.risco.multi]};
+  /* 3 · Risco previsto por estado (HANDOVER_SAUDE_PAGINA §2.5): as famílias dos boletins do Painel
+   * El Niño em etiquetas de sigla, o mesmo componente do Monitor de riscos. */
+  fetch('data/saude_uf.json').then(r => r.ok ? r.json() : null).then(SUFd => {
+    const dl = el('faixaRiscoSan');
+    if (!dl || !SUFd || !window.MonitorMapas) return;
     const fam = uf => {
       const r = (((SUFd.uf || {})[uf] || {}).risco_sanitario_projetado || []).join(' ').toLowerCase();
       const s = /calor|queimad|arbovir|estiagem|seca/.test(r), c = /leptospir|diarre|hepatite|chuva/.test(r);
-      return s && c ? 'multi' : s ? 'seca' : c ? 'chuvas' : null;
+      return s && c ? 'multi' : s ? 'seca' : c ? 'chuvas' : 'nenhum';
     };
-    const ctx = MonitorMapas.contexto(GEO, 480, 460);
-    MonitorMapas.fundo && MonitorMapas.fundo('mapaRiscoSan', 'chuva_claro');
-    MonitorMapas.ufs(ctx, 'mapaRiscoSan',
-      uf => fam(uf) ? FAM[fam(uf)][1] : MonitorMapas.NEUTRA,
-      uf => { const r = ((SUFd.uf || {})[uf] || {}).risco_sanitario_projetado || [];
-              return r.length ? esc(r.join('<br>')) : 'sem risco previsto registrado'; });
-    MonitorMapas.legenda('legRiscoSan', Object.values(FAM).map(v => ({cor: v[1], rotulo: v[0]}))
-      .concat([{cor: MonitorMapas.NEUTRA, rotulo: 'sem risco previsto registrado'}]));
-    const dl = el('dlRiscoSan');
-    if (dl) {
-      dl.innerHTML = UFS.map(uf => '<dt>' + esc(uf) + '</dt><dd>'
-        + esc((((SUFd.uf || {})[uf] || {}).risco_sanitario_projetado || ['sem risco previsto registrado']).join('; '))
-        + '</dd>').join('');
-    }
+    MonitorMapas.faixaPrevista(dl, [['Seca, calor e fogo', 'seca'], ['Chuvas extremas', 'chuvas'],
+      ['As duas famílias', 'multi'], ['Sem risco previsto registrado', 'nenhum']]
+      .map(([rotulo, f]) => [rotulo, UFS.filter(uf => fam(uf) === f)]));
     // O dado não traz a numeração dos boletins lidos: a frase não a fixa (nº 1 a 3 envelhecia).
     if (el('linhaRiscoSan')) el('linhaRiscoSan').textContent = 'boletins do Painel El Niño';
     MonitorMapas.credito('boxRiscoSan', {fontes: ['Painel El Niño 2026-2027 (CEMADEN/INPE)'], data: SUFd.corte});
