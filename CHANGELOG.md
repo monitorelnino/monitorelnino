@@ -13,6 +13,25 @@ não pontuados permanecem na versão corrente.
 
 `semana.json` ganha `topo` (anunciado, pago, gasto direto pela União, defesa civil desde 29/06, SUS de emergência), `mes_a_mes` (pago por MP) e `mapa` (pontos por município na sede do IBGE). Defesa civil federal traz o total desde 29/06 ao lado da janela de sete dias; atos novos contam as MPs pela data de publicação. Metodologia §33.1.
 
+## 2026-10-17 · #827 · Defesa civil: evento declarado por município
+
+`gerar_resposta.py` grava `evento_declarado` (famílias dos atos casados, pela função única do tipo), `dias_sem_reconhecimento` e, por UF, `eventos_declarados` e `evento_mais_declarado`. O nome do ato deixa de contar como "outro declarado" (380 atos passam a "sem tipo informado"). Soma por família = 1.202 atos casados. Metodologia §32.5.
+
+## 2026-10-17 · #829 · Desfechos do SUS: arquivo comum e leitor `.dbc`
+Nasce a forma comum dos desfechos novos em `data/saude_desfechos/` (`desfechos_sus.py`): série por UF, taxa por 100 mil, faixa habitual do canal endêmico, quintis de 2019–2025 congelados para o mapa, último valor, parcial e preliminar, quarentena para arquivo fora da forma. Leitor `.dbc` do DATASUS em Python puro; leptospirose do SINAN conferida contra o TabNet (1.594 = 1.594). Catálogo com a sondagem e as fontes da abertura da Saúde. Detalhe: METODOLOGIA §108.
+
+## 2026-10-17 · #826 · Pedidos da A3: muro da LexML e elo próprio para recuperar as edições dos diários
+
+`detectar_muro_de_robo` reconhece a "Verificação de segurança — Senado Federal", que a LexML serve com HTTP 200: é recusa, não conteúdo. Novo chamador do coletor, só por disparo, `recuperar_edicoes_doe.yml` (300 min, prazo de 280, grupo da noite), para a recuperação do canal 2, que não cabe no elo da saúde estadual.
+
+## 2026-10-17 · #828 · Portões: 119 para 92 comandos
+
+O autoteste do layout roda dentro da conformidade; a Imprensa usa o medidor de página do layout. Os `testar_*.py` sem flag e catorze autotestes puros do bloco "sempre" passam a rodar só em `verificar_autotestes_isolados.py`, que já os cobria e agora também prova que não alteram `data/`. Mesma cobertura, provada por mutação. Registro do #784: entrou junto a fusão `verificar_carimbo_da_rodada.py`.
+
+## 2026-10-17 · #825 · Figura principal larga
+
+Cada página pode ter uma figura principal em largura total (mapa ou série), declarada no contrato, além do diagrama; no Monitor de riscos, o mapa de focos e o RONI. `verificar_conformidade.py` reprova figura larga não declarada; `verificar_layout.py` lê a fração de um terço de `regras.json`. Decisão de 16/10/2026.
+
 ## 2026-10-17 · #824 · Consulta do município diz se ele está na rede do Cemaden
 
 `riscos_municipio/<UF>.json` ganha `rede_cemaden` por município, lido da lista oficial do Cemaden (dois PDFs, 1.038 + 95 municípios, publicada em 26/03/2024, data declarada na origem). Nome que não casa com o IBGE fica listado, nunca adivinhado (6 de 1.131 no executor). Sem resposta da fonte, o campo não vai e a origem diz por quê. Proteja-se §4.

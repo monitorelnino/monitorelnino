@@ -8,8 +8,8 @@ dependem de um handover repeti-las. O que não é verificado por máquina volta 
 cada rodada — e foi assim que um cartão saiu de uma página numa reforma de desenho, que um rótulo
 foi cortado no meio por um eixo de gráfico, e que um texto ficou da cor do fundo.
 
-Este portão incorpora o de layout (`verificar_layout.py`, que continua existindo e é chamado por
-ele) e acrescenta o que as regras exigem: tipografia, componentes, as quatro funções da figura,
+Este portão incorpora o de layout (`verificar_layout.py`, biblioteca do contrato e do despejo, cujo
+autoteste roda dentro do deste) e acrescenta o que as regras exigem: tipografia, componentes, as quatro funções da figura,
 vocabulário proibido, forma dos números, acessibilidade e a coerência entre páginas.
 
 O QUE ELE CONFERE, por página
@@ -252,17 +252,36 @@ def problemas_de_acessibilidade(d390: dict, regras: dict) -> list:
 _RE_NUMERACAO = re.compile(r"^\s*(?:\d+|[IVXL]+)\s*[.)·—–-]\s")
 
 
-def problemas_de_componentes(d1280: dict, regras: dict) -> list:
-    """Seção sem numeração; no máximo UMA figura larga por página. Função pura."""
+def problemas_de_componentes(d1280: dict, regras: dict, contrato: dict = None, pagina: str = "") -> list:
+    """Seção sem numeração; figura larga só no diagrama (um) e na `figura_principal` que o
+    contrato declara (16/10/2026: uma por página, mapa ou série; a página aprovada tem o seu
+    teto por tipo). Função pura."""
     c = (regras or {}).get("componentes") or {}
     p = []
     if c.get("secao_sem_numeracao"):
         p += [f"seção numerada: {h!r}" for h in (d1280.get("h2") or []) if _RE_NUMERACAO.match(h)]
-    larga = (c.get("figura_larga") or {}).get("classe")
-    largas = [f.get("id") or "?" for f in (d1280.get("figuras") or [])
-              if larga and larga in (f.get("classes") or []) and f.get("visivel", True)]
-    if len(largas) > 1:
-        p.append(f"{len(largas)} figuras largas na página ({', '.join(largas)}); o teto é uma")
+    fl = c.get("figura_larga") or {}
+    fp = fl.get("figura_principal") or {}
+    declarada = (contrato or {}).get("figura_principal") or {}
+    teto = (fp.get("por_pagina_aprovada") or {}).get(pagina)
+    for tipo in declarada:
+        if tipo not in (fp.get("tipos") or []):
+            p.append(f"figura_principal de tipo {tipo!r}; os tipos são {fp.get('tipos')}")
+    if teto is None and len(declarada) > int(fp.get("por_pagina") or 0):
+        p.append(f"{len(declarada)} figuras principais declaradas; o teto é {fp.get('por_pagina') or 0}")
+    diagramas = []
+    for f in d1280.get("figuras") or []:
+        if not (fl.get("classe") and fl["classe"] in (f.get("classes") or []) and f.get("visivel", True)):
+            continue
+        if f.get("id") in declarada.values():
+            continue
+        if "figura--diagrama" in (f.get("classes") or []):
+            diagramas.append(f.get("id") or "?")
+        else:
+            p.append(f"figura larga '{f.get('id') or '?'}' não é diagrama nem a figura_principal do contrato")
+    if len(diagramas) > int(fl.get("diagrama_por_pagina") or 1):
+        p.append(f"{len(diagramas)} diagramas largos na página ({', '.join(diagramas)}); o teto é "
+                 f"{fl.get('diagrama_por_pagina') or 1}")
     return p
 
 
@@ -296,7 +315,7 @@ def problemas(pagina: str, despejo: dict, regras: dict, contrato: dict, excecoes
                                         d1280.get("travessoes") or [])),
         ("acessibilidade", problemas_de_acessibilidade(d390, regras)),
         ("fundo", problemas_de_fundo(d1280, regras)),
-        ("componentes", problemas_de_componentes(d1280, regras)),
+        ("componentes", problemas_de_componentes(d1280, regras, contrato, pagina)),
     ]
     for nome, achados in por_regra:
         if nome in dispensadas:
@@ -326,6 +345,9 @@ def regras_sem_verificador(regras: dict, existe=lambda caminho: True) -> list:
 
 
 def _autoteste() -> int:
+    import verificar_layout   # 17/10/2026: o autoteste do contrato roda aqui, num comando só
+    if verificar_layout.autoteste() != 0:
+        return 1
     falhas = []
     # O total era um literal e envelhecia calado: dizia cobrir mais casos do que
     # cobre, ou menos. Agora e contado.
@@ -352,13 +374,28 @@ def _autoteste() -> int:
        regras_sem_verificador(_r) == ["numeros.formato: sem entrada em _verificacao (diga o portão, ou 'só texto')"])
     _r["_verificacao"]["numeros.formato"] = "só texto até hoje"
     ok("A7-14: 'só texto' declarado passa", regras_sem_verificador(_r) == [])
-    _c = {"componentes": {"secao_sem_numeracao": True, "figura_larga": {"classe": "cartao-mapa--largo"}}}
+    _c = {"componentes": {"secao_sem_numeracao": True, "figura_larga": {
+        "classe": "cartao-mapa--largo", "diagrama_por_pagina": 1, "figura_principal": {
+            "tipos": ["mapa", "serie"], "por_pagina": 1,
+            "por_pagina_aprovada": {"monitor-de-riscos.html": {"mapa": 1, "serie": 1}}}}}}
     _larga = {"id": "a", "classes": ["cartao-mapa--largo"], "visivel": True}
-    ok("A7-14: seção numerada e duas figuras largas reprovam",
+    _diag = {"id": "d", "classes": ["figura--diagrama", "cartao-mapa--largo"], "visivel": True}
+    ok("A7-14: seção numerada e duas figuras largas não declaradas reprovam",
        len(problemas_de_componentes({"h2": ["1. O índice", "II · Saúde"],
-                                     "figuras": [_larga, dict(_larga, id="b")]}, _c)) == 3)
-    ok("A7-14: seção sem número, '2026 em números' e uma figura larga passam",
-       problemas_de_componentes({"h2": ["O índice", "2026 em números"], "figuras": [_larga]}, _c) == [])
+                                     "figuras": [_larga, dict(_larga, id="b")]}, _c)) == 4)
+    ok("figura principal declarada e um diagrama largos passam",
+       problemas_de_componentes({"h2": ["O índice", "2026 em números"], "figuras": [_larga, _diag]},
+                                _c, {"figura_principal": {"mapa": "a"}}, "x.html") == [])
+    ok("dois diagramas largos reprovam",
+       len(problemas_de_componentes({"figuras": [_diag, dict(_diag, id="e")]}, _c)) == 1)
+    ok("duas figuras principais fora da página aprovada reprovam",
+       len(problemas_de_componentes({"figuras": []}, _c, {"figura_principal": {"mapa": "a", "serie": "b"}},
+                                    "x.html")) == 1)
+    ok("monitor de riscos: um mapa e uma série largos declarados passam",
+       problemas_de_componentes({"figuras": [_larga, dict(_larga, id="b")]}, _c,
+                                {"figura_principal": {"mapa": "a", "serie": "b"}}, "monitor-de-riscos.html") == [])
+    ok("figura principal de tipo fora da regra reprova",
+       len(problemas_de_componentes({"figuras": []}, _c, {"figura_principal": {"tabela": "a"}}, "x.html")) == 1)
     _r["_verificacao"]["numeros.formato"] = "scripts/inexistente.py"
     ok("A7-14: verificador que não existe reprova",
        len(regras_sem_verificador(_r, existe=lambda c: False)) == 1)

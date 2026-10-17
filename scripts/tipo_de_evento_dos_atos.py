@@ -48,6 +48,11 @@ FAMILIAS = {
     "vendaval": re.compile(r"(?i)vendaval|tornado|ciclone|ventos? forte|microexplos|granizo"),
 }
 TIPOS = tuple(FAMILIAS) + ("outro_declarado", "sem_tipo_informado")
+# 17/10/2026 (A2, HANDOVER_DEFESA_CIVIL §8): 380 dos 392 "outro_declarado" tinham na `causa` só o
+# nome do ATO ("situação de emergência", "reconhecimento federal", "homologação estadual"), não um
+# evento. Nome de ato não declara evento: sem resto, o texto não decide (None → sem tipo informado).
+_SO_ATO = re.compile(r"(?i)situa[çc][ãa]o de emerg[êe]ncia|estado de calamidade p[úu]blica|reconhecimento federal"
+                     r"|homologa[çc][ãa]o estadual|n[ãa]o especificad[ao] no texto|informado pelo [óo]rg[ãa]o estadual[^;]*")
 
 
 def familia_do_texto(texto: str) -> str | None:
@@ -60,7 +65,7 @@ def familia_do_texto(texto: str) -> str | None:
     casam = [nome for nome, padrao in FAMILIAS.items() if padrao.search(texto)]
     if len(casam) == 1:
         return casam[0]
-    if not casam and texto.strip():
+    if not casam and re.search(r"\w", _SO_ATO.sub("", texto)):
         return "outro_declarado"
     return None
 
@@ -117,6 +122,9 @@ def _autoteste() -> int:
     ok("chuva com granizo é o caso de duas famílias, e não escolhe uma",
        tipo_de_evento("chuva intensa com granizo") is None)
     ok("enchente é chuva", tipo_de_evento("enchente do rio") == "chuva")
+    ok("nome do ato não é evento: reconhecimento federal fica sem tipo",
+       tipo_ou_sem_informacao({"causa": "reconhecimento federal"}) == "sem_tipo_informado"
+       and tipo_ou_sem_informacao({"causa": "situação de emergência"}) == "sem_tipo_informado")
     ok("estiagem é seca", tipo_de_evento("estiagem prolongada") == "seca")
     ok("incêndio é fogo", tipo_de_evento("incêndio em vegetação") == "fogo")
     ok("vendaval é vendaval", tipo_de_evento("vendaval com destelhamentos") == "vendaval")
