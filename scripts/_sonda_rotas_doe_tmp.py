@@ -63,33 +63,50 @@ def b64(d):
     return base64.b64encode(d.encode()).decode()
 
 
+def posta_json(url, corpo_json):
+    import json as _j, urllib.request
+    from coletores_base import UA
+    req = urllib.request.Request(url, data=_j.dumps(corpo_json).encode(), method="POST",
+                                 headers={"User-Agent": UA, "Content-Type": "application/json", "Accept": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            b = r.read()
+        print(f"  POST {url} -> 200 {len(b)} B: {b[:1500].decode('utf-8','replace')}")
+    except Exception as e:  # noqa: BLE001
+        print(f"  POST {url} -> ERRO {type(e).__name__} {getattr(e,'code','')} {str(e)[:100]}")
+
+
 if __name__ == "__main__":
-    print("=== RO ===")
-    for u in ("https://diof.ro.gov.br/data/uploads/2026/09/DOE-10-09-2026.pdf", "https://diof.ro.gov.br/data/uploads/2026/07/DOE-01-07-2026.pdf"):
-        corpo(u)
-    corpo("https://diof.ro.gov.br/busca", 600)
-    print("=== RJ ===")
-    corpo("https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?session=VDBWR1JrNXFhM3BQUkZsMFQwUlNRazE1TURCTk1FMHpURlJzUlU5VlJYUk5ha0V6VFRCRk5VMXJXWGxSYTA1RVRWUmpOVTFxU1hwTlJFVjVUa0U5UFE9PQ==", 2500)
-    print("=== RR ===")
-    corpo("https://www.imprensaoficial.rr.gov.br/_inicial/", 1500)
     print("=== RN ===")
-    corpo("https://www.diariooficial.rn.gov.br/dei/dorn3/", 1500)
-    corpo("http://diariooficial.rn.gov.br/dei/dorn3/", 800)
+    for u in ("https://webdisk.diariooficial.rn.gov.br/Jornal/12026-09-10.pdf", "https://webdisk.diariooficial.rn.gov.br/Jornal/12026-09-28E.pdf"):
+        corpo(u)
+    print("=== RR ===")
+    corpo("https://www.imprensaoficial.rr.gov.br/_visualizar-mes/?ano=2026&mes=09", 600)
+    print("=== RJ ===")
+    ctx("https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?session=VDBWR1JrNXFhM3BQUkZsMFQwUlNRazE1TURCTk1FMHpURlJzUlU5VlJYUk5ha0V6VFRCRk5VMXJXWGxSYTA1RVRWUmpOVTFxU1hwTlJFVjVUa0U5UFE9PQ==",
+        r"<option[^>]*>|\.pdf|DEFAULT_URL|file=|MudaEdicao", 200, 20)
     print("=== AL ===")
-    corpo("https://diario.imprensaoficial.al.gov.br/apinova/api/editions/published?page=1", 1500)
-    for s in scripts("https://diario.imprensaoficial.al.gov.br/"):
-        ctx(s, r"searchES|formBusca:|formBusca=|populateSearch", 300, 12)
+    corpo("https://diario.imprensaoficial.al.gov.br/apinova/api/editions/published/2026/9", 800)
+    corpo("https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51925")
+    posta_json("https://diario.imprensaoficial.al.gov.br/apinova/api/editions/searchES?page=1&bucket_size=10",
+               {"keywords": "emergência em saúde pública", "range": ["2026-06-29", "2026-10-17"],
+                "searchType": "frase_exata", "order": "novo"})
     print("=== RS ===")
+    corpo("https://www.diariooficial.rs.gov.br/assets/config.json", 600)
+    corpo("https://www.diariooficial.rs.gov.br/assets/config/config.json", 600)
     for s in scripts("https://www.diariooficial.rs.gov.br/"):
         if "main-" in s:
-            ctx(s, r"API_URL\s*[=:]|apiUrl\s*[=:]|https://[a-z0-9.\-]*rs\.gov\.br/[a-z0-9_\-/]*api[^\"'`]*", 200, 15)
+            ctx(s, r"getRestEndpoint\(\)\{[^}]*\}|restEndpoint[^,;]{0,120}", 160, 8)
     print("=== MG ===")
     for s in scripts("https://www.jornalminasgerais.mg.gov.br/"):
         if "main-" in s:
-            ctx(s, r"[\"'`][^\"'`\s]{0,80}(?:/api/|api\.|Api)[^\"'`\s]{0,80}[\"'`]", 120, 25)
+            ctx(s, r"\.API\s*\+\s*[\"'`][^\"'`]+[\"'`]|\$\{[A-Za-z.]*API\}[^`]*`", 60, 40)
     print("=== SC ===")
     for s in scripts("https://portal.doe.sea.sc.gov.br/v2.44.07/"):
         if "main." in s:
-            ctx(s, r"restPrefix\+\"[^\"]*\"|restPrefix\}[^`]*`|cdJornal|/jornal[^\"'`]{0,60}", 160, 25)
+            ctx(s, r"restPrefix\+\"/[^\"]*(?:ornal|dicao|ublica|aterias|portal)[^\"]*\"", 120, 25)
     print("=== MA ===")
-    corpo("https://www.diariooficial.ma.gov.br/public/index.xhtml", 400)
+    corpo("https://www.diariooficial.ma.gov.br/", 400)
+    print("=== BA ===")
+    corpo("http://www.legislabahia.ba.gov.br/", 600)
+    corpo("https://dool.egba.ba.gov.br/", 300)
