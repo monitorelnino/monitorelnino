@@ -692,7 +692,27 @@ def edicoes_pi(buscar_fn, base, enviar_fn=None):
     return fn
 
 
-EDICOES_POR_DATA = {"edicao_ce": edicoes_ce, "edicao_pb": edicoes_pb,
+# AL (17/10/2026, runs 39022687465 e 39023131710): a plataforma "apinova" (o DOE-AL; o mesmo aplicativo
+# serve Cuiabá) lista as edições do mês em JSON — `editions/published/<ano>/<mês>`, com id, número,
+# suplemento e data — e serve o PDF pelo id (`editions/downloadPdf/<id>`: 100 p. com texto em 15/10).
+def edicoes_apinova(buscar_fn, base):
+    raiz, meses = base.rstrip("/"), {}
+
+    def fn(data):
+        mes = data[:7]
+        if mes not in meses:
+            o = json.loads(buscar_fn(f"{raiz}/editions/published/{int(data[:4])}/{int(data[5:7])}", timeout=60,
+                                     origem="coletar_doe").decode("utf-8", "replace"))
+            if not isinstance(o, dict) or not isinstance(o.get("editions"), list):
+                raise FormatoDaBuscaMudou("listagem do mês sem a lista 'editions'")
+            meses[mes] = o["editions"]
+        return [{"edicao": f"{e.get('number')}{' suplemento' if e.get('suplement') else ''}",
+                 "url": f"{raiz}/editions/downloadPdf/{e['id']}"}
+                for e in meses[mes] if str(e.get("publication_date") or "")[:10] == data and e.get("id")]
+    return fn
+
+
+EDICOES_POR_DATA = {"edicao_ce": edicoes_ce, "edicao_pb": edicoes_pb, "edicao_apinova": edicoes_apinova,
                     "edicao_apifront": edicoes_apifront, "edicao_ms": edicoes_ms, "edicao_pi": edicoes_pi}
 
 
@@ -1048,6 +1068,10 @@ FIXTURE_LISTAGEM_MS = """<a href="https://assets.imprensaoficial.ms.gov.br/publi
 # Recortes REAIS da rota (a) do DOE-AM, 15/10/2026.
 FIXTURE_EDICOES_AM = (b'{"erro":false,"msg":"","data":"2026-10-13","numero":null,"ano":"","itens":[{"id":18246,'
                       b'"data":"13\\/10\\/2026","suplemento":0,"numero":35804,"tipo_edicao_id":1,"capa":1,"paginas":48}]}')
+FIXTURE_EDICOES_AL = (b'{"status":"success","editions":[{"id":51928,"number":2905,"suplement":false,'
+                      b'"publication_date":"2026-10-16T03:00:00.000000Z"},{"id":51929,"number":2905,"suplement":true,'
+                      b'"publication_date":"2026-10-16T03:00:00.000000Z"},{"id":51925,"number":2904,"suplement":false,'
+                      b'"publication_date":"2026-10-15T03:00:00.000000Z"}]}')
 FIXTURE_EDICOES_AM_VAZIO = b'{"erro":true,"msg":"Edi\\u00e7\\u00e3o n\\u00e3o existente!","data":"2026-10-14","itens":[]}'
 
 
@@ -1279,6 +1303,13 @@ def autoteste() -> int:
                         {"edicao": "35804", "url": "https://x.am.gov.br/portal/edicoes/download/18246"}]
                      and edicoes_apifront(lambda u, **k: FIXTURE_EDICOES_AM_VAZIO, "https://x.am.gov.br")("2026-10-14") == []
                      and _levanta(lambda: edicoes_apifront(lambda u, **k: b'{"outra": 1}', "https://x")("2026-10-14"),
+                                  FormatoDaBuscaMudou)),
+        "DOE-AL: o mês lista as edições, suplemento incluído; dia sem edição é lista vazia; formato novo LEVANTA":
+            lambda: (edicoes_apinova(lambda u, **k: FIXTURE_EDICOES_AL, "https://x.al.gov.br/api/")("2026-10-16") == [
+                        {"edicao": "2905", "url": "https://x.al.gov.br/api/editions/downloadPdf/51928"},
+                        {"edicao": "2905 suplemento", "url": "https://x.al.gov.br/api/editions/downloadPdf/51929"}]
+                     and edicoes_apinova(lambda u, **k: FIXTURE_EDICOES_AL, "https://x")("2026-10-17") == []
+                     and _levanta(lambda: edicoes_apinova(lambda u, **k: b'{"outra": 1}', "https://x")("2026-10-14"),
                                   FormatoDaBuscaMudou)),
         "DOE-MS: a listagem dá o PDF por data, suplemento incluído; dia fora dela é lista vazia":
             lambda: (edicoes_ms_na_listagem(FIXTURE_LISTAGEM_MS) == {
