@@ -112,5 +112,17 @@
     if (typeof dlg.close === 'function') dlg.close(); else dlg.open = false;
   });
 
+  /* "Como ler" na mesma ficha (14/09/2026, pedido de Patricia): o link com `data-ficha="<id>"` copia o
+   * conteúdo oculto daquele id para a ficha da página e a abre, com o título dele como rótulo. */
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest && e.target.closest('a[data-ficha]');
+    var fonte = a && document.getElementById(a.getAttribute('data-ficha')), dlg = a && document.querySelector('dialog.detail');
+    if (!fonte || !dlg) return;
+    e.preventDefault();
+    dlg.querySelector('div').replaceChildren(...fonte.cloneNode(true).childNodes);
+    dlg.setAttribute('aria-label', (fonte.querySelector('h2') || a).textContent.trim());
+    if (!dlg.open) { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.open = true; }
+  });
+
 global.GradeEstados = { montar: montar, GRADE_BR: GRADE_BR };
 })(window);

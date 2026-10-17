@@ -459,7 +459,7 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
    crista (E14). Só a tinta muda: antecipação/saúde = Argila → Âmbar → Mineral → Musgo (0 → 100);
    resposta = Mineral → Argila (frio → quente), decisão de 06/09 mantida. Variante: .gauge-fill--resposta. */
 .mare-metade{display:block;}
-#metadeResposta{border-top:1px solid var(--line); margin-top:var(--sp-4);}
+.mare-metade + .mare-metade{border-top:1px solid var(--line); margin-top:var(--sp-4);}
 .gauge-zone, .contador-zone{display:flex; flex-direction:column; gap:var(--sp-2);}
 .gauge-head{display:flex; align-items:baseline; gap:var(--sp-2); margin-bottom:0; flex-wrap:wrap;}
 .gauge-head .gnum{font-family:var(--font-titulo); font-size:var(--fs-display); line-height:1; font-weight:var(--peso-display); color:var(--ink);}

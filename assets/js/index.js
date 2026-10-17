@@ -587,18 +587,6 @@ function selectUF(uf, tileEl){
     if (typeof __dialogDetail.showModal === 'function') __dialogDetail.showModal(); else __dialogDetail.open = true;
   }
 }
-// 14/09/2026 (pedido de Patricia, 13/09): "Como ler o MARÉ" vira ficha popup no MESMO <dialog> do detalhe do estado,
-// aberta pelo link "como ler o MARÉ" logo abaixo da barra do índice; o conteúdo vive oculto em #comoler.
-(function(){
-  const link = document.getElementById('linkComoLer'), fonte = document.getElementById('comoler'), dlg = document.getElementById('detail');
-  if (!link || !fonte || !dlg) return;
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    document.getElementById('detailConteudo').innerHTML = fonte.innerHTML;
-    dlg.setAttribute('aria-label', 'Como ler o MARÉ Legal');
-    if (!dlg.open) { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.open = true; }
-  });
-})();
 
 // ---- Infraestrutura compartilhada com a página Defesa civil (ex-mapas e gráficos): tooltip
 // (usado pela linha do tempo do herói) e HAB_SET (usado no cartão de cidade,
@@ -1186,12 +1174,7 @@ __load().catch(err => {
 // então aqui só se declara em qual faixa o país está agora (31/08/2026).
 (function(){
   var g = document.getElementById('gaugeNum'), el = document.getElementById('faixaMare');
-  if (!g || !el) return;
-  var v = parseFloat(g.textContent.replace(',', '.'));
-  // [rótulo, fundo, texto] — pares conferidos contra WCAG AA (4,5:1) em 31/08/2026:
-  // ferrugem/claro 6,45 · tan/escuro 6,65 · oliva escurecido/claro ≥4,5 · azul/claro 6,91
-  var fx = MonitorMapas.PALETA.faixaDe(v); var f = [MonitorMapas.PALETA.faixaRotulo[fx], MonitorMapas.PALETA.faixas[fx], MonitorMapas.PALETA.faixasTexto[fx]];
-  el.innerHTML = 'Preparação demonstrada<span class="gfaixa-pill" style="background:' + f[1] + '; color:' + f[2] + '">' + f[0] + '</span>';
+  if (g && el) el.replaceChildren('Preparação demonstrada', MonitorMapas.pilulaDaFaixa(parseFloat(g.textContent.replace(',', '.'))));
 })();
 
 // ===== index.html · bloco 3 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
