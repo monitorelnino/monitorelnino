@@ -119,8 +119,8 @@ def main(args) -> int:
         if alterados or iguais:
             antes = depois            # não repete a mesma acusação no próximo script
         if r.returncode != 0:
-            ultima = (r.stdout or b"").decode("utf-8", "replace").strip().split("\n")[-1][:120]
-            quebrados.append((rel, ultima))
+            linhas = (r.stdout or b"").strip().split(b"\n")[-1:] + (r.stderr or b"").strip().split(b"\n")[-3:]
+            quebrados.append((rel, " | ".join(l.decode("utf-8", "replace")[:160] for l in linhas if l)))
     for rel, erro in quebrados:
         print(f"  [autoteste vermelho] {rel}: {erro}")
     for rel, arquivos in gastadores:
