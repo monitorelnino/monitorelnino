@@ -30,6 +30,7 @@
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
 <link rel="stylesheet" href="assets/base.css?v=18a6c971">
+<script src="assets/mapas.js?v=ea07b524"></script>
 </head>
 <body>
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -41,39 +42,67 @@
     
   </header>
 <main id="conteudo">
+  <!-- Reforma de 17/10/2026 (HANDOVER_GESTORES_16-10-2026): ordem em layout/contratos/prefeituras.json;
+       texto em conteudo/prefeituras.json (o daqui é reserva). -->
   <h1 data-conteudo="prefeituras.titulo_da_pagina">Para gestores</h1>
-  <p class="hint" data-conteudo="prefeituras.abertura">Para prefeitos, secretários e coordenadores de defesa civil: como preparar e publicar um plano para o El Niño, o que ele pode conter e como os recursos chegam, antes e depois de uma emergência.</p>
+  <p class="hint" data-conteudo="prefeituras.abertura">Para prefeitos, secretários e coordenadores de defesa civil. Esta página reúne, num lugar só, a situação do seu município no MARÉ, o que a lei exige de cada governo, o caminho até um plano publicado, o que ele pode conter e como os recursos chegam antes e depois de uma emergência.</p>
 
-  <!-- 01/10/2026 (decisão da editoria): a página passa a ser convite, não cobrança. Saem a seção do
-       período eleitoral (lista vazia e ponteiro para um calendário apagado) e toda menção a ele; sai
-       "Publicar atos é dever legal, não publicidade"; saem os rótulos REGRA/PLANO/PNMIF/ESTADUAL/
-       DIRETA e a frase das chaves; sai o seletor de município, porque a consulta já existe na
-       inicial e duas buscas para a mesma pergunta divergem na primeira correção. -->
-  <section id="sua-cidade" aria-labelledby="suaCidadeTitulo">
-    <h2 id="suaCidadeTitulo" class="sr-only">Como está a sua cidade</h2>
-    <p class="hint" data-conteudo-html="prefeituras.sua-cidade.abertura"><strong>Como está a sua cidade:</strong> <a href="index.html#cidade">Consulte o seu município na página inicial →</a> · <a href="index.html#formulario">Indique um plano que ainda não aparece →</a></p>
+  <section id="municipio" aria-labelledby="municipioTitulo"><div class="panel">
+    <h2 id="municipioTitulo" data-conteudo="prefeituras.municipio.titulo_da_secao">Como está o seu município</h2>
+    <p class="hint" id="municipioAbertura" data-conteudo="prefeituras.municipio.abertura.molde" data-conteudo-valores="{&quot;n_municipios&quot;:5571}">O cartão responde para qualquer um dos 5.571 municípios: se há plano localizado, se a União o indicou ao cadastro nacional, o risco previsto para o estado e o que já chegou de recursos federais para defesa civil e saúde.</p>
+    <div class="tbl-controls">
+      <select id="munUF" aria-label="Estado"><option value="">1 · Seu estado…</option></select>
+      <input id="munNome" type="text" list="munLista" placeholder="2 · Seu município…" aria-label="Nome do município" autocomplete="off" disabled>
+      <datalist id="munLista"></datalist>
+    </div>
+    <div id="munCard" class="meu-card" aria-live="polite" hidden></div>
+  </div></section>
+
+  <section id="quem-deve" aria-labelledby="quemDeveTitulo">
+    <h2 id="quemDeveTitulo" data-conteudo="prefeituras.quem-deve.titulo_da_secao">O que a lei exige de cada governo</h2>
+    <div class="grade-numeros grade-numeros--3 grade-numeros--empilha">
+      <div class="cartao-numero cartao-numero--preparacao" data-cartao="estados">
+        <p class="cartao-numero-rotulo" data-conteudo="prefeituras.quem-deve.estados.rotulo">Estados</p>
+        <p class="cartao-numero-valor" id="leiValor_estados" data-conteudo="prefeituras.quem-deve.estados.valor">27</p>
+        <p class="cartao-numero-variacao" data-conteudo="prefeituras.quem-deve.estados.dever">Plano estadual de proteção e defesa civil, revisado a cada dois anos</p>
+        <p class="cartao-numero-fonte" id="leiFonte_estados"></p>
+      </div>
+      <div class="cartao-numero cartao-numero--resposta" data-cartao="indicados">
+        <p class="cartao-numero-rotulo" data-conteudo="prefeituras.quem-deve.indicados.rotulo">Municípios indicados pela União ao cadastro nacional</p>
+        <p class="cartao-numero-valor" id="leiValor_indicados" data-conteudo="prefeituras.quem-deve.indicados.valor">2.095</p>
+        <p class="cartao-numero-variacao" data-conteudo="prefeituras.quem-deve.indicados.dever">Plano de contingência avaliado e atualizado todo ano, com audiência pública, para os que se inscrevem</p>
+        <p class="cartao-numero-fonte" id="leiFonte_indicados"></p>
+      </div>
+      <div class="cartao-numero cartao-numero--saude" data-cartao="todos">
+        <p class="cartao-numero-rotulo" data-conteudo="prefeituras.quem-deve.todos.rotulo">Todos os municípios</p>
+        <p class="cartao-numero-valor" id="leiValor_todos" data-conteudo="prefeituras.quem-deve.todos.valor">5.571</p>
+        <p class="cartao-numero-variacao" data-conteudo="prefeituras.quem-deve.todos.dever">Dever geral de prevenção, sem prazo nem plano específico para seca, fogo e calor; o MARÉ procura plano em todos</p>
+        <p class="cartao-numero-fonte" id="leiFonte_todos"></p>
+      </div>
+    </div>
+    <p class="note u-mb-0" data-conteudo-html="prefeituras.quem-deve.nota_saude">Na saúde, a lei dá à secretaria estadual o dever de coordenar a vigilância e a resposta a emergências em saúde pública (<a href="https://www.planalto.gov.br/ccivil_03/leis/l8080.htm" target="_blank" rel="noopener">Lei 8.080/1990, art. 17</a>) e deixa a cada secretaria a decisão de publicar um plano para o El Niño. O <a href="saude.html">MARÉ Saúde</a> registra os planos e as estruturas de coordenação que os estados publicaram.</p>
   </section>
 
   <section id="caminho" aria-labelledby="caminhoTitulo">
     <h2 id="caminhoTitulo" data-conteudo="prefeituras.caminho.titulo_da_secao">Do risco ao plano publicado</h2>
-    <p class="hint" data-conteudo="prefeituras.caminho.abertura">Um caminho em seis passos. O plano publicado no diário oficial ou no sítio da prefeitura é o que a população, a imprensa e o MARÉ conseguem encontrar.</p>
+    <p class="hint" data-conteudo="prefeituras.caminho.abertura">Um caminho em seis passos. O plano publicado no diário oficial ou no site da prefeitura é o que a população, a imprensa e o MARÉ conseguem encontrar.</p>
     <ol class="passos" id="passosPlano">
-      <li data-conteudo-html="prefeituras.caminho.item"><b>1</b><span><strong>Conhecer o risco previsto.</strong> O <a href="monitor-de-riscos.html">Monitor de riscos</a> e os boletins do Painel El Niño mostram o que se espera para o seu estado: chuva forte, seca, calor ou fogo.</span></li>
-      <li data-conteudo-html="prefeituras.caminho.item_2"><b>2</b><span><strong>Preparar ou atualizar o plano.</strong> Um plano que cite o ciclo 2026/2027 ou o risco previsto para a sua região ajuda a equipe a agir e a população a saber o que esperar.</span></li>
+      <li data-conteudo-html="prefeituras.caminho.item"><b>1</b><span><strong>Conhecer o risco previsto.</strong> O <a href="monitor-de-riscos.html">Monitor de riscos</a> e os boletins oficiais mostram o que se espera para o seu estado: chuva forte, seca, calor ou fogo.</span></li>
+      <li data-conteudo-html="prefeituras.caminho.item_2"><b>2</b><span><strong>Preparar ou atualizar o plano.</strong> Um plano que cite o El Niño 2026/2027 ou o risco previsto para o seu estado ajuda a equipe a agir e a população a saber o que esperar.</span></li>
       <li data-conteudo-html="prefeituras.caminho.item_3"><b>3</b><span><strong>Aprovar por ato.</strong> Um decreto ou portaria, com número e data, que indique o coordenador de defesa civil e um contato.</span></li>
-      <li data-conteudo-html="prefeituras.caminho.item_4"><b>4</b><span><strong>Publicar onde todos encontram.</strong> No diário oficial ou no sítio da prefeitura, em PDF com texto pesquisável.</span></li>
-      <li data-conteudo-html="prefeituras.caminho.item_5"><b>5</b><span><strong>Manter o cadastro no S2iD.</strong> Coordenador, contatos e áreas de risco em dia: é por esse sistema que passam o reconhecimento federal e os pedidos de recursos.</span></li>
+      <li data-conteudo-html="prefeituras.caminho.item_4"><b>4</b><span><strong>Publicar onde todos encontram.</strong> No diário oficial ou no site da prefeitura, em PDF com texto pesquisável.</span></li>
+      <li data-conteudo-html="prefeituras.caminho.item_5"><b>5</b><span><strong>Manter os dados no S2iD.</strong> O Sistema Integrado de Informações sobre Desastres é o canal do governo federal para reconhecimento de emergência e pedidos de recursos: coordenador, contatos e áreas de risco precisam estar em dia.</span></li>
       <li data-conteudo-html="prefeituras.caminho.item_6"><b>6</b><span><strong>Buscar os recursos.</strong> Há caminhos para antes da emergência e para depois do decreto; veja abaixo.</span></li>
     </ol>
   </section>
 
   <section id="conteudo-plano" aria-labelledby="conteudoPlanoTitulo">
     <h2 id="conteudoPlanoTitulo" data-conteudo="prefeituras.conteudo-plano.titulo_da_secao">O que o plano pode conter</h2>
-    <div class="grade-cartoes">
-      <div class="cartao" data-voz="lei">
-        <h3 class="figura-titulo" data-conteudo="prefeituras.conteudo-plano.titulo">O que a lei prevê</h3>
-        <p class="note u-mb-2" data-conteudo-html="prefeituras.conteudo-plano.nota">Lei 12.340/2010, art. 3º-A, § 7º — <a href="https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12340.htm" target="_blank" rel="noopener">texto compilado oficial</a>.</p>
-        <ul class="checklist">
+    <div class="grade-figuras grade-figuras--3">
+      <article class="cartao cartao-mapa" data-voz="lei">
+        <h3 data-conteudo="prefeituras.conteudo-plano.titulo">O que a lei lista</h3>
+        <p class="note" data-conteudo-html="prefeituras.conteudo-plano.nota">Conteúdo mínimo exigido dos municípios inscritos no cadastro nacional (Lei 12.340/2010, art. 3º-A, § 7º, <a href="https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12340.htm" target="_blank" rel="noopener">texto compilado oficial</a>); para os demais, é a referência que o MARÉ usa.</p>
+        <ul class="u-mb-0">
           <li data-conteudo="prefeituras.conteudo-plano.item">as responsabilidades de cada órgão na preparação, resposta e recuperação</li>
           <li data-conteudo="prefeituras.conteudo-plano.item_2">os sistemas de alerta, ligados ao monitoramento</li>
           <li data-conteudo="prefeituras.conteudo-plano.item_3">os simulados com a população</li>
@@ -83,23 +112,39 @@
           <li data-conteudo="prefeituras.conteudo-plano.item_7">os pontos de recebimento de doações</li>
           <li data-conteudo="prefeituras.conteudo-plano.item_8">o resgate e o atendimento emergencial à fauna atingida, e os pontos de abrigo dela</li>
         </ul>
-      </div>
-      <div class="cartao">
-        <h3 class="figura-titulo" data-conteudo="prefeituras.conteudo-plano.recursos.titulo">O que o MARÉ procura no documento</h3>
-        <ul class="checklist">
+      </article>
+      <article class="cartao cartao-mapa">
+        <h3 data-conteudo="prefeituras.conteudo-plano.recursos.titulo">O que o MARÉ procura no documento</h3>
+        <ul class="u-mb-0">
           <li data-conteudo="prefeituras.conteudo-plano.recursos.item">número, data e ato de aprovação</li>
-          <li data-conteudo="prefeituras.conteudo-plano.recursos.item_2">menção ao ciclo 2026/2027 ou ao risco previsto para o estado</li>
+          <li data-conteudo="prefeituras.conteudo-plano.recursos.item_2">menção ao El Niño 2026/2027 ou ao risco previsto para o estado</li>
           <li data-conteudo="prefeituras.conteudo-plano.recursos.item_3">endereço público e estável</li>
           <li data-conteudo="prefeituras.conteudo-plano.recursos.item_4">coordenador e contato</li>
-          <li data-conteudo="prefeituras.conteudo-plano.recursos.item_5">para o MARÉ Saúde, se o plano trata de saúde, como arboviroses, calor, água e fumaça</li>
+          <li data-conteudo="prefeituras.conteudo-plano.recursos.item_5">para o MARÉ Saúde, se o plano trata de saúde: arboviroses, calor, água e fumaça</li>
         </ul>
-      </div>
+      </article>
     </div>
   </section>
 
   <section id="recursos" aria-labelledby="recursosTitulo">
     <h2 id="recursosTitulo" data-conteudo="prefeituras.recursos.titulo_da_secao">Como os recursos chegam</h2>
-    <p class="hint" data-conteudo-html="prefeituras.recursos.abertura"><strong>Como os recursos chegam.</strong> O caminho do dinheiro, antes e depois de uma emergência, está na página de Financiamento: <a href="financiamento.html#antes">antes da emergência →</a> · <a href="financiamento.html#depois">depois do decreto →</a> · <a href="financiamento.html#caminhos">os caminhos do dinheiro →</a></p>
+    <div class="grade-figuras grade-figuras--3">
+      <article class="cartao cartao-mapa cartao--acento-musgo" id="antes">
+        <h3 data-conteudo="prefeituras.recursos.antes.titulo">Antes da emergência</h3>
+        <p data-conteudo="prefeituras.recursos.antes">Transferências voluntárias da União e do estado para prevenção (obras, mapeamento de risco, sistemas de alerta), por proposta no Transferegov; repasses do Fundo Nacional de Saúde.</p>
+        <a class="cartao-a" href="financiamento.html#antes" data-conteudo="prefeituras.recursos.antes.link">O que já chegou ao seu município →</a>
+      </article>
+      <article class="cartao cartao-mapa cartao--acento-argila" id="depois">
+        <h3 data-conteudo="prefeituras.recursos.depois.titulo">Depois do decreto</h3>
+        <p data-conteudo="prefeituras.recursos.depois">Com a situação de emergência reconhecida pelo governo federal via S2iD: transferência obrigatória para socorro, assistência e restabelecimento; Cartão de Pagamento de Defesa Civil; regime especial de compras.</p>
+        <a class="cartao-a" href="financiamento.html#depois" data-conteudo="prefeituras.recursos.depois.link">Decretos e reconhecimentos →</a>
+      </article>
+      <article class="cartao cartao-mapa cartao--acento-neutro" id="caminhos">
+        <h3 data-conteudo="prefeituras.recursos.caminhos.titulo">Os caminhos do dinheiro</h3>
+        <p data-conteudo="prefeituras.recursos.caminhos">Quem paga, por onde passa e quanto chegou a cada estado e município em 2026, com fonte e data, está na página de Financiamento.</p>
+        <a class="cartao-a" href="financiamento.html#caminhos" data-conteudo="prefeituras.recursos.caminhos.link">Financiamento →</a>
+      </article>
+    </div>
   </section>
 </main>
   <footer class="site-footer">
@@ -111,7 +156,8 @@
 </div>
 
 <script src="assets/colunas.js?v=07ce0f22" defer></script>
-<script src="assets/js/prefeituras.js?v=7cf3ddab" defer></script>
+<script src="assets/js/consulta-municipio.js?v=677bd154" defer></script>
+<script src="assets/js/prefeituras.js?v=50506f94" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
