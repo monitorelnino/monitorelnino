@@ -295,8 +295,8 @@ function __init(totalMunicipios){
   if (alvoBarras) {
     const max = Math.max.apply(null, barras.map(b => b[1]).concat([1]));
     alvoBarras.innerHTML = barras.length ? '<div class="barras-painel">' + barras.map(b => '<div class="barra-linha"><span class="barra-rotulo">' + esc(b[0])
-      + '</span><span class="barra-trilho"><span class="barra" style="width:' + Math.max(1, 100 * b[1] / max).toFixed(1)
-      + '%;background:' + MonitorMapas.PALETA.atmosfera.contagem.rampa[2] + '"></span><span class="barra-valor">' + n(b[1]) + '</span></span></div>').join('') + '</div>'
+      + '</span><span class="barra-trilho"><span class="barra" style="width:calc((100% - 4em) * ' + Math.max(0.01, b[1] / max).toFixed(4)
+      + ');background:' + MonitorMapas.PALETA.atmosfera.contagem.rampa[2] + '"></span><span class="barra-valor">' + n(b[1]) + '</span></span></div>').join('') + '</div>'
       : '<div class="lacuna">Evento declarado em classificação até o corte (' + esc(corteDecretos || 'sem registro') + ').</div>';
   }
   const filtrarEmergencias = listaBuscavel('boxEmergencias', {
