@@ -692,7 +692,46 @@ def edicoes_pi(buscar_fn, base, enviar_fn=None):
     return fn
 
 
-EDICOES_POR_DATA = {"edicao_ce": edicoes_ce, "edicao_pb": edicoes_pb,
+# AL (17/10/2026, runs 39022687465 e 39023131710): a plataforma "apinova" (o DOE-AL; o mesmo aplicativo
+# serve Cuiabá) lista as edições do mês em JSON — `editions/published/<ano>/<mês>`, com id, número,
+# suplemento e data — e serve o PDF pelo id (`editions/downloadPdf/<id>`: 100 p. com texto em 15/10).
+def edicoes_apinova(buscar_fn, base):
+    raiz, meses = base.rstrip("/"), {}
+
+    def fn(data):
+        mes = data[:7]
+        if mes not in meses:
+            o = json.loads(buscar_fn(f"{raiz}/editions/published/{int(data[:4])}/{int(data[5:7])}", timeout=60,
+                                     origem="coletar_doe").decode("utf-8", "replace"))
+            if not isinstance(o, dict) or not isinstance(o.get("editions"), list):
+                raise FormatoDaBuscaMudou("listagem do mês sem a lista 'editions'")
+            meses[mes] = o["editions"]
+        return [{"edicao": f"{e.get('number')}{' suplemento' if e.get('suplement') else ''}",
+                 "url": f"{raiz}/editions/downloadPdf/{e['id']}"}
+                for e in meses[mes] if str(e.get("publication_date") or "")[:10] == data and e.get("id")]
+    return fn
+
+
+# SC (17/10/2026, runs 39023721853 e 39024168986): a API pública que o portal do DOE-SC chama
+# (`apis/jornal/?dtStart=…&dtEnd=…`) lista as edições do dia — a ordinária e a extra (`22862-A`) —
+# com o caminho do PDF no repositório (`dsArquivo`; 58 p. com texto em 16/10). Edição cancelada fica fora.
+REPOSITORIO_SC = "https://portal.doe.sea.sc.gov.br/repositorio"
+
+
+def edicoes_sc(buscar_fn, base):
+    def fn(data):
+        o = json.loads(buscar_fn(f"{base.rstrip('/')}/jornal/?page=1&perPage=50&" + urllib.parse.urlencode(
+            {"dtStart": f"{data} 00:00:00", "dtEnd": f"{data} 23:59:59"}), timeout=60, origem="coletar_doe").decode("utf-8", "replace"))
+        lista = ((o or {}).get("records") or {}).get("data") if isinstance(o, dict) else None
+        if not isinstance(lista, list):
+            raise FormatoDaBuscaMudou("listagem do DOE-SC sem 'records.data'")
+        return [{"edicao": str(j.get("vlNumero") or ""), "url": REPOSITORIO_SC + j["dsArquivo"]}
+                for j in lista if j.get("dsArquivo") and not j.get("stCancelado")
+                and str(j.get("dtPublicacao") or "")[:10] == data]
+    return fn
+
+
+EDICOES_POR_DATA = {"edicao_ce": edicoes_ce, "edicao_pb": edicoes_pb, "edicao_apinova": edicoes_apinova, "edicao_sc": edicoes_sc,
                     "edicao_apifront": edicoes_apifront, "edicao_ms": edicoes_ms, "edicao_pi": edicoes_pi}
 
 
@@ -734,10 +773,11 @@ def itens_por_edicao(uf: str, desde: str, ate: str, edicoes_fn, lidas: dict, ter
     return itens, totais
 
 
-def itens_apifront(uf: str, base: str, desde: str, ate: str, buscar_fn=None, pausa: float = RITMO_APIFRONT_S) -> tuple:
+def itens_apifront(uf: str, base: str, desde: str, ate: str, buscar_fn=None, pausa: float = RITMO_APIFRONT_S,
+                   termos=None) -> tuple:
     """(itens no formato comum do coletor, total declarado por termo). Não grava nada."""
     itens, totais = [], {}
-    for termo in TERMOS_APIFRONT:
+    for termo in (termos or TERMOS_APIFRONT):
         total, acertos = varrer_busca_apifront(base, termo, desde, ate, buscar_fn=buscar_fn, pausa=pausa)
         totais[termo] = total
         for a in acertos:
@@ -745,6 +785,24 @@ def itens_apifront(uf: str, base: str, desde: str, ate: str, buscar_fn=None, pau
                           "url": PDF_APIFRONT.format(base=base.rstrip("/"), diario_id=a["diario_id"]),
                           "trechos": [a["conteudo"]], "territorio": uf})
     return itens, totais
+
+
+ADAPTADORES_DE_BUSCA = ("dodf", "apifront", "busca_sp", *EDICOES_POR_BUSCA)
+
+
+def itens_da_busca(uf: str, adaptador: str, url: str, desde: str, ate: str, termos=None) -> tuple:
+    """(itens, totais) pela rota de BUSCA do diário da UF. Uma porta para os três que perguntam ao
+    mesmo diário com palavras diferentes (17/10/2026): a defesa civil (`coletar_uf`), o funil de
+    saúde e a busca de declaração do canal 2. Os termos são de quem chama; a rota, daqui."""
+    if adaptador == "dodf":
+        return itens_dodf(uf, desde, ate, termos=termos)
+    if adaptador == "apifront":
+        return itens_apifront(uf, url, desde, ate, termos=termos)
+    if adaptador == "busca_sp":
+        return itens_sp(uf, desde, ate, termos=termos)
+    if adaptador in EDICOES_POR_BUSCA:
+        return itens_por_busca(uf, desde, EDICOES_POR_BUSCA[adaptador](desde, ate), termos=termos)
+    raise ValueError(f"{adaptador}: não é rota de busca")
 
 
 def iso_para_br(s: str) -> str:
@@ -815,25 +873,18 @@ def coletar_uf(uf: str, desde: str, cfg: dict) -> str:
         # 14/10/2026: "a_verificar" por 42 dias era lacuna não declarada — já se tentou, e o que
         # falta é o adaptador. O estado diz isso; a sondagem ao lado diz por onde começar.
         f["status"] = "sem adaptador de busca"; return "lacuna"
-    if f["adaptador"] in ("dodf", "apifront", "busca_sp", *EDICOES_POR_BUSCA, *EDICOES_POR_DATA):
+    if f["adaptador"] in (*ADAPTADORES_DE_BUSCA, *EDICOES_POR_DATA):
         # A evidência é o conjunto de trechos como a FONTE OFICIAL os serviu — na busca, o endereço
         # citável de cada acerto; na edição por data, a URL do PDF e a página. Preservar o PDF
         # inteiro de cada acerto passaria de meio gigabyte por varredura e não acrescentaria prova.
         url = f["url"]
         try:
-            if f["adaptador"] == "dodf":
-                itens, totais = itens_dodf(uf, desde, hoje)
-            elif f["adaptador"] == "apifront":
-                # §231: a busca entrega o TEXTO INTEGRAL da página que casou — sem teto de 20 kB e
-                # sem baixar um PDF de dez megabytes por acerto.
-                itens, totais = itens_apifront(uf, url, desde, hoje)
-            elif f["adaptador"] == "busca_sp":
-                itens, totais = itens_sp(uf, desde, hoje)
-            elif f["adaptador"] in EDICOES_POR_DATA:
+            if f["adaptador"] in EDICOES_POR_DATA:
                 itens, totais = itens_por_edicao(uf, desde, hoje, EDICOES_POR_DATA[f["adaptador"]](buscar, url),
                                                  f.setdefault("lidas", {}))
             else:
-                itens, totais = itens_por_busca(uf, desde, EDICOES_POR_BUSCA[f["adaptador"]](desde, hoje))
+                # §231: a busca da plataforma comum entrega o TEXTO INTEGRAL da página que casou.
+                itens, totais = itens_da_busca(uf, f["adaptador"], url, desde, hoje)
         except FormatoDaBuscaMudou as e:
             registrar_lacuna(f"DOE/{uf}", f"formato da busca mudou: {e}", canal="repositorio_estadual",
                              camada=1, uf=uf, strings=[url])
@@ -1036,6 +1087,14 @@ FIXTURE_LISTAGEM_MS = """<a href="https://assets.imprensaoficial.ms.gov.br/publi
 # Recortes REAIS da rota (a) do DOE-AM, 15/10/2026.
 FIXTURE_EDICOES_AM = (b'{"erro":false,"msg":"","data":"2026-10-13","numero":null,"ano":"","itens":[{"id":18246,'
                       b'"data":"13\\/10\\/2026","suplemento":0,"numero":35804,"tipo_edicao_id":1,"capa":1,"paginas":48}]}')
+FIXTURE_EDICOES_AL = (b'{"status":"success","editions":[{"id":51928,"number":2905,"suplement":false,'
+                      b'"publication_date":"2026-10-16T03:00:00.000000Z"},{"id":51929,"number":2905,"suplement":true,'
+                      b'"publication_date":"2026-10-16T03:00:00.000000Z"},{"id":51925,"number":2904,"suplement":false,'
+                      b'"publication_date":"2026-10-15T03:00:00.000000Z"}]}')
+FIXTURE_EDICOES_SC = json.dumps({"error": False, "records": {"meta": {"total": 3}, "data": [
+    {"vlNumero": "22862-A", "dtPublicacao": "2026-10-16T00:00:00.000Z", "stCancelado": False, "dsArquivo": "/2026/20261016/Jornal/22862-A.pdf"},
+    {"vlNumero": "22862", "dtPublicacao": "2026-10-16T00:00:00.000Z", "stCancelado": False, "dsArquivo": "/2026/20261016/Jornal/22862.pdf"},
+    {"vlNumero": "22862-B", "dtPublicacao": "2026-10-16T00:00:00.000Z", "stCancelado": True, "dsArquivo": "/2026/20261016/Jornal/22862-B.pdf"}]}}).encode()
 FIXTURE_EDICOES_AM_VAZIO = b'{"erro":true,"msg":"Edi\\u00e7\\u00e3o n\\u00e3o existente!","data":"2026-10-14","itens":[]}'
 
 
@@ -1267,6 +1326,19 @@ def autoteste() -> int:
                         {"edicao": "35804", "url": "https://x.am.gov.br/portal/edicoes/download/18246"}]
                      and edicoes_apifront(lambda u, **k: FIXTURE_EDICOES_AM_VAZIO, "https://x.am.gov.br")("2026-10-14") == []
                      and _levanta(lambda: edicoes_apifront(lambda u, **k: b'{"outra": 1}', "https://x")("2026-10-14"),
+                                  FormatoDaBuscaMudou)),
+        "DOE-AL: o mês lista as edições, suplemento incluído; dia sem edição é lista vazia; formato novo LEVANTA":
+            lambda: (edicoes_apinova(lambda u, **k: FIXTURE_EDICOES_AL, "https://x.al.gov.br/api/")("2026-10-16") == [
+                        {"edicao": "2905", "url": "https://x.al.gov.br/api/editions/downloadPdf/51928"},
+                        {"edicao": "2905 suplemento", "url": "https://x.al.gov.br/api/editions/downloadPdf/51929"}]
+                     and edicoes_apinova(lambda u, **k: FIXTURE_EDICOES_AL, "https://x")("2026-10-17") == []
+                     and _levanta(lambda: edicoes_apinova(lambda u, **k: b'{"outra": 1}', "https://x")("2026-10-14"),
+                                  FormatoDaBuscaMudou)),
+        "DOE-SC: a API do dia dá ordinária e extra com o PDF do repositório; cancelada fica fora":
+            lambda: (edicoes_sc(lambda u, **k: FIXTURE_EDICOES_SC, "https://x/apis")("2026-10-16") == [
+                        {"edicao": "22862-A", "url": REPOSITORIO_SC + "/2026/20261016/Jornal/22862-A.pdf"},
+                        {"edicao": "22862", "url": REPOSITORIO_SC + "/2026/20261016/Jornal/22862.pdf"}]
+                     and _levanta(lambda: edicoes_sc(lambda u, **k: b'{"error": true}', "https://x")("2026-10-16"),
                                   FormatoDaBuscaMudou)),
         "DOE-MS: a listagem dá o PDF por data, suplemento incluído; dia fora dela é lista vazia":
             lambda: (edicoes_ms_na_listagem(FIXTURE_LISTAGEM_MS) == {

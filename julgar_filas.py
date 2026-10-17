@@ -331,7 +331,7 @@ def aplicar_no_objeto(p: dict, v: dict) -> str:
 
     p.pop("proxima_tentativa_em", None)
     p["juiz"] = {"codebook": v["codebook"], "promove": v["promove"], "motivo": v["motivo"],
-                 "criterios": v["criterios"], "categoria": v["categoria"],
+                 "leu_documento": v.get("leu_documento"), "categoria": v["categoria"],
                  "data": v["data"], "julgado_em": hoje.isoformat(),
                  "hash_evidencia": v.get("hash_evidencia")}
     if v["promove"]:
@@ -548,6 +548,8 @@ def autoteste() -> int:
                   aplicar_no_objeto(p_promove, v_promove) == "promovida"
                   and p_promove["juiz"]["promove"] is True
                   and "recusada" not in p_promove["status"]))
+    casos.append(("a pista guarda se o juiz leu o documento, e os critérios ficam só no registro (17/10)",
+                  p_promove["juiz"]["leu_documento"] is True and "criterios" not in p_promove["juiz"]))
 
     # as filas: leitura tolerante ao nome da lista
     casos.append(("lê fila com 'pistas'", len(pistas_da_fila({"pistas": [1, 2]})) == 2))
