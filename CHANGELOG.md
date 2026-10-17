@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-17 · #PR · Legenda de mapa com amostra de ponto vazado
+
+`MonitorMapas.legenda` aceita `{cor, rotulo, vazado: true}`: a amostra é um círculo só de contorno, a mesma marca do ponto vazado no mapa municipal da Defesa civil (só decreto, sem reconhecimento). Variante no componente (`.leg-vazado`), sem estilo na página. Pedido da B3.
+
 ## 2026-10-17 · #843 · Consulta do município: a situação do plano numa função comum
 
 A classificação do plano de contingência do município (encontrado, estadual, citado, não localizado, decreto, em elaboração, outro ato, ainda não verificado) sai de `index.js` e vira `ConsultaMunicipio.situacaoDoPlano`, que a inicial já usa e Para gestores pode usar sem copiar. Nenhuma frase muda. Pedido da B2 (12:11).
