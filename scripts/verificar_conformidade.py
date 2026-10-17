@@ -8,8 +8,8 @@ dependem de um handover repeti-las. O que não é verificado por máquina volta 
 cada rodada — e foi assim que um cartão saiu de uma página numa reforma de desenho, que um rótulo
 foi cortado no meio por um eixo de gráfico, e que um texto ficou da cor do fundo.
 
-Este portão incorpora o de layout (`verificar_layout.py`, que continua existindo e é chamado por
-ele) e acrescenta o que as regras exigem: tipografia, componentes, as quatro funções da figura,
+Este portão incorpora o de layout (`verificar_layout.py`, biblioteca do contrato e do despejo, cujo
+autoteste roda dentro do deste) e acrescenta o que as regras exigem: tipografia, componentes, as quatro funções da figura,
 vocabulário proibido, forma dos números, acessibilidade e a coerência entre páginas.
 
 O QUE ELE CONFERE, por página
@@ -345,6 +345,9 @@ def regras_sem_verificador(regras: dict, existe=lambda caminho: True) -> list:
 
 
 def _autoteste() -> int:
+    import verificar_layout   # 17/10/2026: o autoteste do contrato roda aqui, num comando só
+    if verificar_layout.autoteste() != 0:
+        return 1
     falhas = []
     # O total era um literal e envelhecia calado: dizia cobrir mais casos do que
     # cobre, ou menos. Agora e contado.

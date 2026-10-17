@@ -63,6 +63,12 @@ def com_autoteste() -> list:
     return achados
 
 
+def testes_avulsos() -> list:
+    """17/10/2026: `scripts/testar_*.py` sem `--autoteste` são testes que rodam sem argumento — a
+    mesma condição (`dado_mudou`) e a mesma prova (não alteram `data/`). Rodam aqui, sem flag."""
+    return [a for a in sorted(RAIZ.glob("scripts/testar_*.py")) if a not in com_autoteste()]
+
+
 def retrato(anterior: dict = None) -> dict:
     """(tamanho, carimbo, hash) de cada arquivo de `data/`.
 
@@ -101,14 +107,17 @@ def diferenca(antes: dict, depois: dict) -> tuple:
 
 def main(args) -> int:
     scripts = com_autoteste()
+    avulsos = set(testes_avulsos())
     if "--rapido" in args:
         scripts = [s for s in scripts if s.name.startswith(("coletar_", "descobrir_", "monitorar_"))]
+    else:
+        scripts += sorted(avulsos)
     print(f"{len(scripts)} script(s) com autoteste; conferindo que nenhum altera data/")
     sujos, gastadores, quebrados = [], [], []
     antes = retrato()
     for s in scripts:
         rel = s.relative_to(RAIZ).as_posix()
-        r = subprocess.run([sys.executable, str(s), "--autoteste"], cwd=RAIZ,
+        r = subprocess.run([sys.executable, str(s)] + ([] if s in avulsos else ["--autoteste"]), cwd=RAIZ,
                            capture_output=True, timeout=600)
         depois = retrato(antes)
         alterados, iguais = diferenca(antes, depois)
