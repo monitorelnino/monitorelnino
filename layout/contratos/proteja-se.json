@@ -1,33 +1,41 @@
 {
-  "_governanca": "Contrato de layout do Proteja-se. Nasceu pequeno e com um propósito só (item 7.3 do handover da Defesa civil, 02/10/2026): o cartão do SMS 40199 saiu da barra de telefones numa reforma de desenho em 30/09 e o número sobreviveu só dentro de uma ficha. Contrato existe para isso — o que o leitor precisa encontrar numa emergência não depende de quem desenha a página na próxima rodada. Quem verifica é scripts/verificar_layout.py, portão bloqueante.",
-  "pagina": "proteja-se.html",
-  "componentes": {
-    "numeros": ".cartao-numero",
-    "grade_numeros": ".grade-numeros--3",
-    "figura": ".cartao-mapa",
-    "grade_figuras": ".grade-figuras--3"
+ "_governanca": "Contrato de layout do Proteja-se (reforma de 16/10/2026, HANDOVER_PROTEJA_SE_16-10-2026, mockup aprovado em direção). Ordem: h1 + abertura · Em uma emergência, ligue · O que está acontecendo no seu município (consulta do módulo comum, seis cartões e a linha do estado) · O que fazer, antes, durante e depois (abas por risco) · Leve com você. Sem figura principal. Nasceu em 02/10 para o SMS 40199 não sair da barra numa reforma: a exigência continua.",
+ "pagina": "proteja-se.html",
+ "componentes": {
+  "numeros": ".cartao-numero",
+  "grade_numeros": ".grade-numeros--3",
+  "figura": ".cartao-mapa",
+  "grade_figuras": ".grade-figuras--3"
+ },
+ "secoes": [
+  {
+   "id": "emergencia",
+   "h2": "Em uma emergência, ligue",
+   "tipo": "lista_simples",
+   "exige_texto": [
+    "199",
+    "192",
+    "190",
+    "40199",
+    "Envie o CEP da sua região para 40199 e receba os avisos da Defesa Civil.",
+    "Para cancelar, envie SAIR e o CEP.",
+    "a Defesa Civil avisa sem cadastro"
+   ],
+   "_nota": "Os quatro números que o handover exige (192, 199, 190, 40199) mais o 193 dos Bombeiros, que já estava na barra e que o handover não mandou tirar — tirar número de socorro de uma página de emergência por causa de uma lista ilustrativa seria a leitura menos conservadora. Divergência declarada."
   },
-  "secoes": [
-    {
-      "id": "emergencia",
-      "h2": "Em uma emergência, ligue",
-      "tipo": "lista_simples",
-      "exige_texto": [
-        "199",
-        "192",
-        "190",
-        "40199",
-        "Envie o CEP da sua região para 40199 e receba os avisos da Defesa Civil.",
-        "Para cancelar, envie SAIR e o CEP.",
-        "a Defesa Civil avisa sem cadastro"
-      ],
-      "_nota": "Os quatro números que o handover exige (192, 199, 190, 40199) mais o 193 dos Bombeiros, que já estava na barra e que o handover não mandou tirar — tirar número de socorro de uma página de emergência por causa de uma lista ilustrativa seria a leitura menos conservadora. Divergência declarada."
-    }
-  ],
-  "texto_proibido": [
-    "FIGURA",
-    "Corte da edição"
-  ],
-  "_nota_escopo": "O contrato cobre SÓ a barra de emergência. As outras seções do Proteja-se vêm em caixa (`.panel`, `.ficha`), que é o desenho aprovado desta página; a regra 'seção sem caixa' é das páginas redesenhadas em 01 e 02/10, e redesenhar o Proteja-se não foi pedido. Contratar as outras seções agora reprovaria desenho vigente e aprovado — contrato que reprova o aprovado deixa de ser portão e passa a ser ruído.",
-  "_nota_ajustes_09_10": "09/10/2026: a seção 'Alertas de saúde agora' saiu (ajuste 9); no lugar, logo após os telefones, o recado com os destinos (MARÉ Saúde, Defesa civil, Monitor de riscos), em `.cartao`, sem número. O guia em PDF e a imagem são conferidos por scripts/verificar_guia_proteja_se.js (ajuste 7). A seção 'Defesa Civil do seu estado' continua em caixa (`.panel`), como as demais do Proteja-se (ver _nota_escopo); o que ela exige — 199, 193 e 192 com tel:, a grade de siglas e o cartão — é conferido no portão de runtime."
+  {
+   "id": "municipio",
+   "h2": "O que está acontecendo no seu município",
+   "tipo": "lista_simples",
+   "_nota": "`.panel` com o componente comum da consulta; o `.meu-card` traz seis `.cartao` de faixa lateral em `.grade-figuras--3` (aviso do Inmet, alerta do Cemaden, qualidade do ar, calor, dengue, decreto), cada um com órgão e data e o link para a aba do guia; abaixo, a linha da Defesa Civil do estado (diretório do MIDR)."
+  }
+ ],
+ "texto_proibido": [
+  "Alertas de saúde",
+  "Corte da edição",
+  "FIGURA",
+  "Riscos do ciclo",
+  "ciclo El Niño"
+ ],
+ "_nota_17_10": "Saem a grade de 27 siglas e a segunda barra de telefones, o recado de destinos e o painel do decreto (vira cartão da consulta). Divergências: os cinco telefones ficam no componente `.emerg-cartoes--cinco` (já é uma linha de cinco; o compacto até seis por linha é da B1, HANDOVER_NINO34 §3); as fichas continuam com a caixa de marcar do CSS comum até a B1 tirá-la; a aba de dengue e a troca da fonte do guia esperam as páginas oficiais preservadas pela A2 (§7.1)."
 }

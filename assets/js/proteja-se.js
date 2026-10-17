@@ -128,52 +128,79 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
 // handler do botão de PDF (era onclick inline; CSP sem unsafe-inline)
 { const b = document.getElementById('btnPdfGuia'); if (b && typeof gerarPDFGuia === 'function') b.addEventListener('click', gerarPDFGuia); }
 
-// 15/09/2026 (pedido da editoria): "Defesa Civil do seu estado" — um cartão por UF, com telefones, plantão, e-mail, portal
-// e expediente lidos de data/contatos_uf.json (transcrição do diretório oficial do MIDR). Nada digitado aqui.
-// 09/10/2026 (ajuste 8, editoria): UM controle — a grade das 27 siglas, em ordem alfabética, com
-// `aria-pressed`. Ao escolher, o cartão do estado abre logo abaixo, na largura da grade. Sem estado
-// escolhido, nada abaixo da grade (nenhuma instrução). A fonte diz as duas datas separadas.
-(function(){
-  const siglas = document.getElementById('contatoSiglas'), dest = document.getElementById('contatoDestaque');
-  if (!siglas || !dest) return;
+/* ===== "O que está acontecendo no seu município" (17/10/2026, HANDOVER_PROTEJA_SE §4) =====
+   Módulo comum da consulta; o cartão junta, por código IBGE, o que os arquivos de origem guardam:
+   avisos do Inmet, alertas do Cemaden e ar (riscos_municipio/<UF>), calor e dengue
+   (saude_municipio/<UF>), decreto (resposta/municipios_decretados) e o contato da Defesa Civil do
+   estado (contatos_uf, diretório do MIDR). Nada é calculado aqui; ausência é a frase da classe. */
+(function municipio(){
+  const C = window.MonitorCatalogo, P = 'proteja-se.municipio.';
+  const tx = (id, v) => (C && C.texto && C.texto(P + id, v)) || '';
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const tel = t => '<a href="tel:+55' + String(t).replace(/\D/g, '') + '">' + esc(t) + '</a>';
-  const cartao = (uf, c) => {
-    const host = c.portal ? c.portal.replace(/^https?:\/\//, '').replace(/\/$/, '') : '';
-    return '<article class="contato contato--grande" id="contato-' + uf + '">' +
-      '<div class="contato-topo"><span class="contato-uf">' + esc(uf) + '</span><span class="contato-nome">' + esc(c.nome) + '</span>'
-      + (c.plantao_24h && c.plantao_24h.length ? '<span class="selo-plantao">plantão 24 h</span>' : '') + '</div>' +
-      '<p class="contato-orgao">' + esc(c.orgao) + '</p>' +
-      '<dl class="contato-lista">' +
-      '<dt>Telefone' + (c.telefones.length > 1 ? 's' : '') + '</dt><dd>' + c.telefones.map(tel).join(' · ') + (c.expediente ? ' <span class="u-muted">(' + esc(c.expediente) + ')</span>' : '') + '</dd>' +
-      (c.plantao_24h && c.plantao_24h.length ? '<dt>Plantão 24 h</dt><dd>' + c.plantao_24h.map(tel).join(' · ') + '</dd>' : '') +
-      (c.email ? '<dt>E-mail</dt><dd><a href="mailto:' + esc(c.email) + '">' + esc(c.email) + '</a></dd>' : '') +
-      (c.portal ? '<dt>Portal</dt><dd><a href="' + esc(c.portal) + '" target="_blank" rel="noopener">' + esc(host) + '</a></dd>' : '') +
-      '</dl></article>';
-  };
-  fetch('data/contatos_uf.json').then(r => r.ok ? r.json() : null).then(D => {
-    if (!D || !D.uf) { siglas.innerHTML = '<p class="note">Contatos não carregados.</p>'; return; }
-    const ufs = Object.keys(D.uf).sort();
-    siglas.innerHTML = ufs.map(uf => '<button type="button" aria-pressed="false" data-uf="' + esc(uf)
-      + '" aria-label="' + esc(D.uf[uf].nome) + '">' + esc(uf) + '</button>').join('');
-    siglas.addEventListener('click', ev => {
-      const b = ev.target.closest('button[data-uf]'); if (!b) return;
-      const ja = b.getAttribute('aria-pressed') === 'true';
-      siglas.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', 'false'));
-      if (ja) { dest.hidden = true; dest.innerHTML = ''; return; }
-      b.setAttribute('aria-pressed', 'true');
-      dest.innerHTML = cartao(b.dataset.uf, D.uf[b.dataset.uf]); dest.hidden = false;
-    });
-    const f = D.fonte || {};
-    // As duas datas separadas e nomeadas, no formato único de crédito do site (a regra de crédito
-    // vence o texto literal do pedido; divergência registrada no PR): o órgão atualizou o diretório
-    // em uma data, e o MARÉ o transcreveu em outra.
-    if (window.MonitorMapas) MonitorMapas.credito('contatoFonte', {
-      fontes: ['Diretório da Defesa Civil nos Estados (MIDR)'
-        + (f.atualizado_pelo_orgao_em ? ', atualizado pelo órgão em ' + f.atualizado_pelo_orgao_em : '')
-        + (f.consultado_em ? ', transcrito em ' + f.consultado_em : '')],
-      url: f.url, data: f.consultado_em});
-  }).catch(() => { siglas.innerHTML = '<p class="note">Contatos não carregados.</p>'; });
+  const json = url => fetch(url).then(r => r.ok ? r.json() : null).catch(() => null);
+  const hora = v => { const m = /(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})/.exec(String(v || '')); return m ? m[3] + '/' + m[2] + ' ' + m[4] + ':' + m[5] : ''; };
+  const ddmm = v => { const m = /(\d{2})\/(\d{2})\/\d{4}/.exec(String(v || '')); return m ? m[1] + '/' + m[2] : ''; };
+  const FAMILIA = {'Baixa Umidade': 'seca', 'Onda de Calor': 'calor', 'Declínio de Temperatura': null};
+  const GUIA = {chuva: 'guia-chuvas', fogo: 'guia-fogo', seca: 'guia-seca', calor: 'guia-calor'};
+  const link = f => f ? '<a href="#' + GUIA[f] + '">' + esc(tx('link.' + f)) + '</a>' : '';
+  const cartao = (acento, rotulo, valor, nota, lk) => '<div class="cartao cartao--acento-' + acento + '">'
+    + '<p class="cartao-numero-rotulo">' + esc(rotulo) + '</p><p>' + esc(String(valor).replace(/^./, c => c.toUpperCase())) + '</p>'
+    + (nota ? '<p class="note">' + nota + '</p>' : '') + (lk ? '<p class="u-mb-0">' + lk + '</p>' : '') + '</div>';
+  const cache = {}, carregar = uf => (cache[uf] = cache[uf] || Promise.all([json('data/riscos_municipio/' + uf + '.json'), json('data/saude_municipio/' + uf + '.json')]));
+  const DECRETOS = json('data/resposta/municipios_decretados.json'), CONTATOS = json('data/contatos_uf.json');
+
+  function mostrar(uf, nome, card, R, S, D, K){
+    const [cod, m] = Object.entries((R || {}).municipios || {}).find(([, x]) => x.nome === nome) || [];
+    const s = (((S || {}).municipios || {})[cod]) || {}, so = (S || {}).origens || {}, o = (R || {}).origens || {};
+    const ae = (o.avisos_e_alertas || {}).gerado_em || '';
+    const avisos = ((m || {}).avisos_inmet || []).map(i => R.avisos_inmet[i]).filter(Boolean);
+    const av = avisos[0], famAviso = av ? (av.tipo in FAMILIA ? FAMILIA[av.tipo] : 'chuva') : null;
+    const cem = (m || {}).alertas_cemaden || [];
+    const est = m && m.ar_estacao && R.estacoes[m.ar_estacao.indice], sen = m && m.ar_sensor && R.sensores[m.ar_sensor.indice];
+    const den = s.dengue, sem = den && /^(\d{4})-(\d+)$/.exec(den.semana || '');
+    const dec = (((D || {}).municipios || {})[cod]) || null, ct = ((K || {}).uf || {})[uf];
+    const n1 = v => Number(v).toLocaleString('pt-BR', {maximumFractionDigits: 1});
+    let h = '<h4>' + esc(nome) + ' · ' + esc(uf) + '</h4><div class="grade-figuras grade-figuras--3">';
+    h += cartao('musgo', tx('aviso.rotulo'), av ? tx('aviso.valor', {tipo: av.tipo, grau: av.severidade}) : tx('aviso.nenhum'),
+      esc(av ? tx('aviso.nota', {fim: hora(av.fim) || tx('sem_coleta')}) : 'Inmet' + (ae ? ' · ' + ae : '')), link(famAviso));
+    h += cartao('musgo', tx('cemaden.rotulo'), cem.length ? cem.map(a => a.evento || (a.tipo + ' · ' + a.nivel)).join('; ') : (m && m.rede_cemaden === false ? tx('cemaden.fora') : tx('cemaden.nenhum')),
+      esc(tx('cemaden.nota', {data: ae || tx('sem_coleta')})), cem.length ? link('chuva') : '');
+    h += cartao('argila', tx('ar.rotulo'),
+      est && est.iqar ? tx('ar.iqar', {classificacao: est.iqar.classificacao, valor: Math.round(est.iqar.valor), poluente: est.iqar.poluente || ''})
+        : sen && sen.pm25 ? tx('ar.sensor', {valor: n1(sen.pm25.valor)}) : tx('ar.nenhum'),
+      esc(est && est.iqar ? tx('ar.iqar_nota', {estacao: est.nome, municipio: est.municipio, km: String(m.ar_estacao.distancia_km), hora: hora(est.iqar.medido_em)})
+        : sen && sen.pm25 ? tx('ar.sensor_nota', {nome: sen.nome, municipio: sen.municipio, km: String(m.ar_sensor.distancia_km), hora: hora(sen.pm25.lido_em)})
+        : 'MMA' + ((o.ar || {}).gerado_em ? ' · ' + o.ar.gerado_em : '')), link('fogo'));
+    h += cartao('argila', tx('calor.rotulo'), s.calor ? (s.calor === 'Normal' ? tx('calor.sem_excesso') : tx('calor.excesso') + ' · ' + s.calor) : tx('sem_coleta'),
+      esc(tx('calor.nota', {data: (window.MonitorMapas && MonitorMapas.dataBR((so.calor || {}).data)) || tx('sem_coleta')})), s.calor && s.calor !== 'Normal' ? link('calor') : '');
+    h += cartao('neutro', tx('dengue.rotulo'), den && den.nivel ? tx('dengue.valor', {cor: tx('dengue.cores').split('|')[den.nivel - 1] || String(den.nivel)}) : tx('sem_coleta'),
+      esc(sem && window.MonitorSemana ? tx('dengue.nota', {semana: MonitorSemana.porExtenso(+sem[1], +sem[2], true)}) : (so.dengue || {}).fonte || ''), '');
+    h += cartao('neutro', tx('decreto.rotulo'),
+      dec && dec.primeiro_decreto ? tx('decreto.valor', {data: ddmm(dec.primeiro_decreto) || dec.primeiro_decreto,
+          evento: dec.evento_observado && dec.evento_observado !== 'em_classificacao' ? ' · ' + [].concat(dec.evento_observado).join(', ') : '',
+          reconhecimento: dec.reconhecido ? tx('decreto.reconhecida', {data: ddmm(dec.primeiro_reconhecimento) || dec.primeiro_reconhecimento}) : tx('decreto.sem_reconhecimento')})
+        : dec && dec.reconhecido ? tx('decreto.reconhecida', {data: ddmm(dec.primeiro_reconhecimento)}).replace(/^./, c => c.toUpperCase()) : tx('decreto.nenhum'),
+      dec && dec.reconhecido ? tx('decreto.fgts') : '', '');
+    h += '</div>';
+    const contatos = ct ? [ct.telefones && ct.telefones[0], ct.email, ct.portal ? '<a href="' + esc(ct.portal) + '" target="_blank" rel="noopener">' + esc(tx('estado.site')) + '</a>' : '']
+        .filter(Boolean).map((x, i) => i < 2 && !/^<a/.test(x) ? (/@/.test(x) ? '<a href="mailto:' + esc(x) + '">' + esc(x) + '</a>' : '<a href="tel:+55' + String(x).replace(/\D/g, '') + '">' + esc(x) + '</a>') : x).join(' · ')
+      : esc(tx('estado.sem_contato'));
+    const de = ct && ct.nome ? (/^(Bahia|Paraíba)$/.test(ct.nome) ? 'da ' : /^(Acre|Amapá|Amazonas|Ceará|Distrito Federal|Espírito Santo|Maranhão|Mato Grosso|Mato Grosso do Sul|Pará|Paraná|Piauí|Rio de Janeiro|Rio Grande do Norte|Rio Grande do Sul|Tocantins)$/.test(ct.nome) ? 'do ' : 'de ') + ct.nome : uf;
+    h += '<p class="note">' + tx('estado', {de_estado: esc(de), contatos: contatos}) + '</p><p class="u-mb-0" id="munFonteEstado"></p>';
+    card.innerHTML = h;
+    const f = (K || {}).fonte || {};
+    if (window.MonitorMapas) MonitorMapas.credito('munFonteEstado', {fontes: f.nome || 'MIDR', url: f.url, data: f.consultado_em});
+  }
+
+  Promise.all([C && C.pronto, json('data/geo_uf.json')]).then(([, geo]) => {
+    const NOME_UF = {}; ((geo || {}).features || []).forEach(f => { NOME_UF[f.properties.sigla] = f.properties.name; });
+    json('data/municipios_ibge_referencia.json').then(ref => { if (ref && ref.length && C) C.escrever(document.getElementById('municipioAbertura'), 'proteja-se.municipio.abertura.molde', {n_municipios: ref.length}); });
+    ConsultaMunicipio.montar({uf: 'munUF', municipio: 'munNome', lista: 'munLista', cartao: 'munCard', estados: NOME_UF,
+      semLista: tx('sem_lista'),
+      municipios: uf => carregar(uf).then(([R]) => R && Object.values(R.municipios).map(x => x.nome)),
+      mostrar: (uf, nome, card) => Promise.all([carregar(uf), DECRETOS, CONTATOS])
+        .then(([[R, S], D, K]) => mostrar(uf, nome, card, R, S, D, K)).catch(e => console.error('[MARÉ] falha em proteja-se:municipio:', e))});
+  });
 })();
 
 // 18/09/2026 (pedido da editoria): a imagem só tinha os telefones — precisa das dicas por risco também.
@@ -334,4 +361,7 @@ function gerarImagemGuia(){
     });
   });
   mostrar(abas.find(a => a.getAttribute('aria-selected') === 'true') || abas[0], false);
+  /* Os links "O que fazer…" do cartão do município apontam para a ficha: a aba dela abre. */
+  function pelaAncora(){ const a = abas.find(x => '#' + x.getAttribute('aria-controls') === location.hash); if (a) mostrar(a, false); }
+  window.addEventListener('hashchange', pelaAncora); pelaAncora();
 })();

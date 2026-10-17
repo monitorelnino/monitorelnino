@@ -44,7 +44,9 @@
   </header>
 <main id="conteudo">
   <h1 data-conteudo="proteja-se.titulo_da_pagina">Proteja-se</h1>
-  <p class="hint" data-conteudo="proteja-se.abertura">O que fazer antes, durante e depois de chuvas fortes, fogo, seca e calor, segundo os órgãos oficiais. Não substitui as instruções da Defesa Civil da sua cidade.</p>
+  <p data-conteudo="proteja-se.abertura.p1">Chuva forte, fogo, seca e calor pedem atitudes diferentes, e a maior parte delas se toma antes de o evento chegar: guardar documentos em lugar alto, combinar um ponto de encontro com a família, limpar calhas, fechar a casa à fumaça, armazenar água com tampa. Esta página reúne o que a Defesa Civil nacional e o Ministério da Saúde orientam fazer antes, durante e depois de cada um desses eventos, e o que evita a dengue e a chikungunya, que avançam com o calor e com a água parada.</p>
+  <p data-conteudo="proteja-se.abertura.p2">Ela também mostra o que os órgãos oficiais registram agora no seu município: os avisos de tempo do Inmet e os alertas do Cemaden em vigor, a qualidade do ar medida pela estação mais próxima, o excesso de calor da semana, o nível de alerta de dengue e, se a prefeitura decretou emergência, o que o decreto permite pedir, como o saque do FGTS por calamidade. Cada situação aponta para a orientação correspondente.</p>
+  <p class="u-mb-0" data-conteudo="proteja-se.abertura.p3">Em qualquer emergência, siga a Defesa Civil da sua cidade: o telefone é 199, gratuito e 24 horas, e os avisos chegam por SMS a quem envia o CEP para 40199. O contato da Defesa Civil do seu estado e o guia completo para imprimir ou levar no celular estão nesta página. Cada orientação traz o órgão que a publicou e a data em que foi conferida.</p>
 
   <!-- P2 (item 10.1): os telefones em quatro cartões, no topo, em destaque. A faixa superior de
        4 px dá a cor da família a cada número; o número é a informação, e por isso é ele que ocupa
@@ -75,32 +77,25 @@
         <b class="emerg-numero">40199</b><span class="emerg-rotulo">Alertas por SMS</span>
         <small>Envie o CEP da sua região para 40199 e receba os avisos da Defesa Civil. Para cancelar, envie SAIR e o CEP.</small></div>
     </div>
-    <p class="hint" data-conteudo="proteja-se.emergencia.abertura">Ligações gratuitas, 24 horas, de qualquer telefone. Deixe os alertas de emergência ativados no celular: a Defesa Civil avisa sem cadastro.</p>
+    <p class="hint" data-conteudo="proteja-se.emergencia.abertura">Ligações gratuitas, 24 horas, de qualquer telefone. Com os alertas de emergência ativados no celular, a Defesa Civil avisa sem cadastro.</p>
   </section>
 
-  <!-- 09/10/2026 (ajuste 9, editoria): a seção "Alertas de saúde agora" saiu desta página. Cada
-       alerta mora na página dele, e o recado aponta para lá — sem número, porque número aqui
-       envelheceria longe da fonte. -->
-  <nav class="recado-destinos" aria-label="Onde ver os alertas">
-    <a class="cartao recado-destino" href="saude.html"><b class="cartao-t">Alertas de saúde</b><span class="cartao-s">Dengue, doenças respiratórias e emergências sanitárias</span><span class="cartao-a">MARÉ Saúde</span></a>
-    <a class="cartao recado-destino" href="defesa-civil.html#alertas"><b class="cartao-t">Avisos de tempo</b><span class="cartao-s">Calor, chuva forte, inundações e baixa umidade</span><span class="cartao-a">Defesa civil</span></a>
-    <a class="cartao recado-destino" href="monitor-de-riscos.html"><b class="cartao-t">Riscos do ciclo no Brasil</b><span class="cartao-s">Seca, fogo, chuva e calor, previstos e observados</span><span class="cartao-a">Monitor de riscos</span></a>
-  </nav>
 
-  <!-- P3 (item 10.2): "Leve com você", com botões de verdade. As funções (gerar PDF e imagem) são
-       as que já existiam — só o desenho mudou. -->
-  <section class="levar" aria-labelledby="levarTitulo">
-    <h2 id="levarTitulo" data-conteudo="proteja-se.emergencia.titulo_da_secao_2">Leve com você</h2>
-    <p class="hint" data-conteudo="proteja-se.emergencia.abertura_2">Este guia em PDF, para imprimir ou mandar no WhatsApp.</p>
-    <div class="levar-botoes">
-      <button type="button" class="btn-pilula btn-pilula--primario" id="btnPdfGuia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 19h16"/></svg><span>Baixar o guia</span></button>
-      <button type="button" class="btn-pilula btn-pilula--contorno" id="btnImagemGuia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Baixar imagem para compartilhar</span></button>
-    </div>
-  </section>
 
   <!-- Item 10.3: a escolha do risco é uma fileira de pílulas, e abre UMA ficha por vez. Sem JS, as
        quatro fichas aparecem empilhadas — a página continua inteira para quem não executa script.
        As abas são `tablist`/`tab`/`tabpanel`, com setas no teclado. -->
+  <section id="municipio" aria-labelledby="municipioTitulo"><div class="panel">
+    <h2 id="municipioTitulo" data-conteudo="proteja-se.municipio.titulo_da_secao">O que está acontecendo no seu município</h2>
+    <p class="hint" id="municipioAbertura" data-conteudo="proteja-se.municipio.abertura.molde" data-conteudo-valores="{&quot;n_municipios&quot;:5571}">O cartão responde para qualquer um dos 5.571 municípios, com o que os órgãos oficiais registram agora e o que fazer em cada caso.</p>
+    <div class="tbl-controls">
+      <select id="munUF" aria-label="Estado"><option value="">1 · Seu estado…</option></select>
+      <input id="munNome" type="text" list="munLista" placeholder="2 · Seu município…" aria-label="Nome do município" autocomplete="off" disabled>
+      <datalist id="munLista"></datalist>
+    </div>
+    <div id="munCard" class="meu-card" aria-live="polite" hidden></div>
+  </div></section>
+  <h2 id="guiaTitulo" data-conteudo="proteja-se.guia.titulo_da_secao">O que fazer, antes, durante e depois</h2>
   <div class="risco-escolha" id="riscoEscolha" role="tablist" aria-label="Escolha o risco">
     <button type="button" class="risco-pilula r-chuva" role="tab" id="tab-chuva" aria-controls="guia-chuvas" aria-selected="true"><span class="risco-selo" aria-hidden="true"><svg viewBox="0 0 48 48" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 17a8 8 0 0 1 15.5-2.6A6.5 6.5 0 0 1 35 27H16a6.5 6.5 0 0 1-3-10Z"/><path d="M17 30l-2 4M25 30l-2 4M33 30l-2 4"/></svg></span>Chuva</button>
     <button type="button" class="risco-pilula r-fogo" role="tab" id="tab-fogo" aria-controls="guia-fogo" aria-selected="false"><span class="risco-selo" aria-hidden="true"><svg viewBox="0 0 48 48" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 13c3.5 6-4.5 8.5-4.5 15a7.5 7.5 0 0 0 15 .6c0-4.6-2.6-7.8-4.8-10.6-.6 2.8-4.7-.6-5.7-5Z"/><path d="M26 34c-2.2-1.6-2.2-4.6 0-6.6 2.2 2 2.2 5 0 6.6Z"/></svg></span>Fogo e fumaça</button>
@@ -110,7 +105,7 @@
 
   <section class="ficha r-chuva" id="guia-chuvas" data-voz="ficha" role="tabpanel" aria-labelledby="tab-chuva">
     <div class="ficha-head"><h2 data-conteudo="proteja-se.guia-chuvas.titulo_da_secao">Chuvas intensas, enchentes e deslizamentos</h2></div>
-    <div class="ficha-cols"><div class="ficha-col"><h3 class="ficha-rotulo" data-conteudo="proteja-se.guia-chuvas.titulo">Antes</h3><ul><li data-conteudo="proteja-se.guia-chuvas.item">Guarde documentos e itens de valor em saco plástico fechado, em local alto</li><li data-conteudo="proteja-se.guia-chuvas.item_2">Combine com a família um ponto de encontro e uma rota de saída</li><li data-conteudo="proteja-se.guia-chuvas.item_3">Limpe calhas e não jogue lixo em córregos nem em encostas</li><li data-conteudo="proteja-se.guia-chuvas.item_4">Cadastre-se nos alertas por SMS: envie seu CEP para 40199</li></ul></div><div class="ficha-col"><h3 class="ficha-rotulo" data-conteudo="proteja-se.guia-chuvas.titulo_2">Durante</h3><ul><li data-conteudo="proteja-se.guia-chuvas.item_5">Não atravesse água em movimento: 15 cm de correnteza derrubam um adulto</li><li data-conteudo="proteja-se.guia-chuvas.item_6">Água entrando em casa? Desligue a energia e o gás</li><li data-conteudo="proteja-se.guia-chuvas.item_7">Vá para um local alto e siga a Defesa Civil (199)</li><li data-conteudo="proteja-se.guia-chuvas.item_8">Leve documentos, medicamentos e o essencial, sem voltar para buscar objetos</li></ul></div><div class="ficha-col"><h3 class="ficha-rotulo" data-conteudo="proteja-se.guia-chuvas.titulo_3">Depois</h3><ul><li data-conteudo="proteja-se.guia-chuvas.item_9">Beba apenas água tratada ou fervida</li><li data-conteudo="proteja-se.guia-chuvas.item_10">Não consuma alimentos que tocaram a água da enchente</li><li data-conteudo="proteja-se.guia-chuvas.item_11">Evite contato com lama parada; febre ou dor no corpo depois: procure a saúde</li><li data-conteudo="proteja-se.guia-chuvas.item_12">Volte à área de deslizamento só com liberação da Defesa Civil</li></ul></div></div>
+    <div class="ficha-cols"><div class="ficha-col"><h3 class="ficha-rotulo" data-conteudo="proteja-se.guia-chuvas.titulo">Antes</h3><ul><li data-conteudo="proteja-se.guia-chuvas.item">Guarde documentos e itens de valor em saco plástico fechado, em local alto</li><li data-conteudo="proteja-se.guia-chuvas.item_2">Combine com a família um ponto de encontro e uma rota de saída</li><li data-conteudo="proteja-se.guia-chuvas.item_3">Limpe calhas e não jogue lixo em córregos nem em encostas</li></ul></div><div class="ficha-col"><h3 class="ficha-rotulo" data-conteudo="proteja-se.guia-chuvas.titulo_2">Durante</h3><ul><li data-conteudo="proteja-se.guia-chuvas.item_5">Não atravesse água em movimento: 15 cm de correnteza derrubam um adulto</li><li data-conteudo="proteja-se.guia-chuvas.item_6">Água entrando em casa? Desligue a energia e o gás</li><li data-conteudo="proteja-se.guia-chuvas.item_7">Vá para um local alto e siga a Defesa Civil (199)</li><li data-conteudo="proteja-se.guia-chuvas.item_8">Leve documentos, medicamentos e o essencial, sem voltar para buscar objetos</li></ul></div><div class="ficha-col"><h3 class="ficha-rotulo" data-conteudo="proteja-se.guia-chuvas.titulo_3">Depois</h3><ul><li data-conteudo="proteja-se.guia-chuvas.item_9">Beba apenas água tratada ou fervida</li><li data-conteudo="proteja-se.guia-chuvas.item_10">Não consuma alimentos que tocaram a água da enchente</li><li data-conteudo="proteja-se.guia-chuvas.item_11">Evite contato com lama parada; febre ou dor no corpo depois: procure a saúde</li><li data-conteudo="proteja-se.guia-chuvas.item_12">Volte à área de deslizamento só com liberação da Defesa Civil</li></ul></div></div>
     <div class="ficha-alerta"><b>Sinais de alerta</b>Rachaduras, estalos, portas emperradas ou postes inclinados: saia imediatamente do local.</div>
     <p class="ficha-fonte" data-conteudo-html="proteja-se.guia-chuvas.texto">Fonte oficial: Defesa Civil do Paraná e Ministério da Saúde · verificado 26/08/2026 · <a href="https://www.defesacivil.pr.gov.br/Noticia/O-que-fazer-em-desastres-Defesa-Civil-orienta-populacao-sobre-antes-durante-e-depois" target="_blank" rel="noopener">ver na fonte →</a></p>
   </section>
@@ -119,14 +114,14 @@
     <div class="ficha-head"><h2 data-conteudo="proteja-se.guia-fogo.titulo_da_secao">Incêndios e fumaça</h2></div>
     <div class="ficha-cols"><div class="ficha-col"><h3 class="ficha-rotulo" data-conteudo="proteja-se.guia-fogo.titulo">Prevenção</h3><ul><li data-conteudo="proteja-se.guia-fogo.item">Não queime lixo nem use fogo para limpar terrenos e pastagens</li><li data-conteudo="proteja-se.guia-fogo.item_2">Não descarte bitucas de cigarro em vias e vegetação</li><li data-conteudo="proteja-se.guia-fogo.item_3">Acompanhe boletins oficiais de queimadas e qualidade do ar</li></ul></div><div class="ficha-col"><h3 class="ficha-rotulo" data-conteudo="proteja-se.guia-fogo.titulo_2">Durante a fumaça</h3><ul><li data-conteudo="proteja-se.guia-fogo.item_4">Aumente a ingestão de água para proteger as vias respiratórias</li><li data-conteudo="proteja-se.guia-fogo.item_5">Evite exercícios ao ar livre nos horários de pico</li><li data-conteudo="proteja-se.guia-fogo.item_6">Mantenha portas e janelas fechadas</li><li data-conteudo="proteja-se.guia-fogo.item_7">Máscara PFF2/N95 reduz a inalação de partículas finas</li></ul></div><div class="ficha-col"><h3 class="ficha-rotulo" data-conteudo="proteja-se.guia-fogo.titulo_3">Sinais de alerta</h3><ul><li data-conteudo="proteja-se.guia-fogo.item_8">Falta de ar, dor no peito, confusão mental ou dor de cabeça intensa: atendimento imediato</li><li data-conteudo="proteja-se.guia-fogo.item_9">Doença respiratória: mantenha os medicamentos de crise à mão</li></ul></div></div>
     <div class="ficha-alerta"><b>Atenção redobrada</b>Crianças menores de 5, maiores de 60, gestantes e pessoas com doença cardíaca ou respiratória: atenção redobrada em dias de fumaça densa.</div>
-    <p class="ficha-fonte" data-conteudo-html="proteja-se.guia-fogo.texto">Fonte oficial: Ministério da Saúde (orientações de julho/2026, ciclo El Niño) · verificado 26/08/2026 · <a href="https://www.gov.br/saude/pt-br/assuntos/noticias-ms/2026/julho/ministerio-da-saude-monitora-impactos-dos-incendios-florestais-na-saude-e-orienta-populacao-sobre-exposicao-a-fumaca" target="_blank" rel="noopener">ver na fonte →</a></p>
+    <p class="ficha-fonte" data-conteudo-html="proteja-se.guia-fogo.texto">Fonte oficial: Ministério da Saúde (orientações de julho/2026) · verificado 26/08/2026 · <a href="https://www.gov.br/saude/pt-br/assuntos/noticias-ms/2026/julho/ministerio-da-saude-monitora-impactos-dos-incendios-florestais-na-saude-e-orienta-populacao-sobre-exposicao-a-fumaca" target="_blank" rel="noopener">ver na fonte →</a></p>
   </section>
 
   <section class="ficha r-seca" id="guia-seca" data-voz="ficha" role="tabpanel" aria-labelledby="tab-seca">
     <div class="ficha-head"><h2 data-conteudo="proteja-se.guia-seca.titulo_da_secao">Estiagem e seca</h2></div>
     <div class="ficha-cols"><div class="ficha-col"><h3 class="ficha-rotulo" data-conteudo="proteja-se.guia-seca.titulo">Como se preparar</h3><ul><li data-conteudo="proteja-se.guia-seca.item">Reserve água tratada e acompanhe rodízios e comunicados da sua cidade</li><li data-conteudo="proteja-se.guia-seca.item_2">Guarde à mão os contatos de emergência</li></ul></div><div class="ficha-col"><h3 class="ficha-rotulo" data-conteudo="proteja-se.guia-seca.titulo_2">Durante a estiagem</h3><ul><li data-conteudo="proteja-se.guia-seca.item_3">Acompanhe os comunicados da companhia de água e da prefeitura sobre abastecimento</li><li data-conteudo="proteja-se.guia-seca.item_4">Aumente a ingestão de água</li></ul></div><div class="ficha-col"><h3 class="ficha-rotulo" data-conteudo="proteja-se.guia-seca.titulo_3">Sinais de alerta</h3><ul><li data-conteudo="proteja-se.guia-seca.item_5">Náusea, vômito, febre, tontura ou confusão: procure atendimento de saúde</li></ul></div></div>
     <div class="ficha-alerta"><b>Atenção redobrada</b>Crianças, idosos e gestantes têm risco maior de desidratação: atenção redobrada.</div>
-    <p class="ficha-fonte" data-conteudo-html="proteja-se.guia-seca.texto">Fonte oficial: Ministério da Saúde e vigilâncias em saúde (ciclo El Niño 2026) · verificado 26/08/2026 · <a href="https://agenciagov.ebc.com.br/noticias/202607/15-estados-na-lista-de-focos-de-calor-veja-como-se-cuidar" target="_blank" rel="noopener">ver na fonte →</a></p>
+    <p class="ficha-fonte" data-conteudo-html="proteja-se.guia-seca.texto">Fonte oficial: Ministério da Saúde e vigilâncias em saúde (El Niño 2026/2027) · verificado 26/08/2026 · <a href="https://agenciagov.ebc.com.br/noticias/202607/15-estados-na-lista-de-focos-de-calor-veja-como-se-cuidar" target="_blank" rel="noopener">ver na fonte →</a></p>
   </section>
 
   <section class="ficha r-calor" id="guia-calor" data-voz="ficha" role="tabpanel" aria-labelledby="tab-calor">
@@ -138,33 +133,16 @@
 
 
 
-  <!-- 09/10/2026 (ajuste 8, editoria): socorro primeiro, uma frase numa coluna, UM controle (a
-       grade das 27 siglas) e a fonte com as duas datas separadas. Saíram o seletor, a caixa vazia
-       com instrução de uso e o "Ver todos os estados". -->
-  <div class="panel" id="quem-chamar">
-    <h2 data-conteudo="proteja-se.guia-calor.titulo_da_secao_2">Defesa Civil do seu estado</h2>
-    <div class="emerg-cartoes emerg-cartoes--tres" role="group" aria-label="Socorro imediato">
-      <a class="emerg-cartao emerg-cartao--defesa" href="tel:199">
-        <span class="emerg-icone" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5L17 13l4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4 7.2 2 2 0 0 1 6.5 3Z"/></svg></span>
-        <b class="emerg-numero">199</b><span class="emerg-rotulo">Defesa Civil do município</span></a>
-      <a class="emerg-cartao emerg-cartao--fogo" href="tel:193">
-        <span class="emerg-icone" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5L17 13l4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4 7.2 2 2 0 0 1 6.5 3Z"/></svg></span>
-        <b class="emerg-numero">193</b><span class="emerg-rotulo">Bombeiros</span></a>
-      <a class="emerg-cartao emerg-cartao--samu" href="tel:192">
-        <span class="emerg-icone" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5L17 13l4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4 7.2 2 2 0 0 1 6.5 3Z"/></svg></span>
-        <b class="emerg-numero">192</b><span class="emerg-rotulo">Samu</span></a>
+  <!-- P3 (item 10.2): "Leve com você", com botões de verdade. As funções (gerar PDF e imagem) são
+       as que já existiam — só o desenho mudou. -->
+  <section class="levar" aria-labelledby="levarTitulo">
+    <h2 id="levarTitulo" data-conteudo="proteja-se.emergencia.titulo_da_secao_2">Leve com você</h2>
+    <p class="hint" data-conteudo="proteja-se.emergencia.abertura_2">Este guia em PDF, para imprimir ou mandar no WhatsApp.</p>
+    <div class="levar-botoes">
+      <button type="button" class="btn-pilula btn-pilula--primario" id="btnPdfGuia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 19h16"/></svg><span>Baixar o guia</span></button>
+      <button type="button" class="btn-pilula btn-pilula--contorno" id="btnImagemGuia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Baixar imagem para compartilhar</span></button>
     </div>
-    <p class="contato-frase" data-conteudo="proteja-se.guia-calor.texto">O órgão estadual coordena as Defesas Civis municipais: emite alertas e boletins, cuida dos planos de contingência, dos abrigos, da ajuda humanitária e dos decretos de emergência, e responde a pedidos de informação. Não é o número de socorro imediato.</p>
-    <div class="contato-siglas" id="contatoSiglas" role="group" aria-label="Estados"></div>
-    <div class="contato-destaque" id="contatoDestaque" aria-live="polite" hidden></div>
-    <div id="contatoFonte"></div>
-  </div>
-
-  <div class="panel" id="direitos" data-voz="ficha">
-    <h2 data-conteudo="proteja-se.guia-calor.titulo_da_secao_3">Se a sua cidade decretou emergência</h2>
-    <p data-conteudo="proteja-se.guia-calor.texto_2">O primeiro passo é a Defesa Civil da sua cidade: ela decreta situação de emergência ou calamidade e pede o reconhecimento federal. Com o reconhecimento, quem mora na área atingida pode ter direito ao Saque Calamidade do FGTS.</p>
-    <p class="note" data-conteudo-html="proteja-se.guia-calor.nota"><a href="https://www.fgts.gov.br/Paginas/trabalhador/saque-calamidade.aspx" target="_blank" rel="noopener">Como pedir, no site do FGTS →</a></p>
-  </div>
+  </section>
 </main>
   <footer class="site-footer">
     <div class="grad-line"></div>
@@ -175,6 +153,8 @@
 </div>
 
 <script src="assets/colunas.js?v=07ce0f22" defer></script>
+<script src="assets/semana.js?v=f42ab28a" defer></script>
+<script src="assets/js/consulta-municipio.js?v=677bd154" defer></script>
 <script src="assets/js/proteja-se.js?v=c611259f" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
