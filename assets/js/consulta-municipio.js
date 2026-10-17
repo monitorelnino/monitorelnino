@@ -8,6 +8,7 @@
  *   municipios  uf → lista de nomes (ou promessa dela; nulo = o estado não tem arquivo)
  *   mostrar     (uf, nome, cartão) → escreve o conteúdo do cartão
  *   semLista    texto da lacuna quando `municipios` devolve nulo
+ * `situacaoDoPlano(registro)` dá o estado do plano do município, para a frase de cada página.
  * Os ids dos controles vêm em `uf`, `municipio`, `lista` e `cartao`. */
 (function (global) {
   'use strict';
@@ -59,5 +60,23 @@
     ['focus', 'click'].forEach(ev => inp.addEventListener(ev, () => { if (oficial(inp.value)) inp.value = ''; }));
   }
 
-  global.ConsultaMunicipio = { montar, nrm };
+  /* Situação do plano de contingência do município, lida do registro de `municipios_card.json`
+   * (mapeamento da editoria, 30/09/2026; plano citado sem documento, 08/10/2026). Uma classificação
+   * para todas as páginas; cada uma escreve a sua frase a partir do `estado`. `decreto` não é plano
+   * (é resposta), `plano_elaboracao` é "ainda não", `estrutura` e `nao_el_nino` são outro ato; sem
+   * registro, o município ainda não foi verificado, e nada se afirma sobre o plano. */
+  const PLANO_ENCONTRADO = ['plano', 'plano_novo', 'plano_readaptado', 'plano_recorrente', 'plano_antigo'];
+  const ESTADO_DA_CATEGORIA = {coberto_estadual: 'estadual', plano_nomeado: 'nomeado', nao_localizado: 'nao_localizado',
+    decreto: 'decreto', plano_elaboracao: 'elaboracao', estrutura: 'outro_ato', nao_el_nino: 'outro_ato'};
+  function situacaoDoPlano(reg) {
+    const c = reg && reg.categoria;
+    return {
+      estado: !reg ? 'nao_verificado' : PLANO_ENCONTRADO.includes(c) ? 'encontrado' : (ESTADO_DA_CATEGORIA[c] || 'nao_verificado'),
+      categoria: c || null, documento: (reg && reg.documento) || null, data: (reg && reg.data) || null,
+      fonte: (reg && reg.fonte) || null, url: (reg && reg.url) || null,
+      sem_ato_de_aprovacao: !!(reg && reg.sem_ato_de_aprovacao),
+    };
+  }
+
+  global.ConsultaMunicipio = { montar, nrm, situacaoDoPlano };
 })(window);
