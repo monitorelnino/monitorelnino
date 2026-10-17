@@ -822,6 +822,67 @@
       "conclusoes_permitidas": "entender o que entra e o que não entra no recorte",
       "conclusoes_nao_permitidas": "tirar do recorte conclusão sobre gasto total em saúde",
       "funcao_narrativa": "orienta a leitura do mapa do FNS"
+    },
+    "monitor-de-riscos.html#boxListaIndicados": {
+      "tipo": "mapa por estado",
+      "pergunta_que_responde": "Quantos municípios de cada estado a União indicou ao cadastro nacional de áreas suscetíveis a deslizamento e enchente (Lei 12.340, art. 3º-A)?",
+      "dimensao_da_preparacao": "risco reconhecido oficialmente",
+      "universo": "os 2.095 municípios indicados pela União (Nota Técnica nº 2/2025 e nº 1/2023; cadastro nacional, MIDR)",
+      "unidade_de_analise": "município, agregado por estado",
+      "territorio": "Brasil",
+      "periodo": "corte da edição",
+      "variavel_principal": "número de municípios do estado indicados pela União",
+      "fonte": "MIDR e Casa Civil, Nota Técnica nº 2/2025 e nº 1/2023",
+      "conclusoes_permitidas": [
+        "quantos municípios de cada estado constam da lista federal"
+      ],
+      "conclusoes_nao_permitidas": [
+        "que constar da lista é estar em emergência",
+        "que município fora da lista não tem risco: a lista é de um risco específico"
+      ],
+      "funcao_narrativa": "contexto oficial do risco, ao lado dos blocos de chuva, seca e fogo do Monitor de riscos",
+      "metodologia": "Contagem nominal por estado do cadastro federal, casada por código IBGE com o banco de registros do MARÉ para a coluna de plano localizado. 'Plano localizado' exclui plano em elaboração, estrutura (comitê ou gabinete) e cobertura estadual."
+    },
+    "monitor-de-riscos.html#boxListaSemiarido": {
+      "tipo": "mapa por estado",
+      "pergunta_que_responde": "Quantos municípios de cada estado integram a delimitação do Semiárido?",
+      "dimensao_da_preparacao": "risco reconhecido oficialmente",
+      "universo": "os 1.477 municípios da delimitação do Semiárido",
+      "unidade_de_analise": "município, agregado por estado",
+      "territorio": "Brasil",
+      "periodo": "corte da edição",
+      "variavel_principal": "número de municípios do estado na delimitação do Semiárido",
+      "fonte": "Sudene, Resolução Condel nº 176/2024, com a tabela nominal publicada pelo IBGE",
+      "conclusoes_permitidas": [
+        "quantos municípios de cada estado integram a delimitação oficial"
+      ],
+      "conclusoes_nao_permitidas": [
+        "que integrar a delimitação é estar em seca: a delimitação é político-administrativa e permanente",
+        "que a delimitação mede a seca deste ciclo"
+      ],
+      "funcao_narrativa": "contexto oficial do risco, ao lado dos blocos de chuva, seca e fogo do Monitor de riscos",
+      "metodologia": "Contagem nominal por estado da lista do Semiárido, casada por código IBGE com o banco de registros do MARÉ para a coluna de plano localizado."
+    },
+    "monitor-de-riscos.html#boxListaFogo": {
+      "tipo": "mapa por estado",
+      "pergunta_que_responde": "Quantos municípios de cada estado constam da lista federal de prioritários para o controle do desmatamento e dos incêndios florestais na Amazônia?",
+      "dimensao_da_preparacao": "risco reconhecido oficialmente",
+      "universo": "os municípios da lista de prioritários do Ministério do Meio Ambiente em vigor",
+      "unidade_de_analise": "município, agregado por estado",
+      "territorio": "Amazônia Legal",
+      "periodo": "corte da edição",
+      "variavel_principal": "número de municípios do estado na lista de prioritários",
+      "fonte": "Ministério do Meio Ambiente, portaria vigente",
+      "conclusoes_permitidas": [
+        "quantos municípios de cada estado constam da lista em vigor"
+      ],
+      "conclusoes_nao_permitidas": [
+        "que constar da lista mede o desmatamento ou o fogo do ciclo",
+        "que município fora da lista não tem risco de fogo",
+        "que a lista cobre o país: ela é da Amazônia Legal"
+      ],
+      "funcao_narrativa": "contexto oficial do risco, ao lado dos blocos de chuva, seca e fogo do Monitor de riscos",
+      "metodologia": "Contagem nominal por estado da lista em vigor do Ministério do Meio Ambiente, casada por código IBGE com o banco de registros do MARÉ para a coluna de plano localizado."
     }
   }
 }
