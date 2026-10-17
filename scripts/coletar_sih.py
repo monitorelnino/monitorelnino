@@ -296,13 +296,15 @@ def contar_internacoes(registros) -> dict:
     return {"total": total, "ident": ident, "cap_J": capj, "competencias": comp}
 
 
-def _tabnet_celula(uf: str, aamm: str) -> str:
+def _tabnet_celula(uf: str, aamm: str, recorte: str = "ni") -> str:
     """Pede ao TabNet a tabela 'internações por ano/mês de competência' da UF, só o arquivo do
     mês. O formulário é lido da própria página (nomes de campo e opções), nunca adivinhado."""
     import urllib.parse
     from coletores_base import buscar_uma_vez, detectar_muro_de_robo, ua_de
     import urllib.request
-    defn = f"sih/cnv/nr{uf.lower()}.def"
+    # "ni" = por local de internação (o mesmo recorte do RD, que é o arquivo do hospital da UF);
+    # "nr" = por local de residência.
+    defn = f"sih/cnv/{recorte}{uf.lower()}.def"
     form = buscar_uma_vez(f"{TABNET}/deftohtm.exe?{defn}", timeout=60).decode("latin-1", "replace")
     campos, visto = [], {}
     for nome, corpo in re.findall(r'<select[^>]*name="?([^"\s>]+)"?[^>]*>(.*?)</select>', form, re.S | re.I):
@@ -336,7 +338,7 @@ def _tabnet_celula(uf: str, aamm: str) -> str:
     html = bruto.decode("latin-1", "replace")
     texto = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", re.sub(r"(?is)<(script|style).*?</\1>", "", html)))
     arq = visto.get("Arquivos", [])
-    return (f"campos={[(n, v) for n, v in campos if n in ('Linha', 'Coluna', 'Incremento', 'Arquivos')]}; "
+    return (f"{defn} campos={campos}; "
             f"Linha={visto.get('Linha', [])[:12]}; Arquivos={arq[:2]}…{arq[-1:]} ({len(arq)}); "
             f"resposta {len(bruto)} bytes: {texto[:900]}")
 
@@ -368,7 +370,8 @@ def sondar(uf: str = "AC", aamm: str | None = None) -> int:
     cont = contar_internacoes(registros_dbf(dbf, ["IDENT", "DIAG_PRINC", "ANO_CMPT", "MES_CMPT", "MUNIC_RES"]))
     print(f"[sih] contagem {nome}: {cont}")
     try:
-        print(f"[sih] TabNet {uf} {aamm}: {_tabnet_celula(uf, aamm)[:1500]}")
+        for rec in ("ni", "nr"):
+            print(f"[sih] TabNet {rec} {uf} {aamm}: {_tabnet_celula(uf, aamm, rec)[:2500]}")
     except Exception as e:  # noqa: BLE001
         print(f"[sih] TabNet {uf} {aamm}: falhou ({type(e).__name__}: {str(e)[:200]})")
     return 0

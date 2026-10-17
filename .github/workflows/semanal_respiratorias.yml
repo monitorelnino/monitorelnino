@@ -29,7 +29,7 @@ jobs:
       # Válvula coleta-dia (janela E2, 17/10/2026): sondagem SIH/SIM/Registro Civil. Este ramo não vai à main.
       timeout_minutos: 45
       comandos: |
-        scripts/coletar_sih.py --sondar --uf AC
+        scripts/coletar_sih.py --sondar --uf AC --aamm 2607
         scripts/coletar_sih.py --sondar --uf CE --aamm 2607
         scripts/coletar_obitos.py --sondar --uf AC
     secrets:

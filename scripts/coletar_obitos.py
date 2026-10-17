@@ -127,14 +127,14 @@ def sondar(uf: str = "AC") -> int:
                 print(f"[obitos] Registro Civil JS {src}: falhou ({type(e).__name__})")
     except Exception as e:  # noqa: BLE001
         print(f"[obitos] Registro Civil página: falhou ({type(e).__name__}: {str(e)[:160]})")
-    for rota in ROTAS_CAUSA:
-        for g in GRAFICOS:
-            url = (f"{REGISTRO}{rota}?start_date=2026-09-01&end_date=2026-09-30&state=CE&city_id=Todos"
+    for rota, (ini, fim) in [(r, p) for r in ROTAS_CAUSA for p in (("2026-09-01", "2026-09-30"), ("2021-04-01", "2021-04-30"))]:
+        for g in GRAFICOS[:2]:
+            url = (f"{REGISTRO}{rota}?start_date={ini}&end_date={fim}&state=CE&city_id=Todos"
                    f"&chart={g}&places[]=HOSPITAL&places[]=DOMICILIO&places[]=VIA_PUBLICA&places[]=OUTROS")
             try:
-                print(f"[obitos] Registro Civil {rota} {g}: {buscar_uma_vez(url, timeout=60)[:500]!r}")
+                print(f"[obitos] Registro Civil {rota} {ini} {g}: {buscar_uma_vez(url, timeout=60)[:500]!r}")
             except Exception as e:  # noqa: BLE001
-                print(f"[obitos] Registro Civil {rota} {g}: falhou ({type(e).__name__}: {str(e)[:200]})")
+                print(f"[obitos] Registro Civil {rota} {ini} {g}: falhou ({type(e).__name__}: {str(e)[:200]})")
     return 0
 
 
