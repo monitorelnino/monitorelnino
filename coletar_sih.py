@@ -234,8 +234,9 @@ def sondar() -> int:
               f" · bate: {tab == ag.get('total', {}).get('AC', {}).get(comp)}")
         if tab is None:
             plano = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html))
-            i = plano.find("Acre")
-            print("  trecho:", plano[max(i - 200, 0):i + 400] if i >= 0 else plano[-800:])
+            i = plano.find("Norte")
+            print("  trecho:", plano[max(i - 300, 0):i + 500])
+            print("  filtros enviados:", {k.decode("latin-1"): v.decode("latin-1") for k, v in dados.items()})
     except Exception as e:  # noqa: BLE001
         print(f"TabNet: falhou ({type(e).__name__}: {str(e)[:200]})")
     return 0
