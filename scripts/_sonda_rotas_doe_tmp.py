@@ -84,40 +84,43 @@ def mg(data):
         print(f"    der[:24] {der[:24].hex()}")
 
 
+def mg_bruto(data):
+    url = f"https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao={data}"
+    b = pega(url, 90)
+    if b is None:
+        return
+    o = json.loads(b)
+    d = o.get("dados")
+    if isinstance(d, dict) and (d.get("arquivoCadernoPrincipal") or {}).get("arquivo"):
+        print(f"  MG {data}: edição, {d['arquivoCadernoPrincipal'].get('totalPaginas')} p., erros={o.get('erros')}")
+    else:
+        print(f"  MG {data}: SEM arquivo: {json.dumps(o, ensure_ascii=False)[:500]}")
+
+
 if __name__ == "__main__":
-    print("=== MG por data ===")
-    for d in ["2026-06-29", "2026-07-01", "2026-07-15", "2026-08-03", "2026-09-01", "2026-09-10", "2026-10-01", "2026-10-02", "2026-10-15", "2026-10-16"]:
-        mg(d)
-    corpo("https://www.jornalminasgerais.mg.gov.br/robots.txt", 600)
-    print("=== RS ===")
-    corpo("https://www.diariooficial.rs.gov.br/robots.txt", 400)
-    corpo("https://doe-backend.pro.rs.gov.br/public/diarios/consultar?tipoDiario=DOE&data=2026-10-16", 1500, 90)
-    corpo("https://secweb.procergs.com.br/doe/", 1500)
-    corpo("https://www.diariooficial.rs.gov.br/", 800)
-    print("=== RJ ===")
-    b = corpo("https://www.ioerj.com.br/portal/modules/conteudoonline/do_seleciona_data.php", 600)
+    print("=== MG fim de semana, feriado e borda da janela ===")
+    for d in ["2026-10-10", "2026-10-11", "2026-10-12", "2026-10-17", "2026-09-30", "2026-09-22", "2026-09-18", "2026-09-17", "2026-09-16", "2026-09-15", "2026-09-11"]:
+        mg_bruto(d)
+    print("=== RJ edição ===")
+    b = corpo("https://www.ioerj.com.br/portal/modules/conteudoonline/do_seleciona_edicao.php?data=MjAyNjEwMTY=", 1500)
     if b:
-        ctx(b, r"mostra_edicao|session=|\.pdf", 120, 10)
-        m = re.search(r'(mostra_edicao\.php\?session=[^"\']+)', b.decode("utf-8", "replace"))
+        t = b.decode("utf-8", "replace")
+        ctx(b, r"mostra_edicao|session=|\.pdf|caderno|Parte", 120, 15)
+        m = re.search(r'(mostra_edicao\.php\?session=[^"\']+)', t)
         if m:
             u = urllib.parse.urljoin("https://www.ioerj.com.br/portal/modules/conteudoonline/", m.group(1))
-            b2 = corpo(u, 600)
+            print("  sessão:", m.group(1)[:200])
+            try:
+                print("  sessão decodificada:", base64.b64decode(m.group(1).split("session=")[1] + "==")[:300])
+            except Exception as e:  # noqa: BLE001
+                print("  b64 falhou", e)
+            b2 = pega(u)
             if b2:
-                ctx(b2, r"pdf|file=|viewer|\.php\?", 160, 20)
-                for s in re.findall(r'<script[^>]+src="([^"]+)"', b2.decode("utf-8", "replace"))[:10]:
-                    print("    script:", s)
-    print("=== BA ===")
-    corpo("https://dool.egba.ba.gov.br/", 800, 90)
-    corpo("http://www.egba.ba.gov.br/", 800, 60)
-    corpo("https://www.egba.ba.gov.br/diario-oficial", 800, 60)
-    print("=== MA ===")
-    corpo("https://www.diariooficial.ma.gov.br/", 800)
-    corpo("https://diariooficial.ma.gov.br/public/index.xhtml", 800)
-    print("=== SE ===")
-    corpo("https://iose.se.gov.br/robots.txt", 400)
-    b = corpo("https://iose.se.gov.br/", 600)
+                t2 = b2.decode("utf-8", "replace")
+                print("  mostra_edicao", len(b2), "B")
+                print("   ", re.sub(r"\s+", " ", t2)[:4000])
+    print("=== RS secweb ===")
+    b = pega("https://secweb.procergs.com.br/doe/")
     if b:
-        ctx(b, r"diario|edic|pdf", 120, 12)
-    print("=== PE (degrau 3) ===")
-    corpo("https://legis.alepe.pe.gov.br/", 600)
-    corpo("https://www.cepe.com.br/robots.txt", 400)
+        t = b.decode("utf-8", "replace")
+        print(re.sub(r"\s+", " ", re.sub(r"<style.*?</style>|<link[^>]*>", " ", t, flags=re.S))[:6000])
