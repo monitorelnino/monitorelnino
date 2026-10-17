@@ -8,7 +8,7 @@ Serve a uma pergunta só: **por onde começar a ler** quando um pedido chega. An
 
 **Regra de página: contrato + componentes** (editoria, 02/10/2026). A forma de uma página não vive no HTML: vive em `layout/contratos/<pagina>.json`, que declara seções, ordem, cartões, grades e texto proibido. O HTML e o JavaScript se conformam ao contrato, e `scripts/verificar_layout.py` reprova a divergência — nenhum PR de página com contrato é mesclado com ele vermelho. Cartão de número é `.cartao-numero` em `.grade-numeros--3`; figura é `.cartao-mapa` em `.grade-figuras--3`; nada de ajuste de pixel por cartão.
 
-Atualizado em 16/10/2026.
+Atualizado em 17/10/2026.
 
 **A coluna `importado por`** (05/10/2026) diz quantos arquivos do repositório importam aquele — é a resposta curta para "o que a minha mudança alcança". Ela não substitui o portão de runtime, mas evita a surpresa: `coletores_base.py` tem 169 importadores, e os dois acidentes de isolamento de 02 e 05/10 custaram 907 atos e seis execuções de log por mexer ali sem ver esse número.
 
@@ -29,6 +29,7 @@ Atualizado em 16/10/2026.
 | `assets/js/blog.js` | blog.html, mudancas.html | `blog/posts.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
 | `assets/catalogo.js` | blog.html, defesa-civil.html, financiamento.html, imprensa.html, index.html, monitor-de-riscos.html, prefeituras.html, proteja-se.html, saude.html | — | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `assets/colunas.js` | blog.html, defesa-civil.html, financiamento.html, imprensa.html, index.html, monitor-de-riscos.html, mudancas.html, prefeituras.html, proteja-se.html, saude.html | — | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
+| `assets/js/consulta-municipio.js` | index.html, monitor-de-riscos.html | — | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `assets/js/defesa-civil.js` | defesa-civil.html | `Desde.json`, `Município.json`, `Nível.json`, `Tipo.json`, `UF.json`, `alertas/vigentes.json` (+27) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `assets/js/financiamento.js` | financiamento.html | `atos_resposta.json`, `financiamento/caminhos.json`, `financiamento/compromissos_federais.json`, `financiamento/consultas.json`, `financiamento/contadores_uf.json`, `financiamento/emendas.json` (+17) | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `assets/js/grade-estados.js` | index.html, saude.html | — | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |

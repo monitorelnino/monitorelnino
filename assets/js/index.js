@@ -718,8 +718,6 @@ function htmlGuia(chave, compacto){
 }
 
 const selUF = document.getElementById('ufSelect');
-Object.entries(UF_NOME).sort((a,b)=>a[1].localeCompare(b[1]))
-  .forEach(([sig,nome]) => selUF.insertAdjacentHTML('beforeend', `<option value="${sig}">${nome}</option>`));
 // 16/09/2026 (pedido da editoria): o site não ranqueia nem compara municípios/estados entre
 // si nem contra a média nacional — ORDEM_MARE (posição no ranking) e a comparação com
 // MEDIA_NACIONAL foram removidas. Cada estado mostra só a própria nota, no medidor.
@@ -811,56 +809,20 @@ function statusDoPlano(categoria){
   return 'nao_encontrado';
 }
 
-// O nome como a lista de referencia do IBGE o escreve, a partir do que o visitante digitou. E por
-// ele que se chega ao codigo: comparar texto normalizado e o unico casamento possivel entre o que
-// se digita e a lista oficial.
-function nomeOficialDe(uf, digitadoNormalizado){
-  if (!uf || !digitadoNormalizado) return '';
-  return (MUN_REF[uf] || []).find(n => nrm(n) === digitadoNormalizado) || '';
-}
-
-function renderMinha(){
-  const card = document.getElementById('meuCard');
-  const q = nrm(document.getElementById('cidadeInput').value);
-  const uf = selUF.value;
-  // Sem município não há cartão, com ou sem estado: o painel é do MUNICÍPIO, e o retrato do estado
-  // vive na ficha do estado, logo abaixo nesta mesma página.
-  if (!q){ card.hidden = true; card.innerHTML = ''; return; }
-
+// O cartão do município da inicial. O nome chega já como a lista de referência do IBGE o escreve
+// (`ConsultaMunicipio`), e é por ele que se chega ao código.
+function renderMinha(uf, nome, card){
   // 07/10/2026 (A1): o municipio se resolve pelo CODIGO IBGE, que vem da lista de referencia dos
   // 5.571 — e nao do banco de planos, que cobre uma parte. O registro do banco, quando existe,
   // tambem se procura pelo codigo. Quem nao tem registro continua tendo cartao.
-  const codigoDigitado = uf ? MUN_COD[uf + '|' + nomeOficialDe(uf, q)] : '';
-  let matches = TABELA_MUNICIPIOS.filter(m => nrm(m.nome) === q);
-  if (uf) matches = matches.filter(m => m.uf === uf);
-  const porCodigo = codigoDigitado
-    ? TABELA_MUNICIPIOS.filter(m => MUN_COD[m.uf + '|' + m.nome] === codigoDigitado)
-    : [];
-  if (porCodigo.length === 1) matches = porCodigo;
+  const codigoDigitado = MUN_COD[uf + '|' + nome];
+  const porCodigo = TABELA_MUNICIPIOS.filter(x => MUN_COD[x.uf + '|' + x.nome] === codigoDigitado);
+  const porNome = TABELA_MUNICIPIOS.filter(x => x.uf === uf && nrm(x.nome) === nrm(nome));
+  const matches = porCodigo.length === 1 ? porCodigo : porNome;
   const m = matches.length === 1 ? matches[0] : null;
-  const ufFinal = uf || (m ? m.uf : '');
-  card.dataset.uf = ufFinal || '';
-  const nomeDigitado = document.getElementById('cidadeInput').value.trim();
+  card.dataset.uf = uf;
 
-  let html = `<h4>${esc(nomeDigitado)}${ufFinal ? ' · ' + esc(ufFinal) : ''}</h4>`;
-
-  if (matches.length > 1){
-    // Com o campo de município liberado só depois do estado e a lista já filtrada por UF, este
-    // ramo praticamente não ocorre — mas ocorre se alguém digitar o nome sem usar a lista. Fica
-    // uma frase mínima, sem o resto do cartão.
-    html += `<p>Há municípios com esse nome em mais de um estado (${esc([...new Set(matches.map(x => x.uf))].join(', '))}); selecione o seu ao lado.</p>`;
-    card.innerHTML = html; card.hidden = false; return;
-  }
-
-  // 11/10/2026 (Relatório D, A4-20): texto que não é município da lista do IBGE ("cubat") ganhava
-  // o cartão inteiro com o nome digitado, como se fosse um município não verificado.
-  if (!m && uf && !nomeOficialDe(uf, q)){
-    // Ainda digitando um nome que existe: sem cartão até casar (o evento é `input`).
-    if ((MUN_REF[uf] || []).some(n => nrm(n).startsWith(q))){ card.hidden = true; card.innerHTML = ''; return; }
-    html = `<p>Não encontramos “${esc(nomeDigitado)}” na lista de municípios do IBGE para ${esc(uf)}. Confira a grafia ou escolha o nome na lista.</p>`;
-    card.innerHTML = html; card.hidden = false;
-    return;
-  }
+  let html = `<h4>${esc(nome)} · ${esc(uf)}</h4>`;
 
   const status = m ? statusDoPlano(m.categoria) : 'nao_encontrado';
   if (status === 'encontrado' || status === 'estadual'){
@@ -903,8 +865,8 @@ function renderMinha(){
     html += `<p class="fv"><strong>Ainda não verificamos este município com todas as fontes.</strong> Isso não é uma afirmação sobre a existência do plano.</p>`;
   }
 
-  html += riscoBox(ufFinal);
-  html += enquadramentoBox(ufFinal, m ? m.nome : nomeOficialDe(ufFinal, q), codigoDigitado);
+  html += riscoBox(uf);
+  html += enquadramentoBox(uf, m ? m.nome : nome, codigoDigitado);
 
   if (status === 'encontrado' || status === 'estadual'){
     const fonte = m.url
@@ -912,35 +874,14 @@ function renderMinha(){
       : esc(m.fonte);
     html += `<p class="fk">Onde o documento foi localizado</p><p class="fv">${fonte}</p>`;
   } else {
-    html += `<p class="note">Tem o documento da sua prefeitura? <a href="#formulario" id="enviarDoCartao" data-uf="${esc(ufFinal)}" data-mun="${esc(nomeDigitado)}">Envie pelo formulário</a>.</p>`;
+    html += `<p class="note">Tem o documento da sua prefeitura? <a href="#formulario" id="enviarDoCartao" data-uf="${esc(uf)}" data-mun="${esc(nome)}">Envie pelo formulário</a>.</p>`;
   }
 
   card.innerHTML = html;
   animarGauges(card);
-  card.hidden = false;
 }
-function popularLista(){
-  const dl = document.getElementById('listaMun');
-  const uf = selUF.value;
-  dl.innerHTML = (uf && MUN_REF[uf] ? MUN_REF[uf] : []).map(n => `<option value="${esc(n)}">`).join('');
-}
-document.getElementById('cidadeInput').addEventListener('input', renderMinha);
-selUF.addEventListener('change', () => {
-  const campo = document.getElementById('cidadeInput');
-  campo.value = '';
-  // 30/09/2026: o campo de município nasce desabilitado e só abre quando há estado — mesmo padrão
-  // de `prefeituras.html`. Sem isso, dava para digitar um município antes de escolher o estado e
-  // cair no ramo de nome ambíguo, que o cartão mínimo não quer ter.
-  campo.disabled = !selUF.value;
-  popularLista();
-  renderMinha();
-});
-// 16/10/2026 (editoria): trocar de município sem controle extra. Clicar no campo que já tem um
-// município escolhido o esvazia sem disparar `input`, para a lista inteira do estado aparecer em
-// qualquer navegador; o cartão anterior fica (com o nome no título) até o novo nome casar.
-['focus', 'click'].forEach(ev => document.getElementById('cidadeInput').addEventListener(ev, (e) => {
-  if (nomeOficialDe(selUF.value, nrm(e.target.value))) e.target.value = '';
-}));
+ConsultaMunicipio.montar({uf: 'ufSelect', municipio: 'cidadeInput', lista: 'listaMun', cartao: 'meuCard',
+  estados: UF_NOME, municipios: uf => MUN_REF[uf] || [], mostrar: renderMinha});
 document.getElementById('meuCard').addEventListener('click', (e) => {
   // 16/10/2026: o formulário está nesta página (#formulario); o cartão o preenche pela mesma função
   // que lê `?uf=&mun=&tipo=` da URL, e a âncora rola até ele. O destino antigo era outra página.

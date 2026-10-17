@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-17 · #812 · Consulta do município: um componente comum
+
+`assets/js/consulta-municipio.js` monta a consulta estado → município (lista do estado, campo que abre com o estado, clique que esvazia, frase do nome fora da lista); cada página dá só a lista e o conteúdo do cartão. A inicial e o Monitor de riscos passam a usá-lo, sem mudança visual; as outras páginas o usarão nas reformas.
+
 ## 2026-10-16 · #809 · Ar medido: hora de medição no futuro vira lacuna
 
 Na coleta das 15:46, 51 estações (INEA, CPRH, Ibram) traziam hora 4 a 5 h adiante da consulta e saíam como leitura atual. `parse_monitorar` passa a declarar lacuna quando a hora publicada passa da consulta em mais de 1 h (IQAr e sensores RedeAr); não se reinterpreta fuso que a fonte não declara. METODOLOGIA §41.7; autoteste novo.
