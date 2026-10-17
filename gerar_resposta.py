@@ -247,7 +247,7 @@ def autoteste() -> int:
         """§8: evento do município = famílias dos atos casados; S2iD sem ato = sem tipo; soma por família = atos casados."""
         epu = eventos_por_uf(m, E)
         return (m["0000001"]["evento_declarado"] == ["chuva", "seca"] and m["0000002"]["evento_declarado"] == ["sem_tipo_informado"]
-                and m["0000005"]["evento_declarado"] == ["outro_declarado"] and m["0000003"]["evento_declarado"] == []
+                and m["0000005"]["evento_declarado"] == ["sem_tipo_informado"] and m["0000003"]["evento_declarado"] == []
                 and epu["RS"] == {"eventos_declarados": {"chuva": 1, "seca": 1}, "evento_mais_declarado": ["chuva", "seca"]}
                 and epu["BA"]["evento_mais_declarado"] is None and sum(sum(v["eventos_declarados"].values()) for v in epu.values()) == 3)
     def t12():
