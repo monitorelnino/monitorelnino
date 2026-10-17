@@ -913776,6 +913776,55 @@
      "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
     },
     "resultado": "preparada"
+   },
+   "busca_dirigida": [
+    {
+     "em": "2026-10-17",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.campobom.rs.gov.br/prefeitura-conclui-acoes-do-plano-de-contingencia-apos-cheia-do-rio-dos-sinos/"
+    }
+   ],
+   "ultima_busca_em": "2026-10-17",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.6 (15/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.6 (15/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "criterios": {
+     "0_documento_primario": {
+      "ok": true,
+      "trecho": "6739 caracteres de fonte oficial"
+     },
+     "1_identidade": {
+      "ok": true,
+      "trecho": "tura conclui ações do Plano de Contingência após cheia do Rio dos Sinos &#8211; CAMPO BOM Ir para o conteúdo A CIDADE CAMPO BOM PIONEIRA DADOS DO MUNICÍPIO ENDE"
+     },
+     "2_citacao": {
+      "ok": false,
+      "trecho": "",
+      "dados": {
+       "tipo": "decreto",
+       "numero": "6.669",
+       "data": null,
+       "detalhe": "sem data completa no texto"
+      }
+     }
+    },
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-10-17",
+    "hash_evidencia": "4a7133c717b877970f5916c24cad7e88e4751316a7051767a8d8d8b0eeb20a2d"
    }
   },
   {
@@ -916018,6 +916067,55 @@
      "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
     },
     "resultado": "preparada"
+   },
+   "busca_dirigida": [
+    {
+     "em": "2026-10-17",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.riodasostras.rj.gov.br/wp-content/uploads/2026/10/plano-de-contingencia-para-enfrentamento-do-fenomeno-el-nino-1.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-10-17",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.6 (15/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.6 (15/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "criterios": {
+     "0_documento_primario": {
+      "ok": true,
+      "trecho": "95638 caracteres de fonte oficial"
+     },
+     "1_identidade": {
+      "ok": true,
+      "trecho": ".1) Chuvas Intensas (COBRADE 1.3.2.1.4) Vendaval (COBRADE 1.3.2.1.5) Município: Rio das Ostras – RJ Ano: 2026/2027 Atualização: Em atualização. SUMÁRIO 1. O QUE"
+     },
+     "2_citacao": {
+      "ok": false,
+      "trecho": "",
+      "dados": {
+       "tipo": "decreto",
+       "numero": "3267",
+       "data": null,
+       "detalhe": "sem data completa no texto"
+      }
+     }
+    },
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-10-17",
+    "hash_evidencia": "15f339506a350963a105047a43e36ccd871039b21f58d46f5b423efc5974ef51"
    }
   },
   {
