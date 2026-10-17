@@ -34,7 +34,11 @@
    "tons": {
     "reconhecido": 21,
     "decretado_sem_reconhecimento": 0
-   }
+   },
+   "eventos_declarados": {
+    "sem_tipo_informado": 21
+   },
+   "evento_mais_declarado": null
   },
   "AL": {
    "n_municipios": 28,
@@ -54,7 +58,14 @@
    "tons": {
     "reconhecido": 26,
     "decretado_sem_reconhecimento": 2
-   }
+   },
+   "eventos_declarados": {
+    "seca": 20,
+    "sem_tipo_informado": 16
+   },
+   "evento_mais_declarado": [
+    "seca"
+   ]
   },
   "AM": {
    "n_municipios": 38,
@@ -74,7 +85,17 @@
    "tons": {
     "reconhecido": 32,
     "decretado_sem_reconhecimento": 6
-   }
+   },
+   "eventos_declarados": {
+    "chuva": 14,
+    "outro_declarado": 1,
+    "seca": 20,
+    "sem_tipo_informado": 28,
+    "vendaval": 2
+   },
+   "evento_mais_declarado": [
+    "seca"
+   ]
   },
   "AP": {
    "n_municipios": 4,
@@ -94,7 +115,15 @@
    "tons": {
     "reconhecido": 2,
     "decretado_sem_reconhecimento": 2
-   }
+   },
+   "eventos_declarados": {
+    "chuva": 2,
+    "seca": 2
+   },
+   "evento_mais_declarado": [
+    "chuva",
+    "seca"
+   ]
   },
   "BA": {
    "n_municipios": 74,
@@ -114,7 +143,16 @@
    "tons": {
     "reconhecido": 71,
     "decretado_sem_reconhecimento": 3
-   }
+   },
+   "eventos_declarados": {
+    "chuva": 2,
+    "seca": 65,
+    "sem_tipo_informado": 8,
+    "vendaval": 2
+   },
+   "evento_mais_declarado": [
+    "seca"
+   ]
   },
   "CE": {
    "n_municipios": 29,
@@ -134,7 +172,14 @@
    "tons": {
     "reconhecido": 27,
     "decretado_sem_reconhecimento": 2
-   }
+   },
+   "eventos_declarados": {
+    "chuva": 3,
+    "seca": 27
+   },
+   "evento_mais_declarado": [
+    "seca"
+   ]
   },
   "DF": {
    "n_municipios": 1,
@@ -154,7 +199,13 @@
    "tons": {
     "reconhecido": 0,
     "decretado_sem_reconhecimento": 1
-   }
+   },
+   "eventos_declarados": {
+    "chuva": 7
+   },
+   "evento_mais_declarado": [
+    "chuva"
+   ]
   },
   "ES": {
    "n_municipios": 0,
@@ -174,7 +225,9 @@
    "tons": {
     "reconhecido": 0,
     "decretado_sem_reconhecimento": 0
-   }
+   },
+   "eventos_declarados": {},
+   "evento_mais_declarado": null
   },
   "GO": {
    "n_municipios": 7,
@@ -194,7 +247,16 @@
    "tons": {
     "reconhecido": 6,
     "decretado_sem_reconhecimento": 1
-   }
+   },
+   "eventos_declarados": {
+    "chuva": 1,
+    "fogo": 1,
+    "seca": 4,
+    "sem_tipo_informado": 1
+   },
+   "evento_mais_declarado": [
+    "seca"
+   ]
   },
   "MA": {
    "n_municipios": 7,
@@ -214,7 +276,14 @@
    "tons": {
     "reconhecido": 6,
     "decretado_sem_reconhecimento": 1
-   }
+   },
+   "eventos_declarados": {
+    "chuva": 6,
+    "seca": 1
+   },
+   "evento_mais_declarado": [
+    "chuva"
+   ]
   },
   "MG": {
    "n_municipios": 68,
@@ -234,7 +303,17 @@
    "tons": {
     "reconhecido": 62,
     "decretado_sem_reconhecimento": 6
-   }
+   },
+   "eventos_declarados": {
+    "chuva": 9,
+    "outro_declarado": 2,
+    "seca": 42,
+    "sem_tipo_informado": 9,
+    "vendaval": 11
+   },
+   "evento_mais_declarado": [
+    "seca"
+   ]
   },
   "MS": {
    "n_municipios": 3,
@@ -254,7 +333,15 @@
    "tons": {
     "reconhecido": 2,
     "decretado_sem_reconhecimento": 1
-   }
+   },
+   "eventos_declarados": {
+    "chuva": 1,
+    "sem_tipo_informado": 1,
+    "vendaval": 2
+   },
+   "evento_mais_declarado": [
+    "vendaval"
+   ]
   },
   "MT": {
    "n_municipios": 5,
@@ -274,7 +361,16 @@
    "tons": {
     "reconhecido": 1,
     "decretado_sem_reconhecimento": 4
-   }
+   },
+   "eventos_declarados": {
+    "chuva": 1,
+    "fogo": 1,
+    "sem_tipo_informado": 3
+   },
+   "evento_mais_declarado": [
+    "chuva",
+    "fogo"
+   ]
   },
   "PA": {
    "n_municipios": 14,
@@ -294,7 +390,18 @@
    "tons": {
     "reconhecido": 10,
     "decretado_sem_reconhecimento": 4
-   }
+   },
+   "eventos_declarados": {
+    "chuva": 3,
+    "fogo": 4,
+    "outro_declarado": 2,
+    "seca": 3,
+    "sem_tipo_informado": 2,
+    "vendaval": 1
+   },
+   "evento_mais_declarado": [
+    "fogo"
+   ]
   },
   "PB": {
    "n_municipios": 63,
@@ -314,7 +421,15 @@
    "tons": {
     "reconhecido": 60,
     "decretado_sem_reconhecimento": 3
-   }
+   },
+   "eventos_declarados": {
+    "chuva": 3,
+    "seca": 57,
+    "sem_tipo_informado": 8
+   },
+   "evento_mais_declarado": [
+    "seca"
+   ]
   },
   "PE": {
    "n_municipios": 107,
@@ -334,7 +449,15 @@
    "tons": {
     "reconhecido": 106,
     "decretado_sem_reconhecimento": 1
-   }
+   },
+   "eventos_declarados": {
+    "chuva": 6,
+    "seca": 32,
+    "sem_tipo_informado": 71
+   },
+   "evento_mais_declarado": [
+    "seca"
+   ]
   },
   "PI": {
    "n_municipios": 64,
@@ -354,7 +477,13 @@
    "tons": {
     "reconhecido": 64,
     "decretado_sem_reconhecimento": 0
-   }
+   },
+   "eventos_declarados": {
+    "seca": 65
+   },
+   "evento_mais_declarado": [
+    "seca"
+   ]
   },
   "PR": {
    "n_municipios": 90,
@@ -374,7 +503,15 @@
    "tons": {
     "reconhecido": 59,
     "decretado_sem_reconhecimento": 31
-   }
+   },
+   "eventos_declarados": {
+    "chuva": 14,
+    "sem_tipo_informado": 107,
+    "vendaval": 48
+   },
+   "evento_mais_declarado": [
+    "vendaval"
+   ]
   },
   "RJ": {
    "n_municipios": 2,
@@ -394,7 +531,13 @@
    "tons": {
     "reconhecido": 0,
     "decretado_sem_reconhecimento": 2
-   }
+   },
+   "eventos_declarados": {
+    "chuva": 2
+   },
+   "evento_mais_declarado": [
+    "chuva"
+   ]
   },
   "RN": {
    "n_municipios": 43,
@@ -414,7 +557,16 @@
    "tons": {
     "reconhecido": 38,
     "decretado_sem_reconhecimento": 5
-   }
+   },
+   "eventos_declarados": {
+    "chuva": 4,
+    "seca": 35,
+    "sem_tipo_informado": 8,
+    "vendaval": 1
+   },
+   "evento_mais_declarado": [
+    "seca"
+   ]
   },
   "RO": {
    "n_municipios": 2,
@@ -434,7 +586,14 @@
    "tons": {
     "reconhecido": 1,
     "decretado_sem_reconhecimento": 1
-   }
+   },
+   "eventos_declarados": {
+    "outro_declarado": 1,
+    "sem_tipo_informado": 1
+   },
+   "evento_mais_declarado": [
+    "outro_declarado"
+   ]
   },
   "RR": {
    "n_municipios": 2,
@@ -454,7 +613,11 @@
    "tons": {
     "reconhecido": 0,
     "decretado_sem_reconhecimento": 2
-   }
+   },
+   "eventos_declarados": {
+    "sem_tipo_informado": 2
+   },
+   "evento_mais_declarado": null
   },
   "RS": {
    "n_municipios": 209,
@@ -474,7 +637,16 @@
    "tons": {
     "reconhecido": 193,
     "decretado_sem_reconhecimento": 16
-   }
+   },
+   "eventos_declarados": {
+    "chuva": 154,
+    "seca": 2,
+    "sem_tipo_informado": 43,
+    "vendaval": 97
+   },
+   "evento_mais_declarado": [
+    "chuva"
+   ]
   },
   "SC": {
    "n_municipios": 42,
@@ -494,7 +666,15 @@
    "tons": {
     "reconhecido": 42,
     "decretado_sem_reconhecimento": 0
-   }
+   },
+   "eventos_declarados": {
+    "chuva": 29,
+    "sem_tipo_informado": 8,
+    "vendaval": 16
+   },
+   "evento_mais_declarado": [
+    "chuva"
+   ]
   },
   "SE": {
    "n_municipios": 8,
@@ -514,7 +694,14 @@
    "tons": {
     "reconhecido": 8,
     "decretado_sem_reconhecimento": 0
-   }
+   },
+   "eventos_declarados": {
+    "seca": 7,
+    "sem_tipo_informado": 2
+   },
+   "evento_mais_declarado": [
+    "seca"
+   ]
   },
   "SP": {
    "n_municipios": 19,
@@ -534,7 +721,16 @@
    "tons": {
     "reconhecido": 8,
     "decretado_sem_reconhecimento": 11
-   }
+   },
+   "eventos_declarados": {
+    "chuva": 6,
+    "fogo": 1,
+    "sem_tipo_informado": 17,
+    "vendaval": 1
+   },
+   "evento_mais_declarado": [
+    "chuva"
+   ]
   },
   "TO": {
    "n_municipios": 3,
@@ -554,7 +750,17 @@
    "tons": {
     "reconhecido": 2,
     "decretado_sem_reconhecimento": 1
-   }
+   },
+   "eventos_declarados": {
+    "chuva": 1,
+    "fogo": 1,
+    "seca": 1
+   },
+   "evento_mais_declarado": [
+    "chuva",
+    "fogo",
+    "seca"
+   ]
   }
  }
 }

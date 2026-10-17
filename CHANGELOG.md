@@ -12,6 +12,10 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-17 · #836 · Diarreias pelo SISAB; o mês da extração sai da leptospirose
 `coletar_sisab.py` lê do relatório público do SISAB os atendimentos da atenção primária por diarreia (CIAP D11, D70, D73; CID A00–A09), por UF e mês desde 2019, e confere os filtros que o próprio CSV declara. Na leptospirose, o mês em que o arquivo preliminar foi extraído deixa de contar como coberto, e `ultimo` ganha o último mês consolidado. METODOLOGIA §108.
 
+## 2026-10-17 · #827 · Defesa civil: evento declarado por município
+
+`gerar_resposta.py` grava `evento_declarado` (famílias dos atos casados, pela função única do tipo), `dias_sem_reconhecimento` e, por UF, `eventos_declarados` e `evento_mais_declarado`. O nome do ato deixa de contar como "outro declarado" (380 atos passam a "sem tipo informado"). Soma por família = 1.202 atos casados. Metodologia §32.5.
+
 ## 2026-10-17 · #829 · Desfechos do SUS: arquivo comum e leitor `.dbc`
 Nasce a forma comum dos desfechos novos em `data/saude_desfechos/` (`desfechos_sus.py`): série por UF, taxa por 100 mil, faixa habitual do canal endêmico, quintis de 2019–2025 congelados para o mapa, último valor, parcial e preliminar, quarentena para arquivo fora da forma. Leitor `.dbc` do DATASUS em Python puro; leptospirose do SINAN conferida contra o TabNet (1.594 = 1.594). Catálogo com a sondagem e as fontes da abertura da Saúde. Detalhe: METODOLOGIA §108.
 
