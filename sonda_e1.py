@@ -60,5 +60,39 @@ def ckan():
         except Exception as e:
             print(f"[ckan] {termo}: FALHA {type(e).__name__}: {e}")
 
+def sisab_html():
+    h = buscar(__import__("coletar_sisab").RELATORIO, timeout=90).decode("utf-8", "replace")
+    i = h.find('id="j_idt44"')
+    form = h[i:i + 400000]
+    nomes = sorted(set(re.findall(r'name="([^"]+)"', form)))
+    print("[sisab-html] nomes no form j_idt44:", nomes[:200])
+    for alvo in ("btnAddCid", "verTela", "cid-30-4", "selectLinha", "j_idt76", "Download", "csv", "exportar"):
+        k = h.find(alvo)
+        print(f"[sisab-html] --- {alvo} @ {k}")
+        if k >= 0:
+            print(re.sub(r"\s+", " ", h[max(0, k - 1200):k + 1800]))
+    js = re.findall(r'<script[^>]*src="([^"]+)"', h)
+    print("[sisab-html] scripts:", js)
+
+
+def dbc_extra():
+    import collections, coletar_datasus_dbc as C
+    for pref in ("SDTA", "MALA"):
+        for sub in ("PRELIM", "FINAIS"):
+            itens = sorted(n for n, _ in C.listar_ftp(f"{C.SINAN}/{sub}") if n.upper().startswith(pref))
+            print(f"[dbc] {pref} {sub}: {itens}")
+            if not itens:
+                continue
+            cam = f"{C.SINAN}/{sub}/{itens[-1]}"
+            desc, ls = C.ler_dbc(C.baixar_ftp(cam)); L = list(ls)
+            print(f"[dbc] {cam}: {len(L)} registros; colunas {[d['nome'] for d in desc]}")
+            for col in ("NU_ANO", "SG_UF_NOT", "SG_UF", "CLASSI_FIN", "RESULT", "DT_NOTIFIC"):
+                if L and col in L[0]:
+                    print(f"   {col}: {sorted(collections.Counter(x[col][:6] for x in L).items())[:40]}")
+    with C._ftp() as f:
+        for cam in ("PRELIM/LEPTBR26.dbc", "PRELIM/LEPTBR25.dbc", "FINAIS/LEPTBR24.dbc"):
+            print(f"[mdtm] {cam}: {f.sendcmd('MDTM ' + C.SINAN + '/' + cam)}")
+
+
 if __name__ == "__main__":
-    {"fontes": fontes, "tabnet": tabnet, "sisab": sisab, "ckan": ckan}[sys.argv[1]]()
+    {"fontes": fontes, "tabnet": tabnet, "sisab": sisab, "ckan": ckan, "sisab_html": sisab_html, "dbc_extra": dbc_extra}[sys.argv[1]]()

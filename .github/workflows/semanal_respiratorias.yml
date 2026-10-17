@@ -19,4 +19,5 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Sondar
         run: |
-          CHAVES='(Aedes|criadouro|mosquito|arbovir|chikungunya|temperatura.{0,40}(vetor|vírus)|água parada|armazenad)' python3 sonda_e1.py fontes "https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/svsa/vigilancia-ambiental/plano-de-contingencia-seca-e-estiagem.pdf" "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/dengue" "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/a/aedes-aegypti" "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/c/chikungunya" || true
+          python3 sonda_e1.py dbc_extra || true
+          python3 sonda_e1.py sisab_html || true

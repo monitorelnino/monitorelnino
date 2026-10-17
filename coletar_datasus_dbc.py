@@ -21,6 +21,7 @@ repositório. O que se guarda é a contagem, com o nome e o hash do arquivo de o
 USO
   python3 coletar_datasus_dbc.py --autoteste
   python3 coletar_datasus_dbc.py --sondar          # só mede e imprime; não escreve em data/
+  python3 coletar_datasus_dbc.py --desfecho leptospirose
 """
 import ftplib
 import hashlib
@@ -192,7 +193,11 @@ def ler_dbc(dados: bytes, campos=None):
 
 
 # ---------------------------------------------------------------- FTP
+PAUSA = 2  # segundos entre conexões ao mesmo servidor
+
+
 def _ftp(timeout: int = 60) -> ftplib.FTP:
+    time.sleep(PAUSA)
     f = ftplib.FTP(FTP_HOST, timeout=timeout)
     f.login("anonymous", SENHA_ANONIMA)
     return f
@@ -246,61 +251,118 @@ def baixar_ftp(caminho: str, tentativas: int = 3, teto: int = 400 << 20) -> byte
     return b""
 
 
-# ---------------------------------------------------------------- sondagem
+# ---------------------------------------------------------------- desfechos
+# Desfecho → sistema → arquivos → filtro → agregação. O período é o mês de início dos sintomas; o
+# território, a UF de residência. Um caso sem UF de residência não é atribuído a UF nenhuma: entra
+# na contagem declarada `sem_uf` da fonte, nunca em outra UF.
+DESFECHOS = {
+    "leptospirose": {
+        "sistema": "SINAN", "prefixo": "LEPT", "rotulo": "Leptospirose, casos confirmados",
+        "criterio": "CLASSI_FIN = 1 (confirmado)", "campos": ("CLASSI_FIN", "SG_UF", "DT_SIN_PRI", "DT_NOTIFIC"),
+        "confirmado": lambda r: r.get("CLASSI_FIN") == "1",
+        # Investigação do SINAN fecha em até 60 dias: os três últimos meses ainda crescem.
+        "n_parciais": 3,
+    },
+}
+ANO_INICIAL = 2019
+
+
+def agregar(linhas, confirmado, uf_de: dict, ano_inicial: int = ANO_INICIAL) -> tuple:
+    """({UF: {AAAA-MM: n}}, sem_uf, mês mais recente notificado). Função pura."""
+    serie = {}; sem_uf = 0; ultimo_notif = ""
+    for r in linhas:
+        dn = r.get("DT_NOTIFIC") or ""
+        if len(dn) == 8 and dn[:6] > ultimo_notif:
+            ultimo_notif = dn[:6]
+        if not confirmado(r):
+            continue
+        ds = r.get("DT_SIN_PRI") or ""
+        if len(ds) != 8 or not ds.isdigit() or int(ds[:4]) < ano_inicial:
+            continue
+        uf = uf_de.get(r.get("SG_UF") or "")
+        if not uf:
+            sem_uf += 1; continue
+        per = f"{ds[:4]}-{ds[4:6]}"
+        serie.setdefault(uf, {}); serie[uf][per] = serie[uf].get(per, 0) + 1
+    return serie, sem_uf, (f"{ultimo_notif[:4]}-{ultimo_notif[4:]}" if ultimo_notif else None)
+
+
+def completar(serie: dict, ufs, ate: str, desde: str = f"{ANO_INICIAL}-01") -> dict:
+    """Zero medido em todo mês coberto pelos arquivos lidos (até o último mês notificado); depois
+    dele, nada: mês não coberto é lacuna, não zero. Função pura."""
+    meses = []
+    a, m = int(desde[:4]), int(desde[5:])
+    while f"{a}-{m:02d}" <= ate:
+        meses.append(f"{a}-{m:02d}"); m += 1
+        if m == 13:
+            a, m = a + 1, 1
+    return {uf: {p: serie.get(uf, {}).get(p, 0) for p in meses} for uf in ufs}
+
+
+def arquivos_do_sinan(prefixo: str, listar=None) -> list:
+    """[(caminho, preliminar)] de 2019 em diante: FINAIS onde houver, PRELIM nos anos sem final."""
+    listar = listar or listar_ftp
+    finais = {n[-6:-4]: f"{SINAN}/FINAIS/{n}" for n, _ in listar(f"{SINAN}/FINAIS")
+              if n.upper().startswith(prefixo + "BR") and n.lower().endswith(".dbc")}
+    prelim = {n[-6:-4]: f"{SINAN}/PRELIM/{n}" for n, _ in listar(f"{SINAN}/PRELIM")
+              if n.upper().startswith(prefixo + "BR") and n.lower().endswith(".dbc")}
+    out = []
+    for aa in sorted(set(finais) | set(prelim)):
+        if int(aa) + 2000 < ANO_INICIAL:
+            continue
+        out.append((finais[aa], False) if aa in finais else (prelim[aa], True))
+    return out
+
+
+def coletar(nome: str, listar=None, baixar=None, ler_fn=None, gravar_fn=None, hoje: str = None) -> bool:
+    """Lê os arquivos do SINAN do desfecho e grava o arquivo comum. Só regrava se algum arquivo mudou."""
+    import desfechos_sus as ds
+    from coletores_base import ler, gravar, data_da_edicao
+    ler_fn = ler_fn or ler; gravar_fn = gravar_fn or gravar; baixar = baixar or baixar_ftp
+    cfg = DESFECHOS[nome]
+    anterior = ler_fn(ds.caminho(nome))
+    arquivos = arquivos_do_sinan(cfg["prefixo"], listar)
+    if not arquivos:
+        print(f"{nome}: nenhum arquivo {cfg['prefixo']} no FTP; o arquivo anterior fica"); return False
+    uf_de = ds.uf_por_codigo(ler_fn)
+    serie = {}; sem_uf = 0; ate = None; lidos = []
+    for caminho, prelim in arquivos:
+        bruto = baixar(caminho)
+        _, linhas = ler_dbc(bruto, cfg["campos"])
+        s, su, ult = agregar(linhas, cfg["confirmado"], uf_de)
+        if ult is None:
+            raise DbcInvalido(f"{caminho}: nenhum registro com data de notificação; arquivo recusado")
+        for uf, meses in s.items():
+            for p, n in meses.items():
+                serie.setdefault(uf, {}); serie[uf][p] = serie[uf].get(p, 0) + n
+        sem_uf += su; ate = max(filter(None, (ate, ult)), default=None)
+        lidos.append({"arquivo": caminho, "sha256": hashlib.sha256(bruto).hexdigest(), "preliminar": prelim})
+    if len(uf_de) < 27:
+        raise DbcInvalido("referência IBGE sem as 27 UFs; nada a montar")
+    hashes = [a["sha256"] for a in lidos]
+    if anterior and [a.get("sha256") for a in anterior.get("fonte", {}).get("arquivos", [])] == hashes:
+        print(f"{nome}: arquivos do FTP iguais aos da última leitura; nada a regravar"); return False
+    fonte = {"sistema": f"{cfg['sistema']} (Ministério da Saúde), microdados no FTP do DATASUS",
+             "url": f"ftp://{FTP_HOST}{SINAN}/", "criterio": cfg["criterio"],
+             "data_do_periodo": "início dos sintomas (DT_SIN_PRI)", "uf": "residência (SG_UF)",
+             "sem_uf_de_residencia": sem_uf, "arquivos": lidos}
+    obj = ds.montar(desfecho=nome, rotulo=cfg["rotulo"], unidade="casos", periodo="mes",
+                    territorio="UF de residência", serie=completar(serie, sorted(set(uf_de.values())), ate),
+                    fonte=fonte, cadencia="semanal; o DATASUS republica o arquivo preliminar sem data fixa",
+                    coletado_em=hoje or data_da_edicao().isoformat(),
+                    anos_preliminares=[2000 + int(c[-6:-4]) for c, p in arquivos if p],
+                    n_parciais=cfg["n_parciais"], populacao=ds.populacao_por_uf(ler_fn), anterior=anterior)
+    return ds.gravar_desfecho(obj, gravar_fn=gravar_fn)
+
+
 def sondar() -> int:
-    """Só mede e imprime (HANDOVER §2.1): diretórios, tamanhos, tempo, colunas, contagens."""
-    import collections
-    import json
-    from coletores_base import buscar
+    """Só mede e imprime: diretórios do SINAN e os arquivos de cada desfecho."""
     print(f"cliente: senha anônima '{SENHA_ANONIMA}' · {ua_de('sondagem DATASUS')}")
-    for d in ("/dissemin/publicos", SINAN):
+    for nome, cfg in DESFECHOS.items():
         try:
-            print(f"[ftp] {d}: {[n for n, _ in listar_ftp(d)]}")
+            print(f"[ftp] {nome}: {arquivos_do_sinan(cfg['prefixo'])}")
         except Exception as e:  # noqa: BLE001
-            print(f"[ftp] {d}: FALHA {type(e).__name__}: {e}")
-    alvo = None
-    for sub in ("PRELIM", "FINAIS"):
-        try:
-            t0 = time.time(); itens = listar_ftp(f"{SINAN}/{sub}")
-            lep = sorted(x for x in itens if x[0].upper().startswith(("LEPT", "HEPA", "DDA", "SURT")))
-            print(f"[ftp] {SINAN}/{sub}: {len(itens)} arquivos em {time.time()-t0:.1f}s; "
-                  f"prefixos {sorted(collections.Counter(n[:4].upper() for n, _ in itens).items())}")
-            print(f"   LEPT/HEPA/DDA/SURT: {lep}")
-            lepts = sorted(n for n, _ in lep if n.upper().startswith("LEPT"))
-            if lepts and alvo is None and sub == "PRELIM":
-                alvo = f"{SINAN}/{sub}/{lepts[-1]}"
-            if lepts and sub == "FINAIS":
-                alvo_final = f"{SINAN}/{sub}/{lepts[-1]}"
-        except Exception as e:  # noqa: BLE001
-            print(f"[ftp] {SINAN}/{sub}: FALHA {type(e).__name__}: {e}")
-    for caminho in [x for x in (alvo, locals().get("alvo_final")) if x]:
-        try:
-            t0 = time.time(); bruto = baixar_ftp(caminho); t1 = time.time()
-            desc, linhas = ler_dbc(bruto); t2 = time.time()
-            L = list(linhas)
-            print(f"[dbc] {caminho}: {len(bruto)} B, sha256 {hashlib.sha256(bruto).hexdigest()[:16]}, "
-                  f"baixar {t1-t0:.1f}s, decodificar {t2-t1:.1f}s, {len(L)} registros")
-            print(f"   colunas: {[d['nome'] for d in desc]}")
-            for col in ("CLASSI_FIN", "NU_ANO", "SG_UF_NOT", "SG_UF", "EVOLUCAO", "CRITERIO", "TP_NOT", "ID_AGRAVO"):
-                if L and col in L[0]:
-                    print(f"   {col}: {sorted(collections.Counter(x[col] for x in L).items())[:40]}")
-            conf = [x for x in L if x.get("CLASSI_FIN") == "1"]
-            por_uf = collections.Counter(x.get("SG_UF") for x in conf)
-            por_mes = collections.Counter((x.get("DT_SIN_PRI") or "")[:6] for x in conf)
-            print(f"   confirmados (CLASSI_FIN=1) por UF de residência: {sorted(por_uf.items())}")
-            print(f"   confirmados por mês de início de sintomas: {sorted(por_mes.items())}")
-            print(f"   exemplo DT_SIN_PRI/DT_NOTIFIC/SEM_PRI: {[(x.get('DT_SIN_PRI'), x.get('DT_NOTIFIC'), x.get('SEM_PRI')) for x in L[:3]]}")
-        except Exception as e:  # noqa: BLE001
-            print(f"[dbc] {caminho}: FALHA {type(e).__name__}: {e}")
-    base = "https://opendatasus.saude.gov.br/api/3/action/package_search?rows=50&q="
-    for termo in ("malária", "diarreia", "leptospirose", "síndrome gripal", "SIH", "SIM 2026", "SINAN", "doenças diarreicas"):
-        try:
-            r = json.loads(buscar(base + termo.replace(" ", "+"), timeout=60))
-            res = r.get("result", {}).get("results", [])
-            print(f"[opendatasus] '{termo}': {r.get('result', {}).get('count')} → "
-                  f"{[(p.get('name'), (p.get('metadata_modified') or '')[:10]) for p in res][:15]}")
-        except Exception as e:  # noqa: BLE001
-            print(f"[opendatasus] '{termo}': FALHA {type(e).__name__}: {e}")
+            print(f"[ftp] {nome}: FALHA {type(e).__name__}: {e}")
     return 0
 
 
@@ -315,6 +377,82 @@ def _dbf_de_teste(linhas, campos=(("UF", 2), ("MES", 2))) -> bytes:
     corpo = b"".join((b"*" if apag else b" ") + b"".join(v.encode("latin-1").ljust(t) for v, (_, t) in zip(vals, campos))
                      for vals, apag in linhas)
     return cab + corpo + b"\x1A"
+
+
+def _comprimir_so_literais(dados: bytes) -> bytes:
+    """Codificador mínimo do formato (literais sem código + marca de fim), só para o autoteste."""
+    bits = []
+    def poe(v, k):
+        bits.extend((v >> i) & 1 for i in range(k))
+    poe(0, 8); poe(4, 8)
+    for b in dados:
+        poe(0, 1); poe(b, 8)
+    v, L = next((t, e[1]) for t, e in enumerate(_T_LEN) if e == (15, e[1]) and t < (1 << e[1]))
+    poe(1, 1); poe(v, L); poe(255, 8)
+    bits += [0] * (-len(bits) % 8)
+    return bytes(sum(bits[i + j] << j for j in range(8)) for i in range(0, len(bits), 8))
+
+
+def _dbc_de_teste(linhas, campos) -> bytes:
+    dbf = _dbf_de_teste(linhas, campos)
+    t_cab = struct.unpack("<H", dbf[8:10])[0]
+    return dbf[:t_cab] + b"\x00" * 4 + _comprimir_so_literais(dbf[t_cab:])
+
+
+_CAMPOS_LEPT = (("CLASSI_FIN", 1), ("SG_UF", 2), ("DT_SIN_PRI", 8), ("DT_NOTIFIC", 8))
+
+
+def _teste_dbc_ida_e_volta():
+    d = _dbc_de_teste([(("1", "23", "20260105", "20260110"), False)], _CAMPOS_LEPT)
+    return list(ler_dbc(d)[1]) == [{"CLASSI_FIN": "1", "SG_UF": "23", "DT_SIN_PRI": "20260105", "DT_NOTIFIC": "20260110"}]
+
+
+def _teste_agregar():
+    ls = [{"CLASSI_FIN": "1", "SG_UF": "23", "DT_SIN_PRI": "20260105", "DT_NOTIFIC": "20260110"},
+          {"CLASSI_FIN": "1", "SG_UF": "23", "DT_SIN_PRI": "20260120", "DT_NOTIFIC": "20260301"},
+          {"CLASSI_FIN": "2", "SG_UF": "23", "DT_SIN_PRI": "20260120", "DT_NOTIFIC": "20260401"},
+          {"CLASSI_FIN": "1", "SG_UF": "", "DT_SIN_PRI": "20260120", "DT_NOTIFIC": "20260110"},
+          {"CLASSI_FIN": "1", "SG_UF": "26", "DT_SIN_PRI": "20180120", "DT_NOTIFIC": "20180110"}]
+    s, sem, ult = agregar(ls, DESFECHOS["leptospirose"]["confirmado"], {"23": "CE", "26": "PE"})
+    return s == {"CE": {"2026-01": 2}} and sem == 1 and ult == "2026-04"
+
+
+def _teste_completar_zero_e_lacuna():
+    c = completar({"CE": {"2019-02": 3}}, ["CE", "PE"], ate="2019-03")
+    return c == {"CE": {"2019-01": 0, "2019-02": 3, "2019-03": 0}, "PE": {"2019-01": 0, "2019-02": 0, "2019-03": 0}}
+
+
+def _teste_finais_antes_de_prelim():
+    lst = {f"{SINAN}/FINAIS": [("LEPTBR18.dbc", 1), ("LEPTBR24.dbc", 1)],
+           f"{SINAN}/PRELIM": [("LEPTBR24.dbc", 1), ("LEPTBR25.dbc", 1), ("HEPABR25.dbc", 1)]}
+    return arquivos_do_sinan("LEPT", listar=lambda c: lst[c]) == [
+        (f"{SINAN}/FINAIS/LEPTBR24.dbc", False), (f"{SINAN}/PRELIM/LEPTBR25.dbc", True)]
+
+
+def _teste_coletar_offline_e_idempotente():
+    """Ponta a ponta sem rede e sem disco: o par ler/gravar é falso; segunda leitura igual não regrava."""
+    ufs = [("11", "RO"), ("12", "AC"), ("13", "AM"), ("14", "RR"), ("15", "PA"), ("16", "AP"), ("17", "TO"),
+           ("21", "MA"), ("22", "PI"), ("23", "CE"), ("24", "RN"), ("25", "PB"), ("26", "PE"), ("27", "AL"),
+           ("28", "SE"), ("29", "BA"), ("31", "MG"), ("32", "ES"), ("33", "RJ"), ("35", "SP"), ("41", "PR"),
+           ("42", "SC"), ("43", "RS"), ("50", "MS"), ("51", "MT"), ("52", "GO"), ("53", "DF")]
+    ref = [{"codigo_ibge": int(c + "00000"), "uf": u} for c, u in ufs]
+    pop = {c + "00000": 100000 for c, _ in ufs}
+    banco = {"municipios_ibge_referencia.json": ref, "populacao_censo2022.json": pop}
+    escritos = []
+    def gravar_falso(nome, obj, compacto=False):
+        banco[nome] = obj; escritos.append(nome)
+    lst = {f"{SINAN}/FINAIS": [("LEPTBR19.dbc", 1)], f"{SINAN}/PRELIM": [("LEPTBR26.dbc", 1)]}
+    linhas = [(("1", c, f"2019{m:02d}10", f"2019{m:02d}12"), False) for c, _ in ufs for m in (1, 6, 12)]
+    arqs = {f"{SINAN}/FINAIS/LEPTBR19.dbc": _dbc_de_teste(linhas, _CAMPOS_LEPT),
+            f"{SINAN}/PRELIM/LEPTBR26.dbc": _dbc_de_teste([(("1", "23", "20260201", "20260305"), False)], _CAMPOS_LEPT)}
+    kw = dict(listar=lambda c: lst[c], baixar=lambda c: arqs[c], ler_fn=banco.get, gravar_fn=gravar_falso, hoje="2026-10-17")
+    ok1 = coletar("leptospirose", **kw)
+    o = banco.get("saude_desfechos/leptospirose.json") or {}
+    ok2 = coletar("leptospirose", **kw)
+    return (ok1 and not ok2 and escritos == ["saude_desfechos/leptospirose.json"]
+            and o["serie"]["CE"]["2026-02"] == 1 and o["serie"]["CE"]["2026-03"] == 0
+            and "2026-04" not in o["serie"]["CE"] and o["serie"]["BR"]["2019-06"] == 27
+            and o["anos_preliminares"] == [2026] and o["parcial"] == ["2026-01", "2026-02", "2026-03"])
 
 
 def _teste_vetor_do_blast():
@@ -356,13 +494,29 @@ def _teste_funcoes_puras():
 
 def _teste_fonte_nao_escreve_banco():
     """Trava estrutural: este coletor nunca escreve nos arquivos do índice."""
-    fonte = open(__file__, encoding="utf-8").read()
-    proibidos = ("estados.json", "saude_uf.json", "municipios.json", "indice.json", "monitor_saude.json")
-    return not any(f'"{p}"' in fonte.split("def _teste_fonte_nao_escreve_banco")[0] for p in proibidos)
+    from desfechos_sus import fonte_cita_banco
+    return not fonte_cita_banco(__file__)
+
+
+def _teste_arquivo_vazio_recusa():
+    lst = {f"{SINAN}/FINAIS": [("LEPTBR19.dbc", 1)], f"{SINAN}/PRELIM": []}
+    vazio = _dbc_de_teste([], _CAMPOS_LEPT)
+    try:
+        coletar("leptospirose", listar=lambda c: lst[c], baixar=lambda c: vazio,
+                ler_fn=lambda n: None, gravar_fn=lambda *a, **k: None, hoje="2026-10-17")
+        return False
+    except DbcInvalido:
+        return True
 
 
 TESTES = {
     "blast: vetor de teste do blast.c": _teste_vetor_do_blast,
+    "DBC: ida e volta pelo formato": _teste_dbc_ida_e_volta,
+    "agregação: confirmados, sem UF declarado à parte, antes de 2019 fora": _teste_agregar,
+    "mês coberto sem caso é zero; mês não coberto não existe": _teste_completar_zero_e_lacuna,
+    "ano com arquivo final não lê o preliminar": _teste_finais_antes_de_prelim,
+    "coleta ponta a ponta offline; arquivo igual não regrava": _teste_coletar_offline_e_idempotente,
+    "arquivo sem data de notificação é recusado, nunca vira zeros": _teste_arquivo_vazio_recusa,
     "DBF: lê colunas, pula registro apagado": _teste_dbf,
     "DBF truncado é recusado, nunca lido pela metade": _teste_dbf_truncado_recusa,
     "DBC com cabeçalho implausível é recusado": _teste_dbc_invalido_recusa,
@@ -376,4 +530,14 @@ if __name__ == "__main__":
         sys.exit(rodar_autoteste(TESTES))
     if "--sondar" in sys.argv:
         sys.exit(sondar())
+    if "--desfecho" in sys.argv:
+        nome = sys.argv[sys.argv.index("--desfecho") + 1]
+        try:
+            coletar(nome)
+        except Exception as e:  # noqa: BLE001 — falha de fonte é lacuna; o arquivo anterior fica
+            from coletores_base import registrar_lacuna
+            registrar_lacuna(f"ftp://{FTP_HOST}{SINAN}/ ({nome})", f"{type(e).__name__}: {e}; o arquivo anterior fica",
+                             canal="desfechos_sus", camada=3)
+            sys.exit(1)
+        sys.exit(0)
     print(__doc__)
