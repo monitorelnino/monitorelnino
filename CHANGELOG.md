@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-17 · #844 · Defesa civil: consulta do município, mapa das emergências e do decreto ao reconhecimento
+
+Abertura aprovada, cinco números na variante compacta, consulta pelo módulo comum com aviso, decreto e reconhecimento, mapa de pontos por evento declarado e etapa como figura principal, série de duas linhas e decreto há mais de 30 dias sem reconhecimento. Saem os mapas por estado, o cruzamento, as listas federais (no Monitor de riscos) e todo valor em reais (em Financiamento).
 ## 2026-10-17 · #842 · Ensaio da noite confere o isolamento dos autotestes pelo portão único
 
 O workflow do ensaio chamava `verificar_autoteste_nao_escreve.py` (27 coletores, 12 arquivos de banco); passa a chamar `verificar_autotestes_isolados.py --rapido`, que cobre os mesmos coletores contra todo `data/`. Pedido da D, que remove o portão antigo em seguida.

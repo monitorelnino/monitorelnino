@@ -44,13 +44,11 @@ const codsAlerta = Object.keys(ALERTAS.municipios || {});
 const comCemaden = codsAlerta.filter(c => (ALERTAS.municipios[c].cemaden || []).length);
 const decretados = Object.values(DECRETADOS.municipios || {}).filter(m => m.decreto);
 const reconhecidos = decretados.filter(m => m.reconhecido);
-const cruzados = decretados.filter(m => codsAlerta.indexOf(m.ibge) >= 0);
 const comCoord = l => l.filter(m => TEM_COORD.has(m.ibge || m)).length;
 const N = {
   cemaden: comCoord(comCemaden),
   decretados: comCoord(decretados),
   reconhecidos: comCoord(reconhecidos),
-  cruzados: comCoord(cruzados),
 };
 
 
@@ -67,106 +65,59 @@ setTimeout(() => {
   teste("zero erros de runtime", erros.length === 0);
   erros.slice(0, 4).forEach(e => console.log("     ", e));
 
-  // ── cada mapa com os 27 territórios, e cada lista com a contagem que o dado tem ───────────
-  /* 02/10/2026 (handover "a cadeia do aviso ao recurso"): a página deixou de desenhar PONTO por
-     município — ponto satura o país e não responde "e a minha cidade?". Os mapas passaram a ser por
-     ESTADO, e a resposta municipal passou para a lista embutida com busca. Os testes acompanham: no
-     lugar de contar círculos, eles contam territórios no mapa e conferem a CONTAGEM QUE A LISTA
-     DECLARA ao leitor — que é o número que ele lê. */
+  // ── 17/10/2026 (HANDOVER_DEFESA_CIVIL): um mapa MUNICIPAL, um ponto por município com decreto ─
+  /* A página voltou a desenhar ponto por município (figura principal, mapa de pontos na sede), com a
+     lista nominal em "Ver em tabela". O que este portão cobra continua o mesmo: o número que o leitor
+     lê é o do dado — pontos = municípios com decreto e com sede no arquivo de referência; lista
+     declara o total; cada contador do topo é a contagem do consolidado. */
   const SEM_ATUALIZACAO = /Sem atualiza[çc][ãa]o desde/i;
-  const declaraVencido = id => SEM_ATUALIZACAO.test(
-    ((d.getElementById(id) || {}).textContent || ""));
+  const declaraVencido = id => SEM_ATUALIZACAO.test(((d.getElementById(id) || {}).textContent || ""));
   const contadorDeAlerta = (id, esperado, rotulo) => {
-    if (declaraVencido(id)) {
-      teste(`${rotulo}: coleta vencida, e a página declara a ausência`, true);
-      return;
-    }
+    if (declaraVencido(id)) { teste(`${rotulo}: coleta vencida, e a página declara a ausência`, true); return; }
     teste(rotulo, numero(id) === esperado);
   };
-
-  const territorios = id => (q(id) ? q(id).querySelectorAll("path.uf-path").length : -1);
-  const MAPAS = ["mapAlertas", "mapCemaden", "mapDecretosUF"];
-  /* Com a coleta de alertas vencida, a seção do Cemaden não desenha — é a regra das 24 horas em
-     `defesa-civil.js`, e o mapa ausente é a consequência correta dela. Os outros cinco continuam
-     cobrados, porque não dependem de alerta. */
   const vencido = declaraVencido("topoCemaden") || declaraVencido("topoInmet");
-  /* 09/10/2026 (ajuste 10): abaixo de LIMIAR_CEMADEN municípios o cartão do Cemaden vira texto
-     ("{n} municípios em {UFs}" + lista por estado) — sem mapa, por regra do código. */
-  const cemadenEmTexto = !!d.querySelector("#boxCemaden .figura-midia--texto");
-  if (cemadenEmTexto) teste("Cemaden abaixo do limiar: cartão em texto, com a contagem e a lista por estado",
-    /municípios? em |Nenhum município/.test(d.querySelector("#boxCemaden .figura-midia").textContent));
-  const mapasCobrados = (vencido ? MAPAS.filter(id => id !== "mapCemaden" && id !== "mapAlertas")
-                                 : MAPAS).filter(id => !(cemadenEmTexto && id === "mapCemaden"));
-  teste(`os ${mapasCobrados.length} mapas têm os 27 territórios`
-        + (vencido ? " (Cemaden e alertas fora: coleta vencida e declarada)" : ""),
-    mapasCobrados.every(id => territorios(id) === 27));
-  teste("nenhum mapa desta página desenha ponto por município",
-    mapasCobrados.every(id => circulos(id) === 0));
-
-  /* A contagem declarada na lista embutida: é o texto que o leitor lê depois de abrir "Ver em
-     lista", e tem de ser o número do dado — não o teto de linhas que a tabela monta. */
+  const mapasCobrados = ["mapEmergencias"];
+  teste("o mapa das emergências tem os 27 territórios", (q("mapEmergencias") || d).querySelectorAll("path.uf-path").length === 27);
+  teste(`o mapa das emergências tem ${N.decretados} pontos (municípios com decreto e sede)`, circulos("mapEmergencias") === N.decretados);
+  const BRANCO = dom.window.MonitorMapas.cor("branco");
+  const reconhecidosNoMapa = q("mapEmergencias") ? [...q("mapEmergencias").querySelectorAll("circle")].filter(c => c.getAttribute("stroke") === BRANCO).length : -1;
+  teste(`pontos cheios = ${N.reconhecidos} municípios reconhecidos`, reconhecidosNoMapa === N.reconhecidos);
   const contaDaLista = caixa => {
     const el = d.querySelector("#" + caixa + " .busca-mun-conta");
-    if (!el) return -1;
-    const m = (el.textContent || "").replace(/\./g, "").match(/(\d+)/);
+    const m = el ? (el.textContent || "").replace(/\./g, "").match(/(\d+)/) : null;
     return m ? Number(m[1]) : -1;
   };
-  teste(`lista dos decretos declara ${N.decretados} municípios`,
-    contaDaLista("boxDecretosUF") === N.decretados);
-  if (vencido) {
-    teste("lista do Cemaden: coleta vencida, e a página declara a ausência", true);
-  } else {
-    teste(`lista do Cemaden declara ${N.cemaden} municípios`,
-      contaDaLista("boxCemaden") === N.cemaden);
-  }
-
-  /* 04/10/2026 — A COLETA VENCIDA NÃO BLOQUEIA A PUBLICAÇÃO.
-   *
-   * `assets/js/defesa-civil.js` tem a regra das 24 horas (LIMITE_ALERTA_HORAS): alerta com mais de
-   * um dia não é declarado como vigente; no lugar do número, a página escreve "Sem atualização
-   * desde <carimbo>". A regra é certa e fica.
-   *
-   * O que estava errado era este portão cobrar o NÚMERO em todo caso: às 09:57 UTC de 04/10 o
-   * arquivo de alertas completou 24h02 e a publicação morreu aqui — com a página fazendo
-   * exatamente o que devia. Dado velho é assunto do coletor e do portão de frescor, não motivo
-   * para o site inteiro não publicar.
-   *
-   * Então: quando a página declara a ausência de atualização, o portão exige ESSA declaração; o
-   * número só é cobrado quando a coleta está dentro da janela. A trava que importa continua
-   * inteira — o que nunca se aceita é número de alerta vencido apresentado como vigente.
-   */
-  // ── um número, uma fonte: o topo é igual ao mapa de baixo ──────────────────────────────────
-  contadorDeAlerta("topoCemaden", (ALERTAS.resumo || {}).municipios_cemaden,
-    "contador do Cemaden = resumo do arquivo de alertas");
-  contadorDeAlerta("topoInmet", (ALERTAS.resumo || {}).municipios_inmet,
-    "contador do Inmet = resumo do arquivo de alertas");
-  contadorDeAlerta("topoCruzamento", cruzados.length,
-    "contador do cruzamento = decreto no ciclo e alerta agora");
-  teste("contador de quem decretou = municípios com decreto no consolidado",
-    numero("topoDecretaram") === decretados.length);
-  teste("contador de reconhecidos = municípios reconhecidos no consolidado",
-    numero("topoReconhecidos") === reconhecidos.length);
-  /* A população vem ARREDONDADA em milhões, por decisão da editoria ("nunca o número inteiro"):
-     o teste confere o arredondamento, e não a igualdade ao habitante. */
+  teste(`lista das emergências declara ${decretados.length} municípios`, contaDaLista("boxEmergencias") === decretados.length);
+  contadorDeAlerta("topoCemaden", (ALERTAS.resumo || {}).municipios_cemaden, "contador do Cemaden = resumo do arquivo de alertas");
+  contadorDeAlerta("topoInmet", (ALERTAS.resumo || {}).municipios_inmet, "contador do Inmet = resumo do arquivo de alertas");
+  teste("contador de quem decretou = municípios com decreto no consolidado", numero("topoDecretaram") === decretados.length);
+  teste("contador de reconhecidos = municípios reconhecidos no consolidado", numero("topoReconhecidos") === reconhecidos.length);
+  /* A população vem ARREDONDADA em milhões, por decisão da editoria ("nunca o número inteiro"). */
   const popConsolidado = ler("data/resposta/por_uf.json").nacional.pop_sob_decreto;
-  const popNaTela = Number((txt("topoPopulacao").match(/([\d,]+)/) || [])[1].replace(",", "."));
-  teste("contador de população = consolidado arredondado em milhões",
-    Math.abs(popNaTela - popConsolidado / 1e6) <= 0.05);
-  teste("nenhum contador do topo ficou em travessão",
-    ["topoCemaden", "topoInmet", "topoCruzamento", "topoDecretaram", "topoPopulacao", "topoReconhecidos"]
-      .every(i => txt(i) && txt(i) !== "—"));
-
-  // ── tooltip ────────────────────────────────────────────────────────────────────────────────
-  // `path.uf-path`, não `path`: com a atmosfera, o PRIMEIRO path do SVG é a malha de 5° que ela
-  // insere como primeiro filho, e essa malha não tem — nem deve ter — ouvinte de mouse. Quem
-  // carrega o tooltip é o território.
-  const hover = d.querySelector("#mapDecretosUF path.uf-path");
-  if (!hover) { teste("mapa de decretos tem o território das UFs para o tooltip", false); }
+  const popNaTela = Number(((txt("topoPopulacao").match(/([\d,]+)/) || [])[1] || "").replace(",", "."));
+  teste("contador de população = consolidado arredondado em milhões", Math.abs(popNaTela - popConsolidado / 1e6) <= 0.05);
+  teste("nenhum contador ficou em travessão nem vazio",
+    ["topoCemaden", "topoInmet", "topoDecretaram", "topoPopulacao", "topoReconhecidos", "topoPendencia"].every(i => txt(i) && txt(i) !== "—"));
+  teste("nenhum valor em reais na página (o dinheiro está em Financiamento)", !/R\$/.test(d.getElementById("conteudo").textContent));
+  teste("a página não lê o arquivo de recursos", !/recursos_liberados/.test(require("fs").readFileSync(path.join(raiz, "assets/js/defesa-civil.js"), "utf-8")));
+  const ponto = d.querySelector("#mapEmergencias circle");
+  if (!ponto) { teste("ponto do mapa tem tooltip", false); }
   else {
-    hover.dispatchEvent(new dom.window.MouseEvent("mouseenter", { clientX: 100, clientY: 100, bubbles: true }));
-    teste("tooltip de mapa exibe conteúdo",
-      q("mapTooltip").style.display === "block" && q("mapTooltip").innerHTML.length > 10);
+    ponto.dispatchEvent(new dom.window.MouseEvent("mouseenter", { clientX: 100, clientY: 100, bubbles: true }));
+    teste("ponto do mapa tem tooltip, sem valor em reais",
+      q("mapTooltip").style.display === "block" && q("mapTooltip").innerHTML.length > 10 && !/R\$/.test(q("mapTooltip").textContent));
   }
+  /* A consulta do município usa o módulo comum e responde com os três cartões. */
+  const uf = d.getElementById("consultaUF"), mun = d.getElementById("consultaMun");
+  const umDecretado = decretados[0];
+  if (uf && mun && umDecretado) {
+    uf.value = umDecretado.uf; uf.dispatchEvent(new dom.window.Event("change"));
+    mun.value = umDecretado.nome; mun.dispatchEvent(new dom.window.Event("input"));
+    const card = d.getElementById("consultaCard");
+    teste("consulta do município: três cartões e a linha do estado",
+      !card.hidden && card.querySelectorAll(".cartao").length === 3 && /municípios decretaram emergência/.test(card.textContent));
+  } else teste("consulta do município existe", false);
 
   // ── busca por município em todo cartão (pedido da editoria, 01/10/2026) ────────────────────
   const campos = [...d.querySelectorAll(".busca-mun input")];
@@ -188,7 +139,7 @@ setTimeout(() => {
      municipal embutida —, no lugar dos três mapas de pontos. E o teste passa a FALHAR em vez de
      estourar quando o cartão não existe: `querySelector` devolve `null`, e chamar método em `null`
      derrubava o portão inteiro com TypeError, escondendo todas as verificações seguintes. */
-  const cartaoDec = d.querySelector("#boxDecretosUF details.cartao-mapa-dados");
+  const cartaoDec = d.querySelector("#boxEmergencias details.cartao-mapa-dados");
   if (!cartaoDec) {
     teste("digitar no campo filtra a lista", false);
   } else {
