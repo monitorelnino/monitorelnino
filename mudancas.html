@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>17/10/2026 · Niño 3.4 semanal no coletor de sinais; o apoio técnico volta a ser coletado</dt>
+      <dd>Fonte nova `noaa_nino34_semanal` (arquivo `wksst9120.for` do CPC) em `sinais_risco.json → enos.nino34_semanal`, de 2025 em diante, para o gráfico abaixo do RONI. Achado no caminho: desde 30/09 a rodada completa pulava a camada de apoio técnico, e ONI, Niño 3.4 mensal e a discussão do CPC estavam parados em 30/09. Voltam a ser coletados.</dd>
       <dt>17/10/2026 · Desfechos do SUS: arquivo comum e leitor `.dbc`</dt>
       <dd>Nasce a forma comum dos desfechos novos em `data/saude_desfechos/` (`desfechos_sus.py`): série por UF, taxa por 100 mil, faixa habitual do canal endêmico, quintis de 2019–2025 congelados para o mapa, último valor, parcial e preliminar, quarentena para arquivo fora da forma. Leitor `.dbc` do DATASUS em Python puro; leptospirose do SINAN conferida contra o TabNet (1.594 = 1.594). Catálogo com a sondagem e as fontes da abertura da Saúde. Detalhe: METODOLOGIA §108.</dd>
       <dt>17/10/2026 · Pedidos da A3: muro da LexML e elo próprio para recuperar as edições dos diários</dt>
@@ -165,8 +167,6 @@
       <dd>O portão do catálogo passa a reprovar texto público do `&lt;main&gt;` sem identificador (título, parágrafo, item, legenda, resumo), pela mesma regra do migrador; fora só formulário, diálogo, `noscript` e navegação (`layout/regras.json`). O migrador passa a levar texto com marcação e a não sobrescrever identificador existente. 138 trechos de dez páginas migrados sem mudar uma letra.</dd>
       <dt>16/10/2026 · Consolidação item 5: três funções copiadas viram uma</dt>
       <dd>`data_da_edicao()` (data de `meta.json`) sai de dez arquivos para `coletores_base` — em dois a reserva chamava `datetime._hoje()`, que não existe; a leitura de PDF com pdfplumber primeiro dos quatro boletins estaduais vira opção de `extrair_texto_por_pagina`; `_gh` dos quatro scripts de temporizador fica só no despachante. −144 linhas.</dd>
-      <dt>16/10/2026 · Saúde: sai o texto vazado</dt>
-      <dd>Saem da página de saúde &quot;Estado das fontes&quot;, &quot;Bateria estadual executada em&quot; e a versão &quot;v0.3&quot;; &quot;não relaciona casos ao El Niño&quot; fica uma vez. Na verificação por estado, cada linha diz título, órgão, data do documento e link; o que não é título vai para `nota_interna`, que nenhuma página mostra (notas, pontuação inalterada). O contrato reprova os termos vazados.</dd>
     </dl>
   </section>
 </main>
