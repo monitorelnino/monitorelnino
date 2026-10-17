@@ -47,8 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
-      <dt>17/10/2026 · Mapa de fogo: pontos do satélite de referência, no mesmo dia dos números</dt>
-      <dd>Os pontos do mapa vinham de todos os satélites e do arquivo do dia corrente, enquanto os números saem do satélite de referência no último dia completo. `focos_pontos.json` passa a nascer do mesmo CSV e do mesmo satélite que `focos_referencia.json`, no mesmo coletor. METODOLOGIA §41.8. Saem o estado global e a gravação separada.</dd>
+      <dt>17/10/2026 · Mapa de fogo no satélite de referência; consulta do município com calor e reconhecimento</dt>
+      <dd>Os pontos do mapa vinham de todos os satélites e do arquivo do dia corrente, enquanto os números saem do satélite de referência no último dia completo. `focos_pontos.json` passa a nascer do mesmo CSV e do mesmo satélite que `focos_referencia.json`, no mesmo coletor. METODOLOGIA §41.8. `riscos_municipio/&lt;UF&gt;.json` ganha a classe de calor do MS e o reconhecimento federal (Proteja-se §7.3).</dd>
       <dt>17/10/2026 · Autoteste vermelho mostra o traceback no log do portão</dt>
       <dd>Na `main` (run 38976908995) o autoteste de `unir_conflito_de_rodada.py` caiu e o log só trazia o último ✓: o portão descartava o stderr. Agora a linha do autoteste vermelho junta a última saída e as três últimas linhas do erro. Linhas líquidas 0.</dd>
       <dt>16/10/2026 · Ar medido: hora de medição no futuro vira lacuna</dt>

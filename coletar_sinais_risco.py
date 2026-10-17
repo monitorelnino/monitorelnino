@@ -2139,14 +2139,16 @@ RISCOS_DECRETOS_MAX = 3
 RISCOS_RAIO_AR_KM = 50.0    # além disso a estação mede outra cidade: o município fica sem bloco de ar
 
 
-def montar_riscos_municipio(ref: list, focos: dict, vigentes: dict, ar: dict, atos: dict) -> dict:
+def montar_riscos_municipio(ref: list, focos: dict, vigentes: dict, ar: dict, atos: dict,
+                            calor: dict = None, decretados: dict = None) -> dict:
     """{UF: {"estacoes": [...], "sensores": [...], "municipios": {IBGE: {...}}}}. Função pura.
 
     Focos ausentes no acumulado de 30 dias são 0 só quando a série tem os 30 dias; com menos, o
     campo vem `None` (não sabemos). Ar: a estação oficial mais próxima COM IQAr vigente e o sensor
     mais próximo COM leitura, até RISCOS_RAIO_AR_KM, cada um com a distância. Aviso, estação e
     sensor vão como índice da lista da UF, para o mesmo aviso não se repetir em centenas de
-    municípios. Lista vazia não é gravada no município."""
+    municípios. Lista vazia não é gravada no município. Calor (classe do painel do MS) e
+    reconhecimento federal vêm como a fonte os traz, só para quem está nela (Proteja-se §7.3)."""
     resumo = (focos or {}).get("resumo") or {}
     mun30 = resumo.get("municipios_30_dias") or {}
     completo = ((resumo.get("ultimos_30_dias") or {}).get("dias_com_dado") or 0) >= FOCOS_DIAS_MUNICIPIO
@@ -2154,6 +2156,8 @@ def montar_riscos_municipio(ref: list, focos: dict, vigentes: dict, ar: dict, at
     estacoes = [e for e in (ar or {}).get("estacoes") or [] if e.get("iqar") and e.get("lat") is not None]
     sensores = [s for s in (ar or {}).get("sensores") or [] if s.get("pm25") and s.get("lat") is not None]
     capitais = [m for m in ref if int(m.get("codigo_ibge") or 0) in set(CAPITAL_IBGE.values())]
+    calor_mun = (calor or {}).get("municipios") or {}
+    reconhecimento = {str(cod): x for cod, x in ((decretados or {}).get("municipios") or {}).items()}
     decretos = {}
     for ev in (atos or {}).get("eventos") or []:
         decretos.setdefault((normalizar_nome(str(ev.get("nome") or "")), ev.get("uf")), []).append(
@@ -2181,6 +2185,11 @@ def montar_riscos_municipio(ref: list, focos: dict, vigentes: dict, ar: dict, at
                      key=lambda d: "".join(reversed(str(d.get("data") or "").split("/"))), reverse=True)
         if dec:
             item["decretos"], item["decretos_no_ciclo"] = dec[:RISCOS_DECRETOS_MAX], len(dec)
+        if cod in reconhecimento:
+            item["reconhecimento"] = {k: reconhecimento[cod].get(k) for k in (
+                "reconhecido", "primeiro_decreto", "primeiro_reconhecimento", "evento_observado")}
+        if (calor_mun.get(cod) or {}).get("classe"):
+            item["calor"] = calor_mun[cod]["classe"]
         for chave, lista, campos in (("ar_estacao", estacoes, ("nome", "municipio", "uf", "rede", "iqar")),
                                      ("ar_sensor", sensores, ("nome", "municipio", "fonte", "pm25"))):
             perto = mais_proximo(lista, ponto)
@@ -2206,8 +2215,9 @@ def gravar_riscos_municipio() -> None:
         return json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
     focos, vigentes, ar, atos = (abrir("focos_referencia.json"), abrir("alertas/vigentes.json"),
                                  abrir("ar_medido.json"), abrir("atos_resposta.json"))
+    calor, decretados = abrir("saude_sinais.json").get("calor_excesso") or {}, abrir("resposta/municipios_decretados.json")
     ref = json.loads(MUNICIPIOS_REF.read_text(encoding="utf-8"))
-    por_uf = montar_riscos_municipio(ref, focos, vigentes, ar, atos)
+    por_uf = montar_riscos_municipio(ref, focos, vigentes, ar, atos, calor, decretados)
     cabeca = {
         "_governanca": ("Consulta do município no Monitor de riscos: junta, por código IBGE, o que os "
                         "arquivos de origem guardam. Nada é recalculado; o plano do município está em "
@@ -2217,11 +2227,14 @@ def gravar_riscos_municipio() -> None:
                               "dias_com_dado": ((focos.get("resumo") or {}).get("ultimos_30_dias") or {}).get("dias_com_dado")},
                     "avisos_e_alertas": {"arquivo": "alertas/vigentes.json", "gerado_em": vigentes.get("gerado_em")},
                     "ar": {"arquivo": "ar_medido.json", "gerado_em": ar.get("gerado_em")},
-                    "decretos": {"arquivo": "atos_resposta.json", "atualizado_em": atos.get("atualizado_em")}},
+                    "decretos": {"arquivo": "atos_resposta.json", "atualizado_em": atos.get("atualizado_em")},
+                    "reconhecimento": {"arquivo": "resposta/municipios_decretados.json",
+                                       "gerado_em": decretados.get("gerado_em")},
+                    "calor": {"arquivo": "saude_sinais.json", "data": calor.get("data"), "fonte": calor.get("orgao")}},
     }
     for uf, bloco in sorted(por_uf.items()):
         escrever_json(RISCOS_MUNICIPIO / f"{uf}.json", {**cabeca, "uf": uf, **bloco}, compacto=True)
-    print(f"→ data/riscos_municipio/: {len(por_uf)} UF(s), {sum(len(v) for v in por_uf.values())} município(s).")
+    print(f"→ data/riscos_municipio/: {len(por_uf)} UF(s), {sum(len(v["municipios"]) for v in por_uf.values())} município(s).")
 
 
 def gravar_pontos_de_foco(csv_dia: str, dia: str, por_uf: dict) -> None:
@@ -2795,7 +2808,9 @@ def autoteste() -> int:
         {"estacoes": [{"nome": "Fercal", "municipio": "Brasília", "uf": "DF", "rede": "IBRAM", "lat": -15.6, "lon": -47.87,
                        "iqar": {"valor": 52.0}}]},
         {"eventos": [{"nome": "BRASILIA", "uf": "DF", "data": "01/09/2026", "decreto": "SE", "url": "u1"},
-                     {"nome": "Brasília", "uf": "DF", "data": "20/09/2026", "decreto": "SE 2", "url": "u2"}]})
+                     {"nome": "Brasília", "uf": "DF", "data": "20/09/2026", "decreto": "SE 2", "url": "u2"}]},
+        {"municipios": {"5300108": {"classe": "Severo"}}},
+        {"municipios": {"5300108": {"reconhecido": True, "primeiro_reconhecimento": "09/09/2026"}}})
     _df, _go = _rm["DF"]["municipios"]["5300108"], _rm["GO"]["municipios"]["5217609"]
     checar("Município: focos de 30 dias; sem foco com série completa é 0", _df["focos_30_dias"] == 4 and _go["focos_30_dias"] == 0)
     checar("Município: série incompleta deixa focos em None (não sabemos), nunca 0",
@@ -2807,6 +2822,9 @@ def autoteste() -> int:
     checar("Município: estação de ar a até 50 km com distância; capital mais próxima com distância",
            _df["ar_estacao"]["distancia_km"] == 21 and _rm["DF"]["estacoes"][0]["iqar"]["valor"] == 52.0
            and _go["capital_mais_proxima"]["nome"] == "Brasília" and "ar_sensor" not in _df)
+    checar("Município: calor e reconhecimento só para quem está na fonte (Proteja-se §7.3)",
+           _df["calor"] == "Severo" and _df["reconhecimento"]["primeiro_reconhecimento"] == "09/09/2026"
+           and "calor" not in _go and "reconhecimento" not in _go)
 
     _est = parse_estacoes_inmet([
         {"CD_ESTACAO": "A001", "DC_NOME": "BRASILIA", "SG_ESTADO": "DF", "CD_SITUACAO": "Operante",

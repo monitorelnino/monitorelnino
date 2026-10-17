@@ -9,9 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-17 · #816 · Mapa de fogo: pontos do satélite de referência, no mesmo dia dos números
+## 2026-10-17 · #816 · Mapa de fogo no satélite de referência; consulta do município com calor e reconhecimento
 
-Os pontos do mapa vinham de todos os satélites e do arquivo do dia corrente, enquanto os números saem do satélite de referência no último dia completo. `focos_pontos.json` passa a nascer do mesmo CSV e do mesmo satélite que `focos_referencia.json`, no mesmo coletor. METODOLOGIA §41.8. Saem o estado global e a gravação separada.
+Os pontos do mapa vinham de todos os satélites e do arquivo do dia corrente, enquanto os números saem do satélite de referência no último dia completo. `focos_pontos.json` passa a nascer do mesmo CSV e do mesmo satélite que `focos_referencia.json`, no mesmo coletor. METODOLOGIA §41.8. `riscos_municipio/<UF>.json` ganha a classe de calor do MS e o reconhecimento federal (Proteja-se §7.3).
 
 ## 2026-10-17 · #810 · Autoteste vermelho mostra o traceback no log do portão
 
