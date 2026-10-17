@@ -1138,90 +1138,37 @@ const AREAS = [
     }
   }).catch(_erroSaude("saude:1228"));
 
-  /* 6 · As três buscas por município. Mesma trava nas três: cidade fora do que a fonte cobre
-   * aparece como NÃO ACOMPANHADA, nunca como zero — e a lista oferecida é a do IBGE inteira, para
-   * que a busca possa dizer que a cidade existe e não é coberta. */
-  function buscaPorMunicipio(sufixo, carregar, responder, contar, fontes) {
-    const sel = el('uf' + sufixo), ent = el('nome' + sufixo), lista = el('lista' + sufixo),
-          conta = el('conta' + sufixo), saida = el('resultado' + sufixo);
-    if (!sel || !ent || !lista || !saida) return;
-    Promise.all([
-      fetch('data/municipios_ibge_referencia.json').then(r => r.ok ? r.json() : null),
-      carregar(),
-    ]).then(([REF, base]) => {
-      if (!REF) { conta.textContent = 'Lista de municípios sem coleta até o corte.'; return; }
-      const ref = Array.isArray(REF) ? REF : Object.values(REF);
-      const porUF = {}, codigo = {};
-      ref.forEach(m => {
-        const c = String(m.codigo_ibge).padStart(7, '0');
-        (porUF[m.uf] = porUF[m.uf] || []).push(m.nome);
-        codigo[m.uf + '|' + m.nome.toLowerCase()] = c;
-      });
-      Object.keys(porUF).sort().forEach(uf => sel.insertAdjacentHTML('beforeend', '<option value="' + uf + '">' + uf + '</option>'));
-      conta.textContent = contar(base, ref);
-      /* O crédito vai com o id LITERAL: o portão de saúde confere a existência do crédito lendo
-       * o código-fonte, e id montado por concatenação é invisível para ele — com razão, porque é
-       * invisível para quem lê o código também. */
-      if (window.MonitorMapas && fontes) {
-        const quando = (base && (base.gerado_em || base.data)) || null;
-        if (sufixo === 'DengueMunicipios') MonitorMapas.credito('boxDengueMunicipios', {fontes: fontes, data: quando});
-        if (sufixo === 'ChikMunicipios') MonitorMapas.credito('boxChikMunicipios', {fontes: fontes, data: quando});
-        if (sufixo === 'CalorMunicipios') MonitorMapas.credito('boxCalorMunicipios', {fontes: fontes, data: quando});
-      }
-      sel.addEventListener('change', () => {
-        lista.innerHTML = (porUF[sel.value] || []).slice().sort((a, b) => a.localeCompare(b, 'pt-BR'))
-          .map(x => '<option value="' + esc(x) + '"></option>').join('');
-        ent.disabled = !sel.value;
-        ent.value = '';
-        saida.hidden = true;
-      });
-      const mostrar = () => {
-        const cod = codigo[sel.value + '|' + (ent.value || '').trim().toLowerCase()];
-        if (!cod) { saida.hidden = true; return; }
-        saida.hidden = false;
-        saida.innerHTML = '<p class="u-mb-0"><strong>' + esc(ent.value) + ' (' + esc(sel.value) + ')</strong></p>'
-          + responder(base, cod);
-      };
-      ent.addEventListener('change', mostrar);
-      ent.addEventListener('input', () => { if ((ent.value || '').length > 2) mostrar(); });
-    }).catch(_erroSaude("saude:1276"));
-  }
-
-  const NIVEL = {1: 'nível 1 (baixa atividade)', 2: 'nível 2 (atenção)', 3: 'nível 3 (alerta)',
-                 4: 'nível 4 (emergência)'};
-  const respostaAlerta = (base, cod) => {
-    const m = base && base.municipios && base.municipios[cod];
-    if (!m) return '<p class="u-mb-0">Este município não foi lido pelo MARÉ nesta semana.</p>';
-    if (m.nivel_ultima_se == null) return '<p class="u-mb-0">Sem semana consolidada até o corte.</p>';
-    return '<p class="u-mb-0">' + esc(NIVEL[m.nivel_ultima_se] || ('nível ' + m.nivel_ultima_se))
-      + ' na semana ' + esc(m.ultima_se || '—') + '.</p>';
-  };
-  /* Conta só chaves que são município da referência IBGE: a malha do painel de calor traz
-   * 4300001 e 4300002 (Lagoa Mirim e Lagoa dos Patos), que têm código mas não são município. */
-  const contarMunicipios = (base, ref) => {
-    const codigos = new Set(ref.map(m => String(m.codigo_ibge).padStart(7, '0')));
-    return Object.keys(base.municipios).filter(k => codigos.has(String(k).padStart(7, '0'))).length;
-  };
-  const contarAlerta = base => ((base && base.municipios) ? '' : 'Série sem coleta até o corte.');
-
-  buscaPorMunicipio('DengueMunicipios',
-    () => fetch('data/saude_desfechos/serie_painel.json').then(r => r.ok ? r.json() : null),
-    respostaAlerta, contarAlerta, ['InfoDengue (Fiocruz/FGV)']);
-  buscaPorMunicipio('ChikMunicipios',
-    () => fetch('data/saude_desfechos/chik_serie_painel.json').then(r => r.ok ? r.json() : null),
-    respostaAlerta, contarAlerta, ['InfoDengue (Fiocruz/FGV)']);
-  buscaPorMunicipio('CalorMunicipios',
-    () => fetch('data/saude_sinais.json').then(r => r.ok ? r.json() : null).then(SS => (SS || {}).calor_excesso || {data: (((SS || {}).fontes || {}).painel_calor_ms || {}).ultima_coleta_ok}),
-    (base, cod) => {
-      const m = base && base.municipios && base.municipios[cod];
-      if (!m) return '<p class="u-mb-0">Município não lido na consulta mais recente.</p>';
-      const classe = m.classe || m.nivel || m;
-      return '<p class="u-mb-0">Classe ' + esc(String(classe)) + ' na consulta de ' + esc(MonitorMapas.dataBR(base.data) || base.data || '—') + '.</p>';
-    },
-    (base, ref) => (base && base.municipios)
-      ? contarMunicipios(base, ref).toLocaleString('pt-BR') + ' municípios lidos na consulta mais recente'
-      : (base && base.data ? 'Painel sem leitura desde a coleta de ' + base.data + '.' : 'Painel sem coleta até o corte.'),
-    ['Painel Nacional de Excesso de Calor (Ministério da Saúde)']);
+  /* 6 · Consulta do município (HANDOVER_SAUDE_PAGINA §4): uma só, no componente comum. Dengue,
+   * chikungunya, calor e plano vêm de `data/saude_municipio/<UF>.json`, por código IBGE; município
+   * sem bloco não foi lido pela fonte, e é dito assim, nunca zero. Respiratória grave e o MARÉ Saúde
+   * são do estado, e a linha diz que são. */
+  const NIVEL = {1: 'nível 1 (baixa atividade)', 2: 'nível 2 (atenção)', 3: 'nível 3 (alerta)', 4: 'nível 4 (emergência)'};
+  const semana = v => { const m = /(\d{4})-(\d{1,2})/.exec(String(v || '')); return (m && MonitorSemana.porExtenso(+m[1], +m[2], true)) || ''; };
+  const porUF = {}, extra = Promise.all(['data/monitor_saude.json', 'data/saude_desfechos/srag_serie.json']
+    .map(f => fetch(f).then(r => r.ok ? r.json() : null).catch(() => null)));
+  const linha = (rotulo, valor, fonte) => '<tr><th scope="row">' + esc(rotulo) + '</th> <td>' + valor + '</td> <td class="dica-fonte">' + esc(fonte) + '</td></tr>';
+  fetch('data/geo_uf.json').then(r => r.json()).then(GEO => ConsultaMunicipio.montar({uf: 'consultaSaudeUF', municipio: 'consultaSaudeMun', lista: 'consultaSaudeLista', cartao: 'consultaSaudeCard',
+    estados: Object.fromEntries(GEO.features.map(f => [f.properties.sigla, f.properties.name])), semLista: 'Consulta do estado: sem coleta até o corte.',
+    municipios: uf => (porUF[uf] = porUF[uf] || Promise.all([fetch('data/saude_municipio/' + uf + '.json').then(r => r.ok ? r.json() : null).catch(() => null), extra]))
+      .then(([D, [MS, S]]) => { porUF[uf].dados = {D, MS, S}; return D && Object.values(D.municipios).map(x => x.nome); }),
+    mostrar: (uf, nome, card) => {
+      const {D, MS, S} = porUF[uf].dados, o = D.origens || {}, m = Object.values(D.municipios).find(x => x.nome === nome);
+      const arbo = (x, fonte) => x ? esc(NIVEL[x.nivel] || 'nível ' + x.nivel) + (semana(x.semana) ? ', semana ' + esc(semana(x.semana)) : '')
+          + (x.notificacoes ? ' · ' + n(x.notificacoes.casos) + (x.notificacoes.casos === 1 ? ' notificação' : ' notificações') + (semana(x.notificacoes.semana) ? ' na semana ' + esc(semana(x.notificacoes.semana)) : '') : '')
+        : 'município não lido pelo ' + esc(fonte) + ' na semana';
+      const ano = String((S && S.ano_corrente) || ''), su = S && S.serie && S.serie[uf];
+      const srag = su ? Object.entries(su).filter(([k, v]) => k.startsWith(ano) && typeof v === 'number').reduce((t, [, v]) => t + v, 0) : null;
+      const e = ((MS || {}).ufs || {})[uf] || {}, pl = m.saude_no_plano;
+      card.innerHTML = '<h4>' + esc(nome) + ' · ' + esc(uf) + '</h4><div class="tbl-wrap"><table class="mun-table"><tbody>'
+        + linha('Dengue', arbo(m.dengue, 'InfoDengue'), (o.dengue || {}).fonte + ' · ' + ((o.dengue || {}).gerado_em || ''))
+        + linha('Chikungunya', arbo(m.chikungunya, 'InfoDengue'), (o.chikungunya || {}).fonte + ' · ' + ((o.chikungunya || {}).gerado_em || ''))
+        + linha('Excesso de calor', m.calor ? 'classe ' + esc(m.calor) : 'município não lido na consulta mais recente', (o.calor || {}).fonte + ' · ' + (MonitorMapas.dataBR((o.calor || {}).data) || ''))
+        + linha('Síndrome respiratória grave (estado)', srag == null ? 'sem coleta até o corte' : n(srag) + ' internações no estado em ' + esc(ano), 'SIVEP-Gripe (Ministério da Saúde)' + (S && S.gerado_em ? ' · ' + S.gerado_em : ''))
+        + linha('MARÉ Saúde (estado)', (e.verificado ? umaCasa(e.prontidao) + ' de 100 · ' + esc(e.faixa || '') : 'estado ainda não verificado') + ' · <a href="#regionsSaude">ver a ficha do estado</a>', 'MARÉ' + (MS && MS.corte ? ' · ' + MS.corte : ''))
+        + linha('Plano de contingência do município', (pl ? 'trata a saúde (leitura automática' + (pl.pagina_citada ? ', p. ' + esc(pl.pagina_citada) : '') + ')' + (pl.url ? ' · <a href="' + esc(pl.url) + '" target="_blank" rel="noopener">abrir o plano</a>' : '') : 'sem leitura da saúde no plano até o corte')
+          + ' · <a href="index.html#' + esc(uf) + '">ver a ficha na página inicial</a>', (o.saude_no_plano || {}).fonte || 'MARÉ Legal')
+        + '</tbody></table></div>';
+    }})).catch(_erroSaude("saude:consulta"));
 
   /* 7 · A lista do governo federal, sem cartão (o contrato pede lista simples). */
   fetch('data/saude_federal.json').then(r => r.ok ? r.json() : null).then(F => {

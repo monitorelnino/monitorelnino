@@ -78,7 +78,7 @@
         </div>
         <div class="gauge-ends"><span>0 · estágio inicial</span><span>100</span></div>
         <p class="note u-mt-2 u-mb-0" id="linhaPreparoSaude"></p>
-        <p class="note u-mt-2 u-mb-0"><a href="#comolerSaude" id="linkComoLerSaude" data-ficha="comolerSaude">como ler o MARÉ Saúde</a></p>
+        <p class="note u-mt-2 u-mb-0"><a href="METODOLOGIA.pdf" id="linkComoLerSaude" target="_blank" rel="noopener">como ler o MARÉ Saúde</a></p>
       </div>
     </div>
 
@@ -138,18 +138,6 @@
     </div>
   </section>
 
-<div class="panel panel--destaque" id="comoler-saude-painel" hidden>
-    <div id="comolerSaude" hidden data-voz="ficha">
-      <h2 data-conteudo="saude.numerosSaude.titulo_da_secao">Como ler o MARÉ Saúde</h2>
-      <p class="hint" data-conteudo-html="saude.numerosSaude.abertura_2"><strong>O que conta.</strong> O que a secretaria de saúde de cada estado publicou antes do ciclo: se há um plano para os riscos deste El Niño (arboviroses, calor, água, fumaça), se foi feito para o ciclo ou é o de todo ano; e quando o plano foi publicado em relação ao primeiro boletim, de 29 de junho.</p>
-      <p class="hint" data-conteudo="saude.numerosSaude.abertura">Quanta gente vive em cidade cujo plano trata a saúde. Os três pesam igual. Planos de adaptação de longo prazo são registrados como estrutura e não entram no cálculo. O número vai de 0 a 100, nas mesmas faixas do índice principal, e é calculada só para os estados já verificados.</p>
-      <p class="hint" data-conteudo-html="saude.numerosSaude.abertura_3"><strong>O que não conta.</strong> Casos de dengue, chikungunya, doenças respiratórias e diarreicas, avisos de calor: são mostrados nesta página como observação. Dinheiro recebido, preventivo ou emergencial, também não entra.</p>
-      <p class="hint" data-conteudo-html="saude.numerosSaude.abertura_4"><strong>Emergências declaradas.</strong> Emergências em saúde pública declaradas desde 29 de junho, nacionais, estaduais e municipais, mostradas à parte. Fontes: DOU e diários oficiais estaduais.</p>
-      <p class="hint" data-conteudo-html="saude.numerosSaude.abertura_5"><strong>Um estado sem plano localizado</strong> é um estado em que não encontramos plano publicado nos diários oficiais nem nos sítios da secretaria de saúde, do centro de vigilância ou do centro de operações de emergência. <strong>"Ainda não verificado"</strong> é um estado em que ainda não procuramos com todas as fontes desta camada.</p>
-      <p class="hint" data-conteudo-html="saude.numerosSaude.abertura_6"><strong>Sobre os casos.</strong> Os níveis de alerta e as estimativas de casos vêm do InfoDengue (Fiocruz/FGV); as últimas semanas ainda recebem notificações e aparecem como parciais.</p>
-      <p class="note u-mb-0" data-conteudo-html="saude.numerosSaude.n_indice_saude.nota"><a href="METODOLOGIA.pdf" target="_blank" rel="noopener">metodologia</a></p>
-    </div>
-  </div>
 <dialog class="detail" id="detailSaude" aria-label="Detalhe do estado">
     <button type="button" class="detail-fechar" id="detailSaudeFechar" aria-label="Fechar">×</button>
     <div id="detailSaudeConteudo"></div>
@@ -216,24 +204,6 @@
         <details class="figura-dados" data-alternativa="dados"><summary data-conteudo="saude.observado.dengue_uf.resumo">Ver em lista</summary>
           <dl class="dl-dados" id="dlDengueUF"></dl>
         </details>
-      </figure>      <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxDengueMunicipios">
-        <p class="cartao-mapa-familia" data-conteudo="saude.observado.dengue_municipios.familia">Dengue</p>
-        <p class="cartao-mapa-boletim" id="linhaDengueMunicipios"></p>
-        <h3 class="figura-titulo" data-conteudo="saude.observado.dengue_municipios.titulo">Dengue na sua cidade</h3>
-        <p class="figura-sub" data-conteudo="saude.observado.dengue_municipios.legenda">Nível de alerta do InfoDengue na última semana consolidada · cidade não lida pelo MARÉ na semana aparece como não lida</p>
-        <div class="figura-midia">
-          <div class="busca-mun" id="buscaDengueMunicipios">
-            <label for="ufDengueMunicipios">Estado</label>
-            <select id="ufDengueMunicipios"><option value="">Escolha o estado…</option></select>
-            <label for="nomeDengueMunicipios">Município</label>
-            <input id="nomeDengueMunicipios" type="text" list="listaDengueMunicipios" autocomplete="off"
-                   spellcheck="false" placeholder="Digite o nome da cidade" disabled>
-            <datalist id="listaDengueMunicipios"></datalist>
-            <p class="busca-mun-conta" role="status" aria-live="polite" id="contaDengueMunicipios"></p>
-          </div>
-          <div id="resultadoDengueMunicipios" class="card-note" hidden></div>
-        </div>
-        <div class="map-legend" id="legDengueMunicipios"></div>
       </figure>
     </div>
     <h3 class="u-mt-4" data-conteudo="saude.observado.dengue_municipios.titulo_2">Chikungunya</h3>
@@ -256,24 +226,6 @@
         <details class="figura-dados" data-alternativa="dados"><summary data-conteudo="saude.observado.chik_uf.resumo">Ver em lista</summary>
           <dl class="dl-dados" id="dlChikUF"></dl>
         </details>
-      </figure>      <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxChikMunicipios">
-        <p class="cartao-mapa-familia" data-conteudo="saude.observado.chik_municipios.familia">Chikungunya</p>
-        <p class="cartao-mapa-boletim" id="linhaChikMunicipios"></p>
-        <h3 class="figura-titulo" data-conteudo="saude.observado.chik_municipios.titulo">Chikungunya na sua cidade</h3>
-        <p class="figura-sub" data-conteudo="saude.observado.chik_municipios.legenda">Nível de alerta do InfoDengue na última semana consolidada · cidade não lida pelo MARÉ na semana aparece como não lida</p>
-        <div class="figura-midia">
-          <div class="busca-mun" id="buscaChikMunicipios">
-            <label for="ufChikMunicipios">Estado</label>
-            <select id="ufChikMunicipios"><option value="">Escolha o estado…</option></select>
-            <label for="nomeChikMunicipios">Município</label>
-            <input id="nomeChikMunicipios" type="text" list="listaChikMunicipios" autocomplete="off"
-                   spellcheck="false" placeholder="Digite o nome da cidade" disabled>
-            <datalist id="listaChikMunicipios"></datalist>
-            <p class="busca-mun-conta" role="status" aria-live="polite" id="contaChikMunicipios"></p>
-          </div>
-          <div id="resultadoChikMunicipios" class="card-note" hidden></div>
-        </div>
-        <div class="map-legend" id="legChikMunicipios"></div>
       </figure>
     </div>
     <h3 class="u-mt-4" data-conteudo="saude.observado.chik_municipios.titulo_2">Respiratórias</h3>
@@ -318,24 +270,6 @@
         <details class="figura-dados" data-alternativa="dados"><summary data-conteudo="saude.observado.calor.resumo">Ver em lista</summary>
           <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblCalor"><thead><tr><th>UF</th><th>Normal</th><th>Baixo</th><th>Severo</th><th>Extremo</th><th>Lidos</th></tr></thead><tbody></tbody></table></div>
         </details>
-      </figure>      <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxCalorMunicipios">
-        <p class="cartao-mapa-familia" data-conteudo="saude.observado.calor_municipios.familia">Calor</p>
-        <p class="cartao-mapa-boletim" id="linhaCalorMunicipios"></p>
-        <h3 class="figura-titulo" data-conteudo="saude.observado.calor_municipios.titulo">Calor na sua cidade</h3>
-        <p class="figura-sub" data-conteudo="saude.observado.calor_municipios.legenda">Classe de excesso de calor do município na consulta mais recente · cidade não lida aparece como não lida</p>
-        <div class="figura-midia">
-          <div class="busca-mun" id="buscaCalorMunicipios">
-            <label for="ufCalorMunicipios">Estado</label>
-            <select id="ufCalorMunicipios"><option value="">Escolha o estado…</option></select>
-            <label for="nomeCalorMunicipios">Município</label>
-            <input id="nomeCalorMunicipios" type="text" list="listaCalorMunicipios" autocomplete="off"
-                   spellcheck="false" placeholder="Digite o nome da cidade" disabled>
-            <datalist id="listaCalorMunicipios"></datalist>
-            <p class="busca-mun-conta" role="status" aria-live="polite" id="contaCalorMunicipios"></p>
-          </div>
-          <div id="resultadoCalorMunicipios" class="card-note" hidden></div>
-        </div>
-        <div class="map-legend" id="legCalorMunicipios"></div>
       </figure>
     </div>
     <p class="note u-mb-0" id="interpObservado" data-conteudo="saude.observado.interp_observado.nota">Nível de alerta: estimativa do InfoDengue (Fiocruz/FGV); as últimas semanas ainda recebem notificações.</p>
@@ -345,6 +279,19 @@
     <h2 id="saude-federal-h2" data-conteudo="saude.saude-federal-painel.titulo_da_secao">O que o governo federal publicou</h2>
     <p class="hint" data-conteudo="saude.saude-federal-painel.abertura">Documentos oficiais do governo federal para o ciclo, com link. O que foi anunciado e não localizamos até o corte aparece como linha própria.</p>
     <ul class="fontes-list" id="listaFederalSaude"></ul>
+  </section>
+
+  <!-- 17/10/2026 (HANDOVER_SAUDE_PAGINA §4): uma consulta só, com o componente comum da consulta do
+       município; saem as três buscas por bloco. O arquivo do estado é carregado só quando ele é escolhido. -->
+  <section id="consultaSaude" aria-labelledby="tituloConsultaSaude">
+    <h2 id="tituloConsultaSaude" data-conteudo="saude.consulta.titulo">Consulte a situação do seu município</h2>
+    <div class="tbl-controls" id="consultaSaudeControles">
+      <select id="consultaSaudeUF" aria-label="Estado"><option value="">1 · Seu estado…</option></select>
+      <input id="consultaSaudeMun" type="text" list="consultaSaudeLista" placeholder="2 · Seu município…" aria-label="Nome do município" autocomplete="off" disabled>
+      <datalist id="consultaSaudeLista"></datalist>
+    </div>
+    <div id="consultaSaudeCard" class="meu-card" aria-live="polite" hidden></div>
+    <p class="hint" data-conteudo="saude.consulta.nota">Dengue, chikungunya, calor e plano são do próprio município; síndrome respiratória grave e MARÉ Saúde são do estado, ditos como do estado. Município que a fonte não leu aparece como não lido.</p>
   </section>
 
 </main>
@@ -357,7 +304,7 @@
 </div>
 
 <script src="assets/colunas.js?v=07ce0f22" defer></script>
-<script src="assets/js/grade-estados.js?v=e152cd4c" defer></script><script src="assets/js/saude.js?v=0b36fdc1" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
+<script src="assets/js/grade-estados.js?v=e152cd4c" defer></script><script src="assets/js/consulta-municipio.js?v=677bd154" defer></script><script src="assets/js/saude.js?v=bbcd1ba7" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

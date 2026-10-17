@@ -104,11 +104,6 @@
               "id": "mapa_uf_por_100mil",
               "tipo": "mapa",
               "el": "boxDengueUF"
-            },
-            {
-              "id": "lista_municipios_busca",
-              "tipo": "lista",
-              "el": "boxDengueMunicipios"
             }
           ]
         },
@@ -125,11 +120,6 @@
               "id": "mapa_uf_por_100mil",
               "tipo": "mapa",
               "el": "boxChikUF"
-            },
-            {
-              "id": "lista_municipios_busca",
-              "tipo": "lista",
-              "el": "boxChikMunicipios"
             }
           ]
         },
@@ -162,11 +152,6 @@
               "id": "mapa_uf_por_100mil",
               "tipo": "mapa",
               "el": "boxCalor"
-            },
-            {
-              "id": "lista_municipios_calor",
-              "tipo": "lista",
-              "el": "boxCalorMunicipios"
             }
           ]
         }
@@ -176,6 +161,18 @@
       "id": "saude-federal-painel",
       "h2": "O que o governo federal publicou",
       "tipo": "lista_simples"
+    },
+    {
+      "id": "consultaSaude",
+      "h2": "Consulte a situação do seu município",
+      "tipo": "texto",
+      "cartoes": [
+        {
+          "id": "consulta_municipio",
+          "tipo": "texto",
+          "el": "consultaSaudeControles"
+        }
+      ]
     }
   ],
   "texto_proibido": [
