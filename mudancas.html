@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>17/10/2026 · Niño 3.4 semanal no coletor de sinais; o apoio técnico volta a ser coletado</dt>
+      <dd>Fonte nova `noaa_nino34_semanal` (arquivo `wksst9120.for` do CPC) em `sinais_risco.json → enos.nino34_semanal`, de 2025 em diante, para o gráfico abaixo do RONI. Achado no caminho: desde 30/09 a rodada completa pulava a camada de apoio técnico, e ONI, Niño 3.4 mensal e a discussão do CPC estavam parados em 30/09. Voltam a ser coletados.</dd>
       <dt>17/10/2026 · Ato de resposta aplicado pelo juiz passa pela porta do carimbo</dt>
       <dd>`julgar_e_aplicar_descobertas.aplicar_resposta` gravava `atos_resposta.json` sem `carimbar_atos`, a porta única do carimbo e do tipo de evento: 13 atos de imprensa ficaram com `tipo_evento` nulo (achado da A2). Agora grava pela porta; a próxima escrita de qualquer coletor recarimba os 13. Trava no autoteste.</dd>
       <dt>17/10/2026 · Saúde: risco previsto em etiquetas de sigla; grade dos estados com uma barra</dt>
@@ -165,8 +167,6 @@
       <dd>O convite do cartão da cidade apontava para &quot;Para gestores&quot;, sem formulário. Agora rola até o formulário da própria inicial e o preenche pela mesma função que lê os parâmetros do endereço. O portão de âncoras passa a ler também os links montados nos scripts — e achou uma nota de financiamento morta, que sai.</dd>
       <dt>16/10/2026 · Portões: o autoteste roda dentro da conferência (consolidação item 6)</dt>
       <dd>Dezesseis `verificar_*` que ainda tinham o par `--autoteste` + conferência passam a rodar o autoteste antes de conferir, em todo uso (publicador incluído); os 16 comandos `--autoteste` saem de `portoes.yml`: 141 → 125 comandos, mesma cobertura. Linhas líquidas 0 (+29 nos scripts, −29 no workflow): a chamada mudou de lugar, não de número.</dd>
-      <dt>16/10/2026 · Portões: 131 comandos `--autoteste` redundantes saem (consolidação item 6)</dt>
-      <dd>`verificar_autotestes_isolados.py` já roda todo `.py` com `--autoteste` (210) e reprova em qualquer vermelho; os comandos repetidos um a um — todos os do job de dado, o laço dos coletores e os do bloco &quot;sempre&quot; cujo autoteste não abre arquivo real (medido com gancho de auditoria) — saem de `portoes.yml`. Ficam os que leem `layout/`, `conteudo/`, `schemas/`, página ou workflow, os em JavaScript e os `--self-test`/`--check`. 259 → 141 comandos, mesma cobertura.</dd>
     </dl>
   </section>
 </main>
