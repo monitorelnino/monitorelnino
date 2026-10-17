@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-17 · #825 · Figura principal larga
+
+Cada página pode ter uma figura principal em largura total (mapa ou série), declarada no contrato, além do diagrama; no Monitor de riscos, o mapa de focos e o RONI. `verificar_conformidade.py` reprova figura larga não declarada; `verificar_layout.py` lê a fração de um terço de `regras.json`. Decisão de 16/10/2026.
+
 ## 2026-10-17 · #823 · A válvula de dia abre o próprio PR de dado
 
 Fim do run em `coleta-dia/*` com push: o `_coletor.yml` abre o PR de dado com o `ROBO_TOKEN` (o `GITHUB_TOKEN` não dispara os Portões), sem sessão esperando run (HANDOVER_FILA_DE_PISTAS_SEM_SESSAO §1.3). Sem token, avisa; PR já aberto, não duplica. Provado no executor: o run 39027347586 abriu o #821 (de teste, fechado).
