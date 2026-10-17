@@ -3009,7 +3009,9 @@ def main() -> None:
         registro = semear(esqueleto() if "--zerar" in args else registro)
         gravar(registro)
         return
-    camadas = {"ciclo", "observado", "enos"}
+    # 17/10/2026: o apoio técnico entra na rodada completa. Desde 30/09 ele "continuava coletado" só no
+    # comentário: o filtro de camada o pulava, e ONI, Niño 3.4 mensal e a discussão do CPC pararam em 30/09.
+    camadas = {"ciclo", "observado", "enos", "apoio_tecnico"}
     if "--camada" in args:
         camadas = {args[args.index("--camada") + 1]}
     print(f"Coletando sinais oficiais de risco · camadas: {', '.join(sorted(camadas))}")
