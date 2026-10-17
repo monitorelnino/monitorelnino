@@ -106,8 +106,9 @@ if __name__ == "__main__":
     b2 = pega(base + m.group(1))
     t2 = b2.decode("utf-8", "replace")
     corpo_sem_css = re.sub(r"<style.*?</style>", " ", t2, flags=re.S)
-    i0 = corpo_sem_css.find("Caderno:")
-    print(re.sub(r"\s+", " ", corpo_sem_css[i0:])[:9000])
+    i0 = corpo_sem_css.find("</select>", corpo_sem_css.find("sumario"))
+    print("RESTO:", re.sub(r"\s+", " ", corpo_sem_css[i0:])[:6000])
+    ctx(b2, r"DEFAULT_URL|\.open\(|\.pdf|\.php\?|file|url\s*[:=]", 200, 30)
     js = pega(base + "include/pdfjs/web/viewer-min.js")
     if js:
-        ctx(js, r"DEFAULT_URL|\.php|session|file=|tmp\.pdf", 200, 25)
+        ctx(js, r"DEFAULT_URL|appConfig\.defaultUrl|defaultUrl|\?file|\.open\(", 200, 25)
