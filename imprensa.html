@@ -30,6 +30,7 @@
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
 <link rel="stylesheet" href="assets/base.css?v=18a6c971">
+<script src="assets/mapas.js?v=ea07b524"></script>
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -41,182 +42,207 @@
     
   </header>
 <main id="conteudo">
-  <!-- 01/10/2026 (handover da imprensa): REGRA 0 DA PÁGINA — nada escrito à mão que dependa do
-       dado. Todo número, data e versão que muda quando o site se atualiza vem de data/*.json e é
-       preenchido pelo script; o HTML traz "—", que é o estado honesto antes da leitura. Um portão
-       reprova se a página publicada mostrar "—" onde deveria haver número, ou se uma versão ou data
-       divergir do banco. -->
-  <!-- 05/10/2026 (handover da preparação programática, itens 7, 7-B e 7-C): a página passa a ser o
-       título e, imediatamente, as seções. Saíram, sem substituição: a abertura com o contato (o
-       e-mail fica só em "Para redações"), o bloco "Os índices nesta edição" (a manchete sai da
-       imprensa; os índices vivem nas páginas) e o bloco "Textos desta semana" (o ponteiro para o
-       blog sai; o blog é o menu). "O que cada página mostra" e "Perguntas de fato" foram
-       substituídas por "O que cada página responde" e, na revisão da editoria do mesmo dia,
-       "Perguntas frequentes" — essa seção abre pelas cinco perguntas que antes vinham sob um
-       subtítulo, e o último grupo chama-se "Contato". Saiu por inteiro a pergunta sobre quem faz
-       o MARÉ e como ele se mantém: nenhuma menção a financiamento, recursos ou vínculos entra em
-       lugar nenhum do site.
-
-       A referência completa perdeu a versão dos índices, por decisão da editoria: o código não é
-       distribuído, e a versão não serve ao leitor.
-
-       O texto desta página vive em `conteudo/imprensa.json`. O que está escrito aqui é texto de
-       RESERVA, para a página não ficar vazia se o catálogo não carregar.
-
-       15/10/2026 (redesenho B, editoria): páginas em cartões no topo, perguntas em sanfona; ordem
-       e divergências em `layout/contratos/imprensa.json`. -->
+  <!-- Reforma de 17/10/2026 (HANDOVER_IMPRENSA_16-10-2026): ordem e divergências em
+       layout/contratos/imprensa.json; texto em conteudo/imprensa.json (o daqui é reserva). -->
   <h1 data-conteudo="imprensa.titulo_da_pagina">Imprensa</h1>
+  <section id="abertura" aria-label="Apresentação">
+    <p data-conteudo-html="imprensa.abertura.p1">O MARÉ acompanha como estados e municípios se preparam para o El Niño 2026/2027 e como respondem quando o dano chega. Dois índices, o MARÉ Legal e o MARÉ Saúde, medem o que os governos publicaram em proteção civil e em saúde; ao lado deles, o site registra avisos e alertas em vigor, decretos de emergência, dinheiro público autorizado, casos de doenças e o que fazer em cada risco. Todo número vem de um documento oficial, com data e endereço, e pode ser conferido.</p>
+    <p data-conteudo-html="imprensa.abertura.p2">Esta página traz o que mudou na última semana, o que recomendamos e não recomendamos concluir com os nossos dados, como citar e reproduzir mapas e gráficos, quando cada parte do site é atualizada e o que significam os termos que usamos. No topo de cada página do site estão os números-síntese daquele tema, com fonte e data, prontos para uma atualização.</p>
+    <p class="u-mb-0" data-conteudo-html="imprensa.abertura.p3">Pedidos de recortes por estado ou município, cruzamentos e entrevistas vão para <a href="mailto:imprensa@futuraevidencelab.com.br">imprensa@futuraevidencelab.com.br</a>, e são atendidos com a mesma fonte e a mesma data de cada dado publicado aqui. O MARÉ é uma criação do <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener">Futura Evidence Lab</a>.</p>
+  </section>
 
-  <section id="paginas" aria-labelledby="paginasTitulo">
-    <h2 id="paginasTitulo" data-conteudo="imprensa.paginas.titulo_da_secao">O que cada página responde</h2>
+  <section id="semana" aria-labelledby="semanaTitulo">
+    <h2 id="semanaTitulo" data-conteudo="imprensa.semana.titulo_da_secao">Esta semana no MARÉ</h2>
+    <div class="grade-numeros grade-numeros--3 grade-numeros--compacta" id="semanaCartoes"></div>
+    <div id="semanaTexto"></div>
+  </section>
+
+  <section id="concluir" data-voz="lei" aria-labelledby="concluirTitulo">
+    <h2 id="concluirTitulo" data-conteudo="imprensa.concluir.titulo_da_secao">O que recomendamos e não recomendamos concluir</h2>
+    <p class="selo" data-conteudo="imprensa.concluir.preparacao.titulo">Preparação</p>
     <div class="grade-figuras grade-figuras--3">
-      <article class="cartao cartao-mapa">
-        <h3 data-conteudo="imprensa.paginas.index.titulo">MARÉ Legal</h3>
-        <p data-conteudo="imprensa.paginas.index">Quais estados e municípios publicaram plano para o ciclo, quem coordena a resposta e quanta gente está coberta. A ficha de cada estado e a busca por cidade.</p>
-        <a class="cartao-a" href="index.html" data-conteudo="imprensa.paginas.abrir">Abrir a página →</a>
+      <article class="cartao cartao-mapa cartao--acento-musgo">
+        <h3 data-conteudo="imprensa.concluir.preparacao.1.pergunta">Um estado com nota baixa está despreparado?</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.concluir.preparacao.1">Não recomendamos essa leitura. A nota do MARÉ Legal mede três coisas que se podem conferir num documento: se há plano estadual publicado para o risco previsto, se foi designada uma estrutura de coordenação e quanta gente vive em município com plano localizado. Ela não mede equipes, equipamentos, orçamento nem a execução do plano. Recomendamos: "o MARÉ não localizou plano publicado para o risco previsto até [data]; a nota do estado é X de 100", com o link da ficha, que mostra qual documento foi lido e quando.</p>
       </article>
-      <article class="cartao cartao-mapa">
-        <h3 data-conteudo="imprensa.paginas.monitor_de_riscos.titulo">Monitor de riscos</h3>
-        <p data-conteudo="imprensa.paginas.monitor_de_riscos">O que os órgãos de clima medem e preveem, do Pacífico à seca, ao fogo, ao calor e à chuva.</p>
-        <a class="cartao-a" href="monitor-de-riscos.html" data-conteudo="imprensa.paginas.abrir">Abrir a página →</a>
+      <article class="cartao cartao-mapa cartao--acento-musgo">
+        <h3 data-conteudo="imprensa.concluir.preparacao.2.pergunta">Uma cidade sem registro não tem plano?</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.concluir.preparacao.2">Não recomendamos. "Não localizado" quer dizer que o documento não estava nos diários oficiais, nos sites oficiais nem nas respostas a pedidos de informação que consultamos até a data de corte. A prefeitura pode ter um plano que não publicou, ou publicou num lugar que não alcançamos. Recomendamos: "não foi localizado plano publicado até [data]", e perguntar à prefeitura; se ela enviar o documento, ele entra no site com data e fonte.</p>
       </article>
-      <article class="cartao cartao-mapa">
-        <h3 data-conteudo="imprensa.paginas.defesa_civil.titulo">Defesa civil</h3>
-        <p data-conteudo="imprensa.paginas.defesa_civil">Onde há aviso ou alerta agora, quem decretou emergência no ciclo, o que o governo federal reconheceu e quais municípios estão nas listas federais de risco.</p>
-        <a class="cartao-a" href="defesa-civil.html" data-conteudo="imprensa.paginas.abrir">Abrir a página →</a>
+      <article class="cartao cartao-mapa cartao--acento-musgo">
+        <h3 data-conteudo="imprensa.concluir.preparacao.3.pergunta">Decreto de emergência é falta de preparação?</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.concluir.preparacao.3">Não recomendamos. O decreto é o ato em que a prefeitura declara que o dano já aconteceu e pede o regime especial de compras, socorro e recursos que a lei prevê. Municípios bem preparados também decretam quando o evento supera a capacidade local. Por isso o decreto não entra na nota do MARÉ Legal e aparece num indicador próprio. Recomendamos tratar os dois como informações distintas: preparação publicada de um lado, resposta ao dano de outro.</p>
       </article>
-      <article class="cartao cartao-mapa">
-        <h3 data-conteudo="imprensa.paginas.saude.titulo">MARÉ Saúde</h3>
-        <p data-conteudo="imprensa.paginas.saude">Como as secretarias estaduais de saúde se prepararam e o que os órgãos de saúde registram, como dengue e doenças respiratórias.</p>
-        <a class="cartao-a" href="saude.html" data-conteudo="imprensa.paginas.abrir">Abrir a página →</a>
+      <article class="cartao cartao-mapa cartao--acento-musgo">
+        <h3 data-conteudo="imprensa.concluir.preparacao.4.pergunta">Nota baixa quer dizer risco maior?</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.concluir.preparacao.4">Não recomendamos. O risco previsto vem dos boletins oficiais e está no Monitor de riscos; a nota está na preparação publicada. Um estado com risco alto e nota alta e outro com risco baixo e nota baixa são situações diferentes, e a leitura certa é a combinação das duas, que a ficha de cada estado mostra.</p>
       </article>
-      <article class="cartao cartao-mapa">
-        <h3 data-conteudo="imprensa.paginas.financiamento.titulo">Financiamento</h3>
-        <p data-conteudo="imprensa.paginas.financiamento">De onde vêm os recursos do El Niño, como estão sendo aplicados e o que a defesa civil federal autorizou, estado a estado e município a município.</p>
-        <a class="cartao-a" href="financiamento.html" data-conteudo="imprensa.paginas.abrir">Abrir a página →</a>
+      <article class="cartao cartao-mapa cartao--acento-musgo">
+        <h3 data-conteudo="imprensa.concluir.preparacao.5.pergunta">Ranking de estados ou municípios?</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.concluir.preparacao.5">Não recomendamos. As exigências dependem do risco previsto para cada um: um estado de seca e um de chuva forte precisam de planos diferentes, e a ficha de cada estado diz qual plano foi lido. Recomendamos citar a nota de cada ente com a sua data e o documento que a sustenta, e não ordená-los.</p>
       </article>
-      <article class="cartao cartao-mapa">
-        <h3 data-conteudo="imprensa.paginas.proteja_se.titulo">Proteja-se</h3>
-        <p data-conteudo="imprensa.paginas.proteja_se">O que fazer antes, durante e depois de cada tipo de alerta.</p>
-        <a class="cartao-a" href="proteja-se.html" data-conteudo="imprensa.paginas.abrir">Abrir a página →</a>
+    </div>
+    <p class="selo" data-conteudo="imprensa.concluir.saude.titulo">Saúde</p>
+    <div class="grade-figuras grade-figuras--3">
+      <article class="cartao cartao-mapa cartao--acento-neutro">
+        <h3 data-conteudo="imprensa.concluir.saude.1.pergunta">Os casos de dengue e chikungunya são efeito do El Niño?</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.concluir.saude.1">Recomendamos distinguir a associação conhecida do caso concreto. A associação existe e é a razão de essas doenças estarem no plano federal de contingência e nos planos estaduais: o calor acelera o mosquito e o vírus, e a água guardada na estiagem ou parada depois das chuvas vira criadouro. O que o nosso dado não permite é dizer que o aumento de casos num município ou numa semana foi causado pelo El Niño: outros fatores pesam, como o sorotipo em circulação, a imunidade da população, o saneamento e a resposta local. Recomendamos: "a dengue está entre as doenças que os órgãos de saúde associam ao El Niño; na semana de [data], o município registrou X casos por 100 mil, acima da faixa habitual para a época". A comparação com a faixa habitual é o que o dado sustenta.</p>
       </article>
-      <article class="cartao cartao-mapa">
-        <h3 data-conteudo="imprensa.paginas.prefeituras.titulo">Para gestores</h3>
-        <p data-conteudo="imprensa.paginas.prefeituras">Como preparar e publicar um plano, e como os recursos chegam.</p>
-        <a class="cartao-a" href="prefeituras.html" data-conteudo="imprensa.paginas.abrir">Abrir a página →</a>
+      <article class="cartao cartao-mapa cartao--acento-neutro">
+        <h3 data-conteudo="imprensa.concluir.saude.2.pergunta">E as outras doenças que o site acompanha?</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.concluir.saude.2">O mesmo raciocínio vale para cada uma. Síndrome respiratória grave e a fumaça de queimadas; diarreias e a falta de água tratada na estiagem; leptospirose e a água de enchente; doenças cardíacas e renais e as ondas de calor; óbitos registrados e os dias de calor extremo. Em todos esses casos a associação está nos planos oficiais e nas orientações do Ministério da Saúde, e é por isso que o MARÉ coleta esses desfechos. Recomendamos escrever a associação como ela é, "doença que os órgãos de saúde associam a [risco]", e descrever o número contra a faixa habitual, sem afirmar causa para um caso, um município ou uma semana.</p>
       </article>
-      <article class="cartao cartao-mapa">
-        <h3 data-conteudo="imprensa.paginas.blog.titulo">Blog do MARÉ</h3>
-        <p data-conteudo="imprensa.paginas.blog">Os textos da editoria sobre o que está acontecendo no ciclo.</p>
-        <a class="cartao-a" href="blog.html" data-conteudo="imprensa.paginas.abrir">Abrir a página →</a>
+      <article class="cartao cartao-mapa cartao--acento-neutro">
+        <h3 data-conteudo="imprensa.concluir.saude.3.pergunta">O que é a "faixa habitual"?</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.concluir.saude.3">É o intervalo em que o indicador ficou, na mesma época do ano, entre 2019 e 2025, no mesmo estado. Um valor acima da faixa quer dizer que a semana está acima do que foi comum naquele período, não que há epidemia nem que a causa é o clima. Recomendamos usar "acima da faixa habitual para a época" e evitar "surto", "explosão" ou "epidemia", que são classificações dos órgãos de saúde, não nossas.</p>
+      </article>
+      <article class="cartao cartao-mapa cartao--acento-neutro">
+        <h3 data-conteudo="imprensa.concluir.saude.4.pergunta">As últimas semanas estão completas?</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.concluir.saude.4">Não. Os sistemas de notificação recebem registros com atraso, e as duas ou três semanas mais recentes aparecem marcadas como parciais. Recomendamos citar a última semana completa e dizer que as seguintes ainda estão sendo consolidadas.</p>
+      </article>
+      <article class="cartao cartao-mapa cartao--acento-neutro">
+        <h3 data-conteudo="imprensa.concluir.saude.5.pergunta">O MARÉ Saúde mede a saúde da população?</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.concluir.saude.5">Não. Ele mede o que as secretarias estaduais de saúde publicaram para este El Niño: se há plano, se foi feito para ele, quando saiu e quanta gente está em município cujo plano trata a saúde. Casos, internações e óbitos são observação, com peso zero na nota.</p>
+      </article>
+      <article class="cartao cartao-mapa cartao--acento-neutro">
+        <h3 data-conteudo="imprensa.concluir.saude.6.pergunta">Emergência em saúde declarada quer dizer que a situação é pior do que onde não foi?</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.concluir.saude.6">Não recomendamos. A declaração (nacional, pelo Ministério da Saúde; estadual ou municipal, pelo governo local) é um ato administrativo que abre instrumentos de resposta. Lugares em situação parecida podem declarar ou não. O site mostra as declarações num indicador separado, como resposta, não como medida de gravidade.</p>
+      </article>
+    </div>
+    <p class="selo" data-conteudo="imprensa.concluir.financiamento.titulo">Financiamento</p>
+    <div class="grade-figuras grade-figuras--3">
+      <article class="cartao cartao-mapa cartao--acento-argila">
+        <h3 data-conteudo="imprensa.concluir.financiamento.1.pergunta">O dinheiro do Financiamento é "dinheiro do El Niño"?</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.concluir.financiamento.1">Recomendamos dizer o que cada ato declara. As duas medidas provisórias federais citam o risco (incêndios; alimentos para regiões em seca) e são créditos extraordinários; as portarias da defesa civil respondem a emergências reconhecidas, de qualquer causa declarada; os repasses do Fundo Nacional de Saúde que mostramos são os de linhas cujo nome cita emergência. Transferências ordinárias, como as constitucionais, aparecem separadas na consulta por município e não entram nessa conta.</p>
+      </article>
+      <article class="cartao cartao-mapa cartao--acento-argila">
+        <h3 data-conteudo="imprensa.concluir.financiamento.2.pergunta">"Anunciado", "empenhado" e "pago" são a mesma coisa?</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.concluir.financiamento.2">Não, e a diferença é o centro da leitura. Anunciado é o valor que consta no ato; empenhado é o que foi reservado para uma despesa; pago é o que saiu do caixa. Uma medida provisória de R$ 925 milhões com R$ 106 milhões pagos é um fato relevante por si. Recomendamos sempre dizer qual das três etapas o número representa, e a data.</p>
+      </article>
+      <article class="cartao cartao-mapa cartao--acento-argila">
+        <h3 data-conteudo="imprensa.concluir.financiamento.3.pergunta">O valor das medidas provisórias é o que foi gasto com o El Niño?</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.concluir.financiamento.3">Não exatamente. A execução que o Portal da Transparência publica é a das ações orçamentárias que a medida reforçou, e essas ações já tinham dotação própria. O número que mostramos é um teto do que pode ter saído pelo crédito, não a execução só dele; o cartão diz isso. Recomendamos: "até [data], as ações reforçadas pela MP X tinham R$ Y pagos, segundo o Portal da Transparência".</p>
+      </article>
+      <article class="cartao cartao-mapa cartao--acento-argila">
+        <h3 data-conteudo="imprensa.concluir.financiamento.4.pergunta">O dinheiro chegou à prefeitura?</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.concluir.financiamento.4">Na maior parte, não. A maior parte do que foi pago pelas medidas federais foi aplicada diretamente pela União, em compras, contratos e operações de órgãos federais, sem destino municipal. O que chega ao município é o que as portarias da defesa civil autorizam depois do reconhecimento e os repasses de saúde, e isso está na consulta por município. Recomendamos não somar o gasto direto da União ao que a prefeitura recebeu.</p>
+      </article>
+      <article class="cartao cartao-mapa cartao--acento-argila">
+        <h3 data-conteudo="imprensa.concluir.financiamento.5.pergunta">Município sem registro de recurso não recebeu nada?</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.concluir.financiamento.5">Não recomendamos essa leitura. "Não localizado até o corte" quer dizer que não encontramos portaria ou repasse com aquele município nas fontes consultadas até a data. Transferências por outros canais, estaduais ou de emendas, podem existir sem constar aqui, e o site diz quais rotas coleta.</p>
+      </article>
+      <article class="cartao cartao-mapa cartao--acento-argila">
+        <h3 data-conteudo="imprensa.concluir.financiamento.6.pergunta">O período eleitoral travou o dinheiro?</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.concluir.financiamento.6">Em parte. A lei eleitoral suspende, nos três meses antes da eleição, as transferências voluntárias da União a estados e municípios, como convênios; ela não alcança o que a União gasta diretamente nem o socorro a emergência reconhecida, que continuam. Recomendamos verificar, para cada rota, se ela é voluntária ou obrigatória antes de atribuir uma ausência ao período eleitoral.</p>
       </article>
     </div>
   </section>
 
-  <section id="o-que-e" aria-labelledby="oQueETitulo">
-    <h2 id="oQueETitulo" data-conteudo="imprensa.o_que_e.titulo_da_secao">O que é o MARÉ</h2>
-    <p data-conteudo-html="imprensa.o_que_e.p1">O MARÉ, Monitor de Antecipação e Resposta ao El Niño, acompanha como o Brasil se prepara para o El Niño 2026/2027 e como responde a ele, estado a estado e município a município. É uma criação da <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener">Futura Evidence Lab</a>.</p>
-    <p data-conteudo="imprensa.o_que_e.p2">Dois índices resumem a preparação: o MARÉ Legal, que mede o que estados e municípios publicaram em proteção e defesa civil, e o MARÉ Saúde, que mede o mesmo no setor de saúde. Cada número vem de um documento oficial, com data e endereço, e pode ser conferido. A metodologia é pública e segue o método de índices compostos da OCDE e do Centro Comum de Investigação da Comissão Europeia.</p>
-    <p class="u-mb-0" data-conteudo="imprensa.o_que_e.p3">Ao lado dos índices, o site mostra os avisos e alertas em vigor, as emergências declaradas, o dinheiro público que chega a estados e municípios, o que os órgãos de saúde registram e o que fazer em cada tipo de alerta.</p>
-  </section>
-
-  <section id="como-calculados" aria-labelledby="comoCalcTitulo">
-    <h2 id="comoCalcTitulo" data-conteudo="imprensa.calculo.titulo_da_secao">Como os índices são calculados</h2>
-    <p data-conteudo-html="imprensa.calculo.legal"><strong>MARÉ Legal.</strong> Cada estado recebe uma nota de 0 a 100, feita de três partes com o mesmo peso. A primeira é o plano do estado: vale mais quando foi feito para este El Niño, menos quando é um plano de todo ano revisado para o risco do ciclo, e zero quando não localizamos plano para o risco previsto. A segunda é a coordenação: quem foi designado para conduzir a resposta, em comitê ou gabinete criado ou reativado para o ciclo. A terceira é a cobertura: quanta gente do estado vive em municípios com plano localizado. A data em que o plano saiu não entra na nota; aparece ao lado. A nota do Brasil é a média dos estados.</p>
-    <p data-conteudo-html="imprensa.calculo.saude" id="calculoSaude"><strong>MARÉ Saúde.</strong> A mesma lógica, para a saúde: o plano de saúde do estado para o ciclo, quem coordena a resposta dentro da secretaria e junto ao governo do estado, e a população coberta.</p>
-    <p class="u-mb-0" data-conteudo-html="imprensa.calculo.nao_dizem"><strong>O que os índices não dizem.</strong> Se há dinheiro, equipamento ou pessoal, se o plano é bom ou se está sendo cumprido. Eles medem o que foi publicado e pode ser conferido. Decretos de emergência, reconhecimentos federais e alertas são contados à parte, no indicador de resposta e na página Defesa civil.</p>
-  </section>
-
-  <section id="perguntas" data-voz="lei" aria-labelledby="perguntasTitulo">
-    <h2 id="perguntasTitulo" data-conteudo="imprensa.perguntas.titulo_da_secao">Perguntas frequentes</h2>
-    <details class="acc" open>
-      <summary class="acc-summary" data-conteudo="imprensa.perguntas.entender.2.pergunta">A nota baixa quer dizer que o risco é maior?</summary>
-      <p data-conteudo-html="imprensa.perguntas.entender.2">Não. A nota mede a preparação publicada. O risco previsto está no Monitor de riscos, e os dois não se misturam.</p>
-    </details>
-    <details class="acc">
-      <summary class="acc-summary" data-conteudo="imprensa.perguntas.entender.3.pergunta">O que querem dizer "não localizado" e "ainda não verificado"?</summary>
-      <p data-conteudo-html="imprensa.perguntas.entender.3">"Não localizado" quer dizer que procuramos nas fontes oficiais e não encontramos; não quer dizer que o plano não exista. "Ainda não verificado" quer dizer que a busca completa ainda não foi feita.</p>
-    </details>
-    <details class="acc">
-      <summary class="acc-summary" data-conteudo="imprensa.perguntas.entender.4.pergunta">Por que a minha cidade não aparece?</summary>
-      <p data-conteudo-html="imprensa.perguntas.entender.4">Ou ainda não foi verificada, ou não localizamos documento. A ficha da cidade diz qual dos dois, e como pedir o plano à prefeitura.</p>
-    </details>
-    <details class="acc">
-      <summary class="acc-summary" data-conteudo="imprensa.perguntas.entender.5.pergunta">Com que frequência o site é atualizado?</summary>
-      <p data-conteudo-html="imprensa.perguntas.entender.5" id="perguntaFrequencia">Os índices são recalculados a cada publicação. Os dados de saúde são semanais, de domingo a sábado, no calendário do Ministério da Saúde. As respostas a pedidos de acesso à informação entram quando chegam. Cada número traz a data da consulta.</p>
-    </details>
-
-    <h3 data-conteudo="imprensa.perguntas.metodo.titulo">Sobre o método</h3>
-    <details class="acc" open>
-      <summary class="acc-summary" data-conteudo="imprensa.perguntas.metodo.1.pergunta">Como a nota é calculada?</summary>
-      <p data-conteudo-html="imprensa.perguntas.metodo.1">Está na seção acima e, por inteiro, na <a href="METODOLOGIA.pdf">metodologia</a>.</p>
-    </details>
-    <details class="acc">
-      <summary class="acc-summary" data-conteudo="imprensa.perguntas.metodo.2.pergunta">Quem decide se um documento vale?</summary>
-      <p data-conteudo-html="imprensa.perguntas.metodo.2">Uma leitura integral do documento, com regras publicadas na metodologia: quem o publicou, a data e o risco que cobre. Cada registro guarda a cópia e o endereço de onde foi lido.</p>
-    </details>
-    <details class="acc">
-      <summary class="acc-summary" data-conteudo="imprensa.perguntas.metodo.3.pergunta">O que acontece quando o MARÉ erra?</summary>
-      <p data-conteudo-html="imprensa.perguntas.metodo.3">O registro é corrigido, a nota recalculada e a correção fica anotada na metodologia, com a data.</p>
-    </details>
-    <details class="acc">
-      <summary class="acc-summary" data-conteudo="imprensa.perguntas.metodo.4.pergunta">Decretar emergência conta como preparação?</summary>
-      <p data-conteudo-html="imprensa.perguntas.metodo.4">Não. O decreto de situação de emergência ou de calamidade é resposta a um dano e conta no indicador de resposta, à parte da nota. Um decreto de alerta ou de mobilização, sem pedido de reconhecimento federal, conta como estrutura de coordenação.</p>
-    </details>
-    <details class="acc">
-      <summary class="acc-summary" data-conteudo="imprensa.perguntas.metodo.5.pergunta">O que conta como plano?</summary>
-      <p data-conteudo-html="imprensa.perguntas.metodo.5">Um documento oficial, publicado por governo estadual ou municipal, que trate da preparação para os riscos do El Niño ou do ciclo 2026/2027, com fonte e data. Notícia não conta como registro; serve só como pista para a busca.</p>
-    </details>
-    <details class="acc">
-      <summary class="acc-summary" data-conteudo="imprensa.perguntas.metodo.6.pergunta">Qual a diferença entre plano para o ciclo e plano de todo ano?</summary>
-      <p data-conteudo-html="imprensa.perguntas.metodo.6">O plano para o ciclo cita o El Niño 2026/2027, o primeiro boletim, de 29 de junho, ou o risco previsto para o estado. O plano de todo ano se repete a cada temporada; ele conta quando trata do risco previsto, e conta mais quando foi revisado em 2026. Um plano para outro risco não entra na nota.</p>
-    </details>
-
-    <h3 data-conteudo="imprensa.perguntas.fontes.titulo">Sobre as fontes</h3>
-    <details class="acc" open>
-      <summary class="acc-summary" data-conteudo="imprensa.perguntas.fontes.1.pergunta">De onde vêm os dados?</summary>
-      <p data-conteudo-html="imprensa.perguntas.fontes.1">Dos diários oficiais e dos sítios oficiais dos governos; do S2iD e do Diário Oficial da União, para as emergências; do Ministério da Saúde, para as doenças; do Portal da Transparência, para o dinheiro; e de respostas a pedidos de acesso à informação. Notícia de imprensa é só pista para achar o documento.</p>
-    </details>
-    <details class="acc">
-      <summary class="acc-summary" data-conteudo="imprensa.perguntas.fontes.2.pergunta">De onde vem a previsão do El Niño?</summary>
-      <p data-conteudo-html="imprensa.perguntas.fontes.2">Do boletim do Painel El Niño 2026–2027, formado pelos órgãos federais de clima e defesa civil.</p>
-    </details>
-    <details class="acc">
-      <summary class="acc-summary" data-conteudo="imprensa.perguntas.fontes.3.pergunta">Como pedir o plano de uma cidade?</summary>
-      <p data-conteudo-html="imprensa.perguntas.fontes.3">Pela Lei de Acesso à Informação, a Lei 12.527/2011, no serviço de informação ao cidadão da prefeitura. O prazo de resposta é de 20 dias, prorrogáveis por mais 10.</p>
-    </details>
-
-    <h3 data-conteudo="imprensa.perguntas.concluir.titulo">O que se pode e o que não se pode concluir</h3>
-    <details class="acc" open>
-      <summary class="acc-summary" data-conteudo="imprensa.perguntas.concluir.1.pergunta">Posso dizer que um estado está despreparado?</summary>
-      <p data-conteudo-html="imprensa.perguntas.concluir.1">Pode dizer que o MARÉ não localizou plano publicado para o risco previsto, na data da edição. É isso que a nota mede.</p>
-    </details>
-    <details class="acc">
-      <summary class="acc-summary" data-conteudo="imprensa.perguntas.concluir.2.pergunta">Posso atribuir os casos de dengue ao El Niño?</summary>
-      <p data-conteudo-html="imprensa.perguntas.concluir.2">Não. O site mostra o que os órgãos de saúde registram; ele não estabelece relação entre os casos e o fenômeno.</p>
-    </details>
-    <details class="acc">
-      <summary class="acc-summary" data-conteudo="imprensa.perguntas.concluir.3.pergunta">O dinheiro do Financiamento é o dinheiro do El Niño?</summary>
-      <p data-conteudo-html="imprensa.perguntas.concluir.3">É o que a União anunciou, empenhou e desembolsou pelas medidas do ciclo e o que a defesa civil federal autorizou. Os repasses de todo mês não entram.</p>
-    </details>
-
-    <h3 data-conteudo="imprensa.perguntas.contato.titulo">Contato</h3>
-    <details class="acc" open>
-      <summary class="acc-summary" data-conteudo="imprensa.perguntas.contato.2.pergunta">Posso falar com alguém?</summary>
-      <p data-conteudo-html="imprensa.perguntas.contato.2">A editoria responde por e-mail: <a href="mailto:imprensa@futuraevidencelab.com.br">imprensa@futuraevidencelab.com.br</a>.</p>
-    </details>
-  </section>
-
   <section id="citar" aria-labelledby="citarTitulo">
-    <h2 id="citarTitulo" data-conteudo="imprensa.citar.titulo_da_secao">Como citar</h2>
-    <p data-conteudo-html="imprensa.citar.na_reportagem"><strong>Na reportagem:</strong> Fonte: MARÉ / Futura Evidence Lab.</p>
-    <p data-voz="citacao"><strong>Referência completa:</strong> FUTURA EVIDENCE LAB. <em>MARÉ — Monitor de Antecipação e Resposta ao El Niño</em>. Edição de <span id="relData2">—</span>. Disponível em: monitorelnino.com.br. Acesso em: <span id="citarAcesso">—</span>.</p>
-    <p class="u-mb-0" data-conteudo-html="imprensa.citar.uso"><strong>Uso.</strong> A <a href="METODOLOGIA.pdf">metodologia</a> é pública. Mapas e gráficos publicados no site podem ser reproduzidos com o crédito "MARÉ / Futura Evidence Lab" e a fonte primária de cada figura.</p>
+    <h2 id="citarTitulo" data-conteudo="imprensa.citar.titulo_da_secao">Como citar e reproduzir</h2>
+    <div class="grade-figuras grade-figuras--3">
+      <article class="cartao cartao-mapa">
+        <p class="u-mb-0" data-conteudo-html="imprensa.citar.na_materia"><strong>Na matéria</strong> "segundo o MARÉ, monitor do Futura Evidence Lab" ou "Fonte: MARÉ / Futura Evidence Lab".</p>
+        <p class="u-mb-0" data-voz="citacao"><strong>Referência completa</strong> FUTURA EVIDENCE LAB. <em>MARÉ · Monitor de Antecipação e Resposta ao El Niño</em>. Edição de <span id="relData2">—</span>. monitorelnino.com.br. Acesso em <span id="citarAcesso">—</span>.</p>
+      </article>
+      <article class="cartao cartao-mapa">
+        <p data-conteudo-html="imprensa.citar.mapas"><strong>Mapas e gráficos</strong> Podem ser reproduzidos com o crédito "MARÉ / Futura Evidence Lab" e a fonte primária que acompanha cada figura. A <a href="METODOLOGIA.pdf">metodologia</a> é pública.</p>
+        <p class="u-mb-0" data-conteudo-html="imprensa.citar.recortes"><strong>Recortes, cruzamentos e entrevistas</strong> <a href="mailto:imprensa@futuraevidencelab.com.br">imprensa@futuraevidencelab.com.br</a>, informando o recorte, o prazo e o formato.</p>
+      </article>
+    </div>
   </section>
 
-  <section id="redacoes" aria-labelledby="redacoesTitulo">
-    <h2 id="redacoesTitulo" data-conteudo="imprensa.redacoes.titulo_da_secao">Para redações</h2>
-    <p class="u-mb-0" data-conteudo-html="imprensa.redacoes.p1">Gráficos, mapas, recortes por estado ou município e cruzamentos de dados podem ser solicitados à editoria pelo e-mail <a href="mailto:imprensa@futuraevidencelab.com.br">imprensa@futuraevidencelab.com.br</a>. Atendemos com os mesmos dados e a mesma metodologia do Monitor, com fonte e data em cada entrega.</p>
+  <section id="atualizacao" aria-labelledby="atualizacaoTitulo">
+    <h2 id="atualizacaoTitulo" data-conteudo="imprensa.atualizacao.titulo_da_secao">Quando o site é atualizado</h2>
+    <div class="grade-figuras grade-figuras--3">
+      <article class="cartao cartao-mapa">
+        <h3 data-conteudo="imprensa.atualizacao.noites.titulo">Todas as noites</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.atualizacao.noites">Os dados são coletados e publicados todas as noites; cada cartão e cada figura traz a data da última consulta à fonte. Quando uma fonte não respondeu, o cartão diz "sem coleta até o corte" em vez de repetir o número antigo.</p>
+      </article>
+      <article class="cartao cartao-mapa">
+        <h3 data-conteudo="imprensa.atualizacao.blog.titulo">Blog, duas vezes por semana</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.atualizacao.blog">Os textos do blog saem às segundas, sobre o legal e o financiamento, e às quintas, sobre saúde.</p>
+      </article>
+      <article class="cartao cartao-mapa">
+        <h3 data-conteudo="imprensa.atualizacao.cadencia.titulo">Fontes com cadência própria</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.atualizacao.cadencia">Algumas fontes têm cadência própria, como o Monitor de Secas, mensal, e as execuções do Portal da Transparência, mensais; nesses casos a data da figura é a da fonte.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="indices" aria-labelledby="indicesTitulo">
+    <h2 id="indicesTitulo" data-conteudo="imprensa.indices.titulo_da_secao">Como os índices funcionam</h2>
+    <div class="grade-figuras grade-figuras--3">
+      <article class="cartao cartao-mapa">
+        <h3 data-conteudo="imprensa.indices.legal.titulo">MARÉ Legal</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.indices.legal">Cada estado recebe uma nota de 0 a 100, com três partes de mesmo peso: o plano estadual para o risco previsto (vale mais quando feito para este El Niño, menos quando é o plano de todo ano revisado, zero quando não localizamos), a estrutura de coordenação (quem foi designado para conduzir a resposta) e a cobertura (quanta gente do estado vive em município com plano localizado). A nota do Brasil é a média dos estados. Decretos não entram.</p>
+      </article>
+      <article class="cartao cartao-mapa">
+        <h3 data-conteudo="imprensa.indices.saude.titulo">MARÉ Saúde</h3>
+        <p data-conteudo-html="imprensa.indices.saude">A mesma escala, para o que a secretaria estadual de saúde publicou: o plano para os riscos deste El Niño (arboviroses, calor, água, fumaça), quando ele saiu em relação ao primeiro boletim e quanta gente vive em município cujo plano trata a saúde. A nota nacional é a média dos estados já verificados.</p>
+        <p class="u-mb-0" data-conteudo-html="imprensa.indices.nao_dizem"><strong>O que os índices não dizem.</strong> Se há dinheiro, equipamento ou pessoal; se o plano é bom; se está sendo cumprido. Os critérios estão na <a href="METODOLOGIA.pdf">metodologia</a>.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="glossario" aria-labelledby="glossarioTitulo">
+    <h2 id="glossarioTitulo" data-conteudo="imprensa.glossario.titulo_da_secao">Glossário</h2>
+    <div class="grade-figuras grade-figuras--3">
+      <article class="cartao cartao-mapa">
+        <h3 data-conteudo="imprensa.glossario.1.termo">Plano de contingência</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.glossario.1">Documento oficial que define quem faz o quê antes, durante e depois de um evento; publicado por decreto ou portaria.</p>
+      </article>
+      <article class="cartao cartao-mapa">
+        <h3 data-conteudo="imprensa.glossario.2.termo">Plano para este El Niño</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.glossario.2">Plano que cita o El Niño 2026/2027 ou o risco previsto no boletim.</p>
+      </article>
+      <article class="cartao cartao-mapa">
+        <h3 data-conteudo="imprensa.glossario.3.termo">Não localizado</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.glossario.3">Não encontrado nas fontes consultadas até a data de corte.</p>
+      </article>
+      <article class="cartao cartao-mapa">
+        <h3 data-conteudo="imprensa.glossario.4.termo">Ainda não verificado</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.glossario.4">Ainda não procuramos com todas as fontes.</p>
+      </article>
+      <article class="cartao cartao-mapa">
+        <h3 data-conteudo="imprensa.glossario.5.termo">Decreto de emergência</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.glossario.5">Ato em que a prefeitura ou o estado declara situação de emergência ou calamidade pública.</p>
+      </article>
+      <article class="cartao cartao-mapa">
+        <h3 data-conteudo="imprensa.glossario.6.termo">Reconhecimento federal</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.glossario.6">Portaria do governo federal que aceita o decreto e abre acesso a recursos.</p>
+      </article>
+      <article class="cartao cartao-mapa">
+        <h3 data-conteudo="imprensa.glossario.7.termo">Indicado pela União</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.glossario.7">Município que a União apontou ao cadastro nacional de áreas sujeitas a deslizamento e enchente; a inscrição é ato do município.</p>
+      </article>
+      <article class="cartao cartao-mapa">
+        <h3 data-conteudo="imprensa.glossario.8.termo">ESPIN</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.glossario.8">Emergência em saúde pública de importância nacional, declarada pelo Ministério da Saúde.</p>
+      </article>
+      <article class="cartao cartao-mapa">
+        <h3 data-conteudo="imprensa.glossario.9.termo">IQAr</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.glossario.9">Índice de qualidade do ar do Ministério do Meio Ambiente, por estação.</p>
+      </article>
+      <article class="cartao cartao-mapa">
+        <h3 data-conteudo="imprensa.glossario.10.termo">Faixa habitual</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.glossario.10">Intervalo em que o indicador ficou, na mesma época, entre 2019 e 2025.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="erratas" aria-labelledby="erratasTitulo">
+    <h2 id="erratasTitulo" data-conteudo="imprensa.erratas.titulo_da_secao">Erratas e nome</h2>
+    <div class="grade-figuras grade-figuras--3">
+      <article class="cartao cartao-mapa">
+        <h3 data-conteudo="imprensa.erratas.erratas.titulo">Erratas</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.erratas.erratas">Quando um registro está errado, corrigimos o dado, mantemos o anterior no histórico e registramos a mudança com data em <a href="mudancas.html">mudanças</a>. Pedidos de correção: <a href="mailto:imprensa@futuraevidencelab.com.br">imprensa@futuraevidencelab.com.br</a>, com o endereço da página e o documento que sustenta a correção.</p>
+      </article>
+      <article class="cartao cartao-mapa">
+        <h3 data-conteudo="imprensa.erratas.nome.titulo">Nome e descrição</h3>
+        <p class="u-mb-0" data-conteudo-html="imprensa.erratas.nome">Escreve-se MARÉ · Monitor de Antecipação e Resposta ao El Niño; nas menções seguintes, MARÉ. "O MARÉ é um monitor de jornalismo de dados do Futura Evidence Lab que acompanha, com documentos oficiais, como estados e municípios brasileiros se preparam para o El Niño 2026/2027 e como respondem a ele."</p>
+      </article>
+    </div>
   </section>
 
 </main>
