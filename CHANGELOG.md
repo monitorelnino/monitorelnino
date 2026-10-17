@@ -11,7 +11,7 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-17 · #825 · Imprensa reformada: esta semana, o que concluir, citar, atualização, índices, glossário
 
-A Imprensa passa a abrir com a apresentação aprovada e "Esta semana no MARÉ" (seis cartões e o texto gerados da edição). Seguem as recomendações por tema (Preparação, Saúde, Financiamento), como citar e reproduzir, quando o site é atualizado, como os índices funcionam, glossário, erratas e nome. Saem a grade de páginas, a FAQ em acordeão e os moldes que só ela usava. Texto do HANDOVER_IMPRENSA_16-10-2026.
+A Imprensa passa a abrir com a apresentação aprovada e "Esta semana no MARÉ" (seis cartões e o texto gerados da edição). Seguem as recomendações por tema (Preparação, Saúde, Financiamento), como citar e reproduzir, quando o site é atualizado, como os índices funcionam, glossário, erratas e nome. Saem a grade de páginas, a FAQ em acordeão e os moldes que só ela usava.
 
 ## 2026-10-17 · #823 · A válvula de dia abre o próprio PR de dado
 
