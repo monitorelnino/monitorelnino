@@ -29,6 +29,7 @@ jobs:
       # Válvula coleta-dia (janela A3, 17/10/2026): sondagem das rotas dos diários. Este ramo não vai à main.
       # Válvula coleta-dia (janela A3, 17/10/2026): sondagem das rotas dos diários. Este ramo não vai à main.
       comandos: |
-        scripts/sondar_rotas_doe.py --trecho https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-15|https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-08|https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-01|https://portal.doe.sea.sc.gov.br/~location~href~v2
+        coletar_edicoes_doe.py --uf MG,AL,RO --desde 2026-10-01
+        coletar_edicoes_doe.py --relatorio
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
