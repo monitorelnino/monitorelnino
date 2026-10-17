@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-17 · #812 · Consulta do município: um componente comum
+## 2026-10-17 · #813 · Consulta do município: um componente comum
 
 `assets/js/consulta-municipio.js` monta a consulta estado → município (lista do estado, campo que abre com o estado, clique que esvazia, frase do nome fora da lista); cada página dá só a lista e o conteúdo do cartão. A inicial e o Monitor de riscos passam a usá-lo, sem mudança visual; as outras páginas o usarão nas reformas.
 
