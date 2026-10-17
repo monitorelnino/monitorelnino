@@ -59,6 +59,10 @@ O índice lia `saude_sinais.emergencias`, que ninguém gravava, e publicava 0,0.
 
 `monitorar_imprensa_saude.py` tinha cópias de `montar_url`, `extrair_itens_rss`, `parece_fonte_oficial`, `_hash` e do cursor de `monitorar_imprensa_regional.py`; passa a importá-las (o cursor recebe o caminho). As pistas da saúde ganham o domínio do veículo, que o parser regional já lia. Saem também três imports sem uso. Consolidação, item 5. −57 linhas.
 
+## 2026-10-17 · #819 · Saúde: abertura aprovada, topo da inicial e consulta única
+
+A página abre com os três parágrafos aprovados e com os dois medidores da inicial: preparação publicada na saúde (média das UFs verificadas) e emergências em saúde pública (índice nulo vira lacuna). Uma consulta do município, no componente comum, substitui as três buscas por bloco. O "Como ler" antigo sai; o link leva à metodologia até o texto novo da editoria. No Monitor de riscos, o subtítulo do mapa de focos passa ao satélite de referência.
+
 ## 2026-10-17 · #816 · Mapa de fogo no satélite de referência; consulta do município com calor e reconhecimento
 
 Os pontos do mapa vinham de todos os satélites e do arquivo do dia corrente, enquanto os números saem do satélite de referência no último dia completo. `focos_pontos.json` passa a nascer do mesmo CSV e do mesmo satélite que `focos_referencia.json`, no mesmo coletor. METODOLOGIA §41.8. `riscos_municipio/<UF>.json` ganha a classe de calor do MS e o reconhecimento federal (Proteja-se §7.3).
