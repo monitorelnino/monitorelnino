@@ -31,7 +31,7 @@
 <script src="assets/catalogo.js?v=d4d42f5f"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
 <link rel="stylesheet" href="assets/base.css?v=18a6c971">
-<script src="assets/mapas.js?v=84a5d2dd"></script>
+<script src="assets/mapas.js?v=ea07b524"></script>
 </head>
 <body class="pagina-dados">
 <div class="map-tooltip" id="mapTooltip"></div>
@@ -187,6 +187,30 @@
         <p class="figura-nota" id="cemadenRodape"></p>
       </figure>
     </div>
+
+    <!-- 17/10/2026 (HANDOVER_DEFESA_CIVIL §6): as três listas federais de risco vieram da Defesa civil,
+         como contexto dos blocos de chuva, seca e fogo; sem lista embaixo (§10 deste handover). -->
+    <p class="hint" data-conteudo="monitor-de-riscos.listas.abertura">As listas federais de municípios por risco. Constar de uma lista não é decretar emergência; é ter o risco reconhecido pelo governo federal. Constar da lista de indicados não é estar inscrito no cadastro: a inscrição é ato do município, e a lista de inscritos não é pública.</p>
+    <div class="grade-figuras grade-figuras--3 grade-mapas">
+      <figure class="figura figura--mapa cartao-mapa" id="boxListaIndicados" data-chave="enquadramento_card.json#chuva">
+        <h3 class="figura-titulo" data-conteudo="monitor-de-riscos.listas.indicados.titulo">Risco de deslizamento ou enchente indicado pela União</h3>
+        <p class="figura-sub" data-conteudo="monitor-de-riscos.listas.indicados.sub">Municípios indicados pela União ao cadastro nacional de áreas suscetíveis (Lei 12.340, art. 3º-A; MIDR e Casa Civil, 2025) · nº no estado</p>
+        <div class="figura-midia"><svg id="mapListaIndicados" role="img" aria-label="Mapa do Brasil com o número de municípios de cada estado indicados pela União ao cadastro nacional de áreas suscetíveis a deslizamento e enchente" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legListaIndicados"></div>
+      </figure>
+      <figure class="figura figura--mapa cartao-mapa" id="boxListaSemiarido" data-chave="enquadramento_card.json#seca">
+        <h3 class="figura-titulo" data-conteudo="monitor-de-riscos.listas.semiarido.titulo">Municípios do Semiárido</h3>
+        <p class="figura-sub" data-conteudo="monitor-de-riscos.listas.semiarido.sub">Delimitação do Semiárido (Sudene, 2024) · nº no estado</p>
+        <div class="figura-midia"><svg id="mapListaSemiarido" role="img" aria-label="Mapa do Brasil com o número de municípios de cada estado na delimitação do Semiárido da Sudene" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legListaSemiarido"></div>
+      </figure>
+      <figure class="figura figura--mapa cartao-mapa" id="boxListaFogo" data-chave="enquadramento_card.json#fogo">
+        <h3 class="figura-titulo" data-conteudo="monitor-de-riscos.listas.fogo.titulo">Prioritários no controle do desmatamento e do fogo na Amazônia</h3>
+        <p class="figura-sub" data-conteudo="monitor-de-riscos.listas.fogo.sub">Lista do Ministério do Meio Ambiente, portaria vigente · nº no estado</p>
+        <div class="figura-midia"><svg id="mapListaFogo" role="img" aria-label="Mapa do Brasil com o número de municípios de cada estado na lista de prioritários para o controle do desmatamento e dos incêndios florestais na Amazônia" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legListaFogo"></div>
+      </figure>
+    </div>
   </div>
 
   <!-- 16/10/2026 (editoria, HANDOVER_MONITOR_DE_RISCOS §5): a consulta do município, com os mesmos
@@ -217,7 +241,7 @@
 </div>
 
 <script src="assets/colunas.js?v=07ce0f22" defer></script>
-<script src="assets/js/consulta-municipio.js?v=677bd154" defer></script><script src="assets/js/monitor-de-riscos.js?v=364216cd" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
+<script src="assets/js/consulta-municipio.js?v=677bd154" defer></script><script src="assets/js/monitor-de-riscos.js?v=59eb9bff" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
