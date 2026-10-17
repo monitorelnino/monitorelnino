@@ -169,7 +169,9 @@ def preencher_saude():
     if resumo_calor:
         acima = int(resumo_calor.get("severo") or 0) + int(resumo_calor.get("extremo") or 0)
         h = sub_id(h, "nCalorMun", f"{acima:,}".replace(",", "."), n)
-    h = sub_id(h, "nEmergSaude", str((mon.get("resposta") or {}).get("emergencias") or 0), n)
+    # 17/10/2026: a mesma regra do `_qtdCartao` da página — sem busca não se imprime "0".
+    emerg = (mon.get("resposta") or {}).get("emergencias")
+    h = sub_id(h, "nEmergSaude", "sem dado" if emerg is None else ("zero" if emerg == 0 else str(emerg)), n)
 
     # 02/10/2026 (contrato de layout): o sexto cartao e o proprio numero do MARE Saude, com o
     # rotulo dizendo de quantos estados e a media enquanto nao forem 27 - a mesma frase que o

@@ -411,6 +411,9 @@ def _autoteste() -> int:
     ok("estados em alerta contam estado, não município", por_id["uf_dengue_alerta"]["valor"] == 1)
     ok("calor soma severo e extremo", por_id["calor_municipios_severo"]["valor"] == 5)
     ok("o índice é a média das verificadas", por_id["mare_saude_indice"]["valor"] == 38.5)
+    ok("emergência sem busca é sem coleta, não zero", next(c for c in cartoes_da_saude(
+        {}, {}, {}, {}, {"resposta": {"situacao": "nao_coletado", "emergencias": None}})
+        if c["id"] == "emergencias_saude_ciclo")["sem_coleta"])
     ok("o índice diz quantos estados a média cobre",
        por_id["mare_saude_indice"]["unidades_verificadas"] == 21
        and "21 estados verificados" in por_id["mare_saude_indice"]["nota"])
