@@ -49,6 +49,10 @@
     <dl class="mudancas-lista">
       <dt>17/10/2026 · Portões acompanham as páginas reformadas</dt>
       <dd>Imprensa: saem as duas conferências de frases que a editoria tirou (média dos N verificados; N vezes por dia). Proteja-se: saem as da grade de 27 siglas, da segunda grade de telefones e dos cartões de navegação; as abas aceitam a quinta ficha. Saúde: o cartão de emergências só é cobrado se existir. Monitor de riscos: figura principal aceita um mapa e até duas séries, com lista de ids no contrato.</dd>
+      <dt>17/10/2026 · Ensaio da noite confere o isolamento dos autotestes pelo portão único</dt>
+      <dd>O workflow do ensaio chamava `verificar_autoteste_nao_escreve.py` (27 coletores, 12 arquivos de banco); passa a chamar `verificar_autotestes_isolados.py --rapido`, que cobre os mesmos coletores contra todo `data/`. Pedido da D, que remove o portão antigo em seguida.</dd>
+      <dt>17/10/2026 · Consulta do município: a situação do plano numa função comum</dt>
+      <dd>A classificação do plano de contingência do município (encontrado, estadual, citado, não localizado, decreto, em elaboração, outro ato, ainda não verificado) sai de `index.js` e vira `ConsultaMunicipio.situacaoDoPlano`, que a inicial já usa e Para gestores pode usar sem copiar. Nenhuma frase muda. Pedido da B2 (12:11).</dd>
       <dt>17/10/2026 · Niño 3.4 semanal no coletor de sinais; o apoio técnico volta a ser coletado</dt>
       <dd>Fonte nova `noaa_nino34_semanal` (arquivo `wksst9120.for` do CPC) em `sinais_risco.json → enos.nino34_semanal`, de 2025 em diante, para o gráfico abaixo do RONI. Achado no caminho: desde 30/09 a rodada completa pulava a camada de apoio técnico, e ONI, Niño 3.4 mensal e a discussão do CPC estavam parados em 30/09. Voltam a ser coletados.</dd>
       <dt>17/10/2026 · Ato de resposta aplicado pelo juiz passa pela porta do carimbo</dt>
@@ -163,10 +167,6 @@
       <dd>A API do DOE-SP serve o ato com entidades HTML (`Situa&amp;ccedil;&amp;atilde;o`, `Pre&amp;shy;feito`); sem decodificar, nenhum padrão de homologação casava. A forma paulista (&quot;Homologa, por 180 dias, o decreto do Prefeito do Município de Guariba … Decreto municipal nº 5.019&quot;) entra como quarto padrão, com caso de teste do texto medido do Decreto 70.765.</dd>
       <dt>16/10/2026 · Descoberta nos sítios oficiais: três noites cobrem os 54 alvos</dt>
       <dd>A descoberta de planos nos sítios estaduais andava 6 alvos por noite e revia os mesmos; agora a fatia anda 20 por dia e os 54 (27 UFs, saúde e defesa civil) passam em três noites. O comando ganha prazo próprio de 12 minutos e grava o que achou ao ser interrompido; alvo só conta como verificado quando a API do sítio respondeu.</dd>
-      <dt>16/10/2026 · A definição do índice tem dono, e o texto público é conferido contra ela</dt>
-      <dd>O motor grava em `meta.json` os componentes, pesos e faixas do índice e que a antecedência está fora da nota. O portão de versão passa a ler o texto público do MARÉ Legal: antecedência como medida da nota e &quot;pesam igual&quot; escrito à mão reprovam. A inicial com os textos novos (#770) já passa sem exceção.</dd>
-      <dt>16/10/2026 · &quot;Envie pelo formulário&quot; leva ao formulário</dt>
-      <dd>O convite do cartão da cidade apontava para &quot;Para gestores&quot;, sem formulário. Agora rola até o formulário da própria inicial e o preenche pela mesma função que lê os parâmetros do endereço. O portão de âncoras passa a ler também os links montados nos scripts — e achou uma nota de financiamento morta, que sai.</dd>
     </dl>
   </section>
 </main>
