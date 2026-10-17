@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 `riscos_municipio/<UF>.json` ganha `rede_cemaden` por município, lido da lista oficial do Cemaden (dois PDFs, 1.038 + 95 municípios, publicada em 26/03/2024, data declarada na origem). Nome que não casa com o IBGE fica listado, nunca adivinhado (6 de 1.131 no executor). Sem resposta da fonte, o campo não vai e a origem diz por quê. Proteja-se §4.
 
+## 2026-10-17 · #823 · A válvula de dia abre o próprio PR de dado
+
+Fim do run em `coleta-dia/*` com push: o `_coletor.yml` abre o PR de dado com o `ROBO_TOKEN` (o `GITHUB_TOKEN` não dispara os Portões), sem sessão esperando run (HANDOVER_FILA_DE_PISTAS_SEM_SESSAO §1.3). Sem token, avisa; PR já aberto, não duplica. Provado no executor: o run 39027347586 abriu o #821 (de teste, fechado).
+
 ## 2026-10-17 · #822 · Diários estaduais: 404 não é recusa; 20 UFs com rota provada
 
 Endereço errado (404) era gravado como recusa e fechava 17 diários. Agora é "rota não descoberta"; recusa só 401/403/429/451. O canal 2 passa a ler pelos adaptadores medidos do `fontes_doe.json`: edição por data e busca com os termos de declaração, por uma porta única. Rotas novas medidas do runner: PA, RO, RN, RR por data; AL e SC por API. "Consultado" exige o ciclo inteiro coberto.

@@ -560,6 +560,21 @@ jobs:
           retention-days: 14
           if-no-files-found: warn
 
+      # 17/10/2026 (HANDOVER_FILA_DE_PISTAS_SEM_SESSAO §1.3): a válvula abre o próprio PR de dado ao
+      # fim do run; nenhuma sessão espera run para isso. Sem `ROBO_TOKEN` (o `GITHUB_TOKEN` não dispara
+      # os Portões no PR), avisa e deixa o ramo empurrado para quem disparou.
+      - name: Abrir o PR de dado da válvula
+        if: steps.commit.outputs.empurrou == '1' && startsWith(env.RAMO, 'coleta-dia/')
+        continue-on-error: true
+        timeout-minutes: 2
+        env:
+          GH_TOKEN: ${{ secrets.ROBO_TOKEN }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then echo "::warning::sem ROBO_TOKEN: o PR de dado de ${RAMO} fica por abrir"; exit 0; fi
+          if gh pr view "$RAMO" --json number >/dev/null 2>&1; then echo "PR de ${RAMO} já aberto"; exit 0; fi
+          gh pr create --base main --head "$RAMO" --title "Dado da válvula: ${{ inputs.nome }} (${RAMO#coleta-dia/})" \
+            --body "Coleta de dia pela válvula \`${RAMO}\` (run ${{ github.run_id }}): $(git diff --shortstat HEAD~1 HEAD). Só dado; sem mudança de código."
+
       - name: Resumo no job
         if: always()
         run: |
