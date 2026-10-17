@@ -19,7 +19,8 @@ Na noite 16→17 a busca web rodou com fila vazia: 191 municípios só tinham, n
 
 ## 2026-10-17 · #815 · Main vermelha: a fila de pistas passou de 50 MB com a URL gravada duas vezes
 
-`data/pistas_imprensa.json` chegou a 50,1 MB no commit do juiz das 09:24 e o portão de tamanho reprovou a `main`. Causa: `verificacao_fonte.url` repetia a URL da própria pista em 19.954 pistas (5,8 MB) e ninguém a lia. O verificador deixa de gravá-la; as cópias iguais saem do dado (46,4 MB). As 24 que diferem ficam.## 2026-10-17 · #810 · Autoteste vermelho mostra o traceback no log do portão
+`data/pistas_imprensa.json` chegou a 50,1 MB no commit do juiz das 09:24 e o portão de tamanho reprovou a `main`. Causa: `verificacao_fonte.url` repetia a URL da própria pista em 19.954 pistas (5,8 MB) e ninguém a lia. O verificador deixa de gravá-la; as cópias iguais saem do dado (46,4 MB). As 24 que diferem ficam.
+## 2026-10-17 · #810 · Autoteste vermelho mostra o traceback no log do portão
 
 Na `main` (run 38976908995) o autoteste de `unir_conflito_de_rodada.py` caiu e o log só trazia o último ✓: o portão descartava o stderr. Agora a linha do autoteste vermelho junta a última saída e as três últimas linhas do erro. Linhas líquidas 0.
 
