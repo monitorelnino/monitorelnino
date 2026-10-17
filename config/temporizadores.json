@@ -145,6 +145,29 @@
    "_nota": "11/10/2026 (F40): saiu do monólito semanal, que não coletava nada desde 08/10; saude_sinais.json estava em 26/09."
   },
   {
+   "id": "desfechos_sus",
+   "workflow": "noturno_desfechos.yml",
+   "finalidade": "desfechos do SUS em arquivos novos: leptospirose (SINAN, FTP do DATASUS), diarreias (SISAB) e a forma comum de dengue, chikungunya e SRAG",
+   "cron_primario": "5 7 * * *",
+   "janela": {
+    "inicio_utc": "01:00",
+    "fim_utc": "09:00"
+   },
+   "devido_quando": "não há execução dos desfechos nesta janela",
+   "tolerancia_atraso_min": 90,
+   "idempotencia": "cada comando só regrava se o arquivo de origem (hash) ou a série mudou; rodar duas vezes dá o mesmo arquivo",
+   "orcamento_min": 45,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "saude.html (seção de desfechos, quando entrar)"
+   ],
+   "gravidade": "media",
+   "_nota": "17/10/2026 (janela E1): elo próprio; entra na main só em noite livre (A1)."
+  },
+  {
    "id": "triagem_da_fila",
    "workflow": "noturno_triagem.yml",
    "finalidade": "tria a fila de pistas antes do publicador",

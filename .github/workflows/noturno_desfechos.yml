@@ -1,0 +1,35 @@
+# Desfechos do SUS — elo próprio da corrente (janela E1, 17/10/2026; entra na `main` numa noite livre).
+#
+# POR QUE UM ELO PRÓPRIO
+# Os coletores novos dos desfechos (HANDOVER_SUS_DESFECHOS e §6 do HANDOVER_SAUDE_DESFECHOS_BLOCO)
+# não entram no `noturno_saude.yml`: nada muda no que já roda na Saúde. Cada comando escreve só os
+# seus arquivos novos em `data/saude_desfechos/` (`config/escritores.json`), e a derivação de dengue,
+# chikungunya e SRAG lê o que o elo da saúde (05:50) e o semanal das respiratórias já gravaram.
+#
+# CADÊNCIA
+# Diária às 07:05 UTC, depois da saúde e antes dos sinais físicos (08:00). O FTP do DATASUS e o SISAB
+# republicam sem data fixa; o coletor só regrava quando o arquivo de origem ou a série mudou.
+name: Noturno — desfechos do SUS
+
+on:
+  schedule:
+    - cron: "5 7 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read        # o job `vez` do coletor lê a fila de runs
+
+jobs:
+  desfechos:
+    uses: ./.github/workflows/_coletor.yml
+    with:
+      nome: desfechos
+      timeout_minutos: 45
+      comandos: |
+        coletar_datasus_dbc.py --desfecho leptospirose
+        coletar_sisab.py --desfecho diarreias
+        desfechos_sus.py --derivar
+    secrets:
+      ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+      ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}

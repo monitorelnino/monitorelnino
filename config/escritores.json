@@ -125,6 +125,26 @@
   "data/saude_municipio/": {
    "escritor": "noturno_saude.yml",
    "por_que": "Consulta do município na página de Saúde (HANDOVER_SAUDE_PAGINA §6b): um arquivo por UF, escrito só pelo elo da saúde (`gerar_saude_municipio.py`), depois dos coletores que ele lê."
+  },
+  "data/saude_desfechos/leptospirose.json": {
+   "escritor": "noturno_desfechos.yml",
+   "por_que": "Arquivo novo da forma comum dos desfechos (desfechos_sus.py), escrito só pelo elo dos desfechos (janela E1, 17/10/2026)."
+  },
+  "data/saude_desfechos/diarreias.json": {
+   "escritor": "noturno_desfechos.yml",
+   "por_que": "Arquivo novo da forma comum dos desfechos (desfechos_sus.py), escrito só pelo elo dos desfechos (janela E1, 17/10/2026)."
+  },
+  "data/saude_desfechos/dengue.json": {
+   "escritor": "noturno_desfechos.yml",
+   "por_que": "Arquivo novo da forma comum dos desfechos (desfechos_sus.py), escrito só pelo elo dos desfechos (janela E1, 17/10/2026)."
+  },
+  "data/saude_desfechos/chikungunya.json": {
+   "escritor": "noturno_desfechos.yml",
+   "por_que": "Arquivo novo da forma comum dos desfechos (desfechos_sus.py), escrito só pelo elo dos desfechos (janela E1, 17/10/2026)."
+  },
+  "data/saude_desfechos/srag.json": {
+   "escritor": "noturno_desfechos.yml",
+   "por_que": "Arquivo novo da forma comum dos desfechos (desfechos_sus.py), escrito só pelo elo dos desfechos (janela E1, 17/10/2026)."
   }
  },
  "_regra_do_portao": "Arquivo declarado com `escritor` igual a um workflow só pode aparecer no `git add` DAQUELE workflow. Arquivo com `escritor: ninguem` não aparece em nenhum. Arquivo com `escritor: qualquer_elo` exige que o resolvedor saiba resolvê-lo ou o recuse por escrito — e o portão confere que ele está numa das classes de `scripts/unir_conflito_de_rodada.py`, ou que o `pendente` explica por quê não."
