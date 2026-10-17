@@ -227,6 +227,14 @@
     return desenharMapa(ctx, svgId, legendaId, uf => (faixa(porUF[uf] || 0) || {cor: cinza}).cor, rotulo, itens, 'contagem');
   }
 
+  /** Selo da faixa do índice (0–100), o mesmo no MARÉ Legal e no MARÉ Saúde. Pares de cor conferidos
+   *  contra WCAG AA (4,5:1) em 31/08/2026. */
+  function pilulaDaFaixa(v) {
+    const fx = PALETA.faixaDe(v);
+    return '<span class="gfaixa-pill" style="background:' + PALETA.faixas[fx] + '; color:' + PALETA.faixasTexto[fx] + '">'
+      + esc(PALETA.faixaRotulo[fx]) + '</span>';
+  }
+
   /** Escala contínua canônica (gradiente) + itens discretos opcionais. */
   function legendaContinua(elId, gradiente, rotuloMin, rotuloMax, itens) {
     const el = document.getElementById(elId); if (!el) return;
@@ -429,5 +437,5 @@
     });
   }
 
-  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, dica, numBR, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, desenharMapa, mapaDeContagem, atmosfera, hachura, credito, dataBR, animarGauges };
+  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, dica, numBR, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, desenharMapa, mapaDeContagem, pilulaDaFaixa, atmosfera, hachura, credito, dataBR, animarGauges };
 })(window);

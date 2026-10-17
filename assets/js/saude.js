@@ -960,24 +960,41 @@ const AREAS = [
   const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const UFS = ('AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO').split(' ');
 
-  /* 1 · O número do MARÉ Saúde no topo. Enquanto não forem 27 verificadas, o rótulo diz de quantas
-   * é a média — a diferença entre publicar uma média parcial e publicar um índice nacional. */
+  /* 1 · O topo (HANDOVER_SAUDE_PAGINA §1.2): os dois medidores da inicial. À esquerda, a média das
+   * UFs verificadas, nunca dita como nacional enquanto houver estado sem número (METODOLOGIA §1048);
+   * à direita, a parcela da população sob emergência em saúde pública. Índice nulo é lacuna
+   * declarada, nunca zero. A barra e o número sobem pelo mesmo `animarGauges` da inicial. */
   fetch('data/monitor_saude.json').then(r => r.ok ? r.json() : null).then(MS => {
-    const res = ((MS || {}).resumo) || {};
-    if (res.media_das_verificadas == null) {
-      if (el('nIndiceSaude')) el('nIndiceSaude').textContent = 'sem coleta';
-      return;
+    const res = ((MS || {}).resumo) || {}, rp = ((MS || {}).resposta) || {};
+    const fixa = (id, v) => { const f = el(id); f.dataset.alvo = String(v); f.style.setProperty('--galvo', String(Math.max(v, 0.1)));
+      f.closest('.gauge-track').setAttribute('aria-label', 'Barra de progresso: ' + (id === 'gaugeFillSaude' ? 'MARÉ Saúde' : 'emergências em saúde pública') + ' em ' + umaCasa(v) + ' de 100'); };
+    const media = res.media_das_verificadas;
+    if (media == null) { el('nIndiceSaude').textContent = '—'; el('linhaPreparoSaude').textContent = 'sem coleta até o corte'; }
+    else {
+      el('nIndiceSaude').textContent = umaCasa(media); el('nIndiceSaude').dataset.contar = media;
+      el('faixaSaude').innerHTML = MonitorMapas.pilulaDaFaixa(media);
+      fixa('gaugeFillSaude', media);
+      el('linhaPreparoSaude').textContent = 'média de ' + n(res.verificadas) + ' estados verificados · '
+        + n(27 - (res.verificadas || 0)) + ' ainda sem número · ' + ((MS || {}).corte || '');
     }
-    if (el('nIndiceSaude')) {
-      el('nIndiceSaude').textContent = Number(res.media_das_verificadas)
-        .toLocaleString('pt-BR', {minimumFractionDigits: 1, maximumFractionDigits: 1});
+    // A frase do que se procura muda com a versão do método (v0.4: coordenação em vez de antecedência).
+    if (/^0\.4/.test(String((MS || {}).versao)) && window.MonitorCatalogo)
+      MonitorCatalogo.pronto.then(() => MonitorCatalogo.escrever('saudeLeiIndice', 'saude.abertura.lei_e_indice_v04'));
+    const quando = (MS || {}).gerado_em || (MS || {}).corte || '';
+    if (rp.indice == null) {
+      el('respNumSaude').textContent = '—';
+      el('respBadgeSaude').innerHTML = '<span class="gfaixa-pill">sem coleta até o corte</span>';
+    } else {
+      el('respNumSaude').textContent = umaCasa(rp.indice); el('respNumSaude').dataset.contar = rp.indice;
+      fixa('respFillSaude', rp.indice);
+      el('respBadgeSaude').innerHTML = '<span class="gfaixa-pill">' + (rp.emergencias
+        ? n(rp.emergencias) + (rp.emergencias === 1 ? ' emergência' : ' emergências') + ' · ' + umaCasa(100 * (rp.pop_sob_emergencia || 0) / (rp.pop_total || 1)) + ' % da população'
+        : 'nenhuma emergência declarada') + '</span>';
     }
-    if (el('rotuloIndiceSaude')) {
-      el('rotuloIndiceSaude').textContent = res.verificadas >= 27
-        ? 'de 100, na preparação publicada em saúde'
-        : 'de 100, média dos ' + res.verificadas + ' estados verificados';
-    }
-    MonitorMapas.credito('fonteIndiceSaude', {fontes: ['MARÉ, sobre documentos oficiais lidos', (res.verificadas || 0) + ' de 27 estados verificados'], data: (MS || {}).corte});
+    el('linhaRespostaSaude').textContent = 'Parcela da população em estados ou municípios sob emergência em saúde pública declarada desde '
+      + (rp.desde || '29/06/2026') + ' · ' + (rp.indice == null ? 'sem coleta até o corte' : rp.emergencias ? 'até ' + quando : 'nenhuma localizada até ' + quando)
+      + ' · DOU e diários oficiais estaduais';
+    MonitorMapas.animarGauges(el('topoSaude'));
   }).catch(_erroSaude("saude:1066"));
 
   /* 2 · O que foi localizado em cada estado: plano, coordenação na saúde e ligação com o governo
