@@ -187,6 +187,7 @@ def sondar() -> int:
     except Exception as e:  # noqa: BLE001
         mdtm = f"MDTM indisponível ({e})"
     buf = io.BytesIO()
+    time.sleep(2)  # ritmo também no FTP
     t0 = time.time()
     f.retrbinary(f"RETR {nome}", buf.write)
     for d in FTP_DIRS_SINAN:  # hepatite A (SINAN HEPA): onde está e até que ano
@@ -299,7 +300,8 @@ def autoteste() -> int:
     proibidos = ("estados.json", "saude_uf.json", "municipios.json", "indice.json", "monitor_saude.json")
     casos.append(("trava estrutural: não escreve nos arquivos do índice",
                   not any(p in fonte for p in proibidos)))
-    casos.append(("trava estrutural: a sondagem não grava", "gravar" not in fonte.split("def sondar")[1]))
+    casos.append(("trava estrutural: a sondagem não grava série (só o rastro de robots do `buscar`)",
+                  "gravar" not in fonte.split("def sondar")[1]))
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
         print(f"  {'OK  ' if ok else 'FALHA'} {n}")

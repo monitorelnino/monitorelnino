@@ -103,6 +103,7 @@ def sondar() -> int:
                     for n in sorted(x for x in nomes if x.upper().startswith("DOAC"))[-1:]:
                         print(f"    {n}: {f.sendcmd(f'MDTM {n}')} · {f.size(n)} bytes")
                         buf = io.BytesIO()
+                        time.sleep(2)  # ritmo também no FTP
                         f.retrbinary(f"RETR {n}", buf.write)
                         regs = ler_dbc(buf.getvalue())
                         por_mes = {}
@@ -173,7 +174,8 @@ def autoteste() -> int:
                  "obitos_registro_civil.json")
     casos.append(("trava estrutural: não escreve no índice nem no arquivo da página atual",
                   not any(p in fonte for p in proibidos)))
-    casos.append(("trava estrutural: a sondagem não grava", "gravar" not in fonte.split("def sondar")[1]))
+    casos.append(("trava estrutural: a sondagem não grava série (só o rastro de robots do `buscar`)",
+                  "gravar" not in fonte.split("def sondar")[1]))
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
         print(f"  {'OK  ' if ok else 'FALHA'} {n}")
