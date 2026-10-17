@@ -13,7 +13,7 @@
  *     não somar o mesmo dinheiro duas vezes;
  *   · valor real pequeno não vira zero ("menos de R$ 0,01").
  */
-let BR_GEOJSON, MPS, COMPROMISSOS, RECURSOS, DECRETADOS, FNS, FNS_MUN,
+let BR_GEOJSON, MPS, COMPROMISSOS, RECURSOS, DECRETADOS, S, FNS_MUN = null,
     LATLON = {}, MUN_COD = {}, NOMES_POR_UF = {};
 
 const INICIO_CICLO = '2026-06-29';
@@ -50,10 +50,10 @@ async function __load(){
   [BR_GEOJSON, ref] = await Promise.all(['data/geo_uf.json', 'data/municipios_ibge_referencia.json']
     .map(f => fetch(f).then(r => { if (!r.ok) throw new Error('Falha ao carregar ' + f); return r.json(); })));
   /* Os opcionais não derrubam a página: cada bloco que depende deles declara a lacuna. */
-  [MPS, COMPROMISSOS, RECURSOS, DECRETADOS, FNS, FNS_MUN] = await Promise.all(
+  [MPS, COMPROMISSOS, RECURSOS, DECRETADOS, S] = await Promise.all(
     ['data/financiamento/mps_2026.json', 'data/financiamento/compromissos_federais.json',
      'data/resposta/recursos_liberados.json', 'data/resposta/municipios_decretados.json',
-     'data/financiamento/fns_2026.json', 'data/financiamento/municipios/fns_municipios_2026.json']
+     'data/financiamento/semana.json']
       .map(f => fetch(f).then(r => r.ok ? r.json() : null).catch(() => null)));
   ref.forEach(m => {
     const c = String(m.codigo_ibge).padStart(7, '0');
@@ -91,58 +91,41 @@ function __init(){
   const FONTE_TRANSP = 'Portal da Transparência';
 
   // ---------------------------------------------------------
-  // As origens: medidas provisórias, compromissos com valor no ato e o FNS de emergência
+  // As origens: medidas provisórias, compromissos com valor no ato e o FNS de emergência; o topo, do gerador
   // ---------------------------------------------------------
   const mps = (MPS && MPS.mps) || [];
   const comp = ((COMPROMISSOS && COMPROMISSOS.itens) || []).filter(i => !PLANO_FEDERAL.test(i.nome || ''));
   const riscoDe = o => (o.risco_declarado && (o.risco_declarado.risco || o.risco_declarado)) || null;
-  const mesesFns = Object.keys((FNS && FNS.meses) || {}).sort();
-  const ultimoFns = mesesFns[mesesFns.length - 1];
-  const fnsEmergencia = mesesFns.reduce((s, k) => s + ((FNS.meses[k].emergencia || []).reduce((a, e) => a + (e.valor || 0), 0)), 0);
-  const fnsMun = Object.entries((FNS_MUN && FNS_MUN.municipios) || {}).filter(([, v]) => v.emergencia > 0);
+  /* Os números do topo vêm prontos do gerador (`semana.json` → `topo`): uma definição só, a mesma que a
+     Imprensa lê. Cartão ausente ou sem coleta fica com a lacuna da classe. */
+  const topo = id => (((S && S.topo) || []).find(c => c.id === id) || null);
+  const anunciado = topo('anunciado_atos'), pago = topo('pago_ate_agora'), direto = topo('gasto_direto_uniao');
+  const dcTopo = topo('defesa_civil_ciclo'), sus = topo('sus_emergencia');
   const origens = mps.map(m => ({nome: m.numero + ' · ' + (m.tema || ''), ato: m.numero, data: m.publicada_em, orgao: (m.orgaos || []).map(o => o.nome).join(', ') || m.beneficiario,
       risco: riscoDe(m), anunciado: m.valor, empenhado: (m.execucao || {}).empenhado, pago: (m.execucao || {}).pago,
       fonte: (m.execucao || {}).fonte, url: ((m.fontes || [])[0] || {}).url, notaMp: true}))
     .concat(comp.map(i => ({nome: i.nome, ato: i.instrumento, data: null, orgao: i.esfera, risco: riscoDe(i),
       anunciado: i.valor_total, empenhado: null, pago: null, fonte: /^http/.test(i.fonte || '') ? 'ato oficial' : 'documento não localizado até o corte', url: /^http/.test(i.fonte || '') ? i.fonte : null})))
-    .concat(FNS ? [{nome: 'Fundo Nacional de Saúde, linhas ligadas a emergência', ato: 'repasses fundo a fundo', data: null, orgao: 'Ministério da Saúde',
-      risco: 'saude', anunciado: null, empenhado: null, pago: fnsEmergencia, fonte: FONTE_TRANSP, url: FNS.fonte}] : []);
-  const comValor = origens.filter(o => o.anunciado != null);
+    .concat(sus && !sus.sem_coleta ? [{nome: 'Fundo Nacional de Saúde, linhas ligadas a emergência', ato: 'repasses fundo a fundo', data: null, orgao: 'Ministério da Saúde',
+      risco: 'saude', anunciado: null, empenhado: null, pago: sus.valor, fonte: FONTE_TRANSP, url: sus.url_fonte}] : []);
 
   // =========================================================
   // 1. Cinco números
   // =========================================================
-  const somaPago = mps.reduce((s, m) => s + ((m.execucao || {}).pago || 0), 0);
-  const ultimoMes = mps.flatMap(m => Object.keys((m.execucao || {}).por_mes || {})).sort().pop();
-  const pagoUltimo = mps.reduce((s, m) => s + ((((m.execucao || {}).por_mes || {})[ultimoMes] || {}).pago || 0), 0);
-  const parcial = mps.some(m => ((m.execucao || {}).meses_parciais || []).includes(ultimoMes));
-  const atualizadoMps = mps.map(m => (m.execucao || {}).atualizado_em).filter(Boolean)[0] || (MPS && MPS.gerado_em);
-  if (comValor.length) {
-    texto('topoAnunciado', reais(comValor.reduce((s, o) => s + o.anunciado, 0)));
-    molde('topoAnunciadoApoio', 'financiamento.dc-topo.topo_anunciado.apoio.molde', {n: comValor.length});
+  const usa = c => c && !c.sem_coleta && c.valor != null;
+  if (usa(anunciado)) { texto('topoAnunciado', reais(anunciado.valor)); texto('topoAnunciadoApoio', anunciado.detalhe || ''); }
+  if (usa(pago)) {
+    texto('topoPago', reais(pago.valor));
+    if (pago.variacao_mes != null && pago.mes_variacao_parcial) molde('topoPagoApoio', 'financiamento.dc-topo.topo_pago.apoio.molde',
+      {valor: reais(pago.variacao_mes), mes: MESES_LONGOS[Number(String(pago.mes_variacao).slice(4)) - 1]});
   }
-  cred('topoAnunciadoFonte', ['atos oficiais', 'Diário Oficial da União'], (MPS && MPS.gerado_em) || null);
-  if (mps.length) {
-    texto('topoPago', reais(somaPago));
-    if (ultimoMes && parcial) molde('topoPagoApoio', 'financiamento.dc-topo.topo_pago.apoio.molde', {valor: reais(pagoUltimo), mes: MESES_LONGOS[Number(ultimoMes.slice(4)) - 1]});
-  }
-  cred('topoPagoFonte', [FONTE_TRANSP], atualizadoMps);
-  /* O que a União gasta diretamente vem do gerador (`pct_gasto_direto`, modalidade de aplicação 90). */
-  const pctDireto = MPS && MPS.pct_gasto_direto;
-  texto('topoDireto', pctDireto != null ? (Math.round(pctDireto * 1000) / 10).toLocaleString('pt-BR') + '%' : 'não calculado até o corte');
-  if (pctDireto != null) texto('topoDiretoApoio', tx('financiamento.dc-topo.topo_direto.apoio'));
-  cred('topoDiretoFonte', [FONTE_TRANSP], atualizadoMps);
-  const tpa = (RECURSOS && RECURSOS.total_por_acao) || null;
-  if (tpa) {
-    texto('topoDefesaCivil', reais(Object.values(tpa).reduce((s, v) => s + v, 0)));
-    molde('topoDefesaCivilApoio', 'financiamento.dc-topo.topo_defesa_civil.apoio.molde', {n: RECURSOS.municipios_com_ato || 0});
-  }
-  cred('topoDefesaCivilFonte', [FONTE_DC], RECURSOS && RECURSOS.atualizado_em);
-  if (FNS) {
-    texto('topoSus', reais(fnsEmergencia));
-    molde('topoSusApoio', 'financiamento.dc-topo.topo_sus.apoio.molde', {mes: mesDe(ultimoFns), n: fnsMun.length});
-  }
-  cred('topoSusFonte', ['Fundo Nacional de Saúde', FONTE_TRANSP], FNS && FNS.atualizado_em);
+  texto('topoDireto', usa(direto) ? Number(direto.valor).toLocaleString('pt-BR') + '%' : 'não calculado até o corte');
+  if (usa(direto)) texto('topoDiretoApoio', tx('financiamento.dc-topo.topo_direto.apoio'));
+  if (usa(dcTopo)) { texto('topoDefesaCivil', reais(dcTopo.valor)); molde('topoDefesaCivilApoio', 'financiamento.dc-topo.topo_defesa_civil.apoio.molde', {n: dcTopo.municipios || 0}); }
+  if (usa(sus)) { texto('topoSus', reais(sus.valor)); molde('topoSusApoio', 'financiamento.dc-topo.topo_sus.apoio.molde', {mes: mesDe(sus.ultimo_mes), n: sus.municipios || 0}); }
+  [['topoAnunciadoFonte', anunciado], ['topoPagoFonte', pago], ['topoDiretoFonte', direto], ['topoDefesaCivilFonte', dcTopo], ['topoSusFonte', sus]]
+    .forEach(([id, c]) => cred(id, [(c && c.fonte) || FONTE_TRANSP], S && S.corte));
+  const tpa = (dcTopo && dcTopo.por_acao) || null;
 
   // =========================================================
   // 2. Para cada risco, de onde vem o dinheiro
@@ -179,53 +162,51 @@ function __init(){
   // =========================================================
   const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460);
   MonitorMapas.desenharMapa(ctx, 'mapChega', null, () => cor('branco'), uf => esc(NOME_UF[uf] || uf), [], 'contagem');
-  const ORIGENS_MAPA = {dc: {rotulo: 'defesa civil', cor: P.resposta}, saude: {rotulo: 'saúde', cor: P.setores.saude}};
-  const circulos = Object.entries((RECURSOS && RECURSOS.municipios) || {}).map(([c, v]) => ({cod: c, nome: v.nome, uf: v.uf, origem: 'dc', valor: v.total_autorizado,
-      ato: (v.atos || []).map(a => 'Portaria nº ' + a.portaria).join(', '), data: (v.atos || []).map(a => MonitorMapas.dataBR(a.data)).filter(Boolean).sort().pop()}))
-    .concat(fnsMun.map(([c, v]) => ({cod: c, nome: null, uf: null, origem: 'saude', valor: v.emergencia, ato: 'repasses do FNS ligados a emergência', data: null})))
-    .filter(x => LATLON[x.cod] && x.valor > 0)
-    .map(x => Object.assign(x, {lon: LATLON[x.cod][0], lat: LATLON[x.cod][1]}));
-  const nomeDe = {}; Object.entries(MUN_COD).forEach(([k, c]) => { const [uf, nome] = k.split('|'); nomeDe[c] = {uf: uf, nome: nome}; });
-  circulos.forEach(x => { if (!x.nome) Object.assign(x, nomeDe[x.cod] || {}); });
+  /* Os círculos vêm prontos do gerador (`semana.json` → `mapa`, com a sede de cada município). */
+  const ORIGENS_MAPA = {defesa_civil: {rotulo: 'defesa civil', cor: P.resposta}, saude: {rotulo: 'saúde', cor: P.setores.saude}};
+  const circulos = ((S && S.mapa) || []).filter(x => ORIGENS_MAPA[x.origem] && x.valor > 0 && x.lat != null);
   const maxV = Math.max(1, ...circulos.map(x => x.valor)), R_MAX = 14;
-  MonitorMapas.pontos(ctx, 'mapChega', circulos.sort((a, b) => b.valor - a.valor), {
+  MonitorMapas.pontos(ctx, 'mapChega', circulos.slice().sort((a, b) => b.valor - a.valor), {
     r: x => Math.max(1.5, R_MAX * Math.sqrt(x.valor / maxV)), cor: x => ORIGENS_MAPA[x.origem].cor, opacidade: 0.6, classe: 'circulos-valor',
-    rotulo: x => '<strong>' + esc(x.nome || '') + ' · ' + esc(x.uf || '') + '</strong><br>' + esc(ORIGENS_MAPA[x.origem].rotulo) + ' · ' + esc(x.ato)
-      + (x.data ? '<br>' + esc(x.data) : '') + '<br>' + esc(reais(x.valor))});
+    rotulo: x => '<strong>' + esc(x.nome || '') + ' · ' + esc(x.uf || '') + '</strong><br>' + esc(ORIGENS_MAPA[x.origem].rotulo) + ' · ' + esc(x.ato || '')
+      + (x.data ? '<br>' + esc(MonitorMapas.dataBR(x.data)) : '') + '<br>' + esc(reais(x.valor))});
   const totalOrigem = o => circulos.filter(x => x.origem === o).reduce((s, x) => s + x.valor, 0);
-  MonitorMapas.legenda('legChega', Object.entries(ORIGENS_MAPA).map(([k, o]) => ({cor: o.cor, rotulo: o.rotulo + ' · ' + reais(totalOrigem(k))}))
-    .concat([{cor: cor('linha'), rotulo: 'maior círculo: ' + reais(maxV)}]));
-  if (pctDireto != null) molde('chegaDestaque', 'financiamento.chega.destaque.molde', {pct: (Math.round(pctDireto * 1000) / 10).toLocaleString('pt-BR')});
-  if (ultimoFns) molde('subChega', 'financiamento.chega.mapa.legenda', {mes: mesDe(ultimoFns)});
-  cred('boxChega', [FONTE_DC, 'Fundo Nacional de Saúde, no ' + FONTE_TRANSP], (RECURSOS && RECURSOS.atualizado_em) || (FNS && FNS.atualizado_em));
+  MonitorMapas.legenda('legChega', circulos.length ? Object.entries(ORIGENS_MAPA).map(([k, o]) => ({cor: o.cor, rotulo: o.rotulo + ' · ' + reais(totalOrigem(k))}))
+    .concat([{cor: cor('linha'), rotulo: 'maior círculo: ' + reais(maxV)}]) : [{cor: cor('sem-dado'), rotulo: 'sem coleta até o corte'}]);
+  if (direto && direto.valor != null) molde('chegaDestaque', 'financiamento.chega.destaque.molde', {pct: Number(direto.valor).toLocaleString('pt-BR')});
+  if (sus && sus.ultimo_mes) molde('subChega', 'financiamento.chega.mapa.legenda', {mes: mesDe(sus.ultimo_mes)});
+  cred('boxChega', [FONTE_DC, 'Fundo Nacional de Saúde, no ' + FONTE_TRANSP], S && S.corte);
   tabela('boxChega', ['Município', 'UF', 'Origem', 'Ato', 'Data', 'Valor'], circulos.slice().sort((a, b) => (a.nome || '').localeCompare(b.nome || '', 'pt-BR'))
-    .map(x => ['<strong>' + esc(x.nome || '') + '</strong>', esc(x.uf || ''), esc(ORIGENS_MAPA[x.origem].rotulo), esc(x.ato), esc(x.data || ''), esc(reais(x.valor))]));
+    .map(x => ['<strong>' + esc(x.nome || '') + '</strong>', esc(x.uf || ''), esc(ORIGENS_MAPA[x.origem].rotulo), link(x.url, x.ato || ''), esc(MonitorMapas.dataBR(x.data) || ''), esc(reais(x.valor))]));
 
   // =========================================================
   // 4. Mês a mês: só o pago, fogo e seca
   // =========================================================
-  const mpFogo = mps.find(m => riscoDe(m) === 'fogo') || mps.find(m => m.id === 'mp1367');
-  const mpSeca = mps.find(m => riscoDe(m) === 'seca') || mps.find(m => m.id === 'mp1384');
-  const meses = [...new Set(mps.flatMap(m => Object.keys((m.execucao || {}).por_mes || {})))].sort();
-  const SERIES_MES = [[mpFogo, 'fogo', P.familia.fogo], [mpSeca, 'seca', P.familia.seca]].filter(s => s[0]);
-  const rotMes = k => mesDe(k) + (mps.some(m => ((m.execucao || {}).meses_parciais || []).includes(k)) ? ' (parcial)' : '');
-  const pagoMes = (m, k) => ((((m.execucao || {}).por_mes || {})[k] || {}).pago);
+  /* Série do gerador (`semana.json` → `mes_a_mes`): só o pago, por MP, com o mês parcial marcado. */
+  const SERIES_MES = ((S && S.mes_a_mes) || []).map(m => {
+    const r = m.risco_declarado && (m.risco_declarado.risco || m.risco_declarado);
+    const fam = r || (m.id === 'mp1367' ? 'fogo' : m.id === 'mp1384' ? 'seca' : null);
+    return {numero: m.numero, rotulo: fam || m.tema, cor: P.familia[fam] || cor('cinza-quente'), meses: Object.fromEntries((m.meses || []).map(x => [x.mes, x]))};
+  });
+  const meses = [...new Set(SERIES_MES.flatMap(s => Object.keys(s.meses)))].sort();
+  const rotMes = k => mesDe(k) + (SERIES_MES.some(s => (s.meses[k] || {}).parcial) ? ' (parcial)' : '');
+  const pagoMes = (s, k) => (s.meses[k] || {}).pago;
   const cvM = document.getElementById('cMesAMes');
   if (cvM && window.Chart && meses.length) new Chart(cvM, {type: 'bar',
-    data: {labels: meses.map(rotMes), datasets: SERIES_MES.map(([m, r, c]) => ({label: r, backgroundColor: c,
-      data: meses.map(k => pagoMes(m, k) == null ? null : Math.round(pagoMes(m, k) / 1e5) / 10)}))},
+    data: {labels: meses.map(rotMes), datasets: SERIES_MES.map(s => ({label: s.rotulo, backgroundColor: s.cor,
+      data: meses.map(k => pagoMes(s, k) == null ? null : Math.round(pagoMes(s, k) / 1e5) / 10)}))},
     options: {responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {y: {beginAtZero: true}}}});
-  MonitorMapas.legenda('legMesAMes', SERIES_MES.map(([m, r, c]) => ({cor: c, rotulo: r + ' · ' + m.numero})));
-  cred('boxMesAMes', [FONTE_TRANSP, 'execução da despesa'], atualizadoMps);
-  tabela('boxMesAMes', ['Mês'].concat(SERIES_MES.map(([m, r]) => r + ' · ' + m.numero)),
-    meses.map(k => [esc(rotMes(k) + ' de ' + k.slice(0, 4))].concat(SERIES_MES.map(([m]) => esc(reais(pagoMes(m, k)) || NAO_LOCALIZADO)))));
+  MonitorMapas.legenda('legMesAMes', SERIES_MES.map(s => ({cor: s.cor, rotulo: s.rotulo + ' · ' + s.numero})));
+  cred('boxMesAMes', [FONTE_TRANSP, 'execução da despesa'], S && S.corte);
+  tabela('boxMesAMes', ['Mês'].concat(SERIES_MES.map(s => s.rotulo + ' · ' + s.numero)),
+    meses.map(k => [esc(rotMes(k) + ' de ' + k.slice(0, 4))].concat(SERIES_MES.map(s => esc(reais(pagoMes(s, k)) || NAO_LOCALIZADO)))));
 
   // =========================================================
   // 5. Quanto chegou ao seu município
   // =========================================================
   let TRANSF = null, DESPESA = null, carga = null;
-  const carregarConsulta = () => (carga = carga || Promise.all(['data/financiamento/municipios/transferencias_uniao.json', 'data/financiamento/municipios/despesa_182.json']
-    .map(f => fetch(f).then(r => r.ok ? r.json() : null).catch(() => null))).then(([t, d]) => { TRANSF = t; DESPESA = d; }));
+  const carregarConsulta = () => (carga = carga || Promise.all(['data/financiamento/municipios/transferencias_uniao.json', 'data/financiamento/municipios/despesa_182.json',
+    'data/financiamento/municipios/fns_municipios_2026.json'].map(f => fetch(f).then(r => r.ok ? r.json() : null).catch(() => null))).then(([t, d, f]) => { TRANSF = t; DESPESA = d; FNS_MUN = f; }));
   const lacuna = corte => tx('financiamento.municipio.lacuna.molde', {corte: corte || 'sem registro'}) || 'Não localizado até o corte (' + (corte || 'sem registro') + ')';
   const cartao = (classe, titulo, corpo) => '<div class="cartao ' + classe + '"><p class="cartao-k">' + esc(titulo) + '</p>' + corpo + '</div>';
   const linhaT = (t, s) => '<b class="cartao-t">' + t + '</b>' + (s ? '<span class="cartao-s">' + s + '</span>' : '');
@@ -237,8 +218,8 @@ function __init(){
         + link(a.url, 'Portaria nº ' + a.portaria) + ', de ' + esc(MonitorMapas.dataBR(a.data) || '')).join('<br>'))
       : linhaT(esc(lacuna(RECURSOS && RECURSOS.atualizado_em)));
     const fm = ((FNS_MUN && FNS_MUN.municipios) || {})[cod];
-    const corpoSus = !FNS_MUN ? linhaT(esc(lacuna(null))) : fm && fm.emergencia > 0 ? linhaT(esc(reais(fm.emergencia)), 'jan–' + esc(mesDe(ultimoFns)) + '/2026')
-      : linhaT(esc(tx('financiamento.municipio.sus.nenhum')), 'jan–' + esc(mesDe(ultimoFns)) + '/2026');
+    const corpoSus = !FNS_MUN ? linhaT(esc(lacuna(null))) : fm && fm.emergencia > 0 ? linhaT(esc(reais(fm.emergencia)), 'jan–' + esc(mesDe((sus || {}).ultimo_mes)) + '/2026')
+      : linhaT(esc(tx('financiamento.municipio.sus.nenhum')), 'jan–' + esc(mesDe((sus || {}).ultimo_mes)) + '/2026');
     const t = ((TRANSF && TRANSF.municipios) || {})[cod];
     const mesesT = Object.keys((TRANSF && TRANSF.meses_lidos) || {}).sort();
     const corpoT = t ? linhaT(esc(reais(t.total)), Object.entries(t.por_rota || {}).sort((a, b) => b[1] - a[1]).map(([k, v]) => esc((ROTAS[k] || k) + ' ' + reais(v))).join(' · ')
@@ -296,7 +277,7 @@ function __init(){
   const alvoAcoes = document.getElementById('wrapAcoes');
   if (alvoAcoes) alvoAcoes.innerHTML = tpa ? '<div class="barras-painel">' + Object.keys(ACOES).map(k => barra(ACOES[k], tpa[k], P.resposta)).join('') + '</div>'
     : '<div class="lacuna">' + NAO_LOCALIZADO + '</div>';
-  if (RECURSOS) molde('subAcoes', 'financiamento.defesaCivil.acoes.legenda', {n: RECURSOS.municipios_com_ato || 0});
+  if (dcTopo) molde('subAcoes', 'financiamento.defesaCivil.acoes.legenda', {n: dcTopo.municipios || 0});
   cred('boxAcoes', [FONTE_DC], RECURSOS && RECURSOS.atualizado_em);
   tabela('boxAcoes', ['Município', 'UF', 'Portaria', 'Data', 'Ação', 'Valor autorizado'],
     Object.values((RECURSOS && RECURSOS.municipios) || {}).flatMap(m => (m.atos || []).map(a => ({m: m, a: a})))

@@ -3,8 +3,8 @@
  *
  * Reescrito em 17/10/2026 com a página (HANDOVER_FINANCIAMENTO_16-10-2026): renderiza com jsdom, d3
  * real, Chart simulado e `fetch` servindo `data/` do disco, e confere o RESULTADO. O que ele barra:
- *   (a) número do topo que não é a conta do dado (pago = soma do pago das MPs; defesa civil = soma
- *       do autorizado por ação; anunciado sem o "Plano federal", que contém as MPs);
+ *   (a) número do topo diferente do que o gerador escreveu (`financiamento/semana.json` → `topo`),
+ *       a mesma conta que a Imprensa lê;
  *   (b) barra zero no lugar de etapa não coletada (a página escreve "não localizado até o corte");
  *   (c) mapa da figura principal sem os 27 territórios ou com círculo a mais ou a menos;
  *   (d) a volta do que saiu (cartões "Como ler", diagrama das rotas, "ciclo" sozinho);
@@ -18,10 +18,7 @@ const path = require("path");
 const raiz = path.join(__dirname, "..");
 const ler = p => JSON.parse(fs.readFileSync(path.join(raiz, p), "utf-8"));
 const MPS = ler("data/financiamento/mps_2026.json");
-const COMP = ler("data/financiamento/compromissos_federais.json");
-const REC = ler("data/resposta/recursos_liberados.json");
-const FNSM = ler("data/financiamento/municipios/fns_municipios_2026.json");
-const REF = new Set(ler("data/municipios_ibge_referencia.json").map(m => String(m.codigo_ibge).padStart(7, "0")));
+const SEM = ler("data/financiamento/semana.json");
 
 const reaisNaTela = s => { const m = String(s).replace(/\./g, "").match(/([\d,]+)\s*(bi|mi|mil)?/); if (!m) return NaN;
   return Number(m[1].replace(",", ".")) * ({bi: 1e9, mi: 1e6, mil: 1e3}[m[2]] || 1); };
@@ -41,13 +38,12 @@ setTimeout(() => {
     [...d.querySelectorAll("#conteudo section")].map(x => x.id).join(",") === "dc-topo,caminhos,chega,mesames,municipio,defesaCivil");
   teste("âncoras que o Para gestores e a Defesa civil usam existem", ["antes", "depois", "caminhos", "defesaCivil"].every(q));
 
-  // (a) números do topo
-  const somaPago = MPS.mps.reduce((s, m) => s + ((m.execucao || {}).pago || 0), 0);
-  teste("pago até agora = soma do pago das MPs", perto(txt("topoPago"), somaPago));
-  const anunciado = MPS.mps.reduce((s, m) => s + (m.valor || 0), 0)
-    + COMP.itens.filter(i => !/Plano federal El Niño/i.test(i.nome) && i.valor_total).reduce((s, i) => s + i.valor_total, 0);
-  teste("anunciado = MPs + compromissos com valor, sem o Plano federal", perto(txt("topoAnunciado"), anunciado));
-  teste("defesa civil = soma do autorizado por ação", perto(txt("topoDefesaCivil"), Object.values(REC.total_por_acao).reduce((s, v) => s + v, 0)));
+  // (a) números do topo: os do gerador (`financiamento/semana.json` → `topo`), a mesma conta que a Imprensa lê
+  const TOPO = (SEM.topo || []);
+  const doTopo = id => (TOPO.find(c => c.id === id) || {});
+  [["topoAnunciado", "anunciado_atos"], ["topoPago", "pago_ate_agora"], ["topoDefesaCivil", "defesa_civil_ciclo"], ["topoSus", "sus_emergencia"]]
+    .forEach(([el, id]) => { const c = doTopo(id);
+      teste(`${el} = ${id} do gerador`, c.valor == null || c.sem_coleta ? /sem coleta|não calculado/.test(txt(el)) : perto(txt(el), c.valor)); });
   teste("nenhum cartão do topo em travessão ou vazio",
     ["topoAnunciado", "topoPago", "topoDireto", "topoDefesaCivil", "topoSus"].every(i => txt(i) && txt(i) !== "—"));
 
@@ -59,14 +55,13 @@ setTimeout(() => {
   // (c) figura principal
   const svg = q("mapChega");
   teste("mapa onde chega: 27 territórios", svg && svg.querySelectorAll("path.uf-path").length === 27);
-  const esperado = Object.entries(REC.municipios).filter(([c, v]) => REF.has(c) && v.total_autorizado > 0).length
-    + Object.entries(FNSM.municipios).filter(([c, v]) => REF.has(c) && v.emergencia > 0).length;
+  const esperado = (SEM.mapa || []).filter(x => x.valor > 0 && x.lat != null && /^(defesa_civil|saude)$/.test(x.origem)).length;
   teste(`mapa onde chega: ${esperado} círculos (defesa civil + FNS de emergência)`, svg && svg.querySelectorAll("circle").length === esperado);
   const c0 = svg && svg.querySelector("circle");
   if (c0) {
     c0.dispatchEvent(new dom.window.MouseEvent("mouseenter", { clientX: 100, clientY: 100, bubbles: true }));
     teste("tooltip do círculo exibe município e valor", q("mapTooltip").style.display === "block" && /R\$/.test(q("mapTooltip").textContent));
-  } else teste("tooltip do círculo exibe município e valor", false);
+  } else teste("tooltip do círculo exibe município e valor", esperado === 0);
 
   // (d) o que saiu não volta
   teste("saíram os 'Como ler', o diagrama das rotas e o mapa do FNS por estado",
