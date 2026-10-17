@@ -712,7 +712,26 @@ def edicoes_apinova(buscar_fn, base):
     return fn
 
 
-EDICOES_POR_DATA = {"edicao_ce": edicoes_ce, "edicao_pb": edicoes_pb, "edicao_apinova": edicoes_apinova,
+# SC (17/10/2026, runs 39023721853 e 39024168986): a API pública que o portal do DOE-SC chama
+# (`apis/jornal/?dtStart=…&dtEnd=…`) lista as edições do dia — a ordinária e a extra (`22862-A`) —
+# com o caminho do PDF no repositório (`dsArquivo`; 58 p. com texto em 16/10). Edição cancelada fica fora.
+REPOSITORIO_SC = "https://portal.doe.sea.sc.gov.br/repositorio"
+
+
+def edicoes_sc(buscar_fn, base):
+    def fn(data):
+        o = json.loads(buscar_fn(f"{base.rstrip('/')}/jornal/?page=1&perPage=50&" + urllib.parse.urlencode(
+            {"dtStart": f"{data} 00:00:00", "dtEnd": f"{data} 23:59:59"}), timeout=60, origem="coletar_doe").decode("utf-8", "replace"))
+        lista = ((o or {}).get("records") or {}).get("data") if isinstance(o, dict) else None
+        if not isinstance(lista, list):
+            raise FormatoDaBuscaMudou("listagem do DOE-SC sem 'records.data'")
+        return [{"edicao": str(j.get("vlNumero") or ""), "url": REPOSITORIO_SC + j["dsArquivo"]}
+                for j in lista if j.get("dsArquivo") and not j.get("stCancelado")
+                and str(j.get("dtPublicacao") or "")[:10] == data]
+    return fn
+
+
+EDICOES_POR_DATA = {"edicao_ce": edicoes_ce, "edicao_pb": edicoes_pb, "edicao_apinova": edicoes_apinova, "edicao_sc": edicoes_sc,
                     "edicao_apifront": edicoes_apifront, "edicao_ms": edicoes_ms, "edicao_pi": edicoes_pi}
 
 
@@ -1072,6 +1091,10 @@ FIXTURE_EDICOES_AL = (b'{"status":"success","editions":[{"id":51928,"number":290
                       b'"publication_date":"2026-10-16T03:00:00.000000Z"},{"id":51929,"number":2905,"suplement":true,'
                       b'"publication_date":"2026-10-16T03:00:00.000000Z"},{"id":51925,"number":2904,"suplement":false,'
                       b'"publication_date":"2026-10-15T03:00:00.000000Z"}]}')
+FIXTURE_EDICOES_SC = json.dumps({"error": False, "records": {"meta": {"total": 3}, "data": [
+    {"vlNumero": "22862-A", "dtPublicacao": "2026-10-16T00:00:00.000Z", "stCancelado": False, "dsArquivo": "/2026/20261016/Jornal/22862-A.pdf"},
+    {"vlNumero": "22862", "dtPublicacao": "2026-10-16T00:00:00.000Z", "stCancelado": False, "dsArquivo": "/2026/20261016/Jornal/22862.pdf"},
+    {"vlNumero": "22862-B", "dtPublicacao": "2026-10-16T00:00:00.000Z", "stCancelado": True, "dsArquivo": "/2026/20261016/Jornal/22862-B.pdf"}]}}).encode()
 FIXTURE_EDICOES_AM_VAZIO = b'{"erro":true,"msg":"Edi\\u00e7\\u00e3o n\\u00e3o existente!","data":"2026-10-14","itens":[]}'
 
 
@@ -1310,6 +1333,12 @@ def autoteste() -> int:
                         {"edicao": "2905 suplemento", "url": "https://x.al.gov.br/api/editions/downloadPdf/51929"}]
                      and edicoes_apinova(lambda u, **k: FIXTURE_EDICOES_AL, "https://x")("2026-10-17") == []
                      and _levanta(lambda: edicoes_apinova(lambda u, **k: b'{"outra": 1}', "https://x")("2026-10-14"),
+                                  FormatoDaBuscaMudou)),
+        "DOE-SC: a API do dia dá ordinária e extra com o PDF do repositório; cancelada fica fora":
+            lambda: (edicoes_sc(lambda u, **k: FIXTURE_EDICOES_SC, "https://x/apis")("2026-10-16") == [
+                        {"edicao": "22862-A", "url": REPOSITORIO_SC + "/2026/20261016/Jornal/22862-A.pdf"},
+                        {"edicao": "22862", "url": REPOSITORIO_SC + "/2026/20261016/Jornal/22862.pdf"}]
+                     and _levanta(lambda: edicoes_sc(lambda u, **k: b'{"error": true}', "https://x")("2026-10-16"),
                                   FormatoDaBuscaMudou)),
         "DOE-MS: a listagem dá o PDF por data, suplemento incluído; dia fora dela é lista vazia":
             lambda: (edicoes_ms_na_listagem(FIXTURE_LISTAGEM_MS) == {

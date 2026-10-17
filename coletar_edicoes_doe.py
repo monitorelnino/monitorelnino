@@ -129,6 +129,10 @@ PADROES = {
     # texto. A edição extra sai como <data>E.pdf, fora do padrão.
     "RN": {"padrao": "https://webdisk.diariooficial.rn.gov.br/Jornal/1{ano}-{mm}-{dd}.pdf",
            "nota": "padrão por data da edição ordinária, medido do runner em 17/10/2026"},
+    # 17/10/2026 (run 39024168986): 10/09/2026 abre por data (170 p., texto); a listagem do mês
+    # (_visualizar-mes) nomeia toda edição do mesmo jeito (doe-AAAAMMDD.pdf).
+    "RR": {"padrao": "https://www.imprensaoficial.rr.gov.br/_edicoes/{ano}/{mm}/doe-{ano}{mm}{dd}.pdf",
+           "nota": "padrão por data, medido do runner em 17/10/2026"},
 }
 
 
