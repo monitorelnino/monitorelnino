@@ -138,9 +138,9 @@
    "ultima_tentativa": "2026-10-16"
   },
   "AL": {
-   "adaptador": null,
-   "url": "https://imprensaoficial.al.gov.br",
-   "status": "sem adaptador de busca",
+   "adaptador": "edicao_apinova",
+   "url": "https://diario.imprensaoficial.al.gov.br",
+   "status": "a_verificar",
    "ultima_tentativa": "2026-10-16",
    "sondagem": {
     "plataforma": null,
@@ -150,7 +150,8 @@
     "sondado_em": "02/10/2026"
    },
    "motivo": "o diário vive em diario.imprensaoficial.al.gov.br, SPA (React) que serve a mesma casca de 964 B para toda rota, inclusive /apifront e /busca; API não localizada",
-   "medido_em": "15/10/2026"
+   "medido_em": "17/10/2026",
+   "caminho": "API pública declarada no código da página (apinova/api): editions/published/AAAA/MM lista as edições do mês e editions/downloadPdf/<id> serve o PDF; lida do runner em 17/10/2026 (run 39028133123)"
   },
   "BA": {
    "adaptador": null,
