@@ -77,29 +77,23 @@ def posta_json(url, corpo_json):
 
 
 if __name__ == "__main__":
-    print("=== RN ===")
-    corpo("https://webdisk.diariooficial.rn.gov.br/Jornal/12026-07-01.pdf")
-    corpo("https://webdisk.diariooficial.rn.gov.br/Jornal/22026-09-10.pdf")
     print("=== RR ===")
-    ctx("https://www.imprensaoficial.rr.gov.br/_visualizar-mes/?ano=2026&mes=09", r"\.pdf|_visualizar-doe/\?[^\"']+|onclick=\"[^\"]+\"", 120, 12)
-    corpo("https://www.imprensaoficial.rr.gov.br/_buscar/?termos=emerg%C3%AAncia+em+sa%C3%BAde+p%C3%BAblica&ano_pesquisa=2026&mes_pesquisa=09", 1500)
+    ctx("https://www.imprensaoficial.rr.gov.br/_visualizar-mes/?ano=2026&mes=09", r"<form[^>]*>", 40, 3)
+    for u in ("https://www.imprensaoficial.rr.gov.br/_visualizar-doe/?doe=2026/09/doe-20260910.pdf",
+              "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/09/doe-20260910.pdf",
+              "https://www.imprensaoficial.rr.gov.br/app/_edicoes/2026/09/doe-20260910.pdf"):
+        corpo(u, 600)
+    print("=== SC ===")
+    for s in scripts("https://portal.doe.sea.sc.gov.br/v2.44.07/"):
+        if "main." in s:
+            ctx(s, r"restPrefix\+\"/jornal\"", 1200, 2)
+    corpo("https://portal.doe.sea.sc.gov.br/repositorio/2026/20261016/Jornal/22862.pdf")
+    print("=== RS ===")
+    corpo("https://secweb.procergs.com.br/doe/", 600)
     print("=== RJ ===")
     ctx("https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?session=VDBWR1JrNXFhM3BQUkZsMFQwUlNRazE1TURCTk1FMHpURlJzUlU5VlJYUk5ha0V6VFRCRk5VMXJXWGxSYTA1RVRWUmpOVTFxU1hwTlJFVjVUa0U5UFE9PQ==",
-        r"function MudaEdicao[^}]*\}|PDFView[^;]*;|\.pdf[^\"']*|DEFAULT_URL\s*=[^;]*;|pdf\.php[^\"']*", 200, 12)
-    print("=== RS ===")
-    b = corpo("https://www.diariooficial.rs.gov.br/environments/environment.json", 800)
-    if b:
-        import json as _j
-        rest = _j.loads(b.decode("utf-8", "replace")).get("restEndPoint", "")
-        if rest:
-            corpo(rest + "public/diarios/lista?tipoDiario=DOE", 1200)
-            corpo(rest + "public/materias/?page=1&tipoDiario=DOE&texto=emerg%C3%AAncia%20em%20sa%C3%BAde%20p%C3%BAblica", 1200)
-    for s in scripts("https://www.diariooficial.rs.gov.br/"):
-        if "main-" in s:
-            ctx(s, r"consultar\(Q,U,B=2\)\{[^}]*\}|pesquisa\(Q\)\{[^}]{0,600}", 40, 4)
-    print("=== MG ===")
-    for s in scripts("https://www.jornalminasgerais.mg.gov.br/"):
-        if "main-" in s:
-            ctx(s, r"[\"'`](?:[A-Z][A-Za-z]+/)+[A-Za-z]+[\"'`?]", 40, 40)
-    print("=== SC ===")
-    corpo("https://portal.doe.sea.sc.gov.br/apis/jornal/?page=1&perPage=5", 1500)
+        r"MudaEdicao|<script[^>]*src=[^>]*>|<iframe[^>]*>|\.php\?[^\"' ]{5,}", 300, 15)
+    print("=== MA ===")
+    corpo("https://www.diariooficial.ma.gov.br/", 400)
+    print("=== BA ===")
+    corpo("https://dool.egba.ba.gov.br/", 300)
