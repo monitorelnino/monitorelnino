@@ -15,6 +15,22 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-17 · #836 · Diarreias pelo SISAB; o mês da extração sai da leptospirose
 `coletar_sisab.py` lê do relatório público do SISAB os atendimentos da atenção primária por diarreia (CIAP D11, D70, D73; CID A00–A09), por UF e mês desde 2019, e confere os filtros que o próprio CSV declara. Na leptospirose, o mês em que o arquivo preliminar foi extraído deixa de contar como coberto, e `ultimo` ganha o último mês consolidado. METODOLOGIA §108.
 
+## 2026-10-17 · #831 · Ato de resposta aplicado pelo juiz passa pela porta do carimbo
+
+`julgar_e_aplicar_descobertas.aplicar_resposta` gravava `atos_resposta.json` sem `carimbar_atos`, a porta única do carimbo e do tipo de evento: 13 atos de imprensa ficaram com `tipo_evento` nulo (achado da A2). Agora grava pela porta; a próxima escrita de qualquer coletor recarimba os 13. Trava no autoteste.
+
+## 2026-10-17 · #838 · Saúde: risco previsto em etiquetas de sigla; grade dos estados com uma barra
+
+Na seção dos estados, o mapa de risco previsto vira etiquetas de sigla por família, o mesmo componente do Monitor de riscos (agora em `MonitorMapas.faixaPrevista`, sem cópia). A legenda do mapa do MARÉ Saúde mostra o intervalo de cada faixa, lido do dado. Os cartões dos 27 estados ficam com uma barra só. Números do topo: `.grade-numeros--compacta` põe até seis numa linha (três no tablet, dois no celular), já no Monitor de riscos e na Saúde.
+
+## 2026-10-17 · #830 · Leitor dos arquivos .dbc do DATASUS e rotas de internações e óbitos medidas
+
+`coletar_sih.py` lê os arquivos mensais de internação do SIH/SUS (`datasus-dbc` e `dbfread`, ambos MIT) e agrega por grupo de causa, UF e mês; `coletar_obitos.py` estende os óbitos registrados até 2019 importando o coletor existente. Ainda não gravam dado. Sondagem no executor: Amapá, jul/2026, 6.160 internações no arquivo e no TabNet. O catálogo passa seis desfechos hospitalares a candidato.
+
+## 2026-10-17 · #832 · Para gestores: consulta do município, o que a lei exige, recursos em cartões
+
+A página passa a ter a consulta do município (módulo comum) com quatro cartões: plano, cadastro nacional, risco previsto do estado e recursos federais de 2026. "O que a lei exige de cada governo" vira três cartões de número, as listas perdem a caixa de marcar e "Como os recursos chegam" ganha três cartões com as âncoras de sempre. Sai o ponteiro para a consulta da inicial.
+
 ## 2026-10-17 · #827 · Defesa civil: evento declarado por município
 
 `gerar_resposta.py` grava `evento_declarado` (famílias dos atos casados, pela função única do tipo), `dias_sem_reconhecimento` e, por UF, `eventos_declarados` e `evento_mais_declarado`. O nome do ato deixa de contar como "outro declarado" (380 atos passam a "sem tipo informado"). Soma por família = 1.202 atos casados. Metodologia §32.5.
@@ -57,6 +73,10 @@ O índice lia `saude_sinais.emergencias`, que ninguém gravava, e publicava 0,0.
 ## 2026-10-17 · #818 · Imprensa da saúde usa o parser, a fonte e o cursor da imprensa regional
 
 `monitorar_imprensa_saude.py` tinha cópias de `montar_url`, `extrair_itens_rss`, `parece_fonte_oficial`, `_hash` e do cursor de `monitorar_imprensa_regional.py`; passa a importá-las (o cursor recebe o caminho). As pistas da saúde ganham o domínio do veículo, que o parser regional já lia. Saem também três imports sem uso. Consolidação, item 5. −57 linhas.
+
+## 2026-10-17 · #819 · Saúde: abertura aprovada, topo da inicial e consulta única
+
+A página abre com os três parágrafos aprovados e com os dois medidores da inicial: preparação publicada na saúde (média das UFs verificadas) e emergências em saúde pública (índice nulo vira lacuna). Uma consulta do município, no componente comum, substitui as três buscas por bloco. O "Como ler" antigo sai; o link leva à metodologia até o texto novo da editoria. No Monitor de riscos, o subtítulo do mapa de focos passa ao satélite de referência.
 
 ## 2026-10-17 · #816 · Mapa de fogo no satélite de referência; consulta do município com calor e reconhecimento
 
