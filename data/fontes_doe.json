@@ -28,7 +28,7 @@
   "AM": {
    "adaptador": "edicao_apifront",
    "url": "https://diario.imprensaoficial.am.gov.br",
-   "status": "a_verificar",
+   "status": "ok",
    "ultima_tentativa": "2026-10-16",
    "sondagem": {
     "plataforma": null,
@@ -46,7 +46,13 @@
     "sondado_em": "02/10/2026"
    },
    "medido_em": "15/10/2026",
-   "caminho": "plataforma comum sem busca: edição do dia pela rota (a) e PDF pela rota (c) com o id (12,8 MB, 58 p. em 09/10, texto extraível)"
+   "caminho": "plataforma comum sem busca: edição do dia pela rota (a) e PDF pela rota (c) com o id (12,8 MB, 58 p. em 09/10, texto extraível)",
+   "lidas": {
+    "2026-10-08": 1,
+    "2026-10-09": 1,
+    "2026-10-13": 1,
+    "2026-10-14": 1
+   }
   },
   "AP": {
    "adaptador": "apifront",
@@ -174,7 +180,7 @@
   "CE": {
    "adaptador": "edicao_ce",
    "url": "https://imagens.seplag.ce.gov.br/PDF/",
-   "status": "a_verificar",
+   "status": "ok",
    "ultima_tentativa": "2026-10-16",
    "sondagem": {
     "plataforma": "wordpress",
@@ -184,7 +190,16 @@
     "sondado_em": "02/10/2026"
    },
    "medido_em": "15/10/2026",
-   "caminho": "edição por data em cadernos (doAAAAMMDDpNN.pdf), 4 cadernos de 64 p. em 14/10, texto extraível; a busca (pesquisa.doe.seplag) não responde ao runner"
+   "caminho": "edição por data em cadernos (doAAAAMMDDpNN.pdf), 4 cadernos de 64 p. em 14/10, texto extraível; a busca (pesquisa.doe.seplag) não responde ao runner",
+   "lidas": {
+    "2026-10-08": 3,
+    "2026-10-09": 2,
+    "2026-10-12": 2,
+    "2026-10-13": 3,
+    "2026-10-14": 4,
+    "2026-10-15": 3,
+    "2026-10-16": 2
+   }
   },
   "MA": {
    "adaptador": null,
@@ -206,7 +221,7 @@
   "PB": {
    "adaptador": "edicao_pb",
    "url": "https://auniao.pb.gov.br/servicos/doe",
-   "status": "a_verificar",
+   "status": "ok",
    "ultima_tentativa": "2026-10-16",
    "sondagem": {
     "plataforma": "plone",
@@ -234,7 +249,15 @@
     "sondado_em": "02/10/2026"
    },
    "medido_em": "15/10/2026",
-   "caminho": "edição por data (padrão do canal 2), 40 p. em 14/10, texto extraível; a busca Plone (@@busca) devolve a página inicial"
+   "caminho": "edição por data (padrão do canal 2), 40 p. em 14/10, texto extraível; a busca Plone (@@busca) devolve a página inicial",
+   "lidas": {
+    "2026-10-08": 1,
+    "2026-10-09": 1,
+    "2026-10-13": 1,
+    "2026-10-14": 1,
+    "2026-10-15": 1,
+    "2026-10-16": 1
+   }
   },
   "PE": {
    "adaptador": null,
@@ -254,7 +277,7 @@
   "PI": {
    "adaptador": "edicao_pi",
    "url": "https://www.diario.pi.gov.br/doe/",
-   "status": "a_verificar",
+   "status": "ok",
    "ultima_tentativa": "2026-10-16",
    "sondagem": {
     "veredito": "nao_respondeu",
@@ -262,7 +285,15 @@
     "sondado_em": "02/10/2026"
    },
    "medido_em": "16/10/2026",
-   "caminho": "POST Api/listardiarios.json com filter_data devolve as edições do dia (suplementar incluído) e o PDF de cada uma em files/diarios/anexo/; texto extraível (runs 38878232356, 38879265290)"
+   "caminho": "POST Api/listardiarios.json com filter_data devolve as edições do dia (suplementar incluído) e o PDF de cada uma em files/diarios/anexo/; texto extraível (runs 38878232356, 38879265290)",
+   "lidas": {
+    "2026-10-08": 1,
+    "2026-10-09": 1,
+    "2026-10-13": 1,
+    "2026-10-14": 2,
+    "2026-10-15": 1,
+    "2026-10-16": 1
+   }
   },
   "RN": {
    "adaptador": null,
@@ -307,7 +338,7 @@
   "MS": {
    "adaptador": "edicao_ms",
    "url": "https://www.spdo.ms.gov.br/diariodoe/",
-   "status": "a_verificar",
+   "status": "ok",
    "ultima_tentativa": "2026-10-16",
    "sondagem": {
     "plataforma": null,
@@ -317,7 +348,15 @@
     "sondado_em": "02/10/2026"
    },
    "medido_em": "15/10/2026",
-   "caminho": "listagem traz o PDF de cada edição recente com número e data no nome (DO12306_14_10_2026.pdf; suplementos _SUP_n); texto extraível (canal 2 lê desde 02/10)"
+   "caminho": "listagem traz o PDF de cada edição recente com número e data no nome (DO12306_14_10_2026.pdf; suplementos _SUP_n); texto extraível (canal 2 lê desde 02/10)",
+   "lidas": {
+    "2026-10-08": 2,
+    "2026-10-09": 1,
+    "2026-10-13": 2,
+    "2026-10-14": 2,
+    "2026-10-15": 2,
+    "2026-10-16": 1
+   }
   },
   "MT": {
    "adaptador": "apifront",
@@ -364,7 +403,7 @@
   "SP": {
    "adaptador": "busca_sp",
    "url": "https://doe.sp.gov.br",
-   "status": "a_verificar",
+   "status": "ok",
    "ultima_tentativa": "2026-10-16",
    "sondagem": {
     "plataforma": null,
@@ -379,14 +418,14 @@
   "PR": {
    "adaptador": "apifront",
    "url": "https://www.dioe.pr.gov.br",
-   "status": "erro: HTTPError",
+   "status": "ok",
    "ultima_tentativa": "2026-10-16"
   },
   "RS": {
    "adaptador": null,
    "url": "https://www.diariooficial.rs.gov.br",
    "status": "sem adaptador de busca",
-   "ultima_tentativa": "2026-10-16",
+   "ultima_tentativa": "2026-10-17",
    "sondagem": {
     "plataforma": "angular",
     "formularios_de_busca": [],
@@ -401,7 +440,7 @@
    "adaptador": null,
    "url": "https://doe.sea.sc.gov.br",
    "status": "sem adaptador de busca",
-   "ultima_tentativa": "2026-10-16",
+   "ultima_tentativa": "2026-10-17",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [],

@@ -406,7 +406,7 @@
    "nome": "Guidoval",
    "uf": "MG",
    "por_acao": {
-    "recuperacao": 2689520.05
+    "recuperacao": 3269382.21
    },
    "atos": [
     {
@@ -430,9 +430,20 @@
      "valor_autorizado": 989929.55,
      "processo_sei": "59053.024430/2026-91",
      "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.178-de-2-de-julho-de-2026-716717996"
+    },
+    {
+     "municipio": "Guidoval",
+     "uf": "MG",
+     "portaria": "3.509",
+     "data": "2026-10-13",
+     "acao": "recuperacao",
+     "acao_no_ato": "Recuperação",
+     "valor_autorizado": 579862.16,
+     "processo_sei": "59053.024660/2026-51",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.509-de-13-de-outubro-de-2026-738571993"
     }
    ],
-   "total_autorizado": 2689520.05
+   "total_autorizado": 3269382.21
   },
   "3154002": {
    "nome": "Raul Soares",
@@ -1648,32 +1659,53 @@
     }
    ],
    "total_autorizado": 751291.15
+  },
+  "4305587": {
+   "nome": "Colinas",
+   "uf": "RS",
+   "por_acao": {
+    "recuperacao": 1019011.81
+   },
+   "atos": [
+    {
+     "municipio": "Colinas",
+     "uf": "RS",
+     "portaria": "3.307",
+     "data": "2026-09-29",
+     "acao": "recuperacao",
+     "acao_no_ato": "Recuperação",
+     "valor_autorizado": 1019011.81,
+     "processo_sei": "59053.024564/2026-11",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.307-de-29-de-setembro-de-2026-738585334"
+    }
+   ],
+   "total_autorizado": 1019011.81
   }
  },
  "nao_casados": {
   "BA|Cacequi": 9226995.1
  },
  "janela_lida": {
-  "desde": "2026-10-08",
-  "ate": "2026-10-16",
-  "atos_na_busca": 12,
+  "desde": "2026-10-09",
+  "ate": "2026-10-17",
+  "atos_na_busca": 15,
   "janelas_incompletas": []
  },
  "recusas": {
   "fora_do_orgao": 0,
   "prorrogacao_de_prazo": 3,
-  "sem_municipio_legivel": 3,
+  "sem_municipio_legivel": 4,
   "sem_valor_declarado": 6,
   "ato_nao_lido": 0
  },
- "atos_novos_nesta_rodada": 0,
- "atualizado_em": "16/10/2026",
+ "atos_novos_nesta_rodada": 2,
+ "atualizado_em": "17/10/2026",
  "total_por_acao": {
-  "recuperacao": 193571510.55,
+  "recuperacao": 195170384.52,
   "resposta": 7021172.66,
   "outra": 13878788.0
  },
- "municipios_com_ato": 70,
+ "municipios_com_ato": 71,
  "_governanca": "Recursos federais de defesa civil AUTORIZADOS por município, lidos das portarias da Secretaria Nacional de Proteção e Defesa Civil no DOU (consulta \"Autoriza a transferência de recursos\"). `valor_autorizado` é o que a portaria autoriza transferir — a saída do dinheiro é outro fato, e quem o registra é o Portal da Transparência: a página diz 'liberado', nunca 'pago'. As ações de RESPOSTA e de RECUPERAÇÃO ficam separadas em `por_acao`, com o rótulo que o próprio ato usou, porque somá-las num cartão de resposta inflaria o número com dinheiro de outra finalidade. Ato sem valor declarado não vira zero: entra em `recusas.sem_valor_declarado`. Município que não casa com a referência do IBGE entra em `nao_casados`, com o nome como o ato o escreveu. Derivado de coletar_recursos_resposta.py — não se edita à mão.",
  "frase_c18": "Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, a)."
 }
