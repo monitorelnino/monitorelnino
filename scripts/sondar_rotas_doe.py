@@ -119,6 +119,50 @@ def veredito_da_recusa(erro) -> dict:
     return {"veredito": "erro", "motivo": f"{nome}: {str(erro)[:140]}"}
 
 
+# 17/10/2026 (HANDOVER_ROTAS_DOE §1, degraus 1 e 3): o diário em SPA chama uma API pública que só
+# aparece no código que a própria página carrega; e o decreto do governador também sai na rede LexML.
+# Os dois modos abaixo só MEDEM e imprimem — quem escreve o adaptador é quem lê o relatório.
+RE_SCRIPT = re.compile(r'<script[^>]+src="([^"]+)"', re.I)
+RE_ROTA_NO_CODIGO = re.compile(r"""["'`]((?:https?://[\w.\-]+)?/[\w\-./{}:$]{2,100})["'`]""")
+RE_ROTA_DE_DIARIO = re.compile(r"(api|edic|diario|jornal|publica|busca|pesquis|pdf|caderno|materia)", re.I)
+LEXML_SRU = ("https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1"
+             "&maximumRecords={n}&query={q}")
+RE_SRU_TOTAL = re.compile(r"<(?:\w+:)?numberOfRecords>(\d+)<", re.I)
+RE_SRU_URN = re.compile(r"(urn:lex:[^<\s\"]+)")
+
+
+def rotas_no_codigo(js: str) -> list:
+    """Caminhos citados no código da página que têm cara de rota de diário. Função pura."""
+    vistos = []
+    for r in RE_ROTA_NO_CODIGO.findall(js or ""):
+        if RE_ROTA_DE_DIARIO.search(r) and not r.endswith((".css", ".png", ".svg", ".woff2", ".js")) and r not in vistos:
+            vistos.append(r)
+    return vistos
+
+
+def leitura_sru(xml: str) -> dict:
+    """{total, urns} da resposta SRU do LexML. Função pura."""
+    m = RE_SRU_TOTAL.search(xml or "")
+    return {"total": int(m.group(1)) if m else None, "urns": list(dict.fromkeys(RE_SRU_URN.findall(xml or "")))}
+
+
+def sondar_codigo(buscar, base: str, teto_bytes: int = 12_000_000) -> dict:
+    import urllib.parse
+    html = buscar(base, timeout=45).decode("utf-8", "replace")
+    rotas, lidos = rotas_no_codigo(html), []
+    for src in RE_SCRIPT.findall(html)[:6]:
+        url = urllib.parse.urljoin(base, src)
+        try:
+            js = buscar(url, timeout=60)
+        except Exception as e:  # noqa: BLE001
+            lidos.append(f"{url[:80]}: {type(e).__name__}")
+            continue
+        lidos.append(f"{url[:80]}: {len(js)} B")
+        if len(js) <= teto_bytes:
+            rotas += [r for r in rotas_no_codigo(js.decode("utf-8", "replace")) if r not in rotas]
+    return {"scripts": lidos, "rotas": rotas[:60]}
+
+
 def _autoteste() -> int:
     falhas = []
     # O total era um literal e envelhecia calado: dizia cobrir mais casos do que
@@ -173,6 +217,13 @@ def _autoteste() -> int:
 
     fonte = pathlib.Path(__file__).read_text(encoding="utf-8")
     escritas = [l for l in fonte.splitlines() if l.strip().startswith("gravar(")]
+    ok("rotas de diário citadas no código da página saem, e estilo e imagem não",
+       rotas_no_codigo('a="/api/v1/edicoes/{data}";b="/assets/x.png";c="https://h.gov.br/diario/pdf";d="/sobre"')
+       == ["/api/v1/edicoes/{data}", "https://h.gov.br/diario/pdf"])
+    ok("a resposta SRU do LexML dá o total e as URNs",
+       leitura_sru("<srw:numberOfRecords>2</srw:numberOfRecords><x>urn:lex:br;parana:estadual:decreto:2026-09-10;123</x>")
+       == {"total": 2, "urns": ["urn:lex:br;parana:estadual:decreto:2026-09-10;123"]})
+    ok("resposta SRU sem total não vira zero", leitura_sru("<html>erro</html>")["total"] is None)
     ok("trava estrutural: uma escrita só, e é o registro de fontes",
        len(escritas) == 1 and escritas[0].strip().startswith("gravar(ARQUIVO"))
     ok("trava estrutural: nenhum arquivo do banco é destino",
@@ -193,6 +244,27 @@ def main() -> int:
     registro = ler(ARQUIVO, {}) or {}
     ufs = registro.get("ufs") or {}
     hoje = hoje_editorial().strftime("%d/%m/%Y")
+    def arg(nome):
+        return sys.argv[sys.argv.index(nome) + 1] if nome in sys.argv and sys.argv.index(nome) + 1 < len(sys.argv) else ""
+    if "--codigo" in sys.argv:              # só mede e imprime
+        for alvo in arg("--codigo").split(","):
+            uf, _, base = alvo.partition("=")
+            base = base or (ufs.get(uf) or {}).get("url")
+            try:
+                r = sondar_codigo(buscar, base)
+            except Exception as e:  # noqa: BLE001
+                r = veredito_da_recusa(e)
+            print(f"== {uf} {base}\n" + json.dumps(r, ensure_ascii=False, indent=1))
+        return 0
+    if "--lexml" in sys.argv:               # só mede e imprime: uma consulta CQL por linha de --lexml
+        import urllib.parse
+        for q in arg("--lexml").replace("+", " ").split("|"):   # "+" é espaço: a linha do elo não leva aspas
+            try:
+                r = leitura_sru(buscar(LEXML_SRU.format(n=20, q=urllib.parse.quote(q)), timeout=60).decode("utf-8", "replace"))
+            except Exception as e:  # noqa: BLE001
+                r = veredito_da_recusa(e)
+            print(f"== LexML {q}\n" + json.dumps(r, ensure_ascii=False, indent=1)[:4000])
+        return 0
     alvos = [(uf, (v or {}).get("url")) for uf, v in sorted(ufs.items()) if not (v or {}).get("adaptador")]
     print(f"{len(alvos)} unidade(s) sem adaptador a sondar")
 
