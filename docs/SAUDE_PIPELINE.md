@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-10 a 2026-10-17 (1042 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-10 a 2026-10-17 (1047 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -25,7 +25,7 @@ cobertura 15d: 4038/5571 com verificação real até 2026-10-17 · por canal: we
 | script | papel | última execução | duração | itens | status | erro |
 |---|---|---|---|---:|---|---|
 | `gerar_saude_municipio.py` | essencial | 2026-10-16 01:36 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-10-17 07:30 | 2 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-17 07:47 | 3 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-17 05:59 | 1 s | — | ok | — |
 | `buscar_protocolo_calor.py` | coletor | 2026-10-12 07:33 | 11 s | 3 | ok | — |
 | `classificar_planos_municipais.py` | coletor | 2026-10-13 06:56 | 1 s | — | ok | — |
@@ -75,12 +75,12 @@ cobertura 15d: 4038/5571 com verificação real até 2026-10-17 · por canal: we
 | `monitorar_redes_oficiais.py` | coletor | 2026-10-17 07:02 | 1231 s | — | ok | — |
 | `monitorar_sinais_federais.py` | coletor | 2026-10-17 06:55 | 4 s | 10 | ok | — |
 | `motores_busca.py` | coletor | 2026-10-13 09:39 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `preservar_evidencias.py` | coletor | 2026-10-17 04:43 | 25 s | — | ok | — |
+| `preservar_evidencias.py` | coletor | 2026-10-17 07:36 | 1 s | — | ok | — |
 | `revisar_pistas.py` | coletor | 2026-10-17 04:53 | 1236 s | — | ok | — |
 | `scripts/amostra_auditoria_semanal.py` | coletor | 2026-10-17 05:59 | 1 s | — | ok | — |
 | `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-10-17 04:52 | 23 s | — | ok | — |
 | `scripts/fechar_saude.py` | coletor | 2026-10-16 21:53 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `scripts/preservar_textos_integrais.py` | coletor | 2026-10-17 04:43 | 2 s | — | ok | — |
+| `scripts/preservar_textos_integrais.py` | coletor | 2026-10-17 07:36 | 2 s | — | ok | — |
 | `scripts/sondar_boletim_infogripe.py` | coletor | 2026-10-13 06:52 | 86 s | — | ok | — |
 | `scripts/triar_fila.py` | coletor | 2026-10-17 03:22 | 2 s | — | ok | — |
 | `scripts/verificar_esquema_de_pista.py` | coletor | 2026-10-17 03:47 | 7 s | — | ok | — |
