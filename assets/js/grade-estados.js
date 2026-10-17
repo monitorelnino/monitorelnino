@@ -53,7 +53,7 @@
    *   alvo:        elemento ou id onde a grade entra
    *   ufs:         [{uf, nome, status}]  — a lista canônica, com nome por extenso
    *   indice:      função(uf) -> número 0–100 ou null   (barra de cima)
-   *   resposta:    função(uf) -> número 0–100 ou null   (barra de baixo)
+   *   resposta:    função(uf) -> número 0–100 ou null   (barra de baixo; sem a função, sem a barra)
    *   rotulo:      texto do índice, para o title e o aria-label ("MARÉ Saúde")
    *   aoClicar:    função(uf) — a ficha da página
    *   extra:       função(uf) -> HTML opcional dentro do cartão
@@ -86,7 +86,7 @@
           ? '<span class="tile-score tile-score--vazio">não verificado</span>'
           : '<span class="tile-score" data-contar="' + v + '">0,0</span>') +
         barra(v, 'tile-bar--indice') +
-        barra(r, 'tile-bar--resposta') +
+        (o.resposta ? barra(r, 'tile-bar--resposta') : '') +
         (o.extra ? o.extra(uf) : '');
       /* Alcançável por teclado, como qualquer botão: o cartão é um alvo de clique, e sem papel e
        * índice de tabulação quem navega por teclado não alcança nenhum estado. */
