@@ -29,6 +29,7 @@ from datetime import datetime, timedelta
 from coletores_base import data_do_corte, gravar, ler
 
 JANELA = 7
+INICIO_CICLO = datetime(2026, 6, 29)     # Boletim nº 1 do Painel El Niño (o mesmo de gerar_resposta.py)
 MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto",
          "setembro", "outubro", "novembro", "dezembro"]
 ARQUIVO = "financiamento/semana.json"
@@ -192,10 +193,37 @@ def cartao_resposta(rec: dict, corte: datetime) -> dict:
     na = na_janela(atos, corte)
     valor = round(sum(float(a.get("valor_autorizado") or 0.0) for a in na), 2)
     cidades = len({(a.get("municipio"), a.get("uf")) for a in na})
-    return cartao("resposta_liberado_semana", valor, "reais", "últimos 7 dias",
-                  "Portarias da SEDEC no Diário Oficial da União",
-                  detalhe=(f"{cidades} município(s) em {len(na)} portaria(s)" if na
-                           else "nenhuma portaria de resposta publicada nos últimos 7 dias"))
+    c = cartao("resposta_liberado_semana", valor, "reais", "últimos 7 dias",
+               "Portarias da SEDEC no Diário Oficial da União",
+               detalhe=(f"{cidades} município(s) em {len(na)} portaria(s)" if na
+                        else "nenhuma portaria de resposta publicada nos últimos 7 dias"))
+    # 17/10/2026 (§9.4): a janela de sete dias aparecia sozinha, como se fosse o total. O total do
+    # ciclo, todas as ações, vai ao lado, com o número de municípios de cada recorte.
+    c.update(municipios_semana=cidades, **defesa_civil_ciclo(rec, corte))
+    return c
+
+
+def defesa_civil_ciclo(rec: dict, corte: datetime) -> dict:
+    """Autorizado por portaria da SEDEC desde 29/06/2026, todas as ações. Função pura."""
+    total, por_acao, cidades = 0.0, {}, set()
+    for m in ((rec or {}).get("municipios") or {}).values():
+        for a in (m or {}).get("atos") or []:
+            d = _data(a.get("data"))
+            if not d or not (INICIO_CICLO <= d <= corte): continue
+            v = float(a.get("valor_autorizado") or 0.0)
+            total += v; cidades.add((a.get("municipio"), a.get("uf")))
+            por_acao[a.get("acao") or "outra"] = round(por_acao.get(a.get("acao") or "outra", 0.0) + v, 2)
+    return {"valor_ciclo": round(total, 2), "municipios_ciclo": len(cidades),
+            "por_acao_ciclo": dict(sorted(por_acao.items())), "desde": INICIO_CICLO.strftime("%d/%m/%Y")}
+
+
+def _data(bruta):
+    for fmt in ("%Y-%m-%d", "%d/%m/%Y"):
+        try:
+            return datetime.strptime(str(bruta or "")[:10], fmt)
+        except ValueError:
+            continue
+    return None
 
 
 def tem_data_legivel(atos: list) -> bool:
@@ -219,18 +247,24 @@ def tem_data_legivel(atos: list) -> bool:
     return False
 
 
-def cartao_atos(comp: dict, corte: datetime) -> dict:
-    """Atos federais de financiamento novos nos últimos sete dias."""
-    itens = (comp or {}).get("itens")
+def cartao_atos(mps: dict, corte: datetime) -> dict:
+    """Atos federais de financiamento (as medidas provisórias do ciclo) novos nos últimos sete dias.
+
+    17/10/2026 (HANDOVER_FINANCIAMENTO §9.4): lia `compromissos_federais.json`, uma lista de
+    contexto curada sem data de ato, e o cartão publicava "sem data na origem" como valor. O ato
+    federal com data é a MP (`publicada_em`, do texto da MP); é ela que se conta."""
+    itens = (mps or {}).get("mps")
+    if itens is not None:
+        itens = [dict(m, data=m.get("publicada_em"), instrumento=m.get("numero")) for m in itens]
     if itens is None:
         return sem_coleta("atos_federais_semana", "atos",
-                          "o arquivo de compromissos federais não foi coletado até o corte",
+                          "o arquivo das medidas provisórias não foi coletado até o corte",
                           "Atos federais lidos pelo MARÉ")
     # Lista VAZIA é zero medido: a coleta rodou e não havia ato no período. O caso do A3-10 é
     # outro — há itens, e nenhum deles traz data, de modo que a janela não tem o que medir.
     if itens and not tem_data_legivel(itens):
         return sem_data_na_origem("atos_federais_semana", "atos",
-                                  "a origem dos compromissos federais não traz data de publicação "
+                                  "a origem das medidas provisórias não traz data de publicação "
                                   "do ato; sem data não há janela de sete dias para medir",
                                   "Atos federais lidos pelo MARÉ")
     na = na_janela(itens, corte)
@@ -239,15 +273,122 @@ def cartao_atos(comp: dict, corte: datetime) -> dict:
                   detalhe=(", ".join(filter(None, (a.get("instrumento") for a in na[:3]))) or None))
 
 
-def montar(mps: dict, transf: dict, rec: dict, comp: dict, corte: datetime) -> dict:
+def _execucoes(mps: dict) -> list:
+    return [m for m in (mps or {}).get("mps") or [] if (m.get("execucao") or {}).get("status") == "coletado"]
+
+
+def mes_a_mes(mps: dict) -> list:
+    """Pago por mês de cada MP, desde o mês de publicação; mês corrente marcado parcial. Função pura."""
+    out = []
+    for m in _execucoes(mps):
+        e = m["execucao"]
+        out.append({"id": m.get("id"), "numero": m.get("numero"), "tema": m.get("tema"),
+                    "meses": [{"mes": k, "pago": v.get("pago"), "parcial": bool(v.get("parcial"))
+                               or k in (e.get("meses_parciais") or [])}
+                              for k, v in sorted((e.get("por_mes") or {}).items()) if isinstance(v, dict)]})
+    return out
+
+
+def topo(mps: dict, comp: dict, rec: dict, fns_mun: dict, corte: datetime) -> list:
+    """Os cinco números do topo (HANDOVER_FINANCIAMENTO §3). Cada um com fonte; ausência é lacuna."""
+    mp = (mps or {}).get("mps") or []
+    nums = [str(m.get("numero") or "").replace("MP ", "").split("/")[0] for m in mp]
+    # Anúncio que CONTÉM as MPs (cita o número delas) não soma: duplicaria o valor (§4).
+    outras = [i for i in (comp or {}).get("itens") or [] if isinstance(i.get("valor_total"), (int, float))
+              and not any(n and n in str(i.get("instrumento") or "") for n in nums)]
+    origens = [m for m in mp if isinstance(m.get("valor"), (int, float))] + outras
+    anunciado = (cartao("anunciado_atos", round(sum(float(m.get("valor")) for m in mp if isinstance(m.get("valor"), (int, float)))
+                                                + sum(float(i["valor_total"]) for i in outras), 2),
+                        "reais", "El Niño 2026/2027", "Texto das medidas provisórias e atos estaduais",
+                        detalhe=f"{len(origens)} origens") if origens else
+                 sem_coleta("anunciado_atos", "reais", "nenhum ato com valor lido até o corte", "Atos oficiais"))
+    ex = _execucoes(mps)
+    pagos = [float(m["execucao"]["pago"]) for m in ex if isinstance(m["execucao"].get("pago"), (int, float))]
+    fonte_ex = "Portal da Transparência, Execução da Despesa (arquivos mensais abertos)"
+    if pagos:
+        parcial = {}
+        for m in ex:
+            for k, v in (m["execucao"].get("por_mes") or {}).items():
+                if isinstance(v, dict) and v.get("parcial") and isinstance(v.get("pago"), (int, float)):
+                    parcial[k] = parcial.get(k, 0.0) + float(v["pago"])
+        pago = cartao("pago_ate_agora", round(sum(pagos), 2), "reais",
+                      "desde o mês de publicação de cada medida", fonte_ex)
+        if parcial:
+            k = max(parcial); pago.update(variacao_mes=round(parcial[k], 2), mes_variacao=k, mes_variacao_parcial=True)
+        direto = sum(float((m.get("forma_de_aplicacao") or {}).get("por_modalidade", {}).get("aplicados diretamente pela União") or 0.0)
+                     for m in ex if (m.get("forma_de_aplicacao") or {}).get("status") == "coletado")
+        aplic = [m for m in ex if (m.get("forma_de_aplicacao") or {}).get("status") == "coletado"]
+        base = sum(float(m["execucao"]["pago"]) for m in aplic if isinstance(m["execucao"].get("pago"), (int, float)))
+        gasto = (cartao("gasto_direto_uniao", round(100.0 * direto / base, 1), "% do valor pago",
+                        "desde o mês de publicação de cada medida", fonte_ex,
+                        detalhe="modalidade de aplicação 90, aplicação direta") if base else
+                 sem_coleta("gasto_direto_uniao", "% do valor pago", "a modalidade de aplicação não foi coletada até o corte", fonte_ex))
+    else:
+        pago = sem_coleta("pago_ate_agora", "reais", "a execução das medidas provisórias não foi coletada até o corte", fonte_ex)
+        gasto = sem_coleta("gasto_direto_uniao", "% do valor pago", "a execução das medidas provisórias não foi coletada até o corte", fonte_ex)
+    if (rec or {}).get("municipios"):
+        dc = defesa_civil_ciclo(rec, corte)
+        defesa = cartao("defesa_civil_ciclo", dc["valor_ciclo"], "reais", f"desde {dc['desde']}",
+                        "Portarias da SEDEC no Diário Oficial da União", detalhe=f"{dc['municipios_ciclo']} municípios")
+        defesa.update(municipios=dc["municipios_ciclo"], por_acao=dc["por_acao_ciclo"])
+    else:
+        defesa = sem_coleta("defesa_civil_ciclo", "reais", "as portarias de recursos não foram coletadas até o corte",
+                            "Portarias da SEDEC no Diário Oficial da União")
+    mun = (fns_mun or {}).get("municipios")
+    fonte_fns = "Portal da Transparência, Transferências de Recursos (Fundo Nacional de Saúde)"
+    if mun:
+        meses = sorted({k for v in mun.values() for k in (v.get("meses") or {})})
+        com = {k: float(v.get("emergencia") or 0.0) for k, v in mun.items() if float(v.get("emergencia") or 0.0) > 0}
+        sus = cartao("sus_emergencia", round(sum(com.values()), 2), "reais",
+                     f"{mes_legivel(meses[0])} a {mes_legivel(meses[-1])}" if meses else None, fonte_fns,
+                     detalhe=f"{len(com)} municípios; fundos municipais, linhas cujo nome cita emergência")
+        sus.update(municipios=len(com), ultimo_mes=meses[-1] if meses else None)
+    else:
+        sus = sem_coleta("sus_emergencia", "reais", "os repasses do FNS por município não foram coletados até o corte", fonte_fns)
+    return [anunciado, pago, gasto, defesa, sus]
+
+
+def mapa(rec: dict, fns_mun: dict, ref: list, corte: datetime) -> list:
+    """Pontos do mapa municipal (§5): defesa civil (autorizado desde 29/06) e saúde (FNS de
+    emergência), com a sede de `municipios_ibge_referencia.json`. Município sem sede fica fora,
+    contado em `sem_sede`. Função pura."""
+    sede = {str(r.get("codigo_ibge")).zfill(7): (r.get("lat"), r.get("lon"), r.get("nome"), r.get("uf")) for r in ref or []}
+    pts = []
+    for ib, m in ((rec or {}).get("municipios") or {}).items():
+        atos = [a for a in (m or {}).get("atos") or [] if (d := _data(a.get("data"))) and INICIO_CICLO <= d <= corte]
+        if not atos: continue
+        ult = max(atos, key=lambda a: a.get("data") or "")
+        pts.append({"ibge": str(ib).zfill(7), "origem": "defesa_civil", "valor": round(sum(float(a.get("valor_autorizado") or 0) for a in atos), 2),
+                    "ato": ("Portaria " + str(ult.get("portaria"))) if ult.get("portaria") else None, "data": ult.get("data"), "url": ult.get("url"),
+                    "n_atos": len(atos)})
+    for ib, v in ((fns_mun or {}).get("municipios") or {}).items():
+        e = float(v.get("emergencia") or 0.0)
+        if e > 0:
+            pts.append({"ibge": str(ib).zfill(7), "origem": "saude", "valor": round(e, 2), "ato": "repasse do FNS ligado a emergência",
+                        "data": None, "url": (fns_mun or {}).get("fonte"), "n_atos": None})
+    out = []
+    for p in sorted(pts, key=lambda p: (p["origem"], p["ibge"])):
+        s = sede.get(p["ibge"])
+        if s and s[0] is not None:
+            out.append(dict(p, lat=s[0], lon=s[1], nome=s[2], uf=s[3]))
+        else:
+            out.append(dict(p, lat=None, lon=None, nome=None, uf=None, sem_sede=True))
+    return out
+
+
+def montar(mps: dict, transf: dict, rec: dict, comp: dict, corte: datetime,
+           fns_mun: dict | None = None, ref: list | None = None) -> dict:
     cartoes = [cartao_pago(mps), cartao_transferido(transf), cartao_resposta(rec, corte),
-               cartao_atos(comp, corte)]
+               cartao_atos(mps, corte)]
     return {"_governanca": "Gerado por gerar_financiamento_semana.py. Cada cartão traz o recorte "
                            "que a fonte permite: mês fechado onde a fonte publica por mês, sete "
                            "dias onde o ato tem data. Lacuna é declarada, nunca zero.",
             "corte": corte.strftime("%d/%m/%Y"),
             "janela_dias": JANELA,
-            "cartoes": cartoes}
+            "cartoes": cartoes,
+            "topo": topo(mps, comp, rec, fns_mun, corte),
+            "mes_a_mes": mes_a_mes(mps),
+            "mapa": mapa(rec, fns_mun, ref, corte)}
 
 
 def _autoteste() -> int:
@@ -313,23 +454,40 @@ def _autoteste() -> int:
     ok("resposta soma so resposta e so a janela", c["valor"] == 100.0 and "1 munic" in (c["detalhe"] or ""))
     ok("resposta sem coleta declara lacuna", cartao_resposta({}, corte)["sem_coleta"] is True)
 
-    c = cartao_atos({"itens": [{"data": "2026-09-29", "instrumento": "Portaria 1"},
-                               {"data": "2026-02-01", "instrumento": "Portaria 2"}]}, corte)
-    ok("atos conta so a janela", c["valor"] == 1)
-    # 08/10/2026 (A3-10): itens SEM data não são zero — a janela não tem o que medir.
-    ok("atos com itens sem data declara a CLASSE, nao `sem coleta`",
-       cartao_atos({"itens": [{"instrumento": "Portaria sem data"}]}, corte)["classe"]
-       == "sem_data_na_origem"
-       and cartao_atos({"itens": [{"instrumento": "Portaria sem data"}]},
-                       corte)["sem_coleta"] is False)
-    ok("serie ausente segue sendo `sem coleta`", cartao_atos({}, corte)["sem_coleta"] is True
+    c = cartao_atos({"mps": [{"publicada_em": "29/09/2026", "numero": "MP 1"},
+                             {"publicada_em": "01/02/2026", "numero": "MP 2"}]}, corte)
+    ok("atos conta so a janela, pela data de publicacao da MP", c["valor"] == 1 and c["detalhe"] == "MP 1")
+    ok("atos com MP sem data declara a CLASSE, nao `sem coleta`",
+       cartao_atos({"mps": [{"numero": "MP sem data"}]}, corte)["classe"] == "sem_data_na_origem"
+       and cartao_atos({"mps": [{"numero": "MP sem data"}]}, corte)["valor"] is None)
+    ok("atos lista vazia e ZERO, nao lacuna", cartao_atos({"mps": []}, corte)["valor"] == 0)
+    ok("atos sem arquivo declara lacuna", cartao_atos({}, corte)["sem_coleta"] is True
        and "classe" not in cartao_atos({}, corte))
-    ok("atos com itens sem data nao publica valor",
-       cartao_atos({"itens": [{"instrumento": "Portaria sem data"}]}, corte)["valor"] is None)
-    ok("atos lista vazia e ZERO, nao lacuna",
-       cartao_atos({"itens": []}, corte)["valor"] == 0
-       and cartao_atos({"itens": []}, corte)["sem_coleta"] is False)
-    ok("atos sem arquivo declara lacuna", cartao_atos({}, corte)["sem_coleta"] is True)
+    c = cartao_resposta(base, corte)
+    ok("resposta traz o total do ciclo ao lado da janela (todas as acoes, desde 29/06)",
+       c["valor_ciclo"] == 1000.0 and c["municipios_ciclo"] == 1 and c["municipios_semana"] == 1
+       and c["por_acao_ciclo"] == {"recuperacao": 900.0, "resposta": 100.0})
+    MPS = {"mps": [{"id": "a", "numero": "MP 1.367/2026", "valor": 300.0,
+                    "execucao": {"status": "coletado", "pago": 100.0, "meses_parciais": ["202610"],
+                                 "por_mes": {"202609": {"pago": 60.0}, "202610": {"pago": 40.0, "parcial": True}}},
+                    "forma_de_aplicacao": {"status": "coletado", "por_modalidade": {"aplicados diretamente pela União": 90.0}}}]}
+    COMP = {"itens": [{"valor_total": 1000.0, "instrumento": "Anúncio; MP nº 1.367/2026"}, {"valor_total": 20.0, "instrumento": "Fundo estadual"},
+                      {"valor_total": None, "instrumento": "Lei"}]}
+    FNS = {"municipios": {"1": {"meses": {"202601": [5, 0], "202609": [5, 2]}, "emergencia": 2.0}, "2": {"meses": {}, "emergencia": 0.0}}}
+    t = {x["id"]: x for x in topo(MPS, COMP, base, FNS, corte)}
+    ok("topo: anunciado nao soma o anuncio que contem a MP", t["anunciado_atos"]["valor"] == 320.0 and t["anunciado_atos"]["detalhe"] == "2 origens")
+    ok("topo: pago e variacao do mes parcial", t["pago_ate_agora"]["valor"] == 100.0 and t["pago_ate_agora"]["variacao_mes"] == 40.0)
+    ok("topo: gasto direto em % do pago", t["gasto_direto_uniao"]["valor"] == 90.0)
+    ok("topo: defesa civil desde 29/06 e SUS de emergencia com municipios",
+       t["defesa_civil_ciclo"]["valor"] == 1000.0 and t["sus_emergencia"]["valor"] == 2.0 and t["sus_emergencia"]["municipios"] == 1)
+    ok("topo sem dado declara lacuna em cada cartao", all(x["sem_coleta"] for x in topo({}, {}, {}, {}, corte)))
+    ok("mes a mes marca o parcial", mes_a_mes(MPS)[0]["meses"] == [{"mes": "202609", "pago": 60.0, "parcial": False},
+                                                                  {"mes": "202610", "pago": 40.0, "parcial": True}])
+    base["municipios"]["1"]["atos"][0]["portaria"] = "9"
+    pts = mapa(base, FNS, [{"codigo_ibge": 1, "lat": -1.0, "lon": -2.0, "nome": "X", "uf": "SP"}], corte)
+    ok("mapa: um ponto por municipio e origem, com sede; sem sede fica marcado",
+       [(p["origem"], p["valor"], p["lat"]) for p in pts] == [("defesa_civil", 1000.0, -1.0), ("saude", 2.0, -1.0)]
+       and mapa(base, {}, [], corte)[0]["sem_sede"] is True)
 
     d = montar({}, {}, {}, {}, corte)
     ok("montar devolve os quatro cartoes", [x["id"] for x in d["cartoes"]] == [
@@ -362,7 +520,9 @@ def main() -> int:
                ler("financiamento/municipios/transferencias_uniao.json", {}) or {},
                ler("resposta/recursos_liberados.json", {}) or {},
                ler("financiamento/compromissos_federais.json", {}) or {},
-               datetime(corte.year, corte.month, corte.day))
+               datetime(corte.year, corte.month, corte.day),
+               ler("financiamento/municipios/fns_municipios_2026.json", {}) or {},
+               ler("municipios_ibge_referencia.json", []) or [])
     gravar(ARQUIVO, d)
     for c in d["cartoes"]:
         print(f"  {c['id']}: " + ("sem coleta — " + str(c['detalhe']) if c["sem_coleta"]

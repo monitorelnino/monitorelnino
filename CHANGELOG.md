@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-17 · #PR · Financiamento: números do topo, mês a mês e mapa municipal
+
+`semana.json` ganha `topo` (anunciado, pago, gasto direto pela União, defesa civil desde 29/06, SUS de emergência), `mes_a_mes` (pago por MP) e `mapa` (pontos por município na sede do IBGE). Defesa civil federal traz o total desde 29/06 ao lado da janela de sete dias; atos novos contam as MPs pela data de publicação. Metodologia §33.1.
+
 ## 2026-10-17 · #824 · Consulta do município diz se ele está na rede do Cemaden
 
 `riscos_municipio/<UF>.json` ganha `rede_cemaden` por município, lido da lista oficial do Cemaden (dois PDFs, 1.038 + 95 municípios, publicada em 26/03/2024, data declarada na origem). Nome que não casa com o IBGE fica listado, nunca adivinhado (6 de 1.131 no executor). Sem resposta da fonte, o campo não vai e a origem diz por quê. Proteja-se §4.
