@@ -241,12 +241,53 @@ def coletar() -> int:
             "atualizado_em": hoje}
         mp["destino"] = {"status": "coletado", "medida": "valor pago por UF da unidade gestora (BR = unidade nacional)",
                          "por_uf_pago": {k: round(v, 2) for k, v in sorted(a["por_uf_pago"].items(), key=lambda x: -x[1])}, "atualizado_em": hoje}
+    # 17/10/2026 (HANDOVER_FINANCIAMENTO §9.3): o risco que o ATO declara, lido do texto da MP.
+    for mp in mps["mps"]:
+        lido = ler_risco_declarado(mp)
+        if lido is not None:
+            mp["risco_declarado"] = lido
     mps["gerado_em"] = hoje; mps["hashes_arquivos_mensais"] = hashes
     gravar("financiamento/mps_2026.json", mps)
     log_busca("DOU", 1, [BASE + m for m in meses_lidos], "registro", nivel="nacional", n_resultados=len(meses_lidos),
               resultados="Execução das ações das MPs 1.367 e 1.384: " + "; ".join(f"{mp['numero']} pago R$ {_fmt(mp['execucao']['pago'])} ({', '.join(mp['execucao']['meses'])})" for mp in mps["mps"]))
     print("execucao_mps:", "; ".join(f"{mp['numero']}: empenhado {_fmt(mp['execucao']['empenhado'])} pago {_fmt(mp['execucao']['pago'])}" for mp in mps["mps"]))
     return 0
+
+
+EMENTA = re.compile(r"(Abre cr[ée]dito extraordin[áa]rio[^.]{0,600}\.)", re.I | re.S)
+
+
+def risco_do_ato(texto: str, url: str, data: str) -> dict | None:
+    """O risco que a ementa da MP declara, pela função única de família de evento. Sem ementa
+    legível: None (a leitura não aconteceu). Ementa sem família: risco None, com o trecho — o ato
+    não declara risco, e nada se infere. Função pura."""
+    from scripts.tipo_de_evento_dos_atos import familia_do_texto
+    m = EMENTA.search(re.sub(r"\s+", " ", texto or ""))
+    if not m:
+        return None
+    trecho = m.group(1).strip()
+    fam = familia_do_texto(trecho)
+    return {"risco": fam if fam and fam != "outro_declarado" else None, "trecho": trecho[:400],
+            "url": url, "lido_em": data}
+
+
+def ler_risco_declarado(mp: dict, buscar_fn=None) -> dict | None:
+    """Lê o texto da MP nas fontes oficiais dela (Congresso, Planalto). Falha de rede ou recusa:
+    None, e o campo anterior fica como estava."""
+    from coletores_base import buscar, detectar_muro_de_robo, texto_declarativo
+    buscar_fn = buscar_fn or buscar
+    for url in [u for u in mp.get("fontes") or [] if "congressonacional" in u or "planalto.gov.br" in u]:
+        try:
+            corpo = buscar_fn(url, timeout=60, origem="coletar_execucao_mps")
+            if detectar_muro_de_robo(corpo):
+                continue
+            r = risco_do_ato(texto_declarativo(corpo.decode("utf-8", "replace")), url,
+                             hoje_editorial().strftime("%d/%m/%Y"))
+            if r:
+                return r
+        except Exception as e:  # noqa: BLE001 — recusa e falha viram lacuna, nunca contorno
+            registrar_lacuna(f"Texto da {mp.get('numero')}", f"{type(e).__name__}: {e}", canal="DOU", camada=1, strings=[url])
+    return None
 
 
 def autoteste() -> int:
@@ -288,7 +329,24 @@ def autoteste() -> int:
         # A6-13: o mês corrente da coleta é parcial; o anterior, não
         from datetime import date as _d
         return mes_parcial("202610", _d(2026, 10, 10)) and not mes_parcial("202609", _d(2026, 10, 10))
-    return rodar_autoteste({"agrega por MP e órgão (empenhado/pago)": t1, "destino por UF (nome da UG ou coluna)": t2,
+    def t12():
+        r1 = risco_do_ato("Ementa: Abre crédito extraordinário, em favor do Ministério do Meio Ambiente, para combate a incêndios florestais. Art. 1º",
+                          "u", "17/10/2026")
+        r2 = risco_do_ato("Abre crédito extraordinário em favor do Ministério X, no valor de R$ 1,00. Art. 1º", "u", "17/10/2026")
+        return (r1["risco"] == "fogo" and r1["trecho"].endswith("florestais.") and r2["risco"] is None and r2["trecho"]
+                and risco_do_ato("sem ementa", "u", "d") is None)
+    def t13():
+        def falha(*a, **k): raise OSError("rede")
+        import coletores_base as cb
+        orig = cb.registrar_lacuna; cb.registrar_lacuna = lambda *a, **k: None
+        globals()["registrar_lacuna"], antes = (lambda *a, **k: None), globals()["registrar_lacuna"]
+        try:
+            return ler_risco_declarado({"numero": "MP 1", "fontes": ["https://www.congressonacional.leg.br/x"]}, falha) is None
+        finally:
+            cb.registrar_lacuna = orig; globals()["registrar_lacuna"] = antes
+    return rodar_autoteste({"§9.3: risco declarado pela ementa; sem família, risco nulo com o trecho": t12,
+                            "§9.3: falha de rede não escreve risco": t13,
+                            "agrega por MP e órgão (empenhado/pago)": t1, "destino por UF (nome da UG ou coluna)": t2,
                             "MP 1.384: MDS por órgão superior, Conab por subordinado": t3, "negativo: ação fora dos alvos ignorada": t4,
                             "UF: sufixo '/UF' e fallback BR": t5, "meses e números malformados": t6,
                             "modalidade pelo código do orçamento": t7,

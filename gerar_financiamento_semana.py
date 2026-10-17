@@ -283,6 +283,7 @@ def mes_a_mes(mps: dict) -> list:
     for m in _execucoes(mps):
         e = m["execucao"]
         out.append({"id": m.get("id"), "numero": m.get("numero"), "tema": m.get("tema"),
+                    "risco_declarado": m.get("risco_declarado"),
                     "meses": [{"mes": k, "pago": v.get("pago"), "parcial": bool(v.get("parcial"))
                                or k in (e.get("meses_parciais") or [])}
                               for k, v in sorted((e.get("por_mes") or {}).items()) if isinstance(v, dict)]})
@@ -481,6 +482,7 @@ def _autoteste() -> int:
     ok("topo: defesa civil desde 29/06 e SUS de emergencia com municipios",
        t["defesa_civil_ciclo"]["valor"] == 1000.0 and t["sus_emergencia"]["valor"] == 2.0 and t["sus_emergencia"]["municipios"] == 1)
     ok("topo sem dado declara lacuna em cada cartao", all(x["sem_coleta"] for x in topo({}, {}, {}, {}, corte)))
+    ok("mes a mes leva o risco que o ato declara (ou None)", mes_a_mes(MPS)[0]["risco_declarado"] is None)
     ok("mes a mes marca o parcial", mes_a_mes(MPS)[0]["meses"] == [{"mes": "202609", "pago": 60.0, "parcial": False},
                                                                   {"mes": "202610", "pago": 40.0, "parcial": True}])
     base["municipios"]["1"]["atos"][0]["portaria"] = "9"
