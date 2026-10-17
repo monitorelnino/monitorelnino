@@ -119,7 +119,7 @@
     var fonte = a && document.getElementById(a.getAttribute('data-ficha')), dlg = a && document.querySelector('dialog.detail');
     if (!fonte || !dlg) return;
     e.preventDefault();
-    dlg.querySelector('div').innerHTML = fonte.innerHTML;
+    dlg.querySelector('div').replaceChildren(...fonte.cloneNode(true).childNodes);
     dlg.setAttribute('aria-label', (fonte.querySelector('h2') || a).textContent.trim());
     if (!dlg.open) { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.open = true; }
   });

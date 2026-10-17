@@ -697,17 +697,18 @@ const AREAS = [
     return ses.length ? {se: ses[ses.length - 1], valor: serie[ses[ses.length - 1]]} : null;
   };
 
-  fetch('data/saude_desfechos/dengue_sinan_serie.json').then(r => r.ok ? r.json() : null).then(D => {
-    const br = ((D || {}).serie || {}).BR;
-    const u = br ? ultimaFechada(Object.fromEntries(Object.entries(br).filter(([k]) => k.startsWith(String(D.ano_corrente))))) : null;
-    if (!u) { if (el('nDengueSE')) el('nDengueSE').textContent = 'sem coleta'; return; }
-    if (el('nDengueSE')) el('nDengueSE').textContent = n(u.valor);
-    if (el('rotuloDengueSE')) {
-      el('rotuloDengueSE').textContent = 'notificações de dengue na semana '
-        + semanaEmDatas(u.se.split('-')[0], u.se);
-    }
-    MonitorMapas.credito('fonteDengueSE', {fontes: ['SINAN (Ministério da Saúde)', D.conta === 'notificacoes' ? 'notificações, não casos confirmados' : ''].filter(Boolean), data: D.gerado_em});
-  }).catch(_erroSaude("saude:777"));
+  /* Dengue e chikungunya: o mesmo cartão, cada um do seu arquivo do SINAN. */
+  const cartaoSinan = (arquivo, doenca, idValor, idRotulo, idFonte) =>
+    fetch('data/saude_desfechos/' + arquivo).then(r => r.ok ? r.json() : null).then(D => {
+      const br = ((D || {}).serie || {}).BR;
+      const u = br ? ultimaFechada(Object.fromEntries(Object.entries(br).filter(([k]) => k.startsWith(String(D.ano_corrente))))) : null;
+      if (!u) { if (el(idValor)) el(idValor).textContent = 'sem coleta'; return; }
+      if (el(idValor)) el(idValor).textContent = n(u.valor);
+      if (el(idRotulo)) el(idRotulo).textContent = 'notificações de ' + doenca + ' na semana ' + semanaEmDatas(u.se.split('-')[0], u.se);
+      MonitorMapas.credito(idFonte, {fontes: ['SINAN (Ministério da Saúde)', D.conta === 'notificacoes' ? 'notificações, não casos confirmados' : ''].filter(Boolean), data: D.gerado_em});
+    }).catch(_erroSaude("saude:777"));
+  cartaoSinan('dengue_sinan_serie.json', 'dengue', 'nDengueSE', 'rotuloDengueSE', 'fonteDengueSE');
+  cartaoSinan('chik_sinan_serie.json', 'chikungunya', 'nChikSE', 'rotuloChikSE', 'fonteChikSE');
 
   fetch('data/saude_desfechos/srag_serie.json').then(r => r.ok ? r.json() : null).then(S => {
     const serie = (S || {}).serie;
@@ -972,7 +973,7 @@ const AREAS = [
     if (media == null) { el('nIndiceSaude').textContent = '—'; el('linhaPreparoSaude').textContent = 'sem coleta até o corte'; }
     else {
       el('nIndiceSaude').textContent = umaCasa(media); el('nIndiceSaude').dataset.contar = media;
-      el('faixaSaude').innerHTML = MonitorMapas.pilulaDaFaixa(media);
+      el('faixaSaude').replaceChildren(MonitorMapas.pilulaDaFaixa(media));
       fixa('gaugeFillSaude', media);
       el('linhaPreparoSaude').textContent = 'média de ' + n(res.verificadas) + ' estados verificados · '
         + n(27 - (res.verificadas || 0)) + ' ainda sem número · ' + ((MS || {}).corte || '');
@@ -987,7 +988,7 @@ const AREAS = [
     } else {
       el('respNumSaude').textContent = umaCasa(rp.indice); el('respNumSaude').dataset.contar = rp.indice;
       fixa('respFillSaude', rp.indice);
-      el('respBadgeSaude').innerHTML = '<span class="gfaixa-pill">' + (rp.emergencias
+      el('respBadgeSaude').innerHTML = '<span class="gfaixa-pill">' + esc(rp.emergencias
         ? n(rp.emergencias) + (rp.emergencias === 1 ? ' emergência' : ' emergências') + ' · ' + umaCasa(100 * (rp.pop_sob_emergencia || 0) / (rp.pop_total || 1)) + ' % da população'
         : 'nenhuma emergência declarada') + '</span>';
     }

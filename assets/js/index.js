@@ -1174,7 +1174,7 @@ __load().catch(err => {
 // então aqui só se declara em qual faixa o país está agora (31/08/2026).
 (function(){
   var g = document.getElementById('gaugeNum'), el = document.getElementById('faixaMare');
-  if (g && el) el.innerHTML = 'Preparação demonstrada' + MonitorMapas.pilulaDaFaixa(parseFloat(g.textContent.replace(',', '.')));
+  if (g && el) el.replaceChildren('Preparação demonstrada', MonitorMapas.pilulaDaFaixa(parseFloat(g.textContent.replace(',', '.'))));
 })();
 
 // ===== index.html · bloco 3 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
