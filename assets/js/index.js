@@ -440,7 +440,7 @@ const CAT_ROTULO = {
 };
 function textoDaCapital(reg){
   if (!reg) return 'Ainda não verificamos esta capital com todas as fontes. Isso não é uma afirmação sobre a existência do plano.';
-  const st = statusDoPlano(reg.categoria);
+  const st = ConsultaMunicipio.situacaoDoPlano(reg).estado;
   if (st === 'encontrado') return 'Plano de contingência localizado.';
   if (st === 'estadual') return 'Plano de contingência localizado, no âmbito estadual.';
   if (st === 'nomeado'){
@@ -587,18 +587,6 @@ function selectUF(uf, tileEl){
     if (typeof __dialogDetail.showModal === 'function') __dialogDetail.showModal(); else __dialogDetail.open = true;
   }
 }
-// 14/09/2026 (pedido de Patricia, 13/09): "Como ler o MARÉ" vira ficha popup no MESMO <dialog> do detalhe do estado,
-// aberta pelo link "como ler o MARÉ" logo abaixo da barra do índice; o conteúdo vive oculto em #comoler.
-(function(){
-  const link = document.getElementById('linkComoLer'), fonte = document.getElementById('comoler'), dlg = document.getElementById('detail');
-  if (!link || !fonte || !dlg) return;
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    document.getElementById('detailConteudo').innerHTML = fonte.innerHTML;
-    dlg.setAttribute('aria-label', 'Como ler o MARÉ Legal');
-    if (!dlg.open) { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.open = true; }
-  });
-})();
 
 // ---- Infraestrutura compartilhada com a página Defesa civil (ex-mapas e gráficos): tooltip
 // (usado pela linha do tempo do herói) e HAB_SET (usado no cartão de cidade,
@@ -778,15 +766,8 @@ function popLinha(nome, uf){
 // risco, FGTS, "o que fazer e o que cobrar") saiu por decisão explícita: o cartão respondia a
 // perguntas que ninguém fez ali, e a que importa — "minha cidade tem plano?" — se perdia no meio.
 //
-// O MAPEAMENTO de categoria para "encontrado / não encontrado" é da editoria, confirmado em
-// 30/09/2026, e está declarado aqui em vez de espalhado por condições: quem revisar a regra lê uma
-// tabela, não um emaranhado de `if`.
-const PLANO_ENCONTRADO = ['plano', 'plano_novo', 'plano_readaptado', 'plano_recorrente', 'plano_antigo'];
-// `coberto_estadual` conta como encontrado, com uma palavra a mais: o plano existe e é do estado.
-const PLANO_ESTADUAL = ['coberto_estadual'];
-// `decreto` NÃO é plano: decreto de emergência é resposta, não preparação, e a metodologia nunca os
-// confundiu. `plano_elaboracao` é "ainda não", e `nao_el_nino` é ato de outro risco. Os três, mais
-// `nao_localizado` e `nao_verificado`, levam ao convite para enviar o documento.
+// O MAPEAMENTO de categoria para a situação do plano é da editoria (30/09/2026) e vive numa tabela
+// só, `ConsultaMunicipio.situacaoDoPlano` (assets/js/consulta-municipio.js), lida por todas as páginas.
 // 08/10/2026: vazio, travessao e "Recorrente" nao sao data (A4-13).
 function temData(v){
   const s = String(v == null ? '' : v).trim();
@@ -799,16 +780,6 @@ function temData(v){
 function dataCompleta(v){
   return /^\d{2}\/\d{2}\/\d{4}$/.test(String(dataBR(v) || '').trim());
 }
-function statusDoPlano(categoria){
-  if (PLANO_ENCONTRADO.includes(categoria)) return 'encontrado';
-  if (PLANO_ESTADUAL.includes(categoria)) return 'estadual';
-  // 08/10/2026 (D1): plano CITADO por fonte oficial cujo documento nao foi localizado tem estado
-  // proprio. Dizer "localizado" seria afirmar o que nao se leu; dizer "nao localizamos plano"
-  // apagaria a citacao oficial, que existe e esta datada.
-  if (categoria === 'plano_nomeado') return 'nomeado';
-  return 'nao_encontrado';
-}
-
 // O cartão do município da inicial. O nome chega já como a lista de referência do IBGE o escreve
 // (`ConsultaMunicipio`), e é por ele que se chega ao código.
 function renderMinha(uf, nome, card){
@@ -824,7 +795,7 @@ function renderMinha(uf, nome, card){
 
   let html = `<h4>${esc(nome)} · ${esc(uf)}</h4>`;
 
-  const status = m ? statusDoPlano(m.categoria) : 'nao_encontrado';
+  const status = ConsultaMunicipio.situacaoDoPlano(m).estado;
   if (status === 'encontrado' || status === 'estadual'){
     html += `<p class="fv"><strong>Plano de contingência localizado${status === 'estadual' ? ', no âmbito estadual' : ''}.</strong></p>`;
     /* DECISÃO DA EDITORIA, 03/10/2026: plano publicado em domínio oficial do ente conta no degrau
@@ -838,11 +809,11 @@ function renderMinha(uf, nome, card){
     const q1 = m.fonte ? esc(m.fonte) : 'fonte oficial';
     const d1 = m.data ? ', ' + esc(dataBR(m.data) || m.data) : '';
     html += `<p class="fv"><strong>Plano de contingência citado em fonte oficial (${q1}${d1}); documento não localizado até o corte.</strong></p>`;
-  } else if (m && m.categoria === 'nao_localizado'){
+  } else if (status === 'nao_localizado'){
     // "Não localizamos" só onde a busca DE FATO ocorreu e não achou. É o teto público de ausência
     // do projeto: nunca "não existe", e nunca sobre município que ninguém procurou.
     html += `<p class="fv"><strong>Não localizamos plano de contingência para este município até a data de corte.</strong></p>`;
-  } else if (m && m.categoria === 'decreto'){
+  } else if (status === 'decreto'){
     /* 08/10/2026 (A4-07), texto aprovado na secao C do handover: 97 municipios com decreto de
        emergencia recebiam a frase do NAO VERIFICADO -- e o cartao escondia a unica informacao de
        resposta que existia sobre eles. Eles foram verificados; o que nao tem e plano. */
@@ -854,9 +825,9 @@ function renderMinha(uf, nome, card){
     const dFonte = dec.fonte || m.fonte || 'fonte oficial';
     const dRec = rec.data_reconhecimento || rec.data || '';
     html += `<p class="fv"><strong>Não localizamos plano de contingência até o corte.</strong> O município decretou situação de emergência${dataCompleta(dData) ? ' em ' + esc(dataBR(dData)) : ''} (${esc(dFonte)})${dataCompleta(dRec) ? '; reconhecimento federal em ' + esc(dataBR(dRec)) : ''}.</p>`;
-  } else if (m && m.categoria === 'plano_elaboracao'){
+  } else if (status === 'elaboracao'){
     html += `<p class="fv"><strong>Plano de contingência em elaboração</strong>, segundo ${esc(m.fonte || 'fonte oficial')}${temData(m.data) ? ' (' + esc(dataBR(m.data) || m.data) + ')' : ''}. O documento final não foi localizado até o corte.</p>`;
-  } else if (m && (m.categoria === 'estrutura' || m.categoria === 'nao_el_nino')){
+  } else if (status === 'outro_ato'){
     html += `<p class="fv">Localizamos ${esc(m.documento || 'ato oficial')}${m.fonte ? ' (' + esc(m.fonte) + (temData(m.data) ? ', ' + esc(dataBR(m.data) || m.data) : '') + ')' : ''}. <strong>Não é plano de contingência para os riscos deste ciclo.</strong></p>`;
   } else {
     // §6 (v2.2.4), trava de prova: município que ainda não passou pela bateria completa de fontes
@@ -1186,12 +1157,7 @@ __load().catch(err => {
 // então aqui só se declara em qual faixa o país está agora (31/08/2026).
 (function(){
   var g = document.getElementById('gaugeNum'), el = document.getElementById('faixaMare');
-  if (!g || !el) return;
-  var v = parseFloat(g.textContent.replace(',', '.'));
-  // [rótulo, fundo, texto] — pares conferidos contra WCAG AA (4,5:1) em 31/08/2026:
-  // ferrugem/claro 6,45 · tan/escuro 6,65 · oliva escurecido/claro ≥4,5 · azul/claro 6,91
-  var fx = MonitorMapas.PALETA.faixaDe(v); var f = [MonitorMapas.PALETA.faixaRotulo[fx], MonitorMapas.PALETA.faixas[fx], MonitorMapas.PALETA.faixasTexto[fx]];
-  el.innerHTML = 'Preparação demonstrada<span class="gfaixa-pill" style="background:' + f[1] + '; color:' + f[2] + '">' + f[0] + '</span>';
+  if (g && el) el.replaceChildren('Preparação demonstrada', MonitorMapas.pilulaDaFaixa(parseFloat(g.textContent.replace(',', '.'))));
 })();
 
 // ===== index.html · bloco 3 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
