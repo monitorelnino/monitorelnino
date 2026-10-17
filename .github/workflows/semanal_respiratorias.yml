@@ -19,13 +19,4 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Sondar
         run: |
-          python3 - <<'PY' || true
-          import json, time, coletar_sisab as S
-          from coletores_base import ler
-          t0 = time.time()
-          serie, comps = S.baixar_serie(S.DESFECHOS["diarreias"]["codigos"], S.siglas_de(ler("geo_uf.json")))
-          print("[sisab-serie]", round(time.time() - t0), "s;", len(serie), "UFs;", comps[0], comps[-1])
-          for uf in ("SP", "CE", "RS", "AC"):
-              s = serie[uf]; ks = sorted(s)
-              print("[sisab-serie]", uf, ks[0], ks[-1], len(ks), "nulos", sum(v is None for v in s.values()), [(k, s[k]) for k in ks[-4:]], [(k, s[k]) for k in ks[:2]])
-          PY
+          CHAVES='(leptospirose|casos prov|casos confirmados|Semana Epidemiol|SE ?\d{1,2})' python3 sonda_e1.py fontes "https://saude.rs.gov.br/upload/arquivos/202607/20122514-informativo-epidemiologico-arboviroses-2026-ate-se-27.pdf" "https://rondonia.ro.gov.br/wp-content/uploads/2026/08/BOLETIMARBOVIROSES_-semana-28-de-2025-a-sem-27-de-2026.pdf" "https://vigilancia.saude.rr.gov.br/wp-content/uploads/2026/02/Boletim-de-Monitoramento-Epidemiologico-–-ARBOVIROSES-–-2026_001.pdf" "https://goias.gov.br/saude/boletins-epidemiologicos/" "https://saude.rs.gov.br/informativos-epidemiologicos" || true
