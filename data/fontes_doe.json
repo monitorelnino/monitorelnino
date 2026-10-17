@@ -372,9 +372,9 @@
    "ultima_tentativa": "2026-10-16"
   },
   "MG": {
-   "adaptador": null,
+   "adaptador": "edicao_mg",
    "url": "https://www.jornalminasgerais.mg.gov.br",
-   "status": "sem adaptador de busca",
+   "status": "a_verificar",
    "ultima_tentativa": "2026-10-16",
    "sondagem": {
     "plataforma": "angular",
@@ -384,7 +384,10 @@
     "sondado_em": "02/10/2026"
    },
    "motivo": "jornalminasgerais.mg.gov.br é SPA Angular; a API declarada no bundle (`/api/v1/`) responde 404 em toda rota tentada (raiz, edicoes, publicacoes); endpoints reais a ler no bundle",
-   "medido_em": "15/10/2026"
+   "medido_em": "17/10/2026",
+   "acesso_desde": "2026-10-01",
+   "caminho": "API pública declarada no código da página (api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=AAAA-MM-DD): caderno principal (Diário do Executivo) como envelope assinado CMS com o PDF dentro; lida do runner em 17/10/2026 (runs 39029434439, 39030190359)",
+   "recusa_parcial": "edição de 10/09/2026 responde HTTP 401 (recusa respeitada); 01/10/2026 em diante abre"
   },
   "RJ": {
    "adaptador": null,

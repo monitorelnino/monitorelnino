@@ -358,6 +358,9 @@ def busca_de_declaracao(uf: str, registro: dict, adaptadores=None) -> dict:
                            else f"nenhuma edição lida por data ({sit['modo']})")}
     if (PADROES.get(uf) or {}).get("fora_da_leitura"):   # edição que o padrão não alcança: a metade não fecha
         return {"lacuna": f"{len(lidas)} edição(ões) lida(s); fora da leitura: {PADROES[uf]['fora_da_leitura']}"}
+    desde_fonte = ((adaptadores or {}).get(uf) or {}).get("acesso_desde") or INICIO_DO_CICLO
+    if desde_fonte > INICIO_DO_CICLO:
+        return {"lacuna": f"{len(lidas)} edição(ões) lida(s) desde {desde_fonte}; antes disso a fonte responde 401 (recusa respeitada)"}
     em = max(dt.datetime.strptime(e["em"], "%d/%m/%Y").date() for e in lidas)
     return {"consultado_em": em.strftime("%d/%m/%Y"), "edicoes_lidas": len(lidas)}
 
@@ -434,7 +437,9 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
         achado = re.search(r"DO(\d{4,6})_", str((item or {}).get("url") or ""))
         if achado and (item or {}).get("decisao") == "lida":
             ancoras_vivas[data_lida] = int(achado.group(1))
-    datas = [d for d in datas_do_periodo(desde, ate) if d not in edicoes or a_reler(edicoes[d])][:TETO_EDICOES]
+    # Edição anterior à janela pública da fonte responde 401: a leitura não desce abaixo dela.
+    datas = [d for d in datas_do_periodo(max(desde, cfg.get("acesso_desde") or desde), ate)
+             if d not in edicoes or a_reler(edicoes[d])][:TETO_EDICOES]
     # Quando o nome do arquivo pede o NÚMERO da edição, percorre-se do mais novo para o mais velho:
     # a âncora de cada data passa a ser a vizinha, e a deriva por passo é de uma ou duas edições.
     # Da outra ordem, a janela de oito não alcançava dois meses de deriva e tudo dava 404.
@@ -789,6 +794,9 @@ def _autoteste() -> int:
        and busca_de_declaracao("PB", {"edicoes": {"d": dict(lida, termos_versao=VERSAO_DOS_TERMOS)}}, {})
        == {"consultado_em": "02/10/2026", "edicoes_lidas": 1})
     ok("UF sem rota é lacuna da metade estadual", "lacuna" in busca_de_declaracao("XX", {}, {}))
+    ok("edição anterior à janela pública (401) deixa a metade em lacuna, com a data",
+       "2026-10-01" in busca_de_declaracao("XX", {"edicoes": {"d": dict(lida, termos_versao=VERSAO_DOS_TERMOS)}},
+                                           {"XX": {"adaptador": "edicao_mg", "acesso_desde": "2026-10-01"}})["lacuna"])
     ok("edição que o padrão não alcança (extraordinária de RO) deixa a metade em lacuna, com o que foi lido",
        "fora da leitura" in busca_de_declaracao("RO", {"edicoes": {"d": dict(lida, termos_versao=VERSAO_DOS_TERMOS)}}, {})["lacuna"])
 
