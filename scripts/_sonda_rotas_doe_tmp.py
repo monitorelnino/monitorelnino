@@ -98,29 +98,16 @@ def mg_bruto(data):
 
 
 if __name__ == "__main__":
-    print("=== MG fim de semana, feriado e borda da janela ===")
-    for d in ["2026-10-10", "2026-10-11", "2026-10-12", "2026-10-17", "2026-09-30", "2026-09-22", "2026-09-18", "2026-09-17", "2026-09-16", "2026-09-15", "2026-09-11"]:
-        mg_bruto(d)
-    print("=== RJ edição ===")
-    b = corpo("https://www.ioerj.com.br/portal/modules/conteudoonline/do_seleciona_edicao.php?data=MjAyNjEwMTY=", 1500)
-    if b:
-        t = b.decode("utf-8", "replace")
-        ctx(b, r"mostra_edicao|session=|\.pdf|caderno|Parte", 120, 15)
-        m = re.search(r'(mostra_edicao\.php\?session=[^"\']+)', t)
-        if m:
-            u = urllib.parse.urljoin("https://www.ioerj.com.br/portal/modules/conteudoonline/", m.group(1))
-            print("  sessão:", m.group(1)[:200])
-            try:
-                print("  sessão decodificada:", base64.b64decode(m.group(1).split("session=")[1] + "==")[:300])
-            except Exception as e:  # noqa: BLE001
-                print("  b64 falhou", e)
-            b2 = pega(u)
-            if b2:
-                t2 = b2.decode("utf-8", "replace")
-                print("  mostra_edicao", len(b2), "B")
-                print("   ", re.sub(r"\s+", " ", t2)[:4000])
-    print("=== RS secweb ===")
-    b = pega("https://secweb.procergs.com.br/doe/")
-    if b:
-        t = b.decode("utf-8", "replace")
-        print(re.sub(r"\s+", " ", re.sub(r"<style.*?</style>|<link[^>]*>", " ", t, flags=re.S))[:6000])
+    print("=== RJ visualizador ===")
+    base = "https://www.ioerj.com.br/portal/modules/conteudoonline/"
+    b = pega(base + "do_seleciona_edicao.php?data=MjAyNjEwMTY=")
+    t = b.decode("utf-8", "replace")
+    m = re.search(r'(mostra_edicao\.php\?session=[^"\']+)', t)
+    b2 = pega(base + m.group(1))
+    t2 = b2.decode("utf-8", "replace")
+    corpo_sem_css = re.sub(r"<style.*?</style>", " ", t2, flags=re.S)
+    i0 = corpo_sem_css.find("Caderno:")
+    print(re.sub(r"\s+", " ", corpo_sem_css[i0:])[:9000])
+    js = pega(base + "include/pdfjs/web/viewer-min.js")
+    if js:
+        ctx(js, r"DEFAULT_URL|\.php|session|file=|tmp\.pdf", 200, 25)
