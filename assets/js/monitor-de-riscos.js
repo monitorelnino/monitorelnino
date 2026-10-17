@@ -159,7 +159,7 @@ const ufsCom = teste => UFS.filter(uf => SINAIS.uf[uf] && teste(componentesDe(uf
   // "Boletim prevê para", ao lado do título de cada bloco de família.
   const preve = (id, teste) => { const el = document.getElementById(id); if (!el) return;
     const ufs = ufsCom(teste);
-    el.innerHTML = ufs.length ? '<span>Boletim prevê para:</span> <span class="chips">' + MonitorMapas.chipsDeUF(ufs) + '</span>' : ''; };
+    el.innerHTML = ufs.length ? '<span>Boletim prevê para:</span> <span class="chips">' + MonitorMapas.chipsDeUF(ufs.map(uf => esc(uf))) + '</span>' : ''; };
   preve('preveSeca', c => c.includes('estiagem') || c.includes('incendios') || c.includes('calor'));
   preve('preveChuva', c => c.includes('chuvas'));
 })();
