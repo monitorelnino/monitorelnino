@@ -178,8 +178,9 @@ def sondar() -> int:
         print(f"  {uf}: {c or 'sem RD'}" + (f" · atraso {meses_de_atraso(c, hoje)} meses" if c else ""))
     if not ult:
         return 0
-    comp = ult.get("AC") or max(ult.values())
-    nome = f"RDAC{comp[2:4]}{comp[5:7]}.dbc"
+    uf_c, nome_c = "AP", "Amapá"  # UF pequena presente no TabNet (AC e RR faltavam em jul/2026)
+    comp = "2026-07"
+    nome = f"RD{uf_c}{comp[2:4]}{comp[5:7]}.dbc"
     try:
         mdtm = f.sendcmd(f"MDTM {nome}")
     except Exception as e:  # noqa: BLE001
@@ -206,10 +207,10 @@ def sondar() -> int:
         idents[str(r.get("IDENT"))] = idents.get(str(r.get("IDENT")), 0) + 1
     print(f"IDENT: {idents}")
     for r in regs:
-        r["_UF"] = "AC"
+        r["_UF"] = uf_c
     ag = agregar(regs)
     for g in ag:
-        print(f"  {g}: {ag[g].get('AC')}")
+        print(f"  {g}: {ag[g].get(uf_c)}")
     # TabNet: uma célula (Acre, internações, competência do arquivo)
     try:
         form = form_tabnet(buscar(TABNET_DEF, timeout=60).decode("latin-1"))
@@ -229,9 +230,9 @@ def sondar() -> int:
                       b"Arquivos": (arq[0] if arq else "").encode("latin-1"),
                       b"formato": b"table", b"mostre": b"Mostra"})
         html = enviar(TABNET_TAB, dados, timeout=90).decode("latin-1")
-        tab = celula_tabnet(html, "Acre")
-        print(f"TabNet Acre {comp}: {tab} · arquivo decodificado: {ag.get('total', {}).get('AC', {}).get(comp)}"
-              f" · bate: {tab == ag.get('total', {}).get('AC', {}).get(comp)}")
+        tab = celula_tabnet(html, nome_c)
+        meu = ag.get("total", {}).get(uf_c, {}).get(comp)
+        print(f"TabNet {nome_c} {comp}: {tab} · arquivo decodificado: {meu} · bate: {tab == meu}")
         if tab is None:
             plano = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html))
             i = plano.find("Norte")
