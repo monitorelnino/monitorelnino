@@ -4248,3 +4248,12 @@ Pedido da editoria (16/10/2026): coletar os desfechos do SUS de todas as fontes 
 **A primeira rota provada: leptospirose.** SINAN, casos confirmados (`CLASSI_FIN = 1`), por UF de residência e mês de início dos sintomas, arquivos finais de 2019 a 2024 e preliminares de 2025 e 2026. Conferência em 17/10/2026: o arquivo preliminar de 2026 dá 1.594 casos confirmados, e o TabNet do DATASUS dá 1.594 para o mesmo ano, com as 27 UFs iguais (Rio Grande do Sul, 180 e 180). Mês sem caso dentro do período coberto pelos arquivos é zero medido; mês depois do último notificado não existe na série. Os três últimos meses são parciais.
 
 **O que a sondagem de 17/10 mediu, e o que ficou de fora.** No FTP do SINAN há arquivos de surto de DTA (`SDTA`), malária fora da Amazônia (`MALA`) e hepatite A só até 2023 no preliminar. O relatório público de produção do SISAB é formulário aberto, sem login, com atendimentos por CIAP/CID, por estado e mês até agosto de 2026: é a rota candidata das diarreias. O TabNet do DATASUS (último recurso, decisão da editoria de 16/10) não tem página de diarreias agudas no índice público. A busca por máquina do portal de dados abertos do SUS não respondeu em formato legível. O Monitor não atribui casos ao El Niño.
+
+## 109. Óbitos registrados na forma comum dos desfechos (17/10/2026)
+
+**O que a série conta.** Registros de óbito lavrados em cartório no mês, por UF, como o Portal da Transparência do Registro Civil (ARPEN/CNJ) agrega, de janeiro de 2019 ao mês corrente, em `data/saude_desfechos/obitos.json`, na forma do §108. É a mesma consulta do coletor de 29/09 (`coletar_obitos_registro_civil.py`), estendida até 2019 para a faixa habitual e os cortes do mapa; o arquivo antigo, que a página lê, não muda. Não é óbito ocorrido no mês nem óbito por causa. O mês corrente é parcial: o registro entra ao longo dos dias. Mês que a fonte não respondeu fica sem valor e declarado, nunca zero.
+
+**Leitura de 17/10/2026, no executor.** 94 meses e 27 UFs; setembro de 2026, 120.473 registros no país. A faixa habitual de 2019 a 2025 inclui 2020 e 2021, anos da pandemia de covid-19, que elevam o percentil superior da série.
+
+**O que ficou de fora.** O painel por causa (doenças respiratórias, cardíacas) não está mais no portal: os endereços antigos respondem com erro do servidor, e o código do portal não os chama. O SIM preliminar, com causa básica, está no FTP do DATASUS por UF e ano, com defasagem de cerca de dois meses; entra como série com causa numa próxima etapa. O Monitor não atribui óbitos ao El Niño.
+
