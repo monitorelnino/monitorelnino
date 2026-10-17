@@ -97,20 +97,43 @@ def mg_bruto(data):
         print(f"  MG {data}: SEM arquivo: {json.dumps(o, ensure_ascii=False)[:500]}")
 
 
-if __name__ == "__main__":
-    print("=== RJ visualizador ===")
+def rj(data):
+    import time
     base = "https://www.ioerj.com.br/portal/modules/conteudoonline/"
-    b = pega(base + "do_seleciona_edicao.php?data=MjAyNjEwMTY=")
+    d64 = base64.b64encode(data.replace("-", "").encode()).decode()
+    b = pega(base + "do_seleciona_edicao.php?data=" + d64)
+    if b is None:
+        return
     t = b.decode("utf-8", "replace")
-    m = re.search(r'(mostra_edicao\.php\?session=[^"\']+)', t)
-    b2 = pega(base + m.group(1))
-    t2 = b2.decode("utf-8", "replace")
-    corpo_sem_css = re.sub(r"<style.*?</style>", " ", t2, flags=re.S)
-    js = pega(base + "include/pdfjs/web/viewer-min.js") or b""
-    for nome, fonte in (("página", t2), ("viewer", js.decode("utf-8", "replace"))):
-        for m in re.finditer(r"\bpd\b", fonte):
-            print(f"  [{nome}] …", fonte[max(0, m.start() - 250):m.end() + 250].replace("\n", " "))
-        for m in re.finditer(r"<script[^>]*>(.*?)</script>", fonte, re.S) if nome == "página" else []:
-            corpo_js = m.group(1).strip()
-            if corpo_js and "_gaq" not in corpo_js:
-                print(f"  [script inline] {re.sub(r'\\s+', ' ', corpo_js)[:1500]}")
+    cadernos = re.findall(r'href="(mostra_edicao\.php\?session=[^"]+)"[^>]*>([^<]+)</a>', t)
+    print(f"  RJ {data}: {len(cadernos)} caderno(s): {[c[1].strip() for c in cadernos]}")
+    for href, nome in cadernos[:1]:
+        time.sleep(2)
+        pag = pega(base + href).decode("utf-8", "replace")
+        m = re.search(r'var pd = "([0-9A-F-]{36})"', pag)
+        if not m:
+            print("    sem pd")
+            continue
+        pd = m.group(1)
+        url = base + "mostra_edicao.php?k=" + pd[:12] + "P" + pd[12:]
+        time.sleep(2)
+        pdf = pega(url, 120)
+        if pdf is None:
+            continue
+        if pdf[:5] != b"%PDF-":
+            print(f"    {nome.strip()}: não-PDF {len(pdf)} B {pdf[:120]!r}")
+            continue
+        import pypdf
+        r = pypdf.PdfReader(io.BytesIO(pdf))
+        tx = r.pages[0].extract_text() or ""
+        print(f"    {nome.strip()}: PDF {len(pdf)} B, {len(r.pages)} p., p1: {re.sub(r'\s+', ' ', tx)[:160]}")
+        print(f"    url: {url}")
+        time.sleep(2)
+        de_novo = pega(url, 120)
+        print(f"    mesma url de novo: {'PDF igual' if de_novo == pdf else ('outro' if de_novo else 'falhou')}")
+
+
+if __name__ == "__main__":
+    print("=== RJ por data ===")
+    for d in ["2026-10-16", "2026-07-01", "2026-10-11"]:
+        rj(d)
