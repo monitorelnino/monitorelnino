@@ -29,6 +29,6 @@ jobs:
       # Válvula coleta-dia (janela A3, 17/10/2026): sondagem das rotas dos diários. Este ramo não vai à main.
       # Válvula coleta-dia (janela A3, 17/10/2026): sondagem das rotas dos diários. Este ramo não vai à main.
       comandos: |
-        scripts/sondar_rotas_doe.py --trecho https://diario.imprensaoficial.al.gov.br/assets/index-344f66e8.js~fetchEditions(~Ze.get(~/search|https://www.jornalminasgerais.mg.gov.br/main-A77B4DKJ.js~Gi.API+~.API+"|https://www.diariooficial.rs.gov.br/main-WOM4SM2S.js~getRestEndpoint(){~restEndpoint|https://www.lexml.gov.br/sru?operation=searchRetrieve&version=1.1&maximumRecords=2&query=decreto|http://www.diariooficial.rn.gov.br/dei/dorn3~pdf~__VIEWSTATE~Pesquis|https://www.imprensaoficial.rr.gov.br/~pdf~_visualizar|https://www.ioerj.com.br/portal/modules/conteudoonline/~pdf~edicao~mostra|http://www.ioepa.com.br/pesquisa~form~input
+        scripts/sondar_rotas_doe.py --trecho https://diario.imprensaoficial.al.gov.br/apinova/api/editions/published?page=1|https://diario.imprensaoficial.al.gov.br/apinova/api/editions/published?page=8|https://diario.imprensaoficial.al.gov.br/apinova/api/editions/published/2026/09|https://www.diariooficial.rs.gov.br/environments/environment.json|https://www.jornalminasgerais.mg.gov.br/main-A77B4DKJ.js~Gi.API~jornal/~caderno|https://www.lexml.gov.br/
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
