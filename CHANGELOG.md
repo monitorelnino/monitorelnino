@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 `julgar_filas` copiava `criterios` do veredito para cada pista, em duplicata com `promocoes_automaticas.json`, e não gravava `leu_documento`. O fechamento por prazo de 09/10 (A1-16), que lê `leu_documento` na pista, nunca o encontrava. Agora a pista guarda `leu_documento`, e as 7.333 cópias idênticas saem do dado. A fila de pistas cai de 44,2 para 40,9 MB antes de a fila reentrante julgar 14 mil pistas.
 
+## 2026-10-17 · #818 · Imprensa da saúde usa o parser, a fonte e o cursor da imprensa regional
+
+`monitorar_imprensa_saude.py` tinha cópias de `montar_url`, `extrair_itens_rss`, `parece_fonte_oficial`, `_hash` e do cursor de `monitorar_imprensa_regional.py`; passa a importá-las (o cursor recebe o caminho). As pistas da saúde ganham o domínio do veículo, que o parser regional já lia. Saem também três imports sem uso. Consolidação, item 5. −57 linhas.
+
 ## 2026-10-17 · #816 · Mapa de fogo no satélite de referência; consulta do município com calor e reconhecimento
 
 Os pontos do mapa vinham de todos os satélites e do arquivo do dia corrente, enquanto os números saem do satélite de referência no último dia completo. `focos_pontos.json` passa a nascer do mesmo CSV e do mesmo satélite que `focos_referencia.json`, no mesmo coletor. METODOLOGIA §41.8. `riscos_municipio/<UF>.json` ganha a classe de calor do MS e o reconhecimento federal (Proteja-se §7.3).

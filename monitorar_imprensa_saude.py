@@ -42,23 +42,18 @@ import pathlib
 import re
 import sys
 import time
-import unicodedata
-import urllib.parse
 import urllib.request
-from coletores_base import ua_de, gravar_em, hoje_editorial  # noqa: E402  (§228: um cliente só, com propósito)
+from coletores_base import ua_de, gravar_em  # noqa: E402  (§228: um cliente só, com propósito)
+# O parser do RSS, a heurística de fonte, a identidade da pista e o cursor são os da imprensa
+# regional (17/10/2026): eram cópias; `\.gov\.br` já cobre os padrões de secretaria de saúde.
+from monitorar_imprensa_regional import (_hash, carregar_cursor, extrair_itens_rss,  # noqa: E402
+                                         montar_url, parece_fonte_oficial, salvar_cursor)
 
 RAIZ = pathlib.Path(__file__).parent
 
 FILA = RAIZ / "data" / "pistas_imprensa_saude.json"
 CURSOR = RAIZ / "data" / "imprensa_saude_cursor.json"
-RSS = "https://news.google.com/rss/search"
 UA = {"User-Agent": ua_de("descoberta editorial na imprensa de saúde")}
-
-PADROES_FONTE_PROVAVEL_OFICIAL = [
-    r"\.gov\.br", r"\.leg\.br", r"\.jus\.br", r"diariomunicipal\.com\.br",
-    r"diariooficial", r"\bdoe\.", r"\bdom\.", r"in\.gov\.br",
-    r"queridodiario", r"imprensaoficial", r"saude\.\w+\.gov\.br", r"^ses\w*\.\w+\.gov\.br",
-]
 
 # 18/09/2026 (handover ponto cego saúde, §3.1): os termos que faltavam quando a Bahia
 # publicou — nomes que espelham o programa federal do MS, não mais só "arboviroses".
@@ -79,44 +74,6 @@ def _get(url, timeout=30):
     except Exception as e:
         print(f"[aviso] falha ao consultar imprensa: {e}")
         return None
-
-
-def montar_url(query):
-    """Monta a URL do Google News RSS para uma query, em português do Brasil."""
-    q = urllib.parse.quote(query)
-    return f"{RSS}?q={q}&hl=pt-BR&gl=BR&ceid=BR:pt-419"
-
-
-def extrair_itens_rss(xml):
-    """Extrai (titulo, link, data, fonte) de um retorno RSS do Google News — mesmo
-    parser tolerante por regex de monitorar_imprensa_regional.py."""
-    itens = []
-    for bloco in re.findall(r"<item>(.*?)</item>", xml or "", re.S):
-        titulo = re.search(r"<title>(.*?)</title>", bloco, re.S)
-        link = re.search(r"<link>(.*?)</link>", bloco, re.S)
-        data = re.search(r"<pubDate>(.*?)</pubDate>", bloco, re.S)
-        fonte = re.search(r"<source[^>]*>(.*?)</source>", bloco, re.S)
-        if not (titulo and link):
-            continue
-        t = re.sub(r"<!\[CDATA\[|\]\]>", "", titulo.group(1)).strip()
-        itens.append({
-            "titulo": t,
-            "url": link.group(1).strip(),
-            "data_publicacao": (data.group(1).strip() if data else ""),
-            "fonte_veiculo": (re.sub(r"<!\[CDATA\[|\]\]>", "", fonte.group(1)).strip() if fonte else ""),
-        })
-    return itens
-
-
-def parece_fonte_oficial(url):
-    """Heurística de ORDENAÇÃO apenas (ver TRAVA ABSOLUTA) — nunca confirmação."""
-    return any(re.search(p, url, re.I) for p in PADROES_FONTE_PROVAVEL_OFICIAL)
-
-
-def _hash(p):
-    """Identidade estável de uma pista para deduplicação entre execuções."""
-    import hashlib
-    return hashlib.sha256(f"{p['alvo']}|{p['titulo']}|{p['url']}".encode()).hexdigest()[:16]
 
 
 NOMES_UF = {
@@ -214,20 +171,6 @@ def montar_universo(saude_json):
             else:
                 camada_c.append(("C-amplo", sigla, queries))
     return camada_a + camada_b + camada_c
-
-
-def carregar_cursor(total):
-    if CURSOR.exists():
-        c = json.load(open(CURSOR, encoding="utf-8"))
-        if c.get("tamanho_universo") == total:
-            return c.get("posicao", 0)
-    return 0
-
-
-def salvar_cursor(posicao, total):
-    # §229 (atômico) e §227 (data da redação, não do runner).
-    gravar_em(CURSOR, {"posicao": posicao, "tamanho_universo": total,
-                       "atualizado_em": hoje_editorial().isoformat()})
 
 
 def carregar_fila():
@@ -375,7 +318,7 @@ def main():
 
     saude = json.load(open(RAIZ / "data" / "saude_uf.json", encoding="utf-8"))
     universo = montar_universo(saude)
-    pos = carregar_cursor(len(universo))
+    pos = carregar_cursor(len(universo), CURSOR)
     fila = carregar_fila()
     total_novas = 0
     total_filtradas = 0
@@ -399,7 +342,7 @@ def main():
             total_novas += len(novas)
             time.sleep(1.0)  # cortesia de taxa, mesmo padrão das outras rotinas do pipeline
 
-    salvar_cursor((pos + limite) % len(universo), len(universo))
+    salvar_cursor((pos + limite) % len(universo), len(universo), CURSOR)
     gravar_em(FILA, fila)   # §229
 
     print(f"Universo de busca: {len(universo)} alvos (camadas A/B/C); "
