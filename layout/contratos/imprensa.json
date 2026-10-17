@@ -7,7 +7,7 @@
   "figura": ".cartao-mapa",
   "grade_figuras": ".grade-figuras--3"
  },
- "_divergencias_17_10": "Regra > handover, declaradas: (1) as grades que o handover pedia com dois cartões por linha usam `.grade-figuras--3`, porque um cartão de meia largura passa do teto de 40% (`layout/regras.json` → `componentes.fracao_maxima_da_largura`); (2) os seis cartões ficam em duas linhas de três (`.grade-numeros--3 grade-numeros--compacta`, 2 colunas no celular), porque não existe variante de seis numa linha e a página não cria componente; (3) o texto da semana é coluna única: a colunação de texto saiu do site em 16/10 (editoria); (4) \"Erratas e nome\" é o título da seção, como no §2 do handover.",
+ "_divergencias_17_10": "Regra > handover, declaradas: (1) as grades que o handover pedia com dois cartões por linha usam `.grade-figuras--3`, porque um cartão de meia largura passa do teto de 40% (`layout/regras.json` → `componentes.fracao_maxima_da_largura`); (2) os seis cartões numa linha pela variante compacta da B1 (`.grade-numeros--compacta`, 3 colunas até 1020 px e 2 no celular); (3) o texto da semana é coluna única: a colunação de texto saiu do site em 16/10 (editoria); (4) \"Erratas e nome\" é o título da seção, como no §2 do handover.",
  "secoes": [
   {
    "id": "abertura",
@@ -20,7 +20,7 @@
    "id": "semana",
    "h2": "Esta semana no MARÉ",
    "tipo": "numeros",
-   "grade": ".grade-numeros--3",
+   "grade": ".grade-numeros--compacta",
    "cartoes": [
     {
      "id": "decretos_na_semana",
@@ -53,7 +53,8 @@
      "chave": "imprensa/semana.json"
     }
    ],
-   "_nota": "Cartões e texto (`texto_pronto`, dois parágrafos) desenhados por assets/js/imprensa.js a partir de data/imprensa/semana.json. Cartão ausente no dado ou `sem_coleta` mostra \"sem coleta até o corte\"."
+   "_nota": "Cartões e texto (`texto_pronto`, dois parágrafos) desenhados por assets/js/imprensa.js a partir de data/imprensa/semana.json. Cartão ausente no dado ou `sem_coleta` mostra \"sem coleta até o corte\".",
+   "linhas": 1
   },
   {
    "id": "concluir",

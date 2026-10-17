@@ -13,9 +13,21 @@ não pontuados permanecem na versão corrente.
 
 A Imprensa passa a abrir com a apresentação aprovada e "Esta semana no MARÉ" (seis cartões e o texto gerados da edição). Seguem as recomendações por tema (Preparação, Saúde, Financiamento), como citar e reproduzir, quando o site é atualizado, como os índices funcionam, glossário, erratas e nome. Saem a grade de páginas, a FAQ em acordeão e os moldes que só ela usava.
 
+## 2026-10-17 · #843 · Consulta do município: a situação do plano numa função comum
+
+A classificação do plano de contingência do município (encontrado, estadual, citado, não localizado, decreto, em elaboração, outro ato, ainda não verificado) sai de `index.js` e vira `ConsultaMunicipio.situacaoDoPlano`, que a inicial já usa e Para gestores pode usar sem copiar. Nenhuma frase muda. Pedido da B2 (12:11).
+
+## 2026-10-17 · #835 · Niño 3.4 semanal no coletor de sinais; o apoio técnico volta a ser coletado
+
+Fonte nova `noaa_nino34_semanal` (arquivo `wksst9120.for` do CPC) em `sinais_risco.json → enos.nino34_semanal`, de 2025 em diante, para o gráfico abaixo do RONI. Achado no caminho: desde 30/09 a rodada completa pulava a camada de apoio técnico, e ONI, Niño 3.4 mensal e a discussão do CPC estavam parados em 30/09. Voltam a ser coletados.
+
 ## 2026-10-17 · #831 · Ato de resposta aplicado pelo juiz passa pela porta do carimbo
 
 `julgar_e_aplicar_descobertas.aplicar_resposta` gravava `atos_resposta.json` sem `carimbar_atos`, a porta única do carimbo e do tipo de evento: 13 atos de imprensa ficaram com `tipo_evento` nulo (achado da A2). Agora grava pela porta; a próxima escrita de qualquer coletor recarimba os 13. Trava no autoteste.
+
+## 2026-10-17 · #838 · Saúde: risco previsto em etiquetas de sigla; grade dos estados com uma barra
+
+Na seção dos estados, o mapa de risco previsto vira etiquetas de sigla por família, o mesmo componente do Monitor de riscos (agora em `MonitorMapas.faixaPrevista`, sem cópia). A legenda do mapa do MARÉ Saúde mostra o intervalo de cada faixa, lido do dado. Os cartões dos 27 estados ficam com uma barra só. Números do topo: `.grade-numeros--compacta` põe até seis numa linha (três no tablet, dois no celular), já no Monitor de riscos e na Saúde.
 
 ## 2026-10-17 · #830 · Leitor dos arquivos .dbc do DATASUS e rotas de internações e óbitos medidas
 
