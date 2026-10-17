@@ -12,6 +12,10 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-17 · #836 · Diarreias pelo SISAB; o mês da extração sai da leptospirose
 `coletar_sisab.py` lê do relatório público do SISAB os atendimentos da atenção primária por diarreia (CIAP D11, D70, D73; CID A00–A09), por UF e mês desde 2019, e confere os filtros que o próprio CSV declara. Na leptospirose, o mês em que o arquivo preliminar foi extraído deixa de contar como coberto, e `ultimo` ganha o último mês consolidado. METODOLOGIA §108.
 
+## 2026-10-17 · #830 · Leitor dos arquivos .dbc do DATASUS e rotas de internações e óbitos medidas
+
+`coletar_sih.py` lê os arquivos mensais de internação do SIH/SUS (`datasus-dbc` e `dbfread`, ambos MIT) e agrega por grupo de causa, UF e mês; `coletar_obitos.py` estende os óbitos registrados até 2019 importando o coletor existente. Ainda não gravam dado. Sondagem no executor: Amapá, jul/2026, 6.160 internações no arquivo e no TabNet. O catálogo passa seis desfechos hospitalares a candidato.
+
 ## 2026-10-17 · #832 · Para gestores: consulta do município, o que a lei exige, recursos em cartões
 
 A página passa a ter a consulta do município (módulo comum) com quatro cartões: plano, cadastro nacional, risco previsto do estado e recursos federais de 2026. "O que a lei exige de cada governo" vira três cartões de número, as listas perdem a caixa de marcar e "Como os recursos chegam" ganha três cartões com as âncoras de sempre. Sai o ponteiro para a consulta da inicial.
