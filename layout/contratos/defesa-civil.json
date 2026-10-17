@@ -7,7 +7,9 @@
     "figura": ".cartao-mapa",
     "grade_figuras": ".grade-figuras--3"
   },
-  "figura_principal": "boxEmergencias",
+  "figura_principal": {
+    "mapa": "boxEmergencias"
+  },
   "_nota_figura_principal": "Decisão da editoria por delegação à central (16/10/2026, LOTES 22:15 UTC): uma figura principal em largura total por página. Aqui, o mapa municipal das emergências, com a legenda e as barras por tipo de evento ao lado (`.figura--dupla`, o mesmo arranjo do mapa de focos do Monitor de riscos).",
   "secoes": [
     {

@@ -5,7 +5,8 @@
  * municipal das emergências (figura principal) e o caminho do decreto ao reconhecimento.
  *
  * UMA fonte para o conjunto dos municípios com decreto: `data/resposta/municipios_decretados.json`,
- * o consolidado de `gerar_resposta.py`. O evento declarado, as datas e a pendência vêm dele; a página
+ * o consolidado de `gerar_resposta.py`. O evento declarado no ato (`evento_declarado`), as datas e a
+ * pendência (`dias_sem_reconhecimento`) vêm dele; a página
  * não casa ato por conta própria (antes casava `atos_resposta.json` aqui, uma segunda definição do
  * mesmo conjunto). Campo que o gerador ainda não escreve aparece como lacuna da sua classe.
  *
@@ -133,10 +134,10 @@ function __init(totalMunicipios){
   const corteDecretos = (DECRETADOS && DECRETADOS.gerado_em) || window.__metaAtualizado || null;
   const decretados = DECRETADOS && DECRETADOS.municipios
     ? Object.values(DECRETADOS.municipios).filter(m => m.decreto).map(m => {
-        const ev = m.evento_observado;
-        const eventos = ev && ev !== EM_CLASSIFICACAO ? [].concat(ev).map(nomeDoEvento) : [];
+        const ev = m.evento_declarado;
+        const eventos = Array.isArray(ev) ? ev.map(nomeDoEvento) : [];
         const fontes = m.fontes || [];
-        return {cod: m.ibge, nome: m.nome, uf: m.uf, eventos: eventos, classificado: ev !== EM_CLASSIFICACAO && ev != null,
+        return {cod: m.ibge, nome: m.nome, uf: m.uf, eventos: eventos, classificado: Array.isArray(ev),
                 familia: familiaDe(eventos[0]), decreto: m.primeiro_decreto || null, reconhecimento: m.primeiro_reconhecimento || null,
                 reconhecida: !!m.reconhecido, tipos: m.tipos || [], dias: m.dias_sem_reconhecimento,
                 atoMunicipal: fontes.find(f => f.canal !== 'DOU') || null, portaria: fontes.find(f => f.canal === 'DOU') || null};
@@ -234,7 +235,8 @@ function __init(totalMunicipios){
       no_estado: (PREPOSICAO[uf] || 'Em') + ' ' + (NOME_UF[uf] || uf), n_dec: e.n_municipios || 0, n_mun: e.total_municipios || 0,
       pct: (Math.round((e.fracao_municipios || 0) * 1000) / 10).toLocaleString('pt-BR'),
       n_rec: (e.tons || {}).reconhecido || 0,
-      evento: e.evento_mais_declarado ? nomeDoEvento(e.evento_mais_declarado).toLowerCase() : 'em classificação até o corte'})) : null;
+      evento: e.evento_mais_declarado === undefined ? 'em classificação até o corte'
+        : e.evento_mais_declarado ? [].concat(e.evento_mais_declarado).map(x => nomeDoEvento(x).toLowerCase()).join(' e ') : 'tipo não declarado nos atos'})) : null;
     card.innerHTML = '<h4>' + esc(nome) + ' · ' + esc(uf) + '</h4><div class="grade-cartoes">'
       + cartao('cartao--acento-neutro', 'defesa-civil.municipio.aviso.titulo', corpoAviso)
       + cartao('cartao--acento-argila', 'defesa-civil.municipio.decreto.titulo', corpoDecreto)
