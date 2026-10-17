@@ -701,7 +701,31 @@ def edicoes_pi(buscar_fn, base, enviar_fn=None):
     return fn
 
 
-EDICOES_POR_DATA = {"edicao_ce": edicoes_ce, "edicao_pb": edicoes_pb,
+# AL (17/10/2026, janela A3, runs 39027673783 e 39028133123): o diário é uma SPA cuja API pública
+# está declarada no próprio código da página (`Ze.defaults.baseURL = …/apinova/api`). As chamadas
+# que a página faz: `editions/published/AAAA/MM` lista as edições do mês (id, número, suplemento,
+# data) e `editions/downloadPdf/<id>` serve o PDF. A mesma plataforma serve outros clientes.
+EDICOES_APINOVA = "{base}/apinova/api/editions/published/{ano}/{mm}"
+PDF_APINOVA = "{base}/apinova/api/editions/downloadPdf/{id}"
+
+
+def edicoes_apinova(buscar_fn, base):
+    meses, raiz = {}, base.rstrip("/")
+
+    def fn(data):
+        if data[:7] not in meses:
+            o = json.loads(buscar_fn(EDICOES_APINOVA.format(base=raiz, ano=data[:4], mm=data[5:7]),
+                                     timeout=60, origem="coletar_doe").decode("utf-8", "replace"))
+            if not isinstance(o, dict) or not isinstance(o.get("editions"), list):
+                raise FormatoDaBuscaMudou("listagem do mês sem a lista 'editions'")
+            meses[data[:7]] = o["editions"]
+        return [{"edicao": f"{e.get('number')}" + (" suplemento" if e.get("suplement") else ""),
+                 "url": PDF_APINOVA.format(base=raiz, id=e["id"])}
+                for e in meses[data[:7]] if e.get("id") and str(e.get("publication_date") or "")[:10] == data]
+    return fn
+
+
+EDICOES_POR_DATA = {"edicao_ce": edicoes_ce, "edicao_pb": edicoes_pb, "edicao_apinova": edicoes_apinova,
                     "edicao_apifront": edicoes_apifront, "edicao_ms": edicoes_ms, "edicao_pi": edicoes_pi}
 
 
@@ -1042,6 +1066,11 @@ def _t_edicao_por_data() -> bool:
 
 
 # Recorte REAL da listagem do DOE-MS, 15/10/2026 (run 38820165075).
+# Recorte REAL da listagem do mês do DOE-AL, 17/10/2026 (run 39028133123).
+FIXTURE_APINOVA = (b'{"status":"success","editions":[{"id":51928,"number":2905,"edition_type_name":"Di\\u00e1rio Oficial '
+                   b'do Estado de Alagoas","suplement":false,"publication_date":"2026-10-16T03:00:00.000000Z"},{"id":51929,'
+                   b'"number":2905,"suplement":true,"publication_date":"2026-10-16T03:00:00.000000Z"},{"id":51920,'
+                   b'"number":2904,"suplement":false,"publication_date":"2026-10-14T03:00:00.000000Z"}]}')
 # Recorte REAL da listagem do DOE-PI de 14/10/2026 (run 38879265290): edição e suplementar.
 FIXTURE_LISTAGEM_PI = (b'{"draw":1,"recordsTotal":2,"recordsFiltered":2,"data":[["<a href=\\"..\\/doe\\/files\\/diarios\\/anexo'
                        b'\\/d714cae0-47e5-4560-a789-ac9d636518ef\\/e2052f2e-6ed8-4bcb-b399-5f48c77567b3.pdf\\" target=\\"_blank\\">'
@@ -1320,6 +1349,13 @@ def autoteste() -> int:
                      and r[1] == {"a": 1, "b": 1})(
                 itens_sp("SP", "2026-10-01", "2026-10-15", termos=["a", "b"], dormir=lambda s: None,
                          buscar_fn=lambda u, **k: FIXTURE_PUBLICACAO_SP if "/publications/" in u else FIXTURE_BUSCA_SP)),
+        "DOE-AL: a listagem do mês dá edição e suplemento da data; outra data é vazio; listagem sem a lista LEVANTA":
+            lambda: (edicoes_apinova(lambda u, **k: FIXTURE_APINOVA, "https://h/")("2026-10-16") == [
+                         {"edicao": "2905", "url": "https://h/apinova/api/editions/downloadPdf/51928"},
+                         {"edicao": "2905 suplemento", "url": "https://h/apinova/api/editions/downloadPdf/51929"}]
+                     and edicoes_apinova(lambda u, **k: FIXTURE_APINOVA, "https://h")("2026-10-15") == []
+                     and _levanta(lambda: edicoes_apinova(lambda u, **k: b'{"status":"error"}', "https://h")("2026-10-16"),
+                                  FormatoDaBuscaMudou)),
         "DOE-PI: a listagem do dia dá edição e suplementar com o PDF; dia sem edição é vazio; linha sem PDF LEVANTA":
             lambda: (edicoes_pi(None, "https://www.diario.pi.gov.br/doe/", lambda u, d, **k: FIXTURE_LISTAGEM_PI)("2026-10-14") == [
                          {"edicao": "197/2026 SUPLEMENTAR", "url": "https://www.diario.pi.gov.br/doe/files/diarios/anexo/"
