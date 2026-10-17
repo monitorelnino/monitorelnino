@@ -13,7 +13,7 @@ jobs:
     timeout-minutes: 40
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
-        with: { persist-credentials: false, sparse-checkout-cone-mode: false, sparse-checkout: "/*.py\n/scripts/\n/config/\n/data/robots_registro.json\n/data/painel_coletores.json" }
+        with: { persist-credentials: false, sparse-checkout-cone-mode: false, sparse-checkout: "/*.py\n/requirements.txt\n/scripts/\n/config/\n/data/robots_registro.json\n/data/painel_coletores.json" }
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
       - run: pip install -r requirements.txt
