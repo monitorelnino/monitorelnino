@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-17 · #829 · Leitor dos arquivos .dbc do DATASUS e rotas de internações e óbitos medidas
+
+`coletar_sih.py` lê os arquivos mensais de internação do SIH/SUS (`datasus-dbc` e `dbfread`, ambos MIT) e agrega por grupo de causa, UF e mês; `coletar_obitos.py` estende os óbitos registrados até 2019 importando o coletor existente. Ainda não gravam dado. Sondagem no executor: Amapá, jul/2026, 6.160 internações no arquivo e no TabNet. O catálogo passa seis desfechos hospitalares a candidato.
+
 ## 2026-10-17 · #825 · Figura principal larga
 
 Cada página pode ter uma figura principal em largura total (mapa ou série), declarada no contrato, além do diagrama; no Monitor de riscos, o mapa de focos e o RONI. `verificar_conformidade.py` reprova figura larga não declarada; `verificar_layout.py` lê a fração de um terço de `regras.json`. Decisão de 16/10/2026.

@@ -79,7 +79,8 @@ Atualizado em 17/10/2026.
 | `coletar_financiamento.py` | — | `compromissos_federais.json`, `consultas.json`, `emendas.json`, `financiamento_uf.json`, `por_uf.json`, `recursos_uf.json` (+2) | — | — | não |
 | `coletar_fns.py` | — | `fns_2026.json` | — | 1 | não |
 | `coletar_normais_inmet.py` | — | `normais_capitais.json` | — | — | não |
-| `coletar_obitos_registro_civil.py` | — | `saude_desfechos/obitos_registro_civil.json` | — | — | não |
+| `coletar_obitos.py` | — | — | — | — | não |
+| `coletar_obitos_registro_civil.py` | — | `saude_desfechos/obitos_registro_civil.json` | — | 1 | não |
 | `coletar_painel_am.py` | — | `pistas_painel_am.json` | — | — | não |
 | `coletar_prioritarios_mma.py` | — | `enquadramento_federal.json` | — | — | não |
 | `coletar_recursos_resposta.py` | — | `estados.json`, `indice.json`, `monitor_saude.json`, `municipios.json`, `resposta/recursos_liberados.json`, `saude_uf.json` | — | — | não |
@@ -87,14 +88,15 @@ Atualizado em 17/10/2026.
 | `coletar_saude.py` | — | `saude_federal.json`, `saude_sinais.json`, `saude_uf.json` | — | 1 | não |
 | `coletar_saude_estadual.py` | — | `pistas_imprensa_saude.json`, `saude_desfechos/fontes_uf.json` | — | 1 | não |
 | `coletar_semiarido_sudene.py` | — | `enquadramento_federal.json` | — | — | não |
-| `coletar_sg_esus.py` | — | `estados.json`, `indice.json`, `monitor_saude.json`, `municipios.json`, `saude_desfechos/sindrome_gripal_serie.json`, `saude_uf.json` | — | — | não |
+| `coletar_sg_esus.py` | — | `estados.json`, `indice.json`, `monitor_saude.json`, `municipios.json`, `saude_desfechos/sindrome_gripal_serie.json`, `saude_uf.json` | — | 1 | não |
 | `coletar_siconfi_182.py` | — | `despesa_182.json` | — | 1 | não |
+| `coletar_sih.py` | — | — | — | 1 | não |
 | `coletar_sinais_risco.py` | — | — | — | 1 | não |
 | `coletar_srag_gripe.py` | — | `saude_desfechos/infogripe_diagnostico.json` | — | 3 | não |
 | `coletar_srag_sivep.py` | — | `saude_desfechos/srag_serie.json`, `saude_desfechos/srag_sivep_agregados.json` | — | — | não |
 | `coletar_transferegov.py` | — | `financiamento/consultas.json`, `financiamento/por_uf.json`, `financiamento/programas_faf_2026.json`, `financiamento/serie_nacional.json`, `transferegov_el_nino_revisar.json` | — | — | não |
 | `coletar_transferencias_municipais.py` | — | `estados.json`, `indice.json`, `monitor_saude.json`, `municipios.json`, `saude_uf.json`, `transferencias_uniao.json` | — | 1 | não |
-| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `evidencias.json`, `fontes_consultadas.json`, `log_buscas.json`, `robots_registro.json` (+1) | — | **180** | não |
+| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `evidencias.json`, `fontes_consultadas.json`, `log_buscas.json`, `robots_registro.json` (+1) | — | **182** | não |
 | `consultar_querido_diario.py` | — | `pistas_querido_diario.json` | — | 1 | não |
 | `converter_contribuicao.py` | — | — | — | — | SIM |
 | `descobrir_dominios.py` | — | `dominios_oficiais.json` | — | — | não |

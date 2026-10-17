@@ -29,3 +29,7 @@ Markdown==3.10.2
 certifi==2026.7.22
 # 14/10/2026 (F56): `scripts/verificar_scripts_dos_workflows.py` reprova nome usado sem definição.
 pyflakes==3.4.0
+# 17/10/2026 (E2): arquivos .dbc do DATASUS (SIH, SIM, SINAN) = DBF comprimido. `datasus-dbc`
+# descomprime e `dbfread` lê; os dois MIT. `pyreaddbc` ficou fora por ser AGPL-3.0.
+datasus-dbc==0.1.3
+dbfread==2.0.7

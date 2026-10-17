@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>17/10/2026 · Leitor dos arquivos .dbc do DATASUS e rotas de internações e óbitos medidas</dt>
+      <dd>`coletar_sih.py` lê os arquivos mensais de internação do SIH/SUS (`datasus-dbc` e `dbfread`, ambos MIT) e agrega por grupo de causa, UF e mês; `coletar_obitos.py` estende os óbitos registrados até 2019 importando o coletor existente. Ainda não gravam dado. Sondagem no executor: Amapá, jul/2026, 6.160 internações no arquivo e no TabNet. O catálogo passa seis desfechos hospitalares a candidato.</dd>
       <dt>17/10/2026 · Figura principal larga</dt>
       <dd>Cada página pode ter uma figura principal em largura total (mapa ou série), declarada no contrato, além do diagrama; no Monitor de riscos, o mapa de focos e o RONI. `verificar_conformidade.py` reprova figura larga não declarada; `verificar_layout.py` lê a fração de um terço de `regras.json`. Decisão de 16/10/2026.</dd>
       <dt>17/10/2026 · Consulta do município diz se ele está na rede do Cemaden</dt>
@@ -165,8 +167,6 @@
       <dd>`coletar_doe.py` ganha `edicao_pi`: a listagem do dia do diário atual do Piauí (`www.diario.pi.gov.br/doe/`, a mesma rota que a tabela do sítio chama) dá cada edição, suplementar incluído, e o PDF. RR segue `sem adaptador de busca`: o PDF só sai por POST numa rota que não responde ao runner.</dd>
       <dt>16/10/2026 · Rodapé só com o e-mail de contato</dt>
       <dd>O rodapé de todas as páginas, inclusive as do blog (pelo gerador), traz só o e-mail de contato; sai o rótulo &quot;Imprensa:&quot;. Na Imprensa, o rodapé traz o e-mail de imprensa, que vive só nessa página.</dd>
-      <dt>16/10/2026 · Relógio e despachante com checkout esparso (F63)</dt>
-      <dd>O relógio da nuvem morreu no checkout completo da `main` (7 GB de evidências) dentro do teto de 5 min, na abertura de 16/10. Relógio (no ramo `relogio` e no espelho da `main`) e despachante passam a ler só `scripts/`, `config/` e `data/noite/`: checkout de 8 s. O ensaio 13 reprova checkout completo.</dd>
     </dl>
   </section>
 </main>

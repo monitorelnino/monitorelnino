@@ -69,8 +69,8 @@
    "comprometimento": "água; calor",
    "sistema": "SISAB (APS) / SIH",
    "periodicidade": "semanal",
-   "fonte_aberta": "SIH/SUS por TabNet ou arquivos .dbc no FTP do DATASUS (formato proprietário comprimido); o Portal de Dados Abertos publica só indicadores agregados da RIPSA. Conferido em 29/09/2026.",
-   "status_coleta": "nao_coletavel_por_maquina"
+   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor ainda não escrito.",
+   "status_coleta": "candidato"
   },
   {
    "id": "desnutricao",
@@ -108,8 +108,8 @@
    "comprometimento": "ar; fumaça",
    "sistema": "SIH/SUS (CID J)",
    "periodicidade": "mensal",
-   "fonte_aberta": "SIH/SUS por TabNet ou arquivos .dbc no FTP do DATASUS (formato proprietário comprimido); o Portal de Dados Abertos publica só indicadores agregados da RIPSA. Conferido em 29/09/2026.",
-   "status_coleta": "nao_coletavel_por_maquina"
+   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor ainda não escrito.",
+   "status_coleta": "candidato"
   },
   {
    "id": "intox_fumaca",
@@ -117,8 +117,8 @@
    "comprometimento": "fumaça",
    "sistema": "Sinan (intoxicação exógena) / CIATox",
    "periodicidade": "semanal",
-   "fonte_aberta": "SIH/SUS por TabNet ou arquivos .dbc no FTP do DATASUS (formato proprietário comprimido); o Portal de Dados Abertos publica só indicadores agregados da RIPSA. Conferido em 29/09/2026.",
-   "status_coleta": "nao_coletavel_por_maquina"
+   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor ainda não escrito.",
+   "status_coleta": "candidato"
   },
   {
    "id": "cardio",
@@ -126,8 +126,8 @@
    "comprometimento": "calor; fumaça",
    "sistema": "SIH/SUS (CID I)",
    "periodicidade": "mensal",
-   "fonte_aberta": "SIH/SUS por TabNet ou arquivos .dbc no FTP do DATASUS (formato proprietário comprimido); o Portal de Dados Abertos publica só indicadores agregados da RIPSA. Conferido em 29/09/2026.",
-   "status_coleta": "nao_coletavel_por_maquina"
+   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor ainda não escrito.",
+   "status_coleta": "candidato"
   },
   {
    "id": "renal",
@@ -135,8 +135,8 @@
    "comprometimento": "água; calor",
    "sistema": "SIH/SUS (CID N)",
    "periodicidade": "mensal",
-   "fonte_aberta": "SIH/SUS por TabNet ou arquivos .dbc no FTP do DATASUS (formato proprietário comprimido); o Portal de Dados Abertos publica só indicadores agregados da RIPSA. Conferido em 29/09/2026.",
-   "status_coleta": "nao_coletavel_por_maquina"
+   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor ainda não escrito.",
+   "status_coleta": "candidato"
   },
   {
    "id": "calor_agravo",
@@ -144,8 +144,8 @@
    "comprometimento": "calor",
    "sistema": "SIH / SIM / Painel Nacional de Excesso de Calor",
    "periodicidade": "semanal",
-   "fonte_aberta": "SIH/SUS por TabNet ou arquivos .dbc no FTP do DATASUS (formato proprietário comprimido); o Portal de Dados Abertos publica só indicadores agregados da RIPSA. Conferido em 29/09/2026.",
-   "status_coleta": "nao_coletavel_por_maquina"
+   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor ainda não escrito.",
+   "status_coleta": "candidato"
   },
   {
    "id": "pele_olhos",
@@ -171,7 +171,7 @@
    "comprometimento": "todos",
    "sistema": "SIM",
    "periodicidade": "mensal (preliminar)",
-   "fonte_aberta": "Portal da Transparência do Registro Civil (ARPEN/CNJ), API aberta, mensal por UF — sinal precoce sem causa. SIM (OpenDataSUS) publica CSV por ano até 2026 e entra como consolidação com causa; coletor ainda não escrito.",
+   "fonte_aberta": "Portal da Transparência do Registro Civil (ARPEN/CNJ), API aberta, mensal por UF desde 2019 — sinal precoce sem causa; o painel por causa não está mais no portal (17/10/2026). SIM preliminar com causa básica: arquivos por UF e ano no FTP do DATASUS, defasagem de cerca de 2 meses, provado em 17/10/2026; coletor ainda não escrito.",
    "status_coleta": "coletado",
    "arquivo": "obitos_registro_civil.json"
   },
