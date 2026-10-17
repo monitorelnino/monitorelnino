@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-17 · #816 · Monitor de riscos recebe as três listas federais de risco
+## 2026-10-17 · #817 · Monitor de riscos recebe as três listas federais de risco
 
 Os mapas dos indicados pela União ao cadastro nacional (deslizamento e enchente), do Semiárido e dos prioritários do fogo saem da Defesa civil e entram no Monitor de riscos, como contexto dos blocos de chuva, seca e fogo, sem lista embaixo. O link da inicial e o índice de conteúdo apontam para `#boxListaIndicados`; o portão de mapas cobra as listas no Monitor. `mapaDeContagem` passa a ser do componente comum de mapas.
 
