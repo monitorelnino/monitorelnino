@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-17 · #900 · Para gestores: consulta do município, o que a lei exige, recursos em cartões
+## 2026-10-17 · #832 · Para gestores: consulta do município, o que a lei exige, recursos em cartões
 
 A página passa a ter a consulta do município (módulo comum) com quatro cartões: plano, cadastro nacional, risco previsto do estado e recursos federais de 2026. "O que a lei exige de cada governo" vira três cartões de número, as listas perdem a caixa de marcar e "Como os recursos chegam" ganha três cartões com as âncoras de sempre. Sai o ponteiro para a consulta da inicial.
 
