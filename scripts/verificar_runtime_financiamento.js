@@ -84,7 +84,7 @@ setTimeout(() => {
         && /nao trazem data|não trazem data/.test(txt("topoAtosRotulo")));
     } else if (a && !a.sem_coleta) {
       teste("atos novos: zero é zero, e a janela é dita",
-        txt("topoAtosSemana") === String(a.valor)
+        txt("topoAtosSemana") === (Number(a.valor) === 0 ? "nenhum" : String(a.valor))   // zero por extenso (regras.json)
         && /sete dias/.test(txt("topoAtosRotulo")));
     }
   }
