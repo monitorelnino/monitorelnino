@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-17 · #826 · Pedidos da A3: muro da LexML e elo próprio para recuperar as edições dos diários
+
+`detectar_muro_de_robo` reconhece a "Verificação de segurança — Senado Federal", que a LexML serve com HTTP 200: é recusa, não conteúdo. Novo chamador do coletor, só por disparo, `recuperar_edicoes_doe.yml` (300 min, prazo de 280, grupo da noite), para a recuperação do canal 2, que não cabe no elo da saúde estadual.
+
 ## 2026-10-17 · #828 · Portões: 119 para 92 comandos
 
 O autoteste do layout roda dentro da conformidade; a Imprensa usa o medidor de página do layout. Os `testar_*.py` sem flag e catorze autotestes puros do bloco "sempre" passam a rodar só em `verificar_autotestes_isolados.py`, que já os cobria e agora também prova que não alteram `data/`. Mesma cobertura, provada por mutação. Registro do #784: entrou junto a fusão `verificar_carimbo_da_rodada.py`.
