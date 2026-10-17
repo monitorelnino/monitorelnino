@@ -29,7 +29,6 @@ jobs:
       # Válvula coleta-dia (janela A3, 17/10/2026): sondagem das rotas dos diários. Este ramo não vai à main.
       # Válvula coleta-dia (janela A3, 17/10/2026): sondagem das rotas dos diários. Este ramo não vai à main.
       comandos: |
-        scripts/sondar_rotas_doe.py --codigo SE=https://iose.se.gov.br/,SC=https://portal.doe.sea.sc.gov.br/v2.44.07/,RR=https://www.imprensaoficial.rr.gov.br/,BA=https://dool.egba.ba.gov.br/
-        scripts/sondar_rotas_doe.py --trecho https://www.ioerj.com.br/portal/modules/conteudoonline/~mostra_edicao~.pdf~index.php?|http://www.diariooficial.rn.gov.br/~pdf~href|https://www.imprensaoficial.rr.gov.br/~|https://diariooficial.ma.gov.br/public/index.xhtml
+        scripts/sondar_rotas_doe.py --trecho https://iose.se.gov.br/diario-oficial~.pdf~href=~edicao|https://portal.doe.sea.sc.gov.br/v2.44.07/main.7e3964baade27065.js~/apis~doe-api/edicao"~buscar-edicao~edicao/arquivo|https://www.imprensaoficial.rr.gov.br/~URL=|https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-05~erros":|https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-06~erros":|https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-07~erros":
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
