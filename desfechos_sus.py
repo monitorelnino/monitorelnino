@@ -18,7 +18,8 @@ O QUE CADA CAMPO GARANTE
 - `cortes_mapa`: os quintis (20, 40, 60, 80) de todos os valores UF × período de 2019–2025
   (decisão da editoria, §6a de 16/10). **Congelados**: calculados uma vez; a regravação reaproveita
   os do arquivo anterior enquanto a métrica e o período forem os mesmos.
-- `ultimo[UF]`: o período mais recente com valor e se ele é parcial.
+- `ultimo[UF]`: o período mais recente com valor e se ele é parcial; `consolidado`, o mais recente
+  que já não é parcial (é o que o mapa mostra).
 - `parcial`: os últimos períodos, que ainda crescem com notificação atrasada.
 - `anos_preliminares`: anos que a fonte ainda publica como preliminares (o número pode mudar).
 
@@ -72,8 +73,19 @@ def uf_por_codigo(ler_fn=ler) -> dict:
 
 
 # ------------------------------------------------------------------ montagem (funções puras)
-def _chaves_parciais(periodos: list, n: int) -> list:
-    return sorted(periodos)[-n:] if n > 0 else []
+def _chaves_parciais(periodos: list, n: int, periodo: str = "mes") -> list:
+    """Os n últimos períodos do calendário até o mais recente (mês a mês, não chave a chave: um
+    ano sem arquivo no meio da série não empurra o parcial para trás). Função pura."""
+    if n <= 0 or not periodos:
+        return []
+    if periodo != "mes":
+        return sorted(periodos)[-n:]
+    a, m = int(max(periodos)[:4]), int(max(periodos)[5:])
+    out = []
+    for _ in range(n):
+        out.append(f"{a}-{m:02d}")
+        a, m = (a - 1, 12) if m == 1 else (a, m - 1)
+    return sorted(p for p in out if p in set(periodos))
 
 
 def _soma_br(serie: dict, ufs_esperadas: int = 27) -> dict:
@@ -111,7 +123,7 @@ def montar(desfecho: str, rotulo: str, unidade: str, periodo: str, territorio: s
     base = taxa or serie
     metrica = "por_100mil" if taxa else "contagem"
     todos = sorted({p for s in serie.values() for p in s})
-    parciais = _chaves_parciais(todos, n_parciais)
+    parciais = _chaves_parciais(todos, n_parciais, periodo)
     if (anterior and anterior.get("cortes_mapa", {}).get("metrica") == metrica
             and anterior.get("periodo") == periodo and anterior["cortes_mapa"].get("cortes")):
         cortes = anterior["cortes_mapa"]
@@ -127,6 +139,10 @@ def montar(desfecho: str, rotulo: str, unidade: str, periodo: str, territorio: s
             p = com_valor[-1]
             ultimo[uf] = {"periodo": p, "valor": s[p], "por_100mil": (taxa or {}).get(uf, {}).get(p),
                           "parcial": p in parciais}
+            fechados = [q for q in com_valor if q not in parciais]
+            if fechados:
+                q = fechados[-1]
+                ultimo[uf]["consolidado"] = {"periodo": q, "valor": s[q], "por_100mil": (taxa or {}).get(uf, {}).get(q)}
     obj = {"esquema": ESQUEMA, "desfecho": desfecho, "rotulo": rotulo, "unidade": unidade,
            "periodo": periodo, "territorio": territorio, "fonte": fonte, "cadencia": cadencia,
            "coletado_em": coletado_em, "anos_preliminares": sorted(set(anos_preliminares)),
@@ -210,6 +226,7 @@ def _t_forma():
     o = _montado()
     return (o["parcial"] == ["2026-11", "2026-12"] and o["ultimo"]["CE"]["periodo"] == "2026-12"
             and o["ultimo"]["CE"]["parcial"] and o["por_100mil"]["PE"]["2019-01"] == 1.0
+            and o["ultimo"]["CE"]["consolidado"]["periodo"] == "2026-10"
             and len(o["cortes_mapa"]["cortes"]) == 4 and o["cortes_mapa"]["metrica"] == "por_100mil"
             and set(o["faixa_habitual"]["CE"]["01"]) >= {"mediana", "p75", "p90"} and "BR" not in o["serie"])
 

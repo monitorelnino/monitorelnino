@@ -13,13 +13,14 @@
    "comprometimento": "água; saneamento",
    "sistema": "Sivep-DDA / Sinan (surtos DTHA); SISAB (atendimentos APS)",
    "periodicidade": "semanal",
-   "fonte_aberta": "MDDA/SIVEP-DDA só por TabNet (consulta interativa); o OpenDataSUS hospeda apenas o módulo indígena (Siasi). O Zenodo que alimentava a série está parado.",
-   "status_coleta": "nao_coletavel_por_maquina",
+   "fonte_aberta": "SISAB, relatório público de produção (formulário sem login, exportação CSV): atendimentos individuais na atenção primária com CIAP-2 D11, D70, D73 ou CID-10 A00–A09, por UF e mês, de 2013 em diante. O Sivep-DDA não tem conjunto aberto nem página no TabNet público (17/10/2026).",
+   "status_coleta": "candidato",
    "rota": {
-    "sistema": "SISAB, relatório público de produção (formulário, sem login)",
+    "sistema": "SISAB (relatório público de produção)",
     "url": "https://sisab.saude.gov.br/paginas/acessoRestrito/relatorio/federal/saude/RelSauProducao.xhtml",
-    "provado_em": null,
-    "prova": "formulário lido em 17/10/2026: linha Estado, coluna Competência (jan/2023 a ago/2026), filtro CIAP/CID; consulta ainda não feita. TabNet do DATASUS sem página de DDA no índice público."
+    "provado_em": "17/10/2026",
+    "prova": "executor (run 39033172689): 27 UFs, jan/2019 a ago/2026, nenhuma célula vazia, 200 s; o CSV devolve os filtros aplicados e o coletor confere",
+    "coletor": "coletar_sisab.py --desfecho diarreias"
    }
   },
   {
