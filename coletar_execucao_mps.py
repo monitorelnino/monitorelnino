@@ -254,7 +254,7 @@ def coletar() -> int:
     return 0
 
 
-EMENTA = re.compile(r"(Abre cr[ée]dito extraordin[áa]rio[^.]{0,600}\.)", re.I | re.S)
+EMENTA = re.compile(r"(Abre cr[ée]dito extraordin[áa]rio.{0,600}?\.)(?=\s+(?:Art|[A-ZÁÉÍÓÚ])|\s*$)", re.S)
 
 
 def risco_do_ato(texto: str, url: str, data: str) -> dict | None:
@@ -276,10 +276,14 @@ def ler_risco_declarado(mp: dict, buscar_fn=None) -> dict | None:
     None, e o campo anterior fica como estava."""
     from coletores_base import buscar, detectar_muro_de_robo, texto_declarativo
     buscar_fn = buscar_fn or buscar
-    for url in [u for u in mp.get("fontes") or [] if "congressonacional" in u or "planalto.gov.br" in u]:
+    import time
+    for i, url in enumerate([u for u in mp.get("fontes") or [] if "congressonacional" in u or "planalto.gov.br" in u]):
         try:
+            if i: time.sleep(2)
             corpo = buscar_fn(url, timeout=60, origem="coletar_execucao_mps")
-            if detectar_muro_de_robo(corpo):
+            muro = detectar_muro_de_robo(corpo)
+            if muro:
+                registrar_lacuna(f"Texto da {mp.get('numero')}", f"muro de robô: {muro}", canal="DOU", camada=1, strings=[url])
                 continue
             r = risco_do_ato(texto_declarativo(corpo.decode("utf-8", "replace")), url,
                              hoje_editorial().strftime("%d/%m/%Y"))
@@ -333,6 +337,8 @@ def autoteste() -> int:
         r1 = risco_do_ato("Ementa: Abre crédito extraordinário, em favor do Ministério do Meio Ambiente, para combate a incêndios florestais. Art. 1º",
                           "u", "17/10/2026")
         r2 = risco_do_ato("Abre crédito extraordinário em favor do Ministério X, no valor de R$ 1,00. Art. 1º", "u", "17/10/2026")
+        r3 = risco_do_ato("Abre crédito extraordinário, no valor de R$ 1.234.567,00, para combate a incêndios florestais. Art. 1º", "u", "d")
+        if not (r3 and r3["risco"] == "fogo" and r3["trecho"].endswith("florestais.")): return False
         return (r1["risco"] == "fogo" and r1["trecho"].endswith("florestais.") and r2["risco"] is None and r2["trecho"]
                 and risco_do_ato("sem ementa", "u", "d") is None)
     def t13():
