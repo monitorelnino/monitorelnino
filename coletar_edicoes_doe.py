@@ -44,6 +44,7 @@ import json
 import pathlib
 import re
 import sys
+import time
 
 RAIZ = pathlib.Path(__file__).resolve().parent
 PASTA = "doe_edicoes"
@@ -116,6 +117,9 @@ PADROES = {
            "ancoras": {"2026-09-03": 12270, "2026-10-02": 12293},
            "janela": 12,
            "nota": "nome do arquivo pelo número da edição; âncoras conferidas em 02/10/2026"},
+    # 17/10/2026 (janela A3, run 39019929474): a edição de 10/09/2026 abre por data, 209 páginas com texto.
+    "PA": {"padrao": "https://www.ioepa.com.br/pages/{ano}/{ano}.{mm}.{dd}.DOE.pdf",
+           "nota": "padrão por data, medido do runner em 17/10/2026"},
 }
 
 
@@ -285,6 +289,10 @@ MODO_SEM_ACESSO = "sem_acesso_automatico"
 # recusa. Até aqui viravam `sem_acesso_automatico`, e 17 diários sem recusa nenhuma pareciam fechados.
 MODO_SEM_ROTA = "rota_nao_descoberta"
 RECUSAS_HTTP = (401, 403, 429, 451)
+# Busca que só lê a primeira página: página cheia é resultado que pode continuar (AC, 10 por página).
+PAGINA_CHEIA = {"busca_ac": 10}
+# §11: ritmo de 2 s entre pedidos ao mesmo diário (o `Crawl-delay` do robots, quando há, é da base).
+RITMO_S = 2.0
 GOVERNANCA_CANAL2 = ("Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite "
                      "de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro "
                      "de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como "
@@ -333,6 +341,16 @@ def a_reler(item) -> bool:
     return isinstance(item, dict) and item.get("decisao") == "lida" and item.get("termos_versao") != VERSAO_DOS_TERMOS
 
 
+def datas_sem_cobertura(edicoes: dict, ate: str) -> list:
+    """Datas úteis de 29/06 até `ate` (e cadernos `data#n`) sem edição lida com os termos de hoje nem
+    ausência de edição medida. Função pura. Data não tentada, edição que não é edição, sem texto ou
+    recusada: tudo isso é falta de cobertura, nunca "consultado"."""
+    def coberta(e):
+        return isinstance(e, dict) and e.get("decisao") in ("lida", "sem_edicao_na_data") and not a_reler(e)
+    return ([d for d in datas_do_periodo(INICIO_DO_CICLO, ate) if not coberta(edicoes.get(d))]
+            + sorted(k for k, e in edicoes.items() if "#" in k and k <= ate + "~" and not coberta(e)))
+
+
 def busca_de_declaracao(uf: str, registro: dict) -> dict:
     """A metade estadual da resposta sanitária nesta UF: `consultado_em` só quando o ciclo foi lido
     com os termos de declaração — edição por edição, ou pela busca do diário desde o início do ciclo;
@@ -341,22 +359,26 @@ def busca_de_declaracao(uf: str, registro: dict) -> dict:
     if sit["modo"] == MODO_SEM_ACESSO:
         return {"lacuna": f"recusa da fonte, respeitada: {sit['detalhe']}"}
     if sit["modo"] == MODO_SEM_ROTA:
-        return {"lacuna": f"rota do diário não descoberta (não é recusa): {sit['detalhe']}"}
+        return {"lacuna": f"rota do diário não descoberta (nenhuma recusa medida): {sit['detalhe']}"}
     if sit["modo"] == "busca_no_diario":
         b = (registro.get("canal2") or {}).get("busca_declaracao") or {}
-        if b.get("consultado_em") and b.get("termos_versao") == VERSAO_DOS_TERMOS and (b.get("desde") or "~") <= INICIO_DO_CICLO:
+        fresca = b.get("consultado_em") and (b.get("ate") or "") >= "-".join(reversed(b["consultado_em"].split("/")))
+        if fresca and b.get("termos_versao") == VERSAO_DOS_TERMOS and (b.get("desde") or "~") <= INICIO_DO_CICLO:
             return {"consultado_em": b["consultado_em"], "via": f"busca do diário ({sit['detalhe']})"}
         return {"lacuna": b.get("lacuna") or "a busca do diário ainda não rodou com os termos de declaração desde o início do ciclo"}
-    todas = [e for e in (registro.get("edicoes") or {}).values() if isinstance(e, dict)]
-    lidas = [e for e in todas if e.get("decisao") == "lida"]
-    velhas = sum(1 for e in lidas if a_reler(e))
-    falhas = sum(1 for e in todas if e.get("decisao") in ("recusa", "vazio", "sem_texto_extraivel", "sem_numero_de_edicao"))
-    if velhas or falhas or not lidas:
-        return {"lacuna": (f"{velhas} edição(ões) ainda não relida(s) com os termos de declaração" if velhas
-                           else f"{falhas} edição(ões) do ciclo não lida(s)" if falhas
-                           else f"nenhuma edição lida por data ({sit['modo']})")}
-    em = max(dt.datetime.strptime(e["em"], "%d/%m/%Y").date() for e in lidas)
-    return {"consultado_em": em.strftime("%d/%m/%Y"), "edicoes_lidas": len(lidas)}
+    edicoes = registro.get("edicoes") or {}
+    em = registro.get("atualizado_em")
+    lidas = sum(1 for e in edicoes.values() if isinstance(e, dict) and e.get("decisao") == "lida")
+    if not em or not lidas:
+        return {"lacuna": f"nenhuma edição lida por data ({sit['modo']})"}
+    # Cobertura, não contagem (auditoria de 17/10): toda data útil do ciclo até a véspera da última
+    # leitura tem de ter a edição lida com os termos de hoje, ou a ausência de edição medida (404).
+    ate = (dt.datetime.strptime(em, "%d/%m/%Y").date() - dt.timedelta(days=1)).isoformat()
+    faltam = datas_sem_cobertura(edicoes, ate)
+    if faltam:
+        return {"lacuna": f"{len(faltam)} data(s) útil(eis) do ciclo sem edição lida com os termos de declaração "
+                          f"(a primeira: {faltam[0]})"}
+    return {"consultado_em": em, "edicoes_lidas": lidas, "ate": ate}
 
 
 # ── execução ───────────────────────────────────────────────────────────────────────────────────
@@ -400,11 +422,22 @@ def _pela_busca(uf: str, rota: dict, desde: str, ate: str, ocorrencias: dict, ho
     # A busca indexa palavra, não contexto: perguntam-se as expressões com "saúde" (as outras casariam
     # todo decreto de seca); o contexto de "declar" se confere no trecho, como na edição inteira.
     termos = [t for t in TERMOS_DE_DECLARACAO if "saúde" in t and not any(u != t and u in t for u in TERMOS_DE_DECLARACAO)]
-    try:
-        itens, totais = busca_fn(uf, rota["adaptador"], rota["url"], desde, ate, termos=termos)
-    except Exception as e:  # noqa: BLE001
-        recusa = _recusa(e, rota.get("url") or "")
-        return {"lacuna": f"busca do diário falhou em {hoje}: {type(e).__name__}: {str(e)[:120]}"}, recusa
+    # Um termo por vez, para conferir o lido contra o que a fonte declara: busca que para no teto de
+    # páginas ou de edições, ou edição que não baixou, é busca TRUNCADA — lacuna, nunca "consultado".
+    itens, totais, truncada = [], {}, []
+    for termo in termos:
+        try:
+            achados_t, tot = busca_fn(uf, rota["adaptador"], rota["url"], desde, ate, termos=[termo])
+        except Exception as e:  # noqa: BLE001
+            recusa = _recusa(e, rota.get("url") or "")
+            return {"lacuna": f"busca do diário falhou em {hoje}: {type(e).__name__}: {str(e)[:120]}"}, recusa
+        declarado = int((tot or {}).get(termo) or 0)
+        # TO e AC apontam EDIÇÕES (uma linha por página achada); as outras buscas, acertos.
+        lido = len({x.get("url") for x in achados_t}) if rota["adaptador"].startswith("busca_") and rota["adaptador"] != "busca_sp" else len(achados_t)
+        if lido < declarado or declarado >= PAGINA_CHEIA.get(rota["adaptador"], 10 ** 9):
+            truncada.append(f"{termo}: lidos {lido} de {declarado}")
+        itens += achados_t
+        totais[termo] = declarado
     declaracoes = 0
     for it in itens:
         achados = ocorrencias_no_texto(" ".join(it.get("trechos") or []), tuple(TERMOS_DE_DECLARACAO))
@@ -420,6 +453,8 @@ def _pela_busca(uf: str, rota: dict, desde: str, ate: str, ocorrencias: dict, ho
                               "hash_evidencia": preservar_fn(corpo, it.get("url") or "", "json", "coletar_edicoes_doe"),
                               "paginas": it.get("paginas"), "achados": achados}
         declaracoes += 1
+    if truncada:
+        return {"lacuna": f"busca do diário truncada em {hoje} ({'; '.join(truncada)})", "com_declaracao": declaracoes}, None
     return {"consultado_em": hoje, "desde": desde, "ate": ate, "termos": termos,
             "termos_versao": VERSAO_DOS_TERMOS, "acertos": len(itens), "com_declaracao": declaracoes,
             "totais_por_termo": totais}, None
@@ -471,6 +506,11 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
     if rota["tipo"] == "busca":
         busca, recusa = _pela_busca(uf, rota, desde, ate, ocorrencias, hoje)
         com_termo = busca.get("com_declaracao", 0)
+        anterior = (registro.get("canal2") or {}).get("busca_declaracao") or {}
+        if "consultado_em" not in busca:
+            registrar_lacuna(f"DOE-{uf} (canal 2)", busca["lacuna"][:160], canal="DOE", camada=1)
+            if "consultado_em" in anterior:   # a leitura completa anterior segue datada; a falha fica ao lado
+                busca = dict(anterior, ultima_falha=busca["lacuna"])
         if not recusa:
             registro["canal2"] = {"modo": "busca_no_diario", "adaptador": rota["adaptador"], "em": hoje,
                                   "conta_como_consultado": "consultado_em" in busca, "busca_declaracao": busca}
@@ -498,7 +538,10 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
             achado = re.search(r"DO(\d{4,6})_", str((item or {}).get("url") or ""))
             if achado and (item or {}).get("decisao") == "lida":
                 ancoras_vivas[data_lida] = int(achado.group(1))
-        datas = [d for d in datas_do_periodo(desde, ate) if d not in edicoes or a_reler(edicoes[d])][:TETO_EDICOES]
+        # Data recente "sem edição" se tenta de novo: a edição do dia pode sair depois da leitura.
+        recente = (dt.date.fromisoformat(ate) - dt.timedelta(days=3)).isoformat()
+        datas = [d for d in datas_do_periodo(desde, ate) if d not in edicoes or a_reler(edicoes[d])
+                 or (d >= recente and edicoes[d].get("decisao") == "sem_edicao_na_data")][:TETO_EDICOES]
         # Quando o nome do arquivo pede o NÚMERO da edição, percorre-se do mais novo para o mais velho:
         # a âncora de cada data passa a ser a vizinha, e a deriva por passo é de uma ou duas edições.
         # Da outra ordem, a janela de oito não alcançava dois meses de deriva e tudo dava 404.
@@ -527,6 +570,7 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
                     url, bruto, status, erro = alternativas[0]["url"], None, 0, None
                     for candidato in alternativas:
                         url = candidato["url"]
+                        time.sleep(0 if candidato.get("pdf") else RITMO_S)
                         try:
                             bruto = candidato.get("pdf") or buscar(url, timeout=120)
                             status = 200
@@ -680,13 +724,15 @@ def descobrir_rota(uf: str, buscar_fn=None, data_de_prova: str = None) -> dict:
             return {"uf": uf, "tentativas": 1, "molde": molde, "impressao": impressao,
                      "veredito": veredito_da_descoberta(True, False, "")}
         motivos.append(f"{url[:70]}: {decisao}")
-    # ── tentativa 2 · a pagina de listagem ────────────────────────────────────────────────────
-    for caminho in ("", "/edicoes", "/diarios", "/busca"):
+    # ── tentativa 2 · a pagina de listagem ── nunca depois de uma recusa: recusa se respeita ────
+    for caminho in (() if recusa else ("", "/edicoes", "/diarios", "/busca")):
         try:
             html = buscar_fn(base.rstrip("/") + caminho, timeout=90).decode("utf-8", "replace")
         except Exception as e:  # noqa: BLE001
-            recusa = recusa or bool(_recusa(e, base))
             motivos.append(_recusa(e, base + caminho) or f"{caminho or '/'}: {type(e).__name__}")
+            if _recusa(e, base):
+                recusa = True
+                break
             continue
         if edicoes_da_listagem(html):
             return {"uf": uf, "tentativas": 2, "listagem": base.rstrip("/") + caminho,
@@ -721,6 +767,8 @@ def _autoteste() -> int:
     ok("o padrão da PB é preenchido com mês por nome",
        endereco_da_data(PADROES["PB"]["padrao"], "2026-09-09")
        == "https://auniao.pb.gov.br/servicos/doe/2026/setembro/diario-oficial-09-09-2026-portal.pdf")
+    ok("o padrão do PA é preenchido com ano, mês e dia",
+       endereco_da_data(PADROES["PA"]["padrao"], "2026-09-10") == "https://www.ioepa.com.br/pages/2026/2026.09.10.DOE.pdf")
     ok("o padrão do MS é preenchido com mês por número",
        endereco_da_data(PADROES["MS"]["padrao"], "2026-09-03").endswith("/2026/09/03/DO_03_09_2026.pdf"))
 
@@ -794,11 +842,13 @@ def _autoteste() -> int:
        and situacao_do_canal2("ES", registro={"canal2": {"adaptador": "apifront"}})["modo"] == "busca_no_diario")
     ok("lacuna da declaração distingue recusa de rota não descoberta",
        busca_de_declaracao("PE", {"canal2": {"modo": MODO_SEM_ACESSO, "motivo": "HTTP 403"}})["lacuna"].startswith("recusa")
-       and "não é recusa" in busca_de_declaracao("RJ", {"canal2": {"modo": MODO_SEM_ROTA, "motivo": "404"}})["lacuna"])
-    bd = {"consultado_em": "17/10/2026", "desde": INICIO_DO_CICLO, "termos_versao": VERSAO_DOS_TERMOS}
+       and "nenhuma recusa" in busca_de_declaracao("RJ", {"canal2": {"modo": MODO_SEM_ROTA, "motivo": "404"}})["lacuna"])
+    bd = {"consultado_em": "17/10/2026", "desde": INICIO_DO_CICLO, "ate": "2026-10-17", "termos_versao": VERSAO_DOS_TERMOS}
     ok("busca do diário desde o início do ciclo, com os termos de hoje, conta como consultada",
        busca_de_declaracao("ES", {"canal2": {"adaptador": "apifront", "busca_declaracao": bd}})
        == {"consultado_em": "17/10/2026", "via": "busca do diário (adaptador apifront)"})
+    ok("busca que acabou antes do dia em que diz ter consultado é lacuna",
+       "lacuna" in busca_de_declaracao("ES", {"canal2": {"adaptador": "apifront", "busca_declaracao": dict(bd, ate="2026-09-30")}}))
     ok("busca que começou depois do ciclo, ou com termos velhos, é lacuna",
        "lacuna" in busca_de_declaracao("ES", {"canal2": {"adaptador": "apifront", "busca_declaracao": dict(bd, desde="2026-10-01")}})
        and "lacuna" in busca_de_declaracao("ES", {"canal2": {"adaptador": "apifront", "busca_declaracao": dict(bd, termos_versao="x")}}))
@@ -806,6 +856,8 @@ def _autoteste() -> int:
 
     def _busca(uf, ad, url, de, ate, termos):
         pedidos.append(termos)
+        if termos != ["emergência em saúde pública"]:
+            return [], {termos[0]: 0}
         return ([{"data": "2026-09-10", "url": "doc1", "pagina": 3, "trechos": [
                     "DECRETO Nº 9. O GOVERNADOR declara situação de emergência em saúde pública pela dengue"]},
                  {"data": "2026-09-10", "url": "doc2", "pagina": 1, "trechos": ["o COE de emergência em saúde pública reuniu-se"]},
@@ -815,11 +867,20 @@ def _autoteste() -> int:
     resumo, rec = _pela_busca("ES", {"adaptador": "apifront", "url": "e"}, INICIO_DO_CICLO, "2026-10-17", oc,
                               "17/10/2026", busca_fn=_busca, preservar_fn=lambda *a: "h")
     ok("a busca pergunta só as expressões com saúde, sem a contida em outra",
-       pedidos == [["emergência em saúde pública", "estado de emergência em saúde"]])
+       pedidos == [["emergência em saúde pública"], ["estado de emergência em saúde"]])
     ok("acerto com declaração entra no índice com a classe; menção sem 'declar' fica fora; mesma data não colide",
        sorted(oc) == ["2026-09-10", "2026-09-11"] and oc["2026-09-10"]["url"] == "doc1"
        and all(a.get("classe") == "declaracao" for a in oc["2026-09-10"]["achados"]) and rec is None
        and resumo["acertos"] == 3 and resumo["com_declaracao"] == 2 and resumo["termos_versao"] == VERSAO_DOS_TERMOS)
+
+    r3, _ = _pela_busca("AC", {"adaptador": "busca_ac", "url": "a"}, INICIO_DO_CICLO, "2026-10-17", {}, "17/10/2026",
+                        busca_fn=lambda *a, termos: ([{"url": f"e{i}", "trechos": [""]} for i in range(10)], {termos[0]: 10}),
+                        preservar_fn=lambda *a: "h")
+    r4, _ = _pela_busca("ES", {"adaptador": "apifront", "url": "e"}, INICIO_DO_CICLO, "2026-10-17", {}, "17/10/2026",
+                        busca_fn=lambda *a, termos: ([{"url": "x", "trechos": [""]}], {termos[0]: 600}),
+                        preservar_fn=lambda *a: "h")
+    ok("busca truncada (lido < declarado, ou página única cheia) é lacuna, nunca consultado",
+       "truncada" in r3.get("lacuna", "") and "truncada" in r4.get("lacuna", ""))
 
     def _recusa_busca(*a, **k):
         raise _Http(403)
@@ -854,10 +915,19 @@ def _autoteste() -> int:
     lida = {"decisao": "lida", "em": "02/10/2026"}
     ok("edição lida antes dos termos de declaração é relida",
        a_reler(lida) and not a_reler(dict(lida, termos_versao=VERSAO_DOS_TERMOS)))
-    ok("metade estadual só conta com todas as edições relidas",
-       "lacuna" in busca_de_declaracao("PB", {"edicoes": {"d": lida}})
-       and busca_de_declaracao("PB", {"edicoes": {"d": dict(lida, termos_versao=VERSAO_DOS_TERMOS)}})
-       == {"consultado_em": "02/10/2026", "edicoes_lidas": 1})
+    nova = dict(lida, termos_versao=VERSAO_DOS_TERMOS)
+    ciclo = {d: nova for d in datas_do_periodo(INICIO_DO_CICLO, "2026-10-01")}
+    ok("metade estadual só conta com o ciclo inteiro coberto e relido",
+       "lacuna" in busca_de_declaracao("PB", {"edicoes": dict(ciclo, **{"2026-09-10": lida}), "atualizado_em": "02/10/2026"})
+       and busca_de_declaracao("PB", {"edicoes": ciclo, "atualizado_em": "02/10/2026"})
+       == {"consultado_em": "02/10/2026", "edicoes_lidas": len(ciclo), "ate": "2026-10-01"})
+    ok("data do ciclo não tentada, ou que não é edição, é falta de cobertura",
+       "2026-07-01" in datas_sem_cobertura({d: e for d, e in ciclo.items() if d != "2026-07-01"}, "2026-10-01")
+       and datas_sem_cobertura(dict(ciclo, **{"2026-07-02": {"decisao": "nao_e_edicao"}}), "2026-10-01") == ["2026-07-02"]
+       and datas_sem_cobertura(dict(ciclo, **{"2026-07-03": {"decisao": "sem_edicao_na_data"}}), "2026-10-01") == []
+       and datas_sem_cobertura(dict(ciclo, **{"2026-07-03#2": {"decisao": "vazio"}}), "2026-10-01") == ["2026-07-03#2"])
+    ok("leitura pela metade (uma edição só) não é consultado",
+       "lacuna" in busca_de_declaracao("PB", {"edicoes": {"2026-10-01": nova}, "atualizado_em": "02/10/2026"}))
     ok("UF sem rota é lacuna da metade estadual", "lacuna" in busca_de_declaracao("XX", {}))
 
     fonte = pathlib.Path(__file__).read_text(encoding="utf-8")
