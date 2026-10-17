@@ -4,287 +4,77 @@
   "efeito_no_indice": "NENHUM — peso zero, como todo sinal de risco.",
   "escrito_por": "coletar_sinais_risco.py"
  },
- "gerado_em": "16/10/2026 22:15",
+ "gerado_em": "17/10/2026 08:11",
  "consultas": [
   {
    "fonte": "inmet_avisos",
    "url": "https://apiprevmet3.inmet.gov.br/avisos/ativos",
-   "consultado_em": "16/10/2026 22:13",
-   "bytes": 365956,
-   "sha256": "66d0112912688cf59bb57cad09e1dc34ba7da88367ccad97a641ee687785eea9"
+   "consultado_em": "17/10/2026 08:10",
+   "bytes": 178967,
+   "sha256": "20accd452f8e668f14da89fb75b6e6e971ea0b6d91f0dc1d866c363d39c2fff6"
   },
   {
    "fonte": "cemaden_alertas",
    "url": "https://gsc.cemaden.gov.br/geoserver/cemaden_dev/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=cemaden_dev:alertas_vigentes_siaden&outputFormat=application/json&count=3000",
-   "consultado_em": "16/10/2026 22:13",
-   "bytes": 2141646,
-   "sha256": "f7353ef117054e92bc5d1cc219e0aa6d478d8a5c75a118e33fa28aa730ab18c6"
+   "consultado_em": "17/10/2026 08:10",
+   "bytes": 2850188,
+   "sha256": "c6b8dcfdacb24e2446872c26da1cfd31fcf28151c98a43b457ae20a684baaf5f"
   },
   {
    "fonte": "inmet_previsao_capitais",
    "url": "https://apiprevmet3.inmet.gov.br/previsao/capitais",
-   "consultado_em": "16/10/2026 22:13",
-   "bytes": 6585034,
-   "sha256": "bd34bca8e5431446bb06678a61eebb22acd738464b4c1031b3c60db489198616"
+   "consultado_em": "17/10/2026 08:10",
+   "bytes": 6159626,
+   "sha256": "d9ed144b15c76284214ca83aaf9185cf87e70f21f81acf92fc7b8790be7e3084"
   },
   {
    "fonte": "inmet_estacoes",
    "url": "https://apitempo.inmet.gov.br/estacoes/T",
-   "consultado_em": "16/10/2026 22:13",
+   "consultado_em": "17/10/2026 08:10",
    "bytes": 261406,
    "sha256": "d846cd28fc66855a2c39aa87a89b804e11d2223f991a093bb09cb992cf30ff36"
   },
   {
    "fonte": "inmet_estacoes",
-   "url": "https://apitempo.inmet.gov.br/condicao/capitais/2026-10-16",
-   "consultado_em": "16/10/2026 22:13",
-   "bytes": 2351,
-   "sha256": "04196571b103e8b848217595b2a6180718ee4d8e578a695b4ce9e30a5a3ad73c"
+   "url": "https://apitempo.inmet.gov.br/condicao/capitais/2026-10-17",
+   "consultado_em": "17/10/2026 08:10",
+   "bytes": 2316,
+   "sha256": "e6bf52192927342feb5194c69a46b3126bf4faf6b494fa60fcb6b2a2ad7c5804"
   },
   {
    "fonte": "monitorar",
    "url": "https://monitorar-backend.mma.gov.br/v1/estacao/todas",
-   "consultado_em": "16/10/2026 22:13",
-   "bytes": 451362,
-   "sha256": "c7ee2120a067f6e54207ee695dd8d44673005d28533cd01752501289d602fbd3"
+   "consultado_em": "17/10/2026 08:11",
+   "bytes": 451815,
+   "sha256": "1e0ea6988acdbd2c56da022df9a2af338f6886cd1951b9d4ebd099ebaaa03ffe"
   },
   {
    "fonte": "redear",
    "url": "https://hmg.api.redear.org.br/v1/sensors",
-   "consultado_em": "16/10/2026 22:13",
-   "bytes": 715333,
-   "sha256": "14402955a841b16b72da657d032dee12eeb767005bf4c7c5fed3c5e3d845d661"
-  },
-  {
-   "fonte": "monitor_secas",
-   "url": "https://ana-monitor-secas-files.s3.sa-east-1.amazonaws.com/uploads/mapas/setembro2026.zip",
-   "consultado_em": "16/10/2026 22:13",
-   "bytes": 15780305,
-   "sha256": "bd8bf88dd9583cd669fbf9a2f6610dcc448473117aed4acbea90fc59a85e25c7"
+   "consultado_em": "17/10/2026 08:11",
+   "bytes": 715215,
+   "sha256": "bab49249f69c88b633f7ab6110f2beb418c9ba1c1d4c2a063f541cd8e08133de"
   },
   {
    "fonte": "inpe_fogo",
    "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/",
-   "consultado_em": "16/10/2026 22:13",
+   "consultado_em": "17/10/2026 08:11",
    "bytes": 11646,
-   "sha256": "2ad0fa59eb327ba34b1184d1cb574e2fa716d0328b0a0ef65644b2e67c24967f"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20260917.csv",
-   "consultado_em": "16/10/2026 22:13",
-   "bytes": 4548477,
-   "sha256": "dc44bb17153685c1f292f99e2e13d4d828c98ec70573c5f09dab821a9b202195"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20260918.csv",
-   "consultado_em": "16/10/2026 22:13",
-   "bytes": 5137930,
-   "sha256": "eb63c45cd8fc3df4850abf0eb6d05eb2fa4b009f2fc07046a42eb009002f70c2"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20260919.csv",
-   "consultado_em": "16/10/2026 22:13",
-   "bytes": 7360029,
-   "sha256": "ebc0c2350451ad6329a5db0cc182a431f78b5a25390f6b7a17cf8ddc9cc24484"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20260920.csv",
-   "consultado_em": "16/10/2026 22:14",
-   "bytes": 7031866,
-   "sha256": "74c9447392ca79de687d951643392cf5486eceb12fdef104944fdcf8ca43b5e2"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20260921.csv",
-   "consultado_em": "16/10/2026 22:14",
-   "bytes": 7894386,
-   "sha256": "6358e4727f1ac93e310c125b1c90e7c9dea98ee2ed0fb35fcf587e6d6791c81c"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20260922.csv",
-   "consultado_em": "16/10/2026 22:14",
-   "bytes": 7482916,
-   "sha256": "a745ac7f548630a16b615ed417ed142a112038ee5a8b4b65c7e4a6545d01f4f9"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20260923.csv",
-   "consultado_em": "16/10/2026 22:14",
-   "bytes": 5065647,
-   "sha256": "e8adaeae0a90b780c37447cdd10fea80e115eae6d1578f260639f68fd1256524"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20260924.csv",
-   "consultado_em": "16/10/2026 22:14",
-   "bytes": 3808158,
-   "sha256": "5a96fbf930674f24258be573a2da0a7be7c2bcf9f83a5670fe5337d26b4d2839"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20260925.csv",
-   "consultado_em": "16/10/2026 22:14",
-   "bytes": 1964737,
-   "sha256": "2e338848371f3db2790789edca562a72ca2862187fee1a702e54476dbe72de82"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20260926.csv",
-   "consultado_em": "16/10/2026 22:14",
-   "bytes": 2456140,
-   "sha256": "2906681307ea97f4445c97be1b8b9873a6ce7b3e11274b29f9d327f25aeba9b1"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20260927.csv",
-   "consultado_em": "16/10/2026 22:14",
-   "bytes": 3546014,
-   "sha256": "d1e22ccae4685e4fbdf8a7a94d60ffce84f3a7970a42f341bc41add668ecd61a"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20260928.csv",
-   "consultado_em": "16/10/2026 22:14",
-   "bytes": 4648091,
-   "sha256": "a2e3ab36a6820f236c93912d3744c5a71490e90679f18ca4299beaebdaa3fcb5"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20260929.csv",
-   "consultado_em": "16/10/2026 22:14",
-   "bytes": 4204565,
-   "sha256": "cb670b9d268969d8c12d881c704d64a11e8808c080d8a5dd573c3551c7aab1be"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20260930.csv",
-   "consultado_em": "16/10/2026 22:14",
-   "bytes": 4305149,
-   "sha256": "c5b288bef5531caf6b263e08c0197309c00d12a892778a2540761f3ec1860e12"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20261001.csv",
-   "consultado_em": "16/10/2026 22:14",
-   "bytes": 4707807,
-   "sha256": "5ba6c1ba6880f6283eb152d41941374450743acd20802786bcc8864328a3e25f"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20261002.csv",
-   "consultado_em": "16/10/2026 22:14",
-   "bytes": 3330212,
-   "sha256": "f4076f42ddf0df91200604c315368a9b6c8f12104e675096eef063ef05799733"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20261003.csv",
-   "consultado_em": "16/10/2026 22:14",
-   "bytes": 2423258,
-   "sha256": "24d31c6e3550bf1eec28131b98ae57435efa81bde1bc8ca638db78f31960afe2"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20261004.csv",
-   "consultado_em": "16/10/2026 22:14",
-   "bytes": 2951745,
-   "sha256": "15dc403146c89e8dac09477fc905c3db0ae0440076200f6e93c04f56d1acb86b"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20261005.csv",
-   "consultado_em": "16/10/2026 22:14",
-   "bytes": 3556111,
-   "sha256": "68d6f887d27f85b293e41fbeed801f2d262ce64f46dedd86a4a9870d6f6a621d"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20261006.csv",
-   "consultado_em": "16/10/2026 22:14",
-   "bytes": 5556925,
-   "sha256": "a8e7e6d04af265f82ddb6d462243b470f7fcc8366d23f2e70c20dacc14729212"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20261007.csv",
-   "consultado_em": "16/10/2026 22:14",
-   "bytes": 7940065,
-   "sha256": "29d615f514ab93d8f6f88b90a523bbaae0a6f1758fa0fa0ca80495f8fbcd33ab"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20261008.csv",
-   "consultado_em": "16/10/2026 22:14",
-   "bytes": 10202965,
-   "sha256": "f8fa7b24bc593b99dbc7568f9b30ad917515913e24f378df296b5aaa27732e42"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20261009.csv",
-   "consultado_em": "16/10/2026 22:14",
-   "bytes": 9628111,
-   "sha256": "f04eaf7426b72c1bbcf803da1c338838b79e8b88ccab93cc62ae041c4c7e7ed2"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20261010.csv",
-   "consultado_em": "16/10/2026 22:15",
-   "bytes": 6929478,
-   "sha256": "c9aaa653d74b6aeb150b86b48743872f61dec2996301512ffe0798563014e737"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20261011.csv",
-   "consultado_em": "16/10/2026 22:15",
-   "bytes": 5455688,
-   "sha256": "9fbd96efca9c7ffe70561d03d90272b7525d33315a1d5b54934588597035cc2f"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20261012.csv",
-   "consultado_em": "16/10/2026 22:15",
-   "bytes": 4138853,
-   "sha256": "66a7feb9482438c544f49b0461ba98074a91de09dcc80c10382e4709edb38c96"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20261013.csv",
-   "consultado_em": "16/10/2026 22:15",
-   "bytes": 4376852,
-   "sha256": "85a5e589a951e55f8ef0e19d2195f5dcc75cc853f1141b26981ad0b9ba926af5"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20261014.csv",
-   "consultado_em": "16/10/2026 22:15",
-   "bytes": 6419838,
-   "sha256": "10ad9f225b9047ded2eb597077f53d6dc3d6d7624abec89caf1d447d427e379d"
+   "sha256": "2c21095165db0de51d891881e9d77c174344c49b895c9a64869a83020bbd3e76"
   },
   {
    "fonte": "inpe_fogo",
    "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20261015.csv",
-   "consultado_em": "16/10/2026 22:15",
+   "consultado_em": "17/10/2026 08:11",
    "bytes": 5476897,
    "sha256": "de0b2ed96e1a3ad74d259a7f81a6977afc582cb0bb7946dbc007a4093abb7624"
   },
   {
    "fonte": "inpe_fogo",
    "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20261016.csv",
-   "consultado_em": "16/10/2026 22:15",
-   "bytes": 4957718,
-   "sha256": "456ce1c8a73ef35744f4a7f812517c8398145f6d816a4692e94a8479c3a596f3"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/anual/Brasil_sat_ref/focos_br_ref_2025.zip",
-   "consultado_em": "16/10/2026 22:15",
-   "bytes": 5906397,
-   "sha256": "63b144c47279991dca0f2007e23e15b4a932355b6c93d033d81a245a8eab56ca"
+   "consultado_em": "17/10/2026 08:11",
+   "bytes": 5635654,
+   "sha256": "2a4a4244e0a4ec78f3949595f813527342685edf82fc2278ba5c81200c5b339e"
   }
  ]
 }
