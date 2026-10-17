@@ -53,7 +53,7 @@
    *   alvo:        elemento ou id onde a grade entra
    *   ufs:         [{uf, nome, status}]  — a lista canônica, com nome por extenso
    *   indice:      função(uf) -> número 0–100 ou null   (barra de cima)
-   *   resposta:    função(uf) -> número 0–100 ou null   (barra de baixo)
+   *   resposta:    função(uf) -> número 0–100 ou null   (barra de baixo; sem a função, sem a barra)
    *   rotulo:      texto do índice, para o title e o aria-label ("MARÉ Saúde")
    *   aoClicar:    função(uf) — a ficha da página
    *   extra:       função(uf) -> HTML opcional dentro do cartão
@@ -86,7 +86,7 @@
           ? '<span class="tile-score tile-score--vazio">não verificado</span>'
           : '<span class="tile-score" data-contar="' + v + '">0,0</span>') +
         barra(v, 'tile-bar--indice') +
-        barra(r, 'tile-bar--resposta') +
+        (o.resposta ? barra(r, 'tile-bar--resposta') : '') +
         (o.extra ? o.extra(uf) : '');
       /* Alcançável por teclado, como qualquer botão: o cartão é um alvo de clique, e sem papel e
        * índice de tabulação quem navega por teclado não alcança nenhum estado. */
@@ -110,6 +110,18 @@
     var t = e.target, dlg = t && t.closest && t.closest('dialog.detail');
     if (!dlg || (t !== dlg && !t.closest('.detail-fechar'))) return;
     if (typeof dlg.close === 'function') dlg.close(); else dlg.open = false;
+  });
+
+  /* "Como ler" na mesma ficha (14/09/2026, pedido de Patricia): o link com `data-ficha="<id>"` copia o
+   * conteúdo oculto daquele id para a ficha da página e a abre, com o título dele como rótulo. */
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest && e.target.closest('a[data-ficha]');
+    var fonte = a && document.getElementById(a.getAttribute('data-ficha')), dlg = a && document.querySelector('dialog.detail');
+    if (!fonte || !dlg) return;
+    e.preventDefault();
+    dlg.querySelector('div').replaceChildren(...fonte.cloneNode(true).childNodes);
+    dlg.setAttribute('aria-label', (fonte.querySelector('h2') || a).textContent.trim());
+    if (!dlg.open) { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.open = true; }
   });
 
 global.GradeEstados = { montar: montar, GRADE_BR: GRADE_BR };
