@@ -312,7 +312,7 @@
   },
   "SE": {
    "adaptador": null,
-   "url": "",
+   "url": "https://iose.se.gov.br",
    "status": "sem adaptador de busca",
    "ultima_tentativa": "2026-10-16",
    "sondagem": {
@@ -320,8 +320,8 @@
     "motivo": "nenhum endereço de diário registrado; os hosts conhecidos do diário de Sergipe (segrase.se.gov.br, doe.se.gov.br, diariooficial.se.gov.br) não resolvem na consulta de 02/10/2026. O portal do estado (www.se.gov.br) responde, mas portal de governo não é diário oficial e não entra como fonte.",
     "sondado_em": "02/10/2026"
    },
-   "motivo": "nenhum host do diário resolve no DNS (segrase.se.gov.br, www.segrase, doe.se.gov.br, diariooficial.se.gov.br); www.se.gov.br inalcançável do runner",
-   "medido_em": "15/10/2026"
+   "motivo": "a Imprensa Oficial de Sergipe (iose.se.gov.br) roda a plataforma comum: a página inicial abre (200), mas /apifront/portal/edicoes, /busca e /diario-oficial respondem HTTP 403 ao cliente identificado do projeto (run 39021988900) — recusa respeitada",
+   "medido_em": "17/10/2026"
   },
   "DF": {
    "adaptador": "dodf",
