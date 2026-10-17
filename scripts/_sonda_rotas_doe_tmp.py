@@ -106,9 +106,11 @@ if __name__ == "__main__":
     b2 = pega(base + m.group(1))
     t2 = b2.decode("utf-8", "replace")
     corpo_sem_css = re.sub(r"<style.*?</style>", " ", t2, flags=re.S)
-    i0 = corpo_sem_css.find("</select>", corpo_sem_css.find("sumario"))
-    print("RESTO:", re.sub(r"\s+", " ", corpo_sem_css[i0:])[:6000])
-    ctx(b2, r"DEFAULT_URL|\.open\(|\.pdf|\.php\?|file|url\s*[:=]", 200, 30)
-    js = pega(base + "include/pdfjs/web/viewer-min.js")
-    if js:
-        ctx(js, r"DEFAULT_URL|appConfig\.defaultUrl|defaultUrl|\?file|\.open\(", 200, 25)
+    js = pega(base + "include/pdfjs/web/viewer-min.js") or b""
+    for nome, fonte in (("página", t2), ("viewer", js.decode("utf-8", "replace"))):
+        for m in re.finditer(r"\bpd\b", fonte):
+            print(f"  [{nome}] …", fonte[max(0, m.start() - 250):m.end() + 250].replace("\n", " "))
+        for m in re.finditer(r"<script[^>]*>(.*?)</script>", fonte, re.S) if nome == "página" else []:
+            corpo_js = m.group(1).strip()
+            if corpo_js and "_gaq" not in corpo_js:
+                print(f"  [script inline] {re.sub(r'\\s+', ' ', corpo_js)[:1500]}")
