@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 A página abre com os três parágrafos aprovados e com os dois medidores da inicial: preparação publicada na saúde (média das UFs verificadas) e emergências em saúde pública (índice nulo vira lacuna). Uma consulta do município, no componente comum, substitui as três buscas por bloco. O "Como ler" antigo sai; o link leva à metodologia até o texto novo da editoria.
 
+## 2026-10-17 · #816 · Mapa de fogo no satélite de referência; consulta do município com calor e reconhecimento
+
+Os pontos do mapa vinham de todos os satélites e do arquivo do dia corrente, enquanto os números saem do satélite de referência no último dia completo. `focos_pontos.json` passa a nascer do mesmo CSV e do mesmo satélite que `focos_referencia.json`, no mesmo coletor. METODOLOGIA §41.8. `riscos_municipio/<UF>.json` ganha a classe de calor do MS e o reconhecimento federal (Proteja-se §7.3).
+
 ## 2026-10-17 · #814 · Fila de pistas reentrante: o juiz volta na noite até esvaziar
 
 O juiz julga até o prazo; sobrando fila, grava `juiz.parcial` com o restante em vez de `juiz.feito`, e a reserva do despachante o redispara até 08:00 UTC. Pendente de documento julgada hoje não é rejulgada na mesma noite. Na `main`, o prazo de todo elo termina antes das 09:00. Sem sessão esperando run. Ensaio 28.
