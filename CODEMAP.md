@@ -67,9 +67,10 @@ Atualizado em 17/10/2026.
 | `coletar_boletim_pe_arboviroses.py` | — | `saude_desfechos/ses_pe_arboviroses.json` | — | — | não |
 | `coletar_cadastro_prioritarios.py` | — | `cadastro_prioritarios_federal.json` | — | — | não |
 | `coletar_cobertura_qd.py` | — | `cobertura_qd.json` | — | — | não |
+| `coletar_datasus_dbc.py` | — | — | — | — | não |
 | `coletar_dda.py` | — | `saude_desfechos/dda_cache.json`, `saude_desfechos/dda_serie.json`, `saude_desfechos/dda_serie_painel.json` | — | — | não |
 | `coletar_declarado_nacional.py` | — | `declarado_nacional.json`, `fontes_consultadas.json`, `fontes_declarado.json` | — | — | não |
-| `coletar_desfechos_saude.py` | — | — | — | — | não |
+| `coletar_desfechos_saude.py` | — | — | — | 1 | não |
 | `coletar_diarios_consorciados.py` | — | `atos_resposta.json` | — | — | não |
 | `coletar_diarios_municipais.py` | — | `atos_resposta.json`, `cobertura_qd.json` | — | 5 | não |
 | `coletar_doe.py` | — | `atos_resposta.json`, `estados.json`, `fontes_doe.json`, `indice.json`, `monitor_saude.json`, `municipios.json` (+2) | — | 3 | não |
@@ -94,11 +95,12 @@ Atualizado em 17/10/2026.
 | `coletar_srag_sivep.py` | — | `saude_desfechos/srag_serie.json`, `saude_desfechos/srag_sivep_agregados.json` | — | — | não |
 | `coletar_transferegov.py` | — | `financiamento/consultas.json`, `financiamento/por_uf.json`, `financiamento/programas_faf_2026.json`, `financiamento/serie_nacional.json`, `transferegov_el_nino_revisar.json` | — | — | não |
 | `coletar_transferencias_municipais.py` | — | `estados.json`, `indice.json`, `monitor_saude.json`, `municipios.json`, `saude_uf.json`, `transferencias_uniao.json` | — | 1 | não |
-| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `evidencias.json`, `fontes_consultadas.json`, `log_buscas.json`, `robots_registro.json` (+1) | — | **180** | não |
+| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `evidencias.json`, `fontes_consultadas.json`, `log_buscas.json`, `robots_registro.json` (+1) | — | **182** | não |
 | `consultar_querido_diario.py` | — | `pistas_querido_diario.json` | — | 1 | não |
 | `converter_contribuicao.py` | — | — | — | — | SIM |
 | `descobrir_dominios.py` | — | `dominios_oficiais.json` | — | — | não |
 | `descobrir_planos.py` | — | — | — | 2 | não |
+| `desfechos_sus.py` | — | — | — | 1 | não |
 | `detectar_marcos_federais.py` | — | `marcos_federais_saude.json`, `saude_uf.json` | — | — | não |
 | `funil.py` | — | — | — | 11 | não |
 | `gerar_blog.py` | — | — | — | — | não |
@@ -185,7 +187,7 @@ Atualizado em 17/10/2026.
 | `scripts/sondar_rotas_doe.py` | — | `fontes_doe.json` | — | — | não |
 | `scripts/testar_escrita_atomica.py` | — | `w.json`, `x.json`, `y.json`, `z.json` | — | — | não |
 | `scripts/testar_reposicao_dominio.py` | — | `publicacao.json` | — | — | não |
-| `scripts/tipo_de_evento_dos_atos.py` | — | `atos_resposta.json` | — | 1 | não |
+| `scripts/tipo_de_evento_dos_atos.py` | — | `atos_resposta.json` | — | 2 | não |
 | `scripts/triar_fila.py` | — | `pistas_imprensa.json` | — | — | não |
 | `scripts/unir_conflito_de_rodada.py` | — | `cobertura_declarada_uf.json`, `evidencias.json`, `fontes_consultadas.json`, `funil/2026-10-05.json`, `funil/x.json`, `historico_mudancas.json` (+16) | — | 3 | não |
 | `seguir_pistas.py` | — | — | — | — | não |
