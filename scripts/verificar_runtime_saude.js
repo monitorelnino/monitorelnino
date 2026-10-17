@@ -97,12 +97,11 @@ for (const id of ["mapaMonitor", "mapaDengueUF", "mapaChikUF", "mapaCalor"]) {
   teste("cartão de emergências, se a página o tiver: do agregado de resposta",
     !q("nEmergSaude") || txt("nEmergSaude") === (_emerg == null ? "sem dado" : _emerg === 0 ? "zero" : Number(_emerg).toLocaleString("pt-BR")));
 
-  // Um mapa só por estado, e a grade com ficha.
-  // Tres cartoes na secao do estado, pelo contrato: prontidao, o que foi localizado em cada um e
-  // o risco previsto. A prontidao continua sendo o mapa.
-  teste("três cartões de estado, com a prontidão no mapa",
-    d.querySelectorAll("#estadual .figura").length === 3 && !!q("mapaMonitor")
-    && !!q("boxVerificacaoUF") && !!q("boxRiscoSan"));
+  // Um mapa só por estado, e a grade com ficha. Quantos cartoes a secao tem e em que ordem
+  // e materia do contrato (verificar_conformidade); aqui se cobra o que so o DOM mostra:
+  // a prontidao esta no mapa e o risco previsto tem figura propria.
+  teste("prontidão no mapa e risco previsto na seção do estado",
+    !!q("mapaMonitor") && !!q("boxRiscoSan"));
   teste("grade dos 27 com ficha ao clicar", (() => {
     const tiles = [...d.querySelectorAll("#regionsSaude .tile")];
     if (tiles.length !== 27) return false;

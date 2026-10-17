@@ -2,17 +2,17 @@
 
 Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolidação (meta: ≤ 50 mil linhas de .py/.js, mesma proteção).
 
-- **100.501 linhas** em **334 arquivos** .py/.js; **34 workflows**.
+- **100.732 linhas** em **334 arquivos** .py/.js; **34 workflows**.
 - **92 comandos de portão**: dados/portão 29, paginas/autoteste 5, paginas/portão 58.
-- **155 nomes de função** definidos em mais de um arquivo.
+- **156 nomes de função** definidos em mais de um arquivo.
 
 ## Por pasta
 
 | pasta | linhas |
 |---|---:|
-| `(raiz)` | 51805 |
-| `scripts` | 39814 |
-| `assets` | 8169 |
+| `(raiz)` | 52032 |
+| `scripts` | 39816 |
+| `assets` | 8171 |
 | `arquivo` | 445 |
 | `.claude` | 268 |
 
@@ -85,8 +85,8 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `renderizar` | 4 | `coletar_painel_am.py`, `gerar_feeds.py`, `scripts/_inline_js.js`, `scripts/renderizar_figura.py` |
 | `w` | 4 | `aplicar_c10_imprensa.py`, `gerar_painel.py`, `migrar_v224_verificacao.py`, `scripts/verificar_robustez_atualizacao.py` |
 | `_contexto_tls` | 3 | `coletar_sinais_risco.py`, `scripts/sondar_credenciais.py`, `scripts/sondar_munic_ibge.py` |
+| `_data` | 3 | `gerar_financiamento_semana.py`, `scripts/verificar_financiamento_coerencia.py`, `scripts/verificar_frescor.py` |
 | `_git` | 3 | `scripts/commit_do_elo.py`, `scripts/verificar_idempotencia_dos_derivados.py`, `scripts/verificar_tamanho_dos_dados.py` |
 | `_n` | 3 | `coletar_boletim_df_arboviroses.py`, `coletar_boletim_pb_arboviroses.py`, `coletar_boletim_pe_arboviroses.py` |
 | `_sem_acento` | 3 | `revisar_pistas.py`, `scripts/pistas.py`, `scripts/validar_dicionario.py` |
 | `avaliar` | 3 | `scripts/checagem_pre_noite.py`, `scripts/testar_fixtures_localizacao.py`, `scripts/verificar_fila_nao_humana.py` |
-| `checar` | 3 | `verificar_financiamento.py`, `verificar_painel.py`, `verificar_saude.py` |
