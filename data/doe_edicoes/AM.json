@@ -1,12 +1,894 @@
 {
  "_governanca": "Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026; 17/10/2026).",
  "canal2": {
-  "modo": "rota_nao_descoberta",
-  "conta_como_consultado": false,
-  "motivo": "https://diario.imprensaoficial.am.gov.br/portal/download/2026/09/10.pd: nao_e_edicao · https://diario.imprensaoficial.am.gov.br/arquivos/2026/09/10.pdf: nao_e_edicao · https://diario.imprensaoficial.am.gov.br/diario/20260910.pdf: nao_e_edicao",
-  "em": "02/10/2026",
-  "tentativas": 2,
-  "rotulo_corrigido_em": "17/10/2026 (404, erro de rede e arquivo que não é edição não são recusa medida)"
+  "modo": "padrao_por_data",
+  "em": "17/10/2026",
+  "conta_como_consultado": true,
+  "adaptador": "edicao_apifront"
  },
- "edicoes": {}
+ "edicoes": {
+  "2026-06-29": {
+   "decisao": "sem_edicao_na_data",
+   "em": "17/10/2026"
+  },
+  "2026-06-30": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 9975609,
+   "paginas": 74,
+   "paginas_com_texto": 74,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18149",
+   "impressao": "1f14461f9c5a387d572f6def0f86f6bb713ffd47507d248af944e872c087f50d",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-01": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 25123443,
+   "paginas": 62,
+   "paginas_com_texto": 62,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18151",
+   "impressao": "8f88b05d492d3a99143913918719af47ec2a42148097e4e636f04a91973e7382",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-02": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 18327417,
+   "paginas": 100,
+   "paginas_com_texto": 100,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18153",
+   "impressao": "ec594db5dc2b2d3cc1d034f9515e96805c0901ba0ae6d828ca51d81402d1d880",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "ec594db5dc2b2d3cc1d034f9515e96805c0901ba0ae6d828ca51d81402d1d880",
+   "termos_achados": [
+    "sala de situação"
+   ]
+  },
+  "2026-07-03": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 11613793,
+   "paginas": 74,
+   "paginas_com_texto": 74,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18154",
+   "impressao": "b944c021c5aab5ef2948460df91ba83232760c7e7613301f1b629c9003ec7b78",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-06": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 11650124,
+   "paginas": 42,
+   "paginas_com_texto": 42,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18155",
+   "impressao": "69b2e90fd834d793a9f52b54d872791d819eb02a405e6798c4cc53c39f801db1",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "69b2e90fd834d793a9f52b54d872791d819eb02a405e6798c4cc53c39f801db1",
+   "termos_achados": [
+    "El Niño"
+   ]
+  },
+  "2026-07-07": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 6761149,
+   "paginas": 54,
+   "paginas_com_texto": 54,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18156",
+   "impressao": "2735fd8ecfb792d6650f49b3f4d1b83941046678e2a6a3b4f1518b8429dfaf28",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-08": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 6926967,
+   "paginas": 48,
+   "paginas_com_texto": 48,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18161",
+   "impressao": "c996634bb033b2627fcd423ac283b54ccc1055fcf4cee891e5110cc20619fc69",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "c996634bb033b2627fcd423ac283b54ccc1055fcf4cee891e5110cc20619fc69",
+   "termos_achados": [
+    "grupo condutor"
+   ]
+  },
+  "2026-07-09": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 10792687,
+   "paginas": 52,
+   "paginas_com_texto": 52,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18159",
+   "impressao": "7dc141f40949f986f92446b5c7cea23c45872e5eec0e05ca0687bf5ccbf45b5b",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-10": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 11477166,
+   "paginas": 52,
+   "paginas_com_texto": 52,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18162",
+   "impressao": "60c31dac04395d96f084317cd706e286449632355a47b0027a60c4dabde7df15",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-13": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 13799330,
+   "paginas": 88,
+   "paginas_com_texto": 88,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18164",
+   "impressao": "38c06ebc07d6b2b560b437888c15ec4859217a9b3f389e5fcf4269a4dd68ec3a",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-14": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 11194654,
+   "paginas": 62,
+   "paginas_com_texto": 62,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18165",
+   "impressao": "e10b84feaad1521066fb40cde623943ba64ca1a647f70e8c8103bc592c9be49d",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "e10b84feaad1521066fb40cde623943ba64ca1a647f70e8c8103bc592c9be49d",
+   "termos_achados": [
+    "emergência climática",
+    "El Niño"
+   ]
+  },
+  "2026-07-15": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 12486767,
+   "paginas": 46,
+   "paginas_com_texto": 46,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18167",
+   "impressao": "844518869a9a3074122758c0dbdcb89263f7a4fc976e8fa9528a31b3dcbeeca6",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-16": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3403555,
+   "paginas": 64,
+   "paginas_com_texto": 64,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18168",
+   "impressao": "56f3ef204061e78c9c2732a37f6ffd1472e65c32b4179d0f68d607c08880a344",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-17": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 7801428,
+   "paginas": 74,
+   "paginas_com_texto": 74,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18169",
+   "impressao": "9c8d7676d59624fe9aed9959856489ff64f81898d52d39335fc20e5f8db45d61",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-20": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3638490,
+   "paginas": 40,
+   "paginas_com_texto": 40,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18170",
+   "impressao": "95e959280dbe83f387581e4ecac87ef4968a8ea150a5173277f127ff589f9c0c",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-21": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3991045,
+   "paginas": 46,
+   "paginas_com_texto": 46,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18171",
+   "impressao": "2db4d51499615d83e95ae333779f6fbaf655e6b5eac335ba179cd0d2b7ec161b",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-22": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3727927,
+   "paginas": 46,
+   "paginas_com_texto": 46,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18172",
+   "impressao": "25c72f4d0eb43c66ca5d7964d8ab8dd45ac3a073b37903152a8781ab057a7bdb",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-23": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3933974,
+   "paginas": 56,
+   "paginas_com_texto": 56,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18173",
+   "impressao": "73f3b926cce13e212d725fab41d203f2fedc10f62ce579c566548f804935ca2b",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-24": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 9649140,
+   "paginas": 54,
+   "paginas_com_texto": 54,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18174",
+   "impressao": "57d9fe54fe147e0673ce0ec192e093f081d543772055f40b294ab1ea4dd0a6b7",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-27": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 9948539,
+   "paginas": 44,
+   "paginas_com_texto": 44,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18178",
+   "impressao": "f9eca244d71273372069592b0a2202643583597ddcd52c5c54a9c8ce80f1d264",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-28": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3847588,
+   "paginas": 48,
+   "paginas_com_texto": 48,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18177",
+   "impressao": "47087b35a4003200a51702a79e6a0855dca17092eb30e74724e2b8ab74442979",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-29": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3070061,
+   "paginas": 48,
+   "paginas_com_texto": 48,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18179",
+   "impressao": "46f34334fa56a32a0ff93b0b100b8bdfbdc0a8565376ea1ddab799dcc8fcdc4c",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-30": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 11346908,
+   "paginas": 76,
+   "paginas_com_texto": 76,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18180",
+   "impressao": "05fa297dff6e7658501f890c0a91906db97662f6d3391eb454dfe154ec094c36",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-31": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4033792,
+   "paginas": 62,
+   "paginas_com_texto": 62,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18181",
+   "impressao": "6945406ed46e3f64a81c8e6b05486f70c7ae30ab7487d0ef402d281c5b1bc9e4",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-03": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 9497066,
+   "paginas": 54,
+   "paginas_com_texto": 54,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18186",
+   "impressao": "93940aca757ee825387b6f2b62c9ec02c1b5d6fce8fc8308e50404a0200a41ec",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-04": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2980165,
+   "paginas": 44,
+   "paginas_com_texto": 44,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18183",
+   "impressao": "afa4c45958ecac9da1ee699deaa950e1604a04cf49f8ce9a26fde5cc246e91a6",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "afa4c45958ecac9da1ee699deaa950e1604a04cf49f8ce9a26fde5cc246e91a6",
+   "termos_achados": [
+    "grupo condutor"
+   ]
+  },
+  "2026-08-05": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4013727,
+   "paginas": 46,
+   "paginas_com_texto": 46,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18185",
+   "impressao": "6a45db93a4618a69ee0c7636e3d37b8bdb2f3e4d8b72ce34d031ef7ee20dfdc5",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-06": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3321271,
+   "paginas": 44,
+   "paginas_com_texto": 44,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18187",
+   "impressao": "7dc8033e970efaf99173d4603279fc5cd6e7abceb63ed1012c931452479849ce",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-07": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3688963,
+   "paginas": 72,
+   "paginas_com_texto": 72,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18188",
+   "impressao": "c4ebfa7804661cba3b621b6b7f96658064956ab27006b03dd7df3789ea0ed838",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-10": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3308605,
+   "paginas": 44,
+   "paginas_com_texto": 44,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18189",
+   "impressao": "e4084b4b24f62d1f7c1d0bf2d20b4926f2915bb4995497fe310323e1560280c3",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-11": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2914706,
+   "paginas": 34,
+   "paginas_com_texto": 34,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18190",
+   "impressao": "8adf1b09dceb0f2d949a6737f0f1fd5fabf91407b7491dc32749671445d97e8a",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-12": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3586056,
+   "paginas": 54,
+   "paginas_com_texto": 54,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18191",
+   "impressao": "1d40baab8d22a5f9140fcd074eb98d48c5c2b6bdf358fe6d943bc8e354e454e7",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-13": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3028693,
+   "paginas": 40,
+   "paginas_com_texto": 40,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18192",
+   "impressao": "473714662b624135b6382e66a125dc053a7f6dbf6a41e8dff1c9109b1cfe6671",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-14": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3599676,
+   "paginas": 62,
+   "paginas_com_texto": 62,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18193",
+   "impressao": "ba63aff27ba1c301d5c938913b17aa84df91b1720039019ba26fae08f7837e78",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-17": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2901131,
+   "paginas": 42,
+   "paginas_com_texto": 42,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18198",
+   "impressao": "e5f9ea9041a715a66802d4ece2bc2f2b6cc59526ac28fbb5aa5bbf32a20ec3ac",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-18": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 16241059,
+   "paginas": 70,
+   "paginas_com_texto": 70,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18196",
+   "impressao": "bf653c5bfc8ca5d9503317f321df1c41dc3666db97b4ca1eedff6a0ad226691e",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-19": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2539271,
+   "paginas": 46,
+   "paginas_com_texto": 46,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18197",
+   "impressao": "25699b7f071709baf10f712998f522f512471f13718398c2e3bc88e0c1812106",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-20": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 7979186,
+   "paginas": 52,
+   "paginas_com_texto": 52,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18201",
+   "impressao": "a12d5131f6357d5460f06d90b10d9abfebf1f315eebe23fb78d86d65328f38e5",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-21": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3067608,
+   "paginas": 56,
+   "paginas_com_texto": 56,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18200",
+   "impressao": "477d948a867d449f7e6e28a3701811a688df4965a6ce9988a39be15f62bdcf60",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-24": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3016186,
+   "paginas": 40,
+   "paginas_com_texto": 40,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18202",
+   "impressao": "5dc294e8ec7b7b9f4c9afd8d1e3d4eea4567b2e90c034a3ad33f28652e398b85",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-25": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4193908,
+   "paginas": 60,
+   "paginas_com_texto": 60,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18207",
+   "impressao": "4ea1a546a2c47147e72e807e7c1da3dd98fd430c17f4a5e30c14dfaa731afb06",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-26": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3510530,
+   "paginas": 66,
+   "paginas_com_texto": 66,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18208",
+   "impressao": "90af1b63fa28620dc219cad6f5a59cf719b9777c62a1e21ef3927e2494d4011b",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-27": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3543113,
+   "paginas": 60,
+   "paginas_com_texto": 60,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18209",
+   "impressao": "2317a60e2a71ddf593e1142a4be768987168c5ee69dcc6cf3ae43ec30450dceb",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-28": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3910903,
+   "paginas": 50,
+   "paginas_com_texto": 50,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18210",
+   "impressao": "dc7824052e00b623fbfa434af2ceafb1f14afcab57a54b26f143ab76d58a703e",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-31": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3679329,
+   "paginas": 56,
+   "paginas_com_texto": 56,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18211",
+   "impressao": "9124ddf18415625ba4b0804f6d7880bfa33effc6a64d68a60e36fb7322bb461b",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-01": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3045824,
+   "paginas": 60,
+   "paginas_com_texto": 60,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18212",
+   "impressao": "2c705adf8cfd14452d95fbaac82523176121f7f5d37c59179da788c0da45ab6d",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-02": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4216045,
+   "paginas": 64,
+   "paginas_com_texto": 64,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18213",
+   "impressao": "aaf067faefda8c38628b221dd34f9c1e47274de8f56bba05945769709b32cc2e",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-03": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4042227,
+   "paginas": 52,
+   "paginas_com_texto": 52,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18214",
+   "impressao": "768101cda393d280047711e8d6bb64b2c855d2ae923862f014e000ca03dafedd",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-04": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3259099,
+   "paginas": 48,
+   "paginas_com_texto": 48,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18216",
+   "impressao": "4a578469e0d52b3a97581bca92d689d233582edd95888f8af6d4888fcac27385",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-07": {
+   "decisao": "sem_edicao_na_data",
+   "em": "17/10/2026"
+  },
+  "2026-09-08": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 8512918,
+   "paginas": 52,
+   "paginas_com_texto": 52,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18217",
+   "impressao": "286f3cdeec0fa2bb51cddb5f24d0ecf43abe52dc20b47fab8c6e0012df1c14b0",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "286f3cdeec0fa2bb51cddb5f24d0ecf43abe52dc20b47fab8c6e0012df1c14b0",
+   "termos_achados": [
+    "emergência climática",
+    "El Niño"
+   ]
+  },
+  "2026-09-09": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3428349,
+   "paginas": 52,
+   "paginas_com_texto": 52,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18218",
+   "impressao": "83d93546e6e7b62c153aa217e0bad665e9147c52f0b8c7e0378e697993334718",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "83d93546e6e7b62c153aa217e0bad665e9147c52f0b8c7e0378e697993334718",
+   "termos_achados": [
+    "emergência climática",
+    "El Niño"
+   ]
+  },
+  "2026-09-10": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3975444,
+   "paginas": 54,
+   "paginas_com_texto": 54,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18219",
+   "impressao": "ab352b19f275634f27745c6f5107f24c47f8e80ccd67322fc0f85d0b29b689f9",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-11": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3854163,
+   "paginas": 44,
+   "paginas_com_texto": 44,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18220",
+   "impressao": "6196dfa0600c968c7e73289d35633a003cd595e2bbb0a10b0e5c2215345c9a9e",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-14": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2741492,
+   "paginas": 30,
+   "paginas_com_texto": 30,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18221",
+   "impressao": "97023688ac071fea673e7592ae810b0f24c1c14bb3624c1547d0fe780e10bb2f",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-15": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3315750,
+   "paginas": 54,
+   "paginas_com_texto": 54,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18222",
+   "impressao": "b49208df7cb2193361fa440643ba27df254d472d4a1c9da6c1aa4ac5945a9ccd",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-16": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 8014660,
+   "paginas": 44,
+   "paginas_com_texto": 44,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18223",
+   "impressao": "9a3bd11278a960b4401349b99a0347d8ade2663b1ce2d7cb1d2091b89c55fe08",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-17": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3547324,
+   "paginas": 58,
+   "paginas_com_texto": 58,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18224",
+   "impressao": "233b334dfaf4efdda5c4cb923d4dd4e1da1f596ab4a2213d794459ae5d17c381",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-18": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 9987810,
+   "paginas": 44,
+   "paginas_com_texto": 44,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18225",
+   "impressao": "d07d92494e5ca7e2bff0c59f6ea3fde5ed4152afdb023f46974629e344b95d51",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-21": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3723582,
+   "paginas": 54,
+   "paginas_com_texto": 54,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18226",
+   "impressao": "6aafbcff977434a180c9f10b68857f16de9e259edb5c81083eb0dfceb78761de",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "6aafbcff977434a180c9f10b68857f16de9e259edb5c81083eb0dfceb78761de",
+   "termos_achados": [
+    "El Niño"
+   ]
+  },
+  "2026-09-22": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 5319441,
+   "paginas": 62,
+   "paginas_com_texto": 62,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18227",
+   "impressao": "86cbbd6361d29071e4e792995e74d3445bb426b42c02b46e8c6263ee6725c804",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-23": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2944744,
+   "paginas": 38,
+   "paginas_com_texto": 38,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18228",
+   "impressao": "3c7e5508fc6dfb66c8209cf9ea1e7db2c1b4b601f89fb638ae3e99f4b6bca605",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-24": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3667926,
+   "paginas": 50,
+   "paginas_com_texto": 50,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18232",
+   "impressao": "466ab1947c48a8794efebf8155c3a645043376ac36e67bc1f9b23923742f11e2",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-25": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 21371431,
+   "paginas": 70,
+   "paginas_com_texto": 70,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18231",
+   "impressao": "e2fe2992a5b8ec4d0d6d5acb45491a5feaa8068d1863a3ea86169f6b0ff11290",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-28": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 19649019,
+   "paginas": 60,
+   "paginas_com_texto": 60,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18233",
+   "impressao": "3d2aa77df6a6268cc0538d09b61ef2c4618907ac80e2e8fb3cef8361e0f2e914",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "3d2aa77df6a6268cc0538d09b61ef2c4618907ac80e2e8fb3cef8361e0f2e914",
+   "termos_achados": [
+    "centro de operações"
+   ]
+  },
+  "2026-09-29": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3701828,
+   "paginas": 70,
+   "paginas_com_texto": 70,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18234",
+   "impressao": "34d311fe565422129b2c24ce371fa475c30158cd7874a4aa76acf8c5b8471ccd",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-30": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4750362,
+   "paginas": 72,
+   "paginas_com_texto": 72,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18235",
+   "impressao": "7be47ad4c4d353c57ed56be9a4f4b66301d27711a9c6dc19ff911b437922aa2f",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-01": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2882113,
+   "paginas": 46,
+   "paginas_com_texto": 46,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18236",
+   "impressao": "f7fb40460582d6de92846a144b38d03193944f9c9581b1878956191e17886658",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-02": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 21843456,
+   "paginas": 76,
+   "paginas_com_texto": 76,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18237",
+   "impressao": "a54db06196748d190749a9980c75f1d30401c9b1dfc342a08ffb5ed922b1f4c8",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-05": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 9175605,
+   "paginas": 38,
+   "paginas_com_texto": 38,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18238",
+   "impressao": "8a110ed4219086a2034bb7f34d74d087f409a06b992d1b8058d21ce9e94c5991",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-06": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3473337,
+   "paginas": 42,
+   "paginas_com_texto": 42,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18239",
+   "impressao": "bff353eafe461a7cf322008586ad8d519702143e1fcd46545323817b2bc8356b",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-07": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3790205,
+   "paginas": 44,
+   "paginas_com_texto": 44,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18240",
+   "impressao": "1af123eb11ab4bf2cd9c491dd8fb0d4c814a8b9da46ec38f9862118b1a1cefb2",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-08": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3130675,
+   "paginas": 50,
+   "paginas_com_texto": 50,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18241",
+   "impressao": "d844f34c9220e8932471f929ff17a37b938dfba0c2cf7d154f9e86b8834e3000",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-09": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 12852020,
+   "paginas": 58,
+   "paginas_com_texto": 58,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18242",
+   "impressao": "075ee2521f22931bd641b3cceb089981a0892863719319f040994b320b24c5e9",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-12": {
+   "decisao": "sem_edicao_na_data",
+   "em": "17/10/2026"
+  },
+  "2026-10-13": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2776705,
+   "paginas": 48,
+   "paginas_com_texto": 48,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18246",
+   "impressao": "1e5f70d249bc1ca0d487b0618b9a666aab243a33e0837186b7bda85d2d4f14c8",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "1e5f70d249bc1ca0d487b0618b9a666aab243a33e0837186b7bda85d2d4f14c8",
+   "termos_achados": [
+    "situação de emergência em saúde pública",
+    "emergência em saúde pública"
+   ]
+  },
+  "2026-10-14": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2917084,
+   "paginas": 44,
+   "paginas_com_texto": 44,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18247",
+   "impressao": "3b625cb378c4a01ba13c2666aa6947a5850c9ec6831f57c15f3d061b88161d06",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "3b625cb378c4a01ba13c2666aa6947a5850c9ec6831f57c15f3d061b88161d06",
+   "termos_achados": [
+    "grupo condutor"
+   ]
+  },
+  "2026-10-15": {
+   "decisao": "sem_edicao_na_data",
+   "em": "17/10/2026"
+  },
+  "2026-10-16": {
+   "decisao": "sem_edicao_na_data",
+   "em": "17/10/2026"
+  }
+ },
+ "atualizado_em": "17/10/2026"
 }
