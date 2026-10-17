@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 O canal 2 lê o Diário do Executivo de MG pela API pública que o próprio sítio chama (`edicao_mg`): o PDF sai do envelope assinado (CMS, BER) por função pura. Parte das datas responde 401: o canal para ali e registra a recusa, sem marcar o diário como consultado. As edições passam a ser lidas da mais nova para a mais velha em toda UF, e o ritmo de 2 s vale também quando o adaptador já traz o PDF.
 
+## 2026-10-17 · #842 · Ensaio da noite confere o isolamento dos autotestes pelo portão único
+
+O workflow do ensaio chamava `verificar_autoteste_nao_escreve.py` (27 coletores, 12 arquivos de banco); passa a chamar `verificar_autotestes_isolados.py --rapido`, que cobre os mesmos coletores contra todo `data/`. Pedido da D, que remove o portão antigo em seguida.
+
 ## 2026-10-17 · #843 · Consulta do município: a situação do plano numa função comum
 
 A classificação do plano de contingência do município (encontrado, estadual, citado, não localizado, decreto, em elaboração, outro ato, ainda não verificado) sai de `index.js` e vira `ConsultaMunicipio.situacaoDoPlano`, que a inicial já usa e Para gestores pode usar sem copiar. Nenhuma frase muda. Pedido da B2 (12:11).
