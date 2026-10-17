@@ -49,6 +49,8 @@
     <dl class="mudancas-lista">
       <dt>17/10/2026 · Busca web: marca de motor mudo não tira o município da fila (F69)</dt>
       <dd>Na noite 16→17 a busca web rodou com fila vazia: 191 municípios só tinham, na janela de 15 dias, marcas &quot;motor_sem_resposta&quot; gravadas antes da regra de 14/10. `pendentes_na_janela` passa a ignorar essas marcas; o livro guarda o histórico. F69 no catálogo; caso no autoteste da busca web.</dd>
+      <dt>17/10/2026 · Autoteste vermelho mostra o traceback no log do portão</dt>
+      <dd>Na `main` (run 38976908995) o autoteste de `unir_conflito_de_rodada.py` caiu e o log só trazia o último ✓: o portão descartava o stderr. Agora a linha do autoteste vermelho junta a última saída e as três últimas linhas do erro. Linhas líquidas 0.</dd>
       <dt>16/10/2026 · Ar medido: hora de medição no futuro vira lacuna</dt>
       <dd>Na coleta das 15:46, 51 estações (INEA, CPRH, Ibram) traziam hora 4 a 5 h adiante da consulta e saíam como leitura atual. `parse_monitorar` passa a declarar lacuna quando a hora publicada passa da consulta em mais de 1 h (IQAr e sensores RedeAr); não se reinterpreta fuso que a fonte não declara. METODOLOGIA §41.7; autoteste novo.</dd>
       <dt>16/10/2026 · Juiz da saúde estadual: duas rodadas pela válvula (dado)</dt>
@@ -165,8 +167,6 @@
       <dd>Três camadas separadas: estrutura (contrato), conteúdo (catálogo) e dado (geradores). Financiamento e Defesa civil migrados — 100 identificadores estáveis, extraídos mecanicamente para não mudar uma vírgula; o texto visível em 1280 e 390 px ficou idêntico nas duas páginas. Vêm juntos o leitor, o portão do catálogo, o renderizador de uma figura por vez, o aplicador de edição aprovada e o índice interno.</dd>
       <dt>05/10/2026 · Pacote por tipo de evento, e duas travas do blog que não travavam</dt>
       <dd>Nova linha `tipos_de_evento` no gerador de pacote, sobre o ciclo inteiro. `para_iso` só lia `dd/mm/aaaa` e descartava calado 97 dos 929 atos, que vêm em ISO do diário consorciado. O verificador do blog reprovava por pacote ausente mesmo onde a pasta não é alcançável, e o gerador publicava texto citando pacote inexistente: agora um distingue ausente de fora de alcance, e o outro recusa pacote declarado que não existe.</dd>
-      <dt>05/10/2026 · O CODEMAP mentia por omissão, e agora diz quantos importam cada arquivo</dt>
-      <dd>Comparado com o grafo de dependências, o mapa tinha um ponto cego: só via o nome do dado **literal na chamada**. Quem o guarda em constante — o estilo dos scripts novos — ficava invisível, e 23 arquivos subiram de 17 para 84 dependências declaradas; `coletores_base.py` aparecia sem `log_buscas.json`. Coluna nova `importado por`: ele tem 169 importadores, e era esse número que faltava antes dos dois acidentes de isolamento.</dd>
     </dl>
   </section>
 </main>
