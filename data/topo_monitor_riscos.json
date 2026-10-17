@@ -4,45 +4,65 @@
  "cartoes": [
   {
    "id": "temperatura_desvio_capital",
-   "valor": 3.9,
-   "referencia": "15/10/2026",
-   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Belém",
-   "capital": "Belém",
-   "uf": "PA",
+   "valor": 2.9,
+   "referencia": "16/10/2026",
+   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Rio Branco",
+   "capital": "Rio Branco",
+   "uf": "AC",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "sem_coleta": false,
-   "nota": "máxima prevista de 37.0 °C contra a média de 33.1 °C do mês; 24 capital(is) com normal publicada"
+   "nota": "máxima prevista de 36.0 °C contra a média de 33.1 °C do mês; 24 capital(is) com normal publicada",
+   "anterior": {
+    "valor": 3.9,
+    "referencia": "15/10/2026"
+   }
   },
   {
    "id": "fogo_focos_24h",
-   "valor": 555,
-   "referencia": "Focos do dia — focos_diario_br_20261016.csv",
+   "valor": 493,
+   "referencia": "Focos do dia — focos_diario_br_20261017.csv",
    "uf_com_mais_focos": "PA",
    "fonte": "Inpe",
-   "sem_coleta": false
+   "sem_coleta": false,
+   "anterior": {
+    "valor": 555,
+    "referencia": "Focos do dia — focos_diario_br_20261016.csv"
+   }
   },
   {
    "id": "seca_estados_grave_ou_pior",
-   "valor": 0,
-   "referencia": "Agosto de 2026",
+   "valor": 2,
+   "referencia": "Setembro de 2026",
    "fonte": "Monitor de Secas (ANA)",
-   "sem_coleta": false
+   "sem_coleta": false,
+   "anterior": {
+    "valor": 0,
+    "referencia": "Agosto de 2026"
+   }
   },
   {
    "id": "avisos_inmet_distintos",
-   "valor": 3,
-   "perigo_ou_maior": 2,
-   "referencia": "15/10/2026 22:42",
+   "valor": 4,
+   "perigo_ou_maior": 1,
+   "referencia": "16/10/2026 22:13",
    "fonte": "Inmet",
-   "sem_coleta": false
+   "sem_coleta": false,
+   "anterior": {
+    "valor": 3,
+    "referencia": "15/10/2026 22:42"
+   }
   },
   {
    "id": "probabilidade_el_nino",
    "valor": 99,
    "trimestre": "MAM 2027",
-   "referencia": "15/10/2026",
+   "referencia": "16/10/2026",
    "fonte": "IRI/CPC",
-   "sem_coleta": false
+   "sem_coleta": false,
+   "anterior": {
+    "valor": 99,
+    "referencia": "15/10/2026"
+   }
   }
  ]
 }
